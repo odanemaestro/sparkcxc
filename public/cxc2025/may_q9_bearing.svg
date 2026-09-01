@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560">
+<!--
+  Done by: Odane Robinson
+  QA fix: A->B was drawn at roughly bearing 055° and B->C at roughly 133°,
+  each several degrees off the 042° and 130° stated in the question. Points
+  are now placed with trigonometry directly from the given bearings.
+-->
+<style>
+text{font-family:Arial,Helvetica,sans-serif;fill:#162033}
+.label{font-size:18px;font-weight:600}
+.small{font-size:15px}
+.line{stroke:#162033;stroke-width:3;fill:none}
+</style>
+<rect width="900" height="560" fill="white"/>
+<line x1="220" y1="420" x2="220" y2="180" class="line"/><path d="M220 170l-8 16h16z" fill="#162033"/><text x="235" y="190" class="label">North</text>
+<line x1="220" y1="420" x2="394.0" y2="226.8" class="line"/>
+<line x1="394.0" y1="226.8" x2="623.8" y2="419.6" class="line"/>
+<line x1="220" y1="420" x2="623.8" y2="419.6" class="line"/>
+<line x1="394.0" y1="226.8" x2="394.0" y2="70" class="line"/><path d="M394.0 60l-8 16h16z" fill="#162033"/><text x="409" y="80" class="label">North</text>
+<text x="200" y="445" class="label">A</text><text x="352" y="200" class="label">B</text><text x="628" y="440" class="label">C</text>
+<text x="283" y="302" class="label" text-anchor="middle">15 km</text><text x="529" y="299" class="label" text-anchor="middle">19 km</text>
+</svg>

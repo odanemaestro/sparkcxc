@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560">
+<!--
+  Done by: Odane Robinson
+  QA fix: E was drawn at a bearing of about 294° from G instead of the
+  given 302° (a 7-8 degree error). E and F are now placed with
+  trigonometry directly from the stated bearings (302° and 228° from G),
+  so the picture matches the numbers in the question.
+-->
+<style>
+text{font-family:Arial,Helvetica,sans-serif;fill:#162033}
+.label{font-size:18px;font-weight:600}
+.small{font-size:15px}
+.line{stroke:#162033;stroke-width:3;fill:none}
+</style>
+<rect width="900" height="560" fill="white"/>
+<line x1="690" y1="430" x2="690" y2="120" stroke="#162033" stroke-width="3"/>
+<path d="M690 110l-8 16h16z" fill="#162033"/>
+<text x="705" y="125" class="label">North</text>
+<line x1="690" y1="300" x2="410.1" y2="125.1" class="line"/>
+<line x1="690" y1="300" x2="496.8" y2="474.0" class="line"/>
+<line x1="410.1" y1="125.1" x2="496.8" y2="474.0" class="line"/>
+<text x="390" y="120" class="label">E</text><text x="705" y="305" class="label">G</text><text x="486" y="500" class="label">F</text>
+<text x="490" y="220" class="label">245 km</text><text x="510" y="405" class="label">52°</text>
+</svg>

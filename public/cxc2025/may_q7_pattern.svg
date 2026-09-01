@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560">
+<!--
+  Done by: Odane Robinson
+  QA fix: as with jan_q7_pattern.svg, the original artwork is not
+  available to check against, so rather than leave a broken placeholder
+  this diagram is a real chain of n regular pentagons, each sharing one
+  full edge with the next. Vertex and stick counts were verified
+  programmatically to match D(n) = 3n+2 dots and S(n) = 4n+1 sticks
+  exactly for n = 1..4, matching the numbers given in the question.
+-->
+<style>
+text{font-family:Arial,Helvetica,sans-serif;fill:#162033}
+.label{font-size:18px;font-weight:600}
+.small{font-size:14px}
+.line{stroke:#162033;stroke-width:2.5;fill:none}
+</style>
+<rect width="900" height="560" fill="white"/>
+<line x1="130.0" y1="250.0" x2="178.0" y2="250.0" class="line"/>
+<line x1="178.0" y1="250.0" x2="192.8" y2="204.3" class="line"/>
+<line x1="192.8" y1="204.3" x2="154.0" y2="176.1" class="line"/>
+<line x1="154.0" y1="176.1" x2="115.2" y2="204.3" class="line"/>
+<line x1="115.2" y1="204.3" x2="130.0" y2="250.0" class="line"/>
+<circle cx="130.0" cy="250.0" r="5" fill="#162033"/>
+<circle cx="178.0" cy="250.0" r="5" fill="#162033"/>
+<circle cx="192.8" cy="204.3" r="5" fill="#162033"/>
+<circle cx="154.0" cy="176.1" r="5" fill="#162033"/>
+<circle cx="115.2" cy="204.3" r="5" fill="#162033"/>
+<line x1="330.0" y1="250.0" x2="378.0" y2="250.0" class="line"/>
+<line x1="378.0" y1="250.0" x2="392.8" y2="204.3" class="line"/>
+<line x1="392.8" y1="204.3" x2="354.0" y2="176.1" class="line"/>
+<line x1="354.0" y1="176.1" x2="315.2" y2="204.3" class="line"/>
+<line x1="315.2" y1="204.3" x2="330.0" y2="250.0" class="line"/>
+<line x1="354.0" y1="176.1" x2="392.8" y2="204.3" class="line"/>
+<line x1="392.8" y1="204.3" x2="431.7" y2="176.1" class="line"/>
+<line x1="431.7" y1="176.1" x2="416.8" y2="130.5" class="line"/>
+<line x1="416.8" y1="130.5" x2="368.8" y2="130.5" class="line"/>
+<line x1="368.8" y1="130.5" x2="354.0" y2="176.1" class="line"/>
+<circle cx="330.0" cy="250.0" r="5" fill="#162033"/>
+<circle cx="378.0" cy="250.0" r="5" fill="#162033"/>
+<circle cx="392.8" cy="204.3" r="5" fill="#162033"/>
+<circle cx="354.0" cy="176.1" r="5" fill="#162033"/>
+<circle cx="315.2" cy="204.3" r="5" fill="#162033"/>
+<circle cx="431.7" cy="176.1" r="5" fill="#162033"/>
+<circle cx="416.8" cy="130.5" r="5" fill="#162033"/>
+<circle cx="368.8" cy="130.5" r="5" fill="#162033"/>
+<line x1="560.0" y1="250.0" x2="608.0" y2="250.0" class="line"/>
+<line x1="608.0" y1="250.0" x2="622.8" y2="204.3" class="line"/>
+<line x1="622.8" y1="204.3" x2="584.0" y2="176.1" class="line"/>
+<line x1="584.0" y1="176.1" x2="545.2" y2="204.3" class="line"/>
+<line x1="545.2" y1="204.3" x2="560.0" y2="250.0" class="line"/>
+<line x1="584.0" y1="176.1" x2="622.8" y2="204.3" class="line"/>
+<line x1="622.8" y1="204.3" x2="661.7" y2="176.1" class="line"/>
+<line x1="661.7" y1="176.1" x2="646.8" y2="130.5" class="line"/>
+<line x1="646.8" y1="130.5" x2="598.8" y2="130.5" class="line"/>
+<line x1="598.8" y1="130.5" x2="584.0" y2="176.1" class="line"/>
+<line x1="646.8" y1="130.5" x2="661.7" y2="176.1" class="line"/>
+<line x1="661.7" y1="176.1" x2="709.7" y2="176.1" class="line"/>
+<line x1="709.7" y1="176.1" x2="724.5" y2="130.5" class="line"/>
+<line x1="724.5" y1="130.5" x2="685.7" y2="102.3" class="line"/>
+<line x1="685.7" y1="102.3" x2="646.8" y2="130.5" class="line"/>
+<circle cx="560.0" cy="250.0" r="5" fill="#162033"/>
+<circle cx="608.0" cy="250.0" r="5" fill="#162033"/>
+<circle cx="622.8" cy="204.3" r="5" fill="#162033"/>
+<circle cx="584.0" cy="176.1" r="5" fill="#162033"/>
+<circle cx="545.2" cy="204.3" r="5" fill="#162033"/>
+<circle cx="661.7" cy="176.1" r="5" fill="#162033"/>
+<circle cx="646.8" cy="130.5" r="5" fill="#162033"/>
+<circle cx="598.8" cy="130.5" r="5" fill="#162033"/>
+<circle cx="709.7" cy="176.1" r="5" fill="#162033"/>
+<circle cx="724.5" cy="130.5" r="5" fill="#162033"/>
+<circle cx="685.7" cy="102.3" r="5" fill="#162033"/>
+<line x1="130.0" y1="470.0" x2="178.0" y2="470.0" class="line"/>
+<line x1="178.0" y1="470.0" x2="192.8" y2="424.3" class="line"/>
+<line x1="192.8" y1="424.3" x2="154.0" y2="396.1" class="line"/>
+<line x1="154.0" y1="396.1" x2="115.2" y2="424.3" class="line"/>
+<line x1="115.2" y1="424.3" x2="130.0" y2="470.0" class="line"/>
+<line x1="154.0" y1="396.1" x2="192.8" y2="424.3" class="line"/>
+<line x1="192.8" y1="424.3" x2="231.7" y2="396.1" class="line"/>
+<line x1="231.7" y1="396.1" x2="216.8" y2="350.5" class="line"/>
+<line x1="216.8" y1="350.5" x2="168.8" y2="350.5" class="line"/>
+<line x1="168.8" y1="350.5" x2="154.0" y2="396.1" class="line"/>
+<line x1="216.8" y1="350.5" x2="231.7" y2="396.1" class="line"/>
+<line x1="231.7" y1="396.1" x2="279.7" y2="396.1" class="line"/>
+<line x1="279.7" y1="396.1" x2="294.5" y2="350.5" class="line"/>
+<line x1="294.5" y1="350.5" x2="255.7" y2="322.3" class="line"/>
+<line x1="255.7" y1="322.3" x2="216.8" y2="350.5" class="line"/>
+<line x1="294.5" y1="350.5" x2="279.7" y2="396.1" class="line"/>
+<line x1="279.7" y1="396.1" x2="318.5" y2="424.3" class="line"/>
+<line x1="318.5" y1="424.3" x2="357.3" y2="396.1" class="line"/>
+<line x1="357.3" y1="396.1" x2="342.5" y2="350.5" class="line"/>
+<line x1="342.5" y1="350.5" x2="294.5" y2="350.5" class="line"/>
+<circle cx="130.0" cy="470.0" r="5" fill="#162033"/>
+<circle cx="178.0" cy="470.0" r="5" fill="#162033"/>
+<circle cx="192.8" cy="424.3" r="5" fill="#162033"/>
+<circle cx="154.0" cy="396.1" r="5" fill="#162033"/>
+<circle cx="115.2" cy="424.3" r="5" fill="#162033"/>
+<circle cx="231.7" cy="396.1" r="5" fill="#162033"/>
+<circle cx="216.8" cy="350.5" r="5" fill="#162033"/>
+<circle cx="168.8" cy="350.5" r="5" fill="#162033"/>
+<circle cx="279.7" cy="396.1" r="5" fill="#162033"/>
+<circle cx="294.5" cy="350.5" r="5" fill="#162033"/>
+<circle cx="255.7" cy="322.3" r="5" fill="#162033"/>
+<circle cx="318.5" cy="424.3" r="5" fill="#162033"/>
+<circle cx="357.3" cy="396.1" r="5" fill="#162033"/>
+<circle cx="342.5" cy="350.5" r="5" fill="#162033"/>
+<text x="100" y="330" class="label">Figure 1</text>
+<text x="300" y="330" class="label">Figure 2</text>
+<text x="530" y="330" class="label">Figure 3</text>
+<text x="100" y="545" class="label">Figure 4</text>
+<text x="90" y="60" class="small">S = number of sticks, D = number of dots. S(1..3) = 5, 9, 13. D(1..3) = 5, 8, 11.</text>
+</svg>

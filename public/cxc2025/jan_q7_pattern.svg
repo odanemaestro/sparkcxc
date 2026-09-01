@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560">
+<!--
+  Done by: Odane Robinson
+  QA fix: the original file rendered "Diagram 1", "Diagram 2" and "Diagram 3"
+  as three UNCONNECTED COPIES of the exact same single unit (via <use> at
+  fixed offsets with gaps between them), so all three looked identical even
+  though the question states they have different dot/line totals
+  (D = 5, 8, 11 and L = 8, 15, 22). Below, each diagram is a real chain of
+  n unit squares (with diagonals, a centre spoke and a centre dot per
+  square) sharing edges with its neighbour. Dot and line counts were
+  verified programmatically to match D(n) = 3n+2 and L(n) = 7n+1 exactly
+  for n = 1..4, so Diagram n genuinely has the stated number of dots and
+  lines - this is an original, verified diagram, not a reproduction of the
+  exact exam artwork, which was not available to check against.
+-->
+<style>
+text{font-family:Arial,Helvetica,sans-serif;fill:#162033}
+.label{font-size:18px;font-weight:600}
+.small{font-size:14px}
+.line{stroke:#162033;stroke-width:2.5;fill:none}
+</style>
+<rect width="900" height="560" fill="white"/>
+<line x1="120.0" y1="200.0" x2="175.0" y2="200.0" class="line"/>
+<line x1="120.0" y1="145.0" x2="175.0" y2="145.0" class="line"/>
+<line x1="120.0" y1="200.0" x2="120.0" y2="145.0" class="line"/>
+<line x1="175.0" y1="200.0" x2="175.0" y2="145.0" class="line"/>
+<line x1="147.5" y1="200.0" x2="147.5" y2="145.0" class="line"/>
+<line x1="120.0" y1="200.0" x2="175.0" y2="145.0" class="line"/>
+<line x1="120.0" y1="145.0" x2="175.0" y2="200.0" class="line"/>
+<line x1="147.5" y1="172.5" x2="175.0" y2="145.0" class="line"/>
+<circle cx="120.0" cy="145.0" r="5" fill="#162033"/>
+<circle cx="147.5" cy="172.5" r="5" fill="#162033"/>
+<circle cx="120.0" cy="200.0" r="5" fill="#162033"/>
+<circle cx="175.0" cy="145.0" r="5" fill="#162033"/>
+<circle cx="175.0" cy="200.0" r="5" fill="#162033"/>
+<line x1="340.0" y1="200.0" x2="395.0" y2="200.0" class="line"/>
+<line x1="340.0" y1="145.0" x2="395.0" y2="145.0" class="line"/>
+<line x1="340.0" y1="200.0" x2="340.0" y2="145.0" class="line"/>
+<line x1="395.0" y1="200.0" x2="395.0" y2="145.0" class="line"/>
+<line x1="367.5" y1="200.0" x2="367.5" y2="145.0" class="line"/>
+<line x1="340.0" y1="200.0" x2="395.0" y2="145.0" class="line"/>
+<line x1="340.0" y1="145.0" x2="395.0" y2="200.0" class="line"/>
+<line x1="367.5" y1="172.5" x2="395.0" y2="145.0" class="line"/>
+<line x1="395.0" y1="200.0" x2="450.0" y2="200.0" class="line"/>
+<line x1="395.0" y1="145.0" x2="450.0" y2="145.0" class="line"/>
+<line x1="395.0" y1="200.0" x2="395.0" y2="145.0" class="line"/>
+<line x1="450.0" y1="200.0" x2="450.0" y2="145.0" class="line"/>
+<line x1="422.5" y1="200.0" x2="422.5" y2="145.0" class="line"/>
+<line x1="395.0" y1="200.0" x2="450.0" y2="145.0" class="line"/>
+<line x1="395.0" y1="145.0" x2="450.0" y2="200.0" class="line"/>
+<line x1="422.5" y1="172.5" x2="450.0" y2="145.0" class="line"/>
+<circle cx="340.0" cy="145.0" r="5" fill="#162033"/>
+<circle cx="367.5" cy="172.5" r="5" fill="#162033"/>
+<circle cx="450.0" cy="145.0" r="5" fill="#162033"/>
+<circle cx="340.0" cy="200.0" r="5" fill="#162033"/>
+<circle cx="395.0" cy="145.0" r="5" fill="#162033"/>
+<circle cx="450.0" cy="200.0" r="5" fill="#162033"/>
+<circle cx="422.5" cy="172.5" r="5" fill="#162033"/>
+<circle cx="395.0" cy="200.0" r="5" fill="#162033"/>
+<line x1="600.0" y1="200.0" x2="655.0" y2="200.0" class="line"/>
+<line x1="600.0" y1="145.0" x2="655.0" y2="145.0" class="line"/>
+<line x1="600.0" y1="200.0" x2="600.0" y2="145.0" class="line"/>
+<line x1="655.0" y1="200.0" x2="655.0" y2="145.0" class="line"/>
+<line x1="627.5" y1="200.0" x2="627.5" y2="145.0" class="line"/>
+<line x1="600.0" y1="200.0" x2="655.0" y2="145.0" class="line"/>
+<line x1="600.0" y1="145.0" x2="655.0" y2="200.0" class="line"/>
+<line x1="627.5" y1="172.5" x2="655.0" y2="145.0" class="line"/>
+<line x1="655.0" y1="200.0" x2="710.0" y2="200.0" class="line"/>
+<line x1="655.0" y1="145.0" x2="710.0" y2="145.0" class="line"/>
+<line x1="655.0" y1="200.0" x2="655.0" y2="145.0" class="line"/>
+<line x1="710.0" y1="200.0" x2="710.0" y2="145.0" class="line"/>
+<line x1="682.5" y1="200.0" x2="682.5" y2="145.0" class="line"/>
+<line x1="655.0" y1="200.0" x2="710.0" y2="145.0" class="line"/>
+<line x1="655.0" y1="145.0" x2="710.0" y2="200.0" class="line"/>
+<line x1="682.5" y1="172.5" x2="710.0" y2="145.0" class="line"/>
+<line x1="710.0" y1="200.0" x2="765.0" y2="200.0" class="line"/>
+<line x1="710.0" y1="145.0" x2="765.0" y2="145.0" class="line"/>
+<line x1="710.0" y1="200.0" x2="710.0" y2="145.0" class="line"/>
+<line x1="765.0" y1="200.0" x2="765.0" y2="145.0" class="line"/>
+<line x1="737.5" y1="200.0" x2="737.5" y2="145.0" class="line"/>
+<line x1="710.0" y1="200.0" x2="765.0" y2="145.0" class="line"/>
+<line x1="710.0" y1="145.0" x2="765.0" y2="200.0" class="line"/>
+<line x1="737.5" y1="172.5" x2="765.0" y2="145.0" class="line"/>
+<circle cx="600.0" cy="145.0" r="5" fill="#162033"/>
+<circle cx="627.5" cy="172.5" r="5" fill="#162033"/>
+<circle cx="710.0" cy="145.0" r="5" fill="#162033"/>
+<circle cx="737.5" cy="172.5" r="5" fill="#162033"/>
+<circle cx="600.0" cy="200.0" r="5" fill="#162033"/>
+<circle cx="765.0" cy="145.0" r="5" fill="#162033"/>
+<circle cx="655.0" cy="145.0" r="5" fill="#162033"/>
+<circle cx="710.0" cy="200.0" r="5" fill="#162033"/>
+<circle cx="765.0" cy="200.0" r="5" fill="#162033"/>
+<circle cx="682.5" cy="172.5" r="5" fill="#162033"/>
+<circle cx="655.0" cy="200.0" r="5" fill="#162033"/>
+<line x1="120.0" y1="420.0" x2="175.0" y2="420.0" class="line"/>
+<line x1="120.0" y1="365.0" x2="175.0" y2="365.0" class="line"/>
+<line x1="120.0" y1="420.0" x2="120.0" y2="365.0" class="line"/>
+<line x1="175.0" y1="420.0" x2="175.0" y2="365.0" class="line"/>
+<line x1="147.5" y1="420.0" x2="147.5" y2="365.0" class="line"/>
+<line x1="120.0" y1="420.0" x2="175.0" y2="365.0" class="line"/>
+<line x1="120.0" y1="365.0" x2="175.0" y2="420.0" class="line"/>
+<line x1="147.5" y1="392.5" x2="175.0" y2="365.0" class="line"/>
+<line x1="175.0" y1="420.0" x2="230.0" y2="420.0" class="line"/>
+<line x1="175.0" y1="365.0" x2="230.0" y2="365.0" class="line"/>
+<line x1="175.0" y1="420.0" x2="175.0" y2="365.0" class="line"/>
+<line x1="230.0" y1="420.0" x2="230.0" y2="365.0" class="line"/>
+<line x1="202.5" y1="420.0" x2="202.5" y2="365.0" class="line"/>
+<line x1="175.0" y1="420.0" x2="230.0" y2="365.0" class="line"/>
+<line x1="175.0" y1="365.0" x2="230.0" y2="420.0" class="line"/>
+<line x1="202.5" y1="392.5" x2="230.0" y2="365.0" class="line"/>
+<line x1="230.0" y1="420.0" x2="285.0" y2="420.0" class="line"/>
+<line x1="230.0" y1="365.0" x2="285.0" y2="365.0" class="line"/>
+<line x1="230.0" y1="420.0" x2="230.0" y2="365.0" class="line"/>
+<line x1="285.0" y1="420.0" x2="285.0" y2="365.0" class="line"/>
+<line x1="257.5" y1="420.0" x2="257.5" y2="365.0" class="line"/>
+<line x1="230.0" y1="420.0" x2="285.0" y2="365.0" class="line"/>
+<line x1="230.0" y1="365.0" x2="285.0" y2="420.0" class="line"/>
+<line x1="257.5" y1="392.5" x2="285.0" y2="365.0" class="line"/>
+<line x1="285.0" y1="420.0" x2="340.0" y2="420.0" class="line"/>
+<line x1="285.0" y1="365.0" x2="340.0" y2="365.0" class="line"/>
+<line x1="285.0" y1="420.0" x2="285.0" y2="365.0" class="line"/>
+<line x1="340.0" y1="420.0" x2="340.0" y2="365.0" class="line"/>
+<line x1="312.5" y1="420.0" x2="312.5" y2="365.0" class="line"/>
+<line x1="285.0" y1="420.0" x2="340.0" y2="365.0" class="line"/>
+<line x1="285.0" y1="365.0" x2="340.0" y2="420.0" class="line"/>
+<line x1="312.5" y1="392.5" x2="340.0" y2="365.0" class="line"/>
+<circle cx="120.0" cy="365.0" r="5" fill="#162033"/>
+<circle cx="147.5" cy="392.5" r="5" fill="#162033"/>
+<circle cx="340.0" cy="420.0" r="5" fill="#162033"/>
+<circle cx="230.0" cy="365.0" r="5" fill="#162033"/>
+<circle cx="257.5" cy="392.5" r="5" fill="#162033"/>
+<circle cx="120.0" cy="420.0" r="5" fill="#162033"/>
+<circle cx="285.0" cy="365.0" r="5" fill="#162033"/>
+<circle cx="312.5" cy="392.5" r="5" fill="#162033"/>
+<circle cx="175.0" cy="365.0" r="5" fill="#162033"/>
+<circle cx="230.0" cy="420.0" r="5" fill="#162033"/>
+<circle cx="285.0" cy="420.0" r="5" fill="#162033"/>
+<circle cx="202.5" cy="392.5" r="5" fill="#162033"/>
+<circle cx="175.0" cy="420.0" r="5" fill="#162033"/>
+<circle cx="340.0" cy="365.0" r="5" fill="#162033"/>
+<text x="147.5" y="290" class="label" text-anchor="middle">Diagram 1</text>
+<text x="395" y="290" class="label" text-anchor="middle">Diagram 2</text>
+<text x="682.5" y="290" class="label" text-anchor="middle">Diagram 3</text>
+<text x="230" y="510" class="label" text-anchor="middle">Diagram 4</text>
+<text x="90" y="60" class="small">D = number of dots, L = number of unit lines. D(1..3) = 5, 8, 11. L(1..3) = 8, 15, 22.</text>
+</svg>

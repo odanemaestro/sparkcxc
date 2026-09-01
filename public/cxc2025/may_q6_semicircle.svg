@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560">
+<!--
+  Done by: Odane Robinson
+  QA fix: original diagram drew the semicircle's apex 30px above the SVG
+  viewBox (y = -30), so the top of the semicircle was clipped and invisible.
+  It also mislabelled the rectangle's HEIGHT (15*cos20 deg ~= 14.1 m) as "OR",
+  when OR is actually the HALF-WIDTH (15*sin20 deg ~= 5.13 m). Both are fixed
+  below: geometry is now derived from OP=OQ=15, angle POQ=40 deg, and every
+  point is placed with trigonometry so the picture matches the numbers.
+-->
+<style>
+text{font-family:Arial,Helvetica,sans-serif;fill:#162033}
+.label{font-size:18px;font-weight:600}
+.small{font-size:15px}
+.grid{stroke:#c8d0dc;stroke-width:1}
+.axis{stroke:#1f2937;stroke-width:2}
+.line{stroke:#162033;stroke-width:3;fill:none}
+.thin{stroke:#162033;stroke-width:2;fill:none}
+.mark{stroke:#162033;stroke-width:2;fill:none}
+</style>
+<rect width="900" height="560" fill="white"/>
+<rect x="347.4" y="148.1" width="205.2" height="281.9" fill="#fff" stroke="#162033" stroke-width="3"/>
+<path d="M347.4 148.1 A102.6 102.6 0 0 1 552.6 148.1" fill="#eef4f8" stroke="#162033" stroke-width="3"/>
+<line x1="347.4" y1="148.1" x2="552.6" y2="148.1" class="line"/>
+<line x1="450" y1="430" x2="347.4" y2="148.1" class="line"/>
+<line x1="450" y1="430" x2="552.6" y2="148.1" class="line"/>
+<line x1="450" y1="430" x2="450" y2="148.1" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="5,4"/>
+<text x="328" y="138" class="label">P</text><text x="562" y="138" class="label">Q</text><text x="443" y="452" class="label">O</text>
+<text x="328" y="452" class="label">S</text><text x="562" y="452" class="label">R</text><text x="440" y="70" class="label">M</text>
+<text x="450" y="368" class="label" text-anchor="middle">40°</text>
+<text x="370" y="299" class="label" text-anchor="middle">15 m</text>
+<text x="529" y="299" class="label" text-anchor="middle">15 m</text>
+<text x="565" y="285" class="small">QR ≈ 14.1 m</text>
+<text x="450" y="478" class="small" text-anchor="middle">OR ≈ 5.13 m</text>
+</svg>

@@ -1,0 +1,12 @@
+.csec-adaptive-practice{max-width:980px;margin:0 auto;padding:32px 20px;color:#0F2557}
+.csec-adaptive-practice h1{font-size:clamp(24px,4vw,36px);margin:0 0 8px}
+.csec-adaptive-practice h2{font-size:clamp(20px,3vw,28px);line-height:1.35}
+.csec-adaptive-practice label{display:flex;flex-direction:column;gap:6px;margin:10px 0;font-weight:600}
+.csec-adaptive-practice select,.csec-adaptive-practice textarea{width:100%;box-sizing:border-box;padding:12px;border:1px solid #d7deea;border-radius:10px;font:inherit}
+.csec-adaptive-practice textarea{min-height:110px;resize:vertical}
+.csec-adaptive-practice button{padding:11px 16px;border:0;border-radius:10px;background:#0D9488;color:white;cursor:pointer;margin:8px 8px 8px 0}
+.csec-adaptive-practice button:hover{filter:brightness(.95)}
+.csec-adaptive-practice section{background:#fff;border:1px solid #e4e8ef;border-radius:16px;padding:20px;margin-top:22px;box-shadow:0 4px 18px rgba(15,37,87,.06)}
+.csec-question-diagram{margin:18px 0}
+.diagram-placeholder{min-height:100px;display:grid;place-items:center;background:#f7fafc;border:1px dashed #b8c4d6;border-radius:12px;text-transform:capitalize}
+@media(max-width:640px){.csec-adaptive-practice{padding:22px 14px}.csec-adaptive-practice section{padding:15px}.csec-adaptive-practice button{width:100%;margin-right:0}}

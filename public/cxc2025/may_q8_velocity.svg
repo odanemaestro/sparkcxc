@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="560" viewBox="0 0 900 560">
+<!--
+  Done by: Odane Robinson
+  QA fix: the polyline's final vertex was at x=610px, which (at this
+  chart's own scale of 0.8333 px/s) corresponds to t=732s. But the worked
+  solution's three stated phase lengths (120s + 480s + 240s) total 840s.
+  That means the drawn deceleration phase was about 108 seconds short of
+  what the answer actually uses. The graph below runs the full 0-840s so
+  the picture matches the numbers in the solution.
+-->
+<style>
+text{font-family:Arial,Helvetica,sans-serif;fill:#162033}
+.label{font-size:18px;font-weight:600}
+.small{font-size:15px}
+.grid{stroke:#c8d0dc;stroke-width:1}
+.axis{stroke:#1f2937;stroke-width:2}
+</style>
+<rect width="900" height="560" fill="white"/>
+<g transform="translate(90,45)">
+<path d="M0 0V300 M700 0V300" class="grid"/>
+<path d="M100 0V300 M200 0V300 M300 0V300 M400 0V300 M500 0V300 M600 0V300" class="grid"/>
+<path d="M0 0H700 M0 100H700 M0 200H700" class="grid"/>
+<path d="M0 300V0 M0 300H700" class="axis"/>
+<path d="M700 300l-12 -6v12z M0 0l-6 12h12z" fill="#162033"/>
+<text x="-10" y="322" class="small">0</text>
+<text x="88" y="322" class="small">120</text>
+<text x="188" y="322" class="small">240</text>
+<text x="288" y="322" class="small">360</text>
+<text x="388" y="322" class="small">480</text>
+<text x="488" y="322" class="small">600</text>
+<text x="588" y="322" class="small">720</text>
+<text x="678" y="322" class="small">840</text>
+<text x="-26" y="305" class="small">0</text>
+<text x="-30" y="205" class="small">10</text>
+<text x="-30" y="105" class="small">20</text>
+<text x="-30" y="5" class="small">30</text>
+<polyline points="0,300 100,0 500,0 700,300" fill="none" stroke="#162033" stroke-width="4"/>
+<text x="280" y="345" class="small">Time (seconds)</text>
+<text x="-15" y="-15" class="small">Speed (m/s)</text>
+</g>
+</svg>
