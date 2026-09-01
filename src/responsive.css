@@ -1,0 +1,144 @@
+html,body,#root{width:100%;max-width:100%;min-width:0}
+html,body{overflow-x:hidden}
+img,svg,video,canvas{max-width:100%}
+input,select,textarea,button{max-width:100%}
+.app-scroll-panel{min-width:0}
+
+.spark-nav{position:sticky;top:0;z-index:700;flex-shrink:0;padding:0!important}
+.spark-nav-inner{min-height:66px;padding:12px clamp(16px,3vw,28px);display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%}
+.spark-brand{appearance:none;border:0;background:transparent;color:#fff;display:flex;align-items:center;gap:9px;padding:4px 2px;font-family:'Crimson Pro',Georgia,serif;font-size:21px;font-weight:700;letter-spacing:-.01em;white-space:nowrap;min-height:42px}
+.spark-brand svg{flex:0 0 auto}
+.spark-nav-actions,.spark-nav-desktop{display:flex;align-items:center;gap:4px;min-width:0}
+.spark-nav-name{font-size:13px;color:rgba(255,255,255,.55);padding:0 10px;border-left:1px solid rgba(255,255,255,.15);margin-left:6px;white-space:nowrap}
+.spark-menu-button{display:none;width:42px;height:42px;min-width:42px;border:1px solid rgba(255,255,255,.18);border-radius:11px;background:rgba(255,255,255,.08);padding:9px;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.spark-menu-button span{display:block;width:20px;height:2px;border-radius:2px;background:#fff;transition:transform .18s ease,opacity .18s ease}
+.spark-menu-button.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.spark-menu-button.open span:nth-child(2){opacity:0}
+.spark-menu-button.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.spark-mobile-menu{display:none;padding:8px 14px calc(16px + env(safe-area-inset-bottom));border-top:1px solid rgba(255,255,255,.1);background:rgba(8,26,61,.98);box-shadow:0 16px 30px rgba(0,0,0,.18)}
+.spark-mobile-menu-links{display:grid;gap:4px}
+.spark-mobile-menu .spark-nav-link{width:100%;min-height:44px;text-align:left;padding:11px 12px!important;font-size:14px!important}
+.spark-mobile-menu .spark-nav-link>span{left:12px!important;right:auto!important;width:28px}
+.spark-mobile-account-row{border-top:1px solid rgba(255,255,255,.1);margin-top:8px;padding-top:12px;display:flex;align-items:center;justify-content:space-between;gap:12px;color:rgba(255,255,255,.75);font-size:13px}
+.spark-mobile-account-row span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.spark-mobile-account-row button{border:1px solid rgba(255,255,255,.22);background:transparent;color:#fff;border-radius:9px;padding:8px 13px;font-weight:700}
+
+.lesson-mobile-picker{display:none}
+
+@media(max-width:980px){
+  .spark-nav-desktop{display:none}
+  .spark-menu-button{display:flex}
+  .spark-mobile-menu{display:block}
+  .spark-nav-inner{min-height:60px;padding-top:9px;padding-bottom:9px}
+  .spark-brand{font-size:20px}
+}
+
+@media(max-width:700px){
+  body{font-size:15px}
+  .home-hero{padding:48px 16px 44px!important}
+  .home-hero-title br{display:none}
+  .home-hero-title{font-size:clamp(31px,10vw,43px)!important;line-height:1.08!important}
+  .home-hero-copy{font-size:15px!important;line-height:1.65!important}
+  .home-kicker{font-size:10px!important;letter-spacing:.08em!important;padding:6px 10px!important}
+  .home-hero-actions{display:grid!important;grid-template-columns:1fr!important;width:100%;max-width:420px;margin:0 auto}
+  .home-hero-actions button{width:100%;min-height:48px;justify-content:center}
+  .home-demo-card{padding:18px!important;margin-top:30px!important;width:100%!important;max-width:420px!important}
+  .home-live-stats{display:grid!important;grid-template-columns:1fr 1fr;gap:24px 12px!important;margin-top:38px!important;padding-top:28px!important}
+  .home-live-stats>div>div:first-child{font-size:30px!important}
+  .spark-footer-grid{grid-template-columns:1fr 1fr!important;gap:24px 18px!important}
+  .spark-footer-grid>div:first-child{grid-column:1/-1}
+
+  .lesson-layout{grid-template-columns:1fr!important;min-height:0!important}
+  .lesson-sidebar{display:none!important}
+  .lesson-mobile-picker{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;padding:12px;background:#fff;border:1px solid #E2E8F0;border-radius:12px;box-shadow:0 1px 2px rgba(15,23,42,.04)}
+  .lesson-mobile-picker label{min-width:0}
+  .lesson-mobile-picker label span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.06em;font-weight:800;color:#64748B;margin-bottom:5px}
+  .lesson-mobile-picker select{width:100%;min-width:0;padding:10px 9px;border:1.5px solid #CBD5E1;border-radius:9px;background:#fff;color:#0F172A;font-size:14px}
+
+  .dash-layout{grid-template-columns:1fr!important;min-width:0}
+  .dash-sidebar{display:flex!important;flex-direction:row!important;align-items:center!important;gap:6px!important;overflow-x:auto!important;overflow-y:hidden!important;padding:8px 12px!important;border-right:0!important;border-bottom:1px solid #E2E8F0!important;position:sticky;top:60px;z-index:80;scrollbar-width:none;background:#fff!important}
+  .dash-sidebar::-webkit-scrollbar{display:none}
+  .dash-profile-card,.dash-nav-divider{display:none!important}
+  .dash-nav-item{flex:0 0 auto!important;white-space:nowrap!important;margin:0!important;padding:9px 12px!important;border:1px solid #E2E8F0!important;border-radius:10px!important;min-height:40px;display:flex!important;align-items:center!important}
+  .dash-secondary-item{background:#F8FAFC!important}
+  .app-scroll-panel{padding:18px 14px!important;overflow-x:hidden!important}
+
+  .responsive-grid,.marketing-grid{grid-template-columns:1fr!important;gap:26px!important}
+  .tutor-grid{grid-template-columns:1fr!important}
+  .tutors-page-shell{padding:30px 14px!important}
+  .tutors-page-heading h1{font-size:30px!important}
+  .tutors-toolbar{align-items:stretch!important}
+  .tutor-filter-row{overflow-x:auto;flex-wrap:nowrap!important;padding-bottom:4px;scrollbar-width:none}
+  .tutor-filter-row::-webkit-scrollbar{display:none}
+  .tutor-filter{white-space:nowrap;flex:0 0 auto}
+  .tutor-search{width:100%!important;font-size:16px!important}
+
+  input,select,textarea{font-size:16px!important}
+  .session-calendar-shell{min-width:0}
+}
+
+@media(max-width:480px){
+  .spark-nav-inner{padding-left:12px;padding-right:12px}
+  .spark-brand span{font-size:19px}
+  .spark-nav-actions{gap:7px}
+  .home-live-stats{grid-template-columns:1fr 1fr}
+  .spark-footer-grid{grid-template-columns:1fr!important}
+  .spark-footer-grid>div:first-child{grid-column:auto}
+  .lesson-mobile-picker{grid-template-columns:1fr}
+  .paper-question-actions,.paper2-start-actions{gap:8px!important}
+}
+
+@media(pointer:coarse){
+  button,.dash-nav-item{min-height:42px}
+}
+@media(max-width:700px){
+  .spark-footer{padding:34px 16px 18px!important}
+  .marketing-grid+*{min-width:0}
+}
+
+/* Dense dashboard and booking layouts need a clean single-column mode on phones. */
+@media(max-width:760px){
+  .dash-responsive-split{grid-template-columns:1fr!important}
+  .booking-list-row{flex-direction:column!important;align-items:stretch!important}
+  .booking-list-actions{align-items:flex-start!important;width:100%}
+  .booking-list-actions>div,.booking-list-actions>button{max-width:100%}
+  .calendar-view-switch{max-width:100%;overflow-x:auto}
+}
+
+/* Keep page sections comfortable on tablets without stretching text too far. */
+@media(min-width:701px) and (max-width:1024px){
+  .app-scroll-panel{padding-left:22px!important;padding-right:22px!important}
+  .home-hero-inner,.spark-footer-grid{max-width:900px!important}
+}
+
+/* Notification deep-link target. Used when View booking opens the dashboard. */
+.notification-booking-target {
+  scroll-margin-top: 96px;
+  outline: 3px solid rgba(13, 148, 136, 0.28);
+  box-shadow: 0 0 0 6px rgba(13, 148, 136, 0.08), 0 10px 28px rgba(15, 23, 42, 0.10) !important;
+  animation: sparkBookingFocus 0.7s ease-out;
+}
+
+@keyframes sparkBookingFocus {
+  0% { transform: scale(0.985); outline-color: rgba(13, 148, 136, 0.65); }
+  100% { transform: scale(1); outline-color: rgba(13, 148, 136, 0.28); }
+}
+
+/* Notification deep-link focus states. */
+.notification-anchor-card,
+.notification-exam-target,
+.notification-booking-target {
+  scroll-margin-top: 96px;
+}
+.notification-exam-target,
+.notification-booking-target {
+  border-color: #0D9488 !important;
+  box-shadow: 0 0 0 3px rgba(13,148,136,.14), 0 8px 24px rgba(15,23,42,.08) !important;
+  border-radius: 12px;
+  transition: box-shadow .2s ease, border-color .2s ease, background .2s ease;
+}
+.notification-exam-target {
+  background: #F0FDFA;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}

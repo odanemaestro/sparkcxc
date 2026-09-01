@@ -107,7 +107,7 @@ export default function GlobalStyles() {
       @media(max-width:900px){.session-calendar-shell{grid-template-columns:1fr;}.calendar-agenda{position:static;}.calendar-day{min-height:100px;}}
       @media(max-width:620px){.session-calendar-toolbar{align-items:flex-start;flex-wrap:wrap;}.session-calendar-month{width:100%;}.session-calendar-month-title{min-width:0;flex:1;text-align:center;font-size:19px;}.calendar-weekday{padding:8px 2px;text-align:center;font-size:9px;}.calendar-day{min-height:82px;padding:5px;}.calendar-day-number{width:24px;height:24px;font-size:11px;margin-bottom:4px;}.calendar-event{border-left-width:2px;padding:4px;margin-bottom:3px;}.calendar-event-time{display:none;}.calendar-event-title{font-size:9px;}.calendar-more{font-size:9px;}.calendar-today-btn{margin-left:auto;}.calendar-view-switch button{padding:7px 9px;}}
       @media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important;}}
-      @media(max-width:700px){.lesson-layout{grid-template-columns:1fr!important;}.lesson-sidebar{display:none!important;}.dash-layout{grid-template-columns:1fr!important;}.dash-sidebar{display:none!important;}}
+      @media(max-width:700px){.lesson-layout{grid-template-columns:1fr!important;}.lesson-sidebar{display:none!important;}.dash-layout{grid-template-columns:1fr!important;}}
     `;
     document.head.appendChild(s);
   }, []);

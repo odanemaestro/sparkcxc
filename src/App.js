@@ -44,8 +44,10 @@ import Toast from "./components/ui/Toast";
 import Modal from "./components/ui/Modal";
 import ScrollToTopButton from "./components/ui/ScrollToTopButton";
 import ReportQuestionButton from "./components/ui/ReportQuestionButton";
+import NotificationCenter from "./components/notifications/NotificationCenter";
 import { friendlyErrorMessage } from "./lib/errorMessages";
 import "./family.css";
+import "./responsive.css";
 import GOOGLE_ICON_B64 from "./assets/icons/google-icon.png";
 import GOOGLE_CALENDAR_ICON_B64 from "./assets/icons/google-calendar-icon.png";
 import OUTLOOK_ICON_B64 from "./assets/icons/outlook-icon.png";
@@ -778,7 +780,7 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
   const isTopicDone = (si, ti) => completedTopics.has(`${si}-${ti}`);
 
   return (
-    <div style={{display:"grid",gridTemplateColumns:"280px 1fr",minHeight:"calc(100vh - 56px)"}}>
+    <div className="lesson-layout" style={{display:"grid",gridTemplateColumns:"280px 1fr",minHeight:"calc(100vh - 56px)"}}>
       {/* Sidebar */}
       <div style={{background:`linear-gradient(180deg,${T.ink},${T.navyDeep})`,overflowY:"auto",borderRight:`1px solid rgba(255,255,255,.08)`}}
         className="lesson-sidebar">
@@ -853,6 +855,23 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
 
       {/* Main content area */}
       <div ref={contentRef} className="app-scroll-panel" style={{padding:"28px 36px",overflowY:"auto",background:T.bg}}>
+        <div className="lesson-mobile-picker" aria-label="Choose lesson topic">
+          <label>
+            <span>Section</span>
+            <select value={activeSectionIdx} onChange={e => {
+              const next = Number(e.target.value);
+              setActiveSectionIdx(next); setActiveTopicIdx(0); setOpenSidebarSection(next); setInQuiz(false);
+            }}>
+              {sections.map((section, index) => <option key={section.title} value={index}>{section.title}</option>)}
+            </select>
+          </label>
+          <label>
+            <span>Topic</span>
+            <select value={activeTopicIdx} onChange={e => { setActiveTopicIdx(Number(e.target.value)); setInQuiz(false); }}>
+              {activeSection?.topics.map((topic, index) => <option key={topic} value={index}>{topic}</option>)}
+            </select>
+          </label>
+        </div>
         {/* Topic breadcrumb */}
         <div style={{marginBottom:16,display:"flex",alignItems:"center",gap:8,flexWrap:"wrap"}}>
           <span style={{fontSize:12,color:T.teal,fontWeight:600,textTransform:"uppercase",letterSpacing:"0.05em"}}>
@@ -926,62 +945,100 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
 
 // ─── NAV ────────────────────────────────────────────────────────────────────
 function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorApp, view }) {
+  const [menuOpen, setMenuOpen] = useState(false);
   const isTutor = profile?.role === "tutor" || tutorApp?.status === "approved";
   const isStudent = profile?.role === "student";
   const isParent = profile?.role === "parent";
+
+  useEffect(() => { setMenuOpen(false); }, [view]);
+
+  const navigate = (nextView) => {
+    setMenuOpen(false);
+    setView(nextView);
+  };
+
+  const signedInLinks = (
+    <>
+      <NavBtn onClick={() => navigate("dashboard")} active={view === "dashboard"}>Dashboard</NavBtn>
+      {!isTutor && !isParent && <NavBtn onClick={() => navigate("lesson")} active={view === "lesson"}>Study</NavBtn>}
+      {!isTutor && !isParent && <NavBtn onClick={() => navigate("practice")} active={view === "practice"}>Practice</NavBtn>}
+      <NavBtn onClick={() => navigate("tutors")} active={view === "tutors"}>Tutors</NavBtn>
+      {!isStudent && !isParent && !hasTutorApp && view !== "become-tutor" && (
+        <NavBtn onClick={() => navigate("become-tutor")}>Submit application to become a tutor</NavBtn>
+      )}
+      {profile?.is_admin && <NavBtn onClick={() => navigate("admin")} active={view === "admin"}>Admin</NavBtn>}
+    </>
+  );
+
+  const publicLinks = (
+    <>
+      <NavBtn onClick={() => navigate("tutors")} active={view === "tutors"}>Tutors</NavBtn>
+      <NavBtn onClick={() => navigate("how-it-works")} active={view === "how-it-works"}>How it works</NavBtn>
+      <NavBtn onClick={() => navigate("login")} active={view === "login"}>Log in</NavBtn>
+    </>
+  );
+
   return (
-    <nav className="glass-nav" style={{padding:"14px 28px",display:"flex",alignItems:"center",
-      justifyContent:"space-between",position:"sticky",top:0,zIndex:200,flexShrink:0}}>
-      <div style={{display:"flex",alignItems:"center",gap:20}}>
-        <div style={{fontFamily:FD,fontSize:21,fontWeight:700,color:"#fff",cursor:"pointer",
-          display:"flex",alignItems:"center",gap:9,letterSpacing:"-0.01em"}}
-          onClick={() => setView("home")}>
+    <nav className="glass-nav spark-nav" aria-label="Primary navigation">
+      <div className="spark-nav-inner">
+        <button type="button" className="spark-brand" onClick={() => navigate("home")} aria-label="SPARK home">
           <svg width="26" height="26" viewBox="0 0 512 512" aria-hidden="true">
             <path d="M 340 110 C 340 78, 312 60, 268 60 C 268 60, 190 60, 190 60 C 130 60, 92 96, 92 148 C 92 198, 128 226, 186 236 C 186 236, 296 254, 296 254 C 216 258, 326 276, 326 276 C 384 286, 420 314, 420 364 C 420 416, 382 452, 322 452 C 322 452, 244 452, 244 452 C 200 452, 172 434, 172 402"
               fill="none" stroke="#5EEAD4" strokeWidth="44" strokeLinecap="round" strokeLinejoin="round"/>
             <path d="M 274 92 L 182 244 L 240 244 L 196 380 L 348 208 L 282 208 Z" fill="#FCD34D"/>
           </svg>
-          SPARK
+          <span>SPARK</span>
+        </button>
+
+        <div className="spark-nav-actions">
+          {user && <NotificationCenter user={user} profile={profile} setView={navigate} />}
+
+          <div className="spark-nav-desktop">
+            {user ? (
+              <>
+                {signedInLinks}
+                <span className="spark-nav-name">{profile?.name?.split(" ")[0]}</span>
+                <Btn v="outline" onClick={onLogout}
+                  style={{color:"#fff",borderColor:"rgba(255,255,255,.25)",padding:"8px 16px",fontSize:13}}>
+                  Log out
+                </Btn>
+              </>
+            ) : (
+              <>
+                {publicLinks}
+                <Btn v="primary" onClick={() => navigate("auth")}
+                  style={{padding:"9px 20px",fontSize:13,marginLeft:4}}>Get started</Btn>
+              </>
+            )}
+          </div>
+
+          <button
+            type="button"
+            className={`spark-menu-button ${menuOpen ? "open" : ""}`}
+            onClick={() => setMenuOpen(value => !value)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+          >
+            <span/><span/><span/>
+          </button>
         </div>
       </div>
-      <div style={{display:"flex",gap:4,alignItems:"center"}}>
-        {user ? (
-          <>
-            <NavBtn onClick={() => setView("dashboard")} active={view==="dashboard"}>Dashboard</NavBtn>
-            {/* "Study" is a student-only feature - tutors don't take lessons
-                on the platform, so the tab is hidden for tutor accounts. */}
-            {!isTutor && !isParent && <NavBtn onClick={() => setView("lesson")} active={view==="lesson"}>Study</NavBtn>}
-            {!isTutor && !isParent && <NavBtn onClick={() => setView("practice")} active={view==="practice"}>Practice</NavBtn>}
-            <NavBtn onClick={() => setView("tutors")} active={view==="tutors"}>Tutors</NavBtn>
-            {/* Anyone signed in who isn't a student and hasn't got a tutor
-                application on file gets a clearly-labelled, always-visible
-                way back to it - not just a link buried in the footer.
-                Students never see it (they're not eligible to apply), and
-                it's hidden while already on the application page so it's
-                not shown redundantly right next to itself. */}
-            {!isStudent && !isParent && !hasTutorApp && view !== "become-tutor" && (
-              <NavBtn onClick={() => setView("become-tutor")}>Submit application to become a tutor</NavBtn>
-            )}
-            {profile?.is_admin && <NavBtn onClick={() => setView("admin")} active={view==="admin"}>Admin</NavBtn>}
-            <span style={{fontSize:13,color:"rgba(255,255,255,.55)",padding:"0 10px",
-              borderLeft:"1px solid rgba(255,255,255,.15)",marginLeft:6}}>
-              {profile?.name?.split(" ")[0]}
-            </span>
-            <Btn v="outline" onClick={onLogout}
-              style={{color:"#fff",borderColor:"rgba(255,255,255,.25)",padding:"8px 16px",fontSize:13}}>
-              Log out
-            </Btn>
-          </>
-        ) : (
-          <>
-            <NavBtn onClick={() => setView("tutors")} active={view==="tutors"}>Tutors</NavBtn>
-            <NavBtn onClick={() => setView("how-it-works")} active={view==="how-it-works"}>How it works</NavBtn>
-            <NavBtn onClick={() => setView("login")} active={view==="login"}>Log in</NavBtn>
-            <Btn v="primary" onClick={() => setView("auth")}
-              style={{padding:"9px 20px",fontSize:13,marginLeft:4}}>Get started</Btn>
-          </>
-        )}
-      </div>
+
+      {menuOpen && (
+        <div className="spark-mobile-menu fade-in">
+          <div className="spark-mobile-menu-links">
+            {user ? signedInLinks : publicLinks}
+          </div>
+          {user ? (
+            <div className="spark-mobile-account-row">
+              <span>{profile?.name || user.email}</span>
+              <button onClick={() => { setMenuOpen(false); onLogout(); }}>Log out</button>
+            </div>
+          ) : (
+            <Btn v="primary" onClick={() => navigate("auth")} style={{width:"100%",justifyContent:"center"}}>Get started</Btn>
+          )}
+        </div>
+      )}
     </nav>
   );
 }
@@ -989,7 +1046,7 @@ function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorAp
 const NavBtn = ({ children, onClick, active = false }) => {
   const [hover, setHover] = useState(false);
   return (
-    <button onClick={onClick} onMouseEnter={()=>setHover(true)} onMouseLeave={()=>setHover(false)}
+    <button className="spark-nav-link" onClick={onClick} onMouseEnter={()=>setHover(true)} onMouseLeave={()=>setHover(false)}
       style={{background:active?"rgba(255,255,255,.1)":hover?"rgba(255,255,255,.07)":"none",
         border:"none",color:active?"#fff":hover?"#fff":"rgba(255,255,255,.75)",
         padding:"8px 13px",borderRadius:7,fontSize:13.5,fontWeight:active?600:500,
@@ -1004,8 +1061,8 @@ const NavBtn = ({ children, onClick, active = false }) => {
 // ─── FOOTER ─────────────────────────────────────────────────────────────────
 function Footer({ setView, hasTutorApp, isTutor, isParent }) {
   return (
-    <footer style={{background:`linear-gradient(180deg,${T.ink},${T.navyDeep})`,color:"rgba(255,255,255,.6)",padding:"44px 28px 22px",flexShrink:0}}>
-      <div style={{maxWidth:1100,margin:"0 auto",display:"grid",
+    <footer className="spark-footer" style={{background:`linear-gradient(180deg,${T.ink},${T.navyDeep})`,color:"rgba(255,255,255,.6)",padding:"44px 28px 22px",flexShrink:0}}>
+      <div className="spark-footer-grid" style={{maxWidth:1100,margin:"0 auto",display:"grid",
         gridTemplateColumns:(isTutor || isParent)?"1.5fr 1fr":"1.5fr repeat(3,1fr)",gap:28,marginBottom:32}}>
         <div>
           <div style={{fontFamily:FD,fontSize:19,fontWeight:700,color:"#fff",marginBottom:8,display:"flex",alignItems:"center",gap:8}}>
@@ -1064,22 +1121,22 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
   return (
     <div style={{flex:1,display:"flex",flexDirection:"column"}}>
       {/* HERO */}
-      <div style={{background:`linear-gradient(150deg,${T.navyDeep} 0%,#1A3A6B 55%,${T.tealDeep} 100%)`,
+      <div className="home-hero" style={{background:`linear-gradient(150deg,${T.navyDeep} 0%,#1A3A6B 55%,${T.tealDeep} 100%)`,
         color:"#fff",padding:"76px 28px 60px",textAlign:"center",position:"relative",overflow:"hidden"}}>
         <div className="orb orb-float" style={{width:340,height:340,background:"#5EEAD4",top:-120,left:-80}}/>
         <div className="orb orb-float" style={{width:300,height:300,background:"#FCD34D",bottom:-140,right:-60,animationDelay:"2s",opacity:.35}}/>
-        <div style={{position:"relative"}}>
-        <div style={{display:"inline-block",fontSize:12,fontWeight:600,textTransform:"uppercase",letterSpacing:"0.1em",
+        <div className="home-hero-inner" style={{position:"relative"}}>
+        <div className="home-kicker" style={{display:"inline-block",fontSize:12,fontWeight:600,textTransform:"uppercase",letterSpacing:"0.1em",
           color:"#5EEAD4",marginBottom:16,padding:"6px 14px",borderRadius:99,
           background:"rgba(94,234,212,.1)",border:"1px solid rgba(94,234,212,.25)"}}>Official CXC Syllabus · CSEC & CAPE</div>
-        <h1 style={{fontFamily:FD,fontSize:"clamp(30px,5vw,54px)",fontWeight:800,
+        <h1 className="home-hero-title" style={{fontFamily:FD,fontSize:"clamp(30px,5vw,54px)",fontWeight:800,
           lineHeight:1.1,margin:"0 0 20px",letterSpacing:"-0.01em"}}>
           The exam prep platform<br/>built for <span style={{color:"#FCD34D"}}>the Caribbean</span>
         </h1>
-        <p style={{fontSize:16.5,color:"rgba(255,255,255,.82)",maxWidth:560,margin:"0 auto 30px",lineHeight:1.7}}>
+        <p className="home-hero-copy" style={{fontSize:16.5,color:"rgba(255,255,255,.82)",maxWidth:560,margin:"0 auto 30px",lineHeight:1.7}}>
           A lesson for every topic on the CXC syllabus. Original past-paper style questions. Section and final exams. Verified tutors. One platform built around how CXC actually tests.
         </p>
-        <div style={{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}}>
+        <div className="home-hero-actions" style={{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}}>
       		{isTutor ? (
 			  <Btn v="amber" onClick={() => setView("dashboard")}
 				style={{background:T.amber,fontSize:15,padding:"13px 28px"}}>
@@ -1100,7 +1157,7 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
         </div>
 
         {/* Demo question */}
-        <div className="hl" style={{background:T.paper,borderRadius:T.rLg,padding:24,maxWidth:400,
+        <div className="hl home-demo-card" style={{background:T.paper,borderRadius:T.rLg,padding:24,maxWidth:400,
           margin:"40px auto 0",textAlign:"left",boxShadow:"0 16px 40px rgba(0,0,0,.22)",
           border:"1px solid rgba(255,255,255,.06)"}}>
           <div style={{fontSize:10,fontWeight:700,color:T.teal,textTransform:"uppercase",
@@ -1131,7 +1188,7 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
         </div>
 
         {/* Live stats */}
-        <div style={{display:"flex",justifyContent:"center",gap:44,marginTop:52,
+        <div className="home-live-stats" style={{display:"flex",justifyContent:"center",gap:44,marginTop:52,
           paddingTop:36,borderTop:"1px solid rgba(255,255,255,.12)",flexWrap:"wrap"}}>
           {[
             ["39%","CSEC Math pass rate, 2025"],
@@ -2144,9 +2201,20 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   // weren't showing up here).
   const isTutor = profile?.role === "tutor" || tutorApp?.status === "approved";
   const isStudent = profile?.role === "student";
-  const [sec, setSec] = useState("overview");
+  const [notificationTarget, setNotificationTarget] = useState(() => {
+    try {
+      const raw = sessionStorage.getItem("spark_dashboard_notification_target");
+      if (!raw) return null;
+      sessionStorage.removeItem("spark_dashboard_notification_target");
+      return JSON.parse(raw);
+    } catch (error) {
+      return null;
+    }
+  });
+  const [sec, setSec] = useState(() => notificationTarget?.section || "overview");
   const [bookings, setBookings] = useState([]);
   const [progressData, setProgressData] = useState([]);
+  const [examAttempts, setExamAttempts] = useState([]);
   const [tutorRow, setTutorRow] = useState(null);
   const [tutorRowLoaded, setTutorRowLoaded] = useState(false);
   const [tutorReviews, setTutorReviews] = useState([]);
@@ -2162,6 +2230,59 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   const [declineTarget, setDeclineTarget] = useState(null);
   const [tutorCancelTarget, setTutorCancelTarget] = useState(null);
   const totalTopics = SYLLABUS_SECTIONS.reduce((a, s) => a + s.topics.length, 0);
+
+  useEffect(() => {
+    const handleNotificationTarget = (event) => {
+      const target = event?.detail;
+      if (!target?.section) return;
+      try { sessionStorage.removeItem("spark_dashboard_notification_target"); } catch (error) {}
+      setNotificationTarget(target);
+      setSec(target.section);
+      if (target.bookingId) setBookingView("list");
+    };
+
+    window.addEventListener("spark:dashboard-notification-target", handleNotificationTarget);
+    return () => window.removeEventListener("spark:dashboard-notification-target", handleNotificationTarget);
+  }, []);
+
+  useEffect(() => {
+    if (!notificationTarget?.section) return;
+    setSec(notificationTarget.section);
+    if (notificationTarget.bookingId) setBookingView("list");
+  }, [notificationTarget]);
+
+  useEffect(() => {
+    const bookingId = notificationTarget?.bookingId;
+    if (!bookingId || bookingView !== "list") return undefined;
+    if (!bookings.some(booking => String(booking.id) === String(bookingId))) return undefined;
+
+    const scrollTimer = window.setTimeout(() => {
+      const target = document.querySelector(".notification-booking-target");
+      target?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 80);
+
+    const clearTimer = window.setTimeout(() => setNotificationTarget(null), 3200);
+    return () => {
+      window.clearTimeout(scrollTimer);
+      window.clearTimeout(clearTimer);
+    };
+  }, [notificationTarget, bookings, bookingView]);
+
+  useEffect(() => {
+    if (!notificationTarget?.anchor || notificationTarget.bookingId) return undefined;
+    const scrollTimer = window.setTimeout(() => {
+      const selector = notificationTarget.attemptKey
+        ? `[data-notification-attempt="${notificationTarget.attemptKey}"]`
+        : `[data-notification-anchor="${notificationTarget.anchor}"]`;
+      const target = document.querySelector(selector) || document.querySelector(`[data-notification-anchor="${notificationTarget.anchor}"]`);
+      target?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 120);
+    const clearTimer = window.setTimeout(() => setNotificationTarget(null), 3200);
+    return () => {
+      window.clearTimeout(scrollTimer);
+      window.clearTimeout(clearTimer);
+    };
+  }, [notificationTarget, sec, parentLinks, examAttempts]);
 
   // Student data (lessons/progress) - tutors don't have this.
   const loadStudentBookings = useCallback(() => {
@@ -2182,6 +2303,10 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       .then(({data}) => setParentLinks(data || []));
     supabase.from("lesson_progress").select("*").eq("user_id", user.id).eq("completed", true)
       .then(({data}) => setProgressData(data || []));
+    supabase.from("practice_exam_attempts")
+      .select("id,attempt_key,paper_type,score,max_score,percent,completed_at,duration_seconds,timed_out,answered_count,total_questions,correct_count")
+      .eq("user_id", user.id).order("completed_at", {ascending:false}).limit(20)
+      .then(({data}) => setExamAttempts(data || []));
 
     // Family requests are realtime: if a parent re-sends a request after a
     // previous decline, the student should see the new pending request
@@ -2315,14 +2440,6 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       cancelled_at: new Date().toISOString(),
     }).eq("id", booking.id);
     if (error) { showToast("Couldn't cancel this booking. Please try again."); return; }
-    // Notify the tutor instantly via the notifications table (picked up by
-    // their realtime subscription above if they're online right now).
-    await supabase.from("notifications").insert({
-      tutor_id: booking.tutor_id,
-      type: "booking_cancelled",
-      message: `${profile?.name || "A student"} cancelled their ${booking.subject} session on ${booking.session_date}. Reason: ${reason.trim()}`,
-      booking_id: booking.id,
-    });
     showToast("Booking cancelled. Your tutor has been notified.");
     setCancelTarget(null);
     loadStudentBookings();
@@ -2333,11 +2450,6 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       status: "confirmed",
     }).eq("id", booking.id);
     if (error) { showToast("Couldn't confirm this booking. Please try again."); return; }
-    await supabase.from("notifications").insert({
-      tutor_id: booking.tutor_id, student_id: booking.student_id, booking_id: booking.id,
-      type: "booking_confirmed",
-      message: `${tutorRow?.name || "Your tutor"} confirmed your ${booking.subject} session on ${booking.session_date}.`,
-    });
     showToast("Session confirmed.");
     loadTutorBookings();
   };
@@ -2351,11 +2463,6 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       cancelled_at: new Date().toISOString(),
     }).eq("id", booking.id);
     if (error) { showToast("Couldn't decline this booking. Please try again."); return; }
-    await supabase.from("notifications").insert({
-      tutor_id: booking.tutor_id, student_id: booking.student_id, booking_id: booking.id,
-      type: "booking_declined",
-      message: `${tutorRow?.name || "Your tutor"} declined your ${booking.subject} session on ${booking.session_date}. Reason: ${reason.trim()}`,
-    });
     showToast("Booking declined.");
     setDeclineTarget(null);
     loadTutorBookings();
@@ -2370,11 +2477,6 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       cancelled_at: new Date().toISOString(),
     }).eq("id", booking.id);
     if (error) { showToast("Couldn't cancel this booking. Please try again."); return; }
-    await supabase.from("notifications").insert({
-      tutor_id: booking.tutor_id, student_id: booking.student_id, booking_id: booking.id,
-      type: "booking_cancelled_by_tutor",
-      message: `${tutorRow?.name || "Your tutor"} cancelled your ${booking.subject} session on ${booking.session_date}. Reason: ${reason.trim()}`,
-    });
     showToast("Booking cancelled. The student has been notified.");
     setTutorCancelTarget(null);
     loadTutorBookings();
@@ -2457,7 +2559,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       <div style={{background:T.paper,borderRight:`1px solid ${T.border}`,padding:"18px 12px",
         display:"flex",flexDirection:"column",gap:2}}
         className="dash-sidebar">
-        <div style={{padding:"10px 12px 16px",borderBottom:`1px solid ${T.borderSoft}`,marginBottom:10,
+        <div className="dash-profile-card" style={{padding:"10px 12px 16px",borderBottom:`1px solid ${T.borderSoft}`,marginBottom:10,
           display:"flex",alignItems:"center",gap:10}}>
           <div style={{width:36,height:36,borderRadius:"50%",flexShrink:0,
             background:`linear-gradient(135deg,${T.teal},${T.tealDark})`,color:"#fff",
@@ -2472,7 +2574,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
           </div>
         </div>
         {navItems.map(item => (
-          <div key={item.k} onClick={() => setSec(item.k)}
+          <div className="dash-nav-item" key={item.k} onClick={() => setSec(item.k)}
             style={{padding:"10px 14px",fontSize:14,cursor:"pointer",display:"flex",alignItems:"center",
               gap:8,borderRadius:T.rSm,
               color:sec===item.k?T.tealDark:T.textMuted,background:sec===item.k?T.tealLight:"transparent",
@@ -2484,15 +2586,15 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
         ))}
         {!isTutor && (
           <>
-            <div style={{height:1,background:T.borderSoft,margin:"10px 6px"}}/>
-            <div onClick={() => setView("lesson")}
+            <div className="dash-nav-divider" style={{height:1,background:T.borderSoft,margin:"10px 6px"}}/>
+            <div className="dash-nav-item dash-secondary-item" onClick={() => setView("lesson")}
               style={{padding:"10px 14px",fontSize:14,cursor:"pointer",color:T.textMuted,
                 borderRadius:T.rSm,transition:`all .18s ${T.ease}`}}
               onMouseEnter={e=>e.currentTarget.style.background=T.muted}
               onMouseLeave={e=>e.currentTarget.style.background="transparent"}>
               📖 Study
             </div>
-            <div onClick={() => setView("tutors")}
+            <div className="dash-nav-item dash-secondary-item" onClick={() => setView("tutors")}
               style={{padding:"10px 14px",fontSize:14,cursor:"pointer",color:T.textMuted,
                 borderRadius:T.rSm,transition:`all .18s ${T.ease}`}}
               onMouseEnter={e=>e.currentTarget.style.background=T.muted}
@@ -2502,7 +2604,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
           </>
         )}
         {!isStudent && !hasTutorApp && (
-          <div onClick={() => setView("become-tutor")}
+          <div className="dash-nav-item dash-secondary-item" onClick={() => setView("become-tutor")}
             style={{padding:"10px 14px",fontSize:14,cursor:"pointer",color:T.teal,fontWeight:600,
               borderRadius:T.rSm,transition:`all .18s ${T.ease}`,marginTop:!isTutor?0:10}}
             onMouseEnter={e=>e.currentTarget.style.background=T.tealLight}
@@ -2603,7 +2705,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
               <Btn onClick={() => setView("lesson")}>Continue studying →</Btn>
             </Card>
             {parentLinks.filter(l => l.status === "pending").length > 0 && (
-              <Card className="family-request-card" style={{marginBottom:20}}>
+              <Card className="family-request-card notification-anchor-card" data-notification-anchor="family-request" style={{marginBottom:20}}>
                 <div className="family-request-icon">👨‍👩‍👧</div>
                 <div style={{flex:1}}>
                   <div className="section-kicker">FAMILY CONNECTION</div>
@@ -2650,16 +2752,16 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
             ) : bookings.map(b => {
               const dispStatus = bookingDisplayStatus(b);
               return (
-              <Card key={b.id} style={{marginBottom:14}}>
-                <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start"}}>
-                  <div>
+              <Card key={b.id} className={String(notificationTarget?.bookingId || "") === String(b.id) ? "notification-booking-target" : ""} style={{marginBottom:14}}>
+                <div className="booking-list-row" style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",gap:14}}>
+                  <div style={{minWidth:0}}>
                     <div style={{fontWeight:600,color:T.ink,fontSize:15}}>{b.profiles?.name || "Student"}</div>
                     <div style={{fontSize:13,color:T.textMuted,marginTop:2}}>{b.subject} · {b.session_date}{b.start_time ? ` · ${fmtSessionRange(b.start_time, b.duration_minutes)}` : ""}</div>
                     <div style={{fontSize:13,color:T.textMuted}}>J${b.rate_jmd?.toLocaleString()}/hr</div>
                     {dispStatus === "declined" && b.cancellation_reason && <div style={{fontSize:12,color:T.textMuted,marginTop:6,fontStyle:"italic"}}>You declined - {b.cancellation_reason}</div>}
                     {dispStatus === "cancelled" && b.cancellation_reason && <div style={{fontSize:12,color:T.textMuted,marginTop:6,fontStyle:"italic"}}>{b.cancelled_by === user.id ? "You cancelled" : "Cancelled by student"} - {b.cancellation_reason}</div>}
                   </div>
-                  <div style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:8}}>
+                  <div className="booking-list-actions" style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:8}}>
                     <Badge c={BOOKING_STATUS_BADGE[dispStatus].c}>{BOOKING_STATUS_BADGE[dispStatus].label}</Badge>
                     {dispStatus === "pending" && <div style={{display:"flex",gap:8}}><button onClick={() => setDeclineTarget(b)} style={{background:"none",border:`1.5px solid ${T.red}`,color:T.red,borderRadius:7,padding:"5px 11px",fontSize:12,cursor:"pointer",fontFamily:FB}}>Decline</button><button onClick={() => acceptBooking(b)} style={{background:T.teal,border:"none",color:"#fff",borderRadius:7,padding:"5px 11px",fontSize:12,cursor:"pointer",fontFamily:FB,fontWeight:600}}>Accept</button></div>}
                     {dispStatus === "confirmed" && <AddToCalendar booking={b} isTutor={true} user={user} />}
@@ -2741,7 +2843,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
               ))}
             </div>
 
-            <div style={{display:"grid",gridTemplateColumns:"minmax(0,2fr) minmax(220px,1fr)",gap:16,alignItems:"start"}}>
+            <div className="dash-responsive-split" style={{display:"grid",gridTemplateColumns:"minmax(0,2fr) minmax(220px,1fr)",gap:16,alignItems:"start"}}>
               <Card>
                 <div style={{fontFamily:FD,fontSize:17,fontWeight:600,color:T.ink,marginBottom:14}}>Session history</div>
                 {completedSessions.length === 0 ? (
@@ -2844,7 +2946,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
         )}
 
         {sec === "progress" && (
-          <>
+          <div data-notification-anchor="student-progress">
             <h1 style={{fontFamily:FD,fontSize:22,fontWeight:700,color:T.ink,marginBottom:20}}>My progress</h1>
             <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(180px,1fr))",gap:14,marginBottom:24}}>
               <Card><div style={{fontFamily:FD,fontSize:30,fontWeight:700,color:T.ink}}>{done}</div>
@@ -2853,19 +2955,31 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 {done>0?Math.round((done/totalTopics)*100):0}%</div>
                 <div style={{fontSize:12,color:T.textMuted,textTransform:"uppercase",letterSpacing:"0.04em"}}>Syllabus covered</div></Card>
             </div>
+            <Card style={{marginBottom:20}}>
+              <div style={{fontFamily:FD,fontSize:17,fontWeight:600,color:T.ink,marginBottom:5}}>Paper 1 and Paper 2 results</div>
+              <div style={{fontSize:12,color:T.textMuted,marginBottom:14}}>Your latest full-paper examination results.</div>
+              {examAttempts.length ? examAttempts.slice(0,8).map(attempt => {
+                const percent = Math.round(Number(attempt.percent || 0));
+                const isTarget = notificationTarget?.attemptKey && notificationTarget.attemptKey === attempt.attempt_key;
+                return <div key={attempt.id} data-notification-attempt={attempt.attempt_key || undefined} className={isTarget ? "notification-exam-target" : ""} style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:12,padding:"11px 0",borderBottom:`1px solid ${T.border}`,flexWrap:"wrap"}}>
+                  <div><strong style={{fontSize:13,color:T.ink}}>{attempt.paper_type === "paper2" ? "Paper 2" : "Paper 1"}</strong><div style={{fontSize:11,color:T.textMuted,marginTop:2}}>{new Date(attempt.completed_at).toLocaleString([], {dateStyle:"medium",timeStyle:"short"})}</div></div>
+                  <div style={{textAlign:"right"}}><strong style={{fontSize:14,color:T.ink}}>{attempt.score}/{attempt.max_score}</strong><div style={{fontSize:12,color:T.teal,fontWeight:700}}>{percent}%</div></div>
+                </div>;
+              }) : <div style={{fontSize:13,color:T.textMuted}}>No full exam attempts yet.</div>}
+            </Card>
             <Card>
               <div style={{fontFamily:FD,fontSize:17,fontWeight:600,color:T.ink,marginBottom:14}}>Progress by section</div>
-              {SYLLABUS_SECTIONS.map((sec, si) => (
+              {SYLLABUS_SECTIONS.map((section, si) => (
                 <div key={si} style={{marginBottom:14}}>
                   <div style={{display:"flex",justifyContent:"space-between",marginBottom:5}}>
-                    <span style={{fontSize:13,color:T.inkSoft,maxWidth:"75%"}}>{sec.title}</span>
-                    <span style={{fontSize:12,color:T.textMuted}}>{sec.topics.length} topics</span>
+                    <span style={{fontSize:13,color:T.inkSoft,maxWidth:"75%"}}>{section.title}</span>
+                    <span style={{fontSize:12,color:T.textMuted}}>{section.topics.length} topics</span>
                   </div>
-                  <ProgressBar value={0} max={sec.topics.length}/>
+                  <ProgressBar value={0} max={section.topics.length}/>
                 </div>
               ))}
             </Card>
-          </>
+          </div>
         )}
 
         {sec === "bookings" && (
@@ -2890,7 +3004,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 {[...bookings].sort((a,b) => bookingSort === "status" ? BOOKING_STATUS_ORDER[bookingDisplayStatus(a)] - BOOKING_STATUS_ORDER[bookingDisplayStatus(b)] : b.session_date.localeCompare(a.session_date)).map(b => {
                   const dispStatus = bookingDisplayStatus(b);
                   const cancellable = canCancelBooking(b) && dispStatus !== "completed";
-                  return <Card key={b.id} style={{marginBottom:14}}><div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start"}}><div><div style={{fontWeight:600,color:T.ink,fontSize:15}}>{isTutor ? b.profiles?.name : b.tutors?.name}</div><div style={{fontSize:13,color:T.textMuted,marginTop:2}}>{b.subject} · {b.session_date}{b.start_time ? ` · ${fmtSessionRange(b.start_time, b.duration_minutes)}` : ""}</div><div style={{fontSize:13,color:T.textMuted}}>J${b.rate_jmd?.toLocaleString()}/hr</div>{dispStatus === "cancelled" && b.cancellation_reason && <div style={{fontSize:12,color:T.textMuted,marginTop:6,fontStyle:"italic"}}>{b.cancelled_by === user.id ? "You cancelled" : "Cancelled by tutor"} - {b.cancellation_reason}</div>}{dispStatus === "declined" && b.cancellation_reason && <div style={{fontSize:12,color:T.textMuted,marginTop:6,fontStyle:"italic"}}>Declined by tutor - {b.cancellation_reason}</div>}</div><div style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:8}}><Badge c={BOOKING_STATUS_BADGE[dispStatus].c}>{BOOKING_STATUS_BADGE[dispStatus].label}</Badge>{dispStatus === "confirmed" && <AddToCalendar booking={b} isTutor={isTutor} user={user} />}{cancellable && <button onClick={() => setCancelTarget(b)} style={{background:"none",border:`1.5px solid ${T.red}`,color:T.red,borderRadius:7,padding:"5px 11px",fontSize:12,cursor:"pointer",fontFamily:FB}}>Cancel booking</button>}{dispStatus === "completed" && (() => {const alreadyReviewed = studentReviews.some(r => r.booking_id === b.id); return alreadyReviewed ? <span style={{fontSize:11,color:T.emerald,fontWeight:600}}>✓ Review submitted</span> : <button className="cp-btn cp-btn-teal" onClick={() => setReviewTarget(b)}>Leave a review</button>;})()}{!cancellable && dispStatus !== "cancelled" && dispStatus !== "declined" && dispStatus !== "completed" && <span style={{fontSize:11,color:T.textMuted}}>Too close to cancel</span>}</div></div></Card>;
+                  return <Card key={b.id} className={String(notificationTarget?.bookingId || "") === String(b.id) ? "notification-booking-target" : ""} style={{marginBottom:14}}><div className="booking-list-row" style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",gap:14}}><div style={{minWidth:0}}><div style={{fontWeight:600,color:T.ink,fontSize:15}}>{isTutor ? b.profiles?.name : b.tutors?.name}</div><div style={{fontSize:13,color:T.textMuted,marginTop:2}}>{b.subject} · {b.session_date}{b.start_time ? ` · ${fmtSessionRange(b.start_time, b.duration_minutes)}` : ""}</div><div style={{fontSize:13,color:T.textMuted}}>J${b.rate_jmd?.toLocaleString()}/hr</div>{dispStatus === "cancelled" && b.cancellation_reason && <div style={{fontSize:12,color:T.textMuted,marginTop:6,fontStyle:"italic"}}>{b.cancelled_by === user.id ? "You cancelled" : "Cancelled by tutor"} - {b.cancellation_reason}</div>}{dispStatus === "declined" && b.cancellation_reason && <div style={{fontSize:12,color:T.textMuted,marginTop:6,fontStyle:"italic"}}>Declined by tutor - {b.cancellation_reason}</div>}</div><div className="booking-list-actions" style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:8}}><Badge c={BOOKING_STATUS_BADGE[dispStatus].c}>{BOOKING_STATUS_BADGE[dispStatus].label}</Badge>{dispStatus === "confirmed" && <AddToCalendar booking={b} isTutor={isTutor} user={user} />}{cancellable && <button onClick={() => setCancelTarget(b)} style={{background:"none",border:`1.5px solid ${T.red}`,color:T.red,borderRadius:7,padding:"5px 11px",fontSize:12,cursor:"pointer",fontFamily:FB}}>Cancel booking</button>}{dispStatus === "completed" && (() => {const alreadyReviewed = studentReviews.some(r => r.booking_id === b.id); return alreadyReviewed ? <span style={{fontSize:11,color:T.emerald,fontWeight:600}}>✓ Review submitted</span> : <button className="cp-btn cp-btn-teal" onClick={() => setReviewTarget(b)}>Leave a review</button>;})()}{!cancellable && dispStatus !== "cancelled" && dispStatus !== "declined" && dispStatus !== "completed" && <span style={{fontSize:11,color:T.textMuted}}>Too close to cancel</span>}</div></div></Card>;
                 })}
               </>
             )}
@@ -3123,19 +3237,13 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
       showToast(`${bookingTutor.name} already has a session at that time. Please pick another slot.`);
       return;
     }
-    const { data: newBooking, error } = await supabase.from("bookings").insert({
+    const { error } = await supabase.from("bookings").insert({
       student_id: user.id, tutor_id: bookingTutor.id, subject: subj,
       session_date: date, start_time: `${slot}:00`, duration_minutes: duration,
       rate_jmd: bookingTutor.rate_jmd, status: "pending"
-    }).select().single();
+    });
     setConfirming(false);
     if (error) { showToast("Booking failed. Please try again."); return; }
-    await supabase.from("notifications").insert({
-      tutor_id: bookingTutor.id,
-      booking_id: newBooking.id,
-      type: "booking_created",
-      message: `${profile?.name || "A student"} booked a ${subj} session with you on ${date}.`,
-    });
     setBookingDone(true);
     showToast(`Session booked with ${bookingTutor.name}!`);
   };
@@ -3626,6 +3734,29 @@ function ParentView({ user, profile, setView, showToast }) {
   const [sending, setSending] = useState(false);
   const [selectedChild, setSelectedChild] = useState(null);
   const [childData, setChildData] = useState(null);
+  const [notificationTarget, setNotificationTarget] = useState(() => {
+    try {
+      const raw = sessionStorage.getItem("spark_dashboard_notification_target");
+      if (!raw) return null;
+      const parsed = JSON.parse(raw);
+      if (parsed?.scope !== "parent") return null;
+      sessionStorage.removeItem("spark_dashboard_notification_target");
+      return parsed;
+    } catch (error) {
+      return null;
+    }
+  });
+
+  useEffect(() => {
+    const handleNotificationTarget = (event) => {
+      const target = event?.detail;
+      if (target?.scope !== "parent") return;
+      try { sessionStorage.removeItem("spark_dashboard_notification_target"); } catch (error) {}
+      setNotificationTarget(target);
+    };
+    window.addEventListener("spark:dashboard-notification-target", handleNotificationTarget);
+    return () => window.removeEventListener("spark:dashboard-notification-target", handleNotificationTarget);
+  }, []);
 
   const load = useCallback(async () => {
     if (!user?.id) return;
@@ -3643,6 +3774,33 @@ function ParentView({ user, profile, setView, showToast }) {
   }, [user?.id]);
 
   useEffect(() => { load(); }, [load]);
+
+  useEffect(() => {
+    if (!notificationTarget?.studentId || children.length === 0) return;
+    const child = children.find(item => String(item.id) === String(notificationTarget.studentId));
+    if (child && String(selectedChild?.id || "") !== String(child.id)) setSelectedChild(child);
+  }, [notificationTarget, children, selectedChild?.id]);
+
+  useEffect(() => {
+    if (!notificationTarget?.anchor) return undefined;
+    const needsSelectedChild = notificationTarget.anchor !== "parent-family";
+    if (needsSelectedChild && notificationTarget.studentId && String(selectedChild?.id || "") !== String(notificationTarget.studentId)) return undefined;
+    if (needsSelectedChild && (notificationTarget.attemptKey || notificationTarget.bookingId) && !childData) return undefined;
+
+    const scrollTimer = window.setTimeout(() => {
+      let selector = `[data-notification-anchor="${notificationTarget.anchor}"]`;
+      if (notificationTarget.attemptKey) selector = `[data-notification-attempt="${notificationTarget.attemptKey}"]`;
+      if (notificationTarget.bookingId) selector = `[data-notification-booking="${notificationTarget.bookingId}"]`;
+      const target = document.querySelector(selector) || document.querySelector(`[data-notification-anchor="${notificationTarget.anchor}"]`);
+      target?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 150);
+
+    const clearTimer = window.setTimeout(() => setNotificationTarget(null), 3600);
+    return () => {
+      window.clearTimeout(scrollTimer);
+      window.clearTimeout(clearTimer);
+    };
+  }, [notificationTarget, selectedChild?.id, childData]);
 
   // Keep the adult dashboard live too: a child approving/declining a request
   // should update the parent's pending/connected state without a refresh.
@@ -3669,8 +3827,8 @@ function ParentView({ user, profile, setView, showToast }) {
       supabase.from("csec_skill_progress").select("*").eq("user_id", selectedChild.id).order("mastery_score", {ascending:true}),
       supabase.from("csec_question_attempts").select("id,correct,attempted_at,skill").eq("user_id", selectedChild.id).order("attempted_at", {ascending:false}).limit(20),
       supabase.from("lesson_progress").select("id,lesson_id,completed,completed_at").eq("user_id", selectedChild.id).eq("completed", true),
-      supabase.from("bookings").select("id,subject,session_date,status,rate_jmd,tutors(name)").eq("student_id", selectedChild.id).order("session_date", {ascending:false}).limit(8),
-      supabase.from("practice_exam_attempts").select("id,paper_type,score,max_score,percent,completed_at,duration_seconds,timed_out,answered_count,total_questions,correct_count").eq("user_id", selectedChild.id).order("completed_at", {ascending:false}).limit(20),
+      supabase.from("bookings").select("id,subject,session_date,start_time,duration_minutes,status,rate_jmd,tutors(name)").eq("student_id", selectedChild.id).order("session_date", {ascending:false}).limit(100),
+      supabase.from("practice_exam_attempts").select("id,attempt_key,paper_type,score,max_score,percent,completed_at,duration_seconds,timed_out,answered_count,total_questions,correct_count").eq("user_id", selectedChild.id).order("completed_at", {ascending:false}).limit(20),
     ]);
     const rows = prog.data || [];
     const attemptsRows = attempts.data || [];
@@ -3738,7 +3896,7 @@ function ParentView({ user, profile, setView, showToast }) {
           {pending.map(link => <div className="pending-pill" key={link.id}>Pending approval · {new Date(link.created_at).toLocaleDateString()}</div>)}
         </section>}
 
-        <section className="parent-section">
+        <section className="parent-section" data-notification-anchor="parent-family">
           <div className="section-heading"><div><div className="section-kicker">YOUR FAMILY</div><h2>Children</h2></div><button className="cp-btn cp-btn-primary" onClick={()=>document.getElementById("add-child")?.scrollIntoView({behavior:"smooth"})}>+ Connect a child</button></div>
           {children.length === 0 ? <div className="empty-parent"><div className="empty-icon">👨‍👩‍👧</div><h3>No child connected yet</h3><p>Ask your child to open their account and give you their private family code.</p></div> :
             <div className="child-grid">{children.map(child => <button key={child.id} className={`child-card ${selectedChild?.id===child.id?"selected":""}`} onClick={()=>setSelectedChild(child)}><div className="child-avatar">{getInitials(child.name)}</div><div><strong>{child.name}</strong><span>CSEC Mathematics</span></div><span className="child-arrow">→</span></button>)}</div>}
@@ -3748,7 +3906,7 @@ function ParentView({ user, profile, setView, showToast }) {
           <div className="section-heading"><div><div className="section-kicker">LEARNING SNAPSHOT</div><h2>{selectedChild.name}'s progress</h2></div><span className="mastery-pill">{childData.mastery}% mastery</span></div>
           <div className="parent-stat-grid"><div className="parent-stat"><strong>{childData.mastery}%</strong><span>Average skill mastery</span></div><div className="parent-stat"><strong>{childData.lessons.length}</strong><span>Lessons completed</span></div><div className="parent-stat"><strong>{examAttempts.length}</strong><span>Full exam attempts</span></div><div className="parent-stat"><strong>{childData.bookings.filter(b=>b.status!=="cancelled"&&b.status!=="declined").length}</strong><span>Tutor bookings</span></div></div>
 
-          <div className="exam-results-panel">
+          <div className="exam-results-panel" data-notification-anchor="parent-exam-results">
             <div className="exam-results-head">
               <div><div className="panel-title">Paper 1 and Paper 2 results</div><p>Completed full-paper simulations appear here as soon as the student's result is saved.</p></div>
               <div className="exam-summary-pills"><span>Paper 1 <strong>{paper1Attempts.length}</strong></span><span>Paper 2 <strong>{paper2Attempts.length}</strong></span>{examAttempts.length > 0 && <span>Average <strong>{examAverage}%</strong></span>}</div>
@@ -3756,7 +3914,8 @@ function ParentView({ user, profile, setView, showToast }) {
             {examAttempts.length ? <div className="exam-attempt-list">{examAttempts.slice(0,8).map(attempt => {
               const label = attempt.paper_type === "paper2" ? "Paper 2" : "Paper 1";
               const percent = Math.round(Number(attempt.percent || 0));
-              return <article className="exam-attempt-row" key={attempt.id}>
+              const isTargetAttempt = notificationTarget?.attemptKey && notificationTarget.attemptKey === attempt.attempt_key;
+              return <article className={`exam-attempt-row ${isTargetAttempt ? "notification-exam-target" : ""}`} data-notification-attempt={attempt.attempt_key || undefined} key={attempt.id}>
                 <div className={`exam-paper-badge ${attempt.paper_type}`}>{attempt.paper_type === "paper2" ? "P2" : "P1"}</div>
                 <div className="exam-attempt-main"><div className="exam-attempt-title"><strong>{label}</strong><span>{new Date(attempt.completed_at).toLocaleString([], {dateStyle:"medium", timeStyle:"short"})}</span></div><div className="exam-score-track"><span style={{width:`${Math.max(0,Math.min(100,percent))}%`}} /></div><div className="exam-attempt-meta"><span>{attempt.answered_count == null ? "Answer count unavailable" : `${attempt.answered_count}/${attempt.total_questions} questions completed`}</span><span>{formatExamDuration(attempt.duration_seconds)}</span><span className={attempt.timed_out?"exam-timeout":"exam-submitted"}>{attempt.timed_out?"Time expired":"Submitted"}</span></div></div>
                 <div className="exam-attempt-score"><strong>{attempt.score}/{attempt.max_score}</strong><span>{percent}%</span></div>
@@ -3766,7 +3925,16 @@ function ParentView({ user, profile, setView, showToast }) {
 
           <div className="parent-columns">
             <div className="panel-white"><div className="panel-title">Skills needing attention</div>{childData.weakest.length ? childData.weakest.map(r=><div className="skill-row" key={r.id}><div><strong>{r.skill}</strong><span>{r.mastery_level}</span></div><div className="skill-score">{Math.round(Number(r.mastery_score))}%</div></div>) : <p className="muted-copy">No weak skills recorded yet. Keep encouraging consistent practice.</p>}</div>
-            <div className="panel-white"><div className="panel-title">Tutor sessions</div>{childData.bookings.length ? childData.bookings.slice(0,4).map(b=><div className="session-row" key={b.id}><div><strong>{b.tutors?.name || "Tutor"}</strong><span>{b.subject} · {b.session_date}</span></div><Badge c={b.status==="confirmed"?"green":b.status==="pending"?"amber":"ink"}>{b.status}</Badge></div>) : <p className="muted-copy">No tutor sessions yet.</p>}</div>
+            <div className="panel-white" data-notification-anchor="parent-booking"><div className="panel-title">Tutor sessions</div>{childData.bookings.length ? (() => {
+              const targetId = notificationTarget?.bookingId;
+              const targetBooking = targetId ? childData.bookings.find(b => String(b.id) === String(targetId)) : null;
+              const rows = childData.bookings.slice(0,8);
+              if (targetBooking && !rows.some(b => b.id === targetBooking.id)) rows.unshift(targetBooking);
+              return rows.map(b => {
+                const isTargetBooking = targetId && String(b.id) === String(targetId);
+                return <div className={`session-row ${isTargetBooking ? "notification-booking-target" : ""}`} data-notification-booking={b.id} key={b.id}><div><strong>{b.tutors?.name || "Tutor"}</strong><span>{b.subject} · {b.session_date}{b.start_time ? ` · ${fmtSessionRange(b.start_time, b.duration_minutes)}` : ""}</span></div><Badge c={b.status==="confirmed"?"green":b.status==="pending"?"amber":"ink"}>{b.status}</Badge></div>;
+              });
+            })() : <p className="muted-copy">No tutor sessions yet.</p>}</div>
           </div>
         </section>}
 
@@ -4019,7 +4187,7 @@ function HowItWorksView({ setView, hasTutorApp, isParent }) {
 
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "52px 28px", flex: 1 }}>
         {/* Two-column steps */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))", gap: 48, marginBottom: 52 }}>
+        <div className="marketing-grid responsive-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))", gap: 48, marginBottom: 52 }}>
           {/* Students */}
           <div>
             <h2 style={{ fontFamily: FD, fontSize: 26, fontWeight: 700, color: T.ink, marginBottom: 24 }}>For students</h2>
@@ -4056,7 +4224,7 @@ function HowItWorksView({ setView, hasTutorApp, isParent }) {
         {/* FAQ */}
         <div style={{ marginBottom: 48 }}>
           <h2 style={{ fontFamily: FD, fontSize: 24, fontWeight: 700, color: T.ink, marginBottom: 24 }}>Common questions</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: 16 }}>
+          <div className="responsive-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: 16 }}>
             {[
               ["Do I need to pay to use SPARK?", "No. The content-subscription line launches free. We'll introduce paid tiers for advanced features, but core lesson content and quizzes will always have a free tier."],
               ["Do tutors need to be on the platform to teach?", "No. Tutors use a video service of their choice, such as Zoom, Google Meet or Teams. SPARK manages the booking."],
@@ -4114,7 +4282,7 @@ function AboutView({ setView, hasTutorApp, isParent }) {
 
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "52px 28px", flex: 1 }}>
         {/* Story + stats */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, marginBottom: 52, alignItems: "start" }}>
+        <div className="marketing-grid responsive-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48, marginBottom: 52, alignItems: "start" }}>
           <div>
             <h2 style={{ fontFamily: FD, fontSize: 26, fontWeight: 700, color: T.ink, marginBottom: 16 }}>Why we built this</h2>
             <p style={{ fontSize: 15, color: T.inkSoft, lineHeight: 1.8, marginBottom: 14 }}>
@@ -4207,7 +4375,7 @@ function ContactView({ setView, showToast, hasTutorApp, isParent }) {
       </div>
 
       <div style={{ maxWidth: 1000, margin: "0 auto", padding: "52px 28px", flex: 1 }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: 48, alignItems: "start" }}>
+        <div className="marketing-grid responsive-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: 48, alignItems: "start" }}>
           {/* Left: contact details */}
           <div>
             <h2 style={{ fontFamily: FD, fontSize: 22, fontWeight: 700, color: T.ink, marginBottom: 20 }}>Get in touch</h2>
