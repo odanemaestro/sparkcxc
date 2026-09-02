@@ -157,7 +157,8 @@ input,select,textarea,button{max-width:100%}
   word-break:normal;
 }
 .home-hero-title{
-  width:min(100%,760px);
+  width:max-content;
+  max-width:760px;
   margin-left:auto!important;
   margin-right:auto!important;
   text-align:left;
@@ -168,7 +169,7 @@ input,select,textarea,button{max-width:100%}
 .home-hero-copy{
   width:min(100%,760px);
   max-width:760px!important;
-  text-align:left;
+  text-align:center;
   text-wrap:pretty;
 }
 
