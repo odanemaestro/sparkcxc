@@ -279,3 +279,523 @@ input,select,textarea,button{max-width:100%}
     white-space:normal;
   }
 }
+
+/* =========================================================
+   SPARK HOME HERO
+   TRUE CENTRE AXIS - FINAL
+   Every visible hero element is centred to one identical axis.
+   ========================================================= */
+
+/* The hero itself must never participate in horizontal drift. */
+.home-hero {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.spark-home-hero-inner {
+  position: relative;
+  width: min(100%, 900px) !important;
+  max-width: 900px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  justify-items: center !important;
+  align-items: start !important;
+  text-align: center !important;
+}
+
+/* Reset the old left-alignment behaviour completely. */
+.spark-home-hero-badge,
+.spark-home-hero-title,
+.spark-home-hero-copy,
+.spark-home-hero-actions,
+.spark-home-demo-card,
+.spark-home-hero-inner .home-live-stats {
+  box-sizing: border-box !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  transform: none !important;
+  left: auto !important;
+  right: auto !important;
+}
+
+.spark-home-hero-badge {
+  justify-self: center !important;
+  text-align: center !important;
+}
+
+/* Both headline lines are centred on the SAME axis.
+   No max-content sizing, no shared left edge, no visual pull. */
+.home-hero-title.spark-home-hero-title {
+  display: block !important;
+  width: min(100%, 780px) !important;
+  max-width: 780px !important;
+  padding: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 20px !important;
+  text-align: center !important;
+  text-wrap: balance !important;
+}
+
+.home-hero-title.spark-home-hero-title .spark-home-hero-title-line {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  text-align: center !important;
+}
+
+.spark-home-hero-copy {
+  width: min(100%, 760px) !important;
+  max-width: 760px !important;
+  margin-top: 0 !important;
+  margin-bottom: 30px !important;
+  padding: 0 !important;
+  text-align: center !important;
+  text-wrap: pretty !important;
+}
+
+.spark-home-hero-actions {
+  width: auto !important;
+  max-width: 100% !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
+  justify-self: center !important;
+}
+
+.spark-home-hero-actions > button {
+  flex: 0 0 auto !important;
+  width: auto !important;
+  min-width: 0 !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+.spark-home-demo-card {
+  width: min(100%, 450px) !important;
+  max-width: 450px !important;
+  margin-top: 40px !important;
+  justify-self: center !important;
+  text-align: left !important;
+}
+
+.spark-home-hero-inner .home-live-stats {
+  width: 100% !important;
+  max-width: 900px !important;
+  justify-self: center !important;
+}
+
+/* Keep the navbar's box model from introducing any apparent page drift. */
+.spark-nav-inner {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+@media (max-width: 900px) {
+  .spark-home-hero-inner {
+    width: min(100%, 760px) !important;
+  }
+
+  .home-hero-title.spark-home-hero-title {
+    width: min(100%, 700px) !important;
+    max-width: 700px !important;
+  }
+
+  .spark-home-hero-copy {
+    width: min(100%, 650px) !important;
+    max-width: 650px !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .spark-home-hero-inner {
+    width: 100% !important;
+  }
+
+  .home-hero-title.spark-home-hero-title {
+    width: 100% !important;
+    max-width: 560px !important;
+    padding-inline: 0 !important;
+    text-align: center !important;
+    letter-spacing: -.015em !important;
+    line-height: 1.1 !important;
+  }
+
+  .home-hero-title.spark-home-hero-title .spark-home-hero-title-line {
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .spark-home-hero-copy {
+    width: 100% !important;
+    max-width: 540px !important;
+    padding-inline: 0 !important;
+    text-align: center !important;
+  }
+
+  .spark-home-hero-actions {
+    width: 100% !important;
+    max-width: 420px !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .spark-home-hero-actions > button {
+    width: min(100%, 320px) !important;
+    min-width: 0 !important;
+  }
+
+  .spark-home-demo-card {
+    width: min(100%, 450px) !important;
+    max-width: 450px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .home-hero-title.spark-home-hero-title {
+    font-size: clamp(28px, 9.5vw, 36px) !important;
+  }
+
+  .spark-home-hero-copy {
+    font-size: 15px !important;
+  }
+
+  .spark-home-demo-card {
+    width: 100% !important;
+  }
+}
+
+/* =========================================================
+   SPARK HOME HERO
+   FINAL SHARED-COLUMN ALIGNMENT
+   ========================================================= */
+
+.home-hero {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.spark-home-hero-inner {
+  position: relative;
+  width: min(100%, 900px) !important;
+  max-width: 900px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.spark-home-hero-badge,
+.spark-home-copy-column,
+.spark-home-hero-actions,
+.spark-home-demo-card,
+.spark-home-hero-inner .home-live-stats {
+  box-sizing: border-box !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  transform: none !important;
+  left: auto !important;
+  right: auto !important;
+}
+
+.spark-home-hero-badge {
+  align-self: center !important;
+  text-align: center !important;
+}
+
+/* One centred column owns BOTH the headline and paragraph.
+   Their visible text begins on exactly the same left edge. */
+.spark-home-copy-column {
+  width: min(100%, 780px) !important;
+  max-width: 780px !important;
+  display: block !important;
+  text-align: left !important;
+}
+
+.home-hero-title.spark-home-hero-title {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  padding: 0 !important;
+  margin: 0 0 20px !important;
+  text-align: left !important;
+  text-wrap: wrap !important;
+}
+
+.home-hero-title.spark-home-hero-title .spark-home-hero-title-line {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+}
+
+.spark-home-copy-column .spark-home-hero-copy {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 0 30px !important;
+  padding: 0 !important;
+  text-align: left !important;
+  text-wrap: pretty !important;
+}
+
+/* Actions and card remain centred beneath that exact copy column. */
+.spark-home-hero-actions {
+  width: 100% !important;
+  max-width: 780px !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
+}
+
+.spark-home-hero-actions > button {
+  flex: 0 0 auto !important;
+  width: auto !important;
+  min-width: 0 !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+.spark-home-demo-card {
+  width: min(100%, 450px) !important;
+  max-width: 450px !important;
+  margin-top: 40px !important;
+  align-self: center !important;
+  text-align: left !important;
+}
+
+.spark-home-hero-inner .home-live-stats {
+  width: 100% !important;
+  max-width: 900px !important;
+  align-self: center !important;
+}
+
+.spark-nav-inner {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+@media (max-width: 900px) {
+  .spark-home-hero-inner {
+    width: min(100%, 760px) !important;
+  }
+
+  .spark-home-copy-column,
+  .spark-home-hero-actions {
+    width: min(100%, 700px) !important;
+    max-width: 700px !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .spark-home-hero-inner {
+    width: 100% !important;
+  }
+
+  .spark-home-copy-column {
+    width: min(100%, 540px) !important;
+    max-width: 540px !important;
+    padding-inline: 2px !important;
+  }
+
+  .home-hero-title.spark-home-hero-title {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 !important;
+    text-align: left !important;
+    letter-spacing: -.015em !important;
+    line-height: 1.1 !important;
+  }
+
+  .home-hero-title.spark-home-hero-title .spark-home-hero-title-line,
+  .spark-home-copy-column .spark-home-hero-copy {
+    width: 100% !important;
+    max-width: none !important;
+    text-align: left !important;
+  }
+
+  .spark-home-hero-actions {
+    width: min(100%, 540px) !important;
+    max-width: 540px !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .spark-home-hero-actions > button {
+    width: min(100%, 320px) !important;
+    min-width: 0 !important;
+  }
+
+  .spark-home-demo-card {
+    width: min(100%, 450px) !important;
+    max-width: 450px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .home-hero-title.spark-home-hero-title {
+    font-size: clamp(28px, 9.5vw, 36px) !important;
+  }
+
+  .spark-home-copy-column .spark-home-hero-copy {
+    font-size: 15px !important;
+  }
+
+  .spark-home-demo-card {
+    width: 100% !important;
+  }
+}
+
+/* =========================================================
+   SPARK HOME HERO
+   ONE SHARED STARTING EDGE - FINAL OVERRIDE
+   Every major hero block begins on the same responsive line.
+   ========================================================= */
+
+.spark-home-hero-inner {
+  width: min(100%, 780px) !important;
+  max-width: 780px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  text-align: left !important;
+  box-sizing: border-box !important;
+}
+
+.spark-home-hero-badge,
+.spark-home-copy-column,
+.spark-home-hero-actions,
+.spark-home-demo-card,
+.spark-home-hero-inner .home-live-stats {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  box-sizing: border-box !important;
+  transform: none !important;
+  left: auto !important;
+  right: auto !important;
+}
+
+/* The badge begins on the same left edge without stretching visually. */
+.spark-home-hero-badge {
+  width: max-content !important;
+  max-width: 100% !important;
+  align-self: flex-start !important;
+  text-align: center !important;
+}
+
+.spark-home-copy-column {
+  display: block !important;
+  text-align: left !important;
+}
+
+.home-hero-title.spark-home-hero-title,
+.spark-home-copy-column .spark-home-hero-copy {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  text-align: left !important;
+}
+
+.home-hero-title.spark-home-hero-title .spark-home-hero-title-line {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+}
+
+/* Buttons now start on that same edge instead of floating in the middle. */
+.spark-home-hero-actions {
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
+}
+
+.spark-home-hero-actions > button {
+  flex: 0 0 auto !important;
+  justify-content: center !important;
+  text-align: center !important;
+}
+
+/* The demo card now uses the exact same column width and left edge. */
+.spark-home-demo-card {
+  width: 100% !important;
+  max-width: none !important;
+  align-self: stretch !important;
+  margin-top: 40px !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  text-align: left !important;
+  box-sizing: border-box !important;
+}
+
+.spark-home-hero-inner .home-live-stats {
+  align-self: stretch !important;
+}
+
+@media (max-width: 900px) {
+  .spark-home-hero-inner {
+    width: min(100%, 700px) !important;
+    max-width: 700px !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .spark-home-hero-inner {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .spark-home-copy-column {
+    padding-inline: 0 !important;
+  }
+
+  .spark-home-hero-actions {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+
+  .spark-home-hero-actions > button {
+    width: min(100%, 320px) !important;
+    min-width: 0 !important;
+  }
+
+  .spark-home-demo-card {
+    width: 100% !important;
+    max-width: none !important;
+  }
+}

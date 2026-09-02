@@ -1174,20 +1174,21 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
         color:"#fff",padding:"76px 28px 60px",textAlign:"center",position:"relative",overflow:"hidden"}}>
         <div className="orb orb-float" style={{width:340,height:340,background:"#5EEAD4",top:-120,left:-80}}/>
         <div className="orb orb-float" style={{width:300,height:300,background:"#FCD34D",bottom:-140,right:-60,animationDelay:"2s",opacity:.35}}/>
-        <div className="home-hero-inner" style={{position:"relative"}}>
-        <div className="home-kicker" style={{display:"inline-block",fontSize:12,fontWeight:600,textTransform:"uppercase",letterSpacing:"0.1em",
+        <div className="home-hero-inner spark-home-hero-inner" style={{position:"relative",width:"100%",margin:"0 auto"}}>
+        <div className="home-kicker spark-home-hero-badge" style={{display:"inline-block",fontSize:12,fontWeight:600,textTransform:"uppercase",letterSpacing:"0.1em",
           color:"#5EEAD4",marginBottom:16,padding:"6px 14px",borderRadius:99,
           background:"rgba(94,234,212,.1)",border:"1px solid rgba(94,234,212,.25)"}}>Official CXC Syllabus · CSEC & CAPE</div>
-        <h1 className="home-hero-title" style={{fontFamily:FD,fontSize:"clamp(30px,5vw,54px)",fontWeight:800,
-          lineHeight:1.1,margin:"0 0 20px",letterSpacing:"-0.01em"}}>
-          The exam prep<span className="home-hero-break home-hero-break-mobile" aria-hidden="true" /> platform
-          <span className="home-hero-break home-hero-break-desktop" aria-hidden="true" /> built
-          <span className="home-hero-break home-hero-break-mobile" aria-hidden="true" /> for <span style={{color:"#FCD34D"}}>the Caribbean</span>
-        </h1>
-        <p className="home-hero-copy" style={{fontSize:16.5,color:"rgba(255,255,255,.82)",maxWidth:760,margin:"0 auto 30px",lineHeight:1.7}}>
-          A lesson for every topic on the CXC syllabus. Original past-paper style questions. Section and final exams. Verified tutors. One platform built around how CXC actually tests.
-        </p>
-        <div className="home-hero-actions" style={{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}}>
+        <div className="spark-home-copy-column">
+          <h1 className="home-hero-title spark-home-hero-title" style={{fontFamily:FD,fontSize:"clamp(30px,5vw,54px)",fontWeight:800,
+            lineHeight:1.1,margin:"0 0 20px",letterSpacing:"-0.01em"}}>
+            <span className="spark-home-hero-title-line">The exam prep platform</span>
+            <span className="spark-home-hero-title-line">built for <span style={{color:"#FCD34D"}}>the Caribbean</span></span>
+          </h1>
+          <p className="home-hero-copy spark-home-hero-copy" style={{fontSize:16.5,color:"rgba(255,255,255,.82)",margin:"0 0 30px",lineHeight:1.7}}>
+            A lesson for every topic on the CXC syllabus. Original past-paper style questions. Section and final exams. Verified tutors. One platform built around how CXC actually tests.
+          </p>
+        </div>
+        <div className="home-hero-actions spark-home-hero-actions" style={{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}}>
       		{isTutor ? (
 			  <Btn v="amber" onClick={() => setView("dashboard")}
 				style={{background:T.amber,fontSize:15,padding:"13px 28px"}}>
@@ -1208,7 +1209,7 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
         </div>
 
         {/* Demo question */}
-        <div className="hl home-demo-card" style={{background:T.paper,borderRadius:T.rLg,padding:24,maxWidth:400,
+        <div className="hl home-demo-card spark-home-demo-card" style={{background:T.paper,borderRadius:T.rLg,padding:24,maxWidth:400,
           margin:"40px auto 0",textAlign:"left",boxShadow:"0 16px 40px rgba(0,0,0,.22)",
           border:"1px solid rgba(255,255,255,.06)"}}>
           <div style={{fontSize:10,fontWeight:700,color:T.teal,textTransform:"uppercase",
