@@ -132,3 +132,14 @@
 .learning-milestone-empty span{font-size:11px}
 .notification-learning-target{border-color:#0D9488;background:#F0FDFA;box-shadow:0 0 0 3px rgba(13,148,136,.12)}
 @media(max-width:760px){.parent-learning-head{display:block}.learning-count-pill{margin-top:10px}.learning-milestone-row{grid-template-columns:38px minmax(0,1fr)}.learning-milestone-icon{width:36px;height:36px}.learning-milestone-score{grid-column:2;text-align:left;display:flex;align-items:baseline;gap:7px}.learning-milestone-title{display:block}.learning-milestone-title span{display:block;margin-top:2px;white-space:normal}}
+
+/* Exam performance status */
+.exam-performance-badge{display:inline-flex;align-items:center;justify-content:center;width:max-content;border-radius:999px;padding:4px 8px;font-size:10px;font-weight:800;line-height:1.15;white-space:nowrap}
+.exam-performance-badge.needs-attention{background:#FDECEC;color:#B42318}
+.exam-performance-badge.developing{background:#FFF4D6;color:#9A6700}
+.exam-performance-badge.satisfactory{background:#EAF2FF;color:#2457A6}
+.exam-performance-badge.strong{background:#E7F7EF;color:#18794E}
+.exam-attempt-score .exam-percent{display:block;color:#0D9488;font-size:11px;font-weight:800;margin-top:3px}
+.exam-attempt-score .exam-performance-badge{margin-top:6px}
+.student-exam-result-score{display:flex;align-items:center;justify-content:flex-end;gap:10px;text-align:right}
+@media(max-width:760px){.exam-attempt-score .exam-performance-badge{margin-top:0}.student-exam-result-score{width:100%;justify-content:space-between;text-align:left}.student-exam-result-score .exam-performance-badge{margin-left:auto}}

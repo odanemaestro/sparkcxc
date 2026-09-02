@@ -46,6 +46,7 @@ import ScrollToTopButton from "./components/ui/ScrollToTopButton";
 import ReportQuestionButton from "./components/ui/ReportQuestionButton";
 import NotificationCenter from "./components/notifications/NotificationCenter";
 import { friendlyErrorMessage } from "./lib/errorMessages";
+import { getExamPerformanceStatus } from "./lib/examPerformance";
 import "./family.css";
 import "./responsive.css";
 import GOOGLE_ICON_B64 from "./assets/icons/google-icon.png";
@@ -3030,10 +3031,11 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
               <div style={{fontSize:12,color:T.textMuted,marginBottom:14}}>Your latest full-paper examination results.</div>
               {examAttempts.length ? examAttempts.slice(0,8).map(attempt => {
                 const percent = Math.round(Number(attempt.percent || 0));
+                const performance = getExamPerformanceStatus(percent);
                 const isTarget = notificationTarget?.attemptKey && notificationTarget.attemptKey === attempt.attempt_key;
                 return <div key={attempt.id} data-notification-attempt={attempt.attempt_key || undefined} className={isTarget ? "notification-exam-target" : ""} style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:12,padding:"11px 0",borderBottom:`1px solid ${T.border}`,flexWrap:"wrap"}}>
                   <div><strong style={{fontSize:13,color:T.ink}}>{attempt.paper_type === "paper2" ? "Paper 2" : "Paper 1"}</strong><div style={{fontSize:11,color:T.textMuted,marginTop:2}}>{new Date(attempt.completed_at).toLocaleString([], {dateStyle:"medium",timeStyle:"short"})}</div></div>
-                  <div style={{textAlign:"right"}}><strong style={{fontSize:14,color:T.ink}}>{attempt.score}/{attempt.max_score}</strong><div style={{fontSize:12,color:T.teal,fontWeight:700}}>{percent}%</div></div>
+                  <div className="student-exam-result-score"><div><strong style={{fontSize:14,color:T.ink}}>{attempt.score}/{attempt.max_score}</strong><div style={{fontSize:12,color:T.teal,fontWeight:700}}>{percent}%</div></div><span className={`exam-performance-badge ${performance.key}`}>{performance.label}</span></div>
                 </div>;
               }) : <div style={{fontSize:13,color:T.textMuted}}>No full exam attempts yet.</div>}
             </Card>
@@ -4032,11 +4034,12 @@ function ParentView({ user, profile, setView, showToast }) {
             {examAttempts.length ? <div className="exam-attempt-list">{examAttempts.slice(0,8).map(attempt => {
               const label = attempt.paper_type === "paper2" ? "Paper 2" : "Paper 1";
               const percent = Math.round(Number(attempt.percent || 0));
+              const performance = getExamPerformanceStatus(percent);
               const isTargetAttempt = notificationTarget?.attemptKey && notificationTarget.attemptKey === attempt.attempt_key;
               return <article className={`exam-attempt-row ${isTargetAttempt ? "notification-exam-target" : ""}`} data-notification-attempt={attempt.attempt_key || undefined} key={attempt.id}>
                 <div className={`exam-paper-badge ${attempt.paper_type}`}>{attempt.paper_type === "paper2" ? "P2" : "P1"}</div>
                 <div className="exam-attempt-main"><div className="exam-attempt-title"><strong>{label}</strong><span>{new Date(attempt.completed_at).toLocaleString([], {dateStyle:"medium", timeStyle:"short"})}</span></div><div className="exam-score-track"><span style={{width:`${Math.max(0,Math.min(100,percent))}%`}} /></div><div className="exam-attempt-meta"><span>{attempt.answered_count == null ? "Answer count unavailable" : `${attempt.answered_count}/${attempt.total_questions} questions completed`}</span><span>{formatExamDuration(attempt.duration_seconds)}</span><span className={attempt.timed_out?"exam-timeout":"exam-submitted"}>{attempt.timed_out?"Time expired":"Submitted"}</span></div></div>
-                <div className="exam-attempt-score"><strong>{attempt.score}/{attempt.max_score}</strong><span>{percent}%</span></div>
+                <div className="exam-attempt-score"><strong>{attempt.score}/{attempt.max_score}</strong><span className="exam-percent">{percent}%</span><span className={`exam-performance-badge ${performance.key}`}>{performance.label}</span></div>
               </article>;
             })}</div> : <div className="exam-results-empty"><strong>No full exam attempts yet.</strong><span>Paper 1 and Paper 2 scores will appear after the student submits an exam.</span></div>}
           </div>
