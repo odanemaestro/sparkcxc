@@ -35,3 +35,33 @@
 .notification-empty-icon{width:48px;height:48px;border-radius:15px;background:#E2E8F0;color:#475569;display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:12px}
 .notification-empty strong{font-size:15px;color:#334155;margin-bottom:5px}.notification-empty span{font-size:12.5px;line-height:1.55;max-width:280px}
 @media(max-width:560px){.notification-drawer{width:100vw}.notification-head{padding:18px 16px 15px}.notification-toolbar{align-items:stretch;flex-direction:column;padding:10px 12px}.notification-tabs{width:100%}.notification-tabs button{flex:1}.notification-mark-all{align-self:flex-end;padding-right:4px}.notification-list{padding:8px 8px calc(18px + env(safe-area-inset-bottom))}.notification-item{grid-template-columns:38px minmax(0,1fr);gap:10px;padding:13px 11px}.notification-type-icon{width:36px;height:36px;border-radius:11px}.notification-meta-row{align-items:flex-start;flex-direction:column;gap:4px}.notification-trigger{width:38px;height:38px;min-width:38px;border-radius:8px}.notification-trigger-icon{width:22px;height:22px}.notification-trigger-icon img{width:21px;height:21px}}
+.notification-settings-list{padding:16px 14px 28px}
+.push-settings{display:flex;flex-direction:column;gap:14px;color:#0F172A}
+.push-settings-intro{display:flex;gap:12px;align-items:flex-start;padding:2px 2px 4px}
+.push-settings-intro h3{margin:0 0 4px;font-size:17px;color:#0F172A;font-family:'Crimson Pro',Georgia,serif}
+.push-settings-intro p{margin:0;font-size:12.5px;line-height:1.5;color:#64748B}
+.push-settings-icon{width:38px;height:38px;border-radius:12px;background:#CCFBF1;color:#0F766E;display:flex;align-items:center;justify-content:center;flex:0 0 38px;font-size:12px;box-shadow:inset 0 0 0 1px #99F6E4}
+.push-settings-state{padding:42px 16px;text-align:center;color:#64748B;font-size:13px}
+.push-settings-message{padding:10px 12px;border-radius:10px;font-size:12.5px;line-height:1.5;border:1px solid transparent}
+.push-settings-message.success{background:#ECFDF5;border-color:#A7F3D0;color:#047857}
+.push-settings-message.error{background:#FEF2F2;border-color:#FECACA;color:#B91C1C}
+.push-settings-card,.push-preference-row,.push-device-row{background:#fff;border:1px solid #E2E8F0;border-radius:13px;padding:13px 14px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.push-settings-card>div,.push-preference-row>div,.push-device-row>div{min-width:0}
+.push-settings-card strong,.push-preference-row strong,.push-device-row strong{display:block;color:#0F172A;font-size:13px;line-height:1.35;margin-bottom:3px}
+.push-settings-card span,.push-preference-row span,.push-device-row span{display:block;color:#64748B;font-size:11.5px;line-height:1.45}
+.push-settings-card.muted{display:block;background:#F8FAFC;color:#475569}
+.push-settings-card.ios-help{display:block;background:#EFF6FF;border-color:#BFDBFE}
+.push-settings-card.ios-help strong{color:#1E3A8A}
+.push-switch{width:46px;min-width:46px;height:27px;border:0;border-radius:99px;background:#CBD5E1;padding:3px;display:flex;align-items:center;justify-content:flex-start;transition:background .18s ease;cursor:pointer;box-shadow:none}
+.push-switch span{width:21px;height:21px;border-radius:50%;background:#fff;display:block;box-shadow:0 1px 3px rgba(15,23,42,.18);transition:transform .18s ease}
+.push-switch.on{background:#0D9488}
+.push-switch.on span{transform:translateX(19px)}
+.push-switch:disabled{opacity:.55;cursor:default}
+.push-settings-section-title{font-size:10px;text-transform:uppercase;letter-spacing:.1em;font-weight:800;color:#94A3B8;padding:4px 2px 0}
+.push-preference-list{display:flex;flex-direction:column;gap:8px}
+.push-device-row{background:#F8FAFC}
+.push-device-button{border:0;background:#0D9488;color:#fff;border-radius:9px;padding:8px 11px;font-size:11.5px;font-weight:800;white-space:nowrap;flex-shrink:0;min-height:36px}
+.push-device-button.secondary{background:#fff;color:#475569;border:1px solid #CBD5E1}
+.push-device-button:disabled{opacity:.55;cursor:default}
+.push-settings-footnote{margin:0;padding:2px 3px;color:#94A3B8;font-size:10.5px;line-height:1.5}
+@media(max-width:560px){.notification-settings-list{padding:13px 10px calc(20px + env(safe-area-inset-bottom))}.push-settings-card,.push-preference-row,.push-device-row{padding:13px 12px}.push-device-row{align-items:flex-start;flex-direction:column}.push-device-button{width:100%;justify-content:center}.notification-tabs button{padding-left:8px;padding-right:8px}}

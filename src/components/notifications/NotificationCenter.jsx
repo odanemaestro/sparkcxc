@@ -1,8 +1,10 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { supabase } from "../../lib/supabaseClient";
+import { setSparkAppBadge } from "../../lib/pushNotifications";
 import messageIcon from "../../assets/icons/notification-message.png";
 import "./notificationCenter.css";
 import { getNotificationRoute } from "./notificationRouting";
+import PushNotificationSettings from "./PushNotificationSettings";
 
 const TYPE_META = {
   booking_created: { icon: "📅", tone: "teal", label: "Booking request" },
@@ -12,6 +14,7 @@ const TYPE_META = {
   booking_cancelled_by_tutor: { icon: "×", tone: "red", label: "Booking cancelled" },
   booking_rescheduled: { icon: "↻", tone: "amber", label: "Session changed" },
   session_completed: { icon: "✓", tone: "green", label: "Session completed" },
+  session_reminder: { icon: "⏱", tone: "amber", label: "Session reminder" },
   paper1_completed: { icon: "P1", tone: "navy", label: "Paper 1 completed" },
   paper2_completed: { icon: "P2", tone: "navy", label: "Paper 2 completed" },
   child_paper1_completed: { icon: "P1", tone: "purple", label: "Child progress" },
@@ -29,6 +32,8 @@ const TYPE_META = {
   family_link_request: { icon: "👪", tone: "purple", label: "Family request" },
   family_link_update: { icon: "👪", tone: "purple", label: "Family connection" },
 };
+
+const NOTIFICATION_SELECT = "id,recipient_user_id,tutor_id,student_id,booking_id,type,title,message,action_view,action_label,metadata,read_at,created_at";
 
 function relativeTime(value) {
   const date = value ? new Date(value) : null;
@@ -58,27 +63,44 @@ function fallbackTitle(notification) {
   return notification?.title || meta?.label || "SPARK update";
 }
 
+function initialPushNotificationId() {
+  if (typeof window === "undefined") return null;
+  try { return new URL(window.location.href).searchParams.get("spark_notification"); }
+  catch { return null; }
+}
+
+function removePushNotificationIdFromUrl() {
+  if (typeof window === "undefined") return;
+  try {
+    const url = new URL(window.location.href);
+    url.searchParams.delete("spark_notification");
+    window.history.replaceState({}, "", `${url.pathname}${url.search}${url.hash}`);
+  } catch {
+    // A clean URL is helpful but not required for notification routing.
+  }
+}
+
 export default function NotificationCenter({ user, profile, setView }) {
   const [open, setOpen] = useState(false);
   const [items, setItems] = useState([]);
   const [filter, setFilter] = useState("all");
   const [loading, setLoading] = useState(false);
   const [available, setAvailable] = useState(true);
+  const [pendingPushId, setPendingPushId] = useState(initialPushNotificationId);
   const mounted = useRef(true);
+  const handledPushIds = useRef(new Set());
 
   const load = useCallback(async () => {
     if (!user?.id) return;
     setLoading(true);
     const { data, error } = await supabase
       .from("notifications")
-      .select("id,recipient_user_id,tutor_id,student_id,booking_id,type,title,message,action_view,action_label,metadata,read_at,created_at")
+      .select(NOTIFICATION_SELECT)
       .eq("recipient_user_id", user.id)
       .order("created_at", { ascending: false })
       .limit(60);
     if (!mounted.current) return;
     if (error) {
-      // The centre stays out of the user's way if the database migration has
-      // not been applied yet. The icon remains usable after the migration.
       console.error("Failed to load notifications:", error);
       setAvailable(false);
       setItems([]);
@@ -123,13 +145,26 @@ export default function NotificationCenter({ user, profile, setView }) {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (!("serviceWorker" in navigator)) return undefined;
+    const onMessage = event => {
+      if (event.data?.type === "SPARK_PUSH_OPEN" && event.data.notificationId) {
+        setPendingPushId(String(event.data.notificationId));
+      }
+    };
+    navigator.serviceWorker.addEventListener("message", onMessage);
+    return () => navigator.serviceWorker.removeEventListener("message", onMessage);
+  }, []);
+
   const unreadCount = useMemo(() => items.filter(item => !item.read_at).length, [items]);
   const visibleItems = useMemo(
     () => filter === "unread" ? items.filter(item => !item.read_at) : items,
     [items, filter]
   );
 
-  const markRead = async (notification) => {
+  useEffect(() => { setSparkAppBadge(unreadCount); }, [unreadCount]);
+
+  const markRead = useCallback(async (notification) => {
     if (!notification || notification.read_at) return;
     const readAt = new Date().toISOString();
     setItems(prev => prev.map(item => item.id === notification.id ? { ...item, read_at: readAt } : item));
@@ -139,7 +174,7 @@ export default function NotificationCenter({ user, profile, setView }) {
       .eq("id", notification.id)
       .eq("recipient_user_id", user.id);
     if (error) load();
-  };
+  }, [load, user?.id]);
 
   const markAllRead = async () => {
     if (!unreadCount) return;
@@ -153,16 +188,13 @@ export default function NotificationCenter({ user, profile, setView }) {
     if (error) load();
   };
 
-  const openNotification = async (notification) => {
+  const openNotification = useCallback(async (notification) => {
     await markRead(notification);
 
     const role = profile?.role || null;
     const route = getNotificationRoute(notification, role, user?.id);
     let target = route.dashboardTarget ? { ...route.dashboardTarget } : null;
 
-    // Older parent booking notifications may not contain student_id in their
-    // metadata. Resolve it from the booking before opening the dashboard so
-    // the correct child is selected instead of whichever child was open last.
     if (target?.scope === "parent" && target.bookingId && !target.studentId) {
       const { data } = await supabase
         .from("bookings")
@@ -175,7 +207,7 @@ export default function NotificationCenter({ user, profile, setView }) {
     if (target) {
       try {
         sessionStorage.setItem("spark_dashboard_notification_target", JSON.stringify(target));
-      } catch (error) {
+      } catch {
         // Navigation still works if browser storage is unavailable.
       }
       window.dispatchEvent(new CustomEvent("spark:dashboard-notification-target", { detail: target }));
@@ -183,7 +215,31 @@ export default function NotificationCenter({ user, profile, setView }) {
 
     if (route.view && setView) setView(route.view);
     setOpen(false);
-  };
+  }, [markRead, profile?.role, setView, user?.id]);
+
+  useEffect(() => {
+    if (!pendingPushId || !user?.id || loading || handledPushIds.current.has(pendingPushId)) return undefined;
+    let cancelled = false;
+    const handle = async () => {
+      let notification = items.find(item => String(item.id) === String(pendingPushId));
+      if (!notification) {
+        const { data, error } = await supabase
+          .from("notifications")
+          .select(NOTIFICATION_SELECT)
+          .eq("id", pendingPushId)
+          .eq("recipient_user_id", user.id)
+          .maybeSingle();
+        if (!error) notification = data;
+      }
+      if (cancelled) return;
+      handledPushIds.current.add(pendingPushId);
+      removePushNotificationIdFromUrl();
+      setPendingPushId(null);
+      if (notification) await openNotification(notification);
+    };
+    handle();
+    return () => { cancelled = true; };
+  }, [items, loading, openNotification, pendingPushId, user?.id]);
 
   if (!user?.id) return null;
 
@@ -194,7 +250,7 @@ export default function NotificationCenter({ user, profile, setView }) {
         className="notification-trigger"
         aria-label={unreadCount ? `Notifications, ${unreadCount} unread` : "Notifications"}
         aria-expanded={open}
-        onClick={() => { setOpen(true); load(); }}
+        onClick={() => { setOpen(true); setFilter("all"); load(); }}
       >
         <span className="notification-trigger-icon"><img src={messageIcon} alt="" /></span>
         {unreadCount > 0 && <span className="notification-badge">{unreadCount > 99 ? "99+" : unreadCount}</span>}
@@ -207,59 +263,66 @@ export default function NotificationCenter({ user, profile, setView }) {
             <div className="notification-head">
               <div>
                 <div className="notification-kicker">SPARK</div>
-                <h2>Notifications</h2>
+                <h2>{filter === "settings" ? "Notification settings" : "Notifications"}</h2>
               </div>
               <button className="notification-close" onClick={() => setOpen(false)} aria-label="Close notifications">×</button>
             </div>
 
             <div className="notification-toolbar">
-              <div className="notification-tabs" role="tablist" aria-label="Notification filters">
+              <div className="notification-tabs" role="tablist" aria-label="Notification views">
                 <button className={filter === "all" ? "active" : ""} onClick={() => setFilter("all")}>All</button>
                 <button className={filter === "unread" ? "active" : ""} onClick={() => setFilter("unread")}>Unread{unreadCount ? ` (${unreadCount})` : ""}</button>
+                <button className={filter === "settings" ? "active" : ""} onClick={() => setFilter("settings")}>Settings</button>
               </div>
-              <button className="notification-mark-all" onClick={markAllRead} disabled={!unreadCount}>Mark all as read</button>
+              {filter !== "settings" && <button className="notification-mark-all" onClick={markAllRead} disabled={!unreadCount}>Mark all as read</button>}
             </div>
 
-            <div className="notification-list">
-              {loading && items.length === 0 ? (
-                <div className="notification-empty"><div className="notification-empty-icon">•••</div><strong>Loading updates</strong></div>
-              ) : !available ? (
-                <div className="notification-empty">
-                  <div className="notification-empty-icon">i</div>
-                  <strong>Notification Centre setup is required</strong>
-                  <span>Apply the latest Supabase migration, then reopen this panel.</span>
-                </div>
-              ) : visibleItems.length === 0 ? (
-                <div className="notification-empty">
-                  <div className="notification-empty-icon">✓</div>
-                  <strong>{filter === "unread" ? "You're all caught up" : "No notifications yet"}</strong>
-                  <span>Booking, session and progress updates will appear here.</span>
-                </div>
-              ) : visibleItems.map(notification => {
-                const meta = TYPE_META[notification.type] || { icon: "i", tone: "navy" };
-                const label = actionLabel(notification);
-                return (
-                  <article
-                    key={notification.id}
-                    className={`notification-item ${notification.read_at ? "" : "unread"}`}
-                    onClick={() => openNotification(notification)}
-                  >
-                    <div className={`notification-type-icon ${meta.tone}`}>{meta.icon}</div>
-                    <div className="notification-copy">
-                      <div className="notification-title-row">
-                        <strong>{fallbackTitle(notification)}</strong>
-                        {!notification.read_at && <span className="notification-unread-dot" aria-label="Unread" />}
+            {filter === "settings" ? (
+              <div className="notification-list notification-settings-list">
+                <PushNotificationSettings user={user} profile={profile} />
+              </div>
+            ) : (
+              <div className="notification-list">
+                {loading && items.length === 0 ? (
+                  <div className="notification-empty"><div className="notification-empty-icon">•••</div><strong>Loading updates</strong></div>
+                ) : !available ? (
+                  <div className="notification-empty">
+                    <div className="notification-empty-icon">i</div>
+                    <strong>Notification Centre setup is required</strong>
+                    <span>Apply the latest Supabase migration, then reopen this panel.</span>
+                  </div>
+                ) : visibleItems.length === 0 ? (
+                  <div className="notification-empty">
+                    <div className="notification-empty-icon">✓</div>
+                    <strong>{filter === "unread" ? "You're all caught up" : "No notifications yet"}</strong>
+                    <span>Booking, session and progress updates will appear here.</span>
+                  </div>
+                ) : visibleItems.map(notification => {
+                  const meta = TYPE_META[notification.type] || { icon: "i", tone: "navy" };
+                  const label = actionLabel(notification);
+                  return (
+                    <article
+                      key={notification.id}
+                      className={`notification-item ${notification.read_at ? "" : "unread"}`}
+                      onClick={() => openNotification(notification)}
+                    >
+                      <div className={`notification-type-icon ${meta.tone}`}>{meta.icon}</div>
+                      <div className="notification-copy">
+                        <div className="notification-title-row">
+                          <strong>{fallbackTitle(notification)}</strong>
+                          {!notification.read_at && <span className="notification-unread-dot" aria-label="Unread" />}
+                        </div>
+                        <p>{notification.message}</p>
+                        <div className="notification-meta-row">
+                          <time dateTime={notification.created_at}>{relativeTime(notification.created_at)}</time>
+                          {label && <span className="notification-action-label">{label} →</span>}
+                        </div>
                       </div>
-                      <p>{notification.message}</p>
-                      <div className="notification-meta-row">
-                        <time dateTime={notification.created_at}>{relativeTime(notification.created_at)}</time>
-                        {label && <span className="notification-action-label">{label} →</span>}
-                      </div>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
+                    </article>
+                  );
+                })}
+              </div>
+            )}
           </aside>
         </div>
       )}

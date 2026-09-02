@@ -47,6 +47,7 @@ import ReportQuestionButton from "./components/ui/ReportQuestionButton";
 import NotificationCenter from "./components/notifications/NotificationCenter";
 import { friendlyErrorMessage } from "./lib/errorMessages";
 import { getExamPerformanceStatus } from "./lib/examPerformance";
+import { detachCurrentPushAssociation, restorePushAssociation } from "./lib/pushNotifications";
 import "./family.css";
 import "./responsive.css";
 import GOOGLE_ICON_B64 from "./assets/icons/google-icon.png";
@@ -4136,8 +4137,10 @@ export default function App() {
         return;
       }
       setSession(s);
-      if (s) loadProfile(s.user.id);
-      else setLoading(false);
+      if (s) {
+        loadProfile(s.user.id);
+        restorePushAssociation(s.user.id).catch(error => console.error("Push association restore failed:", error));
+      } else setLoading(false);
     });
     const {data: L} = supabase.auth.onAuthStateChange((event, s) => {
       // A password-reset link creates a temporary recovery session. It is
@@ -4180,6 +4183,7 @@ export default function App() {
         const isNewSignIn = knownUserId.current !== s.user.id;
         knownUserId.current = s.user.id;
         if (isNewSignIn) {
+          restorePushAssociation(s.user.id).catch(error => console.error("Push association restore failed:", error));
           // Don't yank the user off "become-tutor" - signUp() there also
           // fires this listener, and we want them to see the application
           // confirmation screen (step 4) instead of jumping to the dashboard.
@@ -4212,6 +4216,8 @@ export default function App() {
   };
 
   const handleLogout = async () => {
+    try { await detachCurrentPushAssociation(); }
+    catch (error) { console.error("Push device detach failed during logout:", error); }
     await supabase.auth.signOut();
     showToast("Logged out.");
   };
@@ -4592,13 +4598,13 @@ function ContactView({ setView, showToast, hasTutorApp, isParent }) {
 function PrivacyView({ setView, hasTutorApp, isParent }) {
   const sections = [
     ["Who we are", "SPARK is a digital education platform built for CSEC and CAPE students in the Caribbean, based in Kingston, Jamaica. When this policy says 'we', 'us' or 'our', it means SPARK."],
-    ["What data we collect", "We collect the information you provide when you create an account: your name, email address, and role (student, tutor, or parent). We also collect data on how you use the platform: which lessons you complete, how you answer practice questions, the topics you cover, and which tutors you book sessions with. We collect this data only to deliver the service to you."],
+    ["What data we collect", "We collect the information you provide when you create an account: your name, email address, and role (student, tutor, or parent). We also collect data on how you use the platform: which lessons you complete, how you answer practice questions, the topics you cover, and which tutors you book sessions with. If you choose to enable phone notifications, we store your notification preferences and the browser push subscription information needed to deliver alerts to your device. We collect this data only to deliver the service to you."],
     ["How we use your data", "Your data is used to: (1) manage your account and authenticate your sessions; (2) track your lesson progress and quiz results; (3) surface personalised recommendations based on your quiz performance; (4) connect you with tutors and manage your bookings; (5) improve the platform based on aggregate usage patterns. We do not sell your data to any third party. We do not use your data for advertising purposes, and we have no advertising relationships."],
     ["Students under 18", "Most of our users are minors. We take particular care with student data. We do not collect more information than is needed to deliver the service. We do not share a student's performance data with anyone other than that student themselves and, where a parent account is linked, the parent or guardian."],
     ["Data storage and security", "Your data is stored securely using Supabase, hosted on Amazon Web Services (AWS). Data is encrypted at rest and in transit using industry-standard TLS. Row-level security policies in our database mean that each user can only read and modify their own data - not anyone else's."],
     ["Your rights", "You have the right to: request a copy of the data we hold about you; request correction of any inaccurate information; request deletion of your account and all associated data. To exercise any of these rights, email privacy@sparkcxc.com. We will respond within 14 days."],
     ["Data retention", "If you delete your account, we will delete your personal data within 30 days. Anonymised aggregate statistics (for example, the overall percentage of students who completed a given topic) may be retained indefinitely, as they contain no personally identifiable information."],
-    ["Cookies", "We use essential cookies only - specifically, the session token that keeps you logged in between visits. We do not use tracking cookies, analytics cookies, or advertising cookies of any kind."],
+    ["Cookies and browser storage", "SPARK uses essential browser storage to keep you signed in and preserve application state. If you enable phone notifications, your browser creates a push subscription endpoint and encryption keys that SPARK stores securely so alerts can reach that device. We do not use advertising cookies, tracking pixels, or non-essential analytics cookies in the current product."],
     ["Changes to this policy", "We may update this policy from time to time. We will notify users of any material changes via email and an in-app notice at least 14 days before the change takes effect."],
     ["Contact", "For any privacy-related questions or requests, email privacy@sparkcxc.com."],
   ];
@@ -4607,7 +4613,7 @@ function PrivacyView({ setView, hasTutorApp, isParent }) {
     <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
       <div style={{ background: `linear-gradient(135deg,${T.navyDeep},${T.navyMid})`, color: "#fff", padding: "52px 28px 44px", textAlign: "center", flexShrink: 0 }}>
         <h1 style={{ fontFamily: FD, fontSize: "clamp(28px,4vw,40px)", fontWeight: 700, margin: "0 0 10px" }}>Privacy Policy</h1>
-        <p style={{ fontSize: 14, color: "rgba(255,255,255,.6)" }}>Last updated: January 2026</p>
+        <p style={{ fontSize: 14, color: "rgba(255,255,255,.6)" }}>Last updated: September 2026</p>
       </div>
       <div style={{ maxWidth: 720, margin: "0 auto", padding: "52px 28px", flex: 1 }}>
         {sections.map(([title, content]) => (

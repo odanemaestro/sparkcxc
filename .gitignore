@@ -24,3 +24,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# local Web Push secrets
+supabase/.env.push.local
+
+supabase/.temp/

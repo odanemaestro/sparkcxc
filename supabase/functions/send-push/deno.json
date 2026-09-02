@@ -1,0 +1,7 @@
+{
+  "imports": {
+    "@supabase/supabase-js": "npm:@supabase/supabase-js@2.108.2",
+    "@daaku/webpush": "jsr:@daaku/webpush@0.2.0"
+  }
+}
+

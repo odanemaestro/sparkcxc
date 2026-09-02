@@ -5,6 +5,7 @@ describe("notification routing", () => {
     "booking_created",
     "booking_cancelled",
     "booking_rescheduled",
+    "session_reminder",
   ])("tutor booking notification %s opens My sessions", (type) => {
     const route = getNotificationRoute({ type, booking_id: "b1", tutor_id: "t1", action_label: "View booking" }, "tutor");
     expect(route).toMatchObject({ view: "dashboard", dashboardTarget: { section: "sessions", bookingId: "b1" } });
@@ -16,6 +17,7 @@ describe("notification routing", () => {
     "booking_cancelled_by_tutor",
     "booking_rescheduled",
     "session_completed",
+    "session_reminder",
   ])("student booking notification %s opens My bookings", (type) => {
     const route = getNotificationRoute({ type, booking_id: "b2", student_id: "s1", action_label: "View booking" }, "student");
     expect(route).toMatchObject({ view: "dashboard", dashboardTarget: { section: "bookings", bookingId: "b2" } });
