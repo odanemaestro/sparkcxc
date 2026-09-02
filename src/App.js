@@ -2447,7 +2447,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     });
     if (error) {
       console.error("Failed to cancel student booking:", error);
-      showToast(error);
+      showToast({ type: "error", message: friendlyErrorMessage(error, "We couldn't cancel this booking. Please try again.") });
       return;
     }
     showToast("Booking cancelled. Your tutor has been notified.");
@@ -2463,7 +2463,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     });
     if (error) {
       console.error("Failed to confirm booking:", error);
-      showToast(error);
+      showToast({ type: "error", message: friendlyErrorMessage(error, "We couldn't confirm this booking. Please try again.") });
       return;
     }
     showToast("Session confirmed.");
@@ -2479,7 +2479,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     });
     if (error) {
       console.error("Failed to decline booking:", error);
-      showToast(error);
+      showToast({ type: "error", message: friendlyErrorMessage(error, "We couldn't decline this booking. Please try again.") });
       return;
     }
     showToast("Booking declined.");
@@ -2496,7 +2496,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     });
     if (error) {
       console.error("Failed to cancel tutor booking:", error);
-      showToast(error);
+      showToast({ type: "error", message: friendlyErrorMessage(error, "We couldn't cancel this booking. Please try again.") });
       return;
     }
     showToast("Booking cancelled. The student has been notified.");
