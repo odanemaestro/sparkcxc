@@ -1179,10 +1179,11 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
           background:"rgba(94,234,212,.1)",border:"1px solid rgba(94,234,212,.25)"}}>Official CXC Syllabus · CSEC & CAPE</div>
         <h1 className="home-hero-title" style={{fontFamily:FD,fontSize:"clamp(30px,5vw,54px)",fontWeight:800,
           lineHeight:1.1,margin:"0 0 20px",letterSpacing:"-0.01em"}}>
-          <span className="home-hero-line">The exam prep platform</span>{" "}
-          <span className="home-hero-line">built for <span style={{color:"#FCD34D"}}>the Caribbean</span></span>
+          The exam prep<span className="home-hero-break home-hero-break-mobile" aria-hidden="true" /> platform
+          <span className="home-hero-break home-hero-break-desktop" aria-hidden="true" /> built
+          <span className="home-hero-break home-hero-break-mobile" aria-hidden="true" /> for <span style={{color:"#FCD34D"}}>the Caribbean</span>
         </h1>
-        <p className="home-hero-copy" style={{fontSize:16.5,color:"rgba(255,255,255,.82)",maxWidth:560,margin:"0 auto 30px",lineHeight:1.7}}>
+        <p className="home-hero-copy" style={{fontSize:16.5,color:"rgba(255,255,255,.82)",maxWidth:760,margin:"0 auto 30px",lineHeight:1.7}}>
           A lesson for every topic on the CXC syllabus. Original past-paper style questions. Section and final exams. Verified tutors. One platform built around how CXC actually tests.
         </p>
         <div className="home-hero-actions" style={{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}}>

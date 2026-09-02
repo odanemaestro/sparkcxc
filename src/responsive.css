@@ -157,28 +157,37 @@ input,select,textarea,button{max-width:100%}
   word-break:normal;
 }
 .home-hero-title{
-  max-width:760px;
+  width:min(100%,760px);
   margin-left:auto!important;
   margin-right:auto!important;
-  text-wrap:balance;
+  text-align:left;
+  text-wrap:wrap;
 }
-.home-hero-line{display:block}
-.home-hero-copy{text-wrap:pretty}
+.home-hero-break{display:none}
+.home-hero-break-desktop{display:block}
+.home-hero-copy{
+  width:min(100%,760px);
+  max-width:760px!important;
+  text-align:left;
+  text-wrap:pretty;
+}
 
 @media(max-width:700px){
-  /* The desktop hero uses two visual lines. On mobile they become normal inline text,
-     with an explicit source-space between the spans so words never join together. */
-  .home-hero-line{display:inline}
+  /* Use deliberate mobile line breaks and one common left edge. */
+  .home-hero-break-desktop{display:none}
+  .home-hero-break-mobile{display:block}
   .home-hero-title{
-    max-width:540px;
+    width:min(100%,540px);
     padding:0 2px;
     letter-spacing:-.015em!important;
     line-height:1.1!important;
-    text-wrap:balance;
+    text-align:left;
+    text-wrap:wrap;
   }
   .home-hero-copy{
+    width:min(100%,540px);
     max-width:540px!important;
-    text-align:center;
+    text-align:left;
     text-wrap:pretty;
   }
 
@@ -225,4 +234,47 @@ input,select,textarea,button{max-width:100%}
   .home-hero-title{font-size:clamp(30px,9.5vw,37px)!important;line-height:1.11!important}
   .home-kicker{max-width:100%;white-space:normal;text-align:center;line-height:1.35}
   .spark-brand{gap:7px}
+}
+
+
+/* Action button sizing audit. Let labels determine width and never clip text. */
+.code-form button,
+.link-actions button,
+.family-request-actions button,
+.booking-list-actions button,
+.calendar-agenda-actions button,
+.paper-modal-actions button,
+.paper-result-actions button,
+.paper2-start-actions button,
+.review-actions button,
+.home-hero-actions button {
+  box-sizing:border-box;
+  max-width:100%;
+  overflow:visible;
+  text-overflow:clip;
+  line-height:1.25;
+}
+
+.booking-list-actions button,
+.calendar-agenda-actions button {
+  width:auto;
+  min-width:max-content;
+  white-space:nowrap;
+}
+
+@media(max-width:760px){
+  .code-form button,
+  .link-actions button,
+  .family-request-actions button,
+  .booking-list-actions button,
+  .review-actions button {
+    width:100%!important;
+    min-width:0!important;
+    white-space:normal!important;
+    text-align:center;
+  }
+  .calendar-agenda-actions button {
+    min-width:0;
+    white-space:normal;
+  }
 }
