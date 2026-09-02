@@ -198,7 +198,28 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
     }
   }
 
-  function next() {
+  async function recordCompletedSession() {
+    if (!supabase || !userId || session.length === 0) return;
+    const totalMarks = session.reduce((sum, item) => sum + Number(item.marks || 1), 0);
+    const practiceTitle = requestedSkill || selectedTopic || selectedArea || "CSEC Mathematics";
+    // The database limits repeat alerts for the same practice topic each day.
+    const { error } = await supabase.rpc("spark_record_student_milestone", {
+      p_event_type: "adaptive_session_completed",
+      p_title: practiceTitle,
+      p_score: score,
+      p_max_score: totalMarks,
+      p_skill: requestedSkill || selectedTopic || null,
+      p_metadata: {
+        curriculum_area: selectedArea || null,
+        topic: selectedTopic || null,
+        requested_skill: requestedSkill || null,
+        question_count: session.length
+      }
+    });
+    if (error) console.warn("Could not save Adaptive Practice milestone:", error);
+  }
+
+  async function next() {
     if (index + 1 < session.length) {
       setIndex(i => i + 1);
       setAnswer("");
@@ -206,7 +227,8 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
       setVerdict(null);
       setSelfAssessed(false);
     } else {
-      start();
+      await recordCompletedSession();
+      await start();
     }
   }
 

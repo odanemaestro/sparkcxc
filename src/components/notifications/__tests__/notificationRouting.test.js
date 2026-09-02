@@ -60,6 +60,33 @@ describe("notification routing", () => {
     expect(route).toMatchObject({ view: "dashboard", dashboardTarget: { scope: "parent", studentId: "s2", attemptKey: "a1", anchor: "parent-exam-results" } });
   });
 
+  test.each([
+    "child_lesson_completed",
+    "child_topic_quiz_completed",
+    "child_adaptive_session_completed",
+    "child_section_completed",
+    "child_section_test_completed",
+    "child_course_completed",
+    "child_mastery_milestone",
+    "child_weak_skill_alert",
+    "child_skill_improved",
+  ])("%s opens the correct child's learning activity", (type) => {
+    const route = getNotificationRoute({
+      type,
+      metadata: { student_id: "s-learning", milestone_id: "m1", skill: "Factorisation" },
+    }, "parent");
+    expect(route).toMatchObject({
+      view: "dashboard",
+      dashboardTarget: {
+        scope: "parent",
+        section: "progress",
+        studentId: "s-learning",
+        milestoneId: "m1",
+        anchor: "parent-learning-activity",
+      },
+    });
+  });
+
   test("parent booking update opens the correct child's booking area", () => {
     const route = getNotificationRoute({ type: "booking_confirmed", booking_id: "b3", action_label: "View progress", metadata: { student_id: "s3" } }, "parent");
     expect(route).toMatchObject({ view: "dashboard", dashboardTarget: { scope: "parent", studentId: "s3", bookingId: "b3", anchor: "parent-booking" } });

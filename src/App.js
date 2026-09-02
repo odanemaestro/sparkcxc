@@ -753,27 +753,74 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
     window.scrollTo(0, 0);
   }, [activeSectionIdx, activeTopicIdx, inQuiz]);
 
-  const markTopicComplete = useCallback(async (sIdx, tIdx) => {
+  const markTopicComplete = useCallback(async (sIdx, tIdx, options = {}) => {
     const key = `${sIdx}-${tIdx}`;
+    const source = options.source === "quiz" ? "quiz" : "manual";
+    const topicTitle = sections[sIdx]?.topics[tIdx];
+    const sectionTitle = sections[sIdx]?.title || `Section ${sIdx + 1}`;
+    const sectionTopics = sections[sIdx]?.topics || [];
+    const sectionWillBeComplete = sectionTopics.length > 0 && sectionTopics.every((_, ti) => (
+      ti === tIdx || completedTopics.has(`${sIdx}-${ti}`)
+    ));
+
     setCompletedTopics(prev => new Set([...prev, key]));
     showToast("Topic marked complete ✓");
-    if (user?.id) {
-      // Find or create the lesson row for this topic and mark progress
-      const topicTitle = sections[sIdx]?.topics[tIdx];
-      const { data: lesson } = await supabase.from("lessons")
-        .select("id").eq("title", topicTitle).single();
-      if (lesson?.id) {
-        await supabase.from("lesson_progress").upsert({
-          user_id: user.id, lesson_id: lesson.id,
-          completed: true, completed_at: new Date().toISOString()
-        });
-      }
-    }
-  }, [user, sections, showToast]);
+    if (!user?.id) return;
 
-  const handleQuizComplete = (correct, total) => {
-    if (correct >= total * 0.6) {
-      markTopicComplete(activeSectionIdx, activeTopicIdx);
+    // Save the completion source so the database can avoid sending parents a
+    // duplicate lesson alert when a passed topic test marks the same lesson
+    // complete. The scored topic-test notification is more useful in that case.
+    const { data: lesson } = await supabase.from("lessons")
+      .select("id").eq("title", topicTitle).single();
+    if (!lesson?.id) return;
+
+    const { error: progressError } = await supabase.from("lesson_progress").upsert({
+      user_id: user.id,
+      lesson_id: lesson.id,
+      completed: true,
+      completion_source: source,
+      completed_at: new Date().toISOString()
+    });
+    if (progressError) {
+      console.error("Could not save lesson completion:", progressError);
+      return;
+    }
+
+    // Section completion is a meaningful parent milestone. The RPC dedupes it,
+    // so completing or revisiting the final topic cannot create repeat alerts.
+    if (sectionWillBeComplete) {
+      const { error: milestoneError } = await supabase.rpc("spark_record_student_milestone", {
+        p_event_type: "section_completed",
+        p_title: sectionTitle,
+        p_score: null,
+        p_max_score: null,
+        p_skill: null,
+        p_metadata: { section_index: sIdx, section_title: sectionTitle }
+      });
+      if (milestoneError) console.warn("Could not save section completion milestone:", milestoneError);
+    }
+  }, [user, sections, showToast, completedTopics]);
+
+  const handleQuizComplete = async (correct, total) => {
+    if (user?.id && total > 0) {
+      // The database limits repeat alerts for the same topic on the same day.
+      const { error } = await supabase.rpc("spark_record_student_milestone", {
+        p_event_type: "topic_quiz_completed",
+        p_title: activeTopic,
+        p_score: correct,
+        p_max_score: total,
+        p_skill: activeTopic,
+        p_metadata: {
+          section_index: activeSectionIdx,
+          section_title: activeSection?.title || null,
+          topic: activeTopic
+        }
+      });
+      if (error) console.warn("Could not save topic test milestone:", error);
+    }
+
+    if (total > 0 && correct >= total * 0.6) {
+      await markTopicComplete(activeSectionIdx, activeTopicIdx, { source: "quiz" });
     }
   };
 
@@ -1131,7 +1178,8 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
           background:"rgba(94,234,212,.1)",border:"1px solid rgba(94,234,212,.25)"}}>Official CXC Syllabus · CSEC & CAPE</div>
         <h1 className="home-hero-title" style={{fontFamily:FD,fontSize:"clamp(30px,5vw,54px)",fontWeight:800,
           lineHeight:1.1,margin:"0 0 20px",letterSpacing:"-0.01em"}}>
-          The exam prep platform<br/>built for <span style={{color:"#FCD34D"}}>the Caribbean</span>
+          <span className="home-hero-line">The exam prep platform</span>{" "}
+          <span className="home-hero-line">built for <span style={{color:"#FCD34D"}}>the Caribbean</span></span>
         </h1>
         <p className="home-hero-copy" style={{fontSize:16.5,color:"rgba(255,255,255,.82)",maxWidth:560,margin:"0 auto 30px",lineHeight:1.7}}>
           A lesson for every topic on the CXC syllabus. Original past-paper style questions. Section and final exams. Verified tutors. One platform built around how CXC actually tests.
@@ -3748,6 +3796,18 @@ function ReviewModal({ booking, user, onClose, onSubmitted, showToast }) {
   );
 }
 
+const PARENT_MILESTONE_META = {
+  lesson_completed: { short: "L", label: "Lesson completed" },
+  topic_quiz_completed: { short: "Q", label: "Topic test" },
+  adaptive_session_completed: { short: "A", label: "Adaptive Practice" },
+  section_completed: { short: "S", label: "Section completed" },
+  section_test_completed: { short: "T", label: "Section test" },
+  course_completed: { short: "✓", label: "Course completed" },
+  mastery_milestone: { short: "★", label: "Mastery milestone" },
+  weak_skill_alert: { short: "!", label: "Needs attention" },
+  skill_improved: { short: "↑", label: "Skill improving" },
+};
+
 function ParentView({ user, profile, setView, showToast }) {
   const [links, setLinks] = useState([]);
   const [children, setChildren] = useState([]);
@@ -3807,12 +3867,13 @@ function ParentView({ user, profile, setView, showToast }) {
     if (!notificationTarget?.anchor) return undefined;
     const needsSelectedChild = notificationTarget.anchor !== "parent-family";
     if (needsSelectedChild && notificationTarget.studentId && String(selectedChild?.id || "") !== String(notificationTarget.studentId)) return undefined;
-    if (needsSelectedChild && (notificationTarget.attemptKey || notificationTarget.bookingId) && !childData) return undefined;
+    if (needsSelectedChild && (notificationTarget.attemptKey || notificationTarget.bookingId || notificationTarget.milestoneId) && !childData) return undefined;
 
     const scrollTimer = window.setTimeout(() => {
       let selector = `[data-notification-anchor="${notificationTarget.anchor}"]`;
       if (notificationTarget.attemptKey) selector = `[data-notification-attempt="${notificationTarget.attemptKey}"]`;
       if (notificationTarget.bookingId) selector = `[data-notification-booking="${notificationTarget.bookingId}"]`;
+      if (notificationTarget.milestoneId) selector = `[data-notification-milestone="${notificationTarget.milestoneId}"]`;
       const target = document.querySelector(selector) || document.querySelector(`[data-notification-anchor="${notificationTarget.anchor}"]`);
       target?.scrollIntoView({ behavior: "smooth", block: "center" });
     }, 150);
@@ -3845,18 +3906,19 @@ function ParentView({ user, profile, setView, showToast }) {
 
   const loadChildData = useCallback(async () => {
     if (!selectedChild?.id) { setChildData(null); return; }
-    const [prog, attempts, lessons, bookings, examAttempts] = await Promise.all([
+    const [prog, attempts, lessons, bookings, examAttempts, milestones] = await Promise.all([
       supabase.from("csec_skill_progress").select("*").eq("user_id", selectedChild.id).order("mastery_score", {ascending:true}),
       supabase.from("csec_question_attempts").select("id,correct,attempted_at,skill").eq("user_id", selectedChild.id).order("attempted_at", {ascending:false}).limit(20),
       supabase.from("lesson_progress").select("id,lesson_id,completed,completed_at").eq("user_id", selectedChild.id).eq("completed", true),
       supabase.from("bookings").select("id,subject,session_date,start_time,duration_minutes,status,rate_jmd,tutors(name)").eq("student_id", selectedChild.id).order("session_date", {ascending:false}).limit(100),
       supabase.from("practice_exam_attempts").select("id,attempt_key,paper_type,score,max_score,percent,completed_at,duration_seconds,timed_out,answered_count,total_questions,correct_count").eq("user_id", selectedChild.id).order("completed_at", {ascending:false}).limit(20),
+      supabase.from("learning_milestones").select("id,event_type,title,score,max_score,percent,skill,lesson_id,metadata,created_at").eq("user_id", selectedChild.id).order("created_at", {ascending:false}).limit(40),
     ]);
     const rows = prog.data || [];
     const attemptsRows = attempts.data || [];
     const mastery = rows.length ? Math.round(rows.reduce((s,r)=>s+Number(r.mastery_score||0),0)/rows.length) : 0;
     const weakest = rows.filter(r=>Number(r.mastery_score)<80).slice(0,3);
-    setChildData({ progress:rows, attempts:attemptsRows, lessons:lessons.data||[], bookings:bookings.data||[], examAttempts:examAttempts.data||[], mastery, weakest });
+    setChildData({ progress:rows, attempts:attemptsRows, lessons:lessons.data||[], bookings:bookings.data||[], examAttempts:examAttempts.data||[], milestones:milestones.data||[], mastery, weakest });
   }, [selectedChild?.id]);
 
   useEffect(() => { loadChildData(); }, [loadChildData]);
@@ -3870,7 +3932,17 @@ function ParentView({ user, profile, setView, showToast }) {
         filter: `user_id=eq.${selectedChild.id}`,
       }, () => loadChildData())
       .subscribe();
-    return () => { supabase.removeChannel(examChannel); };
+    const milestoneChannel = supabase
+      .channel(`parent-learning-milestones-${user.id}-${selectedChild.id}`)
+      .on("postgres_changes", {
+        event: "INSERT", schema: "public", table: "learning_milestones",
+        filter: `user_id=eq.${selectedChild.id}`,
+      }, () => loadChildData())
+      .subscribe();
+    return () => {
+      supabase.removeChannel(examChannel);
+      supabase.removeChannel(milestoneChannel);
+    };
   }, [selectedChild?.id, user.id, loadChildData]);
 
   const requestLink = async () => {
@@ -3891,6 +3963,7 @@ function ParentView({ user, profile, setView, showToast }) {
   const paper1Attempts = examAttempts.filter(a => a.paper_type === "paper1");
   const paper2Attempts = examAttempts.filter(a => a.paper_type === "paper2");
   const examAverage = examAttempts.length ? Math.round(examAttempts.reduce((sum, a) => sum + Number(a.percent || 0), 0) / examAttempts.length) : 0;
+  const learningMilestones = childData?.milestones || [];
   const formatExamDuration = seconds => {
     const safe = Math.max(0, Number(seconds) || 0);
     const hours = Math.floor(safe / 3600);
@@ -3927,6 +4000,29 @@ function ParentView({ user, profile, setView, showToast }) {
         {selectedChild && childData && <section className="parent-section">
           <div className="section-heading"><div><div className="section-kicker">LEARNING SNAPSHOT</div><h2>{selectedChild.name}'s progress</h2></div><span className="mastery-pill">{childData.mastery}% mastery</span></div>
           <div className="parent-stat-grid"><div className="parent-stat"><strong>{childData.mastery}%</strong><span>Average skill mastery</span></div><div className="parent-stat"><strong>{childData.lessons.length}</strong><span>Lessons completed</span></div><div className="parent-stat"><strong>{examAttempts.length}</strong><span>Full exam attempts</span></div><div className="parent-stat"><strong>{childData.bookings.filter(b=>b.status!=="cancelled"&&b.status!=="declined").length}</strong><span>Tutor bookings</span></div></div>
+
+          <div className="parent-learning-panel" data-notification-anchor="parent-learning-activity">
+            <div className="parent-learning-head">
+              <div><div className="panel-title">Recent learning activity</div><p>Completed lessons, tests, Adaptive Practice and mastery milestones appear here.</p></div>
+              <span className="learning-count-pill">{learningMilestones.length} update{learningMilestones.length === 1 ? "" : "s"}</span>
+            </div>
+            {learningMilestones.length ? <div className="learning-milestone-list">{(() => {
+              const targetId = notificationTarget?.milestoneId;
+              const targetMilestone = targetId ? learningMilestones.find(item => String(item.id) === String(targetId)) : null;
+              const rows = learningMilestones.slice(0, 10);
+              if (targetMilestone && !rows.some(item => item.id === targetMilestone.id)) rows.unshift(targetMilestone);
+              return rows.map(item => {
+                const meta = PARENT_MILESTONE_META[item.event_type] || { short: "i", label: "Learning update" };
+                const isTarget = targetId && String(item.id) === String(targetId);
+                const percent = item.percent == null ? null : Math.round(Number(item.percent));
+                return <article className={`learning-milestone-row ${isTarget ? "notification-learning-target" : ""}`} data-notification-milestone={item.id} key={item.id}>
+                  <div className={`learning-milestone-icon ${item.event_type}`}>{meta.short}</div>
+                  <div className="learning-milestone-main"><div className="learning-milestone-title"><strong>{item.title}</strong><span>{meta.label}</span></div><div className="learning-milestone-meta"><span>{new Date(item.created_at).toLocaleString([], {dateStyle:"medium", timeStyle:"short"})}</span>{item.skill && item.skill !== item.title && <span>{item.skill}</span>}</div></div>
+                  {percent != null && <div className="learning-milestone-score"><strong>{percent}%</strong>{item.score != null && item.max_score != null && <span>{Number(item.score)}/{Number(item.max_score)}</span>}</div>}
+                </article>;
+              });
+            })()}</div> : <div className="learning-milestone-empty"><strong>No learning milestones yet.</strong><span>New lesson, test and practice milestones will appear as the student studies.</span></div>}
+          </div>
 
           <div className="exam-results-panel" data-notification-anchor="parent-exam-results">
             <div className="exam-results-head">

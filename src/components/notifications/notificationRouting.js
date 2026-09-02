@@ -7,6 +7,18 @@ const PAPER_TYPES = new Set([
 
 const FAMILY_TYPES = new Set(["family_link_request", "family_link_update"]);
 
+const PARENT_LEARNING_TYPES = new Set([
+  "child_lesson_completed",
+  "child_topic_quiz_completed",
+  "child_adaptive_session_completed",
+  "child_section_completed",
+  "child_section_test_completed",
+  "child_course_completed",
+  "child_mastery_milestone",
+  "child_weak_skill_alert",
+  "child_skill_improved",
+]);
+
 function metadataFor(notification) {
   return notification?.metadata && typeof notification.metadata === "object"
     ? notification.metadata
@@ -44,6 +56,20 @@ export function getNotificationRoute(notification, role, currentUserId = null) {
         scope: "student",
         section: "progress",
         anchor: "student-progress",
+      },
+    };
+  }
+
+  if (PARENT_LEARNING_TYPES.has(type)) {
+    return {
+      view: "dashboard",
+      dashboardTarget: {
+        scope: "parent",
+        section: "progress",
+        studentId: metadata.student_id || notification.student_id || null,
+        milestoneId: metadata.milestone_id || null,
+        skill: metadata.skill || null,
+        anchor: "parent-learning-activity",
       },
     };
   }
