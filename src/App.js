@@ -2441,36 +2441,47 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       showToast("This session starts too soon to cancel. Please contact your tutor directly.");
       return;
     }
-    const { error } = await supabase.from("bookings").update({
-      status: "cancelled",
-      cancellation_reason: reason.trim(),
-      cancelled_by: user.id,
-      cancelled_at: new Date().toISOString(),
-    }).eq("id", booking.id);
-    if (error) { showToast("Couldn't cancel this booking. Please try again."); return; }
+    const { error } = await supabase.rpc("cancel_booking_as_student", {
+      p_booking_id: booking.id,
+      p_reason: reason.trim(),
+    });
+    if (error) {
+      console.error("Failed to cancel student booking:", error);
+      showToast(error);
+      return;
+    }
     showToast("Booking cancelled. Your tutor has been notified.");
     setCancelTarget(null);
     loadStudentBookings();
   };
 
   const acceptBooking = async (booking) => {
-    const { error } = await supabase.from("bookings").update({
-      status: "confirmed",
-    }).eq("id", booking.id);
-    if (error) { showToast("Couldn't confirm this booking. Please try again."); return; }
+    const { error } = await supabase.rpc("respond_to_booking", {
+      p_booking_id: booking.id,
+      p_action: "confirm",
+      p_reason: null,
+    });
+    if (error) {
+      console.error("Failed to confirm booking:", error);
+      showToast(error);
+      return;
+    }
     showToast("Session confirmed.");
     loadTutorBookings();
   };
 
   const declineBooking = async (booking, reason) => {
     if (!reason || !reason.trim()) { showToast("Please give a reason for declining."); return; }
-    const { error } = await supabase.from("bookings").update({
-      status: "declined",
-      cancellation_reason: reason.trim(),
-      cancelled_by: user.id,
-      cancelled_at: new Date().toISOString(),
-    }).eq("id", booking.id);
-    if (error) { showToast("Couldn't decline this booking. Please try again."); return; }
+    const { error } = await supabase.rpc("respond_to_booking", {
+      p_booking_id: booking.id,
+      p_action: "decline",
+      p_reason: reason.trim(),
+    });
+    if (error) {
+      console.error("Failed to decline booking:", error);
+      showToast(error);
+      return;
+    }
     showToast("Booking declined.");
     setDeclineTarget(null);
     loadTutorBookings();
@@ -2478,13 +2489,16 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
 
   const tutorCancelBooking = async (booking, reason) => {
     if (!reason || !reason.trim()) { showToast("Please give a reason for cancelling."); return; }
-    const { error } = await supabase.from("bookings").update({
-      status: "cancelled",
-      cancellation_reason: reason.trim(),
-      cancelled_by: user.id,
-      cancelled_at: new Date().toISOString(),
-    }).eq("id", booking.id);
-    if (error) { showToast("Couldn't cancel this booking. Please try again."); return; }
+    const { error } = await supabase.rpc("respond_to_booking", {
+      p_booking_id: booking.id,
+      p_action: "cancel",
+      p_reason: reason.trim(),
+    });
+    if (error) {
+      console.error("Failed to cancel tutor booking:", error);
+      showToast(error);
+      return;
+    }
     showToast("Booking cancelled. The student has been notified.");
     setTutorCancelTarget(null);
     loadTutorBookings();

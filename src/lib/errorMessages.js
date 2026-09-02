@@ -15,6 +15,16 @@ export const friendlyErrorMessage = (value) => {
     return "This review will be available after your tutoring session has finished. Please come back once the session is over.";
   if (msg.includes("booking not found"))
     return "We couldn't find that tutoring session. Please refresh your bookings and try again.";
+  if (msg.includes("only the assigned tutor"))
+    return "Only the tutor assigned to this booking can update it.";
+  if (msg.includes("only a pending booking can be confirmed") || msg.includes("only a pending booking can be declined"))
+    return "This booking has already been updated. Refresh your sessions and try again.";
+  if (msg.includes("this booking can no longer be cancelled") || msg.includes("only a confirmed booking can be cancelled"))
+    return "This booking can no longer be cancelled.";
+  if (msg.includes("session starts too soon to cancel"))
+    return "This session starts too soon to cancel. Please contact the other person directly.";
+  if (msg.includes("you can only cancel your own booking"))
+    return "You can only cancel a booking made from your account.";
   if (msg.includes("only confirmed tutoring sessions"))
     return "Only confirmed tutoring sessions can be reviewed.";
   if (msg.includes("only review your own tutoring sessions"))
