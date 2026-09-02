@@ -13,7 +13,7 @@ function metadataFor(notification) {
     : {};
 }
 
-export function getNotificationRoute(notification, role) {
+export function getNotificationRoute(notification, role, currentUserId = null) {
   if (!notification) return { view: null, dashboardTarget: null };
 
   const type = String(notification.type || "");
@@ -85,7 +85,16 @@ export function getNotificationRoute(notification, role) {
       };
     }
 
-    const tutorBooking = role === "tutor" || Boolean(notification.tutor_id);
+    // Booking rows normally contain both student_id and tutor_id. Do not
+    // infer the recipient from the mere presence of tutor_id, otherwise a
+    // student's notification is incorrectly sent to the tutor-only
+    // "sessions" section and the dashboard appears blank. Prefer an exact
+    // recipient id match, then fall back to the signed-in role for older rows.
+    const userId = currentUserId ? String(currentUserId) : null;
+    const recipientIsTutor = Boolean(userId && notification.tutor_id && String(notification.tutor_id) === userId);
+    const recipientIsStudent = Boolean(userId && notification.student_id && String(notification.student_id) === userId);
+    const tutorBooking = recipientIsTutor || (!recipientIsStudent && role === "tutor");
+
     return {
       view: "dashboard",
       dashboardTarget: {

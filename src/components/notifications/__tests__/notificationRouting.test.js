@@ -21,6 +21,35 @@ describe("notification routing", () => {
     expect(route).toMatchObject({ view: "dashboard", dashboardTarget: { section: "bookings", bookingId: "b2" } });
   });
 
+
+  test("student booking routing ignores the tutor_id stored on the booking row", () => {
+    const route = getNotificationRoute({
+      type: "booking_confirmed",
+      booking_id: "b-real",
+      student_id: "student-1",
+      tutor_id: "tutor-1",
+      action_label: "View booking",
+    }, "student", "student-1");
+    expect(route).toMatchObject({
+      view: "dashboard",
+      dashboardTarget: { scope: "student", section: "bookings", bookingId: "b-real" },
+    });
+  });
+
+  test("approved tutor accounts route their own booking notifications to My sessions", () => {
+    const route = getNotificationRoute({
+      type: "booking_created",
+      booking_id: "b-tutor",
+      student_id: "student-1",
+      tutor_id: "same-user",
+      action_label: "View booking",
+    }, "student", "same-user");
+    expect(route).toMatchObject({
+      view: "dashboard",
+      dashboardTarget: { scope: "tutor", section: "sessions", bookingId: "b-tutor" },
+    });
+  });
+
   test.each(["paper1_completed", "paper2_completed"])("%s opens student progress", (type) => {
     const route = getNotificationRoute({ type, action_view: "dashboard", action_label: "View progress" }, "student");
     expect(route).toMatchObject({ view: "dashboard", dashboardTarget: { section: "progress", anchor: "student-progress" } });

@@ -2201,6 +2201,14 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   // weren't showing up here).
   const isTutor = profile?.role === "tutor" || tutorApp?.status === "approved";
   const isStudent = profile?.role === "student";
+  const normalizeDashboardSection = useCallback((section) => {
+    if (isTutor) {
+      if (section === "bookings") return "sessions";
+      return ["overview", "sessions", "students", "reviews", "earnings", "profile"].includes(section) ? section : "overview";
+    }
+    if (section === "sessions") return "bookings";
+    return ["overview", "subjects", "progress", "bookings"].includes(section) ? section : "overview";
+  }, [isTutor]);
   const [notificationTarget, setNotificationTarget] = useState(() => {
     try {
       const raw = sessionStorage.getItem("spark_dashboard_notification_target");
@@ -2211,7 +2219,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       return null;
     }
   });
-  const [sec, setSec] = useState(() => notificationTarget?.section || "overview");
+  const [sec, setSec] = useState(() => normalizeDashboardSection(notificationTarget?.section || "overview"));
   const [bookings, setBookings] = useState([]);
   const [progressData, setProgressData] = useState([]);
   const [examAttempts, setExamAttempts] = useState([]);
@@ -2237,19 +2245,19 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       if (!target?.section) return;
       try { sessionStorage.removeItem("spark_dashboard_notification_target"); } catch (error) {}
       setNotificationTarget(target);
-      setSec(target.section);
+      setSec(normalizeDashboardSection(target.section));
       if (target.bookingId) setBookingView("list");
     };
 
     window.addEventListener("spark:dashboard-notification-target", handleNotificationTarget);
     return () => window.removeEventListener("spark:dashboard-notification-target", handleNotificationTarget);
-  }, []);
+  }, [normalizeDashboardSection]);
 
   useEffect(() => {
     if (!notificationTarget?.section) return;
-    setSec(notificationTarget.section);
+    setSec(normalizeDashboardSection(notificationTarget.section));
     if (notificationTarget.bookingId) setBookingView("list");
-  }, [notificationTarget]);
+  }, [notificationTarget, normalizeDashboardSection]);
 
   useEffect(() => {
     const bookingId = notificationTarget?.bookingId;

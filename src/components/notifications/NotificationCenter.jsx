@@ -148,7 +148,7 @@ export default function NotificationCenter({ user, profile, setView }) {
     await markRead(notification);
 
     const role = profile?.role || null;
-    const route = getNotificationRoute(notification, role);
+    const route = getNotificationRoute(notification, role, user?.id);
     let target = route.dashboardTarget ? { ...route.dashboardTarget } : null;
 
     // Older parent booking notifications may not contain student_id in their
