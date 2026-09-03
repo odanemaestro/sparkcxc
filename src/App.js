@@ -1777,23 +1777,43 @@ function canCancelBooking(b) {
   return sessionAt.getTime() - Date.now() >= 60 * 60 * 1000;
 }
 
-// Derived display status - we never overwrite a booking's real DB status
-// when its time simply passes; instead we compute "completed" for display
-// (and for sorting) so the history stays intact and truthful.
+// Derived display status. We keep the booking response state in the database
+// and derive time-based UI states consistently across student, tutor and parent views.
+// Pending requests expire at their start time; confirmed sessions complete after their end time.
 function bookingDisplayStatus(b) {
+  if (!b) return "pending";
   if (b.status === "cancelled") return "cancelled";
   if (b.status === "declined") return "declined";
-  const startTime = b.start_time || "00:00:00";
-  const sessionAt = new Date(`${b.session_date}T${startTime}`);
-  if (!isNaN(sessionAt.getTime()) && sessionAt.getTime() < Date.now()) return "completed";
-  return b.status === "confirmed" ? "confirmed" : "pending";
+
+  const baseStatus = b.status === "confirmed" ? "confirmed" : "pending";
+
+  // A booking without a complete scheduled time should keep its real response state.
+  if (!b.session_date || !b.start_time) return baseStatus;
+
+  const sessionStart = calendarDateTime(b.session_date, b.start_time);
+  if (!sessionStart || isNaN(sessionStart.getTime())) return baseStatus;
+
+  const nowMs = Date.now();
+
+  if (baseStatus === "pending" && sessionStart.getTime() <= nowMs) {
+    return "expired";
+  }
+
+  if (baseStatus === "confirmed") {
+    const durationMinutes = Number(b.duration_minutes || 60);
+    const sessionEnd = new Date(sessionStart.getTime() + durationMinutes * 60 * 1000);
+    if (sessionEnd.getTime() <= nowMs) return "completed";
+  }
+
+  return baseStatus;
 }
 
-const BOOKING_STATUS_ORDER = { pending: 0, confirmed: 1, completed: 2, declined: 3, cancelled: 4 };
+const BOOKING_STATUS_ORDER = { pending: 0, confirmed: 1, completed: 2, expired: 3, declined: 4, cancelled: 5 };
 const BOOKING_STATUS_BADGE = {
   pending:   { c: "amber", label: "Pending" },
   confirmed: { c: "green", label: "Confirmed" },
   completed: { c: "teal",  label: "Completed" },
+  expired:   { c: "red",   label: "Not confirmed" },
   declined:  { c: "red",   label: "Declined" },
   cancelled: { c: "red",   label: "Cancelled" },
 };
@@ -3010,6 +3030,11 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   };
 
   const acceptBooking = async (booking) => {
+    if (bookingDisplayStatus(booking) !== "pending") {
+      showToast("This booking can no longer be accepted because its scheduled start time has passed.");
+      loadTutorBookings();
+      return;
+    }
     const { error } = await supabase.rpc("respond_to_booking", {
       p_booking_id: booking.id,
       p_action: "confirm",
@@ -3089,7 +3114,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   const streak = computeStudyStreak(progressData);
   const now = new Date();
   const todayStr = now.toLocaleDateString("en-CA", { timeZone: "America/Jamaica" });
-  const upcomingSessions = bookings.filter(b => !b.completed_at && b.session_date >= todayStr && b.status !== "cancelled" && b.status !== "declined");
+  const upcomingSessions = bookings.filter(b => { const status = bookingDisplayStatus(b); return status === "pending" || status === "confirmed"; });
   // A session becomes completed only after its actual end time has passed. The database
   // sync function stamps completed_at, so earnings are not based on date-only guesses.
   const completedSessions = bookings.filter(b => !!b.completed_at && b.status === "confirmed");
@@ -3609,7 +3634,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 {[...bookings].sort((a,b) => bookingSort === "status" ? BOOKING_STATUS_ORDER[bookingDisplayStatus(a)] - BOOKING_STATUS_ORDER[bookingDisplayStatus(b)] : b.session_date.localeCompare(a.session_date)).map(b => {
                   const dispStatus = bookingDisplayStatus(b);
                   const cancellable = canCancelBooking(b) && dispStatus !== "completed";
-                  return <Card key={b.id} className={String(notificationTarget?.bookingId || "") === String(b.id) ? "notification-booking-target" : ""} style={{marginBottom:14}}><div className="booking-list-row" style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",gap:14}}><div style={{minWidth:0}}><div style={{fontWeight:600,color:T.ink,fontSize:15}}>{isTutor ? b.profiles?.name : b.tutors?.name}</div><div style={{fontSize:13,color:T.textMuted,marginTop:2}}>{b.subject} · {b.session_date}{b.start_time ? ` · ${fmtSessionRange(b.start_time, b.duration_minutes)}` : ""}</div><div style={{fontSize:13,color:T.textMuted}}>J${b.rate_jmd?.toLocaleString()}/hr</div>{dispStatus === "cancelled" && b.cancellation_reason && <div style={{fontSize:12,color:T.textMuted,marginTop:6,fontStyle:"italic"}}>{b.cancelled_by === user.id ? "You cancelled" : "Cancelled by tutor"} - {b.cancellation_reason}</div>}{dispStatus === "declined" && b.cancellation_reason && <div style={{fontSize:12,color:T.textMuted,marginTop:6,fontStyle:"italic"}}>Declined by tutor - {b.cancellation_reason}</div>}</div><div className="booking-list-actions" style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:8}}><Badge c={BOOKING_STATUS_BADGE[dispStatus].c}>{BOOKING_STATUS_BADGE[dispStatus].label}</Badge>{dispStatus === "confirmed" && <AddToCalendar booking={b} isTutor={isTutor} user={user} />}{cancellable && <button onClick={() => setCancelTarget(b)} style={{background:"none",border:`1.5px solid ${T.red}`,color:T.red,borderRadius:7,padding:"5px 11px",fontSize:12,cursor:"pointer",fontFamily:FB}}>Cancel booking</button>}{dispStatus === "completed" && (() => {const alreadyReviewed = studentReviews.some(r => r.booking_id === b.id); return alreadyReviewed ? <span style={{fontSize:11,color:T.emerald,fontWeight:600}}>✓ Review submitted</span> : <button className="cp-btn cp-btn-teal" onClick={() => setReviewTarget(b)}>Leave a review</button>;})()}{!cancellable && dispStatus !== "cancelled" && dispStatus !== "declined" && dispStatus !== "completed" && <span style={{fontSize:11,color:T.textMuted}}>Too close to cancel</span>}</div></div></Card>;
+                  return <Card key={b.id} className={String(notificationTarget?.bookingId || "") === String(b.id) ? "notification-booking-target" : ""} style={{marginBottom:14}}><div className="booking-list-row" style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",gap:14}}><div style={{minWidth:0}}><div style={{fontWeight:600,color:T.ink,fontSize:15}}>{isTutor ? b.profiles?.name : b.tutors?.name}</div><div style={{fontSize:13,color:T.textMuted,marginTop:2}}>{b.subject} · {b.session_date}{b.start_time ? ` · ${fmtSessionRange(b.start_time, b.duration_minutes)}` : ""}</div><div style={{fontSize:13,color:T.textMuted}}>J${b.rate_jmd?.toLocaleString()}/hr</div>{dispStatus === "cancelled" && b.cancellation_reason && <div style={{fontSize:12,color:T.textMuted,marginTop:6,fontStyle:"italic"}}>{b.cancelled_by === user.id ? "You cancelled" : "Cancelled by tutor"} - {b.cancellation_reason}</div>}{dispStatus === "declined" && b.cancellation_reason && <div style={{fontSize:12,color:T.textMuted,marginTop:6,fontStyle:"italic"}}>Declined by tutor - {b.cancellation_reason}</div>}</div><div className="booking-list-actions" style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:8}}><Badge c={BOOKING_STATUS_BADGE[dispStatus].c}>{BOOKING_STATUS_BADGE[dispStatus].label}</Badge>{dispStatus === "confirmed" && <AddToCalendar booking={b} isTutor={isTutor} user={user} />}{cancellable && <button onClick={() => setCancelTarget(b)} style={{background:"none",border:`1.5px solid ${T.red}`,color:T.red,borderRadius:7,padding:"5px 11px",fontSize:12,cursor:"pointer",fontFamily:FB}}>Cancel booking</button>}{dispStatus === "completed" && (() => {const alreadyReviewed = studentReviews.some(r => r.booking_id === b.id); return alreadyReviewed ? <span style={{fontSize:11,color:T.emerald,fontWeight:600}}>✓ Review submitted</span> : <button className="cp-btn cp-btn-teal" onClick={() => setReviewTarget(b)}>Leave a review</button>;})()}{!cancellable && dispStatus !== "cancelled" && dispStatus !== "declined" && dispStatus !== "completed" && dispStatus !== "expired" && <span style={{fontSize:11,color:T.textMuted}}>Too close to cancel</span>}</div></div></Card>;
                 })}
               </>
             )}
@@ -4599,7 +4624,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
               if (targetBooking && !rows.some(b => b.id === targetBooking.id)) rows.unshift(targetBooking);
               return rows.map(b => {
                 const isTargetBooking = targetId && String(b.id) === String(targetId);
-                return <div className={`session-row ${isTargetBooking ? "notification-booking-target" : ""}`} data-notification-booking={b.id} key={b.id}><div><strong>{b.tutors?.name || "Tutor"}</strong><span>{b.subject} · {b.session_date}{b.start_time ? ` · ${fmtSessionRange(b.start_time, b.duration_minutes)}` : ""}</span></div><Badge c={b.status==="confirmed"?"green":b.status==="pending"?"amber":"ink"}>{b.status}</Badge></div>;
+                return <div className={`session-row ${isTargetBooking ? "notification-booking-target" : ""}`} data-notification-booking={b.id} key={b.id}><div><strong>{b.tutors?.name || "Tutor"}</strong><span>{b.subject} · {b.session_date}{b.start_time ? ` · ${fmtSessionRange(b.start_time, b.duration_minutes)}` : ""}</span></div>{(() => { const status = bookingDisplayStatus(b); return <Badge c={BOOKING_STATUS_BADGE[status]?.c || "ink"}>{BOOKING_STATUS_BADGE[status]?.label || status}</Badge>; })()}</div>;
               });
             })() : <p className="muted-copy">No tutor sessions yet.</p>}</div>
           </div>
