@@ -2380,7 +2380,319 @@ function SessionCalendar({ bookings, isTutor, user, studentReviews = [], onAccep
   );
 }
 
-function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorApp, tutorAppLoaded = true }) {
+
+const PROFILE_PHOTO_MAX_BYTES = 5 * 1024 * 1024;
+const PROFILE_PHOTO_TYPES = new Set(["image/jpeg", "image/png", "image/webp"]);
+
+function parseAvatarStoragePath(storedPath) {
+  const value = String(storedPath || "").replace(/^\/+/, "");
+  const slash = value.indexOf("/");
+  if (slash <= 0) return null;
+  const bucket = value.slice(0, slash);
+  const objectPath = value.slice(slash + 1);
+  if (!["profile-photos", "tutor-avatars"].includes(bucket) || !objectPath) return null;
+  return { bucket, objectPath };
+}
+
+function ProfileAvatar({ path: storedPath, name, size = 36, fallbackBackground, className = "" }) {
+  const [src, setSrc] = useState("");
+
+  useEffect(() => {
+    let active = true;
+    setSrc("");
+
+    const parsed = parseAvatarStoragePath(storedPath);
+    if (!parsed) return () => { active = false; };
+
+    if (parsed.bucket === "tutor-avatars") {
+      const { data } = supabase.storage.from(parsed.bucket).getPublicUrl(parsed.objectPath);
+      if (active) setSrc(data?.publicUrl || "");
+      return () => { active = false; };
+    }
+
+    supabase.storage.from(parsed.bucket).createSignedUrl(parsed.objectPath, 3600)
+      .then(({ data, error }) => {
+        if (!active || error) return;
+        setSrc(data?.signedUrl || "");
+      });
+
+    return () => { active = false; };
+  }, [storedPath]);
+
+  const px = Number(size) || 36;
+  const baseStyle = {
+    width: px,
+    height: px,
+    borderRadius: "50%",
+    flexShrink: 0,
+    overflow: "hidden",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    background: fallbackBackground || `linear-gradient(135deg,${T.teal},${T.tealDark})`,
+    color: "#fff",
+    fontWeight: 700,
+    fontSize: Math.max(12, Math.round(px * 0.32)),
+    boxShadow: T.shadowSm,
+  };
+
+  if (src) {
+    return (
+      <img
+        className={className}
+        src={src}
+        alt={name ? `${name}'s profile` : "Profile"}
+        style={{ ...baseStyle, objectFit: "cover", display: "block" }}
+      />
+    );
+  }
+
+  return (
+    <div className={className} style={baseStyle} aria-label={name ? `${name}'s profile` : "Profile"}>
+      {getInitials(name || "?")}
+    </div>
+  );
+}
+
+function ProfilePhotoEditor({
+  user,
+  profile,
+  isTutorProfile = false,
+  disabled = false,
+  showToast,
+  onProfileUpdated,
+  onTutorUpdated,
+  size = 38,
+  showActions = false,
+}) {
+  const inputRef = useRef(null);
+  const [busy, setBusy] = useState(false);
+  const [localPath, setLocalPath] = useState(profile?.avatar_path || "");
+
+  useEffect(() => {
+    setLocalPath(profile?.avatar_path || "");
+  }, [profile?.avatar_path]);
+
+  const choosePhoto = () => {
+    if (!busy && !disabled) inputRef.current?.click();
+  };
+
+  const uploadPhoto = async (event) => {
+    const file = event.target.files?.[0];
+    event.target.value = "";
+    if (!file || !user?.id || busy || disabled) return;
+
+    if (!PROFILE_PHOTO_TYPES.has(file.type)) {
+      showToast("Use a JPG, PNG or WebP image.", "error");
+      return;
+    }
+    if (file.size > PROFILE_PHOTO_MAX_BYTES) {
+      showToast("Profile photos must be 5 MB or smaller.", "error");
+      return;
+    }
+
+    setBusy(true);
+    const oldParsed = parseAvatarStoragePath(localPath);
+    const bucket = isTutorProfile ? "tutor-avatars" : "profile-photos";
+    const objectPath = `${user.id}/avatar-${Date.now()}`;
+    const storedPath = `${bucket}/${objectPath}`;
+
+    try {
+      const { error: uploadError } = await supabase.storage
+        .from(bucket)
+        .upload(objectPath, file, {
+          cacheControl: "3600",
+          contentType: file.type,
+          upsert: false,
+        });
+      if (uploadError) throw uploadError;
+
+      const { error: pathError } = await supabase.rpc("set_my_avatar_path", {
+        p_avatar_path: storedPath,
+      });
+      if (pathError) {
+        await supabase.storage.from(bucket).remove([objectPath]).catch(() => {});
+        throw pathError;
+      }
+
+      setLocalPath(storedPath);
+      onProfileUpdated?.({ avatar_path: storedPath });
+      onTutorUpdated?.(storedPath);
+
+      if (
+        oldParsed &&
+        oldParsed.objectPath.startsWith(`${user.id}/`) &&
+        (oldParsed.bucket === "profile-photos" || oldParsed.bucket === "tutor-avatars")
+      ) {
+        supabase.storage.from(oldParsed.bucket).remove([oldParsed.objectPath]).catch(() => {});
+      }
+
+      showToast("Profile photo updated.");
+    } catch (error) {
+      console.error("Profile photo upload failed:", error);
+      showToast(error?.message || "We couldn't update your profile photo.", "error");
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const removePhoto = async () => {
+    if (!localPath || !user?.id || busy || disabled) return;
+    setBusy(true);
+
+    const oldParsed = parseAvatarStoragePath(localPath);
+
+    try {
+      const { error } = await supabase.rpc("set_my_avatar_path", {
+        p_avatar_path: null,
+      });
+      if (error) throw error;
+
+      setLocalPath("");
+      onProfileUpdated?.({ avatar_path: null });
+      onTutorUpdated?.(null);
+
+      if (
+        oldParsed &&
+        oldParsed.objectPath.startsWith(`${user.id}/`) &&
+        (oldParsed.bucket === "profile-photos" || oldParsed.bucket === "tutor-avatars")
+      ) {
+        supabase.storage.from(oldParsed.bucket).remove([oldParsed.objectPath]).catch(() => {});
+      }
+
+      showToast("Profile photo removed.");
+    } catch (error) {
+      console.error("Profile photo removal failed:", error);
+      showToast(error?.message || "We couldn't remove your profile photo.", "error");
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <div style={{ display:"flex", alignItems:"center", gap: showActions ? 14 : 0 }}>
+      <div style={{ position:"relative", width:size, height:size, flexShrink:0 }}>
+        <button
+          type="button"
+          onClick={choosePhoto}
+          disabled={busy || disabled}
+          title={disabled ? "Profile photo is loading" : localPath ? "Change profile photo" : "Add profile photo"}
+          aria-label={localPath ? "Change profile photo" : "Add profile photo"}
+          style={{
+            padding:0,
+            border:"none",
+            background:"transparent",
+            borderRadius:"50%",
+            cursor:busy || disabled ? "default" : "pointer",
+            opacity:busy ? .6 : 1,
+            display:"block",
+          }}
+        >
+          <ProfileAvatar path={localPath} name={profile?.name} size={size} />
+          {!disabled && (
+            <span style={{
+              position:"absolute",
+              right:-2,
+              bottom:-2,
+              width:20,
+              height:20,
+              borderRadius:"50%",
+              display:"flex",
+              alignItems:"center",
+              justifyContent:"center",
+              background:T.teal,
+              color:"#fff",
+              border:"2px solid #fff",
+              fontSize:10,
+              lineHeight:1,
+              pointerEvents:"none",
+            }}>📷</span>
+          )}
+        </button>
+
+        {!showActions && localPath && !disabled && (
+          <button
+            type="button"
+            onClick={removePhoto}
+            disabled={busy}
+            title="Remove profile photo"
+            aria-label="Remove profile photo"
+            style={{
+              position:"absolute",
+              top:-5,
+              right:-5,
+              width:18,
+              height:18,
+              padding:0,
+              borderRadius:"50%",
+              border:"2px solid #fff",
+              background:T.ink,
+              color:"#fff",
+              fontSize:11,
+              lineHeight:1,
+              cursor:busy ? "default" : "pointer",
+            }}
+          >×</button>
+        )}
+
+        <input
+          ref={inputRef}
+          type="file"
+          accept="image/jpeg,image/png,image/webp"
+          onChange={uploadPhoto}
+          style={{ display:"none" }}
+        />
+      </div>
+
+      {showActions && (
+        <div>
+          <div style={{fontSize:13,fontWeight:600,color:T.ink,marginBottom:3}}>Profile photo</div>
+          <div style={{fontSize:11.5,color:T.textMuted,marginBottom:8}}>Optional. JPG, PNG or WebP, up to 5 MB.</div>
+          <div style={{display:"flex",gap:8,flexWrap:"wrap"}}>
+            <button
+              type="button"
+              onClick={choosePhoto}
+              disabled={busy || disabled}
+              style={{
+                border:`1px solid ${T.border}`,
+                background:T.paper,
+                color:T.tealDark,
+                borderRadius:7,
+                padding:"7px 11px",
+                fontFamily:FB,
+                fontSize:12,
+                fontWeight:600,
+                cursor:busy || disabled ? "default" : "pointer",
+              }}
+            >
+              {busy ? "Uploading..." : localPath ? "Change photo" : "Add photo"}
+            </button>
+            {localPath && (
+              <button
+                type="button"
+                onClick={removePhoto}
+                disabled={busy || disabled}
+                style={{
+                  border:"none",
+                  background:"transparent",
+                  color:T.red,
+                  padding:"7px 5px",
+                  fontFamily:FB,
+                  fontSize:12,
+                  cursor:busy || disabled ? "default" : "pointer",
+                }}
+              >
+                Remove
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorApp, tutorAppLoaded = true, onProfileUpdated }) {
   // profile.role is only set once, at signup - it's never flipped to "tutor"
   // when someone who signed up as a student later applies and gets approved.
   // Falling back to an approved tutor-application status keeps this accurate
@@ -2836,12 +3148,16 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
         className="dash-sidebar">
         <div className="dash-profile-card" style={{padding:"10px 12px 16px",borderBottom:`1px solid ${T.borderSoft}`,marginBottom:10,
           display:"flex",alignItems:"center",gap:10}}>
-          <div style={{width:36,height:36,borderRadius:"50%",flexShrink:0,
-            background:`linear-gradient(135deg,${T.teal},${T.tealDark})`,color:"#fff",
-            display:"flex",alignItems:"center",justifyContent:"center",fontWeight:700,fontSize:14,
-            boxShadow:T.shadowSm}}>
-            {profile?.name?.[0]?.toUpperCase() || "?"}
-          </div>
+          <ProfilePhotoEditor
+            user={user}
+            profile={profile}
+            isTutorProfile={isTutor && !!tutorRow}
+            disabled={isTutor && !tutorRowLoaded}
+            showToast={showToast}
+            onProfileUpdated={onProfileUpdated}
+            onTutorUpdated={avatarPath => setTutorRow(row => row ? {...row, avatar_path: avatarPath} : row)}
+            size={38}
+          />
           <div style={{minWidth:0}}>
             <div style={{fontWeight:700,color:T.ink,fontSize:13.5,overflow:"hidden",
               textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{profile?.name}</div>
@@ -3158,6 +3474,19 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
             <h1 style={{fontFamily:FD,fontSize:22,fontWeight:700,color:T.ink,marginBottom:4}}>My profile</h1>
             <p style={{color:T.textMuted,fontSize:14,marginBottom:20}}>This is what students see on the Tutors page.</p>
             <Card style={{maxWidth:580}}>
+              <div style={{marginBottom:22,paddingBottom:20,borderBottom:`1px solid ${T.borderSoft}`}}>
+                <ProfilePhotoEditor
+                  user={user}
+                  profile={profile}
+                  isTutorProfile={true}
+                  disabled={!tutorRow}
+                  showToast={showToast}
+                  onProfileUpdated={onProfileUpdated}
+                  onTutorUpdated={avatarPath => setTutorRow(row => row ? {...row, avatar_path: avatarPath} : row)}
+                  size={84}
+                  showActions
+                />
+              </div>
               <TextareaField label="Your tutor bio" value={profileForm.bio}
                 onChange={v => setProfileForm(f => ({...f, bio: v}))} rows={5} required
                 placeholder="Tell students about your teaching background, your approach, and what you specialise in." />
@@ -3566,10 +3895,14 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
             const initials = getInitials(t.name || t.initials || "Tutor");
             return (
             <Card key={t.id} className="tutor-card hl">
-              <div className="tutor-avatar" style={{width:58,height:58,borderRadius:"50%",background:avatarColor,
-                display:"flex",alignItems:"center",justifyContent:"center",boxShadow:T.shadowSm,
-                fontSize:18,fontWeight:800,color:"#fff",marginBottom:16}}>
-                {initials}
+              <div style={{marginBottom:16}}>
+                <ProfileAvatar
+                  path={t.avatar_path}
+                  name={t.name}
+                  size={58}
+                  fallbackBackground={avatarColor}
+                  className="tutor-avatar"
+                />
               </div>
               <div style={{fontFamily:FD,fontSize:17.5,fontWeight:600,color:T.ink}}>{t.name}</div>
               <div style={{fontSize:12,color:T.teal,fontWeight:600,margin:"3px 0 9px"}}>{t.subjects?.join(" · ")}</div>
@@ -4014,7 +4347,7 @@ const PARENT_MILESTONE_META = {
   skill_improved: { short: "↑", label: "Skill improving" },
 };
 
-function ParentView({ user, profile, setView, showToast }) {
+function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
   const [links, setLinks] = useState([]);
   const [children, setChildren] = useState([]);
   const [code, setCode] = useState("");
@@ -4054,7 +4387,7 @@ function ParentView({ user, profile, setView, showToast }) {
     const approved = (linkRows || []).filter(l => l.status === "approved");
     if (approved.length) {
       const ids = approved.map(l => l.student_id);
-      const {data: profiles} = await supabase.from("profiles").select("id,name,role,xp,created_at").in("id", ids);
+      const {data: profiles} = await supabase.from("profiles").select("id,name,role,xp,created_at,avatar_path").in("id", ids);
       setChildren(profiles || []);
       if (!selectedChild && profiles?.[0]) setSelectedChild(profiles[0]);
     } else setChildren([]);
@@ -4187,7 +4520,16 @@ function ParentView({ user, profile, setView, showToast }) {
             <h1>Stay close to their progress.</h1>
             <p>Review mastery, practice, lesson progress and tutor sessions from the parent dashboard.</p>
           </div>
-          <div className="parent-hero-mark">CP</div>
+          <div style={{display:"flex",justifyContent:"center"}}>
+            <ProfilePhotoEditor
+              user={user}
+              profile={profile}
+              isTutorProfile={false}
+              showToast={showToast}
+              onProfileUpdated={onProfileUpdated}
+              size={72}
+            />
+          </div>
         </div>
 
         {pending.length > 0 && <section className="parent-section alert-section">
@@ -4371,7 +4713,12 @@ export default function App() {
     }, duration);
   }, []);
 
-  useEffect(() => () => {
+  
+
+  const updateProfileState = useCallback((patch) => {
+    setProfile(current => current ? { ...current, ...patch } : current);
+  }, []);
+useEffect(() => () => {
     if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
   }, []);
 
@@ -4407,7 +4754,11 @@ export default function App() {
       }
       setSession(s);
       if (s) {
-        loadProfile(s.user.id);
+        // getSession() and onAuthStateChange() may both resolve the same
+        // restored session. Only the first path should reload account data.
+        const shouldLoadProfile = knownUserId.current !== s.user.id;
+        knownUserId.current = s.user.id;
+        if (shouldLoadProfile) loadProfile(s.user.id);
         restorePushAssociation(s.user.id).catch(error => console.error("Push association restore failed:", error));
       } else setLoading(false);
     });
@@ -4444,7 +4795,8 @@ export default function App() {
         // over from a past signup/verification-pending flow so it stops
         // reappearing on the login form.
         localStorage.removeItem("spark_verification_email");
-        loadProfile(s.user.id);
+        const sameSignedInUser = knownUserId.current === s.user.id;
+        if (!sameSignedInUser) loadProfile(s.user.id);
         // Supabase can re-fire a session event (token refresh, tab
         // refocus, multi-tab sync) for a user who was already signed in -
         // sometimes even labelled SIGNED_IN, so the event name isn't
@@ -4453,7 +4805,7 @@ export default function App() {
         // person's session simply being reconfirmed. Otherwise anything
         // mid-task - a booking modal open on Tutors, for example - gets
         // yanked away and closed the moment the tab regains focus.
-        const isNewSignIn = !isInitialAuthResolution && knownUserId.current !== s.user.id;
+        const isNewSignIn = !isInitialAuthResolution && !sameSignedInUser;
         knownUserId.current = s.user.id;
         if (isNewSignIn) {
           restorePushAssociation(s.user.id).catch(error => console.error("Push association restore failed:", error));
@@ -4540,8 +4892,8 @@ export default function App() {
           recoveryMode={view === "auth-recovery"}
         />
       )}
-      {view === "dashboard"    && session && profile?.role === "parent" ? <ParentView user={session.user} profile={profile} setView={setView} showToast={showToast}/> : null}
-      {view === "dashboard"    && session && profile?.role !== "parent" && <DashboardView user={session.user} profile={profile} setView={setView} showToast={showToast} hasTutorApp={hideTutorApplyLink} tutorApp={tutorApp} tutorAppLoaded={tutorAppLoaded}/>}
+      {view === "dashboard"    && session && profile?.role === "parent" ? <ParentView user={session.user} profile={profile} setView={setView} showToast={showToast} onProfileUpdated={updateProfileState}/> : null}
+      {view === "dashboard"    && session && profile?.role !== "parent" && <DashboardView user={session.user} profile={profile} setView={setView} showToast={showToast} hasTutorApp={hideTutorApplyLink} tutorApp={tutorApp} tutorAppLoaded={tutorAppLoaded} onProfileUpdated={updateProfileState}/>}
       {view === "admin"        && session && profile?.is_admin && <AdminView showToast={showToast} adminUserId={session.user.id}/>}
       {view === "lesson"       && session && <LessonView user={session.user} setView={setView} showToast={showToast} hasTutorApp={hideTutorApplyLink}/>}
       {view === "practice"    && session && profile?.role !== "tutor" && tutorApp?.status !== "approved" && <PracticeHub supabase={supabase} userId={session.user.id} setView={setView}/>}
