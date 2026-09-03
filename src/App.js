@@ -2285,6 +2285,16 @@ function calendarMonthLabel(date) {
 function calendarDayLabel(key) {
   return parseCalendarDate(key).toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
 }
+
+// Compact, readable date for booking/session cards.
+function bookingDateLabel(key) {
+  if (!key) return "";
+  return parseCalendarDate(key).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
 function calendarMonthCells(monthDate) {
   const first = new Date(monthDate.getFullYear(), monthDate.getMonth(), 1);
   const start = new Date(first);
@@ -3419,7 +3429,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 <div className="booking-list-row" style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",gap:14}}>
                   <div style={{minWidth:0}}>
                     <div style={{fontWeight:600,color:T.ink,fontSize:15}}>{b.profiles?.name || "Student"}</div>
-                    <div style={{fontSize:13,color:T.textMuted,marginTop:2}}>{b.subject} · {b.session_date}{b.start_time ? ` · ${fmtSessionRange(b.start_time, b.duration_minutes)}` : ""}</div>
+                    <div style={{fontSize:13,color:T.textMuted,marginTop:2}}>{b.subject} · {bookingDateLabel(b.session_date)}{b.start_time ? ` · ${fmtSessionRange(b.start_time, b.duration_minutes)}` : ""}</div>
                     <div style={{fontSize:13,color:T.textMuted}}>J${b.rate_jmd?.toLocaleString()}/hr</div>
                     {dispStatus === "declined" && b.cancellation_reason && <div style={{fontSize:12,color:T.textMuted,marginTop:6,fontStyle:"italic"}}>You declined - {b.cancellation_reason}</div>}
                     {dispStatus === "cancelled" && b.cancellation_reason && <div style={{fontSize:12,color:T.textMuted,marginTop:6,fontStyle:"italic"}}>{b.cancelled_by === user.id ? "You cancelled" : "Cancelled by student"} - {b.cancellation_reason}</div>}
@@ -3683,7 +3693,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 {[...bookings].sort((a,b) => bookingSort === "status" ? BOOKING_STATUS_ORDER[bookingDisplayStatus(a)] - BOOKING_STATUS_ORDER[bookingDisplayStatus(b)] : b.session_date.localeCompare(a.session_date)).map(b => {
                   const dispStatus = bookingDisplayStatus(b);
                   const cancellable = canCancelBooking(b) && dispStatus !== "completed";
-                  return <Card key={b.id} className={String(notificationTarget?.bookingId || "") === String(b.id) ? "notification-booking-target" : ""} style={{marginBottom:14}}><div className="booking-list-row" style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",gap:14}}><div style={{minWidth:0}}><div style={{fontWeight:600,color:T.ink,fontSize:15}}>{isTutor ? b.profiles?.name : b.tutors?.name}</div><div style={{fontSize:13,color:T.textMuted,marginTop:2}}>{b.subject} · {b.session_date}{b.start_time ? ` · ${fmtSessionRange(b.start_time, b.duration_minutes)}` : ""}</div><div style={{fontSize:13,color:T.textMuted}}>J${b.rate_jmd?.toLocaleString()}/hr</div>{dispStatus === "cancelled" && b.cancellation_reason && <div style={{fontSize:12,color:T.textMuted,marginTop:6,fontStyle:"italic"}}>{b.cancelled_by === user.id ? "You cancelled" : "Cancelled by tutor"} - {b.cancellation_reason}</div>}{dispStatus === "declined" && b.cancellation_reason && <div style={{fontSize:12,color:T.textMuted,marginTop:6,fontStyle:"italic"}}>Declined by tutor - {b.cancellation_reason}</div>}</div><div className="booking-list-actions" style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:8}}><Badge c={BOOKING_STATUS_BADGE[dispStatus].c}>{BOOKING_STATUS_BADGE[dispStatus].label}</Badge>{dispStatus === "confirmed" && <AddToCalendar booking={b} isTutor={isTutor} user={user} />}{cancellable && <button onClick={() => setCancelTarget(b)} style={{background:"none",border:`1.5px solid ${T.red}`,color:T.red,borderRadius:7,padding:"5px 11px",fontSize:12,cursor:"pointer",fontFamily:FB}}>Cancel booking</button>}{dispStatus === "completed" && (() => {const alreadyReviewed = studentReviews.some(r => r.booking_id === b.id); return alreadyReviewed ? <span style={{fontSize:11,color:T.emerald,fontWeight:600}}>✓ Review submitted</span> : <button className="cp-btn cp-btn-teal" onClick={() => setReviewTarget(b)}>Leave a review</button>;})()}{!cancellable && dispStatus !== "cancelled" && dispStatus !== "declined" && dispStatus !== "completed" && dispStatus !== "expired" && <span style={{fontSize:11,color:T.textMuted}}>Too close to cancel</span>}</div></div></Card>;
+                  return <Card key={b.id} className={String(notificationTarget?.bookingId || "") === String(b.id) ? "notification-booking-target" : ""} style={{marginBottom:14}}><div className="booking-list-row" style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",gap:14}}><div style={{minWidth:0}}><div style={{fontWeight:600,color:T.ink,fontSize:15}}>{isTutor ? b.profiles?.name : b.tutors?.name}</div><div style={{fontSize:13,color:T.textMuted,marginTop:2}}>{b.subject} · {bookingDateLabel(b.session_date)}{b.start_time ? ` · ${fmtSessionRange(b.start_time, b.duration_minutes)}` : ""}</div><div style={{fontSize:13,color:T.textMuted}}>J${b.rate_jmd?.toLocaleString()}/hr</div>{dispStatus === "cancelled" && b.cancellation_reason && <div style={{fontSize:12,color:T.textMuted,marginTop:6,fontStyle:"italic"}}>{b.cancelled_by === user.id ? "You cancelled" : "Cancelled by tutor"} - {b.cancellation_reason}</div>}{dispStatus === "declined" && b.cancellation_reason && <div style={{fontSize:12,color:T.textMuted,marginTop:6,fontStyle:"italic"}}>Declined by tutor - {b.cancellation_reason}</div>}</div><div className="booking-list-actions" style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:8}}><Badge c={BOOKING_STATUS_BADGE[dispStatus].c}>{BOOKING_STATUS_BADGE[dispStatus].label}</Badge>{dispStatus === "confirmed" && <AddToCalendar booking={b} isTutor={isTutor} user={user} />}{cancellable && <button onClick={() => setCancelTarget(b)} style={{background:"none",border:`1.5px solid ${T.red}`,color:T.red,borderRadius:7,padding:"5px 11px",fontSize:12,cursor:"pointer",fontFamily:FB}}>Cancel booking</button>}{dispStatus === "completed" && (() => {const alreadyReviewed = studentReviews.some(r => r.booking_id === b.id); return alreadyReviewed ? <span style={{fontSize:11,color:T.emerald,fontWeight:600}}>✓ Review submitted</span> : <button className="cp-btn cp-btn-teal" onClick={() => setReviewTarget(b)}>Leave a review</button>;})()}{!cancellable && dispStatus !== "cancelled" && dispStatus !== "declined" && dispStatus !== "completed" && dispStatus !== "expired" && <span style={{fontSize:11,color:T.textMuted}}>Too close to cancel</span>}</div></div></Card>;
                 })}
               </>
             )}
@@ -4102,9 +4112,14 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
               <div style={{width:64,height:64,borderRadius:"50%",background:T.emeraldLight,
                 display:"flex",alignItems:"center",justifyContent:"center",margin:"0 auto 16px",fontSize:28}}>✓</div>
               <div style={{fontFamily:FD,fontSize:22,fontWeight:700,color:T.ink,marginBottom:8}}>Request sent</div>
-              <p style={{fontSize:14,color:T.textMuted,lineHeight:1.65,maxWidth:500,margin:"0 auto 24px",textAlign:"center",textWrap:"balance"}}>
-                {bookingTutor.name} has been notified. We'll let you know as soon as your {subj} session on {calendarDayLabel(date)} at {fmtSessionRange(slot, duration)} Jamaica time is confirmed. If it's still unconfirmed 60 minutes before the start time, the request will close automatically.
-              </p>
+              <div style={{maxWidth:500,margin:"0 auto 24px",padding:"0 6px",textAlign:"left",color:T.textMuted,fontSize:14,lineHeight:1.65}}>
+                <p style={{margin:"0 0 10px"}}>
+                  {bookingTutor.name} has been notified. We'll let you know as soon as your {subj} session on {calendarDayLabel(date)}, from {fmtClock(slot)} to {fmtClock(minutesToTime(timeToMinutes(slot) + duration))} Jamaica time is confirmed.
+                </p>
+                <p style={{margin:0}}>
+                  If the session is still unconfirmed 60 minutes before the start time, the request will close automatically.
+                </p>
+              </div>
               <Btn onClick={() => setBookingTutor(null)} full>Done</Btn>
             </div>
           )}
@@ -4681,7 +4696,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
               if (targetBooking && !rows.some(b => b.id === targetBooking.id)) rows.unshift(targetBooking);
               return rows.map(b => {
                 const isTargetBooking = targetId && String(b.id) === String(targetId);
-                return <div className={`session-row ${isTargetBooking ? "notification-booking-target" : ""}`} data-notification-booking={b.id} key={b.id}><div><strong>{b.tutors?.name || "Tutor"}</strong><span>{b.subject} · {b.session_date}{b.start_time ? ` · ${fmtSessionRange(b.start_time, b.duration_minutes)}` : ""}</span></div>{(() => { const status = bookingDisplayStatus(b); return <Badge c={BOOKING_STATUS_BADGE[status]?.c || "ink"}>{BOOKING_STATUS_BADGE[status]?.label || status}</Badge>; })()}</div>;
+                return <div className={`session-row ${isTargetBooking ? "notification-booking-target" : ""}`} data-notification-booking={b.id} key={b.id}><div><strong>{b.tutors?.name || "Tutor"}</strong><span>{b.subject} · {bookingDateLabel(b.session_date)}{b.start_time ? ` · ${fmtSessionRange(b.start_time, b.duration_minutes)}` : ""}</span></div>{(() => { const status = bookingDisplayStatus(b); return <Badge c={BOOKING_STATUS_BADGE[status]?.c || "ink"}>{BOOKING_STATUS_BADGE[status]?.label || status}</Badge>; })()}</div>;
               });
             })() : <p className="muted-copy">No tutor sessions yet.</p>}</div>
           </div>

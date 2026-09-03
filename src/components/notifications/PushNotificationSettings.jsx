@@ -217,8 +217,8 @@ export default function PushNotificationSettings({ user, profile }) {
             <>
               <div className="push-device-row">
                 <div>
-                  <strong>{device.subscribed ? "This device is connected" : "This device is not connected"}</strong>
-                  <span>{device.subscribed ? "SPARK is ready to send alerts to this browser." : "Connect this device to receive your enabled alerts here."}</span>
+                  <strong>{device.deviceLabel || "This device"}</strong>
+                  <span>{device.subscribed ? "Connected for SPARK notifications." : "Not connected. Enable this device to receive your selected alerts here."}</span>
                 </div>
                 {device.subscribed ? (
                   <button type="button" className="push-device-button secondary" disabled={busy} onClick={disableDevice}>Disable this device</button>

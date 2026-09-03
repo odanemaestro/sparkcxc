@@ -29,6 +29,40 @@ export function classifyPushPlatform(userAgent = "") {
   return "web";
 }
 
+export function classifyPushBrowser(userAgent = "") {
+  const ua = String(userAgent || "");
+
+  // Order matters because Chromium-based browsers often also contain
+  // Chrome/Safari tokens in their user-agent strings.
+  if (/SamsungBrowser/i.test(ua)) return "Samsung Internet";
+  if (/EdgiOS|EdgA|Edg\//i.test(ua)) return "Edge";
+  if (/FxiOS|Firefox/i.test(ua)) return "Firefox";
+  if (/OPiOS|OPR\//i.test(ua)) return "Opera";
+  if (/CriOS|Chrome|Chromium/i.test(ua)) return "Chrome";
+  if (/Safari/i.test(ua)) return "Safari";
+  return "Browser";
+}
+
+export function pushDeviceLabel(userAgent = "", maxTouchPoints = 0) {
+  const ua = String(userAgent || "");
+  const browser = classifyPushBrowser(ua);
+
+  let device = "Device";
+  if (/iPhone|iPod/i.test(ua)) device = "iPhone";
+  else if (/iPad/i.test(ua) || (/Macintosh/i.test(ua) && Number(maxTouchPoints || 0) > 1)) device = "iPad";
+  else if (/Android/i.test(ua)) device = "Android";
+  else if (/Windows/i.test(ua)) device = "Windows";
+  else if (/Macintosh|Mac OS X/i.test(ua)) device = "Mac";
+  else if (/Linux/i.test(ua)) device = "Linux";
+
+  return `${browser} on ${device}`;
+}
+
+function currentPushDeviceLabel() {
+  if (typeof navigator === "undefined") return "This device";
+  return pushDeviceLabel(navigator.userAgent, navigator.maxTouchPoints);
+}
+
 export function isIOSDevice() {
   if (typeof navigator === "undefined") return false;
   const ua = String(navigator.userAgent || "");
@@ -58,6 +92,7 @@ export function getPushCapability() {
     ios,
     standalone,
     publicKeyConfigured,
+    deviceLabel: currentPushDeviceLabel(),
     permission: supported ? Notification.permission : "unsupported",
     iosInstallRequired: ios && !standalone,
   };
