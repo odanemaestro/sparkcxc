@@ -249,6 +249,11 @@ const SLOT_WINDOW_START_MIN = 6 * 60;       // 6:00 AM
 const SLOT_WINDOW_END_MIN = 21 * 60 + 30;   // 9:30 PM - last selectable start time
 const SLOT_STEP_MIN = 30;
 
+// Booking policy: students book at least 90 minutes ahead. Tutors must
+// confirm at least 60 minutes before start. A final reminder is sent at 75.
+const BOOKING_MIN_NOTICE_MIN = 90;
+const BOOKING_CONFIRMATION_CUTOFF_MIN = 60;
+
 function buildDaySlots() {
   const slots = [];
   for (let m = SLOT_WINDOW_START_MIN; m <= SLOT_WINDOW_END_MIN; m += SLOT_STEP_MIN) {
@@ -291,14 +296,19 @@ const TimeSlotPicker = ({ value, onChange, date, duration, busyOnDate = [], plac
     }
   }, [open]);
 
-  const { dateKey: jamaicaToday, minutes: jamaicaNowMin } = jamaicaNowParts();
-  const isToday = date === jamaicaToday;
+  const nowMs = Date.now();
 
   const slots = DAY_SLOTS.map(t => {
-    const startMin = timeToMinutes(t);
-    const past = isToday && startMin <= jamaicaNowMin;
-    const clash = !past && busyOnDate.some(b => sessionsOverlap(t, duration, b.start_time, b.duration_minutes));
-    return { time: t, disabled: past || clash, reason: past ? "Past" : clash ? "Booked" : null };
+    const slotAt = date ? calendarDateTime(date, t) : null;
+    const slotMs = slotAt && !isNaN(slotAt.getTime()) ? slotAt.getTime() : null;
+    const past = slotMs != null && slotMs <= nowMs;
+    const tooSoon = slotMs != null && !past && slotMs < nowMs + BOOKING_MIN_NOTICE_MIN * 60 * 1000;
+    const clash = !past && !tooSoon && busyOnDate.some(b => sessionsOverlap(t, duration, b.start_time, b.duration_minutes));
+    return {
+      time: t,
+      disabled: past || tooSoon || clash,
+      reason: past ? "Past" : tooSoon ? "90 min notice" : clash ? "Booked" : null,
+    };
   });
   const anyAvailable = slots.some(s => !s.disabled);
 
@@ -1769,17 +1779,16 @@ function computeStreak(rows) {
 
 // A booking is only cancellable up to 1 hour before its scheduled start.
 function canCancelBooking(b) {
-  if (!b || b.status === "cancelled" || b.status === "declined") return false;
-  if (!b.session_date) return false;
-  const startTime = b.start_time || "00:00:00";
-  const sessionAt = new Date(`${b.session_date}T${startTime}`);
-  if (isNaN(sessionAt.getTime())) return false;
-  return sessionAt.getTime() - Date.now() >= 60 * 60 * 1000;
+  if (!b || b.status === "cancelled" || b.status === "declined" || b.confirmation_expired_at) return false;
+  if (!b.session_date || !b.start_time) return false;
+  const sessionAt = calendarDateTime(b.session_date, b.start_time);
+  if (!sessionAt || isNaN(sessionAt.getTime())) return false;
+  return sessionAt.getTime() - Date.now() >= BOOKING_CONFIRMATION_CUTOFF_MIN * 60 * 1000;
 }
 
 // Derived display status. We keep the booking response state in the database
 // and derive time-based UI states consistently across student, tutor and parent views.
-// Pending requests expire at their start time; confirmed sessions complete after their end time.
+// Pending requests close 60 minutes before start; confirmed sessions complete after their end time.
 function bookingDisplayStatus(b) {
   if (!b) return "pending";
   if (b.status === "cancelled") return "cancelled";
@@ -1795,8 +1804,9 @@ function bookingDisplayStatus(b) {
 
   const nowMs = Date.now();
 
-  if (baseStatus === "pending" && sessionStart.getTime() <= nowMs) {
-    return "expired";
+  if (baseStatus === "pending") {
+    const confirmationDeadlineMs = sessionStart.getTime() - BOOKING_CONFIRMATION_CUTOFF_MIN * 60 * 1000;
+    if (b.confirmation_expired_at || confirmationDeadlineMs <= nowMs) return "expired";
   }
 
   if (baseStatus === "confirmed") {
@@ -3031,7 +3041,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
 
   const acceptBooking = async (booking) => {
     if (bookingDisplayStatus(booking) !== "pending") {
-      showToast("This booking can no longer be accepted because its scheduled start time has passed.");
+      showToast("This booking request has closed. Sessions must be confirmed at least 60 minutes before the start time.");
       loadTutorBookings();
       return;
     }
@@ -3113,7 +3123,6 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   const done = progressData.length;
   const streak = computeStudyStreak(progressData);
   const now = new Date();
-  const todayStr = now.toLocaleDateString("en-CA", { timeZone: "America/Jamaica" });
   const upcomingSessions = bookings.filter(b => { const status = bookingDisplayStatus(b); return status === "pending" || status === "confirmed"; });
   // A session becomes completed only after its actual end time has passed. The database
   // sync function stamps completed_at, so earnings are not based on date-only guesses.
@@ -3853,6 +3862,11 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
   const confirmBooking = async () => {
     if (!date || !slot || !subj) { showToast("Please fill in all booking details."); return; }
     if (!user) { showToast("Please sign in to book a session."); return; }
+    const requestedStart = calendarDateTime(date, `${slot}:00`);
+    if (!requestedStart || requestedStart.getTime() - Date.now() < BOOKING_MIN_NOTICE_MIN * 60 * 1000) {
+      showToast("Sessions must be booked at least 90 minutes before the start time. Please choose a later slot.");
+      return;
+    }
     setConfirming(true);
     // Re-check for a clash right before writing, in case someone else booked
     // this same slot while the modal was open (the loaded busyOnDate list
@@ -3875,7 +3889,7 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
     setConfirming(false);
     if (error) { showToast("Booking failed. Please try again."); return; }
     setBookingDone(true);
-    showToast(`Session booked with ${bookingTutor.name}!`);
+    showToast(`Booking request sent to ${bookingTutor.name}.`);
   };
 
   return (
@@ -3989,7 +4003,7 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
               <div style={{marginBottom:14}}>
                 <div style={{fontSize:13,fontWeight:500,color:T.inkSoft,marginBottom:6}}>Date</div>
                 <input type="date" value={date} onChange={e=>setDate(e.target.value)}
-                  min={new Date().toISOString().split("T")[0]}
+                  min={jamaicaNowParts().dateKey}
                   style={{width:"100%",padding:"10px 12px",border:`1.5px solid ${T.border}`,
                     borderRadius:7,fontSize:14,fontFamily:FB,color:T.ink,outline:"none"}}/>
               </div>
@@ -4019,6 +4033,9 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
                   </div>
                 )}
                 <TimeSlotPicker value={slot} onChange={setSlot} date={date} duration={duration} busyOnDate={busyOnDate} placeholder="Please select your start time"/>
+                <div style={{fontSize:11.5,color:T.textMuted,marginTop:7,lineHeight:1.5}}>
+                  Book at least 90 minutes ahead. Your tutor must confirm at least 60 minutes before the session.
+                </div>
                 {date && loadingBusy && (
                   <div style={{fontSize:12,color:T.textMuted,marginTop:6}}>Checking {bookingTutor.name}'s schedule…</div>
                 )}
@@ -4031,22 +4048,22 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
               {date && slot && !hasClash && (
                 <div style={{background:T.amberLight,borderRadius:8,padding:"11px 14px",
                   marginBottom:16,fontSize:13,color:T.amber,fontWeight:500}}>
-                  📅 {bookingTutor.name} · {subj} · {date} at {fmtSessionRange(slot, duration)} JST
+                  📅 {bookingTutor.name} · {subj} · {date} at {fmtSessionRange(slot, duration)} Jamaica time
                 </div>
               )}
               <div style={{display:"flex",gap:10}}>
                 <Btn v="outline" onClick={() => setBookingTutor(null)} style={{flex:1,justifyContent:"center"}}>Cancel</Btn>
                 <Btn onClick={confirmBooking} disabled={!date||!slot||hasClash||confirming}
-                  style={{flex:2,justifyContent:"center"}}>{confirming ? "Booking…" : "Confirm booking"}</Btn>
+                  style={{flex:2,justifyContent:"center"}}>{confirming ? "Sending request…" : "Send booking request"}</Btn>
               </div>
             </>
           ) : (
             <div style={{textAlign:"center",padding:"12px 0"}}>
               <div style={{width:64,height:64,borderRadius:"50%",background:T.emeraldLight,
                 display:"flex",alignItems:"center",justifyContent:"center",margin:"0 auto 16px",fontSize:28}}>✓</div>
-              <div style={{fontFamily:FD,fontSize:22,fontWeight:700,color:T.ink,marginBottom:8}}>You're booked!</div>
+              <div style={{fontFamily:FD,fontSize:22,fontWeight:700,color:T.ink,marginBottom:8}}>Request sent</div>
               <p style={{fontSize:14,color:T.textMuted,lineHeight:1.6,marginBottom:24}}>
-                {bookingTutor.name} will meet you on {date} at {fmtSessionRange(slot, duration)} Jamaica time.
+                {bookingTutor.name} has been notified. We'll let you know as soon as your {subj} session for {date} at {fmtSessionRange(slot, duration)} Jamaica time is confirmed. If it's still unconfirmed 60 minutes before the start time, the request will close automatically.
               </p>
               <Btn onClick={() => setBookingTutor(null)} full>Done</Btn>
             </div>
@@ -4474,7 +4491,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
       supabase.from("csec_skill_progress").select("*").eq("user_id", selectedChild.id).order("mastery_score", {ascending:true}),
       supabase.from("csec_question_attempts").select("id,correct,attempted_at,skill").eq("user_id", selectedChild.id).order("attempted_at", {ascending:false}).limit(20),
       supabase.from("lesson_progress").select("id,lesson_id,completed,completed_at").eq("user_id", selectedChild.id).eq("completed", true),
-      supabase.from("bookings").select("id,subject,session_date,start_time,duration_minutes,status,rate_jmd,tutors(name)").eq("student_id", selectedChild.id).order("session_date", {ascending:false}).limit(100),
+      supabase.from("bookings").select("id,subject,session_date,start_time,duration_minutes,status,rate_jmd,confirmation_expired_at,tutors(name)").eq("student_id", selectedChild.id).order("session_date", {ascending:false}).limit(100),
       supabase.from("practice_exam_attempts").select("id,attempt_key,paper_type,score,max_score,percent,completed_at,duration_seconds,timed_out,answered_count,total_questions,correct_count").eq("user_id", selectedChild.id).order("completed_at", {ascending:false}).limit(20),
       supabase.from("learning_milestones").select("id,event_type,title,score,max_score,percent,skill,lesson_id,metadata,created_at").eq("user_id", selectedChild.id).order("created_at", {ascending:false}).limit(40),
     ]);

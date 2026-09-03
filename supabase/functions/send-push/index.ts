@@ -85,6 +85,9 @@ const BOOKING_TYPES = new Set([
   "booking_cancelled",
   "booking_cancelled_by_tutor",
   "booking_rescheduled",
+  "booking_confirmation_reminder",
+  "booking_not_confirmed",
+  "child_booking_not_confirmed",
   "session_completed",
   "session_reminder",
 ]);
