@@ -799,3 +799,171 @@ input,select,textarea,button{max-width:100%}
     max-width: none !important;
   }
 }
+
+/* =========================================================
+   MOBILE POLISH: CONTACT PAGE + SESSION ACTIONS
+   Keep content aligned, readable and stable on narrow screens.
+   ========================================================= */
+
+.contact-hero-inner {
+  width: min(100%, 460px) !important;
+  max-width: 460px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.contact-hero-title {
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+}
+
+.contact-hero-copy {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  text-align: left !important;
+  line-height: 1.55 !important;
+  text-wrap: pretty;
+  box-sizing: border-box !important;
+}
+
+.contact-page-content {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.contact-grid,
+.contact-grid > * {
+  min-width: 0;
+}
+
+.contact-grid input,
+.contact-grid select,
+.contact-grid textarea,
+.contact-grid button {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/* Pending tutor actions must remain two clean, equal buttons.
+   This intentionally overrides the generic mobile booking rule
+   that makes every booking button full width. */
+.booking-pending-actions {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(112px, 1fr)) !important;
+  gap: 10px !important;
+  width: min(100%, 254px) !important;
+  max-width: 254px !important;
+  box-sizing: border-box !important;
+}
+
+.booking-pending-actions .booking-pending-btn {
+  width: 100% !important;
+  min-width: 0 !important;
+  min-height: 42px !important;
+  padding: 9px 12px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  white-space: nowrap !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  line-height: 1 !important;
+  text-align: center !important;
+}
+
+.calendar-agenda-actions .calendar-booking-action-btn {
+  white-space: nowrap !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+@media (max-width: 760px) {
+  .contact-hero {
+    padding: 42px 20px 38px !important;
+  }
+
+  /* Same shared-column model as the homepage: the hero group stays
+     centred, while every wrapped copy line begins on one fixed left edge. */
+  .contact-hero-inner {
+    width: min(100%, 430px) !important;
+    max-width: 430px !important;
+  }
+
+  .contact-hero-copy {
+    width: 100% !important;
+    max-width: none !important;
+    text-align: left !important;
+    font-size: 16px !important;
+    line-height: 1.55 !important;
+    text-wrap: pretty !important;
+  }
+
+  .contact-page-content {
+    width: 100% !important;
+    max-width: 1000px !important;
+    padding: 36px 16px 44px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .contact-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 32px !important;
+  }
+
+  .booking-list-actions {
+    align-items: flex-start !important;
+  }
+
+  .booking-list-actions .booking-pending-actions {
+    width: min(100%, 254px) !important;
+    max-width: 254px !important;
+    display: grid !important;
+  }
+
+  .booking-list-actions .booking-pending-actions .booking-pending-btn {
+    width: 100% !important;
+    min-width: 0 !important;
+    white-space: nowrap !important;
+    line-height: 1 !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .contact-hero {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .contact-hero-inner {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .contact-page-content {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .booking-pending-actions,
+  .booking-list-actions .booking-pending-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    width: 100% !important;
+    max-width: 240px !important;
+  }
+}

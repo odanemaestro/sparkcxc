@@ -2229,8 +2229,8 @@ function SessionCalendar({ bookings, isTutor, user, studentReviews = [], onAccep
               <div className="calendar-agenda-actions">
                 {status === "confirmed" && <AddToCalendar booking={b} isTutor={isTutor} user={user} />}
                 {isTutor && status === "pending" && <>
-                  <button onClick={() => onDecline(b)} style={{background:"none",border:`1.5px solid ${T.red}`,color:T.red,borderRadius:7,padding:"6px 10px",fontSize:11,fontWeight:700}}>Decline</button>
-                  <button onClick={() => onAccept(b)} style={{background:T.teal,border:`1.5px solid ${T.teal}`,color:"#fff",borderRadius:7,padding:"6px 10px",fontSize:11,fontWeight:700}}>Accept</button>
+                  <button className="calendar-booking-action-btn" onClick={() => onDecline(b)} style={{background:"none",border:`1.5px solid ${T.red}`,color:T.red,borderRadius:7,padding:"6px 10px",fontSize:11,fontWeight:700}}>Decline</button>
+                  <button className="calendar-booking-action-btn" onClick={() => onAccept(b)} style={{background:T.teal,border:`1.5px solid ${T.teal}`,color:"#fff",borderRadius:7,padding:"6px 10px",fontSize:11,fontWeight:700}}>Accept</button>
                 </>}
                 {isTutor && status === "confirmed" && canCancelBooking(b) && <button onClick={() => onCancel(b)} style={{background:"none",border:`1.5px solid ${T.red}`,color:T.red,borderRadius:7,padding:"6px 10px",fontSize:11,fontWeight:700}}>Cancel session</button>}
                 {!isTutor && cancellable && <button onClick={() => onCancel(b)} style={{background:"none",border:`1.5px solid ${T.red}`,color:T.red,borderRadius:7,padding:"6px 10px",fontSize:11,fontWeight:700}}>Cancel booking</button>}
@@ -2837,7 +2837,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                   </div>
                   <div className="booking-list-actions" style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:8}}>
                     <Badge c={BOOKING_STATUS_BADGE[dispStatus].c}>{BOOKING_STATUS_BADGE[dispStatus].label}</Badge>
-                    {dispStatus === "pending" && <div style={{display:"flex",gap:8}}><button onClick={() => setDeclineTarget(b)} style={{background:"none",border:`1.5px solid ${T.red}`,color:T.red,borderRadius:7,padding:"5px 11px",fontSize:12,cursor:"pointer",fontFamily:FB}}>Decline</button><button onClick={() => acceptBooking(b)} style={{background:T.teal,border:"none",color:"#fff",borderRadius:7,padding:"5px 11px",fontSize:12,cursor:"pointer",fontFamily:FB,fontWeight:600}}>Accept</button></div>}
+                    {dispStatus === "pending" && <div className="booking-pending-actions" style={{display:"flex",gap:8}}><button className="booking-pending-btn booking-pending-decline" onClick={() => setDeclineTarget(b)} style={{background:"none",border:`1.5px solid ${T.red}`,color:T.red,borderRadius:7,padding:"5px 11px",fontSize:12,cursor:"pointer",fontFamily:FB}}>Decline</button><button className="booking-pending-btn booking-pending-accept" onClick={() => acceptBooking(b)} style={{background:T.teal,border:"none",color:"#fff",borderRadius:7,padding:"5px 11px",fontSize:12,cursor:"pointer",fontFamily:FB,fontWeight:600}}>Accept</button></div>}
                     {dispStatus === "confirmed" && <AddToCalendar booking={b} isTutor={true} user={user} />}
                     {dispStatus === "confirmed" && canCancelBooking(b) && <button onClick={() => setTutorCancelTarget(b)} style={{background:"none",border:`1.5px solid ${T.red}`,color:T.red,borderRadius:7,padding:"5px 11px",fontSize:12,cursor:"pointer",fontFamily:FB}}>Cancel session</button>}
                   </div>
@@ -4440,10 +4440,10 @@ function AboutView({ setView, hasTutorApp, isParent }) {
               </div>
             </Card>
             <Card style={{ borderLeft: `3px solid ${T.purple}` }}>
-              <div style={{ fontFamily: FD, fontSize: 36, fontWeight: 700, color: T.ink }}>4</div>
+              <div style={{ fontFamily: FD, fontSize: 36, fontWeight: 700, color: T.ink }}>27</div>
               <div style={{ fontSize: 12, color: T.textMuted, marginBottom: 8 }}>Past paper years used to model questions</div>
               <div style={{ fontSize: 14, color: T.inkSoft, lineHeight: 1.55 }}>
-                2010, 2011, 2012 and 2015 CXC papers analysed to understand question style, difficulty, and mark allocation before writing each original question.
+                CXC Mathematics past papers from 2000 to 2026 were analysed to understand question style, difficulty, and mark allocation before writing each original question.
               </div>
             </Card>
           </div>
@@ -4496,15 +4496,17 @@ function ContactView({ setView, showToast, hasTutorApp, isParent }) {
 
   return (
     <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
-      <div style={{ background: `linear-gradient(135deg,${T.navyDeep},${T.navyMid})`, color: "#fff", padding: "52px 28px 44px", textAlign: "center", flexShrink: 0 }}>
-        <h1 style={{ fontFamily: FD, fontSize: "clamp(28px,4vw,40px)", fontWeight: 700, margin: "0 0 12px" }}>Contact us</h1>
-        <p style={{ fontSize: 16, color: "rgba(255,255,255,.8)", maxWidth: 460, margin: "0 auto" }}>
-          Contact us about questions, feedback, tutor applications or school partnerships.
-        </p>
+      <div className="contact-hero" style={{ background: `linear-gradient(135deg,${T.navyDeep},${T.navyMid})`, color: "#fff", padding: "52px 28px 44px", flexShrink: 0 }}>
+        <div className="contact-hero-inner">
+          <h1 className="contact-hero-title" style={{ fontFamily: FD, fontSize: "clamp(28px,4vw,40px)", fontWeight: 700, margin: "0 0 12px" }}>Contact us</h1>
+          <p className="contact-hero-copy" style={{ fontSize: 16, color: "rgba(255,255,255,.8)", margin: 0 }}>
+            Contact us about questions, feedback, tutor applications or school partnerships.
+          </p>
+        </div>
       </div>
 
-      <div style={{ maxWidth: 1000, margin: "0 auto", padding: "52px 28px", flex: 1 }}>
-        <div className="marketing-grid responsive-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: 48, alignItems: "start" }}>
+      <div className="contact-page-content" style={{ maxWidth: 1000, margin: "0 auto", padding: "52px 28px", flex: 1 }}>
+        <div className="marketing-grid responsive-grid contact-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: 48, alignItems: "start" }}>
           {/* Left: contact details */}
           <div>
             <h2 style={{ fontFamily: FD, fontSize: 22, fontWeight: 700, color: T.ink, marginBottom: 20 }}>Get in touch</h2>
