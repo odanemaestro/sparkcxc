@@ -1,0 +1,281 @@
+/* ========================================================================== */
+/* SPARK toast notifications                                                  */
+/* Responsive across desktop, tablet, narrow phones and device safe areas.   */
+/* ========================================================================== */
+
+.spark-toast {
+  --toast-accent: #0f766e;
+  --toast-icon-bg: #ccfbf1;
+  --toast-icon-fg: #0f766e;
+  --toast-title: #0b2450;
+  --toast-text: #475569;
+  --toast-border: #dbe4ee;
+  --toast-bg: rgba(255, 255, 255, 0.98);
+
+  position: fixed;
+  left: 50%;
+  bottom: calc(22px + env(safe-area-inset-bottom, 0px));
+  z-index: 2147483000;
+  width: min(540px, calc(100vw - 40px));
+  min-width: 0;
+  box-sizing: border-box;
+  transform: translateX(-50%);
+
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr) 30px;
+  align-items: start;
+  gap: 11px;
+
+  padding: 14px 14px 14px 16px;
+  overflow: hidden;
+  border: 1px solid var(--toast-border);
+  border-radius: 16px;
+  background: var(--toast-bg);
+  box-shadow:
+    0 18px 48px rgba(8, 26, 61, 0.18),
+    0 3px 12px rgba(8, 26, 61, 0.08);
+  color: var(--toast-text);
+  isolation: isolate;
+  -webkit-font-smoothing: antialiased;
+  animation: spark-toast-enter 220ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@supports (backdrop-filter: blur(12px)) {
+  .spark-toast {
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
+.spark-toast--success {
+  --toast-accent: #0f9d8a;
+  --toast-icon-bg: #d5faf2;
+  --toast-icon-fg: #087968;
+  --toast-border: #b9eee3;
+}
+
+.spark-toast--error {
+  --toast-accent: #dc2626;
+  --toast-icon-bg: #fee2e2;
+  --toast-icon-fg: #b91c1c;
+  --toast-title: #7f1d1d;
+  --toast-border: #fecaca;
+}
+
+.spark-toast--warning {
+  --toast-accent: #d97706;
+  --toast-icon-bg: #fef3c7;
+  --toast-icon-fg: #b45309;
+  --toast-title: #78350f;
+  --toast-border: #fde68a;
+}
+
+.spark-toast--info {
+  --toast-accent: #0f9d8a;
+  --toast-icon-bg: #d8f6f1;
+  --toast-icon-fg: #087968;
+}
+
+.spark-toast__accent {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--toast-accent);
+}
+
+.spark-toast__icon {
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--toast-icon-bg);
+  color: var(--toast-icon-fg);
+}
+
+.spark-toast__icon svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.spark-toast__content {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 1px;
+}
+
+.spark-toast__title,
+.spark-toast__message {
+  display: block;
+  min-width: 0;
+}
+
+.spark-toast__title {
+  color: var(--toast-title);
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+}
+
+.spark-toast__message {
+  color: var(--toast-text);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.45;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.spark-toast__close {
+  width: 30px;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: start;
+  flex: 0 0 auto;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: #64748b;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 140ms ease, color 140ms ease, transform 140ms ease;
+}
+
+.spark-toast__close:hover {
+  background: #f1f5f9;
+  color: #0b2450;
+}
+
+.spark-toast__close:active {
+  transform: scale(0.94);
+}
+
+.spark-toast__close:focus-visible {
+  outline: 3px solid rgba(15, 157, 138, 0.22);
+  outline-offset: 1px;
+}
+
+.spark-toast__close svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+@keyframes spark-toast-enter {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 14px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+/* Tablet and phone */
+@media (max-width: 640px) {
+  .spark-toast {
+    left: 12px;
+    right: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    width: auto;
+    max-width: none;
+    transform: none;
+    grid-template-columns: 28px minmax(0, 1fr) 28px;
+    gap: 10px;
+    padding: 13px 12px 13px 14px;
+    border-radius: 15px;
+    box-shadow:
+      0 14px 36px rgba(8, 26, 61, 0.17),
+      0 2px 8px rgba(8, 26, 61, 0.07);
+    animation-name: spark-toast-enter-mobile;
+  }
+
+  .spark-toast__icon,
+  .spark-toast__close {
+    width: 28px;
+    height: 28px;
+  }
+
+  .spark-toast__title {
+    font-size: 12.5px;
+  }
+
+  .spark-toast__message {
+    font-size: 13.5px;
+    line-height: 1.42;
+  }
+}
+
+/* Very narrow devices */
+@media (max-width: 360px) {
+  .spark-toast {
+    left: 9px;
+    right: 9px;
+    bottom: calc(9px + env(safe-area-inset-bottom, 0px));
+    grid-template-columns: 26px minmax(0, 1fr) 26px;
+    gap: 8px;
+    padding: 12px 10px 12px 12px;
+    border-radius: 14px;
+  }
+
+  .spark-toast__icon,
+  .spark-toast__close {
+    width: 26px;
+    height: 26px;
+  }
+
+  .spark-toast__message {
+    font-size: 13px;
+  }
+}
+
+/* Short landscape viewports, such as phones rotated sideways */
+@media (max-height: 500px) and (orientation: landscape) {
+  .spark-toast {
+    bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+@keyframes spark-toast-enter-mobile {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spark-toast {
+    animation: none;
+  }
+
+  .spark-toast__close {
+    transition: none;
+  }
+}

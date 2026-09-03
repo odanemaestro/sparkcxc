@@ -967,3 +967,73 @@ input,select,textarea,button{max-width:100%}
     max-width: 240px !important;
   }
 }
+
+/* =========================================================
+   ABOUT HERO: SHARED COLUMN ALIGNMENT
+   Match the Contact hero layout so wrapped text always starts
+   from one consistent left edge on desktop, tablet and mobile.
+   ========================================================= */
+
+.about-hero-inner {
+  width: min(100%, 680px) !important;
+  max-width: 680px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.about-hero-title {
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+}
+
+.about-hero-kicker,
+.about-hero-copy {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  text-align: left !important;
+  box-sizing: border-box !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+}
+
+.about-hero-kicker {
+  line-height: 1.45 !important;
+  text-wrap: balance;
+}
+
+.about-hero-copy {
+  line-height: 1.55 !important;
+  text-wrap: pretty;
+}
+
+@media (max-width: 760px) {
+  .about-hero {
+    padding: 42px 20px 38px !important;
+  }
+
+  .about-hero-inner {
+    width: min(100%, 430px) !important;
+    max-width: 430px !important;
+  }
+
+  .about-hero-kicker,
+  .about-hero-copy {
+    text-align: left !important;
+  }
+
+  .about-hero-copy {
+    font-size: 16px !important;
+    line-height: 1.55 !important;
+  }
+}

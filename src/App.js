@@ -55,6 +55,141 @@ import GOOGLE_CALENDAR_ICON_B64 from "./assets/icons/google-calendar-icon.png";
 import OUTLOOK_ICON_B64 from "./assets/icons/outlook-icon.png";
 import APPLE_CALENDAR_ICON_B64 from "./assets/icons/apple-calendar-icon.png";
 
+// ─── URL ROUTING ─────────────────────────────────────────────────────────────
+// GitHub Pages serves SPARK as a static single-page app. Hash-based routes keep
+// every screen refresh-safe without requiring server rewrite rules or a 404
+// redirect workaround. The rest of the app can continue calling setView(...)
+// exactly as before while the URL stays in sync with the visible screen.
+const VIEW_ROUTE_PATHS = Object.freeze({
+  home: "/",
+  tutors: "/tutors",
+  "how-it-works": "/how-it-works",
+  login: "/login",
+  auth: "/signup",
+  "auth-recovery": "/reset-password",
+  dashboard: "/dashboard",
+  admin: "/admin",
+  lesson: "/study",
+  practice: "/practice",
+  about: "/about",
+  contact: "/contact",
+  privacy: "/privacy",
+  "become-tutor": "/become-tutor",
+});
+
+const ROUTE_PATH_VIEWS = Object.freeze({
+  "/": "home",
+  "/home": "home",
+  "/tutors": "tutors",
+  "/how-it-works": "how-it-works",
+  "/login": "login",
+  "/auth": "auth",
+  "/signup": "auth",
+  "/reset-password": "auth-recovery",
+  "/dashboard": "dashboard",
+  "/admin": "admin",
+  "/lesson": "lesson",
+  "/study": "lesson",
+  "/practice": "practice",
+  "/about": "about",
+  "/contact": "contact",
+  "/privacy": "privacy",
+  "/become-tutor": "become-tutor",
+});
+
+const DASHBOARD_ROUTE_SECTIONS = new Set([
+  "overview",
+  "subjects",
+  "progress",
+  "bookings",
+  "sessions",
+  "students",
+  "reviews",
+  "earnings",
+  "profile",
+]);
+
+function normalizedSparkPathFromBrowserHash() {
+  if (typeof window === "undefined") return "/";
+
+  const hash = String(window.location.hash || "");
+  if (!hash || hash === "#" || hash === "#/") return "/";
+
+  // Supabase may temporarily use the hash for auth tokens. Do not rewrite or
+  // interpret those as SPARK routes. The auth state listener will move the user
+  // to the appropriate SPARK screen once Supabase has processed the callback.
+  if (!hash.startsWith("#/")) return null;
+
+  const rawPath = hash.slice(1).split("?")[0];
+  return rawPath.length > 1
+    ? rawPath.replace(/\/+$/, "")
+    : rawPath;
+}
+
+function viewFromBrowserHash() {
+  const normalizedPath = normalizedSparkPathFromBrowserHash();
+  if (!normalizedPath) return "home";
+
+  // Dashboard tabs are first-class routes. Any recognized nested dashboard
+  // path still resolves to the Dashboard screen at the app-shell level.
+  if (normalizedPath === "/dashboard" || normalizedPath.startsWith("/dashboard/")) {
+    return "dashboard";
+  }
+
+  return ROUTE_PATH_VIEWS[normalizedPath] || "home";
+}
+
+function dashboardSectionFromBrowserHash() {
+  const path = normalizedSparkPathFromBrowserHash();
+  if (!path || path === "/dashboard") return "overview";
+  if (!path.startsWith("/dashboard/")) return "overview";
+
+  const section = path.slice("/dashboard/".length).split("/")[0];
+  return DASHBOARD_ROUTE_SECTIONS.has(section) ? section : "overview";
+}
+
+function emitSparkRouteChange() {
+  if (typeof window === "undefined") return;
+  window.dispatchEvent(new Event("spark:routechange"));
+}
+
+function writeRouteHash(nextHash, { replace = false } = {}) {
+  if (typeof window === "undefined") return;
+  if ((window.location.hash || "") === nextHash) return;
+
+  const nextUrl = `${window.location.pathname}${window.location.search}${nextHash}`;
+  if (replace) {
+    window.history.replaceState(window.history.state, "", nextUrl);
+  } else {
+    window.history.pushState(window.history.state, "", nextUrl);
+  }
+  // pushState/replaceState do not emit popstate/hashchange themselves. This
+  // keeps mounted nested screens synchronized when code changes the route.
+  emitSparkRouteChange();
+}
+
+function writeViewToBrowserHash(view, { replace = false } = {}) {
+  if (typeof window === "undefined") return;
+
+  const path = VIEW_ROUTE_PATHS[view] || VIEW_ROUTE_PATHS.home;
+  const nextHash = `#${path}`;
+  const currentHash = window.location.hash || "";
+
+  // Treat an empty hash and #/ as the same Home route so loading the homepage
+  // does not create a needless browser-history entry.
+  const alreadyAtRoute = currentHash === nextHash ||
+    (view === "home" && (currentHash === "" || currentHash === "#" || currentHash === "#/"));
+  if (alreadyAtRoute) return;
+
+  writeRouteHash(nextHash, { replace });
+}
+
+function writeDashboardSectionToBrowserHash(section, { replace = false } = {}) {
+  const safeSection = DASHBOARD_ROUTE_SECTIONS.has(section) ? section : "overview";
+  const path = safeSection === "overview" ? "/dashboard" : `/dashboard/${safeSection}`;
+  writeRouteHash(`#${path}`, { replace });
+}
+
 // ─── Brand icons (inlined as data URIs so no separate asset files are
 // needed) - used by the "Continue with Google" button and the
 // "Add to calendar" dropdown.
@@ -2245,7 +2380,7 @@ function SessionCalendar({ bookings, isTutor, user, studentReviews = [], onAccep
   );
 }
 
-function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorApp }) {
+function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorApp, tutorAppLoaded = true }) {
   // profile.role is only set once, at signup - it's never flipped to "tutor"
   // when someone who signed up as a student later applies and gets approved.
   // Falling back to an approved tutor-application status keeps this accurate
@@ -2253,6 +2388,11 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   // weren't showing up here).
   const isTutor = profile?.role === "tutor" || tutorApp?.status === "approved";
   const isStudent = profile?.role === "student";
+  // Student profiles can later become approved tutors without profile.role
+  // changing. Wait for that tutor lookup before canonicalizing a nested
+  // dashboard route, otherwise #/dashboard/sessions could briefly be mistaken
+  // for the student's #/dashboard/bookings route during refresh.
+  const dashboardRoleResolved = profile?.role === "tutor" || tutorAppLoaded;
   const normalizeDashboardSection = useCallback((section) => {
     if (isTutor) {
       if (section === "bookings") return "sessions";
@@ -2271,7 +2411,10 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       return null;
     }
   });
-  const [sec, setSec] = useState(() => normalizeDashboardSection(notificationTarget?.section || "overview"));
+  // Keep the raw route until the tutor lookup is resolved. Once we know which
+  // dashboard variant this account owns, the effects below normalize aliases
+  // (sessions <-> bookings) and keep the URL canonical.
+  const [sec, setSec] = useState(() => notificationTarget?.section || dashboardSectionFromBrowserHash());
   const [bookings, setBookings] = useState([]);
   const [progressData, setProgressData] = useState([]);
   const [examAttempts, setExamAttempts] = useState([]);
@@ -2291,25 +2434,72 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   const [tutorCancelTarget, setTutorCancelTarget] = useState(null);
   const totalTopics = SYLLABUS_SECTIONS.reduce((a, s) => a + s.topics.length, 0);
 
+  const setDashboardSection = useCallback((section, options = {}) => {
+    if (!dashboardRoleResolved) {
+      setSec(section);
+      return;
+    }
+    const normalized = normalizeDashboardSection(section);
+    setSec(normalized);
+    writeDashboardSectionToBrowserHash(normalized, options);
+  }, [dashboardRoleResolved, normalizeDashboardSection]);
+
+  // Resolve the URL on first mount/refresh once we know whether this account
+  // owns the student or tutor dashboard. This is what makes refreshing
+  // #/dashboard/bookings or #/dashboard/sessions reopen the exact tab.
+  useEffect(() => {
+    if (!dashboardRoleResolved || notificationTarget?.section) return;
+    const requested = dashboardSectionFromBrowserHash();
+    const normalized = normalizeDashboardSection(requested);
+    setSec(normalized);
+    if (normalized !== requested) {
+      writeDashboardSectionToBrowserHash(normalized, { replace: true });
+    }
+  }, [dashboardRoleResolved, notificationTarget?.section, normalizeDashboardSection]);
+
+  // Browser Back/Forward and route changes triggered elsewhere in SPARK must
+  // update the visible dashboard tab too, not only the top-level App view.
+  useEffect(() => {
+    if (!dashboardRoleResolved) return undefined;
+    const syncDashboardSectionFromUrl = () => {
+      if (viewFromBrowserHash() !== "dashboard") return;
+      const requested = dashboardSectionFromBrowserHash();
+      const normalized = normalizeDashboardSection(requested);
+      setSec(normalized);
+      if (normalized !== requested) {
+        writeDashboardSectionToBrowserHash(normalized, { replace: true });
+      }
+    };
+
+    window.addEventListener("popstate", syncDashboardSectionFromUrl);
+    window.addEventListener("hashchange", syncDashboardSectionFromUrl);
+    window.addEventListener("spark:routechange", syncDashboardSectionFromUrl);
+    return () => {
+      window.removeEventListener("popstate", syncDashboardSectionFromUrl);
+      window.removeEventListener("hashchange", syncDashboardSectionFromUrl);
+      window.removeEventListener("spark:routechange", syncDashboardSectionFromUrl);
+    };
+  }, [dashboardRoleResolved, normalizeDashboardSection]);
+
   useEffect(() => {
     const handleNotificationTarget = (event) => {
       const target = event?.detail;
       if (!target?.section) return;
       try { sessionStorage.removeItem("spark_dashboard_notification_target"); } catch (error) {}
       setNotificationTarget(target);
-      setSec(normalizeDashboardSection(target.section));
+      setSec(target.section);
       if (target.bookingId) setBookingView("list");
     };
 
     window.addEventListener("spark:dashboard-notification-target", handleNotificationTarget);
     return () => window.removeEventListener("spark:dashboard-notification-target", handleNotificationTarget);
-  }, [normalizeDashboardSection]);
+  }, []);
 
   useEffect(() => {
-    if (!notificationTarget?.section) return;
-    setSec(normalizeDashboardSection(notificationTarget.section));
+    if (!notificationTarget?.section || !dashboardRoleResolved) return;
+    setDashboardSection(notificationTarget.section, { replace: true });
     if (notificationTarget.bookingId) setBookingView("list");
-  }, [notificationTarget, normalizeDashboardSection]);
+  }, [notificationTarget, dashboardRoleResolved, setDashboardSection]);
 
   useEffect(() => {
     const bookingId = notificationTarget?.bookingId;
@@ -2648,7 +2838,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
           </div>
         </div>
         {navItems.map(item => (
-          <div className="dash-nav-item" key={item.k} onClick={() => setSec(item.k)}
+          <div className="dash-nav-item" key={item.k} onClick={() => setDashboardSection(item.k)}
             style={{padding:"10px 14px",fontSize:14,cursor:"pointer",display:"flex",alignItems:"center",
               gap:8,borderRadius:T.rSm,
               color:sec===item.k?T.tealDark:T.textMuted,background:sec===item.k?T.tealLight:"transparent",
@@ -4073,7 +4263,8 @@ function ParentView({ user, profile, setView, showToast }) {
 }
 
 export default function App() {
-  const [view, setView] = useState("home");
+  const [view, setViewState] = useState(() => viewFromBrowserHash());
+  const viewRef = useRef(view);
   const [session, setSession] = useState(null);
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -4084,11 +4275,16 @@ export default function App() {
   // should let someone see/use "Become a tutor" - pending, approved, and
   // deactivated all mean the link should stay hidden.
   const [tutorApp, setTutorApp] = useState(null);
+  const [tutorAppLoaded, setTutorAppLoaded] = useState(false);
   // Tracks whichever user id we last saw signed in, so the auth listener
   // below can tell a genuine sign-in apart from Supabase simply re-confirming
   // the same session (e.g. a token refresh triggered by the tab regaining
   // focus) - the event name alone isn't a reliable way to tell these apart.
   const knownUserId = useRef(null);
+  // The first auth callback is session restoration, not a fresh login. Keeping
+  // track of that distinction is what lets an already signed-in user refresh
+  // #/contact, #/tutors, #/dashboard, etc. without being forced elsewhere.
+  const authInitialized = useRef(false);
   const hasTutorApp = !!tutorApp && tutorApp.status !== "rejected";
   // Student accounts are never eligible to apply as a tutor, so the
   // "Submit application to become a tutor" link (nav, footer, dashboard)
@@ -4099,12 +4295,73 @@ export default function App() {
   // of them individually.
   const hideTutorApplyLink = profile?.role === "student" || hasTutorApp;
 
+  const setView = useCallback((nextView, options = {}) => {
+    const requestedView = typeof nextView === "function"
+      ? nextView(viewRef.current)
+      : nextView;
+    const resolvedView = VIEW_ROUTE_PATHS[requestedView] ? requestedView : "home";
+
+    viewRef.current = resolvedView;
+    setViewState(resolvedView);
+    writeViewToBrowserHash(resolvedView, options);
+  }, []);
+
+  // Keep React in sync when the user uses browser Back/Forward or manually
+  // changes a hash route. pushState itself is handled by setView above.
+  useEffect(() => {
+    const syncViewFromUrl = () => {
+      const nextView = viewFromBrowserHash();
+      viewRef.current = nextView;
+      setViewState(nextView);
+    };
+
+    window.addEventListener("popstate", syncViewFromUrl);
+    window.addEventListener("hashchange", syncViewFromUrl);
+    window.addEventListener("spark:routechange", syncViewFromUrl);
+    return () => {
+      window.removeEventListener("popstate", syncViewFromUrl);
+      window.removeEventListener("hashchange", syncViewFromUrl);
+      window.removeEventListener("spark:routechange", syncViewFromUrl);
+    };
+  }, []);
+
+  useEffect(() => {
+    viewRef.current = view;
+  }, [view]);
+
+  const toastTimerRef = useRef(null);
+
+  const dismissToast = useCallback(() => {
+    if (toastTimerRef.current) {
+      clearTimeout(toastTimerRef.current);
+      toastTimerRef.current = null;
+    }
+    setToast(null);
+  }, []);
+
   const showToast = useCallback((msg, type = "info") => {
+    const resolvedType = typeof msg === "object" && msg?.type ? msg.type : type;
     const normalized = typeof msg === "object" && msg !== null
-      ? { ...msg, message: friendlyErrorMessage(msg.message || msg) }
-      : { message: friendlyErrorMessage(msg), type };
+      ? { ...msg, type: resolvedType, message: friendlyErrorMessage(msg.message || msg) }
+      : { message: friendlyErrorMessage(msg), type: resolvedType };
+
+    if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
     setToast(normalized);
-    setTimeout(() => setToast(null), type === "error" ? 5200 : 3200);
+
+    const duration = resolvedType === "error"
+      ? 5200
+      : resolvedType === "warning"
+        ? 4200
+        : 3400;
+
+    toastTimerRef.current = setTimeout(() => {
+      setToast(null);
+      toastTimerRef.current = null;
+    }, duration);
+  }, []);
+
+  useEffect(() => () => {
+    if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
   }, []);
 
   // Load live stats from Supabase
@@ -4144,6 +4401,9 @@ export default function App() {
       } else setLoading(false);
     });
     const {data: L} = supabase.auth.onAuthStateChange((event, s) => {
+      const isInitialAuthResolution = !authInitialized.current;
+      authInitialized.current = true;
+
       // A password-reset link creates a temporary recovery session. It is
       // authenticated, but it must NOT be treated as a normal login. Keep
       // the user on the password-reset screen so they can choose a new
@@ -4164,6 +4424,7 @@ export default function App() {
           setSession(null);
           setProfile(null);
           setTutorApp(null);
+          setTutorAppLoaded(false);
           setLoading(false);
           setView("auth");
           return;
@@ -4181,7 +4442,7 @@ export default function App() {
         // person's session simply being reconfirmed. Otherwise anything
         // mid-task - a booking modal open on Tutors, for example - gets
         // yanked away and closed the moment the tab regains focus.
-        const isNewSignIn = knownUserId.current !== s.user.id;
+        const isNewSignIn = !isInitialAuthResolution && knownUserId.current !== s.user.id;
         knownUserId.current = s.user.id;
         if (isNewSignIn) {
           restorePushAssociation(s.user.id).catch(error => console.error("Push association restore failed:", error));
@@ -4193,7 +4454,10 @@ export default function App() {
       }
       else {
         knownUserId.current = null;
-        setProfile(null); setTutorApp(null); setLoading(false); setView("home");
+        setProfile(null); setTutorApp(null); setTutorAppLoaded(false); setLoading(false);
+        // On the first auth resolution, preserve whatever public route was
+        // loaded from the URL. A real later sign-out still returns to Home.
+        if (!isInitialAuthResolution) setView("home", { replace: true });
       }
     });
     return () => L.subscription.unsubscribe();
@@ -4202,8 +4466,11 @@ export default function App() {
   const loadProfile = async (uid) => {
     const {data} = await supabase.from("profiles").select("*").eq("id", uid).single();
     setProfile(data);
+    // Resolve tutor status before revealing the authenticated UI. This avoids
+    // a student-dashboard flash for approved tutors and lets nested dashboard
+    // routes be interpreted correctly on the very first rendered frame.
+    await loadTutorApp(uid);
     setLoading(false);
-    loadTutorApp(uid);
   };
 
   // The user's own tutor application (id + status), if any - used to
@@ -4212,15 +4479,22 @@ export default function App() {
   // Called on login and again right after a fresh submission, so state
   // stays correct without waiting for the next full profile reload.
   const loadTutorApp = async (uid) => {
-    const {data: tutorRows} = await supabase.from("tutors").select("id,status").eq("user_id", uid).limit(1);
-    setTutorApp((tutorRows || [])[0] || null);
+    setTutorAppLoaded(false);
+    const {data: tutorRows, error} = await supabase.from("tutors").select("id,status").eq("user_id", uid).limit(1);
+    if (error) {
+      console.error("Failed to load tutor application status:", error);
+      setTutorApp(null);
+    } else {
+      setTutorApp((tutorRows || [])[0] || null);
+    }
+    setTutorAppLoaded(true);
   };
 
   const handleLogout = async () => {
     try { await detachCurrentPushAssociation(); }
     catch (error) { console.error("Push device detach failed during logout:", error); }
     await supabase.auth.signOut();
-    showToast("Logged out.");
+    showToast("Logged out successfully.", "success");
   };
 
   if (loading) return (
@@ -4251,7 +4525,7 @@ export default function App() {
         />
       )}
       {view === "dashboard"    && session && profile?.role === "parent" ? <ParentView user={session.user} profile={profile} setView={setView} showToast={showToast}/> : null}
-      {view === "dashboard"    && session && profile?.role !== "parent" && <DashboardView user={session.user} profile={profile} setView={setView} showToast={showToast} hasTutorApp={hideTutorApplyLink} tutorApp={tutorApp}/>}
+      {view === "dashboard"    && session && profile?.role !== "parent" && <DashboardView user={session.user} profile={profile} setView={setView} showToast={showToast} hasTutorApp={hideTutorApplyLink} tutorApp={tutorApp} tutorAppLoaded={tutorAppLoaded}/>}
       {view === "admin"        && session && profile?.is_admin && <AdminView showToast={showToast} adminUserId={session.user.id}/>}
       {view === "lesson"       && session && <LessonView user={session.user} setView={setView} showToast={showToast} hasTutorApp={hideTutorApplyLink}/>}
       {view === "practice"    && session && profile?.role !== "tutor" && tutorApp?.status !== "approved" && <PracticeHub supabase={supabase} userId={session.user.id} setView={setView}/>}
@@ -4271,7 +4545,7 @@ export default function App() {
           Please <span style={{color:T.teal,cursor:"pointer"}} onClick={() => setView("login")}>sign in</span> to continue.
         </div>
       )}
-      <Toast msg={toast}/>
+      <Toast msg={toast} onDismiss={dismissToast}/>
       <ScrollToTopButton raised={!!toast}/>
     </div>
   );
@@ -4397,16 +4671,18 @@ function AboutView({ setView, hasTutorApp, isParent }) {
 
   return (
     <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
-      <div style={{ background: `linear-gradient(135deg,${T.navyDeep},${T.navyMid})`, color: "#fff", padding: "52px 28px 44px", textAlign: "center", flexShrink: 0 }}>
-        <h1 style={{ fontFamily: FD, fontSize: "clamp(28px,4vw,40px)", fontWeight: 700, margin: "0 0 8px" }}>
-          About SPARK
-        </h1>
-        <p style={{ fontSize: 13, fontWeight: 600, letterSpacing: "0.04em", color: "#5EEAD4", textTransform: "uppercase", margin: "0 0 14px" }}>
-          Student Platform for Assistance, Resources &amp; Knowledge
-        </p>
-        <p style={{ fontSize: 16, color: "rgba(255,255,255,.8)", maxWidth: 540, margin: "0 auto" }}>
-          Built by educators who grew up doing CSEC exams. Designed for the students who are sitting them now.
-        </p>
+      <div className="about-hero" style={{ background: `linear-gradient(135deg,${T.navyDeep},${T.navyMid})`, color: "#fff", padding: "52px 28px 44px", flexShrink: 0 }}>
+        <div className="about-hero-inner">
+          <h1 className="about-hero-title" style={{ fontFamily: FD, fontSize: "clamp(28px,4vw,40px)", fontWeight: 700, margin: "0 0 8px" }}>
+            About SPARK
+          </h1>
+          <p className="about-hero-kicker" style={{ fontSize: 13, fontWeight: 600, letterSpacing: "0.04em", color: "#5EEAD4", textTransform: "uppercase", margin: "0 0 14px" }}>
+            Student Platform for Assistance, Resources &amp; Knowledge
+          </p>
+          <p className="about-hero-copy" style={{ fontSize: 16, color: "rgba(255,255,255,.8)", margin: 0 }}>
+            Built by educators who grew up doing CSEC exams. Designed for the students who are sitting them now.
+          </p>
+        </div>
       </div>
 
       <div style={{ maxWidth: 1100, margin: "0 auto", padding: "52px 28px", flex: 1 }}>
