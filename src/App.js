@@ -1954,7 +1954,7 @@ function getCalendarEventDetails(booking, isTutor, user) {
       `SPARK Tutoring Session\n\n` +
       `Subject: ${subject}\n` +
       `${isTutor ? "Student" : "Tutor"}: ${otherPerson}\n` +
-      `Date: ${booking.session_date}\n` +
+      `Date: ${bookingDateLabel(booking.session_date)}\n` +
       `Time: ${fmtSessionRange(
         booking.start_time,
         booking.duration_minutes
@@ -2122,6 +2122,7 @@ function AddToCalendar({ booking, isTutor, user }) {
       {open && menuPos && createPortal(
         <div
           ref={menuRef}
+          className="spark-calendar-menu"
           style={{
             position:"fixed",
             left:menuPos.left,
@@ -3525,7 +3526,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                   <div key={b.id} style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:12,padding:"12px 0",borderBottom:`1px solid ${T.border}`}}>
                     <div style={{minWidth:0}}>
                       <div style={{fontWeight:600,color:T.ink,fontSize:14}}>{b.profiles?.name || "Student"}</div>
-                      <div style={{fontSize:12,color:T.textMuted}}>{b.subject} · {b.session_date} · {b.duration_minutes || 60} min</div>
+                      <div style={{fontSize:12,color:T.textMuted}}>{b.subject} · {bookingDateLabel(b.session_date)} · {b.duration_minutes || 60} min</div>
                     </div>
                     <div style={{textAlign:"right",flexShrink:0}}>
                       <div style={{fontWeight:700,color:T.ink,fontSize:14}}>J${Number(b.rate_jmd || 0).toLocaleString()}</div>
@@ -3750,18 +3751,18 @@ function CancelBookingModal({ booking, onClose, onConfirm }) {
   return (
     <Modal onClose={onClose}>
       <div style={{fontFamily:FD,fontSize:19,fontWeight:700,color:T.ink,marginBottom:4}}>Cancel booking</div>
-      <div style={{fontSize:13,color:T.textMuted,marginBottom:18}}>
-        with {booking.tutors?.name || "your tutor"} · {booking.subject} · {booking.session_date}
+      <div className="booking-action-modal-meta" style={{fontSize:13,color:T.textMuted,marginBottom:18}}>
+        with {booking.tutors?.name || "your tutor"} · {booking.subject} · {bookingDateLabel(booking.session_date)}
       </div>
       <div style={{fontSize:13,fontWeight:500,color:T.inkSoft,marginBottom:6}}>Reason for cancelling</div>
-      <textarea value={reason} onChange={e=>setReason(e.target.value)} rows={3}
+      <textarea className="booking-action-modal-textarea" value={reason} onChange={e=>setReason(e.target.value)} rows={3}
         placeholder="Let your tutor know why you're cancelling…"
         style={{width:"100%",padding:"10px 12px",border:`1.5px solid ${T.border}`,borderRadius:7,
           fontSize:14,fontFamily:FB,color:T.ink,outline:"none",resize:"vertical",marginBottom:16}}/>
-      <div style={{fontSize:12,color:T.textMuted,marginBottom:16}}>
+      <div className="booking-action-modal-note" style={{fontSize:12,color:T.textMuted,marginBottom:16}}>
         Your tutor will be notified immediately once you cancel.
       </div>
-      <div style={{display:"flex",gap:10}}>
+      <div className="booking-action-modal-actions" style={{display:"flex",gap:10}}>
         <Btn v="outline" onClick={onClose} style={{flex:1,justifyContent:"center"}}>Keep booking</Btn>
         <Btn onClick={async () => { setSubmitting(true); await onConfirm(reason); setSubmitting(false); }}
           disabled={submitting || !reason.trim()} style={{flex:2,justifyContent:"center",background:T.red,borderColor:T.red}}>
@@ -3783,18 +3784,18 @@ function DeclineBookingModal({ booking, onClose, onConfirm }) {
   return (
     <Modal onClose={onClose}>
       <div style={{fontFamily:FD,fontSize:19,fontWeight:700,color:T.ink,marginBottom:4}}>Decline booking</div>
-      <div style={{fontSize:13,color:T.textMuted,marginBottom:18}}>
-        with {booking.profiles?.name || "this student"} · {booking.subject} · {booking.session_date}
+      <div className="booking-action-modal-meta" style={{fontSize:13,color:T.textMuted,marginBottom:18}}>
+        with {booking.profiles?.name || "this student"} · {booking.subject} · {bookingDateLabel(booking.session_date)}
       </div>
       <div style={{fontSize:13,fontWeight:500,color:T.inkSoft,marginBottom:6}}>Reason for declining</div>
-      <textarea value={reason} onChange={e=>setReason(e.target.value)} rows={3}
+      <textarea className="booking-action-modal-textarea" value={reason} onChange={e=>setReason(e.target.value)} rows={3}
         placeholder="Let the student know why you can't take this session…"
         style={{width:"100%",padding:"10px 12px",border:`1.5px solid ${T.border}`,borderRadius:7,
           fontSize:14,fontFamily:FB,color:T.ink,outline:"none",resize:"vertical",marginBottom:16}}/>
-      <div style={{fontSize:12,color:T.textMuted,marginBottom:16}}>
+      <div className="booking-action-modal-note" style={{fontSize:12,color:T.textMuted,marginBottom:16}}>
         The student will see this reason on their booking.
       </div>
-      <div style={{display:"flex",gap:10}}>
+      <div className="booking-action-modal-actions" style={{display:"flex",gap:10}}>
         <Btn v="outline" onClick={onClose} style={{flex:1,justifyContent:"center"}}>Keep pending</Btn>
         <Btn onClick={async () => { setSubmitting(true); await onConfirm(reason); setSubmitting(false); }}
           disabled={submitting || !reason.trim()} style={{flex:2,justifyContent:"center",background:T.red,borderColor:T.red}}>
@@ -3815,18 +3816,18 @@ function TutorCancelBookingModal({ booking, onClose, onConfirm }) {
   return (
     <Modal onClose={onClose}>
       <div style={{fontFamily:FD,fontSize:19,fontWeight:700,color:T.ink,marginBottom:4}}>Cancel session</div>
-      <div style={{fontSize:13,color:T.textMuted,marginBottom:18}}>
-        with {booking.profiles?.name || "this student"} · {booking.subject} · {booking.session_date}
+      <div className="booking-action-modal-meta" style={{fontSize:13,color:T.textMuted,marginBottom:18}}>
+        with {booking.profiles?.name || "this student"} · {booking.subject} · {bookingDateLabel(booking.session_date)}
       </div>
       <div style={{fontSize:13,fontWeight:500,color:T.inkSoft,marginBottom:6}}>Reason for cancelling</div>
-      <textarea value={reason} onChange={e=>setReason(e.target.value)} rows={3}
+      <textarea className="booking-action-modal-textarea" value={reason} onChange={e=>setReason(e.target.value)} rows={3}
         placeholder="Let the student know why this confirmed session can't go ahead…"
         style={{width:"100%",padding:"10px 12px",border:`1.5px solid ${T.border}`,borderRadius:7,
           fontSize:14,fontFamily:FB,color:T.ink,outline:"none",resize:"vertical",marginBottom:16}}/>
-      <div style={{fontSize:12,color:T.textMuted,marginBottom:16}}>
+      <div className="booking-action-modal-note" style={{fontSize:12,color:T.textMuted,marginBottom:16}}>
         The student will see this reason and be notified right away.
       </div>
-      <div style={{display:"flex",gap:10}}>
+      <div className="booking-action-modal-actions" style={{display:"flex",gap:10}}>
         <Btn v="outline" onClick={onClose} style={{flex:1,justifyContent:"center"}}>Keep session</Btn>
         <Btn onClick={async () => { setSubmitting(true); await onConfirm(reason); setSubmitting(false); }}
           disabled={submitting || !reason.trim()} style={{flex:2,justifyContent:"center",background:T.red,borderColor:T.red}}>
@@ -5453,7 +5454,10 @@ const CountryFlagDropdown = ({ countryIso2, onChange, error }) => {
       const insideMenu = menuRef.current && menuRef.current.contains(e.target);
       if (!insideButton && !insideMenu) { setOpen(false); setFilterText(""); }
     };
-    const handleReflow = () => setOpen(false);
+    const handleReflow = (event) => {
+      if (menuRef.current && menuRef.current.contains(event.target)) return;
+      setOpen(false);
+    };
     document.addEventListener("mousedown", handleOutside);
     window.addEventListener("scroll", handleReflow, true);
     window.addEventListener("resize", handleReflow);
@@ -5488,6 +5492,7 @@ const CountryFlagDropdown = ({ countryIso2, onChange, error }) => {
         <div
           ref={menuRef}
           role="listbox"
+          className="spark-country-menu"
           style={{
             position: "fixed", left: menuPos.left, top: menuPos.top, width: menuPos.width,
             background: "#fff", border: `1px solid ${T.border}`, borderRadius: 9,

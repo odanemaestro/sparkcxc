@@ -143,3 +143,34 @@
 .exam-attempt-score .exam-performance-badge{margin-top:6px}
 .student-exam-result-score{display:flex;align-items:center;justify-content:flex-end;gap:10px;text-align:right}
 @media(max-width:760px){.exam-attempt-score .exam-performance-badge{margin-top:0}.student-exam-result-score{width:100%;justify-content:space-between;text-align:left}.student-exam-result-score .exam-performance-badge{margin-left:auto}}
+
+
+/* SPARK FAMILY MOBILE QUALITY PASS 2026-09 */
+@media(max-width:560px){
+  .parent-hero{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:18px;
+    padding:22px 20px;
+  }
+  .parent-hero-mark{
+    width:48px;
+    height:48px;
+    border-radius:14px;
+    font-size:17px;
+  }
+  .parent-section{
+    padding:18px;
+  }
+  .session-row{
+    align-items:flex-start;
+    flex-direction:column;
+    gap:8px;
+  }
+  .session-row > :last-child{
+    align-self:flex-start;
+  }
+  .review-full-top{
+    flex-wrap:wrap;
+  }
+}

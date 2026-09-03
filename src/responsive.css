@@ -1037,3 +1037,134 @@ input,select,textarea,button{max-width:100%}
     line-height: 1.55 !important;
   }
 }
+
+
+/* ==========================================================================
+   SPARK MOBILE QUALITY PASS 2026-09
+   Mobile-only finishing layer. Desktop intentionally remains untouched.
+   ========================================================================== */
+@media (max-width:700px) {
+  .spark-modal-backdrop {
+    box-sizing:border-box !important;
+    padding:
+      max(14px, env(safe-area-inset-top))
+      14px
+      max(14px, env(safe-area-inset-bottom)) !important;
+    align-items:center !important;
+    overflow-y:auto !important;
+    overscroll-behavior:contain;
+  }
+
+  .spark-modal-card {
+    box-sizing:border-box !important;
+    width:min(100%,500px) !important;
+    max-height:calc(100dvh - 28px - env(safe-area-inset-top) - env(safe-area-inset-bottom)) !important;
+    padding:22px !important;
+    border-radius:18px !important;
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior:contain;
+  }
+
+  .booking-action-modal-meta {
+    line-height:1.55 !important;
+    text-wrap:pretty;
+    overflow-wrap:break-word;
+  }
+
+  .booking-action-modal-textarea {
+    box-sizing:border-box !important;
+    min-height:112px;
+    padding:12px 13px !important;
+    border-radius:10px !important;
+    font-size:16px !important;
+    line-height:1.5 !important;
+  }
+
+  .booking-action-modal-note {
+    line-height:1.5 !important;
+    text-wrap:pretty;
+  }
+
+  .booking-action-modal-actions {
+    display:grid !important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;
+    gap:10px !important;
+  }
+
+  .booking-action-modal-actions > button {
+    width:100% !important;
+    min-width:0 !important;
+    min-height:48px !important;
+    padding:10px 12px !important;
+    justify-content:center !important;
+    text-align:center !important;
+    white-space:normal !important;
+    font-size:13px !important;
+    line-height:1.2 !important;
+  }
+
+  /* Portal menus cannot run off the right or bottom edge of a phone. */
+  .spark-calendar-menu,
+  .spark-country-menu {
+    left:12px !important;
+    right:12px !important;
+    top:auto !important;
+    bottom:max(12px, env(safe-area-inset-bottom)) !important;
+    width:auto !important;
+    max-width:none !important;
+    max-height:min(70dvh,420px) !important;
+    border-radius:14px !important;
+    box-shadow:0 18px 50px rgba(8,26,61,.24) !important;
+    overflow:auto !important;
+    overscroll-behavior:contain;
+  }
+
+  .spark-calendar-menu button,
+  .spark-country-menu button {
+    min-height:44px !important;
+  }
+
+  .spark-country-menu input {
+    min-height:46px;
+    font-size:16px !important;
+  }
+
+  /* Safe-area awareness when SPARK is opened as an installed web app. */
+  .notification-head {
+    padding-top:max(18px, env(safe-area-inset-top)) !important;
+  }
+}
+
+@media (max-width:390px) {
+  .spark-modal-backdrop {
+    padding:
+      max(10px, env(safe-area-inset-top))
+      10px
+      max(10px, env(safe-area-inset-bottom)) !important;
+  }
+
+  .spark-modal-card {
+    padding:18px !important;
+    border-radius:16px !important;
+    max-height:calc(100dvh - 20px - env(safe-area-inset-top) - env(safe-area-inset-bottom)) !important;
+  }
+
+  .app-scroll-panel {
+    padding-left:12px !important;
+    padding-right:12px !important;
+  }
+}
+
+@media (max-width:340px) {
+  .booking-action-modal-actions {
+    grid-template-columns:1fr !important;
+  }
+}
+
+@media (pointer:coarse) {
+  .spark-modal-card button,
+  .spark-calendar-menu button,
+  .spark-country-menu button {
+    touch-action:manipulation;
+  }
+}

@@ -179,3 +179,59 @@
 @media(max-width:520px){
   .paper2-back-control{font-size:0;width:36px;padding:0}.paper2-back-control::before{content:'←';font-size:16px}.paper2-header-actions>button{flex:1}.paper2-header-actions{width:100%}.paper2-question-actions{grid-template-columns:1fr 1fr}.paper2-question-actions .paper-answer-state{grid-column:1/-1;grid-row:1}.paper2-data-table{min-width:500px}
 }
+
+
+/* SPARK EXAM MOBILE QUALITY PASS 2026-09 */
+@media(max-width:680px){
+  .paper-modal-backdrop{
+    padding:
+      max(12px, env(safe-area-inset-top))
+      12px
+      max(12px, env(safe-area-inset-bottom));
+  }
+  .paper-submit-modal{
+    max-height:calc(100dvh - 24px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    overflow-y:auto;
+    padding:22px 18px;
+    border-radius:18px;
+  }
+  .paper-question-topline{
+    flex-wrap:wrap;
+    align-items:flex-start;
+  }
+  .paper-flag{
+    min-height:40px;
+  }
+  .paper2-symbol-toolbar button,
+  .paper2-symbol-row button{
+    min-width:40px;
+    width:40px;
+    height:40px;
+  }
+}
+
+@media(max-width:430px){
+  .paper-nav-grid,
+  .paper-review-dots{
+    grid-template-columns:repeat(7,minmax(0,1fr));
+  }
+  .paper-nav-grid button,
+  .paper-review-dots button{
+    min-width:0;
+    min-height:42px;
+    aspect-ratio:auto;
+  }
+  .paper2-nav-grid{
+    grid-template-columns:repeat(6,minmax(0,1fr));
+  }
+}
+
+@media(max-width:360px){
+  .paper-nav-grid,
+  .paper-review-dots{
+    grid-template-columns:repeat(6,minmax(0,1fr));
+  }
+  .paper2-nav-grid{
+    grid-template-columns:repeat(5,minmax(0,1fr));
+  }
+}
