@@ -2804,6 +2804,17 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     }, {})
   );
 
+  // Final dashboard-level guard. Never choose the student/tutor tab set
+  // while the account role is still unresolved.
+  if (!profile || !dashboardRoleResolved) {
+    return (
+      <div style={{flex:1,display:"flex",alignItems:"center",justifyContent:"center",
+        minHeight:"55vh",background:T.bg,fontFamily:FB,color:T.textMuted}}>
+        Loading your dashboard...
+      </div>
+    );
+  }
+
   const navItems = isTutor ? [
     {k:"overview",l:"📊 Overview"},
     {k:"sessions",l:"📅 My sessions"},
@@ -4497,7 +4508,12 @@ export default function App() {
     showToast("Logged out successfully.", "success");
   };
 
-  if (loading) return (
+  // Do not reveal authenticated UI until both the profile and tutor-role
+  // lookup have resolved. getSession() and onAuthStateChange() can overlap
+  // during refresh, so `loading` alone is not a sufficient render guard.
+  const authenticatedRolePending = !!session && (!profile || !tutorAppLoaded);
+
+  if (loading || authenticatedRolePending) return (
     <div style={{minHeight:"100vh",display:"flex",alignItems:"center",justifyContent:"center",
       background:T.bg,fontFamily:FB,color:T.textMuted}}>
       Loading SPARK…
