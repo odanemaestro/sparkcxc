@@ -2758,6 +2758,8 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   // (sessions <-> bookings) and keep the URL canonical.
   const [sec, setSec] = useState(() => notificationTarget?.section || dashboardSectionFromBrowserHash());
   const [bookings, setBookings] = useState([]);
+  const [bookingsLoaded, setBookingsLoaded] = useState(false);
+  const [bookingsLoadError, setBookingsLoadError] = useState(false);
   const [progressData, setProgressData] = useState([]);
   const [examAttempts, setExamAttempts] = useState([]);
   const [tutorRow, setTutorRow] = useState(null);
@@ -2877,11 +2879,23 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   }, [notificationTarget, sec, parentLinks, examAttempts]);
 
   // Student data (lessons/progress) - tutors don't have this.
-  const loadStudentBookings = useCallback(() => {
+  const loadStudentBookings = useCallback(async () => {
     if (!user?.id) return;
-    supabase.from("bookings").select("*,tutors(name,subjects,initials,avatar_color)")
-      .eq("student_id", user.id).order("session_date", {ascending:false})
-      .then(({data}) => setBookings(data || []));
+    const { data, error } = await supabase.from("bookings")
+      .select("*,tutors(name,subjects,initials,avatar_color)")
+      .eq("student_id", user.id)
+      .order("session_date", {ascending:false});
+
+    if (error) {
+      console.error("Failed to load student bookings:", error);
+      setBookingsLoadError(true);
+      setBookingsLoaded(true);
+      return;
+    }
+
+    setBookings(data || []);
+    setBookingsLoadError(false);
+    setBookingsLoaded(true);
   }, [user?.id]);
 
   useEffect(() => {
@@ -2934,7 +2948,15 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     // looking like "no bookings".
     supabase.from("tutors").select("*").eq("user_id", user.id).maybeSingle()
       .then(({data, error}) => {
-        if (error) console.error("Failed to load tutor row:", error);
+        if (error) {
+          console.error("Failed to load tutor row:", error);
+          setBookingsLoadError(true);
+          setBookingsLoaded(true);
+        } else if (!data) {
+          console.error("Tutor account is approved but no tutor row was returned.");
+          setBookingsLoadError(true);
+          setBookingsLoaded(true);
+        }
         setTutorRow(data);
         if (data) setProfileForm({ bio: data.bio || "", subjects: data.subjects || [], rate: data.rate_jmd || 1500, availability: data.availability || "" });
         setTutorRowLoaded(true);
@@ -2955,12 +2977,21 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     // the embed must name which one - plain `profiles(name)` is ambiguous
     // and PostgREST rejects the whole query (this was silently emptying
     // the tutor's bookings list before, since the error was never checked).
-    supabase.from("bookings").select("*,profiles!bookings_student_id_fkey(name)")
-      .eq("tutor_id", tutorRow.id).order("session_date", {ascending:false})
-      .then(({data, error}) => {
-        if (error) console.error("Failed to load tutor bookings:", error);
-        setBookings(data || []);
-      });
+    const { data, error } = await supabase.from("bookings")
+      .select("*,profiles!bookings_student_id_fkey(name)")
+      .eq("tutor_id", tutorRow.id)
+      .order("session_date", {ascending:false});
+
+    if (error) {
+      console.error("Failed to load tutor bookings:", error);
+      setBookingsLoadError(true);
+      setBookingsLoaded(true);
+      return;
+    }
+
+    setBookings(data || []);
+    setBookingsLoadError(false);
+    setBookingsLoaded(true);
   }, [tutorRow?.id, syncTutorCompletedSessions]);
 
   useEffect(() => {
@@ -3151,8 +3182,13 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   );
 
   // Final dashboard-level guard. Never choose the student/tutor tab set
-  // while the account role is still unresolved.
-  if (!profile || !dashboardRoleResolved) {
+  // while the account role is still unresolved. On a direct refresh of the
+  // bookings/sessions route, also wait for the first bookings query so a
+  // temporary empty array can never flash a false empty-state CTA.
+  const activeBookingSectionLoading =
+    (sec === "bookings" || sec === "sessions") && !bookingsLoaded;
+
+  if (!profile || !dashboardRoleResolved || activeBookingSectionLoading) {
     return (
       <div style={{flex:1,display:"flex",alignItems:"center",justifyContent:"center",
         minHeight:"55vh",background:T.bg,fontFamily:FB,color:T.textMuted}}>
@@ -3370,7 +3406,9 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 <button className={bookingView === "calendar" ? "active" : ""} onClick={() => setBookingView("calendar")}>▦ Calendar</button>
               </div>
             </div>
-            {bookings.length === 0 ? (
+            {bookingsLoadError ? (
+              <Card style={{textAlign:"center",padding:40}}><div style={{fontSize:32,marginBottom:12}}>!</div><div style={{fontFamily:FD,fontSize:18,color:T.ink,marginBottom:8}}>Couldn't load your sessions</div><p style={{color:T.textMuted,fontSize:14}}>Refresh the page to try again. If the problem continues, please contact support.</p></Card>
+            ) : bookings.length === 0 ? (
               <Card style={{textAlign:"center",padding:40}}><div style={{fontSize:32,marginBottom:12}}>📅</div><div style={{fontFamily:FD,fontSize:18,color:T.ink,marginBottom:8}}>No sessions booked yet</div><p style={{color:T.textMuted,fontSize:14}}>Sessions students book with you will show up here.</p></Card>
             ) : bookingView === "calendar" ? (
               <SessionCalendar bookings={bookings} isTutor={true} user={user} onAccept={acceptBooking} onDecline={setDeclineTarget} onCancel={setTutorCancelTarget} onReview={() => {}} />
@@ -3633,7 +3671,9 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 <button className={bookingView === "calendar" ? "active" : ""} onClick={() => setBookingView("calendar")}>▦ Calendar</button>
               </div>
             </div>
-            {bookings.length === 0 ? (
+            {bookingsLoadError ? (
+              <Card style={{textAlign:"center",padding:40}}><div style={{fontSize:32,marginBottom:12}}>!</div><div style={{fontFamily:FD,fontSize:18,color:T.ink,marginBottom:8}}>Couldn't load your bookings</div><p style={{color:T.textMuted,fontSize:14}}>Refresh the page to try again. If the problem continues, please contact support.</p></Card>
+            ) : bookings.length === 0 ? (
               <Card style={{textAlign:"center",padding:40}}><div style={{fontSize:32,marginBottom:12}}>📅</div><div style={{fontFamily:FD,fontSize:18,color:T.ink,marginBottom:8}}>No sessions booked yet</div><p style={{color:T.textMuted,fontSize:14,marginBottom:20}}>Find a verified tutor and book your first session.</p><Btn onClick={() => setView("tutors")}>Find a tutor →</Btn></Card>
             ) : bookingView === "calendar" ? (
               <SessionCalendar bookings={bookings} isTutor={false} user={user} studentReviews={studentReviews} onCancel={setCancelTarget} onReview={setReviewTarget} onAccept={() => {}} onDecline={() => {}} />
@@ -4062,8 +4102,8 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
               <div style={{width:64,height:64,borderRadius:"50%",background:T.emeraldLight,
                 display:"flex",alignItems:"center",justifyContent:"center",margin:"0 auto 16px",fontSize:28}}>✓</div>
               <div style={{fontFamily:FD,fontSize:22,fontWeight:700,color:T.ink,marginBottom:8}}>Request sent</div>
-              <p style={{fontSize:14,color:T.textMuted,lineHeight:1.6,marginBottom:24}}>
-                {bookingTutor.name} has been notified. We'll let you know as soon as your {subj} session for {date} at {fmtSessionRange(slot, duration)} Jamaica time is confirmed. If it's still unconfirmed 60 minutes before the start time, the request will close automatically.
+              <p style={{fontSize:14,color:T.textMuted,lineHeight:1.65,maxWidth:500,margin:"0 auto 24px",textAlign:"center",textWrap:"balance"}}>
+                {bookingTutor.name} has been notified. We'll let you know as soon as your {subj} session on {calendarDayLabel(date)} at {fmtSessionRange(slot, duration)} Jamaica time is confirmed. If it's still unconfirmed 60 minutes before the start time, the request will close automatically.
               </p>
               <Btn onClick={() => setBookingTutor(null)} full>Done</Btn>
             </div>
