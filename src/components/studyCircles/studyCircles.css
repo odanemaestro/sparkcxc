@@ -512,3 +512,83 @@ html[data-theme="dark"] .study-circle-match-pill{
 .study-circle-profile-needed{
   background:linear-gradient(135deg,var(--spark-paper),var(--spark-teal-surface));
 }
+
+/* STUDY CIRCLES DESKTOP ALIGNMENT V9.0.2
+   Keeps the desktop learning-profile columns on one visual rhythm without
+   changing the existing tablet/mobile stacking behaviour. */
+@media(min-width:901px){
+  .study-circle-profile-strip{
+    grid-template-columns:minmax(320px,1.15fr) minmax(0,.925fr) minmax(0,.925fr);
+    gap:0;
+    padding:18px 20px;
+    align-items:stretch;
+  }
+
+  .study-circle-profile-copy,
+  .study-circle-profile-group{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:flex-start;
+    min-width:0;
+  }
+
+  .study-circle-profile-copy{
+    padding-right:24px;
+  }
+
+  .study-circle-profile-group{
+    padding:0 24px;
+    border-left:1px solid var(--spark-border-soft);
+  }
+
+  .study-circle-profile-copy>.study-circle-kicker,
+  .study-circle-profile-group>.study-circle-mini-label{
+    display:flex;
+    align-items:center;
+    min-height:16px;
+    margin:0 0 10px;
+    line-height:1.15;
+  }
+
+  .study-circle-profile-copy strong{
+    margin:0 0 4px;
+    line-height:1.3;
+  }
+
+  .study-circle-profile-copy p{
+    line-height:1.5;
+  }
+
+  .study-circle-chip-row{
+    align-items:flex-start;
+  }
+
+  .study-circle-waiting-card{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+
+  .study-circle-waiting-card>.study-circle-kicker{
+    margin-bottom:10px;
+  }
+
+  .study-circle-waiting-card h2{
+    width:100%;
+    max-width:860px;
+    line-height:1.15;
+    text-align:center;
+  }
+
+  .study-circle-waiting-card>p{
+    width:100%;
+    max-width:760px;
+    text-align:center;
+  }
+
+  .study-circle-waiting-card .study-circle-actions{
+    width:100%;
+    justify-content:center;
+  }
+}
