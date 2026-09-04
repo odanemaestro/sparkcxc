@@ -322,3 +322,147 @@
     padding:16px 12px;
   }
 }
+
+
+/* ==========================================================================
+   SPARK PAPER2 CONTENT FORMAT V5 2026-09
+   Paper 2 start-screen alignment and mathematical reference formatting.
+   ========================================================================== */
+.paper2-bank-note{
+  display:grid !important;
+  grid-template-columns:minmax(220px,.72fr) minmax(0,1.28fr);
+  align-items:start !important;
+  gap:8px 22px !important;
+  padding:16px 18px !important;
+  line-height:1.5;
+}
+.paper2-bank-note strong{
+  min-width:0;
+  white-space:normal !important;
+  font-size:12.5px;
+  line-height:1.45;
+}
+.paper2-bank-note span{
+  min-width:0;
+  font-size:12.5px;
+  line-height:1.55;
+}
+
+.paper2-formula-modal{
+  padding:20px !important;
+}
+.paper2-formula-grid{
+  gap:12px !important;
+  padding:2px 1px 4px !important;
+}
+.paper2-formula-grid article{
+  padding:16px 17px !important;
+  border-radius:14px !important;
+  background:#fcfdff !important;
+}
+.paper2-formula-grid article > strong{
+  display:block;
+  margin-bottom:11px !important;
+  color:#102954 !important;
+  font-family:'Atkinson Hyperlegible','Inter','Segoe UI',sans-serif;
+  font-size:12.5px !important;
+  letter-spacing:.01em;
+}
+.paper2-formula-list{
+  display:grid;
+  gap:11px;
+}
+.paper2-formula-expression{
+  min-width:0;
+}
+.paper2-formula-label{
+  display:block;
+  margin-bottom:4px;
+  color:#718097;
+  font-family:'Atkinson Hyperlegible','Inter','Segoe UI',sans-serif;
+  font-size:9.5px;
+  font-weight:900;
+  letter-spacing:.075em;
+  text-transform:uppercase;
+}
+.paper2-formula-math{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:6px;
+  min-width:0;
+  color:#203653;
+  font-family:'Cambria Math','STIX Two Math','Times New Roman',serif;
+  font-size:19px;
+  line-height:1.5;
+}
+.paper2-math-fraction{
+  display:inline-grid;
+  grid-template-rows:auto auto;
+  align-items:center;
+  justify-items:center;
+  min-width:max-content;
+  margin:0 2px;
+  vertical-align:middle;
+  font-family:'Cambria Math','STIX Two Math','Times New Roman',serif;
+  line-height:1.05;
+}
+.paper2-math-numerator{
+  display:block;
+  width:100%;
+  padding:0 5px 3px;
+  border-bottom:1.4px solid currentColor;
+  text-align:center;
+}
+.paper2-math-denominator{
+  display:block;
+  width:100%;
+  padding:3px 5px 0;
+  text-align:center;
+}
+
+@media(max-width:720px){
+  .paper2-bank-note{
+    grid-template-columns:1fr !important;
+    gap:5px !important;
+    padding:14px 15px !important;
+  }
+  .paper2-bank-note strong,
+  .paper2-bank-note span{
+    width:100%;
+    text-align:left;
+  }
+}
+
+@media(max-width:680px){
+  .paper2-formula-modal{
+    padding:16px !important;
+  }
+  .paper2-formula-grid{
+    grid-template-columns:1fr !important;
+    gap:10px !important;
+  }
+  .paper2-formula-grid article{
+    padding:14px 15px !important;
+  }
+  .paper2-formula-math{
+    font-size:18px;
+    line-height:1.48;
+  }
+}
+
+@media(max-width:390px){
+  .paper2-formula-modal{
+    width:calc(100vw - 16px) !important;
+    padding:14px !important;
+  }
+  .paper2-formula-grid article{
+    padding:13px 14px !important;
+  }
+  .paper2-formula-math{
+    font-size:17px;
+  }
+  .paper2-formula-label{
+    font-size:9px;
+  }
+}

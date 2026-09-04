@@ -509,7 +509,7 @@ function LessonContent({ topicName, onQuizStart, onComplete, isCompleted }) {
       </div>
 
       {/* Actions */}
-      <div style={{display:"flex",gap:12,flexWrap:"wrap",paddingTop:8}}>
+      <div className="lesson-final-actions" style={{display:"flex",gap:12,flexWrap:"wrap",paddingTop:8}}>
         <Btn onClick={onQuizStart} style={{fontSize:15,padding:"14px 28px"}}>
           Take practice quiz →
         </Btn>

@@ -50,15 +50,96 @@ function createSeed() {
 
 const SYMBOLS = ["√", "π", "°", "×", "÷", "≤", "≥", "≠", "²", "³", "θ", "≈", "(", ")"];
 
+function MathFraction({ numerator, denominator, ariaLabel }) {
+  return (
+    <span className="paper2-math-fraction" aria-label={ariaLabel || undefined}>
+      <span className="paper2-math-numerator">{numerator}</span>
+      <span className="paper2-math-denominator">{denominator}</span>
+    </span>
+  );
+}
+
+function FormulaExpression({ label, children }) {
+  return (
+    <div className="paper2-formula-expression">
+      {label && <span className="paper2-formula-label">{label}</span>}
+      <div className="paper2-formula-math">{children}</div>
+    </div>
+  );
+}
+
 const FORMULAE = [
-  ["Circle", "Circumference = 2πr   Area = πr²"],
-  ["Triangle", "Area = 1/2 bh   Pythagoras: c² = a² + b²"],
-  ["Trigonometry", "sin θ = opposite/hypotenuse   cos θ = adjacent/hypotenuse   tan θ = opposite/adjacent"],
-  ["Sine rule", "a/sin A = b/sin B = c/sin C"],
-  ["Cosine rule", "c² = a² + b² − 2ab cos C"],
-  ["Cylinder", "Volume = πr²h"],
-  ["Coordinate geometry", "Gradient = (y₂ − y₁)/(x₂ − x₁)   Distance = √((x₂ − x₁)² + (y₂ − y₁)²)"],
-  ["Quadratic formula", "x = (−b ± √(b² − 4ac))/(2a)"],
+  {
+    title: "Circle",
+    expressions: [
+      <FormulaExpression key="circumference" label="Circumference">C = 2πr</FormulaExpression>,
+      <FormulaExpression key="circle-area" label="Area">A = πr²</FormulaExpression>,
+    ],
+  },
+  {
+    title: "Triangle",
+    expressions: [
+      <FormulaExpression key="triangle-area" label="Area">A = ½bh</FormulaExpression>,
+      <FormulaExpression key="pythagoras" label="Pythagoras">c² = a² + b²</FormulaExpression>,
+    ],
+  },
+  {
+    title: "Trigonometry",
+    expressions: [
+      <FormulaExpression key="sin" label="Sine">
+        sin θ = <MathFraction numerator="opposite" denominator="hypotenuse" ariaLabel="opposite divided by hypotenuse" />
+      </FormulaExpression>,
+      <FormulaExpression key="cos" label="Cosine">
+        cos θ = <MathFraction numerator="adjacent" denominator="hypotenuse" ariaLabel="adjacent divided by hypotenuse" />
+      </FormulaExpression>,
+      <FormulaExpression key="tan" label="Tangent">
+        tan θ = <MathFraction numerator="opposite" denominator="adjacent" ariaLabel="opposite divided by adjacent" />
+      </FormulaExpression>,
+    ],
+  },
+  {
+    title: "Sine rule",
+    expressions: [
+      <FormulaExpression key="sine-rule">
+        <MathFraction numerator="a" denominator="sin A" ariaLabel="a divided by sine A" />
+        <span>=</span>
+        <MathFraction numerator="b" denominator="sin B" ariaLabel="b divided by sine B" />
+        <span>=</span>
+        <MathFraction numerator="c" denominator="sin C" ariaLabel="c divided by sine C" />
+      </FormulaExpression>,
+    ],
+  },
+  {
+    title: "Cosine rule",
+    expressions: [
+      <FormulaExpression key="cosine-rule">c² = a² + b² − 2ab cos C</FormulaExpression>,
+    ],
+  },
+  {
+    title: "Cylinder",
+    expressions: [
+      <FormulaExpression key="cylinder-volume" label="Volume">V = πr²h</FormulaExpression>,
+    ],
+  },
+  {
+    title: "Coordinate geometry",
+    expressions: [
+      <FormulaExpression key="gradient" label="Gradient">
+        m = <MathFraction numerator={<>y₂ − y₁</>} denominator={<>x₂ − x₁</>} ariaLabel="y two minus y one divided by x two minus x one" />
+      </FormulaExpression>,
+      <FormulaExpression key="distance" label="Distance">
+        d = √((x₂ − x₁)² + (y₂ − y₁)²)
+      </FormulaExpression>,
+    ],
+  },
+  {
+    title: "Quadratic formula",
+    expressions: [
+      <FormulaExpression key="quadratic">
+        x = <MathFraction numerator={<>−b ± √(b² − 4ac)</>} denominator="2a" ariaLabel="negative b plus or minus square root of b squared minus four a c, divided by two a" />
+      </FormulaExpression>,
+    ],
+  },
 ];
 
 function FormulaModal({ onClose }) {
@@ -70,8 +151,11 @@ function FormulaModal({ onClose }) {
           <button type="button" onClick={onClose} aria-label="Close formula sheet">×</button>
         </div>
         <div className="paper2-formula-grid">
-          {FORMULAE.map(([title, formula]) => (
-            <article key={title}><strong>{title}</strong><MathText as="div">{formula}</MathText></article>
+          {FORMULAE.map(({ title, expressions }) => (
+            <article key={title}>
+              <strong>{title}</strong>
+              <div className="paper2-formula-list">{expressions}</div>
+            </article>
           ))}
         </div>
       </section>
@@ -291,8 +375,8 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
             </ol>
           </div>
           <div className="paper2-bank-note">
-            <strong>{PAPER2_TEMPLATE_COUNT} structured questions in the question bank</strong>
-            <span>Questions are grouped by examination position so each generated paper follows the required topic and mark structure.</span>
+            <strong>{PAPER2_TEMPLATE_COUNT} structured questions available</strong>
+            <span>Each practice paper is assembled by examination position so its topic mix and mark allocation follow the required Paper 2 structure.</span>
           </div>
           <div className="paper2-start-actions">
             <button type="button" className="practice-secondary" onClick={() => setShowFormula(true)}>View formula sheet</button>

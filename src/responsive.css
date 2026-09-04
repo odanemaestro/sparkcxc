@@ -1740,3 +1740,47 @@ input,select,textarea,button{max-width:100%}
     grid-template-columns:1fr !important;
   }
 }
+
+
+/* ==========================================================================
+   SPARK LESSON ACTION MOBILE FORMAT V5 2026-09
+   Pair the final lesson actions intentionally on phones.
+   ========================================================================== */
+@media(max-width:700px){
+  .lesson-final-actions{
+    display:grid !important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;
+    gap:10px !important;
+    width:100%;
+    padding-top:8px !important;
+  }
+
+  .lesson-final-actions > button{
+    width:100% !important;
+    min-width:0 !important;
+    min-height:48px !important;
+    padding:10px 7px !important;
+    justify-content:center !important;
+    text-align:center !important;
+    white-space:nowrap !important;
+    font-size:clamp(11.25px,3.1vw,13px) !important;
+    line-height:1.15 !important;
+  }
+
+  .lesson-final-actions > div{
+    min-height:48px;
+    justify-content:center;
+    text-align:center;
+  }
+}
+
+@media(max-width:330px){
+  .lesson-final-actions{
+    gap:7px !important;
+  }
+  .lesson-final-actions > button{
+    font-size:10.75px !important;
+    padding-left:4px !important;
+    padding-right:4px !important;
+  }
+}
