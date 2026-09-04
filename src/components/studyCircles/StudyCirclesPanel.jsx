@@ -20,6 +20,14 @@ function initials(name = "Student") {
     .join("") || "S";
 }
 
+function StudyCircleAvatar({ name, src = "", className = "" }) {
+  return (
+    <div className={className} aria-label={name || "Study Circle member"}>
+      {src ? <img src={src} alt="" aria-hidden="true" /> : initials(name)}
+    </div>
+  );
+}
+
 function relativeTime(value) {
   const date = value ? new Date(value) : null;
   if (!date || Number.isNaN(date.getTime())) return "";
@@ -44,7 +52,7 @@ function skillChips(items, kind = "strength") {
 
 function safeError(error, fallback) {
   const text = String(error?.message || "");
-  if (/spark_get_study_circle_home|spark_get_study_circle_posts|spark_create_study_circle_reply|function .* does not exist|schema cache/i.test(text)) {
+  if (/spark_get_study_circle_home|spark_get_study_circle_posts|spark_get_study_circle_members_with_avatars|spark_create_study_circle_reply|function .* does not exist|schema cache/i.test(text)) {
     return "Study Circles needs its Supabase migration before it can be used.";
   }
   if (/personal contact|contact details/i.test(text)) {
@@ -61,6 +69,7 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
   const [availability, setAvailability] = useState([]);
   const [guidelinesAccepted, setGuidelinesAccepted] = useState(false);
   const [message, setMessage] = useState("");
+  const [avatarUrls, setAvatarUrls] = useState({});
   const [replyTarget, setReplyTarget] = useState(null);
   const [reportTarget, setReportTarget] = useState(null);
   const [reportReason, setReportReason] = useState("Personal information");
@@ -79,14 +88,24 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
     }
     let nextHome = data || {};
     if (nextHome?.status === "matched") {
-      const { data: postData, error: postsError } = await supabase.rpc("spark_get_study_circle_posts");
-      if (postsError) {
-        console.error("Study Circle posts load failed:", postsError);
-        setError(safeError(postsError, "Couldn't load the Study Circle board. Please try again."));
+      const [postsResult, membersResult] = await Promise.all([
+        supabase.rpc("spark_get_study_circle_posts"),
+        supabase.rpc("spark_get_study_circle_members_with_avatars"),
+      ]);
+
+      const circleDataError = postsResult.error || membersResult.error;
+      if (circleDataError) {
+        console.error("Study Circle member/board load failed:", circleDataError);
+        setError(safeError(circleDataError, "Couldn't load the Study Circle group. Please try again."));
         if (!quiet) setLoading(false);
         return;
       }
-      nextHome = { ...nextHome, posts: Array.isArray(postData) ? postData : [] };
+
+      nextHome = {
+        ...nextHome,
+        posts: Array.isArray(postsResult.data) ? postsResult.data : [],
+        members: Array.isArray(membersResult.data) ? membersResult.data : [],
+      };
     }
     setHome(nextHome);
     setAvailability(Array.isArray(nextHome?.preference?.preferred_times) ? nextHome.preference.preferred_times : []);
@@ -121,6 +140,56 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
   const members = Array.isArray(home?.members) ? home.members : [];
   const agenda = Array.isArray(home?.agenda) ? home.agenda : [];
   const posts = Array.isArray(home?.posts) ? home.posts : [];
+
+  // Student profile photos remain private. Resolve only the 3-4 unique
+  // Circle-member paths, keep initials as the immediate fallback, and refresh
+  // short-lived signed URLs before they expire. The fixed avatar containers
+  // mean image loading cannot move or resize the existing UI.
+  const avatarPathKey = useMemo(() => (
+    Array.from(new Set(
+      [
+        ...members.map(member => member?.avatar_path),
+        ...posts.map(post => post?.avatar_path),
+      ].filter(value => typeof value === "string" && value.startsWith("profile-photos/"))
+    )).sort().join("|")
+  ), [members, posts]);
+
+  useEffect(() => {
+    const storedPaths = avatarPathKey ? avatarPathKey.split("|") : [];
+
+    if (!storedPaths.length) {
+      setAvatarUrls({});
+      return undefined;
+    }
+
+    let active = true;
+
+    const refreshAvatarUrls = async () => {
+      const entries = await Promise.all(storedPaths.map(async storedPath => {
+        const objectPath = storedPath.slice("profile-photos/".length);
+        const { data: signedData, error: signedError } = await supabase.storage
+          .from("profile-photos")
+          .createSignedUrl(objectPath, 600);
+
+        if (signedError) {
+          console.warn("Study Circle avatar could not be signed:", signedError);
+          return [storedPath, ""];
+        }
+
+        return [storedPath, signedData?.signedUrl || ""];
+      }));
+
+      if (active) setAvatarUrls(Object.fromEntries(entries));
+    };
+
+    refreshAvatarUrls();
+    const timer = window.setInterval(refreshAvatarUrls, 8 * 60 * 1000);
+
+    return () => {
+      active = false;
+      window.clearInterval(timer);
+    };
+  }, [avatarPathKey]);
 
   useEffect(() => {
     if (home?.status !== "matched") return undefined;
@@ -446,7 +515,11 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
             {members.map((member, index) => (
               <article className={`study-circle-member-card ${member.is_self ? "is-self" : ""}`} key={`${member.name}-${index}`}>
                 <div className="study-circle-member-head">
-                  <div className="study-circle-avatar">{initials(member.name)}</div>
+                  <StudyCircleAvatar
+                    name={member.name}
+                    src={avatarUrls[member.avatar_path] || ""}
+                    className="study-circle-avatar"
+                  />
                   <div>
                     <strong>{member.name}{member.is_self ? " · You" : ""}</strong>
                     <span>{member.is_self ? "Your learning profile" : "Study Circle member"}</span>
@@ -541,7 +614,11 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
             <div className="study-circle-post-list">
               {posts.length ? posts.map(post => (
                 <article className={`study-circle-post ${post.is_mine ? "is-mine" : ""}`} key={post.id}>
-                  <div className="study-circle-post-avatar">{initials(post.author)}</div>
+                  <StudyCircleAvatar
+                    name={post.author}
+                    src={avatarUrls[post.avatar_path] || ""}
+                    className="study-circle-post-avatar"
+                  />
                   <div className="study-circle-post-body">
                     <div className="study-circle-post-meta">
                       <strong>{post.author}{post.is_mine ? " · You" : ""}</strong>
