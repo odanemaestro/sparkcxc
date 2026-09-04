@@ -600,3 +600,82 @@ html[data-theme="dark"] .study-circle-match-pill{
     justify-content:center;
   }
 }
+
+/* STUDY CIRCLES MOBILE MATCHING V9.0.4
+   Phone-specific matching-pool typography. Desktop V9.0.3 is preserved. */
+@media(max-width:700px){
+  .study-circle-waiting-card{
+    padding:30px 24px 28px;
+  }
+
+  .study-circle-waiting-card>.study-circle-kicker{
+    margin-bottom:14px;
+    font-size:12px;
+    letter-spacing:.11em;
+  }
+
+  .study-circle-waiting-card h2{
+    max-width:18ch;
+    margin:0 auto 16px;
+    font-size:clamp(25px,7.1vw,30px);
+    line-height:1.12;
+    letter-spacing:-.015em;
+    text-align:center;
+    text-wrap:balance;
+  }
+
+  .study-circle-waiting-card>p{
+    max-width:31ch;
+    margin:0 auto;
+    font-size:16px;
+    line-height:1.55;
+    text-align:center;
+    text-wrap:pretty;
+  }
+
+  .study-circle-waiting-card .study-circle-actions{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:12px;
+    width:100%;
+    max-width:520px;
+    margin:24px auto 0;
+  }
+
+  .study-circle-waiting-card .study-circle-actions button{
+    width:100%;
+    min-width:0;
+    min-height:48px;
+    padding:11px 12px;
+    margin:0;
+    font-size:15px;
+    line-height:1.15;
+    white-space:normal;
+  }
+}
+
+@media(max-width:390px){
+  .study-circle-waiting-card{
+    padding:28px 20px 24px;
+  }
+
+  .study-circle-waiting-card h2{
+    max-width:17ch;
+    font-size:24px;
+  }
+
+  .study-circle-waiting-card>p{
+    max-width:29ch;
+    font-size:15.5px;
+  }
+
+  .study-circle-waiting-card .study-circle-actions{
+    gap:10px;
+  }
+
+  .study-circle-waiting-card .study-circle-actions button{
+    font-size:14px;
+    padding-inline:9px;
+  }
+}
+
