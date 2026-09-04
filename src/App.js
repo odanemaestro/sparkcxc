@@ -5536,7 +5536,7 @@ const CountryFlagDropdown = ({ countryIso2, onChange, error }) => {
           className="spark-country-menu"
           style={{
             position: "fixed", left: menuPos.left, top: menuPos.top, width: menuPos.width,
-            background: "#fff", border: `1px solid ${T.border}`, borderRadius: 9,
+            background: T.paper, border: `1px solid ${T.border}`, borderRadius: 9,
             boxShadow: "0 8px 24px rgba(0,0,0,.12)", zIndex: 9999, overflow: "hidden",
           }}
         >
@@ -5865,7 +5865,7 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
           <div className="tutor-apply-stepper" style={{ display: "flex", gap: 0, marginBottom: 32, borderRadius: 8, overflow: "hidden", border: `1px solid ${T.border}` }}>
             {["Your details", "Subjects & rate", "Background"].map((label, i) => (
               <div key={label} style={{ flex: 1, padding: "12px 0", textAlign: "center", fontSize: 13,
-                background: step === i + 1 ? T.teal : step > i + 1 ? T.tealLight : "#fff",
+                background: step === i + 1 ? T.teal : step > i + 1 ? T.tealLight : T.paper,
                 color: step === i + 1 ? "#fff" : step > i + 1 ? T.tealDark : T.textMuted,
                 fontWeight: step === i + 1 ? 600 : 500 }}>
                 {step > i + 1 ? "✓ " : ""}{label}

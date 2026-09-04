@@ -279,3 +279,45 @@
     transition: none;
   }
 }
+
+
+/* ==========================================================================
+   SPARK TOAST DARK MODE V8 2026-09
+   ========================================================================== */
+html[data-theme="dark"] .spark-toast{
+  --toast-title:var(--spark-ink);
+  --toast-text:var(--spark-ink-soft);
+  --toast-border:var(--spark-border);
+  --toast-bg:color-mix(in srgb,var(--spark-paper) 96%,transparent);
+  box-shadow:var(--spark-shadow-lg);
+}
+html[data-theme="dark"] .spark-toast--success,
+html[data-theme="dark"] .spark-toast--info{
+  --toast-accent:var(--spark-teal);
+  --toast-icon-bg:var(--spark-teal-light);
+  --toast-icon-fg:var(--spark-teal-dark);
+}
+html[data-theme="dark"] .spark-toast--error{
+  --toast-accent:var(--spark-red);
+  --toast-icon-bg:var(--spark-red-light);
+  --toast-icon-fg:var(--spark-red);
+  --toast-title:var(--spark-ink);
+}
+html[data-theme="dark"] .spark-toast--warning{
+  --toast-accent:var(--spark-amber);
+  --toast-icon-bg:var(--spark-amber-light);
+  --toast-icon-fg:var(--spark-amber);
+  --toast-title:var(--spark-ink);
+}
+html[data-theme="dark"] .spark-toast__close{
+  color:var(--spark-text-muted);
+}
+html[data-theme="dark"] .spark-toast__close:hover{
+  background:var(--spark-muted);
+  color:var(--spark-ink);
+}
+@supports (backdrop-filter: blur(12px)){
+  html[data-theme="dark"] .spark-toast{
+    background:color-mix(in srgb,var(--spark-paper) 94%,transparent);
+  }
+}

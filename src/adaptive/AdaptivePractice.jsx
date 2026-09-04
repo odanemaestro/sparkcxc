@@ -23,6 +23,7 @@ import { buildAdaptiveSession, skillMastery } from "./adaptiveEngine";
 import { fetchAttempts, upsertSkillProgress } from "./persistence";
 import { checkAnswer } from "../lib/answerCheck";
 import ReportQuestionButton from "../components/ui/ReportQuestionButton";
+import MathText from "../practice/MathText";
 import "./adaptive.css";
 
 export default function AdaptivePractice({ supabase, userId, setView, backLabel = "← Back to Study" }) {
@@ -266,7 +267,7 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
       {q && (
         <section aria-live="polite">
           <p>Question {index + 1} of {session.length} · {q.difficulty} · {q.marks} marks</p>
-          <h2>{q.question}</h2>
+          <MathText as="h2" className="adaptive-question-math">{q.question}</MathText>
           <ReportQuestionButton
             supabase={supabase}
             userId={userId}
@@ -299,7 +300,7 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
               <h3>Compare your answer to the worked solution</h3>
               <details open>
                 <summary>Worked solution</summary>
-                <p>{q.worked_solution}</p>
+                <MathText as="p" prose className="adaptive-solution-math">{q.worked_solution}</MathText>
               </details>
               <p>This answer format requires self-checking. Compare your answer with the worked solution, then record whether your answer is correct:</p>
               <button onClick={() => confirmSelfAssessment(true)}>My answer is correct</button>
@@ -310,15 +311,15 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
               <h3>{verdict === "uncertain" ? (lastCorrect ? "Marked correct" : "Marked incorrect") : (lastCorrect ? "Correct!" : "Not quite")}</h3>
               <details open>
                 <summary>Worked solution</summary>
-                <p>{q.worked_solution}</p>
+                <MathText as="p" prose className="adaptive-solution-math">{q.worked_solution}</MathText>
               </details>
               <details>
                 <summary>Hints</summary>
-                <ol>{q.hints?.map((h, i) => <li key={i}>{h}</li>)}</ol>
+                <ol>{q.hints?.map((h, i) => <MathText as="li" prose className="adaptive-hint-math" key={i}>{h}</MathText>)}</ol>
               </details>
               <details>
                 <summary>Common mistakes</summary>
-                <ul>{q.common_mistakes?.map((m, i) => <li key={i}>{m}</li>)}</ul>
+                <ul>{q.common_mistakes?.map((m, i) => <MathText as="li" prose className="adaptive-mistake-math" key={i}>{m}</MathText>)}</ul>
               </details>
               <button onClick={next}>Next question</button>
             </>

@@ -50,10 +50,10 @@ input,select,textarea,button{max-width:100%}
 
   .lesson-layout{grid-template-columns:1fr!important;min-height:0!important}
   .lesson-sidebar{display:none!important}
-  .lesson-mobile-picker{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;padding:12px;background:#fff;border:1px solid #E2E8F0;border-radius:12px;box-shadow:0 1px 2px rgba(15,23,42,.04)}
+  .lesson-mobile-picker{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;padding:12px;background:var(--spark-paper);border:1px solid var(--spark-border);border-radius:12px;box-shadow:var(--spark-shadow-sm)}
   .lesson-mobile-picker label{min-width:0}
-  .lesson-mobile-picker label span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.06em;font-weight:800;color:#64748B;margin-bottom:5px}
-  .lesson-mobile-picker select{width:100%;min-width:0;padding:10px 9px;border:1.5px solid #CBD5E1;border-radius:9px;background:#fff;color:#0F172A;font-size:14px}
+  .lesson-mobile-picker label span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.06em;font-weight:800;color:var(--spark-text-muted);margin-bottom:5px}
+  .lesson-mobile-picker select{width:100%;min-width:0;padding:10px 9px;border:1.5px solid var(--spark-border-strong);border-radius:9px;background:var(--spark-paper-raised);color:var(--spark-ink);font-size:14px}
 
   .dash-layout{grid-template-columns:1fr!important;min-width:0}
   .dash-sidebar{display:flex!important;flex-direction:row!important;align-items:center!important;gap:6px!important;overflow-x:auto!important;overflow-y:hidden!important;padding:8px 12px!important;border-right:0!important;border-bottom:1px solid #E2E8F0!important;position:sticky;top:60px;z-index:80;scrollbar-width:none;background:#fff!important}

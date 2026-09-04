@@ -830,3 +830,314 @@ html[data-theme="dark"] .paper2-response-card textarea{
   color:var(--spark-ink) !important;
   border-color:var(--spark-border) !important;
 }
+
+
+/* ==========================================================================
+   SPARK COMPREHENSIVE THEME HARD-CODE SWEEP V8 2026-09
+   Final audited coverage for theme-sensitive literal colours.
+   ========================================================================== */
+
+/* PAPER 1 START + GENERIC EXAM CONTROLS --------------------------------- */
+html[data-theme="dark"] .paper-start-meta div{
+  background:var(--spark-paper-raised)!important;
+}
+html[data-theme="dark"] .paper-instructions h2{
+  color:var(--spark-ink)!important;
+}
+html[data-theme="dark"] .paper-instructions p{
+  color:var(--spark-ink-soft)!important;
+}
+html[data-theme="dark"] .paper-blueprint-note{
+  background:var(--spark-teal-surface)!important;
+  color:var(--spark-ink-soft)!important;
+}
+html[data-theme="dark"] .paper-exit{
+  background:var(--spark-paper-raised)!important;
+  border-color:var(--spark-border)!important;
+  color:var(--spark-ink)!important;
+}
+html[data-theme="dark"] .paper-progress-line{
+  background:var(--spark-border-soft)!important;
+}
+html[data-theme="dark"] .paper-submit-modal{
+  background:var(--spark-paper)!important;
+  color:var(--spark-ink)!important;
+  border:1px solid var(--spark-border)!important;
+}
+html[data-theme="dark"] .paper-submit-icon{
+  background:var(--spark-teal-light)!important;
+  color:var(--spark-teal-dark)!important;
+}
+
+/* PAPER 2 START ---------------------------------------------------------- */
+html[data-theme="dark"] .paper2-start-shell{
+  background:
+    radial-gradient(circle at top right,color-mix(in srgb,var(--spark-teal) 12%,transparent) 0,transparent 34%),
+    var(--spark-bg)!important;
+  color:var(--spark-ink)!important;
+}
+html[data-theme="dark"] .paper2-start-sub{
+  color:var(--spark-text-muted)!important;
+}
+html[data-theme="dark"] .paper2-instructions{
+  background:var(--spark-paper-raised)!important;
+  border-color:var(--spark-border)!important;
+}
+html[data-theme="dark"] .paper2-instructions h2{
+  color:var(--spark-ink)!important;
+}
+html[data-theme="dark"] .paper2-instructions ol{
+  color:var(--spark-ink-soft)!important;
+}
+html[data-theme="dark"] .paper2-bank-note{
+  background:var(--spark-teal-surface)!important;
+  color:var(--spark-ink-soft)!important;
+}
+html[data-theme="dark"] .paper2-bank-note strong{
+  color:var(--spark-teal-dark)!important;
+}
+
+/* PAPER 2 HEADER + TABLES ------------------------------------------------ */
+html[data-theme="dark"] .paper2-back-control,
+html[data-theme="dark"] .paper2-header-actions .paper2-formula-control{
+  background:var(--spark-paper-raised)!important;
+  border-color:var(--spark-border)!important;
+  color:var(--spark-ink)!important;
+}
+html[data-theme="dark"] .paper2-back-control:hover,
+html[data-theme="dark"] .paper2-header-actions .paper2-formula-control:hover{
+  background:var(--spark-muted)!important;
+  border-color:var(--spark-teal)!important;
+  color:var(--spark-ink)!important;
+}
+html[data-theme="dark"] .paper2-table-wrap{
+  background:var(--spark-paper)!important;
+  border-color:var(--spark-border)!important;
+}
+html[data-theme="dark"] .paper2-data-table th,
+html[data-theme="dark"] .paper2-data-table td{
+  border-color:var(--spark-border)!important;
+}
+html[data-theme="dark"] .paper2-data-table th{
+  background:var(--spark-paper-raised)!important;
+  color:var(--spark-ink-soft)!important;
+}
+html[data-theme="dark"] .paper2-data-table td{
+  background:var(--spark-paper)!important;
+  color:var(--spark-ink)!important;
+}
+html[data-theme="dark"] .paper2-data-table .spark-math{
+  color:inherit!important;
+}
+
+/* PAPER 2 FORMULA MODAL -------------------------------------------------- */
+html[data-theme="dark"] .paper2-modal-head h2{
+  color:var(--spark-ink)!important;
+}
+html[data-theme="dark"] .paper2-modal-head button{
+  background:var(--spark-muted)!important;
+  color:var(--spark-ink)!important;
+  border:1px solid var(--spark-border)!important;
+}
+html[data-theme="dark"] .paper2-modal-head button:hover{
+  background:var(--spark-paper-raised)!important;
+  border-color:var(--spark-teal)!important;
+}
+
+/* PAPER 2 REVIEW --------------------------------------------------------- */
+html[data-theme="dark"] .paper2-review-head p{
+  color:var(--spark-text-muted)!important;
+}
+html[data-theme="dark"] .paper2-source-chip{
+  background:var(--spark-teal-light)!important;
+  color:var(--spark-teal-dark)!important;
+}
+html[data-theme="dark"] .paper2-review-part{
+  background:var(--spark-paper-raised)!important;
+  border-color:var(--spark-border)!important;
+}
+html[data-theme="dark"] .paper2-review-part.is-correct{
+  border-left-color:var(--spark-emerald)!important;
+}
+html[data-theme="dark"] .paper2-review-part.is-incorrect{
+  border-left-color:var(--spark-red)!important;
+}
+html[data-theme="dark"] .paper2-review-part-head strong,
+html[data-theme="dark"] .paper2-review-part>p{
+  color:var(--spark-ink)!important;
+}
+html[data-theme="dark"] .paper2-review-part.is-correct .paper2-review-part-head span{
+  color:var(--spark-emerald)!important;
+}
+html[data-theme="dark"] .paper2-review-part.is-incorrect .paper2-review-part-head span{
+  color:var(--spark-red)!important;
+}
+html[data-theme="dark"] .paper2-review-answer-grid>div{
+  background:var(--spark-paper)!important;
+  border-color:var(--spark-border)!important;
+}
+html[data-theme="dark"] .paper2-review-answer-grid span,
+html[data-theme="dark"] .paper2-worked-solution>span{
+  color:var(--spark-text-muted)!important;
+}
+html[data-theme="dark"] .paper2-review-answer-grid strong{
+  color:var(--spark-ink)!important;
+}
+html[data-theme="dark"] .paper2-worked-solution{
+  background:var(--spark-teal-surface)!important;
+}
+html[data-theme="dark"] .paper2-worked-solution p{
+  color:var(--spark-ink-soft)!important;
+}
+html[data-theme="dark"] .paper2-review-nav>button,
+html[data-theme="dark"] .paper2-review-nav>div button{
+  background:var(--spark-paper-raised)!important;
+  border-color:var(--spark-border)!important;
+  color:var(--spark-ink-soft)!important;
+}
+html[data-theme="dark"] .paper2-review-nav>button:hover:not(:disabled),
+html[data-theme="dark"] .paper2-review-nav>div button:hover{
+  background:var(--spark-muted)!important;
+  border-color:var(--spark-teal)!important;
+}
+html[data-theme="dark"] .paper2-review-nav>div button.marked{
+  background:var(--spark-emerald-light)!important;
+  border-color:var(--spark-emerald)!important;
+  color:var(--spark-emerald)!important;
+}
+html[data-theme="dark"] .paper2-review-nav>div button.active{
+  border-color:var(--spark-teal)!important;
+  box-shadow:0 0 0 2px var(--spark-teal)!important;
+}
+
+/* Legacy Paper 2 manual-mark review path, kept safe if it is reached. */
+html[data-theme="dark"] .paper2-mark-panel{
+  background:var(--spark-paper-raised)!important;
+  border-color:var(--spark-border)!important;
+}
+html[data-theme="dark"] .paper2-your-response>span,
+html[data-theme="dark"] .paper2-mark-input>span,
+html[data-theme="dark"] .paper2-mark-help{
+  color:var(--spark-text-muted)!important;
+}
+html[data-theme="dark"] .paper2-your-response>div,
+html[data-theme="dark"] .paper2-mark-input input{
+  background:var(--spark-paper)!important;
+  border-color:var(--spark-border)!important;
+  color:var(--spark-ink)!important;
+}
+html[data-theme="dark"] .paper2-mark-input b{
+  color:var(--spark-ink-soft)!important;
+}
+
+/* NOTIFICATION SETTINGS -------------------------------------------------- */
+html[data-theme="dark"] .push-settings,
+html[data-theme="dark"] .push-settings-intro h3,
+html[data-theme="dark"] .push-settings-card strong,
+html[data-theme="dark"] .push-preference-row strong,
+html[data-theme="dark"] .push-device-row strong,
+html[data-theme="dark"] .push-settings-card.ios-help strong{
+  color:var(--spark-ink)!important;
+}
+html[data-theme="dark"] .push-settings-intro p,
+html[data-theme="dark"] .push-settings-state,
+html[data-theme="dark"] .push-settings-card span,
+html[data-theme="dark"] .push-preference-row span,
+html[data-theme="dark"] .push-device-row span,
+html[data-theme="dark"] .push-settings-section-title,
+html[data-theme="dark"] .push-settings-footnote{
+  color:var(--spark-text-muted)!important;
+}
+html[data-theme="dark"] .push-settings-card.muted,
+html[data-theme="dark"] .push-device-row{
+  background:var(--spark-muted)!important;
+  color:var(--spark-ink-soft)!important;
+}
+html[data-theme="dark"] .push-settings-card.ios-help{
+  background:var(--spark-paper-raised)!important;
+  border-color:var(--spark-border)!important;
+}
+html[data-theme="dark"] .push-settings-icon{
+  background:var(--spark-teal-light)!important;
+  color:var(--spark-teal-dark)!important;
+  box-shadow:inset 0 0 0 1px var(--spark-teal)!important;
+}
+html[data-theme="dark"] .push-settings-message.success{
+  background:var(--spark-emerald-light)!important;
+  border-color:var(--spark-emerald)!important;
+  color:var(--spark-emerald)!important;
+}
+html[data-theme="dark"] .push-settings-message.error{
+  background:var(--spark-red-light)!important;
+  border-color:var(--spark-red)!important;
+  color:var(--spark-red)!important;
+}
+html[data-theme="dark"] .push-switch{
+  background:var(--spark-border-strong)!important;
+}
+html[data-theme="dark"] .push-switch.on{
+  background:var(--spark-teal)!important;
+}
+html[data-theme="dark"] .push-switch span{
+  background:var(--spark-paper)!important;
+}
+
+/* FAMILY / PARENT NESTED TEXT ------------------------------------------- */
+html[data-theme="dark"] .child-card span:not(.child-arrow),
+html[data-theme="dark"] .review-summary-line span,
+html[data-theme="dark"] .review-full-card small,
+html[data-theme="dark"] .exam-attempt-title span,
+html[data-theme="dark"] .learning-milestone-title span{
+  color:var(--spark-text-muted)!important;
+}
+html[data-theme="dark"] .review-full-card p{
+  color:var(--spark-ink-soft)!important;
+}
+html[data-theme="dark"] .mastery-pill{
+  background:var(--spark-teal-light)!important;
+  color:var(--spark-teal-dark)!important;
+}
+html[data-theme="dark"] .cp-icon-btn{
+  background:var(--spark-muted)!important;
+  color:var(--spark-ink-soft)!important;
+}
+html[data-theme="dark"] .review-rating-label,
+html[data-theme="dark"] .rating-caption,
+html[data-theme="dark"] .review-guidance{
+  color:var(--spark-text-muted)!important;
+}
+html[data-theme="dark"] .cp-label{
+  color:var(--spark-ink-soft)!important;
+}
+html[data-theme="dark"] .cp-textarea{
+  background:var(--spark-paper-raised)!important;
+  border-color:var(--spark-border)!important;
+  color:var(--spark-ink)!important;
+}
+html[data-theme="dark"] .cp-btn-secondary{
+  background:var(--spark-paper-raised)!important;
+  border-color:var(--spark-border)!important;
+  color:var(--spark-ink)!important;
+}
+
+/* MOBILE STUDY PICKER ---------------------------------------------------- */
+@media(max-width:700px){
+  html[data-theme="dark"] .lesson-mobile-picker{
+    background:var(--spark-paper)!important;
+    border-color:var(--spark-border)!important;
+  }
+  html[data-theme="dark"] .lesson-mobile-picker label span{
+    color:var(--spark-text-muted)!important;
+  }
+  html[data-theme="dark"] .lesson-mobile-picker select{
+    background:var(--spark-paper-raised)!important;
+    border-color:var(--spark-border-strong)!important;
+    color:var(--spark-ink)!important;
+  }
+}
+
+/* Intentionally preserved:
+   - .paper-svg-wrap / .paper-option-svg white CXC diagram canvases
+   - profile-photo white rings
+   - white text on permanent navy/teal brand surfaces
+   These are contrast choices, not theme leaks. */

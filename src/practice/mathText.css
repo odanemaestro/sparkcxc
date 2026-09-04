@@ -160,7 +160,7 @@
 .lesson-math-copy .math-root,
 .lesson-math-copy .matrix,
 .lesson-math-copy .vec{
-  color:#102954;
+  color:var(--spark-ink);
 }
 
 .example-question .spark-math,
