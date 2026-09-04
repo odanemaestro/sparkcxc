@@ -48,6 +48,7 @@ import Modal from "./components/ui/Modal";
 import ScrollToTopButton from "./components/ui/ScrollToTopButton";
 import SparkLoader from "./components/ui/SparkLoader";
 import ReportQuestionButton from "./components/ui/ReportQuestionButton";
+import StudyCirclesPanel from "./components/studyCircles/StudyCirclesPanel";
 import NotificationCenter from "./components/notifications/NotificationCenter";
 import { friendlyErrorMessage } from "./lib/errorMessages";
 import { getExamPerformanceStatus } from "./lib/examPerformance";
@@ -106,6 +107,7 @@ const DASHBOARD_ROUTE_SECTIONS = new Set([
   "overview",
   "subjects",
   "progress",
+  "circles",
   "bookings",
   "sessions",
   "students",
@@ -2779,7 +2781,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       return ["overview", "sessions", "students", "reviews", "earnings", "profile"].includes(section) ? section : "overview";
     }
     if (section === "sessions") return "bookings";
-    return ["overview", "subjects", "progress", "bookings"].includes(section) ? section : "overview";
+    return ["overview", "subjects", "progress", "circles", "bookings"].includes(section) ? section : "overview";
   }, [isTutor]);
   const [notificationTarget, setNotificationTarget] = useState(() => {
     try {
@@ -3241,6 +3243,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     {k:"overview",l:"📊 Overview"},
     {k:"subjects",l:"📚 My subjects"},
     {k:"progress",l:"📈 Progress"},
+    {k:"circles",l:"🤝 Study Circles"},
     {k:"bookings",l:"📅 My bookings"},
   ];
 
@@ -3715,6 +3718,9 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
           </div>
         )}
 
+        {sec === "circles" && isStudent && (
+          <StudyCirclesPanel user={user} showToast={showToast} setView={setView}/>
+        )}
         {sec === "bookings" && (
           <>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:12,marginBottom:20}}>
@@ -4213,6 +4219,9 @@ function AdminView({ showToast, adminUserId }) {
   const [filter, setFilter] = useState("pending");
   const [payouts, setPayouts] = useState([]);
   const [payoutLoading, setPayoutLoading] = useState(false);
+  const [circleReports, setCircleReports] = useState([]);
+  const [circleReportLoading, setCircleReportLoading] = useState(false);
+  const [circleReportBusyId, setCircleReportBusyId] = useState(null);
 
   const load = () => {
     setLoading(true);
@@ -4230,7 +4239,30 @@ function AdminView({ showToast, adminUserId }) {
     setPayoutLoading(false);
   };
 
-  useEffect(() => { load(); loadPayouts(); }, []);
+  const loadStudyCircleReports = async () => {
+    setCircleReportLoading(true);
+    const { data, error } = await supabase.rpc("admin_get_study_circle_reports");
+    if (error) showToast(error.message || "Couldn\'t load Study Circle safety reports.");
+    setCircleReports(data || []);
+    setCircleReportLoading(false);
+  };
+
+  const resolveStudyCircleReport = async (reportId, status, removePost = false) => {
+    setCircleReportBusyId(reportId);
+    const { error } = await supabase.rpc("admin_resolve_study_circle_report", {
+      p_report_id: reportId,
+      p_status: status,
+      p_remove_post: removePost,
+    });
+    if (error) showToast(error.message || "Couldn\'t update the Study Circle report.");
+    else {
+      showToast(removePost ? "Reported post removed." : "Study Circle report dismissed.");
+      await loadStudyCircleReports();
+    }
+    setCircleReportBusyId(null);
+  };
+
+  useEffect(() => { load(); loadPayouts(); loadStudyCircleReports(); }, []);
 
   const STATUS_TOASTS = {
     approved: "Tutor approved.",
@@ -4393,6 +4425,31 @@ function AdminView({ showToast, adminUserId }) {
                   if (error) showToast(error.message || "Couldn't record the payout.");
                   else { showToast("Payout marked as paid."); loadPayouts(); }
                 }}>Mark paid</Btn>
+              </div>
+            </div>
+          ))}
+        </Card>
+      </div>
+
+      <div style={{marginTop:36}}>
+        <h2 style={{fontFamily:FD,fontSize:20,color:T.ink,marginBottom:5}}>Study Circle safety reports</h2>
+        <p style={{fontSize:13,color:T.textMuted,marginBottom:14}}>Review student-reported Study Circle posts. Only administrators can access this moderation queue.</p>
+        <Card>
+          {circleReportLoading ? <div style={{padding:18,color:T.textMuted,fontSize:13}}>Loading Study Circle reports…</div> : circleReports.length === 0 ? (
+            <div style={{padding:18,color:T.textMuted,fontSize:13}}>No open Study Circle reports.</div>
+          ) : circleReports.map(report => (
+            <div key={report.report_id} style={{padding:"14px 0",borderBottom:`1px solid ${T.border}`}}>
+              <div style={{display:"flex",justifyContent:"space-between",gap:14,alignItems:"flex-start",flexWrap:"wrap"}}>
+                <div style={{minWidth:0,flex:1}}>
+                  <div style={{display:"flex",gap:8,alignItems:"center",flexWrap:"wrap",marginBottom:6}}><Badge c="amber">{report.reason}</Badge><span style={{fontSize:11,color:T.textMuted}}>{report.circle_title}</span></div>
+                  <div style={{fontSize:13,color:T.inkSoft,lineHeight:1.55,whiteSpace:"pre-wrap",overflowWrap:"anywhere"}}>{report.post_body || "The reported post is no longer available."}</div>
+                  <div style={{fontSize:11,color:T.textMuted,marginTop:7}}>Author: {report.author_name || "Student"} · Reported by: {report.reporter_name || "Student"} · {new Date(report.created_at).toLocaleString()}</div>
+                  {report.details && <div style={{fontSize:11.5,color:T.textMuted,marginTop:5}}>Reporter note: {report.details}</div>}
+                </div>
+                <div style={{display:"flex",gap:8,flexWrap:"wrap"}}>
+                  <Btn v="outline" onClick={() => resolveStudyCircleReport(report.report_id, "dismissed", false)} disabled={circleReportBusyId===report.report_id} style={{fontSize:12,padding:"7px 12px"}}>Dismiss</Btn>
+                  <Btn onClick={() => resolveStudyCircleReport(report.report_id, "resolved", true)} disabled={circleReportBusyId===report.report_id} style={{fontSize:12,padding:"7px 12px",background:T.red,borderColor:T.red}}>Remove post</Btn>
+                </div>
               </div>
             </div>
           ))}
@@ -4588,22 +4645,28 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
 
   const loadChildData = useCallback(async () => {
     if (!selectedChild?.id) { setChildData(null); return; }
-    const [prog, attempts, lessons, bookings, examAttempts, milestones] = await Promise.all([
+    const [prog, attempts, lessons, bookings, examAttempts, milestones, studyCircle] = await Promise.all([
       supabase.from("csec_skill_progress").select("*").eq("user_id", selectedChild.id).order("mastery_score", {ascending:true}),
       supabase.from("csec_question_attempts").select("id,correct,attempted_at,skill").eq("user_id", selectedChild.id).order("attempted_at", {ascending:false}).limit(20),
       supabase.from("lesson_progress").select("id,lesson_id,completed,completed_at").eq("user_id", selectedChild.id).eq("completed", true),
       supabase.from("bookings").select("id,subject,session_date,start_time,duration_minutes,status,rate_jmd,confirmation_expired_at,tutors(name)").eq("student_id", selectedChild.id).order("session_date", {ascending:false}).limit(100),
       supabase.from("practice_exam_attempts").select("id,attempt_key,paper_type,score,max_score,percent,completed_at,duration_seconds,timed_out,answered_count,total_questions,correct_count").eq("user_id", selectedChild.id).order("completed_at", {ascending:false}).limit(20),
       supabase.from("learning_milestones").select("id,event_type,title,score,max_score,percent,skill,lesson_id,metadata,created_at").eq("user_id", selectedChild.id).order("created_at", {ascending:false}).limit(40),
+      supabase.rpc("spark_parent_study_circle_status", {p_student_id: selectedChild.id}),
     ]);
     const rows = prog.data || [];
     const attemptsRows = attempts.data || [];
     const mastery = rows.length ? Math.round(rows.reduce((s,r)=>s+Number(r.mastery_score||0),0)/rows.length) : 0;
     const weakest = rows.filter(r=>Number(r.mastery_score)<80).slice(0,3);
-    setChildData({ progress:rows, attempts:attemptsRows, lessons:lessons.data||[], bookings:bookings.data||[], examAttempts:examAttempts.data||[], milestones:milestones.data||[], mastery, weakest });
+    setChildData({ progress:rows, attempts:attemptsRows, lessons:lessons.data||[], bookings:bookings.data||[], examAttempts:examAttempts.data||[], milestones:milestones.data||[], studyCircle:studyCircle.data||{active:false}, mastery, weakest });
   }, [selectedChild?.id]);
 
   useEffect(() => { loadChildData(); }, [loadChildData]);
+
+  useEffect(() => {
+    if (notificationTarget?.anchor !== "parent-study-circle" || !selectedChild?.id) return;
+    loadChildData();
+  }, [notificationTarget?.anchor, selectedChild?.id, loadChildData]);
 
   useEffect(() => {
     if (!selectedChild?.id) return;
@@ -4736,6 +4799,8 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
               </article>;
             })}</div> : <div className="exam-results-empty"><strong>No full exam attempts yet.</strong><span>Paper 1 and Paper 2 scores will appear after the student submits an exam.</span></div>}
           </div>
+
+          {childData.studyCircle?.active && <div className="panel-white study-circle-parent-summary" data-notification-anchor="parent-study-circle"><div className="panel-title">Study Circle</div><div className="study-circle-parent-row"><div><strong>Participating in a small peer study group</strong><span>SPARK matches complementary strengths and focus areas. Peer identities, exact scores and group messages stay private.</span></div><Badge c="teal">{childData.studyCircle.group_size || 0} students</Badge></div></div>}
 
           <div className="parent-columns">
             <div className="panel-white"><div className="panel-title">Skills needing attention</div>{childData.weakest.length ? childData.weakest.map(r=><div className="skill-row" key={r.id}><div><strong>{r.skill}</strong><span>{r.mastery_level}</span></div><div className="skill-score">{Math.round(Number(r.mastery_score))}%</div></div>) : <p className="muted-copy">No weak skills recorded yet. Keep encouraging consistent practice.</p>}</div>

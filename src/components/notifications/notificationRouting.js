@@ -74,6 +74,24 @@ export function getNotificationRoute(notification, role, currentUserId = null) {
     };
   }
 
+  if (type === "study_circle_ready" || type === "study_circle_update" || type === "study_circle_report_update" || type === "study_circle_moderation") {
+    return {
+      view: "dashboard",
+      dashboardTarget: { scope: "student", section: "circles", anchor: "student-study-circles" },
+    };
+  }
+  if (type === "child_study_circle_joined") {
+    return {
+      view: "dashboard",
+      dashboardTarget: {
+        scope: "parent",
+        section: "progress",
+        studentId: metadata.student_id || notification.student_id || null,
+        anchor: "parent-study-circle",
+      },
+    };
+  }
+
   if (type === "family_link_request") {
     return {
       view: "dashboard",

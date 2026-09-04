@@ -107,8 +107,14 @@ const LEARNING_TYPES = new Set([
   "child_mastery_milestone",
   "child_weak_skill_alert",
   "child_skill_improved",
+  "study_circle_ready",
+  "study_circle_update",
+  "study_circle_report_update",
+  "study_circle_moderation",
 ]);
-const FAMILY_TYPES = new Set(["family_link_request", "family_link_update"]);
+const FAMILY_TYPES = new Set(["family_link_request", "family_link_update",
+  "child_study_circle_joined",
+]);
 const TUTOR_TYPES = new Set(["tutor_application_update"]);
 
 function preferenceColumn(type: string | null): string | null {
