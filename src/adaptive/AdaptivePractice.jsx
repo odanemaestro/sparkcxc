@@ -2,7 +2,7 @@
 // Adaptive CSEC Mathematics practice screen
 // Done by: Odane Robinson
 //
-// QA fix: this used to grade every short-answer question with an EXACT
+// QA: short-answer grading uses the shared deterministic mathematics checker.
 // string match after trim/lowercase, so a mathematically correct but
 // differently-formatted response ("0.75" for "3/4", "5" for "x = 5", a set
 // in a different order, etc.) was marked wrong. It now uses checkAnswer()
@@ -21,7 +21,7 @@ import React, { useEffect, useState } from "react";
 import { loadQuestionManifest, loadQuestionSet } from "./questionBank";
 import { buildAdaptiveSession, skillMastery } from "./adaptiveEngine";
 import { fetchAttempts, upsertSkillProgress } from "./persistence";
-import { checkAnswer } from "../lib/answerCheck";
+import { checkQuestionAnswer } from "../lib/answerCheck";
 import ReportQuestionButton from "../components/ui/ReportQuestionButton";
 import MathText from "../practice/MathText";
 import "./adaptive.css";
@@ -101,7 +101,7 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
   async function submit() {
     if (!q || submitted) return;
 
-    const result = checkAnswer(answer, q.answer);
+    const result = checkQuestionAnswer(answer, q);
     // "uncertain" starts out ungraded - the student self-assesses against
     // the worked solution (see confirmSelfAssessment below) instead of us
     // asserting a verdict a plain comparison can't actually back up.

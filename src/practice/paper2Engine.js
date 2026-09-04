@@ -1,4 +1,4 @@
-import { checkAnswer } from "../lib/answerCheck";
+import { checkQuestionAnswer } from "../lib/answerCheck";
 import { PAPER2_QUESTION_BANK } from "./paper2QuestionBank";
 
 export const PAPER2_DURATION_SECONDS = 160 * 60;
@@ -81,57 +81,18 @@ export function validatePaper2Exam(exam) {
   };
 }
 
-function cleanExpression(value) {
-  return String(value ?? "")
-    .toLowerCase()
-    .replace(/[−–-]/g, "-")
-    .replace(/×/g, "*")
-    .replace(/\s+/g, "")
-    .replace(/\*+/g, "*")
-    .replace(/^\((.*)\)$/g, "$1");
-}
-
-function parseLooseNumber(value) {
-  const cleaned = String(value ?? "")
-    .trim()
-    .replace(/[$,]/g, "")
-    .replace(/[°%]/g, "")
-    .replace(/\b(cm|m|km|units?|m²|m³|cm²|cm³)\b/gi, "")
-    .trim();
-  const fraction = cleaned.match(/^(-?\d+(?:\.\d+)?)\s*\/\s*(-?\d+(?:\.\d+)?)$/);
-  if (fraction && Number(fraction[2]) !== 0) return Number(fraction[1]) / Number(fraction[2]);
-  const match = cleaned.match(/-?\d+(?:\.\d+)?/);
-  if (!match) return null;
-  const n = Number(match[0]);
-  return Number.isFinite(n) ? n : null;
-}
-
 export function gradePaper2Part(userInput, part) {
   const user = String(userInput ?? "").trim();
   if (!user) return { status: "blank", correct: false, marks: 0 };
 
-  const accepted = [part.answer, ...(part.accepted || [])].filter(v => v !== undefined && v !== null).map(String);
+  const status = checkQuestionAnswer(user, part);
+  const correct = status === "correct";
 
-  if (Number.isFinite(Number(part.tolerance))) {
-    const userNumber = parseLooseNumber(user);
-    const expectedNumber = parseLooseNumber(part.answer);
-    if (userNumber !== null && expectedNumber !== null) {
-      const correct = Math.abs(userNumber - expectedNumber) <= Number(part.tolerance);
-      return { status: correct ? "correct" : "incorrect", correct, marks: correct ? part.marks : 0 };
-    }
-  }
-
-  if (part.answerType === "expression" || part.answerType === "ordered") {
-    const normalized = cleanExpression(user);
-    const correct = accepted.some(answer => cleanExpression(answer) === normalized);
-    return { status: correct ? "correct" : "incorrect", correct, marks: correct ? part.marks : 0 };
-  }
-
-  const correct = accepted.some(answer => {
-    if (checkAnswer(user, answer) === "correct") return true;
-    return cleanExpression(user) === cleanExpression(answer);
-  });
-  return { status: correct ? "correct" : "incorrect", correct, marks: correct ? part.marks : 0 };
+  return {
+    status,
+    correct,
+    marks: correct ? part.marks : 0,
+  };
 }
 
 export function calculatePaper2Mark(answers = {}, questions = []) {

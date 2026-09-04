@@ -1,5 +1,18 @@
 const round = (value, dp = 2) => Number(value).toFixed(dp).replace(/\.0+$/, "").replace(/(\.\d*?)0+$/, "$1");
 const money = value => Number(value).toFixed(2);
+const fraction = (num, den) => {
+  let a = Math.trunc(num);
+  let b = Math.trunc(den);
+  const gcd = (x, y) => {
+    x = Math.abs(x);
+    y = Math.abs(y);
+    while (y) [x, y] = [y, x % y];
+    return x || 1;
+  };
+  if (b < 0) { a = -a; b = -b; }
+  const divisor = gcd(a, b);
+  return `${a / divisor}/${b / divisor}`;
+};
 const q = (position, variant, topic, stem, parts, extra = {}) => ({
   question_id: `p2-q${position}-v${variant}`,
   question_number: position,
@@ -53,7 +66,7 @@ function q2() {
     return q(2, i + 1, "Algebra and measurement",
       `For part (c), a rectangle has length : width = ${v.m} : ${v.n} and area ${v.area} cm².`, [
         p("a", "(a)", `Solve ${v.a}x + ${v.b} = ${v.c}.`, 2, x, `${v.a}x = ${v.c - v.b}, so x = ${x}.`),
-        p("b", "(b)", `Factorise completely: ${v.m * 2}y + ${v.m * 6}.`, 2, `${v.m * 2}(y+3)`, `The highest common factor is ${v.m * 2}, giving ${v.m * 2}(y + 3).`, { accepted: [`${v.m * 2}(y+3)`, `${v.m * 2}(y + 3)`], answerType: "expression" }),
+        p("b", "(b)", `Factorise completely: ${v.m * 2}y + ${v.m * 6}.`, 2, `${v.m * 2}(y+3)`, `The highest common factor is ${v.m * 2}, giving ${v.m * 2}(y + 3).`, { accepted: [`${v.m * 2}(y+3)`, `${v.m * 2}(y + 3)`], answerType: "expression", requiredForm: "factorised" }),
         p("c1", "(c)(i)", "Calculate the width of the rectangle, giving your answer correct to 2 decimal places.", 3, round(width, 2), `Let length = ${v.m}k and width = ${v.n}k. Then ${v.m * v.n}k² = ${v.area}. Solve for k, then width = ${v.n}k = ${round(width, 2)} cm.`, { suffix: " cm", tolerance: 0.011 }),
         p("c2", "(c)(ii)", "Calculate the length of the rectangle, giving your answer correct to 2 decimal places.", 2, round(length, 2), `Length = ${v.m}k = ${round(length, 2)} cm.`, { suffix: " cm", tolerance: 0.011 }),
       ]);
@@ -105,7 +118,7 @@ function q4() {
         p("a", "(a)", `Find f(${v.x}).`, 2, fx, `f(${v.x}) = ${v.m}(${v.x}) ${v.c >= 0 ? "+" : "−"} ${Math.abs(v.c)} = ${fx}.`),
         p("b", "(b)", `Find the value of x for which f(x) = ${v.ax}.`, 2, inverse, `Solve ${v.m}x + (${v.c}) = ${v.ax}, giving x = ${inverse}.`),
         p("c", "(c)", `State the gradient of a line perpendicular to y = ${v.m}x ${v.c >= 0 ? "+" : "−"} ${Math.abs(v.c)}.`, 2, round(perp, 3), `Perpendicular gradients multiply to −1, so the gradient is ${round(perp, 3)}.`, { tolerance: 0.0011 }),
-        p("d", "(d)", `Determine the equation of the line which is perpendicular to f and passes through (${v.ax}, ${v.ay}). Give your answer in the form y = mx + c.`, 3, perpEq, `Use y − ${v.ay} = ${round(perp, 3)}(x − ${v.ax}). This simplifies to ${perpEq}.`, { answerType: "expression", accepted: [perpEq, perpEq.replace(/\+/g, " + ").replace(/-/g, " - ")] }),
+        p("d", "(d)", `Determine the equation of the line which is perpendicular to f and passes through (${v.ax}, ${v.ay}). Give your answer in the form y = mx + c.`, 3, perpEq, `Use y − ${v.ay} = ${round(perp, 3)}(x − ${v.ax}). This simplifies to ${perpEq}.`, { answerType: "expression", requiredForm: "slope_intercept", tolerance: 0.005, accepted: [perpEq, perpEq.replace(/\+/g, " + ").replace(/-/g, " - ")] }),
       ]);
   });
 }
@@ -131,7 +144,7 @@ function q5() {
         p("a", "(a)", "Calculate the mean number of books read by the students.", 3, round(mean, 2), `Sum = ${sum}. Mean = ${sum} ÷ 8 = ${round(mean, 2)}.` , { tolerance: 0.011 }),
         p("b", "(b)", "State the median.", 2, median, `The middle two values are ${data[3]} and ${data[4]}, so median = (${data[3]} + ${data[4]}) ÷ 2 = ${median}.`),
         p("c", "(c)", "State the mode.", 1, mode, `${mode} occurs most often.`),
-        p("d", "(d)", "One student is chosen at random. Determine the probability that the student read more than 8 books. Give your answer as a fraction in its simplest form.", 3, `${over8}/8`, `${over8} of the 8 students read more than 8 books, so the probability is ${over8}/8.`, { accepted: [`${over8}/8`, round(over8 / 8, 3)] }),
+        p("d", "(d)", "One student is chosen at random. Determine the probability that the student read more than 8 books. Give your answer as a fraction in its simplest form.", 3, fraction(over8, 8), `${over8} of the 8 students read more than 8 books, so the probability is ${fraction(over8, 8)}.`, { requiredForm: "simplified_fraction" }),
       ], { table: { headers: ["Student", "A", "B", "C", "D", "E", "F", "G", "H"], rows: [["Books", ...data]] } });
   });
 }
