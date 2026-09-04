@@ -487,8 +487,13 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
               return (
                 <label className="paper2-part-card" key={part.id}>
                   <div className="paper2-part-heading"><strong>{part.label}</strong><span>{part.marks} {part.marks === 1 ? "mark" : "marks"}</span></div>
-                  <MathText as="p">{part.prompt}</MathText>
-                  <div className="paper2-answer-field">
+				  <MathText as="p">{part.prompt}</MathText>
+					{part.inputHint && (
+					  <small className="paper2-input-hint">
+						Answer format: {part.inputHint}
+					  </small>
+					)}
+					<div className="paper2-answer-field">
                     {part.prefix && <span className="paper2-affix"><MathText>{part.prefix}</MathText></span>}
                     <input
                       ref={element => { inputRefs.current[key] = element; }}

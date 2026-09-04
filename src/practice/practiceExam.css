@@ -591,3 +591,13 @@
     overscroll-behavior:contain;
   }
 }
+
+
+/* Keep platform input guidance separate from CXC-style examination wording. */
+.paper2-input-hint {
+  display: block;
+  margin: -2px 0 10px;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  opacity: 0.72;
+}

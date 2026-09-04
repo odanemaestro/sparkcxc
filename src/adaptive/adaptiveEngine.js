@@ -64,42 +64,72 @@ export function recommendSkills(skillStats, count = 3) {
 // questions the learner hasn't attempted yet (falls back to the full pool,
 // including repeats, only if every matching question has already been seen).
 export function selectAdaptiveQuestion(questions, {
-  skill, preferredDifficulty, attemptedIds = new Set()
+  skill, preferredDifficulty, attemptedIds = new Set(), attemptedFamilies = new Set()
 } = {}) {
-  let pool = questions.filter(q =>
+  const matches = (q, ignoreFamily = false) =>
     (!skill || q.subtopic === skill) &&
-    (!preferredDifficulty || q.difficulty === preferredDifficulty)
-  );
+    (!preferredDifficulty || q.difficulty === preferredDifficulty) &&
+    (ignoreFamily || !q.variant_family || !attemptedFamilies.has(q.variant_family));
 
+  let pool = questions.filter(q => matches(q));
+  if (!pool.length && attemptedFamilies.size) pool = questions.filter(q => matches(q, true));
   const fresh = pool.filter(q => !attemptedIds.has(q.id));
   if (fresh.length) pool = fresh;
   return pool.length ? pool[Math.floor(Math.random() * pool.length)] : null;
 }
 
-// Builds one practice session: first targets the weakest skills (from
-// recommendSkills) at a difficulty matched to current mastery level, then
-// tops up with any remaining questions until `count` is reached or the
-// bank is exhausted. Guards against duplicate questions in the same session.
-export function buildAdaptiveSession(questions, skillStats, { count = 10 } = {}) {
-  const recommendations = recommendSkills(skillStats, Math.min(3, Object.keys(skillStats).length));
-  const candidates = [];
-
-  for (const item of recommendations) {
-    const difficulty =
-      item.level === "Mastered" ? "Hard" :
-      item.level === "Strong" ? "Medium" : "Easy";
-
-    const q = selectAdaptiveQuestion(questions, {
-      skill: item.skill,
-      preferredDifficulty: difficulty
-    });
-    if (q) candidates.push(q);
+function sessionDifficultyPlan(count) {
+  const easy = Math.round(count * 0.20);
+  const medium = Math.round(count * 0.55);
+  const hard = Math.max(0, count - easy - medium);
+  const plan = [
+    ...Array(medium).fill("Medium"),
+    ...Array(hard).fill("Hard"),
+    ...Array(easy).fill("Easy"),
+  ];
+  for (let i = plan.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [plan[i], plan[j]] = [plan[j], plan[i]];
   }
+  return plan;
+}
 
-  while (candidates.length < count && questions.length) {
-    const q = selectAdaptiveQuestion(questions, {});
-    if (!q || candidates.some(x => x.id === q.id)) break;
-    candidates.push(q);
+export function buildAdaptiveSession(questions, skillStats, { count = 10 } = {}) {
+  const recommendations = recommendSkills(skillStats, Math.min(4, Object.keys(skillStats).length));
+  const candidates = [];
+  const attemptedIds = new Set();
+  const attemptedFamilies = new Set();
+  const plan = sessionDifficultyPlan(count);
+
+  for (let slot = 0; slot < plan.length; slot += 1) {
+    const preferredDifficulty = plan[slot];
+    let picked = null;
+
+    for (let offset = 0; offset < recommendations.length && !picked; offset += 1) {
+      const item = recommendations[(slot + offset) % recommendations.length];
+      picked = selectAdaptiveQuestion(questions, {
+        skill: item?.skill,
+        preferredDifficulty,
+        attemptedIds,
+        attemptedFamilies,
+      });
+    }
+
+    if (!picked) {
+      picked = selectAdaptiveQuestion(questions, {
+        preferredDifficulty,
+        attemptedIds,
+        attemptedFamilies,
+      });
+    }
+    if (!picked) {
+      picked = selectAdaptiveQuestion(questions, { attemptedIds, attemptedFamilies });
+    }
+    if (!picked) break;
+
+    candidates.push(picked);
+    attemptedIds.add(picked.id);
+    if (picked.variant_family) attemptedFamilies.add(picked.variant_family);
   }
 
   return candidates.slice(0, count);

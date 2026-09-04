@@ -21,6 +21,54 @@
 let manifestPromise = null;
 const questionSetCache = new Map();
 
+const META_PRACTICE_PROMPT = /^(?:what should you do first when (?:solving|answering)|what is the first step when (?:solving|answering)|should you show (?:all )?working|why should you show (?:all )?working|which method should you use|what is the best way to approach)/i;
+
+function normalizeAdaptiveQuestionText(value) {
+  return String(value || "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
+function adaptiveFamilySkeleton(value) {
+  return normalizeAdaptiveQuestionText(value)
+    .replace(/[−-]?\$?\d[\d,]*(?:\.\d+)?%?/g, "#")
+    .replace(/\s*:\s*/g, ":")
+    .replace(/\s+/g, " ")
+    .slice(0, 220);
+}
+
+export function isScoredAdaptiveMathQuestion(question) {
+  const text = String(question?.question || "").trim();
+  return Boolean(text) && !META_PRACTICE_PROMPT.test(text);
+}
+
+export function inferAdaptiveVariantFamily(question, area = "", topic = "") {
+  if (question?.variant_family) return question.variant_family;
+  const areaName = question?.curriculum_area || area || "Mathematics";
+  const topicName = question?.topic || question?.subtopic || topic || "Practice";
+  return `LEGACY::${areaName}::${topicName}::${adaptiveFamilySkeleton(question?.question)}`;
+}
+
+export function prepareAdaptiveQuestions(items, { area = "", topic = "" } = {}) {
+  if (!Array.isArray(items)) return [];
+  const seen = new Set();
+  const prepared = [];
+
+  for (const question of items) {
+    if (!isScoredAdaptiveMathQuestion(question)) continue;
+    const textKey = normalizeAdaptiveQuestionText(question.question);
+    if (!textKey || seen.has(textKey)) continue;
+    seen.add(textKey);
+    prepared.push({
+      ...question,
+      content_class: question.content_class || "SPARK_CXC_STYLE",
+      variant_family: inferAdaptiveVariantFamily(question, area, topic),
+    });
+  }
+  return prepared;
+}
+
 function loadManifestRaw() {
   if (!manifestPromise) {
     manifestPromise = fetch(`${process.env.PUBLIC_URL}/question-bank/manifest.json`)
@@ -54,6 +102,7 @@ export async function loadQuestionSet(area, topic) {
       if (!r.ok) throw new Error(`Could not load questions for "${topic}".`);
       return r.json();
     })
+    .then(items => prepareAdaptiveQuestions(items, { area, topic }))
     .catch(err => {
       questionSetCache.delete(key); // allow retry on next call
       throw err;

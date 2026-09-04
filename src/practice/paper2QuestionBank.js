@@ -1,3 +1,5 @@
+import { PAPER2_QUESTION_BANK_EXPANSION } from "./paper2QuestionBankExpansion";
+
 const round = (value, dp = 2) => Number(value).toFixed(dp).replace(/\.0+$/, "").replace(/(\.\d*?)0+$/, "$1");
 const money = value => Number(value).toFixed(2);
 const fraction = (num, den) => {
@@ -21,6 +23,8 @@ const q = (position, variant, topic, stem, parts, extra = {}) => ({
   topic,
   stem,
   parts,
+  source: "SPARK original CSEC-style",
+  content_class: "SPARK_CXC_STYLE",
   ...extra,
 });
 const p = (id, label, prompt, marks, answer, solution, extra = {}) => ({ id, label, prompt, marks, answer: String(answer), solution, ...extra });
@@ -64,7 +68,7 @@ function q2() {
     const width = Math.sqrt(v.area * v.n / v.m);
     const length = v.m * width / v.n;
     return q(2, i + 1, "Algebra and measurement",
-      `For part (c), a rectangle has length : width = ${v.m} : ${v.n} and area ${v.area} cm².`, [
+      `For part (c), a rectangle has a length to width ratio of ${v.m} : ${v.n} and an area of ${v.area} cm².`, [
         p("a", "(a)", `Solve ${v.a}x + ${v.b} = ${v.c}.`, 2, x, `${v.a}x = ${v.c - v.b}, so x = ${x}.`),
         p("b", "(b)", `Factorise completely: ${v.m * 2}y + ${v.m * 6}.`, 2, `${v.m * 2}(y+3)`, `The highest common factor is ${v.m * 2}, giving ${v.m * 2}(y + 3).`, { accepted: [`${v.m * 2}(y+3)`, `${v.m * 2}(y + 3)`], answerType: "expression", requiredForm: "factorised" }),
         p("c1", "(c)(i)", "Calculate the width of the rectangle, giving your answer correct to 2 decimal places.", 3, round(width, 2), `Let length = ${v.m}k and width = ${v.n}k. Then ${v.m * v.n}k² = ${v.area}. Solve for k, then width = ${v.n}k = ${round(width, 2)} cm.`, { suffix: " cm", tolerance: 0.011 }),
@@ -115,8 +119,8 @@ function q4() {
     const perpEq = `y=${round(perp, 3)}x${pc >= 0 ? "+" : ""}${round(pc, 3)}`;
     return q(4, i + 1, "Relations, functions and coordinate geometry",
       `The function f is defined by f(x) = ${v.m}x ${v.c >= 0 ? "+" : "−"} ${Math.abs(v.c)}.`, [
-        p("a", "(a)", `Find f(${v.x}).`, 2, fx, `f(${v.x}) = ${v.m}(${v.x}) ${v.c >= 0 ? "+" : "−"} ${Math.abs(v.c)} = ${fx}.`),
-        p("b", "(b)", `Find the value of x for which f(x) = ${v.ax}.`, 2, inverse, `Solve ${v.m}x + (${v.c}) = ${v.ax}, giving x = ${inverse}.`),
+        p("a", "(a)", `Calculate f(${v.x}).`, 2, fx, `f(${v.x}) = ${v.m}(${v.x}) ${v.c >= 0 ? "+" : "−"} ${Math.abs(v.c)} = ${fx}.`),
+        p("b", "(b)", `Determine the value of x for which f(x) = ${v.ax}.`, 2, inverse, `Solve ${v.m}x + (${v.c}) = ${v.ax}, giving x = ${inverse}.`),
         p("c", "(c)", `State the gradient of a line perpendicular to y = ${v.m}x ${v.c >= 0 ? "+" : "−"} ${Math.abs(v.c)}.`, 2, round(perp, 3), `Perpendicular gradients multiply to −1, so the gradient is ${round(perp, 3)}.`, { tolerance: 0.0011 }),
         p("d", "(d)", `Determine the equation of the line which is perpendicular to f and passes through (${v.ax}, ${v.ay}). Give your answer in the form y = mx + c.`, 3, perpEq, `Use y − ${v.ay} = ${round(perp, 3)}(x − ${v.ax}). This simplifies to ${perpEq}.`, { answerType: "expression", requiredForm: "slope_intercept", tolerance: 0.005, accepted: [perpEq, perpEq.replace(/\+/g, " + ").replace(/-/g, " - ")] }),
       ]);
@@ -161,7 +165,7 @@ function q6() {
   return variants.map((v, i) => {
     const opposite = v.hyp * Math.sin(v.angle * Math.PI / 180);
     return q(6, i + 1, "Measurement, geometry and trigonometry",
-      `A cylindrical water tank has radius ${v.r} m and height ${v.h} m. A right-angled triangle has hypotenuse ${v.hyp} cm and an acute angle of ${v.angle}°.`, [
+      `For parts (a), (b) and (d), a cylindrical water tank has radius ${v.r} m and height ${v.h} m. For part (c), a right-angled triangle has hypotenuse ${v.hyp} cm and an acute angle of ${v.angle}°.`, [
         p("a", "(a)", "Using π = 3.142, calculate the area of the circular base of the tank, giving your answer correct to 2 decimal places.", 2, round(3.142 * v.r * v.r, 2), `Area = πr² = 3.142 × ${v.r}² = ${round(3.142 * v.r * v.r, 2)} m².`, { suffix: " m²", tolerance: 0.011 }),
         p("b", "(b)", "Using π = 3.142, calculate the volume of the tank, giving your answer correct to 2 decimal places.", 3, round(3.142 * v.r * v.r * v.h, 2), `Volume = πr²h = 3.142 × ${v.r}² × ${v.h} = ${round(3.142 * v.r * v.r * v.h, 2)} m³.`, { suffix: " m³", tolerance: 0.011 }),
         p("c", "(c)", `Calculate the length of the side opposite the ${v.angle}° angle, giving your answer correct to 1 decimal place.`, 2, round(opposite, 1), `sin ${v.angle}° = opposite/${v.hyp}. Opposite = ${v.hyp} sin ${v.angle}° = ${round(opposite, 1)} cm.`, { suffix: " cm", tolerance: 0.051 }),
@@ -242,8 +246,8 @@ function q9() {
       `In triangle ABC, BC = ${v.a} cm, AC = ${v.b} cm and angle ACB = ${v.C}°.`, [
         p("a", "(a)", "Calculate the length of AB, giving your answer correct to 1 decimal place.", 3, round(c, 1), `Using the cosine rule, AB² = ${v.a}² + ${v.b}² − 2(${v.a})(${v.b})cos ${v.C}°. Thus AB = ${round(c, 1)} cm.`, { suffix: " cm", tolerance: 0.051 }),
         p("b", "(b)", "Calculate the area of triangle ABC, giving your answer correct to 1 decimal place.", 3, round(area, 1), `Area = 1/2 ab sin C = 1/2(${v.a})(${v.b})sin ${v.C}° = ${round(area, 1)} cm².`, { suffix: " cm²", tolerance: 0.051 }),
-        p("c", "(c)", "Calculate angle BAC, giving your answer correct to 1 decimal place.", 3, round(A, 1), `Using the sine rule, sin A/${v.a} = sin ${v.C}°/${round(c, 3)}. Therefore A = ${round(A, 1)}°.` , { suffix: "°", tolerance: 0.051 }),
-        p("d", "(d)", "Calculate angle ABC, giving your answer correct to 1 decimal place.", 3, round(B, 1), `B = 180° − ${v.C}° − ${round(A, 1)}° = ${round(B, 1)}°.` , { suffix: "°", tolerance: 0.101 }),
+        p("c", "(c)", "Calculate the measure of angle BAC, giving your answer correct to 1 decimal place.", 3, round(A, 1), `Using the sine rule, sin A/${v.a} = sin ${v.C}°/${round(c, 3)}. Therefore A = ${round(A, 1)}°.` , { suffix: "°", tolerance: 0.051 }),
+        p("d", "(d)", "Calculate the measure of angle ABC, giving your answer correct to 1 decimal place.", 3, round(B, 1), `B = 180° − ${v.C}° − ${round(A, 1)}° = ${round(B, 1)}°.` , { suffix: "°", tolerance: 0.101 }),
       ]);
   });
 }
@@ -266,10 +270,10 @@ function q10() {
     ];
     const magnitude = Math.hypot(v.vx, v.vy);
     return q(10, i + 1, "Vectors and matrices",
-      `Given the matrices A = [[${v.A[0].join(", ")}],[${v.A[1].join(", ")}]] and B = [[${v.B[0].join(", ")}],[${v.B[1].join(", ")}]], and the vector v = (${v.vx}, ${v.vy}), answer the following questions.`, [
-        p("a", "(a)", "Find A + B. Enter the four entries row by row, separated by commas.", 3, flat(add), `A + B = [[${add[0].join(", ")}],[${add[1].join(", ")}]].`, { accepted: [flat(add), `[[${add[0].join(",")}],[${add[1].join(",")}]]`], answerType: "ordered" }),
-        p("b", "(b)", "Find AB. Enter the four entries row by row, separated by commas.", 3, flat(mult), `AB = [[${mult[0].join(", ")}],[${mult[1].join(", ")}]].`, { accepted: [flat(mult), `[[${mult[0].join(",")}],[${mult[1].join(",")}]]`], answerType: "ordered" }),
-        p("c", "(c)", `Find ${v.k}v. Give your answer as an ordered pair.`, 3, `(${v.k*v.vx}, ${v.k*v.vy})`, `${v.k}v = (${v.k*v.vx}, ${v.k*v.vy}).`),
+      `The matrices A = [[${v.A[0].join(", ")}],[${v.A[1].join(", ")}]] and B = [[${v.B[0].join(", ")}],[${v.B[1].join(", ")}]], and the vector v = (${v.vx}, ${v.vy}), are given.`, [
+        p("a", "(a)", "Calculate A + B.", 3, flat(add), `A + B = [[${add[0].join(", ")}],[${add[1].join(", ")}]].`, { accepted: [flat(add), `[[${add[0].join(",")}],[${add[1].join(",")}]]`], answerType: "ordered", inputHint: "Enter the four matrix entries row by row, separated by commas." }),
+        p("b", "(b)", "Calculate AB.", 3, flat(mult), `AB = [[${mult[0].join(", ")}],[${mult[1].join(", ")}]].`, { accepted: [flat(mult), `[[${mult[0].join(",")}],[${mult[1].join(",")}]]`], answerType: "ordered", inputHint: "Enter the four matrix entries row by row, separated by commas." }),
+        p("c", "(c)", `Calculate ${v.k}v.`, 3, `(${v.k*v.vx}, ${v.k*v.vy})`, `${v.k}v = (${v.k*v.vx}, ${v.k*v.vy}).`, { inputHint: "Enter the vector as an ordered pair." }),
         p("d", "(d)", "Calculate the magnitude of v, giving your answer correct to 2 decimal places.", 3, round(magnitude, 2), `|v| = √(${v.vx}² + ${v.vy}²) = ${round(magnitude, 2)}.`, { tolerance: 0.011 }),
       ]);
   });
@@ -277,6 +281,7 @@ function q10() {
 
 export const PAPER2_QUESTION_BANK = [
   ...q1(), ...q2(), ...q3(), ...q4(), ...q5(), ...q6(), ...q7(), ...q8(), ...q9(), ...q10(),
+  ...PAPER2_QUESTION_BANK_EXPANSION,
 ];
 
 export const PAPER2_TOPICS = [
