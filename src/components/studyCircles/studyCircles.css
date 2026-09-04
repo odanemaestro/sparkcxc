@@ -577,15 +577,23 @@ html[data-theme="dark"] .study-circle-match-pill{
   .study-circle-waiting-card h2{
     width:100%;
     max-width:860px;
+    margin-left:auto;
+    margin-right:auto;
     line-height:1.15;
     text-align:center;
+    text-wrap:balance;
   }
 
   .study-circle-waiting-card>p{
     width:100%;
-    max-width:760px;
+    max-width:860px;
+    margin-left:auto;
+    margin-right:auto;
     text-align:center;
+    text-wrap:balance;
   }
+
+  /* STUDY CIRCLES COPY ALIGNMENT V9.0.3 */
 
   .study-circle-waiting-card .study-circle-actions{
     width:100%;
