@@ -44,7 +44,7 @@ function skillChips(items, kind = "strength") {
 
 function safeError(error, fallback) {
   const text = String(error?.message || "");
-  if (/spark_get_study_circle_home|function .* does not exist|schema cache/i.test(text)) {
+  if (/spark_get_study_circle_home|spark_get_study_circle_posts|spark_create_study_circle_reply|function .* does not exist|schema cache/i.test(text)) {
     return "Study Circles needs its Supabase migration before it can be used.";
   }
   if (/personal contact|contact details/i.test(text)) {
@@ -61,6 +61,7 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
   const [availability, setAvailability] = useState([]);
   const [guidelinesAccepted, setGuidelinesAccepted] = useState(false);
   const [message, setMessage] = useState("");
+  const [replyTarget, setReplyTarget] = useState(null);
   const [reportTarget, setReportTarget] = useState(null);
   const [reportReason, setReportReason] = useState("Personal information");
   const [reportDetails, setReportDetails] = useState("");
@@ -76,9 +77,20 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
       if (!quiet) setLoading(false);
       return;
     }
-    setHome(data || {});
-    setAvailability(Array.isArray(data?.preference?.preferred_times) ? data.preference.preferred_times : []);
-    setGuidelinesAccepted(Boolean(data?.preference?.guidelines_accepted));
+    let nextHome = data || {};
+    if (nextHome?.status === "matched") {
+      const { data: postData, error: postsError } = await supabase.rpc("spark_get_study_circle_posts");
+      if (postsError) {
+        console.error("Study Circle posts load failed:", postsError);
+        setError(safeError(postsError, "Couldn't load the Study Circle board. Please try again."));
+        if (!quiet) setLoading(false);
+        return;
+      }
+      nextHome = { ...nextHome, posts: Array.isArray(postData) ? postData : [] };
+    }
+    setHome(nextHome);
+    setAvailability(Array.isArray(nextHome?.preference?.preferred_times) ? nextHome.preference.preferred_times : []);
+    setGuidelinesAccepted(Boolean(nextHome?.preference?.guidelines_accepted));
     setError("");
     if (!quiet) setLoading(false);
   }, [user?.id]);
@@ -171,11 +183,24 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
     if (ok) showToast?.("Study Circle matching paused.");
   };
 
+  const startReply = post => {
+    setReplyTarget(post);
+    window.setTimeout(() => {
+      document.getElementById("study-circle-composer")?.scrollIntoView({ behavior: "smooth", block: "center" });
+      document.getElementById("study-circle-message")?.focus({ preventScroll: true });
+    }, 0);
+  };
   const sendPost = async () => {
     const body = message.trim();
     if (!body || busy) return;
     setBusy("post");
-    const { error: postError } = await supabase.rpc("spark_create_study_circle_post", { p_body: body });
+    const request = replyTarget
+      ? supabase.rpc("spark_create_study_circle_reply", {
+          p_body: body,
+          p_reply_to_post_id: replyTarget.id,
+        })
+      : supabase.rpc("spark_create_study_circle_post", { p_body: body });
+    const { error: postError } = await request;
     if (postError) {
       console.error("Study Circle post failed:", postError);
       showToast?.(safeError(postError, "Couldn't post that message."));
@@ -183,6 +208,7 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
       return;
     }
     setMessage("");
+    setReplyTarget(null);
     await load({ quiet: true });
     setBusy("");
   };
@@ -481,8 +507,18 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
               </div>
             </div>
 
-            <div className="study-circle-composer">
+            <div className="study-circle-composer" id="study-circle-composer">
+              {replyTarget && (
+                <div className="study-circle-replying-banner">
+                  <div>
+                    <span>Replying to {replyTarget.author}</span>
+                    <strong>{replyTarget.body}</strong>
+                  </div>
+                  <button type="button" aria-label="Cancel reply" onClick={() => setReplyTarget(null)}>×</button>
+                </div>
+              )}
               <textarea
+                id="study-circle-message"
                 value={message}
                 onChange={event => setMessage(event.target.value.slice(0, 700))}
                 placeholder="Ask a question, explain a step, or share a study tip..."
@@ -511,12 +547,23 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
                       <strong>{post.author}{post.is_mine ? " · You" : ""}</strong>
                       <span>{relativeTime(post.created_at)}</span>
                     </div>
-                    <p>{post.body}</p>
-                    {!post.is_mine && (
-                      <button type="button" className="study-circle-report-link" onClick={() => setReportTarget(post)}>
-                        Report
-                      </button>
+                    {post.reply_to && (
+                      <div className="study-circle-reply-quote">
+                        <span>Replying to {post.reply_to.author}</span>
+                        <div>{post.reply_to.body}</div>
+                      </div>
                     )}
+                    <p>{post.body}</p>
+                    <div className="study-circle-post-actions">
+                      <button type="button" className="study-circle-reply-link" onClick={() => startReply(post)}>
+                        Reply
+                      </button>
+                      {!post.is_mine && (
+                        <button type="button" className="study-circle-report-link" onClick={() => setReportTarget(post)}>
+                          Report
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </article>
               )) : (

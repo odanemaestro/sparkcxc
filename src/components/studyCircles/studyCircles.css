@@ -765,3 +765,102 @@ html[data-theme="dark"] .study-circle-match-pill{
   }
 }
 
+
+/* ==========================================================================
+   STUDY CIRCLE DIRECT REPLIES
+   Replies stay on the shared board. They are not private/direct messages.
+   ========================================================================== */
+.study-circle-replying-banner{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  padding:10px 12px;
+  border-bottom:1px solid var(--spark-border-soft);
+  border-left:3px solid var(--spark-teal);
+  background:var(--spark-teal-light);
+}
+.study-circle-replying-banner>div{min-width:0;flex:1}
+.study-circle-replying-banner span{
+  display:block;
+  margin-bottom:2px;
+  color:var(--spark-teal-dark);
+  font-size:10px;
+  font-weight:800;
+}
+.study-circle-replying-banner strong{
+  display:block;
+  overflow:hidden;
+  color:var(--spark-ink-soft);
+  font-size:11.5px;
+  font-weight:600;
+  line-height:1.4;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.study-circle-replying-banner button{
+  display:grid;
+  place-items:center;
+  flex:0 0 28px;
+  width:28px;
+  height:28px;
+  border:0;
+  border-radius:8px;
+  background:transparent;
+  color:var(--spark-text-muted);
+  font-size:20px;
+  line-height:1;
+  cursor:pointer;
+}
+.study-circle-replying-banner button:hover{background:var(--spark-muted)}
+.study-circle-reply-quote{
+  margin:7px 0 8px;
+  padding:8px 10px;
+  border-left:3px solid var(--spark-teal);
+  border-radius:0 9px 9px 0;
+  background:var(--spark-muted);
+}
+.study-circle-reply-quote span{
+  display:block;
+  margin-bottom:3px;
+  color:var(--spark-teal-dark);
+  font-size:9.5px;
+  font-weight:800;
+}
+.study-circle-reply-quote>div{
+  display:-webkit-box;
+  overflow:hidden;
+  color:var(--spark-text-muted);
+  font-size:10.5px;
+  line-height:1.4;
+  overflow-wrap:anywhere;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+}
+.study-circle-post-actions{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:8px;
+}
+.study-circle-reply-link{
+  padding:0;
+  border:0;
+  background:transparent;
+  color:var(--spark-teal-dark);
+  font:800 10px 'Atkinson Hyperlegible','Inter',sans-serif;
+  cursor:pointer;
+  text-decoration:none;
+}
+.study-circle-reply-link:hover{text-decoration:underline}
+.study-circle-post-actions .study-circle-report-link{margin-top:0}
+@media(max-width:700px){
+  .study-circle-replying-banner{padding:10px 11px}
+  .study-circle-replying-banner strong{white-space:normal;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2}
+  .study-circle-reply-link,
+  .study-circle-post-actions .study-circle-report-link{
+    min-height:32px;
+    display:inline-flex;
+    align-items:center;
+  }
+}
