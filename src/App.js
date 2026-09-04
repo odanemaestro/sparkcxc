@@ -1351,16 +1351,18 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
                 style={{background:T.amber,fontSize:15,padding:"13px 28px"}}>
                 Go to your dashboard →
               </Btn>
-            ) : isParent ? null : user ? (
+            ) : user ? (
               <>
                 <Btn v="amber" onClick={() => setView("dashboard")}
                   style={{background:T.amber,fontSize:15,padding:"13px 28px"}}>
                   Go to your dashboard →
                 </Btn>
-                <Btn v="ghost" onClick={() => setView("tutors")}
-                  style={{fontSize:15,padding:"13px 28px"}}>
-                  Find a tutor
-                </Btn>
+                {!isParent && (
+                  <Btn v="ghost" onClick={() => setView("tutors")}
+                    style={{fontSize:15,padding:"13px 28px"}}>
+                    Find a tutor
+                  </Btn>
+                )}
               </>
             ) : (
               <>
@@ -5155,8 +5157,8 @@ function HowItWorksView({ setView, hasTutorApp, isParent, user, isTutor = false 
           </div>
         </div>
 
-        {/* Student conversion CTA. Parent and tutor accounts already have dedicated dashboards. */}
-        {!isParent && !isTutor && <div style={{ background: `linear-gradient(135deg,${T.teal},${T.tealDark})`, borderRadius: T.rMd,
+        {/* Role-aware continuation CTA. Every signed-in role has a useful next action. */}
+        <div className="spark-role-cta" style={{ background: `linear-gradient(135deg,${T.teal},${T.tealDark})`, borderRadius: T.rMd,
           padding: 30, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 20,
           boxShadow: "0 12px 32px rgba(13,148,136,.28)" }}>
           <div>
@@ -5167,7 +5169,7 @@ function HowItWorksView({ setView, hasTutorApp, isParent, user, isTutor = false 
               {user ? "Continue from your dashboard." : "Create your free account. No credit card required."}
             </p>
           </div>
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+          <div className="spark-role-cta-actions" style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             <Btn v="amber" onClick={() => setView(user ? "dashboard" : "auth")} style={{ background: T.amber }}>
               {user ? "Go to your dashboard →" : "Start learning →"}
             </Btn>
@@ -5175,7 +5177,7 @@ function HowItWorksView({ setView, hasTutorApp, isParent, user, isTutor = false 
               <Btn v="ghost" onClick={() => setView("become-tutor")}>Submit application to become a tutor</Btn>
             )}
           </div>
-        </div>}
+        </div>
       </div>
       <Footer setView={setView} hasTutorApp={hasTutorApp} isParent={isParent} />
     </div>
@@ -5262,13 +5264,11 @@ function AboutView({ setView, hasTutorApp, isParent, user, isTutor = false }) {
           ))}
         </div>
 
-        {!isParent && !isTutor && (
-          <div style={{ textAlign: "center" }}>
-            <Btn onClick={() => setView(user ? "dashboard" : "auth")} style={{ fontSize: 15, padding: "13px 28px" }}>
-              {user ? "Go to your dashboard →" : "Start learning for free →"}
-            </Btn>
-          </div>
-        )}
+        <div className="spark-about-role-cta" style={{ textAlign: "center" }}>
+          <Btn onClick={() => setView(user ? "dashboard" : "auth")} style={{ fontSize: 15, padding: "13px 28px" }}>
+            {user ? "Go to your dashboard →" : "Start learning for free →"}
+          </Btn>
+        </div>
       </div>
       <Footer setView={setView} hasTutorApp={hasTutorApp} isParent={isParent} />
     </div>
