@@ -125,7 +125,7 @@ export default function ReportQuestionButton({
                 : "Your report was not submitted. Please try again."}
             </p>
           )}
-          <div style={{ display: "flex", gap: 10, marginTop: 12, flexWrap: "wrap" }}>
+          <div className="spark-question-report-actions" style={{ display: "flex", gap: 10, marginTop: 12, flexWrap: "wrap" }}>
             <button type="button" onClick={handleSubmit} disabled={status === "submitting"} style={{
               minHeight: 40, padding: "9px 15px", borderRadius: 8, border: `1px solid ${T.teal}`,
               background: T.teal, color: T.navyDeep, fontFamily: FB, fontSize: 13, fontWeight: 800,

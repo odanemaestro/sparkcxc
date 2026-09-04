@@ -1824,7 +1824,7 @@ input,select,textarea,button{max-width:100%}
   }
 
   .spark-about-role-cta > button {
-    width: min(100%, 320px) !important;
+    width: 100% !important;
     min-height: 46px !important;
     justify-content: center !important;
     text-align: center !important;

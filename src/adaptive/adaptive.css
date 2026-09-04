@@ -157,3 +157,27 @@ html[data-theme="dark"] .csec-adaptive-practice button{
   .csec-adaptive-practice section{padding:15px}
   .csec-adaptive-practice button{width:100%;margin-right:0}
 }
+
+
+/* =========================================================
+   SPARK ADAPTIVE REPORT ACTIONS MOBILE V8.3.5 2026-09
+   Keep Submit report and Cancel together as a deliberate
+   two-button mobile action row inside Adaptive Practice.
+   ========================================================= */
+@media(max-width:640px){
+  .csec-adaptive-practice .spark-question-report-actions{
+    display:grid !important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;
+    gap:10px !important;
+    margin-top:12px !important;
+  }
+
+  .csec-adaptive-practice .spark-question-report-actions > button{
+    width:100% !important;
+    min-width:0 !important;
+    min-height:44px !important;
+    margin:0 !important;
+    padding:10px 12px !important;
+    white-space:nowrap !important;
+  }
+}
