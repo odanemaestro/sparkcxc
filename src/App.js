@@ -3375,25 +3375,24 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
 
         {sec === "overview" && !isTutor && (
           <>
-            <h1 style={{fontFamily:FD,fontSize:24,fontWeight:700,color:T.ink,margin:"0 0 4px"}}>
-              Good {new Date().getHours()<12?"morning":new Date().getHours()<17?"afternoon":"evening"}, {profile?.name?.split(" ")[0]}.
-            </h1>
-            <p style={{color:T.textMuted,fontSize:14,marginBottom:24}}>Keep that momentum going.</p>
-
-            <Card className="student-mobile-profile-photo" style={{marginBottom:18}}>
-              <ProfilePhotoEditor
-                user={user}
-                profile={profile}
-                isTutorProfile={false}
-                showToast={showToast}
-                onProfileUpdated={onProfileUpdated}
-                size={62}
-              />
-              <div className="student-mobile-profile-photo-copy">
-                <strong>Profile photo</strong>
-                <span>Tap the photo to add or change it.</span>
+            <div className="student-dashboard-greeting-row">
+              <div className="student-mobile-greeting-photo">
+                <ProfilePhotoEditor
+                  user={user}
+                  profile={profile}
+                  isTutorProfile={false}
+                  showToast={showToast}
+                  onProfileUpdated={onProfileUpdated}
+                  size={62}
+                />
               </div>
-            </Card>
+              <div className="student-dashboard-greeting-copy">
+                <h1 style={{fontFamily:FD,fontSize:24,fontWeight:700,color:T.ink,margin:"0 0 4px"}}>
+                  Good {new Date().getHours()<12?"morning":new Date().getHours()<17?"afternoon":"evening"}, {profile?.name?.split(" ")[0]}.
+                </h1>
+                <p style={{color:T.textMuted,fontSize:14,marginBottom:24}}>Keep that momentum going.</p>
+              </div>
+            </div>
             <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(140px,1fr))",
               gap:14,marginBottom:24}}>
               {[["Topics done",done,T.teal],["Syllabus covered",done>0?`${Math.round((done/totalTopics)*100)}%`:"0%",T.purple],
