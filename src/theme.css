@@ -287,3 +287,546 @@ html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover{background:#4C6686}
     text-transform:uppercase;
   }
 }
+
+
+/* ==========================================================================
+   SPARK DARK MODE VISUAL POLISH V7.1 2026-09
+   Visual-acceptance fixes from desktop Dark-mode review.
+   ========================================================================== */
+html[data-theme="dark"] .fade-in > p.lesson-math-copy{
+  background:linear-gradient(135deg,var(--spark-teal-light),var(--spark-paper)) !important;
+  color:var(--spark-ink-soft) !important;
+}
+html[data-theme="dark"] .example-box{
+  background:var(--spark-teal-surface) !important;
+  border-left-color:var(--spark-teal) !important;
+}
+html[data-theme="dark"] .example-box .example-question,
+html[data-theme="dark"] .example-box .solution-content{color:var(--spark-ink) !important}
+html[data-theme="dark"] .example-box .solution-content{
+  background:var(--spark-paper-raised) !important;
+  border-color:var(--spark-border) !important;
+}
+html[data-theme="dark"] .practice-back{background:transparent !important;color:var(--spark-ink) !important}
+html[data-theme="dark"] .practice-mode-icon{
+  background:var(--spark-surface-navy) !important;
+  color:var(--spark-ink) !important;
+  border:1px solid var(--spark-border) !important;
+  box-shadow:none !important;
+}
+html[data-theme="dark"] .adaptive-icon{background:var(--spark-purple-light) !important;color:var(--spark-purple) !important}
+html[data-theme="dark"] .practice-specs span{
+  background:var(--spark-muted) !important;
+  border-color:var(--spark-border) !important;
+  color:var(--spark-ink-soft) !important;
+}
+html[data-theme="dark"] .practice-secondary{
+  background:var(--spark-paper-raised) !important;
+  color:var(--spark-ink) !important;
+  border-color:var(--spark-border-strong) !important;
+}
+html[data-theme="dark"] .practice-secondary:hover{
+  background:var(--spark-muted) !important;
+  border-color:var(--spark-teal) !important;
+}
+html[data-theme="dark"] .practice-integrity-card{
+  background:var(--spark-surface-navy) !important;
+  color:var(--spark-ink) !important;
+  border:1px solid var(--spark-border) !important;
+}
+html[data-theme="dark"] .practice-integrity-card h2{color:var(--spark-ink) !important}
+html[data-theme="dark"] .practice-integrity-card p{color:var(--spark-ink-soft) !important}
+html[data-theme="dark"] .practice-integrity-stats div{
+  background:var(--spark-paper-raised) !important;
+  border-color:var(--spark-border) !important;
+}
+html[data-theme="dark"] .practice-integrity-stats strong{color:var(--spark-ink) !important}
+html[data-theme="dark"] .practice-integrity-stats span{color:var(--spark-text-muted) !important}
+html[data-theme="dark"] .practice-last-result{
+  background:var(--spark-border) !important;
+  border-color:var(--spark-border) !important;
+}
+html[data-theme="dark"] .practice-last-result div{background:var(--spark-paper) !important}
+html[data-theme="dark"] .practice-last-result span{color:var(--spark-text-muted) !important}
+html[data-theme="dark"] .practice-last-result strong{color:var(--spark-ink) !important}
+html[data-theme="dark"] .paper-question-copy,
+html[data-theme="dark"] .paper-question-number,
+html[data-theme="dark"] .paper-exam-brand strong,
+html[data-theme="dark"] .paper-nav-head strong{color:var(--spark-ink) !important}
+html[data-theme="dark"] .paper-question-topline,
+html[data-theme="dark"] .paper-question-actions{border-color:var(--spark-border) !important}
+html[data-theme="dark"] .paper-navigator{
+  background:var(--spark-paper) !important;
+  border-color:var(--spark-border) !important;
+  color:var(--spark-ink) !important;
+}
+html[data-theme="dark"] .paper-nav-grid button{
+  background:var(--spark-paper-raised) !important;
+  border-color:var(--spark-border) !important;
+  color:var(--spark-ink-soft) !important;
+}
+html[data-theme="dark"] .paper-nav-grid button.current{
+  border-color:var(--spark-teal) !important;
+  box-shadow:0 0 0 2px var(--spark-teal) !important;
+}
+html[data-theme="dark"] .paper-nav-grid button.answered{
+  background:var(--spark-teal-light) !important;
+  border-color:var(--spark-teal) !important;
+  color:var(--spark-teal-dark) !important;
+}
+html[data-theme="dark"] .paper-nav-legend{color:var(--spark-text-muted) !important}
+html[data-theme="dark"] .paper-nav-legend i{
+  background:var(--spark-paper-raised) !important;
+  border-color:var(--spark-border) !important;
+}
+html[data-theme="dark"] .paper-submit-top,
+html[data-theme="dark"] .paper-submit-side,
+html[data-theme="dark"] .paper-start-button,
+html[data-theme="dark"] .paper-question-actions .paper-next{
+  background:var(--spark-teal) !important;
+  border-color:var(--spark-teal) !important;
+  color:#042F2E !important;
+}
+html[data-theme="dark"] .paper-submit-top:disabled,
+html[data-theme="dark"] .paper-submit-side:disabled,
+html[data-theme="dark"] .paper-question-actions .paper-next:disabled{
+  background:var(--spark-muted) !important;
+  border-color:var(--spark-border) !important;
+  color:var(--spark-text-muted) !important;
+  opacity:1 !important;
+}
+html[data-theme="dark"] .parent-section h2,
+html[data-theme="dark"] .panel-title,
+html[data-theme="dark"] .parent-stat strong,
+html[data-theme="dark"] .exam-summary-pills strong,
+html[data-theme="dark"] .exam-attempt-title strong,
+html[data-theme="dark"] .exam-attempt-score strong,
+html[data-theme="dark"] .exam-results-empty strong,
+html[data-theme="dark"] .learning-milestone-title strong,
+html[data-theme="dark"] .learning-milestone-score strong,
+html[data-theme="dark"] .learning-milestone-empty strong,
+html[data-theme="dark"] .skill-row strong,
+html[data-theme="dark"] .session-row strong{color:var(--spark-ink) !important}
+html[data-theme="dark"] .muted-copy,
+html[data-theme="dark"] .parent-stat span,
+html[data-theme="dark"] .exam-results-head p,
+html[data-theme="dark"] .parent-learning-head p,
+html[data-theme="dark"] .exam-attempt-meta,
+html[data-theme="dark"] .learning-milestone-meta,
+html[data-theme="dark"] .skill-row span,
+html[data-theme="dark"] .session-row span,
+html[data-theme="dark"] .connect-section p,
+html[data-theme="dark"] .exam-results-empty,
+html[data-theme="dark"] .learning-milestone-empty{color:var(--spark-text-muted) !important}
+html[data-theme="dark"] .exam-summary-pills span,
+html[data-theme="dark"] .learning-count-pill{
+  background:var(--spark-muted) !important;
+  border-color:var(--spark-border) !important;
+  color:var(--spark-ink-soft) !important;
+}
+html[data-theme="dark"] .exam-results-empty,
+html[data-theme="dark"] .learning-milestone-empty{border-color:var(--spark-border-strong) !important}
+html[data-theme="dark"] .cp-input{
+  background:var(--spark-paper-raised) !important;
+  border-color:var(--spark-border) !important;
+  color:var(--spark-ink) !important;
+}
+html[data-theme="dark"] .spark-home-demo-card{border-color:var(--spark-border) !important}
+
+
+/* ==========================================================================
+   SPARK DARK MODE MOBILE POLISH V7.2 2026-09
+   Mobile visual-acceptance fixes.
+   ========================================================================== */
+
+/* Dashboard horizontal tab rail: responsive.css deliberately makes this rail
+   white on phones in Light mode. Dark mode must override that hard-coded rule. */
+@media(max-width:700px){
+  html[data-theme="dark"] .dash-sidebar{
+    background:var(--spark-paper) !important;
+    border-bottom-color:var(--spark-border) !important;
+  }
+
+  html[data-theme="dark"] .dash-nav-item{
+    border-color:var(--spark-border) !important;
+  }
+
+  html[data-theme="dark"] .dash-secondary-item{
+    background:var(--spark-paper-raised) !important;
+  }
+}
+
+/* Booking modal: keep all duration choices visually inside the dark form. */
+html[data-theme="dark"] .spark-modal-card button{
+  border-color:var(--spark-border);
+}
+
+html[data-theme="dark"] .spark-modal-card input[type="date"]{
+  background:var(--spark-paper-raised) !important;
+  color:var(--spark-ink) !important;
+  color-scheme:dark;
+}
+
+/* Notification drawer had direct fixed navy/grey text colors in its own CSS.
+   Inheritance from .notification-drawer cannot override those declarations,
+   so each text-bearing descendant needs an explicit Dark-mode token. */
+html[data-theme="dark"] .notification-head h2,
+html[data-theme="dark"] .notification-title-row strong,
+html[data-theme="dark"] .notification-empty strong{
+  color:var(--spark-ink) !important;
+}
+
+html[data-theme="dark"] .notification-copy p,
+html[data-theme="dark"] .notification-meta-row,
+html[data-theme="dark"] .notification-empty,
+html[data-theme="dark"] .notification-empty span{
+  color:var(--spark-text-muted) !important;
+}
+
+html[data-theme="dark"] .notification-action-label,
+html[data-theme="dark"] .notification-kicker,
+html[data-theme="dark"] .notification-mark-all{
+  color:var(--spark-teal) !important;
+}
+
+html[data-theme="dark"] .notification-close{
+  color:var(--spark-ink) !important;
+}
+
+html[data-theme="dark"] .notification-unread-dot{
+  background:var(--spark-teal) !important;
+}
+
+html[data-theme="dark"] .notification-type-icon{
+  border:1px solid color-mix(in srgb,var(--spark-border) 78%,transparent);
+}
+
+/* Unread green card should feel selected, not muddy. */
+html[data-theme="dark"] .notification-item.unread{
+  background:color-mix(in srgb,var(--spark-teal-surface) 82%,var(--spark-paper)) !important;
+  border-color:var(--spark-teal) !important;
+}
+
+
+/* ==========================================================================
+   SPARK DARK MODE RESULTS POLISH V7.3 2026-09
+   Paper 1 / Paper 2 results and answer-review visual acceptance.
+   ========================================================================== */
+
+html[data-theme="dark"] .paper-score-hero{
+  background:linear-gradient(135deg,var(--spark-navy-deep),var(--spark-surface-navy)) !important;
+  color:var(--spark-ink) !important;
+  border:1px solid var(--spark-border) !important;
+  box-shadow:var(--spark-shadow-lg) !important;
+}
+
+html[data-theme="dark"] .paper-score-hero h1,
+html[data-theme="dark"] .paper-score-hero .paper-result-kicker{
+  color:var(--spark-ink) !important;
+}
+
+html[data-theme="dark"] .paper-score-hero h1 span,
+html[data-theme="dark"] .paper-score-hero p{
+  color:var(--spark-text-muted) !important;
+}
+
+html[data-theme="dark"] .paper-score-hero .paper-result-kicker{
+  color:var(--spark-teal) !important;
+}
+
+html[data-theme="dark"] .paper-result-summary div{
+  background:var(--spark-paper-raised) !important;
+  border-color:var(--spark-border) !important;
+}
+
+html[data-theme="dark"] .paper-result-summary strong{
+  color:var(--spark-ink) !important;
+}
+
+html[data-theme="dark"] .paper-result-summary span{
+  color:var(--spark-text-muted) !important;
+}
+
+/* Topic performance and answer review should read as dark paper cards, not
+   bright white islands. SVG question figures remain white separately. */
+html[data-theme="dark"] .paper-topic-results,
+html[data-theme="dark"] .paper-review-shell{
+  background:var(--spark-paper) !important;
+  color:var(--spark-ink) !important;
+  border-color:var(--spark-border) !important;
+  box-shadow:var(--spark-shadow-md) !important;
+}
+
+html[data-theme="dark"] .paper-section-heading h2,
+html[data-theme="dark"] .paper-review-head h2,
+html[data-theme="dark"] .paper-topic-row>div:first-child strong,
+html[data-theme="dark"] .paper-topic-row>b{
+  color:var(--spark-ink) !important;
+}
+
+html[data-theme="dark"] .paper-topic-row>div:first-child span{
+  color:var(--spark-text-muted) !important;
+}
+
+html[data-theme="dark"] .paper-topic-track{
+  background:var(--spark-muted) !important;
+}
+
+html[data-theme="dark"] .paper-topic-track span{
+  background:var(--spark-teal) !important;
+}
+
+html[data-theme="dark"] .paper-review-status.correct{
+  background:var(--spark-emerald-light) !important;
+  color:var(--spark-emerald) !important;
+}
+
+html[data-theme="dark"] .paper-review-status.incorrect{
+  background:var(--spark-red-light) !important;
+  color:var(--spark-red) !important;
+}
+
+html[data-theme="dark"] .paper-solution-box{
+  background:var(--spark-paper-raised) !important;
+  border-color:var(--spark-border) !important;
+  color:var(--spark-ink) !important;
+}
+
+html[data-theme="dark"] .paper-solution-box>div strong{
+  color:var(--spark-ink) !important;
+}
+
+html[data-theme="dark"] .paper-solution-box p{
+  color:var(--spark-ink-soft) !important;
+}
+
+html[data-theme="dark"] .paper-solution-box small,
+html[data-theme="dark"] .paper-solution-box>div span{
+  color:var(--spark-text-muted) !important;
+}
+
+html[data-theme="dark"] .paper-review-dots button{
+  background:var(--spark-paper-raised) !important;
+  border-color:var(--spark-border) !important;
+  color:var(--spark-ink-soft) !important;
+}
+
+html[data-theme="dark"] .paper-review-dots button.correct{
+  background:var(--spark-emerald-light) !important;
+  border-color:color-mix(in srgb,var(--spark-emerald) 55%,var(--spark-border)) !important;
+  color:var(--spark-emerald) !important;
+}
+
+html[data-theme="dark"] .paper-review-dots button.incorrect{
+  background:var(--spark-red-light) !important;
+  border-color:color-mix(in srgb,var(--spark-red) 55%,var(--spark-border)) !important;
+  color:var(--spark-red) !important;
+}
+
+html[data-theme="dark"] .paper-review-dots button.active{
+  border-color:var(--spark-teal) !important;
+  box-shadow:0 0 0 2px var(--spark-teal) !important;
+}
+
+html[data-theme="dark"] .paper-review-controls>button{
+  background:var(--spark-paper-raised) !important;
+  border-color:var(--spark-border) !important;
+  color:var(--spark-ink) !important;
+}
+
+html[data-theme="dark"] .paper-review-controls>button:disabled{
+  background:var(--spark-muted) !important;
+  color:var(--spark-text-muted) !important;
+  opacity:1 !important;
+}
+
+html[data-theme="dark"] .paper-result-actions .practice-secondary{
+  background:var(--spark-paper-raised) !important;
+  color:var(--spark-ink) !important;
+  border-color:var(--spark-border-strong) !important;
+}
+
+
+/* ==========================================================================
+   SPARK DARK MODE PAPER2 EXAM POLISH V7.4 2026-09
+   Paper 2 active examination, navigator, symbol toolbar and response cards.
+   ========================================================================== */
+
+/* Question metadata and prompt */
+html[data-theme="dark"] .paper2-question-meta{
+  color:var(--spark-text-muted) !important;
+}
+
+html[data-theme="dark"] .paper2-question-meta span{
+  color:var(--spark-ink-soft) !important;
+}
+
+html[data-theme="dark"] .paper2-question-meta b{
+  background:var(--spark-teal-light) !important;
+  color:var(--spark-teal-dark) !important;
+}
+
+html[data-theme="dark"] .paper2-question-meta em{
+  color:var(--spark-text-muted) !important;
+}
+
+html[data-theme="dark"] .paper2-question-copy,
+html[data-theme="dark"] .paper2-stem{
+  color:var(--spark-ink) !important;
+}
+
+html[data-theme="dark"] .paper2-question-copy .spark-math,
+html[data-theme="dark"] .paper2-stem .spark-math{
+  color:var(--spark-ink) !important;
+}
+
+/* Mathematical-symbol toolbar */
+html[data-theme="dark"] .paper2-symbol-toolbar{
+  background:var(--spark-paper-raised) !important;
+  border-color:var(--spark-border) !important;
+}
+
+html[data-theme="dark"] .paper2-symbol-toolbar>span{
+  color:var(--spark-text-muted) !important;
+}
+
+html[data-theme="dark"] .paper2-symbol-toolbar button{
+  background:var(--spark-paper) !important;
+  border-color:var(--spark-border) !important;
+  color:var(--spark-ink) !important;
+}
+
+html[data-theme="dark"] .paper2-symbol-toolbar button:hover{
+  background:var(--spark-muted) !important;
+  border-color:var(--spark-teal) !important;
+}
+
+/* Structured answer parts */
+html[data-theme="dark"] .paper2-part-card{
+  background:var(--spark-paper-raised) !important;
+  border-color:var(--spark-border) !important;
+}
+
+html[data-theme="dark"] .paper2-part-card:focus-within{
+  background:var(--spark-paper-raised) !important;
+  border-color:var(--spark-teal) !important;
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--spark-teal) 16%,transparent) !important;
+}
+
+html[data-theme="dark"] .paper2-part-heading strong,
+html[data-theme="dark"] .paper2-part-card p{
+  color:var(--spark-ink) !important;
+}
+
+html[data-theme="dark"] .paper2-part-heading span{
+  background:var(--spark-teal-light) !important;
+  color:var(--spark-teal-dark) !important;
+}
+
+html[data-theme="dark"] .paper2-answer-field{
+  background:var(--spark-paper) !important;
+  border-color:var(--spark-border-strong) !important;
+}
+
+html[data-theme="dark"] .paper2-answer-field input{
+  background:var(--spark-paper) !important;
+  color:var(--spark-ink) !important;
+}
+
+html[data-theme="dark"] .paper2-answer-field input::placeholder{
+  color:var(--spark-text-muted) !important;
+}
+
+html[data-theme="dark"] .paper2-affix{
+  background:var(--spark-muted) !important;
+  color:var(--spark-ink-soft) !important;
+  border-color:var(--spark-border) !important;
+}
+
+html[data-theme="dark"] .paper2-auto-save{
+  color:var(--spark-text-muted) !important;
+}
+
+html[data-theme="dark"] .paper2-auto-save span{
+  background:var(--spark-teal-light) !important;
+  color:var(--spark-teal-dark) !important;
+}
+
+/* Paper 2 navigator. On phones it is moved above the question, so any
+   remaining light-only surface becomes especially prominent. */
+html[data-theme="dark"] .paper2-navigator{
+  background:var(--spark-paper) !important;
+  border-color:var(--spark-border) !important;
+  color:var(--spark-ink) !important;
+}
+
+html[data-theme="dark"] .paper2-section-label{
+  color:var(--spark-text-muted) !important;
+  border-bottom-color:var(--spark-border) !important;
+}
+
+html[data-theme="dark"] .paper2-section-label b{
+  color:var(--spark-ink) !important;
+}
+
+html[data-theme="dark"] .paper2-navigator-summary{
+  background:var(--spark-paper-raised) !important;
+  border:1px solid var(--spark-border) !important;
+}
+
+html[data-theme="dark"] .paper2-navigator-summary span,
+html[data-theme="dark"] .paper2-navigator-summary small{
+  color:var(--spark-text-muted) !important;
+}
+
+html[data-theme="dark"] .paper2-navigator-summary strong{
+  color:var(--spark-ink) !important;
+}
+
+/* Navigation footer in the structured paper */
+html[data-theme="dark"] .paper2-question-actions{
+  border-top-color:var(--spark-border) !important;
+}
+
+html[data-theme="dark"] .paper2-answer-state{
+  color:var(--spark-text-muted) !important;
+}
+
+html[data-theme="dark"] .paper2-question-actions>button:not(.paper-next){
+  background:var(--spark-paper-raised) !important;
+  color:var(--spark-ink) !important;
+  border-color:var(--spark-border) !important;
+}
+
+html[data-theme="dark"] .paper2-question-actions>button:not(.paper-next):hover:not(:disabled){
+  background:var(--spark-muted) !important;
+  border-color:var(--spark-teal) !important;
+}
+
+/* If the paper uses the older response-card variant, keep it dark too. */
+html[data-theme="dark"] .paper2-response-card{
+  background:var(--spark-paper-raised) !important;
+  border-color:var(--spark-border) !important;
+}
+
+html[data-theme="dark"] .paper2-response-head span{
+  color:var(--spark-text-muted) !important;
+}
+
+html[data-theme="dark"] .paper2-response-head strong{
+  color:var(--spark-ink) !important;
+}
+
+html[data-theme="dark"] .paper2-symbol-row button,
+html[data-theme="dark"] .paper2-complete-button{
+  background:var(--spark-paper) !important;
+  color:var(--spark-ink) !important;
+  border-color:var(--spark-border) !important;
+}
+
+html[data-theme="dark"] .paper2-response-card textarea{
+  background-color:var(--spark-paper) !important;
+  background-image:linear-gradient(to bottom,transparent 31px,var(--spark-border-soft) 32px) !important;
+  color:var(--spark-ink) !important;
+  border-color:var(--spark-border) !important;
+}

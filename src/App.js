@@ -413,7 +413,7 @@ function LessonContent({ topicName, onQuizStart, onComplete, isCompleted }) {
     <div className="fade-in">
       {/* Intro */}
       <MathText as="p" prose className="lesson-math-copy" style={{fontSize:15.5,color:T.inkSoft,lineHeight:1.8,marginBottom:26,
-        padding:"18px 22px",background:`linear-gradient(135deg,${T.tealLight},#EFFBF8)`,borderRadius:T.rMd,
+        padding:"18px 22px",background:`linear-gradient(135deg,${T.tealLight},${T.paper})`,borderRadius:T.rMd,
         borderLeft:`3px solid ${T.teal}`,boxShadow:T.shadowSm}}>
         {lesson.intro}
       </MathText>
@@ -1380,7 +1380,7 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
                 style={{padding:"10px 14px",borderRadius:T.rSm,fontSize:13,
                   cursor:demoAnswer!==null?"default":"pointer",transition:`all .18s ${T.ease}`,
                   border:`1.5px solid ${demoAnswer===null?T.border:correct?T.emerald:demoAnswer===i?T.red:T.border}`,
-                  background:demoAnswer===null?"#fff":correct?T.emeraldLight:demoAnswer===i?T.redLight:"#fff",
+                  background:demoAnswer===null?T.paper:correct?T.emeraldLight:demoAnswer===i?T.redLight:T.paper,
                   color:demoAnswer===null?T.inkSoft:correct?T.emerald:demoAnswer===i?T.red:T.inkSoft,
                   fontWeight:demoAnswer!==null&&correct?600:400}}>
                 {opt}
@@ -4102,7 +4102,7 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
                       style={{padding:"8px 12px",borderRadius:7,fontSize:12.5,cursor:"pointer",
                         fontFamily:FB,transition:"all .15s",
                         border:`1.5px solid ${duration===d.mins?T.teal:T.border}`,
-                        background:duration===d.mins?T.tealLight:"#fff",
+                        background:duration===d.mins?T.tealLight:T.paper,
                         color:duration===d.mins?T.tealDark:T.inkSoft,fontWeight:duration===d.mins?600:400}}>
                       {d.label}
                     </button>
