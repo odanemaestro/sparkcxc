@@ -26,9 +26,35 @@ import ReportQuestionButton from "../components/ui/ReportQuestionButton";
 import MathText from "../practice/MathText";
 import "./adaptive.css";
 
+function isAdaptiveMultipleChoice(question) {
+  const type = String(question?.question_type || question?.response_mode || "").toLowerCase();
+  return type === "multiple_choice" || type === "mcq" || Array.isArray(question?.options);
+}
+function adaptiveOptionKey(option, index) {
+  if (typeof option === "string") return String.fromCharCode(65 + index);
+  return String(option?.key || String.fromCharCode(65 + index)).toUpperCase();
+}
+function adaptiveOptionText(option) {
+  return typeof option === "string" ? option : String(option?.text || "");
+}
+function AdaptiveStimulus({ stimulus }) {
+  if (!stimulus) return null;
+  return (
+    <div className="adaptive-stimulus">
+      {stimulus.label && <MathText as="p" prose className="adaptive-stimulus-label">{stimulus.label}</MathText>}
+      {stimulus.kind === "figure" && stimulus.svg ? (
+        <div className="adaptive-stimulus-figure" role="img" aria-label={stimulus.alt || "Question diagram"} dangerouslySetInnerHTML={{ __html: stimulus.svg }} />
+      ) : stimulus.kind === "table" && Array.isArray(stimulus.headers) ? (
+        <div className="adaptive-stimulus-table-wrap"><table className="adaptive-stimulus-table"><thead><tr>{stimulus.headers.map((cell, i) => <th key={i}><MathText>{cell}</MathText></th>)}</tr></thead><tbody>{(stimulus.rows || []).map((row, r) => <tr key={r}>{row.map((cell, c) => <td key={c}><MathText>{cell}</MathText></td>)}</tr>)}</tbody></table></div>
+      ) : stimulus.text ? (
+        <MathText as="div" prose className="adaptive-stimulus-text">{stimulus.text}</MathText>
+      ) : null}
+    </div>
+  );
+}
+
 export default function AdaptivePractice({ supabase, userId, setView, backLabel = "← Back to Study" }) {
   const [manifest, setManifest] = useState(null);
-  const [questions, setQuestions] = useState([]);
   const [session, setSession] = useState([]);
   const [index, setIndex] = useState(0);
   const [answer, setAnswer] = useState("");
@@ -78,7 +104,6 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
     const qs = await loadQuestionSet(selectedArea, selectedTopic);
     const targeted = requestedSkill ? qs.filter(q => q.subtopic === requestedSkill || q.topic === requestedSkill) : qs;
     const usable = targeted.length ? targeted : qs;
-    setQuestions(usable);
 
     const combinedAttempts = [...savedAttempts, ...attempts];
     const stats = {};
@@ -97,11 +122,17 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
   }
 
   const q = session[index];
+  const mcq = isAdaptiveMultipleChoice(q);
+  const selectedMcqOption = mcq
+    ? (q?.options || []).find((option, optionIndex) => adaptiveOptionKey(option, optionIndex) === String(answer).toUpperCase())
+    : null;
 
   async function submit() {
     if (!q || submitted) return;
 
-    const result = checkQuestionAnswer(answer, q);
+    const result = isAdaptiveMultipleChoice(q)
+      ? (String(answer).trim().toUpperCase() === String(q.answer || "").trim().toUpperCase() ? "correct" : "incorrect")
+      : checkQuestionAnswer(answer, q);
     // "uncertain" starts out ungraded - the student self-assesses against
     // the worked solution (see confirmSelfAssessment below) instead of us
     // asserting a verdict a plain comparison can't actually back up.
@@ -267,6 +298,7 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
       {q && (
         <section aria-live="polite">
           <p>Question {index + 1} of {session.length} · {q.difficulty} · {q.marks} marks</p>
+          <AdaptiveStimulus stimulus={q.stimulus} />
           <MathText as="h2" className="adaptive-question-math">{q.question}</MathText>
           <ReportQuestionButton
             supabase={supabase}
@@ -285,16 +317,42 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
               </div>
             </div>
           )}
-
-          <textarea
-            value={answer}
-            onChange={e => setAnswer(e.target.value)}
-            disabled={submitted}
-            placeholder="Enter your answer"
-          />
+          {mcq ? (
+            <div className="adaptive-mcq-options" role="radiogroup" aria-label="Answer choices">
+              {(q.options || []).map((option, optionIndex) => {
+                const key = adaptiveOptionKey(option, optionIndex);
+                const selected = String(answer).toUpperCase() === key;
+                const correctKey = String(q.answer || "").toUpperCase();
+                const stateClass = submitted
+                  ? (key === correctKey ? " correct" : (selected ? " incorrect" : ""))
+                  : (selected ? " selected" : "");
+                return (
+                  <button
+                    type="button"
+                    key={key}
+                    className={`adaptive-mcq-option${stateClass}`}
+                    role="radio"
+                    aria-checked={selected}
+                    disabled={submitted}
+                    onClick={() => setAnswer(key)}
+                  >
+                    <span className="adaptive-mcq-key">({key})</span>
+                    <MathText as="span" className="adaptive-mcq-option-text">{adaptiveOptionText(option)}</MathText>
+                  </button>
+                );
+              })}
+            </div>
+          ) : (
+            <textarea
+              value={answer}
+              onChange={e => setAnswer(e.target.value)}
+              disabled={submitted}
+              placeholder="Enter your answer"
+            />
+          )}
 
           {!submitted ? (
-            <button onClick={submit}>Check answer</button>
+            <button onClick={submit} disabled={!String(answer).trim()}>Check answer</button>
           ) : verdict === "uncertain" && !selfAssessed ? (
             <>
               <h3>Compare your answer to the worked solution</h3>
@@ -309,6 +367,9 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
           ) : (
             <>
               <h3>{verdict === "uncertain" ? (lastCorrect ? "Marked correct" : "Marked incorrect") : (lastCorrect ? "Correct!" : "Not quite")}</h3>
+              {mcq && !lastCorrect && selectedMcqOption?.misconception?.remediation_hint && (
+                <p className="adaptive-mcq-review"><strong>Review point:</strong> {selectedMcqOption.misconception.remediation_hint}</p>
+              )}
               <details open>
                 <summary>Worked solution</summary>
                 <MathText as="p" prose className="adaptive-solution-math">{q.worked_solution}</MathText>

@@ -181,3 +181,49 @@ html[data-theme="dark"] .csec-adaptive-practice button{
     white-space:nowrap !important;
   }
 }
+
+
+/* Adaptive Paper 1-style multiple-choice questions */
+.adaptive-stimulus{
+  margin:16px 0;
+  padding:14px;
+  border:1px solid var(--spark-border-soft);
+  border-radius:12px;
+  background:var(--spark-muted);
+  overflow:hidden;
+}
+.adaptive-stimulus-label{margin:0 0 10px;color:var(--spark-ink-soft)}
+.adaptive-stimulus-text{white-space:pre-wrap;line-height:1.65;color:var(--spark-ink)}
+.adaptive-stimulus-figure{display:grid;place-items:center;overflow-x:auto}
+.adaptive-stimulus-figure svg{display:block;max-width:100%;height:auto;color:var(--spark-ink)}
+.adaptive-stimulus-table-wrap{overflow-x:auto}
+.adaptive-stimulus-table{width:100%;border-collapse:collapse;background:var(--spark-paper);color:var(--spark-ink)}
+.adaptive-stimulus-table th,.adaptive-stimulus-table td{border:1px solid var(--spark-border);padding:8px 10px;text-align:center;white-space:nowrap}
+.adaptive-mcq-options{display:grid;gap:10px;margin:14px 0 18px}
+.csec-adaptive-practice button.adaptive-mcq-option{
+  width:100%;
+  display:grid;
+  grid-template-columns:44px minmax(0,1fr);
+  align-items:start;
+  gap:10px;
+  margin:0;
+  padding:12px 14px;
+  text-align:left;
+  background:var(--spark-paper);
+  color:var(--spark-ink);
+  border:1px solid var(--spark-border);
+  font-weight:500;
+}
+html[data-theme="dark"] .csec-adaptive-practice button.adaptive-mcq-option{color:var(--spark-ink)}
+.csec-adaptive-practice button.adaptive-mcq-option:hover:not(:disabled){border-color:var(--spark-teal);filter:none}
+.csec-adaptive-practice button.adaptive-mcq-option.selected{border-color:var(--spark-teal);box-shadow:0 0 0 2px color-mix(in srgb,var(--spark-teal) 14%,transparent)}
+.csec-adaptive-practice button.adaptive-mcq-option.correct{border-color:#16835d;background:color-mix(in srgb,#16835d 10%,var(--spark-paper))}
+.csec-adaptive-practice button.adaptive-mcq-option.incorrect{border-color:#b34835;background:color-mix(in srgb,#b34835 9%,var(--spark-paper))}
+.csec-adaptive-practice button.adaptive-mcq-option:disabled{opacity:1;cursor:default}
+.adaptive-mcq-key{font-weight:800;color:var(--spark-ink-soft)}
+.adaptive-mcq-option-text{line-height:1.5;color:inherit}
+.adaptive-mcq-review{padding:10px 12px;border-left:3px solid var(--spark-teal);background:var(--spark-muted);border-radius:0 8px 8px 0}
+@media(max-width:640px){
+  .csec-adaptive-practice button.adaptive-mcq-option{grid-template-columns:38px minmax(0,1fr);padding:11px 12px}
+  .adaptive-stimulus{padding:12px}
+}

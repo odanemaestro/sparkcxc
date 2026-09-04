@@ -158,9 +158,7 @@ function q6() {
   return variants.map((v, i) => {
     const capacity = Math.PI * v.r * v.r * v.depth;
     const water = capacity * v.fill;
-    const litres = water * 1000;
     const remaining = capacity - water;
-    const minutes = remaining * 1000 / v.rate;
     return q(6, i + 7, "Measurement, geometry and trigonometry",
       `A cylindrical water tank has internal radius ${v.r} m and height ${v.depth} m. The tank is ${Math.round(v.fill*100)}% full. Water enters at ${v.rate} litres per minute. Use π = 3.142.`, [
         p("a", "(a)", "Calculate the capacity of the tank in cubic metres, correct to 2 decimal places.", 2, round(3.142*v.r*v.r*v.depth,2), `Capacity = πr²h = 3.142 × ${v.r}² × ${v.depth} = ${round(3.142*v.r*v.r*v.depth,2)} m³.`, { suffix: " m³", decimalPlaces: 2 }),
@@ -182,7 +180,6 @@ function q7() {
     const c = v.first - v.diff;
     const formula = `${v.diff}n${c >= 0 ? "+" : ""}${c}`;
     const nth = v.first + (v.n-1)*v.diff;
-    const targetN = (v.target-c)/v.diff;
     const sum = v.sumN/2 * (2*v.first + (v.sumN-1)*v.diff);
     const terms = [0,1,2,3].map(k => v.first+k*v.diff).join(", ");
     return q(7, i + 7, "Sequences, patterns and investigation",
