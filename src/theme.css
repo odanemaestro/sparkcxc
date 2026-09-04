@@ -1141,3 +1141,92 @@ html[data-theme="dark"] .cp-btn-secondary{
    - profile-photo white rings
    - white text on permanent navy/teal brand surfaces
    These are contrast choices, not theme leaks. */
+
+
+/* ==========================================================================
+   SPARK ACCEPTANCE + LOADER V8.3 2026-09
+   ========================================================================== */
+
+/* Minimal SPARK loading bar.
+   Visual direction: the clean/basic progress-bar pattern selected from
+   LottieFiles, implemented natively so the loader itself has zero runtime or
+   network dependency and can appear immediately during app bootstrap. */
+.spark-loader{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  background:var(--spark-bg);
+  color:var(--spark-ink);
+  animation:spark-loader-reveal .18s ease .12s both;
+}
+.spark-loader--screen{min-height:100vh}
+.spark-loader--section{min-height:55vh;flex:1}
+.spark-loader--inline{min-height:150px}
+
+.spark-loader__bar{
+  position:relative;
+  width:min(168px,42vw);
+  height:4px;
+  overflow:hidden;
+  border-radius:999px;
+  background:var(--spark-border);
+  box-shadow:inset 0 0 0 1px rgba(148,163,184,.06);
+}
+.spark-loader__fill{
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  width:42%;
+  border-radius:999px;
+  background:linear-gradient(90deg,var(--spark-teal),#5eead4);
+  box-shadow:0 0 14px rgba(45,212,191,.28);
+  animation:spark-loader-slide 1.05s cubic-bezier(.45,0,.2,1) infinite;
+}
+.spark-loader__sr{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;
+  border:0!important;
+}
+@keyframes spark-loader-reveal{
+  from{opacity:0}
+  to{opacity:1}
+}
+@keyframes spark-loader-slide{
+  0%{transform:translateX(-120%)}
+  55%{transform:translateX(160%)}
+  100%{transform:translateX(300%)}
+}
+@media(prefers-reduced-motion:reduce){
+  .spark-loader{animation:none}
+  .spark-loader__fill{
+    width:46%;
+    transform:none;
+    animation:none;
+  }
+}
+
+/* Paper 1 Back to Practice was still using its base light treatment in Dark. */
+html[data-theme="dark"] .paper-start-shell>.paper-text-button{
+  width:auto;
+  min-height:42px;
+  padding:10px 14px;
+  border:1px solid var(--spark-border-strong)!important;
+  border-radius:10px;
+  background:var(--spark-paper-raised)!important;
+  color:var(--spark-ink)!important;
+  box-shadow:var(--spark-shadow-sm)!important;
+}
+html[data-theme="dark"] .paper-start-shell>.paper-text-button:hover{
+  background:var(--spark-muted)!important;
+  border-color:var(--spark-teal)!important;
+  color:var(--spark-ink)!important;
+}

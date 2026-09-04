@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { T, FB } from "../../theme";
 
 // ============================================================================
 // Done by: Odane Robinson
@@ -76,7 +77,7 @@ export default function ReportQuestionButton({
         className={className}
         style={{
           background: "none", border: "none", cursor: "pointer", padding: "4px 0",
-          color: "#94A3B8", fontSize: 12.5, textDecoration: "underline",
+          color: T.textMuted, fontSize: 12.5, fontFamily: FB, textDecoration: "underline",
           textUnderlineOffset: 3, ...style,
         }}
       >
@@ -90,21 +91,24 @@ export default function ReportQuestionButton({
       role="dialog"
       aria-label="Report a problem with this question"
       style={{
-        border: "1px solid #E2E8F0", borderRadius: 10, padding: 14, marginTop: 8,
-        background: "#F8FAFC", fontSize: 13.5, ...style,
+        border: `1px solid ${T.border}`, borderRadius: 12, padding: 16, marginTop: 8,
+        background: T.paper, color: T.ink, boxShadow: T.shadowSm, fontSize: 13.5, fontFamily: FB, ...style,
       }}
       className={className}
     >
       {status === "done" ? (
         <>
-          <p style={{ margin: "0 0 8px", color: "#065F46", fontWeight: 600 }}>
+          <p style={{ margin: "0 0 10px", color: T.emerald, fontWeight: 700 }}>
             Thank you. Your report was submitted.
           </p>
-          <button type="button" onClick={reset}>Close</button>
+          <button type="button" onClick={reset} style={{
+              minHeight: 40, padding: "9px 14px", borderRadius: 8, border: `1px solid ${T.border}`,
+              background: T.muted, color: T.ink, fontFamily: FB, fontSize: 13, fontWeight: 700, cursor: "pointer"
+            }}>Close</button>
         </>
       ) : (
         <>
-          <label style={{ display: "block", marginBottom: 6, fontWeight: 600, color: "#334155" }}>
+          <label style={{ display: "block", marginBottom: 7, fontWeight: 700, color: T.ink }}>
             What's wrong with this question?
           </label>
           <textarea
@@ -112,20 +116,28 @@ export default function ReportQuestionButton({
             onChange={(e) => setMessage(e.target.value)}
             placeholder="e.g. the answer doesn't match the question, the diagram looks wrong, a number seems off..."
             rows={3}
-            style={{ width: "100%", boxSizing: "border-box", padding: 8, borderRadius: 6, border: "1px solid #CBD5E1", fontFamily: "inherit", fontSize: 13.5 }}
+            style={{ width: "100%", boxSizing: "border-box", minHeight: 96, padding: "11px 12px", borderRadius: 8, border: `1px solid ${T.border}`, background: T.bg, color: T.ink, fontFamily: FB, fontSize: 13.5, lineHeight: 1.5, resize: "vertical", outline: "none" }}
           />
           {status === "error" && (
-            <p style={{ color: "#991B1B", margin: "6px 0 0", fontSize: 12.5 }}>
+            <p style={{ color: T.red, margin: "7px 0 0", fontSize: 12.5 }}>
               {message.trim().length < 5
                 ? "Please add a few more details before submitting."
                 : "Your report was not submitted. Please try again."}
             </p>
           )}
-          <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
-            <button type="button" onClick={handleSubmit} disabled={status === "submitting"}>
+          <div style={{ display: "flex", gap: 10, marginTop: 12, flexWrap: "wrap" }}>
+            <button type="button" onClick={handleSubmit} disabled={status === "submitting"} style={{
+              minHeight: 40, padding: "9px 15px", borderRadius: 8, border: `1px solid ${T.teal}`,
+              background: T.teal, color: T.navyDeep, fontFamily: FB, fontSize: 13, fontWeight: 800,
+              cursor: status === "submitting" ? "not-allowed" : "pointer", opacity: status === "submitting" ? .6 : 1
+            }}>
               {status === "submitting" ? "Submitting…" : "Submit report"}
             </button>
-            <button type="button" onClick={reset} disabled={status === "submitting"}>Cancel</button>
+            <button type="button" onClick={reset} disabled={status === "submitting"} style={{
+              minHeight: 40, padding: "9px 15px", borderRadius: 8, border: `1px solid ${T.border}`,
+              background: T.muted, color: T.ink, fontFamily: FB, fontSize: 13, fontWeight: 700,
+              cursor: status === "submitting" ? "not-allowed" : "pointer", opacity: status === "submitting" ? .6 : 1
+            }}>Cancel</button>
           </div>
         </>
       )}

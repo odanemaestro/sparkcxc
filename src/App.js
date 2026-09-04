@@ -46,6 +46,7 @@ import ProgressBar from "./components/ui/ProgressBar";
 import Toast from "./components/ui/Toast";
 import Modal from "./components/ui/Modal";
 import ScrollToTopButton from "./components/ui/ScrollToTopButton";
+import SparkLoader from "./components/ui/SparkLoader";
 import ReportQuestionButton from "./components/ui/ReportQuestionButton";
 import NotificationCenter from "./components/notifications/NotificationCenter";
 import { friendlyErrorMessage } from "./lib/errorMessages";
@@ -1346,22 +1347,33 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
         </div>
         <div className="home-hero-actions spark-home-hero-actions" style={{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}}>
       		{isTutor ? (
-			  <Btn v="amber" onClick={() => setView("dashboard")}
-				style={{background:T.amber,fontSize:15,padding:"13px 28px"}}>
-				Go to your dashboard →
-			  </Btn>
-			) : isParent ? null : (
-			  <>
-				<Btn v="amber" onClick={() => setView("auth")}
-				  style={{background:T.amber,fontSize:15,padding:"13px 28px"}}>
-				  Start learning free →
-				</Btn>
-				<Btn v="ghost" onClick={() => setView("tutors")}
-				  style={{fontSize:15,padding:"13px 28px"}}>
-				  Find a tutor
-				</Btn>
-			  </>
-			)}
+              <Btn v="amber" onClick={() => setView("dashboard")}
+                style={{background:T.amber,fontSize:15,padding:"13px 28px"}}>
+                Go to your dashboard →
+              </Btn>
+            ) : isParent ? null : user ? (
+              <>
+                <Btn v="amber" onClick={() => setView("dashboard")}
+                  style={{background:T.amber,fontSize:15,padding:"13px 28px"}}>
+                  Go to your dashboard →
+                </Btn>
+                <Btn v="ghost" onClick={() => setView("tutors")}
+                  style={{fontSize:15,padding:"13px 28px"}}>
+                  Find a tutor
+                </Btn>
+              </>
+            ) : (
+              <>
+                <Btn v="amber" onClick={() => setView("auth")}
+                  style={{background:T.amber,fontSize:15,padding:"13px 28px"}}>
+                  Start learning free →
+                </Btn>
+                <Btn v="ghost" onClick={() => setView("tutors")}
+                  style={{fontSize:15,padding:"13px 28px"}}>
+                  Find a tutor
+                </Btn>
+              </>
+            )}
         </div>
 
         {/* Demo question */}
@@ -3213,12 +3225,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     (sec === "bookings" || sec === "sessions") && !bookingsLoaded;
 
   if (!profile || !dashboardRoleResolved || activeBookingSectionLoading) {
-    return (
-      <div style={{flex:1,display:"flex",alignItems:"center",justifyContent:"center",
-        minHeight:"55vh",background:T.bg,fontFamily:FB,color:T.textMuted}}>
-        Loading your dashboard...
-      </div>
-    );
+    return <SparkLoader variant="section" label="Loading your dashboard" />;
   }
 
   const navItems = isTutor ? [
@@ -4630,7 +4637,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
   };
 
 
-  if (loading) return <div className="parent-page"><div className="page-shell"><div className="loading-card">Loading your family dashboard…</div></div></div>;
+  if (loading) return <SparkLoader variant="section" label="Loading your family dashboard" />;
   const pending = links.filter(l => l.status === "pending");
   const examAttempts = childData?.examAttempts || [];
   const paper1Attempts = examAttempts.filter(a => a.paper_type === "paper1");
@@ -4852,7 +4859,7 @@ export default function App() {
     }, duration);
   }, []);
 
-  
+
 
   const updateProfileState = useCallback((patch) => {
     setProfile(current => current ? { ...current, ...patch } : current);
@@ -5004,12 +5011,9 @@ useEffect(() => () => {
   // during refresh, so `loading` alone is not a sufficient render guard.
   const authenticatedRolePending = !!session && (!profile || !tutorAppLoaded);
 
-  if (loading || authenticatedRolePending) return (
-    <div style={{minHeight:"100vh",display:"flex",alignItems:"center",justifyContent:"center",
-      background:T.bg,fontFamily:FB,color:T.textMuted}}>
-      Loading SPARK…
-    </div>
-  );
+  if (loading || authenticatedRolePending) {
+    return <SparkLoader variant="screen" label="Loading SPARK" />;
+  }
 
   const navProps = { setView, user: session?.user, profile, onLogout: handleLogout, liveStats, hasTutorApp: hideTutorApplyLink, tutorApp, view, themeMode, resolvedTheme, setThemeMode };
 
@@ -5037,16 +5041,16 @@ useEffect(() => () => {
       {view === "lesson"       && session && <LessonView user={session.user} setView={setView} showToast={showToast} hasTutorApp={hideTutorApplyLink}/>}
       {view === "practice"    && session && profile?.role !== "tutor" && tutorApp?.status !== "approved" && <PracticeHub supabase={supabase} userId={session.user.id} setView={setView}/>}
       {view === "tutors"       && <TutorsView user={session?.user} profile={profile} tutorApp={tutorApp} setView={setView} showToast={showToast} hasTutorApp={hideTutorApplyLink} isParent={profile?.role === "parent"}/>}
-	  
-	  
-      {view === "how-it-works" && <HowItWorksView setView={setView} hasTutorApp={hideTutorApplyLink} isParent={profile?.role === "parent"}/>}
-	  {view === "about"        && <AboutView setView={setView} hasTutorApp={hideTutorApplyLink} isParent={profile?.role === "parent"}/>}
+
+
+      {view === "how-it-works" && <HowItWorksView setView={setView} hasTutorApp={hideTutorApplyLink} isParent={profile?.role === "parent"} user={session?.user} isTutor={!!session?.user && (profile?.role === "tutor" || !!tutorApp)}/>}
+	  {view === "about"        && <AboutView setView={setView} hasTutorApp={hideTutorApplyLink} isParent={profile?.role === "parent"} user={session?.user} isTutor={!!session?.user && (profile?.role === "tutor" || !!tutorApp)}/>}
 	  {view === "contact"      && <ContactView setView={setView} showToast={showToast} hasTutorApp={hideTutorApplyLink} isParent={profile?.role === "parent"}/>}
 	  {view === "privacy"      && <PrivacyView setView={setView} hasTutorApp={hideTutorApplyLink} isParent={profile?.role === "parent"}/>}
 	  {view === "become-tutor" && <BecomeTutorView setView={setView} user={session?.user} profile={profile} showToast={showToast} hasTutorApp={hideTutorApplyLink} tutorApp={tutorApp} onApplicationSubmitted={loadTutorApp}/>}
-      
-	
-	  
+
+
+
 	  {(view === "dashboard" || view === "lesson") && !session && (
         <div style={{flex:1,padding:"4rem",textAlign:"center",color:T.textMuted}}>
           Please <span style={{color:T.teal,cursor:"pointer"}} onClick={() => setView("login")}>sign in</span> to continue.
@@ -5063,7 +5067,7 @@ useEffect(() => () => {
 // ─────────────────────────────────────────────────────────────────────────────
 
 // ─── HOW IT WORKS ────────────────────────────────────────────────────────────
-function HowItWorksView({ setView, hasTutorApp, isParent }) {
+function HowItWorksView({ setView, hasTutorApp, isParent, user, isTutor = false }) {
   const studentSteps = [
     ["1", "Sign up free", "Create your account and pick Mathematics. No credit card, no trial period."],
     ["2", "Follow the syllabus", "Every topic on the CXC CSEC syllabus has its own lesson. Work through them in order, or jump to the topics you need most."],
@@ -5151,17 +5155,23 @@ function HowItWorksView({ setView, hasTutorApp, isParent }) {
           </div>
         </div>
 
-        {/* Student/tutor conversion CTA - parents don't need either action. */}
-        {!isParent && <div style={{ background: `linear-gradient(135deg,${T.teal},${T.tealDark})`, borderRadius: T.rMd,
+        {/* Student conversion CTA. Parent and tutor accounts already have dedicated dashboards. */}
+        {!isParent && !isTutor && <div style={{ background: `linear-gradient(135deg,${T.teal},${T.tealDark})`, borderRadius: T.rMd,
           padding: 30, display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 20,
           boxShadow: "0 12px 32px rgba(13,148,136,.28)" }}>
           <div>
-            <h3 style={{ fontFamily: FD, fontSize: 20, fontWeight: 700, color: "#fff", margin: "0 0 6px" }}>Ready to start?</h3>
-            <p style={{ color: "rgba(255,255,255,.85)", fontSize: 14, margin: 0 }}>Create your free account. No credit card required.</p>
+            <h3 style={{ fontFamily: FD, fontSize: 20, fontWeight: 700, color: "#fff", margin: "0 0 6px" }}>
+              {user ? "Ready to continue?" : "Ready to start?"}
+            </h3>
+            <p style={{ color: "rgba(255,255,255,.85)", fontSize: 14, margin: 0 }}>
+              {user ? "Continue from your dashboard." : "Create your free account. No credit card required."}
+            </p>
           </div>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-            <Btn v="amber" onClick={() => setView("auth")} style={{ background: T.amber }}>Start learning →</Btn>
-            {!hasTutorApp && (
+            <Btn v="amber" onClick={() => setView(user ? "dashboard" : "auth")} style={{ background: T.amber }}>
+              {user ? "Go to your dashboard →" : "Start learning →"}
+            </Btn>
+            {!user && !hasTutorApp && (
               <Btn v="ghost" onClick={() => setView("become-tutor")}>Submit application to become a tutor</Btn>
             )}
           </div>
@@ -5173,7 +5183,7 @@ function HowItWorksView({ setView, hasTutorApp, isParent }) {
 }
 
 // ─── ABOUT ────────────────────────────────────────────────────────────────────
-function AboutView({ setView, hasTutorApp, isParent }) {
+function AboutView({ setView, hasTutorApp, isParent, user, isTutor = false }) {
   const totalTopics = SYLLABUS_SECTIONS.reduce((a, s) => a + s.topics.length, 0);
 
   return (
@@ -5252,11 +5262,13 @@ function AboutView({ setView, hasTutorApp, isParent }) {
           ))}
         </div>
 
-        <div style={{ textAlign: "center" }}>
-          <Btn onClick={() => setView("auth")} style={{ fontSize: 15, padding: "13px 28px" }}>
-            Start learning for free →
-          </Btn>
-        </div>
+        {!isParent && !isTutor && (
+          <div style={{ textAlign: "center" }}>
+            <Btn onClick={() => setView(user ? "dashboard" : "auth")} style={{ fontSize: 15, padding: "13px 28px" }}>
+              {user ? "Go to your dashboard →" : "Start learning for free →"}
+            </Btn>
+          </div>
+        )}
       </div>
       <Footer setView={setView} hasTutorApp={hasTutorApp} isParent={isParent} />
     </div>
