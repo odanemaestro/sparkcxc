@@ -36,6 +36,8 @@ import { supabase, getRememberMePreference, setRememberMePreference } from "./li
 import { sortTutors } from "./lib/tutorSort";
 import { saveTutorApplicationDraft, loadTutorApplicationDraft, clearTutorApplicationDraft } from "./lib/tutorApplicationDraft";
 import { T, FD, FB } from "./theme";
+import useThemeMode from "./hooks/useThemeMode";
+import ThemeSelector from "./components/ui/ThemeSelector";
 import GlobalStyles from "./components/ui/GlobalStyles";
 import Btn from "./components/ui/Btn";
 import Badge from "./components/ui/Badge";
@@ -51,6 +53,7 @@ import { getExamPerformanceStatus } from "./lib/examPerformance";
 import { detachCurrentPushAssociation, restorePushAssociation } from "./lib/pushNotifications";
 import "./family.css";
 import "./responsive.css";
+import "./theme.css";
 import GOOGLE_ICON_B64 from "./assets/icons/google-icon.png";
 import GOOGLE_CALENDAR_ICON_B64 from "./assets/icons/google-calendar-icon.png";
 import OUTLOOK_ICON_B64 from "./assets/icons/outlook-icon.png";
@@ -318,7 +321,7 @@ const TimeSlotPicker = ({ value, onChange, date, duration, busyOnDate = [], plac
       <button type="button" onClick={() => setOpen(o => !o)}
         style={{width:"100%",padding:"11px 14px",border:`1.5px solid ${open?T.teal:T.border}`,
           borderRadius:T.rSm,fontSize:14,fontFamily:FB,color:value?T.ink:T.textMuted,
-          background:"#fff",display:"flex",justifyContent:"space-between",alignItems:"center",
+          background:T.paper,display:"flex",justifyContent:"space-between",alignItems:"center",
           cursor:"pointer",transition:`all .18s ${T.ease}`,
           boxShadow:open?`0 0 0 3px ${T.tealLight}`:"none"}}>
         <span>{value ? fmtClock(value) : placeholder}</span>
@@ -329,7 +332,7 @@ const TimeSlotPicker = ({ value, onChange, date, duration, busyOnDate = [], plac
       </button>
       {open && (
         <div className="fade-in" style={{marginTop:8,border:`1px solid ${T.borderSoft}`,borderRadius:T.rSm,
-          boxShadow:T.shadowSm,maxHeight:240,overflowY:"auto",background:"#fff"}}>
+          boxShadow:T.shadowSm,maxHeight:240,overflowY:"auto",background:T.paper}}>
           {!date ? (
             <div style={{padding:"16px 12px",fontSize:13,color:T.textMuted,textAlign:"center"}}>
               Pick a date first to see available times.
@@ -501,7 +504,7 @@ function LessonContent({ topicName, onQuizStart, onComplete, isCompleted }) {
       </Card>
 
       {/* Exam Tip */}
-      <div style={{background:`linear-gradient(135deg,${T.ink},${T.navyDeep})`,borderRadius:T.rMd,padding:"20px 22px",marginBottom:26,color:"#fff",boxShadow:T.shadowMd}}>
+      <div style={{background:`linear-gradient(135deg,${T.surfaceNavy},${T.navyDeep})`,borderRadius:T.rMd,padding:"20px 22px",marginBottom:26,color:"#fff",boxShadow:T.shadowMd}}>
         <div style={{fontSize:12,fontWeight:700,color:"#5EEAD4",textTransform:"uppercase",
           letterSpacing:"0.06em",marginBottom:7}}>CXC Exam Strategy</div>
         <MathText as="p" prose className="lesson-math-copy" style={{fontSize:14.5,color:"rgba(255,255,255,.88)",lineHeight:1.7,margin:0}}>
@@ -751,7 +754,7 @@ function QuizEngine({ topicName, userId, onBack, onComplete, showToast }) {
 
             {/* Question figure */}
             {q.image && (
-              <div style={{margin:"0 0 20px",padding:"16px",background:"#fff",
+              <div style={{margin:"0 0 20px",padding:"16px",background:T.paper,
                 border:`1px solid ${T.border}`,borderRadius:10,overflowX:"auto",textAlign:"center"}}>
                 <img src={q.image} alt={q.imageAlt || "Question figure"}
                   style={{display:"block",width:"100%",maxWidth:760,height:"auto",margin:"0 auto"}} />
@@ -977,7 +980,7 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
   return (
     <div className="lesson-layout" style={{display:"grid",gridTemplateColumns:"280px 1fr",minHeight:"calc(100vh - 56px)"}}>
       {/* Sidebar */}
-      <div style={{background:`linear-gradient(180deg,${T.ink},${T.navyDeep})`,overflowY:"auto",borderRight:`1px solid rgba(255,255,255,.08)`}}
+      <div style={{background:`linear-gradient(180deg,${T.surfaceNavy},${T.navyDeep})`,overflowY:"auto",borderRight:`1px solid rgba(255,255,255,.08)`}}
         className="lesson-sidebar">
         <div style={{padding:"16px 18px",borderBottom:"1px solid rgba(255,255,255,.08)"}}>
           <div style={{fontSize:11,color:"rgba(255,255,255,.45)",textTransform:"uppercase",
@@ -1139,7 +1142,7 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
 }
 
 // ─── NAV ────────────────────────────────────────────────────────────────────
-function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorApp, view }) {
+function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorApp, view, themeMode, resolvedTheme, setThemeMode }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const isTutor = profile?.role === "tutor" || tutorApp?.status === "approved";
   const isStudent = profile?.role === "student";
@@ -1207,6 +1210,9 @@ function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorAp
             )}
           </div>
 
+          <div className="spark-theme-desktop-control">
+            <ThemeSelector value={themeMode} resolvedTheme={resolvedTheme} onChange={setThemeMode}/>
+          </div>
           <button
             type="button"
             className={`spark-menu-button ${menuOpen ? "open" : ""}`}
@@ -1223,6 +1229,10 @@ function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorAp
         <div className="spark-mobile-menu fade-in">
           <div className="spark-mobile-menu-links">
             {user ? signedInLinks : publicLinks}
+          </div>
+          <div className="spark-mobile-theme-block">
+            <span>Appearance</span>
+            <ThemeSelector variant="inline" value={themeMode} resolvedTheme={resolvedTheme} onChange={setThemeMode}/>
           </div>
           {user ? (
             <div className="spark-mobile-account-row">
@@ -1256,7 +1266,7 @@ const NavBtn = ({ children, onClick, active = false }) => {
 // ─── FOOTER ─────────────────────────────────────────────────────────────────
 function Footer({ setView, hasTutorApp, isTutor, isParent }) {
   return (
-    <footer className="spark-footer" style={{background:`linear-gradient(180deg,${T.ink},${T.navyDeep})`,color:"rgba(255,255,255,.6)",padding:"44px 28px 22px",flexShrink:0}}>
+    <footer className="spark-footer" style={{background:`linear-gradient(180deg,${T.surfaceNavy},${T.navyDeep})`,color:"rgba(255,255,255,.6)",padding:"44px 28px 22px",flexShrink:0}}>
       <div className="spark-footer-grid" style={{maxWidth:1100,margin:"0 auto",display:"grid",
         gridTemplateColumns:(isTutor || isParent)?"1.5fr 1fr":"1.5fr repeat(3,1fr)",gap:28,marginBottom:32}}>
         <div>
@@ -1405,7 +1415,7 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
       </div>
 
       {/* Features */}
-      <div style={{background:"#fff",borderTop:`1px solid ${T.border}`,flexShrink:0}}>
+      <div style={{background:T.paper,borderTop:`1px solid ${T.border}`,flexShrink:0}}>
         <div style={{maxWidth:1100,margin:"0 auto",padding:"64px 28px"}}>
           <div style={{fontSize:12,fontWeight:700,textTransform:"uppercase",letterSpacing:"0.08em",
             color:T.teal,marginBottom:10}}>How it works</div>
@@ -2129,7 +2139,7 @@ function AddToCalendar({ booking, isTutor, user }) {
             left:menuPos.left,
             top:menuPos.top,
             width:menuPos.width,
-            background:"#fff",
+            background:T.paper,
             border:`1px solid ${T.border}`,
             borderRadius:9,
             boxShadow:"0 8px 24px rgba(0,0,0,.12)",
@@ -2670,7 +2680,7 @@ function ProfilePhotoEditor({
               padding:0,
               borderRadius:"50%",
               border:"2px solid #fff",
-              background:T.ink,
+              background:T.surfaceNavy,
               color:"#fff",
               fontSize:11,
               lineHeight:1,
@@ -4745,6 +4755,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
 
 export default function App() {
   const [view, setViewState] = useState(() => viewFromBrowserHash());
+  const { themeMode, resolvedTheme, setThemeMode } = useThemeMode();
   const viewRef = useRef(view);
   const [session, setSession] = useState(null);
   const [profile, setProfile] = useState(null);
@@ -5000,10 +5011,10 @@ useEffect(() => () => {
     </div>
   );
 
-  const navProps = { setView, user: session?.user, profile, onLogout: handleLogout, liveStats, hasTutorApp: hideTutorApplyLink, tutorApp, view };
+  const navProps = { setView, user: session?.user, profile, onLogout: handleLogout, liveStats, hasTutorApp: hideTutorApplyLink, tutorApp, view, themeMode, resolvedTheme, setThemeMode };
 
   return (
-    <div style={{minHeight:"100vh",display:"flex",flexDirection:"column"}}>
+    <div className="spark-app-root" style={{minHeight:"100vh",display:"flex",flexDirection:"column",background:T.bg,color:T.ink}}>
       <GlobalStyles/>
       <Nav {...navProps}/>
       {view === "home"         && <HomeView setView={setView} liveStats={liveStats} hasTutorApp={hideTutorApplyLink} user={session?.user} profile={profile} tutorApp={tutorApp} isParent={profile?.role === "parent"}/>}

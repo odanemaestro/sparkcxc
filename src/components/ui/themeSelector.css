@@ -1,0 +1,21 @@
+.spark-theme-desktop-control{display:inline-flex;align-items:center}
+.spark-theme-control{position:relative;display:inline-flex;align-items:center}
+.spark-theme-trigger{height:36px;min-height:36px;border:1px solid rgba(255,255,255,.20);border-radius:9px;background:rgba(255,255,255,.06);color:#fff;padding:0 9px;display:inline-flex;align-items:center;gap:7px;font:700 11.5px 'Atkinson Hyperlegible','Inter',sans-serif;transition:background .16s ease,border-color .16s ease}
+.spark-theme-trigger:hover,.spark-theme-trigger[aria-expanded="true"]{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.30)}
+.spark-theme-trigger svg,.spark-theme-option-icon svg,.spark-theme-inline svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.spark-theme-chevron{width:13px!important;height:13px!important;opacity:.72}
+.spark-theme-popover{position:absolute;right:0;top:calc(100% + 9px);z-index:1100;width:236px;padding:8px;background:var(--spark-paper);border:1px solid var(--spark-border);border-radius:13px;box-shadow:var(--spark-shadow-xl);color:var(--spark-ink)}
+.spark-theme-popover-title{padding:5px 8px 8px;color:var(--spark-text-muted);font-size:9.5px;font-weight:900;letter-spacing:.1em;text-transform:uppercase}
+.spark-theme-popover>button{width:100%;min-height:52px;border:0;border-radius:9px;background:transparent;color:var(--spark-ink);padding:7px 8px;display:grid;grid-template-columns:30px minmax(0,1fr) 18px;gap:8px;align-items:center;text-align:left}
+.spark-theme-popover>button:hover{background:var(--spark-muted)}
+.spark-theme-popover>button.active{background:var(--spark-teal-light)}
+.spark-theme-option-icon{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;background:var(--spark-muted);color:var(--spark-ink-soft)}
+.spark-theme-popover>button.active .spark-theme-option-icon{background:var(--spark-teal);color:#fff}
+.spark-theme-option-copy strong{display:block;font-size:12.5px;color:var(--spark-ink)}
+.spark-theme-option-copy small{display:block;margin-top:2px;font-size:10.5px;color:var(--spark-text-muted)}
+.spark-theme-check{color:var(--spark-teal);font-weight:900;text-align:center}
+.spark-theme-inline{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;padding:4px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.10);border-radius:11px}
+.spark-theme-inline button{min-width:0;min-height:42px;border:0;border-radius:8px;background:transparent;color:rgba(255,255,255,.70);display:flex;align-items:center;justify-content:center;gap:6px;padding:7px 8px;font:700 11.5px 'Atkinson Hyperlegible','Inter',sans-serif}
+.spark-theme-inline button.active{background:rgba(255,255,255,.14);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+@media(max-width:1120px){.spark-theme-trigger-label{display:none}.spark-theme-trigger{width:36px;justify-content:center;padding:0}.spark-theme-chevron{display:none}}
+@media(max-width:700px){.spark-theme-desktop-control{display:none}.spark-theme-inline{width:100%}}

@@ -28,6 +28,22 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>SPARK - CSEC &amp; CAPE Exam Prep</title>
+    <meta name="color-scheme" content="light dark" />
+    <script id="spark-theme-prepaint">
+      (function () {
+        try {
+          var mode = localStorage.getItem("spark_theme_mode");
+          if (mode !== "light" && mode !== "dark" && mode !== "system") mode = "system";
+          var dark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+          var resolved = mode === "system" ? (dark ? "dark" : "light") : mode;
+          document.documentElement.dataset.themeMode = mode;
+          document.documentElement.dataset.theme = resolved;
+          document.documentElement.style.colorScheme = resolved;
+          var meta = document.querySelector('meta[name="theme-color"]');
+          if (meta) meta.setAttribute("content", resolved === "dark" ? "#050D1B" : "#081A3D");
+        } catch (error) {}
+      })();
+    </script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
