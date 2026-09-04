@@ -2611,10 +2611,11 @@ function ProfilePhotoEditor({
   };
 
   return (
-    <div style={{ display:"flex", alignItems:"center", gap: showActions ? 14 : 0 }}>
-      <div style={{ position:"relative", width:size, height:size, flexShrink:0 }}>
+    <div className={`profile-photo-editor ${showActions ? "profile-photo-editor-actions" : "profile-photo-editor-compact"}`} style={{ display:"flex", alignItems:"center", gap: showActions ? 14 : 0 }}>
+      <div className="profile-photo-shell" style={{ position:"relative", width:size, height:size, flexShrink:0 }}>
         <button
           type="button"
+          className="profile-photo-trigger"
           onClick={choosePhoto}
           disabled={busy || disabled}
           title={disabled ? "Profile photo is loading" : localPath ? "Change profile photo" : "Add profile photo"}
@@ -2631,7 +2632,7 @@ function ProfilePhotoEditor({
         >
           <ProfileAvatar path={localPath} name={profile?.name} size={size} />
           {!disabled && (
-            <span style={{
+            <span className="profile-photo-camera" style={{
               position:"absolute",
               right:-2,
               bottom:-2,
@@ -2654,6 +2655,7 @@ function ProfilePhotoEditor({
         {!showActions && localPath && !disabled && (
           <button
             type="button"
+            className="profile-photo-remove"
             onClick={removePhoto}
             disabled={busy}
             title="Remove profile photo"
@@ -4618,7 +4620,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
             <h1>Stay close to their progress.</h1>
             <p>Review mastery, practice, lesson progress and tutor sessions from the parent dashboard.</p>
           </div>
-          <div style={{display:"flex",justifyContent:"center"}}>
+          <div className="parent-hero-profile" style={{display:"flex",justifyContent:"center"}}>
             <ProfilePhotoEditor
               user={user}
               profile={profile}
@@ -4627,6 +4629,10 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
               onProfileUpdated={onProfileUpdated}
               size={72}
             />
+            <div className="parent-hero-profile-copy">
+              <strong>Profile photo</strong>
+              <span>Tap the photo to change it</span>
+            </div>
           </div>
         </div>
 
@@ -4638,9 +4644,9 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
         </section>}
 
         <section className="parent-section" data-notification-anchor="parent-family">
-          <div className="section-heading"><div><div className="section-kicker">YOUR FAMILY</div><h2>Children</h2></div><button className="cp-btn cp-btn-primary" onClick={()=>document.getElementById("add-child")?.scrollIntoView({behavior:"smooth"})}>+ Connect a child</button></div>
+          <div className="section-heading parent-family-heading"><div><div className="section-kicker">YOUR FAMILY</div><h2>Children</h2></div><button className="cp-btn cp-btn-primary parent-connect-button" onClick={()=>document.getElementById("add-child")?.scrollIntoView({behavior:"smooth"})}>+ Connect a child</button></div>
           {children.length === 0 ? <div className="empty-parent"><div className="empty-icon">👨‍👩‍👧</div><h3>No child connected yet</h3><p>Ask your child to open their account and give you their private family code.</p></div> :
-            <div className="child-grid">{children.map(child => <button key={child.id} className={`child-card ${selectedChild?.id===child.id?"selected":""}`} onClick={()=>setSelectedChild(child)}><div className="child-avatar">{getInitials(child.name)}</div><div><strong>{child.name}</strong><span>CSEC Mathematics</span></div><span className="child-arrow">→</span></button>)}</div>}
+            <div className="child-grid">{children.map(child => <button key={child.id} className={`child-card ${selectedChild?.id===child.id?"selected":""}`} onClick={()=>setSelectedChild(child)}><div className="child-avatar">{getInitials(child.name)}</div><div><strong>{child.name}</strong><span>CSEC Mathematics</span></div><span className="child-arrow" aria-hidden="true">›</span></button>)}</div>}
         </section>
 
         {selectedChild && childData && <section className="parent-section">
@@ -4697,7 +4703,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
               if (targetBooking && !rows.some(b => b.id === targetBooking.id)) rows.unshift(targetBooking);
               return rows.map(b => {
                 const isTargetBooking = targetId && String(b.id) === String(targetId);
-                return <div className={`session-row ${isTargetBooking ? "notification-booking-target" : ""}`} data-notification-booking={b.id} key={b.id}><div><strong>{b.tutors?.name || "Tutor"}</strong><span>{b.subject} · {bookingDateLabel(b.session_date)}{b.start_time ? ` · ${fmtSessionRange(b.start_time, b.duration_minutes)}` : ""}</span></div>{(() => { const status = bookingDisplayStatus(b); return <Badge c={BOOKING_STATUS_BADGE[status]?.c || "ink"}>{BOOKING_STATUS_BADGE[status]?.label || status}</Badge>; })()}</div>;
+                return <div className={`session-row ${isTargetBooking ? "notification-booking-target" : ""}`} data-notification-booking={b.id} key={b.id}><div className="session-main"><strong>{b.tutors?.name || "Tutor"}</strong><span>{b.subject} · {bookingDateLabel(b.session_date)}{b.start_time ? ` · ${fmtSessionRange(b.start_time, b.duration_minutes)}` : ""}</span></div><div className="session-status">{(() => { const status = bookingDisplayStatus(b); return <Badge c={BOOKING_STATUS_BADGE[status]?.c || "ink"}>{BOOKING_STATUS_BADGE[status]?.label || status}</Badge>; })()}</div></div>;
               });
             })() : <p className="muted-copy">No tutor sessions yet.</p>}</div>
           </div>
