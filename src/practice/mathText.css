@@ -1,0 +1,195 @@
+/* SPARK universal mathematics rendering
+   Used by Study, topic quizzes, Paper 1, Paper 2 and answer review. */
+
+.spark-math{
+  font-family:'Cambria Math','STIX Two Math','Times New Roman',serif;
+  font-variant-numeric:lining-nums tabular-nums;
+  letter-spacing:.002em;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+
+.spark-math-prose{
+  font-family:inherit;
+  font-variant-numeric:inherit;
+  letter-spacing:inherit;
+}
+
+.spark-math .frac,
+.spark-math .math-root,
+.spark-math .vec,
+.spark-math .matrix,
+.spark-math sup,
+.spark-math sub{
+  font-family:'Cambria Math','STIX Two Math','Times New Roman',serif;
+}
+
+.spark-math .frac{
+  display:inline-grid;
+  grid-template-rows:auto auto;
+  align-items:center;
+  justify-items:center;
+  min-width:max-content;
+  margin:0 .16em;
+  vertical-align:-.34em;
+  font-size:.92em;
+  line-height:1.04;
+}
+
+.spark-math .frac .fnum{
+  display:block;
+  width:100%;
+  padding:0 .24em .10em;
+  border-bottom:1.35px solid currentColor;
+  text-align:center;
+}
+
+.spark-math .frac .fden{
+  display:block;
+  width:100%;
+  padding:.10em .24em 0;
+  text-align:center;
+}
+
+.spark-math .math-root{
+  display:inline-flex;
+  align-items:flex-start;
+  vertical-align:-.08em;
+  white-space:nowrap;
+  margin:0 .05em;
+}
+
+.spark-math .math-root-symbol{
+  font-size:1.12em;
+  line-height:1;
+  transform:translateY(.08em);
+}
+
+.spark-math .math-radicand{
+  display:inline-block;
+  padding:.04em .12em 0 .10em;
+  border-top:1.35px solid currentColor;
+  line-height:1.08;
+}
+
+.spark-math .vec{
+  position:relative;
+  display:inline-block;
+  padding-top:.72em;
+  margin:0 .08em;
+}
+
+.spark-math .vec::before{
+  content:"";
+  position:absolute;
+  top:.13em;
+  left:0;
+  right:.30em;
+  border-top:1.35px solid currentColor;
+}
+
+.spark-math .vec::after{
+  content:"";
+  position:absolute;
+  top:.02em;
+  right:.04em;
+  width:0;
+  height:0;
+  border-top:.20em solid transparent;
+  border-bottom:.20em solid transparent;
+  border-left:.32em solid currentColor;
+}
+
+.spark-math sup,
+.spark-math sub{
+  font-size:.70em;
+  line-height:0;
+}
+
+.spark-math sup{
+  vertical-align:.62em;
+}
+
+.spark-math sub{
+  vertical-align:-.22em;
+}
+
+.spark-math .matrix{
+  display:inline-flex;
+  align-items:stretch;
+  vertical-align:middle;
+  margin:0 .18em;
+}
+
+.spark-math .mbrk{
+  width:.38em;
+  position:relative;
+}
+
+.spark-math .mbrk::before,
+.spark-math .mbrk::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  height:1.5px;
+  background:currentColor;
+}
+
+.spark-math .mbrk::before{top:0}
+.spark-math .mbrk::after{bottom:0}
+.spark-math .mbrk-l{border-left:1.8px solid currentColor}
+.spark-math .mbrk-r{border-right:1.8px solid currentColor}
+
+.spark-math .mgrid{
+  display:inline-grid;
+  align-items:center;
+  justify-items:center;
+  column-gap:.72em;
+  row-gap:.18em;
+  padding:.18em .48em;
+  font-size:.94em;
+}
+
+.spark-math .mcell{
+  white-space:nowrap;
+}
+
+/* Study content keeps prose typography while mathematical structures stand out. */
+.lesson-math-copy .frac,
+.lesson-math-copy .math-root,
+.lesson-math-copy .matrix,
+.lesson-math-copy .vec{
+  color:#102954;
+}
+
+.example-question .spark-math,
+.solution-content .spark-math{
+  line-height:1.72;
+}
+
+/* Paper questions and answers get a slightly more generous mathematical rhythm. */
+.paper-question-copy .spark-math,
+.paper-option-content .spark-math,
+.paper2-part-card .spark-math,
+.paper2-review-part .spark-math{
+  line-height:1.62;
+}
+
+@media(max-width:680px){
+  .spark-math .frac{
+    margin-left:.10em;
+    margin-right:.10em;
+  }
+
+  .spark-math .mgrid{
+    column-gap:.54em;
+    padding-left:.36em;
+    padding-right:.36em;
+  }
+
+  .paper-question-copy .spark-math,
+  .paper2-part-card .spark-math{
+    line-height:1.58;
+  }
+}

@@ -168,8 +168,8 @@ function QuestionTable({ table }) {
   return (
     <div className="paper2-table-wrap">
       <table className="paper2-data-table">
-        <thead><tr>{table.headers.map(header => <th key={header}>{header}</th>)}</tr></thead>
-        <tbody>{table.rows.map((row, index) => <tr key={index}>{row.map((cell, cellIndex) => <td key={`${index}-${cellIndex}`}>{cell}</td>)}</tr>)}</tbody>
+        <thead><tr>{table.headers.map(header => <th key={header}><MathText>{header}</MathText></th>)}</tr></thead>
+        <tbody>{table.rows.map((row, index) => <tr key={index}>{row.map((cell, cellIndex) => <td key={`${index}-${cellIndex}`}><MathText>{cell}</MathText></td>)}</tr>)}</tbody>
       </table>
     </div>
   );
@@ -489,7 +489,7 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
                   <div className="paper2-part-heading"><strong>{part.label}</strong><span>{part.marks} {part.marks === 1 ? "mark" : "marks"}</span></div>
                   <MathText as="p">{part.prompt}</MathText>
                   <div className="paper2-answer-field">
-                    {part.prefix && <span className="paper2-affix">{part.prefix}</span>}
+                    {part.prefix && <span className="paper2-affix"><MathText>{part.prefix}</MathText></span>}
                     <input
                       ref={element => { inputRefs.current[key] = element; }}
                       type="text"
@@ -500,8 +500,14 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
                       onChange={event => setPartResponse(current.question_id, part.id, event.target.value)}
                       placeholder={part.answerType === "expression" ? "Enter expression" : "Enter answer"}
                     />
-                    {part.suffix && <span className="paper2-affix">{part.suffix}</span>}
+                    {part.suffix && <span className="paper2-affix"><MathText>{part.suffix}</MathText></span>}
                   </div>
+                  {String(answers?.[current.question_id]?.[part.id] || "").trim() && (
+                    <div className="paper2-answer-preview">
+                      <span>Math preview</span>
+                      <MathText as="div">{answers?.[current.question_id]?.[part.id] || ""}</MathText>
+                    </div>
+                  )}
                 </label>
               );
             })}

@@ -466,3 +466,81 @@
     font-size:9px;
   }
 }
+
+
+/* ==========================================================================
+   SPARK UNIVERSAL MATH RENDERING V6 2026-09
+   Consistent mathematical typography across Paper 1, Paper 2 and answer review.
+   ========================================================================== */
+.paper-question-copy .spark-math{
+  font-size:inherit;
+}
+
+.paper-option-content .spark-math{
+  font-size:18px;
+}
+
+.paper-solution-box .spark-math,
+.paper2-review-answer-grid .spark-math,
+.paper2-worked-solution .spark-math{
+  font-size:inherit;
+}
+
+.paper2-data-table .spark-math{
+  white-space:nowrap;
+  font-size:inherit;
+}
+
+.paper2-affix .spark-math{
+  white-space:nowrap;
+}
+
+.paper2-answer-preview{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr);
+  align-items:start;
+  gap:9px;
+  max-width:650px;
+  margin-top:8px;
+  padding:8px 10px;
+  border:1px solid #e0e7ef;
+  border-radius:9px;
+  background:#f7fafc;
+}
+
+.paper2-answer-preview>span{
+  padding-top:3px;
+  color:#718097;
+  font:800 9px/1.2 'Atkinson Hyperlegible','Inter',sans-serif;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+
+.paper2-answer-preview .spark-math{
+  min-width:0;
+  color:#17335e;
+  font-size:16px;
+  font-weight:600;
+  line-height:1.5;
+}
+
+@media(max-width:680px){
+  .paper-option-content .spark-math{
+    font-size:17px;
+  }
+
+  .paper2-answer-preview{
+    grid-template-columns:1fr;
+    gap:4px;
+    padding:8px 9px;
+  }
+
+  .paper2-answer-preview>span{
+    padding-top:0;
+  }
+
+  .paper2-answer-preview .spark-math{
+    font-size:15.5px;
+  }
+}

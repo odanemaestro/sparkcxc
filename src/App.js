@@ -26,6 +26,7 @@
 import React, { useState, useEffect, useCallback, useRef, useLayoutEffect } from "react";
 import { createPortal } from "react-dom";
 import PracticeHub from "./practice/PracticeHub";
+import MathText from "./practice/MathText";
 import {
   LESSONS, SYLLABUS_SECTIONS, QUESTION_BANK,
   getQuestionsForTopic, getMCQForTopic, getStructuredForTopic, getQuizQuestionsForTopic,
@@ -408,11 +409,11 @@ function LessonContent({ topicName, onQuizStart, onComplete, isCompleted }) {
   return (
     <div className="fade-in">
       {/* Intro */}
-      <p style={{fontSize:15.5,color:T.inkSoft,lineHeight:1.8,marginBottom:26,
+      <MathText as="p" prose className="lesson-math-copy" style={{fontSize:15.5,color:T.inkSoft,lineHeight:1.8,marginBottom:26,
         padding:"18px 22px",background:`linear-gradient(135deg,${T.tealLight},#EFFBF8)`,borderRadius:T.rMd,
         borderLeft:`3px solid ${T.teal}`,boxShadow:T.shadowSm}}>
         {lesson.intro}
-      </p>
+      </MathText>
 
       {/* Sections */}
       {lesson.sections.map((sec, i) => (
@@ -431,15 +432,15 @@ function LessonContent({ topicName, onQuizStart, onComplete, isCompleted }) {
 
           {openSections[i] && (
             <div className="lesson-section-body fade-in">
-              <p style={{fontSize:14.5,color:T.inkSoft,lineHeight:1.8,whiteSpace:"pre-line",marginBottom:16}}>
+              <MathText as="p" prose className="lesson-math-copy" style={{fontSize:14.5,color:T.inkSoft,lineHeight:1.8,whiteSpace:"pre-line",marginBottom:16}}>
                 {sec.content}
-              </p>
+              </MathText>
 
               {sec.example && (
                 <div className="example-box">
                   <div style={{fontSize:11,fontWeight:600,color:T.teal,textTransform:"uppercase",
                     letterSpacing:"0.06em",marginBottom:8}}>Worked Example</div>
-                  <div className="example-question">{sec.example.question}</div>
+                  <MathText as="div" prose className="example-question lesson-math-copy">{sec.example.question}</MathText>
                   {!revealedSolutions[`${i}-ex`] ? (
                     <button onClick={() => revealSolution(`${i}-ex`)}
                       style={{background:"none",border:`1.5px solid ${T.teal}`,color:T.teal,
@@ -451,7 +452,7 @@ function LessonContent({ topicName, onQuizStart, onComplete, isCompleted }) {
                     <div className="solution-reveal fade-in">
                       <div style={{fontSize:11,fontWeight:600,color:T.emerald,textTransform:"uppercase",
                         letterSpacing:"0.05em",marginBottom:6}}>Full Solution</div>
-                      <div className="solution-content">{sec.example.solution}</div>
+                      <MathText as="div" prose className="solution-content lesson-math-copy">{sec.example.solution}</MathText>
                     </div>
                   )}
                 </div>
@@ -461,7 +462,7 @@ function LessonContent({ topicName, onQuizStart, onComplete, isCompleted }) {
                 <div style={{background:T.amberLight,borderLeft:`3px solid ${T.amber}`,
                   borderRadius:"0 8px 8px 0",padding:"12px 16px",marginTop:12}}>
                   <span style={{fontWeight:600,color:T.amber}}>💡 Tip: </span>
-                  <span style={{fontSize:14,color:T.inkSoft}}>{sec.tip}</span>
+                  <MathText as="span" prose className="lesson-math-copy" style={{fontSize:14,color:T.inkSoft}}>{sec.tip}</MathText>
                 </div>
               )}
             </div>
@@ -479,7 +480,7 @@ function LessonContent({ topicName, onQuizStart, onComplete, isCompleted }) {
             <div style={{width:20,height:20,borderRadius:"50%",background:T.emeraldLight,
               color:T.emerald,display:"flex",alignItems:"center",justifyContent:"center",
               fontSize:10,fontWeight:700,flexShrink:0}}>✓</div>
-            <span>{fact}</span>
+            <MathText as="span" prose className="lesson-math-copy">{fact}</MathText>
           </div>
         ))}
       </Card>
@@ -494,7 +495,7 @@ function LessonContent({ topicName, onQuizStart, onComplete, isCompleted }) {
             <div style={{width:20,height:20,borderRadius:"50%",background:T.redLight,
               color:T.red,display:"flex",alignItems:"center",justifyContent:"center",
               fontSize:10,fontWeight:700,flexShrink:0}}>✗</div>
-            <span>{m}</span>
+            <MathText as="span" prose className="lesson-math-copy">{m}</MathText>
           </div>
         ))}
       </Card>
@@ -503,9 +504,9 @@ function LessonContent({ topicName, onQuizStart, onComplete, isCompleted }) {
       <div style={{background:`linear-gradient(135deg,${T.ink},${T.navyDeep})`,borderRadius:T.rMd,padding:"20px 22px",marginBottom:26,color:"#fff",boxShadow:T.shadowMd}}>
         <div style={{fontSize:12,fontWeight:700,color:"#5EEAD4",textTransform:"uppercase",
           letterSpacing:"0.06em",marginBottom:7}}>CXC Exam Strategy</div>
-        <p style={{fontSize:14.5,color:"rgba(255,255,255,.88)",lineHeight:1.7,margin:0}}>
+        <MathText as="p" prose className="lesson-math-copy" style={{fontSize:14.5,color:"rgba(255,255,255,.88)",lineHeight:1.7,margin:0}}>
           {lesson.examTip}
-        </p>
+        </MathText>
       </div>
 
       {/* Actions */}
@@ -711,10 +712,10 @@ function QuizEngine({ topicName, userId, onBack, onComplete, showToast }) {
             </div>
 
             {/* Question text */}
-            <div style={{fontSize:15,color:T.ink,fontWeight:500,lineHeight:1.65,marginBottom:18,
+            <MathText as="div" prose className="lesson-quiz-question lesson-math-copy" style={{fontSize:15,color:T.ink,fontWeight:500,lineHeight:1.65,marginBottom:18,
               whiteSpace:"pre-line"}}>
               {q.question}
-            </div>
+            </MathText>
 
             {/* Question table - for questions like "complete the table"
                 that need an actual rendered table, not a pipe-delimited
@@ -727,7 +728,7 @@ function QuizEngine({ topicName, userId, onBack, onComplete, showToast }) {
                       {q.table.headers.map((h, i) => (
                         <th key={i} style={{textAlign:"left",padding:"9px 14px",background:T.muted,
                           border:`1px solid ${T.border}`,color:T.ink,fontWeight:700,whiteSpace:"nowrap"}}>
-                          {h}
+                          <MathText prose>{h}</MathText>
                         </th>
                       ))}
                     </tr>
@@ -738,7 +739,7 @@ function QuizEngine({ topicName, userId, onBack, onComplete, showToast }) {
                         {row.map((cell, ci) => (
                           <td key={ci} style={{padding:"9px 14px",border:`1px solid ${T.border}`,
                             color:T.inkSoft,whiteSpace:"nowrap"}}>
-                            {cell}
+                            <MathText prose>{cell}</MathText>
                           </td>
                         ))}
                       </tr>
@@ -783,7 +784,7 @@ function QuizEngine({ topicName, userId, onBack, onComplete, showToast }) {
                     <button key={oi} className={cls}
                       onClick={() => answerMCQ(qi, oi)}
                       disabled={isAnswered}>
-                      {opt}
+                      <MathText prose>{opt}</MathText>
                     </button>
                   );
                 })}
@@ -796,7 +797,7 @@ function QuizEngine({ topicName, userId, onBack, onComplete, showToast }) {
                     color:answers[qi] === q.correct ? T.emerald : T.red,
                     lineHeight:1.65}} className="fade-in">
                     {answers[qi] === q.correct ? "✓ Correct. " : "✗ Incorrect. "}
-                    <span style={{color:T.inkSoft}}>{q.explanation}</span>
+                    <MathText as="span" prose className="lesson-math-copy" style={{color:T.inkSoft}}>{q.explanation}</MathText>
                   </div>
                 )}
               </div>
@@ -823,10 +824,10 @@ function QuizEngine({ topicName, userId, onBack, onComplete, showToast }) {
                     <div className="fade-in">
                       <div style={{fontSize:12,fontWeight:600,color:T.teal,textTransform:"uppercase",
                         letterSpacing:"0.05em",marginBottom:8}}>Model Answer</div>
-                      <div className="solution-content">{q.modelAnswer}</div>
+                      <MathText as="div" prose className="solution-content lesson-math-copy">{q.modelAnswer}</MathText>
                       <div style={{marginTop:10,padding:"10px 14px",background:T.tealLight,
                         borderRadius:8,fontSize:13.5,color:T.tealDark,lineHeight:1.65}}>
-                        💡 <strong>Why this approach:</strong> {q.explanation}
+                        💡 <strong>Why this approach:</strong> <MathText as="span" prose className="lesson-math-copy">{q.explanation}</MathText>
                       </div>
                     </div>
                   )}
