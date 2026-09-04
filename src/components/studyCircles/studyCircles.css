@@ -679,3 +679,89 @@ html[data-theme="dark"] .study-circle-match-pill{
   }
 }
 
+/* STUDY CIRCLES MOBILE LAYOUT V9.0.5
+   Mobile Study Circles matching card follows the same left-aligned content
+   rail as the rest of the page. Desktop styling is intentionally untouched. */
+@media(max-width:700px){
+  .study-circle-waiting-card{
+    display:block;
+    padding:26px 24px 24px;
+    text-align:left;
+  }
+
+  .study-circle-waiting-card .study-circle-match-bars{
+    justify-content:flex-start;
+    margin:0 0 18px;
+  }
+
+  .study-circle-waiting-card>.study-circle-kicker{
+    display:block;
+    margin:0 0 10px;
+    text-align:left;
+  }
+
+  .study-circle-waiting-card h2{
+    max-width:none;
+    margin:0 0 14px;
+    font-size:clamp(24px,6.5vw,28px);
+    line-height:1.14;
+    letter-spacing:-.012em;
+    text-align:left;
+    text-wrap:balance;
+  }
+
+  .study-circle-waiting-card>p{
+    max-width:none;
+    margin:0;
+    font-size:16px;
+    line-height:1.55;
+    text-align:left;
+    text-wrap:pretty;
+  }
+
+  .study-circle-waiting-card .study-circle-actions{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:12px;
+    width:100%;
+    max-width:none;
+    margin:22px 0 0;
+    justify-content:stretch;
+  }
+
+  .study-circle-waiting-card .study-circle-actions button{
+    width:100%;
+    min-width:0;
+    min-height:48px;
+    padding:11px 10px;
+    margin:0;
+    font-size:14px;
+    line-height:1.2;
+    white-space:normal;
+  }
+}
+
+@media(max-width:390px){
+  .study-circle-waiting-card{
+    padding:24px 20px 22px;
+  }
+
+  .study-circle-waiting-card h2{
+    font-size:23px;
+  }
+
+  .study-circle-waiting-card>p{
+    font-size:15px;
+    line-height:1.5;
+  }
+
+  .study-circle-waiting-card .study-circle-actions{
+    gap:10px;
+  }
+
+  .study-circle-waiting-card .study-circle-actions button{
+    font-size:13.5px;
+    padding-inline:8px;
+  }
+}
+
