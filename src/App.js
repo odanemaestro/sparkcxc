@@ -3451,8 +3451,15 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
         )}
 
         {sec === "students" && isTutor && (
-          <>
-            <h1 style={{fontFamily:FD,fontSize:22,fontWeight:700,color:T.ink,marginBottom:20}}>My students</h1>
+          <section className="tutor-students-view">
+            <div className="tutor-students-heading">
+              <h1 style={{fontFamily:FD,fontSize:22,fontWeight:700,color:T.ink,marginBottom:20}}>My students</h1>
+              {uniqueStudents.length > 0 && (
+                <span className="tutor-students-mobile-count">
+                  {uniqueStudents.length} student{uniqueStudents.length !== 1 ? "s" : ""}
+                </span>
+              )}
+            </div>
             {uniqueStudents.length === 0 ? (
               <Card style={{textAlign:"center",padding:40}}>
                 <div style={{fontSize:32,marginBottom:12}}>🎓</div>
@@ -3460,19 +3467,35 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 <p style={{color:T.textMuted,fontSize:14}}>Students who book sessions with you will show up here.</p>
               </Card>
             ) : (
-              <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))",gap:16}}>
-                {uniqueStudents.map(s => (
-                  <Card key={s.id}>
-                    <div style={{fontWeight:600,color:T.ink,fontSize:15,marginBottom:4}}>{s.name}</div>
-                    <div style={{fontSize:12,color:T.textMuted,marginBottom:8}}>
-                      {[...s.subjects].join(", ")}
-                    </div>
-                    <Badge c="teal">{s.sessions} session{s.sessions !== 1 ? "s" : ""}</Badge>
-                  </Card>
-                ))}
+              <div className="tutor-students-grid" style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))",gap:16}}>
+                {uniqueStudents.map(s => {
+                  const initials = String(s.name || "Student")
+                    .trim()
+                    .split(/\s+/)
+                    .slice(0, 2)
+                    .map(part => part[0] || "")
+                    .join("")
+                    .toUpperCase();
+                  return (
+                    <Card key={s.id} className="tutor-student-card">
+                      <div className="tutor-student-card-inner">
+                        <div className="tutor-student-avatar" aria-hidden="true">{initials || "S"}</div>
+                        <div className="tutor-student-info">
+                          <div className="tutor-student-name" style={{fontWeight:600,color:T.ink,fontSize:15,marginBottom:4}}>{s.name}</div>
+                          <div className="tutor-student-subjects" style={{fontSize:12,color:T.textMuted,marginBottom:8}}>
+                            {[...s.subjects].join(", ")}
+                          </div>
+                        </div>
+                        <div className="tutor-student-session-count">
+                          <Badge c="teal">{s.sessions} session{s.sessions !== 1 ? "s" : ""}</Badge>
+                        </div>
+                      </div>
+                    </Card>
+                  );
+                })}
               </div>
             )}
-          </>
+          </section>
         )}
 
         {sec === "reviews" && isTutor && (
