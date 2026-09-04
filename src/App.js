@@ -1612,9 +1612,9 @@ function AuthView({ setView, initialMode = "signup", recoveryMode = false }) {
   const verificationScreen = mode !== "forgot" && verificationSent;
 
   return (
-    <div style={{flex:1,display:"flex",alignItems:"flex-start",justifyContent:"center",
+    <div className="spark-auth-shell" style={{flex:1,display:"flex",alignItems:"flex-start",justifyContent:"center",
       padding:"48px 20px",background:T.bg}}>
-      <div style={{background:T.paper,border:`1px solid ${T.borderSoft}`,borderRadius:T.rLg,
+      <div className="spark-auth-card" style={{background:T.paper,border:`1px solid ${T.borderSoft}`,borderRadius:T.rLg,
         padding:38,width:"100%",maxWidth:420,boxShadow:T.shadowLg,margin:"auto 0"}}>
         {verificationScreen ? (
           <>
@@ -1669,7 +1669,7 @@ function AuthView({ setView, initialMode = "signup", recoveryMode = false }) {
           </>
         ) : (
           <>
-            <div style={{display:"flex",gap:4,marginBottom:26,background:T.muted,padding:4,borderRadius:T.rSm+2}}>
+            <div className="spark-auth-tabs" style={{display:"flex",gap:4,marginBottom:26,background:T.muted,padding:4,borderRadius:T.rSm+2}}>
               {["signup","login"].map(m => (
                 <button key={m} onClick={() => switchMode(m)}
                   style={{flex:1,padding:"9px 0",border:"none",borderRadius:T.rSm,cursor:"pointer",fontFamily:FB,fontWeight:600,fontSize:14,
@@ -1682,7 +1682,7 @@ function AuthView({ setView, initialMode = "signup", recoveryMode = false }) {
             <p style={{fontSize:13.5,color:T.textMuted,marginBottom:22}}>{mode === "signup" ? "Start with Mathematics." : "Log in to continue studying."}</p>
             {mode === "signup" && <>
               <div style={{fontSize:13,fontWeight:500,color:T.inkSoft,marginBottom:8}}>I am a</div>
-              <div style={{display:"flex",gap:8,marginBottom:14}}>
+              <div className="spark-auth-role-row" style={{display:"flex",gap:8,marginBottom:14}}>
                 {["student","tutor","parent"].map(r => <button key={r} onClick={() => setRole(r)}
                   style={{flex:1,padding:9,borderRadius:7,fontSize:13,fontWeight:500,cursor:"pointer",fontFamily:FB,transition:"all .15s",
                     border:`1.5px solid ${role===r?T.teal:T.border}`,background:role===r?T.tealLight:"transparent",color:role===r?T.tealDark:T.textMuted}}>
@@ -1708,7 +1708,7 @@ function AuthView({ setView, initialMode = "signup", recoveryMode = false }) {
                 style={{width:"100%",padding:"10px 13px",border:`1.5px solid ${T.border}`,borderRadius:7,fontSize:14,color:T.ink,background:T.paper,outline:"none"}} />
             </div>
             {mode === "login" && (
-              <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:12,marginBottom:14}}>
+              <div className="spark-auth-utility-row" style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:12,marginBottom:14}}>
                 <label style={{display:"inline-flex",alignItems:"center",gap:8,cursor:"pointer",fontSize:13,color:T.inkSoft,userSelect:"none"}}>
                   <input
                     type="checkbox"
@@ -1735,7 +1735,7 @@ function AuthView({ setView, initialMode = "signup", recoveryMode = false }) {
             )}
             <Btn onClick={submit} disabled={loading} full>{loading ? "Please wait…" : mode==="signup" ? role==="tutor" ? "Continue to tutor application →" : "Create account" : "Log in"}</Btn>
             <div style={{display:"flex",alignItems:"center",gap:10,margin:"18px 0",color:T.textMuted,fontSize:12}}><div style={{height:1,background:T.border,flex:1}}/><span>OR</span><div style={{height:1,background:T.border,flex:1}}/></div>
-            <button onClick={continueWithGoogle} disabled={loading}
+            <button className="spark-google-auth-button" onClick={continueWithGoogle} disabled={loading}
               style={{width:"100%",padding:"10px 13px",border:`1.5px solid ${T.border}`,borderRadius:999,
                 background:T.paper,color:T.ink,cursor:loading?"not-allowed":"pointer",fontFamily:FB,fontWeight:600,fontSize:14,
                 display:"flex",alignItems:"center",justifyContent:"center",gap:10}}>
@@ -5072,9 +5072,9 @@ function HowItWorksView({ setView, hasTutorApp, isParent }) {
   ];
 
   return (
-    <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+    <div className="how-page" style={{ flex: 1, display: "flex", flexDirection: "column" }}>
       {/* Hero */}
-      <div style={{ background: `linear-gradient(135deg,${T.navyDeep},${T.navyMid})`, color: "#fff", padding: "56px 28px 48px", textAlign: "center", flexShrink: 0 }}>
+      <div className="how-hero" style={{ background: `linear-gradient(135deg,${T.navyDeep},${T.navyMid})`, color: "#fff", padding: "56px 28px 48px", textAlign: "center", flexShrink: 0 }}>
         <h1 style={{ fontFamily: FD, fontSize: "clamp(28px,4vw,40px)", fontWeight: 700, margin: "0 0 12px", letterSpacing:"-0.01em" }}>
           How SPARK works
         </h1>
@@ -5083,14 +5083,14 @@ function HowItWorksView({ setView, hasTutorApp, isParent }) {
         </p>
       </div>
 
-      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "52px 28px", flex: 1 }}>
+      <div className="how-page-content" style={{ maxWidth: 1100, margin: "0 auto", padding: "52px 28px", flex: 1 }}>
         {/* Two-column steps */}
-        <div className="marketing-grid responsive-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))", gap: 48, marginBottom: 52 }}>
+        <div className="marketing-grid responsive-grid how-steps-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(320px,1fr))", gap: 48, marginBottom: 52 }}>
           {/* Students */}
           <div>
             <h2 style={{ fontFamily: FD, fontSize: 26, fontWeight: 700, color: T.ink, marginBottom: 24 }}>For students</h2>
             {studentSteps.map(([n, title, desc]) => (
-              <div key={n} style={{ display: "flex", gap: 14, marginBottom: 22 }}>
+              <div key={n} className="how-step" style={{ display: "flex", gap: 14, marginBottom: 22 }}>
                 <div style={{ width: 34, height: 34, borderRadius: "50%", background: `linear-gradient(135deg,${T.teal},${T.tealDark})`, color: "#fff", boxShadow: T.shadowSm,
                   display: "flex", alignItems: "center", justifyContent: "center",
                   fontWeight: 700, fontSize: 14, flexShrink: 0 }}>{n}</div>
@@ -5106,7 +5106,7 @@ function HowItWorksView({ setView, hasTutorApp, isParent }) {
           <div>
             <h2 style={{ fontFamily: FD, fontSize: 26, fontWeight: 700, color: T.ink, marginBottom: 24 }}>For tutors</h2>
             {tutorSteps.map(([n, title, desc]) => (
-              <div key={n} style={{ display: "flex", gap: 14, marginBottom: 22 }}>
+              <div key={n} className="how-step" style={{ display: "flex", gap: 14, marginBottom: 22 }}>
                 <div style={{ width: 34, height: 34, borderRadius: "50%", background: `linear-gradient(135deg,${T.amber},#B45309)`, color: "#fff", boxShadow: T.shadowSm,
                   display: "flex", alignItems: "center", justifyContent: "center",
                   fontWeight: 700, fontSize: 14, flexShrink: 0 }}>{n}</div>
@@ -5384,14 +5384,14 @@ function PrivacyView({ setView, hasTutorApp, isParent }) {
   ];
 
   return (
-    <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
-      <div style={{ background: `linear-gradient(135deg,${T.navyDeep},${T.navyMid})`, color: "#fff", padding: "52px 28px 44px", textAlign: "center", flexShrink: 0 }}>
+    <div className="privacy-page" style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+      <div className="privacy-hero" style={{ background: `linear-gradient(135deg,${T.navyDeep},${T.navyMid})`, color: "#fff", padding: "52px 28px 44px", textAlign: "center", flexShrink: 0 }}>
         <h1 style={{ fontFamily: FD, fontSize: "clamp(28px,4vw,40px)", fontWeight: 700, margin: "0 0 10px" }}>Privacy Policy</h1>
         <p style={{ fontSize: 14, color: "rgba(255,255,255,.6)" }}>Last updated: September 2026</p>
       </div>
-      <div style={{ maxWidth: 720, margin: "0 auto", padding: "52px 28px", flex: 1 }}>
+      <div className="privacy-content" style={{ maxWidth: 720, margin: "0 auto", padding: "52px 28px", flex: 1 }}>
         {sections.map(([title, content]) => (
-          <div key={title} style={{ marginBottom: 32 }}>
+          <div key={title} className="privacy-section" style={{ marginBottom: 32 }}>
             <h2 style={{ fontFamily: FD, fontSize: 19, fontWeight: 600, color: T.ink, marginBottom: 10 }}>{title}</h2>
             <p style={{ fontSize: 15, color: T.inkSoft, lineHeight: 1.8, margin: 0 }}>{content}</p>
           </div>
@@ -5793,8 +5793,8 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
   };
 
   return (
-    <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
-      <div style={{ background: `linear-gradient(135deg,${T.navyDeep},${T.navyMid})`, color: "#fff", padding: "52px 28px 44px", textAlign: "center", flexShrink: 0 }}>
+    <div className="tutor-apply-page" style={{ flex: 1, display: "flex", flexDirection: "column" }}>
+      <div className="tutor-apply-hero" style={{ background: `linear-gradient(135deg,${T.navyDeep},${T.navyMid})`, color: "#fff", padding: "52px 28px 44px", textAlign: "center", flexShrink: 0 }}>
         <h1 style={{ fontFamily: FD, fontSize: "clamp(28px,4vw,40px)", fontWeight: 700, margin: "0 0 12px" }}>
           Become a SPARK tutor
         </h1>
@@ -5804,7 +5804,7 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
       </div>
 
       {tutorApp && tutorApp.status !== "rejected" ? (
-        <div style={{ maxWidth: 560, margin: "0 auto", padding: "0 28px 64px", flex: 1, width: "100%" }}>
+        <div className="tutor-apply-status-shell" style={{ maxWidth: 560, margin: "0 auto", padding: "0 28px 64px", flex: 1, width: "100%" }}>
           <Card style={{ textAlign: "center", padding: 40 }}>
             <div style={{ fontSize: 32, marginBottom: 12 }}>
               {tutorApp.status === "approved" ? "✅" : tutorApp.status === "deactivated" ? "🚫" : "⏳"}
@@ -5825,12 +5825,12 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
           </Card>
         </div>
       ) : (
-      <div style={{ maxWidth: 860, margin: "0 auto", padding: "48px 28px", flex: 1, width: "100%" }}>
+      <div className="tutor-apply-content" style={{ maxWidth: 860, margin: "0 auto", padding: "48px 28px", flex: 1, width: "100%" }}>
         {/* Restored-draft notice - shown once, when a saved in-progress
             application was found on mount (e.g. after navigating away to
             log in and back). Odane Robinson. */}
         {savedDraft && step < 4 && (
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12,
+          <div className="tutor-apply-draft-notice" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12,
             background: T.tealLight, border: `1px solid ${T.teal}`, borderRadius: 8, padding: "10px 14px", marginBottom: 20, fontSize: 13 }}>
             <span style={{ color: T.tealDark }}>Your saved application has been restored. Continue from where you stopped.</span>
             <button
@@ -5850,7 +5850,7 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
         )}
         {/* Step indicator */}
         {step < 4 && (
-          <div style={{ display: "flex", gap: 0, marginBottom: 32, borderRadius: 8, overflow: "hidden", border: `1px solid ${T.border}` }}>
+          <div className="tutor-apply-stepper" style={{ display: "flex", gap: 0, marginBottom: 32, borderRadius: 8, overflow: "hidden", border: `1px solid ${T.border}` }}>
             {["Your details", "Subjects & rate", "Background"].map((label, i) => (
               <div key={label} style={{ flex: 1, padding: "12px 0", textAlign: "center", fontSize: 13,
                 background: step === i + 1 ? T.teal : step > i + 1 ? T.tealLight : "#fff",
@@ -5864,7 +5864,7 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
 
         {/* Step 1 - Details */}
         {step === 1 && (
-          <div style={{ maxWidth: 540, margin: "0 auto" }}>
+          <div className="tutor-apply-step" style={{ maxWidth: 540, margin: "0 auto" }}>
             <h2 style={{ fontFamily: FD, fontSize: 24, fontWeight: 700, color: T.ink, marginBottom: 4 }}>Tell us about yourself</h2>
             <p style={{ color: T.textMuted, fontSize: 14, marginBottom: 22 }}>This is what students will see on your profile.</p>
             {!user && (<>
@@ -5904,15 +5904,15 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
 
         {/* Step 2 - Subjects & rate */}
         {step === 2 && (
-          <div style={{ maxWidth: 580, margin: "0 auto" }}>
+          <div className="tutor-apply-step" style={{ maxWidth: 580, margin: "0 auto" }}>
             <h2 style={{ fontFamily: FD, fontSize: 24, fontWeight: 700, color: T.ink, marginBottom: 4 }}>Subjects and your rate</h2>
             <p style={{ color: T.textMuted, fontSize: 14, marginBottom: 20 }}>Select each subject you are qualified and prepared to tutor.</p>
             <div style={{ fontSize: 13, fontWeight: 500, color: T.inkSoft, marginBottom: 8 }}>
               Subjects you tutor<span style={{ color: T.red }}> *</span>
             </div>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 24 }}>
+            <div className="tutor-subject-chip-list" style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 24 }}>
               {ALL_SUBJECTS.map(s => (
-                <button key={s} onClick={() => toggleSubject(s)}
+                <button className="tutor-subject-chip" key={s} onClick={() => toggleSubject(s)}
                   style={{ padding: "8px 14px", borderRadius: 99, fontSize: 13, cursor: "pointer",
                     fontFamily: FB, transition: "all .15s",
                     border: `1.5px solid ${form.subjects.includes(s) ? T.teal : T.border}`,
@@ -5928,7 +5928,7 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
               <div style={{ fontSize: 13, fontWeight: 500, color: T.inkSoft, marginBottom: 8 }}>
                 Your hourly rate (J$)<span style={{ color: T.red }}> *</span>
               </div>
-              <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+              <div className="tutor-rate-row" style={{ display: "flex", alignItems: "center", gap: 14 }}>
                 <input type="range" min={800} max={5000} step={100} value={form.rate}
                   onChange={e => update("rate", parseInt(e.target.value))}
                   style={{ flex: 1, accentColor: T.teal }} />
@@ -5942,7 +5942,7 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
                 <span>J$5,000</span>
               </div>
             </div>
-            <div style={{ display: "flex", gap: 10 }}>
+            <div className="tutor-apply-actions" style={{ display: "flex", gap: 10 }}>
               <Btn v="outline" onClick={() => setStep(1)} style={{ flex: 1, justifyContent: "center" }}>← Back</Btn>
               <Btn onClick={() => {
                 const error = validateStep2();
@@ -5955,7 +5955,7 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
 
         {/* Step 3 - Background */}
         {step === 3 && (
-          <div style={{ maxWidth: 540, margin: "0 auto" }}>
+          <div className="tutor-apply-step" style={{ maxWidth: 540, margin: "0 auto" }}>
             <h2 style={{ fontFamily: FD, fontSize: 24, fontWeight: 700, color: T.ink, marginBottom: 4 }}>Your background</h2>
             <p style={{ color: T.textMuted, fontSize: 14, marginBottom: 22 }}>
               This helps us verify you before your profile goes live. Students won't see this directly.
@@ -5972,7 +5972,7 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
                 Every tutor is reviewed before the profile is published. We may request copies of qualifications. Verification is usually completed within 3 business days.
               </div>
             </Card>
-            <div style={{ display: "flex", gap: 10 }}>
+            <div className="tutor-apply-actions" style={{ display: "flex", gap: 10 }}>
               <Btn v="outline" onClick={() => setStep(2)} style={{ flex: 1, justifyContent: "center" }}>← Back</Btn>
               <Btn onClick={submitApplication} disabled={loading} style={{ flex: 2, justifyContent: "center" }}>
                 {loading ? "Submitting…" : "Submit application →"}
@@ -5983,7 +5983,7 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
 
         {/* Step 4 - Success */}
         {step === 4 && (
-          <div style={{ maxWidth: 540, margin: "0 auto", textAlign: "center", padding: "20px 0" }}>
+          <div className="tutor-apply-success" style={{ maxWidth: 540, margin: "0 auto", textAlign: "center", padding: "20px 0" }}>
             <div style={{ fontSize: 64, marginBottom: 20 }}>🎉</div>
             <h2 style={{ fontFamily: FD, fontSize: 28, fontWeight: 700, color: T.ink, marginBottom: 12 }}>
               Application submitted!
@@ -5991,7 +5991,7 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
             <p style={{ fontSize: 15, color: T.textMuted, lineHeight: 1.65, maxWidth: 420, margin: "0 auto 28px" }}>
               Thanks for applying, {form.name.split(" ")[0]}. Our team will review your application and get back to you within 3 business days at the email address you provided.
             </p>
-            <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+            <div className="tutor-apply-success-actions" style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
               <Btn onClick={() => setView("home")}>Back to home</Btn>
               <Btn v="outline" onClick={() => setView("tutors")}>Browse other tutors</Btn>
             </div>
@@ -6000,7 +6000,7 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
 
         {/* Bottom stats (shown on steps 1–3) */}
         {step < 4 && (
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))", gap: 16, marginTop: 48 }}>
+          <div className="tutor-apply-stats" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))", gap: 16, marginTop: 48 }}>
             {[
               ["J$1,500–J$2,000", "Average hourly rate earned by our tutors"],
               ["3–5 days", "Typical review time after application"],

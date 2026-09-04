@@ -65,3 +65,94 @@
 .push-device-button:disabled{opacity:.55;cursor:default}
 .push-settings-footnote{margin:0;padding:2px 3px;color:#94A3B8;font-size:10.5px;line-height:1.5}
 @media(max-width:560px){.notification-settings-list{padding:13px 10px calc(20px + env(safe-area-inset-bottom))}.push-settings-card,.push-preference-row,.push-device-row{padding:13px 12px}.push-device-row{align-items:flex-start;flex-direction:column}.push-device-button{width:100%;justify-content:center}.notification-tabs button{padding-left:8px;padding-right:8px}}
+
+
+/* SPARK INTENTIONAL NOTIFICATION MOBILE V4 2026-09 */
+@media(max-width:560px){
+  .notification-drawer{
+    width:100vw;
+    max-width:none;
+    height:100dvh;
+    box-shadow:none;
+  }
+  .notification-head{
+    padding:
+      max(16px,env(safe-area-inset-top))
+      16px
+      14px !important;
+    gap:12px;
+  }
+  .notification-head h2{
+    font-size:23px;
+  }
+  .notification-close{
+    width:40px !important;
+    height:40px !important;
+    min-width:40px !important;
+    min-height:40px !important;
+    border-radius:50%;
+    flex:0 0 40px;
+  }
+  .notification-toolbar{
+    display:grid !important;
+    grid-template-columns:1fr auto;
+    align-items:center !important;
+    gap:7px 10px;
+    padding:9px 12px 8px;
+  }
+  .notification-tabs{
+    grid-column:1/-1;
+    width:100%;
+  }
+  .notification-tabs button{
+    min-height:40px;
+    padding:7px 8px;
+  }
+  .notification-mark-all{
+    grid-column:2;
+    justify-self:end;
+    align-self:center !important;
+    min-height:34px;
+    padding:4px 2px;
+  }
+  .notification-list{
+    padding:8px 10px calc(18px + env(safe-area-inset-bottom));
+  }
+  .notification-item{
+    grid-template-columns:36px minmax(0,1fr);
+    gap:10px;
+    padding:12px 11px;
+    margin-bottom:7px;
+    border-radius:13px;
+  }
+  .notification-type-icon{
+    width:36px;
+    height:36px;
+    border-radius:10px;
+  }
+  .notification-title-row strong{
+    font-size:13px;
+  }
+  .notification-copy p{
+    font-size:12px;
+    margin:4px 0 7px;
+  }
+  .notification-meta-row{
+    gap:3px;
+  }
+  .notification-settings-list{
+    padding:12px 10px calc(20px + env(safe-area-inset-bottom));
+  }
+  .push-settings{
+    gap:11px;
+  }
+  .push-settings-card,
+  .push-preference-row,
+  .push-device-row{
+    border-radius:12px;
+    padding:12px;
+  }
+  .push-switch{
+    min-height:27px !important;
+  }
+}

@@ -235,3 +235,90 @@
     grid-template-columns:repeat(5,minmax(0,1fr));
   }
 }
+
+
+/* SPARK INTENTIONAL EXAM MOBILE V4 2026-09 */
+@media(max-width:680px){
+  .practice-hub{
+    padding:24px 14px 48px;
+  }
+  .practice-hero{
+    gap:14px;
+    margin-bottom:20px;
+  }
+  .practice-hero h1{
+    font-size:clamp(32px,10vw,42px);
+    line-height:1.04;
+    margin:6px 0 8px;
+  }
+  .practice-hero p{
+    font-size:15px;
+    line-height:1.5;
+  }
+  .practice-mode-grid{
+    gap:12px;
+  }
+  .practice-mode-card{
+    padding:18px;
+    border-radius:16px;
+    box-shadow:0 8px 24px rgba(15,37,87,.065);
+  }
+  .practice-mode-icon{
+    width:50px;
+    height:50px;
+    border-radius:15px;
+    margin-bottom:16px;
+  }
+  .paper-exam-layout{
+    padding:14px 10px 36px;
+  }
+  .paper-question-card{
+    border-radius:16px;
+    padding:18px 14px;
+  }
+  .paper-question-copy{
+    font-size:18px;
+    line-height:1.55;
+  }
+  .paper-navigator{
+    border-radius:14px;
+  }
+  .paper-score-hero{
+    border-radius:16px;
+  }
+  .paper2-part-card{
+    border-radius:13px;
+  }
+  .paper2-table-wrap{
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior-x:contain;
+    scrollbar-width:thin;
+  }
+  .paper2-formula-modal{
+    width:calc(100vw - 20px);
+    max-height:calc(100dvh - 20px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    padding:14px;
+    border-radius:16px;
+  }
+  .paper2-response-card{
+    padding:14px;
+    border-radius:14px;
+  }
+}
+
+@media(max-width:390px){
+  .practice-hub{
+    padding-left:10px;
+    padding-right:10px;
+  }
+  .practice-mode-card{
+    padding:16px;
+  }
+  .paper-exam-layout{
+    padding-left:8px;
+    padding-right:8px;
+  }
+  .paper-question-card{
+    padding:16px 12px;
+  }
+}
