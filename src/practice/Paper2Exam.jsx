@@ -1,5 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import MathText from "./MathText";
+import Paper2ResponseInput from "./Paper2ResponseInput";
+import { hasPaper2PartResponse, paper2ResponseSummary } from "./paper2RichGrader";
 import {
   PAPER2_DURATION_SECONDS,
   PAPER2_TEMPLATE_COUNT,
@@ -11,8 +13,8 @@ import {
 import { paper2ResultToAttempt, savePracticeExamAttempt } from "./persistence";
 import "./practiceExam.css";
 
-const ACTIVE_KEY = "spark-paper2-active-v2";
-const USED_KEY = "spark-paper2-used-question-ids-v2";
+const ACTIVE_KEY = "spark-paper2-active-v52";
+const USED_KEY = "spark-paper2-used-question-ids-v52";
 const RESULTS_KEY = "spark-paper2-results-v2";
 
 function readJson(key, fallback) {
@@ -175,10 +177,35 @@ function QuestionTable({ table }) {
   );
 }
 
+function QuestionDiagram({ diagram }) {
+  if (!diagram?.svg) return null;
+  return (
+    <figure className="paper2-diagram" role="img" aria-label={diagram.alt || "Question diagram"} dangerouslySetInnerHTML={{ __html: diagram.svg }} />
+  );
+}
+
+function Paper2Stimulus({ stimulus }) {
+  if (!stimulus) return null;
+  return (
+    <div className="paper2-stimulus">
+      {stimulus.label && <MathText as="p" className="paper2-stimulus-label">{stimulus.label}</MathText>}
+      {stimulus.kind === "figure" && stimulus.svg ? (
+        <div className="paper2-stimulus-figure" role="img" aria-label={stimulus.alt || "Question diagram"} dangerouslySetInnerHTML={{ __html: stimulus.svg }} />
+      ) : stimulus.kind === "table" && Array.isArray(stimulus.headers) ? (
+        <QuestionTable table={stimulus} />
+      ) : stimulus.text ? (
+        <MathText as="div" prose className="paper2-stimulus-text">{stimulus.text}</MathText>
+      ) : null}
+    </div>
+  );
+}
+
 function QuestionPrompt({ question }) {
   return (
     <div className="paper2-question-copy">
-      <MathText as="p" className="paper2-stem">{question.stem}</MathText>
+      {question.stem && <MathText as="p" className="paper2-stem">{question.stem}</MathText>}
+      <QuestionDiagram diagram={question.diagram} />
+      <Paper2Stimulus stimulus={question.stimulus} />
       <QuestionTable table={question.table} />
     </div>
   );
@@ -186,7 +213,7 @@ function QuestionPrompt({ question }) {
 
 function answeredPartCount(exam, answers) {
   if (!exam) return 0;
-  return exam.questions.reduce((sum, question) => sum + question.parts.filter(part => String(answers?.[question.question_id]?.[part.id] ?? "").trim()).length, 0);
+  return exam.questions.reduce((sum, question) => sum + question.parts.filter(part => hasPaper2PartResponse(answers?.[question.question_id]?.[part.id])).length, 0);
 }
 
 function totalPartCount(exam) {
@@ -305,9 +332,11 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
     const fallbackPart = current.parts[0];
     const [questionId, partId] = activePartKey?.split(":") || [current.question_id, fallbackPart.id];
     if (questionId !== current.question_id) return;
+    const part = current.parts.find(item => item.id === partId);
+    if (part?.responseSchema) return;
     const key = `${questionId}:${partId}`;
     const input = inputRefs.current[key];
-    const oldValue = answers?.[questionId]?.[partId] || "";
+    const oldValue = String(answers?.[questionId]?.[partId] ?? "");
     const start = input?.selectionStart ?? oldValue.length;
     const end = input?.selectionEnd ?? oldValue.length;
     const next = `${oldValue.slice(0, start)}${symbol}${oldValue.slice(end)}`;
@@ -368,15 +397,15 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
               <li>Answer ALL questions.</li>
               <li>Section I consists of Questions 1 to 7. Section II consists of Questions 8 to 10.</li>
               <li>Enter an answer for each part of each question. Marks are awarded by part.</li>
-              <li>Questions requiring graph drawing or geometrical construction are not included in this practice examination.</li>
-              <li>Enter each final answer in the space provided. Mathematical symbols are available where required.</li>
+              <li>Where a question requires a graph, geometrical construction, transformation description or written mathematical reason, use the interactive response workspace provided. Open the How to use panel whenever you need help with the digital controls.</li>
+              <li>Show the mathematical information requested in each response field. SPARK awards marks by rubric, including partial credit on supported structured parts.</li>
               <li>Where an answer is required to a stated degree of accuracy, give the answer as instructed.</li>
               <li>The time allowed is 2 hours 40 minutes. The paper is submitted automatically when the time expires.</li>
             </ol>
           </div>
           <div className="paper2-bank-note">
             <strong>{PAPER2_TEMPLATE_COUNT} structured questions available</strong>
-            <span>Each practice paper is assembled by examination position so its topic mix and mark allocation follow the required Paper 2 structure.</span>
+            <span>Each practice paper is assembled by examination position and question design so re-sits vary in structure while preserving the required Paper 2 topic mix and mark allocation.</span>
           </div>
           <div className="paper2-start-actions">
             <button type="button" className="practice-secondary" onClick={() => setShowFormula(true)}>View formula sheet</button>
@@ -417,15 +446,33 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
           <div className="paper2-review-parts">
             {review.parts.map(part => {
               const partGrade = reviewGrade.parts[part.id];
-              const response = answers?.[review.question_id]?.[part.id] || "";
+              const response = answers?.[review.question_id]?.[part.id] ?? "";
+              const earned = Number(partGrade.marks || 0);
+              const stateLabel = earned === part.marks ? "Correct" : earned > 0 ? "Partial credit" : partGrade.status === "blank" ? "No response" : "Incorrect";
+              const stateClass = earned === part.marks ? "is-correct" : earned > 0 ? "is-partial" : "is-incorrect";
               return (
-                <article className={`paper2-review-part ${partGrade.correct ? "is-correct" : "is-incorrect"}`} key={part.id}>
-                  <div className="paper2-review-part-head"><strong>{part.label}</strong><span>{partGrade.correct ? `Correct · ${part.marks}/${part.marks}` : `Incorrect · 0/${part.marks}`}</span></div>
+                <article className={`paper2-review-part ${stateClass}`} key={part.id}>
+                  <div className="paper2-review-part-head"><strong>{part.label}</strong><span>{stateLabel} · {earned}/{part.marks}</span></div>
                   <MathText as="p">{part.prompt}</MathText>
+                  <QuestionDiagram diagram={part.responseSchema?.type === "graph" ? null : part.diagram} />
+                  <Paper2Stimulus stimulus={part.stimulus} />
+                  <QuestionTable table={part.table} />
                   <div className="paper2-review-answer-grid">
-                    <div><span>Your answer</span><MathText as="strong">{response || "No answer"}</MathText></div>
-                    <div><span>Correct answer</span><MathText as="strong">{part.answer}</MathText></div>
+                    <div><span>Your response</span><strong>{paper2ResponseSummary(response, part)}</strong></div>
+                    <div><span>Mark-scheme answer</span><MathText as="strong">{part.source_answer || part.answer}</MathText></div>
                   </div>
+                  {partGrade.criteria?.length > 0 && (
+                    <div className="paper2-rubric-breakdown">
+                      <span>Mark breakdown</span>
+                      {partGrade.criteria.map((criterion, index) => (
+                        <div key={`${part.id}-criterion-${index}`} className={criterion.earned ? "earned" : "missed"}>
+                          <b>{criterion.earned ? "✓" : "○"}</b>
+                          <span>{criterion.label || "Rubric criterion"}</span>
+                          <strong>{criterion.marks}/{criterion.maxMarks || 0}</strong>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                   <div className="paper2-worked-solution"><span>Worked solution</span><MathText as="p">{part.solution}</MathText></div>
                 </article>
               );
@@ -485,15 +532,26 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
             {current.parts.map(part => {
               const key = `${current.question_id}:${part.id}`;
               return (
-                <label className="paper2-part-card" key={part.id}>
+                <article className="paper2-part-card" key={part.id}>
                   <div className="paper2-part-heading"><strong>{part.label}</strong><span>{part.marks} {part.marks === 1 ? "mark" : "marks"}</span></div>
 				  <MathText as="p">{part.prompt}</MathText>
+                  <QuestionDiagram diagram={part.responseSchema?.type === "graph" ? null : part.diagram} />
+                  <Paper2Stimulus stimulus={part.stimulus} />
+                  <QuestionTable table={part.table} />
 					{part.inputHint && (
 					  <small className="paper2-input-hint">
 						Answer format: {part.inputHint}
 					  </small>
 					)}
-					<div className="paper2-answer-field">
+					{part.responseSchema ? (
+                     <Paper2ResponseInput
+                       part={part}
+                       value={answers?.[current.question_id]?.[part.id]}
+                       onChange={value => setPartResponse(current.question_id, part.id, value)}
+                     />
+                   ) : (
+                     <>
+                       <div className="paper2-answer-field">
                     {part.prefix && <span className="paper2-affix"><MathText>{part.prefix}</MathText></span>}
                     <input
                       ref={element => { inputRefs.current[key] = element; }}
@@ -513,7 +571,10 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
                       <MathText as="div">{answers?.[current.question_id]?.[part.id] || ""}</MathText>
                     </div>
                   )}
-                </label>
+
+                     </>
+                   )}
+                </article>
               );
             })}
           </section>

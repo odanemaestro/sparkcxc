@@ -1,4 +1,4 @@
-import { checkQuestionAnswer } from "../lib/answerCheck";
+import { gradeRichPaper2Part, isPaper2PartComplete } from "./paper2RichGrader";
 import { PAPER2_QUESTION_BANK } from "./paper2QuestionBank";
 
 export const PAPER2_DURATION_SECONDS = 160 * 60;
@@ -44,12 +44,18 @@ export function buildPaper2Exam(options = {}) {
   const seed = options.seed || `${Date.now()}-${Math.random()}`;
   const rng = rngFromSeed(seed);
   const used = new Set(options.previouslyUsedQuestionIds || []);
+  const usedDesigns = new Set(
+    PAPER2_QUESTION_BANK
+      .filter(question => used.has(question.question_id))
+      .map(question => `${question.question_number}::${question.design || question.question_id}`)
+  );
   const questions = [];
 
   for (let qn = 1; qn <= PAPER2_QUESTION_COUNT; qn += 1) {
     const candidates = shuffle(PAPER2_QUESTION_BANK.filter(q => q.question_number === qn), rng);
     const unseen = candidates.filter(q => !used.has(q.question_id));
-    const pick = (unseen.length ? unseen : candidates)[0];
+    const freshDesign = unseen.filter(q => !usedDesigns.has(`${qn}::${q.design || q.question_id}`));
+    const pick = (freshDesign.length ? freshDesign : unseen.length ? unseen : candidates)[0];
     questions.push(pick);
   }
 
@@ -82,17 +88,7 @@ export function validatePaper2Exam(exam) {
 }
 
 export function gradePaper2Part(userInput, part) {
-  const user = String(userInput ?? "").trim();
-  if (!user) return { status: "blank", correct: false, marks: 0 };
-
-  const status = checkQuestionAnswer(user, part);
-  const correct = status === "correct";
-
-  return {
-    status,
-    correct,
-    marks: correct ? part.marks : 0,
-  };
+  return gradeRichPaper2Part(userInput, part);
 }
 
 export function calculatePaper2Mark(answers = {}, questions = []) {
@@ -119,9 +115,9 @@ export function calculatePaper2Mark(answers = {}, questions = []) {
       if (result.correct) {
         correctParts += 1;
         questionCorrect += 1;
-        score += part.marks;
-        questionScore += part.marks;
       }
+      score += Number(result.marks || 0);
+      questionScore += Number(result.marks || 0);
     });
     perQuestion[question.question_id] = {
       score: questionScore,
@@ -145,5 +141,5 @@ export function calculatePaper2Mark(answers = {}, questions = []) {
 
 export function isPaper2QuestionComplete(question, answers = {}) {
   const response = answers?.[question.question_id] || {};
-  return (question.parts || []).every(part => String(response[part.id] ?? "").trim() !== "");
+  return (question.parts || []).every(part => isPaper2PartComplete(part, response[part.id]));
 }

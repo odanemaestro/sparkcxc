@@ -601,3 +601,136 @@
   line-height: 1.4;
   opacity: 0.72;
 }
+
+/* V5 inline CSEC figure/table stimuli. SVGs intentionally inherit currentColor. */
+.paper2-stimulus{margin:12px 0 16px;color:inherit}
+.paper2-stimulus-label{margin:0 0 9px;color:inherit}
+.paper2-stimulus-text{white-space:pre-wrap;line-height:1.6;color:inherit}
+.paper2-stimulus-figure{display:grid;place-items:center;overflow-x:auto;color:inherit}
+.paper2-stimulus-figure svg{display:block;max-width:100%;height:auto;color:inherit}
+.paper2-part-card .paper2-stimulus{margin:10px 0 12px}
+
+/* SPARK Paper 2 V5.1 rich-response workspaces */
+.paper2-rich-fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:12px 0}
+.paper2-rich-field{display:flex;flex-direction:column;gap:6px}
+.paper2-rich-field>span{font-size:.82rem;font-weight:700;letter-spacing:.01em}
+.paper2-rich-field input,.paper2-rich-field select,.paper2-rich-field textarea{width:100%;box-sizing:border-box;border:1px solid currentColor;border-radius:10px;background:transparent;color:inherit;padding:11px 12px;font:inherit;opacity:.96}
+.paper2-rich-field textarea{resize:vertical;min-height:82px;line-height:1.45}
+.paper2-workspace{margin-top:12px;border:1px solid color-mix(in srgb,currentColor 24%,transparent);border-radius:14px;padding:12px;background:color-mix(in srgb,currentColor 2%,transparent);color:inherit}
+.paper2-workspace-toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}
+.paper2-workspace-toolbar button{border:1px solid color-mix(in srgb,currentColor 35%,transparent);border-radius:9px;background:transparent;color:inherit;padding:8px 11px;font:inherit;cursor:pointer}
+.paper2-workspace-toolbar button.active{outline:2px solid currentColor;outline-offset:1px}
+.paper2-workspace-toolbar button:disabled{opacity:.4;cursor:not-allowed}
+.paper2-workspace-help{margin:6px 0 10px;font-size:.86rem;line-height:1.5;opacity:.78}
+.paper2-workspace-status{font-size:.8rem;opacity:.72;margin-top:6px}
+.paper2-construction-canvas,.paper2-graph-canvas{display:block;width:100%;height:auto;max-height:520px;border-radius:10px;cursor:crosshair;touch-action:none;color:inherit}
+.paper2-tile-grid{display:grid;grid-template-columns:repeat(10,minmax(28px,42px));gap:4px;justify-content:start;overflow-x:auto;padding:4px 0}
+.paper2-tile-cell{aspect-ratio:1;border:1px solid color-mix(in srgb,currentColor 28%,transparent);border-radius:5px;background:transparent;color:inherit;font-size:1.05rem;display:grid;place-items:center;cursor:pointer}
+.paper2-tile-cell.white{background:color-mix(in srgb,currentColor 3%,transparent);outline:1px solid color-mix(in srgb,currentColor 58%,transparent)}
+.paper2-tile-cell.shaded{background:currentColor;color:color-mix(in srgb,currentColor 0%,transparent)}
+.paper2-axis-setup{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+.paper2-axis-setup label{display:flex;align-items:center;gap:7px;font-size:.83rem;font-weight:700}
+.paper2-axis-setup select{border:1px solid currentColor;border-radius:8px;background:transparent;color:inherit;padding:6px 8px;font:inherit}
+.paper2-graph-answer-fields{margin-top:12px}
+.paper2-review-part.is-partial{border-color:color-mix(in srgb,currentColor 55%,transparent)}
+.paper2-review-part.is-partial .paper2-review-part-head span{font-weight:800}
+@media (max-width:700px){.paper2-rich-fields{grid-template-columns:1fr}.paper2-workspace{padding:9px}.paper2-tile-grid{grid-template-columns:repeat(10,32px)}.paper2-axis-setup{display:grid;grid-template-columns:1fr 1fr}}
+.paper2-rubric-breakdown{display:grid;gap:7px;margin:12px 0;padding:10px 12px;border:1px solid color-mix(in srgb,currentColor 20%,transparent);border-radius:10px}
+.paper2-rubric-breakdown>span{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;opacity:.7}
+.paper2-rubric-breakdown>div{display:grid;grid-template-columns:22px 1fr auto;gap:8px;align-items:center;font-size:.86rem}
+.paper2-rubric-breakdown>div.missed{opacity:.65}
+
+/* SPARK Paper 2 V5.2 CXC-style bank + workspace usability */
+.paper2-diagram {
+  margin: 14px 0 18px;
+  display: flex;
+  justify-content: center;
+  color: inherit;
+}
+.paper2-diagram svg {
+  max-width: 100%;
+  height: auto;
+  color: inherit;
+}
+.paper2-workspace-guide {
+  margin: 0 0 12px;
+  border: 1px solid var(--paper-border, rgba(8,26,61,.14));
+  border-radius: 12px;
+  background: rgba(20,184,166,.045);
+  overflow: hidden;
+}
+.paper2-workspace-guide summary {
+  cursor: pointer;
+  padding: 11px 13px;
+  font-weight: 700;
+  font-size: 13px;
+  user-select: none;
+}
+.paper2-workspace-guide > div {
+  padding: 0 13px 12px;
+  display: grid;
+  gap: 7px;
+}
+.paper2-workspace-guide p {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+.paper2-workspace-guide-note {
+  opacity: .76;
+}
+.paper2-tool-instruction {
+  margin: 10px 0;
+  padding: 9px 11px;
+  border-radius: 10px;
+  background: rgba(15,118,110,.07);
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+.paper2-tool-instruction strong {
+  margin-left: 6px;
+}
+.paper2-graph-crosshair line,
+.paper2-snap-crosshair line {
+  opacity: .42;
+  pointer-events: none;
+}
+.paper2-plotted-points {
+  margin-top: 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 12px;
+}
+.paper2-plotted-points > span {
+  font-weight: 700;
+  padding-top: 5px;
+}
+.paper2-plotted-points > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.paper2-plotted-points button {
+  border: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+  opacity: .78;
+  border-radius: 999px;
+  padding: 4px 8px;
+  font: inherit;
+  cursor: pointer;
+}
+.paper2-plotted-points button:hover,
+.paper2-plotted-points button:focus-visible {
+  opacity: 1;
+}
+.paper2-protractor-measure text {
+  font-weight: 700;
+}
+@media (max-width: 640px) {
+  .paper2-workspace-guide summary { font-size: 12.5px; }
+  .paper2-plotted-points { display: block; }
+  .paper2-plotted-points > div { margin-top: 6px; }
+}

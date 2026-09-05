@@ -330,6 +330,60 @@ function equationsEquivalent(aRaw, bRaw) {
   return valid >= 5 && ratio !== null;
 }
 
+function parseRelation(raw) {
+  const s = clean(raw).replace(/≤/g, "<=").replace(/≥/g, ">=");
+  const match = s.match(/^(.*?)(<=|>=|<|>)(.*)$/);
+  if (!match) return null;
+  const left = parseExpression(match[1]);
+  const right = parseExpression(match[3]);
+  if (!left || !right) return null;
+  return { left, right, op: match[2] };
+}
+
+function flipRelation(op) {
+  if (op === "<") return ">";
+  if (op === ">") return "<";
+  if (op === "<=") return ">=";
+  if (op === ">=") return "<=";
+  return op;
+}
+
+function relationsEquivalent(aRaw, bRaw) {
+  const a = parseRelation(aRaw);
+  const b = parseRelation(bRaw);
+  if (!a || !b) return null;
+  const strictA = a.op === "<" || a.op === ">";
+  const strictB = b.op === "<" || b.op === ">";
+  if (strictA !== strictB) return false;
+  const vars = [...new Set([
+    ...variablesInAst(a.left), ...variablesInAst(a.right),
+    ...variablesInAst(b.left), ...variablesInAst(b.right),
+  ])].sort();
+  if (!vars.length || vars.length > 5) return null;
+  let ratio = null;
+  let valid = 0;
+  for (const env of sampleEnvironments(vars)) {
+    const av = equationResidual(a, env);
+    const bv = equationResidual(b, env);
+    if (!Number.isFinite(av) || !Number.isFinite(bv)) continue;
+    if (Math.abs(av) < 1e-9 && Math.abs(bv) < 1e-9) continue;
+    if (Math.abs(av) < 1e-9 || Math.abs(bv) < 1e-9) return false;
+    const currentRatio = av / bv;
+    if (!Number.isFinite(currentRatio) || Math.abs(currentRatio) < 1e-12) return false;
+    if (ratio === null) ratio = currentRatio;
+    else if (!numbersClose(currentRatio, ratio, { relativeTolerance: 1e-8 })) return false;
+    valid += 1;
+  }
+  if (valid < 5 || ratio === null) return null;
+  const bOpInAOrientation = ratio < 0 ? flipRelation(b.op) : b.op;
+  return a.op === bOpInAOrientation;
+}
+
+function looksCompletedSquare(raw) {
+  const s = clean(raw).replace(/²/g, "^2").replace(/\s+/g, "");
+  return /\([^()]*[a-zA-Z][^()]*\)\^2/.test(s);
+}
+
 function looksFactorised(raw) {
   const s = clean(raw).replace(/\s+/g, "");
   return /(?:\d|[a-zA-Z]|\))\(/.test(s) || /\)\(/.test(s);
@@ -350,7 +404,10 @@ function inferOptions(question = {}) {
   const answerType = question.answerType ?? question.answer_type ?? question.type ?? null;
   let requiredForm = question.requiredForm ?? question.required_form ?? null;
   if (!requiredForm && /factoris(?:e|ed|ation)|factorize|factorized/i.test(prompt)) requiredForm = "factorised";
-  if (!requiredForm && /fraction[^.]*simplest form|simplest form[^.]*fraction/i.test(prompt)) requiredForm = "simplified_fraction";
+  if (!requiredForm && /fraction[^.]*simplest form|simplest form[^.]*fraction/i.test(prompt)) {
+    const expectedForForm = String(question.answer ?? question.expectedAnswer ?? question.expected_answer ?? "");
+    if (parseSimpleIntegerFraction(expectedForForm)) requiredForm = "simplified_fraction";
+  }
   if (!requiredForm && /form\s+y\s*=\s*mx\s*\+\s*c/i.test(prompt)) requiredForm = "slope_intercept";
 
   let decimalPlaces = Number.isInteger(question.decimalPlaces) ? question.decimalPlaces : null;
@@ -388,6 +445,7 @@ function enforceRequiredForm(userRaw, requiredForm) {
     return Boolean(fraction?.reduced);
   }
   if (requiredForm === "slope_intercept") return isSlopeInterceptForm(userRaw);
+  if (requiredForm === "completed_square") return looksCompletedSquare(userRaw);
   return true;
 }
 
@@ -410,6 +468,11 @@ function compareOne(userRaw, expectedRaw, options = {}) {
 
   const numeric = candidateNumbersMatch(userRaw, expectedRaw, options);
   if (numeric !== null) return numeric ? "correct" : "incorrect";
+
+  if (options.answerType === "inequality" || /[<>≤≥]/.test(userRaw + expectedRaw)) {
+    const relations = relationsEquivalent(userRaw, expectedRaw);
+    if (relations !== null) return relations ? "correct" : "incorrect";
+  }
 
   if (userRaw.includes("=") && expectedRaw.includes("=")) {
     if (options.requiredForm === "slope_intercept") {

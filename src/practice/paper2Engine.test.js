@@ -8,7 +8,7 @@ import {
   validatePaper2Exam,
 } from "./paper2Engine";
 
-test("Paper 2 bank contains 100 original structured question templates", () => {
+test("Paper 2 bank contains 100 rebuilt structured question templates", () => {
   expect(PAPER2_TEMPLATE_COUNT).toBe(100);
 });
 

@@ -189,7 +189,13 @@ function formatCore(escaped, store) {
 
 export function formatMathHtml(value) {
   const store = createTokenStore();
-  const escaped = escapeHtml(value);
+  // Normalize ASCII comparison shortcuts before escaping. If "<" is escaped
+  // first, "<=" becomes "&lt;=" and the operator replacement never sees it.
+  const normalized = String(value ?? "")
+    .replace(/<=/g, "≤")
+    .replace(/>=/g, "≥")
+    .replace(/!=/g, "≠");
+  const escaped = escapeHtml(normalized);
   const formatted = formatCore(escaped, store);
   return store.restore(formatted);
 }
