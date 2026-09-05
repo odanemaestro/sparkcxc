@@ -201,12 +201,13 @@ function Paper2Stimulus({ stimulus }) {
 }
 
 function QuestionPrompt({ question }) {
+  const firstPartOwnsTable = question?.parts?.[0]?.responseSchema?.type === "table";
   return (
     <div className="paper2-question-copy">
       {question.stem && <MathText as="p" className="paper2-stem">{question.stem}</MathText>}
       <QuestionDiagram diagram={question.diagram} />
       <Paper2Stimulus stimulus={question.stimulus} />
-      <QuestionTable table={question.table} />
+      {!firstPartOwnsTable && <QuestionTable table={question.table} />}
     </div>
   );
 }

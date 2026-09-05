@@ -734,3 +734,16 @@
   .paper2-plotted-points { display: block; }
   .paper2-plotted-points > div { margin-top: 6px; }
 }
+
+/* Paper 2 V5.2.2: fillable exam tables */
+.paper2-table-workspace{margin-top:12px}
+.paper2-table-input-wrap{width:100%;overflow-x:auto;border:1px solid #d9e2ec;border-radius:12px;background:#fff}
+.paper2-input-table{width:100%;min-width:520px;margin:0;border:0;border-collapse:collapse}
+.paper2-input-table th,.paper2-input-table td{border:1px solid #d6dee8;padding:8px 10px;text-align:center;vertical-align:middle}
+.paper2-input-table thead th{background:#f4f7fa;color:#203a63;font-size:12px;font-weight:800}
+.paper2-input-table td{background:#fff;color:#263a5a}
+.paper2-input-table .paper2-table-editable{padding:3px;background:#f9fffd}
+.paper2-input-table .paper2-table-editable input{width:100%;min-width:72px;height:38px;border:1px solid #a9c7c1;border-radius:7px;background:#fff;color:#17335e;text-align:center;font:700 15px 'Cambria Math','STIX Two Math','Times New Roman',serif;outline:none}
+.paper2-input-table .paper2-table-editable input:focus{border-color:var(--paper-teal);box-shadow:0 0 0 3px rgba(13,148,136,.12)}
+.paper2-input-table .paper2-table-editable input::placeholder{color:#9aa8b9;font-weight:500}
+@media(max-width:680px){.paper2-table-input-wrap{margin-left:-2px;margin-right:-2px}.paper2-input-table{min-width:460px}.paper2-input-table th,.paper2-input-table td{padding:7px 8px}.paper2-input-table .paper2-table-editable input{min-width:62px}}

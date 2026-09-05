@@ -140,6 +140,45 @@ function gradeFieldCriteria(response, schema) {
   return { marks, details };
 }
 
+function tableCellSpecs(schema = {}) {
+  const specs = [];
+  (schema.rows || []).forEach((row, rowIndex) => {
+    (row || []).forEach((cell, cellIndex) => {
+      if (cell && typeof cell === "object" && !Array.isArray(cell) && cell.key) {
+        specs.push({ ...cell, rowIndex, cellIndex });
+      }
+    });
+  });
+  return specs;
+}
+
+function gradeTable(response, schema, maxMarks) {
+  const cells = responseObject(response?.cells);
+  const specs = tableCellSpecs(schema);
+  const total = specs.length;
+  if (!total) return { marks: 0, details: [] };
+  const results = specs.map(spec => {
+    const value = cells[spec.key];
+    const status = checkAnswer(value, spec.answer, fieldOptions(spec));
+    return { ...spec, value, correct: status === "correct" };
+  });
+  const correctCount = results.filter(item => item.correct).length;
+  const marks = correctCount === total
+    ? maxMarks
+    : Math.max(0, Math.min(maxMarks - 1, Math.floor((correctCount * maxMarks) / total)));
+  return {
+    marks,
+    details: [{
+      kind: "table_cells",
+      label: `${correctCount} of ${total} required table entries correct`,
+      maxMarks,
+      earned: marks > 0,
+      marks,
+      cells: results.map(item => ({ key: item.key, correct: item.correct })),
+    }],
+  };
+}
+
 function distance(a, b) {
   return Math.hypot(Number(a.x) - Number(b.x), Number(a.y) - Number(b.y));
 }
@@ -330,6 +369,10 @@ export function isPaper2PartComplete(part, value) {
   if (schema.type === "fields") {
     return (schema.fields || []).filter(field => field.required !== false).every(field => text(response[field.id]) !== "");
   }
+  if (schema.type === "table") {
+    const cells = responseObject(response.cells);
+    return tableCellSpecs(schema).filter(cell => cell.required !== false).every(cell => text(cells[cell.key]) !== "");
+  }
   if (schema.type === "construction_triangle") return Array.isArray(response.objects) && response.objects.length >= 3;
   if (schema.type === "tile_pattern") return Array.isArray(response.cells) && response.cells.some(cell => cell?.state && cell.state !== "empty");
   if (schema.type === "graph") {
@@ -403,6 +446,12 @@ export function buildCanonicalPaper2Response(part = {}) {
       }
     }
     return response;
+  }
+
+  if (schema.type === "table") {
+    const cells = {};
+    tableCellSpecs(schema).forEach(cell => { cells[cell.key] = String(cell.answer ?? ""); });
+    return { cells };
   }
 
   if (schema.type === "construction_triangle") {
@@ -499,6 +548,7 @@ export function gradeRichPaper2Part(userInput, part = {}) {
   const response = responseObject(userInput);
   let graded = { marks: 0, details: [] };
   if (schema.type === "fields") graded = gradeFieldCriteria(response, schema);
+  else if (schema.type === "table") graded = gradeTable(response, schema, maxMarks);
   else if (schema.type === "construction_triangle") graded = gradeConstruction(response, schema);
   else if (schema.type === "tile_pattern") graded = gradeTiles(response, schema);
   else if (schema.type === "graph") graded = gradeGraph(response, schema);
@@ -516,6 +566,10 @@ export function paper2ResponseSummary(value, part = {}) {
   const schema = part.responseSchema;
   if (schema.type === "fields") {
     return (schema.fields || []).map(field => `${field.label}: ${text(response[field.id]) || "—"}`).join(" · ");
+  }
+  if (schema.type === "table") {
+    const cells = responseObject(response.cells);
+    return `Table entries: ${tableCellSpecs(schema).map(cell => text(cells[cell.key]) || "—").join(", ")}`;
   }
   if (schema.type === "construction_triangle") {
     const objects = Array.isArray(response.objects) ? response.objects : [];

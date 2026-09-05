@@ -6794,4 +6794,898 @@ export const PAPER2_QUESTION_BANK_V2 = [
   }
 ];
 
+
+// V5.2.2: table-completion questions use one input per blank cell instead of
+// asking students to type an ordered list into a single answer box.
+const PAPER2_TABLE_RESPONSE_SCHEMAS_V522 = {
+  "p2-q4-v9": {
+    "a": {
+      "type": "table",
+      "headers": [
+        "x",
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2"
+      ],
+      "rows": [
+        [
+          "f(x)",
+          {
+            "key": "f0",
+            "answer": "-5",
+            "answerType": "numeric",
+            "label": "f(-2)",
+            "inputMode": "decimal"
+          },
+          {
+            "key": "f1",
+            "answer": "-3",
+            "answerType": "numeric",
+            "label": "f(-1)",
+            "inputMode": "decimal"
+          },
+          {
+            "key": "f2",
+            "answer": "-1",
+            "answerType": "numeric",
+            "label": "f(0)",
+            "inputMode": "decimal"
+          },
+          {
+            "key": "f3",
+            "answer": "1",
+            "answerType": "numeric",
+            "label": "f(1)",
+            "inputMode": "decimal"
+          },
+          {
+            "key": "f4",
+            "answer": "3",
+            "answerType": "numeric",
+            "label": "f(2)",
+            "inputMode": "decimal"
+          }
+        ]
+      ],
+      "blankCount": 5
+    }
+  },
+  "p2-q4-v10": {
+    "a": {
+      "type": "table",
+      "headers": [
+        "x",
+        "-1",
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "rows": [
+        [
+          "f(x)",
+          {
+            "key": "f0",
+            "answer": "7",
+            "answerType": "numeric",
+            "label": "f(-1)",
+            "inputMode": "decimal"
+          },
+          {
+            "key": "f1",
+            "answer": "4",
+            "answerType": "numeric",
+            "label": "f(0)",
+            "inputMode": "decimal"
+          },
+          {
+            "key": "f2",
+            "answer": "1",
+            "answerType": "numeric",
+            "label": "f(1)",
+            "inputMode": "decimal"
+          },
+          {
+            "key": "f3",
+            "answer": "-2",
+            "answerType": "numeric",
+            "label": "f(2)",
+            "inputMode": "decimal"
+          },
+          {
+            "key": "f4",
+            "answer": "-5",
+            "answerType": "numeric",
+            "label": "f(3)",
+            "inputMode": "decimal"
+          }
+        ]
+      ],
+      "blankCount": 5
+    }
+  },
+  "p2-q5-v1": {
+    "c": {
+      "type": "table",
+      "headers": [
+        "Mass (kg)",
+        "Frequency",
+        "Cumulative frequency"
+      ],
+      "rows": [
+        [
+          "1 - 5",
+          "4",
+          {
+            "key": "cf0",
+            "answer": "4",
+            "answerType": "numeric",
+            "label": "Cumulative frequency for 1 - 5",
+            "inputMode": "decimal"
+          }
+        ],
+        [
+          "6 - 10",
+          "8",
+          {
+            "key": "cf1",
+            "answer": "12",
+            "answerType": "numeric",
+            "label": "Cumulative frequency for 6 - 10",
+            "inputMode": "decimal"
+          }
+        ],
+        [
+          "11 - 15",
+          "12",
+          {
+            "key": "cf2",
+            "answer": "24",
+            "answerType": "numeric",
+            "label": "Cumulative frequency for 11 - 15",
+            "inputMode": "decimal"
+          }
+        ],
+        [
+          "16 - 20",
+          "16",
+          {
+            "key": "cf3",
+            "answer": "40",
+            "answerType": "numeric",
+            "label": "Cumulative frequency for 16 - 20",
+            "inputMode": "decimal"
+          }
+        ]
+      ],
+      "blankCount": 4
+    }
+  },
+  "p2-q5-v2": {
+    "c": {
+      "type": "table",
+      "headers": [
+        "Mass (kg)",
+        "Frequency",
+        "Cumulative frequency"
+      ],
+      "rows": [
+        [
+          "1 - 5",
+          "5",
+          {
+            "key": "cf0",
+            "answer": "5",
+            "answerType": "numeric",
+            "label": "Cumulative frequency for 1 - 5",
+            "inputMode": "decimal"
+          }
+        ],
+        [
+          "6 - 10",
+          "9",
+          {
+            "key": "cf1",
+            "answer": "14",
+            "answerType": "numeric",
+            "label": "Cumulative frequency for 6 - 10",
+            "inputMode": "decimal"
+          }
+        ],
+        [
+          "11 - 15",
+          "12",
+          {
+            "key": "cf2",
+            "answer": "26",
+            "answerType": "numeric",
+            "label": "Cumulative frequency for 11 - 15",
+            "inputMode": "decimal"
+          }
+        ],
+        [
+          "16 - 20",
+          "9",
+          {
+            "key": "cf3",
+            "answer": "35",
+            "answerType": "numeric",
+            "label": "Cumulative frequency for 16 - 20",
+            "inputMode": "decimal"
+          }
+        ],
+        [
+          "21 - 25",
+          "5",
+          {
+            "key": "cf4",
+            "answer": "40",
+            "answerType": "numeric",
+            "label": "Cumulative frequency for 21 - 25",
+            "inputMode": "decimal"
+          }
+        ]
+      ],
+      "blankCount": 5
+    }
+  },
+  "p2-q5-v3": {
+    "c": {
+      "type": "table",
+      "headers": [
+        "Mass (kg)",
+        "Frequency",
+        "Cumulative frequency"
+      ],
+      "rows": [
+        [
+          "1 - 5",
+          "3",
+          {
+            "key": "cf0",
+            "answer": "3",
+            "answerType": "numeric",
+            "label": "Cumulative frequency for 1 - 5",
+            "inputMode": "decimal"
+          }
+        ],
+        [
+          "6 - 10",
+          "6",
+          {
+            "key": "cf1",
+            "answer": "9",
+            "answerType": "numeric",
+            "label": "Cumulative frequency for 6 - 10",
+            "inputMode": "decimal"
+          }
+        ],
+        [
+          "11 - 15",
+          "16",
+          {
+            "key": "cf2",
+            "answer": "25",
+            "answerType": "numeric",
+            "label": "Cumulative frequency for 11 - 15",
+            "inputMode": "decimal"
+          }
+        ],
+        [
+          "16 - 20",
+          "6",
+          {
+            "key": "cf3",
+            "answer": "31",
+            "answerType": "numeric",
+            "label": "Cumulative frequency for 16 - 20",
+            "inputMode": "decimal"
+          }
+        ],
+        [
+          "21 - 25",
+          "3",
+          {
+            "key": "cf4",
+            "answer": "34",
+            "answerType": "numeric",
+            "label": "Cumulative frequency for 21 - 25",
+            "inputMode": "decimal"
+          }
+        ]
+      ],
+      "blankCount": 5
+    }
+  },
+  "p2-q5-v10": {
+    "c": {
+      "type": "table",
+      "headers": [
+        "Mass (kg)",
+        "Frequency",
+        "Cumulative frequency"
+      ],
+      "rows": [
+        [
+          "1 - 5",
+          "3",
+          {
+            "key": "cf0",
+            "answer": "3",
+            "answerType": "numeric",
+            "label": "Cumulative frequency for 1 - 5",
+            "inputMode": "decimal"
+          }
+        ],
+        [
+          "6 - 10",
+          "3",
+          {
+            "key": "cf1",
+            "answer": "6",
+            "answerType": "numeric",
+            "label": "Cumulative frequency for 6 - 10",
+            "inputMode": "decimal"
+          }
+        ],
+        [
+          "11 - 15",
+          "3",
+          {
+            "key": "cf2",
+            "answer": "9",
+            "answerType": "numeric",
+            "label": "Cumulative frequency for 11 - 15",
+            "inputMode": "decimal"
+          }
+        ],
+        [
+          "16 - 20",
+          "9",
+          {
+            "key": "cf3",
+            "answer": "18",
+            "answerType": "numeric",
+            "label": "Cumulative frequency for 16 - 20",
+            "inputMode": "decimal"
+          }
+        ],
+        [
+          "21 - 25",
+          "12",
+          {
+            "key": "cf4",
+            "answer": "30",
+            "answerType": "numeric",
+            "label": "Cumulative frequency for 21 - 25",
+            "inputMode": "decimal"
+          }
+        ]
+      ],
+      "blankCount": 5
+    }
+  },
+  "p2-q5-v4": {
+    "a": {
+      "type": "table",
+      "headers": [
+        "Mark",
+        "Frequency",
+        "Cumulative frequency"
+      ],
+      "rows": [
+        [
+          "1 - 10",
+          "5",
+          "5"
+        ],
+        [
+          "11 - 20",
+          "13",
+          {
+            "key": "cf1",
+            "answer": "18",
+            "answerType": "numeric",
+            "label": "Cumulative frequency for 11 - 20",
+            "inputMode": "decimal"
+          }
+        ],
+        [
+          "21 - 30",
+          "20",
+          {
+            "key": "cf2",
+            "answer": "38",
+            "answerType": "numeric",
+            "label": "Cumulative frequency for 21 - 30",
+            "inputMode": "decimal"
+          }
+        ],
+        [
+          "31 - 40",
+          "14",
+          {
+            "key": "cf3",
+            "answer": "52",
+            "answerType": "numeric",
+            "label": "Cumulative frequency for 31 - 40",
+            "inputMode": "decimal"
+          }
+        ],
+        [
+          "41 - 50",
+          "8",
+          {
+            "key": "cf4",
+            "answer": "60",
+            "answerType": "numeric",
+            "label": "Cumulative frequency for 41 - 50",
+            "inputMode": "decimal"
+          }
+        ]
+      ],
+      "blankCount": 4
+    }
+  },
+  "p2-q5-v5": {
+    "a": {
+      "type": "table",
+      "headers": [
+        "Mark",
+        "Frequency",
+        "Cumulative frequency"
+      ],
+      "rows": [
+        [
+          "1 - 10",
+          "4",
+          "4"
+        ],
+        [
+          "11 - 20",
+          "10",
+          {
+            "key": "cf1",
+            "answer": "14",
+            "answerType": "numeric",
+            "label": "Cumulative frequency for 11 - 20",
+            "inputMode": "decimal"
+          }
+        ],
+        [
+          "21 - 30",
+          "16",
+          {
+            "key": "cf2",
+            "answer": "30",
+            "answerType": "numeric",
+            "label": "Cumulative frequency for 21 - 30",
+            "inputMode": "decimal"
+          }
+        ],
+        [
+          "31 - 40",
+          "22",
+          {
+            "key": "cf3",
+            "answer": "52",
+            "answerType": "numeric",
+            "label": "Cumulative frequency for 31 - 40",
+            "inputMode": "decimal"
+          }
+        ],
+        [
+          "41 - 50",
+          "18",
+          {
+            "key": "cf4",
+            "answer": "70",
+            "answerType": "numeric",
+            "label": "Cumulative frequency for 41 - 50",
+            "inputMode": "decimal"
+          }
+        ],
+        [
+          "51 - 60",
+          "10",
+          {
+            "key": "cf5",
+            "answer": "80",
+            "answerType": "numeric",
+            "label": "Cumulative frequency for 51 - 60",
+            "inputMode": "decimal"
+          }
+        ]
+      ],
+      "blankCount": 5
+    }
+  },
+  "p2-q7-v1": {
+    "a": {
+      "type": "table",
+      "headers": [
+        "Design",
+        "Shaded tiles",
+        "Unshaded tiles",
+        "Total tiles"
+      ],
+      "rows": [
+        [
+          "1",
+          "1",
+          "4",
+          "5"
+        ],
+        [
+          "2",
+          "4",
+          "8",
+          "12"
+        ],
+        [
+          "3",
+          "9",
+          "12",
+          "21"
+        ],
+        [
+          "4",
+          {
+            "key": "r3c1",
+            "answer": "16",
+            "answerType": "numeric",
+            "label": "Shaded tiles for 4",
+            "inputMode": "decimal"
+          },
+          {
+            "key": "r3c2",
+            "answer": "16",
+            "answerType": "numeric",
+            "label": "Unshaded tiles for 4",
+            "inputMode": "decimal"
+          },
+          {
+            "key": "r3c3",
+            "answer": "32",
+            "answerType": "numeric",
+            "label": "Total tiles for 4",
+            "inputMode": "decimal"
+          }
+        ]
+      ],
+      "blankCount": 3
+    }
+  },
+  "p2-q7-v2": {
+    "a": {
+      "type": "table",
+      "headers": [
+        "Design",
+        "Shaded tiles",
+        "Unshaded tiles",
+        "Total tiles"
+      ],
+      "rows": [
+        [
+          "1",
+          "1",
+          "4",
+          "5"
+        ],
+        [
+          "2",
+          "4",
+          "8",
+          "12"
+        ],
+        [
+          "3",
+          "9",
+          "12",
+          "21"
+        ],
+        [
+          "4",
+          {
+            "key": "r3c1",
+            "answer": "16",
+            "answerType": "numeric",
+            "label": "Shaded tiles for 4",
+            "inputMode": "decimal"
+          },
+          {
+            "key": "r3c2",
+            "answer": "16",
+            "answerType": "numeric",
+            "label": "Unshaded tiles for 4",
+            "inputMode": "decimal"
+          },
+          {
+            "key": "r3c3",
+            "answer": "32",
+            "answerType": "numeric",
+            "label": "Total tiles for 4",
+            "inputMode": "decimal"
+          }
+        ]
+      ],
+      "blankCount": 3
+    }
+  },
+  "p2-q7-v3": {
+    "a": {
+      "type": "table",
+      "headers": [
+        "Design",
+        "Shaded tiles",
+        "Unshaded tiles",
+        "Total tiles"
+      ],
+      "rows": [
+        [
+          "1",
+          "1",
+          "4",
+          "5"
+        ],
+        [
+          "2",
+          "4",
+          "8",
+          "12"
+        ],
+        [
+          "3",
+          "9",
+          "12",
+          "21"
+        ],
+        [
+          "4",
+          {
+            "key": "r3c1",
+            "answer": "16",
+            "answerType": "numeric",
+            "label": "Shaded tiles for 4",
+            "inputMode": "decimal"
+          },
+          {
+            "key": "r3c2",
+            "answer": "16",
+            "answerType": "numeric",
+            "label": "Unshaded tiles for 4",
+            "inputMode": "decimal"
+          },
+          {
+            "key": "r3c3",
+            "answer": "32",
+            "answerType": "numeric",
+            "label": "Total tiles for 4",
+            "inputMode": "decimal"
+          }
+        ]
+      ],
+      "blankCount": 3
+    }
+  },
+  "p2-q7-v4": {
+    "a": {
+      "type": "table",
+      "headers": [
+        "Figure",
+        "Dots in top row",
+        "Dots in bottom row",
+        "Total dots"
+      ],
+      "rows": [
+        [
+          "1",
+          "1",
+          "2",
+          "3"
+        ],
+        [
+          "2",
+          "2",
+          "3",
+          "5"
+        ],
+        [
+          "3",
+          "3",
+          "4",
+          "7"
+        ],
+        [
+          "4",
+          {
+            "key": "r3c1",
+            "answer": "4",
+            "answerType": "numeric",
+            "label": "Dots in top row for 4",
+            "inputMode": "decimal"
+          },
+          {
+            "key": "r3c2",
+            "answer": "5",
+            "answerType": "numeric",
+            "label": "Dots in bottom row for 4",
+            "inputMode": "decimal"
+          },
+          {
+            "key": "r3c3",
+            "answer": "9",
+            "answerType": "numeric",
+            "label": "Total dots for 4",
+            "inputMode": "decimal"
+          }
+        ]
+      ],
+      "blankCount": 3
+    }
+  },
+  "p2-q7-v5": {
+    "a": {
+      "type": "table",
+      "headers": [
+        "Figure",
+        "Dots in top row",
+        "Dots in bottom row",
+        "Total dots"
+      ],
+      "rows": [
+        [
+          "1",
+          "1",
+          "2",
+          "3"
+        ],
+        [
+          "2",
+          "2",
+          "3",
+          "5"
+        ],
+        [
+          "3",
+          "3",
+          "4",
+          "7"
+        ],
+        [
+          "4",
+          {
+            "key": "r3c1",
+            "answer": "4",
+            "answerType": "numeric",
+            "label": "Dots in top row for 4",
+            "inputMode": "decimal"
+          },
+          {
+            "key": "r3c2",
+            "answer": "5",
+            "answerType": "numeric",
+            "label": "Dots in bottom row for 4",
+            "inputMode": "decimal"
+          },
+          {
+            "key": "r3c3",
+            "answer": "9",
+            "answerType": "numeric",
+            "label": "Total dots for 4",
+            "inputMode": "decimal"
+          }
+        ]
+      ],
+      "blankCount": 3
+    }
+  },
+  "p2-q8-v4": {
+    "a": {
+      "type": "table",
+      "headers": [
+        "x",
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "rows": [
+        [
+          "y",
+          "5",
+          {
+            "key": "r0c2",
+            "answer": "0",
+            "answerType": "numeric",
+            "label": "y when x = -1",
+            "inputMode": "decimal"
+          },
+          "-3",
+          {
+            "key": "r0c4",
+            "answer": "-4",
+            "answerType": "numeric",
+            "label": "y when x = 1",
+            "inputMode": "decimal"
+          },
+          "-3",
+          "0",
+          {
+            "key": "r0c7",
+            "answer": "5",
+            "answerType": "numeric",
+            "label": "y when x = 4",
+            "inputMode": "decimal"
+          }
+        ]
+      ],
+      "blankCount": 3
+    }
+  },
+  "p2-q8-v5": {
+    "a": {
+      "type": "table",
+      "headers": [
+        "x",
+        "-3",
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "rows": [
+        [
+          "y",
+          "7",
+          {
+            "key": "r0c2",
+            "answer": "0",
+            "answerType": "numeric",
+            "label": "y when x = -2",
+            "inputMode": "decimal"
+          },
+          "-5",
+          {
+            "key": "r0c4",
+            "answer": "-8",
+            "answerType": "numeric",
+            "label": "y when x = 0",
+            "inputMode": "decimal"
+          },
+          "-9",
+          "-8",
+          "-5",
+          "0",
+          {
+            "key": "r0c9",
+            "answer": "7",
+            "answerType": "numeric",
+            "label": "y when x = 5",
+            "inputMode": "decimal"
+          }
+        ]
+      ],
+      "blankCount": 3
+    }
+  }
+};
+
+for (const question of PAPER2_QUESTION_BANK_V2) {
+  const partSchemas = PAPER2_TABLE_RESPONSE_SCHEMAS_V522[question.question_id];
+  if (!partSchemas) continue;
+  for (const part of question.parts || []) {
+    if (partSchemas[part.id]) part.responseSchema = partSchemas[part.id];
+  }
+}
+
 export default PAPER2_QUESTION_BANK_V2;

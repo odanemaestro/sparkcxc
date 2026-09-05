@@ -85,7 +85,7 @@ function formatRoots(text, store, formatInner) {
 }
 
 function formatMatrices(text, store) {
-  const matrixPattern = /\[((?:\[[^\]]*\],?)+)\]/g;
+  const matrixPattern = /\[((?:\s*\[[^\]]*\]\s*,?)+)\s*\]/g;
   const rowPattern = /\[([^\]]*)\]/g;
 
   return text.replace(matrixPattern, (match, inner) => {

@@ -93,6 +93,52 @@ function FieldsResponse({ schema, value, onChange }) {
   );
 }
 
+function TableResponse({ schema, value, onChange }) {
+  const response = safeObject(value);
+  const cells = safeObject(response.cells);
+  const update = (key, next) => onChange({ ...response, cells: { ...cells, [key]: next } });
+  return (
+    <div className="paper2-workspace paper2-table-workspace">
+      <p className="paper2-workspace-help">Complete the blank cells directly in the table. Each box is saved as you type.</p>
+      <div className="paper2-table-input-wrap">
+        <table className="paper2-data-table paper2-input-table">
+          {(schema.headers || []).length > 0 && (
+            <thead><tr>{schema.headers.map((header, index) => <th key={`${header}-${index}`}><MathText>{header}</MathText></th>)}</tr></thead>
+          )}
+          <tbody>
+            {(schema.rows || []).map((row, rowIndex) => (
+              <tr key={`row-${rowIndex}`}>
+                {row.map((cell, cellIndex) => {
+                  const editable = cell && typeof cell === "object" && !Array.isArray(cell) && cell.key;
+                  return (
+                    <td key={`${rowIndex}-${cellIndex}`} className={editable ? "paper2-table-editable" : ""}>
+                      {editable ? (
+                        <input
+                          type="text"
+                          inputMode={cell.inputMode || "text"}
+                          autoComplete="off"
+                          spellCheck="false"
+                          value={cells[cell.key] ?? ""}
+                          onChange={event => update(cell.key, event.target.value)}
+                          placeholder={cell.placeholder || "?"}
+                          aria-label={cell.label || `Table row ${rowIndex + 1}, column ${cellIndex + 1}`}
+                        />
+                      ) : <MathText>{cell ?? ""}</MathText>}
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="paper2-workspace-status">
+        {Object.values(cells).filter(item => String(item ?? "").trim()).length} of {Number(schema.blankCount || 0)} table entr{Number(schema.blankCount || 0) === 1 ? "y" : "ies"} filled
+      </div>
+    </div>
+  );
+}
+
 function WorkspaceGuide({ type, protractorAllowed = false, rulerCompassOnly = false }) {
   if (type === "graph") {
     return (
@@ -382,6 +428,7 @@ export default function Paper2ResponseInput({ part, value, onChange }) {
   const schema = part?.responseSchema;
   if (!schema) return null;
   if (schema.type === "fields") return <FieldsResponse schema={schema} value={value} onChange={onChange} />;
+  if (schema.type === "table") return <TableResponse schema={schema} value={value} onChange={onChange} />;
   if (schema.type === "construction_triangle") return <ConstructionWorkspace schema={schema} value={value} onChange={onChange} />;
   if (schema.type === "tile_pattern") return <TilePatternWorkspace schema={schema} value={value} onChange={onChange} />;
   if (schema.type === "graph") return <GraphWorkspace schema={schema} value={value} onChange={onChange} />;
