@@ -114,9 +114,13 @@ function formatPowersAndSubscripts(text, store) {
   let output = text;
 
   output = output.replace(
-    /((?:\([^()\n]{1,60}\)|[A-Za-z0-9πθ₀-₉)\]]+))\^(-?\d+(?:\.\d+)?|\([^()\n]+\)|[A-Za-z]+)/g,
+    /((?:\([^()\n]{1,60}\)|[A-Za-z0-9πθ₀-₉)\]]+))\^([−–—-]?\d+(?:\.\d+)?|\([^()\n]+\)|[A-Za-z]+)/g,
     (_, base, exponent) => {
-      const clean = exponent.startsWith("(") && exponent.endsWith(")") ? exponent.slice(1, -1) : exponent;
+      const unwrapped = exponent.startsWith("(") && exponent.endsWith(")") ? exponent.slice(1, -1) : exponent;
+      // Question-bank content uses both the keyboard hyphen and typographic
+      // minus characters. Once the exponent has been recognized, normalize
+      // its leading sign so all forms render inside the <sup> element.
+      const clean = unwrapped.replace(/^[−–—]/, "−").replace(/^-/, "−");
       return `${base}${store.put(`<sup>${clean}</sup>`)}`;
     }
   );

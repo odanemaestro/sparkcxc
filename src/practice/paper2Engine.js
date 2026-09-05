@@ -1,4 +1,5 @@
-import { gradeRichPaper2Part, isPaper2PartComplete } from "./paper2RichGrader";
+import { isPaper2PartComplete } from "./paper2RichGrader";
+import { gradeCxcPaper2Part, hasPaper2FinalAnswer } from "./paper2CxcGrader";
 import { PAPER2_QUESTION_BANK } from "./paper2QuestionBank";
 
 export const PAPER2_DURATION_SECONDS = 160 * 60;
@@ -87,8 +88,8 @@ export function validatePaper2Exam(exam) {
   };
 }
 
-export function gradePaper2Part(userInput, part) {
-  return gradeRichPaper2Part(userInput, part);
+export function gradePaper2Part(userInput, part, earlier = {}) {
+  return gradeCxcPaper2Part(userInput, part, earlier);
 }
 
 export function calculatePaper2Mark(answers = {}, questions = []) {
@@ -96,18 +97,24 @@ export function calculatePaper2Mark(answers = {}, questions = []) {
   let answeredParts = 0;
   let correctParts = 0;
   let totalParts = 0;
+  let ecfParts = 0;
+  let ecfMarks = 0;
   const perQuestion = {};
 
   questions.forEach(question => {
     let questionScore = 0;
     let questionAnswered = 0;
     let questionCorrect = 0;
+    let questionEcf = 0;
     const partResults = {};
+    const earlier = {};
+
     (question.parts || []).forEach(part => {
       totalParts += 1;
       const value = answers?.[question.question_id]?.[part.id] ?? "";
-      const result = gradePaper2Part(value, part);
+      const result = gradePaper2Part(value, part, earlier);
       partResults[part.id] = result;
+
       if (result.status !== "blank") {
         answeredParts += 1;
         questionAnswered += 1;
@@ -116,15 +123,36 @@ export function calculatePaper2Mark(answers = {}, questions = []) {
         correctParts += 1;
         questionCorrect += 1;
       }
+      if (result.ecf) {
+        ecfParts += 1;
+        questionEcf += 1;
+        const carried = (result.criteria || []).filter(criterion => criterion.ecf)
+          .reduce((sum, criterion) => sum + Number(criterion.marks || 0), 0);
+        ecfMarks += carried;
+      }
+
       score += Number(result.marks || 0);
       questionScore += Number(result.marks || 0);
+
+      const state = {
+        value: result.value ?? null,
+        // A full ECF result is fully credited but it is still not the canonical
+        // value. Keeping that distinction allows follow-through to continue
+        // through another dependent part.
+        correct: result.canonicalCorrect !== undefined ? result.canonicalCorrect : result.correct,
+      };
+      earlier[part.id] = state;
+      const short = String(part.label || "").replace(/[()\s]/g, "").trim();
+      if (short) earlier[short] = state;
     });
+
     perQuestion[question.question_id] = {
       score: questionScore,
       marks: question.marks,
       answeredParts: questionAnswered,
       correctParts: questionCorrect,
       totalParts: question.parts?.length || 0,
+      ecfParts: questionEcf,
       parts: partResults,
     };
   });
@@ -135,11 +163,17 @@ export function calculatePaper2Mark(answers = {}, questions = []) {
     answeredParts,
     correctParts,
     totalParts,
+    ecfParts,
+    ecfMarks,
     perQuestion,
   };
 }
 
 export function isPaper2QuestionComplete(question, answers = {}) {
   const response = answers?.[question.question_id] || {};
-  return (question.parts || []).every(part => isPaper2PartComplete(part, response[part.id]));
+  return (question.parts || []).every(part => {
+    const value = response[part.id];
+    if (part.responseSchema) return isPaper2PartComplete(part, value);
+    return hasPaper2FinalAnswer(value, part);
+  });
 }

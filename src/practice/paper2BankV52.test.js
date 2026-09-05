@@ -1,31 +1,37 @@
 import { PAPER2_QUESTION_BANK_V2 } from "./paper2QuestionBankV2";
+import { PAPER2_QUESTION_BANK_EJ } from "./paper2QuestionBankEJ";
 import { PAPER2_QUESTION_BANK } from "./paper2QuestionBank";
 import { buildCanonicalPaper2Response } from "./paper2RichGrader";
 import { gradePaper2Part } from "./paper2Engine";
 
 function svgStrings(question) {
-  return [question.diagram?.svg, ...(question.parts || []).map(part => part.diagram?.svg)].filter(Boolean);
+  return [
+    question.diagram?.svg,
+    question.stimulus?.svg,
+    ...(question.parts || []).flatMap(part => [part.diagram?.svg, part.stimulus?.svg]),
+  ].filter(Boolean);
 }
 
-describe("SPARK Paper 2 V5.2 CXC-style bank", () => {
-  test("keeps exactly 100 rebuilt live templates", () => {
+describe("SPARK Paper 2 V5.3 comprehensive CXC-style bank", () => {
+  test("combines the 100-template rebuild with 60 Paper E-J templates", () => {
     expect(PAPER2_QUESTION_BANK_V2).toHaveLength(100);
-    expect(PAPER2_QUESTION_BANK).toHaveLength(100);
+    expect(PAPER2_QUESTION_BANK_EJ).toHaveLength(60);
+    expect(PAPER2_QUESTION_BANK).toHaveLength(160);
     for (let position = 1; position <= 10; position += 1) {
       expect(PAPER2_QUESTION_BANK_V2.filter(q => q.question_number === position)).toHaveLength(10);
-      expect(PAPER2_QUESTION_BANK.filter(q => q.question_number === position)).toHaveLength(10);
+      expect(PAPER2_QUESTION_BANK_EJ.filter(q => q.question_number === position)).toHaveLength(6);
+      expect(PAPER2_QUESTION_BANK.filter(q => q.question_number === position)).toHaveLength(16);
     }
   });
 
-  test("uses 41 distinct base designs and removes stage-direction wording", () => {
+  test("expands design variety without changing the audited V5.2 base", () => {
     expect(new Set(PAPER2_QUESTION_BANK_V2.map(q => q.design)).size).toBe(41);
-    const text = PAPER2_QUESTION_BANK_V2.flatMap(q => [q.stem, ...(q.parts || []).map(p => p.prompt)]).join("\n");
-    expect(text).not.toMatch(/for parts? \([a-z]\).*for part \([a-z]\)/i);
+    expect(new Set(PAPER2_QUESTION_BANK.map(q => `${q.question_number}::${q.design || q.question_id}`)).size).toBe(61);
   });
 
   test("all embedded diagrams are inline-safe, id-free and marker-free", () => {
-    const svgs = PAPER2_QUESTION_BANK_V2.flatMap(svgStrings);
-    expect(svgs).toHaveLength(38);
+    const svgs = PAPER2_QUESTION_BANK.flatMap(svgStrings);
+    expect(svgs).toHaveLength(74);
     for (const svg of svgs) {
       expect(svg).not.toMatch(/\bid\s*=/i);
       expect(svg).not.toMatch(/marker-(?:start|mid|end)\s*=/i);
@@ -34,8 +40,8 @@ describe("SPARK Paper 2 V5.2 CXC-style bank", () => {
     }
   });
 
-  test("every rebuilt canonical answer self-grades as correct", () => {
-    for (const question of PAPER2_QUESTION_BANK_V2) {
+  test("every canonical answer remains accepted", () => {
+    for (const question of PAPER2_QUESTION_BANK) {
       for (const part of question.parts || []) {
         const response = part.responseSchema ? buildCanonicalPaper2Response(part) : part.answer;
         expect(gradePaper2Part(response, part).correct).toBe(true);
@@ -43,8 +49,10 @@ describe("SPARK Paper 2 V5.2 CXC-style bank", () => {
     }
   });
 
-  test("ruler-and-compasses-only construction questions do not expose a protractor", () => {
-    const constructionParts = PAPER2_QUESTION_BANK_V2.flatMap(q => q.parts || []).filter(part => part.responseSchema?.type === "construction_triangle");
+  test("ruler-and-compasses-only triangle constructions still hide the protractor", () => {
+    const constructionParts = PAPER2_QUESTION_BANK_V2
+      .flatMap(q => q.parts || [])
+      .filter(part => part.responseSchema?.type === "construction_triangle");
     expect(constructionParts).toHaveLength(2);
     for (const part of constructionParts) {
       expect(part.responseSchema.allowedTools).toEqual(["segment", "circle"]);

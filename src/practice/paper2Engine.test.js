@@ -8,8 +8,8 @@ import {
   validatePaper2Exam,
 } from "./paper2Engine";
 
-test("Paper 2 bank contains 100 rebuilt structured question templates", () => {
-  expect(PAPER2_TEMPLATE_COUNT).toBe(100);
+test("Paper 2 bank contains 160 structured question templates", () => {
+  expect(PAPER2_TEMPLATE_COUNT).toBe(160);
 });
 
 test("Paper 2 generator always creates ten unique questions worth 100 marks", () => {

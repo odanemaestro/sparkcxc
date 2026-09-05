@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import MathText from "./MathText";
-import { collectConstructionSnapPoints, nearestSnapPoint, snapValue } from "./paper2WorkspaceGeometry";
+import { collectConstructionSnapPoints, nearestSnapPoint, segmentCircleIntersections, snapValue } from "./paper2WorkspaceGeometry";
 
 const safeObject = value => value && typeof value === "object" && !Array.isArray(value) ? value : {};
 const formatNumber = value => {
@@ -169,16 +169,22 @@ function WorkspaceGuide({ type, protractorAllowed = false, rulerCompassOnly = fa
   );
 }
 
-function ConstructionWorkspace({ schema, value, onChange }) {
+function ConstructionWorkspace({ schema, value, onChange, readOnly = false }) {
   const response = safeObject(value);
   const objects = Array.isArray(response.objects) ? response.objects : [];
-  const allowedTools = Array.isArray(schema.allowedTools) && schema.allowedTools.length ? schema.allowedTools : ["segment", "circle"];
+  const pad = safeObject(schema.pad);
+  const allowedTools = Array.isArray(schema.allowedTools) && schema.allowedTools.length
+    ? schema.allowedTools
+    : ["segment", "circle"];
   const [tool, setTool] = useState(allowedTools[0] || "segment");
   const [anchor, setAnchor] = useState(null);
   const [hover, setHover] = useState(null);
   const [protractorPoints, setProtractorPoints] = useState([]);
+
   const width = 620, height = 400, margin = 28;
-  const xMax = 14, yMax = 9;
+  const unitsPerCm = Number(pad.unitsPerCm || 40);
+  const xMax = Number(pad.width) > 0 && unitsPerCm > 0 ? Number(pad.width) / unitsPerCm : 14;
+  const yMax = Number(pad.height) > 0 && unitsPerCm > 0 ? Number(pad.height) / unitsPerCm : 9;
   const sx = (width - margin * 2) / xMax;
   const sy = (height - margin * 2) / yMax;
   const scale = Math.min(sx, sy);
@@ -187,8 +193,27 @@ function ConstructionWorkspace({ schema, value, onChange }) {
     x: Math.max(0, Math.min(xMax, (local.x - margin) / scale)),
     y: Math.max(0, Math.min(yMax, (height - margin - local.y) / scale)),
   });
-  const addObject = object => onChange({ ...response, objects: [...objects, object] });
-  const constructionCandidates = collectConstructionSnapPoints(objects);
+
+  const givenPoints = Array.isArray(pad.given)
+    ? pad.given.map(point => ({ ...point, x: Number(point.x), y: Number(point.y) }))
+    : [];
+  const givenById = Object.fromEntries(givenPoints.map(point => [point.id, point]));
+  const givenSegments = (pad.givenSegments || []).map(pair => {
+    const a = givenById[pair?.[0]], b = givenById[pair?.[1]];
+    return a && b ? { a, b, key: `${pair[0]}-${pair[1]}` } : null;
+  }).filter(Boolean);
+
+  const addObject = object => { if (!readOnly) onChange({ ...response, objects: [...objects, object] }); };
+  const drawnCirclesForSnap = objects.filter(item => item?.kind === "circle");
+  const givenIntersectionCandidates = givenSegments.flatMap(segment => {
+    const asSegment = { x1: segment.a.x, y1: segment.a.y, x2: segment.b.x, y2: segment.b.y };
+    return drawnCirclesForSnap.flatMap(circle => segmentCircleIntersections(asSegment, circle));
+  });
+  const constructionCandidates = [
+    ...givenPoints.map(point => ({ x: point.x, y: point.y })),
+    ...givenIntersectionCandidates,
+    ...collectConstructionSnapPoints(objects),
+  ];
   const precisePoint = event => {
     const raw = toMath(clientToSvg(event));
     const nearby = nearestSnapPoint(raw, constructionCandidates, 0.22);
@@ -197,6 +222,7 @@ function ConstructionWorkspace({ schema, value, onChange }) {
   };
   const resetPending = () => { setAnchor(null); setProtractorPoints([]); };
   const selectTool = next => { setTool(next); resetPending(); };
+
   const handleCanvas = event => {
     const point = precisePoint(event);
     if (tool === "protractor") {
@@ -204,15 +230,26 @@ function ConstructionWorkspace({ schema, value, onChange }) {
       if (protractorPoints.length === 1) { setProtractorPoints([...protractorPoints, point]); return; }
       const [vertex, first] = protractorPoints;
       const degrees = angleDegrees(vertex, first, point);
-      if (Number.isFinite(degrees)) addObject({ kind: "angle_measure", vx: vertex.x, vy: vertex.y, ax: first.x, ay: first.y, bx: point.x, by: point.y, degrees: snapValue(degrees, 0.1) });
+      if (Number.isFinite(degrees)) {
+        addObject({
+          kind: "angle_measure",
+          vx: vertex.x, vy: vertex.y,
+          ax: first.x, ay: first.y,
+          bx: point.x, by: point.y,
+          degrees: snapValue(degrees, 0.1),
+        });
+      }
       setProtractorPoints([]);
       return;
     }
     if (!anchor) { setAnchor(point); return; }
     if (tool === "segment") addObject({ kind: "segment", x1: anchor.x, y1: anchor.y, x2: point.x, y2: point.y });
-    else if (tool === "circle") addObject({ kind: "circle", cx: anchor.x, cy: anchor.y, r: snapValue(Math.hypot(point.x - anchor.x, point.y - anchor.y), 0.05) });
+    else if (tool === "circle") {
+      addObject({ kind: "circle", cx: anchor.x, cy: anchor.y, r: snapValue(Math.hypot(point.x - anchor.x, point.y - anchor.y), 0.05) });
+    }
     setAnchor(null);
   };
+
   const handleMove = event => setHover(precisePoint(event));
   const segments = objects.filter(item => item.kind === "segment");
   const circles = objects.filter(item => item.kind === "circle");
@@ -220,38 +257,55 @@ function ConstructionWorkspace({ schema, value, onChange }) {
   const segmentPoints = [];
   segments.forEach(item => {
     [{ x: item.x1, y: item.y1 }, { x: item.x2, y: item.y2 }].forEach(point => {
-      if (!segmentPoints.some(existing => Math.hypot(existing.x - point.x, existing.y - point.y) < 0.16)) segmentPoints.push(point);
+      const isGiven = givenPoints.some(given => Math.hypot(given.x - point.x, given.y - point.y) < 0.16);
+      if (!isGiven && !segmentPoints.some(existing => Math.hypot(existing.x - point.x, existing.y - point.y) < 0.16)) segmentPoints.push(point);
     });
   });
-  const labels = ["P", "Q", "R", "S", "T", "U", "V"];
+  const derivedLabels = ["C", "D", "E", "F", "G", "H", "K"];
   const liveLength = anchor && hover ? Math.hypot(hover.x - anchor.x, hover.y - anchor.y) : null;
-  const liveAngle = tool === "protractor" && protractorPoints.length === 2 && hover ? angleDegrees(protractorPoints[0], protractorPoints[1], hover) : null;
+  const liveAngle = tool === "protractor" && protractorPoints.length === 2 && hover
+    ? angleDegrees(protractorPoints[0], protractorPoints[1], hover)
+    : null;
   const rulerCompassOnly = schema.toolPolicy === "ruler_compasses_only";
+  const xTicks = Array.from({ length: Math.floor(xMax) + 1 }, (_, index) => index);
+  const yTicks = Array.from({ length: Math.floor(yMax) + 1 }, (_, index) => index);
+
   return (
-    <div className="paper2-workspace paper2-construction-workspace">
-      <WorkspaceGuide type="construction" protractorAllowed={allowedTools.includes("protractor")} rulerCompassOnly={rulerCompassOnly} />
-      <div className="paper2-workspace-toolbar" aria-label="Construction tools">
+    <div className={`paper2-workspace paper2-construction-workspace${readOnly ? " paper2-workspace-readonly" : ""}`}>
+      {!readOnly && <WorkspaceGuide type="construction" protractorAllowed={allowedTools.includes("protractor")} rulerCompassOnly={rulerCompassOnly} />}
+      {!readOnly && <div className="paper2-workspace-toolbar" aria-label="Construction tools">
         {allowedTools.includes("segment") && <button type="button" className={tool === "segment" ? "active" : ""} onClick={() => selectTool("segment")}>Straightedge</button>}
         {allowedTools.includes("circle") && <button type="button" className={tool === "circle" ? "active" : ""} onClick={() => selectTool("circle")}>Compass</button>}
         {allowedTools.includes("protractor") && <button type="button" className={tool === "protractor" ? "active" : ""} onClick={() => selectTool("protractor")}>Protractor</button>}
         <button type="button" disabled={!objects.length} onClick={() => { onChange({ ...response, objects: objects.slice(0, -1) }); resetPending(); }}>Undo</button>
         <button type="button" disabled={!objects.length} onClick={() => { onChange({ ...response, objects: [] }); resetPending(); }}>Clear</button>
-      </div>
-      <div className="paper2-tool-instruction" role="status">
+      </div>}
+      {!readOnly && <div className="paper2-tool-instruction" role="status">
         {tool === "segment" && <>Straightedge selected. Click a start point, then an end point. {Number.isFinite(liveLength) && <strong>Length: {liveLength.toFixed(2)} cm</strong>}</>}
         {tool === "circle" && <>Compass selected. Click the centre, then choose the radius. {Number.isFinite(liveLength) && <strong>Radius: {liveLength.toFixed(2)} cm</strong>}</>}
         {tool === "protractor" && <>Protractor selected. Vertex → baseline → second arm. {Number.isFinite(liveAngle) && <strong>Angle: {liveAngle.toFixed(1)}°</strong>}</>}
-      </div>
-      <svg className="paper2-construction-canvas" viewBox={`0 0 ${width} ${height}`} onPointerDown={handleCanvas} onPointerMove={handleMove} onPointerLeave={() => setHover(null)} role="application" aria-label="Virtual mathematical construction workspace">
+      </div>}
+
+      <svg className="paper2-construction-canvas" viewBox={`0 0 ${width} ${height}`} onPointerDown={readOnly ? undefined : handleCanvas} onPointerMove={readOnly ? undefined : handleMove} onPointerLeave={readOnly ? undefined : () => setHover(null)} role="img" aria-label={readOnly ? "Construction review diagram" : "Virtual mathematical construction workspace"}>
         <rect x="0" y="0" width={width} height={height} fill="none" stroke="currentColor" strokeOpacity="0.28" />
-        {Array.from({ length: xMax + 1 }, (_, index) => {
+        {xTicks.map(index => {
           const p = toScreen({ x: index, y: 0 });
           return <g key={`xt-${index}`}><line x1={p.x} y1={height - margin} x2={p.x} y2={height - margin + 6} stroke="currentColor"/><text x={p.x} y={height - 7} textAnchor="middle" fill="currentColor" stroke="none" fontSize="10">{index}</text></g>;
         })}
-        {Array.from({ length: yMax + 1 }, (_, index) => {
+        {yTicks.map(index => {
           const p = toScreen({ x: 0, y: index });
           return <g key={`yt-${index}`}><line x1={margin - 6} y1={p.y} x2={margin} y2={p.y} stroke="currentColor"/><text x={margin - 9} y={p.y + 3} textAnchor="end" fill="currentColor" stroke="none" fontSize="10">{index}</text></g>;
         })}
+
+        {givenSegments.map(segment => {
+          const a = toScreen(segment.a), b = toScreen(segment.b);
+          return <line key={`given-${segment.key}`} x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke="currentColor" strokeWidth="2.4" />;
+        })}
+        {givenPoints.map(point => {
+          const p = toScreen(point);
+          return <g key={`given-point-${point.id}`} pointerEvents="none"><circle cx={p.x} cy={p.y} r="3.2" fill="currentColor" stroke="none"/><text x={p.x + 7} y={p.y - 7} fill="currentColor" stroke="none" fontSize="13" fontStyle="italic">{point.id}</text></g>;
+        })}
+
         {objects.map((item, index) => {
           if (item.kind === "circle") {
             const c = toScreen({ x: item.cx, y: item.cy });
@@ -264,6 +318,7 @@ function ConstructionWorkspace({ schema, value, onChange }) {
           const a = toScreen({ x: item.x1, y: item.y1 }), b = toScreen({ x: item.x2, y: item.y2 });
           return <line key={index} x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke="currentColor" strokeWidth="2" />;
         })}
+
         {anchor && hover && tool === "segment" && (() => { const a = toScreen(anchor), b = toScreen(hover); return <line x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke="currentColor" strokeWidth="1.4" strokeDasharray="5 4" strokeOpacity="0.65" />; })()}
         {anchor && hover && tool === "circle" && (() => { const c = toScreen(anchor); const r = Math.hypot(hover.x-anchor.x, hover.y-anchor.y) * scale; return <circle cx={c.x} cy={c.y} r={r} fill="none" stroke="currentColor" strokeWidth="1.2" strokeDasharray="5 4" strokeOpacity="0.65" />; })()}
         {tool === "protractor" && protractorPoints.length >= 1 && (() => { const v=toScreen(protractorPoints[0]); return <circle cx={v.x} cy={v.y} r="4" fill="currentColor" stroke="none"/>; })()}
@@ -289,14 +344,19 @@ function ConstructionWorkspace({ schema, value, onChange }) {
         })()}
         {hover && (() => { const p = toScreen(hover); return <g pointerEvents="none" className="paper2-snap-crosshair"><line x1={p.x-7} y1={p.y} x2={p.x+7} y2={p.y} stroke="currentColor"/><line x1={p.x} y1={p.y-7} x2={p.x} y2={p.y+7} stroke="currentColor"/><circle cx={p.x} cy={p.y} r="2.5" fill="currentColor" stroke="none"/></g>; })()}
         {anchor && (() => { const p = toScreen(anchor); return <circle cx={p.x} cy={p.y} r="4" fill="currentColor" stroke="none" />; })()}
-        {segmentPoints.slice(0, labels.length).map((point, index) => { const p = toScreen(point); return <text key={`${point.x}-${point.y}`} x={p.x + 7} y={p.y - 7} fill="currentColor" stroke="none" fontSize="13" fontStyle="italic">{labels[index]}</text>; })}
+        {segmentPoints.slice(0, derivedLabels.length).map((point, index) => {
+          const p = toScreen(point);
+          return <text key={`${point.x}-${point.y}`} x={p.x + 7} y={p.y - 7} fill="currentColor" stroke="none" fontSize="13" fontStyle="italic">{derivedLabels[index]}</text>;
+        })}
       </svg>
-      <div className="paper2-workspace-status">
+
+      {!readOnly && <div className="paper2-workspace-status">
         {segments.length} straightedge line{segments.length === 1 ? "" : "s"} · {circles.length} compass circle{circles.length === 1 ? "" : "s"}{measurements.length ? ` · ${measurements.length} angle measurement${measurements.length === 1 ? "" : "s"}` : ""}
+        {givenPoints.length ? ` · ${givenPoints.length} given point${givenPoints.length === 1 ? "" : "s"}` : ""}
         {hover ? ` · pointer ${hover.x.toFixed(2)} cm, ${hover.y.toFixed(2)} cm` : ""}
         {anchor && tool === "circle" ? ` · centre locked at (${anchor.x.toFixed(2)}, ${anchor.y.toFixed(2)})` : ""}
         {anchor && tool === "segment" ? ` · start locked at (${anchor.x.toFixed(2)}, ${anchor.y.toFixed(2)})` : ""}
-      </div>
+      </div>}
     </div>
   );
 }
@@ -326,7 +386,7 @@ function TilePatternWorkspace({ value, onChange }) {
   );
 }
 
-function GraphWorkspace({ schema, value, onChange }) {
+function GraphWorkspace({ schema, value, onChange, readOnly = false }) {
   const response = safeObject(value);
   const [hover, setHover] = useState(null);
   const graph = schema.graph || {};
@@ -367,8 +427,24 @@ function GraphWorkspace({ schema, value, onChange }) {
   };
   const xTicks = [];
   const yTicks = [];
+  const xMinorTicks = [];
+  const yMinorTicks = [];
   if (xGrid > 0) for (let x = Math.ceil(xMin / xGrid) * xGrid; x <= xMax + 1e-9; x += xGrid) xTicks.push(Number(x.toFixed(6)));
   if (yGrid > 0) for (let y = Math.ceil(yMin / yGrid) * yGrid; y <= yMax + 1e-9; y += yGrid) yTicks.push(Number(y.toFixed(6)));
+  const minorPerStep = Math.max(1, Number(graph.minorPerStep || 1));
+  const xMinor = xGrid / minorPerStep;
+  const yMinor = yGrid / minorPerStep;
+  if (minorPerStep > 1 && xMinor > 0) {
+    for (let x = Math.ceil(xMin / xMinor) * xMinor; x <= xMax + 1e-9; x += xMinor) {
+      if (!xTicks.some(major => Math.abs(major - x) < 1e-8)) xMinorTicks.push(Number(x.toFixed(6)));
+    }
+  }
+  if (minorPerStep > 1 && yMinor > 0) {
+    for (let y = Math.ceil(yMin / yMinor) * yMinor; y <= yMax + 1e-9; y += yMinor) {
+      if (!yTicks.some(major => Math.abs(major - y) < 1e-8)) yMinorTicks.push(Number(y.toFixed(6)));
+    }
+  }
+  const supportsCurve = !Array.isArray(graph.tools) || graph.tools.length === 0 || graph.tools.includes("curve");
   const orderedPoints = [...points].sort((a, b) => Number(a.x) - Number(b.x));
   const background = Array.isArray(graph.backgroundPoints) ? graph.backgroundPoints.map(([x, y]) => ({ x, y })) : [];
   const answerFields = safeObject(response.answerFields);
@@ -378,19 +454,21 @@ function GraphWorkspace({ schema, value, onChange }) {
     else onChange({ ...response, points: points.filter((_,i) => i !== index) });
   };
   return (
-    <div className="paper2-workspace paper2-graph-workspace">
-      <WorkspaceGuide type="graph" />
-      {graph.requireAxisSetup && (
+    <div className={`paper2-workspace paper2-graph-workspace${readOnly ? " paper2-workspace-readonly" : ""}`}>
+      {!readOnly && <WorkspaceGuide type="graph" />}
+      {!readOnly && graph.requireAxisSetup && (
         <div className="paper2-axis-setup">
           <label><span>x-axis interval</span><select value={response.axisXStep ?? ""} onChange={event => onChange({ ...response, axisXStep: Number(event.target.value) || "" })}><option value="">Select</option>{(graph.axisChoices || []).map(v => <option key={v} value={v}>{v}</option>)}</select></label>
           <label><span>y-axis interval</span><select value={response.axisYStep ?? ""} onChange={event => onChange({ ...response, axisYStep: Number(event.target.value) || "" })}><option value="">Select</option>{(graph.axisChoices || []).map(v => <option key={v} value={v}>{v}</option>)}</select></label>
         </div>
       )}
-      <div className="paper2-tool-instruction" role="status">
+      {!readOnly && <div className="paper2-tool-instruction" role="status">
         {hover ? <><strong>Coordinate: ({formatNumber(hover.x)}, {formatNumber(hover.y)})</strong> Click to {mode === "line" ? "select this point for the line" : "plot this point"}.</> : <>Move over the grid to preview the exact coordinate before plotting.</>}
-      </div>
-      <svg className="paper2-graph-canvas" viewBox={`0 0 ${width} ${height}`} onPointerDown={click} onPointerMove={event => setHover(pointFromEvent(event))} onPointerLeave={() => setHover(null)} role="application" aria-label="Interactive graph plotting workspace">
+      </div>}
+      <svg className="paper2-graph-canvas" viewBox={`0 0 ${width} ${height}`} onPointerDown={readOnly ? undefined : click} onPointerMove={readOnly ? undefined : event => setHover(pointFromEvent(event))} onPointerLeave={readOnly ? undefined : () => setHover(null)} role="img" aria-label={readOnly ? "Graph review diagram" : "Interactive graph plotting workspace"}>
         <rect x="0" y="0" width={width} height={height} fill="none" stroke="currentColor" strokeOpacity="0.25" />
+        {xMinorTicks.map(x => { const p = toScreen({ x, y: 0 }); return <line key={`xm-${x}`} x1={p.x} y1={margin} x2={p.x} y2={height-margin} stroke="currentColor" strokeOpacity="0.055"/>; })}
+        {yMinorTicks.map(y => { const p = toScreen({ x: 0, y }); return <line key={`ym-${y}`} x1={margin} y1={p.y} x2={width-margin} y2={p.y} stroke="currentColor" strokeOpacity="0.055"/>; })}
         {xTicks.map(x => { const p = toScreen({ x, y: 0 }); return <g key={`x-${x}`}><line x1={p.x} y1={margin} x2={p.x} y2={height-margin} stroke="currentColor" strokeOpacity="0.12"/><text x={p.x} y={height-margin+18} textAnchor="middle" fill="currentColor" stroke="none" fontSize="10">{x}</text></g>; })}
         {yTicks.map(y => { const p = toScreen({ x: 0, y }); return <g key={`y-${y}`}><line x1={margin} y1={p.y} x2={width-margin} y2={p.y} stroke="currentColor" strokeOpacity="0.12"/><text x={margin-8} y={p.y+3} textAnchor="end" fill="currentColor" stroke="none" fontSize="10">{y}</text></g>; })}
         {xMin <= 0 && xMax >= 0 && (() => { const p = toScreen({x:0,y:0}); return <line x1={p.x} y1={margin} x2={p.x} y2={height-margin} stroke="currentColor" strokeWidth="1.5"/>; })()}
@@ -404,18 +482,18 @@ function GraphWorkspace({ schema, value, onChange }) {
         {linePoints.map((point,index) => { const p=toScreen(point); return <circle key={`l-${index}`} cx={p.x} cy={p.y} r="4" fill="currentColor" stroke="none"/>; })}
         {hover && (() => { const p=toScreen(hover); const tx=Math.min(width-118,Math.max(6,p.x+10)); const ty=Math.max(20,p.y-12); return <g pointerEvents="none" className="paper2-graph-crosshair"><line x1={p.x} y1={margin} x2={p.x} y2={height-margin} stroke="currentColor" strokeDasharray="3 3"/><line x1={margin} y1={p.y} x2={width-margin} y2={p.y} stroke="currentColor" strokeDasharray="3 3"/><circle cx={p.x} cy={p.y} r="5" fill="none" stroke="currentColor" strokeWidth="2"/><rect x={tx} y={ty-14} width="104" height="20" rx="5" fill="currentColor" opacity="0.88"/><text x={tx+52} y={ty} textAnchor="middle" fill="white" stroke="none" fontSize="11">({formatNumber(hover.x)}, {formatNumber(hover.y)})</text></g>; })()}
       </svg>
-      {activePoints.length > 0 && (
+      {!readOnly && activePoints.length > 0 && (
         <div className="paper2-plotted-points" aria-label="Plotted points">
           <span>{mode === "line" ? "Line points" : "Points plotted"}</span>
           <div>{activePoints.map((point,index) => <button type="button" key={`${point.x}-${point.y}-${index}`} onClick={() => removePoint(index)} title="Remove this point">({formatNumber(point.x)}, {formatNumber(point.y)}) ×</button>)}</div>
         </div>
       )}
-      <div className="paper2-workspace-toolbar">
-        {mode !== "line" && <button type="button" className={response.curve ? "active" : ""} onClick={() => onChange({ ...response, curve: !response.curve })}>{response.curve ? "Smooth curve selected" : "Join with smooth curve"}</button>}
+      {!readOnly && <div className="paper2-workspace-toolbar">
+        {mode !== "line" && supportsCurve && <button type="button" className={response.curve ? "active" : ""} onClick={() => onChange({ ...response, curve: !response.curve })}>{response.curve ? "Smooth curve selected" : "Join with smooth curve"}</button>}
         <button type="button" disabled={!activePoints.length} onClick={() => onChange({ ...response, points: points.slice(0, -1), linePoints: linePoints.slice(0, -1) })}>Undo point</button>
         <button type="button" disabled={!activePoints.length} onClick={() => onChange({ ...response, points: [], linePoints: [] })}>Clear graph</button>
-      </div>
-      {(schema.answerFields || []).length > 0 && (
+      </div>}
+      {!readOnly && (schema.answerFields || []).length > 0 && (
         <div className="paper2-rich-fields paper2-graph-answer-fields">
           {schema.answerFields.map(field => <label className="paper2-rich-field" key={field.id}><span>{field.label}</span><FieldInput field={field} value={answerFields[field.id]} onChange={next => onChange({ ...response, answerFields: { ...answerFields, [field.id]: next } })}/></label>)}
         </div>
@@ -424,13 +502,13 @@ function GraphWorkspace({ schema, value, onChange }) {
   );
 }
 
-export default function Paper2ResponseInput({ part, value, onChange }) {
+export default function Paper2ResponseInput({ part, value, onChange = () => {}, readOnly = false }) {
   const schema = part?.responseSchema;
   if (!schema) return null;
   if (schema.type === "fields") return <FieldsResponse schema={schema} value={value} onChange={onChange} />;
   if (schema.type === "table") return <TableResponse schema={schema} value={value} onChange={onChange} />;
-  if (schema.type === "construction_triangle") return <ConstructionWorkspace schema={schema} value={value} onChange={onChange} />;
+  if (schema.type === "construction_triangle" || schema.type === "construction") return <ConstructionWorkspace schema={schema} value={value} onChange={onChange} readOnly={readOnly} />;
   if (schema.type === "tile_pattern") return <TilePatternWorkspace schema={schema} value={value} onChange={onChange} />;
-  if (schema.type === "graph") return <GraphWorkspace schema={schema} value={value} onChange={onChange} />;
+  if (schema.type === "graph") return <GraphWorkspace schema={schema} value={value} onChange={onChange} readOnly={readOnly} />;
   return null;
 }

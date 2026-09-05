@@ -1,7 +1,14 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import MathText from "./MathText";
 import Paper2ResponseInput from "./Paper2ResponseInput";
-import { hasPaper2PartResponse, paper2ResponseSummary } from "./paper2RichGrader";
+import { buildCanonicalPaper2Response } from "./paper2RichGrader";
+import {
+  hasPaper2CxcPartResponse,
+  normalizePaper2TypedResponse,
+  paper2PartUsesWorking,
+  paper2ResponseSummary,
+  paper2WorkingSummary,
+} from "./paper2CxcGrader";
 import {
   PAPER2_DURATION_SECONDS,
   PAPER2_TEMPLATE_COUNT,
@@ -72,43 +79,45 @@ function FormulaExpression({ label, children }) {
 
 const FORMULAE = [
   {
-    title: "Circle",
+    title: "Solids",
     expressions: [
-      <FormulaExpression key="circumference" label="Circumference">C = 2πr</FormulaExpression>,
-      <FormulaExpression key="circle-area" label="Area">A = πr²</FormulaExpression>,
+      <FormulaExpression key="prism-volume" label="Volume of a prism">V = Ah</FormulaExpression>,
+      <FormulaExpression key="cylinder-volume" label="Volume of a cylinder">V = πr²h</FormulaExpression>,
+      <FormulaExpression key="pyramid-volume" label="Volume of a right pyramid">V = ⅓Ah</FormulaExpression>,
     ],
   },
   {
-    title: "Triangle",
+    title: "Circle and sectors",
     expressions: [
-      <FormulaExpression key="triangle-area" label="Area">A = ½bh</FormulaExpression>,
+      <FormulaExpression key="circumference" label="Circumference">C = 2πr</FormulaExpression>,
+      <FormulaExpression key="arc-length" label="Arc length">S = <MathFraction numerator="θ" denominator="360" ariaLabel="theta divided by 360" /> × 2πr</FormulaExpression>,
+      <FormulaExpression key="circle-area" label="Area of a circle">A = πr²</FormulaExpression>,
+      <FormulaExpression key="sector-area" label="Area of a sector">A = <MathFraction numerator="θ" denominator="360" ariaLabel="theta divided by 360" /> × πr²</FormulaExpression>,
+    ],
+  },
+  {
+    title: "Plane figures",
+    expressions: [
+      <FormulaExpression key="trapezium-area" label="Area of a trapezium">A = ½(a + b)h</FormulaExpression>,
+      <FormulaExpression key="triangle-area" label="Area of a triangle">A = ½bh</FormulaExpression>,
+      <FormulaExpression key="triangle-sine-area" label="Area of a triangle">A = ½ab sin C</FormulaExpression>,
+      <FormulaExpression key="heron" label="Heron's formula">A = √(s(s − a)(s − b)(s − c))</FormulaExpression>,
+      <FormulaExpression key="semiperimeter" label="where">s = (a + b + c) ÷ 2</FormulaExpression>,
       <FormulaExpression key="pythagoras" label="Pythagoras">c² = a² + b²</FormulaExpression>,
     ],
   },
   {
-    title: "Trigonometry",
+    title: "Trigonometric ratios",
     expressions: [
-      <FormulaExpression key="sin" label="Sine">
-        sin θ = <MathFraction numerator="opposite" denominator="hypotenuse" ariaLabel="opposite divided by hypotenuse" />
-      </FormulaExpression>,
-      <FormulaExpression key="cos" label="Cosine">
-        cos θ = <MathFraction numerator="adjacent" denominator="hypotenuse" ariaLabel="adjacent divided by hypotenuse" />
-      </FormulaExpression>,
-      <FormulaExpression key="tan" label="Tangent">
-        tan θ = <MathFraction numerator="opposite" denominator="adjacent" ariaLabel="opposite divided by adjacent" />
-      </FormulaExpression>,
+      <FormulaExpression key="sin" label="Sine">sin θ = <MathFraction numerator="opposite" denominator="hypotenuse" ariaLabel="opposite divided by hypotenuse" /></FormulaExpression>,
+      <FormulaExpression key="cos" label="Cosine">cos θ = <MathFraction numerator="adjacent" denominator="hypotenuse" ariaLabel="adjacent divided by hypotenuse" /></FormulaExpression>,
+      <FormulaExpression key="tan" label="Tangent">tan θ = <MathFraction numerator="opposite" denominator="adjacent" ariaLabel="opposite divided by adjacent" /></FormulaExpression>,
     ],
   },
   {
     title: "Sine rule",
     expressions: [
-      <FormulaExpression key="sine-rule">
-        <MathFraction numerator="a" denominator="sin A" ariaLabel="a divided by sine A" />
-        <span>=</span>
-        <MathFraction numerator="b" denominator="sin B" ariaLabel="b divided by sine B" />
-        <span>=</span>
-        <MathFraction numerator="c" denominator="sin C" ariaLabel="c divided by sine C" />
-      </FormulaExpression>,
+      <FormulaExpression key="sine-rule"><MathFraction numerator="a" denominator="sin A" ariaLabel="a divided by sine A" /><span>=</span><MathFraction numerator="b" denominator="sin B" ariaLabel="b divided by sine B" /><span>=</span><MathFraction numerator="c" denominator="sin C" ariaLabel="c divided by sine C" /></FormulaExpression>,
     ],
   },
   {
@@ -118,28 +127,16 @@ const FORMULAE = [
     ],
   },
   {
-    title: "Cylinder",
+    title: "Quadratic formula",
     expressions: [
-      <FormulaExpression key="cylinder-volume" label="Volume">V = πr²h</FormulaExpression>,
+      <FormulaExpression key="quadratic">x = <MathFraction numerator={<>−b ± √(b² − 4ac)</>} denominator="2a" ariaLabel="negative b plus or minus square root of b squared minus four a c, divided by two a" /></FormulaExpression>,
     ],
   },
   {
     title: "Coordinate geometry",
     expressions: [
-      <FormulaExpression key="gradient" label="Gradient">
-        m = <MathFraction numerator={<>y₂ − y₁</>} denominator={<>x₂ − x₁</>} ariaLabel="y two minus y one divided by x two minus x one" />
-      </FormulaExpression>,
-      <FormulaExpression key="distance" label="Distance">
-        d = √((x₂ − x₁)² + (y₂ − y₁)²)
-      </FormulaExpression>,
-    ],
-  },
-  {
-    title: "Quadratic formula",
-    expressions: [
-      <FormulaExpression key="quadratic">
-        x = <MathFraction numerator={<>−b ± √(b² − 4ac)</>} denominator="2a" ariaLabel="negative b plus or minus square root of b squared minus four a c, divided by two a" />
-      </FormulaExpression>,
+      <FormulaExpression key="gradient" label="Gradient">m = <MathFraction numerator={<>y₂ − y₁</>} denominator={<>x₂ − x₁</>} ariaLabel="y two minus y one divided by x two minus x one" /></FormulaExpression>,
+      <FormulaExpression key="distance" label="Distance">d = √((x₂ − x₁)² + (y₂ − y₁)²)</FormulaExpression>,
     ],
   },
 ];
@@ -165,13 +162,19 @@ function FormulaModal({ onClose }) {
   );
 }
 
+function questionTableCellText(cell) {
+  if (cell === null || cell === undefined) return "";
+  if (typeof cell !== "object" || Array.isArray(cell)) return cell;
+  return cell.display ?? cell.text ?? cell.value ?? "";
+}
+
 function QuestionTable({ table }) {
   if (!table) return null;
   return (
     <div className="paper2-table-wrap">
       <table className="paper2-data-table">
-        <thead><tr>{table.headers.map(header => <th key={header}><MathText>{header}</MathText></th>)}</tr></thead>
-        <tbody>{table.rows.map((row, index) => <tr key={index}>{row.map((cell, cellIndex) => <td key={`${index}-${cellIndex}`}><MathText>{cell}</MathText></td>)}</tr>)}</tbody>
+        <thead><tr>{table.headers.map((header, index) => <th key={`${String(questionTableCellText(header))}-${index}`}><MathText>{questionTableCellText(header)}</MathText></th>)}</tr></thead>
+        <tbody>{table.rows.map((row, index) => <tr key={index}>{row.map((cell, cellIndex) => <td key={`${index}-${cellIndex}`}><MathText>{questionTableCellText(cell)}</MathText></td>)}</tr>)}</tbody>
       </table>
     </div>
   );
@@ -212,9 +215,28 @@ function QuestionPrompt({ question }) {
   );
 }
 
+function Paper2WorkspaceReview({ part, response }) {
+  const type = part?.responseSchema?.type;
+  if (!["graph", "construction", "construction_triangle"].includes(type)) return null;
+  const reference = buildCanonicalPaper2Response(part);
+  const noun = type === "graph" ? "graph" : "construction";
+  return (
+    <div className="paper2-workspace-review-grid">
+      <section>
+        <span>Your {noun}</span>
+        <Paper2ResponseInput part={part} value={response} readOnly />
+      </section>
+      <section>
+        <span>Reference {noun}</span>
+        <Paper2ResponseInput part={part} value={reference} readOnly />
+      </section>
+    </div>
+  );
+}
+
 function answeredPartCount(exam, answers) {
   if (!exam) return 0;
-  return exam.questions.reduce((sum, question) => sum + question.parts.filter(part => hasPaper2PartResponse(answers?.[question.question_id]?.[part.id])).length, 0);
+  return exam.questions.reduce((sum, question) => sum + question.parts.filter(part => hasPaper2CxcPartResponse(answers?.[question.question_id]?.[part.id], part)).length, 0);
 }
 
 function totalPartCount(exam) {
@@ -294,6 +316,8 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
       totalParts: grade.totalParts,
       score: grade.score,
       percent: grade.percent,
+      ecfParts: grade.ecfParts || 0,
+      ecfMarks: grade.ecfMarks || 0,
       timedOut: wasTimedOut,
     };
     const previousUsed = readJson(USED_KEY, []);
@@ -330,18 +354,22 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
 
   function insertSymbol(symbol) {
     if (!current) return;
-    const fallbackPart = current.parts[0];
-    const [questionId, partId] = activePartKey?.split(":") || [current.question_id, fallbackPart.id];
+    const fallbackPart = current.parts.find(part => !part.responseSchema) || current.parts[0];
+    const activeBits = activePartKey?.split(":") || [];
+    const questionId = activeBits[0] || current.question_id;
+    const partId = activeBits[1] || fallbackPart.id;
+    const field = activeBits[2] === "working" ? "working" : "answer";
     if (questionId !== current.question_id) return;
     const part = current.parts.find(item => item.id === partId);
-    if (part?.responseSchema) return;
-    const key = `${questionId}:${partId}`;
+    if (!part || part.responseSchema) return;
+    const response = normalizePaper2TypedResponse(answers?.[questionId]?.[partId]);
+    const key = `${questionId}:${partId}:${field}`;
     const input = inputRefs.current[key];
-    const oldValue = String(answers?.[questionId]?.[partId] ?? "");
+    const oldValue = String(response[field] ?? "");
     const start = input?.selectionStart ?? oldValue.length;
     const end = input?.selectionEnd ?? oldValue.length;
     const next = `${oldValue.slice(0, start)}${symbol}${oldValue.slice(end)}`;
-    setPartResponse(questionId, partId, next);
+    setPartResponse(questionId, partId, { ...response, [field]: next });
     window.requestAnimationFrame(() => {
       const target = inputRefs.current[key];
       if (!target) return;
@@ -398,11 +426,19 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
               <li>Answer ALL questions.</li>
               <li>Section I consists of Questions 1 to 7. Section II consists of Questions 8 to 10.</li>
               <li>Enter an answer for each part of each question. Marks are awarded by part.</li>
+              <li>Where a Working box is provided, show the main steps of your method. A correct final answer alone does not automatically earn method-dependent accuracy marks.</li>
               <li>Where a question requires a graph, geometrical construction, transformation description or written mathematical reason, use the interactive response workspace provided. Open the How to use panel whenever you need help with the digital controls.</li>
-              <li>Show the mathematical information requested in each response field. SPARK awards marks by rubric, including partial credit on supported structured parts.</li>
+              <li>SPARK awards method, accuracy and independent marks separately. If a later part correctly uses your own earlier numerical answer, eligible follow-through marks are awarded automatically.</li>
               <li>Where an answer is required to a stated degree of accuracy, give the answer as instructed.</li>
               <li>The time allowed is 2 hours 40 minutes. The paper is submitted automatically when the time expires.</li>
             </ol>
+          </div>
+          <div className="paper2-mab-legend" aria-label="Paper 2 marking guide">
+            <strong>How your working is marked</strong>
+            <div><b>M</b><span>Method mark for a valid mathematical method or substitution.</span></div>
+            <div><b>A</b><span>Accuracy mark for the required result, normally linked to the method mark.</span></div>
+            <div><b>B</b><span>Independent mark for a correct fact, statement or result.</span></div>
+            <div><b>ECF</b><span>Error carried forward. A later part may still receive marks when you correctly use your own earlier value.</span></div>
           </div>
           <div className="paper2-bank-note">
             <strong>{PAPER2_TEMPLATE_COUNT} structured questions available</strong>
@@ -431,12 +467,18 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
             <p>{timedOut ? "Time expired and SPARK submitted your paper." : `You used ${formatDuration(PAPER2_DURATION_SECONDS - remaining)}.`}</p>
           </div>
           <div className="paper-result-summary">
-            <div><strong>{completeIds.length}/10</strong><span>fully answered</span></div>
-            <div><strong>{grade.correctParts}/{grade.totalParts}</strong><span>parts correct</span></div>
+            <div><strong>{completeIds.length}/10</strong><span>questions completed</span></div>
+            <div><strong>{partsAnswered}/{partsTotal}</strong><span>parts attempted</span></div>
+            <div><strong>{grade.score}/100</strong><span>marks earned</span></div>
             <div><strong>{grade.percent}%</strong><span>final score</span></div>
-            <div><strong>100</strong><span>total marks</span></div>
           </div>
         </section>
+        {grade.ecfParts > 0 && (
+          <div className="paper2-ecf-summary">
+            <strong>Follow-through credit applied</strong>
+            <span>{grade.ecfMarks} mark{grade.ecfMarks === 1 ? "" : "s"} across {grade.ecfParts} part{grade.ecfParts === 1 ? "" : "s"} were awarded for correct work using an earlier answer.</span>
+          </div>
+        )}
 
         <section className="paper-review-shell paper2-review-shell">
           <div className="paper-review-head paper2-review-head">
@@ -449,7 +491,9 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
               const partGrade = reviewGrade.parts[part.id];
               const response = answers?.[review.question_id]?.[part.id] ?? "";
               const earned = Number(partGrade.marks || 0);
-              const stateLabel = earned === part.marks ? "Correct" : earned > 0 ? "Partial credit" : partGrade.status === "blank" ? "No response" : "Incorrect";
+              const stateLabel = partGrade.ecf
+                ? earned === part.marks ? "Full credit · ECF" : "Partial credit · ECF"
+                : earned === part.marks ? "Correct" : earned > 0 ? "Partial credit" : partGrade.status === "blank" ? "No response" : "Incorrect";
               const stateClass = earned === part.marks ? "is-correct" : earned > 0 ? "is-partial" : "is-incorrect";
               return (
                 <article className={`paper2-review-part ${stateClass}`} key={part.id}>
@@ -457,9 +501,16 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
                   <MathText as="p">{part.prompt}</MathText>
                   <QuestionDiagram diagram={part.responseSchema?.type === "graph" ? null : part.diagram} />
                   <Paper2Stimulus stimulus={part.stimulus} />
-                  <QuestionTable table={part.table} />
+                  {part.responseSchema?.type !== "table" && <QuestionTable table={part.table} />}
+                  <Paper2WorkspaceReview part={part} response={response} />
+                  {paper2WorkingSummary(response, part) && (
+                    <div className="paper2-review-working">
+                      <span>Your working</span>
+                      <MathText as="div" prose>{paper2WorkingSummary(response, part)}</MathText>
+                    </div>
+                  )}
                   <div className="paper2-review-answer-grid">
-                    <div><span>Your response</span><strong>{paper2ResponseSummary(response, part)}</strong></div>
+                    <div><span>Your final answer</span><strong>{paper2ResponseSummary(response, part)}</strong></div>
                     <div><span>Mark-scheme answer</span><MathText as="strong">{part.source_answer || part.answer}</MathText></div>
                   </div>
                   {partGrade.criteria?.length > 0 && (
@@ -467,8 +518,14 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
                       <span>Mark breakdown</span>
                       {partGrade.criteria.map((criterion, index) => (
                         <div key={`${part.id}-criterion-${index}`} className={criterion.earned ? "earned" : "missed"}>
-                          <b>{criterion.earned ? "✓" : "○"}</b>
-                          <span>{criterion.label || "Rubric criterion"}</span>
+                          <b className="paper2-mark-code">{criterion.code || (criterion.earned ? "✓" : "○")}</b>
+                          <span>
+                            {criterion.label || "Rubric criterion"}
+                            {criterion.ecf && <em className="paper2-ecf-badge">ECF</em>}
+                            {criterion.ecf && criterion.ecfTarget !== null && criterion.ecfTarget !== undefined
+                              ? <small>ECF target: {String(criterion.ecfTarget)} · Mark-scheme target: {String(part.source_answer || part.answer)}</small>
+                              : criterion.why && <small>{criterion.why}</small>}
+                          </span>
                           <strong>{criterion.marks}/{criterion.maxMarks || 0}</strong>
                         </div>
                       ))}
@@ -531,14 +588,18 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
 
           <section className="paper2-parts-list">
             {current.parts.map(part => {
-              const key = `${current.question_id}:${part.id}`;
+              const rawResponse = answers?.[current.question_id]?.[part.id];
+              const typedResponse = normalizePaper2TypedResponse(rawResponse);
+              const usesWorking = paper2PartUsesWorking(part);
+              const answerKey = `${current.question_id}:${part.id}:answer`;
+              const workingKey = `${current.question_id}:${part.id}:working`;
               return (
                 <article className="paper2-part-card" key={part.id}>
                   <div className="paper2-part-heading"><strong>{part.label}</strong><span>{part.marks} {part.marks === 1 ? "mark" : "marks"}</span></div>
 				  <MathText as="p">{part.prompt}</MathText>
                   <QuestionDiagram diagram={part.responseSchema?.type === "graph" ? null : part.diagram} />
                   <Paper2Stimulus stimulus={part.stimulus} />
-                  <QuestionTable table={part.table} />
+                  {part.responseSchema?.type !== "table" && <QuestionTable table={part.table} />}
 					{part.inputHint && (
 					  <small className="paper2-input-hint">
 						Answer format: {part.inputHint}
@@ -552,27 +613,64 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
                      />
                    ) : (
                      <>
-                       <div className="paper2-answer-field">
-                    {part.prefix && <span className="paper2-affix"><MathText>{part.prefix}</MathText></span>}
-                    <input
-                      ref={element => { inputRefs.current[key] = element; }}
-                      type="text"
-                      autoComplete="off"
-                      spellCheck="false"
-                      value={answers?.[current.question_id]?.[part.id] || ""}
-                      onFocus={() => setActivePartKey(key)}
-                      onChange={event => setPartResponse(current.question_id, part.id, event.target.value)}
-                      placeholder={part.answerType === "expression" ? "Enter expression" : "Enter answer"}
-                    />
-                    {part.suffix && <span className="paper2-affix"><MathText>{part.suffix}</MathText></span>}
-                  </div>
-                  {String(answers?.[current.question_id]?.[part.id] || "").trim() && (
-                    <div className="paper2-answer-preview">
-                      <span>Math preview</span>
-                      <MathText as="div">{answers?.[current.question_id]?.[part.id] || ""}</MathText>
-                    </div>
-                  )}
-
+                       {usesWorking && (
+                         <div className="paper2-working-editor">
+                           <label htmlFor={`paper2-working-${current.question_id}-${part.id}`}>Working</label>
+                           <textarea
+                             id={`paper2-working-${current.question_id}-${part.id}`}
+                             ref={element => { inputRefs.current[workingKey] = element; }}
+                             rows={4}
+                             value={typedResponse.working}
+                             onFocus={() => setActivePartKey(workingKey)}
+                             onChange={event => setPartResponse(current.question_id, part.id, { ...typedResponse, working: event.target.value })}
+                             placeholder="Show your main mathematical steps"
+                             spellCheck="false"
+                           />
+                           <small className="paper2-working-note">Method marks are awarded from the mathematical steps you show here. You may use the symbol toolbar above.</small>
+                           {typedResponse.working.trim() && (
+                             <div className="paper2-working-preview">
+                               <span>Working preview</span>
+                               <MathText as="div" prose>{typedResponse.working}</MathText>
+                             </div>
+                           )}
+                         </div>
+                       )}
+                       <label className="paper2-final-answer-label" htmlFor={`paper2-answer-${current.question_id}-${part.id}`}>Final answer</label>
+                       <div className={`paper2-answer-field ${part.responseType === "written" ? "paper2-written-answer-field" : ""}`}>
+                         {part.prefix && <span className="paper2-affix"><MathText>{part.prefix}</MathText></span>}
+                         {part.responseType === "written" ? (
+                           <textarea
+                             id={`paper2-answer-${current.question_id}-${part.id}`}
+                             ref={element => { inputRefs.current[answerKey] = element; }}
+                             rows={3}
+                             autoComplete="off"
+                             spellCheck="true"
+                             value={typedResponse.answer}
+                             onFocus={() => setActivePartKey(answerKey)}
+                             onChange={event => setPartResponse(current.question_id, part.id, { ...typedResponse, answer: event.target.value })}
+                             placeholder="Write your mathematical reason or explanation"
+                           />
+                         ) : (
+                           <input
+                             id={`paper2-answer-${current.question_id}-${part.id}`}
+                             ref={element => { inputRefs.current[answerKey] = element; }}
+                             type="text"
+                             autoComplete="off"
+                             spellCheck="false"
+                             value={typedResponse.answer}
+                             onFocus={() => setActivePartKey(answerKey)}
+                             onChange={event => setPartResponse(current.question_id, part.id, { ...typedResponse, answer: event.target.value })}
+                             placeholder={part.answerType === "expression" ? "Enter expression" : "Enter answer"}
+                           />
+                         )}
+                         {part.suffix && <span className="paper2-affix"><MathText>{part.suffix}</MathText></span>}
+                       </div>
+                       {typedResponse.answer.trim() && (
+                         <div className="paper2-answer-preview">
+                           <span>Math preview</span>
+                           <MathText as="div">{typedResponse.answer}</MathText>
+                         </div>
+                       )}
                      </>
                    )}
                 </article>

@@ -747,3 +747,145 @@
 .paper2-input-table .paper2-table-editable input:focus{border-color:var(--paper-teal);box-shadow:0 0 0 3px rgba(13,148,136,.12)}
 .paper2-input-table .paper2-table-editable input::placeholder{color:#9aa8b9;font-weight:500}
 @media(max-width:680px){.paper2-table-input-wrap{margin-left:-2px;margin-right:-2px}.paper2-input-table{min-width:460px}.paper2-input-table th,.paper2-input-table td{padding:7px 8px}.paper2-input-table .paper2-table-editable input{min-width:62px}}
+
+/* SPARK CXC MARKING V5.3 START */
+.paper2-mab-legend{margin:4px 0 24px;padding:16px 18px;border:1px solid var(--paper-border);border-radius:14px;background:#fbfcfe;display:grid;grid-template-columns:auto 1fr;gap:8px 11px;align-items:start}
+.paper2-mab-legend>strong{grid-column:1/-1;color:var(--paper-navy);font-size:14px;margin-bottom:2px}
+.paper2-mab-legend>div{display:contents}
+.paper2-mab-legend b{min-width:38px;height:28px;padding:0 8px;border-radius:8px;background:#eef7f5;color:var(--paper-teal-dark);display:inline-flex;align-items:center;justify-content:center;font-size:12px;letter-spacing:.04em}
+.paper2-mab-legend span{font-size:13px;line-height:1.5;color:#526078;padding-top:4px}
+
+.paper2-working-editor{margin:16px 0 12px;padding:14px;border:1px solid #d8e2ec;border-radius:13px;background:#fbfcfe}
+.paper2-working-editor>label,.paper2-final-answer-label{display:block;font-size:12px;font-weight:800;letter-spacing:.035em;color:#41516f;margin:0 0 7px}
+.paper2-working-editor textarea{display:block;width:100%;min-height:102px;resize:vertical;border:1px solid #cfd8e3;border-radius:10px;background:#fff;color:var(--paper-navy);padding:11px 12px;font:15px/1.55 'Atkinson Hyperlegible','Inter','Segoe UI',sans-serif;box-sizing:border-box}
+.paper2-working-editor textarea:focus{outline:2px solid rgba(13,148,136,.2);border-color:var(--paper-teal)}
+.paper2-working-note{display:block;color:var(--paper-muted);font-size:11px;line-height:1.45;margin-top:7px}
+.paper2-working-preview{margin-top:10px;border-left:3px solid #c6d5e2;padding:7px 10px;background:#fff;border-radius:0 8px 8px 0}
+.paper2-working-preview>span,.paper2-review-working>span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.08em;font-weight:800;color:var(--paper-muted);margin-bottom:5px}
+.paper2-working-preview .spark-math{font-size:14px;line-height:1.6;color:var(--paper-navy)}
+.paper2-final-answer-label{margin-top:14px}
+
+.paper2-ecf-summary{max-width:1160px;margin:0 auto 18px;padding:13px 16px;border:1px solid #cce9e4;border-radius:13px;background:#f0fdfa;display:flex;gap:9px;align-items:baseline;flex-wrap:wrap;color:#23524d}
+.paper2-ecf-summary strong{font-size:13px}
+.paper2-ecf-summary span{font-size:12px;line-height:1.45}
+.paper2-review-working{margin:12px 0;padding:11px 13px;border:1px solid #dbe4ed;border-radius:10px;background:#fbfcfe}
+.paper2-review-working .spark-math{white-space:pre-wrap;font-size:14px;line-height:1.6}
+.paper2-rubric-breakdown>div{align-items:flex-start}
+.paper2-rubric-breakdown>div>span{display:flex;flex:1;gap:5px;align-items:center;flex-wrap:wrap}
+.paper2-rubric-breakdown>div>span>small{flex-basis:100%;font-size:11px;line-height:1.4;color:var(--paper-muted);font-weight:400}
+.paper2-mark-code{min-width:34px;height:25px;padding:0 6px;border-radius:7px;background:#edf2f7;color:var(--paper-navy);display:inline-flex;align-items:center;justify-content:center;font-size:11px;letter-spacing:.03em}
+.paper2-rubric-breakdown .earned .paper2-mark-code{background:#ecfdf3;color:var(--paper-green)}
+.paper2-rubric-breakdown .missed .paper2-mark-code{background:#fff1f0;color:var(--paper-red)}
+.paper2-ecf-badge{font-style:normal;font-size:9px;line-height:1;padding:4px 6px;border-radius:999px;background:#e6fffa;color:#08766e;font-weight:900;letter-spacing:.06em}
+
+@media (max-width:640px){
+  .paper2-mab-legend{padding:14px;gap:7px 9px}
+  .paper2-working-editor{padding:11px}
+  .paper2-working-editor textarea{min-height:116px;font-size:16px}
+  .paper2-ecf-summary{margin-left:14px;margin-right:14px}
+}
+
+[data-theme="dark"] .paper2-mab-legend,
+[data-theme="dark"] .paper2-working-editor,
+[data-theme="dark"] .paper2-review-working{background:rgba(255,255,255,.035)}
+[data-theme="dark"] .paper2-working-editor textarea,
+[data-theme="dark"] .paper2-working-preview{background:rgba(255,255,255,.025);color:inherit}
+[data-theme="dark"] .paper2-mab-legend span,
+[data-theme="dark"] .paper2-working-editor>label,
+[data-theme="dark"] .paper2-final-answer-label{color:inherit}
+.paper2-written-answer-field{display:block}
+.paper2-written-answer-field textarea{display:block;width:100%;min-height:92px;resize:vertical;border:0;background:transparent;color:inherit;padding:13px 14px;font:inherit;box-sizing:border-box}
+.paper2-written-answer-field textarea:focus{outline:0}
+@media (max-width:640px){.paper2-written-answer-field textarea{min-height:110px;font-size:16px}}
+/* SPARK CXC MARKING V5.3 END */
+
+/* SPARK CXC MARKING V5.3.2 REVIEW/POLISH START */
+.paper2-rubric-breakdown>div{
+  display:grid !important;
+  grid-template-columns:44px minmax(0,1fr) auto !important;
+  column-gap:12px !important;
+  row-gap:2px !important;
+  align-items:start !important;
+}
+.paper2-rubric-breakdown>div>.paper2-mark-code{
+  grid-column:1;
+  grid-row:1;
+  margin:0 !important;
+  min-width:36px;
+  box-sizing:border-box;
+}
+.paper2-rubric-breakdown>div>span{
+  grid-column:2;
+  grid-row:1;
+  min-width:0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px 7px;
+  align-items:center;
+  padding-top:2px;
+}
+.paper2-rubric-breakdown>div>span>small{
+  flex-basis:100%;
+  margin-top:2px;
+  line-height:1.45;
+}
+.paper2-rubric-breakdown>div>strong:last-child{
+  grid-column:3;
+  grid-row:1;
+  min-width:42px;
+  text-align:right;
+  padding-top:2px;
+}
+.paper2-workspace-review-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:14px;
+  margin:14px 0;
+}
+.paper2-workspace-review-grid>section{
+  min-width:0;
+  border:1px solid #dce5ee;
+  border-radius:12px;
+  padding:11px;
+  background:#fbfcfe;
+}
+.paper2-workspace-review-grid>section>span{
+  display:block;
+  margin:0 0 8px;
+  color:#60708a;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.paper2-workspace-readonly{
+  margin:0;
+  padding:8px;
+  pointer-events:none;
+  background:transparent;
+}
+.paper2-workspace-readonly .paper2-construction-canvas,
+.paper2-workspace-readonly .paper2-graph-canvas{
+  max-height:340px;
+  cursor:default;
+}
+.paper2-formula-grid{
+  align-content:start;
+}
+.paper2-formula-list{
+  min-width:0;
+}
+@media(max-width:780px){
+  .paper2-workspace-review-grid{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+  .paper2-rubric-breakdown>div{
+    grid-template-columns:40px minmax(0,1fr) auto !important;
+    column-gap:8px !important;
+  }
+}
+[data-theme="dark"] .paper2-workspace-review-grid>section{
+  background:rgba(255,255,255,.025);
+  border-color:rgba(255,255,255,.12);
+}
+/* SPARK CXC MARKING V5.3.2 REVIEW/POLISH END */

@@ -2,18 +2,20 @@ import { PAPER2_QUESTION_BANK } from "./paper2QuestionBank";
 import { buildCanonicalPaper2Response } from "./paper2RichGrader";
 import { gradePaper2Part } from "./paper2Engine";
 
-describe("SPARK Paper 2 V5.2.3 regression guard", () => {
-  test("every question stem and part prompt obeys the visible-text contract", () => {
-    expect(PAPER2_QUESTION_BANK).toHaveLength(100);
+describe("SPARK Paper 2 V5.3 regression guard", () => {
+  test("keeps the combined 160-template bank structurally complete", () => {
+    expect(PAPER2_QUESTION_BANK).toHaveLength(160);
+    for (let position = 1; position <= 10; position += 1) {
+      expect(PAPER2_QUESTION_BANK.filter(question => question.question_number === position)).toHaveLength(16);
+    }
     for (const question of PAPER2_QUESTION_BANK) {
       expect(typeof question.stem).toBe("string");
-      for (const part of question.parts || []) {
-        expect(typeof part.prompt).toBe("string");
-      }
+      expect((question.parts || []).reduce((sum, part) => sum + Number(part.marks || 0), 0)).toBe(question.marks);
+      for (const part of question.parts || []) expect(typeof part.prompt).toBe("string");
     }
   });
 
-  test("every canonical primitive part.answer remains accepted", () => {
+  test("legacy primitive canonical answers remain accepted", () => {
     for (const question of PAPER2_QUESTION_BANK) {
       for (const part of question.parts || []) {
         expect(gradePaper2Part(part.answer, part).correct).toBe(true);
@@ -21,7 +23,7 @@ describe("SPARK Paper 2 V5.2.3 regression guard", () => {
     }
   });
 
-  test("all structured Paper 2 workspaces earn full credit through canonical responses", () => {
+  test("all 56 structured workspaces earn full canonical credit", () => {
     const richParts = PAPER2_QUESTION_BANK
       .flatMap(question => question.parts || [])
       .filter(part => part.responseSchema);
@@ -32,12 +34,11 @@ describe("SPARK Paper 2 V5.2.3 regression guard", () => {
       return counts;
     }, {});
 
-    // V5.2.2 added 15 fillable-table workspaces to the existing
-    // 6 graph + 2 ruler-and-compasses workspaces.
-    expect(richParts).toHaveLength(23);
-    expect(countByType.graph).toBe(6);
+    expect(richParts).toHaveLength(56);
+    expect(countByType.table).toBe(30);
+    expect(countByType.graph).toBe(15);
     expect(countByType.construction_triangle).toBe(2);
-    expect(countByType.table).toBe(15);
+    expect(countByType.construction).toBe(9);
 
     for (const part of richParts) {
       const response = buildCanonicalPaper2Response(part);

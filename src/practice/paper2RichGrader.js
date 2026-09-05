@@ -1,4 +1,5 @@
 import { checkAnswer, checkQuestionAnswer } from "../lib/answerCheck";
+import { circleIntersections, markConstruction as markCxcConstruction } from "./cxcMarking/geometry.js";
 
 const text = value => String(value ?? "").trim();
 const norm = value => text(value)
@@ -157,12 +158,45 @@ function gradeTable(response, schema, maxMarks) {
   const specs = tableCellSpecs(schema);
   const total = specs.length;
   if (!total) return { marks: 0, details: [] };
+
   const results = specs.map(spec => {
     const value = cells[spec.key];
     const status = checkAnswer(value, spec.answer, fieldOptions(spec));
-    return { ...spec, value, correct: status === "correct" };
+    return {
+      ...spec,
+      value,
+      correct: status === "correct",
+      cellMarks: Number.isFinite(Number(spec.marks)) ? Number(spec.marks) : null,
+    };
   });
   const correctCount = results.filter(item => item.correct).length;
+
+  // Authored tables from Papers E-J carry the real mark allocation per cell,
+  // including support cells worth 0. Older V5.2 tables had no cell weights and
+  // retain their proportional partial-credit behaviour.
+  if (schema.explicitCellMarks || results.some(item => item.cellMarks !== null)) {
+    const explicitTotal = results.reduce((sum, item) => sum + Math.max(0, Number(item.cellMarks || 0)), 0);
+    const marks = Math.min(maxMarks, results.reduce(
+      (sum, item) => sum + (item.correct ? Math.max(0, Number(item.cellMarks || 0)) : 0), 0));
+    return {
+      marks,
+      details: [{
+        kind: "table_cells",
+        label: `${correctCount} of ${total} table entries correct`,
+        maxMarks: Math.min(maxMarks, explicitTotal || maxMarks),
+        earned: marks > 0,
+        marks,
+        cells: results.map(item => ({
+          key: item.key,
+          correct: item.correct,
+          marks: item.correct ? Math.max(0, Number(item.cellMarks || 0)) : 0,
+          maxMarks: Math.max(0, Number(item.cellMarks || 0)),
+          description: item.description || item.label || `Table entry ${item.key}`,
+        })),
+      }],
+    };
+  }
+
   const marks = correctCount === total
     ? maxMarks
     : Math.max(0, Math.min(maxMarks - 1, Math.floor((correctCount * maxMarks) / total)));
@@ -270,6 +304,68 @@ function gradeConstruction(response, schema) {
   return { marks, details };
 }
 
+function constructionWork(response, schema) {
+  const objects = Array.isArray(response?.objects) ? response.objects : [];
+  const arcs = objects
+    .filter(item => item?.kind === "circle")
+    .map(item => ({ cx: Number(item.cx), cy: Number(item.cy), r: Number(item.r) }));
+  const segments = objects
+    .filter(item => item?.kind === "segment")
+    .map(item => ({
+      a: { x: Number(item.x1), y: Number(item.y1) },
+      b: { x: Number(item.x2), y: Number(item.y2) },
+    }));
+  const points = (schema?.pad?.given || []).map(point => ({ ...point, x: Number(point.x), y: Number(point.y) }));
+
+  const construction = schema?.construction || {};
+  if (construction.construction === "triangle") {
+    const spec = construction.args?.[0] || {};
+    const A = spec.A;
+    const B = spec.B;
+    const near = (p, q, tolerance = 0.35) => p && q && distance(p, q) <= tolerance;
+    const endpoints = segments.flatMap(segment => [segment.a, segment.b]);
+    const candidates = endpoints.filter(point => !near(point, A) && !near(point, B));
+    let C = candidates.find(point => {
+      const linkedA = segments.some(segment =>
+        (near(segment.a, A) && near(segment.b, point)) || (near(segment.b, A) && near(segment.a, point)));
+      const linkedB = segments.some(segment =>
+        (near(segment.a, B) && near(segment.b, point)) || (near(segment.b, B) && near(segment.a, point)));
+      return linkedA && linkedB;
+    });
+    if (!C && A && B) {
+      const fromA = arcs.filter(arc => distance({ x: arc.cx, y: arc.cy }, A) <= 0.35);
+      const fromB = arcs.filter(arc => distance({ x: arc.cx, y: arc.cy }, B) <= 0.35);
+      for (const a of fromA) {
+        for (const b of fromB) {
+          const intersections = circleIntersections(a, b);
+          if (intersections.length) {
+            C = intersections.sort((x, y) => Number(y.y) - Number(x.y))[0];
+            break;
+          }
+        }
+        if (C) break;
+      }
+    }
+    if (C) points.push({ id: "C", x: Number(C.x), y: Number(C.y) });
+  }
+
+  return { arcs, segments, points };
+}
+
+function gradeGenericConstruction(response, schema, maxMarks) {
+  const spec = { ...(schema.construction || {}), marks: Number(schema.construction?.marks ?? maxMarks) };
+  const graded = markCxcConstruction(constructionWork(response, schema), spec);
+  const details = (graded.criteria || []).map((criterion, index) => ({
+    ...criterion,
+    kind: criterion.kind || "B",
+    label: criterion.description || `Construction criterion ${index + 1}`,
+    maxMarks: Number(criterion.of || 0),
+    earned: Boolean(criterion.awarded),
+    marks: Number(criterion.marks || 0),
+  }));
+  return { marks: Number(graded.marks || 0), details };
+}
+
 function tileMap(cells = []) {
   return new Map((cells || []).filter(cell => cell && cell.state && cell.state !== "empty").map(cell => [`${cell.x},${cell.y}`, cell.state]));
 }
@@ -324,6 +420,19 @@ function lineModel(points = []) {
   return { slope, intercept: Number(a.y) - slope * Number(a.x) };
 }
 
+function matchedGraphPoints(points, expected, tolerance) {
+  const used = new Set();
+  let matched = 0;
+  for (const item of expected || []) {
+    const index = points.findIndex((point, i) => !used.has(i) && graphPointMatch(point, item, tolerance));
+    if (index >= 0) {
+      used.add(index);
+      matched += 1;
+    }
+  }
+  return matched;
+}
+
 function gradeGraph(response, schema) {
   const points = Array.isArray(response?.points) ? response.points : [];
   const linePoints = Array.isArray(response?.linePoints) ? response.linePoints : [];
@@ -332,6 +441,9 @@ function gradeGraph(response, schema) {
 
   for (const criterion of schema.criteria || []) {
     let earned = false;
+    let score = 0;
+    let matched = null;
+
     if (criterion.kind === "graph_axes") {
       earned = Number(response?.axisXStep) === Number(criterion.xStep) && Number(response?.axisYStep) === Number(criterion.yStep);
     } else if (criterion.kind === "graph_point") {
@@ -339,10 +451,24 @@ function gradeGraph(response, schema) {
       if (criterion.requireCurve) earned = earned && Boolean(response?.curve);
     } else if (criterion.kind === "graph_points") {
       const expected = criterion.points || [];
-      const matched = expected.filter(item => points.some(point => graphPointMatch(point, item, criterion.tolerance))).length;
-      earned = matched >= Number(criterion.minimumMatches || expected.length);
+      matched = matchedGraphPoints(points, expected, criterion.tolerance);
+      if (criterion.proportional && expected.length) {
+        const available = Number(criterion.marks || 0);
+        score = matched === expected.length
+          ? available
+          : Math.floor((matched * available) / expected.length);
+        earned = score > 0;
+      } else {
+        earned = matched >= Number(criterion.minimumMatches || expected.length);
+      }
     } else if (criterion.kind === "graph_curve") {
       earned = Boolean(response?.curve) && points.length >= Number(criterion.minimumPoints || 3);
+      if (earned && Array.isArray(criterion.referencePoints) && criterion.referencePoints.length) {
+        const required = Number(criterion.minimumMatches || criterion.referencePoints.length);
+        const curveMatches = matchedGraphPoints(points, criterion.referencePoints, criterion.tolerance);
+        earned = curveMatches >= required;
+        matched = curveMatches;
+      }
       if (earned && criterion.increasing) {
         const ordered = [...points].sort((a, b) => Number(a.x) - Number(b.x));
         earned = ordered.every((point, index) => index === 0 || Number(point.y) >= Number(ordered[index - 1].y) - 0.35);
@@ -354,10 +480,28 @@ function gradeGraph(response, schema) {
     } else if (criterion.kind === "root_set") {
       earned = rootSetCorrect(response?.answerFields || {}, criterion);
     }
-    const score = earned ? Number(criterion.marks || 0) : 0;
+
+    if (!(criterion.kind === "graph_points" && criterion.proportional)) {
+      score = earned ? Number(criterion.marks || 0) : 0;
+    }
     marks += score;
-    const labels = { graph_axes: "Correct axis intervals", graph_point: "Required key point shown", graph_points: "Required points plotted", graph_curve: "Curve drawn through the plotted data", graph_line: "Required straight line drawn", root_set: "Required values read from the graph" };
-    details.push({ ...criterion, label: criterion.label || labels[criterion.kind] || "Graph criterion", maxMarks: Number(criterion.marks || 0), earned, marks: score });
+
+    const labels = {
+      graph_axes: "Correct axis intervals",
+      graph_point: "Required key point shown",
+      graph_points: "Required points plotted",
+      graph_curve: "Curve drawn through the plotted data",
+      graph_line: "Required straight line drawn",
+      root_set: "Required values read from the graph",
+    };
+    details.push({
+      ...criterion,
+      label: criterion.label || labels[criterion.kind] || "Graph criterion",
+      maxMarks: Number(criterion.marks || 0),
+      earned: score > 0 || earned,
+      marks: score,
+      matched,
+    });
   }
   return { marks, details };
 }
@@ -373,7 +517,7 @@ export function isPaper2PartComplete(part, value) {
     const cells = responseObject(response.cells);
     return tableCellSpecs(schema).filter(cell => cell.required !== false).every(cell => text(cells[cell.key]) !== "");
   }
-  if (schema.type === "construction_triangle") return Array.isArray(response.objects) && response.objects.length >= 3;
+  if (schema.type === "construction_triangle" || schema.type === "construction") return Array.isArray(response.objects) && response.objects.length >= 2;
   if (schema.type === "tile_pattern") return Array.isArray(response.cells) && response.cells.some(cell => cell?.state && cell.state !== "empty");
   if (schema.type === "graph") {
     const graphHasWork = (Array.isArray(response.points) && response.points.length > 0) || (Array.isArray(response.linePoints) && response.linePoints.length >= 2);
@@ -405,6 +549,78 @@ function setCanonicalField(response, id, value, append = false) {
   const next = String(value);
   if (!append || !text(response[id])) response[id] = next;
   else response[id] = `${response[id]} ${next}`.trim();
+}
+
+function canonicalGenericConstruction(schema = {}) {
+  const spec = schema.construction || {};
+  const kind = spec.construction;
+  const args = spec.args || [];
+  const objects = [];
+  const addSegment = (a, b) => objects.push({ kind: "segment", x1: a.x, y1: a.y, x2: b.x, y2: b.y });
+  const addCircle = (c, r) => objects.push({ kind: "circle", cx: c.x, cy: c.y, r });
+  const d = (a, b) => Math.hypot(Number(a.x) - Number(b.x), Number(a.y) - Number(b.y));
+  const rayPoint = (from, towards, r) => {
+    const length = d(from, towards) || 1;
+    return { x: from.x + ((towards.x - from.x) / length) * r, y: from.y + ((towards.y - from.y) / length) * r };
+  };
+
+  if (kind === "perpendicularBisector") {
+    const [A, B] = args;
+    if (!A || !B) return { objects };
+    const radius = d(A, B) * 0.72;
+    const a = { cx: A.x, cy: A.y, r: radius };
+    const b = { cx: B.x, cy: B.y, r: radius };
+    addCircle(A, radius);
+    addCircle(B, radius);
+    const intersections = circleIntersections(a, b);
+    if (intersections.length >= 2) addSegment(intersections[0], intersections[1]);
+    return { objects };
+  }
+
+  if (kind === "angleBisector") {
+    const [V, P, Q] = args;
+    if (!V || !P || !Q) return { objects };
+    const armRadius = Math.max(0.8, Math.min(d(V, P), d(V, Q)) * 0.55);
+    const F1 = rayPoint(V, P, armRadius);
+    const F2 = rayPoint(V, Q, armRadius);
+    addCircle(V, armRadius);
+    const crossRadius = Math.max(0.8, d(F1, F2) * 0.72);
+    addCircle(F1, crossRadius);
+    addCircle(F2, crossRadius);
+    const intersections = circleIntersections(
+      { cx: F1.x, cy: F1.y, r: crossRadius },
+      { cx: F2.x, cy: F2.y, r: crossRadius });
+    const u1 = rayPoint(V, P, 1), u2 = rayPoint(V, Q, 1);
+    const bx = (u1.x - V.x) + (u2.x - V.x);
+    const by = (u1.y - V.y) + (u2.y - V.y);
+    const target = intersections.sort((a, b) =>
+      ((b.x - V.x) * bx + (b.y - V.y) * by) - ((a.x - V.x) * bx + (a.y - V.y) * by))[0];
+    if (target) addSegment(V, target);
+    return { objects };
+  }
+
+  if (kind === "triangle") {
+    const triangle = args[0] || {};
+    const A = triangle.A;
+    const B = triangle.B;
+    if (!A || !B) return { objects };
+    const ac = Number(triangle.sides?.AC);
+    const bc = Number(triangle.sides?.BC);
+    if (!Number.isFinite(ac) || !Number.isFinite(bc)) return { objects };
+    addCircle(A, ac);
+    addCircle(B, bc);
+    const intersections = circleIntersections(
+      { cx: A.x, cy: A.y, r: ac },
+      { cx: B.x, cy: B.y, r: bc });
+    const C = [...intersections].sort((a, b) => Number(b.y) - Number(a.y))[0];
+    if (C) {
+      addSegment(A, C);
+      addSegment(B, C);
+    }
+    return { objects };
+  }
+
+  return { objects };
 }
 
 /**
@@ -473,6 +689,10 @@ export function buildCanonicalPaper2Response(part = {}) {
         { kind: "circle", cx: p.x, cy: p.y, r: Math.max(1, pq / 2) },
       ],
     };
+  }
+
+  if (schema.type === "construction") {
+    return canonicalGenericConstruction(schema);
   }
 
   if (schema.type === "tile_pattern") {
@@ -550,6 +770,7 @@ export function gradeRichPaper2Part(userInput, part = {}) {
   if (schema.type === "fields") graded = gradeFieldCriteria(response, schema);
   else if (schema.type === "table") graded = gradeTable(response, schema, maxMarks);
   else if (schema.type === "construction_triangle") graded = gradeConstruction(response, schema);
+  else if (schema.type === "construction") graded = gradeGenericConstruction(response, schema, maxMarks);
   else if (schema.type === "tile_pattern") graded = gradeTiles(response, schema);
   else if (schema.type === "graph") graded = gradeGraph(response, schema);
 
@@ -571,7 +792,7 @@ export function paper2ResponseSummary(value, part = {}) {
     const cells = responseObject(response.cells);
     return `Table entries: ${tableCellSpecs(schema).map(cell => text(cells[cell.key]) || "—").join(", ")}`;
   }
-  if (schema.type === "construction_triangle") {
+  if (schema.type === "construction_triangle" || schema.type === "construction") {
     const objects = Array.isArray(response.objects) ? response.objects : [];
     const segments = objects.filter(item => item.kind === "segment").length;
     const circles = objects.filter(item => item.kind === "circle").length;
