@@ -2,6 +2,34 @@ import { checkQuestionAnswer } from "../lib/answerCheck";
 import { upgradePaper2Part } from "../practice/cxcMarking/adapter";
 import { markPart } from "../practice/cxcMarking/markScheme";
 
+
+function adaptiveQuestionRequiresWorking(question = {}) {
+  const prompt = String(question.question || question.prompt || "");
+  return /\bshow\s+(?:all\s+|your\s+)?working\b|\bshow\s+all\s+(?:steps|calculations)\b|\bprove\b|\bshow\s+that\b|\bjustify\b|\bgive\s+(?:a\s+)?reason\b/i.test(prompt);
+}
+
+function fullCreditFromCorrectFinal(result) {
+  const criteria = (result.criteria || []).map(line => ({
+    ...line,
+    awarded: true,
+    marks: Number(line.of || 0),
+    dependencyBlocked: false,
+    blocked: [],
+    why: line.kind === "M"
+      ? "the correct final answer is sufficient evidence of the required method for this question"
+      : "correct equivalent final answer",
+  }));
+  return {
+    ...result,
+    marks: result.of,
+    criteria,
+    correct: true,
+    canonicalCorrect: true,
+    feedback: "Full marks.",
+    inferredMethodFromFinalAnswer: criteria.some(line => line.kind === "M"),
+  };
+}
+
 function stringList(value) {
   if (Array.isArray(value)) return value.map(String);
   if (value == null || value === "") return [];
@@ -71,16 +99,22 @@ export function gradeAdaptiveResponse(question, response = {}) {
       requiredForm: question?.requiredForm,
     });
 
-    const criteria = result.criteria || [];
+    const rawCriteria = result.criteria || [];
+    const rawMethodLines = rawCriteria.filter(line => line.kind === "M");
+    const answerImpliesMethod = canonicalStatus === "correct"
+      && rawMethodLines.length > 0
+      && !adaptiveQuestionRequiresWorking(question);
+    const effectiveResult = answerImpliesMethod ? fullCreditFromCorrectFinal(result) : result;
+    const criteria = effectiveResult.criteria || [];
     const methodLines = criteria.filter(line => line.kind === "M");
     const methodsComplete = methodLines.every(line => line.awarded);
     const needsSelfAssessment = canonicalStatus === "uncertain";
-    const selfAssessmentCorrectMarks = needsSelfAssessment && methodsComplete ? result.of : result.marks;
+    const selfAssessmentCorrectMarks = needsSelfAssessment && methodsComplete ? effectiveResult.of : effectiveResult.marks;
 
     return {
-      ...result,
-      status: needsSelfAssessment ? "uncertain" : result.marks >= result.of ? "correct" : "incorrect",
-      correct: !needsSelfAssessment && result.marks >= result.of,
+      ...effectiveResult,
+      status: needsSelfAssessment ? "uncertain" : effectiveResult.marks >= effectiveResult.of ? "correct" : "incorrect",
+      correct: !needsSelfAssessment && effectiveResult.marks >= effectiveResult.of,
       needsSelfAssessment,
       selfAssessmentCorrectMarks,
       canonicalStatus,
