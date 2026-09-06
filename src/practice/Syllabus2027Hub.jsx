@@ -36,7 +36,7 @@ function modeDescription(mode) {
   return CSEC_2027_MODULES[mode.module]?.description || "Target one 30-mark module.";
 }
 
-export default function Syllabus2027Hub({ onExit }) {
+export default function Syllabus2027Hub({ onExit, supabase, userId }) {
   const [selectedPaper, setSelectedPaper] = useState(null);
   const [startFresh, setStartFresh] = useState(false);
   const [modeKey, setModeKey] = useState("module1");
@@ -45,7 +45,7 @@ export default function Syllabus2027Hub({ onExit }) {
   const papers = useMemo(() => getCsec2027Papers(modeKey), [modeKey]);
 
   if (selectedPaper) {
-    return <Paper2027ModuleExam paper={selectedPaper} onExit={() => { setSelectedPaper(null); setResults(allResults()); }} startFresh={startFresh} />;
+    return <Paper2027ModuleExam paper={selectedPaper} onExit={() => { setSelectedPaper(null); setResults(allResults()); }} startFresh={startFresh} supabase={supabase} userId={userId} />;
   }
 
   return (

@@ -1730,3 +1730,23 @@ html[data-theme="dark"] .paper2-written-review{background:var(--spark-surface-2)
   .practice-integrity-stats-four>div:nth-child(odd){border-left:0}
   .practice-integrity-stats-four>div:nth-child(n+2){border-top:1px solid var(--spark-border,var(--paper-border))}
 }
+
+
+/* SPARK V5.3.9F 2027 diagram safety */
+.paper2027-diagram {
+  overflow: visible !important;
+}
+.paper2027-diagram svg {
+  overflow: visible !important;
+  max-width: 100%;
+}
+
+
+/* SPARK V5.3.9G 2027 diagram safety */
+.paper2027-diagram {
+  overflow: visible !important;
+}
+.paper2027-diagram svg {
+  overflow: visible !important;
+  max-width: 100%;
+}

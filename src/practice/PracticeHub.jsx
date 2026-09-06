@@ -51,7 +51,7 @@ export default function PracticeHub({ supabase, userId, setView }) {
   }
 
   if (mode === "2027") {
-    return <Syllabus2027Hub onExit={() => setMode("home")} />;
+    return <Syllabus2027Hub onExit={() => setMode("home")} supabase={supabase} userId={userId} />;
   }
 
   return (

@@ -18,6 +18,7 @@ import {
   csec2027ActiveKey,
   legacyCsec2027Module1ActiveKey,
 } from "./csec2027Data";
+import { savePracticeExamAttempt } from "./persistence";
 import "./practiceExam.css";
 
 const SYMBOLS = ["√", "π", "°", "×", "÷", "≤", "≥", "≠", "²", "³", "θ", "≈", "(", ")"];
@@ -38,6 +39,66 @@ function readJson(key, fallback) {
 
 function writeJson(key, value) {
   try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* local persistence is optional */ }
+}
+
+async function persistCsec2027Result({ supabase, userId, paper, record, grade }) {
+  if (!supabase || !userId) return { skipped: true };
+
+  if (paper.scope === "full") {
+    const attempt = {
+      attempt_key: record.id,
+      paper_type: "paper2",
+      score: grade.score,
+      max_score: grade.maxScore,
+      percent: grade.percent,
+      completed_at: record.completedAt,
+      duration_seconds: record.usedSeconds,
+      timed_out: Boolean(record.timedOut),
+      answered_count: record.completedCount,
+      total_questions: paper.questions.length,
+      correct_count: grade.correctParts,
+      metadata: {
+        format: "2027",
+        syllabus_year: 2027,
+        paper_letter: paper.letter,
+        mode_key: paper.modeKey,
+        scope: paper.scope,
+        module: paper.module ?? null,
+        source_paper_id: paper.sourcePaperId,
+        paper_id: paper.paper_id,
+        profile: grade.profile,
+        answered_parts: grade.answeredParts,
+        correct_parts: grade.correctParts,
+        total_parts: grade.totalParts,
+        question_ids: paper.questions.map(question => question.question_id),
+      },
+    };
+    const result = await savePracticeExamAttempt({ supabase, userId, attempt });
+    if (result?.error) throw result.error;
+    return result;
+  }
+
+  const { data, error } = await supabase.rpc("spark_record_student_milestone", {
+    p_event_type: "section_test_completed",
+    p_title: `2027 Module ${paper.module} Practice Paper ${paper.letter}`,
+    p_score: grade.score,
+    p_max_score: grade.maxScore,
+    p_skill: `Module ${paper.module}`,
+    p_metadata: {
+      format: "2027",
+      syllabus_year: 2027,
+      paper_letter: paper.letter,
+      mode_key: paper.modeKey,
+      scope: paper.scope,
+      module: paper.module,
+      source_paper_id: paper.sourcePaperId,
+      paper_id: paper.paper_id,
+      attempt_key: record.id,
+      timed_out: Boolean(record.timedOut),
+    },
+  });
+  if (error) throw error;
+  return { data };
 }
 
 function formatClock(seconds) {
@@ -208,7 +269,7 @@ function RichReview({ part, response }) {
   return <Paper2ResponseInput part={part} value={response} readOnly />;
 }
 
-export default function Paper2027ModuleExam({ paper, onExit, startFresh = false }) {
+export default function Paper2027ModuleExam({ paper, onExit, startFresh = false, supabase = null, userId = null }) {
   const durationSeconds = Number(paper.durationSeconds || 0);
   const questionCount = paper.questions.length;
   const activeKey = csec2027ActiveKey(paper.letter, paper.modeKey);
@@ -310,17 +371,22 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false 
       maxScore: grade.maxScore,
       percent: grade.percent,
       profile: grade.profile,
+      answeredParts: grade.answeredParts,
+      correctParts: grade.correctParts,
+      totalParts: grade.totalParts,
       completedCount: completeIds.length,
       timedOut: wasTimedOut,
     };
     const results = readJson(CSEC_2027_RESULTS_KEY, []);
     writeJson(CSEC_2027_RESULTS_KEY, [record, ...results].slice(0, 60));
+    void persistCsec2027Result({ supabase, userId, paper, record, grade })
+      .catch(error => console.warn("Could not save 2027 Practice result:", error));
     localStorage.removeItem(activeKey);
     setTimedOut(wasTimedOut);
     setSubmitted(true);
     setShowSubmit(false);
     setReviewIndex(0);
-  }, [activeKey, answers, completeIds.length, durationSeconds, paper, remaining]);
+  }, [activeKey, answers, completeIds.length, durationSeconds, paper, remaining, supabase, userId]);
 
   useEffect(() => {
     if (started && remaining === 0 && !submitted) finalize(true);

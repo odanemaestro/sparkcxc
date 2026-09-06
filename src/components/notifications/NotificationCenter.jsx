@@ -71,6 +71,15 @@ function fallbackTitle(notification) {
   return notification?.title || meta?.label || "SPARK update";
 }
 
+function notificationTypeMeta(notification) {
+  const base = TYPE_META[notification?.type] || { icon: "i", tone: "navy" };
+  const metadata = notification?.metadata && typeof notification.metadata === "object" ? notification.metadata : {};
+  if (metadata?.format === "2027" && ["paper2_completed", "child_paper2_completed", "child_section_test_completed"].includes(String(notification?.type || ""))) {
+    return { ...base, icon: "27", label: "2027 Practice" };
+  }
+  return base;
+}
+
 function initialPushNotificationId() {
   if (typeof window === "undefined") return null;
   try { return new URL(window.location.href).searchParams.get("spark_notification"); }
@@ -306,7 +315,7 @@ export default function NotificationCenter({ user, profile, setView }) {
                     <span>Booking, session and progress updates will appear here.</span>
                   </div>
                 ) : visibleItems.map(notification => {
-                  const meta = TYPE_META[notification.type] || { icon: "i", tone: "navy" };
+                  const meta = notificationTypeMeta(notification);
                   const label = actionLabel(notification);
                   return (
                     <article

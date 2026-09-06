@@ -3007,7 +3007,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     supabase.from("lesson_progress").select("*").eq("user_id", user.id).eq("completed", true)
       .then(({data}) => setProgressData(data || []));
     supabase.from("practice_exam_attempts")
-      .select("id,attempt_key,paper_type,score,max_score,percent,completed_at,duration_seconds,timed_out,answered_count,total_questions,correct_count")
+      .select("id,attempt_key,paper_type,score,max_score,percent,completed_at,duration_seconds,timed_out,answered_count,total_questions,correct_count,metadata")
       .eq("user_id", user.id).order("completed_at", {ascending:false}).limit(20)
       .then(({data}) => setExamAttempts(data || []));
 
@@ -3413,17 +3413,17 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
             </div>
             <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(140px,1fr))",
               gap:14,marginBottom:24}}>
-              {[["Upcoming sessions",upcomingSessions.length,T.teal,T.tealLight],
-                ["Total students",uniqueStudents.length,T.purple,T.purpleLight],
-                ["Sessions booked",bookings.length,T.amber,T.amberLight],
-                ["Status",tutorRow?.verified ? "Verified ✓" : "Pending",T.emerald,T.emeraldLight]].map(([label,val,accent,accentBg]) => (
-                <Card key={label} style={{padding:18,borderTop:`3px solid ${accent}`}}>
-                  <div style={{fontFamily:FD,fontSize:24,fontWeight:700,color:T.ink}}>{val}</div>
-                  <div style={{fontSize:11,color:T.textMuted,textTransform:"uppercase",letterSpacing:"0.04em",marginTop:3}}>
-                    {label}
-                  </div>
-                </Card>
-              ))}
+              {[["Upcoming sessions",upcomingSessions.length],
+                    ["Total students",uniqueStudents.length],
+                    ["Sessions booked",bookings.length],
+                    ["Status",tutorRow?.verified ? "Verified ✓" : "Pending"]].map(([label,val]) => (
+                    <Card key={label} className="tutor-dashboard-stat-card" style={{padding:18}}>
+                      <div style={{fontFamily:FD,fontSize:24,fontWeight:700,color:T.ink}}>{val}</div>
+                      <div style={{fontSize:11,color:T.textMuted,textTransform:"uppercase",letterSpacing:"0.04em",marginTop:3}}>
+                        {label}
+                      </div>
+                    </Card>
+                  ))}
             </div>
             <Card>
               <div style={{fontFamily:FD,fontSize:17,fontWeight:600,color:T.ink,marginBottom:14}}>
@@ -3797,7 +3797,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 const performance = getExamPerformanceStatus(percent);
                 const isTarget = notificationTarget?.attemptKey && notificationTarget.attemptKey === attempt.attempt_key;
                 return <div key={attempt.id} data-notification-attempt={attempt.attempt_key || undefined} className={isTarget ? "notification-exam-target" : ""} style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:12,padding:"11px 0",borderBottom:`1px solid ${T.border}`,flexWrap:"wrap"}}>
-                  <div><strong style={{fontSize:13,color:T.ink}}>{attempt.paper_type === "paper2" ? "Paper 2" : "Paper 1"}</strong><div style={{fontSize:11,color:T.textMuted,marginTop:2}}>{new Date(attempt.completed_at).toLocaleString([], {dateStyle:"medium",timeStyle:"short"})}</div></div>
+                  <div><strong style={{fontSize:13,color:T.ink}}>{csec2027ExamLabel(attempt)}</strong><div style={{fontSize:11,color:T.textMuted,marginTop:2}}>{new Date(attempt.completed_at).toLocaleString([], {dateStyle:"medium",timeStyle:"short"})}</div></div>
                   <div className="student-exam-result-score"><div><strong style={{fontSize:14,color:T.ink}}>{attempt.score}/{attempt.max_score}</strong><div style={{fontSize:12,color:T.teal,fontWeight:700}}>{percent}%</div></div><span className={`exam-performance-badge ${performance.key}`}>{performance.label}</span></div>
                 </div>;
               }) : <div style={{fontSize:13,color:T.textMuted}}>No full exam attempts yet.</div>}
@@ -4634,6 +4634,17 @@ function ReviewModal({ booking, user, onClose, onSubmitted, showToast }) {
   );
 }
 
+function isCsec2027ExamAttempt(attempt) {
+  const metadata = attempt?.metadata && typeof attempt.metadata === "object" ? attempt.metadata : {};
+  return metadata.format === "2027" || Number(metadata.syllabus_year) === 2027;
+}
+
+function csec2027ExamLabel(attempt) {
+  if (!isCsec2027ExamAttempt(attempt)) return attempt?.paper_type === "paper2" ? "Paper 2" : "Paper 1";
+  const letter = String(attempt?.metadata?.paper_letter || "").trim().toUpperCase();
+  return `2027 Practice Paper${letter ? ` ${letter}` : ""}`;
+}
+
 const PARENT_MILESTONE_META = {
   lesson_completed: { short: "L", label: "Lesson completed" },
   topic_quiz_completed: { short: "Q", label: "Topic test" },
@@ -4749,7 +4760,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
       supabase.from("csec_question_attempts").select("id,correct,attempted_at,skill").eq("user_id", selectedChild.id).order("attempted_at", {ascending:false}).limit(20),
       supabase.from("lesson_progress").select("id,lesson_id,completed,completed_at").eq("user_id", selectedChild.id).eq("completed", true),
       supabase.from("bookings").select("id,subject,session_date,start_time,duration_minutes,status,rate_jmd,confirmation_expired_at,tutors(name)").eq("student_id", selectedChild.id).order("session_date", {ascending:false}).limit(100),
-      supabase.from("practice_exam_attempts").select("id,attempt_key,paper_type,score,max_score,percent,completed_at,duration_seconds,timed_out,answered_count,total_questions,correct_count").eq("user_id", selectedChild.id).order("completed_at", {ascending:false}).limit(20),
+      supabase.from("practice_exam_attempts").select("id,attempt_key,paper_type,score,max_score,percent,completed_at,duration_seconds,timed_out,answered_count,total_questions,correct_count,metadata").eq("user_id", selectedChild.id).order("completed_at", {ascending:false}).limit(20),
       supabase.from("learning_milestones").select("id,event_type,title,score,max_score,percent,skill,lesson_id,metadata,created_at").eq("user_id", selectedChild.id).order("created_at", {ascending:false}).limit(40),
       supabase.rpc("spark_parent_study_circle_status", {p_student_id: selectedChild.id}),
     ]);
@@ -4805,7 +4816,8 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
   const pending = links.filter(l => l.status === "pending");
   const examAttempts = childData?.examAttempts || [];
   const paper1Attempts = examAttempts.filter(a => a.paper_type === "paper1");
-  const paper2Attempts = examAttempts.filter(a => a.paper_type === "paper2");
+  const paper2Attempts = examAttempts.filter(a => a.paper_type === "paper2" && !isCsec2027ExamAttempt(a));
+  const paper2027Attempts = examAttempts.filter(isCsec2027ExamAttempt);
   const examAverage = examAttempts.length ? Math.round(examAttempts.reduce((sum, a) => sum + Number(a.percent || 0), 0) / examAttempts.length) : 0;
   const learningMilestones = childData?.milestones || [];
   const formatExamDuration = seconds => {
@@ -4860,7 +4872,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
 
           <div className="parent-learning-panel" data-notification-anchor="parent-learning-activity">
             <div className="parent-learning-head">
-              <div><div className="panel-title">Recent learning activity</div><p>Completed lessons, tests, Adaptive Practice and mastery milestones appear here.</p></div>
+              <div><div className="panel-title">Recent learning activity</div><p>Completed lessons, tests, Adaptive Practice, 2027 Practice and mastery milestones appear here.</p></div>
               <span className="learning-count-pill">{learningMilestones.length} update{learningMilestones.length === 1 ? "" : "s"}</span>
             </div>
             {learningMilestones.length ? <div className="learning-milestone-list">{(() => {
@@ -4869,7 +4881,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
               const rows = learningMilestones.slice(0, 10);
               if (targetMilestone && !rows.some(item => item.id === targetMilestone.id)) rows.unshift(targetMilestone);
               return rows.map(item => {
-                const meta = PARENT_MILESTONE_META[item.event_type] || { short: "i", label: "Learning update" };
+                const meta = item?.metadata?.format === "2027" ? { short: "27", label: "2027 Practice" } : (PARENT_MILESTONE_META[item.event_type] || { short: "i", label: "Learning update" });
                 const isTarget = targetId && String(item.id) === String(targetId);
                 const percent = item.percent == null ? null : Math.round(Number(item.percent));
                 return <article className={`learning-milestone-row ${isTarget ? "notification-learning-target" : ""}`} data-notification-milestone={item.id} key={item.id}>
@@ -4878,25 +4890,25 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
                   {percent != null && <div className="learning-milestone-score"><strong>{percent}%</strong>{item.score != null && item.max_score != null && <span>{Number(item.score)}/{Number(item.max_score)}</span>}</div>}
                 </article>;
               });
-            })()}</div> : <div className="learning-milestone-empty"><strong>No learning milestones yet.</strong><span>New lesson, test and practice milestones will appear as the student studies.</span></div>}
+            })()}</div> : <div className="learning-milestone-empty"><strong>No learning milestones yet.</strong><span>New lesson, test and 2027 Practice milestones will appear as the student studies.</span></div>}
           </div>
 
           <div className="exam-results-panel" data-notification-anchor="parent-exam-results">
             <div className="exam-results-head">
-              <div><div className="panel-title">Paper 1 and Paper 2 results</div><p>Completed full-paper simulations appear here as soon as the student's result is saved.</p></div>
-              <div className="exam-summary-pills"><span>Paper 1 <strong>{paper1Attempts.length}</strong></span><span>Paper 2 <strong>{paper2Attempts.length}</strong></span>{examAttempts.length > 0 && <span>Average <strong>{examAverage}%</strong></span>}</div>
+              <div><div className="panel-title">Paper results</div><p>Paper 1, Paper 2 and 2027 full-paper simulations appear here as soon as the student's result is saved.</p></div>
+              <div className="exam-summary-pills"><span>Paper 1 <strong>{paper1Attempts.length}</strong></span><span>Paper 2 <strong>{paper2Attempts.length}</strong></span><span>2027 <strong>{paper2027Attempts.length}</strong></span>{examAttempts.length > 0 && <span>Average <strong>{examAverage}%</strong></span>}</div>
             </div>
             {examAttempts.length ? <div className="exam-attempt-list">{examAttempts.slice(0,8).map(attempt => {
-              const label = attempt.paper_type === "paper2" ? "Paper 2" : "Paper 1";
+              const label = csec2027ExamLabel(attempt);
               const percent = Math.round(Number(attempt.percent || 0));
               const performance = getExamPerformanceStatus(percent);
               const isTargetAttempt = notificationTarget?.attemptKey && notificationTarget.attemptKey === attempt.attempt_key;
               return <article className={`exam-attempt-row ${isTargetAttempt ? "notification-exam-target" : ""}`} data-notification-attempt={attempt.attempt_key || undefined} key={attempt.id}>
-                <div className={`exam-paper-badge ${attempt.paper_type}`}>{attempt.paper_type === "paper2" ? "P2" : "P1"}</div>
+                <div className={`exam-paper-badge ${isCsec2027ExamAttempt(attempt) ? "paper2027" : attempt.paper_type}`}>{isCsec2027ExamAttempt(attempt) ? "27" : attempt.paper_type === "paper2" ? "P2" : "P1"}</div>
                 <div className="exam-attempt-main"><div className="exam-attempt-title"><strong>{label}</strong><span>{new Date(attempt.completed_at).toLocaleString([], {dateStyle:"medium", timeStyle:"short"})}</span></div><div className="exam-score-track"><span style={{width:`${Math.max(0,Math.min(100,percent))}%`}} /></div><div className="exam-attempt-meta"><span>{attempt.answered_count == null ? "Answer count unavailable" : `${attempt.answered_count}/${attempt.total_questions} questions completed`}</span><span>{formatExamDuration(attempt.duration_seconds)}</span><span className={attempt.timed_out?"exam-timeout":"exam-submitted"}>{attempt.timed_out?"Time expired":"Submitted"}</span></div></div>
                 <div className="exam-attempt-score"><strong>{attempt.score}/{attempt.max_score}</strong><span className="exam-percent">{percent}%</span><span className={`exam-performance-badge ${performance.key}`}>{performance.label}</span></div>
               </article>;
-            })}</div> : <div className="exam-results-empty"><strong>No full exam attempts yet.</strong><span>Paper 1 and Paper 2 scores will appear after the student submits an exam.</span></div>}
+            })}</div> : <div className="exam-results-empty"><strong>No full exam attempts yet.</strong><span>Paper 1, Paper 2 and 2027 Practice scores will appear after the student submits an exam.</span></div>}
           </div>
 
           {childData.studyCircle?.active && <div className="panel-white study-circle-parent-summary" data-notification-anchor="parent-study-circle"><div className="panel-title">Study Circle</div><div className="study-circle-parent-row"><div><strong>Participating in a small peer study group</strong><span>SPARK matches complementary strengths and focus areas. Peer identities, exact scores and group messages stay private.</span></div><Badge c="teal">{childData.studyCircle.group_size || 0} students</Badge></div></div>}
