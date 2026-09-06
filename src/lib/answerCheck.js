@@ -11,6 +11,17 @@ const normalizeText = value => clean(value)
   .replace(/\s*([=,+\-*/(){}\[\]])\s*/g, "$1")
   .trim();
 
+// Final-answer boxes are often written the same way a student writes on paper:
+// "= 1/12", "Answer = 1/12" or "Final answer: 1/12". Those prefixes are
+// presentation, not mathematics, so remove them before equivalence checking.
+function stripLeadingAnswerMarker(value) {
+  let s = clean(value);
+  const labelled = s.match(/^(?:answer|ans|final\s+answer)\s*(?:=|:)\s*(.+)$/i);
+  if (labelled) s = labelled[1].trim();
+  if (/^=/.test(s)) s = s.replace(/^=\s*/, "").trim();
+  return s;
+}
+
 function gcd(a, b) {
   a = Math.abs(Math.trunc(a));
   b = Math.abs(Math.trunc(b));
@@ -25,7 +36,7 @@ function stripSimpleVariableAssignment(value) {
   return match[1].trim();
 }
 
-const UNIT_SUFFIX_RE = /\s*(?:degrees?|°|%|dollars?|\$|cm(?:\^?[23]|[²³])?|mm(?:\^?[23]|[²³])?|km(?:\^?[23]|[²³])?|m(?:\^?[23]|[²³])?|units?(?:\^?[23]|[²³])?)\s*$/i;
+const UNIT_SUFFIX_RE = /\s*(?:degrees?|°|%|dollars?|\$|cm(?:\^?[23]|[²³])?|mm(?:\^?[23]|[²³])?|km(?:\^?[23]|[²³])?|m(?:\^?[23]|[²³])?|kg|g|ml|millilitres?|milliliters?|l|litres?|liters?|days?|hours?|hrs?|minutes?|mins?|seconds?|secs?|marks?|square\s+units?|cubic\s+units?|units?(?:\^?[23]|[²³])?)\s*$/i;
 
 function numericCandidates(raw) {
   let s = stripSimpleVariableAssignment(raw).replace(/,/g, "").trim();
@@ -496,7 +507,7 @@ function compareOne(userRaw, expectedRaw, options = {}) {
 }
 
 export function checkAnswer(userInput, expectedAnswer, options = {}) {
-  const userRaw = clean(userInput);
+  const userRaw = stripLeadingAnswerMarker(userInput);
   const expectedRaw = clean(expectedAnswer);
   if (!userRaw) return "incorrect";
   if (!expectedRaw) return "uncertain";
