@@ -294,7 +294,7 @@ html[data-theme="dark"] .practice-mode-icon{
   box-shadow:0 8px 20px rgba(0,0,0,.22) !important;
 }
 html[data-theme="dark"] .paper2-mode-icon{background:var(--spark-navy-mid) !important;color:#fff !important}
-html[data-theme="dark"] .adaptive-icon{background:var(--spark-purple) !important;color:#09111f !important}
+html[data-theme="dark"] .adaptive-icon{background:var(--spark-teal) !important;color:#07111f !important}
 html[data-theme="dark"] .practice-specs span{
   background:var(--spark-muted) !important;
   border-color:var(--spark-border) !important;
