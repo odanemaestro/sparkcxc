@@ -1230,3 +1230,22 @@ html[data-theme="dark"] .paper-start-shell>.paper-text-button:hover{
   border-color:var(--spark-teal)!important;
   color:var(--spark-ink)!important;
 }
+
+/* SPARK V5.3.5 tablet/phone navigator and dashboard rail dark-mode parity. */
+html[data-theme="dark"] .paper-nav-toggle,
+html[data-theme="dark"] .paper-nav-drawer,
+html[data-theme="dark"] .paper-nav-drawer-head>button{
+  background:var(--spark-paper)!important;
+  border-color:var(--spark-border)!important;
+  color:var(--spark-ink)!important;
+}
+html[data-theme="dark"] .paper-nav-drawer-head{border-color:var(--spark-border)!important}
+html[data-theme="dark"] .paper-nav-drawer-head strong{color:var(--spark-ink)!important}
+html[data-theme="dark"] .paper-nav-drawer-head span{color:var(--spark-text-muted)!important}
+@media(min-width:701px) and (max-width:1100px){
+  html[data-theme="dark"] .dash-sidebar{
+    background:var(--spark-paper)!important;
+    border-color:var(--spark-border)!important;
+  }
+  html[data-theme="dark"] .dash-nav-item{border-color:var(--spark-border)!important}
+}

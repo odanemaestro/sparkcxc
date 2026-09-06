@@ -690,6 +690,17 @@
 .paper2-tool-instruction strong {
   margin-left: 6px;
 }
+.paper2-straightedge-readout {
+  display: inline-block;
+  padding: 2px 7px;
+  border: 1px solid color-mix(in srgb, currentColor 24%, transparent);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.paper2-straightedge-readout.horizontal,
+.paper2-straightedge-readout.vertical {
+  font-weight: 800;
+}
 .paper2-graph-crosshair line,
 .paper2-snap-crosshair line {
   opacity: .42;
@@ -890,16 +901,160 @@
 }
 /* SPARK CXC MARKING V5.3.2 REVIEW/POLISH END */
 
+/* ==========================================================================
+   SPARK TABLET + PHONE EXAM NAVIGATOR V5.3.5
+   Desktop keeps the existing sticky side navigator. At tablet and phone widths
+   the navigator moves into an on-demand drawer so the question starts on screen.
+   ========================================================================== */
+.paper-header-actions{justify-self:end;display:flex;align-items:center;gap:8px}
+.paper-nav-toggle{
+  display:none;
+  min-height:40px;
+  border:1px solid #d5dde7;
+  border-radius:10px;
+  background:#fff;
+  color:var(--paper-navy);
+  padding:9px 12px;
+  font:800 12px 'Atkinson Hyperlegible','Inter','Segoe UI',sans-serif;
+  cursor:pointer;
+  white-space:nowrap;
+}
+.paper-nav-drawer-backdrop{display:none}
 
-/* SPARK V5.3.4B: straightedge alignment readout */
-.paper2-straightedge-readout {
-  display: inline-block;
-  padding: 2px 7px;
-  border: 1px solid color-mix(in srgb, currentColor 24%, transparent);
-  border-radius: 999px;
-  white-space: nowrap;
+@media(max-width:1024px){
+  .paper-exam-layout,
+  .paper2-exam-layout{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .paper-navigator-desktop{
+    display:none!important;
+  }
+  .paper-nav-toggle{
+    display:inline-flex!important;
+    align-items:center;
+    justify-content:center;
+  }
+  .paper-nav-drawer-backdrop{
+    position:fixed;
+    inset:0;
+    z-index:12500;
+    display:flex;
+    justify-content:flex-end;
+    background:rgba(8,26,61,.52);
+    backdrop-filter:blur(3px);
+  }
+  .paper-nav-drawer{
+    width:min(420px,calc(100vw - 52px));
+    height:100dvh;
+    overflow-y:auto;
+    background:#fff;
+    padding:max(16px,env(safe-area-inset-top)) 16px max(18px,env(safe-area-inset-bottom));
+    box-shadow:-20px 0 60px rgba(8,26,61,.24);
+  }
+  .paper-nav-drawer-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:14px;
+    padding:2px 2px 14px;
+    border-bottom:1px solid var(--paper-border);
+  }
+  .paper-nav-drawer-head strong{
+    display:block;
+    font-family:'Crimson Pro',Georgia,serif;
+    font-size:24px;
+    color:var(--paper-navy);
+  }
+  .paper-nav-drawer-head span{
+    display:block;
+    margin-top:2px;
+    font-size:11px;
+    color:var(--paper-muted);
+  }
+  .paper-nav-drawer-head>button{
+    width:42px;
+    height:42px;
+    min-width:42px;
+    border:1px solid #d5dde7;
+    border-radius:50%;
+    background:#f8fafc;
+    color:var(--paper-navy);
+    font:700 22px/1 inherit;
+    cursor:pointer;
+  }
+  .paper-navigator-drawer-panel{
+    display:block!important;
+    position:static!important;
+    order:initial!important;
+    margin:0;
+    padding:16px 0 0!important;
+    border:0!important;
+    border-radius:0!important;
+    box-shadow:none!important;
+    background:transparent!important;
+  }
+  .paper-navigator-drawer-panel .paper-nav-grid{
+    grid-template-columns:repeat(6,minmax(0,1fr));
+    gap:8px;
+  }
+  .paper-navigator-drawer-panel .paper-nav-grid button{
+    min-height:44px;
+    aspect-ratio:auto;
+  }
+  .paper-navigator-drawer-panel.paper2-navigator .paper2-nav-grid{
+    grid-template-columns:repeat(4,minmax(0,1fr));
+  }
+  .paper-navigator-drawer-panel.paper2-navigator .paper2-nav-grid-small{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
 }
-.paper2-straightedge-readout.horizontal,
-.paper2-straightedge-readout.vertical {
-  font-weight: 800;
+
+@media(max-width:680px){
+  .paper-header-actions{gap:6px}
+  .paper-nav-toggle{min-height:40px;padding:8px 10px;font-size:11px}
+  .paper-nav-drawer-backdrop{
+    align-items:flex-end;
+    justify-content:stretch;
+  }
+  .paper-nav-drawer{
+    width:100%;
+    height:auto;
+    max-height:86dvh;
+    border-radius:20px 20px 0 0;
+    padding:16px 14px max(16px,env(safe-area-inset-bottom));
+    box-shadow:0 -18px 54px rgba(8,26,61,.24);
+  }
+  .paper-navigator-drawer-panel .paper-nav-grid{
+    grid-template-columns:repeat(8,minmax(0,1fr));
+  }
+  .paper-navigator-drawer-panel.paper2-navigator .paper2-nav-grid{
+    grid-template-columns:repeat(7,minmax(0,1fr));
+  }
+  .paper-navigator-drawer-panel.paper2-navigator .paper2-nav-grid-small{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
 }
+
+@media(max-width:430px){
+  .paper-navigator-drawer-panel .paper-nav-grid{
+    grid-template-columns:repeat(6,minmax(0,1fr));
+  }
+  .paper-navigator-drawer-panel.paper2-navigator .paper2-nav-grid{
+    grid-template-columns:repeat(5,minmax(0,1fr));
+  }
+}
+.paper-drawer-submit{
+  width:100%;
+  min-height:44px;
+  margin-top:18px;
+  border:0;
+  border-radius:10px;
+  background:var(--paper-navy);
+  color:#fff;
+  font:800 13px 'Atkinson Hyperlegible','Inter','Segoe UI',sans-serif;
+  cursor:pointer;
+}
+@media(max-width:680px){
+  .paper-header-actions{grid-column:1/-1;justify-content:flex-end}
+}
+html[data-theme="dark"] .paper-drawer-submit{background:var(--spark-teal)!important;color:#042F2E!important}

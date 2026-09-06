@@ -77,6 +77,7 @@ export default function Paper1Exam({ onExit, startFresh = false, supabase, userI
   const [error, setError] = useState("");
   const [started, setStarted] = useState(false);
   const [showSubmit, setShowSubmit] = useState(false);
+  const [showNavigator, setShowNavigator] = useState(false);
   const [result, setResult] = useState(null);
   const [reviewIndex, setReviewIndex] = useState(0);
   const submittedRef = useRef(false);
@@ -97,6 +98,20 @@ export default function Paper1Exam({ onExit, startFresh = false, supabase, userI
     });
     return () => window.cancelAnimationFrame(frame);
   }, [reviewIndex, result]);
+
+  useEffect(() => {
+    if (!showNavigator) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKeyDown = event => {
+      if (event.key === "Escape") setShowNavigator(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [showNavigator]);
 
   useEffect(() => {
     let alive = true;
@@ -246,6 +261,11 @@ export default function Paper1Exam({ onExit, startFresh = false, supabase, userI
   function toggleFlag() {
     if (!current) return;
     setFlags(prev => prev.includes(current.question_id) ? prev.filter(id => id !== current.question_id) : [...prev, current.question_id]);
+  }
+
+  function goToQuestion(index) {
+    setCurrentIndex(index);
+    setShowNavigator(false);
   }
 
   function startAnother() {
@@ -405,7 +425,10 @@ export default function Paper1Exam({ onExit, startFresh = false, supabase, userI
           <span>Time remaining</span>
           <strong>{formatClock(remaining)}</strong>
         </div>
-        <button type="button" className="paper-submit-top" onClick={() => setShowSubmit(true)}>Submit paper</button>
+        <div className="paper-header-actions">
+          <button type="button" className="paper-nav-toggle" aria-expanded={showNavigator} onClick={() => setShowNavigator(true)}>Questions {currentIndex + 1}/60</button>
+          <button type="button" className="paper-submit-top" onClick={() => setShowSubmit(true)}>Submit paper</button>
+        </div>
       </header>
 
       <div className="paper-progress-line"><span style={{ width: `${(answeredCount / 60) * 100}%` }}/></div>
@@ -445,7 +468,7 @@ export default function Paper1Exam({ onExit, startFresh = false, supabase, userI
           </div>
         </section>
 
-        <aside className="paper-navigator">
+        <aside className="paper-navigator paper-navigator-desktop">
           <div className="paper-nav-head">
             <div><strong>Question navigator</strong><span>{answeredCount} answered, {unanswered} remaining</span></div>
           </div>
@@ -458,7 +481,7 @@ export default function Paper1Exam({ onExit, startFresh = false, supabase, userI
                   key={q.question_id}
                   type="button"
                   className={`${i === currentIndex ? "current " : ""}${isAnswered ? "answered " : ""}${isFlagged ? "flagged" : ""}`}
-                  onClick={() => setCurrentIndex(i)}
+                  onClick={() => goToQuestion(i)}
                   aria-label={`Question ${i + 1}${isAnswered ? ", answered" : ""}${isFlagged ? ", flagged" : ""}`}
                 >{i + 1}</button>
               );
@@ -472,6 +495,40 @@ export default function Paper1Exam({ onExit, startFresh = false, supabase, userI
           <button type="button" className="paper-submit-side" onClick={() => setShowSubmit(true)}>Submit paper</button>
         </aside>
       </div>
+
+      {showNavigator && (
+        <div className="paper-nav-drawer-backdrop" role="presentation" onMouseDown={() => setShowNavigator(false)}>
+          <div className="paper-nav-drawer" role="dialog" aria-modal="true" aria-label="Question navigator" onMouseDown={event => event.stopPropagation()}>
+            <div className="paper-nav-drawer-head">
+              <div><strong>Questions</strong><span>{answeredCount} answered, {unanswered} remaining</span></div>
+              <button type="button" onClick={() => setShowNavigator(false)} aria-label="Close question navigator">×</button>
+            </div>
+            <aside className="paper-navigator paper-navigator-drawer-panel">
+              <div className="paper-nav-grid">
+                {exam.questions.map((q, i) => {
+                  const isAnswered = Boolean(answers[q.question_id]);
+                  const isFlagged = flagged.has(q.question_id);
+                  return (
+                    <button
+                      key={q.question_id}
+                      type="button"
+                      className={`${i === currentIndex ? "current " : ""}${isAnswered ? "answered " : ""}${isFlagged ? "flagged" : ""}`}
+                      onClick={() => goToQuestion(i)}
+                      aria-label={`Question ${i + 1}${isAnswered ? ", answered" : ""}${isFlagged ? ", flagged" : ""}`}
+                    >{i + 1}</button>
+                  );
+                })}
+              </div>
+              <div className="paper-nav-legend">
+                <span><i className="answered"/>Answered</span>
+                <span><i className="flagged"/>Flagged</span>
+                <span><i/>Not answered</span>
+              </div>
+              <button type="button" className="paper-drawer-submit" onClick={() => { setShowNavigator(false); setShowSubmit(true); }}>Submit paper</button>
+            </aside>
+          </div>
+        </div>
+      )}
 
       {showSubmit && (
         <div className="paper-modal-backdrop" role="presentation" onMouseDown={() => setShowSubmit(false)}>

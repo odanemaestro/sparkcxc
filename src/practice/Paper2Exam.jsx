@@ -255,6 +255,7 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
   const [timedOut, setTimedOut] = useState(false);
   const [showSubmit, setShowSubmit] = useState(false);
   const [showFormula, setShowFormula] = useState(false);
+  const [showNavigator, setShowNavigator] = useState(false);
   const [reviewIndex, setReviewIndex] = useState(0);
   const [activePartKey, setActivePartKey] = useState(null);
   const inputRefs = useRef({});
@@ -276,6 +277,20 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
     });
     return () => window.cancelAnimationFrame(frame);
   }, [reviewIndex, submitted]);
+
+  useEffect(() => {
+    if (!showNavigator) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKeyDown = event => {
+      if (event.key === "Escape") setShowNavigator(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [showNavigator]);
 
   useEffect(() => {
     const saved = !startFresh ? readJson(ACTIVE_KEY, null) : null;
@@ -398,6 +413,11 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
   function toggleFlag() {
     if (!current) return;
     setFlags(previous => previous.includes(current.question_id) ? previous.filter(id => id !== current.question_id) : [...previous, current.question_id]);
+  }
+
+  function goToQuestion(index) {
+    setCurrentIndex(index);
+    setShowNavigator(false);
   }
 
   function startAnother() {
@@ -581,6 +601,7 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
         <div className={`paper-timer ${remaining <= 600 ? "is-low" : ""}`}><span>Time remaining</span><strong>{formatClock(remaining)}</strong></div>
         <div className="paper2-header-actions">
           <button type="button" className="paper2-formula-control" onClick={() => setShowFormula(true)}>Formula sheet</button>
+          <button type="button" className="paper-nav-toggle" aria-expanded={showNavigator} onClick={() => setShowNavigator(true)}>Questions {currentIndex + 1}/10</button>
           <button type="button" className="paper-submit-top" onClick={() => setShowSubmit(true)}>Submit paper</button>
         </div>
       </header>
@@ -704,17 +725,17 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
           </div>
         </section>
 
-        <aside className="paper-navigator paper2-navigator">
+        <aside className="paper-navigator paper2-navigator paper-navigator-desktop">
           <div className="paper-nav-head"><strong>Question navigator</strong><span>{completeIds.length}/10 fully answered</span></div>
           <div className="paper2-section-label"><span>Section I</span><b>64 marks</b></div>
           <div className="paper-nav-grid paper2-nav-grid">
-            {exam.questions.slice(0, 7).map((question, index) => <button type="button" key={question.question_id} title={`${question.marks} marks`} className={`${completeSet.has(question.question_id) ? "answered " : ""}${flaggedSet.has(question.question_id) ? "flagged " : ""}${index === currentIndex ? "current" : ""}`} onClick={() => setCurrentIndex(index)}>{question.question_number}</button>)}
+            {exam.questions.slice(0, 7).map((question, index) => <button type="button" key={question.question_id} title={`${question.marks} marks`} className={`${completeSet.has(question.question_id) ? "answered " : ""}${flaggedSet.has(question.question_id) ? "flagged " : ""}${index === currentIndex ? "current" : ""}`} onClick={() => goToQuestion(index)}>{question.question_number}</button>)}
           </div>
           <div className="paper2-section-label"><span>Section II</span><b>36 marks</b></div>
           <div className="paper-nav-grid paper2-nav-grid paper2-nav-grid-small">
             {exam.questions.slice(7).map((question, offset) => {
               const index = offset + 7;
-              return <button type="button" key={question.question_id} title={`${question.marks} marks`} className={`${completeSet.has(question.question_id) ? "answered " : ""}${flaggedSet.has(question.question_id) ? "flagged " : ""}${index === currentIndex ? "current" : ""}`} onClick={() => setCurrentIndex(index)}>{question.question_number}</button>;
+              return <button type="button" key={question.question_id} title={`${question.marks} marks`} className={`${completeSet.has(question.question_id) ? "answered " : ""}${flaggedSet.has(question.question_id) ? "flagged " : ""}${index === currentIndex ? "current" : ""}`} onClick={() => goToQuestion(index)}>{question.question_number}</button>;
             })}
           </div>
           <div className="paper-nav-legend"><span><i className="answered"/>Complete</span><span><i className="flagged"/>Flagged</span><span><i/>Incomplete</span></div>
@@ -722,6 +743,33 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
           <button type="button" className="paper-submit-side" onClick={() => setShowSubmit(true)}>Submit Paper 2</button>
         </aside>
       </div>
+
+      {showNavigator && (
+        <div className="paper-nav-drawer-backdrop" role="presentation" onMouseDown={() => setShowNavigator(false)}>
+          <div className="paper-nav-drawer" role="dialog" aria-modal="true" aria-label="Question navigator" onMouseDown={event => event.stopPropagation()}>
+            <div className="paper-nav-drawer-head">
+              <div><strong>Questions</strong><span>{completeIds.length}/10 fully answered</span></div>
+              <button type="button" onClick={() => setShowNavigator(false)} aria-label="Close question navigator">×</button>
+            </div>
+            <aside className="paper-navigator paper2-navigator paper-navigator-drawer-panel">
+              <div className="paper2-section-label"><span>Section I</span><b>64 marks</b></div>
+              <div className="paper-nav-grid paper2-nav-grid">
+                {exam.questions.slice(0, 7).map((question, index) => <button type="button" key={question.question_id} title={`${question.marks} marks`} className={`${completeSet.has(question.question_id) ? "answered " : ""}${flaggedSet.has(question.question_id) ? "flagged " : ""}${index === currentIndex ? "current" : ""}`} onClick={() => goToQuestion(index)}>{question.question_number}</button>)}
+              </div>
+              <div className="paper2-section-label"><span>Section II</span><b>36 marks</b></div>
+              <div className="paper-nav-grid paper2-nav-grid paper2-nav-grid-small">
+                {exam.questions.slice(7).map((question, offset) => {
+                  const index = offset + 7;
+                  return <button type="button" key={question.question_id} title={`${question.marks} marks`} className={`${completeSet.has(question.question_id) ? "answered " : ""}${flaggedSet.has(question.question_id) ? "flagged " : ""}${index === currentIndex ? "current" : ""}`} onClick={() => goToQuestion(index)}>{question.question_number}</button>;
+                })}
+              </div>
+              <div className="paper-nav-legend"><span><i className="answered"/>Complete</span><span><i className="flagged"/>Flagged</span><span><i/>Incomplete</span></div>
+              <div className="paper2-navigator-summary"><span>Paper total</span><strong>100 marks</strong><small>2 h 40 min</small></div>
+              <button type="button" className="paper-drawer-submit" onClick={() => { setShowNavigator(false); setShowSubmit(true); }}>Submit Paper 2</button>
+            </aside>
+          </div>
+        </div>
+      )}
 
       {showSubmit && (
         <div className="paper-modal-backdrop">

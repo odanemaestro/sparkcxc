@@ -3233,19 +3233,23 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   }
 
   const navItems = isTutor ? [
-    {k:"overview",l:"📊 Overview"},
-    {k:"sessions",l:"📅 My sessions"},
-    {k:"students",l:"🎓 My students"},
-    {k:"reviews",l:"⭐ Reviews"},
-    {k:"earnings",l:"💰 Earnings"},
-    {k:"profile",l:"👤 My profile"},
+    {k:"overview",icon:"📊",label:"Overview"},
+    {k:"sessions",icon:"📅",label:"My sessions"},
+    {k:"students",icon:"🎓",label:"My students"},
+    {k:"reviews",icon:"⭐",label:"Reviews"},
+    {k:"earnings",icon:"💰",label:"Earnings"},
+    {k:"profile",icon:"👤",label:"My profile"},
   ] : [
-    {k:"overview",l:"📊 Overview"},
-    {k:"subjects",l:"📚 My subjects"},
-    {k:"progress",l:"📈 Progress"},
-    {k:"circles",l:"🤝 Study Circles"},
-    {k:"bookings",l:"📅 My bookings"},
+    {k:"overview",icon:"📊",label:"Overview"},
+    {k:"subjects",icon:"📚",label:"My subjects"},
+    {k:"progress",icon:"📈",label:"Progress"},
+    {k:"circles",icon:"🤝",label:"Study Circles"},
+    {k:"bookings",icon:"📅",label:"My bookings"},
   ];
+  const dashboardAvatarPath = tutorRow?.avatar_path || profile?.avatar_path || "";
+  const dashboardProfile = dashboardAvatarPath === (profile?.avatar_path || "")
+    ? profile
+    : { ...profile, avatar_path: dashboardAvatarPath };
 
   return (
     <div style={{display:"grid",gridTemplateColumns:"228px 1fr",flex:1}} className="dash-layout">
@@ -3256,7 +3260,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
           display:"flex",alignItems:"center",gap:10}}>
           <ProfilePhotoEditor
             user={user}
-            profile={profile}
+            profile={dashboardProfile}
             isTutorProfile={isTutor && !!tutorRow}
             disabled={isTutor && !tutorRowLoaded}
             showToast={showToast}
@@ -3272,13 +3276,16 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
         </div>
         {navItems.map(item => (
           <div className="dash-nav-item" key={item.k} onClick={() => setDashboardSection(item.k)}
+            title={item.label}
+            aria-label={item.label}
             style={{padding:"10px 14px",fontSize:14,cursor:"pointer",display:"flex",alignItems:"center",
               gap:8,borderRadius:T.rSm,
               color:sec===item.k?T.tealDark:T.textMuted,background:sec===item.k?T.tealLight:"transparent",
               fontWeight:sec===item.k?600:500,transition:`all .18s ${T.ease}`}}
             onMouseEnter={e=>{if(sec!==item.k)e.currentTarget.style.background=T.muted;}}
             onMouseLeave={e=>{if(sec!==item.k)e.currentTarget.style.background="transparent";}}>
-            {item.l}
+            <span className="dash-nav-icon" aria-hidden="true">{item.icon}</span>
+            <span className="dash-nav-label">{item.label}</span>
           </div>
         ))}
         {!isTutor && (
@@ -3289,14 +3296,16 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 borderRadius:T.rSm,transition:`all .18s ${T.ease}`}}
               onMouseEnter={e=>e.currentTarget.style.background=T.muted}
               onMouseLeave={e=>e.currentTarget.style.background="transparent"}>
-              📖 Study
+              <span className="dash-nav-icon" aria-hidden="true">📖</span>
+              <span className="dash-nav-label">Study</span>
             </div>
             <div className="dash-nav-item dash-secondary-item" onClick={() => setView("tutors")}
               style={{padding:"10px 14px",fontSize:14,cursor:"pointer",color:T.textMuted,
                 borderRadius:T.rSm,transition:`all .18s ${T.ease}`}}
               onMouseEnter={e=>e.currentTarget.style.background=T.muted}
               onMouseLeave={e=>e.currentTarget.style.background="transparent"}>
-              🎓 Find a tutor
+              <span className="dash-nav-icon" aria-hidden="true">🎓</span>
+              <span className="dash-nav-label">Find a tutor</span>
             </div>
           </>
         )}
@@ -3306,7 +3315,8 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
               borderRadius:T.rSm,transition:`all .18s ${T.ease}`,marginTop:!isTutor?0:10}}
             onMouseEnter={e=>e.currentTarget.style.background=T.tealLight}
             onMouseLeave={e=>e.currentTarget.style.background="transparent"}>
-            🧑‍🏫 Submit application to become a tutor
+            <span className="dash-nav-icon" aria-hidden="true">🧑‍🏫</span>
+            <span className="dash-nav-label">Submit application to become a tutor</span>
           </div>
         )}
       </div>
@@ -3331,12 +3341,19 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
         <>
         {sec === "overview" && isTutor && (
           <>
-            <h1 style={{fontFamily:FD,fontSize:24,fontWeight:700,color:T.ink,margin:"0 0 4px"}}>
-              Good {new Date().getHours()<12?"morning":new Date().getHours()<17?"afternoon":"evening"}, {profile?.name?.split(" ")[0]}.
-            </h1>
-            <p style={{color:T.textMuted,fontSize:14,marginBottom:24}}>
-              {tutorRow && !tutorRow.verified ? "Your application is under review." : "Here's what's coming up."}
-            </p>
+            <div className="tutor-dashboard-greeting-row">
+              <div className="tutor-mobile-greeting-photo">
+                <ProfileAvatar path={dashboardAvatarPath} name={profile?.name} size={62} />
+              </div>
+              <div className="tutor-dashboard-greeting-copy">
+                <h1 style={{fontFamily:FD,fontSize:24,fontWeight:700,color:T.ink,margin:"0 0 4px"}}>
+                  Good {new Date().getHours()<12?"morning":new Date().getHours()<17?"afternoon":"evening"}, {profile?.name?.split(" ")[0]}.
+                </h1>
+                <p style={{color:T.textMuted,fontSize:14,marginBottom:24}}>
+                  {tutorRow && !tutorRow.verified ? "Your application is under review." : "Here's what's coming up."}
+                </p>
+              </div>
+            </div>
             <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(140px,1fr))",
               gap:14,marginBottom:24}}>
               {[["Upcoming sessions",upcomingSessions.length,T.teal,T.tealLight],
@@ -3379,7 +3396,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
               <div className="student-mobile-greeting-photo">
                 <ProfilePhotoEditor
                   user={user}
-                  profile={profile}
+                  profile={dashboardProfile}
                   isTutorProfile={false}
                   showToast={showToast}
                   onProfileUpdated={onProfileUpdated}
@@ -3622,7 +3639,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
               <div style={{marginBottom:22,paddingBottom:20,borderBottom:`1px solid ${T.borderSoft}`}}>
                 <ProfilePhotoEditor
                   user={user}
-                  profile={profile}
+                  profile={dashboardProfile}
                   isTutorProfile={true}
                   disabled={!tutorRow}
                   showToast={showToast}
