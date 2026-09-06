@@ -1233,10 +1233,6 @@ function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorAp
           <div className="spark-mobile-menu-links">
             {user ? signedInLinks : publicLinks}
           </div>
-          <div className="spark-mobile-theme-block">
-            <span>Appearance</span>
-            <ThemeSelector variant="inline" value={themeMode} resolvedTheme={resolvedTheme} onChange={setThemeMode}/>
-          </div>
           {user ? (
             <div className="spark-mobile-account-row">
               <span>{profile?.name || user.email}</span>

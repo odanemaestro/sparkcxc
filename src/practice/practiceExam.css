@@ -1452,3 +1452,49 @@ html[data-theme="dark"] .paper2027-exam-shell .paper2-nav-section-head span{
     justify-content:space-between;
   }
 }
+
+/* SPARK 2027 MOBILE CONTENT FIT + DARK DIAGRAM VISIBILITY V5.3.6H */
+/* Keep wide response widgets from expanding the one-column parts grid on phones. */
+.paper2-parts-list{
+  grid-template-columns:minmax(0,1fr);
+  min-width:0;
+}
+.paper2-part-card{
+  min-width:0;
+  max-width:100%;
+  box-sizing:border-box;
+}
+.paper2-part-card > *{
+  max-width:100%;
+  box-sizing:border-box;
+}
+.paper2-part-card p,
+.paper2027-stem{
+  overflow-wrap:break-word;
+  word-break:normal;
+}
+
+/* 2027 SVGs use currentColor. The light-mode navy was too dark on the dark paper surface. */
+html[data-theme="dark"] .paper2027-diagram{
+  color:var(--spark-ink)!important;
+}
+html[data-theme="dark"] .paper2027-diagram svg{
+  color:inherit!important;
+}
+
+@media(max-width:720px){
+  .paper2027-exam-shell,
+  .paper2027-exam-shell .paper-exam-layout,
+  .paper2027-exam-shell .paper-question-card,
+  .paper2027-exam-shell .paper2-parts-list,
+  .paper2027-exam-shell .paper2-part-card{
+    min-width:0;
+    max-width:100%;
+    box-sizing:border-box;
+  }
+  .paper2027-exam-shell .paper2-table-input-wrap,
+  .paper2027-exam-shell .paper2-table-wrap,
+  .paper2027-exam-shell .paper2-stimulus-figure{
+    max-width:100%;
+  }
+}

@@ -1,17 +1,7 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export const THEME_STORAGE_KEY = "spark_theme_mode";
-export const THEME_MODES = Object.freeze(["system", "light", "dark"]);
-
-function initialMode() {
-  if (typeof window === "undefined") return "system";
-  try {
-    const saved = window.localStorage.getItem(THEME_STORAGE_KEY);
-    return THEME_MODES.includes(saved) ? saved : "system";
-  } catch {
-    return "system";
-  }
-}
+export const THEME_MODES = Object.freeze(["light", "dark"]);
 
 function prefersDark() {
   return typeof window !== "undefined" &&
@@ -19,29 +9,21 @@ function prefersDark() {
     window.matchMedia("(prefers-color-scheme: dark)").matches;
 }
 
+function initialMode() {
+  if (typeof window === "undefined") return "light";
+  try {
+    const saved = window.localStorage.getItem(THEME_STORAGE_KEY);
+    if (THEME_MODES.includes(saved)) return saved;
+  } catch {}
+
+  // Preserve the user's current device appearance on first load, then persist
+  // the first explicit Light/Dark choice made with the new two-state toggle.
+  return prefersDark() ? "dark" : "light";
+}
+
 export default function useThemeMode() {
   const [themeMode, setThemeModeState] = useState(initialMode);
-  const [systemDark, setSystemDark] = useState(prefersDark);
-
-  useEffect(() => {
-    if (typeof window === "undefined" || typeof window.matchMedia !== "function") return undefined;
-    const media = window.matchMedia("(prefers-color-scheme: dark)");
-    const sync = event => setSystemDark(event.matches);
-    setSystemDark(media.matches);
-
-    if (media.addEventListener) media.addEventListener("change", sync);
-    else media.addListener(sync);
-
-    return () => {
-      if (media.removeEventListener) media.removeEventListener("change", sync);
-      else media.removeListener(sync);
-    };
-  }, []);
-
-  const resolvedTheme = useMemo(
-    () => themeMode === "system" ? (systemDark ? "dark" : "light") : themeMode,
-    [themeMode, systemDark]
-  );
+  const resolvedTheme = themeMode;
 
   const setThemeMode = useCallback(nextMode => {
     if (!THEME_MODES.includes(nextMode)) return;
