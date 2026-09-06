@@ -291,7 +291,10 @@ export const flipRelation = r => FLIP[r] || r;
 /** Is the expression written as a product of factors (not expanded)? */
 export function isFactorised(raw) {
   const s = normalise(raw).replace(/\s/g, "");
-  if (!/\)\s*\(/.test(s) && !/^-?\d*\*?\(/.test(s)) return false;
+  // A monomial times a bracket, for example 3b(2a - 5b), is already a
+  // product of factors. The older check only recognised a bare numeral.
+  const monomialTimesBracket = /^-?\d*\*?[A-Za-z]*(\^\d+)?[A-Za-z]*(\^\d+)?\*?\(/;
+  if (!/\)\s*\(/.test(s) && !monomialTimesBracket.test(s)) return false;
   // a trailing "+ 3" outside every bracket means it is not a single product
   const outside = s.replace(/\([^()]*\)/g, "");
   return !/[+\-](?![^(]*\))/.test(outside.replace(/^-/, ""));
@@ -299,8 +302,13 @@ export function isFactorised(raw) {
 
 /** Every number a student wrote, in order - used to find method evidence. */
 export function numbersIn(raw) {
-  const s = normalise(raw).replace(/,(?=\d{3}\b)/g, "");
-  return (s.match(/-?\d+(?:\.\d+)?(?:\s*\/\s*-?\d+(?:\.\d+)?)?/g) || [])
+  // CXC commonly prints thousands using spaces (625 000 000). Join those
+  // groups before scanning so a written value is treated as one number.
+  const s = normalise(raw)
+    .replace(/,(?=\d{3}\b)/g, "")
+    .replace(/(\d) (?=\d{3}(?!\d))/g, "$1")
+    .replace(/(\d) (?=\d{3}(?!\d))/g, "$1");
+  return (s.match(/-?\d+(?:\.\d+)?(?:\s*\/\s*\d+)?/g) || [])
     .map(t => {
       const parts = t.split("/");
       return parts.length === 2

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import AdaptivePractice from "../adaptive/AdaptivePractice";
 import Paper1Exam from "./Paper1Exam";
 import Paper2Exam from "./Paper2Exam";
+import Syllabus2027Hub from "./Syllabus2027Hub";
 import { syncLocalPracticeResults } from "./persistence";
 import "./practiceExam.css";
 
@@ -47,6 +48,10 @@ export default function PracticeHub({ supabase, userId, setView }) {
 
   if (mode === "paper2") {
     return <Paper2Exam onExit={() => setMode("home")} startFresh={examIntent === "new"} supabase={supabase} userId={userId} />;
+  }
+
+  if (mode === "2027") {
+    return <Syllabus2027Hub onExit={() => setMode("home")} />;
   }
 
   return (
@@ -99,6 +104,18 @@ export default function PracticeHub({ supabase, userId, setView }) {
           </div>
           <div className="practice-card-actions"><button type="button" className="practice-secondary" onClick={() => setMode("adaptive")}>Open adaptive practice</button></div>
         </article>
+      </section>
+
+      <section className="practice-2027-feature-card">
+        <div className="practice-2027-feature-copy">
+          <div className="practice-2027-feature-kicker"><span>NEW</span> Effective for examinations from May–June 2027</div>
+          <h2>2027 Syllabus Practice</h2>
+          <p>Practise the revised modular CSEC Mathematics format, including the compulsory Module 1 investigation and questions written for the amended syllabus objectives.</p>
+          <div className="practice-specs">
+            <span>3 modules</span><span>New Paper 2 structure</span><span>CK · AK · R</span><span>Module practice</span>
+          </div>
+        </div>
+        <button type="button" className="practice-primary practice-2027-open" onClick={() => setMode("2027")}>Open 2027 practice</button>
       </section>
 
       <section className="practice-integrity-card">

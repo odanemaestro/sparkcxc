@@ -1,0 +1,763 @@
+{
+ "paper_id": "spark-p2027-b",
+ "title": "SPARK CSEC Mathematics - Paper 02 Practice Paper B",
+ "syllabus": "CXC 05/G/SYLL 16, amended 2026, for examinations from 2027",
+ "status": "PARTIAL - Section I (Module 1) only; Sections II and III to follow",
+ "duration_minutes": 160,
+ "marks_written": 30,
+ "marks_when_complete": 90,
+ "profile": {
+  "CK": 9,
+  "AK": 12,
+  "R": 9
+ },
+ "instructions": [
+  "This paper consists of THREE sections: I, II and III.",
+  "Section I has THREE questions; Section II has THREE questions and Section III has THREE questions.",
+  "Answer ALL questions.",
+  "Numerical answers that are non-exact should be given correct to 3 significant figures or 1 decimal place for angles in degrees, unless a different level of accuracy is specified in the question.",
+  "All working MUST be clearly shown.",
+  "A table of formulae is provided.",
+  "Diagrams are NOT drawn to scale, unless otherwise stated."
+ ],
+ "required_materials": [
+  "Electronic calculator",
+  "Geometry set"
+ ],
+ "response_types": {
+  "typed": 15,
+  "table": 1
+ },
+ "questions": [
+  {
+   "question_id": "p2027b-q1",
+   "question_number": 1,
+   "paper": "SPARK Practice Paper B (2027 format)",
+   "section": "I",
+   "module": 1,
+   "module_title": "Module 1 - Fundamentals of Secondary-Level Mathematics",
+   "topic": "Computation in standard form, currency exchange and consumer arithmetic",
+   "marks": 9,
+   "profile": {
+    "CK": 3,
+    "AK": 3,
+    "R": 3
+   },
+   "stem": "",
+   "parts": [
+    {
+     "id": "a",
+     "label": "(a)",
+     "prompt": "Determine the value of the following, giving your answer in standard form.\n\n(0.36 x 0.055)/sqrt(0.09 x 25)",
+     "marks": 2,
+     "answer": "1.32 x 10^-2",
+     "solution": "0.36 x 0.055 = 0.0198 and 0.09 x 25 = 2.25, so sqrt(2.25) = 1.5. The value is 0.0198/1.5 = 0.0132. In standard form, 0.0132 = 1.32 x 10^-2.",
+     "answerType": "expression",
+     "accepted": [
+      "1.32 * 10^-2",
+      "1.32x10^-2"
+     ],
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the value of the expression",
+       "check": {
+        "type": "contains",
+        "value": [
+         0.0132
+        ]
+       },
+       "field": "all",
+       "depends": [],
+       "code": "B1"
+      },
+      {
+       "kind": "A",
+       "profile": "R",
+       "marks": 1,
+       "description": "the value written in standard form",
+       "check": {
+        "type": "method",
+        "any": [
+         "x 10^-2"
+        ]
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": []
+      }
+     ]
+    },
+    {
+     "id": "b1",
+     "label": "(b) (i)",
+     "prompt": "The table below shows the rates of exchange at a commercial bank in Kingston.\n\nUS$1.00 = JA$156.00\nCAN$1.00 = JA$120.00\n\nUsing the table, calculate the CAN equivalent of US$1.00.",
+     "marks": 2,
+     "answer": "1.30",
+     "solution": "CAN$1.00 = JA$120.00, so JA$1.00 = CAN$(1/120.00). US$1.00 = JA$156.00, so the CAN equivalent of US$1.00 is CAN$(156.00/120.00) = CAN$1.30.",
+     "prefix": "CAN$",
+     "tolerance": 0.011,
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "R",
+       "marks": 1,
+       "description": "finding the CAN equivalent of JA$1.00",
+       "check": {
+        "type": "method",
+        "any": [
+         "1/120.00",
+         "156.00/120.00"
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "A",
+       "profile": "AK",
+       "marks": 1,
+       "description": "multiplying the CAN equivalent of JA$1.00 by 156.00",
+       "check": {
+        "type": "numeric",
+        "value": 1.3,
+        "dp": 2,
+        "tolerance": 0.011
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M1"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "b2",
+     "label": "(b) (ii)",
+     "prompt": "Mr Palmer's daughter, who is a student in Canada, sent him CAN$871.00, which he exchanged for US dollars. Calculate the amount received in US dollars.",
+     "marks": 1,
+     "answer": "670.00",
+     "solution": "US$1.00 = CAN$1.30, so CAN$871.00 = US$(871.00/1.30) = US$670.00.",
+     "prefix": "US$",
+     "tolerance": 0.011,
+     "criteria": [
+      {
+       "kind": "A",
+       "profile": "AK",
+       "marks": 1,
+       "description": "dividing by the CAN equivalent of US$1.00",
+       "check": {
+        "type": "numeric",
+        "value": 670.0,
+        "dp": 2,
+        "tolerance": 0.011
+       },
+       "field": "answer",
+       "ecf": {
+        "uses": [
+         "b1"
+        ],
+        "formula": "871.0 / b1"
+       },
+       "code": "A1",
+       "depends": []
+      }
+     ]
+    },
+    {
+     "id": "c1",
+     "label": "(c) (i)",
+     "prompt": "Mr Palmer is paid a basic wage of $18.50 per hour for a 40-hour week. Overtime is paid at time-and-a-half. In one week he worked 47 hours.\n\nCalculate his TOTAL wage for that week.",
+     "marks": 2,
+     "answer": "934.25",
+     "solution": "His basic wage is 40 x $18.50 = $740.00. Overtime is paid at 1.5 x $18.50 = $27.75 per hour, and he worked 47 - 40 = 7 hours of overtime, earning 7 x $27.75 = $194.25. His total wage is $740.00 + $194.25 = $934.25.",
+     "prefix": "$",
+     "tolerance": 0.011,
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "AK",
+       "marks": 1,
+       "description": "finding the overtime pay for 7 hours at $27.75 per hour",
+       "check": {
+        "type": "contains",
+        "value": [
+         194.25
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "A",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the total wage",
+       "check": {
+        "type": "numeric",
+        "value": 934.25,
+        "dp": 2,
+        "tolerance": 0.011
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M1"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "c2",
+     "label": "(c) (ii)",
+     "prompt": "In the following week Mr Palmer's total wage was $1 017.50. Determine the TOTAL number of hours that he worked in that week.",
+     "marks": 2,
+     "answer": "50",
+     "solution": "His overtime pay was $1 017.50 - $740.00 = $277.50, so the number of hours of overtime is 277.50/27.75 = 10. He therefore worked 40 + 10 = 50 hours in that week.",
+     "suffix": " hours",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "R",
+       "marks": 1,
+       "description": "subtracting the basic wage and dividing by the overtime rate",
+       "check": {
+        "type": "contains",
+        "value": [
+         277.5
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "A",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the total number of hours",
+       "check": {
+        "type": "numeric",
+        "value": 50.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M1"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "question_id": "p2027b-q2",
+   "question_number": 2,
+   "paper": "SPARK Practice Paper B (2027 format)",
+   "section": "I",
+   "module": 1,
+   "module_title": "Module 1 - Fundamentals of Secondary-Level Mathematics",
+   "topic": "Investigation - number patterns and generalisation",
+   "marks": 9,
+   "profile": {
+    "CK": 3,
+    "AK": 3,
+    "R": 3
+   },
+   "stem": "Kemar uses matchsticks of length 1 cm to make a row of squares. Figure 1 is a single square, Figure 2 is a row of 2 squares sharing a side, Figure 3 is a row of 3 squares, and the pattern continues.",
+   "parts": [
+    {
+     "id": "a",
+     "label": "(a)",
+     "prompt": "The table below shows the number of matchsticks used and the perimeter of each figure. Some rows have not been included.\n\nStudy the pattern of numbers in each row of the table. Complete the table by filling in the missing information.",
+     "marks": 6,
+     "answer": "13; 10; 22; 16; 3n + 1; 2n + 2",
+     "solution": "The first square uses 4 matchsticks and each further square adds 3, so Figure n uses 3n + 1. Figure 4 uses 3(4) + 1 = 13 and Figure 7 uses 3(7) + 1 = 22. The figure is a 1 cm by n cm rectangle, so its perimeter is 2(n + 1) = 2n + 2: Figure 4 gives 10 cm and Figure 7 gives 16 cm.",
+     "responseType": "table",
+     "table": {
+      "caption": "Each matchstick is 1 cm long.",
+      "headers": [
+       "Figure",
+       "Number of squares (n)",
+       "Number of matchsticks",
+       "Perimeter (cm)"
+      ],
+      "rows": [
+       [
+        "Figure 1",
+        "1",
+        "4",
+        "4"
+       ],
+       [
+        "Figure 2",
+        "2",
+        "7",
+        "6"
+       ],
+       [
+        "Figure 3",
+        "3",
+        "10",
+        "8"
+       ],
+       [
+        "Figure 4",
+        "4",
+        {
+         "blank": true,
+         "key": "m4"
+        },
+        {
+         "blank": true,
+         "key": "p4"
+        }
+       ],
+       [
+        "Figure 7",
+        "7",
+        {
+         "blank": true,
+         "key": "m7"
+        },
+        {
+         "blank": true,
+         "key": "p7"
+        }
+       ],
+       [
+        "Figure n",
+        "n",
+        {
+         "blank": true,
+         "key": "mn"
+        },
+        {
+         "blank": true,
+         "key": "pn"
+        }
+       ]
+      ],
+      "marks": 6,
+      "cells": {
+       "m4": {
+        "type": "numeric",
+        "value": 13,
+        "marks": 1,
+        "description": "matchsticks in Figure 4"
+       },
+       "p4": {
+        "type": "numeric",
+        "value": 10,
+        "marks": 1,
+        "description": "perimeter of Figure 4"
+       },
+       "m7": {
+        "type": "numeric",
+        "value": 22,
+        "marks": 1,
+        "description": "matchsticks in Figure 7"
+       },
+       "p7": {
+        "type": "numeric",
+        "value": 16,
+        "marks": 1,
+        "description": "perimeter of Figure 7"
+       },
+       "mn": {
+        "type": "expression",
+        "value": "3n + 1",
+        "marks": 1,
+        "description": "matchsticks in Figure n, in terms of n"
+       },
+       "pn": {
+        "type": "expression",
+        "value": "2n + 2",
+        "marks": 1,
+        "description": "perimeter of Figure n, in terms of n"
+       }
+      }
+     },
+     "answerType": "text",
+     "profile": {
+      "CK": 3,
+      "AK": 2,
+      "R": 1
+     }
+    },
+    {
+     "id": "b1",
+     "label": "(b) (i)",
+     "prompt": "Kemar has 100 matchsticks. Determine the greatest number of squares that can be made in a single row.",
+     "marks": 2,
+     "answer": "33",
+     "solution": "3n + 1 <= 100 gives 3n <= 99, so n <= 33. The greatest whole number of squares is 33, which uses 3(33) + 1 = 100 matchsticks.",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "R",
+       "marks": 1,
+       "description": "forms 3n + 1 <= 100",
+       "check": {
+        "type": "contains",
+        "value": [
+         99.0
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "A",
+       "profile": "AK",
+       "marks": 1,
+       "description": "the greatest number of squares",
+       "check": {
+        "type": "numeric",
+        "value": 33.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M1"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "b2",
+     "label": "(b) (ii)",
+     "prompt": "Write a formula in terms of n for the AREA, in square centimetres, enclosed by Figure n.",
+     "marks": 1,
+     "answer": "n",
+     "solution": "Each square encloses 1 cm^2 and Figure n is a row of n squares, so the area enclosed is n cm^2.",
+     "answerType": "expression",
+     "suffix": " cm^2",
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "R",
+       "marks": 1,
+       "description": "the area in terms of n",
+       "check": {
+        "type": "expression",
+        "value": "n",
+        "accepted": [
+         "n cm^2",
+         "1n"
+        ]
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "question_id": "p2027b-q3",
+   "question_number": 3,
+   "paper": "SPARK Practice Paper B (2027 format)",
+   "section": "I",
+   "module": 1,
+   "module_title": "Module 1 - Fundamentals of Secondary-Level Mathematics",
+   "topic": "Factorisation, binary operations, sets and scale drawing",
+   "marks": 12,
+   "profile": {
+    "CK": 3,
+    "AK": 6,
+    "R": 3
+   },
+   "stem": "",
+   "parts": [
+    {
+     "id": "a1",
+     "label": "(a) (i)",
+     "prompt": "Factorize completely\n\n4x^2y + 10xy^3.",
+     "marks": 1,
+     "answer": "2xy(2x + 5y^2)",
+     "solution": "Both terms have a factor of 2, a factor of x and a factor of y, so the common factor is 2xy. 4x^2y + 10xy^3 = 2xy(2x + 5y^2).",
+     "answerType": "expression",
+     "requiredForm": "factorised",
+     "accepted": [
+      "2xy(2x+5y^2)",
+      "2yx(2x + 5y^2)"
+     ],
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "AK",
+       "marks": 1,
+       "description": "the complete factorisation",
+       "check": {
+        "type": "expression",
+        "value": "2xy(2x + 5y^2)",
+        "accepted": [
+         "2xy(2x+5y^2)",
+         "2yx(2x + 5y^2)"
+        ],
+        "requireFactorised": true
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    },
+    {
+     "id": "a2",
+     "label": "(a) (ii) a)",
+     "prompt": "If a * b = 2a + 3b, calculate the value of\n\n4 * 3.",
+     "marks": 1,
+     "answer": "17",
+     "solution": "Here a = 4 and b = 3, so 4 * 3 = 2(4) + 3(3) = 17.",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "AK",
+       "marks": 1,
+       "description": "the value of 4 * 3",
+       "check": {
+        "type": "numeric",
+        "value": 17.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    },
+    {
+     "id": "a3",
+     "label": "(a) (ii) b)",
+     "prompt": "Hence, calculate the value of\n\n(4 * 3) * 2.",
+     "marks": 1,
+     "answer": "40",
+     "solution": "(4 * 3) = 17, so (4 * 3) * 2 = 17 * 2 = 2(17) + 3(2) = 40.",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "R",
+       "marks": 1,
+       "description": "substituting the value of 4 * 3 back into the operation",
+       "check": {
+        "type": "numeric",
+        "value": 40.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    },
+    {
+     "id": "b1",
+     "label": "(b) (i)",
+     "prompt": "The incomplete Venn diagram below shows the number of members of a youth club of 40 who play a musical instrument and who dance.\n\nU = {all members of the youth club}\nM = {members who play a musical instrument}\nD = {members who dance}\n\nAdditional information about the club is that\n\n22 members dance\n24 members play a musical instrument\n3 members neither play a musical instrument nor dance\nx members BOTH play a musical instrument and dance.\n\nComplete the Venn diagram to represent the information, showing the number of members in EACH subset.",
+     "marks": 2,
+     "answer": "24 - x, x, 22 - x and 3",
+     "solution": "24 members play a musical instrument and x of them also dance, so the region of M outside D holds 24 - x. In the same way 22 - x members dance but not play a musical instrument, so that goes in the region of D outside M. The x in the overlap and the 3 outside both circles are already shown.",
+     "answerType": "text",
+     "diagram": {
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 380 250\" width=\"100%\" style=\"max-width:400px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" font-family=\"Georgia,serif\" font-size=\"13\"><rect x=\"6\" y=\"6\" width=\"368\" height=\"238\" rx=\"2\"/><circle cx=\"146\" cy=\"122\" r=\"82\"/><circle cx=\"224\" cy=\"122\" r=\"82\"/><text x=\"20.0\" y=\"26.0\" text-anchor=\"start\" stroke=\"none\" fill=\"currentColor\" font-size=\"13\" font-style=\"italic\">U</text><text x=\"94.0\" y=\"32.0\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"13\" font-style=\"italic\">M</text><text x=\"276.0\" y=\"32.0\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"13\" font-style=\"italic\">D</text><text x=\"185.0\" y=\"122.0\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"13\">x</text><text x=\"348.0\" y=\"228.0\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"13\">3</text></svg>",
+      "alt": "An incomplete Venn diagram. A rectangle is labelled U and contains two overlapping circles, M on the left and D on the right. The letter x is written in the overlap of the two circles and the number 3 is written inside the rectangle but outside both circles. The region of M outside D and the region of D outside M are both empty."
+     },
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "AK",
+       "marks": 1,
+       "description": "24 - x seen",
+       "check": {
+        "type": "method",
+        "any": [
+         "24 - x"
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "M",
+       "profile": "AK",
+       "marks": 1,
+       "description": "22 - x seen",
+       "check": {
+        "type": "method",
+        "any": [
+         "22 - x"
+        ]
+       },
+       "field": "all",
+       "code": "M2"
+      }
+     ]
+    },
+    {
+     "id": "b2",
+     "label": "(b) (ii)",
+     "prompt": "Calculate the value of x.",
+     "marks": 2,
+     "answer": "9",
+     "solution": "The four regions account for every one of the 40 members, so (24 - x) + x + (22 - x) + 3 = 40. That is 49 - x = 40, so x = 49 - 40 = 9.",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "R",
+       "marks": 1,
+       "description": "forming the equation (24 - x) + x + (22 - x) + 3 = 40",
+       "check": {
+        "type": "contains",
+        "value": [
+         49.0
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "A",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the value of x",
+       "check": {
+        "type": "numeric",
+        "value": 9.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M1"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "c1",
+     "label": "(c) (i)",
+     "prompt": "The diagram below shows a map of part of an island, drawn on a grid where each small square measures 1 cm by 1 cm. The shaded region represents a forest reserve. The map is drawn to a scale of 1 : 20 000.\n\nL and M are two tracking stations. State, in cm, the distance LM on the map.",
+     "marks": 1,
+     "answer": "4",
+     "solution": "L and M lie on the same horizontal line of the grid, with 4 squares between them, and each square measures 1 cm by 1 cm. So LM = 4 cm on the map.",
+     "suffix": " cm",
+     "tolerance": 1e-06,
+     "diagram": {
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 292 214\" width=\"100%\" style=\"max-width:312px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" font-family=\"Georgia,serif\" font-size=\"13\"><path d=\"M16 198 L16 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M42 198 L42 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M68 198 L68 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M94 198 L94 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M120 198 L120 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M146 198 L146 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M172 198 L172 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M198 198 L198 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M224 198 L224 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M250 198 L250 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M276 198 L276 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M16 198 L276 198\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M16 172 L276 172\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M16 146 L276 146\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M16 120 L276 120\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M16 94 L276 94\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M16 68 L276 68\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M16 42 L276 42\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M16 16 L276 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M42 172 L198 172 L198 120 L120 120 L120 94 L42 94 Z\" fill=\"currentColor\" fill-opacity=\"0.18\" stroke-width=\"1.9\"/><circle cx=\"68\" cy=\"42\" r=\"3.2\" fill=\"currentColor\" stroke=\"none\"/><text x=\"68\" y=\"32\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"13\" font-style=\"italic\">L</text><circle cx=\"172\" cy=\"42\" r=\"3.2\" fill=\"currentColor\" stroke=\"none\"/><text x=\"172\" y=\"32\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"13\" font-style=\"italic\">M</text></svg>",
+      "alt": "A map drawn on a grid of 10 by 7 squares, each square 1 cm by 1 cm. A shaded region, the forest reserve, is drawn with its corners on the corners of the squares: it is 6 squares wide and 2 squares tall along the bottom, with a further block 3 squares wide and 1 square tall standing on the left-hand end of it. Two dots mark the tracking stations. L is 2 squares from the left edge of the grid on the horizontal line 6 squares up from the bottom, and M is on that same horizontal line, 6 squares from the left edge."
+     },
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the distance LM on the map",
+       "check": {
+        "type": "numeric",
+        "value": 4.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    },
+    {
+     "id": "c2",
+     "label": "(c) (ii)",
+     "prompt": "The actual distance between two villages on the island is 618 000 cm. What is this actual distance in km?",
+     "marks": 1,
+     "answer": "6.18",
+     "solution": "1 km = 100 000 cm, so 618 000 cm = (618000/100000) km = 6.18 km.",
+     "suffix": " km",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the actual distance in kilometres",
+       "check": {
+        "type": "numeric",
+        "value": 6.18,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    },
+    {
+     "id": "c3",
+     "label": "(c) (iii)",
+     "prompt": "Calculate the ACTUAL area, in km^2, of the forest reserve, given that 1 x 10^10 cm^2 = 1 km^2.",
+     "marks": 3,
+     "answer": "0.6",
+     "solution": "The forest reserve covers 15 of the small squares, so its area on the map is 15 cm^2. The scale is 1 : 20 000, so 1 cm on the map represents 20 000 cm and 1 cm^2 on the map represents 20 000 x 20 000 = 400 000 000 cm^2. The actual area is therefore 15 x 400 000 000 = 6 000 000 000 cm^2, and since 1 x 10^10 cm^2 = 1 km^2 this is 0.6 km^2.",
+     "suffix": " km^2",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "AK",
+       "marks": 1,
+       "description": "the area of the forest reserve on the map, in cm^2",
+       "check": {
+        "type": "contains",
+        "value": [
+         15.0
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "M",
+       "profile": "R",
+       "marks": 1,
+       "description": "1 cm^2 on the map represents 20 000 x 20 000 cm^2",
+       "check": {
+        "type": "contains",
+        "value": [
+         400000000.0
+        ]
+       },
+       "field": "all",
+       "code": "M2"
+      },
+      {
+       "kind": "A",
+       "profile": "AK",
+       "marks": 1,
+       "description": "the actual area, in km^2",
+       "check": {
+        "type": "numeric",
+        "value": 0.6,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M2"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

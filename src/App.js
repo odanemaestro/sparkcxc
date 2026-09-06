@@ -2462,26 +2462,88 @@ function parseAvatarStoragePath(storedPath) {
   return { bucket, objectPath };
 }
 
+const AVATAR_URL_CACHE_PREFIX = "spark-avatar-url-v1:";
+const AVATAR_URL_CACHE_TTL_MS = 50 * 60 * 1000;
+
+function avatarCacheKey(storedPath) {
+  return `${AVATAR_URL_CACHE_PREFIX}${String(storedPath || "")}`;
+}
+
+function readCachedAvatarUrl(storedPath) {
+  if (!storedPath || typeof sessionStorage === "undefined") return "";
+  try {
+    const cached = JSON.parse(sessionStorage.getItem(avatarCacheKey(storedPath)) || "null");
+    if (!cached?.url || Number(cached.expiresAt || 0) <= Date.now()) {
+      sessionStorage.removeItem(avatarCacheKey(storedPath));
+      return "";
+    }
+    return String(cached.url);
+  } catch {
+    return "";
+  }
+}
+
+function cacheAvatarUrl(storedPath, url) {
+  if (!storedPath || !url || typeof sessionStorage === "undefined") return;
+  try {
+    sessionStorage.setItem(avatarCacheKey(storedPath), JSON.stringify({
+      url,
+      expiresAt: Date.now() + AVATAR_URL_CACHE_TTL_MS,
+    }));
+  } catch { /* avatar caching is only a visual optimisation */ }
+}
+
+function immediateAvatarUrl(storedPath) {
+  const parsed = parseAvatarStoragePath(storedPath);
+  if (!parsed) return "";
+  if (parsed.bucket === "tutor-avatars") {
+    const { data } = supabase.storage.from(parsed.bucket).getPublicUrl(parsed.objectPath);
+    return data?.publicUrl || "";
+  }
+  return readCachedAvatarUrl(storedPath);
+}
+
 function ProfileAvatar({ path: storedPath, name, size = 36, fallbackBackground, className = "" }) {
-  const [src, setSrc] = useState("");
+  const [src, setSrc] = useState(() => immediateAvatarUrl(storedPath));
+  const [loadingPhoto, setLoadingPhoto] = useState(() => Boolean(parseAvatarStoragePath(storedPath) && !immediateAvatarUrl(storedPath)));
 
   useEffect(() => {
     let active = true;
-    setSrc("");
-
     const parsed = parseAvatarStoragePath(storedPath);
-    if (!parsed) return () => { active = false; };
-
-    if (parsed.bucket === "tutor-avatars") {
-      const { data } = supabase.storage.from(parsed.bucket).getPublicUrl(parsed.objectPath);
-      if (active) setSrc(data?.publicUrl || "");
+    if (!parsed) {
+      setSrc("");
+      setLoadingPhoto(false);
       return () => { active = false; };
     }
 
+    const immediate = immediateAvatarUrl(storedPath);
+    if (immediate) {
+      setSrc(immediate);
+      setLoadingPhoto(false);
+      return () => { active = false; };
+    }
+
+    // A real photo exists but its private signed URL is still resolving.
+    // Keep a neutral shell here instead of flashing the green initials avatar.
+    setSrc("");
+    setLoadingPhoto(true);
+
     supabase.storage.from(parsed.bucket).createSignedUrl(parsed.objectPath, 3600)
       .then(({ data, error }) => {
-        if (!active || error) return;
-        setSrc(data?.signedUrl || "");
+        if (!active || error || !data?.signedUrl) return;
+        const nextUrl = data.signedUrl;
+        const preload = new Image();
+        preload.onload = () => {
+          if (!active) return;
+          cacheAvatarUrl(storedPath, nextUrl);
+          setSrc(nextUrl);
+          setLoadingPhoto(false);
+        };
+        preload.onerror = () => {
+          if (!active) return;
+          setLoadingPhoto(false);
+        };
+        preload.src = nextUrl;
       });
 
     return () => { active = false; };
@@ -2510,7 +2572,18 @@ function ProfileAvatar({ path: storedPath, name, size = 36, fallbackBackground, 
         className={className}
         src={src}
         alt={name ? `${name}'s profile` : "Profile"}
+        decoding="async"
         style={{ ...baseStyle, objectFit: "cover", display: "block" }}
+      />
+    );
+  }
+
+  if (loadingPhoto) {
+    return (
+      <div
+        className={`${className} profile-avatar-loading`.trim()}
+        style={{ ...baseStyle, background: "var(--spark-paper-raised, #e9eef4)", boxShadow: "none" }}
+        aria-label={name ? `Loading ${name}'s profile photo` : "Loading profile photo"}
       />
     );
   }
@@ -2678,32 +2751,6 @@ function ProfilePhotoEditor({
             }}>📷</span>
           )}
         </button>
-
-        {!showActions && localPath && !disabled && (
-          <button
-            type="button"
-            className="profile-photo-remove"
-            onClick={removePhoto}
-            disabled={busy}
-            title="Remove profile photo"
-            aria-label="Remove profile photo"
-            style={{
-              position:"absolute",
-              top:-5,
-              right:-5,
-              width:18,
-              height:18,
-              padding:0,
-              borderRadius:"50%",
-              border:"2px solid #fff",
-              background:T.surfaceNavy,
-              color:"#fff",
-              fontSize:11,
-              lineHeight:1,
-              cursor:busy ? "default" : "pointer",
-            }}
-          >×</button>
-        )}
 
         <input
           ref={inputRef}

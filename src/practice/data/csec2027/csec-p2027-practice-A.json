@@ -1,0 +1,782 @@
+{
+ "paper_id": "spark-p2027-a",
+ "title": "SPARK CSEC Mathematics - Paper 02 Practice Paper A",
+ "syllabus": "CXC 05/G/SYLL 16, amended 2026, for examinations from 2027",
+ "status": "PARTIAL - Section I (Module 1) only; Sections II and III to follow",
+ "duration_minutes": 160,
+ "marks_written": 30,
+ "marks_when_complete": 90,
+ "profile": {
+  "CK": 9,
+  "AK": 12,
+  "R": 9
+ },
+ "instructions": [
+  "This paper consists of THREE sections: I, II and III.",
+  "Section I has THREE questions; Section II has THREE questions and Section III has THREE questions.",
+  "Answer ALL questions.",
+  "Numerical answers that are non-exact should be given correct to 3 significant figures or 1 decimal place for angles in degrees, unless a different level of accuracy is specified in the question.",
+  "All working MUST be clearly shown.",
+  "A table of formulae is provided.",
+  "Diagrams are NOT drawn to scale, unless otherwise stated."
+ ],
+ "required_materials": [
+  "Electronic calculator",
+  "Geometry set"
+ ],
+ "response_types": {
+  "typed": 15,
+  "table": 1
+ },
+ "questions": [
+  {
+   "question_id": "p2027a-q1",
+   "question_number": 1,
+   "paper": "SPARK Practice Paper A (2027 format)",
+   "section": "I",
+   "module": 1,
+   "module_title": "Module 1 - Fundamentals of Secondary-Level Mathematics",
+   "topic": "Computation in standard form, currency exchange and consumer arithmetic",
+   "marks": 9,
+   "profile": {
+    "CK": 3,
+    "AK": 3,
+    "R": 3
+   },
+   "stem": "",
+   "parts": [
+    {
+     "id": "a",
+     "label": "(a)",
+     "prompt": "Determine the value of the following, giving your answer in standard form.\n\n((47.5)^2 - 56.25)/sqrt(1.6 x 0.4)",
+     "marks": 2,
+     "answer": "2.75 x 10^3",
+     "solution": "(47.5)^2 = 2256.25, so the numerator is 2256.25 - 56.25 = 2200. 1.6 x 0.4 = 0.64 and sqrt(0.64) = 0.8, so the value is 2200/0.8 = 2750. In standard form, 2750 = 2.75 x 10^3.",
+     "answerType": "expression",
+     "accepted": [
+      "2.75 * 10^3",
+      "2.75x10^3"
+     ],
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the value of the expression",
+       "check": {
+        "type": "contains",
+        "value": [
+         2750.0
+        ]
+       },
+       "field": "all",
+       "depends": [],
+       "code": "B1"
+      },
+      {
+       "kind": "A",
+       "profile": "R",
+       "marks": 1,
+       "description": "the value written in standard form",
+       "check": {
+        "type": "method",
+        "any": [
+         "x 10^3"
+        ]
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": []
+      }
+     ]
+    },
+    {
+     "id": "b1",
+     "label": "(b) (i)",
+     "prompt": "The table below shows the rates of exchange at a cambio in Port of Spain.\n\nUS$1.00 = TT$6.80\nEC$1.00 = TT$2.72\n\nUsing the table, calculate the EC equivalent of US$1.00.",
+     "marks": 2,
+     "answer": "2.50",
+     "solution": "EC$1.00 = TT$2.72, so TT$1.00 = EC$(1/2.72). US$1.00 = TT$6.80, so the EC equivalent of US$1.00 is EC$(6.80/2.72) = EC$2.50.",
+     "prefix": "EC$",
+     "tolerance": 0.011,
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "R",
+       "marks": 1,
+       "description": "finding the EC equivalent of TT$1.00",
+       "check": {
+        "type": "method",
+        "any": [
+         "1/2.72",
+         "6.80/2.72"
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "A",
+       "profile": "AK",
+       "marks": 1,
+       "description": "multiplying the EC equivalent of TT$1.00 by 6.80",
+       "check": {
+        "type": "numeric",
+        "value": 2.5,
+        "dp": 2,
+        "tolerance": 0.011
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M1"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "b2",
+     "label": "(b) (ii)",
+     "prompt": "Kalifa's aunt in Saint Lucia sent her EC$1 250.00, which Kalifa exchanged for US dollars. Calculate the amount received in US dollars.",
+     "marks": 1,
+     "answer": "500.00",
+     "solution": "US$1.00 = EC$2.50, so EC$1 250.00 = US$(1250.00/2.50) = US$500.00.",
+     "prefix": "US$",
+     "tolerance": 0.011,
+     "criteria": [
+      {
+       "kind": "A",
+       "profile": "AK",
+       "marks": 1,
+       "description": "dividing by the EC equivalent of US$1.00",
+       "check": {
+        "type": "numeric",
+        "value": 500.0,
+        "dp": 2,
+        "tolerance": 0.011
+       },
+       "field": "answer",
+       "ecf": {
+        "uses": [
+         "b1"
+        ],
+        "formula": "1250.0 / b1"
+       },
+       "code": "A1",
+       "depends": []
+      }
+     ]
+    },
+    {
+     "id": "c1",
+     "label": "(c) (i)",
+     "prompt": "Kalifa's mobile telephone plan has a fixed charge of $45.00 per month, which includes 300 minutes of calls. Each additional minute is charged at $0.35. In January she made calls totalling 465 minutes.\n\nCalculate the TOTAL amount that Kalifa paid for her telephone service for the month of January.",
+     "marks": 2,
+     "answer": "102.75",
+     "solution": "Kalifa made 465 - 300 = 165 minutes of calls beyond those included, and these cost 165 x $0.35 = $57.75. The total amount paid is $45.00 + $57.75 = $102.75.",
+     "prefix": "$",
+     "tolerance": 0.011,
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "AK",
+       "marks": 1,
+       "description": "finding the charge for the 165 additional minutes",
+       "check": {
+        "type": "contains",
+        "value": [
+         57.75
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "A",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the total amount paid",
+       "check": {
+        "type": "numeric",
+        "value": 102.75,
+        "dp": 2,
+        "tolerance": 0.011
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M1"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "c2",
+     "label": "(c) (ii)",
+     "prompt": "For the next month, February, Kalifa paid $136.00 for her telephone service. Determine the TOTAL number of minutes of calls that she made in February.",
+     "marks": 2,
+     "answer": "560",
+     "solution": "The charge for the additional minutes was $136.00 - $45.00 = $91.00, so the number of additional minutes is 91.00/0.35 = 260. Adding the 300 minutes included in the plan, Kalifa made 300 + 260 = 560 minutes of calls.",
+     "suffix": " minutes",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "R",
+       "marks": 1,
+       "description": "subtracting the fixed charge and dividing by the charge per additional minute",
+       "check": {
+        "type": "contains",
+        "value": [
+         91.0
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "A",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the total number of minutes",
+       "check": {
+        "type": "numeric",
+        "value": 560.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M1"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "question_id": "p2027a-q2",
+   "question_number": 2,
+   "paper": "SPARK Practice Paper A (2027 format)",
+   "section": "I",
+   "module": 1,
+   "module_title": "Module 1 - Fundamentals of Secondary-Level Mathematics",
+   "topic": "Investigation - number patterns and generalisation",
+   "marks": 9,
+   "profile": {
+    "CK": 3,
+    "AK": 3,
+    "R": 3
+   },
+   "stem": "Anisha is investigating the sums of sequences of whole numbers.",
+   "parts": [
+    {
+     "id": "a",
+     "label": "(a)",
+     "prompt": "Anisha first added the odd numbers, starting at 1: the first 2 odd numbers, then the first 3, then the first 4, and so on. The first rows of the table are shown below. Some rows have not been included.\n\nStudy the pattern of numbers in each row of the table. Complete the table by filling in the missing information.",
+     "marks": 6,
+     "answer": "16; 9; 25; 17; 81; 2n - 1",
+     "solution": "Each row adds the next odd number. The nth odd number is 2n - 1, so the 5th is 2(5) - 1 = 9 and the 9th is 2(9) - 1 = 17. The sum of the first n odd numbers is n^2, so the sum of the first 4 is 4^2 = 16, of the first 5 is 5^2 = 25, and of the first 9 is 9^2 = 81.",
+     "responseType": "table",
+     "table": {
+      "caption": "The sums of the odd numbers.",
+      "headers": [
+       "n",
+       "nth odd number",
+       "Series",
+       "Sum",
+       "Sum as a power"
+      ],
+      "rows": [
+       [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1^2"
+       ],
+       [
+        "2",
+        "3",
+        "1 + 3",
+        "4",
+        "2^2"
+       ],
+       [
+        "3",
+        "5",
+        "1 + 3 + 5",
+        "9",
+        "3^2"
+       ],
+       [
+        "4",
+        "7",
+        "1 + 3 + 5 + 7",
+        {
+         "blank": true,
+         "key": "s4"
+        },
+        "4^2"
+       ],
+       [
+        "5",
+        {
+         "blank": true,
+         "key": "l5"
+        },
+        "1 + 3 + 5 + 7 + 9",
+        {
+         "blank": true,
+         "key": "s5"
+        },
+        "5^2"
+       ],
+       [
+        "9",
+        {
+         "blank": true,
+         "key": "l9"
+        },
+        "1 + 3 + 5 + ... + 17",
+        {
+         "blank": true,
+         "key": "s9"
+        },
+        "9^2"
+       ],
+       [
+        "n",
+        {
+         "blank": true,
+         "key": "ln"
+        },
+        "1 + 3 + 5 + ... ",
+        {
+         "blank": true,
+         "key": "sn"
+        },
+        "n^2"
+       ]
+      ],
+      "marks": 6,
+      "cells": {
+       "s4": {
+        "type": "numeric",
+        "value": 16,
+        "marks": 1,
+        "description": "the sum of the first 4 odd numbers"
+       },
+       "l5": {
+        "type": "numeric",
+        "value": 9,
+        "marks": 1,
+        "description": "the 5th odd number"
+       },
+       "s5": {
+        "type": "numeric",
+        "value": 25,
+        "marks": 1,
+        "description": "the sum of the first 5 odd numbers"
+       },
+       "l9": {
+        "type": "numeric",
+        "value": 17,
+        "marks": 1,
+        "description": "the 9th odd number"
+       },
+       "s9": {
+        "type": "numeric",
+        "value": 81,
+        "marks": 1,
+        "description": "the sum of the first 9 odd numbers"
+       },
+       "ln": {
+        "type": "expression",
+        "value": "2n - 1",
+        "marks": 1,
+        "description": "the nth odd number, in terms of n"
+       }
+      }
+     },
+     "answerType": "text",
+     "profile": {
+      "CK": 3,
+      "AK": 2,
+      "R": 1
+     }
+    },
+    {
+     "id": "b1",
+     "label": "(b) (i)",
+     "prompt": "Anisha then added the EVEN numbers in the same way, and noted that\n\n2 + 4 = 6 = 2 x 3\n2 + 4 + 6 = 12 = 3 x 4\n2 + 4 + 6 + 8 = 20 = 4 x 5.\n\nUsing the pattern derived from the 3 statements above, determine the value of 2 + 4 + 6 + ... + 30.",
+     "marks": 2,
+     "answer": "240",
+     "solution": "The last number 30 is the 15th even number, and the pattern gives the sum as 15 x 16 = 240.",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "R",
+       "marks": 1,
+       "description": "recognises that 30 is the 15th even number",
+       "check": {
+        "type": "contains",
+        "value": [
+         15.0
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "A",
+       "profile": "AK",
+       "marks": 1,
+       "description": "the sum, 240",
+       "check": {
+        "type": "numeric",
+        "value": 240.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M1"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "b2",
+     "label": "(b) (ii)",
+     "prompt": "Hence, write a formula in terms of n for the sum 2 + 4 + 6 + ... + 2n.",
+     "marks": 1,
+     "answer": "n(n + 1)",
+     "solution": "Each statement is of the form n(n + 1), where 2n is the last number added. So 2 + 4 + 6 + ... + 2n = n(n + 1).",
+     "answerType": "expression",
+     "accepted": [
+      "n^2 + n",
+      "n(n+1)"
+     ],
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "R",
+       "marks": 1,
+       "description": "the formula in terms of n",
+       "check": {
+        "type": "expression",
+        "value": "n(n + 1)",
+        "accepted": [
+         "n^2 + n"
+        ]
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "question_id": "p2027a-q3",
+   "question_number": 3,
+   "paper": "SPARK Practice Paper A (2027 format)",
+   "section": "I",
+   "module": 1,
+   "module_title": "Module 1 - Fundamentals of Secondary-Level Mathematics",
+   "topic": "Factorisation, binary operations, sets and scale drawing",
+   "marks": 12,
+   "profile": {
+    "CK": 3,
+    "AK": 6,
+    "R": 3
+   },
+   "stem": "",
+   "parts": [
+    {
+     "id": "a1",
+     "label": "(a) (i)",
+     "prompt": "Factorize completely\n\n6ab - 15b^2.",
+     "marks": 1,
+     "answer": "3b(2a - 5b)",
+     "solution": "Both terms have a factor of 3 and a factor of b, so the common factor is 3b. 6ab - 15b^2 = 3b(2a - 5b).",
+     "answerType": "expression",
+     "requiredForm": "factorised",
+     "accepted": [
+      "3b(2a-5b)",
+      "-3b(5b - 2a)"
+     ],
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "AK",
+       "marks": 1,
+       "description": "the complete factorisation",
+       "check": {
+        "type": "expression",
+        "value": "3b(2a - 5b)",
+        "accepted": [
+         "3b(2a-5b)",
+         "-3b(5b - 2a)"
+        ],
+        "requireFactorised": true
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    },
+    {
+     "id": "a2",
+     "label": "(a) (ii) a)",
+     "prompt": "If a * b = 3a - 2b, calculate the value of\n\n6 * 2.",
+     "marks": 1,
+     "answer": "14",
+     "solution": "Here a = 6 and b = 2, so 6 * 2 = 3(6) - 2(2) = 14.",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "AK",
+       "marks": 1,
+       "description": "the value of 6 * 2",
+       "check": {
+        "type": "numeric",
+        "value": 14.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    },
+    {
+     "id": "a3",
+     "label": "(a) (ii) b)",
+     "prompt": "Hence, calculate the value of\n\n(6 * 2) * 4.",
+     "marks": 1,
+     "answer": "34",
+     "solution": "(6 * 2) = 14, so (6 * 2) * 4 = 14 * 4 = 3(14) - 2(4) = 34.",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "R",
+       "marks": 1,
+       "description": "substituting the value of 6 * 2 back into the operation",
+       "check": {
+        "type": "numeric",
+        "value": 34.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    },
+    {
+     "id": "b1",
+     "label": "(b) (i)",
+     "prompt": "The incomplete Venn diagram below shows the number of students in a class of 32 who play cricket and who swim.\n\nU = {all students in the class}\nC = {students who play cricket}\nS = {students who swim}\n\nAdditional information about the class is that\n\n17 students swim\n21 students play cricket\n5 students neither play cricket nor swim\nx students BOTH play cricket and swim.\n\nComplete the Venn diagram to represent the information, showing the number of students in EACH subset.",
+     "marks": 2,
+     "answer": "21 - x, x, 17 - x and 5",
+     "solution": "21 students play cricket and x of them also swim, so the region of C outside S holds 21 - x. In the same way 17 - x students swim but not play cricket, so that goes in the region of S outside C. The x in the overlap and the 5 outside both circles are already shown.",
+     "answerType": "text",
+     "diagram": {
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 380 250\" width=\"100%\" style=\"max-width:400px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" font-family=\"Georgia,serif\" font-size=\"13\"><rect x=\"6\" y=\"6\" width=\"368\" height=\"238\" rx=\"2\"/><circle cx=\"146\" cy=\"122\" r=\"82\"/><circle cx=\"224\" cy=\"122\" r=\"82\"/><text x=\"20.0\" y=\"26.0\" text-anchor=\"start\" stroke=\"none\" fill=\"currentColor\" font-size=\"13\" font-style=\"italic\">U</text><text x=\"94.0\" y=\"32.0\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"13\" font-style=\"italic\">C</text><text x=\"276.0\" y=\"32.0\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"13\" font-style=\"italic\">S</text><text x=\"185.0\" y=\"122.0\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"13\">x</text><text x=\"348.0\" y=\"228.0\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"13\">5</text></svg>",
+      "alt": "An incomplete Venn diagram. A rectangle is labelled U and contains two overlapping circles, C on the left and S on the right. The letter x is written in the overlap of the two circles and the number 5 is written inside the rectangle but outside both circles. The region of C outside S and the region of S outside C are both empty."
+     },
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "AK",
+       "marks": 1,
+       "description": "21 - x seen",
+       "check": {
+        "type": "method",
+        "any": [
+         "21 - x"
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "M",
+       "profile": "AK",
+       "marks": 1,
+       "description": "17 - x seen",
+       "check": {
+        "type": "method",
+        "any": [
+         "17 - x"
+        ]
+       },
+       "field": "all",
+       "code": "M2"
+      }
+     ]
+    },
+    {
+     "id": "b2",
+     "label": "(b) (ii)",
+     "prompt": "Calculate the value of x.",
+     "marks": 2,
+     "answer": "11",
+     "solution": "The four regions account for every one of the 32 students, so (21 - x) + x + (17 - x) + 5 = 32. That is 43 - x = 32, so x = 43 - 32 = 11.",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "R",
+       "marks": 1,
+       "description": "forming the equation (21 - x) + x + (17 - x) + 5 = 32",
+       "check": {
+        "type": "contains",
+        "value": [
+         43.0
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "A",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the value of x",
+       "check": {
+        "type": "numeric",
+        "value": 11.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M1"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "c1",
+     "label": "(c) (i)",
+     "prompt": "The diagram below shows a map of part of an island, drawn on a grid where each small square measures 1 cm by 1 cm. The shaded region represents a forest reserve. The map is drawn to a scale of 1 : 25 000.\n\nL and M are two tracking stations. State, in cm, the distance LM on the map.",
+     "marks": 1,
+     "answer": "5",
+     "solution": "L and M lie on the same horizontal line of the grid, with 5 squares between them, and each square measures 1 cm by 1 cm. So LM = 5 cm on the map.",
+     "suffix": " cm",
+     "tolerance": 1e-06,
+     "diagram": {
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 292 240\" width=\"100%\" style=\"max-width:312px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" font-family=\"Georgia,serif\" font-size=\"13\"><path d=\"M16 224 L16 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M42 224 L42 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M68 224 L68 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M94 224 L94 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M120 224 L120 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M146 224 L146 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M172 224 L172 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M198 224 L198 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M224 224 L224 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M250 224 L250 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M276 224 L276 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M16 224 L276 224\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M16 198 L276 198\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M16 172 L276 172\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M16 146 L276 146\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M16 120 L276 120\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M16 94 L276 94\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M16 68 L276 68\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M16 42 L276 42\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M16 16 L276 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M42 198 L198 198 L198 120 L120 120 L120 68 L42 68 Z\" fill=\"currentColor\" fill-opacity=\"0.18\" stroke-width=\"1.9\"/><circle cx=\"68\" cy=\"42\" r=\"3.2\" fill=\"currentColor\" stroke=\"none\"/><text x=\"68\" y=\"32\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"13\" font-style=\"italic\">L</text><circle cx=\"198\" cy=\"42\" r=\"3.2\" fill=\"currentColor\" stroke=\"none\"/><text x=\"198\" y=\"32\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"13\" font-style=\"italic\">M</text></svg>",
+      "alt": "A map drawn on a grid of 10 by 8 squares, each square 1 cm by 1 cm. A shaded region, the forest reserve, is drawn with its corners on the corners of the squares: it is 6 squares wide and 3 squares tall along the bottom, with a further block 3 squares wide and 2 squares tall standing on the left-hand end of it. Two dots mark the tracking stations. L is 2 squares from the left edge of the grid on the horizontal line 7 squares up from the bottom, and M is on that same horizontal line, 7 squares from the left edge."
+     },
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the distance LM on the map",
+       "check": {
+        "type": "numeric",
+        "value": 5.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    },
+    {
+     "id": "c2",
+     "label": "(c) (ii)",
+     "prompt": "The actual distance between two villages on the island is 325 000 cm. What is this actual distance in km?",
+     "marks": 1,
+     "answer": "3.25",
+     "solution": "1 km = 100 000 cm, so 325 000 cm = (325000/100000) km = 3.25 km.",
+     "suffix": " km",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the actual distance in kilometres",
+       "check": {
+        "type": "numeric",
+        "value": 3.25,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    },
+    {
+     "id": "c3",
+     "label": "(c) (iii)",
+     "prompt": "Calculate the ACTUAL area, in km^2, of the forest reserve, given that 1 x 10^10 cm^2 = 1 km^2.",
+     "marks": 3,
+     "answer": "1.5",
+     "solution": "The forest reserve covers 24 of the small squares, so its area on the map is 24 cm^2. The scale is 1 : 25 000, so 1 cm on the map represents 25 000 cm and 1 cm^2 on the map represents 25 000 x 25 000 = 625 000 000 cm^2. The actual area is therefore 24 x 625 000 000 = 15 000 000 000 cm^2, and since 1 x 10^10 cm^2 = 1 km^2 this is 1.5 km^2.",
+     "suffix": " km^2",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "AK",
+       "marks": 1,
+       "description": "the area of the forest reserve on the map, in cm^2",
+       "check": {
+        "type": "contains",
+        "value": [
+         24.0
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "M",
+       "profile": "R",
+       "marks": 1,
+       "description": "1 cm^2 on the map represents 25 000 x 25 000 cm^2",
+       "check": {
+        "type": "contains",
+        "value": [
+         625000000.0
+        ]
+       },
+       "field": "all",
+       "code": "M2"
+      },
+      {
+       "kind": "A",
+       "profile": "AK",
+       "marks": 1,
+       "description": "the actual area, in km^2",
+       "check": {
+        "type": "numeric",
+        "value": 1.5,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M2"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

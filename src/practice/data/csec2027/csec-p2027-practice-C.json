@@ -1,0 +1,765 @@
+{
+ "paper_id": "spark-p2027-c",
+ "title": "SPARK CSEC Mathematics - Paper 02 Practice Paper C",
+ "syllabus": "CXC 05/G/SYLL 16, amended 2026, for examinations from 2027",
+ "status": "PARTIAL - Section I (Module 1) only; Sections II and III to follow",
+ "duration_minutes": 160,
+ "marks_written": 30,
+ "marks_when_complete": 90,
+ "profile": {
+  "CK": 9,
+  "AK": 12,
+  "R": 9
+ },
+ "instructions": [
+  "This paper consists of THREE sections: I, II and III.",
+  "Section I has THREE questions; Section II has THREE questions and Section III has THREE questions.",
+  "Answer ALL questions.",
+  "Numerical answers that are non-exact should be given correct to 3 significant figures or 1 decimal place for angles in degrees, unless a different level of accuracy is specified in the question.",
+  "All working MUST be clearly shown.",
+  "A table of formulae is provided.",
+  "Diagrams are NOT drawn to scale, unless otherwise stated."
+ ],
+ "required_materials": [
+  "Electronic calculator",
+  "Geometry set"
+ ],
+ "response_types": {
+  "typed": 15,
+  "table": 1
+ },
+ "questions": [
+  {
+   "question_id": "p2027c-q1",
+   "question_number": 1,
+   "paper": "SPARK Practice Paper C (2027 format)",
+   "section": "I",
+   "module": 1,
+   "module_title": "Module 1 - Fundamentals of Secondary-Level Mathematics",
+   "topic": "Computation in standard form, currency exchange and consumer arithmetic",
+   "marks": 9,
+   "profile": {
+    "CK": 3,
+    "AK": 3,
+    "R": 3
+   },
+   "stem": "",
+   "parts": [
+    {
+     "id": "a",
+     "label": "(a)",
+     "prompt": "Determine the value of the following, giving your answer in standard form.\n\n((20.5)^2 - 0.25)/sqrt(0.09 x 0.16)",
+     "marks": 2,
+     "answer": "3.5 x 10^3",
+     "solution": "(20.5)^2 = 420.25, so the numerator is 420.25 - 0.25 = 420. 0.09 x 0.16 = 0.0144 and sqrt(0.0144) = 0.12, so the value is 420/0.12 = 3500. In standard form, 3500 = 3.5 x 10^3.",
+     "answerType": "expression",
+     "accepted": [
+      "3.5 * 10^3",
+      "3.5x10^3"
+     ],
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the value of the expression",
+       "check": {
+        "type": "contains",
+        "value": [
+         3500.0
+        ]
+       },
+       "field": "all",
+       "depends": [],
+       "code": "B1"
+      },
+      {
+       "kind": "A",
+       "profile": "R",
+       "marks": 1,
+       "description": "the value written in standard form",
+       "check": {
+        "type": "method",
+        "any": [
+         "x 10^3"
+        ]
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": []
+      }
+     ]
+    },
+    {
+     "id": "b1",
+     "label": "(b) (i)",
+     "prompt": "The table below shows the rates of exchange at a bank in Georgetown.\n\nUS$1.00 = GYD$208.00\nTT$1.00 = GYD$32.00\n\nUsing the table, calculate the TT equivalent of US$1.00.",
+     "marks": 2,
+     "answer": "6.50",
+     "solution": "TT$1.00 = GYD$32.00, so GYD$1.00 = TT$(1/32.00). US$1.00 = GYD$208.00, so the TT equivalent of US$1.00 is TT$(208.00/32.00) = TT$6.50.",
+     "prefix": "TT$",
+     "tolerance": 0.011,
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "R",
+       "marks": 1,
+       "description": "finding the TT equivalent of GYD$1.00",
+       "check": {
+        "type": "method",
+        "any": [
+         "1/32.00",
+         "208.00/32.00"
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "A",
+       "profile": "AK",
+       "marks": 1,
+       "description": "multiplying the TT equivalent of GYD$1.00 by 208.00",
+       "check": {
+        "type": "numeric",
+        "value": 6.5,
+        "dp": 2,
+        "tolerance": 0.011
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M1"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "b2",
+     "label": "(b) (ii)",
+     "prompt": "Mrs Cadogan's son, who works in Trinidad, sent her TT$2 015.00, which she exchanged for US dollars. Calculate the amount received in US dollars.",
+     "marks": 1,
+     "answer": "310.00",
+     "solution": "US$1.00 = TT$6.50, so TT$2 015.00 = US$(2015.00/6.50) = US$310.00.",
+     "prefix": "US$",
+     "tolerance": 0.011,
+     "criteria": [
+      {
+       "kind": "A",
+       "profile": "AK",
+       "marks": 1,
+       "description": "dividing by the TT equivalent of US$1.00",
+       "check": {
+        "type": "numeric",
+        "value": 310.0,
+        "dp": 2,
+        "tolerance": 0.011
+       },
+       "field": "answer",
+       "ecf": {
+        "uses": [
+         "b1"
+        ],
+        "formula": "2015.0 / b1"
+       },
+       "code": "A1",
+       "depends": []
+      }
+     ]
+    },
+    {
+     "id": "c1",
+     "label": "(c) (i)",
+     "prompt": "Mrs Cadogan buys rice from a wholesaler in bags of 10 kg. The price is $80.00 per bag, and a discount of 10% is given on an order of 20 bags or more. Mrs Cadogan orders 25 bags.\n\nCalculate the TOTAL amount that Mrs Cadogan pays for the 25 bags.",
+     "marks": 2,
+     "answer": "1800.00",
+     "solution": "Before the discount the 25 bags cost 25 x $80.00 = $2 000.00. The discount is 10% of $2 000.00 = $200.00, so Mrs Cadogan pays $2 000.00 - $200.00 = $1 800.00.",
+     "prefix": "$",
+     "tolerance": 0.011,
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "AK",
+       "marks": 1,
+       "description": "finding 10% of $2 000.00",
+       "check": {
+        "type": "contains",
+        "value": [
+         200.0
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "A",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the total amount paid",
+       "check": {
+        "type": "numeric",
+        "value": 1800.0,
+        "dp": 2,
+        "tolerance": 0.011
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M1"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "c2",
+     "label": "(c) (ii)",
+     "prompt": "Mrs Cadogan sells all 25 bags in her shop at $90.00 per bag. Calculate her percentage profit.",
+     "marks": 2,
+     "answer": "25",
+     "solution": "She receives 25 x $90.00 = $2 250.00, so her profit is $2 250.00 - $1 800.00 = $450.00. Her percentage profit is (450.00/1800.00) x 100 = 25%.",
+     "suffix": "%",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "R",
+       "marks": 1,
+       "description": "expressing the profit as a percentage of the cost price",
+       "check": {
+        "type": "contains",
+        "value": [
+         450.0
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "A",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the percentage profit",
+       "check": {
+        "type": "numeric",
+        "value": 25.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M1"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "question_id": "p2027c-q2",
+   "question_number": 2,
+   "paper": "SPARK Practice Paper C (2027 format)",
+   "section": "I",
+   "module": 1,
+   "module_title": "Module 1 - Fundamentals of Secondary-Level Mathematics",
+   "topic": "Investigation - number patterns and generalisation",
+   "marks": 9,
+   "profile": {
+    "CK": 3,
+    "AK": 3,
+    "R": 3
+   },
+   "stem": "Shanice arranges dots in triangular patterns. Pattern 1 is a single dot. Pattern 2 has a row of 2 dots below the single dot. Pattern 3 has a row of 3 dots below Pattern 2, and the pattern continues, each new row having one more dot than the row above it.",
+   "parts": [
+    {
+     "id": "a",
+     "label": "(a)",
+     "prompt": "The table below shows the number of dots in each pattern. Some rows have not been included.\n\nStudy the pattern of numbers in each row of the table. Complete the table by filling in the missing information.",
+     "marks": 6,
+     "answer": "10; 1 + 2 + 3 + 4 + 5; 15; 36; n(n + 1)/2",
+     "solution": "Each pattern adds a row of n dots, so Pattern n has 1 + 2 + 3 + ... + n dots, which is n(n + 1)/2. Pattern 4 has 4(5)/2 = 10, Pattern 5 has 5(6)/2 = 15 and Pattern 8 has 8(9)/2 = 36.",
+     "responseType": "table",
+     "table": {
+      "caption": "The triangular patterns of dots.",
+      "headers": [
+       "Pattern",
+       "Number of rows (n)",
+       "Series",
+       "Total number of dots"
+      ],
+      "rows": [
+       [
+        "Pattern 1",
+        "1",
+        "1",
+        "1"
+       ],
+       [
+        "Pattern 2",
+        "2",
+        "1 + 2",
+        "3"
+       ],
+       [
+        "Pattern 3",
+        "3",
+        "1 + 2 + 3",
+        "6"
+       ],
+       [
+        "Pattern 4",
+        "4",
+        "1 + 2 + 3 + 4",
+        {
+         "blank": true,
+         "key": "d4"
+        }
+       ],
+       [
+        "Pattern 5",
+        "5",
+        {
+         "blank": true,
+         "key": "r5"
+        },
+        {
+         "blank": true,
+         "key": "d5"
+        }
+       ],
+       [
+        "Pattern 8",
+        "8",
+        "1 + 2 + 3 + ... + 8",
+        {
+         "blank": true,
+         "key": "d8"
+        }
+       ],
+       [
+        "Pattern n",
+        "n",
+        "1 + 2 + 3 + ... + n",
+        {
+         "blank": true,
+         "key": "dn"
+        }
+       ]
+      ],
+      "marks": 6,
+      "cells": {
+       "d4": {
+        "type": "numeric",
+        "value": 10,
+        "marks": 1,
+        "description": "dots in Pattern 4"
+       },
+       "r5": {
+        "type": "method",
+        "any": [
+         "1 + 2 + 3 + 4 + 5"
+        ],
+        "value": "1 + 2 + 3 + 4 + 5",
+        "marks": 1,
+        "description": "the series for Pattern 5"
+       },
+       "d5": {
+        "type": "numeric",
+        "value": 15,
+        "marks": 1,
+        "description": "dots in Pattern 5"
+       },
+       "d8": {
+        "type": "numeric",
+        "value": 36,
+        "marks": 2,
+        "description": "dots in Pattern 8"
+       },
+       "dn": {
+        "type": "expression",
+        "value": "n(n + 1)/2",
+        "marks": 1,
+        "description": "dots in Pattern n, in terms of n"
+       }
+      }
+     },
+     "answerType": "text",
+     "profile": {
+      "CK": 3,
+      "AK": 2,
+      "R": 1
+     }
+    },
+    {
+     "id": "b1",
+     "label": "(b) (i)",
+     "prompt": "A pattern in this sequence has 78 dots. Determine the number of rows in that pattern.",
+     "marks": 2,
+     "answer": "12",
+     "solution": "n(n + 1)/2 = 78 gives n(n + 1) = 156. Since 12 x 13 = 156, the pattern has 12 rows.",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "R",
+       "marks": 1,
+       "description": "forms n(n + 1) = 156",
+       "check": {
+        "type": "contains",
+        "value": [
+         156.0
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "A",
+       "profile": "AK",
+       "marks": 1,
+       "description": "the number of rows",
+       "check": {
+        "type": "numeric",
+        "value": 12.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M1"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "b2",
+     "label": "(b) (ii)",
+     "prompt": "At a meeting, each of n people shakes hands once with every other person. Write a formula in terms of n for the total number of handshakes.",
+     "marks": 1,
+     "answer": "n(n - 1)/2",
+     "solution": "Each of the n people shakes hands with the other n - 1 people, and each handshake is counted twice, so the total is n(n - 1)/2.",
+     "answerType": "expression",
+     "accepted": [
+      "(n^2 - n)/2"
+     ],
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "R",
+       "marks": 1,
+       "description": "the formula in terms of n",
+       "check": {
+        "type": "expression",
+        "value": "n(n - 1)/2",
+        "accepted": [
+         "(n^2 - n)/2",
+         "n(n-1)/2"
+        ]
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "question_id": "p2027c-q3",
+   "question_number": 3,
+   "paper": "SPARK Practice Paper C (2027 format)",
+   "section": "I",
+   "module": 1,
+   "module_title": "Module 1 - Fundamentals of Secondary-Level Mathematics",
+   "topic": "Factorisation, binary operations, sets and scale drawing",
+   "marks": 12,
+   "profile": {
+    "CK": 3,
+    "AK": 6,
+    "R": 3
+   },
+   "stem": "",
+   "parts": [
+    {
+     "id": "a1",
+     "label": "(a) (i)",
+     "prompt": "Factorize completely\n\n9m^2n - 24mn^2.",
+     "marks": 1,
+     "answer": "3mn(3m - 8n)",
+     "solution": "Both terms have a factor of 3, a factor of m and a factor of n, so the common factor is 3mn. 9m^2n - 24mn^2 = 3mn(3m - 8n).",
+     "answerType": "expression",
+     "requiredForm": "factorised",
+     "accepted": [
+      "3mn(3m-8n)",
+      "3nm(3m - 8n)"
+     ],
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "AK",
+       "marks": 1,
+       "description": "the complete factorisation",
+       "check": {
+        "type": "expression",
+        "value": "3mn(3m - 8n)",
+        "accepted": [
+         "3mn(3m-8n)",
+         "3nm(3m - 8n)"
+        ],
+        "requireFactorised": true
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    },
+    {
+     "id": "a2",
+     "label": "(a) (ii) a)",
+     "prompt": "If a * b = 5a - b, calculate the value of\n\n6 * 4.",
+     "marks": 1,
+     "answer": "26",
+     "solution": "Here a = 6 and b = 4, so 6 * 4 = 5(6) - 4 = 26.",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "AK",
+       "marks": 1,
+       "description": "the value of 6 * 4",
+       "check": {
+        "type": "numeric",
+        "value": 26.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    },
+    {
+     "id": "a3",
+     "label": "(a) (ii) b)",
+     "prompt": "Hence, calculate the value of\n\n(6 * 4) * 3.",
+     "marks": 1,
+     "answer": "127",
+     "solution": "(6 * 4) = 26, so (6 * 4) * 3 = 26 * 3 = 5(26) - 3 = 127.",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "R",
+       "marks": 1,
+       "description": "substituting the value of 6 * 4 back into the operation",
+       "check": {
+        "type": "numeric",
+        "value": 127.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    },
+    {
+     "id": "b1",
+     "label": "(b) (i)",
+     "prompt": "The incomplete Venn diagram below shows the number of farmers in a village of 45 who grow cassava and who grow plantain.\n\nU = {all the farmers in the village}\nC = {farmers who grow cassava}\nP = {farmers who grow plantain}\n\nAdditional information about the village is that\n\n23 farmers grow plantain\n26 farmers grow cassava\n4 farmers grow neither cassava nor plantain\nx farmers grow BOTH cassava and plantain.\n\nComplete the Venn diagram to represent the information, showing the number of farmers in EACH subset.",
+     "marks": 2,
+     "answer": "26 - x, x, 23 - x and 4",
+     "solution": "26 farmers grow cassava and x of them also grow plantain, so the region of C outside P holds 26 - x. In the same way 23 - x farmers grow plantain but not grow cassava, so that goes in the region of P outside C. The x in the overlap and the 4 outside both circles are already shown.",
+     "answerType": "text",
+     "diagram": {
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 380 250\" width=\"100%\" style=\"max-width:400px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" font-family=\"Georgia,serif\" font-size=\"13\"><rect x=\"6\" y=\"6\" width=\"368\" height=\"238\" rx=\"2\"/><circle cx=\"146\" cy=\"122\" r=\"82\"/><circle cx=\"224\" cy=\"122\" r=\"82\"/><text x=\"20.0\" y=\"26.0\" text-anchor=\"start\" stroke=\"none\" fill=\"currentColor\" font-size=\"13\" font-style=\"italic\">U</text><text x=\"94.0\" y=\"32.0\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"13\" font-style=\"italic\">C</text><text x=\"276.0\" y=\"32.0\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"13\" font-style=\"italic\">P</text><text x=\"185.0\" y=\"122.0\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"13\">x</text><text x=\"348.0\" y=\"228.0\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"13\">4</text></svg>",
+      "alt": "An incomplete Venn diagram. A rectangle is labelled U and contains two overlapping circles, C on the left and P on the right. The letter x is written in the overlap of the two circles and the number 4 is written inside the rectangle but outside both circles. The region of C outside P and the region of P outside C are both empty."
+     },
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "AK",
+       "marks": 1,
+       "description": "26 - x seen",
+       "check": {
+        "type": "method",
+        "any": [
+         "26 - x"
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "M",
+       "profile": "AK",
+       "marks": 1,
+       "description": "23 - x seen",
+       "check": {
+        "type": "method",
+        "any": [
+         "23 - x"
+        ]
+       },
+       "field": "all",
+       "code": "M2"
+      }
+     ]
+    },
+    {
+     "id": "b2",
+     "label": "(b) (ii)",
+     "prompt": "Calculate the value of x.",
+     "marks": 2,
+     "answer": "8",
+     "solution": "The four regions account for every one of the 45 farmers, so (26 - x) + x + (23 - x) + 4 = 45. That is 53 - x = 45, so x = 53 - 45 = 8.",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "R",
+       "marks": 1,
+       "description": "forming the equation (26 - x) + x + (23 - x) + 4 = 45",
+       "check": {
+        "type": "contains",
+        "value": [
+         53.0
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "A",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the value of x",
+       "check": {
+        "type": "numeric",
+        "value": 8.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M1"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "c1",
+     "label": "(c) (i)",
+     "prompt": "The diagram below shows a map of part of an island, drawn on a grid where each small square measures 1 cm by 1 cm. The shaded region represents a forest reserve. The map is drawn to a scale of 1 : 40 000.\n\nL and M are two tracking stations. State, in cm, the distance LM on the map.",
+     "marks": 1,
+     "answer": "6",
+     "solution": "L and M lie on the same horizontal line of the grid, with 6 squares between them, and each square measures 1 cm by 1 cm. So LM = 6 cm on the map.",
+     "suffix": " cm",
+     "tolerance": 1e-06,
+     "diagram": {
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 318 240\" width=\"100%\" style=\"max-width:338px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" font-family=\"Georgia,serif\" font-size=\"13\"><path d=\"M16 224 L16 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M42 224 L42 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M68 224 L68 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M94 224 L94 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M120 224 L120 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M146 224 L146 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M172 224 L172 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M198 224 L198 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M224 224 L224 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M250 224 L250 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M276 224 L276 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M302 224 L302 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M16 224 L302 224\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M16 198 L302 198\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M16 172 L302 172\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M16 146 L302 146\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M16 120 L302 120\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M16 94 L302 94\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M16 68 L302 68\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M16 42 L302 42\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M16 16 L302 16\" stroke-width=\"0.7\" stroke-opacity=\"0.55\"/><path d=\"M42 198 L224 198 L224 146 L120 146 L120 94 L42 94 Z\" fill=\"currentColor\" fill-opacity=\"0.18\" stroke-width=\"1.9\"/><circle cx=\"68\" cy=\"42\" r=\"3.2\" fill=\"currentColor\" stroke=\"none\"/><text x=\"68\" y=\"32\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"13\" font-style=\"italic\">L</text><circle cx=\"224\" cy=\"42\" r=\"3.2\" fill=\"currentColor\" stroke=\"none\"/><text x=\"224\" y=\"32\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"13\" font-style=\"italic\">M</text></svg>",
+      "alt": "A map drawn on a grid of 11 by 8 squares, each square 1 cm by 1 cm. A shaded region, the forest reserve, is drawn with its corners on the corners of the squares: it is 7 squares wide and 2 squares tall along the bottom, with a further block 3 squares wide and 2 squares tall standing on the left-hand end of it. Two dots mark the tracking stations. L is 2 squares from the left edge of the grid on the horizontal line 7 squares up from the bottom, and M is on that same horizontal line, 8 squares from the left edge."
+     },
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the distance LM on the map",
+       "check": {
+        "type": "numeric",
+        "value": 6.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    },
+    {
+     "id": "c2",
+     "label": "(c) (ii)",
+     "prompt": "The actual distance between two villages on the island is 740 000 cm. What is this actual distance in km?",
+     "marks": 1,
+     "answer": "7.4",
+     "solution": "1 km = 100 000 cm, so 740 000 cm = (740000/100000) km = 7.4 km.",
+     "suffix": " km",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the actual distance in kilometres",
+       "check": {
+        "type": "numeric",
+        "value": 7.4,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    },
+    {
+     "id": "c3",
+     "label": "(c) (iii)",
+     "prompt": "Calculate the ACTUAL area, in km^2, of the forest reserve, given that 1 x 10^10 cm^2 = 1 km^2.",
+     "marks": 3,
+     "answer": "3.2",
+     "solution": "The forest reserve covers 20 of the small squares, so its area on the map is 20 cm^2. The scale is 1 : 40 000, so 1 cm on the map represents 40 000 cm and 1 cm^2 on the map represents 40 000 x 40 000 = 1 600 000 000 cm^2. The actual area is therefore 20 x 1 600 000 000 = 32 000 000 000 cm^2, and since 1 x 10^10 cm^2 = 1 km^2 this is 3.2 km^2.",
+     "suffix": " km^2",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "AK",
+       "marks": 1,
+       "description": "the area of the forest reserve on the map, in cm^2",
+       "check": {
+        "type": "contains",
+        "value": [
+         20.0
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "M",
+       "profile": "R",
+       "marks": 1,
+       "description": "1 cm^2 on the map represents 40 000 x 40 000 cm^2",
+       "check": {
+        "type": "contains",
+        "value": [
+         1600000000.0
+        ]
+       },
+       "field": "all",
+       "code": "M2"
+      },
+      {
+       "kind": "A",
+       "profile": "AK",
+       "marks": 1,
+       "description": "the actual area, in km^2",
+       "check": {
+        "type": "numeric",
+        "value": 3.2,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M2"
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

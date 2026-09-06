@@ -1058,3 +1058,228 @@
   .paper-header-actions{grid-column:1/-1;justify-content:flex-end}
 }
 html[data-theme="dark"] .paper-drawer-submit{background:var(--spark-teal)!important;color:#042F2E!important}
+
+/* ==========================================================================
+   SPARK CSEC 2027 SYLLABUS PRACTICE V5.3.6
+   A separate practice lane for the modular examination effective May-June 2027.
+   ========================================================================== */
+.practice-2027-feature-card{
+  max-width:1160px;
+  margin:18px auto 0;
+  border:1px solid rgba(13,148,136,.28);
+  border-radius:24px;
+  padding:28px 30px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:28px;
+  background:linear-gradient(135deg,#0f2557 0%,#123b63 58%,#0b766f 150%);
+  color:#fff;
+  box-shadow:0 16px 40px rgba(8,26,61,.14);
+}
+.practice-2027-feature-copy{max-width:820px}
+.practice-2027-feature-kicker{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  color:#b9fff4;
+  font-size:11px;
+  font-weight:850;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+.practice-2027-feature-kicker span{
+  padding:5px 8px;
+  border-radius:999px;
+  background:#2dd4bf;
+  color:#062f31;
+  font-size:9px;
+  letter-spacing:.08em;
+}
+.practice-2027-feature-card h2{
+  margin:8px 0 8px;
+  font-family:'Crimson Pro',Georgia,serif;
+  font-size:32px;
+  line-height:1.05;
+  color:#fff;
+}
+.practice-2027-feature-card p{margin:0;color:rgba(255,255,255,.78);font-size:14px;line-height:1.6}
+.practice-2027-feature-card .practice-specs{margin:18px 0 0}
+.practice-2027-feature-card .practice-specs span{border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#e8fffb}
+.practice-2027-open{flex:0 0 auto;background:#2dd4bf;border-color:#2dd4bf;color:#073844;box-shadow:none}
+.practice-2027-open:hover{background:#5eead4;border-color:#5eead4}
+
+.paper2027-hub{padding-top:38px}
+.paper2027-hero{align-items:center}
+.paper2027-format-card{
+  max-width:1160px;
+  margin:0 auto 28px;
+  display:grid;
+  grid-template-columns:minmax(0,1.25fr) minmax(360px,.75fr);
+  gap:24px;
+  align-items:center;
+  padding:28px;
+  border:1px solid var(--paper-border);
+  border-radius:24px;
+  background:#fff;
+  box-shadow:0 12px 34px rgba(15,37,87,.07);
+}
+.paper2027-badge{
+  display:inline-flex;
+  width:max-content;
+  align-items:center;
+  border-radius:999px;
+  padding:6px 10px;
+  background:#dffaf5;
+  color:#08766c;
+  font-size:10px;
+  line-height:1;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+.paper2027-format-copy h2{font-family:'Crimson Pro',Georgia,serif;font-size:30px;line-height:1.08;margin:9px 0 9px;color:var(--paper-navy)}
+.paper2027-format-copy p{margin:0;color:var(--paper-muted);font-size:14px;line-height:1.65}
+.paper2027-format-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.paper2027-format-stats div{padding:16px;border:1px solid var(--paper-border);border-radius:14px;background:#f8fbfd}
+.paper2027-format-stats strong{display:block;font-family:'Crimson Pro',Georgia,serif;font-size:28px;color:var(--paper-navy)}
+.paper2027-format-stats span{display:block;margin-top:2px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--paper-muted)}
+
+.paper2027-section-head{max-width:1160px;margin:0 auto 14px;display:flex;align-items:end;justify-content:space-between;gap:18px}
+.paper2027-section-head>div:first-child span{font-size:10px;text-transform:uppercase;letter-spacing:.09em;font-weight:900;color:var(--paper-teal)}
+.paper2027-section-head h2{font-family:'Crimson Pro',Georgia,serif;font-size:28px;margin:3px 0 0;color:var(--paper-navy)}
+.paper2027-module-chip{padding:8px 11px;border-radius:999px;background:#effaf8;color:#126a63;font-size:11px;font-weight:800;border:1px solid #cbece7}
+
+.paper2027-paper-grid{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.paper2027-paper-card{padding:24px;border:1px solid var(--paper-border);border-radius:21px;background:#fff;box-shadow:0 10px 30px rgba(15,37,87,.06);display:flex;flex-direction:column;min-width:0}
+.paper2027-paper-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.paper2027-paper-top span{font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--paper-teal)}
+.paper2027-paper-top strong{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:var(--paper-navy);color:#fff;font-family:'Crimson Pro',Georgia,serif;font-size:23px}
+.paper2027-paper-card h3{font-family:'Crimson Pro',Georgia,serif;font-size:26px;margin:12px 0 7px;color:var(--paper-navy)}
+.paper2027-paper-card>p{margin:0;color:var(--paper-muted);font-size:13px;line-height:1.58;min-height:62px}
+.paper2027-paper-specs{margin:17px 0 12px}
+.paper2027-profile-mini{display:flex;gap:7px;margin-top:auto;padding-top:5px}
+.paper2027-profile-mini span,.paper2027-nav-profile span{padding:6px 8px;border-radius:8px;background:#eef5fb;color:#31587c;font-size:10px;font-weight:900}
+.paper2027-latest{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-top:14px;padding-top:13px;border-top:1px solid var(--paper-border)}
+.paper2027-latest span{font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--paper-muted);font-weight:850}
+.paper2027-latest strong{font-size:13px;color:var(--paper-navy)}
+
+.paper2027-coming-grid{max-width:1160px;margin:18px auto 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.paper2027-coming-grid article{padding:20px;border:1px dashed #cbd5e1;border-radius:18px;background:rgba(255,255,255,.6)}
+.paper2027-coming-grid span{font-size:9px;text-transform:uppercase;letter-spacing:.08em;font-weight:900;color:#8a98ab}
+.paper2027-coming-grid h3{font-family:'Crimson Pro',Georgia,serif;font-size:21px;margin:5px 0;color:var(--paper-navy)}
+.paper2027-coming-grid p{margin:0;color:var(--paper-muted);font-size:12px;line-height:1.55}
+.paper2027-note-card{max-width:1160px;margin:18px auto 0;padding:20px 22px;border-radius:18px;background:#eef7f6;border:1px solid #cfe7e4;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.paper2027-note-card strong{font-size:13px;color:#174d48}.paper2027-note-card p{margin:4px 0 0;color:#57736f;font-size:12px;line-height:1.55}.paper2027-note-card>span{white-space:nowrap;padding:7px 10px;border-radius:999px;background:#fff;color:#0a766b;font-size:10px;font-weight:900}
+
+.paper2027-start-card .paper2027-badge{margin-bottom:9px}
+.paper2027-profile-strip{display:flex;gap:8px;margin:-10px 0 24px;flex-wrap:wrap}
+.paper2027-profile-strip span{padding:8px 11px;border-radius:10px;background:#eef5fb;color:#385773;font-size:11px;font-weight:700}.paper2027-profile-strip b{color:var(--paper-navy)}
+.paper2027-source-note{padding:13px 15px;margin:0 0 20px;border-left:4px solid var(--paper-teal);border-radius:0 10px 10px 0;background:#effaf8;color:#476761;font-size:11px;line-height:1.55}
+.paper2027-question-meta em{background:#fff3d6;color:#8a5800;border:1px solid #f0d89e}
+.paper2027-stem{font-size:16px!important;line-height:1.6!important;margin:23px 0 4px!important;color:#26364f!important}
+.paper2027-table-caption{font-size:12px;font-weight:800;color:var(--paper-navy);margin:0 0 8px}
+.paper2027-diagram{color:#17335e}
+.paper2027-question-actions .paper-answer-state{text-align:center}
+.paper2027-nav-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.paper2027-nav-profile{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0}
+.paper2027-drawer-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+.paper2027-result-summary{max-width:1100px;margin:18px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.paper2027-result-summary>div{padding:18px;border:1px solid var(--paper-border);border-radius:15px;background:#fff}
+.paper2027-result-summary span{display:block;font-size:10px;letter-spacing:.06em;text-transform:uppercase;font-weight:900;color:var(--paper-muted)}
+.paper2027-result-summary strong{display:block;font-size:25px;color:var(--paper-navy);margin:5px 0}.paper2027-result-summary small{display:block;color:var(--paper-muted);font-size:10px;line-height:1.4}
+.paper2027-review-nav>div{grid-template-columns:repeat(3,1fr)!important}
+
+@media(max-width:1024px){
+  .practice-2027-feature-card{align-items:flex-start}
+  .paper2027-format-card{grid-template-columns:1fr}
+  .paper2027-paper-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .paper2027-paper-card:last-child{grid-column:1/-1}
+  .paper2027-coming-grid{grid-template-columns:1fr 1fr}
+  .paper2027-coming-grid article:last-child{grid-column:1/-1}
+}
+
+@media(max-width:700px){
+  .practice-2027-feature-card{padding:22px 18px;border-radius:18px;flex-direction:column;gap:18px}
+  .practice-2027-feature-card h2{font-size:28px}
+  .practice-2027-open{width:100%}
+  .paper2027-hub{padding-top:24px}
+  .paper2027-format-card{padding:20px;border-radius:18px}
+  .paper2027-format-stats{grid-template-columns:1fr 1fr}
+  .paper2027-section-head{align-items:flex-start;flex-direction:column;gap:8px}
+  .paper2027-paper-grid,.paper2027-coming-grid,.paper2027-result-summary{grid-template-columns:1fr}
+  .paper2027-paper-card:last-child,.paper2027-coming-grid article:last-child{grid-column:auto}
+  .paper2027-note-card{align-items:flex-start;flex-direction:column}.paper2027-note-card>span{white-space:normal}
+  .paper2027-paper-card>p{min-height:0}
+}
+
+/* SPARK CSEC 2027 SYLLABUS PRACTICE V5.3.6 - DARK MODE */
+html[data-theme="dark"] .paper2027-format-card,
+html[data-theme="dark"] .paper2027-paper-card,
+html[data-theme="dark"] .paper2027-result-summary>div{
+  background:var(--spark-paper)!important;
+  border-color:var(--spark-border)!important;
+  color:var(--spark-ink)!important;
+  box-shadow:var(--spark-shadow-md)!important;
+}
+html[data-theme="dark"] .paper2027-format-stats div,
+html[data-theme="dark"] .paper2027-profile-mini span,
+html[data-theme="dark"] .paper2027-nav-profile span,
+html[data-theme="dark"] .paper2027-profile-strip span{
+  background:var(--spark-paper-raised)!important;
+  border-color:var(--spark-border)!important;
+  color:var(--spark-ink-soft)!important;
+}
+html[data-theme="dark"] .paper2027-format-copy h2,
+html[data-theme="dark"] .paper2027-format-stats strong,
+html[data-theme="dark"] .paper2027-section-head h2,
+html[data-theme="dark"] .paper2027-paper-card h3,
+html[data-theme="dark"] .paper2027-latest strong,
+html[data-theme="dark"] .paper2027-coming-grid h3,
+html[data-theme="dark"] .paper2027-result-summary strong,
+html[data-theme="dark"] .paper2027-profile-strip b,
+html[data-theme="dark"] .paper2027-table-caption{
+  color:var(--spark-ink)!important;
+}
+html[data-theme="dark"] .paper2027-format-copy p,
+html[data-theme="dark"] .paper2027-format-stats span,
+html[data-theme="dark"] .paper2027-paper-card>p,
+html[data-theme="dark"] .paper2027-latest span,
+html[data-theme="dark"] .paper2027-coming-grid p,
+html[data-theme="dark"] .paper2027-result-summary span,
+html[data-theme="dark"] .paper2027-result-summary small{
+  color:var(--spark-text-muted)!important;
+}
+html[data-theme="dark"] .paper2027-badge,
+html[data-theme="dark"] .paper2027-module-chip{
+  background:var(--spark-teal-surface)!important;
+  border-color:var(--spark-border)!important;
+  color:var(--spark-teal)!important;
+}
+html[data-theme="dark"] .paper2027-paper-top strong{
+  background:var(--spark-surface-navy)!important;
+  border:1px solid var(--spark-border)!important;
+  color:var(--spark-ink)!important;
+}
+html[data-theme="dark"] .paper2027-coming-grid article{
+  background:rgba(17,35,58,.55)!important;
+  border-color:var(--spark-border-strong)!important;
+}
+html[data-theme="dark"] .paper2027-note-card,
+html[data-theme="dark"] .paper2027-source-note{
+  background:var(--spark-teal-surface)!important;
+  border-color:var(--spark-border)!important;
+  color:var(--spark-ink-soft)!important;
+}
+html[data-theme="dark"] .paper2027-note-card strong{color:var(--spark-ink)!important}
+html[data-theme="dark"] .paper2027-note-card p{color:var(--spark-ink-soft)!important}
+html[data-theme="dark"] .paper2027-note-card>span{
+  background:var(--spark-paper-raised)!important;
+  color:var(--spark-teal)!important;
+}
+html[data-theme="dark"] .paper2027-stem{color:var(--spark-ink)!important}
+html[data-theme="dark"] .paper2027-question-meta em{
+  background:var(--spark-amber-light)!important;
+  color:var(--spark-amber)!important;
+  border-color:rgba(251,191,36,.35)!important;
+}
