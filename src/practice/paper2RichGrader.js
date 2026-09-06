@@ -618,6 +618,16 @@ function canonicalGenericConstruction(schema = {}) {
     return { objects };
   }
 
+  if (kind === "parallel") {
+    const [P, A, B] = args;
+    if (!P || !A || !B) return { objects };
+    const radius = Math.max(0.8, Math.min(d(A, B), d(A, P)) * 0.55);
+    addCircle(A, radius);
+    addCircle(P, radius);
+    addSegment(P, { x: P.x + (B.x - A.x), y: P.y + (B.y - A.y) });
+    return { objects };
+  }
+
   if (kind === "triangle") {
     const triangle = args[0] || {};
     const A = triangle.A;

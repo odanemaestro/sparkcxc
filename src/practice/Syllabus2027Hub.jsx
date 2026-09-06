@@ -75,7 +75,7 @@ export default function Syllabus2027Hub({ onExit }) {
 
       <section className="paper2027-section-head">
         <div><span>Choose your practice</span><h2>2027 Paper 2 modes</h2></div>
-        <div className="paper2027-module-chip">Papers A, B and C available</div>
+        <div className="paper2027-module-chip">Papers A–D available</div>
       </section>
 
       <section className="paper2027-mode-grid" aria-label="2027 practice modes">

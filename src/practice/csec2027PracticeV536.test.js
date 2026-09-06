@@ -20,8 +20,8 @@ function canonicalResponse(part) {
 }
 
 describe("SPARK CSEC 2027 syllabus practice V5.3.6", () => {
-  test("loads the three completed Module 1 practice papers", () => {
-    expect(CSEC_2027_MODULE1_PAPERS).toHaveLength(3);
+  test("loads the four completed Module 1 practice papers", () => {
+    expect(CSEC_2027_MODULE1_PAPERS).toHaveLength(4);
     for (const paper of CSEC_2027_MODULE1_PAPERS) {
       expect(paper.questions).toHaveLength(3);
       expect(paper.questions.reduce((sum, question) => sum + Number(question.marks || 0), 0)).toBe(30);

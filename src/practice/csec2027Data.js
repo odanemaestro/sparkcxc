@@ -1,6 +1,7 @@
 import paperA from "./data/csec2027/csec-p2027-practice-A.json";
 import paperB from "./data/csec2027/csec-p2027-practice-B.json";
 import paperC from "./data/csec2027/csec-p2027-practice-C.json";
+import paperD from "./data/csec2027/csec-p2027-practice-D.json";
 
 export const CSEC_2027_MODULE_DURATION_SECONDS = 50 * 60;
 export const CSEC_2027_FULL_DURATION_SECONDS = 150 * 60;
@@ -203,6 +204,7 @@ const SOURCE_PAPERS = [
   normaliseSourcePaper(paperA, "A"),
   normaliseSourcePaper(paperB, "B"),
   normaliseSourcePaper(paperC, "C"),
+  normaliseSourcePaper(paperD, "D"),
 ];
 
 function modeMeta(modeKey) {

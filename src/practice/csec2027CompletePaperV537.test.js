@@ -26,7 +26,7 @@ describe("SPARK complete CSEC 2027 Paper 2 V5.3.7", () => {
   test("provides Module 1, Module 2, Module 3 and full-paper modes", () => {
     expect(CSEC_2027_PRACTICE_MODES.map(mode => mode.key)).toEqual(["module1", "module2", "module3", "full"]);
     for (const papers of [CSEC_2027_MODULE1_PAPERS, CSEC_2027_MODULE2_PAPERS, CSEC_2027_MODULE3_PAPERS]) {
-      expect(papers).toHaveLength(3);
+      expect(papers).toHaveLength(4);
       for (const paper of papers) {
         expect(paper.questions).toHaveLength(3);
         expect(paper.totalMarks).toBe(30);
@@ -43,7 +43,7 @@ describe("SPARK complete CSEC 2027 Paper 2 V5.3.7", () => {
     }
   });
 
-  test("all three complete model papers earn 90 out of 90", () => {
+  test("all four complete model papers earn 90 out of 90", () => {
     for (const paper of CSEC_2027_FULL_PAPERS) {
       const grade = calculateCsec2027ModuleMark(canonicalAnswers(paper), paper.questions, paper.profile);
       expect(grade.score).toBe(90);

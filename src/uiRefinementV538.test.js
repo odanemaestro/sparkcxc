@@ -60,13 +60,12 @@ describe("SPARK V5.3.8 UI refinement", () => {
     expect(btn).toContain('1.5px solid rgba(255,255,255');
   });
 
-  test("student overview stat accents are consistently SPARK teal", () => {
+  test("student stat cards use the same neutral tile treatment as the dashboard", () => {
     const app = read("App.js");
-    expect(app).toContain('["Topics done",done,T.teal]');
-    expect(app).toContain('["Syllabus covered",done>0?`${Math.round((done/totalTopics)*100)}%`:"0%",T.teal]');
-    expect(app).toContain('["Sessions booked",bookings.length,T.teal]');
-    expect(app).toContain('["Day streak",streak>0?streak:"0",T.teal]');
-    expect(app).not.toContain('["Sessions booked",bookings.length,T.amber]');
-    expect(app).not.toContain('["Day streak",streak>0?streak:"0",T.emerald]');
+    const start = app.indexOf('className="student-dashboard-stats-grid"');
+    const end = app.indexOf('className="student-overview-course-card"', start);
+    const studentStats = app.slice(start, end);
+    expect(studentStats).toContain('className="student-dashboard-stat-card"');
+    expect(studentStats).not.toContain('borderTop:`3px solid ${accent}`');
   });
 });

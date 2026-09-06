@@ -324,5 +324,8 @@ export function precisionOf(raw) {
   if (!m) return { dp: null, sf: null };
   const dp = m[1] ? m[1].length : 0;
   const digits = m[0].replace(/[-.]/g, "").replace(/^0+/, "");
-  return { dp, sf: digits.replace(/0+$/, "").length || digits.length };
+  // Trailing zeros after a decimal point are significant (for example 38.0
+  // has three significant figures). Only integer trailing zeros are ambiguous.
+  const trimmed = m[1] ? digits : digits.replace(/0+$/, "");
+  return { dp, sf: trimmed.length || digits.length };
 }

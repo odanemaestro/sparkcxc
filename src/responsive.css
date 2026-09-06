@@ -2019,6 +2019,26 @@ input,select,textarea,button{max-width:100%}
 }
 
 
+
+
+/* SPARK desktop dashboard compact spacing */
+@media(min-width:821px){
+  .student-overview-course-card{
+    padding:18px 22px!important;
+    margin-bottom:16px!important;
+  }
+  .student-overview-course-card .dashboard-progress-meta{
+    margin-bottom:5px!important;
+  }
+  .student-overview-progress-bar{
+    margin-bottom:10px!important;
+  }
+  .student-overview-family-card{
+    padding:17px 22px!important;
+    margin-bottom:16px!important;
+  }
+}
+
 /* SPARK V5.3.8C - mobile dashboard polish */
 @media(max-width:820px){
   /* Only show the scroll affordance while more dashboard tabs remain to the right. */

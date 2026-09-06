@@ -287,16 +287,36 @@ export function checkTriangle(work, spec, { tol = 0.6, angleTol = 2 } = {}) {
 export function checkParallel(work, P, A, B, { tol = 0.6 } = {}) {
   const dir = { x: P.x + (B.x - A.x), y: P.y + (B.y - A.y) };
   const line = segmentAlong(work.segments, P, dir, tol);
-  if (!line) return { ok: false, why: "no line was drawn through the point" };
-  const theirs = Math.atan2(line.b.y - line.a.y, line.b.x - line.a.x);
-  const ref = Math.atan2(B.y - A.y, B.x - A.x);
-  let off = Math.abs((theirs - ref) * 180 / Math.PI) % 180;
-  if (off > 90) off = 180 - off;
-  const through = pointToLine(P, line.a, line.b) <= tol;
-  const ok = off <= 2 && through;
-  return { ok, offBy: off, why: ok ? "correct"
-    : !through ? "the line does not pass through the given point"
-      : `the line is ${off.toFixed(1)}° away from being parallel` };
+
+  // Standard ruler-and-compasses parallel construction copies the angle made
+  // by AB with transversal AP, leaving equal-radius arcs centred at A and P.
+  const atA = arcsAt(work.arcs, A, tol);
+  const atP = arcsAt(work.arcs, P, tol);
+  const arcsShown = atA.some(a => atP.some(b => Math.abs(a.r - b.r) <= tol));
+
+  let off = Infinity;
+  let through = false;
+  if (line) {
+    const theirs = Math.atan2(line.b.y - line.a.y, line.b.x - line.a.x);
+    const ref = Math.atan2(B.y - A.y, B.x - A.x);
+    off = Math.abs((theirs - ref) * 180 / Math.PI) % 180;
+    if (off > 90) off = 180 - off;
+    through = pointToLine(P, line.a, line.b) <= tol;
+  }
+  const accurate = Boolean(line) && off <= 2 && through;
+
+  return {
+    ok: arcsShown && accurate,
+    arcsShown,
+    lineDrawn: Boolean(line),
+    accurate,
+    offBy: line ? off : null,
+    why: !line ? "no line was drawn through the point"
+      : !through ? "the line does not pass through the given point"
+        : off > 2 ? "the line is " + off.toFixed(1) + "° away from being parallel"
+          : !arcsShown ? "the line is parallel but the construction arcs are not shown - a line slid into place with a set square earns no construction mark"
+            : "correct construction",
+  };
 }
 
 /** Every construction the pad knows how to mark, by name. */

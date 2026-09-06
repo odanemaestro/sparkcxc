@@ -353,3 +353,29 @@
     width:100% !important;
   }
 }
+
+
+/* SPARK V5.3.9A - session review action alignment */
+.review-actions{
+  display:grid;
+  grid-template-columns:minmax(112px,1fr) minmax(150px,1.25fr);
+  justify-content:end;
+  align-items:stretch;
+  gap:10px;
+  width:min(100%,310px);
+  margin-left:auto;
+}
+.review-actions .cp-btn{
+  width:100%!important;
+  min-width:0!important;
+  min-height:48px;
+  padding:11px 16px;
+  align-items:center;
+  justify-content:center;
+}
+@media(max-width:760px){
+  .review-actions{width:100%;grid-template-columns:1fr 1fr}
+}
+@media(max-width:420px){
+  .review-actions{grid-template-columns:1fr}
+}

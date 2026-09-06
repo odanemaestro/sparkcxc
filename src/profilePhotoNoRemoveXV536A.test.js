@@ -13,6 +13,6 @@ describe("SPARK V5.3.6A profile photo chrome", () => {
   test("photo removal remains available in the explicit profile editing controls", () => {
     const app = fs.readFileSync(path.join(__dirname, "App.js"), "utf8");
     expect(app).toContain("onClick={removePhoto}");
-    expect(app).toContain(">\n                Remove\n              </button>");
+    expect(app).toMatch(/onClick=\{removePhoto\}[\s\S]*?>\s*Remove\s*<\/button>/);
   });
 });

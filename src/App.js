@@ -12,7 +12,7 @@
 //     was checked against the actual exam wording and re-derived from
 //     first principles (not just re-typed) before being accepted here.
 //   - cxc25-may-q6 originally mislabelled the rectangle's HEIGHT as "OR"
-//     (using cos20° instead of sin20°), which cascaded into a wrong
+//     (using cos20Â° instead of sin20Â°), which cascaded into a wrong
 //     shaded-area and perimeter answer. The model answer below has been
 //     corrected and now shows the full derivation so the mistake can't
 //     silently reappear.
@@ -20,8 +20,8 @@
 //     verified coordinate geometry - see the comment at the top of each
 //     .svg file for what was wrong and how it was fixed (e.g. points
 //     that weren't actually on the circle they were "on", a
-//     "parallelogram" that was really a trapezoid, an 18° sector drawn
-//     at ~70°, etc).
+//     "parallelogram" that was really a trapezoid, an 18Â° sector drawn
+//     at ~70Â°, etc).
 // ============================================================================
 import React, { useState, useEffect, useCallback, useRef, useLayoutEffect } from "react";
 import { createPortal } from "react-dom";
@@ -62,7 +62,7 @@ import GOOGLE_CALENDAR_ICON_B64 from "./assets/icons/google-calendar-icon.png";
 import OUTLOOK_ICON_B64 from "./assets/icons/outlook-icon.png";
 import APPLE_CALENDAR_ICON_B64 from "./assets/icons/apple-calendar-icon.png";
 
-// ─── URL ROUTING ─────────────────────────────────────────────────────────────
+// â”€â”€â”€ URL ROUTING â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // GitHub Pages serves SPARK as a static single-page app. Hash-based routes keep
 // every screen refresh-safe without requiring server rewrite rules or a 404
 // redirect workaround. The rest of the app can continue calling setView(...)
@@ -198,7 +198,7 @@ function writeDashboardSectionToBrowserHash(section, { replace = false } = {}) {
   writeRouteHash(`#${path}`, { replace });
 }
 
-// ─── Brand icons (inlined as data URIs so no separate asset files are
+// â”€â”€â”€ Brand icons (inlined as data URIs so no separate asset files are
 // needed) - used by the "Continue with Google" button and the
 // "Add to calendar" dropdown.
 
@@ -227,20 +227,20 @@ function writeDashboardSectionToBrowserHash(section, { replace = false } = {}) {
 // file) so this file holds the app's views and routing, not its whole
 // design system in one place - done by: Odane Robinson.
 
-// ─── DESIGN TOKENS ──────────────────────────────────────────────────────────
+// â”€â”€â”€ DESIGN TOKENS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // T, FD, FB now live in src/theme.js (imported at the top of this file) so
 // every view/component shares one theme module instead of a private const.
 
-// ─── GLOBAL STYLES ──────────────────────────────────────────────────────────
+// â”€â”€â”€ GLOBAL STYLES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-// ─── SHARED UI ──────────────────────────────────────────────────────────────
-
-
+// â”€â”€â”€ SHARED UI â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 
 
 
-// ─── SCROLL TO TOP ──────────────────────────────────────────────────────────
+
+
+// â”€â”€â”€ SCROLL TO TOP â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 
 // Custom start-time picker for booking a session. Rather than a free-form
@@ -383,7 +383,7 @@ function showToastGlobal(msg, setToast) {
 
 // NOTE (Odane Robinson): A `COMPLETED_LESSONS` block used to live here,
 // auto-generated to plug the topics that had no real lesson content yet,
-// wired in via a Object • assign(...) call targeting LESSONS. That call ran
+// wired in via a Object â€¢ assign(...) call targeting LESSONS. That call ran
 // at module-load time and, because ES module imports of objects are live
 // references, it MUTATED the actual `LESSONS` object exported by
 // data/lessonBank.js in place - silently overwriting every one of that
@@ -393,7 +393,7 @@ function showToastGlobal(msg, setToast) {
 // data/lessonBank.js; nothing should ever mutate the shared LESSONS
 // object like this again.
 
-// ─── INTERACTIVE LESSON RENDERER ────────────────────────────────────────────
+// â”€â”€â”€ INTERACTIVE LESSON RENDERER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function LessonContent({ topicName, onQuizStart, onComplete, isCompleted }) {
   const lesson = LESSONS[topicName];
   const [openSections, setOpenSections] = useState({ 0: true });
@@ -405,7 +405,7 @@ function LessonContent({ topicName, onQuizStart, onComplete, isCompleted }) {
       <Card style={{background:T.redLight,padding:28}}>
         <strong>Lesson unavailable</strong>
         <p style={{color:T.textMuted}}>This topic is not present in the curriculum data.</p>
-        <Btn onClick={onQuizStart}>Take practice quiz →</Btn>
+        <Btn onClick={onQuizStart}>Take practice quiz â†’</Btn>
       </Card>
     );
   }
@@ -434,7 +434,7 @@ function LessonContent({ topicName, onQuizStart, onComplete, isCompleted }) {
               </div>
               <span style={{fontFamily:FD,fontSize:17,fontWeight:600,color:T.ink}}>{sec.heading}</span>
             </div>
-            <span style={{color:T.textMuted,fontSize:18,transform:openSections[i]?"rotate(90deg)":"none",transition:"transform .2s"}}>›</span>
+            <span style={{color:T.textMuted,fontSize:18,transform:openSections[i]?"rotate(90deg)":"none",transition:"transform .2s"}}>â€º</span>
           </div>
 
           {openSections[i] && (
@@ -453,7 +453,7 @@ function LessonContent({ topicName, onQuizStart, onComplete, isCompleted }) {
                       style={{background:"none",border:`1.5px solid ${T.teal}`,color:T.teal,
                         padding:"8px 16px",borderRadius:6,fontSize:13,cursor:"pointer",
                         fontFamily:FB,fontWeight:500}}>
-                      Show full solution →
+                      Show full solution â†’
                     </button>
                   ) : (
                     <div className="solution-reveal fade-in">
@@ -468,7 +468,7 @@ function LessonContent({ topicName, onQuizStart, onComplete, isCompleted }) {
               {sec.tip && (
                 <div style={{background:T.amberLight,borderLeft:`3px solid ${T.amber}`,
                   borderRadius:"0 8px 8px 0",padding:"12px 16px",marginTop:12}}>
-                  <span style={{fontWeight:600,color:T.amber}}>💡 Tip: </span>
+                  <span style={{fontWeight:600,color:T.amber}}>ðŸ’¡ Tip: </span>
                   <MathText as="span" prose className="lesson-math-copy" style={{fontSize:14,color:T.inkSoft}}>{sec.tip}</MathText>
                 </div>
               )}
@@ -480,13 +480,13 @@ function LessonContent({ topicName, onQuizStart, onComplete, isCompleted }) {
       {/* Key Facts */}
       <Card style={{marginBottom:16,borderTop:`3px solid ${T.emerald}`}}>
         <div style={{fontFamily:FD,fontSize:17,fontWeight:600,color:T.ink,marginBottom:14}}>
-          📌 Key facts to memorise
+          ðŸ“Œ Key facts to memorise
         </div>
         {lesson.keyFacts.map((fact, i) => (
           <div key={i} className="key-fact">
             <div style={{width:20,height:20,borderRadius:"50%",background:T.emeraldLight,
               color:T.emerald,display:"flex",alignItems:"center",justifyContent:"center",
-              fontSize:10,fontWeight:700,flexShrink:0}}>✓</div>
+              fontSize:10,fontWeight:700,flexShrink:0}}>âœ“</div>
             <MathText as="span" prose className="lesson-math-copy">{fact}</MathText>
           </div>
         ))}
@@ -495,13 +495,13 @@ function LessonContent({ topicName, onQuizStart, onComplete, isCompleted }) {
       {/* Common Mistakes */}
       <Card style={{marginBottom:16,borderTop:`3px solid ${T.red}`}}>
         <div style={{fontFamily:FD,fontSize:17,fontWeight:600,color:T.ink,marginBottom:14}}>
-          ⚠ Common mistakes students make
+          âš  Common mistakes students make
         </div>
         {lesson.commonMistakes.map((m, i) => (
           <div key={i} className="mistake-item">
             <div style={{width:20,height:20,borderRadius:"50%",background:T.redLight,
               color:T.red,display:"flex",alignItems:"center",justifyContent:"center",
-              fontSize:10,fontWeight:700,flexShrink:0}}>✗</div>
+              fontSize:10,fontWeight:700,flexShrink:0}}>âœ—</div>
             <MathText as="span" prose className="lesson-math-copy">{m}</MathText>
           </div>
         ))}
@@ -519,16 +519,16 @@ function LessonContent({ topicName, onQuizStart, onComplete, isCompleted }) {
       {/* Actions */}
       <div className="lesson-final-actions" style={{display:"flex",gap:12,flexWrap:"wrap",paddingTop:8}}>
         <Btn onClick={onQuizStart} style={{fontSize:15,padding:"14px 28px"}}>
-          Take practice quiz →
+          Take practice quiz â†’
         </Btn>
         {!isCompleted && (
           <Btn v="tealOutline" onClick={onComplete}>
-            Mark lesson complete ✓
+            Mark lesson complete âœ“
           </Btn>
         )}
         {isCompleted && (
           <div style={{display:"flex",alignItems:"center",gap:8,color:T.emerald,fontWeight:600,fontSize:14}}>
-            <span style={{fontSize:18}}>✓</span> Lesson completed
+            <span style={{fontSize:18}}>âœ“</span> Lesson completed
           </div>
         )}
       </div>
@@ -536,7 +536,7 @@ function LessonContent({ topicName, onQuizStart, onComplete, isCompleted }) {
   );
 }
 
-// ─── QUIZ ENGINE ─────────────────────────────────────────────────────────────
+// â”€â”€â”€ QUIZ ENGINE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function QuizEngine({ topicName, userId, onBack, onComplete, showToast }) {
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState({});
@@ -601,7 +601,7 @@ function QuizEngine({ topicName, userId, onBack, onComplete, showToast }) {
     setScore(correct);
     setSubmitted(true);
     if (correct === mcqQs.length && mcqQs.length > 0) {
-      showToast("Perfect score! 🎉");
+      showToast("Perfect score! ðŸŽ‰");
     }
     onComplete && onComplete(correct, mcqQs.length);
   };
@@ -627,10 +627,10 @@ function QuizEngine({ topicName, userId, onBack, onComplete, showToast }) {
               {topicName}
             </h2>
           </div>
-          <Btn v="outline" onClick={onBack} style={{fontSize:13,padding:"7px 14px"}}>← Back to lesson</Btn>
+          <Btn v="outline" onClick={onBack} style={{fontSize:13,padding:"7px 14px"}}>â† Back to lesson</Btn>
         </div>
         <Card style={{textAlign:"center",padding:36}}>
-          <div style={{fontSize:32,marginBottom:10}} aria-hidden="true">🚧</div>
+          <div style={{fontSize:32,marginBottom:10}} aria-hidden="true">ðŸš§</div>
           <div style={{fontFamily:FD,fontSize:19,fontWeight:700,color:T.ink,marginBottom:8}}>
             Practice questions for this topic are coming soon
           </div>
@@ -656,10 +656,10 @@ function QuizEngine({ topicName, userId, onBack, onComplete, showToast }) {
             {topicName}
           </h2>
           <div style={{fontSize:13,color:T.textMuted}}>
-            {questions.length} question{questions.length !== 1 ? "s" : ""} · Past-paper style · Show all working
+            {questions.length} question{questions.length !== 1 ? "s" : ""} Â· Past-paper style Â· Show all working
           </div>
         </div>
-        <Btn v="outline" onClick={onBack} style={{fontSize:13,padding:"7px 14px"}}>← Back to lesson</Btn>
+        <Btn v="outline" onClick={onBack} style={{fontSize:13,padding:"7px 14px"}}>â† Back to lesson</Btn>
       </div>
 
       {/* Progress bar */}
@@ -803,7 +803,7 @@ function QuizEngine({ topicName, userId, onBack, onComplete, showToast }) {
                     borderRadius:8,fontSize:13.5,
                     color:answers[qi] === q.correct ? T.emerald : T.red,
                     lineHeight:1.65}} className="fade-in">
-                    {answers[qi] === q.correct ? "✓ Correct. " : "✗ Incorrect. "}
+                    {answers[qi] === q.correct ? "âœ“ Correct. " : "âœ— Incorrect. "}
                     <MathText as="span" prose className="lesson-math-copy" style={{color:T.inkSoft}}>{q.explanation}</MathText>
                   </div>
                 )}
@@ -834,7 +834,7 @@ function QuizEngine({ topicName, userId, onBack, onComplete, showToast }) {
                       <MathText as="div" prose className="solution-content lesson-math-copy">{q.modelAnswer}</MathText>
                       <div style={{marginTop:10,padding:"10px 14px",background:T.tealLight,
                         borderRadius:8,fontSize:13.5,color:T.tealDark,lineHeight:1.65}}>
-                        💡 <strong>Why this approach:</strong> <MathText as="span" prose className="lesson-math-copy">{q.explanation}</MathText>
+                        ðŸ’¡ <strong>Why this approach:</strong> <MathText as="span" prose className="lesson-math-copy">{q.explanation}</MathText>
                       </div>
                     </div>
                   )}
@@ -849,7 +849,7 @@ function QuizEngine({ topicName, userId, onBack, onComplete, showToast }) {
       {!submitted && allMCQAnswered && mcqCount > 0 && (
         <div style={{textAlign:"center",marginTop:8}}>
           <Btn onClick={submitAll} style={{fontSize:15,padding:"13px 28px"}}>
-            Submit and see results →
+            Submit and see results â†’
           </Btn>
         </div>
       )}
@@ -857,7 +857,7 @@ function QuizEngine({ topicName, userId, onBack, onComplete, showToast }) {
   );
 }
 
-// ─── LESSON VIEW (full layout) ───────────────────────────────────────────────
+// â”€â”€â”€ LESSON VIEW (full layout) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function LessonView({ user, setView, showToast, hasTutorApp }) {
   const [sections] = useState(SYLLABUS_SECTIONS);
   const [activeSectionIdx, setActiveSectionIdx] = useState(0);
@@ -919,7 +919,7 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
     ));
 
     setCompletedTopics(prev => new Set([...prev, key]));
-    showToast("Topic marked complete ✓");
+    showToast("Topic marked complete âœ“");
     if (!user?.id) return;
 
     // Save the completion source so the database can avoid sending parents a
@@ -1033,7 +1033,7 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
                       background:done?T.emerald:"transparent",transition:`all .18s ${T.ease}`,
                       display:"flex",alignItems:"center",justifyContent:"center",
                       fontSize:8,color:"#fff"}}>
-                      {done ? "✓" : ""}
+                      {done ? "âœ“" : ""}
                     </div>
                     <span style={{overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>
                       {topic}
@@ -1050,7 +1050,7 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
             style={{width:"100%",padding:"9px",borderRadius:6,background:"rgba(255,255,255,.06)",
               color:"rgba(255,255,255,.7)",fontSize:13,border:"1px solid rgba(255,255,255,.1)",
               cursor:"pointer",fontFamily:FB}}>
-            ← Dashboard
+            â† Dashboard
           </button>
         </div>
       </div>
@@ -1079,10 +1079,10 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
           <span style={{fontSize:12,color:T.teal,fontWeight:600,textTransform:"uppercase",letterSpacing:"0.05em"}}>
             {activeSection?.title}
           </span>
-          <span style={{color:T.border}}>›</span>
+          <span style={{color:T.border}}>â€º</span>
           <span style={{fontSize:13,color:T.inkSoft}}>{activeTopic}</span>
           {isTopicDone(activeSectionIdx, activeTopicIdx) && (
-            <Badge c="green">Completed ✓</Badge>
+            <Badge c="green">Completed âœ“</Badge>
           )}
         </div>
 
@@ -1124,7 +1124,7 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
             setInQuiz(false);
           }} style={{background:"none",border:`1.5px solid ${T.border}`,padding:"9px 16px",
             borderRadius:7,cursor:"pointer",fontSize:13,color:T.textMuted,fontFamily:FB}}>
-            ← Previous topic
+            â† Previous topic
           </button>
           <button onClick={() => {
             if (activeTopicIdx < activeSection.topics.length - 1) {
@@ -1137,7 +1137,7 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
             setInQuiz(false);
           }} style={{background:T.teal,border:"none",padding:"9px 16px",
             borderRadius:7,cursor:"pointer",fontSize:13,color:"#fff",fontFamily:FB,fontWeight:600}}>
-            Next topic →
+            Next topic â†’
           </button>
         </div>
       </div>
@@ -1145,7 +1145,7 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
   );
 }
 
-// ─── NAV ────────────────────────────────────────────────────────────────────
+// â”€â”€â”€ NAV â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorApp, view, themeMode, resolvedTheme, setThemeMode }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const isTutor = profile?.role === "tutor" || tutorApp?.status === "approved";
@@ -1263,7 +1263,7 @@ const NavBtn = ({ children, onClick, active = false }) => {
   );
 };
 
-// ─── FOOTER ─────────────────────────────────────────────────────────────────
+// â”€â”€â”€ FOOTER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function Footer({ setView, hasTutorApp, isTutor, isParent }) {
   return (
     <footer className="spark-footer" style={{background:`linear-gradient(180deg,${T.surfaceNavy},${T.navyDeep})`,color:"rgba(255,255,255,.6)",padding:"44px 28px 22px",flexShrink:0}}>
@@ -1308,13 +1308,13 @@ function Footer({ setView, hasTutorApp, isTutor, isParent }) {
       </div>
       <div style={{borderTop:"1px solid rgba(255,255,255,.1)",paddingTop:16,textAlign:"center",
         fontSize:12,maxWidth:1100,margin:"0 auto"}}>
-        © 2026 SPARK. Built for CSEC and CAPE students across the Caribbean.
+        Â© 2026 SPARK. Built for CSEC and CAPE students across the Caribbean.
       </div>
     </footer>
   );
 }
 
-// ─── HOME VIEW ───────────────────────────────────────────────────────────────
+// â”€â”€â”€ HOME VIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, isParent }) {
   const [demoAnswer, setDemoAnswer] = useState(null);
   const totalTopics = SYLLABUS_SECTIONS.reduce((a, s) => a + s.topics.length, 0);
@@ -1333,7 +1333,7 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
         <div className="home-hero-inner spark-home-hero-inner" style={{position:"relative",width:"100%",margin:"0 auto"}}>
         <div className="home-kicker spark-home-hero-badge" style={{display:"inline-block",fontSize:12,fontWeight:600,textTransform:"uppercase",letterSpacing:"0.1em",
           color:"#5EEAD4",marginBottom:16,padding:"6px 14px",borderRadius:99,
-          background:"rgba(94,234,212,.1)",border:"1px solid rgba(94,234,212,.25)"}}>Official CXC Syllabus · CSEC & CAPE</div>
+          background:"rgba(94,234,212,.1)",border:"1px solid rgba(94,234,212,.25)"}}>Official CXC Syllabus Â· CSEC & CAPE</div>
         <div className="spark-home-copy-column">
           <h1 className="home-hero-title spark-home-hero-title" style={{fontFamily:FD,fontSize:"clamp(30px,5vw,54px)",fontWeight:800,
             lineHeight:1.1,margin:"0 0 20px",letterSpacing:"-0.01em"}}>
@@ -1348,13 +1348,13 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
       		{isTutor ? (
               <Btn v="amber" onClick={() => setView("dashboard")}
                 style={{background:T.amber,fontSize:15,padding:"13px 28px"}}>
-                Go to your dashboard →
+                Go to your dashboard â†’
               </Btn>
             ) : user ? (
               <>
                 <Btn v="amber" onClick={() => setView("dashboard")}
                   style={{background:T.amber,fontSize:15,padding:"13px 28px"}}>
-                  Go to your dashboard →
+                  Go to your dashboard â†’
                 </Btn>
                 {!isParent && (
                   <Btn v="ghost" onClick={() => setView("tutors")}
@@ -1367,7 +1367,7 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
               <>
                 <Btn v="amber" onClick={() => setView("auth")}
                   style={{background:T.amber,fontSize:15,padding:"13px 28px"}}>
-                  Start learning free →
+                  Start learning free â†’
                 </Btn>
                 <Btn v="ghost" onClick={() => setView("tutors")}
                   style={{fontSize:15,padding:"13px 28px"}}>
@@ -1382,13 +1382,13 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
           margin:"40px auto 0",textAlign:"left",boxShadow:"0 16px 40px rgba(0,0,0,.22)",
           border:"1px solid rgba(255,255,255,.06)"}}>
           <div style={{fontSize:10,fontWeight:700,color:T.teal,textTransform:"uppercase",
-            letterSpacing:"0.07em",marginBottom:9}}>CSEC Mathematics · Algebra · Try it</div>
+            letterSpacing:"0.07em",marginBottom:9}}>CSEC Mathematics Â· Algebra Â· Try it</div>
           <div style={{fontSize:14.5,color:T.ink,marginBottom:14,lineHeight:1.55,fontWeight:500}}>
-            Factorise completely: x² − 5x + 4
+            Factorise completely: xÂ² âˆ’ 5x + 4
           </div>
           <div style={{display:"flex",flexDirection:"column",gap:8}}>
-            {[["(x − 1)(x − 4)", true],["(x + 1)(x − 4)", false],
-              ["(x − 2)(x − 2)", false],["(x + 1)(x + 4)", false]].map(([opt, correct], i) => (
+            {[["(x âˆ’ 1)(x âˆ’ 4)", true],["(x + 1)(x âˆ’ 4)", false],
+              ["(x âˆ’ 2)(x âˆ’ 2)", false],["(x + 1)(x + 4)", false]].map(([opt, correct], i) => (
               <div key={i} onClick={() => demoAnswer === null && setDemoAnswer(i)}
                 onKeyDown={e => { if (demoAnswer === null && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); setDemoAnswer(i); } }}
                 role="button" tabIndex={demoAnswer === null ? 0 : -1} aria-disabled={demoAnswer !== null}
@@ -1406,7 +1406,7 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
           {demoAnswer !== null && (
             <div className="fade-in" style={{marginTop:11,padding:"11px 14px",background:T.muted,borderRadius:T.rSm,
               fontSize:13,color:T.inkSoft,lineHeight:1.55}}>
-              💡 Find two numbers that multiply to 4 and add to −5: those are −1 and −4. So x² − 5x + 4 = (x − 1)(x − 4).
+              ðŸ’¡ Find two numbers that multiply to 4 and add to âˆ’5: those are âˆ’1 and âˆ’4. So xÂ² âˆ’ 5x + 4 = (x âˆ’ 1)(x âˆ’ 4).
             </div>
           )}
         </div>
@@ -1441,12 +1441,12 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
           </h2>
           <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(260px,1fr))",gap:20}}>
             {[
-              ["📖",`${totalTopics} syllabus topics`,"Every specific objective from all 10 sections of the CSEC Mathematics syllabus has its own written lesson.",T.teal,T.tealLight],
-              ["✏️","Past-paper style questions","Questions modelled directly on CXC past papers from 2010–2015. Same structure, same difficulty, different numbers.",T.amber,T.amberLight],
-              ["🎓","Verified tutors","Vetted, student-rated tutors by subject. See rates, read reviews, book directly.",T.purple,T.purpleLight],
-              ["📊","Weak topic detection","Every quiz answer is tracked. The platform flags your weakest topics automatically.",T.emerald,T.emeraldLight],
-              ["📝","Section & final exams","After each section, a structured exam. Then a full final paper with Section A, B and C.",T.red,T.redLight],
-              ["🧠","Interactive lessons","Lessons include key facts, examples, common errors and solutions for self-checking.",T.teal,T.tealLight],
+              ["ðŸ“–",`${totalTopics} syllabus topics`,"Every specific objective from all 10 sections of the CSEC Mathematics syllabus has its own written lesson.",T.teal,T.tealLight],
+              ["âœï¸","Past-paper style questions","Questions modelled directly on CXC past papers from 2010â€“2015. Same structure, same difficulty, different numbers.",T.amber,T.amberLight],
+              ["ðŸŽ“","Verified tutors","Vetted, student-rated tutors by subject. See rates, read reviews, book directly.",T.purple,T.purpleLight],
+              ["ðŸ“Š","Weak topic detection","Every quiz answer is tracked. The platform flags your weakest topics automatically.",T.emerald,T.emeraldLight],
+              ["ðŸ“","Section & final exams","After each section, a structured exam. Then a full final paper with Section A, B and C.",T.red,T.redLight],
+              ["ðŸ§ ","Interactive lessons","Lessons include key facts, examples, common errors and solutions for self-checking.",T.teal,T.tealLight],
             ].map(([icon, title, desc, accent, accentBg]) => (
               <div key={title} className="hl"
                 style={{background:T.paper,border:`1px solid ${T.border}`,borderRadius:T.rMd,padding:24,
@@ -1466,7 +1466,7 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
   );
 }
 
-// ─── AUTH VIEW ───────────────────────────────────────────────────────────────
+// â”€â”€â”€ AUTH VIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function AuthView({ setView, initialMode = "signup", recoveryMode = false }) {
   const [mode, setMode] = useState(initialMode);
   const [role, setRole] = useState("student");
@@ -1645,14 +1645,14 @@ function AuthView({ setView, initialMode = "signup", recoveryMode = false }) {
         padding:38,width:"100%",maxWidth:420,boxShadow:T.shadowLg,margin:"auto 0"}}>
         {verificationScreen ? (
           <>
-            <div style={{fontSize:36,marginBottom:14}}>✉️</div>
+            <div style={{fontSize:36,marginBottom:14}}>âœ‰ï¸</div>
             <h2 style={{fontFamily:FD,fontSize:24,fontWeight:700,color:T.ink,margin:"0 0 7px"}}>Check your email</h2>
             <p style={{fontSize:13.5,color:T.textMuted,lineHeight:1.6,marginBottom:18}}>
               We sent a verification link to <strong style={{color:T.ink}}>{email}</strong>. Verify your email before you log in.
             </p>
             {message && <div style={{background:T.tealLight,color:T.tealDark,borderRadius:8,padding:"10px 12px",fontSize:13,marginBottom:12}}>{message}</div>}
             {err && <div style={{color:T.red,fontSize:13,marginBottom:12}}>{err}</div>}
-            <Btn onClick={resendVerification} disabled={loading} full>{loading ? "Sending…" : "Resend verification email"}</Btn>
+            <Btn onClick={resendVerification} disabled={loading} full>{loading ? "Sendingâ€¦" : "Resend verification email"}</Btn>
             <button onClick={() => { setVerificationSent(false); setMode("login"); setErr(null); setMessage(null); }}
               style={{width:"100%",marginTop:10,padding:10,border:"none",background:"transparent",color:T.teal,cursor:"pointer",fontFamily:FB,fontWeight:600}}>
               Back to log in
@@ -1689,7 +1689,7 @@ function AuthView({ setView, initialMode = "signup", recoveryMode = false }) {
             {message && <div style={{background:T.tealLight,color:T.tealDark,borderRadius:8,padding:"10px 12px",fontSize:13,marginBottom:12}}>{message}</div>}
             {err && <div style={{color:T.red,fontSize:13,marginBottom:12}}>{err}</div>}
             <Btn onClick={resetStage === "email" ? sendResetCode : resetStage === "code" ? verifyResetCode : updatePassword} disabled={loading} full>
-              {loading ? "Please wait…" : resetStage === "email" ? "Send verification code" : resetStage === "code" ? "Verify code" : "Update password"}
+              {loading ? "Please waitâ€¦" : resetStage === "email" ? "Send verification code" : resetStage === "code" ? "Verify code" : "Update password"}
             </Btn>
             {resetStage === "code" && <button onClick={sendResetCode} disabled={loading} style={{width:"100%",marginTop:10,padding:9,border:"none",background:"transparent",color:T.teal,cursor:"pointer",fontFamily:FB,fontSize:13}}>Resend code</button>}
             <button onClick={() => { switchMode("login"); }} style={{width:"100%",marginTop:8,padding:9,border:"none",background:"transparent",color:T.textMuted,cursor:"pointer",fontFamily:FB,fontSize:13}}>Back to log in</button>
@@ -1757,10 +1757,10 @@ function AuthView({ setView, initialMode = "signup", recoveryMode = false }) {
             {showResendVerification && mode === "login" && (
               <button onClick={resendVerification} disabled={loading}
                 style={{width:"100%",padding:"10px 13px",marginBottom:12,border:`1.5px solid ${T.teal}`,borderRadius:7,background:"transparent",color:T.teal,cursor:loading?"not-allowed":"pointer",fontFamily:FB,fontWeight:600,fontSize:13}}>
-                {loading ? "Sending…" : "Resend verification email"}
+                {loading ? "Sendingâ€¦" : "Resend verification email"}
               </button>
             )}
-            <Btn onClick={submit} disabled={loading} full>{loading ? "Please wait…" : mode==="signup" ? role==="tutor" ? "Continue to tutor application →" : "Create account" : "Log in"}</Btn>
+            <Btn onClick={submit} disabled={loading} full>{loading ? "Please waitâ€¦" : mode==="signup" ? role==="tutor" ? "Continue to tutor application â†’" : "Create account" : "Log in"}</Btn>
             <div style={{display:"flex",alignItems:"center",gap:10,margin:"18px 0",color:T.textMuted,fontSize:12}}><div style={{height:1,background:T.border,flex:1}}/><span>OR</span><div style={{height:1,background:T.border,flex:1}}/></div>
             <button className="spark-google-auth-button" onClick={continueWithGoogle} disabled={loading}
               style={{width:"100%",padding:"10px 13px",border:`1.5px solid ${T.border}`,borderRadius:999,
@@ -1780,7 +1780,7 @@ function AuthView({ setView, initialMode = "signup", recoveryMode = false }) {
 }
 
 // How many consecutive days (ending today or yesterday) the student has
-// completed at least one lesson. Replaces the old hardcoded "5 🔥".
+// completed at least one lesson. Replaces the old hardcoded "5 ðŸ”¥".
 function computeStreak(rows) {
   if (!rows || rows.length === 0) return 0;
   const days = new Set(
@@ -1855,7 +1855,7 @@ const BOOKING_STATUS_BADGE = {
   cancelled: { c: "red",   label: "Cancelled" },
 };
 
-// ─── TIME / DURATION HELPERS (shared by the booking modal + dashboard) ──────
+// â”€â”€â”€ TIME / DURATION HELPERS (shared by the booking modal + dashboard) â”€â”€â”€â”€â”€â”€
 // Session lengths a student can pick when booking. Tutors don't pick fixed
 // time *slots* - they just say when they're generally free (free-text
 // availability) - but a session still needs a length so we know how long it
@@ -1882,13 +1882,13 @@ function fmtClock(t) {
   const ampm = h >= 12 ? "PM" : "AM";
   return `${h % 12 === 0 ? 12 : h % 12}:${String(m).padStart(2, "0")} ${ampm}`;
 }
-// e.g. fmtSessionRange("15:00:00", 90) -> "3:00 PM–4:30 PM"
+// e.g. fmtSessionRange("15:00:00", 90) -> "3:00 PMâ€“4:30 PM"
 function fmtSessionRange(startTime, mins) {
   if (!startTime) return "";
-  return `${fmtClock(startTime)}–${fmtClock(minutesToTime(timeToMinutes(startTime) + (mins || 60)))}`;
+  return `${fmtClock(startTime)}â€“${fmtClock(minutesToTime(timeToMinutes(startTime) + (mins || 60)))}`;
 }
 
-// ─── CALENDAR INTEGRATION ───────────────────────────────────────────────
+// â”€â”€â”€ CALENDAR INTEGRATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function calendarPad(n) {
   return String(n).padStart(2, "0");
@@ -2143,7 +2143,7 @@ function AddToCalendar({ booking, isTutor, user }) {
           fontFamily:FB
         }}
       >
-        ＋ Add to calendar
+        ï¼‹ Add to calendar
       </button>
 
       {open && menuPos && createPortal(
@@ -2259,7 +2259,7 @@ function AddToCalendar({ booking, isTutor, user }) {
               color:T.ink
             }}
           >
-            <span style={{width:18,display:"inline-flex",justifyContent:"center",flexShrink:0,fontSize:14,opacity:.65}}>⬇</span>
+            <span style={{width:18,display:"inline-flex",justifyContent:"center",flexShrink:0,fontSize:14,opacity:.65}}>â¬‡</span>
             Download .ics
           </button>
         </div>,
@@ -2296,7 +2296,7 @@ function computeStudyStreak(rows) {
   return streak;
 }
 
-// ─── DASHBOARD ───────────────────────────────────────────────────────────────
+// â”€â”€â”€ DASHBOARD â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function calendarDateKey(date) {
   const y = date.getFullYear();
   const m = String(date.getMonth() + 1).padStart(2, "0");
@@ -2373,8 +2373,8 @@ function SessionCalendar({ bookings, isTutor, user, studentReviews = [], onAccep
       <div className="session-calendar-card">
         <div className="session-calendar-toolbar">
           <div className="session-calendar-month">
-            <button className="calendar-icon-btn" aria-label="Previous month" onClick={() => moveMonth(-1)}>‹</button>
-            <button className="calendar-icon-btn" aria-label="Next month" onClick={() => moveMonth(1)}>›</button>
+            <button className="calendar-icon-btn" aria-label="Previous month" onClick={() => moveMonth(-1)}>â€¹</button>
+            <button className="calendar-icon-btn" aria-label="Next month" onClick={() => moveMonth(1)}>â€º</button>
             <div className="session-calendar-month-title">{calendarMonthLabel(monthDate)}</div>
             <button className="calendar-today-btn" onClick={goToday}>Today</button>
           </div>
@@ -2438,7 +2438,7 @@ function SessionCalendar({ bookings, isTutor, user, studentReviews = [], onAccep
                 {isTutor && status === "confirmed" && canCancelBooking(b) && <button onClick={() => onCancel(b)} style={{background:"none",border:`1.5px solid ${T.red}`,color:T.red,borderRadius:7,padding:"6px 10px",fontSize:11,fontWeight:700}}>Cancel session</button>}
                 {!isTutor && cancellable && <button onClick={() => onCancel(b)} style={{background:"none",border:`1.5px solid ${T.red}`,color:T.red,borderRadius:7,padding:"6px 10px",fontSize:11,fontWeight:700}}>Cancel booking</button>}
                 {!isTutor && status === "completed" && !alreadyReviewed && <button onClick={() => onReview(b)} style={{background:T.teal,border:`1.5px solid ${T.teal}`,color:"#fff",borderRadius:7,padding:"6px 10px",fontSize:11,fontWeight:700}}>Leave a review</button>}
-                {!isTutor && status === "completed" && alreadyReviewed && <span style={{fontSize:11,color:T.emerald,fontWeight:700,padding:"6px 0"}}>✓ Review submitted</span>}
+                {!isTutor && status === "completed" && alreadyReviewed && <span style={{fontSize:11,color:T.emerald,fontWeight:700,padding:"6px 0"}}>âœ“ Review submitted</span>}
               </div>
             </div>
           );
@@ -3384,7 +3384,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
           // useful to do here - every other tab would just be empty. Show
           // one clear, unmissable way forward instead of a broken dashboard.
           <Card style={{textAlign:"center",padding:48,maxWidth:520,margin:"40px auto"}}>
-            <div style={{fontSize:36,marginBottom:14}}>🧑‍🏫</div>
+            <div style={{fontSize:36,marginBottom:14}}>ðŸ§‘â€ðŸ«</div>
             <div style={{fontFamily:FD,fontSize:20,color:T.ink,marginBottom:8,fontWeight:700}}>
               Finish setting up your tutor account
             </div>
@@ -3392,7 +3392,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
               We don't have an application on file for you yet, so there's nothing to show here. Submit your
               application - it only takes a few minutes - and we'll review it within 3 business days.
             </p>
-            <Btn onClick={() => setView("become-tutor")}>Submit application to become a tutor →</Btn>
+            <Btn onClick={() => setView("become-tutor")}>Submit application to become a tutor â†’</Btn>
           </Card>
         ) : (
         <>
@@ -3416,7 +3416,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
               {[["Upcoming sessions",upcomingSessions.length,T.teal,T.tealLight],
                 ["Total students",uniqueStudents.length,T.purple,T.purpleLight],
                 ["Sessions booked",bookings.length,T.amber,T.amberLight],
-                ["Status",tutorRow?.verified ? "Verified ✓" : "Pending",T.emerald,T.emeraldLight]].map(([label,val,accent,accentBg]) => (
+                ["Status",tutorRow?.verified ? "Verified âœ“" : "Pending",T.emerald,T.emeraldLight]].map(([label,val,accent,accentBg]) => (
                 <Card key={label} style={{padding:18,borderTop:`3px solid ${accent}`}}>
                   <div style={{fontFamily:FD,fontSize:24,fontWeight:700,color:T.ink}}>{val}</div>
                   <div style={{fontSize:11,color:T.textMuted,textTransform:"uppercase",letterSpacing:"0.04em",marginTop:3}}>
@@ -3436,7 +3436,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                   padding:"10px 0",borderBottom:`1px solid ${T.border}`}}>
                   <div>
                     <div style={{fontWeight:600,color:T.ink,fontSize:14}}>{b.profiles?.name || "Student"}</div>
-                    <div style={{fontSize:12,color:T.textMuted}}>{b.subject} · {b.session_date}</div>
+                    <div style={{fontSize:12,color:T.textMuted}}>{b.subject} Â· {b.session_date}</div>
                   </div>
                   <Badge c={BOOKING_STATUS_BADGE[bookingDisplayStatus(b)].c}>
                     {BOOKING_STATUS_BADGE[bookingDisplayStatus(b)].label}
@@ -3469,9 +3469,9 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
             </div>
             <div className="student-dashboard-stats-grid" style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(140px,1fr))",
               gap:14,marginBottom:24}}>
-              {[["Topics done",done,T.teal],["Syllabus covered",done>0?`${Math.round((done/totalTopics)*100)}%`:"0%",T.teal],
-                ["Sessions booked",bookings.length,T.teal],["Day streak",streak>0?streak:"0",T.teal]].map(([label,val,accent]) => (
-                <Card key={label} style={{padding:18,borderTop:`3px solid ${accent}`}}>
+              {[["Topics done",done],["Syllabus covered",done>0?`${Math.round((done/totalTopics)*100)}%`:"0%"],
+                ["Sessions booked",bookings.length],["Day streak",streak>0?streak:"0"]].map(([label,val]) => (
+                <Card key={label} className="student-dashboard-stat-card" style={{padding:18}}>
                   <div style={{fontFamily:FD,fontSize:26,fontWeight:700,color:T.ink}}>{val}</div>
                   <div style={{fontSize:11,color:T.textMuted,textTransform:"uppercase",letterSpacing:"0.04em",marginTop:3}}>
                     {label}
@@ -3484,15 +3484,15 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 CSEC Mathematics
               </div>
               <div className="dashboard-progress-meta" style={{display:"flex",justifyContent:"space-between",gap:12,fontSize:12,color:T.textMuted,marginBottom:7}}>
-                <span>{done} of {totalTopics} topics complete · {SYLLABUS_SECTIONS.length} sections</span>
+                <span>{done} of {totalTopics} topics complete Â· {SYLLABUS_SECTIONS.length} sections</span>
                 <span style={{fontWeight:700,color:T.ink,whiteSpace:"nowrap"}}>{done>0?Math.round((done/totalTopics)*100):0}%</span>
               </div>
-              <ProgressBar value={done} max={totalTopics} style={{marginBottom:14}}/>
-              <Btn onClick={() => setView("lesson")}>Continue studying →</Btn>
+              <ProgressBar className="student-overview-progress-bar" value={done} max={totalTopics} style={{marginBottom:14}}/>
+              <Btn onClick={() => setView("lesson")}>Continue studying â†’</Btn>
             </Card>
             {parentLinks.filter(l => l.status === "pending").length > 0 && (
               <Card className="family-request-card notification-anchor-card" data-notification-anchor="family-request" style={{marginBottom:20}}>
-                <div className="family-request-icon">👨‍👩‍👧</div>
+                <div className="family-request-icon">ðŸ‘¨â€ðŸ‘©â€ðŸ‘§</div>
                 <div style={{flex:1}}>
                   <div className="section-kicker">FAMILY CONNECTION</div>
                   <div style={{fontFamily:FD,fontSize:17,fontWeight:700,color:T.ink,margin:"3px 0 5px"}}>A parent wants to connect</div>
@@ -3507,7 +3507,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
               </Card>
             )}
             {familyCode && (
-              <Card className="family-code-card" style={{marginBottom:20}}>
+              <Card className="family-code-card student-overview-family-card" style={{marginBottom:20}}>
                 <div>
                   <div className="section-kicker">YOUR FAMILY CODE</div>
                   <div style={{fontFamily:FD,fontSize:17,fontWeight:700,color:T.ink,margin:"3px 0 5px"}}>Share this with a parent or guardian</div>
@@ -3537,14 +3537,14 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 <p style={{fontSize:13,color:T.textMuted,margin:"4px 0 0"}}>Manage upcoming tutoring sessions at a glance.</p>
               </div>
               <div className="calendar-view-switch" aria-label="Session view">
-                <button className={bookingView === "list" ? "active" : ""} onClick={() => setBookingView("list")}>☷ List</button>
-                <button className={bookingView === "calendar" ? "active" : ""} onClick={() => setBookingView("calendar")}>▦ Calendar</button>
+                <button className={bookingView === "list" ? "active" : ""} onClick={() => setBookingView("list")}>â˜· List</button>
+                <button className={bookingView === "calendar" ? "active" : ""} onClick={() => setBookingView("calendar")}>â–¦ Calendar</button>
               </div>
             </div>
             {bookingsLoadError ? (
               <Card style={{textAlign:"center",padding:40}}><div style={{fontSize:32,marginBottom:12}}>!</div><div style={{fontFamily:FD,fontSize:18,color:T.ink,marginBottom:8}}>Couldn't load your sessions</div><p style={{color:T.textMuted,fontSize:14}}>Refresh the page to try again. If the problem continues, please contact support.</p></Card>
             ) : bookings.length === 0 ? (
-              <Card style={{textAlign:"center",padding:40}}><div style={{fontSize:32,marginBottom:12}}>📅</div><div style={{fontFamily:FD,fontSize:18,color:T.ink,marginBottom:8}}>No sessions booked yet</div><p style={{color:T.textMuted,fontSize:14}}>Sessions students book with you will show up here.</p></Card>
+              <Card style={{textAlign:"center",padding:40}}><div style={{fontSize:32,marginBottom:12}}>ðŸ“…</div><div style={{fontFamily:FD,fontSize:18,color:T.ink,marginBottom:8}}>No sessions booked yet</div><p style={{color:T.textMuted,fontSize:14}}>Sessions students book with you will show up here.</p></Card>
             ) : bookingView === "calendar" ? (
               <SessionCalendar bookings={bookings} isTutor={true} user={user} onAccept={acceptBooking} onDecline={setDeclineTarget} onCancel={setTutorCancelTarget} onReview={() => {}} />
             ) : bookings.map(b => {
@@ -3554,7 +3554,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 <div className="booking-list-row" style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",gap:14}}>
                   <div style={{minWidth:0}}>
                     <div style={{fontWeight:600,color:T.ink,fontSize:15}}>{b.profiles?.name || "Student"}</div>
-                    <div style={{fontSize:13,color:T.textMuted,marginTop:2}}>{b.subject} · {bookingDateLabel(b.session_date)}{b.start_time ? ` · ${fmtSessionRange(b.start_time, b.duration_minutes)}` : ""}</div>
+                    <div style={{fontSize:13,color:T.textMuted,marginTop:2}}>{b.subject} Â· {bookingDateLabel(b.session_date)}{b.start_time ? ` Â· ${fmtSessionRange(b.start_time, b.duration_minutes)}` : ""}</div>
                     <div style={{fontSize:13,color:T.textMuted}}>J${b.rate_jmd?.toLocaleString()}/hr</div>
                     {dispStatus === "declined" && b.cancellation_reason && <div style={{fontSize:12,color:T.textMuted,marginTop:6,fontStyle:"italic"}}>You declined - {b.cancellation_reason}</div>}
                     {dispStatus === "cancelled" && b.cancellation_reason && <div style={{fontSize:12,color:T.textMuted,marginTop:6,fontStyle:"italic"}}>{b.cancelled_by === user.id ? "You cancelled" : "Cancelled by student"} - {b.cancellation_reason}</div>}
@@ -3584,7 +3584,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
             </div>
             {uniqueStudents.length === 0 ? (
               <Card style={{textAlign:"center",padding:40}}>
-                <div style={{fontSize:32,marginBottom:12}}>🎓</div>
+                <div style={{fontSize:32,marginBottom:12}}>ðŸŽ“</div>
                 <div style={{fontFamily:FD,fontSize:18,color:T.ink,marginBottom:8}}>No students yet</div>
                 <p style={{color:T.textMuted,fontSize:14}}>Students who book sessions with you will show up here.</p>
               </Card>
@@ -3624,11 +3624,11 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
           <>
             <h1 style={{fontFamily:FD,fontSize:22,fontWeight:700,color:T.ink,marginBottom:4}}>Reviews</h1>
             <p style={{color:T.textMuted,fontSize:14,marginBottom:20}}>
-              {avgRating ? `★ ${avgRating} average from ${tutorReviews.length} review${tutorReviews.length !== 1 ? "s" : ""}` : "No reviews yet."}
+              {avgRating ? `â˜… ${avgRating} average from ${tutorReviews.length} review${tutorReviews.length !== 1 ? "s" : ""}` : "No reviews yet."}
             </p>
             {tutorReviews.length === 0 ? (
               <Card style={{textAlign:"center",padding:40}}>
-                <div style={{fontSize:32,marginBottom:12}}>⭐</div>
+                <div style={{fontSize:32,marginBottom:12}}>â­</div>
                 <div style={{fontFamily:FD,fontSize:18,color:T.ink,marginBottom:8}}>No reviews yet</div>
                 <p style={{color:T.textMuted,fontSize:14}}>Reviews from students appear here after completed sessions.</p>
               </Card>
@@ -3636,7 +3636,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
               <Card key={r.id || i} style={{marginBottom:14}}>
                 <div style={{display:"flex",justifyContent:"space-between",marginBottom:6}}>
                   <span style={{fontWeight:600,fontSize:14,color:T.ink}}>Verified student</span>
-                  <span style={{color:"#FBBF24"}}>{"★".repeat(r.rating)}</span>
+                  <span style={{color:"#FBBF24"}}>{"â˜…".repeat(r.rating)}</span>
                 </div>
                 <div style={{fontSize:13.5,color:T.inkSoft,lineHeight:1.55}}>"{r.body}"</div>
               </Card>
@@ -3673,7 +3673,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                   <div key={b.id} style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:12,padding:"12px 0",borderBottom:`1px solid ${T.border}`}}>
                     <div style={{minWidth:0}}>
                       <div style={{fontWeight:600,color:T.ink,fontSize:14}}>{b.profiles?.name || "Student"}</div>
-                      <div style={{fontSize:12,color:T.textMuted}}>{b.subject} · {bookingDateLabel(b.session_date)} · {b.duration_minutes || 60} min</div>
+                      <div style={{fontSize:12,color:T.textMuted}}>{b.subject} Â· {bookingDateLabel(b.session_date)} Â· {b.duration_minutes || 60} min</div>
                     </div>
                     <div style={{textAlign:"right",flexShrink:0}}>
                       <div style={{fontWeight:700,color:T.ink,fontSize:14}}>J${Number(b.rate_jmd || 0).toLocaleString()}</div>
@@ -3747,9 +3747,9 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
               </div>
               <TextareaField label="Typical availability" value={profileForm.availability}
                 onChange={v => setProfileForm(f => ({...f, availability: v}))} rows={3}
-                placeholder="e.g. Weekday afternoons 3–8pm, Saturday mornings." />
+                placeholder="e.g. Weekday afternoons 3â€“8pm, Saturday mornings." />
               <Btn onClick={saveProfile} disabled={savingProfile}>
-                {savingProfile ? "Saving…" : "Save changes"}
+                {savingProfile ? "Savingâ€¦" : "Save changes"}
               </Btn>
             </Card>
           </>
@@ -3762,13 +3762,13 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
               <Card className="hl" onClick={() => setView("lesson")} style={{cursor:"pointer"}}>
                 <div style={{fontFamily:FD,fontSize:18,fontWeight:600,color:T.ink,marginBottom:4}}>CSEC Mathematics</div>
                 <div style={{fontSize:12,color:T.textMuted,marginBottom:12}}>
-                  {SYLLABUS_SECTIONS.length} sections · {totalTopics} topics · 39% regional pass rate
+                  {SYLLABUS_SECTIONS.length} sections Â· {totalTopics} topics Â· 39% regional pass rate
                 </div>
                 <ProgressBar value={done} max={totalTopics}/>
                 <div style={{fontSize:11,color:T.textMuted,marginTop:5,marginBottom:14}}>
                   {done} of {totalTopics} topics done
                 </div>
-                <Btn style={{fontSize:12,padding:"7px 14px"}}>Open subject →</Btn>
+                <Btn style={{fontSize:12,padding:"7px 14px"}}>Open subject â†’</Btn>
               </Card>
               <Card style={{opacity:.6}}>
                 <div style={{fontFamily:FD,fontSize:18,fontWeight:600,color:T.ink,marginBottom:4}}>CSEC Physics</div>
@@ -3828,14 +3828,14 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 <p style={{fontSize:13,color:T.textMuted,margin:"4px 0 0"}}>Keep track of every tutoring session in the view that works best for you.</p>
               </div>
               <div className="calendar-view-switch" aria-label="Booking view">
-                <button className={bookingView === "list" ? "active" : ""} onClick={() => setBookingView("list")}>☷ List</button>
-                <button className={bookingView === "calendar" ? "active" : ""} onClick={() => setBookingView("calendar")}>▦ Calendar</button>
+                <button className={bookingView === "list" ? "active" : ""} onClick={() => setBookingView("list")}>â˜· List</button>
+                <button className={bookingView === "calendar" ? "active" : ""} onClick={() => setBookingView("calendar")}>â–¦ Calendar</button>
               </div>
             </div>
             {bookingsLoadError ? (
               <Card style={{textAlign:"center",padding:40}}><div style={{fontSize:32,marginBottom:12}}>!</div><div style={{fontFamily:FD,fontSize:18,color:T.ink,marginBottom:8}}>Couldn't load your bookings</div><p style={{color:T.textMuted,fontSize:14}}>Refresh the page to try again. If the problem continues, please contact support.</p></Card>
             ) : bookings.length === 0 ? (
-              <Card style={{textAlign:"center",padding:40}}><div style={{fontSize:32,marginBottom:12}}>📅</div><div style={{fontFamily:FD,fontSize:18,color:T.ink,marginBottom:8}}>No sessions booked yet</div><p style={{color:T.textMuted,fontSize:14,marginBottom:20}}>Find a verified tutor and book your first session.</p><Btn onClick={() => setView("tutors")}>Find a tutor →</Btn></Card>
+              <Card style={{textAlign:"center",padding:40}}><div style={{fontSize:32,marginBottom:12}}>ðŸ“…</div><div style={{fontFamily:FD,fontSize:18,color:T.ink,marginBottom:8}}>No sessions booked yet</div><p style={{color:T.textMuted,fontSize:14,marginBottom:20}}>Find a verified tutor and book your first session.</p><Btn onClick={() => setView("tutors")}>Find a tutor â†’</Btn></Card>
             ) : bookingView === "calendar" ? (
               <SessionCalendar bookings={bookings} isTutor={false} user={user} studentReviews={studentReviews} onCancel={setCancelTarget} onReview={setReviewTarget} onAccept={() => {}} onDecline={() => {}} />
             ) : (
@@ -3844,7 +3844,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 {[...bookings].sort((a,b) => bookingSort === "status" ? BOOKING_STATUS_ORDER[bookingDisplayStatus(a)] - BOOKING_STATUS_ORDER[bookingDisplayStatus(b)] : b.session_date.localeCompare(a.session_date)).map(b => {
                   const dispStatus = bookingDisplayStatus(b);
                   const cancellable = canCancelBooking(b) && dispStatus !== "completed";
-                  return <Card key={b.id} className={String(notificationTarget?.bookingId || "") === String(b.id) ? "notification-booking-target" : ""} style={{marginBottom:14}}><div className="booking-list-row" style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",gap:14}}><div style={{minWidth:0}}><div style={{fontWeight:600,color:T.ink,fontSize:15}}>{isTutor ? b.profiles?.name : b.tutors?.name}</div><div style={{fontSize:13,color:T.textMuted,marginTop:2}}>{b.subject} · {bookingDateLabel(b.session_date)}{b.start_time ? ` · ${fmtSessionRange(b.start_time, b.duration_minutes)}` : ""}</div><div style={{fontSize:13,color:T.textMuted}}>J${b.rate_jmd?.toLocaleString()}/hr</div>{dispStatus === "cancelled" && b.cancellation_reason && <div style={{fontSize:12,color:T.textMuted,marginTop:6,fontStyle:"italic"}}>{b.cancelled_by === user.id ? "You cancelled" : "Cancelled by tutor"} - {b.cancellation_reason}</div>}{dispStatus === "declined" && b.cancellation_reason && <div style={{fontSize:12,color:T.textMuted,marginTop:6,fontStyle:"italic"}}>Declined by tutor - {b.cancellation_reason}</div>}</div><div className="booking-list-actions" style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:8}}><Badge c={BOOKING_STATUS_BADGE[dispStatus].c}>{BOOKING_STATUS_BADGE[dispStatus].label}</Badge>{dispStatus === "confirmed" && <AddToCalendar booking={b} isTutor={isTutor} user={user} />}{cancellable && <button onClick={() => setCancelTarget(b)} style={{background:"none",border:`1.5px solid ${T.red}`,color:T.red,borderRadius:7,padding:"5px 11px",fontSize:12,cursor:"pointer",fontFamily:FB}}>Cancel booking</button>}{dispStatus === "completed" && (() => {const alreadyReviewed = studentReviews.some(r => r.booking_id === b.id); return alreadyReviewed ? <span style={{fontSize:11,color:T.emerald,fontWeight:600}}>✓ Review submitted</span> : <button className="cp-btn cp-btn-teal" onClick={() => setReviewTarget(b)}>Leave a review</button>;})()}{!cancellable && dispStatus !== "cancelled" && dispStatus !== "declined" && dispStatus !== "completed" && dispStatus !== "expired" && <span style={{fontSize:11,color:T.textMuted}}>Too close to cancel</span>}</div></div></Card>;
+                  return <Card key={b.id} className={String(notificationTarget?.bookingId || "") === String(b.id) ? "notification-booking-target" : ""} style={{marginBottom:14}}><div className="booking-list-row" style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",gap:14}}><div style={{minWidth:0}}><div style={{fontWeight:600,color:T.ink,fontSize:15}}>{isTutor ? b.profiles?.name : b.tutors?.name}</div><div style={{fontSize:13,color:T.textMuted,marginTop:2}}>{b.subject} Â· {bookingDateLabel(b.session_date)}{b.start_time ? ` Â· ${fmtSessionRange(b.start_time, b.duration_minutes)}` : ""}</div><div style={{fontSize:13,color:T.textMuted}}>J${b.rate_jmd?.toLocaleString()}/hr</div>{dispStatus === "cancelled" && b.cancellation_reason && <div style={{fontSize:12,color:T.textMuted,marginTop:6,fontStyle:"italic"}}>{b.cancelled_by === user.id ? "You cancelled" : "Cancelled by tutor"} - {b.cancellation_reason}</div>}{dispStatus === "declined" && b.cancellation_reason && <div style={{fontSize:12,color:T.textMuted,marginTop:6,fontStyle:"italic"}}>Declined by tutor - {b.cancellation_reason}</div>}</div><div className="booking-list-actions" style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:8}}><Badge c={BOOKING_STATUS_BADGE[dispStatus].c}>{BOOKING_STATUS_BADGE[dispStatus].label}</Badge>{dispStatus === "confirmed" && <AddToCalendar booking={b} isTutor={isTutor} user={user} />}{cancellable && <button onClick={() => setCancelTarget(b)} style={{background:"none",border:`1.5px solid ${T.red}`,color:T.red,borderRadius:7,padding:"5px 11px",fontSize:12,cursor:"pointer",fontFamily:FB}}>Cancel booking</button>}{dispStatus === "completed" && (() => {const alreadyReviewed = studentReviews.some(r => r.booking_id === b.id); return alreadyReviewed ? <span style={{fontSize:11,color:T.emerald,fontWeight:600}}>âœ“ Review submitted</span> : <button className="cp-btn cp-btn-teal" onClick={() => setReviewTarget(b)}>Leave a review</button>;})()}{!cancellable && dispStatus !== "cancelled" && dispStatus !== "declined" && dispStatus !== "completed" && dispStatus !== "expired" && <span style={{fontSize:11,color:T.textMuted}}>Too close to cancel</span>}</div></div></Card>;
                 })}
               </>
             )}
@@ -3902,11 +3902,11 @@ function CancelBookingModal({ booking, onClose, onConfirm }) {
     <Modal onClose={onClose}>
       <div style={{fontFamily:FD,fontSize:19,fontWeight:700,color:T.ink,marginBottom:4}}>Cancel booking</div>
       <div className="booking-action-modal-meta" style={{fontSize:13,color:T.textMuted,marginBottom:18}}>
-        with {booking.tutors?.name || "your tutor"} · {booking.subject} · {bookingDateLabel(booking.session_date)}
+        with {booking.tutors?.name || "your tutor"} Â· {booking.subject} Â· {bookingDateLabel(booking.session_date)}
       </div>
       <div style={{fontSize:13,fontWeight:500,color:T.inkSoft,marginBottom:6}}>Reason for cancelling</div>
       <textarea className="booking-action-modal-textarea" value={reason} onChange={e=>setReason(e.target.value)} rows={3}
-        placeholder="Let your tutor know why you're cancelling…"
+        placeholder="Let your tutor know why you're cancellingâ€¦"
         style={{width:"100%",padding:"10px 12px",border:`1.5px solid ${T.border}`,borderRadius:7,
           fontSize:14,fontFamily:FB,color:T.ink,outline:"none",resize:"vertical",marginBottom:16}}/>
       <div className="booking-action-modal-note" style={{fontSize:12,color:T.textMuted,marginBottom:16}}>
@@ -3916,7 +3916,7 @@ function CancelBookingModal({ booking, onClose, onConfirm }) {
         <Btn v="outline" onClick={onClose} style={{flex:1,justifyContent:"center"}}>Keep booking</Btn>
         <Btn onClick={async () => { setSubmitting(true); await onConfirm(reason); setSubmitting(false); }}
           disabled={submitting || !reason.trim()} style={{flex:2,justifyContent:"center",background:T.red,borderColor:T.red}}>
-          {submitting ? "Cancelling…" : "Cancel booking"}
+          {submitting ? "Cancellingâ€¦" : "Cancel booking"}
         </Btn>
       </div>
     </Modal>
@@ -3935,11 +3935,11 @@ function DeclineBookingModal({ booking, onClose, onConfirm }) {
     <Modal onClose={onClose}>
       <div style={{fontFamily:FD,fontSize:19,fontWeight:700,color:T.ink,marginBottom:4}}>Decline booking</div>
       <div className="booking-action-modal-meta" style={{fontSize:13,color:T.textMuted,marginBottom:18}}>
-        with {booking.profiles?.name || "this student"} · {booking.subject} · {bookingDateLabel(booking.session_date)}
+        with {booking.profiles?.name || "this student"} Â· {booking.subject} Â· {bookingDateLabel(booking.session_date)}
       </div>
       <div style={{fontSize:13,fontWeight:500,color:T.inkSoft,marginBottom:6}}>Reason for declining</div>
       <textarea className="booking-action-modal-textarea" value={reason} onChange={e=>setReason(e.target.value)} rows={3}
-        placeholder="Let the student know why you can't take this session…"
+        placeholder="Let the student know why you can't take this sessionâ€¦"
         style={{width:"100%",padding:"10px 12px",border:`1.5px solid ${T.border}`,borderRadius:7,
           fontSize:14,fontFamily:FB,color:T.ink,outline:"none",resize:"vertical",marginBottom:16}}/>
       <div className="booking-action-modal-note" style={{fontSize:12,color:T.textMuted,marginBottom:16}}>
@@ -3949,7 +3949,7 @@ function DeclineBookingModal({ booking, onClose, onConfirm }) {
         <Btn v="outline" onClick={onClose} style={{flex:1,justifyContent:"center"}}>Keep pending</Btn>
         <Btn onClick={async () => { setSubmitting(true); await onConfirm(reason); setSubmitting(false); }}
           disabled={submitting || !reason.trim()} style={{flex:2,justifyContent:"center",background:T.red,borderColor:T.red}}>
-          {submitting ? "Declining…" : "Decline booking"}
+          {submitting ? "Decliningâ€¦" : "Decline booking"}
         </Btn>
       </div>
     </Modal>
@@ -3967,11 +3967,11 @@ function TutorCancelBookingModal({ booking, onClose, onConfirm }) {
     <Modal onClose={onClose}>
       <div style={{fontFamily:FD,fontSize:19,fontWeight:700,color:T.ink,marginBottom:4}}>Cancel session</div>
       <div className="booking-action-modal-meta" style={{fontSize:13,color:T.textMuted,marginBottom:18}}>
-        with {booking.profiles?.name || "this student"} · {booking.subject} · {bookingDateLabel(booking.session_date)}
+        with {booking.profiles?.name || "this student"} Â· {booking.subject} Â· {bookingDateLabel(booking.session_date)}
       </div>
       <div style={{fontSize:13,fontWeight:500,color:T.inkSoft,marginBottom:6}}>Reason for cancelling</div>
       <textarea className="booking-action-modal-textarea" value={reason} onChange={e=>setReason(e.target.value)} rows={3}
-        placeholder="Let the student know why this confirmed session can't go ahead…"
+        placeholder="Let the student know why this confirmed session can't go aheadâ€¦"
         style={{width:"100%",padding:"10px 12px",border:`1.5px solid ${T.border}`,borderRadius:7,
           fontSize:14,fontFamily:FB,color:T.ink,outline:"none",resize:"vertical",marginBottom:16}}/>
       <div className="booking-action-modal-note" style={{fontSize:12,color:T.textMuted,marginBottom:16}}>
@@ -3981,14 +3981,14 @@ function TutorCancelBookingModal({ booking, onClose, onConfirm }) {
         <Btn v="outline" onClick={onClose} style={{flex:1,justifyContent:"center"}}>Keep session</Btn>
         <Btn onClick={async () => { setSubmitting(true); await onConfirm(reason); setSubmitting(false); }}
           disabled={submitting || !reason.trim()} style={{flex:2,justifyContent:"center",background:T.red,borderColor:T.red}}>
-          {submitting ? "Cancelling…" : "Cancel session"}
+          {submitting ? "Cancellingâ€¦" : "Cancel session"}
         </Btn>
       </div>
     </Modal>
   );
 }
 
-// ─── TUTORS VIEW ─────────────────────────────────────────────────────────────
+// â”€â”€â”€ TUTORS VIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, isParent }) {
   // A tutor browsing the marketplace shouldn't be offered "Book a session"
   // on other tutors, and the footer's student-facing links don't apply to
@@ -4113,7 +4113,7 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
               </button>
             ))}
           </div>
-          <input className="tutor-search" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search tutors…"
+          <input className="tutor-search" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search tutorsâ€¦"
             style={{padding:"10px 15px",border:`1.5px solid ${T.border}`,borderRadius:T.rSm,
               fontSize:14,width:210,outline:"none",fontFamily:FB,transition:`border-color .18s ${T.ease},box-shadow .18s ${T.ease}`}}
             onFocus={e=>{e.target.style.borderColor=T.teal;e.target.style.boxShadow=`0 0 0 3px ${T.tealLight}`;}}
@@ -4145,25 +4145,25 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
                 />
               </div>
               <div style={{fontFamily:FD,fontSize:17.5,fontWeight:600,color:T.ink}}>{t.name}</div>
-              <div style={{fontSize:12,color:T.teal,fontWeight:600,margin:"3px 0 9px"}}>{t.subjects?.join(" · ")}</div>
+              <div style={{fontSize:12,color:T.teal,fontWeight:600,margin:"3px 0 9px"}}>{t.subjects?.join(" Â· ")}</div>
               <p style={{fontSize:13,color:T.textMuted,lineHeight:1.6,marginBottom:14}}>{t.bio}</p>
               {(reviews[t.id]||[]).slice(0,2).map((r,i) => (
                 <div key={i} className="tutor-review-snippet" style={{background:T.muted,borderRadius:T.rSm,padding:"10px 12px",marginBottom:8}}>
                   <div style={{display:"flex",justifyContent:"space-between",marginBottom:3}}>
                     <span style={{fontWeight:600,fontSize:11,color:T.ink}}>Verified student</span>
-                    <span style={{color:"#FBBF24"}}>{"★".repeat(r.rating)}</span>
+                    <span style={{color:"#FBBF24"}}>{"â˜…".repeat(r.rating)}</span>
                   </div>
                   <div style={{fontSize:12.5,color:T.inkSoft,lineHeight:1.5}}>"{r.body}"</div>
                 </div>
               ))}
               {(reviews[t.id]||[]).length > 0 && (
                 <button className="review-list-link" onClick={() => setReviewTutor(t)}>
-                  View {(reviews[t.id]||[]).length} review{(reviews[t.id]||[]).length !== 1 ? "s" : ""} →
+                  View {(reviews[t.id]||[]).length} review{(reviews[t.id]||[]).length !== 1 ? "s" : ""} â†’
                 </button>
               )}
               <div className="tutor-card-meta" style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14,
                 paddingTop:12,borderTop:`1px solid ${T.borderSoft}`}}>
-                <span style={{fontSize:13,color:T.textMuted}}>★ {t.rating} ({t.session_count} sessions)</span>
+                <span style={{fontSize:13,color:T.textMuted}}>â˜… {t.rating} ({t.session_count} sessions)</span>
                 <div><span style={{fontWeight:700,color:T.ink,fontSize:15}}>J${t.rate_jmd?.toLocaleString()}</span>
                   <span style={{fontSize:11,color:T.textMuted}}>/hr</span></div>
               </div>
@@ -4191,7 +4191,7 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
             <>
               <div style={{fontFamily:FD,fontSize:20,fontWeight:700,color:T.ink,marginBottom:4}}>Book a session</div>
               <div style={{fontSize:13,color:T.textMuted,marginBottom:20}}>
-                with {bookingTutor.name} · J${bookingTutor.rate_jmd?.toLocaleString()}/hr
+                with {bookingTutor.name} Â· J${bookingTutor.rate_jmd?.toLocaleString()}/hr
               </div>
               <div style={{marginBottom:14}}>
                 <div style={{fontSize:13,fontWeight:500,color:T.inkSoft,marginBottom:6}}>Subject</div>
@@ -4238,7 +4238,7 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
                   Book at least 90 minutes ahead. Your tutor must confirm at least 60 minutes before the session.
                 </div>
                 {date && loadingBusy && (
-                  <div style={{fontSize:12,color:T.textMuted,marginTop:6}}>Checking {bookingTutor.name}'s schedule…</div>
+                  <div style={{fontSize:12,color:T.textMuted,marginTop:6}}>Checking {bookingTutor.name}'s scheduleâ€¦</div>
                 )}
                 {hasClash && (
                   <div style={{fontSize:12.5,color:T.red,marginTop:6,fontWeight:500}}>
@@ -4249,19 +4249,19 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
               {date && slot && !hasClash && (
                 <div style={{background:T.amberLight,borderRadius:8,padding:"11px 14px",
                   marginBottom:16,fontSize:13,color:T.amber,fontWeight:500}}>
-                  📅 {bookingTutor.name} · {subj} · {date} at {fmtSessionRange(slot, duration)} Jamaica time
+                  ðŸ“… {bookingTutor.name} Â· {subj} Â· {date} at {fmtSessionRange(slot, duration)} Jamaica time
                 </div>
               )}
               <div style={{display:"flex",gap:10}}>
                 <Btn v="outline" onClick={() => setBookingTutor(null)} style={{flex:1,justifyContent:"center"}}>Cancel</Btn>
                 <Btn onClick={confirmBooking} disabled={!date||!slot||hasClash||confirming}
-                  style={{flex:2,justifyContent:"center"}}>{confirming ? "Sending request…" : "Send booking request"}</Btn>
+                  style={{flex:2,justifyContent:"center"}}>{confirming ? "Sending requestâ€¦" : "Send booking request"}</Btn>
               </div>
             </>
           ) : (
             <div style={{textAlign:"center",padding:"12px 0"}}>
               <div style={{width:64,height:64,borderRadius:"50%",background:T.emeraldLight,
-                display:"flex",alignItems:"center",justifyContent:"center",margin:"0 auto 16px",fontSize:28}}>✓</div>
+                display:"flex",alignItems:"center",justifyContent:"center",margin:"0 auto 16px",fontSize:28}}>âœ“</div>
               <div style={{fontFamily:FD,fontSize:22,fontWeight:700,color:T.ink,marginBottom:8}}>Request sent</div>
               <div style={{maxWidth:500,margin:"0 auto 24px",padding:"0 6px",textAlign:"left",color:T.textMuted,fontSize:14,lineHeight:1.65}}>
                 <p style={{margin:"0 0 10px"}}>
@@ -4284,14 +4284,14 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
               <h2 style={{fontFamily:FD,fontSize:24,color:T.ink,margin:"5px 0 4px"}}>{reviewTutor.name}</h2>
               <p style={{fontSize:13,color:T.textMuted,margin:0}}>Verified student feedback</p>
             </div>
-            <button className="cp-icon-btn" onClick={() => setReviewTutor(null)} aria-label="Close">×</button>
+            <button className="cp-icon-btn" onClick={() => setReviewTutor(null)} aria-label="Close">Ã—</button>
           </div>
-          <div className="review-summary-line"><strong>★ {reviewTutor.rating}</strong><span>{(reviews[reviewTutor.id]||[]).length} written review{(reviews[reviewTutor.id]||[]).length !== 1 ? "s" : ""}</span></div>
+          <div className="review-summary-line"><strong>â˜… {reviewTutor.rating}</strong><span>{(reviews[reviewTutor.id]||[]).length} written review{(reviews[reviewTutor.id]||[]).length !== 1 ? "s" : ""}</span></div>
           <div className="review-all-list">
             {(reviews[reviewTutor.id]||[]).map((r,i) => (
               <div className="review-full-card" key={r.id || i}>
-                <div className="review-full-top"><strong>Verified student</strong><span>{"★".repeat(r.rating)}</span></div>
-                <p>“{r.body}”</p>
+                <div className="review-full-top"><strong>Verified student</strong><span>{"â˜…".repeat(r.rating)}</span></div>
+                <p>â€œ{r.body}â€</p>
                 <small>{r.created_at ? new Date(r.created_at).toLocaleDateString() : ""}</small>
               </div>
             ))}
@@ -4303,7 +4303,7 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
 }
 
 
-// ─── ADMIN VIEW ────────────────────────────────────────────────────────────
+// â”€â”€â”€ ADMIN VIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const STATUS_BADGE = {
   pending:     { c: "amber", label: "Pending review" },
   approved:    { c: "green", label: "Verified" },
@@ -4424,10 +4424,10 @@ function AdminView({ showToast, adminUserId }) {
       </div>
 
       {loading ? (
-        <div style={{color:T.textMuted,fontSize:14}}>Loading…</div>
+        <div style={{color:T.textMuted,fontSize:14}}>Loadingâ€¦</div>
       ) : filtered.length === 0 ? (
         <Card style={{textAlign:"center",padding:40}}>
-          <div style={{fontSize:32,marginBottom:12}}>📋</div>
+          <div style={{fontSize:32,marginBottom:12}}>ðŸ“‹</div>
           <div style={{fontFamily:FD,fontSize:18,color:T.ink,marginBottom:8}}>Nothing here</div>
           <p style={{color:T.textMuted,fontSize:14}}>No tutors match this filter right now.</p>
         </Card>
@@ -4442,7 +4442,7 @@ function AdminView({ showToast, adminUserId }) {
               <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start"}}>
                 <div>
                   <div style={{fontWeight:600,color:T.ink,fontSize:15}}>{t.name}</div>
-                  <div style={{fontSize:12,color:T.teal,margin:"2px 0 6px"}}>{t.subjects?.join(" · ")}</div>
+                  <div style={{fontSize:12,color:T.teal,margin:"2px 0 6px"}}>{t.subjects?.join(" Â· ")}</div>
                 </div>
                 <Badge c={STATUS_BADGE[t.status]?.c || "amber"}>
                   {STATUS_BADGE[t.status]?.label || t.status}
@@ -4472,24 +4472,24 @@ function AdminView({ showToast, adminUserId }) {
                   <>
                     <Btn onClick={() => setStatus(t.id, "approved")} disabled={busyId===t.id}
                       style={{fontSize:12,padding:"7px 14px"}}>
-                      {busyId===t.id ? "…" : "Approve"}
+                      {busyId===t.id ? "â€¦" : "Approve"}
                     </Btn>
                     <Btn v="outline" onClick={() => setStatus(t.id, "rejected")} disabled={busyId===t.id}
                       style={{fontSize:12,padding:"7px 14px",color:T.red,borderColor:T.red}}>
-                      {busyId===t.id ? "…" : "Reject"}
+                      {busyId===t.id ? "â€¦" : "Reject"}
                     </Btn>
                   </>
                 )}
                 {t.status === "approved" && (
                   <Btn v="outline" onClick={() => setStatus(t.id, "deactivated")} disabled={busyId===t.id}
                     style={{fontSize:12,padding:"7px 14px",color:T.red,borderColor:T.red}}>
-                    {busyId===t.id ? "…" : "Deactivate"}
+                    {busyId===t.id ? "â€¦" : "Deactivate"}
                   </Btn>
                 )}
                 {(t.status === "rejected" || t.status === "deactivated") && (
                   <Btn onClick={() => setStatus(t.id, "approved")} disabled={busyId===t.id}
                     style={{fontSize:12,padding:"7px 14px"}}>
-                    {busyId===t.id ? "…" : t.status === "rejected" ? "Reconsider & approve" : "Reactivate"}
+                    {busyId===t.id ? "â€¦" : t.status === "rejected" ? "Reconsider & approve" : "Reactivate"}
                   </Btn>
                 )}
               </div>
@@ -4509,13 +4509,13 @@ function AdminView({ showToast, adminUserId }) {
           </div>
         )}
         <Card>
-          {payoutLoading ? <div style={{padding:18,color:T.textMuted,fontSize:13}}>Loading pending payouts…</div> : payouts.length === 0 ? (
+          {payoutLoading ? <div style={{padding:18,color:T.textMuted,fontSize:13}}>Loading pending payoutsâ€¦</div> : payouts.length === 0 ? (
             <div style={{padding:18,color:T.textMuted,fontSize:13}}>No pending tutor payouts.</div>
           ) : payouts.map(row => (
             <div key={row.booking_id} style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:14,padding:"12px 0",borderBottom:`1px solid ${T.border}`,flexWrap:"wrap"}}>
               <div>
                 <div style={{fontWeight:700,color:T.ink,fontSize:14}}>{row.tutor_name || "Tutor"}</div>
-                <div style={{fontSize:12,color:T.textMuted}}>{row.student_name || "Student"} · {row.subject} · {row.session_date}</div>
+                <div style={{fontSize:12,color:T.textMuted}}>{row.student_name || "Student"} Â· {row.subject} Â· {row.session_date}</div>
               </div>
               <div style={{display:"flex",alignItems:"center",gap:12}}>
                 <strong style={{color:T.ink}}>J${Number(row.rate_jmd || 0).toLocaleString()}</strong>
@@ -4534,7 +4534,7 @@ function AdminView({ showToast, adminUserId }) {
         <h2 style={{fontFamily:FD,fontSize:20,color:T.ink,marginBottom:5}}>Study Circle safety reports</h2>
         <p style={{fontSize:13,color:T.textMuted,marginBottom:14}}>Review student-reported Study Circle posts. Only administrators can access this moderation queue.</p>
         <Card>
-          {circleReportLoading ? <div style={{padding:18,color:T.textMuted,fontSize:13}}>Loading Study Circle reports…</div> : circleReports.length === 0 ? (
+          {circleReportLoading ? <div style={{padding:18,color:T.textMuted,fontSize:13}}>Loading Study Circle reportsâ€¦</div> : circleReports.length === 0 ? (
             <div style={{padding:18,color:T.textMuted,fontSize:13}}>No open Study Circle reports.</div>
           ) : circleReports.map(report => (
             <div key={report.report_id} style={{padding:"14px 0",borderBottom:`1px solid ${T.border}`}}>
@@ -4542,7 +4542,7 @@ function AdminView({ showToast, adminUserId }) {
                 <div style={{minWidth:0,flex:1}}>
                   <div style={{display:"flex",gap:8,alignItems:"center",flexWrap:"wrap",marginBottom:6}}><Badge c="amber">{report.reason}</Badge><span style={{fontSize:11,color:T.textMuted}}>{report.circle_title}</span></div>
                   <div style={{fontSize:13,color:T.inkSoft,lineHeight:1.55,whiteSpace:"pre-wrap",overflowWrap:"anywhere"}}>{report.post_body || "The reported post is no longer available."}</div>
-                  <div style={{fontSize:11,color:T.textMuted,marginTop:7}}>Author: {report.author_name || "Student"} · Reported by: {report.reporter_name || "Student"} · {new Date(report.created_at).toLocaleString()}</div>
+                  <div style={{fontSize:11,color:T.textMuted,marginTop:7}}>Author: {report.author_name || "Student"} Â· Reported by: {report.reporter_name || "Student"} Â· {new Date(report.created_at).toLocaleString()}</div>
                   {report.details && <div style={{fontSize:11.5,color:T.textMuted,marginTop:5}}>Reporter note: {report.details}</div>}
                 </div>
                 <div style={{display:"flex",gap:8,flexWrap:"wrap"}}>
@@ -4558,7 +4558,7 @@ function AdminView({ showToast, adminUserId }) {
   );
 }
 
-// ─── ROOT APP ────────────────────────────────────────────────────────────────
+// â”€â”€â”€ ROOT APP â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function getTutorAvatarColor(tutor = {}) {
   const raw = String(tutor.avatar_color || "").trim();
@@ -4607,14 +4607,14 @@ function ReviewModal({ booking, user, onClose, onSubmitted, showToast }) {
           <h2 style={{fontFamily:FD,fontSize:24,color:T.ink,margin:"5px 0 4px"}}>How was your session?</h2>
           <p style={{fontSize:13,color:T.textMuted,margin:0}}>Share your experience with {tutorName}.</p>
         </div>
-        <button className="cp-icon-btn" onClick={onClose} aria-label="Close">×</button>
+        <button className="cp-icon-btn" onClick={onClose} aria-label="Close">Ã—</button>
       </div>
       <div className="review-rating-box">
         <div className="review-rating-label">Your rating</div>
         <div className="star-picker" aria-label="Choose a rating">
           {[1,2,3,4,5].map(n => (
             <button key={n} type="button" onMouseEnter={() => setHover(n)} onMouseLeave={() => setHover(0)} onClick={() => setRating(n)} aria-label={`${n} star${n>1?"s":""}`}>
-              <span className={(hover || rating) >= n ? "star active" : "star"}>★</span>
+              <span className={(hover || rating) >= n ? "star active" : "star"}>â˜…</span>
             </button>
           ))}
         </div>
@@ -4623,11 +4623,11 @@ function ReviewModal({ booking, user, onClose, onSubmitted, showToast }) {
       <label className="cp-label">Your review</label>
       <textarea className="cp-textarea" rows={5} value={body} onChange={e => setBody(e.target.value)} maxLength={1000}
         placeholder="What did your tutor explain well? What helped you improve?" />
-      <div className="review-guidance"><span>✓ Helpful and specific</span><span>✓ Be respectful</span><span>{body.length}/1000</span></div>
+      <div className="review-guidance"><span>âœ“ Helpful and specific</span><span>âœ“ Be respectful</span><span>{body.length}/1000</span></div>
       <div className="review-actions">
         <button className="cp-btn cp-btn-secondary" onClick={onClose}>Cancel</button>
         <button className="cp-btn cp-btn-primary" onClick={submit} disabled={saving || !rating || body.trim().length < 10}>
-          {saving ? "Submitting…" : "Publish review"}
+          {saving ? "Submittingâ€¦" : "Publish review"}
         </button>
       </div>
     </Modal>
@@ -4640,10 +4640,10 @@ const PARENT_MILESTONE_META = {
   adaptive_session_completed: { short: "A", label: "Adaptive Practice" },
   section_completed: { short: "S", label: "Section completed" },
   section_test_completed: { short: "T", label: "Section test" },
-  course_completed: { short: "✓", label: "Course completed" },
-  mastery_milestone: { short: "★", label: "Mastery milestone" },
+  course_completed: { short: "âœ“", label: "Course completed" },
+  mastery_milestone: { short: "â˜…", label: "Mastery milestone" },
   weak_skill_alert: { short: "!", label: "Needs attention" },
-  skill_improved: { short: "↑", label: "Skill improving" },
+  skill_improved: { short: "â†‘", label: "Skill improving" },
 };
 
 function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
@@ -4845,13 +4845,13 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
           <div className="section-kicker">AWAITING APPROVAL</div>
           <h2>Connection requests sent</h2>
           <p className="muted-copy">Your request is waiting for the student's approval. They remain in control of who can access their learning progress.</p>
-          {pending.map(link => <div className="pending-pill" key={link.id}>Pending approval · {new Date(link.created_at).toLocaleDateString()}</div>)}
+          {pending.map(link => <div className="pending-pill" key={link.id}>Pending approval Â· {new Date(link.created_at).toLocaleDateString()}</div>)}
         </section>}
 
         <section className="parent-section" data-notification-anchor="parent-family">
           <div className="section-heading parent-family-heading"><div><div className="section-kicker">YOUR FAMILY</div><h2>Children</h2></div><button className="cp-btn cp-btn-primary parent-connect-button" onClick={()=>document.getElementById("add-child")?.scrollIntoView({behavior:"smooth"})}>+ Connect a child</button></div>
-          {children.length === 0 ? <div className="empty-parent"><div className="empty-icon">👨‍👩‍👧</div><h3>No child connected yet</h3><p>Ask your child to open their account and give you their private family code.</p></div> :
-            <div className="child-grid">{children.map(child => <button key={child.id} className={`child-card ${selectedChild?.id===child.id?"selected":""}`} onClick={()=>setSelectedChild(child)}><div className="child-avatar">{getInitials(child.name)}</div><div><strong>{child.name}</strong><span>CSEC Mathematics</span></div><span className="child-arrow" aria-hidden="true">›</span></button>)}</div>}
+          {children.length === 0 ? <div className="empty-parent"><div className="empty-icon">ðŸ‘¨â€ðŸ‘©â€ðŸ‘§</div><h3>No child connected yet</h3><p>Ask your child to open their account and give you their private family code.</p></div> :
+            <div className="child-grid">{children.map(child => <button key={child.id} className={`child-card ${selectedChild?.id===child.id?"selected":""}`} onClick={()=>setSelectedChild(child)}><div className="child-avatar">{getInitials(child.name)}</div><div><strong>{child.name}</strong><span>CSEC Mathematics</span></div><span className="child-arrow" aria-hidden="true">â€º</span></button>)}</div>}
         </section>
 
         {selectedChild && childData && <section className="parent-section">
@@ -4910,7 +4910,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
               if (targetBooking && !rows.some(b => b.id === targetBooking.id)) rows.unshift(targetBooking);
               return rows.map(b => {
                 const isTargetBooking = targetId && String(b.id) === String(targetId);
-                return <div className={`session-row ${isTargetBooking ? "notification-booking-target" : ""}`} data-notification-booking={b.id} key={b.id}><div className="session-main"><strong>{b.tutors?.name || "Tutor"}</strong><span>{b.subject} · {bookingDateLabel(b.session_date)}{b.start_time ? ` · ${fmtSessionRange(b.start_time, b.duration_minutes)}` : ""}</span></div><div className="session-status">{(() => { const status = bookingDisplayStatus(b); return <Badge c={BOOKING_STATUS_BADGE[status]?.c || "ink"}>{BOOKING_STATUS_BADGE[status]?.label || status}</Badge>; })()}</div></div>;
+                return <div className={`session-row ${isTargetBooking ? "notification-booking-target" : ""}`} data-notification-booking={b.id} key={b.id}><div className="session-main"><strong>{b.tutors?.name || "Tutor"}</strong><span>{b.subject} Â· {bookingDateLabel(b.session_date)}{b.start_time ? ` Â· ${fmtSessionRange(b.start_time, b.duration_minutes)}` : ""}</span></div><div className="session-status">{(() => { const status = bookingDisplayStatus(b); return <Badge c={BOOKING_STATUS_BADGE[status]?.c || "ink"}>{BOOKING_STATUS_BADGE[status]?.label || status}</Badge>; })()}</div></div>;
               });
             })() : <p className="muted-copy">No tutor sessions yet.</p>}</div>
           </div>
@@ -4918,7 +4918,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
 
         <section className="parent-section connect-section" id="add-child">
           <div><div className="section-kicker">PRIVATE CONNECTION</div><h2>Connect a child</h2><p>Enter the family code your child shares with you. SPARK will send the connection request to their account.</p></div>
-          <div className="code-form"><input className="cp-input" value={code} onChange={e=>setCode(e.target.value.toUpperCase())} placeholder="CP-XXXXXXXX" maxLength={11}/><button className="cp-btn cp-btn-primary" onClick={requestLink} disabled={sending}>{sending?"Sending…":"Send request"}</button></div>
+          <div className="code-form"><input className="cp-input" value={code} onChange={e=>setCode(e.target.value.toUpperCase())} placeholder="CP-XXXXXXXX" maxLength={11}/><button className="cp-btn cp-btn-primary" onClick={requestLink} disabled={sending}>{sending?"Sendingâ€¦":"Send request"}</button></div>
         </section>
 
       </div>
@@ -5230,9 +5230,9 @@ useEffect(() => () => {
 // Everything below this line is React component code.
 // These components use the same T, FD, FB, Btn, Card, Badge, Footer
 // constants that are already defined in spark-app.jsx.
-// ─────────────────────────────────────────────────────────────────────────────
+// â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-// ─── HOW IT WORKS ────────────────────────────────────────────────────────────
+// â”€â”€â”€ HOW IT WORKS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function HowItWorksView({ setView, hasTutorApp, isParent, user, isTutor = false }) {
   const studentSteps = [
     ["1", "Sign up free", "Create your account and pick Mathematics. No credit card, no trial period."],
@@ -5335,7 +5335,7 @@ function HowItWorksView({ setView, hasTutorApp, isParent, user, isTutor = false 
           </div>
           <div className="spark-role-cta-actions" style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
             <Btn v="amber" onClick={() => setView(user ? "dashboard" : "auth")} style={{ background: T.amber }}>
-              {user ? "Go to your dashboard →" : "Start learning →"}
+              {user ? "Go to your dashboard â†’" : "Start learning â†’"}
             </Btn>
             {!user && !hasTutorApp && (
               <Btn v="ghost" onClick={() => setView("become-tutor")}>Submit application to become a tutor</Btn>
@@ -5348,7 +5348,7 @@ function HowItWorksView({ setView, hasTutorApp, isParent, user, isTutor = false 
   );
 }
 
-// ─── ABOUT ────────────────────────────────────────────────────────────────────
+// â”€â”€â”€ ABOUT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function AboutView({ setView, hasTutorApp, isParent, user, isTutor = false }) {
   const totalTopics = SYLLABUS_SECTIONS.reduce((a, s) => a + s.topics.length, 0);
 
@@ -5430,7 +5430,7 @@ function AboutView({ setView, hasTutorApp, isParent, user, isTutor = false }) {
 
         <div className="spark-about-role-cta" style={{ textAlign: "center" }}>
           <Btn onClick={() => setView(user ? "dashboard" : "auth")} style={{ fontSize: 15, padding: "13px 28px" }}>
-            {user ? "Go to your dashboard →" : "Start learning for free →"}
+            {user ? "Go to your dashboard â†’" : "Start learning for free â†’"}
           </Btn>
         </div>
       </div>
@@ -5439,7 +5439,7 @@ function AboutView({ setView, hasTutorApp, isParent, user, isTutor = false }) {
   );
 }
 
-// ─── CONTACT ─────────────────────────────────────────────────────────────────
+// â”€â”€â”€ CONTACT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function ContactView({ setView, showToast, hasTutorApp, isParent }) {
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
@@ -5470,10 +5470,10 @@ function ContactView({ setView, showToast, hasTutorApp, isParent }) {
           <div>
             <h2 style={{ fontFamily: FD, fontSize: 22, fontWeight: 700, color: T.ink, marginBottom: 20 }}>Get in touch</h2>
             {[
-              ["📧", "Email", "hello@sparkcxc.com"],
-              ["🏫", "Schools", "schools@sparkcxc.com"],
-              ["📍", "Based in", "Kingston, Jamaica"],
-              ["🕐", "Response time", "Within 2 business days"],
+              ["ðŸ“§", "Email", "hello@sparkcxc.com"],
+              ["ðŸ«", "Schools", "schools@sparkcxc.com"],
+              ["ðŸ“", "Based in", "Kingston, Jamaica"],
+              ["ðŸ•", "Response time", "Within 2 business days"],
             ].map(([icon, label, val]) => (
               <div key={label} style={{ display: "flex", gap: 14, marginBottom: 20, alignItems: "flex-start" }}>
                 <div style={{ fontSize: 22 }}>{icon}</div>
@@ -5515,7 +5515,7 @@ function ContactView({ setView, showToast, hasTutorApp, isParent }) {
                 <select value={subject} onChange={e => setSubject(e.target.value)}
                   style={{ width: "100%", padding: "10px 13px", border: `1.5px solid ${T.border}`, borderRadius: 7,
                     fontSize: 14, color: T.ink, background: T.paper, outline: "none", fontFamily: FB }}>
-                  <option value="">Choose a topic…</option>
+                  <option value="">Choose a topicâ€¦</option>
                   <option>Question as a student</option>
                   <option>Applying to become a tutor</option>
                   <option>School or institution partnership</option>
@@ -5529,7 +5529,7 @@ function ContactView({ setView, showToast, hasTutorApp, isParent }) {
                   Message<span style={{ color: T.red }}> *</span>
                 </div>
                 <textarea value={message} onChange={e => setMessage(e.target.value)}
-                  placeholder="Tell us what's on your mind…" rows={5}
+                  placeholder="Tell us what's on your mindâ€¦" rows={5}
                   style={{ width: "100%", padding: "10px 13px", border: `1.5px solid ${T.border}`, borderRadius: 7,
                     fontSize: 14, color: T.ink, background: T.paper, outline: "none", resize: "vertical", fontFamily: FB }}
                   onFocus={e => e.target.style.borderColor = T.teal}
@@ -5539,7 +5539,7 @@ function ContactView({ setView, showToast, hasTutorApp, isParent }) {
             </Card>
           ) : (
             <Card style={{ textAlign: "center", padding: 48 }}>
-              <div style={{ fontSize: 48, marginBottom: 16 }}>✉️</div>
+              <div style={{ fontSize: 48, marginBottom: 16 }}>âœ‰ï¸</div>
               <div style={{ fontFamily: FD, fontSize: 22, fontWeight: 700, color: T.ink, marginBottom: 8 }}>Message sent!</div>
               <p style={{ color: T.textMuted, fontSize: 14, lineHeight: 1.6, marginBottom: 20 }}>
                 We'll get back to you at <strong>{email}</strong> within 2 business days.
@@ -5556,7 +5556,7 @@ function ContactView({ setView, showToast, hasTutorApp, isParent }) {
   );
 }
 
-// ─── PRIVACY ─────────────────────────────────────────────────────────────────
+// â”€â”€â”€ PRIVACY â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function PrivacyView({ setView, hasTutorApp, isParent }) {
   const sections = [
     ["Who we are", "SPARK is a digital education platform built for CSEC and CAPE students in the Caribbean, based in Kingston, Jamaica. When this policy says 'we', 'us' or 'our', it means SPARK."],
@@ -5590,7 +5590,7 @@ function PrivacyView({ setView, hasTutorApp, isParent }) {
   );
 }
 
-// ─── BECOME A TUTOR ───────────────────────────────────────────────────────────
+// â”€â”€â”€ BECOME A TUTOR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const ALL_SUBJECTS = [
   "Mathematics","Physics","English A","English B","Chemistry","Biology",
   "Principles of Accounts","Economics","History","Geography",
@@ -5702,7 +5702,7 @@ const CountryFlagDropdown = ({ countryIso2, onChange, error }) => {
       >
         <span style={{ fontSize: 16, lineHeight: 1 }}>{isoToFlagEmoji(selected.iso2)}</span>
         <span style={{ fontSize: 13, color: T.ink }}>+{selected.dialCode}</span>
-        <span style={{ marginLeft: "auto", fontSize: 10, color: T.textMuted }}>▾</span>
+        <span style={{ marginLeft: "auto", fontSize: 10, color: T.textMuted }}>â–¾</span>
       </button>
 
       {open && menuPos && createPortal(
@@ -5720,7 +5720,7 @@ const CountryFlagDropdown = ({ countryIso2, onChange, error }) => {
             ref={filterInputRef}
             value={filterText}
             onChange={e => setFilterText(e.target.value)}
-            placeholder="Search countries…"
+            placeholder="Search countriesâ€¦"
             style={{
               width: "100%", boxSizing: "border-box", padding: "9px 12px", border: "none",
               borderBottom: `1px solid ${T.borderSoft}`, outline: "none", fontSize: 13, fontFamily: FB,
@@ -5790,7 +5790,7 @@ const PhoneInputWithCountry = ({
         />
       </div>
       <div style={{ marginTop: 5, fontSize: 12, color: T.textMuted }}>
-        Will be saved as +{selectedCountry.dialCode} {localNumber || "…"}
+        Will be saved as +{selectedCountry.dialCode} {localNumber || "â€¦"}
       </div>
       {error && <div id={`${label.replace(/\s+/g, "-").toLowerCase()}-error`} style={{ marginTop: 5, fontSize: 12, color: T.red }}>{error}</div>}
     </div>
@@ -5892,10 +5892,10 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
     const phone = form.phone.trim();
     const bio = form.bio.trim();
     const email = form.email.trim();
-    if (name.length < 2 || name.length > 100) return "Enter your full name (2–100 characters).";
-    if (!/^[A-Za-zÀ-ÖØ-öø-ÿ'’.-]+(?:\s+[A-Za-zÀ-ÖØ-öø-ÿ'’.-]+)+$/.test(name)) return "Please enter a valid first and last name.";
+    if (name.length < 2 || name.length > 100) return "Enter your full name (2â€“100 characters).";
+    if (!/^[A-Za-z\u00C0-\u024F'\u2019.\-]+(?:\s+[A-Za-z\u00C0-\u024F'\u2019.\-]+)+$/.test(name)) return "Please enter a valid first and last name.";
     if (!isValidPhone(phone)) return "Enter a valid phone number for the selected country.";
-    if (bio.length < 80 || bio.length > 2000) return "Your tutor bio must be 80–2,000 characters.";
+    if (bio.length < 80 || bio.length > 2000) return "Your tutor bio must be 80â€“2,000 characters.";
     if (!user && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return "Enter a valid email address.";
     if (!user && form.password.length < 8) return "Your password must be at least 8 characters.";
     if (!user && !/(?=.*[A-Za-z])(?=.*\d)/.test(form.password)) return "Your password must contain at least one letter and one number.";
@@ -5913,9 +5913,9 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
     const quals = form.quals.trim();
     const experience = form.experience.trim();
     const availability = form.availability.trim();
-    if (quals.length < 10 || quals.length > 2000) return "Add your qualifications (10–2,000 characters).";
-    if (experience.length < 5 || experience.length > 2000) return "Add your teaching/tutoring experience (5–2,000 characters).";
-    if (availability.length < 5 || availability.length > 1000) return "Add a brief description of your typical availability (5–1,000 characters).";
+    if (quals.length < 10 || quals.length > 2000) return "Add your qualifications (10â€“2,000 characters).";
+    if (experience.length < 5 || experience.length > 2000) return "Add your teaching/tutoring experience (5â€“2,000 characters).";
+    if (availability.length < 5 || availability.length > 1000) return "Add a brief description of your typical availability (5â€“1,000 characters).";
     return null;
   };
 
@@ -5995,7 +5995,7 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
         <div className="tutor-apply-status-shell" style={{ maxWidth: 560, margin: "0 auto", padding: "0 28px 64px", flex: 1, width: "100%" }}>
           <Card style={{ textAlign: "center", padding: 40 }}>
             <div style={{ fontSize: 32, marginBottom: 12 }}>
-              {tutorApp.status === "approved" ? "✅" : tutorApp.status === "deactivated" ? "🚫" : "⏳"}
+              {tutorApp.status === "approved" ? "âœ…" : tutorApp.status === "deactivated" ? "ðŸš«" : "â³"}
             </div>
             <div style={{ fontFamily: FD, fontSize: 18, color: T.ink, marginBottom: 8 }}>
               {tutorApp.status === "approved" && "You're already a verified tutor"}
@@ -6008,7 +6008,7 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
               {tutorApp.status === "pending" && "We will contact you within 3 business days. You do not need to reapply."}
             </p>
             {tutorApp.status === "approved" && (
-              <Btn onClick={() => setView("dashboard")}>Go to dashboard →</Btn>
+              <Btn onClick={() => setView("dashboard")}>Go to dashboard â†’</Btn>
             )}
           </Card>
         </div>
@@ -6044,7 +6044,7 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
                 background: step === i + 1 ? T.teal : step > i + 1 ? T.tealLight : T.paper,
                 color: step === i + 1 ? "#fff" : step > i + 1 ? T.tealDark : T.textMuted,
                 fontWeight: step === i + 1 ? 600 : 500 }}>
-                {step > i + 1 ? "✓ " : ""}{label}
+                {step > i + 1 ? "âœ“ " : ""}{label}
               </div>
             ))}
           </div>
@@ -6086,7 +6086,7 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
               const error = validateStep1();
               if (error) { showToast(error); return; }
               setStep(2);
-            }} full>Continue →</Btn>
+            }} full>Continue â†’</Btn>
           </div>
         )}
 
@@ -6126,17 +6126,17 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
               </div>
               <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, color: T.textMuted, marginTop: 4 }}>
                 <span>J$800</span>
-                <span style={{ color: T.teal, fontWeight: 500 }}>Most tutors: J$1,400–J$2,200</span>
+                <span style={{ color: T.teal, fontWeight: 500 }}>Most tutors: J$1,400â€“J$2,200</span>
                 <span>J$5,000</span>
               </div>
             </div>
             <div className="tutor-apply-actions" style={{ display: "flex", gap: 10 }}>
-              <Btn v="outline" onClick={() => setStep(1)} style={{ flex: 1, justifyContent: "center" }}>← Back</Btn>
+              <Btn v="outline" onClick={() => setStep(1)} style={{ flex: 1, justifyContent: "center" }}>â† Back</Btn>
               <Btn onClick={() => {
                 const error = validateStep2();
                 if (error) { showToast(error); return; }
                 setStep(3);
-              }} style={{ flex: 2, justifyContent: "center" }}>Continue →</Btn>
+              }} style={{ flex: 2, justifyContent: "center" }}>Continue â†’</Btn>
             </div>
           </div>
         )}
@@ -6149,21 +6149,21 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
               This helps us verify you before your profile goes live. Students won't see this directly.
             </p>
             <TextareaField label="Qualifications" value={form.quals} onChange={v => update("quals", v)} rows={3}
-              placeholder="e.g. BSc Mathematics (UWI), CSEC distinctions in 8 subjects, former CXC Mathematics marker 2018–2022…" />
+              placeholder="e.g. BSc Mathematics (UWI), CSEC distinctions in 8 subjects, former CXC Mathematics marker 2018â€“2022â€¦" />
             <TextareaField label="Teaching or tutoring experience" value={form.experience} onChange={v => update("experience", v)} rows={3}
               placeholder="How long have you been tutoring? Any schools, academies or platforms? Approximate number of students?" />
             <TextareaField label="Typical availability" value={form.availability} onChange={v => update("availability", v)} rows={3}
-              placeholder="e.g. Weekday afternoons 3–8pm, Saturday mornings. Note any weeks you're unavailable." />
+              placeholder="e.g. Weekday afternoons 3â€“8pm, Saturday mornings. Note any weeks you're unavailable." />
             <Card style={{ background: T.amberLight, borderColor: T.amber, marginBottom: 20 }}>
-              <div style={{ fontSize: 13, color: T.amber, fontWeight: 600, marginBottom: 4 }}>⚠ Verification note</div>
+              <div style={{ fontSize: 13, color: T.amber, fontWeight: 600, marginBottom: 4 }}>âš  Verification note</div>
               <div style={{ fontSize: 13, color: T.inkSoft, lineHeight: 1.55 }}>
                 Every tutor is reviewed before the profile is published. We may request copies of qualifications. Verification is usually completed within 3 business days.
               </div>
             </Card>
             <div className="tutor-apply-actions" style={{ display: "flex", gap: 10 }}>
-              <Btn v="outline" onClick={() => setStep(2)} style={{ flex: 1, justifyContent: "center" }}>← Back</Btn>
+              <Btn v="outline" onClick={() => setStep(2)} style={{ flex: 1, justifyContent: "center" }}>â† Back</Btn>
               <Btn onClick={submitApplication} disabled={loading} style={{ flex: 2, justifyContent: "center" }}>
-                {loading ? "Submitting…" : "Submit application →"}
+                {loading ? "Submittingâ€¦" : "Submit application â†’"}
               </Btn>
             </div>
           </div>
@@ -6172,7 +6172,7 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
         {/* Step 4 - Success */}
         {step === 4 && (
           <div className="tutor-apply-success" style={{ maxWidth: 540, margin: "0 auto", textAlign: "center", padding: "20px 0" }}>
-            <div style={{ fontSize: 64, marginBottom: 20 }}>🎉</div>
+            <div style={{ fontSize: 64, marginBottom: 20 }}>ðŸŽ‰</div>
             <h2 style={{ fontFamily: FD, fontSize: 28, fontWeight: 700, color: T.ink, marginBottom: 12 }}>
               Application submitted!
             </h2>
@@ -6186,12 +6186,12 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
           </div>
         )}
 
-        {/* Bottom stats (shown on steps 1–3) */}
+        {/* Bottom stats (shown on steps 1â€“3) */}
         {step < 4 && (
           <div className="tutor-apply-stats" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))", gap: 16, marginTop: 48 }}>
             {[
-              ["J$1,500–J$2,000", "Average hourly rate earned by our tutors"],
-              ["3–5 days", "Typical review time after application"],
+              ["J$1,500â€“J$2,000", "Average hourly rate earned by our tutors"],
+              ["3â€“5 days", "Typical review time after application"],
               ["You set it", "Your rate, your hours, your subjects"],
               ["100%", "Control over your own availability"],
             ].map(([v, l]) => (
