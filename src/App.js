@@ -2844,6 +2844,8 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   const [cancelTarget, setCancelTarget] = useState(null);
   const [declineTarget, setDeclineTarget] = useState(null);
   const [tutorCancelTarget, setTutorCancelTarget] = useState(null);
+  const dashSidebarRef = useRef(null);
+  const [dashTabsHaveMore, setDashTabsHaveMore] = useState(false);
   const totalTopics = SYLLABUS_SECTIONS.reduce((a, s) => a + s.topics.length, 0);
 
   const setDashboardSection = useCallback((section, options = {}) => {
@@ -2855,6 +2857,33 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     setSec(normalized);
     writeDashboardSectionToBrowserHash(normalized, options);
   }, [dashboardRoleResolved, normalizeDashboardSection]);
+
+  const updateDashTabsOverflow = useCallback(() => {
+    const el = dashSidebarRef.current;
+    if (!el) return;
+    const hasOverflow = el.scrollWidth > el.clientWidth + 2;
+    const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 4;
+    setDashTabsHaveMore(hasOverflow && !atEnd);
+  }, []);
+
+  useEffect(() => {
+    const el = dashSidebarRef.current;
+    if (!el) return undefined;
+    const update = () => updateDashTabsOverflow();
+    update();
+    el.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    let observer = null;
+    if (typeof ResizeObserver !== "undefined") {
+      observer = new ResizeObserver(update);
+      observer.observe(el);
+    }
+    return () => {
+      el.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+      observer?.disconnect();
+    };
+  }, [updateDashTabsOverflow, isTutor, sec]);
 
   // Resolve the URL on first mount/refresh once we know whether this account
   // owns the student or tutor dashboard. This is what makes refreshing
@@ -3283,7 +3312,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     <div style={{display:"grid",gridTemplateColumns:"228px 1fr",flex:1}} className="dash-layout">
       <div style={{background:T.paper,borderRight:`1px solid ${T.border}`,padding:"18px 12px",
         display:"flex",flexDirection:"column",gap:2}}
-        className="dash-sidebar">
+        ref={dashSidebarRef} className={`dash-sidebar${dashTabsHaveMore ? " dash-tabs-more" : ""}`}>
         <div className="dash-profile-card" style={{padding:"10px 12px 16px",borderBottom:`1px solid ${T.borderSoft}`,marginBottom:10,
           display:"flex",alignItems:"center",gap:10}}>
           <ProfilePhotoEditor
@@ -3438,10 +3467,10 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 <p style={{color:T.textMuted,fontSize:14,marginBottom:24}}>Keep that momentum going.</p>
               </div>
             </div>
-            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(140px,1fr))",
+            <div className="student-dashboard-stats-grid" style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(140px,1fr))",
               gap:14,marginBottom:24}}>
-              {[["Topics done",done,T.teal],["Syllabus covered",done>0?`${Math.round((done/totalTopics)*100)}%`:"0%",T.purple],
-                ["Sessions booked",bookings.length,T.amber],["Day streak",streak>0?streak:"0",T.emerald]].map(([label,val,accent]) => (
+              {[["Topics done",done,T.teal],["Syllabus covered",done>0?`${Math.round((done/totalTopics)*100)}%`:"0%",T.teal],
+                ["Sessions booked",bookings.length,T.teal],["Day streak",streak>0?streak:"0",T.teal]].map(([label,val,accent]) => (
                 <Card key={label} style={{padding:18,borderTop:`3px solid ${accent}`}}>
                   <div style={{fontFamily:FD,fontSize:26,fontWeight:700,color:T.ink}}>{val}</div>
                   <div style={{fontSize:11,color:T.textMuted,textTransform:"uppercase",letterSpacing:"0.04em",marginTop:3}}>
@@ -3450,7 +3479,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 </Card>
               ))}
             </div>
-            <Card style={{marginBottom:20}}>
+            <Card className="student-overview-course-card" style={{marginBottom:20}}>
               <div style={{fontFamily:FD,fontSize:17,fontWeight:600,color:T.ink,marginBottom:10}}>
                 CSEC Mathematics
               </div>

@@ -2017,3 +2017,60 @@ input,select,textarea,button{max-width:100%}
   .family-code-actions .family-code-value{flex:1 1 100%;width:100%;text-align:center}
   .family-code-actions button{flex:1 1 100%}
 }
+
+
+/* SPARK V5.3.8C - mobile dashboard polish */
+@media(max-width:820px){
+  /* Only show the scroll affordance while more dashboard tabs remain to the right. */
+  .dash-sidebar.dash-tabs-more{
+    -webkit-mask-image:linear-gradient(to right,#000 0,#000 calc(100% - 34px),transparent 100%);
+    mask-image:linear-gradient(to right,#000 0,#000 calc(100% - 34px),transparent 100%);
+  }
+}
+
+@media(max-width:700px){
+  .app-scroll-panel{
+    padding-bottom:calc(42px + env(safe-area-inset-bottom, 0px))!important;
+  }
+  .student-dashboard-greeting-row{
+    margin-bottom:18px!important;
+  }
+  .student-dashboard-stats-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:12px!important;
+    margin-bottom:18px!important;
+  }
+  .student-dashboard-stats-grid>div{
+    min-width:0!important;
+    padding:16px!important;
+  }
+  .student-overview-course-card button{
+    width:100%!important;
+    min-height:46px!important;
+    justify-content:center!important;
+  }
+  .family-code-actions{
+    width:100%!important;
+    justify-content:stretch!important;
+    flex-wrap:nowrap!important;
+  }
+  .family-code-actions .family-code-value{
+    min-width:0!important;
+    width:auto!important;
+    flex:1 1 auto!important;
+    text-align:center!important;
+  }
+  .family-code-actions button{
+    flex:0 0 auto!important;
+    width:auto!important;
+  }
+}
+
+@media(max-width:360px){
+  .family-code-actions{flex-wrap:wrap!important}
+  .family-code-actions .family-code-value,
+  .family-code-actions button{
+    flex:1 1 100%!important;
+    width:100%!important;
+  }
+}

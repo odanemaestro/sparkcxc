@@ -44,10 +44,10 @@ html[data-theme="dark"]{
   --spark-ink:#EAF2FF;
   --spark-ink-soft:#C7D4E7;
   --spark-text-muted:#91A5BF;
-  --spark-bg:#07111F;
-  --spark-paper:#0D1B2E;
-  --spark-paper-raised:#11233A;
-  --spark-muted:#132238;
+  --spark-bg:#0A1626;
+  --spark-paper:#102239;
+  --spark-paper-raised:#142A45;
+  --spark-muted:#172A43;
   --spark-border:#29405E;
   --spark-border-soft:#1B2D46;
   --spark-border-strong:#3B5575;

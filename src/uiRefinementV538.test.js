@@ -60,11 +60,13 @@ describe("SPARK V5.3.8 UI refinement", () => {
     expect(btn).toContain('1.5px solid rgba(255,255,255');
   });
 
-  test("student stat accent colors remain meaningful rather than being flattened", () => {
+  test("student overview stat accents are consistently SPARK teal", () => {
     const app = read("App.js");
     expect(app).toContain('["Topics done",done,T.teal]');
-    expect(app).toContain('["Syllabus covered",done>0?`${Math.round((done/totalTopics)*100)}%`:"0%",T.purple]');
-    expect(app).toContain('["Sessions booked",bookings.length,T.amber]');
-    expect(app).toContain('["Day streak",streak>0?streak:"0",T.emerald]');
+    expect(app).toContain('["Syllabus covered",done>0?`${Math.round((done/totalTopics)*100)}%`:"0%",T.teal]');
+    expect(app).toContain('["Sessions booked",bookings.length,T.teal]');
+    expect(app).toContain('["Day streak",streak>0?streak:"0",T.teal]');
+    expect(app).not.toContain('["Sessions booked",bookings.length,T.amber]');
+    expect(app).not.toContain('["Day streak",streak>0?streak:"0",T.emerald]');
   });
 });
