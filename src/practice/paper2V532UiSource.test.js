@@ -2,11 +2,11 @@ const fs = require("fs");
 const path = require("path");
 
 const read = name => fs.readFileSync(path.join(__dirname, name), "utf8");
+const exam = read("Paper2Exam.jsx");
+const input = read("Paper2ResponseInput.jsx");
+const css = read("practiceExam.css");
 
 describe("SPARK Paper 2 V5.3.2 review UI integration", () => {
-  const exam = read("Paper2Exam.jsx");
-  const input = read("Paper2ResponseInput.jsx");
-  const css = read("practiceExam.css");
 
   test("guards structured table objects from leaking as [object Object]", () => {
     expect(exam).toContain("questionTableCellText");
@@ -43,5 +43,23 @@ describe("SPARK Paper 2 V5.3.2 review UI integration", () => {
       "triangle-sine-area",
       "Heron's formula",
     ]) expect(exam).toContain(token);
+  });
+});
+
+describe("SPARK Paper 2 V5.3.3 construction usability", () => {
+  test("construction labels come from the question instead of hard-coded C D E labels", () => {
+    expect(input).toContain("triangleNameFromPart");
+    expect(input).toContain("triangleDerivedLabels");
+    expect(input).toContain("part={part}");
+    expect(input).not.toContain('const derivedLabels = ["C", "D", "E", "F", "G", "H", "K"]');
+  });
+
+  test("straightedge gives live alignment feedback and locks near-level lines", () => {
+    expect(input).toContain("straightedgeAlignment");
+    expect(input).toContain("Horizontal, level");
+    expect(input).toContain("Vertical, upright");
+    expect(input).toContain("Slanted,");
+    expect(input).toContain("alignment locked");
+    expect(css).toContain("paper2-straightedge-readout");
   });
 });

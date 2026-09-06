@@ -81,6 +81,23 @@ export default function Paper1Exam({ onExit, startFresh = false, supabase, userI
   const [reviewIndex, setReviewIndex] = useState(0);
   const submittedRef = useRef(false);
 
+  // SPARK V5.3.4: keep live and review question navigation at the top.
+  useEffect(() => {
+    if (!started || result) return undefined;
+    const frame = window.requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [currentIndex, started, result]);
+
+  useEffect(() => {
+    if (!result) return undefined;
+    const frame = window.requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [reviewIndex, result]);
+
   useEffect(() => {
     let alive = true;
     Promise.all([loadPaper1Bank(), loadPaper1Diagrams()])

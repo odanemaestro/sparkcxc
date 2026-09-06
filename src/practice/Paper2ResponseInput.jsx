@@ -46,6 +46,131 @@ function angleDegrees(vertex, firstRayPoint, secondRayPoint) {
   return Math.acos(cosine) * 180 / Math.PI;
 }
 
+
+function sameConstructionPoint(a, b, tolerance = 0.16) {
+  return Boolean(a && b) && Math.hypot(Number(a.x) - Number(b.x), Number(a.y) - Number(b.y)) < tolerance;
+}
+
+export function straightedgeAlignment(start, point, thresholdDegrees = 2.5) {
+  if (!start || !point) return { point, kind: null, snapped: false, angleFromHorizontal: null };
+  const dx = Number(point.x) - Number(start.x);
+  const dy = Number(point.y) - Number(start.y);
+  const length = Math.hypot(dx, dy);
+  if (!length) return { point, kind: null, snapped: false, angleFromHorizontal: 0 };
+
+  let axisAngle = Math.atan2(dy, dx) * 180 / Math.PI;
+  axisAngle = ((axisAngle % 180) + 180) % 180;
+  const horizontalDeviation = Math.min(axisAngle, 180 - axisAngle);
+  const verticalDeviation = Math.abs(90 - axisAngle);
+
+  if (horizontalDeviation <= thresholdDegrees) {
+    return {
+      point: { x: Number(point.x), y: Number(start.y) },
+      kind: "horizontal",
+      snapped: Math.abs(dy) > 1e-9,
+      angleFromHorizontal: 0,
+    };
+  }
+  if (verticalDeviation <= thresholdDegrees) {
+    return {
+      point: { x: Number(start.x), y: Number(point.y) },
+      kind: "vertical",
+      snapped: Math.abs(dx) > 1e-9,
+      angleFromHorizontal: 90,
+    };
+  }
+  return {
+    point,
+    kind: "slanted",
+    snapped: false,
+    angleFromHorizontal: Math.min(axisAngle, 180 - axisAngle),
+  };
+}
+
+function triangleNameFromPart(part) {
+  const source = `${part?.prompt || ""} ${part?.answer || ""}`;
+  const match = source.match(/\btriangle\s+([A-Z])\s*([A-Z])\s*([A-Z])\b/i);
+  return match ? [match[1], match[2], match[3]].map(label => label.toUpperCase()) : [];
+}
+
+function segmentConnects(segment, a, b) {
+  const first = { x: segment.x1, y: segment.y1 };
+  const second = { x: segment.x2, y: segment.y2 };
+  return (sameConstructionPoint(first, a) && sameConstructionPoint(second, b))
+    || (sameConstructionPoint(first, b) && sameConstructionPoint(second, a));
+}
+
+function targetValue(target, first, second) {
+  const wanted = `${first}${second}`.toLowerCase();
+  const reverse = `${second}${first}`.toLowerCase();
+  const key = Object.keys(target || {}).find(candidate => {
+    const clean = candidate.replace(/[^a-z]/gi, "").toLowerCase();
+    return clean === wanted || clean === reverse;
+  });
+  const value = Number(key ? target[key] : NaN);
+  return Number.isFinite(value) ? value : null;
+}
+
+function targetAngleValue(target, first, vertex, second) {
+  const wanted = `angle${first}${vertex}${second}`.toLowerCase();
+  const reverse = `angle${second}${vertex}${first}`.toLowerCase();
+  const key = Object.keys(target || {}).find(candidate => {
+    const clean = candidate.replace(/[^a-z]/gi, "").toLowerCase();
+    return clean === wanted || clean === reverse;
+  });
+  const value = Number(key ? target[key] : NaN);
+  return Number.isFinite(value) ? value : null;
+}
+
+export function triangleDerivedLabels({ schema, part, segmentPoints, segments, givenPoints }) {
+  const explicit = Array.isArray(schema.pointLabels) ? schema.pointLabels.map(String)
+    : Array.isArray(schema.derivedLabels) ? schema.derivedLabels.map(String) : [];
+  const labels = explicit.length ? explicit : triangleNameFromPart(part);
+  if (labels.length !== 3) return [];
+
+  const givenIds = new Set((givenPoints || []).map(point => String(point.id || "").toUpperCase()));
+  const genericTriangle = schema.type === "construction" && schema.construction?.construction === "triangle";
+  if (genericTriangle) {
+    const missing = labels.filter(label => !givenIds.has(label));
+    const available = segmentPoints.filter(point => !(givenPoints || []).some(given => sameConstructionPoint(given, point)));
+    return missing.map((label, index) => available[index] ? { point: available[index], label } : null).filter(Boolean);
+  }
+
+  if (schema.type !== "construction_triangle" || segmentPoints.length < 3) return [];
+  const [firstLabel, vertexLabel, thirdLabel] = labels;
+  const target = safeObject(schema.target);
+  const firstLength = targetValue(target, firstLabel, vertexLabel);
+  const secondLength = targetValue(target, vertexLabel, thirdLabel);
+  const wantedAngle = targetAngleValue(target, firstLabel, vertexLabel, thirdLabel);
+  if (![firstLength, secondLength, wantedAngle].every(Number.isFinite)) return [];
+
+  let best = null;
+  for (const vertex of segmentPoints) {
+    const others = segmentPoints.filter(point => !sameConstructionPoint(point, vertex));
+    for (const first of others) {
+      if (!segments.some(segment => segmentConnects(segment, vertex, first))) continue;
+      for (const third of others) {
+        if (sameConstructionPoint(first, third)) continue;
+        if (!segments.some(segment => segmentConnects(segment, vertex, third))) continue;
+        const length1 = Math.hypot(first.x - vertex.x, first.y - vertex.y);
+        const length2 = Math.hypot(third.x - vertex.x, third.y - vertex.y);
+        const angle = angleDegrees(vertex, first, third);
+        if (!Number.isFinite(angle)) continue;
+        const score = Math.abs(length1 - firstLength) / Math.max(0.25, firstLength)
+          + Math.abs(length2 - secondLength) / Math.max(0.25, secondLength)
+          + Math.abs(angle - wantedAngle) / 45;
+        if (!best || score < best.score) best = { first, vertex, third, score };
+      }
+    }
+  }
+  if (!best) return [];
+  return [
+    { point: best.first, label: firstLabel },
+    { point: best.vertex, label: vertexLabel },
+    { point: best.third, label: thirdLabel },
+  ];
+}
+
 function smoothCurvePath(points, toScreen) {
   if (!Array.isArray(points) || points.length < 2) return "";
   const p = points.map(toScreen);
@@ -158,7 +283,7 @@ function WorkspaceGuide({ type, protractorAllowed = false, rulerCompassOnly = fa
     <details className="paper2-workspace-guide" open>
       <summary>How to use the construction tools</summary>
       <div>
-        <p><strong>Straightedge.</strong> Click the starting point, move the pointer and check the live length, then click the ending point.</p>
+        <p><strong>Straightedge.</strong> Click the starting point, then move the pointer. SPARK shows the live length and whether the line is horizontal, vertical or slanted. Near-horizontal and near-vertical lines snap exactly into alignment.</p>
         <p><strong>Compass.</strong> Click once to set the centre. Move the pointer to set the radius, then click again to leave the circle. A compass controls distance, not degrees.</p>
         {protractorAllowed && <p><strong>Protractor.</strong> Click the angle vertex, click a point on the baseline, then move to the second arm. The live display shows the angle before the final click.</p>}
         <p><strong>Snapping.</strong> Nearby endpoints and genuine compass/line intersections are highlighted automatically so the construction stays mathematically precise.</p>
@@ -169,7 +294,7 @@ function WorkspaceGuide({ type, protractorAllowed = false, rulerCompassOnly = fa
   );
 }
 
-function ConstructionWorkspace({ schema, value, onChange, readOnly = false }) {
+function ConstructionWorkspace({ schema, part, value, onChange, readOnly = false }) {
   const response = safeObject(value);
   const objects = Array.isArray(response.objects) ? response.objects : [];
   const pad = safeObject(schema.pad);
@@ -214,17 +339,19 @@ function ConstructionWorkspace({ schema, value, onChange, readOnly = false }) {
     ...givenIntersectionCandidates,
     ...collectConstructionSnapPoints(objects),
   ];
-  const precisePoint = event => {
+  const precisePoint = (event, alignFrom = null) => {
     const raw = toMath(clientToSvg(event));
     const nearby = nearestSnapPoint(raw, constructionCandidates, 0.22);
     if (nearby) return nearby;
-    return { x: snapValue(raw.x, 0.05), y: snapValue(raw.y, 0.05) };
+    const snapped = { x: snapValue(raw.x, 0.05), y: snapValue(raw.y, 0.05) };
+    if (tool === "segment" && alignFrom) return straightedgeAlignment(alignFrom, snapped).point;
+    return snapped;
   };
   const resetPending = () => { setAnchor(null); setProtractorPoints([]); };
   const selectTool = next => { setTool(next); resetPending(); };
 
   const handleCanvas = event => {
-    const point = precisePoint(event);
+    const point = precisePoint(event, anchor);
     if (tool === "protractor") {
       if (protractorPoints.length === 0) { setProtractorPoints([point]); return; }
       if (protractorPoints.length === 1) { setProtractorPoints([...protractorPoints, point]); return; }
@@ -250,7 +377,7 @@ function ConstructionWorkspace({ schema, value, onChange, readOnly = false }) {
     setAnchor(null);
   };
 
-  const handleMove = event => setHover(precisePoint(event));
+  const handleMove = event => setHover(precisePoint(event, anchor));
   const segments = objects.filter(item => item.kind === "segment");
   const circles = objects.filter(item => item.kind === "circle");
   const measurements = objects.filter(item => item.kind === "angle_measure");
@@ -261,8 +388,9 @@ function ConstructionWorkspace({ schema, value, onChange, readOnly = false }) {
       if (!isGiven && !segmentPoints.some(existing => Math.hypot(existing.x - point.x, existing.y - point.y) < 0.16)) segmentPoints.push(point);
     });
   });
-  const derivedLabels = ["C", "D", "E", "F", "G", "H", "K"];
+  const derivedLabels = triangleDerivedLabels({ schema, part, segmentPoints, segments, givenPoints });
   const liveLength = anchor && hover ? Math.hypot(hover.x - anchor.x, hover.y - anchor.y) : null;
+  const liveStraightedge = anchor && hover && tool === "segment" ? straightedgeAlignment(anchor, hover) : null;
   const liveAngle = tool === "protractor" && protractorPoints.length === 2 && hover
     ? angleDegrees(protractorPoints[0], protractorPoints[1], hover)
     : null;
@@ -281,7 +409,7 @@ function ConstructionWorkspace({ schema, value, onChange, readOnly = false }) {
         <button type="button" disabled={!objects.length} onClick={() => { onChange({ ...response, objects: [] }); resetPending(); }}>Clear</button>
       </div>}
       {!readOnly && <div className="paper2-tool-instruction" role="status">
-        {tool === "segment" && <>Straightedge selected. Click a start point, then an end point. {Number.isFinite(liveLength) && <strong>Length: {liveLength.toFixed(2)} cm</strong>}</>}
+        {tool === "segment" && <>Straightedge selected. Click a start point, then an end point. {Number.isFinite(liveLength) && <strong className={`paper2-straightedge-readout ${liveStraightedge?.kind || ""}`}>{liveStraightedge?.kind === "horizontal" ? "Horizontal, level" : liveStraightedge?.kind === "vertical" ? "Vertical, upright" : `Slanted, ${Number(liveStraightedge?.angleFromHorizontal || 0).toFixed(1)}° from horizontal`} · {liveLength.toFixed(2)} cm{["horizontal", "vertical"].includes(liveStraightedge?.kind) ? " · alignment locked" : ""}</strong>}</>}
         {tool === "circle" && <>Compass selected. Click the centre, then choose the radius. {Number.isFinite(liveLength) && <strong>Radius: {liveLength.toFixed(2)} cm</strong>}</>}
         {tool === "protractor" && <>Protractor selected. Vertex → baseline → second arm. {Number.isFinite(liveAngle) && <strong>Angle: {liveAngle.toFixed(1)}°</strong>}</>}
       </div>}
@@ -344,9 +472,9 @@ function ConstructionWorkspace({ schema, value, onChange, readOnly = false }) {
         })()}
         {hover && (() => { const p = toScreen(hover); return <g pointerEvents="none" className="paper2-snap-crosshair"><line x1={p.x-7} y1={p.y} x2={p.x+7} y2={p.y} stroke="currentColor"/><line x1={p.x} y1={p.y-7} x2={p.x} y2={p.y+7} stroke="currentColor"/><circle cx={p.x} cy={p.y} r="2.5" fill="currentColor" stroke="none"/></g>; })()}
         {anchor && (() => { const p = toScreen(anchor); return <circle cx={p.x} cy={p.y} r="4" fill="currentColor" stroke="none" />; })()}
-        {segmentPoints.slice(0, derivedLabels.length).map((point, index) => {
+        {derivedLabels.map(({ point, label }) => {
           const p = toScreen(point);
-          return <text key={`${point.x}-${point.y}`} x={p.x + 7} y={p.y - 7} fill="currentColor" stroke="none" fontSize="13" fontStyle="italic">{derivedLabels[index]}</text>;
+          return <text key={`${label}-${point.x}-${point.y}`} x={p.x + 7} y={p.y - 7} fill="currentColor" stroke="none" fontSize="13" fontStyle="italic">{label}</text>;
         })}
       </svg>
 
@@ -507,7 +635,7 @@ export default function Paper2ResponseInput({ part, value, onChange = () => {}, 
   if (!schema) return null;
   if (schema.type === "fields") return <FieldsResponse schema={schema} value={value} onChange={onChange} />;
   if (schema.type === "table") return <TableResponse schema={schema} value={value} onChange={onChange} />;
-  if (schema.type === "construction_triangle" || schema.type === "construction") return <ConstructionWorkspace schema={schema} value={value} onChange={onChange} readOnly={readOnly} />;
+  if (schema.type === "construction_triangle" || schema.type === "construction") return <ConstructionWorkspace schema={schema} part={part} value={value} onChange={onChange} readOnly={readOnly} />;
   if (schema.type === "tile_pattern") return <TilePatternWorkspace schema={schema} value={value} onChange={onChange} />;
   if (schema.type === "graph") return <GraphWorkspace schema={schema} value={value} onChange={onChange} readOnly={readOnly} />;
   return null;

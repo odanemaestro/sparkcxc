@@ -38,7 +38,9 @@ export function skillMastery(attempts = []) {
 
   const weighted = attempts.reduce((sum, a) => {
     const marks = Number(a.marks || 1);
-    const earned = Number(a.marksEarned ?? (a.correct ? marks : 0));
+    // New in-session attempts use marksEarned. Supabase rows return marks_earned.
+    // Read both so partial credit still affects mastery after a page refresh.
+    const earned = Number(a.marksEarned ?? a.marks_earned ?? (a.correct ? marks : 0));
     return sum + (marks ? earned / marks : (a.correct ? 1 : 0));
   }, 0);
 

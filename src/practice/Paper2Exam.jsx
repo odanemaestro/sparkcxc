@@ -260,6 +260,23 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
   const inputRefs = useRef({});
   const submittedRef = useRef(false);
 
+  // SPARK V5.3.4: keep live and review question navigation at the top.
+  useEffect(() => {
+    if (!started || submitted) return undefined;
+    const frame = window.requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [currentIndex, started, submitted]);
+
+  useEffect(() => {
+    if (!submitted) return undefined;
+    const frame = window.requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [reviewIndex, submitted]);
+
   useEffect(() => {
     const saved = !startFresh ? readJson(ACTIVE_KEY, null) : null;
     if (saved?.exam?.questions?.length === 10 && validatePaper2Exam(saved.exam).valid) {

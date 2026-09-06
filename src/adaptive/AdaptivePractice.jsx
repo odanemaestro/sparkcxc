@@ -2,26 +2,18 @@
 // Adaptive CSEC Mathematics practice screen
 // Done by: Odane Robinson
 //
-// QA: short-answer grading uses the shared deterministic mathematics checker.
-// string match after trim/lowercase, so a mathematically correct but
-// differently-formatted response ("0.75" for "3/4", "5" for "x = 5", a set
-// in a different order, etc.) was marked wrong. It now uses checkAnswer()
-// (src/lib/answerCheck.js), a small equivalence checker that understands
-// fractions, decimals, currency, degrees, sets, coordinate/vector tuples,
-// and multi-root answers.
-//
-// For anything checkAnswer() can't confidently parse either way (free-text
-// explanations, geometric constructions, full written proofs), rather than
-// guess it returns "uncertain" - and instead of forcing an automatic
-// verdict the UI shows the worked solution and asks the student to
-// self-assess ("Did you get this right?"), which is more honest than a
-// fragile string comparison for that kind of answer anyway.
+// V5.3.4 uses the same CXC-style marking core as Paper 2 for written
+// Adaptive Practice answers. It separates working from the final answer,
+// awards M/A/B partial credit where the stored worked solution provides
+// reliable evidence, and keeps the shared answer checker for equivalent
+// fractions, decimals, algebra, units, precision and required answer forms.
+// Unclear free-text responses retain the self-assessment fallback.
 // ============================================================================
 import React, { useEffect, useState } from "react";
 import { loadQuestionManifest, loadQuestionSet } from "./questionBank";
 import { buildAdaptiveSession, skillMastery } from "./adaptiveEngine";
 import { fetchAttempts, upsertSkillProgress } from "./persistence";
-import { checkQuestionAnswer } from "../lib/answerCheck";
+import { adaptiveQuestionUsesWorking, gradeAdaptiveResponse } from "./adaptiveCxcGrader";
 import ReportQuestionButton from "../components/ui/ReportQuestionButton";
 import MathText from "../practice/MathText";
 import "./adaptive.css";
@@ -57,10 +49,12 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
   const [manifest, setManifest] = useState(null);
   const [session, setSession] = useState([]);
   const [index, setIndex] = useState(0);
+  const [working, setWorking] = useState("");
   const [answer, setAnswer] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [lastCorrect, setLastCorrect] = useState(false);
   const [verdict, setVerdict] = useState(null); // "correct" | "incorrect" | "uncertain" | null
+  const [gradeResult, setGradeResult] = useState(null);
   const [selfAssessed, setSelfAssessed] = useState(false);
   const [score, setScore] = useState(0);
   const [attempts, setAttempts] = useState([]);
@@ -114,9 +108,11 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
 
     setSession(buildAdaptiveSession(usable, stats, { count: 10 }));
     setIndex(0);
+    setWorking("");
     setAnswer("");
     setSubmitted(false);
     setVerdict(null);
+    setGradeResult(null);
     setSelfAssessed(false);
     setScore(0);
   }
@@ -130,15 +126,15 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
   async function submit() {
     if (!q || submitted) return;
 
-    const result = isAdaptiveMultipleChoice(q)
-      ? (String(answer).trim().toUpperCase() === String(q.answer || "").trim().toUpperCase() ? "correct" : "incorrect")
-      : checkQuestionAnswer(answer, q);
-    // "uncertain" starts out ungraded - the student self-assesses against
-    // the worked solution (see confirmSelfAssessment below) instead of us
-    // asserting a verdict a plain comparison can't actually back up.
-    const correct = result === "correct";
     const marks = Number(q.marks || 1);
-    const earned = correct ? marks : 0;
+    const result = mcq
+      ? (() => {
+          const correct = String(answer).trim().toUpperCase() === String(q.answer || "").trim().toUpperCase();
+          return { status: correct ? "correct" : "incorrect", correct, marks: correct ? marks : 0, of: marks, criteria: [], needsSelfAssessment: false };
+        })()
+      : gradeAdaptiveResponse(q, { answer, working });
+    const earned = Number(result.marks || 0);
+    const correct = earned >= marks;
 
     const attempt = {
       questionId: q.id,
@@ -151,13 +147,11 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
     };
 
     setSubmitted(true);
-    setVerdict(result);
+    setVerdict(result.status);
+    setGradeResult(result);
     setLastCorrect(correct);
 
-    if (result === "uncertain") {
-      // Don't record or save anything yet - wait for the student's own
-      // self-assessment (confirmSelfAssessment), since we don't actually
-      // know whether this attempt was correct.
+    if (result.needsSelfAssessment) {
       return;
     }
 
@@ -169,13 +163,15 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
   async function confirmSelfAssessment(wasCorrect) {
     if (!q) return;
     const marks = Number(q.marks || 1);
-    const earned = wasCorrect ? marks : 0;
-    setLastCorrect(wasCorrect);
+    const earned = wasCorrect ? Number(gradeResult?.selfAssessmentCorrectMarks ?? marks) : Number(gradeResult?.marks || 0);
+    const fullyCorrect = earned >= marks;
+    setLastCorrect(fullyCorrect);
     setSelfAssessed(true);
+    setGradeResult(previous => previous ? { ...previous, marks: earned, correct: fullyCorrect, status: fullyCorrect ? "correct" : "incorrect" } : previous);
     await finalizeAttempt({
       questionId: q.id,
       skill: q.subtopic,
-      correct: wasCorrect,
+      correct: fullyCorrect,
       marks,
       marksEarned: earned,
       difficulty: q.difficulty,
@@ -254,15 +250,25 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
   async function next() {
     if (index + 1 < session.length) {
       setIndex(i => i + 1);
+      setWorking("");
       setAnswer("");
       setSubmitted(false);
       setVerdict(null);
+      setGradeResult(null);
       setSelfAssessed(false);
     } else {
       await recordCompletedSession();
       await start();
     }
   }
+
+  useEffect(() => {
+    if (!q) return undefined;
+    const frame = window.requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [index, q]);
 
   if (!manifest) return <div>Loading CSEC practice…</div>;
 
@@ -343,12 +349,28 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
               })}
             </div>
           ) : (
-            <textarea
-              value={answer}
-              onChange={e => setAnswer(e.target.value)}
-              disabled={submitted}
-              placeholder="Enter your answer"
-            />
+            <>
+              {adaptiveQuestionUsesWorking(q) && (
+                <label className="csec-adaptive-response-field">
+                  Your working
+                  <textarea
+                    value={working}
+                    onChange={e => setWorking(e.target.value)}
+                    disabled={submitted}
+                    placeholder="Show the steps you used"
+                  />
+                </label>
+              )}
+              <label className="csec-adaptive-response-field">
+                Final answer
+                <textarea
+                  value={answer}
+                  onChange={e => setAnswer(e.target.value)}
+                  disabled={submitted}
+                  placeholder="Enter your final answer"
+                />
+              </label>
+            </>
           )}
 
           {!submitted ? (
@@ -366,7 +388,21 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
             </>
           ) : (
             <>
-              <h3>{verdict === "uncertain" ? (lastCorrect ? "Marked correct" : "Marked incorrect") : (lastCorrect ? "Correct!" : "Not quite")}</h3>
+              <h3>{lastCorrect ? "Correct!" : Number(gradeResult?.marks || 0) > 0 ? `Partial credit: ${gradeResult.marks}/${q.marks}` : "Not quite"}</h3>
+              {gradeResult?.criteria?.length > 0 && (
+                <div className="csec-adaptive-mark-breakdown">
+                  <strong>Mark breakdown</strong>
+                  <ul>
+                    {gradeResult.criteria.map((criterion, criterionIndex) => (
+                      <li key={`${criterion.code || "mark"}-${criterionIndex}`} className={criterion.awarded ? "is-earned" : "is-missed"}>
+                        <span>{criterion.code || `Mark ${criterionIndex + 1}`}</span>
+                        <span>{criterion.description || criterion.why || "Marking criterion"}</span>
+                        <b>{criterion.marks || 0}/{criterion.of || 0}</b>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
               {mcq && !lastCorrect && selectedMcqOption?.misconception?.remediation_hint && (
                 <p className="adaptive-mcq-review"><strong>Review point:</strong> {selectedMcqOption.misconception.remediation_hint}</p>
               )}

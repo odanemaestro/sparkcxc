@@ -889,3 +889,17 @@
   border-color:rgba(255,255,255,.12);
 }
 /* SPARK CXC MARKING V5.3.2 REVIEW/POLISH END */
+
+
+/* SPARK V5.3.4B: straightedge alignment readout */
+.paper2-straightedge-readout {
+  display: inline-block;
+  padding: 2px 7px;
+  border: 1px solid color-mix(in srgb, currentColor 24%, transparent);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.paper2-straightedge-readout.horizontal,
+.paper2-straightedge-readout.vertical {
+  font-weight: 800;
+}
