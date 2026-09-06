@@ -13,14 +13,19 @@ import {
 } from "./paper2CxcGrader";
 import { isPaper2PartComplete } from "./paper2RichGrader";
 import {
-  CSEC_2027_MODULE1_DURATION_SECONDS,
-  CSEC_2027_MODULE1_MARKS,
+  CSEC_2027_MODULES,
   CSEC_2027_RESULTS_KEY,
   csec2027ActiveKey,
+  legacyCsec2027Module1ActiveKey,
 } from "./csec2027Data";
 import "./practiceExam.css";
 
 const SYMBOLS = ["√", "π", "°", "×", "÷", "≤", "≥", "≠", "²", "³", "θ", "≈", "(", ")"];
+const PROFILE_LABELS = {
+  CK: "Conceptual Knowledge (CK)",
+  AK: "Algorithmic Knowledge (AK)",
+  R: "Reasoning (R)",
+};
 
 function readJson(key, fallback) {
   try {
@@ -37,15 +42,19 @@ function writeJson(key, value) {
 
 function formatClock(seconds) {
   const safe = Math.max(0, Number(seconds) || 0);
-  const mins = Math.floor(safe / 60);
+  const hours = Math.floor(safe / 3600);
+  const mins = Math.floor((safe % 3600) / 60);
   const secs = safe % 60;
+  if (hours) return `${String(hours).padStart(2, "0")}:${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
   return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
 }
 
 function formatDuration(seconds) {
   const safe = Math.max(0, Number(seconds) || 0);
-  const mins = Math.floor(safe / 60);
+  const hours = Math.floor(safe / 3600);
+  const mins = Math.floor((safe % 3600) / 60);
   const secs = safe % 60;
+  if (hours) return `${hours} h ${mins} min`;
   return secs ? `${mins} min ${secs} sec` : `${mins} min`;
 }
 
@@ -85,12 +94,17 @@ function answeredPartCount(paper, answers) {
   ), 0);
 }
 
-export function calculateCsec2027ModuleMark(answers = {}, questions = []) {
+function emptyProfile(paper) {
+  return Object.fromEntries(Object.entries(paper?.profile || {}).map(([key, value]) => [key, { marks: 0, of: Number(value || 0) }]));
+}
+
+export function calculateCsec2027ModuleMark(answers = {}, questions = [], paperProfile = {}) {
   let score = 0;
   let answeredParts = 0;
   let correctParts = 0;
   let totalParts = 0;
   const perQuestion = {};
+  const profile = Object.fromEntries(Object.entries(paperProfile || {}).map(([key, value]) => [key, { marks: 0, of: Number(value || 0) }]));
 
   for (const question of questions) {
     const earlier = {};
@@ -106,6 +120,19 @@ export function calculateCsec2027ModuleMark(answers = {}, questions = []) {
       const earned = Number(result.marks || 0);
       score += earned;
       questionScore += earned;
+
+      for (const criterion of result.criteria || []) {
+        const category = criterion.profile;
+        if (category && profile[category]) {
+          profile[category].marks += Number(criterion.marks || 0);
+          continue;
+        }
+        for (const cell of criterion.cells || []) {
+          if (!cell?.profile || !profile[cell.profile]) continue;
+          profile[cell.profile].marks += Number(cell.marks || 0);
+        }
+      }
+
       const state = {
         value: result.value ?? null,
         correct: result.canonicalCorrect !== undefined ? result.canonicalCorrect : result.correct,
@@ -117,15 +144,16 @@ export function calculateCsec2027ModuleMark(answers = {}, questions = []) {
     perQuestion[question.question_id] = { score: questionScore, marks: Number(question.marks || 0), parts: partResults };
   }
 
-  const totalMarks = questions.reduce((sum, question) => sum + Number(question.marks || 0), 0) || CSEC_2027_MODULE1_MARKS;
+  const totalMarks = questions.reduce((sum, question) => sum + Number(question.marks || 0), 0) || 0;
   return {
     score,
     maxScore: totalMarks,
-    percent: Math.round((score / totalMarks) * 100),
+    percent: totalMarks ? Math.round((score / totalMarks) * 100) : 0,
     answeredParts,
     correctParts,
     totalParts,
     perQuestion,
+    profile,
   };
 }
 
@@ -138,13 +166,57 @@ function isQuestionComplete(question, answers) {
   });
 }
 
+function modeTitle(paper) {
+  return paper.scope === "full" ? "Full Paper 2" : `Module ${paper.module}`;
+}
+
+function submitLabel(paper) {
+  return paper.scope === "full" ? "Submit Paper 2" : `Submit Module ${paper.module}`;
+}
+
+function instructionQuestionLabel(paper) {
+  return paper.scope === "full" ? "all nine questions" : "all three questions";
+}
+
+function navSections(paper) {
+  const groups = [];
+  for (const question of paper.questions || []) {
+    let group = groups.find(item => item.module === Number(question.module));
+    if (!group) {
+      const info = CSEC_2027_MODULES[Number(question.module)] || {};
+      group = { module: Number(question.module), info, questions: [] };
+      groups.push(group);
+    }
+    group.questions.push(question);
+  }
+  return groups;
+}
+
+function ProfileStrip({ profile, className = "paper2027-profile-strip" }) {
+  return (
+    <div className={className} aria-label="Assessment profile">
+      {Object.entries(profile || {}).map(([key, value]) => (
+        <span key={key}><b>{PROFILE_LABELS[key] || key}</b><strong>{typeof value === "object" ? `${value.marks}/${value.of}` : value}</strong></span>
+      ))}
+    </div>
+  );
+}
+
+function RichReview({ part, response }) {
+  const type = part?.responseSchema?.type;
+  if (!type || !["construction", "construction_triangle", "graph"].includes(type)) return null;
+  return <Paper2ResponseInput part={part} value={response} readOnly />;
+}
+
 export default function Paper2027ModuleExam({ paper, onExit, startFresh = false }) {
-  const activeKey = csec2027ActiveKey(paper.letter);
+  const durationSeconds = Number(paper.durationSeconds || 0);
+  const questionCount = paper.questions.length;
+  const activeKey = csec2027ActiveKey(paper.letter, paper.modeKey);
   const [answers, setAnswers] = useState({});
   const [flags, setFlags] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [deadline, setDeadline] = useState(null);
-  const [remaining, setRemaining] = useState(CSEC_2027_MODULE1_DURATION_SECONDS);
+  const [remaining, setRemaining] = useState(durationSeconds);
   const [started, setStarted] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [timedOut, setTimedOut] = useState(false);
@@ -161,14 +233,15 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false 
       localStorage.removeItem(activeKey);
       return;
     }
-    const saved = readJson(activeKey, null);
-    if (!saved || saved.paperId !== paper.paper_id) return;
+    let saved = readJson(activeKey, null);
+    if (!saved && paper.modeKey === "module1") saved = readJson(legacyCsec2027Module1ActiveKey(paper.letter), null);
+    if (!saved || (saved.paperId !== paper.paper_id && saved.paperId !== paper.sourcePaperId)) return;
     setAnswers(saved.answers || {});
     setFlags(saved.flags || []);
-    setCurrentIndex(Math.min(2, Math.max(0, Number(saved.currentIndex || 0))));
-    setDeadline(saved.deadline || Date.now() + CSEC_2027_MODULE1_DURATION_SECONDS * 1000);
+    setCurrentIndex(Math.min(questionCount - 1, Math.max(0, Number(saved.currentIndex || 0))));
+    setDeadline(saved.deadline || Date.now() + durationSeconds * 1000);
     setStarted(true);
-  }, [activeKey, paper.paper_id, startFresh]);
+  }, [activeKey, durationSeconds, paper.letter, paper.modeKey, paper.paper_id, paper.sourcePaperId, questionCount, startFresh]);
 
   useEffect(() => {
     if (!started || submitted) return undefined;
@@ -214,44 +287,49 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false 
   const partsAnswered = answeredPartCount(paper, answers);
   const partsTotal = totalPartCount(paper);
   const progress = partsTotal ? Math.round((partsAnswered / partsTotal) * 100) : 0;
+  const sections = useMemo(() => navSections(paper), [paper]);
 
   const finalize = useCallback((wasTimedOut = false) => {
     if (submittedRef.current) return;
     submittedRef.current = true;
-    const grade = calculateCsec2027ModuleMark(answers, paper.questions);
+    const grade = calculateCsec2027ModuleMark(answers, paper.questions, paper.profile);
     const usedSeconds = wasTimedOut
-      ? CSEC_2027_MODULE1_DURATION_SECONDS
-      : Math.min(CSEC_2027_MODULE1_DURATION_SECONDS, Math.max(0, CSEC_2027_MODULE1_DURATION_SECONDS - remaining));
+      ? durationSeconds
+      : Math.min(durationSeconds, Math.max(0, durationSeconds - remaining));
     const record = {
       id: `${paper.paper_id}-${Date.now()}`,
       paperId: paper.paper_id,
+      sourcePaperId: paper.sourcePaperId,
       paperLetter: paper.letter,
-      module: 1,
+      modeKey: paper.modeKey,
+      module: paper.module,
+      scope: paper.scope,
       completedAt: new Date().toISOString(),
       usedSeconds,
       score: grade.score,
       maxScore: grade.maxScore,
       percent: grade.percent,
+      profile: grade.profile,
       completedCount: completeIds.length,
       timedOut: wasTimedOut,
     };
     const results = readJson(CSEC_2027_RESULTS_KEY, []);
-    writeJson(CSEC_2027_RESULTS_KEY, [record, ...results].slice(0, 30));
+    writeJson(CSEC_2027_RESULTS_KEY, [record, ...results].slice(0, 60));
     localStorage.removeItem(activeKey);
     setTimedOut(wasTimedOut);
     setSubmitted(true);
     setShowSubmit(false);
     setReviewIndex(0);
-  }, [activeKey, answers, completeIds.length, paper.letter, paper.paper_id, paper.questions, remaining]);
+  }, [activeKey, answers, completeIds.length, durationSeconds, paper, remaining]);
 
   useEffect(() => {
     if (started && remaining === 0 && !submitted) finalize(true);
   }, [started, remaining, submitted, finalize]);
 
   function beginPaper() {
-    const nextDeadline = Date.now() + CSEC_2027_MODULE1_DURATION_SECONDS * 1000;
+    const nextDeadline = Date.now() + durationSeconds * 1000;
     setDeadline(nextDeadline);
-    setRemaining(CSEC_2027_MODULE1_DURATION_SECONDS);
+    setRemaining(durationSeconds);
     setStarted(true);
   }
 
@@ -289,7 +367,7 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false 
   }
 
   function goToQuestion(index) {
-    setCurrentIndex(index);
+    setCurrentIndex(Math.min(questionCount - 1, Math.max(0, index)));
     setShowNavigator(false);
   }
 
@@ -300,36 +378,34 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false 
   }
 
   if (!started && !submitted) {
+    const moduleInfo = paper.moduleInfo;
     return (
       <main className="paper-start-shell paper2-start-shell paper2027-start-shell">
         <button className="paper-text-button" type="button" onClick={onExit}>← 2027 Syllabus Practice</button>
         <section className="paper-start-card paper2-start-card paper2027-start-card">
           <div className="paper2027-badge">2027 syllabus</div>
-          <div className="paper-start-kicker">CSEC Mathematics · Module 1</div>
+          <div className="paper-start-kicker">CSEC Mathematics · {modeTitle(paper)}</div>
           <h1>Practice Paper {paper.letter}</h1>
-          <p className="paper2-start-sub">Three compulsory structured questions built for the revised examination format.</p>
+          <p className="paper2-start-sub">{paper.scope === "full" ? "Nine compulsory structured questions across all three modules." : `Three compulsory structured questions from ${moduleInfo?.title || modeTitle(paper)}.`}</p>
           <div className="paper-start-rule" />
           <div className="paper-start-meta paper2-start-meta">
-            <div><span>Time</span><strong>50 minutes</strong></div>
-            <div><span>Questions</span><strong>3 compulsory</strong></div>
-            <div><span>Marks</span><strong>30</strong></div>
-            <div><span>Module</span><strong>Fundamentals</strong></div>
+            <div><span>Time</span><strong>{formatDuration(durationSeconds)}</strong></div>
+            <div><span>Questions</span><strong>{questionCount} compulsory</strong></div>
+            <div><span>Marks</span><strong>{paper.totalMarks}</strong></div>
+            <div><span>{paper.scope === "full" ? "Coverage" : "Module"}</span><strong>{paper.scope === "full" ? "Modules 1–3" : moduleInfo?.shortTitle}</strong></div>
           </div>
-          <div className="paper2027-profile-strip" aria-label="Assessment profile">
-                        <span><b>Conceptual Knowledge (CK)</b><strong>9</strong></span>
-            <span><b>Algorithmic Knowledge (AK)</b><strong>12</strong></span>
-            <span><b>Reasoning (R)</b><strong>9</strong></span>
-          </div>
+          <ProfileStrip profile={paper.profile} />
           <div className="paper2-instructions">
             <h2>Instructions</h2>
             <ul>
-              <li>Answer all three questions.</li>
+              <li>Answer {instructionQuestionLabel(paper)}.</li>
               <li>Show all working clearly. Method and reasoning marks are awarded from the steps you show.</li>
               <li>Give non-exact numerical answers to 3 significant figures, or angles to 1 decimal place, unless the question states otherwise.</li>
-              <li>Question 2 is the compulsory Module 1 investigation.</li>
+              {paper.scope === "full" || paper.module === 1 ? <li>Question 2 is the compulsory Module 1 investigation.</li> : null}
+              <li>Use the graph and construction workspaces where the question requires them.</li>
             </ul>
           </div>
-          <div className="paper2027-source-note">SPARK 2027 syllabus practice · Module 1 only. Papers A, B and C currently cover the completed 30-mark Module 1 section.</div>
+          <div className="paper2027-source-note">Practice Papers A, B and C now contain all nine questions in the revised 2027 Paper 2 structure. Module practice uses the same authored questions from the selected full paper.</div>
           <div className="paper2-start-actions paper2027-start-actions">
             <button type="button" className="practice-secondary" onClick={() => setShowFormula(true)}>View formula sheet</button>
             <button type="button" className="practice-primary" onClick={beginPaper}>{startFresh ? "Start Paper" : "Begin Paper"}</button>
@@ -341,30 +417,32 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false 
   }
 
   if (submitted) {
-    const grade = calculateCsec2027ModuleMark(answers, paper.questions);
+    const grade = calculateCsec2027ModuleMark(answers, paper.questions, paper.profile);
     const reviewQuestion = paper.questions[reviewIndex];
     const questionGrade = grade.perQuestion[reviewQuestion.question_id];
     return (
       <main className="paper-results-shell paper2-results-shell paper2027-results-shell">
         <section className="paper-score-hero paper2-score-hero">
           <div>
-            <div className="paper-result-kicker">2027 Module 1 submitted</div>
+            <div className="paper-result-kicker">2027 {modeTitle(paper)} submitted</div>
             <h1>{grade.score}<span>/{grade.maxScore}</span></h1>
-            <p>{timedOut ? "Time expired and SPARK submitted your paper." : `You used ${formatDuration(CSEC_2027_MODULE1_DURATION_SECONDS - remaining)}.`}</p>
+            <p>{timedOut ? "Time expired and SPARK submitted your paper." : `You used ${formatDuration(durationSeconds - remaining)}.`}</p>
           </div>
           <div className="paper-score-percent"><strong>{grade.percent}%</strong><span>Practice Paper {paper.letter}</span></div>
         </section>
 
-        <section className="paper2027-result-summary">
+        <ProfileStrip profile={Object.keys(grade.profile || {}).length ? grade.profile : emptyProfile(paper)} className="paper2027-result-profile" />
+
+        <section className={`paper2027-result-summary ${paper.scope === "full" ? "paper2027-result-summary-full" : ""}`}>
           {paper.questions.map(question => {
             const result = grade.perQuestion[question.question_id];
-            return <div key={question.question_id}><span>Question {question.question_number}</span><strong>{result.score}/{question.marks}</strong><small>{question.question_number === 2 ? "Investigation" : question.topic}</small></div>;
+            return <div key={question.question_id}><span>Module {question.module} · Question {question.question_number}</span><strong>{result.score}/{question.marks}</strong><small>{question.topic}</small></div>;
           })}
         </section>
 
         <section className="paper-review-shell paper2-review-shell">
           <div className="paper2-review-head">
-            <div><span>Module 1 · Question {reviewQuestion.question_number}</span><h2>{reviewQuestion.topic}</h2></div>
+            <div><span>Module {reviewQuestion.module} · Question {reviewQuestion.question_number}</span><h2>{reviewQuestion.topic}</h2></div>
             <strong>{questionGrade.score}/{reviewQuestion.marks} marks</strong>
           </div>
           {reviewQuestion.stem && <MathText as="p" className="paper2-stem">{reviewQuestion.stem}</MathText>}
@@ -378,6 +456,7 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false 
                   <div className="paper2-review-part-head"><strong>{part.label}</strong><span>{result.marks}/{part.marks} marks</span></div>
                   <MathText as="p">{part.prompt}</MathText>
                   <QuestionDiagram diagram={part.diagram} />
+                  <RichReview part={part} response={response} />
                   <div className="paper2-your-response"><span>Your response</span><div>{paper2ResponseSummary(response, part)}</div></div>
                   {working && <div className="paper2-your-response"><span>Your working</span><div>{working}</div></div>}
                   {(result.criteria || []).length > 0 && (
@@ -398,7 +477,7 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false 
           <div className="paper2-review-nav paper2027-review-nav">
             <button type="button" disabled={reviewIndex === 0} onClick={() => setReviewIndex(index => Math.max(0, index - 1))}>Previous</button>
             <div className="paper-review-number-group">{paper.questions.map((question, index) => <button type="button" key={question.question_id} className={`${index === reviewIndex ? "active " : ""}${grade.perQuestion[question.question_id].score === question.marks ? "marked" : ""}`} onClick={() => setReviewIndex(index)}>{question.question_number}</button>)}</div>
-            <button type="button" disabled={reviewIndex === 2} onClick={() => setReviewIndex(index => Math.min(2, index + 1))}>Next</button>
+            <button type="button" disabled={reviewIndex === questionCount - 1} onClick={() => setReviewIndex(index => Math.min(questionCount - 1, index + 1))}>Next</button>
           </div>
         </section>
 
@@ -409,18 +488,19 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false 
     );
   }
 
+  const currentPosition = currentIndex + 1;
   return (
     <main className="paper-exam-shell paper2-exam-shell paper2027-exam-shell">
       <header className="paper-exam-header paper2-exam-header">
         <div className="paper2-brand-wrap">
           <button type="button" className="paper2-back-control" onClick={onExit}>← Practice</button>
-          <div className="paper-exam-brand"><strong>SPARK</strong><div><span>CSEC Mathematics · 2027</span><b>Module 1 · Paper {paper.letter}</b></div></div>
+          <div className="paper-exam-brand"><strong>SPARK</strong><div><span>CSEC Mathematics · 2027</span><b>{modeTitle(paper)} · Paper {paper.letter}</b></div></div>
         </div>
         <div className={`paper-timer ${remaining <= 300 ? "is-low" : ""}`}><span>Time remaining</span><strong>{formatClock(remaining)}</strong></div>
         <div className="paper2-header-actions">
           <button type="button" className="paper2-formula-control" onClick={() => setShowFormula(true)}>Formula sheet</button>
-          <button type="button" className="paper-nav-toggle" aria-expanded={showNavigator} onClick={() => setShowNavigator(true)}>Questions {currentIndex + 1}/3</button>
-          <button type="button" className="paper-submit-top" onClick={() => setShowSubmit(true)}>Submit module</button>
+          <button type="button" className="paper-nav-toggle" aria-expanded={showNavigator} onClick={() => setShowNavigator(true)}>Questions {currentPosition}/{questionCount}</button>
+          <button type="button" className="paper-submit-top" onClick={() => setShowSubmit(true)}>{submitLabel(paper)}</button>
         </div>
       </header>
       <div className="paper-progress-line"><span style={{ width: `${progress}%` }} /></div>
@@ -428,7 +508,7 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false 
       <div className="paper-exam-layout paper2-exam-layout">
         <section className="paper-question-card paper2-question-card">
           <div className="paper-question-topline">
-            <div><span>Module 1</span><strong>Question {current.question_number} of 3</strong></div>
+            <div><span>Module {current.module}</span><strong>Question {current.question_number} · {currentPosition} of {questionCount}</strong></div>
             <button type="button" className={`paper-flag ${flaggedSet.has(current.question_id) ? "is-flagged" : ""}`} onClick={toggleFlag}>{flaggedSet.has(current.question_id) ? "Flagged" : "Flag for review"}</button>
           </div>
           <div className="paper2-question-meta paper2027-question-meta">
@@ -513,43 +593,60 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false 
 
           <div className="paper2-auto-save"><span>✓</span> Answers save automatically on this device.</div>
           <div className="paper-question-actions paper2027-question-actions">
-            <button type="button" className="practice-secondary" disabled={currentIndex === 0} onClick={() => goToQuestion(Math.max(0, currentIndex - 1))}>Previous</button>
+            <button type="button" className="practice-secondary" disabled={currentIndex === 0} onClick={() => goToQuestion(currentIndex - 1)}>Previous</button>
             <span className="paper-answer-state">{isQuestionComplete(current, answers) ? "Question complete" : "Complete all parts when you can"}</span>
-            <button type="button" className="practice-primary" disabled={currentIndex === 2} onClick={() => goToQuestion(Math.min(2, currentIndex + 1))}>Next question</button>
+            <button type="button" className="practice-primary" disabled={currentIndex === questionCount - 1} onClick={() => goToQuestion(currentIndex + 1)}>Next question</button>
           </div>
         </section>
 
         <aside className="paper-navigator paper2-navigator paper-navigator-desktop">
-          <div className="paper-navigator-title"><strong>Module 1</strong><span>{completeIds.length}/3 fully answered</span></div>
-          <div className="paper2-nav-section"><div className="paper2-nav-section-head"><span>Fundamentals</span><b>30 marks</b></div><div className="paper-nav-grid paper2-nav-grid paper2027-nav-grid">{paper.questions.map((question, index) => <button type="button" key={question.question_id} className={`${index === currentIndex ? "current " : ""}${completeSet.has(question.question_id) ? "answered " : ""}${flaggedSet.has(question.question_id) ? "flagged" : ""}`} onClick={() => goToQuestion(index)}>{question.question_number}</button>)}</div></div>
-          <div className="paper2027-nav-profile" aria-label="Assessment profile">
-            <span><b>Conceptual Knowledge (CK)</b><strong>9</strong></span>
-            <span><b>Algorithmic Knowledge (AK)</b><strong>12</strong></span>
-            <span><b>Reasoning (R)</b><strong>9</strong></span>
-          </div>
-          <button type="button" className="paper-submit-side" onClick={() => setShowSubmit(true)}>Submit Module 1</button>
+          <div className="paper-navigator-title"><strong>{modeTitle(paper)}</strong><span>{completeIds.length}/{questionCount} fully answered</span></div>
+          {sections.map(section => (
+            <div className="paper2-nav-section" key={section.module}>
+              <div className="paper2-nav-section-head"><span>Module {section.module} · {section.info.shortTitle}</span><b>30 marks</b></div>
+              <div className="paper-nav-grid paper2-nav-grid paper2027-nav-grid">
+                {section.questions.map(question => {
+                  const index = paper.questions.findIndex(item => item.question_id === question.question_id);
+                  return <button type="button" key={question.question_id} className={`${index === currentIndex ? "current " : ""}${completeSet.has(question.question_id) ? "answered " : ""}${flaggedSet.has(question.question_id) ? "flagged" : ""}`} onClick={() => goToQuestion(index)}>{question.question_number}</button>;
+                })}
+              </div>
+            </div>
+          ))}
+          <ProfileStrip profile={paper.profile} className="paper2027-nav-profile" />
+          <button type="button" className="paper-submit-side" onClick={() => setShowSubmit(true)}>{submitLabel(paper)}</button>
         </aside>
       </div>
 
       {showNavigator && (
         <div className="paper-nav-drawer-backdrop" role="presentation" onMouseDown={() => setShowNavigator(false)}>
           <section className="paper-nav-drawer" role="dialog" aria-modal="true" aria-label="Question navigator" onMouseDown={event => event.stopPropagation()}>
-            <div className="paper-nav-drawer-head"><div><span>2027 Module 1</span><strong>Questions</strong></div><button type="button" onClick={() => setShowNavigator(false)} aria-label="Close question navigator">×</button></div>
-            <div className="paper-nav-grid paper2-nav-grid paper2027-drawer-grid">{paper.questions.map((question, index) => <button type="button" key={question.question_id} className={`${index === currentIndex ? "current " : ""}${completeSet.has(question.question_id) ? "answered " : ""}${flaggedSet.has(question.question_id) ? "flagged" : ""}`} onClick={() => goToQuestion(index)}>{question.question_number}</button>)}</div>
-            <div className="paper-nav-drawer-status"><span>{completeIds.length} complete</span><span>{3 - completeIds.length} remaining</span></div>
-            <button type="button" className="paper-drawer-submit" onClick={() => { setShowNavigator(false); setShowSubmit(true); }}>Submit Module 1</button>
+            <div className="paper-nav-drawer-head"><div><span>2027 {modeTitle(paper)}</span><strong>Questions</strong></div><button type="button" onClick={() => setShowNavigator(false)} aria-label="Close question navigator">×</button></div>
+            {sections.map(section => (
+              <div className="paper2027-drawer-section" key={section.module}>
+                <div className="paper2-nav-section-head"><span>Module {section.module} · {section.info.shortTitle}</span><b>30 marks</b></div>
+                <div className="paper-nav-grid paper2-nav-grid paper2027-drawer-grid">
+                  {section.questions.map(question => {
+                    const index = paper.questions.findIndex(item => item.question_id === question.question_id);
+                    return <button type="button" key={question.question_id} className={`${index === currentIndex ? "current " : ""}${completeSet.has(question.question_id) ? "answered " : ""}${flaggedSet.has(question.question_id) ? "flagged" : ""}`} onClick={() => goToQuestion(index)}>{question.question_number}</button>;
+                  })}
+                </div>
+              </div>
+            ))}
+            <div className="paper-nav-drawer-status"><span>{completeIds.length} complete</span><span>{questionCount - completeIds.length} remaining</span></div>
+            <button type="button" className="paper-drawer-submit" onClick={() => { setShowNavigator(false); setShowSubmit(true); }}>{submitLabel(paper)}</button>
           </section>
         </div>
       )}
 
       {showFormula && <FormulaModal onClose={() => setShowFormula(false)} />}
 
-      {showSubmit && (        <div className="paper-modal-backdrop" role="presentation" onMouseDown={() => setShowSubmit(false)}>
-          <section className="paper-submit-modal" role="dialog" aria-modal="true" aria-label="Submit Module 1" onMouseDown={event => event.stopPropagation()}>
+      {showSubmit && (
+        <div className="paper-modal-backdrop" role="presentation" onMouseDown={() => setShowSubmit(false)}>
+          <section className="paper-submit-modal" role="dialog" aria-modal="true" aria-label={submitLabel(paper)} onMouseDown={event => event.stopPropagation()}>
             <div className="paper-submit-icon">✓</div>
-            <h2>Submit Module 1?</h2>
-            <p>You have fully answered {completeIds.length} of 3 questions. Once submitted, your responses are marked and this attempt cannot be changed.</p>
-            <div className="paper-modal-actions"><button type="button" className="practice-secondary" onClick={() => setShowSubmit(false)}>Keep working</button><button type="button" className="practice-primary" onClick={() => finalize(false)}>Submit module</button></div>
+            <h2>{submitLabel(paper)}?</h2>
+            <p>You have fully answered {completeIds.length} of {questionCount} questions. Once submitted, your responses are marked and this attempt cannot be changed.</p>
+            <div className="paper-modal-actions"><button type="button" className="practice-secondary" onClick={() => setShowSubmit(false)}>Keep working</button><button type="button" className="practice-primary" onClick={() => finalize(false)}>{submitLabel(paper)}</button></div>
           </section>
         </div>
       )}

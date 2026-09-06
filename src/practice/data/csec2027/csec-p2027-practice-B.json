@@ -2,14 +2,12 @@
  "paper_id": "spark-p2027-b",
  "title": "SPARK CSEC Mathematics - Paper 02 Practice Paper B",
  "syllabus": "CXC 05/G/SYLL 16, amended 2026, for examinations from 2027",
- "status": "PARTIAL - Section I (Module 1) only; Sections II and III to follow",
  "duration_minutes": 160,
- "marks_written": 30,
- "marks_when_complete": 90,
+ "marks": 90,
  "profile": {
-  "CK": 9,
-  "AK": 12,
-  "R": 9
+  "CK": 27,
+  "AK": 36,
+  "R": 27
  },
  "instructions": [
   "This paper consists of THREE sections: I, II and III.",
@@ -25,8 +23,11 @@
   "Geometry set"
  ],
  "response_types": {
-  "typed": 15,
-  "table": 1
+  "typed": 43,
+  "table": 2,
+  "written": 5,
+  "construction": 1,
+  "graph": 2
  },
  "questions": [
   {
@@ -756,6 +757,1611 @@
        ]
       }
      ]
+    }
+   ]
+  },
+  {
+   "question_id": "p2027b-q4",
+   "question_number": 4,
+   "paper": "SPARK Practice Paper B (2027 format)",
+   "section": "II",
+   "module": 2,
+   "module_title": "Module 2 - Intermediate Secondary-Level Mathematics",
+   "topic": "Statistics and matrices",
+   "marks": 9,
+   "profile": {
+    "CK": 4,
+    "AK": 4,
+    "R": 1
+   },
+   "stem": "",
+   "parts": [
+    {
+     "id": "a1",
+     "label": "(a) (i)",
+     "prompt": "The bar chart below shows the number of tickets sold for a school concert on each of 6 days.\n\nDetermine the range of the number of tickets sold over the six days.",
+     "marks": 1,
+     "answer": "70",
+     "solution": "The greatest of the six values is 90 and the least is 20, so the range is 90 - 20 = 70.",
+     "suffix": " tickets",
+     "tolerance": 1e-06,
+     "diagram": {
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 338 280\" width=\"100%\" style=\"max-width:348px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" font-family=\"Georgia,serif\" font-size=\"13\"><path d=\"M58 230.0 L322 230.0\" stroke-width=\"0.9\" stroke-opacity=\"0.55\"/><text x=\"50.0\" y=\"230.0\" text-anchor=\"end\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">0</text><path d=\"M58 209.0 L322 209.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M58 188.0 L322 188.0\" stroke-width=\"0.9\" stroke-opacity=\"0.55\"/><text x=\"50.0\" y=\"188.0\" text-anchor=\"end\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">20</text><path d=\"M58 167.0 L322 167.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M58 146.0 L322 146.0\" stroke-width=\"0.9\" stroke-opacity=\"0.55\"/><text x=\"50.0\" y=\"146.0\" text-anchor=\"end\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">40</text><path d=\"M58 125.0 L322 125.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M58 104.0 L322 104.0\" stroke-width=\"0.9\" stroke-opacity=\"0.55\"/><text x=\"50.0\" y=\"104.0\" text-anchor=\"end\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">60</text><path d=\"M58 83.0 L322 83.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M58 62.0 L322 62.0\" stroke-width=\"0.9\" stroke-opacity=\"0.55\"/><text x=\"50.0\" y=\"62.0\" text-anchor=\"end\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">80</text><path d=\"M58 41.0 L322 41.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M58 20.0 L322 20.0\" stroke-width=\"0.9\" stroke-opacity=\"0.55\"/><text x=\"50.0\" y=\"20.0\" text-anchor=\"end\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">100</text><path d=\"M58 20 L58 230.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M102 20 L102 230.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M146 20 L146 230.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M190 20 L190 230.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M234 20 L234 230.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M278 20 L278 230.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M322 20 L322 230.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M67.0 230.0 L67.0 167.0 L93.0 167.0 L93.0 230.0 Z\" fill=\"currentColor\" fill-opacity=\"0.8\" stroke-width=\"1.2\"/><text x=\"80.0\" y=\"246.0\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"10\">Day 1</text><path d=\"M111.0 230.0 L111.0 83.0 L137.0 83.0 L137.0 230.0 Z\" fill=\"currentColor\" fill-opacity=\"0.8\" stroke-width=\"1.2\"/><text x=\"124.0\" y=\"246.0\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"10\">Day 2</text><path d=\"M155.0 230.0 L155.0 188.0 L181.0 188.0 L181.0 230.0 Z\" fill=\"currentColor\" fill-opacity=\"0.8\" stroke-width=\"1.2\"/><text x=\"168.0\" y=\"246.0\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"10\">Day 3</text><path d=\"M199.0 230.0 L199.0 41.0 L225.0 41.0 L225.0 230.0 Z\" fill=\"currentColor\" fill-opacity=\"0.8\" stroke-width=\"1.2\"/><text x=\"212.0\" y=\"246.0\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"10\">Day 4</text><path d=\"M243.0 230.0 L243.0 125.0 L269.0 125.0 L269.0 230.0 Z\" fill=\"currentColor\" fill-opacity=\"0.8\" stroke-width=\"1.2\"/><text x=\"256.0\" y=\"246.0\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"10\">Day 5</text><path d=\"M287.0 230.0 L287.0 146.0 L313.0 146.0 L313.0 230.0 Z\" fill=\"currentColor\" fill-opacity=\"0.8\" stroke-width=\"1.2\"/><text x=\"300.0\" y=\"246.0\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"10\">Day 6</text><path d=\"M58 20 L58 230.0 L322 230.0\" stroke-width=\"1.8\"/><text x=\"190.0\" y=\"268.0\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">Day</text><text x=\"0.0\" y=\"0.0\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\" transform=\"translate(16 125.0) rotate(-90)\">Tickets sold</text></svg>",
+      "alt": "A vertical bar chart. The vertical axis is labelled Tickets sold and is scaled from 0 to 100, with numbered gridlines every 20 units and smaller gridlines every 10 units. The horizontal axis is labelled Day and carries 6 bars, labelled Day 1, Day 2, Day 3, Day 4, Day 5 and Day 6. The bars reach, in order, 30, 70, 20, 90, 50 and 40."
+     },
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the range of the number of tickets sold",
+       "check": {
+        "type": "numeric",
+        "value": 70.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    },
+    {
+     "id": "a2",
+     "label": "(a) (ii)",
+     "prompt": "Determine the median number of tickets sold over the six days.",
+     "marks": 1,
+     "answer": "45",
+     "solution": "Arranged in order, the six values are 20, 30, 40, 50, 70, 90. The median is the mean of the third and fourth of these, that is (40 + 50) divided by 2, which is 45.",
+     "suffix": " tickets",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "AK",
+       "marks": 1,
+       "description": "the median of the six values",
+       "check": {
+        "type": "numeric",
+        "value": 45.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    },
+    {
+     "id": "a3",
+     "label": "(a) (iii)",
+     "prompt": "Calculate the mean number of tickets sold over the six days.",
+     "marks": 2,
+     "answer": "50",
+     "solution": "The six values total 30 + 70 + 20 + 90 + 50 + 40 = 300. The mean is therefore 300 divided by 6, which is 50.",
+     "suffix": " tickets",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "AK",
+       "marks": 1,
+       "description": "the total of the six values, 300",
+       "check": {
+        "type": "contains",
+        "value": [
+         300.0
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "A",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the mean",
+       "check": {
+        "type": "numeric",
+        "value": 50.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M1"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "b1",
+     "label": "(b) (i)",
+     "prompt": "A sports store sells cricket bats and cricket balls. In June it sold 30 bats and 45 balls, and in July it sold 26 bats and 52 balls.\n\nWrite a 2 x 2 matrix, N, to represent this information, using the rows for June and July and the columns for bats and balls.",
+     "marks": 1,
+     "answer": "[[30, 45], [26, 52]]",
+     "solution": "The two rows are June and July and the two columns are bats and balls, so N = [[30, 45], [26, 52]].",
+     "answerType": "text",
+     "accepted": [
+      "[[30,45],[26,52]]",
+      "[[30, 45],[26, 52]]"
+     ],
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the matrix N",
+       "check": {
+        "type": "matrix",
+        "value": [
+         [
+          30.0,
+          45.0
+         ],
+         [
+          26.0,
+          52.0
+         ]
+        ],
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    },
+    {
+     "id": "b2",
+     "label": "(b) (ii)",
+     "prompt": "A cricket bat costs $250.00 and a cricket ball costs $80.00.\n\nWrite a 2 x 1 matrix, C, to represent the cost, in dollars, of one bat and of one ball.",
+     "marks": 1,
+     "answer": "[[250], [80]]",
+     "solution": "C is a column matrix with one entry for each of the two items, in the same order as the columns of N, so C = [[250], [80]].",
+     "answerType": "text",
+     "accepted": [
+      "[[250],[80]]",
+      "[[250],[80]]"
+     ],
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "AK",
+       "marks": 1,
+       "description": "the matrix C, with the correct rows and columns",
+       "check": {
+        "type": "matrix",
+        "value": [
+         [
+          250.0
+         ],
+         [
+          80.0
+         ]
+        ],
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    },
+    {
+     "id": "b3",
+     "label": "(b) (iii)",
+     "prompt": "Calculate the matrix product NC.",
+     "marks": 2,
+     "answer": "[[11100], [10660]]",
+     "solution": "NC = [[30, 45], [26, 52]][[250], [80]]. Multiplying the first row of N by the column C gives (30 x 250) + (45 x 80) = 7500 + 3600 = 11100, and the second row gives (26 x 250) + (52 x 80) = 6500 + 4160 = 10660. So NC = [[11100], [10660]].",
+     "answerType": "text",
+     "accepted": [
+      "[[11100],[10660]]",
+      "[[11100],[10660]]"
+     ],
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "AK",
+       "marks": 1,
+       "description": "multiplying each row of N by the column C",
+       "check": {
+        "type": "contains",
+        "value": [
+         7500.0,
+         3600.0
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "A",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the matrix product NC",
+       "check": {
+        "type": "matrix",
+        "value": [
+         [
+          11100.0
+         ],
+         [
+          10660.0
+         ]
+        ],
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M1"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "b4",
+     "label": "(b) (iv)",
+     "prompt": "State, giving a reason for your answer, whether the matrix product CN can be found.",
+     "marks": 1,
+     "answer": "No. CN cannot be found, because C has 1 column and N has 2 rows, so the two matrices are not conformable in that order",
+     "solution": "C is a 2 x 1 matrix and N is a 2 x 2 matrix. A product can only be found when the number of columns of the first matrix equals the number of rows of the second. C has 1 column and N has 2 rows, so CN cannot be found. (NC can be found, and is the product calculated in (b) (iii).)",
+     "responseType": "written",
+     "rubric": [
+      {
+       "id": "conformable",
+       "marks": 1,
+       "description": "says that CN cannot be found because C has 1 column and N has 2 rows",
+       "all": [
+        "not"
+       ],
+       "any": [
+        "column",
+        "row",
+        "conformable",
+        "order"
+       ],
+       "profile": "R"
+      }
+     ],
+     "answerType": "text"
+    }
+   ]
+  },
+  {
+   "question_id": "p2027b-q5",
+   "question_number": 5,
+   "paper": "SPARK Practice Paper B (2027 format)",
+   "section": "II",
+   "module": 2,
+   "module_title": "Module 2 - Intermediate Secondary-Level Mathematics",
+   "topic": "Geometric construction and trigonometry in right-angled triangles",
+   "marks": 9,
+   "profile": {
+    "CK": 1,
+    "AK": 4,
+    "R": 4
+   },
+   "stem": "",
+   "parts": [
+    {
+     "id": "a1",
+     "label": "(a) (i)",
+     "prompt": "The line AB, 10 cm long, is drawn on the construction pad.\n\nUsing only a ruler and a pair of compasses, construct the perpendicular bisector of AB. Your construction arcs must be clearly shown.",
+     "marks": 3,
+     "answer": "the perpendicular bisector of AB, with the four construction arcs left on the page",
+     "solution": "Open the compasses to more than half of AB, that is to more than 5 cm. With centre A, draw arcs above and below AB. With the SAME radius and centre B, draw two more arcs to cut them. Rule the straight line through the two points where the arcs cross: that line is the perpendicular bisector of AB. The arcs must be left on the page.",
+     "responseType": "construction",
+     "pad": {
+      "width": 560,
+      "height": 340,
+      "unitsPerCm": 40,
+      "given": [
+       {
+        "id": "A",
+        "x": 2.0,
+        "y": 4.0
+       },
+       {
+        "id": "B",
+        "x": 12.0,
+        "y": 4.0
+       }
+      ],
+      "givenSegments": [
+       [
+        "A",
+        "B"
+       ]
+      ]
+     },
+     "construction": {
+      "construction": "perpendicularBisector",
+      "args": [
+       {
+        "id": "A",
+        "x": 2.0,
+        "y": 4.0
+       },
+       {
+        "id": "B",
+        "x": 12.0,
+        "y": 4.0
+       }
+      ]
+     },
+     "answerType": "text",
+     "profile": {
+      "CK": 1,
+      "AK": 2
+     }
+    },
+    {
+     "id": "a2",
+     "label": "(a) (ii)",
+     "prompt": "Your bisector cuts AB at the point M. State, giving a reason for your answer, the length of AM.",
+     "marks": 1,
+     "answer": "AM = 5 cm, because the perpendicular bisector of AB cuts AB at its midpoint, so AM is half of AB",
+     "solution": "The perpendicular bisector of a line segment passes through the midpoint of that segment, so M is the midpoint of AB and AM = MB. AB = 10 cm, so AM is half of 10 cm, that is 5 cm.",
+     "responseType": "written",
+     "rubric": [
+      {
+       "id": "reason",
+       "marks": 1,
+       "description": "states 5 cm and says that the bisector cuts AB at its midpoint",
+       "numbers": [
+        5.0
+       ],
+       "any": [
+        "midpoint",
+        "middle",
+        "bisect",
+        "half",
+        "two equal parts"
+       ],
+       "profile": "R"
+      }
+     ],
+     "answerType": "text"
+    },
+    {
+     "id": "b1",
+     "label": "(b) (i)",
+     "prompt": "The diagram below shows a right-angled triangle KLM with sides p units, q units and r units, and angle KLM = 90°.\n\nUsing the diagram, write, in terms of q and r, an expression for sin θ.",
+     "marks": 1,
+     "answer": "q/r",
+     "solution": "θ is the angle at M. The side opposite θ is KL, of length q, and the hypotenuse is MK, of length r. So sin θ = opposite/hypotenuse = q/r.",
+     "answerType": "expression",
+     "diagram": {
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 380 280\" width=\"100%\" style=\"max-width:380px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" font-family=\"Georgia,serif\" font-size=\"13\"><path d=\"M48.0 76.9 L48.0 203.1 L332.0 203.1 Z\"/><path d=\"M48.0 189.1 L62.0 189.1 L62.0 203.1\" stroke-width=\"1.2\"/><path d=\"M300.9 189.3 A34 34 0 0 0 298.0 203.1\" stroke-width=\"1.2\" fill=\"none\"/><text x=\"304.7\" y=\"197.3\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">θ</text><text x=\"27.8\" y=\"59.0\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"13\" font-style=\"italic\">K</text><text x=\"23.3\" y=\"214.1\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"13\" font-style=\"italic\">L</text><text x=\"358.4\" y=\"209.0\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"13\" font-style=\"italic\">M</text><text x=\"28.5\" y=\"135.7\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">q units</text><text x=\"204.9\" y=\"216.4\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">p units</text><text x=\"208.3\" y=\"131.9\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">r units</text></svg>",
+      "alt": "A triangle KLM, not drawn to scale. LM is horizontal and is marked p units. KL rises vertically from L and is marked q units. The angle at L, between KL and LM, is marked as a right angle. The hypotenuse MK runs from M up to K and is marked r units. The angle at M, between LM and MK, is marked with an arc and labelled θ."
+     },
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "R",
+       "marks": 1,
+       "description": "the ratio sin θ = q/r",
+       "check": {
+        "type": "expression",
+        "value": "q/r"
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    },
+    {
+     "id": "b2",
+     "label": "(b) (ii)",
+     "prompt": "Using the result from (b) (i), show that (sin θ)/(cos θ) = q/p.",
+     "marks": 2,
+     "answer": "(sin θ)/(cos θ) = (q/r)/(p/r) = q/p",
+     "solution": "sin θ = q/r and cos θ = adjacent/hypotenuse = p/r. So (sin θ)/(cos θ) = (q/r)/(p/r). The r in the numerator and the r in the denominator cancel, leaving (sin θ)/(cos θ) = q/p.",
+     "answerType": "text",
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "R",
+       "marks": 1,
+       "description": "substituting sin θ = q/r and cos θ = p/r",
+       "check": {
+        "type": "method",
+        "any": [
+         "q/r",
+         "p/r"
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "A",
+       "profile": "AK",
+       "marks": 1,
+       "description": "cancelling r to reach q/p",
+       "check": {
+        "type": "method",
+        "any": [
+         "q/p"
+        ]
+       },
+       "field": "all",
+       "code": "A1",
+       "depends": [
+        "M1"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "b3",
+     "label": "(b) (iii)",
+     "prompt": "Given that q = 7 units and p = 24 units, calculate the size of angle θ, giving your answer correct to 1 decimal place.",
+     "marks": 2,
+     "answer": "16.3",
+     "solution": "From (b) (ii), (sin θ)/(cos θ) = tan θ = q/p = 7/24. So θ = the angle whose tangent is 7/24, which is 16.3°.",
+     "suffix": "°",
+     "tolerance": 0.051,
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "R",
+       "marks": 1,
+       "description": "using tan θ = q/p = 7/24",
+       "check": {
+        "type": "method",
+        "any": [
+         "7/24"
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "A",
+       "profile": "AK",
+       "marks": 1,
+       "description": "the size of angle θ",
+       "check": {
+        "type": "numeric",
+        "value": 16.3,
+        "dp": 1,
+        "tolerance": 0.050000001
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M1"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "question_id": "p2027b-q6",
+   "question_number": 6,
+   "paper": "SPARK Practice Paper B (2027 format)",
+   "section": "II",
+   "module": 2,
+   "module_title": "Module 2 - Intermediate Secondary-Level Mathematics",
+   "topic": "Coordinate geometry, functions and the graph of a quadratic",
+   "marks": 12,
+   "profile": {
+    "CK": 4,
+    "AK": 4,
+    "R": 4
+   },
+   "stem": "",
+   "parts": [
+    {
+     "id": "a1",
+     "label": "(a) (i)",
+     "prompt": "The line RS passes through the points R(-2, -1) and S(2, 7).\n\nDetermine the equation of the line RS.",
+     "marks": 2,
+     "answer": "y = 2x + 3",
+     "solution": "The gradient of RS is m = (7 - (-1))/(2 - (-2)), that is 8/4 = 2. Using y = mx + c with S(2, 7): 7 = 2(2) + c, so c = 3. The equation of RS is y = 2x + 3.",
+     "answerType": "equation",
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "AK",
+       "marks": 1,
+       "description": "the gradient of RS",
+       "check": {
+        "type": "method",
+        "any": [
+         "8/4",
+         "(7 - (-1))/(2 - (-2))"
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "A",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the equation of the line RS",
+       "check": {
+        "type": "equation",
+        "value": "y = 2x + 3"
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M1"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "a2",
+     "label": "(a) (ii)",
+     "prompt": "Determine the equation of the line which passes through S and which is perpendicular to the line RS.",
+     "marks": 2,
+     "answer": "y = -(1/2)x + 8",
+     "solution": "The gradient of RS is 2, so the gradient of a line perpendicular to RS is -1/2 = -1/2. Using y = mx + c with S(2, 7): 7 = (-1/2)(2) + c, so c = 8. The equation of the line is y = -(1/2)x + 8.",
+     "answerType": "equation",
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "AK",
+       "marks": 1,
+       "description": "the gradient of the perpendicular line",
+       "check": {
+        "type": "contains",
+        "value": [
+         -0.5
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "A",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the equation of the perpendicular line",
+       "check": {
+        "type": "equation",
+        "value": "y = -(1/2)x + 8"
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M1"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "b1",
+     "label": "(b) (i)",
+     "prompt": "The functions f and g are defined as\n\nf(x) = 3x - 4   and   g(x) = (3x - 1)/(x + 2), x != -2.\n\nDetermine the value of gf(3).",
+     "marks": 2,
+     "answer": "2",
+     "solution": "f(3) = 3(3) - 4 = 5, so gf(3) = g(5). Then g(5) = (3(5) - 1)/((5) + 2) = 14/7 = 2.",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "AK",
+       "marks": 1,
+       "description": "evaluating f(3) and substituting it into g",
+       "check": {
+        "type": "contains",
+        "value": [
+         5.0
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "A",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the value of gf(3)",
+       "check": {
+        "type": "numeric",
+        "value": 2.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M1"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "b2",
+     "label": "(b) (ii)",
+     "prompt": "Derive a simplified expression for g^(-1)(x).",
+     "marks": 2,
+     "answer": "(2x + 1)/(3 - x)",
+     "solution": "Let y = g(x), so y = (3x - 1)/(x + 2). Interchanging x and y gives x = (3y - 1)/(y + 2), so x(y + 2) = 3y - 1. Expanding the left-hand side, xy + 2x = 3y - 1. Collecting the terms in y on one side gives xy - 3y = -2x - 1, that is y(x - 3) = -2x - 1. Dividing by x - 3 gives g^(-1)(x) = (2x + 1)/(3 - x).",
+     "answerType": "expression",
+     "accepted": [
+      "(-2x - 1)/(x - 3)"
+     ],
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "R",
+       "marks": 1,
+       "description": "interchanging x and y and clearing the fraction",
+       "check": {
+        "type": "method",
+        "any": [
+         "x(y + 2) = 3y - 1",
+         "interchang"
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "A",
+       "profile": "R",
+       "marks": 1,
+       "description": "the correct inverse",
+       "check": {
+        "type": "expression",
+        "value": "(2x + 1)/(3 - x)",
+        "accepted": [
+         "(-2x - 1)/(x - 3)"
+        ]
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M1"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "c1",
+     "label": "(c) (i)",
+     "prompt": "The table below shows values of y = x^2 - 4x + 3 for -1 <= x <= 5.\n\nx     -1    0    1    2    3    4    5\ny      8    3    0   -1    0    3    8\n\nUsing a scale of 2 cm to represent 1 unit on the x-axis and 1 cm to represent 1 unit on the y-axis, plot the points in the table and draw the graph of y = x^2 - 4x + 3 for -1 <= x <= 5.",
+     "marks": 2,
+     "answer": "the points (-1, 8), (0, 3), (1, 0), (2, -1), (3, 0), (4, 3), (5, 8) joined by a smooth curve",
+     "solution": "Plot the seven points from the table: (-1, 8), (0, 3), (1, 0), (2, -1), (3, 0), (4, 3), (5, 8). Join them with a single smooth curve - a parabola with its lowest point at (2, -1) - and do not join them with straight line segments.",
+     "responseType": "graph",
+     "grid": {
+      "xMin": -1,
+      "xMax": 5,
+      "yMin": -2,
+      "yMax": 9,
+      "xStep": 1,
+      "yStep": 1,
+      "minorPerStep": 2,
+      "xLabel": "x",
+      "yLabel": "y",
+      "tools": [
+       "point",
+       "curve",
+       "read"
+      ]
+     },
+     "graph": {
+      "points": [
+       {
+        "x": -1,
+        "y": 8
+       },
+       {
+        "x": 0,
+        "y": 3
+       },
+       {
+        "x": 1,
+        "y": 0
+       },
+       {
+        "x": 2,
+        "y": -1
+       },
+       {
+        "x": 3,
+        "y": 0
+       },
+       {
+        "x": 4,
+        "y": 3
+       },
+       {
+        "x": 5,
+        "y": 8
+       }
+      ],
+      "tolerance": 0.25,
+      "pointMarks": 1,
+      "curve": {
+       "expression": "(1)*x*x + (-4)*x + (3)",
+       "from": -1,
+       "to": 5,
+       "tolerance": 0.35
+      },
+      "curveMarks": 1
+     },
+     "answerType": "text",
+     "profile": {
+      "AK": 1,
+      "CK": 1
+     }
+    },
+    {
+     "id": "c2",
+     "label": "(c) (ii)",
+     "prompt": "Using your graph, state the coordinates of the minimum point of the function",
+     "marks": 1,
+     "answer": "(2, -1)",
+     "solution": "The lowest point of the curve drawn is at (2, -1), so the minimum point is (2, -1).",
+     "answerType": "coordinate",
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "R",
+       "marks": 1,
+       "description": "the coordinates of the minimum point",
+       "check": {
+        "type": "coordinate",
+        "value": [
+         2.0,
+         -1.0
+        ],
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    },
+    {
+     "id": "c3",
+     "label": "(c) (iii)",
+     "prompt": "Using your graph, state the solutions of the equation x^2 - 4x + 3 = 0.",
+     "marks": 1,
+     "answer": "x = 1 and x = 3",
+     "solution": "The solutions are the values of x where the curve cuts the x-axis. From the graph, these are x = 1 and x = 3.",
+     "answerType": "text",
+     "accepted": [
+      "1, 3"
+     ],
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "R",
+       "marks": 1,
+       "description": "the solutions read from the candidate's graph",
+       "check": {
+        "type": "set",
+        "value": [
+         1.0,
+         3.0
+        ],
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "question_id": "p2027b-q7",
+   "question_number": 7,
+   "paper": "SPARK Practice Paper B (2027 format)",
+   "section": "III",
+   "module": 3,
+   "module_title": "Module 3 - Higher Concepts in Secondary-Level Mathematics",
+   "topic": "Vectors and matrices",
+   "marks": 9,
+   "profile": {
+    "CK": 3,
+    "AK": 4,
+    "R": 2
+   },
+   "stem": "",
+   "parts": [
+    {
+     "id": "a1",
+     "label": "(a) (i)",
+     "prompt": "The diagram below shows the points A, B, C and D on the x-y plane, where O is the origin.\n\nWrite, as a column vector, the position vector OA.",
+     "marks": 1,
+     "answer": "[[-4], [-1]]",
+     "solution": "A is the point (-4, -1), so its position vector is OA = [[-4], [-1]].",
+     "answerType": "text",
+     "accepted": [
+      "[[-4],[-1]]",
+      "[[-4],[-1]]",
+      "[[-4], [-1]]"
+     ],
+     "diagram": {
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 340 300\" width=\"100%\" style=\"max-width:350px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" font-family=\"Georgia,serif\" font-size=\"13\"><path d=\"M30.0 270.0 L30.0 30.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M50.0 270.0 L50.0 30.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M70.0 270.0 L70.0 30.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M90.0 270.0 L90.0 30.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M110.0 270.0 L110.0 30.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M130.0 270.0 L130.0 30.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M150.0 270.0 L150.0 30.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M170.0 270.0 L170.0 30.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M190.0 270.0 L190.0 30.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M210.0 270.0 L210.0 30.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M230.0 270.0 L230.0 30.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M250.0 270.0 L250.0 30.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M270.0 270.0 L270.0 30.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M290.0 270.0 L290.0 30.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M310.0 270.0 L310.0 30.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M30.0 270.0 L310.0 270.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M30.0 250.0 L310.0 250.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M30.0 230.0 L310.0 230.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M30.0 210.0 L310.0 210.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M30.0 190.0 L310.0 190.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M30.0 170.0 L310.0 170.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M30.0 150.0 L310.0 150.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M30.0 130.0 L310.0 130.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M30.0 110.0 L310.0 110.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M30.0 90.0 L310.0 90.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M30.0 70.0 L310.0 70.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M30.0 50.0 L310.0 50.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M30.0 30.0 L310.0 30.0\" stroke-width=\"0.5\" stroke-opacity=\"0.3\"/><path d=\"M30.0 190.0 L310.0 190.0\" stroke-width=\"1.5\" stroke-opacity=\"0.85\"/><path d=\"M150.0 270.0 L150.0 30.0\" stroke-width=\"1.5\" stroke-opacity=\"0.85\"/><text x=\"307.0\" y=\"180.0\" text-anchor=\"end\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\" font-style=\"italic\">x</text><text x=\"161.0\" y=\"39.0\" text-anchor=\"start\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\" font-style=\"italic\">y</text><text x=\"141.0\" y=\"202.0\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">O</text><text x=\"30.0\" y=\"203.0\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"9\">-6</text><text x=\"110.0\" y=\"203.0\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"9\">-2</text><text x=\"190.0\" y=\"203.0\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"9\">2</text><text x=\"230.0\" y=\"203.0\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"9\">4</text><text x=\"270.0\" y=\"203.0\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"9\">6</text><text x=\"310.0\" y=\"203.0\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"9\">8</text><text x=\"143.0\" y=\"270.0\" text-anchor=\"end\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"9\">-4</text><text x=\"143.0\" y=\"230.0\" text-anchor=\"end\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"9\">-2</text><text x=\"143.0\" y=\"150.0\" text-anchor=\"end\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"9\">2</text><text x=\"143.0\" y=\"70.0\" text-anchor=\"end\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"9\">6</text><text x=\"143.0\" y=\"30.0\" text-anchor=\"end\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"9\">8</text><path d=\"M70.0 210.0 L190.0 50.0\" stroke-width=\"1.7\"/><path d=\"M230.0 230.0 L290.0 150.0\" stroke-width=\"1.7\"/><circle cx=\"70.0\" cy=\"210.0\" r=\"3.2\" fill=\"currentColor\" stroke=\"none\"/><text x=\"61.0\" y=\"222.0\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">A</text><circle cx=\"190.0\" cy=\"50.0\" r=\"3.2\" fill=\"currentColor\" stroke=\"none\"/><text x=\"199.0\" y=\"38.0\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">B</text><circle cx=\"230.0\" cy=\"230.0\" r=\"3.2\" fill=\"currentColor\" stroke=\"none\"/><text x=\"221.0\" y=\"242.0\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">C</text><circle cx=\"290.0\" cy=\"150.0\" r=\"3.2\" fill=\"currentColor\" stroke=\"none\"/><text x=\"299.0\" y=\"138.0\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">D</text></svg>",
+      "alt": "A grid of the x-y plane with the origin O labelled. Four points are marked: A at (-4, -1), B at (2, 7), C at (4, -2) and D at (7, 2). The line segment AB is drawn, and so is the line segment CD."
+     },
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the position vector OA",
+       "check": {
+        "type": "matrix",
+        "value": [
+         [
+          -4.0
+         ],
+         [
+          -1.0
+         ]
+        ],
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    },
+    {
+     "id": "a2",
+     "label": "(a) (ii)",
+     "prompt": "Determine the magnitude of the vector AB.",
+     "marks": 2,
+     "answer": "10",
+     "solution": "AB = OB - OA = [[2], [7]] - [[-4], [-1]] = [[6], [8]]. So |AB| = sqrt(6^2 + 8^2) = sqrt(36 + 64) = sqrt(100) = 10.",
+     "suffix": " units",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "AK",
+       "marks": 1,
+       "description": "uses |AB| = sqrt(x^2 + y^2) on the components of AB",
+       "check": {
+        "type": "method",
+        "any": [
+         "sqrt(6^2 + 8^2)",
+         "sqrt(36 + 64)",
+         "6^2 + 8^2"
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "A",
+       "profile": "AK",
+       "marks": 1,
+       "description": "the magnitude of AB",
+       "check": {
+        "type": "numeric",
+        "value": 10.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M1"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "a3",
+     "label": "(a) (iii)",
+     "prompt": "Using a vector method, show that AB is parallel to CD.",
+     "marks": 2,
+     "answer": "AB = [[6], [8]] and CD = [[3], [4]], so CD = 1/2 AB. CD is a scalar multiple of AB, so AB is parallel to CD",
+     "solution": "AB = OB - OA = [[2], [7]] - [[-4], [-1]] = [[6], [8]], and CD = OD - OC = [[7], [2]] - [[4], [-2]] = [[3], [4]]. Then CD = 1/2 AB, so CD is a scalar multiple of AB. Two vectors that are scalar multiples of each other have the same direction, so AB is parallel to CD.",
+     "responseType": "written",
+     "rubric": [
+      {
+       "id": "multiple",
+       "marks": 1,
+       "description": "shows that CD = 1/2 AB, that is, that one vector is a scalar multiple of the other",
+       "any": [
+        "1/2 ab",
+        "1/2ab",
+        "scalar multiple",
+        "multiple of"
+       ],
+       "profile": "R"
+      },
+      {
+       "id": "conclusion",
+       "marks": 1,
+       "description": "concludes that AB is parallel to CD",
+       "any": [
+        "parallel"
+       ],
+       "profile": "R"
+      }
+     ],
+     "answerType": "text"
+    },
+    {
+     "id": "b1",
+     "label": "(b) (i)",
+     "prompt": "The matrix M = [[2, 5], [1, 3]].\n\nEvaluate the determinant of M.",
+     "marks": 1,
+     "answer": "1",
+     "solution": "The determinant of [[2, 5], [1, 3]] is (2)(3) - (5)(1) = 6 - 5 = 1.",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "AK",
+       "marks": 1,
+       "description": "the determinant of M",
+       "check": {
+        "type": "numeric",
+        "value": 1.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    },
+    {
+     "id": "b2",
+     "label": "(b) (ii)",
+     "prompt": "The simultaneous equations\n\n2x + 5y = 4\n1x + 3y = 3\n\nmay be written as a matrix equation. Write this matrix equation.",
+     "marks": 1,
+     "answer": "[[2, 5], [1, 3]][[x], [y]] = [[4], [3]]",
+     "solution": "The coefficients form M, the unknowns form the column [[x], [y]] and the constants form the column [[4], [3]], so the matrix equation is [[2, 5], [1, 3]][[x], [y]] = [[4], [3]].",
+     "responseType": "written",
+     "rubric": [
+      {
+       "id": "equation",
+       "marks": 1,
+       "profile": "CK",
+       "description": "writes M multiplied by the column of unknowns equal to the column of constants",
+       "numbers": [
+        2,
+        5,
+        1,
+        3,
+        4,
+        3
+       ]
+      }
+     ],
+     "answerType": "text"
+    },
+    {
+     "id": "b3",
+     "label": "(b) (iii)",
+     "prompt": "Using a matrix method, solve for x and y.",
+     "marks": 2,
+     "answer": "x = -3, y = 2",
+     "solution": "The determinant of M is 1, so M is non-singular and M^-1 = [[3, -5], [-1, 2]]. Multiplying both sides of the matrix equation on the left by M^-1 gives [[x], [y]] = [[3, -5], [-1, 2]][[4], [3]] = [[-3], [2]]. So x = -3 and y = 2.",
+     "answerType": "text",
+     "accepted": [
+      "x = -3 and y = 2",
+      "(-3, 2)"
+     ],
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "AK",
+       "marks": 1,
+       "description": "finds M^-1 and multiplies the column of constants by it",
+       "check": {
+        "type": "method",
+        "any": [
+         "[[3,-5],[-1,2]]",
+         "[[3, -5],[-1, 2]]",
+         "[[3,-5], [-1,2]]",
+         "[[3, -5], [-1, 2]]"
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "A",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the values of x and y",
+       "check": {
+        "type": "allOf",
+        "options": [
+         {
+          "type": "equation",
+          "value": "x = -3"
+         },
+         {
+          "type": "equation",
+          "value": "y = 2"
+         }
+        ]
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M1"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "question_id": "p2027b-q8",
+   "question_number": 8,
+   "paper": "SPARK Practice Paper B (2027 format)",
+   "section": "III",
+   "module": 3,
+   "module_title": "Module 3 - Higher Concepts in Secondary-Level Mathematics",
+   "topic": "Circle theorems and bearings",
+   "marks": 9,
+   "profile": {
+    "CK": 1,
+    "AK": 4,
+    "R": 4
+   },
+   "stem": "",
+   "parts": [
+    {
+     "id": "a1",
+     "label": "(a) (i)",
+     "prompt": "In the diagram below, A, B and C are points on a circle with centre O. The line TA is a tangent to the circle at A, and angle TAB = 64°.\n\nCalculate, giving a reason for your answer, the measure of angle ACB.",
+     "marks": 2,
+     "answer": "64",
+     "solution": "The angle between the tangent TA and the chord AB is equal to the angle in the alternate segment, which is the angle ACB subtended by AB at the circumference on the other side of the chord. So angle ACB = angle TAB = 64°.",
+     "suffix": "°",
+     "tolerance": 1e-06,
+     "diagram": {
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 244 188\" width=\"100%\" style=\"max-width:254px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" font-family=\"Georgia,serif\" font-size=\"13\"><g transform=\"translate(122.0 77.7)\"><circle cx=\"0\" cy=\"0\" r=\"84\" stroke-width=\"1.6\"/><path d=\"M-0.0 84.0 L66.2 -51.7\" stroke-width=\"1.5\"/><path d=\"M66.2 -51.7 L-72.7 -42.0\" stroke-width=\"1.5\"/><path d=\"M-72.7 -42.0 L-0.0 84.0\" stroke-width=\"1.5\"/><path d=\"M0 0 L-0.0 84.0\" stroke-width=\"1.3\" stroke-opacity=\"0.9\"/><path d=\"M0 0 L66.2 -51.7\" stroke-width=\"1.3\" stroke-opacity=\"0.9\"/><path d=\"M96.0 84.0 L-96.0 84.0\" stroke-width=\"1.5\"/><path d=\"M20.0 84.0 A20 20 0 0 0 8.8 66.0\" stroke-width=\"1.1\" stroke-opacity=\"0.8\"/><text x=\"29.7\" y=\"65.5\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">64°</text><circle cx=\"-0.0\" cy=\"84.0\" r=\"2.8\" fill=\"currentColor\" stroke=\"none\"/><text x=\"-0.0\" y=\"99.0\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">A</text><circle cx=\"66.2\" cy=\"-51.7\" r=\"2.8\" fill=\"currentColor\" stroke=\"none\"/><text x=\"78.0\" y=\"-61.0\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">B</text><circle cx=\"-72.7\" cy=\"-42.0\" r=\"2.8\" fill=\"currentColor\" stroke=\"none\"/><text x=\"-85.7\" y=\"-49.5\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">C</text><circle cx=\"96.0\" cy=\"84.0\" r=\"2.8\" fill=\"currentColor\" stroke=\"none\"/><text x=\"107.3\" y=\"93.9\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">T</text><circle cx=\"0\" cy=\"0\" r=\"2.6\" fill=\"currentColor\" stroke=\"none\"/><text x=\"-13.5\" y=\"-6.6\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">O</text></g></svg>",
+      "alt": "A circle with centre O. A, B and C are points on the circumference. The straight line through A touching the circle at A is a tangent, and T is a point on that tangent. The angle TAB between the tangent and the chord AB is marked 64 degrees. The radii OA and OB are drawn, and so are the chords AB, BC and CA, with C on the major arc AB."
+     },
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "AK",
+       "marks": 1,
+       "description": "the measure of angle ACB",
+       "check": {
+        "type": "numeric",
+        "value": 64.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      },
+      {
+       "kind": "B",
+       "profile": "R",
+       "marks": 1,
+       "description": "gives the reason: the angle between a tangent and a chord equals the angle in the alternate segment",
+       "check": {
+        "type": "method",
+        "any": [
+         "alternate segment",
+         "tangent and the chord",
+         "tangent and chord"
+        ]
+       },
+       "field": "all",
+       "depends": [],
+       "code": "B2"
+      }
+     ]
+    },
+    {
+     "id": "a2",
+     "label": "(a) (ii)",
+     "prompt": "Calculate, giving a reason for your answer, the measure of angle AOB.",
+     "marks": 2,
+     "answer": "128",
+     "solution": "Angle AOB is the angle at the centre subtended by the arc AB, and angle ACB is the angle at the circumference subtended by the same arc. The angle at the centre is twice the angle at the circumference, so angle AOB = 2 x 64 = 128°.",
+     "suffix": "°",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "AK",
+       "marks": 1,
+       "description": "the measure of angle AOB",
+       "check": {
+        "type": "numeric",
+        "value": 128.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      },
+      {
+       "kind": "B",
+       "profile": "R",
+       "marks": 1,
+       "description": "gives the reason: the angle at the centre is twice the angle at the circumference",
+       "check": {
+        "type": "method",
+        "any": [
+         "angle at the centre",
+         "twice the angle at the circumference",
+         "twice the angle"
+        ]
+       },
+       "field": "all",
+       "depends": [],
+       "code": "B2"
+      }
+     ]
+    },
+    {
+     "id": "a3",
+     "label": "(a) (iii)",
+     "prompt": "Determine the measure of angle OAB.",
+     "marks": 1,
+     "answer": "26",
+     "solution": "OA and OB are radii, so triangle OAB is isosceles and angle OAB = angle OBA. The angles of the triangle add to 180°, so angle OAB = (180 - 128) / 2 = 26°.",
+     "suffix": "°",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the measure of angle OAB",
+       "check": {
+        "type": "numeric",
+        "value": 26.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    },
+    {
+     "id": "b1",
+     "label": "(b) (i)",
+     "prompt": "An aircraft flies from an airfield P to a checkpoint Q, a distance of 80 km, and then flies on to a checkpoint R.\n\nThe bearing of Q from P is 145°. State the bearing of P from Q.",
+     "marks": 1,
+     "answer": "325",
+     "solution": "The bearing of P from Q is the back bearing of 145°. Since 145° is less than 180°, add 180°: 145° + 180° = 325°.",
+     "suffix": "°",
+     "tolerance": 1e-06,
+     "accepted": [
+      "325°",
+      "325"
+     ],
+     "diagram": {
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 241 280\" width=\"100%\" style=\"max-width:251px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" font-family=\"Georgia,serif\" font-size=\"13\"><g transform=\"translate(77.0 78.0)\"><path d=\"M0.0 0.0 L87.2 124.5\" stroke-width=\"1.7\"/><path d=\"M87.2 124.5 L-2.1 157.0\" stroke-width=\"1.7\"/><path d=\"M0.0 0.0 L-2.1 157.0\" stroke-width=\"1.0\" stroke-dasharray=\"2 4\"/><path d=\"M0.0 0.0 L0.0 -52.0\" stroke-width=\"1.0\" stroke-dasharray=\"4 3\" stroke-opacity=\"0.75\"/><text x=\"-9.0\" y=\"-62.0\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">N</text><path d=\"M87.2 124.5 L87.2 72.5\" stroke-width=\"1.0\" stroke-dasharray=\"4 3\" stroke-opacity=\"0.75\"/><text x=\"78.2\" y=\"62.5\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">N</text><path d=\"M0.0 -22.0 A22 22 0 0 1 12.6 18.0\" stroke-width=\"1.1\" stroke-opacity=\"0.8\"/><text x=\"35.3\" y=\"-11.1\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">145°</text><path d=\"M87.2 102.5 A22 22 0 1 1 66.5 132.0\" stroke-width=\"1.1\" stroke-opacity=\"0.8\"/><text x=\"117.5\" y=\"145.7\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">250°</text><circle cx=\"0.0\" cy=\"0.0\" r=\"2.8\" fill=\"currentColor\" stroke=\"none\"/><text x=\"-4.9\" y=\"-16.3\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">P</text><circle cx=\"87.2\" cy=\"124.5\" r=\"2.8\" fill=\"currentColor\" stroke=\"none\"/><text x=\"102.3\" y=\"132.4\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">Q</text><circle cx=\"-2.1\" cy=\"157.0\" r=\"2.8\" fill=\"currentColor\" stroke=\"none\"/><text x=\"-9.5\" y=\"172.3\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">R</text><text x=\"29.7\" y=\"72.0\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">80 km</text><text x=\"36.7\" y=\"124.8\" text-anchor=\"middle\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">50 km</text></g></svg>",
+      "alt": "A bearings diagram. A dashed north line is drawn at P and at Q. P is joined to Q, a distance of 80 km on a bearing of 145 degrees, and Q is joined to R, a distance of 50 km on a bearing of 250 degrees. The side PR is shown dashed."
+     },
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "R",
+       "marks": 1,
+       "description": "the bearing of P from Q, in three figures",
+       "check": {
+        "type": "numeric",
+        "value": 325.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    },
+    {
+     "id": "b2",
+     "label": "(b) (ii)",
+     "prompt": "R is 50 km from Q, on a bearing of 250°.\n\nCalculate the distance PR, giving your answer correct to 3 significant figures.",
+     "marks": 3,
+     "answer": "82.6",
+     "solution": "The bearing of P from Q is 325° and the bearing of R from Q is 250°, so angle PQR = 325° - 250° = 75°. By the cosine rule, PR^2 = 80^2 + 50^2 - 2(80)(50) cos 75 = 6400 + 2500 - 8000 cos 75 = 6829.45. So PR = sqrt(6829.45) = 82.6405 = 82.6 km, correct to 3 significant figures.",
+     "suffix": " km",
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "R",
+       "marks": 1,
+       "description": "uses the two bearings to find angle PQR = 75°",
+       "check": {
+        "type": "contains",
+        "value": [
+         75.0
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "M",
+       "profile": "AK",
+       "marks": 1,
+       "description": "substitutes into the cosine rule",
+       "check": {
+        "type": "method",
+        "any": [
+         "80^2 + 50^2 - 2(80)(50) cos 75",
+         "80^2 + 50^2 - 2 x 80 x 50 cos"
+        ]
+       },
+       "field": "all",
+       "code": "M2"
+      },
+      {
+       "kind": "A",
+       "profile": "AK",
+       "marks": 1,
+       "description": "the distance PR",
+       "check": {
+        "type": "numeric",
+        "value": 82.64047216213031,
+        "sf": 3,
+        "tolerance": 0.050000001
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M2"
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "question_id": "p2027b-q9",
+   "question_number": 9,
+   "paper": "SPARK Practice Paper B (2027 format)",
+   "section": "III",
+   "module": 3,
+   "module_title": "Module 3 - Higher Concepts in Secondary-Level Mathematics",
+   "topic": "Cumulative frequency and travel graphs",
+   "marks": 12,
+   "profile": {
+    "CK": 5,
+    "AK": 4,
+    "R": 3
+   },
+   "stem": "",
+   "parts": [
+    {
+     "id": "a1",
+     "label": "(a) (i)",
+     "prompt": "The masses of 50 parcels handled at a courier depot in one morning were recorded.\n\nThe table below shows the masses, in kilograms, and the cumulative frequencies. Complete the table by inserting the TWO missing values in the cumulative frequency column.",
+     "marks": 2,
+     "answer": "38; 46",
+     "solution": "Each cumulative frequency is the running total of the frequencies up to and including that class: 6, 20, 38, 46, 50. So the two missing values are 38 and 46.",
+     "responseType": "table",
+     "table": {
+      "caption": "Masses of 50 parcels handled at a depot.",
+      "headers": [
+       "Mass (m kg)",
+       "Frequency",
+       "Cumulative frequency"
+      ],
+      "rows": [
+       [
+        "0 < m <= 5",
+        "6",
+        "6"
+       ],
+       [
+        "5 < m <= 10",
+        "14",
+        "20"
+       ],
+       [
+        "10 < m <= 15",
+        "18",
+        {
+         "blank": true,
+         "key": "c2"
+        }
+       ],
+       [
+        "15 < m <= 20",
+        "8",
+        {
+         "blank": true,
+         "key": "c3"
+        }
+       ],
+       [
+        "20 < m <= 25",
+        "4",
+        "50"
+       ]
+      ],
+      "marks": 2,
+      "cells": {
+       "c2": {
+        "type": "numeric",
+        "value": 38,
+        "marks": 1,
+        "description": "the cumulative frequency up to 15 kg"
+       },
+       "c3": {
+        "type": "numeric",
+        "value": 46,
+        "marks": 1,
+        "description": "the cumulative frequency up to 20 kg"
+       }
+      }
+     },
+     "answerType": "text",
+     "profile": {
+      "CK": 2
+     }
+    },
+    {
+     "id": "a2",
+     "label": "(a) (ii)",
+     "prompt": "Using a scale of 2 cm to represent 5 kg on the horizontal axis and 2 cm to represent 10 parcels on the vertical axis, draw the cumulative frequency curve for the data. Start your curve at (0, 0).",
+     "marks": 3,
+     "answer": "the points (0, 0), (5, 6), (10, 20), (15, 38), (20, 46), (25, 50) joined by a smooth curve",
+     "solution": "The cumulative frequency is plotted against the UPPER CLASS BOUNDARY of each class, not the midpoint, and the curve starts at (0, 0) because no member of the sample falls below the first boundary. Plot (0, 0), (5, 6), (10, 20), (15, 38), (20, 46), (25, 50) and join them with a single smooth curve that never falls.",
+     "responseType": "graph",
+     "grid": {
+      "xMin": 0,
+      "xMax": 25,
+      "yMin": 0,
+      "yMax": 50,
+      "xStep": 5,
+      "yStep": 10,
+      "minorPerStep": 5,
+      "xLabel": "Mass (kg)",
+      "yLabel": "Cumulative frequency",
+      "tools": [
+       "point",
+       "curve",
+       "read"
+      ]
+     },
+     "graph": {
+      "points": [
+       {
+        "x": 0,
+        "y": 0
+       },
+       {
+        "x": 5,
+        "y": 6
+       },
+       {
+        "x": 10,
+        "y": 20
+       },
+       {
+        "x": 15,
+        "y": 38
+       },
+       {
+        "x": 20,
+        "y": 46
+       },
+       {
+        "x": 25,
+        "y": 50
+       }
+      ],
+      "tolerance": 0.8,
+      "pointMarks": 2,
+      "curve": {
+       "expression": "(function(){var X=[0,5,10,15,20,25],Y=[0,6,20,38,46,50],M=[1.2,2,3.2,2.6,1.2,0.8];var i=0;while(i<X.length-2&&x>X[i+1])i++;var h=X[i+1]-X[i],t=(x-X[i])/h;if(t<0)t=0;if(t>1)t=1;var q=t*t,c=q*t;return Y[i]*(2*c-3*q+1)+h*M[i]*(c-2*q+t)+Y[i+1]*(-2*c+3*q)+h*M[i+1]*(c-q);})()",
+       "from": 0,
+       "to": 25,
+       "tolerance": 1.5,
+       "scale": {
+        "x": 1.0,
+        "y": 2.0
+       }
+      },
+      "curveMarks": 1
+     },
+     "answerType": "text",
+     "profile": {
+      "AK": 2,
+      "CK": 1
+     }
+    },
+    {
+     "id": "a3",
+     "label": "(a) (iii)",
+     "prompt": "Using your graph, estimate the probability that a parcel chosen at random has a mass of MORE than 15 kg.",
+     "marks": 1,
+     "answer": "6/25",
+     "solution": "From the curve, 38 of the 50 parcels have a mass of 15 kg or less, so 50 - 38 = 12 of them have a mass of more than 15 kg. The probability is therefore 12/50 = 6/25.",
+     "answerType": "text",
+     "accepted": [
+      "12/50",
+      "0.24"
+     ],
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "R",
+       "marks": 1,
+       "description": "the probability, read from the candidate's own curve",
+       "check": {
+        "type": "anyOf",
+        "options": [
+         {
+          "type": "fraction",
+          "value": 0.24,
+          "simplified": true,
+          "requireFraction": true
+         },
+         {
+          "type": "numeric",
+          "value": 0.24,
+          "tolerance": 0.03
+         }
+        ]
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    },
+    {
+     "id": "b1",
+     "label": "(b) (i)",
+     "prompt": "The graph below shows the speed of a cyclist over a period of 20 seconds.\n\nUsing the graph, state the initial speed of the cyclist.",
+     "marks": 1,
+     "answer": "4",
+     "solution": "The graph meets the vertical axis at a speed of 4 m/s, so the initial speed is 4 m/s.",
+     "suffix": " m/s",
+     "tolerance": 1e-06,
+     "diagram": {
+      "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 376 270\" width=\"100%\" style=\"max-width:386px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" font-family=\"Georgia,serif\" font-size=\"13\"><path d=\"M56.0 222.0 L56.0 22.0\" stroke-width=\"0.9\" stroke-opacity=\"0.5\"/><path d=\"M71.0 222.0 L71.0 22.0\" stroke-width=\"0.5\" stroke-opacity=\"0.28\"/><path d=\"M86.0 222.0 L86.0 22.0\" stroke-width=\"0.5\" stroke-opacity=\"0.28\"/><path d=\"M101.0 222.0 L101.0 22.0\" stroke-width=\"0.5\" stroke-opacity=\"0.28\"/><path d=\"M116.0 222.0 L116.0 22.0\" stroke-width=\"0.5\" stroke-opacity=\"0.28\"/><path d=\"M131.0 222.0 L131.0 22.0\" stroke-width=\"0.9\" stroke-opacity=\"0.5\"/><text x=\"131.0\" y=\"236.0\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"10\">5</text><path d=\"M146.0 222.0 L146.0 22.0\" stroke-width=\"0.5\" stroke-opacity=\"0.28\"/><path d=\"M161.0 222.0 L161.0 22.0\" stroke-width=\"0.5\" stroke-opacity=\"0.28\"/><path d=\"M176.0 222.0 L176.0 22.0\" stroke-width=\"0.5\" stroke-opacity=\"0.28\"/><path d=\"M191.0 222.0 L191.0 22.0\" stroke-width=\"0.5\" stroke-opacity=\"0.28\"/><path d=\"M206.0 222.0 L206.0 22.0\" stroke-width=\"0.9\" stroke-opacity=\"0.5\"/><text x=\"206.0\" y=\"236.0\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"10\">10</text><path d=\"M221.0 222.0 L221.0 22.0\" stroke-width=\"0.5\" stroke-opacity=\"0.28\"/><path d=\"M236.0 222.0 L236.0 22.0\" stroke-width=\"0.5\" stroke-opacity=\"0.28\"/><path d=\"M251.0 222.0 L251.0 22.0\" stroke-width=\"0.5\" stroke-opacity=\"0.28\"/><path d=\"M266.0 222.0 L266.0 22.0\" stroke-width=\"0.5\" stroke-opacity=\"0.28\"/><path d=\"M281.0 222.0 L281.0 22.0\" stroke-width=\"0.9\" stroke-opacity=\"0.5\"/><text x=\"281.0\" y=\"236.0\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"10\">15</text><path d=\"M296.0 222.0 L296.0 22.0\" stroke-width=\"0.5\" stroke-opacity=\"0.28\"/><path d=\"M311.0 222.0 L311.0 22.0\" stroke-width=\"0.5\" stroke-opacity=\"0.28\"/><path d=\"M326.0 222.0 L326.0 22.0\" stroke-width=\"0.5\" stroke-opacity=\"0.28\"/><path d=\"M341.0 222.0 L341.0 22.0\" stroke-width=\"0.5\" stroke-opacity=\"0.28\"/><path d=\"M356.0 222.0 L356.0 22.0\" stroke-width=\"0.9\" stroke-opacity=\"0.5\"/><text x=\"356.0\" y=\"236.0\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"10\">20</text><path d=\"M56.0 222.0 L356.0 222.0\" stroke-width=\"0.9\" stroke-opacity=\"0.5\"/><path d=\"M56.0 208.7 L356.0 208.7\" stroke-width=\"0.5\" stroke-opacity=\"0.28\"/><path d=\"M56.0 195.3 L356.0 195.3\" stroke-width=\"0.5\" stroke-opacity=\"0.28\"/><path d=\"M56.0 182.0 L356.0 182.0\" stroke-width=\"0.5\" stroke-opacity=\"0.28\"/><path d=\"M56.0 168.7 L356.0 168.7\" stroke-width=\"0.5\" stroke-opacity=\"0.28\"/><path d=\"M56.0 155.3 L356.0 155.3\" stroke-width=\"0.9\" stroke-opacity=\"0.5\"/><text x=\"48.0\" y=\"155.3\" text-anchor=\"end\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"10\">10</text><path d=\"M56.0 142.0 L356.0 142.0\" stroke-width=\"0.5\" stroke-opacity=\"0.28\"/><path d=\"M56.0 128.7 L356.0 128.7\" stroke-width=\"0.5\" stroke-opacity=\"0.28\"/><path d=\"M56.0 115.3 L356.0 115.3\" stroke-width=\"0.5\" stroke-opacity=\"0.28\"/><path d=\"M56.0 102.0 L356.0 102.0\" stroke-width=\"0.5\" stroke-opacity=\"0.28\"/><path d=\"M56.0 88.7 L356.0 88.7\" stroke-width=\"0.9\" stroke-opacity=\"0.5\"/><text x=\"48.0\" y=\"88.7\" text-anchor=\"end\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"10\">20</text><path d=\"M56.0 75.3 L356.0 75.3\" stroke-width=\"0.5\" stroke-opacity=\"0.28\"/><path d=\"M56.0 62.0 L356.0 62.0\" stroke-width=\"0.5\" stroke-opacity=\"0.28\"/><path d=\"M56.0 48.7 L356.0 48.7\" stroke-width=\"0.5\" stroke-opacity=\"0.28\"/><path d=\"M56.0 35.3 L356.0 35.3\" stroke-width=\"0.5\" stroke-opacity=\"0.28\"/><path d=\"M56.0 22.0 L356.0 22.0\" stroke-width=\"0.9\" stroke-opacity=\"0.5\"/><text x=\"48.0\" y=\"22.0\" text-anchor=\"end\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"10\">30</text><path d=\"M56.0 22.0 L56.0 222.0 L356.0 222.0\" stroke-width=\"1.8\"/><text x=\"48.0\" y=\"222.0\" text-anchor=\"end\" dominant-baseline=\"central\" stroke=\"none\" fill=\"currentColor\" font-size=\"10\">0</text><path d=\"M56.0 195.3 L176.0 62.0 L356.0 222.0\" stroke-width=\"2.2\"/><text x=\"206.0\" y=\"260.0\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">Time (s)</text><text x=\"0.0\" y=\"0.0\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\" transform=\"translate(14 122.0) rotate(-90)\">Speed (m/s)</text></svg>",
+      "alt": "A speed-time graph. The horizontal axis is Time in seconds, scaled from 0 to 20, and the vertical axis is Speed in metres per second, scaled from 0 to 30, both on a ruled grid. The graph is a series of straight line segments joining the points (0, 4), (8, 24), (20, 0)."
+     },
+     "criteria": [
+      {
+       "kind": "B",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the initial speed",
+       "check": {
+        "type": "numeric",
+        "value": 4.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "depends": [],
+       "code": "B1"
+      }
+     ]
+    },
+    {
+     "id": "b2",
+     "label": "(b) (ii)",
+     "prompt": "Calculate the acceleration of the cyclist during the first 8 seconds.",
+     "marks": 2,
+     "answer": "2.5",
+     "solution": "During the first 8 seconds the speed changes from 4 m/s to 24 m/s, a change of 20 m/s, and it takes 8 seconds. The acceleration is the gradient of that stage of the graph: the change in speed divided by the time taken, which is 2.5 m/s^2.",
+     "suffix": " m/s^2",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "AK",
+       "marks": 1,
+       "description": "uses the gradient of that stage of the graph",
+       "check": {
+        "type": "contains",
+        "value": [
+         20.0,
+         8.0
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "A",
+       "profile": "CK",
+       "marks": 1,
+       "description": "the acceleration",
+       "check": {
+        "type": "numeric",
+        "value": 2.5,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M1"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "b3",
+     "label": "(b) (iii)",
+     "prompt": "Calculate the TOTAL distance travelled by the cyclist during the 20 seconds.",
+     "marks": 2,
+     "answer": "256",
+     "solution": "The distance travelled is the area under the speed-time graph. The graph is never at rest while the speed is changing, so that stage is a TRAPEZIUM and not a triangle: the trapezium from 0 s to 8 s has area 1/2(4 + 24)(8) = 112; the trapezium from 8 s to 20 s has area 1/2(24 + 0)(12) = 144. The total distance is therefore 256 m.",
+     "suffix": " m",
+     "tolerance": 1e-06,
+     "criteria": [
+      {
+       "kind": "M",
+       "profile": "R",
+       "marks": 1,
+       "description": "treats the distance as the area under the graph, taking the sloping stage as a trapezium and not as the triangle underneath it",
+       "check": {
+        "type": "contains",
+        "value": [
+         112.0
+        ]
+       },
+       "field": "all",
+       "code": "M1"
+      },
+      {
+       "kind": "A",
+       "profile": "AK",
+       "marks": 1,
+       "description": "the total distance",
+       "check": {
+        "type": "numeric",
+        "value": 256.0,
+        "tolerance": 1e-06
+       },
+       "field": "answer",
+       "code": "A1",
+       "depends": [
+        "M1"
+       ]
+      }
+     ]
+    },
+    {
+     "id": "b4",
+     "label": "(b) (iv)",
+     "prompt": "Describe the motion of the cyclist during the last 12 seconds.",
+     "marks": 1,
+     "answer": "The cyclist decelerates uniformly from 24 m/s and comes to rest at the end of the 20 seconds",
+     "solution": "The cyclist decelerates uniformly from 24 m/s and comes to rest at the end of the 20 seconds.",
+     "responseType": "written",
+     "rubric": [
+      {
+       "id": "motion",
+       "marks": 1,
+       "description": "says that the cyclist slows down uniformly, and comes to rest",
+       "any": [
+        "decelerat",
+        "retardation",
+        "decrease",
+        "slow",
+        "comes to rest"
+       ],
+       "profile": "R"
+      }
+     ],
+     "answerType": "text"
     }
    ]
   }

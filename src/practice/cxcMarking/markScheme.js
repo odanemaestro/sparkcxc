@@ -149,6 +149,7 @@ export function markPart(response, part, earlier = {}) {
       ? awarded[d] !== true : false);
     if (deps.length && !deps.every(d => awarded[d] === true)) {
       lines.push({ code, marks: 0, of: marks, kind, awarded: false,
+        profile: c.profile,
         description: c.description,
         why: `not available - it depends on ${deps.join(" and ")}`,
         dependencyBlocked: true, blocked });
@@ -210,6 +211,7 @@ export function markPart(response, part, earlier = {}) {
     lines.push({
       code, kind, marks: result.ok ? marks : 0, of: marks,
       awarded: result.ok, ecf: ecfUsed, ecfTarget,
+      profile: c.profile,
       description: c.description, why: result.why, got: result.got,
       nearMiss: Boolean(result.nearMiss),
       precisionOnly: Boolean(result.precisionOnly),

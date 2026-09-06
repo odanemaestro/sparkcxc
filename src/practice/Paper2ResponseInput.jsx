@@ -630,9 +630,29 @@ function GraphWorkspace({ schema, value, onChange, readOnly = false }) {
   );
 }
 
+function WrittenResponse({ value, onChange, readOnly = false }) {
+  const response = safeObject(value);
+  if (readOnly) return <div className="paper2-written-review"><MathText>{response.answer || "No answer"}</MathText></div>;
+  return (
+    <div className="paper2-workspace paper2-written-workspace">
+      <label className="paper2-rich-field">
+        <span>Written response</span>
+        <textarea
+          rows={4}
+          value={response.answer ?? ""}
+          onChange={event => onChange({ ...response, answer: event.target.value })}
+          placeholder="Write your answer and mathematical reason clearly"
+          spellCheck="true"
+        />
+      </label>
+    </div>
+  );
+}
+
 export default function Paper2ResponseInput({ part, value, onChange = () => {}, readOnly = false }) {
   const schema = part?.responseSchema;
   if (!schema) return null;
+  if (schema.type === "written") return <WrittenResponse value={value} onChange={onChange} readOnly={readOnly} />;
   if (schema.type === "fields") return <FieldsResponse schema={schema} value={value} onChange={onChange} />;
   if (schema.type === "table") return <TableResponse schema={schema} value={value} onChange={onChange} />;
   if (schema.type === "construction_triangle" || schema.type === "construction") return <ConstructionWorkspace schema={schema} part={part} value={value} onChange={onChange} readOnly={readOnly} />;

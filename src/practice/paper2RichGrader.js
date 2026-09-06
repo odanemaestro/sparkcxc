@@ -1,5 +1,6 @@
 import { checkAnswer, checkQuestionAnswer } from "../lib/answerCheck";
 import { circleIntersections, markConstruction as markCxcConstruction } from "./cxcMarking/geometry.js";
+import { markWritten as markCxcWritten } from "./cxcMarking/reasoning.js";
 
 const text = value => String(value ?? "").trim();
 const norm = value => text(value)
@@ -191,6 +192,7 @@ function gradeTable(response, schema, maxMarks) {
           correct: item.correct,
           marks: item.correct ? Math.max(0, Number(item.cellMarks || 0)) : 0,
           maxMarks: Math.max(0, Number(item.cellMarks || 0)),
+          profile: item.profile,
           description: item.description || item.label || `Table entry ${item.key}`,
         })),
       }],
@@ -362,6 +364,7 @@ function gradeGenericConstruction(response, schema, maxMarks) {
     maxMarks: Number(criterion.of || 0),
     earned: Boolean(criterion.awarded),
     marks: Number(criterion.marks || 0),
+    profile: criterion.profile || schema.criterionProfiles?.[index],
   }));
   return { marks: Number(graded.marks || 0), details };
 }
@@ -506,10 +509,26 @@ function gradeGraph(response, schema) {
   return { marks, details };
 }
 
+function gradeWrittenResponse(response, schema, maxMarks) {
+  const answer = text(response?.answer ?? response);
+  const marked = markCxcWritten(answer, schema.rubric || [], { partial: true });
+  const details = (marked.criteria || []).map((item, index) => ({
+    ...item,
+    kind: item.kind || "B",
+    label: item.description || "Written-response criterion",
+    maxMarks: Number(item.of || 0),
+    earned: Boolean(item.awarded),
+    marks: Number(item.marks || 0),
+    profile: item.profile || schema.rubric?.[index]?.profile,
+  }));
+  return { marks: Math.min(Number(marked.marks || 0), maxMarks), details };
+}
+
 export function isPaper2PartComplete(part, value) {
   const schema = part?.responseSchema;
   if (!schema) return text(value) !== "";
   const response = responseObject(value);
+  if (schema.type === "written") return text(response.answer) !== "";
   if (schema.type === "fields") {
     return (schema.fields || []).filter(field => field.required !== false).every(field => text(response[field.id]) !== "");
   }
@@ -631,6 +650,8 @@ function canonicalGenericConstruction(schema = {}) {
 export function buildCanonicalPaper2Response(part = {}) {
   const schema = part?.responseSchema;
   if (!schema) return part?.answer ?? "";
+
+  if (schema.type === "written") return { answer: String(part?.answer ?? "") };
 
   if (schema.type === "fields") {
     const response = {};
@@ -767,7 +788,8 @@ export function gradeRichPaper2Part(userInput, part = {}) {
 
   const response = responseObject(userInput);
   let graded = { marks: 0, details: [] };
-  if (schema.type === "fields") graded = gradeFieldCriteria(response, schema);
+  if (schema.type === "written") graded = gradeWrittenResponse(response, schema, maxMarks);
+  else if (schema.type === "fields") graded = gradeFieldCriteria(response, schema);
   else if (schema.type === "table") graded = gradeTable(response, schema, maxMarks);
   else if (schema.type === "construction_triangle") graded = gradeConstruction(response, schema);
   else if (schema.type === "construction") graded = gradeGenericConstruction(response, schema, maxMarks);
@@ -785,6 +807,7 @@ export function paper2ResponseSummary(value, part = {}) {
   if (!part?.responseSchema) return text(value);
   const response = responseObject(value);
   const schema = part.responseSchema;
+  if (schema.type === "written") return text(response.answer) || "No answer";
   if (schema.type === "fields") {
     return (schema.fields || []).map(field => `${field.label}: ${text(response[field.id]) || "—"}`).join(" · ");
   }

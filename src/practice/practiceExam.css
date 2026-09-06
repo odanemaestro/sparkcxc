@@ -1453,6 +1453,52 @@ html[data-theme="dark"] .paper2027-exam-shell .paper2-nav-section-head span{
   }
 }
 
+
+/* SPARK COMPACT REVIEW NAVIGATORS V5.3.6G */
+/* Review navigation should behave like a compact pager, not stretch question
+   numbers into large cards. Live exam navigators are intentionally untouched. */
+.paper2-review-nav{
+  grid-template-columns:auto minmax(0,1fr) auto;
+}
+.paper2-review-nav>div,
+.paper2027-review-nav>div{
+  display:flex!important;
+  grid-template-columns:none!important;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:7px;
+  min-width:0;
+}
+.paper2-review-nav>div button,
+.paper2027-review-nav>div button{
+  flex:0 0 44px;
+  width:44px;
+  height:44px;
+  min-width:44px;
+  min-height:44px;
+  aspect-ratio:auto!important;
+  padding:0;
+  border-radius:9px;
+  font-size:12px;
+}
+@media(max-width:720px){
+  .paper2-review-nav>div,
+  .paper2027-review-nav>div{
+    grid-column:1/-1;
+    grid-row:1;
+    gap:6px;
+  }
+  .paper2-review-nav>div button,
+  .paper2027-review-nav>div button{
+    flex-basis:42px;
+    width:42px;
+    height:42px;
+    min-width:42px;
+    min-height:42px;
+  }
+}
+
 /* SPARK 2027 MOBILE CONTENT FIT + DARK DIAGRAM VISIBILITY V5.3.6H */
 /* Keep wide response widgets from expanding the one-column parts grid on phones. */
 .paper2-parts-list{
@@ -1545,4 +1591,74 @@ html[data-theme="dark"] .paper2027-diagram svg{
     max-width:42px!important;
     max-height:42px!important;
   }
+}
+
+/* SPARK V5.3.7 - complete 2027 modular practice */
+.paper2027-mode-grid{
+  max-width:1160px;
+  margin:0 auto 24px;
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+}
+.paper2027-mode-card{
+  min-width:0;
+  text-align:left;
+  border:1px solid var(--paper-border);
+  border-radius:18px;
+  background:#fff;
+  color:var(--paper-navy);
+  padding:18px;
+  cursor:pointer;
+  box-shadow:0 8px 24px rgba(15,37,87,.04);
+  transition:border-color .16s ease,box-shadow .16s ease,transform .16s ease;
+}
+.paper2027-mode-card:hover{transform:translateY(-1px);border-color:#9edbd5;box-shadow:0 12px 28px rgba(15,37,87,.08)}
+.paper2027-mode-card.active{border-color:var(--paper-teal);box-shadow:0 0 0 2px color-mix(in srgb,var(--paper-teal) 18%,transparent)}
+.paper2027-mode-card>span{display:block;font-size:9px;text-transform:uppercase;letter-spacing:.09em;font-weight:900;color:var(--paper-teal)}
+.paper2027-mode-card>strong{display:block;font-family:'Crimson Pro',Georgia,serif;font-size:22px;line-height:1.1;margin-top:5px}
+.paper2027-mode-card>small{display:block;margin-top:3px;color:var(--paper-muted);font-size:11px;font-weight:800}
+.paper2027-mode-card>p{min-height:57px;margin:12px 0;color:var(--paper-muted);font-size:12px;line-height:1.55}
+.paper2027-mode-card>div{display:flex;gap:5px;flex-wrap:wrap}
+.paper2027-mode-card>div b{padding:5px 7px;border-radius:999px;background:#eef5fb;color:#31587c;font-size:9px}
+.paper2027-paper-heading{margin-top:6px}
+.paper2027-module-overview{max-width:1160px;margin:18px auto 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.paper2027-module-overview article{min-width:0;padding:19px;border:1px solid var(--paper-border);border-radius:18px;background:#fff}
+.paper2027-module-overview span{font-size:9px;text-transform:uppercase;letter-spacing:.08em;font-weight:900;color:var(--paper-teal)}
+.paper2027-module-overview h3{font-family:'Crimson Pro',Georgia,serif;font-size:21px;margin:5px 0;color:var(--paper-navy)}
+.paper2027-module-overview p{margin:0;color:var(--paper-muted);font-size:12px;line-height:1.55}
+.paper2027-module-overview small{display:block;margin-top:12px;padding-top:10px;border-top:1px solid var(--paper-border);color:var(--paper-muted);font-size:9px;line-height:1.55}
+.paper2027-result-profile{max-width:1100px;margin:18px auto 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.paper2027-result-profile span{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 15px;border:1px solid var(--paper-border);border-radius:14px;background:#fff;color:var(--paper-navy);font-size:11px}
+.paper2027-result-profile b{font-weight:800}.paper2027-result-profile strong{font-size:15px}
+.paper2027-result-summary-full{grid-template-columns:repeat(3,minmax(0,1fr))}
+.paper2027-drawer-section+.paper2027-drawer-section{margin-top:15px}
+.paper2-written-workspace textarea{width:100%;min-height:116px;resize:vertical}
+.paper2-written-review{padding:14px 16px;border:1px solid var(--paper-border);border-radius:12px;background:var(--paper-soft,#f8fafc);font-size:14px;line-height:1.6}
+
+html[data-theme="dark"] .paper2027-mode-card,
+html[data-theme="dark"] .paper2027-module-overview article,
+html[data-theme="dark"] .paper2027-result-profile span{
+  background:var(--spark-surface-1)!important;
+  border-color:var(--spark-border)!important;
+  color:var(--spark-ink)!important;
+}
+html[data-theme="dark"] .paper2027-mode-card>strong,
+html[data-theme="dark"] .paper2027-module-overview h3{color:var(--spark-ink)!important}
+html[data-theme="dark"] .paper2027-mode-card>small,
+html[data-theme="dark"] .paper2027-mode-card>p,
+html[data-theme="dark"] .paper2027-module-overview p,
+html[data-theme="dark"] .paper2027-module-overview small{color:var(--spark-ink-soft)!important}
+html[data-theme="dark"] .paper2027-mode-card>div b{background:var(--spark-surface-2)!important;color:var(--spark-ink)!important}
+html[data-theme="dark"] .paper2-written-review{background:var(--spark-surface-2)!important;border-color:var(--spark-border)!important;color:var(--spark-ink)!important}
+
+@media(max-width:980px){
+  .paper2027-mode-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .paper2027-module-overview{grid-template-columns:1fr}
+}
+@media(max-width:680px){
+  .paper2027-mode-grid{grid-template-columns:1fr}
+  .paper2027-mode-card>p{min-height:0}
+  .paper2027-result-profile,.paper2027-result-summary-full{grid-template-columns:1fr}
+  .paper2027-exam-shell .paper2-nav-section-head{gap:8px}
 }
