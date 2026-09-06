@@ -1404,3 +1404,51 @@ html[data-theme="dark"] .paper2027-exam-shell .paper2-nav-section-head span{
   border-radius:8px!important;
   font:800 11px 'Atkinson Hyperlegible','Inter','Segoe UI',sans-serif!important;
 }
+
+
+/* SPARK 2027 OFFICIAL ASSESSMENT TERMINOLOGY V5.3.6F */
+/* Use CXC's full assessment category names instead of unexplained initials. */
+.paper2027-profile-mini,
+.paper2027-nav-profile{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:6px;
+}
+.paper2027-profile-mini span,
+.paper2027-nav-profile span{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  min-width:0;
+  white-space:normal;
+  line-height:1.25;
+}
+.paper2027-profile-mini span b,
+.paper2027-nav-profile span b{
+  font-weight:800;
+}
+.paper2027-profile-mini span strong,
+.paper2027-nav-profile span strong{
+  flex:0 0 auto;
+  font-size:inherit;
+  color:inherit;
+}
+.paper2027-profile-strip span{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+.paper2027-profile-strip span strong{
+  font-size:inherit;
+  color:inherit;
+}
+@media(max-width:560px){
+  .paper2027-profile-strip{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+  .paper2027-profile-strip span{
+    justify-content:space-between;
+  }
+}

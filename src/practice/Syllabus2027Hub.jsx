@@ -67,7 +67,11 @@ export default function Syllabus2027Hub({ onExit }) {
               <div className="practice-specs paper2027-paper-specs">
                 <span>3 questions</span><span>50 minutes</span><span>30 marks</span><span>Auto-graded</span>
               </div>
-              <div className="paper2027-profile-mini"><span>CK 9</span><span>AK 12</span><span>R 9</span></div>
+              <div className="paper2027-profile-mini" aria-label="Assessment profile">
+                <span><b>Conceptual Knowledge (CK)</b><strong>9</strong></span>
+                <span><b>Algorithmic Knowledge (AK)</b><strong>12</strong></span>
+                <span><b>Reasoning (R)</b><strong>9</strong></span>
+              </div>
               {latest && <div className="paper2027-latest"><span>Latest result</span><strong>{latest.score}/{latest.maxScore} · {latest.percent}%</strong></div>}
               <div className="practice-card-actions">
                 {active?.paperId === paper.paper_id && <button type="button" className="practice-primary" onClick={() => { setStartFresh(false); setSelectedPaper(paper); }}>Resume paper</button>}
