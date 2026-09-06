@@ -2718,7 +2718,7 @@ function ProfilePhotoEditor({
           className="profile-photo-trigger"
           onClick={choosePhoto}
           disabled={busy || disabled}
-          title={disabled ? "Profile photo is loading" : localPath ? "Change profile photo" : "Add profile photo"}
+          data-tooltip={disabled ? "Profile photo is loading" : localPath ? "Change profile photo" : "Add profile photo"}
           aria-label={localPath ? "Change profile photo" : "Add profile photo"}
           style={{
             padding:0,
@@ -2731,25 +2731,6 @@ function ProfilePhotoEditor({
           }}
         >
           <ProfileAvatar path={localPath} name={profile?.name} size={size} />
-          {!disabled && (
-            <span className="profile-photo-camera" style={{
-              position:"absolute",
-              right:-2,
-              bottom:-2,
-              width:20,
-              height:20,
-              borderRadius:"50%",
-              display:"flex",
-              alignItems:"center",
-              justifyContent:"center",
-              background:T.teal,
-              color:"#fff",
-              border:"2px solid #fff",
-              fontSize:10,
-              lineHeight:1,
-              pointerEvents:"none",
-            }}>📷</span>
-          )}
         </button>
 
         <input

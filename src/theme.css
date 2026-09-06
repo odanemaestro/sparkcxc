@@ -1249,3 +1249,57 @@ html[data-theme="dark"] .paper-nav-drawer-head span{color:var(--spark-text-muted
   }
   html[data-theme="dark"] .dash-nav-item{border-color:var(--spark-border)!important}
 }
+
+
+/* SPARK CLEAN PROFILE PHOTO INTERACTION V5.3.6C */
+.profile-photo-trigger{
+  position:relative;
+  overflow:visible;
+  transition:filter .16s ease, transform .16s ease;
+}
+.profile-photo-trigger:focus-visible{
+  outline:2px solid var(--spark-teal, #16a39a);
+  outline-offset:3px;
+}
+.profile-photo-trigger::after{
+  content:attr(data-tooltip);
+  position:absolute;
+  left:50%;
+  top:calc(100% + 9px);
+  z-index:80;
+  max-width:220px;
+  padding:7px 10px;
+  border:1px solid var(--spark-border, rgba(26,56,91,.18));
+  border-radius:8px;
+  background:var(--spark-ink, #0b1f3a);
+  color:#fff;
+  box-shadow:0 8px 24px rgba(8,26,61,.18);
+  font-family:inherit;
+  font-size:12px;
+  font-weight:700;
+  line-height:1.2;
+  letter-spacing:0;
+  white-space:nowrap;
+  pointer-events:none;
+  opacity:0;
+  transform:translate(-50%, -4px);
+  transition:opacity .14s ease, transform .14s ease;
+}
+.profile-photo-trigger:focus-visible::after{
+  opacity:1;
+  transform:translate(-50%, 0);
+}
+@media (hover:hover) and (pointer:fine){
+  .profile-photo-trigger:not(:disabled):hover{
+    filter:brightness(.96);
+  }
+  .profile-photo-trigger:not(:disabled):hover::after{
+    opacity:1;
+    transform:translate(-50%, 0);
+  }
+}
+@media (hover:none), (pointer:coarse){
+  .profile-photo-trigger::after{
+    display:none;
+  }
+}

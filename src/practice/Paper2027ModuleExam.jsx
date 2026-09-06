@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import MathText from "./MathText";
 import Paper2ResponseInput from "./Paper2ResponseInput";
+import { FormulaModal } from "./Paper2Exam";
 import {
   gradeCxcPaper2Part,
   hasPaper2CxcPartResponse,
@@ -148,6 +149,7 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false 
   const [submitted, setSubmitted] = useState(false);
   const [timedOut, setTimedOut] = useState(false);
   const [showSubmit, setShowSubmit] = useState(false);
+  const [showFormula, setShowFormula] = useState(false);
   const [showNavigator, setShowNavigator] = useState(false);
   const [reviewIndex, setReviewIndex] = useState(0);
   const [activePartKey, setActivePartKey] = useState(null);
@@ -326,8 +328,12 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false 
             </ul>
           </div>
           <div className="paper2027-source-note">SPARK 2027 syllabus practice · Module 1 only. Papers A, B and C currently cover the completed 30-mark Module 1 section.</div>
-          <button type="button" className="paper-start-button" onClick={beginPaper}>{startFresh ? "Start Paper" : "Begin Paper"}</button>
+          <div className="paper2-start-actions paper2027-start-actions">
+            <button type="button" className="practice-secondary" onClick={() => setShowFormula(true)}>View formula sheet</button>
+            <button type="button" className="practice-primary" onClick={beginPaper}>{startFresh ? "Start Paper" : "Begin Paper"}</button>
+          </div>
         </section>
+        {showFormula && <FormulaModal onClose={() => setShowFormula(false)} />}
       </main>
     );
   }
@@ -410,6 +416,7 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false 
         </div>
         <div className={`paper-timer ${remaining <= 300 ? "is-low" : ""}`}><span>Time remaining</span><strong>{formatClock(remaining)}</strong></div>
         <div className="paper2-header-actions">
+          <button type="button" className="paper2-formula-control" onClick={() => setShowFormula(true)}>Formula sheet</button>
           <button type="button" className="paper-nav-toggle" aria-expanded={showNavigator} onClick={() => setShowNavigator(true)}>Questions {currentIndex + 1}/3</button>
           <button type="button" className="paper-submit-top" onClick={() => setShowSubmit(true)}>Submit module</button>
         </div>
@@ -529,8 +536,9 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false 
         </div>
       )}
 
-      {showSubmit && (
-        <div className="paper-modal-backdrop" role="presentation" onMouseDown={() => setShowSubmit(false)}>
+      {showFormula && <FormulaModal onClose={() => setShowFormula(false)} />}
+
+      {showSubmit && (        <div className="paper-modal-backdrop" role="presentation" onMouseDown={() => setShowSubmit(false)}>
           <section className="paper-submit-modal" role="dialog" aria-modal="true" aria-label="Submit Module 1" onMouseDown={event => event.stopPropagation()}>
             <div className="paper-submit-icon">✓</div>
             <h2>Submit Module 1?</h2>

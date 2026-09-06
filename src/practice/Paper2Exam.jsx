@@ -141,7 +141,7 @@ const FORMULAE = [
   },
 ];
 
-function FormulaModal({ onClose }) {
+export function FormulaModal({ onClose }) {
   return (
     <div className="paper-modal-backdrop" role="presentation" onMouseDown={onClose}>
       <section className="paper2-formula-modal" role="dialog" aria-modal="true" aria-label="Mathematics formula sheet" onMouseDown={event => event.stopPropagation()}>
