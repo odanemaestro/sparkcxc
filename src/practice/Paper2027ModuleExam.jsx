@@ -519,7 +519,7 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false 
 
         <aside className="paper-navigator paper2-navigator paper-navigator-desktop">
           <div className="paper-navigator-title"><strong>Module 1</strong><span>{completeIds.length}/3 fully answered</span></div>
-          <div className="paper2-nav-section"><div className="paper2-nav-section-head"><span>Fundamentals</span><b>30 marks</b></div><div className="paper2-nav-grid paper2027-nav-grid">{paper.questions.map((question, index) => <button type="button" key={question.question_id} className={`${index === currentIndex ? "current " : ""}${completeSet.has(question.question_id) ? "complete " : ""}${flaggedSet.has(question.question_id) ? "flagged" : ""}`} onClick={() => goToQuestion(index)}>{question.question_number}</button>)}</div></div>
+          <div className="paper2-nav-section"><div className="paper2-nav-section-head"><span>Fundamentals</span><b>30 marks</b></div><div className="paper-nav-grid paper2-nav-grid paper2027-nav-grid">{paper.questions.map((question, index) => <button type="button" key={question.question_id} className={`${index === currentIndex ? "current " : ""}${completeSet.has(question.question_id) ? "answered " : ""}${flaggedSet.has(question.question_id) ? "flagged" : ""}`} onClick={() => goToQuestion(index)}>{question.question_number}</button>)}</div></div>
           <div className="paper2027-nav-profile"><span>CK 9</span><span>AK 12</span><span>R 9</span></div>
           <button type="button" className="paper-submit-side" onClick={() => setShowSubmit(true)}>Submit Module 1</button>
         </aside>
@@ -529,7 +529,7 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false 
         <div className="paper-nav-drawer-backdrop" role="presentation" onMouseDown={() => setShowNavigator(false)}>
           <section className="paper-nav-drawer" role="dialog" aria-modal="true" aria-label="Question navigator" onMouseDown={event => event.stopPropagation()}>
             <div className="paper-nav-drawer-head"><div><span>2027 Module 1</span><strong>Questions</strong></div><button type="button" onClick={() => setShowNavigator(false)} aria-label="Close question navigator">×</button></div>
-            <div className="paper2-nav-grid paper2027-drawer-grid">{paper.questions.map((question, index) => <button type="button" key={question.question_id} className={`${index === currentIndex ? "current " : ""}${completeSet.has(question.question_id) ? "complete " : ""}${flaggedSet.has(question.question_id) ? "flagged" : ""}`} onClick={() => goToQuestion(index)}>{question.question_number}</button>)}</div>
+            <div className="paper-nav-grid paper2-nav-grid paper2027-drawer-grid">{paper.questions.map((question, index) => <button type="button" key={question.question_id} className={`${index === currentIndex ? "current " : ""}${completeSet.has(question.question_id) ? "answered " : ""}${flaggedSet.has(question.question_id) ? "flagged" : ""}`} onClick={() => goToQuestion(index)}>{question.question_number}</button>)}</div>
             <div className="paper-nav-drawer-status"><span>{completeIds.length} complete</span><span>{3 - completeIds.length} remaining</span></div>
             <button type="button" className="paper-drawer-submit" onClick={() => { setShowNavigator(false); setShowSubmit(true); }}>Submit Module 1</button>
           </section>

@@ -1384,3 +1384,23 @@ html[data-theme="dark"] .paper2027-exam-shell .paper2-nav-section-head span{
     width:100%;
   }
 }
+
+
+/* SPARK 2027 NAVIGATOR PARITY V5.3.6D */
+/* Reuse the exact Paper 2 question-button treatment for the 2027 module navigator. */
+.paper2027-exam-shell .paper-nav-grid.paper2027-nav-grid,
+.paper2027-exam-shell .paper-nav-grid.paper2027-drawer-grid{
+  grid-template-columns:repeat(3,1fr)!important;
+  gap:7px!important;
+}
+.paper2027-exam-shell .paper-nav-grid.paper2027-nav-grid{
+  margin:10px 0 8px!important;
+}
+.paper2027-exam-shell .paper-nav-grid.paper2027-nav-grid button,
+.paper2027-exam-shell .paper-nav-grid.paper2027-drawer-grid button{
+  min-width:0!important;
+  min-height:0!important;
+  aspect-ratio:1!important;
+  border-radius:8px!important;
+  font:800 11px 'Atkinson Hyperlegible','Inter','Segoe UI',sans-serif!important;
+}
