@@ -430,7 +430,7 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false 
             <button type="button" className={`paper-flag ${flaggedSet.has(current.question_id) ? "is-flagged" : ""}`} onClick={toggleFlag}>{flaggedSet.has(current.question_id) ? "Flagged" : "Flag for review"}</button>
           </div>
           <div className="paper2-question-meta paper2027-question-meta">
-            <span>{current.topic}</span><b>{current.marks} marks</b>{current.question_number === 2 && <em>Investigation</em>}
+            <span>{current.topic}</span><b>{current.marks} marks</b>
           </div>
           {current.stem && <MathText as="p" className="paper2-stem paper2027-stem">{current.stem}</MathText>}
 
