@@ -1498,3 +1498,51 @@ html[data-theme="dark"] .paper2027-diagram svg{
     max-width:100%;
   }
 }
+
+
+/* SPARK REVIEW NAVIGATOR HARD SIZE FIX V5.3.6K */
+/* Give the result-review number strip its own explicit class so legacy/live
+   navigator grid rules can never stretch these controls into cards. */
+.paper2-review-nav{
+  grid-template-columns:auto minmax(0,1fr) auto;
+}
+.paper2-review-nav > .paper-review-number-group{
+  display:flex!important;
+  grid-template-columns:none!important;
+  align-items:center!important;
+  justify-content:center!important;
+  flex-wrap:wrap!important;
+  gap:8px!important;
+  min-width:0!important;
+  width:auto!important;
+}
+.paper2-review-nav > .paper-review-number-group > button{
+  box-sizing:border-box!important;
+  flex:0 0 46px!important;
+  width:46px!important;
+  height:46px!important;
+  min-width:46px!important;
+  min-height:46px!important;
+  max-width:46px!important;
+  max-height:46px!important;
+  aspect-ratio:auto!important;
+  padding:0!important;
+  border-radius:9px!important;
+  line-height:1!important;
+}
+@media(max-width:720px){
+  .paper2-review-nav > .paper-review-number-group{
+    grid-column:1/-1!important;
+    grid-row:1!important;
+    gap:6px!important;
+  }
+  .paper2-review-nav > .paper-review-number-group > button{
+    flex-basis:42px!important;
+    width:42px!important;
+    height:42px!important;
+    min-width:42px!important;
+    min-height:42px!important;
+    max-width:42px!important;
+    max-height:42px!important;
+  }
+}

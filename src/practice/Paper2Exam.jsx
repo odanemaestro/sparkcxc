@@ -575,7 +575,7 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
           </div>
           <div className="paper2-review-nav">
             <button type="button" disabled={reviewIndex === 0} onClick={() => setReviewIndex(index => Math.max(0, index - 1))}>Previous</button>
-            <div>{exam.questions.map((question, index) => {
+            <div className="paper-review-number-group">{exam.questions.map((question, index) => {
               const questionGrade = grade.perQuestion[question.question_id];
               return <button type="button" key={question.question_id} title={`${questionGrade.score}/${question.marks} marks`} className={`${index === reviewIndex ? "active " : ""}${questionGrade.score === question.marks ? "marked" : ""}`} onClick={() => setReviewIndex(index)}>{question.question_number}</button>;
             })}</div>

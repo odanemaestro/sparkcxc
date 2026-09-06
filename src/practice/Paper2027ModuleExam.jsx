@@ -397,7 +397,7 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false 
           </div>
           <div className="paper2-review-nav paper2027-review-nav">
             <button type="button" disabled={reviewIndex === 0} onClick={() => setReviewIndex(index => Math.max(0, index - 1))}>Previous</button>
-            <div>{paper.questions.map((question, index) => <button type="button" key={question.question_id} className={`${index === reviewIndex ? "active " : ""}${grade.perQuestion[question.question_id].score === question.marks ? "marked" : ""}`} onClick={() => setReviewIndex(index)}>{question.question_number}</button>)}</div>
+            <div className="paper-review-number-group">{paper.questions.map((question, index) => <button type="button" key={question.question_id} className={`${index === reviewIndex ? "active " : ""}${grade.perQuestion[question.question_id].score === question.marks ? "marked" : ""}`} onClick={() => setReviewIndex(index)}>{question.question_number}</button>)}</div>
             <button type="button" disabled={reviewIndex === 2} onClick={() => setReviewIndex(index => Math.min(2, index + 1))}>Next</button>
           </div>
         </section>
