@@ -71,9 +71,7 @@ export default function PracticeHub({ supabase, userId, setView }) {
           <div className="practice-mode-label">Paper 1 examination</div>
           <h2>Paper 1 Simulator</h2>
           <p>Answer 60 multiple-choice questions in 1 hour 30 minutes. Questions are selected to reflect the topic coverage and question types used in CSEC Mathematics Paper 01.</p>
-          <div className="practice-specs">
-            <span>60 questions</span><span>90 minutes</span><span>60 marks</span><span>Multiple choice</span>
-          </div>
+          <div className="practice-specs-line">60 questions <span>·</span> 90 minutes <span>·</span> 60 marks <span>·</span> Multiple choice</div>
           <div className="practice-card-actions">
             {paper1Active?.questionIds?.length === 60 && <button type="button" className="practice-primary" onClick={() => { setExamIntent("resume"); setMode("paper1"); }}>Resume paper</button>}
             <button type="button" className={paper1Active?.questionIds?.length === 60 ? "practice-secondary" : "practice-primary"} onClick={() => { setExamIntent("new"); setMode("paper1"); }}>Start new paper</button>
@@ -85,9 +83,7 @@ export default function PracticeHub({ supabase, userId, setView }) {
           <div className="practice-mode-label">Paper 2 examination</div>
           <h2>Paper 2 Simulator</h2>
           <p>Answer 10 compulsory structured questions in 2 hours 40 minutes. The paper follows the Section I and Section II mark allocation used in CSEC Mathematics Paper 02. Answers are marked when the paper is submitted.</p>
-          <div className="practice-specs">
-            <span>10 questions</span><span>160 minutes</span><span>100 marks</span><span>Auto-graded</span>
-          </div>
+          <div className="practice-specs-line">10 questions <span>·</span> 160 minutes <span>·</span> 100 marks <span>·</span> Auto-graded</div>
           <div className="practice-card-actions">
             {paper2Active?.exam?.questions?.length === 10 && <button type="button" className="practice-primary" onClick={() => { setExamIntent("resume"); setMode("paper2"); }}>Resume paper</button>}
             <button type="button" className={paper2Active?.exam?.questions?.length === 10 ? "practice-secondary" : "practice-primary"} onClick={() => { setExamIntent("new"); setMode("paper2"); }}>Start new paper</button>
@@ -99,9 +95,7 @@ export default function PracticeHub({ supabase, userId, setView }) {
           <div className="practice-mode-label">Topic practice</div>
           <h2>Adaptive Practice</h2>
           <p>Select a topic and answer questions based on your recent performance.</p>
-          <div className="practice-specs">
-            <span>Topic focused</span><span>Worked solutions</span><span>Immediate feedback</span>
-          </div>
+          <div className="practice-specs-line">Topic focused <span>·</span> Worked solutions <span>·</span> Immediate feedback</div>
           <div className="practice-card-actions"><button type="button" className="practice-secondary" onClick={() => setMode("adaptive")}>Open adaptive practice</button></div>
         </article>
       </section>
@@ -111,9 +105,7 @@ export default function PracticeHub({ supabase, userId, setView }) {
           <div className="practice-2027-feature-kicker"><span>NEW</span> Effective for examinations from May–June 2027</div>
           <h2>2027 Syllabus Practice</h2>
           <p>Practise the revised modular CSEC Mathematics format, including the compulsory Module 1 investigation and questions written for the amended syllabus objectives.</p>
-          <div className="practice-specs">
-            <span>3 modules</span><span>New Paper 2 structure</span><span>CK · AK · R</span><span>Module practice</span>
-          </div>
+          <div className="practice-feature-specs-line">3 modules <span>·</span> New Paper 2 structure <span>·</span> Conceptual Knowledge <span>·</span> Algorithmic Knowledge <span>·</span> Reasoning</div>
         </div>
         <button type="button" className="practice-primary practice-2027-open" onClick={() => setMode("2027")}>Open 2027 practice</button>
       </section>

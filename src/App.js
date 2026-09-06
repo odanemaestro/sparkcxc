@@ -48,6 +48,7 @@ import Modal from "./components/ui/Modal";
 import ScrollToTopButton from "./components/ui/ScrollToTopButton";
 import SparkLoader from "./components/ui/SparkLoader";
 import ReportQuestionButton from "./components/ui/ReportQuestionButton";
+import Icon from "./components/ui/Icon";
 import StudyCirclesPanel from "./components/studyCircles/StudyCirclesPanel";
 import NotificationCenter from "./components/notifications/NotificationCenter";
 import { friendlyErrorMessage } from "./lib/errorMessages";
@@ -1328,7 +1329,7 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
       <div className="home-hero" style={{background:`linear-gradient(150deg,${T.navyDeep} 0%,#1A3A6B 55%,${T.tealDeep} 100%)`,
         color:"#fff",padding:"76px 28px 60px",textAlign:"center",position:"relative",overflow:"hidden"}}>
         <div className="orb orb-float" style={{width:340,height:340,background:"#5EEAD4",top:-120,left:-80}}/>
-        <div className="orb orb-float" style={{width:300,height:300,background:"#FCD34D",bottom:-140,right:-60,animationDelay:"2s",opacity:.35}}/>
+        <div className="orb orb-float" style={{width:300,height:300,background:"#FCD34D",bottom:-140,right:-60,animationDelay:"2s",opacity:.18}}/>
         <div className="home-hero-inner spark-home-hero-inner" style={{position:"relative",width:"100%",margin:"0 auto"}}>
         <div className="home-kicker spark-home-hero-badge" style={{display:"inline-block",fontSize:12,fontWeight:600,textTransform:"uppercase",letterSpacing:"0.1em",
           color:"#5EEAD4",marginBottom:16,padding:"6px 14px",borderRadius:99,
@@ -1388,7 +1389,10 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
           <div style={{display:"flex",flexDirection:"column",gap:8}}>
             {[["(x − 1)(x − 4)", true],["(x + 1)(x − 4)", false],
               ["(x − 2)(x − 2)", false],["(x + 1)(x + 4)", false]].map(([opt, correct], i) => (
-              <div key={i} onClick={() => !demoAnswer && setDemoAnswer(i)}
+              <div key={i} onClick={() => demoAnswer === null && setDemoAnswer(i)}
+                onKeyDown={e => { if (demoAnswer === null && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); setDemoAnswer(i); } }}
+                role="button" tabIndex={demoAnswer === null ? 0 : -1} aria-disabled={demoAnswer !== null}
+                className={demoAnswer === null ? "demo-option" : ""}
                 style={{padding:"10px 14px",borderRadius:T.rSm,fontSize:13,
                   cursor:demoAnswer!==null?"default":"pointer",transition:`all .18s ${T.ease}`,
                   border:`1.5px solid ${demoAnswer===null?T.border:correct?T.emerald:demoAnswer===i?T.red:T.border}`,
@@ -3257,18 +3261,18 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   }
 
   const navItems = isTutor ? [
-    {k:"overview",icon:"📊",label:"Overview"},
-    {k:"sessions",icon:"📅",label:"My sessions"},
-    {k:"students",icon:"🎓",label:"My students"},
-    {k:"reviews",icon:"⭐",label:"Reviews"},
-    {k:"earnings",icon:"💰",label:"Earnings"},
-    {k:"profile",icon:"👤",label:"My profile"},
+    {k:"overview",icon:"overview",label:"Overview"},
+    {k:"sessions",icon:"bookings",label:"My sessions"},
+    {k:"students",icon:"students",label:"My students"},
+    {k:"reviews",icon:"reviews",label:"Reviews"},
+    {k:"earnings",icon:"earnings",label:"Earnings"},
+    {k:"profile",icon:"profile",label:"My profile"},
   ] : [
-    {k:"overview",icon:"📊",label:"Overview"},
-    {k:"subjects",icon:"📚",label:"My subjects"},
-    {k:"progress",icon:"📈",label:"Progress"},
-    {k:"circles",icon:"🤝",label:"Study Circles"},
-    {k:"bookings",icon:"📅",label:"My bookings"},
+    {k:"overview",icon:"overview",label:"Overview"},
+    {k:"subjects",icon:"subjects",label:"My subjects"},
+    {k:"progress",icon:"progress",label:"Progress"},
+    {k:"circles",icon:"circles",label:"Study Circles"},
+    {k:"bookings",icon:"bookings",label:"My bookings"},
   ];
   const dashboardAvatarPath = tutorRow?.avatar_path || profile?.avatar_path || "";
   const dashboardProfile = dashboardAvatarPath === (profile?.avatar_path || "")
@@ -3308,7 +3312,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
               fontWeight:sec===item.k?600:500,transition:`all .18s ${T.ease}`}}
             onMouseEnter={e=>{if(sec!==item.k)e.currentTarget.style.background=T.muted;}}
             onMouseLeave={e=>{if(sec!==item.k)e.currentTarget.style.background="transparent";}}>
-            <span className="dash-nav-icon" aria-hidden="true">{item.icon}</span>
+            <span className="dash-nav-icon" aria-hidden="true"><Icon name={item.icon} /></span>
             <span className="dash-nav-label">{item.label}</span>
           </div>
         ))}
@@ -3320,7 +3324,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 borderRadius:T.rSm,transition:`all .18s ${T.ease}`}}
               onMouseEnter={e=>e.currentTarget.style.background=T.muted}
               onMouseLeave={e=>e.currentTarget.style.background="transparent"}>
-              <span className="dash-nav-icon" aria-hidden="true">📖</span>
+              <span className="dash-nav-icon" aria-hidden="true"><Icon name="study" /></span>
               <span className="dash-nav-label">Study</span>
             </div>
             <div className="dash-nav-item dash-secondary-item" onClick={() => setView("tutors")}
@@ -3328,7 +3332,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 borderRadius:T.rSm,transition:`all .18s ${T.ease}`}}
               onMouseEnter={e=>e.currentTarget.style.background=T.muted}
               onMouseLeave={e=>e.currentTarget.style.background="transparent"}>
-              <span className="dash-nav-icon" aria-hidden="true">🎓</span>
+              <span className="dash-nav-icon" aria-hidden="true"><Icon name="tutor" /></span>
               <span className="dash-nav-label">Find a tutor</span>
             </div>
           </>
@@ -3339,7 +3343,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
               borderRadius:T.rSm,transition:`all .18s ${T.ease}`,marginTop:!isTutor?0:10}}
             onMouseEnter={e=>e.currentTarget.style.background=T.tealLight}
             onMouseLeave={e=>e.currentTarget.style.background="transparent"}>
-            <span className="dash-nav-icon" aria-hidden="true">🧑‍🏫</span>
+            <span className="dash-nav-icon" aria-hidden="true"><Icon name="tutor" /></span>
             <span className="dash-nav-label">Submit application to become a tutor</span>
           </div>
         )}
@@ -3437,7 +3441,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
             <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(140px,1fr))",
               gap:14,marginBottom:24}}>
               {[["Topics done",done,T.teal],["Syllabus covered",done>0?`${Math.round((done/totalTopics)*100)}%`:"0%",T.purple],
-                ["Sessions booked",bookings.length,T.amber],["Day streak",streak>0?`${streak} 🔥`:"0",T.emerald]].map(([label,val,accent]) => (
+                ["Sessions booked",bookings.length,T.amber],["Day streak",streak>0?streak:"0",T.emerald]].map(([label,val,accent]) => (
                 <Card key={label} style={{padding:18,borderTop:`3px solid ${accent}`}}>
                   <div style={{fontFamily:FD,fontSize:26,fontWeight:700,color:T.ink}}>{val}</div>
                   <div style={{fontSize:11,color:T.textMuted,textTransform:"uppercase",letterSpacing:"0.04em",marginTop:3}}>
@@ -3450,10 +3454,11 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
               <div style={{fontFamily:FD,fontSize:17,fontWeight:600,color:T.ink,marginBottom:10}}>
                 CSEC Mathematics
               </div>
-              <ProgressBar value={done} max={totalTopics} style={{marginBottom:6}}/>
-              <div style={{fontSize:12,color:T.textMuted,marginBottom:14}}>
-                {done} of {totalTopics} topics complete · {SYLLABUS_SECTIONS.length} sections
+              <div className="dashboard-progress-meta" style={{display:"flex",justifyContent:"space-between",gap:12,fontSize:12,color:T.textMuted,marginBottom:7}}>
+                <span>{done} of {totalTopics} topics complete · {SYLLABUS_SECTIONS.length} sections</span>
+                <span style={{fontWeight:700,color:T.ink,whiteSpace:"nowrap"}}>{done>0?Math.round((done/totalTopics)*100):0}%</span>
               </div>
+              <ProgressBar value={done} max={totalTopics} style={{marginBottom:14}}/>
               <Btn onClick={() => setView("lesson")}>Continue studying →</Btn>
             </Card>
             {parentLinks.filter(l => l.status === "pending").length > 0 && (
@@ -3479,7 +3484,17 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                   <div style={{fontFamily:FD,fontSize:17,fontWeight:700,color:T.ink,margin:"3px 0 5px"}}>Share this with a parent or guardian</div>
                   <p style={{fontSize:13,color:T.textMuted,lineHeight:1.5,margin:0}}>They can use it to request access to your learning progress. You stay in control and approve the connection.</p>
                 </div>
-                <div className="family-code-value">{familyCode}</div>
+                <div className="family-code-actions" style={{display:"flex",alignItems:"center",justifyContent:"flex-end",gap:10,flexWrap:"wrap"}}>
+                  <div className="family-code-value">{familyCode}</div>
+                  <Btn v="outline" style={{padding:"9px 14px",fontSize:12.5,whiteSpace:"nowrap"}} onClick={async () => {
+                    try {
+                      await navigator.clipboard.writeText(familyCode);
+                      showToast("Family code copied");
+                    } catch {
+                      showToast("Couldn't copy the family code. Please copy it manually.");
+                    }
+                  }}>Copy code</Btn>
+                </div>
               </Card>
             )}
           </>

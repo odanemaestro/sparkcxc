@@ -15,7 +15,7 @@ const Btn = ({ children, onClick, v = "primary", style: s = {}, disabled = false
     danger:{ background:T.red,color:"#fff",boxShadow:hover&&!disabled?"0 6px 18px rgba(220,38,38,.3)":"0 2px 8px rgba(220,38,38,.18)" },
     amber:{ background:T.amber,color:"#fff",boxShadow:hover&&!disabled?"0 6px 18px rgba(217,119,6,.32)":"0 2px 8px rgba(217,119,6,.2)" },
     outline:{ background:hover&&!disabled?T.muted:"transparent",color:T.ink,border:`1.5px solid ${hover&&!disabled?T.ink:T.border}` },
-    ghost:{ background:hover&&!disabled?"rgba(255,255,255,.18)":"rgba(255,255,255,.08)",color:"#fff",border:"1px solid rgba(255,255,255,.22)" },
+    ghost:{ background:hover&&!disabled?"rgba(255,255,255,.22)":"rgba(255,255,255,.12)",color:"#fff",border:`1.5px solid rgba(255,255,255,${hover&&!disabled?".55":".4"})` },
     tealOutline:{ background:hover&&!disabled?T.tealLight:"transparent",color:T.teal,border:`1.5px solid ${T.teal}` },
     success:{ background:T.emerald,color:"#fff",boxShadow:hover&&!disabled?"0 6px 18px rgba(5,150,105,.3)":"0 2px 8px rgba(5,150,105,.18)" },
   };

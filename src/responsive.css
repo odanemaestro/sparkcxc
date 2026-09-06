@@ -1186,6 +1186,7 @@ input,select,textarea,button{max-width:100%}
     min-height:0 !important;
   }
 
+
   .profile-photo-remove{
     top:-12px !important;
     right:-14px !important;
@@ -1883,7 +1884,8 @@ input,select,textarea,button{max-width:100%}
    Desktop is intentionally unchanged. Tablets use the available width more
    efficiently, while compact profile views avoid destructive overlay controls.
    ========================================================================== */
-.dash-nav-icon{flex:0 0 auto;line-height:1}
+.dash-nav-icon{flex:0 0 auto;line-height:1;font-size:18px}
+.dash-nav-icon svg{width:1em!important;height:1em!important}
 .dash-nav-label{min-width:0}
 .dash-secondary-item{display:flex!important;align-items:center!important;gap:8px!important}
 .tutor-dashboard-greeting-row{display:block}
@@ -2005,4 +2007,13 @@ input,select,textarea,button{max-width:100%}
     margin-bottom:0!important;
     line-height:1.45!important;
   }
+}
+
+
+/* SPARK UI REFINEMENT V5.3.8 - compact dashboard utility rows */
+@media(max-width:560px){
+  .dashboard-progress-meta{align-items:flex-start;flex-direction:column;gap:3px!important}
+  .family-code-actions{width:100%;justify-content:stretch!important}
+  .family-code-actions .family-code-value{flex:1 1 100%;width:100%;text-align:center}
+  .family-code-actions button{flex:1 1 100%}
 }

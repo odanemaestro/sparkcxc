@@ -37,7 +37,8 @@ export default function GlobalStyles() {
       .glass-nav{background:rgba(8,26,61,.82);backdrop-filter:blur(14px) saturate(150%);-webkit-backdrop-filter:blur(14px) saturate(150%);border-bottom:1px solid rgba(255,255,255,.08);}
 
       /* ── Decorative gradient orbs (hero backgrounds) ───────────────── */
-      .orb{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none;opacity:.55;}
+      .orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;opacity:.28;}
+      .demo-option:hover,.demo-option:focus-visible{border-color:${T.teal}!important;background:${T.tealLight}!important;transform:translateY(-1px);}
       @keyframes floaty{0%,100%{transform:translate(0,0);}50%{transform:translate(-14px,18px);}}
       .orb-float{animation:floaty 10s ease-in-out infinite;}
 

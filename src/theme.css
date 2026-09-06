@@ -268,27 +268,6 @@ html[data-theme="dark"] .paper2-answer-preview>span{
 html[data-theme="dark"] ::-webkit-scrollbar-thumb{background:var(--spark-border-strong)}
 html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover{background:#4C6686}
 
-/* Mobile selector belongs inside the hamburger, not the compact top bar. */
-.spark-mobile-theme-block{display:none}
-@media(max-width:700px){
-  .spark-mobile-theme-block{
-    display:grid;
-    gap:8px;
-    padding:12px 0;
-    border-top:1px solid rgba(255,255,255,.08);
-    border-bottom:1px solid rgba(255,255,255,.08);
-    margin:4px 0 10px;
-  }
-  .spark-mobile-theme-block>span{
-    color:rgba(255,255,255,.58);
-    font-size:9.5px;
-    font-weight:900;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-  }
-}
-
-
 /* ==========================================================================
    SPARK DARK MODE VISUAL POLISH V7.1 2026-09
    Visual-acceptance fixes from desktop Dark-mode review.
@@ -309,12 +288,13 @@ html[data-theme="dark"] .example-box .solution-content{
 }
 html[data-theme="dark"] .practice-back{background:transparent !important;color:var(--spark-ink) !important}
 html[data-theme="dark"] .practice-mode-icon{
-  background:var(--spark-surface-navy) !important;
-  color:var(--spark-ink) !important;
+  background:var(--spark-navy-mid) !important;
+  color:#fff !important;
   border:1px solid var(--spark-border) !important;
-  box-shadow:none !important;
+  box-shadow:0 8px 20px rgba(0,0,0,.22) !important;
 }
-html[data-theme="dark"] .adaptive-icon{background:var(--spark-purple-light) !important;color:var(--spark-purple) !important}
+html[data-theme="dark"] .paper2-mode-icon{background:var(--spark-navy-mid) !important;color:#fff !important}
+html[data-theme="dark"] .adaptive-icon{background:var(--spark-purple) !important;color:#09111f !important}
 html[data-theme="dark"] .practice-specs span{
   background:var(--spark-muted) !important;
   border-color:var(--spark-border) !important;
@@ -330,14 +310,14 @@ html[data-theme="dark"] .practice-secondary:hover{
   border-color:var(--spark-teal) !important;
 }
 html[data-theme="dark"] .practice-integrity-card{
-  background:var(--spark-surface-navy) !important;
+  background:var(--spark-paper) !important;
   color:var(--spark-ink) !important;
   border:1px solid var(--spark-border) !important;
 }
 html[data-theme="dark"] .practice-integrity-card h2{color:var(--spark-ink) !important}
 html[data-theme="dark"] .practice-integrity-card p{color:var(--spark-ink-soft) !important}
 html[data-theme="dark"] .practice-integrity-stats div{
-  background:var(--spark-paper-raised) !important;
+  background:transparent !important;
   border-color:var(--spark-border) !important;
 }
 html[data-theme="dark"] .practice-integrity-stats strong{color:var(--spark-ink) !important}
