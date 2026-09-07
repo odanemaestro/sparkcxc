@@ -1517,7 +1517,17 @@ function AuthView({ setView, initialMode = "signup", recoveryMode = false }) {
         if (passwordError) throw new Error(passwordError);
         const cleanEmail = email.trim().toLowerCase();
         if (!cleanEmail) throw new Error("Enter your email address.");
-        const { data, error } = await supabase.auth.signUp({
+        const { data: emailRegistered, error: emailRegisteredError } = await supabase.rpc("spark_email_registered", {
+              p_email: cleanEmail,
+            });
+            if (emailRegisteredError) {
+              throw new Error("We couldn't check this email right now. Please try again.");
+            }
+            if (emailRegistered === true) {
+              throw new Error("An account already exists with this email. Log in instead or use Forgot password.");
+            }
+
+            const { data, error } = await supabase.auth.signUp({
           email: cleanEmail, password,
           options: { data: { name: name.trim(), role } }
         });
