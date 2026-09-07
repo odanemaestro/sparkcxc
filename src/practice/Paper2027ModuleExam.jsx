@@ -3,15 +3,8 @@ import MathText from "./MathText";
 import Paper2ResponseInput from "./Paper2ResponseInput";
 import { FormulaModal } from "./Paper2Exam";
 import {
-  gradeCxcPaper2Part,
-  hasPaper2CxcPartResponse,
-  hasPaper2FinalAnswer,
-  normalizePaper2TypedResponse,
-  paper2PartUsesWorking,
-  paper2ResponseSummary,
-  paper2WorkingSummary,
-} from "./paper2CxcGrader";
-import { isPaper2PartComplete } from "./paper2RichGrader";
+  gradeCxcPaper2Part, hasPaper2CxcPartResponse, hasPaper2FinalAnswer, normalizePaper2TypedResponse, paper2PartUsesWorking, paper2ResponseSummary, paper2WorkingSummary, } from "./paper2CxcGrader";
+import { buildCanonicalPaper2Response, isPaper2PartComplete } from "./paper2RichGrader";
 import {
   CSEC_2027_MODULES,
   CSEC_2027_RESULTS_KEY,
@@ -265,8 +258,22 @@ function ProfileStrip({ profile, className = "paper2027-profile-strip" }) {
 
 function RichReview({ part, response }) {
   const type = part?.responseSchema?.type;
-  if (!type || !["construction", "construction_triangle", "graph"].includes(type)) return null;
-  return <Paper2ResponseInput part={part} value={response} readOnly />;
+  const visualTypes = ["graph", "construction", "construction_triangle", "table", "tile_pattern"];
+  if (!visualTypes.includes(type)) return null;
+  const reference = buildCanonicalPaper2Response(part);
+  const noun = type === "graph" ? "graph" : type === "table" ? "table" : type === "tile_pattern" ? "design" : "construction";
+  return (
+    <div className="paper2-workspace-review-grid paper2027-workspace-review-grid">
+      <section>
+        <span>{`Your ${noun}`}</span>
+        <Paper2ResponseInput part={part} value={response} readOnly />
+      </section>
+      <section className="paper2-model-review">
+        <span>{`Correct ${noun}`}</span>
+        <Paper2ResponseInput part={part} value={reference} readOnly />
+      </section>
+    </div>
+  );
 }
 
 export default function Paper2027ModuleExam({ paper, onExit, startFresh = false, supabase = null, userId = null }) {

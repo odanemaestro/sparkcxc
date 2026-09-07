@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Paper2027ModuleExam from "./Paper2027ModuleExam";
 import {
   CSEC_2027_LEGACY_RESULTS_KEY,
@@ -44,6 +44,12 @@ export default function Syllabus2027Hub({ onExit, supabase, userId }) {
   const mode = CSEC_2027_PRACTICE_MODES.find(item => item.key === modeKey) || CSEC_2027_PRACTICE_MODES[0];
   const papers = useMemo(() => getCsec2027Papers(modeKey), [modeKey]);
 
+
+  // SPARK V5.3.9I1 TOP RESET
+  // SPA navigation keeps the previous scroll position unless this page resets it.
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [selectedPaper]);
   if (selectedPaper) {
     return <Paper2027ModuleExam paper={selectedPaper} onExit={() => { setSelectedPaper(null); setResults(allResults()); }} startFresh={startFresh} supabase={supabase} userId={userId} />;
   }

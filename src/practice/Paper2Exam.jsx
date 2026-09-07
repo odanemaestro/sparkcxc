@@ -217,17 +217,18 @@ function QuestionPrompt({ question }) {
 
 function Paper2WorkspaceReview({ part, response }) {
   const type = part?.responseSchema?.type;
-  if (!["graph", "construction", "construction_triangle"].includes(type)) return null;
+  const visualTypes = ["graph", "construction", "construction_triangle", "table", "tile_pattern"];
+  if (!visualTypes.includes(type)) return null;
   const reference = buildCanonicalPaper2Response(part);
-  const noun = type === "graph" ? "graph" : "construction";
+  const noun = type === "graph" ? "graph" : type === "table" ? "table" : type === "tile_pattern" ? "design" : "construction";
   return (
     <div className="paper2-workspace-review-grid">
       <section>
-        <span>Your {noun}</span>
+        <span>{`Your ${noun}`}</span>
         <Paper2ResponseInput part={part} value={response} readOnly />
       </section>
-      <section>
-        <span>Reference {noun}</span>
+      <section className="paper2-model-review">
+        <span>{`Correct ${noun}`}</span>
         <Paper2ResponseInput part={part} value={reference} readOnly />
       </section>
     </div>

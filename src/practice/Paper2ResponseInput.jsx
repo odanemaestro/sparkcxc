@@ -218,13 +218,13 @@ function FieldsResponse({ schema, value, onChange }) {
   );
 }
 
-function TableResponse({ schema, value, onChange }) {
+function TableResponse({ schema, value, onChange, readOnly = false }) {
   const response = safeObject(value);
   const cells = safeObject(response.cells);
-  const update = (key, next) => onChange({ ...response, cells: { ...cells, [key]: next } });
+  const update = (key, next) => { if (!readOnly) onChange({ ...response, cells: { ...cells, [key]: next } }); };
   return (
-    <div className="paper2-workspace paper2-table-workspace">
-      <p className="paper2-workspace-help">Complete the blank cells directly in the table. Each box is saved as you type.</p>
+    <div className={`paper2-workspace paper2-table-workspace${readOnly ? " paper2-workspace-readonly" : ""}`}>
+      {!readOnly && <p className="paper2-workspace-help">Complete the blank cells directly in the table. Each box is saved as you type.</p>}
       <div className="paper2-table-input-wrap">
         <table className="paper2-data-table paper2-input-table">
           {(schema.headers || []).length > 0 && (
@@ -237,7 +237,9 @@ function TableResponse({ schema, value, onChange }) {
                   const editable = cell && typeof cell === "object" && !Array.isArray(cell) && cell.key;
                   return (
                     <td key={`${rowIndex}-${cellIndex}`} className={editable ? "paper2-table-editable" : ""}>
-                      {editable ? (
+                      {editable ? (readOnly ? (
+                        <span className="paper2-table-review-value"><MathText>{String(cells[cell.key] ?? "—")}</MathText></span>
+                      ) : (
                         <input
                           type="text"
                           inputMode={cell.inputMode || "text"}
@@ -248,7 +250,7 @@ function TableResponse({ schema, value, onChange }) {
                           placeholder={cell.placeholder || "?"}
                           aria-label={cell.label || `Table row ${rowIndex + 1}, column ${cellIndex + 1}`}
                         />
-                      ) : <MathText>{cell ?? ""}</MathText>}
+                      )) : <MathText>{cell ?? ""}</MathText>}
                     </td>
                   );
                 })}
@@ -257,9 +259,9 @@ function TableResponse({ schema, value, onChange }) {
           </tbody>
         </table>
       </div>
-      <div className="paper2-workspace-status">
+      {!readOnly && <div className="paper2-workspace-status">
         {Object.values(cells).filter(item => String(item ?? "").trim()).length} of {Number(schema.blankCount || 0)} table entr{Number(schema.blankCount || 0) === 1 ? "y" : "ies"} filled
-      </div>
+      </div>}
     </div>
   );
 }
@@ -489,11 +491,12 @@ function ConstructionWorkspace({ schema, part, value, onChange, readOnly = false
   );
 }
 
-function TilePatternWorkspace({ value, onChange }) {
+function TilePatternWorkspace({ value, onChange, readOnly = false }) {
   const response = safeObject(value);
   const cells = Array.isArray(response.cells) ? response.cells : [];
   const map = useMemo(() => new Map(cells.map(cell => [`${cell.x},${cell.y}`, cell.state])), [cells]);
   const cycle = (x, y) => {
+    if (readOnly) return;
     const key = `${x},${y}`;
     const current = map.get(key) || "empty";
     const next = current === "empty" ? "white" : current === "white" ? "shaded" : "empty";
@@ -501,15 +504,15 @@ function TilePatternWorkspace({ value, onChange }) {
     onChange({ ...response, cells: next === "empty" ? retained : [...retained, { x, y, state: next }] });
   };
   return (
-    <div className="paper2-workspace paper2-tile-workspace">
-      <p className="paper2-workspace-help">Click a square to cycle through empty, white and shaded tiles. Build the design in the grid.</p>
+    <div className={`paper2-workspace paper2-tile-workspace${readOnly ? " paper2-workspace-readonly" : ""}`}>
+      {!readOnly && <p className="paper2-workspace-help">Click a square to cycle through empty, white and shaded tiles. Build the design in the grid.</p>}
       <div className="paper2-tile-grid">
         {Array.from({ length: 5 }, (_, y) => Array.from({ length: 10 }, (__, x) => {
           const state = map.get(`${x},${y}`) || "empty";
-          return <button type="button" aria-label={`row ${y + 1}, column ${x + 1}, ${state}`} className={`paper2-tile-cell ${state}`} key={`${x}-${y}`} onClick={() => cycle(x, y)}>{state === "shaded" ? "■" : state === "white" ? "□" : ""}</button>;
+          return <button type="button" disabled={readOnly} tabIndex={readOnly ? -1 : undefined} aria-label={`row ${y + 1}, column ${x + 1}, ${state}`} className={`paper2-tile-cell ${state}`} key={`${x}-${y}`} onClick={() => cycle(x, y)}>{state === "shaded" ? "■" : state === "white" ? "□" : ""}</button>;
         }))}
       </div>
-      <div className="paper2-workspace-toolbar"><button type="button" disabled={!cells.length} onClick={() => onChange({ ...response, cells: [] })}>Clear design</button></div>
+      {!readOnly && <div className="paper2-workspace-toolbar"><button type="button" disabled={!cells.length} onClick={() => onChange({ ...response, cells: [] })}>Clear design</button></div>}
     </div>
   );
 }
@@ -654,9 +657,9 @@ export default function Paper2ResponseInput({ part, value, onChange = () => {}, 
   if (!schema) return null;
   if (schema.type === "written") return <WrittenResponse value={value} onChange={onChange} readOnly={readOnly} />;
   if (schema.type === "fields") return <FieldsResponse schema={schema} value={value} onChange={onChange} />;
-  if (schema.type === "table") return <TableResponse schema={schema} value={value} onChange={onChange} />;
+  if (schema.type === "table") return <TableResponse schema={schema} value={value} onChange={onChange} readOnly={readOnly} />;
   if (schema.type === "construction_triangle" || schema.type === "construction") return <ConstructionWorkspace schema={schema} part={part} value={value} onChange={onChange} readOnly={readOnly} />;
-  if (schema.type === "tile_pattern") return <TilePatternWorkspace schema={schema} value={value} onChange={onChange} />;
+  if (schema.type === "tile_pattern") return <TilePatternWorkspace schema={schema} value={value} onChange={onChange} readOnly={readOnly} />;
   if (schema.type === "graph") return <GraphWorkspace schema={schema} value={value} onChange={onChange} readOnly={readOnly} />;
   return null;
 }

@@ -10,7 +10,7 @@ describe("SPARK CSEC 2027 V5.3.6B UI polish", () => {
 
   test("2027 practice exposes the same Formula sheet used by Paper 2", () => {
     expect(paper2).toContain("export function FormulaModal");
-    expect(exam2027).toContain('import { FormulaModal } from "./Paper2Exam"');
+    expect(exam2027).toMatch(/import\s*\{[^}]*\bFormulaModal\b[^}]*\}\s*from\s*["']\.\/Paper2Exam["']/);
     expect(exam2027).toContain(">Formula sheet</button>");
     expect(exam2027).toContain(">View formula sheet</button>");
     expect(exam2027).toContain("<FormulaModal onClose={() => setShowFormula(false)} />");

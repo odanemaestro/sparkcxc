@@ -1750,3 +1750,42 @@ html[data-theme="dark"] .paper2-written-review{background:var(--spark-surface-2)
   overflow: visible !important;
   max-width: 100%;
 }
+
+
+/* SPARK V5.3.9I VISUAL MODEL REVIEW */
+.paper2-workspace-review-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;margin:14px 0}
+.paper2-workspace-review-grid>section{min-width:0;border:1px solid color-mix(in srgb,currentColor 18%,transparent);border-radius:12px;padding:11px;background:color-mix(in srgb,currentColor 2%,transparent)}
+.paper2-workspace-review-grid>section>span{display:block;margin:0 0 8px;font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;opacity:.72}
+.paper2-workspace-review-grid .paper2-table-input-wrap{overflow-x:auto}
+.paper2-table-review-value{display:block;min-width:42px;padding:7px 8px;border-radius:7px;font-weight:800;text-align:center;background:color-mix(in srgb,currentColor 5%,transparent)}
+.paper2-workspace-readonly{margin:0;padding:8px;pointer-events:none;background:transparent}
+.paper2-workspace-readonly .paper2-construction-canvas,.paper2-workspace-readonly .paper2-graph-canvas{max-height:340px;cursor:default}
+.paper2-workspace-readonly .paper2-tile-cell{cursor:default;opacity:1}
+.paper2-model-review{box-shadow:inset 0 0 0 1px color-mix(in srgb,currentColor 8%,transparent)}
+@media(max-width:780px){.paper2-workspace-review-grid{grid-template-columns:1fr}}
+
+
+/* SPARK V5.3.9I1 2027 SYLLABUS UX */
+.paper2027-start-card .paper2027-source-note{
+  box-sizing:border-box;
+  width:100%;
+  margin:18px 0 0;
+  padding:14px 16px;
+  border:1px solid #cfe7e4;
+  border-left:4px solid var(--paper-teal);
+  border-radius:12px;
+  background:#effaf8;
+  color:#476761;
+  font-size:12.5px;
+  line-height:1.6;
+  text-align:left;
+}
+html[data-theme="dark"] .paper2027-start-card .paper2027-source-note{
+  background:var(--spark-teal-surface)!important;
+  border-color:var(--spark-border)!important;
+  border-left-color:var(--spark-teal)!important;
+  color:var(--spark-ink-soft)!important;
+}
+@media(max-width:640px){
+  .paper2027-start-card .paper2027-source-note{margin-top:14px;padding:13px 14px;font-size:12px}
+}
