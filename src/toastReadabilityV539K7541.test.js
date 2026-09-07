@@ -30,8 +30,8 @@ describe("SPARK V5.3.9K7.5.4.1 toast readability", () => {
     expect(app).toContain("<Toast msg={toast} onDismiss={dismissToast}/>");
   });
 
-  test("Tutor lifecycle fixes remain installed", () => {
-    expect(app).toContain("SPARK_K753_TUTOR_CONTINUE");
+  test("current Tutor lifecycle protections remain installed", () => {
+    expect(app).toContain("SPARK_K755_VERIFY_BEFORE_APPLICATION");
     expect(app).toContain("SPARK V5.3.9K7.5 tutor verification route handoff");
   });
 });

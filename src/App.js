@@ -1594,19 +1594,63 @@ const savedEmail = localStorage.getItem("spark_verification_email");
         }
 
         if (role === "tutor") {
-          // SPARK_K753_TUTOR_CONTINUE
+          // SPARK_K755_VERIFY_BEFORE_APPLICATION
+          const tutorName = name.trim().replace(/\s+/g, " ");
+          if (!tutorName) throw new Error("Enter your full name.");
+
           const tutorPasswordError = validatePassword(password);
           if (tutorPasswordError) throw new Error(tutorPasswordError);
 
-          const tutorSeedSaved = setSparkPendingTutorSignupSeed({
-            name: name.trim(),
+          const { data: tutorSignupData, error: tutorSignupError } = await supabase.auth.signUp({
             email: signupCandidateEmail,
             password,
+            options: { data: { name: tutorName, role: "tutor" } },
           });
 
-          if (!tutorSeedSaved) {
-            throw new Error("Enter your full name, email address, and password to continue.");
+          const tutorSignupErrorText = `${tutorSignupError?.message || ""} ${tutorSignupError?.code || ""}`;
+          if (tutorSignupError) {
+            if (/user already registered|user_already_exists|already registered/i.test(tutorSignupErrorText)) {
+              throw new Error("An account already exists with this email. Log in instead or use Forgot password.");
+            }
+            throw tutorSignupError;
           }
+
+          const tutorSignupUser = tutorSignupData?.user;
+          const tutorSignupIdentities = tutorSignupUser?.identities;
+          const duplicateTutorSignup =
+            !tutorSignupData?.session &&
+            Array.isArray(tutorSignupIdentities) &&
+            tutorSignupIdentities.length === 0;
+
+          if (duplicateTutorSignup) {
+            throw new Error("An account already exists with this email. Log in instead or use Forgot password.");
+          }
+
+          if (!tutorSignupUser?.id) {
+            throw new Error("SPARK could not create your tutor account. Please try again.");
+          }
+
+          // A stale local application must never be attached to a newly-created
+          // Tutor identity.
+          clearTutorApplicationDraft();
+          clearTutorVerificationHandoff();
+          clearSparkPendingTutorSignupSeed();
+
+          // If email confirmation is disabled in an environment, Supabase may
+          // return an already-authenticated confirmed session. In that case the
+          // application can open immediately.
+          if (tutorSignupData.session && tutorSignupUser.email_confirmed_at) {
+            localStorage.removeItem("spark_verification_email");
+            setView("become-tutor");
+            return;
+          }
+
+          saveTutorVerificationHandoff({
+            email: signupCandidateEmail,
+            userId: tutorSignupUser.id,
+            stage: "pre_application",
+          });
+          localStorage.setItem("spark_verification_email", signupCandidateEmail);
 
           setView("become-tutor");
           return;
@@ -1862,7 +1906,7 @@ const savedEmail = localStorage.getItem("spark_verification_email");
                     {r.charAt(0).toUpperCase()+r.slice(1)}
                   </button>)}
               </div>
-              {role === "tutor" && <div style={{background:T.amberLight,border:`1px solid ${T.amber}`,borderRadius:8,padding:"10px 13px",marginBottom:12,fontSize:13,color:T.amber}}>Tutors go through an application process. Clicking Continue will take you to the tutor application.</div>}
+              {role === "tutor" && <div style={{background:T.amberLight,border:`1px solid ${T.amber}`,borderRadius:8,padding:"10px 13px",marginBottom:12,fontSize:13,color:T.amber}}>Tutors complete an application before going live. Email and password signups verify their email first. Google signups can continue directly.</div>}
               <div style={{marginBottom:14}}>
                 <div style={{fontSize:13,fontWeight:500,color:T.inkSoft,marginBottom:5}}>Full name</div>
                 <input value={name} onChange={e=>setName(e.target.value)} placeholder="Shanice Williams"
@@ -1906,7 +1950,7 @@ const savedEmail = localStorage.getItem("spark_verification_email");
                 {loading ? "Sending…" : "Resend verification email"}
               </button>
             )}
-            <Btn onClick={submit} disabled={loading} full>{loading ? "Please wait…" : mode==="signup" ? role==="tutor" ? "Continue to tutor application →" : "Create account" : "Log in"}</Btn>
+            <Btn onClick={submit} disabled={loading} full>{loading ? "Please wait…" : mode==="signup" ? role==="tutor" ? "Verify email to continue →" : "Create account" : "Log in"}</Btn>
             <div style={{display:"flex",alignItems:"center",gap:10,margin:"18px 0",color:T.textMuted,fontSize:12}}><div style={{height:1,background:T.border,flex:1}}/><span>OR</span><div style={{height:1,background:T.border,flex:1}}/></div>
             <button className="spark-google-auth-button" onClick={continueWithGoogle} disabled={loading}
               style={{width:"100%",padding:"10px 13px",border:`1.5px solid ${T.border}`,borderRadius:999,
@@ -5781,7 +5825,7 @@ if (loading || authenticatedRolePending) {
 	  {view === "contact"      && <ContactView setView={setView} showToast={showToast} hasTutorApp={hideTutorApplyLink} isParent={profile?.role === "parent"}/>}
 	  {view === "privacy"      && <PrivacyView setView={setView} hasTutorApp={hideTutorApplyLink} isParent={profile?.role === "parent"}/>}
 	  {view === "become-tutor" && (
-        (session || readSparkPendingTutorSignupSeed()) ? ( /* SPARK_K753_TUTOR_ROUTE_HANDOFF */
+        (session || !!loadTutorVerificationHandoff()) ? ( /* SPARK_K753_TUTOR_ROUTE_HANDOFF SPARK_K755_VERIFICATION_ROUTE_GATE */
           <BecomeTutorView setView={setView} user={session?.user} profile={profile} showToast={showToast} hasTutorApp={hideTutorApplyLink} tutorApp={tutorApp} onApplicationSubmitted={loadTutorApp}/>
         ) : (
           <AuthView
@@ -6396,7 +6440,7 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
   const [step, setStep] = React.useState(() => savedDraft?.step || 1);
   const [form, setForm] = React.useState(() => ({
     name: profile?.name || "",
-    email: "",
+    email: user?.email || "", // SPARK_K755_AUTHENTICATED_TUTOR_EMAIL
     password: "",
     phone: "",
     bio: "",
@@ -6420,6 +6464,7 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
   const [awaitingTutorVerification, setAwaitingTutorVerification] = React.useState(() => Boolean(loadTutorVerificationHandoff()) && !user);
   const [resendingTutorVerification, setResendingTutorVerification] = React.useState(false);
   const tutorVerificationResumeRef = React.useRef(false);
+  const tutorVerificationStage = loadTutorVerificationHandoff()?.stage || "submit_application";
 
   // Autosave the draft (minus password - never persisted, see
   // src/lib/tutorApplicationDraft.js) on every change, so it survives the
@@ -6531,6 +6576,11 @@ const validateApplication = () => validateStep1() || validateStep2() || validate
   const submitApplication = async () => {
     const validationError = validateApplication();
     if (validationError) { showToast(validationError, "error"); return; }
+    // SPARK_K755_SUBMISSION_REQUIRES_CONFIRMED_EMAIL
+    if (!user?.id || !user.email_confirmed_at) {
+      showToast("Verify your email before submitting your tutor application.", "error");
+      return;
+    }
     setLoading(true);
     try {
       let uid = user?.id;
@@ -6630,10 +6680,35 @@ const validateApplication = () => validateStep1() || validateStep2() || validate
   };
 
 
-  // SPARK V5.3.9K7.5 verified tutor auto-submit.
+    // SPARK_K755_OPEN_APPLICATION_AFTER_VERIFICATION
   React.useEffect(() => {
     const handoff = loadTutorVerificationHandoff();
-    if (!user?.id || !user.email_confirmed_at || tutorApp || !tutorVerificationHandoffMatchesUser(handoff, user)) return;
+    if (
+      handoff?.stage !== "pre_application" ||
+      !user?.id ||
+      !user.email_confirmed_at ||
+      !tutorVerificationHandoffMatchesUser(handoff, user)
+    ) {
+      return;
+    }
+
+    clearTutorVerificationHandoff();
+    clearSparkPendingTutorSignupSeed();
+    localStorage.removeItem("spark_verification_email");
+    setAwaitingTutorVerification(false);
+    setStep(1);
+    setForm(current => ({
+      ...current,
+      name: current.name || profile?.name || user.user_metadata?.name || "",
+      email: user.email || current.email || "",
+      password: "",
+    }));
+  }, [user?.id, user?.email, user?.email_confirmed_at, profile?.name]);
+
+// SPARK V5.3.9K7.5 verified tutor auto-submit.
+  React.useEffect(() => {
+    const handoff = loadTutorVerificationHandoff();
+    if (!user?.id || !user.email_confirmed_at || tutorApp || handoff?.stage === "pre_application" || !tutorVerificationHandoffMatchesUser(handoff, user)) return;
     if (tutorVerificationResumeRef.current) return;
 
     tutorVerificationResumeRef.current = true;
@@ -6660,9 +6735,9 @@ const validateApplication = () => validateStep1() || validateStep2() || validate
         <div style={{ maxWidth: 560, margin: "0 auto", padding: "48px 28px 64px", flex: 1, width: "100%" }}>
           <Card style={{ textAlign: "center", padding: 40 }}>
             <div style={{ fontSize: 34, marginBottom: 12 }}>✉️</div>
-            <div style={{ fontFamily: FD, fontSize: 20, color: T.ink, marginBottom: 9 }}>Verify your email to finish your tutor application</div>
+            <div style={{ fontFamily: FD, fontSize: 20, color: T.ink, marginBottom: 9 }}>{/* SPARK_K755_VERIFICATION_SCREEN_COPY */}{tutorVerificationStage === "pre_application" ? "Verify your email to continue" : "Verify your email to finish your tutor application"}</div>
             <p style={{ color: T.textMuted, fontSize: 14, lineHeight: 1.65, margin: "0 0 18px" }}>
-              Your SPARK tutor account has been created. We saved your completed application securely in this browser without your password. Verify your email, then return to SPARK. We will finish submitting the application once you are authenticated.
+              {tutorVerificationStage === "pre_application" ? "Your Tutor account has been created. Check your inbox and verify your email before continuing to the tutor application. Once verified, return to SPARK and we will open the application." : "Your SPARK tutor account has been created. We saved your completed application securely in this browser without your password. Verify your email, then return to SPARK. We will finish submitting the application once you are authenticated."}
             </p>
             <div style={{ background: T.tealLight, border: `1px solid ${T.border}`, borderRadius: 9, padding: "11px 13px", fontSize: 13, color: T.inkSoft, marginBottom: 18 }}>
               {loadTutorVerificationHandoff()?.email || form.email}
