@@ -35,6 +35,7 @@ import { COUNTRY_CODES, isoToFlagEmoji } from "./data/countryCodes";
 import { supabase, getRememberMePreference, setRememberMePreference } from "./lib/supabaseClient";
 import { sortTutors } from "./lib/tutorSort";
 import { saveTutorApplicationDraft, loadTutorApplicationDraft, clearTutorApplicationDraft } from "./lib/tutorApplicationDraft";
+import { saveTutorVerificationHandoff, loadTutorVerificationHandoff, clearTutorVerificationHandoff, tutorVerificationHandoffMatchesUser } from "./lib/tutorVerificationHandoff";
 import { T, FD, FB } from "./theme";
 import useThemeMode from "./hooks/useThemeMode";
 import ThemeSelector from "./components/ui/ThemeSelector";
@@ -1467,9 +1468,57 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
 }
 
 // ─── AUTH VIEW ───────────────────────────────────────────────────────────────
-function AuthView({ setView, initialMode = "signup", recoveryMode = false }) {
+const SPARK_GOOGLE_OAUTH_INTENT_KEY = "spark_google_oauth_intent";
+const SPARK_GOOGLE_SIGNUP_REJECT_KEY = "spark_google_signup_rejected";
+
+function readSparkGoogleOAuthIntent() {
+  try {
+    const raw = sessionStorage.getItem(SPARK_GOOGLE_OAUTH_INTENT_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (!parsed?.attemptId) return null;
+    if (!["signup", "login"].includes(parsed?.mode)) return null;
+    if (parsed.mode === "signup" && !["student", "parent", "tutor"].includes(parsed?.role)) return null;
+    return parsed;
+  } catch (error) {
+    try { sessionStorage.removeItem(SPARK_GOOGLE_OAUTH_INTENT_KEY); } catch (storageError) {}
+    return null;
+  }
+}
+
+function clearSparkGoogleOAuthIntent() {
+  try { sessionStorage.removeItem(SPARK_GOOGLE_OAUTH_INTENT_KEY); } catch (error) {}
+}
+
+// SPARK_K753_TUTOR_SIGNUP_MEMORY_HANDOFF
+let sparkPendingTutorSignupSeed = null;
+
+function setSparkPendingTutorSignupSeed(seed) {
+  const cleanEmail = String(seed?.email || "").trim().toLowerCase();
+  if (!seed?.name || !cleanEmail || !seed?.password) {
+    sparkPendingTutorSignupSeed = null;
+    return false;
+  }
+
+  sparkPendingTutorSignupSeed = {
+    name: String(seed.name).trim(),
+    email: cleanEmail,
+    password: String(seed.password),
+  };
+  return true;
+}
+
+function readSparkPendingTutorSignupSeed() {
+  return sparkPendingTutorSignupSeed;
+}
+
+function clearSparkPendingTutorSignupSeed() {
+  sparkPendingTutorSignupSeed = null;
+}
+
+function AuthView({ setView, initialMode = "signup", recoveryMode = false, initialRole = "student" }) {
   const [mode, setMode] = useState(initialMode);
-  const [role, setRole] = useState("student");
+  const [role, setRole] = useState(initialRole);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -1484,7 +1533,21 @@ function AuthView({ setView, initialMode = "signup", recoveryMode = false }) {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const savedEmail = localStorage.getItem("spark_verification_email");
+          try {
+        const rejectedGoogleSignupRaw = sessionStorage.getItem(SPARK_GOOGLE_SIGNUP_REJECT_KEY);
+        if (rejectedGoogleSignupRaw) {
+          const rejectedGoogleSignup = JSON.parse(rejectedGoogleSignupRaw);
+          sessionStorage.removeItem(SPARK_GOOGLE_SIGNUP_REJECT_KEY);
+          setMode("signup");
+          if (["student", "parent", "tutor"].includes(rejectedGoogleSignup?.role)) {
+            setRole(rejectedGoogleSignup.role);
+          }
+          setErr(rejectedGoogleSignup?.message || "An account already exists with this email. Log in instead or use Forgot password.");
+        }
+      } catch (error) {
+        try { sessionStorage.removeItem(SPARK_GOOGLE_SIGNUP_REJECT_KEY); } catch (storageError) {}
+      }
+const savedEmail = localStorage.getItem("spark_verification_email");
     if (savedEmail) setEmail(savedEmail);
     if (recoveryMode) {
       const resetEmail = localStorage.getItem("spark_reset_email");
@@ -1510,9 +1573,44 @@ function AuthView({ setView, initialMode = "signup", recoveryMode = false }) {
 
   const submit = async () => {
     setErr(null); setMessage(null); setShowResendVerification(false); setLoading(true);
+    clearSparkGoogleOAuthIntent();
     try {
       if (mode === "signup") {
-        if (role === "tutor") { setView("become-tutor"); return; }
+        const signupCandidateEmail = email.trim().toLowerCase();
+        if (!signupCandidateEmail) throw new Error("Enter your email address.");
+
+        const {
+          data: signupEmailAlreadyRegistered,
+          error: signupEmailAlreadyRegisteredError,
+        } = await supabase.rpc("spark_email_registered", {
+          p_email: signupCandidateEmail,
+        });
+
+        if (signupEmailAlreadyRegisteredError) {
+          throw new Error("We couldn't check this email right now. Please try again.");
+        }
+        if (signupEmailAlreadyRegistered === true) {
+          throw new Error("An account already exists with this email. Log in instead or use Forgot password.");
+        }
+
+        if (role === "tutor") {
+          // SPARK_K753_TUTOR_CONTINUE
+          const tutorPasswordError = validatePassword(password);
+          if (tutorPasswordError) throw new Error(tutorPasswordError);
+
+          const tutorSeedSaved = setSparkPendingTutorSignupSeed({
+            name: name.trim(),
+            email: signupCandidateEmail,
+            password,
+          });
+
+          if (!tutorSeedSaved) {
+            throw new Error("Enter your full name, email address, and password to continue.");
+          }
+
+          setView("become-tutor");
+          return;
+        }
         const passwordError = validatePassword(password);
         if (passwordError) throw new Error(passwordError);
         const cleanEmail = email.trim().toLowerCase();
@@ -1654,15 +1752,34 @@ function AuthView({ setView, initialMode = "signup", recoveryMode = false }) {
   const continueWithGoogle = async () => {
     setErr(null); setMessage(null); setLoading(true);
     try {
-      // Apply the same Remember Me choice to Google OAuth. The preference is
-      // read by the custom Supabase storage adapter after the OAuth redirect.
       setRememberMePreference(rememberMe);
+
+      const googleMode = mode === "signup" ? "signup" : "login";
+      const googleRole = googleMode === "signup" ? role : null;
+
+      const { data: googleAttemptId, error: googleAttemptError } = await supabase.rpc(
+        "spark_begin_google_oauth_attempt",
+        { p_mode: googleMode, p_role: googleRole }
+      );
+      if (googleAttemptError) throw googleAttemptError;
+      if (!googleAttemptId) throw new Error("Could not start Google sign-in.");
+
+      sessionStorage.setItem(SPARK_GOOGLE_OAUTH_INTENT_KEY, JSON.stringify({
+        attemptId: googleAttemptId,
+        mode: googleMode,
+        role: googleRole,
+      }));
+
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
-        options: { redirectTo: `${window.location.origin}${process.env.PUBLIC_URL || ""}` }
+        options: { redirectTo: window.location.href.split("#")[0] }
       });
       if (error) throw error;
-    } catch (e) { setErr(e.message || "Google sign-in is not available right now."); setLoading(false); }
+    } catch (e) {
+      clearSparkGoogleOAuthIntent();
+      setErr(e.message || "Google sign-in is not available right now.");
+      setLoading(false);
+    }
   };
 
   const verificationScreen = mode !== "forgot" && verificationSent;
@@ -1734,8 +1851,8 @@ function AuthView({ setView, initialMode = "signup", recoveryMode = false }) {
                 </button>
               ))}
             </div>
-            <h2 style={{fontFamily:FD,fontSize:22,fontWeight:700,color:T.ink,margin:"0 0 4px"}}>{mode === "signup" ? "Create your account" : "Welcome back"}</h2>
-            <p style={{fontSize:13.5,color:T.textMuted,marginBottom:22}}>{mode === "signup" ? "Start with Mathematics." : "Log in to continue studying."}</p>
+            <h2 style={{fontFamily:FD,fontSize:22,fontWeight:700,color:T.ink,margin:mode === "signup" ? "0 0 22px" : "0 0 4px"}}>{mode === "signup" ? "Create your account" : "Welcome back"}</h2>
+            {mode === "login" && <p style={{fontSize:13.5,color:T.textMuted,marginBottom:22}}>Log in to continue studying.</p>}
             {mode === "signup" && <>
               <div style={{fontSize:13,fontWeight:500,color:T.inkSoft,marginBottom:8}}>I am a</div>
               <div className="spark-auth-role-row" style={{display:"flex",gap:8,marginBottom:14}}>
@@ -2825,13 +2942,13 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   // Falling back to an approved tutor-application status keeps this accurate
   // for those accounts too (this was why approved tutors' bookings/tabs
   // weren't showing up here).
-  const isTutor = profile?.role === "tutor" || tutorApp?.status === "approved";
+  const isTutor = tutorApp?.status === "approved";
   const isStudent = profile?.role === "student";
   // Student profiles can later become approved tutors without profile.role
   // changing. Wait for that tutor lookup before canonicalizing a nested
   // dashboard route, otherwise #/dashboard/sessions could briefly be mistaken
   // for the student's #/dashboard/bookings route during refresh.
-  const dashboardRoleResolved = profile?.role === "tutor" || tutorAppLoaded;
+  const dashboardRoleResolved = tutorAppLoaded;
   const normalizeDashboardSection = useCallback((section) => {
     if (isTutor) {
       if (section === "bookings") return "sessions";
@@ -4967,6 +5084,110 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
   );
 }
 
+
+function GooglePendingAccountSetupView({ user, pending, onComplete, onSignOut }) {
+  const [choosingRole, setChoosingRole] = useState(false);
+  const [selectedRole, setSelectedRole] = useState("student");
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState(null);
+  const email = pending?.email || user?.email || "this Google account";
+
+  const finish = async (role) => {
+    setSaving(true);
+    setError(null);
+    try {
+      await onComplete(role);
+    } catch (e) {
+      setError(e?.message || "Could not create your SPARK account. Please try again.");
+      setSaving(false);
+    }
+  };
+
+  return (
+    <div style={{minHeight:"100vh",display:"grid",placeItems:"center",padding:20,background:T.bg,fontFamily:FB}}>
+      <div style={{width:"100%",maxWidth:480,background:T.paper,border:`1px solid ${T.border}`,borderRadius:16,padding:28,boxShadow:T.shadowMd}}>
+        <div style={{width:44,height:44,borderRadius:12,display:"grid",placeItems:"center",border:`1px solid ${T.border}`,fontSize:20,fontWeight:800,color:T.ink,marginBottom:18}}>G</div>
+        <h2 style={{fontFamily:FD,fontSize:23,color:T.ink,margin:"0 0 8px"}}>No SPARK account found</h2>
+        <p style={{fontSize:14,color:T.textMuted,lineHeight:1.6,margin:"0 0 18px"}}>
+          We signed you in with <strong style={{color:T.ink}}>{email}</strong>, but this Google account has not been set up on SPARK yet.
+        </p>
+
+        {!choosingRole ? (
+          <>
+            <div style={{background:T.tealLight,border:`1px solid ${T.border}`,borderRadius:10,padding:"12px 14px",fontSize:13.5,color:T.inkSoft,lineHeight:1.55,marginBottom:18}}>
+              Would you like to create a Student account with this Google account?
+            </div>
+            {error && <div className="spark-form-error spark-form-error--block" role="alert">{error}</div>}
+            <Btn full disabled={saving} onClick={() => finish("student")}>
+              {saving ? "Creating account…" : "Create Student account"}
+            </Btn>
+            <div style={{height:10}} />
+            <Btn full v="outline" disabled={saving} onClick={() => setChoosingRole(true)}>
+              Choose another account type
+            </Btn>
+          </>
+        ) : (
+          <>
+            <div style={{fontSize:13,fontWeight:600,color:T.inkSoft,marginBottom:9}}>I am a</div>
+            <div className="spark-auth-role-row" style={{display:"flex",gap:8,marginBottom:14}}>
+              {["student","tutor","parent"].map(r => (
+                <button
+                  key={r}
+                  type="button"
+                  onClick={() => setSelectedRole(r)}
+                  style={{
+                    flex:1,padding:10,borderRadius:8,fontSize:13,fontWeight:600,cursor:"pointer",fontFamily:FB,
+                    border:`1.5px solid ${selectedRole===r?T.teal:T.border}`,
+                    background:selectedRole===r?T.tealLight:"transparent",
+                    color:selectedRole===r?T.tealDark:T.textMuted
+                  }}
+                >
+                  {r.charAt(0).toUpperCase()+r.slice(1)}
+                </button>
+              ))}
+            </div>
+            {selectedRole === "tutor" && (
+              <div style={{background:T.amberLight,border:`1px solid ${T.amber}`,borderRadius:8,padding:"10px 13px",marginBottom:14,fontSize:13,color:T.inkSoft,lineHeight:1.5}}>
+                Tutor accounts continue to the tutor application after account setup.
+              </div>
+            )}
+            <div style={{fontSize:12.5,color:T.textMuted,lineHeight:1.5,marginBottom:16}}>
+              Your account type determines which SPARK portal you use.
+            </div>
+            {error && <div className="spark-form-error spark-form-error--block" role="alert">{error}</div>}
+            <Btn full disabled={saving} onClick={() => finish(selectedRole)}>
+              {saving ? "Creating account…" : `Continue as ${selectedRole.charAt(0).toUpperCase()+selectedRole.slice(1)}`}
+            </Btn>
+            <button type="button" disabled={saving} onClick={() => { setChoosingRole(false); setError(null); }}
+              style={{width:"100%",marginTop:12,border:"none",background:"transparent",color:T.teal,fontFamily:FB,fontSize:13,fontWeight:600,cursor:"pointer"}}>
+              Back
+            </button>
+          </>
+        )}
+
+        <button type="button" disabled={saving} onClick={onSignOut}
+          style={{width:"100%",marginTop:18,paddingTop:16,border:"none",borderTop:`1px solid ${T.border}`,background:"transparent",color:T.textMuted,fontFamily:FB,fontSize:12.5,cursor:"pointer"}}>
+          Use a different Google account
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function GoogleOAuthGateErrorView({ message, onRetry, onSignOut }) {
+  return (
+    <div style={{minHeight:"100vh",display:"grid",placeItems:"center",padding:20,background:T.bg,fontFamily:FB}}>
+      <div style={{width:"100%",maxWidth:460,background:T.paper,border:`1px solid ${T.border}`,borderRadius:16,padding:28,boxShadow:T.shadowMd}}>
+        <h2 style={{fontFamily:FD,fontSize:22,color:T.ink,margin:"0 0 10px"}}>Couldn't finish Google sign-in</h2>
+        <div className="spark-form-error spark-form-error--block" role="alert">{message}</div>
+        <Btn full onClick={onRetry}>Reload and try again</Btn>
+        <div style={{height:10}} />
+        <Btn full v="outline" onClick={onSignOut}>Sign out</Btn>
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   const [view, setViewState] = useState(() => viewFromBrowserHash());
   const { themeMode, resolvedTheme, setThemeMode } = useThemeMode();
@@ -4974,6 +5195,9 @@ export default function App() {
   const [session, setSession] = useState(null);
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [googlePendingSetup, setGooglePendingSetup] = useState(null);
+  const [googleOAuthError, setGoogleOAuthError] = useState(null);
+  const [googleOAuthResolving, setGoogleOAuthResolving] = useState(false);
   const [toast, setToast] = useState(null);
   const [liveStats, setLiveStats] = useState({ tutors: 0, questions: 0, topics: 0 });
   // The signed-in user's own row in `tutors` (id + status), or null if
@@ -5054,11 +5278,21 @@ export default function App() {
     if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
     setToast(normalized);
 
-    const duration = resolvedType === "error"
-      ? 5200
+    // SPARK_K7541_READABLE_TOAST_DURATION
+    const requestedDuration =
+      typeof msg === "object" && msg !== null && Number.isFinite(Number(msg.duration))
+        ? Number(msg.duration)
+        : null;
+
+    const defaultDuration = resolvedType === "error"
+      ? 8000
       : resolvedType === "warning"
-        ? 4200
-        : 3400;
+        ? 7000
+        : 6000;
+
+    const duration = requestedDuration == null
+      ? defaultDuration
+      : Math.min(15000, Math.max(2500, requestedDuration));
 
     toastTimerRef.current = setTimeout(() => {
       setToast(null);
@@ -5093,6 +5327,23 @@ useEffect(() => () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [view]);
+
+  useEffect(() => {
+    // SPARK_K753_CLEAR_ABANDONED_TUTOR_SEED
+    if (view !== "become-tutor") clearSparkPendingTutorSignupSeed();
+  }, [view]);
+
+  // SPARK V5.3.9K7.5 tutor verification route handoff.
+  // If a tutor completed the application before email verification, a verified
+  // session must return to BecomeTutorView so the saved application can be
+  // submitted with auth.uid(), never to an unauthenticated RPC or student view.
+  useEffect(() => {
+    if (!session?.user?.id || !session.user.email_confirmed_at) return;
+    const handoff = loadTutorVerificationHandoff();
+    if (tutorVerificationHandoffMatchesUser(handoff, session.user)) {
+      setView("become-tutor", { replace: true });
+    }
+  }, [session?.user?.id, session?.user?.email_confirmed_at]);
 
   useEffect(() => {
     supabase.auth.getSession().then(async ({data}) => {
@@ -5165,7 +5416,12 @@ useEffect(() => () => {
           // Don't yank the user off "become-tutor" - signUp() there also
           // fires this listener, and we want them to see the application
           // confirmation screen (step 4) instead of jumping to the dashboard.
-          setView(v => v === "become-tutor" ? v : "dashboard");
+          const pendingGoogleOAuthIntent = readSparkGoogleOAuthIntent();
+          if (pendingGoogleOAuthIntent) {
+            setGoogleOAuthResolving(true);
+          } else {
+            setView(v => v === "become-tutor" ? v : "dashboard");
+          }
         }
       }
       else {
@@ -5179,7 +5435,111 @@ useEffect(() => () => {
     return () => L.subscription.unsubscribe();
   }, []);
 
+
+  // SPARK V5.3.9K7.2 Google OAuth account gate.
+  useEffect(() => {
+    if (!session?.user?.id) return undefined;
+
+    const intent = readSparkGoogleOAuthIntent();
+    if (!intent) return undefined;
+
+    let cancelled = false;
+    setGoogleOAuthResolving(true);
+    setGoogleOAuthError(null);
+
+    const timer = window.setTimeout(async () => {
+      try {
+        const { data: result, error } = await supabase.rpc(
+          "spark_resolve_google_oauth_attempt",
+          { p_attempt_id: intent.attemptId }
+        );
+        if (error) throw error;
+
+        const status = result?.status;
+
+        if (status === "existing_signup") {
+          sessionStorage.setItem(SPARK_GOOGLE_SIGNUP_REJECT_KEY, JSON.stringify({
+            role: intent.role,
+            message: "An account already exists with this email. Log in instead or use Forgot password.",
+          }));
+          clearSparkGoogleOAuthIntent();
+          await supabase.auth.signOut();
+          if (cancelled) return;
+          setGooglePendingSetup(null);
+          setGoogleOAuthResolving(false);
+          setView("auth", { replace: true });
+          return;
+        }
+
+        if (status === "login_needs_setup") {
+          clearSparkGoogleOAuthIntent();
+          if (cancelled) return;
+          setGooglePendingSetup({
+            email: result?.email || session.user.email || "",
+          });
+          await loadProfile(session.user.id);
+          if (cancelled) return;
+          setGoogleOAuthResolving(false);
+          return;
+        }
+
+        if (status === "signup_created") {
+          clearSparkGoogleOAuthIntent();
+          if (cancelled) return;
+          setGooglePendingSetup(null);
+          await loadProfile(session.user.id);
+          if (cancelled) return;
+          setGoogleOAuthResolving(false);
+          setView(result?.role === "tutor" ? "become-tutor" : "dashboard", { replace: true });
+          return;
+        }
+
+        if (status === "login_existing") {
+          clearSparkGoogleOAuthIntent();
+          if (cancelled) return;
+          setGooglePendingSetup(null);
+          await loadProfile(session.user.id);
+          if (cancelled) return;
+          setGoogleOAuthResolving(false);
+          setView("dashboard", { replace: true });
+          return;
+        }
+
+        throw new Error("Unexpected Google account state.");
+      } catch (error) {
+        console.error("Google OAuth account gate failed:", error);
+        if (cancelled) return;
+        // Keep the intent so Reload can safely retry the same server attempt.
+        setGoogleOAuthResolving(false);
+        setGoogleOAuthError("SPARK could not safely finish Google sign-in. Reload and try again.");
+      }
+    }, 0);
+
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timer);
+    };
+  }, [session?.user?.id]);
+
+
   const loadProfile = async (uid) => {
+    const { data: googlePendingStatus, error: googlePendingStatusError } =
+      await supabase.rpc("spark_google_pending_account_status");
+
+    if (googlePendingStatusError) {
+      console.error("Google pending-account status check failed:", googlePendingStatusError);
+      setGoogleOAuthError("SPARK could not verify your Google account setup. Reload and try again.");
+    } else {
+      setGoogleOAuthError(null);
+      if (googlePendingStatus?.pending === true) {
+        setGooglePendingSetup({
+          email: googlePendingStatus?.email || "",
+        });
+      } else {
+        setGooglePendingSetup(null);
+      }
+    }
+
     const {data} = await supabase.from("profiles").select("*").eq("id", uid).single();
     setProfile(data);
     // Resolve tutor status before revealing the authenticated UI. This avoids
@@ -5206,7 +5566,135 @@ useEffect(() => () => {
     setTutorAppLoaded(true);
   };
 
-  const handleLogout = async () => {
+    const completeGooglePendingAccount = async (role) => {
+    const { data, error } = await supabase.rpc("spark_complete_google_pending_account", {
+      p_role: role,
+    });
+    if (error) throw error;
+    if (data?.completed !== true) throw new Error("SPARK could not complete this account.");
+
+    setGooglePendingSetup(null);
+    setGoogleOAuthError(null);
+    await loadProfile(session.user.id);
+    setView(role === "tutor" ? "become-tutor" : "dashboard", { replace: true });
+  };
+
+const useDifferentGoogleAccount = async () => {
+
+
+  try {
+
+
+    setGoogleOAuthError(null);
+
+
+    setGooglePendingSetup(null);
+
+
+    clearSparkGoogleOAuthIntent();
+
+
+
+    await supabase.auth.signOut();
+
+
+
+    // If Google takes a moment to open, keep the user on authentication,
+
+
+    // not the public Home screen.
+
+
+    setView("login", { replace: true });
+
+
+
+    setRememberMePreference(getRememberMePreference());
+
+
+
+    const { data: googleAttemptId, error: googleAttemptError } = await supabase.rpc(
+
+
+      "spark_begin_google_oauth_attempt",
+
+
+      { p_mode: "login", p_role: null }
+
+
+    );
+
+
+    if (googleAttemptError) throw googleAttemptError;
+
+
+    if (!googleAttemptId) throw new Error("Could not restart Google sign-in.");
+
+
+
+    sessionStorage.setItem(SPARK_GOOGLE_OAUTH_INTENT_KEY, JSON.stringify({
+
+
+      attemptId: googleAttemptId,
+
+
+      mode: "login",
+
+
+      role: null,
+
+
+    }));
+
+
+
+    const { error: googleOAuthError } = await supabase.auth.signInWithOAuth({
+
+
+      provider: "google",
+
+
+      options: {
+
+
+        redirectTo: window.location.href.split("#")[0],
+
+
+        queryParams: { prompt: "select_account" },
+
+
+      },
+
+
+    });
+
+
+    if (googleOAuthError) throw googleOAuthError;
+
+
+  } catch (error) {
+
+
+    console.error("Switch Google account failed:", error);
+
+
+    clearSparkGoogleOAuthIntent();
+
+
+    setView("login", { replace: true });
+
+
+    showToast("Could not switch Google accounts. Please try Continue with Google again.", "error");
+
+
+  }
+
+
+};
+
+
+
+const handleLogout = async () => {
     try { await detachCurrentPushAssociation(); }
     catch (error) { console.error("Push device detach failed during logout:", error); }
     await supabase.auth.signOut();
@@ -5216,9 +5704,32 @@ useEffect(() => () => {
   // Do not reveal authenticated UI until both the profile and tutor-role
   // lookup have resolved. getSession() and onAuthStateChange() can overlap
   // during refresh, so `loading` alone is not a sufficient render guard.
-  const authenticatedRolePending = !!session && (!profile || !tutorAppLoaded);
+  const tutorVerificationResumePending = !!session && view !== "become-tutor" && tutorVerificationHandoffMatchesUser(loadTutorVerificationHandoff(), session.user);
+  const authenticatedRolePending = !!session && (!profile || !tutorAppLoaded || googleOAuthResolving || tutorVerificationResumePending);
 
-  if (loading || authenticatedRolePending) {
+
+  if (googleOAuthError && session) {
+    return (
+      <GoogleOAuthGateErrorView
+        message={googleOAuthError}
+        onRetry={() => window.location.reload()}
+        onSignOut={handleLogout}
+      />
+    );
+  }
+
+  if (googlePendingSetup && session && !googleOAuthResolving) {
+    return (
+      <GooglePendingAccountSetupView
+        user={session.user}
+        pending={googlePendingSetup}
+        onComplete={completeGooglePendingAccount}
+        onSignOut={useDifferentGoogleAccount}
+      />
+    );
+  }
+
+if (loading || authenticatedRolePending) {
     return <SparkLoader variant="screen" label="Loading SPARK" />;
   }
 
@@ -5243,7 +5754,22 @@ useEffect(() => () => {
         />
       )}
       {view === "dashboard"    && session && profile?.role === "parent" ? <ParentView user={session.user} profile={profile} setView={setView} showToast={showToast} onProfileUpdated={updateProfileState}/> : null}
-      {view === "dashboard"    && session && profile?.role !== "parent" && <DashboardView user={session.user} profile={profile} setView={setView} showToast={showToast} hasTutorApp={hideTutorApplyLink} tutorApp={tutorApp} tutorAppLoaded={tutorAppLoaded} onProfileUpdated={updateProfileState}/>}
+      {/* SPARK_K75_TUTOR_DASHBOARD_APPROVAL_GATE */}
+      {view === "dashboard" && session && profile?.role !== "parent" && (
+        profile?.role === "tutor" && tutorApp?.status !== "approved" ? (
+          <BecomeTutorView
+            setView={setView}
+            user={session.user}
+            profile={profile}
+            showToast={showToast}
+            hasTutorApp={hideTutorApplyLink}
+            tutorApp={tutorApp}
+            onApplicationSubmitted={loadTutorApp}
+          />
+        ) : (
+          <DashboardView user={session.user} profile={profile} setView={setView} showToast={showToast} hasTutorApp={hideTutorApplyLink} tutorApp={tutorApp} tutorAppLoaded={tutorAppLoaded} onProfileUpdated={updateProfileState}/>
+        )
+      )}
       {view === "admin"        && session && profile?.is_admin && <AdminView showToast={showToast} adminUserId={session.user.id}/>}
       {view === "lesson"       && session && <LessonView user={session.user} setView={setView} showToast={showToast} hasTutorApp={hideTutorApplyLink}/>}
       {view === "practice"    && session && profile?.role !== "tutor" && tutorApp?.status !== "approved" && <PracticeHub supabase={supabase} userId={session.user.id} setView={setView}/>}
@@ -5254,7 +5780,18 @@ useEffect(() => () => {
 	  {view === "about"        && <AboutView setView={setView} hasTutorApp={hideTutorApplyLink} isParent={profile?.role === "parent"} user={session?.user} isTutor={!!session?.user && (profile?.role === "tutor" || !!tutorApp)}/>}
 	  {view === "contact"      && <ContactView setView={setView} showToast={showToast} hasTutorApp={hideTutorApplyLink} isParent={profile?.role === "parent"}/>}
 	  {view === "privacy"      && <PrivacyView setView={setView} hasTutorApp={hideTutorApplyLink} isParent={profile?.role === "parent"}/>}
-	  {view === "become-tutor" && <BecomeTutorView setView={setView} user={session?.user} profile={profile} showToast={showToast} hasTutorApp={hideTutorApplyLink} tutorApp={tutorApp} onApplicationSubmitted={loadTutorApp}/>}
+	  {view === "become-tutor" && (
+        (session || readSparkPendingTutorSignupSeed()) ? ( /* SPARK_K753_TUTOR_ROUTE_HANDOFF */
+          <BecomeTutorView setView={setView} user={session?.user} profile={profile} showToast={showToast} hasTutorApp={hideTutorApplyLink} tutorApp={tutorApp} onApplicationSubmitted={loadTutorApp}/>
+        ) : (
+          <AuthView
+            key="become-tutor-auth-gate"
+            setView={setView}
+            initialMode="signup"
+            initialRole="tutor"
+          />
+        )
+      )}
 
 
 
@@ -5869,11 +6406,20 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
     experience: "",
     availability: "",
     ...(savedDraft?.form || {}),
+    // SPARK_K753_TUTOR_FORM_SEED
+    ...(readSparkPendingTutorSignupSeed() ? {
+      name: readSparkPendingTutorSignupSeed().name || savedDraft?.form?.name || profile?.name || "",
+      email: readSparkPendingTutorSignupSeed().email || savedDraft?.form?.email || "",
+      password: readSparkPendingTutorSignupSeed().password || "",
+    } : {}),
   }));
   const [loading, setLoading] = React.useState(false);
   const [phoneTouched, setPhoneTouched] = React.useState(false);
   const [phoneCountry, setPhoneCountry] = React.useState(() => savedDraft?.phoneCountry || "JM");
   const [phoneLocal, setPhoneLocal] = React.useState(() => savedDraft?.phoneLocal || "");
+  const [awaitingTutorVerification, setAwaitingTutorVerification] = React.useState(() => Boolean(loadTutorVerificationHandoff()) && !user);
+  const [resendingTutorVerification, setResendingTutorVerification] = React.useState(false);
+  const tutorVerificationResumeRef = React.useRef(false);
 
   // Autosave the draft (minus password - never persisted, see
   // src/lib/tutorApplicationDraft.js) on every change, so it survives the
@@ -5960,7 +6506,27 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
     return null;
   };
 
-  const validateApplication = () => validateStep1() || validateStep2() || validateStep3();
+    const resendTutorVerification = async () => {
+    const handoff = loadTutorVerificationHandoff();
+    const cleanEmail = String(handoff?.email || form.email || "").trim().toLowerCase();
+    if (!cleanEmail) {
+      showToast("Enter your email address first.", "error");
+      return;
+    }
+    setResendingTutorVerification(true);
+    try {
+      const { error } = await supabase.auth.resend({ type: "signup", email: cleanEmail });
+      if (error) throw error;
+      localStorage.setItem("spark_verification_email", cleanEmail);
+      showToast("Verification email sent again. Check your inbox.");
+    } catch (error) {
+      showToast(error?.message || "Could not resend the verification email.", "error");
+    } finally {
+      setResendingTutorVerification(false);
+    }
+  };
+
+const validateApplication = () => validateStep1() || validateStep2() || validateStep3();
 
   const submitApplication = async () => {
     const validationError = validateApplication();
@@ -5969,13 +6535,53 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
     try {
       let uid = user?.id;
       if (!uid) {
-        const { data, error } = await supabase.auth.signUp({
-          email: form.email.trim(), password: form.password,
+        const cleanTutorApplicationEmail = form.email.trim().toLowerCase();
+            const {
+              data: tutorApplicationEmailRegistered,
+              error: tutorApplicationEmailRegisteredError,
+            } = await supabase.rpc("spark_email_registered", {
+              p_email: cleanTutorApplicationEmail,
+            });
+
+            if (tutorApplicationEmailRegisteredError) {
+              throw new Error("We couldn't check this email right now. Please try again.");
+            }
+            if (tutorApplicationEmailRegistered === true) {
+              throw new Error("An account already exists with this email. Log in instead or use Forgot password.");
+            }
+
+            const { data, error } = await supabase.auth.signUp({
+          email: cleanTutorApplicationEmail, password: form.password,
           options: { data: { name: form.name.trim(), role: "tutor" } }
         });
         if (error) throw error;
-        uid = data.user?.id;
-        if (!uid) throw new Error("Account created, but the tutor application could not be attached to it. Please sign in and submit again.");
+        const newTutorUser = data.user;
+        uid = newTutorUser?.id;
+        if (!uid) throw new Error("Account created, but SPARK could not finish tutor setup. Please try again.");
+        // SPARK_K753_CLEAR_TUTOR_SIGNUP_SEED_AFTER_AUTH
+        clearSparkPendingTutorSignupSeed();
+
+        // Email/password signup can return a user without a session when email
+        // confirmation is required. The tutor RPC is intentionally protected by
+        // auth.uid(), so stop here instead of producing "Login to continue".
+        if (!data.session || !newTutorUser?.email_confirmed_at) {
+          const cleanTutorEmail = String(newTutorUser?.email || form.email || "").trim().toLowerCase();
+          saveTutorApplicationDraft({ step: 3, form, phoneCountry, phoneLocal });
+          saveTutorVerificationHandoff({ email: cleanTutorEmail, userId: uid });
+          if (cleanTutorEmail) localStorage.setItem("spark_verification_email", cleanTutorEmail);
+          setAwaitingTutorVerification(true);
+          showToast({
+            // SPARK_K7541_TUTOR_VERIFICATION_TOAST
+            type: "info",
+            message: "Account created. Verify your email to finish submitting your tutor application.",
+            duration: 8000,
+          });
+          return;
+        }
+
+        // A confirmed session (for example a configuration where confirmation is
+        // immediate) may continue directly to the protected application RPC.
+        clearTutorVerificationHandoff();
       }
       const subjectKeys = [...new Set(form.subjects.map(s => SUBJECT_KEY_MAP[s] || s.toLowerCase()))];
       const initials = form.name.trim().split(/\s+/).map(w => w[0]).join("").toUpperCase().slice(0, 2);
@@ -6011,16 +6617,34 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
       });
       if (error) throw error;
       onApplicationSubmitted?.(uid);
+      clearTutorVerificationHandoff();
+      setAwaitingTutorVerification(false);
       clearTutorApplicationDraft();
       setStep(4);
       showToast(tutorApp?.status === "rejected" ? "Your revised application has been resubmitted for review." : "Application submitted! We'll be in touch within 3 business days.");
     } catch (e) {
-      showToast(e.message || "Something went wrong. Please try again.");
+      showToast(e.message || "Something went wrong. Please try again.", "error");
     } finally {
       setLoading(false);
     }
   };
 
+
+  // SPARK V5.3.9K7.5 verified tutor auto-submit.
+  React.useEffect(() => {
+    const handoff = loadTutorVerificationHandoff();
+    if (!user?.id || !user.email_confirmed_at || tutorApp || !tutorVerificationHandoffMatchesUser(handoff, user)) return;
+    if (tutorVerificationResumeRef.current) return;
+
+    tutorVerificationResumeRef.current = true;
+    setAwaitingTutorVerification(false);
+    Promise.resolve(submitApplication()).finally(() => {
+      tutorVerificationResumeRef.current = false;
+    });
+    // submitApplication intentionally omitted: it is recreated each render and
+    // this effect is keyed to identity/application state, not function identity.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user?.id, user?.email_confirmed_at, tutorApp?.id]);
   return (
     <div className="tutor-apply-page" style={{ flex: 1, display: "flex", flexDirection: "column" }}>
       <div className="tutor-apply-hero" style={{ background: `linear-gradient(135deg,${T.navyDeep},${T.navyMid})`, color: "#fff", padding: "52px 28px 44px", textAlign: "center", flexShrink: 0 }}>
@@ -6032,7 +6656,25 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
         </p>
       </div>
 
-      {tutorApp && tutorApp.status !== "rejected" ? (
+      {awaitingTutorVerification && !user ? (
+        <div style={{ maxWidth: 560, margin: "0 auto", padding: "48px 28px 64px", flex: 1, width: "100%" }}>
+          <Card style={{ textAlign: "center", padding: 40 }}>
+            <div style={{ fontSize: 34, marginBottom: 12 }}>✉️</div>
+            <div style={{ fontFamily: FD, fontSize: 20, color: T.ink, marginBottom: 9 }}>Verify your email to finish your tutor application</div>
+            <p style={{ color: T.textMuted, fontSize: 14, lineHeight: 1.65, margin: "0 0 18px" }}>
+              Your SPARK tutor account has been created. We saved your completed application securely in this browser without your password. Verify your email, then return to SPARK. We will finish submitting the application once you are authenticated.
+            </p>
+            <div style={{ background: T.tealLight, border: `1px solid ${T.border}`, borderRadius: 9, padding: "11px 13px", fontSize: 13, color: T.inkSoft, marginBottom: 18 }}>
+              {loadTutorVerificationHandoff()?.email || form.email}
+            </div>
+            <Btn full disabled={resendingTutorVerification} onClick={resendTutorVerification}>
+              {resendingTutorVerification ? "Sending…" : "Resend verification email"}
+            </Btn>
+            <div style={{ height: 10 }} />
+            <Btn full v="outline" onClick={() => setView("login")}>Already verified? Log in</Btn>
+          </Card>
+        </div>
+      ) : tutorApp && tutorApp.status !== "rejected" ? (
         <div className="tutor-apply-status-shell" style={{ maxWidth: 560, margin: "0 auto", padding: "0 28px 64px", flex: 1, width: "100%" }}>
           <Card style={{ textAlign: "center", padding: 40 }}>
             <div style={{ fontSize: 32, marginBottom: 12 }}>
@@ -6046,7 +6688,7 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
             <p style={{ color: T.textMuted, fontSize: 14, marginBottom: tutorApp.status === "approved" ? 20 : 0 }}>
               {tutorApp.status === "approved" && "You can manage your tutor profile from your dashboard."}
               {tutorApp.status === "deactivated" && "Contact SPARK support if you believe this was a mistake."}
-              {tutorApp.status === "pending" && "We will contact you within 3 business days. You do not need to reapply."}
+              {tutorApp.status === "pending" && "Your tutor account is set up and your application is under review. Tutor dashboard tools will unlock after approval. We will contact you within 3 business days."}
             </p>
             {tutorApp.status === "approved" && (
               <Btn onClick={() => setView("dashboard")}>Go to dashboard →</Btn>
