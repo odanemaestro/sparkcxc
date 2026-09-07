@@ -1521,8 +1521,27 @@ function AuthView({ setView, initialMode = "signup", recoveryMode = false }) {
           email: cleanEmail, password,
           options: { data: { name: name.trim(), role } }
         });
-        if (error) throw error;
-        localStorage.setItem("spark_verification_email", cleanEmail);
+        const signupErrorText = `${error?.message || ""} ${error?.code || ""}`;
+            if (error) {
+              if (/user already registered|user_already_exists|already registered/i.test(signupErrorText)) {
+                throw new Error("An account already exists with this email. Log in instead or use Forgot password.");
+              }
+              throw error;
+            }
+        const signupIdentities = data?.user?.identities;
+            const duplicateSignupEmail =
+              !data?.session &&
+              Array.isArray(signupIdentities) &&
+              signupIdentities.length === 0;
+
+            if (duplicateSignupEmail) {
+              localStorage.removeItem("spark_verification_email");
+              setVerificationSent(false);
+              setShowResendVerification(false);
+              throw new Error("An account already exists with this email. Log in instead or use Forgot password.");
+            }
+
+            localStorage.setItem("spark_verification_email", cleanEmail);
         setVerificationSent(true);
         setMessage(data.session ? "Account created. Your email is already verified." : "Check your email for the verification link before logging in.");
         if (data.session && data.user?.email_confirmed_at) setView("dashboard");
