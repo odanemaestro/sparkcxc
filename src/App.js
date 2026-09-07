@@ -1166,7 +1166,7 @@ function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorAp
       {!isTutor && !isParent && <NavBtn onClick={() => navigate("practice")} active={view === "practice"}>Practice</NavBtn>}
       <NavBtn onClick={() => navigate("tutors")} active={view === "tutors"}>Tutors</NavBtn>
       {!isStudent && !isParent && !hasTutorApp && view !== "become-tutor" && (
-        <NavBtn onClick={() => navigate("become-tutor")}>Submit application to become a tutor</NavBtn>
+        <NavBtn onClick={() => navigate("become-tutor")}>Become a tutor</NavBtn>
       )}
       {profile?.is_admin && <NavBtn onClick={() => navigate("admin")} active={view === "admin"}>Admin</NavBtn>}
     </>
@@ -1288,7 +1288,7 @@ function Footer({ setView, hasTutorApp, isTutor, isParent }) {
           ...((isTutor || isParent) ? [] : [["Study", [["Mathematics",()=>setView("lesson")],["Physics (soon)",null],["English A (planned)",null]]]]),
           ...((isTutor || isParent) ? [] : [["Tutors", [
             ["Find a tutor",()=>setView("tutors")],
-            ...(hasTutorApp ? [] : [["Submit application to become a tutor",()=>setView("become-tutor")]]),
+            ...(hasTutorApp ? [] : [["Become a tutor",()=>setView("become-tutor")]]),
             ["How it works",()=>setView("how-it-works")]
           ]]]),
           ["Company", [["About SPARK",()=>setView("about")],["Contact us",()=>setView("contact")],["Privacy Policy",()=>setView("privacy")]]],
@@ -1680,7 +1680,7 @@ function AuthView({ setView, initialMode = "signup", recoveryMode = false }) {
               We sent a verification link to <strong style={{color:T.ink}}>{email}</strong>. Verify your email before you log in.
             </p>
             {message && <div style={{background:T.tealLight,color:T.tealDark,borderRadius:8,padding:"10px 12px",fontSize:13,marginBottom:12}}>{message}</div>}
-            {err && <div style={{color:T.red,fontSize:13,marginBottom:12}}>{err}</div>}
+            {err && <div className="spark-form-error spark-form-error--block" role="alert">{err}</div>}
             <Btn onClick={resendVerification} disabled={loading} full>{loading ? "Sending…" : "Resend verification email"}</Btn>
             <button onClick={() => { setVerificationSent(false); setMode("login"); setErr(null); setMessage(null); }}
               style={{width:"100%",marginTop:10,padding:10,border:"none",background:"transparent",color:T.teal,cursor:"pointer",fontFamily:FB,fontWeight:600}}>
@@ -1716,7 +1716,7 @@ function AuthView({ setView, initialMode = "signup", recoveryMode = false }) {
               <div style={{fontSize:12.5,color:T.textMuted,marginBottom:14}}>Use at least 8 characters, including a letter and a number.</div>
             </>}
             {message && <div style={{background:T.tealLight,color:T.tealDark,borderRadius:8,padding:"10px 12px",fontSize:13,marginBottom:12}}>{message}</div>}
-            {err && <div style={{color:T.red,fontSize:13,marginBottom:12}}>{err}</div>}
+            {err && <div className="spark-form-error spark-form-error--block" role="alert">{err}</div>}
             <Btn onClick={resetStage === "email" ? sendResetCode : resetStage === "code" ? verifyResetCode : updatePassword} disabled={loading} full>
               {loading ? "Please wait…" : resetStage === "email" ? "Send verification code" : resetStage === "code" ? "Verify code" : "Update password"}
             </Btn>
@@ -1774,14 +1774,14 @@ function AuthView({ setView, initialMode = "signup", recoveryMode = false }) {
                       setRememberMe(checked);
                       setRememberMePreference(checked);
                     }}
-                    style={{width:16,height:16,accentColor:T.teal,cursor:"pointer",margin:0}}
+                    className="spark-auth-remember-checkbox"
                   />
-                  <span>Remember Me</span>
+                  <span>Keep me logged in</span>
                 </label>
                 <button onClick={() => switchMode("forgot")} style={{border:"none",background:"transparent",color:T.teal,cursor:"pointer",fontFamily:FB,fontSize:13,fontWeight:600,padding:0}}>Forgot your password?</button>
               </div>
             )}
-            {err && <div style={{color:T.red,fontSize:13,marginBottom:12}}>{err}</div>}
+            {err && <div className="spark-form-error spark-form-error--block" role="alert">{err}</div>}
             {message && <div style={{background:T.tealLight,color:T.tealDark,borderRadius:8,padding:"10px 12px",fontSize:13,marginBottom:12}}>{message}</div>}
             {showResendVerification && mode === "login" && (
               <button onClick={resendVerification} disabled={loading}
@@ -3402,7 +3402,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
             onMouseEnter={e=>e.currentTarget.style.background=T.tealLight}
             onMouseLeave={e=>e.currentTarget.style.background="transparent"}>
             <span className="dash-nav-icon" aria-hidden="true"><Icon name="tutor" /></span>
-            <span className="dash-nav-label">Submit application to become a tutor</span>
+            <span className="dash-nav-label">Become a tutor</span>
           </div>
         )}
       </div>
@@ -3421,7 +3421,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
               We don't have an application on file for you yet, so there's nothing to show here. Submit your
               application - it only takes a few minutes - and we'll review it within 3 business days.
             </p>
-            <Btn onClick={() => setView("become-tutor")}>Submit application to become a tutor →</Btn>
+            <Btn onClick={() => setView("become-tutor")}>Become a tutor →</Btn>
           </Card>
         ) : (
         <>
@@ -4993,7 +4993,7 @@ export default function App() {
   const authInitialized = useRef(false);
   const hasTutorApp = !!tutorApp && tutorApp.status !== "rejected";
   // Student accounts are never eligible to apply as a tutor, so the
-  // "Submit application to become a tutor" link (nav, footer, dashboard)
+  // "Become a tutor" link (nav, footer, dashboard)
   // should stay hidden for them the same way it does for accounts that
   // already have an application on file. hasTutorApp is only ever used
   // downstream to control that one link, so folding the student check in
@@ -5379,7 +5379,7 @@ function HowItWorksView({ setView, hasTutorApp, isParent, user, isTutor = false 
               {user ? "Go to your dashboard →" : "Start learning →"}
             </Btn>
             {!user && !hasTutorApp && (
-              <Btn v="ghost" onClick={() => setView("become-tutor")}>Submit application to become a tutor</Btn>
+              <Btn v="ghost" onClick={() => setView("become-tutor")}>Become a tutor</Btn>
             )}
           </div>
         </div>
@@ -5656,7 +5656,7 @@ const InputField = ({ label, value, onChange, placeholder, type = "text", requir
         fontSize: 14, color: T.ink, background: T.paper, outline: "none" }}
       onFocus={e => e.target.style.borderColor = error ? T.red : T.teal}
       onBlur={e => { e.target.style.borderColor = error ? T.red : T.border; onBlur?.(e); }} />
-    {error && <div id={`${label.replace(/\s+/g, "-").toLowerCase()}-error`} style={{ marginTop: 5, fontSize: 12, color: T.red }}>{error}</div>}
+    {error && <div id={`${label.replace(/\s+/g, "-").toLowerCase()}-error`} className="spark-form-error spark-form-error--field" role="alert">{error}</div>}
   </div>
 );
 
@@ -5833,7 +5833,7 @@ const PhoneInputWithCountry = ({
       <div style={{ marginTop: 5, fontSize: 12, color: T.textMuted }}>
         Will be saved as +{selectedCountry.dialCode} {localNumber || "…"}
       </div>
-      {error && <div id={`${label.replace(/\s+/g, "-").toLowerCase()}-error`} style={{ marginTop: 5, fontSize: 12, color: T.red }}>{error}</div>}
+      {error && <div id={`${label.replace(/\s+/g, "-").toLowerCase()}-error`} className="spark-form-error spark-form-error--field" role="alert">{error}</div>}
     </div>
   );
 };
@@ -5964,7 +5964,7 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
 
   const submitApplication = async () => {
     const validationError = validateApplication();
-    if (validationError) { showToast(validationError); return; }
+    if (validationError) { showToast(validationError, "error"); return; }
     setLoading(true);
     try {
       let uid = user?.id;
@@ -6125,7 +6125,7 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
             </div>
             <Btn onClick={() => {
               const error = validateStep1();
-              if (error) { showToast(error); return; }
+              if (error) { showToast(error, "error"); return; }
               setStep(2);
             }} full>Continue →</Btn>
           </div>
@@ -6175,7 +6175,7 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
               <Btn v="outline" onClick={() => setStep(1)} style={{ flex: 1, justifyContent: "center" }}>← Back</Btn>
               <Btn onClick={() => {
                 const error = validateStep2();
-                if (error) { showToast(error); return; }
+                if (error) { showToast(error, "error"); return; }
                 setStep(3);
               }} style={{ flex: 2, justifyContent: "center" }}>Continue →</Btn>
             </div>

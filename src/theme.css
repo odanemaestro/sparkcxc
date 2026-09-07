@@ -1315,3 +1315,132 @@ html[data-theme="dark"] .profile-photo-trigger::after{
     transform:translate(0,0);
   }
 }
+
+
+/* SPARK V5.3.9K1 - shared form error and auth controls */
+.spark-form-error {
+  box-sizing: border-box;
+  color: #b42318;
+  font-weight: 500;
+  line-height: 1.45;
+}
+
+.spark-form-error--block {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  background: #fef2f2;
+  font-size: 13px;
+}
+
+.spark-form-error--block::before {
+  content: "!";
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 17px;
+  height: 17px;
+  margin-top: 1px;
+  border-radius: 50%;
+  background: #dc2626;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.spark-form-error--field {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 6px;
+  padding: 6px 8px;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  background: #fff7f7;
+  font-size: 12px;
+}
+
+.spark-form-error--field::before {
+  content: "!";
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 15px;
+  margin-top: 1px;
+  border-radius: 50%;
+  background: #dc2626;
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.spark-auth-remember-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  flex: 0 0 auto;
+  border: 1.5px solid #94a3b8;
+  border-radius: 5px;
+  background-color: #ffffff;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 12px 12px;
+  cursor: pointer;
+  transition: border-color .15s ease, background-color .15s ease, box-shadow .15s ease;
+}
+
+.spark-auth-remember-checkbox:hover {
+  border-color: #0d9488;
+}
+
+.spark-auth-remember-checkbox:checked {
+  border-color: #0d9488;
+  background-color: #0d9488;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.2' d='m3 8 3 3 7-7'/%3E%3C/svg%3E");
+}
+
+.spark-auth-remember-checkbox:focus-visible {
+  outline: none;
+  border-color: #0d9488;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, .18);
+}
+
+[data-theme="dark"] .spark-form-error--block,
+.dark .spark-form-error--block {
+  border-color: rgba(248, 113, 113, .35);
+  background: rgba(127, 29, 29, .22);
+  color: #fecaca;
+}
+
+[data-theme="dark"] .spark-form-error--field,
+.dark .spark-form-error--field {
+  border-color: rgba(248, 113, 113, .3);
+  background: rgba(127, 29, 29, .16);
+  color: #fecaca;
+}
+
+[data-theme="dark"] .spark-auth-remember-checkbox,
+.dark .spark-auth-remember-checkbox {
+  border-color: #64748b;
+  background-color: #0f2557;
+}
+
+[data-theme="dark"] .spark-auth-remember-checkbox:checked,
+.dark .spark-auth-remember-checkbox:checked {
+  border-color: #2dd4bf;
+  background-color: #0d9488;
+}
