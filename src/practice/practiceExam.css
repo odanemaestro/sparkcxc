@@ -1789,3 +1789,133 @@ html[data-theme="dark"] .paper2027-start-card .paper2027-source-note{
 @media(max-width:640px){
   .paper2027-start-card .paper2027-source-note{margin-top:14px;padding:13px 14px;font-size:12px}
 }
+
+
+/* ==========================================================================
+   SPARK V5.3.9L Paper 2 structure + construction model polish
+   ========================================================================== */
+.paper2-part-context{
+  margin:0 0 14px;
+  padding:13px 15px;
+  border:1px solid var(--paper-border);
+  border-left:3px solid var(--paper-teal);
+  border-radius:10px;
+  background:#f5f9fb;
+}
+.paper2-part-context p{margin:0!important;font-size:15.5px!important;line-height:1.58!important;color:#223958!important}
+.paper2-review-part .paper2-part-context{margin-bottom:14px}
+html[data-theme="dark"] .paper2-part-context{background:var(--spark-surface-2)!important;border-color:var(--spark-border)!important;border-left-color:var(--spark-teal)!important}
+html[data-theme="dark"] .paper2-part-context p{color:var(--spark-ink)!important}
+/* SPARK V5.3.9L END */
+
+
+/* SPARK V5.3.9L2 REVIEW TABLE SCROLL + ALL CONSTRUCTION REVIEW */
+.paper2-workspace-review-grid>section{overflow:hidden}
+.paper2-workspace-review-grid .paper2-table-workspace.paper2-workspace-readonly{pointer-events:auto}
+.paper2-workspace-review-grid .paper2-table-input-wrap{
+  box-sizing:border-box;
+  width:100%;
+  max-width:100%;
+  min-width:0;
+  overflow-x:auto!important;
+  overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior-inline:contain;
+  scrollbar-gutter:stable;
+  touch-action:pan-x pan-y;
+}
+.paper2-workspace-review-grid .paper2-table-input-wrap:focus-visible{outline:2px solid var(--paper-teal);outline-offset:2px}
+.paper2-workspace-review-grid .paper2-table-input-wrap .paper2-data-table{
+  width:max-content;
+  min-width:560px;
+  max-width:none;
+}
+@media(max-width:640px){
+  .paper2-workspace-review-grid .paper2-table-input-wrap .paper2-data-table{min-width:520px}
+}
+/* SPARK V5.3.9L2 END */
+
+
+/* SPARK V5.3.9L3 REVIEW SCORE SPACING */
+/*
+ * Result metrics and paper identity are deliberately separated so values such
+ * as "0%" can never visually run into labels such as "Practice Paper C".
+ * These rules cover Paper 1, standard Paper 2 and 2027 Paper 2 review heroes.
+ */
+.paper-result-score-detail{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-top:10px;
+}
+.paper-result-score-detail strong{
+  color:#fff;
+  font-size:24px;
+  line-height:1;
+  font-weight:900;
+}
+.paper-result-score-detail span{
+  color:#bdc8d9;
+  font-size:10px;
+  line-height:1.2;
+  font-weight:800;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+.paper-result-summary>div{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:5px;
+  min-width:0;
+}
+.paper-result-summary>div strong,
+.paper-result-summary>div span{margin:0}
+.paper-score-percent{
+  justify-self:start;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  min-width:0;
+  padding:15px 18px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:14px;
+  background:rgba(255,255,255,.06);
+}
+.paper-score-percent-value{
+  display:flex;
+  flex:0 0 auto;
+  flex-direction:column;
+  gap:5px;
+}
+.paper-score-percent-value strong{
+  color:#fff;
+  font-size:30px;
+  line-height:1;
+  font-weight:900;
+}
+.paper-score-percent-value span{
+  color:#bdc8d9;
+  font-size:10px;
+  line-height:1.2;
+  font-weight:800;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+.paper-score-paper-name{
+  min-width:0;
+  padding-left:20px;
+  border-left:1px solid rgba(255,255,255,.18);
+  color:#f8fafc;
+  font-size:15px;
+  line-height:1.35;
+  font-weight:800;
+  white-space:nowrap;
+}
+@media(max-width:680px){
+  .paper-result-score-detail{gap:8px}
+  .paper-score-percent{gap:14px;padding:13px 15px}
+  .paper-score-percent-value strong{font-size:27px}
+  .paper-score-paper-name{padding-left:14px;white-space:normal}
+}
+/* SPARK V5.3.9L3 END */

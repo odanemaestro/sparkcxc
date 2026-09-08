@@ -333,9 +333,12 @@ export default function Paper1Exam({ onExit, startFresh = false, supabase, userI
       <main className="paper-results-shell">
         <section className="paper-score-hero">
           <div>
-            <div className="paper-result-kicker">Paper submitted</div>
+            <div className="paper-result-kicker">Paper 1 submitted</div>
             <h1>{result.correct}<span>/60</span></h1>
-            <p>{result.percent}%</p>
+            <div className="paper-result-score-detail">
+              <strong>{result.percent}%</strong>
+              <span>Final score</span>
+            </div>
           </div>
           <div className="paper-result-summary">
             <div><strong>{result.correct}</strong><span>Correct</span></div>

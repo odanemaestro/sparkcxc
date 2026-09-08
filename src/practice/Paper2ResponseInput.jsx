@@ -225,7 +225,12 @@ function TableResponse({ schema, value, onChange, readOnly = false }) {
   return (
     <div className={`paper2-workspace paper2-table-workspace${readOnly ? " paper2-workspace-readonly" : ""}`}>
       {!readOnly && <p className="paper2-workspace-help">Complete the blank cells directly in the table. Each box is saved as you type.</p>}
-      <div className="paper2-table-input-wrap">
+      <div
+        className="paper2-table-input-wrap"
+        tabIndex={readOnly ? 0 : undefined}
+        role={readOnly ? "region" : undefined}
+        aria-label={readOnly ? "Scrollable table review" : undefined}
+      >
         <table className="paper2-data-table paper2-input-table">
           {(schema.headers || []).length > 0 && (
             <thead><tr>{schema.headers.map((header, index) => <th key={`${header}-${index}`}><MathText>{header}</MathText></th>)}</tr></thead>
@@ -439,14 +444,14 @@ function ConstructionWorkspace({ schema, part, value, onChange, readOnly = false
         {objects.map((item, index) => {
           if (item.kind === "circle") {
             const c = toScreen({ x: item.cx, y: item.cy });
-            return <circle key={index} cx={c.x} cy={c.y} r={item.r * scale} fill="none" stroke="currentColor" strokeOpacity="0.62" strokeDasharray="4 3" />;
+            return <circle key={index} cx={c.x} cy={c.y} r={item.r * scale} fill="none" stroke="currentColor" strokeWidth={item.constructionGuide ? "1.15" : "1"} strokeOpacity={item.constructionGuide ? "0.48" : "0.62"} strokeDasharray="4 3" />;
           }
           if (item.kind === "angle_measure") {
             const v=toScreen({x:item.vx,y:item.vy}), a=toScreen({x:item.ax,y:item.ay}), b=toScreen({x:item.bx,y:item.by});
             return <g key={index} className="paper2-protractor-measure" pointerEvents="none"><line x1={v.x} y1={v.y} x2={a.x} y2={a.y} stroke="currentColor" strokeOpacity="0.35"/><line x1={v.x} y1={v.y} x2={b.x} y2={b.y} stroke="currentColor" strokeOpacity="0.35"/><text x={v.x+12} y={v.y-12} fill="currentColor" stroke="none" fontSize="12">{Number(item.degrees).toFixed(1)}°</text></g>;
           }
           const a = toScreen({ x: item.x1, y: item.y1 }), b = toScreen({ x: item.x2, y: item.y2 });
-          return <line key={index} x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke="currentColor" strokeWidth="2" />;
+          return <line key={index} x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke="currentColor" strokeWidth={item.constructionGuide ? "1.35" : "2"} strokeOpacity={item.constructionGuide ? "0.5" : "1"} strokeDasharray={item.constructionGuide ? "5 4" : undefined} />;
         })}
 
         {anchor && hover && tool === "segment" && (() => { const a = toScreen(anchor), b = toScreen(hover); return <line x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke="currentColor" strokeWidth="1.4" strokeDasharray="5 4" strokeOpacity="0.65" />; })()}

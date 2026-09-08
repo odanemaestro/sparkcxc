@@ -203,11 +203,31 @@ function Paper2Stimulus({ stimulus }) {
   );
 }
 
+// SPARK_V539L_PART_CONTEXT
+function paper2DetachedStemPartId(question) {
+  const parts = Array.isArray(question?.parts) ? question.parts : [];
+  if (Number(question?.question_number) !== 1 || !question?.stem || parts.length < 2) return null;
+  if (!/calculate\s+the\s+exact\s+value/i.test(String(parts[0]?.prompt || ""))) return null;
+  const firstConsumerPart = parts.find(part => /^\(b\)/i.test(String(part?.label || "").trim()));
+  return firstConsumerPart?.id || null;
+}
+
+function Paper2PartContext({ question, part }) {
+  const targetPartId = paper2DetachedStemPartId(question);
+  if (!targetPartId || String(part?.id) !== String(targetPartId)) return null;
+  return (
+    <div className="paper2-part-context" role="note" aria-label="Information for part b">
+      <MathText as="p">{question.stem}</MathText>
+    </div>
+  );
+}
+
 function QuestionPrompt({ question }) {
   const firstPartOwnsTable = question?.parts?.[0]?.responseSchema?.type === "table";
+  const detachedStemPartId = paper2DetachedStemPartId(question);
   return (
     <div className="paper2-question-copy">
-      {question.stem && <MathText as="p" className="paper2-stem">{question.stem}</MathText>}
+      {question.stem && !detachedStemPartId && <MathText as="p" className="paper2-stem">{question.stem}</MathText>}
       <QuestionDiagram diagram={question.diagram} />
       <Paper2Stimulus stimulus={question.stimulus} />
       {!firstPartOwnsTable && <QuestionTable table={question.table} />}
@@ -504,7 +524,7 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
             <h1>{grade.score}<span>/100</span></h1>
             <p>{timedOut ? "Time expired and SPARK submitted your paper." : `You used ${formatDuration(PAPER2_DURATION_SECONDS - remaining)}.`}</p>
           </div>
-          <div className="paper-result-summary">
+          <div className="paper-result-summary paper2-result-summary">
             <div><strong>{completeIds.length}/10</strong><span>questions completed</span></div>
             <div><strong>{partsAnswered}/{partsTotal}</strong><span>parts attempted</span></div>
             <div><strong>{grade.score}/100</strong><span>marks earned</span></div>
@@ -535,6 +555,7 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
               const stateClass = earned === part.marks ? "is-correct" : earned > 0 ? "is-partial" : "is-incorrect";
               return (
                 <article className={`paper2-review-part ${stateClass}`} key={part.id}>
+                  <Paper2PartContext question={review} part={part} />
                   <div className="paper2-review-part-head"><strong>{part.label}</strong><span>{stateLabel} · {earned}/{part.marks}</span></div>
                   <MathText as="p">{part.prompt}</MathText>
                   <QuestionDiagram diagram={part.responseSchema?.type === "graph" ? null : part.diagram} />
@@ -634,6 +655,7 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
               const workingKey = `${current.question_id}:${part.id}:working`;
               return (
                 <article className="paper2-part-card" key={part.id}>
+                  <Paper2PartContext question={current} part={part} />
                   <div className="paper2-part-heading"><strong>{part.label}</strong><span>{part.marks} {part.marks === 1 ? "mark" : "marks"}</span></div>
 				  <MathText as="p">{part.prompt}</MathText>
                   <QuestionDiagram diagram={part.responseSchema?.type === "graph" ? null : part.diagram} />

@@ -1610,7 +1610,7 @@ export const PAPER2_QUESTION_BANK_V2 = [
         "prompt": "Using a ruler, a pencil and a pair of compasses only, construct triangle PQR in which PQ = 9 cm, angle PQR = 90° and QR = 5 cm. Credit will be given for clearly visible construction arcs.",
         "marks": 4,
         "answer": "A correct construction of triangle PQR",
-        "solution": "Draw PQ = 9 cm. At Q construct an angle of 90° using compass arcs only (a perpendicular at Q gives 90°). Mark R on that arm with QR = 5 cm and join PR.",
+        "solution": "Draw PQ = 9 cm and extend the straight line slightly through Q. With centre Q, draw an arc cutting the line at two points, one on each side of Q. Using those two cut points as centres and the same compass radius, draw two arcs to intersect above Q. Join Q to their intersection to construct the perpendicular, giving angle PQR = 90°. With centre Q and radius 5 cm, draw an arc to cut the perpendicular at R. Join P to R. Leave all construction arcs clearly visible.",
         "answerType": "text",
         "accepted": [
           "construction",

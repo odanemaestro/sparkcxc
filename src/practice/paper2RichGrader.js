@@ -574,9 +574,15 @@ function canonicalGenericConstruction(schema = {}) {
   const spec = schema.construction || {};
   const kind = spec.construction;
   const args = spec.args || [];
+  // SPARK_V539L2_ALL_CONSTRUCTION_MODELS
   const objects = [];
-  const addSegment = (a, b) => objects.push({ kind: "segment", x1: a.x, y1: a.y, x2: b.x, y2: b.y });
-  const addCircle = (c, r) => objects.push({ kind: "circle", cx: c.x, cy: c.y, r });
+  const addSegment = (a, b, constructionGuide = false) => objects.push({
+    kind: "segment", x1: a.x, y1: a.y, x2: b.x, y2: b.y,
+    ...(constructionGuide ? { constructionGuide: true } : {}),
+  });
+  const addCircle = (c, r) => objects.push({
+    kind: "circle", cx: c.x, cy: c.y, r, constructionGuide: true,
+  });
   const d = (a, b) => Math.hypot(Number(a.x) - Number(b.x), Number(a.y) - Number(b.y));
   const rayPoint = (from, towards, r) => {
     const length = d(from, towards) || 1;
@@ -621,9 +627,21 @@ function canonicalGenericConstruction(schema = {}) {
   if (kind === "parallel") {
     const [P, A, B] = args;
     if (!P || !A || !B) return { objects };
+
+    // Copy the angle made by AB and the transversal AP. Show every compass
+    // setting used in the model rather than displaying only the finished line.
     const radius = Math.max(0.8, Math.min(d(A, B), d(A, P)) * 0.55);
-    addCircle(A, radius);
-    addCircle(P, radius);
+    const onAB = rayPoint(A, B, radius);
+    const onAP = rayPoint(A, P, radius);
+    const onPA = rayPoint(P, A, radius);
+    const copiedChord = d(onAB, onAP);
+
+    addSegment(A, P, true);              // transversal / construction guide
+    addCircle(A, radius);                // first equal-radius arc
+    addCircle(P, radius);                // copied equal-radius arc at P
+    if (Number.isFinite(copiedChord) && copiedChord > 0.2) {
+      addCircle(onPA, copiedChord);       // transfer the chord that fixes direction
+    }
     addSegment(P, { x: P.x + (B.x - A.x), y: P.y + (B.y - A.y) });
     return { objects };
   }
@@ -702,22 +720,67 @@ export function buildCanonicalPaper2Response(part = {}) {
   }
 
   if (schema.type === "construction_triangle") {
+    // SPARK_V539L_FULL_COMPASS_MODEL
     const pq = Number(schema.target?.pq || 8);
     const qr = Number(schema.target?.qr || 6);
-    const angle = Number(schema.target?.anglePqr || 60) * Math.PI / 180;
+    const angleDegrees = Number(schema.target?.anglePqr || 60);
+    const angle = angleDegrees * Math.PI / 180;
     const p = { x: 0, y: 0 };
     const q = { x: pq, y: 0 };
     // Q->P points at 180 degrees. Turning inward by the requested angle gives
     // the Q->R direction at (180 - angle) degrees.
     const rDirection = Math.PI - angle;
     const r = { x: q.x + qr * Math.cos(rDirection), y: q.y + qr * Math.sin(rDirection) };
+    const finalTriangle = [
+      { kind: "segment", x1: p.x, y1: p.y, x2: q.x, y2: q.y },
+      { kind: "segment", x1: q.x, y1: q.y, x2: r.x, y2: r.y },
+      { kind: "segment", x1: p.x, y1: p.y, x2: r.x, y2: r.y },
+    ];
+
+    if (Math.abs(angleDegrees - 90) < 0.01) {
+      const guideRadius = Math.max(1.5, Math.min(2, pq / 3, qr / 2));
+      const leftCut = { x: q.x - guideRadius, y: q.y };
+      const rightCut = { x: q.x + guideRadius, y: q.y };
+      const crossingRadius = guideRadius * 1.4;
+      const crossingHeight = Math.sqrt(Math.max(0, crossingRadius ** 2 - guideRadius ** 2));
+      const perpendicularGuide = { x: q.x, y: q.y + Math.max(crossingHeight, 1.5) };
+      return {
+        objects: [
+          // Extend PQ through Q so the compass can mark equal points on both sides.
+          { kind: "segment", x1: p.x, y1: p.y, x2: rightCut.x, y2: rightCut.y, constructionGuide: true },
+          // One Q-centred circle marks the equal cuts. The two equal-radius
+          // circles from those cuts intersect on the required perpendicular.
+          { kind: "circle", cx: q.x, cy: q.y, r: guideRadius, constructionGuide: true },
+          { kind: "circle", cx: leftCut.x, cy: leftCut.y, r: crossingRadius, constructionGuide: true },
+          { kind: "circle", cx: rightCut.x, cy: rightCut.y, r: crossingRadius, constructionGuide: true },
+          // This compass setting locates R exactly 5 cm (or the target QR) from Q.
+          { kind: "circle", cx: q.x, cy: q.y, r: qr, constructionGuide: true },
+          { kind: "segment", x1: q.x, y1: q.y, x2: perpendicularGuide.x, y2: perpendicularGuide.y, constructionGuide: true },
+          ...finalTriangle,
+        ],
+      };
+    }
+
+    if (Math.abs(angleDegrees - 60) < 0.01) {
+      const guideRadius = Math.max(1.5, Math.min(2.5, pq / 3, qr * 0.7));
+      const baseCut = { x: q.x - guideRadius, y: q.y };
+      return {
+        objects: [
+          // Equal-radius arcs at Q and at the point where the first arc cuts PQ
+          // give the equilateral-triangle construction for 60 degrees.
+          { kind: "circle", cx: q.x, cy: q.y, r: guideRadius, constructionGuide: true },
+          { kind: "circle", cx: baseCut.x, cy: baseCut.y, r: guideRadius, constructionGuide: true },
+          { kind: "circle", cx: q.x, cy: q.y, r: qr, constructionGuide: true },
+          ...finalTriangle,
+        ],
+      };
+    }
+
     return {
       objects: [
-        { kind: "segment", x1: p.x, y1: p.y, x2: q.x, y2: q.y },
-        { kind: "segment", x1: q.x, y1: q.y, x2: r.x, y2: r.y },
-        { kind: "segment", x1: p.x, y1: p.y, x2: r.x, y2: r.y },
-        { kind: "circle", cx: q.x, cy: q.y, r: Math.max(1, qr / 2) },
-        { kind: "circle", cx: p.x, cy: p.y, r: Math.max(1, pq / 2) },
+        { kind: "circle", cx: q.x, cy: q.y, r: Math.max(1, qr / 2), constructionGuide: true },
+        { kind: "circle", cx: p.x, cy: p.y, r: Math.max(1, pq / 2), constructionGuide: true },
+        ...finalTriangle,
       ],
     };
   }

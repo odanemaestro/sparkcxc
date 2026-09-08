@@ -118,6 +118,28 @@ function questionTableCellText(cell) {
   return cell.display ?? cell.text ?? cell.value ?? "";
 }
 
+// SPARK_V539L1_2027_PART_CONTEXT
+function paper2027DetachedStemPartId(question) {
+  const parts = Array.isArray(question?.parts) ? question.parts : [];
+  if (Number(question?.question_number) !== 1 || !question?.stem || parts.length < 2) return null;
+
+  const firstPrompt = String(parts[0]?.prompt || parts[0]?.text || "");
+  if (!/calculate\s+the\s+exact\s+value/i.test(firstPrompt)) return null;
+
+  const firstConsumerPart = parts.find(part => /^\(b\)/i.test(String(part?.label || "").trim()));
+  return firstConsumerPart?.id || null;
+}
+
+function Paper2027PartContext({ question, part }) {
+  const targetPartId = paper2027DetachedStemPartId(question);
+  if (!targetPartId || String(part?.id) !== String(targetPartId)) return null;
+  return (
+    <div className="paper2-part-context" role="note" aria-label="Information for part b">
+      <MathText as="p">{question.stem}</MathText>
+    </div>
+  );
+}
+
 function QuestionTable({ table }) {
   if (!table) return null;
   return (
@@ -501,7 +523,13 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false,
             <h1>{grade.score}<span>/{grade.maxScore}</span></h1>
             <p>{timedOut ? "Time expired and SPARK submitted your paper." : `You used ${formatDuration(durationSeconds - remaining)}.`}</p>
           </div>
-          <div className="paper-score-percent"><strong>{grade.percent}%</strong><span>Practice Paper {paper.letter}</span></div>
+          <div className="paper-score-percent">
+            <div className="paper-score-percent-value">
+              <strong>{grade.percent}%</strong>
+              <span>Final score</span>
+            </div>
+            <div className="paper-score-paper-name">Practice Paper {paper.letter}</div>
+          </div>
         </section>
 
         <ProfileStrip profile={Object.keys(grade.profile || {}).length ? grade.profile : emptyProfile(paper)} className="paper2027-result-profile" />
@@ -518,7 +546,7 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false,
             <div><span>Module {reviewQuestion.module} · Question {reviewQuestion.question_number}</span><h2>{reviewQuestion.topic}</h2></div>
             <strong>{questionGrade.score}/{reviewQuestion.marks} marks</strong>
           </div>
-          {reviewQuestion.stem && <MathText as="p" className="paper2-stem">{reviewQuestion.stem}</MathText>}
+          {reviewQuestion.stem && !paper2027DetachedStemPartId(reviewQuestion) && <MathText as="p" className="paper2-stem">{reviewQuestion.stem}</MathText>}
           <div className="paper2-review-parts">
             {reviewQuestion.parts.map(part => {
               const result = questionGrade.parts[part.id];
@@ -526,6 +554,7 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false,
               const working = paper2WorkingSummary(response, part);
               return (
                 <article className="paper2-review-part" key={part.id}>
+                  <Paper2027PartContext question={reviewQuestion} part={part} />
                   <div className="paper2-review-part-head"><strong>{part.label}</strong><span>{result.marks}/{part.marks} marks</span></div>
                   <MathText as="p">{part.prompt}</MathText>
                   <QuestionDiagram diagram={part.diagram} />
@@ -587,7 +616,7 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false,
           <div className="paper2-question-meta paper2027-question-meta">
             <span>{current.topic}</span><b>{current.marks} marks</b>
           </div>
-          {current.stem && <MathText as="p" className="paper2-stem paper2027-stem">{current.stem}</MathText>}
+          {current.stem && !paper2027DetachedStemPartId(current) && <MathText as="p" className="paper2-stem paper2027-stem">{current.stem}</MathText>}
 
           <div className="paper2-symbol-toolbar">
             <span>Mathematical symbols</span>
@@ -603,6 +632,7 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false,
               const workingKey = `${current.question_id}:${part.id}:working`;
               return (
                 <article className="paper2-part-card" key={part.id}>
+                  <Paper2027PartContext question={current} part={part} />
                   <div className="paper2-part-heading"><strong>{part.label}</strong><span>{part.marks} {part.marks === 1 ? "mark" : "marks"}</span></div>
                   <MathText as="p">{part.prompt}</MathText>
                   <QuestionDiagram diagram={part.diagram} />

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { supabase } from "../../lib/supabaseClient";
 import { setSparkAppBadge } from "../../lib/pushNotifications";
-import messageIcon from "../../assets/icons/notification-message.png";
+import Icon from "../ui/Icon";
 import "./notificationCenter.css";
 import { getNotificationRoute } from "./notificationRouting";
 import PushNotificationSettings from "./PushNotificationSettings";
@@ -269,7 +269,7 @@ export default function NotificationCenter({ user, profile, setView }) {
         aria-expanded={open}
         onClick={() => { setOpen(true); setFilter("all"); load(); }}
       >
-        <span className="notification-trigger-icon"><img src={messageIcon} alt="" /></span>
+        <span className="notification-trigger-icon"><Icon name="bell" size={22} strokeWidth={2} /></span>
         {unreadCount > 0 && <span className="notification-badge">{unreadCount > 99 ? "99+" : unreadCount}</span>}
       </button>
 
