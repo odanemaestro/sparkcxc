@@ -6,6 +6,7 @@ import {
 } from "./paper2Blueprints";
 import {
   accumulateProfile, emptyProfileTotals, profileForSchema, summariseProfiles,
+  PROFILES, PROFILE_WEIGHTS,
 } from "./cxcMarking/profiles.js";
 
 const DEFAULT_BLUEPRINT = paper2Blueprint(DEFAULT_PAPER2_BLUEPRINT);
@@ -50,6 +51,47 @@ export function getPaper2Bank() {
   return PAPER2_QUESTION_BANK;
 }
 
+// SPARK_V55_PROFILE_WEIGHTED_BUILDER
+// Repetition/design freshness remains the first selection tier. Profile
+// weighting only ranks questions within the tier the builder was already
+// willing to use, so balancing cannot re-introduce a previously used question.
+const WEIGHTING_SLACK = 0.04;
+
+function profileMarks(question) {
+  const totals = { conceptual: 0, algorithmic: 0, reasoning: 0 };
+  for (const part of question.parts || []) {
+    if (part.responseSchema) {
+      totals[profileForSchema(part.responseSchema.type)] += Number(part.marks || 0);
+      continue;
+    }
+    for (const criterion of part.criteria || []) {
+      const profile = criterion.profile || "algorithmic";
+      totals[profile] = (totals[profile] || 0) + Number(criterion.marks || 0);
+    }
+  }
+  return totals;
+}
+
+const BANK_AVERAGE = (() => {
+  const totals = { conceptual: 0, algorithmic: 0, reasoning: 0 };
+  for (const question of PAPER2_QUESTION_BANK) {
+    const marks = profileMarks(question);
+    for (const key of PROFILES) totals[key] += marks[key];
+  }
+  const count = PAPER2_QUESTION_BANK.length || 1;
+  return Object.fromEntries(PROFILES.map(key => [key, totals[key] / count]));
+})();
+
+function distanceFromWeighting(running, candidate, positionsLeft, weights) {
+  const marks = profileMarks(candidate);
+  const totals = Object.fromEntries(PROFILES.map(key => [
+    key, running[key] + marks[key] + positionsLeft * BANK_AVERAGE[key],
+  ]));
+  const all = PROFILES.reduce((sum, key) => sum + totals[key], 0) || 1;
+  return PROFILES.reduce(
+    (sum, key) => sum + Math.abs(totals[key] / all - (weights[key] ?? 0)), 0);
+}
+
 export function buildPaper2Exam(options = {}) {
   const requestedBlueprint = options.blueprint || DEFAULT_PAPER2_BLUEPRINT;
   // SPARK_V541_2027_ROUTE_GUARD
@@ -70,12 +112,23 @@ export function buildPaper2Exam(options = {}) {
       .map(question => `${question.question_number}::${question.design || question.question_id}`)
   );
   const questions = [];
+  const weights = blueprint.profiles || PROFILE_WEIGHTS;
+  const running = { conceptual: 0, algorithmic: 0, reasoning: 0 };
 
   for (let qn = 1; qn <= blueprint.questionCount; qn += 1) {
     const candidates = shuffle(PAPER2_QUESTION_BANK.filter(q => q.question_number === qn), rng);
     const unseen = candidates.filter(q => !used.has(q.question_id));
     const freshDesign = unseen.filter(q => !usedDesigns.has(`${qn}::${q.design || q.question_id}`));
-    const pick = (freshDesign.length ? freshDesign : unseen.length ? unseen : candidates)[0];
+    const tier = freshDesign.length ? freshDesign : unseen.length ? unseen : candidates;
+    const left = blueprint.questionCount - qn;
+    const scored = tier.map(q => ({ q, d: distanceFromWeighting(running, q, left, weights) }));
+    const best = Math.min(...scored.map(item => item.d));
+    // The prior shuffle makes selection among near-best candidates seed-driven.
+    // This avoids the diversity collapse measured under strict minimisation.
+    const pick = (scored.find(item => item.d <= best + WEIGHTING_SLACK) || scored[0]).q;
+
+    const marks = profileMarks(pick);
+    for (const key of PROFILES) running[key] += marks[key];
     questions.push(pick);
   }
 

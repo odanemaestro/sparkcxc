@@ -16,14 +16,14 @@ describe("Paper 2 CXC M/A/B marking V5.3", () => {
     const coverage = paper2MarkingCoverage(PAPER2_QUESTION_BANK);
     expect(PAPER2_QUESTION_BANK).toHaveLength(160);
     expect(coverage).toEqual({
-      parts: 630,
+      parts: 640,
       richParts: 56,
-      typedParts: 574,
-      methodParts: 406,
-      methodMarks: 536,
+      typedParts: 584,
+      methodParts: 403,
+      methodMarks: 529,
       totalMarks: 1600,
       ecfParts: 88,
-      proseParts: 26,
+      proseParts: 36,
     });
 
     for (let position = 1; position <= 10; position += 1) {

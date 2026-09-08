@@ -111,6 +111,8 @@ const LEARNING_TYPES = new Set([
   "study_circle_update",
   "study_circle_report_update",
   "study_circle_moderation",
+  "goal_suggested",
+  "goal_suggestion_response",
 ]);
 const FAMILY_TYPES = new Set(["family_link_request", "family_link_update",
   "child_study_circle_joined",
