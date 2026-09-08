@@ -39,6 +39,8 @@ const TYPE_META = {
   tutor_application_update: { icon: "🎓", tone: "teal", label: "Tutor application" },
   family_link_request: { icon: "👪", tone: "purple", label: "Family request" },
   family_link_update: { icon: "👪", tone: "purple", label: "Family connection" },
+  goal_suggested: { icon: "G", tone: "teal", label: "Learning goal" },
+  goal_suggestion_response: { icon: "G", tone: "purple", label: "Goal update" },
 };
 
 const NOTIFICATION_SELECT = "id,recipient_user_id,tutor_id,student_id,booking_id,type,title,message,action_view,action_label,metadata,read_at,created_at";

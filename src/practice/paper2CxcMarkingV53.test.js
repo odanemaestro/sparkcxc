@@ -19,10 +19,11 @@ describe("Paper 2 CXC M/A/B marking V5.3", () => {
       parts: 630,
       richParts: 56,
       typedParts: 574,
-      methodParts: 402,
-      methodMarks: 527,
+      methodParts: 406,
+      methodMarks: 536,
       totalMarks: 1600,
       ecfParts: 88,
+      proseParts: 26,
     });
 
     for (let position = 1; position <= 10; position += 1) {
@@ -85,12 +86,26 @@ describe("Paper 2 CXC M/A/B marking V5.3", () => {
     expect(result.criteria.find(item => item.code === "A1").earned).toBe(false);
   });
 
-  test("a method-dependent final answer does not receive accuracy marks with no working", () => {
+  // A correct final answer earns an ordinary numerical part, working or not.
+  // That is the CXC convention: the method mark exists to rescue a candidate
+  // whose answer is wrong, not to withhold marks from one whose answer is
+  // right. Working is required only where the question demands it, and those
+  // parts are the subject of the next test.
+  test("a correct final answer earns the part even with no working shown", () => {
     const question = PAPER2_QUESTION_BANK.find(item => item.question_id === "p2-q9-v3");
     const part = question.parts.find(item => item.id === "a");
     const result = gradePaper2Part({ answer: part.answer, working: "" }, part);
+    expect(result.marks).toBe(part.marks);
+    expect(result.criteria.filter(item => item.impliedByAnswer).length).toBeGreaterThan(0);
+    expect(result.criteria.some(item => item.dependencyBlocked)).toBe(false);
+  });
+
+  test("a question that demands the working does not award it from the answer alone", () => {
+    const question = PAPER2_QUESTION_BANK.find(item => item.question_id === "p2e-q9");
+    const part = question.parts.find(item => item.id === "a");
+    expect(part.requireWorking).toBe(true);
+    const result = gradePaper2Part({ answer: part.answer, working: "" }, part);
     expect(result.marks).toBeLessThan(part.marks);
-    expect(result.criteria.some(item => item.dependencyBlocked)).toBe(true);
   });
 
   test("an in-progress pre-V5.3 question object still grades through the legacy checker", () => {

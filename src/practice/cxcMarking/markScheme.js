@@ -21,7 +21,7 @@
 // as the question, be reviewed by a human, and be sent over the wire.
 // ============================================================================
 
-import { compile, equivalent } from "./algebra.js";
+import { compile, equivalent, numbersIn } from "./algebra.js";
 import { check } from "./checkers.js";
 
 /** Where in a response a criterion looks. */
@@ -101,19 +101,51 @@ export function carryForward(ecf, earlier) {
 
 /** Was the student's earlier answer wrong? Only then is ECF in play. */
 function anyEarlierWrong(ecf, earlier) {
-  return (ecf.uses || []).some(id => earlier?.[id] && earlier[id].correct === false);
+  return anyWrongAmong(ecf.uses || [], earlier);
 }
 
+function anyWrongAmong(ids, earlier) {
+  return (ids || []).some(id => earlier?.[id] && earlier[id].correct === false);
+}
+
+/**
+ * The method-mark half of follow-through.
+ *
+ * A candidate whose part (b)(i) came out as 4180 instead of 4080 then writes
+ * "12.5% of 4180 = 522.50". The mark scheme's method mark is looking for 510,
+ * the VAT on the right figure, and will never find it. An examiner does not
+ * care: the step is right on the candidate's own number, so the method mark
+ * stands.
+ *
+ * Three kinds of evidence count, and any one of them is enough:
+ *   1. the candidate quoted their own earlier value in this step;
+ *   2. the step recomputed on their own value appears, when the scheme says
+ *      how this step is derived (`followThroughFormula`);
+ *   3. the whole part's follow-through target appears, because a candidate who
+ *      writes only "4180 + 522.50 = 4702.50" has still shown the method.
+ */
 function followThroughMethodResult(c, text, earlier) {
   const ids = c.followThroughUses || [];
   if (!ids.length) return null;
-  const values = ids
+
+  const own = ids
     .map(id => earlier?.[id]?.value)
-    .filter(value => value !== null && value !== undefined && Number.isFinite(Number(value)))
+    .filter(v => v !== null && v !== undefined && Number.isFinite(Number(v)))
     .map(Number);
-  if (!values.length) return null;
-  const checkerType = c.check?.type === "containsLiteral" ? "containsLiteral" : "contains";
-  const result = check(text, { type: checkerType, value: values, needAll: true });
+  if (!own.length) return null;
+
+  const candidates = [...own];
+  if (c.followThroughFormula) {
+    const derived = carryForward({ uses: ids, variables: c.ecf?.variables,
+                                   formula: c.followThroughFormula }, earlier);
+    if (derived !== null) candidates.push(derived);
+  }
+  if (c.ecf) {
+    const target = carryForward(c.ecf, earlier);
+    if (target !== null) candidates.push(target);
+  }
+
+  const result = check(text, { type: "reachesValue", values: candidates, relTolerance: 5e-3 });
   if (!result.ok) return null;
   return { ...result, why: "uses your earlier answer consistently" };
 }
@@ -140,39 +172,30 @@ export function markPart(response, part, earlier = {}) {
   for (const c of criteria) {
     const marks = c.marks ?? 1;
     const code = c.code || `${c.type === "method" ? "M" : "A"}${lines.length + 1}`;
-    const kind = code[0].toUpperCase();
+    const kind = (c.kind || code[0]).toUpperCase();
     const text = fieldText(response, c.field);
 
-    // an A mark is dependent: no method, no accuracy
-    const deps = c.depends || (kind === "A" ? impliedDepends(criteria, c) : []);
-    const blocked = deps.filter(d => awarded[d] === false || awarded[d] === undefined
-      ? awarded[d] !== true : false);
-    if (deps.length && !deps.every(d => awarded[d] === true)) {
-      lines.push({ code, marks: 0, of: marks, kind, awarded: false,
-        profile: c.profile,
-        description: c.description,
-        why: `not available - it depends on ${deps.join(" and ")}`,
-        dependencyBlocked: true, blocked });
-      awarded[code] = false;
-      continue;
-    }
-
+    // ---- 1. the canonical judgement -------------------------------------
     let result = c.check ? check(text, c.check) : { ok: false, why: "no check defined", got: null };
     const canonicalOk = Boolean(result.ok);
-
-    // A derived method mark can contain the canonical result of an earlier
-    // part. If that earlier result was wrong, accept the candidate's own value
-    // in the same step instead. This is the method-mark side of follow-through.
-    if (!result.ok && c.followThroughUses?.length &&
-        c.followThroughUses.some(id => earlier?.[id]?.correct === false)) {
-      const followed = followThroughMethodResult(c, text, earlier);
-      if (followed) result = followed;
-    }
-
-    // error carried forward: re-derive the target from the student's own
-    // earlier answers and mark against that instead
     let ecfUsed = false;
     let ecfTarget = null;
+
+    // ---- 2. follow-through on a method mark ------------------------------
+    // The candidate's own earlier value, used correctly, is correct method.
+    if (!result.ok && c.followThroughUses?.length
+        && anyWrongAmong(c.followThroughUses, earlier)) {
+      const followed = followThroughMethodResult(c, text, earlier);
+      if (followed) {
+        result = followed;
+        ecfUsed = true;
+        carried = true;
+      }
+    }
+
+    // ---- 3. error carried forward on an accuracy mark --------------------
+    // Re-derive what the answer should have been from the candidate's own
+    // earlier answers, and mark against that instead.
     if (!result.ok && c.ecf && anyEarlierWrong(c.ecf, earlier)) {
       const target = carryForward(c.ecf, earlier);
       if (target !== null) {
@@ -189,9 +212,38 @@ export function markPart(response, part, earlier = {}) {
           ecfUsed = true;
           ecfTarget = carriedValue;
           carried = true;
-          finalCriterionCanonical = false;
         }
       }
+    }
+    if (ecfUsed) finalCriterionCanonical = false;
+
+    // ---- 4. dependencies, considered last --------------------------------
+    //
+    // Order matters more here than anywhere else in the file. The dependency
+    // used to be tested first, which meant a method mark that failed because
+    // the candidate was following through took the accuracy mark down with it
+    // and the follow-through code below was never reached. Measured against
+    // the bank, that single ordering blocked 61 of the 88 parts that declare
+    // follow-through.
+    //
+    // A dependency is also advisory by default. A right answer stands on its
+    // own evidence; only a criterion that explicitly sets `strictDepends` is
+    // withheld when its method mark was not earned, and even then never when
+    // follow-through rescued it.
+    const deps = c.depends || (kind === "A" ? impliedDepends(criteria, c) : []);
+    const depsMet = !deps.length || deps.every(d => awarded[d] === true);
+    if (!depsMet && c.strictDepends === true && !ecfUsed) {
+      const blocked = deps.filter(d => awarded[d] !== true);
+      lines.push({ code, marks: 0, of: marks, kind, awarded: false,
+        profile: c.profile,
+        description: c.description,
+        why: `not available - it depends on ${deps.join(" and ")}`,
+        dependencyBlocked: true, blocked });
+      awarded[code] = false;
+      if ((kind === "A" || kind === "B") && (c.field || "answer") === "answer") {
+        finalCriterionCanonical = false;
+      }
+      continue;
     }
 
     if ((kind === "A" || kind === "B") && (c.field || "answer") === "answer" && !canonicalOk) {
@@ -217,7 +269,36 @@ export function markPart(response, part, earlier = {}) {
       precisionOnly: Boolean(result.precisionOnly),
       formOnly: Boolean(result.formOnly),
       unitMissing: Boolean(result.unitMissing),
+      overPrecise: Boolean(result.overPrecise),
+      dependencySoft: !depsMet,
     });
+  }
+
+  // -------------------------------------------------------------------------
+  // A correct final answer implies the method.
+  //
+  // This is the convention that decides more marks than any other on an
+  // ordinary numerical part: a candidate who writes only the right answer
+  // scores the part. Working is required only where the question demands it,
+  // which is what `requireWorking` records. Without this rule, 345 of the 574
+  // typed parts in the bank awarded nothing at all for a completely correct
+  // answer, which is not how any examiner marks.
+  // -------------------------------------------------------------------------
+  if (part.requireWorking !== true) {
+    const accuracy = lines.filter(l => l.kind === "A" || l.kind === "B");
+    const answerIsRight = accuracy.length > 0 && accuracy.every(l => l.awarded);
+    if (answerIsRight) {
+      for (const line of lines) {
+        if (line.kind !== "M" || line.awarded) continue;
+        line.awarded = true;
+        line.marks = line.of;
+        line.impliedByAnswer = true;
+        line.dependencyBlocked = false;
+        line.why = "implied by a correct final answer";
+        total += line.of;
+        awarded[line.code] = true;
+      }
+    }
   }
 
   const cap = part.marks ?? criteria.reduce((s, c) => s + (c.marks ?? 1), 0);
@@ -228,6 +309,7 @@ export function markPart(response, part, earlier = {}) {
     criteria: lines,
     ecf: carried,
     value: finalValue ?? readValue(response, part),
+    values: readValues(response),
     correct: Math.min(total, cap) === cap,
     canonicalCorrect: Math.min(total, cap) === cap && finalCriterionCanonical && !carried,
     feedback: feedbackFor(lines, cap, total),
@@ -242,10 +324,26 @@ function impliedDepends(criteria, c) {
   return ms.length ? [ms[ms.length - 1]] : [];
 }
 
+/**
+ * The one number a later part follows through from.
+ *
+ * It is the first value in the answer, not the last. "(1, -4)" is the minimum
+ * point of a parabola and the axis of symmetry follows from its x-coordinate;
+ * evaluating the whole string as an expression returns -4, because a comma
+ * between two numbers is a comma operator, and every rule that read it got the
+ * wrong coordinate.
+ */
 function readValue(response, part) {
   const text = fieldText(response, "answer");
+  const values = numbersIn(text);
+  if (values.length && Number.isFinite(values[0])) return values[0];
   const r = check(text, { type: "numeric", value: 0, tolerance: Infinity });
   return r.got;
+}
+
+/** Every value in the answer, so a rule can follow through from a component. */
+function readValues(response) {
+  return numbersIn(fieldText(response, "answer")).filter(Number.isFinite);
 }
 
 /** A part with no criteria: all or nothing against `part.answer`. */
@@ -261,6 +359,7 @@ function markWholePart(response, part) {
     criteria: [],
     ecf: false,
     value: r.got,
+    values: readValues(response),
     correct: r.ok,
     canonicalCorrect: r.ok,
     feedback: r.ok ? "Correct." : capitalise(r.why) + ".",
@@ -275,9 +374,19 @@ function capitalise(s) {
 function feedbackFor(lines, cap, total) {
   if (!lines.length) return "";
   if (total >= cap) {
-    const c = lines.find(l => l.ecf);
-    return c ? "Full marks - your working follows correctly from your earlier answer."
-      : "Full marks.";
+    if (lines.some(l => l.ecf)) {
+      return "Full marks - your working follows correctly from your earlier answer.";
+    }
+    if (lines.some(l => l.impliedByAnswer)) {
+      return "Full marks. Your answer is correct, so the method marks are awarded with it. "
+        + "In the examination, still show your working: it is what rescues the method marks "
+        + "when the arithmetic goes wrong.";
+    }
+    if (lines.some(l => l.overPrecise)) {
+      return "Full marks. Your value is correct, though you gave more figures than the "
+        + "question asked for.";
+    }
+    return "Full marks.";
   }
   const got = lines.filter(l => l.awarded);
   const lost = lines.filter(l => !l.awarded);

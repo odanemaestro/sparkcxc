@@ -45,8 +45,14 @@ describe("Paper 2 error carried forward V5.3", () => {
       }
     }
 
-    expect(criteriaCount).toBe(91);
-    expect(finiteCount).toBe(91);
+    // Every criterion that carries a follow-through rule must be able to
+    // resolve it. The count is asserted as a floor rather than an exact
+    // figure: follow-through is now wired to the method marks of a dependent
+    // part as well as its accuracy mark, which is what makes it fire when the
+    // candidate is working from their own earlier value, so the number of
+    // criteria carrying a rule grows whenever coverage improves.
+    expect(criteriaCount).toBeGreaterThanOrEqual(91);
+    expect(finiteCount).toBe(criteriaCount);
   });
 
   test("canonical fraction and coordinate responses expose the numeric value needed by ECF", () => {

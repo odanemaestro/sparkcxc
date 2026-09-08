@@ -27,11 +27,21 @@ describe("SPARK Paper 2 V5.3.2 browser-regression cases", () => {
     ]);
   });
 
-  test("does not award dependent algebra accuracy marks for a lucky final answer with no working", () => {
+  // "5x - x^2 - 9" is the correct expansion, written in a different order from
+  // the model answer. A candidate who produces it has answered the question,
+  // and an examiner gives the part whether or not the working is shown.
+  test("awards a correct algebraic answer written in a different order, with no working", () => {
     const part = getPart("p2-q2-v8", "a");
     const result = gradePaper2Part({ answer: "5x - x^2 - 9", working: "" }, part);
-    expect(result.marks).toBe(0);
-    expect(result.criteria.find(item => item.code === "A1").dependencyBlocked).toBe(true);
+    expect(result.marks).toBe(part.marks);
+    expect(result.criteria.find(item => item.code === "A1").earned).toBe(true);
+  });
+
+  test("still withholds the accuracy mark when the answer itself is wrong", () => {
+    const part = getPart("p2-q2-v8", "a");
+    const result = gradePaper2Part({ answer: "5x + x^2 - 9", working: "" }, part);
+    expect(result.marks).toBeLessThan(part.marks);
+    expect(result.criteria.find(item => item.code === "A1").earned).toBe(false);
   });
 
   test("accepts an equivalent reversed strict inequality but rejects an inclusive one", () => {

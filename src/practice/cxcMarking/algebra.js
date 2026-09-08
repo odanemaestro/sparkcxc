@@ -40,6 +40,11 @@ export function normalise(raw) {
     .replace(/\\vec\{([^}]*)\}/g, "$1")
     .replace(/[,\s]+/g, m => (/,/.test(m) ? "," : " "))
     .replace(/\s*\^\s*/g, "^");
+  // "3√5" is one of the commonest exact answers in the subject and the symbol
+  // toolbar in the exam screen inserts that very character. Once √ has become
+  // "sqrt" the digit runs straight into the function name, which tokenises as
+  // a variable, so put the multiplication back before anything else reads it.
+  s = s.replace(/(\d)\s*sqrt/g, "$1*sqrt");
   // a mixed number: "2 1/3" -> "(2+1/3)"
   s = s.replace(/(^|[\s(=+\-*/])(\d+)\s+(\d+)\s*\/\s*(\d+)/g,
                 (_, pre, w, n, d) => `${pre}(${w}+${n}/${d})`);
@@ -298,6 +303,64 @@ export function isFactorised(raw) {
   // a trailing "+ 3" outside every bracket means it is not a single product
   const outside = s.replace(/\([^()]*\)/g, "");
   return !/[+\-](?![^(]*\))/.test(outside.replace(/^-/, ""));
+}
+
+/**
+ * Is the expression factorised as far as it will go?
+ *
+ * "Factorise COMPLETELY" is a stricter demand than "factorise", and the
+ * difference is where a mark sits. 4(m^2 - 25n^2) is a correct factorisation
+ * and an incomplete one; 2a(2b - 3) + 5(2b - 3) is a correct grouping that was
+ * never closed into a product. Both earn the method mark and neither earns the
+ * accuracy mark, which is exactly how the printed scheme reads.
+ *
+ * Three things are checked: the whole expression is a single product, no
+ * bracket still holds a common integer factor, and no bracket is itself a
+ * difference of two squares waiting to be split.
+ */
+export function isFullyFactorised(raw) {
+  const s = normalise(raw).replace(/\s+/g, "");
+  if (!s) return false;
+  if (!isFactorised(s)) return false;
+  for (const inner of bracketContents(s)) {
+    if (integerGcdOf(inner) > 1) return false;
+    if (isDifferenceOfTwoSquares(inner)) return false;
+  }
+  return true;
+}
+
+/** The text inside each innermost bracket. */
+function bracketContents(s) {
+  return (s.match(/\(([^()]*)\)/g) || []).map(b => b.slice(1, -1));
+}
+
+/** The highest common factor of the integer coefficients of a sum. */
+function integerGcdOf(inner) {
+  const terms = inner.split(/(?=[+-])/).map(t => t.trim()).filter(Boolean);
+  if (terms.length < 2) return 1;
+  const coefficients = terms.map(term => {
+    const m = term.match(/^[+-]?\s*(\d+)/);
+    if (m) return Math.abs(Number(m[1]));
+    return /^[+-]?\s*[A-Za-z(]/.test(term) ? 1 : null;
+  });
+  if (coefficients.some(c => c === null)) return 1;
+  return coefficients.reduce((a, b) => (b ? gcdOf(a, b) : a), coefficients[0]);
+}
+
+function gcdOf(a, b) { return b ? gcdOf(b, a % b) : Math.abs(a); }
+
+/** "m^2-25n^2" and "4x^2-9" still split into two brackets. */
+function isDifferenceOfTwoSquares(inner) {
+  const m = inner.match(/^([A-Za-z0-9^*]+)-([A-Za-z0-9^*]+)$/);
+  if (!m) return false;
+  const isSquare = term => {
+    if (/\^2$/.test(term)) return true;
+    const n = Number(term);
+    return Number.isInteger(n) && n > 0 && Number.isInteger(Math.sqrt(n));
+  };
+  const squareFactors = term => term.split("*").every(part => isSquare(part) || /^\d+$/.test(part))
+    && term.split("*").some(isSquare);
+  return squareFactors(m[1]) && squareFactors(m[2]);
 }
 
 /** Every number a student wrote, in order - used to find method evidence. */

@@ -52,12 +52,18 @@ import ReportQuestionButton from "./components/ui/ReportQuestionButton";
 import Icon from "./components/ui/Icon";
 import StudyCirclesPanel from "./components/studyCircles/StudyCirclesPanel";
 import NotificationCenter from "./components/notifications/NotificationCenter";
+import FlashcardsPanel from "./components/learning/FlashcardsPanel";
+import StudentOverviewIntelligence from "./components/learning/StudentOverviewIntelligence";
+import ParentOverviewIntelligence from "./components/learning/ParentOverviewIntelligence";
+import ProgressReportModal from "./components/reports/ProgressReportModal";
+import { buildLearningSummary } from "./insights/progressAnalytics";
 import { friendlyErrorMessage } from "./lib/errorMessages";
 import { getExamPerformanceStatus } from "./lib/examPerformance";
 import { detachCurrentPushAssociation, restorePushAssociation } from "./lib/pushNotifications";
 import "./family.css";
 import "./responsive.css";
 import "./theme.css";
+import "./learningIntelligence.css";
 import GOOGLE_ICON_B64 from "./assets/icons/google-icon.png";
 import GOOGLE_CALENDAR_ICON_B64 from "./assets/icons/google-calendar-icon.png";
 import OUTLOOK_ICON_B64 from "./assets/icons/outlook-icon.png";
@@ -109,6 +115,7 @@ const DASHBOARD_ROUTE_SECTIONS = new Set([
   "overview",
   "subjects",
   "progress",
+  "flashcards",
   "circles",
   "bookings",
   "sessions",
@@ -3002,7 +3009,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       return ["overview", "sessions", "students", "reviews", "earnings", "profile"].includes(section) ? section : "overview";
     }
     if (section === "sessions") return "bookings";
-    return ["overview", "subjects", "progress", "circles", "bookings"].includes(section) ? section : "overview";
+    return ["overview", "subjects", "progress", "flashcards", "circles", "bookings"].includes(section) ? section : "overview";
   }, [isTutor]);
   const [notificationTarget, setNotificationTarget] = useState(() => {
     try {
@@ -3023,6 +3030,15 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   const [bookingsLoadError, setBookingsLoadError] = useState(false);
   const [progressData, setProgressData] = useState([]);
   const [examAttempts, setExamAttempts] = useState([]);
+  // SPARK_V5310_LEARNING_INTELLIGENCE
+  const [studentSkills, setStudentSkills] = useState([]);
+  const [studentQuestionAttempts, setStudentQuestionAttempts] = useState([]);
+  const [studentMilestones, setStudentMilestones] = useState([]);
+  const [studentFlashcardProgress, setStudentFlashcardProgress] = useState([]);
+  const [studentFlashcardReviewEvents, setStudentFlashcardReviewEvents] = useState([]);
+  const [studentGoal, setStudentGoal] = useState(null);
+  const [studentStudyCircle, setStudentStudyCircle] = useState({ active: false });
+  const [studentReportOpen, setStudentReportOpen] = useState(false);
   const [tutorRow, setTutorRow] = useState(null);
   const [tutorRowLoaded, setTutorRowLoaded] = useState(false);
   const [tutorReviews, setTutorReviews] = useState([]);
@@ -3203,6 +3219,28 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       .select("id,attempt_key,paper_type,score,max_score,percent,completed_at,duration_seconds,timed_out,answered_count,total_questions,correct_count,metadata")
       .eq("user_id", user.id).order("completed_at", {ascending:false}).limit(20)
       .then(({data}) => setExamAttempts(data || []));
+    // Learning intelligence data powers insights, reports, goals and recommended review.
+    supabase.from("csec_skill_progress").select("*").eq("user_id", user.id).order("mastery_score", {ascending:true})
+      .then(({data}) => setStudentSkills(data || []));
+    supabase.from("csec_question_attempts").select("id,correct,attempted_at,skill").eq("user_id", user.id).order("attempted_at", {ascending:false}).limit(500)
+      .then(({data}) => setStudentQuestionAttempts(data || []));
+    supabase.from("learning_milestones").select("id,event_type,title,score,max_score,percent,skill,lesson_id,metadata,created_at").eq("user_id", user.id).order("created_at", {ascending:false}).limit(80)
+      .then(({data}) => setStudentMilestones(data || []));
+    supabase.from("spark_flashcard_progress").select("card_id,repetitions,interval_days,ease_factor,last_rating,last_reviewed_at,next_review_at,review_count,updated_at").eq("user_id", user.id)
+      .then(({data,error}) => { if (!error) setStudentFlashcardProgress(data || []); });
+    supabase.from("spark_flashcard_review_events").select("id,card_id,rating,reviewed_at").eq("user_id", user.id).order("reviewed_at", {ascending:false}).limit(1000)
+      .then(({data,error}) => { if (!error) setStudentFlashcardReviewEvents(data || []); });
+    supabase.from("spark_student_goals").select("*").eq("student_id", user.id).eq("status", "active").order("created_at", {ascending:false}).limit(1)
+      .then(({data,error}) => { if (!error) setStudentGoal(data?.[0] || null); });
+    // Reports expose only a privacy-safe Study Circle participation summary.
+    // The full Study Circle board/member data stays inside the Circles feature.
+    supabase.rpc("spark_get_study_circle_home")
+      .then(({data,error}) => {
+        if (error) return;
+        setStudentStudyCircle(data?.status === "matched"
+          ? { active: true, group_size: Number(data?.circle?.member_count || 0), joined_at: data?.circle?.joined_at || null }
+          : { active: false, status: data?.status || "inactive" });
+      });
 
     // Family requests are realtime: if a parent re-sends a request after a
     // previous decline, the student should see the new pending request
@@ -3443,6 +3481,28 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
 
   const done = progressData.length;
   const streak = computeStudyStreak(progressData);
+  const studentSummary = buildLearningSummary({
+    skills: studentSkills,
+    questionAttempts: studentQuestionAttempts,
+    examAttempts,
+    lessons: progressData,
+    bookings,
+    milestones: studentMilestones,
+    flashcardProgress: studentFlashcardProgress,
+    goal: studentGoal,
+  });
+  const studentReportData = {
+    skills: studentSkills,
+    questionAttempts: studentQuestionAttempts,
+    examAttempts,
+    lessons: progressData,
+    bookings,
+    milestones: studentMilestones,
+    flashcardProgress: studentFlashcardProgress,
+    flashcardReviewEvents: studentFlashcardReviewEvents,
+    goal: studentGoal,
+    studyCircle: studentStudyCircle,
+  };
   const now = new Date();
   const upcomingSessions = bookings.filter(b => { const status = bookingDisplayStatus(b); return status === "pending" || status === "confirmed"; });
   // A session becomes completed only after its actual end time has passed. The database
@@ -3493,6 +3553,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     {k:"overview",icon:"overview",label:"Overview"},
     {k:"subjects",icon:"subjects",label:"My subjects"},
     {k:"progress",icon:"progress",label:"Progress"},
+    {k:"flashcards",icon:"flashcards",label:"Flashcards"},
     {k:"circles",icon:"circles",label:"Study Circles"},
     {k:"bookings",icon:"bookings",label:"My bookings"},
   ];
@@ -3672,6 +3733,18 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 </Card>
               ))}
             </div>
+            <StudentOverviewIntelligence
+              userId={user.id}
+              supabase={supabase}
+              summary={studentSummary}
+              milestones={studentMilestones}
+              flashcardProgress={studentFlashcardProgress}
+              showToast={showToast}
+              setView={setView}
+              setDashboardSection={setDashboardSection}
+              onOpenReport={() => setStudentReportOpen(true)}
+              onGoalChange={setStudentGoal}
+            />
             <Card className="student-overview-course-card" style={{marginBottom:20}}>
               <div style={{fontFamily:FD,fontSize:17,fontWeight:600,color:T.ink,marginBottom:10}}>
                 CSEC Mathematics
@@ -4010,6 +4083,16 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
           </div>
         )}
 
+        {sec === "flashcards" && isStudent && (
+          <FlashcardsPanel
+            userId={user.id}
+            supabase={supabase}
+            showToast={showToast}
+            onProgressChange={setStudentFlashcardProgress}
+            onReviewRecorded={event => setStudentFlashcardReviewEvents(current => [event, ...current].slice(0, 1000))}
+            weakSkills={studentSummary.weakestSkills}
+          />
+        )}
         {sec === "circles" && isStudent && (
           <StudyCirclesPanel user={user} showToast={showToast} setView={setView}/>
         )}
@@ -4047,6 +4130,14 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
         )}
       </div>
 
+      {studentReportOpen && isStudent && (
+        <ProgressReportModal
+          onClose={() => setStudentReportOpen(false)}
+          student={{ id: user.id, name: profile?.name || "Student" }}
+          data={studentReportData}
+          showToast={showToast}
+        />
+      )}
       {cancelTarget && (
         <CancelBookingModal
           booking={cancelTarget}
@@ -4858,6 +4949,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
   const [sending, setSending] = useState(false);
   const [selectedChild, setSelectedChild] = useState(null);
   const [childData, setChildData] = useState(null);
+  const [parentReportOpen, setParentReportOpen] = useState(false);
   const [notificationTarget, setNotificationTarget] = useState(() => {
     try {
       const raw = sessionStorage.getItem("spark_dashboard_notification_target");
@@ -4948,26 +5040,29 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
 
   const loadChildData = useCallback(async () => {
     if (!selectedChild?.id) { setChildData(null); return; }
-    const [prog, attempts, lessons, bookings, examAttempts, milestones, studyCircle] = await Promise.all([
+    const [prog, attempts, lessons, bookings, examAttempts, milestones, studyCircle, flashcards, flashcardReviews, goals] = await Promise.all([
       supabase.from("csec_skill_progress").select("*").eq("user_id", selectedChild.id).order("mastery_score", {ascending:true}),
-      supabase.from("csec_question_attempts").select("id,correct,attempted_at,skill").eq("user_id", selectedChild.id).order("attempted_at", {ascending:false}).limit(20),
+      supabase.from("csec_question_attempts").select("id,correct,attempted_at,skill").eq("user_id", selectedChild.id).order("attempted_at", {ascending:false}).limit(500),
       supabase.from("lesson_progress").select("id,lesson_id,completed,completed_at").eq("user_id", selectedChild.id).eq("completed", true),
       supabase.from("bookings").select("id,subject,session_date,start_time,duration_minutes,status,rate_jmd,confirmation_expired_at,tutors(name)").eq("student_id", selectedChild.id).order("session_date", {ascending:false}).limit(100),
-      supabase.from("practice_exam_attempts").select("id,attempt_key,paper_type,score,max_score,percent,completed_at,duration_seconds,timed_out,answered_count,total_questions,correct_count,metadata").eq("user_id", selectedChild.id).order("completed_at", {ascending:false}).limit(20),
-      supabase.from("learning_milestones").select("id,event_type,title,score,max_score,percent,skill,lesson_id,metadata,created_at").eq("user_id", selectedChild.id).order("created_at", {ascending:false}).limit(40),
+      supabase.from("practice_exam_attempts").select("id,attempt_key,paper_type,score,max_score,percent,completed_at,duration_seconds,timed_out,answered_count,total_questions,correct_count,metadata").eq("user_id", selectedChild.id).order("completed_at", {ascending:false}).limit(100),
+      supabase.from("learning_milestones").select("id,event_type,title,score,max_score,percent,skill,lesson_id,metadata,created_at").eq("user_id", selectedChild.id).order("created_at", {ascending:false}).limit(100),
       supabase.rpc("spark_parent_study_circle_status", {p_student_id: selectedChild.id}),
+      supabase.from("spark_flashcard_progress").select("card_id,repetitions,interval_days,ease_factor,last_rating,last_reviewed_at,next_review_at,review_count,updated_at").eq("user_id", selectedChild.id),
+      supabase.from("spark_flashcard_review_events").select("id,card_id,rating,reviewed_at").eq("user_id", selectedChild.id).order("reviewed_at", {ascending:false}).limit(1000),
+      supabase.from("spark_student_goals").select("*").eq("student_id", selectedChild.id).eq("status", "active").order("created_at", {ascending:false}).limit(1),
     ]);
     const rows = prog.data || [];
     const attemptsRows = attempts.data || [];
     const mastery = rows.length ? Math.round(rows.reduce((s,r)=>s+Number(r.mastery_score||0),0)/rows.length) : 0;
     const weakest = rows.filter(r=>Number(r.mastery_score)<80).slice(0,3);
-    setChildData({ progress:rows, attempts:attemptsRows, lessons:lessons.data||[], bookings:bookings.data||[], examAttempts:examAttempts.data||[], milestones:milestones.data||[], studyCircle:studyCircle.data||{active:false}, mastery, weakest });
+    setChildData({ progress:rows, attempts:attemptsRows, lessons:lessons.data||[], bookings:bookings.data||[], examAttempts:examAttempts.data||[], milestones:milestones.data||[], studyCircle:studyCircle.data||{active:false}, flashcardProgress:flashcards.error?[]:(flashcards.data||[]), flashcardReviewEvents:flashcardReviews.error?[]:(flashcardReviews.data||[]), goal:goals.error?null:(goals.data?.[0]||null), mastery, weakest });
   }, [selectedChild?.id]);
 
   useEffect(() => { loadChildData(); }, [loadChildData]);
 
   useEffect(() => {
-    if (notificationTarget?.anchor !== "parent-study-circle" || !selectedChild?.id) return;
+    if (!["parent-study-circle", "parent-goal"].includes(notificationTarget?.anchor) || !selectedChild?.id) return;
     loadChildData();
   }, [notificationTarget?.anchor, selectedChild?.id, loadChildData]);
 
@@ -5013,6 +5108,17 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
   const paper2027Attempts = examAttempts.filter(isCsec2027ExamAttempt);
   const examAverage = examAttempts.length ? Math.round(examAttempts.reduce((sum, a) => sum + Number(a.percent || 0), 0) / examAttempts.length) : 0;
   const learningMilestones = childData?.milestones || [];
+  const parentLearningSummary = buildLearningSummary({
+    learnerName: selectedChild?.name || "",
+    skills: childData?.progress || [],
+    questionAttempts: childData?.attempts || [],
+    examAttempts,
+    lessons: childData?.lessons || [],
+    bookings: childData?.bookings || [],
+    milestones: learningMilestones,
+    flashcardProgress: childData?.flashcardProgress || [],
+    goal: childData?.goal || null,
+  });
   const formatExamDuration = seconds => {
     const safe = Math.max(0, Number(seconds) || 0);
     const hours = Math.floor(safe / 3600);
@@ -5062,6 +5168,16 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
         {selectedChild && childData && <section className="parent-section">
           <div className="section-heading"><div><div className="section-kicker">LEARNING SNAPSHOT</div><h2>{selectedChild.name}'s progress</h2></div><span className="mastery-pill">{childData.mastery}% mastery</span></div>
           <div className="parent-stat-grid"><div className="parent-stat"><strong>{childData.mastery}%</strong><span>Average skill mastery</span></div><div className="parent-stat"><strong>{childData.lessons.length}</strong><span>Lessons completed</span></div><div className="parent-stat"><strong>{examAttempts.length}</strong><span>Full exam attempts</span></div><div className="parent-stat"><strong>{childData.bookings.filter(b=>b.status!=="cancelled"&&b.status!=="declined").length}</strong><span>Tutor bookings</span></div></div>
+
+          <ParentOverviewIntelligence
+            child={selectedChild}
+            summary={parentLearningSummary}
+            goal={childData.goal}
+            supabase={supabase}
+            parentUserId={user.id}
+            showToast={showToast}
+            onOpenReport={() => setParentReportOpen(true)}
+          />
 
           <div className="parent-learning-panel" data-notification-anchor="parent-learning-activity">
             <div className="parent-learning-head">
@@ -5125,6 +5241,30 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
           <div><div className="section-kicker">PRIVATE CONNECTION</div><h2>Connect a child</h2><p>Enter the family code your child shares with you. SPARK will send the connection request to their account.</p></div>
           <div className="code-form"><input className="cp-input" value={code} onChange={e=>setCode(e.target.value.toUpperCase())} placeholder="CP-XXXXXXXX" maxLength={11}/><button className="cp-btn cp-btn-primary" onClick={requestLink} disabled={sending}>{sending?"Sending…":"Send request"}</button></div>
         </section>
+
+        {parentReportOpen && selectedChild && childData && (
+          <ProgressReportModal
+            onClose={() => setParentReportOpen(false)}
+            student={selectedChild}
+            data={{
+              skills: childData.progress || [],
+              questionAttempts: childData.attempts || [],
+              examAttempts: childData.examAttempts || [],
+              lessons: childData.lessons || [],
+              bookings: childData.bookings || [],
+              milestones: childData.milestones || [],
+              flashcardProgress: childData.flashcardProgress || [],
+              flashcardReviewEvents: childData.flashcardReviewEvents || [],
+              goal: childData.goal || null,
+              studyCircle: childData.studyCircle || null,
+            }}
+            parentName={profile?.name || ""}
+            canEmail={Boolean(user?.email && user?.email_confirmed_at)}
+            emailTo={user?.email_confirmed_at ? (user?.email || "") : ""}
+            supabase={supabase}
+            showToast={showToast}
+          />
+        )}
 
       </div>
     </div>

@@ -11,20 +11,100 @@
 // ============================================================================
 
 import {
-  asDifference, compile, equivalent, flipRelation, isFactorised, normalise,
-  numbersIn, precisionOf, proportionality, relationOf, value,
+  asDifference, compile, equivalent, flipRelation, isFactorised, isFullyFactorised,
+  normalise, numbersIn, precisionOf, proportionality, relationOf, value,
 } from "./algebra.js";
 import { checkQuestionAnswer } from "../../lib/answerCheck.js";
 import { markWritten } from "./reasoning.js";
+import { checkProse, checkLabelledValue, checkContainsPoint } from "./prose.js";
 
 const UNIT_WORDS = [
   "cm", "mm", "m", "km", "kg", "g", "ml", "l", "s", "min", "h", "hr", "hrs",
   "degrees", "degree", "deg", "units", "unit", "sq", "square", "cubic",
 ];
 
+// ---------------------------------------------------------------------------
+// answer furniture
+//
+// A student writes "Ans 4080.00" or "so x < 7" or "$4,080." and means exactly
+// what the mark scheme means. None of that decoration is mathematics, and an
+// examiner does not see it at all. Stripping it before any comparison is the
+// single cheapest correctness fix in the marker: measured against the whole
+// bank, a trailing full stop alone was costing 434 marks and a leading "Ans"
+// was costing 690.
+// ---------------------------------------------------------------------------
+
+/**
+ * "Answer:", "Ans", "Final answer", "Soln". These words are never the opening
+ * of a real mathematical answer, so they come off unconditionally.
+ */
+const STRONG_ANSWER_LABEL =
+  /^\s*(?:the\s+)?(?:final\s+|required\s+)?(?:ans|answer|soln|solution)\b\s*(?:is\b|are\b|[=:])?\s*/i;
+
+/**
+ * "Result", "Value". These can genuinely start an answer ("value for money"),
+ * so they come off only when followed by a separator or by something that
+ * already looks like an answer.
+ */
+const WEAK_ANSWER_LABEL =
+  /^\s*(?:the\s+)?(?:result|value)\b\s*(?:is\b|are\b|[=:])?\s*/i;
+
+/** Connectives a student leads with. "because" and "since" are deliberately
+ *  absent: they are load-bearing inside a written reason. */
+const LEADING_CONNECTIVE =
+  /^\s*(?:so|therefore|hence|thus|then|which\s+gives|giving|=>|->|=)\s*[:,]?\s+/i;
+
+/** Sentence punctuation at the very end. A full stop with no digit after it is
+ *  never a decimal point, so this cannot damage 4080.00. */
+const TRAILING_PUNCTUATION = /[\s.;,!]+$/u;
+
+/** Quotation marks wrapped around the whole answer. */
+const WRAPPING_QUOTES = /^\s*["'“‘]\s*(.+?)\s*["'”’]\s*$/u;
+
+/**
+ * Remove the presentation a student puts around an answer, keeping the
+ * mathematics. `keepLeading` is set for written-reason marking, where a
+ * leading "therefore" is part of the sentence being judged.
+ */
+export function stripAnswerFurniture(raw, { keepLeading = false } = {}) {
+  let s = String(raw ?? "").replace(/[−–—]/g, "-").trim();
+  if (!s) return "";
+  for (let pass = 0; pass < 3; pass += 1) {
+    const before = s;
+    const trimmed = s.replace(TRAILING_PUNCTUATION, "").trim();
+    if (trimmed) s = trimmed;
+    if (!keepLeading) {
+      const strong = s.match(STRONG_ANSWER_LABEL);
+      if (strong && strong[0].trim()) {
+        const rest = s.slice(strong[0].length).trim();
+        if (rest) s = rest;
+      }
+      const weak = s.match(WEAK_ANSWER_LABEL);
+      if (weak && weak[0].trim()) {
+        const rest = s.slice(weak[0].length).trim();
+        const explicit = /[=:]\s*$/.test(weak[0]) || /\b(is|are)\s*$/i.test(weak[0]);
+        // Only drop an ambiguous label when what is left still reads like an
+        // answer, so "value for money" is not shortened to "for money".
+        if (rest && (explicit || /^[\d(+\-.]/.test(rest) || /^[A-Za-z]\s*[=<>]/.test(rest))) {
+          s = rest;
+        }
+      }
+      const connective = s.match(LEADING_CONNECTIVE);
+      if (connective) {
+        const rest = s.slice(connective[0].length).trim();
+        if (rest) s = rest;
+      }
+    }
+    if (s === before) break;
+  }
+  const quoted = s.match(WRAPPING_QUOTES);
+  if (quoted && quoted[1]) s = quoted[1];
+  return s;
+}
+
 /** Strip currency, units and thousands separators, keeping the number. */
 export function stripDressing(raw) {
-  let s = normalise(raw)
+  let s = normalise(stripAnswerFurniture(raw))
     .replace(/^[$£€]\s*/, "")
     .replace(/\b(TT|JA|BB|EC|US|BD|G|XCD)\s*\$/gi, "")
     .replace(/(\d)[ ,](?=\d{3}\b)/g, "$1");
@@ -43,6 +123,24 @@ export function unitOf(raw) {
 
 function near(a, b, tol) {
   return Math.abs(a - b) <= tol;
+}
+
+/** Comparison for two pieces of typed mathematics that should be identical. */
+function sameText(a, b) {
+  const tidy = t => normalise(stripAnswerFurniture(t)).toLowerCase().replace(/\s+/g, "");
+  return Boolean(tidy(a)) && tidy(a) === tidy(b);
+}
+
+/**
+ * Did the author of the question already say this form is acceptable?
+ *
+ * `accepted` is the mark scheme's own list of equally correct answers. It has
+ * to be honoured by every checker, not only by the general one, or an authored
+ * alternative is silently ignored by a typed check such as `fraction`.
+ */
+export function sameAsAccepted(raw, spec = {}) {
+  const list = Array.isArray(spec.accepted) ? spec.accepted : [];
+  return list.some(alt => (alt || alt === 0) && sameText(raw, String(alt)));
 }
 
 /** Tolerance for a spec: explicit, or half a unit in the last place asked for. */
@@ -93,15 +191,31 @@ export function checkNumeric(raw, spec) {
     }
   }
 
+  // Accuracy asked for is a floor, not an exact width.
+  //
+  // A candidate who writes 23.25 where one decimal place was requested has
+  // answered the question; a candidate who writes 23 has not. CXC penalises
+  // over-precision at most once across a whole paper, never part by part, so
+  // extra figures are correct here and merely noted. Set `dpExact` on the rare
+  // part where the rounding itself is the thing being marked.
   if (typeof spec.dp === "number" || typeof spec.sf === "number") {
     const p = precisionOf(bare);
-    if (typeof spec.dp === "number" && p.dp !== spec.dp && !spec.dpAtLeast) {
+    if (typeof spec.dp === "number" && p.dp < spec.dp) {
       return { ok: false, why: `give the answer to ${spec.dp} decimal place${spec.dp === 1 ? "" : "s"}`,
+               got, precisionOnly: true };
+    }
+    if (typeof spec.dp === "number" && p.dp > spec.dp && spec.dpExact === true) {
+      return { ok: false, why: `give the answer to exactly ${spec.dp} decimal place${spec.dp === 1 ? "" : "s"}`,
                got, precisionOnly: true };
     }
     if (typeof spec.sf === "number" && p.sf < spec.sf) {
       return { ok: false, why: `give the answer to ${spec.sf} significant figures`,
                got, precisionOnly: true };
+    }
+    if ((typeof spec.dp === "number" && p.dp > spec.dp)
+        || (typeof spec.sf === "number" && p.sf > spec.sf)) {
+      return { ok: true, why: "correct, though more figures than the question asked for",
+               got, overPrecise: true };
     }
   }
   return { ok: true, why: "correct", got };
@@ -126,6 +240,15 @@ export function checkExpression(raw, spec) {
     return { ok: false, why: "correct, but not written as a product of factors",
              got: s, formOnly: true };
   }
+  // "Factorise COMPLETELY" is a different demand from "factorise". A bracket
+  // that still holds a common factor, or a grouping that was never closed into
+  // a single product, is worth the method mark and not the accuracy mark.
+  if (spec.requireFullyFactorised && !isFullyFactorised(s)) {
+    return { ok: false, got: s, formOnly: true,
+             why: isFactorised(s)
+               ? "correct, but not factorised completely: one of the brackets can still be factorised"
+               : "correct, but not yet written as a single product of factors" };
+  }
   if (spec.requireExpanded && isFactorised(s)) {
     return { ok: false, why: "correct, but the brackets have not been expanded",
              got: s, formOnly: true };
@@ -142,20 +265,61 @@ function gcd(a, b) { return b ? gcd(b, a % b) : Math.abs(a); }
 export function checkFraction(raw, spec) {
   const s = stripDressing(raw);
   const got = value(s);
+  // An authored alternative form settles the question before any form rule.
+  // "86/13" and "6 8/13" are the same answer and the bank says so.
+  if (sameAsAccepted(s, spec)) return { ok: true, why: "correct", got };
   const target = typeof spec.value === "number" ? spec.value : value(String(spec.value));
   if (got === null) return { ok: false, why: "no fraction could be read", got: null };
   if (!near(got, target, 1e-9)) return { ok: false, why: "not the required value", got };
-  const m = s.match(/^\s*(-?\d+)\s*\/\s*(\d+)\s*$/);
-  if (!m) {
+  const form = readFractionForm(s);
+  if (!form) {
     if (spec.requireFraction) {
       return { ok: false, why: "write the answer as a fraction", got, formOnly: true };
     }
     return { ok: true, why: "correct", got };
   }
-  if (spec.simplified !== false && gcd(Number(m[1]), Number(m[2])) !== 1) {
+  if (spec.simplified !== false && !isLowestTerms(form)) {
     return { ok: false, why: "correct, but not in its lowest terms", got, formOnly: true };
   }
   return { ok: true, why: "correct", got };
+}
+
+/**
+ * The shape of a fraction, whichever of the two shapes it was written in.
+ *
+ * "86/13" and "6 8/13" are the same number written two ways, and a CSEC
+ * examiner takes either unless the question names one of them. Reading only
+ * "a/b" made the improper form the single accepted answer, so a candidate who
+ * finished the arithmetic and then wrote the mixed number lost the accuracy
+ * mark for the last, cosmetic step.
+ */
+function readFractionForm(raw) {
+  const s = String(raw ?? "").trim();
+  // "6 8/13" as the candidate typed it, and "(6+8/13)" as the parser rewrites
+  // it on the way in. Both are the same mixed number and both have to be read
+  // here, because this function runs after that rewrite.
+  const mixed = s.match(/^\s*(-?)\(?\s*(\d+)\s*[+\s]\s*(\d+)\s*\/\s*(\d+)\s*\)?\s*$/);
+  if (mixed) {
+    const sign = mixed[1] === "-" ? -1 : 1;
+    return { whole: sign * Number(mixed[2]), num: Number(mixed[3]), den: Number(mixed[4]) };
+  }
+  const simple = s.match(/^\s*(-?\d+)\s*\/\s*(\d+)\s*$/);
+  if (simple) return { whole: 0, num: Number(simple[1]), den: Number(simple[2]) };
+  return null;
+}
+
+/**
+ * Is the fraction in its lowest terms?
+ *
+ * The numerator and denominator must share no factor, and a mixed number must
+ * also have carried every whole one out of its fractional part: "5 21/13" is
+ * the right value written in a form no examiner accepts as complete.
+ */
+function isLowestTerms({ whole, num, den }) {
+  if (!den) return false;
+  if (gcd(num, den) !== 1) return false;
+  if (whole !== 0 && Math.abs(num) >= den) return false;
+  return true;
 }
 
 // ---------------------------------------------------------------------------
@@ -168,7 +332,33 @@ export function checkFraction(raw, spec) {
  * pair of answers and it is a perfectly good answer.
  */
 function numberList(raw) {
-  return numbersIn(String(raw ?? "").replace(/[[\]()]/g, " "));
+  return numbersIn(expandPlusMinus(raw).replace(/[[\]()]/g, " "));
+}
+
+/**
+ * "±4" and "+/-4" are one token that names two values, and it is the notation
+ * CSEC uses for the roots of x^2 = 16. Written out, the pair marks correctly
+ * against any checker that reads a list.
+ */
+export function expandPlusMinus(raw) {
+  return String(raw ?? "")
+    .replace(/(?:±|\+\s*\/\s*-|\+-)\s*(\d+(?:\.\d+)?(?:\s*\/\s*\d+)?)/g, "$1, -$1");
+}
+
+/**
+ * The numbers in a response, but only when the response is a plain list of
+ * values: "4 and -4", "{4, -4}", "x = 4, x = -4", "±4". Returns null the moment
+ * anything algebraic appears, so this can never be used to compare expressions.
+ */
+export function plainNumberList(raw) {
+  const s = expandPlusMinus(raw)
+    .replace(/[{}[\]()]/g, " ")
+    .replace(/\b(?:and|or|x|y|n|is|are|the|values?|roots?|solutions?)\b/gi, " ")
+    .replace(/[=;,]/g, " ")
+    .trim();
+  if (/[A-Za-z]/.test(s)) return null;
+  const nums = numbersIn(s);
+  return nums.length ? nums : null;
 }
 
 export function checkCoordinate(raw, spec) {
@@ -442,6 +632,40 @@ export function checkMethod(raw, spec) {
 
 
 
+/**
+ * A method mark for working that arrives at any one of several acceptable
+ * intermediate results, however the candidate got there.
+ *
+ * This is the checker that replaces "the literal number 720 must appear".
+ * A discount can be found as 720 and subtracted, or applied as a 0.85
+ * multiplier in one step; both are correct method and an examiner rewards
+ * both, so both are listed and any one of them earns the mark. The tolerance
+ * is relative, so a candidate who carried an extra figure still matches.
+ */
+export function checkReachesValue(raw, spec = {}) {
+  const wanted = (Array.isArray(spec.values) ? spec.values : [spec.values])
+    .map(Number).filter(Number.isFinite);
+  if (!wanted.length) return { ok: false, why: "the mark scheme has no target value", got: null };
+  const rel = Number.isFinite(Number(spec.relTolerance)) ? Math.abs(Number(spec.relTolerance)) : 5e-3;
+  const abs = Number.isFinite(Number(spec.tolerance)) ? Math.abs(Number(spec.tolerance)) : 1e-6;
+  const seen = [...new Set([...numbersIn(raw), ...literalNumbersIn(raw)])];
+  const hit = wanted.find(w => seen.some(g => near(g, w, Math.max(abs, Math.abs(w) * rel))));
+  return {
+    ok: hit !== undefined,
+    why: hit !== undefined
+      ? "the working reaches a correct intermediate result"
+      : "the working does not reach any of the results this method produces",
+    got: seen,
+    reached: hit,
+  };
+}
+
+/** Numbers exactly as written, without evaluating fractions. */
+function literalNumbersIn(raw) {
+  const source = String(raw ?? "").replace(/(\d),(?=\d{3}\b)/g, "$1");
+  return (source.match(/-?\d+(?:\.\d+)?/g) || []).map(Number).filter(Number.isFinite);
+}
+
 /** A conservative method mark for an explicit numerical substitution. */
 export function checkCalculation(raw, spec = {}) {
   const source = String(raw ?? "");
@@ -481,17 +705,44 @@ export function checkSparkAnswer(raw, spec = {}) {
     significantFigures: spec.significantFigures,
     requiredForm: spec.requiredForm,
   };
-  const status = checkQuestionAnswer(raw, question);
+  const cleaned = stripAnswerFurniture(raw);
+  // "Factorise COMPLETELY" is a stricter demand than the general checker knows
+  // about: 4(m^2 - 25n^2) is a correct factorisation and an incomplete one.
+  if (spec.requireFullyFactorised === true && !isFullyFactorised(cleaned)) {
+    return {
+      ok: false, formOnly: true, got: cleaned,
+      why: isFactorised(cleaned)
+        ? "correct, but not factorised completely: one of the brackets can still be factorised"
+        : "correct, but not yet written as a single product of factors",
+    };
+  }
+  const status = checkQuestionAnswer(cleaned, question);
   const stripped = stripDressing(raw);
   let got = value(stripped);
   if (got === null) {
     const values = numbersIn(raw);
     if (values.length === 1 && Number.isFinite(values[0])) got = values[0];
   }
+  if (status === "correct") return { ok: true, why: "correct", got };
+
+  // A part with two answers in one box is a set, not a sequence. "4 and -4",
+  // "-4 and 4", "x = 4, x = -4" and "±4" are the same answer, and an examiner
+  // reads all four the same way. Only applied when both sides are plain lists
+  // of numbers, so no algebraic answer can slip through this route.
+  const mine = plainNumberList(cleaned);
+  const theirs = plainNumberList(String(question.answer ?? ""));
+  if (mine && theirs && mine.length === theirs.length && mine.length >= 2) {
+    const tol = Number.isFinite(Number(spec.tolerance)) ? Math.abs(Number(spec.tolerance)) : 1e-6;
+    const a = [...mine].sort((x, y) => x - y);
+    const b = [...theirs].sort((x, y) => x - y);
+    if (a.every((v, i) => near(v, b[i], Math.max(tol, Math.abs(b[i]) * 1e-9)))) {
+      return { ok: true, why: "correct", got };
+    }
+  }
+
   return {
-    ok: status === "correct",
-    why: status === "correct" ? "correct"
-      : status === "uncertain" ? "the response could not be verified as equivalent"
+    ok: false,
+    why: status === "uncertain" ? "the response could not be verified as equivalent"
       : "not the required answer",
     got,
   };
@@ -539,14 +790,29 @@ function algebraCandidates(raw) {
     if (!text) return;
     text = text
       .replace(/^\s*(?:also|then|therefore|hence|so|adding gives|giving|thus)\s*[:,-]?\s*/i, "")
+      .replace(/[\s.,;!]+$/u, "")
       .trim();
     const stripped = stripLabel(text);
     for (const value of [text, stripped]) {
       const v = String(value || "").trim();
       if (v && !out.includes(v)) out.push(v);
     }
+    // A worked line often runs prose straight into mathematics: "At a point of
+    // intersection the two y-values are equal, so x^2 + 2x - 5". Drop leading
+    // words one at a time and keep whatever first parses, so the expression is
+    // found however much English is in front of it.
+    const tokens = String(text || "").trim().split(/\s+/);
+    for (let i = 1; i < tokens.length && i <= 14; i += 1) {
+      const tail = tokens.slice(i).join(" ").trim();
+      if (!tail || !/[\d)A-Za-z]/.test(tail)) continue;
+      if (!/^[-+(\d.]|^[A-Za-z]\^?\d*\s*[-+*/^]/.test(tail)) continue;
+      if (!out.includes(tail) && compile(tail)) out.push(tail);
+    }
   };
-  for (const line of String(raw ?? "").split(/[;\n]+/)) {
+  // A candidate joins the parts of a multi-statement answer with "and" as
+  // readily as with a semicolon, and "3x + 2y = 32 and 5x + 4y = 58" is the
+  // same pair of equations either way.
+  for (const line of String(raw ?? "").split(/[;\n]+|\s+and\s+/i)) {
     add(line);
     // Worked solutions often finish a sentence with wording such as
     // "Adding gives ..." rather than another equals sign. Treat that
@@ -678,14 +944,31 @@ export const CHECKERS = {
   reasonConcept: checkReasonConcept,
   sparkAnswer: checkSparkAnswer,
   written: checkWritten,
+  reachesValue: checkReachesValue,
+  prose: checkProse,
+  labelledValue: checkLabelledValue,
+  containsPoint: checkContainsPoint,
 };
+
+/**
+ * Checkers that judge a sentence rather than a value. A leading "therefore" is
+ * part of what is being judged there, so only trailing punctuation is removed.
+ */
+const SENTENCE_CHECKS = new Set(["written", "reasonConcept", "prose"]);
 
 /** Run whichever checker the spec names. Unknown types fail closed. */
 export function check(raw, spec) {
   const fn = CHECKERS[spec?.type];
   if (!fn) return { ok: false, why: `unknown check type ${spec?.type}`, got: null };
+
+  const text = stripAnswerFurniture(raw, { keepLeading: SENTENCE_CHECKS.has(spec.type) });
+
+  // An authored alternative outranks every form rule: if the mark scheme lists
+  // this exact answer as acceptable, it is acceptable.
+  if (sameAsAccepted(text, spec)) return { ok: true, why: "correct", got: text };
+
   try {
-    return fn(raw, spec);
+    return fn(text, spec);
   } catch (err) {
     return { ok: false, why: "the response could not be read", got: null, error: String(err) };
   }

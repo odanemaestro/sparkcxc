@@ -9,6 +9,13 @@ const paths = {
   overview: <><rect x="3" y="3" width="7" height="9" rx="1.5" /><rect x="14" y="3" width="7" height="5" rx="1.5" /><rect x="14" y="12" width="7" height="9" rx="1.5" /><rect x="3" y="16" width="7" height="5" rx="1.5" /></>,
   subjects: <><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" /></>,
   progress: <><path d="M3 3v18h18" /><path d="M7 15l4-5 3 3 5-7" /></>,
+  flashcards: <><rect x="4" y="5" width="12" height="15" rx="2" /><path d="M8 5V3h12v15h-4" /><path d="M7.5 10h5M7.5 14h3.5" /></>,
+  insight: <><path d="M12 2a7 7 0 0 0-4 12.74V18h8v-3.26A7 7 0 0 0 12 2z" /><path d="M9 22h6M9 18h6M12 6v4M10 8h4" /></>,
+  focus: <><circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="4" /><path d="M12 2v3M22 12h-3M12 22v-3M2 12h3" /></>,
+  goal: <><circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="4" /><circle cx="12" cy="12" r="1" /><path d="M16 8l5-5M17 3h4v4" /></>,
+  report: <><path d="M6 2h9l4 4v16H6z" /><path d="M15 2v5h5" /><path d="M9 12h6M9 16h6M9 8h2" /></>,
+  calendar: <><rect x="3" y="4" width="18" height="17" rx="2" /><path d="M8 2v4M16 2v4M3 9h18" /><path d="M8 13h3v3H8z" /></>,
+  spark: <><path d="M12 2l1.6 5.4L19 9l-5.4 1.6L12 16l-1.6-5.4L5 9l5.4-1.6z" /><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z" /></>,
   circles: <><circle cx="9" cy="8" r="3" /><circle cx="17" cy="8" r="3" /><path d="M2 20c0-3.3 3.1-6 7-6s7 2.7 7 6" /><path d="M14.5 14c3.6.2 6.5 2.7 6.5 6" /></>,
   // SPARK_V539L4_HOME_FEATURE_ICONS
   featureBook: <><path d="M3.5 5.5A3 3 0 0 1 6.5 4H11v16H6.5a3 3 0 0 0-3 1z" /><path d="M20.5 5.5A3 3 0 0 0 17.5 4H13v16h4.5a3 3 0 0 1 3 1z" /><path d="M12 5v15" /></>,

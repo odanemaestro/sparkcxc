@@ -19,7 +19,7 @@ describe("SPARK V5.3.5 tablet and phone responsive pass", () => {
 
   test("Paper 2 uses the same compact question drawer", () => {
     const exam = readPractice("Paper2Exam.jsx");
-    expect(exam).toContain("Questions {currentIndex + 1}/10");
+    expect(exam).toContain("Questions {currentIndex + 1}/{PAPER2_QUESTION_COUNT}");
     expect(exam).toContain("paper-nav-drawer-backdrop");
     expect(exam).toContain("Submit Paper 2");
   });

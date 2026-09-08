@@ -116,6 +116,25 @@ export function getNotificationRoute(notification, role, currentUserId = null) {
     };
   }
 
+  if (type === "goal_suggested") {
+    return {
+      view: "dashboard",
+      dashboardTarget: { scope: "student", section: "overview", anchor: "student-goal" },
+    };
+  }
+
+  if (type === "goal_suggestion_response") {
+    return {
+      view: "dashboard",
+      dashboardTarget: {
+        scope: "parent",
+        section: "progress",
+        studentId: metadata.student_id || notification.student_id || null,
+        anchor: "parent-goal",
+      },
+    };
+  }
+
   if (notification.booking_id) {
     if (isParent || notification.action_label === "View progress") {
       return {

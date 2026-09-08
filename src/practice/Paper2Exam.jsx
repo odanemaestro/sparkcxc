@@ -11,6 +11,8 @@ import {
 } from "./paper2CxcGrader";
 import {
   PAPER2_DURATION_SECONDS,
+  PAPER2_QUESTION_COUNT,
+  PAPER2_TOTAL_MARKS,
   PAPER2_TEMPLATE_COUNT,
   buildPaper2Exam,
   calculatePaper2Mark,
@@ -21,6 +23,7 @@ import { paper2ResultToAttempt, savePracticeExamAttempt } from "./persistence";
 import "./practiceExam.css";
 
 const ACTIVE_KEY = "spark-paper2-active-v52";
+// SPARK_V541_EXAMINER_MARKING_INTEGRATION
 const USED_KEY = "spark-paper2-used-question-ids-v52";
 const RESULTS_KEY = "spark-paper2-results-v2";
 
@@ -474,17 +477,16 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
           <div className="paper-start-rule"/>
           <div className="paper-start-meta paper2-start-meta">
             <div><span>Time</span><strong>2 h 40 min</strong></div>
-            <div><span>Questions</span><strong>10 compulsory</strong></div>
-            <div><span>Marks</span><strong>100</strong></div>
-            <div><span>Sections</span><strong>I and II</strong></div>
+            <div><span>Questions</span><strong>{PAPER2_QUESTION_COUNT} compulsory</strong></div>
+            <div><span>Marks</span><strong>{PAPER2_TOTAL_MARKS}</strong></div>
+            <div><span>Coverage</span><strong>Full syllabus</strong></div>
           </div>
           <div className="paper2-instructions">
             <h2>READ THE FOLLOWING INSTRUCTIONS CAREFULLY.</h2>
             <ol>
-              <li>Answer ALL questions.</li>
-              <li>Section I consists of Questions 1 to 7. Section II consists of Questions 8 to 10.</li>
+              <li>Answer all {PAPER2_QUESTION_COUNT} compulsory structured questions.</li>
               <li>Enter an answer for each part of each question. Marks are awarded by part.</li>
-              <li>Where a Working box is provided, show the main steps of your method. A correct final answer alone does not automatically earn method-dependent accuracy marks.</li>
+              <li>Show your main mathematical steps whenever you can. On ordinary calculation parts, a correct final answer can earn the available marks, while visible working can preserve method marks when an arithmetic slip affects the final answer. If a question says “show”, “prove” or explicitly requires working, the working must be shown.</li>
               <li>Where a question requires a graph, geometrical construction, transformation description or written mathematical reason, use the interactive response workspace provided. Open the How to use panel whenever you need help with the digital controls.</li>
               <li>SPARK awards method, accuracy and independent marks separately. If a later part correctly uses your own earlier numerical answer, eligible follow-through marks are awarded automatically.</li>
               <li>Where an answer is required to a stated degree of accuracy, give the answer as instructed.</li>
@@ -521,13 +523,13 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
         <section className="paper-score-hero paper2-score-hero">
           <div>
             <div className="paper-result-kicker">Paper 2 submitted</div>
-            <h1>{grade.score}<span>/100</span></h1>
+            <h1>{grade.score}<span>/{grade.available || PAPER2_TOTAL_MARKS}</span></h1>
             <p>{timedOut ? "Time expired and SPARK submitted your paper." : `You used ${formatDuration(PAPER2_DURATION_SECONDS - remaining)}.`}</p>
           </div>
           <div className="paper-result-summary paper2-result-summary">
-            <div><strong>{completeIds.length}/10</strong><span>questions completed</span></div>
+            <div><strong>{completeIds.length}/{PAPER2_QUESTION_COUNT}</strong><span>questions completed</span></div>
             <div><strong>{partsAnswered}/{partsTotal}</strong><span>parts attempted</span></div>
-            <div><strong>{grade.score}/100</strong><span>marks earned</span></div>
+            <div><strong>{grade.score}/{grade.available || PAPER2_TOTAL_MARKS}</strong><span>marks earned</span></div>
             <div><strong>{grade.percent}%</strong><span>final score</span></div>
           </div>
         </section>
@@ -536,6 +538,36 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
             <strong>Follow-through credit applied</strong>
             <span>{grade.ecfMarks} mark{grade.ecfMarks === 1 ? "" : "s"} across {grade.ecfParts} part{grade.ecfParts === 1 ? "" : "s"} were awarded for correct work using an earlier answer.</span>
           </div>
+        )}
+
+        {grade.profiles?.rows?.some(row => row.of > 0) && (
+          <section className="paper2-profile-summary">
+            <div className="paper2-profile-head">
+              <strong>How your marks divide</strong>
+              <span>
+                CXC reports Paper 2 across three profile dimensions.
+                {grade.profiles.weakest
+                  ? ` Your lowest-scoring profile here is ${grade.profiles.weakest.label.toLowerCase()}.`
+                  : ""}
+              </span>
+            </div>
+            <div className="paper2-profile-rows">
+              {grade.profiles.rows.filter(row => row.of > 0).map(row => (
+                <div key={row.profile} className="paper2-profile-row">
+                  <div className="paper2-profile-label">
+                    <strong>{row.label}</strong>
+                    <span>{row.description}</span>
+                  </div>
+                  <div className="paper2-profile-bar" role="img"
+                       aria-label={`${row.label}: ${row.marks} of ${row.of} marks`}>
+                    <span style={{ width: `${row.percent ?? 0}%` }} />
+                  </div>
+                  <div className="paper2-profile-score">{row.marks}/{row.of}</div>
+                </div>
+              ))}
+            </div>
+            <div className="paper2-profile-note">Profile results are practice feedback, not a predicted CXC grade.</div>
+          </section>
         )}
 
         <section className="paper-review-shell paper2-review-shell">
@@ -623,7 +655,7 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
         <div className={`paper-timer ${remaining <= 600 ? "is-low" : ""}`}><span>Time remaining</span><strong>{formatClock(remaining)}</strong></div>
         <div className="paper2-header-actions">
           <button type="button" className="paper2-formula-control" onClick={() => setShowFormula(true)}>Formula sheet</button>
-          <button type="button" className="paper-nav-toggle" aria-expanded={showNavigator} onClick={() => setShowNavigator(true)}>Questions {currentIndex + 1}/10</button>
+          <button type="button" className="paper-nav-toggle" aria-expanded={showNavigator} onClick={() => setShowNavigator(true)}>Questions {currentIndex + 1}/{PAPER2_QUESTION_COUNT}</button>
           <button type="button" className="paper-submit-top" onClick={() => setShowSubmit(true)}>Submit paper</button>
         </div>
       </header>
@@ -632,7 +664,7 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
       <div className="paper-exam-layout paper2-exam-layout">
         <section className="paper-question-card paper2-question-card">
           <div className="paper-question-topline">
-            <div><span>Section {current.section}</span><strong>Question {current.question_number} of 10</strong></div>
+            <div><span>Paper 2</span><strong>Question {current.question_number} of {PAPER2_QUESTION_COUNT}</strong></div>
             <button type="button" className={`paper-flag ${flaggedSet.has(current.question_id) ? "is-flagged" : ""}`} onClick={toggleFlag}>{flaggedSet.has(current.question_id) ? "Flagged" : "Flag for review"}</button>
           </div>
           <div className="paper2-question-meta">
@@ -743,26 +775,19 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
 
           <div className="paper-question-actions paper2-question-actions">
             <button type="button" disabled={currentIndex === 0} onClick={() => setCurrentIndex(index => Math.max(0, index - 1))}>Previous</button>
-            <div className="paper-answer-state">{completeIds.length} of 10 complete · {partsAnswered}/{partsTotal} answer fields filled</div>
-            <button type="button" className="paper-next" disabled={currentIndex === 9} onClick={() => setCurrentIndex(index => Math.min(9, index + 1))}>Next question</button>
+            <div className="paper-answer-state">{completeIds.length} of {PAPER2_QUESTION_COUNT} complete · {partsAnswered}/{partsTotal} answer fields filled</div>
+            <button type="button" className="paper-next" disabled={currentIndex === PAPER2_QUESTION_COUNT - 1} onClick={() => setCurrentIndex(index => Math.min(PAPER2_QUESTION_COUNT - 1, index + 1))}>Next question</button>
           </div>
         </section>
 
         <aside className="paper-navigator paper2-navigator paper-navigator-desktop">
-          <div className="paper-nav-head"><strong>Question navigator</strong><span>{completeIds.length}/10 fully answered</span></div>
-          <div className="paper2-section-label"><span>Section I</span><b>64 marks</b></div>
-          <div className="paper-nav-grid paper2-nav-grid">
-            {exam.questions.slice(0, 7).map((question, index) => <button type="button" key={question.question_id} title={`${question.marks} marks`} className={`${completeSet.has(question.question_id) ? "answered " : ""}${flaggedSet.has(question.question_id) ? "flagged " : ""}${index === currentIndex ? "current" : ""}`} onClick={() => goToQuestion(index)}>{question.question_number}</button>)}
-          </div>
-          <div className="paper2-section-label"><span>Section II</span><b>36 marks</b></div>
-          <div className="paper-nav-grid paper2-nav-grid paper2-nav-grid-small">
-            {exam.questions.slice(7).map((question, offset) => {
-              const index = offset + 7;
-              return <button type="button" key={question.question_id} title={`${question.marks} marks`} className={`${completeSet.has(question.question_id) ? "answered " : ""}${flaggedSet.has(question.question_id) ? "flagged " : ""}${index === currentIndex ? "current" : ""}`} onClick={() => goToQuestion(index)}>{question.question_number}</button>;
-            })}
+          <div className="paper-nav-head"><strong>Question navigator</strong><span>{completeIds.length}/{PAPER2_QUESTION_COUNT} fully answered</span></div>
+          <div className="paper2-section-label"><span>Questions 1–{PAPER2_QUESTION_COUNT}</span><b>{PAPER2_TOTAL_MARKS} marks</b></div>
+          <div className="paper-nav-grid paper2-nav-grid paper2-nav-grid-all">
+            {exam.questions.map((question, index) => <button type="button" key={question.question_id} title={`${question.marks} marks`} className={`${completeSet.has(question.question_id) ? "answered " : ""}${flaggedSet.has(question.question_id) ? "flagged " : ""}${index === currentIndex ? "current" : ""}`} onClick={() => goToQuestion(index)}>{question.question_number}</button>)}
           </div>
           <div className="paper-nav-legend"><span><i className="answered"/>Complete</span><span><i className="flagged"/>Flagged</span><span><i/>Incomplete</span></div>
-          <div className="paper2-navigator-summary"><span>Paper total</span><strong>100 marks</strong><small>2 h 40 min</small></div>
+          <div className="paper2-navigator-summary"><span>Paper total</span><strong>{PAPER2_TOTAL_MARKS} marks</strong><small>{formatDuration(PAPER2_DURATION_SECONDS)}</small></div>
           <button type="button" className="paper-submit-side" onClick={() => setShowSubmit(true)}>Submit Paper 2</button>
         </aside>
       </div>
@@ -771,23 +796,16 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
         <div className="paper-nav-drawer-backdrop" role="presentation" onMouseDown={() => setShowNavigator(false)}>
           <div className="paper-nav-drawer" role="dialog" aria-modal="true" aria-label="Question navigator" onMouseDown={event => event.stopPropagation()}>
             <div className="paper-nav-drawer-head">
-              <div><strong>Questions</strong><span>{completeIds.length}/10 fully answered</span></div>
+              <div><strong>Questions</strong><span>{completeIds.length}/{PAPER2_QUESTION_COUNT} fully answered</span></div>
               <button type="button" onClick={() => setShowNavigator(false)} aria-label="Close question navigator">×</button>
             </div>
             <aside className="paper-navigator paper2-navigator paper-navigator-drawer-panel">
-              <div className="paper2-section-label"><span>Section I</span><b>64 marks</b></div>
-              <div className="paper-nav-grid paper2-nav-grid">
-                {exam.questions.slice(0, 7).map((question, index) => <button type="button" key={question.question_id} title={`${question.marks} marks`} className={`${completeSet.has(question.question_id) ? "answered " : ""}${flaggedSet.has(question.question_id) ? "flagged " : ""}${index === currentIndex ? "current" : ""}`} onClick={() => goToQuestion(index)}>{question.question_number}</button>)}
-              </div>
-              <div className="paper2-section-label"><span>Section II</span><b>36 marks</b></div>
-              <div className="paper-nav-grid paper2-nav-grid paper2-nav-grid-small">
-                {exam.questions.slice(7).map((question, offset) => {
-                  const index = offset + 7;
-                  return <button type="button" key={question.question_id} title={`${question.marks} marks`} className={`${completeSet.has(question.question_id) ? "answered " : ""}${flaggedSet.has(question.question_id) ? "flagged " : ""}${index === currentIndex ? "current" : ""}`} onClick={() => goToQuestion(index)}>{question.question_number}</button>;
-                })}
+              <div className="paper2-section-label"><span>Questions 1–{PAPER2_QUESTION_COUNT}</span><b>{PAPER2_TOTAL_MARKS} marks</b></div>
+              <div className="paper-nav-grid paper2-nav-grid paper2-nav-grid-all">
+                {exam.questions.map((question, index) => <button type="button" key={question.question_id} title={`${question.marks} marks`} className={`${completeSet.has(question.question_id) ? "answered " : ""}${flaggedSet.has(question.question_id) ? "flagged " : ""}${index === currentIndex ? "current" : ""}`} onClick={() => goToQuestion(index)}>{question.question_number}</button>)}
               </div>
               <div className="paper-nav-legend"><span><i className="answered"/>Complete</span><span><i className="flagged"/>Flagged</span><span><i/>Incomplete</span></div>
-              <div className="paper2-navigator-summary"><span>Paper total</span><strong>100 marks</strong><small>2 h 40 min</small></div>
+              <div className="paper2-navigator-summary"><span>Paper total</span><strong>{PAPER2_TOTAL_MARKS} marks</strong><small>{formatDuration(PAPER2_DURATION_SECONDS)}</small></div>
               <button type="button" className="paper-drawer-submit" onClick={() => { setShowNavigator(false); setShowSubmit(true); }}>Submit Paper 2</button>
             </aside>
           </div>
@@ -799,7 +817,7 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
           <section className="paper-submit-modal">
             <div className="paper-submit-icon">✓</div>
             <h2>Submit Paper 2?</h2>
-            <p>You fully answered {completeIds.length} of 10 questions and filled {partsAnswered} of {partsTotal} answer fields. SPARK will grade the paper immediately.</p>
+            <p>You fully answered {completeIds.length} of {PAPER2_QUESTION_COUNT} questions and filled {partsAnswered} of {partsTotal} answer fields. SPARK will grade the paper immediately.</p>
             <div className="paper-modal-actions"><button type="button" className="practice-secondary" onClick={() => setShowSubmit(false)}>Return to paper</button><button type="button" className="practice-primary" onClick={() => finalize(false)}>Submit paper</button></div>
           </section>
         </div>

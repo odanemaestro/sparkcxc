@@ -592,13 +592,48 @@ function canonicalGenericConstruction(schema = {}) {
   if (kind === "perpendicularBisector") {
     const [A, B] = args;
     if (!A || !B) return { objects };
-    const radius = d(A, B) * 0.72;
+
+    // SPARK_V5412_PERPENDICULAR_BISECTOR_MODEL
+    // Pick a compass opening that is still greater than half of AB, but keep
+    // BOTH compass-intersection points inside the visible construction pad.
+    // The earlier fixed 0.72 * AB radius could put the lower intersection
+    // below y = 0 when AB sat near the bottom of the workspace. That made the
+    // review model show only the upper half of a valid ruler-and-compasses
+    // construction even though the worked solution explicitly requires arcs
+    // above and below AB.
+    const length = d(A, B);
+    if (!(length > 0)) return { objects };
+    const half = length / 2;
+    const midpoint = { x: (Number(A.x) + Number(B.x)) / 2, y: (Number(A.y) + Number(B.y)) / 2 };
+    const dx = Number(B.x) - Number(A.x);
+    const dy = Number(B.y) - Number(A.y);
+    const normal = { x: -dy / length, y: dx / length };
+    const unitsPerCm = Number(schema?.pad?.unitsPerCm || 40);
+    const xMax = Number(schema?.pad?.width) > 0 && unitsPerCm > 0 ? Number(schema.pad.width) / unitsPerCm : 14;
+    const yMax = Number(schema?.pad?.height) > 0 && unitsPerCm > 0 ? Number(schema.pad.height) / unitsPerCm : 9;
+    const inset = 0.45;
+    const symmetricLimit = (coord, component, min, max) => {
+      const magnitude = Math.abs(component);
+      if (magnitude < 1e-9) return Number.POSITIVE_INFINITY;
+      return Math.max(0, Math.min((coord - min) / magnitude, (max - coord) / magnitude));
+    };
+    const maxVisibleOffset = Math.min(
+      symmetricLimit(midpoint.x, normal.x, inset, Math.max(inset, xMax - inset)),
+      symmetricLimit(midpoint.y, normal.y, inset, Math.max(inset, yMax - inset)),
+    );
+    const desiredOffset = Math.min(length * 0.38, Number.isFinite(maxVisibleOffset) ? maxVisibleOffset * 0.82 : length * 0.38);
+    const crossingOffset = Math.max(0.18, desiredOffset);
+    const radius = Math.hypot(half, crossingOffset);
     const a = { cx: A.x, cy: A.y, r: radius };
     const b = { cx: B.x, cy: B.y, r: radius };
+
     addCircle(A, radius);
     addCircle(B, radius);
     const intersections = circleIntersections(a, b);
-    if (intersections.length >= 2) addSegment(intersections[0], intersections[1]);
+    if (intersections.length >= 2) {
+      // Rule the perpendicular through the two visible compass crossings.
+      addSegment(intersections[0], intersections[1]);
+    }
     return { objects };
   }
 

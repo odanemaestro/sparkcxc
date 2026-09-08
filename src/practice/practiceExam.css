@@ -776,7 +776,7 @@
 .paper2-working-preview .spark-math{font-size:14px;line-height:1.6;color:var(--paper-navy)}
 .paper2-final-answer-label{margin-top:14px}
 
-.paper2-ecf-summary{max-width:1160px;margin:0 auto 18px;padding:13px 16px;border:1px solid #cce9e4;border-radius:13px;background:#f0fdfa;display:flex;gap:9px;align-items:baseline;flex-wrap:wrap;color:#23524d}
+.paper2-ecf-summary{max-width:1120px;box-sizing:border-box;margin:0 auto 18px;padding:13px 16px;border:1px solid #cce9e4;border-radius:13px;background:#f0fdfa;display:flex;gap:9px;align-items:baseline;flex-wrap:wrap;color:#23524d}
 .paper2-ecf-summary strong{font-size:13px}
 .paper2-ecf-summary span{font-size:12px;line-height:1.45}
 .paper2-review-working{margin:12px 0;padding:11px 13px;border:1px solid #dbe4ed;border-radius:10px;background:#fbfcfe}
@@ -1923,3 +1923,35 @@ html[data-theme="dark"] .paper2-part-context p{color:var(--spark-ink)!important}
   .paper-score-paper-name{padding-left:14px;white-space:normal}
 }
 /* SPARK V5.3.9L3 END */
+
+/* SPARK_V541_EXAMINER_PROFILE_SUMMARY
+   The standard Paper 2 review now exposes the three CXC reporting profiles.
+   The labels come from the active legacy blueprint (Knowledge, Comprehension,
+   Reasoning); the dedicated 2027 module keeps its own CK/AK/R reporting. */
+.paper2-profile-summary{max-width:1120px;box-sizing:border-box;margin:0 auto 18px;padding:15px 16px;border:1px solid #dbe4ed;border-radius:13px;background:#fbfcfe}
+.paper2-profile-head{display:flex;gap:9px;align-items:baseline;flex-wrap:wrap;margin-bottom:12px}
+.paper2-profile-head strong{font-size:13px;color:var(--paper-navy)}
+.paper2-profile-head span{font-size:12px;line-height:1.45;color:var(--paper-muted)}
+.paper2-profile-rows{display:flex;flex-direction:column;gap:10px}
+.paper2-profile-row{display:grid;grid-template-columns:minmax(150px,1.25fr) minmax(90px,2fr) auto;gap:12px;align-items:center}
+.paper2-profile-label{display:flex;flex-direction:column;gap:2px;min-width:0}
+.paper2-profile-label strong{font-size:12.5px;color:var(--paper-navy)}
+.paper2-profile-label span{font-size:11px;line-height:1.4;color:var(--paper-muted)}
+.paper2-profile-bar{position:relative;height:9px;border-radius:999px;background:#edf2f7;overflow:hidden}
+.paper2-profile-bar>span{display:block;height:100%;border-radius:999px;background:var(--paper-green,#0f9d76);transition:width .35s ease}
+.paper2-profile-score{font-size:12px;font-weight:800;color:var(--paper-navy);white-space:nowrap}
+.paper2-profile-note{margin-top:11px;padding-top:9px;border-top:1px solid #e6ebf1;font-size:10.5px;line-height:1.45;color:var(--paper-muted)}
+@media(max-width:720px){
+  .paper2-profile-summary{margin-left:14px;margin-right:14px}
+  .paper2-profile-row{grid-template-columns:1fr auto;grid-template-areas:"label score" "bar bar"}
+  .paper2-profile-label{grid-area:label}.paper2-profile-score{grid-area:score}.paper2-profile-bar{grid-area:bar}
+}
+[data-theme="dark"] .paper2-profile-summary{background:rgba(255,255,255,.035);border-color:rgba(255,255,255,.12)}
+[data-theme="dark"] .paper2-profile-bar{background:rgba(255,255,255,.09)}
+[data-theme="dark"] .paper2-profile-note{border-top-color:rgba(255,255,255,.09)}
+
+/* SPARK_V5413_RESULT_CALLOUT_ALIGNMENT: ECF/profile cards use the exact 1120px outer width of .paper2-review-shell. */
+
+/* SPARK_V5414_RESULT_CALLOUT_GAP: keep a comfortable gap below the navy score shell without double-spacing stacked result callouts. */
+.paper2-score-hero + .paper2-profile-summary,
+.paper2-score-hero + .paper2-ecf-summary{margin-top:18px}
