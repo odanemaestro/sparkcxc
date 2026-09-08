@@ -763,7 +763,7 @@
 .paper2-mab-legend{margin:4px 0 24px;padding:16px 18px;border:1px solid var(--paper-border);border-radius:14px;background:#fbfcfe;display:grid;grid-template-columns:auto 1fr;gap:8px 11px;align-items:start}
 .paper2-mab-legend>strong{grid-column:1/-1;color:var(--paper-navy);font-size:14px;margin-bottom:2px}
 .paper2-mab-legend>div{display:contents}
-.paper2-mab-legend b{min-width:38px;height:28px;padding:0 8px;border-radius:8px;background:#eef7f5;color:var(--paper-teal-dark);display:inline-flex;align-items:center;justify-content:center;font-size:12px;letter-spacing:.04em}
+.paper2-mab-legend b{min-width:38px;height:30px;padding:0 9px;border:1px solid #b9e7df;border-radius:8px;background:#e9f8f5;color:#075e57;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;line-height:1;letter-spacing:.045em;box-shadow:0 1px 0 rgba(15,37,87,.04)}
 .paper2-mab-legend span{font-size:13px;line-height:1.5;color:#526078;padding-top:4px}
 
 .paper2-working-editor{margin:16px 0 12px;padding:14px;border:1px solid #d8e2ec;border-radius:13px;background:#fbfcfe}
@@ -801,6 +801,10 @@
 [data-theme="dark"] .paper2-review-working{background:rgba(255,255,255,.035)}
 [data-theme="dark"] .paper2-working-editor textarea,
 [data-theme="dark"] .paper2-working-preview{background:rgba(255,255,255,.025);color:inherit}
+/* SPARK_V539L5_DARK_MARKING_GUIDE */
+[data-theme="dark"] .paper2-mab-legend b{background:#d9fbf4;color:#064e49;border-color:#6ee7d2;font-weight:950;text-shadow:none;box-shadow:0 0 0 1px rgba(110,231,210,.18),0 2px 8px rgba(0,0,0,.18)}
+[data-theme="dark"] .paper2-mark-code{background:#d9fbf4;color:#064e49;border:1px solid #6ee7d2;font-weight:900}
+[data-theme="dark"] .paper2-ecf-badge{background:#d9fbf4;color:#064e49;border:1px solid #6ee7d2;font-weight:900}
 [data-theme="dark"] .paper2-mab-legend span,
 [data-theme="dark"] .paper2-working-editor>label,
 [data-theme="dark"] .paper2-final-answer-label{color:inherit}

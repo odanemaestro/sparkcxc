@@ -10,6 +10,13 @@ const paths = {
   subjects: <><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" /></>,
   progress: <><path d="M3 3v18h18" /><path d="M7 15l4-5 3 3 5-7" /></>,
   circles: <><circle cx="9" cy="8" r="3" /><circle cx="17" cy="8" r="3" /><path d="M2 20c0-3.3 3.1-6 7-6s7 2.7 7 6" /><path d="M14.5 14c3.6.2 6.5 2.7 6.5 6" /></>,
+  // SPARK_V539L4_HOME_FEATURE_ICONS
+  featureBook: <><path d="M3.5 5.5A3 3 0 0 1 6.5 4H11v16H6.5a3 3 0 0 0-3 1z" /><path d="M20.5 5.5A3 3 0 0 0 17.5 4H13v16h4.5a3 3 0 0 1 3 1z" /><path d="M12 5v15" /></>,
+  featurePencil: <><path d="M4 20l4.25-1.05L19.1 8.1a2 2 0 0 0-2.83-2.83L5.42 16.12 4 20z" /><path d="M14.85 6.7l2.83 2.83" /><path d="M8.25 18.95l-2.83-2.83" /></>,
+  featureVerifiedTutor: <><path d="M3 8.5L12 4l9 4.5-9 4.5z" /><path d="M7 11.5v4c0 1.8 2.2 3 5 3 1 0 1.95-.16 2.75-.48" /><path d="M19 10v4" /><path d="M15.5 18.25l1.7 1.7L21 16.1" /></>,
+  featureAnalytics: <><path d="M4 20V10" /><path d="M10 20V6" /><path d="M16 20v-7" /><path d="M22 20V4" /><path d="M3 20h19" /></>,
+  featureExam: <><rect x="5" y="3.5" width="14" height="17" rx="2" /><path d="M9 3.5V2h6v1.5" /><path d="M8.5 9h7" /><path d="M8.5 13h4" /><path d="M8.5 17l1.5 1.5 3-3" /></>,
+  featureLesson: <><path d="M9 18h6" /><path d="M10 22h4" /><path d="M8.4 14.8A7 7 0 1 1 15.6 14.8C14.6 15.55 14 16.5 14 18h-4c0-1.5-.6-2.45-1.6-3.2z" /><path d="M12 2V.5M4.9 4.9L3.8 3.8M19.1 4.9l1.1-1.1" /></>,
   bell: <><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9" /><path d="M13.7 21a2 2 0 0 1-3.4 0" /></>, // SPARK_V539L_NOTIFICATION_BELL
   bookings: <><rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" /></>,
   study: <><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" /></>,

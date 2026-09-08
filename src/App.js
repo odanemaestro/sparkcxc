@@ -1442,18 +1442,21 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
           </h2>
           <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(260px,1fr))",gap:20}}>
             {[
-              ["📖",`${totalTopics} syllabus topics`,"Every specific objective from all 10 sections of the CSEC Mathematics syllabus has its own written lesson.",T.teal,T.tealLight],
-              ["✏️","Past-paper style questions","Questions modelled directly on CXC past papers from 2010–2015. Same structure, same difficulty, different numbers.",T.amber,T.amberLight],
-              ["🎓","Verified tutors","Vetted, student-rated tutors by subject. See rates, read reviews, book directly.",T.purple,T.purpleLight],
-              ["📊","Weak topic detection","Every quiz answer is tracked. The platform flags your weakest topics automatically.",T.emerald,T.emeraldLight],
-              ["📝","Section & final exams","After each section, a structured exam. Then a full final paper with Section A, B and C.",T.red,T.redLight],
-              ["🧠","Interactive lessons","Lessons include key facts, examples, common errors and solutions for self-checking.",T.teal,T.tealLight],
+              ["featureBook",`${totalTopics} syllabus topics`,"Every specific objective from all 10 sections of the CSEC Mathematics syllabus has its own written lesson.",T.teal,T.tealLight],
+              ["featurePencil","Past-paper style questions","Questions modelled directly on CXC past papers from 2010–2015. Same structure, same difficulty, different numbers.",T.amber,T.amberLight],
+              ["featureVerifiedTutor","Verified tutors","Vetted, student-rated tutors by subject. See rates, read reviews, book directly.",T.purple,T.purpleLight],
+              ["featureAnalytics","Weak topic detection","Every quiz answer is tracked. The platform flags your weakest topics automatically.",T.emerald,T.emeraldLight],
+              ["featureExam","Section & final exams","After each section, a structured exam. Then a full final paper with Section A, B and C.",T.red,T.redLight],
+              ["featureLesson","Interactive lessons","Lessons include key facts, examples, common errors and solutions for self-checking.",T.teal,T.tealLight],
             ].map(([icon, title, desc, accent, accentBg]) => (
               <div key={title} className="hl"
                 style={{background:T.paper,border:`1px solid ${T.border}`,borderRadius:T.rMd,padding:24,
                   boxShadow:T.shadowSm}}>
                 <div style={{width:44,height:44,borderRadius:T.rSm,background:accentBg,
-                  display:"flex",alignItems:"center",justifyContent:"center",fontSize:21,marginBottom:14}}>{icon}</div>
+                  display:"flex",alignItems:"center",justifyContent:"center",marginBottom:14}}
+                  data-spark-feature-icon="svg">{/* SPARK_V539L4_HOME_FEATURE_ICONS */}
+                  <Icon name={icon} size={23} color={accent} strokeWidth={1.8} />
+                </div>
                 <div style={{fontFamily:FD,fontSize:17.5,fontWeight:600,color:T.ink,marginBottom:7}}>{title}</div>
                 <div style={{fontSize:13.5,color:T.textMuted,lineHeight:1.65}}>{desc}</div>
               </div>
