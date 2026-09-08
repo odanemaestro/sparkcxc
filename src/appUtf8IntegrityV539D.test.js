@@ -11,7 +11,9 @@ describe("SPARK V5.3.9D UTF-8 source integrity", () => {
   });
 
   test("dashboard and subject actions use the intended Unicode characters", () => {
-    expect(app).toContain("Continue studying →");
+    expect(app).toContain("Continue studying");
+    expect(app).toContain("spark-dashboard-card-action-icon");
+    expect(app).toContain("↗");
     expect(app).toContain("Open subject →");
     expect(app).toContain(" · ");
   });

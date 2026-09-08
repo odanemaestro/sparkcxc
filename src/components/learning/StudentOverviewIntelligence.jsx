@@ -6,6 +6,15 @@ import InsightText from "./InsightText";
 import StudentGoalCard from "./StudentGoalCard";
 import { getDueFlashcards } from "../../learning/flashcards";
 
+
+function DashboardCardAction({ label, onClick }) {
+  return (
+    <button type="button" className="spark-dashboard-card-action" onClick={onClick}>
+      <span>{label}</span><span className="spark-dashboard-card-action-icon" aria-hidden="true">↗</span>
+    </button>
+  );
+}
+
 function formatUpcoming(booking) {
   if (!booking?.session_date) return "No upcoming tutor session";
   const date = new Date(`${booking.session_date}T${String(booking.start_time || "12:00").slice(0,5)}`);
@@ -46,7 +55,7 @@ export default function StudentOverviewIntelligence({
         <Card className="spark-flashcard-overview-card">
           <div className="spark-card-title-with-icon"><span className="spark-feature-icon compact"><Icon name="flashcards" size={19}/></span><div><span className="section-kicker">FLASHCARDS</span><h3>{due} due today</h3></div></div>
           <p>Use spaced review for formulas, definitions, common errors and quick CSEC Mathematics recall.</p>
-          <Btn v="outline" onClick={() => setDashboardSection("flashcards")}>Quick review →</Btn>
+          <DashboardCardAction label="Quick review" onClick={() => setDashboardSection("flashcards")} />
         </Card>
       </div>
 
@@ -59,7 +68,7 @@ export default function StudentOverviewIntelligence({
 
       <div className="spark-overview-two-col spark-overview-lower">
         <Card className="spark-attention-card">
-          <div className="spark-card-heading-row"><div><span className="section-kicker">AREAS TO WORK ON</span><h3>Priority topics</h3></div><button className="spark-text-action" onClick={() => setDashboardSection("progress")}>View progress</button></div>
+          <div className="spark-card-heading-row"><div><span className="section-kicker">AREAS TO WORK ON</span><h3>Priority topics</h3></div><DashboardCardAction label="View progress" onClick={() => setDashboardSection("progress")} /></div>
           {weakest.length ? <div className="spark-skill-mini-list">{weakest.map(item => <div key={item.skill}><span>{item.skill}</span><strong>{Math.round(Number(item.score || 0))}%</strong></div>)}</div> : <p className="spark-muted">Keep studying and SPARK will identify your priority topics.</p>}
         </Card>
 
@@ -89,7 +98,7 @@ export default function StudentOverviewIntelligence({
 
       <Card className="spark-report-cta-card">
         <div className="spark-card-title-with-icon"><span className="spark-feature-icon"><Icon name="report" size={22}/></span><div><span className="section-kicker">MY PROGRESS REPORT</span><h3>See the bigger picture</h3><p>Review your performance, activity, strongest areas, improvement priorities and recommended next steps.</p></div></div>
-        <Btn onClick={onOpenReport}>View progress report</Btn>
+        <DashboardCardAction label="View progress report" onClick={onOpenReport} />
       </Card>
     </div>
   );

@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import Card from "../ui/Card";
 import Btn from "../ui/Btn";
 import Icon from "../ui/Icon";
+import MathText from "../../practice/MathText";
 import {
   FLASHCARDS,
   FLASHCARD_DECKS,
@@ -160,11 +161,16 @@ export default function FlashcardsPanel({ userId, supabase, showToast, onProgres
             </Card>
           ) : (
             <>
-              <button type="button" className={`spark-flashcard ${revealed ? "revealed" : ""}`} onClick={() => setRevealed(true)}>
+              <button
+                type="button"
+                className={`spark-flashcard ${revealed ? "revealed" : ""}`}
+                onClick={() => setRevealed(true)}
+                aria-label={revealed ? `Flashcard answer: ${current.back}` : `Flashcard question: ${current.front}. Reveal answer.`}
+              >
                 <div className="spark-flashcard-label">{FLASHCARD_DECKS.find(item => item.id === current.deck)?.title}</div>
-                <div className="spark-flashcard-question">{current.front}</div>
+                <MathText as="div" prose className="spark-flashcard-question spark-flashcard-math">{current.front}</MathText>
                 {revealed ? (
-                  <div className="spark-flashcard-answer">{current.back}</div>
+                  <MathText as="div" prose className="spark-flashcard-answer spark-flashcard-math">{current.back}</MathText>
                 ) : (
                   <div className="spark-flashcard-reveal">Tap to reveal the answer</div>
                 )}
@@ -180,8 +186,12 @@ export default function FlashcardsPanel({ userId, supabase, showToast, onProgres
               )}
 
               <div className="spark-flashcard-nav">
-                <button disabled={index === 0} onClick={() => { setIndex(value => Math.max(0, value - 1)); setRevealed(false); }}>Previous</button>
-                <button disabled={index >= visibleCards.length - 1} onClick={() => { setIndex(value => Math.min(visibleCards.length - 1, value + 1)); setRevealed(false); }}>Next</button>
+                <button disabled={index === 0} onClick={() => { setIndex(value => Math.max(0, value - 1)); setRevealed(false); }}>
+                  <span className="spark-nav-arrow" aria-hidden="true">←</span><span>Previous</span>
+                </button>
+                <button disabled={index >= visibleCards.length - 1} onClick={() => { setIndex(value => Math.min(visibleCards.length - 1, value + 1)); setRevealed(false); }}>
+                  <span>Next</span><span className="spark-nav-arrow" aria-hidden="true">→</span>
+                </button>
               </div>
             </>
           )}

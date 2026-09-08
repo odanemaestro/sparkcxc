@@ -4,6 +4,15 @@ import Btn from "../ui/Btn";
 import Icon from "../ui/Icon";
 import InsightText from "./InsightText";
 
+
+function DashboardCardAction({ label, onClick }) {
+  return (
+    <button type="button" className="spark-dashboard-card-action" onClick={onClick}>
+      <span>{label}</span><span className="spark-dashboard-card-action-icon" aria-hidden="true">↗</span>
+    </button>
+  );
+}
+
 function isPastDate(value) {
   if (!value) return false;
   const selected = new Date(`${value}T00:00:00`);
@@ -96,7 +105,7 @@ export default function ParentOverviewIntelligence({
 
         <Card className="spark-report-cta-card parent">
           <div className="spark-card-title-with-icon"><span className="spark-feature-icon"><Icon name="report" size={22}/></span><div><span className="section-kicker">PROGRESS REPORT</span><h3>Shareable progress summary</h3><p>View a polished report, download it as PDF, or email it securely to your verified Parent account email.</p></div></div>
-          <Btn onClick={onOpenReport}>Generate report</Btn>
+          <DashboardCardAction label="Generate report" onClick={onOpenReport} />
         </Card>
       </div>
     </div>

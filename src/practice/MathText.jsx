@@ -4,6 +4,26 @@ import "./mathText.css";
 const TOKEN_OPEN = "\uE000";
 const TOKEN_CLOSE = "\uE001";
 
+// V5.5.2: flashcards and older lesson content still contain Unicode
+// superscript/subscript glyphs (for example a⁻ⁿ, x₂ and r²). Normalize
+// them to the same caret/underscore syntax used by the universal renderer
+// so every surface gets consistent mathematical typography.
+const UNICODE_SUPERSCRIPT = Object.freeze({
+  "⁰":"0","¹":"1","²":"2","³":"3","⁴":"4","⁵":"5","⁶":"6","⁷":"7","⁸":"8","⁹":"9",
+  "⁺":"+","⁻":"-","⁼":"=","⁽":"(","⁾":")","ⁿ":"n","ⁱ":"i",
+});
+const UNICODE_SUBSCRIPT = Object.freeze({
+  "₀":"0","₁":"1","₂":"2","₃":"3","₄":"4","₅":"5","₆":"6","₇":"7","₈":"8","₉":"9",
+  "₊":"+","₋":"-","₌":"=","₍":"(","₎":")","ₐ":"a","ₑ":"e","ₒ":"o","ₓ":"x","ₕ":"h",
+  "ₖ":"k","ₗ":"l","ₘ":"m","ₙ":"n","ₚ":"p","ₛ":"s","ₜ":"t",
+});
+
+function normalizeUnicodeScripts(value) {
+  return String(value ?? "")
+    .replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾ⁿⁱ]+/g, run => `^(${[...run].map(ch => UNICODE_SUPERSCRIPT[ch] ?? ch).join("")})`)
+    .replace(/[₀₁₂₃₄₅₆₇₈₉₊₋₌₍₎ₐₑₒₓₕₖₗₘₙₚₛₜ]+/g, run => `_{${[...run].map(ch => UNICODE_SUBSCRIPT[ch] ?? ch).join("")}}`);
+}
+
 function escapeHtml(value) {
   return String(value ?? "").replace(/[&<>"']/g, ch => ({
     "&": "&amp;",
@@ -157,6 +177,13 @@ function formatFractions(text, store, formatInner) {
     (_, numerator, denominator) => fraction(numerator, denominator)
   );
 
+  // A simple atom divided by a powered atom, e.g. 1/a^n or 3/x^2.
+  // This is common on flashcards and should render as a real stacked fraction.
+  output = output.replace(
+    /([−-]?[A-Za-z0-9πθ.]+)\s*\/\s*([A-Za-z0-9πθ.]+\^(?:\([^()\n]+\)|[−-]?\d+|[A-Za-z]))/g,
+    (_, numerator, denominator) => fraction(numerator, denominator)
+  );
+
   // Trigonometric denominators used in the sine rule, e.g. a/sin A.
   output = output.replace(
     /([−-]?[A-Za-z0-9πθ₀-₉²³⁴⁵⁶⁷⁸⁹⁻.]+)\s*\/\s*((?:sin|cos|tan)\s+[A-Za-zθ][A-Za-z0-9θ₀-₉]*)/gi,
@@ -195,7 +222,7 @@ export function formatMathHtml(value) {
   const store = createTokenStore();
   // Normalize ASCII comparison shortcuts before escaping. If "<" is escaped
   // first, "<=" becomes "&lt;=" and the operator replacement never sees it.
-  const normalized = String(value ?? "")
+  const normalized = normalizeUnicodeScripts(value)
     .replace(/<=/g, "≤")
     .replace(/>=/g, "≥")
     .replace(/!=/g, "≠");

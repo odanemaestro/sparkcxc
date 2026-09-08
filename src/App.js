@@ -3754,7 +3754,9 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 <span style={{fontWeight:700,color:T.ink,whiteSpace:"nowrap"}}>{done>0?Math.round((done/totalTopics)*100):0}%</span>
               </div>
               <ProgressBar className="student-overview-progress-bar" value={done} max={totalTopics} style={{marginBottom:14}}/>
-              <Btn onClick={() => setView("lesson")}>Continue studying →</Btn>
+              <button type="button" className="spark-dashboard-card-action" onClick={() => setView("lesson")}>
+                <span>Continue studying</span><span className="spark-dashboard-card-action-icon" aria-hidden="true">↗</span>
+              </button>
             </Card>
             {parentLinks.filter(l => l.status === "pending").length > 0 && (
               <Card className="family-request-card notification-anchor-card" data-notification-anchor="family-request" style={{marginBottom:20}}>
