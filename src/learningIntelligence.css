@@ -107,6 +107,16 @@
   line-height:1;
   transition:transform .2s ease,background .2s ease,border-color .2s ease;
 }
+.spark-dashboard-card-action-icon svg{
+  width:16px;
+  height:16px;
+  display:block;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
 .spark-dashboard-card-action:hover .spark-dashboard-card-action-icon{
   transform:translate(2px,-2px);
   background:color-mix(in srgb,var(--spark-teal-light,#e7faf6) 72%,var(--spark-paper,#fff));
@@ -184,3 +194,10 @@
   .spark-flashcard-question .frac,.spark-flashcard-answer .frac{font-size:.94em}
 }
 
+
+.lesson-completion-gate-note{
+  margin-top:10px;
+  font-size:12px;
+  line-height:1.5;
+  color:var(--spark-text-muted,#6b7c93);
+}

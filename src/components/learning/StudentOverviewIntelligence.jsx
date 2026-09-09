@@ -10,7 +10,7 @@ import { getDueFlashcards } from "../../learning/flashcards";
 function DashboardCardAction({ label, onClick }) {
   return (
     <button type="button" className="spark-dashboard-card-action" onClick={onClick}>
-      <span>{label}</span><span className="spark-dashboard-card-action-icon" aria-hidden="true">↗</span>
+      <span>{label}</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M6 14L14 6M8 6h6v6" /></svg></span>
     </button>
   );
 }

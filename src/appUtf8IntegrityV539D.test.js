@@ -10,11 +10,13 @@ describe("SPARK V5.3.9D UTF-8 source integrity", () => {
     });
   });
 
-  test("dashboard and subject actions use the intended Unicode characters", () => {
+  test("dashboard and subject actions use the intended UTF-8 text and SVG drill-in icon", () => {
     expect(app).toContain("Continue studying");
     expect(app).toContain("spark-dashboard-card-action-icon");
-    expect(app).toContain("↗");
-    expect(app).toContain("Open subject →");
+    expect(app).toContain('viewBox="0 0 20 20"');
+    expect(app).toContain('d="M6 14L14 6M8 6h6v6"');
+    expect(app).not.toContain('spark-dashboard-card-action-icon" aria-hidden="true">↗');
+    expect(app).toContain("Open subject");
     expect(app).toContain(" · ");
   });
 });

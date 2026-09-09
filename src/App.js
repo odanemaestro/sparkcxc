@@ -540,6 +540,11 @@ function LessonContent({ topicName, onQuizStart, onComplete, isCompleted }) {
           </div>
         )}
       </div>
+      {!isCompleted && (
+        <div className="lesson-completion-gate-note">
+          Complete this lesson, or score 60% or higher on the practice quiz, to unlock the next topic.
+        </div>
+      )}
     </div>
   );
 }
@@ -926,16 +931,28 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
       ti === tIdx || completedTopics.has(`${sIdx}-${ti}`)
     ));
 
-    setCompletedTopics(prev => new Set([...prev, key]));
-    showToast("Topic marked complete ✓");
-    if (!user?.id) return;
+    if (completedTopics.has(key)) return true;
 
-    // Save the completion source so the database can avoid sending parents a
-    // duplicate lesson alert when a passed topic test marks the same lesson
-    // complete. The scored topic-test notification is more useful in that case.
-    const { data: lesson } = await supabase.from("lessons")
+    const markLocally = () => {
+      setCompletedTopics(prev => {
+        if (prev.has(key)) return prev;
+        return new Set([...prev, key]);
+      });
+    };
+
+    if (!user?.id) {
+      markLocally();
+      showToast("Lesson completed ✓");
+      return true;
+    }
+
+    const { data: lesson, error: lessonError } = await supabase.from("lessons")
       .select("id").eq("title", topicTitle).single();
-    if (!lesson?.id) return;
+    if (lessonError || !lesson?.id) {
+      console.error("Could not find lesson for completion:", lessonError || topicTitle);
+      showToast("Could not save lesson completion. Try again.");
+      return false;
+    }
 
     const { error: progressError } = await supabase.from("lesson_progress").upsert({
       user_id: user.id,
@@ -946,11 +963,14 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
     });
     if (progressError) {
       console.error("Could not save lesson completion:", progressError);
-      return;
+      showToast("Could not save lesson completion. Try again.");
+      return false;
     }
 
-    // Section completion is a meaningful parent milestone. The RPC dedupes it,
-    // so completing or revisiting the final topic cannot create repeat alerts.
+    // Unlock forward navigation only after Supabase confirms the completion.
+    markLocally();
+    showToast(source === "quiz" ? "Quiz passed. Next topic unlocked ✓" : "Lesson completed. Next topic unlocked ✓");
+
     if (sectionWillBeComplete) {
       const { error: milestoneError } = await supabase.rpc("spark_record_student_milestone", {
         p_event_type: "section_completed",
@@ -962,6 +982,8 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
       });
       if (milestoneError) console.warn("Could not save section completion milestone:", milestoneError);
     }
+
+    return true; // persisted completion
   }, [user, sections, showToast, completedTopics]);
 
   const handleQuizComplete = async (correct, total) => {
@@ -988,6 +1010,52 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
   };
 
   const isTopicDone = (si, ti) => completedTopics.has(`${si}-${ti}`);
+
+
+  const topicOrdinal = (si, ti) => {
+    let ordinal = ti;
+    for (let index = 0; index < si; index += 1) ordinal += sections[index]?.topics?.length || 0;
+    return ordinal;
+  };
+
+  const firstIncompleteOrdinal = (() => {
+    let ordinal = 0;
+    for (let si = 0; si < sections.length; si += 1) {
+      for (let ti = 0; ti < sections[si].topics.length; ti += 1) {
+        if (!isTopicDone(si, ti)) return ordinal;
+        ordinal += 1;
+      }
+    }
+    return totalTopics;
+  })();
+
+  // Students may revisit completed topics and open the first unfinished topic.
+  // Later unfinished topics stay locked until the current lesson is completed
+  // manually or the practice quiz is passed at 60% or higher.
+  const canOpenTopic = (si, ti) => {
+    if (!progressLoaded) return false;
+    return isTopicDone(si, ti) || topicOrdinal(si, ti) <= firstIncompleteOrdinal;
+  };
+
+  const navigateToTopic = (si, ti) => {
+    if (!canOpenTopic(si, ti)) {
+      showToast("Complete the current lesson or pass its practice quiz to unlock this topic.");
+      return false;
+    }
+    setActiveSectionIdx(si);
+    setActiveTopicIdx(ti);
+    setOpenSidebarSection(si);
+    setInQuiz(false);
+    return true;
+  };
+
+  const nextTopicTarget = activeTopicIdx < (activeSection?.topics?.length || 0) - 1
+    ? { si: activeSectionIdx, ti: activeTopicIdx + 1 }
+    : activeSectionIdx < sections.length - 1
+      ? { si: activeSectionIdx + 1, ti: 0 }
+      : null;
+  const currentTopicCompleted = isTopicDone(activeSectionIdx, activeTopicIdx);
+  const canGoNext = Boolean(nextTopicTarget && currentTopicCompleted && canOpenTopic(nextTopicTarget.si, nextTopicTarget.ti));
 
   return (
     <div className="lesson-layout" style={{display:"grid",gridTemplateColumns:"280px 1fr",minHeight:"calc(100vh - 56px)"}}>
@@ -1026,11 +1094,14 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
               {isOpen && sec.topics.map((topic, ti) => {
                 const done = isTopicDone(si, ti);
                 const isActive = si === activeSectionIdx && ti === activeTopicIdx;
+                const unlocked = canOpenTopic(si, ti);
                 return (
                   <div key={ti}
-                    onClick={() => { setActiveSectionIdx(si); setActiveTopicIdx(ti); setInQuiz(false); }}
-                    style={{padding:"9px 16px 9px 28px",fontSize:12.5,cursor:"pointer",
-                      display:"flex",alignItems:"center",gap:8,transition:`all .18s ${T.ease}`,
+                    onClick={() => navigateToTopic(si, ti)}
+                    aria-disabled={!unlocked}
+                    title={!unlocked ? "Complete the current lesson to unlock this topic" : undefined}
+                    style={{padding:"9px 16px 9px 28px",fontSize:12.5,cursor:unlocked?"pointer":"not-allowed",
+                      opacity:unlocked?1:.42,display:"flex",alignItems:"center",gap:8,transition:`all .18s ${T.ease}`,
                       borderLeft:`3px solid ${isActive?T.teal:"transparent"}`,
                       background:isActive?"rgba(13,148,136,.18)":"transparent",
                       color:isActive?"#5EEAD4":done?"rgba(255,255,255,.55)":"rgba(255,255,255,.7)"}}
@@ -1070,15 +1141,16 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
             <span>Section</span>
             <select value={activeSectionIdx} onChange={e => {
               const next = Number(e.target.value);
-              setActiveSectionIdx(next); setActiveTopicIdx(0); setOpenSidebarSection(next); setInQuiz(false);
+              const firstUnlocked = sections[next]?.topics.findIndex((_, ti) => canOpenTopic(next, ti)) ?? -1;
+              if (firstUnlocked >= 0) navigateToTopic(next, firstUnlocked);
             }}>
-              {sections.map((section, index) => <option key={section.title} value={index}>{section.title}</option>)}
+              {sections.map((section, index) => <option key={section.title} value={index} disabled={!section.topics.some((_, ti) => canOpenTopic(index, ti))}>{section.title}</option>)}
             </select>
           </label>
           <label>
             <span>Topic</span>
-            <select value={activeTopicIdx} onChange={e => { setActiveTopicIdx(Number(e.target.value)); setInQuiz(false); }}>
-              {activeSection?.topics.map((topic, index) => <option key={topic} value={index}>{topic}</option>)}
+            <select value={activeTopicIdx} onChange={e => navigateToTopic(activeSectionIdx, Number(e.target.value))}>
+              {activeSection?.topics.map((topic, index) => <option key={topic} value={index} disabled={!canOpenTopic(activeSectionIdx, index)}>{topic}{!canOpenTopic(activeSectionIdx, index) ? " · Locked" : ""}</option>)}
             </select>
           </label>
         </div>
@@ -1135,17 +1207,17 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
             ← Previous topic
           </button>
           <button onClick={() => {
-            if (activeTopicIdx < activeSection.topics.length - 1) {
-              setActiveTopicIdx(t => t + 1);
-            } else if (activeSectionIdx < sections.length - 1) {
-              setActiveSectionIdx(s => s + 1);
-              setActiveTopicIdx(0);
-              setOpenSidebarSection(activeSectionIdx + 1);
+            if (!canGoNext || !nextTopicTarget) {
+              if (!currentTopicCompleted) showToast("Complete this lesson or pass its practice quiz before continuing.");
+              return;
             }
-            setInQuiz(false);
-          }} style={{background:T.teal,border:"none",padding:"9px 16px",
-            borderRadius:7,cursor:"pointer",fontSize:13,color:"#fff",fontFamily:FB,fontWeight:600}}>
-            Next topic →
+            navigateToTopic(nextTopicTarget.si, nextTopicTarget.ti);
+          }} disabled={!canGoNext} aria-disabled={!canGoNext} style={{
+            background:canGoNext?T.teal:T.muted,border:"none",padding:"9px 16px",
+            borderRadius:7,cursor:canGoNext?"pointer":"not-allowed",fontSize:13,
+            color:canGoNext?"#fff":T.textMuted,fontFamily:FB,fontWeight:600,opacity:canGoNext?1:.78
+          }}>
+            {!nextTopicTarget ? (currentTopicCompleted ? "Course complete ✓" : "Complete final lesson") : currentTopicCompleted ? "Next topic →" : "Complete lesson to continue"}
           </button>
         </div>
       </div>
@@ -3755,7 +3827,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
               </div>
               <ProgressBar className="student-overview-progress-bar" value={done} max={totalTopics} style={{marginBottom:14}}/>
               <button type="button" className="spark-dashboard-card-action" onClick={() => setView("lesson")}>
-                <span>Continue studying</span><span className="spark-dashboard-card-action-icon" aria-hidden="true">↗</span>
+                <span>Continue studying</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M6 14L14 6M8 6h6v6" /></svg></span>
               </button>
             </Card>
             {parentLinks.filter(l => l.status === "pending").length > 0 && (
@@ -4036,7 +4108,9 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 <div style={{fontSize:11,color:T.textMuted,marginTop:5,marginBottom:14}}>
                   {done} of {totalTopics} topics done
                 </div>
-                <Btn style={{fontSize:12,padding:"7px 14px"}}>Open subject →</Btn>
+                <button type="button" className="spark-dashboard-card-action">
+                  <span>Open subject</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M6 14L14 6M8 6h6v6" /></svg></span>
+                </button>
               </Card>
               <Card style={{opacity:.6}}>
                 <div style={{fontFamily:FD,fontSize:18,fontWeight:600,color:T.ink,marginBottom:4}}>CSEC Physics</div>

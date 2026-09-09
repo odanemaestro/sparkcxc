@@ -40,9 +40,11 @@ describe("SPARK V5.5.2 dashboard polish integration", () => {
     const student = read("components/learning/StudentOverviewIntelligence.jsx");
     const parent = read("components/learning/ParentOverviewIntelligence.jsx");
     expect(student).toContain("spark-dashboard-card-action-icon");
-    expect(student).toContain("↗");
+    expect(student).toContain('viewBox="0 0 20 20"');
+    expect(student).not.toContain(">↗</span>");
     expect(parent).toContain("spark-dashboard-card-action-icon");
-    expect(parent).toContain("↗");
+    expect(parent).toContain('viewBox="0 0 20 20"');
+    expect(parent).not.toContain(">↗</span>");
   });
 
   test("dashboard CSS includes polished card, flashcard and accessible focus states", () => {
