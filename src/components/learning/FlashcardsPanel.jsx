@@ -11,12 +11,13 @@ import {
   normalizeFlashcardProgress,
   recommendedDeckIdsForSkills,
 } from "../../learning/flashcards";
+import { flashcardEvidenceForRating } from "../../learning/learnerModel";
 
 function deckCount(deckId) {
   return FLASHCARDS.filter(card => card.deck === deckId).length;
 }
 
-export default function FlashcardsPanel({ userId, supabase, showToast, onProgressChange, onReviewRecorded, weakSkills = [] }) {
+export default function FlashcardsPanel({ userId, supabase, showToast, onProgressChange, onReviewRecorded, onLearnerStateChange, weakSkills = [] }) {
   const [rows, setRows] = useState([]);
   const [deck, setDeck] = useState("all");
   const [mode, setMode] = useState("due");
@@ -105,7 +106,31 @@ export default function FlashcardsPanel({ userId, supabase, showToast, onProgres
     const nextRows = rows.filter(row => row.card_id !== current.id).concat(savedRow);
     setRows(nextRows);
     onProgressChange?.(nextRows);
-    onReviewRecorded?.({ card_id: current.id, rating, reviewed_at: savedRow.last_reviewed_at || new Date().toISOString() });
+    const reviewedAt = savedRow.last_reviewed_at || new Date().toISOString();
+    onReviewRecorded?.({ card_id: current.id, rating, reviewed_at: reviewedAt });
+
+    // Flashcard self-ratings are useful learner evidence, but carry less weight
+    // than scored quiz or Adaptive Practice answers. A failure here never
+    // blocks the spaced-repetition review that was already saved above.
+    const deckTitle = FLASHCARD_DECKS.find(item => item.id === current.deck)?.title || current.deck || "Flashcards";
+    const evidence = flashcardEvidenceForRating(rating);
+    supabase.rpc("spark_record_learner_evidence", {
+      p_skill: deckTitle,
+      p_source: "flashcard",
+      p_item_id: current.id,
+      p_correct: evidence.correct,
+      p_evidence_weight: evidence.weight,
+      p_help_used: evidence.helpUsed,
+      p_metadata: { deck_id: current.deck, rating },
+      p_evidence_key: `flashcard:${current.id}:${reviewedAt}`,
+      p_occurred_at: reviewedAt,
+    }).then(({ data: learnerState, error: learnerError }) => {
+      if (!learnerError && learnerState) onLearnerStateChange?.(learnerState);
+      if (learnerError && learnerError.code !== "PGRST202") {
+        console.warn("Could not update learner model from flashcard review:", learnerError);
+      }
+    });
+
     setRevealed(false);
     setSaving(false);
     if (mode === "due") setIndex(0);

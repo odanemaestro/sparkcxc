@@ -4,7 +4,6 @@ import Btn from "../ui/Btn";
 import Icon from "../ui/Icon";
 import InsightText from "./InsightText";
 
-
 function DashboardCardAction({ label, onClick }) {
   return (
     <button type="button" className="spark-dashboard-card-action" onClick={onClick}>
@@ -25,6 +24,7 @@ function isPastDate(value) {
 export default function ParentOverviewIntelligence({
   child,
   summary,
+  learnerModel,
   goal,
   supabase,
   showToast,
@@ -36,9 +36,6 @@ export default function ParentOverviewIntelligence({
   const [message, setMessage] = useState("");
   const [saving, setSaving] = useState(false);
 
-  // Keep the form tied to the currently selected child. ParentView reuses this
-  // component as the child selector changes, so stale values from the previous
-  // child must never carry across.
   useEffect(() => {
     setTarget(goal?.target_percent || 75);
     setDate(goal?.target_date || "");
@@ -79,6 +76,7 @@ export default function ParentOverviewIntelligence({
   const currentValue = summary?.examCount ? summary.overallExamAverage : summary?.mastery || 0;
   const currentValueText = hasCurrentData ? `${currentValue}%` : "—";
   const currentLabel = summary?.examCount ? "Current full-paper average" : "Current mastery";
+  const priorities = learnerModel?.hasEvidence ? learnerModel.prioritySkills?.slice(0, 3) || [] : [];
 
   return (
     <div className="spark-parent-intelligence">
@@ -95,6 +93,15 @@ export default function ParentOverviewIntelligence({
         <div><strong>{summary?.weekly?.exams ? `${summary.weekly.average}%` : "—"}</strong><span>Weekly exam average</span></div>
         <div><strong>{summary?.weekly?.tutorSessions || 0}</strong><span>Tutor sessions</span></div>
       </div>
+
+      {priorities.length > 0 && <Card className="spark-parent-learner-model-card">
+        <div className="spark-card-heading-row"><div><span className="section-kicker">LEARNER MODEL</span><h3>What SPARK is seeing</h3></div><span className="spark-model-explainer">Based on accumulated learning evidence</span></div>
+        <div className="spark-parent-learner-list">{priorities.map(item => <div key={item.skill} className="spark-parent-learner-row">
+          <div><strong>{item.skill}</strong><span>{item.confidenceLabel} confidence · {item.trendLabel}{item.commonError ? ` · Recurring issue: ${item.commonError.label}` : ""}</span></div>
+          <strong>{item.mastery}%</strong>
+        </div>)}</div>
+        <p className="spark-model-recommendation">Next priority: {priorities[0].recommendation}</p>
+      </Card>}
 
       <div className="spark-overview-two-col spark-parent-action-row">
         <Card className="spark-parent-goal-card" data-notification-anchor="parent-goal">

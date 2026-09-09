@@ -19,7 +19,7 @@ describe("SPARK V5.3.10 learning intelligence integration", () => {
     expect(app).toContain("studentReportOpen");
     expect(app).toContain("studentFlashcardReviewEvents");
     expect(app).toContain("onReviewRecorded=");
-    expect(app).toContain("weakSkills={studentSummary.weakestSkills}");
+    expect(app).toContain("weakSkills={learnerModelWeakSkills(studentLearnerModel, studentSummary.weakestSkills)}");
     expect(app).toContain("studentStudyCircle");
     expect(app).toContain('supabase.rpc("spark_get_study_circle_home")');
   });
@@ -41,7 +41,7 @@ describe("SPARK V5.3.10 learning intelligence integration", () => {
   test("flashcard due queue stays live and receives weak-skill priorities", () => {
     expect(flashcardPanel).toContain("setInterval(() => setClock(Date.now()), 60 * 1000)");
     expect(flashcardPanel).toContain('new Date(clock)');
-    expect(app).toContain("weakSkills={studentSummary.weakestSkills}");
+    expect(app).toContain("weakSkills={learnerModelWeakSkills(studentLearnerModel, studentSummary.weakestSkills)}");
   });
 
   test("parent goal form resets when the selected child or current goal changes", () => {

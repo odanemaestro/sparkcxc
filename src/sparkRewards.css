@@ -1,0 +1,93 @@
+/* ==========================================================================
+   SPARK Rewards V5.7.0.1
+   Theme-safe SPARK of the Week / leaderboard UI.
+
+   IMPORTANT: use the shared --spark-* appearance tokens from theme.css.
+   The previous V5.7.0 stylesheet referenced generic --paper/--ink variables,
+   which are not the application's theme contract and could fall back to
+   light-only colours in Dark mode.
+   ========================================================================== */
+.spark-rewards-card{
+  --rewards-surface:var(--spark-paper,#fff);
+  --rewards-raised:var(--spark-paper-raised,#fff);
+  --rewards-muted:var(--spark-muted,#f4f4f1);
+  --rewards-border:var(--spark-border,#e2e8f0);
+  --rewards-border-strong:var(--spark-border-strong,#cbd5e1);
+  --rewards-ink:var(--spark-ink,#0f2557);
+  --rewards-ink-soft:var(--spark-ink-soft,#2d3e6b);
+  --rewards-text-muted:var(--spark-text-muted,#64748b);
+  --rewards-teal:var(--spark-teal,#0d9488);
+  --rewards-teal-strong:var(--spark-teal-dark,#0a7268);
+  --rewards-teal-soft:var(--spark-teal-light,#ccfbf1);
+  --rewards-teal-surface:var(--spark-teal-surface,#f0fdf9);
+  --rewards-amber-soft:var(--spark-amber-light,#fef3c7);
+  margin:0 0 24px;
+  border:1px solid var(--rewards-border);
+  border-radius:18px;
+  background:var(--rewards-surface);
+  color:var(--rewards-ink);
+  box-shadow:var(--spark-shadow-md,0 10px 28px rgba(15,37,87,.06));
+  overflow:hidden;
+}
+.spark-rewards-hero{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:16px;padding:20px 22px;background:linear-gradient(135deg,var(--rewards-teal-surface),var(--rewards-surface) 58%,var(--rewards-amber-soft))}
+.spark-rewards-trophy{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:var(--rewards-teal-soft);color:var(--rewards-teal-strong);border:1px solid color-mix(in srgb,var(--rewards-teal) 32%,transparent)}
+.spark-rewards-trophy svg{width:27px;height:27px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.spark-rewards-winner-copy{min-width:0;display:flex;flex-direction:column;gap:3px}
+.spark-rewards-eyebrow,.spark-rewards-personal-label{font-size:10.5px;font-weight:800;letter-spacing:.09em;color:var(--rewards-teal-strong)}
+.spark-rewards-winner-copy>strong{font-family:Georgia,'Times New Roman',serif;font-size:20px;color:var(--rewards-ink)}
+.spark-rewards-winner-copy>span:last-child{font-size:12.5px;color:var(--rewards-text-muted)}
+.spark-rewards-loading{color:var(--rewards-ink-soft)!important}
+.spark-rewards-leaders-button{border:1px solid color-mix(in srgb,var(--rewards-teal) 45%,var(--rewards-border));border-radius:10px;background:var(--rewards-surface);color:var(--rewards-teal-strong);padding:10px 13px;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;white-space:nowrap;transition:background .16s ease,border-color .16s ease,color .16s ease,transform .16s ease}
+.spark-rewards-leaders-button:hover:not(:disabled){background:var(--rewards-teal-surface);border-color:var(--rewards-teal);transform:translateY(-1px)}
+.spark-rewards-leaders-button:disabled{opacity:.55;cursor:default}
+.spark-rewards-setup-note{padding:13px 20px;border-top:1px solid var(--rewards-border);background:var(--rewards-muted);font-size:12.5px;color:var(--rewards-text-muted)}
+.spark-rewards-personal{padding:18px 22px;border-top:1px solid var(--rewards-border);background:var(--rewards-surface)}
+.spark-rewards-personal-main{display:grid;grid-template-columns:minmax(160px,.8fr) minmax(220px,1.2fr);gap:24px;align-items:center}
+.spark-rewards-personal-main>div:first-child{display:flex;flex-direction:column}
+.spark-rewards-personal-main>div:first-child>strong{font-family:Georgia,'Times New Roman',serif;color:var(--rewards-ink);font-size:28px;line-height:1.1;margin:4px 0}
+.spark-rewards-personal-main>div:first-child>strong small{font-family:inherit;font-weight:700;font-size:12px;color:var(--rewards-text-muted)}
+.spark-rewards-personal-rank{font-size:12px;color:var(--rewards-text-muted)}
+.spark-rewards-level-block{display:grid;grid-template-columns:auto 1fr;column-gap:8px;row-gap:3px;align-items:baseline}
+.spark-rewards-level-block>span{font-size:11px;font-weight:800;color:var(--rewards-teal-strong)}
+.spark-rewards-level-block>strong{font-size:14px;color:var(--rewards-ink)}
+.spark-rewards-level-track{grid-column:1/-1;height:7px;background:var(--rewards-muted);border:1px solid var(--rewards-border);border-radius:99px;overflow:hidden;margin-top:4px}
+.spark-rewards-level-track i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--rewards-teal),var(--rewards-teal-strong))}
+.spark-rewards-level-block>small{grid-column:1/-1;font-size:11px;color:var(--rewards-text-muted)}
+.spark-rewards-badges{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
+.spark-rewards-badges span{border:1px solid var(--rewards-border);border-radius:999px;padding:6px 9px;background:var(--rewards-muted);font-size:11.5px;font-weight:700;color:var(--rewards-ink-soft)}
+.spark-rewards-privacy{width:100%;margin-top:14px;padding:11px 0 0;border:0;border-top:1px solid var(--rewards-border);background:transparent;display:flex;align-items:center;gap:10px;text-align:left;cursor:pointer;color:inherit}
+.spark-rewards-privacy:hover:not(:disabled) strong{color:var(--rewards-teal-strong)}
+.spark-rewards-privacy:disabled{cursor:default;opacity:.65}
+.spark-rewards-privacy>span:last-child{display:flex;flex-direction:column;gap:1px}
+.spark-rewards-privacy strong{font-size:12px;color:var(--rewards-ink);transition:color .16s ease}
+.spark-rewards-privacy small{font-size:11px;color:var(--rewards-text-muted)}
+.spark-rewards-switch{width:34px;height:20px;border-radius:99px;padding:2px;background:var(--rewards-border-strong);border:1px solid var(--rewards-border-strong);flex:none;transition:background .16s ease,border-color .16s ease}
+.spark-rewards-switch i{display:block;width:14px;height:14px;border-radius:50%;background:var(--rewards-raised);box-shadow:var(--spark-shadow-sm,0 1px 3px rgba(15,23,42,.2));transition:transform .16s ease}
+.spark-rewards-switch.is-on{background:var(--rewards-teal);border-color:var(--rewards-teal)}
+.spark-rewards-switch.is-on i{transform:translateX(14px);background:#fff}
+.spark-rewards-expanded{border-top:1px solid var(--rewards-border);display:grid;grid-template-columns:1fr 1fr;gap:22px;padding:18px 22px 22px;background:var(--rewards-surface)}
+.spark-rewards-section-title{display:flex;flex-direction:column;gap:2px;margin-bottom:10px}
+.spark-rewards-section-title strong{font-size:13px;color:var(--rewards-ink)}
+.spark-rewards-section-title span{font-size:11px;color:var(--rewards-text-muted)}
+.spark-rewards-leader-row{display:grid;grid-template-columns:34px minmax(0,1fr) 34px 62px;align-items:center;gap:8px;padding:8px 6px;border-bottom:1px solid var(--rewards-border);font-size:12px;color:var(--rewards-text-muted)}
+.spark-rewards-leader-row b{color:var(--rewards-teal-strong)}
+.spark-rewards-leader-row strong{text-align:right;color:var(--rewards-ink)}
+.spark-rewards-leader-row.is-subject{background:var(--rewards-teal-surface);border-radius:8px;border-bottom-color:transparent}
+.spark-rewards-leader-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--rewards-ink-soft);font-weight:700}
+.spark-rewards-breakdown-row{display:grid;grid-template-columns:110px minmax(70px,1fr) 40px;gap:8px;align-items:center;margin:8px 0;font-size:11.5px;color:var(--rewards-text-muted)}
+.spark-rewards-breakdown-row>div{height:6px;background:var(--rewards-muted);border:1px solid var(--rewards-border);border-radius:99px;overflow:hidden}
+.spark-rewards-breakdown-row i{display:block;height:100%;border-radius:99px;background:var(--rewards-teal)}
+.spark-rewards-breakdown-row b{text-align:right;color:var(--rewards-ink)}
+.spark-rewards-empty{font-size:12px;color:var(--rewards-text-muted)}
+
+/* Explicit Dark-mode polish. System/device-dark resolves to data-theme="dark"
+   through SPARK's appearance hook before this component paints. */
+html[data-theme="dark"] .spark-rewards-card{box-shadow:var(--spark-shadow-lg)}
+html[data-theme="dark"] .spark-rewards-hero{background:linear-gradient(135deg,var(--spark-teal-surface),var(--spark-paper) 58%,color-mix(in srgb,var(--spark-amber-light) 72%,var(--spark-paper)))}
+html[data-theme="dark"] .spark-rewards-trophy{background:var(--spark-teal-light);color:var(--spark-teal-dark);border-color:var(--spark-border-strong)}
+html[data-theme="dark"] .spark-rewards-leaders-button{background:var(--spark-paper-raised)}
+html[data-theme="dark"] .spark-rewards-leaders-button:hover:not(:disabled){background:var(--spark-teal-surface)}
+html[data-theme="dark"] .spark-rewards-switch:not(.is-on) i{background:var(--spark-ink-soft);border-color:var(--spark-border-strong)}
+
+@media (max-width:720px){.spark-rewards-hero{grid-template-columns:auto 1fr;padding:17px}.spark-rewards-leaders-button{grid-column:1/-1;width:100%}.spark-rewards-personal{padding:16px 17px}.spark-rewards-personal-main{grid-template-columns:1fr;gap:14px}.spark-rewards-expanded{grid-template-columns:1fr;padding:16px 17px}.spark-rewards-breakdown-row{grid-template-columns:98px 1fr 38px}.spark-rewards-winner-copy>strong{font-size:18px}}
+@media (prefers-reduced-motion:reduce){.spark-rewards-card *{transition:none!important}}

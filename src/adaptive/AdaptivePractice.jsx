@@ -14,6 +14,8 @@ import { loadQuestionManifest, loadQuestionSet } from "./questionBank";
 import { buildAdaptiveSession, skillMastery } from "./adaptiveEngine";
 import { fetchAttempts, upsertSkillProgress } from "./persistence";
 import { adaptiveQuestionUsesWorking, gradeAdaptiveResponse } from "./adaptiveCxcGrader";
+import { answerEvidenceForSelfAssessment, canonicalOptionKey, recordAnswerObservation } from "../grading/answerIntelligence";
+import { adaptiveOptionDisplayText } from "./adaptiveOptionPresentation";
 import ReportQuestionButton from "../components/ui/ReportQuestionButton";
 import MathText from "../practice/MathText";
 import "./adaptive.css";
@@ -127,12 +129,7 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
     if (!q || submitted) return;
 
     const marks = Number(q.marks || 1);
-    const result = mcq
-      ? (() => {
-          const correct = String(answer).trim().toUpperCase() === String(q.answer || "").trim().toUpperCase();
-          return { status: correct ? "correct" : "incorrect", correct, marks: correct ? marks : 0, of: marks, criteria: [], needsSelfAssessment: false };
-        })()
-      : gradeAdaptiveResponse(q, { answer, working });
+    const result = gradeAdaptiveResponse(q, { answer, working });
     const earned = Number(result.marks || 0);
     const correct = earned >= marks;
 
@@ -144,6 +141,7 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
       marksEarned: earned,
       difficulty: q.difficulty,
       selfAssessed: false,
+      answerEvidence: result.answerEvidence || null,
     };
 
     setSubmitted(true);
@@ -176,6 +174,7 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
       marksEarned: earned,
       difficulty: q.difficulty,
       selfAssessed: true,
+      answerEvidence: answerEvidenceForSelfAssessment(gradeResult?.answerEvidence || {}, wasCorrect),
     });
   }
 
@@ -204,6 +203,18 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
         console.error("Could not save CSEC attempt:", attemptError);
         setDbMessage("Your answer was marked, but we couldn't save your progress.");
       } else {
+        // Answer Intelligence learns from the deterministic verdict after the
+        // attempt is saved. It cannot change this grade or the answer key.
+        recordAnswerObservation({
+          supabase,
+          userId,
+          question: q,
+          evidence: attempt.answerEvidence,
+          selfAssessed: attempt.selfAssessed,
+        }).then(({ error }) => {
+          if (error) console.warn("Could not save SPARK answer-intelligence observation:", error);
+        }).catch(error => console.warn("Could not save SPARK answer-intelligence observation:", error));
+
         const nextAttempts = [...savedAttempts, ...attempts, attempt];
         setSavedAttempts(prev => [...prev, attempt]);
         const skillAttempts = nextAttempts.filter(x => x.skill === q.subtopic);
@@ -328,7 +339,7 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
               {(q.options || []).map((option, optionIndex) => {
                 const key = adaptiveOptionKey(option, optionIndex);
                 const selected = String(answer).toUpperCase() === key;
-                const correctKey = String(q.answer || "").toUpperCase();
+                const correctKey = canonicalOptionKey(q);
                 const stateClass = submitted
                   ? (key === correctKey ? " correct" : (selected ? " incorrect" : ""))
                   : (selected ? " selected" : "");
@@ -343,7 +354,7 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
                     onClick={() => setAnswer(key)}
                   >
                     <span className="adaptive-mcq-key">({key})</span>
-                    <MathText as="span" className="adaptive-mcq-option-text">{adaptiveOptionText(option)}</MathText>
+                    <MathText as="span" className="adaptive-mcq-option-text">{adaptiveOptionDisplayText(option, optionIndex)}</MathText>
                   </button>
                 );
               })}
@@ -389,7 +400,7 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
           ) : (
             <>
               <h3>{lastCorrect ? "Correct!" : Number(gradeResult?.marks || 0) > 0 ? `Partial credit: ${gradeResult.marks}/${q.marks}` : "Not quite"}</h3>
-              {gradeResult?.criteria?.length > 0 && (
+              {!selfAssessed && gradeResult?.criteria?.length > 0 && (
                 <div className="csec-adaptive-mark-breakdown">
                   <strong>Mark breakdown</strong>
                   <ul>
@@ -401,6 +412,12 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
                       </li>
                     ))}
                   </ul>
+                </div>
+              )}
+              {selfAssessed && (
+                <div className="csec-adaptive-mark-breakdown">
+                  <strong>Self-check recorded</strong>
+                  <p>Result recorded from your comparison with the worked solution: {Number(gradeResult?.marks || 0)}/{Number(q.marks || 1)}.</p>
                 </div>
               )}
               {mcq && !lastCorrect && selectedMcqOption?.misconception?.remediation_hint && (

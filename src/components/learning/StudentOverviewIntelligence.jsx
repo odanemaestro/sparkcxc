@@ -6,7 +6,6 @@ import InsightText from "./InsightText";
 import StudentGoalCard from "./StudentGoalCard";
 import { getDueFlashcards } from "../../learning/flashcards";
 
-
 function DashboardCardAction({ label, onClick }) {
   return (
     <button type="button" className="spark-dashboard-card-action" onClick={onClick}>
@@ -25,6 +24,7 @@ export default function StudentOverviewIntelligence({
   userId,
   supabase,
   summary,
+  learnerModel,
   milestones = [],
   flashcardProgress = [],
   showToast,
@@ -34,7 +34,11 @@ export default function StudentOverviewIntelligence({
   onGoalChange,
 }) {
   const due = getDueFlashcards(flashcardProgress, "all").length;
-  const weakest = summary?.weakestSkills || [];
+  const modelPriorities = learnerModel?.hasEvidence ? learnerModel.prioritySkills || [] : [];
+  const weakest = modelPriorities.length
+    ? modelPriorities.map(item => ({ skill: item.skill, score: item.mastery, learnerState: item }))
+    : summary?.weakestSkills || [];
+  const focus = modelPriorities[0] || null;
   const recentAchievements = (milestones || []).slice(0, 3);
 
   return (
@@ -47,8 +51,20 @@ export default function StudentOverviewIntelligence({
 
       <div className="spark-overview-two-col">
         <Card className="spark-focus-card">
-          <div className="spark-card-heading-row"><div className="spark-card-title-with-icon"><span className="spark-feature-icon compact"><Icon name="focus" size={19}/></span><div><span className="section-kicker">TODAY'S FOCUS</span><h3>{weakest[0]?.skill || "Build your baseline"}</h3></div></div></div>
-          <p>{weakest[0] ? `Current mastery: ${Math.round(Number(weakest[0].score || 0))}%. Review the lesson, then use targeted practice to strengthen this area.` : "Complete a lesson or practice paper so SPARK can recommend your highest-value next step."}</p>
+          <div className="spark-card-heading-row"><div className="spark-card-title-with-icon"><span className="spark-feature-icon compact"><Icon name="focus" size={19}/></span><div><span className="section-kicker">TODAY'S FOCUS</span><h3>{focus?.skill || weakest[0]?.skill || "Build your baseline"}</h3></div></div></div>
+          {focus ? (
+            <>
+              <p>{focus.recommendation}</p>
+              <div className="spark-learner-signal-row" aria-label="Learner model signals">
+                <span><strong>{focus.mastery}%</strong> mastery</span>
+                <span><strong>{focus.confidenceLabel}</strong> confidence</span>
+                <span className={`trend ${focus.trendLabel === "Improving" ? "up" : focus.trendLabel === "Needs attention" ? "down" : ""}`}><strong>{focus.trendLabel}</strong> trend</span>
+              </div>
+              {focus.commonError && <div className="spark-learner-common-error"><strong>Recurring issue:</strong> {focus.commonError.label}</div>}
+            </>
+          ) : (
+            <p>{weakest[0] ? `Current mastery: ${Math.round(Number(weakest[0].score || 0))}%. Review the lesson, then use targeted practice to strengthen this area.` : "Complete a lesson or practice paper so SPARK can recommend your highest-value next step."}</p>
+          )}
           <div className="spark-inline-actions"><Btn onClick={() => setView("lesson")}>Study now</Btn><Btn v="outline" onClick={() => setView("practice")}>Practice</Btn></div>
         </Card>
 
@@ -69,7 +85,10 @@ export default function StudentOverviewIntelligence({
       <div className="spark-overview-two-col spark-overview-lower">
         <Card className="spark-attention-card">
           <div className="spark-card-heading-row"><div><span className="section-kicker">AREAS TO WORK ON</span><h3>Priority topics</h3></div><DashboardCardAction label="View progress" onClick={() => setDashboardSection("progress")} /></div>
-          {weakest.length ? <div className="spark-skill-mini-list">{weakest.map(item => <div key={item.skill}><span>{item.skill}</span><strong>{Math.round(Number(item.score || 0))}%</strong></div>)}</div> : <p className="spark-muted">Keep studying and SPARK will identify your priority topics.</p>}
+          {weakest.length ? <div className="spark-skill-mini-list">{weakest.map(item => {
+            const state = item.learnerState;
+            return <div key={item.skill} className="spark-learner-priority-row"><span className="spark-learner-priority-copy"><span>{item.skill}</span>{state && <small>{state.confidenceLabel} confidence · {state.trendLabel}{state.commonError ? ` · ${state.commonError.label}` : ""}</small>}</span><strong>{Math.round(Number(item.score || 0))}%</strong></div>;
+          })}</div> : <p className="spark-muted">Keep studying and SPARK will identify your priority topics.</p>}
         </Card>
 
         <StudentGoalCard

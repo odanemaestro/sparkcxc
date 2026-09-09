@@ -22,6 +22,21 @@ function stripLeadingAnswerMarker(value) {
   return s;
 }
 
+function trailingAnswerCandidate(value) {
+  const s = clean(value);
+  if (!s || /\bor\b/i.test(s)) return null;
+
+  const labelled = s.match(/(?:^|[\n;])\s*(?:final\s+answer|answer|ans)\s*(?:=|:)\s*([^=\n;]+)\s*$/i);
+  if (labelled) return labelled[1].trim().replace(/[.;]\s*$/, "");
+
+  const equalsCount = (s.match(/=/g) || []).length;
+  if (equalsCount < 2) return null;
+
+  const tail = s.split("=").pop().trim().replace(/[.;]\s*$/, "");
+  if (!tail || tail.length > 120) return null;
+  return tail;
+}
+
 function gcd(a, b) {
   a = Math.abs(Math.trunc(a));
   b = Math.abs(Math.trunc(b));
@@ -514,17 +529,73 @@ export function checkAnswer(userInput, expectedAnswer, options = {}) {
   if (!enforceRequiredForm(userRaw, options.requiredForm)) return "incorrect";
 
   const expectedValues = [expectedRaw, ...(options.accepted || []).filter(value => value !== undefined && value !== null).map(String)];
+  const terminalCandidate = !options.requiredForm ? trailingAnswerCandidate(userRaw) : null;
   let sawUncertain = false;
+  let terminalTried = false;
+  let terminalSawUncertain = false;
+
   for (const expected of expectedValues) {
     const result = compareOne(userRaw, expected, options);
     if (result === "correct") return "correct";
     if (result === "uncertain") sawUncertain = true;
+
+    if (terminalCandidate && normalizeText(terminalCandidate) !== normalizeText(userRaw)) {
+      terminalTried = true;
+      const terminalResult = compareOne(terminalCandidate, expected, options);
+      if (terminalResult === "correct") return "correct";
+      if (terminalResult === "uncertain") terminalSawUncertain = true;
+    }
   }
+
+  if (terminalTried && !terminalSawUncertain) return "incorrect";
   return sawUncertain ? "uncertain" : "incorrect";
+}
+
+function normalizedQuestionPrompt(question = {}) {
+  return String(question.prompt ?? question.question ?? question.stem ?? "").trim();
+}
+
+const QUADRANT_WORDS = Object.freeze({
+  one: 1, first: 1, i: 1,
+  two: 2, second: 2, ii: 2,
+  three: 3, third: 3, iii: 3,
+  four: 4, fourth: 4, iv: 4,
+});
+
+function parseQuadrantAnswer(value) {
+  let text = normalizeText(value)
+    .replace(/[.,;:!?]+$/g, "")
+    .replace(/^the\s+/, "")
+    .trim();
+
+  text = text
+    .replace(/^quadrant\s+/, "")
+    .replace(/\s+quadrant$/, "")
+    .trim();
+
+  const ordinal = text.match(/^([1-4])(?:st|nd|rd|th)$/);
+  if (ordinal) return Number(ordinal[1]);
+  if (/^[1-4]$/.test(text)) return Number(text);
+  return QUADRANT_WORDS[text] || null;
+}
+
+function questionAsksForQuadrant(question = {}) {
+  const prompt = normalizeText(normalizedQuestionPrompt(question));
+  return /\bquadrant\b/.test(prompt);
+}
+
+function compareContextualCanonicalAnswer(userInput, expectedAnswer, question = {}) {
+  if (!questionAsksForQuadrant(question)) return null;
+  const expectedQuadrant = parseQuadrantAnswer(expectedAnswer);
+  if (expectedQuadrant == null) return null;
+  const userQuadrant = parseQuadrantAnswer(userInput);
+  return userQuadrant === expectedQuadrant ? "correct" : "incorrect";
 }
 
 export function checkQuestionAnswer(userInput, question = {}) {
   const expected = question.answer ?? question.expectedAnswer ?? question.expected_answer ?? "";
+  const contextual = compareContextualCanonicalAnswer(userInput, expected, question);
+  if (contextual !== null) return contextual;
   return checkAnswer(userInput, expected, inferOptions(question));
 }
 

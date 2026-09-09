@@ -134,7 +134,7 @@ export function buildLearningSummary(data = {}, nowValue = new Date()) {
   const sortedSkills = skills
     .map(row => ({ ...row, score: skillScore(row), skill: cleanSkillName(row.skill) }))
     .sort((a, b) => a.score - b.score);
-  const weakestSkills = sortedSkills.slice(0, 3);
+  const weakestSkills = sortedSkills.filter(item => item.score < 80).slice(0, 3);
   const strongestSkills = [...sortedSkills].sort((a, b) => b.score - a.score).slice(0, 3);
   const mastery = sortedSkills.length ? Math.round(average(sortedSkills.map(item => item.score))) : 0;
 

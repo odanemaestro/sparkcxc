@@ -56,13 +56,18 @@ import FlashcardsPanel from "./components/learning/FlashcardsPanel";
 import StudentOverviewIntelligence from "./components/learning/StudentOverviewIntelligence";
 import ParentOverviewIntelligence from "./components/learning/ParentOverviewIntelligence";
 import ProgressReportModal from "./components/reports/ProgressReportModal";
+import SparkRewardsPanel from "./components/rewards/SparkRewardsPanel"; // SPARK_V570_REWARDS
 import { buildLearningSummary } from "./insights/progressAnalytics";
+import { buildLearnerModelProfile, learnerModelWeakSkills } from "./learning/learnerModel";
 import { friendlyErrorMessage } from "./lib/errorMessages";
+import { computeStudyStreak } from "./lib/studyStreak";
 import { getExamPerformanceStatus } from "./lib/examPerformance";
 import { detachCurrentPushAssociation, restorePushAssociation } from "./lib/pushNotifications";
 import "./family.css";
 import "./responsive.css";
 import "./theme.css";
+import "./passwordVisibility.css";
+import "./sparkRewards.css";
 import "./learningIntelligence.css";
 import GOOGLE_ICON_B64 from "./assets/icons/google-icon.png";
 import GOOGLE_CALENDAR_ICON_B64 from "./assets/icons/google-calendar-icon.png";
@@ -589,7 +594,7 @@ function QuizEngine({ topicName, userId, onBack, onComplete, showToast }) {
     const isCorrect = optionIdx === q.correct;
     setAnswers(prev => ({ ...prev, [qi]: optionIdx }));
 
-    // Save to Supabase
+    // Save the normal topic-quiz attempt.
     if (userId && q.id && !q.id.startsWith("gen-")) {
       try {
         await supabase.from("quiz_attempts").insert({
@@ -599,6 +604,33 @@ function QuizEngine({ topicName, userId, onBack, onComplete, showToast }) {
           selected_index: optionIdx,
         });
       } catch (e) { /* silent fail */ }
+    }
+
+    // SPARK V5.6.0 learner model. A scored answer is strong evidence. If a
+    // question option carries misconception metadata, preserve it so repeated
+    // error patterns can become a specific recommendation instead of only a
+    // generic weak-topic signal. The learner-model write never blocks the quiz.
+    if (userId) {
+      const selectedOption = Array.isArray(q?.options) ? q.options[optionIdx] : null;
+      const misconception = selectedOption && typeof selectedOption === "object" ? selectedOption.misconception : null;
+      const occurredAt = new Date().toISOString();
+      supabase.rpc("spark_record_learner_evidence", {
+        p_skill: topicName,
+        p_source: "topic_quiz",
+        p_item_id: q?.id || `topic-quiz-${qi}`,
+        p_correct: isCorrect,
+        p_evidence_weight: 1,
+        p_difficulty: q?.difficulty || null,
+        p_error_code: !isCorrect ? misconception?.code || null : null,
+        p_error_label: !isCorrect ? misconception?.label || null : null,
+        p_metadata: { topic: topicName, question_type: q?.type || "mcq", selected_index: optionIdx },
+        p_evidence_key: `topic-quiz:${q?.id || qi}:${occurredAt}`,
+        p_occurred_at: occurredAt,
+      }).then(({ error: learnerError }) => {
+        if (learnerError && learnerError.code !== "PGRST202") {
+          console.warn("Could not update learner model from topic quiz:", learnerError);
+        }
+      });
     }
   };
 
@@ -1598,6 +1630,60 @@ function clearSparkPendingTutorSignupSeed() {
   sparkPendingTutorSignupSeed = null;
 }
 
+// SPARK_V5612_PASSWORD_VISIBILITY_STUDY_STREAK
+function PasswordInput({
+  value, onChange, placeholder = "", onKeyDown, style = {}, ariaLabel = "Password",
+  autoComplete, required, onFocus, onBlur, inputMode, maxLength, minLength, pattern,
+  ariaInvalid, ariaDescribedBy,
+}) {
+  const [visible, setVisible] = useState(false);
+  return (
+    <div className="spark-password-field" style={{position:"relative",width:"100%"}}>
+      <input
+        type={visible ? "text" : "password"}
+        value={value ?? ""}
+        onChange={event => onChange?.(event.target.value)}
+        placeholder={placeholder}
+        onKeyDown={onKeyDown}
+        autoComplete={autoComplete}
+        required={required}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        inputMode={inputMode}
+        maxLength={maxLength}
+        minLength={minLength}
+        pattern={pattern}
+        aria-label={ariaLabel}
+        aria-invalid={ariaInvalid}
+        aria-describedby={ariaDescribedBy}
+        className="spark-password-input"
+        style={{...style,paddingRight:46}}
+      />
+      <button
+        type="button"
+        className="spark-password-toggle"
+        onMouseDown={event => event.preventDefault()}
+        onClick={() => setVisible(current => !current)}
+        aria-label={visible ? "Hide password" : "Show password"}
+        aria-pressed={visible}
+        title={visible ? "Hide password" : "Show password"}
+        style={{
+          position:"absolute",right:5,top:"50%",transform:"translateY(-50%)",
+          width:36,height:36,display:"grid",placeItems:"center",padding:0,
+          border:"none",borderRadius:7,background:"transparent",color:T.textMuted,
+          cursor:"pointer"
+        }}
+      >
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6S2.5 12 2.5 12Z"/>
+          <circle cx="12" cy="12" r="2.6"/>
+          {visible && <path d="M4 4l16 16"/>}
+        </svg>
+      </button>
+    </div>
+  );
+}
+
 function AuthView({ setView, initialMode = "signup", recoveryMode = false, initialRole = "student" }) {
   const [mode, setMode] = useState(initialMode);
   const [role, setRole] = useState(initialRole);
@@ -1953,7 +2039,8 @@ const savedEmail = localStorage.getItem("spark_verification_email");
             {resetStage === "password" && <>
               <div style={{marginBottom:14}}>
                 <div style={{fontSize:13,fontWeight:500,color:T.inkSoft,marginBottom:5}}>New password</div>
-                <input type="password" value={newPassword} onChange={e=>setNewPassword(e.target.value)} placeholder="At least 8 characters"
+                <PasswordInput value={newPassword} onChange={setNewPassword} placeholder="At least 8 characters"
+                  ariaLabel="New password" autoComplete="new-password"
                   style={{width:"100%",padding:"10px 13px",border:`1.5px solid ${T.border}`,borderRadius:7,fontSize:14,color:T.ink,background:T.paper,outline:"none"}} />
               </div>
               <div style={{fontSize:12.5,color:T.textMuted,marginBottom:14}}>Use at least 8 characters, including a letter and a number.</div>
@@ -2002,7 +2089,8 @@ const savedEmail = localStorage.getItem("spark_verification_email");
             </div>
             <div style={{marginBottom:8}}>
               <div style={{fontSize:13,fontWeight:500,color:T.inkSoft,marginBottom:5}}>Password</div>
-              <input type="password" value={password} onChange={e=>setPassword(e.target.value)} placeholder={mode==="signup"?"At least 8 characters":""}
+              <PasswordInput value={password} onChange={setPassword} placeholder={mode==="signup"?"At least 8 characters":""}
+                ariaLabel="Password" autoComplete={mode==="signup" ? "new-password" : "current-password"}
                 onKeyDown={e=>{if(e.key==="Enter") submit();}}
                 style={{width:"100%",padding:"10px 13px",border:`1.5px solid ${T.border}`,borderRadius:7,fontSize:14,color:T.ink,background:T.paper,outline:"none"}} />
             </div>
@@ -2547,27 +2635,6 @@ function sessionsOverlap(startA, minsA, startB, minsB) {
   return aStart < bEnd && bStart < aEnd;
 }
 
-// Real day-streak from lesson_progress rows (each with a completed_at
-// timestamp): counts consecutive calendar days with at least one completed
-// topic, walking backwards from today. If nothing was completed today yet,
-// the streak still counts as "alive" as long as yesterday has activity -
-// it just won't include today until something is completed.
-function computeStudyStreak(rows) {
-  if (!rows || rows.length === 0) return 0;
-  const days = new Set(
-    rows.map(r => r.completed_at ? r.completed_at.slice(0, 10) : null).filter(Boolean)
-  );
-  const cursor = new Date();
-  const todayKey = cursor.toISOString().slice(0, 10);
-  if (!days.has(todayKey)) cursor.setDate(cursor.getDate() - 1);
-  let streak = 0;
-  while (days.has(cursor.toISOString().slice(0, 10))) {
-    streak++;
-    cursor.setDate(cursor.getDate() - 1);
-  }
-  return streak;
-}
-
 // ─── DASHBOARD ───────────────────────────────────────────────────────────────
 function calendarDateKey(date) {
   const y = date.getFullYear();
@@ -3104,6 +3171,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   const [examAttempts, setExamAttempts] = useState([]);
   // SPARK_V5310_LEARNING_INTELLIGENCE
   const [studentSkills, setStudentSkills] = useState([]);
+  const [studentLearnerStates, setStudentLearnerStates] = useState([]);
   const [studentQuestionAttempts, setStudentQuestionAttempts] = useState([]);
   const [studentMilestones, setStudentMilestones] = useState([]);
   const [studentFlashcardProgress, setStudentFlashcardProgress] = useState([]);
@@ -3294,6 +3362,8 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     // Learning intelligence data powers insights, reports, goals and recommended review.
     supabase.from("csec_skill_progress").select("*").eq("user_id", user.id).order("mastery_score", {ascending:true})
       .then(({data}) => setStudentSkills(data || []));
+    supabase.from("spark_learner_skill_state").select("*").eq("user_id", user.id).order("mastery_probability", {ascending:true})
+      .then(({data,error}) => { if (!error) setStudentLearnerStates(data || []); });
     supabase.from("csec_question_attempts").select("id,correct,attempted_at,skill").eq("user_id", user.id).order("attempted_at", {ascending:false}).limit(500)
       .then(({data}) => setStudentQuestionAttempts(data || []));
     supabase.from("learning_milestones").select("id,event_type,title,score,max_score,percent,skill,lesson_id,metadata,created_at").eq("user_id", user.id).order("created_at", {ascending:false}).limit(80)
@@ -3552,7 +3622,14 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   };
 
   const done = progressData.length;
-  const streak = computeStudyStreak(progressData);
+  const streak = computeStudyStreak({
+    lessons: progressData,
+    questionAttempts: studentQuestionAttempts,
+    examAttempts,
+    flashcardReviewEvents: studentFlashcardReviewEvents,
+    flashcardProgress: studentFlashcardProgress,
+    milestones: studentMilestones,
+  });
   const studentSummary = buildLearningSummary({
     skills: studentSkills,
     questionAttempts: studentQuestionAttempts,
@@ -3563,6 +3640,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     flashcardProgress: studentFlashcardProgress,
     goal: studentGoal,
   });
+  const studentLearnerModel = buildLearnerModelProfile(studentLearnerStates);
   const studentReportData = {
     skills: studentSkills,
     questionAttempts: studentQuestionAttempts,
@@ -3737,6 +3815,11 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 </p>
               </div>
             </div>
+            <SparkRewardsPanel
+              supabase={supabase}
+              viewerUserId={user.id}
+              viewerRole="tutor"
+            />
             <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(140px,1fr))",
               gap:14,marginBottom:24}}>
               {[["Upcoming sessions",upcomingSessions.length],
@@ -3793,10 +3876,17 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 <p style={{color:T.textMuted,fontSize:14,marginBottom:24}}>Keep that momentum going.</p>
               </div>
             </div>
+            <SparkRewardsPanel
+              supabase={supabase}
+              viewerUserId={user.id}
+              viewerRole="student"
+              subjectUserId={user.id}
+              subjectName={profile?.name || ""}
+            />
             <div className="student-dashboard-stats-grid" style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(140px,1fr))",
               gap:14,marginBottom:24}}>
               {[["Topics done",done],["Syllabus covered",done>0?`${Math.round((done/totalTopics)*100)}%`:"0%"],
-                ["Sessions booked",bookings.length],["Day streak",streak>0?streak:"0"]].map(([label,val]) => (
+                ["Sessions booked",bookings.length],["Day Study Streak",streak>0?streak:"0"]].map(([label,val]) => (
                 <Card key={label} className="student-dashboard-stat-card" style={{padding:18}}>
                   <div style={{fontFamily:FD,fontSize:26,fontWeight:700,color:T.ink}}>{val}</div>
                   <div style={{fontSize:11,color:T.textMuted,textTransform:"uppercase",letterSpacing:"0.04em",marginTop:3}}>
@@ -3809,6 +3899,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
               userId={user.id}
               supabase={supabase}
               summary={studentSummary}
+              learnerModel={studentLearnerModel}
               milestones={studentMilestones}
               flashcardProgress={studentFlashcardProgress}
               showToast={showToast}
@@ -4166,7 +4257,8 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
             showToast={showToast}
             onProgressChange={setStudentFlashcardProgress}
             onReviewRecorded={event => setStudentFlashcardReviewEvents(current => [event, ...current].slice(0, 1000))}
-            weakSkills={studentSummary.weakestSkills}
+            onLearnerStateChange={row => row && setStudentLearnerStates(current => current.filter(item => item.skill !== row.skill).concat(row))}
+            weakSkills={learnerModelWeakSkills(studentLearnerModel, studentSummary.weakestSkills)}
           />
         )}
         {sec === "circles" && isStudent && (
@@ -5116,7 +5208,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
 
   const loadChildData = useCallback(async () => {
     if (!selectedChild?.id) { setChildData(null); return; }
-    const [prog, attempts, lessons, bookings, examAttempts, milestones, studyCircle, flashcards, flashcardReviews, goals] = await Promise.all([
+    const [prog, attempts, lessons, bookings, examAttempts, milestones, studyCircle, flashcards, flashcardReviews, goals, learnerStates] = await Promise.all([
       supabase.from("csec_skill_progress").select("*").eq("user_id", selectedChild.id).order("mastery_score", {ascending:true}),
       supabase.from("csec_question_attempts").select("id,correct,attempted_at,skill").eq("user_id", selectedChild.id).order("attempted_at", {ascending:false}).limit(500),
       supabase.from("lesson_progress").select("id,lesson_id,completed,completed_at").eq("user_id", selectedChild.id).eq("completed", true),
@@ -5127,12 +5219,13 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
       supabase.from("spark_flashcard_progress").select("card_id,repetitions,interval_days,ease_factor,last_rating,last_reviewed_at,next_review_at,review_count,updated_at").eq("user_id", selectedChild.id),
       supabase.from("spark_flashcard_review_events").select("id,card_id,rating,reviewed_at").eq("user_id", selectedChild.id).order("reviewed_at", {ascending:false}).limit(1000),
       supabase.from("spark_student_goals").select("*").eq("student_id", selectedChild.id).eq("status", "active").order("created_at", {ascending:false}).limit(1),
+      supabase.from("spark_learner_skill_state").select("*").eq("user_id", selectedChild.id).order("mastery_probability", {ascending:true}),
     ]);
     const rows = prog.data || [];
     const attemptsRows = attempts.data || [];
     const mastery = rows.length ? Math.round(rows.reduce((s,r)=>s+Number(r.mastery_score||0),0)/rows.length) : 0;
     const weakest = rows.filter(r=>Number(r.mastery_score)<80).slice(0,3);
-    setChildData({ progress:rows, attempts:attemptsRows, lessons:lessons.data||[], bookings:bookings.data||[], examAttempts:examAttempts.data||[], milestones:milestones.data||[], studyCircle:studyCircle.data||{active:false}, flashcardProgress:flashcards.error?[]:(flashcards.data||[]), flashcardReviewEvents:flashcardReviews.error?[]:(flashcardReviews.data||[]), goal:goals.error?null:(goals.data?.[0]||null), mastery, weakest });
+    setChildData({ progress:rows, attempts:attemptsRows, lessons:lessons.data||[], bookings:bookings.data||[], examAttempts:examAttempts.data||[], milestones:milestones.data||[], studyCircle:studyCircle.data||{active:false}, flashcardProgress:flashcards.error?[]:(flashcards.data||[]), flashcardReviewEvents:flashcardReviews.error?[]:(flashcardReviews.data||[]), goal:goals.error?null:(goals.data?.[0]||null), learnerStates:learnerStates.error?[]:(learnerStates.data||[]), mastery, weakest });
   }, [selectedChild?.id]);
 
   useEffect(() => { loadChildData(); }, [loadChildData]);
@@ -5184,6 +5277,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
   const paper2027Attempts = examAttempts.filter(isCsec2027ExamAttempt);
   const examAverage = examAttempts.length ? Math.round(examAttempts.reduce((sum, a) => sum + Number(a.percent || 0), 0) / examAttempts.length) : 0;
   const learningMilestones = childData?.milestones || [];
+  const parentLearnerModel = buildLearnerModelProfile(childData?.learnerStates || []);
   const parentLearningSummary = buildLearningSummary({
     learnerName: selectedChild?.name || "",
     skills: childData?.progress || [],
@@ -5228,6 +5322,14 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
           </div>
         </div>
 
+        <SparkRewardsPanel
+          supabase={supabase}
+          viewerUserId={user.id}
+          viewerRole="parent"
+          subjectUserId={selectedChild?.id || null}
+          subjectName={selectedChild?.name || ""}
+        />
+
         {pending.length > 0 && <section className="parent-section alert-section">
           <div className="section-kicker">AWAITING APPROVAL</div>
           <h2>Connection requests sent</h2>
@@ -5248,6 +5350,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
           <ParentOverviewIntelligence
             child={selectedChild}
             summary={parentLearningSummary}
+            learnerModel={parentLearnerModel}
             goal={childData.goal}
             supabase={supabase}
             parentUserId={user.id}
@@ -6449,13 +6552,34 @@ const InputField = ({ label, value, onChange, placeholder, type = "text", requir
     <div style={{ fontSize: 13, fontWeight: 500, color: T.inkSoft, marginBottom: 5 }}>
       {label}{required && <span style={{ color: T.red }}> *</span>}
     </div>
-    <input type={type} value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder}
-      inputMode={inputMode} autoComplete={autoComplete} maxLength={maxLength} minLength={minLength} pattern={pattern}
-      aria-invalid={!!error} aria-describedby={error ? `${label.replace(/\s+/g, "-").toLowerCase()}-error` : undefined}
-      style={{ width: "100%", padding: "10px 13px", border: `1.5px solid ${error ? T.red : T.border}`, borderRadius: 7,
-        fontSize: 14, color: T.ink, background: T.paper, outline: "none" }}
-      onFocus={e => e.target.style.borderColor = error ? T.red : T.teal}
-      onBlur={e => { e.target.style.borderColor = error ? T.red : T.border; onBlur?.(e); }} />
+    {type === "password" ? (
+      <PasswordInput
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        ariaLabel={label}
+        autoComplete={autoComplete || "new-password"}
+        required={required}
+        inputMode={inputMode}
+        maxLength={maxLength}
+        minLength={minLength}
+        pattern={pattern}
+        ariaInvalid={!!error}
+        ariaDescribedBy={error ? `${label.replace(/\s+/g, "-").toLowerCase()}-error` : undefined}
+        style={{ width: "100%", padding: "10px 13px", border: `1.5px solid ${error ? T.red : T.border}`, borderRadius: 7,
+          fontSize: 14, color: T.ink, background: T.paper, outline: "none" }}
+        onFocus={e => e.target.style.borderColor = error ? T.red : T.teal}
+        onBlur={e => { e.target.style.borderColor = error ? T.red : T.border; onBlur?.(e); }}
+      />
+    ) : (
+      <input type={type} value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder}
+        inputMode={inputMode} autoComplete={autoComplete} maxLength={maxLength} minLength={minLength} pattern={pattern}
+        aria-invalid={!!error} aria-describedby={error ? `${label.replace(/\s+/g, "-").toLowerCase()}-error` : undefined}
+        style={{ width: "100%", padding: "10px 13px", border: `1.5px solid ${error ? T.red : T.border}`, borderRadius: 7,
+          fontSize: 14, color: T.ink, background: T.paper, outline: "none" }}
+        onFocus={e => e.target.style.borderColor = error ? T.red : T.teal}
+        onBlur={e => { e.target.style.borderColor = error ? T.red : T.border; onBlur?.(e); }} />
+    )}
     {error && <div id={`${label.replace(/\s+/g, "-").toLowerCase()}-error`} className="spark-form-error spark-form-error--field" role="alert">{error}</div>}
   </div>
 );
