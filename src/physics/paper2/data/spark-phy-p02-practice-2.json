@@ -1,0 +1,1626 @@
+{
+  "paper_id": "spark-phy-p02-practice-2",
+  "title": "SPARK CSEC Physics - Paper 02 Practice Paper 2",
+  "subject": "Physics",
+  "examination": "CSEC (Caribbean Secondary Education Certificate)",
+  "paper": "Paper 02 - General Proficiency",
+  "syllabus": "CXC 22/G/SYLL 13, for examinations from May and June 2015",
+  "version": "1.0.0",
+  "duration_minutes": 150,
+  "marks": 100,
+  "profile": {
+    "KC": 33,
+    "UK": 52,
+    "XS": 15
+  },
+  "structure": {
+    "Section A": {
+      "questions": "1-3",
+      "instruction": "Answer ALL questions.",
+      "mark_split": [
+        25,
+        15,
+        15
+      ]
+    },
+    "Section B": {
+      "questions": "4-6",
+      "instruction": "Answer ALL questions.",
+      "mark_split": [
+        15,
+        15,
+        15
+      ]
+    }
+  },
+  "instructions": [
+    "This paper consists of SIX questions in TWO sections. Answer ALL questions.",
+    "Write your answers in the spaces provided in this booklet.",
+    "Do NOT write in the margins.",
+    "Where appropriate, ALL WORKING MUST BE SHOWN in this booklet.",
+    "You may use a silent, non-programmable calculator. Note that an answer given to an inappropriate number of figures will be penalised."
+  ],
+  "required_materials": [
+    "Silent non-programmable calculator",
+    "Ruler",
+    "Graph paper or an on-screen grid"
+  ],
+  "mark_scheme_key": {
+    "M": "Method mark. Awarded for the right approach and a correct substitution, whether or not the arithmetic that follows is right.",
+    "A": "Accuracy mark. Awarded for the correct value, with its unit, to the precision asked for. Normally depends on the method mark before it.",
+    "B": "Independent mark. Stands on its own and depends on nothing earlier: a definition, a named source of error, a labelled axis."
+  },
+  "marking_conventions": [
+    "A correct final answer implies the method, unless the question demanded the working.",
+    "Follow through. Where a candidate uses their own wrong value correctly in a later part, mark that later part on their value.",
+    "A missing unit is penalised once per question, not once per part.",
+    "An answer given to more figures than asked for keeps the mark. An answer with fewer figures than the data justify loses it."
+  ],
+  "marking_coverage": {
+    "auto_marks": 8,
+    "manual_marks": 92,
+    "note": "A criterion carrying a `check` is marked automatically. A criterion carrying `manual: true` is for prose, a drawn graph or a completed table, which cannot be judged from a typed string without a keyword list written for that answer. The engine reports a manual criterion as something to check against the worked solution rather than counting it as lost."
+  },
+  "provenance": "Original questions written for SPARK. The structure, language, mark allocations and question archetypes follow the CSEC Physics Paper 02 papers of 2008 to 2023. No past-paper question is reproduced. This is not a Caribbean Examinations Council publication.",
+  "questions": [
+    {
+      "question_id": "phy-p2-2-q1",
+      "question_number": 1,
+      "paper": "SPARK CSEC Physics Practice Paper 02 number 2",
+      "section": "A",
+      "topic": "The simple pendulum: T² against l",
+      "marks": 25,
+      "profile": {
+        "KC": 1,
+        "UK": 9,
+        "XS": 15
+      },
+      "stem": "A student carried out an experiment to determine the acceleration due to gravity, g, using a simple pendulum. For each length, l, of the pendulum the student measured the time taken for 20 complete oscillations. The results were recorded in Table 1.",
+      "stimulus": {
+        "kind": "table",
+        "caption": "TABLE 1: RESULTS OF THE EXPERIMENT",
+        "headers": [
+          "Length, l/m",
+          "Time for 20 oscillations/s",
+          "Period, T/s",
+          "T²/s²"
+        ],
+        "rows": [
+          [
+            "0.20",
+            "18.0",
+            "0.900",
+            "0.810"
+          ],
+          [
+            "0.40",
+            "25.4",
+            "",
+            ""
+          ],
+          [
+            "0.60",
+            "31.1",
+            "1.555",
+            "2.418"
+          ],
+          [
+            "0.80",
+            "35.9",
+            "",
+            ""
+          ],
+          [
+            "1.00",
+            "40.1",
+            "2.005",
+            "4.020"
+          ]
+        ]
+      },
+      "parts": [
+        {
+          "id": "a",
+          "label": "(a)",
+          "prompt": "Complete Table 1 by calculating the missing values.",
+          "marks": 6,
+          "answer": "For l = 0.40 m: T = 1.270 s, T² = 1.613 s². For l = 0.80 m: T = 1.795 s, T² = 3.222 s².",
+          "modelResponse": null,
+          "solution": "For l = 0.40 m: T = 1.270 s, T² = 1.613 s². For l = 0.80 m: T = 1.795 s, T² = 3.222 s².\n\nMarker's note. Accept 1.27, 1.61, 1.80 and 3.22. Follow through from the candidate's own earlier value. A candidate who multiplies by 20 instead of dividing loses M1 and every A mark that follows from it.",
+          "markerNote": "Accept 1.27, 1.61, 1.80 and 3.22. Follow through from the candidate's own earlier value. A candidate who multiplies by 20 instead of dividing loses M1 and every A mark that follows from it.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "divides the time by 20 to obtain the period",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "T = 1.270 s",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A2",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "T² = 1.613 s²",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A3",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "T = 1.795 s",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A4",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "T² = 3.222 s²",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "XS",
+              "description": "all values in a column quoted to the same number of decimal places",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "label": "(b)",
+          "prompt": "On the grid provided on page 4, plot a graph of T²/s² against length, l/m, using 2 cm to represent 0.10 m on the horizontal axis and 2 cm to represent 0.50 s² on the vertical axis.",
+          "marks": 7,
+          "answer": "A straight line through the origin",
+          "modelResponse": null,
+          "solution": "A straight line through the origin\n\nMarker's note. Plotting T against l instead of T² against l gives a curve. Award B1 and B2 only, and follow through into Part (c) is then not available.",
+          "markerNote": "Plotting T against l instead of T² against l gives a curve. Award B1 and B2 only, and follow through into Part (c) is then not available.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "XS",
+              "description": "both axes labelled with the quantity and its unit",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "XS",
+              "description": "the scales asked for are used, and the points fill at least half the grid",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 3,
+              "profile": "XS",
+              "description": "all five points plotted correctly; deduct one mark for each point misplaced",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B4",
+              "kind": "B",
+              "marks": 2,
+              "profile": "XS",
+              "description": "a single best fit straight line drawn",
+              "field": "all",
+              "manual": true
+            }
+          ],
+          "responseType": "graph",
+          "grid": {
+            "xMin": 0,
+            "xMax": 1.1,
+            "yMin": 0,
+            "yMax": 4.5,
+            "xStep": 0.1,
+            "yStep": 0.5,
+            "minorPerStep": 5,
+            "xLabel": "Length, l/m",
+            "yLabel": "T²/s²",
+            "tools": [
+              "point",
+              "line",
+              "read"
+            ]
+          },
+          "graph": {
+            "points": [
+              {
+                "x": 0.2,
+                "y": 0.81
+              },
+              {
+                "x": 0.4,
+                "y": 1.613
+              },
+              {
+                "x": 0.6,
+                "y": 2.418
+              },
+              {
+                "x": 0.8,
+                "y": 3.222
+              },
+              {
+                "x": 1,
+                "y": 4.02
+              }
+            ],
+            "tolerance": 0.05,
+            "pointMarks": 3,
+            "line": {
+              "gradient": 4.01,
+              "intercept": 0,
+              "from": 0,
+              "to": 1.1,
+              "tolerance": 0.1
+            },
+            "lineMarks": 2
+          }
+        },
+        {
+          "id": "c",
+          "label": "(c)",
+          "prompt": "Determine the gradient of the graph, stating its unit.",
+          "marks": 4,
+          "answer": "gradient = 4.0 s² m⁻¹",
+          "modelResponse": null,
+          "solution": "gradient = 4.0 s² m⁻¹\n\nMarker's note. Accept s²/m. A gradient calculated from two of the table values rather than from the drawn line loses M1.",
+          "markerNote": "Accept s²/m. A gradient calculated from two of the table values rather than from the drawn line loses M1.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 2,
+              "profile": "XS",
+              "description": "a triangle drawn on the line, using at least half its length",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "XS",
+              "description": "gradient in the range 3.8 to 4.2",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "the unit s² m⁻¹",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "d",
+          "label": "(d)",
+          "prompt": "The period of a simple pendulum is given by T = 2π√(l/g). Use your value of the gradient to calculate a value for g, the acceleration due to gravity.",
+          "marks": 4,
+          "answer": "g = 9.8 m s⁻²",
+          "modelResponse": null,
+          "solution": "g = 9.8 m s⁻²\n\nMarker's note. Follow through from the candidate's own earlier value. A candidate who writes g = 4π² × gradient obtains about 158 and loses A1 and A2, but keeps M1 and M2. An answer with no unit loses A2.",
+          "markerNote": "Follow through from the candidate's own earlier value. A candidate who writes g = 4π² × gradient obtains about 158 and loses A1 and A2, but keeps M1 and M2. An answer with no unit loses A2.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "squares the equation to give T² = (4π²/g) l",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "M2",
+              "kind": "M",
+              "marks": 1,
+              "profile": "XS",
+              "description": "identifies the gradient as 4π²/g",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "XS",
+              "description": "rearranges to g = 4π² ÷ gradient",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A2",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "9.8 m s⁻², accept 9.4 to 10.4, with the unit",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "e",
+          "label": "(e)",
+          "prompt": "Explain why the student timed 20 oscillations rather than a single oscillation.",
+          "marks": 2,
+          "answer": "Timing 20 oscillations and dividing by 20 spreads the reaction time error over 20 swings, so the error in a single period is much smaller.",
+          "modelResponse": null,
+          "solution": "Timing 20 oscillations and dividing by 20 spreads the reaction time error over 20 swings, so the error in a single period is much smaller.\n\nMarker's note. 'To be more accurate' on its own scores nothing. The candidate must name the error or explain the averaging.",
+          "markerNote": "'To be more accurate' on its own scores nothing. The candidate must name the error or explain the averaging.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "identifies the error: human reaction time in starting and stopping the watch",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "explains that dividing by 20 reduces the effect of that error on the period",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "f",
+          "label": "(f)",
+          "prompt": "State ONE other precaution which the student should have taken in order to obtain accurate results.",
+          "marks": 2,
+          "answer": "Keep the angle of swing small, no more than about 10 degrees.",
+          "modelResponse": null,
+          "solution": "Keep the angle of swing small, no more than about 10 degrees.\n\nMarker's note. Accept: keep the angle small, because the relationship does not hold for large angles; measure the length to the centre of the bob; make sure the bob swings in one vertical plane rather than in a circle; clamp the string firmly so the length does not change; start counting at zero rather than at one. One mark where the precaution is named without a reason.",
+          "markerNote": "Accept: keep the angle small, because the relationship does not hold for large angles; measure the length to the centre of the bob; make sure the bob swings in one vertical plane rather than in a circle; clamp the string firmly so the length does not change; start counting at zero rather than at one. One mark where the precaution is named without a reason.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 2,
+              "profile": "XS",
+              "description": "one specific precaution, with the reason it matters",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "phy-p2-2-q2",
+      "question_number": 2,
+      "paper": "SPARK CSEC Physics Practice Paper 02 number 2",
+      "section": "A",
+      "topic": "Moments and equilibrium",
+      "marks": 15,
+      "profile": {
+        "KC": 7,
+        "UK": 8,
+        "XS": 0
+      },
+      "stem": "Figure 2 shows a uniform metre rule which is pivoted at its centre, at the 50 cm mark. A weight of 2.0 N hangs from the rule at the 20 cm mark. A second weight of 3.0 N is then hung from the rule so that the rule balances horizontally.",
+      "diagram": {
+        "label": "Figure 2. Uniform metre rule pivoted at the 50 cm mark",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 460 190\" width=\"100%\" style=\"max-width:430px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" font-family=\"Georgia,serif\" font-size=\"13\"><rect x=\"40\" y=\"70\" width=\"380\" height=\"18\" fill=\"none\"/><path d=\"M40 61 L40 70\"/><text x=\"40\" y=\"56\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">0</text><path d=\"M78 61 L78 70\"/><text x=\"78\" y=\"56\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">10</text><path d=\"M116 61 L116 70\"/><text x=\"116\" y=\"56\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">20</text><path d=\"M154 61 L154 70\"/><text x=\"154\" y=\"56\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">30</text><path d=\"M192 61 L192 70\"/><text x=\"192\" y=\"56\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">40</text><path d=\"M230 61 L230 70\"/><text x=\"230\" y=\"56\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">50</text><path d=\"M268 61 L268 70\"/><text x=\"268\" y=\"56\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">60</text><path d=\"M306 61 L306 70\"/><text x=\"306\" y=\"56\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">70</text><path d=\"M344 61 L344 70\"/><text x=\"344\" y=\"56\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">80</text><path d=\"M382 61 L382 70\"/><text x=\"382\" y=\"56\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">90</text><path d=\"M420 61 L420 70\"/><text x=\"420\" y=\"56\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">100</text><path d=\"M214 114 L246 114 L230 88 L214 114\"/><text x=\"230\" y=\"132\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">pivot</text><path d=\"M116 88 L116 122\"/><rect x=\"99\" y=\"122\" width=\"34\" height=\"22\" fill=\"none\"/><text x=\"116\" y=\"160\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">2.0 N</text><text x=\"40\" y=\"36\" text-anchor=\"start\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">uniform metre rule</text></svg>",
+        "alt": "A uniform metre rule marked from 0 to 100 cm, resting on a triangular pivot placed under the 50 cm mark, with a 2.0 N weight hanging from the 20 cm mark."
+      },
+      "parts": [
+        {
+          "id": "a",
+          "label": "(a)",
+          "prompt": "State the principle of moments.",
+          "marks": 3,
+          "answer": "When a body is in equilibrium, the sum of the clockwise moments about any point equals the sum of the anticlockwise moments about that same point.",
+          "modelResponse": null,
+          "solution": "When a body is in equilibrium, the sum of the clockwise moments about any point equals the sum of the anticlockwise moments about that same point.\n\nMarker's note. B3 requires either 'about the same point' or 'when the body is in equilibrium'. Both together are not needed.",
+          "markerNote": "B3 requires either 'about the same point' or 'when the body is in equilibrium'. Both together are not needed.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "sum of clockwise moments",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "equals the sum of anticlockwise moments",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "about the same point, and the body is in equilibrium",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "label": "(b)",
+          "prompt": "State the other condition which must be satisfied if a body is to be in equilibrium.",
+          "marks": 1,
+          "answer": "The resultant force on the body must be zero.",
+          "modelResponse": null,
+          "solution": "The resultant force on the body must be zero.\n\nMarker's note. Accept 'sum of upward forces equals sum of downward forces'.",
+          "markerNote": "Accept 'sum of upward forces equals sum of downward forces'.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "the forces on the body must balance, or the resultant force is zero",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "c",
+          "label": "(c)",
+          "prompt": "Define the term 'moment of a force' and state its SI unit.",
+          "marks": 3,
+          "answer": "The moment of a force about a point is the force multiplied by the perpendicular distance from the point to the line of action of the force. Its unit is the newton metre.",
+          "modelResponse": null,
+          "solution": "The moment of a force about a point is the force multiplied by the perpendicular distance from the point to the line of action of the force. Its unit is the newton metre.\n\nMarker's note. The word perpendicular is required for B2. Do not accept the joule for B3, even though a joule is also a newton times a metre: in a moment the distance is measured at right angles to the force, not along it.",
+          "markerNote": "The word perpendicular is required for B2. Do not accept the joule for B3, even though a joule is also a newton times a metre: in a moment the distance is measured at right angles to the force, not along it.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "force multiplied by distance",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "the distance is the perpendicular distance from the point to the line of action",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "N m",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "d",
+          "label": "(d)",
+          "prompt": "Calculate the moment of the 2.0 N weight about the pivot.",
+          "marks": 3,
+          "answer": "0.60 N m",
+          "modelResponse": "0.6 N m",
+          "solution": "0.60 N m\n\nMarker's note. Accept 60 N cm with the unit given. A candidate who uses 20 cm rather than 30 cm has measured from the end of the rule rather than the pivot: award M2 only if the method is otherwise correct.",
+          "markerNote": "Accept 60 N cm with the unit given. A candidate who uses 20 cm rather than 30 cm has measured from the end of the rule rather than the pivot: award M2 only if the method is otherwise correct.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "distance from the pivot = 50 − 20 = 30 cm",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "M2",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "converts to 0.30 m and multiplies by 2.0 N",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "0.60 N m, with the unit",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 0.6,
+                "tolerance": 0.02,
+                "unit": "N m"
+              }
+            }
+          ]
+        },
+        {
+          "id": "e",
+          "label": "(e)",
+          "prompt": "Determine the mark on the rule at which the 3.0 N weight must be hung.",
+          "marks": 4,
+          "answer": "The 70 cm mark",
+          "modelResponse": null,
+          "solution": "The 70 cm mark\n\nMarker's note. Follow through from the candidate's own earlier value. A2 is for realising the weight must go on the other side. An answer of '20 cm from the pivot' without identifying the mark earns three of the four.",
+          "markerNote": "Follow through from the candidate's own earlier value. A2 is for realising the weight must go on the other side. An answer of '20 cm from the pivot' without identifying the mark earns three of the four.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "applies the principle of moments: 2.0 × 0.30 = 3.0 × d",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "M2",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "d = 0.60 ÷ 3.0 = 0.20 m",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "0.20 m, that is 20 cm, from the pivot",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A2",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "on the opposite side of the pivot, so at the 70 cm mark",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "f",
+          "label": "(f)",
+          "prompt": "State why the weight of the rule itself was not needed in the calculation in Part (e).",
+          "marks": 1,
+          "answer": "The rule is uniform, so its weight acts at its centre of gravity, which is at the pivot, and its moment about the pivot is therefore zero.",
+          "modelResponse": null,
+          "solution": "The rule is uniform, so its weight acts at its centre of gravity, which is at the pivot, and its moment about the pivot is therefore zero.\n\nMarker's note. Accept 'the perpendicular distance is zero'.",
+          "markerNote": "Accept 'the perpendicular distance is zero'.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "the weight acts at the centre of the rule, which is at the pivot, so it has no moment",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "phy-p2-2-q3",
+      "question_number": 3,
+      "paper": "SPARK CSEC Physics Practice Paper 02 number 2",
+      "section": "A",
+      "topic": "Specific heat capacity and latent heat",
+      "marks": 15,
+      "profile": {
+        "KC": 6,
+        "UK": 9,
+        "XS": 0
+      },
+      "stem": "",
+      "parts": [
+        {
+          "id": "ai",
+          "label": "(a) (i)",
+          "prompt": "Define EACH of the following terms.\n\nSpecific heat capacity",
+          "marks": 3,
+          "answer": "The specific heat capacity of a substance is the quantity of heat energy required to raise the temperature of 1 kg of the substance by 1 °C.",
+          "modelResponse": null,
+          "solution": "The specific heat capacity of a substance is the quantity of heat energy required to raise the temperature of 1 kg of the substance by 1 °C.\n\nMarker's note. All three elements are needed. A definition which omits the mass, or which says 'to heat it up', does not earn the missing mark.",
+          "markerNote": "All three elements are needed. A definition which omits the mass, or which says 'to heat it up', does not earn the missing mark.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "heat energy required",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "for unit mass, or for 1 kg",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "to raise the temperature by 1 °C, or by 1 K",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "aii",
+          "label": "(a) (ii)",
+          "prompt": "Define EACH of the following terms.\n\nSpecific latent heat of fusion",
+          "marks": 3,
+          "answer": "The specific latent heat of fusion of a substance is the quantity of heat energy required to change 1 kg of the substance from solid to liquid without any change in temperature.",
+          "modelResponse": null,
+          "solution": "The specific latent heat of fusion of a substance is the quantity of heat energy required to change 1 kg of the substance from solid to liquid without any change in temperature.\n\nMarker's note. B3 is the mark most often dropped and cannot be implied.",
+          "markerNote": "B3 is the mark most often dropped and cannot be implied.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "heat energy required",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "to change unit mass, or 1 kg, from solid to liquid",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "with no change in temperature",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "bi",
+          "label": "(b) (i)",
+          "prompt": "A block of ice of mass 0.50 kg at a temperature of 0 °C is placed in a container and heated until all of it has melted and the water has reached a temperature of 40 °C.\n\nCalculate the heat energy required to convert all the ice at 0 °C to water at 0 °C.",
+          "marks": 3,
+          "answer": "1.7 × 10⁵ J",
+          "modelResponse": "170000 J",
+          "solution": "1.7 × 10⁵ J\n\nMarker's note. Accept 170 000 J or 170 kJ.",
+          "markerNote": "Accept 170 000 J or 170 kJ.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "uses Q = m l",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "M2",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "substitutes 0.50 × 3.4 × 10⁵",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "1.7 × 10⁵ J, with the unit",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 170000,
+                "tolerance": 0.02,
+                "unit": "J"
+              }
+            }
+          ],
+          "given": [
+            "Specific heat capacity of water = 4200 J kg⁻¹ (°C)⁻¹",
+            "Specific latent heat of fusion of ice = 3.4 × 10⁵ J kg⁻¹"
+          ]
+        },
+        {
+          "id": "bii",
+          "label": "(b) (ii)",
+          "prompt": "A block of ice of mass 0.50 kg at a temperature of 0 °C is placed in a container and heated until all of it has melted and the water has reached a temperature of 40 °C.\n\nCalculate the heat energy required to raise the temperature of the water from 0 °C to 40 °C.",
+          "marks": 3,
+          "answer": "8.4 × 10⁴ J",
+          "modelResponse": "84000 J",
+          "solution": "8.4 × 10⁴ J\n\nMarker's note. Using the specific heat capacity of ice here, or a temperature change of 0 °C, loses both M2 and A1.",
+          "markerNote": "Using the specific heat capacity of ice here, or a temperature change of 0 °C, loses both M2 and A1.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "uses Q = m c Δθ",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "M2",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "substitutes 0.50 × 4200 × 40",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "84 000 J, with the unit",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 84000,
+                "tolerance": 0.02,
+                "unit": "J"
+              }
+            }
+          ],
+          "given": [
+            "Specific heat capacity of water = 4200 J kg⁻¹ (°C)⁻¹",
+            "Specific latent heat of fusion of ice = 3.4 × 10⁵ J kg⁻¹"
+          ]
+        },
+        {
+          "id": "biii",
+          "label": "(b) (iii)",
+          "prompt": "A block of ice of mass 0.50 kg at a temperature of 0 °C is placed in a container and heated until all of it has melted and the water has reached a temperature of 40 °C.\n\nDetermine the total heat energy supplied.",
+          "marks": 1,
+          "answer": "2.54 × 10⁵ J",
+          "modelResponse": "254000 J",
+          "solution": "2.54 × 10⁵ J\n\nMarker's note. Follow through from the candidate's own earlier value.",
+          "markerNote": "Follow through from the candidate's own earlier value.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "adds the two answers to give 254 000 J",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 254000,
+                "tolerance": 0.02,
+                "unit": "J"
+              }
+            }
+          ],
+          "given": [
+            "Specific heat capacity of water = 4200 J kg⁻¹ (°C)⁻¹",
+            "Specific latent heat of fusion of ice = 3.4 × 10⁵ J kg⁻¹"
+          ]
+        },
+        {
+          "id": "c",
+          "label": "(c)",
+          "prompt": "State ONE assumption which was made in the calculations in Part (b), and explain how it affects the answer.",
+          "marks": 2,
+          "answer": "It is assumed that no heat energy is transferred to or from the surroundings. In practice the container and the air absorb some energy, so the true energy supplied is greater than calculated.",
+          "modelResponse": null,
+          "solution": "It is assumed that no heat energy is transferred to or from the surroundings. In practice the container and the air absorb some energy, so the true energy supplied is greater than calculated.\n\nMarker's note. Accept: no energy transferred to the surroundings or the container; the ice is all at exactly 0 °C to begin with; no water evaporates. B2 requires a direction: the calculated value is an underestimate of the energy actually needed.",
+          "markerNote": "Accept: no energy transferred to the surroundings or the container; the ice is all at exactly 0 °C to begin with; no water evaporates. B2 requires a direction: the calculated value is an underestimate of the energy actually needed.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "states the assumption",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "explains its effect on the answer",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "phy-p2-2-q4",
+      "question_number": 4,
+      "paper": "SPARK CSEC Physics Practice Paper 02 number 2",
+      "section": "B",
+      "topic": "Reflection, refraction and lenses",
+      "marks": 15,
+      "profile": {
+        "KC": 3,
+        "UK": 12,
+        "XS": 0
+      },
+      "stem": "",
+      "parts": [
+        {
+          "id": "a",
+          "label": "(a)",
+          "prompt": "State the TWO laws of reflection of light.",
+          "marks": 2,
+          "answer": "The angle of incidence equals the angle of reflection. The incident ray, the reflected ray and the normal at the point of incidence all lie in the same plane.",
+          "modelResponse": null,
+          "solution": "The angle of incidence equals the angle of reflection. The incident ray, the reflected ray and the normal at the point of incidence all lie in the same plane.\n\nMarker's note. For B1 the angles must be measured from the normal, but do not withhold the mark unless the candidate says they are measured from the surface.",
+          "markerNote": "For B1 the angles must be measured from the normal, but do not withhold the mark unless the candidate says they are measured from the surface.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "angle of incidence equals angle of reflection",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "incident ray, reflected ray and normal lie in the same plane",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "label": "(b)",
+          "prompt": "State THREE characteristics of the image formed by a plane mirror.",
+          "marks": 3,
+          "answer": "The image is virtual, upright, the same size as the object, laterally inverted, and as far behind the mirror as the object is in front.",
+          "modelResponse": null,
+          "solution": "The image is virtual, upright, the same size as the object, laterally inverted, and as far behind the mirror as the object is in front.\n\nMarker's note. Any three of: virtual, upright or erect, same size as the object, laterally inverted, same distance behind the mirror as the object is in front. 'Clear' and 'the same' are too vague to score.",
+          "markerNote": "Any three of: virtual, upright or erect, same size as the object, laterally inverted, same distance behind the mirror as the object is in front. 'Clear' and 'the same' are too vague to score.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "first correct characteristic",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "second correct characteristic",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "third correct characteristic",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "c",
+          "label": "(c)",
+          "prompt": "A ray of light travelling in air strikes the flat surface of a block of glass at an angle of incidence of 40°. The refractive index of the glass is 1.50. Calculate the angle of refraction in the glass.",
+          "marks": 3,
+          "answer": "25.4 degrees",
+          "modelResponse": "25.4 °",
+          "solution": "25.4 degrees\n\nMarker's note. Inverting the formula gives 74.6 degrees, which is larger than the angle of incidence and so cannot be right when light enters a denser medium. Award M1 only.",
+          "markerNote": "Inverting the formula gives 74.6 degrees, which is larger than the angle of incidence and so cannot be right when light enters a denser medium. Award M1 only.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "uses n = sin i ÷ sin r",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "M2",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "sin r = sin 40 ÷ 1.50 = 0.4285",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "25.4 degrees, accept 25 to 25.5",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 25.4,
+                "tolerance": 0.02,
+                "unit": "°"
+              }
+            }
+          ]
+        },
+        {
+          "id": "d",
+          "label": "(d)",
+          "prompt": "Calculate the critical angle for this glass, and state what happens to a ray inside the glass which strikes the surface at an angle greater than the critical angle.",
+          "marks": 3,
+          "answer": "41.8 degrees. A ray striking the surface at a greater angle is totally internally reflected back into the glass.",
+          "modelResponse": "41.8 °",
+          "solution": "41.8 degrees. A ray striking the surface at a greater angle is totally internally reflected back into the glass.\n\nMarker's note. Follow through from the candidate's own earlier value. B1 requires the words total internal reflection, or a clear description of the ray being reflected back into the glass with none passing out.",
+          "markerNote": "Follow through from the candidate's own earlier value. B1 requires the words total internal reflection, or a clear description of the ray being reflected back into the glass with none passing out.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "uses sin C = 1 ÷ n",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "41.8 degrees, accept 41 to 42",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 41.8,
+                "tolerance": 0.02,
+                "unit": "°"
+              }
+            },
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "the ray is totally internally reflected",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "e",
+          "label": "(e)",
+          "prompt": "An object of height 3.0 cm is placed 15 cm from a converging lens of focal length 10 cm. Calculate the image distance, v, and the linear magnification, m.",
+          "marks": 4,
+          "answer": "v = 30 cm, m = 2.0",
+          "modelResponse": null,
+          "solution": "v = 30 cm, m = 2.0\n\nMarker's note. Follow through from the candidate's own earlier value. The magnification has no unit; a candidate who gives one loses A2. Accept m calculated as image height ÷ object height if the image height 6.0 cm is found first.",
+          "markerNote": "Follow through from the candidate's own earlier value. The magnification has no unit; a candidate who gives one loses A2. Accept m calculated as image height ÷ object height if the image height 6.0 cm is found first.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "uses 1/f = 1/u + 1/v",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "M2",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "1/v = 1/10 − 1/15",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "v = 30 cm, with the unit",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A2",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "m = v/u = 2.0, with no unit",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "phy-p2-2-q5",
+      "question_number": 5,
+      "paper": "SPARK CSEC Physics Practice Paper 02 number 2",
+      "section": "B",
+      "topic": "Magnetism and the transformer",
+      "marks": 15,
+      "profile": {
+        "KC": 5,
+        "UK": 10,
+        "XS": 0
+      },
+      "stem": "",
+      "parts": [
+        {
+          "id": "a",
+          "label": "(a)",
+          "prompt": "Define the term 'magnetic field'.",
+          "marks": 2,
+          "answer": "A magnetic field is the region around a magnet in which a magnetic force can be detected.",
+          "modelResponse": null,
+          "solution": "A magnetic field is the region around a magnet in which a magnetic force can be detected.\n\nMarker's note. Both the word region and the word force are needed.",
+          "markerNote": "Both the word region and the word force are needed.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "a region, or a space",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "in which a magnetic force acts or can be detected",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "label": "(b)",
+          "prompt": "Distinguish between a permanent magnet and a temporary magnet, and name ONE material which is used to make EACH.",
+          "marks": 3,
+          "answer": "A permanent magnet keeps its magnetism, and is made from a hard magnetic material such as steel. A temporary magnet loses its magnetism easily, and is made from a soft magnetic material such as iron.",
+          "modelResponse": null,
+          "solution": "A permanent magnet keeps its magnetism, and is made from a hard magnetic material such as steel. A temporary magnet loses its magnetism easily, and is made from a soft magnetic material such as iron.\n\nMarker's note. Accept alnico or any named hard alloy for B2.",
+          "markerNote": "Accept alnico or any named hard alloy for B2.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "a permanent magnet retains its magnetism; a temporary one does not",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "steel, or another hard magnetic material, for the permanent magnet",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "soft iron for the temporary magnet",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "c",
+          "label": "(c)",
+          "prompt": "State THREE ways in which the strength of an electromagnet may be increased.",
+          "marks": 3,
+          "answer": "Increase the current, increase the number of turns on the coil, and use a soft iron core.",
+          "modelResponse": null,
+          "solution": "Increase the current, increase the number of turns on the coil, and use a soft iron core.\n\nMarker's note. 'Make it bigger' scores nothing.",
+          "markerNote": "'Make it bigger' scores nothing.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "increase the current",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "increase the number of turns",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "use a soft iron core, or wind the turns more closely",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "di",
+          "label": "(d) (i)",
+          "prompt": "A transformer is used to operate a 12 V lamp from a 240 V mains supply. The primary coil has 1200 turns.\n\nCalculate the number of turns on the secondary coil.",
+          "marks": 3,
+          "answer": "60 turns",
+          "modelResponse": "60",
+          "solution": "60 turns\n\nMarker's note. The answer is a count of turns and has no unit. A candidate who inverts the ratio obtains 24 000 turns, which is more turns on the secondary of a step down transformer: award M1 only.",
+          "markerNote": "The answer is a count of turns and has no unit. A candidate who inverts the ratio obtains 24 000 turns, which is more turns on the secondary of a step down transformer: award M1 only.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "uses Ns/Np = Vs/Vp",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "M2",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "substitutes 1200 × 12 ÷ 240",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "60 turns",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 60,
+                "tolerance": 0.02
+              }
+            }
+          ]
+        },
+        {
+          "id": "dii",
+          "label": "(d) (ii)",
+          "prompt": "A transformer is used to operate a 12 V lamp from a 240 V mains supply. The primary coil has 1200 turns.\n\nThe transformer may be assumed to be 100 per cent efficient. If the current in the secondary coil is 2.0 A, calculate the current in the primary coil.",
+          "marks": 2,
+          "answer": "0.10 A",
+          "modelResponse": "0.1 A",
+          "solution": "0.10 A\n\nMarker's note. Follow through from the candidate's own earlier value. Accept the turns ratio route, Ip = Is × Ns/Np.",
+          "markerNote": "Follow through from the candidate's own earlier value. Accept the turns ratio route, Ip = Is × Ns/Np.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "power in equals power out: 240 × Ip = 12 × 2.0",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "0.10 A, with the unit",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 0.1,
+                "tolerance": 0.02,
+                "unit": "A"
+              }
+            }
+          ]
+        },
+        {
+          "id": "e",
+          "label": "(e)",
+          "prompt": "Explain why a transformer will NOT operate on direct current.",
+          "marks": 2,
+          "answer": "Direct current produces a magnetic field which is steady rather than changing, and a field which does not change induces no voltage in the secondary coil.",
+          "modelResponse": null,
+          "solution": "Direct current produces a magnetic field which is steady rather than changing, and a field which does not change induces no voltage in the secondary coil.\n\nMarker's note. An answer which says only 'it needs a.c.' restates the question and scores nothing. The word changing is what earns the marks.",
+          "markerNote": "An answer which says only 'it needs a.c.' restates the question and scores nothing. The word changing is what earns the marks.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "direct current gives a steady, unchanging magnetic field",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "a changing field is needed to induce a voltage, so nothing is induced",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "phy-p2-2-q6",
+      "question_number": 6,
+      "paper": "SPARK CSEC Physics Practice Paper 02 number 2",
+      "section": "B",
+      "topic": "The atom",
+      "marks": 15,
+      "profile": {
+        "KC": 11,
+        "UK": 4,
+        "XS": 0
+      },
+      "stem": "",
+      "parts": [
+        {
+          "id": "a",
+          "label": "(a)",
+          "prompt": "Complete Table 2 for the three particles found in an atom.",
+          "marks": 6,
+          "answer": "Proton: 1, +1, nucleus. Neutron: 1, 0, nucleus. Electron: 1/1840 (negligible), −1, in shells outside the nucleus.",
+          "modelResponse": null,
+          "solution": "Proton: 1, +1, nucleus. Neutron: 1, 0, nucleus. Electron: 1/1840 (negligible), −1, in shells outside the nucleus.\n\nMarker's note. Accept 0 or 'almost zero' for the relative mass of the electron.",
+          "markerNote": "Accept 0 or 'almost zero' for the relative mass of the electron.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "proton relative charge +1",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "neutron relative mass 1",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "neutron found in the nucleus",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B4",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "electron relative mass negligible, or 1/1840",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B5",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "electron relative charge −1",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B6",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "all remaining cells consistent and correct",
+              "field": "all",
+              "manual": true
+            }
+          ],
+          "responseType": "table",
+          "table": {
+            "caption": "TABLE 2: PARTICLES IN THE ATOM",
+            "headers": [
+              "Particle",
+              "Relative mass",
+              "Relative charge",
+              "Where it is found"
+            ],
+            "rows": [
+              [
+                "Proton",
+                "1",
+                "",
+                "nucleus"
+              ],
+              [
+                "Neutron",
+                "",
+                "0",
+                ""
+              ],
+              [
+                "Electron",
+                "",
+                "",
+                "in shells outside the nucleus"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "b",
+          "label": "(b)",
+          "prompt": "Define the term 'isotope' and give ONE example.",
+          "marks": 2,
+          "answer": "Isotopes are atoms of the same element which have the same number of protons but different numbers of neutrons. Example: carbon-12 and carbon-14.",
+          "modelResponse": null,
+          "solution": "Isotopes are atoms of the same element which have the same number of protons but different numbers of neutrons. Example: carbon-12 and carbon-14.\n\nMarker's note. Accept 'same atomic number, different mass number'. The example must name two isotopes of the same element, such as carbon-12 and carbon-14, or uranium-235 and uranium-238.",
+          "markerNote": "Accept 'same atomic number, different mass number'. The example must name two isotopes of the same element, such as carbon-12 and carbon-14, or uranium-235 and uranium-238.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "same number of protons, different number of neutrons",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "a correct example",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "c",
+          "label": "(c)",
+          "prompt": "In the alpha particle scattering experiment, a thin sheet of gold foil was bombarded with alpha particles. State TWO observations which were made, and the conclusion which was drawn from EACH observation.",
+          "marks": 4,
+          "answer": "Most alpha particles passed straight through, so the atom is mostly empty space. A few were deflected through large angles, so there is a small, dense, positively charged nucleus.",
+          "modelResponse": null,
+          "solution": "Most alpha particles passed straight through, so the atom is mostly empty space. A few were deflected through large angles, so there is a small, dense, positively charged nucleus.\n\nMarker's note. Accepted pairs: most passed straight through, so the atom is mostly empty space; a small number were deflected through large angles, so there is a concentrated positive charge; a very few came almost straight back, so the nucleus is small and carries nearly all the mass. A conclusion given without its observation earns the conclusion mark only.",
+          "markerNote": "Accepted pairs: most passed straight through, so the atom is mostly empty space; a small number were deflected through large angles, so there is a concentrated positive charge; a very few came almost straight back, so the nucleus is small and carries nearly all the mass. A conclusion given without its observation earns the conclusion mark only.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "first observation",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "the conclusion drawn from it",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "second, different observation",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B4",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "the conclusion drawn from it",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "d",
+          "label": "(d)",
+          "prompt": "Distinguish between nuclear fission and nuclear fusion, and state where EACH process occurs.",
+          "marks": 3,
+          "answer": "Fission is the splitting of a heavy nucleus into lighter nuclei, and occurs in a nuclear reactor. Fusion is the joining of light nuclei to form a heavier one, and occurs in the Sun and other stars.",
+          "modelResponse": null,
+          "solution": "Fission is the splitting of a heavy nucleus into lighter nuclei, and occurs in a nuclear reactor. Fusion is the joining of light nuclei to form a heavier one, and occurs in the Sun and other stars.\n\nMarker's note. Both processes release energy, so that alone does not distinguish them and earns nothing.",
+          "markerNote": "Both processes release energy, so that alone does not distinguish them and earns nothing.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "fission: a heavy nucleus splits into lighter ones",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "fusion: light nuclei join to form a heavier one",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "correct location for each: a reactor or an atomic bomb, and the Sun or a star",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

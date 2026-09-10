@@ -29,6 +29,6 @@ describe("SPARK V5.3.10.2 insight readability", () => {
   });
 
   test("report analytics receives the displayed student name", () => {
-    expect(report).toContain('buildProgressReport({ ...data, learnerName: student?.name || "" }, {');
+    expect(report).toContain('buildProgressReport({ ...(source.data || data || {}), learnerName: student?.name || "" }, options)');
   });
 });

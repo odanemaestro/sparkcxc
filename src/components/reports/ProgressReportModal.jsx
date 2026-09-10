@@ -4,6 +4,7 @@ import Btn from "../ui/Btn";
 import Icon from "../ui/Icon";
 import InsightText from "../learning/InsightText";
 import { buildProgressReport } from "../../insights/progressAnalytics";
+import { buildGenericSubjectProgressReport, buildAllSubjectsProgressReport } from "../../subjects/subjectProgress";
 import {
   downloadStudentProgressPdf,
   generateStudentProgressPdfBytes,
@@ -40,21 +41,46 @@ export default function ProgressReportModal({
   emailTo = "",
   supabase,
   showToast,
+  subjectSources = [],
+  initialSubjectId = "all",
+  overallGoal = null,
 }) {
+  const normalizedSources = useMemo(() => subjectSources.length ? subjectSources : [{
+    subject: { id: "mathematics", name: "CSEC Mathematics", shortName: "Mathematics", stats: {} },
+    kind: "mathematics",
+    data,
+  }], [subjectSources, data]);
+  const hasMultipleSubjects = normalizedSources.length > 1;
+  const [subjectId, setSubjectId] = useState(hasMultipleSubjects ? initialSubjectId : normalizedSources[0]?.subject?.id || "mathematics");
   const [period, setPeriod] = useState("month");
   const [customStart, setCustomStart] = useState("");
   const [customEnd, setCustomEnd] = useState("");
   const [emailing, setEmailing] = useState(false);
   const dateError = customRangeError(period, customStart, customEnd);
-  const report = useMemo(() => buildProgressReport({ ...data, learnerName: student?.name || "" }, {
-    period,
-    custom: { start: customStart, end: customEnd },
-  }), [data, student?.name, period, customStart, customEnd]);
+  const report = useMemo(() => {
+    const options = { period, custom: { start: customStart, end: customEnd } };
+    if (subjectId === "all" && normalizedSources.length > 1) {
+      return buildAllSubjectsProgressReport({
+        subjectSources: normalizedSources.map(source => source.kind === "mathematics"
+          ? { ...source, data: { ...(source.data || {}), learnerName: student?.name || "", goal: null } }
+          : { ...source, goal: null }),
+        goal: overallGoal,
+      }, options);
+    }
+    const source = normalizedSources.find(item => item.subject?.id === subjectId) || normalizedSources[0];
+    if (source?.kind === "mathematics") {
+      const built = buildProgressReport({ ...(source.data || data || {}), learnerName: student?.name || "" }, options);
+      return { ...built, subjectId: source.subject.id, subjectName: source.subject.name };
+    }
+    return buildGenericSubjectProgressReport({ subject: source?.subject, rows: source?.rows || [], events: source?.events || [] }, options);
+  }, [subjectId, normalizedSources, data, student?.name, period, customStart, customEnd, overallGoal]);
+
+  const selectedSubjectName = report?.subjectName || (subjectId === "all" ? "All subjects" : normalizedSources.find(item => item.subject?.id === subjectId)?.subject?.name) || "Learning progress";
 
   const pdfArgs = {
     studentName: student?.name || "Student",
     parentName,
-    subject: "CSEC Mathematics",
+    subject: selectedSubjectName,
     report,
   };
 
@@ -78,12 +104,19 @@ export default function ProgressReportModal({
         body: {
           student_id: student.id,
           period_label: report.period.label,
+          subject_id: report.subjectId || subjectId,
+          subject_name: selectedSubjectName,
           report: {
+            subject_id: report.subjectId || subjectId,
+            subject_name: selectedSubjectName,
             summary: report.summary,
             activity: report.activity,
             strongestSkills: report.strongestSkills,
             weakestSkills: report.weakestSkills,
             recommendations: report.recommendations,
+            metrics: report.metrics || [],
+            activityLabels: report.activityLabels || {},
+            assessmentLabel: report.assessmentLabel || "",
             goal: report.goal || null,
             studyCircle: report.studyCircle || null,
           },
@@ -124,6 +157,11 @@ export default function ProgressReportModal({
           <button className="spark-modal-close" onClick={onClose} aria-label="Close report">×</button>
         </div>
 
+        {hasMultipleSubjects && <div className="spark-report-subjects" aria-label="Report subject">
+          <button className={subjectId === "all" ? "active" : ""} onClick={() => setSubjectId("all")}>All subjects</button>
+          {normalizedSources.map(source => <button key={source.subject.id} className={subjectId === source.subject.id ? "active" : ""} onClick={() => setSubjectId(source.subject.id)}>{source.subject.shortName || source.subject.name}</button>)}
+        </div>}
+
         <div className="spark-report-periods" aria-label="Report period">
           {[["week","This week"],["month","This month"],["term","This term"],["custom","Custom"]].map(([key,label]) => (
             <button key={key} className={period === key ? "active" : ""} onClick={() => setPeriod(key)}>{label}</button>
@@ -133,12 +171,14 @@ export default function ProgressReportModal({
         {dateError && <div className="spark-report-date-error" role="alert">{dateError}</div>}
 
         <div className="spark-report-preview">
-          <div className="spark-report-preview-title"><div><strong>CSEC Mathematics</strong><span>{report.period.label}</span></div><span>{new Date(report.generatedAt).toLocaleDateString()}</span></div>
+          <div className="spark-report-preview-title"><div><strong>{selectedSubjectName}</strong><span>{report.period.label}</span></div><span>{new Date(report.generatedAt).toLocaleDateString()}</span></div>
           <div className="spark-report-metrics">
-            <div><strong>{masteryValue}</strong><span>Skill mastery</span></div>
-            <div><strong>{examAverageValue}</strong><span>Exam average</span></div>
-            <div><strong>{activity.questionsAttempted || 0}</strong><span>Questions</span></div>
-            <div><strong>{activity.lessonsCompleted || 0}</strong><span>Lessons</span></div>
+            {Array.isArray(report.metrics) && report.metrics.length ? report.metrics.slice(0,4).map(item => <div key={item.label}><strong>{item.value}</strong><span>{item.label}</span></div>) : <>
+              <div><strong>{masteryValue}</strong><span>Skill mastery</span></div>
+              <div><strong>{examAverageValue}</strong><span>Exam average</span></div>
+              <div><strong>{activity.questionsAttempted || 0}</strong><span>Questions</span></div>
+              <div><strong>{activity.lessonsCompleted || 0}</strong><span>Lessons</span></div>
+            </>}
           </div>
           <div className="spark-report-insight"><span>SPARK INSIGHT</span><p><InsightText text={summary.insight}/></p></div>
           <div className="spark-report-skill-grid">

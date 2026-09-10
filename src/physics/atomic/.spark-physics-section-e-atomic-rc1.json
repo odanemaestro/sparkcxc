@@ -1,0 +1,15 @@
+{
+  "package": "SPARK_Physics_SectionE_Atomic_Assessment_RC1",
+  "section": "E",
+  "title": "The Physics of the Atom",
+  "topics": 3,
+  "objectives": 21,
+  "mcq": 84,
+  "flashcards": 63,
+  "structuredQuestions": 8,
+  "structuredMarks": 88,
+  "interactives": 10,
+  "checkpointQuestions": 30,
+  "databaseMigration": false,
+  "featureFlag": "REACT_APP_ENABLE_PHYSICS_SECTION_A"
+}

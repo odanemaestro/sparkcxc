@@ -1,0 +1,12 @@
+{
+  "release": "SPARK Physics Paper 2 UX Hotfix RC3.1",
+  "requires": "RC3",
+  "changes": [
+    "direct autosaved return to Paper 2 library",
+    "Practice Paper A-D display names",
+    "SPARK-styled submit confirmation",
+    "preserve active paper in library",
+    "A-D activity labels"
+  ],
+  "databaseMigration": false
+}

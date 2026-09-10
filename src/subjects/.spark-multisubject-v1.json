@@ -1,0 +1,16 @@
+{
+  "package": "SPARK_MultiSubject_Physics_Integration_v1",
+  "version": "1.0.0",
+  "scope": "SPARKV14 + Physics Section A Mechanics RC1",
+  "features": [
+    "subject-registry",
+    "study-subject-selector",
+    "practice-subject-selector",
+    "direct-practice-subject-routes",
+    "physics-progress",
+    "physics-flashcards",
+    "physics-practice",
+    "A3-A4-objective-render-fix",
+    "mathematics-study-circle-labeling"
+  ]
+}

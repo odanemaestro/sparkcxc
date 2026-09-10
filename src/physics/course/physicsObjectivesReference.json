@@ -1,0 +1,2652 @@
+[
+ {
+  "section": "A",
+  "group": 1,
+  "num": "1.1",
+  "objective": "discuss how the methodology employed by Galileo contributed to the development of Physics",
+  "notes": "Relate the scientific method to the methodology employed by Galileo.",
+  "practical": "",
+  "id": "A1.1",
+  "topic": "SCIENTIFIC METHOD AND MEASUREMENT",
+  "verb": "discuss",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 1,
+  "num": "1.2",
+  "objective": "investigate the factors which might affect the period of a simple pendulum",
+  "notes": "Restrict factors to length of string, mass of bob, angle of displacement.",
+  "practical": "Take readings of the period for the variation of the different factors.",
+  "id": "A1.2",
+  "topic": "SCIENTIFIC METHOD AND MEASUREMENT",
+  "verb": "investigate",
+  "profiles": [
+   "XS"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 1,
+  "num": "1.3",
+  "objective": "use graphs of experimental data from the simple pendulum",
+  "notes": "Use  or  to denote plotted points. EXPLANATORY NOTES",
+  "practical": "Allow students to plot T vs L and T2 vs L. PRACTICAL ACTIVITIES",
+  "id": "A1.3",
+  "topic": "SCIENTIFIC METHOD AND MEASUREMENT",
+  "verb": "use",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 1,
+  "num": "1.4",
+  "objective": "draw a line of ‘best fit’ for a set of plotted values",
+  "notes": "Reasons why ‘best fit’ line is the ‘best’ average of the data.",
+  "practical": "",
+  "id": "A1.4",
+  "topic": "SCIENTIFIC METHOD AND MEASUREMENT",
+  "verb": "draw",
+  "profiles": [
+   "KC",
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 1,
+  "num": "1.5",
+  "objective": "determine the gradient of the straight line graph",
+  "notes": "Use a triangle that covers at least half of the ‘best fit’ line. Include the derivation of the unit of the gradient.",
+  "practical": "Use gradient to determine g.",
+  "id": "A1.5",
+  "topic": "SCIENTIFIC METHOD AND MEASUREMENT",
+  "verb": "determine",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 1,
+  "num": "1.6",
+  "objective": "express the result of a measurement or calculation to an appropriate number of significant figures",
+  "notes": "Refer to SO A 1.5.",
+  "practical": "",
+  "id": "A1.6",
+  "topic": "SCIENTIFIC METHOD AND MEASUREMENT",
+  "verb": "express",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 1,
+  "num": "1.7",
+  "objective": "discuss possible types and sources of error in any measurement",
+  "notes": "Include those made with digital instruments, and ways of reducing such errors.",
+  "practical": "",
+  "id": "A1.7",
+  "topic": "SCIENTIFIC METHOD AND MEASUREMENT",
+  "verb": "discuss",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 1,
+  "num": "1.8",
+  "objective": "use a variety of instruments to measure different quantities",
+  "notes": "Measurements should include length – rulers, vernier calipers, micrometer screw gauge; units. Mass – balances; units. Time – clocks, stop clocks or watches; units. Volume – measuring cylinder; units.",
+  "practical": "",
+  "id": "A1.8",
+  "topic": "SCIENTIFIC METHOD AND MEASUREMENT",
+  "verb": "use",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 1,
+  "num": "1.9",
+  "objective": "assess the suitability of instruments on the basis of sensitivity, accuracy and range",
+  "notes": "Similar instruments should be compared in the discussion. EXPLANATORY NOTES",
+  "practical": "Comparison of readings for the same quantity. PRACTICAL ACTIVITIES",
+  "id": "A1.9",
+  "topic": "SCIENTIFIC METHOD AND MEASUREMENT",
+  "verb": "assess",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 1,
+  "num": "1.10",
+  "objective": "apply the formula for density: ρ = m / V",
+  "notes": "Deduce unit.",
+  "practical": "Determine the density of regular and irregular solids and a liquid.",
+  "id": "A1.10",
+  "topic": "SCIENTIFIC METHOD AND MEASUREMENT",
+  "verb": "apply",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 2,
+  "num": "2.1",
+  "objective": "distinguish between scalars and vectors and give examples of each",
+  "notes": "Everyday examples for each type, for example, movement of a hurricane as vector. Mass of objects as scalar.",
+  "practical": "",
+  "id": "A2.1",
+  "topic": "VECTORS",
+  "verb": "distinguish",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 2,
+  "num": "2.2",
+  "objective": "use scale diagrams to find the resultant of two vectors",
+  "notes": "Oblique vectors included.",
+  "practical": "",
+  "id": "A2.2",
+  "topic": "VECTORS",
+  "verb": "use",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 2,
+  "num": "2.3",
+  "objective": "calculate the resultant of vectors which are parallel, anti-parallel and perpendicular",
+  "notes": "Limit calculations to four or less vectors.",
+  "practical": "",
+  "id": "A2.3",
+  "topic": "VECTORS",
+  "verb": "calculate",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 2,
+  "num": "2.4",
+  "objective": "explain that a single vector is equivalent to two other vectors at right angles",
+  "notes": "Everyday examples of motion and force, for example, velocity of a ball thrown through the air.",
+  "practical": "Using single pulleys and masses against a grid board.",
+  "id": "A2.4",
+  "topic": "VECTORS",
+  "verb": "explain",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 3,
+  "num": "3.1",
+  "objective": "explain the effects of forces",
+  "notes": "A force can cause a change in the size, shape or motion of a body. EXPLANATORY NOTES",
+  "practical": "Use plasticene and marbles to demonstrate effect of forces. PRACTICAL ACTIVITIES",
+  "id": "A3.1",
+  "topic": "STATICS",
+  "verb": "explain",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 3,
+  "num": "3.2",
+  "objective": "identify types of forces",
+  "notes": "Situations in which electric, magnetic, nuclear or gravitational forces act.",
+  "practical": "Use magnets, falling objects. Static electricity.",
+  "id": "A3.2",
+  "topic": "STATICS",
+  "verb": "identify",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 3,
+  "num": "3.3",
+  "objective": "determine the weight of objects",
+  "notes": "Weight = mass  gravitational field strength: 𝑊 = 𝑚𝑔 Nkg1 On earth, g = 10 Note that: Nkg1 ms2. ",
+  "practical": "Measure mass and weight for different objects. Plot a graph of weight vs mass. Determine the gradient.",
+  "id": "A3.3",
+  "topic": "STATICS",
+  "verb": "determine",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 3,
+  "num": "3.4",
+  "objective": "show how derived quantities and their related units are produced",
+  "notes": "Note how unit ρ may be derived by multiplying and dividing fundamental quantities and their units; From the definition of the quantity, for example: N  kgms2. kgms2",
+  "practical": "",
+  "id": "A3.4",
+  "topic": "STATICS",
+  "verb": "show",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 3,
+  "num": "3.5",
+  "objective": "recall the special names given to the units for some derived quantities",
+  "notes": "= N.",
+  "practical": "",
+  "id": "A3.5",
+  "topic": "STATICS",
+  "verb": "recall",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 3,
+  "num": "3.6",
+  "objective": "express derived units using the index notation",
+  "notes": "",
+  "practical": "Conversion of units for given quantities into base units.",
+  "id": "A3.6",
+  "topic": "STATICS",
+  "verb": "express",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 3,
+  "num": "3.7",
+  "objective": "identify situations in which the application of a force will result in a turning effect",
+  "notes": "Situations that are relevant to everyday life, for example, opening a door, sitting on a ‘seesaw’, using a spanner. EXPLANATORY NOTES",
+  "practical": "PRACTICAL ACTIVITIES",
+  "id": "A3.7",
+  "topic": "STATICS",
+  "verb": "identify",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 3,
+  "num": "3.8",
+  "objective": "define the moment of a force, T",
+  "notes": "Moment units of Nm. Note that Nm is not equivalent to a Joule. Refer to SO A3.4 - 3.6.",
+  "practical": "Perform simple experiments to investigate the turning effects of forces on bodies in equilibrium.",
+  "id": "A3.8",
+  "topic": "STATICS",
+  "verb": "define",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 3,
+  "num": "3.9",
+  "objective": "apply the principle of moments",
+  "notes": "Oblique forces are excluded. Use of measuring instruments to indicate the magnitude of the forces in equilibrium.",
+  "practical": "Observe situations in which forces are in equilibrium (varied to give different equilibrium situations).",
+  "id": "A3.9",
+  "topic": "STATICS",
+  "verb": "apply",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 3,
+  "num": "3.10",
+  "objective": "explain the action of common tools and devices as levers",
+  "notes": "Identification of load, effort and fulcrum for each device and tool in use.",
+  "practical": "Hammers or spanners of different lengths, bottle openers, crowbars.",
+  "id": "A3.10",
+  "topic": "STATICS",
+  "verb": "explain",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 3,
+  "num": "3.11",
+  "objective": "determine the location of the centre of gravity of a body",
+  "notes": "Centre of gravity of a variety of regular and irregular shaped solids, including lamina.",
+  "practical": "Find the centre of gravity for the given objects. Plumbline for lamina.",
+  "id": "A3.11",
+  "topic": "STATICS",
+  "verb": "determine",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 3,
+  "num": "3.12",
+  "objective": "relate the stability of an object to the position of its centre of gravity and its weight",
+  "notes": "The orientation of an object can change the position or height of its centre of gravity and affect its stability.",
+  "practical": "Compare the stability of the same regular solid, for example, cylinder, metre rule, cuboid in different positions, for example, horizontal, vertical, inclined.",
+  "id": "A3.12",
+  "topic": "STATICS",
+  "verb": "relate",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 3,
+  "num": "3.13",
+  "objective": "investigate the relationship between extension and force",
+  "notes": "Interpretation of simple force-extension graphs. Identification of regions of proportionality for springs. EXPLANATORY NOTES",
+  "practical": "Perform experiments to determine the relationship between applied force and the resulting extensions, for springs and elastic bands. PRACTICAL ACTIVITIES",
+  "id": "A3.13",
+  "topic": "STATICS",
+  "verb": "investigate",
+  "profiles": [
+   "XS"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 3,
+  "num": "3.14",
+  "objective": "solve problems using Hooke’s law",
+  "notes": "Problems involving springs and elastic bands only. A STRAIGHT LINE",
+  "practical": "",
+  "id": "A3.14",
+  "topic": "STATICS",
+  "verb": "solve",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 4,
+  "num": "4.1",
+  "objective": "define the terms: distance, displacement, speed, velocity, acceleration",
+  "notes": "Distance and displacement, s or x; speed and velocity, v; 𝑣−𝑢 acceleration, 𝑎 = . 𝑡",
+  "practical": "Trolleys on inclined plane.",
+  "id": "A4.1",
+  "topic": "KINEMATICS AND DYNAMICS",
+  "verb": "define",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 4,
+  "num": "4.2",
+  "objective": "apply displacement- time and velocity- time graphs",
+  "notes": "Finding the gradient for straight lines only.",
+  "practical": "Ticker tape timer, car racing.",
+  "id": "A4.2",
+  "topic": "KINEMATICS AND DYNAMICS",
+  "verb": "apply",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 4,
+  "num": "4.3",
+  "objective": "discuss Aristotle's arguments in support of his \"law of motion”, that is, v  F\"",
+  "notes": "Aristotle’s law was eventually discredited.",
+  "practical": "Push trolley on a flat surface.",
+  "id": "A4.3",
+  "topic": "KINEMATICS AND DYNAMICS",
+  "verb": "discuss",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 4,
+  "num": "4.4",
+  "objective": "state Newton's three laws of motion",
+  "notes": "Have students identify applicable laws after viewing examples.",
+  "practical": "Marbles in a groove.",
+  "id": "A4.4",
+  "topic": "KINEMATICS AND DYNAMICS",
+  "verb": "state",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 4,
+  "num": "4.5",
+  "objective": "use Newton's laws to explain dynamic systems",
+  "notes": "Examples - rockets, garden sprinklers, trampolines.",
+  "practical": "",
+  "id": "A4.5",
+  "topic": "KINEMATICS AND DYNAMICS",
+  "verb": "use",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 4,
+  "num": "4.6",
+  "objective": "define linear momentum",
+  "notes": "Units of kg ms1  Ns.",
+  "practical": "",
+  "id": "A4.6",
+  "topic": "KINEMATICS AND DYNAMICS",
+  "verb": "define",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 4,
+  "num": "4.7",
+  "objective": "describe situations that demonstrate the law of conservation of linear momentum",
+  "notes": "EXPLANATORY NOTES",
+  "practical": "Collisions of Billiard balls. PRACTICAL ACTIVITIES",
+  "id": "A4.7",
+  "topic": "KINEMATICS AND DYNAMICS",
+  "verb": "define",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 4,
+  "num": "4.8",
+  "objective": "apply the law of conservation of linear momentum",
+  "notes": "Oblique collisions are excluded.",
+  "practical": "Collisions between objects of different sizes or velocity.",
+  "id": "A4.8",
+  "topic": "KINEMATICS AND DYNAMICS",
+  "verb": "apply",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 5,
+  "num": "5.1",
+  "objective": "define energy",
+  "notes": "Unit: Joule.",
+  "practical": "",
+  "id": "A5.1",
+  "topic": "ENERGY",
+  "verb": "define",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 5,
+  "num": "5.2",
+  "objective": "identify the various forms of energy",
+  "notes": "Gravitational, elastic, chemical, electrical, magnetic, electro- magnetic, thermal, nuclear, kinetic, sound.",
+  "practical": "",
+  "id": "A5.2",
+  "topic": "ENERGY",
+  "verb": "identify",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 5,
+  "num": "5.3",
+  "objective": "describe the energy transformation(s) in a given situation",
+  "notes": "Transformations should be limited to one-step or two- step only. Note that thermal energy is always a product and by-product of every transformation. Examples of the conversion of electrical energy to other forms and vice versa.",
+  "practical": "Observe and list the energy transformations for the particular situation, for example, radio playing music, vehicles coming to rest, cooking food in microwave oven.",
+  "id": "A5.3",
+  "topic": "ENERGY",
+  "verb": "describe",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 5,
+  "num": "5.4",
+  "objective": "apply the relationship: work = force x displacement",
+  "notes": "Unit: Joule.",
+  "practical": "",
+  "id": "A5.4",
+  "topic": "ENERGY",
+  "verb": "apply",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 5,
+  "num": "5.5",
+  "objective": "discuss the use of energy from alternative sources, and its importance to the Caribbean",
+  "notes": "Emphasis on examples relevant to the Caribbean, to include hydroelectricity, geothermal energy, tidal energy waves, solar energy, wind energy, nuclear energy. More efficient and economical use of energy. EXPLANATORY NOTES",
+  "practical": "Project on alternative energy sources. PRACTICAL ACTIVITIES",
+  "id": "A5.5",
+  "topic": "ENERGY",
+  "verb": "discuss",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 5,
+  "num": "5.6",
+  "objective": "define potential energy",
+  "notes": "Examples of this form of energy, for example, battery, stretched spring or elastic band, object on shelf.",
+  "practical": "",
+  "id": "A5.6",
+  "topic": "ENERGY",
+  "verb": "define",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 5,
+  "num": "5.7",
+  "objective": "calculate the change in gravitational potential energy using Ep = mgh",
+  "notes": "",
+  "practical": "",
+  "id": "A5.7",
+  "topic": "ENERGY",
+  "verb": "calculate",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 5,
+  "num": "5.8",
+  "objective": "define kinetic energy",
+  "notes": "Definition. Give everyday examples.",
+  "practical": "",
+  "id": "A5.8",
+  "topic": "ENERGY",
+  "verb": "define",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 5,
+  "num": "5.9",
+  "objective": "calculate kinetic energies using the expression Ek = ½mv²",
+  "notes": "",
+  "practical": "",
+  "id": "A5.9",
+  "topic": "ENERGY",
+  "verb": "calculate",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 5,
+  "num": "5.10",
+  "objective": "apply the law of conservation of energy",
+  "notes": "Use different energy forms in these problems. Conversion of P.E. to K.E. on a moving swing, pendulum, kicking a football.",
+  "practical": "",
+  "id": "A5.10",
+  "topic": "ENERGY",
+  "verb": "apply",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 5,
+  "num": "5.11",
+  "objective": "define power and apply definition",
+  "notes": "Unit: Watt 𝐸 Apply: 𝑃 = . 𝑡 Refer to SO D3.3. EXPLANATORY NOTES",
+  "practical": "Perform activities to find the power in situations for which the energies and time intervals involved can be measured or calculated. PRACTICAL ACTIVITIES",
+  "id": "A5.11",
+  "topic": "ENERGY",
+  "verb": "define",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 5,
+  "num": "5.12",
+  "objective": "explain the term efficiency",
+  "notes": "The factors which affect its value.",
+  "practical": "",
+  "id": "A5.12",
+  "topic": "ENERGY",
+  "verb": "explain",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 5,
+  "num": "5.13",
+  "objective": "calculate efficiency in given situations",
+  "notes": "Efficiency = output value x 100% input value.",
+  "practical": "",
+  "id": "A5.13",
+  "topic": "ENERGY",
+  "verb": "calculate",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 6,
+  "num": "6.1",
+  "objective": "define pressure and apply definition",
+  "notes": "Apply:𝑃 = . 𝐴 Refer to SO A3.5.  =𝑔",
+  "practical": "Pressure extended standing on one foot.",
+  "id": "A6.1",
+  "topic": "HYDROSTATICS",
+  "verb": "define",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 6,
+  "num": "6.2",
+  "objective": "relate the pressure at a point in a fluid to its depth and the density",
+  "notes": "Apply: 𝑝 ℎ (for fluid pressure); Nm-2. (Pascal) Pa  All points on the same horizontal level in a fluid at rest, have the same pressure.",
+  "practical": "Demonstrate using a can with holes at same and at different levels, to illustrate the principle.",
+  "id": "A6.2",
+  "topic": "HYDROSTATICS",
+  "verb": "relate",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "A",
+  "group": 6,
+  "num": "6.3",
+  "objective": "apply Archimedes’ principle to predict whether a body would float or sink in a given fluid",
+  "notes": "Relevant examples include rafts, boats, balloons, and submarines. Activities of the objectives of this Section, activities below. These to students with various learning called the \"father of modern the \"father of science”. Do to Science to earn him all AND KINETIC temperature and heat It helps us to capture of the theory of heat; to the kinetic theory of thermal quantities of thermal energy transfer. EXPLANATORY NOTES",
+  "practical": "Perform activities to check predictions. teachers are activities are designed styles. observational Astronomy\", group research projects these titles. THEORY transfer. It can be explained the different phases of matter. of matter; and the relationship between PRACTICAL ACTIVITIES",
+  "id": "A6.3",
+  "topic": "HYDROSTATICS",
+  "verb": "apply",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "B",
+  "group": 1,
+  "num": "1.1",
+  "objective": "differentiate between the caloric and kinetic theories of heat as they existed in the eighteenth century",
+  "notes": "Rumford’s cannon- boring experiments as evidence against the caloric theory.",
+  "practical": "Discussion.",
+  "id": "B1.1",
+  "topic": "NATURE OF HEAT",
+  "verb": "differentiate",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "B",
+  "group": 1,
+  "num": "1.2",
+  "objective": "discuss the role of Joule’s experiments in establishing the principle of conservation of energy",
+  "notes": "AND PHENOMENA",
+  "practical": "",
+  "id": "B1.2",
+  "topic": "NATURE OF HEAT",
+  "verb": "discuss",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "B",
+  "group": 2,
+  "num": "2.1",
+  "objective": "relate temperature to the direction of net thermal energy transfer",
+  "notes": "Temperature T, units.",
+  "practical": "",
+  "id": "B2.1",
+  "topic": "MACROSCOPIC PROPERTIES AND PHENOMENA",
+  "verb": "relate",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "B",
+  "group": 2,
+  "num": "2.2",
+  "objective": "identify physical properties which vary with temperature and may be used as the basis for measuring temperature",
+  "notes": "EXPLANATORY NOTES",
+  "practical": "Perform activities to observe change in length of liquid column with temperature. PRACTICAL ACTIVITIES",
+  "id": "B2.2",
+  "topic": "MACROSCOPIC PROPERTIES AND PHENOMENA",
+  "verb": "identify",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "B",
+  "group": 2,
+  "num": "2.3",
+  "objective": "relate the use of a thermometer to its design",
+  "notes": "Highlight design features which make a thermometer suitable for its particular task. Note temperature ranges for each.",
+  "practical": "Draw and explain design of: (a) laboratory; thermometer; (b) clinical thermometer (c) thermocouple.",
+  "id": "B2.3",
+  "topic": "MACROSCOPIC PROPERTIES AND PHENOMENA",
+  "verb": "relate",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "B",
+  "group": 2,
+  "num": "2.4",
+  "objective": "define the fixed points on the Celsius scale",
+  "notes": "Lower and upper fixed points.",
+  "practical": "",
+  "id": "B2.4",
+  "topic": "MACROSCOPIC PROPERTIES AND PHENOMENA",
+  "verb": "define",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "B",
+  "group": 2,
+  "num": "2.5",
+  "objective": "relate the temperature of a body to the kinetic energy of molecules",
+  "notes": "",
+  "practical": "",
+  "id": "B2.5",
+  "topic": "MACROSCOPIC PROPERTIES AND PHENOMENA",
+  "verb": "relate",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "B",
+  "group": 2,
+  "num": "2.6",
+  "objective": "distinguish among solids, liquids and gases",
+  "notes": "Note the differences with respect to inter- molecular forces, motion of molecules, shape and volume of matter.",
+  "practical": "",
+  "id": "B2.6",
+  "topic": "MACROSCOPIC PROPERTIES AND PHENOMENA",
+  "verb": "distinguish",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "B",
+  "group": 2,
+  "num": "2.7",
+  "objective": "use the Kinetic theory to explain the different macroscopic properties of solids, liquids and gases; Expansion",
+  "notes": "",
+  "practical": "Perform simple experiments to illustrate the existence of inter- molecular forces, for example, compression of a syringe containing a liquid.",
+  "id": "B2.7",
+  "topic": "MACROSCOPIC PROPERTIES AND PHENOMENA",
+  "verb": "use",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "B",
+  "group": 2,
+  "num": "2.8",
+  "objective": "explain observations of the effects of thermal expansion",
+  "notes": "Telephone lines. Application of thermal expansion, for example, opening jars, carbonated beverages, creaking roofs. EXPLANATORY NOTES",
+  "practical": "Demonstrations which illustrate expansion of solids, liquids, for example, ball and ring, bar breaking, bimetallic strip. PRACTICAL ACTIVITIES",
+  "id": "B2.8",
+  "topic": "MACROSCOPIC PROPERTIES AND PHENOMENA",
+  "verb": "explain",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "B",
+  "group": 2,
+  "num": "2.9",
+  "objective": "relate graphs of pressure or volume against temperature to the establishment of the Kelvin temperature scale",
+  "notes": "",
+  "practical": "Experiments to investigate the relationships among pressure, volume and temperature of a gas.",
+  "id": "B2.9",
+  "topic": "MACROSCOPIC PROPERTIES AND PHENOMENA",
+  "verb": "relate",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "B",
+  "group": 2,
+  "num": "2.10",
+  "objective": "use the relationship between the Kelvin and Celsius scales",
+  "notes": "",
+  "practical": "",
+  "id": "B2.10",
+  "topic": "MACROSCOPIC PROPERTIES AND PHENOMENA",
+  "verb": "use",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "B",
+  "group": 2,
+  "num": "2.11",
+  "objective": "apply the gas laws",
+  "notes": "(a) Boyle’s Law – PV=constant; (b) Charles’ Law – V= constant; T (c) Pressure Law – P = constant; T (d) General Gas Law - 𝑃𝑉 = constant. 𝑇",
+  "practical": "Virtual labs Use of trapped gas in sealed syringe; sealed U-tube.",
+  "id": "B2.11",
+  "topic": "MACROSCOPIC PROPERTIES AND PHENOMENA",
+  "verb": "apply",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "B",
+  "group": 2,
+  "num": "2.12",
+  "objective": "give qualitative explanations of the gas laws in terms of the Kinetic theory",
+  "notes": "Explain gas pressure in terms of molecular motion.",
+  "practical": "",
+  "id": "B2.12",
+  "topic": "MACROSCOPIC PROPERTIES AND PHENOMENA",
+  "verb": "give",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "B",
+  "group": 3,
+  "num": "3.1",
+  "objective": "distinguish between specific heat capacity, ‘c’ and heat capacity ‘C’",
+  "notes": "Note that specific heat capacity and heat capacity are related by the formula C = mc.",
+  "practical": "",
+  "id": "B3.1",
+  "topic": "THERMAL MEASUREMENTS",
+  "verb": "distinguish",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "B",
+  "group": 3,
+  "num": "3.2",
+  "objective": "apply the relationship EH = mc ΔT",
+  "notes": "EXPLANATORY NOTES",
+  "practical": "PRACTICAL ACTIVITIES",
+  "id": "B3.2",
+  "topic": "THERMAL MEASUREMENTS",
+  "verb": "apply",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "B",
+  "group": 3,
+  "num": "3.3",
+  "objective": "determine the specific heat capacity of metals and liquids",
+  "notes": "Use electrical method and method of mixtures.",
+  "practical": "Perform activities to measure specific heat capacity.",
+  "id": "B3.3",
+  "topic": "THERMAL MEASUREMENTS",
+  "verb": "determine",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "B",
+  "group": 3,
+  "num": "3.4",
+  "objective": "demonstrate that temperature remains constant during a phase change",
+  "notes": "",
+  "practical": "Perform cooling curve demonstration, for example, candle wax.",
+  "id": "B3.4",
+  "topic": "THERMAL MEASUREMENTS",
+  "verb": "demonstrate",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "B",
+  "group": 3,
+  "num": "3.5",
+  "objective": "apply the relationship EH = ml",
+  "notes": "",
+  "practical": "Perform activity to determine the specific latent heat of fusion of ice, using method of mixtures with a container of negligible heat capacity.",
+  "id": "B3.5",
+  "topic": "THERMAL MEASUREMENTS",
+  "verb": "apply",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "B",
+  "group": 3,
+  "num": "3.6",
+  "objective": "determine the specific latent heat of vaporisation and of fusion of water",
+  "notes": "Unit: Jkg1 Use an electrical method.",
+  "practical": "Perform activity to determine specific latent heat of fusion.",
+  "id": "B3.6",
+  "topic": "THERMAL MEASUREMENTS",
+  "verb": "determine",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "B",
+  "group": 3,
+  "num": "3.7",
+  "objective": "distinguish between evaporation and boiling",
+  "notes": "Use the Kinetic theory to explain evaporation and boiling. Give examples of application of cooling effect of evaporation - air conditioners, earthenware vessels, refrigerators, perspiration. EXPLANATORY NOTES ENERGY",
+  "practical": "PRACTICAL ACTIVITIES",
+  "id": "B3.7",
+  "topic": "THERMAL MEASUREMENTS",
+  "verb": "distinguish",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "B",
+  "group": 4,
+  "num": "4.1",
+  "objective": "explain the transfer of thermal energy by conduction",
+  "notes": "Relate the fact that air is a very poor conductor to the insulation properties of certain materials, for example, expanded polystyrene, hollow blocks. Refer to SO B2.6.",
+  "practical": "Perform activity to compare qualitatively the thermal conductivities of different solids.",
+  "id": "B4.1",
+  "topic": "TRANSFER OF THERMAL ENERGY",
+  "verb": "explain",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "B",
+  "group": 4,
+  "num": "4.2",
+  "objective": "explain the transfer of thermal energy by convection",
+  "notes": "Relate convection to common phenomena, for example, land and sea breezes.",
+  "practical": "Perform demonstrations to show convection in fluids.",
+  "id": "B4.2",
+  "topic": "TRANSFER OF THERMAL ENERGY",
+  "verb": "explain",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "B",
+  "group": 4,
+  "num": "4.3",
+  "objective": "explain the transfer of thermal energy by radiation",
+  "notes": "Recall that radiant energy is electromagnetic (infra-red).",
+  "practical": "Perform demonstration to show that radiant energy does not need a medium for transmission.",
+  "id": "B4.3",
+  "topic": "TRANSFER OF THERMAL ENERGY",
+  "verb": "explain",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "B",
+  "group": 4,
+  "num": "4.4",
+  "objective": "conduct experiments to investigate the factors on which absorption and emission of radiation depend",
+  "notes": "Factors limited to: (a) texture of surface (rough, smooth); (b) nature of surface (shiny, dull); (c) colour of surface (black, white); (d) area of surface.",
+  "practical": "Perform experiments to investigate such factors.",
+  "id": "B4.4",
+  "topic": "TRANSFER OF THERMAL ENERGY",
+  "verb": "conduct",
+  "profiles": [
+   "XS"
+  ]
+ },
+ {
+  "section": "B",
+  "group": 4,
+  "num": "4.5",
+  "objective": "recall that good absorbers are good emitters",
+  "notes": "Relate the phenomenon of radiation to common practices. EXPLANATORY NOTES",
+  "practical": "PRACTICAL ACTIVITIES",
+  "id": "B4.5",
+  "topic": "TRANSFER OF THERMAL ENERGY",
+  "verb": "recall",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "B",
+  "group": 4,
+  "num": "4.6",
+  "objective": "relate the principles of thermal energy transfer to the design of devices",
+  "notes": "Conduction, convection, radiation. Vacuum flask and solar water heater. Explanation of the glass house (green house) effect, including role of atmospheric CO 2. Global Warming. Activities of the objectives of this activities below. These to students with various learning Do a short research killing all persons on board. of infrared imaging. at http://www.usgs.gov/science/. use infrared vision a sketch of what the classroom Caribbean islands, note where countries where will heaters Physics. educational game in of zero Kelvin you get closer and closer and its use in modern OPTICS of Physics that deals with Light, which is electromagnetic is a means of transferring sound waves are produced of the electromagnetic spectrum; development of the theory facilitates the understanding EXPLANATORY NOTES",
+  "practical": "Section, teachers are advised activities are designed styles. paper on why the Columbia Highlight the role of thermodynamics Some examples can be and how does it help them? would look like through air conditioning units be located in a room? identifying the range of temperatures cannot be attained but very to that temperature. Design technology. wave processes. It is significant in origin, is fundamental energy and that there and propagated; of light; of reflection and PRACTICAL ACTIVITIES",
+  "id": "B4.6",
+  "topic": "TRANSFER OF THERMAL ENERGY",
+  "verb": "relate",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 1,
+  "num": "1.1",
+  "objective": "differentiate between types of waves",
+  "notes": "Pulses, progressive waves, transverse and longitudinal waves. EXPLANATORY NOTES",
+  "practical": "Production of waves using springs and in ripple tanks. Draw diagrams of: (a) transverse waves in ripple tank and slinky spring; (b) longitudinal wave in a slinky spring. Virtual simulations. PRACTICAL ACTIVITIES",
+  "id": "C1.1",
+  "topic": "WAVE MOTION",
+  "verb": "differentiate",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 1,
+  "num": "1.2",
+  "objective": "apply speed, frequency, wavelength, period and amplitude",
+  "notes": "Use:𝑣 = 𝑓 𝜆. Refer to SO D2.7.",
+  "practical": "Timing echoes.",
+  "id": "C1.2",
+  "topic": "WAVE MOTION",
+  "verb": "apply",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 1,
+  "num": "1.3",
+  "objective": "represent transverse and longitudinal waves in displacement- position and displacement-time graphs",
+  "notes": "Note: a progressive wave varies in both time and space simultaneously. To represent it on paper, either time or position must be held constant. Refer to SO D2.6.",
+  "practical": "Extract information about wave parameters from graphs representing waves.",
+  "id": "C1.3",
+  "topic": "WAVE MOTION",
+  "verb": "represent",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 2,
+  "num": "2.1",
+  "objective": "describe how sound is produced and propagated in a medium",
+  "notes": "Sound is transmitted as a longitudinal wave and is produced by vibrating systems.",
+  "practical": "Cup and string telephone. Different sounds produced by vibrating systems. For example, stretch rubber bands.",
+  "id": "C2.1",
+  "topic": "SOUND",
+  "verb": "describe",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 2,
+  "num": "2.2",
+  "objective": "relate the terms ‘pitch’ and ‘loudness’ to wave parameters",
+  "notes": "Pitch - frequency Loudness - amplitude. Recall the range of frequencies detectable by the normal human ear;",
+  "practical": "Playing drums and steel pan. Tuning forks. Using bottles with water at different heights.",
+  "id": "C2.2",
+  "topic": "SOUND",
+  "verb": "relate",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 2,
+  "num": "2.3",
+  "objective": "apply the speed of sound to practical situations",
+  "notes": "Thunder and lighting and the proximity of the strike. EXPLANATORY NOTES",
+  "practical": "Estimate the speed of sound in air using echoes. PRACTICAL ACTIVITIES",
+  "id": "C2.3",
+  "topic": "SOUND",
+  "verb": "apply",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 2,
+  "num": "2.4",
+  "objective": "cite evidence that sound waves reflect, refract, diffract and interfere",
+  "notes": "Reflect – echoes Refract – sound travelling from air to water. Diffract – hearing sound around corners/barriers. Interfere – sound systems.",
+  "practical": "",
+  "id": "C2.4",
+  "topic": "SOUND",
+  "verb": "cite",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 2,
+  "num": "2.5",
+  "objective": "describe the use of ultrasound",
+  "notes": "Definition of ultrasound; pre-natal and materials testing.",
+  "practical": "",
+  "id": "C2.5",
+  "topic": "SOUND",
+  "verb": "describe",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 3,
+  "num": "3.1",
+  "objective": "state the properties of e.m. waves",
+  "notes": "For example, travels same speed, are transverse and propagates in a vacuum.",
+  "practical": "",
+  "id": "C3.1",
+  "topic": "ELECTROMAGNETIC WAVES",
+  "verb": "state",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 3,
+  "num": "3.2",
+  "objective": "differentiate between types of e.m. waves in terms of their wavelengths",
+  "notes": "Radio, infrared, visible, ultraviolet, x-rays, Y- rays. Discuss the spectrum.",
+  "practical": "Research project.",
+  "id": "C3.2",
+  "topic": "ELECTROMAGNETIC WAVES",
+  "verb": "differentiate",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 3,
+  "num": "3.3",
+  "objective": "identify a source and use of each type of e.m. wave",
+  "notes": "",
+  "practical": "",
+  "id": "C3.3",
+  "topic": "ELECTROMAGNETIC WAVES",
+  "verb": "identify",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 4,
+  "num": "4.1",
+  "objective": "compare the rival theories of light held by scientists",
+  "notes": "Theories of Huygens, Newton, Young, Einstein. Recall that in the twentieth century experiments have provided evidence that light has both a particle and a wave nature. Knowledge of the photo-electric effect not required. Photo sensors, digital cameras. EXPLANATORY NOTES",
+  "practical": "PRACTICAL ACTIVITIES",
+  "id": "C4.1",
+  "topic": "LIGHT WAVES",
+  "verb": "compare",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 4,
+  "num": "4.2",
+  "objective": "conduct a Young’s double slit experiment to show that light is a wave",
+  "notes": "Diffraction and interference.",
+  "practical": "Young’s experiment looking at a straight filament lamp through a double slit. Ripple tank.",
+  "id": "C4.2",
+  "topic": "LIGHT WAVES",
+  "verb": "conduct",
+  "profiles": [
+   "XS"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 4,
+  "num": "4.3",
+  "objective": "explain why the diffraction of light is not normally observed",
+  "notes": "Wavelength comparable to the width of slit.",
+  "practical": "Use ripple tank. Observe diffraction with gaps of different widths.",
+  "id": "C4.3",
+  "topic": "LIGHT WAVES",
+  "verb": "explain",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 4,
+  "num": "4.4",
+  "objective": "apply the principle that light travels in straight lines",
+  "notes": "Use straight lines to represent beams. Shadows, eclipses, pin hole camera.",
+  "practical": "Demonstrate that light travels in straight lines. Construct a pin hole camera.",
+  "id": "C4.4",
+  "topic": "LIGHT WAVES",
+  "verb": "apply",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 4,
+  "num": "4.5",
+  "objective": "apply the laws of reflection",
+  "notes": "",
+  "practical": "Perform experiments to show the angle of incidence and the angle of reflection are equal.",
+  "id": "C4.5",
+  "topic": "LIGHT WAVES",
+  "verb": "apply",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 4,
+  "num": "4.6",
+  "objective": "describe the formation of images in a plane mirror",
+  "notes": "Object and image distances are equal. The image is virtual and the object size is equal to the image size.",
+  "practical": "Locate virtual image using: (a) ray plotting; (b) no parallax method. Construct diagrams to show the formation of virtual images.",
+  "id": "C4.6",
+  "topic": "LIGHT WAVES",
+  "verb": "describe",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 4,
+  "num": "4.7",
+  "objective": "give examples of observations which indicate that light can be refracted",
+  "notes": "Appearance of water on the road, apparent depth of swimming pool. Refraction occurs as a result of the change of speed of light. EXPLANATORY NOTES",
+  "practical": "Activities to illustrate refraction of light, for example, pencil in water. PRACTICAL ACTIVITIES",
+  "id": "C4.7",
+  "topic": "LIGHT WAVES",
+  "verb": "give",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 4,
+  "num": "4.8",
+  "objective": "describe the refraction of light rays",
+  "notes": "Recall that the passage of a ray of light through a rectangular block may results in lateral displacement of that ray.",
+  "practical": "Passage of light rays through: (a) rectangular blocks; (b) triangular prisms. Draw diagrams.",
+  "id": "C4.8",
+  "topic": "LIGHT WAVES",
+  "verb": "describe",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 4,
+  "num": "4.9",
+  "objective": "describe how a prism may be used to produce a spectrum",
+  "notes": "Use a source of white light. Newton’s experiment with prisms.",
+  "practical": "Demonstrate: (a) dispersion using a triangular prism. (b) rainbow.",
+  "id": "C4.9",
+  "topic": "LIGHT WAVES",
+  "verb": "describe",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 4,
+  "num": "4.10",
+  "objective": "apply Snell’s Law",
+  "notes": "Definition of refractive index. Reflection",
+  "practical": "Perform an experiment to test Snell’s Law.",
+  "id": "C4.10",
+  "topic": "LIGHT WAVES",
+  "verb": "apply",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 4,
+  "num": "4.11",
+  "objective": "explain ‘critical angle’ and ‘total internal reflection’",
+  "notes": "",
+  "practical": "Measure critical angle in glass or other transparent material. Use diagrams to illustrate.",
+  "id": "C4.11",
+  "topic": "LIGHT WAVES",
+  "verb": "explain",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 4,
+  "num": "4.12",
+  "objective": "relate critical angles to total internal reflection",
+  "notes": "Definition of total internal reflection.",
+  "practical": "",
+  "id": "C4.12",
+  "topic": "LIGHT WAVES",
+  "verb": "relate",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 4,
+  "num": "4.13",
+  "objective": "draw diagrams illustrating applications of total internal reflection",
+  "notes": "Periscope, fibre optic cable, endoscopes. EXPLANATORY NOTES",
+  "practical": "PRACTICAL ACTIVITIES",
+  "id": "C4.13",
+  "topic": "LIGHT WAVES",
+  "verb": "draw",
+  "profiles": [
+   "KC",
+   "UK"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 5,
+  "num": "5.1",
+  "objective": "illustrate the effect of converging and diverging lenses on a beam of parallel rays",
+  "notes": "Use ray boxes or virtual simulation.",
+  "practical": "Investigate the properties of converging and diverging lenses on a beam of parallel rays.",
+  "id": "C5.1",
+  "topic": "LENSES",
+  "verb": "illustrate",
+  "profiles": [
+   "KC",
+   "UK"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 5,
+  "num": "5.2",
+  "objective": "define the terms: (a) principal axis; (b) principal focus; (c) focal length; (d) focal plane; (e) magnification",
+  "notes": "",
+  "practical": "",
+  "id": "C5.2",
+  "topic": "LENSES",
+  "verb": "define",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 5,
+  "num": "5.3",
+  "objective": "differentiate between real and virtual images",
+  "notes": "",
+  "practical": "Perform experiments to locate real and virtual images and draw diagrams.",
+  "id": "C5.3",
+  "topic": "LENSES",
+  "verb": "differentiate",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 5,
+  "num": "5.4",
+  "objective": "apply the equations for magnification",
+  "notes": "Magnification = image size object size = image distance (v) object distance (u).",
+  "practical": "",
+  "id": "C5.4",
+  "topic": "LENSES",
+  "verb": "apply",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "C",
+  "group": 5,
+  "num": "5.5",
+  "objective": "determine the focal length of a converging lens",
+  "notes": "Use lens formula and scale diagram: 1 1 1 = + 𝑓 𝑢 𝑣 AND MAGNETISM Magnetism, we explore of electronics in phenomena; electricity is conducted; and the relations between of electrical circuits and of electronics in technology; associated with of electromagnetic phenomena. EXPLANATORY NOTES",
+  "practical": "Perform experiments to measure focal length of converging lens. electrical, magnetic and electromagnetic modern society is also introduced. them; components; magnets; PRACTICAL ACTIVITIES",
+  "id": "C5.5",
+  "topic": "LENSES",
+  "verb": "determine",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 1,
+  "num": "1.1",
+  "objective": "explain the charging of objects",
+  "notes": "Explain in terms of properties of electrons which are relatively free to move; charging of glass, perspex or polythene by rubbing with a dry cloth and explain in terms of electron transfer by friction.",
+  "practical": "Demonstrate 'charging by friction’.",
+  "id": "D1.1",
+  "topic": "ELECTROSTATICS",
+  "verb": "explain",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 1,
+  "num": "1.2",
+  "objective": "describe the forces that electric charges exert on each other",
+  "notes": "The forces between charges as a fundamental property of electric charges.",
+  "practical": "Perform simple activities to show that like charges repel and unlike charges attract.",
+  "id": "D1.2",
+  "topic": "ELECTROSTATICS",
+  "verb": "describe",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 1,
+  "num": "1.3",
+  "objective": "explain charging by induction",
+  "notes": "How a charged object can attract objects having zero net charge. EXPLANATORY NOTES",
+  "practical": "Perform simple experiment. PRACTICAL ACTIVITIES",
+  "id": "D1.3",
+  "topic": "ELECTROSTATICS",
+  "verb": "explain",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 1,
+  "num": "1.4",
+  "objective": "define an electric field",
+  "notes": "Draw the electric fields around and between point charges, and between charged parallel plates; Refer to other force fields such as gravitational and magnetic. Refer to SO A3.2; D6.7.",
+  "practical": "",
+  "id": "D1.4",
+  "topic": "ELECTROSTATICS",
+  "verb": "define",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 1,
+  "num": "1.5",
+  "objective": "describe one hazard and one useful application of static charge",
+  "notes": "Electrostatic painting; Lightning strikes, dust extraction, photocopying, static build up on vehicles. The effects of a local charged ionised atmosphere.",
+  "practical": "",
+  "id": "D1.5",
+  "topic": "ELECTROSTATICS",
+  "verb": "describe",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 2,
+  "num": "2.1",
+  "objective": "distinguish between conductors and insulators",
+  "notes": "Definitions, properties and classification.",
+  "practical": "Use a low voltage test circuit with lamp indicator to test different materials.",
+  "id": "D2.1",
+  "topic": "CURRENT ELECTRICITY",
+  "verb": "distinguish",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 2,
+  "num": "2.2",
+  "objective": "state that an electric current in a metal consists of a flow of electrons",
+  "notes": "In other conducting media an electric current may consist of the movement of both negative and positive charge carriers. For example, the use of silicon and germanium, in semi- conductors and electrolytes in batteries. EXPLANATORY NOTES",
+  "practical": "PRACTICAL ACTIVITIES",
+  "id": "D2.2",
+  "topic": "CURRENT ELECTRICITY",
+  "verb": "state",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 2,
+  "num": "2.3",
+  "objective": "differentiate between electron flow and conventional current",
+  "notes": "The convention behind current flow.",
+  "practical": "",
+  "id": "D2.3",
+  "topic": "CURRENT ELECTRICITY",
+  "verb": "differentiate",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 2,
+  "num": "2.4",
+  "objective": "state the unit of electrical current",
+  "notes": "Ampere, A.",
+  "practical": "",
+  "id": "D2.4",
+  "topic": "CURRENT ELECTRICITY",
+  "verb": "state",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 2,
+  "num": "2.5",
+  "objective": "apply the relationship Q = It",
+  "notes": "The unit of charge, the coulomb, can be obtained from this equation. Thus, 1 coulomb = 1 amp- second.",
+  "practical": "",
+  "id": "D2.5",
+  "topic": "CURRENT ELECTRICITY",
+  "verb": "apply",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 2,
+  "num": "2.6",
+  "objective": "differentiate between direct and alternating currents",
+  "notes": "Recognise that current reverses direction of flow in a.c. systems.",
+  "practical": "Draw current time or voltage time graphs to represent direct and alternating current simulations.",
+  "id": "D2.6",
+  "topic": "CURRENT ELECTRICITY",
+  "verb": "differentiate",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 2,
+  "num": "2.7",
+  "objective": "analyse current-time or voltage-time graphs",
+  "notes": "Use f = 1/T. Deduce the period and frequency of alternating currents or voltages. Refer to SO C1.2.",
+  "practical": "",
+  "id": "D2.7",
+  "topic": "CURRENT ELECTRICITY",
+  "verb": "analyse",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 3,
+  "num": "3.1",
+  "objective": "cite examples of the conversion of electrical energy to other forms and vice versa",
+  "notes": "Refer to SO A5.3. EXPLANATORY NOTES",
+  "practical": "Demonstrate energy conversions in the laboratory. PRACTICAL ACTIVITIES",
+  "id": "D3.1",
+  "topic": "ELECTRICAL QUANTITIES",
+  "verb": "cite",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 3,
+  "num": "3.2",
+  "objective": "apply the relationship V = E/Q",
+  "notes": "Definition of terms and their units.",
+  "practical": "",
+  "id": "D3.2",
+  "topic": "ELECTRICAL QUANTITIES",
+  "verb": "apply",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 3,
+  "num": "3.3",
+  "objective": "apply the relationship P =IV",
+  "notes": "Compare consistency of units for P=IV and P= E/t. Refer to SO A5.11.",
+  "practical": "",
+  "id": "D3.3",
+  "topic": "ELECTRICAL QUANTITIES",
+  "verb": "apply",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 3,
+  "num": "3.4",
+  "objective": "discuss the importance of conserving electrical energy and the means of doing so",
+  "notes": "Limited reserves of fossil fuel hence the need to conserve. Fluorescent, LED rather than incandescent lamps. Solar rather than electrical or gas water heaters. High efficiency refrigeration and air condition units.",
+  "practical": "",
+  "id": "D3.4",
+  "topic": "ELECTRICAL QUANTITIES",
+  "verb": "discuss",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 4,
+  "num": "4.1",
+  "objective": "use symbols to construct circuit diagrams",
+  "notes": "Refer to list of Graphical Symbols.",
+  "practical": "",
+  "id": "D4.1",
+  "topic": "CIRCUITS AND COMPONENTS",
+  "verb": "use",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 4,
+  "num": "4.2",
+  "objective": "differentiate between series and parallel circuits",
+  "notes": "Consider series, parallel and series- parallel combinations and polarity of devices. Simple series circuits with diode, resistor and instruments EXPLANATORY NOTES",
+  "practical": "Set up a simple circuit given a circuit diagram paying due regard to the polarity and suitability of components. PRACTICAL ACTIVITIES",
+  "id": "D4.2",
+  "topic": "CIRCUITS AND COMPONENTS",
+  "verb": "differentiate",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 4,
+  "num": "4.3",
+  "objective": "explain the functions of the various parts of a zinc-carbon cell",
+  "notes": "The parts of the cell and their functions. Mention the fact that there are other types of primary cells.",
+  "practical": "Draw a diagram.",
+  "id": "D4.3",
+  "topic": "CIRCUITS AND COMPONENTS",
+  "verb": "explain",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 4,
+  "num": "4.4",
+  "objective": "distinguish between primary and secondary cells",
+  "notes": "Comparison of characteristics such as: (a) terminal voltage; (b) maximum current; (c) internal resistance; (d) portability; (e) rechargeability.",
+  "practical": "",
+  "id": "D4.4",
+  "topic": "CIRCUITS AND COMPONENTS",
+  "verb": "distinguish",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 4,
+  "num": "4.5",
+  "objective": "draw a circuit diagram to show how a secondary cell can be recharged",
+  "notes": "Note polarity and charging voltage.",
+  "practical": "",
+  "id": "D4.5",
+  "topic": "CIRCUITS AND COMPONENTS",
+  "verb": "draw",
+  "profiles": [
+   "KC",
+   "UK"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 4,
+  "num": "4.6",
+  "objective": "investigate the relationship between current and potential difference",
+  "notes": "(a) Metallic conductors at constant temperature. (b) Filament lamps. (c) Semiconductor diodes. (d) Solutions of copper sulphate in water using copper electrodes. Refer to SO A1.4. EXPLANATORY NOTES",
+  "practical": "Perform these experiments. Draw I – V graphs from the result of such experiments and draw appropriate conclusions from the graphs obtained. PRACTICAL ACTIVITIES",
+  "id": "D4.6",
+  "topic": "CIRCUITS AND COMPONENTS",
+  "verb": "investigate",
+  "profiles": [
+   "XS"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 4,
+  "num": "4.7",
+  "objective": "explain the concept of resistance",
+  "notes": "Point out the fact that resistance varies with the current in some cases.",
+  "practical": "",
+  "id": "D4.7",
+  "topic": "CIRCUITS AND COMPONENTS",
+  "verb": "explain",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 4,
+  "num": "4.8",
+  "objective": "apply the relationship R = V / I",
+  "notes": "Ohm’s Law. Refer to SO D4.6.",
+  "practical": "Determine resistance using the formula V . R  I",
+  "id": "D4.8",
+  "topic": "CIRCUITS AND COMPONENTS",
+  "verb": "apply",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 4,
+  "num": "4.9",
+  "objective": "explain why it is necessary for an ammeter to have a very low resistance",
+  "notes": "",
+  "practical": "",
+  "id": "D4.9",
+  "topic": "CIRCUITS AND COMPONENTS",
+  "verb": "explain",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 4,
+  "num": "4.10",
+  "objective": "explain why it is necessary for a voltmeter to have a very high resistance",
+  "notes": "",
+  "practical": "",
+  "id": "D4.10",
+  "topic": "CIRCUITS AND COMPONENTS",
+  "verb": "explain",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 4,
+  "num": "4.11",
+  "objective": "solve problems involving series and parallel resistance",
+  "notes": "Use the formulae: R = R + R + R .... s 1 2 3 for resistors in series; and 1 1 1 1    ....... Rp R R R 1 2 3 for resistors in parallel; EXPLANATORY NOTES",
+  "practical": "PRACTICAL ACTIVITIES",
+  "id": "D4.11",
+  "topic": "CIRCUITS AND COMPONENTS",
+  "verb": "solve",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 4,
+  "num": "4.12",
+  "objective": "solve problems involving series, parallel and series- parallel circuits",
+  "notes": "Properties of current and potential difference (p.d.) in series and parallel circuits.",
+  "practical": "Set up a series circuit and measure current at various points. Set up a parallel circuit and measure current in the branches and on entry and exit. Set up a series circuit and measure p.d. across components. Set up a parallel circuit and measure p.d. across components.",
+  "id": "D4.12",
+  "topic": "CIRCUITS AND COMPONENTS",
+  "verb": "solve",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 4,
+  "num": "4.13",
+  "objective": "discuss the reasons for using parallel connections of domestic appliances",
+  "notes": "",
+  "practical": "",
+  "id": "D4.13",
+  "topic": "CIRCUITS AND COMPONENTS",
+  "verb": "discuss",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 4,
+  "num": "4.14",
+  "objective": "explain the purpose of a fuse or circuit breaker and the earth wire",
+  "notes": "Highlight safety issues. Include fuse in live wire.",
+  "practical": "",
+  "id": "D4.14",
+  "topic": "CIRCUITS AND COMPONENTS",
+  "verb": "explain",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 4,
+  "num": "4.15",
+  "objective": "select a fuse or circuit breaker of suitable current rating for a given appliance",
+  "notes": "",
+  "practical": "",
+  "id": "D4.15",
+  "topic": "CIRCUITS AND COMPONENTS",
+  "verb": "select",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 4,
+  "num": "4.16",
+  "objective": "state the adverse effects of connecting electrical appliances to incorrect or fluctuating voltage supplies",
+  "notes": "EXPLANATORY NOTES",
+  "practical": "PRACTICAL ACTIVITIES",
+  "id": "D4.16",
+  "topic": "CIRCUITS AND COMPONENTS",
+  "verb": "state",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 5,
+  "num": "5.1",
+  "objective": "describe how a semi- conductor diode can be used in half wave rectification",
+  "notes": "",
+  "practical": "Sketch V-t graphs to compare variation of voltage with time before or after rectification.",
+  "id": "D5.1",
+  "topic": "ELECTRONICS",
+  "verb": "describe",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 5,
+  "num": "5.2",
+  "objective": "differentiate between direct current from batteries and rectified alternating current by a consideration of their voltage-time graphs",
+  "notes": "",
+  "practical": "",
+  "id": "D5.2",
+  "topic": "ELECTRONICS",
+  "verb": "differentiate",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 5,
+  "num": "5.3",
+  "objective": "recall the symbols for AND, OR, NOT, NAND, NOR logic gates",
+  "notes": "Limited to two-input logic gates.",
+  "practical": "",
+  "id": "D5.3",
+  "topic": "ELECTRONICS",
+  "verb": "recall",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 5,
+  "num": "5.4",
+  "objective": "state the function of each gate with the aid of truth tables",
+  "notes": "Refer to SO D1.3 for similarity to electrical charges.",
+  "practical": "",
+  "id": "D5.4",
+  "topic": "ELECTRONICS",
+  "verb": "state",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 5,
+  "num": "5.5",
+  "objective": "analyze circuits involving the combinations of not more than three logic gates",
+  "notes": "Example: simple alarm circuits.",
+  "practical": "",
+  "id": "D5.5",
+  "topic": "ELECTRONICS",
+  "verb": "analyze",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 5,
+  "num": "5.6",
+  "objective": "discuss the impact of electronic and technological advances on society",
+  "notes": "EXPLANATORY NOTES",
+  "practical": "PRACTICAL ACTIVITIES",
+  "id": "D5.6",
+  "topic": "ELECTRONICS",
+  "verb": "discuss",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 6,
+  "num": "6.1",
+  "objective": "differentiate between magnetic and non-magnetic materials",
+  "notes": "",
+  "practical": "",
+  "id": "D6.1",
+  "topic": "MAGNETISM",
+  "verb": "differentiate",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 6,
+  "num": "6.2",
+  "objective": "explain how a magnet can attract an unmagnetised object",
+  "notes": "Refer to SO D1.3 for similarity to electrical charges.",
+  "practical": "",
+  "id": "D6.2",
+  "topic": "MAGNETISM",
+  "verb": "explain",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 6,
+  "num": "6.3",
+  "objective": "distinguish between materials used to make \"permanent\" and \"temporary\" magnets",
+  "notes": "Permanent magnets: steel and magnadur. Temporary magnets: iron and mumetal.",
+  "practical": "",
+  "id": "D6.3",
+  "topic": "MAGNETISM",
+  "verb": "distinguish",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 6,
+  "num": "6.4",
+  "objective": "identify the poles of a magnetic dipole",
+  "notes": "Alignment with the earth’s magnetic field.",
+  "practical": "Perform an activity to identify the poles of a magnetic dipole.",
+  "id": "D6.4",
+  "topic": "MAGNETISM",
+  "verb": "identify",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 6,
+  "num": "6.5",
+  "objective": "investigate the forces between magnetic poles",
+  "notes": "The effect of the polarity and separation of magnets on the magnitude of the force between them.",
+  "practical": "Use two strong magnets to investigate forces between like and unlike poles.",
+  "id": "D6.5",
+  "topic": "MAGNETISM",
+  "verb": "investigate",
+  "profiles": [
+   "XS"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 6,
+  "num": "6.6",
+  "objective": "define a magnetic field",
+  "notes": "A magnetic field line indicates the direction of the magnetic force acting on an N-pole; EXPLANATORY NOTES",
+  "practical": "PRACTICAL ACTIVITIES",
+  "id": "D6.6",
+  "topic": "MAGNETISM",
+  "verb": "define",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 6,
+  "num": "6.7",
+  "objective": "map magnetic fields",
+  "notes": "Familiarity with iron filings and plotting compass methods: (a) around a single strong magnet. (b) around and between two strong magnets. Oriented parallel and anti-parallel and pole to pole with each other.",
+  "practical": "Map the magnetic field using iron filings and plotting compass.",
+  "id": "D6.7",
+  "topic": "MAGNETISM",
+  "verb": "map",
+  "profiles": [
+   "XS"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 7,
+  "num": "7.1",
+  "objective": "conduct simple experiments to investigate the magnetic field pattern around current-carrying conductors",
+  "notes": "Straight conductors, flat coils, solenoids.",
+  "practical": "Map the fields for the given conductor. Sketch the magnetic flux patterns.",
+  "id": "D7.1",
+  "topic": "ELECTROMAGNETISM",
+  "verb": "conduct",
+  "profiles": [
+   "XS"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 7,
+  "num": "7.2",
+  "objective": "apply suitable rules which relate the direction of current flow to the direction of the magnetic field",
+  "notes": "Right hand grip rule, right hand screw rule.",
+  "practical": "",
+  "id": "D7.2",
+  "topic": "ELECTROMAGNETISM",
+  "verb": "apply",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 7,
+  "num": "7.3",
+  "objective": "describe a commercial application of an electromagnet",
+  "notes": "Example: Starter Motor. Magnetic Relay.",
+  "practical": "Construct a simple electromagnet.",
+  "id": "D7.3",
+  "topic": "ELECTROMAGNETISM",
+  "verb": "describe",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 7,
+  "num": "7.4",
+  "objective": "conduct an experiment which demonstrates the existence of a force on a current-carrying conductor placed in a magnetic field",
+  "notes": "EXPLANATORY NOTES",
+  "practical": "Demonstrate the force on the current carrying conductor in a magnetic field. PRACTICAL ACTIVITIES",
+  "id": "D7.4",
+  "topic": "ELECTROMAGNETISM",
+  "verb": "conduct",
+  "profiles": [
+   "XS"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 7,
+  "num": "7.5",
+  "objective": "sketch the resultant magnetic flux pattern when a current-carrying wire is placed perpendicular to a magnetic field",
+  "notes": "",
+  "practical": "",
+  "id": "D7.5",
+  "topic": "ELECTROMAGNETISM",
+  "verb": "sketch",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 7,
+  "num": "7.6",
+  "objective": "apply Fleming’s left- hand (motor) rule",
+  "notes": "Predict what will happen when current flow perpendicular to a uniform magnetic field. Refer to SO E3.5.",
+  "practical": "",
+  "id": "D7.6",
+  "topic": "ELECTROMAGNETISM",
+  "verb": "apply",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 7,
+  "num": "7.7",
+  "objective": "identify the factors that affect the force on a current-carrying conductor in a magnetic field",
+  "notes": "Strength of the field and on the magnitude of the current.",
+  "practical": "",
+  "id": "D7.7",
+  "topic": "ELECTROMAGNETISM",
+  "verb": "identify",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 7,
+  "num": "7.8",
+  "objective": "explain the action of a D.C. motor",
+  "notes": "",
+  "practical": "Draw a diagram of a simple D.C. electric motor. Appliances such as fans, mixers.",
+  "id": "D7.8",
+  "topic": "ELECTROMAGNETISM",
+  "verb": "explain",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 7,
+  "num": "7.9",
+  "objective": "describe simple activities which demonstrate an induced e.m.f",
+  "notes": "Coil and magnets; two coils.",
+  "practical": "Perform activities demonstrating induced e.m.f.",
+  "id": "D7.9",
+  "topic": "ELECTROMAGNETISM",
+  "verb": "describe",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 7,
+  "num": "7.10",
+  "objective": "conduct simple experiments to show the magnitude of the induced e.m.f",
+  "notes": "Effect of the rate of change of magnetic flux experienced by the conductor. EXPLANATORY NOTES",
+  "practical": "Perform experiments to investigate the factors which affect the magnitude of the induced e.m.f. PRACTICAL ACTIVITIES",
+  "id": "D7.10",
+  "topic": "ELECTROMAGNETISM",
+  "verb": "conduct",
+  "profiles": [
+   "XS"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 7,
+  "num": "7.11",
+  "objective": "predict the direction of induced current given the direction of motion of the conductor and that of the magnetic field",
+  "notes": "",
+  "practical": "",
+  "id": "D7.11",
+  "topic": "ELECTROMAGNETISM",
+  "verb": "predict",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 7,
+  "num": "7.12",
+  "objective": "explain the action of the A.C. generator",
+  "notes": "",
+  "practical": "Sketch graphs to represent the output from a simple A.C generator.",
+  "id": "D7.12",
+  "topic": "ELECTROMAGNETISM",
+  "verb": "explain",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 7,
+  "num": "7.13",
+  "objective": "explain the principle of operation of a transformer",
+  "notes": "Diagram of a simple transformer.",
+  "practical": "Construct a simple transformer.",
+  "id": "D7.13",
+  "topic": "ELECTROMAGNETISM",
+  "verb": "explain",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 7,
+  "num": "7.14",
+  "objective": "state the advantages of using a.c. for transferring electrical energy",
+  "notes": "",
+  "practical": "",
+  "id": "D7.14",
+  "topic": "ELECTROMAGNETISM",
+  "verb": "state",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "D",
+  "group": 7,
+  "num": "7.15",
+  "objective": "apply the ideal transformer formula",
+  "notes": "Transformer formulae to solve problems V N I s s p = = . V N I p p s OF THE ATOM studies the structure of the fields. Students will aware of its impact on society of atomic theory and the differ in atomic structure; of radioactivity and nuclear mass is associated of nuclear energy on society EXPLANATORY NOTES",
+  "practical": "Perform activities to show that for an ideal transformer V N I s s p = = . V N I p p s atom and the interaction of appreciate how energy can and the environment. concept of the nucleus; the safety measures when with the release of energy; and the environment. PRACTICAL ACTIVITIES",
+  "id": "D7.15",
+  "topic": "ELECTROMAGNETISM",
+  "verb": "apply",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "E",
+  "group": 1,
+  "num": "1.1",
+  "objective": "describe the work done in establishing the modern view of the atom",
+  "notes": "Include Thomson, Rutherford, Bohr, Chadwick.",
+  "practical": "",
+  "id": "E1.1",
+  "topic": "MODELS OF THE ATOM",
+  "verb": "describe",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "E",
+  "group": 1,
+  "num": "1.2",
+  "objective": "describe the Geiger- Marsden experiment",
+  "notes": "Establish the nuclear structure of the atom. Consider that the nucleus contains protons and neutrons of approximately equal mass.",
+  "practical": "",
+  "id": "E1.2",
+  "topic": "MODELS OF THE ATOM",
+  "verb": "describe",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "E",
+  "group": 2,
+  "num": "2.1",
+  "objective": "sketch the structure of simple atoms",
+  "notes": "Include the distribution of charge. EXPLANATORY NOTES",
+  "practical": "PRACTICAL ACTIVITIES",
+  "id": "E2.1",
+  "topic": "STRUCTURE OF THE ATOM",
+  "verb": "sketch",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "E",
+  "group": 2,
+  "num": "2.2",
+  "objective": "compare the mass and charge of the electron with the mass and charge of the proton",
+  "notes": "Mention could be made of the absolute values in kg and C.",
+  "practical": "",
+  "id": "E2.2",
+  "topic": "STRUCTURE OF THE ATOM",
+  "verb": "compare",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "E",
+  "group": 2,
+  "num": "2.3",
+  "objective": "explain why an atom is normally neutral and stable",
+  "notes": "",
+  "practical": "",
+  "id": "E2.3",
+  "topic": "STRUCTURE OF THE ATOM",
+  "verb": "explain",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "E",
+  "group": 2,
+  "num": "2.4",
+  "objective": "apply the relationship A = Z + N",
+  "notes": "Use of standard notation for representing a nuclide, 𝐴𝑋 example12𝐶. for 𝑍 6",
+  "practical": "",
+  "id": "E2.4",
+  "topic": "STRUCTURE OF THE ATOM",
+  "verb": "apply",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "E",
+  "group": 2,
+  "num": "2.5",
+  "objective": "explain what is meant by the term \"isotope\"",
+  "notes": "",
+  "practical": "",
+  "id": "E2.5",
+  "topic": "STRUCTURE OF THE ATOM",
+  "verb": "explain",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "E",
+  "group": 2,
+  "num": "2.6",
+  "objective": "relate the shell model of the atom to the periodic table",
+  "notes": "Any element in the periodic table has one more proton than an element before it.",
+  "practical": "",
+  "id": "E2.6",
+  "topic": "STRUCTURE OF THE ATOM",
+  "verb": "relate",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "E",
+  "group": 3,
+  "num": "3.1",
+  "objective": "describe Marie Curie’s work in the field of radioactivity",
+  "notes": "",
+  "practical": "Research biography.",
+  "id": "E3.1",
+  "topic": "RADIOACTIVITY",
+  "verb": "describe",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "E",
+  "group": 3,
+  "num": "3.2",
+  "objective": "state the nature of the three types of radioactive emissions",
+  "notes": "Relationship between radioactivity and nuclear instability.",
+  "practical": "Video simulation.",
+  "id": "E3.2",
+  "topic": "RADIOACTIVITY",
+  "verb": "state",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "E",
+  "group": 3,
+  "num": "3.3",
+  "objective": "describe experiments to compare the ranges of alpha, beta and gamma emissions",
+  "notes": "",
+  "practical": "",
+  "id": "E3.3",
+  "topic": "RADIOACTIVITY",
+  "verb": "describe",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "E",
+  "group": 3,
+  "num": "3.4",
+  "objective": "describe the appearance of the tracks of radioactive emissions in a cloud chamber",
+  "notes": "The details of the operation of the cloud chamber are not required. EXPLANATORY NOTES",
+  "practical": "PRACTICAL ACTIVITIES",
+  "id": "E3.4",
+  "topic": "RADIOACTIVITY",
+  "verb": "describe",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "E",
+  "group": 3,
+  "num": "3.5",
+  "objective": "predict the effects of magnetic and electric fields on the motion of alpha particles, beta particles and gamma rays",
+  "notes": "Refer to S.O.D7.7.",
+  "practical": "",
+  "id": "E3.5",
+  "topic": "RADIOACTIVITY",
+  "verb": "predict",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "E",
+  "group": 3,
+  "num": "3.6",
+  "objective": "interpret nuclear reactions in the standard form",
+  "notes": "226 222 4He Ra → Rn + 86 2 88 14 14 0e C → N + −1 7 6",
+  "practical": "",
+  "id": "E3.6",
+  "topic": "RADIOACTIVITY",
+  "verb": "interpret",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "E",
+  "group": 3,
+  "num": "3.7",
+  "objective": "conduct an activity to demonstrate the random nature of radioactive decay",
+  "notes": "Activity from which a radioactive decay curve can be obtained.",
+  "practical": "Perform analogue demonstrations to illustrate random processes, for example, throwing of dice, tossing of coins.",
+  "id": "E3.7",
+  "topic": "RADIOACTIVITY",
+  "verb": "conduct",
+  "profiles": [
+   "XS"
+  ]
+ },
+ {
+  "section": "E",
+  "group": 3,
+  "num": "3.8",
+  "objective": "recall that the decay process is independent of the conditions external to the nucleus",
+  "notes": "",
+  "practical": "",
+  "id": "E3.8",
+  "topic": "RADIOACTIVITY",
+  "verb": "recall",
+  "profiles": [
+   "KC"
+  ]
+ },
+ {
+  "section": "E",
+  "group": 3,
+  "num": "3.9",
+  "objective": "use graphs of random decay to show that such processes have constant half-lives",
+  "notes": "Definition of the term \"half-life\", T Use ½ more than one set of values from graph for comparison.",
+  "practical": "Plot graphs of demonstrations performed in SO 3.7.",
+  "id": "E3.9",
+  "topic": "RADIOACTIVITY",
+  "verb": "use",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "E",
+  "group": 3,
+  "num": "3.10",
+  "objective": "solve problems involving half-life",
+  "notes": "",
+  "practical": "",
+  "id": "E3.10",
+  "topic": "RADIOACTIVITY",
+  "verb": "solve",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "E",
+  "group": 3,
+  "num": "3.11",
+  "objective": "discuss the useful applications of radio- isotopes",
+  "notes": "Tracers. Medical and industrial applications. Carbon dating. EXPLANATORY NOTES",
+  "practical": "PRACTICAL ACTIVITIES",
+  "id": "E3.11",
+  "topic": "RADIOACTIVITY",
+  "verb": "discuss",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "E",
+  "group": 3,
+  "num": "3.12",
+  "objective": "relate the release of energy in a nuclear reaction to a change in mass",
+  "notes": "Application of Einstein’s equation: mc2. E = Include fission and fusion.",
+  "practical": "",
+  "id": "E3.12",
+  "topic": "RADIOACTIVITY",
+  "verb": "relate",
+  "profiles": [
+   "UK"
+  ]
+ },
+ {
+  "section": "E",
+  "group": 3,
+  "num": "3.13",
+  "objective": "cite arguments for and against the utilisation of nuclear energy",
+  "notes": "Cost of environmental impact; disposal; safety. Activities of the objectives of this activities below. These to students with various learning a play of the story of “Cold from fusion can only occur a class debate for and a short science fiction story to. a poster showing the uses highlighting the accomplishments field. research to ascertain What are the challenges",
+  "practical": "Section, teachers are advised activities are designed styles. Fusion” and its discovery. naturally in the sun. against the establishment of an Astronomer travelling of radiation in medicine. of Marie Curie if there are any scientists and opportunities for it in",
+  "id": "E3.13",
+  "topic": "RADIOACTIVITY",
+  "verb": "cite",
+  "profiles": [
+   "KC"
+  ]
+ }
+]

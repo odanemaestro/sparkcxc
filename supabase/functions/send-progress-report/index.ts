@@ -57,6 +57,7 @@ function looksLikePdfBase64(value: string): boolean {
 function reportHtml(args: {
   parentName: string;
   studentName: string;
+  subjectName: string;
   periodLabel: string;
   report: Record<string, unknown>;
 }): string {
@@ -73,6 +74,10 @@ function reportHtml(args: {
   const studyCircle = args.report.studyCircle && typeof args.report.studyCircle === "object"
     ? args.report.studyCircle as Record<string, unknown>
     : null;
+  const activityLabels = args.report.activityLabels && typeof args.report.activityLabels === "object"
+    ? args.report.activityLabels as Record<string, unknown>
+    : {};
+  const reportMetrics = safeList(args.report.metrics, 4);
 
   const skillRows = (rows: Array<Record<string, unknown>>) => rows.map(row =>
     `<li style="margin:4px 0"><strong>${escapeHtml(row.skill)}</strong> - ${Math.round(Number(row.score ?? row.mastery_score ?? 0))}%</li>`
@@ -80,6 +85,17 @@ function reportHtml(args: {
 
   const masteryAvailable = Number(summary.skillCount || 0) > 0;
   const examAvailable = Boolean(activity.hasExamAverage) || Number(activity.examsCompleted || 0) > 0;
+  const metrics = reportMetrics.length ? reportMetrics.map(item => ({
+    label: String(item.label || "Metric"),
+    value: String(item.value ?? "—"),
+  })) : [
+    { label: "Skill mastery", value: metric(summary.mastery, masteryAvailable) },
+    { label: String(activityLabels.examAverage || "Exam average"), value: metric(activity.examAverage, examAvailable) },
+    { label: String(activityLabels.questionsAttempted || "Questions attempted"), value: String(Number(activity.questionsAttempted || 0)) },
+    { label: "Lessons completed", value: String(Number(activity.lessonsCompleted || 0)) },
+  ];
+  const metricCells = metrics.slice(0, 4).map(item => `<td style="padding:10px;border:1px solid #e7edf4"><strong>${escapeHtml(item.value)}</strong><br><span style="color:#6b7c93;font-size:12px">${escapeHtml(item.label)}</span></td>`);
+  const metricRows = [metricCells.slice(0, 2), metricCells.slice(2, 4)].filter(row => row.length).map(row => `<tr>${row.join("")}</tr>`).join("");
 
   return `<!doctype html>
 <html><body style="margin:0;background:#f4f8fb;font-family:Arial,sans-serif;color:#15324b">
@@ -88,7 +104,7 @@ function reportHtml(args: {
       <div style="font-weight:800;font-size:22px">SPARK</div>
       <div style="color:#5eead4;font-size:12px;font-weight:800;letter-spacing:.08em;margin-top:4px">STUDENT PROGRESS REPORT</div>
       <h1 style="margin:20px 0 5px;font-size:25px">${escapeHtml(args.studentName)}</h1>
-      <div style="color:#d8e4f0">CSEC Mathematics · ${escapeHtml(args.periodLabel)}</div>
+      <div style="color:#d8e4f0">${escapeHtml(args.subjectName)} · ${escapeHtml(args.periodLabel)}</div>
     </div>
     <div style="background:#fff;border:1px solid #d7e2ee;border-top:0;border-radius:0 0 16px 16px;padding:26px">
       <p style="margin-top:0">Hi ${escapeHtml(args.parentName || "there")},</p>
@@ -97,12 +113,9 @@ function reportHtml(args: {
         <div style="font-size:11px;font-weight:800;color:#087f73;letter-spacing:.06em">SPARK INSIGHT</div>
         <p style="margin:7px 0 0;line-height:1.55">${escapeHtml(summary.insight || "SPARK is building a clearer picture as more learning activity is completed.")}</p>
       </div>
-      <table style="width:100%;border-collapse:collapse;margin:18px 0">
-        <tr><td style="padding:10px;border:1px solid #e7edf4"><strong>${metric(summary.mastery, masteryAvailable)}</strong><br><span style="color:#6b7c93;font-size:12px">Skill mastery</span></td><td style="padding:10px;border:1px solid #e7edf4"><strong>${metric(activity.examAverage, examAvailable)}</strong><br><span style="color:#6b7c93;font-size:12px">Exam average</span></td></tr>
-        <tr><td style="padding:10px;border:1px solid #e7edf4"><strong>${Number(activity.questionsAttempted || 0)}</strong><br><span style="color:#6b7c93;font-size:12px">Questions attempted</span></td><td style="padding:10px;border:1px solid #e7edf4"><strong>${Number(activity.lessonsCompleted || 0)}</strong><br><span style="color:#6b7c93;font-size:12px">Lessons completed</span></td></tr>
-      </table>
-      ${goal?.target_percent ? `<div style="background:#f7fafc;border:1px solid #e7edf4;border-radius:10px;padding:12px 14px;margin:16px 0"><strong>Learning goal</strong><div style="margin-top:5px;color:#52677a">Target ${Math.round(Number(goal.target_percent))}% in CSEC Mathematics${goal.target_date ? ` by ${escapeHtml(goal.target_date)}` : ""}</div></div>` : ""}
-      <div style="font-size:13px;color:#52677a;margin:14px 0"><strong style="color:#15324b">Study Circle:</strong> ${studyCircle?.active ? `Participating${Number(studyCircle.group_size || 0) > 0 ? ` in a ${Math.round(Number(studyCircle.group_size))}-student group` : ""}` : "Not currently active"}</div>
+      <table style="width:100%;border-collapse:collapse;margin:18px 0">${metricRows}</table>
+      ${goal?.target_percent ? `<div style="background:#f7fafc;border:1px solid #e7edf4;border-radius:10px;padding:12px 14px;margin:16px 0"><strong>Learning goal</strong><div style="margin-top:5px;color:#52677a">Target ${Math.round(Number(goal.target_percent))}%${goal.target_date ? ` by ${escapeHtml(goal.target_date)}` : ""}</div></div>` : ""}
+      ${studyCircle ? `<div style="font-size:13px;color:#52677a;margin:14px 0"><strong style="color:#15324b">Study Circle:</strong> ${studyCircle?.active ? `Participating${Number(studyCircle.group_size || 0) > 0 ? ` in a ${Math.round(Number(studyCircle.group_size))}-student group` : ""}` : "Not currently active"}</div>` : ""}
       <div style="display:block;margin:18px 0"><strong>Strongest areas</strong><ul>${skillRows(strongest) || "<li>More mastery data is needed.</li>"}</ul></div>
       <div style="display:block;margin:18px 0"><strong>Areas to improve</strong><ul>${skillRows(weakest) || "<li>No priority areas recorded yet.</li>"}</ul></div>
       <div style="display:block;margin:18px 0"><strong>Recommended next steps</strong><ol>${recommendations.map(item => `<li style="margin:5px 0">${escapeHtml(item)}</li>`).join("")}</ol></div>
@@ -142,6 +155,7 @@ Deno.serve(async (req: Request) => {
     const payload = await req.json() as Record<string, unknown>;
     const studentId = String(payload.student_id || "").trim();
     const periodLabel = String(payload.period_label || "Progress report").trim().slice(0, 100) || "Progress report";
+    const subjectName = String(payload.subject_name || "Learning progress").trim().slice(0, 120) || "Learning progress";
     const pdfBase64 = String(payload.pdf_base64 || "");
     const report = payload.report && typeof payload.report === "object" ? payload.report as Record<string, unknown> : {};
     if (!studentId || !pdfBase64) return json({ ok: false, error: "The report data is incomplete." }, 400);
@@ -175,7 +189,7 @@ Deno.serve(async (req: Request) => {
     }
     auditId = String(reservation || "") || null;
 
-    const subject = `SPARK progress report - ${studentProfile.name || "Student"}`;
+    const subject = `SPARK ${subjectName} progress report - ${studentProfile.name || "Student"}`;
     const resendResponse = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -189,11 +203,12 @@ Deno.serve(async (req: Request) => {
         html: reportHtml({
           parentName: parentProfile?.name || "Parent",
           studentName: studentProfile?.name || "Student",
+          subjectName,
           periodLabel,
           report,
         }),
         attachments: [{
-          filename: `SPARK_${String(studentProfile?.name || "Student").replace(/[^A-Za-z0-9]+/g, "_")}_Progress_Report.pdf`,
+          filename: `SPARK_${String(studentProfile?.name || "Student").replace(/[^A-Za-z0-9]+/g, "_")}_${subjectName.replace(/[^A-Za-z0-9]+/g, "_").slice(0, 48)}_Progress_Report.pdf`,
           content: pdfBase64,
         }],
       }),

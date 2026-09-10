@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import AdaptivePractice from "../adaptive/AdaptivePractice";
 import Paper1Exam from "./Paper1Exam";
 import Paper2Exam from "./Paper2Exam";
 import Syllabus2027Hub from "./Syllabus2027Hub";
+import PhysicsPracticeHub from "../physics/course/components/PhysicsPracticeHub";
+import SubjectSelectionView from "../subjects/SubjectSelectionView";
+import { getSparkSubjectRegistry, subjectsForCapability } from "../subjects/subjectRegistry";
 import { syncLocalPracticeResults } from "./persistence";
 import "./practiceExam.css";
 
@@ -20,7 +23,8 @@ function readJson(key, fallback) {
   }
 }
 
-export default function PracticeHub({ supabase, userId, setView }) {
+export default function PracticeHub({ supabase, userId, setView, physicsEnabled = false, initialSubject = null, onSubjectActivity }) {
+  const [subject, setSubject] = useState(initialSubject);
   const [mode, setMode] = useState("home");
   const [examIntent, setExamIntent] = useState("resume");
 
@@ -32,11 +36,41 @@ export default function PracticeHub({ supabase, userId, setView }) {
   const paper2Latest = paper2Results[0];
 
   useEffect(() => {
+    setSubject(initialSubject);
+    setMode("home");
+  }, [initialSubject]);
+
+  useEffect(() => {
     if (!supabase || !userId) return;
     const storedPaper1Results = readJson(PAPER1_RESULTS_KEY, []);
     const storedPaper2Results = readJson(PAPER2_RESULTS_KEY, []);
     syncLocalPracticeResults({ supabase, userId, paper1Results: storedPaper1Results, paper2Results: storedPaper2Results }).catch(() => {});
   }, [supabase, userId]);
+
+  const practiceSubjects = useMemo(
+    () => subjectsForCapability(getSparkSubjectRegistry({ physicsEnabled }), "practice"),
+    [physicsEnabled]
+  );
+
+  if (!subject) {
+    return <SubjectSelectionView
+      eyebrow="Practice"
+      title="Choose a subject"
+      description="Select the CSEC subject you want to practise. Each subject only shows assessment modes supported by its current content."
+      capability="practice"
+      subjects={practiceSubjects}
+      onSelect={item => { setMode("home"); setView?.(item.id === "physics" ? "practice-physics" : "practice-math"); }}
+      onBack={() => setView?.("dashboard")}
+    />;
+  }
+
+  if (subject === "physics") {
+    return <PhysicsPracticeHub
+      userId={userId}
+      onBack={() => { setMode("home"); setView?.("practice"); }}
+      onActivity={onSubjectActivity}
+    />;
+  }
 
   if (mode === "adaptive") {
     return <AdaptivePractice supabase={supabase} userId={userId} setView={() => setMode("home")} backLabel="← Back to Practice" />;
@@ -62,7 +96,7 @@ export default function PracticeHub({ supabase, userId, setView }) {
           <h1>Practise under examination conditions.</h1>
           <p>Select a full Paper 1 or Paper 2 examination, or practise a selected topic.</p>
         </div>
-        <button className="practice-back" type="button" onClick={() => setView?.("dashboard")}>Back to dashboard</button>
+        <button className="practice-back" type="button" onClick={() => { setMode("home"); setView?.("practice"); }}>← Change subject</button>
       </section>
 
       <section className="practice-mode-grid practice-mode-grid-three">

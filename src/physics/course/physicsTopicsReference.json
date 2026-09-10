@@ -1,0 +1,441 @@
+[
+ {
+  "id": "A1",
+  "section": "A",
+  "sectionName": "Mechanics",
+  "no": 1,
+  "title": "Scientific Method and Measurement",
+  "objectiveIds": [
+   "A1.1",
+   "A1.2",
+   "A1.3",
+   "A1.4",
+   "A1.5",
+   "A1.6",
+   "A1.7",
+   "A1.8",
+   "A1.9",
+   "A1.10"
+  ],
+  "objectiveCount": 10
+ },
+ {
+  "id": "A2",
+  "section": "A",
+  "sectionName": "Mechanics",
+  "no": 2,
+  "title": "Vectors",
+  "objectiveIds": [
+   "A2.1",
+   "A2.2",
+   "A2.3",
+   "A2.4"
+  ],
+  "objectiveCount": 4
+ },
+ {
+  "id": "A3",
+  "section": "A",
+  "sectionName": "Mechanics",
+  "no": 3,
+  "title": "Statics",
+  "objectiveIds": [
+   "A3.1",
+   "A3.2",
+   "A3.3",
+   "A3.4",
+   "A3.5",
+   "A3.6",
+   "A3.7",
+   "A3.8",
+   "A3.9",
+   "A3.10",
+   "A3.11",
+   "A3.12",
+   "A3.13",
+   "A3.14"
+  ],
+  "objectiveCount": 14
+ },
+ {
+  "id": "A4",
+  "section": "A",
+  "sectionName": "Mechanics",
+  "no": 4,
+  "title": "Kinematics and Dynamics",
+  "objectiveIds": [
+   "A4.1",
+   "A4.2",
+   "A4.3",
+   "A4.4",
+   "A4.5",
+   "A4.6",
+   "A4.7",
+   "A4.8"
+  ],
+  "objectiveCount": 8
+ },
+ {
+  "id": "A5",
+  "section": "A",
+  "sectionName": "Mechanics",
+  "no": 5,
+  "title": "Energy",
+  "objectiveIds": [
+   "A5.1",
+   "A5.2",
+   "A5.3",
+   "A5.4",
+   "A5.5",
+   "A5.6",
+   "A5.7",
+   "A5.8",
+   "A5.9",
+   "A5.10",
+   "A5.11",
+   "A5.12",
+   "A5.13"
+  ],
+  "objectiveCount": 13
+ },
+ {
+  "id": "A6",
+  "section": "A",
+  "sectionName": "Mechanics",
+  "no": 6,
+  "title": "Hydrostatics",
+  "objectiveIds": [
+   "A6.1",
+   "A6.2",
+   "A6.3"
+  ],
+  "objectiveCount": 3
+ },
+ {
+  "id": "B1",
+  "section": "B",
+  "sectionName": "Thermal Physics and Kinetic Theory",
+  "no": 1,
+  "title": "Nature of Heat",
+  "objectiveIds": [
+   "B1.1",
+   "B1.2"
+  ],
+  "objectiveCount": 2
+ },
+ {
+  "id": "B2",
+  "section": "B",
+  "sectionName": "Thermal Physics and Kinetic Theory",
+  "no": 2,
+  "title": "Macroscopic Properties and Phenomena",
+  "objectiveIds": [
+   "B2.1",
+   "B2.2",
+   "B2.3",
+   "B2.4",
+   "B2.5",
+   "B2.6",
+   "B2.7",
+   "B2.8",
+   "B2.9",
+   "B2.10",
+   "B2.11",
+   "B2.12"
+  ],
+  "objectiveCount": 12
+ },
+ {
+  "id": "B3",
+  "section": "B",
+  "sectionName": "Thermal Physics and Kinetic Theory",
+  "no": 3,
+  "title": "Thermal Measurements",
+  "objectiveIds": [
+   "B3.1",
+   "B3.2",
+   "B3.3",
+   "B3.4",
+   "B3.5",
+   "B3.6",
+   "B3.7"
+  ],
+  "objectiveCount": 7
+ },
+ {
+  "id": "B4",
+  "section": "B",
+  "sectionName": "Thermal Physics and Kinetic Theory",
+  "no": 4,
+  "title": "Transfer of Thermal Energy",
+  "objectiveIds": [
+   "B4.1",
+   "B4.2",
+   "B4.3",
+   "B4.4",
+   "B4.5",
+   "B4.6"
+  ],
+  "objectiveCount": 6
+ },
+ {
+  "id": "C1",
+  "section": "C",
+  "sectionName": "Waves and Optics",
+  "no": 1,
+  "title": "Wave Motion",
+  "objectiveIds": [
+   "C1.1",
+   "C1.2",
+   "C1.3"
+  ],
+  "objectiveCount": 3
+ },
+ {
+  "id": "C2",
+  "section": "C",
+  "sectionName": "Waves and Optics",
+  "no": 2,
+  "title": "Sound",
+  "objectiveIds": [
+   "C2.1",
+   "C2.2",
+   "C2.3",
+   "C2.4",
+   "C2.5"
+  ],
+  "objectiveCount": 5
+ },
+ {
+  "id": "C3",
+  "section": "C",
+  "sectionName": "Waves and Optics",
+  "no": 3,
+  "title": "Electromagnetic Waves",
+  "objectiveIds": [
+   "C3.1",
+   "C3.2",
+   "C3.3"
+  ],
+  "objectiveCount": 3
+ },
+ {
+  "id": "C4",
+  "section": "C",
+  "sectionName": "Waves and Optics",
+  "no": 4,
+  "title": "Light Waves",
+  "objectiveIds": [
+   "C4.1",
+   "C4.2",
+   "C4.3",
+   "C4.4",
+   "C4.5",
+   "C4.6",
+   "C4.7",
+   "C4.8",
+   "C4.9",
+   "C4.10",
+   "C4.11",
+   "C4.12",
+   "C4.13"
+  ],
+  "objectiveCount": 13
+ },
+ {
+  "id": "C5",
+  "section": "C",
+  "sectionName": "Waves and Optics",
+  "no": 5,
+  "title": "Lenses",
+  "objectiveIds": [
+   "C5.1",
+   "C5.2",
+   "C5.3",
+   "C5.4",
+   "C5.5"
+  ],
+  "objectiveCount": 5
+ },
+ {
+  "id": "D1",
+  "section": "D",
+  "sectionName": "Electricity and Magnetism",
+  "no": 1,
+  "title": "Electrostatics",
+  "objectiveIds": [
+   "D1.1",
+   "D1.2",
+   "D1.3",
+   "D1.4",
+   "D1.5"
+  ],
+  "objectiveCount": 5
+ },
+ {
+  "id": "D2",
+  "section": "D",
+  "sectionName": "Electricity and Magnetism",
+  "no": 2,
+  "title": "Current Electricity",
+  "objectiveIds": [
+   "D2.1",
+   "D2.2",
+   "D2.3",
+   "D2.4",
+   "D2.5",
+   "D2.6",
+   "D2.7"
+  ],
+  "objectiveCount": 7
+ },
+ {
+  "id": "D3",
+  "section": "D",
+  "sectionName": "Electricity and Magnetism",
+  "no": 3,
+  "title": "Electrical Quantities",
+  "objectiveIds": [
+   "D3.1",
+   "D3.2",
+   "D3.3",
+   "D3.4"
+  ],
+  "objectiveCount": 4
+ },
+ {
+  "id": "D4",
+  "section": "D",
+  "sectionName": "Electricity and Magnetism",
+  "no": 4,
+  "title": "Circuits and Components",
+  "objectiveIds": [
+   "D4.1",
+   "D4.2",
+   "D4.3",
+   "D4.4",
+   "D4.5",
+   "D4.6",
+   "D4.7",
+   "D4.8",
+   "D4.9",
+   "D4.10",
+   "D4.11",
+   "D4.12",
+   "D4.13",
+   "D4.14",
+   "D4.15",
+   "D4.16"
+  ],
+  "objectiveCount": 16
+ },
+ {
+  "id": "D5",
+  "section": "D",
+  "sectionName": "Electricity and Magnetism",
+  "no": 5,
+  "title": "Electronics",
+  "objectiveIds": [
+   "D5.1",
+   "D5.2",
+   "D5.3",
+   "D5.4",
+   "D5.5",
+   "D5.6"
+  ],
+  "objectiveCount": 6
+ },
+ {
+  "id": "D6",
+  "section": "D",
+  "sectionName": "Electricity and Magnetism",
+  "no": 6,
+  "title": "Magnetism",
+  "objectiveIds": [
+   "D6.1",
+   "D6.2",
+   "D6.3",
+   "D6.4",
+   "D6.5",
+   "D6.6",
+   "D6.7"
+  ],
+  "objectiveCount": 7
+ },
+ {
+  "id": "D7",
+  "section": "D",
+  "sectionName": "Electricity and Magnetism",
+  "no": 7,
+  "title": "Electromagnetism",
+  "objectiveIds": [
+   "D7.1",
+   "D7.2",
+   "D7.3",
+   "D7.4",
+   "D7.5",
+   "D7.6",
+   "D7.7",
+   "D7.8",
+   "D7.9",
+   "D7.10",
+   "D7.11",
+   "D7.12",
+   "D7.13",
+   "D7.14",
+   "D7.15"
+  ],
+  "objectiveCount": 15
+ },
+ {
+  "id": "E1",
+  "section": "E",
+  "sectionName": "The Physics of the Atom",
+  "no": 1,
+  "title": "Models of the Atom",
+  "objectiveIds": [
+   "E1.1",
+   "E1.2"
+  ],
+  "objectiveCount": 2
+ },
+ {
+  "id": "E2",
+  "section": "E",
+  "sectionName": "The Physics of the Atom",
+  "no": 2,
+  "title": "Structure of the Atom",
+  "objectiveIds": [
+   "E2.1",
+   "E2.2",
+   "E2.3",
+   "E2.4",
+   "E2.5",
+   "E2.6"
+  ],
+  "objectiveCount": 6
+ },
+ {
+  "id": "E3",
+  "section": "E",
+  "sectionName": "The Physics of the Atom",
+  "no": 3,
+  "title": "Radioactivity",
+  "objectiveIds": [
+   "E3.1",
+   "E3.2",
+   "E3.3",
+   "E3.4",
+   "E3.5",
+   "E3.6",
+   "E3.7",
+   "E3.8",
+   "E3.9",
+   "E3.10",
+   "E3.11",
+   "E3.12",
+   "E3.13"
+  ],
+  "objectiveCount": 13
+ }
+]

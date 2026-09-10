@@ -39,6 +39,7 @@ export function collectStudyActivityDays({
   flashcardReviewEvents = [],
   flashcardProgress = [],
   milestones = [],
+  subjectProgress = [],
 } = {}) {
   const days = new Set();
 
@@ -54,6 +55,16 @@ export function collectStudyActivityDays({
   addRows(days, flashcardProgress, ["last_reviewed_at", "updated_at"]);
   // Topic tests, Adaptive Practice completion and other learning milestones.
   addRows(days, milestones, ["created_at", "completed_at"]);
+  // Subject-neutral progress, including Physics and future SPARK subjects.
+  // A one-time local backfill can create a snapshot today even when the original
+  // learning date was never stored. Do not turn that migration timestamp into a
+  // fake study day. Real subject events, or backfills carrying their original
+  // metadata.at timestamp, still count normally.
+  const datedSubjectProgress = (subjectProgress || []).filter(row => {
+    if (!row?.metadata?.backfilled) return true;
+    return Boolean(row?.occurred_at || row?.metadata?.at);
+  });
+  addRows(days, datedSubjectProgress, ["occurred_at", "updated_at", "created_at", "first_recorded_at"]);
 
   return days;
 }

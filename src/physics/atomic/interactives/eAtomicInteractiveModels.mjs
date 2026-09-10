@@ -1,0 +1,11 @@
+import { atomicComposition, alphaDaughter, betaMinusDaughter, amountAfterTime, massEnergy, fieldDeflection, decaySeries, RADIATION_PROPERTIES } from '../eAtomicPhysics.mjs';
+export const buildScatteringModel=({impact=0.5}={})=>{const x=Math.max(0,Math.min(1,Number(impact)));return{deflectionDeg:Math.round((1-x)**2*170),conclusion:x>0.75?'mostly straight through':'large deflection requires a concentrated positive nucleus'};};
+export const buildAtomModel=({A=23,Z=11,charge=0}={})=>atomicComposition({A,Z,charge});
+export const buildIsotopeModel=({Z=6,N=8}={})=>({A:Number(Z)+Number(N),Z:Number(Z),N:Number(N),sameElementKey:Number(Z)});
+export const buildRadiationModel=({type='alpha'}={})=>({type,...RADIATION_PROPERTIES[String(type).toLowerCase()]});
+export const buildDeflectionModel=({type='alpha'}={})=>fieldDeflection(type);
+export const buildNuclearEquationModel=({mode='alpha',A=226,Z=88}={})=>mode==='beta'?betaMinusDaughter({A,Z}):alphaDaughter({A,Z});
+export const buildDecayModel=({initial=600,throws=8,probability=1/6}={})=>({series:decaySeries({initial,throws,removalProbability:probability}),initial:Number(initial),throws:Number(throws)});
+export const buildHalfLifeModel=({initial=1600,elapsed=6,halfLife=2}={})=>({remaining:amountAfterTime({initial,elapsed,halfLife}),halfLives:Number(elapsed)/Number(halfLife)});
+export const buildMassEnergyModel=({massMicrogram=2}={})=>{const kg=Number(massMicrogram)*1e-9;return{massKg:kg,energyJ:massEnergy({massKg:kg})};};
+export const buildNuclearEnergyBalance=({benefits=2,risks=2}={})=>({balanced:Number(benefits)>0&&Number(risks)>0,benefits:Number(benefits),risks:Number(risks)});

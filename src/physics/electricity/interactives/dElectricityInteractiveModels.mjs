@@ -1,0 +1,12 @@
+import {chargeFromCurrentTime,frequencyFromPeriod,electricalPower,electricalEnergy,seriesResistance,parallelResistance,applianceCurrent,idealTransformerVoltage,idealTransformerCurrent,logicGate,magneticPoleForce,motorForceFactor,inducedEmfIndex} from '../dElectricityPhysics.mjs';
+export const buildChargeModel=({currentA=2,timeS=30})=>({currentA,timeS,chargeC:chargeFromCurrentTime({currentA,timeS})});
+export const buildACModel=({periodS=.02,peakV=120})=>({periodS,peakV,frequencyHz:frequencyFromPeriod(periodS)});
+export const buildPowerModel=({voltageV=12,currentA=2,timeS=60})=>({voltageV,currentA,timeS,powerW:electricalPower({voltageV,currentA}),energyJ:electricalEnergy({powerW:electricalPower({voltageV,currentA}),timeS})});
+export const buildOhmModel=({voltageV=6,resistanceOhm=12})=>({voltageV,resistanceOhm,currentA:voltageV/resistanceOhm});
+export const buildNetworkModel=({r1=6,r2=3,mode='parallel'})=>({r1,r2,mode,equivalentOhm:mode==='series'?seriesResistance([r1,r2]):parallelResistance([r1,r2])});
+export const buildSafetyModel=({powerW=1200,voltageV=120})=>({powerW,voltageV,currentA:applianceCurrent({powerW,voltageV})});
+export const buildLogicModel=({gate='AND',a=1,b=1})=>({gate,a,b,output:logicGate(gate,a,b)});
+export const buildMagnetModel=({poleA='N',poleB='S'})=>({poleA,poleB,force:magneticPoleForce(poleA,poleB)});
+export const buildMotorModel=({fieldT=.2,currentA=3,lengthM=.1})=>({fieldT,currentA,lengthM,forceIndex:motorForceFactor({fieldT,currentA,lengthM})});
+export const buildInductionModel=({fieldT=.4,lengthM=.2,speedMps=5})=>({fieldT,lengthM,speedMps,emfIndex:inducedEmfIndex({fieldT,lengthM,speedMps})});
+export const buildTransformerModel=({primaryV=240,primaryTurns=200,secondaryTurns=50,primaryCurrentA=2})=>{const secondaryV=idealTransformerVoltage({primaryV,primaryTurns,secondaryTurns});return{primaryV,primaryTurns,secondaryTurns,primaryCurrentA,secondaryV,secondaryCurrentA:idealTransformerCurrent({primaryV,primaryCurrentA,secondaryV})}};

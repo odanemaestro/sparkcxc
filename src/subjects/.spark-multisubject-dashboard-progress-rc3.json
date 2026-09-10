@@ -1,0 +1,7 @@
+{
+  "id": "spark-multisubject-dashboard-progress-rc3",
+  "version": 3,
+  "release": "RC3",
+  "scope": "dashboard restoration, progress navigation fixes, learner-specific parent wording, and Physics Paper 2 simulator",
+  "requires": "spark-multisubject-dashboard-progress-rc2"
+}

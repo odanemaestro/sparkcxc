@@ -1,0 +1,7 @@
+{
+  "id": "spark-multisubject-dashboard-progress-rc2",
+  "version": 2,
+  "release": "RC2",
+  "scope": "student-selected subject enrollment and one overall SPARK learning goal",
+  "requires": "spark-multisubject-dashboard-progress-rc1"
+}

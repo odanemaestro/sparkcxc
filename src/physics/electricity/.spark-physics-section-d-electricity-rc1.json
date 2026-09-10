@@ -1,0 +1,13 @@
+{
+  "package": "SPARK_Physics_SectionD_Electricity_Assessment_RC1",
+  "section": "D",
+  "topics": 7,
+  "objectives": 60,
+  "mcq": 240,
+  "flashcards": 180,
+  "structuredQuestions": 17,
+  "structuredMarks": 180,
+  "interactives": 17,
+  "checkpointQuestions": 30,
+  "databaseMigration": false
+}

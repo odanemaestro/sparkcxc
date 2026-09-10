@@ -1,0 +1,12 @@
+{
+  "package": "SPARK_Physics_SectionA_Mechanics_RC1",
+  "section": "A",
+  "subject": "CSEC Physics",
+  "topics": 6,
+  "objectives": 52,
+  "mcq": 242,
+  "flashcards": 154,
+  "interactives": 26,
+  "progressVersion": 2,
+  "featureFlag": "REACT_APP_ENABLE_PHYSICS_SECTION_A"
+}
