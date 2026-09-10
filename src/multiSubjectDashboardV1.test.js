@@ -76,7 +76,7 @@ describe("SPARK multi-subject dashboard and progress v1", () => {
   });
 
   test("cross-subject rewards do not add Physics attempts to Mathematics accuracy counts", () => {
-    const questionCountsBlock = migration.match(/question_counts as \(([\s\S]*?)\),\nsubject_practice as/i)?.[1] || "";
+	const questionCountsBlock = migration.match(/question_counts as \(([\s\S]*?)\),\s*subject_practice as/i)?.[1] || "";
     expect(questionCountsBlock).toMatch(/from public\.csec_question_attempts/i);
     expect(questionCountsBlock).toMatch(/correct_questions/i);
     expect(questionCountsBlock).not.toMatch(/spark_subject_activity_events/i);
