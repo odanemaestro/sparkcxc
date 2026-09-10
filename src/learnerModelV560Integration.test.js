@@ -17,7 +17,8 @@ describe("SPARK V5.6.0 learner model integration", () => {
 
   test("student and parent dashboards load explainable learner state", () => {
     expect(app).toContain('from("spark_learner_skill_state")');
-    expect(app).toContain('learnerModel={studentLearnerModel}');
+    expect(app).toContain("dashboardSubjectInsights");
+    expect(app).toContain("studentLearnerModel.focus.skill");
     expect(app).toContain('learnerModel={parentLearnerModel}');
     expect(student).toContain("Recurring issue:");
     expect(parent).toContain("What SPARK is seeing");

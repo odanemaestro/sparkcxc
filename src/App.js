@@ -1,5 +1,5 @@
 // ============================================================================
-// SPARK - CSEC Mathematics study app
+// SPARK - CSEC learning platform
 // Done by: Odane Robinson
 //
 // This file is the main application shell: authentication, navigation,
@@ -26,6 +26,23 @@
 import React, { useState, useEffect, useCallback, useRef, useLayoutEffect } from "react";
 import { createPortal } from "react-dom";
 import PracticeHub from "./practice/PracticeHub";
+// SPARK_PHYSICS_SECTION_A_RC1_IMPORTS
+import PhysicsSubjectView from "./physics/course/components/PhysicsSubjectView";
+import { PhysicsMechanicsFlashcardsPanel } from "./physics/mechanics/components/PhysicsMechanicsSupportPanels";
+import SubjectSelectionView, { SubjectChangeButton } from "./subjects/SubjectSelectionView";
+import { getSparkSubjectRegistry, subjectsForCapability, getSparkSubject, enabledSparkSubjects, subjectsForEnrollmentIds } from "./subjects/subjectRegistry";
+import { sectionAStats as getPhysicsSectionAStats } from "./physics/mechanics/sectionAMechanics.mjs";
+import { physicsFullCourseStats } from "./physics/course/fullCourseIndex.mjs";
+import { physicsSectionAEnabled } from "./physics/mechanics/physicsFeatureGate.mjs";
+import {
+  readLocalPhysicsSubjectRows,
+  mergeSubjectProgressRows,
+  buildSubjectDashboardSummaries,
+  summarizeAllSubjects,
+  recordPhysicsSubjectActivity,
+  syncPhysicsLocalProgress,
+  buildRecentSubjectActivity,
+} from "./subjects/subjectProgress";
 import MathText from "./practice/MathText";
 import {
   LESSONS, SYLLABUS_SECTIONS, QUESTION_BANK,
@@ -53,7 +70,13 @@ import Icon from "./components/ui/Icon";
 import StudyCirclesPanel from "./components/studyCircles/StudyCirclesPanel";
 import NotificationCenter from "./components/notifications/NotificationCenter";
 import FlashcardsPanel from "./components/learning/FlashcardsPanel";
-import StudentOverviewIntelligence from "./components/learning/StudentOverviewIntelligence";
+import SubjectDashboardOverview from "./components/learning/SubjectDashboardOverview";
+import SubjectProgressDetail from "./components/learning/SubjectProgressDetail";
+import AllSubjectsProgress from "./components/learning/AllSubjectsProgress";
+import StudentGoalCard from "./components/learning/StudentGoalCard";
+import StudentDashboardSupportCards from "./components/learning/StudentDashboardSupportCards";
+import StudentSubjectEnrollment from "./components/learning/StudentSubjectEnrollment";
+import ParentSubjectGoalCard from "./components/learning/ParentSubjectGoalCard";
 import ParentOverviewIntelligence from "./components/learning/ParentOverviewIntelligence";
 import ProgressReportModal from "./components/reports/ProgressReportModal";
 import SparkRewardsPanel from "./components/rewards/SparkRewardsPanel"; // SPARK_V570_REWARDS
@@ -79,6 +102,21 @@ import APPLE_CALENDAR_ICON_B64 from "./assets/icons/apple-calendar-icon.png";
 // every screen refresh-safe without requiring server rewrite rules or a 404
 // redirect workaround. The rest of the app can continue calling setView(...)
 // exactly as before while the URL stays in sync with the visible screen.
+// SPARK_PHYSICS_SECTION_A_RC1_FEATURE_FLAG
+const PHYSICS_SECTION_A_ENABLED = physicsSectionAEnabled({
+  REACT_APP_ENABLE_PHYSICS_SECTION_A: process.env.REACT_APP_ENABLE_PHYSICS_SECTION_A,
+});
+const PHYSICS_SECTION_A_STATS = getPhysicsSectionAStats();
+const PHYSICS_FULL_COURSE_STATS = physicsFullCourseStats();
+const SPARK_SUBJECTS = getSparkSubjectRegistry({
+  physicsEnabled: PHYSICS_SECTION_A_ENABLED,
+  mathematics: {
+    sections: SYLLABUS_SECTIONS.length,
+    topics: SYLLABUS_SECTIONS.reduce((sum, section) => sum + section.topics.length, 0),
+  },
+  physics: { ...PHYSICS_SECTION_A_STATS, ...PHYSICS_FULL_COURSE_STATS },
+});
+
 const VIEW_ROUTE_PATHS = Object.freeze({
   home: "/",
   tutors: "/tutors",
@@ -88,8 +126,13 @@ const VIEW_ROUTE_PATHS = Object.freeze({
   "auth-recovery": "/reset-password",
   dashboard: "/dashboard",
   admin: "/admin",
-  lesson: "/study",
+  study: "/study",
+  lesson: "/study/mathematics",
   practice: "/practice",
+  "practice-math": "/practice/mathematics",
+  "practice-physics": "/practice/physics",
+  // SPARK_PHYSICS_SECTION_A_RC1_ROUTES
+  physics: "/physics",
   about: "/about",
   contact: "/contact",
   privacy: "/privacy",
@@ -108,8 +151,12 @@ const ROUTE_PATH_VIEWS = Object.freeze({
   "/dashboard": "dashboard",
   "/admin": "admin",
   "/lesson": "lesson",
-  "/study": "lesson",
+  "/study": "study",
+  "/study/mathematics": "lesson",
   "/practice": "practice",
+  "/practice/mathematics": "practice-math",
+  "/practice/physics": PHYSICS_SECTION_A_ENABLED ? "practice-physics" : "practice",
+  "/physics": PHYSICS_SECTION_A_ENABLED ? "physics" : "home",
   "/about": "about",
   "/contact": "contact",
   "/privacy": "privacy",
@@ -1257,6 +1304,19 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
   );
 }
 
+function StudySubjectHub({ setView }) {
+  const subjects = subjectsForCapability(SPARK_SUBJECTS, "study");
+  return <SubjectSelectionView
+    eyebrow="Study"
+    title="Choose a subject"
+    description="Select the subject you want to study. Each subject keeps its own learning path and progress."
+    capability="study"
+    subjects={subjects}
+    onSelect={subject => setView(subject.studyView)}
+    onBack={() => setView("dashboard")}
+  />;
+}
+
 // ─── NAV ────────────────────────────────────────────────────────────────────
 function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorApp, view, themeMode, resolvedTheme, setThemeMode }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -1274,8 +1334,8 @@ function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorAp
   const signedInLinks = (
     <>
       <NavBtn onClick={() => navigate("dashboard")} active={view === "dashboard"}>Dashboard</NavBtn>
-      {!isTutor && !isParent && <NavBtn onClick={() => navigate("lesson")} active={view === "lesson"}>Study</NavBtn>}
-      {!isTutor && !isParent && <NavBtn onClick={() => navigate("practice")} active={view === "practice"}>Practice</NavBtn>}
+      {!isTutor && !isParent && <NavBtn onClick={() => navigate("study")} active={view === "study" || view === "lesson" || view === "physics"}>Study</NavBtn>}
+      {!isTutor && !isParent && <NavBtn onClick={() => navigate("practice")} active={view === "practice" || view === "practice-math" || view === "practice-physics"}>Practice</NavBtn>}
       <NavBtn onClick={() => navigate("tutors")} active={view === "tutors"}>Tutors</NavBtn>
       {!isStudent && !isParent && !hasTutorApp && view !== "become-tutor" && (
         <NavBtn onClick={() => navigate("become-tutor")}>Become a tutor</NavBtn>
@@ -1397,7 +1457,7 @@ function Footer({ setView, hasTutorApp, isTutor, isParent }) {
         {[
           // Tutors don't take lessons themselves, so the "Study" column
           // (student subjects) doesn't apply to them.
-          ...((isTutor || isParent) ? [] : [["Study", [["Mathematics",()=>setView("lesson")],["Physics (soon)",null],["English A (planned)",null]]]]),
+          ...((isTutor || isParent) ? [] : [["Study", [["Choose a subject",()=>setView("study")],["Mathematics",()=>setView("lesson")],...(PHYSICS_SECTION_A_ENABLED ? [["Physics",()=>setView("physics")]] : [])]]]),
           ...((isTutor || isParent) ? [] : [["Tutors", [
             ["Find a tutor",()=>setView("tutors")],
             ...(hasTutorApp ? [] : [["Become a tutor",()=>setView("become-tutor")]]),
@@ -3179,6 +3239,15 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   const [studentGoal, setStudentGoal] = useState(null);
   const [studentStudyCircle, setStudentStudyCircle] = useState({ active: false });
   const [studentReportOpen, setStudentReportOpen] = useState(false);
+  const [studentReportSubject, setStudentReportSubject] = useState("all");
+  const [progressSubject, setProgressSubject] = useState("all");
+  const [flashcardSubject, setFlashcardSubject] = useState(null);
+  const [subjectProgressRows, setSubjectProgressRows] = useState([]);
+  const [subjectActivityEvents, setSubjectActivityEvents] = useState([]);
+  const [subjectEnrollments, setSubjectEnrollments] = useState([]);
+  const [subjectEnrollmentsLoaded, setSubjectEnrollmentsLoaded] = useState(false);
+  const [subjectEnrollmentAvailable, setSubjectEnrollmentAvailable] = useState(null);
+  const [subjectEnrollmentBusy, setSubjectEnrollmentBusy] = useState("");
   const [tutorRow, setTutorRow] = useState(null);
   const [tutorRowLoaded, setTutorRowLoaded] = useState(false);
   const [tutorReviews, setTutorReviews] = useState([]);
@@ -3325,6 +3394,71 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   }, [notificationTarget, sec, parentLinks, examAttempts]);
 
   // Student data (lessons/progress) - tutors don't have this.
+  const loadSubjectProgress = useCallback(async () => {
+    if (!user?.id || isTutor) return;
+    try {
+      const { data, error } = await supabase.from("spark_subject_progress")
+        .select("user_id,subject_id,activity_key,activity_type,section_id,topic_id,title,completed,score,max_score,percent,best_percent,attempt_count,metadata,first_recorded_at,updated_at")
+        .eq("user_id", user.id)
+        .order("updated_at", { ascending:false });
+      if (error) {
+        // Keep the dashboard usable before the new migration is applied. Local
+        // Physics progress remains available as a temporary fallback.
+        if (!String(error?.message || "").toLowerCase().includes("spark_subject_progress")) console.error("Failed to load subject progress:", error);
+        return;
+      }
+      setSubjectProgressRows(data || []);
+    } catch (error) {
+      console.error("Failed to load subject progress:", error);
+    }
+  }, [user?.id, isTutor]);
+
+  const loadSubjectActivityEvents = useCallback(async () => {
+    if (!user?.id || isTutor) return;
+    try {
+      const { data, error } = await supabase.from("spark_subject_activity_events")
+        .select("id,user_id,subject_id,activity_key,activity_type,section_id,topic_id,title,completed,score,max_score,percent,metadata,occurred_at,created_at")
+        .eq("user_id", user.id)
+        .order("occurred_at", { ascending:false })
+        .limit(1000);
+      if (error) {
+        if (!String(error?.message || "").toLowerCase().includes("spark_subject_activity_events")) console.error("Failed to load subject activity events:", error);
+        return;
+      }
+      setSubjectActivityEvents(data || []);
+    } catch (error) {
+      console.error("Failed to load subject activity events:", error);
+    }
+  }, [user?.id, isTutor]);
+
+  const loadSubjectEnrollments = useCallback(async () => {
+    if (!user?.id || isTutor) {
+      setSubjectEnrollmentsLoaded(true);
+      return;
+    }
+    try {
+      const { data, error } = await supabase.from("spark_student_subject_enrollments")
+        .select("student_id,subject_id,status,enrolled_at,updated_at")
+        .eq("student_id", user.id)
+        .order("updated_at", { ascending:false });
+      if (error) {
+        const message = String(error?.message || "").toLowerCase();
+        if (!message.includes("spark_student_subject_enrollments")) console.error("Failed to load subject enrollments:", error);
+        setSubjectEnrollmentAvailable(false);
+        setSubjectEnrollments([]);
+        setSubjectEnrollmentsLoaded(true);
+        return;
+      }
+      setSubjectEnrollmentAvailable(true);
+      setSubjectEnrollments(data || []);
+      setSubjectEnrollmentsLoaded(true);
+    } catch (error) {
+      console.error("Failed to load subject enrollments:", error);
+      setSubjectEnrollmentAvailable(false);
+      setSubjectEnrollmentsLoaded(true);
+    }
+  }, [user?.id, isTutor]);
+
   const loadStudentBookings = useCallback(async () => {
     if (!user?.id) return;
     const { data, error } = await supabase.from("bookings")
@@ -3347,6 +3481,14 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   useEffect(() => {
     if (!user?.id || isTutor) return;
     loadStudentBookings();
+    loadSubjectProgress();
+    loadSubjectActivityEvents();
+    loadSubjectEnrollments();
+    if (PHYSICS_SECTION_A_ENABLED) {
+      syncPhysicsLocalProgress({ supabase, userId:user.id })
+        .then(({ error }) => { if (!error) loadSubjectProgress(); })
+        .catch(() => {});
+    }
     supabase.from("reviews").select("*").eq("student_id", user.id)
       .then(({data}) => setStudentReviews(data || []));
     supabase.from("student_family_codes").select("code").eq("student_id", user.id).maybeSingle()
@@ -3405,7 +3547,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       .subscribe();
 
     return () => { supabase.removeChannel(familyChannel); };
-  }, [user?.id, isTutor, loadStudentBookings, showToast]);
+  }, [user?.id, isTutor, loadStudentBookings, loadSubjectProgress, loadSubjectActivityEvents, loadSubjectEnrollments, showToast]);
 
   // Tutor's own row in the tutors table (needed to look up bookings/reviews and to edit profile).
   useEffect(() => {
@@ -3512,6 +3654,36 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       .subscribe();
     return () => { supabase.removeChannel(channel); };
   }, [isTutor, user?.id, showToast, loadStudentBookings]);
+
+  useEffect(() => {
+    if (isTutor || !user?.id) return;
+    const progressChannel = supabase
+      .channel(`student-subject-progress-${user.id}`)
+      .on("postgres_changes", {
+        event: "*", schema: "public", table: "spark_subject_progress",
+        filter: `user_id=eq.${user.id}`,
+      }, () => loadSubjectProgress())
+      .subscribe();
+    const eventChannel = supabase
+      .channel(`student-subject-activity-${user.id}`)
+      .on("postgres_changes", {
+        event: "INSERT", schema: "public", table: "spark_subject_activity_events",
+        filter: `user_id=eq.${user.id}`,
+      }, () => loadSubjectActivityEvents())
+      .subscribe();
+    const enrollmentChannel = supabase
+      .channel(`student-subject-enrollment-${user.id}`)
+      .on("postgres_changes", {
+        event: "*", schema: "public", table: "spark_student_subject_enrollments",
+        filter: `student_id=eq.${user.id}`,
+      }, () => loadSubjectEnrollments())
+      .subscribe();
+    return () => {
+      supabase.removeChannel(progressChannel);
+      supabase.removeChannel(eventChannel);
+      supabase.removeChannel(enrollmentChannel);
+    };
+  }, [isTutor, user?.id, loadSubjectProgress, loadSubjectActivityEvents, loadSubjectEnrollments]);
 
   const respondToParentLink = async (linkId, status) => {
     const {error} = await supabase.rpc("respond_parent_link", {p_link_id: linkId, p_status: status});
@@ -3622,6 +3794,19 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   };
 
   const done = progressData.length;
+  const localPhysicsSubjectRows = PHYSICS_SECTION_A_ENABLED ? readLocalPhysicsSubjectRows(user.id) : [];
+  const mergedSubjectProgressRows = mergeSubjectProgressRows(subjectProgressRows, localPhysicsSubjectRows);
+  const availableSparkSubjects = enabledSparkSubjects(SPARK_SUBJECTS);
+  const legacyEnrollmentIds = [...new Set([
+    "mathematics",
+    ...mergedSubjectProgressRows.map(row => String(row?.subject_id || "").toLowerCase()).filter(Boolean),
+  ])];
+  const enrolledSubjectIds = subjectEnrollmentAvailable === true
+    ? subjectEnrollments.filter(row => row.status === "active").map(row => String(row.subject_id || "").toLowerCase())
+    : legacyEnrollmentIds;
+  const studentEnrolledSubjects = subjectsForEnrollmentIds(SPARK_SUBJECTS, enrolledSubjectIds)
+    .filter(subject => subject.enabled !== false);
+  const enrolledSubjectIdSet = new Set(studentEnrolledSubjects.map(subject => String(subject.id || "").toLowerCase()));
   const streak = computeStudyStreak({
     lessons: progressData,
     questionAttempts: studentQuestionAttempts,
@@ -3629,6 +3814,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     flashcardReviewEvents: studentFlashcardReviewEvents,
     flashcardProgress: studentFlashcardProgress,
     milestones: studentMilestones,
+    subjectProgress: [...mergedSubjectProgressRows, ...subjectActivityEvents],
   });
   const studentSummary = buildLearningSummary({
     skills: studentSkills,
@@ -3650,8 +3836,29 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     milestones: studentMilestones,
     flashcardProgress: studentFlashcardProgress,
     flashcardReviewEvents: studentFlashcardReviewEvents,
-    goal: studentGoal,
+    goal: null,
     studyCircle: studentStudyCircle,
+  };
+  const subjectDashboardSummaries = buildSubjectDashboardSummaries({
+    subjects: studentEnrolledSubjects,
+    mathematics: { done, totalTopics, learningSummary: studentSummary },
+    subjectProgressRows: mergedSubjectProgressRows,
+    discoverFromProgress: subjectEnrollmentAvailable !== true,
+  });
+  const allSubjectsSummary = summarizeAllSubjects(subjectDashboardSummaries);
+  const subjectReportSources = subjectDashboardSummaries.map(item => item.id === "mathematics"
+    ? { subject:item, kind:"mathematics", data:studentReportData }
+    : { subject:item, kind:"subject", rows:mergedSubjectProgressRows, events:subjectActivityEvents });
+  const recentSubjectActivity = buildRecentSubjectActivity({
+    subjectProgressRows: [...mergedSubjectProgressRows, ...subjectActivityEvents],
+    mathematicsMilestones: studentMilestones,
+    subjects: studentEnrolledSubjects,
+  });
+  const dashboardSubjectInsights = {
+    mathematics: studentLearnerModel?.hasEvidence && studentLearnerModel?.focus ? {
+      title: studentLearnerModel.focus.skill,
+      detail: studentLearnerModel.focus.recommendation,
+    } : null,
   };
   const now = new Date();
   const upcomingSessions = bookings.filter(b => { const status = bookingDisplayStatus(b); return status === "pending" || status === "confirmed"; });
@@ -3681,6 +3888,36 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     }, {})
   );
 
+  const updateStudentSubjectEnrollment = async (subject, enroll) => {
+    const subjectId = String(subject?.id || "").trim().toLowerCase();
+    if (!subjectId || !user?.id) return;
+    if (subjectEnrollmentAvailable !== true) {
+      showToast("Subject enrollment will be available after the latest SPARK database update is applied.", "error");
+      return;
+    }
+    if (!enroll) {
+      const confirmed = window.confirm(`Leave ${subject.shortName || subject.name}? Your saved progress will be kept, but this subject will be removed from your dashboard.`);
+      if (!confirmed) return;
+    }
+    setSubjectEnrollmentBusy(subjectId);
+    const { error } = await supabase.rpc("spark_set_subject_enrollment", {
+      p_subject_id: subjectId,
+      p_enrolled: Boolean(enroll),
+    });
+    setSubjectEnrollmentBusy("");
+    if (error) {
+      console.error("Could not update subject enrollment:", error);
+      showToast("Could not update your subjects. Please try again.", "error");
+      return;
+    }
+    if (!enroll) {
+      if (progressSubject === subjectId) setProgressSubject("all");
+      if (flashcardSubject === subjectId) setFlashcardSubject(null);
+    }
+    await loadSubjectEnrollments();
+    showToast(enroll ? `${subject.shortName || subject.name} added to your subjects.` : `${subject.shortName || subject.name} removed from your dashboard. Your progress is still saved.`);
+  };
+
   // Final dashboard-level guard. Never choose the student/tutor tab set
   // while the account role is still unresolved. On a direct refresh of the
   // bookings/sessions route, also wait for the first bookings query so a
@@ -3688,10 +3925,13 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   const activeBookingSectionLoading =
     (sec === "bookings" || sec === "sessions") && !bookingsLoaded;
 
-  if (!profile || !dashboardRoleResolved || activeBookingSectionLoading) {
+  if (!profile || !dashboardRoleResolved || activeBookingSectionLoading || (isStudent && !subjectEnrollmentsLoaded)) {
     return <SparkLoader variant="section" label="Loading your dashboard" />;
   }
 
+  const studentFlashcardSubjects = subjectsForCapability(studentEnrolledSubjects, "flashcards");
+  const studentHasFlashcards = studentFlashcardSubjects.length > 0;
+  const studentHasMathematics = enrolledSubjectIdSet.has("mathematics");
   const navItems = isTutor ? [
     {k:"overview",icon:"overview",label:"Overview"},
     {k:"sessions",icon:"bookings",label:"My sessions"},
@@ -3703,8 +3943,8 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     {k:"overview",icon:"overview",label:"Overview"},
     {k:"subjects",icon:"subjects",label:"My subjects"},
     {k:"progress",icon:"progress",label:"Progress"},
-    {k:"flashcards",icon:"flashcards",label:"Flashcards"},
-    {k:"circles",icon:"circles",label:"Study Circles"},
+    ...(studentHasFlashcards ? [{k:"flashcards",icon:"flashcards",label:"Flashcards"}] : []),
+    ...(studentHasMathematics ? [{k:"circles",icon:"circles",label:"Study Circles"}] : []),
     {k:"bookings",icon:"bookings",label:"My bookings"},
   ];
   const dashboardAvatarPath = tutorRow?.avatar_path || profile?.avatar_path || "";
@@ -3752,7 +3992,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
         {!isTutor && (
           <>
             <div className="dash-nav-divider" style={{height:1,background:T.borderSoft,margin:"10px 6px"}}/>
-            <div className="dash-nav-item dash-secondary-item" onClick={() => setView("lesson")}
+            <div className="dash-nav-item dash-secondary-item" onClick={() => setView("study")}
               style={{padding:"10px 14px",fontSize:14,cursor:"pointer",color:T.textMuted,
                 borderRadius:T.rSm,transition:`all .18s ${T.ease}`}}
               onMouseEnter={e=>e.currentTarget.style.background=T.muted}
@@ -3885,42 +4125,41 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
             />
             <div className="student-dashboard-stats-grid" style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(140px,1fr))",
               gap:14,marginBottom:24}}>
-              {[["Topics done",done],["Syllabus covered",done>0?`${Math.round((done/totalTopics)*100)}%`:"0%"],
-                ["Sessions booked",bookings.length],["Day Study Streak",streak>0?streak:"0"]].map(([label,val]) => (
+              {[
+                ["Enrolled subjects", allSubjectsSummary.activeSubjects],
+                ["Lessons completed", allSubjectsSummary.lessonsCompleted],
+                ["Practice results", allSubjectsSummary.practiceAttempts],
+                ["Day Study Streak", streak > 0 ? streak : "0"],
+              ].map(([label,val]) => (
                 <Card key={label} className="student-dashboard-stat-card" style={{padding:18}}>
                   <div style={{fontFamily:FD,fontSize:26,fontWeight:700,color:T.ink}}>{val}</div>
-                  <div style={{fontSize:11,color:T.textMuted,textTransform:"uppercase",letterSpacing:"0.04em",marginTop:3}}>
-                    {label}
-                  </div>
+                  <div style={{fontSize:11,color:T.textMuted,textTransform:"uppercase",letterSpacing:"0.04em",marginTop:3}}>{label}</div>
                 </Card>
               ))}
             </div>
-            <StudentOverviewIntelligence
+            <SubjectDashboardOverview
+              summaries={subjectDashboardSummaries}
+              onOpenSubject={subject => setView(subject.studyView || "study")}
+              onOpenProgress={subject => { setProgressSubject(subject?.id || "all"); setDashboardSection("progress"); }}
+              onOpenReport={() => { setStudentReportSubject("all"); setStudentReportOpen(true); }}
+              subjectInsights={dashboardSubjectInsights}
+              onManageSubjects={() => setDashboardSection("subjects")}
+            />
+            <StudentGoalCard
               userId={user.id}
               supabase={supabase}
-              summary={studentSummary}
-              learnerModel={studentLearnerModel}
-              milestones={studentMilestones}
-              flashcardProgress={studentFlashcardProgress}
+              subjects={subjectDashboardSummaries}
               showToast={showToast}
-              setView={setView}
-              setDashboardSection={setDashboardSection}
-              onOpenReport={() => setStudentReportOpen(true)}
               onGoalChange={setStudentGoal}
+              onManageSubjects={() => setDashboardSection("subjects")}
             />
-            <Card className="student-overview-course-card" style={{marginBottom:20}}>
-              <div style={{fontFamily:FD,fontSize:17,fontWeight:600,color:T.ink,marginBottom:10}}>
-                CSEC Mathematics
-              </div>
-              <div className="dashboard-progress-meta" style={{display:"flex",justifyContent:"space-between",gap:12,fontSize:12,color:T.textMuted,marginBottom:7}}>
-                <span>{done} of {totalTopics} topics complete · {SYLLABUS_SECTIONS.length} sections</span>
-                <span style={{fontWeight:700,color:T.ink,whiteSpace:"nowrap"}}>{done>0?Math.round((done/totalTopics)*100):0}%</span>
-              </div>
-              <ProgressBar className="student-overview-progress-bar" value={done} max={totalTopics} style={{marginBottom:14}}/>
-              <button type="button" className="spark-dashboard-card-action" onClick={() => setView("lesson")}>
-                <span>Continue studying</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M6 14L14 6M8 6h6v6" /></svg></span>
-              </button>
-            </Card>
+            <StudentDashboardSupportCards
+              flashcardSubjects={studentFlashcardSubjects}
+              upcomingBookings={upcomingSessions}
+              recentActivity={recentSubjectActivity}
+              onOpenFlashcards={studentHasFlashcards ? () => setDashboardSection("flashcards") : undefined}
+              onOpenProgress={() => { setProgressSubject("all"); setDashboardSection("progress"); }}
+            />
             {parentLinks.filter(l => l.status === "pending").length > 0 && (
               <Card className="family-request-card notification-anchor-card" data-notification-anchor="family-request" style={{marginBottom:20}}>
                 <div className="family-request-icon">👨‍👩‍👧</div>
@@ -4186,80 +4425,104 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
           </>
         )}
 
-        {sec === "subjects" && (
-          <>
-            <h1 style={{fontFamily:FD,fontSize:22,fontWeight:700,color:T.ink,marginBottom:20}}>My subjects</h1>
-            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(260px,1fr))",gap:16}}>
-              <Card className="hl" onClick={() => setView("lesson")} style={{cursor:"pointer"}}>
-                <div style={{fontFamily:FD,fontSize:18,fontWeight:600,color:T.ink,marginBottom:4}}>CSEC Mathematics</div>
-                <div style={{fontSize:12,color:T.textMuted,marginBottom:12}}>
-                  {SYLLABUS_SECTIONS.length} sections · {totalTopics} topics · 39% regional pass rate
-                </div>
-                <ProgressBar value={done} max={totalTopics}/>
-                <div style={{fontSize:11,color:T.textMuted,marginTop:5,marginBottom:14}}>
-                  {done} of {totalTopics} topics done
-                </div>
-                <button type="button" className="spark-dashboard-card-action">
-                  <span>Open subject</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M6 14L14 6M8 6h6v6" /></svg></span>
-                </button>
-              </Card>
-              <Card style={{opacity:.6}}>
-                <div style={{fontFamily:FD,fontSize:18,fontWeight:600,color:T.ink,marginBottom:4}}>CSEC Physics</div>
-                <div style={{fontSize:12,color:T.textMuted,marginBottom:12}}>Coming soon</div>
-                <Badge c="teal">Planned</Badge>
-              </Card>
-            </div>
-          </>
+        {sec === "subjects" && isStudent && (
+          <StudentSubjectEnrollment
+            subjects={availableSparkSubjects}
+            enrolledSubjectIds={enrolledSubjectIds}
+            busySubjectId={subjectEnrollmentBusy}
+            enrollmentAvailable={subjectEnrollmentAvailable === true}
+            onToggle={updateStudentSubjectEnrollment}
+            onOpenSubject={subject => setView(subject.studyView || "study")}
+          />
         )}
 
-        {sec === "progress" && (
+        {sec === "progress" && isStudent && (
           <div data-notification-anchor="student-progress">
-            <h1 style={{fontFamily:FD,fontSize:22,fontWeight:700,color:T.ink,marginBottom:20}}>My progress</h1>
-            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(180px,1fr))",gap:14,marginBottom:24}}>
-              <Card><div style={{fontFamily:FD,fontSize:30,fontWeight:700,color:T.ink}}>{done}</div>
-                <div style={{fontSize:12,color:T.textMuted,textTransform:"uppercase",letterSpacing:"0.04em"}}>Topics completed</div></Card>
-              <Card><div style={{fontFamily:FD,fontSize:30,fontWeight:700,color:T.teal}}>
-                {done>0?Math.round((done/totalTopics)*100):0}%</div>
-                <div style={{fontSize:12,color:T.textMuted,textTransform:"uppercase",letterSpacing:"0.04em"}}>Syllabus covered</div></Card>
-            </div>
-            <Card style={{marginBottom:20}}>
-              <div style={{fontFamily:FD,fontSize:17,fontWeight:600,color:T.ink,marginBottom:5}}>Paper 1 and Paper 2 results</div>
-              <div style={{fontSize:12,color:T.textMuted,marginBottom:14}}>Your latest full-paper examination results.</div>
-              {examAttempts.length ? examAttempts.slice(0,8).map(attempt => {
-                const percent = Math.round(Number(attempt.percent || 0));
-                const performance = getExamPerformanceStatus(percent);
-                const isTarget = notificationTarget?.attemptKey && notificationTarget.attemptKey === attempt.attempt_key;
-                return <div key={attempt.id} data-notification-attempt={attempt.attempt_key || undefined} className={isTarget ? "notification-exam-target" : ""} style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:12,padding:"11px 0",borderBottom:`1px solid ${T.border}`,flexWrap:"wrap"}}>
-                  <div><strong style={{fontSize:13,color:T.ink}}>{csec2027ExamLabel(attempt)}</strong><div style={{fontSize:11,color:T.textMuted,marginTop:2}}>{new Date(attempt.completed_at).toLocaleString([], {dateStyle:"medium",timeStyle:"short"})}</div></div>
-                  <div className="student-exam-result-score"><div><strong style={{fontSize:14,color:T.ink}}>{attempt.score}/{attempt.max_score}</strong><div style={{fontSize:12,color:T.teal,fontWeight:700}}>{percent}%</div></div><span className={`exam-performance-badge ${performance.key}`}>{performance.label}</span></div>
-                </div>;
-              }) : <div style={{fontSize:13,color:T.textMuted}}>No full exam attempts yet.</div>}
-            </Card>
-            <Card>
-              <div style={{fontFamily:FD,fontSize:17,fontWeight:600,color:T.ink,marginBottom:14}}>Progress by section</div>
-              {SYLLABUS_SECTIONS.map((section, si) => (
-                <div key={si} style={{marginBottom:14}}>
-                  <div style={{display:"flex",justifyContent:"space-between",marginBottom:5}}>
-                    <span style={{fontSize:13,color:T.inkSoft,maxWidth:"75%"}}>{section.title}</span>
-                    <span style={{fontSize:12,color:T.textMuted}}>{section.topics.length} topics</span>
-                  </div>
-                  <ProgressBar value={0} max={section.topics.length}/>
-                </div>
+            <div className="spark-subject-progress-filter" aria-label="Choose progress subject">
+              <button type="button" className={progressSubject === "all" ? "active" : ""} onClick={() => setProgressSubject("all")}>All subjects</button>
+              {subjectDashboardSummaries.filter(subject => subject.capabilities?.progress !== false).map(subject => (
+                <button type="button" key={subject.id} className={progressSubject === subject.id ? "active" : ""} onClick={() => setProgressSubject(subject.id)}>{subject.shortName || subject.name}</button>
               ))}
-            </Card>
+            </div>
+
+            {progressSubject === "all" ? (
+              <AllSubjectsProgress
+                summary={allSubjectsSummary}
+                summaries={subjectDashboardSummaries}
+                recentActivity={recentSubjectActivity}
+                onOpenSubject={subject => setView(subject.studyView || "study")}
+                onSelectSubject={subjectId => setProgressSubject(subjectId || "all")}
+                onOpenReport={() => { setStudentReportSubject("all"); setStudentReportOpen(true); }}
+              />
+            ) : progressSubject === "mathematics" ? (
+              <div>
+                <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:12,flexWrap:"wrap",marginBottom:20}}>
+                  <div><div style={{fontSize:11,fontWeight:800,letterSpacing:".08em",textTransform:"uppercase",color:T.teal,marginBottom:4}}>CSEC Mathematics</div><h1 style={{fontFamily:FD,fontSize:22,fontWeight:700,color:T.ink,margin:0}}>Mathematics progress</h1></div>
+                  <button type="button" className="spark-dashboard-card-action" onClick={() => { setStudentReportSubject("mathematics"); setStudentReportOpen(true); }}><span>View report</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M6 14L14 6M8 6h6v6" /></svg></span></button>
+                </div>
+                <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(180px,1fr))",gap:14,marginBottom:24}}>
+                  <Card><div style={{fontFamily:FD,fontSize:30,fontWeight:700,color:T.ink}}>{done}</div><div style={{fontSize:12,color:T.textMuted,textTransform:"uppercase",letterSpacing:"0.04em"}}>Topics completed</div></Card>
+                  <Card><div style={{fontFamily:FD,fontSize:30,fontWeight:700,color:T.teal}}>{done>0?Math.round((done/totalTopics)*100):0}%</div><div style={{fontSize:12,color:T.textMuted,textTransform:"uppercase",letterSpacing:"0.04em"}}>Syllabus covered</div></Card>
+                  <Card><div style={{fontFamily:FD,fontSize:30,fontWeight:700,color:T.ink}}>{studentSummary.questionAttemptCount || 0}</div><div style={{fontSize:12,color:T.textMuted,textTransform:"uppercase",letterSpacing:"0.04em"}}>Practice questions</div></Card>
+                  <Card><div style={{fontFamily:FD,fontSize:30,fontWeight:700,color:T.teal}}>{studentSummary.mastery || 0}%</div><div style={{fontSize:12,color:T.textMuted,textTransform:"uppercase",letterSpacing:"0.04em"}}>Skill mastery</div></Card>
+                </div>
+                {studentLearnerModel?.hasEvidence && studentLearnerModel?.focus && <Card className="spark-subject-progress-insight" style={{marginBottom:20}}><span className="section-kicker">CURRENT FOCUS</span><p><strong>{studentLearnerModel.focus.skill}.</strong> {studentLearnerModel.focus.recommendation}</p></Card>}
+                <Card style={{marginBottom:20}}>
+                  <div style={{fontFamily:FD,fontSize:17,fontWeight:600,color:T.ink,marginBottom:5}}>Paper 1 and Paper 2 results</div>
+                  <div style={{fontSize:12,color:T.textMuted,marginBottom:14}}>Your latest full Mathematics examination results.</div>
+                  {examAttempts.length ? examAttempts.slice(0,8).map(attempt => {
+                    const percent = Math.round(Number(attempt.percent || 0));
+                    const performance = getExamPerformanceStatus(percent);
+                    const isTarget = notificationTarget?.attemptKey && notificationTarget.attemptKey === attempt.attempt_key;
+                    return <div key={attempt.id} data-notification-attempt={attempt.attempt_key || undefined} className={isTarget ? "notification-exam-target" : ""} style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:12,padding:"11px 0",borderBottom:`1px solid ${T.border}`,flexWrap:"wrap"}}><div><strong style={{fontSize:13,color:T.ink}}>{csec2027ExamLabel(attempt)}</strong><div style={{fontSize:11,color:T.textMuted,marginTop:2}}>{new Date(attempt.completed_at).toLocaleString([], {dateStyle:"medium",timeStyle:"short"})}</div></div><div className="student-exam-result-score"><div><strong style={{fontSize:14,color:T.ink}}>{attempt.score}/{attempt.max_score}</strong><div style={{fontSize:12,color:T.teal,fontWeight:700}}>{percent}%</div></div><span className={`exam-performance-badge ${performance.key}`}>{performance.label}</span></div></div>;
+                  }) : <div style={{fontSize:13,color:T.textMuted}}>No full Mathematics exam attempts yet.</div>}
+                </Card>
+                <Card>
+                  <div style={{fontFamily:FD,fontSize:17,fontWeight:600,color:T.ink,marginBottom:14}}>Progress by Mathematics section</div>
+                  {SYLLABUS_SECTIONS.map((section, si) => {
+                    const completedInSection = section.topics.filter(topic => progressData.some(row => String(row.lesson_id || "") === String(topic.id || topic.slug || topic.title))).length;
+                    return <div key={si} style={{marginBottom:14}}><div style={{display:"flex",justifyContent:"space-between",marginBottom:5}}><span style={{fontSize:13,color:T.inkSoft,maxWidth:"75%"}}>{section.title}</span><span style={{fontSize:12,color:T.textMuted}}>{completedInSection}/{section.topics.length} topics</span></div><ProgressBar value={completedInSection} max={section.topics.length}/></div>;
+                  })}
+                </Card>
+              </div>
+            ) : (
+              <SubjectProgressDetail
+                subject={subjectDashboardSummaries.find(subject => subject.id === progressSubject) || getSparkSubject(SPARK_SUBJECTS, progressSubject)}
+                rows={mergedSubjectProgressRows}
+                onOpenSubject={subject => setView(subject?.studyView || "study")}
+                onOpenReport={subject => { setStudentReportSubject(subject?.id || progressSubject); setStudentReportOpen(true); }}
+              />
+            )}
           </div>
         )}
 
         {sec === "flashcards" && isStudent && (
-          <FlashcardsPanel
-            userId={user.id}
-            supabase={supabase}
-            showToast={showToast}
-            onProgressChange={setStudentFlashcardProgress}
-            onReviewRecorded={event => setStudentFlashcardReviewEvents(current => [event, ...current].slice(0, 1000))}
-            onLearnerStateChange={row => row && setStudentLearnerStates(current => current.filter(item => item.skill !== row.skill).concat(row))}
-            weakSkills={learnerModelWeakSkills(studentLearnerModel, studentSummary.weakestSkills)}
-          />
+          !flashcardSubject ? (
+            <SubjectSelectionView
+              embedded
+              eyebrow="Flashcards"
+              title="Choose a subject"
+              description="Open the flashcard deck for the subject you want to review."
+              capability="flashcards"
+              subjects={subjectsForCapability(studentEnrolledSubjects, "flashcards")}
+              onSelect={subject => setFlashcardSubject(subject.id)}
+            />
+          ) : flashcardSubject === "physics" ? (
+            <PhysicsMechanicsFlashcardsPanel onChangeSubject={() => setFlashcardSubject(null)} />
+          ) : (
+            <div>
+              <div style={{display:"flex",justifyContent:"flex-end",marginBottom:12}}><SubjectChangeButton onClick={() => setFlashcardSubject(null)} /></div>
+              <FlashcardsPanel
+                userId={user.id}
+                supabase={supabase}
+                showToast={showToast}
+                onProgressChange={setStudentFlashcardProgress}
+                onReviewRecorded={event => setStudentFlashcardReviewEvents(current => [event, ...current].slice(0, 1000))}
+                onLearnerStateChange={row => row && setStudentLearnerStates(current => current.filter(item => item.skill !== row.skill).concat(row))}
+                weakSkills={learnerModelWeakSkills(studentLearnerModel, studentSummary.weakestSkills)}
+              />
+            </div>
+          )
         )}
         {sec === "circles" && isStudent && (
           <StudyCirclesPanel user={user} showToast={showToast} setView={setView}/>
@@ -4303,6 +4566,10 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
           onClose={() => setStudentReportOpen(false)}
           student={{ id: user.id, name: profile?.name || "Student" }}
           data={studentReportData}
+          subjectSources={subjectReportSources}
+          initialSubjectId={studentReportSubject}
+          overallGoal={studentGoal}
+          supabase={supabase}
           showToast={showToast}
         />
       )}
@@ -5118,6 +5385,8 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
   const [selectedChild, setSelectedChild] = useState(null);
   const [childData, setChildData] = useState(null);
   const [parentReportOpen, setParentReportOpen] = useState(false);
+  const [parentProgressSubject, setParentProgressSubject] = useState("all");
+  const [parentReportSubject, setParentReportSubject] = useState("all");
   const [notificationTarget, setNotificationTarget] = useState(() => {
     try {
       const raw = sessionStorage.getItem("spark_dashboard_notification_target");
@@ -5208,7 +5477,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
 
   const loadChildData = useCallback(async () => {
     if (!selectedChild?.id) { setChildData(null); return; }
-    const [prog, attempts, lessons, bookings, examAttempts, milestones, studyCircle, flashcards, flashcardReviews, goals, learnerStates] = await Promise.all([
+    const [prog, attempts, lessons, bookings, examAttempts, milestones, studyCircle, flashcards, flashcardReviews, goals, learnerStates, subjectProgress, subjectEvents, subjectEnrollments] = await Promise.all([
       supabase.from("csec_skill_progress").select("*").eq("user_id", selectedChild.id).order("mastery_score", {ascending:true}),
       supabase.from("csec_question_attempts").select("id,correct,attempted_at,skill").eq("user_id", selectedChild.id).order("attempted_at", {ascending:false}).limit(500),
       supabase.from("lesson_progress").select("id,lesson_id,completed,completed_at").eq("user_id", selectedChild.id).eq("completed", true),
@@ -5220,15 +5489,19 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
       supabase.from("spark_flashcard_review_events").select("id,card_id,rating,reviewed_at").eq("user_id", selectedChild.id).order("reviewed_at", {ascending:false}).limit(1000),
       supabase.from("spark_student_goals").select("*").eq("student_id", selectedChild.id).eq("status", "active").order("created_at", {ascending:false}).limit(1),
       supabase.from("spark_learner_skill_state").select("*").eq("user_id", selectedChild.id).order("mastery_probability", {ascending:true}),
+      supabase.from("spark_subject_progress").select("subject_id,activity_key,activity_type,section_id,topic_id,title,completed,score,max_score,percent,best_percent,attempt_count,metadata,first_recorded_at,updated_at").eq("user_id", selectedChild.id).order("updated_at", {ascending:false}),
+      supabase.from("spark_subject_activity_events").select("id,subject_id,activity_key,activity_type,section_id,topic_id,title,completed,score,max_score,percent,metadata,occurred_at,created_at").eq("user_id", selectedChild.id).order("occurred_at", {ascending:false}).limit(1000),
+      supabase.from("spark_student_subject_enrollments").select("student_id,subject_id,status,enrolled_at,updated_at").eq("student_id", selectedChild.id).order("updated_at", {ascending:false}),
     ]);
     const rows = prog.data || [];
     const attemptsRows = attempts.data || [];
     const mastery = rows.length ? Math.round(rows.reduce((s,r)=>s+Number(r.mastery_score||0),0)/rows.length) : 0;
     const weakest = rows.filter(r=>Number(r.mastery_score)<80).slice(0,3);
-    setChildData({ progress:rows, attempts:attemptsRows, lessons:lessons.data||[], bookings:bookings.data||[], examAttempts:examAttempts.data||[], milestones:milestones.data||[], studyCircle:studyCircle.data||{active:false}, flashcardProgress:flashcards.error?[]:(flashcards.data||[]), flashcardReviewEvents:flashcardReviews.error?[]:(flashcardReviews.data||[]), goal:goals.error?null:(goals.data?.[0]||null), learnerStates:learnerStates.error?[]:(learnerStates.data||[]), mastery, weakest });
+    setChildData({ progress:rows, attempts:attemptsRows, lessons:lessons.data||[], bookings:bookings.data||[], examAttempts:examAttempts.data||[], milestones:milestones.data||[], studyCircle:studyCircle.data||{active:false}, flashcardProgress:flashcards.error?[]:(flashcards.data||[]), flashcardReviewEvents:flashcardReviews.error?[]:(flashcardReviews.data||[]), goal:goals.error?null:(goals.data?.[0]||null), learnerStates:learnerStates.error?[]:(learnerStates.data||[]), subjectProgressRows:subjectProgress.error?[]:(subjectProgress.data||[]), subjectActivityEvents:subjectEvents.error?[]:(subjectEvents.data||[]), subjectEnrollments:subjectEnrollments.error?[]:(subjectEnrollments.data||[]), subjectEnrollmentAvailable:!subjectEnrollments.error, mastery, weakest });
   }, [selectedChild?.id]);
 
   useEffect(() => { loadChildData(); }, [loadChildData]);
+  useEffect(() => { setParentProgressSubject("all"); setParentReportSubject("all"); }, [selectedChild?.id]);
 
   useEffect(() => {
     if (!["parent-study-circle", "parent-goal"].includes(notificationTarget?.anchor) || !selectedChild?.id) return;
@@ -5251,9 +5524,33 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
         filter: `user_id=eq.${selectedChild.id}`,
       }, () => loadChildData())
       .subscribe();
+    const subjectProgressChannel = supabase
+      .channel(`parent-subject-progress-${user.id}-${selectedChild.id}`)
+      .on("postgres_changes", {
+        event: "*", schema: "public", table: "spark_subject_progress",
+        filter: `user_id=eq.${selectedChild.id}`,
+      }, () => loadChildData())
+      .subscribe();
+    const subjectActivityChannel = supabase
+      .channel(`parent-subject-activity-${user.id}-${selectedChild.id}`)
+      .on("postgres_changes", {
+        event: "INSERT", schema: "public", table: "spark_subject_activity_events",
+        filter: `user_id=eq.${selectedChild.id}`,
+      }, () => loadChildData())
+      .subscribe();
+    const subjectEnrollmentChannel = supabase
+      .channel(`parent-subject-enrollment-${user.id}-${selectedChild.id}`)
+      .on("postgres_changes", {
+        event: "*", schema: "public", table: "spark_student_subject_enrollments",
+        filter: `student_id=eq.${selectedChild.id}`,
+      }, () => loadChildData())
+      .subscribe();
     return () => {
       supabase.removeChannel(examChannel);
       supabase.removeChannel(milestoneChannel);
+      supabase.removeChannel(subjectProgressChannel);
+      supabase.removeChannel(subjectActivityChannel);
+      supabase.removeChannel(subjectEnrollmentChannel);
     };
   }, [selectedChild?.id, user.id, loadChildData]);
 
@@ -5289,6 +5586,46 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
     flashcardProgress: childData?.flashcardProgress || [],
     goal: childData?.goal || null,
   });
+  const parentLegacyEnrollmentIds = [...new Set([
+    "mathematics",
+    ...(childData?.subjectProgressRows || []).map(row => String(row?.subject_id || "").toLowerCase()).filter(Boolean),
+  ])];
+  const parentEnrolledSubjectIds = childData?.subjectEnrollmentAvailable === true
+    ? (childData?.subjectEnrollments || []).filter(row => row.status === "active").map(row => String(row.subject_id || "").toLowerCase())
+    : parentLegacyEnrollmentIds;
+  const parentEnrolledSubjects = subjectsForEnrollmentIds(SPARK_SUBJECTS, parentEnrolledSubjectIds)
+    .filter(subject => subject.enabled !== false);
+  const parentSubjectDashboardSummaries = buildSubjectDashboardSummaries({
+    subjects: parentEnrolledSubjects,
+    mathematics: {
+      done: childData?.lessons?.length || 0,
+      totalTopics: SYLLABUS_SECTIONS.reduce((sum, section) => sum + section.topics.length, 0),
+      learningSummary: parentLearningSummary,
+    },
+    subjectProgressRows: childData?.subjectProgressRows || [],
+    discoverFromProgress: childData?.subjectEnrollmentAvailable !== true,
+  });
+  const parentAllSubjectsSummary = summarizeAllSubjects(parentSubjectDashboardSummaries);
+  const parentRecentSubjectActivity = buildRecentSubjectActivity({
+    subjectProgressRows: [...(childData?.subjectProgressRows || []), ...(childData?.subjectActivityEvents || [])],
+    mathematicsMilestones: learningMilestones,
+    subjects: parentEnrolledSubjects,
+  });
+  const parentReportData = {
+    skills: childData?.progress || [],
+    questionAttempts: childData?.attempts || [],
+    examAttempts: childData?.examAttempts || [],
+    lessons: childData?.lessons || [],
+    bookings: childData?.bookings || [],
+    milestones: childData?.milestones || [],
+    flashcardProgress: childData?.flashcardProgress || [],
+    flashcardReviewEvents: childData?.flashcardReviewEvents || [],
+    goal: null,
+    studyCircle: childData?.studyCircle || null,
+  };
+  const parentSubjectReportSources = parentSubjectDashboardSummaries.map(item => item.id === "mathematics"
+    ? { subject:item, kind:"mathematics", data:parentReportData }
+    : { subject:item, kind:"subject", rows:childData?.subjectProgressRows || [], events:childData?.subjectActivityEvents || [] });
   const formatExamDuration = seconds => {
     const safe = Math.max(0, Number(seconds) || 0);
     const hours = Math.floor(safe / 3600);
@@ -5340,70 +5677,116 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
         <section className="parent-section" data-notification-anchor="parent-family">
           <div className="section-heading parent-family-heading"><div><div className="section-kicker">YOUR FAMILY</div><h2>Children</h2></div><button className="cp-btn cp-btn-primary parent-connect-button" onClick={()=>document.getElementById("add-child")?.scrollIntoView({behavior:"smooth"})}>+ Connect a child</button></div>
           {children.length === 0 ? <div className="empty-parent"><div className="empty-icon">👨‍👩‍👧</div><h3>No child connected yet</h3><p>Ask your child to open their account and give you their private family code.</p></div> :
-            <div className="child-grid">{children.map(child => <button key={child.id} className={`child-card ${selectedChild?.id===child.id?"selected":""}`} onClick={()=>setSelectedChild(child)}><div className="child-avatar">{getInitials(child.name)}</div><div><strong>{child.name}</strong><span>CSEC Mathematics</span></div><span className="child-arrow" aria-hidden="true">›</span></button>)}</div>}
+            <div className="child-grid">{children.map(child => <button key={child.id} className={`child-card ${selectedChild?.id===child.id?"selected":""}`} onClick={()=>setSelectedChild(child)}><div className="child-avatar">{getInitials(child.name)}</div><div><strong>{child.name}</strong><span>Learning progress</span></div><span className="child-arrow" aria-hidden="true">›</span></button>)}</div>}
         </section>
 
         {selectedChild && childData && <section className="parent-section">
-          <div className="section-heading"><div><div className="section-kicker">LEARNING SNAPSHOT</div><h2>{selectedChild.name}'s progress</h2></div><span className="mastery-pill">{childData.mastery}% mastery</span></div>
-          <div className="parent-stat-grid"><div className="parent-stat"><strong>{childData.mastery}%</strong><span>Average skill mastery</span></div><div className="parent-stat"><strong>{childData.lessons.length}</strong><span>Lessons completed</span></div><div className="parent-stat"><strong>{examAttempts.length}</strong><span>Full exam attempts</span></div><div className="parent-stat"><strong>{childData.bookings.filter(b=>b.status!=="cancelled"&&b.status!=="declined").length}</strong><span>Tutor bookings</span></div></div>
+          <div className="section-heading">
+            <div><div className="section-kicker">LEARNING SNAPSHOT</div><h2>{selectedChild.name}'s progress</h2></div>
+            <button type="button" className="spark-dashboard-card-action" onClick={() => { setParentReportSubject(parentProgressSubject || "all"); setParentReportOpen(true); }}><span>View report</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M6 14L14 6M8 6h6v6" /></svg></span></button>
+          </div>
+          <div className="parent-stat-grid">
+            <div className="parent-stat"><strong>{parentAllSubjectsSummary.activeSubjects}</strong><span>Enrolled subjects</span></div>
+            <div className="parent-stat"><strong>{parentAllSubjectsSummary.lessonsCompleted}</strong><span>Lessons completed</span></div>
+            <div className="parent-stat"><strong>{parentAllSubjectsSummary.practiceAttempts}</strong><span>Practice results</span></div>
+            <div className="parent-stat"><strong>{childData.bookings.filter(b=>b.status!=="cancelled"&&b.status!=="declined").length}</strong><span>Tutor bookings</span></div>
+          </div>
 
-          <ParentOverviewIntelligence
+          <ParentSubjectGoalCard
             child={selectedChild}
-            summary={parentLearningSummary}
-            learnerModel={parentLearnerModel}
+            subjects={parentSubjectDashboardSummaries}
             goal={childData.goal}
             supabase={supabase}
-            parentUserId={user.id}
             showToast={showToast}
-            onOpenReport={() => setParentReportOpen(true)}
           />
 
-          <div className="parent-learning-panel" data-notification-anchor="parent-learning-activity">
-            <div className="parent-learning-head">
-              <div><div className="panel-title">Recent learning activity</div><p>Completed lessons, tests, Adaptive Practice, 2027 Practice and mastery milestones appear here.</p></div>
-              <span className="learning-count-pill">{learningMilestones.length} update{learningMilestones.length === 1 ? "" : "s"}</span>
-            </div>
-            {learningMilestones.length ? <div className="learning-milestone-list">{(() => {
-              const targetId = notificationTarget?.milestoneId;
-              const targetMilestone = targetId ? learningMilestones.find(item => String(item.id) === String(targetId)) : null;
-              const rows = learningMilestones.slice(0, 10);
-              if (targetMilestone && !rows.some(item => item.id === targetMilestone.id)) rows.unshift(targetMilestone);
-              return rows.map(item => {
-                const meta = item?.metadata?.format === "2027" ? { short: "27", label: "2027 Practice" } : (PARENT_MILESTONE_META[item.event_type] || { short: "i", label: "Learning update" });
-                const isTarget = targetId && String(item.id) === String(targetId);
-                const percent = item.percent == null ? null : Math.round(Number(item.percent));
-                return <article className={`learning-milestone-row ${isTarget ? "notification-learning-target" : ""}`} data-notification-milestone={item.id} key={item.id}>
-                  <div className={`learning-milestone-icon ${item.event_type}`}>{meta.short}</div>
-                  <div className="learning-milestone-main"><div className="learning-milestone-title"><strong>{item.title}</strong><span>{meta.label}</span></div><div className="learning-milestone-meta"><span>{new Date(item.created_at).toLocaleString([], {dateStyle:"medium", timeStyle:"short"})}</span>{item.skill && item.skill !== item.title && <span>{item.skill}</span>}</div></div>
-                  {percent != null && <div className="learning-milestone-score"><strong>{percent}%</strong>{item.score != null && item.max_score != null && <span>{Number(item.score)}/{Number(item.max_score)}</span>}</div>}
-                </article>;
-              });
-            })()}</div> : <div className="learning-milestone-empty"><strong>No learning milestones yet.</strong><span>New lesson, test and 2027 Practice milestones will appear as the student studies.</span></div>}
+          <div className="spark-subject-progress-filter" aria-label="Choose progress subject">
+            <button type="button" className={parentProgressSubject === "all" ? "active" : ""} onClick={() => setParentProgressSubject("all")}>All subjects</button>
+            {parentSubjectDashboardSummaries.filter(subject => subject.capabilities?.progress !== false).map(subject => (
+              <button type="button" key={subject.id} className={parentProgressSubject === subject.id ? "active" : ""} onClick={() => setParentProgressSubject(subject.id)}>{subject.shortName || subject.name}</button>
+            ))}
           </div>
 
-          <div className="exam-results-panel" data-notification-anchor="parent-exam-results">
-            <div className="exam-results-head">
-              <div><div className="panel-title">Paper results</div><p>Paper 1, Paper 2 and 2027 full-paper simulations appear here as soon as the student's result is saved.</p></div>
-              <div className="exam-summary-pills"><span>Paper 1 <strong>{paper1Attempts.length}</strong></span><span>Paper 2 <strong>{paper2Attempts.length}</strong></span><span>2027 <strong>{paper2027Attempts.length}</strong></span>{examAttempts.length > 0 && <span>Average <strong>{examAverage}%</strong></span>}</div>
+          {parentProgressSubject === "all" ? (
+            <AllSubjectsProgress
+              title={`${selectedChild.name}'s learning progress`}
+              description={`Review learning activity across the subjects ${selectedChild.name} is enrolled in.`}
+              learnerName={selectedChild.name}
+              summary={parentAllSubjectsSummary}
+              summaries={parentSubjectDashboardSummaries}
+              recentActivity={parentRecentSubjectActivity}
+              onSelectSubject={subjectId => setParentProgressSubject(subjectId || "all")}
+              onOpenReport={() => { setParentReportSubject("all"); setParentReportOpen(true); }}
+            />
+          ) : parentProgressSubject === "mathematics" ? (
+            <div className="parent-subject-detail">
+              <ParentOverviewIntelligence
+                child={selectedChild}
+                summary={parentLearningSummary}
+                learnerModel={parentLearnerModel}
+                goal={childData.goal}
+                supabase={supabase}
+                parentUserId={user.id}
+                showToast={showToast}
+                onOpenReport={() => { setParentReportSubject("mathematics"); setParentReportOpen(true); }}
+              />
+
+              <div className="parent-learning-panel" data-notification-anchor="parent-learning-activity">
+                <div className="parent-learning-head">
+                  <div><div className="panel-title">Recent Mathematics learning activity</div><p>Completed Mathematics lessons, tests, Adaptive Practice, 2027 Practice and mastery milestones appear here.</p></div>
+                  <span className="learning-count-pill">{learningMilestones.length} update{learningMilestones.length === 1 ? "" : "s"}</span>
+                </div>
+                {learningMilestones.length ? <div className="learning-milestone-list">{(() => {
+                  const targetId = notificationTarget?.milestoneId;
+                  const targetMilestone = targetId ? learningMilestones.find(item => String(item.id) === String(targetId)) : null;
+                  const rows = learningMilestones.slice(0, 10);
+                  if (targetMilestone && !rows.some(item => item.id === targetMilestone.id)) rows.unshift(targetMilestone);
+                  return rows.map(item => {
+                    const meta = item?.metadata?.format === "2027" ? { short: "27", label: "2027 Practice" } : (PARENT_MILESTONE_META[item.event_type] || { short: "i", label: "Learning update" });
+                    const isTarget = targetId && String(item.id) === String(targetId);
+                    const percent = item.percent == null ? null : Math.round(Number(item.percent));
+                    return <article className={`learning-milestone-row ${isTarget ? "notification-learning-target" : ""}`} data-notification-milestone={item.id} key={item.id}>
+                      <div className={`learning-milestone-icon ${item.event_type}`}>{meta.short}</div>
+                      <div className="learning-milestone-main"><div className="learning-milestone-title"><strong>{item.title}</strong><span>{meta.label}</span></div><div className="learning-milestone-meta"><span>{new Date(item.created_at).toLocaleString([], {dateStyle:"medium", timeStyle:"short"})}</span>{item.skill && item.skill !== item.title && <span>{item.skill}</span>}</div></div>
+                      {percent != null && <div className="learning-milestone-score"><strong>{percent}%</strong>{item.score != null && item.max_score != null && <span>{Number(item.score)}/{Number(item.max_score)}</span>}</div>}
+                    </article>;
+                  });
+                })()}</div> : <div className="learning-milestone-empty"><strong>No learning milestones yet.</strong><span>New Mathematics learning milestones will appear as the student studies.</span></div>}
+              </div>
+
+              <div className="exam-results-panel" data-notification-anchor="parent-exam-results">
+                <div className="exam-results-head">
+                  <div><div className="panel-title">Mathematics paper results</div><p>Mathematics Paper 1, Paper 2 and 2027 full-paper simulations appear here after the student's result is saved.</p></div>
+                  <div className="exam-summary-pills"><span>Paper 1 <strong>{paper1Attempts.length}</strong></span><span>Paper 2 <strong>{paper2Attempts.length}</strong></span><span>2027 <strong>{paper2027Attempts.length}</strong></span>{examAttempts.length > 0 && <span>Average <strong>{examAverage}%</strong></span>}</div>
+                </div>
+                {examAttempts.length ? <div className="exam-attempt-list">{examAttempts.slice(0,8).map(attempt => {
+                  const label = csec2027ExamLabel(attempt);
+                  const percent = Math.round(Number(attempt.percent || 0));
+                  const performance = getExamPerformanceStatus(percent);
+                  const isTargetAttempt = notificationTarget?.attemptKey && notificationTarget.attemptKey === attempt.attempt_key;
+                  return <article className={`exam-attempt-row ${isTargetAttempt ? "notification-exam-target" : ""}`} data-notification-attempt={attempt.attempt_key || undefined} key={attempt.id}>
+                    <div className={`exam-paper-badge ${isCsec2027ExamAttempt(attempt) ? "paper2027" : attempt.paper_type}`}>{isCsec2027ExamAttempt(attempt) ? "27" : attempt.paper_type === "paper2" ? "P2" : "P1"}</div>
+                    <div className="exam-attempt-main"><div className="exam-attempt-title"><strong>{label}</strong><span>{new Date(attempt.completed_at).toLocaleString([], {dateStyle:"medium", timeStyle:"short"})}</span></div><div className="exam-score-track"><span style={{width:`${Math.max(0,Math.min(100,percent))}%`}} /></div><div className="exam-attempt-meta"><span>{attempt.answered_count == null ? "Answer count unavailable" : `${attempt.answered_count}/${attempt.total_questions} questions completed`}</span><span>{formatExamDuration(attempt.duration_seconds)}</span><span className={attempt.timed_out?"exam-timeout":"exam-submitted"}>{attempt.timed_out?"Time expired":"Submitted"}</span></div></div>
+                    <div className="exam-attempt-score"><strong>{attempt.score}/{attempt.max_score}</strong><span className="exam-percent">{percent}%</span><span className={`exam-performance-badge ${performance.key}`}>{performance.label}</span></div>
+                  </article>;
+                })}</div> : <div className="exam-results-empty"><strong>No full Mathematics exam attempts yet.</strong><span>Paper results will appear after the student submits an exam.</span></div>}
+              </div>
+
+              {childData.studyCircle?.active && <div className="panel-white study-circle-parent-summary" data-notification-anchor="parent-study-circle"><div className="panel-title">Mathematics Study Circle</div><div className="study-circle-parent-row"><div><strong>Participating in a small peer study group</strong><span>Peer identities, exact scores and group messages stay private.</span></div><Badge c="teal">{childData.studyCircle.group_size || 0} students</Badge></div></div>}
+
+              <div className="panel-white"><div className="panel-title">Mathematics skills needing attention</div>{childData.weakest.length ? childData.weakest.map(r=><div className="skill-row" key={r.id}><div><strong>{r.skill}</strong><span>{r.mastery_level}</span></div><div className="skill-score">{Math.round(Number(r.mastery_score))}%</div></div>) : <p className="muted-copy">No weak Mathematics skills recorded yet.</p>}</div>
             </div>
-            {examAttempts.length ? <div className="exam-attempt-list">{examAttempts.slice(0,8).map(attempt => {
-              const label = csec2027ExamLabel(attempt);
-              const percent = Math.round(Number(attempt.percent || 0));
-              const performance = getExamPerformanceStatus(percent);
-              const isTargetAttempt = notificationTarget?.attemptKey && notificationTarget.attemptKey === attempt.attempt_key;
-              return <article className={`exam-attempt-row ${isTargetAttempt ? "notification-exam-target" : ""}`} data-notification-attempt={attempt.attempt_key || undefined} key={attempt.id}>
-                <div className={`exam-paper-badge ${isCsec2027ExamAttempt(attempt) ? "paper2027" : attempt.paper_type}`}>{isCsec2027ExamAttempt(attempt) ? "27" : attempt.paper_type === "paper2" ? "P2" : "P1"}</div>
-                <div className="exam-attempt-main"><div className="exam-attempt-title"><strong>{label}</strong><span>{new Date(attempt.completed_at).toLocaleString([], {dateStyle:"medium", timeStyle:"short"})}</span></div><div className="exam-score-track"><span style={{width:`${Math.max(0,Math.min(100,percent))}%`}} /></div><div className="exam-attempt-meta"><span>{attempt.answered_count == null ? "Answer count unavailable" : `${attempt.answered_count}/${attempt.total_questions} questions completed`}</span><span>{formatExamDuration(attempt.duration_seconds)}</span><span className={attempt.timed_out?"exam-timeout":"exam-submitted"}>{attempt.timed_out?"Time expired":"Submitted"}</span></div></div>
-                <div className="exam-attempt-score"><strong>{attempt.score}/{attempt.max_score}</strong><span className="exam-percent">{percent}%</span><span className={`exam-performance-badge ${performance.key}`}>{performance.label}</span></div>
-              </article>;
-            })}</div> : <div className="exam-results-empty"><strong>No full exam attempts yet.</strong><span>Paper 1, Paper 2 and 2027 Practice scores will appear after the student submits an exam.</span></div>}
-          </div>
+          ) : (
+            <SubjectProgressDetail
+              subject={parentSubjectDashboardSummaries.find(subject => subject.id === parentProgressSubject) || getSparkSubject(SPARK_SUBJECTS, parentProgressSubject)}
+              rows={childData.subjectProgressRows || []}
+              onOpenReport={subject => { setParentReportSubject(subject?.id || parentProgressSubject); setParentReportOpen(true); }}
+            />
+          )}
 
-          {childData.studyCircle?.active && <div className="panel-white study-circle-parent-summary" data-notification-anchor="parent-study-circle"><div className="panel-title">Study Circle</div><div className="study-circle-parent-row"><div><strong>Participating in a small peer study group</strong><span>SPARK matches complementary strengths and focus areas. Peer identities, exact scores and group messages stay private.</span></div><Badge c="teal">{childData.studyCircle.group_size || 0} students</Badge></div></div>}
-
-          <div className="parent-columns">
-            <div className="panel-white"><div className="panel-title">Skills needing attention</div>{childData.weakest.length ? childData.weakest.map(r=><div className="skill-row" key={r.id}><div><strong>{r.skill}</strong><span>{r.mastery_level}</span></div><div className="skill-score">{Math.round(Number(r.mastery_score))}%</div></div>) : <p className="muted-copy">No weak skills recorded yet. Keep encouraging consistent practice.</p>}</div>
-            <div className="panel-white" data-notification-anchor="parent-booking"><div className="panel-title">Tutor sessions</div>{childData.bookings.length ? (() => {
+          <div className="panel-white" data-notification-anchor="parent-booking" style={{marginTop:18}}>
+            <div className="panel-title">Tutor sessions</div>
+            {childData.bookings.length ? (() => {
               const targetId = notificationTarget?.bookingId;
               const targetBooking = targetId ? childData.bookings.find(b => String(b.id) === String(targetId)) : null;
               const rows = childData.bookings.slice(0,8);
@@ -5412,7 +5795,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
                 const isTargetBooking = targetId && String(b.id) === String(targetId);
                 return <div className={`session-row ${isTargetBooking ? "notification-booking-target" : ""}`} data-notification-booking={b.id} key={b.id}><div className="session-main"><strong>{b.tutors?.name || "Tutor"}</strong><span>{b.subject} · {bookingDateLabel(b.session_date)}{b.start_time ? ` · ${fmtSessionRange(b.start_time, b.duration_minutes)}` : ""}</span></div><div className="session-status">{(() => { const status = bookingDisplayStatus(b); return <Badge c={BOOKING_STATUS_BADGE[status]?.c || "ink"}>{BOOKING_STATUS_BADGE[status]?.label || status}</Badge>; })()}</div></div>;
               });
-            })() : <p className="muted-copy">No tutor sessions yet.</p>}</div>
+            })() : <p className="muted-copy">No tutor sessions yet.</p>}
           </div>
         </section>}
 
@@ -5425,18 +5808,10 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
           <ProgressReportModal
             onClose={() => setParentReportOpen(false)}
             student={selectedChild}
-            data={{
-              skills: childData.progress || [],
-              questionAttempts: childData.attempts || [],
-              examAttempts: childData.examAttempts || [],
-              lessons: childData.lessons || [],
-              bookings: childData.bookings || [],
-              milestones: childData.milestones || [],
-              flashcardProgress: childData.flashcardProgress || [],
-              flashcardReviewEvents: childData.flashcardReviewEvents || [],
-              goal: childData.goal || null,
-              studyCircle: childData.studyCircle || null,
-            }}
+            data={parentReportData}
+            subjectSources={parentSubjectReportSources}
+            initialSubjectId={parentReportSubject}
+            overallGoal={childData.goal}
             parentName={profile?.name || ""}
             canEmail={Boolean(user?.email && user?.email_confirmed_at)}
             emailTo={user?.email_confirmed_at ? (user?.email || "") : ""}
@@ -6137,8 +6512,42 @@ if (loading || authenticatedRolePending) {
         )
       )}
       {view === "admin"        && session && profile?.is_admin && <AdminView showToast={showToast} adminUserId={session.user.id}/>}
+      {view === "study"        && session && profile?.role === "student" && <StudySubjectHub setView={setView}/>}
       {view === "lesson"       && session && <LessonView user={session.user} setView={setView} showToast={showToast} hasTutorApp={hideTutorApplyLink}/>}
-      {view === "practice"    && session && profile?.role !== "tutor" && tutorApp?.status !== "approved" && <PracticeHub supabase={supabase} userId={session.user.id} setView={setView}/>}
+      {/* SPARK_PHYSICS_SECTION_A_RC1_VIEW */}
+      {view === "physics" && session && profile?.role === "student" && PHYSICS_SECTION_A_ENABLED && (
+        <PhysicsSubjectView
+          userId={session.user.id}
+          onBack={() => setView("study")}
+          onActivity={event => {
+            recordPhysicsSubjectActivity({ supabase, event }).then(result => {
+              if (result?.error && !["PGRST202", "42P01", "42883"].includes(result.error.code)) {
+                console.warn("Physics subject progress was not synced", result.error);
+                return;
+              }
+            }).catch(error => console.warn("Physics subject progress was not synced", error));
+          }}
+        />
+      )}
+      {view === "physics" && session && profile?.role !== "student" && PHYSICS_SECTION_A_ENABLED && (
+        <div style={{flex:1,padding:"4rem",textAlign:"center",color:T.textMuted}}>
+          CSEC Physics study is available from a student account.
+        </div>
+      )}
+      {(view === "practice" || view === "practice-math" || view === "practice-physics") && session && profile?.role !== "tutor" && tutorApp?.status !== "approved" && <PracticeHub
+        supabase={supabase}
+        userId={session.user.id}
+        setView={setView}
+        physicsEnabled={PHYSICS_SECTION_A_ENABLED}
+        initialSubject={view === "practice-math" ? "mathematics" : view === "practice-physics" ? "physics" : null}
+        onSubjectActivity={event => {
+          recordPhysicsSubjectActivity({ supabase, event }).then(result => {
+            if (result?.error && !["PGRST202", "42P01", "42883"].includes(result.error.code)) {
+              console.warn("Physics subject progress was not synced", result.error);
+            }
+          }).catch(error => console.warn("Physics subject progress was not synced", error));
+        }}
+      />}
       {view === "tutors"       && <TutorsView user={session?.user} profile={profile} tutorApp={tutorApp} setView={setView} showToast={showToast} hasTutorApp={hideTutorApplyLink} isParent={profile?.role === "parent"}/>}
 
 
@@ -6161,7 +6570,8 @@ if (loading || authenticatedRolePending) {
 
 
 
-	  {(view === "dashboard" || view === "lesson") && !session && (
+	  {// SPARK_PHYSICS_SECTION_A_RC1_AUTH_GUARD
+	  (view === "dashboard" || view === "study" || view === "lesson" || view === "physics") && !session && (
         <div style={{flex:1,padding:"4rem",textAlign:"center",color:T.textMuted}}>
           Please <span style={{color:T.teal,cursor:"pointer"}} onClick={() => setView("login")}>sign in</span> to continue.
         </div>
@@ -6179,7 +6589,7 @@ if (loading || authenticatedRolePending) {
 // ─── HOW IT WORKS ────────────────────────────────────────────────────────────
 function HowItWorksView({ setView, hasTutorApp, isParent, user, isTutor = false }) {
   const studentSteps = [
-    ["1", "Sign up free", "Create your account and pick Mathematics. No credit card, no trial period."],
+    ["1", "Sign up free", "Create your account and choose the subject you want to study. No credit card, no trial period."],
     ["2", "Follow the syllabus", "Every topic on the CXC CSEC syllabus has its own lesson. Work through them in order, or jump to the topics you need most."],
     ["3", "Read the lesson", "Each lesson covers the concept, worked examples you reveal yourself, key facts to memorise, and common mistakes to avoid."],
     ["4", "Practice after every topic", "Complete CSEC-style questions at the end of each topic, using the same question types and level of difficulty."],
@@ -6253,7 +6663,7 @@ function HowItWorksView({ setView, hasTutorApp, isParent, user, isTutor = false 
               ["Do I need to pay to use SPARK?", "No. The content-subscription line launches free. We'll introduce paid tiers for advanced features, but core lesson content and quizzes will always have a free tier."],
               ["Do tutors need to be on the platform to teach?", "No. Tutors use a video service of their choice, such as Zoom, Google Meet or Teams. SPARK manages the booking."],
               ["Are the practice questions from actual CXC past papers?", "Paper 2 practice questions are original and follow the wording, topic coverage and level of CSEC Mathematics papers. Paper 1 uses the question bank provided for the practice examination."],
-              ["Which subjects are available?", "CSEC Mathematics is fully available at launch, covering all 107 specific objectives in the official syllabus. Physics is in development. English A, Chemistry, Biology, and Principles of Accounts are planned."],
+              ["Which subjects are available?", "Open My subjects to see the subjects currently available on your account. New subjects will appear there as they are released."],
               ["Can schools use SPARK?", "Yes. School licensing is one of the three platform lines. Email schools@sparkcxc.com to discuss group access for your institution."],
               ["How does weak topic detection work?", "Every quiz answer you submit is recorded. The platform compares your accuracy per topic against your overall average and flags topics where you're consistently scoring below 60%. These appear in your dashboard under 'Needs work'."],
             ].map(([q, a]) => (

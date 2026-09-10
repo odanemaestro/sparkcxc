@@ -325,9 +325,9 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
       <section className="study-circles-shell">
         <div className="study-circle-page-heading">
           <div>
-            <span className="study-circle-kicker">PEER LEARNING</span>
-            <h1>Study Circles</h1>
-            <p>Small groups matched around complementary strengths and focus areas.</p>
+            <span className="study-circle-kicker">CSEC MATHEMATICS · PEER LEARNING</span>
+            <h1>Mathematics Study Circles</h1>
+            <p>Small CSEC Mathematics groups matched around complementary strengths and focus areas.</p>
           </div>
         </div>
         <div className="study-circle-setup-card">
@@ -346,9 +346,9 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
     <section className="study-circles-shell" data-notification-anchor="student-study-circles">
       <div className="study-circle-page-heading">
         <div>
-          <span className="study-circle-kicker">PEER LEARNING</span>
-          <h1>Study Circles</h1>
-          <p>Learn with students whose strengths complement the areas you want to improve.</p>
+          <span className="study-circle-kicker">CSEC MATHEMATICS · PEER LEARNING</span>
+          <h1>Mathematics Study Circles</h1>
+          <p>Learn Mathematics with students whose strengths complement the areas you want to improve.</p>
         </div>
         {status === "matched" && (
           <button type="button" className="study-circle-button secondary compact" onClick={() => load()} disabled={Boolean(busy)}>
@@ -359,7 +359,7 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
 
       <div className="study-circle-profile-strip">
         <div className="study-circle-profile-copy">
-          <span className="study-circle-kicker">YOUR LEARNING PROFILE</span>
+          <span className="study-circle-kicker">YOUR MATHEMATICS LEARNING PROFILE</span>
           <strong>SPARK matches the pattern, not the score.</strong>
           <p>Your exact percentages are never shown to other students.</p>
         </div>
@@ -414,8 +414,8 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
                 </div>
               </div>
               <div className="study-circle-actions">
-                <button type="button" className="study-circle-button primary" onClick={() => setView?.("practice")}>
-                  Open Adaptive Practice
+                <button type="button" className="study-circle-button primary" onClick={() => setView?.("practice-math")}>
+                  Open Mathematics Practice
                 </button>
               </div>
             </div>

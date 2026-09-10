@@ -1,0 +1,9 @@
+{
+  "id": "spark-physics-full-course-lessons-v1",
+  "scope": "CSEC Physics full-course lesson integration",
+  "sections": 5,
+  "topics": 25,
+  "objectives": 189,
+  "assessmentScope": "Section A Mechanics only",
+  "mathRendering": "SPARK MathText"
+}

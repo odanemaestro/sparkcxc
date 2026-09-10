@@ -1,0 +1,1542 @@
+{
+  "paper_id": "spark-phy-p02-practice-4",
+  "title": "SPARK CSEC Physics - Paper 02 Practice Paper 4",
+  "subject": "Physics",
+  "examination": "CSEC (Caribbean Secondary Education Certificate)",
+  "paper": "Paper 02 - General Proficiency",
+  "syllabus": "CXC 22/G/SYLL 13, for examinations from May and June 2015",
+  "version": "1.0.0",
+  "duration_minutes": 150,
+  "marks": 100,
+  "profile": {
+    "KC": 32,
+    "UK": 54,
+    "XS": 14
+  },
+  "structure": {
+    "Section A": {
+      "questions": "1-3",
+      "instruction": "Answer ALL questions.",
+      "mark_split": [
+        25,
+        15,
+        15
+      ]
+    },
+    "Section B": {
+      "questions": "4-6",
+      "instruction": "Answer ALL questions.",
+      "mark_split": [
+        15,
+        15,
+        15
+      ]
+    }
+  },
+  "instructions": [
+    "This paper consists of SIX questions in TWO sections. Answer ALL questions.",
+    "Write your answers in the spaces provided in this booklet.",
+    "Do NOT write in the margins.",
+    "Where appropriate, ALL WORKING MUST BE SHOWN in this booklet.",
+    "You may use a silent, non-programmable calculator. Note that an answer given to an inappropriate number of figures will be penalised."
+  ],
+  "required_materials": [
+    "Silent non-programmable calculator",
+    "Ruler",
+    "Graph paper or an on-screen grid"
+  ],
+  "mark_scheme_key": {
+    "M": "Method mark. Awarded for the right approach and a correct substitution, whether or not the arithmetic that follows is right.",
+    "A": "Accuracy mark. Awarded for the correct value, with its unit, to the precision asked for. Normally depends on the method mark before it.",
+    "B": "Independent mark. Stands on its own and depends on nothing earlier: a definition, a named source of error, a labelled axis."
+  },
+  "marking_conventions": [
+    "A correct final answer implies the method, unless the question demanded the working.",
+    "Follow through. Where a candidate uses their own wrong value correctly in a later part, mark that later part on their value.",
+    "A missing unit is penalised once per question, not once per part.",
+    "An answer given to more figures than asked for keeps the mark. An answer with fewer figures than the data justify loses it."
+  ],
+  "marking_coverage": {
+    "auto_marks": 5,
+    "manual_marks": 95,
+    "note": "A criterion carrying a `check` is marked automatically. A criterion carrying `manual: true` is for prose, a drawn graph or a completed table, which cannot be judged from a typed string without a keyword list written for that answer. The engine reports a manual criterion as something to check against the worked solution rather than counting it as lost."
+  },
+  "provenance": "Original questions written for SPARK. The structure, language, mark allocations and question archetypes follow the CSEC Physics Paper 02 papers of 2008 to 2023. No past-paper question is reproduced. This is not a Caribbean Examinations Council publication.",
+  "questions": [
+    {
+      "question_id": "phy-p2-4-q1",
+      "question_number": 1,
+      "paper": "SPARK CSEC Physics Practice Paper 02 number 4",
+      "section": "A",
+      "topic": "Upthrust and Archimedes' principle",
+      "marks": 25,
+      "profile": {
+        "KC": 3,
+        "UK": 8,
+        "XS": 14
+      },
+      "stem": "A student investigated the upthrust on a metal cylinder as it was lowered into water. The cylinder was hung from a spring balance, as shown in Figure 1. In air the spring balance read 2.00 N. The cylinder was then lowered into the water in steps, and the reading on the spring balance was recorded for each volume of the cylinder below the water surface. The results are shown in Table 1.",
+      "stimulus": {
+        "kind": "table",
+        "caption": "TABLE 1: RESULTS OF THE EXPERIMENT",
+        "headers": [
+          "Volume submerged, V/cm³",
+          "Spring balance reading, R/N",
+          "Upthrust, U/N"
+        ],
+        "rows": [
+          [
+            "20.0",
+            "1.80",
+            "0.20"
+          ],
+          [
+            "40.0",
+            "1.60",
+            ""
+          ],
+          [
+            "60.0",
+            "1.40",
+            "0.60"
+          ],
+          [
+            "80.0",
+            "1.20",
+            ""
+          ],
+          [
+            "100.0",
+            "1.00",
+            ""
+          ]
+        ]
+      },
+      "diagram": {
+        "label": "Figure 1. The apparatus used",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 250 320\" width=\"100%\" style=\"max-width:300px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" font-family=\"Georgia,serif\" font-size=\"13\"><path d=\"M30 30 L30 300\"/><path d=\"M20 300 L90 300\"/><path d=\"M30 48 L96 48\"/><rect x=\"80\" y=\"48\" width=\"34\" height=\"96\" fill=\"none\"/><path d=\"M80 67 L90 67\"/><path d=\"M80 86 L90 86\"/><path d=\"M80 105 L90 105\"/><path d=\"M80 124 L90 124\"/><text x=\"126\" y=\"84\" text-anchor=\"start\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">spring</text><text x=\"126\" y=\"100\" text-anchor=\"start\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">balance</text><path d=\"M97 144 L97 186\"/><path d=\"M46 196 L46 300 L150 300 L150 196\"/><path d=\"M46 214 L150 214\"/><path d=\"M54 214 L46 222\" opacity=\"0.55\"/><path d=\"M66 214 L58 222\" opacity=\"0.55\"/><path d=\"M78 214 L70 222\" opacity=\"0.55\"/><path d=\"M90 214 L82 222\" opacity=\"0.55\"/><path d=\"M102 214 L94 222\" opacity=\"0.55\"/><path d=\"M114 214 L106 222\" opacity=\"0.55\"/><path d=\"M126 214 L118 222\" opacity=\"0.55\"/><path d=\"M138 214 L130 222\" opacity=\"0.55\"/><text x=\"160\" y=\"216\" text-anchor=\"start\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">water</text><rect x=\"80\" y=\"186\" width=\"34\" height=\"76\" fill=\"none\"/><text x=\"126\" y=\"250\" text-anchor=\"start\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">metal</text><text x=\"126\" y=\"266\" text-anchor=\"start\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">cylinder</text></svg>",
+        "alt": "A metal cylinder hangs from a spring balance on a clamp stand. The cylinder is partly lowered into a beaker of water, so that part of its volume is below the water surface."
+      },
+      "parts": [
+        {
+          "id": "a",
+          "label": "(a)",
+          "prompt": "Complete Table 1 by calculating the missing values of the upthrust, U.",
+          "marks": 5,
+          "answer": "0.40 N at 40.0 cm³, 0.80 N at 80.0 cm³ and 1.00 N at 100.0 cm³",
+          "modelResponse": null,
+          "solution": "0.40 N at 40.0 cm³, 0.80 N at 80.0 cm³ and 1.00 N at 100.0 cm³\n\nMarker's note. Every value in the column must be quoted to the same number of decimal places, so 0.4 rather than 0.40 loses nothing here but would lose the recording mark in the School-Based Assessment. A candidate who adds instead of subtracting gets 3.60, 2.80 and 3.00 and loses M1 and every A mark.",
+          "markerNote": "Every value in the column must be quoted to the same number of decimal places, so 0.4 rather than 0.40 loses nothing here but would lose the recording mark in the School-Based Assessment. A candidate who adds instead of subtracting gets 3.60, 2.80 and 3.00 and loses M1 and every A mark.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 2,
+              "profile": "UK",
+              "description": "subtracts the spring balance reading from the weight in air, U = 2.00 − R",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "0.40 N",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A2",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "0.80 N",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A3",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "1.00 N",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "label": "(b)",
+          "prompt": "On the grid provided on page 4, plot a graph of upthrust, U/N, against volume submerged, V/cm³, using 2 cm to represent 10.0 cm³ on the horizontal axis and 2 cm to represent 0.10 N on the vertical axis.",
+          "marks": 7,
+          "answer": "A straight line through the origin",
+          "modelResponse": null,
+          "solution": "A straight line through the origin\n\nMarker's note. The line must pass through the origin: no volume submerged means no upthrust. A line drawn with a ruler which misses the origin still scores B4 if the plotted points justify it, but a dot to dot line scores nothing.",
+          "markerNote": "The line must pass through the origin: no volume submerged means no upthrust. A line drawn with a ruler which misses the origin still scores B4 if the plotted points justify it, but a dot to dot line scores nothing.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "XS",
+              "description": "both axes labelled with the quantity and its unit",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "XS",
+              "description": "the scales asked for are used, and the points fill at least half the grid",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 3,
+              "profile": "XS",
+              "description": "all five points plotted correctly; deduct one mark for each point misplaced",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B4",
+              "kind": "B",
+              "marks": 2,
+              "profile": "XS",
+              "description": "a single best fit straight line drawn through the points and the origin",
+              "field": "all",
+              "manual": true
+            }
+          ],
+          "responseType": "graph",
+          "grid": {
+            "xMin": 0,
+            "xMax": 110,
+            "yMin": 0,
+            "yMax": 1.1,
+            "xStep": 10,
+            "yStep": 0.1,
+            "minorPerStep": 5,
+            "xLabel": "Volume submerged, V/cm³",
+            "yLabel": "Upthrust, U/N",
+            "tools": [
+              "point",
+              "line",
+              "read"
+            ]
+          },
+          "graph": {
+            "points": [
+              {
+                "x": 20,
+                "y": 0.2
+              },
+              {
+                "x": 40,
+                "y": 0.4
+              },
+              {
+                "x": 60,
+                "y": 0.6
+              },
+              {
+                "x": 80,
+                "y": 0.8
+              },
+              {
+                "x": 100,
+                "y": 1
+              }
+            ],
+            "tolerance": 0.02,
+            "pointMarks": 3,
+            "line": {
+              "gradient": 0.01,
+              "intercept": 0,
+              "from": 0,
+              "to": 110,
+              "tolerance": 0.03
+            },
+            "lineMarks": 2
+          }
+        },
+        {
+          "id": "c",
+          "label": "(c)",
+          "prompt": "Determine the gradient of the graph, stating its unit.",
+          "marks": 4,
+          "answer": "gradient = 0.0100 N cm⁻³",
+          "modelResponse": null,
+          "solution": "gradient = 0.0100 N cm⁻³\n\nMarker's note. Accept N/cm³. A gradient read from two of the table values rather than from the drawn line loses M1 but may still earn A1. Accept 1.0 × 10⁻² N cm⁻³.",
+          "markerNote": "Accept N/cm³. A gradient read from two of the table values rather than from the drawn line loses M1 but may still earn A1. Accept 1.0 × 10⁻² N cm⁻³.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 2,
+              "profile": "XS",
+              "description": "a triangle drawn on the line, using at least half its length",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "XS",
+              "description": "gradient in the range 0.0095 to 0.0105",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "the unit N cm⁻³",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "d",
+          "label": "(d)",
+          "prompt": "The upthrust on a body is given by U = ρgV, where ρ is the density of the liquid and V is the volume of liquid displaced. Use your gradient to calculate a value for the density of the water. [Take g as 10 N kg⁻¹, and note that 1 cm³ = 1 × 10⁻⁶ m³.]",
+          "marks": 4,
+          "answer": "1000 kg m⁻³",
+          "modelResponse": null,
+          "solution": "1000 kg m⁻³\n\nMarker's note. Follow through from the candidate's own earlier value. The conversion in M2 is the step this part is built to test, and the commonest error is to omit it and answer 0.001 kg m⁻³. Award M1 only in that case. Accept 1.0 × 10³ kg m⁻³, and accept 1 g cm⁻³ if the unit is given.",
+          "markerNote": "Follow through from the candidate's own earlier value. The conversion in M2 is the step this part is built to test, and the commonest error is to omit it and answer 0.001 kg m⁻³. Award M1 only in that case. Accept 1.0 × 10³ kg m⁻³, and accept 1 g cm⁻³ if the unit is given.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "XS",
+              "description": "identifies the gradient as ρg",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "M2",
+              "kind": "M",
+              "marks": 1,
+              "profile": "XS",
+              "description": "converts the gradient to N m⁻³: 0.0100 ÷ 1 × 10⁻⁶ = 1.0 × 10⁴",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "divides by g: 1.0 × 10⁴ ÷ 10",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A2",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "1000 kg m⁻³, with the unit",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "e",
+          "label": "(e)",
+          "prompt": "State Archimedes' principle, and use it to explain why the reading on the spring balance fell as the cylinder was lowered further into the water.",
+          "marks": 3,
+          "answer": "Archimedes' principle states that when a body is wholly or partly immersed in a fluid, the upthrust on it equals the weight of the fluid it displaces. As more of the cylinder went below the surface it displaced more water, so the upthrust grew, and the spring balance supported less of the cylinder's weight.",
+          "modelResponse": null,
+          "solution": "Archimedes' principle states that when a body is wholly or partly immersed in a fluid, the upthrust on it equals the weight of the fluid it displaces. As more of the cylinder went below the surface it displaced more water, so the upthrust grew, and the spring balance supported less of the cylinder's weight.\n\nMarker's note. B1 requires the words weight of fluid displaced. 'The upthrust equals the volume displaced' is dimensionally wrong and scores nothing. For B2 accept any answer which says the upthrust increased, so the balance had less to support.",
+          "markerNote": "B1 requires the words weight of fluid displaced. 'The upthrust equals the volume displaced' is dimensionally wrong and scores nothing. For B2 accept any answer which says the upthrust increased, so the balance had less to support.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 2,
+              "profile": "KC",
+              "description": "the principle, including that the upthrust equals the weight of fluid displaced",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "links the greater volume displaced to the greater upthrust and the smaller reading",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "f",
+          "label": "(f)",
+          "prompt": "State ONE precaution the student should have taken while carrying out this experiment.",
+          "marks": 2,
+          "answer": "Make sure the cylinder does not touch the sides or the bottom of the beaker, because that would support part of its weight and make the reading too small.",
+          "modelResponse": null,
+          "solution": "Make sure the cylinder does not touch the sides or the bottom of the beaker, because that would support part of its weight and make the reading too small.\n\nMarker's note. Accept: the cylinder must not touch the beaker; read the spring balance square on to avoid parallax; check the balance for a zero error before starting; wait for the balance to come to rest before reading it; keep the water level steady. Award one mark where the precaution is named without a reason. An answer that blames the person rather than naming the error scores nothing.",
+          "markerNote": "Accept: the cylinder must not touch the beaker; read the spring balance square on to avoid parallax; check the balance for a zero error before starting; wait for the balance to come to rest before reading it; keep the water level steady. Award one mark where the precaution is named without a reason. An answer that blames the person rather than naming the error scores nothing.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 2,
+              "profile": "XS",
+              "description": "one specific precaution, with the reason it matters",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "phy-p2-4-q2",
+      "question_number": 2,
+      "paper": "SPARK CSEC Physics Practice Paper 02 number 4",
+      "section": "A",
+      "topic": "Scalars, vectors and the resultant of forces",
+      "marks": 15,
+      "profile": {
+        "KC": 7,
+        "UK": 8,
+        "XS": 0
+      },
+      "stem": "",
+      "parts": [
+        {
+          "id": "a",
+          "label": "(a)",
+          "prompt": "Distinguish between a scalar quantity and a vector quantity, and give ONE example of EACH.",
+          "marks": 3,
+          "answer": "A scalar has magnitude only; a vector has both magnitude and direction. Examples: mass or speed; force or velocity.",
+          "modelResponse": null,
+          "solution": "A scalar has magnitude only; a vector has both magnitude and direction. Examples: mass or speed; force or velocity.\n\nMarker's note. Accept for scalars: mass, distance, speed, time, energy, temperature, density. For vectors: force, weight, velocity, acceleration, displacement, momentum. A candidate who offers speed as a vector or velocity as a scalar loses B3.",
+          "markerNote": "Accept for scalars: mass, distance, speed, time, energy, temperature, density. For vectors: force, weight, velocity, acceleration, displacement, momentum. A candidate who offers speed as a vector or velocity as a scalar loses B3.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "scalar has magnitude only",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "vector has magnitude and direction",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "one correct example of each",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "label": "(b)",
+          "prompt": "Two forces act at a point. A force of 8.0 N acts due north and a force of 6.0 N acts due east. Calculate the magnitude of the resultant of these two forces.",
+          "marks": 3,
+          "answer": "10.0 N",
+          "modelResponse": "10 N",
+          "solution": "10.0 N\n\nMarker's note. Adding the forces to give 14 N ignores the directions and scores nothing. A scale drawing which produces 10 N earns all three marks provided the scale is stated.",
+          "markerNote": "Adding the forces to give 14 N ignores the directions and scores nothing. A scale drawing which produces 10 N earns all three marks provided the scale is stated.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "recognises the two forces are at right angles and uses Pythagoras",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "M2",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "substitutes √(8.0² + 6.0²)",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "10.0 N, with the unit",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 10,
+                "tolerance": 0.02,
+                "unit": "N"
+              }
+            }
+          ]
+        },
+        {
+          "id": "c",
+          "label": "(c)",
+          "prompt": "Determine the direction of the resultant force, measured from north.",
+          "marks": 3,
+          "answer": "36.9 degrees east of north",
+          "modelResponse": null,
+          "solution": "36.9 degrees east of north\n\nMarker's note. Follow through from the candidate's own earlier value. Accept 37 degrees. An answer of 53.1 degrees has been measured from the east instead of from the north: award M1 and M2, and award A1 only if the candidate states clearly that the angle is measured from east. A bearing of 037 is acceptable.",
+          "markerNote": "Follow through from the candidate's own earlier value. Accept 37 degrees. An answer of 53.1 degrees has been measured from the east instead of from the north: award M1 and M2, and award A1 only if the candidate states clearly that the angle is measured from east. A bearing of 037 is acceptable.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "uses a trigonometric ratio with the correct pair of sides",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "M2",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "tan θ = 6.0 ÷ 8.0",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "36.9 degrees, measured from north towards the east",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "di",
+          "label": "(d) (i)",
+          "prompt": "A force of 5.0 N and a force of 3.0 N act on a body along the same straight line. State the magnitude of the resultant force when the two forces act\n\nin the same direction",
+          "marks": 1,
+          "answer": "8.0 N",
+          "modelResponse": "8 N",
+          "solution": "8.0 N",
+          "markerNote": null,
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "8.0 N",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 8,
+                "tolerance": 0.02,
+                "unit": "N"
+              }
+            }
+          ]
+        },
+        {
+          "id": "dii",
+          "label": "(d) (ii)",
+          "prompt": "A force of 5.0 N and a force of 3.0 N act on a body along the same straight line. State the magnitude of the resultant force when the two forces act\n\nin opposite directions.",
+          "marks": 1,
+          "answer": "2.0 N",
+          "modelResponse": "2 N",
+          "solution": "2.0 N\n\nMarker's note. Accept 2.0 N in the direction of the 5.0 N force.",
+          "markerNote": "Accept 2.0 N in the direction of the 5.0 N force.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "2.0 N",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 2,
+                "tolerance": 0.02,
+                "unit": "N"
+              }
+            }
+          ]
+        },
+        {
+          "id": "e",
+          "label": "(e)",
+          "prompt": "State what is meant by the term 'equilibrium', and state the TWO conditions which must be satisfied if a body acted on by several forces is to be in equilibrium.",
+          "marks": 4,
+          "answer": "A body is in equilibrium when it is at rest, or moving with constant velocity, so that it has no acceleration. The resultant force on it must be zero, and the sum of the clockwise moments about any point must equal the sum of the anticlockwise moments about that point.",
+          "modelResponse": null,
+          "solution": "A body is in equilibrium when it is at rest, or moving with constant velocity, so that it has no acceleration. The resultant force on it must be zero, and the sum of the clockwise moments about any point must equal the sum of the anticlockwise moments about that point.\n\nMarker's note. A candidate who says only 'the forces are balanced' has given B2 in other words and earns that mark alone. Both conditions are needed: a body acted on by two equal and opposite forces along different lines has no resultant force but does rotate, so it is not in equilibrium.",
+          "markerNote": "A candidate who says only 'the forces are balanced' has given B2 in other words and earns that mark alone. Both conditions are needed: a body acted on by two equal and opposite forces along different lines has no resultant force but does rotate, so it is not in equilibrium.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 2,
+              "profile": "KC",
+              "description": "explains equilibrium as at rest or moving at constant velocity, with no acceleration",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "the resultant force is zero",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "the resultant moment about any point is zero",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "phy-p2-4-q3",
+      "question_number": 3,
+      "paper": "SPARK CSEC Physics Practice Paper 02 number 4",
+      "section": "A",
+      "topic": "Thermometry and the temperature scales",
+      "marks": 15,
+      "profile": {
+        "KC": 7,
+        "UK": 8,
+        "XS": 0
+      },
+      "stem": "",
+      "parts": [
+        {
+          "id": "a",
+          "label": "(a)",
+          "prompt": "State TWO physical properties which vary with temperature and may be used as the basis of a thermometer, and name the thermometer which uses ONE of them.",
+          "marks": 3,
+          "answer": "The volume of a liquid, used in a liquid-in-glass thermometer, and the resistance of a wire, used in a resistance thermometer.",
+          "modelResponse": null,
+          "solution": "The volume of a liquid, used in a liquid-in-glass thermometer, and the resistance of a wire, used in a resistance thermometer.\n\nMarker's note. Accept: the volume of a liquid, the resistance of a metal, the electromotive force of a thermocouple, the pressure of a fixed mass of gas at constant volume, the colour of a hot body. The pairing must be right: naming resistance and then saying liquid-in-glass loses B3.",
+          "markerNote": "Accept: the volume of a liquid, the resistance of a metal, the electromotive force of a thermocouple, the pressure of a fixed mass of gas at constant volume, the colour of a hot body. The pairing must be right: naming resistance and then saying liquid-in-glass loses B3.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "first property that varies with temperature",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "second, different property",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "a thermometer correctly paired with one of them",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "label": "(b)",
+          "prompt": "State what is meant by the 'ice point' and the 'steam point' of a thermometer.",
+          "marks": 2,
+          "answer": "The ice point is the temperature of pure melting ice at normal atmospheric pressure. The steam point is the temperature of steam above water boiling at normal atmospheric pressure.",
+          "modelResponse": null,
+          "solution": "The ice point is the temperature of pure melting ice at normal atmospheric pressure. The steam point is the temperature of steam above water boiling at normal atmospheric pressure.\n\nMarker's note. The mention of standard atmospheric pressure is not required for either mark, but 'the temperature of boiling water' rather than of the steam above it loses B2, because dissolved impurities raise the temperature of the water and not that of the steam.",
+          "markerNote": "The mention of standard atmospheric pressure is not required for either mark, but 'the temperature of boiling water' rather than of the steam above it loses B2, because dissolved impurities raise the temperature of the water and not that of the steam.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "ice point: pure melting ice",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "steam point: steam above boiling water, not the water itself",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "c",
+          "label": "(c)",
+          "prompt": "In an ungraduated mercury-in-glass thermometer the length of the mercury column is 2.0 cm at the ice point and 22.0 cm at the steam point. When the thermometer is placed in a liquid, the length of the column is 9.0 cm. Calculate the temperature of the liquid on the Celsius scale.",
+          "marks": 4,
+          "answer": "35 °C",
+          "modelResponse": null,
+          "solution": "35 °C\n\nMarker's note. Forgetting to subtract the ice point length and computing 9.0 ÷ 22.0 × 100 gives 41 °C: award M1 only. The fundamental interval is the difference between the two fixed lengths, not the steam point length.",
+          "markerNote": "Forgetting to subtract the ice point length and computing 9.0 ÷ 22.0 × 100 gives 41 °C: award M1 only. The fundamental interval is the difference between the two fixed lengths, not the steam point length.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "uses θ = (l − l₀) ÷ (l₁₀₀ − l₀) × 100",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "M2",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "substitutes (9.0 − 2.0) ÷ (22.0 − 2.0)",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "evaluates the fraction as 7.0 ÷ 20.0 = 0.35",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A2",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "35 °C, with the unit",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "d",
+          "label": "(d)",
+          "prompt": "Convert your answer in Part (c) to a temperature on the Kelvin scale.",
+          "marks": 2,
+          "answer": "308 K",
+          "modelResponse": "308 K",
+          "solution": "308 K\n\nMarker's note. Follow through from the candidate's own earlier value. The unit is the kelvin, K, written without a degree sign. Writing 308 °K loses A1.",
+          "markerNote": "Follow through from the candidate's own earlier value. The unit is the kelvin, K, written without a degree sign. Writing 308 °K loses A1.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "adds 273 to the Celsius temperature",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "308 K, with the unit",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 308,
+                "tolerance": 0.02,
+                "unit": "K"
+              }
+            }
+          ]
+        },
+        {
+          "id": "e",
+          "label": "(e)",
+          "prompt": "Explain why the bulb of a liquid-in-glass thermometer is made thin-walled, and why the bore of the tube is made narrow.",
+          "marks": 2,
+          "answer": "The bulb is thin-walled so that heat passes quickly through the glass to the liquid, and the thermometer responds quickly. The bore is narrow so that a small change in the volume of the liquid produces a large movement along the tube, making the thermometer more sensitive.",
+          "modelResponse": null,
+          "solution": "The bulb is thin-walled so that heat passes quickly through the glass to the liquid, and the thermometer responds quickly. The bore is narrow so that a small change in the volume of the liquid produces a large movement along the tube, making the thermometer more sensitive.\n\nMarker's note. The two ideas are distinct and each has its own mark. 'To make it more accurate' is not either of them, since accuracy and sensitivity are not the same thing.",
+          "markerNote": "The two ideas are distinct and each has its own mark. 'To make it more accurate' is not either of them, since accuracy and sensitivity are not the same thing.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "thin walls give a quick response",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "a narrow bore gives greater sensitivity",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "f",
+          "label": "(f)",
+          "prompt": "State ONE advantage of a thermocouple thermometer over a liquid-in-glass thermometer.",
+          "marks": 2,
+          "answer": "A thermocouple has a much wider range and can measure temperatures far above the boiling point of mercury.",
+          "modelResponse": null,
+          "solution": "A thermocouple has a much wider range and can measure temperatures far above the boiling point of mercury.\n\nMarker's note. Accept: a wider range; a faster response because of its small thermal capacity; it can measure the temperature of a small object or a point; the reading can be taken at a distance or recorded electronically. Award one mark where the advantage is named but not related to the liquid-in-glass thermometer. 'It is better' scores nothing.",
+          "markerNote": "Accept: a wider range; a faster response because of its small thermal capacity; it can measure the temperature of a small object or a point; the reading can be taken at a distance or recorded electronically. Award one mark where the advantage is named but not related to the liquid-in-glass thermometer. 'It is better' scores nothing.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 2,
+              "profile": "KC",
+              "description": "one genuine advantage, stated in a way that compares the two",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "phy-p2-4-q4",
+      "question_number": 4,
+      "paper": "SPARK CSEC Physics Practice Paper 02 number 4",
+      "section": "B",
+      "topic": "Electrostatics",
+      "marks": 15,
+      "profile": {
+        "KC": 2,
+        "UK": 13,
+        "XS": 0
+      },
+      "stem": "",
+      "parts": [
+        {
+          "id": "a",
+          "label": "(a)",
+          "prompt": "A polythene rod becomes negatively charged when it is rubbed with a woollen cloth. Explain, in terms of the movement of electrons, how this happens, and state the charge left on the cloth.",
+          "marks": 3,
+          "answer": "Rubbing transfers electrons from the wool to the polythene. The polythene gains electrons and so becomes negatively charged. The cloth, having lost electrons, is left with an equal positive charge.",
+          "modelResponse": null,
+          "solution": "Rubbing transfers electrons from the wool to the polythene. The polythene gains electrons and so becomes negatively charged. The cloth, having lost electrons, is left with an equal positive charge.\n\nMarker's note. Only electrons move. An answer which says the rod gains a negative charge from the cloth, or that protons move, loses B1. The charges are equal and opposite, which is worth saying but not required.",
+          "markerNote": "Only electrons move. An answer which says the rod gains a negative charge from the cloth, or that protons move, loses B1. The charges are equal and opposite, which is worth saying but not required.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "electrons are transferred from the cloth to the rod",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "the rod has a surplus of electrons and so is negative",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "the cloth is left positively charged",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "label": "(b)",
+          "prompt": "State the law of electrostatic charges.",
+          "marks": 2,
+          "answer": "Like charges repel and unlike charges attract.",
+          "modelResponse": null,
+          "solution": "Like charges repel and unlike charges attract.\n\nMarker's note. Both halves are needed for both marks. Attraction alone does not prove a body is charged, since a charged body also attracts an uncharged one.",
+          "markerNote": "Both halves are needed for both marks. Attraction alone does not prove a body is charged, since a charged body also attracts an uncharged one.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "like charges repel",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "unlike charges attract",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "c",
+          "label": "(c)",
+          "prompt": "Describe how an insulated metal sphere may be given a positive charge by induction, using a negatively charged rod.",
+          "marks": 4,
+          "answer": "Bring the negatively charged rod near the sphere without touching it. The electrons in the sphere are repelled to the far side, leaving the near side positive. Earth the far side of the sphere by touching it, so that the repelled electrons flow away to earth. Remove the finger first, then remove the rod, and the sphere is left with an overall positive charge.",
+          "modelResponse": null,
+          "solution": "Bring the negatively charged rod near the sphere without touching it. The electrons in the sphere are repelled to the far side, leaving the near side positive. Earth the far side of the sphere by touching it, so that the repelled electrons flow away to earth. Remove the finger first, then remove the rod, and the sphere is left with an overall positive charge.\n\nMarker's note. The order in B4 is the whole point of the method and is the mark most often lost. Removing the rod first lets the electrons flow back and the sphere ends up uncharged. The charge induced is opposite to that on the rod, so a negative rod gives a positive sphere; a candidate who ends with a negative sphere has described charging by contact and loses B2 and B4.",
+          "markerNote": "The order in B4 is the whole point of the method and is the mark most often lost. Removing the rod first lets the electrons flow back and the sphere ends up uncharged. The charge induced is opposite to that on the rod, so a negative rod gives a positive sphere; a candidate who ends with a negative sphere has described charging by contact and loses B2 and B4.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "brings the charged rod near without touching",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "electrons are repelled to the far side of the sphere",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "earths the sphere so that those electrons flow away",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B4",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "removes the earth connection before removing the rod",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "d",
+          "label": "(d)",
+          "prompt": "Explain how a lightning conductor protects a tall building.",
+          "marks": 3,
+          "answer": "The conductor is a thick copper strip running from a spike above the building to a plate buried in the ground. The sharp point causes charge to leak away from the building and partly discharge the cloud. If lightning does strike, the conductor carries the very large current safely to earth instead of through the building.",
+          "modelResponse": null,
+          "solution": "The conductor is a thick copper strip running from a spike above the building to a plate buried in the ground. The sharp point causes charge to leak away from the building and partly discharge the cloud. If lightning does strike, the conductor carries the very large current safely to earth instead of through the building.\n\nMarker's note. An answer which says only that the conductor 'attracts the lightning' has half of B3 and does not earn it on its own: the useful part is where the current then goes.",
+          "markerNote": "An answer which says only that the conductor 'attracts the lightning' has half of B3 and does not earn it on its own: the useful part is where the current then goes.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "a low resistance path from a point above the building to earth",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "the sharp point allows charge to leak away, discharging the cloud",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "if struck, the current is carried safely to earth rather than through the building",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "e",
+          "label": "(e)",
+          "prompt": "Explain why a fuel tanker is earthed by a chain or a wire before fuel is pumped from it, and state what could happen if it were not.",
+          "marks": 3,
+          "answer": "Fuel flowing through the pipe rubs against it and charge builds up on the tanker. The chain or wire provides a path to earth so the charge leaks away steadily. Without it the charge could build until a spark jumps, and a spark near fuel vapour could cause an explosion.",
+          "modelResponse": null,
+          "solution": "Fuel flowing through the pipe rubs against it and charge builds up on the tanker. The chain or wire provides a path to earth so the charge leaks away steadily. Without it the charge could build until a spark jumps, and a spark near fuel vapour could cause an explosion.\n\nMarker's note. B3 must name the spark and the ignition. 'It would be dangerous' scores nothing.",
+          "markerNote": "B3 must name the spark and the ignition. 'It would be dangerous' scores nothing.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "friction between the moving fuel and the pipe builds up charge",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "the earth connection lets the charge leak away safely",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "otherwise a spark could ignite the fuel or its vapour",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "phy-p2-4-q5",
+      "question_number": 5,
+      "paper": "SPARK CSEC Physics Practice Paper 02 number 4",
+      "section": "B",
+      "topic": "The motor effect and electromagnetic induction",
+      "marks": 15,
+      "profile": {
+        "KC": 5,
+        "UK": 10,
+        "XS": 0
+      },
+      "stem": "Figure 3 shows a rectangular coil carrying a direct current, placed between the poles of a magnet. The magnetic field runs from the north pole to the south pole.",
+      "diagram": {
+        "label": "Figure 3. A coil carrying current in a magnetic field",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 340 280\" width=\"100%\" style=\"max-width:350px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" font-family=\"Georgia,serif\" font-size=\"13\"><rect x=\"20\" y=\"60\" width=\"52\" height=\"130\" fill=\"none\"/><rect x=\"268\" y=\"60\" width=\"52\" height=\"130\" fill=\"none\"/><text x=\"46\" y=\"132\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"20\">N</text><text x=\"294\" y=\"132\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"20\">S</text><path d=\"M72 86 L268 86\" opacity=\"0.75\"/><path d=\"M168 81 L178 86 L168 91\"/><path d=\"M72 110 L268 110\" opacity=\"0.75\"/><path d=\"M168 105 L178 110 L168 115\"/><path d=\"M72 134 L268 134\" opacity=\"0.75\"/><path d=\"M168 129 L178 134 L168 139\"/><path d=\"M72 158 L268 158\" opacity=\"0.75\"/><path d=\"M168 153 L178 158 L168 163\"/><rect x=\"126\" y=\"92\" width=\"88\" height=\"66\" fill=\"none\"/><text x=\"170\" y=\"176\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">coil</text><path d=\"M148 158 L148 210\"/><path d=\"M192 158 L192 210\"/><path d=\"M148 210 L192 210\"/><path d=\"M170 210 L170 232\"/><path d=\"M154 232 L186 232\" stroke-width=\"2\"/><path d=\"M160 240 L180 240\" stroke-width=\"5\"/><text x=\"170\" y=\"262\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">d.c. supply</text></svg>",
+        "alt": "A rectangular coil carrying current from a direct current supply, placed between the north and south poles of a magnet, with the magnetic field running from the north pole to the south pole across the coil."
+      },
+      "parts": [
+        {
+          "id": "a",
+          "label": "(a)",
+          "prompt": "State Fleming's left hand rule, naming the quantity which EACH of the three fingers represents.",
+          "marks": 3,
+          "answer": "Hold the thumb and the first two fingers of the left hand at right angles to one another. The First finger points along the magnetic Field, the seCond finger along the Current, and the thuMb then gives the direction of the Motion or force.",
+          "modelResponse": null,
+          "solution": "Hold the thumb and the first two fingers of the left hand at right angles to one another. The First finger points along the magnetic Field, the seCond finger along the Current, and the thuMb then gives the direction of the Motion or force.\n\nMarker's note. The three must be mutually at right angles, and the current is conventional current, from positive to negative. Do not withhold a mark for omitting either point unless the candidate states the opposite. The left hand is for the motor effect; a candidate who names the right hand has the wrong rule and scores nothing.",
+          "markerNote": "The three must be mutually at right angles, and the current is conventional current, from positive to negative. Do not withhold a mark for omitting either point unless the candidate states the opposite. The left hand is for the motor effect; a candidate who names the right hand has the wrong rule and scores nothing.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "first finger is the field",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "second finger is the current",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "thumb is the motion or the force",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "label": "(b)",
+          "prompt": "State THREE ways in which the turning effect on the coil could be increased.",
+          "marks": 3,
+          "answer": "Increase the current, increase the number of turns on the coil, and use a stronger magnet.",
+          "modelResponse": null,
+          "solution": "Increase the current, increase the number of turns on the coil, and use a stronger magnet.\n\nMarker's note. Accept inserting a soft iron core for B3. 'Make it bigger' scores nothing.",
+          "markerNote": "Accept inserting a soft iron core for B3. 'Make it bigger' scores nothing.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "increase the current",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "increase the number of turns",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "use a stronger magnetic field, or increase the area of the coil",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "c",
+          "label": "(c)",
+          "prompt": "Explain the purpose of the split ring commutator in a direct current motor.",
+          "marks": 3,
+          "answer": "The commutator reverses the direction of the current in the coil every half turn, just as the coil passes the vertical. Without it the force on each side would reverse relative to the coil and the coil would swing back, so it would oscillate instead of turning. With it the force on each side always acts the same way round and the coil keeps rotating in one direction.",
+          "modelResponse": null,
+          "solution": "The commutator reverses the direction of the current in the coil every half turn, just as the coil passes the vertical. Without it the force on each side would reverse relative to the coil and the coil would swing back, so it would oscillate instead of turning. With it the force on each side always acts the same way round and the coil keeps rotating in one direction.\n\nMarker's note. An answer which says the commutator 'makes the motor work' scores nothing. The reversal of the current is what earns B1 and cannot be implied.",
+          "markerNote": "An answer which says the commutator 'makes the motor work' scores nothing. The reversal of the current is what earns B1 and cannot be implied.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "reverses the current in the coil every half turn",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "so the force on each side keeps acting the same way round",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "the coil turns continuously in one direction instead of oscillating",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "d",
+          "label": "(d)",
+          "prompt": "The magnet is now removed from the coil and moved towards it and away from it repeatedly, with the supply disconnected. State what is observed, and name the effect.",
+          "marks": 2,
+          "answer": "A current is induced in the coil, which reverses each time the direction of motion reverses. The effect is electromagnetic induction.",
+          "modelResponse": null,
+          "solution": "A current is induced in the coil, which reverses each time the direction of motion reverses. The effect is electromagnetic induction.\n\nMarker's note. Accept a deflection of a galvanometer connected to the coil for B1. A candidate who says the coil turns has confused the motor effect with induction.",
+          "markerNote": "Accept a deflection of a galvanometer connected to the coil for B1. A candidate who says the coil turns has confused the motor effect with induction.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "a current or an electromotive force is induced in the coil",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "names the effect as electromagnetic induction",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "e",
+          "label": "(e)",
+          "prompt": "State TWO ways in which the size of the induced electromotive force in Part (d) could be increased.",
+          "marks": 2,
+          "answer": "Move the magnet faster, and use a coil with more turns.",
+          "modelResponse": null,
+          "solution": "Move the magnet faster, and use a coil with more turns.\n\nMarker's note. The size of the induced electromotive force depends on the rate at which the field through the coil changes, so anything which increases that rate is acceptable.",
+          "markerNote": "The size of the induced electromotive force depends on the rate at which the field through the coil changes, so anything which increases that rate is acceptable.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "move the magnet faster, or change the field more quickly",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "more turns on the coil, or a stronger magnet",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "f",
+          "label": "(f)",
+          "prompt": "State ONE difference between direct current and alternating current.",
+          "marks": 2,
+          "answer": "Direct current flows in one direction only, while alternating current reverses its direction regularly.",
+          "modelResponse": null,
+          "solution": "Direct current flows in one direction only, while alternating current reverses its direction regularly.\n\nMarker's note. Accept a description of the voltage-time graphs: a steady horizontal line against a curve which crosses the axis. Award one mark where the candidate describes only one of the two.",
+          "markerNote": "Accept a description of the voltage-time graphs: a steady horizontal line against a curve which crosses the axis. Award one mark where the candidate describes only one of the two.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 2,
+              "profile": "KC",
+              "description": "one clear difference, stated for both kinds of current",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "phy-p2-4-q6",
+      "question_number": 6,
+      "paper": "SPARK CSEC Physics Practice Paper 02 number 4",
+      "section": "B",
+      "topic": "Nuclide notation and radioactive decay",
+      "marks": 15,
+      "profile": {
+        "KC": 8,
+        "UK": 7,
+        "XS": 0
+      },
+      "stem": "",
+      "parts": [
+        {
+          "id": "a",
+          "label": "(a)",
+          "prompt": "A nuclide of uranium is written as ²³⁵U with atomic number 92. State the number of protons, the number of neutrons and the nucleon number of this nuclide.",
+          "marks": 3,
+          "answer": "92 protons, 143 neutrons and a nucleon number of 235.",
+          "modelResponse": "92 protons, 143 neutrons, nucleon number 235",
+          "solution": "92 protons, 143 neutrons and a nucleon number of 235.\n\nMarker's note. The nucleon number is the mass number, the total of protons and neutrons, so it is read straight off the notation. A candidate who answers 235 neutrons has confused the nucleon number with the neutron number and loses A1 alone.",
+          "markerNote": "The nucleon number is the mass number, the total of protons and neutrons, so it is read straight off the notation. A candidate who answers 235 neutrons has confused the nucleon number with the neutron number and loses A1 alone.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "92 protons",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "KC",
+              "description": "143 neutrons, from 235 − 92",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 143,
+                "tolerance": 0.02,
+                "unit": "neutrons"
+              }
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "nucleon number 235",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "label": "(b)",
+          "prompt": "A nucleus of carbon-14 decays by emitting a beta particle and becomes a nucleus of nitrogen. Complete the following nuclear equation by writing the missing numbers in the spaces provided.",
+          "marks": 3,
+          "answer": "The nitrogen nucleus has mass number 14 and atomic number 7, and the beta particle has a charge number of −1.",
+          "modelResponse": null,
+          "solution": "The nitrogen nucleus has mass number 14 and atomic number 7, and the beta particle has a charge number of −1.\n\nMarker's note. In beta decay a neutron becomes a proton and an electron, so the atomic number rises by one while the mass number is unchanged. A candidate who writes 5 for the nitrogen has decreased the atomic number, which is alpha-like behaviour, and loses A1.",
+          "markerNote": "In beta decay a neutron becomes a proton and an electron, so the atomic number rises by one while the mass number is unchanged. A candidate who writes 5 for the nitrogen has decreased the atomic number, which is alpha-like behaviour, and loses A1.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "balances the mass numbers: 14 = 14 + 0",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "7 for the atomic number of nitrogen",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A2",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "−1 for the beta particle",
+              "field": "all",
+              "manual": true
+            }
+          ],
+          "blanks": [
+            "         14                    ............                  0",
+            "             C    →               N      +           e",
+            "          6                       ............                 ............"
+          ]
+        },
+        {
+          "id": "c",
+          "label": "(c)",
+          "prompt": "A radioactive source has a half-life of 8.0 minutes. Determine the fraction of the original nuclei which remains undecayed after 40 minutes.",
+          "marks": 4,
+          "answer": "1/32 of the original nuclei",
+          "modelResponse": null,
+          "solution": "1/32 of the original nuclei\n\nMarker's note. Follow through from the candidate's own earlier value. Accept 1/32, 0.03125, 0.031 or 3.1 per cent. A candidate who answers 1/5 has divided rather than halved repeatedly: award M1 and M2 only. A candidate who gives the fraction decayed, 31/32, has answered the opposite question and loses A2.",
+          "markerNote": "Follow through from the candidate's own earlier value. Accept 1/32, 0.03125, 0.031 or 3.1 per cent. A candidate who answers 1/5 has divided rather than halved repeatedly: award M1 and M2 only. A candidate who gives the fraction decayed, 31/32, has answered the opposite question and loses A2.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "finds the number of half-lives: 40 ÷ 8.0",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "M2",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "5 half-lives",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "halves the fraction five times, or uses (1/2)⁵",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A2",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "1/32, that is 0.031 or about 3.1 per cent",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "d",
+          "label": "(d)",
+          "prompt": "State what is meant by the term 'background radiation', and name TWO sources of it.",
+          "marks": 3,
+          "answer": "Background radiation is the ionising radiation always present in the environment, whether or not a source is nearby. Two sources are rocks in the ground, such as granite giving off radon gas, and cosmic rays from space.",
+          "modelResponse": null,
+          "solution": "Background radiation is the ionising radiation always present in the environment, whether or not a source is nearby. Two sources are rocks in the ground, such as granite giving off radon gas, and cosmic rays from space.\n\nMarker's note. Accept as sources: rocks and soil, radon gas, cosmic rays, food and drink, building materials, medical X-rays, nuclear waste or fallout. Two rocks-based answers, such as granite and radon, count as one source.",
+          "markerNote": "Accept as sources: rocks and soil, radon gas, cosmic rays, food and drink, building materials, medical X-rays, nuclear waste or fallout. Two rocks-based answers, such as granite and radon, count as one source.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "radiation always present in the environment, from natural and artificial sources",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "first source",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "second, different source",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "e",
+          "label": "(e)",
+          "prompt": "State TWO uses of radioactive isotopes in medicine or in industry.",
+          "marks": 2,
+          "answer": "Treating cancer with gamma radiation, and using a tracer to check the flow of a liquid in a pipeline.",
+          "modelResponse": null,
+          "solution": "Treating cancer with gamma radiation, and using a tracer to check the flow of a liquid in a pipeline.\n\nMarker's note. Accept: radiotherapy, medical tracers, sterilising instruments or food, thickness gauging, detecting leaks in pipes, smoke alarms, carbon dating, checking welds. Generating electricity is not a use in medicine or industry in the sense the question means, but do not refuse it if a second valid use is given.",
+          "markerNote": "Accept: radiotherapy, medical tracers, sterilising instruments or food, thickness gauging, detecting leaks in pipes, smoke alarms, carbon dating, checking welds. Generating electricity is not a use in medicine or industry in the sense the question means, but do not refuse it if a second valid use is given.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "first use",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "second, different use",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

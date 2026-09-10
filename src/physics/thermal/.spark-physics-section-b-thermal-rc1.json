@@ -1,0 +1,12 @@
+{
+  "package": "SPARK_Physics_SectionB_Thermal_Assessment_RC1",
+  "section": "B",
+  "topics": 4,
+  "objectives": 27,
+  "mcq": 110,
+  "flashcards": 81,
+  "structuredQuestions": 9,
+  "interactiveLabs": 8,
+  "assessmentScope": "Section B topic practice, structured practice and internal section checkpoint",
+  "databaseMigration": false
+}

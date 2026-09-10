@@ -8,12 +8,14 @@ const edge = fs.readFileSync(path.join(__dirname, "..", "supabase", "functions",
 const deno = fs.readFileSync(path.join(__dirname, "..", "supabase", "functions", "send-progress-report", "deno.json"), "utf8");
 const flashcardPanel = fs.readFileSync(path.join(__dirname, "components", "learning", "FlashcardsPanel.jsx"), "utf8");
 const parentOverview = fs.readFileSync(path.join(__dirname, "components", "learning", "ParentOverviewIntelligence.jsx"), "utf8");
+const parentGoalCard = fs.readFileSync(path.join(__dirname, "components", "learning", "ParentSubjectGoalCard.jsx"), "utf8");
 const reportModal = fs.readFileSync(path.join(__dirname, "components", "reports", "ProgressReportModal.jsx"), "utf8");
 
 
 describe("SPARK V5.3.10 learning intelligence integration", () => {
   test("student dashboard contains insights, reports, goals and flashcards", () => {
-    expect(app).toContain("StudentOverviewIntelligence");
+    expect(app).toContain("SubjectDashboardOverview");
+    expect(app).toContain("StudentGoalCard");
     expect(app).toContain('k:"flashcards",icon:"flashcards",label:"Flashcards"');
     expect(app).toContain("<FlashcardsPanel");
     expect(app).toContain("studentReportOpen");
@@ -28,7 +30,7 @@ describe("SPARK V5.3.10 learning intelligence integration", () => {
     expect(app).toContain("ParentOverviewIntelligence");
     expect(app).toContain("parentReportOpen");
     expect(app).toContain('canEmail={Boolean(user?.email && user?.email_confirmed_at)}');
-    expect(app).toContain("flashcardReviewEvents: childData.flashcardReviewEvents || []");
+    expect(app).toContain("flashcardReviewEvents: childData?.flashcardReviewEvents || []");
   });
 
   test("goal notifications refresh live Student and Parent overview data", () => {
@@ -44,9 +46,10 @@ describe("SPARK V5.3.10 learning intelligence integration", () => {
     expect(app).toContain("weakSkills={learnerModelWeakSkills(studentLearnerModel, studentSummary.weakestSkills)}");
   });
 
-  test("parent goal form resets when the selected child or current goal changes", () => {
-    expect(parentOverview).toContain("useEffect(() => {");
-    expect(parentOverview).toContain("[child?.id, goal?.target_percent, goal?.target_date]");
+  test("parent goal is handled by the dashboard-wide goal card rather than the Mathematics learner panel", () => {
+    expect(parentGoalCard.toLowerCase()).toContain("overall learning goal");
+    expect(parentGoalCard).toContain('supabase.rpc("spark_suggest_goal"');
+    expect(parentOverview).not.toContain("spark-parent-goal-card");
   });
 
   test("emailed report includes goal and privacy-safe Study Circle summary", () => {

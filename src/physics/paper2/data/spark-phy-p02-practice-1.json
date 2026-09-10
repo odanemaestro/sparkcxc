@@ -1,0 +1,1686 @@
+{
+  "paper_id": "spark-phy-p02-practice-1",
+  "title": "SPARK CSEC Physics - Paper 02 Practice Paper 1",
+  "subject": "Physics",
+  "examination": "CSEC (Caribbean Secondary Education Certificate)",
+  "paper": "Paper 02 - General Proficiency",
+  "syllabus": "CXC 22/G/SYLL 13, for examinations from May and June 2015",
+  "version": "1.0.0",
+  "duration_minutes": 150,
+  "marks": 100,
+  "profile": {
+    "KC": 23,
+    "UK": 62,
+    "XS": 15
+  },
+  "structure": {
+    "Section A": {
+      "questions": "1-3",
+      "instruction": "Answer ALL questions.",
+      "mark_split": [
+        25,
+        15,
+        15
+      ]
+    },
+    "Section B": {
+      "questions": "4-6",
+      "instruction": "Answer ALL questions.",
+      "mark_split": [
+        15,
+        15,
+        15
+      ]
+    }
+  },
+  "instructions": [
+    "This paper consists of SIX questions in TWO sections. Answer ALL questions.",
+    "Write your answers in the spaces provided in this booklet.",
+    "Do NOT write in the margins.",
+    "Where appropriate, ALL WORKING MUST BE SHOWN in this booklet.",
+    "You may use a silent, non-programmable calculator. Note that an answer given to an inappropriate number of figures will be penalised."
+  ],
+  "required_materials": [
+    "Silent non-programmable calculator",
+    "Ruler",
+    "Graph paper or an on-screen grid"
+  ],
+  "mark_scheme_key": {
+    "M": "Method mark. Awarded for the right approach and a correct substitution, whether or not the arithmetic that follows is right.",
+    "A": "Accuracy mark. Awarded for the correct value, with its unit, to the precision asked for. Normally depends on the method mark before it.",
+    "B": "Independent mark. Stands on its own and depends on nothing earlier: a definition, a named source of error, a labelled axis."
+  },
+  "marking_conventions": [
+    "A correct final answer implies the method, unless the question demanded the working.",
+    "Follow through. Where a candidate uses their own wrong value correctly in a later part, mark that later part on their value.",
+    "A missing unit is penalised once per question, not once per part.",
+    "An answer given to more figures than asked for keeps the mark. An answer with fewer figures than the data justify loses it."
+  ],
+  "marking_coverage": {
+    "auto_marks": 15,
+    "manual_marks": 85,
+    "note": "A criterion carrying a `check` is marked automatically. A criterion carrying `manual: true` is for prose, a drawn graph or a completed table, which cannot be judged from a typed string without a keyword list written for that answer. The engine reports a manual criterion as something to check against the worked solution rather than counting it as lost."
+  },
+  "provenance": "Original questions written for SPARK. The structure, language, mark allocations and question archetypes follow the CSEC Physics Paper 02 papers of 2008 to 2023. No past-paper question is reproduced. This is not a Caribbean Examinations Council publication.",
+  "questions": [
+    {
+      "question_id": "phy-p2-1-q1",
+      "question_number": 1,
+      "paper": "SPARK CSEC Physics Practice Paper 02 number 1",
+      "section": "A",
+      "topic": "Boyle's law: pressure against 1/V",
+      "marks": 25,
+      "profile": {
+        "KC": 1,
+        "UK": 11,
+        "XS": 13
+      },
+      "stem": "A student investigated how the pressure of a fixed mass of gas depends on its volume. The temperature of the gas was kept constant throughout the experiment. The volume, V, of the gas and the pressure, P, of the gas were recorded in Table 1.",
+      "stimulus": {
+        "kind": "table",
+        "caption": "TABLE 1: RESULTS OF THE EXPERIMENT",
+        "headers": [
+          "Volume, V/cm³",
+          "Pressure, P/kPa",
+          "1/V (cm⁻³) × 10⁻²"
+        ],
+        "rows": [
+          [
+            "10.0",
+            "240",
+            "10.00"
+          ],
+          [
+            "12.0",
+            "200",
+            ""
+          ],
+          [
+            "15.0",
+            "160",
+            "6.67"
+          ],
+          [
+            "20.0",
+            "120",
+            ""
+          ],
+          [
+            "25.0",
+            "96",
+            "4.00"
+          ],
+          [
+            "30.0",
+            "80",
+            ""
+          ]
+        ]
+      },
+      "parts": [
+        {
+          "id": "a",
+          "label": "(a)",
+          "prompt": "Complete Table 1 by calculating the missing values.",
+          "marks": 6,
+          "answer": "1/V for 12.0 cm³ = 8.33 × 10⁻²; for 20.0 cm³ = 5.00 × 10⁻²; for 30.0 cm³ = 3.33 × 10⁻²",
+          "modelResponse": null,
+          "solution": "1/V for 12.0 cm³ = 8.33 × 10⁻²; for 20.0 cm³ = 5.00 × 10⁻²; for 30.0 cm³ = 3.33 × 10⁻²\n\nMarker's note. Accept 8.3, 5.0 and 3.3. Do not penalise a candidate who works in cm⁻³ without the × 10⁻² so long as the values are consistent with the column heading.",
+          "markerNote": "Accept 8.3, 5.0 and 3.3. Do not penalise a candidate who works in cm⁻³ without the × 10⁻² so long as the values are consistent with the column heading.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "XS",
+              "description": "divides 1 by the volume for at least one row",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 2,
+              "profile": "UK",
+              "description": "8.33 × 10⁻² cm⁻³",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A2",
+              "kind": "A",
+              "marks": 2,
+              "profile": "UK",
+              "description": "5.00 × 10⁻² cm⁻³",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A3",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "3.33 × 10⁻² cm⁻³",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "label": "(b)",
+          "prompt": "On the grid provided on page 4, plot a graph of pressure, P/kPa, against 1/V (cm⁻³) × 10⁻², using 2 cm to represent 1 × 10⁻² cm⁻³ on the horizontal axis and 2 cm to represent 40 kPa on the vertical axis.",
+          "marks": 7,
+          "answer": "A straight line through the origin",
+          "modelResponse": null,
+          "solution": "A straight line through the origin\n\nMarker's note. A dot to dot line scores nothing for B4. A line drawn with a ruler which misses the origin still scores B4 if the points justify it.",
+          "markerNote": "A dot to dot line scores nothing for B4. A line drawn with a ruler which misses the origin still scores B4 if the points justify it.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "XS",
+              "description": "both axes labelled with the quantity and its unit",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "XS",
+              "description": "the scales asked for are used, and the points fill at least half the grid",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 3,
+              "profile": "XS",
+              "description": "all six points plotted correctly; deduct one mark for each point misplaced",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B4",
+              "kind": "B",
+              "marks": 2,
+              "profile": "XS",
+              "description": "a single best fit straight line drawn through the points and the origin",
+              "field": "all",
+              "manual": true
+            }
+          ],
+          "responseType": "graph",
+          "grid": {
+            "xMin": 0,
+            "xMax": 11,
+            "yMin": 0,
+            "yMax": 260,
+            "xStep": 1,
+            "yStep": 20,
+            "minorPerStep": 5,
+            "xLabel": "1/V (cm⁻³) × 10⁻²",
+            "yLabel": "Pressure, P/kPa",
+            "tools": [
+              "point",
+              "line",
+              "read"
+            ]
+          },
+          "graph": {
+            "points": [
+              {
+                "x": 10,
+                "y": 240
+              },
+              {
+                "x": 8.33,
+                "y": 200
+              },
+              {
+                "x": 6.67,
+                "y": 160
+              },
+              {
+                "x": 5,
+                "y": 120
+              },
+              {
+                "x": 4,
+                "y": 96
+              },
+              {
+                "x": 3.33,
+                "y": 80
+              }
+            ],
+            "tolerance": 2,
+            "pointMarks": 3,
+            "line": {
+              "gradient": 24,
+              "intercept": 0,
+              "from": 0,
+              "to": 11,
+              "tolerance": 6
+            },
+            "lineMarks": 2
+          }
+        },
+        {
+          "id": "c",
+          "label": "(c)",
+          "prompt": "Determine the gradient of the graph, stating its unit.",
+          "marks": 4,
+          "answer": "gradient = 2400 kPa cm³",
+          "modelResponse": null,
+          "solution": "gradient = 2400 kPa cm³\n\nMarker's note. The gradient is P ÷ (1/V), so the unit is kPa ÷ cm⁻³, which is kPa cm³. Accept the unit written as kPa cm³ or as kPa/cm⁻³. A gradient taken from two table values instead of from the line loses M1 but may still earn A1.",
+          "markerNote": "The gradient is P ÷ (1/V), so the unit is kPa ÷ cm⁻³, which is kPa cm³. Accept the unit written as kPa cm³ or as kPa/cm⁻³. A gradient taken from two table values instead of from the line loses M1 but may still earn A1.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 2,
+              "profile": "XS",
+              "description": "a triangle drawn on the line, using at least half its length",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "XS",
+              "description": "gradient in the range 2300 to 2500",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "the unit kPa cm³",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "d",
+          "label": "(d)",
+          "prompt": "Use the graph to determine the pressure of the gas when its volume is 18.0 cm³.",
+          "marks": 3,
+          "answer": "133 kPa",
+          "modelResponse": "133 kPa",
+          "solution": "133 kPa\n\nMarker's note. A candidate who calculates 2400/18 rather than reading the graph has not done what was asked but has the physics right: award M1 and A1, withhold M2. Follow through from the candidate's own earlier value.",
+          "markerNote": "A candidate who calculates 2400/18 rather than reading the graph has not done what was asked but has the physics right: award M1 and A1, withhold M2. Follow through from the candidate's own earlier value.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "1/V = 1/18.0 = 5.56 × 10⁻² cm⁻³",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "M2",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "reads the pressure off the line at that value of 1/V",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "133 kPa, accept 128 to 138 kPa",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 133,
+                "tolerance": 0.02,
+                "unit": "kPa"
+              }
+            }
+          ]
+        },
+        {
+          "id": "e",
+          "label": "(e)",
+          "prompt": "Complete the following statement.",
+          "marks": 3,
+          "answer": "inversely proportional; temperature; the constant PV for that mass of gas",
+          "modelResponse": null,
+          "solution": "inversely proportional; temperature; the constant PV for that mass of gas\n\nMarker's note. For B3 accept 'the constant in PV = constant', or 'P × V', or the numerical value 2400 kPa cm³.",
+          "markerNote": "For B3 accept 'the constant in PV = constant', or 'P × V', or the numerical value 2400 kPa cm³.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "inversely proportional",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "temperature",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "the product of pressure and volume, PV, for that mass of gas",
+              "field": "all",
+              "manual": true
+            }
+          ],
+          "blanks": [
+            "Boyle's law states that the pressure of a fixed mass of gas is ...............................",
+            "to its volume, provided the ............................... of the gas is kept constant.",
+            "The gradient of the graph in Figure 1 is equal to ............................... ."
+          ]
+        },
+        {
+          "id": "f",
+          "label": "(f)",
+          "prompt": "State ONE precaution that the student should have taken while carrying out this experiment.",
+          "marks": 2,
+          "answer": "Allow time for the temperature of the gas to settle before each reading is taken",
+          "modelResponse": null,
+          "solution": "Allow time for the temperature of the gas to settle before each reading is taken\n\nMarker's note. Accept: wait for the temperature to become steady, since the law holds only at constant temperature; read the scale square on to avoid parallax; check the gauge for a zero error; change the volume slowly so that no heating occurs. Award one mark only where the precaution is named without a reason. Refuse 'be careful' and 'avoid human error'.",
+          "markerNote": "Accept: wait for the temperature to become steady, since the law holds only at constant temperature; read the scale square on to avoid parallax; check the gauge for a zero error; change the volume slowly so that no heating occurs. Award one mark only where the precaution is named without a reason. Refuse 'be careful' and 'avoid human error'.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 2,
+              "profile": "XS",
+              "description": "one specific precaution, with the reason it matters",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "phy-p2-1-q2",
+      "question_number": 2,
+      "paper": "SPARK CSEC Physics Practice Paper 02 number 1",
+      "section": "A",
+      "topic": "Density and pressure",
+      "marks": 15,
+      "profile": {
+        "KC": 4,
+        "UK": 11,
+        "XS": 0
+      },
+      "stem": "",
+      "parts": [
+        {
+          "id": "ai",
+          "label": "(a) (i)",
+          "prompt": "Define the term 'density'.",
+          "marks": 1,
+          "answer": "Density is the mass per unit volume of a substance.",
+          "modelResponse": null,
+          "solution": "Density is the mass per unit volume of a substance.\n\nMarker's note. Accept density = mass ÷ volume.",
+          "markerNote": "Accept density = mass ÷ volume.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "mass per unit volume",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "aii",
+          "label": "(a) (ii)",
+          "prompt": "State the SI unit of density.",
+          "marks": 1,
+          "answer": "kg m⁻³",
+          "modelResponse": null,
+          "solution": "kg m⁻³\n\nMarker's note. Accept kg/m³. Do not accept g cm⁻³, which is not the SI unit.",
+          "markerNote": "Accept kg/m³. Do not accept g cm⁻³, which is not the SI unit.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "kg m⁻³",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "bi",
+          "label": "(b) (i)",
+          "prompt": "A solid rectangular block has sides of length 20 cm, 10 cm and 5.0 cm. The mass of the block is 2.7 kg.\n\nCalculate the volume of the block, in m³.",
+          "marks": 2,
+          "answer": "1.0 × 10⁻³ m³",
+          "modelResponse": "0.001 m³",
+          "solution": "1.0 × 10⁻³ m³\n\nMarker's note. 0.20 × 0.10 × 0.050. A candidate who works in cm³ and gets 1000 cm³ earns M1 only, unless the conversion to m³ then follows.",
+          "markerNote": "0.20 × 0.10 × 0.050. A candidate who works in cm³ and gets 1000 cm³ earns M1 only, unless the conversion to m³ then follows.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "converts all three lengths to metres and multiplies",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "1.0 × 10⁻³ m³",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 0.001,
+                "tolerance": 0.02,
+                "unit": "m³"
+              }
+            }
+          ]
+        },
+        {
+          "id": "bii",
+          "label": "(b) (ii)",
+          "prompt": "A solid rectangular block has sides of length 20 cm, 10 cm and 5.0 cm. The mass of the block is 2.7 kg.\n\nCalculate the density of the block.",
+          "marks": 2,
+          "answer": "2700 kg m⁻³",
+          "modelResponse": "2700 kg m⁻³",
+          "solution": "2700 kg m⁻³\n\nMarker's note. Follow through from the candidate's own earlier value. A candidate using 1000 cm³ arrives at 2.7 g cm⁻³, which earns M1 and A1 if the unit is given correctly.",
+          "markerNote": "Follow through from the candidate's own earlier value. A candidate using 1000 cm³ arrives at 2.7 g cm⁻³, which earns M1 and A1 if the unit is given correctly.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "density = mass ÷ volume",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "2700 kg m⁻³",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 2700,
+                "tolerance": 0.02,
+                "unit": "kg m⁻³"
+              }
+            }
+          ]
+        },
+        {
+          "id": "c",
+          "label": "(c)",
+          "prompt": "Define the term 'pressure' and state the formula used to calculate it.",
+          "marks": 2,
+          "answer": "Pressure is the force acting normally per unit area. P = F/A",
+          "modelResponse": null,
+          "solution": "Pressure is the force acting normally per unit area. P = F/A\n\nMarker's note. Do not award B1 for 'force over something'. The word area is required.",
+          "markerNote": "Do not award B1 for 'force over something'. The word area is required.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "force per unit area, or force acting normally per unit area",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "P = F/A, with the symbols identified",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "d",
+          "label": "(d)",
+          "prompt": "The block is placed on a bench so that it rests on its largest face. Calculate the pressure exerted by the block on the bench. [Take g as 10 N kg⁻¹.]",
+          "marks": 3,
+          "answer": "1350 Pa",
+          "modelResponse": "1350 Pa",
+          "solution": "1350 Pa\n\nMarker's note. Accept 1.35 × 10³ Pa or 1350 N m⁻². A candidate who uses the mass in place of the weight and gets 135 loses A1 but keeps M2.",
+          "markerNote": "Accept 1.35 × 10³ Pa or 1350 N m⁻². A candidate who uses the mass in place of the weight and gets 135 loses A1 but keeps M2.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "weight = mg = 2.7 × 10 = 27 N",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "M2",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "largest face has area 0.20 × 0.10 = 0.020 m²",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "1350 Pa, with the unit",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 1350,
+                "tolerance": 0.02,
+                "unit": "Pa"
+              }
+            }
+          ]
+        },
+        {
+          "id": "e",
+          "label": "(e)",
+          "prompt": "State, giving a reason, which face of the block would exert the greatest pressure on the bench.",
+          "marks": 2,
+          "answer": "The smallest face, because pressure is inversely proportional to area for a fixed force.",
+          "modelResponse": null,
+          "solution": "The smallest face, because pressure is inversely proportional to area for a fixed force.\n\nMarker's note. The reason mark stands alone. A candidate who names the wrong face but gives the correct general reason still earns B2.",
+          "markerNote": "The reason mark stands alone. A candidate who names the wrong face but gives the correct general reason still earns B2.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "the smallest face, the 10 cm by 5.0 cm face",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "the reason: the same weight acts on a smaller area",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "f",
+          "label": "(f)",
+          "prompt": "A diver descends to a depth of 15 m below the surface of the sea. Calculate the pressure on the diver due to the sea water alone. [Density of sea water = 1030 kg m⁻³.]",
+          "marks": 2,
+          "answer": "1.55 × 10⁵ Pa",
+          "modelResponse": "155000 Pa",
+          "solution": "1.55 × 10⁵ Pa\n\nMarker's note. The question asks for the pressure due to the water alone, so atmospheric pressure is not to be added. A candidate who adds 1.0 × 10⁵ Pa has answered a different question and loses A1 but keeps M1.",
+          "markerNote": "The question asks for the pressure due to the water alone, so atmospheric pressure is not to be added. A candidate who adds 1.0 × 10⁵ Pa has answered a different question and loses A1 but keeps M1.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "uses P = hρg",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "154 500 Pa, accept 1.5 × 10⁵ Pa",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 155000,
+                "tolerance": 0.02,
+                "unit": "Pa"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "phy-p2-1-q3",
+      "question_number": 3,
+      "paper": "SPARK CSEC Physics Practice Paper 02 number 1",
+      "section": "A",
+      "topic": "Work, energy, power and efficiency",
+      "marks": 15,
+      "profile": {
+        "KC": 3,
+        "UK": 12,
+        "XS": 0
+      },
+      "stem": "",
+      "parts": [
+        {
+          "id": "a",
+          "label": "(a)",
+          "prompt": "State the principle of conservation of energy.",
+          "marks": 2,
+          "answer": "Energy can neither be created nor destroyed; it can only be changed from one form to another.",
+          "modelResponse": null,
+          "solution": "Energy can neither be created nor destroyed; it can only be changed from one form to another.\n\nMarker's note. Accept 'the total energy of a closed system is constant' for both marks.",
+          "markerNote": "Accept 'the total energy of a closed system is constant' for both marks.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "energy cannot be created or destroyed",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "it is converted from one form to another, or transferred from one body to another",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "bi",
+          "label": "(b) (i)",
+          "prompt": "An electric pump raises 500 kg of water from a well through a vertical height of 12 m in 40 s. [Take g as 10 N kg⁻¹.]\n\nCalculate the work done by the pump against gravity.",
+          "marks": 3,
+          "answer": "6.0 × 10⁴ J",
+          "modelResponse": "60000 J",
+          "solution": "6.0 × 10⁴ J\n\nMarker's note. Accept 6.0 × 10⁴ J or 60 kJ.",
+          "markerNote": "Accept 6.0 × 10⁴ J or 60 kJ.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "work done against gravity = mgh",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "M2",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "substitutes 500 × 10 × 12",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "60 000 J, with the unit",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 60000,
+                "tolerance": 0.02,
+                "unit": "J"
+              }
+            }
+          ]
+        },
+        {
+          "id": "bii",
+          "label": "(b) (ii)",
+          "prompt": "An electric pump raises 500 kg of water from a well through a vertical height of 12 m in 40 s. [Take g as 10 N kg⁻¹.]\n\nCalculate the useful power output of the pump.",
+          "marks": 2,
+          "answer": "1500 W",
+          "modelResponse": "1500 W",
+          "solution": "1500 W\n\nMarker's note. Follow through from the candidate's own earlier value. Accept 1.5 kW.",
+          "markerNote": "Follow through from the candidate's own earlier value. Accept 1.5 kW.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "power = work done ÷ time taken",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "1500 W, with the unit",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 1500,
+                "tolerance": 0.02,
+                "unit": "W"
+              }
+            }
+          ]
+        },
+        {
+          "id": "c",
+          "label": "(c)",
+          "prompt": "The pump draws 2500 W of electrical power from the supply. Calculate the efficiency of the pump.",
+          "marks": 3,
+          "answer": "60 per cent",
+          "modelResponse": "60",
+          "solution": "60 per cent\n\nMarker's note. Follow through from the candidate's own earlier value. A candidate who leaves the answer as 0.6 without the percentage earns M1 and A1 but not M2.",
+          "markerNote": "Follow through from the candidate's own earlier value. A candidate who leaves the answer as 0.6 without the percentage earns M1 and A1 but not M2.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "efficiency = useful output ÷ total input",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "M2",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "multiplies by 100 to give a percentage",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "60 per cent",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 60,
+                "tolerance": 0.02
+              }
+            }
+          ]
+        },
+        {
+          "id": "d",
+          "label": "(d)",
+          "prompt": "Explain why the efficiency of the pump is less than 100 per cent.",
+          "marks": 2,
+          "answer": "Some of the input energy is transferred to the surroundings as thermal energy, through friction in the moving parts and resistance in the wires.",
+          "modelResponse": null,
+          "solution": "Some of the input energy is transferred to the surroundings as thermal energy, through friction in the moving parts and resistance in the wires.\n\nMarker's note. 'Energy is lost' on its own scores nothing, because energy is not lost. The candidate must say what it became.",
+          "markerNote": "'Energy is lost' on its own scores nothing, because energy is not lost. The candidate must say what it became.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "energy is transferred to forms which are not useful",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "names where it goes: friction, heating of the motor, resistance of the wires, sound",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "e",
+          "label": "(e)",
+          "prompt": "State TWO renewable sources of energy which are suitable for generating electricity on a Caribbean island, and state ONE advantage of using them instead of imported fuel.",
+          "marks": 3,
+          "answer": "Solar and wind. The fuel is free and does not have to be imported, which saves foreign exchange.",
+          "modelResponse": null,
+          "solution": "Solar and wind. The fuel is free and does not have to be imported, which saves foreign exchange.\n\nMarker's note. Accept solar, wind, hydroelectric, geothermal, biomass and wave. Do not accept natural gas or nuclear, which are not renewable. For B3 accept: no fuel to import, saves foreign exchange, no carbon dioxide produced during generation, the supply cannot be cut off by a shipping problem.",
+          "markerNote": "Accept solar, wind, hydroelectric, geothermal, biomass and wave. Do not accept natural gas or nuclear, which are not renewable. For B3 accept: no fuel to import, saves foreign exchange, no carbon dioxide produced during generation, the supply cannot be cut off by a shipping problem.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "first renewable source suitable for the Caribbean",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "second, different renewable source",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "one advantage, linked to the island situation",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "phy-p2-1-q4",
+      "question_number": 4,
+      "paper": "SPARK CSEC Physics Practice Paper 02 number 1",
+      "section": "B",
+      "topic": "Waves and sound",
+      "marks": 15,
+      "profile": {
+        "KC": 5,
+        "UK": 10,
+        "XS": 0
+      },
+      "stem": "",
+      "parts": [
+        {
+          "id": "a",
+          "label": "(a)",
+          "prompt": "Distinguish between a transverse wave and a longitudinal wave, and give ONE example of EACH.",
+          "marks": 4,
+          "answer": "In a transverse wave the particles vibrate at right angles to the direction of travel; in a longitudinal wave they vibrate along it. Examples: light or a water wave; sound.",
+          "modelResponse": null,
+          "solution": "In a transverse wave the particles vibrate at right angles to the direction of travel; in a longitudinal wave they vibrate along it. Examples: light or a water wave; sound.\n\nMarker's note. The distinction must be made on the direction of vibration relative to the direction of travel. 'One goes up and down and the other goes along' scores nothing, since both travel along. Accept any electromagnetic wave, or a wave on a rope or water, for B3. B4 requires sound, or a compression wave in a spring.",
+          "markerNote": "The distinction must be made on the direction of vibration relative to the direction of travel. 'One goes up and down and the other goes along' scores nothing, since both travel along. Accept any electromagnetic wave, or a wave on a rope or water, for B3. B4 requires sound, or a compression wave in a spring.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "transverse: vibration at right angles to the direction of travel",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "longitudinal: vibration along the direction of travel",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "a correct example of a transverse wave",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B4",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "a correct example of a longitudinal wave",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "label": "(b)",
+          "prompt": "A wave travelling through air has a frequency of 500 Hz and a wavelength of 0.66 m. Calculate the speed of the wave.",
+          "marks": 3,
+          "answer": "330 m s⁻¹",
+          "modelResponse": "330 m s⁻¹",
+          "solution": "330 m s⁻¹",
+          "markerNote": null,
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "uses v = f λ",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "M2",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "substitutes 500 × 0.66",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "330 m s⁻¹, with the unit",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 330,
+                "tolerance": 0.02,
+                "unit": "m s⁻¹"
+              }
+            }
+          ]
+        },
+        {
+          "id": "c",
+          "label": "(c)",
+          "prompt": "A boy standing 165 m from a vertical cliff claps his hands once and hears the echo 1.0 s later. Calculate the speed of sound in air, as measured by the boy.",
+          "marks": 3,
+          "answer": "330 m s⁻¹",
+          "modelResponse": "330 m s⁻¹",
+          "solution": "330 m s⁻¹\n\nMarker's note. Forgetting to double the distance gives 165 m s⁻¹: award M2 only. This is the commonest error in the question.",
+          "markerNote": "Forgetting to double the distance gives 165 m s⁻¹: award M2 only. This is the commonest error in the question.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "recognises that the sound travels 2 × 165 = 330 m",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "M2",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "speed = distance ÷ time",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "330 m s⁻¹, with the unit",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 330,
+                "tolerance": 0.02,
+                "unit": "m s⁻¹"
+              }
+            }
+          ]
+        },
+        {
+          "id": "di",
+          "label": "(d) (i)",
+          "prompt": "State what is meant by the term 'ultrasound'.",
+          "marks": 1,
+          "answer": "Sound of a frequency above the upper limit of human hearing, above about 20 kHz.",
+          "modelResponse": null,
+          "solution": "Sound of a frequency above the upper limit of human hearing, above about 20 kHz.\n\nMarker's note. Accept 'above 20 000 Hz'.",
+          "markerNote": "Accept 'above 20 000 Hz'.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "frequency above the range of human hearing",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "dii",
+          "label": "(d) (ii)",
+          "prompt": "State ONE use of ultrasound and explain why ultrasound is suitable for that use.",
+          "marks": 2,
+          "answer": "Scanning an unborn baby. Ultrasound is not ionising, so it does not damage living cells.",
+          "modelResponse": null,
+          "solution": "Scanning an unborn baby. Ultrasound is not ionising, so it does not damage living cells.\n\nMarker's note. Accept: pre-natal scanning, imaging soft tissue, breaking up kidney stones, depth sounding at sea, checking castings for cracks. The reason must fit the use: for a medical use, that ultrasound does not ionise and so does not damage cells; for depth sounding, that sound travels well through water while light does not.",
+          "markerNote": "Accept: pre-natal scanning, imaging soft tissue, breaking up kidney stones, depth sounding at sea, checking castings for cracks. The reason must fit the use: for a medical use, that ultrasound does not ionise and so does not damage cells; for depth sounding, that sound travels well through water while light does not.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "a genuine use",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "a reason connected to that use",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "e",
+          "label": "(e)",
+          "prompt": "State the wave parameter which determines EACH of the following.",
+          "marks": 2,
+          "answer": "Pitch is determined by frequency. Loudness is determined by amplitude.",
+          "modelResponse": null,
+          "solution": "Pitch is determined by frequency. Loudness is determined by amplitude.\n\nMarker's note. Do not accept wavelength for pitch, since the question asks for the wave parameter which determines it and the medium fixes the relationship.",
+          "markerNote": "Do not accept wavelength for pitch, since the question asks for the wave parameter which determines it and the medium fixes the relationship.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "frequency",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "amplitude",
+              "field": "all",
+              "manual": true
+            }
+          ],
+          "blanks": [
+            "The pitch of a note   ...............................................................",
+            "The loudness of a note   ..............................................................."
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "phy-p2-1-q5",
+      "question_number": 5,
+      "paper": "SPARK CSEC Physics Practice Paper 02 number 1",
+      "section": "B",
+      "topic": "Electric circuits",
+      "marks": 15,
+      "profile": {
+        "KC": 2,
+        "UK": 13,
+        "XS": 0
+      },
+      "stem": "Figure 2 shows a circuit in which a 2.0 Ω resistor is connected in series with two 8.0 Ω resistors which are connected in parallel with each other. The battery has an electromotive force of 12 V and negligible internal resistance.",
+      "diagram": {
+        "label": "Figure 2. Circuit diagram",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 440 280\" width=\"100%\" style=\"max-width:400px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" font-family=\"Georgia,serif\" font-size=\"13\"><path d=\"M40 40 L178 40\"/><path d=\"M222 40 L400 40\"/><path d=\"M40 40 L40 130\"/><path d=\"M400 40 L400 230\"/><path d=\"M190 20 L190 60\" stroke-width=\"2\"/><path d=\"M206 30 L206 50\" stroke-width=\"5\"/><text x=\"198\" y=\"14\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"13\">12 V</text><path d=\"M40 130 L122 130\"/><rect x=\"122\" y=\"116\" width=\"74\" height=\"28\" fill=\"none\"/><text x=\"159\" y=\"108\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"13\">2.0 &#937;</text><path d=\"M196 130 L258 130\"/><path d=\"M258 130 L330 130\"/><path d=\"M258 130 L258 160\"/><path d=\"M330 130 L330 160\"/><rect x=\"244\" y=\"160\" width=\"28\" height=\"62\" fill=\"none\"/><rect x=\"316\" y=\"160\" width=\"28\" height=\"62\" fill=\"none\"/><text x=\"236\" y=\"195\" text-anchor=\"end\" stroke=\"none\" fill=\"currentColor\" font-size=\"13\">8.0 &#937;</text><text x=\"352\" y=\"195\" text-anchor=\"start\" stroke=\"none\" fill=\"currentColor\" font-size=\"13\">8.0 &#937;</text><path d=\"M258 222 L258 252\"/><path d=\"M330 222 L330 252\"/><path d=\"M258 252 L330 252\"/><path d=\"M330 252 L400 252\"/><path d=\"M400 252 L400 40\"/><path d=\"M40 130 L40 252\"/><path d=\"M40 252 L258 252\"/></svg>",
+        "alt": "A circuit diagram. A 12 V cell drives current through a 2.0 ohm resistor connected in series with two 8.0 ohm resistors which are connected in parallel with each other."
+      },
+      "parts": [
+        {
+          "id": "a",
+          "label": "(a)",
+          "prompt": "Define the term 'electric current' and state its SI unit.",
+          "marks": 2,
+          "answer": "Electric current is the rate of flow of charge. Its SI unit is the ampere.",
+          "modelResponse": null,
+          "solution": "Electric current is the rate of flow of charge. Its SI unit is the ampere.\n\nMarker's note. Do not accept 'the flow of electricity'.",
+          "markerNote": "Do not accept 'the flow of electricity'.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "rate of flow of charge, or charge passing a point per unit time",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "the ampere, A",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "label": "(b)",
+          "prompt": "State Ohm's law.",
+          "marks": 2,
+          "answer": "The current through a metallic conductor is directly proportional to the potential difference across it, provided the temperature and other physical conditions remain constant.",
+          "modelResponse": null,
+          "solution": "The current through a metallic conductor is directly proportional to the potential difference across it, provided the temperature and other physical conditions remain constant.\n\nMarker's note. A statement of V = IR without the word proportional is not a statement of the law and scores B1 only if proportionality is implied clearly. The condition is required for B2 and is the mark most often dropped.",
+          "markerNote": "A statement of V = IR without the word proportional is not a statement of the law and scores B1 only if proportionality is implied clearly. The condition is required for B2 and is the mark most often dropped.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "current is proportional to potential difference",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "the condition: constant temperature, or constant physical conditions",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "c",
+          "label": "(c)",
+          "prompt": "Calculate the combined resistance of the two 8.0 Ω resistors.",
+          "marks": 3,
+          "answer": "4.0 Ω",
+          "modelResponse": "4 Ω",
+          "solution": "4.0 Ω\n\nMarker's note. Accept the shortcut for two equal resistors, R/2, for M1 and M2 together, provided the working shows it.",
+          "markerNote": "Accept the shortcut for two equal resistors, R/2, for M1 and M2 together, provided the working shows it.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "uses 1/R = 1/R₁ + 1/R₂ for the parallel pair",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "M2",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "substitutes 1/8.0 + 1/8.0",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "4.0 Ω, with the unit",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 4,
+                "tolerance": 0.02,
+                "unit": "Ω"
+              }
+            }
+          ]
+        },
+        {
+          "id": "d",
+          "label": "(d)",
+          "prompt": "Calculate the total resistance of the circuit.",
+          "marks": 2,
+          "answer": "6.0 Ω",
+          "modelResponse": "6 Ω",
+          "solution": "6.0 Ω\n\nMarker's note. Follow through from the candidate's own earlier value.",
+          "markerNote": "Follow through from the candidate's own earlier value.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "adds the series resistance to the parallel combination",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "6.0 Ω, with the unit",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 6,
+                "tolerance": 0.02,
+                "unit": "Ω"
+              }
+            }
+          ]
+        },
+        {
+          "id": "e",
+          "label": "(e)",
+          "prompt": "Calculate the current drawn from the battery.",
+          "marks": 2,
+          "answer": "2.0 A",
+          "modelResponse": "2 A",
+          "solution": "2.0 A\n\nMarker's note. Follow through from the candidate's own earlier value.",
+          "markerNote": "Follow through from the candidate's own earlier value.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "uses I = V/R with the total resistance",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "2.0 A, with the unit",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 2,
+                "tolerance": 0.02,
+                "unit": "A"
+              }
+            }
+          ]
+        },
+        {
+          "id": "f",
+          "label": "(f)",
+          "prompt": "Calculate the potential difference across the 2.0 Ω resistor.",
+          "marks": 2,
+          "answer": "4.0 V",
+          "modelResponse": "4 V",
+          "solution": "4.0 V\n\nMarker's note. Follow through from the candidate's own earlier value. The full current passes through the series resistor, which is the point of the part.",
+          "markerNote": "Follow through from the candidate's own earlier value. The full current passes through the series resistor, which is the point of the part.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "uses V = IR with the current through the 2.0 Ω resistor",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "4.0 V, with the unit",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 4,
+                "tolerance": 0.02,
+                "unit": "V"
+              }
+            }
+          ]
+        },
+        {
+          "id": "g",
+          "label": "(g)",
+          "prompt": "An electric heater rated at 2 kW is used for 3 hours. Calculate the cost of the energy used, if electricity is charged at 85 cents per kilowatt hour.",
+          "marks": 2,
+          "answer": "$5.10",
+          "modelResponse": null,
+          "solution": "$5.10\n\nMarker's note. Accept 510 cents. A candidate who converts to joules and then back correctly earns both marks.",
+          "markerNote": "Accept 510 cents. A candidate who converts to joules and then back correctly earns both marks.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "energy used = 2 kW × 3 h = 6 kWh",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "6 × 85 cents = 510 cents, that is $5.10",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "phy-p2-1-q6",
+      "question_number": 6,
+      "paper": "SPARK CSEC Physics Practice Paper 02 number 1",
+      "section": "B",
+      "topic": "Radioactivity",
+      "marks": 15,
+      "profile": {
+        "KC": 8,
+        "UK": 5,
+        "XS": 2
+      },
+      "stem": "",
+      "parts": [
+        {
+          "id": "a",
+          "label": "(a)",
+          "prompt": "Define the term 'half-life' of a radioactive source.",
+          "marks": 2,
+          "answer": "The half-life is the time taken for half the nuclei of a radioactive sample to decay, or for the activity to fall to half its original value.",
+          "modelResponse": null,
+          "solution": "The half-life is the time taken for half the nuclei of a radioactive sample to decay, or for the activity to fall to half its original value.\n\nMarker's note. Accept either the nuclei form or the activity form. 'The time for the source to decay' scores nothing.",
+          "markerNote": "Accept either the nuclei form or the activity form. 'The time for the source to decay' scores nothing.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "the time taken",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "for half the undecayed nuclei to decay, or for the activity to halve",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "label": "(b)",
+          "prompt": "Complete Table 2 for the three types of emission from radioactive sources.",
+          "marks": 6,
+          "answer": "Alpha: helium nucleus, +2, stopped by paper. Beta: fast-moving electron, −1, stopped by a few millimetres of aluminium. Gamma: electromagnetic radiation, 0, reduced by several centimetres of lead.",
+          "modelResponse": null,
+          "solution": "Alpha: helium nucleus, +2, stopped by paper. Beta: fast-moving electron, −1, stopped by a few millimetres of aluminium. Gamma: electromagnetic radiation, 0, reduced by several centimetres of lead.\n\nMarker's note. For gamma, accept 'reduced by lead' rather than 'stopped by lead'; gamma is never completely stopped, so do not require the word stopped. A candidate who writes 'electron' for beta without 'fast moving' or 'from the nucleus' still earns the charge and penetration marks.",
+          "markerNote": "For gamma, accept 'reduced by lead' rather than 'stopped by lead'; gamma is never completely stopped, so do not require the word stopped. A candidate who writes 'electron' for beta without 'fast moving' or 'from the nucleus' still earns the charge and penetration marks.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "alpha is a helium nucleus, or 2 protons and 2 neutrons",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "alpha is stopped by paper, or by a few centimetres of air",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "beta has a relative charge of −1",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B4",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "beta is stopped by a few millimetres of aluminium",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B5",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "gamma is electromagnetic radiation, or a high energy photon",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B6",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "the remaining cell completed correctly",
+              "field": "all",
+              "manual": true
+            }
+          ],
+          "responseType": "table",
+          "table": {
+            "caption": "TABLE 2: RADIOACTIVE EMISSIONS",
+            "headers": [
+              "Emission",
+              "Nature",
+              "Relative charge",
+              "Stopped by"
+            ],
+            "rows": [
+              [
+                "Alpha",
+                "",
+                "+2",
+                ""
+              ],
+              [
+                "Beta",
+                "fast-moving electron",
+                "",
+                ""
+              ],
+              [
+                "Gamma",
+                "",
+                "0",
+                "several centimetres of lead"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "c",
+          "label": "(c)",
+          "prompt": "The count rate from a radioactive source, corrected for background radiation, falls from 800 counts per minute to 50 counts per minute in 60 minutes. Determine the half-life of the source.",
+          "marks": 4,
+          "answer": "15 minutes",
+          "modelResponse": "15 min",
+          "solution": "15 minutes\n\nMarker's note. A candidate who divides 60 by 2 and answers 30 minutes has counted one halving rather than four: award M1 only. Working shown as a table or a sketch graph is acceptable for M1 and M2.",
+          "markerNote": "A candidate who divides 60 by 2 and answers 30 minutes has counted one halving rather than four: award M1 only. Working shown as a table or a sketch graph is acceptable for M1 and M2.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "halves the count rate repeatedly: 800, 400, 200, 100, 50",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "M2",
+              "kind": "M",
+              "marks": 2,
+              "profile": "UK",
+              "description": "identifies that four half-lives have passed",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "60 ÷ 4 = 15 minutes",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 15,
+                "tolerance": 0.02,
+                "unit": "min"
+              }
+            }
+          ]
+        },
+        {
+          "id": "d",
+          "label": "(d)",
+          "prompt": "State ONE beneficial use of a radioactive isotope, and TWO precautions which should be taken when handling radioactive sources.",
+          "marks": 3,
+          "answer": "Use: tracing a leak in an underground pipe. Precautions: handle the source with tongs, and store it in a lead-lined container.",
+          "modelResponse": null,
+          "solution": "Use: tracing a leak in an underground pipe. Precautions: handle the source with tongs, and store it in a lead-lined container.\n\nMarker's note. Uses: medical tracers, treating cancer, sterilising equipment, dating rocks or archaeological remains, thickness gauging, detecting leaks, smoke alarms. Precautions: handle with tongs or forceps, never with bare hands; keep the source pointed away from the body; store in a lead-lined container; limit the time of exposure; wear a film badge. 'Be careful' scores nothing.",
+          "markerNote": "Uses: medical tracers, treating cancer, sterilising equipment, dating rocks or archaeological remains, thickness gauging, detecting leaks, smoke alarms. Precautions: handle with tongs or forceps, never with bare hands; keep the source pointed away from the body; store in a lead-lined container; limit the time of exposure; wear a film badge. 'Be careful' scores nothing.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "one beneficial use",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "XS",
+              "description": "first precaution",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "XS",
+              "description": "second, different precaution",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1654 @@
+{
+  "paper_id": "spark-phy-p02-practice-3",
+  "title": "SPARK CSEC Physics - Paper 02 Practice Paper 3",
+  "subject": "Physics",
+  "examination": "CSEC (Caribbean Secondary Education Certificate)",
+  "paper": "Paper 02 - General Proficiency",
+  "syllabus": "CXC 22/G/SYLL 13, for examinations from May and June 2015",
+  "version": "1.0.0",
+  "duration_minutes": 150,
+  "marks": 100,
+  "profile": {
+    "KC": 25,
+    "UK": 56,
+    "XS": 19
+  },
+  "structure": {
+    "Section A": {
+      "questions": "1-3",
+      "instruction": "Answer ALL questions.",
+      "mark_split": [
+        25,
+        15,
+        15
+      ]
+    },
+    "Section B": {
+      "questions": "4-6",
+      "instruction": "Answer ALL questions.",
+      "mark_split": [
+        15,
+        15,
+        15
+      ]
+    }
+  },
+  "instructions": [
+    "This paper consists of SIX questions in TWO sections. Answer ALL questions.",
+    "Write your answers in the spaces provided in this booklet.",
+    "Do NOT write in the margins.",
+    "Where appropriate, ALL WORKING MUST BE SHOWN in this booklet.",
+    "You may use a silent, non-programmable calculator. Note that an answer given to an inappropriate number of figures will be penalised."
+  ],
+  "required_materials": [
+    "Silent non-programmable calculator",
+    "Ruler",
+    "Graph paper or an on-screen grid"
+  ],
+  "mark_scheme_key": {
+    "M": "Method mark. Awarded for the right approach and a correct substitution, whether or not the arithmetic that follows is right.",
+    "A": "Accuracy mark. Awarded for the correct value, with its unit, to the precision asked for. Normally depends on the method mark before it.",
+    "B": "Independent mark. Stands on its own and depends on nothing earlier: a definition, a named source of error, a labelled axis."
+  },
+  "marking_conventions": [
+    "A correct final answer implies the method, unless the question demanded the working.",
+    "Follow through. Where a candidate uses their own wrong value correctly in a later part, mark that later part on their value.",
+    "A missing unit is penalised once per question, not once per part.",
+    "An answer given to more figures than asked for keeps the mark. An answer with fewer figures than the data justify loses it."
+  ],
+  "marking_coverage": {
+    "auto_marks": 7,
+    "manual_marks": 93,
+    "note": "A criterion carrying a `check` is marked automatically. A criterion carrying `manual: true` is for prose, a drawn graph or a completed table, which cannot be judged from a typed string without a keyword list written for that answer. The engine reports a manual criterion as something to check against the worked solution rather than counting it as lost."
+  },
+  "provenance": "Original questions written for SPARK. The structure, language, mark allocations and question archetypes follow the CSEC Physics Paper 02 papers of 2008 to 2023. No past-paper question is reproduced. This is not a Caribbean Examinations Council publication.",
+  "questions": [
+    {
+      "question_id": "phy-p2-3-q1",
+      "question_number": 1,
+      "paper": "SPARK CSEC Physics Practice Paper 02 number 3",
+      "section": "A",
+      "topic": "Current and potential difference for a wire",
+      "marks": 25,
+      "profile": {
+        "KC": 2,
+        "UK": 6,
+        "XS": 17
+      },
+      "stem": "A student set up a circuit to investigate how the current through a metal wire depends on the potential difference across it. The wire was kept at a constant temperature throughout the experiment. The results were recorded in Table 1.",
+      "stimulus": {
+        "kind": "table",
+        "caption": "TABLE 1: RESULTS OF THE EXPERIMENT",
+        "headers": [
+          "Potential difference, V/V",
+          "Current, I/A"
+        ],
+        "rows": [
+          [
+            "0.50",
+            "0.11"
+          ],
+          [
+            "1.00",
+            "0.19"
+          ],
+          [
+            "1.50",
+            "0.30"
+          ],
+          [
+            "2.00",
+            "0.41"
+          ],
+          [
+            "2.50",
+            "0.49"
+          ],
+          [
+            "3.00",
+            "0.60"
+          ]
+        ]
+      },
+      "parts": [
+        {
+          "id": "a",
+          "label": "(a)",
+          "prompt": "On the grid provided on page 4, plot a graph of potential difference, V/V, against current, I/A, using 2 cm to represent 0.10 A on the horizontal axis and 2 cm to represent 0.50 V on the vertical axis. Draw the best fit straight line through the points.",
+          "marks": 7,
+          "answer": "A straight line through the origin",
+          "modelResponse": null,
+          "solution": "A straight line through the origin\n\nMarker's note. The points carry a little scatter, which is deliberate. A candidate who joins them dot to dot scores nothing for B4.",
+          "markerNote": "The points carry a little scatter, which is deliberate. A candidate who joins them dot to dot scores nothing for B4.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "XS",
+              "description": "both axes labelled with the quantity and its unit",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "XS",
+              "description": "the scales asked for are used, and the points fill at least half the grid",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 3,
+              "profile": "XS",
+              "description": "all six points plotted correctly; deduct one mark for each point misplaced",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B4",
+              "kind": "B",
+              "marks": 2,
+              "profile": "XS",
+              "description": "a single best fit straight line drawn, passing close to the origin",
+              "field": "all",
+              "manual": true
+            }
+          ],
+          "responseType": "graph",
+          "grid": {
+            "xMin": 0,
+            "xMax": 0.7,
+            "yMin": 0,
+            "yMax": 3.5,
+            "xStep": 0.1,
+            "yStep": 0.5,
+            "minorPerStep": 5,
+            "xLabel": "Current, I/A",
+            "yLabel": "Potential difference, V/V",
+            "tools": [
+              "point",
+              "line",
+              "read"
+            ]
+          },
+          "graph": {
+            "points": [
+              {
+                "x": 0.11,
+                "y": 0.5
+              },
+              {
+                "x": 0.19,
+                "y": 1
+              },
+              {
+                "x": 0.3,
+                "y": 1.5
+              },
+              {
+                "x": 0.41,
+                "y": 2
+              },
+              {
+                "x": 0.49,
+                "y": 2.5
+              },
+              {
+                "x": 0.6,
+                "y": 3
+              }
+            ],
+            "tolerance": 0.04,
+            "pointMarks": 3,
+            "line": {
+              "gradient": 5.05,
+              "intercept": 0,
+              "from": 0,
+              "to": 0.7,
+              "tolerance": 0.15
+            },
+            "lineMarks": 2
+          }
+        },
+        {
+          "id": "b",
+          "label": "(b)",
+          "prompt": "Determine the gradient of the graph, stating its unit.",
+          "marks": 4,
+          "answer": "gradient = 5.0 Ω",
+          "modelResponse": null,
+          "solution": "gradient = 5.0 Ω\n\nMarker's note. Plotting the axes the other way round gives a gradient of about 0.20 A V⁻¹, which is the conductance. Award M1 and B1 if the unit matches the axes used, but withhold A1 unless the candidate identifies the quantity correctly in Part (c).",
+          "markerNote": "Plotting the axes the other way round gives a gradient of about 0.20 A V⁻¹, which is the conductance. Award M1 and B1 if the unit matches the axes used, but withhold A1 unless the candidate identifies the quantity correctly in Part (c).",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 2,
+              "profile": "XS",
+              "description": "a triangle drawn on the line, using at least half its length",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "XS",
+              "description": "gradient in the range 4.7 to 5.3",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "the unit, ohms, V A⁻¹ or V/A",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "c",
+          "label": "(c)",
+          "prompt": "State the physical quantity which the gradient of the graph represents.",
+          "marks": 2,
+          "answer": "The resistance of the wire",
+          "modelResponse": null,
+          "solution": "The resistance of the wire\n\nMarker's note. Follow through from the candidate's own earlier value.",
+          "markerNote": "Follow through from the candidate's own earlier value.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "resistance",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "XS",
+              "description": "of the wire, and consistent with the gradient found in Part (b)",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "d",
+          "label": "(d)",
+          "prompt": "State Ohm's law, and explain how the shape of the graph shows that the wire obeys it.",
+          "marks": 3,
+          "answer": "The current through a metallic conductor is directly proportional to the potential difference across it, provided the temperature and other physical conditions remain constant. The graph is a straight line through the origin, which is what proportionality means.",
+          "modelResponse": null,
+          "solution": "The current through a metallic conductor is directly proportional to the potential difference across it, provided the temperature and other physical conditions remain constant. The graph is a straight line through the origin, which is what proportionality means.\n\nMarker's note. For B3 a straight line alone is not enough: the candidate must say it passes through the origin, since a straight line with an intercept is not proportionality.",
+          "markerNote": "For B3 a straight line alone is not enough: the candidate must say it passes through the origin, since a straight line with an intercept is not proportionality.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "current proportional to potential difference",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "provided the temperature stays constant",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "the straight line through the origin shows the proportionality",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "e",
+          "label": "(e)",
+          "prompt": "Use the graph to determine the current through the wire when the potential difference across it is 1.75 V.",
+          "marks": 3,
+          "answer": "0.35 A",
+          "modelResponse": "0.35 A",
+          "solution": "0.35 A\n\nMarker's note. Show of construction lines on the graph is acceptable evidence for M1 and M2. A candidate who calculates 1.75 ÷ 5.0 has not used the graph as asked: award A1 and one method mark.",
+          "markerNote": "Show of construction lines on the graph is acceptable evidence for M1 and M2. A candidate who calculates 1.75 ÷ 5.0 has not used the graph as asked: award A1 and one method mark.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "XS",
+              "description": "reads across from 1.75 V on the vertical axis to the line",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "M2",
+              "kind": "M",
+              "marks": 1,
+              "profile": "XS",
+              "description": "reads down to the horizontal axis",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "0.35 A, accept 0.33 to 0.37 A",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 0.35,
+                "tolerance": 0.02,
+                "unit": "A"
+              }
+            }
+          ]
+        },
+        {
+          "id": "f",
+          "label": "(f)",
+          "prompt": "The wire is replaced by a second wire of the same material and the same thickness, but twice the length. Describe how the graph obtained with the second wire would differ from the graph in Figure 1.",
+          "marks": 3,
+          "answer": "The line would still be straight and pass through the origin, but it would be steeper, because doubling the length doubles the resistance.",
+          "modelResponse": null,
+          "solution": "The line would still be straight and pass through the origin, but it would be steeper, because doubling the length doubles the resistance.\n\nMarker's note. A candidate who says the line is less steep has the relationship inverted: award B1 only. If the candidate plotted I against V in Part (a), a less steep line is correct and B2 should be awarded.",
+          "markerNote": "A candidate who says the line is less steep has the relationship inverted: award B1 only. If the candidate plotted I against V in Part (a), a less steep line is correct and B2 should be awarded.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "still a straight line through the origin",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "XS",
+              "description": "steeper, or a larger gradient",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "because the resistance is doubled, resistance being proportional to length",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "g",
+          "label": "(g)",
+          "prompt": "State TWO precautions which the student should have taken while carrying out this experiment.",
+          "marks": 3,
+          "answer": "Keep the switch open between readings so the wire does not warm up, and check both meters for a zero error before starting.",
+          "modelResponse": null,
+          "solution": "Keep the switch open between readings so the wire does not warm up, and check both meters for a zero error before starting.\n\nMarker's note. Accept: switch off between readings, since a warmer wire has a greater resistance; check for zero error; tighten every connection; keep the wire straight; read the meters square on to avoid parallax. Refuse 'avoid human error' and 'be accurate'.",
+          "markerNote": "Accept: switch off between readings, since a warmer wire has a greater resistance; check for zero error; tighten every connection; keep the wire straight; read the meters square on to avoid parallax. Refuse 'avoid human error' and 'be accurate'.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 2,
+              "profile": "XS",
+              "description": "first precaution with the reason it matters",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "XS",
+              "description": "second, different precaution",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "phy-p2-3-q2",
+      "question_number": 2,
+      "paper": "SPARK CSEC Physics Practice Paper 02 number 3",
+      "section": "A",
+      "topic": "Motion and Newton's laws",
+      "marks": 15,
+      "profile": {
+        "KC": 3,
+        "UK": 11,
+        "XS": 1
+      },
+      "stem": "A car of mass 1200 kg starts from rest and accelerates uniformly to a speed of 25 m s⁻¹ in 10 s. It then travels at a constant speed of 25 m s⁻¹ for 20 s, before braking uniformly and coming to rest in a further 5.0 s.",
+      "parts": [
+        {
+          "id": "a",
+          "label": "(a)",
+          "prompt": "Define the term 'acceleration' and state its SI unit.",
+          "marks": 2,
+          "answer": "Acceleration is the rate of change of velocity. Its SI unit is m s⁻².",
+          "modelResponse": null,
+          "solution": "Acceleration is the rate of change of velocity. Its SI unit is m s⁻².\n\nMarker's note. 'Change of velocity' without 'rate of' does not earn B1. Do not accept 'rate of change of speed', since acceleration is a vector.",
+          "markerNote": "'Change of velocity' without 'rate of' does not earn B1. Do not accept 'rate of change of speed', since acceleration is a vector.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "rate of change of velocity",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "m s⁻²",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "label": "(b)",
+          "prompt": "Calculate the acceleration of the car during the first 10 s.",
+          "marks": 2,
+          "answer": "2.5 m s⁻²",
+          "modelResponse": "2.5 m s⁻²",
+          "solution": "2.5 m s⁻²",
+          "markerNote": null,
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "uses a = (v − u) ÷ t with u = 0",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "2.5 m s⁻², with the unit",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 2.5,
+                "tolerance": 0.02,
+                "unit": "m s⁻²"
+              }
+            }
+          ]
+        },
+        {
+          "id": "c",
+          "label": "(c)",
+          "prompt": "Calculate the resultant force acting on the car during the first 10 s.",
+          "marks": 2,
+          "answer": "3000 N",
+          "modelResponse": "3000 N",
+          "solution": "3000 N\n\nMarker's note. Follow through from the candidate's own earlier value. Accept 3.0 × 10³ N or 3.0 kN.",
+          "markerNote": "Follow through from the candidate's own earlier value. Accept 3.0 × 10³ N or 3.0 kN.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "uses F = ma",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "3000 N, with the unit",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 3000,
+                "tolerance": 0.02,
+                "unit": "N"
+              }
+            }
+          ]
+        },
+        {
+          "id": "d",
+          "label": "(d)",
+          "prompt": "Determine the total distance travelled by the car during the whole journey.",
+          "marks": 4,
+          "answer": "687.5 m",
+          "modelResponse": "687.5 m",
+          "solution": "687.5 m\n\nMarker's note. Accept 690 m or 6.9 × 10² m. Omitting the halves on the two triangular stages gives 1000 m: award M1 only. This is the commonest error in the question.",
+          "markerNote": "Accept 690 m or 6.9 × 10² m. Omitting the halves on the two triangular stages gives 1000 m: award M1 only. This is the commonest error in the question.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "XS",
+              "description": "recognises that the distance is the area under a velocity-time graph, or splits the journey into three stages",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "M2",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "accelerating stage: ½ × 10 × 25 = 125 m",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "M3",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "constant speed stage: 25 × 20 = 500 m; braking stage: ½ × 5.0 × 25 = 62.5 m",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "687.5 m, with the unit",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 687.5,
+                "tolerance": 0.02,
+                "unit": "m"
+              }
+            }
+          ]
+        },
+        {
+          "id": "e",
+          "label": "(e)",
+          "prompt": "State Newton's first law of motion, and use it to explain why a passenger who is not wearing a seat belt is thrown forward when the car brakes.",
+          "marks": 3,
+          "answer": "A body remains at rest, or continues to move with constant velocity in a straight line, unless acted upon by an unbalanced force. When the car brakes, the braking force acts on the car and not on the passenger, so the passenger continues to move forward at the original speed.",
+          "modelResponse": null,
+          "solution": "A body remains at rest, or continues to move with constant velocity in a straight line, unless acted upon by an unbalanced force. When the car brakes, the braking force acts on the car and not on the passenger, so the passenger continues to move forward at the original speed.\n\nMarker's note. An answer which says the passenger is 'thrown forward by a force' has the physics backwards: no forward force acts, which is the point of the question. Award B1 only.",
+          "markerNote": "An answer which says the passenger is 'thrown forward by a force' has the physics backwards: no forward force acts, which is the point of the question. Award B1 only.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "states the law, including the condition of an unbalanced or resultant force",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "the braking force acts on the car, not on the passenger",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "so the passenger continues to move forward at the original speed",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "f",
+          "label": "(f)",
+          "prompt": "Calculate the linear momentum of the car when it is travelling at 25 m s⁻¹.",
+          "marks": 2,
+          "answer": "3.0 × 10⁴ kg m s⁻¹",
+          "modelResponse": "30000 kg m s⁻¹",
+          "solution": "3.0 × 10⁴ kg m s⁻¹\n\nMarker's note. Accept N s as the unit.",
+          "markerNote": "Accept N s as the unit.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "uses p = mv",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "30 000 kg m s⁻¹, with the unit",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 30000,
+                "tolerance": 0.02,
+                "unit": "kg m s⁻¹"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "phy-p2-3-q3",
+      "question_number": 3,
+      "paper": "SPARK CSEC Physics Practice Paper 02 number 3",
+      "section": "A",
+      "topic": "Kinetic theory and the gas laws",
+      "marks": 15,
+      "profile": {
+        "KC": 1,
+        "UK": 14,
+        "XS": 0
+      },
+      "stem": "",
+      "parts": [
+        {
+          "id": "a",
+          "label": "(a)",
+          "prompt": "Complete Table 2, which compares the three states of matter.",
+          "marks": 6,
+          "answer": "Solid: very close, regular, vibrate about fixed positions. Liquid: close together, irregular, move about at random over short distances. Gas: far apart, random, move rapidly in all directions.",
+          "modelResponse": null,
+          "solution": "Solid: very close, regular, vibrate about fixed positions. Liquid: close together, irregular, move about at random over short distances. Gas: far apart, random, move rapidly in all directions.\n\nMarker's note. Accept 'touching' for the spacing in a liquid. Do not accept 'the particles get bigger' anywhere in the table.",
+          "markerNote": "Accept 'touching' for the spacing in a liquid. Do not accept 'the particles get bigger' anywhere in the table.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "solid: regular arrangement",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "solid: vibrate about fixed positions",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "liquid: close together",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B4",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "liquid: slide past one another, or move at random over short distances",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B5",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "gas: far apart",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B6",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "gas: random or irregular arrangement",
+              "field": "all",
+              "manual": true
+            }
+          ],
+          "responseType": "table",
+          "table": {
+            "caption": "TABLE 2: THE THREE STATES OF MATTER",
+            "headers": [
+              "State",
+              "Spacing of the particles",
+              "Arrangement of the particles",
+              "Motion of the particles"
+            ],
+            "rows": [
+              [
+                "Solid",
+                "very close together",
+                "",
+                ""
+              ],
+              [
+                "Liquid",
+                "",
+                "irregular",
+                ""
+              ],
+              [
+                "Gas",
+                "",
+                "",
+                "move rapidly in all directions"
+              ]
+            ]
+          }
+        },
+        {
+          "id": "b",
+          "label": "(b)",
+          "prompt": "Use the kinetic theory to explain why a gas exerts a pressure on the walls of its container.",
+          "marks": 3,
+          "answer": "The particles move rapidly in all directions and collide with the walls of the container. Each collision changes the momentum of a particle, so the wall exerts a force on it and it exerts an equal force back on the wall. The total force over the area of the wall is the pressure.",
+          "modelResponse": null,
+          "solution": "The particles move rapidly in all directions and collide with the walls of the container. Each collision changes the momentum of a particle, so the wall exerts a force on it and it exerts an equal force back on the wall. The total force over the area of the wall is the pressure.\n\nMarker's note. An answer which says only 'the particles push on the walls' earns B1 alone.",
+          "markerNote": "An answer which says only 'the particles push on the walls' earns B1 alone.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "the particles collide with the walls",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "each collision exerts a force on the wall, through a change of momentum",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "the force per unit area of wall is the pressure",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "c",
+          "label": "(c)",
+          "prompt": "A fixed mass of gas is sealed in a container of constant volume. The pressure of the gas is 100 kPa when its temperature is 27 °C. The gas is then heated to a temperature of 127 °C. Calculate the new pressure of the gas.",
+          "marks": 4,
+          "answer": "133 kPa",
+          "modelResponse": "133 kPa",
+          "solution": "133 kPa\n\nMarker's note. Working in degrees Celsius gives 470 kPa. This loses M1 and A1 but keeps M2. Accept 1.33 × 10⁵ Pa.",
+          "markerNote": "Working in degrees Celsius gives 470 kPa. This loses M1 and A1 but keeps M2. Accept 1.33 × 10⁵ Pa.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "converts both temperatures to kelvin: 300 K and 400 K",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "M2",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "uses P₁/T₁ = P₂/T₂ at constant volume",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "M3",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "substitutes 100 × 400 ÷ 300",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "133 kPa, with the unit",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 133,
+                "tolerance": 0.02,
+                "unit": "kPa"
+              }
+            }
+          ]
+        },
+        {
+          "id": "d",
+          "label": "(d)",
+          "prompt": "State TWO ways in which allowance is made for the thermal expansion of materials used in everyday structures.",
+          "marks": 2,
+          "answer": "Gaps are left between the sections of a bridge or a railway line, and overhead cables are hung with a sag.",
+          "modelResponse": null,
+          "solution": "Gaps are left between the sections of a bridge or a railway line, and overhead cables are hung with a sag.\n\nMarker's note. Accept: expansion gaps in bridges, railway lines or concrete roads; rollers under one end of a bridge; sagging overhead cables; loops in pipelines; a gap at the end of a run of guttering.",
+          "markerNote": "Accept: expansion gaps in bridges, railway lines or concrete roads; rollers under one end of a bridge; sagging overhead cables; loops in pipelines; a gap at the end of a run of guttering.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "first genuine allowance",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "second, different allowance",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "phy-p2-3-q4",
+      "question_number": 4,
+      "paper": "SPARK CSEC Physics Practice Paper 02 number 3",
+      "section": "B",
+      "topic": "The electromagnetic spectrum",
+      "marks": 15,
+      "profile": {
+        "KC": 9,
+        "UK": 6,
+        "XS": 0
+      },
+      "stem": "",
+      "parts": [
+        {
+          "id": "a",
+          "label": "(a)",
+          "prompt": "State THREE properties which are common to ALL electromagnetic waves.",
+          "marks": 3,
+          "answer": "They are all transverse waves, they all travel at 3.0 × 10⁸ m s⁻¹ in a vacuum, and they can all travel through a vacuum.",
+          "modelResponse": null,
+          "solution": "They are all transverse waves, they all travel at 3.0 × 10⁸ m s⁻¹ in a vacuum, and they can all travel through a vacuum.\n\nMarker's note. Accept 'they are all electromagnetic waves' for nothing, since it restates the question.",
+          "markerNote": "Accept 'they are all electromagnetic waves' for nothing, since it restates the question.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "transverse",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "travel at the same speed in a vacuum, 3.0 × 10⁸ m s⁻¹",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "can travel through a vacuum, or carry no charge, or can be reflected and refracted",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "label": "(b)",
+          "prompt": "Arrange the following members of the electromagnetic spectrum in order of INCREASING wavelength.",
+          "marks": 3,
+          "answer": "X-rays, ultraviolet, infrared, microwaves",
+          "modelResponse": null,
+          "solution": "X-rays, ultraviolet, infrared, microwaves\n\nMarker's note. A completely reversed list shows knowledge of the order but answers the opposite question: award one mark only.",
+          "markerNote": "A completely reversed list shows knowledge of the order but answers the opposite question: award one mark only.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "X-rays first",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "ultraviolet second",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "infrared then microwaves",
+              "field": "all",
+              "manual": true
+            }
+          ],
+          "blanks": [
+            "infrared          microwaves          ultraviolet          X-rays",
+            "",
+            "Shortest wavelength   ..............................  ..............................",
+            "",
+            "..............................  ..............................   Longest wavelength"
+          ]
+        },
+        {
+          "id": "c",
+          "label": "(c)",
+          "prompt": "A radio station broadcasts on a wavelength of 300 m. Calculate the frequency of the wave. [Speed of electromagnetic waves in air = 3.0 × 10⁸ m s⁻¹.]",
+          "marks": 3,
+          "answer": "1.0 × 10⁶ Hz",
+          "modelResponse": "1000000 Hz",
+          "solution": "1.0 × 10⁶ Hz\n\nMarker's note. Accept 1 MHz or 1000 kHz.",
+          "markerNote": "Accept 1 MHz or 1000 kHz.",
+          "answerType": "value",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "uses c = f λ",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "M2",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "f = 3.0 × 10⁸ ÷ 300",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "1.0 × 10⁶ Hz, with the unit",
+              "field": "answer",
+              "check": {
+                "type": "value",
+                "value": 1000000,
+                "tolerance": 0.02,
+                "unit": "Hz"
+              }
+            }
+          ]
+        },
+        {
+          "id": "d",
+          "label": "(d)",
+          "prompt": "State ONE use of ultraviolet radiation and ONE hazard associated with it.",
+          "marks": 3,
+          "answer": "Use: sterilising equipment, or detecting forged banknotes. Hazard: it damages the skin and can cause skin cancer, and it damages the eyes.",
+          "modelResponse": null,
+          "solution": "Use: sterilising equipment, or detecting forged banknotes. Hazard: it damages the skin and can cause skin cancer, and it damages the eyes.\n\nMarker's note. Uses: sterilising, security marking, detecting forgeries, producing vitamin D, fluorescent lamps, sun tanning. Hazards: sunburn, skin cancer, damage to the retina, premature ageing of the skin.",
+          "markerNote": "Uses: sterilising, security marking, detecting forgeries, producing vitamin D, fluorescent lamps, sun tanning. Hazards: sunburn, skin cancer, damage to the retina, premature ageing of the skin.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "a correct use",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "a correct hazard",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "either use or hazard given with some detail of how or why",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "e",
+          "label": "(e)",
+          "prompt": "State what is meant by 'diffraction', and explain why the diffraction of light is not normally observed in everyday situations.",
+          "marks": 3,
+          "answer": "Diffraction is the spreading out of a wave as it passes through a gap or round an obstacle. It is not normally observed with light because the wavelength of light is very small, about 5 × 10⁻⁷ m, and everyday gaps are enormous by comparison.",
+          "modelResponse": null,
+          "solution": "Diffraction is the spreading out of a wave as it passes through a gap or round an obstacle. It is not normally observed with light because the wavelength of light is very small, about 5 × 10⁻⁷ m, and everyday gaps are enormous by comparison.\n\nMarker's note. An answer which says only 'light travels in straight lines' scores nothing, since that is the observation to be explained rather than the explanation.",
+          "markerNote": "An answer which says only 'light travels in straight lines' scores nothing, since that is the observation to be explained rather than the explanation.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "spreading of a wave at a gap or an edge",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "noticeable diffraction needs a gap comparable with the wavelength",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "the wavelength of light is far smaller than everyday gaps",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "phy-p2-3-q5",
+      "question_number": 5,
+      "paper": "SPARK CSEC Physics Practice Paper 02 number 3",
+      "section": "B",
+      "topic": "Logic gates and rectification",
+      "marks": 15,
+      "profile": {
+        "KC": 6,
+        "UK": 8,
+        "XS": 1
+      },
+      "stem": "",
+      "parts": [
+        {
+          "id": "a",
+          "label": "(a)",
+          "prompt": "Complete Table 3 by writing the output of EACH gate for the inputs shown.",
+          "marks": 6,
+          "answer": "AND: 0, 0, 0, 1. OR: 0, 1, 1, 1.",
+          "modelResponse": null,
+          "solution": "AND: 0, 0, 0, 1. OR: 0, 1, 1, 1.\n\nMarker's note. Accept the outputs written as high and low, or as 1 and 0, provided the candidate is consistent.",
+          "markerNote": "Accept the outputs written as high and low, or as 1 and 0, provided the candidate is consistent.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "AND gives 0 for inputs 0 and 1",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "AND gives 0 for inputs 1 and 0",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "AND gives 1 for inputs 1 and 1",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B4",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "OR gives 1 for inputs 0 and 1",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B5",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "OR gives 1 for inputs 1 and 0",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B6",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "OR gives 1 for inputs 1 and 1",
+              "field": "all",
+              "manual": true
+            }
+          ],
+          "responseType": "table",
+          "table": {
+            "caption": "TABLE 3: TRUTH TABLES FOR THE AND GATE AND THE OR GATE",
+            "headers": [
+              "Input A",
+              "Input B",
+              "Output of AND gate",
+              "Output of OR gate"
+            ],
+            "rows": [
+              [
+                "0",
+                "0",
+                "0",
+                "0"
+              ],
+              [
+                "0",
+                "1",
+                "",
+                ""
+              ],
+              [
+                "1",
+                "0",
+                "",
+                ""
+              ],
+              [
+                "1",
+                "1",
+                "",
+                ""
+              ]
+            ]
+          }
+        },
+        {
+          "id": "b",
+          "label": "(b)",
+          "prompt": "The output of an AND gate is connected to the input of a NOT gate. Complete Table 4 for this combination of gates.",
+          "marks": 4,
+          "answer": "1, 1, 1, 0",
+          "modelResponse": null,
+          "solution": "1, 1, 1, 0\n\nMarker's note. This is the NAND truth table, the inverse of the AND column in Part (a). Follow through from the candidate's own earlier value. A candidate whose AND column was wrong but who inverts it correctly earns full marks here.",
+          "markerNote": "This is the NAND truth table, the inverse of the AND column in Part (a). Follow through from the candidate's own earlier value. A candidate whose AND column was wrong but who inverts it correctly earns full marks here.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "output 1 for inputs 0 and 0",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "output 1 for inputs 0 and 1",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "output 1 for inputs 1 and 0",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B4",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "output 0 for inputs 1 and 1",
+              "field": "all",
+              "manual": true
+            }
+          ],
+          "responseType": "table",
+          "table": {
+            "caption": "TABLE 4: TRUTH TABLE FOR THE COMBINATION",
+            "headers": [
+              "Input A",
+              "Input B",
+              "Output of the combination"
+            ],
+            "rows": [
+              [
+                "0",
+                "0",
+                ""
+              ],
+              [
+                "0",
+                "1",
+                ""
+              ],
+              [
+                "1",
+                "0",
+                ""
+              ],
+              [
+                "1",
+                "1",
+                ""
+              ]
+            ]
+          }
+        },
+        {
+          "id": "c",
+          "label": "(c)",
+          "prompt": "Describe how a semiconductor diode may be used to produce half wave rectification.",
+          "marks": 3,
+          "answer": "The diode conducts only when it is forward biased, so current flows during one half of each cycle and is blocked during the other half. The output is a series of pulses in one direction only.",
+          "modelResponse": null,
+          "solution": "The diode conducts only when it is forward biased, so current flows during one half of each cycle and is blocked during the other half. The output is a series of pulses in one direction only.\n\nMarker's note. A labelled sketch showing the input and output waveforms may earn B2 and B3 without words.",
+          "markerNote": "A labelled sketch showing the input and output waveforms may earn B2 and B3 without words.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "the diode conducts in one direction only",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "current flows during one half of the cycle and is blocked during the other",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "the output is in one direction only, so it is direct current, though it varies",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "d",
+          "label": "(d)",
+          "prompt": "State how the voltage-time graph for direct current from a battery differs from the voltage-time graph for half wave rectified alternating current.",
+          "marks": 2,
+          "answer": "Direct current from a battery is a horizontal straight line at a steady value. Half wave rectified alternating current is a series of humps above the axis with gaps between them, all on the same side of the axis.",
+          "modelResponse": null,
+          "solution": "Direct current from a battery is a horizontal straight line at a steady value. Half wave rectified alternating current is a series of humps above the axis with gaps between them, all on the same side of the axis.\n\nMarker's note. Descriptions or sketches are equally acceptable.",
+          "markerNote": "Descriptions or sketches are equally acceptable.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "battery: a steady, constant value, a horizontal line",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "XS",
+              "description": "rectified a.c.: varies, but stays on one side of the axis",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "question_id": "phy-p2-3-q6",
+      "question_number": 6,
+      "paper": "SPARK CSEC Physics Practice Paper 02 number 3",
+      "section": "B",
+      "topic": "Fission, fusion and radioactive decay",
+      "marks": 15,
+      "profile": {
+        "KC": 4,
+        "UK": 11,
+        "XS": 0
+      },
+      "stem": "",
+      "parts": [
+        {
+          "id": "a",
+          "label": "(a)",
+          "prompt": "Distinguish between nuclear fission and nuclear fusion.",
+          "marks": 4,
+          "answer": "In fission a heavy nucleus splits into two lighter nuclei of roughly equal mass, together with neutrons, releasing energy. In fusion two light nuclei join to form a heavier nucleus, releasing energy. Fission is used in nuclear reactors; fusion is the source of the Sun's energy.",
+          "modelResponse": null,
+          "solution": "In fission a heavy nucleus splits into two lighter nuclei of roughly equal mass, together with neutrons, releasing energy. In fusion two light nuclei join to form a heavier nucleus, releasing energy. Fission is used in nuclear reactors; fusion is the source of the Sun's energy.\n\nMarker's note. Saying that both release energy earns nothing on its own, since it does not distinguish them.",
+          "markerNote": "Saying that both release energy earns nothing on its own, since it does not distinguish them.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "fission: a heavy nucleus splits",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "fission: into two lighter nuclei, with neutrons released",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "fusion: light nuclei join to form a heavier one",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B4",
+              "kind": "B",
+              "marks": 1,
+              "profile": "KC",
+              "description": "fusion requires extremely high temperature and pressure, or occurs in stars",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "label": "(b)",
+          "prompt": "A nucleus of radium-226 decays by emitting an alpha particle and becomes a nucleus of radon. Complete the following nuclear equation by writing the missing numbers in the spaces provided.",
+          "marks": 3,
+          "answer": "The mass number of radon is 222 and its atomic number is 86.",
+          "modelResponse": null,
+          "solution": "The mass number of radon is 222 and its atomic number is 86.\n\nMarker's note. A candidate who writes 224 and 86, or 222 and 84, has balanced only one of the two: award M1 and one A mark.",
+          "markerNote": "A candidate who writes 224 and 86, or 222 and 84, has balanced only one of the two: award M1 and one A mark.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "M1",
+              "kind": "M",
+              "marks": 1,
+              "profile": "UK",
+              "description": "mass numbers balance: 226 = 222 + 4",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A1",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "222",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "A2",
+              "kind": "A",
+              "marks": 1,
+              "profile": "UK",
+              "description": "86",
+              "field": "all",
+              "manual": true
+            }
+          ],
+          "blanks": [
+            "        226                    ............                  4",
+            "            Ra    →              Rn      +           He",
+            "         88                      ............                  2"
+          ]
+        },
+        {
+          "id": "c",
+          "label": "(c)",
+          "prompt": "State TWO harmful effects which ionising radiation may have on the human body.",
+          "marks": 2,
+          "answer": "It can kill or damage living cells, and it can cause mutations in cells which may lead to cancer.",
+          "modelResponse": null,
+          "solution": "It can kill or damage living cells, and it can cause mutations in cells which may lead to cancer.\n\nMarker's note. Accept: kills cells, causes burns, causes mutations, causes cancer, causes radiation sickness, damages a developing foetus, causes sterility. 'It is dangerous' scores nothing.",
+          "markerNote": "Accept: kills cells, causes burns, causes mutations, causes cancer, causes radiation sickness, damages a developing foetus, causes sterility. 'It is dangerous' scores nothing.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "first harmful effect",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "second, different harmful effect",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "d",
+          "label": "(d)",
+          "prompt": "Discuss TWO advantages and TWO disadvantages of generating electricity in a nuclear power station rather than in a station which burns fossil fuel.",
+          "marks": 4,
+          "answer": "Advantages: no carbon dioxide or sulphur dioxide is produced during generation, and a small mass of fuel yields an enormous amount of energy. Disadvantages: the waste stays dangerously radioactive for thousands of years, and an accident at the station could release radioactive material over a wide area.",
+          "modelResponse": null,
+          "solution": "Advantages: no carbon dioxide or sulphur dioxide is produced during generation, and a small mass of fuel yields an enormous amount of energy. Disadvantages: the waste stays dangerously radioactive for thousands of years, and an accident at the station could release radioactive material over a wide area.\n\nMarker's note. Advantages: no greenhouse gases or acid rain from generation, very high energy density, fuel reserves last longer than fossil fuel reserves, output does not depend on the weather. Disadvantages: radioactive waste and its long term storage, the risk and consequence of an accident, high cost of building and of decommissioning, the link to weapons material. Two versions of the same point score once.",
+          "markerNote": "Advantages: no greenhouse gases or acid rain from generation, very high energy density, fuel reserves last longer than fossil fuel reserves, output does not depend on the weather. Disadvantages: radioactive waste and its long term storage, the risk and consequence of an accident, high cost of building and of decommissioning, the link to weapons material. Two versions of the same point score once.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "first advantage",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "second, different advantage",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B3",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "first disadvantage",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B4",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "second, different disadvantage",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        },
+        {
+          "id": "e",
+          "label": "(e)",
+          "prompt": "State TWO uses of radioactive isotopes, other than the generation of electricity.",
+          "marks": 2,
+          "answer": "Treating cancer with gamma radiation, and using a tracer to find a leak in an underground pipe.",
+          "modelResponse": null,
+          "solution": "Treating cancer with gamma radiation, and using a tracer to find a leak in an underground pipe.\n\nMarker's note. Accept: radiotherapy, medical tracers, sterilising surgical instruments and food, carbon dating, dating rocks, thickness gauging in a factory, detecting leaks, smoke alarms. The question excludes generating electricity.",
+          "markerNote": "Accept: radiotherapy, medical tracers, sterilising surgical instruments and food, carbon dating, dating rocks, thickness gauging in a factory, detecting leaks, smoke alarms. The question excludes generating electricity.",
+          "answerType": "text",
+          "criteria": [
+            {
+              "code": "B1",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "first use",
+              "field": "all",
+              "manual": true
+            },
+            {
+              "code": "B2",
+              "kind": "B",
+              "marks": 1,
+              "profile": "UK",
+              "description": "second, different use",
+              "field": "all",
+              "manual": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

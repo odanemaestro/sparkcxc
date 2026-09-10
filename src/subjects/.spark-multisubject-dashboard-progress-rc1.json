@@ -1,0 +1,10 @@
+{
+  "id": "spark-multisubject-dashboard-progress-rc1",
+  "version": 1,
+  "release": "RC1",
+  "scope": "subject-neutral student and parent dashboards, progress reporting, activity persistence and cross-subject rewards",
+  "requires": [
+    "spark-multisubject-v1",
+    "spark-physics-section-e-atomic-rc1"
+  ]
+}
