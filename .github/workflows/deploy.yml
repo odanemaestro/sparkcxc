@@ -38,7 +38,8 @@ jobs:
           REACT_APP_SUPABASE_URL: ${{ secrets.REACT_APP_SUPABASE_URL }}
           REACT_APP_SUPABASE_ANON_KEY: ${{ secrets.REACT_APP_SUPABASE_ANON_KEY }}
           REACT_APP_VAPID_PUBLIC_KEY: ${{ secrets.REACT_APP_VAPID_PUBLIC_KEY }}
-          REACT_APP_ENABLE_PHYSICS_SECTION_A: "true"
+          REACT_APP_ENABLE_PHYSICS: "true"
+
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

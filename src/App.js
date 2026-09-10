@@ -104,7 +104,7 @@ import APPLE_CALENDAR_ICON_B64 from "./assets/icons/apple-calendar-icon.png";
 // exactly as before while the URL stays in sync with the visible screen.
 // SPARK_PHYSICS_SECTION_A_RC1_FEATURE_FLAG
 const PHYSICS_SECTION_A_ENABLED = physicsSectionAEnabled({
-  REACT_APP_ENABLE_PHYSICS_SECTION_A: process.env.REACT_APP_ENABLE_PHYSICS_SECTION_A,
+  REACT_APP_ENABLE_PHYSICS: process.env.REACT_APP_ENABLE_PHYSICS,
 });
 const PHYSICS_SECTION_A_STATS = getPhysicsSectionAStats();
 const PHYSICS_FULL_COURSE_STATS = physicsFullCourseStats();

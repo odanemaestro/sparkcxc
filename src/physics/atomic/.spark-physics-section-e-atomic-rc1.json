@@ -11,5 +11,5 @@
   "interactives": 10,
   "checkpointQuestions": 30,
   "databaseMigration": false,
-  "featureFlag": "REACT_APP_ENABLE_PHYSICS_SECTION_A"
+  "featureFlag": "REACT_APP_ENABLE_PHYSICS"
 }
