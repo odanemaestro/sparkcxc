@@ -42,6 +42,7 @@ import {
   recordPhysicsSubjectActivity,
   syncPhysicsLocalProgress,
   buildRecentSubjectActivity,
+  subjectRows,
 } from "./subjects/subjectProgress";
 import MathText from "./practice/MathText";
 import {
@@ -582,8 +583,8 @@ function LessonContent({ topicName, onQuizStart, onComplete, isCompleted }) {
           Take practice quiz →
         </Btn>
         {!isCompleted && (
-          <Btn v="tealOutline" onClick={onComplete}>
-            Mark lesson complete ✓
+          <Btn onClick={onComplete} style={{fontSize:15,padding:"14px 28px"}}>
+            Mark lesson complete
           </Btn>
         )}
         {isCompleted && (
@@ -971,25 +972,39 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
   // Section 1, Topic 1.
   useEffect(() => {
     if (!user?.id) { setProgressLoaded(true); return; }
-    supabase.from("lesson_progress")
-      .select("completed, lessons(title)")
-      .eq("user_id", user.id).eq("completed", true)
-      .then(({data}) => {
-        const doneTitles = new Set((data || []).map(r => r.lessons?.title).filter(Boolean));
-        const keys = [];
-        let firstIncomplete = null;
-        sections.forEach((sec, si) => sec.topics.forEach((topic, ti) => {
-          if (doneTitles.has(topic)) keys.push(`${si}-${ti}`);
-          else if (!firstIncomplete) firstIncomplete = { si, ti };
-        }));
-        setCompletedTopics(new Set(keys));
-        if (firstIncomplete) {
-          setActiveSectionIdx(firstIncomplete.si);
-          setActiveTopicIdx(firstIncomplete.ti);
-          setOpenSidebarSection(firstIncomplete.si);
-        }
-        setProgressLoaded(true);
-      });
+    Promise.all([
+      supabase.from("lesson_progress")
+        .select("completed, lessons(title)")
+        .eq("user_id", user.id).eq("completed", true),
+      supabase.from("spark_subject_progress")
+        .select("title,section_id,topic_id,activity_key,completed")
+        .eq("user_id", user.id)
+        .eq("subject_id", "mathematics")
+        .eq("activity_type", "lesson")
+        .eq("completed", true),
+    ]).then(([legacyResult, subjectResult]) => {
+      const doneTitles = new Set([
+        ...(legacyResult.data || []).map(r => r.lessons?.title),
+        ...(subjectResult.data || []).map(r => r.title),
+      ].filter(Boolean));
+      const keys = [];
+      let firstIncomplete = null;
+      sections.forEach((sec, si) => sec.topics.forEach((topic, ti) => {
+        if (doneTitles.has(topic)) keys.push(`${si}-${ti}`);
+        else if (!firstIncomplete) firstIncomplete = { si, ti };
+      }));
+      setCompletedTopics(new Set(keys));
+      if (firstIncomplete) {
+        setActiveSectionIdx(firstIncomplete.si);
+        setActiveTopicIdx(firstIncomplete.ti);
+        setOpenSidebarSection(firstIncomplete.si);
+      }
+      if (legacyResult.error) console.warn("Could not load legacy Mathematics lesson progress:", legacyResult.error);
+      if (subjectResult.error && !String(subjectResult.error?.message || "").toLowerCase().includes("spark_subject_progress")) {
+        console.warn("Could not load Mathematics subject progress:", subjectResult.error);
+      }
+      setProgressLoaded(true);
+    });
   }, [user?.id]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Navigation issue fix: jumping between topics/sections or in and out of a
@@ -1025,23 +1040,60 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
       return true;
     }
 
-    const { data: lesson, error: lessonError } = await supabase.from("lessons")
-      .select("id").eq("title", topicTitle).single();
-    if (lessonError || !lesson?.id) {
-      console.error("Could not find lesson for completion:", lessonError || topicTitle);
-      showToast("Could not save lesson completion. Try again.");
-      return false;
+    const sectionId = String(sections[sIdx]?.id || `s${sIdx + 1}`);
+    const topicId = String(tIdx + 1);
+    let persisted = false;
+    let canonicalError = null;
+
+    // Mathematics used to depend on an exact title match in public.lessons and
+    // a direct lesson_progress upsert. As the curriculum grew to 124 topics,
+    // that legacy catalogue could be stale or have renamed titles. The RPC
+    // records a stable subject-scoped completion first, then mirrors the old
+    // lesson_progress row when a matching legacy lesson exists.
+    const canonicalResult = await supabase.rpc("spark_record_mathematics_lesson_completion", {
+      p_section_id: sectionId,
+      p_topic_id: topicId,
+      p_title: topicTitle,
+      p_completion_source: source,
+    });
+    if (!canonicalResult.error) {
+      persisted = true;
+    } else {
+      canonicalError = canonicalResult.error;
+      console.warn("Mathematics completion RPC unavailable; trying legacy persistence:", canonicalError);
+
+      // Compatibility fallback for a database that has not received the new
+      // migration yet. Avoid .single() and blind upsert because duplicate or
+      // existing progress rows otherwise turn a valid completion into an error.
+      const { data: lessonRows, error: lessonError } = await supabase.from("lessons")
+        .select("id").eq("title", topicTitle).limit(1);
+      const lesson = lessonRows?.[0] || null;
+      if (!lessonError && lesson?.id) {
+        const { data: existingRows, error: existingError } = await supabase.from("lesson_progress")
+          .select("id").eq("user_id", user.id).eq("lesson_id", lesson.id).limit(1);
+        if (!existingError) {
+          const now = new Date().toISOString();
+          const fullPayload = { completed: true, completion_source: source, completed_at: now };
+          const basicPayload = { completed: true, completed_at: now };
+          const saveLegacy = async payload => existingRows?.[0]?.id
+            ? supabase.from("lesson_progress").update(payload).eq("id", existingRows[0].id)
+            : supabase.from("lesson_progress").insert({ user_id: user.id, lesson_id: lesson.id, ...payload });
+          let legacySave = await saveLegacy(fullPayload);
+          if (legacySave.error && String(legacySave.error?.message || "").toLowerCase().includes("completion_source")) {
+            legacySave = await saveLegacy(basicPayload);
+          }
+          if (!legacySave.error) persisted = true;
+          else canonicalError = legacySave.error;
+        } else {
+          canonicalError = existingError;
+        }
+      } else {
+        canonicalError = lessonError || canonicalError || new Error(`No legacy lesson row for ${topicTitle}`);
+      }
     }
 
-    const { error: progressError } = await supabase.from("lesson_progress").upsert({
-      user_id: user.id,
-      lesson_id: lesson.id,
-      completed: true,
-      completion_source: source,
-      completed_at: new Date().toISOString()
-    });
-    if (progressError) {
-      console.error("Could not save lesson completion:", progressError);
+    if (!persisted) {
+      console.error("Could not save Mathematics lesson completion:", canonicalError);
       showToast("Could not save lesson completion. Try again.");
       return false;
     }
@@ -3526,7 +3578,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       .then(({data}) => setFamilyCode(data?.code || ""));
     supabase.from("parent_student_links").select("*").eq("student_id", user.id).order("created_at", {ascending:false})
       .then(({data}) => setParentLinks(data || []));
-    supabase.from("lesson_progress").select("*").eq("user_id", user.id).eq("completed", true)
+    supabase.from("lesson_progress").select("*,lessons(title)").eq("user_id", user.id).eq("completed", true)
       .then(({data}) => setProgressData(data || []));
     supabase.from("practice_exam_attempts")
       .select("id,attempt_key,paper_type,score,max_score,percent,completed_at,duration_seconds,timed_out,answered_count,total_questions,correct_count,metadata")
@@ -3824,9 +3876,14 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       subjects: f.subjects.includes(s) ? f.subjects.filter(x => x !== s) : [...f.subjects, s] }));
   };
 
-  const done = progressData.length;
   const localPhysicsSubjectRows = PHYSICS_SECTION_A_ENABLED ? readLocalPhysicsSubjectRows(user.id) : [];
   const mergedSubjectProgressRows = mergeSubjectProgressRows(subjectProgressRows, localPhysicsSubjectRows);
+  const legacyMathCompletedTitles = new Set(progressData.map(row => row?.lessons?.title).filter(Boolean));
+  const genericMathCompletedTitles = new Set(subjectRows(mergedSubjectProgressRows, "mathematics")
+    .filter(row => row.activity_type === "lesson" && row.completed)
+    .map(row => row.title).filter(Boolean));
+  const done = new Set([...legacyMathCompletedTitles, ...genericMathCompletedTitles]).size
+    || Math.max(progressData.length, genericMathCompletedTitles.size);
   const availableSparkSubjects = enabledSparkSubjects(SPARK_SUBJECTS);
   const legacyEnrollmentIds = [...new Set([
     "mathematics",
@@ -5524,7 +5581,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
     const [prog, attempts, lessons, bookings, examAttempts, milestones, studyCircle, flashcards, flashcardReviews, goals, learnerStates, subjectProgress, subjectEvents, subjectEnrollments] = await Promise.all([
       supabase.from("csec_skill_progress").select("*").eq("user_id", selectedChild.id).order("mastery_score", {ascending:true}),
       supabase.from("csec_question_attempts").select("id,correct,attempted_at,skill").eq("user_id", selectedChild.id).order("attempted_at", {ascending:false}).limit(500),
-      supabase.from("lesson_progress").select("id,lesson_id,completed,completed_at").eq("user_id", selectedChild.id).eq("completed", true),
+      supabase.from("lesson_progress").select("id,lesson_id,completed,completed_at,lessons(title)").eq("user_id", selectedChild.id).eq("completed", true),
       supabase.from("bookings").select("id,subject,session_date,start_time,duration_minutes,status,rate_jmd,confirmation_expired_at,tutors(name)").eq("student_id", selectedChild.id).order("session_date", {ascending:false}).limit(100),
       supabase.from("practice_exam_attempts").select("id,attempt_key,paper_type,score,max_score,percent,completed_at,duration_seconds,timed_out,answered_count,total_questions,correct_count,metadata").eq("user_id", selectedChild.id).order("completed_at", {ascending:false}).limit(100),
       supabase.from("learning_milestones").select("id,event_type,title,score,max_score,percent,skill,lesson_id,metadata,created_at").eq("user_id", selectedChild.id).order("created_at", {ascending:false}).limit(100),
@@ -5650,7 +5707,13 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
   const parentSubjectDashboardSummaries = buildSubjectDashboardSummaries({
     subjects: parentEnrolledSubjects,
     mathematics: {
-      done: childData?.lessons?.length || 0,
+      done: (() => {
+        const legacyTitles = new Set((childData?.lessons || []).map(row => row?.lessons?.title).filter(Boolean));
+        const genericTitles = new Set(subjectRows(childData?.subjectProgressRows || [], "mathematics")
+          .filter(row => row.activity_type === "lesson" && row.completed)
+          .map(row => row.title).filter(Boolean));
+        return new Set([...legacyTitles, ...genericTitles]).size || Math.max(childData?.lessons?.length || 0, genericTitles.size);
+      })(),
       totalTopics: SYLLABUS_SECTIONS.reduce((sum, section) => sum + section.topics.length, 0),
       learningSummary: parentLearningSummary,
     },

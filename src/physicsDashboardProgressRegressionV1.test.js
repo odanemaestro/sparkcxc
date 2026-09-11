@@ -28,9 +28,9 @@ describe("Physics lesson completion dashboard regression", () => {
 
   test("App loads lesson completion for both the signed-in student and selected child", () => {
     const app = fs.readFileSync(path.join(__dirname, "App.js"), "utf8");
-    expect(app).toMatch(/from\("lesson_progress"\)\.select\("\*"\)\.eq\("user_id", user\.id\)\.eq\("completed", true\)/);
+    expect(app).toMatch(/from\("lesson_progress"\)\.select\("\*,lessons\(title\)"\)\.eq\("user_id", user\.id\)\.eq\("completed", true\)/);
     expect(app).toMatch(/from\("spark_subject_progress"\)[\s\S]{0,450}\.eq\("user_id", user\.id\)/);
-    expect(app).toMatch(/from\("lesson_progress"\)\.select\("id,lesson_id,completed,completed_at"\)\.eq\("user_id", selectedChild\.id\)\.eq\("completed", true\)/);
+    expect(app).toMatch(/from\("lesson_progress"\)\.select\("id,lesson_id,completed,completed_at,lessons\(title\)"\)\.eq\("user_id", selectedChild\.id\)\.eq\("completed", true\)/);
     expect(app).toMatch(/from\("spark_subject_progress"\)[\s\S]{0,450}\.eq\("user_id", selectedChild\.id\)/);
     expect(app).toContain('["Lessons completed", allSubjectsSummary.lessonsCompleted]');
     expect(app).toContain('{parentAllSubjectsSummary.lessonsCompleted}</strong><span>Lessons completed</span>');

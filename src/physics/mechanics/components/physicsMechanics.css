@@ -143,6 +143,32 @@
 .pm-empty { padding:26px; text-align:center; border:1px dashed var(--pm-line); border-radius:16px; color:var(--pm-muted); }
 .pm-completion { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:18px; }
 .pm-completion button { border:1px solid var(--pm-line); background:var(--pm-card); color:var(--pm-ink); padding:9px 12px; border-radius:10px; cursor:pointer; font-weight:650; }.pm-completion button.done { background:var(--pm-primary-soft); border-color:var(--pm-primary); color:var(--pm-primary); }
+/* SPARK V11.7: lesson completion and lab exploration are both explicit progress
+   actions, so they share the same filled primary treatment across Physics. */
+.pm-study-grid .pm-completion > button,
+.pm-labs-grid .pm-completion > button {
+  border-color:var(--pm-primary);
+  background:var(--pm-primary);
+  color:#fff;
+  padding:11px 18px;
+  min-height:46px;
+  border-radius:10px;
+  font-size:14px;
+  font-weight:800;
+  box-shadow:0 2px 8px color-mix(in srgb,var(--pm-primary) 24%,transparent);
+  transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+}
+.pm-study-grid .pm-completion > button:hover,
+.pm-labs-grid .pm-completion > button:hover {
+  transform:translateY(-1px);
+  box-shadow:0 6px 18px color-mix(in srgb,var(--pm-primary) 30%,transparent);
+}
+.pm-study-grid .pm-completion > button.done,
+.pm-labs-grid .pm-completion > button.done {
+  background:var(--pm-good);
+  border-color:var(--pm-good);
+  color:#fff;
+}
 @media (max-width: 850px) {
   .pm-hero { flex-direction:column; }.pm-hero-stats { width:100%; grid-template-columns:repeat(4,1fr); }.pm-study-grid { grid-template-columns:1fr; }.pm-topic-head { flex-direction:column; }.pm-topic-progress { text-align:left; width:100%; }
 }

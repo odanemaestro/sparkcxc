@@ -29,8 +29,8 @@ describe("SPARK V5.5.2.2 mobile arrows and lesson progression", () => {
     const start = app.indexOf("const markTopicComplete = useCallback");
     const end = app.indexOf("const handleQuizComplete", start);
     const block = app.slice(start, end);
-    expect(block).toContain("if (progressError)");
+    expect(block).toContain("if (!persisted)");
     expect(block).toContain("return true; // persisted completion");
-    expect(block.lastIndexOf("markLocally();")).toBeGreaterThan(block.indexOf("if (progressError)"));
+    expect(block.lastIndexOf("markLocally();")).toBeGreaterThan(block.indexOf("if (!persisted)"));
   });
 });

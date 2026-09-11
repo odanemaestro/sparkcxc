@@ -22,7 +22,7 @@ describe("MathText fraction power presentation V11.3", () => {
     const css = fs.readFileSync(path.join(__dirname, "practice", "mathText.css"), "utf8");
     expect(css).toContain("SPARK V11.3 FRACTION POWER CLEARANCE");
     expect(css).toContain(".spark-math .frac .fden sup");
-    expect(css).toContain(".spark-math .frac .fden sup{\n  vertical-align:.42em;");
-    expect(css).toContain("padding-top:.34em");
+    expect(css).toContain(".spark-math .frac .fden sup{\n  vertical-align:.05em;");
+    expect(css).toContain("padding-top:.82em");
   });
 });

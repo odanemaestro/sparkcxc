@@ -205,8 +205,8 @@
 }
 
 .spark-math .frac .fden{
-  padding-top:.34em;
-  padding-bottom:.02em;
+  padding-top:.82em;
+  padding-bottom:.03em;
 }
 
 .spark-math .frac .fnum sup,
@@ -221,5 +221,5 @@
 }
 
 .spark-math .frac .fden sup{
-  vertical-align:.42em;
+  vertical-align:.05em;
 }
