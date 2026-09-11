@@ -12,10 +12,19 @@ export default function SubjectProgressDetail({ subject, rows = [], onOpenSubjec
   const summary = useMemo(() => summarizeSubjectProgress(rows, { subjectId: subject?.id, totalTopics: subject?.stats?.topics || 0 }), [rows, subject]);
   const report = useMemo(() => buildGenericSubjectProgressReport({ subject, rows }, { period: "term" }), [rows, subject]);
   const assessments = report.exams || [];
+  const supportsLabs = Boolean(subject?.capabilities?.labs);
+  const finalMetric = supportsLabs
+    ? { value: summary.labsCompleted || 0, label: "Labs explored" }
+    : subject?.id === "mathematics"
+      ? { value: summary.skillsTracked || 0, label: "Skills tracked" }
+      : { value: summary.topicsPractised || 0, label: "Topics practised" };
+  const detailDescription = supportsLabs
+    ? "Review lesson coverage, practice performance, labs and assessments recorded in SPARK."
+    : "Review lesson coverage, practice performance and assessments recorded in SPARK.";
 
   return <div className="spark-subject-progress-detail">
     <div className="spark-subject-progress-detail-head">
-      <div><span className="section-kicker">{subject?.name || "Subject"}</span><h1>{subject?.shortName || subject?.name || "Subject"} progress</h1><p>Review lesson coverage, practice performance, labs and assessments recorded in SPARK.</p></div>
+      <div><span className="section-kicker">{subject?.name || "Subject"}</span><h1>{subject?.shortName || subject?.name || "Subject"} progress</h1><p>{detailDescription}</p></div>
       <div className="spark-subject-progress-detail-actions">{onOpenSubject && <button type="button" className="spark-dashboard-card-action" onClick={() => onOpenSubject(subject)}><span>Open subject</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M6 14L14 6M8 6h6v6" /></svg></span></button>}{onOpenReport && <button type="button" className="spark-dashboard-card-action" onClick={() => onOpenReport(subject)}><span>View report</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M6 14L14 6M8 6h6v6" /></svg></span></button>}</div>
     </div>
 
@@ -25,7 +34,7 @@ export default function SubjectProgressDetail({ subject, rows = [], onOpenSubjec
       <Card><strong>{summary.practiceAttempts || 0}</strong><span>Practice results</span></Card>
       <Card><strong>{summary.practiceAttempts ? `${summary.practiceAverage}%` : "—"}</strong><span>Practice average</span></Card>
       <Card><strong>{summary.assessments ?? summary.checkpoints ?? 0}</strong><span>Assessments</span></Card>
-      <Card><strong>{summary.labsCompleted || 0}</strong><span>Labs explored</span></Card>
+      <Card><strong>{finalMetric.value}</strong><span>{finalMetric.label}</span></Card>
     </div>
 
     <Card className="spark-subject-progress-coverage-card">

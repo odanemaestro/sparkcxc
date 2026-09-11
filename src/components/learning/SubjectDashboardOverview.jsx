@@ -34,11 +34,17 @@ function subjectInsight(summaries, learnerName = "") {
 }
 
 function subjectMetricThird(progress) {
-  const assessments = Number(progress?.assessments ?? progress?.checkpoints ?? 0);
-  if (assessments > 0) return { value: assessments, label: "assessments" };
-  const labs = Number(progress?.labsCompleted || 0);
-  if (labs > 0) return { value: labs, label: "labs explored" };
-  return { value: 0, label: "assessments" };
+  return { value: Number(progress?.assessments ?? progress?.checkpoints ?? 0), label: "assessments" };
+}
+
+function subjectMetricFourth(subject, progress) {
+  if (subject?.capabilities?.labs) {
+    return { value: Number(progress?.labsCompleted || 0), label: "labs explored" };
+  }
+  if (subject?.id === "mathematics") {
+    return { value: Number(progress?.skillsTracked || 0), label: "skills tracked" };
+  }
+  return { value: Number(progress?.topicsPractised || 0), label: "topics practised" };
 }
 
 export default function SubjectDashboardOverview({
@@ -82,6 +88,7 @@ export default function SubjectDashboardOverview({
             ? Number(progress.lessonPercent)
             : (total ? Math.round(completed / total * 100) : 0);
           const third = subjectMetricThird(progress);
+          const fourth = subjectMetricFourth(subject, progress);
           const focus = subjectInsights?.[subject.id] || null;
           return (
             <Card key={subject.id} className="spark-subject-overview-card">
@@ -95,7 +102,7 @@ export default function SubjectDashboardOverview({
                 <div><strong>{progress.practiceAttempts || 0}</strong><span>practice results</span></div>
                 <div><strong>{progress.practiceAttempts ? `${Math.round(Number(progress.practiceAverage || 0))}%` : "—"}</strong><span>practice average</span></div>
                 <div><strong>{third.value}</strong><span>{third.label}</span></div>
-                <div><strong>{progress.labsCompleted || 0}</strong><span>labs explored</span></div>
+                <div><strong>{fourth.value}</strong><span>{fourth.label}</span></div>
               </div>
               {focus && <div className="spark-subject-overview-focus"><span>Current focus</span><strong>{focus.title}</strong>{focus.detail && <small>{focus.detail}</small>}</div>}
               {(onOpenSubject || onOpenProgress) && <div className="spark-subject-overview-actions">

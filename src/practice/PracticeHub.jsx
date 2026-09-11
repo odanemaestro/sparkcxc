@@ -23,7 +23,7 @@ function readJson(key, fallback) {
   }
 }
 
-export default function PracticeHub({ supabase, userId, setView, physicsEnabled = false, initialSubject = null, onSubjectActivity }) {
+export default function PracticeHub({ supabase, userId, setView, physicsEnabled = false, enrolledSubjectIds = null, initialSubject = null, onSubjectActivity }) {
   const [subject, setSubject] = useState(initialSubject);
   const [mode, setMode] = useState("home");
   const [examIntent, setExamIntent] = useState("resume");
@@ -47,12 +47,17 @@ export default function PracticeHub({ supabase, userId, setView, physicsEnabled 
     syncLocalPracticeResults({ supabase, userId, paper1Results: storedPaper1Results, paper2Results: storedPaper2Results }).catch(() => {});
   }, [supabase, userId]);
 
-  const practiceSubjects = useMemo(
-    () => subjectsForCapability(getSparkSubjectRegistry({ physicsEnabled }), "practice"),
-    [physicsEnabled]
-  );
+  const practiceSubjects = useMemo(() => {
+    const supported = subjectsForCapability(getSparkSubjectRegistry({ physicsEnabled }), "practice");
+    if (!Array.isArray(enrolledSubjectIds)) return supported;
+    const enrolled = new Set(enrolledSubjectIds.map(id => String(id || "").trim().toLowerCase()).filter(Boolean));
+    return supported.filter(item => enrolled.has(String(item.id || "").toLowerCase()));
+  }, [physicsEnabled, enrolledSubjectIds]);
+  const selectedSubject = !subject || !Array.isArray(enrolledSubjectIds) || practiceSubjects.some(item => item.id === subject)
+    ? subject
+    : null;
 
-  if (!subject) {
+  if (!selectedSubject) {
     return <SubjectSelectionView
       eyebrow="Practice"
       title="Choose a subject"
@@ -64,7 +69,7 @@ export default function PracticeHub({ supabase, userId, setView, physicsEnabled 
     />;
   }
 
-  if (subject === "physics") {
+  if (selectedSubject === "physics") {
     return <PhysicsPracticeHub
       userId={userId}
       onBack={() => { setMode("home"); setView?.("practice"); }}

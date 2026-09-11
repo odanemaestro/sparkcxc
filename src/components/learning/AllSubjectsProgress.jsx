@@ -28,6 +28,11 @@ export default function AllSubjectsProgress({
   description = "Review learning activity across the subjects you are enrolled in.",
   learnerName = "",
 }) {
+  const includesLabs = summaries.some(subject => Boolean(subject?.capabilities?.labs));
+  const subjectSpecificMetric = includesLabs
+    ? { value: summary?.labsCompleted || 0, label: "Labs explored" }
+    : { value: summary?.skillsTracked || 0, label: "Skills tracked" };
+
   return <div className="spark-all-subjects-progress">
     <div className="spark-subject-progress-detail-head">
       <div><span className="section-kicker">ALL SUBJECTS</span><h1>{title}</h1><p>{description}</p></div>
@@ -40,7 +45,7 @@ export default function AllSubjectsProgress({
       <Card><strong>{summary?.practiceAttempts || 0}</strong><span>Practice results</span></Card>
       <Card><strong>{summary?.practiceAttempts ? `${summary.practiceAverage}%` : "—"}</strong><span>Practice average</span></Card>
       <Card><strong>{summary?.checkpoints || 0}</strong><span>Assessments</span></Card>
-      <Card><strong>{summary?.labsCompleted || 0}</strong><span>Labs explored</span></Card>
+      <Card><strong>{subjectSpecificMetric.value}</strong><span>{subjectSpecificMetric.label}</span></Card>
     </div>
 
     <SubjectDashboardOverview

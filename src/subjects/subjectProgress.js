@@ -338,6 +338,7 @@ export function summarizeSubjectProgress(rows = [], options = {}) {
     labsCompleted: labs.length,
     topicTests: quizzes.length,
     topicsPractised,
+    skillsTracked: topicsPractised,
     checkpoints: checkpoints.length,
     exams: exams.length,
     assessments: checkpoints.length + exams.length,
@@ -371,6 +372,7 @@ export function mathematicsDashboardSummary({ done = 0, totalTopics = 0, learnin
     labsCompleted: 0,
     topicTests: 0,
     topicsPractised: 0,
+    skillsTracked: skillCount,
     checkpoints: examCount,
     exams: examCount,
     assessments: examCount,
@@ -447,6 +449,7 @@ export function summarizeAllSubjects(subjectSummaries = []) {
   const exams = active.reduce((sum, item) => sum + safeNumber(item.progress?.exams), 0);
   const assessments = active.reduce((sum, item) => sum + safeNumber(item.progress?.assessments ?? item.progress?.checkpoints), 0);
   const labsCompleted = active.reduce((sum, item) => sum + safeNumber(item.progress?.labsCompleted), 0);
+  const skillsTracked = active.reduce((sum, item) => sum + safeNumber(item.progress?.skillsTracked), 0);
   const lessonPercent = totalTopics ? Math.min(100, Math.round(lessonsCompleted / totalTopics * 100)) : 0;
   return {
     activeSubjects: enabled.length,
@@ -460,6 +463,7 @@ export function summarizeAllSubjects(subjectSummaries = []) {
     exams,
     assessments,
     labsCompleted,
+    skillsTracked,
     overallPerformance: goalMetric.value,
     hasOverallPerformance: goalMetric.hasData,
     performanceSubjectCount: goalMetric.subjectCount,

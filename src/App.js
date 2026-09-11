@@ -1304,17 +1304,43 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
   );
 }
 
-function StudySubjectHub({ setView }) {
-  const subjects = subjectsForCapability(SPARK_SUBJECTS, "study");
+function StudySubjectHub({ setView, subjects = [], onManageSubjects }) {
+  const studySubjects = subjectsForCapability(subjects, "study");
+  if (!studySubjects.length) {
+    return <SubjectEnrollmentRequiredView onManageSubjects={onManageSubjects} onBack={() => setView("dashboard")} />;
+  }
   return <SubjectSelectionView
     eyebrow="Study"
     title="Choose a subject"
-    description="Select the subject you want to study. Each subject keeps its own learning path and progress."
+    description="Select one of your enrolled subjects to study. Each subject keeps its own learning path and progress."
     capability="study"
-    subjects={subjects}
+    subjects={studySubjects}
     onSelect={subject => setView(subject.studyView)}
     onBack={() => setView("dashboard")}
   />;
+}
+
+function SubjectEnrollmentRequiredView({ subjectName = "", onManageSubjects, onBack }) {
+  const namedSubject = String(subjectName || "").trim();
+  return (
+    <main style={{flex:1,padding:"clamp(28px,6vw,64px) 20px",background:T.bg}}>
+      <Card style={{maxWidth:680,margin:"0 auto",padding:"clamp(24px,5vw,40px)"}}>
+        <div style={{fontSize:11,fontWeight:800,letterSpacing:".09em",textTransform:"uppercase",color:T.teal,marginBottom:8}}>My subjects</div>
+        <h1 style={{fontFamily:FD,fontSize:"clamp(26px,5vw,34px)",lineHeight:1.15,color:T.ink,margin:"0 0 12px"}}>
+          {namedSubject ? `${namedSubject} is not enrolled` : "Choose a subject first"}
+        </h1>
+        <p style={{fontSize:14,lineHeight:1.65,color:T.textMuted,margin:"0 0 22px"}}>
+          {namedSubject
+            ? `Add ${namedSubject} in My Subjects before opening its lessons, practice activities or study tools. Your saved progress stays available if you enroll again later.`
+            : "Study and practice only show subjects you are currently enrolled in. Add a subject from My Subjects to begin."}
+        </p>
+        <div style={{display:"flex",gap:10,flexWrap:"wrap"}}>
+          <Btn onClick={onManageSubjects}>Manage my subjects</Btn>
+          {onBack && <Btn v="outline" onClick={onBack}>Back</Btn>}
+        </div>
+      </Card>
+    </main>
+  );
 }
 
 // ─── NAV ────────────────────────────────────────────────────────────────────
@@ -3920,6 +3946,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       if (flashcardSubject === subjectId) setFlashcardSubject(null);
     }
     await loadSubjectEnrollments();
+    if (typeof window !== "undefined") window.dispatchEvent(new Event("spark:subject-enrollments-changed"));
     showToast(enroll ? `${subject.shortName || subject.name} added to your subjects.` : `${subject.shortName || subject.name} removed from your dashboard. Your progress is still saved.`);
   };
 
@@ -5968,6 +5995,11 @@ export default function App() {
   const [googleOAuthResolving, setGoogleOAuthResolving] = useState(false);
   const [toast, setToast] = useState(null);
   const [liveStats, setLiveStats] = useState({ tutors: 0, questions: 0, topics: 0 });
+  // App-shell subject access is separate from dashboard presentation state so
+  // Study, Practice and direct subject URLs all enforce the same enrollment.
+  const [appSubjectEnrollmentIds, setAppSubjectEnrollmentIds] = useState([]);
+  const [appSubjectEnrollmentsLoaded, setAppSubjectEnrollmentsLoaded] = useState(false);
+  const [appSubjectEnrollmentAvailable, setAppSubjectEnrollmentAvailable] = useState(null);
   // The signed-in user's own row in `tutors` (id + status), or null if
   // they've never applied. Only a `rejected` status (or no row at all)
   // should let someone see/use "Become a tutor" - pending, approved, and
@@ -6002,6 +6034,12 @@ export default function App() {
     viewRef.current = resolvedView;
     setViewState(resolvedView);
     writeViewToBrowserHash(resolvedView, options);
+  }, []);
+
+  const openMySubjects = useCallback(() => {
+    viewRef.current = "dashboard";
+    setViewState("dashboard");
+    writeDashboardSectionToBrowserHash("subjects");
   }, []);
 
   // Keep React in sync when the user uses browser Back/Forward or manually
@@ -6076,6 +6114,94 @@ export default function App() {
 useEffect(() => () => {
     if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
   }, []);
+
+  const loadAppSubjectEnrollments = useCallback(async (studentId) => {
+    if (!studentId) {
+      setAppSubjectEnrollmentIds([]);
+      setAppSubjectEnrollmentAvailable(null);
+      setAppSubjectEnrollmentsLoaded(true);
+      return;
+    }
+
+    try {
+      const { data, error } = await supabase.from("spark_student_subject_enrollments")
+        .select("subject_id,status,updated_at")
+        .eq("student_id", studentId)
+        .order("updated_at", { ascending:false });
+
+      if (error) {
+        const message = String(error?.message || "").toLowerCase();
+        if (!message.includes("spark_student_subject_enrollments")) {
+          console.error("Failed to load app subject enrollments:", error);
+        }
+
+        // Compatibility fallback for a deployment where the enrollment
+        // migration has not reached the database yet. Mathematics keeps its
+        // legacy access, while any already-recorded subject progress is also
+        // honoured. Once the enrollment table exists, only explicit active
+        // enrollments are used.
+        const fallbackIds = new Set(["mathematics"]);
+        try {
+          const { data: progressRows } = await supabase.from("spark_subject_progress")
+            .select("subject_id")
+            .eq("user_id", studentId);
+          (progressRows || []).forEach(row => {
+            const id = String(row?.subject_id || "").trim().toLowerCase();
+            if (id) fallbackIds.add(id);
+          });
+        } catch {}
+        setAppSubjectEnrollmentIds([...fallbackIds]);
+        setAppSubjectEnrollmentAvailable(false);
+        setAppSubjectEnrollmentsLoaded(true);
+        return;
+      }
+
+      setAppSubjectEnrollmentIds((data || [])
+        .filter(row => row?.status === "active")
+        .map(row => String(row?.subject_id || "").trim().toLowerCase())
+        .filter(Boolean));
+      setAppSubjectEnrollmentAvailable(true);
+      setAppSubjectEnrollmentsLoaded(true);
+    } catch (error) {
+      console.error("Failed to load app subject enrollments:", error);
+      setAppSubjectEnrollmentIds(["mathematics"]);
+      setAppSubjectEnrollmentAvailable(false);
+      setAppSubjectEnrollmentsLoaded(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!session?.user?.id || profile?.role !== "student") {
+      setAppSubjectEnrollmentIds([]);
+      setAppSubjectEnrollmentAvailable(null);
+      setAppSubjectEnrollmentsLoaded(profile?.role !== "student");
+      return;
+    }
+    setAppSubjectEnrollmentsLoaded(false);
+    loadAppSubjectEnrollments(session.user.id);
+  }, [session?.user?.id, profile?.role, loadAppSubjectEnrollments]);
+
+  useEffect(() => {
+    if (!session?.user?.id || profile?.role !== "student") return undefined;
+    const studentId = session.user.id;
+    const refresh = () => loadAppSubjectEnrollments(studentId);
+    window.addEventListener("spark:subject-enrollments-changed", refresh);
+
+    if (appSubjectEnrollmentAvailable !== true) {
+      return () => window.removeEventListener("spark:subject-enrollments-changed", refresh);
+    }
+
+    const channel = supabase
+      .channel(`app-subject-enrollments-${studentId}`)
+      .on("postgres_changes", {
+        event:"*", schema:"public", table:"spark_student_subject_enrollments", filter:`student_id=eq.${studentId}`,
+      }, refresh)
+      .subscribe();
+    return () => {
+      window.removeEventListener("spark:subject-enrollments-changed", refresh);
+      supabase.removeChannel(channel);
+    };
+  }, [session?.user?.id, profile?.role, appSubjectEnrollmentAvailable, loadAppSubjectEnrollments]);
 
   // Load live stats from Supabase
   useEffect(() => {
@@ -6474,6 +6600,13 @@ const handleLogout = async () => {
   // during refresh, so `loading` alone is not a sufficient render guard.
   const tutorVerificationResumePending = !!session && view !== "become-tutor" && tutorVerificationHandoffMatchesUser(loadTutorVerificationHandoff(), session.user);
   const authenticatedRolePending = !!session && (!profile || !tutorAppLoaded || googleOAuthResolving || tutorVerificationResumePending);
+  const appStudentEnrolledSubjects = profile?.role === "student"
+    ? subjectsForEnrollmentIds(SPARK_SUBJECTS, appSubjectEnrollmentIds).filter(subject => subject.enabled !== false)
+    : [];
+  const appStudentEnrolledSubjectIds = new Set(appStudentEnrolledSubjects.map(subject => String(subject.id || "").toLowerCase()));
+  const appSubjectAccessPending = !!session && profile?.role === "student" && !appSubjectEnrollmentsLoaded;
+  const appHasMathematics = appStudentEnrolledSubjectIds.has("mathematics");
+  const appHasPhysics = appStudentEnrolledSubjectIds.has("physics");
 
 
   if (googleOAuthError && session) {
@@ -6539,42 +6672,67 @@ if (loading || authenticatedRolePending) {
         )
       )}
       {view === "admin"        && session && profile?.is_admin && <AdminView showToast={showToast} adminUserId={session.user.id}/>}
-      {view === "study"        && session && profile?.role === "student" && <StudySubjectHub setView={setView}/>}
-      {view === "lesson"       && session && <LessonView user={session.user} setView={setView} showToast={showToast} hasTutorApp={hideTutorApplyLink}/>}
+      {view === "study" && session && profile?.role === "student" && (
+        appSubjectAccessPending
+          ? <SparkLoader variant="section" label="Loading your subjects" />
+          : <StudySubjectHub setView={setView} subjects={appStudentEnrolledSubjects} onManageSubjects={openMySubjects}/>
+      )}
+      {view === "lesson" && session && profile?.role === "student" && (
+        appSubjectAccessPending
+          ? <SparkLoader variant="section" label="Checking Mathematics enrollment" />
+          : appHasMathematics
+            ? <LessonView user={session.user} setView={setView} showToast={showToast} hasTutorApp={hideTutorApplyLink}/>
+            : <SubjectEnrollmentRequiredView subjectName="Mathematics" onManageSubjects={openMySubjects} onBack={() => setView("study")}/>
+      )}
       {/* SPARK_PHYSICS_SECTION_A_RC1_VIEW */}
       {view === "physics" && session && profile?.role === "student" && PHYSICS_SECTION_A_ENABLED && (
-        <PhysicsSubjectView
-          userId={session.user.id}
-          onBack={() => setView("study")}
-          onActivity={event => {
-            recordPhysicsSubjectActivity({ supabase, event }).then(result => {
-              if (result?.error && !["PGRST202", "42P01", "42883"].includes(result.error.code)) {
-                console.warn("Physics subject progress was not synced", result.error);
-                return;
-              }
-            }).catch(error => console.warn("Physics subject progress was not synced", error));
-          }}
-        />
+        appSubjectAccessPending
+          ? <SparkLoader variant="section" label="Checking Physics enrollment" />
+          : appHasPhysics
+            ? <PhysicsSubjectView
+                userId={session.user.id}
+                onBack={() => setView("study")}
+                onActivity={event => {
+                  recordPhysicsSubjectActivity({ supabase, event }).then(result => {
+                    if (result?.error && !["PGRST202", "42P01", "42883"].includes(result.error.code)) {
+                      console.warn("Physics subject progress was not synced", result.error);
+                      return;
+                    }
+                  }).catch(error => console.warn("Physics subject progress was not synced", error));
+                }}
+              />
+            : <SubjectEnrollmentRequiredView subjectName="Physics" onManageSubjects={openMySubjects} onBack={() => setView("study")}/>
       )}
       {view === "physics" && session && profile?.role !== "student" && PHYSICS_SECTION_A_ENABLED && (
         <div style={{flex:1,padding:"4rem",textAlign:"center",color:T.textMuted}}>
           CSEC Physics study is available from a student account.
         </div>
       )}
-      {(view === "practice" || view === "practice-math" || view === "practice-physics") && session && profile?.role !== "tutor" && tutorApp?.status !== "approved" && <PracticeHub
-        supabase={supabase}
-        userId={session.user.id}
-        setView={setView}
-        physicsEnabled={PHYSICS_SECTION_A_ENABLED}
-        initialSubject={view === "practice-math" ? "mathematics" : view === "practice-physics" ? "physics" : null}
-        onSubjectActivity={event => {
-          recordPhysicsSubjectActivity({ supabase, event }).then(result => {
-            if (result?.error && !["PGRST202", "42P01", "42883"].includes(result.error.code)) {
-              console.warn("Physics subject progress was not synced", result.error);
-            }
-          }).catch(error => console.warn("Physics subject progress was not synced", error));
-        }}
-      />}
+      {(view === "practice" || view === "practice-math" || view === "practice-physics") && session && profile?.role === "student" && (
+        appSubjectAccessPending
+          ? <SparkLoader variant="section" label="Loading your practice subjects" />
+          : (view === "practice-math" && !appHasMathematics)
+            ? <SubjectEnrollmentRequiredView subjectName="Mathematics" onManageSubjects={openMySubjects} onBack={() => setView("practice")}/>
+            : (view === "practice-physics" && !appHasPhysics)
+              ? <SubjectEnrollmentRequiredView subjectName="Physics" onManageSubjects={openMySubjects} onBack={() => setView("practice")}/>
+              : appStudentEnrolledSubjects.length === 0
+                ? <SubjectEnrollmentRequiredView onManageSubjects={openMySubjects} onBack={() => setView("dashboard")}/>
+                : <PracticeHub
+                    supabase={supabase}
+                    userId={session.user.id}
+                    setView={setView}
+                    physicsEnabled={PHYSICS_SECTION_A_ENABLED}
+                    enrolledSubjectIds={appSubjectEnrollmentIds}
+                    initialSubject={view === "practice-math" ? "mathematics" : view === "practice-physics" ? "physics" : null}
+                    onSubjectActivity={event => {
+                      recordPhysicsSubjectActivity({ supabase, event }).then(result => {
+                        if (result?.error && !["PGRST202", "42P01", "42883"].includes(result.error.code)) {
+                          console.warn("Physics subject progress was not synced", result.error);
+                        }
+                      }).catch(error => console.warn("Physics subject progress was not synced", error));
+                    }}
+                  />
+      )}
       {view === "tutors"       && <TutorsView user={session?.user} profile={profile} tutorApp={tutorApp} setView={setView} showToast={showToast} hasTutorApp={hideTutorApplyLink} isParent={profile?.role === "parent"}/>}
 
 

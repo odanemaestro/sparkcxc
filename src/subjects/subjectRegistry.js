@@ -21,6 +21,7 @@ const BASE_SUBJECTS = Object.freeze({
       paper2: true,
       adaptive: true,
       structured: true,
+      labs: false,
     }),
   }),
   physics: Object.freeze({
@@ -40,6 +41,7 @@ const BASE_SUBJECTS = Object.freeze({
       paper2: true,
       adaptive: false,
       structured: true,
+      labs: true,
     }),
   }),
 });
