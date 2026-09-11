@@ -193,3 +193,33 @@
     line-height:1.58;
   }
 }
+
+/* SPARK V11.3 FRACTION POWER CLEARANCE
+   Superscripts inside a stacked fraction need their own line-box height.
+   Without this override a denominator such as a^n can rise into the
+   fraction bar because the global superscript style uses line-height:0. */
+.spark-math .frac .fnum,
+.spark-math .frac .fden{
+  line-height:1.2;
+  white-space:nowrap;
+}
+
+.spark-math .frac .fden{
+  padding-top:.34em;
+  padding-bottom:.02em;
+}
+
+.spark-math .frac .fnum sup,
+.spark-math .frac .fden sup{
+  font-size:.68em;
+  line-height:1;
+  margin-left:.025em;
+}
+
+.spark-math .frac .fnum sup{
+  vertical-align:.56em;
+}
+
+.spark-math .frac .fden sup{
+  vertical-align:.42em;
+}

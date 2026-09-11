@@ -483,3 +483,150 @@
     font-size:clamp(20px,5.8vw,25px);
   }
 }
+
+/* SPARK PHYSICS V8 MOBILE TOPIC TEST FIT */
+.pm-question,
+.pm-question h3,
+.pm-option,
+.pm-option>span,
+.pm-question .spark-math,
+.pm-option .spark-math{
+  min-width:0;
+  max-width:100%;
+}
+.pm-question .spark-math-prose,
+.pm-option .spark-math-prose{
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+.pm-topic-test-topics{
+  flex-wrap:wrap;
+  overflow:visible;
+}
+.pm-topic-test-topics .pm-topic-btn{
+  white-space:normal;
+  line-height:1.3;
+  text-align:left;
+  overflow-wrap:anywhere;
+}
+@media(max-width:560px){
+  .pm-topic-test-head{gap:14px;margin-bottom:16px}
+  .pm-topic-test-head .pm-btn{order:-1;width:auto;align-self:flex-start;padding-inline:12px}
+  .pm-topic-test-head h1{font-size:clamp(28px,8.5vw,34px);line-height:1.08;margin-top:4px}
+  .pm-topic-test-head p{font-size:14px;line-height:1.5}
+  .pm-topic-test-topics{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px;
+    width:100%;
+    max-width:100%;
+    padding:0 0 12px;
+    overflow:visible;
+  }
+  .pm-topic-test-topics .pm-topic-btn{
+    width:100%;
+    min-width:0;
+    min-height:52px;
+    border-radius:14px;
+    padding:9px 10px;
+    white-space:normal;
+    text-align:left;
+    font-size:12px;
+    line-height:1.25;
+  }
+  .pm-question{padding:14px 13px}
+  .pm-question h3{font-size:15.5px;line-height:1.5}
+  .pm-option{padding:10px 9px}
+  .pm-option>span{font-size:14px;line-height:1.45}
+}
+@media(max-width:360px){
+  .pm-topic-test-topics{grid-template-columns:1fr}
+}
+/* SPARK PHYSICS V8 MOBILE TOPIC TEST FIT END */
+
+
+/* SPARK PHYSICS V11 RESPONSIVE TOPIC NAV START
+   Section/topic selectors are content selectors, not a page-width carousel.
+   Wrapping on desktop and a two-column grid on phones keeps every label
+   readable without text colliding with the neighbouring button. */
+.physics-mechanics .pm-topics:not(.pm-flashcard-topics){
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  width:100%;
+  max-width:100%;
+  overflow:visible;
+  padding:2px 0 12px;
+  scrollbar-width:none;
+}
+.physics-mechanics .pm-topics:not(.pm-flashcard-topics)::-webkit-scrollbar{display:none}
+.physics-mechanics .pm-topics:not(.pm-flashcard-topics) .pm-topic-btn{
+  flex:0 1 auto;
+  min-width:0;
+  max-width:100%;
+  white-space:normal;
+  overflow-wrap:anywhere;
+  word-break:normal;
+  text-align:left;
+  line-height:1.3;
+}
+@media(max-width:760px){
+  .physics-mechanics .pm-shell{padding-left:12px;padding-right:12px}
+  .physics-mechanics .pm-topics:not(.pm-flashcard-topics){
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px;
+    overflow:visible;
+  }
+  .physics-mechanics .pm-topics:not(.pm-flashcard-topics) .pm-topic-btn{
+    width:100%;
+    min-width:0;
+    min-height:50px;
+    border-radius:14px;
+    padding:9px 10px;
+    font-size:12px;
+    line-height:1.28;
+  }
+  .physics-mechanics .pm-topic-head{
+    min-width:0;
+  }
+  .physics-mechanics .pm-topic-head>div:first-child{
+    min-width:0;
+  }
+  .physics-mechanics .pm-topic-head h2,
+  .physics-mechanics .pm-topic-head p{
+    max-width:100%;
+    overflow-wrap:anywhere;
+  }
+  .physics-mechanics .pm-topic-test-head{
+    width:100%;
+    max-width:100%;
+    align-items:flex-start;
+    flex-direction:column;
+  }
+  .physics-mechanics .pm-topic-test-head>div{
+    width:100%;
+    min-width:0;
+  }
+  .physics-mechanics .pm-topic-test-head h1{
+    font-size:clamp(28px,8vw,36px);
+    line-height:1.08;
+    margin:4px 0 8px;
+  }
+  .physics-mechanics .pm-topic-test-head p{
+    max-width:100%;
+    font-size:14px;
+    line-height:1.5;
+    overflow-wrap:anywhere;
+  }
+  .physics-mechanics .pm-topic-test-head .pm-btn{
+    order:-1;
+    width:auto;
+    max-width:100%;
+    align-self:flex-start;
+  }
+}
+@media(max-width:340px){
+  .physics-mechanics .pm-topics:not(.pm-flashcard-topics){grid-template-columns:1fr}
+}
+/* SPARK PHYSICS V11 RESPONSIVE TOPIC NAV END */

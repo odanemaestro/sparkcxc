@@ -194,3 +194,92 @@
 .phy-p2-model-review{box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--p2-teal) 12%,transparent)}
 @media(max-width:780px){.phy-p2-workspace-review-grid{grid-template-columns:1fr}.phy-p2-workspace-review-grid .phy-p2-table{min-width:520px}}
 /* SPARK PHYSICS V6 VISUAL REVIEW PARITY END */
+
+/* SPARK PHYSICS V8 MOBILE QUESTION + TABLE CONTAINMENT */
+.phy-p2-root{
+  max-width:100%;
+  overflow-x:clip;
+}
+.phy-p2-shell,
+.phy-p2-question-card,
+.phy-p2-question-heading,
+.phy-p2-stem,
+.phy-p2-parts,
+.phy-p2-part,
+.phy-p2-part-head,
+.phy-p2-response-area,
+.phy-p2-response-area>*{
+  min-width:0;
+  max-width:100%;
+  box-sizing:border-box;
+}
+.phy-p2-part-head>.spark-math,
+.phy-p2-stem.spark-math,
+.phy-p2-response-area .spark-math{
+  min-width:0;
+  max-width:100%;
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+.phy-p2-table-wrap,
+.phy-p2-root .paper2-table-workspace,
+.phy-p2-root .paper2-table-input-wrap{
+  min-width:0;
+  width:100%;
+  max-width:100%;
+  box-sizing:border-box;
+  overflow-x:auto;
+  overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior-inline:contain;
+}
+@media(max-width:560px){
+  .phy-p2-shell{padding-inline:8px}
+  .phy-p2-question-card{padding:14px 12px}
+  .phy-p2-question-heading{gap:10px}
+  .phy-p2-question-heading h2{font-size:22px;line-height:1.08}
+  .phy-p2-stem{font-size:13.5px;line-height:1.62}
+  .phy-p2-parts{gap:14px;margin-top:15px}
+  .phy-p2-part{padding-top:14px}
+  .phy-p2-part-head{grid-template-columns:auto minmax(0,1fr);gap:7px 8px;line-height:1.5}
+  .phy-p2-part-head>b{grid-column:2;justify-self:start;margin-top:2px}
+  .phy-p2-response-area{width:100%;padding-left:0}
+
+  /* Physics uses the shared Mathematics Paper 2 table workspace. On phones,
+     let ordinary three/four-column Physics tables fit the card instead of
+     forcing the entire question wider than the viewport. */
+  .phy-p2-root .paper2-input-table{
+    width:100%!important;
+    min-width:0!important;
+    max-width:100%!important;
+    table-layout:fixed;
+  }
+  .phy-p2-root .paper2-input-table th,
+  .phy-p2-root .paper2-input-table td{
+    min-width:0;
+    padding:7px 5px;
+    font-size:11px;
+    overflow-wrap:anywhere;
+    word-break:normal;
+  }
+  .phy-p2-root .paper2-input-table th .spark-math,
+  .phy-p2-root .paper2-input-table td .spark-math{
+    white-space:normal;
+    overflow-wrap:anywhere;
+  }
+  .phy-p2-root .paper2-input-table .paper2-table-editable{padding:4px}
+  .phy-p2-root .paper2-input-table .paper2-table-editable input{
+    width:100%;
+    min-width:0!important;
+    height:40px;
+    padding:5px 3px;
+    font-size:14px;
+  }
+  .phy-p2-root .paper2-workspace-help{font-size:12px;line-height:1.48}
+  .phy-p2-root .paper2-workspace-status{font-size:11.5px}
+
+  /* Source data tables stay horizontally scrollable when their authored
+     columns genuinely need more room, without widening the page itself. */
+  .phy-p2-table{min-width:460px}
+}
+/* SPARK PHYSICS V8 MOBILE QUESTION + TABLE CONTAINMENT END */

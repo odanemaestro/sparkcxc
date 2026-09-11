@@ -10,10 +10,10 @@ export const FLASHCARD_DECKS = [
 ];
 
 export const FLASHCARDS = [
-  { id:"num-001", deck:"number", front:"What is the order of operations?", back:"Brackets, Orders/indices, Division and Multiplication, Addition and Subtraction. Work left to right within equal-priority operations.", tags:["computation"] },
+  { id:"num-001", deck:"number", front:"What is the order of operations?", back:"Brackets, Orders (indices, powers and roots), Division and Multiplication, Addition and Subtraction. Work from left to right when operations have equal priority.", tags:["computation"] },
   { id:"num-002", deck:"number", front:"How do you convert a fraction to a decimal?", back:"Divide the numerator by the denominator. Example: 3/4 = 3 ÷ 4 = 0.75.", tags:["fractions"] },
   { id:"num-003", deck:"number", front:"How do you convert a decimal to a percentage?", back:"Multiply by 100 and attach %. Example: 0.42 = 42%.", tags:["percentages"] },
-  { id:"num-004", deck:"number", front:"What does a negative index mean?", back:"a⁻ⁿ = 1/aⁿ, for a ≠ 0.", tags:["indices"] },
+  { id:"num-004", deck:"number", front:"What does a negative index mean?", back:"a⁻ⁿ = 1/aⁿ, for a ≠ 0 and n > 0.", tags:["indices"] },
   { id:"num-005", deck:"number", front:"What is standard form?", back:"A number written as a × 10ⁿ where 1 ≤ |a| < 10 and n is an integer.", tags:["standard form"] },
   { id:"num-006", deck:"number", front:"How do you find the HCF of two numbers?", back:"Prime-factorise both numbers and multiply the common prime factors using the lowest powers.", tags:["factors"] },
 

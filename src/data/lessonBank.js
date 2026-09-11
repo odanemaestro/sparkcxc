@@ -2353,7 +2353,7 @@ export const LESSONS = {
   },
 
   "Calculator use and BODMAS": {
-    intro: "BODMAS (Brackets, Orders/powers, Division and Multiplication, Addition and Subtraction) gives the order in which operations must be carried out in any calculation, whether by hand or using a calculator.",
+    intro: "BODMAS (Brackets, Orders (powers and roots), Division and Multiplication, Addition and Subtraction) gives the order in which operations must be carried out in any calculation, whether by hand or using a calculator.",
     sections: [
       {
         heading: "Applying BODMAS by hand",
@@ -2373,7 +2373,7 @@ export const LESSONS = {
       }
     ],
     keyFacts: [
-      "BODMAS order: Brackets, Orders (powers/roots), Division and Multiplication (left to right), Addition and Subtraction (left to right)",
+      "BODMAS order: Brackets, Orders (powers and roots), Division and Multiplication (left to right), Addition and Subtraction (left to right)",
       "Division and multiplication have EQUAL priority - perform them left to right, not multiplication always first",
       "Addition and subtraction also have equal priority - left to right",
       "Enter brackets explicitly on a calculator wherever a fraction bar or root would normally group terms",

@@ -196,6 +196,18 @@ function previousNonSpace(text, offset) {
   return "";
 }
 
+function looksLikeProseSlash(numerator, denominator) {
+  const left = String(numerator ?? "").trim();
+  const right = String(denominator ?? "").trim();
+  // The universal renderer is used inside full sentences as well as equations.
+  // Natural-language pairs such as Orders/indices, powers/roots and and/or
+  // are prose, not stacked mathematical fractions. Algebraic symbols such as
+  // a/b and P/V remain fractions because both sides are short symbols.
+  return /^[A-Za-z]+$/.test(left)
+    && /^[A-Za-z]+$/.test(right)
+    && (left.length > 2 || right.length > 2);
+}
+
 function looksLikeUnitRatio(text, offset, numerator, denominator) {
   const previous = previousNonSpace(text, offset);
   // In an equation, symbols that happen to share SI letters are variables.
@@ -238,14 +250,14 @@ function formatFractions(text, store, formatInner) {
 
   // Parenthesised algebraic numerator and denominator.
   output = output.replace(
-    /\(([^()\n]{1,90})\)\s*\/\s*\(([^()\n]{1,90})\)/g,
+    /(?<!\^)\(([^()\n]{1,90})\)\s*\/\s*\(([^()\n]{1,90})\)/g,
     (match, numerator, denominator, offset, source) =>
       looksLikeUnitRatio(source, offset, numerator, denominator) ? match : fraction(numerator, denominator)
   );
 
   // Parenthesised expression over a simple atom, e.g. (x + 1)/2.
   output = output.replace(
-    /\(([^()\n]{1,90})\)\s*\/\s*([A-Za-z0-9πθ₀-₉²³⁴⁵⁶⁷⁸⁹⁻.]+)/g,
+    /(?<!\^)\(([^()\n]{1,90})\)\s*\/\s*([A-Za-z0-9πθ₀-₉²³⁴⁵⁶⁷⁸⁹⁻.]+)/g,
     (match, numerator, denominator, offset, source) =>
       looksLikeUnitRatio(source, offset, numerator, denominator) ? match : fraction(numerator, denominator)
   );
@@ -257,26 +269,21 @@ function formatFractions(text, store, formatInner) {
       looksLikeUnitRatio(source, offset, numerator, denominator) ? match : fraction(numerator, denominator)
   );
 
-  // A simple atom divided by a powered atom, e.g. 1/a^n or 3/x^2.
-  // This is common on flashcards and should render as a real stacked fraction.
-  output = output.replace(
-    /([−-]?[A-Za-z0-9πθ.]+)\s*\/\s*([A-Za-z0-9πθ.]+\^(?:\([^()\n]+\)|[−-]?\d+|[A-Za-z]))/g,
-    (match, numerator, denominator, offset, source) =>
-      looksLikeUnitRatio(source, offset, numerator, denominator) ? match : fraction(numerator, denominator)
-  );
-
   // Trigonometric denominators used in the sine rule, e.g. a/sin A.
   output = output.replace(
     /([−-]?[A-Za-z0-9πθ₀-₉²³⁴⁵⁶⁷⁸⁹⁻.]+)\s*\/\s*((?:sin|cos|tan)\s+[A-Za-zθ][A-Za-z0-9θ₀-₉]*)/gi,
     (_, numerator, denominator) => fraction(numerator, denominator)
   );
 
-  // Ordinary numeric/algebraic fractions such as 3/4, k/x, −1/m, 2x/3.
+  // Ordinary numeric/algebraic fractions, including powered atoms such as
+  // 1/a^n and x^2/y^3. The leading boundary prevents a digit inside an
+  // exponent from being mistaken for the numerator of a new fraction.
   output = output.replace(
-    /(^|[\s=+−\-×÷,(])([−-]?(?:\d+(?:\.\d+)?[A-Za-z]?|[A-Za-z][A-Za-z0-9₀-₉]*))\s*\/\s*((?:\d+(?:\.\d+)?[A-Za-z]?|[A-Za-z][A-Za-z0-9₀-₉]*))(?=$|[\s,.;:)=+−\-×÷])/g,
+    /(^|[\s=+−\-×÷,(])([−-]?(?:\d+(?:\.\d+)?[A-Za-z]?|[A-Za-z][A-Za-z0-9₀-₉]*)(?:\^(?:\([^()\n]+\)|[−-]?\d+|[A-Za-z]))?)\s*\/\s*((?:\d+(?:\.\d+)?[A-Za-z]?|[A-Za-z][A-Za-z0-9₀-₉]*)(?:\^(?:\([^()\n]+\)|[−-]?\d+|[A-Za-z]))?)(?=$|[\s,.;:)=+−\-×÷])/g,
     (match, prefix, numerator, denominator, offset, source) => {
       const ratioOffset = offset + prefix.length;
       if (looksLikeUnitRatio(source, ratioOffset, numerator, denominator)) return match;
+      if (looksLikeProseSlash(numerator, denominator)) return match;
       return `${prefix}${fraction(numerator, denominator)}`;
     }
   );
