@@ -21,3 +21,13 @@
 @media(max-width:900px){.pcl-hero{flex-direction:column}.pcl-stats{min-width:0;width:100%}.pcl-study-grid{grid-template-columns:1fr}.sticky{position:static}.pcl-topic-bar{align-items:stretch;flex-direction:column}.pcl-topic-bar label{min-width:0;width:100%}}
 @media(max-width:650px){.pcl-shell{padding:12px 10px 48px}.pcl-hero{padding:18px}.pcl-section-tabs{grid-template-columns:repeat(2,1fr)}.pcl-section-tabs button{flex-direction:column;gap:2px}.pcl-lesson-head{align-items:stretch;flex-direction:column}.pcl-progress-card{min-width:0}.pcl-stats{grid-template-columns:repeat(3,1fr)}.pcl-card{padding:15px}.pcl-completion{align-items:stretch;flex-direction:column}.pcl-completion .pcl-btn{width:100%}}
 @media(prefers-reduced-motion:reduce){.physics-course-lessons *{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+/* Physics course mobile containment */
+.physics-course-lessons{max-width:100%;overflow-x:clip}
+.pcl-shell,.pcl-hero,.pcl-topic-bar,.pcl-lesson-head,.pcl-study-grid,.pcl-main-column,.pcl-side-column,.pcl-card{min-width:0;max-width:100%}
+.pcl-table-wrap{max-width:100%;min-width:0;-webkit-overflow-scrolling:touch}
+@media(max-width:650px){
+  .pcl-table-wrap table{min-width:440px}
+  .pcl-topic-pills{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+  .pcl-topic-pills button{min-width:0;width:100%}
+}

@@ -153,6 +153,83 @@ function formatPowersAndSubscripts(text, store) {
   return output;
 }
 
+
+const PHYSICS_UNIT_ATOMS = new Set([
+  "m","cm","mm","km","µm","μm","nm",
+  "s","ms","min","h",
+  "kg","g","mg",
+  "A","mA","µA","μA","uA","kA",
+  "V","mV","kV","MV",
+  "Ω","ohm","mΩ","kΩ","MΩ","kohm","Mohm",
+  "N","mN","kN","MN",
+  "J","mJ","kJ","MJ",
+  "W","mW","kW","MW",
+  "Pa","mPa","kPa","MPa",
+  "Hz","mHz","kHz","MHz","GHz",
+  "C","mC","µC","μC","uC",
+  "K","°C","Bq","mBq","kBq","MBq","T","Wb","F","H","eV",
+]);
+
+function unitAtom(value) {
+  return String(value ?? "")
+    .trim()
+    .replace(/^\((.*)\)$/s, "$1")
+    .replace(/\^\((?:−|-)?\d+\)$/g, "")
+    .replace(/\^(?:−|-)?\d+$/g, "")
+    .trim();
+}
+
+function isPhysicsUnitExpression(value) {
+  const text = String(value ?? "")
+    .trim()
+    .replace(/^\((.*)\)$/s, "$1")
+    .replace(/[·*]/g, " ")
+    .replace(/\s+/g, " ");
+  if (!text) return false;
+  return text.split(" ").every(part => PHYSICS_UNIT_ATOMS.has(unitAtom(part)));
+}
+
+function previousNonSpace(text, offset) {
+  for (let index = Number(offset) - 1; index >= 0; index -= 1) {
+    if (!/\s/.test(text[index])) return text[index];
+  }
+  return "";
+}
+
+function looksLikeUnitRatio(text, offset, numerator, denominator) {
+  const previous = previousNonSpace(text, offset);
+  // In an equation, symbols that happen to share SI letters are variables.
+  // Keep normal fraction rendering after an operator or opening bracket.
+  if (/[=+−\-×÷*/(\[]/.test(previous)) return false;
+
+  const numeratorText = String(numerator ?? "").trim();
+  const numeratorIsUnit = isPhysicsUnitExpression(numeratorText);
+  const denominatorIsUnit = isPhysicsUnitExpression(denominator);
+  if (numeratorIsUnit && denominatorIsUnit) return true;
+
+  // Descriptive table headers such as "Time for 20 oscillations/s" use
+  // the slash as unit notation. A normal English word before a known SI
+  // unit is not an algebraic numerator and must stay inline.
+  if (/^[A-Za-z]{4,}$/.test(numeratorText) && denominatorIsUnit) return true;
+
+  // Unicode powers are normalized to forms such as T^(2)/s^(2) before
+  // fraction parsing. A parenthesized exponent can otherwise be mistaken
+  // for the numerator. Keep the slash inline when that exponent belongs to
+  // a recognized unit symbol such as T, m or s.
+  if (previous === "^" && denominatorIsUnit) {
+    const beforeExponent = String(text).slice(0, Number(offset)).match(/([A-Za-zΩµμ°]+)\^\s*$/);
+    if (beforeExponent && isPhysicsUnitExpression(beforeExponent[1])) return true;
+  }
+
+  // Physics tables commonly label columns as "Volume, V/cm³" or
+  // "Pressure, P/kPa". The symbol before the slash is a quantity symbol,
+  // while the text after it is the column unit. Preserve the slash inline.
+  if (/[,;:]/.test(previous) && /^[A-Za-zΑ-Ωα-ω]{1,3}$/.test(String(numerator).trim()) && denominatorIsUnit) {
+    return true;
+  }
+  return false;
+}
+
 function formatFractions(text, store, formatInner) {
   let output = text;
   const fraction = (numerator, denominator) => store.put(
@@ -162,26 +239,30 @@ function formatFractions(text, store, formatInner) {
   // Parenthesised algebraic numerator and denominator.
   output = output.replace(
     /\(([^()\n]{1,90})\)\s*\/\s*\(([^()\n]{1,90})\)/g,
-    (_, numerator, denominator) => fraction(numerator, denominator)
+    (match, numerator, denominator, offset, source) =>
+      looksLikeUnitRatio(source, offset, numerator, denominator) ? match : fraction(numerator, denominator)
   );
 
   // Parenthesised expression over a simple atom, e.g. (x + 1)/2.
   output = output.replace(
     /\(([^()\n]{1,90})\)\s*\/\s*([A-Za-z0-9πθ₀-₉²³⁴⁵⁶⁷⁸⁹⁻.]+)/g,
-    (_, numerator, denominator) => fraction(numerator, denominator)
+    (match, numerator, denominator, offset, source) =>
+      looksLikeUnitRatio(source, offset, numerator, denominator) ? match : fraction(numerator, denominator)
   );
 
   // Simple atom over a parenthesised expression.
   output = output.replace(
     /([−-]?[A-Za-z0-9πθ₀-₉²³⁴⁵⁶⁷⁸⁹⁻.]+)\s*\/\s*\(([^()\n]{1,90})\)/g,
-    (_, numerator, denominator) => fraction(numerator, denominator)
+    (match, numerator, denominator, offset, source) =>
+      looksLikeUnitRatio(source, offset, numerator, denominator) ? match : fraction(numerator, denominator)
   );
 
   // A simple atom divided by a powered atom, e.g. 1/a^n or 3/x^2.
   // This is common on flashcards and should render as a real stacked fraction.
   output = output.replace(
     /([−-]?[A-Za-z0-9πθ.]+)\s*\/\s*([A-Za-z0-9πθ.]+\^(?:\([^()\n]+\)|[−-]?\d+|[A-Za-z]))/g,
-    (_, numerator, denominator) => fraction(numerator, denominator)
+    (match, numerator, denominator, offset, source) =>
+      looksLikeUnitRatio(source, offset, numerator, denominator) ? match : fraction(numerator, denominator)
   );
 
   // Trigonometric denominators used in the sine rule, e.g. a/sin A.
@@ -193,7 +274,11 @@ function formatFractions(text, store, formatInner) {
   // Ordinary numeric/algebraic fractions such as 3/4, k/x, −1/m, 2x/3.
   output = output.replace(
     /(^|[\s=+−\-×÷,(])([−-]?(?:\d+(?:\.\d+)?[A-Za-z]?|[A-Za-z][A-Za-z0-9₀-₉]*))\s*\/\s*((?:\d+(?:\.\d+)?[A-Za-z]?|[A-Za-z][A-Za-z0-9₀-₉]*))(?=$|[\s,.;:)=+−\-×÷])/g,
-    (_, prefix, numerator, denominator) => `${prefix}${fraction(numerator, denominator)}`
+    (match, prefix, numerator, denominator, offset, source) => {
+      const ratioOffset = offset + prefix.length;
+      if (looksLikeUnitRatio(source, ratioOffset, numerator, denominator)) return match;
+      return `${prefix}${fraction(numerator, denominator)}`;
+    }
   );
 
   return output;

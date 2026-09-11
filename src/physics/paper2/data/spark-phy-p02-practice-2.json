@@ -57,9 +57,9 @@
     "An answer given to more figures than asked for keeps the mark. An answer with fewer figures than the data justify loses it."
   ],
   "marking_coverage": {
-    "auto_marks": 8,
-    "manual_marks": 92,
-    "note": "A criterion carrying a `check` is marked automatically. A criterion carrying `manual: true` is for prose, a drawn graph or a completed table, which cannot be judged from a typed string without a keyword list written for that answer. The engine reports a manual criterion as something to check against the worked solution rather than counting it as lost."
+    "auto_marks": 100,
+    "manual_marks": 0,
+    "note": "SPARK evaluates every criterion when the paper is submitted, including numerical values and units, written physics ideas, structured tables and graph work. The authored `manual: true` flag is retained as source mark-scheme metadata only and does not create a student self-marking step."
   },
   "provenance": "Original questions written for SPARK. The structure, language, mark allocations and question archetypes follow the CSEC Physics Paper 02 papers of 2008 to 2023. No past-paper question is reproduced. This is not a Caribbean Examinations Council publication.",
   "questions": [
@@ -184,7 +184,49 @@
               "field": "all",
               "manual": true
             }
-          ]
+          ],
+          "responseType": "table",
+          "table": {
+            "caption": "TABLE 1: RESULTS OF THE EXPERIMENT",
+            "headers": [
+              "Length, l/m",
+              "Time for 20 oscillations/s",
+              "Period, T/s",
+              "T²/s²"
+            ],
+            "rows": [
+              [
+                "0.20",
+                "18.0",
+                "0.900",
+                "0.810"
+              ],
+              [
+                "0.40",
+                "25.4",
+                "",
+                ""
+              ],
+              [
+                "0.60",
+                "31.1",
+                "1.555",
+                "2.418"
+              ],
+              [
+                "0.80",
+                "35.9",
+                "",
+                ""
+              ],
+              [
+                "1.00",
+                "40.1",
+                "2.005",
+                "4.020"
+              ]
+            ]
+          }
         },
         {
           "id": "b",

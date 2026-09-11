@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import MathText from '../../../practice/MathText';
+import PhysicsFlashcardVisual from '../../components/PhysicsFlashcardVisual';
 import MechanicsInteractiveLab from './MechanicsInteractiveLab';
 import { SECTION_A_TOPICS, SECTION_A_MCQ_BANK, SECTION_A_FLASHCARDS, sectionAStats } from '../sectionAMechanics.mjs';
 import { MECHANICS_INTERACTIVES } from '../interactives/mechanicsInteractiveRegistry.mjs';
@@ -38,7 +39,7 @@ function LabsView({topic,progress,setCompleted,onEvidence}){
 }
 function FlashcardsView({topic}){
   const cards=topic.flashcards;const [index,setIndex]=useState(0),[back,setBack]=useState(false);const c=cards[index%cards.length];
-  return <div className="pm-panel pm-flashcard-panel"><div className="pm-challenge-row pm-flashcard-panel-head"><div><strong>{topic.id} · {topic.title}</strong><span>Flashcard {index+1} of {cards.length} · {c.objective}</span></div></div><button type="button" className="pm-flashcard pm-flashcard-polished" onClick={()=>setBack(v=>!v)} aria-label={back?'Show question side':'Reveal answer'}>{back?<><small>ANSWER</small><MathText as="p" prose>{c.back}</MathText></>:<><small>{c.objective}</small><MathText as="h3" prose>{c.front}</MathText><p>Click to reveal</p></>}</button><div className="pm-action-row pm-flashcard-actions"><button type="button" className="pm-btn secondary" onClick={()=>{setIndex(i=>(i-1+cards.length)%cards.length);setBack(false)}}>← Previous</button><button type="button" className="pm-btn" onClick={()=>{setIndex(i=>(i+1)%cards.length);setBack(false)}}>Next card →</button></div></div>;
+  return <div className="pm-panel pm-flashcard-panel"><div className="pm-challenge-row pm-flashcard-panel-head"><div><strong>{topic.id} · {topic.title}</strong><span>Flashcard {index+1} of {cards.length} · {c.objective}</span></div></div><button type="button" className="pm-flashcard pm-flashcard-polished" onClick={()=>setBack(v=>!v)} aria-label={back?'Show question side':'Reveal answer'}>{back?<><small>ANSWER</small><MathText as="p" prose>{c.back}</MathText><PhysicsFlashcardVisual objective={c.objective}/></>:<><small>{c.objective}</small><MathText as="h3" prose>{c.front}</MathText><p>Click to reveal</p></>}</button><div className="pm-action-row pm-flashcard-actions"><button type="button" className="pm-btn secondary" onClick={()=>{setIndex(i=>(i-1+cards.length)%cards.length);setBack(false)}}>← Previous</button><button type="button" className="pm-btn" onClick={()=>{setIndex(i=>(i+1)%cards.length);setBack(false)}}>Next card →</button></div></div>;
 }
 export function PhysicsTopicQuiz({topic,onActivity}){
   const [seed,setSeed]=useState(1),[answers,setAnswers]=useState({}),[submitted,setSubmitted]=useState(false);const questions=useMemo(()=>stableShuffle(topic.mcq,seed).slice(0,10),[topic,seed]);

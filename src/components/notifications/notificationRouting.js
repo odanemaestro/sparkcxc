@@ -31,6 +31,8 @@ export function getNotificationRoute(notification, role, currentUserId = null) {
   const type = String(notification.type || "");
   const metadata = metadataFor(notification);
   const isParent = role === "parent" || type.startsWith("child_");
+  const subjectId = String(metadata.subject_id || "").trim().toLowerCase();
+  const isPhysics = subjectId === "physics";
 
   if (type === "tutor_application_update") {
     return { view: "become-tutor", dashboardTarget: null };
@@ -44,8 +46,9 @@ export function getNotificationRoute(notification, role, currentUserId = null) {
           scope: "parent",
           section: "progress",
           studentId: metadata.student_id || notification.student_id || null,
-          attemptKey: metadata.attempt_key || null,
-          anchor: "parent-exam-results",
+          subjectId: isPhysics ? "physics" : null,
+          attemptKey: isPhysics ? null : (metadata.attempt_key || null),
+          anchor: isPhysics ? "parent-subject-progress" : "parent-exam-results",
         },
       };
     }
@@ -55,7 +58,8 @@ export function getNotificationRoute(notification, role, currentUserId = null) {
       dashboardTarget: {
         scope: "student",
         section: "progress",
-        anchor: "student-progress",
+        subjectId: isPhysics ? "physics" : null,
+        anchor: isPhysics ? "student-subject-progress" : "student-progress",
       },
     };
   }
@@ -67,9 +71,10 @@ export function getNotificationRoute(notification, role, currentUserId = null) {
         scope: "parent",
         section: "progress",
         studentId: metadata.student_id || notification.student_id || null,
-        milestoneId: metadata.milestone_id || null,
+        subjectId: isPhysics ? "physics" : null,
+        milestoneId: isPhysics ? null : (metadata.milestone_id || null),
         skill: metadata.skill || null,
-        anchor: "parent-learning-activity",
+        anchor: isPhysics ? "parent-subject-progress" : "parent-learning-activity",
       },
     };
   }

@@ -67,7 +67,7 @@ export const A2_MCQ_BANK = Object.freeze([
 function makeFlashcards(){
   const prompts={
     'A2.1':[
-      ['Scalar?','A quantity with magnitude only.'],['Vector?','A quantity with magnitude and direction.'],['Scalar examples?','Mass, time, distance, speed, energy, temperature.'],['Vector examples?','Displacement, velocity, acceleration, force, weight, momentum.'],['Distance vs displacement?','Distance is total path length; displacement includes straight-line change in position and direction.'],['Speed vs velocity?','Speed is scalar; velocity includes direction.'],
+      ['Scalar?','A quantity with magnitude only.'],['Vector?','A quantity with magnitude and direction.'],['Scalar examples?','Mass, time, distance, speed, energy, temperature.'],['Vector examples?','Displacement, velocity, acceleration, force, weight, momentum.'],['Why is displacement a vector while distance is a scalar?','Distance is total path length; displacement includes straight-line change in position and direction.'],['Why is velocity a vector while speed is a scalar?','Speed is scalar; velocity includes direction.'],
     ],
     'A2.2':[
       ['Tip-to-tail rule?','Draw the second vector from the tip of the first, preserving its direction.'],['Where is the resultant drawn?','From the tail of the first vector to the tip of the final vector.'],['Why state the scale?','So measured drawing lengths can be converted to physical magnitudes.'],['What must a scale-diagram answer include?','Magnitude and direction.'],['Alternative construction?','Draw both vectors from one point and complete the parallelogram; the diagonal is the resultant.'],['Best scale?','One that makes the diagram large enough to measure accurately while fitting the page.'],

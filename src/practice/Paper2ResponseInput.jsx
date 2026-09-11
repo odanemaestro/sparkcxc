@@ -271,13 +271,13 @@ function TableResponse({ schema, value, onChange, readOnly = false }) {
   );
 }
 
-function WorkspaceGuide({ type, protractorAllowed = false, rulerCompassOnly = false }) {
+function WorkspaceGuide({ type, protractorAllowed = false, rulerCompassOnly = false, customAxes = false }) {
   if (type === "graph") {
     return (
       <details className="paper2-workspace-guide" open>
         <summary>How to use the graph workspace</summary>
         <div>
-          <p><strong>1. Check the scale.</strong> Read the values shown on both axes before plotting.</p>
+          <p><strong>1. {customAxes ? "Set up the axes." : "Check the scale."}</strong> {customAxes ? "Type the quantity and unit for each axis, then choose the start, interval and maximum values." : "Read the values shown on both axes before plotting."}</p>
           <p><strong>2. Preview the coordinate.</strong> Move the pointer over the grid. The crosshair and coordinate label show the exact snapped point.</p>
           <p><strong>3. Plot.</strong> Click once when the coordinate shown is the one you want. Use the plotted-points list to remove a mistake.</p>
           <p><strong>4. Finish the graph.</strong> For a curve, plot the required points then select <em>Join with smooth curve</em>. For a straight line, select two points on that line.</p>
@@ -527,8 +527,26 @@ function GraphWorkspace({ schema, value, onChange, readOnly = false }) {
   const [hover, setHover] = useState(null);
   const graph = schema.graph || {};
   const width = 650, height = 420, margin = 45;
-  const xMin = Number(graph.xMin ?? -5), xMax = Number(graph.xMax ?? 5);
-  const yMin = Number(graph.yMin ?? -5), yMax = Number(graph.yMax ?? 5);
+  const customAxes = graph.axisSetupMode === "custom" || Boolean(graph.allowCustomAxes);
+  const numericAxis = (value, fallback) => {
+    if (value === "" || value === null || value === undefined) return Number(fallback);
+    const parsed = Number(value);
+    return Number.isFinite(parsed) ? parsed : Number(fallback);
+  };
+  const candidateXMin = numericAxis(response.axisXMin, graph.xMin ?? -5);
+  const candidateXMax = numericAxis(response.axisXMax, graph.xMax ?? 5);
+  const candidateYMin = numericAxis(response.axisYMin, graph.yMin ?? -5);
+  const candidateYMax = numericAxis(response.axisYMax, graph.yMax ?? 5);
+  const xMin = candidateXMax > candidateXMin ? candidateXMin : Number(graph.xMin ?? -5);
+  const xMax = candidateXMax > candidateXMin ? candidateXMax : Number(graph.xMax ?? 5);
+  const yMin = candidateYMax > candidateYMin ? candidateYMin : Number(graph.yMin ?? -5);
+  const yMax = candidateYMax > candidateYMin ? candidateYMax : Number(graph.yMax ?? 5);
+  const hasCustomAxisNumbers = [response.axisXMin, response.axisXMax, response.axisXStep, response.axisYMin, response.axisYMax, response.axisYStep]
+    .every(value => value !== "" && value !== null && value !== undefined && Number.isFinite(Number(value)));
+  const hasCustomAxisLabels = String(response.axisXLabel || "").trim().length > 0 && String(response.axisYLabel || "").trim().length > 0;
+  const customAxisRangesValid = Number(response.axisXMax) > Number(response.axisXMin) && Number(response.axisYMax) > Number(response.axisYMin)
+    && Number(response.axisXStep) > 0 && Number(response.axisYStep) > 0;
+  const customAxisReady = !customAxes || (hasCustomAxisNumbers && hasCustomAxisLabels && customAxisRangesValid);
   const toScreen = point => ({
     x: margin + ((Number(point.x) - xMin) / (xMax - xMin)) * (width - 2 * margin),
     y: height - margin - ((Number(point.y) - yMin) / (yMax - yMin)) * (height - 2 * margin),
@@ -540,8 +558,11 @@ function GraphWorkspace({ schema, value, onChange, readOnly = false }) {
   const points = Array.isArray(response.points) ? response.points : [];
   const linePoints = Array.isArray(response.linePoints) ? response.linePoints : [];
   const mode = graph.mode || "curve";
-  const xGrid = Number(response.axisXStep || graph.xStep || 1);
-  const yGrid = Number(response.axisYStep || graph.yStep || 1);
+  const [graphTool, setGraphTool] = useState("point");
+  const combinedPointLineMode = mode === "scatter_line";
+  const activeGraphTool = combinedPointLineMode ? graphTool : mode;
+  const xGrid = Number((customAxes ? response.axisXStep : null) || graph.xStep || 1);
+  const yGrid = Number((customAxes ? response.axisYStep : null) || graph.yStep || 1);
   const xSnap = Number(graph.snapX || graphSnapStep(xGrid, xMax - xMin));
   const ySnap = Number(graph.snapY || graphSnapStep(yGrid, yMax - yMin));
   const pointFromEvent = event => {
@@ -553,8 +574,9 @@ function GraphWorkspace({ schema, value, onChange, readOnly = false }) {
   };
   const sameCoordinate = (a,b) => Math.abs(Number(a.x)-Number(b.x)) < 1e-8 && Math.abs(Number(a.y)-Number(b.y)) < 1e-8;
   const click = event => {
+    if (customAxes && !customAxisReady) return;
     const p = pointFromEvent(event);
-    if (mode === "line") {
+    if (activeGraphTool === "line") {
       const next = linePoints.length >= 2 ? [p] : linePoints.some(existing => sameCoordinate(existing,p)) ? linePoints : [...linePoints, p];
       onChange({ ...response, linePoints: next });
     } else if (!points.some(existing => sameCoordinate(existing,p))) {
@@ -580,37 +602,61 @@ function GraphWorkspace({ schema, value, onChange, readOnly = false }) {
       if (!yTicks.some(major => Math.abs(major - y) < 1e-8)) yMinorTicks.push(Number(y.toFixed(6)));
     }
   }
-  const supportsCurve = !Array.isArray(graph.tools) || graph.tools.length === 0 || graph.tools.includes("curve");
+  const supportsCurve = !combinedPointLineMode && (!Array.isArray(graph.tools) || graph.tools.length === 0 || graph.tools.includes("curve"));
   const orderedPoints = [...points].sort((a, b) => Number(a.x) - Number(b.x));
   const background = Array.isArray(graph.backgroundPoints) ? graph.backgroundPoints.map(([x, y]) => ({ x, y })) : [];
   const answerFields = safeObject(response.answerFields);
-  const activePoints = mode === "line" ? linePoints : points;
+  const activePoints = activeGraphTool === "line" ? linePoints : points;
   const removePoint = index => {
-    if (mode === "line") onChange({ ...response, linePoints: linePoints.filter((_,i) => i !== index) });
+    if (activeGraphTool === "line") onChange({ ...response, linePoints: linePoints.filter((_,i) => i !== index) });
     else onChange({ ...response, points: points.filter((_,i) => i !== index) });
   };
   return (
     <div className={`paper2-workspace paper2-graph-workspace${readOnly ? " paper2-workspace-readonly" : ""}`}>
-      {!readOnly && <WorkspaceGuide type="graph" />}
-      {!readOnly && graph.requireAxisSetup && (
+      {!readOnly && <WorkspaceGuide type="graph" customAxes={customAxes} />}
+      {!readOnly && combinedPointLineMode && (
+        <div className="paper2-workspace-toolbar paper2-graph-mode-toolbar" role="group" aria-label="Graph drawing tool">
+          <span>Graph tools</span>
+          <button type="button" className={graphTool === "point" ? "active" : ""} onClick={() => setGraphTool("point")}>Plot points</button>
+          <button type="button" className={graphTool === "line" ? "active" : ""} onClick={() => setGraphTool("line")}>Best-fit line</button>
+        </div>
+      )}
+      {!readOnly && customAxes && (
+        <fieldset className="paper2-axis-editor">
+          <legend>Set up your graph axes</legend>
+          <p>Name both axes and choose the scale before plotting. If the question specifies a scale, you may still choose another one, but the examiner scale mark follows the stated instruction.</p>
+          <div className="paper2-axis-editor-grid">
+            <label className="paper2-axis-label-field"><span>x-axis label</span><input type="text" value={response.axisXLabel ?? ""} onChange={event => onChange({ ...response, axisXLabel: event.target.value })} placeholder="Quantity and unit"/></label>
+            <label><span>x-axis start</span><input type="number" inputMode="decimal" value={response.axisXMin ?? ""} onChange={event => onChange({ ...response, axisXMin: event.target.value })} placeholder="0"/></label>
+            <label><span>x-axis interval</span><input type="number" inputMode="decimal" min="0" step="any" value={response.axisXStep ?? ""} onChange={event => onChange({ ...response, axisXStep: event.target.value })} placeholder="Scale"/></label>
+            <label><span>x-axis maximum</span><input type="number" inputMode="decimal" value={response.axisXMax ?? ""} onChange={event => onChange({ ...response, axisXMax: event.target.value })} placeholder="Maximum"/></label>
+            <label className="paper2-axis-label-field"><span>y-axis label</span><input type="text" value={response.axisYLabel ?? ""} onChange={event => onChange({ ...response, axisYLabel: event.target.value })} placeholder="Quantity and unit"/></label>
+            <label><span>y-axis start</span><input type="number" inputMode="decimal" value={response.axisYMin ?? ""} onChange={event => onChange({ ...response, axisYMin: event.target.value })} placeholder="0"/></label>
+            <label><span>y-axis interval</span><input type="number" inputMode="decimal" min="0" step="any" value={response.axisYStep ?? ""} onChange={event => onChange({ ...response, axisYStep: event.target.value })} placeholder="Scale"/></label>
+            <label><span>y-axis maximum</span><input type="number" inputMode="decimal" value={response.axisYMax ?? ""} onChange={event => onChange({ ...response, axisYMax: event.target.value })} placeholder="Maximum"/></label>
+          </div>
+          <div className={`paper2-axis-status ${customAxisReady ? "ready" : "waiting"}`} role="status">{customAxisReady ? "Axes ready. Plot your data using the scale you set." : "Complete both labels, starts, intervals and maximum values to activate plotting."}</div>
+        </fieldset>
+      )}
+      {!readOnly && !customAxes && graph.requireAxisSetup && (
         <div className="paper2-axis-setup">
           <label><span>x-axis interval</span><select value={response.axisXStep ?? ""} onChange={event => onChange({ ...response, axisXStep: Number(event.target.value) || "" })}><option value="">Select</option>{(graph.axisChoices || []).map(v => <option key={v} value={v}>{v}</option>)}</select></label>
           <label><span>y-axis interval</span><select value={response.axisYStep ?? ""} onChange={event => onChange({ ...response, axisYStep: Number(event.target.value) || "" })}><option value="">Select</option>{(graph.axisChoices || []).map(v => <option key={v} value={v}>{v}</option>)}</select></label>
         </div>
       )}
       {!readOnly && <div className="paper2-tool-instruction" role="status">
-        {hover ? <><strong>Coordinate: ({formatNumber(hover.x)}, {formatNumber(hover.y)})</strong> Click to {mode === "line" ? "select this point for the line" : "plot this point"}.</> : <>Move over the grid to preview the exact coordinate before plotting.</>}
+        {customAxes && !customAxisReady ? <>Set up and label both axes before plotting.</> : hover ? <><strong>Coordinate: ({formatNumber(hover.x)}, {formatNumber(hover.y)})</strong> Click to {activeGraphTool === "line" ? "select this point for the line" : "plot this point"}.</> : <>Move over the grid to preview the exact coordinate before plotting.</>}
       </div>}
-      <svg className="paper2-graph-canvas" viewBox={`0 0 ${width} ${height}`} onPointerDown={readOnly ? undefined : click} onPointerMove={readOnly ? undefined : event => setHover(pointFromEvent(event))} onPointerLeave={readOnly ? undefined : () => setHover(null)} role="img" aria-label={readOnly ? "Graph review diagram" : "Interactive graph plotting workspace"}>
+      <svg className="paper2-graph-canvas" viewBox={`0 0 ${width} ${height}`} onPointerDown={readOnly || (customAxes && !customAxisReady) ? undefined : click} onPointerMove={readOnly || (customAxes && !customAxisReady) ? undefined : event => setHover(pointFromEvent(event))} onPointerLeave={readOnly ? undefined : () => setHover(null)} role="img" aria-label={readOnly ? "Graph review diagram" : "Interactive graph plotting workspace"}>
         <rect x="0" y="0" width={width} height={height} fill="none" stroke="currentColor" strokeOpacity="0.25" />
         {xMinorTicks.map(x => { const p = toScreen({ x, y: 0 }); return <line key={`xm-${x}`} x1={p.x} y1={margin} x2={p.x} y2={height-margin} stroke="currentColor" strokeOpacity="0.055"/>; })}
         {yMinorTicks.map(y => { const p = toScreen({ x: 0, y }); return <line key={`ym-${y}`} x1={margin} y1={p.y} x2={width-margin} y2={p.y} stroke="currentColor" strokeOpacity="0.055"/>; })}
-        {xTicks.map(x => { const p = toScreen({ x, y: 0 }); return <g key={`x-${x}`}><line x1={p.x} y1={margin} x2={p.x} y2={height-margin} stroke="currentColor" strokeOpacity="0.12"/><text x={p.x} y={height-margin+18} textAnchor="middle" fill="currentColor" stroke="none" fontSize="10">{x}</text></g>; })}
-        {yTicks.map(y => { const p = toScreen({ x: 0, y }); return <g key={`y-${y}`}><line x1={margin} y1={p.y} x2={width-margin} y2={p.y} stroke="currentColor" strokeOpacity="0.12"/><text x={margin-8} y={p.y+3} textAnchor="end" fill="currentColor" stroke="none" fontSize="10">{y}</text></g>; })}
+        {xTicks.map(x => { const p = toScreen({ x, y: 0 }); return <g key={`x-${x}`}><line x1={p.x} y1={margin} x2={p.x} y2={height-margin} stroke="currentColor" strokeOpacity="0.12"/>{(!customAxes || customAxisReady || readOnly) && <text x={p.x} y={height-margin+18} textAnchor="middle" fill="currentColor" stroke="none" fontSize="10">{x}</text>}</g>; })}
+        {yTicks.map(y => { const p = toScreen({ x: 0, y }); return <g key={`y-${y}`}><line x1={margin} y1={p.y} x2={width-margin} y2={p.y} stroke="currentColor" strokeOpacity="0.12"/>{(!customAxes || customAxisReady || readOnly) && <text x={margin-8} y={p.y+3} textAnchor="end" fill="currentColor" stroke="none" fontSize="10">{y}</text>}</g>; })}
         {xMin <= 0 && xMax >= 0 && (() => { const p = toScreen({x:0,y:0}); return <line x1={p.x} y1={margin} x2={p.x} y2={height-margin} stroke="currentColor" strokeWidth="1.5"/>; })()}
         {yMin <= 0 && yMax >= 0 && (() => { const p = toScreen({x:0,y:0}); return <line x1={margin} y1={p.y} x2={width-margin} y2={p.y} stroke="currentColor" strokeWidth="1.5"/>; })()}
-        {graph.xLabel && <text x={width-margin+24} y={toScreen({x:0,y:0}).y+4} fill="currentColor" stroke="none" fontSize="12">{graph.xLabel}</text>}
-        {graph.yLabel && <text x={toScreen({x:0,y:0}).x+6} y={margin-14} fill="currentColor" stroke="none" fontSize="12">{graph.yLabel}</text>}
+        {(customAxes ? String(response.axisXLabel || "").trim() : graph.xLabel) && <text x={width/2} y={height-7} textAnchor="middle" fill="currentColor" stroke="none" fontSize="12">{customAxes ? response.axisXLabel : graph.xLabel}</text>}
+        {(customAxes ? String(response.axisYLabel || "").trim() : graph.yLabel) && <text transform={`translate(14 ${height/2}) rotate(-90)`} textAnchor="middle" fill="currentColor" stroke="none" fontSize="12">{customAxes ? response.axisYLabel : graph.yLabel}</text>}
         {background.length > 1 && <path d={smoothCurvePath(background, toScreen)} fill="none" stroke="currentColor" strokeOpacity="0.3" strokeWidth="2" />}
         {response.curve && orderedPoints.length > 1 && <path d={smoothCurvePath(orderedPoints, toScreen)} fill="none" stroke="currentColor" strokeWidth="2" />}
         {points.map((point,index) => { const p=toScreen(point); return <g key={`p-${index}`}><circle cx={p.x} cy={p.y} r="4" fill="currentColor" stroke="none"/><text x={p.x+6} y={p.y-7} fill="currentColor" stroke="none" fontSize="9">({formatNumber(point.x)}, {formatNumber(point.y)})</text></g>; })}
@@ -620,13 +666,13 @@ function GraphWorkspace({ schema, value, onChange, readOnly = false }) {
       </svg>
       {!readOnly && activePoints.length > 0 && (
         <div className="paper2-plotted-points" aria-label="Plotted points">
-          <span>{mode === "line" ? "Line points" : "Points plotted"}</span>
+          <span>{activeGraphTool === "line" ? "Line points" : "Points plotted"}</span>
           <div>{activePoints.map((point,index) => <button type="button" key={`${point.x}-${point.y}-${index}`} onClick={() => removePoint(index)} title="Remove this point">({formatNumber(point.x)}, {formatNumber(point.y)}) ×</button>)}</div>
         </div>
       )}
       {!readOnly && <div className="paper2-workspace-toolbar">
         {mode !== "line" && supportsCurve && <button type="button" className={response.curve ? "active" : ""} onClick={() => onChange({ ...response, curve: !response.curve })}>{response.curve ? "Smooth curve selected" : "Join with smooth curve"}</button>}
-        <button type="button" disabled={!activePoints.length} onClick={() => onChange({ ...response, points: points.slice(0, -1), linePoints: linePoints.slice(0, -1) })}>Undo point</button>
+        <button type="button" disabled={!activePoints.length} onClick={() => onChange(activeGraphTool === "line" ? { ...response, linePoints: linePoints.slice(0, -1) } : { ...response, points: points.slice(0, -1) })}>Undo point</button>
         <button type="button" disabled={!activePoints.length} onClick={() => onChange({ ...response, points: [], linePoints: [] })}>Clear graph</button>
       </div>}
       {!readOnly && (schema.answerFields || []).length > 0 && (

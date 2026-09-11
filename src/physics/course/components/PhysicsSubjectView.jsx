@@ -76,7 +76,7 @@ export default function PhysicsSubjectView({ userId, onBack, onActivity, onEvide
 
         <section className="psv-note">
           <strong>Assessment coverage</strong>
-          <p>Full lesson and audited section-assessment coverage is available across Sections A-E. Each section includes topic practice, flashcards, structured practice, interactive learning tools and a cumulative SPARK checkpoint.</p>
+          <p>Full lesson and audited section-assessment coverage is available across Sections A to E. Each section includes topic practice, flashcards, structured practice, interactive learning tools and a cumulative SPARK checkpoint.</p>
         </section>
       </div>
     </main>

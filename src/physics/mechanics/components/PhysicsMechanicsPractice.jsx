@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+import MathText from "../../../practice/MathText";
 import { SECTION_A_TOPICS } from "../sectionAMechanics.mjs";
 import { PhysicsMechanicsCheckpoint, PhysicsTopicQuiz } from "./PhysicsMechanicsSection";
 import { A1_STRUCTURED_BANK } from "../a1ScientificMeasurementStructuredBank.mjs";
@@ -40,18 +41,18 @@ function StructuredPractice() {
 
     {!question ? <div className="pm-empty">No structured question is available for this topic.</div> : <article className="pm-panel pm-structured-question">
       <div className="pm-structured-title"><div><span className="pm-chip">{topicId}</span><h2>{question.title}</h2></div><strong>{question.marks} marks</strong></div>
-      <p className="pm-structured-stem">{question.stem}</p>
+      <MathText as="p" prose className="pm-structured-stem">{question.stem}</MathText>
       <div className="pm-structured-parts">
         {question.parts.map(part => {
           const fields = Array.isArray(part.responseFields) && part.responseFields.length ? part.responseFields : ["answer"];
           return <section key={part.id} className="pm-structured-part">
             <div className="pm-structured-part-head"><strong>({part.id})</strong><span>{part.marks} marks</span></div>
-            <p>{part.prompt}</p>
+            <MathText as="p" prose>{part.prompt}</MathText>
             {part.requireDrawing && <div className="pm-structured-drawing-note">Complete the required drawing or graph on paper or in your working space. Use the box below for supporting calculations or notes.</div>}
             <div className={`pm-structured-response-grid ${fields.length > 1 ? "multi" : ""}`}>
               {fields.map(field => <label key={field}><span>{field === "answer" ? "Your response" : field.replace(/_/g," ")}</span><textarea value={responses[responseKey(part.id, field)] || ""} onChange={event => setResponse(part.id, field, event.target.value)} rows={fields.length > 1 ? 3 : 4} /></label>)}
             </div>
-            {revealed && <div className="pm-marking-guide"><strong>Marking guide</strong><ul>{part.criteria.map((criterion, index) => <li key={`${criterion.code}-${index}`}><span>{criterion.code}</span>{criterion.description}{criterion.manual ? " (manual drawing check)" : ""}</li>)}</ul></div>}
+            {revealed && <div className="pm-marking-guide"><strong>Marking guide</strong><ul>{part.criteria.map((criterion, index) => <li key={`${criterion.code}-${index}`}><span>{criterion.code}</span><MathText prose>{criterion.description}</MathText>{criterion.manual ? " (manual drawing check)" : ""}</li>)}</ul></div>}
           </section>;
         })}
       </div>

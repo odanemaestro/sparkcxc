@@ -44,9 +44,12 @@ export function physicsPaper2Criteria(paper) {
 
 export function physicsPaper2MarkingCoverage(paper) {
   const criteria = physicsPaper2Criteria(paper);
-  const autoMarks = criteria.reduce((sum, row) => sum + (row.criterion?.check ? Number(row.criterion.marks || 0) : 0), 0);
-  const manualMarks = criteria.reduce((sum, row) => sum + (!row.criterion?.check ? Number(row.criterion.marks || 0) : 0), 0);
-  return { autoMarks, manualMarks, totalMarks: autoMarks + manualMarks };
+  const totalMarks = criteria.reduce((sum, row) => sum + Number(row.criterion?.marks || 0), 0);
+  const authoredManualMarks = criteria.reduce((sum, row) => sum + (!row.criterion?.check ? Number(row.criterion.marks || 0) : 0), 0);
+  // Every criterion is now evaluated by SPARK on submission. `manual: true` in
+  // the authored paper still records that the source mark scheme needs human
+  // judgement on paper, but it no longer creates a student self-marking step.
+  return { autoMarks: totalMarks, manualMarks: 0, totalMarks, authoredManualMarks };
 }
 
 export function validatePhysicsPaper2Paper(paper) {

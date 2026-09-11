@@ -13,7 +13,7 @@ function subjectMeta(subject, capability) {
     return `${sections} sections · ${topics} topics`;
   }
   if (subject.id === "physics") {
-    if (capability === "practice") return "Topic tests, structured practice and checkpoints across Sections A-E";
+    if (capability === "practice") return "Topic tests, structured practice and section checkpoints";
     if (capability === "flashcards") return `${subject.stats?.flashcards || 0} audited Physics flashcards`;
     if (capability === "progress") return "Lessons, topic practice, labs and section checkpoints";
     return `${subject.stats?.sections || 0} sections · ${subject.stats?.topics || 0} topics · ${subject.stats?.objectives || 0} objectives`;

@@ -3361,6 +3361,11 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   }, [notificationTarget, dashboardRoleResolved, setDashboardSection]);
 
   useEffect(() => {
+    if (notificationTarget?.section !== "progress" || !notificationTarget?.subjectId) return;
+    setProgressSubject(String(notificationTarget.subjectId).toLowerCase());
+  }, [notificationTarget?.section, notificationTarget?.subjectId]);
+
+  useEffect(() => {
     const bookingId = notificationTarget?.bookingId;
     if (!bookingId || bookingView !== "list") return undefined;
     if (!bookings.some(booking => String(booking.id) === String(bookingId))) return undefined;
@@ -3391,7 +3396,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       window.clearTimeout(scrollTimer);
       window.clearTimeout(clearTimer);
     };
-  }, [notificationTarget, sec, parentLinks, examAttempts]);
+  }, [notificationTarget, sec, parentLinks, examAttempts, progressSubject]);
 
   // Student data (lessons/progress) - tutors don't have this.
   const loadSubjectProgress = useCallback(async () => {
@@ -4486,12 +4491,14 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 </Card>
               </div>
             ) : (
-              <SubjectProgressDetail
-                subject={subjectDashboardSummaries.find(subject => subject.id === progressSubject) || getSparkSubject(SPARK_SUBJECTS, progressSubject)}
-                rows={mergedSubjectProgressRows}
-                onOpenSubject={subject => setView(subject?.studyView || "study")}
-                onOpenReport={subject => { setStudentReportSubject(subject?.id || progressSubject); setStudentReportOpen(true); }}
-              />
+              <div data-notification-anchor="student-subject-progress">
+                <SubjectProgressDetail
+                  subject={subjectDashboardSummaries.find(subject => subject.id === progressSubject) || getSparkSubject(SPARK_SUBJECTS, progressSubject)}
+                  rows={mergedSubjectProgressRows}
+                  onOpenSubject={subject => setView(subject?.studyView || "study")}
+                  onOpenReport={subject => { setStudentReportSubject(subject?.id || progressSubject); setStudentReportOpen(true); }}
+                />
+              </div>
             )}
           </div>
         )}
@@ -5420,9 +5427,14 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
     if (approved.length) {
       const ids = approved.map(l => l.student_id);
       const {data: profiles} = await supabase.from("profiles").select("id,name,role,xp,created_at,avatar_path").in("id", ids);
-      setChildren(profiles || []);
-      if (!selectedChild && profiles?.[0]) setSelectedChild(profiles[0]);
-    } else setChildren([]);
+      const profileRows = profiles || [];
+      setChildren(profileRows);
+      setSelectedChild(current => profileRows.find(child => String(child.id) === String(current?.id || "")) || profileRows[0] || null);
+    } else {
+      setChildren([]);
+      setSelectedChild(null);
+      setChildData(null);
+    }
     setLoading(false);
   }, [user?.id]);
 
@@ -5433,6 +5445,11 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
     const child = children.find(item => String(item.id) === String(notificationTarget.studentId));
     if (child && String(selectedChild?.id || "") !== String(child.id)) setSelectedChild(child);
   }, [notificationTarget, children, selectedChild?.id]);
+
+  useEffect(() => {
+    if (notificationTarget?.section !== "progress" || !notificationTarget?.subjectId) return;
+    setParentProgressSubject(String(notificationTarget.subjectId).toLowerCase());
+  }, [notificationTarget?.section, notificationTarget?.subjectId]);
 
   useEffect(() => {
     if (!notificationTarget?.anchor) return undefined;
@@ -5454,7 +5471,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
       window.clearTimeout(scrollTimer);
       window.clearTimeout(clearTimer);
     };
-  }, [notificationTarget, selectedChild?.id, childData]);
+  }, [notificationTarget, selectedChild?.id, childData, parentProgressSubject]);
 
   // Keep the adult dashboard live too: a child approving/declining a request
   // should update the parent's pending/connected state without a refresh.
@@ -5524,6 +5541,13 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
         filter: `user_id=eq.${selectedChild.id}`,
       }, () => loadChildData())
       .subscribe();
+    const lessonProgressChannel = supabase
+      .channel(`parent-lesson-progress-${user.id}-${selectedChild.id}`)
+      .on("postgres_changes", {
+        event: "*", schema: "public", table: "lesson_progress",
+        filter: `user_id=eq.${selectedChild.id}`,
+      }, () => loadChildData())
+      .subscribe();
     const subjectProgressChannel = supabase
       .channel(`parent-subject-progress-${user.id}-${selectedChild.id}`)
       .on("postgres_changes", {
@@ -5548,6 +5572,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
     return () => {
       supabase.removeChannel(examChannel);
       supabase.removeChannel(milestoneChannel);
+      supabase.removeChannel(lessonProgressChannel);
       supabase.removeChannel(subjectProgressChannel);
       supabase.removeChannel(subjectActivityChannel);
       supabase.removeChannel(subjectEnrollmentChannel);
@@ -5777,11 +5802,13 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
               <div className="panel-white"><div className="panel-title">Mathematics skills needing attention</div>{childData.weakest.length ? childData.weakest.map(r=><div className="skill-row" key={r.id}><div><strong>{r.skill}</strong><span>{r.mastery_level}</span></div><div className="skill-score">{Math.round(Number(r.mastery_score))}%</div></div>) : <p className="muted-copy">No weak Mathematics skills recorded yet.</p>}</div>
             </div>
           ) : (
-            <SubjectProgressDetail
-              subject={parentSubjectDashboardSummaries.find(subject => subject.id === parentProgressSubject) || getSparkSubject(SPARK_SUBJECTS, parentProgressSubject)}
-              rows={childData.subjectProgressRows || []}
-              onOpenReport={subject => { setParentReportSubject(subject?.id || parentProgressSubject); setParentReportOpen(true); }}
-            />
+            <div data-notification-anchor="parent-subject-progress">
+              <SubjectProgressDetail
+                subject={parentSubjectDashboardSummaries.find(subject => subject.id === parentProgressSubject) || getSparkSubject(SPARK_SUBJECTS, parentProgressSubject)}
+                rows={childData.subjectProgressRows || []}
+                onOpenReport={subject => { setParentReportSubject(subject?.id || parentProgressSubject); setParentReportOpen(true); }}
+              />
+            </div>
           )}
 
           <div className="panel-white" data-notification-anchor="parent-booking" style={{marginTop:18}}>

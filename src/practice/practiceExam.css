@@ -1955,3 +1955,83 @@ html[data-theme="dark"] .paper2-part-context p{color:var(--spark-ink)!important}
 /* SPARK_V5414_RESULT_CALLOUT_GAP: keep a comfortable gap below the navy score shell without double-spacing stacked result callouts. */
 .paper2-score-hero + .paper2-profile-summary,
 .paper2-score-hero + .paper2-ecf-summary{margin-top:18px}
+
+/* SPARK PHYSICS PAPER 2 CUSTOM AXIS SETUP V7 */
+.paper2-axis-editor{
+  margin:0 0 12px;
+  padding:14px;
+  border:1px solid var(--paper-border,#d7e0ea);
+  border-radius:12px;
+  background:var(--paper-panel,#fff);
+  color:inherit;
+}
+.paper2-axis-editor legend{
+  padding:0 6px;
+  font-size:.88rem;
+  font-weight:900;
+  color:inherit;
+}
+.paper2-axis-editor>p{
+  margin:0 0 12px;
+  color:var(--paper-muted,#667085);
+  font-size:.8rem;
+  line-height:1.45;
+}
+.paper2-axis-editor-grid{
+  display:grid;
+  grid-template-columns:minmax(170px,1.5fr) repeat(3,minmax(100px,.7fr));
+  gap:10px;
+}
+.paper2-axis-editor-grid label{
+  display:flex;
+  min-width:0;
+  flex-direction:column;
+  gap:5px;
+  font-size:.75rem;
+  font-weight:800;
+  color:inherit;
+}
+.paper2-axis-editor-grid label span{color:var(--paper-muted,#667085)}
+.paper2-axis-editor-grid input{
+  width:100%;
+  box-sizing:border-box;
+  min-height:38px;
+  padding:8px 10px;
+  border:1px solid var(--paper-border,#d7e0ea);
+  border-radius:9px;
+  background:transparent;
+  color:inherit;
+  font:inherit;
+  outline:none;
+}
+.paper2-axis-editor-grid input:focus{
+  border-color:var(--paper-green,#0f9d76);
+  box-shadow:0 0 0 2px color-mix(in srgb,var(--paper-green,#0f9d76) 18%,transparent);
+}
+.paper2-axis-status{
+  margin-top:10px;
+  padding:8px 10px;
+  border-radius:9px;
+  font-size:.76rem;
+  font-weight:800;
+}
+.paper2-axis-status.waiting{
+  background:color-mix(in srgb,#d97706 10%,transparent);
+  color:#a85d05;
+}
+.paper2-axis-status.ready{
+  background:color-mix(in srgb,var(--paper-green,#0f9d76) 11%,transparent);
+  color:var(--paper-green,#0f9d76);
+}
+[data-theme="dark"] .paper2-axis-editor{background:rgba(255,255,255,.025);border-color:rgba(255,255,255,.13)}
+[data-theme="dark"] .paper2-axis-editor-grid input{border-color:rgba(255,255,255,.16);background:rgba(255,255,255,.025)}
+[data-theme="dark"] .paper2-axis-status.waiting{color:#f6bd65}
+@media(max-width:840px){
+  .paper2-axis-editor-grid{grid-template-columns:1fr 1fr}
+  .paper2-axis-label-field{grid-column:1/-1}
+}
+@media(max-width:520px){
+  .paper2-axis-editor{padding:11px}
+  .paper2-axis-editor-grid{grid-template-columns:1fr 1fr;gap:8px}
+}
+/* SPARK PHYSICS PAPER 2 CUSTOM AXIS SETUP V7 END */

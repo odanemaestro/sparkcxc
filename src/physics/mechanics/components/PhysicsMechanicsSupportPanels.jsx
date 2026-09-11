@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import MathText from "../../../practice/MathText";
+import PhysicsFlashcardVisual from "../../components/PhysicsFlashcardVisual";
 import { SECTION_A_TOPICS } from "../sectionAMechanics.mjs";
 import { MECHANICS_INTERACTIVES } from "../interactives/mechanicsInteractiveRegistry.mjs";
 import { readPhysicsMechanicsProgress, physicsMechanicsProgressSummary } from "../physicsMechanicsProgress.mjs";
@@ -27,11 +28,28 @@ export function PhysicsMechanicsFlashcardsPanel({ onChangeSubject }) {
   const topic = ALL_TOPICS.find(item => item.id === topicId) || ALL_TOPICS[0];
   const cards = topic.flashcards || [];
   const current = cards.length ? cards[index % cards.length] : null;
+  const activeSection = String(topic?.id || "A1").charAt(0);
+  const sectionGroups = useMemo(() => ([
+    { id: "A", label: "Mechanics" },
+    { id: "B", label: "Thermal Physics" },
+    { id: "C", label: "Waves and Optics" },
+    { id: "D", label: "Electricity" },
+    { id: "E", label: "Atomic Physics" },
+  ]).map(section => ({
+    ...section,
+    topics: ALL_TOPICS.filter(item => String(item.id).startsWith(section.id)),
+  })), [ALL_TOPICS]);
+  const visibleTopics = sectionGroups.find(section => section.id === activeSection)?.topics || [];
 
   useEffect(() => { setIndex(0); setRevealed(false); }, [topicId]);
 
+  function selectSection(sectionId) {
+    const firstTopic = sectionGroups.find(section => section.id === sectionId)?.topics?.[0];
+    if (firstTopic) setTopicId(firstTopic.id);
+  }
+
   return (
-    <section className="physics-mechanics pm-dashboard-panel">
+    <section className="physics-mechanics pm-dashboard-panel pm-flashcards-dashboard">
       <div className="pm-support-head">
         <div>
           <div className="pm-eyebrow">CSEC Physics</div>
@@ -41,13 +59,24 @@ export function PhysicsMechanicsFlashcardsPanel({ onChangeSubject }) {
         {onChangeSubject && <button type="button" className="pm-btn secondary" onClick={onChangeSubject}>← Change subject</button>}
       </div>
 
-      <nav className="pm-topics pm-flashcard-topics" aria-label="Physics flashcard topics">
-        {ALL_TOPICS.map(item => (
-          <button key={item.id} type="button" aria-pressed={topicId === item.id} className={`pm-topic-btn ${topicId === item.id ? "active" : ""}`} onClick={() => setTopicId(item.id)}>
-            {item.id} · {item.title}
-          </button>
-        ))}
-      </nav>
+      <div className="pm-flashcard-topic-picker">
+        <nav className="pm-flashcard-sections" aria-label="Physics flashcard sections">
+          {sectionGroups.map(section => (
+            <button key={section.id} type="button" aria-pressed={activeSection === section.id} className={`pm-section-filter ${activeSection === section.id ? "active" : ""}`} onClick={() => selectSection(section.id)}>
+              <span>Section {section.id}</span>
+              <strong>{section.label}</strong>
+            </button>
+          ))}
+        </nav>
+        <nav className="pm-topics pm-flashcard-topics" aria-label={`Section ${activeSection} Physics flashcard topics`}>
+          {visibleTopics.map(item => (
+            <button key={item.id} type="button" aria-pressed={topicId === item.id} className={`pm-topic-btn ${topicId === item.id ? "active" : ""}`} onClick={() => setTopicId(item.id)}>
+              <span>{item.id}</span>
+              <strong>{item.title}</strong>
+            </button>
+          ))}
+        </nav>
+      </div>
 
       {!current ? <div className="pm-empty">No flashcards are available for this topic.</div> : (
         <div className="pm-flashcard-study-shell">
@@ -57,9 +86,18 @@ export function PhysicsMechanicsFlashcardsPanel({ onChangeSubject }) {
           </div>
           <button type="button" className={`pm-flashcard pm-flashcard-polished ${revealed ? "revealed" : ""}`} onClick={() => setRevealed(value => !value)} aria-label={revealed ? "Show question side" : "Reveal answer"}>
             {revealed ? (
-              <><small>ANSWER</small><MathText as="p" prose>{current.back}</MathText><span className="pm-flashcard-hint">Tap to return to the question</span></>
+              <>
+                <small className="pm-flashcard-side-label">ANSWER</small>
+                <MathText as="div" prose className="pm-flashcard-answer-text">{current.back}</MathText>
+                <PhysicsFlashcardVisual objective={current.objective}/>
+                <span className="pm-flashcard-hint">Tap to return to the question</span>
+              </>
             ) : (
-              <><small>{current.objective}</small><MathText as="h3" prose>{current.front}</MathText><span className="pm-flashcard-hint">Tap to reveal the answer</span></>
+              <>
+                <small className="pm-flashcard-side-label">{current.objective}</small>
+                <MathText as="h2" prose className="pm-flashcard-question-text">{current.front}</MathText>
+                <span className="pm-flashcard-hint">Tap to reveal the answer</span>
+              </>
             )}
           </button>
           <div className="pm-flashcard-nav-row">
@@ -114,7 +152,7 @@ export function PhysicsMechanicsProgressPanel({ userId, onChangeSubject, onOpenS
       </div>
 
       <div className="pm-panel pm-progress-topic-panel">
-        <div className="pm-progress-panel-head"><div><strong>Progress by Physics section</strong><span>Lesson completion across Sections A-E</span></div>{onOpenSubject && <button type="button" className="pm-btn" onClick={onOpenSubject}>Open Physics</button>}</div>
+        <div className="pm-progress-panel-head"><div><strong>Progress by Physics section</strong><span>Lesson completion across Sections A to E</span></div>{onOpenSubject && <button type="button" className="pm-btn" onClick={onOpenSubject}>Open Physics</button>}</div>
         <div className="pm-progress-topic-list">
           {sectionRows.map(item => <div key={item.section} className="pm-progress-topic-row"><div><strong>Section {item.section}</strong><span>{item.completed} of {item.total} lessons</span></div><div className="pm-progress-topic-meter"><i style={{width:`${item.percent}%`}} /></div><b>{item.percent}%</b></div>)}
         </div>

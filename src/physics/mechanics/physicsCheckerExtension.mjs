@@ -4,7 +4,7 @@
 // They do not decide marks or dependencies; the existing canonical marker
 // remains responsible for M/A/B, dependencies and ECF.
 
-import { comparePhysicsQuantity, parseNumber, tidyPhysicsText, countSignificantFigures, countDecimalPlaces } from './physicsQuantity.mjs';
+import { comparePhysicsQuantity, inferPhysicsQuantity, parseNumber, tidyPhysicsText, countSignificantFigures, countDecimalPlaces } from './physicsQuantity.mjs';
 
 function norm(raw){
   return tidyPhysicsText(raw).toLowerCase()
@@ -36,8 +36,9 @@ export function checkWrittenConcept(raw,spec={}){
 }
 
 export function checkPhysicsQuantity(raw,spec={}){
+  const quantity=spec.quantity || inferPhysicsQuantity(spec.unit);
   const result=comparePhysicsQuantity(raw,{value:spec.value,unit:spec.unit},{
-    quantity:spec.quantity,
+    quantity,
     tolerance:typeof spec.tolerance==='number'?spec.tolerance:1e-9,
     relativeTolerance:typeof spec.relativeTolerance==='number'?spec.relativeTolerance:1e-6,
     unitRequired:spec.unitRequired!==false,
@@ -45,7 +46,7 @@ export function checkPhysicsQuantity(raw,spec={}){
   if(!result.correct){
     const why={
       'no-number':'no number could be read','unit-missing':`the unit (${spec.unit}) is missing`,
-      'unit-incompatible':`the unit is not compatible with ${spec.quantity}`,'value-mismatch':'not the required value',
+      'unit-incompatible':`the unit is not compatible with ${quantity || 'the required quantity'}`,'value-mismatch':'not the required value',
     }[result.reason]||'not correct';
     return {ok:false,why,got:result.got??result.value??null,unitMissing:result.reason==='unit-missing',unitWrong:result.reason==='unit-incompatible'};
   }
@@ -117,8 +118,14 @@ export function checkDirectionAngle(raw,spec={}){
 // incompatible or absent unit.
 function numericFragments(raw){
   const text=tidyPhysicsText(raw);
-  const starts=[]; const re=/[-+]?\d+(?:[.,]\d+)?(?:\s*(?:\*|x)\s*10\s*\^?\s*[-+]?\d+|\s*e\s*[-+]?\d+)?/ig;
-  let m; while((m=re.exec(text))) starts.push(m.index);
+  const starts=[]; const re=/[-+]?(?:\d+(?:[.,]\d*)?|[.,]\d+)(?:\s*(?:\*|x)\s*10\s*\^?\s*[-+]?\d+|\s*e\s*[-+]?\d+)?/ig;
+  let m;
+  while((m=re.exec(text))){
+    const before=m.index>0?text[m.index-1]:'';
+    // Unit exponents such as m2 and s-1 are not separate response values.
+    if(/[A-Za-z^]/.test(before)) continue;
+    starts.push(m.index);
+  }
   const pieces=[];
   for(let i=0;i<starts.length;i++){
     const end=i+1<starts.length?starts[i+1]:text.length;
@@ -140,9 +147,7 @@ export function checkContainsSignedQuantity(raw,spec={}){
 }
 
 export function checkContainsValues(raw,spec={}){
-  const text=tidyPhysicsText(raw);
-  const found=[]; const re=/[-+]?\d+(?:\.\d+)?/g; let m;
-  while((m=re.exec(text))) found.push(Number(m[0]));
+  const found=numericFragments(raw).map(fragment=>parseNumber(fragment)).filter(value=>value!==null);
   const want=(spec.values||[]).map(Number); const tol=spec.tolerance??1e-9;
   const hits=want.filter(w=>found.some(g=>Math.abs(g-w)<=tol));
   const need=spec.needAll?want.length:(spec.need??1);
@@ -176,7 +181,7 @@ export function checkFormulaUse(raw,spec={}){
     'vy=vsin(theta)':['vy=vsinθ','vy=vsin(theta)','vertical=vsinθ','vertical=vsin(theta)'],
     'W=mg':['w=mg','weight=mass*g','weight=massxg'],
     'gradient=deltaF/deltax':['gradient=δf/δx','gradient=deltaf/deltax','δf/δx','changeinforce/changeinextension','force/extension'],
-    'a=(v-u)/t':['a=(v-u)/t','a=v-u/t','acceleration=changeinvelocity/time','changeinvelocity/time'],
+    'a=(v-u)/t':['a=(v-u)/t','acceleration=changeinvelocity/time','changeinvelocity/time'],
     'work=Fd':['w=f*d','w=fd','work=force*distance','work=forcexdisplacement','work=force*displacement'],
     'Ep=mgh':['ep=mgh','e_p=mgh','gpe=mgh','potentialenergy=mgh'],
     'Ek=0.5mv2':['ek=0.5*m*v2','ek=0.5mv2','ek=1/2*m*v2','ek=1/2mv2','ek=½mv2','ke=0.5*m*v2','ke=0.5mv2','kineticenergy=0.5*m*v2'],

@@ -79,6 +79,14 @@ function notificationTypeMeta(notification) {
   if (metadata?.format === "2027" && ["paper2_completed", "child_paper2_completed", "child_section_test_completed"].includes(String(notification?.type || ""))) {
     return { ...base, icon: "27", label: "2027 Practice" };
   }
+  if (String(metadata?.subject_id || "").toLowerCase() === "physics") {
+    const type = String(notification?.type || "");
+    if (type === "paper2_completed") return { ...base, icon: "P2", label: "Physics Paper 2" };
+    if (type === "child_paper2_completed") return { ...base, icon: "Φ", label: "Physics paper result" };
+    if (type === "child_lesson_completed") return { ...base, icon: "Φ", label: "Physics lesson" };
+    if (type === "child_topic_quiz_completed") return { ...base, icon: "Φ", label: "Physics topic test" };
+    if (type === "child_section_test_completed") return { ...base, icon: "Φ", label: "Physics checkpoint" };
+  }
   return base;
 }
 
