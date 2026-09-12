@@ -43,6 +43,7 @@ import {
   syncPhysicsLocalProgress,
   buildRecentSubjectActivity,
   subjectRows,
+  mergeMathematicsLessonRowsForReporting,
 } from "./subjects/subjectProgress";
 import MathText from "./practice/MathText";
 import {
@@ -3878,12 +3879,8 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
 
   const localPhysicsSubjectRows = PHYSICS_SECTION_A_ENABLED ? readLocalPhysicsSubjectRows(user.id) : [];
   const mergedSubjectProgressRows = mergeSubjectProgressRows(subjectProgressRows, localPhysicsSubjectRows);
-  const legacyMathCompletedTitles = new Set(progressData.map(row => row?.lessons?.title).filter(Boolean));
-  const genericMathCompletedTitles = new Set(subjectRows(mergedSubjectProgressRows, "mathematics")
-    .filter(row => row.activity_type === "lesson" && row.completed)
-    .map(row => row.title).filter(Boolean));
-  const done = new Set([...legacyMathCompletedTitles, ...genericMathCompletedTitles]).size
-    || Math.max(progressData.length, genericMathCompletedTitles.size);
+  const mathematicsLessonRows = mergeMathematicsLessonRowsForReporting(progressData, mergedSubjectProgressRows);
+  const done = mathematicsLessonRows.length;
   const availableSparkSubjects = enabledSparkSubjects(SPARK_SUBJECTS);
   const legacyEnrollmentIds = [...new Set([
     "mathematics",
@@ -3896,7 +3893,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     .filter(subject => subject.enabled !== false);
   const enrolledSubjectIdSet = new Set(studentEnrolledSubjects.map(subject => String(subject.id || "").toLowerCase()));
   const streak = computeStudyStreak({
-    lessons: progressData,
+    lessons: mathematicsLessonRows,
     questionAttempts: studentQuestionAttempts,
     examAttempts,
     flashcardReviewEvents: studentFlashcardReviewEvents,
@@ -3908,7 +3905,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     skills: studentSkills,
     questionAttempts: studentQuestionAttempts,
     examAttempts,
-    lessons: progressData,
+    lessons: mathematicsLessonRows,
     bookings,
     milestones: studentMilestones,
     flashcardProgress: studentFlashcardProgress,
@@ -3919,7 +3916,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     skills: studentSkills,
     questionAttempts: studentQuestionAttempts,
     examAttempts,
-    lessons: progressData,
+    lessons: mathematicsLessonRows,
     bookings,
     milestones: studentMilestones,
     flashcardProgress: studentFlashcardProgress,
@@ -5684,12 +5681,16 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
   const examAverage = examAttempts.length ? Math.round(examAttempts.reduce((sum, a) => sum + Number(a.percent || 0), 0) / examAttempts.length) : 0;
   const learningMilestones = childData?.milestones || [];
   const parentLearnerModel = buildLearnerModelProfile(childData?.learnerStates || []);
+  const parentMathematicsLessonRows = mergeMathematicsLessonRowsForReporting(
+    childData?.lessons || [],
+    childData?.subjectProgressRows || [],
+  );
   const parentLearningSummary = buildLearningSummary({
     learnerName: selectedChild?.name || "",
     skills: childData?.progress || [],
     questionAttempts: childData?.attempts || [],
     examAttempts,
-    lessons: childData?.lessons || [],
+    lessons: parentMathematicsLessonRows,
     bookings: childData?.bookings || [],
     milestones: learningMilestones,
     flashcardProgress: childData?.flashcardProgress || [],
@@ -5707,13 +5708,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
   const parentSubjectDashboardSummaries = buildSubjectDashboardSummaries({
     subjects: parentEnrolledSubjects,
     mathematics: {
-      done: (() => {
-        const legacyTitles = new Set((childData?.lessons || []).map(row => row?.lessons?.title).filter(Boolean));
-        const genericTitles = new Set(subjectRows(childData?.subjectProgressRows || [], "mathematics")
-          .filter(row => row.activity_type === "lesson" && row.completed)
-          .map(row => row.title).filter(Boolean));
-        return new Set([...legacyTitles, ...genericTitles]).size || Math.max(childData?.lessons?.length || 0, genericTitles.size);
-      })(),
+      done: parentMathematicsLessonRows.length,
       totalTopics: SYLLABUS_SECTIONS.reduce((sum, section) => sum + section.topics.length, 0),
       learningSummary: parentLearningSummary,
     },
@@ -5730,7 +5725,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
     skills: childData?.progress || [],
     questionAttempts: childData?.attempts || [],
     examAttempts: childData?.examAttempts || [],
-    lessons: childData?.lessons || [],
+    lessons: parentMathematicsLessonRows,
     bookings: childData?.bookings || [],
     milestones: childData?.milestones || [],
     flashcardProgress: childData?.flashcardProgress || [],

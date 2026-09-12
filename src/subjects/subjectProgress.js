@@ -311,6 +311,51 @@ export function mergeSubjectProgressRows(remoteRows = [], localRows = []) {
   return [...map.values()];
 }
 
+export function mergeMathematicsLessonRowsForReporting(legacyRows = [], subjectProgressRows = []) {
+  const merged = new Map();
+  const titleKey = value => String(value || "").trim().toLowerCase();
+
+  for (const row of legacyRows || []) {
+    if (row?.completed === false) continue;
+    const title = row?.lessons?.title || row?.title || "";
+    const key = titleKey(title) || `legacy:${row?.lesson_id || row?.id || merged.size}`;
+    merged.set(key, row);
+  }
+
+  for (const row of subjectRows(subjectProgressRows || [], "mathematics")) {
+    if (row?.activity_type !== "lesson" || !row?.completed) continue;
+    const title = row?.title || row?.topic_id || row?.activity_key || "Mathematics lesson";
+    const key = titleKey(title) || `subject:${row?.activity_key || merged.size}`;
+    const completedAt = row?.first_recorded_at || row?.updated_at || row?.created_at || row?.metadata?.at || null;
+    const existing = merged.get(key);
+    if (existing) {
+      if (!existing?.completed_at && completedAt) {
+        merged.set(key, {
+          ...existing,
+          completed: true,
+          completed_at: completedAt,
+          updated_at: existing?.updated_at || row?.updated_at || completedAt,
+          lessons: existing?.lessons || { title },
+        });
+      }
+      continue;
+    }
+    merged.set(key, {
+      id: row?.id || `subject:${row?.activity_key || key}`,
+      lesson_id: null,
+      completed: true,
+      completion_source: row?.metadata?.completion_source || row?.metadata?.source || "subject_progress",
+      completed_at: completedAt,
+      created_at: row?.first_recorded_at || completedAt,
+      updated_at: row?.updated_at || completedAt,
+      lessons: { title },
+      subject_progress_activity_key: row?.activity_key || null,
+    });
+  }
+
+  return [...merged.values()];
+}
+
 export function summarizeSubjectProgress(rows = [], options = {}) {
   const subjectId = options.subjectId || null;
   const scoped = subjectId ? subjectRows(rows, subjectId) : [...rows];

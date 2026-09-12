@@ -25,10 +25,10 @@ describe('Mathematics lesson completion resilience V11.8', () => {
     expect(app).toContain('...(subjectResult.data || []).map(r => r.title)');
   });
 
-  test('student and parent Mathematics completion totals merge both stores', () => {
-    expect(app).toContain('legacyMathCompletedTitles');
-    expect(app).toContain('genericMathCompletedTitles');
-    expect(app).toContain('subjectRows(childData?.subjectProgressRows || [], "mathematics")');
+  test('student and parent Mathematics completion totals merge both stores through the shared report-safe helper', () => {
+    expect(app).toContain('mergeMathematicsLessonRowsForReporting(progressData, mergedSubjectProgressRows)');
+    expect(app).toContain('parentMathematicsLessonRows = mergeMathematicsLessonRowsForReporting');
+    expect(app).toContain('done: parentMathematicsLessonRows.length');
   });
 
   test('migration does not require a current topic to exist in public.lessons', () => {
