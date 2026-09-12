@@ -20,6 +20,18 @@ import { readPhysicsAtomicProgress, physicsAtomicProgressSummary } from "../../a
 import { readPhysicsCourseProgress } from "../../course/physicsCourseProgress.mjs";
 import "./physicsMechanics.css";
 
+function ChangeSubjectButton({ onClick }) {
+  if (!onClick) return null;
+  return (
+    <button type="button" className="pm-btn secondary pm-change-subject-btn" onClick={onClick}>
+      <svg className="pm-change-subject-icon" viewBox="0 0 20 20" focusable="false" aria-hidden="true">
+        <path d="M12.5 5.5 8 10l4.5 4.5M8 10h8" />
+      </svg>
+      <span>Change subject</span>
+    </button>
+  );
+}
+
 export function PhysicsMechanicsFlashcardsPanel({ onChangeSubject }) {
   const ALL_TOPICS = useMemo(() => [...SECTION_A_TOPICS, ...SECTION_B_TOPICS, ...SECTION_C_TOPICS, ...SECTION_D_TOPICS, ...SECTION_E_TOPICS], []);
   const [topicId, setTopicId] = useState("A1");
@@ -56,7 +68,7 @@ export function PhysicsMechanicsFlashcardsPanel({ onChangeSubject }) {
           <h1>Physics flashcards</h1>
           <p>Choose any Physics topic with an audited flashcard bank, recall the answer, then reveal the response.</p>
         </div>
-        {onChangeSubject && <button type="button" className="pm-btn secondary" onClick={onChangeSubject}>← Change subject</button>}
+        <ChangeSubjectButton onClick={onChangeSubject} />
       </div>
 
       <div className="pm-flashcard-topic-picker">
@@ -142,7 +154,7 @@ export function PhysicsMechanicsProgressPanel({ userId, onChangeSubject, onOpenS
           <h1>Physics progress</h1>
           <p>Track lesson completion across the Physics course, plus lab exploration and available section assessment activity. Completion records study activity separately from assessment performance.</p>
         </div>
-        {onChangeSubject && <button type="button" className="pm-btn secondary" onClick={onChangeSubject}>← Change subject</button>}
+        <ChangeSubjectButton onClick={onChangeSubject} />
       </div>
 
       <div className="pm-progress-summary-grid">

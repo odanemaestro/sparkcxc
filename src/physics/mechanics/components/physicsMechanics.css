@@ -656,3 +656,37 @@
   .physics-mechanics .pm-topics:not(.pm-flashcard-topics){grid-template-columns:1fr}
 }
 /* SPARK PHYSICS V11 RESPONSIVE TOPIC NAV END */
+
+
+/* V12 tablet-safe Physics navigation controls */
+.pm-change-subject-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  flex:0 0 auto;
+  min-width:154px;
+  min-height:46px;
+  padding:10px 16px;
+  white-space:nowrap;
+  line-height:1.15;
+}
+.pm-change-subject-icon{
+  display:block;
+  width:17px;
+  height:17px;
+  flex:0 0 17px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+@media (min-width:561px) and (max-width:1100px){
+  .pm-flashcards-dashboard .pm-support-head{align-items:flex-start;gap:20px}
+  .pm-flashcards-dashboard .pm-support-head>div{min-width:0;flex:1 1 auto}
+  .pm-flashcards-dashboard .pm-change-subject-btn{width:auto;max-width:none;align-self:flex-start}
+}
+@media (max-width:560px){
+  .pm-support-head .pm-change-subject-btn{width:100%;min-width:0}
+}

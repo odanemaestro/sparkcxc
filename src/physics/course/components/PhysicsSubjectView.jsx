@@ -8,6 +8,18 @@ import PhysicsAtomicSection from '../../atomic/components/PhysicsAtomicSection';
 import { physicsFullCourseStats } from '../fullCourseIndex.mjs';
 import './physicsSubjectView.css';
 
+const SectionArrowIcon = () => (
+  <svg className="psv-section-arrow-icon" viewBox="0 0 20 20" focusable="false" aria-hidden="true">
+    <path d="M6 14L14 6M8 6h6v6" />
+  </svg>
+);
+
+const BackArrowIcon = () => (
+  <svg className="psv-back-arrow-icon" viewBox="0 0 20 20" focusable="false" aria-hidden="true">
+    <path d="M12.5 5.5 8 10l4.5 4.5M8 10h8" />
+  </svg>
+);
+
 const SECTION_META = Object.freeze({
   A: { title:'Mechanics', detail:'Lessons, interactive labs, flashcards, topic tests and the Mechanics checkpoint.', accent:'A' },
   B: { title:'Thermal Physics and Kinetic Theory', detail:'Lessons, interactive labs, flashcards, topic tests, structured practice and a Section B checkpoint.', accent:'B' },
@@ -44,7 +56,7 @@ export default function PhysicsSubjectView({ userId, onBack, onActivity, onEvide
       <div className="psv-shell">
         <header className="psv-hero">
           <div>
-            {onBack && <button type="button" className="psv-back" onClick={onBack}>← Back</button>}
+            {onBack && <button type="button" className="psv-back" onClick={onBack}><BackArrowIcon/><span>Back</span></button>}
             <div className="psv-eyebrow">CSEC Physics</div>
             <h1>Choose a section</h1>
             <p>Work through the Physics syllabus by section. Each section opens the learning tools currently available for its audited content.</p>
@@ -68,7 +80,7 @@ export default function PhysicsSubjectView({ userId, onBack, onActivity, onEvide
                   <span>{sectionStats.topics} topics · {sectionStats.objectives} objectives</span>
                   <small>{meta.detail}</small>
                 </span>
-                <span className="psv-section-arrow" aria-hidden="true">↗</span>
+                <span className="psv-section-arrow" aria-hidden="true"><SectionArrowIcon/></span>
               </button>
             );
           })}
