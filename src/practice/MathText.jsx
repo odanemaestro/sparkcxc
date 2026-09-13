@@ -146,7 +146,7 @@ function formatPowersAndSubscripts(text, store) {
   );
 
   output = output.replace(
-    /([A-Za-z])_\{?([A-Za-z0-9+-]+)\}?/g,
+    /([A-Za-zµμΑ-Ωα-ω])_\{?([A-Za-z0-9+-]+)\}?/g,
     (_, base, subscript) => `${base}${store.put(`<sub>${subscript}</sub>`)}`
   );
 

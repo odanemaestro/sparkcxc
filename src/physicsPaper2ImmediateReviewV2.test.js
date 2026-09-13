@@ -24,7 +24,7 @@ describe("Physics Paper 2 immediate final review", () => {
     expect(examSource).not.toContain("<select");
     expect(examSource).toContain("Your paper has been marked and the result is saved");
     expect(examSource).not.toContain("Finish review & save result");
-    expect(examSource).toContain("Finish review</button>");
+    expect(examSource).toContain("Start another Paper 2</button>");
   });
 
   test("submission saves the result before review is finished", () => {
@@ -39,8 +39,8 @@ describe("Physics Paper 2 immediate final review", () => {
     expect(examSource).toContain("grade and save your result immediately");
   });
 
-  test("finishing review only closes the saved attempt", () => {
-    const start = examSource.indexOf("function finishReview()");
+  test("starting another paper only closes the saved attempt before returning to the library", () => {
+    const start = examSource.indexOf("function startAnotherPaper()");
     const end = examSource.indexOf("return <main", start);
     expect(start).toBeGreaterThan(-1);
     const block = examSource.slice(start, end);

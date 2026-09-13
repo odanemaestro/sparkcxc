@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import MathText from "../../../practice/MathText";
 import Paper2ResponseInput from "../../../practice/Paper2ResponseInput";
 import "../../../practice/practiceExam.css";
@@ -214,16 +215,85 @@ function ReviewPanel({ result, question, responses, modelResponses }) {
   </div>;
 }
 
+const PHYSICS_CONSTANTS = Object.freeze([
+  { symbol: "c", name: "Speed of light in free space", value: "3.00 × 10^8 m s^-1" },
+  { symbol: "μ₀", name: "Permeability of free space", value: "4π × 10^-7 H m^-1" },
+  { symbol: "ε₀", name: "Permittivity of free space", value: "8.85 × 10^-12 F m^-1" },
+  { symbol: "e", name: "Elementary charge", value: "1.60 × 10^-19 C" },
+  { symbol: "h", name: "The Planck constant", value: "6.63 × 10^-34 J s" },
+  { symbol: "u", name: "Unified atomic mass constant", value: "1.66 × 10^-27 kg" },
+  { symbol: "mₑ", name: "Rest mass of electron", value: "9.11 × 10^-31 kg" },
+  { symbol: "mₚ", name: "Rest mass of proton", value: "1.67 × 10^-27 kg" },
+  { symbol: "g", name: "Acceleration of free fall", value: "9.81 m s^-2" },
+  { symbol: "Atm", name: "1 Atmosphere", value: "1.00 × 10^5 N m^-2" },
+  { symbol: "N_A", name: "Avogadro’s number", value: "6.02 × 10^23 per mole" },
+]);
+
+function PhysicsConstantsModal({ onClose }) {
+  useEffect(() => {
+    if (typeof document === "undefined") return undefined;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const handleKeyDown = event => { if (event.key === "Escape") onClose(); };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClose]);
+
+  if (typeof document === "undefined") return null;
+  return createPortal(<div className="phy-p2-modal-backdrop phy-p2-constants-backdrop" role="presentation" onMouseDown={onClose}>
+    <section className="phy-p2-constants-modal" role="dialog" aria-modal="true" aria-labelledby="phy-p2-constants-title" onMouseDown={event => event.stopPropagation()}>
+      <div className="phy-p2-constants-head"><div><span className="phy-p2-eyebrow">REFERENCE</span><h2 id="phy-p2-constants-title">Physical Constants</h2></div><button type="button" onClick={onClose} aria-label="Close Physical Constants">×</button></div>
+      <p className="phy-p2-constants-note">Use any value stated in a question in preference to this reference.</p>
+      <div className="phy-p2-constants-list">{PHYSICS_CONSTANTS.map(item => <div key={item.symbol} className="phy-p2-constant-row"><div><MathText as="strong">{item.symbol}</MathText><span>{item.name}</span></div><MathText as="b">{item.value}</MathText></div>)}</div>
+    </section>
+  </div>, document.body);
+}
+
+function PhysicsPaper2Instructions({ paper, onBack, onBegin, onShowConstants }) {
+  return <main className="phy-p2-root"><div className="phy-p2-shell">
+    <button type="button" className="phy-p2-back" onClick={onBack}>← Paper 2 library</button>
+    <section className="phy-p2-instructions-card">
+      <div className="phy-p2-eyebrow">CSEC Physics · Paper 02</div>
+      <h1>{physicsPaper2PaperName(paper)}</h1>
+      <p className="phy-p2-instructions-sub">A full structured practice examination completed and marked within SPARK.</p>
+      <div className="phy-p2-instructions-rule" />
+      <div className="phy-p2-instructions-meta">
+        <div><span>Time</span><strong>{Math.floor(PHYSICS_PAPER2_DURATION_MINUTES / 60)} h {PHYSICS_PAPER2_DURATION_MINUTES % 60} min</strong></div>
+        <div><span>Questions</span><strong>{paper.questions.length} compulsory</strong></div>
+        <div><span>Marks</span><strong>100</strong></div>
+        <div><span>Coverage</span><strong>Full syllabus</strong></div>
+      </div>
+      <div className="phy-p2-instructions-sheet">
+        <h2>READ THE FOLLOWING INSTRUCTIONS CAREFULLY.</h2>
+        <ol>
+          <li>Answer all {paper.questions.length} compulsory structured questions.</li>
+          <li>Enter an answer for every part. Show your working where a calculation or explanation requires it.</li>
+          <li>For tables, enter values directly in the blank cells. For graphs, label both axes, choose a suitable scale, plot the points and draw the required best-fit line.</li>
+          <li>Include units where required and follow any stated instruction about significant figures or decimal places.</li>
+          <li>Use the Physical Constants reference when needed. If a question supplies a value, use the value stated in the question.</li>
+          <li>SPARK saves your responses while you work. The paper is submitted automatically when the time expires.</li>
+          <li>After submission, your score is saved and you receive a question-by-question review with your response, the mark-scheme answer and mark breakdown.</li>
+        </ol>
+      </div>
+      <div className="phy-p2-instructions-note"><strong>How your paper is marked</strong><span>Numerical answers use unit-aware checks. Written, table and graph responses are checked against the authored Physics mark scheme, including method and follow-through criteria where applicable.</span></div>
+      <div className="phy-p2-instructions-actions"><button type="button" className="phy-p2-secondary" onClick={onShowConstants}>Physical Constants</button><button type="button" className="phy-p2-primary" onClick={onBegin}>Start examination</button></div>
+    </section>
+  </div></main>;
+}
+
 function PaperLibrary({ userId, active, onResume, onStart, onBack }) {
   const results = readPhysicsPaper2Results(userId);
   return <main className="phy-p2-root"><div className="phy-p2-shell">
     <header className="phy-p2-library-hero"><div><button type="button" className="phy-p2-back" onClick={onBack}>← Physics practice</button><div className="phy-p2-eyebrow">CSEC Physics Paper 02</div><h1>Paper 2 Simulator</h1><p>Choose one of four complete 100-mark practice papers. Each paper contains six compulsory questions and runs for 2 hours 30 minutes.</p></div><div className="phy-p2-hero-spec"><strong>4</strong><span>complete papers</span><strong>150</strong><span>minutes</span><strong>100</strong><span>marks</span></div></header>
-    {active?.paperId && getPhysicsPaper2Paper(active.paperId) && <section className="phy-p2-resume-card"><div><span className="phy-p2-eyebrow">IN PROGRESS</span><h2>{physicsPaper2PaperName(getPhysicsPaper2Paper(active.paperId))}</h2><p>{active.phase === "review" ? "Your paper is submitted and the result is saved. Continue your answer review." : "Your answers and remaining time are saved on this device."}</p></div><button type="button" className="phy-p2-primary" onClick={onResume}>{active.phase === "review" ? "Continue review" : "Resume paper"}</button></section>}
+    {active?.paperId && getPhysicsPaper2Paper(active.paperId) && <section className="phy-p2-resume-card"><div><span className="phy-p2-eyebrow">IN PROGRESS</span><h2>{physicsPaper2PaperName(getPhysicsPaper2Paper(active.paperId))}</h2><p>{active.phase === "review" ? "Your paper is submitted and the result is saved. Continue your answer review." : active.phase === "instructions" ? "Your paper is selected. Review the instructions before the timer starts." : "Your answers and remaining time are saved on this device."}</p></div><button type="button" className="phy-p2-primary" onClick={onResume}>{active.phase === "review" ? "Continue review" : active.phase === "instructions" ? "View instructions" : "Resume paper"}</button></section>}
     <section className="phy-p2-paper-grid">{PHYSICS_PAPER2_PAPERS.map(paper => {
       const coverage = physicsPaper2MarkingCoverage(paper);
       const isActive = active?.paperId === paper.paper_id;
       const anotherActive = Boolean(active?.paperId && !isActive);
-      return <article key={paper.paper_id} className={`phy-p2-paper-card ${isActive ? "is-active" : ""}`}><div className="phy-p2-paper-number">{physicsPaper2PaperLetter(paper)}</div><div><span className="phy-p2-eyebrow">PRACTICE PAPER</span><h2>{physicsPaper2PaperName(paper)}</h2><p>{physicsPaper2Topics(paper).join(" · ")}</p><div className="phy-p2-paper-meta"><span>6 questions</span><span>100 marks</span><span>{coverage.autoMarks} automatically marked points</span><span>Immediate final review</span></div></div><button type="button" className="phy-p2-primary" disabled={anotherActive} onClick={() => isActive ? onResume() : onStart(paper.paper_id)}>{isActive ? (active.phase === "review" ? "Continue review" : "Resume paper") : anotherActive ? "Finish current paper first" : "Start paper"}</button></article>;
+      return <article key={paper.paper_id} className={`phy-p2-paper-card ${isActive ? "is-active" : ""}`}><div className="phy-p2-paper-number">{physicsPaper2PaperLetter(paper)}</div><div><span className="phy-p2-eyebrow">PRACTICE PAPER</span><h2>{physicsPaper2PaperName(paper)}</h2><p>{physicsPaper2Topics(paper).join(" · ")}</p><div className="phy-p2-paper-meta"><span>6 questions</span><span>100 marks</span><span>{coverage.autoMarks} automatically marked points</span><span>Immediate final review</span></div></div><button type="button" className="phy-p2-primary" disabled={anotherActive} onClick={() => isActive ? onResume() : onStart(paper.paper_id)}>{isActive ? (active.phase === "review" ? "Continue review" : active.phase === "instructions" ? "View instructions" : "Resume paper") : anotherActive ? "Finish current paper first" : "View instructions"}</button></article>;
     })}</section>
     <section className="phy-p2-marking-note"><strong>How marking works</strong><p>SPARK marks the complete paper when you submit it. Numerical answers use unit-aware checks, while written, table and graph responses are checked against the authored mark scheme. You then receive your score and a question-by-question final review, in the same flow as Mathematics.</p></section>
     {results.length > 0 && <section className="phy-p2-recent"><div><span className="phy-p2-eyebrow">RECENT RESULTS</span><h2>Completed Paper 2 practice</h2></div><div className="phy-p2-result-list">{results.slice(0, 4).map(result => <div key={result.id}><span>{physicsPaper2PaperName(result.paperNumber)}</span><strong>{result.score}/100</strong><small>{result.percent}% · {new Date(result.completedAt).toLocaleDateString()}</small></div>)}</div></section>}
@@ -238,6 +308,7 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
   const [remaining, setRemaining] = useState(() => initialActive?.endsAt ? Math.max(0, Math.round((initialActive.endsAt - Date.now()) / 1000)) : PHYSICS_PAPER2_DURATION_MINUTES * 60);
   const [libraryOpen, setLibraryOpen] = useState(!initialActive?.paperId);
   const [showSubmitConfirm, setShowSubmitConfirm] = useState(false);
+  const [showConstants, setShowConstants] = useState(false);
   const submissionGuardRef = useRef(Boolean(initialActive?.resultId));
   const paper = getPhysicsPaper2Paper(active?.paperId);
   const phase = active?.phase || null;
@@ -308,13 +379,31 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
   function startPaper(paperId) {
     if (active?.paperId && active.paperId !== paperId) return;
     if (active?.paperId === paperId) { setLibraryOpen(false); return; }
-    const now = Date.now();
-    const next = { paperId, phase: "exam", startedAt: new Date(now).toISOString(), endsAt: now + PHYSICS_PAPER2_DURATION_MINUTES * 60 * 1000, currentIndex: 0, responses: {} };
+    const next = { paperId, phase: "instructions", currentIndex: 0, responses: {} };
     submissionGuardRef.current = false;
     setActive(next); setCurrentIndex(0); setResponses({}); setRemaining(PHYSICS_PAPER2_DURATION_MINUTES * 60); setLibraryOpen(false);
   }
 
+  function beginPaper() {
+    if (!paper || phase !== "instructions") return;
+    const now = Date.now();
+    submissionGuardRef.current = false;
+    setActive(previous => previous ? { ...previous, phase: "exam", startedAt: new Date(now).toISOString(), endsAt: now + PHYSICS_PAPER2_DURATION_MINUTES * 60 * 1000, currentIndex: 0, responses: previous.responses || {} } : previous);
+    setCurrentIndex(0);
+    setRemaining(PHYSICS_PAPER2_DURATION_MINUTES * 60);
+    window.scrollTo?.({ top: 0, behavior: "smooth" });
+  }
+
+  function startAnotherPaper() {
+    savePhysicsPaper2Active(userId, null);
+    submissionGuardRef.current = false;
+    setActive(null); setResponses({}); setCurrentIndex(0); setRemaining(PHYSICS_PAPER2_DURATION_MINUTES * 60); setLibraryOpen(true);
+    window.scrollTo?.({ top: 0, behavior: "smooth" });
+  }
+
   if (!paper || libraryOpen) return <PaperLibrary userId={userId} active={active} onResume={() => setLibraryOpen(false)} onStart={startPaper} onBack={onBack}/>;
+
+  if (phase === "instructions") return <><PhysicsPaper2Instructions paper={paper} onBack={() => setLibraryOpen(true)} onBegin={beginPaper} onShowConstants={() => setShowConstants(true)}/>{showConstants && <PhysicsConstantsModal onClose={() => setShowConstants(false)}/>}</>;
 
   const question = paper.questions[currentIndex];
   const result = markPhysicsPaper2(paper, responses);
@@ -332,16 +421,11 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
     window.scrollTo?.({ top: 0, behavior: "smooth" });
   }
 
-  function finishReview() {
-    savePhysicsPaper2Active(userId, null);
-    submissionGuardRef.current = false;
-    setActive(null); setResponses({}); setCurrentIndex(0); setLibraryOpen(true);
-  }
 
   return <main className="phy-p2-root"><div className="phy-p2-shell">
     <header className="phy-p2-exam-head">
       <div><button type="button" className="phy-p2-back" onClick={() => setLibraryOpen(true)}>← Paper 2 library</button><span className="phy-p2-eyebrow">CSEC Physics · Paper 02</span><h1>{physicsPaper2PaperName(paper)}</h1><p>{phase === "review" ? "Mark-scheme review" : `${answeredParts}/${totalParts} parts have a recorded response`}</p></div>
-      <div className={`phy-p2-timer ${remaining <= 600 && phase === "exam" ? "warning" : ""}`}><span>{phase === "review" ? "Submitted" : "Time remaining"}</span><strong>{phase === "review" ? "REVIEW" : formatTime(remaining)}</strong></div>
+      <div className="phy-p2-header-tools"><button type="button" className="phy-p2-constants-control" onClick={() => setShowConstants(true)}>Physical Constants</button><div className={`phy-p2-timer ${remaining <= 600 && phase === "exam" ? "warning" : ""}`}><span>{phase === "review" ? "Submitted" : "Time remaining"}</span><strong>{phase === "review" ? "REVIEW" : formatTime(remaining)}</strong></div></div>
     </header>
 
     {phase === "review" && <section className="phy-p2-review-summary">
@@ -379,7 +463,9 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
       </>}
     </article>
 
-    <footer className="phy-p2-exam-footer"><button type="button" className="phy-p2-secondary" disabled={currentIndex === 0} onClick={() => { setCurrentIndex(index => Math.max(0, index - 1)); window.scrollTo?.({ top: 0, behavior: "smooth" }); }}>← Previous</button><span>Question {currentIndex + 1} of {paper.questions.length}</span>{currentIndex < paper.questions.length - 1 ? <button type="button" className="phy-p2-primary" onClick={() => { setCurrentIndex(index => Math.min(paper.questions.length - 1, index + 1)); window.scrollTo?.({ top: 0, behavior: "smooth" }); }}>Next question →</button> : phase === "exam" ? <button type="button" className="phy-p2-primary" onClick={() => setShowSubmitConfirm(true)}>Submit paper</button> : <button type="button" className="phy-p2-primary" onClick={finishReview}>Finish review</button>}</footer>
+    <footer className="phy-p2-exam-footer"><button type="button" className="phy-p2-secondary" disabled={currentIndex === 0} onClick={() => { setCurrentIndex(index => Math.max(0, index - 1)); window.scrollTo?.({ top: 0, behavior: "smooth" }); }}>← Previous</button><span>Question {currentIndex + 1} of {paper.questions.length}</span>{currentIndex < paper.questions.length - 1 ? <button type="button" className="phy-p2-primary" onClick={() => { setCurrentIndex(index => Math.min(paper.questions.length - 1, index + 1)); window.scrollTo?.({ top: 0, behavior: "smooth" }); }}>Next question →</button> : phase === "exam" ? <button type="button" className="phy-p2-primary" onClick={() => setShowSubmitConfirm(true)}>Submit paper</button> : <button type="button" className="phy-p2-secondary" disabled>Review complete</button>}</footer>
+    {phase === "review" && <div className="phy-p2-result-actions"><button type="button" className="phy-p2-secondary" onClick={onBack}>Back to Physics practice</button><button type="button" className="phy-p2-primary" onClick={startAnotherPaper}>Start another Paper 2</button></div>}
+    {showConstants && <PhysicsConstantsModal onClose={() => setShowConstants(false)}/>}
     {showSubmitConfirm && phase === "exam" && <div className="phy-p2-modal-backdrop" role="presentation" onMouseDown={() => setShowSubmitConfirm(false)}><section className="phy-p2-confirm-modal" role="dialog" aria-modal="true" aria-labelledby="phy-p2-submit-title" onMouseDown={event => event.stopPropagation()}><span className="phy-p2-eyebrow">SUBMIT PAPER</span><h2 id="phy-p2-submit-title">Submit {physicsPaper2PaperName(paper)}?</h2><p>SPARK will grade and save your result immediately, then open your final answer review. You will not be able to change your responses after submission.</p><div className="phy-p2-confirm-actions"><button type="button" className="phy-p2-secondary" onClick={() => setShowSubmitConfirm(false)}>Return to paper</button><button type="button" className="phy-p2-primary" onClick={submitPaper}>Submit paper</button></div></section></div>}
   </div></main>;
 }
