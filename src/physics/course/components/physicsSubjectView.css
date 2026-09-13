@@ -16,3 +16,7 @@
 @media(max-width:520px){.psv-shell{padding:12px 10px 48px}.psv-hero{padding:18px}.psv-stats{grid-template-columns:repeat(3,1fr)}.psv-section-card{grid-template-columns:auto 1fr;padding:15px}.psv-section-arrow{display:none}.psv-section-code{width:42px;height:42px}.psv-section-copy strong{font-size:16px}}
 @media(prefers-reduced-motion:reduce){.physics-subject-view *{transition:none!important;animation:none!important}}
 .psv-section-card:disabled,.psv-section-card-disabled{cursor:default;opacity:.68}.psv-section-card:disabled:hover,.psv-section-card-disabled:hover{transform:none;box-shadow:none;border-color:var(--psv-line)}
+
+/* Physics Paper 1 simulator V14 */
+.physics-practice-hub .psv-section-card:first-child{grid-column:auto}
+@media(max-width:820px){.physics-practice-hub .psv-section-card:first-child{grid-column:auto}}

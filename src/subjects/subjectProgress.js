@@ -213,6 +213,19 @@ function activityPayloadFromPhysicsEvent(event = {}) {
       metadata: { source: "physics", event_type: type },
     };
   }
+  if (type === "physics_paper1_exam") {
+    const score = safeNumber(event.score);
+    const maxScore = safeNumber(event.maxScore, 60);
+    const percent = Number.isFinite(Number(event.percent)) ? safeNumber(event.percent) : maxScore > 0 ? Math.round(score / maxScore * 100) : 0;
+    const paperId = String(event.paperId || `paper-${event.paperNumber || "1"}`);
+    const paperNumber = Number(event.paperNumber || 0);
+    const paperLabel = String(event.paperLabel || (paperNumber >= 1 && paperNumber <= 26 ? String.fromCharCode(64 + paperNumber) : "")).trim();
+    return {
+      subjectId: "physics", activityKey: `paper1:${paperId}`, activityType: "exam", sectionId: null, topicId: null,
+      title: `Physics Paper 1 Practice Paper ${paperLabel}`.trim(), completed: true, score, maxScore, percent,
+      metadata: { source: "physics", event_type: type, paper_id: paperId, paper_number: paperNumber || null, paper_label: paperLabel || null },
+    };
+  }
   if (type === "physics_paper2_exam") {
     const score = safeNumber(event.score);
     const maxScore = safeNumber(event.maxScore, 100);
