@@ -1,10 +1,17 @@
 import paper1 from "./data/spark-phy-p01-practice-1.json";
 import paper2 from "./data/spark-phy-p01-practice-2.json";
+import paper3 from "./data/spark-phy-p01-practice-3.json";
+import paper4 from "./data/spark-phy-p01-practice-4.json";
+import paper5 from "./data/spark-phy-p01-practice-5.json";
+import paper6 from "./data/spark-phy-p01-practice-6.json";
+import paper7 from "./data/spark-phy-p01-practice-7.json";
+import paper8 from "./data/spark-phy-p01-practice-8.json";
+import paper9 from "./data/spark-phy-p01-practice-9.json";
 
-export const PHYSICS_PAPER1_BANK_VERSION = 1;
+export const PHYSICS_PAPER1_BANK_VERSION = 2;
 export const PHYSICS_PAPER1_DURATION_MINUTES = 75;
 export const PHYSICS_PAPER1_MARKS = 60;
-export const PHYSICS_PAPER1_PAPERS = Object.freeze([paper1, paper2]);
+export const PHYSICS_PAPER1_PAPERS = Object.freeze([paper1, paper2, paper3, paper4, paper5, paper6, paper7, paper8, paper9]);
 
 export function getPhysicsPaper1Paper(paperId) {
   return PHYSICS_PAPER1_PAPERS.find(paper => paper.bank_id === paperId) || null;

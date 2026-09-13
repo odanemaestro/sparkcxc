@@ -315,3 +315,37 @@
 .phy-p2-result-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:18px;flex-wrap:wrap}
 @media(max-width:850px){.phy-p2-instructions-meta{grid-template-columns:1fr 1fr}.phy-p2-header-tools{width:100%;justify-content:stretch}.phy-p2-constants-control{flex:1}.phy-p2-header-tools .phy-p2-timer{flex:1}}
 @media(max-width:560px){.phy-p2-modal-backdrop{padding:10px}.phy-p2-constants-modal{max-height:calc(100dvh - 20px);padding:18px 14px;border-radius:16px}.phy-p2-constants-head h2{font-size:24px}.phy-p2-instructions-card{padding:18px 16px}.phy-p2-instructions-meta{grid-template-columns:1fr 1fr}.phy-p2-instructions-sheet{padding:16px}.phy-p2-instructions-note{display:grid}.phy-p2-instructions-actions,.phy-p2-result-actions{display:grid;grid-template-columns:1fr}.phy-p2-instructions-actions button,.phy-p2-result-actions button{width:100%}.phy-p2-constant-row{grid-template-columns:1fr;gap:6px}.phy-p2-constant-row>b{white-space:normal}.phy-p2-header-tools{display:grid;grid-template-columns:1fr}.phy-p2-header-tools .phy-p2-timer{width:100%}}
+
+/* SPARK PHYSICS PRACTICE BUTTON SYSTEM V15.4 */
+.phy-p2-primary{font:inherit}
+.phy-p2-primary:not(:disabled){transition:filter .15s ease,transform .15s ease,box-shadow .15s ease}
+.phy-p2-primary:hover:not(:disabled){filter:brightness(.96)}
+.phy-p2-primary:active:not(:disabled){transform:translateY(1px)}
+.phy-p2-back.phy-p2-primary,
+.phy-p2-back-practice,
+.phy-p2-exam-footer .phy-p2-primary{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+.phy-p2-back.phy-p2-primary>span[aria-hidden="true"],
+.phy-p2-back-practice>span:first-child,
+.phy-p2-exam-footer button>span[aria-hidden="true"]{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:1;
+  font-size:18px;
+}
+.phy-p2-back-practice{width:auto;max-width:100%;min-height:40px;padding:9px 14px;white-space:nowrap}
+@media(max-width:680px){
+  .phy-p2-back.phy-p2-primary,
+  .phy-p2-exam-footer .phy-p2-primary{min-height:44px}
+}
+@media(max-width:560px){
+  .phy-p2-result-actions{display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+  .phy-p2-result-actions .phy-p2-back-practice{width:auto;min-height:44px;padding:10px 14px}
+  .phy-p2-result-actions>.phy-p2-primary:not(.phy-p2-back-practice){width:100%;min-height:44px}
+}
+/* END SPARK PHYSICS PRACTICE BUTTON SYSTEM V15.4 */

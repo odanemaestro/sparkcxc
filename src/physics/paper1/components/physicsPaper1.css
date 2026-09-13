@@ -13,13 +13,77 @@
 @media(max-width:520px){.phy-p1-exam-head-actions{gap:8px}.phy-p1-nav-toggle{padding:8px 9px;font-size:11px}.phy-p1-exam-head-actions .phy-p1-timer{min-width:0;flex:1;padding:10px 12px}.phy-p1-exam-head-actions .phy-p1-timer strong{font-size:19px}.phy-p1-navigator-drawer-panel .phy-p1-question-nav{grid-template-columns:repeat(6,minmax(0,1fr))}}
 
 
-/* SPARK PHYSICS PAPER 1 NAV + BACK BUTTON POLISH V14.3 */
-.phy-p1-back-practice{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:auto;min-height:38px;padding:8px 13px;border-color:var(--p1-border);border-radius:10px;background:var(--p1-card);color:var(--p1-ink);font-size:13px;font-weight:800;line-height:1.2;white-space:nowrap;box-shadow:none;transition:border-color .16s ease,background-color .16s ease,color .16s ease,transform .16s ease}.phy-p1-back-practice:hover{border-color:color-mix(in srgb,var(--p1-teal) 48%,var(--p1-border));background:color-mix(in srgb,var(--p1-soft) 42%,var(--p1-card));color:var(--p1-teal)}.phy-p1-back-practice:active{transform:translateY(1px)}.phy-p1-back-practice>span:first-child{font-size:16px;line-height:1;margin-top:-1px}.dark .phy-p1-back-practice,[data-theme="dark"] .phy-p1-back-practice{background:color-mix(in srgb,var(--p1-card) 92%,black);border-color:var(--p1-border);color:var(--p1-ink)}.dark .phy-p1-back-practice:hover,[data-theme="dark"] .phy-p1-back-practice:hover{background:var(--p1-soft);border-color:color-mix(in srgb,var(--p1-teal) 55%,var(--p1-border));color:var(--p1-teal)}
-@media(max-width:520px){.phy-p1-result-actions .phy-p1-back-practice{width:100%;min-height:42px}}
+/* SPARK PHYSICS PAPER 1 BUTTON REPAIR V15.2 */
+.phy-p1-exam-footer .phy-p1-secondary,
+.phy-p1-exam-footer .phy-p1-primary{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+.phy-p1-back-practice{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  width:auto;
+  max-width:100%;
+  min-height:40px;
+  padding:9px 14px;
+  white-space:nowrap;
+}
+.phy-p1-back-practice>span:first-child,
+.phy-p1-exam-footer button>span[aria-hidden="true"]{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:1;
+  font-size:18px;
+}
+@media(max-width:520px){
+  .phy-p1-result-actions{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+  }
+  .phy-p1-result-actions .phy-p1-back-practice{
+    width:auto;
+    min-height:44px;
+    padding:10px 14px;
+  }
+  .phy-p1-result-actions>.phy-p1-primary:not(.phy-p1-back-practice){
+    width:100%;
+    min-height:44px;
+  }
+}
+/* END SPARK PHYSICS PAPER 1 BUTTON REPAIR V15.2 */
 
-/* SPARK PHYSICS PAPER 1 BACK BUTTON MOBILE FIX V14.4 */
-.phy-p1-result-actions .phy-p1-back-practice{display:inline-flex;align-items:center;justify-content:center;align-self:flex-start;width:max-content;max-width:100%;min-height:36px;padding:7px 11px;gap:7px;border:1px solid var(--p1-border);border-radius:9px;background:var(--p1-card);color:var(--p1-ink);font-size:13px;font-weight:700;line-height:1;white-space:nowrap;box-shadow:none}
-.phy-p1-result-actions .phy-p1-back-practice>span:first-child{display:inline-flex;align-items:center;justify-content:center;font-size:17px;line-height:1;margin:0}
-.phy-p1-result-actions .phy-p1-back-practice:hover{border-color:color-mix(in srgb,var(--p1-teal) 48%,var(--p1-border));background:color-mix(in srgb,var(--p1-soft) 42%,var(--p1-card));color:var(--p1-teal)}
-@media(max-width:520px){.phy-p1-result-actions{display:flex;flex-direction:column;align-items:stretch}.phy-p1-result-actions .phy-p1-back-practice{align-self:flex-start;width:max-content!important;min-height:36px!important;padding:7px 11px!important;font-size:13px!important}.phy-p1-result-actions .phy-p1-primary{width:100%}}
-/* END SPARK PHYSICS PAPER 1 BACK BUTTON MOBILE FIX V14.4 */
+
+/* SPARK PHYSICS PAPER 1 NAVIGATION BUTTON CONSISTENCY V15.3 */
+.phy-p1-back.phy-p1-primary{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+.phy-p1-back.phy-p1-primary>span[aria-hidden="true"]{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  line-height:1;
+  font-size:18px;
+}
+@media(max-width:680px){
+  .phy-p1-back.phy-p1-primary,
+  .phy-p1-exam-footer .phy-p1-primary{
+    min-height:44px;
+  }
+}
+/* END SPARK PHYSICS PAPER 1 NAVIGATION BUTTON CONSISTENCY V15.3 */
+
+/* SPARK PHYSICS PRACTICE BUTTON SYSTEM V15.4 */
+.phy-p1-primary:not(:disabled){transition:filter .15s ease,transform .15s ease,box-shadow .15s ease}
+.phy-p1-primary:hover:not(:disabled){filter:brightness(.96)}
+.phy-p1-primary:active:not(:disabled){transform:translateY(1px)}
+/* END SPARK PHYSICS PRACTICE BUTTON SYSTEM V15.4 */

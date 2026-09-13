@@ -1,0 +1,4417 @@
+{
+  "bank_id": "spark-phy-p01-practice-8",
+  "title": "SPARK CSEC Physics - Paper 01 Practice Paper 8",
+  "version": "1.0.0",
+  "subject": "Physics",
+  "examination": "CSEC (Caribbean Secondary Education Certificate)",
+  "paper": "Paper 01 - General Proficiency",
+  "syllabus": "CXC 22/G/SYLL 13, for examinations from May and June 2015",
+  "item_count": 60,
+  "duration_minutes": 75,
+  "instructions": [
+    "This test consists of 60 items. You will have 1 hour and 15 minutes to answer them.",
+    "In addition to this test booklet, you should have an answer sheet.",
+    "Each item in this test has four suggested answers lettered (A), (B), (C), (D). Read each item you are about to answer and decide which choice is best.",
+    "On your answer sheet, find the number which corresponds to your item and shade the space having the same letter as the answer you have chosen.",
+    "If you want to change your answer, erase it completely before you fill in your new choice.",
+    "When you are told to begin, turn the page and work as quickly and as carefully as you can. If you cannot answer an item, go on to the next one. You may return to that item later.",
+    "You may do any rough work in this booklet.",
+    "Figures are not necessarily drawn to scale.",
+    "You may use a silent, non-programmable calculator to answer items."
+  ],
+  "sample_item": {
+    "stem": "The SI unit of length is the",
+    "options": [
+      "metre",
+      "second",
+      "newton",
+      "kilogram"
+    ],
+    "answer": "A",
+    "note": "The best answer to this item is \"metre\", so (A) has been shaded."
+  },
+  "blueprint": [
+    {
+      "section": "A",
+      "section_name": "Mechanics",
+      "count": 17,
+      "share_percent": 28.3
+    },
+    {
+      "section": "B",
+      "section_name": "Thermal Physics and Kinetic Theory",
+      "count": 8,
+      "share_percent": 13.3
+    },
+    {
+      "section": "C",
+      "section_name": "Waves and Optics",
+      "count": 9,
+      "share_percent": 15
+    },
+    {
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "count": 19,
+      "share_percent": 31.7
+    },
+    {
+      "section": "E",
+      "section_name": "The Physics of the Atom",
+      "count": 7,
+      "share_percent": 11.7
+    }
+  ],
+  "blueprint_source": "The syllabus states the teaching time each section is allotted, and the item counts in the Paper 01 papers follow it closely. This paper uses that spread.",
+  "profile_split": {
+    "KC": 50,
+    "UK": 10
+  },
+  "profile_target": {
+    "KC": 50,
+    "UK": 10
+  },
+  "profile_note": "CXC reports Paper 01 as 50 marks Knowledge and Comprehension and 10 Use of Knowledge. Every item is tagged with the one it counts towards.",
+  "key_distribution": {
+    "A": 16,
+    "B": 14,
+    "C": 15,
+    "D": 15
+  },
+  "answer_key": {
+    "1": "B",
+    "2": "B",
+    "3": "B",
+    "4": "D",
+    "5": "C",
+    "6": "D",
+    "7": "A",
+    "8": "B",
+    "9": "B",
+    "10": "C",
+    "11": "B",
+    "12": "B",
+    "13": "B",
+    "14": "C",
+    "15": "B",
+    "16": "B",
+    "17": "C",
+    "18": "B",
+    "19": "B",
+    "20": "B",
+    "21": "A",
+    "22": "B",
+    "23": "A",
+    "24": "D",
+    "25": "A",
+    "26": "C",
+    "27": "D",
+    "28": "A",
+    "29": "D",
+    "30": "A",
+    "31": "C",
+    "32": "D",
+    "33": "A",
+    "34": "D",
+    "35": "A",
+    "36": "C",
+    "37": "D",
+    "38": "A",
+    "39": "C",
+    "40": "D",
+    "41": "A",
+    "42": "C",
+    "43": "D",
+    "44": "A",
+    "45": "A",
+    "46": "C",
+    "47": "D",
+    "48": "C",
+    "49": "D",
+    "50": "A",
+    "51": "C",
+    "52": "D",
+    "53": "A",
+    "54": "A",
+    "55": "C",
+    "56": "D",
+    "57": "A",
+    "58": "C",
+    "59": "D",
+    "60": "C"
+  },
+  "figure_rules": [
+    "No SVG id attribute: an id is scoped to the whole HTML document, so two figures on one page collide.",
+    "No marker-start, marker-end or marker-mid; arrowheads are drawn as ordinary paths.",
+    "stroke=\"currentColor\" with color:inherit, so one copy reads on a light panel and a dark one.",
+    "No label has a line drawn through it; this is checked by measurement, not by eye."
+  ],
+  "provenance": "Original items authored for SPARK. The structure, language and item archetypes follow the CSEC Physics Paper 01 papers. No past-paper item is reproduced. This is not a Caribbean Examinations Council publication.",
+  "items": [
+    {
+      "item_id": "spark-phy-p01-practice-8-001",
+      "position": 1,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "Scientific Method and Measurement",
+      "subtopic": null,
+      "objective_code": "A1.7",
+      "objective_statement": "discuss possible types and sources of error in any measurement",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Reading the scale of a measuring instrument from an angle rather than square on introduces",
+      "options": [
+        {
+          "key": "A",
+          "text": "a zero error",
+          "is_correct": false,
+          "misconception": {
+            "code": "A1.7-D1",
+            "label": "A zero error comes from the instrument itself, not from where the eye is."
+          }
+        },
+        {
+          "key": "B",
+          "text": "a parallax error",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "a random error that averaging removes",
+          "is_correct": false,
+          "misconception": {
+            "code": "A1.7-D3",
+            "label": "Parallax is systematic if the eye is always to the same side, so averaging does not remove it."
+          }
+        },
+        {
+          "key": "D",
+          "text": "no error at all",
+          "is_correct": false,
+          "misconception": {
+            "code": "A1.7-D4",
+            "label": "The reading is definitely affected, sometimes by several divisions."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "The pointer and the scale lie in slightly different planes.",
+          "Viewed from an angle the pointer lines up against a graduation other than the true one.",
+          "The cure is to look square on, which some instruments help with by fitting a mirror behind the scale."
+        ],
+        "answer_line": "a parallax error"
+      },
+      "tags": [
+        "A",
+        "A1.7"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-002",
+      "position": 2,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "Scientific Method and Measurement",
+      "subtopic": null,
+      "objective_code": "A1.7",
+      "objective_statement": "discuss possible types and sources of error in any measurement",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A measuring instrument reads 0.3 cm when nothing is placed in it. This is an example of",
+      "options": [
+        {
+          "key": "A",
+          "text": "a random error",
+          "is_correct": false,
+          "misconception": {
+            "code": "A1.7-D1",
+            "label": "A random error scatters readings; this one is the same every time."
+          }
+        },
+        {
+          "key": "B",
+          "text": "a zero error",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "poor resolution",
+          "is_correct": false,
+          "misconception": {
+            "code": "A1.7-D3",
+            "label": "Resolution is the smallest division the instrument can show, which is a separate matter."
+          }
+        },
+        {
+          "key": "D",
+          "text": "parallax",
+          "is_correct": false,
+          "misconception": {
+            "code": "A1.7-D4",
+            "label": "Parallax is an error of viewing angle, and it varies from reading to reading."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "With nothing in the instrument the reading should be zero.",
+          "It reads 0.3 cm instead, and it will do so every time.",
+          "Every reading is therefore 0.3 cm too large, and 0.3 cm must be subtracted from each one."
+        ],
+        "answer_line": "a zero error"
+      },
+      "tags": [
+        "A",
+        "A1.7"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-003",
+      "position": 3,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "Scientific Method and Measurement",
+      "subtopic": "Finding a density",
+      "objective_code": "A1.10",
+      "objective_statement": "apply the formula for density: ρ = m / V",
+      "profile": "UK",
+      "profile_name": "Use of Knowledge",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "application",
+      "calculator_allowed": true,
+      "stimulus": {
+        "kind": "figure",
+        "group": null,
+        "label": "Item 3 refers to the following diagram of a stone being lowered into a displacement can, with the water that overflows collected in a measuring cylinder.",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 430 286\" width=\"100%\" style=\"max-width:420px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" font-family=\"Georgia,serif\" font-size=\"12\"><path d=\"M70 62 L70 216 L194 216 L194 62\" stroke-width=\"1.6\"/><path d=\"M194 88 L242 102\" stroke-width=\"1.6\"/><path d=\"M194 104 L238 114\" stroke-width=\"1.6\"/><path d=\"M72 96 L192 96 L192 214 L72 214 Z\" fill=\"currentColor\" fill-opacity=\"0.14\" stroke=\"none\"/><path d=\"M72 96 L192 96\" stroke-width=\"1.2\"/><path d=\"M132 28 L132 124\" stroke-width=\"1\"/><path d=\"M114 140 q6 -18 18 -16 q14 2 16 16 q2 14 -16 16 q-20 2 -18 -16 Z\" stroke-width=\"1.5\" fill=\"currentColor\" fill-opacity=\"0.2\"/><path d=\"M114 140 L50 124\" stroke-width=\"0.9\"/><text x=\"44\" y=\"124\" text-anchor=\"end\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">stone</text><path d=\"M256 140 L256 250 L324 250 L324 140\" stroke-width=\"1.6\"/><path d=\"M256 228 L268 228\" stroke-width=\"1\"/><path d=\"M256 206 L268 206\" stroke-width=\"1\"/><path d=\"M256 184 L268 184\" stroke-width=\"1\"/><path d=\"M256 162 L268 162\" stroke-width=\"1\"/><path d=\"M258 210 L322 210 L322 248 L258 248 Z\" fill=\"currentColor\" fill-opacity=\"0.14\" stroke=\"none\"/><path d=\"M258 210 L322 210\" stroke-width=\"1.2\"/><text x=\"290\" y=\"272\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">measuring cylinder</text><text x=\"132\" y=\"238\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">displacement can</text></svg>",
+        "alt": "A displacement can filled to its spout, with a stone on a thread being lowered into the water and the overflow running into a measuring cylinder."
+      },
+      "stem": "The stone has a mass of 120 g and the cylinder collects 40 cm³ of water. The density of the stone, in g/cm³, is",
+      "options": [
+        {
+          "key": "A",
+          "text": "0.33",
+          "is_correct": false,
+          "misconception": {
+            "code": "A1.10-D1",
+            "label": "This divides the volume by the mass instead of the mass by the volume."
+          }
+        },
+        {
+          "key": "B",
+          "text": "3.0",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "80",
+          "is_correct": false,
+          "misconception": {
+            "code": "A1.10-D3",
+            "label": "This subtracts the volume from the mass, which is meaningless."
+          }
+        },
+        {
+          "key": "D",
+          "text": "4800",
+          "is_correct": false,
+          "misconception": {
+            "code": "A1.10-D4",
+            "label": "This multiplies the mass by the volume instead of dividing."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "The can is filled to the spout, so the water pushed out has exactly the volume of the stone.",
+          "The measuring cylinder reads 40 cm³, so the stone's volume is 40 cm³.",
+          "Density = mass ÷ volume = 120 ÷ 40 = 3.0 g/cm³."
+        ],
+        "answer_line": "3.0"
+      },
+      "tags": [
+        "A",
+        "A1.10",
+        "diagram"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-004",
+      "position": 4,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "Scientific Method and Measurement",
+      "subtopic": null,
+      "objective_code": "A1.10",
+      "objective_statement": "apply the formula for density: ρ = m / V",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A solid block is cut exactly in half. Compared with the whole block, each half has",
+      "options": [
+        {
+          "key": "A",
+          "text": "half the density",
+          "is_correct": false,
+          "misconception": {
+            "code": "A1.10-D1",
+            "label": "Halving the mass alone would halve the density, but the volume halves too."
+          }
+        },
+        {
+          "key": "B",
+          "text": "a quarter of the density",
+          "is_correct": false,
+          "misconception": {
+            "code": "A1.10-D2",
+            "label": "Neither the mass nor the volume falls to a quarter."
+          }
+        },
+        {
+          "key": "C",
+          "text": "twice the density",
+          "is_correct": false,
+          "misconception": {
+            "code": "A1.10-D3",
+            "label": "Nothing about cutting a block makes it denser."
+          }
+        },
+        {
+          "key": "D",
+          "text": "the same density",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "Density is ρ = m / V.",
+          "Cutting the block in half halves the mass and halves the volume.",
+          "Halving the top and the bottom of a fraction leaves it unchanged, so each half has the same density as the whole. Density is a property of the substance, not of how much of it there is."
+        ],
+        "answer_line": "the same density"
+      },
+      "tags": [
+        "A",
+        "A1.10"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-005",
+      "position": 5,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "Statics and Vectors",
+      "subtopic": null,
+      "objective_code": "A2.1",
+      "objective_statement": "distinguish between scalars and vectors and give examples of each",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Which quantity is a vector?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Mass",
+          "is_correct": false,
+          "misconception": {
+            "code": "A2.1-D1",
+            "label": "Mass is a scalar; a body has the same mass whichever way it faces."
+          }
+        },
+        {
+          "key": "B",
+          "text": "Energy",
+          "is_correct": false,
+          "misconception": {
+            "code": "A2.1-D2",
+            "label": "Energy is a scalar; it has no direction."
+          }
+        },
+        {
+          "key": "C",
+          "text": "Acceleration",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Time",
+          "is_correct": false,
+          "misconception": {
+            "code": "A2.1-D4",
+            "label": "Time is a scalar."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "A vector has both magnitude and direction; a scalar has magnitude only.",
+          "Acceleration says how quickly the velocity changes and in what direction.",
+          "Mass, energy and time all have size alone."
+        ],
+        "answer_line": "Acceleration"
+      },
+      "tags": [
+        "A",
+        "A2.1"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-006",
+      "position": 6,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "Statics and Vectors",
+      "subtopic": null,
+      "objective_code": "A2.2",
+      "objective_statement": "use scale diagrams to find the resultant of two vectors",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Two forces of 5 N and 3 N act on a body at the same point. The resultant CANNOT be",
+      "options": [
+        {
+          "key": "A",
+          "text": "8 N",
+          "is_correct": false,
+          "misconception": {
+            "code": "A2.2-D1",
+            "label": "8 N is the sum, obtained when the forces act in the same direction."
+          }
+        },
+        {
+          "key": "B",
+          "text": "2 N",
+          "is_correct": false,
+          "misconception": {
+            "code": "A2.2-D2",
+            "label": "2 N is the difference, obtained when they act in opposite directions."
+          }
+        },
+        {
+          "key": "C",
+          "text": "4 N",
+          "is_correct": false,
+          "misconception": {
+            "code": "A2.2-D3",
+            "label": "4 N lies between 2 N and 8 N and is obtained at a suitable angle."
+          }
+        },
+        {
+          "key": "D",
+          "text": "10 N",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "Forces in the same direction give the largest resultant, 5 + 3 = 8 N.",
+          "Forces in opposite directions give the smallest, 5 − 3 = 2 N.",
+          "Every angle in between gives a resultant somewhere between 2 N and 8 N, so 10 N is impossible."
+        ],
+        "answer_line": "10 N"
+      },
+      "tags": [
+        "A",
+        "A2.2"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-007",
+      "position": 7,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "Statics and Vectors",
+      "subtopic": null,
+      "objective_code": "A2.2",
+      "objective_statement": "use scale diagrams to find the resultant of two vectors",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Two forces of 5 N and 3 N act at a point in opposite directions. The magnitude of their resultant, in N, is",
+      "options": [
+        {
+          "key": "A",
+          "text": "2",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "4",
+          "is_correct": false,
+          "misconception": {
+            "code": "A2.2-D2",
+            "label": "That would be the resultant if the forces were at right angles."
+          }
+        },
+        {
+          "key": "C",
+          "text": "8",
+          "is_correct": false,
+          "misconception": {
+            "code": "A2.2-D3",
+            "label": "That is the sum, which applies when they act in the same direction."
+          }
+        },
+        {
+          "key": "D",
+          "text": "15",
+          "is_correct": false,
+          "misconception": {
+            "code": "A2.2-D4",
+            "label": "Forces are not multiplied."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "The two forces act along the same straight line.",
+          "Acting in opposite directions, they partly cancel.",
+          "The resultant is 5 − 3 = 2 N, in the direction of the larger force."
+        ],
+        "answer_line": "2"
+      },
+      "tags": [
+        "A",
+        "A2.2"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-008",
+      "position": 8,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "Statics and Vectors",
+      "subtopic": null,
+      "objective_code": "A2.3",
+      "objective_statement": "calculate the resultant of vectors which are parallel, anti-parallel and perpendicular",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A body is in equilibrium under the action of three forces. The three forces must",
+      "options": [
+        {
+          "key": "A",
+          "text": "be equal in size",
+          "is_correct": false,
+          "misconception": {
+            "code": "A2.3-D1",
+            "label": "They need not be equal; a small force at a large angle can balance two others."
+          }
+        },
+        {
+          "key": "B",
+          "text": "have a resultant of zero",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "all act in the same direction",
+          "is_correct": false,
+          "misconception": {
+            "code": "A2.3-D3",
+            "label": "Forces all in one direction would add, not cancel."
+          }
+        },
+        {
+          "key": "D",
+          "text": "all be at right angles to each other",
+          "is_correct": false,
+          "misconception": {
+            "code": "A2.3-D4",
+            "label": "Three forces cannot all be at right angles to one another in a plane."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "A body in equilibrium is not accelerating.",
+          "By Newton's second law that means the resultant force on it is zero.",
+          "Drawn head to tail the three forces therefore form a closed triangle."
+        ],
+        "answer_line": "have a resultant of zero"
+      },
+      "tags": [
+        "A",
+        "A2.3"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-009",
+      "position": 9,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "Motion",
+      "subtopic": null,
+      "objective_code": "A3.3",
+      "objective_statement": "determine the weight of objects",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "The mass of a body differs from its weight in that mass",
+      "options": [
+        {
+          "key": "A",
+          "text": "is measured in newtons",
+          "is_correct": false,
+          "misconception": {
+            "code": "A3.3-D1",
+            "label": "Mass is measured in kilograms; weight is in newtons."
+          }
+        },
+        {
+          "key": "B",
+          "text": "is the same everywhere, while weight depends on g",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "is a vector while weight is a scalar",
+          "is_correct": false,
+          "misconception": {
+            "code": "A3.3-D3",
+            "label": "Mass is the scalar and weight, being a force, is the vector."
+          }
+        },
+        {
+          "key": "D",
+          "text": "changes when the body is moved to the Moon",
+          "is_correct": false,
+          "misconception": {
+            "code": "A3.3-D4",
+            "label": "Mass is unchanged on the Moon; weight is about a sixth of its value on the Earth."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "Mass measures how much matter a body contains and how hard it is to accelerate.",
+          "Weight is the pull of gravity on that mass, W = mg.",
+          "Taking the body to the Moon leaves m unchanged but reduces g, so the weight falls while the mass does not."
+        ],
+        "answer_line": "is the same everywhere, while weight depends on g"
+      },
+      "tags": [
+        "A",
+        "A3.3"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-010",
+      "position": 10,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "Scientific Method and Measurement",
+      "subtopic": null,
+      "objective_code": "A3.4",
+      "objective_statement": "show how derived quantities and their related units are produced",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Which quantity is NOT a base quantity in the SI system?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Length",
+          "is_correct": false,
+          "misconception": {
+            "code": "A3.4-D1",
+            "label": "Length is a base quantity, measured in metres."
+          }
+        },
+        {
+          "key": "B",
+          "text": "Time",
+          "is_correct": false,
+          "misconception": {
+            "code": "A3.4-D2",
+            "label": "Time is a base quantity, measured in seconds."
+          }
+        },
+        {
+          "key": "C",
+          "text": "Force",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "Electric current",
+          "is_correct": false,
+          "misconception": {
+            "code": "A3.4-D4",
+            "label": "Electric current is a base quantity, measured in amperes."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "A base quantity is one the system defines directly rather than building from others.",
+          "Force comes from F = ma, which uses mass, length and time.",
+          "So force is derived, and the newton is a derived unit equal to kg m s⁻²."
+        ],
+        "answer_line": "Force"
+      },
+      "tags": [
+        "A",
+        "A3.4"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-011",
+      "position": 11,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "Scientific Method and Measurement",
+      "subtopic": null,
+      "objective_code": "A3.4",
+      "objective_statement": "show how derived quantities and their related units are produced",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "The SI base unit of mass is the",
+      "options": [
+        {
+          "key": "A",
+          "text": "gram",
+          "is_correct": false,
+          "misconception": {
+            "code": "A3.4-D1",
+            "label": "The gram is a submultiple of the base unit, not the base unit itself."
+          }
+        },
+        {
+          "key": "B",
+          "text": "kilogram",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "newton",
+          "is_correct": false,
+          "misconception": {
+            "code": "A3.4-D3",
+            "label": "The newton is the unit of force, and it is derived rather than basic."
+          }
+        },
+        {
+          "key": "D",
+          "text": "tonne",
+          "is_correct": false,
+          "misconception": {
+            "code": "A3.4-D4",
+            "label": "The tonne is a multiple used for convenience, not an SI base unit."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "The SI base units include the metre, the kilogram, the second, the ampere and the kelvin.",
+          "Mass is measured in the kilogram.",
+          "The gram and the tonne are simply larger and smaller amounts of the same quantity."
+        ],
+        "answer_line": "kilogram"
+      },
+      "tags": [
+        "A",
+        "A3.4"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-012",
+      "position": 12,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "Statics",
+      "subtopic": "The pulley as a machine",
+      "objective_code": "A3.10",
+      "objective_statement": "explain the action of common tools and devices as levers",
+      "profile": "UK",
+      "profile_name": "Use of Knowledge",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "application",
+      "calculator_allowed": true,
+      "stimulus": {
+        "kind": "figure",
+        "group": null,
+        "label": "Item 12 refers to the following diagram of a block and tackle in which two lengths of rope support the moving pulley.",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 360 310\" width=\"100%\" style=\"max-width:350px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" font-family=\"Georgia,serif\" font-size=\"12\"><path d=\"M120 34 L270 34\"/><path d=\"M127.5 34 L121.5 44\" stroke-width=\"1\"/><path d=\"M142.5 34 L136.5 44\" stroke-width=\"1\"/><path d=\"M157.5 34 L151.5 44\" stroke-width=\"1\"/><path d=\"M172.5 34 L166.5 44\" stroke-width=\"1\"/><path d=\"M187.5 34 L181.5 44\" stroke-width=\"1\"/><path d=\"M202.5 34 L196.5 44\" stroke-width=\"1\"/><path d=\"M217.5 34 L211.5 44\" stroke-width=\"1\"/><path d=\"M232.5 34 L226.5 44\" stroke-width=\"1\"/><path d=\"M247.5 34 L241.5 44\" stroke-width=\"1\"/><path d=\"M262.5 34 L256.5 44\" stroke-width=\"1\"/><path d=\"M160 34 L160 196\" stroke-width=\"1.3\"/><path d=\"M160 196 A24 24 0 0 0 208 196\" stroke-width=\"1.3\"/><path d=\"M208 196 L208 74\" stroke-width=\"1.3\"/><path d=\"M208 74 A24 24 0 0 1 256 74\" stroke-width=\"1.3\"/><path d=\"M256 74 L256 244\" stroke-width=\"1.3\"/><path d=\"M256 244 L256 276\" stroke-width=\"1.8\"/><path d=\"M256 276 L258.9 269.0 L253.1 269.0 Z\" fill=\"currentColor\" stroke=\"none\"/><text x=\"256\" y=\"294\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">effort</text><path d=\"M232 34 L232 50\" stroke-width=\"1.4\"/><circle cx=\"232\" cy=\"74\" r=\"24\" fill=\"#ffffff\" fill-opacity=\"0\"/><circle cx=\"232\" cy=\"74\" r=\"3\" fill=\"currentColor\"/><circle cx=\"184\" cy=\"196\" r=\"24\" fill=\"#ffffff\" fill-opacity=\"0\"/><circle cx=\"184\" cy=\"196\" r=\"3\" fill=\"currentColor\"/><path d=\"M184 220 L184 244\" stroke-width=\"1.3\"/><rect x=\"150\" y=\"244\" width=\"68\" height=\"40\" stroke-width=\"1.6\" fill=\"currentColor\" fill-opacity=\"0.1\"/><text x=\"140\" y=\"268\" text-anchor=\"end\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">load</text></svg>",
+        "alt": "A block and tackle with one fixed pulley above and one moving pulley below. The load hangs from the moving pulley and the effort is applied to the free end of the rope."
+      },
+      "stem": "Friction and the weight of the pulleys being neglected, a load of 200 N is raised by an effort of",
+      "options": [
+        {
+          "key": "A",
+          "text": "50 N",
+          "is_correct": false,
+          "misconception": {
+            "code": "A3.10-D1",
+            "label": "That would need four supporting ropes, not two."
+          }
+        },
+        {
+          "key": "B",
+          "text": "100 N",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "200 N",
+          "is_correct": false,
+          "misconception": {
+            "code": "A3.10-D3",
+            "label": "The effort equals the load only when a single fixed pulley is used, which changes direction but not size."
+          }
+        },
+        {
+          "key": "D",
+          "text": "400 N",
+          "is_correct": false,
+          "misconception": {
+            "code": "A3.10-D4",
+            "label": "The machine reduces the effort; it does not double it."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "Count the rope lengths supporting the moving pulley: there are two.",
+          "They share the 200 N load, so each carries 100 N.",
+          "The tension is the same all the way along a single rope, so the effort at the free end is 100 N. The effort must be pulled through twice the distance the load rises."
+        ],
+        "answer_line": "100 N"
+      },
+      "tags": [
+        "A",
+        "A3.10",
+        "diagram"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-013",
+      "position": 13,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "Motion",
+      "subtopic": null,
+      "objective_code": "A4.2",
+      "objective_statement": "apply displacement- time and velocity- time graphs",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "On a velocity-time graph, the area between the line and the time axis represents the",
+      "options": [
+        {
+          "key": "A",
+          "text": "acceleration",
+          "is_correct": false,
+          "misconception": {
+            "code": "A4.2-D1",
+            "label": "Acceleration is the gradient of the line, not the area under it."
+          }
+        },
+        {
+          "key": "B",
+          "text": "distance travelled",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "average speed",
+          "is_correct": false,
+          "misconception": {
+            "code": "A4.2-D3",
+            "label": "Average speed is the total distance divided by the total time, not the area itself."
+          }
+        },
+        {
+          "key": "D",
+          "text": "force applied",
+          "is_correct": false,
+          "misconception": {
+            "code": "A4.2-D4",
+            "label": "Force does not appear on a velocity-time graph."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "Take a thin strip under the line, of height v and width t.",
+          "Its area is v × t, which is a distance.",
+          "Adding all the strips gives the whole distance travelled."
+        ],
+        "answer_line": "distance travelled"
+      },
+      "tags": [
+        "A",
+        "A4.2"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-014",
+      "position": 14,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "Motion",
+      "subtopic": null,
+      "objective_code": "A4.4",
+      "objective_statement": "state Newton's three laws of motion",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Newton's third law of motion states that",
+      "options": [
+        {
+          "key": "A",
+          "text": "a body stays at rest unless a force acts on it",
+          "is_correct": false,
+          "misconception": {
+            "code": "A4.4-D1",
+            "label": "That is the first law."
+          }
+        },
+        {
+          "key": "B",
+          "text": "force equals mass times acceleration",
+          "is_correct": false,
+          "misconception": {
+            "code": "A4.4-D2",
+            "label": "That is the second law."
+          }
+        },
+        {
+          "key": "C",
+          "text": "to every action there is an equal and opposite reaction",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "momentum is always conserved",
+          "is_correct": false,
+          "misconception": {
+            "code": "A4.4-D4",
+            "label": "Conservation of momentum follows from the third law but is not the law itself."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "The first law is about a body with no resultant force on it.",
+          "The second law relates the resultant force to the acceleration.",
+          "The third law says forces come in equal and opposite pairs acting on different bodies."
+        ],
+        "answer_line": "to every action there is an equal and opposite reaction"
+      },
+      "tags": [
+        "A",
+        "A4.4"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-015",
+      "position": 15,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "Motion",
+      "subtopic": null,
+      "objective_code": "A4.4",
+      "objective_statement": "state Newton's three laws of motion",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Newton's first law states that a body continues at rest or at constant velocity unless",
+      "options": [
+        {
+          "key": "A",
+          "text": "it runs out of energy",
+          "is_correct": false,
+          "misconception": {
+            "code": "A4.4-D1",
+            "label": "A body in motion does not use up energy to keep moving; only overcoming friction does that."
+          }
+        },
+        {
+          "key": "B",
+          "text": "a resultant external force acts on it",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "its mass changes",
+          "is_correct": false,
+          "misconception": {
+            "code": "A4.4-D3",
+            "label": "The law is about forces, not about mass changing."
+          }
+        },
+        {
+          "key": "D",
+          "text": "friction is removed",
+          "is_correct": false,
+          "misconception": {
+            "code": "A4.4-D4",
+            "label": "Removing friction lets the body keep moving, which is the law working, not an exception to it."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "Everyday experience suggests a moving body slows down on its own.",
+          "It slows because friction and air resistance act on it.",
+          "Remove those and nothing changes the motion, which is what the first law states."
+        ],
+        "answer_line": "a resultant external force acts on it"
+      },
+      "tags": [
+        "A",
+        "A4.4"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-016",
+      "position": 16,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "Motion",
+      "subtopic": null,
+      "objective_code": "A4.5",
+      "objective_statement": "use Newton's laws to explain dynamic systems",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A parachutist reaches terminal velocity when",
+      "options": [
+        {
+          "key": "A",
+          "text": "the weight becomes zero",
+          "is_correct": false,
+          "misconception": {
+            "code": "A4.5-D1",
+            "label": "The weight does not change during the fall."
+          }
+        },
+        {
+          "key": "B",
+          "text": "the air resistance becomes equal to the weight",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "the parachute is opened",
+          "is_correct": false,
+          "misconception": {
+            "code": "A4.5-D3",
+            "label": "Opening the parachute changes the terminal velocity but is not what defines reaching it."
+          }
+        },
+        {
+          "key": "D",
+          "text": "the acceleration reaches its largest value",
+          "is_correct": false,
+          "misconception": {
+            "code": "A4.5-D4",
+            "label": "At terminal velocity the acceleration is zero, which is its smallest value, not its largest."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "As the speed rises, so does the air resistance.",
+          "At some speed the air resistance has grown until it equals the weight.",
+          "The resultant force is then zero, so the acceleration is zero and the speed stays constant."
+        ],
+        "answer_line": "the air resistance becomes equal to the weight"
+      },
+      "tags": [
+        "A",
+        "A4.5"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-017",
+      "position": 17,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "Hydrostatics",
+      "subtopic": "The hydraulic press",
+      "objective_code": "A6.1",
+      "objective_statement": "define pressure and apply definition",
+      "profile": "UK",
+      "profile_name": "Use of Knowledge",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "application",
+      "calculator_allowed": true,
+      "stimulus": {
+        "kind": "figure",
+        "group": null,
+        "label": "Item 17 refers to the following diagram of a hydraulic press in which the small piston has an area of 4 cm² and the large piston an area of 100 cm².",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 420 250\" width=\"100%\" style=\"max-width:410px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" font-family=\"Georgia,serif\" font-size=\"12\"><path d=\"M74 118 L74 200 L244 200 L244 118\" stroke-width=\"0\"/><path d=\"M74 118 L74 178\" stroke-width=\"1.6\"/><path d=\"M118 118 L118 178\" stroke-width=\"1.6\"/><path d=\"M244 96 L244 178\" stroke-width=\"1.6\"/><path d=\"M356 96 L356 178\" stroke-width=\"1.6\"/><path d=\"M74 178 L74 200\" stroke-width=\"1.6\"/><path d=\"M356 178 L356 200\" stroke-width=\"1.6\"/><path d=\"M74 200 L356 200\" stroke-width=\"1.6\"/><path d=\"M118 178 L244 178\" stroke-width=\"1.6\"/><path d=\"M76 142 L116 142 L116 176 L242 176 L242 120 L358 120 L358 198 L76 198 Z\" fill=\"currentColor\" fill-opacity=\"0.13\" stroke=\"none\"/><rect x=\"74\" y=\"130\" width=\"44\" height=\"14\" stroke-width=\"1.5\" fill=\"currentColor\" fill-opacity=\"0.25\"/><rect x=\"244\" y=\"108\" width=\"112\" height=\"14\" stroke-width=\"1.5\" fill=\"currentColor\" fill-opacity=\"0.25\"/><path d=\"M96 74 L96 126\" stroke-width=\"1.8\"/><path d=\"M96 126 L98.9 119.0 L93.1 119.0 Z\" fill=\"currentColor\" stroke=\"none\"/><text x=\"96\" y=\"62\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">effort</text><path d=\"M300 74 L300 56\" stroke-width=\"1.8\"/><path d=\"M300 56 L297.1 63.0 L302.9 63.0 Z\" fill=\"currentColor\" stroke=\"none\"/><text x=\"300\" y=\"44\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">load</text><path d=\"M300 104 L300 78\" stroke-width=\"1.4\"/><text x=\"96\" y=\"232\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">area 4 cm²</text><text x=\"300\" y=\"232\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">area 100 cm²</text></svg>",
+        "alt": "A hydraulic press. An effort is applied to a small piston of area 4 square centimetres and the load rests on a large piston of area 100 square centimetres, the two joined by liquid."
+      },
+      "stem": "An effort of 20 N on the small piston will support a load of",
+      "options": [
+        {
+          "key": "A",
+          "text": "0.8 N",
+          "is_correct": false,
+          "misconception": {
+            "code": "A6.1-D1",
+            "label": "This divides by the area ratio instead of multiplying."
+          }
+        },
+        {
+          "key": "B",
+          "text": "20 N",
+          "is_correct": false,
+          "misconception": {
+            "code": "A6.1-D2",
+            "label": "The press would be pointless if the load equalled the effort."
+          }
+        },
+        {
+          "key": "C",
+          "text": "500 N",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "2000 N",
+          "is_correct": false,
+          "misconception": {
+            "code": "A6.1-D4",
+            "label": "This multiplies the effort by 100 without first dividing by the area of the small piston."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "Pressure under the small piston = force ÷ area = 20 ÷ 4 = 5 N/cm².",
+          "That pressure is transmitted undiminished through the liquid to the large piston.",
+          "Force on the large piston = pressure × area = 5 × 100 = 500 N. The small piston must move 25 times as far as the large one, so no energy is created."
+        ],
+        "answer_line": "500 N"
+      },
+      "tags": [
+        "A",
+        "A6.1",
+        "diagram"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-018",
+      "position": 18,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "B",
+      "section_name": "Thermal Physics and Kinetic Theory",
+      "topic": "Nature of Heat",
+      "subtopic": null,
+      "objective_code": "B1.2",
+      "objective_statement": "discuss the role of Joule’s experiments in establishing the principle of conservation of energy",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Joule's experiments were important because they established that",
+      "options": [
+        {
+          "key": "A",
+          "text": "heat is a fluid stored in bodies",
+          "is_correct": false,
+          "misconception": {
+            "code": "B1.2-D1",
+            "label": "That is the caloric theory Joule's work helped to overturn."
+          }
+        },
+        {
+          "key": "B",
+          "text": "a fixed amount of mechanical work always produces the same amount of heat",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "heat always flows from cold to hot",
+          "is_correct": false,
+          "misconception": {
+            "code": "B1.2-D3",
+            "label": "Net flow is always from hot to cold."
+          }
+        },
+        {
+          "key": "D",
+          "text": "temperature and thermal energy are the same thing",
+          "is_correct": false,
+          "misconception": {
+            "code": "B1.2-D4",
+            "label": "The two are different: temperature says how hot, thermal energy says how much."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "Joule stirred water with paddles driven by falling weights and measured the temperature rise.",
+          "Whatever the arrangement, the same amount of work always gave the same amount of heating.",
+          "That fixed ratio meant work was being converted into thermal energy, not that some fluid was being released."
+        ],
+        "answer_line": "a fixed amount of mechanical work always produces the same amount of heat"
+      },
+      "tags": [
+        "B",
+        "B1.2"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-019",
+      "position": 19,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "B",
+      "section_name": "Thermal Physics and Kinetic Theory",
+      "topic": "Macroscopic Properties and Phenomena",
+      "subtopic": null,
+      "objective_code": "B2.8",
+      "objective_statement": "explain observations of the effects of thermal expansion",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A bimetallic strip bends when it is heated because the two metals have different",
+      "options": [
+        {
+          "key": "A",
+          "text": "melting points",
+          "is_correct": false,
+          "misconception": {
+            "code": "B2.8-D1",
+            "label": "Neither metal melts at the temperatures a bimetallic strip is used at."
+          }
+        },
+        {
+          "key": "B",
+          "text": "rates of expansion",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "densities",
+          "is_correct": false,
+          "misconception": {
+            "code": "B2.8-D3",
+            "label": "Density does not cause bending."
+          }
+        },
+        {
+          "key": "D",
+          "text": "specific heat capacities",
+          "is_correct": false,
+          "misconception": {
+            "code": "B2.8-D4",
+            "label": "A different specific heat capacity would change how fast each warms, not how much each lengthens."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "Two different metals are riveted or welded together along their length.",
+          "Heating makes both expand, but one expands more than the other.",
+          "They are joined, so the strip has to curve, with the metal that expanded more on the outside of the curve."
+        ],
+        "answer_line": "rates of expansion"
+      },
+      "tags": [
+        "B",
+        "B2.8"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-020",
+      "position": 20,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "B",
+      "section_name": "Thermal Physics and Kinetic Theory",
+      "topic": "Macroscopic Properties and Phenomena",
+      "subtopic": null,
+      "objective_code": "B2.9",
+      "objective_statement": "relate graphs of pressure or volume against temperature to the establishment of the Kelvin temperature scale",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "The absolute zero of temperature is the temperature at which",
+      "options": [
+        {
+          "key": "A",
+          "text": "water freezes",
+          "is_correct": false,
+          "misconception": {
+            "code": "B2.9-D1",
+            "label": "Water freezes at 0 degrees Celsius, which is 273 K, not absolute zero."
+          }
+        },
+        {
+          "key": "B",
+          "text": "the particles of a substance have their least possible energy",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "all gases liquefy",
+          "is_correct": false,
+          "misconception": {
+            "code": "B2.9-D3",
+            "label": "Gases liquefy at a range of temperatures, all above absolute zero."
+          }
+        },
+        {
+          "key": "D",
+          "text": "a mercury thermometer stops working",
+          "is_correct": false,
+          "misconception": {
+            "code": "B2.9-D4",
+            "label": "Mercury freezes at about 234 K, well above absolute zero, but that is a property of mercury."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "A graph of pressure against temperature for a fixed mass of gas at constant volume is a straight line.",
+          "Extended backwards it meets zero pressure at about minus 273 degrees Celsius.",
+          "Zero pressure means no impacts on the walls, so the particle energy is as low as it can be."
+        ],
+        "answer_line": "the particles of a substance have their least possible energy"
+      },
+      "tags": [
+        "B",
+        "B2.9"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-021",
+      "position": 21,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "B",
+      "section_name": "Thermal Physics and Kinetic Theory",
+      "topic": "Thermal Measurements",
+      "subtopic": null,
+      "objective_code": "B3.1",
+      "objective_statement": "distinguish between specific heat capacity, ‘c’ and heat capacity ‘C’",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "The SI unit of specific heat capacity is the",
+      "options": [
+        {
+          "key": "A",
+          "text": "joule per kilogram per kelvin",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "joule",
+          "is_correct": false,
+          "misconception": {
+            "code": "B3.1-D2",
+            "label": "The joule alone is the unit of energy."
+          }
+        },
+        {
+          "key": "C",
+          "text": "joule per kelvin",
+          "is_correct": false,
+          "misconception": {
+            "code": "B3.1-D3",
+            "label": "Joules per kelvin is the unit of heat capacity, which is for the whole object."
+          }
+        },
+        {
+          "key": "D",
+          "text": "watt",
+          "is_correct": false,
+          "misconception": {
+            "code": "B3.1-D4",
+            "label": "The watt is the unit of power."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "From EH = mcΔT, rearranging gives c = EH / (mΔT).",
+          "Energy is in joules, mass in kilograms and temperature change in kelvin.",
+          "So the unit of c is J/(kg K)."
+        ],
+        "answer_line": "joule per kilogram per kelvin"
+      },
+      "tags": [
+        "B",
+        "B3.1"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-022",
+      "position": 22,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "B",
+      "section_name": "Thermal Physics and Kinetic Theory",
+      "topic": "Thermal Measurements",
+      "subtopic": "Specific heat capacity by the electrical method",
+      "objective_code": "B3.2",
+      "objective_statement": "apply the relationship EH = mc ΔT",
+      "profile": "UK",
+      "profile_name": "Use of Knowledge",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "application",
+      "calculator_allowed": true,
+      "stimulus": {
+        "kind": "figure",
+        "group": "calo",
+        "label": "Items 22 and 23 refer to the following diagram of a lagged metal block of mass 2.0 kg heated by an electric immersion heater.",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 440 300\" width=\"100%\" style=\"max-width:430px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" font-family=\"Georgia,serif\" font-size=\"12\"><rect x=\"148\" y=\"96\" width=\"124\" height=\"150\" stroke-width=\"1.8\" fill=\"currentColor\" fill-opacity=\"0.09\"/><rect x=\"174\" y=\"94\" width=\"18\" height=\"92\" stroke-width=\"1.2\"/><rect x=\"228\" y=\"94\" width=\"14\" height=\"74\" stroke-width=\"1.2\"/><path d=\"M183 182 L183 44\" stroke-width=\"2\"/><text x=\"183\" y=\"34\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">heater</text><rect x=\"231\" y=\"20\" width=\"8\" height=\"146\" stroke-width=\"1.3\"/><circle cx=\"235\" cy=\"170\" r=\"7\" stroke-width=\"1.3\" fill=\"currentColor\" fill-opacity=\"0.3\"/><text x=\"235\" y=\"10\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">thermometer</text><rect x=\"132\" y=\"80\" width=\"156\" height=\"182\" stroke-width=\"1.2\" stroke-dasharray=\"6 4\"/><text x=\"298\" y=\"171\" text-anchor=\"start\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">lagging</text><path d=\"M288 167 L294 167\" stroke-width=\"0.9\"/><text x=\"210\" y=\"290\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">metal block, mass 2.0 kg</text></svg>",
+        "alt": "A lagged metal block of mass 2.0 kilograms with an electric immersion heater in one hole and a thermometer in another."
+      },
+      "stem": "The heater supplies 36 000 J and the temperature of the block rises by 20 K. The specific heat capacity of the metal, in J/(kg K), is",
+      "options": [
+        {
+          "key": "A",
+          "text": "360",
+          "is_correct": false,
+          "misconception": {
+            "code": "B3.2-D1",
+            "label": "This divides by 100 rather than by the product of the mass and the temperature rise."
+          }
+        },
+        {
+          "key": "B",
+          "text": "900",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "1800",
+          "is_correct": false,
+          "misconception": {
+            "code": "B3.2-D3",
+            "label": "This forgets the mass and divides only by the temperature rise."
+          }
+        },
+        {
+          "key": "D",
+          "text": "72 000",
+          "is_correct": false,
+          "misconception": {
+            "code": "B3.2-D4",
+            "label": "This multiplies instead of dividing."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "The energy supplied is EH = mcΔT.",
+          "Rearranging gives c = EH ÷ (m ΔT).",
+          "c = 36 000 ÷ (2.0 × 20) = 36 000 ÷ 40 = 900 J/(kg K)."
+        ],
+        "answer_line": "900"
+      },
+      "tags": [
+        "B",
+        "B3.2",
+        "diagram"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-023",
+      "position": 23,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "B",
+      "section_name": "Thermal Physics and Kinetic Theory",
+      "topic": "Thermal Measurements",
+      "subtopic": "Sources of error in the experiment",
+      "objective_code": "B3.3",
+      "objective_statement": "determine the specific heat capacity of metals and liquids",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": {
+        "kind": "figure",
+        "group": "calo",
+        "label": "Items 22 and 23 refer to the following diagram of a lagged metal block of mass 2.0 kg heated by an electric immersion heater.",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 440 300\" width=\"100%\" style=\"max-width:430px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" font-family=\"Georgia,serif\" font-size=\"12\"><rect x=\"148\" y=\"96\" width=\"124\" height=\"150\" stroke-width=\"1.8\" fill=\"currentColor\" fill-opacity=\"0.09\"/><rect x=\"174\" y=\"94\" width=\"18\" height=\"92\" stroke-width=\"1.2\"/><rect x=\"228\" y=\"94\" width=\"14\" height=\"74\" stroke-width=\"1.2\"/><path d=\"M183 182 L183 44\" stroke-width=\"2\"/><text x=\"183\" y=\"34\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">heater</text><rect x=\"231\" y=\"20\" width=\"8\" height=\"146\" stroke-width=\"1.3\"/><circle cx=\"235\" cy=\"170\" r=\"7\" stroke-width=\"1.3\" fill=\"currentColor\" fill-opacity=\"0.3\"/><text x=\"235\" y=\"10\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">thermometer</text><rect x=\"132\" y=\"80\" width=\"156\" height=\"182\" stroke-width=\"1.2\" stroke-dasharray=\"6 4\"/><text x=\"298\" y=\"171\" text-anchor=\"start\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">lagging</text><path d=\"M288 167 L294 167\" stroke-width=\"0.9\"/><text x=\"210\" y=\"290\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">metal block, mass 2.0 kg</text></svg>",
+        "alt": "A lagged metal block of mass 2.0 kilograms with an electric immersion heater in one hole and a thermometer in another."
+      },
+      "stem": "Any energy that still escapes to the surroundings makes the calculated value of the specific heat capacity",
+      "options": [
+        {
+          "key": "A",
+          "text": "too large",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "too small",
+          "is_correct": false,
+          "misconception": {
+            "code": "B3.3-D2",
+            "label": "A loss makes the calculated value larger, not smaller."
+          }
+        },
+        {
+          "key": "C",
+          "text": "unaffected",
+          "is_correct": false,
+          "misconception": {
+            "code": "B3.3-D3",
+            "label": "It certainly affects the result, which is why the block is lagged."
+          }
+        },
+        {
+          "key": "D",
+          "text": "negative",
+          "is_correct": false,
+          "misconception": {
+            "code": "B3.3-D4",
+            "label": "Nothing in the calculation can turn negative."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "The calculation is c = EH ÷ (m ΔT), using all the energy the heater supplied.",
+          "If some of that energy escaped, the block received less, so ΔT is smaller than it should have been.",
+          "A smaller ΔT on the bottom of the fraction makes c come out larger than the true value."
+        ],
+        "answer_line": "too large"
+      },
+      "tags": [
+        "B",
+        "B3.3",
+        "diagram"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-024",
+      "position": 24,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "B",
+      "section_name": "Thermal Physics and Kinetic Theory",
+      "topic": "Thermal Measurements",
+      "subtopic": null,
+      "objective_code": "B3.3",
+      "objective_statement": "determine the specific heat capacity of metals and liquids",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "In an experiment to find the specific heat capacity of a metal block, the block is lagged in order to",
+      "options": [
+        {
+          "key": "A",
+          "text": "make it heat up more slowly",
+          "is_correct": false,
+          "misconception": {
+            "code": "B3.3-D1",
+            "label": "Lagging makes it warm up faster, not more slowly, because less energy escapes."
+          }
+        },
+        {
+          "key": "B",
+          "text": "spread the heat evenly through the block",
+          "is_correct": false,
+          "misconception": {
+            "code": "B3.3-D2",
+            "label": "Even heating comes from conduction through the metal, not from the lagging."
+          }
+        },
+        {
+          "key": "C",
+          "text": "keep the thermometer in place",
+          "is_correct": false,
+          "misconception": {
+            "code": "B3.3-D3",
+            "label": "The thermometer is held by the hole drilled for it."
+          }
+        },
+        {
+          "key": "D",
+          "text": "reduce the energy lost to the surroundings",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "The calculation assumes all the electrical energy supplied warms the block.",
+          "Any energy that escapes to the room breaks that assumption.",
+          "Lagging reduces the escape, so the assumption holds more closely and the answer is closer to the true value."
+        ],
+        "answer_line": "reduce the energy lost to the surroundings"
+      },
+      "tags": [
+        "B",
+        "B3.3"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-025",
+      "position": 25,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "B",
+      "section_name": "Thermal Physics and Kinetic Theory",
+      "topic": "Transfer of Thermal Energy",
+      "subtopic": null,
+      "objective_code": "B4.6",
+      "objective_statement": "relate the principles of thermal energy transfer to the design of devices",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A saucepan is often made with a copper base and a plastic handle because copper is a",
+      "options": [
+        {
+          "key": "A",
+          "text": "good conductor and plastic is a poor one",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "poor conductor and plastic is a good one",
+          "is_correct": false,
+          "misconception": {
+            "code": "B4.6-D2",
+            "label": "It is the other way round; copper conducts far better than plastic."
+          }
+        },
+        {
+          "key": "C",
+          "text": "good radiator and plastic a poor one",
+          "is_correct": false,
+          "misconception": {
+            "code": "B4.6-D3",
+            "label": "Radiation is not what matters for a pan sitting on a flame."
+          }
+        },
+        {
+          "key": "D",
+          "text": "poor radiator and plastic a good one",
+          "is_correct": false,
+          "misconception": {
+            "code": "B4.6-D4",
+            "label": "Again, conduction is the relevant property, not radiation."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "Two different jobs need two different materials.",
+          "The base must let thermal energy through quickly, so it is made of a metal with high conductivity, such as copper.",
+          "The handle must stop it, so it is made of an insulator, such as plastic or wood."
+        ],
+        "answer_line": "good conductor and plastic is a poor one"
+      },
+      "tags": [
+        "B",
+        "B4.6"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-026",
+      "position": 26,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "C",
+      "section_name": "Waves and Optics",
+      "topic": "Wave Motion",
+      "subtopic": null,
+      "objective_code": "C1.1",
+      "objective_statement": "differentiate between types of waves",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Which wave cannot travel through a vacuum?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Light",
+          "is_correct": false,
+          "misconception": {
+            "code": "C1.1-D1",
+            "label": "Light reaches us from the Sun across empty space."
+          }
+        },
+        {
+          "key": "B",
+          "text": "Radio",
+          "is_correct": false,
+          "misconception": {
+            "code": "C1.1-D2",
+            "label": "Radio signals travel from spacecraft through vacuum."
+          }
+        },
+        {
+          "key": "C",
+          "text": "Sound",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "X-rays",
+          "is_correct": false,
+          "misconception": {
+            "code": "C1.1-D4",
+            "label": "X-rays are electromagnetic and cross a vacuum."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "A mechanical wave is a vibration passed from particle to particle.",
+          "With no particles there is nothing to do the passing, so sound cannot travel.",
+          "An electromagnetic wave is a vibration of electric and magnetic fields and needs no particles at all."
+        ],
+        "answer_line": "Sound"
+      },
+      "tags": [
+        "C",
+        "C1.1"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-027",
+      "position": 27,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "C",
+      "section_name": "Waves and Optics",
+      "topic": "C1",
+      "subtopic": null,
+      "objective_code": "C1.2",
+      "objective_statement": "apply speed, frequency, wavelength, period and amplitude",
+      "profile": "UK",
+      "profile_name": "Use of Knowledge",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "application",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A wave has frequency 25 Hz and wavelength 4 m. Its speed is",
+      "options": [
+        {
+          "key": "A",
+          "text": "29 m/s",
+          "is_correct": false,
+          "misconception": {
+            "code": "C1.2-D1",
+            "label": "This adds the frequency and the wavelength instead of multiplying them."
+          }
+        },
+        {
+          "key": "B",
+          "text": "6.25 m/s",
+          "is_correct": false,
+          "misconception": {
+            "code": "C1.2-D2",
+            "label": "This divides 25 by 4 rather than multiplying."
+          }
+        },
+        {
+          "key": "C",
+          "text": "0.16 m/s",
+          "is_correct": false,
+          "misconception": {
+            "code": "C1.2-D3",
+            "label": "This divides the frequency by the wavelength the wrong way round, giving 4 ÷ 25."
+          }
+        },
+        {
+          "key": "D",
+          "text": "100 m/s",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "The wave equation is v = f λ, so the speed is 25 × 4 = 100 m/s. A wave that passes 25 whole wavelengths each second, each 4 m long, advances 100 m in that second."
+        ],
+        "answer_line": "100 m/s"
+      },
+      "tags": [
+        "C",
+        "C1.2"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-028",
+      "position": 28,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "C",
+      "section_name": "Waves and Optics",
+      "topic": "Sound",
+      "subtopic": null,
+      "objective_code": "C2.5",
+      "objective_statement": "describe the use of ultrasound",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Ultrasound is used to check a metal casting for cracks. A crack shows up because it",
+      "options": [
+        {
+          "key": "A",
+          "text": "reflects some of the ultrasound back to the detector",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "absorbs all the ultrasound",
+          "is_correct": false,
+          "misconception": {
+            "code": "C2.5-D2",
+            "label": "A crack reflects rather than absorbs; absorption would leave nothing to detect."
+          }
+        },
+        {
+          "key": "C",
+          "text": "changes the frequency of the ultrasound",
+          "is_correct": false,
+          "misconception": {
+            "code": "C2.5-D3",
+            "label": "The frequency is unchanged by reflection."
+          }
+        },
+        {
+          "key": "D",
+          "text": "melts under the ultrasound",
+          "is_correct": false,
+          "misconception": {
+            "code": "C2.5-D4",
+            "label": "The energy involved is far too small to melt metal."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "A short pulse of ultrasound is sent into the casting.",
+          "Wherever it meets a boundary between two different materials, part of it is reflected.",
+          "A crack is a gap of air inside the metal, so it reflects a pulse back early, and the delay gives its depth."
+        ],
+        "answer_line": "reflects some of the ultrasound back to the detector"
+      },
+      "tags": [
+        "C",
+        "C2.5"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-029",
+      "position": 29,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "C",
+      "section_name": "Waves and Optics",
+      "topic": "Electromagnetic Waves",
+      "subtopic": null,
+      "objective_code": "C3.2",
+      "objective_statement": "differentiate between types of e.m. waves in terms of their wavelengths",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Which electromagnetic wave has the highest frequency?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Radio waves",
+          "is_correct": false,
+          "misconception": {
+            "code": "C3.2-D1",
+            "label": "Radio waves have the lowest frequency of the four."
+          }
+        },
+        {
+          "key": "B",
+          "text": "Visible light",
+          "is_correct": false,
+          "misconception": {
+            "code": "C3.2-D2",
+            "label": "Visible light is in the middle of the spectrum."
+          }
+        },
+        {
+          "key": "C",
+          "text": "Ultraviolet",
+          "is_correct": false,
+          "misconception": {
+            "code": "C3.2-D3",
+            "label": "Ultraviolet is above visible light but below X-rays and gamma rays."
+          }
+        },
+        {
+          "key": "D",
+          "text": "Gamma rays",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "All electromagnetic waves travel at the same speed in a vacuum.",
+          "So v = fλ means the shorter the wavelength, the higher the frequency.",
+          "The order from long to short is radio, microwave, infrared, visible, ultraviolet, X-ray, gamma, so gamma has the highest frequency."
+        ],
+        "answer_line": "Gamma rays"
+      },
+      "tags": [
+        "C",
+        "C3.2"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-030",
+      "position": 30,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "C",
+      "section_name": "Waves and Optics",
+      "topic": "Electromagnetic Waves",
+      "subtopic": null,
+      "objective_code": "C3.3",
+      "objective_statement": "identify a source and use of each type of e.m. wave",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Microwaves are used for cooking mainly because they are",
+      "options": [
+        {
+          "key": "A",
+          "text": "absorbed by water in food, warming it",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "reflected by water in food",
+          "is_correct": false,
+          "misconception": {
+            "code": "C3.3-D2",
+            "label": "The metal walls of the oven reflect microwaves; the food absorbs them."
+          }
+        },
+        {
+          "key": "C",
+          "text": "able to ionise the molecules of food",
+          "is_correct": false,
+          "misconception": {
+            "code": "C3.3-D3",
+            "label": "Microwaves are not ionising; that is one reason they are considered safe for this use."
+          }
+        },
+        {
+          "key": "D",
+          "text": "converted into visible light by the food",
+          "is_correct": false,
+          "misconception": {
+            "code": "C3.3-D4",
+            "label": "No light is produced by the food."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "Microwaves are tuned to a frequency that water molecules absorb readily.",
+          "Absorbing the energy makes those molecules move faster.",
+          "Faster molecules mean a higher temperature, and the warmth spreads through the food by conduction."
+        ],
+        "answer_line": "absorbed by water in food, warming it"
+      },
+      "tags": [
+        "C",
+        "C3.3"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-031",
+      "position": 31,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "C",
+      "section_name": "Waves and Optics",
+      "topic": "C4",
+      "subtopic": null,
+      "objective_code": "C4.3",
+      "objective_statement": "explain why the diffraction of light is not normally observed",
+      "profile": "UK",
+      "profile_name": "Use of Knowledge",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "application",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "The diffraction of light is not normally noticed because",
+      "options": [
+        {
+          "key": "A",
+          "text": "light cannot pass through gaps",
+          "is_correct": false,
+          "misconception": {
+            "code": "C4.3-D1",
+            "label": "Light does pass through gaps."
+          }
+        },
+        {
+          "key": "B",
+          "text": "light travels too quickly",
+          "is_correct": false,
+          "misconception": {
+            "code": "C4.3-D2",
+            "label": "Speed is not the reason."
+          }
+        },
+        {
+          "key": "C",
+          "text": "the wavelength of light is very small compared with everyday openings",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "light is not a wave",
+          "is_correct": false,
+          "misconception": {
+            "code": "C4.3-D4",
+            "label": "Light does behave as a wave."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "Noticeable diffraction needs a gap comparable with the wavelength, and light's wavelength is well under a millionth of a metre."
+        ],
+        "answer_line": "the wavelength of light is very small compared with everyday openings"
+      },
+      "tags": [
+        "C",
+        "C4.3"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-032",
+      "position": 32,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "C",
+      "section_name": "Waves and Optics",
+      "topic": "Light Waves",
+      "subtopic": null,
+      "objective_code": "C4.4",
+      "objective_statement": "apply the principle that light travels in straight lines",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A sharp shadow with a clear edge is evidence that light",
+      "options": [
+        {
+          "key": "A",
+          "text": "travels as a wave",
+          "is_correct": false,
+          "misconception": {
+            "code": "C4.4-D1",
+            "label": "Light does travel as a wave, but a sharp shadow is evidence of straight line travel, not of wave behaviour."
+          }
+        },
+        {
+          "key": "B",
+          "text": "can be reflected",
+          "is_correct": false,
+          "misconception": {
+            "code": "C4.4-D2",
+            "label": "Reflection would be shown by an image in a mirror."
+          }
+        },
+        {
+          "key": "C",
+          "text": "travels faster in air than in glass",
+          "is_correct": false,
+          "misconception": {
+            "code": "C4.4-D3",
+            "label": "Comparing speeds in two media is about refraction."
+          }
+        },
+        {
+          "key": "D",
+          "text": "travels in straight lines",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "Light from a small source falls on an opaque object.",
+          "The region behind it receives no light at all, and the boundary is sharp.",
+          "That can only happen if the light travelled in straight lines from the source past the edge of the object."
+        ],
+        "answer_line": "travels in straight lines"
+      },
+      "tags": [
+        "C",
+        "C4.4"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-033",
+      "position": 33,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "C",
+      "section_name": "Waves and Optics",
+      "topic": "Light Waves",
+      "subtopic": null,
+      "objective_code": "C4.7",
+      "objective_statement": "give examples of observations which indicate that light can be refracted",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A straight stick held partly in water appears bent at the surface. This is because light from the submerged part",
+      "options": [
+        {
+          "key": "A",
+          "text": "changes speed and direction on leaving the water",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "is reflected at the surface",
+          "is_correct": false,
+          "misconception": {
+            "code": "C4.7-D2",
+            "label": "Some light does reflect, but the apparent bend is caused by the light that gets out."
+          }
+        },
+        {
+          "key": "C",
+          "text": "is absorbed by the water",
+          "is_correct": false,
+          "misconception": {
+            "code": "C4.7-D3",
+            "label": "Absorbed light would make the stick look dimmer, not bent."
+          }
+        },
+        {
+          "key": "D",
+          "text": "travels in a curve through the water",
+          "is_correct": false,
+          "misconception": {
+            "code": "C4.7-D4",
+            "label": "Light travels in straight lines within a uniform medium; the bend happens at the boundary."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "Light travels more slowly in water than in air.",
+          "At the surface it changes speed, so it changes direction, which is refraction.",
+          "The eye traces the emerging ray back in a straight line and sees the stick displaced, so it looks bent."
+        ],
+        "answer_line": "changes speed and direction on leaving the water"
+      },
+      "tags": [
+        "C",
+        "C4.7"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-034",
+      "position": 34,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "C",
+      "section_name": "Waves and Optics",
+      "topic": "Lenses",
+      "subtopic": "The diverging lens",
+      "objective_code": "C5.1",
+      "objective_statement": "illustrate the effect of converging and diverging lenses on a beam of parallel rays",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": {
+        "kind": "figure",
+        "group": null,
+        "label": "Item 34 refers to the following ray diagram for a parallel beam of light meeting a diverging lens.",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 430 280\" width=\"100%\" style=\"max-width:420px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" font-family=\"Georgia,serif\" font-size=\"12\"><path d=\"M38 152 L378 152\" stroke-width=\"0.9\" stroke-dasharray=\"5 4\"/><path d=\"M202 78 Q218 152 202 226 L230 226 Q214 152 230 78 Z\" stroke-width=\"1.6\"/><path d=\"M138 146 L138 158\" stroke-width=\"1.3\"/><text x=\"138\" y=\"178\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\" font-style=\"italic\">F</text><path d=\"M52 114 L210 114\" stroke-width=\"1.3\"/><path d=\"M138.9 114 L131.9 111.1 L131.9 116.9 Z\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M222 114 L356 45.8\" stroke-width=\"1.3\"/><path d=\"M315.8 66.25641025641026 L308.2 66.8 L310.9 72.1 Z\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M210 114 L138 152\" stroke-width=\"0.9\" stroke-dasharray=\"4 3\"/><path d=\"M52 152 L210 152\" stroke-width=\"1.3\"/><path d=\"M138.9 152 L131.9 149.1 L131.9 154.9 Z\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M222 152 L356 152.0\" stroke-width=\"1.3\"/><path d=\"M315.8 152 L308.8 149.1 L308.8 154.9 Z\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M52 190 L210 190\" stroke-width=\"1.3\"/><path d=\"M138.9 190 L131.9 187.1 L131.9 192.9 Z\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M222 190 L356 258.2\" stroke-width=\"1.3\"/><path d=\"M315.8 237.74358974358972 L310.9 231.9 L308.2 237.2 Z\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M210 190 L138 152\" stroke-width=\"0.9\" stroke-dasharray=\"4 3\"/><text x=\"216\" y=\"64\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">diverging lens</text></svg>",
+        "alt": "Three rays parallel to the principal axis meeting a diverging lens and spreading out on the far side, with the emerging rays traced back in dashed lines to the principal focus F on the near side."
+      },
+      "stem": "The point F marked on the diagram is the principal focus, and the emerging rays",
+      "options": [
+        {
+          "key": "A",
+          "text": "all pass through F",
+          "is_correct": false,
+          "misconception": {
+            "code": "C5.1-D1",
+            "label": "The emerging rays spread apart and never pass through F."
+          }
+        },
+        {
+          "key": "B",
+          "text": "are brought parallel again at F",
+          "is_correct": false,
+          "misconception": {
+            "code": "C5.1-D2",
+            "label": "The emerging rays are not parallel; they diverge."
+          }
+        },
+        {
+          "key": "C",
+          "text": "meet at F on the far side of the lens",
+          "is_correct": false,
+          "misconception": {
+            "code": "C5.1-D3",
+            "label": "Meeting at a point on the far side is what a converging lens does."
+          }
+        },
+        {
+          "key": "D",
+          "text": "appear to come from F",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "Follow the emerging rays: they spread further apart the further they go.",
+          "Traced backwards in dashed lines, they all meet at one point on the same side as the incoming light.",
+          "That point is the principal focus, and because no light really passes through it the focus is virtual."
+        ],
+        "answer_line": "appear to come from F"
+      },
+      "tags": [
+        "C",
+        "C5.1",
+        "diagram"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-035",
+      "position": 35,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "Electrostatics",
+      "subtopic": null,
+      "objective_code": "D1.1",
+      "objective_statement": "explain the charging of objects",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A metal rod held in the hand cannot be charged by rubbing because",
+      "options": [
+        {
+          "key": "A",
+          "text": "the charge flows through the hand and body to earth",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "metals cannot hold charge at all",
+          "is_correct": false,
+          "misconception": {
+            "code": "D1.1-D2",
+            "label": "A metal on an insulating stand holds charge perfectly well."
+          }
+        },
+        {
+          "key": "C",
+          "text": "rubbing does not transfer electrons in metals",
+          "is_correct": false,
+          "misconception": {
+            "code": "D1.1-D3",
+            "label": "Rubbing transfers electrons from any surface, metal included."
+          }
+        },
+        {
+          "key": "D",
+          "text": "the metal becomes charged and then discharges into the air",
+          "is_correct": false,
+          "misconception": {
+            "code": "D1.1-D4",
+            "label": "Air leakage is slow; the hand is the fast route away."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "Charge stays where it is put only on an insulator, or on a conductor that is insulated.",
+          "A metal rod held in the hand is connected through the body to earth.",
+          "Electrons flow along that path at once, so no charge builds up."
+        ],
+        "answer_line": "the charge flows through the hand and body to earth"
+      },
+      "tags": [
+        "D",
+        "D1.1"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-036",
+      "position": 36,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "Electrostatics",
+      "subtopic": null,
+      "objective_code": "D1.3",
+      "objective_statement": "explain charging by induction",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "In charging a metal sphere negatively by induction, the correct order of steps is to",
+      "options": [
+        {
+          "key": "A",
+          "text": "earth the sphere, bring up a negative rod, remove the earth, remove the rod",
+          "is_correct": false,
+          "misconception": {
+            "code": "D1.3-D1",
+            "label": "Earthing first lets the induced charge escape rather than being trapped."
+          }
+        },
+        {
+          "key": "B",
+          "text": "bring up a negative rod, earth the sphere, remove the rod, remove the earth",
+          "is_correct": false,
+          "misconception": {
+            "code": "D1.3-D2",
+            "label": "Removing the rod first lets the trapped electrons flow back to earth."
+          }
+        },
+        {
+          "key": "C",
+          "text": "bring up a positive rod, earth the sphere, remove the earth, remove the rod",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "touch the sphere with a negative rod and then earth it",
+          "is_correct": false,
+          "misconception": {
+            "code": "D1.3-D4",
+            "label": "Touching with the rod is charging by contact, and it gives only a small charge."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "Induction gives the sphere the opposite sign to the rod, so a negative sphere needs a positive rod.",
+          "The positive rod attracts electrons from earth to the near face of the sphere.",
+          "The earth connection is broken while the rod is still there, so those electrons cannot leave.",
+          "Removing the rod lets the trapped negative charge spread over the sphere."
+        ],
+        "answer_line": "bring up a positive rod, earth the sphere, remove the earth, remove the rod"
+      },
+      "tags": [
+        "D",
+        "D1.3"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-037",
+      "position": 37,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "Electrostatics",
+      "subtopic": "The uniform field",
+      "objective_code": "D1.4",
+      "objective_statement": "define an electric field",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": {
+        "kind": "figure",
+        "group": "plates",
+        "label": "Items 37 and 38 refer to the following diagram of the electric field between two parallel charged plates.",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 430 290\" width=\"100%\" style=\"max-width:420px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" font-family=\"Georgia,serif\" font-size=\"12\"><path d=\"M116 82 L328 82\" stroke-width=\"2.6\"/><path d=\"M116 236 L328 236\" stroke-width=\"2.6\"/><path d=\"M132 88 L132 230\" stroke-width=\"1.1\"/><path d=\"M132 230 L134.9 223.0 L129.1 223.0 Z\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M168 88 L168 230\" stroke-width=\"1.1\"/><path d=\"M168 230 L170.9 223.0 L165.1 223.0 Z\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M204 88 L204 230\" stroke-width=\"1.1\"/><path d=\"M204 230 L206.9 223.0 L201.1 223.0 Z\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M240 88 L240 230\" stroke-width=\"1.1\"/><path d=\"M240 230 L242.9 223.0 L237.1 223.0 Z\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M276 88 L276 230\" stroke-width=\"1.1\"/><path d=\"M276 230 L278.9 223.0 L273.1 223.0 Z\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M312 88 L312 230\" stroke-width=\"1.1\"/><path d=\"M312 230 L314.9 223.0 L309.1 223.0 Z\" fill=\"currentColor\" stroke=\"none\"/><text x=\"102\" y=\"87\" text-anchor=\"end\" stroke=\"none\" fill=\"currentColor\" font-size=\"16\">+</text><text x=\"102\" y=\"242\" text-anchor=\"end\" stroke=\"none\" fill=\"currentColor\" font-size=\"16\">−</text><circle cx=\"222\" cy=\"159\" r=\"3.4\" fill=\"currentColor\" stroke=\"none\"/><text x=\"222\" y=\"183\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">M</text><circle cx=\"382\" cy=\"159\" r=\"3.4\" fill=\"currentColor\" stroke=\"none\"/><text x=\"382\" y=\"181\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">N</text><text x=\"222\" y=\"270\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">two parallel charged plates</text></svg>",
+        "alt": "Two parallel charged plates, the upper one positive and the lower one negative, with evenly spaced field lines running from the upper plate to the lower one. A point M lies between the plates and a point N outside them."
+      },
+      "stem": "The field lines between the plates are straight, parallel and evenly spaced. This shows that the field there is",
+      "options": [
+        {
+          "key": "A",
+          "text": "zero",
+          "is_correct": false,
+          "misconception": {
+            "code": "D1.4-D1",
+            "label": "A zero field would have no lines at all."
+          }
+        },
+        {
+          "key": "B",
+          "text": "strongest in the middle",
+          "is_correct": false,
+          "misconception": {
+            "code": "D1.4-D2",
+            "label": "Lines would have to crowd in the middle for that to be true."
+          }
+        },
+        {
+          "key": "C",
+          "text": "strongest near the positive plate",
+          "is_correct": false,
+          "misconception": {
+            "code": "D1.4-D3",
+            "label": "Lines would have to crowd near that plate for the field to be strongest there."
+          }
+        },
+        {
+          "key": "D",
+          "text": "uniform",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "The direction of a field line is the direction of the force on a positive charge.",
+          "The spacing of the lines shows the strength: crowded lines mean a strong field.",
+          "Here the lines are parallel and equally spaced everywhere between the plates, so both the direction and the strength are the same throughout: the field is uniform."
+        ],
+        "answer_line": "uniform"
+      },
+      "tags": [
+        "D",
+        "D1.4",
+        "diagram"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-038",
+      "position": 38,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "Electrostatics",
+      "subtopic": "Field outside the plates",
+      "objective_code": "D1.4",
+      "objective_statement": "define an electric field",
+      "profile": "UK",
+      "profile_name": "Use of Knowledge",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "application",
+      "calculator_allowed": true,
+      "stimulus": {
+        "kind": "figure",
+        "group": "plates",
+        "label": "Items 37 and 38 refer to the following diagram of the electric field between two parallel charged plates.",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 430 290\" width=\"100%\" style=\"max-width:420px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" font-family=\"Georgia,serif\" font-size=\"12\"><path d=\"M116 82 L328 82\" stroke-width=\"2.6\"/><path d=\"M116 236 L328 236\" stroke-width=\"2.6\"/><path d=\"M132 88 L132 230\" stroke-width=\"1.1\"/><path d=\"M132 230 L134.9 223.0 L129.1 223.0 Z\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M168 88 L168 230\" stroke-width=\"1.1\"/><path d=\"M168 230 L170.9 223.0 L165.1 223.0 Z\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M204 88 L204 230\" stroke-width=\"1.1\"/><path d=\"M204 230 L206.9 223.0 L201.1 223.0 Z\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M240 88 L240 230\" stroke-width=\"1.1\"/><path d=\"M240 230 L242.9 223.0 L237.1 223.0 Z\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M276 88 L276 230\" stroke-width=\"1.1\"/><path d=\"M276 230 L278.9 223.0 L273.1 223.0 Z\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M312 88 L312 230\" stroke-width=\"1.1\"/><path d=\"M312 230 L314.9 223.0 L309.1 223.0 Z\" fill=\"currentColor\" stroke=\"none\"/><text x=\"102\" y=\"87\" text-anchor=\"end\" stroke=\"none\" fill=\"currentColor\" font-size=\"16\">+</text><text x=\"102\" y=\"242\" text-anchor=\"end\" stroke=\"none\" fill=\"currentColor\" font-size=\"16\">−</text><circle cx=\"222\" cy=\"159\" r=\"3.4\" fill=\"currentColor\" stroke=\"none\"/><text x=\"222\" y=\"183\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">M</text><circle cx=\"382\" cy=\"159\" r=\"3.4\" fill=\"currentColor\" stroke=\"none\"/><text x=\"382\" y=\"181\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\">N</text><text x=\"222\" y=\"270\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">two parallel charged plates</text></svg>",
+        "alt": "Two parallel charged plates, the upper one positive and the lower one negative, with evenly spaced field lines running from the upper plate to the lower one. A point M lies between the plates and a point N outside them."
+      },
+      "stem": "A small positive charge placed at M and then at N would experience",
+      "options": [
+        {
+          "key": "A",
+          "text": "a force at M but almost none at N",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "the same force at both points",
+          "is_correct": false,
+          "misconception": {
+            "code": "D1.4-D2",
+            "label": "The two points are not equivalent: one is inside the field and one outside it."
+          }
+        },
+        {
+          "key": "C",
+          "text": "almost no force at M but a force at N",
+          "is_correct": false,
+          "misconception": {
+            "code": "D1.4-D3",
+            "label": "M is between the plates, where the field is; N is outside."
+          }
+        },
+        {
+          "key": "D",
+          "text": "no force at either point",
+          "is_correct": false,
+          "misconception": {
+            "code": "D1.4-D4",
+            "label": "A charge at M is certainly pushed towards the negative plate."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "Field lines are drawn only between the plates, which is where the field is.",
+          "M lies between them, so a positive charge there is pushed along the lines, towards the negative plate.",
+          "N lies outside, where there are no lines, so the force on a charge there is very small."
+        ],
+        "answer_line": "a force at M but almost none at N"
+      },
+      "tags": [
+        "D",
+        "D1.4",
+        "diagram"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-039",
+      "position": 39,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "Current Electricity",
+      "subtopic": null,
+      "objective_code": "D2.3",
+      "objective_statement": "differentiate between electron flow and conventional current",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "In a metal wire connected to a cell, electrons drift",
+      "options": [
+        {
+          "key": "A",
+          "text": "from the positive terminal to the negative terminal, in the same direction as the conventional current",
+          "is_correct": false,
+          "misconception": {
+            "code": "D2.3-D1",
+            "label": "Conventional current runs from positive to negative, but the electrons do not."
+          }
+        },
+        {
+          "key": "B",
+          "text": "in both directions at once",
+          "is_correct": false,
+          "misconception": {
+            "code": "D2.3-D2",
+            "label": "A direct current has a single direction of drift."
+          }
+        },
+        {
+          "key": "C",
+          "text": "from the negative terminal to the positive terminal, opposite to the conventional current",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "only while the wire is warm",
+          "is_correct": false,
+          "misconception": {
+            "code": "D2.3-D4",
+            "label": "Electrons drift as soon as the circuit is complete, whatever the temperature."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "Electrons are negative, so they are pushed away from the negative terminal.",
+          "They drift through the wire towards the positive terminal.",
+          "Conventional current is drawn the opposite way, positive to negative, by historical convention."
+        ],
+        "answer_line": "from the negative terminal to the positive terminal, opposite to the conventional current"
+      },
+      "tags": [
+        "D",
+        "D2.3"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-040",
+      "position": 40,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "Current Electricity",
+      "subtopic": null,
+      "objective_code": "D2.5",
+      "objective_statement": "apply the relationship Q = It",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "The relationship between charge, current and time is",
+      "options": [
+        {
+          "key": "A",
+          "text": "Q = I / t",
+          "is_correct": false,
+          "misconception": {
+            "code": "D2.5-D1",
+            "label": "This has the current divided by the time, which gives no useful quantity."
+          }
+        },
+        {
+          "key": "B",
+          "text": "Q = I + t",
+          "is_correct": false,
+          "misconception": {
+            "code": "D2.5-D2",
+            "label": "Adding quantities with different units is meaningless."
+          }
+        },
+        {
+          "key": "C",
+          "text": "Q = t / I",
+          "is_correct": false,
+          "misconception": {
+            "code": "D2.5-D3",
+            "label": "This is upside down."
+          }
+        },
+        {
+          "key": "D",
+          "text": "Q = I t",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "Current is defined as charge per unit time: I = Q / t.",
+          "Multiplying both sides by t gives Q = I t.",
+          "So 2 A flowing for 3 s carries 6 C of charge."
+        ],
+        "answer_line": "Q = I t"
+      },
+      "tags": [
+        "D",
+        "D2.5"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-041",
+      "position": 41,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "Electrical Quantities",
+      "subtopic": null,
+      "objective_code": "D3.3",
+      "objective_statement": "apply the relationship P =IV",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "The energy transferred by an electrical appliance is calculated from",
+      "options": [
+        {
+          "key": "A",
+          "text": "power × time",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "power ÷ time",
+          "is_correct": false,
+          "misconception": {
+            "code": "D3.3-D2",
+            "label": "Dividing gives a quantity with no useful meaning here."
+          }
+        },
+        {
+          "key": "C",
+          "text": "power + time",
+          "is_correct": false,
+          "misconception": {
+            "code": "D3.3-D3",
+            "label": "Adding quantities with different units is meaningless."
+          }
+        },
+        {
+          "key": "D",
+          "text": "time ÷ power",
+          "is_correct": false,
+          "misconception": {
+            "code": "D3.3-D4",
+            "label": "This is upside down."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "Power is the rate of energy transfer: P = E / t.",
+          "Rearranging gives E = P t.",
+          "A 2000 W heater running for 3600 s transfers 7 200 000 J, which is the same as 2 kWh."
+        ],
+        "answer_line": "power × time"
+      },
+      "tags": [
+        "D",
+        "D3.3"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-042",
+      "position": 42,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "Circuits and Components",
+      "subtopic": null,
+      "objective_code": "D4.2",
+      "objective_statement": "differentiate between series and parallel circuits",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Three identical lamps are connected in series and one of them burns out. The other two",
+      "options": [
+        {
+          "key": "A",
+          "text": "become brighter",
+          "is_correct": false,
+          "misconception": {
+            "code": "D4.2-D1",
+            "label": "No current flows at all, so nothing can get brighter."
+          }
+        },
+        {
+          "key": "B",
+          "text": "stay the same",
+          "is_correct": false,
+          "misconception": {
+            "code": "D4.2-D2",
+            "label": "With no current the lamps cannot stay lit."
+          }
+        },
+        {
+          "key": "C",
+          "text": "go out",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "burn out as well",
+          "is_correct": false,
+          "misconception": {
+            "code": "D4.2-D4",
+            "label": "They simply stop working; no current flows to damage them."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "In series there is only one route for the current.",
+          "A burnt out filament breaks that route.",
+          "No current can flow anywhere in the loop, so all three lamps go out."
+        ],
+        "answer_line": "go out"
+      },
+      "tags": [
+        "D",
+        "D4.2"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-043",
+      "position": 43,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "Circuits and Components",
+      "subtopic": null,
+      "objective_code": "D4.3",
+      "objective_statement": "explain the functions of the various parts of a zinc-carbon cell",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "In a zinc-carbon cell, the electrolyte is",
+      "options": [
+        {
+          "key": "A",
+          "text": "the zinc case",
+          "is_correct": false,
+          "misconception": {
+            "code": "D4.3-D1",
+            "label": "The zinc case is the negative electrode."
+          }
+        },
+        {
+          "key": "B",
+          "text": "the manganese dioxide",
+          "is_correct": false,
+          "misconception": {
+            "code": "D4.3-D2",
+            "label": "The manganese dioxide is the depolariser, which removes hydrogen from the rod."
+          }
+        },
+        {
+          "key": "C",
+          "text": "the carbon rod",
+          "is_correct": false,
+          "misconception": {
+            "code": "D4.3-D3",
+            "label": "The carbon rod is the positive electrode."
+          }
+        },
+        {
+          "key": "D",
+          "text": "the ammonium chloride paste",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "A cell needs two different electrodes and a substance between them that lets ions move.",
+          "The zinc case and the carbon rod are the electrodes.",
+          "The ammonium chloride paste carries the ions between them, so it is the electrolyte."
+        ],
+        "answer_line": "the ammonium chloride paste"
+      },
+      "tags": [
+        "D",
+        "D4.3"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-044",
+      "position": 44,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "Circuits and Components",
+      "subtopic": null,
+      "objective_code": "D4.10",
+      "objective_statement": "explain why it is necessary for a voltmeter to have a very high resistance",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A voltmeter is given a very high resistance so that it",
+      "options": [
+        {
+          "key": "A",
+          "text": "draws as little current as possible from the circuit",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "can survive a large current",
+          "is_correct": false,
+          "misconception": {
+            "code": "D4.10-D2",
+            "label": "A high resistance means it never carries a large current in the first place."
+          }
+        },
+        {
+          "key": "C",
+          "text": "measures current as well",
+          "is_correct": false,
+          "misconception": {
+            "code": "D4.10-D3",
+            "label": "A voltmeter measures potential difference only."
+          }
+        },
+        {
+          "key": "D",
+          "text": "reads more quickly",
+          "is_correct": false,
+          "misconception": {
+            "code": "D4.10-D4",
+            "label": "Reading speed is a property of the movement, not of the resistance."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "A voltmeter is connected in parallel with the component being measured.",
+          "Anything connected in parallel offers the current an extra path.",
+          "With a very high resistance almost no current takes that path, so the circuit behaves as if the meter were not there."
+        ],
+        "answer_line": "draws as little current as possible from the circuit"
+      },
+      "tags": [
+        "D",
+        "D4.10"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-045",
+      "position": 45,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "Circuits and Components",
+      "subtopic": null,
+      "objective_code": "D4.15",
+      "objective_statement": "select a fuse or circuit breaker of suitable current rating for a given appliance",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Fuses are commonly available rated at 3 A, 5 A and 13 A. A lamp working at 0.4 A should be fitted with the",
+      "options": [
+        {
+          "key": "A",
+          "text": "3 A fuse",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "5 A fuse",
+          "is_correct": false,
+          "misconception": {
+            "code": "D4.15-D2",
+            "label": "5 A is well above what is needed and gives poorer protection."
+          }
+        },
+        {
+          "key": "C",
+          "text": "13 A fuse",
+          "is_correct": false,
+          "misconception": {
+            "code": "D4.15-D3",
+            "label": "13 A would allow a very large fault current before blowing."
+          }
+        },
+        {
+          "key": "D",
+          "text": "largest fuse available",
+          "is_correct": false,
+          "misconception": {
+            "code": "D4.15-D4",
+            "label": "The largest fuse gives the least protection."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "The working current is 0.4 A, so the fuse must be rated above that.",
+          "Of the ratings available, 3 A is the smallest that is above it.",
+          "A fuse well above the working current would let a serious fault current flow before it melted."
+        ],
+        "answer_line": "3 A fuse"
+      },
+      "tags": [
+        "D",
+        "D4.15"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-046",
+      "position": 46,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "Circuits and Components",
+      "subtopic": null,
+      "objective_code": "D4.16",
+      "objective_statement": "state the adverse effects of connecting electrical appliances to incorrect or fluctuating voltage supplies",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Connecting a 120 V appliance to a 240 V supply is dangerous because the appliance would",
+      "options": [
+        {
+          "key": "A",
+          "text": "draw a much smaller current and stop",
+          "is_correct": false,
+          "misconception": {
+            "code": "D4.16-D1",
+            "label": "A higher voltage drives a larger current, not a smaller one."
+          }
+        },
+        {
+          "key": "B",
+          "text": "run at the same power",
+          "is_correct": false,
+          "misconception": {
+            "code": "D4.16-D2",
+            "label": "Power rises fourfold, so it cannot be the same."
+          }
+        },
+        {
+          "key": "C",
+          "text": "draw a much larger current and overheat",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "reverse its direction",
+          "is_correct": false,
+          "misconception": {
+            "code": "D4.16-D4",
+            "label": "Direction is set by the supply, not by the voltage size."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "The resistance of the appliance is fixed.",
+          "Ohm's law gives I = V / R, so doubling V doubles I.",
+          "Power is VI, so doubling both makes the power four times larger, and the appliance burns out."
+        ],
+        "answer_line": "draw a much larger current and overheat"
+      },
+      "tags": [
+        "D",
+        "D4.16"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-047",
+      "position": 47,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "Electronics",
+      "subtopic": "The diode characteristic",
+      "objective_code": "D5.1",
+      "objective_statement": "describe how a semi- conductor diode can be used in half wave rectification",
+      "profile": "UK",
+      "profile_name": "Use of Knowledge",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "application",
+      "calculator_allowed": true,
+      "stimulus": {
+        "kind": "figure",
+        "group": null,
+        "label": "Item 47 refers to the following graph of current against potential difference for a semiconductor diode.",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 290\" width=\"100%\" style=\"max-width:390px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" font-family=\"Georgia,serif\" font-size=\"12\"><path d=\"M50 150 L350 150\"/><path d=\"M350 150 L343.0 147.1 L343.0 152.9 Z\" fill=\"currentColor\" stroke=\"none\"/><path d=\"M200 254 L200 46\"/><path d=\"M200 46 L197.1 53.0 L202.9 53.0 Z\" fill=\"currentColor\" stroke=\"none\"/><text x=\"356\" y=\"166\" text-anchor=\"end\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\" font-style=\"italic\">V</text><text x=\"218\" y=\"40\" text-anchor=\"start\" stroke=\"none\" fill=\"currentColor\" font-size=\"12\" font-style=\"italic\">I</text><path d=\"M200.0 150.0 L203.4 149.9 L206.9 149.9 L210.3 149.8 L213.8 149.7 L217.3 149.7 L220.7 149.6 L224.2 149.5 L227.6 149.5 L231.1 149.4 L234.5 149.3 L237.9 149.3 L241.4 149.2 L244.8 149.1 L248.3 149.1 L251.8 149.0 L255.2 149.0 L258.6 148.9 L262.1 148.8 L265.6 147.8 L269.0 145.4 L272.4 141.6 L275.9 136.4 L279.4 129.6 L282.8 121.2 L286.3 111.2 L289.7 99.6 L293.1 86.4 L296.6 71.5 L300.1 56.4 L303.5 56.4 L306.9 56.4 L310.4 56.4 L313.9 56.4 L317.3 56.4 L320.8 56.4 L324.2 56.4 L327.6 56.4 L331.1 56.4 L334.6 56.4 L338.0 56.4\" stroke-width=\"2\"/><path d=\"M62 153 L200 150\" stroke-width=\"2\"/><text x=\"125\" y=\"178\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">reverse</text><text x=\"290\" y=\"178\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">forward</text></svg>",
+        "alt": "A graph of current against potential difference for a semiconductor diode. In the reverse direction the current is almost zero; in the forward direction it stays near zero until about 0.7 volts and then rises steeply."
+      },
+      "stem": "The graph shows that the diode",
+      "options": [
+        {
+          "key": "A",
+          "text": "obeys Ohm's law in both directions",
+          "is_correct": false,
+          "misconception": {
+            "code": "D5.1-D1",
+            "label": "Ohm's law would give a straight line through the origin, which this is not."
+          }
+        },
+        {
+          "key": "B",
+          "text": "has a constant resistance",
+          "is_correct": false,
+          "misconception": {
+            "code": "D5.1-D2",
+            "label": "A constant resistance would give a straight line; the gradient changes sharply."
+          }
+        },
+        {
+          "key": "C",
+          "text": "conducts equally well in both directions",
+          "is_correct": false,
+          "misconception": {
+            "code": "D5.1-D3",
+            "label": "The two branches are completely different, which is the point of the graph."
+          }
+        },
+        {
+          "key": "D",
+          "text": "conducts in one direction only, and then only above a small potential difference",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "Look at the reverse half: the current stays almost zero however large the reverse voltage.",
+          "Look at the forward half: the current is also almost zero until about 0.7 V, and then rises steeply.",
+          "So the diode conducts one way only, and only once the forward voltage is large enough. Its resistance is not constant, so it does not obey Ohm's law."
+        ],
+        "answer_line": "conducts in one direction only, and then only above a small potential difference"
+      },
+      "tags": [
+        "D",
+        "D5.1",
+        "diagram"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-048",
+      "position": 48,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "Electronics",
+      "subtopic": null,
+      "objective_code": "D5.2",
+      "objective_statement": "differentiate between direct current from batteries and rectified alternating current by a consideration of their voltage-time graphs",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "On a voltage against time graph, the output of a battery differs from the output of a half wave rectifier in that the battery output is",
+      "options": [
+        {
+          "key": "A",
+          "text": "a set of separated humps above the axis",
+          "is_correct": false,
+          "misconception": {
+            "code": "D5.2-D1",
+            "label": "Separated humps are the rectifier output, not the battery."
+          }
+        },
+        {
+          "key": "B",
+          "text": "a curve crossing the axis regularly",
+          "is_correct": false,
+          "misconception": {
+            "code": "D5.2-D2",
+            "label": "A curve crossing the axis is an unrectified alternating supply."
+          }
+        },
+        {
+          "key": "C",
+          "text": "a horizontal straight line",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "a line rising steadily with time",
+          "is_correct": false,
+          "misconception": {
+            "code": "D5.2-D4",
+            "label": "A steadily rising line would mean the voltage kept growing, which no supply does."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "Sketch voltage against time for each.",
+          "A battery holds the same voltage, so a flat line above the axis.",
+          "A half wave rectifier gives humps above the axis with gaps where the reverse half cycles were blocked."
+        ],
+        "answer_line": "a horizontal straight line"
+      },
+      "tags": [
+        "D",
+        "D5.2"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-049",
+      "position": 49,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "Magnetism",
+      "subtopic": null,
+      "objective_code": "D6.3",
+      "objective_statement": "distinguish between materials used to make \"permanent\" and \"temporary\" magnets",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A magnetically hard material is one that is",
+      "options": [
+        {
+          "key": "A",
+          "text": "easy to magnetise and easy to demagnetise",
+          "is_correct": false,
+          "misconception": {
+            "code": "D6.3-D1",
+            "label": "That describes a magnetically soft material such as soft iron."
+          }
+        },
+        {
+          "key": "B",
+          "text": "unable to be magnetised at all",
+          "is_correct": false,
+          "misconception": {
+            "code": "D6.3-D2",
+            "label": "A magnetically hard material can certainly be magnetised; it just takes more effort."
+          }
+        },
+        {
+          "key": "C",
+          "text": "easy to magnetise and hard to demagnetise",
+          "is_correct": false,
+          "misconception": {
+            "code": "D6.3-D3",
+            "label": "No common material behaves this way."
+          }
+        },
+        {
+          "key": "D",
+          "text": "hard to magnetise and hard to demagnetise",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "The words hard and soft here describe magnetic behaviour, not physical hardness.",
+          "A magnetically soft material such as soft iron magnetises easily and loses it at once, which suits an electromagnet core.",
+          "A magnetically hard material such as steel takes more effort to magnetise but then keeps it, which is what a permanent magnet needs."
+        ],
+        "answer_line": "hard to magnetise and hard to demagnetise"
+      },
+      "tags": [
+        "D",
+        "D6.3"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-050",
+      "position": 50,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "Magnetism",
+      "subtopic": null,
+      "objective_code": "D6.4",
+      "objective_statement": "identify the poles of a magnetic dipole",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "It is impossible to obtain a magnet with a north pole only, because",
+      "options": [
+        {
+          "key": "A",
+          "text": "cutting a magnet always produces two complete magnets with two poles each",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "north poles do not exist on their own",
+          "is_correct": false,
+          "misconception": {
+            "code": "D6.4-D2",
+            "label": "This restates the conclusion rather than explaining it."
+          }
+        },
+        {
+          "key": "C",
+          "text": "the Earth's field would cancel it",
+          "is_correct": false,
+          "misconception": {
+            "code": "D6.4-D3",
+            "label": "The Earth's field does not cancel anything."
+          }
+        },
+        {
+          "key": "D",
+          "text": "the magnet would lose its magnetism",
+          "is_correct": false,
+          "misconception": {
+            "code": "D6.4-D4",
+            "label": "Cutting a magnet does not destroy its magnetism."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "Cut a bar magnet in half and each half is a complete magnet.",
+          "New poles appear at the cut faces, so each piece has a north and a south.",
+          "Repeating the cut always gives the same result, so a single pole cannot be isolated."
+        ],
+        "answer_line": "cutting a magnet always produces two complete magnets with two poles each"
+      },
+      "tags": [
+        "D",
+        "D6.4"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-051",
+      "position": 51,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "Electromagnetism",
+      "subtopic": "The relay",
+      "objective_code": "D7.3",
+      "objective_statement": "describe a commercial application of an electromagnet",
+      "profile": "UK",
+      "profile_name": "Use of Knowledge",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "application",
+      "calculator_allowed": true,
+      "stimulus": {
+        "kind": "figure",
+        "group": null,
+        "label": "Item 51 refers to the following diagram of a relay, in which a 6 V circuit controls a 240 V circuit.",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 430 270\" width=\"100%\" style=\"max-width:420px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" font-family=\"Georgia,serif\" font-size=\"12\"><rect x=\"52\" y=\"90\" width=\"150\" height=\"130\" stroke-width=\"0\"/><path d=\"M52 90 L202 90\"/><path d=\"M52 90 L52 220\"/><path d=\"M52 220 L202 220\"/><path d=\"M202 90 L202 128\"/><path d=\"M202 182 L202 220\"/><path d=\"M202 128 a7 7 0 0 1 0 14\" stroke-width=\"1.4\"/><path d=\"M202 142 a7 7 0 0 1 0 14\" stroke-width=\"1.4\"/><path d=\"M202 156 a7 7 0 0 1 0 14\" stroke-width=\"1.4\"/><path d=\"M202 170 a7 7 0 0 1 0 14\" stroke-width=\"1.4\"/><circle cx=\"110\" cy=\"90\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"144\" cy=\"90\" r=\"2.5\" fill=\"currentColor\"/><path d=\"M110 90 L140 78\"/><path d=\"M123 207 L123 233\"/><path d=\"M131 213 L131 227\"/><text x=\"127\" y=\"244\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">6 V</text><text x=\"127\" y=\"68\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">switch</text><text x=\"178\" y=\"158\" text-anchor=\"end\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">coil</text><rect x=\"214\" y=\"140\" width=\"12\" height=\"44\" stroke-width=\"1.4\" fill=\"currentColor\" fill-opacity=\"0.2\"/><path d=\"M226 150 L268 138\" stroke-width=\"1.8\"/><circle cx=\"268\" cy=\"132\" r=\"3\" fill=\"currentColor\"/><text x=\"240\" y=\"200\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">armature</text><path d=\"M268 132 L268 90\"/><path d=\"M268 90 L388 90\"/><path d=\"M388 90 L388 220\"/><path d=\"M388 220 L268 220\"/><path d=\"M268 220 L268 176\"/><circle cx=\"328\" cy=\"90\" r=\"15\"/><path d=\"M318 80 L338 100\" stroke-width=\"1.1\"/><path d=\"M338 80 L318 100\" stroke-width=\"1.1\"/><text x=\"328\" y=\"66\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">lamp</text><path d=\"M324 207 L324 233\"/><path d=\"M332 213 L332 227\"/><text x=\"328\" y=\"244\" text-anchor=\"middle\" stroke=\"none\" fill=\"currentColor\" font-size=\"11\">240 V</text></svg>",
+        "alt": "A relay. A 6 volt circuit with a switch drives a coil, whose armature closes the contacts of a separate 240 volt circuit containing a lamp."
+      },
+      "stem": "The main reason for using a relay here is that it",
+      "options": [
+        {
+          "key": "A",
+          "text": "reduces the current in the lamp",
+          "is_correct": false,
+          "misconception": {
+            "code": "D7.3-D1",
+            "label": "The lamp draws whatever current its resistance and the 240 V supply give it."
+          }
+        },
+        {
+          "key": "B",
+          "text": "increases the voltage across the lamp",
+          "is_correct": false,
+          "misconception": {
+            "code": "D7.3-D2",
+            "label": "The relay does not change any voltage."
+          }
+        },
+        {
+          "key": "C",
+          "text": "lets a small safe current switch a large dangerous one, with no electrical connection between them",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "makes the lamp brighter",
+          "is_correct": false,
+          "misconception": {
+            "code": "D7.3-D4",
+            "label": "Brightness is set by the lamp and its supply, not by the relay."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "Closing the switch sends a small current through the coil, which becomes an electromagnet.",
+          "The electromagnet attracts the armature, which closes the contacts of the separate 240 V circuit.",
+          "Nothing conducts between the two circuits, so the low voltage side stays safe to touch. That isolation is why a relay is used."
+        ],
+        "answer_line": "lets a small safe current switch a large dangerous one, with no electrical connection between them"
+      },
+      "tags": [
+        "D",
+        "D7.3",
+        "diagram"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-052",
+      "position": 52,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "Electromagnetism",
+      "subtopic": null,
+      "objective_code": "D7.11",
+      "objective_statement": "predict the direction of induced current given the direction of motion of the conductor and that of the magnetic field",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Lenz's law says that the direction of an induced current is always such that it",
+      "options": [
+        {
+          "key": "A",
+          "text": "increases the change that produced it",
+          "is_correct": false,
+          "misconception": {
+            "code": "D7.11-D1",
+            "label": "Reinforcing the change would make the effect grow without limit and create energy from nothing."
+          }
+        },
+        {
+          "key": "B",
+          "text": "is at right angles to the magnetic field",
+          "is_correct": false,
+          "misconception": {
+            "code": "D7.11-D2",
+            "label": "The law is about direction relative to the change, not relative to the field."
+          }
+        },
+        {
+          "key": "C",
+          "text": "flows from positive to negative",
+          "is_correct": false,
+          "misconception": {
+            "code": "D7.11-D3",
+            "label": "That is the convention for conventional current in any circuit, not Lenz's law."
+          }
+        },
+        {
+          "key": "D",
+          "text": "opposes the change that produced it",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "Push a magnet towards a coil and a current is induced.",
+          "That current makes the coil into a magnet that pushes back against the incoming magnet.",
+          "So work has to be done to keep pushing, and that work is what becomes the electrical energy. If the coil pulled the magnet in instead, energy would appear from nowhere."
+        ],
+        "answer_line": "opposes the change that produced it"
+      },
+      "tags": [
+        "D",
+        "D7.11"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-053",
+      "position": 53,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "Electromagnetism",
+      "subtopic": null,
+      "objective_code": "D7.12",
+      "objective_statement": "explain the action of the A.C. generator",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "The output of a simple alternating current generator can be increased by",
+      "options": [
+        {
+          "key": "A",
+          "text": "turning the coil faster",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "turning the coil more slowly",
+          "is_correct": false,
+          "misconception": {
+            "code": "D7.12-D2",
+            "label": "Turning more slowly reduces the rate of change of flux and so the output."
+          }
+        },
+        {
+          "key": "C",
+          "text": "using fewer turns on the coil",
+          "is_correct": false,
+          "misconception": {
+            "code": "D7.12-D3",
+            "label": "Fewer turns give a smaller e.m.f."
+          }
+        },
+        {
+          "key": "D",
+          "text": "using a weaker magnet",
+          "is_correct": false,
+          "misconception": {
+            "code": "D7.12-D4",
+            "label": "A weaker field gives a smaller e.m.f."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "The induced e.m.f. depends on how quickly the flux linking the coil changes.",
+          "Spinning the coil faster sweeps it through the field more rapidly.",
+          "More turns and a stronger magnet also increase the output, for the same reason."
+        ],
+        "answer_line": "turning the coil faster"
+      },
+      "tags": [
+        "D",
+        "D7.12"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-054",
+      "position": 54,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "E",
+      "section_name": "The Physics of the Atom",
+      "topic": "Structure of the Atom",
+      "subtopic": null,
+      "objective_code": "E2.2",
+      "objective_statement": "compare the mass and charge of the electron with the mass and charge of the proton",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Compared with a proton, a neutron has",
+      "options": [
+        {
+          "key": "A",
+          "text": "about the same mass and no charge",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "about the same mass and an equal positive charge",
+          "is_correct": false,
+          "misconception": {
+            "code": "E2.2-D2",
+            "label": "A neutron carries no charge, which is where its name comes from."
+          }
+        },
+        {
+          "key": "C",
+          "text": "a much smaller mass and no charge",
+          "is_correct": false,
+          "misconception": {
+            "code": "E2.2-D3",
+            "label": "Its mass is about the same as the proton's, not much smaller."
+          }
+        },
+        {
+          "key": "D",
+          "text": "a much larger mass and a negative charge",
+          "is_correct": false,
+          "misconception": {
+            "code": "E2.2-D4",
+            "label": "It is neither much heavier nor negative."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "The proton and the neutron each have a mass of about one atomic mass unit.",
+          "The proton carries a charge of +1 and the neutron carries none.",
+          "The electron, by contrast, has about 1/1836 of that mass and a charge of −1."
+        ],
+        "answer_line": "about the same mass and no charge"
+      },
+      "tags": [
+        "E",
+        "E2.2"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-055",
+      "position": 55,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "E",
+      "section_name": "The Physics of the Atom",
+      "topic": "Structure of the Atom",
+      "subtopic": null,
+      "objective_code": "E2.3",
+      "objective_statement": "explain why an atom is normally neutral and stable",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "An atom has no overall charge because it contains",
+      "options": [
+        {
+          "key": "A",
+          "text": "no charged particles",
+          "is_correct": false,
+          "misconception": {
+            "code": "E2.3-D1",
+            "label": "It contains protons and electrons, both of which are charged."
+          }
+        },
+        {
+          "key": "B",
+          "text": "more neutrons than protons",
+          "is_correct": false,
+          "misconception": {
+            "code": "E2.3-D2",
+            "label": "Neutrons carry no charge, so their number does not affect neutrality."
+          }
+        },
+        {
+          "key": "C",
+          "text": "equal numbers of protons and electrons",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "equal numbers of protons and neutrons",
+          "is_correct": false,
+          "misconception": {
+            "code": "E2.3-D4",
+            "label": "The neutron number varies between isotopes without affecting the charge."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "A proton carries +1 and an electron carries −1.",
+          "A neutral atom has as many electrons as protons.",
+          "So the charges cancel exactly, whatever the number of neutrons."
+        ],
+        "answer_line": "equal numbers of protons and electrons"
+      },
+      "tags": [
+        "E",
+        "E2.3"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-056",
+      "position": 56,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "E",
+      "section_name": "The Physics of the Atom",
+      "topic": "Structure of the Atom",
+      "subtopic": null,
+      "objective_code": "E2.4",
+      "objective_statement": "apply the relationship A = Z + N",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "In the notation for a nuclide, the number written at the lower left of the symbol is the",
+      "options": [
+        {
+          "key": "A",
+          "text": "mass number",
+          "is_correct": false,
+          "misconception": {
+            "code": "E2.4-D1",
+            "label": "The mass number is written at the upper left."
+          }
+        },
+        {
+          "key": "B",
+          "text": "charge on the nucleus in coulombs",
+          "is_correct": false,
+          "misconception": {
+            "code": "E2.4-D2",
+            "label": "The charge is not given in coulombs."
+          }
+        },
+        {
+          "key": "C",
+          "text": "number of neutrons",
+          "is_correct": false,
+          "misconception": {
+            "code": "E2.4-D3",
+            "label": "The neutron number is not written directly; it is found from A − Z."
+          }
+        },
+        {
+          "key": "D",
+          "text": "atomic number",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "A nuclide is written with two numbers before the symbol.",
+          "The upper one is the mass number A, the protons plus the neutrons.",
+          "The lower one is the atomic number Z, the protons alone, which names the element."
+        ],
+        "answer_line": "atomic number"
+      },
+      "tags": [
+        "E",
+        "E2.4"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-057",
+      "position": 57,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "E",
+      "section_name": "The Physics of the Atom",
+      "topic": "Radioactivity",
+      "subtopic": null,
+      "objective_code": "E3.2",
+      "objective_statement": "state the nature of the three types of radioactive emissions",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Which emission has the greatest ionising power?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Alpha",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "Beta",
+          "is_correct": false,
+          "misconception": {
+            "code": "E3.2-D2",
+            "label": "Beta is less strongly ionising than alpha, which is why it travels further."
+          }
+        },
+        {
+          "key": "C",
+          "text": "Gamma",
+          "is_correct": false,
+          "misconception": {
+            "code": "E3.2-D3",
+            "label": "Gamma is the weakest ioniser, which is why it is the most penetrating."
+          }
+        },
+        {
+          "key": "D",
+          "text": "All three are the same",
+          "is_correct": false,
+          "misconception": {
+            "code": "E3.2-D4",
+            "label": "They differ greatly; that is why their ranges differ."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "Ionising power and penetrating power run in opposite directions.",
+          "Alpha ionises most strongly, so it loses its energy within a few centimetres of air.",
+          "Gamma ionises weakly, so it passes through centimetres of lead before being much reduced."
+        ],
+        "answer_line": "Alpha"
+      },
+      "tags": [
+        "E",
+        "E3.2"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-058",
+      "position": 58,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "E",
+      "section_name": "The Physics of the Atom",
+      "topic": "Radioactivity",
+      "subtopic": null,
+      "objective_code": "E3.2",
+      "objective_statement": "state the nature of the three types of radioactive emissions",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "An alpha particle is identical to a",
+      "options": [
+        {
+          "key": "A",
+          "text": "hydrogen nucleus",
+          "is_correct": false,
+          "misconception": {
+            "code": "E3.2-D1",
+            "label": "A hydrogen nucleus is a single proton."
+          }
+        },
+        {
+          "key": "B",
+          "text": "fast electron",
+          "is_correct": false,
+          "misconception": {
+            "code": "E3.2-D2",
+            "label": "A fast electron is a beta particle."
+          }
+        },
+        {
+          "key": "C",
+          "text": "helium nucleus",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "high energy photon",
+          "is_correct": false,
+          "misconception": {
+            "code": "E3.2-D4",
+            "label": "A high energy photon is gamma radiation."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "Alpha decay removes two protons and two neutrons from a nucleus.",
+          "Two protons and two neutrons together make the nucleus of helium-4.",
+          "So the emitted particle is a helium nucleus with a charge of +2 and a mass number of 4."
+        ],
+        "answer_line": "helium nucleus"
+      },
+      "tags": [
+        "E",
+        "E3.2"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-059",
+      "position": 59,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "E",
+      "section_name": "The Physics of the Atom",
+      "topic": "Radioactivity",
+      "subtopic": null,
+      "objective_code": "E3.11",
+      "objective_statement": "discuss the useful applications of radio- isotopes",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "In carbon dating, the age of a once living sample is estimated from",
+      "options": [
+        {
+          "key": "A",
+          "text": "its total mass",
+          "is_correct": false,
+          "misconception": {
+            "code": "E3.11-D1",
+            "label": "Mass tells nothing about age."
+          }
+        },
+        {
+          "key": "B",
+          "text": "the number of carbon atoms it contains",
+          "is_correct": false,
+          "misconception": {
+            "code": "E3.11-D2",
+            "label": "The total number of carbon atoms depends on the size of the sample, not on its age."
+          }
+        },
+        {
+          "key": "C",
+          "text": "the colour of the sample",
+          "is_correct": false,
+          "misconception": {
+            "code": "E3.11-D3",
+            "label": "Colour is not related to age in this way."
+          }
+        },
+        {
+          "key": "D",
+          "text": "the fraction of its carbon-14 that has decayed",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "While alive, an organism exchanges carbon with its surroundings and keeps a fixed proportion of carbon-14.",
+          "At death that exchange stops and the carbon-14 decays with a half-life of about 5700 years.",
+          "Measuring what fraction is left and counting half-lives gives the time since death."
+        ],
+        "answer_line": "the fraction of its carbon-14 that has decayed"
+      },
+      "tags": [
+        "E",
+        "E3.11"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-8-060",
+      "position": 60,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "E",
+      "section_name": "The Physics of the Atom",
+      "topic": "E3",
+      "subtopic": null,
+      "objective_code": "E3.13",
+      "objective_statement": "cite arguments for and against the utilisation of nuclear energy",
+      "profile": "UK",
+      "profile_name": "Use of Knowledge",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 75,
+      "cognitive_level": "application",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Which is an argument in favour of using nuclear energy?",
+      "options": [
+        {
+          "key": "A",
+          "text": "It produces radioactive waste that lasts thousands of years",
+          "is_correct": false,
+          "misconception": {
+            "code": "E3.13-D1",
+            "label": "That is an argument against."
+          }
+        },
+        {
+          "key": "B",
+          "text": "Nuclear stations are cheap to build",
+          "is_correct": false,
+          "misconception": {
+            "code": "E3.13-D2",
+            "label": "Construction is very expensive."
+          }
+        },
+        {
+          "key": "C",
+          "text": "It generates a large amount of energy from a small mass of fuel",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "There is no risk of an accident",
+          "is_correct": false,
+          "misconception": {
+            "code": "E3.13-D4",
+            "label": "There is a real risk, however small."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "The energy density of nuclear fuel is far higher than any chemical fuel, and generation releases no carbon dioxide."
+        ],
+        "answer_line": "It generates a large amount of energy from a small mass of fuel"
+      },
+      "tags": [
+        "E",
+        "E3.13"
+      ],
+      "provenance": "Original item authored for this bank. Language, structure and item archetypes are modelled on CSEC Physics Paper 01 papers; no past-paper item is reproduced."
+    }
+  ]
+}

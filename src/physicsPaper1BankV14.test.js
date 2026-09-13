@@ -5,6 +5,13 @@ const readJson = relative => JSON.parse(fs.readFileSync(path.join(__dirname, rel
 const papers = [
   readJson("physics/paper1/data/spark-phy-p01-practice-1.json"),
   readJson("physics/paper1/data/spark-phy-p01-practice-2.json"),
+  readJson("physics/paper1/data/spark-phy-p01-practice-3.json"),
+  readJson("physics/paper1/data/spark-phy-p01-practice-4.json"),
+  readJson("physics/paper1/data/spark-phy-p01-practice-5.json"),
+  readJson("physics/paper1/data/spark-phy-p01-practice-6.json"),
+  readJson("physics/paper1/data/spark-phy-p01-practice-7.json"),
+  readJson("physics/paper1/data/spark-phy-p01-practice-8.json"),
+  readJson("physics/paper1/data/spark-phy-p01-practice-9.json"),
 ];
 const objectives = readJson("physics/course/physicsObjectivesReference.json");
 const objectiveIds = new Set((objectives.objectives || objectives).map(row => row.id || row.objective_code));
@@ -40,8 +47,8 @@ function validatePaper(paper) {
 }
 
 describe("Physics Paper 1 bank V14", () => {
-  test("ships two complete 60 item, 75 minute papers", () => {
-    expect(papers).toHaveLength(2);
+  test("ships nine complete 60 item, 75 minute papers", () => {
+    expect(papers).toHaveLength(9);
     papers.forEach(paper => {
       expect(paper.subject).toBe("Physics");
       expect(paper.item_count).toBe(60);
@@ -51,9 +58,9 @@ describe("Physics Paper 1 bank V14", () => {
     });
   });
 
-  test("has no repeated stem across the two full papers", () => {
+  test("has no repeated stem across the nine full papers", () => {
     const stems = papers.flatMap(paper => paper.items.map(item => item.stem.trim().toLowerCase().replace(/\s+/g, " ")));
-    expect(new Set(stems).size).toBe(120);
+    expect(new Set(stems).size).toBe(540);
   });
 
   test("keeps every distractor diagnostic and every figure safe for repeat rendering", () => {

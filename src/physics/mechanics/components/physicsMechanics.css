@@ -690,3 +690,13 @@
 @media (max-width:560px){
   .pm-support-head .pm-change-subject-btn{width:100%;min-width:0}
 }
+
+/* SPARK PHYSICS PRACTICE BUTTON SYSTEM V15.4 */
+.pm-btn.pm-practice-back{display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap}
+.pm-btn.pm-practice-back>span[aria-hidden="true"]{display:inline-flex;align-items:center;justify-content:center;line-height:1;font-size:18px}
+.pm-btn:not(.secondary):not(:disabled){transition:filter .15s ease,transform .15s ease}
+.pm-btn:not(.secondary):hover:not(:disabled){filter:brightness(.96)}
+.pm-btn:not(.secondary):active:not(:disabled){transform:translateY(1px)}
+.dark .physics-mechanics .pm-btn:not(.secondary),
+[data-theme="dark"] .physics-mechanics .pm-btn:not(.secondary){color:#082f2b}
+/* END SPARK PHYSICS PRACTICE BUTTON SYSTEM V15.4 */
