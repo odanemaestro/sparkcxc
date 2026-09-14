@@ -5,6 +5,8 @@ import PhysicsThermalSection from '../../thermal/components/PhysicsThermalSectio
 import PhysicsWavesSection from '../../waves/components/PhysicsWavesSection';
 import PhysicsElectricitySection from '../../electricity/components/PhysicsElectricitySection';
 import PhysicsAtomicSection from '../../atomic/components/PhysicsAtomicSection';
+import PhysicsWorkbook from '../../resources/PhysicsWorkbook';
+import PhysicsFormulaList from '../../resources/PhysicsFormulaList.jsx';
 import { physicsFullCourseStats } from '../fullCourseIndex.mjs';
 import './physicsSubjectView.css';
 
@@ -32,6 +34,12 @@ export default function PhysicsSubjectView({ userId, onBack, onActivity, onEvide
   const [section, setSection] = useState(null);
   const stats = useMemo(() => physicsFullCourseStats(), []);
 
+  if (section === 'WORKBOOK') {
+    return <PhysicsWorkbook onBack={() => setSection(null)} onOpenSection={next => setSection(next)} onOpenFormulae={() => setSection('FORMULAE')} />;
+  }
+  if (section === 'FORMULAE') {
+    return <PhysicsFormulaList onBack={() => setSection(null)} />;
+  }
   if (section === 'A') {
     return <PhysicsMechanicsSection userId={userId} onBack={() => setSection(null)} onActivity={onActivity} onEvidence={onEvidence} />;
   }
@@ -47,7 +55,7 @@ export default function PhysicsSubjectView({ userId, onBack, onActivity, onEvide
   if (section === 'E') {
     return <PhysicsAtomicSection userId={userId} onBack={() => setSection(null)} onActivity={onActivity} />;
   }
-  if (section && !['A','B','C','D','E'].includes(section)) {
+  if (section && !['A','B','C','D','E','WORKBOOK','FORMULAE'].includes(section)) {
     return <PhysicsCourseLessons userId={userId} initialSection={section} onBack={() => setSection(null)} onActivity={onActivity} />;
   }
 
@@ -59,7 +67,7 @@ export default function PhysicsSubjectView({ userId, onBack, onActivity, onEvide
             {onBack && <button type="button" className="psv-back" onClick={onBack}><BackArrowIcon/><span>Back</span></button>}
             <div className="psv-eyebrow">CSEC Physics</div>
             <h1>Choose a section</h1>
-            <p>Work through the Physics syllabus by section. Each section opens the learning tools currently available for its audited content.</p>
+            <p>Work through the Physics syllabus by section, or open the SPARK Workbook and Formula List for focused revision.</p>
           </div>
           <div className="psv-stats" aria-label="CSEC Physics course coverage">
             <div><strong>{stats.sections}</strong><span>sections</span></div>
@@ -67,6 +75,29 @@ export default function PhysicsSubjectView({ userId, onBack, onActivity, onEvide
             <div><strong>{stats.objectives}</strong><span>objectives</span></div>
           </div>
         </header>
+
+        <section className="psv-section-grid" aria-label="Physics study resources">
+          <button type="button" className="psv-section-card" onClick={() => setSection('WORKBOOK')}>
+            <span className="psv-section-code">W</span>
+            <span className="psv-section-copy">
+              <span className="psv-section-status">Revision resource</span>
+              <strong>SPARK Physics Workbook</strong>
+              <span>25 topics Â· 189 objectives</span>
+              <small>Study notes, exam focus, formulae, worked examples, data skills, practical work, quick checks and objective-by-objective guidance.</small>
+            </span>
+            <span className="psv-section-arrow" aria-hidden="true"><SectionArrowIcon/></span>
+          </button>
+          <button type="button" className="psv-section-card" onClick={() => setSection('FORMULAE')}>
+            <span className="psv-section-code">Æ’</span>
+            <span className="psv-section-copy">
+              <span className="psv-section-status">Revision resource</span>
+              <strong>Physics Formula List</strong>
+              <span>64 equations, relationships and direction rules</span>
+              <small>Search by topic, quantity, symbol or unit. Includes magnetic direction rules and the conditions attached to key relationships.</small>
+            </span>
+            <span className="psv-section-arrow" aria-hidden="true"><SectionArrowIcon/></span>
+          </button>
+        </section>
 
         <section className="psv-section-grid" aria-label="Physics sections">
           {Object.entries(SECTION_META).map(([id, meta]) => {
@@ -77,7 +108,7 @@ export default function PhysicsSubjectView({ userId, onBack, onActivity, onEvide
                 <span className="psv-section-copy">
                   <span className="psv-section-status">Available</span>
                   <strong>{meta.title}</strong>
-                  <span>{sectionStats.topics} topics · {sectionStats.objectives} objectives</span>
+                  <span>{sectionStats.topics} topics Â· {sectionStats.objectives} objectives</span>
                   <small>{meta.detail}</small>
                 </span>
                 <span className="psv-section-arrow" aria-hidden="true"><SectionArrowIcon/></span>

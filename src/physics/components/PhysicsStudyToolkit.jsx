@@ -71,7 +71,7 @@ export default function PhysicsStudyToolkit({ topicId }) {
       {upgrade.examLanguage && (
         <div className="pst-exam-language">
           <strong>Exam technique</strong>
-          <MathText as="span" prose>{upgrade.examLanguage}</MathText>
+          <MathText as="p" prose>{upgrade.examLanguage}</MathText>
         </div>
       )}
     </section>

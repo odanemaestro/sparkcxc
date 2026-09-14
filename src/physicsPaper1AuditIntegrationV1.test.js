@@ -3,6 +3,16 @@ const paper1 = require("./physics/paper1/data/spark-phy-p01-practice-1.json");
 const paper9 = require("./physics/paper1/data/spark-phy-p01-practice-9.json");
 const paper10 = require("./physics/paper1/data/spark-phy-p01-practice-10.json");
 const paper11 = require("./physics/paper1/data/spark-phy-p01-practice-11.json");
+const paper12 = require("./physics/paper1/data/spark-phy-p01-practice-12.json");
+const paper13 = require("./physics/paper1/data/spark-phy-p01-practice-13.json");
+const paper14 = require("./physics/paper1/data/spark-phy-p01-practice-14.json");
+const paper15 = require("./physics/paper1/data/spark-phy-p01-practice-15.json");
+
+function followsOriginalItemPolicy(provenance = "") {
+  return /original/i.test(provenance)
+    && /(?:authored|SPARK item)/i.test(provenance)
+    && /no past-paper (?:item|wording).*reproduced/i.test(provenance);
+}
 
 describe("Physics Paper 1 audit integration V1", () => {
   test("records the complete Phase 1 to 38 audit boundary", () => {
@@ -31,17 +41,20 @@ describe("Physics Paper 1 audit integration V1", () => {
   });
 
   test("records the expanded original practice library", () => {
-    expect(audit.current_spark_practice_bank.papers).toBe(11);
-    expect(audit.current_spark_practice_bank.items).toBe(660);
-    expect(paper10.items).toHaveLength(60);
-    expect(paper11.items).toHaveLength(60);
+    expect(audit.current_spark_practice_bank.papers).toBe(15);
+    expect(audit.current_spark_practice_bank.items).toBe(900);
+
+    for (const paper of [paper10, paper11, paper12, paper13, paper14, paper15]) {
+      expect(paper.items).toHaveLength(60);
+    }
   });
 
   test("keeps current practice papers under the original-item policy", () => {
-    for (const paper of [paper1, paper9, paper10, paper11]) {
-      expect(paper.provenance).toMatch(/no past-paper item is reproduced/i);
+    for (const paper of [paper1, paper9, paper10, paper11, paper12, paper13, paper14, paper15]) {
+      expect(paper.provenance).toMatch(/original.*SPARK|SPARK.*original/i);
+      expect(paper.provenance).toMatch(/no past-paper item.*reproduced/i);
       expect(paper.items).toHaveLength(60);
-      expect(paper.items.every(item => /original item authored/i.test(item.provenance))).toBe(true);
+      expect(paper.items.every(item => followsOriginalItemPolicy(item.provenance))).toBe(true);
     }
   });
 });

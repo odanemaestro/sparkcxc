@@ -189,7 +189,7 @@ export const PHYSICS_STUDY_UPGRADES = Object.freeze({
       { question: 'Why did continuous heat production challenge caloric theory?', answer: 'A finite material store of caloric should eventually have been exhausted.' },
       { question: 'What did Joule’s work support?', answer: 'Energy is conserved while changing from mechanical to thermal forms.' },
     ],
-    examLanguage: 'For discuss questions, give the observation and explain what it shows about the theory.',
+    examLanguage: 'For questions that ask you to discuss, state the observation and explain what it shows about the theory.',
   }),
   B2: freezeEntry({
     examFocus: [
