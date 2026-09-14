@@ -20,7 +20,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "audit:physics-paper1": "node tools/physics-paper1-audit/validate-current-bank.cjs",
-    "audit:physics-upgrade": "node tools/physics-upgrade/validate-content.mjs"
+    "audit:physics-upgrade": "node tools/physics-upgrade/validate-content.mjs",
+    "audit:physics-resources": "node tools/physics-resources/validate-content.mjs"
   },
   "eslintConfig": {
     "extends": [

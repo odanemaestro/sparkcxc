@@ -12,7 +12,7 @@
     "baseline_archive_sha256": "2e7aa52295fe61366a1d07744ea296a66e954699fb7cc8c2fb84ac4a320d04ce"
   },
   "runtime_policy": {
-    "practice_questions": "original_spark_items_only_including_audit_informed_papers_j_k",
+    "practice_questions": "original_spark_items_only_including_audit_informed_papers_j_through_o",
     "verbatim_past_paper_import": false,
     "source_held_items_excluded": true,
     "january_2021_excluded": true,
@@ -323,9 +323,9 @@
     }
   ],
   "current_spark_practice_bank": {
-    "papers": 11,
-    "items": 660,
-    "unique_normalized_stems": 660,
+    "papers": 15,
+    "items": 900,
+    "unique_normalized_stems": 900,
     "objective_reference_count": 189,
     "objectives_covered": 189,
     "section_target_per_paper": {
@@ -337,13 +337,15 @@
     },
     "duration_minutes": 75,
     "marks": 60,
-    "provenance_policy": "Original SPARK items. Papers J and K add audit-informed original practice without importing verbatim past-paper items."
+    "provenance_policy": "Original SPARK items only. Papers J through O are audit-informed original practice; verbatim past-paper items and source figures remain excluded from student runtime."
   },
   "integration_notes": [
     "The large audit archive stays outside the public SPARK repository.",
     "Only compact audit metadata is included in the runtime repository.",
     "Past-paper source wording, scans, source crops and draft SVGs are not copied into the student application.",
     "Future student-content imports must explicitly clear answer adjudication, source-integrity and SVG parity gates.",
-    "Practice Papers J and K are new original SPARK papers assembled from the objective-linked bank using the audited historical section benchmark. They do not import held or verbatim past-paper items."
+    "Practice Papers J and K are new original SPARK papers assembled from the objective-linked bank using the audited historical section benchmark. They do not import held or verbatim past-paper items.",
+    "Practice Papers L through O are original SPARK papers. Historical Paper 01 material informed syllabus coverage, archetypes, difficulty and examination tone only; no source wording or source figure is reproduced.",
+    "The V2.5 release gate checks CXC-style concise wording, plausible distractors, answer/solution parity, diagram relevance, strong cross-paper similarity and numerical stem clones for the new papers."
   ]
 }

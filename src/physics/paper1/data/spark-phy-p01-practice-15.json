@@ -1,0 +1,4383 @@
+{
+  "bank_id": "spark-phy-p01-practice-15",
+  "title": "SPARK CSEC Physics - Paper 01 Practice Paper 15",
+  "version": "1.1.0",
+  "subject": "Physics",
+  "examination": "CSEC Physics practice",
+  "paper": "Paper 01 - General Proficiency",
+  "syllabus": "CXC 22/G/SYLL 13, for examinations from May and June 2015",
+  "item_count": 60,
+  "duration_minutes": 75,
+  "instructions": [
+    "This test consists of 60 items. You will have 1 hour and 15 minutes to answer them.",
+    "Each item has four suggested answers lettered A, B, C and D. Choose the best answer.",
+    "If you cannot answer an item, move on and return to it later.",
+    "Figures are not necessarily drawn to scale.",
+    "You may use a silent, non-programmable calculator."
+  ],
+  "sample_item": {
+    "stem": "The SI unit of length is the",
+    "options": [
+      "metre",
+      "second",
+      "newton",
+      "kilogram"
+    ],
+    "answer": "A",
+    "note": "The best answer is metre."
+  },
+  "blueprint": [
+    {
+      "section": "A",
+      "section_name": "Mechanics",
+      "count": 17,
+      "share_percent": 28.3
+    },
+    {
+      "section": "B",
+      "section_name": "Thermal Physics and Kinetic Theory",
+      "count": 8,
+      "share_percent": 13.3
+    },
+    {
+      "section": "C",
+      "section_name": "Waves and Optics",
+      "count": 9,
+      "share_percent": 15.0
+    },
+    {
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "count": 19,
+      "share_percent": 31.7
+    },
+    {
+      "section": "E",
+      "section_name": "The Physics of the Atom",
+      "count": 7,
+      "share_percent": 11.7
+    }
+  ],
+  "blueprint_source": "SPARK uses the syllabus teaching-time distribution and the audited Paper 01 benchmark to keep each original practice paper balanced across all five sections.",
+  "profile_split": {
+    "KC": 50,
+    "UK": 10
+  },
+  "profile_target": {
+    "KC": 50,
+    "UK": 10
+  },
+  "profile_note": "Paper 01 is modelled as 50 Knowledge and Comprehension items and 10 Use of Knowledge items.",
+  "key_distribution": {
+    "B": 15,
+    "D": 15,
+    "A": 15,
+    "C": 15
+  },
+  "answer_key": {
+    "1": "B",
+    "2": "D",
+    "3": "A",
+    "4": "D",
+    "5": "B",
+    "6": "A",
+    "7": "B",
+    "8": "C",
+    "9": "C",
+    "10": "A",
+    "11": "C",
+    "12": "B",
+    "13": "A",
+    "14": "D",
+    "15": "D",
+    "16": "A",
+    "17": "B",
+    "18": "A",
+    "19": "A",
+    "20": "C",
+    "21": "A",
+    "22": "B",
+    "23": "B",
+    "24": "C",
+    "25": "A",
+    "26": "D",
+    "27": "B",
+    "28": "C",
+    "29": "D",
+    "30": "C",
+    "31": "C",
+    "32": "D",
+    "33": "A",
+    "34": "D",
+    "35": "A",
+    "36": "C",
+    "37": "B",
+    "38": "A",
+    "39": "B",
+    "40": "D",
+    "41": "A",
+    "42": "C",
+    "43": "D",
+    "44": "B",
+    "45": "D",
+    "46": "D",
+    "47": "A",
+    "48": "B",
+    "49": "D",
+    "50": "C",
+    "51": "B",
+    "52": "A",
+    "53": "C",
+    "54": "D",
+    "55": "B",
+    "56": "C",
+    "57": "C",
+    "58": "D",
+    "59": "C",
+    "60": "B"
+  },
+  "figure_rules": [
+    "All SPARK figures are original SVGs.",
+    "SVGs inherit currentColor so they remain readable in light and dark mode.",
+    "Figures avoid SVG ids and marker definitions so repeated rendering is safe."
+  ],
+  "provenance": "Original SPARK practice paper. Historical CSEC Physics papers and the supplied Physics workbook informed syllabus coverage, question archetypes, examination tone and difficulty only. No past-paper item or source figure is reproduced.",
+  "items": [
+    {
+      "item_id": "spark-phy-p01-practice-15-001",
+      "position": 1,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "A1",
+      "subtopic": null,
+      "objective_code": "A1.10",
+      "objective_statement": "apply the formula for density: ρ = m / V",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A uniform solid is divided into two equal pieces. Each piece has",
+      "options": [
+        {
+          "key": "A",
+          "text": "half the density",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-001-A",
+            "label": "Halving the mass alone would halve the density, but the volume halves too."
+          }
+        },
+        {
+          "key": "B",
+          "text": "the same density",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "a quarter of the density",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-001-C",
+            "label": "Neither the mass nor the volume falls to a quarter."
+          }
+        },
+        {
+          "key": "D",
+          "text": "twice the density",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-001-D",
+            "label": "Nothing about cutting a block makes it denser."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "Density is ρ = m / V.",
+          "Cutting the block in half halves the mass and halves the volume.",
+          "Halving the top and the bottom of a fraction leaves it unchanged, so each half has the same density as the whole. Density is a property of the substance, not of how much of it there is."
+        ],
+        "answer_line": "the same density"
+      },
+      "tags": [
+        "A",
+        "A1.10",
+        "A1"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-002",
+      "position": 2,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "A1",
+      "subtopic": null,
+      "objective_code": "A1.4",
+      "objective_statement": "draw a line of ‘best fit’ for a set of plotted values",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "When experimental readings are plotted, a best-fit line is used because it",
+      "options": [
+        {
+          "key": "A",
+          "text": "is easier to draw",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-002-A",
+            "label": "Being easier to draw is not a reason for preferring it."
+          }
+        },
+        {
+          "key": "B",
+          "text": "always passes through the origin",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-002-B",
+            "label": "Only a relationship of direct proportion passes through the origin."
+          }
+        },
+        {
+          "key": "C",
+          "text": "is always steeper than the joined line",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-002-C",
+            "label": "The gradient of the best fit line is whatever the readings give; it is not systematically steeper."
+          }
+        },
+        {
+          "key": "D",
+          "text": "averages out the uncertainty in the individual readings",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "Every reading carries a small error, so no single point is exactly right.",
+          "Joining the points repeats those errors in the shape of the line.",
+          "A single line drawn with the points balanced above and below it averages the errors out, so its gradient is the best estimate available."
+        ],
+        "answer_line": "averages out the uncertainty in the individual readings"
+      },
+      "tags": [
+        "A",
+        "A1.4",
+        "A1"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-003",
+      "position": 3,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "A1",
+      "subtopic": null,
+      "objective_code": "A1.6",
+      "objective_statement": "express the result of a measurement or calculation to an appropriate number of significant figures",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Measurements used in a calculation are correct to three significant figures. A calculator gives 2.41379 s. The answer should be recorded as",
+      "options": [
+        {
+          "key": "A",
+          "text": "2.41 s",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "2 s",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-003-B",
+            "label": "One significant figure throws away precision that was actually measured."
+          }
+        },
+        {
+          "key": "C",
+          "text": "2.4 s",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-003-C",
+            "label": "Two significant figures still throws away one figure that the measurements support."
+          }
+        },
+        {
+          "key": "D",
+          "text": "2.41379 s",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-003-D",
+            "label": "Six significant figures claims a precision the measurements never had."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "The measurements were good to three significant figures.",
+          "A calculation cannot create precision that was not measured.",
+          "So the answer is rounded to three significant figures: 2.41 s."
+        ],
+        "answer_line": "2.41 s"
+      },
+      "tags": [
+        "A",
+        "A1.6",
+        "A1"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-004",
+      "position": 4,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "A2",
+      "subtopic": null,
+      "objective_code": "A2.3",
+      "objective_statement": "calculate the resultant of vectors which are parallel, anti-parallel and perpendicular",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A body moves with constant velocity while several forces act on it. The vector sum of the forces is",
+      "options": [
+        {
+          "key": "A",
+          "text": "equal to its weight",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-004-A",
+            "label": "Review A2.3. Therefore the resultant force is zero."
+          }
+        },
+        {
+          "key": "B",
+          "text": "in the direction of motion",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-004-B",
+            "label": "Review A2.3. Therefore the resultant force is zero."
+          }
+        },
+        {
+          "key": "C",
+          "text": "equal to its momentum",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-004-C",
+            "label": "Review A2.3. Therefore the resultant force is zero."
+          }
+        },
+        {
+          "key": "D",
+          "text": "zero",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "Constant velocity means zero acceleration.",
+          "Therefore the resultant force is zero."
+        ],
+        "answer_line": "zero"
+      },
+      "tags": [
+        "A",
+        "A2.3",
+        "A2"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-005",
+      "position": 5,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "A2",
+      "subtopic": null,
+      "objective_code": "A2.4",
+      "objective_statement": "explain that a single vector is equivalent to two other vectors at right angles",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A force F acts at an angle θ above the horizontal. Its horizontal component is",
+      "options": [
+        {
+          "key": "A",
+          "text": "F/sin θ",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-005-A",
+            "label": "Review A2.4. The component adjacent to θ is F cos θ."
+          }
+        },
+        {
+          "key": "B",
+          "text": "F cos θ",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "F sin θ",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-005-C",
+            "label": "Review A2.4. The component adjacent to θ is F cos θ."
+          }
+        },
+        {
+          "key": "D",
+          "text": "F tan θ",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-005-D",
+            "label": "Review A2.4. The component adjacent to θ is F cos θ."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "Resolving a vector gives perpendicular components.",
+          "The component adjacent to θ is F cos θ."
+        ],
+        "answer_line": "F cos θ"
+      },
+      "tags": [
+        "A",
+        "A2.4",
+        "A2"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-006",
+      "position": 6,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "A3",
+      "subtopic": null,
+      "objective_code": "A3.11",
+      "objective_statement": "determine the location of the centre of gravity of a body",
+      "profile": "UK",
+      "profile_name": "Use of Knowledge",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 90,
+      "cognitive_level": "application",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "To determine the centre of gravity of an irregular lamina, a student should suspend it from two different points and",
+      "options": [
+        {
+          "key": "A",
+          "text": "draw the vertical plumb lines; their intersection gives the centre of gravity",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "measure its mass each time",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-006-B",
+            "label": "Review A3.11. The intersection of two plumb lines locates the centre of gravity."
+          }
+        },
+        {
+          "key": "C",
+          "text": "find the midpoint of each edge",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-006-C",
+            "label": "Review A3.11. The intersection of two plumb lines locates the centre of gravity."
+          }
+        },
+        {
+          "key": "D",
+          "text": "place it flat and measure its area",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-006-D",
+            "label": "Review A3.11. The intersection of two plumb lines locates the centre of gravity."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "When the lamina hangs freely, its centre of gravity lies vertically below the point of suspension.",
+          "The intersection of two plumb lines locates the centre of gravity."
+        ],
+        "answer_line": "draw the vertical plumb lines; their intersection gives the centre of gravity"
+      },
+      "tags": [
+        "A",
+        "A3.11",
+        "A3"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-007",
+      "position": 7,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "A3",
+      "subtopic": null,
+      "objective_code": "A3.7",
+      "objective_statement": "identify situations in which the application of a force will result in a turning effect",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A door is pushed along a line that passes directly through its hinge. There is no turning effect because the",
+      "options": [
+        {
+          "key": "A",
+          "text": "force is horizontal",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-007-A",
+            "label": "Horizontal forces can produce a moment if their line of action misses the pivot."
+          }
+        },
+        {
+          "key": "B",
+          "text": "perpendicular distance from the hinge to the line of action is zero",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "force is vertical",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-007-C",
+            "label": "Vertical forces can also produce moments."
+          }
+        },
+        {
+          "key": "D",
+          "text": "door has a large mass",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-007-D",
+            "label": "Mass is not the reason the moment is zero."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "Moment equals force multiplied by perpendicular distance from the pivot; here that distance is zero."
+        ],
+        "answer_line": "perpendicular distance from the hinge to the line of action is zero"
+      },
+      "tags": [
+        "A",
+        "A3.7",
+        "A3"
+      ],
+      "provenance": "Original SPARK item. The syllabus objective, paper structure and demand are audit-informed; no past-paper wording or source figure is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-008",
+      "position": 8,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "A3",
+      "subtopic": null,
+      "objective_code": "A3.8",
+      "objective_statement": "define the moment of a force, T",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "The moment of a force about a pivot is found by multiplying the force by the",
+      "options": [
+        {
+          "key": "A",
+          "text": "distance moved by the force",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-008-A",
+            "label": "Distance moved is used when calculating work, not moment."
+          }
+        },
+        {
+          "key": "B",
+          "text": "distance from the force to the centre of the body",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-008-B",
+            "label": "The required distance is measured from the pivot to the line of action of the force."
+          }
+        },
+        {
+          "key": "C",
+          "text": "perpendicular distance from the pivot to the line of action of the force",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "time for which the force acts",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-008-D",
+            "label": "Time is not part of the moment relationship."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "Moment = force × perpendicular distance from the pivot to the line of action of the force.",
+          "The distance must be perpendicular to the line of action."
+        ],
+        "answer_line": "perpendicular distance from the pivot to the line of action of the force"
+      },
+      "tags": [
+        "A",
+        "A3.8",
+        "A3"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-009",
+      "position": 9,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "A4",
+      "subtopic": null,
+      "objective_code": "A4.7",
+      "objective_statement": "describe situations that demonstrate the law of conservation of linear momentum",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A rifle and bullet are initially at rest. Immediately after firing, the bullet has forward momentum p. The momentum of the rifle is",
+      "options": [
+        {
+          "key": "A",
+          "text": "zero",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-009-A",
+            "label": "Review A4.7. Momentum is conserved, so the rifle must have momentum equal in magnitude and opposite in direction to the bullet."
+          }
+        },
+        {
+          "key": "B",
+          "text": "p forwards",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-009-B",
+            "label": "Review A4.7. Momentum is conserved, so the rifle must have momentum equal in magnitude and opposite in direction to the bullet."
+          }
+        },
+        {
+          "key": "C",
+          "text": "p backwards",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "greater than p backwards",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-009-D",
+            "label": "Review A4.7. Momentum is conserved, so the rifle must have momentum equal in magnitude and opposite in direction to the bullet."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "The total momentum is zero before firing.",
+          "Momentum is conserved, so the rifle must have momentum equal in magnitude and opposite in direction to the bullet."
+        ],
+        "answer_line": "p backwards"
+      },
+      "tags": [
+        "A",
+        "A4.7",
+        "A4"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-010",
+      "position": 10,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "A4",
+      "subtopic": null,
+      "objective_code": "A4.1",
+      "objective_statement": "define the terms: distance, displacement, speed, velocity, acceleration",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Unlike distance, displacement",
+      "options": [
+        {
+          "key": "A",
+          "text": "has a direction as well as a magnitude",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "is always the larger of the two",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-010-B",
+            "label": "Displacement can never exceed the distance travelled and is often smaller."
+          }
+        },
+        {
+          "key": "C",
+          "text": "is measured in different units",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-010-C",
+            "label": "Both are measured in metres."
+          }
+        },
+        {
+          "key": "D",
+          "text": "cannot be negative",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-010-D",
+            "label": "Displacement can be negative, since it carries a direction."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "Distance is the total length of path travelled and has magnitude only.",
+          "Displacement is the straight line from start to finish, in a stated direction.",
+          "The difference between them is the direction."
+        ],
+        "answer_line": "has a direction as well as a magnitude"
+      },
+      "tags": [
+        "A",
+        "A4.1",
+        "A4"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-011",
+      "position": 11,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "A4",
+      "subtopic": null,
+      "objective_code": "A4.4",
+      "objective_statement": "state Newton’s three laws of motion",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": {
+        "kind": "figure",
+        "label": "A motion graph is shown below.",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 440 250\" width=\"100%\" style=\"max-width:440px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" font-family=\"Georgia,serif\" font-size=\"12\" ><line x1=\"55\" y1=\"205\" x2=\"395\" y2=\"205\"/><line x1=\"55\" y1=\"205\" x2=\"55\" y2=\"35\"/><polyline points=\"60,185 150,110 240,110 360,55\" stroke-width=\"3\"/><text x=\"197\" y=\"238\" fill=\"currentColor\" stroke=\"none\">Time / s</text><text x=\"18\" y=\"120\" fill=\"currentColor\" stroke=\"none\" transform=\"rotate(-90 18 120)\">Velocity / m s⁻¹</text><text x=\"52\" y=\"222\" fill=\"currentColor\" stroke=\"none\">0</text></svg>",
+        "alt": "A velocity-time graph with changing sections."
+      },
+      "stem": "During the horizontal section of the velocity-time graph, the resultant force on the body is",
+      "options": [
+        {
+          "key": "A",
+          "text": "constant and forward",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-011-A",
+            "label": "Review A4.4. By Newton’s first law, constant velocity means the resultant force is zero."
+          }
+        },
+        {
+          "key": "B",
+          "text": "constant and backward",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-011-B",
+            "label": "Review A4.4. By Newton’s first law, constant velocity means the resultant force is zero."
+          }
+        },
+        {
+          "key": "C",
+          "text": "zero",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "increasing",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-011-D",
+            "label": "Review A4.4. By Newton’s first law, constant velocity means the resultant force is zero."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "The horizontal section represents constant velocity.",
+          "By Newton’s first law, constant velocity means the resultant force is zero."
+        ],
+        "answer_line": "zero"
+      },
+      "tags": [
+        "A",
+        "A4.4",
+        "A4"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-012",
+      "position": 12,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "A5",
+      "subtopic": null,
+      "objective_code": "A5.8",
+      "objective_statement": "define kinetic energy",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A moving trolley can compress a spring when it collides with it. Before the collision the trolley has energy because of its",
+      "options": [
+        {
+          "key": "A",
+          "text": "temperature",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-012-A",
+            "label": "Thermal energy is not the energy identified by the motion."
+          }
+        },
+        {
+          "key": "B",
+          "text": "motion",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "electric charge",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-012-C",
+            "label": "Charge is irrelevant to this mechanical situation."
+          }
+        },
+        {
+          "key": "D",
+          "text": "height",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-012-D",
+            "label": "Height is associated with gravitational potential energy."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "Kinetic energy is the energy associated with motion."
+        ],
+        "answer_line": "motion"
+      },
+      "tags": [
+        "A",
+        "A5.8",
+        "A5"
+      ],
+      "provenance": "Original SPARK item. The syllabus objective, paper structure and demand are audit-informed; no past-paper wording or source figure is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-013",
+      "position": 13,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "A3",
+      "subtopic": null,
+      "objective_code": "A3.12",
+      "objective_statement": "relate the stability of an object to the position of its centre of gravity and its weight",
+      "profile": "UK",
+      "profile_name": "Use of Knowledge",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 90,
+      "cognitive_level": "application",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Which change makes a vehicle more stable against toppling?",
+      "options": [
+        {
+          "key": "A",
+          "text": "lowering its centre of gravity and widening its base",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "raising its centre of gravity and narrowing its base",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-013-B",
+            "label": "Review A3.12. The line of action of the weight remains within the base through a larger tilt."
+          }
+        },
+        {
+          "key": "C",
+          "text": "raising both its centre of gravity and its speed",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-013-C",
+            "label": "Review A3.12. The line of action of the weight remains within the base through a larger tilt."
+          }
+        },
+        {
+          "key": "D",
+          "text": "reducing its mass only",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-013-D",
+            "label": "Review A3.12. The line of action of the weight remains within the base through a larger tilt."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "A lower centre of gravity and a wider base make toppling less likely.",
+          "The line of action of the weight remains within the base through a larger tilt."
+        ],
+        "answer_line": "lowering its centre of gravity and widening its base"
+      },
+      "tags": [
+        "A",
+        "A3.12",
+        "A3"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-014",
+      "position": 14,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "A5",
+      "subtopic": null,
+      "objective_code": "A5.11",
+      "objective_statement": "define power and apply definition",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "One watt is equal to",
+      "options": [
+        {
+          "key": "A",
+          "text": "one newton per metre",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-014-A",
+            "label": "Review A5.11. One watt is one joule per second."
+          }
+        },
+        {
+          "key": "B",
+          "text": "one joule metre",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-014-B",
+            "label": "Review A5.11. One watt is one joule per second."
+          }
+        },
+        {
+          "key": "C",
+          "text": "one newton second",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-014-C",
+            "label": "Review A5.11. One watt is one joule per second."
+          }
+        },
+        {
+          "key": "D",
+          "text": "one joule per second",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "Power is the rate of energy transfer.",
+          "One watt is one joule per second."
+        ],
+        "answer_line": "one joule per second"
+      },
+      "tags": [
+        "A",
+        "A5.11",
+        "A5"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-015",
+      "position": 15,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "A5",
+      "subtopic": null,
+      "objective_code": "A5.12",
+      "objective_statement": "explain the term efficiency",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "No real machine is 100 per cent efficient because",
+      "options": [
+        {
+          "key": "A",
+          "text": "energy is destroyed inside it",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-015-A",
+            "label": "Energy cannot be destroyed. This contradicts conservation of energy."
+          }
+        },
+        {
+          "key": "B",
+          "text": "the input energy is measured wrongly",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-015-B",
+            "label": "The shortfall is real, not a measurement fault."
+          }
+        },
+        {
+          "key": "C",
+          "text": "work is not done by the machine",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-015-C",
+            "label": "The machine does do work; the question is how much of the input becomes that work."
+          }
+        },
+        {
+          "key": "D",
+          "text": "some energy is transferred to forms that are not useful",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "Energy is conserved. Some of it becomes thermal energy in the surroundings, which is not the useful output."
+        ],
+        "answer_line": "some energy is transferred to forms that are not useful"
+      },
+      "tags": [
+        "A",
+        "A5.12",
+        "A5"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-016",
+      "position": 16,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "A6",
+      "subtopic": null,
+      "objective_code": "A6.3",
+      "objective_statement": "apply Archimedes’ principle to predict whether a body would float or sink in a given fluid",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A wooden block floating on water is pushed completely below the surface and released. It initially rises because",
+      "options": [
+        {
+          "key": "A",
+          "text": "the upthrust is greater than its weight",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "its weight becomes zero",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-016-B",
+            "label": "Review A6.3. The resultant upward force makes the block rise."
+          }
+        },
+        {
+          "key": "C",
+          "text": "the water pressure below it becomes zero",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-016-C",
+            "label": "Review A6.3. The resultant upward force makes the block rise."
+          }
+        },
+        {
+          "key": "D",
+          "text": "its density increases",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-016-D",
+            "label": "Review A6.3. The resultant upward force makes the block rise."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "When fully submerged, the displaced water can produce an upthrust greater than the block’s weight.",
+          "The resultant upward force makes the block rise."
+        ],
+        "answer_line": "the upthrust is greater than its weight"
+      },
+      "tags": [
+        "A",
+        "A6.3",
+        "A6"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-017",
+      "position": 17,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "A",
+      "section_name": "Mechanics",
+      "topic": "A3",
+      "subtopic": null,
+      "objective_code": "A3.3",
+      "objective_statement": "determine the weight of objects",
+      "profile": "UK",
+      "profile_name": "Use of Knowledge",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 90,
+      "cognitive_level": "application",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A body of mass 4.5 kg is on Earth where g = 10 N/kg. Its weight is",
+      "options": [
+        {
+          "key": "A",
+          "text": "4.5 N",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-017-A",
+            "label": "Review A3.3. W = 4.5 × 10 = 45 N."
+          }
+        },
+        {
+          "key": "B",
+          "text": "45 N",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "0.45 N",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-017-C",
+            "label": "Review A3.3. W = 4.5 × 10 = 45 N."
+          }
+        },
+        {
+          "key": "D",
+          "text": "450 N",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-017-D",
+            "label": "Review A3.3. W = 4.5 × 10 = 45 N."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "Weight W = mg.",
+          "W = 4.5 × 10 = 45 N."
+        ],
+        "answer_line": "45 N"
+      },
+      "tags": [
+        "A",
+        "A3.3",
+        "A3"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-018",
+      "position": 18,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "B",
+      "section_name": "Thermal Physics and Kinetic Theory",
+      "topic": "B1",
+      "subtopic": null,
+      "objective_code": "B1.1",
+      "objective_statement": "differentiate between the caloric and kinetic theories of heat as they existed in the eighteenth century",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Before the kinetic theory was accepted, the caloric model treated heat as",
+      "options": [
+        {
+          "key": "A",
+          "text": "a weightless fluid transferred from hotter bodies to colder bodies",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "motion of the particles of matter",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-018-B",
+            "label": "Particle motion belongs to the kinetic model."
+          }
+        },
+        {
+          "key": "C",
+          "text": "light emitted by every hot object",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-018-C",
+            "label": "Thermal radiation is not the caloric model."
+          }
+        },
+        {
+          "key": "D",
+          "text": "pressure exerted by a gas",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-018-D",
+            "label": "Gas pressure is a separate phenomenon."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "The historical caloric theory pictured heat as a conserved, weightless fluid called caloric."
+        ],
+        "answer_line": "a weightless fluid transferred from hotter bodies to colder bodies"
+      },
+      "tags": [
+        "B",
+        "B1.1",
+        "B1"
+      ],
+      "provenance": "Original SPARK item. The syllabus objective, paper structure and demand are audit-informed; no past-paper wording or source figure is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-019",
+      "position": 19,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "B",
+      "section_name": "Thermal Physics and Kinetic Theory",
+      "topic": "B2",
+      "subtopic": null,
+      "objective_code": "B2.7",
+      "objective_statement": "use the Kinetic theory to explain the different macroscopic properties of solids, liquids and gases; Expansion",
+      "profile": "UK",
+      "profile_name": "Use of Knowledge",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 90,
+      "cognitive_level": "application",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Molecules striking the flexible wall of a balloon exert a force on it because, at each collision, the molecules",
+      "options": [
+        {
+          "key": "A",
+          "text": "change momentum",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "remain attached to the wall",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-019-B",
+            "label": "Gas molecules do not remain attached in the kinetic model."
+          }
+        },
+        {
+          "key": "C",
+          "text": "fill all space without gaps",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-019-C",
+            "label": "Gas particles have spaces between them."
+          }
+        },
+        {
+          "key": "D",
+          "text": "stop moving permanently",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-019-D",
+            "label": "They continue moving after collisions."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "A force results from the rate of change of momentum as molecules collide with and rebound from the wall."
+        ],
+        "answer_line": "change momentum"
+      },
+      "tags": [
+        "B",
+        "B2.7",
+        "B2"
+      ],
+      "provenance": "Original SPARK item. The syllabus objective, paper structure and demand are audit-informed; no past-paper wording or source figure is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-020",
+      "position": 20,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "B",
+      "section_name": "Thermal Physics and Kinetic Theory",
+      "topic": "B2",
+      "subtopic": null,
+      "objective_code": "B2.12",
+      "objective_statement": "give qualitative explanations of the gas laws in terms of the Kinetic theory",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A fixed mass of gas is compressed at constant temperature. Which particle property remains approximately unchanged?",
+      "options": [
+        {
+          "key": "A",
+          "text": "pressure on the walls",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-020-A",
+            "label": "Pressure increases during the compression."
+          }
+        },
+        {
+          "key": "B",
+          "text": "collision frequency with the walls",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-020-B",
+            "label": "Collision frequency increases because the walls are closer."
+          }
+        },
+        {
+          "key": "C",
+          "text": "average kinetic energy",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "number of particles per unit volume",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-020-D",
+            "label": "Number density increases when the volume decreases."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "At constant temperature the average kinetic energy remains constant, even though collision frequency and pressure increase."
+        ],
+        "answer_line": "average kinetic energy"
+      },
+      "tags": [
+        "B",
+        "B2.12",
+        "B2"
+      ],
+      "provenance": "Original SPARK item. The syllabus objective, paper structure and demand are audit-informed; no past-paper wording or source figure is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-021",
+      "position": 21,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "B",
+      "section_name": "Thermal Physics and Kinetic Theory",
+      "topic": "B2",
+      "subtopic": null,
+      "objective_code": "B2.2",
+      "objective_statement": "identify physical properties which vary with temperature and may be used as the basis for measuring temperature",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Which property is least suitable for use as a thermometric property?",
+      "options": [
+        {
+          "key": "A",
+          "text": "The colour of a hot metal at low temperatures",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "The volume of a fixed mass of liquid",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-021-B",
+            "label": "Liquid expansion is the property a liquid in glass thermometer uses."
+          }
+        },
+        {
+          "key": "C",
+          "text": "The pressure of a fixed mass of gas at constant volume",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-021-C",
+            "label": "Gas pressure is the property the constant volume gas thermometer uses."
+          }
+        },
+        {
+          "key": "D",
+          "text": "The e.m.f. produced by a thermocouple",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-021-D",
+            "label": "A thermocouple e.m.f. varies steadily with temperature and is widely used."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "A thermometric property must vary measurably over the range of interest.",
+          "Colour does not change at all until a metal is red hot.",
+          "So it is useless for ordinary temperatures."
+        ],
+        "answer_line": "The colour of a hot metal at low temperatures"
+      },
+      "tags": [
+        "B",
+        "B2.2",
+        "B2"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-022",
+      "position": 22,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "B",
+      "section_name": "Thermal Physics and Kinetic Theory",
+      "topic": "B3",
+      "subtopic": null,
+      "objective_code": "B3.1",
+      "objective_statement": "distinguish between specific heat capacity, ‘c’ and heat capacity ‘C’",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A block has a heat capacity of 500 J/K. This means that 500 J of energy raises the temperature of",
+      "options": [
+        {
+          "key": "A",
+          "text": "one kilogram of the material by 1 K",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-022-A",
+            "label": "Review B3.1. A heat capacity of 500 J/K means 500 J raises the block temperature by 1 K."
+          }
+        },
+        {
+          "key": "B",
+          "text": "the whole block by 1 K",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "one mole of the material by 1 K",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-022-C",
+            "label": "Review B3.1. A heat capacity of 500 J/K means 500 J raises the block temperature by 1 K."
+          }
+        },
+        {
+          "key": "D",
+          "text": "one cubic metre of the material by 1 K",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-022-D",
+            "label": "Review B3.1. A heat capacity of 500 J/K means 500 J raises the block temperature by 1 K."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "Heat capacity refers to the whole object, not to a unit mass.",
+          "A heat capacity of 500 J/K means 500 J raises the block temperature by 1 K."
+        ],
+        "answer_line": "the whole block by 1 K"
+      },
+      "tags": [
+        "B",
+        "B3.1",
+        "B3"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-023",
+      "position": 23,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "B",
+      "section_name": "Thermal Physics and Kinetic Theory",
+      "topic": "B3",
+      "subtopic": null,
+      "objective_code": "B3.3",
+      "objective_statement": "determine the specific heat capacity of metals and liquids",
+      "profile": "UK",
+      "profile_name": "Use of Knowledge",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 90,
+      "cognitive_level": "application",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "In an electrical method for finding the specific heat capacity of a metal block, which set of measurements is sufficient for calculating c?",
+      "options": [
+        {
+          "key": "A",
+          "text": "mass and final temperature only",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-023-A",
+            "label": "Energy supplied and temperature change are both needed."
+          }
+        },
+        {
+          "key": "B",
+          "text": "mass, heater power, heating time and temperature rise",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "heater voltage only",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-023-C",
+            "label": "Voltage alone does not give the energy supplied."
+          }
+        },
+        {
+          "key": "D",
+          "text": "heating time and room temperature only",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-023-D",
+            "label": "The mass, energy supplied and temperature rise are required."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "Use E = Pt and E = mcΔT.",
+          "Therefore c requires m, P, t and ΔT."
+        ],
+        "answer_line": "mass, heater power, heating time and temperature rise"
+      },
+      "tags": [
+        "B",
+        "B3.3",
+        "B3"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-024",
+      "position": 24,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "B",
+      "section_name": "Thermal Physics and Kinetic Theory",
+      "topic": "B4",
+      "subtopic": null,
+      "objective_code": "B4.5",
+      "objective_statement": "recall that good absorbers are good emitters",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": {
+        "kind": "figure",
+        "label": "The surface shown is a good absorber of thermal radiation.",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 440 250\" width=\"100%\" style=\"max-width:440px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" font-family=\"Georgia,serif\" font-size=\"12\"><rect x=\"176\" y=\"72\" width=\"100\" height=\"116\" fill=\"currentColor\" fill-opacity=\".15\"/><text x=\"182\" y=\"135\" fill=\"currentColor\" stroke=\"none\">dull black</text><path d=\"M58 90 C82 90 104 90 145 90\"/><path d=\"M145 90l-12-6v12z\" fill=\"currentColor\"/><path d=\"M58 126 C82 126 104 126 145 126\"/><path d=\"M145 126l-12-6v12z\" fill=\"currentColor\"/><text x=\"42\" y=\"67\" fill=\"currentColor\" stroke=\"none\">incident thermal radiation</text><path d=\"M288 92 C320 76 345 72 386 70\"/><path d=\"M386 70l-12-6v12z\" fill=\"currentColor\"/><path d=\"M288 135 C320 142 345 148 386 157\"/><path d=\"M386 157l-12-6v12z\" fill=\"currentColor\"/><text x=\"300\" y=\"198\" fill=\"currentColor\" stroke=\"none\">thermal radiation emitted</text></svg>",
+        "alt": "A dull black surface absorbs incident thermal radiation and also emits thermal radiation."
+      },
+      "stem": "Two identical surfaces are heated to the same temperature. The dull black surface is known to absorb thermal radiation well. It is therefore also a",
+      "options": [
+        {
+          "key": "A",
+          "text": "poor conductor",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-024-A",
+            "label": "Absorbing and conducting are different processes."
+          }
+        },
+        {
+          "key": "B",
+          "text": "good reflector",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-024-B",
+            "label": "A good absorber is generally a poor reflector."
+          }
+        },
+        {
+          "key": "C",
+          "text": "good emitter",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "good conductor",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-024-D",
+            "label": "Conductivity does not follow from absorptivity."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "Good absorbers of thermal radiation are also good emitters."
+        ],
+        "answer_line": "good emitter"
+      },
+      "tags": [
+        "B",
+        "B4.5",
+        "B4"
+      ],
+      "provenance": "Original SPARK item. The syllabus objective, paper structure and demand are audit-informed; no past-paper wording or source figure is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-025",
+      "position": 25,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "B",
+      "section_name": "Thermal Physics and Kinetic Theory",
+      "topic": "B4",
+      "subtopic": null,
+      "objective_code": "B4.1",
+      "objective_statement": "explain the transfer of thermal energy by conduction",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Metals are generally better thermal conductors than non-metals because metals contain",
+      "options": [
+        {
+          "key": "A",
+          "text": "free electrons that can move through the structure",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "closely packed atoms",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-025-B",
+            "label": "Many non metals are closely packed too, and they still conduct poorly."
+          }
+        },
+        {
+          "key": "C",
+          "text": "more tightly bound atoms",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-025-C",
+            "label": "Tight binding helps vibrations pass along but does not explain the large difference."
+          }
+        },
+        {
+          "key": "D",
+          "text": "heavier atoms",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-025-D",
+            "label": "Atomic mass is not what decides conduction; copper and lead differ greatly in conductivity."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "In any solid, vibrating particles pass energy to their neighbours.",
+          "In a metal there are also electrons free to travel through the whole structure.",
+          "These carry energy from hot to cold far faster, so the metal is a good conductor."
+        ],
+        "answer_line": "free electrons that can move through the structure"
+      },
+      "tags": [
+        "B",
+        "B4.1",
+        "B4"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-026",
+      "position": 26,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "C",
+      "section_name": "Waves and Optics",
+      "topic": "C1",
+      "subtopic": null,
+      "objective_code": "C1.3",
+      "objective_statement": "represent transverse and longitudinal waves in displacement- position and displacement-time graphs",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "The frequency of a periodic wave is the reciprocal of its",
+      "options": [
+        {
+          "key": "A",
+          "text": "amplitude",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-026-A",
+            "label": "Review C1.3. The reciprocal of the period gives the frequency."
+          }
+        },
+        {
+          "key": "B",
+          "text": "wavelength",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-026-B",
+            "label": "Review C1.3. The reciprocal of the period gives the frequency."
+          }
+        },
+        {
+          "key": "C",
+          "text": "speed",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-026-C",
+            "label": "Review C1.3. The reciprocal of the period gives the frequency."
+          }
+        },
+        {
+          "key": "D",
+          "text": "period",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "Frequency and period are related by f = 1/T.",
+          "The reciprocal of the period gives the frequency."
+        ],
+        "answer_line": "period"
+      },
+      "tags": [
+        "C",
+        "C1.3",
+        "C1"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-027",
+      "position": 27,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "C",
+      "section_name": "Waves and Optics",
+      "topic": "C4",
+      "subtopic": null,
+      "objective_code": "C4.4",
+      "objective_statement": "apply the principle that light travels in straight lines",
+      "profile": "UK",
+      "profile_name": "Use of Knowledge",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 90,
+      "cognitive_level": "application",
+      "calculator_allowed": true,
+      "stimulus": {
+        "kind": "figure",
+        "group": null,
+        "label": "The diagram shows a simple pinhole camera.",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 460 250\" width=\"100%\" style=\"max-width:450px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" font-family=\"Georgia,serif\" font-size=\"12\"><rect x=\"190\" y=\"45\" width=\"220\" height=\"160\"/><circle cx=\"190\" cy=\"125\" r=\"3\" fill=\"currentColor\" stroke=\"none\"/><line x1=\"90\" y1=\"175\" x2=\"90\" y2=\"75\" stroke-width=\"3\"/><path d=\"M90 75l-7 13h14z\" fill=\"currentColor\"/><line x1=\"90\" y1=\"75\" x2=\"190\" y2=\"125\"/><line x1=\"190\" y1=\"125\" x2=\"390\" y2=\"175\"/><line x1=\"90\" y1=\"175\" x2=\"190\" y2=\"125\"/><line x1=\"190\" y1=\"125\" x2=\"390\" y2=\"75\"/><line x1=\"390\" y1=\"75\" x2=\"390\" y2=\"175\" stroke-width=\"3\"/><path d=\"M390 175l-7-13h14z\" fill=\"currentColor\"/><text x=\"62\" y=\"205\" fill=\"currentColor\" stroke=\"none\">object</text><text x=\"170\" y=\"32\" fill=\"currentColor\" stroke=\"none\">pinhole</text><text x=\"372\" y=\"205\" fill=\"currentColor\" stroke=\"none\">screen</text></svg>",
+        "alt": "A pinhole camera with rays crossing at a small aperture to form an inverted image on a screen."
+      },
+      "stem": "An opaque card is placed between a small lamp and a screen. A shadow is formed because light",
+      "options": [
+        {
+          "key": "A",
+          "text": "bends around the card",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-027-A",
+            "label": "Ordinary light does not bend enough around an opaque card to fill the region behind it."
+          }
+        },
+        {
+          "key": "B",
+          "text": "travels in straight lines and is blocked by the card",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "is reflected through the card",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-027-C",
+            "label": "An opaque card does not transmit the light through to the screen."
+          }
+        },
+        {
+          "key": "D",
+          "text": "changes frequency at the edge of the card",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-027-D",
+            "label": "A change in frequency is not responsible for the formation of a shadow."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "Light from the small source travels along straight paths.",
+          "The opaque card blocks some of these paths, so that part of the screen receives no direct light."
+        ],
+        "answer_line": "travels in straight lines and is blocked by the card"
+      },
+      "tags": [
+        "C",
+        "C4.4",
+        "C4"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-028",
+      "position": 28,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "C",
+      "section_name": "Waves and Optics",
+      "topic": "C4",
+      "subtopic": null,
+      "objective_code": "C4.9",
+      "objective_statement": "describe how a prism may be used to produce a spectrum",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A narrow beam of white light passes through a triangular glass prism and falls on a screen. The screen shows",
+      "options": [
+        {
+          "key": "A",
+          "text": "a single red image",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-028-A",
+            "label": "Review C4.9. The result is a visible spectrum."
+          }
+        },
+        {
+          "key": "B",
+          "text": "a dark shadow only",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-028-B",
+            "label": "Review C4.9. The result is a visible spectrum."
+          }
+        },
+        {
+          "key": "C",
+          "text": "a band of colours from red to violet",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "two identical white images",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-028-D",
+            "label": "Review C4.9. The result is a visible spectrum."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "A prism disperses white light because different wavelengths refract by different amounts.",
+          "The result is a visible spectrum."
+        ],
+        "answer_line": "a band of colours from red to violet"
+      },
+      "tags": [
+        "C",
+        "C4.9",
+        "C4"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-029",
+      "position": 29,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "C",
+      "section_name": "Waves and Optics",
+      "topic": "C2",
+      "subtopic": null,
+      "objective_code": "C2.5",
+      "objective_statement": "describe the use of ultrasound",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "In prenatal scanning, pulses of ultrasound form an image because boundaries between different tissues",
+      "options": [
+        {
+          "key": "A",
+          "text": "absorb all the ultrasound",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-029-A",
+            "label": "Review C2.5. The returning echoes are used to build the image."
+          }
+        },
+        {
+          "key": "B",
+          "text": "change the speed of light",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-029-B",
+            "label": "Review C2.5. The returning echoes are used to build the image."
+          }
+        },
+        {
+          "key": "C",
+          "text": "produce X-rays",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-029-C",
+            "label": "Review C2.5. The returning echoes are used to build the image."
+          }
+        },
+        {
+          "key": "D",
+          "text": "reflect part of the ultrasound back to the detector",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "Ultrasound pulses are partly reflected at boundaries between tissues.",
+          "The returning echoes are used to build the image."
+        ],
+        "answer_line": "reflect part of the ultrasound back to the detector"
+      },
+      "tags": [
+        "C",
+        "C2.5",
+        "C2"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-030",
+      "position": 30,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "C",
+      "section_name": "Waves and Optics",
+      "topic": "C3",
+      "subtopic": null,
+      "objective_code": "C3.1",
+      "objective_statement": "state the properties of e.m. waves",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": {
+        "kind": "figure",
+        "label": "The electromagnetic spectrum is shown below.",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 440 250\" width=\"100%\" style=\"max-width:440px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" font-family=\"Georgia,serif\" font-size=\"12\" ><line x1=\"25\" y1=\"145\" x2=\"410\" y2=\"145\"/><path d=\"M410 145l-12-6v12z\" fill=\"currentColor\"/><text x=\"283\" y=\"170\" fill=\"currentColor\" stroke=\"none\">increasing frequency</text><rect x=\"28\" y=\"85\" width=\"46\" height=\"38\"/><text x=\"32\" y=\"108\" fill=\"currentColor\" stroke=\"none\" font-size=\"10\">radio</text><rect x=\"82\" y=\"85\" width=\"46\" height=\"38\"/><text x=\"86\" y=\"108\" fill=\"currentColor\" stroke=\"none\" font-size=\"10\">micro</text><rect x=\"138\" y=\"85\" width=\"46\" height=\"38\"/><text x=\"142\" y=\"108\" fill=\"currentColor\" stroke=\"none\" font-size=\"10\">IR</text><rect x=\"190\" y=\"85\" width=\"46\" height=\"38\"/><text x=\"194\" y=\"108\" fill=\"currentColor\" stroke=\"none\" font-size=\"10\">visible</text><rect x=\"242\" y=\"85\" width=\"46\" height=\"38\"/><text x=\"246\" y=\"108\" fill=\"currentColor\" stroke=\"none\" font-size=\"10\">UV</text><rect x=\"294\" y=\"85\" width=\"46\" height=\"38\"/><text x=\"298\" y=\"108\" fill=\"currentColor\" stroke=\"none\" font-size=\"10\">X-ray</text><rect x=\"350\" y=\"85\" width=\"46\" height=\"38\"/><text x=\"354\" y=\"108\" fill=\"currentColor\" stroke=\"none\" font-size=\"10\">gamma</text></svg>",
+        "alt": "The electromagnetic spectrum ordered from radio waves to gamma rays."
+      },
+      "stem": "Using the electromagnetic spectrum shown, which radiation has the highest frequency?",
+      "options": [
+        {
+          "key": "A",
+          "text": "radio waves",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-030-A",
+            "label": "Review C3.1. Gamma rays have the highest frequency in the electromagnetic spectrum."
+          }
+        },
+        {
+          "key": "B",
+          "text": "infrared",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-030-B",
+            "label": "Review C3.1. Gamma rays have the highest frequency in the electromagnetic spectrum."
+          }
+        },
+        {
+          "key": "C",
+          "text": "gamma rays",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "microwaves",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-030-D",
+            "label": "Review C3.1. Gamma rays have the highest frequency in the electromagnetic spectrum."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "Frequency increases as wavelength decreases.",
+          "Gamma rays have the highest frequency in the electromagnetic spectrum."
+        ],
+        "answer_line": "gamma rays"
+      },
+      "tags": [
+        "C",
+        "C3.1",
+        "C3"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-031",
+      "position": 31,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "C",
+      "section_name": "Waves and Optics",
+      "topic": "C4",
+      "subtopic": null,
+      "objective_code": "C4.7",
+      "objective_statement": "give examples of observations which indicate that light can be refracted",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A coin at the bottom of a pool appears closer to the surface than it really is. This occurs because light from the coin",
+      "options": [
+        {
+          "key": "A",
+          "text": "is reflected back down at the surface",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-031-A",
+            "label": "Reflection alone does not produce the apparent-depth effect."
+          }
+        },
+        {
+          "key": "B",
+          "text": "is absorbed by the water",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-031-B",
+            "label": "The rays must emerge to reach the observer."
+          }
+        },
+        {
+          "key": "C",
+          "text": "changes speed and direction as it leaves the water",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "follows a curved path through uniform water",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-031-D",
+            "label": "In each uniform medium the ray travels in a straight line."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "Refraction at the water-air boundary changes the direction of the rays reaching the observer."
+        ],
+        "answer_line": "changes speed and direction as it leaves the water"
+      },
+      "tags": [
+        "C",
+        "C4.7",
+        "C4"
+      ],
+      "provenance": "Original SPARK item. The syllabus objective, paper structure and demand are audit-informed; no past-paper wording or source figure is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-032",
+      "position": 32,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "C",
+      "section_name": "Waves and Optics",
+      "topic": "C4",
+      "subtopic": null,
+      "objective_code": "C4.8",
+      "objective_statement": "describe the refraction of light rays",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "When a light ray enters glass along the normal, the ray",
+      "options": [
+        {
+          "key": "A",
+          "text": "bends towards the normal",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-032-A",
+            "label": "Bending towards the normal happens only when the ray arrives at an angle."
+          }
+        },
+        {
+          "key": "B",
+          "text": "is totally internally reflected",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-032-B",
+            "label": "Total internal reflection needs light going from dense to less dense above the critical angle."
+          }
+        },
+        {
+          "key": "C",
+          "text": "bends away from the normal",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-032-C",
+            "label": "Going into a denser medium the ray bends towards the normal, never away."
+          }
+        },
+        {
+          "key": "D",
+          "text": "continues without changing direction",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "Refraction bends a ray only when it strikes a boundary at an angle to the normal.",
+          "Here the angle of incidence is zero.",
+          "The ray slows down but carries straight on, so the angle of refraction is also zero."
+        ],
+        "answer_line": "continues without changing direction"
+      },
+      "tags": [
+        "C",
+        "C4.8",
+        "C4"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-033",
+      "position": 33,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "C",
+      "section_name": "Waves and Optics",
+      "topic": "C5",
+      "subtopic": null,
+      "objective_code": "C5.2",
+      "objective_statement": "define the terms: (a) principal axis; (b) principal focus; (c) focal length; (d) focal plane; (e) magnification",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": {
+        "kind": "figure",
+        "label": "The line XY passes through the optical centre and the two principal foci.",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 440 250\" width=\"100%\" style=\"max-width:440px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" font-family=\"Georgia,serif\" font-size=\"12\"><line x1=\"35\" y1=\"125\" x2=\"405\" y2=\"125\" stroke-width=\"1.5\"/><path d=\"M405 125l-12-6v12z\" fill=\"currentColor\"/><path d=\"M215 58 Q190 125 215 192\" stroke-width=\"2.2\"/><path d=\"M225 58 Q250 125 225 192\" stroke-width=\"2.2\"/><circle cx=\"220\" cy=\"125\" r=\"4\" fill=\"currentColor\"/><circle cx=\"145\" cy=\"125\" r=\"4\" fill=\"currentColor\"/><circle cx=\"295\" cy=\"125\" r=\"4\" fill=\"currentColor\"/><text x=\"139\" y=\"112\" fill=\"currentColor\" stroke=\"none\">F</text><text x=\"290\" y=\"112\" fill=\"currentColor\" stroke=\"none\">F</text><text x=\"39\" y=\"114\" fill=\"currentColor\" stroke=\"none\">X</text><text x=\"391\" y=\"114\" fill=\"currentColor\" stroke=\"none\">Y</text><text x=\"183\" y=\"40\" fill=\"currentColor\" stroke=\"none\">lens</text></svg>",
+        "alt": "A lens is centred on a horizontal line XY that passes through the optical centre and the principal foci F on both sides."
+      },
+      "stem": "In the lens diagram, line XY passes through the optical centre and the principal foci. XY is the",
+      "options": [
+        {
+          "key": "A",
+          "text": "principal axis",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "focal length",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-033-B",
+            "label": "Review C5.2. The principal axis is the straight line through the optical centre and the principal foci of a lens."
+          }
+        },
+        {
+          "key": "C",
+          "text": "normal",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-033-C",
+            "label": "Review C5.2. The principal axis is the straight line through the optical centre and the principal foci of a lens."
+          }
+        },
+        {
+          "key": "D",
+          "text": "image plane",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-033-D",
+            "label": "Review C5.2. The principal axis is the straight line through the optical centre and the principal foci of a lens."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "The principal axis is the straight line through the optical centre and the principal foci of a lens."
+        ],
+        "answer_line": "principal axis"
+      },
+      "tags": [
+        "C",
+        "C5.2",
+        "C5"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-034",
+      "position": 34,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "C",
+      "section_name": "Waves and Optics",
+      "topic": "C4",
+      "subtopic": null,
+      "objective_code": "C4.11",
+      "objective_statement": "explain ‘critical angle’ and ‘total internal reflection’",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "The critical angle is the angle of incidence in the denser medium for which the angle of refraction is",
+      "options": [
+        {
+          "key": "A",
+          "text": "0°",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-034-A",
+            "label": "Review C4.11. Its angle of refraction is therefore 90°."
+          }
+        },
+        {
+          "key": "B",
+          "text": "equal to the angle of incidence",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-034-B",
+            "label": "Review C4.11. Its angle of refraction is therefore 90°."
+          }
+        },
+        {
+          "key": "C",
+          "text": "45°",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-034-C",
+            "label": "Review C4.11. Its angle of refraction is therefore 90°."
+          }
+        },
+        {
+          "key": "D",
+          "text": "90°",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "At the critical angle, the refracted ray travels along the boundary.",
+          "Its angle of refraction is therefore 90°."
+        ],
+        "answer_line": "90°"
+      },
+      "tags": [
+        "C",
+        "C4.11",
+        "C4"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-035",
+      "position": 35,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "D4",
+      "subtopic": null,
+      "objective_code": "D4.15",
+      "objective_statement": "select a fuse or circuit breaker of suitable current rating for a given appliance",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A fuse fitted to an appliance should normally have a current rating",
+      "options": [
+        {
+          "key": "A",
+          "text": "just above the normal working current",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "well below the normal working current",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-035-B",
+            "label": "Review D4.15. Its rating is therefore chosen just above the appliance’s working current."
+          }
+        },
+        {
+          "key": "C",
+          "text": "equal to zero",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-035-C",
+            "label": "Review D4.15. Its rating is therefore chosen just above the appliance’s working current."
+          }
+        },
+        {
+          "key": "D",
+          "text": "as large as possible",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-035-D",
+            "label": "Review D4.15. Its rating is therefore chosen just above the appliance’s working current."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "The fuse must carry the normal current without melting.",
+          "Its rating is therefore chosen just above the appliance’s working current."
+        ],
+        "answer_line": "just above the normal working current"
+      },
+      "tags": [
+        "D",
+        "D4.15",
+        "D4"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-036",
+      "position": 36,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "D1",
+      "subtopic": null,
+      "objective_code": "D1.4",
+      "objective_statement": "define an electric field",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": {
+        "kind": "figure",
+        "label": "Two charged objects are shown below.",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 440 250\" width=\"100%\" style=\"max-width:440px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" font-family=\"Georgia,serif\" font-size=\"12\" ><circle cx=\"135\" cy=\"125\" r=\"36\"/><circle cx=\"305\" cy=\"125\" r=\"36\"/><text x=\"126\" y=\"133\" fill=\"currentColor\" stroke=\"none\" font-size=\"28\">+</text><text x=\"296\" y=\"133\" fill=\"currentColor\" stroke=\"none\" font-size=\"28\">+</text><line x1=\"93\" y1=\"125\" x2=\"45\" y2=\"125\"/><path d=\"M45 125l12-6v12z\" fill=\"currentColor\"/><line x1=\"347\" y1=\"125\" x2=\"395\" y2=\"125\"/><path d=\"M395 125l-12-6v12z\" fill=\"currentColor\"/><text x=\"155\" y=\"195\" fill=\"currentColor\" stroke=\"none\">charged spheres</text></svg>",
+        "alt": "Two positively charged spheres repel each other."
+      },
+      "stem": "A small positive test charge is placed near an isolated positive source charge. The force on the test charge is directed",
+      "options": [
+        {
+          "key": "A",
+          "text": "along a circle around the source charge",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-036-A",
+            "label": "Review D1.4. A positive test charge is pushed radially away from a positive source charge."
+          }
+        },
+        {
+          "key": "B",
+          "text": "radially towards the source charge",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-036-B",
+            "label": "Review D1.4. A positive test charge is pushed radially away from a positive source charge."
+          }
+        },
+        {
+          "key": "C",
+          "text": "radially away from the source charge",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "nowhere because the force is zero",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-036-D",
+            "label": "Review D1.4. A positive test charge is pushed radially away from a positive source charge."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "Like charges repel.",
+          "A positive test charge is pushed radially away from a positive source charge."
+        ],
+        "answer_line": "radially away from the source charge"
+      },
+      "tags": [
+        "D",
+        "D1.4",
+        "D1"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-037",
+      "position": 37,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "D1",
+      "subtopic": null,
+      "objective_code": "D1.5",
+      "objective_statement": "describe one hazard and one useful application of static charge",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A charged cloud produces a large potential difference above a building. A metal lightning conductor reduces the danger by",
+      "options": [
+        {
+          "key": "A",
+          "text": "repelling the cloud",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-037-A",
+            "label": "The conductor does not repel the cloud."
+          }
+        },
+        {
+          "key": "B",
+          "text": "providing a low-resistance path to earth",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "storing charge in the roof",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-037-C",
+            "label": "Storing charge would not provide protection."
+          }
+        },
+        {
+          "key": "D",
+          "text": "insulating the building from the ground",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-037-D",
+            "label": "The conductor is deliberately connected to earth."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "The conductor provides a preferred path for charge to reach earth rather than pass through the building."
+        ],
+        "answer_line": "providing a low-resistance path to earth"
+      },
+      "tags": [
+        "D",
+        "D1.5",
+        "D1"
+      ],
+      "provenance": "Original SPARK item. The syllabus objective, paper structure and demand are audit-informed; no past-paper wording or source figure is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-038",
+      "position": 38,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "D2",
+      "subtopic": null,
+      "objective_code": "D2.6",
+      "objective_statement": "differentiate between direct and alternating currents",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Which statement describes a direct current?",
+      "options": [
+        {
+          "key": "A",
+          "text": "It flows in one direction only",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "It reverses direction fifty times each second",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-038-B",
+            "label": "Reversing regularly is what makes a current alternating."
+          }
+        },
+        {
+          "key": "C",
+          "text": "It cannot be produced by a cell",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-038-C",
+            "label": "A cell is the commonest source of direct current."
+          }
+        },
+        {
+          "key": "D",
+          "text": "Its size must always be constant",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-038-D",
+            "label": "Rectified direct current varies in size but still flows one way."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "The words direct and alternating describe direction, not size.",
+          "A direct current keeps the same direction throughout.",
+          "An alternating current reverses direction regularly."
+        ],
+        "answer_line": "It flows in one direction only"
+      },
+      "tags": [
+        "D",
+        "D2.6",
+        "D2"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-039",
+      "position": 39,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "D2",
+      "subtopic": null,
+      "objective_code": "D2.1",
+      "objective_statement": "distinguish between conductors and insulators",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A potential difference applied across a glass rod produces practically no current. This is because glass has",
+      "options": [
+        {
+          "key": "A",
+          "text": "no atoms",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-039-A",
+            "label": "Glass is made of atoms."
+          }
+        },
+        {
+          "key": "B",
+          "text": "very few charge carriers free to move",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "no electric charges of any kind",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-039-C",
+            "label": "Charges exist in all ordinary matter."
+          }
+        },
+        {
+          "key": "D",
+          "text": "more protons than electrons",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-039-D",
+            "label": "Electrical neutrality does not require excess protons."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "An insulator contains charges, but very few are free to move through the material."
+        ],
+        "answer_line": "very few charge carriers free to move"
+      },
+      "tags": [
+        "D",
+        "D2.1",
+        "D2"
+      ],
+      "provenance": "Original SPARK item. The syllabus objective, paper structure and demand are audit-informed; no past-paper wording or source figure is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-040",
+      "position": 40,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "D3",
+      "subtopic": null,
+      "objective_code": "D3.1",
+      "objective_statement": "cite examples of the conversion of electrical energy to other forms and vice versa",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A rechargeable torch is charged and later switched on. The energy changes, in order, are",
+      "options": [
+        {
+          "key": "A",
+          "text": "chemical to electrical, then electrical to light",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-040-A",
+            "label": "This leaves out the charging step altogether."
+          }
+        },
+        {
+          "key": "B",
+          "text": "electrical to light, then light to chemical",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-040-B",
+            "label": "Light is not converted back into chemical energy."
+          }
+        },
+        {
+          "key": "C",
+          "text": "chemical to thermal, then thermal to light",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-040-C",
+            "label": "The torch does not work by heating something until it glows from a chemical reaction."
+          }
+        },
+        {
+          "key": "D",
+          "text": "electrical to chemical, then chemical to electrical to light",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "While the torch is plugged in, a current is driven backwards through the cell, storing electrical energy as chemical energy.",
+          "Switching the torch on lets that chemical store drive a current, so chemical energy becomes electrical energy.",
+          "The lamp then converts the electrical energy into light, with some becoming thermal energy on the way."
+        ],
+        "answer_line": "electrical to chemical, then chemical to electrical to light"
+      },
+      "tags": [
+        "D",
+        "D3.1",
+        "D3"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-041",
+      "position": 41,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "D4",
+      "subtopic": null,
+      "objective_code": "D4.1",
+      "objective_statement": "use symbols to construct circuit diagrams",
+      "profile": "UK",
+      "profile_name": "Use of Knowledge",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 90,
+      "cognitive_level": "application",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "To measure the current through a resistor and the potential difference across it, the",
+      "options": [
+        {
+          "key": "A",
+          "text": "ammeter is connected in series and the voltmeter in parallel",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "ammeter and voltmeter are both connected in series",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-041-B",
+            "label": "Review D4.1. A voltmeter measures potential difference across the component, so it is connected in parallel."
+          }
+        },
+        {
+          "key": "C",
+          "text": "ammeter is connected in parallel and the voltmeter in series",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-041-C",
+            "label": "Review D4.1. A voltmeter measures potential difference across the component, so it is connected in parallel."
+          }
+        },
+        {
+          "key": "D",
+          "text": "ammeter and voltmeter are both connected in parallel",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-041-D",
+            "label": "Review D4.1. A voltmeter measures potential difference across the component, so it is connected in parallel."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "An ammeter measures the current through the component, so it is connected in series.",
+          "A voltmeter measures potential difference across the component, so it is connected in parallel."
+        ],
+        "answer_line": "ammeter is connected in series and the voltmeter in parallel"
+      },
+      "tags": [
+        "D",
+        "D4.1",
+        "D4"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-042",
+      "position": 42,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "D4",
+      "subtopic": null,
+      "objective_code": "D4.5",
+      "objective_statement": "draw a circuit diagram to show how a secondary cell can be recharged",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "To recharge a secondary cell from a d.c. supply, the cell should be connected with",
+      "options": [
+        {
+          "key": "A",
+          "text": "its positive terminal to the supply negative terminal",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-042-A",
+            "label": "Review D4.5. The positive supply terminal is connected to the positive cell terminal."
+          }
+        },
+        {
+          "key": "B",
+          "text": "both cell terminals joined together",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-042-B",
+            "label": "Review D4.5. The positive supply terminal is connected to the positive cell terminal."
+          }
+        },
+        {
+          "key": "C",
+          "text": "its positive terminal to the supply positive terminal",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "an a.c. supply directly across it",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-042-D",
+            "label": "Review D4.5. The positive supply terminal is connected to the positive cell terminal."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "Recharging requires current to be driven through the cell in the reverse chemical direction.",
+          "The positive supply terminal is connected to the positive cell terminal."
+        ],
+        "answer_line": "its positive terminal to the supply positive terminal"
+      },
+      "tags": [
+        "D",
+        "D4.5",
+        "D4"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-043",
+      "position": 43,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "D4",
+      "subtopic": null,
+      "objective_code": "D4.12",
+      "objective_statement": "solve problems involving series, parallel and series- parallel circuits",
+      "profile": "UK",
+      "profile_name": "Use of Knowledge",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 90,
+      "cognitive_level": "application",
+      "calculator_allowed": true,
+      "stimulus": {
+        "kind": "figure",
+        "label": "The two resistors are in series.",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 440 250\" width=\"100%\" style=\"max-width:440px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" font-family=\"Georgia,serif\" font-size=\"12\" ><line x1=\"60\" y1=\"60\" x2=\"380\" y2=\"60\"/><line x1=\"60\" y1=\"60\" x2=\"60\" y2=\"200\"/><line x1=\"380\" y1=\"60\" x2=\"380\" y2=\"200\"/><line x1=\"60\" y1=\"200\" x2=\"380\" y2=\"200\"/><line x1=\"115\" y1=\"190\" x2=\"115\" y2=\"210\"/><line x1=\"128\" y1=\"182\" x2=\"128\" y2=\"218\"/><text x=\"105\" y=\"235\" fill=\"currentColor\" stroke=\"none\">cell</text><path d=\"M145 60h18l8-10 16 20 16-20 16 20 8-10h18\"/><path d=\"M245 60h18l8-10 16 20 16-20 16 20 8-10h18\"/><text x=\"178\" y=\"38\" fill=\"currentColor\" stroke=\"none\">4 Ω</text><text x=\"280\" y=\"38\" fill=\"currentColor\" stroke=\"none\">6 Ω</text><circle cx=\"220\" cy=\"200\" r=\"18\"/><text x=\"214\" y=\"205\" fill=\"currentColor\" stroke=\"none\">A</text></svg>",
+        "alt": "A simple circuit contains 4 ohm and 6 ohm resistors in series with a cell and ammeter."
+      },
+      "stem": "A 4 Ω resistor and a 6 Ω resistor are connected in series to a 20 V supply. What current flows in the circuit?",
+      "options": [
+        {
+          "key": "A",
+          "text": "0.50 A",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-043-A",
+            "label": "This divides by only one resistance incorrectly."
+          }
+        },
+        {
+          "key": "B",
+          "text": "5.0 A",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-043-B",
+            "label": "This uses 20/4 and ignores the 6 Ω resistor."
+          }
+        },
+        {
+          "key": "C",
+          "text": "10 A",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-043-C",
+            "label": "This adds the resistances but does not use V = IR correctly."
+          }
+        },
+        {
+          "key": "D",
+          "text": "2.0 A",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "Series resistance = 4 + 6 = 10 Ω.",
+          "I = V/R = 20/10 = 2.0 A."
+        ],
+        "answer_line": "2.0 A"
+      },
+      "tags": [
+        "D",
+        "D4.12",
+        "D4"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-044",
+      "position": 44,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "D4",
+      "subtopic": null,
+      "objective_code": "D4.7",
+      "objective_statement": "explain the concept of resistance",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "When a resistor is inserted into a circuit, the current falls for the same supply voltage. The resistance measures how strongly the resistor",
+      "options": [
+        {
+          "key": "A",
+          "text": "stores charge",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-044-A",
+            "label": "Resistance is not a measure of stored charge."
+          }
+        },
+        {
+          "key": "B",
+          "text": "opposes current",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "converts current into voltage",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-044-C",
+            "label": "Current is not converted into voltage."
+          }
+        },
+        {
+          "key": "D",
+          "text": "increases the supply potential difference",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-044-D",
+            "label": "A resistor does not increase the supply voltage."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "Resistance is the opposition a component offers to electric current."
+        ],
+        "answer_line": "opposes current"
+      },
+      "tags": [
+        "D",
+        "D4.7",
+        "D4"
+      ],
+      "provenance": "Original SPARK item. The syllabus objective, paper structure and demand are audit-informed; no past-paper wording or source figure is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-045",
+      "position": 45,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "D4",
+      "subtopic": null,
+      "objective_code": "D4.9",
+      "objective_statement": "explain why it is necessary for an ammeter to have a very low resistance",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "An ammeter is inserted in series to measure a circuit current. Its resistance is made very small so that the meter",
+      "options": [
+        {
+          "key": "A",
+          "text": "can be connected across the supply",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-045-A",
+            "label": "Ammeters are connected in series."
+          }
+        },
+        {
+          "key": "B",
+          "text": "always gives a larger reading",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-045-B",
+            "label": "A larger reading would be an error, not a design aim."
+          }
+        },
+        {
+          "key": "C",
+          "text": "cannot carry current",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-045-C",
+            "label": "An ammeter must carry the circuit current."
+          }
+        },
+        {
+          "key": "D",
+          "text": "does not appreciably reduce the current being measured",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "A low-resistance ammeter causes only a very small change to the current in the circuit."
+        ],
+        "answer_line": "does not appreciably reduce the current being measured"
+      },
+      "tags": [
+        "D",
+        "D4.9",
+        "D4"
+      ],
+      "provenance": "Original SPARK item. The syllabus objective, paper structure and demand are audit-informed; no past-paper wording or source figure is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-046",
+      "position": 46,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "D5",
+      "subtopic": null,
+      "objective_code": "D5.2",
+      "objective_statement": "differentiate between direct current from batteries and rectified alternating current by a consideration of their voltage-time graphs",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A battery connected to a resistor ideally produces a current which is",
+      "options": [
+        {
+          "key": "A",
+          "text": "pulsed in one direction with gaps",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-046-A",
+            "label": "Review D5.2. The resulting current in a fixed resistor is steady and flows in one direction."
+          }
+        },
+        {
+          "key": "B",
+          "text": "alternating about zero",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-046-B",
+            "label": "Review D5.2. The resulting current in a fixed resistor is steady and flows in one direction."
+          }
+        },
+        {
+          "key": "C",
+          "text": "steadily increasing",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-046-C",
+            "label": "Review D5.2. The resulting current in a fixed resistor is steady and flows in one direction."
+          }
+        },
+        {
+          "key": "D",
+          "text": "steady and in one direction",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "A battery provides a direct potential difference of fixed polarity.",
+          "The resulting current in a fixed resistor is steady and flows in one direction."
+        ],
+        "answer_line": "steady and in one direction"
+      },
+      "tags": [
+        "D",
+        "D5.2",
+        "D5"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-047",
+      "position": 47,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "D5",
+      "subtopic": null,
+      "objective_code": "D5.6",
+      "objective_statement": "discuss the impact of electronic and technological advances on society",
+      "profile": "UK",
+      "profile_name": "Use of Knowledge",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 90,
+      "cognitive_level": "application",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A school introduces an electronic attendance system using stored student data. Which action best addresses a social concern created by the technology?",
+      "options": [
+        {
+          "key": "A",
+          "text": "restrict access to the data and protect student privacy",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "collect more personal data than the system needs",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-047-B",
+            "label": "Collecting unnecessary data increases privacy risk."
+          }
+        },
+        {
+          "key": "C",
+          "text": "share all records publicly for transparency",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-047-C",
+            "label": "Public disclosure would violate privacy."
+          }
+        },
+        {
+          "key": "D",
+          "text": "remove all security controls to make access easier",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-047-D",
+            "label": "Security controls are needed to prevent misuse of personal information."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "Electronic systems bring benefits but also privacy and security responsibilities.",
+          "Access should be limited to authorised users and necessary data."
+        ],
+        "answer_line": "restrict access to the data and protect student privacy"
+      },
+      "tags": [
+        "D",
+        "D5.6",
+        "D5"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-048",
+      "position": 48,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "D4",
+      "subtopic": null,
+      "objective_code": "D4.16",
+      "objective_statement": "state the adverse effects of connecting electrical appliances to incorrect or fluctuating voltage supplies",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Connecting a 120 V appliance directly to a 230 V supply is likely to",
+      "options": [
+        {
+          "key": "A",
+          "text": "make it use less current",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-048-A",
+            "label": "Review D4.16. The appliance may overheat and its insulation may be damaged."
+          }
+        },
+        {
+          "key": "B",
+          "text": "cause excessive current and overheating",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "leave its operation unchanged",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-048-C",
+            "label": "Review D4.16. The appliance may overheat and its insulation may be damaged."
+          }
+        },
+        {
+          "key": "D",
+          "text": "reduce the energy transferred each second",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-048-D",
+            "label": "Review D4.16. The appliance may overheat and its insulation may be damaged."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "A voltage much higher than the rated value can drive an excessive current.",
+          "The appliance may overheat and its insulation may be damaged."
+        ],
+        "answer_line": "cause excessive current and overheating"
+      },
+      "tags": [
+        "D",
+        "D4.16",
+        "D4"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-049",
+      "position": 49,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "D6",
+      "subtopic": null,
+      "objective_code": "D6.4",
+      "objective_statement": "identify the poles of a magnetic dipole",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": {
+        "kind": "figure",
+        "label": "A bar magnet and its field are shown below.",
+        "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 440 250\" width=\"100%\" style=\"max-width:440px;height:auto;color:inherit\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" font-family=\"Georgia,serif\" font-size=\"12\" ><rect x=\"120\" y=\"90\" width=\"200\" height=\"70\"/><line x1=\"220\" y1=\"90\" x2=\"220\" y2=\"160\"/><text x=\"165\" y=\"132\" fill=\"currentColor\" stroke=\"none\" font-size=\"22\">N</text><text x=\"265\" y=\"132\" fill=\"currentColor\" stroke=\"none\" font-size=\"22\">S</text><path d=\"M120 100C50 45 50 205 120 150M320 100C390 45 390 205 320 150\"/><text x=\"130\" y=\"205\" fill=\"currentColor\" stroke=\"none\">bar magnet field pattern</text></svg>",
+        "alt": "A bar magnet labelled north and south with field lines."
+      },
+      "stem": "An isolated north magnetic pole cannot be obtained because",
+      "options": [
+        {
+          "key": "A",
+          "text": "north poles do not exist on their own",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-049-A",
+            "label": "This restates the conclusion rather than explaining it."
+          }
+        },
+        {
+          "key": "B",
+          "text": "the Earth's field would cancel it",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-049-B",
+            "label": "The Earth's field does not cancel anything."
+          }
+        },
+        {
+          "key": "C",
+          "text": "the magnet would lose its magnetism",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-049-C",
+            "label": "Cutting a magnet does not destroy its magnetism."
+          }
+        },
+        {
+          "key": "D",
+          "text": "cutting a magnet always produces two complete magnets with two poles each",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "Cut a bar magnet in half and each half is a complete magnet.",
+          "New poles appear at the cut faces, so each piece has a north and a south.",
+          "Repeating the cut always gives the same result, so a single pole cannot be isolated."
+        ],
+        "answer_line": "cutting a magnet always produces two complete magnets with two poles each"
+      },
+      "tags": [
+        "D",
+        "D6.4",
+        "D6"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-050",
+      "position": 50,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "D6",
+      "subtopic": null,
+      "objective_code": "D6.6",
+      "objective_statement": "define a magnetic field",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A small compass is moved around a bar magnet. Outside the magnet, the north-seeking end of the compass indicates a field direction",
+      "options": [
+        {
+          "key": "A",
+          "text": "in circles about the middle of the magnet",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-050-A",
+            "label": "The field forms closed loops but not circular loops about the middle."
+          }
+        },
+        {
+          "key": "B",
+          "text": "only at the poles",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-050-B",
+            "label": "The field exists throughout the surrounding region."
+          }
+        },
+        {
+          "key": "C",
+          "text": "from the north pole towards the south pole",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "from the south pole towards the north pole",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-050-D",
+            "label": "South-to-north is the direction inside the magnet."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "By convention, magnetic field direction outside a magnet is from north to south."
+        ],
+        "answer_line": "from the north pole towards the south pole"
+      },
+      "tags": [
+        "D",
+        "D6.6",
+        "D6"
+      ],
+      "provenance": "Original SPARK item. The syllabus objective, paper structure and demand are audit-informed; no past-paper wording or source figure is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-051",
+      "position": 51,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "D7",
+      "subtopic": null,
+      "objective_code": "D7.5",
+      "objective_statement": "sketch the resultant magnetic flux pattern when a current-carrying wire is placed perpendicular to a magnetic field",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Where the magnetic field of a current-carrying wire reinforces a uniform magnetic field, the resultant field lines are",
+      "options": [
+        {
+          "key": "A",
+          "text": "farther apart",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-051-A",
+            "label": "Review D7.5. The field is stronger there, so the field lines are drawn closer together."
+          }
+        },
+        {
+          "key": "B",
+          "text": "closer together",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "absent",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-051-C",
+            "label": "Review D7.5. The field is stronger there, so the field lines are drawn closer together."
+          }
+        },
+        {
+          "key": "D",
+          "text": "circular only",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-051-D",
+            "label": "Review D7.5. The field is stronger there, so the field lines are drawn closer together."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "Where the two fields act in the same direction, their strengths add.",
+          "The field is stronger there, so the field lines are drawn closer together."
+        ],
+        "answer_line": "closer together"
+      },
+      "tags": [
+        "D",
+        "D7.5",
+        "D7"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-052",
+      "position": 52,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "D7",
+      "subtopic": null,
+      "objective_code": "D7.13",
+      "objective_statement": "explain the principle of operation of a transformer",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "The soft iron core of a transformer is used mainly to",
+      "options": [
+        {
+          "key": "A",
+          "text": "link the changing magnetic field through both coils",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "B",
+          "text": "increase the electrical resistance",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-052-B",
+            "label": "This does not match the required relationship or definition."
+          }
+        },
+        {
+          "key": "C",
+          "text": "store electric charge",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-052-C",
+            "label": "This does not match the required relationship or definition."
+          }
+        },
+        {
+          "key": "D",
+          "text": "rectify the alternating current",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-052-D",
+            "label": "This does not match the required relationship or definition."
+          }
+        }
+      ],
+      "answer": "A",
+      "solution": {
+        "steps": [
+          "The core provides a low-reluctance path for the changing magnetic flux."
+        ],
+        "answer_line": "link the changing magnetic field through both coils"
+      },
+      "tags": [
+        "D",
+        "D7.13",
+        "D7"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-053",
+      "position": 53,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "D",
+      "section_name": "Electricity and Magnetism",
+      "topic": "D7",
+      "subtopic": null,
+      "objective_code": "D7.14",
+      "objective_statement": "state the advantages of using a.c. for transferring electrical energy",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Alternating current is suitable for long-distance transmission mainly because it",
+      "options": [
+        {
+          "key": "A",
+          "text": "travels faster along the cables",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-053-A",
+            "label": "Both travel at essentially the same speed along a cable."
+          }
+        },
+        {
+          "key": "B",
+          "text": "causes no heating in the cables",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-053-B",
+            "label": "There is always some heating; the point is that high voltage transmission keeps it small."
+          }
+        },
+        {
+          "key": "C",
+          "text": "can have its voltage changed easily by a transformer",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "needs thinner insulation",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-053-D",
+            "label": "Higher transmission voltage needs more insulation, not less."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "Energy wasted in a cable is I squared R, so a small current is wanted.",
+          "For a given power, a high voltage means a small current.",
+          "Only an alternating supply can be stepped up and down by transformers, so alternating current is used."
+        ],
+        "answer_line": "can have its voltage changed easily by a transformer"
+      },
+      "tags": [
+        "D",
+        "D7.14",
+        "D7"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-054",
+      "position": 54,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "E",
+      "section_name": "The Physics of the Atom",
+      "topic": "E1",
+      "subtopic": null,
+      "objective_code": "E1.2",
+      "objective_statement": "describe the Geiger- Marsden experiment",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "The large-angle deflections observed in the Geiger-Marsden experiment showed that most of the atom’s positive charge and mass are",
+      "options": [
+        {
+          "key": "A",
+          "text": "spread uniformly through the atom",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-054-A",
+            "label": "Review E1.2. Rutherford therefore proposed a small dense nucleus."
+          }
+        },
+        {
+          "key": "B",
+          "text": "carried by the electrons",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-054-B",
+            "label": "Review E1.2. Rutherford therefore proposed a small dense nucleus."
+          }
+        },
+        {
+          "key": "C",
+          "text": "found at the outer edge",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-054-C",
+            "label": "Review E1.2. Rutherford therefore proposed a small dense nucleus."
+          }
+        },
+        {
+          "key": "D",
+          "text": "concentrated in a tiny nucleus",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "Only a compact, strongly charged region could produce the rare large deflections.",
+          "Rutherford therefore proposed a small dense nucleus."
+        ],
+        "answer_line": "concentrated in a tiny nucleus"
+      },
+      "tags": [
+        "E",
+        "E1.2",
+        "E1"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-055",
+      "position": 55,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "E",
+      "section_name": "The Physics of the Atom",
+      "topic": "E2",
+      "subtopic": null,
+      "objective_code": "E2.3",
+      "objective_statement": "explain why an atom is normally neutral and stable",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Electrons remain bound to an atom because of",
+      "options": [
+        {
+          "key": "A",
+          "text": "the strong nuclear force",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-055-A",
+            "label": "The strong nuclear force acts only inside the nucleus, over a very short range."
+          }
+        },
+        {
+          "key": "B",
+          "text": "the electrostatic attraction of the nucleus",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "gravity",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-055-C",
+            "label": "The gravitational force between such small masses is far too weak to matter."
+          }
+        },
+        {
+          "key": "D",
+          "text": "magnetic forces between the shells",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-055-D",
+            "label": "There are no such magnetic forces holding the shells."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "The nucleus carries a positive charge from its protons.",
+          "Electrons are negative, and unlike charges attract.",
+          "That electrostatic attraction is what binds each electron to the atom."
+        ],
+        "answer_line": "the electrostatic attraction of the nucleus"
+      },
+      "tags": [
+        "E",
+        "E2.3",
+        "E2"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-056",
+      "position": 56,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "E",
+      "section_name": "The Physics of the Atom",
+      "topic": "E3",
+      "subtopic": null,
+      "objective_code": "E3.5",
+      "objective_statement": "predict the effects of magnetic and electric fields on the motion of alpha particles, beta particles and gamma rays",
+      "profile": "UK",
+      "profile_name": "Use of Knowledge",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 90,
+      "cognitive_level": "application",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "A beam containing alpha, beta and gamma radiation passes through an electric field. Which statement is correct?",
+      "options": [
+        {
+          "key": "A",
+          "text": "alpha and beta are deflected in the same direction",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-056-A",
+            "label": "Review E3.5. Gamma rays are uncharged and are not deflected by an electric field."
+          }
+        },
+        {
+          "key": "B",
+          "text": "gamma is deflected most because it has the greatest penetrating power",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-056-B",
+            "label": "Review E3.5. Gamma rays are uncharged and are not deflected by an electric field."
+          }
+        },
+        {
+          "key": "C",
+          "text": "alpha and beta are deflected in opposite directions while gamma is undeflected",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "only gamma is deflected because it is electromagnetic radiation",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-056-D",
+            "label": "Review E3.5. Gamma rays are uncharged and are not deflected by an electric field."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "Alpha particles are positive and beta particles are negative, so they bend in opposite directions.",
+          "Gamma rays are uncharged and are not deflected by an electric field."
+        ],
+        "answer_line": "alpha and beta are deflected in opposite directions while gamma is undeflected"
+      },
+      "tags": [
+        "E",
+        "E3.5",
+        "E3"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-057",
+      "position": 57,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "E",
+      "section_name": "The Physics of the Atom",
+      "topic": "E3",
+      "subtopic": null,
+      "objective_code": "E3.4",
+      "objective_statement": "describe the appearance of the tracks of radioactive emissions in a cloud chamber",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Which description is characteristic of an alpha-particle track in a cloud chamber?",
+      "options": [
+        {
+          "key": "A",
+          "text": "thin and very long",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-057-A",
+            "label": "Review E3.4. They therefore leave thick, dense, fairly straight tracks."
+          }
+        },
+        {
+          "key": "B",
+          "text": "invisible because alpha particles do not ionise",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-057-B",
+            "label": "Review E3.4. They therefore leave thick, dense, fairly straight tracks."
+          }
+        },
+        {
+          "key": "C",
+          "text": "thick, straight and relatively short",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "a faint curved line with no droplets",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-057-D",
+            "label": "Review E3.4. They therefore leave thick, dense, fairly straight tracks."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "Alpha particles ionise strongly and have a short range.",
+          "They therefore leave thick, dense, fairly straight tracks."
+        ],
+        "answer_line": "thick, straight and relatively short"
+      },
+      "tags": [
+        "E",
+        "E3.4",
+        "E3"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-058",
+      "position": 58,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "E",
+      "section_name": "The Physics of the Atom",
+      "topic": "E3",
+      "subtopic": null,
+      "objective_code": "E3.8",
+      "objective_statement": "recall that the decay process is independent of the conditions external to the nucleus",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Which change does NOT affect the decay rate of a radioactive isotope?",
+      "options": [
+        {
+          "key": "A",
+          "text": "the number of undecayed nuclei present",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-058-A",
+            "label": "The rate does depend on how many nuclei remain."
+          }
+        },
+        {
+          "key": "B",
+          "text": "the identity of the isotope",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-058-B",
+            "label": "Different isotopes decay at very different rates."
+          }
+        },
+        {
+          "key": "C",
+          "text": "the half-life of the isotope",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-058-C",
+            "label": "The half-life is a property of the isotope and determines the rate."
+          }
+        },
+        {
+          "key": "D",
+          "text": "the temperature of the sample",
+          "is_correct": true,
+          "misconception": null
+        }
+      ],
+      "answer": "D",
+      "solution": {
+        "steps": [
+          "Decay is a nuclear process, so external conditions such as temperature, pressure and chemical state have no effect on it."
+        ],
+        "answer_line": "the temperature of the sample"
+      },
+      "tags": [
+        "E",
+        "E3.8",
+        "E3"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-059",
+      "position": 59,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "E",
+      "section_name": "The Physics of the Atom",
+      "topic": "E3",
+      "subtopic": null,
+      "objective_code": "E3.13",
+      "objective_statement": "cite arguments for and against the utilisation of nuclear energy",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "easy"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Which statement gives an advantage of nuclear energy for electricity generation?",
+      "options": [
+        {
+          "key": "A",
+          "text": "It produces radioactive waste that lasts thousands of years",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-059-A",
+            "label": "That is an argument against."
+          }
+        },
+        {
+          "key": "B",
+          "text": "Nuclear stations are cheap to build",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-059-B",
+            "label": "Construction is very expensive."
+          }
+        },
+        {
+          "key": "C",
+          "text": "It generates a large amount of energy from a small mass of fuel",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "D",
+          "text": "There is no risk of an accident",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-059-D",
+            "label": "There is a real risk, however small."
+          }
+        }
+      ],
+      "answer": "C",
+      "solution": {
+        "steps": [
+          "The energy density of nuclear fuel is far higher than any chemical fuel, and generation releases no carbon dioxide."
+        ],
+        "answer_line": "It generates a large amount of energy from a small mass of fuel"
+      },
+      "tags": [
+        "E",
+        "E3.13",
+        "E3"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    },
+    {
+      "item_id": "spark-phy-p01-practice-15-060",
+      "position": 60,
+      "paper": "Paper 01 - Multiple Choice",
+      "section": "E",
+      "section_name": "The Physics of the Atom",
+      "topic": "E3",
+      "subtopic": null,
+      "objective_code": "E3.1",
+      "objective_statement": "describe Marie Curie’s work in the field of radioactivity",
+      "profile": "KC",
+      "profile_name": "Knowledge and Comprehension",
+      "difficulty": {
+        "tier": "medium"
+      },
+      "estimated_time_seconds": 65,
+      "cognitive_level": "knowledge",
+      "calculator_allowed": true,
+      "stimulus": null,
+      "stem": "Which term was introduced by Marie Curie for the spontaneous emission from unstable atoms?",
+      "options": [
+        {
+          "key": "A",
+          "text": "X-radiation",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-060-A",
+            "label": "Review E3.1. Her work showed that the effect is a property of the atom."
+          }
+        },
+        {
+          "key": "B",
+          "text": "radioactivity",
+          "is_correct": true,
+          "misconception": null
+        },
+        {
+          "key": "C",
+          "text": "half-life",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-060-C",
+            "label": "Review E3.1. Her work showed that the effect is a property of the atom."
+          }
+        },
+        {
+          "key": "D",
+          "text": "isotope",
+          "is_correct": false,
+          "misconception": {
+            "code": "spark-phy-p01-practice-15-060-D",
+            "label": "Review E3.1. Her work showed that the effect is a property of the atom."
+          }
+        }
+      ],
+      "answer": "B",
+      "solution": {
+        "steps": [
+          "Marie Curie coined the term radioactivity.",
+          "Her work showed that the effect is a property of the atom."
+        ],
+        "answer_line": "radioactivity"
+      },
+      "tags": [
+        "E",
+        "E3.1",
+        "E3"
+      ],
+      "provenance": "Original item authored for SPARK. Historical CSEC Physics papers informed the syllabus objective, question archetype, examination tone and difficulty only; no past-paper item is reproduced."
+    }
+  ]
+}
