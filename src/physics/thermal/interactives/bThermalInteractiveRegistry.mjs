@@ -5,6 +5,7 @@ export const THERMAL_INTERACTIVES=Object.freeze([
   {id:'b2-expansion',topic:'B2',title:'Thermal expansion model',objectives:['B2.7','B2.8'],action:'Change length and temperature rise to compare how much a solid expands.'},
   {id:'b3-heating-curve',topic:'B3',title:'Heating curve explorer',objectives:['B3.4','B3.5'],action:'Add energy and identify warming regions and constant-temperature phase changes.'},
   {id:'b3-specific-heat',topic:'B3',title:'Specific heat experiment',objectives:['B3.2','B3.3'],action:'Change heater power, time, mass and temperature rise, then calculate the measured specific heat capacity.'},
+  {id:'b3-latent-heat',topic:'B3',title:'Latent heat of fusion experiment',objectives:['B3.5','B3.6'],action:'Change voltage, current, heating time and melted mass, then calculate the specific latent heat of fusion and compare a background-melting correction.'},
   {id:'b4-radiation-surfaces',topic:'B4',title:'Radiation surface comparison',objectives:['B4.3','B4.4','B4.5'],action:'Compare identical surfaces at one temperature and identify the strongest relative emitter.'},
   {id:'b4-convection',topic:'B4',title:'Convection current explorer',objectives:['B4.2','B4.6'],action:'Change the temperature difference and connect density change with the strength of convection.'},
 ]);

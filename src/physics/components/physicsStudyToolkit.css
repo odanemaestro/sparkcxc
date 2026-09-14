@@ -1,0 +1,23 @@
+.pst-toolkit{
+  margin-top:18px;
+  padding:18px;
+  border:1px solid var(--pm-line,#dbe3ed);
+  border-radius:18px;
+  background:linear-gradient(180deg,var(--pm-card,#fff),var(--pm-card2,#f8fafc));
+}
+.pst-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:14px}
+.pst-heading h3{margin:3px 0 0;font-size:20px}
+.pst-kicker,.pst-card-label{display:block;font-size:10px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--pm-primary,#0f766e)}
+.pst-badge{display:inline-flex;align-items:center;min-height:30px;padding:6px 10px;border-radius:999px;background:var(--pm-primary-soft,#ecfeff);color:var(--pm-primary,#0f766e);font-size:11px;font-weight:800;white-space:nowrap}
+.pst-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.pst-card{min-width:0;padding:15px;border:1px solid var(--pm-line,#dbe3ed);border-radius:15px;background:var(--pm-card,#fff)}
+.pst-card h4{margin:5px 0 10px;font-size:16px;line-height:1.3}.pst-card p{margin:0 0 10px;line-height:1.58;color:var(--pm-ink,#172033)}
+.pst-card ul,.pst-card ol{margin:8px 0 0;padding-left:21px}.pst-card li{margin:7px 0;line-height:1.55}
+.pst-answer{display:flex;gap:9px;align-items:flex-start;margin-top:12px;padding:10px 12px;border-radius:12px;background:var(--pm-primary-soft,#ecfeff)}
+.pst-answer strong{flex:0 0 auto}.pst-answer span{min-width:0}
+.pst-table-wrap{max-width:100%;overflow-x:auto;border:1px solid var(--pm-line,#dbe3ed);border-radius:12px;margin-top:12px}
+.pst-table{width:100%;min-width:420px;border-collapse:collapse;font-size:12px}.pst-table th,.pst-table td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--pm-line,#dbe3ed);vertical-align:top}.pst-table th{font-weight:800;background:var(--pm-card2,#f8fafc)}.pst-table tbody tr:last-child td{border-bottom:0}
+.pst-checks{display:grid;gap:8px}.pst-checks details{border:1px solid var(--pm-line,#dbe3ed);border-radius:12px;background:var(--pm-card2,#f8fafc);overflow:hidden}.pst-checks summary{cursor:pointer;padding:11px 12px;font-weight:750;line-height:1.45}.pst-checks details>div{padding:0 12px 12px;line-height:1.55;color:var(--pm-muted,#64748b)}
+.pst-exam-language{display:flex;gap:9px;align-items:flex-start;margin-top:12px;padding:12px 14px;border-radius:13px;border:1px solid var(--pm-line,#dbe3ed);background:var(--pm-card,#fff);line-height:1.5}.pst-exam-language strong{flex:0 0 auto;color:var(--pm-primary,#0f766e)}
+[data-theme="dark"] .pst-toolkit,.dark .pst-toolkit{background:linear-gradient(180deg,var(--pm-card,#111c31),var(--pm-card2,#162237))}
+@media(max-width:760px){.pst-toolkit{padding:13px;border-radius:15px}.pst-heading{flex-direction:column}.pst-badge{white-space:normal}.pst-grid{grid-template-columns:1fr}.pst-card{padding:13px}.pst-exam-language{flex-direction:column;gap:4px}.pst-table{min-width:360px}}

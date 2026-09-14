@@ -14,6 +14,7 @@ import {
   savePhysicsPaper1Active,
   savePhysicsPaper1Result,
 } from "../physicsPaper1Bank";
+import { PHYSICS_PAPER1_AUDIT_SUMMARY } from "../physicsPaper1AuditReference";
 import "./physicsPaper1.css";
 
 function formatTime(totalSeconds) {
@@ -73,6 +74,7 @@ function PaperLibrary({ userId, active, onResume, onStart, onBack }) {
   const results = readPhysicsPaper1Results(userId);
   return <main className="phy-p1-root"><div className="phy-p1-shell">
     <header className="phy-p1-library-hero"><div><button type="button" className="phy-p1-primary phy-p1-back" onClick={onBack}><span aria-hidden="true">{"\u2190"}</span> Physics practice</button><div className="phy-p1-eyebrow">CSEC Physics Paper 01</div><h1>Paper 1 Simulator</h1><p>Choose one of {PHYSICS_PAPER1_PAPERS.length} complete 60-item practice papers. Each paper runs for 1 hour 15 minutes and covers all five syllabus sections.</p></div><div className="phy-p1-hero-spec"><strong>{PHYSICS_PAPER1_PAPERS.length}</strong><span>complete papers</span><strong>75</strong><span>minutes</span><strong>60</strong><span>marks</span></div></header>
+    <section className="phy-p1-audit-note" aria-label="Paper 1 quality benchmark"><div><span className="phy-p1-eyebrow">QUALITY BENCHMARK</span><strong>{PHYSICS_PAPER1_PAPERS.length} original SPARK papers</strong></div><p>Paper structure and question style are checked against {PHYSICS_PAPER1_AUDIT_SUMMARY.sourceProofedSittings} source-proofed CSEC Physics Paper 01 sittings. Disputed source items and sittings with incomplete evidence stay outside student practice.</p></section>
     {active?.paperId && getPhysicsPaper1Paper(active.paperId) && <section className="phy-p1-resume-card"><div><span className="phy-p1-eyebrow">IN PROGRESS</span><h2>{physicsPaper1PaperName(getPhysicsPaper1Paper(active.paperId))}</h2><p>{active.phase === "review" ? "Your paper is submitted and the result is saved. Continue your answer review." : active.phase === "instructions" ? "Your paper is selected. Review the instructions before the timer starts." : "Your answers, flags and remaining time are saved on this device."}</p></div><button type="button" className="phy-p1-primary" onClick={onResume}>{active.phase === "review" ? "Continue review" : active.phase === "instructions" ? "View instructions" : "Resume paper"}</button></section>}
     <section className="phy-p1-paper-grid">{PHYSICS_PAPER1_PAPERS.map(paper => {
       const isActive = active?.paperId === paper.bank_id;

@@ -21,11 +21,11 @@ const BackArrowIcon = () => (
 );
 
 const SECTION_META = Object.freeze({
-  A: { title:'Mechanics', detail:'Lessons, interactive labs, flashcards, topic tests and the Mechanics checkpoint.', accent:'A' },
-  B: { title:'Thermal Physics and Kinetic Theory', detail:'Lessons, interactive labs, flashcards, topic tests, structured practice and a Section B checkpoint.', accent:'B' },
-  C: { title:'Waves and Optics', detail:'Lessons, interactive labs, flashcards, topic tests, structured practice and a Section C checkpoint.', accent:'C' },
-  D: { title:'Electricity and Magnetism', detail:'Lessons, interactive labs, flashcards, topic tests, structured practice and a Section D checkpoint.', accent:'D' },
-  E: { title:'The Physics of the Atom', detail:'Lessons, interactive labs, flashcards, topic tests, structured practice and a Section E checkpoint.', accent:'E' },
+  A: { title:'Mechanics', detail:'Lessons, interactive labs, practical notebooks, flashcards, topic tests and the Mechanics checkpoint.', accent:'A' },
+  B: { title:'Thermal Physics and Kinetic Theory', detail:'Lessons, interactive labs, practical notebooks, flashcards, topic tests, structured practice and a Section B checkpoint.', accent:'B' },
+  C: { title:'Waves and Optics', detail:'Lessons, interactive labs, practical notebooks, flashcards, topic tests, structured practice and a Section C checkpoint.', accent:'C' },
+  D: { title:'Electricity and Magnetism', detail:'Lessons, interactive labs, practical notebooks, flashcards, topic tests, structured practice and a Section D checkpoint.', accent:'D' },
+  E: { title:'The Physics of the Atom', detail:'Lessons, interactive labs, practical notebooks, flashcards, topic tests, structured practice and a Section E checkpoint.', accent:'E' },
 });
 
 export default function PhysicsSubjectView({ userId, onBack, onActivity, onEvidence }) {
@@ -88,7 +88,7 @@ export default function PhysicsSubjectView({ userId, onBack, onActivity, onEvide
 
         <section className="psv-note">
           <strong>Assessment coverage</strong>
-          <p>Full lesson and audited section-assessment coverage is available across Sections A to E. Each section includes topic practice, flashcards, structured practice, interactive learning tools and a cumulative SPARK checkpoint.</p>
+          <p>Full lesson and audited section-assessment coverage is available across Sections A to E. Each section includes upgraded CSEC study toolkits, topic practice, flashcards, structured practice, interactive learning tools, practical notebooks and a cumulative SPARK checkpoint.</p>
         </section>
       </div>
     </main>

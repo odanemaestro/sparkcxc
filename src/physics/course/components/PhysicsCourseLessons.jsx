@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import MathText from '../../../practice/MathText';
+import PhysicsStudyToolkit from '../../components/PhysicsStudyToolkit';
 import { PHYSICS_SECTIONS_B_TO_E, physicsLessonsBToEStats } from '../index.mjs';
 import { readPhysicsCourseProgress, setPhysicsCourseLessonCompletion } from '../physicsCourseProgress.mjs';
 import './physicsCourseLessons.css';
@@ -121,6 +122,7 @@ export default function PhysicsCourseLessons({ userId, initialSection='B', initi
             </section>
 
             {lesson.practicals?.length>0 && <section className="pcl-card"><h3>Practical activities</h3><ul>{lesson.practicals.map((x,i)=><li key={i}><MathText prose>{x}</MathText></li>)}</ul></section>}
+            <PhysicsStudyToolkit topicId={lesson.id}/>
             {lesson.commonMistakes?.length>0 && <section className="pcl-card"><h3>Mistakes that cost marks</h3><ul>{lesson.commonMistakes.map((x,i)=><li key={i}><MathText prose>{x}</MathText></li>)}</ul></section>}
 
             <section className="pcl-card pcl-completion">

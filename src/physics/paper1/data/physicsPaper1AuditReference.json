@@ -1,0 +1,349 @@
+{
+  "version": 1,
+  "generated_from": {
+    "master_patch": "SPARK_PHYSICS_AUDIT_MASTER_PATCH_PHASES_01_38.zip",
+    "master_patch_sha256": "4e5db34672e9512fcae8566ca02b465c7480789207a6974630b423ba0aecc1da",
+    "phase_range": [
+      1,
+      38
+    ],
+    "current_audit_phase": 38,
+    "baseline_commit": "200e89efe75254aa036f8c1fd2e0650c60b8b0c8",
+    "baseline_archive_sha256": "2e7aa52295fe61366a1d07744ea296a66e954699fb7cc8c2fb84ac4a320d04ce"
+  },
+  "runtime_policy": {
+    "practice_questions": "original_spark_items_only_including_audit_informed_papers_j_k",
+    "verbatim_past_paper_import": false,
+    "source_held_items_excluded": true,
+    "january_2021_excluded": true,
+    "gold_svg_policy": "Gold assets remain external audit references until an explicit student-content import is approved."
+  },
+  "audit_summary": {
+    "sittings_identified": 12,
+    "source_text_proofed_sittings": 9,
+    "reference_verified_source_hold_sittings": 2,
+    "source_recovery_hold_sittings": 1,
+    "source_text_proofed_items": 540,
+    "adjudication_hold_items": 13,
+    "gold_standard_svgs": 23
+  },
+  "historical_section_benchmark": {
+    "A": {
+      "average": 17.22,
+      "min": 12,
+      "max": 19,
+      "observed_counts": [
+        18,
+        19,
+        19,
+        17,
+        19,
+        18,
+        17,
+        16,
+        12
+      ]
+    },
+    "B": {
+      "average": 8.67,
+      "min": 6,
+      "max": 13,
+      "observed_counts": [
+        10,
+        7,
+        6,
+        8,
+        8,
+        8,
+        7,
+        11,
+        13
+      ]
+    },
+    "C": {
+      "average": 11.78,
+      "min": 9,
+      "max": 14,
+      "observed_counts": [
+        13,
+        13,
+        10,
+        11,
+        9,
+        11,
+        13,
+        12,
+        14
+      ]
+    },
+    "D": {
+      "average": 15.78,
+      "min": 13,
+      "max": 18,
+      "observed_counts": [
+        13,
+        16,
+        17,
+        16,
+        17,
+        17,
+        18,
+        14,
+        14
+      ]
+    },
+    "E": {
+      "average": 6.56,
+      "min": 5,
+      "max": 8,
+      "observed_counts": [
+        6,
+        5,
+        8,
+        8,
+        7,
+        6,
+        5,
+        7,
+        7
+      ]
+    }
+  },
+  "audited_sittings": [
+    {
+      "session": "June 2007",
+      "audit_class": "source_text_proofed",
+      "item_count": 60,
+      "section_counts": {
+        "A": 18,
+        "B": 10,
+        "C": 13,
+        "D": 13,
+        "E": 6
+      },
+      "adjudication_holds": [
+        12,
+        23
+      ],
+      "source_integrity_hold": false,
+      "gold_svg_count": 0,
+      "student_source_import_enabled": false
+    },
+    {
+      "session": "June 2008",
+      "audit_class": "source_text_proofed",
+      "item_count": 60,
+      "section_counts": {
+        "A": 19,
+        "B": 7,
+        "C": 13,
+        "D": 16,
+        "E": 5
+      },
+      "adjudication_holds": [
+        46,
+        49,
+        56
+      ],
+      "source_integrity_hold": false,
+      "gold_svg_count": 0,
+      "student_source_import_enabled": false
+    },
+    {
+      "session": "June 2009",
+      "audit_class": "source_text_proofed",
+      "item_count": 60,
+      "section_counts": {
+        "A": 19,
+        "B": 6,
+        "C": 10,
+        "D": 17,
+        "E": 8
+      },
+      "adjudication_holds": [
+        16,
+        51
+      ],
+      "source_integrity_hold": false,
+      "gold_svg_count": 0,
+      "student_source_import_enabled": false
+    },
+    {
+      "session": "June 2010",
+      "audit_class": "source_text_proofed",
+      "item_count": 60,
+      "section_counts": {
+        "A": 17,
+        "B": 8,
+        "C": 11,
+        "D": 16,
+        "E": 8
+      },
+      "adjudication_holds": [
+        16,
+        26
+      ],
+      "source_integrity_hold": false,
+      "gold_svg_count": 0,
+      "student_source_import_enabled": false
+    },
+    {
+      "session": "June 2011",
+      "audit_class": "source_text_proofed",
+      "item_count": 60,
+      "section_counts": {
+        "A": 19,
+        "B": 8,
+        "C": 9,
+        "D": 17,
+        "E": 7
+      },
+      "adjudication_holds": [
+        13,
+        51
+      ],
+      "source_integrity_hold": false,
+      "gold_svg_count": 0,
+      "student_source_import_enabled": false
+    },
+    {
+      "session": "June 2013",
+      "audit_class": "source_text_proofed",
+      "item_count": 60,
+      "section_counts": {
+        "A": 18,
+        "B": 8,
+        "C": 11,
+        "D": 17,
+        "E": 6
+      },
+      "adjudication_holds": [
+        51,
+        53
+      ],
+      "source_integrity_hold": false,
+      "gold_svg_count": 0,
+      "student_source_import_enabled": false
+    },
+    {
+      "session": "January 2015",
+      "audit_class": "source_text_proofed",
+      "item_count": 60,
+      "section_counts": {
+        "A": 17,
+        "B": 7,
+        "C": 13,
+        "D": 18,
+        "E": 5
+      },
+      "adjudication_holds": [],
+      "source_integrity_hold": false,
+      "gold_svg_count": 3,
+      "student_source_import_enabled": false
+    },
+    {
+      "session": "June 2015",
+      "audit_class": "source_text_proofed",
+      "item_count": 60,
+      "section_counts": {
+        "A": 16,
+        "B": 11,
+        "C": 12,
+        "D": 14,
+        "E": 7
+      },
+      "adjudication_holds": [],
+      "source_integrity_hold": false,
+      "gold_svg_count": 6,
+      "student_source_import_enabled": false
+    },
+    {
+      "session": "June 2016",
+      "audit_class": "source_text_proofed",
+      "item_count": 60,
+      "section_counts": {
+        "A": 12,
+        "B": 13,
+        "C": 14,
+        "D": 14,
+        "E": 7
+      },
+      "adjudication_holds": [],
+      "source_integrity_hold": false,
+      "gold_svg_count": 14,
+      "student_source_import_enabled": false
+    },
+    {
+      "session": "June 2019",
+      "audit_class": "reference_verified_source_integrity_hold",
+      "item_count": 60,
+      "section_counts": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 12,
+        "E": 48
+      },
+      "adjudication_holds": [],
+      "source_integrity_hold": true,
+      "gold_svg_count": 0,
+      "student_source_import_enabled": false
+    },
+    {
+      "session": "January 2020",
+      "audit_class": "reference_verified_source_integrity_hold",
+      "item_count": 60,
+      "section_counts": {
+        "A": 15,
+        "B": 11,
+        "C": 8,
+        "D": 19,
+        "E": 7
+      },
+      "adjudication_holds": [],
+      "source_integrity_hold": true,
+      "gold_svg_count": 0,
+      "student_source_import_enabled": false
+    },
+    {
+      "session": "January 2021",
+      "audit_class": "source_recovery_hold",
+      "item_count": 0,
+      "section_counts": {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0
+      },
+      "adjudication_holds": [],
+      "source_integrity_hold": true,
+      "gold_svg_count": 0,
+      "student_source_import_enabled": false
+    }
+  ],
+  "current_spark_practice_bank": {
+    "papers": 11,
+    "items": 660,
+    "unique_normalized_stems": 660,
+    "objective_reference_count": 189,
+    "objectives_covered": 189,
+    "section_target_per_paper": {
+      "A": 17,
+      "B": 8,
+      "C": 9,
+      "D": 19,
+      "E": 7
+    },
+    "duration_minutes": 75,
+    "marks": 60,
+    "provenance_policy": "Original SPARK items. Papers J and K add audit-informed original practice without importing verbatim past-paper items."
+  },
+  "integration_notes": [
+    "The large audit archive stays outside the public SPARK repository.",
+    "Only compact audit metadata is included in the runtime repository.",
+    "Past-paper source wording, scans, source crops and draft SVGs are not copied into the student application.",
+    "Future student-content imports must explicitly clear answer adjudication, source-integrity and SVG parity gates.",
+    "Practice Papers J and K are new original SPARK papers assembled from the objective-linked bank using the audited historical section benchmark. They do not import held or verbatim past-paper items."
+  ]
+}

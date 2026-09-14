@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import MathText from '../../../practice/MathText';
 import PhysicsFlashcardVisual from '../../components/PhysicsFlashcardVisual';
+import PhysicsStudyToolkit from '../../components/PhysicsStudyToolkit';
+import PhysicsPracticalNotebook from '../../labs/PhysicsPracticalNotebook';
 import MechanicsInteractiveLab from './MechanicsInteractiveLab';
 import { SECTION_A_TOPICS, SECTION_A_MCQ_BANK, SECTION_A_FLASHCARDS, sectionAStats } from '../sectionAMechanics.mjs';
 import { MECHANICS_INTERACTIVES } from '../interactives/mechanicsInteractiveRegistry.mjs';
@@ -23,6 +25,7 @@ function StudyView({topic,progress,setCompleted}){
         {paragraphsForSection(section).map((p,j)=><MathText as="p" prose key={j}>{p}</MathText>)}
         {examplesForSection(section).map((ex,j)=><div className="pm-worked" key={j}><MathText as="strong" prose>{ex.prompt||ex.question||'Worked example'}</MathText>{Array.isArray(ex.steps)?<ol>{ex.steps.map((s,k)=><li key={k}><MathText prose>{s}</MathText></li>)}</ol>:<MathText as="p" prose>{ex.solution||''}</MathText>}</div>)}
       </section>)}
+      <PhysicsStudyToolkit topicId={topic.id}/>
       <div className="pm-completion"><button type="button" className={progress[`lesson:${topic.id}`]?'done':''} onClick={()=>setCompleted(`lesson:${topic.id}`,!progress[`lesson:${topic.id}`])}>{progress[`lesson:${topic.id}`]?'✓ Lesson marked complete':'Mark lesson complete'}</button><span className="pm-feedback">Completion is study progress only. It is not treated as Physics mastery.</span></div>
     </div>
     <aside className="pm-panel">
@@ -33,9 +36,9 @@ function StudyView({topic,progress,setCompleted}){
     </aside>
   </div>;
 }
-function LabsView({topic,progress,setCompleted,onEvidence}){
+function LabsView({topic,progress,setCompleted,onEvidence,userId}){
   const labs=MECHANICS_INTERACTIVES.filter(i=>i.topic===topic.id);
-  return <div className="pm-labs-grid">{labs.map(lab=><div key={lab.id}><MechanicsInteractiveLab interactiveId={lab.id} onEvidence={onEvidence}/><div className="pm-completion"><button type="button" className={progress[`lab:${lab.id}`]?'done':''} onClick={()=>setCompleted(`lab:${lab.id}`,!progress[`lab:${lab.id}`])}>{progress[`lab:${lab.id}`]?'✓ Lab explored':'Mark lab explored'}</button><span className="pm-feedback">Exploration completion does not award a mastery score.</span></div></div>)}</div>;
+  return <div className="pm-labs-grid">{labs.map(lab=><div key={lab.id}><MechanicsInteractiveLab interactiveId={lab.id} onEvidence={onEvidence}/><PhysicsPracticalNotebook interactiveId={lab.id} userId={userId}/><div className="pm-completion"><button type="button" className={progress[`lab:${lab.id}`]?'done':''} onClick={()=>setCompleted(`lab:${lab.id}`,!progress[`lab:${lab.id}`])}>{progress[`lab:${lab.id}`]?'✓ Lab explored':'Mark lab explored'}</button><span className="pm-feedback">Exploration completion does not award a mastery score.</span></div></div>)}</div>;
 }
 function FlashcardsView({topic}){
   const cards=topic.flashcards;const [index,setIndex]=useState(0),[back,setBack]=useState(false);const c=cards[index%cards.length];
@@ -59,8 +62,12 @@ export default function PhysicsMechanicsSection({userId,onBack,onActivity,onEvid
   return <main className="physics-mechanics"><div className="pm-shell"><header className="pm-hero"><div>{onBack&&<button type="button" className="pm-btn secondary" onClick={onBack} style={{marginBottom:12}}>← Back to Physics</button>}<div className="pm-eyebrow">CSEC Physics · Section A</div><h1>Mechanics</h1><p>Study all 52 Mechanics objectives through audited lessons, interactive labs, flashcards and objective-linked practice.</p></div><div className="pm-hero-stats"><div className="pm-stat"><strong>{stats.objectives}</strong><span>objectives</span></div><div className="pm-stat"><strong>{stats.mcq}</strong><span>MCQs</span></div><div className="pm-stat"><strong>{stats.flashcards}</strong><span>flashcards</span></div><div className="pm-stat"><strong>{MECHANICS_INTERACTIVES.length}</strong><span>interactive labs</span></div></div></header>
     <nav className="pm-topics" aria-label="Mechanics topics">{SECTION_A_TOPICS.map(t=><button key={t.id} type="button" aria-pressed={topic.id===t.id} className={`pm-topic-btn ${topic.id===t.id?'active':''}`} onClick={()=>{setTopicId(t.id);setMode('study')}}>{t.id} · {t.title}</button>)}</nav>
     <div className="pm-topic-head"><div><h2>{topic.id}. {topic.title}</h2><MathText as="p" prose>{topicSummary(topic)}</MathText></div><div className="pm-topic-progress"><strong>{pct}% explored</strong><div className="pm-progress-track"><i style={{width:`${pct}%`}}></i></div><span>{completedCount}/{totalCount} study activities marked complete</span></div></div>
-    <nav className="pm-modebar" aria-label="Physics learning mode"><button type="button" aria-pressed={mode==='study'} className={`pm-mode-btn ${mode==='study'?'active':''}`} onClick={()=>setMode('study')}>Study</button><button type="button" aria-pressed={mode==='labs'} className={`pm-mode-btn ${mode==='labs'?'active':''}`} onClick={()=>setMode('labs')}>Interactive labs</button><button type="button" aria-pressed={mode==='flashcards'} className={`pm-mode-btn ${mode==='flashcards'?'active':''}`} onClick={()=>setMode('flashcards')}>Flashcards</button><button type="button" aria-pressed={mode==='quiz'} className={`pm-mode-btn ${mode==='quiz'?'active':''}`} onClick={()=>setMode('quiz')}>Topic test</button><button type="button" aria-pressed={mode==='checkpoint'} className={`pm-mode-btn ${mode==='checkpoint'?'active':''}`} onClick={()=>setMode('checkpoint')}>Mechanics checkpoint</button></nav>
-    {mode==='study'&&<StudyView topic={topic} progress={progress} setCompleted={setCompleted}/>} {mode==='labs'&&<LabsView topic={topic} progress={progress} setCompleted={setCompleted} onEvidence={onEvidence}/>} {mode==='flashcards'&&<FlashcardsView key={`fc-${topic.id}`} topic={topic}/>} {mode==='quiz'&&<PhysicsTopicQuiz key={`q-${topic.id}`} topic={topic} onActivity={onActivity}/>} {mode==='checkpoint'&&<PhysicsMechanicsCheckpoint onActivity={onActivity}/>} 
+    <nav className="pm-modebar" aria-label="Physics learning mode"><button type="button" aria-pressed={mode==='study'} className={`pm-mode-btn ${mode==='study'?'active':''}`} onClick={()=>setMode('study')}>Study</button><button type="button" aria-pressed={mode==='labs'} className={`pm-mode-btn ${mode==='labs'?'active':''}`} onClick={()=>setMode('labs')}>Labs & practicals</button><button type="button" aria-pressed={mode==='flashcards'} className={`pm-mode-btn ${mode==='flashcards'?'active':''}`} onClick={()=>setMode('flashcards')}>Flashcards</button><button type="button" aria-pressed={mode==='quiz'} className={`pm-mode-btn ${mode==='quiz'?'active':''}`} onClick={()=>setMode('quiz')}>Topic test</button><button type="button" aria-pressed={mode==='checkpoint'} className={`pm-mode-btn ${mode==='checkpoint'?'active':''}`} onClick={()=>setMode('checkpoint')}>Mechanics checkpoint</button></nav>
+    {mode==='study'&&<StudyView topic={topic} progress={progress} setCompleted={setCompleted}/>}
+    {mode==='labs'&&<LabsView topic={topic} progress={progress} setCompleted={setCompleted} onEvidence={onEvidence} userId={userId}/>}
+    {mode==='flashcards'&&<FlashcardsView key={`fc-${topic.id}`} topic={topic}/>}
+    {mode==='quiz'&&<PhysicsTopicQuiz key={`q-${topic.id}`} topic={topic} onActivity={onActivity}/>}
+    {mode==='checkpoint'&&<PhysicsMechanicsCheckpoint onActivity={onActivity}/>}
   </div></main>;
 }
 

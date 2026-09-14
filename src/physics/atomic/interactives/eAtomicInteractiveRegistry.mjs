@@ -1,7 +1,7 @@
 export const ATOMIC_INTERACTIVES=Object.freeze([
 {id:'e1-scattering',topic:'E1',title:'Rutherford scattering model',objectives:['E1.1','E1.2'],action:'Change the impact parameter and connect scattering observations with the nuclear model.'},
 {id:'e2-atom-builder',topic:'E2',title:'Atom and ion builder',objectives:['E2.1','E2.2','E2.3','E2.4'],action:'Set mass number, atomic number and charge, then compare protons, neutrons and electrons.'},
-{id:'e2-isotope-builder',topic:'E2',title:'Isotope explorer',objectives:['E2.5','E2.6'],action:'Hold proton number fixed while changing neutrons and connect shell occupancy with period and group.'},
+{id:'e2-isotope-builder',topic:'E2',title:'Isotope explorer',objectives:['E2.5','E2.6'],action:'Hold proton number fixed while changing neutron number, then compare the resulting isotope mass numbers.'},
 {id:'e3-radiation-properties',topic:'E3',title:'Radiation properties',objectives:['E3.2','E3.3','E3.4'],action:'Compare alpha, beta and gamma by charge, mass, ionisation, penetration and track appearance.'},
 {id:'e3-field-deflection',topic:'E3',title:'Field deflection explorer',objectives:['E3.5'],action:'Select alpha, beta or gamma and compare its response to electric and magnetic fields.'},
 {id:'e3-nuclear-equations',topic:'E3',title:'Nuclear equation balancer',objectives:['E3.6'],action:'Apply mass-number and atomic-number conservation to alpha and beta-minus decay.'},
