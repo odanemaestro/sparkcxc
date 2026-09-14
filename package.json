@@ -18,7 +18,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "audit:physics-paper1": "node tools/physics-paper1-audit/validate-current-bank.cjs",
+    "audit:physics-upgrade": "node tools/physics-upgrade/validate-content.mjs"
   },
   "eslintConfig": {
     "extends": [

@@ -7,11 +7,13 @@ import paper6 from "./data/spark-phy-p01-practice-6.json";
 import paper7 from "./data/spark-phy-p01-practice-7.json";
 import paper8 from "./data/spark-phy-p01-practice-8.json";
 import paper9 from "./data/spark-phy-p01-practice-9.json";
+import paper10 from "./data/spark-phy-p01-practice-10.json";
+import paper11 from "./data/spark-phy-p01-practice-11.json";
 
-export const PHYSICS_PAPER1_BANK_VERSION = 2;
+export const PHYSICS_PAPER1_BANK_VERSION = 3;
 export const PHYSICS_PAPER1_DURATION_MINUTES = 75;
 export const PHYSICS_PAPER1_MARKS = 60;
-export const PHYSICS_PAPER1_PAPERS = Object.freeze([paper1, paper2, paper3, paper4, paper5, paper6, paper7, paper8, paper9]);
+export const PHYSICS_PAPER1_PAPERS = Object.freeze([paper1, paper2, paper3, paper4, paper5, paper6, paper7, paper8, paper9, paper10, paper11]);
 
 export function getPhysicsPaper1Paper(paperId) {
   return PHYSICS_PAPER1_PAPERS.find(paper => paper.bank_id === paperId) || null;
@@ -80,6 +82,7 @@ export function validatePhysicsPaper1Paper(paper) {
   const ids = new Set();
   let kc = 0;
   let uk = 0;
+  let figureCount = 0;
   for (const [index, item] of (paper.items || []).entries()) {
     if (item.position !== index + 1) errors.push(`Item position ${item.position} is out of sequence.`);
     if (!item.item_id || ids.has(item.item_id)) errors.push(`Duplicate or missing item id at position ${item.position}.`);
@@ -95,6 +98,7 @@ export function validatePhysicsPaper1Paper(paper) {
     if (!item.solution?.steps?.length || item.solution.answer_line !== correct[0]?.text) errors.push(`Item ${item.position} has an incomplete solution.`);
     for (const option of options.filter(option => !option.is_correct)) if (!option.misconception?.label) errors.push(`Item ${item.position}${option.key} is missing misconception feedback.`);
     if (item.stimulus?.svg) {
+      figureCount += 1;
       if (/\bid\s*=\s*["']/i.test(item.stimulus.svg)) errors.push(`Item ${item.position} figure contains an SVG id.`);
       if (/marker-(start|mid|end)\s*=/i.test(item.stimulus.svg)) errors.push(`Item ${item.position} figure contains an SVG marker.`);
       if (!/currentColor/.test(item.stimulus.svg)) errors.push(`Item ${item.position} figure does not inherit currentColor.`);
@@ -103,6 +107,7 @@ export function validatePhysicsPaper1Paper(paper) {
   }
   for (const [section, expected] of Object.entries(expectedSpread)) if ((spread[section] || 0) !== expected) errors.push(`Section ${section} has ${spread[section] || 0} items, expected ${expected}.`);
   if (kc !== 50 || uk !== 10) errors.push(`Profile split is KC ${kc}, UK ${uk}, expected KC 50, UK 10.`);
+  if (figureCount < 8) errors.push(`Paper has ${figureCount} diagram items, expected at least 8.`);
   return errors;
 }
 

@@ -87,3 +87,10 @@
 .phy-p1-primary:hover:not(:disabled){filter:brightness(.96)}
 .phy-p1-primary:active:not(:disabled){transform:translateY(1px)}
 /* END SPARK PHYSICS PRACTICE BUTTON SYSTEM V15.4 */
+
+
+/* SPARK PHYSICS PAPER 1 AUDIT BENCHMARK V1 */
+.phy-p1-audit-note{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:16px;padding:15px 18px;border:1px solid color-mix(in srgb,var(--p1-teal) 30%,var(--p1-border));border-radius:16px;background:var(--p1-card)}
+.phy-p1-audit-note>div{min-width:180px}.phy-p1-audit-note strong{display:block;margin-top:3px;font-family:Georgia,serif;font-size:18px;color:var(--p1-ink)}.phy-p1-audit-note p{margin:0;max-width:720px;color:var(--p1-muted);font-size:12px;line-height:1.6}
+@media(max-width:680px){.phy-p1-audit-note{display:grid;gap:8px;padding:14px 15px}.phy-p1-audit-note>div{min-width:0}}
+/* END SPARK PHYSICS PAPER 1 AUDIT BENCHMARK V1 */

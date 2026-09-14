@@ -1,4 +1,65 @@
 import {chargeFromCurrentTime,frequencyFromPeriod,electricalPower,electricalEnergy,seriesResistance,parallelResistance,applianceCurrent,idealTransformerVoltage,idealTransformerCurrent,logicGate,magneticPoleForce,motorForceFactor,inducedEmfIndex} from '../dElectricityPhysics.mjs';
+
+const signLabel = value => value > 0 ? 'positive' : value < 0 ? 'negative' : 'neutral';
+
+export const buildChargeTransferModel=({electrons=3,direction='toRod',testCharge='negative'}={})=>{
+  const count=Math.max(0,Math.round(Number(electrons)||0));
+  const rodCharge=direction==='toRod'?-count:count;
+  const clothCharge=-rodCharge;
+  const test=testCharge==='positive'?1:-1;
+  const interaction=rodCharge===0?'no electrostatic test force':Math.sign(rodCharge)===test?'repel':'attract';
+  return{electrons:count,direction,rodCharge,clothCharge,rodSign:signLabel(rodCharge),clothSign:signLabel(clothCharge),interaction};
+};
+
+export const buildElectrostaticInductionModel=({rodSign='negative',stage='separated'}={})=>{
+  const negative=String(rodSign).toLowerCase()==='negative';
+  const nearSign=negative?'positive':'negative';
+  const farSign=negative?'negative':'positive';
+  const earthed=stage==='earthed';
+  const earthRemoved=stage==='earth-removed';
+  const finished=stage==='rod-removed';
+  return{
+    rodSign:negative?'negative':'positive',stage,nearSign,farSign,
+    earthed,
+    conductorCharge: finished || earthRemoved ? nearSign : 'net neutral',
+    instruction: stage==='separated'?'Charges separate in the conductor.':earthed?'Charge of the same sign as the rod flows to or from Earth.':earthRemoved?'Remove the Earth connection while the rod is still near.':'After the rod is removed, the remaining charge spreads over the conductor.'
+  };
+};
+
+export const buildCellRechargeModel=({cellType='secondary',polarity='correct'}={})=>{
+  const secondary=cellType==='secondary';
+  const correct=polarity==='correct';
+  return{
+    cellType,polarity,
+    rechargeable:secondary,
+    safeToRecharge:secondary&&correct,
+    result:!secondary?'Primary cells are not designed to be recharged.':correct?'Charging current is driven through the cell in the required reverse chemical direction.':'Reverse the charger leads before attempting to recharge the cell.'
+  };
+};
+
+export const buildRectifierModel=({input=1,orientation='positive'}={})=>{
+  const x=Number(input)||0;
+  const output=orientation==='positive'?Math.max(0,x):Math.min(0,x);
+  return{input:x,orientation,output};
+};
+
+export const buildTechnologyImpactModel=({benefit='',risk=''}={})=>({
+  benefit:String(benefit||''),risk:String(risk||''),balanced:Boolean(benefit&&risk)
+});
+
+export const buildCurrentFieldModel=({currentDirection='up',turns=120}={})=>{
+  const up=currentDirection==='up';
+  const n=Math.max(1,Math.round(Number(turns)||1));
+  return{
+    currentDirection:up?'up':'down',
+    fieldSense:up?'anticlockwise when viewed from above':'clockwise when viewed from above',
+    turns:n,
+    relativeFieldStrength:n/120,
+    solenoidLeftPole:up?'S':'N',
+    solenoidRightPole:up?'N':'S'
+  };
+};
+
 export const buildChargeModel=({currentA=2,timeS=30})=>({currentA,timeS,chargeC:chargeFromCurrentTime({currentA,timeS})});
 export const buildACModel=({periodS=.02,peakV=120})=>({periodS,peakV,frequencyHz:frequencyFromPeriod(periodS)});
 export const buildPowerModel=({voltageV=12,currentA=2,timeS=60})=>({voltageV,currentA,timeS,powerW:electricalPower({voltageV,currentA}),energyJ:electricalEnergy({powerW:electricalPower({voltageV,currentA}),timeS})});
