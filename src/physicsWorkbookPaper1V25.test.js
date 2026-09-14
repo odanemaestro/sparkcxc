@@ -60,8 +60,8 @@ describe('Physics V2.5 Workbook, Formula List and Paper 1 expansion', () => {
 
   test('Workbook contains 25 topics and all 189 objectives without public objective profile labels', () => {
     const source = read('src/physics/resources/physicsWorkbookContent.mjs');
-    expect((source.match(/\n\s*"code": "[A-E]\d+",\n\s*"section":/g) || [])).toHaveLength(25);
-    expect((source.match(/\n\s*"code": "[A-E]\d+\.\d+",/g) || [])).toHaveLength(189);
+    expect((source.match(/"code"\s*:\s*"[A-E]\d+"\s*,\s*"section"\s*:/g) || [])).toHaveLength(25);
+    expect((source.match(/"code"\s*:\s*"[A-E]\d+\.\d+"\s*,/g) || [])).toHaveLength(189);
     expect(source).not.toMatch(/"profile"\s*:/);
   });
 
