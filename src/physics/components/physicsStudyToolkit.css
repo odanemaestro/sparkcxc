@@ -21,3 +21,9 @@
 .pst-exam-language{display:flex;gap:9px;align-items:flex-start;margin-top:12px;padding:12px 14px;border-radius:13px;border:1px solid var(--pm-line,#dbe3ed);background:var(--pm-card,#fff);line-height:1.5}.pst-exam-language strong{flex:0 0 auto;color:var(--pm-primary,#0f766e)}
 [data-theme="dark"] .pst-toolkit,.dark .pst-toolkit{background:linear-gradient(180deg,var(--pm-card,#111c31),var(--pm-card2,#162237))}
 @media(max-width:760px){.pst-toolkit{padding:13px;border-radius:15px}.pst-heading{flex-direction:column}.pst-badge{white-space:normal}.pst-grid{grid-template-columns:1fr}.pst-card{padding:13px}.pst-exam-language{flex-direction:column;gap:4px}.pst-table{min-width:360px}}
+
+/* V2.5.6 Exam-technique readability */
+.pst-exam-language{display:grid;grid-template-columns:minmax(110px,150px) minmax(0,1fr);gap:12px 16px;align-items:start}
+.pst-exam-language strong{color:var(--pm-primary,#0f766e);line-height:1.5}
+.pst-exam-language p{margin:0;color:var(--pm-ink,#172033);line-height:1.6}
+@media(max-width:760px){.pst-exam-language{grid-template-columns:1fr;gap:4px}}

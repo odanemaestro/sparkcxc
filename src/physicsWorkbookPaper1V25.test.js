@@ -80,3 +80,28 @@ describe('Physics V2.5 Workbook, Formula List and Paper 1 expansion', () => {
     expect(source).toContain("setSection('FORMULAE')");
   });
 });
+
+
+describe('Physics V2.5.6 resource usability polish', () => {
+  test('Workbook opens the Formula List in an in-place modal and explains expandable content', () => {
+    const source = read('src/physics/resources/PhysicsWorkbook.jsx');
+    expect(source).toContain('setFormulaModalOpen(true)');
+    expect(source).toContain('role="dialog"');
+    expect(source).toContain('aria-modal="true"');
+    expect(source).toMatch(/Select an objective, practical activity or quick check to reveal/i);
+    expect(source).toContain('<PhysicsFormulaList inModal />');
+  });
+
+  test('Formula topic headings do not show per-topic entry counters', () => {
+    const source = read('src/physics/resources/PhysicsFormulaList.jsx');
+    expect(source).not.toMatch(/rows\.length.*entry|entry.*rows\.length/i);
+  });
+
+  test('Discuss guidance is grammatical and exam technique is formatted as a block', () => {
+    const upgradeSource = read('src/physics/course/physicsStudyUpgrade.mjs');
+    const toolkitSource = read('src/physics/components/PhysicsStudyToolkit.jsx');
+    expect(upgradeSource).not.toMatch(/For discuss questions/i);
+    expect(upgradeSource).toMatch(/For questions that ask you to discuss, state the observation and explain what it shows about the theory\./i);
+    expect(toolkitSource).toContain('<MathText as="p" prose>{upgrade.examLanguage}</MathText>');
+  });
+});
