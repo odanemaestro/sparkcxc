@@ -272,7 +272,18 @@ function WorkLab() {
   const [force,setForce]=useState(50),[d,setD]=useState(3),[angle,setAngle]=useState(0); const r=buildWorkExplorerModel({forceN:force,displacementM:d,angleDegrees:angle});
   return <LabFrame title="Work Explorer" intro="Only the component of force in the direction of displacement does work on the body.">
     <div className="pm-controls-grid"><Slider id="work-f" label="Force" value={force} min={10} max={100} step={5} onChange={setForce} display={`${force} N`}/><Slider id="work-d" label="Displacement" value={d} min={0} max={8} step={.5} onChange={setD} display={`${d} m`}/><Slider id="work-a" label="Angle between force and displacement" value={angle} min={0} max={90} step={5} onChange={setAngle} display={`${angle}°`}/></div>
-    <div className="pm-work-visual"><span className="pm-box">load</span><span className="pm-displacement">displacement →</span><span className="pm-force-label" style={{transform:`rotate(${-angle}deg)`}}>force ↗</span></div>
+    <div className="pm-work-visual">
+      <span className="pm-box">load</span>
+      <span className="pm-displacement">displacement <span aria-hidden="true">→</span></span>
+      <span className="pm-force-label">
+        <span>force</span>
+        <svg className="pm-force-vector" viewBox="0 0 40 20" aria-hidden="true" focusable="false"
+          style={{transform:`rotate(${-angle}deg)`}}>
+          <line x1="2" y1="10" x2="35" y2="10"/>
+          <polyline points="29,4 36,10 29,16"/>
+        </svg>
+      </span>
+    </div>
     <div className="pm-metrics"><Metric label="Parallel fraction" value={r.parallelFraction.toFixed(2)}/><Metric label="Work done" value={`${r.workJ.toFixed(1)} J`} tone="good"/></div>
   </LabFrame>;
 }

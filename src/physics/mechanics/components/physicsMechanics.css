@@ -849,3 +849,142 @@
   }
 }
 /* SPARK PHYSICS V2.5.8 MOBILE LAB FIT END */
+
+/* SPARK PHYSICS V2.7.2.2 WORK VECTOR START
+   Keep the vector scientifically correct and readable on every viewport.
+   At 0 degrees it points horizontally with displacement; the SVG alone rotates
+   as the angle changes, so the word "force" never becomes tilted or emoji-like. */
+.physics-mechanics .pm-work-visual {
+  display:grid;
+  grid-template-columns:auto minmax(0,max-content) auto;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(16px,4vw,30px);
+  padding:20px;
+}
+
+.physics-mechanics .pm-box {
+  flex:0 0 auto;
+}
+
+.physics-mechanics .pm-displacement {
+  min-width:0;
+  white-space:nowrap;
+  text-align:center;
+}
+
+.physics-mechanics .pm-force-label {
+  min-width:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:7px;
+  color:var(--pm-accent);
+  font-weight:800;
+  white-space:nowrap;
+  transform:none;
+}
+
+.physics-mechanics .pm-force-vector {
+  width:40px;
+  height:20px;
+  flex:0 0 40px;
+  overflow:visible;
+  color:inherit;
+  transform-origin:2px 50%;
+  transition:transform .18s ease;
+}
+
+.physics-mechanics .pm-force-vector line,
+.physics-mechanics .pm-force-vector polyline {
+  fill:none;
+  stroke:currentColor;
+  stroke-width:2.25;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  vector-effect:non-scaling-stroke;
+}
+
+@media (max-width:560px) {
+  .physics-mechanics .pm-work-visual {
+    min-height:150px;
+    gap:14px;
+    padding:18px 12px;
+  }
+
+  .physics-mechanics .pm-box {
+    width:76px;
+    height:62px;
+  }
+
+  .physics-mechanics .pm-displacement,
+  .physics-mechanics .pm-force-label {
+    font-size:14px;
+  }
+
+  .physics-mechanics .pm-force-vector {
+    width:34px;
+    flex-basis:34px;
+  }
+}
+
+@media (max-width:440px) {
+  .physics-mechanics .pm-work-visual {
+    grid-template-columns:auto minmax(0,1fr);
+    grid-template-areas:
+      "box displacement"
+      "box force";
+    justify-content:stretch;
+    column-gap:14px;
+    row-gap:14px;
+    min-height:150px;
+  }
+
+  .physics-mechanics .pm-box {
+    grid-area:box;
+    align-self:center;
+    justify-self:start;
+  }
+
+  .physics-mechanics .pm-displacement {
+    grid-area:displacement;
+    justify-self:start;
+    align-self:end;
+  }
+
+  .physics-mechanics .pm-force-label {
+    grid-area:force;
+    justify-self:start;
+    align-self:start;
+  }
+}
+
+@media (max-width:340px) {
+  .physics-mechanics .pm-work-visual {
+    column-gap:10px;
+    padding-left:10px;
+    padding-right:10px;
+  }
+
+  .physics-mechanics .pm-box {
+    width:66px;
+    height:58px;
+  }
+
+  .physics-mechanics .pm-displacement,
+  .physics-mechanics .pm-force-label {
+    font-size:13px;
+  }
+
+  .physics-mechanics .pm-force-vector {
+    width:28px;
+    flex-basis:28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .physics-mechanics .pm-force-vector {
+    transition:none;
+  }
+}
+/* SPARK PHYSICS V2.7.2.2 WORK VECTOR END */

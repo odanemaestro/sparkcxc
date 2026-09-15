@@ -100,6 +100,7 @@ import "./passwordVisibility.css";
 import "./sparkRewards.css";
 import "./learningIntelligence.css";
 import "./sparkFinalButtonConsistencyV2642.css";
+import "./sparkSubjectLeaveModalV272.css";
 import GOOGLE_ICON_B64 from "./assets/icons/google-icon.png";
 import GOOGLE_CALENDAR_ICON_B64 from "./assets/icons/google-calendar-icon.png";
 import OUTLOOK_ICON_B64 from "./assets/icons/outlook-icon.png";
@@ -3337,6 +3338,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   const [subjectEnrollmentsLoaded, setSubjectEnrollmentsLoaded] = useState(false);
   const [subjectEnrollmentAvailable, setSubjectEnrollmentAvailable] = useState(null);
   const [subjectEnrollmentBusy, setSubjectEnrollmentBusy] = useState("");
+  const [subjectLeaveTarget, setSubjectLeaveTarget] = useState(null);
   const [tutorRow, setTutorRow] = useState(null);
   const [tutorRowLoaded, setTutorRowLoaded] = useState(false);
   const [tutorReviews, setTutorReviews] = useState([]);
@@ -3983,16 +3985,16 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     }, {})
   );
 
-  const updateStudentSubjectEnrollment = async (subject, enroll) => {
+  const updateStudentSubjectEnrollment = async (subject, enroll, { confirmed = false } = {}) => {
     const subjectId = String(subject?.id || "").trim().toLowerCase();
     if (!subjectId || !user?.id) return;
     if (subjectEnrollmentAvailable !== true) {
       showToast("Subject enrollment will be available after the latest SPARK database update is applied.", "error");
       return;
     }
-    if (!enroll) {
-      const confirmed = window.confirm(`Leave ${subject.shortName || subject.name}? Your saved progress will be kept, but this subject will be removed from your dashboard.`);
-      if (!confirmed) return;
+    if (!enroll && !confirmed) {
+      setSubjectLeaveTarget(subject);
+      return;
     }
     setSubjectEnrollmentBusy(subjectId);
     const { error } = await supabase.rpc("spark_set_subject_enrollment", {
@@ -4006,6 +4008,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       return;
     }
     if (!enroll) {
+      setSubjectLeaveTarget(null);
       if (progressSubject === subjectId) setProgressSubject("all");
       if (flashcardSubject === subjectId) setFlashcardSubject(null);
     }
@@ -4659,6 +4662,16 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
         )}
       </div>
 
+      {subjectLeaveTarget && isStudent && (
+        <SubjectLeaveModal
+          subject={subjectLeaveTarget}
+          busy={subjectEnrollmentBusy === String(subjectLeaveTarget?.id || "").trim().toLowerCase()}
+          onClose={() => {
+            if (!subjectEnrollmentBusy) setSubjectLeaveTarget(null);
+          }}
+          onConfirm={() => updateStudentSubjectEnrollment(subjectLeaveTarget, false, { confirmed: true })}
+        />
+      )}
       {studentReportOpen && isStudent && (
         <ProgressReportModal
           onClose={() => setStudentReportOpen(false)}
@@ -4706,6 +4719,129 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
         />
       )}
     </div>
+  );
+}
+
+
+// Accessible SPARK confirmation for removing a subject from the dashboard.
+// This replaces window.confirm so the interaction follows the same visual,
+// button-semantic, responsive and theme rules as the rest of the platform.
+function SubjectLeaveModal({ subject, busy, onClose, onConfirm }) {
+  const dialogRef = useRef(null);
+  const busyRef = useRef(Boolean(busy));
+  const closeRef = useRef(onClose);
+
+  useEffect(() => {
+    busyRef.current = Boolean(busy);
+  }, [busy]);
+
+  useEffect(() => {
+    closeRef.current = onClose;
+  }, [onClose]);
+
+  useEffect(() => {
+    if (typeof document === "undefined") return undefined;
+
+    const previousFocus = document.activeElement;
+    const frame = typeof window !== "undefined"
+      ? window.requestAnimationFrame(() => {
+          dialogRef.current?.querySelector("button:not(:disabled)")?.focus();
+        })
+      : null;
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        if (!busyRef.current) {
+          event.preventDefault();
+          closeRef.current?.();
+        }
+        return;
+      }
+
+      if (event.key !== "Tab" || !dialogRef.current) return;
+
+      const focusable = Array.from(dialogRef.current.querySelectorAll('button:not(:disabled), [href], input:not(:disabled), select:not(:disabled), textarea:not(:disabled), [tabindex]:not([tabindex="-1"])'))
+        .filter(node => node.offsetParent !== null);
+
+      if (!focusable.length) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      if (frame != null && typeof window !== "undefined") window.cancelAnimationFrame(frame);
+      if (previousFocus && typeof previousFocus.focus === "function") {
+        try { previousFocus.focus(); } catch { /* focus restoration is best-effort */ }
+      }
+    };
+  }, []);
+
+  const subjectName = String(subject?.shortName || subject?.name || "this subject")
+    .replace(/^CSEC\s+/i, "")
+    .trim();
+
+  return (
+    <Modal onClose={() => { if (!busy) onClose(); }}>
+      <section
+        ref={dialogRef}
+        className="subject-leave-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="subject-leave-modal-title"
+        aria-describedby="subject-leave-modal-copy"
+        aria-busy={busy}
+      >
+        <div className="subject-leave-modal__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 8v5"/>
+            <path d="M12 17h.01"/>
+            <path d="M10.3 3.7 2.6 17a2 2 0 0 0 1.7 3h15.4a2 2 0 0 0 1.7-3L13.7 3.7a2 2 0 0 0-3.4 0Z"/>
+          </svg>
+        </div>
+
+        <h2 id="subject-leave-modal-title" className="subject-leave-modal__title">
+          Leave {subjectName}?
+        </h2>
+
+        <p id="subject-leave-modal-copy" className="subject-leave-modal__copy">
+          Your saved progress will be kept, but {subjectName} will be removed from your dashboard.
+        </p>
+
+        <div className="subject-leave-modal__note">
+          You can add this subject again later without losing the work you have already completed.
+        </div>
+
+        <div className="subject-leave-modal__actions">
+          <Btn
+            v="outline"
+            action="nav"
+            onClick={onClose}
+            disabled={busy}
+          >
+            Keep {subjectName}
+          </Btn>
+          <Btn
+            v="danger"
+            onClick={onConfirm}
+            disabled={busy}
+          >
+            {busy ? "Removing…" : "Leave subject"}
+          </Btn>
+        </div>
+      </section>
+    </Modal>
   );
 }
 

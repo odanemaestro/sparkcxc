@@ -1,0 +1,119 @@
+/* SPARK Subject Leave Modal V2.7.2
+   Responsive, theme-safe confirmation UI replacing the browser confirm dialog. */
+
+.subject-leave-modal {
+  width: 100%;
+  min-width: 0;
+  color: var(--spark-ink);
+}
+
+.subject-leave-modal__icon {
+  width: 46px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  border: 1px solid color-mix(in srgb, var(--spark-red) 30%, var(--spark-border));
+  border-radius: 14px;
+  background: var(--spark-red-light);
+  color: var(--spark-red);
+}
+
+.subject-leave-modal__icon svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.subject-leave-modal__title {
+  margin: 0 0 8px;
+  font-family: "Crimson Pro", Georgia, serif;
+  font-size: clamp(22px, 4.5vw, 27px);
+  line-height: 1.15;
+  color: var(--spark-ink);
+}
+
+.subject-leave-modal__copy {
+  margin: 0;
+  max-width: 44ch;
+  color: var(--spark-text-muted);
+  font-size: 14px;
+  line-height: 1.62;
+}
+
+.subject-leave-modal__note {
+  margin-top: 16px;
+  padding: 11px 13px;
+  border: 1px solid var(--spark-border-soft);
+  border-radius: 10px;
+  background: var(--spark-muted);
+  color: var(--spark-ink-soft);
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.subject-leave-modal__actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.subject-leave-modal__actions > button {
+  width: 100% !important;
+  min-width: 0;
+  min-height: 46px !important;
+  justify-content: center !important;
+  text-align: center;
+}
+
+.subject-leave-modal__actions > button:disabled {
+  cursor: not-allowed !important;
+}
+
+/* The shared theme variables already supply the dark palette. This explicit
+   rule keeps the warning tile visually restrained rather than glowing. */
+[data-theme="dark"] .subject-leave-modal__icon,
+.dark .subject-leave-modal__icon {
+  background: color-mix(in srgb, var(--spark-red) 12%, var(--spark-paper));
+  border-color: color-mix(in srgb, var(--spark-red) 38%, var(--spark-border));
+}
+
+@media (max-width: 520px) {
+  .subject-leave-modal__icon {
+    width: 42px;
+    height: 42px;
+    margin-bottom: 14px;
+  }
+
+  .subject-leave-modal__copy {
+    font-size: 13.5px;
+  }
+
+  .subject-leave-modal__actions {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 440px) {
+  .subject-leave-modal__actions {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .subject-leave-modal__actions > button {
+    min-height: 48px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .subject-leave-modal *,
+  .subject-leave-modal *::before,
+  .subject-leave-modal *::after {
+    scroll-behavior: auto !important;
+  }
+}
