@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { usePhysicsPracticeRoute } from '../../../routing/sparkRoutingV270';
 import MathText from '../../../practice/MathText';
 import { PhysicsTopicQuiz } from '../../mechanics/components/PhysicsMechanicsSection';
 import { SECTION_E_TOPICS } from '../sectionEAtomic.mjs';
@@ -32,8 +33,7 @@ function StructuredPractice() {
 }
 
 export default function PhysicsAtomicPractice({ userId, onBack, onActivity }) {
-  const [mode, setMode] = useState('home');
-  const [topicId, setTopicId] = useState('E1');
+  const [mode, setMode, topicId, setTopicId] = usePhysicsPracticeRoute('E', SECTION_E_TOPICS.map(item => item.id));
   const topic = useMemo(() => SECTION_E_TOPICS.find(item => item.id === topicId) || SECTION_E_TOPICS[0], [topicId]);
   if (mode === 'topic') return <main className="physics-mechanics physics-atomic"><div className="pm-shell"><div className="pm-support-head pm-topic-test-head"><div><div className="pm-eyebrow">CSEC Physics · Section E practice</div><h1>Topic tests</h1><p>Choose a Physics of the Atom topic and complete a 10-question objective-linked test.</p></div><button type="button" className="pm-btn pm-practice-back" onClick={() => setMode('home')}><span aria-hidden="true">{"\u2190"}</span> Section E practice</button></div><nav className="pm-topics pm-topic-test-topics" aria-label="Physics topic tests">{SECTION_E_TOPICS.map(item => <button key={item.id} type="button" className={`pm-topic-btn ${topicId === item.id ? 'active' : ''}`} onClick={() => setTopicId(item.id)}>{item.id} · {item.title}</button>)}</nav><PhysicsTopicQuiz key={topic.id} topic={topic} onActivity={event => onActivity?.({ ...event, section:'E', subject:'CSEC Physics' })} /></div></main>;
   if (mode === 'structured') return <main className="physics-mechanics physics-atomic"><div className="pm-shell"><div className="pm-support-head"><div><div className="pm-eyebrow">CSEC Physics · Section E practice</div><h1>Structured practice</h1><p>Work through original The Physics of the Atom structured, extended-response and data-analysis questions.</p></div><button type="button" className="pm-btn pm-practice-back" onClick={() => setMode('home')}><span aria-hidden="true">{"\u2190"}</span> Section E practice</button></div><StructuredPractice /></div></main>;

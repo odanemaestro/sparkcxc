@@ -30,6 +30,7 @@ import "./studyPracticeSemanticsV261";
 import React, { useState, useEffect, useCallback, useRef, useLayoutEffect } from "react";
 import { createPortal } from "react-dom";
 import PracticeHub from "./practice/PracticeHub";
+import { useMathLessonRoute } from "./routing/sparkRoutingV270";
 // SPARK_PHYSICS_SECTION_A_RC1_IMPORTS
 import PhysicsSubjectView from "./physics/course/components/PhysicsSubjectView";
 import { PhysicsMechanicsFlashcardsPanel } from "./physics/mechanics/components/PhysicsMechanicsSupportPanels";
@@ -138,7 +139,7 @@ const VIEW_ROUTE_PATHS = Object.freeze({
   "practice-math": "/practice/mathematics",
   "practice-physics": "/practice/physics",
   // SPARK_PHYSICS_SECTION_A_RC1_ROUTES
-  physics: "/physics",
+  physics: "/study/physics",
   about: "/about",
   contact: "/contact",
   privacy: "/privacy",
@@ -162,6 +163,7 @@ const ROUTE_PATH_VIEWS = Object.freeze({
   "/practice": "practice",
   "/practice/mathematics": "practice-math",
   "/practice/physics": PHYSICS_SECTION_A_ENABLED ? "practice-physics" : "practice",
+  "/study/physics": PHYSICS_SECTION_A_ENABLED ? "physics" : "home",
   "/physics": PHYSICS_SECTION_A_ENABLED ? "physics" : "home",
   "/about": "about",
   "/contact": "contact",
@@ -209,6 +211,11 @@ function viewFromBrowserHash() {
   if (normalizedPath === "/dashboard" || normalizedPath.startsWith("/dashboard/")) {
     return "dashboard";
   }
+
+  if (normalizedPath === "/study/mathematics" || normalizedPath.startsWith("/study/mathematics/")) return "lesson";
+  if (normalizedPath === "/study/physics" || normalizedPath.startsWith("/study/physics/")) return PHYSICS_SECTION_A_ENABLED ? "physics" : "home";
+  if (normalizedPath === "/practice/mathematics" || normalizedPath.startsWith("/practice/mathematics/")) return "practice-math";
+  if (normalizedPath === "/practice/physics" || normalizedPath.startsWith("/practice/physics/")) return PHYSICS_SECTION_A_ENABLED ? "practice-physics" : "practice";
 
   return ROUTE_PATH_VIEWS[normalizedPath] || "home";
 }
@@ -958,9 +965,7 @@ function QuizEngine({ topicName, userId, onBack, onComplete, showToast }) {
 // ─── LESSON VIEW (full layout) ───────────────────────────────────────────────
 function LessonView({ user, setView, showToast, hasTutorApp }) {
   const [sections] = useState(SYLLABUS_SECTIONS);
-  const [activeSectionIdx, setActiveSectionIdx] = useState(0);
-  const [activeTopicIdx, setActiveTopicIdx] = useState(0);
-  const [inQuiz, setInQuiz] = useState(false);
+  const { activeSectionIdx, setActiveSectionIdx, activeTopicIdx, setActiveTopicIdx, inQuiz, setInQuiz, hasExplicitRoute: hasExplicitLessonRoute } = useMathLessonRoute(sections);
   const [completedTopics, setCompletedTopics] = useState(new Set());
   const [openSidebarSection, setOpenSidebarSection] = useState(0);
   const [progressLoaded, setProgressLoaded] = useState(false);
@@ -999,7 +1004,7 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
         else if (!firstIncomplete) firstIncomplete = { si, ti };
       }));
       setCompletedTopics(new Set(keys));
-      if (firstIncomplete) {
+      if (firstIncomplete && !hasExplicitLessonRoute) {
         setActiveSectionIdx(firstIncomplete.si);
         setActiveTopicIdx(firstIncomplete.ti);
         setOpenSidebarSection(firstIncomplete.si);

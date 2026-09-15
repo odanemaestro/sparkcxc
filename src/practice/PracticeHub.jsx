@@ -5,6 +5,7 @@ import Paper2Exam from "./Paper2Exam";
 import Syllabus2027Hub from "./Syllabus2027Hub";
 import PhysicsPracticeHub from "../physics/course/components/PhysicsPracticeHub";
 import SubjectSelectionView from "../subjects/SubjectSelectionView";
+import { useMathPracticeRoute } from "../routing/sparkRoutingV270";
 import { getSparkSubjectRegistry, subjectsForCapability } from "../subjects/subjectRegistry";
 import { syncLocalPracticeResults } from "./persistence";
 import "./practiceExam.css";
@@ -25,8 +26,7 @@ function readJson(key, fallback) {
 
 export default function PracticeHub({ supabase, userId, setView, physicsEnabled = false, enrolledSubjectIds = null, initialSubject = null, onSubjectActivity }) {
   const [subject, setSubject] = useState(initialSubject);
-  const [mode, setMode] = useState("home");
-  const [examIntent, setExamIntent] = useState("resume");
+  const { mode, setMode, examIntent, setExamIntent } = useMathPracticeRoute(initialSubject === "mathematics");
 
   const paper1Active = readJson(PAPER1_ACTIVE_KEY, null);
   const paper1Results = readJson(PAPER1_RESULTS_KEY, []);
@@ -37,8 +37,11 @@ export default function PracticeHub({ supabase, userId, setView, physicsEnabled 
 
   useEffect(() => {
     setSubject(initialSubject);
-    setMode("home");
-  }, [initialSubject]);
+    if (!initialSubject) {
+      setMode("home");
+      setExamIntent("resume");
+    }
+  }, [initialSubject, setMode, setExamIntent]);
 
   useEffect(() => {
     if (!supabase || !userId) return;

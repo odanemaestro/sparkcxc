@@ -3,6 +3,7 @@ import MathText from '../../practice/MathText';
 import { PHYSICS_STUDY_UPGRADES } from '../course/physicsStudyUpgrade.mjs';
 import { PHYSICS_PRACTICAL_BLUEPRINTS } from '../labs/physicsPracticalBlueprints.mjs';
 import PhysicsFormulaList from './PhysicsFormulaList.jsx';
+import { usePhysicsWorkbookRoute } from '../../routing/sparkRoutingV270';
 import { PHYSICS_FORMULA_LIST } from './physicsFormulaList.mjs';
 import { PHYSICS_WORKBOOK_SECTIONS, PHYSICS_WORKBOOK_TOPICS, physicsWorkbookStats } from './physicsWorkbookContent.mjs';
 import './physicsResources.css';
@@ -14,8 +15,7 @@ function practicalsForTopic(topicCode) {
 }
 
 export default function PhysicsWorkbook({ onBack, onOpenSection }) {
-  const [section, setSection] = useState('A');
-  const [topicCode, setTopicCode] = useState('A1');
+  const [section, setSection, topicCode, setTopicCode] = usePhysicsWorkbookRoute(PHYSICS_WORKBOOK_TOPICS);
   const [query, setQuery] = useState('');
   const [formulaModalOpen, setFormulaModalOpen] = useState(false);
   const formulaButtonRef = useRef(null);

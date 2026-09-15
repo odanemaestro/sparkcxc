@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { usePhysicsStudyRoute } from '../../../routing/sparkRoutingV270';
 import MathText from '../../../practice/MathText';
 import PhysicsFlashcardVisual from '../../components/PhysicsFlashcardVisual';
 import PhysicsStudyToolkit from '../../components/PhysicsStudyToolkit';
@@ -103,8 +104,7 @@ export function PhysicsElectricityCheckpoint({ onActivity }) {
 }
 
 export default function PhysicsElectricitySection({ userId, onBack, onActivity }) {
-  const [topicId, setTopicId] = useState('D1');
-  const [mode, setMode] = useState('study');
+  const [topicId, setTopicId, mode, setMode] = usePhysicsStudyRoute('D', SECTION_D_TOPICS.map(item => item.id));
   const [electricityProgress, setElectricityProgress] = useState(() => readPhysicsElectricityProgress(userId));
   const [courseProgress, setCourseProgress] = useState(() => readPhysicsCourseProgress(userId));
   const topic = SECTION_D_TOPICS.find(item => item.id === topicId) || SECTION_D_TOPICS[0];

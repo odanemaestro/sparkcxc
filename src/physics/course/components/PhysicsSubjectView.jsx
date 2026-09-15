@@ -1,4 +1,5 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
+import { usePhysicsSubjectRoute } from '../../../routing/sparkRoutingV270';
 import PhysicsMechanicsSection from '../../mechanics/components/PhysicsMechanicsSection';
 import PhysicsCourseLessons from './PhysicsCourseLessons';
 import PhysicsThermalSection from '../../thermal/components/PhysicsThermalSection';
@@ -31,7 +32,7 @@ const SECTION_META = Object.freeze({
 });
 
 export default function PhysicsSubjectView({ userId, onBack, onActivity, onEvidence }) {
-  const [section, setSection] = useState(null);
+  const [section, setSection] = usePhysicsSubjectRoute();
   const stats = useMemo(() => physicsFullCourseStats(), []);
 
   if (section === 'WORKBOOK') {

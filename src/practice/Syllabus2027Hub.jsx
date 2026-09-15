@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import Paper2027ModuleExam from "./Paper2027ModuleExam";
+import { useCsec2027Route } from "../routing/sparkRoutingV270";
 import {
   CSEC_2027_LEGACY_RESULTS_KEY,
   CSEC_2027_MODULES,
@@ -37,12 +38,12 @@ function modeDescription(mode) {
 }
 
 export default function Syllabus2027Hub({ onExit, supabase, userId }) {
-  const [selectedPaper, setSelectedPaper] = useState(null);
+  const { modeKey, setModeKey, selectedPaperId, setSelectedPaperId } = useCsec2027Route(CSEC_2027_PRACTICE_MODES.map(item => item.key));
   const [startFresh, setStartFresh] = useState(false);
-  const [modeKey, setModeKey] = useState("module1");
   const [results, setResults] = useState(() => allResults());
   const mode = CSEC_2027_PRACTICE_MODES.find(item => item.key === modeKey) || CSEC_2027_PRACTICE_MODES[0];
   const papers = useMemo(() => getCsec2027Papers(modeKey), [modeKey]);
+  const selectedPaper = useMemo(() => papers.find(paper => paper.paper_id === selectedPaperId) || null, [papers, selectedPaperId]);
 
 
   // SPARK V5.3.9I1 TOP RESET
@@ -51,7 +52,7 @@ export default function Syllabus2027Hub({ onExit, supabase, userId }) {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, [selectedPaper]);
   if (selectedPaper) {
-    return <Paper2027ModuleExam paper={selectedPaper} onExit={() => { setSelectedPaper(null); setResults(allResults()); }} startFresh={startFresh} supabase={supabase} userId={userId} />;
+    return <Paper2027ModuleExam paper={selectedPaper} onExit={() => { setSelectedPaperId(null); setResults(allResults()); }} startFresh={startFresh} supabase={supabase} userId={userId} />;
   }
 
   return (
@@ -121,8 +122,8 @@ export default function Syllabus2027Hub({ onExit, supabase, userId }) {
               </div>
               {latest && <div className="paper2027-latest"><span>Latest result</span><strong>{latest.score}/{latest.maxScore} · {latest.percent}%</strong></div>}
               <div className="practice-card-actions">
-                {active?.paperId && <button type="button" className="practice-primary" onClick={() => { setStartFresh(false); setSelectedPaper(paper); }}>Resume paper</button>}
-                <button type="button" className={active?.paperId ? "practice-secondary" : "practice-primary"} onClick={() => { setStartFresh(true); setSelectedPaper(paper); }}>Start new paper</button>
+                {active?.paperId && <button type="button" className="practice-primary" onClick={() => { setStartFresh(false); setSelectedPaperId(paper.paper_id); }}>Resume paper</button>}
+                <button type="button" className={active?.paperId ? "practice-secondary" : "practice-primary"} onClick={() => { setStartFresh(true); setSelectedPaperId(paper.paper_id); }}>Start new paper</button>
               </div>
             </article>
           );

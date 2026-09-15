@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { usePhysicsPracticeRoute } from '../../../routing/sparkRoutingV270';
 import MathText from '../../../practice/MathText';
 import { PhysicsTopicQuiz } from '../../mechanics/components/PhysicsMechanicsSection';
 import { SECTION_C_TOPICS } from '../sectionCWaves.mjs';
@@ -32,8 +33,7 @@ function StructuredPractice() {
 }
 
 export default function PhysicsWavesPractice({ userId, onBack, onActivity }) {
-  const [mode, setMode] = useState('home');
-  const [topicId, setTopicId] = useState('C1');
+  const [mode, setMode, topicId, setTopicId] = usePhysicsPracticeRoute('C', SECTION_C_TOPICS.map(item => item.id));
   const topic = useMemo(() => SECTION_C_TOPICS.find(item => item.id === topicId) || SECTION_C_TOPICS[0], [topicId]);
   if (mode === 'topic') return <main className="physics-mechanics physics-waves"><div className="pm-shell"><div className="pm-support-head pm-topic-test-head"><div><div className="pm-eyebrow">CSEC Physics · Section C practice</div><h1>Topic tests</h1><p>Choose a Waves and Optics topic and complete a 10-question objective-linked test.</p></div><button type="button" className="pm-btn pm-practice-back" onClick={() => setMode('home')}><span aria-hidden="true">{"\u2190"}</span> Section C practice</button></div><nav className="pm-topics pm-topic-test-topics" aria-label="Physics topic tests">{SECTION_C_TOPICS.map(item => <button key={item.id} type="button" className={`pm-topic-btn ${topicId === item.id ? 'active' : ''}`} onClick={() => setTopicId(item.id)}>{item.id} · {item.title}</button>)}</nav><PhysicsTopicQuiz key={topic.id} topic={topic} onActivity={event => onActivity?.({ ...event, section:'C', subject:'CSEC Physics' })} /></div></main>;
   if (mode === 'structured') return <main className="physics-mechanics physics-waves"><div className="pm-shell"><div className="pm-support-head"><div><div className="pm-eyebrow">CSEC Physics · Section C practice</div><h1>Structured practice</h1><p>Work through original Waves and Optics structured, extended-response and data-analysis questions.</p></div><button type="button" className="pm-btn pm-practice-back" onClick={() => setMode('home')}><span aria-hidden="true">{"\u2190"}</span> Section C practice</button></div><StructuredPractice /></div></main>;

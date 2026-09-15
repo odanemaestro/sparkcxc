@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from "react";
+import { usePhysicsPracticeRoute } from '../../../routing/sparkRoutingV270';
 import MathText from "../../../practice/MathText";
 import { SECTION_A_TOPICS } from "../sectionAMechanics.mjs";
 import { PhysicsMechanicsCheckpoint, PhysicsTopicQuiz } from "./PhysicsMechanicsSection";
@@ -62,8 +63,7 @@ function StructuredPractice() {
 }
 
 export default function PhysicsMechanicsPractice({ userId, onBack, onActivity }) {
-  const [mode, setMode] = useState("home");
-  const [topicId, setTopicId] = useState("A1");
+  const [mode, setMode, topicId, setTopicId] = usePhysicsPracticeRoute('A', SECTION_A_TOPICS.map(item => item.id));
   const topic = useMemo(() => SECTION_A_TOPICS.find(item => item.id === topicId) || SECTION_A_TOPICS[0], [topicId]);
 
   if (mode === "topic") return <main className="physics-mechanics"><div className="pm-shell"><div className="pm-support-head pm-topic-test-head"><div><div className="pm-eyebrow">CSEC Physics practice</div><h1>Topic tests</h1><p>Choose one Mechanics topic and complete a 10-question objective-linked test.</p></div><button type="button" className="pm-btn pm-practice-back" onClick={() => setMode("home")}><span aria-hidden="true">{"\u2190"}</span> Section A practice</button></div><nav className="pm-topics pm-topic-test-topics" aria-label="Physics topic tests">{SECTION_A_TOPICS.map(item => <button key={item.id} type="button" className={`pm-topic-btn ${topicId === item.id ? "active" : ""}`} aria-pressed={topicId === item.id} onClick={() => setTopicId(item.id)}>{item.id} · {item.title}</button>)}</nav><PhysicsTopicQuiz key={topic.id} topic={topic} onActivity={onActivity}/></div></main>;

@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { usePhysicsStudyRoute } from '../../../routing/sparkRoutingV270';
 import MathText from '../../../practice/MathText';
 import PhysicsFlashcardVisual from '../../components/PhysicsFlashcardVisual';
 import PhysicsStudyToolkit from '../../components/PhysicsStudyToolkit';
@@ -55,7 +56,8 @@ export function PhysicsMechanicsCheckpoint({onActivity}){
 }
 
 export default function PhysicsMechanicsSection({userId,onBack,onActivity,onEvidence}){
-  const [topicId,setTopicId]=useState('A1'),[mode,setMode]=useState('study'),[progress,setProgress]=useState(()=>readPhysicsMechanicsProgress(userId));const topic=SECTION_A_TOPICS.find(t=>t.id===topicId)||SECTION_A_TOPICS[0];const stats=sectionAStats();
+  const [topicId,setTopicId,mode,setMode]=usePhysicsStudyRoute('A', SECTION_A_TOPICS.map(item=>item.id));
+  const [progress,setProgress]=useState(()=>readPhysicsMechanicsProgress(userId));const topic=SECTION_A_TOPICS.find(t=>t.id===topicId)||SECTION_A_TOPICS[0];const stats=sectionAStats();
   useEffect(()=>{setProgress(readPhysicsMechanicsProgress(userId));},[userId]);
   const setCompleted=(key,value)=>setProgress(p=>{const n=setPhysicsMechanicsCompletion(userId,p,key,value);onActivity?.({type:'physics_completion',subject:'CSEC Physics',section:'A',key,completed:Boolean(value)});return n});
   const topicLabs=MECHANICS_INTERACTIVES.filter(i=>i.topic===topic.id);const completedCount=(progress[`lesson:${topic.id}`]?1:0)+topicLabs.filter(l=>progress[`lab:${l.id}`]).length;const totalCount=1+topicLabs.length;const pct=Math.round(completedCount/totalCount*100);
