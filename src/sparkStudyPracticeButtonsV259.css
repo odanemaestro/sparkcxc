@@ -1,0 +1,406 @@
+/* SPARK STUDY + PRACTICE BUTTON SYSTEM V2.5.9
+   Semantic rule:
+   green = begin, resume, continue, repeat, open core learning
+   navy = navigate, manage, review, submit, exam controls
+   neutral = disabled only
+*/
+
+:root {
+  --spark-btn-navy: #132b5e;
+  --spark-btn-navy-hover: #0c214d;
+  --spark-btn-navy-soft: #eaf0f8;
+  --spark-btn-navy-soft-hover: #dce7f4;
+  --spark-btn-navy-border: #b9c9df;
+  --spark-btn-green: #0f9a8a;
+  --spark-btn-green-hover: #0b8174;
+  --spark-btn-green-soft: #e7f8f4;
+  --spark-btn-green-border: #8dd9cf;
+  --spark-btn-disabled-bg: #eef2f6;
+  --spark-btn-disabled-text: #94a3b8;
+  --spark-btn-disabled-border: #d8e0e9;
+  --spark-btn-focus: rgba(20, 184, 166, .30);
+  --spark-btn-shadow: 0 8px 20px rgba(15, 37, 87, .12);
+}
+
+.dark,
+[data-theme="dark"] {
+  --spark-btn-navy: #315594;
+  --spark-btn-navy-hover: #3d66aa;
+  --spark-btn-navy-soft: #172743;
+  --spark-btn-navy-soft-hover: #203456;
+  --spark-btn-navy-border: #3b557a;
+  --spark-btn-green: #14b8a6;
+  --spark-btn-green-hover: #2dd4bf;
+  --spark-btn-green-soft: #103b38;
+  --spark-btn-green-border: #237e75;
+  --spark-btn-disabled-bg: #1e293b;
+  --spark-btn-disabled-text: #64748b;
+  --spark-btn-disabled-border: #334155;
+  --spark-btn-focus: rgba(94, 234, 212, .34);
+  --spark-btn-shadow: 0 8px 22px rgba(0, 0, 0, .24);
+}
+
+/* Shared interaction quality */
+.practice-primary,
+.practice-secondary,
+.practice-back,
+.paper-start-button,
+.paper-text-button,
+.paper-exit,
+.paper-next,
+.paper-submit-top,
+.paper-submit-side,
+.paper-drawer-submit,
+.paper2-back-control,
+.paper2-formula-control,
+.paper-flag,
+.phy-p1-primary,
+.phy-p1-secondary,
+.phy-p1-back,
+.phy-p1-nav-toggle,
+.phy-p1-flag,
+.psv-back,
+.physics-resource-primary,
+.physics-resource-secondary,
+.physics-resource-back {
+  min-height: 44px;
+  border-radius: 11px;
+  font-weight: 800;
+  transition: background-color .16s ease, border-color .16s ease, color .16s ease, box-shadow .16s ease, transform .16s ease;
+}
+
+.practice-primary:focus-visible,
+.practice-secondary:focus-visible,
+.practice-back:focus-visible,
+.paper-start-button:focus-visible,
+.paper-text-button:focus-visible,
+.paper-exit:focus-visible,
+.paper-next:focus-visible,
+.paper-submit-top:focus-visible,
+.paper-submit-side:focus-visible,
+.paper-drawer-submit:focus-visible,
+.paper2-back-control:focus-visible,
+.paper2-formula-control:focus-visible,
+.paper-flag:focus-visible,
+.paper-nav-grid button:focus-visible,
+.paper-review-dots button:focus-visible,
+.paper2-review-nav button:focus-visible,
+.phy-p1-primary:focus-visible,
+.phy-p1-secondary:focus-visible,
+.phy-p1-back:focus-visible,
+.phy-p1-nav-toggle:focus-visible,
+.phy-p1-flag:focus-visible,
+.phy-p1-question-nav button:focus-visible,
+.psv-back:focus-visible,
+.physics-resource-primary:focus-visible,
+.physics-resource-secondary:focus-visible,
+.physics-resource-back:focus-visible {
+  outline: 3px solid var(--spark-btn-focus);
+  outline-offset: 2px;
+}
+
+/* Green, forward progress */
+.practice-primary,
+.paper-start-button,
+.phy-p1-primary,
+.physics-resource-primary {
+  border: 1px solid var(--spark-btn-green) !important;
+  background: var(--spark-btn-green) !important;
+  color: #fff !important;
+  box-shadow: 0 7px 16px rgba(15, 154, 138, .16);
+}
+
+.practice-primary:hover:not(:disabled),
+.paper-start-button:hover:not(:disabled),
+.phy-p1-primary:hover:not(:disabled),
+.physics-resource-primary:hover:not(:disabled) {
+  border-color: var(--spark-btn-green-hover) !important;
+  background: var(--spark-btn-green-hover) !important;
+  box-shadow: 0 9px 20px rgba(15, 154, 138, .22);
+  transform: translateY(-1px);
+}
+
+/* Soft navy, navigation and support */
+.practice-secondary,
+.practice-back,
+.paper-text-button,
+.paper-exit,
+.paper2-back-control,
+.paper2-formula-control,
+.paper-flag:not(.is-flagged),
+.phy-p1-secondary,
+.phy-p1-back,
+.phy-p1-nav-toggle,
+.phy-p1-flag:not(.active),
+.psv-back,
+.physics-resource-secondary,
+.physics-resource-back {
+  border: 1px solid var(--spark-btn-navy-border) !important;
+  background: var(--spark-btn-navy-soft) !important;
+  color: var(--spark-btn-navy) !important;
+  box-shadow: none;
+}
+
+.practice-secondary:hover:not(:disabled),
+.practice-back:hover:not(:disabled),
+.paper-text-button:hover:not(:disabled),
+.paper-exit:hover:not(:disabled),
+.paper2-back-control:hover:not(:disabled),
+.paper2-formula-control:hover:not(:disabled),
+.paper-flag:not(.is-flagged):hover:not(:disabled),
+.phy-p1-secondary:hover:not(:disabled),
+.phy-p1-back:hover:not(:disabled),
+.phy-p1-nav-toggle:hover:not(:disabled),
+.phy-p1-flag:not(.active):hover:not(:disabled),
+.psv-back:hover:not(:disabled),
+.physics-resource-secondary:hover:not(:disabled),
+.physics-resource-back:hover:not(:disabled) {
+  border-color: var(--spark-btn-navy) !important;
+  background: var(--spark-btn-navy-soft-hover) !important;
+  color: var(--spark-btn-navy) !important;
+  transform: translateY(-1px);
+}
+
+/* Navy, deliberate exam/navigation controls */
+.paper-next,
+.paper-submit-top,
+.paper-submit-side,
+.paper-drawer-submit,
+.paper-question-actions > button:not(:disabled):not(.practice-primary),
+.paper2-question-actions > button:not(:disabled):last-child,
+.phy-p1-submit-side,
+.phy-p1-submit-strip .phy-p1-primary,
+.phy-p1-confirm-actions .phy-p1-primary {
+  border: 1px solid var(--spark-btn-navy) !important;
+  background: var(--spark-btn-navy) !important;
+  color: #fff !important;
+  box-shadow: 0 7px 16px rgba(19, 43, 94, .16);
+}
+
+.paper-next:hover:not(:disabled),
+.paper-submit-top:hover:not(:disabled),
+.paper-submit-side:hover:not(:disabled),
+.paper-drawer-submit:hover:not(:disabled),
+.paper-question-actions > button:not(:disabled):not(.practice-primary):hover,
+.paper2-question-actions > button:not(:disabled):last-child:hover,
+.phy-p1-submit-side:hover:not(:disabled),
+.phy-p1-submit-strip .phy-p1-primary:hover:not(:disabled),
+.phy-p1-confirm-actions .phy-p1-primary:hover:not(:disabled) {
+  border-color: var(--spark-btn-navy-hover) !important;
+  background: var(--spark-btn-navy-hover) !important;
+  transform: translateY(-1px);
+}
+
+/* Previous buttons remain visible when available */
+.paper-question-actions > button:not(.paper-next):not(:disabled),
+.paper2-question-actions > button:not(:last-child):not(:disabled),
+.paper2-review-nav > button:not(:disabled) {
+  border: 1px solid var(--spark-btn-navy-border) !important;
+  background: var(--spark-btn-navy-soft) !important;
+  color: var(--spark-btn-navy) !important;
+}
+
+/* Mathematics question palette */
+.paper-nav-grid button,
+.paper-review-dots button,
+.paper2-review-nav > div > button {
+  border-color: var(--spark-btn-navy-border) !important;
+  background: var(--spark-btn-navy-soft) !important;
+  color: var(--spark-btn-navy) !important;
+  font-weight: 800;
+}
+
+.paper-nav-grid button.current,
+.paper-review-dots button.active,
+.paper2-review-nav > div > button.active {
+  border-color: var(--spark-btn-navy) !important;
+  background: var(--spark-btn-navy) !important;
+  color: #fff !important;
+  box-shadow: 0 0 0 2px rgba(19, 43, 94, .12);
+}
+
+.paper-nav-grid button.answered:not(.current),
+.paper-review-dots button.answered:not(.active),
+.paper2-review-nav > div > button.marked:not(.active) {
+  border-color: var(--spark-btn-green-border) !important;
+  background: var(--spark-btn-green-soft) !important;
+  color: var(--spark-btn-green-hover) !important;
+}
+
+/* Physics Paper 1 question palette */
+.phy-p1-question-nav button {
+  border-color: var(--spark-btn-navy-border) !important;
+  background: var(--spark-btn-navy-soft) !important;
+  color: var(--spark-btn-navy) !important;
+}
+
+.phy-p1-question-nav button.active {
+  border-color: var(--spark-btn-navy) !important;
+  background: var(--spark-btn-navy) !important;
+  color: #fff !important;
+  box-shadow: 0 0 0 2px rgba(19, 43, 94, .12) !important;
+}
+
+.phy-p1-question-nav button.answered:not(.active) {
+  border-color: var(--spark-btn-green-border) !important;
+  background: var(--spark-btn-green-soft) !important;
+  color: var(--spark-btn-green-hover) !important;
+}
+
+/* Keep review correctness semantically meaningful */
+.phy-p1-question-nav button.correct {
+  border-color: #65b87a !important;
+  background: #eaf8ee !important;
+  color: #137333 !important;
+}
+.dark .phy-p1-question-nav button.correct,
+[data-theme="dark"] .phy-p1-question-nav button.correct {
+  border-color: #4f9f68 !important;
+  background: #153521 !important;
+  color: #86efac !important;
+}
+
+/* Flag states keep amber meaning, but are visibly coloured */
+.paper-flag.is-flagged,
+.phy-p1-flag.active {
+  border-color: #d39a35 !important;
+  background: #fff2cf !important;
+  color: #8a5300 !important;
+}
+.dark .paper-flag.is-flagged,
+[data-theme="dark"] .paper-flag.is-flagged,
+.dark .phy-p1-flag.active,
+[data-theme="dark"] .phy-p1-flag.active {
+  border-color: #d39a35 !important;
+  background: #3d2d0f !important;
+  color: #fbbf24 !important;
+}
+
+/* Physics Workbook and Formula List */
+.physics-resource-section-head button {
+  min-height: 36px;
+  border: 1px solid var(--spark-btn-navy-border) !important;
+  border-radius: 9px;
+  background: var(--spark-btn-navy-soft) !important;
+  color: var(--spark-btn-navy) !important;
+  font-weight: 800;
+}
+
+.physics-resource-tabs button.active,
+.physics-workbook-topic-list button.active {
+  border-color: var(--spark-btn-navy) !important;
+  background: var(--spark-btn-navy) !important;
+  color: #fff !important;
+}
+
+/* Pressed state */
+.practice-primary:active:not(:disabled),
+.practice-secondary:active:not(:disabled),
+.practice-back:active:not(:disabled),
+.paper-start-button:active:not(:disabled),
+.paper-text-button:active:not(:disabled),
+.paper-exit:active:not(:disabled),
+.paper-next:active:not(:disabled),
+.paper-submit-top:active:not(:disabled),
+.paper-submit-side:active:not(:disabled),
+.paper2-back-control:active:not(:disabled),
+.paper2-formula-control:active:not(:disabled),
+.phy-p1-primary:active:not(:disabled),
+.phy-p1-secondary:active:not(:disabled),
+.phy-p1-back:active:not(:disabled),
+.psv-back:active:not(:disabled),
+.physics-resource-primary:active:not(:disabled),
+.physics-resource-secondary:active:not(:disabled),
+.physics-resource-back:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+/* Disabled means unavailable, not another action type */
+.practice-primary:disabled,
+.practice-secondary:disabled,
+.practice-back:disabled,
+.paper-start-button:disabled,
+.paper-text-button:disabled,
+.paper-exit:disabled,
+.paper-next:disabled,
+.paper-submit-top:disabled,
+.paper-submit-side:disabled,
+.paper-question-actions button:disabled,
+.paper2-question-actions button:disabled,
+.paper2-review-nav button:disabled,
+.paper-nav-grid button:disabled,
+.phy-p1-primary:disabled,
+.phy-p1-secondary:disabled,
+.phy-p1-back:disabled,
+.phy-p1-nav-toggle:disabled,
+.phy-p1-question-nav button:disabled,
+.psv-back:disabled,
+.physics-resource-primary:disabled,
+.physics-resource-secondary:disabled,
+.physics-resource-back:disabled {
+  border-color: var(--spark-btn-disabled-border) !important;
+  background: var(--spark-btn-disabled-bg) !important;
+  color: var(--spark-btn-disabled-text) !important;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+/* Mobile touch comfort without making compact question palettes oversized */
+@media (max-width: 680px) {
+  .practice-primary,
+  .practice-secondary,
+  .practice-back,
+  .paper-start-button,
+  .paper-text-button,
+  .paper-exit,
+  .paper-next,
+  .paper-submit-top,
+  .paper-submit-side,
+  .paper2-back-control,
+  .paper2-formula-control,
+  .phy-p1-primary,
+  .phy-p1-secondary,
+  .phy-p1-back,
+  .phy-p1-nav-toggle,
+  .psv-back,
+  .physics-resource-primary,
+  .physics-resource-secondary,
+  .physics-resource-back {
+    min-height: 46px;
+  }
+
+  .paper-result-actions,
+  .paper2-start-actions,
+  .physics-resource-actions {
+    gap: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .practice-primary,
+  .practice-secondary,
+  .practice-back,
+  .paper-start-button,
+  .paper-text-button,
+  .paper-exit,
+  .paper-next,
+  .paper-submit-top,
+  .paper-submit-side,
+  .paper2-back-control,
+  .paper2-formula-control,
+  .paper-flag,
+  .phy-p1-primary,
+  .phy-p1-secondary,
+  .phy-p1-back,
+  .phy-p1-nav-toggle,
+  .phy-p1-flag,
+  .psv-back,
+  .physics-resource-primary,
+  .physics-resource-secondary,
+  .physics-resource-back {
+    transition: none !important;
+  }
+}

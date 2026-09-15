@@ -176,7 +176,7 @@ export default function PushNotificationSettings({ user, profile }) {
       <div className="push-settings-intro">
         <div className="push-settings-icon" aria-hidden="true">●</div>
         <div>
-          <h3>Phone notifications</h3>
+          <h3>Notifications</h3>
           <p>Receive important SPARK updates even when the website is not open.</p>
         </div>
       </div>
@@ -202,7 +202,7 @@ export default function PushNotificationSettings({ user, profile }) {
         <>
           <div className="push-settings-card master">
             <div>
-              <strong>Allow phone notifications</strong>
+              <strong>Allow notifications</strong>
               <span>Controls push alerts for your SPARK account.</span>
             </div>
             <Switch
