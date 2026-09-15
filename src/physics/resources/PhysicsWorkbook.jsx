@@ -75,7 +75,7 @@ export default function PhysicsWorkbook({ onBack, onOpenSection }) {
         </div>
 
         <section className="physics-workbook-guide" aria-label="How to use the Physics Workbook">
-          <div className="physics-workbook-guide-icon" aria-hidden="true">+</div>
+
           <div>
             <strong>Explore the Workbook</strong>
             <p>Select an objective, practical activity or quick check to reveal its expanded notes, explanations, examination guidance or answer.</p>

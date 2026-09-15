@@ -31,3 +31,8 @@
 .physics-resource-hero-modal h1{font-size:clamp(28px,4vw,38px)}
 .physics-formula-group-head{justify-content:flex-start;margin-bottom:10px}
 @media(max-width:680px){.physics-workbook-guide{grid-template-columns:1fr}.physics-workbook-guide-icon{width:26px;height:26px}.physics-workbook-exam-language{grid-template-columns:1fr;gap:4px}.physics-formula-modal-backdrop{padding:0}.physics-formula-modal{width:100vw;height:100dvh;max-height:100dvh;border:0;border-radius:0}.physics-formula-modal-bar{padding:12px 14px}.physics-formula-modal-close{width:38px;height:38px}.physics-resource-shell-modal{padding:12px 10px 28px}.physics-resource-hero-modal{padding:16px}.physics-resource-hero-modal .physics-resource-stats{grid-template-columns:repeat(3,1fr)}}
+
+/* SPARK PHYSICS V2.5.8 WORKBOOK GUIDE START */
+.physics-workbook-guide{display:block}
+.physics-workbook-guide-icon{display:none!important}
+/* SPARK PHYSICS V2.5.8 WORKBOOK GUIDE END */

@@ -706,3 +706,146 @@
 .dark .physics-mechanics .pm-btn:not(.secondary),
 [data-theme="dark"] .physics-mechanics .pm-btn:not(.secondary){color:#082f2b}
 /* END SPARK PHYSICS PRACTICE BUTTON SYSTEM V15.4 */
+
+/* SPARK PHYSICS V2.5.8 MOBILE LAB FIT START */
+.physics-mechanics,
+.physics-mechanics .pm-shell {
+  width:100%;
+  min-width:0;
+}
+.physics-mechanics .pm-labs-grid,
+.physics-mechanics .pm-labs-grid > *,
+.physics-mechanics .pm-interactive,
+.physics-mechanics .pm-lab-frame,
+.physics-mechanics .pm-lab-heading,
+.physics-mechanics .pm-controls-grid,
+.physics-mechanics .pm-controls-grid > *,
+.physics-mechanics .pm-control,
+.physics-mechanics .pm-metrics,
+.physics-mechanics .pm-metrics > *,
+.physics-mechanics .pm-lab-metrics,
+.physics-mechanics .pm-lab-metrics > *,
+.physics-mechanics .pm-action-row,
+.physics-mechanics .pm-challenge-row {
+  min-width:0;
+  max-width:100%;
+}
+.physics-mechanics .pm-labs-grid,
+.physics-mechanics .pm-interactive,
+.physics-mechanics .pm-lab-frame {
+  width:100%;
+}
+.physics-mechanics .pm-lab-frame {
+  overflow:hidden;
+}
+.physics-mechanics .pm-lab-heading h3,
+.physics-mechanics .pm-lab-heading p,
+.physics-mechanics .pm-lab-heading .spark-math,
+.physics-mechanics .pm-lab-heading .spark-math-prose,
+.physics-mechanics .pm-feedback,
+.physics-mechanics .pm-lab-note {
+  max-width:100%;
+  white-space:normal;
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+.physics-mechanics .pm-control > span {
+  min-width:0;
+  max-width:100%;
+  flex-wrap:wrap;
+}
+.physics-mechanics .pm-control strong,
+.physics-mechanics .pm-control output {
+  min-width:0;
+  max-width:100%;
+  overflow-wrap:anywhere;
+}
+.physics-mechanics .pm-control input[type="range"] {
+  display:block;
+  width:100%;
+  min-width:0;
+  max-width:100%;
+}
+.physics-mechanics .pm-lab-svg,
+.physics-mechanics .pm-lab-frame svg[role="img"],
+.physics-mechanics .thermal-kelvin-graph,
+.physics-mechanics .waves-graph,
+.physics-mechanics .waves-mini-graph,
+.physics-mechanics .waves-lens-svg,
+.physics-mechanics .electric-graph,
+.physics-mechanics .electric-field-svg {
+  display:block;
+  width:100%;
+  max-width:100%;
+  height:auto;
+}
+@media (max-width:760px) {
+  .physics-mechanics .pm-labs-grid {
+    grid-template-columns:minmax(0,1fr);
+  }
+  .physics-mechanics .pm-interactive {
+    border-radius:16px;
+  }
+}
+@media (max-width:560px) {
+  .physics-mechanics .pm-lab-frame {
+    padding:12px;
+  }
+  .physics-mechanics .pm-lab-heading {
+    margin-bottom:12px;
+  }
+  .physics-mechanics .pm-lab-heading h3 {
+    font-size:19px;
+  }
+  .physics-mechanics .pm-lab-heading p {
+    font-size:14px;
+    line-height:1.55;
+  }
+  .physics-mechanics .pm-controls-grid {
+    grid-template-columns:minmax(0,1fr);
+    gap:10px;
+  }
+  .physics-mechanics .pm-control {
+    padding:10px;
+  }
+  .physics-mechanics .pm-lab-svg,
+  .physics-mechanics .pm-lab-frame svg[role="img"],
+  .physics-mechanics .waves-graph,
+  .physics-mechanics .waves-mini-graph,
+  .physics-mechanics .waves-lens-svg {
+    min-height:0;
+    max-height:none;
+    height:auto;
+  }
+  .physics-mechanics .pm-metrics {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  .physics-mechanics .pm-lab-metrics {
+    grid-template-columns:minmax(0,1fr);
+  }
+  .physics-mechanics .thermal-radiation-bars > div {
+    grid-template-columns:minmax(84px,100px) minmax(0,1fr);
+  }
+  .physics-mechanics .waves-longitudinal {
+    padding-left:14px;
+    padding-right:14px;
+  }
+  .physics-mechanics .waves-echo {
+    grid-template-columns:auto minmax(0,1fr) auto;
+  }
+  .physics-mechanics .electric-field-layout,
+  .physics-mechanics .electric-graph-pair,
+  .physics-mechanics .electric-impact-grid {
+    grid-template-columns:minmax(0,1fr);
+  }
+}
+@media (max-width:380px) {
+  .physics-mechanics .pm-metrics {
+    grid-template-columns:minmax(0,1fr);
+  }
+  .physics-mechanics .waves-echo {
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+}
+/* SPARK PHYSICS V2.5.8 MOBILE LAB FIT END */

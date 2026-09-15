@@ -62,6 +62,7 @@ function PendulumLab() {
   const [length,setLength]=useState(.8),[mass,setMass]=useState(.1),[angle,setAngle]=useState(8),[n,setN]=useState(20);
   const r=useMemo(()=>buildPendulumLabModel({lengthM:length,massKg:mass,angleDeg:angle,oscillations:n}),[length,mass,angle,n]);
   const L=80+130*length/1.6, a=angle*Math.PI/180, x=280+L*Math.sin(a), y=40+L*Math.cos(a);
+  const bobRadius=16+18*((mass-.05)/.45);
   return <LabFrame title="Pendulum Lab" intro="Change one factor at a time. Notice that ideal mass changes do not change the period, while length does. Large amplitudes slightly increase the period." footer="CSEC method: measure from the point of support to the centre of the bob, release without pushing, and time several complete oscillations.">
     <div className="pm-controls-grid">
       <Slider id="pend-l" label="Length" value={length} min={.2} max={1.6} step={.05} onChange={setLength} display={`${fmt(length,2)} m`} />
@@ -70,8 +71,8 @@ function PendulumLab() {
       <Slider id="pend-n" label="Oscillations timed" value={n} min={5} max={40} step={5} onChange={setN} display={n} />
     </div>
     <Plot label="Simple pendulum with adjustable length and amplitude">
-      <line x1="210" y1="35" x2="350" y2="35" className="pm-heavy"/><line x1="280" y1="35" x2={x} y2={y} className="pm-line"/><circle cx={x} cy={y} r="18" className="pm-fill-primary"/>
-      <line x1="280" y1="35" x2="280" y2={40+L} className="pm-dash"/><text x={x+24} y={y+5} className="pm-svg-label">bob</text>
+      <line x1="210" y1="35" x2="350" y2="35" className="pm-heavy"/><line x1="280" y1="35" x2={x} y2={y} className="pm-line"/><circle cx={x} cy={y} r={bobRadius} className="pm-fill-primary"/>
+      <line x1="280" y1="35" x2="280" y2={40+L} className="pm-dash"/><text x={x+bobRadius+8} y={y+5} className="pm-svg-label">bob</text>
     </Plot>
     <div className="pm-metrics"><Metric label="Period" value={`${r.correctedPeriodS.toFixed(2)} s`} /><Metric label={`${n} oscillations`} value={`${r.totalTimeS.toFixed(1)} s`} /><Metric label="Mass effect in ideal model" value="None" tone="good" /><Metric label="Amplitude check" value={r.smallAngleApproximationSuitable ? 'Small-angle region' : `+${r.amplitudeDifferencePercent.toFixed(2)}%`} tone={r.smallAngleApproximationSuitable?'good':'warn'} /></div>
   </LabFrame>;
