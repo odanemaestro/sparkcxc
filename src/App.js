@@ -99,6 +99,7 @@ import "./theme.css";
 import "./passwordVisibility.css";
 import "./sparkRewards.css";
 import "./learningIntelligence.css";
+import "./sparkFinalButtonConsistencyV2642.css";
 import GOOGLE_ICON_B64 from "./assets/icons/google-icon.png";
 import GOOGLE_CALENDAR_ICON_B64 from "./assets/icons/google-calendar-icon.png";
 import OUTLOOK_ICON_B64 from "./assets/icons/outlook-icon.png";
@@ -929,7 +930,7 @@ function QuizEngine({ topicName, userId, onBack, onComplete, showToast }) {
                 />
                 <div style={{marginTop:10}}>
                   {!isRevealed ? (
-                    <Btn v="outline" onClick={() => revealModelAnswer(qi)}>
+                    <Btn v="outline" action="exam" onClick={() => revealModelAnswer(qi)}>
                       Reveal model answer
                     </Btn>
                   ) : (
@@ -1333,7 +1334,7 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
         {/* Previous / Next nav */}
         <div data-avoid-scrolltop style={{display:"flex",justifyContent:"space-between",marginTop:32,
           paddingTop:20,borderTop:`1px solid ${T.border}`}}>
-          <button onClick={() => {
+          <button data-spark-action="nav" onClick={() => {
             if (activeTopicIdx > 0) {
               setActiveTopicIdx(t => t - 1);
             } else if (activeSectionIdx > 0) {
@@ -4729,7 +4730,7 @@ function CancelBookingModal({ booking, onClose, onConfirm }) {
         Your tutor will be notified immediately once you cancel.
       </div>
       <div className="booking-action-modal-actions" style={{display:"flex",gap:10}}>
-        <Btn v="outline" onClick={onClose} style={{flex:1,justifyContent:"center"}}>Keep booking</Btn>
+        <Btn v="outline" action="forward-secondary" onClick={onClose} style={{flex:1,justifyContent:"center"}}>Keep booking</Btn>
         <Btn onClick={async () => { setSubmitting(true); await onConfirm(reason); setSubmitting(false); }}
           disabled={submitting || !reason.trim()} style={{flex:2,justifyContent:"center",background:T.red,borderColor:T.red}}>
           {submitting ? "Cancelling…" : "Cancel booking"}
@@ -4762,7 +4763,7 @@ function DeclineBookingModal({ booking, onClose, onConfirm }) {
         The student will see this reason on their booking.
       </div>
       <div className="booking-action-modal-actions" style={{display:"flex",gap:10}}>
-        <Btn v="outline" onClick={onClose} style={{flex:1,justifyContent:"center"}}>Keep pending</Btn>
+        <Btn v="outline" action="forward-secondary" onClick={onClose} style={{flex:1,justifyContent:"center"}}>Keep pending</Btn>
         <Btn onClick={async () => { setSubmitting(true); await onConfirm(reason); setSubmitting(false); }}
           disabled={submitting || !reason.trim()} style={{flex:2,justifyContent:"center",background:T.red,borderColor:T.red}}>
           {submitting ? "Declining…" : "Decline booking"}
@@ -4794,7 +4795,7 @@ function TutorCancelBookingModal({ booking, onClose, onConfirm }) {
         The student will see this reason and be notified right away.
       </div>
       <div className="booking-action-modal-actions" style={{display:"flex",gap:10}}>
-        <Btn v="outline" onClick={onClose} style={{flex:1,justifyContent:"center"}}>Keep session</Btn>
+        <Btn v="outline" action="forward-secondary" onClick={onClose} style={{flex:1,justifyContent:"center"}}>Keep session</Btn>
         <Btn onClick={async () => { setSubmitting(true); await onConfirm(reason); setSubmitting(false); }}
           disabled={submitting || !reason.trim()} style={{flex:2,justifyContent:"center",background:T.red,borderColor:T.red}}>
           {submitting ? "Cancelling…" : "Cancel session"}
@@ -5069,7 +5070,7 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
                 </div>
               )}
               <div style={{display:"flex",gap:10}}>
-                <Btn v="outline" onClick={() => setBookingTutor(null)} style={{flex:1,justifyContent:"center"}}>Cancel</Btn>
+                <Btn action="nav" v="outline" onClick={() => setBookingTutor(null)} style={{flex:1,justifyContent:"center"}}>Cancel</Btn>
                 <Btn onClick={confirmBooking} disabled={!date||!slot||hasClash||confirming}
                   style={{flex:2,justifyContent:"center"}}>{confirming ? "Sending request…" : "Send booking request"}</Btn>
               </div>
@@ -5441,8 +5442,8 @@ function ReviewModal({ booking, user, onClose, onSubmitted, showToast }) {
         placeholder="What did your tutor explain well? What helped you improve?" />
       <div className="review-guidance"><span>✓ Helpful and specific</span><span>✓ Be respectful</span><span>{body.length}/1000</span></div>
       <div className="review-actions">
-        <button className="cp-btn cp-btn-secondary" onClick={onClose}>Cancel</button>
-        <button className="cp-btn cp-btn-primary" onClick={submit} disabled={saving || !rating || body.trim().length < 10}>
+        <button className="cp-btn cp-btn-secondary" data-spark-action="nav" onClick={onClose}>Cancel</button>
+        <button className="cp-btn cp-btn-primary" data-spark-action="forward" onClick={submit} disabled={saving || !rating || body.trim().length < 10}>
           {saving ? "Submitting…" : "Publish review"}
         </button>
       </div>

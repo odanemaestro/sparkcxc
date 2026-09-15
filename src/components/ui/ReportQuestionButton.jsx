@@ -126,14 +126,14 @@ export default function ReportQuestionButton({
             </p>
           )}
           <div className="spark-question-report-actions" style={{ display: "flex", gap: 10, marginTop: 12, flexWrap: "wrap" }}>
-            <button type="button" onClick={handleSubmit} disabled={status === "submitting"} style={{
+            <button data-spark-action="forward" type="button" onClick={handleSubmit} disabled={status === "submitting"} style={{
               minHeight: 40, padding: "9px 15px", borderRadius: 8, border: `1px solid ${T.teal}`,
               background: T.teal, color: T.navyDeep, fontFamily: FB, fontSize: 13, fontWeight: 800,
               cursor: status === "submitting" ? "not-allowed" : "pointer", opacity: status === "submitting" ? .6 : 1
             }}>
               {status === "submitting" ? "Submitting…" : "Submit report"}
             </button>
-            <button type="button" onClick={reset} disabled={status === "submitting"} style={{
+            <button data-spark-action="nav" type="button" onClick={reset} disabled={status === "submitting"} style={{
               minHeight: 40, padding: "9px 15px", borderRadius: 8, border: `1px solid ${T.border}`,
               background: T.muted, color: T.ink, fontFamily: FB, fontSize: 13, fontWeight: 700,
               cursor: status === "submitting" ? "not-allowed" : "pointer", opacity: status === "submitting" ? .6 : 1

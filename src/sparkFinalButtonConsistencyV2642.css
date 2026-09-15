@@ -1,0 +1,171 @@
+/* SPARK Final Button Consistency V2.6.4.2
+   Final semantic button layer loaded after the base/theme styles.
+
+   Solid green  = primary positive/forward
+   Soft green   = positive preservation/secondary positive
+   Solid navy   = important non-forward action
+   Soft navy    = navigation/dismiss/support
+   Red          = destructive (left to existing destructive controls)
+   Grey         = disabled
+*/
+
+:root {
+  --spark-v264-green: var(--spark-v261-green, #0f9a8a);
+  --spark-v264-green-hover: var(--spark-v261-green-hover, #0b8174);
+  --spark-v264-green-soft: var(--spark-v2621-green-soft, #e1f6f1);
+  --spark-v264-green-soft-hover: var(--spark-v2621-green-soft-hover, #d3f0e9);
+  --spark-v264-green-soft-border: var(--spark-v2621-green-soft-border, #7ccfc3);
+  --spark-v264-green-soft-text: var(--spark-v2621-green-soft-text, #087d70);
+
+  --spark-v264-navy: var(--spark-v261-navy, #132b5e);
+  --spark-v264-navy-hover: var(--spark-v261-navy-hover, #0c214d);
+  --spark-v264-navy-soft: var(--spark-v2621-navy-soft, #e4ecf7);
+  --spark-v264-navy-soft-hover: var(--spark-v2621-navy-soft-hover, #d8e4f3);
+  --spark-v264-navy-border: var(--spark-v2621-navy-border, #aebfd8);
+
+  --spark-v264-disabled-bg: var(--spark-v261-disabled-bg, #eef2f6);
+  --spark-v264-disabled-text: var(--spark-v261-disabled-text, #94a3b8);
+  --spark-v264-disabled-border: var(--spark-v261-disabled-border, #d8e0e9);
+  --spark-v264-focus: var(--spark-v261-focus, rgba(20, 184, 166, .30));
+}
+
+html[data-theme="dark"] {
+  --spark-v264-green-soft: #103b38;
+  --spark-v264-green-soft-hover: #154944;
+  --spark-v264-green-soft-border: #2a8f84;
+  --spark-v264-green-soft-text: #79e4d7;
+
+  --spark-v264-navy-soft: #1a2b47;
+  --spark-v264-navy-soft-hover: #223754;
+  --spark-v264-navy-border: #49617f;
+}
+
+/* Shared geometry for the final semantic controls. */
+[data-spark-action="forward"],
+[data-spark-action="forward-secondary"],
+[data-spark-action="exam"],
+[data-spark-action="nav"] {
+  min-height: 44px !important;
+  box-sizing: border-box !important;
+  border-radius: 11px !important;
+  font-weight: 800 !important;
+  transition:
+    background-color .16s ease,
+    border-color .16s ease,
+    color .16s ease,
+    box-shadow .16s ease,
+    transform .16s ease !important;
+}
+
+/* Primary positive action. */
+[data-spark-action="forward"] {
+  border: 1px solid var(--spark-v264-green) !important;
+  background: var(--spark-v264-green) !important;
+  color: #fff !important;
+  box-shadow: 0 7px 16px rgba(15, 154, 138, .16) !important;
+}
+
+[data-spark-action="forward"]:hover:not(:disabled) {
+  border-color: var(--spark-v264-green-hover) !important;
+  background: var(--spark-v264-green-hover) !important;
+  color: #fff !important;
+  box-shadow: 0 9px 20px rgba(15, 154, 138, .22) !important;
+  transform: translateY(-1px);
+}
+
+/* Secondary positive / keep-preserve action. */
+[data-spark-action="forward-secondary"] {
+  border: 1px solid var(--spark-v264-green-soft-border) !important;
+  background: var(--spark-v264-green-soft) !important;
+  color: var(--spark-v264-green-soft-text) !important;
+  box-shadow: none !important;
+}
+
+[data-spark-action="forward-secondary"]:hover:not(:disabled) {
+  border-color: var(--spark-v264-green) !important;
+  background: var(--spark-v264-green-soft-hover) !important;
+  color: var(--spark-v264-green-hover) !important;
+  box-shadow: 0 7px 16px rgba(15, 154, 138, .11) !important;
+  transform: translateY(-1px);
+}
+
+/* Important non-forward action, e.g. Reveal model answer. */
+[data-spark-action="exam"] {
+  border: 1px solid var(--spark-v264-navy) !important;
+  background: var(--spark-v264-navy) !important;
+  color: #fff !important;
+  box-shadow: 0 7px 16px rgba(19, 43, 94, .16) !important;
+}
+
+[data-spark-action="exam"]:hover:not(:disabled) {
+  border-color: var(--spark-v264-navy-hover) !important;
+  background: var(--spark-v264-navy-hover) !important;
+  color: #fff !important;
+  transform: translateY(-1px);
+}
+
+/* Navigation / dismiss / support action. */
+[data-spark-action="nav"] {
+  border: 1px solid var(--spark-v264-navy-border) !important;
+  background: var(--spark-v264-navy-soft) !important;
+  color: var(--spark-v264-navy) !important;
+  box-shadow: none !important;
+}
+
+[data-spark-action="nav"]:hover:not(:disabled) {
+  border-color: var(--spark-v264-navy) !important;
+  background: var(--spark-v264-navy-soft-hover) !important;
+  color: var(--spark-v264-navy) !important;
+  box-shadow: 0 6px 14px rgba(19, 43, 94, .08) !important;
+  transform: translateY(-1px);
+}
+
+/* Keep nested text/icons in semantic buttons readable. */
+[data-spark-action="forward"] *,
+[data-spark-action="forward-secondary"] *,
+[data-spark-action="exam"] *,
+[data-spark-action="nav"] * {
+  color: inherit !important;
+}
+
+/* Disabled state wins over every semantic family. */
+[data-spark-action]:disabled {
+  border-color: var(--spark-v264-disabled-border) !important;
+  background: var(--spark-v264-disabled-bg) !important;
+  color: var(--spark-v264-disabled-text) !important;
+  opacity: 1 !important;
+  box-shadow: none !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+/* Keyboard accessibility. */
+[data-spark-action]:focus-visible {
+  outline: 3px solid var(--spark-v264-focus) !important;
+  outline-offset: 2px !important;
+}
+
+/* Modal action rows stay balanced on desktop and usable on phones. */
+.booking-action-modal-actions [data-spark-action],
+.review-actions [data-spark-action] {
+  justify-content: center !important;
+}
+
+@media (max-width: 560px) {
+  .booking-action-modal-actions,
+  .review-actions {
+    gap: 10px !important;
+  }
+
+  .booking-action-modal-actions [data-spark-action],
+  .review-actions [data-spark-action] {
+    min-height: 46px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-spark-action] {
+    transition: none !important;
+    transform: none !important;
+  }
+}
