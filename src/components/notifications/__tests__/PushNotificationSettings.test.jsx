@@ -47,7 +47,7 @@ beforeEach(() => {
 
 test("shows the opt-in phone notification control", async () => {
   render(<PushNotificationSettings user={{ id: "user-1" }} profile={{ role: "student" }} />);
-  expect(await screen.findByText("Allow phone notifications")).toBeInTheDocument();
+  expect(await screen.findByText("Allow notifications")).toBeInTheDocument();
 });
 
 test("explains the iPhone Home Screen requirement", async () => {
