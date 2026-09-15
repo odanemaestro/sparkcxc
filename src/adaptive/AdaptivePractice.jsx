@@ -14,6 +14,7 @@ import { loadQuestionManifest, loadQuestionSet } from "./questionBank";
 import { buildAdaptiveSession, skillMastery } from "./adaptiveEngine";
 import { fetchAttempts, upsertSkillProgress } from "./persistence";
 import { adaptiveQuestionUsesWorking, gradeAdaptiveResponse } from "./adaptiveCxcGrader";
+import { adaptiveSessionStorageKey, clearAdaptiveSession, readAdaptiveSession, rebuildAdaptiveSession, writeAdaptiveSession } from "./adaptiveSessionPersistence";
 import { answerEvidenceForSelfAssessment, canonicalOptionKey, recordAnswerObservation } from "../grading/answerIntelligence";
 import { adaptiveOptionDisplayText } from "./adaptiveOptionPresentation";
 import ReportQuestionButton from "../components/ui/ReportQuestionButton";
@@ -64,16 +65,26 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
   const [selectedTopic, setSelectedTopic] = useState("");
   const [savedAttempts, setSavedAttempts] = useState([]);
   const [dbMessage, setDbMessage] = useState("");
+  const [sessionHydrated, setSessionHydrated] = useState(false);
+  const storageKey = adaptiveSessionStorageKey(userId);
   const requestedSkill = new URLSearchParams(window.location.search).get("skill");
 
   useEffect(() => {
+    let cancelled = false;
     loadQuestionManifest().then(m => {
+      if (cancelled) return;
       setManifest(m);
-      const area = m.areas?.[0];
+
+      const saved = readAdaptiveSession(storageKey);
+      const savedArea = m.areas?.find(item => item.name === saved?.selectedArea);
+      const savedTopic = savedArea?.topics?.find(item => item.name === saved?.selectedTopic);
+      const area = savedArea || m.areas?.[0];
+
       setSelectedArea(area?.name || "");
-      setSelectedTopic(area?.topics?.[0]?.name || "");
+      setSelectedTopic(savedTopic?.name || area?.topics?.[0]?.name || "");
     });
-  }, []);
+    return () => { cancelled = true; };
+  }, [storageKey]);
 
   useEffect(() => {
     let cancelled = false;
@@ -90,9 +101,91 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
   }, [supabase, userId]);
 
   useEffect(() => {
-    if (manifest && requestedSkill) start();
+    let cancelled = false;
+
+    async function restoreActiveSession() {
+      if (!manifest || !selectedArea || !selectedTopic) return;
+
+      const saved = readAdaptiveSession(storageKey);
+      if (!saved || saved.selectedArea !== selectedArea || saved.selectedTopic !== selectedTopic) {
+        setSessionHydrated(true);
+        return;
+      }
+
+      const questions = await loadQuestionSet(saved.selectedArea, saved.selectedTopic);
+      if (cancelled) return;
+
+      const restored = rebuildAdaptiveSession(saved, questions);
+      if (!restored) {
+        clearAdaptiveSession(storageKey);
+        setSessionHydrated(true);
+        return;
+      }
+
+      setSession(restored.session);
+      setIndex(restored.index);
+      setWorking(restored.working);
+      setAnswer(restored.answer);
+      setSubmitted(restored.submitted);
+      setLastCorrect(restored.lastCorrect);
+      setVerdict(restored.verdict);
+      setGradeResult(restored.gradeResult);
+      setSelfAssessed(restored.selfAssessed);
+      setScore(restored.score);
+      setAttempts(restored.attempts);
+      setSessionHydrated(true);
+    }
+
+    restoreActiveSession().catch(error => {
+      console.warn("Could not restore Adaptive Practice session:", error);
+      if (!cancelled) {
+        clearAdaptiveSession(storageKey);
+        setSessionHydrated(true);
+      }
+    });
+
+    return () => { cancelled = true; };
+  }, [manifest, selectedArea, selectedTopic, storageKey]);
+
+  useEffect(() => {
+    if (!sessionHydrated || session.length === 0) return;
+    writeAdaptiveSession(storageKey, {
+      selectedArea,
+      selectedTopic,
+      session,
+      index,
+      working,
+      answer,
+      submitted,
+      lastCorrect,
+      verdict,
+      gradeResult,
+      selfAssessed,
+      score,
+      attempts,
+    });
+  }, [
+    sessionHydrated,
+    storageKey,
+    selectedArea,
+    selectedTopic,
+    session,
+    index,
+    working,
+    answer,
+    submitted,
+    lastCorrect,
+    verdict,
+    gradeResult,
+    selfAssessed,
+    score,
+    attempts,
+  ]);
+
+  useEffect(() => {
+    if (manifest && requestedSkill && sessionHydrated && session.length === 0) start();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [manifest, requestedSkill]);
+  }, [manifest, requestedSkill, sessionHydrated]);
 
   const area = manifest?.areas?.find(a => a.name === selectedArea);
 
@@ -108,7 +201,10 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
       stats[q.subtopic] = skillMastery(a);
     });
 
-    setSession(buildAdaptiveSession(usable, stats, { count: 10 }));
+    const nextSession = buildAdaptiveSession(usable, stats, { count: 10 });
+    clearAdaptiveSession(storageKey);
+    setSessionHydrated(false);
+    setSession(nextSession);
     setIndex(0);
     setWorking("");
     setAnswer("");
@@ -117,6 +213,8 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
     setGradeResult(null);
     setSelfAssessed(false);
     setScore(0);
+    setAttempts([]);
+    setSessionHydrated(true);
   }
 
   const q = session[index];
