@@ -1,0 +1,191 @@
+/* SPARK Study + Practice Consistency V2.6.1
+   Green = forward learning
+   Soft navy = navigation/support
+   Solid navy = deliberate exam control
+   Green = selected study/workbook state
+   Grey = disabled
+*/
+
+:root {
+  --spark-v261-green: var(--spark-btn-green, #0f9a8a);
+  --spark-v261-green-hover: var(--spark-btn-green-hover, #0b8174);
+  --spark-v261-navy: var(--spark-btn-navy, #132b5e);
+  --spark-v261-navy-hover: var(--spark-btn-navy-hover, #0c214d);
+  --spark-v261-navy-soft: var(--spark-btn-navy-soft, #eaf0f8);
+  --spark-v261-navy-soft-hover: var(--spark-btn-navy-soft-hover, #dce7f4);
+  --spark-v261-navy-border: var(--spark-btn-navy-border, #b9c9df);
+  --spark-v261-disabled-bg: var(--spark-btn-disabled-bg, #eef2f6);
+  --spark-v261-disabled-text: var(--spark-btn-disabled-text, #94a3b8);
+  --spark-v261-disabled-border: var(--spark-btn-disabled-border, #d8e0e9);
+  --spark-v261-focus: var(--spark-btn-focus, rgba(20, 184, 166, .30));
+}
+
+[data-spark-action] {
+  min-height: 44px;
+  box-sizing: border-box;
+  border-radius: 11px;
+  font-weight: 800;
+  transition:
+    background-color .16s ease,
+    border-color .16s ease,
+    color .16s ease,
+    box-shadow .16s ease,
+    transform .16s ease;
+}
+
+[data-spark-action="forward"] {
+  border: 1px solid var(--spark-v261-green) !important;
+  background: var(--spark-v261-green) !important;
+  color: #fff !important;
+  box-shadow: 0 7px 16px rgba(15, 154, 138, .16) !important;
+}
+
+[data-spark-action="forward"] *,
+[data-spark-action="exam"] * {
+  color: inherit !important;
+}
+
+[data-spark-action="forward"]:hover:not(:disabled) {
+  border-color: var(--spark-v261-green-hover) !important;
+  background: var(--spark-v261-green-hover) !important;
+  color: #fff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 9px 20px rgba(15, 154, 138, .22) !important;
+}
+
+[data-spark-action="nav"] {
+  border: 1px solid var(--spark-v261-navy-border) !important;
+  background: var(--spark-v261-navy-soft) !important;
+  color: var(--spark-v261-navy) !important;
+  box-shadow: none !important;
+}
+
+[data-spark-action="nav"]:hover:not(:disabled) {
+  border-color: var(--spark-v261-navy) !important;
+  background: var(--spark-v261-navy-soft-hover) !important;
+  color: var(--spark-v261-navy) !important;
+  transform: translateY(-1px);
+}
+
+[data-spark-action="exam"] {
+  border: 1px solid var(--spark-v261-navy) !important;
+  background: var(--spark-v261-navy) !important;
+  color: #fff !important;
+  box-shadow: 0 7px 16px rgba(19, 43, 94, .16) !important;
+}
+
+[data-spark-action="exam"]:hover:not(:disabled) {
+  border-color: var(--spark-v261-navy-hover) !important;
+  background: var(--spark-v261-navy-hover) !important;
+  color: #fff !important;
+  transform: translateY(-1px);
+}
+
+/* Back controls across Physics Section A-E renderers */
+.physics-mechanics .pm-btn.secondary,
+.physics-mechanics .pm-practice-back,
+.pcl-btn.secondary {
+  border: 1px solid var(--spark-v261-navy-border) !important;
+  background: var(--spark-v261-navy-soft) !important;
+  color: var(--spark-v261-navy) !important;
+  box-shadow: none !important;
+}
+
+/* Section A/E topic and learning-mode controls */
+.physics-mechanics .pm-topics .pm-topic-btn.active,
+.physics-mechanics .pm-topics .pm-topic-btn[aria-pressed="true"],
+.physics-mechanics .pm-modebar .pm-mode-btn.active,
+.physics-mechanics .pm-modebar .pm-mode-btn[aria-pressed="true"] {
+  border-color: var(--spark-v261-green) !important;
+  background: var(--spark-v261-green) !important;
+  color: #fff !important;
+}
+
+.physics-mechanics .pm-topics .pm-topic-btn:not(.active):not([aria-pressed="true"]),
+.physics-mechanics .pm-modebar .pm-mode-btn:not(.active):not([aria-pressed="true"]) {
+  border-color: var(--spark-v261-navy-border) !important;
+  background: var(--spark-v261-navy-soft) !important;
+  color: var(--spark-v261-navy) !important;
+}
+
+/* Section B/C/D course lesson renderer: active navigation is green */
+.pcl-shell nav button.active,
+.pcl-shell nav button.on,
+.pcl-shell nav button[aria-pressed="true"] {
+  border-color: var(--spark-v261-green) !important;
+  background: var(--spark-v261-green) !important;
+  color: #fff !important;
+}
+
+.pcl-shell nav button:not(.active):not(.on):not([aria-pressed="true"]) {
+  border-color: var(--spark-v261-navy-border) !important;
+  background: var(--spark-v261-navy-soft) !important;
+  color: var(--spark-v261-navy) !important;
+}
+
+/* Physics Workbook: selected section/topic now follows the same green rule */
+.physics-resource-tabs button.active,
+.physics-resource-tabs button.on,
+.physics-resource-tabs button[aria-pressed="true"],
+.physics-workbook-topic-list button.active,
+.physics-workbook-topic-list button.on,
+.physics-workbook-topic-list button[aria-pressed="true"] {
+  border-color: var(--spark-v261-green) !important;
+  background: var(--spark-v261-green) !important;
+  color: #fff !important;
+}
+
+.physics-resource-tabs button:not(.active):not(.on):not([aria-pressed="true"]),
+.physics-workbook-topic-list button:not(.active):not(.on):not([aria-pressed="true"]) {
+  border-color: var(--spark-v261-navy-border) !important;
+  background: var(--spark-v261-navy-soft) !important;
+  color: var(--spark-v261-navy) !important;
+}
+
+/* Existing resource back/support controls remain visually related */
+.physics-resource-back,
+.physics-resource-secondary,
+.physics-resource-section-head button {
+  border-color: var(--spark-v261-navy-border) !important;
+  background: var(--spark-v261-navy-soft) !important;
+  color: var(--spark-v261-navy) !important;
+}
+
+/* Accessibility */
+[data-spark-action]:focus-visible,
+.pm-topic-btn:focus-visible,
+.pm-mode-btn:focus-visible,
+.pcl-shell nav button:focus-visible,
+.physics-resource-tabs button:focus-visible,
+.physics-workbook-topic-list button:focus-visible {
+  outline: 3px solid var(--spark-v261-focus) !important;
+  outline-offset: 2px;
+}
+
+[data-spark-action]:disabled,
+.pm-topic-btn:disabled,
+.pm-mode-btn:disabled,
+.pcl-shell nav button:disabled,
+.physics-resource-tabs button:disabled,
+.physics-workbook-topic-list button:disabled {
+  border-color: var(--spark-v261-disabled-border) !important;
+  background: var(--spark-v261-disabled-bg) !important;
+  color: var(--spark-v261-disabled-text) !important;
+  opacity: 1 !important;
+  box-shadow: none !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+@media (max-width: 680px) {
+  [data-spark-action] {
+    min-height: 46px;
+    max-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-spark-action] {
+    transition: none !important;
+  }
+}

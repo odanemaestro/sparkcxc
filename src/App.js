@@ -1,4 +1,7 @@
 import "./sparkStudyPracticeButtonsV259.css";
+import "./sparkStudyPracticeConsistencyV261.css";
+import "./sparkStudyPracticeVisualPolishV2621.css";
+import "./studyPracticeSemanticsV261";
 // ============================================================================
 // SPARK - CSEC learning platform
 // Done by: Odane Robinson
@@ -2263,7 +2266,7 @@ const savedEmail = localStorage.getItem("spark_verification_email");
             <Btn onClick={submit} disabled={loading} full>{loading ? "Please wait…" : mode==="signup" ? role==="tutor" ? "Verify email to continue →" : "Create account" : "Log in"}</Btn>
             <div style={{display:"flex",alignItems:"center",gap:10,margin:"18px 0",color:T.textMuted,fontSize:12}}><div style={{height:1,background:T.border,flex:1}}/><span>OR</span><div style={{height:1,background:T.border,flex:1}}/></div>
             <button className="spark-google-auth-button" onClick={continueWithGoogle} disabled={loading}
-              style={{width:"100%",padding:"10px 13px",border:`1.5px solid ${T.border}`,borderRadius:999,
+              style={{width:"100%",padding:"12px 24px",border:`1.5px solid ${T.border}`,borderRadius:T.rSm,
                 background:T.paper,color:T.ink,cursor:loading?"not-allowed":"pointer",fontFamily:FB,fontWeight:600,fontSize:14,
                 display:"flex",alignItems:"center",justifyContent:"center",gap:10}}>
               <img src={GOOGLE_ICON_B64} alt="" width={18} height={18} style={{flexShrink:0}}/>

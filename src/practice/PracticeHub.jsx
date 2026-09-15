@@ -135,7 +135,7 @@ export default function PracticeHub({ supabase, userId, setView, physicsEnabled 
           <h2>Adaptive Practice</h2>
           <p>Select a topic and answer questions based on your recent performance.</p>
           <div className="practice-specs-line">Topic focused <span>·</span> Worked solutions <span>·</span> Immediate feedback</div>
-          <div className="practice-card-actions"><button type="button" className="practice-secondary" onClick={() => setMode("adaptive")}>Open adaptive practice</button></div>
+          <div className="practice-card-actions"><button type="button" className="practice-primary" onClick={() => setMode("adaptive")}>Open adaptive practice</button></div>
         </article>
       </section>
 
