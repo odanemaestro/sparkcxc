@@ -56,7 +56,7 @@ export function methodOfMixturesFinalTemperature({hotMassKg,hotSpecificHeat,cold
   return (mh*ch*th+mc*cc*tc)/(mh*ch+mc*cc);
 }
 
-export function heatingCurveState({energyJ,massKg=1,specificHeatSolid=2100,latentFusion=334000,specificHeatLiquid=4200,latentVaporization=2260000,startTempC=-20,meltingTempC=0,boilingTempC=100}){
+export function heatingCurveState({energyJ,massKg=1,specificHeatSolid=2100,latentFusion=334000,specificHeatLiquid=4200,latentVaporization=2260000,specificHeatVapour=2000,startTempC=-20,meltingTempC=0,boilingTempC=100}){
   let e=nonNegative(energyJ,'energyJ'); const m=positive(massKg,'massKg');
   const qWarmSolid=m*positive(specificHeatSolid,'specificHeatSolid')*(meltingTempC-startTempC);
   if(e<qWarmSolid) return {phase:'solid warming',temperatureC:startTempC+e/(m*specificHeatSolid),stageEnergyJ:e};
@@ -66,7 +66,9 @@ export function heatingCurveState({energyJ,massKg=1,specificHeatSolid=2100,laten
   if(e<qWarmLiquid) return {phase:'liquid warming',temperatureC:meltingTempC+e/(m*specificHeatLiquid),stageEnergyJ:e};
   e-=qWarmLiquid; const qBoil=m*positive(latentVaporization,'latentVaporization');
   if(e<qBoil) return {phase:'boiling',temperatureC:boilingTempC,fractionChanged:e/qBoil,stageEnergyJ:e};
-  return {phase:'vapour after boiling',temperatureC:boilingTempC,stageEnergyJ:e-qBoil};
+  e-=qBoil;
+  const cVapour=positive(specificHeatVapour,'specificHeatVapour');
+  return {phase:'vapour warming',temperatureC:boilingTempC+e/(m*cVapour),stageEnergyJ:e};
 }
 
 export function radiationSurfaceModel({temperatureC=80,surface='dull-black'}){
