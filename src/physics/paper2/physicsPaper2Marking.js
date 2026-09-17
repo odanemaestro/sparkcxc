@@ -395,7 +395,7 @@ const CALCULATED_TABLE_RULES = Object.freeze({
     A2: Object.freeze({ mode: "all", cells: Object.freeze(["1:3"]) }),
     A3: Object.freeze({ mode: "all", cells: Object.freeze(["3:2"]) }),
     A4: Object.freeze({ mode: "all", cells: Object.freeze(["3:3"]) }),
-    B1: Object.freeze({ mode: "decimal_places", cells: Object.freeze(["1:2", "1:3", "3:2", "3:3"]), places: 3 }),
+    B1: Object.freeze({ mode: "column_decimal_places", cells: Object.freeze(["1:2", "1:3", "3:2", "3:3"]) }),
   }),
   "phy-p2-4-q1::a": Object.freeze({
     M1: Object.freeze({ mode: "count", cells: Object.freeze(["1:2", "3:2", "4:2"]), marksPerHit: 1 }),
@@ -459,7 +459,21 @@ function decimalPlacesEntered(value) {
   return match[1]?.length || 0;
 }
 
-function calculatedTableCriterionAward(key, response, criterion, marks) {
+function sourceColumnDecimalPlaces(part, cell) {
+  const [, columnText] = String(cell || "").split(":");
+  const column = Number(columnText);
+  if (!Number.isInteger(column)) return null;
+  const rows = part?.table?.rows || [];
+  const places = rows
+    .map(row => row?.[column])
+    .filter(value => String(value ?? "").trim())
+    .map(decimalPlacesEntered)
+    .filter(Number.isInteger);
+  if (!places.length) return null;
+  return places.every(value => value === places[0]) ? places[0] : null;
+}
+
+function calculatedTableCriterionAward(key, part, response, criterion, marks) {
   const rule = CALCULATED_TABLE_RULES[key]?.[criterion.code];
   const model = CALCULATED_TABLE_MODELS[key];
   if (!rule || !model) return null;
@@ -471,15 +485,18 @@ function calculatedTableCriterionAward(key, response, criterion, marks) {
     const hits = rule.cells.filter(hit).length;
     return Math.min(marks, hits * Math.max(1, Number(rule.marksPerHit || 1)));
   }
-  if (rule.mode === "decimal_places") {
-    return rule.cells.every(cell => hit(cell) && decimalPlacesEntered(table[cell]) === Number(rule.places)) ? marks : 0;
+  if (rule.mode === "column_decimal_places") {
+    return rule.cells.every(cell => {
+      const target = sourceColumnDecimalPlaces(part, cell);
+      return Number.isInteger(target) && hit(cell) && decimalPlacesEntered(table[cell]) === target;
+    }) ? marks : 0;
   }
   return null;
 }
 
 function tableCriterionAward(question, part, response, criterion, marks) {
   const key = physicsPaper2PartKey(question.question_id, part.id);
-  const calculatedAward = calculatedTableCriterionAward(key, response, criterion, marks);
+  const calculatedAward = calculatedTableCriterionAward(key, part, response, criterion, marks);
   if (calculatedAward !== null) return calculatedAward;
   const expectations = TABLE_EXPECTATIONS[key];
   if (!expectations) return null;
@@ -628,15 +645,81 @@ function graphCriterionAward(part, response, criterion, marks) {
   return null;
 }
 
-function automaticCriterionAward({ question, part, criterion, response, partAutomaticCorrect }) {
+
+function partRequiresWorking(part = {}, question = {}) {
+  if (part.requireWorking === true || part.requiresWorking === true) return true;
+  const text = [
+    part.prompt,
+    question.stem,
+    part.markerNote,
+    ...(part.criteria || []).map(item => item?.description),
+  ].filter(Boolean).join(" ");
+  return /\bshow\s+(?:all\s+|your\s+)?working\b|\bshow\s+all\s+(?:steps|calculations)\b|\bprove\b|\bshow\s+that\b|\bjustify\b|\bgive\s+(?:a\s+)?reason\b|\btriangle\s+drawn\s+on\s+the\s+line\b|\buse\s+(?:the|your)\s+graph\b|\breads?\s+[^.]{0,40}\bline\b/i.test(text);
+}
+
+function valueCorrectIgnoringMissingUnit(response, check, context = "") {
+  const expected = Number(check?.value);
+  const expectedUnit = check?.unit || "";
+  if (!Number.isFinite(expected) || !expectedUnit || responseHasPhysicsUnit(response, expectedUnit)) return false;
+  const quantity = quantityForPaper2Unit(expectedUnit);
+  if (quantity && physicsResponseFragments(response).some(fragment => parsePhysicsQuantity(fragment, quantity).unit)) return false;
+  const range = explicitAcceptRange(context);
+  const relativeTolerance = Math.max(0, Number(check?.tolerance || 0));
+  const scale = Math.max(1, Math.abs(expected));
+  return numericValuesInPhysicsResponse(response).some(value => {
+    if (range && value >= range[0] && value <= range[1]) return true;
+    return Math.abs(value - expected) <= Math.max(1e-9, relativeTolerance * scale);
+  });
+}
+
+const PAPER2_ECF_RULES = Object.freeze({
+  "phy-p2-1-q1::d::A1": Object.freeze({ sources: ["c"], transform: values => values[0] / 18, unit: "kPa", tolerance: 0.04 }),
+  "phy-p2-1-q2::bii::A1": Object.freeze({ sources: ["bi"], transform: values => 2.7 / values[0], unit: "kg m⁻³", tolerance: 0.02 }),
+  "phy-p2-1-q3::bii::A1": Object.freeze({ sources: ["bi"], transform: values => values[0] / 40, unit: "W", tolerance: 0.02 }),
+  "phy-p2-1-q3::c::A1": Object.freeze({ sources: ["bii"], transform: values => values[0] / 2500 * 100, unit: "", tolerance: 0.02 }),
+  "phy-p2-1-q5::d::A1": Object.freeze({ sources: ["c"], transform: values => values[0] + 2, unit: "Ω", tolerance: 0.02 }),
+  "phy-p2-1-q5::e::A1": Object.freeze({ sources: ["d"], transform: values => 12 / values[0], unit: "A", tolerance: 0.02 }),
+  "phy-p2-1-q5::f::A1": Object.freeze({ sources: ["e"], transform: values => values[0] * 2, unit: "V", tolerance: 0.02 }),
+  "phy-p2-2-q1::d::A2": Object.freeze({ sources: ["c"], transform: values => 4 * Math.PI ** 2 / values[0], unit: "m s⁻²", tolerance: 0.05 }),
+  "phy-p2-2-q3::biii::A1": Object.freeze({ sources: ["bi", "bii"], transform: values => values[0] + values[1], unit: "J", tolerance: 0.02 }),
+  "phy-p2-3-q2::c::A1": Object.freeze({ sources: ["b"], transform: values => 1200 * values[0], unit: "N", tolerance: 0.02 }),
+  "phy-p2-4-q1::d::A2": Object.freeze({ sources: ["c"], transform: values => values[0] / 1e-6 / 10, unit: "kg m⁻³", tolerance: 0.05 }),
+  "phy-p2-4-q3::d::A1": Object.freeze({ sources: ["c"], transform: values => values[0] + 273, unit: "K", tolerance: 0.02 }),
+});
+
+function ecfExpectedCheck(question, part, criterion, responses) {
+  const rule = PAPER2_ECF_RULES[`${question.question_id}::${part.id}::${criterion.code}`];
+  if (!rule) return null;
+  const values = rule.sources.map(sourcePart => {
+    const source = responses[physicsPaper2PartKey(question.question_id, sourcePart)] || {};
+    const numbers = numericValuesInPhysicsResponse(responseText(source));
+    return numbers.length ? numbers[0] : null;
+  });
+  if (values.some(value => !Number.isFinite(value))) return null;
+  const value = Number(rule.transform(values));
+  if (!Number.isFinite(value)) return null;
+  return { type: "value", value, tolerance: rule.tolerance, unit: rule.unit };
+}
+
+function automaticCriterionAward({ question, part, criterion, response, partAutomaticCorrect, ecfCheck = null }) {
   const marks = Math.max(0, Number(criterion.marks || 0));
   if (!marks) return { earned: 0, correct: true, why: "No marks attached to this criterion." };
 
   if (criterion.check) {
-    const correct = criterion.check.type === "value"
-      ? physicsValueCheck(response.answer || "", criterion.check, `${criterion.description || ""} ${part.markerNote || ""}`)
+    const context = `${criterion.description || ""} ${part.markerNote || ""}`;
+    const canonicalCorrect = criterion.check.type === "value"
+      ? physicsValueCheck(response.answer || "", criterion.check, context)
       : false;
-    return { earned: correct ? marks : 0, correct, why: correct ? "Criterion met." : "The required value or unit was not established." };
+    const ecfCorrect = !canonicalCorrect && ecfCheck
+      ? physicsValueCheck(response.answer || "", ecfCheck, context)
+      : false;
+    const correct = canonicalCorrect || ecfCorrect;
+    return { earned: correct ? marks : 0, correct, why: correct ? (ecfCorrect ? "Criterion met by follow-through from the candidate's earlier value." : "Criterion met.") : "The required value or unit was not established." };
+  }
+
+  if (ecfCheck) {
+    const correct = physicsValueCheck(response.answer || "", ecfCheck, `${criterion.description || ""} ${part.markerNote || ""}`);
+    if (correct) return { earned: marks, correct: true, why: "Accuracy criterion met by follow-through from the candidate's earlier value." };
   }
 
   const graphAward = graphCriterionAward(part, response, criterion, marks);
@@ -663,7 +746,7 @@ function automaticCriterionAward({ question, part, criterion, response, partAuto
 
   // SPARK follows the paper's own convention: a correct final numerical answer
   // implies the method unless the question explicitly requires the working.
-  if (part?.answerType === "value" && partAutomaticCorrect) {
+  if (part?.answerType === "value" && partAutomaticCorrect && !partRequiresWorking(part, question)) {
     return { earned: marks, correct: true, why: "Correct final answer implies the method for this part." };
   }
 
@@ -694,6 +777,7 @@ export function markPhysicsPaper2(paper, responses = {}, legacyManualAwards = {}
   let automaticPossible = 0;
   let authoredManualCriteria = 0;
   let authoredManualMarks = 0;
+  const unitPenaltyApplied = new Set();
 
   const criteria = rows.map(({ question, part, criterion }) => {
     const id = criterionId(question, part, criterion);
@@ -703,23 +787,43 @@ export function markPhysicsPaper2(paper, responses = {}, legacyManualAwards = {}
       authoredManualCriteria += 1;
       authoredManualMarks += marks;
     }
+    const ecfCheck = ecfExpectedCheck(question, part, criterion, responses);
     const evaluation = automaticCriterionAward({
       question,
       part,
       criterion,
       response,
       partAutomaticCorrect: partAutoState.get(physicsPaper2PartKey(question.question_id, part.id)) === true,
+      ecfCheck,
     });
+    let adjustedEvaluation = evaluation;
+    const unitCheck = ecfCheck || criterion.check;
+    if (unitCheck?.type === "value" && unitCheck.unit && evaluation.earned < marks) {
+      const context = `${criterion.description || ""} ${part.markerNote || ""}`;
+      const answer = response.answer || "";
+      if (valueCorrectIgnoringMissingUnit(answer, unitCheck, context)) {
+        const first = !unitPenaltyApplied.has(question.question_id);
+        if (first) unitPenaltyApplied.add(question.question_id);
+        const earned = first ? Math.max(0, marks - 1) : marks;
+        adjustedEvaluation = {
+          earned,
+          correct: earned === marks,
+          why: first
+            ? "Numerical value is correct. One mark was withheld for the first missing unit in this question."
+            : "Numerical value is correct. The missing-unit penalty was already applied earlier in this question.",
+        };
+      }
+    }
     automaticPossible += marks;
-    automaticEarned += Number(evaluation.earned || 0);
+    automaticEarned += Number(adjustedEvaluation.earned || 0);
     return {
       id, question, part, criterion,
       mode: "automatic",
       reviewed: true,
-      earned: Number(evaluation.earned || 0),
+      earned: Number(adjustedEvaluation.earned || 0),
       possible: marks,
-      correct: evaluation.correct,
-      why: evaluation.why,
+      correct: adjustedEvaluation.correct,
+      why: adjustedEvaluation.why,
       authoredManual: !criterion.check,
     };
   });

@@ -86,10 +86,28 @@ function WaveBuilder({ meta }) {
   const [frequency,setFrequency]=useState(5),[wavelength,setWavelength]=useState(.4),[type,setType]=useState('transverse');
   const r=useMemo(()=>buildWaveLabModel({frequencyHz:frequency,wavelengthM:wavelength,type}),[frequency,wavelength,type]);
   const path=useMemo(()=>wavePath({mode:'position',frequency,wavelength,amplitude:.08,width:650,height:180}),[frequency,wavelength]);
+  const longitudinalParticles=useMemo(()=>{
+    const count=72,left=34,right=616,domainM=2,raw=[0];
+    for(let i=1;i<count;i+=1){
+      const positionM=domainM*(i-.5)/(count-1);
+      const gap=1+.62*Math.sin(2*Math.PI*positionM/wavelength);
+      raw.push(raw[i-1]+gap);
+    }
+    const total=raw[raw.length-1]||1;
+    return raw.map(value=>left+(right-left)*value/total);
+  },[wavelength]);
   return <Shell meta={meta} note="For a wave, v = fλ. Particle vibration is perpendicular to travel for a transverse wave and parallel to travel for a longitudinal wave.">
     <Segment options={[{value:'transverse',label:'Transverse'},{value:'longitudinal',label:'Longitudinal'}]} value={type} setValue={setType}/>
     <div className="pm-controls-grid"><Range label="Frequency" value={frequency} setValue={setFrequency} min={1} max={20} unit=" Hz"/><Range label="Wavelength" value={wavelength} setValue={setWavelength} min={.1} max={2} step={.05} unit=" m"/></div>
-    {type==='transverse' ? <svg className="waves-mini-graph" viewBox="0 0 650 180" role="img" aria-label="Transverse wave preview"><line className="wave-axis" x1="62" y1="76" x2="626" y2="76"/><path className="wave-curve" d={path}/><text x="510" y="105">direction of travel →</text></svg> : <div className="waves-longitudinal" aria-label="Longitudinal compression and rarefaction model">{Array.from({length:32},(_,i)=><i key={i} style={{marginRight:(i%8===5||i%8===6)?8:1}}/>)}<span>compression</span><span>rarefaction</span></div>}
+    {type==='transverse' ? <svg className="waves-mini-graph" viewBox="0 0 650 180" role="img" aria-label="Transverse wave preview"><line className="wave-axis" x1="62" y1="76" x2="626" y2="76"/><path className="wave-curve" d={path}/><text x="510" y="105">direction of travel →</text></svg> : <svg className="waves-mini-graph" viewBox="0 0 650 180" role="img" aria-label={`Longitudinal wave snapshot at ${frequency} hertz with wavelength ${wavelength} metres. Closer particle spacing shows compressions and wider spacing shows rarefactions.`}>
+          <text x="42" y="26">closer spacing = compression</text>
+          <text x="362" y="26">wider spacing = rarefaction</text>
+          {longitudinalParticles.map((x,i)=><line key={i} x1={x} y1="50" x2={x} y2="112" style={{stroke:'var(--pm-primary)',strokeWidth:3,strokeLinecap:'round'}}/>)}
+          <text x="42" y="154">particle vibration left/right</text>
+          <text x="250" y="154">{`wavelength = ${fmt(wavelength,2)} m`}</text>
+          <text x="420" y="154">{`f = ${frequency} Hz`}</text>
+          <text x="530" y="154">travel -&gt;</text>
+        </svg>}
     <Metrics items={[["Wave speed",`${fmt(r.speedMps)} m/s`],["Period",`${fmt(r.periodS,3)} s`],["Particle motion",r.particleMotion]]}/>
   </Shell>;
 }
