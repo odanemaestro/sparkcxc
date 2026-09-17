@@ -143,7 +143,75 @@ function WaveGraphs({ meta }) {
   </Shell>;
 }
 
-function Echo({ meta }) { const [time,setTime]=useState(.5),[speed,setSpeed]=useState(340); const r=useMemo(()=>buildEchoLabModel({speedMps:speed,timeS:time}),[speed,time]); return <Shell meta={meta} note="The measured echo time covers the outward and return journeys, so one-way distance = vt/2."><div className="pm-controls-grid"><Range label="Echo return time" value={time} setValue={setTime} min={.1} max={2} step={.05} unit=" s"/><Range label="Wave speed" value={speed} setValue={setSpeed} min={300} max={1600} step={10} unit=" m/s"/></div><div className="waves-echo"><span>source</span><i/><span>reflector</span></div><Metrics items={[["Round-trip path",`${fmt(r.totalPathM)} m`],["Distance to reflector",`${fmt(r.distanceM)} m`]]}/></Shell>; }
+function Echo({ meta }) {
+  const [time,setTime]=useState(.5),[speed,setSpeed]=useState(340);
+  const r=useMemo(()=>buildEchoLabModel({speedMps:speed,timeS:time}),[speed,time]);
+
+  const sourceX=72,minReflectorX=235,maxReflectorX=610;
+  const minDistance=15,maxDistance=1600;
+  const distanceRatio=Math.max(0,Math.min(1,(r.distanceM-minDistance)/(maxDistance-minDistance)));
+  const reflectorX=minReflectorX+(maxReflectorX-minReflectorX)*distanceRatio;
+  const midpoint=(sourceX+reflectorX)/2;
+  const outwardPulseX=sourceX+(reflectorX-sourceX)*.68;
+  const returnPulseX=sourceX+(reflectorX-sourceX)*.38;
+
+  return <Shell meta={meta} note="The measured echo time covers the outward and return journeys, so one-way distance = vt/2.">
+    <div className="pm-controls-grid">
+      <Range label="Echo return time" value={time} setValue={setTime} min={.1} max={2} step={.05} unit=" s"/>
+      <Range label="Wave speed" value={speed} setValue={setSpeed} min={300} max={1600} step={10} unit=" m/s"/>
+    </div>
+
+    <svg
+      className="waves-echo-visual"
+      viewBox="0 0 650 190"
+      role="img"
+      aria-label={`Echo ranging model. Source to reflector distance ${fmt(r.distanceM)} metres. Round-trip path ${fmt(r.totalPathM)} metres.`}
+    >
+      <defs>
+        <marker id="echo-arrow-out" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto">
+          <path d="M0 0 L10 5 L0 10 Z" className="echo-arrow-out-fill"/>
+        </marker>
+        <marker id="echo-arrow-return" viewBox="0 0 10 10" refX="8" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto">
+          <path d="M0 0 L10 5 L0 10 Z" className="echo-arrow-return-fill"/>
+        </marker>
+      </defs>
+
+      <g className="echo-source">
+        <circle cx={sourceX} cy="88" r="16"/>
+        <path d={`M ${sourceX+17} 76 Q ${sourceX+31} 88 ${sourceX+17} 100`}/>
+        <path d={`M ${sourceX+23} 69 Q ${sourceX+45} 88 ${sourceX+23} 107`}/>
+      </g>
+
+      <g className="echo-reflector" style={{transform:`translateX(${reflectorX}px)`}}>
+        <rect x="-5" y="48" width="10" height="80" rx="3"/>
+        <line x1="-14" y1="48" x2="14" y2="48"/>
+        <line x1="-14" y1="128" x2="14" y2="128"/>
+      </g>
+
+      <line className="echo-path echo-path-out" x1={sourceX+45} y1="70" x2={reflectorX-18} y2="70" markerEnd="url(#echo-arrow-out)"/>
+      <line className="echo-path echo-path-return" x1={reflectorX-18} y1="106" x2={sourceX+45} y2="106" markerEnd="url(#echo-arrow-return)"/>
+
+      <circle className="echo-pulse echo-pulse-out" cx={outwardPulseX} cy="70" r="6"/>
+      <circle className="echo-pulse echo-pulse-return" cx={returnPulseX} cy="106" r="6"/>
+
+      <text className="echo-label echo-label-source" x={sourceX} y="137" textAnchor="middle">source</text>
+      <text className="echo-label echo-label-reflector" x={reflectorX} y="145" textAnchor="middle">reflector</text>
+      <text className="echo-label echo-label-path" x={midpoint} y="57" textAnchor="middle">outward pulse</text>
+      <text className="echo-label echo-label-path" x={midpoint} y="123" textAnchor="middle">return echo</text>
+
+      <line className="echo-distance" x1={sourceX} y1="162" x2={reflectorX} y2="162"/>
+      <line className="echo-distance-tick" x1={sourceX} y1="156" x2={sourceX} y2="168"/>
+      <line className="echo-distance-tick" x1={reflectorX} y1="156" x2={reflectorX} y2="168"/>
+      <text className="echo-distance-label" x={midpoint} y="181" textAnchor="middle">{`${fmt(r.distanceM)} m one-way`}</text>
+    </svg>
+
+    <p className="waves-control-note">
+      The diagram is scaled to the calculated one-way distance. Increasing either return time or wave speed moves the reflector farther from the source because distance = vt/2.
+    </p>
+
+    <Metrics items={[["Round-trip path",`${fmt(r.totalPathM)} m`],["Distance to reflector",`${fmt(r.distanceM)} m`]]}/>
+  </Shell>;
+}
 
 function Pitch({ meta }) {
   const [frequency,setFrequency]=useState(440),[amplitude,setAmplitude]=useState(.5);
