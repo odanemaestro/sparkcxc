@@ -83,7 +83,7 @@ export default function PhysicsSubjectView({ userId, onBack, onActivity, onEvide
             <span className="psv-section-copy">
               <span className="psv-section-status">Revision resource</span>
               <strong>SPARK Physics Workbook</strong>
-              <span>25 topics Â· 189 objectives</span>
+              <span>25 topics · 189 objectives</span>
               <small>Study notes, exam focus, formulae, worked examples, data skills, practical work, quick checks and objective-by-objective guidance.</small>
             </span>
             <span className="psv-section-arrow" aria-hidden="true"><SectionArrowIcon/></span>
@@ -109,7 +109,7 @@ export default function PhysicsSubjectView({ userId, onBack, onActivity, onEvide
                 <span className="psv-section-copy">
                   <span className="psv-section-status">Available</span>
                   <strong>{meta.title}</strong>
-                  <span>{sectionStats.topics} topics Â· {sectionStats.objectives} objectives</span>
+                  <span>{sectionStats.topics} topics · {sectionStats.objectives} objectives</span>
                   <small>{meta.detail}</small>
                 </span>
                 <span className="psv-section-arrow" aria-hidden="true"><SectionArrowIcon/></span>
