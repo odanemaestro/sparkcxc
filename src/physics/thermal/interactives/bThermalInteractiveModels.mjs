@@ -3,19 +3,9 @@ import { boyleFinalPressure, charlesFinalVolume, celsiusToKelvin, heatingCurveSt
 export function buildJouleLabModel({massKg=2,heightM=5,gNPerKg=10,efficiency=0.92,waterMassKg=0.5,specificHeat=4200}={}){const work=massKg*gNPerKg*heightM;const toWater=work*Math.max(0,Math.min(1,efficiency));return{workJ:work,toWaterJ:toWater,temperatureRiseC:toWater/(waterMassKg*specificHeat),otherJ:work-toWater};}
 export function buildGasLawLabModel({law='boyle',p1KPa=100,v1Cm3=300,v2Cm3=150,t1C=27,t2C=127}={}){
   const t1K=celsiusToKelvin(t1C),t2K=celsiusToKelvin(t2C);
-  if(law==='boyle'){
-    const p2Pa=boyleFinalPressure({p1:p1KPa*1000,v1:v1Cm3,v2:v2Cm3});
-    return{law,p2KPa:p2Pa/1000,v2Cm3,t1K,t2K};
-  }
-  if(law==='charles'){
-    const v2=charlesFinalVolume({v1:v1Cm3,t1K,t2K});
-    return{law,p2KPa:p1KPa,v2Cm3:v2,t1K,t2K};
-  }
-  if(law==='pressure'){
-    const p2Pa=pressureLawFinalPressure({p1:p1KPa*1000,t1K,t2K});
-    return{law,p2KPa:p2Pa/1000,v2Cm3:v1Cm3,t1K,t2K};
-  }
-  throw new RangeError(`unknown gas law ${law}`);
+  if(law==='boyle'){const p2Pa=boyleFinalPressure({p1:p1KPa*1000,v1:v1Cm3,v2:v2Cm3});return{law,p2KPa:p2Pa/1000,v2Cm3,t1K,t2K};}
+  if(law==='pressure'){const p2Pa=pressureLawFinalPressure({p1:p1KPa*1000,t1K,t2K});return{law,p2KPa:p2Pa/1000,v2Cm3:v1Cm3,t1K,t2K};}
+  const v2=charlesFinalVolume({v1:v1Cm3,t1K,t2K});return{law,p2KPa:p1KPa,v2Cm3:v2,t1K,t2K};
 }
 export function buildKelvinGraphModel({slope=0.35,tempsC=[-200,-100,0,100]}={}){const points=tempsC.map(c=>({c,k:celsiusToKelvin(c),value:slope*celsiusToKelvin(c)}));return{points,interceptC:-273,note:'The zero intercept is an extrapolation of the idealised gas-law trend. Real gases condense before the line can be followed physically to zero pressure or volume.'};}
 export function buildExpansionLabModel(input={}){return thermalExpansionModel(input);}

@@ -96,6 +96,27 @@ describe('Physics comprehensive lab and Paper 1 audit V2.4.4', () => {
     expect(screen.getByText('Safety')).toBeInTheDocument();
   });
 
+
+  test('Thermal Gas Lab exposes Pressure Law with absolute-temperature comparison', () => {
+    render(<ThermalInteractiveLab interactiveId="b2-gas-laws"/>);
+    const pressure = screen.getByRole('button', { name:'Pressure law' });
+    expect(pressure).toHaveAttribute('aria-pressed', 'false');
+    fireEvent.click(pressure);
+    expect(pressure).toHaveAttribute('aria-pressed', 'true');
+    expect(screen.getByText('Final pressure')).toBeInTheDocument();
+    expect(screen.getByText('P₁/T₁')).toBeInTheDocument();
+    expect(screen.getByText('P₂/T₂')).toBeInTheDocument();
+    expect(screen.getByText('133.33 kPa')).toBeInTheDocument();
+  });
+
+  test('Thermal heating curve warms vapour after boiling is complete', () => {
+    render(<ThermalInteractiveLab interactiveId="b3-heating-curve"/>);
+    const energy = screen.getByRole('slider', { name:'Energy added' });
+    fireEvent.change(energy, { target: { value:'800' } });
+    expect(screen.getAllByText('vapour warming').length).toBeGreaterThan(0);
+    expect(screen.getByText(/further energy raises the temperature again/i)).toBeInTheDocument();
+  });
+
   test('Papers J and K meet the diagram floor used by the full Paper 1 library', () => {
     for (const paper of [paper10,paper11]) {
       const figures = paper.items.filter(item => item.stimulus?.svg);

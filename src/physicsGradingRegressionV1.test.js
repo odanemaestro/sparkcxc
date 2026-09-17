@@ -88,3 +88,79 @@ describe("Physics grading regression", () => {
     }
   });
 });
+
+
+describe("Physics Paper 2 v2.8 marking policies", () => {
+  const paperById = id => PHYSICS_PAPER2_PAPERS.find(paper => paper.paper_id === id);
+  const line = (result, qid, part, code) => result.criteria.find(item =>
+    item.question.question_id === qid && item.part.id === part && item.criterion.code === code
+  );
+
+  test("Practice 2 accepted 2 dp table values keep A marks but lose B1", () => {
+    const paper = paperById("spark-phy-p02-practice-2");
+    const responses = modelResponsesForPhysicsPaper2(paper);
+    responses["phy-p2-2-q1::a"].table = {
+      "1:2":"1.27", "1:3":"1.61", "3:2":"1.80", "3:3":"3.22",
+    };
+    const result = markPhysicsPaper2(paper, responses);
+    for (const code of ["A1","A2","A3","A4"]) expect(line(result,"phy-p2-2-q1","a",code).earned).toBe(1);
+    expect(line(result,"phy-p2-2-q1","a","B1").earned).toBe(0);
+  });
+
+  test("Practice 2 source-column 3 dp consistency earns B1", () => {
+    const paper = paperById("spark-phy-p02-practice-2");
+    const result = markPhysicsPaper2(paper, modelResponsesForPhysicsPaper2(paper));
+    expect(line(result,"phy-p2-2-q1","a","B1").earned).toBe(1);
+  });
+
+  test("missing units are penalised once per question", () => {
+    const paper = paperById("spark-phy-p02-practice-1");
+    const responses = modelResponsesForPhysicsPaper2(paper);
+    const full = markPhysicsPaper2(paper, responses).marks;
+    responses["phy-p2-1-q5::d"].answer = "6";
+    responses["phy-p2-1-q5::e"].answer = "2";
+    const result = markPhysicsPaper2(paper, responses);
+    expect(result.marks).toBe(full - 1);
+    expect(line(result,"phy-p2-1-q5","d","A1").earned).toBe(0);
+    expect(line(result,"phy-p2-1-q5","e","A1").earned).toBe(1);
+  });
+
+  test("wrong unit is not treated as a missing-unit omission", () => {
+    const paper = paperById("spark-phy-p02-practice-1");
+    const responses = modelResponsesForPhysicsPaper2(paper);
+    const full = markPhysicsPaper2(paper, responses).marks;
+    responses["phy-p2-1-q5::d"].answer = "6 A";
+    responses["phy-p2-1-q5::e"].answer = "2";
+    const result = markPhysicsPaper2(paper, responses);
+    expect(result.marks).toBe(full - 2);
+    expect(line(result,"phy-p2-1-q5","d","A1").earned).toBe(0);
+    expect(line(result,"phy-p2-1-q5","e","A1").earned).toBe(0);
+  });
+
+  test("Practice 2 Q1d follows through from candidate gradient", () => {
+    const paper = paperById("spark-phy-p02-practice-2");
+    const responses = modelResponsesForPhysicsPaper2(paper);
+    responses["phy-p2-2-q1::c"].answer = "gradient = 5.0 s² m⁻¹";
+    responses["phy-p2-2-q1::d"].answer = `${4 * Math.PI ** 2 / 5} m s⁻²`;
+    const result = markPhysicsPaper2(paper, responses);
+    expect(line(result,"phy-p2-2-q1","d","A2").earned).toBe(1);
+  });
+
+  test("Practice 4 Q1d follows through from candidate gradient", () => {
+    const paper = paperById("spark-phy-p02-practice-4");
+    const responses = modelResponsesForPhysicsPaper2(paper);
+    responses["phy-p2-4-q1::c"].answer = "gradient = 0.0120 N cm⁻³";
+    responses["phy-p2-4-q1::d"].answer = "1200 kg m⁻³";
+    const result = markPhysicsPaper2(paper, responses);
+    expect(line(result,"phy-p2-4-q1","d","A2").earned).toBe(1);
+  });
+
+  test("Practice 3 resultant force follows candidate acceleration", () => {
+    const paper = paperById("spark-phy-p02-practice-3");
+    const responses = modelResponsesForPhysicsPaper2(paper);
+    responses["phy-p2-3-q2::b"].answer = "3.0 m s⁻²";
+    responses["phy-p2-3-q2::c"].answer = "3600 N";
+    const result = markPhysicsPaper2(paper, responses);
+    expect(line(result,"phy-p2-3-q2","c","A1").earned).toBe(1);
+  });
+});
