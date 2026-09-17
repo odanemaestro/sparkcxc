@@ -19,7 +19,8 @@ function KelvinLab({meta}){
     const xy=(c,value)=>({x:left+(c-minC)/(maxC-minC)*(right-left),y:bottom-value/maxValue*(bottom-top)});
     const points=r.points.map(p=>({...p,...xy(p.c,p.value)}));
     const start=xy(-273,0),end=xy(120,slope*(120+273));
-    return{points,start,end,left,right,top,bottom};
+    const zeroX=xy(0,0).x,maxX=xy(120,0).x;
+    return{points,start,end,zeroX,maxX,left,right,top,bottom};
   },[r,slope]);
   return <LabShell meta={meta} note={r.note}>
     <div className="pm-controls-grid"><Range label="Relative gas-pressure scale" value={slope} setValue={setSlope} min={.15} max={.7} step={.05}/></div>
@@ -29,12 +30,30 @@ function KelvinLab({meta}){
       <line data-testid="kelvin-trend" className="thermal-trend" x1={plot.start.x} y1={plot.start.y} x2={plot.end.x} y2={plot.end.y}/>
       {plot.points.map((point,index)=><circle key={index} cx={point.x} cy={point.y} r="5" className="thermal-point"/>)}
       <text x="6" y="22">relative pressure</text><text x="500" y="222">temperature / °C</text>
-      <text x={plot.start.x-18} y="210">−273</text><text x="65" y="210">−300</text><text x="414" y="210">0</text><text x="595" y="210">120</text>
+      <text x={plot.start.x} y="210" textAnchor="middle" style={{fill:'var(--pm-primary)',fontWeight:800}}>{String.fromCharCode(8722)}273</text>
+      <text x={plot.zeroX} y="210" textAnchor="middle">0</text>
+      <text x={plot.maxX} y="210" textAnchor="middle">120</text>
     </svg>
     <Metrics items={[["Extrapolated zero-pressure intercept","−273 °C"],["Absolute zero","0 K"],["Room-temperature example","27 °C = 300 K"]]}/>
   </LabShell>
 }
-function ExpansionLab({meta}){const[l,setL]=useState(2),[dt,setDt]=useState(80);const r=useMemo(()=>buildExpansionLabModel({initialLengthM:l,temperatureRiseC:dt}),[l,dt]);return <LabShell meta={meta} note="Most solids expand only a small amount, but long structures need gaps, rollers or slack because even a small fractional change becomes important over a large length."><div className="pm-controls-grid"><Range label="Initial length" value={l} setValue={setL} min={.5} max={10} step={.5} unit=" m"/><Range label="Temperature rise" value={dt} setValue={setDt} min={0} max={150} step={5} unit=" °C"/></div><div className="thermal-expansion"><div/><div style={{width:`${Math.min(100,70+r.extensionM*5000)}%`}}/></div><Metrics items={[["Extension",`${fmt(r.extensionM*1000,3)} mm`],["Final length",`${fmt(r.finalLengthM,5)} m`],["Temperature change",`${dt} K`]]}/></LabShell>}
+function ExpansionLab({meta}){
+  const[l,setL]=useState(2),[dt,setDt]=useState(80);
+  const r=useMemo(()=>buildExpansionLabModel({initialLengthM:l,temperatureRiseC:dt}),[l,dt]);
+  const extensionMm=r.extensionM*1000;
+  const extensionDisplay=Math.min(18,extensionMm*1.5);
+  const specimenWidth=Math.min(96,38+(l/10)*40+extensionDisplay);
+  return <LabShell meta={meta} note="Most solids expand only a small amount, but long structures need gaps, rollers or slack because even a small fractional change becomes important over a large length.">
+    <div className="pm-controls-grid"><Range label="Initial length" value={l} setValue={setL} min={.5} max={10} step={.5} unit=" m"/><Range label="Temperature rise" value={dt} setValue={setDt} min={0} max={150} step={5} unit={' '+String.fromCharCode(176)+'C'}/></div>
+    <div className="thermal-expansion" aria-label={`Solid specimen with a calculated extension of ${fmt(extensionMm,3)} millimetres`}>
+      <div style={{position:'relative',height:24,width:`${specimenWidth}%`,maxWidth:'100%',borderRadius:6,background:'var(--pm-line)',overflow:'hidden',transition:'width .2s ease'}}>
+        <i aria-hidden="true" style={{position:'absolute',right:0,top:0,bottom:0,width:`${extensionDisplay}%`,background:'var(--pm-primary)',transition:'width .2s ease'}}/>
+      </div>
+      <span style={{fontSize:12,color:'var(--pm-muted)'}}>{extensionMm>0?'Highlighted end = calculated extension, enlarged for visibility.':'No extension when the temperature change is 0 K.'}</span>
+    </div>
+    <Metrics items={[["Extension",`${fmt(extensionMm,3)} mm`],["Final length",`${fmt(r.finalLengthM,5)} m`],["Temperature change",`${dt} K`]]}/>
+  </LabShell>
+}
 function HeatingCurveLab({meta}){const[e,setE]=useState(0),[m,setM]=useState(.25);const r=useMemo(()=>buildHeatingCurveLabModel({energyKJ:e,massKg:m}),[e,m]);return <LabShell meta={meta} note="During melting and boiling, temperature stays constant while energy changes the particle arrangement. After the phase change is complete, further energy raises the temperature again."><div className="pm-controls-grid"><Range label="Energy added" value={e} setValue={setE} min={0} max={800} step={5} unit=" kJ"/><Range label="Sample mass" value={m} setValue={setM} min={.1} max={.5} step={.05} unit=" kg"/></div><div className="thermal-stage"><strong>{r.phase}</strong><span>{fmt(r.temperatureC,1)} °C</span>{r.fractionChanged!=null&&<i style={{width:`${Math.max(2,r.fractionChanged*100)}%`}}/>}</div><Metrics items={[["Phase / stage",r.phase],["Temperature",`${fmt(r.temperatureC,1)} °C`],["Phase fraction",r.fractionChanged==null?'Not changing phase':`${fmt(r.fractionChanged*100,1)}%`]]}/></LabShell>}
 function SpecificHeatLab({meta}){const[p,setP]=useState(48),[time,setTime]=useState(300),[mass,setMass]=useState(.8),[dt,setDt]=useState(16);const r=useMemo(()=>buildSpecificHeatLabModel({powerW:p,timeS:time,massKg:mass,deltaTC:dt}),[p,time,mass,dt]);return <LabShell meta={meta} note="In the real practical, lag the block, measure its mass, improve thermometer contact and account for energy transferred to the surroundings."><div className="pm-controls-grid"><Range label="Heater power" value={p} setValue={setP} min={20} max={100} step={2} unit=" W"/><Range label="Heating time" value={time} setValue={setTime} min={60} max={600} step={30} unit=" s"/><Range label="Block mass" value={mass} setValue={setMass} min={.2} max={2} step={.1} unit=" kg"/><Range label="Temperature rise" value={dt} setValue={setDt} min={5} max={50} step={1} unit=" °C"/></div><Metrics items={[["Electrical energy",`${fmt(r.energyJ)} J`],["Measured c",`${fmt(r.specificHeat)} J/(kg K)`],["Check E = mcΔT",`${fmt(r.idealEnergyCheck)} J`]]}/></LabShell>}
 function LatentHeatLab({meta}){const[v,setV]=useState(12),[i,setI]=useState(2),[time,setTime]=useState(300),[massG,setMassG]=useState(20),[backgroundG,setBackgroundG]=useState(2);const r=useMemo(()=>buildLatentHeatFusionLabModel({voltageV:v,currentA:i,timeS:time,massMeltedKg:massG/1000,backgroundMassKg:backgroundG/1000}),[v,i,time,massG,backgroundG]);return <LabShell meta={meta} note="A control run estimates ice melted by energy from the surroundings. Subtract that background mass before calculating L. Use ice already at 0 °C and keep water away from exposed electrical connections."><div className="pm-controls-grid"><Range label="Heater voltage" value={v} setValue={setV} min={4} max={24} step={1} unit=" V"/><Range label="Heater current" value={i} setValue={setI} min={.5} max={5} step={.1} unit=" A"/><Range label="Heating time" value={time} setValue={setTime} min={60} max={600} step={30} unit=" s"/><Range label="Mass melted" value={massG} setValue={setMassG} min={5} max={80} step={1} unit=" g"/><Range label="Control melt" value={backgroundG} setValue={setBackgroundG} min={0} max={20} step={1} unit=" g"/></div><Metrics items={[["Electrical energy",`${fmt(r.energyJ)} J`],["Corrected mass",`${fmt(r.correctedMassKg*1000,1)} g`],["Measured L",`${fmt(r.specificLatentHeatJPerKg/1000,1)} kJ/kg`]]}/></LabShell>}
