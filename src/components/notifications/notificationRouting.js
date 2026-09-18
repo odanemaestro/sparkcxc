@@ -32,7 +32,7 @@ export function getNotificationRoute(notification, role, currentUserId = null) {
   const metadata = metadataFor(notification);
   const isParent = role === "parent" || type.startsWith("child_");
   const subjectId = String(metadata.subject_id || "").trim().toLowerCase();
-  const isPhysics = subjectId === "physics";
+  const usesGenericSubjectProgress = Boolean(subjectId && subjectId !== "mathematics");
 
   if (type === "tutor_application_update") {
     return { view: "become-tutor", dashboardTarget: null };
@@ -46,9 +46,9 @@ export function getNotificationRoute(notification, role, currentUserId = null) {
           scope: "parent",
           section: "progress",
           studentId: metadata.student_id || notification.student_id || null,
-          subjectId: isPhysics ? "physics" : null,
-          attemptKey: isPhysics ? null : (metadata.attempt_key || null),
-          anchor: isPhysics ? "parent-subject-progress" : "parent-exam-results",
+          subjectId: usesGenericSubjectProgress ? subjectId : null,
+          attemptKey: usesGenericSubjectProgress ? null : (metadata.attempt_key || null),
+          anchor: usesGenericSubjectProgress ? "parent-subject-progress" : "parent-exam-results",
         },
       };
     }
@@ -58,8 +58,8 @@ export function getNotificationRoute(notification, role, currentUserId = null) {
       dashboardTarget: {
         scope: "student",
         section: "progress",
-        subjectId: isPhysics ? "physics" : null,
-        anchor: isPhysics ? "student-subject-progress" : "student-progress",
+        subjectId: usesGenericSubjectProgress ? subjectId : null,
+        anchor: usesGenericSubjectProgress ? "student-subject-progress" : "student-progress",
       },
     };
   }
@@ -71,10 +71,10 @@ export function getNotificationRoute(notification, role, currentUserId = null) {
         scope: "parent",
         section: "progress",
         studentId: metadata.student_id || notification.student_id || null,
-        subjectId: isPhysics ? "physics" : null,
-        milestoneId: isPhysics ? null : (metadata.milestone_id || null),
+        subjectId: usesGenericSubjectProgress ? subjectId : null,
+        milestoneId: usesGenericSubjectProgress ? null : (metadata.milestone_id || null),
         skill: metadata.skill || null,
-        anchor: isPhysics ? "parent-subject-progress" : "parent-learning-activity",
+        anchor: usesGenericSubjectProgress ? "parent-subject-progress" : "parent-learning-activity",
       },
     };
   }

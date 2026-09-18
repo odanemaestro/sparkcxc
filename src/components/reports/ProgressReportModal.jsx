@@ -182,8 +182,8 @@ export default function ProgressReportModal({
           </div>
           <div className="spark-report-insight"><span>SPARK INSIGHT</span><p><InsightText text={summary.insight}/></p></div>
           <div className="spark-report-skill-grid">
-            <ReportSkillList title="Strongest areas" rows={report.strongestSkills} empty="No mastery data yet."/>
-            <ReportSkillList title="Areas to improve" rows={report.weakestSkills} empty="No priority areas recorded."/>
+            <ReportSkillList title={report.strongestAreaTitle || "Strongest areas"} rows={report.strongestSkills} empty={report.strongestEmpty || "No mastery data yet."}/>
+            <ReportSkillList title={report.weakestAreaTitle || "Areas to improve"} rows={report.weakestSkills} empty={report.weakestEmpty || "No priority areas recorded."}/>
           </div>
           <div className="spark-report-next"><h4>Recommended next steps</h4><ol>{report.recommendations.map(item => <li key={item}>{item}</li>)}</ol></div>
         </div>

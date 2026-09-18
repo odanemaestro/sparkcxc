@@ -301,3 +301,40 @@
 .spark-dashboard-support-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:18px 0 20px}.spark-dashboard-support-grid>.spark-card{min-width:0}.spark-dashboard-support-grid .spark-dashboard-card-action{margin-top:12px}.spark-dashboard-support-grid .spark-achievement-card .spark-dashboard-card-action{margin-top:0}.spark-dashboard-support-grid .spark-achievement-list strong{color:var(--spark-ink,#15324b)}
 @media(max-width:980px){.spark-dashboard-support-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.spark-dashboard-support-grid .spark-achievement-card{grid-column:1/-1}}
 @media(max-width:680px){.spark-dashboard-support-grid{grid-template-columns:1fr}.spark-dashboard-support-grid .spark-achievement-card{grid-column:auto}}
+
+/* SPARK FLASHCARD TEXT ALIGNMENT FINAL V1
+   Long flashcard text reads from one consistent left edge instead of
+   producing visually uneven centred line wraps. Labels and interaction
+   hints remain centred. */
+.spark-flashcard{
+  align-items:stretch;
+  text-align:left;
+}
+.spark-flashcard-question,
+.spark-flashcard-answer{
+  width:min(100%,760px);
+  max-width:760px;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:left;
+  overflow-wrap:break-word;
+  word-break:normal;
+}
+.spark-flashcard-label,
+.spark-flashcard-reveal{
+  align-self:center;
+  text-align:center;
+}
+.spark-flashcard-question.spark-math-prose,
+.spark-flashcard-answer.spark-math-prose,
+.spark-flashcard-question .spark-math,
+.spark-flashcard-answer .spark-math{
+  text-align:left;
+}
+
+@media(max-width:680px){
+  .spark-flashcard-question,
+  .spark-flashcard-answer{
+    width:100%;
+  }
+}

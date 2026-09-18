@@ -30,7 +30,7 @@ describe("Physics presentation and final review V5", () => {
   });
 
   test("dashboard flashcards render both sides through MathText with dedicated typography", () => {
-    expect(flashcardSource).toMatch(/MathText as="h2" prose className="pm-flashcard-question-text">\{current\.front\}<\/MathText>/);
+    expect(flashcardSource).toMatch(/MathText as="h2" prose className="pm-flashcard-question-text">\{physicsFlashcardQuestion\(current\)\}<\/MathText>/);
     expect(flashcardSource).toMatch(/MathText as="div" prose className="pm-flashcard-answer-text">\{current\.back\}<\/MathText>/);
     expect(flashcardCss).toContain(".pm-flashcards-dashboard .pm-flashcard-question-text");
     expect(flashcardCss).toContain("font-family:inherit !important");

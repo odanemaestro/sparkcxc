@@ -453,3 +453,163 @@
   .it-exam-actions{grid-template-columns:1fr}
   .it-paper-bank-callout{padding:11px}
 }
+
+/* SPARK IT V2.9 navigation button consistency */
+.it-practice-back,
+.it-instruction-actions .it-practice-secondary,
+.it-exit-paper{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-height:46px;
+  padding:10px 16px;
+  border:1px solid rgba(23,55,94,.24);
+  border-radius:13px;
+  background:rgba(23,55,94,.09);
+  color:#17375e;
+  font-weight:850;
+  box-shadow:none;
+  cursor:pointer;
+  transition:background .16s ease,border-color .16s ease,transform .16s ease;
+}
+.it-practice-back:hover,
+.it-instruction-actions .it-practice-secondary:hover,
+.it-exit-paper:hover{
+  background:rgba(23,55,94,.14);
+  border-color:rgba(23,55,94,.34);
+  color:#17375e;
+  transform:translateY(-1px);
+}
+.it-practice-back:focus-visible,
+.it-instruction-actions .it-practice-secondary:focus-visible,
+.it-exit-paper:focus-visible{
+  outline:3px solid rgba(23,55,94,.22);
+  outline-offset:2px;
+}
+html[data-theme="dark"] .it-practice-back,
+html[data-theme="dark"] .it-instruction-actions .it-practice-secondary,
+html[data-theme="dark"] .it-exit-paper,
+body[data-theme="dark"] .it-practice-back,
+body[data-theme="dark"] .it-instruction-actions .it-practice-secondary,
+body[data-theme="dark"] .it-exit-paper{
+  background:rgba(126,158,198,.14);
+  border-color:rgba(156,184,219,.30);
+  color:#dce8f6;
+}
+html[data-theme="dark"] .it-practice-back:hover,
+html[data-theme="dark"] .it-instruction-actions .it-practice-secondary:hover,
+html[data-theme="dark"] .it-exit-paper:hover,
+body[data-theme="dark"] .it-practice-back:hover,
+body[data-theme="dark"] .it-instruction-actions .it-practice-secondary:hover,
+body[data-theme="dark"] .it-exit-paper:hover{
+  background:rgba(126,158,198,.22);
+  border-color:rgba(156,184,219,.42);
+  color:#eef4fb;
+}
+@media(max-width:560px){
+  .it-practice-back,
+  .it-instruction-actions .it-practice-secondary,
+  .it-exit-paper{
+    min-height:46px;
+    padding:10px 15px;
+  }
+}
+
+/* SPARK IT V2.11 light navy action controls */
+
+/* Paper 01 and Paper 02 Flag question buttons */
+.it-flag-question{
+  min-height:46px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  padding:10px 15px;
+  border:1px solid rgba(23,55,94,.24);
+  border-radius:13px;
+  background:rgba(23,55,94,.09);
+  color:#17375e;
+  font-size:12px;
+  font-weight:850;
+  box-shadow:none;
+  cursor:pointer;
+  transition:background .16s ease,border-color .16s ease,color .16s ease,transform .16s ease;
+}
+.it-flag-question:hover{
+  background:rgba(23,55,94,.14);
+  border-color:rgba(23,55,94,.34);
+  color:#17375e;
+  transform:translateY(-1px);
+}
+.it-flag-question:focus-visible{
+  outline:3px solid rgba(23,55,94,.22);
+  outline-offset:2px;
+}
+
+/* Keep the flagged state visually distinct while retaining the polished shape. */
+.it-flag-question.active{
+  border-color:#b98200;
+  background:rgba(185,130,0,.11);
+  color:#8a6300;
+}
+.it-flag-question.active:hover{
+  border-color:#a97700;
+  background:rgba(185,130,0,.16);
+  color:#765600;
+}
+
+html[data-theme="dark"] .it-flag-question,
+body[data-theme="dark"] .it-flag-question{
+  background:rgba(126,158,198,.14);
+  border-color:rgba(156,184,219,.30);
+  color:#dce8f6;
+}
+html[data-theme="dark"] .it-flag-question:hover,
+body[data-theme="dark"] .it-flag-question:hover{
+  background:rgba(126,158,198,.22);
+  border-color:rgba(156,184,219,.42);
+  color:#eef4fb;
+}
+html[data-theme="dark"] .it-flag-question.active,
+body[data-theme="dark"] .it-flag-question.active{
+  background:rgba(185,130,0,.18);
+  border-color:rgba(225,176,58,.48);
+  color:#f2d483;
+}
+
+@media(max-width:560px){
+  .it-flag-question{
+    min-height:46px;
+    padding:10px 15px;
+  }
+}
+
+/* SPARK IT PRACTICE TABLET IPAD V3 */
+@media(min-width:768px) and (max-width:1180px){
+  .it-practice-hub,.it-exam{padding-left:18px;padding-right:18px}
+  .it-exam-layout{min-width:0}
+  .it-question-card,.it-question-nav{min-width:0}
+  .it-question-grid{overflow-x:auto;-webkit-overflow-scrolling:touch}
+}
+
+@media(max-width:820px){
+  .it-practice-hub input,
+  .it-practice-hub select,
+  .it-practice-hub textarea,
+  .it-exam input,
+  .it-exam select,
+  .it-exam textarea{
+    font-size:16px!important;
+  }
+
+  .it-practice-hub button,
+  .it-exam button{
+    min-height:44px;
+    touch-action:manipulation;
+  }
+
+  .it-practice-hub,.it-exam{
+    padding-bottom:calc(46px + env(safe-area-inset-bottom,0px));
+  }
+}

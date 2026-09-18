@@ -53,7 +53,7 @@ function formatTime(seconds) {
   return `${minutes}:${String(secs).padStart(2, "0")}`;
 }
 
-export default function InformationTechnologyPaper1Exam({ onExit, startFresh = false }) {
+export default function InformationTechnologyPaper1Exam({ onExit, startFresh = false, onActivity }) {
   const [phase, setPhase] = useState("instructions");
   const [active, setActive] = useState(null);
   const [index, setIndex] = useState(0);
@@ -166,6 +166,21 @@ export default function InformationTechnologyPaper1Exam({ onExit, startFresh = f
     };
     const results = readJson(RESULTS_KEY, []);
     localStorage.setItem(RESULTS_KEY, JSON.stringify([result, ...results].slice(0, 20)));
+    try {
+      onActivity?.({
+        type: "it_paper1_exam",
+        paperId: result.paperId,
+        paperTitle: result.paperTitle,
+        score: result.score,
+        maxScore: 60,
+        percent: result.percent,
+        timedOut: result.timedOut,
+        durationSeconds: result.durationSeconds,
+        at: result.completedAt,
+      });
+    } catch (error) {
+      console.warn("IT Paper 1 progress was not synced", error);
+    }
     clearActive();
     setPhase("result");
   }
@@ -307,7 +322,7 @@ export default function InformationTechnologyPaper1Exam({ onExit, startFresh = f
           </div>
 
           <h2>{current.stem}</h2>
-          <InformationTechnologyQuestionVisual visual={current.visual}/>
+          <InformationTechnologyQuestionVisual key={current.id} visual={current.visual}/>
 
           <div className="it-option-list">
             {current.options.map(option => (

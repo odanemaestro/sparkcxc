@@ -27,14 +27,10 @@ import "./studyPracticeSemanticsV261";
 //     "parallelogram" that was really a trapezoid, an 18° sector drawn
 //     at ~70°, etc).
 // ============================================================================
-import React, { useState, useEffect, useCallback, useRef, useLayoutEffect } from "react";
+import React, { lazy, Suspense, useState, useEffect, useCallback, useRef, useLayoutEffect } from "react";
 import { createPortal } from "react-dom";
-import PracticeHub from "./practice/PracticeHub";
 import { useMathLessonRoute } from "./routing/sparkRoutingV270";
 // SPARK_PHYSICS_SECTION_A_RC1_IMPORTS
-import PhysicsSubjectView from "./physics/course/components/PhysicsSubjectView";
-import InformationTechnologySubjectView from "./informationTechnology/components/InformationTechnologySubjectView";
-import { PhysicsMechanicsFlashcardsPanel } from "./physics/mechanics/components/PhysicsMechanicsSupportPanels";
 import SubjectSelectionView, { SubjectChangeButton } from "./subjects/SubjectSelectionView";
 import { getSparkSubjectRegistry, subjectsForCapability, getSparkSubject, enabledSparkSubjects, subjectsForEnrollmentIds } from "./subjects/subjectRegistry";
 import { sectionAStats as getPhysicsSectionAStats } from "./physics/mechanics/sectionAMechanics.mjs";
@@ -46,6 +42,7 @@ import {
   buildSubjectDashboardSummaries,
   summarizeAllSubjects,
   recordPhysicsSubjectActivity,
+  recordSparkSubjectActivity,
   syncPhysicsLocalProgress,
   buildRecentSubjectActivity,
   subjectRows,
@@ -106,6 +103,15 @@ import GOOGLE_ICON_B64 from "./assets/icons/google-icon.png";
 import GOOGLE_CALENDAR_ICON_B64 from "./assets/icons/google-calendar-icon.png";
 import OUTLOOK_ICON_B64 from "./assets/icons/outlook-icon.png";
 import APPLE_CALENDAR_ICON_B64 from "./assets/icons/apple-calendar-icon.png";
+
+const PracticeHub = lazy(() => import("./practice/PracticeHub"));
+const PhysicsSubjectView = lazy(() => import("./physics/course/components/PhysicsSubjectView"));
+const InformationTechnologySubjectView = lazy(() => import("./informationTechnology/components/InformationTechnologySubjectView"));
+const InformationTechnologyFlashcardsPanel = lazy(() => import("./informationTechnology/components/InformationTechnologyFlashcardsPanel"));
+const PhysicsMechanicsFlashcardsPanel = lazy(() =>
+  import("./physics/mechanics/components/PhysicsMechanicsSupportPanels")
+    .then(module => ({ default: module.PhysicsMechanicsFlashcardsPanel }))
+);
 
 // ─── URL ROUTING ─────────────────────────────────────────────────────────────
 // GitHub Pages serves SPARK as a static single-page app. Hash-based routes keep
@@ -240,6 +246,21 @@ function dashboardSectionFromBrowserHash() {
   return DASHBOARD_ROUTE_SECTIONS.has(section) ? section : "overview";
 }
 
+const FLASHCARD_ROUTE_SUBJECTS = new Set([
+  "mathematics",
+  "physics",
+  "information-technology",
+]);
+
+function flashcardSubjectFromBrowserHash() {
+  const path = normalizedSparkPathFromBrowserHash();
+  if (!path || !path.startsWith("/dashboard/flashcards/")) return null;
+
+  const raw = path.slice("/dashboard/flashcards/".length).split("/")[0];
+  const subjectId = decodeURIComponent(raw || "").trim().toLowerCase();
+  return FLASHCARD_ROUTE_SUBJECTS.has(subjectId) ? subjectId : null;
+}
+
 function emitSparkRouteChange() {
   if (typeof window === "undefined") return;
   window.dispatchEvent(new Event("spark:routechange"));
@@ -279,6 +300,15 @@ function writeViewToBrowserHash(view, { replace = false } = {}) {
 function writeDashboardSectionToBrowserHash(section, { replace = false } = {}) {
   const safeSection = DASHBOARD_ROUTE_SECTIONS.has(section) ? section : "overview";
   const path = safeSection === "overview" ? "/dashboard" : `/dashboard/${safeSection}`;
+  writeRouteHash(`#${path}`, { replace });
+}
+
+function writeFlashcardSubjectToBrowserHash(subjectId, { replace = false } = {}) {
+  const normalized = String(subjectId || "").trim().toLowerCase();
+  const safeSubject = FLASHCARD_ROUTE_SUBJECTS.has(normalized) ? normalized : null;
+  const path = safeSubject
+    ? `/dashboard/flashcards/${safeSubject}`
+    : "/dashboard/flashcards";
   writeRouteHash(`#${path}`, { replace });
 }
 
@@ -3340,7 +3370,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   const [studentReportOpen, setStudentReportOpen] = useState(false);
   const [studentReportSubject, setStudentReportSubject] = useState("all");
   const [progressSubject, setProgressSubject] = useState("all");
-  const [flashcardSubject, setFlashcardSubject] = useState(null);
+  const [flashcardSubject, setFlashcardSubject] = useState(() => flashcardSubjectFromBrowserHash());
   const [subjectProgressRows, setSubjectProgressRows] = useState([]);
   const [subjectActivityEvents, setSubjectActivityEvents] = useState([]);
   const [subjectEnrollments, setSubjectEnrollments] = useState([]);
@@ -3375,6 +3405,13 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     setSec(normalized);
     writeDashboardSectionToBrowserHash(normalized, options);
   }, [dashboardRoleResolved, normalizeDashboardSection]);
+
+  const setFlashcardSubjectRoute = useCallback((subjectId, options = {}) => {
+    const normalized = String(subjectId || "").trim().toLowerCase();
+    const next = FLASHCARD_ROUTE_SUBJECTS.has(normalized) ? normalized : null;
+    setFlashcardSubject(next);
+    writeFlashcardSubjectToBrowserHash(next, options);
+  }, []);
 
   const updateDashTabsOverflow = useCallback(() => {
     const el = dashSidebarRef.current;
@@ -3411,6 +3448,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     const requested = dashboardSectionFromBrowserHash();
     const normalized = normalizeDashboardSection(requested);
     setSec(normalized);
+    setFlashcardSubject(normalized === "flashcards" ? flashcardSubjectFromBrowserHash() : null);
     if (normalized !== requested) {
       writeDashboardSectionToBrowserHash(normalized, { replace: true });
     }
@@ -3425,6 +3463,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       const requested = dashboardSectionFromBrowserHash();
       const normalized = normalizeDashboardSection(requested);
       setSec(normalized);
+      setFlashcardSubject(normalized === "flashcards" ? flashcardSubjectFromBrowserHash() : null);
       if (normalized !== requested) {
         writeDashboardSectionToBrowserHash(normalized, { replace: true });
       }
@@ -4615,13 +4654,22 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
               description="Open the flashcard deck for the subject you want to review."
               capability="flashcards"
               subjects={subjectsForCapability(studentEnrolledSubjects, "flashcards")}
-              onSelect={subject => setFlashcardSubject(subject.id)}
+              onSelect={subject => setFlashcardSubjectRoute(subject.id)}
             />
           ) : flashcardSubject === "physics" ? (
-            <PhysicsMechanicsFlashcardsPanel onChangeSubject={() => setFlashcardSubject(null)} />
+            <Suspense fallback={<SparkLoader variant="section" label="Loading Physics flashcards" />}>
+              <PhysicsMechanicsFlashcardsPanel onChangeSubject={() => setFlashcardSubjectRoute(null)} />
+            </Suspense>
+          ) : flashcardSubject === "information-technology" ? (
+            <Suspense fallback={<SparkLoader variant="section" label="Loading Information Technology flashcards" />}>
+              <InformationTechnologyFlashcardsPanel
+                userId={user.id}
+                onChangeSubject={() => setFlashcardSubjectRoute(null)}
+              />
+            </Suspense>
           ) : (
             <div>
-              <div style={{display:"flex",justifyContent:"flex-end",marginBottom:12}}><SubjectChangeButton onClick={() => setFlashcardSubject(null)} /></div>
+              <div style={{display:"flex",justifyContent:"flex-end",marginBottom:12}}><SubjectChangeButton onClick={() => setFlashcardSubjectRoute(null)} /></div>
               <FlashcardsPanel
                 userId={user.id}
                 supabase={supabase}
@@ -6902,7 +6950,21 @@ if (loading || authenticatedRolePending) {
         appSubjectAccessPending
           ? <SparkLoader variant="section" label="Checking Information Technology enrollment" />
           : appHasInformationTechnology
-            ? <InformationTechnologySubjectView onBack={() => setView("study")} />
+            ? (
+              <Suspense fallback={<SparkLoader variant="section" label="Loading Information Technology" />}>
+                <InformationTechnologySubjectView
+                userId={session.user.id}
+                onBack={() => setView("study")}
+                onActivity={event => {
+                  recordSparkSubjectActivity({ supabase, event }).then(result => {
+                    if (result?.error && !["PGRST202", "42P01", "42883"].includes(result.error.code)) {
+                      console.warn("IT subject progress was not synced", result.error);
+                    }
+                  }).catch(error => console.warn("IT subject progress was not synced", error));
+                }}
+              />
+              </Suspense>
+            )
             : <SubjectEnrollmentRequiredView
                 subjectName="Information Technology"
                 onManageSubjects={openMySubjects}
@@ -6915,18 +6977,22 @@ if (loading || authenticatedRolePending) {
         appSubjectAccessPending
           ? <SparkLoader variant="section" label="Checking Physics enrollment" />
           : appHasPhysics
-            ? <PhysicsSubjectView
-                userId={session.user.id}
-                onBack={() => setView("study")}
-                onActivity={event => {
-                  recordPhysicsSubjectActivity({ supabase, event }).then(result => {
-                    if (result?.error && !["PGRST202", "42P01", "42883"].includes(result.error.code)) {
-                      console.warn("Physics subject progress was not synced", result.error);
-                      return;
-                    }
-                  }).catch(error => console.warn("Physics subject progress was not synced", error));
-                }}
-              />
+            ? (
+              <Suspense fallback={<SparkLoader variant="section" label="Loading Physics" />}>
+                <PhysicsSubjectView
+                  userId={session.user.id}
+                  onBack={() => setView("study")}
+                  onActivity={event => {
+                    recordPhysicsSubjectActivity({ supabase, event }).then(result => {
+                      if (result?.error && !["PGRST202", "42P01", "42883"].includes(result.error.code)) {
+                        console.warn("Physics subject progress was not synced", result.error);
+                        return;
+                      }
+                    }).catch(error => console.warn("Physics subject progress was not synced", error));
+                  }}
+                />
+              </Suspense>
+            )
             : <SubjectEnrollmentRequiredView subjectName="Physics" onManageSubjects={openMySubjects} onBack={() => setView("study")}/>
       )}
       {view === "physics" && session && profile?.role !== "student" && PHYSICS_SECTION_A_ENABLED && (
@@ -6945,21 +7011,25 @@ if (loading || authenticatedRolePending) {
                 ? <SubjectEnrollmentRequiredView subjectName="Information Technology" onManageSubjects={openMySubjects} onBack={() => setView("practice")}/>
               : appStudentEnrolledSubjects.length === 0
                 ? <SubjectEnrollmentRequiredView onManageSubjects={openMySubjects} onBack={() => setView("dashboard")}/>
-                : <PracticeHub
-                    supabase={supabase}
-                    userId={session.user.id}
-                    setView={setView}
-                    physicsEnabled={PHYSICS_SECTION_A_ENABLED}
-                    enrolledSubjectIds={appSubjectEnrollmentIds}
-                    initialSubject={view === "practice-math" ? "mathematics" : view === "practice-physics" ? "physics" : view === "practice-information-technology" ? "information-technology" : null}
-                    onSubjectActivity={event => {
-                      recordPhysicsSubjectActivity({ supabase, event }).then(result => {
-                        if (result?.error && !["PGRST202", "42P01", "42883"].includes(result.error.code)) {
-                          console.warn("Physics subject progress was not synced", result.error);
-                        }
-                      }).catch(error => console.warn("Physics subject progress was not synced", error));
-                    }}
-                  />
+                : (
+                  <Suspense fallback={<SparkLoader variant="section" label="Loading practice" />}>
+                    <PracticeHub
+                      supabase={supabase}
+                      userId={session.user.id}
+                      setView={setView}
+                      physicsEnabled={PHYSICS_SECTION_A_ENABLED}
+                      enrolledSubjectIds={appSubjectEnrollmentIds}
+                      initialSubject={view === "practice-math" ? "mathematics" : view === "practice-physics" ? "physics" : view === "practice-information-technology" ? "information-technology" : null}
+                      onSubjectActivity={event => {
+                        recordSparkSubjectActivity({ supabase, event }).then(result => {
+                          if (result?.error && !["PGRST202", "42P01", "42883"].includes(result.error.code)) {
+                            console.warn("Subject progress was not synced", result.error);
+                          }
+                        }).catch(error => console.warn("Subject progress was not synced", error));
+                      }}
+                    />
+                  </Suspense>
+                )
       )}
       {view === "tutors"       && <TutorsView user={session?.user} profile={profile} tutorApp={tutorApp} setView={setView} showToast={showToast} hasTutorApp={hideTutorApplyLink} isParent={profile?.role === "parent"}/>}
 

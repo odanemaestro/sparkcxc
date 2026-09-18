@@ -588,7 +588,203 @@ export function buildRecentSubjectActivity({ subjectProgressRows = [], mathemati
     .slice(0, Math.max(1, safeNumber(limit, 12)));
 }
 
+
+// SPARK_INFORMATION_TECHNOLOGY_REPORT_V1
+const IT_PRACTICAL_LAB_TOTAL = 6;
+const IT_PROFILE_MAX = Object.freeze({
+  Theory: 35,
+  "Productivity Tools": 30,
+  "Problem-Solving and Programming": 25,
+});
+
+function itPaperKind(row) {
+  const key = String(row?.activity_key || "").toLowerCase();
+  const metadataType = String(row?.metadata?.paper_type || "").toLowerCase().replace(/\s+/g, "");
+  const eventType = String(row?.metadata?.event_type || "").toLowerCase();
+  if (key.startsWith("paper1:") || metadataType === "paper1" || eventType === "it_paper1_exam") return "paper1";
+  if (key.startsWith("paper2:") || metadataType === "paper2" || eventType === "it_paper2_exam") return "paper2";
+  return null;
+}
+
+function itAverage(rows = []) {
+  const values = rows.map(row => Number(row?.percent)).filter(Number.isFinite);
+  return values.length ? Math.round(values.reduce((sum, value) => sum + value, 0) / values.length) : null;
+}
+
+function itProfileRows(rows = []) {
+  const buckets = new Map();
+  for (const row of rows) {
+    const profiles = row?.metadata?.profiles;
+    if (!profiles || typeof profiles !== "object") continue;
+    for (const [name, max] of Object.entries(IT_PROFILE_MAX)) {
+      const earned = Number(profiles?.[name]);
+      if (!Number.isFinite(earned)) continue;
+      const score = Math.max(0, Math.min(100, Math.round((earned / max) * 100)));
+      const current = buckets.get(name) || [];
+      current.push(score);
+      buckets.set(name, current);
+    }
+  }
+
+  const labels = {
+    Theory: "Theory",
+    "Productivity Tools": "Productivity Tools",
+    "Problem-Solving and Programming": "Problem-Solving & Programming",
+  };
+
+  return [...buckets.entries()].map(([name, values]) => ({
+    skill: labels[name] || name,
+    score: Math.round(values.reduce((sum, value) => sum + value, 0) / values.length),
+  }));
+}
+
+function buildInformationTechnologyProgressReport({ subject, rows = [], events = [] } = {}, options = {}) {
+  const now = options.now ? new Date(options.now) : new Date();
+  const period = reportPeriodDefinition(options.period || "month", now, options.custom || {});
+  const scoped = subjectRows(rows, "information-technology");
+  const scopedEvents = subjectRows(events, "information-technology");
+  const periodEvents = scopedEvents.filter(row => inPeriod(row, period));
+  const fallbackPeriodRows = scoped.filter(row => {
+    if (row?.metadata?.backfilled && !row?.metadata?.at) return false;
+    return inPeriod(row, period);
+  });
+  const periodRows = periodEvents.length ? periodEvents : fallbackPeriodRows;
+
+  const summary = summarizeSubjectProgress(scoped, {
+    subjectId: "information-technology",
+    totalTopics: Number(subject?.stats?.topics || 26),
+  });
+  const periodSummary = summarizeSubjectProgress(periodRows, {
+    subjectId: "information-technology",
+    totalTopics: Number(subject?.stats?.topics || 26),
+  });
+
+  const allPaper1 = scoped.filter(row => row.activity_type === "exam" && itPaperKind(row) === "paper1");
+  const allPaper2 = scoped.filter(row => row.activity_type === "exam" && itPaperKind(row) === "paper2");
+  const periodPaper1 = periodRows.filter(row => row.activity_type === "exam" && itPaperKind(row) === "paper1");
+  const periodPaper2 = periodRows.filter(row => row.activity_type === "exam" && itPaperKind(row) === "paper2");
+  const paper1Average = itAverage(periodPaper1);
+  const paper2Average = itAverage(periodPaper2);
+
+  const profileScores = itProfileRows(allPaper2).sort((a, b) => b.score - a.score);
+  const strongestSkills = profileScores.slice(0, 2);
+  const weakestSkills = [...profileScores].sort((a, b) => a.score - b.score).filter(item => item.score < 80).slice(0, 2);
+
+  let insight;
+  if (!summary.active) {
+    insight = "No Information Technology learning activity has been recorded yet. Start with a syllabus topic or practical lab, then use Paper 01 and Paper 02 to build assessment evidence.";
+  } else if (!allPaper1.length && !allPaper2.length) {
+    insight = `You have completed ${summary.lessonsCompleted} of ${summary.totalTopics || 26} Information Technology topics and ${summary.labsCompleted} of ${IT_PRACTICAL_LAB_TOTAL} practical labs. Complete a Paper 01 or Paper 02 simulation to add examination evidence.`;
+  } else {
+    const examParts = [];
+    const overallPaper1 = itAverage(allPaper1);
+    const overallPaper2 = itAverage(allPaper2);
+    if (overallPaper1 != null) examParts.push(`Paper 01 is averaging ${overallPaper1}%`);
+    if (overallPaper2 != null) examParts.push(`Paper 02 is averaging ${overallPaper2}%`);
+    insight = `${examParts.join(" and ")}. You have completed ${summary.lessonsCompleted} of ${summary.totalTopics || 26} syllabus topics and ${summary.labsCompleted} of ${IT_PRACTICAL_LAB_TOTAL} practical labs.`;
+    if (strongestSkills[0]) insight += ` Your strongest Paper 02 profile so far is ${strongestSkills[0].skill} at ${strongestSkills[0].score}%.`;
+  }
+
+  const recommendations = [];
+  if (weakestSkills[0]) {
+    recommendations.push(`Review ${weakestSkills[0].skill}, then complete another Paper 02 simulation to check improvement.`);
+  }
+  if (summary.lessonsCompleted < summary.totalTopics) {
+    recommendations.push("Continue the next incomplete Information Technology syllabus topic.");
+  }
+  if (summary.labsCompleted < IT_PRACTICAL_LAB_TOTAL) {
+    recommendations.push("Complete another SPARK Practical Lab in Word Processing, Spreadsheets, Databases, Presentations, Web Design or Programming.");
+  }
+  if (!allPaper1.length) {
+    recommendations.push("Sit an Information Technology Paper 01 simulation to test breadth across the syllabus.");
+  }
+  if (!allPaper2.length) {
+    recommendations.push("Complete an Information Technology Paper 02 simulation to build evidence across Theory, Productivity Tools and Problem-Solving & Programming.");
+  }
+  if (!recommendations.length) {
+    recommendations.push("Keep a balanced routine of syllabus study, practical labs, Paper 01 and Paper 02 practice.");
+  }
+
+  const assessments = periodRows
+    .filter(row => row.activity_type === "exam" && row.percent != null && itPaperKind(row))
+    .sort((a, b) => (rowDate(b)?.getTime() || 0) - (rowDate(a)?.getTime() || 0))
+    .slice(0, 10)
+    .map(row => {
+      const kind = itPaperKind(row);
+      return {
+        id: `${row.subject_id}:${row.activity_key}`,
+        label: `${kind === "paper1" ? "Paper 01" : "Paper 02"} · ${row.title || row.activity_key}`,
+        percent: Math.round(safeNumber(row.percent)),
+        score: safeNumber(row.score),
+        maxScore: safeNumber(row.max_score),
+        completedAt: row.updated_at || row.occurred_at || row.created_at || null,
+      };
+    });
+
+  const combinedPaperRows = [...periodPaper1, ...periodPaper2];
+  const periodExamAverage = itAverage(combinedPaperRows);
+
+  return {
+    subjectId: "information-technology",
+    subjectName: subject?.name || "CSEC Information Technology",
+    generatedAt: now.toISOString(),
+    period,
+    metrics: [
+      { label: "Syllabus topics", value: `${summary.lessonsCompleted}/${summary.totalTopics || 26}` },
+      { label: "Practical labs", value: `${summary.labsCompleted}/${IT_PRACTICAL_LAB_TOTAL}` },
+      { label: "Paper 01 average", value: paper1Average == null ? "N/A" : `${paper1Average}%` },
+      { label: "Paper 02 average", value: paper2Average == null ? "N/A" : `${paper2Average}%` },
+    ],
+    assessmentLabel: "Recent IT Paper 01 and Paper 02 results",
+    emptyAssessmentCopy: "No Information Technology Paper 01 or Paper 02 results in this reporting period.",
+    strongestAreaTitle: "Strongest IT areas",
+    weakestAreaTitle: "IT areas to strengthen",
+    strongestEmpty: "Complete a Paper 02 simulation to identify your strongest IT profile areas.",
+    weakestEmpty: "Complete a Paper 02 simulation to identify areas that need more practice.",
+    activityLabels: {
+      questionsAttempted: "Paper attempts",
+      questionAccuracy: "Paper average",
+      examsCompleted: "Paper simulations",
+      examAverage: "Paper average",
+    },
+    summary: {
+      mastery: periodExamAverage || 0,
+      skillCount: profileScores.length,
+      examCount: combinedPaperRows.length,
+      insight,
+    },
+    activity: {
+      lessonsCompleted: periodSummary.lessonsCompleted,
+      questionsAttempted: combinedPaperRows.length,
+      questionAccuracy: periodExamAverage || 0,
+      hasQuestionAccuracy: periodExamAverage != null,
+      examsCompleted: combinedPaperRows.length,
+      examAverage: periodExamAverage || 0,
+      hasExamAverage: periodExamAverage != null,
+      tutorSessions: 0,
+      flashcardsReviewed: 0,
+      milestones: periodRows.length,
+      labsCompleted: periodSummary.labsCompleted,
+    },
+    exams: assessments,
+    milestones: periodRows.slice(0, 8).map(row => ({
+      id: `${row.subject_id}:${row.activity_key}`,
+      title: row.title || row.activity_key,
+      created_at: row.updated_at || row.occurred_at || row.created_at || now.toISOString(),
+      metadata: { subject_id: row.subject_id },
+    })),
+    strongestSkills,
+    weakestSkills,
+    recommendations: recommendations.slice(0, 4),
+    goal: null,
+    studyCircle: null,
+  };
+}
+
 export function buildGenericSubjectProgressReport({ subject, rows = [], events = [] } = {}, options = {}) {
+  if (String(subject?.id || "").toLowerCase() === "information-technology") {
+    return buildInformationTechnologyProgressReport({ subject, rows, events }, options);
+  }
   const now = options.now ? new Date(options.now) : new Date();
   const period = reportPeriodDefinition(options.period || "month", now, options.custom || {});
   const scoped = subjectRows(rows, subject?.id);
@@ -749,3 +945,169 @@ export const subjectProgressInternals = {
   PHYSICS_TOPIC_LIST,
   PHYSICS_LAB_LIST,
 };
+
+// SPARK_INFORMATION_TECHNOLOGY_PROGRESS_V1
+export function activityPayloadFromInformationTechnologyEvent(event = {}) {
+  const type = String(event?.type || "").trim().toLowerCase();
+
+  if (type === "it_lesson_completion") {
+    const topicId = String(event.topicId || event.topic || "").trim();
+    if (!topicId) return null;
+    return {
+      subjectId: "information-technology",
+      activityKey: `lesson:${topicId}`,
+      activityType: "lesson",
+      sectionId: event.section != null ? String(event.section) : null,
+      topicId,
+      title: event.title || `Information Technology topic ${topicId}`,
+      completed: event.completed !== false,
+      metadata: {
+        source: "information_technology_study",
+        event_type: type,
+        at: event.at || new Date().toISOString(),
+      },
+    };
+  }
+
+  if (type === "it_lab_completion") {
+    const labId = String(event.labId || "").trim();
+    if (!labId) return null;
+    return {
+      subjectId: "information-technology",
+      activityKey: `lab:${labId}`,
+      activityType: "lab",
+      sectionId: event.section != null ? String(event.section) : null,
+      title: event.title || `Information Technology practical lab`,
+      completed: event.completed !== false,
+      metadata: {
+        source: "information_technology_practical_labs",
+        event_type: type,
+        lab_id: labId,
+        at: event.at || new Date().toISOString(),
+      },
+    };
+  }
+
+  if (type === "it_paper1_exam" || type === "it_paper2_exam") {
+    const paperType = type === "it_paper1_exam" ? "paper1" : "paper2";
+    const paperId = String(event.paperId || event.paperTitle || "practice").trim();
+    const maxScore = Number(event.maxScore || (paperType === "paper1" ? 60 : 90));
+    return {
+      subjectId: "information-technology",
+      activityKey: `${paperType}:${paperId}`,
+      activityType: "exam",
+      title: event.paperTitle || `Information Technology ${paperType === "paper1" ? "Paper 1" : "Paper 2"}`,
+      completed: true,
+      score: Number.isFinite(Number(event.score)) ? Number(event.score) : null,
+      maxScore: Number.isFinite(maxScore) && maxScore > 0 ? maxScore : null,
+      percent: Number.isFinite(Number(event.percent)) ? Number(event.percent) : null,
+      metadata: {
+        source: "information_technology_practice",
+        event_type: type,
+        paper_type: paperType,
+        paper_id: paperId,
+        paper_title: event.paperTitle || null,
+        timed_out: Boolean(event.timedOut),
+        duration_seconds: Number(event.durationSeconds || 0) || null,
+        profiles: event.profiles || null,
+        at: event.at || new Date().toISOString(),
+      },
+    };
+  }
+
+  return null;
+}
+
+export async function recordInformationTechnologySubjectActivity({ supabase, event } = {}) {
+  const activity = activityPayloadFromInformationTechnologyEvent(event);
+  if (!activity) return { data: null, error: null, skipped: true };
+  return recordSubjectActivity({ supabase, activity });
+}
+
+export async function recordSparkSubjectActivity({ supabase, event } = {}) {
+  const type = String(event?.type || "").trim().toLowerCase();
+  if (type.startsWith("it_")) {
+    return recordInformationTechnologySubjectActivity({ supabase, event });
+  }
+  return recordPhysicsSubjectActivity({ supabase, event });
+}
+
+function informationTechnologyBackfillRows(paper1Results = [], paper2Results = []) {
+  const grouped = new Map();
+
+  const add = (result, paperType, maxScore) => {
+    if (!result || typeof result !== "object") return;
+    const paperId = String(result.paperId || result.paperTitle || "practice").trim();
+    const key = `${paperType}:${paperId}`;
+    const score = Number(result.score);
+    const explicitPercent = Number(result.percent);
+    const percent = Number.isFinite(explicitPercent)
+      ? explicitPercent
+      : Number.isFinite(score) && maxScore > 0
+        ? Math.round(score / maxScore * 100)
+        : null;
+    const when = result.completedAt || result.at || null;
+    const timeValue = when ? new Date(when).getTime() : 0;
+    const existing = grouped.get(key);
+
+    const candidate = {
+      activity_key: key,
+      activity_type: "exam",
+      title: result.paperTitle || `Information Technology ${paperType === "paper1" ? "Paper 1" : "Paper 2"}`,
+      completed: true,
+      score: Number.isFinite(score) ? score : null,
+      max_score: maxScore,
+      percent,
+      best_percent: percent,
+      attempt_count: 1,
+      occurred_at: when,
+      metadata: {
+        source: "information_technology_local_backfill",
+        paper_type: paperType,
+        paper_id: paperId,
+        at: when,
+      },
+      _time: Number.isFinite(timeValue) ? timeValue : 0,
+    };
+
+    if (!existing) {
+      grouped.set(key, candidate);
+      return;
+    }
+
+    existing.attempt_count += 1;
+    if (percent != null) {
+      existing.best_percent = existing.best_percent == null
+        ? percent
+        : Math.max(existing.best_percent, percent);
+    }
+    if (candidate._time >= existing._time) {
+      existing.title = candidate.title;
+      existing.score = candidate.score;
+      existing.max_score = candidate.max_score;
+      existing.percent = candidate.percent;
+      existing.occurred_at = candidate.occurred_at;
+      existing.metadata = candidate.metadata;
+      existing._time = candidate._time;
+    }
+  };
+
+  (Array.isArray(paper1Results) ? paper1Results : []).forEach(result => add(result, "paper1", 60));
+  (Array.isArray(paper2Results) ? paper2Results : []).forEach(result => add(result, "paper2", 90));
+
+  return [...grouped.values()].map(({ _time, ...row }) => row);
+}
+
+export async function syncInformationTechnologyLocalProgress({
+  supabase,
+  paper1Results = [],
+  paper2Results = [],
+} = {}) {
+  if (!supabase?.rpc) return { data: null, error: null, skipped: true };
+  const rows = informationTechnologyBackfillRows(paper1Results, paper2Results);
+  if (!rows.length) return { data: 0, error: null, skipped: true };
+  return supabase.rpc("spark_sync_subject_progress", {
+    p_subject_id: "information-technology",
+    p_rows: rows,
+  });
+}

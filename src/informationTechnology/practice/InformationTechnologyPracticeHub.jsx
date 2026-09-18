@@ -1,7 +1,9 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import InformationTechnologyPaper1Exam from "./InformationTechnologyPaper1Exam";
 import InformationTechnologyPaper2Exam from "./InformationTechnologyPaper2Exam";
 import "./informationTechnologyPractice.css";
+import { useInformationTechnologyPracticeRoute } from "../../routing/sparkRoutingV270";
+import { syncInformationTechnologyLocalProgress } from "../../subjects/subjectProgress";
 
 const P1_ACTIVE_KEYS = ["spark-it-paper1-active-v3", "spark-it-paper1-active-v2", "spark-it-paper1-active-v1"];
 const P1_RESULTS = "spark-it-paper1-results-v1";
@@ -25,8 +27,8 @@ function readFirst(keys) {
   return null;
 }
 
-export default function InformationTechnologyPracticeHub({ onBack }) {
-  const [mode, setMode] = useState("home");
+export default function InformationTechnologyPracticeHub({ onBack, supabase, userId, onActivity }) {
+  const [mode, setMode] = useInformationTechnologyPracticeRoute(true);
   const [fresh, setFresh] = useState(false);
   const snapshot = useMemo(() => ({
     p1Active: readFirst(P1_ACTIVE_KEYS),
@@ -35,8 +37,17 @@ export default function InformationTechnologyPracticeHub({ onBack }) {
     p2Latest: readJson(P2_RESULTS, [])[0],
   }), [mode]);
 
-  if (mode === "paper1") return <InformationTechnologyPaper1Exam startFresh={fresh} onExit={() => setMode("home")}/>;
-  if (mode === "paper2") return <InformationTechnologyPaper2Exam startFresh={fresh} onExit={() => setMode("home")}/>;
+  useEffect(() => {
+    if (!supabase || !userId) return;
+    syncInformationTechnologyLocalProgress({
+      supabase,
+      paper1Results: readJson(P1_RESULTS, []),
+      paper2Results: readJson(P2_RESULTS, []),
+    }).catch(error => console.warn("IT local progress backfill failed", error));
+  }, [supabase, userId]);
+
+  if (mode === "paper1") return <InformationTechnologyPaper1Exam startFresh={fresh} onActivity={onActivity} onExit={() => setMode("home")}/>;
+  if (mode === "paper2") return <InformationTechnologyPaper2Exam startFresh={fresh} onActivity={onActivity} onExit={() => setMode("home")}/>;
 
   return (
     <main className="it-practice-hub">

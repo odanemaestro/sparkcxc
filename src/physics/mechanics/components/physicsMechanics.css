@@ -988,3 +988,30 @@
   }
 }
 /* SPARK PHYSICS V2.7.2.2 WORK VECTOR END */
+
+/* SPARK PHYSICS FLASHCARD TEXT ALIGNMENT FINAL V1 */
+.pm-flashcards-dashboard .pm-flashcard-polished{
+  align-items:stretch;
+  text-align:left;
+}
+.pm-flashcards-dashboard .pm-flashcard-question-text,
+.pm-flashcards-dashboard .pm-flashcard-answer-text{
+  width:min(100%,800px);
+  max-width:800px;
+  margin-left:auto;
+  margin-right:auto;
+  text-align:left;
+  overflow-wrap:break-word;
+  word-break:normal;
+}
+.pm-flashcards-dashboard .pm-flashcard-side-label,
+.pm-flashcards-dashboard .pm-flashcard-hint{
+  align-self:center;
+  text-align:center;
+}
+.pm-flashcards-dashboard .pm-flashcard-question-text .spark-math,
+.pm-flashcards-dashboard .pm-flashcard-answer-text .spark-math,
+.pm-flashcards-dashboard .pm-flashcard-question-text.spark-math-prose,
+.pm-flashcards-dashboard .pm-flashcard-answer-text.spark-math-prose{
+  text-align:left;
+}

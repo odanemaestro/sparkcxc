@@ -5,6 +5,7 @@ import { SECTION_A_TOPICS } from "../sectionAMechanics.mjs";
 import { MECHANICS_INTERACTIVES } from "../interactives/mechanicsInteractiveRegistry.mjs";
 import { readPhysicsMechanicsProgress, physicsMechanicsProgressSummary } from "../physicsMechanicsProgress.mjs";
 import { PHYSICS_COURSE_SECTIONS } from "../../course/fullCourseIndex.mjs";
+import { physicsFlashcardQuestion } from "../../course/physicsFlashcardLanguage.mjs";
 import { SECTION_B_TOPICS } from "../../thermal/sectionBThermal.mjs";
 import { THERMAL_INTERACTIVES } from "../../thermal/interactives/bThermalInteractiveRegistry.mjs";
 import { readPhysicsThermalProgress, physicsThermalProgressSummary } from "../../thermal/physicsThermalProgress.mjs";
@@ -107,7 +108,7 @@ export function PhysicsMechanicsFlashcardsPanel({ onChangeSubject }) {
             ) : (
               <>
                 <small className="pm-flashcard-side-label">{current.objective}</small>
-                <MathText as="h2" prose className="pm-flashcard-question-text">{current.front}</MathText>
+                <MathText as="h2" prose className="pm-flashcard-question-text">{physicsFlashcardQuestion(current)}</MathText>
                 <span className="pm-flashcard-hint">Tap to reveal the answer</span>
               </>
             )}
