@@ -1,0 +1,1177 @@
+{
+  "subject": "CSEC Information Technology",
+  "syllabus": "CXC 30/G/SYLL 17",
+  "effective": "May/June 2020",
+  "sections": [
+    {
+      "id": 1,
+      "title": "Computer Fundamentals and Information Processing",
+      "objectives": 15,
+      "topics": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Computer Networks and Web Technologies",
+      "objectives": 4,
+      "topics": [
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Social and Economic Impact of Information and Communications Technology",
+      "objectives": 6,
+      "topics": [
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Word-Processing and Web Page Design",
+      "objectives": 12,
+      "topics": [
+        13,
+        14,
+        15
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Spreadsheets",
+      "objectives": 9,
+      "topics": [
+        16,
+        17,
+        18
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Database Management",
+      "objectives": 4,
+      "topics": [
+        19,
+        20
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Problem-Solving and Program Design",
+      "objectives": 7,
+      "topics": [
+        21,
+        22,
+        23
+      ]
+    },
+    {
+      "id": 8,
+      "title": "Program Implementation",
+      "objectives": 6,
+      "topics": [
+        24,
+        25,
+        26
+      ]
+    }
+  ],
+  "topics": [
+    {
+      "id": 1,
+      "section": 1,
+      "objectives": "1-2",
+      "title": "Information Technology and Types of Computer Systems",
+      "purpose": "Understand what Information Technology covers and choose suitable computer systems for different jobs.",
+      "core": "INFORMATION TECHNOLOGY\nInformation Technology is the use of computer and communication technologies to collect, process, store and communicate information.\n\nTYPES OF COMPUTER SYSTEMS\nSupercomputers handle extremely demanding calculations. Mainframes support large organisational workloads and many users. Desktop systems are general-purpose personal computers. Mobile devices include laptops, tablets and smartphones. Embedded computers are built into larger devices to perform specific control tasks.\n\nCHOOSING A SYSTEM\nCompare systems using processing speed, storage and portability. The best system depends on the job that must be done.",
+      "worked": [
+        "A weather research centre may require a supercomputer because it processes very large scientific datasets.",
+        "A controller inside a microwave oven is an embedded computer because it performs a specific task inside another device."
+      ],
+      "tools": [
+        "Computer System Selector",
+        "Scenario Matcher"
+      ],
+      "mistakes": [
+        "Do not assume a larger computer is automatically the best choice.",
+        "Embedded computers are computers even though they may not look like desktop PCs."
+      ],
+      "quick": [
+        "Which type of computer is suitable for very large scientific calculations?",
+        "Give one example of an embedded system."
+      ],
+      "overview": "Information Technology is broader than simply knowing how to use a computer. It is about using computer systems and communication technologies to collect, process, store, retrieve and communicate information. Different computer systems are designed for different workloads, so the important question is not which computer is 'best', but which one is most suitable for the job.",
+      "whyItMatters": "When CXC gives you a scenario, look for clues such as the amount of processing required, the number of users, portability and whether the computer is built into another device.",
+      "examFocus": "Be ready to identify a system type and justify why it suits a stated task.",
+      "quickAnswers": [
+        "Supercomputer. It is designed for extremely demanding scientific and mathematical processing.",
+        "An embedded system could be the controller inside a microwave oven, washing machine or motor vehicle. It is built into another device to perform a specific task."
+      ],
+      "examChallenge": {
+        "paper": "Paper 02 style",
+        "marks": 3,
+        "prompt": "A research organisation processes very large climate datasets, while a washing machine uses a computer to control its wash cycle. Identify the type of computer system most suitable for EACH situation and give ONE reason for either choice.",
+        "answerPoints": [
+          "Climate research: supercomputer.",
+          "Washing machine: embedded computer/system.",
+          "Reason should relate to very high processing needs for the supercomputer or a specific built-in control task for the embedded system."
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "section": 1,
+      "objectives": "3-4",
+      "title": "Hardware Components, Storage Units and the IPOS Cycle",
+      "purpose": "Understand the main hardware components and how input, processing, output and storage work together.",
+      "core": "MAIN COMPONENTS\nA computer system includes input devices, the CPU, primary memory, secondary storage and output devices.\n\nPRIMARY MEMORY\nRAM temporarily holds active programs and data. ROM stores instructions that remain when power is removed.\n\nSECONDARY STORAGE\nExamples include hard disks, magnetic tape, flash drives, memory cards and optical discs such as CD, DVD and Blu-ray.\n\nSTORAGE UNITS\nCommon units are bit, byte, kilobyte, megabyte, gigabyte and terabyte.\n\nIPOS CYCLE\nInput enters the system. Processing changes or works on the data. Output presents the result. Storage keeps data, instructions or results for later use.",
+      "worked": [
+        "At a supermarket, a barcode is input, the CPU processes the item code, product data is retrieved from storage and the price is output on the screen."
+      ],
+      "tools": [
+        "Animated IPOS Cycle",
+        "Storage Unit Converter"
+      ],
+      "mistakes": [
+        "Input and output are different stages.",
+        "RAM is not the same as long-term secondary storage."
+      ],
+      "quick": [
+        "Name the four parts of the IPOS cycle.",
+        "State one function of RAM."
+      ],
+      "overview": "The main parts of a computer system work together rather than operating independently. Input devices capture data, the CPU processes instructions, memory and storage hold data or instructions, and output devices present the result. The IPOS cycle is a simple way to follow what happens to data as it moves through a system.",
+      "whyItMatters": "If you can trace a real situation through Input, Processing, Output and Storage, hardware questions become much easier because you are thinking about the role of each component.",
+      "examFocus": "Expect to identify hardware components, explain their functions and apply the IPOS cycle to a scenario.",
+      "quickAnswers": [
+        "Input, Processing, Output and Storage.",
+        "RAM temporarily stores programs, instructions and data that are currently being used by the computer."
+      ],
+      "examChallenge": {
+        "paper": "Paper 02 style",
+        "marks": 4,
+        "prompt": "A supermarket scans a product barcode and displays the price before saving the sale. Identify the Input, Processing, Output and Storage involved in this transaction.",
+        "answerPoints": [
+          "Input: barcode/product code captured by the scanner.",
+          "Processing: the system looks up the product and determines the price.",
+          "Output: the price/product information is displayed.",
+          "Storage: the sale or product record is read from or written to storage."
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "section": 1,
+      "objectives": "5",
+      "title": "Cloud Storage and Local Storage",
+      "purpose": "Compare cloud storage and local storage using practical criteria.",
+      "core": "LOCAL STORAGE\nLocal storage keeps data on a device or storage system that is directly available to the user or organisation.\n\nCLOUD STORAGE\nCloud storage keeps data on remote servers that are accessed through a network, usually the Internet.\n\nCOMPARISON CRITERIA\nConsider capacity, cost, accessibility and security. Cloud storage may make remote access and collaboration easier, but it depends on connectivity and requires careful security. Local storage may be available without Internet access, but the user is responsible for the local device and its backups.",
+      "worked": [
+        "A student who needs the same file at home and school may prefer cloud storage.",
+        "A computer lab that must work during Internet outages may keep important local copies."
+      ],
+      "tools": [
+        "Cloud vs Local Storage Comparator"
+      ],
+      "mistakes": [
+        "Cloud storage is not automatically unlimited or automatically secure.",
+        "Local storage still needs backup and access controls."
+      ],
+      "quick": [
+        "State one advantage of cloud storage.",
+        "State one security concern associated with cloud storage."
+      ],
+      "overview": "Local storage and cloud storage both keep data, but they differ in where the data is kept and how it is accessed. Local storage is directly available on the user's device or local system. Cloud storage keeps data on remote servers and is normally accessed through a network. Neither choice is automatically better in every situation.",
+      "whyItMatters": "A good comparison uses clear criteria such as accessibility, security, cost and capacity. The correct choice depends on what the user needs.",
+      "examFocus": "Be ready to compare cloud and local storage and justify a choice for a real situation.",
+      "quickAnswers": [
+        "One advantage is that authorised users can access files from different locations when an Internet connection is available.",
+        "A concern is unauthorised access, privacy, dependence on Internet access or the security of the cloud account/service."
+      ],
+      "examChallenge": {
+        "paper": "Paper 02 style",
+        "marks": 3,
+        "prompt": "A student wants to work on the same project at school and at home. State ONE advantage of cloud storage for this student and TWO factors that should still be considered.",
+        "answerPoints": [
+          "Advantage: remote access to the same files, or easier sharing/collaboration.",
+          "Any two suitable factors such as security, Internet availability, cost or capacity."
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "section": 1,
+      "objectives": "6-8",
+      "title": "Input, Output, Software and User Interfaces",
+      "purpose": "Select suitable devices and software, and compare common user interfaces.",
+      "core": "INPUT DEVICES\nExamples include OMR, OCR, MICR, mouse, joystick, barcode reader, scanner, light pen, touchscreen, keyboard, camera, biometric system, sensor, microphone and webcam.\n\nOUTPUT DEVICES\nVisual output includes monitors, laser/inkjet/dot-matrix/thermal printers, plotters, 3D printers and microfilm. Audible output includes speakers, headphones and earphones.\n\nSOFTWARE\nSystems software includes the operating system and utilities. Application software may be general-purpose or special-purpose, and may be off-the-shelf, custom-written or customised.\n\nUSER INTERFACES\nInterfaces include command-line, menu-driven, graphical and touch interfaces. The most suitable interface depends on the user and task.",
+      "worked": [
+        "OMR is suited to reading shaded answer sheets, while OCR converts printed characters into editable text.",
+        "A touch interface is suitable for a public kiosk because users can make selections directly on the screen."
+      ],
+      "tools": [
+        "Device Scenario Matcher",
+        "Software Classifier",
+        "Interface Comparison"
+      ],
+      "mistakes": [
+        "OCR and OMR are not the same.",
+        "Operating systems are systems software, not application software."
+      ],
+      "quick": [
+        "Which technology reads magnetic characters on cheques?",
+        "Give one example of systems software."
+      ],
+      "overview": "Input and output devices should always be selected according to the job they must perform. OMR, OCR and MICR are often confused because they all capture data, but they read different things. Software also has different roles: systems software operates and supports the computer, while application software helps the user complete a task.",
+      "whyItMatters": "Device and software questions usually contain a clue about the type of data being captured, the required output or the user's task.",
+      "examFocus": "Practise matching devices, software types and interfaces to specific applications.",
+      "quickAnswers": [
+        "MICR, or Magnetic Ink Character Recognition.",
+        "An operating system is one example of systems software. A utility program is another."
+      ],
+      "examChallenge": {
+        "paper": "Paper 02 style",
+        "marks": 4,
+        "prompt": "A school wants to read shaded multiple-choice sheets and then print students' result slips. Name the input technology and a suitable output device. State ONE reason for each choice.",
+        "answerPoints": [
+          "Input: OMR, because it detects marks in predetermined positions.",
+          "Output: a suitable printer such as laser/inkjet, because a physical hard copy is required.",
+          "Award the reasons only when clearly linked to the task."
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "section": 1,
+      "objectives": "9-10",
+      "title": "System Specifications and Basic Troubleshooting",
+      "purpose": "Evaluate whether a computer is suitable for a task and solve basic hardware problems.",
+      "core": "SYSTEM SUITABILITY\nConsider CPU type and speed, RAM, secondary-storage capacity and speed, required software and input/output devices.\n\nMATCH THE SYSTEM TO THE TASK\nVideo editing and graphic design generally need stronger processing, memory and storage than basic web browsing.\n\nBASIC TROUBLESHOOTING\nStart with simple checks. Look for loose cables, monitor-control problems, printer-cartridge issues and loose or dead batteries before assuming there is a major fault.",
+      "worked": [
+        "A blank monitor should first lead to checks of power and display connections.",
+        "A video-editing computer should have suitable processing power, enough RAM and adequate fast storage."
+      ],
+      "tools": [
+        "Spec Sheet Decoder",
+        "Troubleshooting Lab"
+      ],
+      "mistakes": [
+        "Do not replace software before checking a loose cable.",
+        "Specifications should be judged against the intended use."
+      ],
+      "quick": [
+        "Name two specifications important for video editing.",
+        "What should you check first if a monitor has no display?"
+      ],
+      "overview": "Computer specifications only make sense when they are connected to a purpose. A machine used for video editing, gaming or graphic design usually needs stronger processing, more working memory and suitable storage than one used for basic browsing. Troubleshooting follows the same practical approach: begin with the simplest likely cause before making major changes.",
+      "whyItMatters": "CXC may give you a user's needs and ask whether a system is suitable, or present a simple hardware fault and ask what should be checked first.",
+      "examFocus": "Explain suitability using named specifications, and use a logical first-step approach to basic faults.",
+      "quickAnswers": [
+        "Two important specifications are CPU performance and sufficient RAM. Fast, adequate storage is also important.",
+        "Check that the monitor has power and that its display cable/connection is secure. Checking brightness or monitor controls may also be appropriate."
+      ],
+      "examChallenge": {
+        "paper": "Paper 02 style",
+        "marks": 4,
+        "prompt": "A student wants a computer for editing high-resolution video. State THREE hardware specifications that should be considered and explain why ONE of them is important.",
+        "answerPoints": [
+          "Any three appropriate specifications such as CPU performance, RAM and storage capacity/speed.",
+          "One clear explanation linking a named specification to video-editing performance."
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "section": 1,
+      "objectives": "11-15",
+      "title": "Data, Information, Online Reliability, Validation and File Access",
+      "purpose": "Work with information-processing concepts and select suitable checks and file-access methods.",
+      "core": "DATA AND INFORMATION\nData is raw, unprocessed facts. Information is data that has been processed into a useful form. Sources include people, places and things. Documents may be hard copy or soft copy, human-readable or machine-readable, and may include turnaround documents.\n\nONLINE RELIABILITY\nCheck authenticity, currency, relevance and bias before relying on online information.\n\nVALIDATION AND VERIFICATION\nValidation checks whether data follows rules. Verification checks whether data was entered accurately. Validation methods include range, reasonableness, data type, consistency, presence, format and length checks. Verification methods include double entry and proofreading.\n\nFILE ACCESS\nThe syllabus includes sequential, serial, direct and random access. Choose the method that suits the application, such as archiving, payroll or real-time systems.",
+      "worked": [
+        "A mark from 0 to 100 can use a range check.",
+        "Typing an account number twice and comparing the two entries is verification."
+      ],
+      "tools": [
+        "Data-to-Information Lab",
+        "Online Source Reliability Checker",
+        "Validation Lab",
+        "Access Method Simulator"
+      ],
+      "mistakes": [
+        "Passing validation does not prove a value is factually correct.",
+        "Validation and verification are different processes."
+      ],
+      "quick": [
+        "Name two factors used to judge online information.",
+        "Which check is suitable for a field that must contain exactly eight characters?"
+      ],
+      "overview": "Data is made useful through processing. Raw facts become information when they are organised or processed so that they have meaning. Good information processing also requires reliable sources, accurate data entry and a suitable way to organise or access stored records.",
+      "whyItMatters": "This topic connects several ideas that often appear in short scenarios: reliability of online information, validation versus verification and choosing a file-access method.",
+      "examFocus": "Know the difference between validation and verification, and be able to select a specific check or access method.",
+      "quickAnswers": [
+        "Any two of authenticity, currency, relevance and bias.",
+        "A length check, because the field must contain exactly eight characters."
+      ],
+      "examChallenge": {
+        "paper": "Paper 02 style",
+        "marks": 4,
+        "prompt": "A school ID must contain exactly eight characters. A clerk also enters the ID twice before saving it. Name the data check used for the eight-character rule and the process used when the two entries are compared. Explain the difference between the two processes.",
+        "answerPoints": [
+          "Eight-character rule: length validation/check.",
+          "Comparing two entries: verification using double entry.",
+          "Validation checks whether data follows a rule, while verification checks whether the data was entered accurately."
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "section": 2,
+      "objectives": "1",
+      "title": "Network Types, Mobile Networks and Levels of Privacy",
+      "purpose": "Distinguish network types and understand mobile networks, wireless access and network privacy.",
+      "core": "NETWORK TYPES\nA LAN covers a small area. A MAN covers a metropolitan area. A WAN covers a large geographical area. A mobile network uses radio-based carrier technology to support mobile communication.\n\nMOBILE NETWORKS\nStudents should understand the general development from earlier generations such as 2G to current mobile networks. Detailed internal operation is not required.\n\nWIRELESS TECHNOLOGIES\nBluetooth, Wi-Fi and hotspots support wireless communication in different situations.\n\nPRIVACY LEVELS\nThe Internet is public. An intranet is private to an organisation. An extranet gives controlled access to selected external users.",
+      "worked": [
+        "A school computer lab is normally a LAN.",
+        "A supplier portal that gives approved suppliers limited access is an extranet."
+      ],
+      "tools": [
+        "Network Scale Visualiser",
+        "Internet-Intranet-Extranet Scenario Lab"
+      ],
+      "mistakes": [
+        "Wi-Fi is not the Internet.",
+        "A mobile network is not simply another name for a WAN."
+      ],
+      "quick": [
+        "Distinguish between an intranet and an extranet.",
+        "Name one wireless network technology."
+      ],
+      "overview": "Networks differ mainly in the geographical area they cover and the way users connect. A LAN is local, a MAN covers a metropolitan area and a WAN covers a much larger area. Mobile networks use radio-based carrier technology, while Wi-Fi and Bluetooth support wireless communication over shorter ranges.",
+      "whyItMatters": "Privacy terms are also important. The Internet is public, an intranet is private to an organisation and an extranet gives controlled access to authorised external users.",
+      "examFocus": "Distinguish network types and privacy levels from short organisational scenarios.",
+      "quickAnswers": [
+        "An intranet is a private network for people inside an organisation. An extranet gives selected authorised users outside the organisation controlled access.",
+        "Wi-Fi or Bluetooth."
+      ],
+      "examChallenge": {
+        "paper": "Paper 02 style",
+        "marks": 3,
+        "prompt": "A company has a private staff network and also allows selected suppliers to view limited information. Name the network used by staff and the type of network access provided to suppliers. State ONE difference between them.",
+        "answerPoints": [
+          "Staff network: intranet.",
+          "Supplier access: extranet.",
+          "Difference should identify internal private access versus controlled access for authorised external users."
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "section": 2,
+      "objectives": "2",
+      "title": "Network Components and Transmission Media",
+      "purpose": "Explain how basic network devices and transmission media support communication.",
+      "core": "WIRED MEDIA\nTwisted pair, coaxial cable and fibre-optic cable carry signals through physical media.\n\nWIRELESS MEDIA\nInfrared, microwave and satellite transmit data without a cable between endpoints.\n\nSWITCH\nA switch forwards data between devices on the same network.\n\nROUTER\nA router connects different networks and forwards data between them.\n\nMODEM\nA modem supports communication by converting signals as required by the transmission service.\n\nNETWORK INTERFACE CARD\nA network interface card or adapter allows a device to connect to a network.",
+      "worked": [
+        "A router is used when data must move from a school LAN to another network.",
+        "Fibre is useful where high bandwidth and resistance to electromagnetic interference are important."
+      ],
+      "tools": [
+        "Network Component Matcher",
+        "Transmission Media Explorer"
+      ],
+      "mistakes": [
+        "A switch and a router have different roles.",
+        "Fibre-optic cable is wired media even though it carries light."
+      ],
+      "quick": [
+        "State the function of a router.",
+        "Give one wired and one wireless transmission medium."
+      ],
+      "overview": "A network depends on both transmission media and network devices. A switch handles traffic between devices on the same local network, while a router connects different networks. A network interface card connects a device to the network, and a modem supports communication by converting signals as required by the service.",
+      "whyItMatters": "For transmission media, compare characteristics such as capacity, interference, mobility and whether a physical cable is required.",
+      "examFocus": "Know what each common network component does and be able to choose wired or wireless media for a situation.",
+      "quickAnswers": [
+        "A router connects different networks and forwards data between them.",
+        "One wired medium could be twisted pair, coaxial cable or fibre-optic cable. One wireless medium could be microwave, infrared or satellite."
+      ],
+      "examChallenge": {
+        "paper": "Paper 02 style",
+        "marks": 4,
+        "prompt": "A school connects computers in one laboratory and then connects the school network to the Internet. State the function of a switch and the function of a router. Give ONE advantage of fibre-optic cable.",
+        "answerPoints": [
+          "Switch: forwards data among devices on the same local network.",
+          "Router: connects/forwards data between different networks.",
+          "Fibre advantage: high bandwidth, low electromagnetic interference or another valid advantage."
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "section": 2,
+      "objectives": "3-4",
+      "title": "Mobile Communication and Web Technologies",
+      "purpose": "Understand the importance of mobile communication and how major Web technologies work together.",
+      "core": "MOBILE COMMUNICATION\nMobile networks support education, commerce, journalism and many other activities by allowing communication and data access while users are away from fixed locations.\n\nWEB TECHNOLOGIES\nThe World Wide Web is accessed through browsers. HTML structures web-page content. HTTP supports communication between web clients and servers. Hyperlinks connect resources. A web server provides web content. A URL identifies a resource. FTP transfers files. Upload sends data away from the local system while download receives data. Email supports electronic messaging.",
+      "worked": [
+        "A journalist can send updates from the field using mobile communication.",
+        "A URL identifies where a web resource can be found."
+      ],
+      "tools": [
+        "Web Technology Map",
+        "Upload-Download Animation"
+      ],
+      "mistakes": [
+        "The World Wide Web is not the same thing as the Internet.",
+        "HTML and HTTP perform different roles."
+      ],
+      "quick": [
+        "What does a URL identify?",
+        "Which protocol is associated with transferring files?"
+      ],
+      "overview": "The Web uses several technologies that work together. A URL identifies a resource, a browser requests it, HTTP supports communication with the web server and HTML describes the structure of the page returned to the browser. FTP is associated with transferring files, while email supports electronic messaging.",
+      "whyItMatters": "The terms are related, but they are not interchangeable. Understanding the role of each one is more useful than memorising abbreviations by themselves.",
+      "examFocus": "Be able to explain what common Web technologies do and how they fit into the process of accessing online content.",
+      "quickAnswers": [
+        "A URL identifies the location/address of a resource on the Web.",
+        "FTP, or File Transfer Protocol."
+      ],
+      "examChallenge": {
+        "paper": "Paper 02 style",
+        "marks": 4,
+        "prompt": "A user enters a web address into a browser and opens a page. State the role of the URL, HTTP and HTML in this process. Name the protocol commonly associated with transferring files.",
+        "answerPoints": [
+          "URL identifies the resource/location.",
+          "HTTP supports communication between the browser/client and web server.",
+          "HTML structures the page content.",
+          "FTP is used for file transfer."
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "section": 3,
+      "objectives": "1-2",
+      "title": "Cybersecurity Concepts and Computer Misuse",
+      "purpose": "Understand security risk and recognise common forms of computer misuse.",
+      "core": "SECURITY CONCEPTS\nComputer security and cybersecurity involve assessing and reducing risk. A vulnerability is a weakness. A threat is something that may cause harm. An attack is an attempt to exploit a weakness. A countermeasure is used to reduce the risk or effect.\n\nCOMPUTER MISUSE\nExamples include cyberbullying, copyright infringement, data theft, denial-of-service attacks, malware, identity theft, phishing, software and music piracy, financial abuse, privacy violations, propaganda, electronic eavesdropping and industrial espionage.\n\nWHO MAY BE AFFECTED\nMisuse can affect individuals, organisations and governments.",
+      "worked": [
+        "A fake banking email asking for credentials is a phishing attempt.",
+        "Flooding a service with requests so legitimate users cannot access it is a denial-of-service attack."
+      ],
+      "tools": [
+        "Threat-Vulnerability-Attack Mapper",
+        "Misuse Scenario Lab"
+      ],
+      "mistakes": [
+        "A vulnerability is not the same as an attack.",
+        "Phishing is based on deception, not simply any unwanted email."
+      ],
+      "quick": [
+        "Define vulnerability.",
+        "Name one form of computer misuse."
+      ],
+      "overview": "Cybersecurity is easier to understand when you follow the chain from weakness to harm. A vulnerability is a weakness, a threat is something that could cause harm, and an attack is an attempt to exploit a weakness. A countermeasure reduces the risk or impact.",
+      "whyItMatters": "Computer misuse includes many different actions, so focus on what the person or software is actually doing, such as stealing data, impersonating someone, copying software illegally or disrupting a service.",
+      "examFocus": "Recognise common forms of misuse and use the terms vulnerability, threat, attack and countermeasure accurately.",
+      "quickAnswers": [
+        "A vulnerability is a weakness in a system that could be exploited.",
+        "Examples include phishing, identity theft, malware, software piracy, denial-of-service attacks, cyberbullying or electronic eavesdropping."
+      ],
+      "examChallenge": {
+        "paper": "Paper 02 style",
+        "marks": 4,
+        "prompt": "An organisation uses an outdated system with a known security weakness. An attacker exploits the weakness and steals customer records. Identify the vulnerability, attack and impact in this scenario, and state ONE suitable countermeasure.",
+        "answerPoints": [
+          "Vulnerability: the known weakness/outdated insecure system.",
+          "Attack: exploiting the weakness to gain access/steal data.",
+          "Impact: loss/theft/exposure of customer data.",
+          "One suitable countermeasure such as patching/updating, access control, monitoring or another relevant security control."
+        ]
+      }
+    },
+    {
+      "id": 11,
+      "section": 3,
+      "objectives": "3",
+      "title": "Security Countermeasures and Personal Security",
+      "purpose": "Choose suitable technical and personal measures to reduce computer-security risk.",
+      "core": "PHYSICAL AND TECHNICAL CONTROLS\nCountermeasures include backup and recovery, hardware and software firewalls, intrusion detection, biometrics, authentication, encryption and antivirus or malware detection.\n\nPERSONAL SECURITY\nVerify suspicious email, check website addresses for authenticity, limit risky use of open Wi-Fi, secure mobile devices and protect personal information in online environments such as social media.\n\nLAYERED SECURITY\nNo single control solves every problem. Good security uses several appropriate measures together.",
+      "worked": [
+        "Encryption helps protect data if a device is stolen.",
+        "Backups make it possible to recover data after loss or damage."
+      ],
+      "tools": [
+        "Security Control Matcher",
+        "Safe-or-Risky Online Practice"
+      ],
+      "mistakes": [
+        "A backup does not stop unauthorised access.",
+        "A firewall does not replace strong authentication."
+      ],
+      "quick": [
+        "Give one physical or technical countermeasure.",
+        "State one safe practice before responding to a suspicious email."
+      ],
+      "overview": "Good security uses layers. Authentication controls who can enter, encryption protects the meaning of stored or transmitted data, firewalls control network traffic, anti-malware detects malicious software and backups support recovery. Personal behaviour is another layer of security.",
+      "whyItMatters": "No single control solves every problem. A strong answer selects a measure that matches the actual risk.",
+      "examFocus": "Given a risk, choose and justify a suitable countermeasure or safe personal practice.",
+      "quickAnswers": [
+        "Examples include a firewall, encryption, authentication, biometrics, anti-malware, backup and recovery or intrusion detection.",
+        "Verify the sender and website address before following links or entering sensitive information. Do not open suspicious attachments."
+      ],
+      "examChallenge": {
+        "paper": "Paper 02 style",
+        "marks": 4,
+        "prompt": "A laptop containing confidential records is stolen. State TWO countermeasures that could reduce the risk to the organisation and explain how EACH helps.",
+        "answerPoints": [
+          "Any two suitable measures, for example encryption, strong authentication or remote/device security controls.",
+          "One explanation for each measure linked to protecting the stolen device or data."
+        ]
+      }
+    },
+    {
+      "id": 12,
+      "section": 3,
+      "objectives": "4-6",
+      "title": "Automation, IT Careers and the Impact of ICT",
+      "purpose": "Assess how ICT changes jobs, careers and major areas of society.",
+      "core": "AUTOMATION AND JOBS\nAutomation can reduce some routine jobs while increasing productivity and creating demand for new skills. Retraining may be necessary.\n\nIT CAREERS\nRoles include network engineer, computer programmer, support specialist, systems analyst, network/system/database administrator, software developer, web developer and social media specialist.\n\nIMPACT OF ICT\nThe syllabus examines ICT in education, medicine, business, law enforcement and recreation. Examples include distance learning, online tutoring, telemedicine, electronic commerce and improved information access.",
+      "worked": [
+        "Telemedicine can connect patients in remote areas with medical professionals.",
+        "A systems analyst studies requirements and helps design information-system solutions."
+      ],
+      "tools": [
+        "IT Career Explorer",
+        "Automation Impact Scenario Lab"
+      ],
+      "mistakes": [
+        "Automation can have both positive and negative effects.",
+        "Do not confuse a database administrator with a network engineer."
+      ],
+      "quick": [
+        "Give one possible effect of automation on employment.",
+        "Which career focuses on analysing system requirements?"
+      ],
+      "overview": "ICT can change both the amount and the type of work people do. Automation may reduce some routine jobs, but it can also improve productivity, create technical roles and require employees to learn new skills. ICT also changes how services are delivered in education, medicine, business, law enforcement and recreation.",
+      "whyItMatters": "Balanced answers are important. Avoid claiming that technology only creates jobs or only removes jobs.",
+      "examFocus": "Discuss positive and negative effects, and match IT careers to their responsibilities.",
+      "quickAnswers": [
+        "Automation may reduce some routine jobs, create new technical roles, increase productivity or create a need for retraining.",
+        "Computer systems analyst."
+      ],
+      "examChallenge": {
+        "paper": "Paper 02 style",
+        "marks": 4,
+        "prompt": "A company automates a manual records process. State ONE possible negative effect and ONE possible positive effect on employees. Name the professional who would normally analyse the company's system requirements and state ONE responsibility of that professional.",
+        "answerPoints": [
+          "One negative effect such as job displacement or need for retraining.",
+          "One positive effect such as improved productivity or new skilled roles.",
+          "Computer systems analyst.",
+          "Analyses requirements/processes and helps design a suitable information-system solution."
+        ]
+      }
+    },
+    {
+      "id": 13,
+      "section": 4,
+      "objectives": "1-3",
+      "title": "Word Processing: Creating, Formatting and Editing Documents",
+      "purpose": "Create professional documents using suitable content, formatting, tables, columns and editing tools.",
+      "core": "CONTENT FROM DIFFERENT SOURCES\nDocuments may combine typed text, imported text, images and other objects.\n\nFORMATTING\nUse fonts, colour, bold, italics, underline, superscript, subscript, tabs, bullets, numbering, line spacing, alignment, highlighting, page size, margins, breaks, page numbers, headers, footers, footnotes and endnotes where appropriate.\n\nEDITING AND STRUCTURE\nUse block operations, search and replace, tables, borders, shading, row/column changes, split cells/tables, text direction, cell margins and columns. Formatting should make the document clearer, not simply more decorative.",
+      "worked": [
+        "Search and replace is efficient when the same word must be changed throughout a long document.",
+        "Columns can be used for a newsletter-style layout."
+      ],
+      "tools": [
+        "SPARK Document Lab",
+        "Formatting Challenge"
+      ],
+      "mistakes": [
+        "Do not use formatting just because it is available.",
+        "Repeated blank lines are not a good substitute for proper page breaks."
+      ],
+      "quick": [
+        "Which feature replaces repeated text throughout a document?",
+        "Name two formatting features used in tables."
+      ],
+      "overview": "Word processing is not only about typing. A good document combines content from different sources and uses formatting to make information easier to read. Page layout, headings, spacing, tables, columns and editing tools should support the purpose of the document.",
+      "whyItMatters": "CXC practical tasks often test several features together, so you should understand what each tool changes rather than memorising menu names.",
+      "examFocus": "Choose appropriate formatting and editing features and explain why they improve a document.",
+      "quickAnswers": [
+        "Search and replace.",
+        "Examples include borders, shading, row/column changes, split cells, text direction or cell margins."
+      ],
+      "examChallenge": {
+        "paper": "Paper 02 style",
+        "marks": 4,
+        "prompt": "A student is preparing a two-page newsletter. State TWO word-processing features that could improve its layout and explain ONE reason for using each feature.",
+        "answerPoints": [
+          "Any two relevant features such as columns, headers/footers, tables, images, bullets or formatting.",
+          "A clear reason for the first feature.",
+          "A clear reason for the second feature."
+        ]
+      }
+    },
+    {
+      "id": 14,
+      "section": 4,
+      "objectives": "4-8",
+      "title": "Advanced Word Processing: Review, Protection, TOC, Mail Merge and Forms",
+      "purpose": "Use advanced document features to review, protect, organise and automate documents.",
+      "core": "REVIEW TOOLS\nSpell and grammar check, thesaurus, word count, language settings, comments and track changes help prepare a document for final use.\n\nPROTECTION\nAutomatic save, backup copies and edit restrictions such as password protection can help protect work.\n\nTABLE OF CONTENTS\nAn automatic table of contents uses document headings to generate an organised list of sections and pages.\n\nMAIL MERGE\nMail merge combines a primary document with a data source containing fields.\n\nFILLABLE FORMS\nContent controls include check boxes, text boxes, date pickers, drop-down lists and command buttons.",
+      "worked": [
+        "A school can use mail merge to create personalised letters for hundreds of parents.",
+        "A date picker is suitable when an online form requires a date."
+      ],
+      "tools": [
+        "Mail Merge Simulator",
+        "Fillable Form Builder",
+        "Track Changes Practice"
+      ],
+      "mistakes": [
+        "Spell check cannot understand every context.",
+        "Mail merge needs both a primary document and a data source."
+      ],
+      "quick": [
+        "State the purpose of track changes.",
+        "Name two content controls used in a fillable form."
+      ],
+      "overview": "Advanced word-processing features help turn a draft into a finished document. Review tools help find or record changes, protection controls who may edit the file, an automatic table of contents organises headings, mail merge produces personalised copies and form controls collect structured information.",
+      "whyItMatters": "The key is to match the feature to the task. For example, mail merge is useful when the main document is the same but selected details change for each recipient.",
+      "examFocus": "Know the components and purpose of mail merge, track changes, automatic TOC, document protection and fillable-form controls.",
+      "quickAnswers": [
+        "Track changes records edits so that they can be reviewed, accepted or rejected.",
+        "Any two of text box, check box, date picker, drop-down list or command button."
+      ],
+      "examChallenge": {
+        "paper": "Paper 02 style",
+        "marks": 5,
+        "prompt": "A school sends the same letter to 250 parents but inserts a different parent name and student name in each copy. Name the feature used, identify its TWO main components and state ONE other review or protection feature that could be useful before the letters are sent.",
+        "answerPoints": [
+          "Mail merge.",
+          "Primary/main document.",
+          "Data source containing the varying fields.",
+          "One suitable review/protection feature such as spell/grammar check, track changes, comments, password/edit restriction or backup."
+        ]
+      }
+    },
+    {
+      "id": 15,
+      "section": 4,
+      "objectives": "9-12",
+      "title": "Web Page Design and Website Evaluation",
+      "purpose": "Plan, create and evaluate a simple website.",
+      "core": "PLAN FIRST\nIdentify the purpose, intended audience, required pages, content and layout. The syllabus limits the practical site to no more than three pages.\n\nCREATE PAGES\nChoose an appropriate design, add and remove text and graphics, wrap text around images and create a home page with hyperlinks. HTML coding is not required for this syllabus objective.\n\nHYPERLINKS\nLinks may go to another web page, a location on the same page, an email address or a user-created file.\n\nEVALUATE BEFORE PUBLISHING\nCheck accuracy, user friendliness, effective display, working hyperlinks and current content. A test audience can provide useful feedback.",
+      "worked": [
+        "A school club should decide who the site is for before choosing its content and layout.",
+        "A broken-link test should be completed before publishing."
+      ],
+      "tools": [
+        "SPARK Web Lab",
+        "Website Planner",
+        "Broken Link Checker"
+      ],
+      "mistakes": [
+        "Do not build the website before deciding its purpose.",
+        "A visually attractive site can still fail if links are broken or information is outdated."
+      ],
+      "quick": [
+        "State two website-planning decisions.",
+        "Name two types of hyperlink."
+      ],
+      "overview": "A website should be planned before it is built. The purpose and audience influence the content, number of pages and layout. Once pages are created, hyperlinks connect them and allow users to move to other pages, locations on the same page, email addresses or files.",
+      "whyItMatters": "A website is not finished because it looks good. It must also be accurate, usable, current and free of broken links.",
+      "examFocus": "Be able to plan a small website, identify appropriate hyperlinks and explain how the site should be evaluated.",
+      "quickAnswers": [
+        "Any two of purpose, intended audience, number of pages, content and layout.",
+        "Examples include a link to another page, a location on the same page, an email address or a user-created file."
+      ],
+      "examChallenge": {
+        "paper": "Paper 02 style",
+        "marks": 5,
+        "prompt": "A school club is planning a three-page website. State THREE decisions that should be made before the pages are created and TWO checks that should be completed before the site is published.",
+        "answerPoints": [
+          "Any three planning items: purpose, audience, number of pages, content, layout.",
+          "Any two checks such as hyperlink testing, content accuracy/currency, effective display, user friendliness or test-audience feedback."
+        ]
+      }
+    },
+    {
+      "id": 16,
+      "section": 5,
+      "objectives": "1-4",
+      "title": "Spreadsheet Fundamentals, Functions and Formulae",
+      "purpose": "Use spreadsheet terminology, predefined functions and arithmetic formulae correctly.",
+      "core": "SPREADSHEET STRUCTURE\nA workbook contains worksheets. A worksheet contains rows, columns and cells. A cell address identifies a cell. A range is a group of cells.\n\nFORMULAE AND FUNCTIONS\nA formula is an expression created by the user. A function is a predefined operation.\n\nFUNCTIONS\nThe current syllabus includes SUM, AVERAGE, DATE, MAX, MIN, COUNT, COUNTA, COUNTIF, VLOOKUP, PMT and IF.\n\nARITHMETIC FORMULAE\nUse addition, subtraction, multiplication, division and brackets correctly.",
+      "worked": [
+        "=SUM(B2:B10) adds the values in the range.",
+        "=IF(C2>=50,\"Pass\",\"Fail\") returns a result based on a condition."
+      ],
+      "tools": [
+        "SPARK Spreadsheet Lab",
+        "Formula Builder",
+        "Function Practice"
+      ],
+      "mistakes": [
+        "COUNT and COUNTA do not do exactly the same thing.",
+        "A function is not simply another name for every formula."
+      ],
+      "quick": [
+        "Which function counts non-empty cells?",
+        "Write a formula to multiply B2 by C2."
+      ],
+      "overview": "A spreadsheet is a grid of cells used to organise data and perform calculations. A formula is an expression you create, while a function is a predefined operation such as SUM or AVERAGE. Cell references make calculations reusable because the formula points to data rather than repeating the values manually.",
+      "whyItMatters": "The most important habit is to read a formula from left to right and identify what each cell reference represents. If B2 contains quantity and C2 contains price, =B2*C2 means quantity multiplied by price.",
+      "examFocus": "Expect to write formulae and functions using correct cell references and explain what they calculate.",
+      "quickAnswers": [
+        "COUNTA.",
+        "=B2*C2"
+      ],
+      "examChallenge": {
+        "paper": "Paper 02 style",
+        "marks": 5,
+        "prompt": "A worksheet stores Quantity in B2:B6 and UnitPrice in C2:C6. Write the formula for D2 to calculate TotalCost, write a function to calculate the total of D2:D6, and name the function that counts non-empty cells.",
+        "answerPoints": [
+          "D2: =B2*C2 or equivalent.",
+          "Total: =SUM(D2:D6).",
+          "COUNTA counts non-empty cells.",
+          "Award marks for correct cell references and syntax as appropriate."
+        ]
+      }
+    },
+    {
+      "id": 17,
+      "section": 5,
+      "objectives": "5-7",
+      "title": "References, Sorting, Filtering and Pivot Tables",
+      "purpose": "Copy formulae safely and organise large spreadsheet datasets.",
+      "core": "CELL REFERENCES\nRelative references change when copied. Absolute references remain fixed. Named ranges can make formulae easier to understand.\n\nMOVING AND COPYING\nMove, copy and delete operations can affect formula references and worksheet structure.\n\nROWS AND COLUMNS\nInsert, delete and modify rows and columns carefully.\n\nDATA FORMATTING\nUse suitable currency, accounting, percentage, comma and decimal formatting.\n\nSORTING AND FILTERING\nSort by primary and secondary fields. Filter using simple or multiple criteria.\n\nPIVOT TABLES\nPivot tables can summarise large datasets in one or two dimensions, create frequency distributions and support pivot charts.",
+      "worked": [
+        "=$F$2*D5 keeps F2 fixed when the formula is copied.",
+        "A pivot table can summarise sales by salesperson and month."
+      ],
+      "tools": [
+        "Relative-Absolute Reference Animator",
+        "Sort and Filter Lab",
+        "Pivot Table Simulator"
+      ],
+      "mistakes": [
+        "Copying a relative formula changes its references.",
+        "Sorting and filtering are different operations."
+      ],
+      "quick": [
+        "What does $B$4 mean in a formula?",
+        "When is a pivot table useful?"
+      ],
+      "overview": "Cell references determine what happens when a formula is copied. A relative reference such as B2 changes according to the new location. An absolute reference such as $F$2 stays fixed. Spreadsheet data can then be organised using sorting and filtering, while pivot tables summarise larger datasets by categories.",
+      "whyItMatters": "When you copy a formula, ask which part should move with the new row or column and which part must remain fixed.",
+      "examFocus": "Write copied formulae correctly and distinguish sorting, filtering and pivot-table summarising.",
+      "quickAnswers": [
+        "$B$4 is an absolute reference. Both column B and row 4 remain fixed when the formula is copied.",
+        "A pivot table is useful for summarising and reorganising a large dataset by selected categories, such as sales by month and salesperson."
+      ],
+      "examChallenge": {
+        "paper": "Paper 02 style",
+        "marks": 4,
+        "prompt": "A formula in E2 is =D2*$G$1 and is copied to E6. Write the formula that should appear in E6 and explain why the reference to G1 does not change.",
+        "answerPoints": [
+          "=D6*$G$1.",
+          "D2 is relative and changes to D6 when copied.",
+          "$G$1 is absolute, so its column and row remain fixed."
+        ]
+      }
+    },
+    {
+      "id": 18,
+      "section": 5,
+      "objectives": "8-9",
+      "title": "Spreadsheet Charts and Linked Worksheets",
+      "purpose": "Choose suitable charts and solve problems using one or more linked worksheets.",
+      "core": "CHART TYPES\nThe syllabus includes column, bar, line and pie charts.\n\nCHOOSING A CHART\nBar or column charts compare categories. Line graphs show change across an ordered sequence. Pie charts show parts of one meaningful total.\n\nCHART LABELS\nUse meaningful titles, axis labels and data labels where appropriate.\n\nMULTIPLE WORKSHEETS\nA spreadsheet problem may use values from more than one worksheet. Linking worksheets avoids unnecessary re-entry and keeps related calculations connected.",
+      "worked": [
+        "A line graph is suitable for monthly sales over a year.",
+        "A formula can link a value from a totals sheet into a summary sheet."
+      ],
+      "tools": [
+        "Chart Builder",
+        "Choose-the-Chart Challenge",
+        "Linked Worksheet Lab"
+      ],
+      "mistakes": [
+        "A pie chart is not suitable for every dataset.",
+        "A chart without clear labels can be difficult to interpret."
+      ],
+      "quick": [
+        "Which chart best shows a trend over twelve months?",
+        "Why link worksheets instead of typing the same value again?"
+      ],
+      "overview": "Charts convert worksheet values into a visual form, but the chart type should match the message. Bar or column charts compare categories, line graphs show change across an ordered sequence and pie charts show parts of one total. Multiple worksheets can also be linked so a value entered once can be reused elsewhere.",
+      "whyItMatters": "A technically correct chart can still communicate poorly if the wrong chart type is chosen or if titles and labels are missing.",
+      "examFocus": "Choose an appropriate chart and explain the choice. Be able to use or explain links between worksheets.",
+      "quickAnswers": [
+        "A line graph.",
+        "Linking worksheets avoids unnecessary re-entry and allows related calculations or summaries to update when the source values change."
+      ],
+      "examChallenge": {
+        "paper": "Paper 02 style",
+        "marks": 4,
+        "prompt": "A company wants to show monthly sales from January to December and also display annual totals on a separate Summary worksheet. State the most suitable chart type for the monthly data and explain TWO advantages of linking the Summary worksheet to the monthly worksheets.",
+        "answerPoints": [
+          "Line graph.",
+          "Linked values update when source data changes.",
+          "Avoids unnecessary re-entry/reduces duplication and associated errors."
+        ]
+      }
+    },
+    {
+      "id": 19,
+      "section": 6,
+      "objectives": "1-3",
+      "title": "Database Fundamentals, Tables, Keys and Relationships",
+      "purpose": "Design a database with suitable tables, fields, data types and relationships.",
+      "core": "DATABASE\nA database is a repository of information and may contain related tables.\n\nTERMINOLOGY\nA row is a record. A column is a field. Keys include primary, secondary, candidate and foreign keys. Common data types include numeric, text, logical, date/time and currency.\n\nCREATE AND MODIFY TABLES\nThe syllabus expects tables using several data types, populated with records, and modified by adding/deleting fields or changing definitions.\n\nRELATIONSHIPS\nPrimary and foreign keys support relationships. The syllabus includes one-to-one and one-to-many relationships.",
+      "worked": [
+        "STUDENT.StudentID may be the primary key, while PAYMENT.StudentID can be a foreign key.",
+        "One customer can have many orders, creating a one-to-many relationship."
+      ],
+      "tools": [
+        "SPARK Database Lab",
+        "Key Type Explorer",
+        "Relationship Builder"
+      ],
+      "mistakes": [
+        "A field is not a record.",
+        "A foreign key does not have to be unique in the child table."
+      ],
+      "quick": [
+        "State the purpose of a primary key.",
+        "What relationship exists when one customer has many orders?"
+      ],
+      "overview": "A relational database stores structured data in tables. Each row is a record and each column is a field. Keys are important because they identify records and connect tables. A primary key uniquely identifies a record, while a foreign key stores a matching value used to relate one table to another.",
+      "whyItMatters": "Think of relationships as describing how many records on one side may be linked to records on the other side.",
+      "examFocus": "Identify keys, choose data types and recognise one-to-one and one-to-many relationships.",
+      "quickAnswers": [
+        "A primary key uniquely identifies each record in a table.",
+        "One-to-many."
+      ],
+      "examChallenge": {
+        "paper": "Paper 02 style",
+        "marks": 4,
+        "prompt": "CUSTOMER(CustomerID, Name) is related to ORDER(OrderID, CustomerID, OrderDate). Identify the primary key in CUSTOMER, the foreign key in ORDER and the relationship between the two tables.",
+        "answerPoints": [
+          "CUSTOMER primary key: CustomerID.",
+          "ORDER foreign key: CustomerID.",
+          "Relationship: one customer to many orders, or one-to-many."
+        ]
+      }
+    },
+    {
+      "id": 20,
+      "section": 6,
+      "objectives": "4",
+      "title": "Database Forms, Queries and Reports",
+      "purpose": "Use database objects to enter, retrieve and present information.",
+      "core": "FORMS\nForms provide a user-friendly way to enter and view data. The syllabus includes form wizard, selected fields and sub-forms.\n\nQUERIES\nQueries can use more than one criterion, selected fields, calculated fields, relational operators and logical operators.\n\nREPORTS\nReports can sort, group and summarise data using features such as COUNT, SUM and AVERAGE. Reports may be generated to screen, printer or file and should use meaningful titles.",
+      "worked": [
+        "Age>=18 AND Parish='Kingston' selects records meeting both conditions.",
+        "A report can group sales by parish and calculate the total for each group."
+      ],
+      "tools": [
+        "Query Builder",
+        "Calculated Field Lab",
+        "Report Designer"
+      ],
+      "mistakes": [
+        "AND and OR produce different result sets.",
+        "A form and a report have different purposes."
+      ],
+      "quick": [
+        "Which object is used mainly to retrieve records by criteria?",
+        "Name one summary function used in a report."
+      ],
+      "overview": "Database objects serve different purposes. Forms make data entry easier, queries retrieve records that match conditions and reports present selected information in an organised form. Queries may combine criteria with AND, OR and NOT and can also calculate new values from existing fields.",
+      "whyItMatters": "When answering a database question, first decide whether the user needs to enter data, search/filter data or present data.",
+      "examFocus": "Write or interpret query criteria and choose suitable form/report features.",
+      "quickAnswers": [
+        "Query.",
+        "COUNT, SUM or AVERAGE."
+      ],
+      "examChallenge": {
+        "paper": "Paper 02 style",
+        "marks": 5,
+        "prompt": "A database must list customers from Kingston who owe more than $5 000. Write suitable query criteria, name the object that could make data entry easier and name TWO summary features that could be used in a report.",
+        "answerPoints": [
+          "Criteria equivalent to Parish='Kingston' AND AmountOwed>5000.",
+          "Form for data entry.",
+          "Any two suitable report summaries such as COUNT, SUM or AVERAGE."
+        ]
+      }
+    },
+    {
+      "id": 21,
+      "section": 7,
+      "objectives": "1-3",
+      "title": "Problem-Solving, Divide-and-Conquer and IPO",
+      "purpose": "Use a structured approach to understand and decompose problems before designing an algorithm.",
+      "core": "PROBLEM-SOLVING STEPS\nDefine the problem, propose and evaluate solutions, select the most efficient solution, develop the algorithm, then test and validate it.\n\nDIVIDE AND CONQUER\nBreak a large problem into smaller tasks, solve each part and combine the solutions.\n\nIPO\nDefine the problem in terms of Input, Process and Output. An IPO chart helps organise these components.",
+      "worked": [
+        "For an average-mark problem, marks are input, the calculation is the process and the average is output."
+      ],
+      "tools": [
+        "Problem Decomposer",
+        "IPO Planner"
+      ],
+      "mistakes": [
+        "Do not start coding before the problem is understood.",
+        "The IPO chart describes the problem, not the programming language."
+      ],
+      "quick": [
+        "List the first and last steps in problem solving.",
+        "What are the three parts of an IPO chart?"
+      ],
+      "overview": "Problem solving should happen before programming. First define what must be solved, then consider possible solutions, choose an efficient approach, develop the algorithm and test it. Divide and conquer makes a large problem easier by breaking it into smaller tasks.",
+      "whyItMatters": "An IPO chart is a useful bridge between the problem and the algorithm because it forces you to identify what enters the solution, what must be done and what must be produced.",
+      "examFocus": "Apply the problem-solving steps and construct an IPO chart from a scenario.",
+      "quickAnswers": [
+        "The first step is to define the problem. The final step is to test and validate the solution.",
+        "Input, Process and Output."
+      ],
+      "examChallenge": {
+        "paper": "Paper 02 style",
+        "marks": 4,
+        "prompt": "A program must read three examination marks and display their average. Construct an IPO chart for the problem and state ONE reason for breaking a larger problem into smaller tasks.",
+        "answerPoints": [
+          "Input: three marks.",
+          "Process: add the marks and divide by 3.",
+          "Output: average.",
+          "Breaking the problem into smaller tasks makes it easier to understand, design, test or manage."
+        ]
+      }
+    },
+    {
+      "id": 22,
+      "section": 7,
+      "objectives": "4",
+      "title": "Variables, Constants and Data Types",
+      "purpose": "Choose suitable variables, constants and data types when designing algorithms.",
+      "core": "VARIABLE\nA variable is a named storage location whose value can change during processing.\n\nCONSTANT\nA constant has a value that does not change while the algorithm runs.\n\nDATA TYPES\nThe current syllabus includes integer, real/floating point, character, Boolean and string.\n\nCHOOSE THE TYPE THAT FITS\nAge may be integer. Average may be real. A full name may be string. A paid/unpaid state may be Boolean.",
+      "worked": [
+        "TOTAL is a variable if it changes as values are added.",
+        "TAX_RATE can be a constant if the rate remains fixed."
+      ],
+      "tools": [
+        "Data Type Sorter",
+        "Variable vs Constant Challenge"
+      ],
+      "mistakes": [
+        "A string can contain many characters.",
+        "A Boolean is used for two logical states, not just the words yes and no."
+      ],
+      "quick": [
+        "Choose a suitable data type for a full name.",
+        "State one difference between a variable and a constant."
+      ],
+      "overview": "Programs need named storage locations for the values they use. Variables can change during execution, while constants stay fixed. Choosing the correct data type tells the program what kind of value is being stored and what operations make sense.",
+      "whyItMatters": "Do not choose a data type from the field name alone. Think about the actual value that must be stored, such as a whole number, decimal, string or true/false state.",
+      "examFocus": "Choose suitable data types and distinguish variables from constants.",
+      "quickAnswers": [
+        "String.",
+        "A variable may change while the algorithm runs. A constant remains fixed during execution."
+      ],
+      "examChallenge": {
+        "paper": "Paper 02 style",
+        "marks": 4,
+        "prompt": "Choose a suitable data type for EACH of the following: StudentName, Age, AverageMark and FeePaid. State which of the following is more likely to be a constant: TAX_RATE or TotalSales, and explain why.",
+        "answerPoints": [
+          "StudentName: string.",
+          "Age: integer.",
+          "AverageMark: real/floating point.",
+          "FeePaid: Boolean/logical.",
+          "TAX_RATE is likely to be a constant if it remains fixed during execution."
+        ]
+      }
+    },
+    {
+      "id": 23,
+      "section": 7,
+      "objectives": "5-7",
+      "title": "Algorithms, Flowcharts, Pseudocode, Operators and Trace Tables",
+      "purpose": "Represent and test algorithms using the conventions expected by CXC.",
+      "core": "ALGORITHMS\nA good algorithm has a finite number of steps, is precise and unambiguous, has clear control flow and terminates.\n\nFLOWCHARTS\nUse start/stop, input/output, process, decision and directional arrows.\n\nPSEUDOCODE\nUse clear statements such as READ, INPUT, STORE, WRITE, PRINT, OUTPUT and DISPLAY. Selection includes IF-THEN, IF-THEN-ELSE and nested conditions. Loops include FOR, WHILE and REPEAT.\n\nOPERATORS\nRelational operators compare values. Logical operators AND, OR and NOT combine conditions. Arithmetic operators include +, -, *, /, MOD and DIV.\n\nTRACE TABLES\nA dry run or desk check records variable values as the algorithm is followed.",
+      "worked": [
+        "MOD gives the remainder after integer division.",
+        "A trace table can show TOTAL after each pass of a loop."
+      ],
+      "tools": [
+        "SPARK Flow Lab",
+        "Pseudocode Builder",
+        "Truth Table Builder",
+        "SPARK Trace Lab"
+      ],
+      "mistakes": [
+        "A decision symbol represents a condition, not a calculation.",
+        "A loop must have a valid stopping condition."
+      ],
+      "quick": [
+        "What does MOD return?",
+        "State the purpose of a trace table."
+      ],
+      "overview": "An algorithm is a clear, finite sequence of steps that solves a problem. Flowcharts and pseudocode are two ways of representing those steps. Operators control calculations and conditions, while trace tables let you follow the values of variables during a dry run.",
+      "whyItMatters": "Testing an algorithm on paper can reveal logic problems before any program code is written.",
+      "examFocus": "Write simple pseudocode, interpret flowcharts and use trace tables and operators correctly.",
+      "quickAnswers": [
+        "MOD returns the remainder after integer division.",
+        "A trace table records the values of identifiers as an algorithm is dry-run, helping to check the logic."
+      ],
+      "examChallenge": {
+        "paper": "Paper 02 style",
+        "marks": 5,
+        "prompt": "Write pseudocode to read an integer N and display EVEN if N MOD 2 = 0, otherwise display ODD. State ONE reason for using a trace table to test the algorithm.",
+        "answerPoints": [
+          "Read/input N.",
+          "Correct condition using N MOD 2 = 0.",
+          "Display EVEN for true branch.",
+          "ELSE/otherwise branch displays ODD.",
+          "Trace table helps verify changing values/control flow or identify logic errors."
+        ]
+      }
+    },
+    {
+      "id": 24,
+      "section": 8,
+      "objectives": "1-3",
+      "title": "Programming Languages, Program Implementation, Testing and Debugging",
+      "purpose": "Understand language levels, implementation steps and common program errors.",
+      "core": "LANGUAGE LEVELS\nMachine and assembly are low-level languages. Examples of high-level languages include Visual Basic, Pascal and C.\n\nIMPLEMENTATION STEPS\nCreate source code, translate and/or link, execute/run and maintain the program.\n\nTESTING AND DEBUGGING\nTesting uses selected test data to verify correctness. Debugging finds and corrects errors.\n\nERROR TYPES\nA syntax error breaks language rules. A logic error produces an incorrect result even though the program may run. A runtime error occurs while the program is executing.",
+      "worked": [
+        "Using + where * is required may produce a logic error.",
+        "A missing required language symbol may produce a syntax error."
+      ],
+      "tools": [
+        "Program Development Pipeline",
+        "Error Type Detective"
+      ],
+      "mistakes": [
+        "A program can run and still contain a logic error.",
+        "Testing and debugging are related but not identical."
+      ],
+      "quick": [
+        "List the four implementation steps.",
+        "What type of error gives a wrong answer while the program still runs?"
+      ],
+      "overview": "A program moves through several stages before and after it runs. Source code is created, translated and linked as required, executed and later maintained. Testing uses selected data to check behaviour, while debugging finds and corrects faults.",
+      "whyItMatters": "The three main error types describe different problems: syntax breaks language rules, logic gives the wrong result and runtime errors occur while the program is executing.",
+      "examFocus": "Know the implementation sequence and identify error types from short scenarios.",
+      "quickAnswers": [
+        "Create source code, translate/link, execute/run, maintain.",
+        "Logic error."
+      ],
+      "examChallenge": {
+        "paper": "Paper 02 style",
+        "marks": 5,
+        "prompt": "List the FOUR main stages of program implementation in order. A program runs but calculates 15% tax as 50%. Name the type of error.",
+        "answerPoints": [
+          "Create source code.",
+          "Translate/link.",
+          "Execute/run.",
+          "Maintain.",
+          "Logic error."
+        ]
+      }
+    },
+    {
+      "id": 25,
+      "section": 8,
+      "objectives": "4-5",
+      "title": "Program Data, Input/Output, Operators and Control Structures",
+      "purpose": "Translate algorithmic statements into high-level program structures.",
+      "core": "PROGRAM DATA\nDeclare variables and constants using integer, real/double/float, character, string and Boolean/logical types.\n\nASSIGNMENT AND INPUT/OUTPUT\nPrograms assign values, read input and display output.\n\nOPERATORS\nPrograms use arithmetic, relational and logical operators.\n\nSELECTION\nUse IF-THEN, IF-THEN-ELSE, nested selection or CASE where suitable.\n\nITERATION\nLoops include FOR, WHILE and REPEAT. The selected structure should match the problem.",
+      "worked": [
+        "A FOR loop suits a task that must repeat a known number of times.",
+        "An IF-ELSE structure can display PASS or FAIL based on a mark."
+      ],
+      "tools": [
+        "SPARK Code Lab",
+        "Control Structure Visualiser"
+      ],
+      "mistakes": [
+        "Do not choose a loop without checking how it will stop.",
+        "The examination does not require one specific programming language."
+      ],
+      "quick": [
+        "Which loop is suitable for exactly ten repetitions?",
+        "Name one data type used to store true/false."
+      ],
+      "overview": "Program statements put the algorithm into action. Declarations create variables and constants, assignment gives them values, input brings data into the program and output presents results. Selection chooses between paths and loops repeat statements.",
+      "whyItMatters": "Choose the control structure that matches the problem. A FOR loop suits a known number of repetitions, while WHILE and REPEAT depend on a condition.",
+      "examFocus": "Translate simple algorithms into language-neutral program logic using the correct control structure.",
+      "quickAnswers": [
+        "FOR loop.",
+        "Boolean or logical."
+      ],
+      "examChallenge": {
+        "paper": "Paper 02 style",
+        "marks": 6,
+        "prompt": "Write pseudocode to read five marks using a loop, calculate their total and display the total.",
+        "answerPoints": [
+          "Initialise TOTAL to 0.",
+          "Use a loop that repeats five times.",
+          "Read/input a mark during each pass.",
+          "Add the mark to TOTAL.",
+          "End the loop correctly.",
+          "Display TOTAL."
+        ]
+      }
+    },
+    {
+      "id": 26,
+      "section": 8,
+      "objectives": "6",
+      "title": "Program Documentation",
+      "purpose": "Document programs so that they are easier to understand, use and maintain.",
+      "core": "WHY DOCUMENTATION MATTERS\nDocumentation makes programs easier to understand, test, maintain and use.\n\nINTERNAL DOCUMENTATION\nUse meaningful variable names, comments, indentation and effective whitespace.\n\nEXTERNAL DOCUMENTATION\nA user manual explains how to use the completed application.\n\nGOOD DOCUMENTATION\nWrite useful comments that explain purpose or important logic. Do not fill the program with comments that merely repeat obvious statements.",
+      "worked": [
+        "A variable called TotalPayment is clearer than a variable called x.",
+        "A user manual is external documentation."
+      ],
+      "tools": [
+        "Code Documentation Review"
+      ],
+      "mistakes": [
+        "Comments are not a replacement for clear code.",
+        "A user manual is not internal documentation."
+      ],
+      "quick": [
+        "Name two features of internal documentation.",
+        "Give one example of external documentation."
+      ],
+      "overview": "Documentation makes a program easier to understand, use and maintain. Internal documentation is part of the source code and includes meaningful names, comments, indentation and whitespace. External documentation is separate from the source code and helps the user operate the finished system.",
+      "whyItMatters": "Good documentation should make the purpose clearer. A useful comment explains something that is not already obvious from the code.",
+      "examFocus": "Distinguish internal and external documentation and recognise examples of each.",
+      "quickAnswers": [
+        "Any two of meaningful variable names, useful comments, indentation and effective whitespace.",
+        "A user manual."
+      ],
+      "examChallenge": {
+        "paper": "Paper 02 style",
+        "marks": 4,
+        "prompt": "State TWO features of good internal program documentation and explain why meaningful variable names are useful. Give ONE example of external documentation.",
+        "answerPoints": [
+          "Any two of meaningful names, comments, indentation or effective whitespace.",
+          "Meaningful names make the purpose of stored values easier to understand and maintain.",
+          "User manual as external documentation."
+        ]
+      }
+    }
+  ]
+}

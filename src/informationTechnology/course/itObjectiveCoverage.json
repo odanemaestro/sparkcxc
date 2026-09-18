@@ -1,0 +1,620 @@
+[
+  {
+    "section": 1,
+    "objective": 1,
+    "topicId": 1,
+    "title": "Explain Information Technology",
+    "points": [
+      "Understand IT as the use of computing and communication technologies to collect, process, store, retrieve and communicate information.",
+      "Recognise that IT combines computer systems, communications and information processing."
+    ]
+  },
+  {
+    "section": 1,
+    "objective": 2,
+    "topicId": 1,
+    "title": "Distinguish major computer-system types",
+    "points": [
+      "Compare supercomputers, mainframes, desktops, mobile devices and embedded systems.",
+      "Use processing speed, storage and portability when deciding which system is suitable."
+    ]
+  },
+  {
+    "section": 1,
+    "objective": 3,
+    "topicId": 2,
+    "title": "Explain major hardware components",
+    "points": [
+      "Explain the roles of input devices, CPU, RAM, ROM, secondary storage and output devices.",
+      "Recognise common secondary-storage devices and storage units."
+    ]
+  },
+  {
+    "section": 1,
+    "objective": 4,
+    "topicId": 2,
+    "title": "Explain how hardware components interrelate",
+    "points": [
+      "Follow data through the Input → Processing → Output cycle.",
+      "Explain how storage supports the cycle by keeping data, instructions and results."
+    ]
+  },
+  {
+    "section": 1,
+    "objective": 5,
+    "topicId": 3,
+    "title": "Evaluate cloud and local storage",
+    "points": [
+      "Compare capacity, cost, accessibility and security.",
+      "Choose an appropriate storage approach for a scenario and justify the decision."
+    ]
+  },
+  {
+    "section": 1,
+    "objective": 6,
+    "topicId": 4,
+    "title": "Select input and output devices",
+    "points": [
+      "Match devices such as OMR, OCR, MICR, scanners, sensors, biometrics and touchscreens to suitable applications.",
+      "Choose appropriate visual and audible output devices including printers, plotters, 3D printers and audio devices."
+    ]
+  },
+  {
+    "section": 1,
+    "objective": 7,
+    "topicId": 4,
+    "title": "Explain the role of software",
+    "points": [
+      "Distinguish system software from application software.",
+      "Recognise general-purpose, special-purpose, integrated, off-the-shelf, custom-written and customised software."
+    ]
+  },
+  {
+    "section": 1,
+    "objective": 8,
+    "topicId": 4,
+    "title": "Discuss user-interface types",
+    "points": [
+      "Compare command-line, menu-driven, graphical and touch interfaces.",
+      "Consider usability and suitability for different users and tasks."
+    ]
+  },
+  {
+    "section": 1,
+    "objective": 9,
+    "topicId": 5,
+    "title": "Evaluate computer suitability",
+    "points": [
+      "Judge CPU, RAM, secondary storage, software and I/O devices against a stated purpose.",
+      "Apply the criteria to gaming, browsing, graphics, video editing and desktop publishing."
+    ]
+  },
+  {
+    "section": 1,
+    "objective": 10,
+    "topicId": 5,
+    "title": "Troubleshoot basic hardware problems",
+    "points": [
+      "Check cables, monitor controls, printer consumables and batteries before assuming a major fault.",
+      "Use a simple, logical troubleshooting sequence."
+    ]
+  },
+  {
+    "section": 1,
+    "objective": 11,
+    "topicId": 6,
+    "title": "Distinguish data and information",
+    "points": [
+      "Treat data as raw facts and information as processed, useful data.",
+      "Recognise sources and document forms including human-readable, machine-readable, hard copy, soft copy and turnaround documents."
+    ]
+  },
+  {
+    "section": 1,
+    "objective": 12,
+    "topicId": 6,
+    "title": "Evaluate online information",
+    "points": [
+      "Check authenticity, currency, relevance and bias.",
+      "Use more than one factor before deciding whether an online source is dependable."
+    ]
+  },
+  {
+    "section": 1,
+    "objective": 13,
+    "topicId": 6,
+    "title": "Differentiate validation and verification",
+    "points": [
+      "Validation checks whether data follows rules.",
+      "Verification checks whether data was entered or copied accurately."
+    ]
+  },
+  {
+    "section": 1,
+    "objective": 14,
+    "topicId": 6,
+    "title": "Choose validation and verification checks",
+    "points": [
+      "Use range, reasonableness, data type, consistency, presence, format and length checks appropriately.",
+      "Use double entry and proofreading as verification methods."
+    ]
+  },
+  {
+    "section": 1,
+    "objective": 15,
+    "topicId": 6,
+    "title": "Select file organisation and access",
+    "points": [
+      "Distinguish sequential, serial, direct and random access.",
+      "Choose an approach for applications such as archiving, payroll and real-time systems."
+    ]
+  },
+  {
+    "section": 2,
+    "objective": 1,
+    "topicId": 7,
+    "title": "Distinguish types of networks",
+    "points": [
+      "Compare LAN, MAN, WAN and mobile networks.",
+      "Recognise Bluetooth, Wi-Fi and hotspots, and distinguish Internet, intranet and extranet privacy levels.",
+      "Understand the broad development of mobile networks from earlier generations to current systems without requiring internal technical detail."
+    ]
+  },
+  {
+    "section": 2,
+    "objective": 2,
+    "topicId": 8,
+    "title": "Explain basic network components",
+    "points": [
+      "Explain wired media such as twisted pair, coaxial and fibre.",
+      "Explain wireless media such as infrared, microwave and satellite.",
+      "Explain the roles of switches, routers, modems and network interface cards."
+    ]
+  },
+  {
+    "section": 2,
+    "objective": 3,
+    "topicId": 7,
+    "title": "Assess mobile communication",
+    "points": [
+      "Judge the usefulness of mobile networks for education, commerce and journalism.",
+      "Consider mobility, reach, speed of communication and practical limitations."
+    ]
+  },
+  {
+    "section": 2,
+    "objective": 4,
+    "topicId": 9,
+    "title": "Explain Web technology concepts",
+    "points": [
+      "Connect WWW, HTML, HTTP, hyperlinks, web servers, web pages, browsers, URLs, FTP, upload/download and email.",
+      "Explain how these concepts work together when a user accesses or transfers online information."
+    ]
+  },
+  {
+    "section": 3,
+    "objective": 1,
+    "topicId": 10,
+    "title": "Outline computer security and misuse",
+    "points": [
+      "Understand vulnerability, threat, attack and countermeasure.",
+      "Relate cybersecurity to identifying and reducing risk."
+    ]
+  },
+  {
+    "section": 3,
+    "objective": 2,
+    "topicId": 10,
+    "title": "Assess the impact of computer misuse",
+    "points": [
+      "Recognise cyberbullying, copyright infringement, data theft, denial-of-service, malware, identity theft, phishing, piracy, privacy violations, electronic eavesdropping and industrial espionage.",
+      "Consider effects on individuals, organisations and governments."
+    ]
+  },
+  {
+    "section": 3,
+    "objective": 3,
+    "topicId": 11,
+    "title": "Describe security countermeasures",
+    "points": [
+      "Use backup/recovery, firewalls, intrusion detection, biometrics, authentication, encryption and anti-malware appropriately.",
+      "Practise safer email, URL checking, Wi-Fi use, mobile-device security and social-media behaviour."
+    ]
+  },
+  {
+    "section": 3,
+    "objective": 4,
+    "topicId": 12,
+    "title": "Assess automation and job security",
+    "points": [
+      "Consider both job loss and productivity gains.",
+      "Recognise that automation can change skill requirements and create a need for retraining."
+    ]
+  },
+  {
+    "section": 3,
+    "objective": 5,
+    "topicId": 12,
+    "title": "Describe computer-related careers",
+    "points": [
+      "Distinguish roles such as network engineer, programmer, support specialist, systems analyst, administrators, software developer, web developer and social-media specialist."
+    ]
+  },
+  {
+    "section": 3,
+    "objective": 6,
+    "topicId": 12,
+    "title": "Assess ICT in major fields",
+    "points": [
+      "Evaluate ICT in education, medicine, business, law enforcement and recreation.",
+      "Use examples such as distance learning, telemedicine, e-commerce, EPOS, telecommuting, surveillance, biometrics, music and gaming."
+    ]
+  },
+  {
+    "section": 4,
+    "objective": 1,
+    "topicId": 13,
+    "title": "Create documents from different sources",
+    "points": [
+      "Combine typed text, imported text, images and other objects in one document.",
+      "Keep imported content sized and positioned appropriately."
+    ]
+  },
+  {
+    "section": 4,
+    "objective": 2,
+    "topicId": 13,
+    "title": "Use document formatting",
+    "points": [
+      "Use font controls, colour, emphasis, tabs, bullets, numbering, spacing, alignment, highlighting and case appropriately.",
+      "Use page size, margins, breaks, numbering, headers, footers, footnotes and endnotes."
+    ]
+  },
+  {
+    "section": 4,
+    "objective": 3,
+    "topicId": 13,
+    "title": "Edit and organise documents",
+    "points": [
+      "Use block operations, search and replace, tables, borders, shading, row/column operations, split cells/tables, text direction, cell margins and columns."
+    ]
+  },
+  {
+    "section": 4,
+    "objective": 4,
+    "topicId": 14,
+    "title": "Use review features",
+    "points": [
+      "Use spelling and grammar tools, thesaurus, word count, language settings, comments and track changes to prepare a document for final use."
+    ]
+  },
+  {
+    "section": 4,
+    "objective": 5,
+    "topicId": 14,
+    "title": "Protect documents",
+    "points": [
+      "Use automatic save, backup copies and edit restrictions such as password protection."
+    ]
+  },
+  {
+    "section": 4,
+    "objective": 6,
+    "topicId": 14,
+    "title": "Generate a table of contents",
+    "points": [
+      "Use heading structure to build an automatic table of contents.",
+      "Place it appropriately and maintain meaningful heading levels."
+    ]
+  },
+  {
+    "section": 4,
+    "objective": 7,
+    "topicId": 14,
+    "title": "Use mail merge",
+    "points": [
+      "Create or use a primary document and data source.",
+      "Insert suitable field names and produce correctly merged output."
+    ]
+  },
+  {
+    "section": 4,
+    "objective": 8,
+    "topicId": 14,
+    "title": "Create fillable forms",
+    "points": [
+      "Use controls such as text boxes, check boxes, date pickers, drop-down lists and command buttons.",
+      "Design the form so it is clear and easy to use."
+    ]
+  },
+  {
+    "section": 4,
+    "objective": 9,
+    "topicId": 15,
+    "title": "Plan a website",
+    "points": [
+      "Define purpose, intended audience, number of pages, page content and layout before building."
+    ]
+  },
+  {
+    "section": 4,
+    "objective": 10,
+    "topicId": 15,
+    "title": "Create simple web pages",
+    "points": [
+      "Choose a suitable design and combine text and graphics.",
+      "Wrap text around images and create a home page with navigation."
+    ]
+  },
+  {
+    "section": 4,
+    "objective": 11,
+    "topicId": 15,
+    "title": "Insert hyperlinks",
+    "points": [
+      "Create links to another page, a location on the same page, an email address and a user-created file."
+    ]
+  },
+  {
+    "section": 4,
+    "objective": 12,
+    "topicId": 15,
+    "title": "Evaluate a website",
+    "points": [
+      "Check accuracy, user friendliness and effective display.",
+      "Verify links, use a test audience and keep content up to date."
+    ]
+  },
+  {
+    "section": 5,
+    "objective": 1,
+    "topicId": 16,
+    "title": "Explain spreadsheet purpose",
+    "points": [
+      "Use a spreadsheet to capture, display, calculate and manipulate tabular data."
+    ]
+  },
+  {
+    "section": 5,
+    "objective": 2,
+    "topicId": 16,
+    "title": "Use spreadsheet terminology",
+    "points": [
+      "Recognise workbook, worksheet, row, column, cell, cell address, range, label, value, formula and function."
+    ]
+  },
+  {
+    "section": 5,
+    "objective": 3,
+    "topicId": 16,
+    "title": "Use predefined functions",
+    "points": [
+      "Use SUM, AVERAGE, DATE, MAX, MIN, COUNT, COUNTA, COUNTIF, VLOOKUP, PMT and IF in appropriate situations."
+    ]
+  },
+  {
+    "section": 5,
+    "objective": 4,
+    "topicId": 16,
+    "title": "Create arithmetic formulae",
+    "points": [
+      "Build formulae using addition, subtraction, multiplication, division and brackets.",
+      "Apply correct operator order."
+    ]
+  },
+  {
+    "section": 5,
+    "objective": 5,
+    "topicId": 17,
+    "title": "Copy formulae correctly",
+    "points": [
+      "Distinguish relative and absolute references.",
+      "Use named ranges where appropriate and understand the effect of moving, copying and deleting cells."
+    ]
+  },
+  {
+    "section": 5,
+    "objective": 6,
+    "topicId": 17,
+    "title": "Manipulate rows and columns",
+    "points": [
+      "Insert, delete and modify rows and columns without losing the intended spreadsheet structure."
+    ]
+  },
+  {
+    "section": 5,
+    "objective": 7,
+    "topicId": 17,
+    "title": "Manipulate spreadsheet data",
+    "points": [
+      "Format numbers as currency, accounting, percentages and decimals.",
+      "Sort by primary and secondary fields, filter with multiple criteria and summarise data using one- and two-dimensional pivot tables, frequency distributions and pivot charts."
+    ]
+  },
+  {
+    "section": 5,
+    "objective": 8,
+    "topicId": 18,
+    "title": "Perform charting operations",
+    "points": [
+      "Choose column, bar, line or pie charts appropriately.",
+      "Use meaningful chart titles, axis labels and data labels."
+    ]
+  },
+  {
+    "section": 5,
+    "objective": 9,
+    "topicId": 18,
+    "title": "Use multiple worksheets",
+    "points": [
+      "Solve problems across one or more worksheets.",
+      "Link worksheets so related calculations update without unnecessary re-entry."
+    ]
+  },
+  {
+    "section": 6,
+    "objective": 1,
+    "topicId": 19,
+    "title": "Explain database concepts",
+    "points": [
+      "Understand a database as an organised repository of information and a collection of related tables.",
+      "Explain why databases are useful for structured records."
+    ]
+  },
+  {
+    "section": 6,
+    "objective": 2,
+    "topicId": 19,
+    "title": "Use database terminology",
+    "points": [
+      "Use table, record, field, primary key, secondary key, candidate key and foreign key correctly.",
+      "Choose numeric, text, logical, date/time and currency data types appropriately."
+    ]
+  },
+  {
+    "section": 6,
+    "objective": 3,
+    "topicId": 19,
+    "title": "Create and relate database tables",
+    "points": [
+      "Design tables using at least three data types and meaningful primary keys.",
+      "Modify field definitions and establish one-to-one and one-to-many relationships."
+    ]
+  },
+  {
+    "section": 6,
+    "objective": 4,
+    "topicId": 20,
+    "title": "Manipulate database data",
+    "points": [
+      "Use forms and subforms for data entry.",
+      "Build queries with multiple criteria, selected fields, calculated fields, relational operators and logical operators.",
+      "Create reports with sorting, grouping, COUNT, SUM and AVERAGE and send output to screen, printer or file."
+    ]
+  },
+  {
+    "section": 7,
+    "objective": 1,
+    "topicId": 21,
+    "title": "Outline problem-solving steps",
+    "points": [
+      "Define the problem, propose/evaluate solutions, choose an efficient solution, develop the algorithm, then test and validate it."
+    ]
+  },
+  {
+    "section": 7,
+    "objective": 2,
+    "topicId": 21,
+    "title": "Use divide and conquer",
+    "points": [
+      "Break a large everyday problem into smaller tasks, solve the parts and combine the solutions."
+    ]
+  },
+  {
+    "section": 7,
+    "objective": 3,
+    "topicId": 21,
+    "title": "Define a problem using IPO",
+    "points": [
+      "Identify the input, process and output for a problem.",
+      "Use an IPO chart to organise the solution."
+    ]
+  },
+  {
+    "section": 7,
+    "objective": 4,
+    "topicId": 22,
+    "title": "Distinguish variables and constants",
+    "points": [
+      "A variable can change during processing while a constant does not.",
+      "Use integer, real, character, Boolean and string types appropriately."
+    ]
+  },
+  {
+    "section": 7,
+    "objective": 5,
+    "topicId": 23,
+    "title": "Explain algorithms",
+    "points": [
+      "An algorithm should be finite, precise, unambiguous, have clear flow of control and terminate."
+    ]
+  },
+  {
+    "section": 7,
+    "objective": 6,
+    "topicId": 23,
+    "title": "Represent algorithms",
+    "points": [
+      "Use standard flowchart symbols and pseudocode.",
+      "Apply IF, IF-ELSE, nested conditions, FOR, WHILE and REPEAT.",
+      "Use relational, logical and arithmetic operators, including MOD and DIV, and understand truth tables."
+    ]
+  },
+  {
+    "section": 7,
+    "objective": 7,
+    "topicId": 23,
+    "title": "Test algorithms",
+    "points": [
+      "Use desk checks and dry runs.",
+      "Construct trace tables with identifiers as column headings and values recorded for each pass."
+    ]
+  },
+  {
+    "section": 8,
+    "objective": 1,
+    "topicId": 24,
+    "title": "Distinguish language levels",
+    "points": [
+      "Recognise machine/assembly as low-level languages and languages such as Visual Basic, Pascal and C as high-level examples."
+    ]
+  },
+  {
+    "section": 8,
+    "objective": 2,
+    "topicId": 24,
+    "title": "Describe program implementation",
+    "points": [
+      "Create source code, translate/link, execute/run and maintain the program."
+    ]
+  },
+  {
+    "section": 8,
+    "objective": 3,
+    "topicId": 24,
+    "title": "Test and debug programs",
+    "points": [
+      "Identify syntax, logic and runtime errors.",
+      "Use test data and debugging techniques to verify correctness."
+    ]
+  },
+  {
+    "section": 8,
+    "objective": 4,
+    "topicId": 25,
+    "title": "Declare variables and constants",
+    "points": [
+      "Use integer, real/double/float, character, string and Boolean/logical types in program declarations."
+    ]
+  },
+  {
+    "section": 8,
+    "objective": 5,
+    "topicId": 25,
+    "title": "Translate algorithms into code",
+    "points": [
+      "Use assignment, input/output, arithmetic, logical and relational operations.",
+      "Implement conditional branching and FOR, WHILE and REPEAT loops."
+    ]
+  },
+  {
+    "section": 8,
+    "objective": 6,
+    "topicId": 26,
+    "title": "Document programs effectively",
+    "points": [
+      "Use meaningful names, comments, indentation and whitespace for internal documentation.",
+      "Provide external documentation such as a user manual."
+    ]
+  }
+]
