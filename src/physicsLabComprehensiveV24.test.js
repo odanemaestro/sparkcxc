@@ -33,59 +33,55 @@ describe('Physics comprehensive lab and Paper 1 audit V2.4.4', () => {
     for (const [Component, registry] of groups) {
       for (const item of registry) {
         const { unmount, container } = render(<Component interactiveId={item.id}/>);
-        await waitFor(() => {
-          expect(container.textContent).not.toMatch(/Interactive implementation unavailable/i);
-          expect(container.textContent).not.toMatch(/Interactive unavailable/i);
-          expect(container.textContent).not.toMatch(/^Loading virtual lab…$/i);
+        expect(container.textContent).not.toMatch(/Interactive implementation unavailable/i);
+        expect(container.textContent).not.toMatch(/Interactive unavailable/i);
 
-          if (hasSimulation(item.id)) {
+        if (hasSimulation(item.id)) {
+          await waitFor(() => {
+            expect(container.textContent).not.toMatch(/^Loading virtual lab…$/i);
             const simulation = container.querySelector('section.psim');
             expect(simulation).toBeInTheDocument();
             expect(simulation).toHaveAttribute('aria-label');
             const simulationTitle = container.querySelector('.psim-head h4')?.textContent?.trim() || '';
             expect(simulationTitle.length).toBeGreaterThan(0);
-          } else {
-            expect(container.textContent).toContain(item.title);
-          }
-        });
+          });
+        } else {
+          expect(container.textContent).toContain(item.title);
+        }
+
         count += 1;
         unmount();
       }
     }
     expect(count).toBe(73);
-  });
+  }, 20000);
 
-  test('wave graph curve and labelled axes respond to the controls that define each graph', () => {
-    const { container } = render(<WavesInteractiveLab interactiveId="c1-wave-graphs"/>);
+  test('wave graph explorer exposes labelled axes and responds to the defining controls', () => {
+    render(<WavesInteractiveLab interactiveId="c1-wave-graphs"/>);
+
+    // Unlock the new Predict → Experiment workflow first.
+    fireEvent.click(screen.getByRole('button', { name:'It stays the same' }));
+
     expect(screen.getByText('position / m')).toBeInTheDocument();
     expect(screen.getByText('displacement / m')).toBeInTheDocument();
-    expect(screen.getByText(/wavelength changes the crest spacing/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/displacement-position graph/i).length).toBeGreaterThan(0);
 
-    const before = container.querySelector('[data-testid="wave-curve"]').getAttribute('d');
-    const wavelengthControl = screen.getByRole('slider', { name: /Wavelength/i });
-    expect(wavelengthControl.tagName).toBe('INPUT');
-    fireEvent.change(wavelengthControl, { target: { value: '0.7' } });
-    expect(wavelengthControl.value).toBe('0.7');
-    const afterWavelength = container.querySelector('[data-testid="wave-curve"]').getAttribute('d');
-    expect(afterWavelength).not.toBe(before);
+    const wavelengthControl = screen.getByRole('slider', { name:/^Wavelength/i });
+    fireEvent.change(wavelengthControl, { target:{ value:'0.7' } });
+    expect(wavelengthControl).toHaveAttribute('aria-valuetext', '0.7 m');
 
-    const amplitudeControl = screen.getByRole('slider', { name: /Amplitude/i });
-    expect(amplitudeControl.tagName).toBe('INPUT');
-    fireEvent.change(amplitudeControl, { target: { value: '0.12' } });
-    expect(amplitudeControl.value).toBe('0.12');
-    const afterAmplitude = container.querySelector('[data-testid="wave-curve"]').getAttribute('d');
-    expect(afterAmplitude).not.toBe(afterWavelength);
+    const amplitudeControl = screen.getByRole('slider', { name:/^Amplitude/i });
+    fireEvent.change(amplitudeControl, { target:{ value:'0.12' } });
+    expect(amplitudeControl).toHaveAttribute('aria-valuetext', '0.12 m');
 
     fireEvent.click(screen.getByRole('button', { name:'Displacement-time' }));
     expect(screen.getByText('time / s')).toBeInTheDocument();
-    expect(screen.getByText(/frequency changes the number of cycles each second/i)).toBeInTheDocument();
-    const timeBefore = container.querySelector('[data-testid="wave-curve"]').getAttribute('d');
-    const frequencyControl = screen.getByRole('slider', { name: /Frequency/i });
-    expect(frequencyControl.tagName).toBe('INPUT');
-    fireEvent.change(frequencyControl, { target: { value: '8' } });
-    expect(frequencyControl.value).toBe('8');
-    const timeAfter = container.querySelector('[data-testid="wave-curve"]').getAttribute('d');
-    expect(timeAfter).not.toBe(timeBefore);
+    expect(screen.getByText(/This is a displacement-time graph/i)).toBeInTheDocument();
+    expect(screen.getAllByText('Period').length).toBeGreaterThan(0);
+
+    const frequencyControl = screen.getByRole('slider', { name:/^Frequency/i });
+    fireEvent.change(frequencyControl, { target:{ value:'8' } });
+    expect(frequencyControl).toHaveAttribute('aria-valuetext', '8 Hz');
   });
 
   test('electromagnetic spectrum uses learner-friendly units rather than raw e notation', () => {

@@ -23,6 +23,20 @@ export const PHYSICS_SIMULATIONS = {
   'd4-ohms-law': wrap(() => import('./electricity/OhmsLawSim.jsx')),
   'd4-series-parallel': wrap(() => import('./electricity/CircuitBuilderSim.jsx')),
   'd7-current-field': wrap(() => import('./electricity/ElectromagnetismSim.jsx')),
+  // C Waves and Optics · Batch 1
+  'c1-wave-builder': wrap(() => import('./waves/WaveBuilderSim.jsx')),
+  'c1-wave-graphs': wrap(() => import('./waves/WaveGraphSim.jsx')),
+  'c2-echo-ranging': wrap(() => import('./waves/EchoRangingSim.jsx')),
+  'c2-pitch-loudness': wrap(() => import('./waves/PitchLoudnessSim.jsx')),
+  // C Waves and Optics · Batch 2
+  'c3-em-spectrum': wrap(() => import('./waves/EMSpectrumSim.jsx')),
+  'c4-reflection': wrap(() => import('./waves/ReflectionSim.jsx')),
+  'c4-refraction': wrap(() => import('./waves/RefractionSim.jsx')),
+  'c4-total-internal-reflection': wrap(() => import('./waves/TIRSim.jsx')),
+  'c4-double-slit': wrap(() => import('./waves/DoubleSlitSim.jsx')),
+  // C Waves and Optics · Batch 3
+  'c5-lens-rays': wrap(() => import('./waves/LensRaySim.jsx')),
+  'c5-focal-length': wrap(() => import('./waves/FocalLengthSim.jsx')),
 };
 
 export const hasSimulation = id => Object.prototype.hasOwnProperty.call(PHYSICS_SIMULATIONS, id);

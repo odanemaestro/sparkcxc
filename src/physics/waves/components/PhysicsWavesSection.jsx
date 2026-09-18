@@ -9,6 +9,7 @@ import { PhysicsTopicQuiz } from '../../mechanics/components/PhysicsMechanicsSec
 import { SECTION_C_TOPICS, buildSectionCCheckpoint, sectionCStats } from '../sectionCWaves.mjs';
 import { WAVES_INTERACTIVES, wavesInteractivesForTopic } from '../interactives/cWavesInteractiveRegistry.mjs';
 import WavesInteractiveLab from './WavesInteractiveLab';
+import { hasSimulation } from '../../simulations/simulationRegistry.jsx';
 import { readPhysicsCourseProgress, setPhysicsCourseLessonCompletion } from '../../course/physicsCourseProgress.mjs';
 import { readPhysicsWavesProgress, recordPhysicsWavesResult, setPhysicsWavesCompletion } from '../physicsWavesProgress.mjs';
 import '../../mechanics/components/physicsMechanics.css';
@@ -53,19 +54,32 @@ function StudyView({ topic, userId, courseProgress, setCourseProgress, onActivit
 
 function LabsView({ topic, progress, setProgress, onActivity, userId }) {
   const labs = wavesInteractivesForTopic(topic.id);
-  return <div className="pm-labs-grid">{labs.map(lab => <div key={lab.id}>
-    <WavesInteractiveLab interactiveId={lab.id} />
-    <PhysicsPracticalNotebook interactiveId={lab.id} userId={userId}/>
-    <div className="pm-completion">
-      <button type="button" className={progress[`lab:${lab.id}`] ? 'done' : ''} onClick={() => setProgress(previous => {
-        const value = !previous[`lab:${lab.id}`];
-        const next = setPhysicsWavesCompletion(userId, previous, `lab:${lab.id}`, value);
-        onActivity?.({ type:'physics_lab_completion', subject:'CSEC Physics', section:'C', topic:topic.id, lab:lab.id, completed:value });
-        return next;
-      })}>{progress[`lab:${lab.id}`] ? '✓ Lab explored' : 'Mark lab explored'}</button>
-      <span className="pm-feedback">Lab exploration is recorded separately from assessment mastery.</span>
-    </div>
-  </div>)}</div>;
+  const setLabCompletion = (lab, completed) => {
+    setProgress(previous => setPhysicsWavesCompletion(userId, previous, `lab:${lab.id}`, completed));
+    onActivity?.({ type:'physics_lab_completion', subject:'CSEC Physics', section:'C', topic:topic.id, lab:lab.id, completed:Boolean(completed) });
+  };
+
+  return <div className="pm-labs-grid">{labs.map(lab => {
+    const upgraded = hasSimulation(lab.id);
+    const complete = Boolean(progress[`lab:${lab.id}`]);
+    const evidence = payload => {
+      if (upgraded && payload?.source === 'physics_virtual_simulation' && payload?.result === 'completed' && !complete) {
+        setLabCompletion(lab, true);
+      }
+    };
+
+    return <div key={lab.id}>
+      <WavesInteractiveLab interactiveId={lab.id} onEvidence={evidence}/>
+      <PhysicsPracticalNotebook interactiveId={lab.id} userId={userId}/>
+      {upgraded ? <div className="pm-completion">
+        <span className={`psim-status ${complete ? 'done' : ''}`} role="status">{complete ? '✓ Lab explored' : 'Virtual experiment in progress'}</span>
+        <span className="pm-feedback">This virtual lab is marked automatically when all experiment tasks are complete.</span>
+      </div> : <div className="pm-completion">
+        <button type="button" className={complete ? 'done' : ''} onClick={() => setLabCompletion(lab, !complete)}>{complete ? '✓ Lab explored' : 'Mark lab explored'}</button>
+        <span className="pm-feedback">Lab exploration is recorded separately from assessment mastery.</span>
+      </div>}
+    </div>;
+  })}</div>;
 }
 
 function FlashcardsView({ topic }) {

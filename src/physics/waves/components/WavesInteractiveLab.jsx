@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import MathText from '../../../practice/MathText';
 import { WAVES_INTERACTIVES } from '../interactives/cWavesInteractiveRegistry.mjs';
+import { PhysicsSimulationSlot, hasSimulation } from '../../simulations/simulationRegistry.jsx';
 import {
   buildWaveLabModel,
   buildWaveGraphModel,
@@ -281,9 +282,13 @@ const MAP = {
   'c5-lens-rays': Lens,
   'c5-focal-length': Focal
 };
-export default function WavesInteractiveLab({ interactiveId }) {
+export default function WavesInteractiveLab({ interactiveId, onEvidence }) {
   const meta=WAVES_INTERACTIVES.find(item=>item.id===interactiveId);
   if(!meta)return <div className="pm-empty">Interactive not found.</div>;
   const Component=MAP[interactiveId];
-  return Component?<Component meta={meta}/>:<div className="pm-empty">Interactive implementation unavailable.</div>;
+  if(!Component)return <div className="pm-empty">Interactive implementation unavailable.</div>;
+  const evidence=payload=>onEvidence?.({interactiveId:meta.id,topic:meta.topic,...payload});
+  return hasSimulation(interactiveId)
+    ? <PhysicsSimulationSlot interactiveId={interactiveId} onEvidence={evidence}/>
+    : <Component meta={meta}/>;
 }
