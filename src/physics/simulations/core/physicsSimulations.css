@@ -421,3 +421,19 @@
 @media(max-width:420px){
   .psim-lens-presets{grid-template-columns:1fr}
 }
+
+/* SPARK PHYSICS THERMAL BATCH 1 V1 */
+.psim-thermal-stage,.psim-kelvin-stage,.psim-heating-graph,.psim-particle-box{display:block;width:100%;height:auto;margin:14px 0;border:1px solid var(--pm-line);border-radius:16px;background:var(--pm-card2)}
+.psim-thermal-label{fill:var(--pm-ink);font-size:12px;font-weight:700}
+.psim-rope{stroke:var(--pm-muted);stroke-width:3}.psim-weight{fill:var(--pm-primary-soft);stroke:var(--pm-primary);stroke-width:2}
+.psim-water-vessel{fill:var(--pm-card);stroke:var(--pm-ink);stroke-width:2}.psim-water-fill{fill:var(--pm-primary-soft);opacity:.78}
+.psim-paddle{stroke:var(--pm-accent);stroke-width:7;stroke-linecap:round}.psim-thermometer{fill:var(--pm-card);stroke:var(--pm-ink);stroke-width:2}.psim-thermometer-level{fill:var(--pm-accent)}
+.psim-gas-cylinder{fill:var(--pm-card);stroke:var(--pm-ink);stroke-width:2}.psim-piston{stroke:var(--pm-muted);stroke-width:8}.psim-piston.active{stroke:var(--pm-primary)}
+.psim-gas-particle{fill:var(--pm-muted);opacity:.7}.psim-gas-particle.active{fill:var(--pm-primary);opacity:.9}
+.psim-graph-axis{stroke:var(--pm-ink);stroke-width:1.8}.psim-graph-grid{stroke:var(--pm-line);stroke-width:1}.psim-kelvin-line{stroke:var(--pm-primary);stroke-width:3}.psim-kelvin-point{fill:var(--pm-accent)}
+.psim-kelvin-intercept{stroke:var(--pm-primary);stroke-width:3}.psim-kelvin-intercept-label{fill:var(--pm-primary);font-size:13px;font-weight:900}
+.psim-fixed-support{fill:var(--pm-ink)}.psim-expansion-bar{fill:var(--pm-primary)}.psim-expansion-reference{stroke:var(--pm-muted);stroke-width:2;stroke-dasharray:6 5}.psim-expansion-free-end{stroke:var(--pm-accent);stroke-width:4}
+.psim-heat-arrow{fill:none;stroke:var(--pm-accent);stroke-width:4;stroke-linecap:round}.psim-heating-layout{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}
+.psim-heating-line{fill:none;stroke:var(--pm-primary);stroke-width:4;stroke-linejoin:round}.psim-heating-marker{fill:var(--pm-accent);stroke:var(--pm-card);stroke-width:2}
+.psim-particle-container{fill:var(--pm-card);stroke:var(--pm-line);stroke-width:2}.psim-thermal-particle{fill:var(--pm-primary);opacity:.9}.psim-thermal-particle.melting,.psim-thermal-particle.boiling{fill:var(--pm-accent)}.psim-thermal-particle.liquid-warming{fill:var(--pm-good)}
+@media(max-width:780px){.psim-heating-layout{grid-template-columns:1fr}}@media(max-width:560px){.psim-thermal-stage,.psim-kelvin-stage,.psim-heating-graph,.psim-particle-box{border-radius:13px}.psim-thermal-label{font-size:10px}}

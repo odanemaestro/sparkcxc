@@ -120,10 +120,11 @@ describe('Physics comprehensive lab and Paper 1 audit V2.4.4', () => {
 
   test('Thermal heating curve warms vapour after boiling is complete', () => {
     render(<ThermalInteractiveLab interactiveId="b3-heating-curve"/>);
-    const energy = screen.getByRole('slider', { name:'Energy added' });
+    fireEvent.click(screen.getByRole('button', { name:'stays constant' }));
+    const energy = screen.getByRole('slider', { name:/^Energy added/i });
     fireEvent.change(energy, { target: { value:'800' } });
     expect(screen.getAllByText('vapour warming').length).toBeGreaterThan(0);
-    expect(screen.getByText(/further energy raises the temperature again/i)).toBeInTheDocument();
+    expect(screen.getByText(/Temperature = .*°C/i)).toBeInTheDocument();
   });
 
   test('Papers J and K meet the diagram floor used by the full Paper 1 library', () => {

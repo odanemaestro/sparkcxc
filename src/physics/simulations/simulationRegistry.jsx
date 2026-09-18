@@ -37,6 +37,12 @@ export const PHYSICS_SIMULATIONS = {
   // C Waves and Optics · Batch 3
   'c5-lens-rays': wrap(() => import('./waves/LensRaySim.jsx')),
   'c5-focal-length': wrap(() => import('./waves/FocalLengthSim.jsx')),
+  // B Thermal Physics · Batch 1
+  'b1-joule-work-heat': wrap(() => import('./thermal/JouleHeatSim.jsx')),
+  'b2-gas-laws': wrap(() => import('./thermal/GasLawsSim.jsx')),
+  'b2-kelvin-extrapolation': wrap(() => import('./thermal/KelvinExtrapolationSim.jsx')),
+  'b2-expansion': wrap(() => import('./thermal/ThermalExpansionSim.jsx')),
+  'b3-heating-curve': wrap(() => import('./thermal/HeatingCurveSim.jsx')),
 };
 
 export const hasSimulation = id => Object.prototype.hasOwnProperty.call(PHYSICS_SIMULATIONS, id);
