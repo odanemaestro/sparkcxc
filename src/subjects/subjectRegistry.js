@@ -1,6 +1,7 @@
 export const SPARK_SUBJECT_IDS = Object.freeze({
   MATHEMATICS: "mathematics",
   PHYSICS: "physics",
+  INFORMATION_TECHNOLOGY: "information-technology",
 });
 
 const BASE_SUBJECTS = Object.freeze({
@@ -44,9 +45,29 @@ const BASE_SUBJECTS = Object.freeze({
       labs: true,
     }),
   }),
+  informationTechnology: Object.freeze({
+    id: "information-technology",
+    name: "CSEC Information Technology",
+    shortName: "Information Technology",
+    mark: "IT",
+    description: "Study the current CSEC Information Technology syllabus, use interactive SPARK tools and sit full Paper 1 and Paper 2 simulations.",
+    enabled: true,
+    studyView: "information-technology",
+    capabilities: Object.freeze({
+      study: true,
+      practice: true,
+      flashcards: false,
+      progress: true,
+      paper1: true,
+      paper2: true,
+      adaptive: false,
+      structured: true,
+      labs: true,
+    }),
+  }),
 });
 
-export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = {}, physics = {} } = {}) {
+export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = {}, physics = {}, informationTechnology = {} } = {}) {
   const mathematicsSubject = {
     ...BASE_SUBJECTS.mathematics,
     stats: {
@@ -65,7 +86,16 @@ export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = 
       flashcards: Number(physics.flashcards || 565),
     },
   };
-  return Object.freeze([mathematicsSubject, physicsSubject]);
+  const informationTechnologySubject = {
+    ...BASE_SUBJECTS.informationTechnology,
+    stats: {
+      sections: Number(informationTechnology.sections || 8),
+      topics: Number(informationTechnology.topics || 26),
+      objectives: Number(informationTechnology.objectives || 63),
+      mcq: Number(informationTechnology.mcq || 540),
+    },
+  };
+  return Object.freeze([mathematicsSubject, physicsSubject, informationTechnologySubject]);
 }
 
 export function enabledSparkSubjects(subjects) {

@@ -18,6 +18,11 @@ function subjectMeta(subject, capability) {
     if (capability === "progress") return "Lessons, topic practice, labs and section checkpoints";
     return `${subject.stats?.sections || 0} sections · ${subject.stats?.topics || 0} topics · ${subject.stats?.objectives || 0} objectives`;
   }
+  if (subject.id === "information-technology") {
+    if (capability === "practice") return "Paper 1 and Paper 2 examination simulations";
+    if (capability === "progress") return "Lessons, interactive labs and examination performance";
+    return `${subject.stats?.sections || 8} sections · ${subject.stats?.topics || 26} topics · ${subject.stats?.objectives || 63} objectives`;
+  }
   return subject.description || "";
 }
 

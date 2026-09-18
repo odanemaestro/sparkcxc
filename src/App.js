@@ -33,6 +33,7 @@ import PracticeHub from "./practice/PracticeHub";
 import { useMathLessonRoute } from "./routing/sparkRoutingV270";
 // SPARK_PHYSICS_SECTION_A_RC1_IMPORTS
 import PhysicsSubjectView from "./physics/course/components/PhysicsSubjectView";
+import InformationTechnologySubjectView from "./informationTechnology/components/InformationTechnologySubjectView";
 import { PhysicsMechanicsFlashcardsPanel } from "./physics/mechanics/components/PhysicsMechanicsSupportPanels";
 import SubjectSelectionView, { SubjectChangeButton } from "./subjects/SubjectSelectionView";
 import { getSparkSubjectRegistry, subjectsForCapability, getSparkSubject, enabledSparkSubjects, subjectsForEnrollmentIds } from "./subjects/subjectRegistry";
@@ -124,6 +125,7 @@ const SPARK_SUBJECTS = getSparkSubjectRegistry({
     topics: SYLLABUS_SECTIONS.reduce((sum, section) => sum + section.topics.length, 0),
   },
   physics: { ...PHYSICS_SECTION_A_STATS, ...PHYSICS_FULL_COURSE_STATS },
+  informationTechnology: { sections: 8, topics: 26, objectives: 63, mcq: 540 },
 });
 
 const VIEW_ROUTE_PATHS = Object.freeze({
@@ -140,8 +142,10 @@ const VIEW_ROUTE_PATHS = Object.freeze({
   practice: "/practice",
   "practice-math": "/practice/mathematics",
   "practice-physics": "/practice/physics",
+  "practice-information-technology": "/practice/information-technology",
   // SPARK_PHYSICS_SECTION_A_RC1_ROUTES
   physics: "/study/physics",
+  "information-technology": "/study/information-technology",
   about: "/about",
   contact: "/contact",
   privacy: "/privacy",
@@ -165,8 +169,11 @@ const ROUTE_PATH_VIEWS = Object.freeze({
   "/practice": "practice",
   "/practice/mathematics": "practice-math",
   "/practice/physics": PHYSICS_SECTION_A_ENABLED ? "practice-physics" : "practice",
+  "/practice/information-technology": "practice-information-technology",
   "/study/physics": PHYSICS_SECTION_A_ENABLED ? "physics" : "home",
   "/physics": PHYSICS_SECTION_A_ENABLED ? "physics" : "home",
+  "/study/information-technology": "information-technology",
+  "/information-technology": "information-technology",
   "/about": "about",
   "/contact": "contact",
   "/privacy": "privacy",
@@ -216,9 +223,11 @@ function viewFromBrowserHash() {
 
   if (normalizedPath === "/study/mathematics" || normalizedPath.startsWith("/study/mathematics/")) return "lesson";
   if (normalizedPath === "/study/physics" || normalizedPath.startsWith("/study/physics/")) return PHYSICS_SECTION_A_ENABLED ? "physics" : "home";
+  if (normalizedPath === "/study/information-technology" || normalizedPath.startsWith("/study/information-technology/")) return "information-technology";
   if (normalizedPath === "/practice/mathematics" || normalizedPath.startsWith("/practice/mathematics/")) return "practice-math";
   if (normalizedPath === "/practice/physics" || normalizedPath.startsWith("/practice/physics/")) return PHYSICS_SECTION_A_ENABLED ? "practice-physics" : "practice";
 
+  if (normalizedPath === "/practice/information-technology" || normalizedPath.startsWith("/practice/information-technology/")) return "practice-information-technology";
   return ROUTE_PATH_VIEWS[normalizedPath] || "home";
 }
 
@@ -6813,6 +6822,7 @@ const handleLogout = async () => {
   const appHasPhysics = appStudentEnrolledSubjectIds.has("physics");
 
 
+  const appHasInformationTechnology = appStudentEnrolledSubjectIds.has("information-technology");
   if (googleOAuthError && session) {
     return (
       <GoogleOAuthGateErrorView
@@ -6887,7 +6897,19 @@ if (loading || authenticatedRolePending) {
           : appHasMathematics
             ? <LessonView user={session.user} setView={setView} showToast={showToast} hasTutorApp={hideTutorApplyLink}/>
             : <SubjectEnrollmentRequiredView subjectName="Mathematics" onManageSubjects={openMySubjects} onBack={() => setView("study")}/>
+      )}      {/* SPARK_INFORMATION_TECHNOLOGY_VIEW */}
+      {view === "information-technology" && session && profile?.role === "student" && (
+        appSubjectAccessPending
+          ? <SparkLoader variant="section" label="Checking Information Technology enrollment" />
+          : appHasInformationTechnology
+            ? <InformationTechnologySubjectView onBack={() => setView("study")} />
+            : <SubjectEnrollmentRequiredView
+                subjectName="Information Technology"
+                onManageSubjects={openMySubjects}
+                onBack={() => setView("study")}
+              />
       )}
+
       {/* SPARK_PHYSICS_SECTION_A_RC1_VIEW */}
       {view === "physics" && session && profile?.role === "student" && PHYSICS_SECTION_A_ENABLED && (
         appSubjectAccessPending
@@ -6912,13 +6934,15 @@ if (loading || authenticatedRolePending) {
           CSEC Physics study is available from a student account.
         </div>
       )}
-      {(view === "practice" || view === "practice-math" || view === "practice-physics") && session && profile?.role === "student" && (
+      {(view === "practice" || view === "practice-math" || view === "practice-physics" || view === "practice-information-technology") && session && profile?.role === "student" && (
         appSubjectAccessPending
           ? <SparkLoader variant="section" label="Loading your practice subjects" />
           : (view === "practice-math" && !appHasMathematics)
             ? <SubjectEnrollmentRequiredView subjectName="Mathematics" onManageSubjects={openMySubjects} onBack={() => setView("practice")}/>
             : (view === "practice-physics" && !appHasPhysics)
               ? <SubjectEnrollmentRequiredView subjectName="Physics" onManageSubjects={openMySubjects} onBack={() => setView("practice")}/>
+              : (view === "practice-information-technology" && !appHasInformationTechnology)
+                ? <SubjectEnrollmentRequiredView subjectName="Information Technology" onManageSubjects={openMySubjects} onBack={() => setView("practice")}/>
               : appStudentEnrolledSubjects.length === 0
                 ? <SubjectEnrollmentRequiredView onManageSubjects={openMySubjects} onBack={() => setView("dashboard")}/>
                 : <PracticeHub
@@ -6927,7 +6951,7 @@ if (loading || authenticatedRolePending) {
                     setView={setView}
                     physicsEnabled={PHYSICS_SECTION_A_ENABLED}
                     enrolledSubjectIds={appSubjectEnrollmentIds}
-                    initialSubject={view === "practice-math" ? "mathematics" : view === "practice-physics" ? "physics" : null}
+                    initialSubject={view === "practice-math" ? "mathematics" : view === "practice-physics" ? "physics" : view === "practice-information-technology" ? "information-technology" : null}
                     onSubjectActivity={event => {
                       recordPhysicsSubjectActivity({ supabase, event }).then(result => {
                         if (result?.error && !["PGRST202", "42P01", "42883"].includes(result.error.code)) {
@@ -6960,7 +6984,7 @@ if (loading || authenticatedRolePending) {
 
 
 	  {// SPARK_PHYSICS_SECTION_A_RC1_AUTH_GUARD
-	  (view === "dashboard" || view === "study" || view === "lesson" || view === "physics") && !session && (
+	  (view === "dashboard" || view === "study" || view === "lesson" || view === "physics" || view === "information-technology") && !session && (
         <div style={{flex:1,padding:"4rem",textAlign:"center",color:T.textMuted}}>
           Please <span style={{color:T.teal,cursor:"pointer"}} onClick={() => setView("login")}>sign in</span> to continue.
         </div>

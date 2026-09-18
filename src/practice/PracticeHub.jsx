@@ -4,6 +4,7 @@ import Paper1Exam from "./Paper1Exam";
 import Paper2Exam from "./Paper2Exam";
 import Syllabus2027Hub from "./Syllabus2027Hub";
 import PhysicsPracticeHub from "../physics/course/components/PhysicsPracticeHub";
+import InformationTechnologyPracticeHub from "../informationTechnology/practice/InformationTechnologyPracticeHub";
 import SubjectSelectionView from "../subjects/SubjectSelectionView";
 import { useMathPracticeRoute } from "../routing/sparkRoutingV270";
 import { getSparkSubjectRegistry, subjectsForCapability } from "../subjects/subjectRegistry";
@@ -67,7 +68,7 @@ export default function PracticeHub({ supabase, userId, setView, physicsEnabled 
       description="Select the CSEC subject you want to practise. Each subject only shows assessment modes supported by its current content."
       capability="practice"
       subjects={practiceSubjects}
-      onSelect={item => { setMode("home"); setView?.(item.id === "physics" ? "practice-physics" : "practice-math"); }}
+      onSelect={item => { setMode("home"); setView?.(item.id === "physics" ? "practice-physics" : item.id === "information-technology" ? "practice-information-technology" : "practice-math"); }}
       onBack={() => setView?.("dashboard")}
     />;
   }
@@ -80,7 +81,14 @@ export default function PracticeHub({ supabase, userId, setView, physicsEnabled 
     />;
   }
 
-  if (mode === "adaptive") {
+
+  if (selectedSubject === "information-technology") {
+    return <InformationTechnologyPracticeHub
+      onBack={() => { setMode("home"); setView?.("practice"); }}
+    />;
+  }
+
+if (mode === "adaptive") {
     return <AdaptivePractice supabase={supabase} userId={userId} setView={() => setMode("home")} backLabel="← Back to Practice" />;
   }
 

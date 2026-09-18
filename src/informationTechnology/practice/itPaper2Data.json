@@ -1,0 +1,4466 @@
+{
+  "format": {
+    "title": "CSEC Information Technology Practice Paper 02",
+    "durationMinutes": 120,
+    "questions": 4,
+    "marks": 90,
+    "questionMarks": [
+      20,
+      20,
+      25,
+      25
+    ],
+    "profiles": {
+      "Theory": 35,
+      "Productivity Tools": 30,
+      "Problem-Solving and Programming": 25
+    }
+  },
+  "papers": [
+    {
+      "id": "P2-A",
+      "title": "Practice Paper 02 - A",
+      "questions": [
+        {
+          "number": 1,
+          "scenario": "Caribbean Disaster Management Centre is upgrading its computer and communications systems. Several branches will share information with a central system and staff will access some services remotely.",
+          "visual": {
+            "type": "network",
+            "nodes": [
+              [
+                "Head Office",
+                "LAN"
+              ],
+              [
+                "Branch A",
+                "LAN"
+              ],
+              [
+                "Branch B",
+                "LAN"
+              ],
+              [
+                "Central System",
+                "supercomputer"
+              ]
+            ],
+            "links": [
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "caption": "Caribbean Disaster Management Centre proposed network"
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "State TWO characteristics of a supercomputer that make it suitable for weather and disaster modelling.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Award 1 mark for each relevant characteristic linked to the workload, for example high processing capacity, ability to handle many transactions/users, specialised control, reliability or large data volumes."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "b",
+              "prompt": "Identify the MOST important hardware device used to connect the local networks to other networks.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Router. 1 mark.",
+                "Role/function correctly stated as connecting or forwarding data between networks. 1 mark."
+              ],
+              "responseType": "short"
+            },
+            {
+              "id": "c",
+              "prompt": "Distinguish between an intranet and an extranet.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Intranet is private/internal to an organisation. 1 mark.",
+                "Extranet gives controlled access to authorised external users. 1 mark.",
+                "Clear distinction or suitable example. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "d",
+              "prompt": "State THREE transmission media that could be used in computer networks.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Any three suitable media, for example twisted pair, coaxial cable, fibre-optic cable, infrared, microwave or satellite. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "State TWO factors, other than cost, that should be considered when deciding whether to store operational files in the cloud.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Any two relevant factors such as accessibility, security, capacity, Internet availability/reliability or organisational policy. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "Explain why verification and validation are BOTH useful when new records are entered.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Validation checks whether data follows specified rules. 1 mark.",
+                "Verification checks whether data was entered/copied accurately. 1 mark.",
+                "Explanation that both address different kinds of data-entry error. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "g",
+              "prompt": "The organisation receives an email asking staff to follow a link and enter their passwords urgently. Identify the likely threat and state TWO precautions staff should take.",
+              "marks": 5,
+              "profile": "Theory",
+              "markScheme": [
+                "Phishing/social-engineering attempt. 1 mark.",
+                "Any two suitable precautions such as verify sender/domain, do not follow suspicious link, type official address manually, do not reveal credentials, report the message. Up to 4 marks for two well-stated precautions."
+              ],
+              "responseType": "prose"
+            }
+          ],
+          "totalMarks": 20
+        },
+        {
+          "number": 2,
+          "scenario": "Caribbean Disaster Management Centre prepares a worksheet to estimate the cost of equipment and services for a new project. A portion of the worksheet is shown.",
+          "visual": {
+            "type": "spreadsheet",
+            "columns": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E"
+            ],
+            "rows": [
+              [
+                "Item",
+                "Unit Cost",
+                "Quantity",
+                "Total Cost",
+                "Status"
+              ],
+              [
+                "Emergency kits",
+                "2450",
+                "18",
+                "=B2*C2",
+                "?"
+              ],
+              [
+                "Training",
+                "1200",
+                "8",
+                "=B3*C3",
+                "?"
+              ],
+              [
+                "Total",
+                "",
+                "",
+                "=SUM(D2:D3)",
+                ""
+              ]
+            ]
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "Explain the difference between data and information, using the spreadsheet as part of your answer.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Data identified as raw facts/values. 1 mark.",
+                "Information identified as processed/organised data with meaning. 1 mark.",
+                "Relevant example from the spreadsheet. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "b",
+              "prompt": "State TWO criteria that may be used to judge the reliability of information found on a website.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Any two of authenticity, currency, relevance and bias, or equivalent. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "c",
+              "prompt": "State TWO examples of system software and ONE example of application software.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Two valid system-software examples such as operating system/utilities. 2 marks.",
+                "One valid application-software example. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "d",
+              "prompt": "Distinguish between RAM and secondary storage.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "RAM described as temporary/volatile working memory. 1 mark.",
+                "Secondary storage described as longer-term/non-volatile storage. 1 mark.",
+                "Clear comparison. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "State FOUR basic stages/components involved in the information-processing cycle.",
+              "marks": 4,
+              "profile": "Theory",
+              "markScheme": [
+                "Input, Processing, Output and Storage. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "Write the spreadsheet formula that should be entered in D2 to calculate Total Cost.",
+              "marks": 2,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "=B2*C2 or equivalent. 2 marks."
+              ],
+              "responseType": "formula",
+              "responseSpec": {
+                "cell": "D2"
+              }
+            },
+            {
+              "id": "g",
+              "prompt": "Write the function that should be entered in D4 to calculate the total of D2:D3.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "=SUM(D2:D3). 3 marks."
+              ],
+              "responseType": "formula",
+              "responseSpec": {
+                "cell": "D4"
+              }
+            }
+          ],
+          "totalMarks": 20
+        },
+        {
+          "number": 3,
+          "scenario": "Caribbean Disaster Management Centre stores operational records in two related database tables.",
+          "visual": {
+            "type": "database",
+            "tables": [
+              {
+                "name": "SHELTER",
+                "fields": [
+                  [
+                    "ShelterID",
+                    "PK"
+                  ],
+                  [
+                    "Name",
+                    "Text"
+                  ],
+                  [
+                    "Parish",
+                    "Text"
+                  ],
+                  [
+                    "Status",
+                    "Text"
+                  ]
+                ]
+              },
+              {
+                "name": "REGISTRATION",
+                "fields": [
+                  [
+                    "RegistrationID",
+                    "PK"
+                  ],
+                  [
+                    "ShelterID",
+                    "FK"
+                  ],
+                  [
+                    "Date",
+                    "Date/Time"
+                  ],
+                  [
+                    "Amount",
+                    "Currency"
+                  ]
+                ]
+              }
+            ],
+            "relationship": "SHELTER 1 ─── ∞ REGISTRATION"
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "State the field that should be the primary key of SHELTER.",
+              "marks": 2,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "ShelterID."
+              ],
+              "responseType": "short"
+            },
+            {
+              "id": "b",
+              "prompt": "State the field in REGISTRATION that should act as the foreign key.",
+              "marks": 2,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "ShelterID."
+              ],
+              "responseType": "short"
+            },
+            {
+              "id": "c",
+              "prompt": "State the relationship between SHELTER and REGISTRATION.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "One-to-many. 2 marks.",
+                "Clear interpretation that one parent record can be linked to several child records. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "d",
+              "prompt": "Write query criteria to select records where Parish is Kingston AND Status is Active.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Parish='Kingston' AND Status='Active', or equivalent."
+              ],
+              "responseType": "query"
+            },
+            {
+              "id": "e",
+              "prompt": "Name the database object that is MOST suitable for user-friendly record entry and state ONE advantage of using it.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Form. 1 mark.",
+                "Suitable advantage such as easier/controlled data entry or clearer interface. 2 marks."
+              ],
+              "responseType": "short"
+            },
+            {
+              "id": "f",
+              "prompt": "State THREE features that could be used in a report to make the output more useful.",
+              "marks": 4,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Any three suitable features such as sorting, grouping, COUNT, SUM, AVERAGE, headings or selected fields. Award up to 4 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "g",
+              "prompt": "State TWO suitable data types for a Date field and an Amount field.",
+              "marks": 4,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Date/Time for Date. 2 marks.",
+                "Currency/number for Amount. 2 marks."
+              ],
+              "responseType": "field-table",
+              "responseSpec": {
+                "fields": [
+                  "Date",
+                  "Amount"
+                ]
+              }
+            },
+            {
+              "id": "h",
+              "prompt": "Explain why a primary key is important in a database table.",
+              "marks": 4,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Uniquely identifies each record. 2 marks.",
+                "Helps prevent ambiguity/duplicates and supports relationships/retrieval. Up to 2 marks."
+              ],
+              "responseType": "prose"
+            }
+          ],
+          "totalMarks": 25
+        },
+        {
+          "number": 4,
+          "scenario": "Caribbean Disaster Management Centre needs a small program to calculate a evacuation score and make a simple decision. The program must be designed before it is implemented.",
+          "visual": {
+            "type": "flow",
+            "nodes": [
+              "START",
+              "READ riskLevel, occupancy, capacity",
+              "Calculate SCORE",
+              "SCORE >= 80?",
+              "Yes: DISPLAY ACCEPT",
+              "No: DISPLAY REVIEW",
+              "STOP"
+            ]
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "Construct an IPO chart for the evacuation score problem using the three inputs riskLevel, occupancy, capacity.",
+              "marks": 3,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Input: riskLevel, occupancy, capacity. 1 mark.",
+                "Process: calculate the score and compare with the threshold. 1 mark.",
+                "Output: ACCEPT or REVIEW. 1 mark."
+              ],
+              "responseType": "ipo",
+              "responseSpec": {
+                "variables": [
+                  "riskLevel",
+                  "occupancy",
+                  "capacity"
+                ]
+              }
+            },
+            {
+              "id": "b",
+              "prompt": "State TWO characteristics of a good algorithm and explain ONE of them.",
+              "marks": 4,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Any two of finite, precise, unambiguous, clear flow of control, terminates. 2 marks.",
+                "One suitable explanation. 2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "c",
+              "prompt": "Write language-neutral pseudocode that reads riskLevel, occupancy, capacity, calculates a SCORE using all three values, and displays ACCEPT when SCORE is at least 80, otherwise REVIEW.",
+              "marks": 8,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Read/input all three values. 2 marks.",
+                "Calculate SCORE using all three values. 2 marks.",
+                "Correct IF condition using threshold. 1 mark.",
+                "Display ACCEPT on true branch. 1 mark.",
+                "ELSE/otherwise branch. 1 mark.",
+                "Display REVIEW on false branch. 1 mark."
+              ],
+              "responseType": "pseudocode",
+              "responseSpec": {
+                "variables": [
+                  "riskLevel",
+                  "occupancy",
+                  "capacity"
+                ],
+                "threshold": 80
+              }
+            },
+            {
+              "id": "d",
+              "prompt": "Explain how a trace table or dry run could be used to test the algorithm.",
+              "marks": 4,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Use selected test data. 1 mark.",
+                "Record changing values/identifiers step by step. 1 mark.",
+                "Follow decision/control flow. 1 mark.",
+                "Compare actual result with expected result or identify logic errors. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "Distinguish between a syntax error and a logic error.",
+              "marks": 3,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Syntax error breaks language rules and may prevent successful translation/execution. 1–2 marks.",
+                "Logic error allows execution but produces an incorrect result. 1–2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "State THREE features of good internal program documentation.",
+              "marks": 3,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Any three of meaningful variable names, useful comments, indentation and effective whitespace. 1 mark each."
+              ],
+              "responseType": "prose"
+            }
+          ],
+          "totalMarks": 25
+        }
+      ]
+    },
+    {
+      "id": "P2-B",
+      "title": "Practice Paper 02 - B",
+      "questions": [
+        {
+          "number": 1,
+          "scenario": "Island Health Services is upgrading its computer and communications systems. Several branches will share information with a central system and staff will access some services remotely.",
+          "visual": {
+            "type": "network",
+            "nodes": [
+              [
+                "Head Office",
+                "LAN"
+              ],
+              [
+                "Branch A",
+                "LAN"
+              ],
+              [
+                "Branch B",
+                "LAN"
+              ],
+              [
+                "Central System",
+                "mainframe"
+              ]
+            ],
+            "links": [
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "caption": "Island Health Services proposed network"
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "State TWO characteristics of a mainframe that make it suitable for patient records and regional health services.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Award 1 mark for each relevant characteristic linked to the workload, for example high processing capacity, ability to handle many transactions/users, specialised control, reliability or large data volumes."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "b",
+              "prompt": "Identify the MOST important hardware device used to connect the local networks to other networks.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Router. 1 mark.",
+                "Role/function correctly stated as connecting or forwarding data between networks. 1 mark."
+              ],
+              "responseType": "short"
+            },
+            {
+              "id": "c",
+              "prompt": "Distinguish between an intranet and an extranet.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Intranet is private/internal to an organisation. 1 mark.",
+                "Extranet gives controlled access to authorised external users. 1 mark.",
+                "Clear distinction or suitable example. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "d",
+              "prompt": "State THREE transmission media that could be used in computer networks.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Any three suitable media, for example twisted pair, coaxial cable, fibre-optic cable, infrared, microwave or satellite. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "State TWO factors, other than cost, that should be considered when deciding whether to store operational files in the cloud.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Any two relevant factors such as accessibility, security, capacity, Internet availability/reliability or organisational policy. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "Explain why verification and validation are BOTH useful when new records are entered.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Validation checks whether data follows specified rules. 1 mark.",
+                "Verification checks whether data was entered/copied accurately. 1 mark.",
+                "Explanation that both address different kinds of data-entry error. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "g",
+              "prompt": "The organisation receives an email asking staff to follow a link and enter their passwords urgently. Identify the likely threat and state TWO precautions staff should take.",
+              "marks": 5,
+              "profile": "Theory",
+              "markScheme": [
+                "Phishing/social-engineering attempt. 1 mark.",
+                "Any two suitable precautions such as verify sender/domain, do not follow suspicious link, type official address manually, do not reveal credentials, report the message. Up to 4 marks for two well-stated precautions."
+              ],
+              "responseType": "prose"
+            }
+          ],
+          "totalMarks": 20
+        },
+        {
+          "number": 2,
+          "scenario": "Island Health Services prepares a worksheet to estimate the cost of equipment and services for a new project. A portion of the worksheet is shown.",
+          "visual": {
+            "type": "spreadsheet",
+            "columns": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E"
+            ],
+            "rows": [
+              [
+                "Item",
+                "Unit Cost",
+                "Quantity",
+                "Total Cost",
+                "Status"
+              ],
+              [
+                "Medical supplies",
+                "1800",
+                "25",
+                "=B2*C2",
+                "?"
+              ],
+              [
+                "Training",
+                "1300",
+                "9",
+                "=B3*C3",
+                "?"
+              ],
+              [
+                "Total",
+                "",
+                "",
+                "=SUM(D2:D3)",
+                ""
+              ]
+            ]
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "Explain the difference between data and information, using the spreadsheet as part of your answer.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Data identified as raw facts/values. 1 mark.",
+                "Information identified as processed/organised data with meaning. 1 mark.",
+                "Relevant example from the spreadsheet. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "b",
+              "prompt": "State TWO criteria that may be used to judge the reliability of information found on a website.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Any two of authenticity, currency, relevance and bias, or equivalent. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "c",
+              "prompt": "State TWO examples of system software and ONE example of application software.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Two valid system-software examples such as operating system/utilities. 2 marks.",
+                "One valid application-software example. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "d",
+              "prompt": "Distinguish between RAM and secondary storage.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "RAM described as temporary/volatile working memory. 1 mark.",
+                "Secondary storage described as longer-term/non-volatile storage. 1 mark.",
+                "Clear comparison. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "State FOUR basic stages/components involved in the information-processing cycle.",
+              "marks": 4,
+              "profile": "Theory",
+              "markScheme": [
+                "Input, Processing, Output and Storage. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "Write the spreadsheet formula that should be entered in D2 to calculate Total Cost.",
+              "marks": 2,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "=B2*C2 or equivalent. 2 marks."
+              ],
+              "responseType": "formula",
+              "responseSpec": {
+                "cell": "D2"
+              }
+            },
+            {
+              "id": "g",
+              "prompt": "Write the function that should be entered in D4 to calculate the total of D2:D3.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "=SUM(D2:D3). 3 marks."
+              ],
+              "responseType": "formula",
+              "responseSpec": {
+                "cell": "D4"
+              }
+            }
+          ],
+          "totalMarks": 20
+        },
+        {
+          "number": 3,
+          "scenario": "Island Health Services uses a spreadsheet to analyse revenue and tax for several services.",
+          "visual": {
+            "type": "spreadsheet",
+            "columns": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E",
+              "F"
+            ],
+            "rows": [
+              [
+                "Item",
+                "Quantity",
+                "Unit Price",
+                "Revenue",
+                "Tax",
+                "Rate"
+              ],
+              [
+                "Service A",
+                "11",
+                "550",
+                "=B2*C2",
+                "=D2*$F$2",
+                "0.16"
+              ],
+              [
+                "Service B",
+                "9",
+                "775",
+                "=B3*C3",
+                "=D3*$F$2",
+                ""
+              ],
+              [
+                "Total",
+                "",
+                "",
+                "=SUM(D2:D3)",
+                "=SUM(E2:E3)",
+                ""
+              ]
+            ]
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "Write the formula in D2 to calculate Revenue.",
+              "marks": 2,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "=B2*C2 or equivalent."
+              ],
+              "responseType": "formula",
+              "responseSpec": {
+                "cell": "D2"
+              }
+            },
+            {
+              "id": "b",
+              "prompt": "Write the formula in E2 to calculate Tax using the rate in F2. The formula will be copied down and the reference to F2 must remain fixed.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "=D2*$F$2 or equivalent."
+              ],
+              "responseType": "formula",
+              "responseSpec": {
+                "cell": "E2"
+              }
+            },
+            {
+              "id": "c",
+              "prompt": "Write the function in D4 to calculate total Revenue.",
+              "marks": 2,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "=SUM(D2:D3)."
+              ],
+              "responseType": "formula",
+              "responseSpec": {
+                "cell": "D4"
+              }
+            },
+            {
+              "id": "d",
+              "prompt": "State the difference between a relative reference and an absolute reference.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Relative reference changes when copied. 1 mark.",
+                "Absolute reference remains fixed. 1 mark.",
+                "Suitable example/clear comparison. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "State TWO spreadsheet features that could be used to display only records matching stated conditions and then arrange them into order.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Filter. 1–2 marks.",
+                "Sort. 1–2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "Name the feature MOST suitable for summarising a large dataset by categories such as month and branch, and state ONE advantage.",
+              "marks": 4,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Pivot table. 2 marks.",
+                "Suitable advantage such as quick grouped summary/reorganisation without rewriting source data. 2 marks."
+              ],
+              "responseType": "short"
+            },
+            {
+              "id": "g",
+              "prompt": "State the MOST suitable chart type for showing monthly revenue over one year and give ONE reason.",
+              "marks": 4,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Line graph. 2 marks.",
+                "Shows change/trend over time. 2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "h",
+              "prompt": "Explain ONE benefit of linking a Summary worksheet to source worksheets rather than retyping totals.",
+              "marks": 4,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Linked values can update when source data changes. Up to 2 marks.",
+                "Reduces re-entry/duplication and possible errors. Up to 2 marks."
+              ],
+              "responseType": "prose"
+            }
+          ],
+          "totalMarks": 25
+        },
+        {
+          "number": 4,
+          "scenario": "Island Health Services needs a small program to calculate a clinic priority score and make a simple decision. The program must be designed before it is implemented.",
+          "visual": {
+            "type": "flow",
+            "nodes": [
+              "START",
+              "READ severity, ageRisk, waitTime",
+              "Calculate SCORE",
+              "SCORE >= 70?",
+              "Yes: DISPLAY ACCEPT",
+              "No: DISPLAY REVIEW",
+              "STOP"
+            ]
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "Construct an IPO chart for the clinic priority score problem using the three inputs severity, ageRisk, waitTime.",
+              "marks": 3,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Input: severity, ageRisk, waitTime. 1 mark.",
+                "Process: calculate the score and compare with the threshold. 1 mark.",
+                "Output: ACCEPT or REVIEW. 1 mark."
+              ],
+              "responseType": "ipo",
+              "responseSpec": {
+                "variables": [
+                  "severity",
+                  "ageRisk",
+                  "waitTime"
+                ]
+              }
+            },
+            {
+              "id": "b",
+              "prompt": "State TWO characteristics of a good algorithm and explain ONE of them.",
+              "marks": 4,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Any two of finite, precise, unambiguous, clear flow of control, terminates. 2 marks.",
+                "One suitable explanation. 2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "c",
+              "prompt": "Write language-neutral pseudocode that reads severity, ageRisk, waitTime, calculates a SCORE using all three values, and displays ACCEPT when SCORE is at least 70, otherwise REVIEW.",
+              "marks": 8,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Read/input all three values. 2 marks.",
+                "Calculate SCORE using all three values. 2 marks.",
+                "Correct IF condition using threshold. 1 mark.",
+                "Display ACCEPT on true branch. 1 mark.",
+                "ELSE/otherwise branch. 1 mark.",
+                "Display REVIEW on false branch. 1 mark."
+              ],
+              "responseType": "pseudocode",
+              "responseSpec": {
+                "variables": [
+                  "severity",
+                  "ageRisk",
+                  "waitTime"
+                ],
+                "threshold": 70
+              }
+            },
+            {
+              "id": "d",
+              "prompt": "Explain how a trace table or dry run could be used to test the algorithm.",
+              "marks": 4,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Use selected test data. 1 mark.",
+                "Record changing values/identifiers step by step. 1 mark.",
+                "Follow decision/control flow. 1 mark.",
+                "Compare actual result with expected result or identify logic errors. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "Distinguish between a syntax error and a logic error.",
+              "marks": 3,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Syntax error breaks language rules and may prevent successful translation/execution. 1–2 marks.",
+                "Logic error allows execution but produces an incorrect result. 1–2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "State THREE features of good internal program documentation.",
+              "marks": 3,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Any three of meaningful variable names, useful comments, indentation and effective whitespace. 1 mark each."
+              ],
+              "responseType": "prose"
+            }
+          ],
+          "totalMarks": 25
+        }
+      ]
+    },
+    {
+      "id": "P2-C",
+      "title": "Practice Paper 02 - C",
+      "questions": [
+        {
+          "number": 1,
+          "scenario": "BlueWave Hotel Group is upgrading its computer and communications systems. Several branches will share information with a central system and staff will access some services remotely.",
+          "visual": {
+            "type": "network",
+            "nodes": [
+              [
+                "Head Office",
+                "LAN"
+              ],
+              [
+                "Branch A",
+                "LAN"
+              ],
+              [
+                "Branch B",
+                "LAN"
+              ],
+              [
+                "Central System",
+                "mainframe"
+              ]
+            ],
+            "links": [
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "caption": "BlueWave Hotel Group proposed network"
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "State TWO characteristics of a mainframe that make it suitable for reservations and guest services.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Award 1 mark for each relevant characteristic linked to the workload, for example high processing capacity, ability to handle many transactions/users, specialised control, reliability or large data volumes."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "b",
+              "prompt": "Identify the MOST important hardware device used to connect the local networks to other networks.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Router. 1 mark.",
+                "Role/function correctly stated as connecting or forwarding data between networks. 1 mark."
+              ],
+              "responseType": "short"
+            },
+            {
+              "id": "c",
+              "prompt": "Distinguish between an intranet and an extranet.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Intranet is private/internal to an organisation. 1 mark.",
+                "Extranet gives controlled access to authorised external users. 1 mark.",
+                "Clear distinction or suitable example. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "d",
+              "prompt": "State THREE transmission media that could be used in computer networks.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Any three suitable media, for example twisted pair, coaxial cable, fibre-optic cable, infrared, microwave or satellite. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "State TWO factors, other than cost, that should be considered when deciding whether to store operational files in the cloud.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Any two relevant factors such as accessibility, security, capacity, Internet availability/reliability or organisational policy. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "Explain why verification and validation are BOTH useful when new records are entered.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Validation checks whether data follows specified rules. 1 mark.",
+                "Verification checks whether data was entered/copied accurately. 1 mark.",
+                "Explanation that both address different kinds of data-entry error. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "g",
+              "prompt": "The organisation receives an email asking staff to follow a link and enter their passwords urgently. Identify the likely threat and state TWO precautions staff should take.",
+              "marks": 5,
+              "profile": "Theory",
+              "markScheme": [
+                "Phishing/social-engineering attempt. 1 mark.",
+                "Any two suitable precautions such as verify sender/domain, do not follow suspicious link, type official address manually, do not reveal credentials, report the message. Up to 4 marks for two well-stated precautions."
+              ],
+              "responseType": "prose"
+            }
+          ],
+          "totalMarks": 20
+        },
+        {
+          "number": 2,
+          "scenario": "BlueWave Hotel Group prepares a worksheet to estimate the cost of equipment and services for a new project. A portion of the worksheet is shown.",
+          "visual": {
+            "type": "spreadsheet",
+            "columns": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E"
+            ],
+            "rows": [
+              [
+                "Item",
+                "Unit Cost",
+                "Quantity",
+                "Total Cost",
+                "Status"
+              ],
+              [
+                "Room tablets",
+                "3200",
+                "12",
+                "=B2*C2",
+                "?"
+              ],
+              [
+                "Training",
+                "1400",
+                "10",
+                "=B3*C3",
+                "?"
+              ],
+              [
+                "Total",
+                "",
+                "",
+                "=SUM(D2:D3)",
+                ""
+              ]
+            ]
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "Explain the difference between data and information, using the spreadsheet as part of your answer.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Data identified as raw facts/values. 1 mark.",
+                "Information identified as processed/organised data with meaning. 1 mark.",
+                "Relevant example from the spreadsheet. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "b",
+              "prompt": "State TWO criteria that may be used to judge the reliability of information found on a website.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Any two of authenticity, currency, relevance and bias, or equivalent. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "c",
+              "prompt": "State TWO examples of system software and ONE example of application software.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Two valid system-software examples such as operating system/utilities. 2 marks.",
+                "One valid application-software example. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "d",
+              "prompt": "Distinguish between RAM and secondary storage.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "RAM described as temporary/volatile working memory. 1 mark.",
+                "Secondary storage described as longer-term/non-volatile storage. 1 mark.",
+                "Clear comparison. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "State FOUR basic stages/components involved in the information-processing cycle.",
+              "marks": 4,
+              "profile": "Theory",
+              "markScheme": [
+                "Input, Processing, Output and Storage. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "Write the spreadsheet formula that should be entered in D2 to calculate Total Cost.",
+              "marks": 2,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "=B2*C2 or equivalent. 2 marks."
+              ],
+              "responseType": "formula",
+              "responseSpec": {
+                "cell": "D2"
+              }
+            },
+            {
+              "id": "g",
+              "prompt": "Write the function that should be entered in D4 to calculate the total of D2:D3.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "=SUM(D2:D3). 3 marks."
+              ],
+              "responseType": "formula",
+              "responseSpec": {
+                "cell": "D4"
+              }
+            }
+          ],
+          "totalMarks": 20
+        },
+        {
+          "number": 3,
+          "scenario": "BlueWave Hotel Group is preparing a website, electronic registration form and a set of personalised documents.",
+          "visual": {
+            "type": "website",
+            "pages": [
+              [
+                "Home",
+                "Working"
+              ],
+              [
+                "Services",
+                "Working"
+              ],
+              [
+                "Registration",
+                "Broken link"
+              ],
+              [
+                "Contact",
+                "Working"
+              ]
+            ]
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "State TWO decisions that should be made before the website is created.",
+              "marks": 2,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Any two of purpose, audience, number of pages, content or layout. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "b",
+              "prompt": "State TWO types of hyperlink that could be useful on the website.",
+              "marks": 2,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Any two of link to another page, same-page location, email address or user-created file. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "c",
+              "prompt": "The Registration link does not work. State TWO actions that should be taken before the website is published.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Correct/test the broken link. 1–2 marks.",
+                "Retest navigation/display/content or use a test audience. Up to 2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "d",
+              "prompt": "Name the word-processing feature used to produce personalised letters from one standard letter and a list of recipients.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Mail merge. 2 marks.",
+                "Reference to primary/main document plus data source. 1 mark."
+              ],
+              "responseType": "short"
+            },
+            {
+              "id": "e",
+              "prompt": "State TWO content controls that may be used to create a fillable registration form.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Any two of text box, check box, date picker, drop-down list or command button."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "State THREE review features that may be used before a document is distributed.",
+              "marks": 4,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Any three suitable features such as spelling/grammar check, comments, track changes, thesaurus, word count. Up to 4 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "g",
+              "prompt": "Explain how headings can be used to create an automatic table of contents.",
+              "marks": 4,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Apply heading styles/levels. Up to 2 marks.",
+                "Generate/update the table of contents from those headings. Up to 2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "h",
+              "prompt": "State TWO methods of protecting an important document from accidental loss or unauthorised editing.",
+              "marks": 4,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Any two of automatic save, backup copy, password/edit restriction. Up to 4 marks."
+              ],
+              "responseType": "prose"
+            }
+          ],
+          "totalMarks": 25
+        },
+        {
+          "number": 4,
+          "scenario": "BlueWave Hotel Group needs a small program to calculate a loyalty score and make a simple decision. The program must be designed before it is implemented.",
+          "visual": {
+            "type": "flow",
+            "nodes": [
+              "START",
+              "READ stays, spend, rating",
+              "Calculate SCORE",
+              "SCORE >= 75?",
+              "Yes: DISPLAY ACCEPT",
+              "No: DISPLAY REVIEW",
+              "STOP"
+            ]
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "Construct an IPO chart for the loyalty score problem using the three inputs stays, spend, rating.",
+              "marks": 3,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Input: stays, spend, rating. 1 mark.",
+                "Process: calculate the score and compare with the threshold. 1 mark.",
+                "Output: ACCEPT or REVIEW. 1 mark."
+              ],
+              "responseType": "ipo",
+              "responseSpec": {
+                "variables": [
+                  "stays",
+                  "spend",
+                  "rating"
+                ]
+              }
+            },
+            {
+              "id": "b",
+              "prompt": "State TWO characteristics of a good algorithm and explain ONE of them.",
+              "marks": 4,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Any two of finite, precise, unambiguous, clear flow of control, terminates. 2 marks.",
+                "One suitable explanation. 2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "c",
+              "prompt": "Write language-neutral pseudocode that reads stays, spend, rating, calculates a SCORE using all three values, and displays ACCEPT when SCORE is at least 75, otherwise REVIEW.",
+              "marks": 8,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Read/input all three values. 2 marks.",
+                "Calculate SCORE using all three values. 2 marks.",
+                "Correct IF condition using threshold. 1 mark.",
+                "Display ACCEPT on true branch. 1 mark.",
+                "ELSE/otherwise branch. 1 mark.",
+                "Display REVIEW on false branch. 1 mark."
+              ],
+              "responseType": "pseudocode",
+              "responseSpec": {
+                "variables": [
+                  "stays",
+                  "spend",
+                  "rating"
+                ],
+                "threshold": 75
+              }
+            },
+            {
+              "id": "d",
+              "prompt": "Explain how a trace table or dry run could be used to test the algorithm.",
+              "marks": 4,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Use selected test data. 1 mark.",
+                "Record changing values/identifiers step by step. 1 mark.",
+                "Follow decision/control flow. 1 mark.",
+                "Compare actual result with expected result or identify logic errors. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "Distinguish between a syntax error and a logic error.",
+              "marks": 3,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Syntax error breaks language rules and may prevent successful translation/execution. 1–2 marks.",
+                "Logic error allows execution but produces an incorrect result. 1–2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "State THREE features of good internal program documentation.",
+              "marks": 3,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Any three of meaningful variable names, useful comments, indentation and effective whitespace. 1 mark each."
+              ],
+              "responseType": "prose"
+            }
+          ],
+          "totalMarks": 25
+        }
+      ]
+    },
+    {
+      "id": "P2-D",
+      "title": "Practice Paper 02 - D",
+      "questions": [
+        {
+          "number": 1,
+          "scenario": "Caribbean Port Authority is upgrading its computer and communications systems. Several branches will share information with a central system and staff will access some services remotely.",
+          "visual": {
+            "type": "network",
+            "nodes": [
+              [
+                "Head Office",
+                "LAN"
+              ],
+              [
+                "Branch A",
+                "LAN"
+              ],
+              [
+                "Branch B",
+                "LAN"
+              ],
+              [
+                "Central System",
+                "mainframe"
+              ]
+            ],
+            "links": [
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "caption": "Caribbean Port Authority proposed network"
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "State TWO characteristics of a mainframe that make it suitable for cargo and vessel processing.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Award 1 mark for each relevant characteristic linked to the workload, for example high processing capacity, ability to handle many transactions/users, specialised control, reliability or large data volumes."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "b",
+              "prompt": "Identify the MOST important hardware device used to connect the local networks to other networks.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Router. 1 mark.",
+                "Role/function correctly stated as connecting or forwarding data between networks. 1 mark."
+              ],
+              "responseType": "short"
+            },
+            {
+              "id": "c",
+              "prompt": "Distinguish between an intranet and an extranet.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Intranet is private/internal to an organisation. 1 mark.",
+                "Extranet gives controlled access to authorised external users. 1 mark.",
+                "Clear distinction or suitable example. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "d",
+              "prompt": "State THREE transmission media that could be used in computer networks.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Any three suitable media, for example twisted pair, coaxial cable, fibre-optic cable, infrared, microwave or satellite. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "State TWO factors, other than cost, that should be considered when deciding whether to store operational files in the cloud.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Any two relevant factors such as accessibility, security, capacity, Internet availability/reliability or organisational policy. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "Explain why verification and validation are BOTH useful when new records are entered.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Validation checks whether data follows specified rules. 1 mark.",
+                "Verification checks whether data was entered/copied accurately. 1 mark.",
+                "Explanation that both address different kinds of data-entry error. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "g",
+              "prompt": "The organisation receives an email asking staff to follow a link and enter their passwords urgently. Identify the likely threat and state TWO precautions staff should take.",
+              "marks": 5,
+              "profile": "Theory",
+              "markScheme": [
+                "Phishing/social-engineering attempt. 1 mark.",
+                "Any two suitable precautions such as verify sender/domain, do not follow suspicious link, type official address manually, do not reveal credentials, report the message. Up to 4 marks for two well-stated precautions."
+              ],
+              "responseType": "prose"
+            }
+          ],
+          "totalMarks": 20
+        },
+        {
+          "number": 2,
+          "scenario": "Caribbean Port Authority prepares a worksheet to estimate the cost of equipment and services for a new project. A portion of the worksheet is shown.",
+          "visual": {
+            "type": "spreadsheet",
+            "columns": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E"
+            ],
+            "rows": [
+              [
+                "Item",
+                "Unit Cost",
+                "Quantity",
+                "Total Cost",
+                "Status"
+              ],
+              [
+                "RFID readers",
+                "5100",
+                "16",
+                "=B2*C2",
+                "?"
+              ],
+              [
+                "Training",
+                "1500",
+                "11",
+                "=B3*C3",
+                "?"
+              ],
+              [
+                "Total",
+                "",
+                "",
+                "=SUM(D2:D3)",
+                ""
+              ]
+            ]
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "Explain the difference between data and information, using the spreadsheet as part of your answer.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Data identified as raw facts/values. 1 mark.",
+                "Information identified as processed/organised data with meaning. 1 mark.",
+                "Relevant example from the spreadsheet. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "b",
+              "prompt": "State TWO criteria that may be used to judge the reliability of information found on a website.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Any two of authenticity, currency, relevance and bias, or equivalent. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "c",
+              "prompt": "State TWO examples of system software and ONE example of application software.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Two valid system-software examples such as operating system/utilities. 2 marks.",
+                "One valid application-software example. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "d",
+              "prompt": "Distinguish between RAM and secondary storage.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "RAM described as temporary/volatile working memory. 1 mark.",
+                "Secondary storage described as longer-term/non-volatile storage. 1 mark.",
+                "Clear comparison. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "State FOUR basic stages/components involved in the information-processing cycle.",
+              "marks": 4,
+              "profile": "Theory",
+              "markScheme": [
+                "Input, Processing, Output and Storage. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "Write the spreadsheet formula that should be entered in D2 to calculate Total Cost.",
+              "marks": 2,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "=B2*C2 or equivalent. 2 marks."
+              ],
+              "responseType": "formula",
+              "responseSpec": {
+                "cell": "D2"
+              }
+            },
+            {
+              "id": "g",
+              "prompt": "Write the function that should be entered in D4 to calculate the total of D2:D3.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "=SUM(D2:D3). 3 marks."
+              ],
+              "responseType": "formula",
+              "responseSpec": {
+                "cell": "D4"
+              }
+            }
+          ],
+          "totalMarks": 20
+        },
+        {
+          "number": 3,
+          "scenario": "Caribbean Port Authority stores operational records in two related database tables.",
+          "visual": {
+            "type": "database",
+            "tables": [
+              {
+                "name": "VESSEL",
+                "fields": [
+                  [
+                    "VesselID",
+                    "PK"
+                  ],
+                  [
+                    "Name",
+                    "Text"
+                  ],
+                  [
+                    "Parish",
+                    "Text"
+                  ],
+                  [
+                    "Status",
+                    "Text"
+                  ]
+                ]
+              },
+              {
+                "name": "CARGO",
+                "fields": [
+                  [
+                    "CargoID",
+                    "PK"
+                  ],
+                  [
+                    "VesselID",
+                    "FK"
+                  ],
+                  [
+                    "Date",
+                    "Date/Time"
+                  ],
+                  [
+                    "Amount",
+                    "Currency"
+                  ]
+                ]
+              }
+            ],
+            "relationship": "VESSEL 1 ─── ∞ CARGO"
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "State the field that should be the primary key of VESSEL.",
+              "marks": 2,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "VesselID."
+              ],
+              "responseType": "short"
+            },
+            {
+              "id": "b",
+              "prompt": "State the field in CARGO that should act as the foreign key.",
+              "marks": 2,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "VesselID."
+              ],
+              "responseType": "short"
+            },
+            {
+              "id": "c",
+              "prompt": "State the relationship between VESSEL and CARGO.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "One-to-many. 2 marks.",
+                "Clear interpretation that one parent record can be linked to several child records. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "d",
+              "prompt": "Write query criteria to select records where Parish is Kingston AND Status is Active.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Parish='Kingston' AND Status='Active', or equivalent."
+              ],
+              "responseType": "query"
+            },
+            {
+              "id": "e",
+              "prompt": "Name the database object that is MOST suitable for user-friendly record entry and state ONE advantage of using it.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Form. 1 mark.",
+                "Suitable advantage such as easier/controlled data entry or clearer interface. 2 marks."
+              ],
+              "responseType": "short"
+            },
+            {
+              "id": "f",
+              "prompt": "State THREE features that could be used in a report to make the output more useful.",
+              "marks": 4,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Any three suitable features such as sorting, grouping, COUNT, SUM, AVERAGE, headings or selected fields. Award up to 4 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "g",
+              "prompt": "State TWO suitable data types for a Date field and an Amount field.",
+              "marks": 4,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Date/Time for Date. 2 marks.",
+                "Currency/number for Amount. 2 marks."
+              ],
+              "responseType": "field-table",
+              "responseSpec": {
+                "fields": [
+                  "Date",
+                  "Amount"
+                ]
+              }
+            },
+            {
+              "id": "h",
+              "prompt": "Explain why a primary key is important in a database table.",
+              "marks": 4,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Uniquely identifies each record. 2 marks.",
+                "Helps prevent ambiguity/duplicates and supports relationships/retrieval. Up to 2 marks."
+              ],
+              "responseType": "prose"
+            }
+          ],
+          "totalMarks": 25
+        },
+        {
+          "number": 4,
+          "scenario": "Caribbean Port Authority needs a small program to calculate a clearance score and make a simple decision. The program must be designed before it is implemented.",
+          "visual": {
+            "type": "flow",
+            "nodes": [
+              "START",
+              "READ documents, inspection, fees",
+              "Calculate SCORE",
+              "SCORE >= 90?",
+              "Yes: DISPLAY ACCEPT",
+              "No: DISPLAY REVIEW",
+              "STOP"
+            ]
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "Construct an IPO chart for the clearance score problem using the three inputs documents, inspection, fees.",
+              "marks": 3,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Input: documents, inspection, fees. 1 mark.",
+                "Process: calculate the score and compare with the threshold. 1 mark.",
+                "Output: ACCEPT or REVIEW. 1 mark."
+              ],
+              "responseType": "ipo",
+              "responseSpec": {
+                "variables": [
+                  "documents",
+                  "inspection",
+                  "fees"
+                ]
+              }
+            },
+            {
+              "id": "b",
+              "prompt": "State TWO characteristics of a good algorithm and explain ONE of them.",
+              "marks": 4,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Any two of finite, precise, unambiguous, clear flow of control, terminates. 2 marks.",
+                "One suitable explanation. 2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "c",
+              "prompt": "Write language-neutral pseudocode that reads documents, inspection, fees, calculates a SCORE using all three values, and displays ACCEPT when SCORE is at least 90, otherwise REVIEW.",
+              "marks": 8,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Read/input all three values. 2 marks.",
+                "Calculate SCORE using all three values. 2 marks.",
+                "Correct IF condition using threshold. 1 mark.",
+                "Display ACCEPT on true branch. 1 mark.",
+                "ELSE/otherwise branch. 1 mark.",
+                "Display REVIEW on false branch. 1 mark."
+              ],
+              "responseType": "pseudocode",
+              "responseSpec": {
+                "variables": [
+                  "documents",
+                  "inspection",
+                  "fees"
+                ],
+                "threshold": 90
+              }
+            },
+            {
+              "id": "d",
+              "prompt": "Explain how a trace table or dry run could be used to test the algorithm.",
+              "marks": 4,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Use selected test data. 1 mark.",
+                "Record changing values/identifiers step by step. 1 mark.",
+                "Follow decision/control flow. 1 mark.",
+                "Compare actual result with expected result or identify logic errors. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "Distinguish between a syntax error and a logic error.",
+              "marks": 3,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Syntax error breaks language rules and may prevent successful translation/execution. 1–2 marks.",
+                "Logic error allows execution but produces an incorrect result. 1–2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "State THREE features of good internal program documentation.",
+              "marks": 3,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Any three of meaningful variable names, useful comments, indentation and effective whitespace. 1 mark each."
+              ],
+              "responseType": "prose"
+            }
+          ],
+          "totalMarks": 25
+        }
+      ]
+    },
+    {
+      "id": "P2-E",
+      "title": "Practice Paper 02 - E",
+      "questions": [
+        {
+          "number": 1,
+          "scenario": "GreenFields Agricultural Cooperative is upgrading its computer and communications systems. Several branches will share information with a central system and staff will access some services remotely.",
+          "visual": {
+            "type": "network",
+            "nodes": [
+              [
+                "Head Office",
+                "LAN"
+              ],
+              [
+                "Branch A",
+                "LAN"
+              ],
+              [
+                "Branch B",
+                "LAN"
+              ],
+              [
+                "Central System",
+                "embedded computer"
+              ]
+            ],
+            "links": [
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "caption": "GreenFields Agricultural Cooperative proposed network"
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "State TWO characteristics of a embedded computer that make it suitable for automated irrigation and crop monitoring.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Award 1 mark for each relevant characteristic linked to the workload, for example high processing capacity, ability to handle many transactions/users, specialised control, reliability or large data volumes."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "b",
+              "prompt": "Identify the MOST important hardware device used to connect the local networks to other networks.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Router. 1 mark.",
+                "Role/function correctly stated as connecting or forwarding data between networks. 1 mark."
+              ],
+              "responseType": "short"
+            },
+            {
+              "id": "c",
+              "prompt": "Distinguish between an intranet and an extranet.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Intranet is private/internal to an organisation. 1 mark.",
+                "Extranet gives controlled access to authorised external users. 1 mark.",
+                "Clear distinction or suitable example. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "d",
+              "prompt": "State THREE transmission media that could be used in computer networks.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Any three suitable media, for example twisted pair, coaxial cable, fibre-optic cable, infrared, microwave or satellite. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "State TWO factors, other than cost, that should be considered when deciding whether to store operational files in the cloud.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Any two relevant factors such as accessibility, security, capacity, Internet availability/reliability or organisational policy. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "Explain why verification and validation are BOTH useful when new records are entered.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Validation checks whether data follows specified rules. 1 mark.",
+                "Verification checks whether data was entered/copied accurately. 1 mark.",
+                "Explanation that both address different kinds of data-entry error. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "g",
+              "prompt": "The organisation receives an email asking staff to follow a link and enter their passwords urgently. Identify the likely threat and state TWO precautions staff should take.",
+              "marks": 5,
+              "profile": "Theory",
+              "markScheme": [
+                "Phishing/social-engineering attempt. 1 mark.",
+                "Any two suitable precautions such as verify sender/domain, do not follow suspicious link, type official address manually, do not reveal credentials, report the message. Up to 4 marks for two well-stated precautions."
+              ],
+              "responseType": "prose"
+            }
+          ],
+          "totalMarks": 20
+        },
+        {
+          "number": 2,
+          "scenario": "GreenFields Agricultural Cooperative prepares a worksheet to estimate the cost of equipment and services for a new project. A portion of the worksheet is shown.",
+          "visual": {
+            "type": "spreadsheet",
+            "columns": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E"
+            ],
+            "rows": [
+              [
+                "Item",
+                "Unit Cost",
+                "Quantity",
+                "Total Cost",
+                "Status"
+              ],
+              [
+                "Soil sensors",
+                "950",
+                "30",
+                "=B2*C2",
+                "?"
+              ],
+              [
+                "Training",
+                "1600",
+                "12",
+                "=B3*C3",
+                "?"
+              ],
+              [
+                "Total",
+                "",
+                "",
+                "=SUM(D2:D3)",
+                ""
+              ]
+            ]
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "Explain the difference between data and information, using the spreadsheet as part of your answer.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Data identified as raw facts/values. 1 mark.",
+                "Information identified as processed/organised data with meaning. 1 mark.",
+                "Relevant example from the spreadsheet. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "b",
+              "prompt": "State TWO criteria that may be used to judge the reliability of information found on a website.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Any two of authenticity, currency, relevance and bias, or equivalent. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "c",
+              "prompt": "State TWO examples of system software and ONE example of application software.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Two valid system-software examples such as operating system/utilities. 2 marks.",
+                "One valid application-software example. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "d",
+              "prompt": "Distinguish between RAM and secondary storage.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "RAM described as temporary/volatile working memory. 1 mark.",
+                "Secondary storage described as longer-term/non-volatile storage. 1 mark.",
+                "Clear comparison. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "State FOUR basic stages/components involved in the information-processing cycle.",
+              "marks": 4,
+              "profile": "Theory",
+              "markScheme": [
+                "Input, Processing, Output and Storage. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "Write the spreadsheet formula that should be entered in D2 to calculate Total Cost.",
+              "marks": 2,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "=B2*C2 or equivalent. 2 marks."
+              ],
+              "responseType": "formula",
+              "responseSpec": {
+                "cell": "D2"
+              }
+            },
+            {
+              "id": "g",
+              "prompt": "Write the function that should be entered in D4 to calculate the total of D2:D3.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "=SUM(D2:D3). 3 marks."
+              ],
+              "responseType": "formula",
+              "responseSpec": {
+                "cell": "D4"
+              }
+            }
+          ],
+          "totalMarks": 20
+        },
+        {
+          "number": 3,
+          "scenario": "GreenFields Agricultural Cooperative uses a spreadsheet to analyse revenue and tax for several services.",
+          "visual": {
+            "type": "spreadsheet",
+            "columns": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E",
+              "F"
+            ],
+            "rows": [
+              [
+                "Item",
+                "Quantity",
+                "Unit Price",
+                "Revenue",
+                "Tax",
+                "Rate"
+              ],
+              [
+                "Service A",
+                "14",
+                "700",
+                "=B2*C2",
+                "=D2*$F$2",
+                "0.19"
+              ],
+              [
+                "Service B",
+                "12",
+                "850",
+                "=B3*C3",
+                "=D3*$F$2",
+                ""
+              ],
+              [
+                "Total",
+                "",
+                "",
+                "=SUM(D2:D3)",
+                "=SUM(E2:E3)",
+                ""
+              ]
+            ]
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "Write the formula in D2 to calculate Revenue.",
+              "marks": 2,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "=B2*C2 or equivalent."
+              ],
+              "responseType": "formula",
+              "responseSpec": {
+                "cell": "D2"
+              }
+            },
+            {
+              "id": "b",
+              "prompt": "Write the formula in E2 to calculate Tax using the rate in F2. The formula will be copied down and the reference to F2 must remain fixed.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "=D2*$F$2 or equivalent."
+              ],
+              "responseType": "formula",
+              "responseSpec": {
+                "cell": "E2"
+              }
+            },
+            {
+              "id": "c",
+              "prompt": "Write the function in D4 to calculate total Revenue.",
+              "marks": 2,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "=SUM(D2:D3)."
+              ],
+              "responseType": "formula",
+              "responseSpec": {
+                "cell": "D4"
+              }
+            },
+            {
+              "id": "d",
+              "prompt": "State the difference between a relative reference and an absolute reference.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Relative reference changes when copied. 1 mark.",
+                "Absolute reference remains fixed. 1 mark.",
+                "Suitable example/clear comparison. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "State TWO spreadsheet features that could be used to display only records matching stated conditions and then arrange them into order.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Filter. 1–2 marks.",
+                "Sort. 1–2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "Name the feature MOST suitable for summarising a large dataset by categories such as month and branch, and state ONE advantage.",
+              "marks": 4,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Pivot table. 2 marks.",
+                "Suitable advantage such as quick grouped summary/reorganisation without rewriting source data. 2 marks."
+              ],
+              "responseType": "short"
+            },
+            {
+              "id": "g",
+              "prompt": "State the MOST suitable chart type for showing monthly revenue over one year and give ONE reason.",
+              "marks": 4,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Line graph. 2 marks.",
+                "Shows change/trend over time. 2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "h",
+              "prompt": "Explain ONE benefit of linking a Summary worksheet to source worksheets rather than retyping totals.",
+              "marks": 4,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Linked values can update when source data changes. Up to 2 marks.",
+                "Reduces re-entry/duplication and possible errors. Up to 2 marks."
+              ],
+              "responseType": "prose"
+            }
+          ],
+          "totalMarks": 25
+        },
+        {
+          "number": 4,
+          "scenario": "GreenFields Agricultural Cooperative needs a small program to calculate a irrigation need score and make a simple decision. The program must be designed before it is implemented.",
+          "visual": {
+            "type": "flow",
+            "nodes": [
+              "START",
+              "READ soilMoisture, temperature, rainChance",
+              "Calculate SCORE",
+              "SCORE >= 65?",
+              "Yes: DISPLAY ACCEPT",
+              "No: DISPLAY REVIEW",
+              "STOP"
+            ]
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "Construct an IPO chart for the irrigation need score problem using the three inputs soilMoisture, temperature, rainChance.",
+              "marks": 3,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Input: soilMoisture, temperature, rainChance. 1 mark.",
+                "Process: calculate the score and compare with the threshold. 1 mark.",
+                "Output: ACCEPT or REVIEW. 1 mark."
+              ],
+              "responseType": "ipo",
+              "responseSpec": {
+                "variables": [
+                  "soilMoisture",
+                  "temperature",
+                  "rainChance"
+                ]
+              }
+            },
+            {
+              "id": "b",
+              "prompt": "State TWO characteristics of a good algorithm and explain ONE of them.",
+              "marks": 4,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Any two of finite, precise, unambiguous, clear flow of control, terminates. 2 marks.",
+                "One suitable explanation. 2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "c",
+              "prompt": "Write language-neutral pseudocode that reads soilMoisture, temperature, rainChance, calculates a SCORE using all three values, and displays ACCEPT when SCORE is at least 65, otherwise REVIEW.",
+              "marks": 8,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Read/input all three values. 2 marks.",
+                "Calculate SCORE using all three values. 2 marks.",
+                "Correct IF condition using threshold. 1 mark.",
+                "Display ACCEPT on true branch. 1 mark.",
+                "ELSE/otherwise branch. 1 mark.",
+                "Display REVIEW on false branch. 1 mark."
+              ],
+              "responseType": "pseudocode",
+              "responseSpec": {
+                "variables": [
+                  "soilMoisture",
+                  "temperature",
+                  "rainChance"
+                ],
+                "threshold": 65
+              }
+            },
+            {
+              "id": "d",
+              "prompt": "Explain how a trace table or dry run could be used to test the algorithm.",
+              "marks": 4,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Use selected test data. 1 mark.",
+                "Record changing values/identifiers step by step. 1 mark.",
+                "Follow decision/control flow. 1 mark.",
+                "Compare actual result with expected result or identify logic errors. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "Distinguish between a syntax error and a logic error.",
+              "marks": 3,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Syntax error breaks language rules and may prevent successful translation/execution. 1–2 marks.",
+                "Logic error allows execution but produces an incorrect result. 1–2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "State THREE features of good internal program documentation.",
+              "marks": 3,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Any three of meaningful variable names, useful comments, indentation and effective whitespace. 1 mark each."
+              ],
+              "responseType": "prose"
+            }
+          ],
+          "totalMarks": 25
+        }
+      ]
+    },
+    {
+      "id": "P2-F",
+      "title": "Practice Paper 02 - F",
+      "questions": [
+        {
+          "number": 1,
+          "scenario": "Regional Education Network is upgrading its computer and communications systems. Several branches will share information with a central system and staff will access some services remotely.",
+          "visual": {
+            "type": "network",
+            "nodes": [
+              [
+                "Head Office",
+                "LAN"
+              ],
+              [
+                "Branch A",
+                "LAN"
+              ],
+              [
+                "Branch B",
+                "LAN"
+              ],
+              [
+                "Central System",
+                "mainframe"
+              ]
+            ],
+            "links": [
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "caption": "Regional Education Network proposed network"
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "State TWO characteristics of a mainframe that make it suitable for student services and examination records.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Award 1 mark for each relevant characteristic linked to the workload, for example high processing capacity, ability to handle many transactions/users, specialised control, reliability or large data volumes."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "b",
+              "prompt": "Identify the MOST important hardware device used to connect the local networks to other networks.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Router. 1 mark.",
+                "Role/function correctly stated as connecting or forwarding data between networks. 1 mark."
+              ],
+              "responseType": "short"
+            },
+            {
+              "id": "c",
+              "prompt": "Distinguish between an intranet and an extranet.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Intranet is private/internal to an organisation. 1 mark.",
+                "Extranet gives controlled access to authorised external users. 1 mark.",
+                "Clear distinction or suitable example. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "d",
+              "prompt": "State THREE transmission media that could be used in computer networks.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Any three suitable media, for example twisted pair, coaxial cable, fibre-optic cable, infrared, microwave or satellite. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "State TWO factors, other than cost, that should be considered when deciding whether to store operational files in the cloud.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Any two relevant factors such as accessibility, security, capacity, Internet availability/reliability or organisational policy. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "Explain why verification and validation are BOTH useful when new records are entered.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Validation checks whether data follows specified rules. 1 mark.",
+                "Verification checks whether data was entered/copied accurately. 1 mark.",
+                "Explanation that both address different kinds of data-entry error. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "g",
+              "prompt": "The organisation receives an email asking staff to follow a link and enter their passwords urgently. Identify the likely threat and state TWO precautions staff should take.",
+              "marks": 5,
+              "profile": "Theory",
+              "markScheme": [
+                "Phishing/social-engineering attempt. 1 mark.",
+                "Any two suitable precautions such as verify sender/domain, do not follow suspicious link, type official address manually, do not reveal credentials, report the message. Up to 4 marks for two well-stated precautions."
+              ],
+              "responseType": "prose"
+            }
+          ],
+          "totalMarks": 20
+        },
+        {
+          "number": 2,
+          "scenario": "Regional Education Network prepares a worksheet to estimate the cost of equipment and services for a new project. A portion of the worksheet is shown.",
+          "visual": {
+            "type": "spreadsheet",
+            "columns": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E"
+            ],
+            "rows": [
+              [
+                "Item",
+                "Unit Cost",
+                "Quantity",
+                "Total Cost",
+                "Status"
+              ],
+              [
+                "Laptop computers",
+                "4200",
+                "20",
+                "=B2*C2",
+                "?"
+              ],
+              [
+                "Training",
+                "1700",
+                "13",
+                "=B3*C3",
+                "?"
+              ],
+              [
+                "Total",
+                "",
+                "",
+                "=SUM(D2:D3)",
+                ""
+              ]
+            ]
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "Explain the difference between data and information, using the spreadsheet as part of your answer.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Data identified as raw facts/values. 1 mark.",
+                "Information identified as processed/organised data with meaning. 1 mark.",
+                "Relevant example from the spreadsheet. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "b",
+              "prompt": "State TWO criteria that may be used to judge the reliability of information found on a website.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Any two of authenticity, currency, relevance and bias, or equivalent. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "c",
+              "prompt": "State TWO examples of system software and ONE example of application software.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Two valid system-software examples such as operating system/utilities. 2 marks.",
+                "One valid application-software example. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "d",
+              "prompt": "Distinguish between RAM and secondary storage.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "RAM described as temporary/volatile working memory. 1 mark.",
+                "Secondary storage described as longer-term/non-volatile storage. 1 mark.",
+                "Clear comparison. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "State FOUR basic stages/components involved in the information-processing cycle.",
+              "marks": 4,
+              "profile": "Theory",
+              "markScheme": [
+                "Input, Processing, Output and Storage. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "Write the spreadsheet formula that should be entered in D2 to calculate Total Cost.",
+              "marks": 2,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "=B2*C2 or equivalent. 2 marks."
+              ],
+              "responseType": "formula",
+              "responseSpec": {
+                "cell": "D2"
+              }
+            },
+            {
+              "id": "g",
+              "prompt": "Write the function that should be entered in D4 to calculate the total of D2:D3.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "=SUM(D2:D3). 3 marks."
+              ],
+              "responseType": "formula",
+              "responseSpec": {
+                "cell": "D4"
+              }
+            }
+          ],
+          "totalMarks": 20
+        },
+        {
+          "number": 3,
+          "scenario": "Regional Education Network is preparing a website, electronic registration form and a set of personalised documents.",
+          "visual": {
+            "type": "website",
+            "pages": [
+              [
+                "Home",
+                "Working"
+              ],
+              [
+                "Services",
+                "Working"
+              ],
+              [
+                "Registration",
+                "Broken link"
+              ],
+              [
+                "Contact",
+                "Working"
+              ]
+            ]
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "State TWO decisions that should be made before the website is created.",
+              "marks": 2,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Any two of purpose, audience, number of pages, content or layout. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "b",
+              "prompt": "State TWO types of hyperlink that could be useful on the website.",
+              "marks": 2,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Any two of link to another page, same-page location, email address or user-created file. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "c",
+              "prompt": "The Registration link does not work. State TWO actions that should be taken before the website is published.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Correct/test the broken link. 1–2 marks.",
+                "Retest navigation/display/content or use a test audience. Up to 2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "d",
+              "prompt": "Name the word-processing feature used to produce personalised letters from one standard letter and a list of recipients.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Mail merge. 2 marks.",
+                "Reference to primary/main document plus data source. 1 mark."
+              ],
+              "responseType": "short"
+            },
+            {
+              "id": "e",
+              "prompt": "State TWO content controls that may be used to create a fillable registration form.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Any two of text box, check box, date picker, drop-down list or command button."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "State THREE review features that may be used before a document is distributed.",
+              "marks": 4,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Any three suitable features such as spelling/grammar check, comments, track changes, thesaurus, word count. Up to 4 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "g",
+              "prompt": "Explain how headings can be used to create an automatic table of contents.",
+              "marks": 4,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Apply heading styles/levels. Up to 2 marks.",
+                "Generate/update the table of contents from those headings. Up to 2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "h",
+              "prompt": "State TWO methods of protecting an important document from accidental loss or unauthorised editing.",
+              "marks": 4,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Any two of automatic save, backup copy, password/edit restriction. Up to 4 marks."
+              ],
+              "responseType": "prose"
+            }
+          ],
+          "totalMarks": 25
+        },
+        {
+          "number": 4,
+          "scenario": "Regional Education Network needs a small program to calculate a scholarship score and make a simple decision. The program must be designed before it is implemented.",
+          "visual": {
+            "type": "flow",
+            "nodes": [
+              "START",
+              "READ average, attendance, service",
+              "Calculate SCORE",
+              "SCORE >= 85?",
+              "Yes: DISPLAY ACCEPT",
+              "No: DISPLAY REVIEW",
+              "STOP"
+            ]
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "Construct an IPO chart for the scholarship score problem using the three inputs average, attendance, service.",
+              "marks": 3,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Input: average, attendance, service. 1 mark.",
+                "Process: calculate the score and compare with the threshold. 1 mark.",
+                "Output: ACCEPT or REVIEW. 1 mark."
+              ],
+              "responseType": "ipo",
+              "responseSpec": {
+                "variables": [
+                  "average",
+                  "attendance",
+                  "service"
+                ]
+              }
+            },
+            {
+              "id": "b",
+              "prompt": "State TWO characteristics of a good algorithm and explain ONE of them.",
+              "marks": 4,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Any two of finite, precise, unambiguous, clear flow of control, terminates. 2 marks.",
+                "One suitable explanation. 2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "c",
+              "prompt": "Write language-neutral pseudocode that reads average, attendance, service, calculates a SCORE using all three values, and displays ACCEPT when SCORE is at least 85, otherwise REVIEW.",
+              "marks": 8,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Read/input all three values. 2 marks.",
+                "Calculate SCORE using all three values. 2 marks.",
+                "Correct IF condition using threshold. 1 mark.",
+                "Display ACCEPT on true branch. 1 mark.",
+                "ELSE/otherwise branch. 1 mark.",
+                "Display REVIEW on false branch. 1 mark."
+              ],
+              "responseType": "pseudocode",
+              "responseSpec": {
+                "variables": [
+                  "average",
+                  "attendance",
+                  "service"
+                ],
+                "threshold": 85
+              }
+            },
+            {
+              "id": "d",
+              "prompt": "Explain how a trace table or dry run could be used to test the algorithm.",
+              "marks": 4,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Use selected test data. 1 mark.",
+                "Record changing values/identifiers step by step. 1 mark.",
+                "Follow decision/control flow. 1 mark.",
+                "Compare actual result with expected result or identify logic errors. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "Distinguish between a syntax error and a logic error.",
+              "marks": 3,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Syntax error breaks language rules and may prevent successful translation/execution. 1–2 marks.",
+                "Logic error allows execution but produces an incorrect result. 1–2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "State THREE features of good internal program documentation.",
+              "marks": 3,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Any three of meaningful variable names, useful comments, indentation and effective whitespace. 1 mark each."
+              ],
+              "responseType": "prose"
+            }
+          ],
+          "totalMarks": 25
+        }
+      ]
+    },
+    {
+      "id": "P2-G",
+      "title": "Practice Paper 02 - G",
+      "questions": [
+        {
+          "number": 1,
+          "scenario": "Caribbean Energy Services is upgrading its computer and communications systems. Several branches will share information with a central system and staff will access some services remotely.",
+          "visual": {
+            "type": "network",
+            "nodes": [
+              [
+                "Head Office",
+                "LAN"
+              ],
+              [
+                "Branch A",
+                "LAN"
+              ],
+              [
+                "Branch B",
+                "LAN"
+              ],
+              [
+                "Central System",
+                "supercomputer"
+              ]
+            ],
+            "links": [
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "caption": "Caribbean Energy Services proposed network"
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "State TWO characteristics of a supercomputer that make it suitable for energy demand modelling.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Award 1 mark for each relevant characteristic linked to the workload, for example high processing capacity, ability to handle many transactions/users, specialised control, reliability or large data volumes."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "b",
+              "prompt": "Identify the MOST important hardware device used to connect the local networks to other networks.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Router. 1 mark.",
+                "Role/function correctly stated as connecting or forwarding data between networks. 1 mark."
+              ],
+              "responseType": "short"
+            },
+            {
+              "id": "c",
+              "prompt": "Distinguish between an intranet and an extranet.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Intranet is private/internal to an organisation. 1 mark.",
+                "Extranet gives controlled access to authorised external users. 1 mark.",
+                "Clear distinction or suitable example. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "d",
+              "prompt": "State THREE transmission media that could be used in computer networks.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Any three suitable media, for example twisted pair, coaxial cable, fibre-optic cable, infrared, microwave or satellite. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "State TWO factors, other than cost, that should be considered when deciding whether to store operational files in the cloud.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Any two relevant factors such as accessibility, security, capacity, Internet availability/reliability or organisational policy. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "Explain why verification and validation are BOTH useful when new records are entered.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Validation checks whether data follows specified rules. 1 mark.",
+                "Verification checks whether data was entered/copied accurately. 1 mark.",
+                "Explanation that both address different kinds of data-entry error. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "g",
+              "prompt": "The organisation receives an email asking staff to follow a link and enter their passwords urgently. Identify the likely threat and state TWO precautions staff should take.",
+              "marks": 5,
+              "profile": "Theory",
+              "markScheme": [
+                "Phishing/social-engineering attempt. 1 mark.",
+                "Any two suitable precautions such as verify sender/domain, do not follow suspicious link, type official address manually, do not reveal credentials, report the message. Up to 4 marks for two well-stated precautions."
+              ],
+              "responseType": "prose"
+            }
+          ],
+          "totalMarks": 20
+        },
+        {
+          "number": 2,
+          "scenario": "Caribbean Energy Services prepares a worksheet to estimate the cost of equipment and services for a new project. A portion of the worksheet is shown.",
+          "visual": {
+            "type": "spreadsheet",
+            "columns": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E"
+            ],
+            "rows": [
+              [
+                "Item",
+                "Unit Cost",
+                "Quantity",
+                "Total Cost",
+                "Status"
+              ],
+              [
+                "Smart meters",
+                "2750",
+                "24",
+                "=B2*C2",
+                "?"
+              ],
+              [
+                "Training",
+                "1800",
+                "14",
+                "=B3*C3",
+                "?"
+              ],
+              [
+                "Total",
+                "",
+                "",
+                "=SUM(D2:D3)",
+                ""
+              ]
+            ]
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "Explain the difference between data and information, using the spreadsheet as part of your answer.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Data identified as raw facts/values. 1 mark.",
+                "Information identified as processed/organised data with meaning. 1 mark.",
+                "Relevant example from the spreadsheet. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "b",
+              "prompt": "State TWO criteria that may be used to judge the reliability of information found on a website.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Any two of authenticity, currency, relevance and bias, or equivalent. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "c",
+              "prompt": "State TWO examples of system software and ONE example of application software.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Two valid system-software examples such as operating system/utilities. 2 marks.",
+                "One valid application-software example. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "d",
+              "prompt": "Distinguish between RAM and secondary storage.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "RAM described as temporary/volatile working memory. 1 mark.",
+                "Secondary storage described as longer-term/non-volatile storage. 1 mark.",
+                "Clear comparison. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "State FOUR basic stages/components involved in the information-processing cycle.",
+              "marks": 4,
+              "profile": "Theory",
+              "markScheme": [
+                "Input, Processing, Output and Storage. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "Write the spreadsheet formula that should be entered in D2 to calculate Total Cost.",
+              "marks": 2,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "=B2*C2 or equivalent. 2 marks."
+              ],
+              "responseType": "formula",
+              "responseSpec": {
+                "cell": "D2"
+              }
+            },
+            {
+              "id": "g",
+              "prompt": "Write the function that should be entered in D4 to calculate the total of D2:D3.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "=SUM(D2:D3). 3 marks."
+              ],
+              "responseType": "formula",
+              "responseSpec": {
+                "cell": "D4"
+              }
+            }
+          ],
+          "totalMarks": 20
+        },
+        {
+          "number": 3,
+          "scenario": "Caribbean Energy Services stores operational records in two related database tables.",
+          "visual": {
+            "type": "database",
+            "tables": [
+              {
+                "name": "CUSTOMER",
+                "fields": [
+                  [
+                    "CustomerID",
+                    "PK"
+                  ],
+                  [
+                    "Name",
+                    "Text"
+                  ],
+                  [
+                    "Parish",
+                    "Text"
+                  ],
+                  [
+                    "Status",
+                    "Text"
+                  ]
+                ]
+              },
+              {
+                "name": "METERREADING",
+                "fields": [
+                  [
+                    "MeterreadingID",
+                    "PK"
+                  ],
+                  [
+                    "CustomerID",
+                    "FK"
+                  ],
+                  [
+                    "Date",
+                    "Date/Time"
+                  ],
+                  [
+                    "Amount",
+                    "Currency"
+                  ]
+                ]
+              }
+            ],
+            "relationship": "CUSTOMER 1 ─── ∞ METERREADING"
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "State the field that should be the primary key of CUSTOMER.",
+              "marks": 2,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "CustomerID."
+              ],
+              "responseType": "short"
+            },
+            {
+              "id": "b",
+              "prompt": "State the field in METERREADING that should act as the foreign key.",
+              "marks": 2,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "CustomerID."
+              ],
+              "responseType": "short"
+            },
+            {
+              "id": "c",
+              "prompt": "State the relationship between CUSTOMER and METERREADING.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "One-to-many. 2 marks.",
+                "Clear interpretation that one parent record can be linked to several child records. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "d",
+              "prompt": "Write query criteria to select records where Parish is Kingston AND Status is Active.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Parish='Kingston' AND Status='Active', or equivalent."
+              ],
+              "responseType": "query"
+            },
+            {
+              "id": "e",
+              "prompt": "Name the database object that is MOST suitable for user-friendly record entry and state ONE advantage of using it.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Form. 1 mark.",
+                "Suitable advantage such as easier/controlled data entry or clearer interface. 2 marks."
+              ],
+              "responseType": "short"
+            },
+            {
+              "id": "f",
+              "prompt": "State THREE features that could be used in a report to make the output more useful.",
+              "marks": 4,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Any three suitable features such as sorting, grouping, COUNT, SUM, AVERAGE, headings or selected fields. Award up to 4 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "g",
+              "prompt": "State TWO suitable data types for a Date field and an Amount field.",
+              "marks": 4,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Date/Time for Date. 2 marks.",
+                "Currency/number for Amount. 2 marks."
+              ],
+              "responseType": "field-table",
+              "responseSpec": {
+                "fields": [
+                  "Date",
+                  "Amount"
+                ]
+              }
+            },
+            {
+              "id": "h",
+              "prompt": "Explain why a primary key is important in a database table.",
+              "marks": 4,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Uniquely identifies each record. 2 marks.",
+                "Helps prevent ambiguity/duplicates and supports relationships/retrieval. Up to 2 marks."
+              ],
+              "responseType": "prose"
+            }
+          ],
+          "totalMarks": 25
+        },
+        {
+          "number": 4,
+          "scenario": "Caribbean Energy Services needs a small program to calculate a usage alert score and make a simple decision. The program must be designed before it is implemented.",
+          "visual": {
+            "type": "flow",
+            "nodes": [
+              "START",
+              "READ usage, peakDemand, balance",
+              "Calculate SCORE",
+              "SCORE >= 80?",
+              "Yes: DISPLAY ACCEPT",
+              "No: DISPLAY REVIEW",
+              "STOP"
+            ]
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "Construct an IPO chart for the usage alert score problem using the three inputs usage, peakDemand, balance.",
+              "marks": 3,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Input: usage, peakDemand, balance. 1 mark.",
+                "Process: calculate the score and compare with the threshold. 1 mark.",
+                "Output: ACCEPT or REVIEW. 1 mark."
+              ],
+              "responseType": "ipo",
+              "responseSpec": {
+                "variables": [
+                  "usage",
+                  "peakDemand",
+                  "balance"
+                ]
+              }
+            },
+            {
+              "id": "b",
+              "prompt": "State TWO characteristics of a good algorithm and explain ONE of them.",
+              "marks": 4,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Any two of finite, precise, unambiguous, clear flow of control, terminates. 2 marks.",
+                "One suitable explanation. 2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "c",
+              "prompt": "Write language-neutral pseudocode that reads usage, peakDemand, balance, calculates a SCORE using all three values, and displays ACCEPT when SCORE is at least 80, otherwise REVIEW.",
+              "marks": 8,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Read/input all three values. 2 marks.",
+                "Calculate SCORE using all three values. 2 marks.",
+                "Correct IF condition using threshold. 1 mark.",
+                "Display ACCEPT on true branch. 1 mark.",
+                "ELSE/otherwise branch. 1 mark.",
+                "Display REVIEW on false branch. 1 mark."
+              ],
+              "responseType": "pseudocode",
+              "responseSpec": {
+                "variables": [
+                  "usage",
+                  "peakDemand",
+                  "balance"
+                ],
+                "threshold": 80
+              }
+            },
+            {
+              "id": "d",
+              "prompt": "Explain how a trace table or dry run could be used to test the algorithm.",
+              "marks": 4,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Use selected test data. 1 mark.",
+                "Record changing values/identifiers step by step. 1 mark.",
+                "Follow decision/control flow. 1 mark.",
+                "Compare actual result with expected result or identify logic errors. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "Distinguish between a syntax error and a logic error.",
+              "marks": 3,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Syntax error breaks language rules and may prevent successful translation/execution. 1–2 marks.",
+                "Logic error allows execution but produces an incorrect result. 1–2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "State THREE features of good internal program documentation.",
+              "marks": 3,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Any three of meaningful variable names, useful comments, indentation and effective whitespace. 1 mark each."
+              ],
+              "responseType": "prose"
+            }
+          ],
+          "totalMarks": 25
+        }
+      ]
+    },
+    {
+      "id": "P2-H",
+      "title": "Practice Paper 02 - H",
+      "questions": [
+        {
+          "number": 1,
+          "scenario": "Island Courier Service is upgrading its computer and communications systems. Several branches will share information with a central system and staff will access some services remotely.",
+          "visual": {
+            "type": "network",
+            "nodes": [
+              [
+                "Head Office",
+                "LAN"
+              ],
+              [
+                "Branch A",
+                "LAN"
+              ],
+              [
+                "Branch B",
+                "LAN"
+              ],
+              [
+                "Central System",
+                "mainframe"
+              ]
+            ],
+            "links": [
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "caption": "Island Courier Service proposed network"
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "State TWO characteristics of a mainframe that make it suitable for parcel tracking and logistics.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Award 1 mark for each relevant characteristic linked to the workload, for example high processing capacity, ability to handle many transactions/users, specialised control, reliability or large data volumes."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "b",
+              "prompt": "Identify the MOST important hardware device used to connect the local networks to other networks.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Router. 1 mark.",
+                "Role/function correctly stated as connecting or forwarding data between networks. 1 mark."
+              ],
+              "responseType": "short"
+            },
+            {
+              "id": "c",
+              "prompt": "Distinguish between an intranet and an extranet.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Intranet is private/internal to an organisation. 1 mark.",
+                "Extranet gives controlled access to authorised external users. 1 mark.",
+                "Clear distinction or suitable example. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "d",
+              "prompt": "State THREE transmission media that could be used in computer networks.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Any three suitable media, for example twisted pair, coaxial cable, fibre-optic cable, infrared, microwave or satellite. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "State TWO factors, other than cost, that should be considered when deciding whether to store operational files in the cloud.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Any two relevant factors such as accessibility, security, capacity, Internet availability/reliability or organisational policy. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "Explain why verification and validation are BOTH useful when new records are entered.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Validation checks whether data follows specified rules. 1 mark.",
+                "Verification checks whether data was entered/copied accurately. 1 mark.",
+                "Explanation that both address different kinds of data-entry error. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "g",
+              "prompt": "The organisation receives an email asking staff to follow a link and enter their passwords urgently. Identify the likely threat and state TWO precautions staff should take.",
+              "marks": 5,
+              "profile": "Theory",
+              "markScheme": [
+                "Phishing/social-engineering attempt. 1 mark.",
+                "Any two suitable precautions such as verify sender/domain, do not follow suspicious link, type official address manually, do not reveal credentials, report the message. Up to 4 marks for two well-stated precautions."
+              ],
+              "responseType": "prose"
+            }
+          ],
+          "totalMarks": 20
+        },
+        {
+          "number": 2,
+          "scenario": "Island Courier Service prepares a worksheet to estimate the cost of equipment and services for a new project. A portion of the worksheet is shown.",
+          "visual": {
+            "type": "spreadsheet",
+            "columns": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E"
+            ],
+            "rows": [
+              [
+                "Item",
+                "Unit Cost",
+                "Quantity",
+                "Total Cost",
+                "Status"
+              ],
+              [
+                "Handheld scanners",
+                "3600",
+                "15",
+                "=B2*C2",
+                "?"
+              ],
+              [
+                "Training",
+                "1900",
+                "15",
+                "=B3*C3",
+                "?"
+              ],
+              [
+                "Total",
+                "",
+                "",
+                "=SUM(D2:D3)",
+                ""
+              ]
+            ]
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "Explain the difference between data and information, using the spreadsheet as part of your answer.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Data identified as raw facts/values. 1 mark.",
+                "Information identified as processed/organised data with meaning. 1 mark.",
+                "Relevant example from the spreadsheet. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "b",
+              "prompt": "State TWO criteria that may be used to judge the reliability of information found on a website.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Any two of authenticity, currency, relevance and bias, or equivalent. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "c",
+              "prompt": "State TWO examples of system software and ONE example of application software.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Two valid system-software examples such as operating system/utilities. 2 marks.",
+                "One valid application-software example. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "d",
+              "prompt": "Distinguish between RAM and secondary storage.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "RAM described as temporary/volatile working memory. 1 mark.",
+                "Secondary storage described as longer-term/non-volatile storage. 1 mark.",
+                "Clear comparison. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "State FOUR basic stages/components involved in the information-processing cycle.",
+              "marks": 4,
+              "profile": "Theory",
+              "markScheme": [
+                "Input, Processing, Output and Storage. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "Write the spreadsheet formula that should be entered in D2 to calculate Total Cost.",
+              "marks": 2,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "=B2*C2 or equivalent. 2 marks."
+              ],
+              "responseType": "formula",
+              "responseSpec": {
+                "cell": "D2"
+              }
+            },
+            {
+              "id": "g",
+              "prompt": "Write the function that should be entered in D4 to calculate the total of D2:D3.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "=SUM(D2:D3). 3 marks."
+              ],
+              "responseType": "formula",
+              "responseSpec": {
+                "cell": "D4"
+              }
+            }
+          ],
+          "totalMarks": 20
+        },
+        {
+          "number": 3,
+          "scenario": "Island Courier Service uses a spreadsheet to analyse revenue and tax for several services.",
+          "visual": {
+            "type": "spreadsheet",
+            "columns": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E",
+              "F"
+            ],
+            "rows": [
+              [
+                "Item",
+                "Quantity",
+                "Unit Price",
+                "Revenue",
+                "Tax",
+                "Rate"
+              ],
+              [
+                "Service A",
+                "17",
+                "850",
+                "=B2*C2",
+                "=D2*$F$2",
+                "0.22"
+              ],
+              [
+                "Service B",
+                "15",
+                "925",
+                "=B3*C3",
+                "=D3*$F$2",
+                ""
+              ],
+              [
+                "Total",
+                "",
+                "",
+                "=SUM(D2:D3)",
+                "=SUM(E2:E3)",
+                ""
+              ]
+            ]
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "Write the formula in D2 to calculate Revenue.",
+              "marks": 2,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "=B2*C2 or equivalent."
+              ],
+              "responseType": "formula",
+              "responseSpec": {
+                "cell": "D2"
+              }
+            },
+            {
+              "id": "b",
+              "prompt": "Write the formula in E2 to calculate Tax using the rate in F2. The formula will be copied down and the reference to F2 must remain fixed.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "=D2*$F$2 or equivalent."
+              ],
+              "responseType": "formula",
+              "responseSpec": {
+                "cell": "E2"
+              }
+            },
+            {
+              "id": "c",
+              "prompt": "Write the function in D4 to calculate total Revenue.",
+              "marks": 2,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "=SUM(D2:D3)."
+              ],
+              "responseType": "formula",
+              "responseSpec": {
+                "cell": "D4"
+              }
+            },
+            {
+              "id": "d",
+              "prompt": "State the difference between a relative reference and an absolute reference.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Relative reference changes when copied. 1 mark.",
+                "Absolute reference remains fixed. 1 mark.",
+                "Suitable example/clear comparison. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "State TWO spreadsheet features that could be used to display only records matching stated conditions and then arrange them into order.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Filter. 1–2 marks.",
+                "Sort. 1–2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "Name the feature MOST suitable for summarising a large dataset by categories such as month and branch, and state ONE advantage.",
+              "marks": 4,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Pivot table. 2 marks.",
+                "Suitable advantage such as quick grouped summary/reorganisation without rewriting source data. 2 marks."
+              ],
+              "responseType": "short"
+            },
+            {
+              "id": "g",
+              "prompt": "State the MOST suitable chart type for showing monthly revenue over one year and give ONE reason.",
+              "marks": 4,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Line graph. 2 marks.",
+                "Shows change/trend over time. 2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "h",
+              "prompt": "Explain ONE benefit of linking a Summary worksheet to source worksheets rather than retyping totals.",
+              "marks": 4,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Linked values can update when source data changes. Up to 2 marks.",
+                "Reduces re-entry/duplication and possible errors. Up to 2 marks."
+              ],
+              "responseType": "prose"
+            }
+          ],
+          "totalMarks": 25
+        },
+        {
+          "number": 4,
+          "scenario": "Island Courier Service needs a small program to calculate a delivery priority score and make a simple decision. The program must be designed before it is implemented.",
+          "visual": {
+            "type": "flow",
+            "nodes": [
+              "START",
+              "READ distance, serviceLevel, delay",
+              "Calculate SCORE",
+              "SCORE >= 70?",
+              "Yes: DISPLAY ACCEPT",
+              "No: DISPLAY REVIEW",
+              "STOP"
+            ]
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "Construct an IPO chart for the delivery priority score problem using the three inputs distance, serviceLevel, delay.",
+              "marks": 3,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Input: distance, serviceLevel, delay. 1 mark.",
+                "Process: calculate the score and compare with the threshold. 1 mark.",
+                "Output: ACCEPT or REVIEW. 1 mark."
+              ],
+              "responseType": "ipo",
+              "responseSpec": {
+                "variables": [
+                  "distance",
+                  "serviceLevel",
+                  "delay"
+                ]
+              }
+            },
+            {
+              "id": "b",
+              "prompt": "State TWO characteristics of a good algorithm and explain ONE of them.",
+              "marks": 4,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Any two of finite, precise, unambiguous, clear flow of control, terminates. 2 marks.",
+                "One suitable explanation. 2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "c",
+              "prompt": "Write language-neutral pseudocode that reads distance, serviceLevel, delay, calculates a SCORE using all three values, and displays ACCEPT when SCORE is at least 70, otherwise REVIEW.",
+              "marks": 8,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Read/input all three values. 2 marks.",
+                "Calculate SCORE using all three values. 2 marks.",
+                "Correct IF condition using threshold. 1 mark.",
+                "Display ACCEPT on true branch. 1 mark.",
+                "ELSE/otherwise branch. 1 mark.",
+                "Display REVIEW on false branch. 1 mark."
+              ],
+              "responseType": "pseudocode",
+              "responseSpec": {
+                "variables": [
+                  "distance",
+                  "serviceLevel",
+                  "delay"
+                ],
+                "threshold": 70
+              }
+            },
+            {
+              "id": "d",
+              "prompt": "Explain how a trace table or dry run could be used to test the algorithm.",
+              "marks": 4,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Use selected test data. 1 mark.",
+                "Record changing values/identifiers step by step. 1 mark.",
+                "Follow decision/control flow. 1 mark.",
+                "Compare actual result with expected result or identify logic errors. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "Distinguish between a syntax error and a logic error.",
+              "marks": 3,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Syntax error breaks language rules and may prevent successful translation/execution. 1–2 marks.",
+                "Logic error allows execution but produces an incorrect result. 1–2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "State THREE features of good internal program documentation.",
+              "marks": 3,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Any three of meaningful variable names, useful comments, indentation and effective whitespace. 1 mark each."
+              ],
+              "responseType": "prose"
+            }
+          ],
+          "totalMarks": 25
+        }
+      ]
+    },
+    {
+      "id": "P2-I",
+      "title": "Practice Paper 02 - I",
+      "questions": [
+        {
+          "number": 1,
+          "scenario": "National Youth Sports Programme is upgrading its computer and communications systems. Several branches will share information with a central system and staff will access some services remotely.",
+          "visual": {
+            "type": "network",
+            "nodes": [
+              [
+                "Head Office",
+                "LAN"
+              ],
+              [
+                "Branch A",
+                "LAN"
+              ],
+              [
+                "Branch B",
+                "LAN"
+              ],
+              [
+                "Central System",
+                "mainframe"
+              ]
+            ],
+            "links": [
+              [
+                0,
+                3
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "caption": "National Youth Sports Programme proposed network"
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "State TWO characteristics of a mainframe that make it suitable for registration and competition records.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Award 1 mark for each relevant characteristic linked to the workload, for example high processing capacity, ability to handle many transactions/users, specialised control, reliability or large data volumes."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "b",
+              "prompt": "Identify the MOST important hardware device used to connect the local networks to other networks.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Router. 1 mark.",
+                "Role/function correctly stated as connecting or forwarding data between networks. 1 mark."
+              ],
+              "responseType": "short"
+            },
+            {
+              "id": "c",
+              "prompt": "Distinguish between an intranet and an extranet.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Intranet is private/internal to an organisation. 1 mark.",
+                "Extranet gives controlled access to authorised external users. 1 mark.",
+                "Clear distinction or suitable example. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "d",
+              "prompt": "State THREE transmission media that could be used in computer networks.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Any three suitable media, for example twisted pair, coaxial cable, fibre-optic cable, infrared, microwave or satellite. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "State TWO factors, other than cost, that should be considered when deciding whether to store operational files in the cloud.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Any two relevant factors such as accessibility, security, capacity, Internet availability/reliability or organisational policy. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "Explain why verification and validation are BOTH useful when new records are entered.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Validation checks whether data follows specified rules. 1 mark.",
+                "Verification checks whether data was entered/copied accurately. 1 mark.",
+                "Explanation that both address different kinds of data-entry error. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "g",
+              "prompt": "The organisation receives an email asking staff to follow a link and enter their passwords urgently. Identify the likely threat and state TWO precautions staff should take.",
+              "marks": 5,
+              "profile": "Theory",
+              "markScheme": [
+                "Phishing/social-engineering attempt. 1 mark.",
+                "Any two suitable precautions such as verify sender/domain, do not follow suspicious link, type official address manually, do not reveal credentials, report the message. Up to 4 marks for two well-stated precautions."
+              ],
+              "responseType": "prose"
+            }
+          ],
+          "totalMarks": 20
+        },
+        {
+          "number": 2,
+          "scenario": "National Youth Sports Programme prepares a worksheet to estimate the cost of equipment and services for a new project. A portion of the worksheet is shown.",
+          "visual": {
+            "type": "spreadsheet",
+            "columns": [
+              "A",
+              "B",
+              "C",
+              "D",
+              "E"
+            ],
+            "rows": [
+              [
+                "Item",
+                "Unit Cost",
+                "Quantity",
+                "Total Cost",
+                "Status"
+              ],
+              [
+                "Timing devices",
+                "4800",
+                "10",
+                "=B2*C2",
+                "?"
+              ],
+              [
+                "Training",
+                "2000",
+                "16",
+                "=B3*C3",
+                "?"
+              ],
+              [
+                "Total",
+                "",
+                "",
+                "=SUM(D2:D3)",
+                ""
+              ]
+            ]
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "Explain the difference between data and information, using the spreadsheet as part of your answer.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Data identified as raw facts/values. 1 mark.",
+                "Information identified as processed/organised data with meaning. 1 mark.",
+                "Relevant example from the spreadsheet. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "b",
+              "prompt": "State TWO criteria that may be used to judge the reliability of information found on a website.",
+              "marks": 2,
+              "profile": "Theory",
+              "markScheme": [
+                "Any two of authenticity, currency, relevance and bias, or equivalent. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "c",
+              "prompt": "State TWO examples of system software and ONE example of application software.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "Two valid system-software examples such as operating system/utilities. 2 marks.",
+                "One valid application-software example. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "d",
+              "prompt": "Distinguish between RAM and secondary storage.",
+              "marks": 3,
+              "profile": "Theory",
+              "markScheme": [
+                "RAM described as temporary/volatile working memory. 1 mark.",
+                "Secondary storage described as longer-term/non-volatile storage. 1 mark.",
+                "Clear comparison. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "State FOUR basic stages/components involved in the information-processing cycle.",
+              "marks": 4,
+              "profile": "Theory",
+              "markScheme": [
+                "Input, Processing, Output and Storage. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "Write the spreadsheet formula that should be entered in D2 to calculate Total Cost.",
+              "marks": 2,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "=B2*C2 or equivalent. 2 marks."
+              ],
+              "responseType": "formula",
+              "responseSpec": {
+                "cell": "D2"
+              }
+            },
+            {
+              "id": "g",
+              "prompt": "Write the function that should be entered in D4 to calculate the total of D2:D3.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "=SUM(D2:D3). 3 marks."
+              ],
+              "responseType": "formula",
+              "responseSpec": {
+                "cell": "D4"
+              }
+            }
+          ],
+          "totalMarks": 20
+        },
+        {
+          "number": 3,
+          "scenario": "National Youth Sports Programme is preparing a website, electronic registration form and a set of personalised documents.",
+          "visual": {
+            "type": "website",
+            "pages": [
+              [
+                "Home",
+                "Working"
+              ],
+              [
+                "Services",
+                "Working"
+              ],
+              [
+                "Registration",
+                "Broken link"
+              ],
+              [
+                "Contact",
+                "Working"
+              ]
+            ]
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "State TWO decisions that should be made before the website is created.",
+              "marks": 2,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Any two of purpose, audience, number of pages, content or layout. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "b",
+              "prompt": "State TWO types of hyperlink that could be useful on the website.",
+              "marks": 2,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Any two of link to another page, same-page location, email address or user-created file. 1 mark each."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "c",
+              "prompt": "The Registration link does not work. State TWO actions that should be taken before the website is published.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Correct/test the broken link. 1–2 marks.",
+                "Retest navigation/display/content or use a test audience. Up to 2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "d",
+              "prompt": "Name the word-processing feature used to produce personalised letters from one standard letter and a list of recipients.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Mail merge. 2 marks.",
+                "Reference to primary/main document plus data source. 1 mark."
+              ],
+              "responseType": "short"
+            },
+            {
+              "id": "e",
+              "prompt": "State TWO content controls that may be used to create a fillable registration form.",
+              "marks": 3,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Any two of text box, check box, date picker, drop-down list or command button."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "State THREE review features that may be used before a document is distributed.",
+              "marks": 4,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Any three suitable features such as spelling/grammar check, comments, track changes, thesaurus, word count. Up to 4 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "g",
+              "prompt": "Explain how headings can be used to create an automatic table of contents.",
+              "marks": 4,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Apply heading styles/levels. Up to 2 marks.",
+                "Generate/update the table of contents from those headings. Up to 2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "h",
+              "prompt": "State TWO methods of protecting an important document from accidental loss or unauthorised editing.",
+              "marks": 4,
+              "profile": "Productivity Tools",
+              "markScheme": [
+                "Any two of automatic save, backup copy, password/edit restriction. Up to 4 marks."
+              ],
+              "responseType": "prose"
+            }
+          ],
+          "totalMarks": 25
+        },
+        {
+          "number": 4,
+          "scenario": "National Youth Sports Programme needs a small program to calculate a qualification score and make a simple decision. The program must be designed before it is implemented.",
+          "visual": {
+            "type": "flow",
+            "nodes": [
+              "START",
+              "READ timeScore, attendance, fitness",
+              "Calculate SCORE",
+              "SCORE >= 75?",
+              "Yes: DISPLAY ACCEPT",
+              "No: DISPLAY REVIEW",
+              "STOP"
+            ]
+          },
+          "parts": [
+            {
+              "id": "a",
+              "prompt": "Construct an IPO chart for the qualification score problem using the three inputs timeScore, attendance, fitness.",
+              "marks": 3,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Input: timeScore, attendance, fitness. 1 mark.",
+                "Process: calculate the score and compare with the threshold. 1 mark.",
+                "Output: ACCEPT or REVIEW. 1 mark."
+              ],
+              "responseType": "ipo",
+              "responseSpec": {
+                "variables": [
+                  "timeScore",
+                  "attendance",
+                  "fitness"
+                ]
+              }
+            },
+            {
+              "id": "b",
+              "prompt": "State TWO characteristics of a good algorithm and explain ONE of them.",
+              "marks": 4,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Any two of finite, precise, unambiguous, clear flow of control, terminates. 2 marks.",
+                "One suitable explanation. 2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "c",
+              "prompt": "Write language-neutral pseudocode that reads timeScore, attendance, fitness, calculates a SCORE using all three values, and displays ACCEPT when SCORE is at least 75, otherwise REVIEW.",
+              "marks": 8,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Read/input all three values. 2 marks.",
+                "Calculate SCORE using all three values. 2 marks.",
+                "Correct IF condition using threshold. 1 mark.",
+                "Display ACCEPT on true branch. 1 mark.",
+                "ELSE/otherwise branch. 1 mark.",
+                "Display REVIEW on false branch. 1 mark."
+              ],
+              "responseType": "pseudocode",
+              "responseSpec": {
+                "variables": [
+                  "timeScore",
+                  "attendance",
+                  "fitness"
+                ],
+                "threshold": 75
+              }
+            },
+            {
+              "id": "d",
+              "prompt": "Explain how a trace table or dry run could be used to test the algorithm.",
+              "marks": 4,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Use selected test data. 1 mark.",
+                "Record changing values/identifiers step by step. 1 mark.",
+                "Follow decision/control flow. 1 mark.",
+                "Compare actual result with expected result or identify logic errors. 1 mark."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "e",
+              "prompt": "Distinguish between a syntax error and a logic error.",
+              "marks": 3,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Syntax error breaks language rules and may prevent successful translation/execution. 1–2 marks.",
+                "Logic error allows execution but produces an incorrect result. 1–2 marks."
+              ],
+              "responseType": "prose"
+            },
+            {
+              "id": "f",
+              "prompt": "State THREE features of good internal program documentation.",
+              "marks": 3,
+              "profile": "Problem-Solving and Programming",
+              "markScheme": [
+                "Any three of meaningful variable names, useful comments, indentation and effective whitespace. 1 mark each."
+              ],
+              "responseType": "prose"
+            }
+          ],
+          "totalMarks": 25
+        }
+      ]
+    }
+  ],
+  "bankMeta": {
+    "fullPapers": 9,
+    "totalStructuredQuestions": 36,
+    "notes": "Original SPARK structured questions modelled on current CSEC Paper 02 structure and supplied past-paper style. Questions are not copied verbatim."
+  }
+}
