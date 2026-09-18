@@ -128,3 +128,27 @@ export function energyBarState({ massKg, gNPerKg = 10, totalDropM, fallenM, init
     speedMPerS: m > 0 ? Math.sqrt(2 * ke / m) : 0,
   };
 }
+
+// Timing for a body released from rest at the top of a straight ramp.
+// Along the slope the accelerating force is mg sin(theta); a constant fraction
+// of the released potential energy lost to friction reduces the acceleration in
+// the same proportion, so a = g sin(theta) (1 - f) and, from s = ½at²,
+// the run takes t = sqrt(2L/a). Used by the A5 ramp interactive so that the
+// animation shows real seconds rather than a normalised progress value.
+export function rampRunTiming({ gNPerKg = 10, verticalDropM, rampLengthM, dissipatedFraction = 0 }) {
+  const drop = nonNegative('verticalDropM', verticalDropM);
+  const length = nonNegative('rampLengthM', rampLengthM);
+  const fraction = nonNegative('dissipatedFraction', dissipatedFraction);
+  if (length < drop) throw new RangeError('rampLengthM cannot be smaller than verticalDropM');
+  if (fraction >= 1) throw new RangeError('dissipatedFraction must be less than 1');
+  const sinTheta = length === 0 ? 0 : drop / length;
+  const acceleration = finite('gNPerKg', gNPerKg) * sinTheta * (1 - fraction);
+  const travelTimeS = acceleration > 0 ? Math.sqrt(2 * length / acceleration) : Infinity;
+  return {
+    rampLengthM: length,
+    inclineDegrees: Math.asin(Math.min(1, sinTheta)) * 180 / Math.PI,
+    accelerationAlongRampMPerS2: acceleration,
+    travelTimeS,
+    finalSpeedMPerS: acceleration > 0 ? Math.sqrt(2 * acceleration * length) : 0,
+  };
+}

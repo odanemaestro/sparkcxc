@@ -154,7 +154,8 @@ describe("Physics grading and mobile rendering audit v5.7.3", () => {
     for (const file of sectionFiles) {
       const source = fs.readFileSync(file, "utf8");
       expect(source).toContain("import MathText");
-      expect(source).toMatch(/<MathText[^>]*>\{(?:c|card)\.front\}<\/MathText>/);
+      expect(source).toContain("physicsFlashcardQuestion");
+      expect(source).toMatch(/<MathText[^>]*>\{physicsFlashcardQuestion\((?:c|card)\)\}<\/MathText>/);
       expect(source).toMatch(/<MathText[^>]*>\{(?:c|card)\.back\}<\/MathText>/);
     }
   });

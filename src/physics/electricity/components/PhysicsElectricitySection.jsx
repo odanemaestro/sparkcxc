@@ -2,12 +2,14 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { usePhysicsStudyRoute } from '../../../routing/sparkRoutingV270';
 import MathText from '../../../practice/MathText';
 import PhysicsFlashcardVisual from '../../components/PhysicsFlashcardVisual';
+import { physicsFlashcardQuestion } from '../../course/physicsFlashcardLanguage.mjs';
 import PhysicsStudyToolkit from '../../components/PhysicsStudyToolkit';
 import PhysicsPracticalNotebook from '../../labs/PhysicsPracticalNotebook';
 import { PhysicsTopicQuiz } from '../../mechanics/components/PhysicsMechanicsSection';
 import { SECTION_D_TOPICS, buildSectionDCheckpoint, sectionDStats } from '../sectionDElectricity.mjs';
 import { ELECTRICITY_INTERACTIVES, electricityInteractivesForTopic } from '../interactives/dElectricityInteractiveRegistry.mjs';
 import ElectricityInteractiveLab from './ElectricityInteractiveLab';
+import { hasSimulation } from '../../simulations/simulationRegistry.jsx';
 import { readPhysicsCourseProgress, setPhysicsCourseLessonCompletion } from '../../course/physicsCourseProgress.mjs';
 import { readPhysicsElectricityProgress, recordPhysicsElectricityResult, setPhysicsElectricityCompletion } from '../physicsElectricityProgress.mjs';
 import '../../mechanics/components/physicsMechanics.css';
@@ -52,21 +54,31 @@ function StudyView({ topic, userId, courseProgress, setCourseProgress, onActivit
 
 function LabsView({ topic, progress, setProgress, onActivity, userId }) {
   const labs = electricityInteractivesForTopic(topic.id);
-  return <div className="pm-labs-grid">{labs.map(lab => <div key={lab.id}>
-    <ElectricityInteractiveLab interactiveId={lab.id} />
-    <PhysicsPracticalNotebook interactiveId={lab.id} userId={userId}/>
-    <div className="pm-completion">
-      <button type="button" className={progress[`lab:${lab.id}`] ? 'done' : ''} onClick={() => setProgress(previous => {
-        const value = !previous[`lab:${lab.id}`];
-        const next = setPhysicsElectricityCompletion(userId, previous, `lab:${lab.id}`, value);
-        onActivity?.({ type:'physics_lab_completion', subject:'CSEC Physics', section:'D', topic:topic.id, lab:lab.id, completed:value });
-        return next;
-      })}>{progress[`lab:${lab.id}`] ? '✓ Lab explored' : 'Mark lab explored'}</button>
-      <span className="pm-feedback">Lab exploration is recorded separately from assessment mastery.</span>
-    </div>
-  </div>)}</div>;
+  const setLabCompletion = (lab, completed) => {
+    setProgress(previous => setPhysicsElectricityCompletion(userId, previous, `lab:${lab.id}`, completed));
+    onActivity?.({ type:'physics_lab_completion', subject:'CSEC Physics', section:'D', topic:topic.id, lab:lab.id, completed:Boolean(completed) });
+  };
+  return <div className="pm-labs-grid">{labs.map(lab => {
+    const upgraded = hasSimulation(lab.id);
+    const complete = Boolean(progress[`lab:${lab.id}`]);
+    const evidence = payload => {
+      if (upgraded && payload?.source === 'physics_virtual_simulation' && payload?.result === 'completed' && !complete) {
+        setLabCompletion(lab, true);
+      }
+    };
+    return <div key={lab.id}>
+      <ElectricityInteractiveLab interactiveId={lab.id} onEvidence={evidence} />
+      <PhysicsPracticalNotebook interactiveId={lab.id} userId={userId}/>
+      {upgraded ? <div className="pm-completion">
+        <span className={`psim-status ${complete ? 'done' : ''}`} role="status">{complete ? '✓ Lab explored' : 'Virtual experiment in progress'}</span>
+        <span className="pm-feedback">Upgraded virtual labs are marked automatically when all experiment tasks are complete.</span>
+      </div> : <div className="pm-completion">
+        <button type="button" className={complete ? 'done' : ''} onClick={() => setLabCompletion(lab, !complete)}>{complete ? '✓ Lab explored' : 'Mark lab explored'}</button>
+        <span className="pm-feedback">Lab exploration is recorded separately from assessment mastery.</span>
+      </div>}
+    </div>;
+  })}</div>;
 }
-
 function FlashcardsView({ topic }) {
   const [index, setIndex] = useState(0);
   const [back, setBack] = useState(false);
@@ -76,7 +88,7 @@ function FlashcardsView({ topic }) {
   return <div className="pm-panel pm-flashcard-panel">
     <div className="pm-flashcard-panel-head"><div><strong>{topic.id} · {topic.title}</strong><span>Flashcard {index + 1} of {cards.length} · {card.objective}</span></div></div>
     <button type="button" className="pm-flashcard pm-flashcard-polished" onClick={() => setBack(value => !value)}>
-      {back ? <><small>ANSWER</small><MathText as="p" prose>{card.back}</MathText><PhysicsFlashcardVisual objective={card.objective}/><span className="pm-flashcard-hint">Tap to return to the question</span></> : <><small>{card.objective}</small><MathText as="h3" prose>{card.front}</MathText><span className="pm-flashcard-hint">Tap to reveal the answer</span></>}
+      {back ? <><small>ANSWER</small><MathText as="p" prose>{card.back}</MathText><PhysicsFlashcardVisual objective={card.objective}/><span className="pm-flashcard-hint">Tap to return to the question</span></> : <><small>{card.objective}</small><MathText as="h3" prose>{physicsFlashcardQuestion(card)}</MathText><span className="pm-flashcard-hint">Tap to reveal the answer</span></>}
     </button>
     <div className="pm-flashcard-nav-row">
       <button type="button" className="pm-btn secondary" disabled={index === 0} onClick={() => { setIndex(value => Math.max(0, value - 1)); setBack(false); }}>← Previous</button>

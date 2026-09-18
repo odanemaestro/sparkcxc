@@ -4,6 +4,7 @@ import {
   fullyImmersedBuoyancy,
   fractionSubmerged,
   upthrust,
+  hydraulicPressForces,
 } from '../a6HydrostaticsPhysics.mjs';
 
 function finite(name,v){const n=Number(v);if(!Number.isFinite(n))throw new TypeError(`${name} must be finite`);return n;}
@@ -37,4 +38,7 @@ export function buildHoleJetModel({fluidHeightM=1.2,holeDepthsM=[0.2,0.6,1.0],gN
   if(!Array.isArray(holeDepthsM)||!holeDepthsM.length)throw new TypeError('holeDepthsM must be a non-empty array');
   const holes=holeDepthsM.map((d,i)=>{const depth=finite(`holeDepthsM[${i}]`,d);if(depth<0||depth>height)throw new RangeError('hole depth must lie within the fluid');return {depthM:depth,relativePressure:depth/height,relativeExitSpeed:Math.sqrt(depth/height)};});
   return {fluidHeightM:height,gNPerKg:g,holes};
+}
+export function buildHydraulicPressModel({forceN=50,effortAreaM2=0.002,loadAreaM2=0.02,effortStrokeM=0}={}){
+  return {forceN:Number(forceN),effortAreaM2:Number(effortAreaM2),loadAreaM2:Number(loadAreaM2),...hydraulicPressForces({effortForceN:forceN,effortAreaM2,loadAreaM2,effortStrokeM})};
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { usePhysicsStudyRoute } from '../../../routing/sparkRoutingV270';
 import MathText from '../../../practice/MathText';
 import PhysicsFlashcardVisual from '../../components/PhysicsFlashcardVisual';
+import { physicsFlashcardQuestion } from '../../course/physicsFlashcardLanguage.mjs';
 import PhysicsStudyToolkit from '../../components/PhysicsStudyToolkit';
 import PhysicsPracticalNotebook from '../../labs/PhysicsPracticalNotebook';
 import { PhysicsTopicQuiz } from '../../mechanics/components/PhysicsMechanicsSection';
@@ -76,7 +77,7 @@ function FlashcardsView({ topic }) {
   return <div className="pm-panel pm-flashcard-panel">
     <div className="pm-flashcard-panel-head"><div><strong>{topic.id} · {topic.title}</strong><span>Flashcard {index + 1} of {cards.length} · {card.objective}</span></div></div>
     <button type="button" className="pm-flashcard pm-flashcard-polished" onClick={() => setBack(value => !value)}>
-      {back ? <><small>ANSWER</small><MathText as="p" prose>{card.back}</MathText><PhysicsFlashcardVisual objective={card.objective}/><span className="pm-flashcard-hint">Tap to return to the question</span></> : <><small>{card.objective}</small><MathText as="h3" prose>{card.front}</MathText><span className="pm-flashcard-hint">Tap to reveal the answer</span></>}
+      {back ? <><small>ANSWER</small><MathText as="p" prose>{card.back}</MathText><PhysicsFlashcardVisual objective={card.objective}/><span className="pm-flashcard-hint">Tap to return to the question</span></> : <><small>{card.objective}</small><MathText as="h3" prose>{physicsFlashcardQuestion(card)}</MathText><span className="pm-flashcard-hint">Tap to reveal the answer</span></>}
     </button>
     <div className="pm-flashcard-nav-row">
       <button type="button" className="pm-btn secondary" disabled={index === 0} onClick={() => { setIndex(value => Math.max(0, value - 1)); setBack(false); }}>← Previous</button>

@@ -1,4 +1,4 @@
-import {chargeFromCurrentTime,frequencyFromPeriod,electricalPower,electricalEnergy,seriesResistance,parallelResistance,applianceCurrent,idealTransformerVoltage,idealTransformerCurrent,logicGate,magneticPoleForce,motorForceFactor,inducedEmfIndex} from '../dElectricityPhysics.mjs';
+import {chargeFromCurrentTime,frequencyFromPeriod,electricalPower,electricalEnergy,seriesResistance,parallelResistance,applianceCurrent,idealTransformerVoltage,idealTransformerCurrent,logicGate,magneticPoleForce,motorForceFactor,inducedEmfIndex,twoLampNetworkState} from '../dElectricityPhysics.mjs';
 
 const signLabel = value => value > 0 ? 'positive' : value < 0 ? 'negative' : 'neutral';
 
@@ -71,3 +71,4 @@ export const buildMagnetModel=({poleA='N',poleB='S'})=>({poleA,poleB,force:magne
 export const buildMotorModel=({fieldT=.2,currentA=3,lengthM=.1})=>({fieldT,currentA,lengthM,forceIndex:motorForceFactor({fieldT,currentA,lengthM})});
 export const buildInductionModel=({fieldT=.4,lengthM=.2,speedMps=5})=>({fieldT,lengthM,speedMps,emfIndex:inducedEmfIndex({fieldT,lengthM,speedMps})});
 export const buildTransformerModel=({primaryV=240,primaryTurns=200,secondaryTurns=50,primaryCurrentA=2})=>{const secondaryV=idealTransformerVoltage({primaryV,primaryTurns,secondaryTurns});return{primaryV,primaryTurns,secondaryTurns,primaryCurrentA,secondaryV,secondaryCurrentA:idealTransformerCurrent({primaryV,primaryCurrentA,secondaryV})}};
+export const buildTwoLampCircuitModel=({emfV=6,r1=6,r2=3,mode='series',switchClosed=true,removedLamp=false}={})=>({emfV,r1,r2,mode,switchClosed,removedLamp,...twoLampNetworkState({emfV,r1,r2,mode,switchClosed,removedLamp})});

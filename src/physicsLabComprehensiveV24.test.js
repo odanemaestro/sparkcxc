@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import MechanicsInteractiveLab from './physics/mechanics/components/MechanicsInteractiveLab';
 import ThermalInteractiveLab from './physics/thermal/components/ThermalInteractiveLab';
 import WavesInteractiveLab from './physics/waves/components/WavesInteractiveLab';
@@ -10,6 +10,7 @@ import { MECHANICS_INTERACTIVES } from './physics/mechanics/interactives/mechani
 import { THERMAL_INTERACTIVES } from './physics/thermal/interactives/bThermalInteractiveRegistry.mjs';
 import { WAVES_INTERACTIVES } from './physics/waves/interactives/cWavesInteractiveRegistry.mjs';
 import { ELECTRICITY_INTERACTIVES } from './physics/electricity/interactives/dElectricityInteractiveRegistry.mjs';
+import { hasSimulation } from './physics/simulations/simulationRegistry.jsx';
 import { ATOMIC_INTERACTIVES } from './physics/atomic/interactives/eAtomicInteractiveRegistry.mjs';
 import paper10 from './physics/paper1/data/spark-phy-p01-practice-10.json';
 import paper11 from './physics/paper1/data/spark-phy-p01-practice-11.json';
@@ -27,14 +28,26 @@ const groups = [
 describe('Physics comprehensive lab and Paper 1 audit V2.4.4', () => {
   afterEach(() => cleanup());
 
-  test('all 73 registered Physics interactives render a real implementation', () => {
+  test('all 73 registered Physics interactives render a real implementation', async () => {
     let count = 0;
     for (const [Component, registry] of groups) {
       for (const item of registry) {
         const { unmount, container } = render(<Component interactiveId={item.id}/>);
-        expect(container.textContent).not.toMatch(/Interactive implementation unavailable/i);
-        expect(container.textContent).not.toMatch(/Interactive unavailable/i);
-        expect(container.textContent).toContain(item.title);
+        await waitFor(() => {
+          expect(container.textContent).not.toMatch(/Interactive implementation unavailable/i);
+          expect(container.textContent).not.toMatch(/Interactive unavailable/i);
+          expect(container.textContent).not.toMatch(/^Loading virtual lab…$/i);
+
+          if (hasSimulation(item.id)) {
+            const simulation = container.querySelector('section.psim');
+            expect(simulation).toBeInTheDocument();
+            expect(simulation).toHaveAttribute('aria-label');
+            const simulationTitle = container.querySelector('.psim-head h4')?.textContent?.trim() || '';
+            expect(simulationTitle.length).toBeGreaterThan(0);
+          } else {
+            expect(container.textContent).toContain(item.title);
+          }
+        });
         count += 1;
         unmount();
       }

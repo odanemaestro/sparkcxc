@@ -21,6 +21,7 @@ import {
   buildSubmarineBallastModel, buildHoleJetModel,
 } from '../interactives/a6InteractiveModels.mjs';
 import { MECHANICS_INTERACTIVES } from '../interactives/mechanicsInteractiveRegistry.mjs';
+import { PhysicsSimulationSlot, hasSimulation } from '../../simulations/simulationRegistry.jsx';
 
 const byId = new Map(MECHANICS_INTERACTIVES.map(item => [item.id, item]));
 const clamp = (v, a, b) => Math.max(a, Math.min(b, Number(v)));
@@ -386,6 +387,8 @@ export default function MechanicsInteractiveLab({ interactiveId, onEvidence }) {
   const evidence=(payload)=>onEvidence?.({interactiveId:meta.id,topic:meta.topic,...payload});
   return <section className="pm-interactive" data-interactive-id={interactiveId}>
     <div className="pm-interactive-meta"><span>{meta.topic}</span><strong>{meta.title}</strong><em>{meta.objectives.join(' · ')}</em></div>
-    <Component onEvidence={evidence}/>
+    {hasSimulation(interactiveId)
+      ? <PhysicsSimulationSlot interactiveId={interactiveId} onEvidence={evidence}/>
+      : <Component onEvidence={evidence}/>}
   </section>;
 }
