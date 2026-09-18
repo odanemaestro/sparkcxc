@@ -56,7 +56,7 @@ const BASE_SUBJECTS = Object.freeze({
     capabilities: Object.freeze({
       study: true,
       practice: true,
-      flashcards: false,
+      flashcards: true,
       progress: true,
       paper1: true,
       paper2: true,
@@ -93,6 +93,7 @@ export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = 
       topics: Number(informationTechnology.topics || 26),
       objectives: Number(informationTechnology.objectives || 63),
       mcq: Number(informationTechnology.mcq || 540),
+      flashcards: Number(informationTechnology.flashcards || 115),
     },
   };
   return Object.freeze([mathematicsSubject, physicsSubject, informationTechnologySubject]);

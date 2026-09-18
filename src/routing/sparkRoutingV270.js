@@ -272,6 +272,265 @@ export function useMathPracticeRoute(active = false) {
   return { mode, setMode, examIntent, setExamIntent };
 }
 
+// SPARK_INFORMATION_TECHNOLOGY_NESTED_ROUTING_V1
+const IT_STUDY_BASE = "/study/information-technology";
+const IT_PRACTICE_BASE = "/practice/information-technology";
+
+function informationTechnologyStudyState(route, sections = [], topics = []) {
+  const path = route?.path || "";
+  const sectionMap = new Map((sections || []).map(item => [String(item?.id), item?.id]));
+  const topicMap = new Map((topics || []).map(item => [String(item?.id), item]));
+
+  if (path === "/information-technology" || path === IT_STUDY_BASE) {
+    return { sectionId: null, topicId: null, labsOpen: false };
+  }
+
+  if (path === `${IT_STUDY_BASE}/labs` || path.startsWith(`${IT_STUDY_BASE}/labs/`)) {
+    return { sectionId: null, topicId: null, labsOpen: true };
+  }
+
+  const topicMatch = path.match(/^\/study\/information-technology\/section\/([^/]+)\/topic\/([^/]+)$/i);
+  if (topicMatch) {
+    const sectionId = sectionMap.get(decodeURIComponent(topicMatch[1]));
+    const topic = topicMap.get(decodeURIComponent(topicMatch[2]));
+    if (sectionId != null && topic && String(topic.section) === String(sectionId)) {
+      return { sectionId, topicId: topic.id, labsOpen: false };
+    }
+  }
+
+  const sectionMatch = path.match(/^\/study\/information-technology\/section\/([^/]+)$/i);
+  if (sectionMatch) {
+    const sectionId = sectionMap.get(decodeURIComponent(sectionMatch[1]));
+    if (sectionId != null) return { sectionId, topicId: null, labsOpen: false };
+  }
+
+  return { sectionId: null, topicId: null, labsOpen: false };
+}
+
+export function useInformationTechnologyStudyRoute(sections = [], topics = []) {
+  const read = useCallback(
+    () => informationTechnologyStudyState(readSparkHashRoute(), sections, topics),
+    [sections, topics]
+  );
+
+  const initial = useRef(read());
+  const [sectionId, setSectionState] = useState(initial.current.sectionId);
+  const [topicId, setTopicState] = useState(initial.current.topicId);
+  const [labsOpen, setLabsState] = useState(initial.current.labsOpen);
+  const stateRef = useRef(initial.current);
+
+  const sectionForTopic = useCallback(candidate => {
+    const topic = (topics || []).find(item => String(item?.id) === String(candidate));
+    return topic?.section ?? null;
+  }, [topics]);
+
+  const write = useCallback((next, replace = false) => {
+    stateRef.current = next;
+
+    if (next.labsOpen) {
+      writeSparkNestedRoute(`${IT_STUDY_BASE}/labs`, {}, { replace });
+      return;
+    }
+
+    if (next.topicId != null) {
+      const topicSection = sectionForTopic(next.topicId);
+      const safeSection = topicSection ?? next.sectionId;
+      if (safeSection != null) {
+        writeSparkNestedRoute(
+          `${IT_STUDY_BASE}/section/${encodeURIComponent(String(safeSection))}/topic/${encodeURIComponent(String(next.topicId))}`,
+          {},
+          { replace }
+        );
+        return;
+      }
+    }
+
+    if (next.sectionId != null) {
+      writeSparkNestedRoute(
+        `${IT_STUDY_BASE}/section/${encodeURIComponent(String(next.sectionId))}`,
+        {},
+        { replace }
+      );
+      return;
+    }
+
+    writeSparkNestedRoute(IT_STUDY_BASE, {}, { replace });
+  }, [sectionForTopic]);
+
+  const setSectionId = useCallback(nextValue => {
+    const current = stateRef.current;
+    const raw = resolveSetter(nextValue, current.sectionId);
+    const matched = raw == null
+      ? null
+      : (sections || []).find(item => String(item?.id) === String(raw))?.id ?? null;
+
+    const next = {
+      sectionId: matched,
+      topicId: null,
+      labsOpen: false,
+    };
+    setSectionState(next.sectionId);
+    setTopicState(null);
+    setLabsState(false);
+    write(next, false);
+  }, [sections, write]);
+
+  const setTopicId = useCallback(nextValue => {
+    const current = stateRef.current;
+    const raw = resolveSetter(nextValue, current.topicId);
+
+    if (raw == null) {
+      const next = {
+        sectionId: current.sectionId,
+        topicId: null,
+        labsOpen: false,
+      };
+      setTopicState(null);
+      setLabsState(false);
+      write(next, false);
+      return;
+    }
+
+    const topic = (topics || []).find(item => String(item?.id) === String(raw));
+    if (!topic) return;
+
+    const next = {
+      sectionId: topic.section,
+      topicId: topic.id,
+      labsOpen: false,
+    };
+    setSectionState(next.sectionId);
+    setTopicState(next.topicId);
+    setLabsState(false);
+    write(next, false);
+  }, [topics, write]);
+
+  const setLabsOpen = useCallback(nextValue => {
+    const current = stateRef.current;
+    const open = Boolean(resolveSetter(nextValue, current.labsOpen));
+    const next = open
+      ? { sectionId: null, topicId: null, labsOpen: true }
+      : { sectionId: null, topicId: null, labsOpen: false };
+
+    setSectionState(next.sectionId);
+    setTopicState(next.topicId);
+    setLabsState(next.labsOpen);
+    write(next, false);
+  }, [write]);
+
+  useEffect(() => subscribeSparkRoute(route => {
+    if (!(route.path === "/information-technology" || route.path?.startsWith(IT_STUDY_BASE))) return;
+    const next = informationTechnologyStudyState(route, sections, topics);
+    stateRef.current = next;
+    setSectionState(next.sectionId);
+    setTopicState(next.topicId);
+    setLabsState(next.labsOpen);
+  }), [sections, topics]);
+
+  return {
+    sectionId,
+    setSectionId,
+    topicId,
+    setTopicId,
+    labsOpen,
+    setLabsOpen,
+  };
+}
+
+function informationTechnologyLabIdFromPath(path, labIds = []) {
+  const match = String(path || "").match(/^\/study\/information-technology\/labs\/([^/]+)$/i);
+  if (!match) return null;
+  const candidate = decodeURIComponent(match[1]);
+  return (labIds || []).includes(candidate) ? candidate : null;
+}
+
+export function useInformationTechnologyLabRoute(labIds = []) {
+  const read = useCallback(
+    () => informationTechnologyLabIdFromPath(readSparkHashRoute().path, labIds),
+    [labIds]
+  );
+
+  const initial = useRef(read());
+  const [activeLabId, setLabState] = useState(initial.current);
+  const labRef = useRef(initial.current);
+
+  const setActiveLabId = useCallback(nextValue => {
+    const current = labRef.current;
+    const raw = resolveSetter(nextValue, current);
+    const next = raw == null ? null : String(raw);
+    const safe = next && (labIds || []).includes(next) ? next : null;
+
+    labRef.current = safe;
+    setLabState(safe);
+
+    if (safe) {
+      writeSparkNestedRoute(
+        `${IT_STUDY_BASE}/labs/${encodeURIComponent(safe)}`
+      );
+    } else {
+      writeSparkNestedRoute(`${IT_STUDY_BASE}/labs`);
+    }
+  }, [labIds]);
+
+  useEffect(() => subscribeSparkRoute(route => {
+    if (!route.path?.startsWith(`${IT_STUDY_BASE}/labs`)) return;
+    const next = informationTechnologyLabIdFromPath(route.path, labIds);
+    labRef.current = next;
+    setLabState(next);
+  }), [labIds]);
+
+  return [activeLabId, setActiveLabId];
+}
+
+function informationTechnologyPracticeModeFromPath(path) {
+  if (path === `${IT_PRACTICE_BASE}/paper-1`) return "paper1";
+  if (path === `${IT_PRACTICE_BASE}/paper-2`) return "paper2";
+  return "home";
+}
+
+export function useInformationTechnologyPracticeRoute(active = true) {
+  const read = useCallback(
+    () => informationTechnologyPracticeModeFromPath(readSparkHashRoute().path),
+    []
+  );
+
+  const initial = useRef(read());
+  const [mode, setModeState] = useState(initial.current);
+  const modeRef = useRef(initial.current);
+
+  const setMode = useCallback(nextValue => {
+    const current = modeRef.current;
+    const raw = String(resolveSetter(nextValue, current) || "home");
+    const safe = ["home", "paper1", "paper2"].includes(raw) ? raw : "home";
+
+    modeRef.current = safe;
+    setModeState(safe);
+
+    if (!active && !readSparkHashRoute().path?.startsWith(IT_PRACTICE_BASE)) return;
+
+    if (safe === "paper1") writeSparkNestedRoute(`${IT_PRACTICE_BASE}/paper-1`);
+    else if (safe === "paper2") writeSparkNestedRoute(`${IT_PRACTICE_BASE}/paper-2`);
+    else writeSparkNestedRoute(IT_PRACTICE_BASE);
+  }, [active]);
+
+  useEffect(() => {
+    if (!active) return undefined;
+
+    const sync = route => {
+      if (!route.path?.startsWith(IT_PRACTICE_BASE)) return;
+      const next = informationTechnologyPracticeModeFromPath(route.path);
+      modeRef.current = next;
+      setModeState(next);
+    };
+
+    sync(readSparkHashRoute());
+    return subscribeSparkRoute(sync);
+  }, [active]);
+
+  return [mode, setMode];
+}
+
+
 function physicsStudySectionFromPath(path) {
   if (!path || path === "/study/physics" || path === "/physics") return null;
   if (path === "/study/physics/workbook") return "WORKBOOK";

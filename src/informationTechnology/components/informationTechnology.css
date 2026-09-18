@@ -509,3 +509,179 @@
   .it-exam-it-actions{align-items:stretch;flex-direction:column}
   .it-exam-it-actions .it-primary{width:100%;min-height:46px}
 }
+
+/* SPARK IT V2.9 navigation button consistency */
+.it-back{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-height:46px;
+  padding:10px 16px;
+  border:1px solid rgba(23,55,94,.24);
+  border-radius:13px;
+  background:rgba(23,55,94,.09);
+  color:#17375e;
+  font-weight:850;
+  cursor:pointer;
+  box-shadow:none;
+  transition:background .16s ease,border-color .16s ease,transform .16s ease;
+}
+.it-back:hover{
+  background:rgba(23,55,94,.14);
+  border-color:rgba(23,55,94,.34);
+  transform:translateY(-1px);
+}
+.it-back:focus-visible{
+  outline:3px solid rgba(23,55,94,.22);
+  outline-offset:2px;
+}
+html[data-theme="dark"] .it-back,
+body[data-theme="dark"] .it-back{
+  background:rgba(126,158,198,.14);
+  border-color:rgba(156,184,219,.30);
+  color:#dce8f6;
+}
+html[data-theme="dark"] .it-back:hover,
+body[data-theme="dark"] .it-back:hover{
+  background:rgba(126,158,198,.22);
+  border-color:rgba(156,184,219,.42);
+}
+@media(max-width:560px){
+  .it-back{
+    min-height:46px;
+    padding:10px 15px;
+  }
+}
+
+/* SPARK IT V2.11 light navy action controls */
+
+/* Study area: Show answer, Hide answer, Show all answers and Hide answers */
+.it-answer-all,
+.it-answer-toggle{
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:9px 14px;
+  border:1px solid rgba(23,55,94,.24);
+  border-radius:12px;
+  background:rgba(23,55,94,.09);
+  color:#17375e;
+  font:inherit;
+  font-size:12px;
+  font-weight:850;
+  box-shadow:none;
+  cursor:pointer;
+  transition:background .16s ease,border-color .16s ease,color .16s ease,transform .16s ease;
+}
+.it-answer-all:hover,
+.it-answer-toggle:hover{
+  background:rgba(23,55,94,.14);
+  border-color:rgba(23,55,94,.34);
+  color:#17375e;
+  transform:translateY(-1px);
+}
+.it-answer-all:focus-visible,
+.it-answer-toggle:focus-visible{
+  outline:3px solid rgba(23,55,94,.22);
+  outline-offset:2px;
+}
+.it-answer-toggle{
+  margin-top:9px;
+}
+
+html[data-theme="dark"] .it-answer-all,
+html[data-theme="dark"] .it-answer-toggle,
+body[data-theme="dark"] .it-answer-all,
+body[data-theme="dark"] .it-answer-toggle{
+  background:rgba(126,158,198,.14);
+  border-color:rgba(156,184,219,.30);
+  color:#dce8f6;
+}
+html[data-theme="dark"] .it-answer-all:hover,
+html[data-theme="dark"] .it-answer-toggle:hover,
+body[data-theme="dark"] .it-answer-all:hover,
+body[data-theme="dark"] .it-answer-toggle:hover{
+  background:rgba(126,158,198,.22);
+  border-color:rgba(156,184,219,.42);
+  color:#eef4fb;
+}
+
+@media(max-width:560px){
+  .it-answer-all{
+    width:100%;
+    min-height:46px;
+  }
+  .it-answer-toggle{
+    min-height:44px;
+  }
+}
+
+/* SPARK IT progress completion V1 */
+.it-lesson-completion{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:18px;
+  padding-top:16px;
+  border-top:1px solid var(--it-line,#dce3e9);
+}
+.it-lesson-completion .it-primary.done{
+  background:#17375e;
+}
+.it-lesson-completion>span{
+  flex:1;
+  min-width:220px;
+  font-size:12px;
+  line-height:1.5;
+  color:var(--it-muted,#64717e);
+}
+@media(max-width:560px){
+  .it-lesson-completion{
+    align-items:stretch;
+    flex-direction:column;
+  }
+  .it-lesson-completion .it-primary{
+    width:100%;
+    min-height:46px;
+  }
+  .it-lesson-completion>span{
+    min-width:0;
+  }
+}
+
+/* SPARK IT PRACTICAL LABS V1 */
+.it-practical-labs-launch{margin:18px 0}
+.it-practical-labs-launch>button{width:100%;display:grid;grid-template-columns:auto 1fr auto;gap:15px;align-items:center;text-align:left;padding:20px;border:1px solid rgba(13,128,105,.28);border-radius:18px;background:linear-gradient(135deg,rgba(13,128,105,.08),rgba(23,55,94,.08));color:inherit;cursor:pointer;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease}
+.it-practical-labs-launch>button:hover{transform:translateY(-2px);border-color:rgba(13,128,105,.42);box-shadow:0 10px 26px rgba(15,23,42,.06)}
+.it-practical-labs-mark{display:grid;place-items:center;width:58px;height:58px;border-radius:16px;background:#17375e;color:#fff;font-size:13px;font-weight:900;letter-spacing:.05em}
+.it-practical-labs-launch small{display:block;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:#0d8069;font-weight:900}
+.it-practical-labs-launch strong{display:block;margin-top:3px;font-size:20px}
+.it-practical-labs-launch p{margin:4px 0 0;color:var(--it-muted,#64717e);font-size:12px;line-height:1.5}
+.it-practical-labs-launch b{font-size:22px;color:#0d8069}
+@media(max-width:560px){.it-practical-labs-launch>button{grid-template-columns:auto 1fr;padding:16px}.it-practical-labs-launch b{display:none}.it-practical-labs-mark{width:48px;height:48px}}
+
+/* SPARK IT STUDY TABLET IPAD V3 */
+@media(min-width:768px) and (max-width:1180px){
+  .it-subject-view{padding-left:18px;padding-right:18px}
+  .it-shell{width:100%;max-width:1080px}
+  .it-learning-flow{
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior-x:contain;
+  }
+  .it-learning-flow button{min-height:44px}
+  .it-panel,.it-objective-coverage{min-width:0}
+}
+
+@media(max-width:820px){
+  .it-subject-view input,
+  .it-subject-view select,
+  .it-subject-view textarea{
+    font-size:16px!important;
+  }
+  .it-subject-view button{min-height:44px}
+  .it-subject-view{padding-bottom:calc(44px + env(safe-area-inset-bottom,0px))}
+}

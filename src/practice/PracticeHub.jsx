@@ -1,16 +1,27 @@
-import React, { useEffect, useMemo, useState } from "react";
-import AdaptivePractice from "../adaptive/AdaptivePractice";
-import Paper1Exam from "./Paper1Exam";
-import Paper2Exam from "./Paper2Exam";
-import Syllabus2027Hub from "./Syllabus2027Hub";
-import PhysicsPracticeHub from "../physics/course/components/PhysicsPracticeHub";
-import InformationTechnologyPracticeHub from "../informationTechnology/practice/InformationTechnologyPracticeHub";
+﻿import React, { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import SubjectSelectionView from "../subjects/SubjectSelectionView";
 import { useMathPracticeRoute } from "../routing/sparkRoutingV270";
 import { getSparkSubjectRegistry, subjectsForCapability } from "../subjects/subjectRegistry";
 import { syncLocalPracticeResults } from "./persistence";
+import SparkLoader from "../components/ui/SparkLoader";
 import "./practiceExam.css";
 
+const AdaptivePractice = lazy(() => import("../adaptive/AdaptivePractice"));
+const Paper1Exam = lazy(() => import("./Paper1Exam"));
+const Paper2Exam = lazy(() => import("./Paper2Exam"));
+const Syllabus2027Hub = lazy(() => import("./Syllabus2027Hub"));
+const PhysicsPracticeHub = lazy(() => import("../physics/course/components/PhysicsPracticeHub"));
+const InformationTechnologyPracticeHub = lazy(() =>
+  import("../informationTechnology/practice/InformationTechnologyPracticeHub")
+);
+
+function PracticeLazyBoundary({ label, children }) {
+  return (
+    <Suspense fallback={<SparkLoader variant="section" label={label} />}>
+      {children}
+    </Suspense>
+  );
+}
 const PAPER1_ACTIVE_KEY = "spark-paper1-active-v1";
 const PAPER1_RESULTS_KEY = "spark-paper1-results-v1";
 const PAPER2_ACTIVE_KEY = "spark-paper2-active-v2";
@@ -74,34 +85,61 @@ export default function PracticeHub({ supabase, userId, setView, physicsEnabled 
   }
 
   if (selectedSubject === "physics") {
-    return <PhysicsPracticeHub
-      userId={userId}
-      onBack={() => { setMode("home"); setView?.("practice"); }}
-      onActivity={onSubjectActivity}
-    />;
+    return (
+      <PracticeLazyBoundary label="Loading Physics practice">
+        <PhysicsPracticeHub
+          userId={userId}
+          onBack={() => { setMode("home"); setView?.("practice"); }}
+          onActivity={onSubjectActivity}
+        />
+      </PracticeLazyBoundary>
+    );
   }
 
 
   if (selectedSubject === "information-technology") {
-    return <InformationTechnologyPracticeHub
-      onBack={() => { setMode("home"); setView?.("practice"); }}
-    />;
+    return (
+      <PracticeLazyBoundary label="Loading Information Technology practice">
+        <InformationTechnologyPracticeHub
+      supabase={supabase}
+      userId={userId}
+      onActivity={onSubjectActivity}
+          onBack={() => { setMode("home"); setView?.("practice"); }}
+        />
+      </PracticeLazyBoundary>
+    );
   }
 
 if (mode === "adaptive") {
-    return <AdaptivePractice supabase={supabase} userId={userId} setView={() => setMode("home")} backLabel="← Back to Practice" />;
+    return (
+      <PracticeLazyBoundary label="Loading adaptive practice">
+        <AdaptivePractice supabase={supabase} userId={userId} setView={() => setMode("home")} backLabel="â† Back to Practice" />
+      </PracticeLazyBoundary>
+    );
   }
 
   if (mode === "paper1") {
-    return <Paper1Exam onExit={() => setMode("home")} startFresh={examIntent === "new"} supabase={supabase} userId={userId} />;
+    return (
+      <PracticeLazyBoundary label="Loading Mathematics Paper 1">
+        <Paper1Exam onExit={() => setMode("home")} startFresh={examIntent === "new"} supabase={supabase} userId={userId} />
+      </PracticeLazyBoundary>
+    );
   }
 
   if (mode === "paper2") {
-    return <Paper2Exam onExit={() => setMode("home")} startFresh={examIntent === "new"} supabase={supabase} userId={userId} />;
+    return (
+      <PracticeLazyBoundary label="Loading Mathematics Paper 2">
+        <Paper2Exam onExit={() => setMode("home")} startFresh={examIntent === "new"} supabase={supabase} userId={userId} />
+      </PracticeLazyBoundary>
+    );
   }
 
   if (mode === "2027") {
-    return <Syllabus2027Hub onExit={() => setMode("home")} supabase={supabase} userId={userId} />;
+    return (
+      <PracticeLazyBoundary label="Loading 2027 Mathematics practice">
+        <Syllabus2027Hub onExit={() => setMode("home")} supabase={supabase} userId={userId} />
+      </PracticeLazyBoundary>
+    );
   }
 
   return (
@@ -112,7 +150,7 @@ if (mode === "adaptive") {
           <h1>Practise under examination conditions.</h1>
           <p>Select a full Paper 1 or Paper 2 examination, or practise a selected topic.</p>
         </div>
-        <button className="practice-back" type="button" onClick={() => { setMode("home"); setView?.("practice"); }}>← Change subject</button>
+        <button className="practice-back" type="button" onClick={() => { setMode("home"); setView?.("practice"); }}>â† Change subject</button>
       </section>
 
       <section className="practice-mode-grid practice-mode-grid-three">
@@ -121,7 +159,7 @@ if (mode === "adaptive") {
           <div className="practice-mode-label">Paper 1 examination</div>
           <h2>Paper 1 Simulator</h2>
           <p>Answer 60 multiple-choice questions in 1 hour 30 minutes. Questions are selected to reflect the topic coverage and question types used in CSEC Mathematics Paper 01.</p>
-          <div className="practice-specs-line">60 questions <span>·</span> 90 minutes <span>·</span> 60 marks <span>·</span> Multiple choice</div>
+          <div className="practice-specs-line">60 questions <span>Â·</span> 90 minutes <span>Â·</span> 60 marks <span>Â·</span> Multiple choice</div>
           <div className="practice-card-actions">
             {paper1Active?.questionIds?.length === 60 && <button type="button" className="practice-primary" onClick={() => { setExamIntent("resume"); setMode("paper1"); }}>Resume paper</button>}
             <button type="button" className={paper1Active?.questionIds?.length === 60 ? "practice-secondary" : "practice-primary"} onClick={() => { setExamIntent("new"); setMode("paper1"); }}>Start new paper</button>
@@ -133,7 +171,7 @@ if (mode === "adaptive") {
           <div className="practice-mode-label">Paper 2 examination</div>
           <h2>Paper 2 Simulator</h2>
           <p>Answer 10 compulsory structured questions in 2 hours 40 minutes. The paper follows the Section I and Section II mark allocation used in CSEC Mathematics Paper 02. Answers are marked when the paper is submitted.</p>
-          <div className="practice-specs-line">10 questions <span>·</span> 160 minutes <span>·</span> 100 marks <span>·</span> Auto-graded</div>
+          <div className="practice-specs-line">10 questions <span>Â·</span> 160 minutes <span>Â·</span> 100 marks <span>Â·</span> Auto-graded</div>
           <div className="practice-card-actions">
             {paper2Active?.exam?.questions?.length === 10 && <button type="button" className="practice-primary" onClick={() => { setExamIntent("resume"); setMode("paper2"); }}>Resume paper</button>}
             <button type="button" className={paper2Active?.exam?.questions?.length === 10 ? "practice-secondary" : "practice-primary"} onClick={() => { setExamIntent("new"); setMode("paper2"); }}>Start new paper</button>
@@ -141,21 +179,21 @@ if (mode === "adaptive") {
         </article>
 
         <article className="practice-mode-card adaptive-mode-card">
-          <div className="practice-mode-icon adaptive-icon" aria-hidden="true">◎</div>
+          <div className="practice-mode-icon adaptive-icon" aria-hidden="true">â—Ž</div>
           <div className="practice-mode-label">Topic practice</div>
           <h2>Adaptive Practice</h2>
           <p>Select a topic and answer questions based on your recent performance.</p>
-          <div className="practice-specs-line">Topic focused <span>·</span> Worked solutions <span>·</span> Immediate feedback</div>
+          <div className="practice-specs-line">Topic focused <span>Â·</span> Worked solutions <span>Â·</span> Immediate feedback</div>
           <div className="practice-card-actions"><button type="button" className="practice-primary" onClick={() => setMode("adaptive")}>Open adaptive practice</button></div>
         </article>
       </section>
 
       <section className="practice-2027-feature-card">
         <div className="practice-2027-feature-copy">
-          <div className="practice-2027-feature-kicker"><span>NEW</span> Effective for examinations from May–June 2027</div>
+          <div className="practice-2027-feature-kicker"><span>NEW</span> Effective for examinations from Mayâ€“June 2027</div>
           <h2>2027 Syllabus Practice</h2>
           <p>Practise the revised modular CSEC Mathematics format, including the compulsory Module 1 investigation and questions written for the amended syllabus objectives.</p>
-          <div className="practice-feature-specs-line">3 modules <span>·</span> New Paper 2 structure <span>·</span> Conceptual Knowledge <span>·</span> Algorithmic Knowledge <span>·</span> Reasoning</div>
+          <div className="practice-feature-specs-line">3 modules <span>Â·</span> New Paper 2 structure <span>Â·</span> Conceptual Knowledge <span>Â·</span> Algorithmic Knowledge <span>Â·</span> Reasoning</div>
         </div>
         <button type="button" className="practice-primary practice-2027-open" onClick={() => setMode("2027")}>Open 2027 practice</button>
       </section>

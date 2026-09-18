@@ -87,6 +87,15 @@ function notificationTypeMeta(notification) {
     if (type === "child_topic_quiz_completed") return { ...base, icon: "Φ", label: "Physics topic test" };
     if (type === "child_section_test_completed") return { ...base, icon: "Φ", label: "Physics checkpoint" };
   }
+  if (String(metadata?.subject_id || "").toLowerCase() === "information-technology") {
+    const type = String(notification?.type || "");
+    if (type === "paper1_completed") return { ...base, icon: "P1", label: "IT Paper 1" };
+    if (type === "paper2_completed") return { ...base, icon: "P2", label: "IT Paper 2" };
+    if (type === "child_paper1_completed" || type === "child_paper2_completed") return { ...base, icon: "IT", label: "IT paper result" };
+    if (type === "child_lesson_completed") return { ...base, icon: "IT", label: "IT lesson" };
+    if (type === "child_topic_quiz_completed") return { ...base, icon: "IT", label: "IT topic test" };
+    if (type === "child_section_test_completed") return { ...base, icon: "IT", label: "IT checkpoint" };
+  }
   return base;
 }
 

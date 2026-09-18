@@ -140,7 +140,7 @@ function PartResponseEditor({ part, value, onChange }) {
   return <textarea value={response.answer || ""} onChange={event => update({ answer: event.target.value })} placeholder="Enter your answer here"/>;
 }
 
-export default function InformationTechnologyPaper2Exam({ onExit, startFresh = false }) {
+export default function InformationTechnologyPaper2Exam({ onExit, startFresh = false, onActivity }) {
   const [phase, setPhase] = useState("instructions");
   const [active, setActive] = useState(null);
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -262,6 +262,22 @@ export default function InformationTechnologyPaper2Exam({ onExit, startFresh = f
     };
     const results = readJson(RESULTS_KEY, []);
     localStorage.setItem(RESULTS_KEY, JSON.stringify([record, ...results].slice(0, 20)));
+    try {
+      onActivity?.({
+        type: "it_paper2_exam",
+        paperId: record.paperId,
+        paperTitle: record.paperTitle,
+        score: record.score,
+        maxScore: 90,
+        percent: record.percent,
+        profiles: record.profiles,
+        timedOut: record.timedOut,
+        durationSeconds: record.durationSeconds,
+        at: record.completedAt,
+      });
+    } catch (error) {
+      console.warn("IT Paper 2 progress was not synced", error);
+    }
     clearActive();
     setGrading(result);
     setPhase("result");

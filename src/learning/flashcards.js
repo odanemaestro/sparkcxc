@@ -14,7 +14,7 @@ export const FLASHCARDS = [
   { id:"num-002", deck:"number", front:"How do you convert a fraction to a decimal?", back:"Divide the numerator by the denominator. Example: 3/4 = 3 ÷ 4 = 0.75.", tags:["fractions"] },
   { id:"num-003", deck:"number", front:"How do you convert a decimal to a percentage?", back:"Multiply by 100 and attach %. Example: 0.42 = 42%.", tags:["percentages"] },
   { id:"num-004", deck:"number", front:"What does a negative index mean?", back:"a⁻ⁿ = 1/aⁿ, for a ≠ 0 and n > 0.", tags:["indices"] },
-  { id:"num-005", deck:"number", front:"What is standard form?", back:"A number written as a × 10ⁿ where 1 ≤ |a| < 10 and n is an integer.", tags:["standard form"] },
+  { id:"num-005", deck:"number", front:"How is a number written in standard form?", back:"A number written as a × 10ⁿ where 1 ≤ |a| < 10 and n is an integer.", tags:["standard form"] },
   { id:"num-006", deck:"number", front:"How do you find the HCF of two numbers?", back:"Prime-factorise both numbers and multiply the common prime factors using the lowest powers.", tags:["factors"] },
 
   { id:"con-001", deck:"consumer", front:"How is simple interest calculated?", back:"I = PRT/100, where P is principal, R is annual rate %, and T is time in years.", tags:["simple interest"] },
@@ -53,18 +53,18 @@ export const FLASHCARDS = [
   { id:"tri-006", deck:"trig", front:"How do you find the area of a triangle using two sides and the included angle?", back:"Area = 1/2 ab sin C.", tags:["area"] },
 
   { id:"sta-001", deck:"statistics", front:"How do you calculate the mean?", back:"Add all values and divide by the number of values.", tags:["mean"] },
-  { id:"sta-002", deck:"statistics", front:"What is the median?", back:"The middle value after the data are arranged in order. For an even number of values, average the two middle values.", tags:["median"] },
-  { id:"sta-003", deck:"statistics", front:"What is the mode?", back:"The value or category that occurs most frequently.", tags:["mode"] },
+  { id:"sta-002", deck:"statistics", front:"How do you identify the median of a data set?", back:"The middle value after the data are arranged in order. For an even number of values, average the two middle values.", tags:["median"] },
+  { id:"sta-003", deck:"statistics", front:"How do you identify the mode of a data set?", back:"The value or category that occurs most frequently.", tags:["mode"] },
   { id:"sta-004", deck:"statistics", front:"What is the probability of an event?", back:"For equally likely outcomes: favourable outcomes ÷ total possible outcomes.", tags:["probability"] },
   { id:"sta-005", deck:"statistics", front:"What must probabilities in a complete sample space add to?", back:"1.", tags:["probability"] },
   { id:"sta-006", deck:"statistics", front:"How is an estimated mean from grouped data calculated?", back:"Use class midpoints: Σ(f × midpoint) ÷ Σf.", tags:["grouped data"] },
 
-  { id:"mea-001", deck:"measurement", front:"What is Pythagoras' theorem?", back:"In a right triangle, a² + b² = c², where c is the hypotenuse.", tags:["pythagoras"] },
+  { id:"mea-001", deck:"measurement", front:"What relationship does Pythagoras' theorem give for a right-angled triangle?", back:"In a right triangle, a² + b² = c², where c is the hypotenuse.", tags:["pythagoras"] },
   { id:"mea-002", deck:"measurement", front:"What is the area of a trapezium?", back:"Area = 1/2 × (sum of parallel sides) × perpendicular height.", tags:["mensuration"] },
   { id:"mea-003", deck:"measurement", front:"What is the circumference of a circle?", back:"C = 2πr = πd.", tags:["circle"] },
   { id:"mea-004", deck:"measurement", front:"What is the area of a circle?", back:"A = πr².", tags:["circle"] },
   { id:"mea-005", deck:"measurement", front:"How do you find the magnitude of vector (a,b)?", back:"√(a² + b²).", tags:["vectors"] },
-  { id:"mea-006", deck:"measurement", front:"How are vectors added?", back:"Add corresponding components. (a,b) + (c,d) = (a+c, b+d).", tags:["vectors"] },
+  { id:"mea-006", deck:"measurement", front:"How do you add two vectors using their components?", back:"Add corresponding components. (a,b) + (c,d) = (a+c, b+d).", tags:["vectors"] },
 ];
 
 export function flashcardById(cardId) {

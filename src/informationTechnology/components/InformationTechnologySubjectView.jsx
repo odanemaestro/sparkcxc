@@ -2,6 +2,8 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import course from "../course/itCourseData.json";
 import InformationTechnologyTools from "./InformationTechnologyTools";
 import InformationTechnologyVisuals from "./InformationTechnologyVisuals";
+import InformationTechnologyPracticalLabs from "../labs/InformationTechnologyPracticalLabs";
+import { useInformationTechnologyStudyRoute } from "../../routing/sparkRoutingV270";
 import objectiveCoverage from "../course/itObjectiveCoverage.json";
 import "./informationTechnology.css";
 
@@ -17,6 +19,28 @@ const LESSON_STEPS = [
   { id: "check", label: "Check it" },
   { id: "exam", label: "Exam it" },
 ];
+
+const IT_STUDY_PROGRESS_PREFIX = "spark-it-study-progress-v1";
+
+function itStudyProgressKey(userId) {
+  return `${IT_STUDY_PROGRESS_PREFIX}:${userId || "student"}`;
+}
+
+function readInformationTechnologyStudyProgress(userId) {
+  try {
+    return JSON.parse(localStorage.getItem(itStudyProgressKey(userId)) || "{}") || {};
+  } catch {
+    return {};
+  }
+}
+
+function writeInformationTechnologyStudyProgress(userId, progress) {
+  try {
+    localStorage.setItem(itStudyProgressKey(userId), JSON.stringify(progress || {}));
+  } catch {
+    // Database progress still records when browser storage is unavailable.
+  }
+}
 
 const PRACTICE_BANK = {
   1: { q: "Which system is most suitable for very large scientific calculations?", choices: ["Tablet", "Supercomputer", "Embedded system", "Smartphone"], answer: 1, why: "A supercomputer is designed for extremely demanding scientific and mathematical workloads." },
@@ -203,7 +227,7 @@ function ExamIt({ topic }) {
   </div>;
 }
 
-function TopicLesson({ topic, onBack }) {
+function TopicLesson({ topic, onBack, completed = false, onToggleComplete }) {
   const [toolOpen, setToolOpen] = useState(true);
   const [activeStep, setActiveStep] = useState("learn");
   const refs = useRef({});
@@ -336,6 +360,16 @@ function TopicLesson({ topic, onBack }) {
           <div className="it-panel-label">Exam it</div>
           <h2>Apply it under exam conditions</h2>
           <ExamIt topic={topic}/>
+          <div className="it-lesson-completion">
+            <button
+              type="button"
+              className={completed ? "it-primary done" : "it-primary"}
+              onClick={() => onToggleComplete?.(!completed)}
+            >
+              {completed ? "✓ Lesson marked complete" : "Mark lesson complete"}
+            </button>
+            <span>Completion is recorded in your Information Technology progress and reports.</span>
+          </div>
         </section>
       </div>
     </main>
@@ -374,9 +408,38 @@ function SectionView({ section, onBack, onOpenTopic }) {
   );
 }
 
-export default function InformationTechnologySubjectView({ onBack }) {
-  const [sectionId, setSectionId] = useState(null);
-  const [topicId, setTopicId] = useState(null);
+export default function InformationTechnologySubjectView({ onBack, userId, onActivity }) {
+  const {
+    sectionId,
+    setSectionId,
+    topicId,
+    setTopicId,
+    labsOpen,
+    setLabsOpen,
+  } = useInformationTechnologyStudyRoute(course.sections, course.topics);
+  const [lessonProgress, setLessonProgress] = useState(() => readInformationTechnologyStudyProgress(userId));
+
+  useEffect(() => {
+    setLessonProgress(readInformationTechnologyStudyProgress(userId));
+  }, [userId]);
+
+  const setLessonCompleted = (topicItem, completed) => {
+    if (!topicItem) return;
+    const key = `lesson:${topicItem.id}`;
+    setLessonProgress(current => {
+      const next = { ...current, [key]: Boolean(completed) };
+      writeInformationTechnologyStudyProgress(userId, next);
+      return next;
+    });
+    onActivity?.({
+      type: "it_lesson_completion",
+      topicId: String(topicItem.id),
+      section: String(topicItem.section),
+      title: topicItem.title,
+      completed: Boolean(completed),
+      at: new Date().toISOString(),
+    });
+  };
 
   const stats = useMemo(() => ({
     sections: course.sections.length,
@@ -387,7 +450,8 @@ export default function InformationTechnologySubjectView({ onBack }) {
   const section = sectionId ? course.sections.find(item => item.id === sectionId) : null;
   const topic = topicId ? course.topics.find(item => item.id === topicId) : null;
 
-  if (topic) return <TopicLesson topic={topic} onBack={() => setTopicId(null)}/>;
+  if (topic) return <TopicLesson topic={topic} completed={Boolean(lessonProgress[`lesson:${topic.id}`])} onToggleComplete={value => setLessonCompleted(topic, value)} onBack={() => setTopicId(null)}/>;
+  if (labsOpen) return <InformationTechnologyPracticalLabs userId={userId} onActivity={onActivity} onBack={() => setLabsOpen(false)}/>;
   if (section) return <SectionView section={section} onBack={() => setSectionId(null)} onOpenTopic={setTopicId}/>;
 
   return (
@@ -406,6 +470,18 @@ export default function InformationTechnologySubjectView({ onBack }) {
             <div><strong>{stats.objectives}</strong><span>objectives</span></div>
           </div>
         </header>
+
+        <section className="it-practical-labs-launch">
+          <button type="button" onClick={() => setLabsOpen(true)}>
+            <span className="it-practical-labs-mark">LAB</span>
+            <span>
+              <small>Hands-on practice</small>
+              <strong>SPARK Practical Labs</strong>
+              <p>Work inside interactive Word, Excel, Access, PowerPoint, web-design and programming simulators. Complete real tasks and record them in your progress.</p>
+            </span>
+            <b aria-hidden="true">↗</b>
+          </button>
+        </section>
 
         <section className="it-section-grid">
           {course.sections.map(sectionItem => {
