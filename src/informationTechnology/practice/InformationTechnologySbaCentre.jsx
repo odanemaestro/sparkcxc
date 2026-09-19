@@ -523,4 +523,181 @@ function ProjectOverview({ project, openHome, openComponent }) {
             <button type="button" onClick={() => downloadTextFile(`${safeFilename(project.title)}-sample-program.pas`, project.components.programming.completed.pascal.join("\r\n"))}>
               <SbaIcon type="download"/><span><strong>Sample Pascal program</strong><small>PAS file</small></span>
             </button>
-            <button type="button" onClick={() => downloadTextFile(`${safeFilename(project.title)}
+            <button type="button" onClick={() => downloadTextFile(`${safeFilename(project.title)}-trace-table.csv`, traceCsv(project), "text/csv;charset=utf-8")}>
+              <SbaIcon type="download"/><span><strong>Trace table</strong><small>CSV file</small></span>
+            </button>
+            <button type="button" onClick={() => downloadTextFile(`${safeFilename(project.title)}-final-checklist.txt`, checklistText(project))}>
+              <SbaIcon type="download"/><span><strong>Final checklist</strong><small>Text file</small></span>
+            </button>
+            <button type="button" onClick={() => downloadTextFile(`${safeFilename(project.title)}-project-brief.txt`, projectBriefText(project))}>
+              <SbaIcon type="download"/><span><strong>Practice project brief</strong><small>Text file</small></span>
+            </button>
+          </div>
+        </section>
+
+        <section className="it-sba-progress-actions">
+          <span>Your review progress is stored on this device.</span>
+          {completeCount > 0 && <button type="button" className="it-practice-secondary" onClick={resetProgress}>Reset review progress</button>}
+        </section>
+      </section>
+    </main>
+  );
+}
+
+function CompletedExample({ componentId, component }) {
+  if (componentId === "programming") {
+    const completed = component.completed;
+    return (
+      <div className="it-sba-completed-example">
+        <h3>Problem definition</h3>
+        <p>{completed.problem}</p>
+        <div className="it-sba-ipo-grid">
+          <div><strong>Inputs</strong><ul>{completed.inputs.map(item => <li key={item}>{item}</li>)}</ul></div>
+          <div><strong>Processes</strong><ul>{completed.processes.map(item => <li key={item}>{item}</li>)}</ul></div>
+          <div><strong>Outputs</strong><ul>{completed.outputs.map(item => <li key={item}>{item}</li>)}</ul></div>
+        </div>
+        <h3>Pseudocode reference</h3>
+        <pre className="it-sba-code">{completed.pseudocode.join("\n")}</pre>
+        <h3>Sample trace data</h3>
+        <div className="it-sba-table-wrap">
+          <table className="it-sba-table">
+            <tbody>{completed.trace.map((row, index) => <tr key={index}>{row.map((cell, cellIndex) => <td key={cellIndex}>{cell}</td>)}</tr>)}</tbody>
+          </table>
+        </div>
+        <h3>Pascal reference</h3>
+        <p className="it-sba-reference-note">SPARK uses Pascal for these reference programs because it matches the style of the supplied practice material. Use the programming language selected by your centre for your assessed SBA.</p>
+        <pre className="it-sba-code">{completed.pascal.join("\n")}</pre>
+      </div>
+    );
+  }
+
+  return (
+    <div className="it-sba-completed-example">
+      <ul>{component.completed.map(item => <li key={item}>{item}</li>)}</ul>
+    </div>
+  );
+}
+
+function ComponentGuide({ project, componentId, openProject, openComponent }) {
+  const component = findItSbaComponent(project, componentId);
+  const componentIndex = IT_SBA_COMPONENTS.findIndex(item => item.id === componentId);
+  const meta = IT_SBA_COMPONENTS[componentIndex];
+  const [progress, setProgress] = useState(() => readProgress(project.id));
+  const done = Boolean(progress[componentId]);
+  const nextMeta = IT_SBA_COMPONENTS[componentIndex + 1] || null;
+
+  if (!component || !meta) return null;
+
+  function toggleReviewed() {
+    const next = { ...progress, [componentId]: !done };
+    setProgress(next);
+    writeProgress(project.id, next);
+  }
+
+  return (
+    <main className="it-sba-page">
+      <section className="it-sba-shell">
+        <button type="button" className="it-practice-back it-sba-back" data-spark-action="nav" onClick={() => openProject(project.id)}>
+          <BackArrowIcon/><span>{project.title}</span>
+        </button>
+
+        <header className="it-sba-component-hero">
+          <div className="it-sba-component-icon large"><SbaIcon type={componentId} size={32}/></div>
+          <div>
+            <div className="it-practice-eyebrow">{project.code} - {meta.marks} marks</div>
+            <h1>{meta.title}</h1>
+            <p>{component.produce}</p>
+          </div>
+        </header>
+
+        <section className="it-sba-guide-layout">
+          <div className="it-sba-guide-main">
+            <div className="it-sba-section-heading">
+              <div>
+                <div className="it-practice-label">Step-by-step guide</div>
+                <h2>Complete the section in this order.</h2>
+              </div>
+            </div>
+            <div className="it-sba-step-list">
+              {component.steps.map((step, index) => (
+                <article key={step.title} className="it-sba-step-card">
+                  <span>{index + 1}</span>
+                  <div><h3>{step.title}</h3><p>{step.detail}</p></div>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <aside className="it-sba-guide-side">
+            <div className="it-sba-side-card">
+              <div className="it-practice-label">Before you move on</div>
+              <h3>Ask yourself</h3>
+              <ul>
+                <li>Does this part solve the task stated in the project brief?</li>
+                <li>Can I explain why I used each feature?</li>
+                <li>Did I test the result instead of assuming it works?</li>
+                <li>Does the information agree with the other SBA sections?</li>
+              </ul>
+            </div>
+            <div className="it-sba-side-card marks">
+              <div className="it-practice-label">What earns marks</div>
+              <div className="it-sba-marking-list">
+                {IT_SBA_MARKING_GUIDE[componentId].map(item => (
+                  <div key={item.label}><span>{item.label}</span><strong>{item.marks}</strong></div>
+                ))}
+              </div>
+            </div>
+            <div className="it-sba-side-card caution">
+              <div className="it-practice-label">Common mistakes</div>
+              <ul>{component.mistakes.map(item => <li key={item}>{item}</li>)}</ul>
+            </div>
+          </aside>
+        </section>
+
+        <section className="it-sba-reference-card">
+          <div className="it-practice-label">Completed SPARK reference</div>
+          <h2>See what a completed version could include.</h2>
+          <p>This is one valid SPARK approach for this fictional practice project. Your teacher may require different fields, formulas, queries, formatting or program logic for your real SBA.</p>
+          <CompletedExample componentId={componentId} component={component}/>
+        </section>
+
+        <section className="it-sba-component-actions">
+          <button type="button" className={done ? "it-practice-secondary" : "it-practice-primary"} onClick={toggleReviewed}>
+            <SbaIcon type="check" size={18}/><span>{done ? "Marked as reviewed" : "Mark section as reviewed"}</span>
+          </button>
+          {nextMeta ? (
+            <button type="button" className="it-practice-primary" onClick={() => openComponent(project.id, nextMeta.id)}>Next: {nextMeta.title}</button>
+          ) : (
+            <button type="button" className="it-practice-primary" onClick={() => openProject(project.id)}>Return to project overview</button>
+          )}
+        </section>
+      </section>
+    </main>
+  );
+}
+
+export default function InformationTechnologySbaCentre({ onBack }) {
+  const {
+    page,
+    projectId,
+    componentId,
+    openHome,
+    openProject,
+    openComponent,
+  } = useInformationTechnologySbaRoute(true);
+
+  const project = findItSbaProject(projectId);
+
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [page, projectId, componentId]);
+
+  if (page === "project" && project) {
+    return <ProjectOverview project={project} openHome={openHome} openComponent={openComponent}/>;
+  }
+
+  if (page === "component" && project && findItSbaComponent(project, componentId)) {
+    return <ComponentGuide project={project} componentId={componentId} openProject={openProject} openComponent={openComponent}/>;
+  }
+
+  return <CentreHome o
