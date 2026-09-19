@@ -700,4 +700,5 @@ export default function InformationTechnologySbaCentre({ onBack }) {
     return <ComponentGuide project={project} componentId={componentId} openProject={openProject} openComponent={openComponent}/>;
   }
 
-  return <CentreHome o
+  return <CentreHome openProject={openProject} onBack={onBack}/>;
+}
