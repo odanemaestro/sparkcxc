@@ -55,6 +55,13 @@ export const PHYSICS_SIMULATIONS = {
   'e3-radiation-properties': wrap(() => import('./atomic/RadiationPropertiesSim.jsx')),
   'e3-field-deflection': wrap(() => import('./atomic/FieldDeflectionSim.jsx')),
 
+  // E The Physics of the Atom · Batch 2
+  'e3-nuclear-equations': wrap(() => import('./atomic/NuclearEquationSim.jsx')),
+  'e3-random-decay': wrap(() => import('./atomic/RandomDecaySim.jsx')),
+  'e3-half-life': wrap(() => import('./atomic/HalfLifeSim.jsx')),
+  'e3-mass-energy': wrap(() => import('./atomic/MassEnergySim.jsx')),
+  'e3-nuclear-energy-balance': wrap(() => import('./atomic/NuclearEnergyBalanceSim.jsx')),
+
 };
 
 export const hasSimulation = id => Object.prototype.hasOwnProperty.call(PHYSICS_SIMULATIONS, id);

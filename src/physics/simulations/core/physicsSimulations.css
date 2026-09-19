@@ -484,3 +484,29 @@
 .psim-field-plate{fill:var(--pm-card);stroke:var(--pm-ink);stroke-width:2}.psim-field-plate.positive{stroke:var(--pm-accent)}.psim-field-plate.negative{stroke:var(--pm-primary)}
 .psim-field-dot{fill:var(--pm-primary)}.psim-deflection-path.alpha{stroke:var(--pm-accent)}.psim-deflection-path.beta{stroke:var(--pm-primary)}.psim-deflection-path.gamma{stroke:var(--pm-good)}
 @media(max-width:560px){.psim-atomic-stage,.psim-atom-stage{border-radius:13px}.psim-atomic-label{font-size:10px}.psim-isotope-grid{grid-template-columns:1fr}}
+
+/* SPARK PHYSICS ATOMIC BATCH 2 V1 */
+.psim-nuclear-equation{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;margin:18px 0;padding:18px;border:1px solid var(--pm-line);border-radius:16px;background:var(--pm-card2)}
+.psim-nuclide-box{position:relative;width:98px;height:100px;display:grid;place-items:center;color:var(--pm-ink)}
+.psim-nuclide-box strong{font-size:42px}.psim-nuclide-box.emitted strong{font-size:34px}
+.psim-nuclide-top,.psim-nuclide-bottom{position:absolute;left:4px;font-weight:900}.psim-nuclide-top{top:14px}.psim-nuclide-bottom{bottom:14px}
+.psim-nuclear-arrow,.psim-nuclear-plus{font-size:34px;font-weight:900;color:var(--pm-muted)}
+.psim-decay-chart,.psim-half-life-chart,.psim-mass-energy-stage{display:block;width:100%;height:auto;margin:14px 0;border:1px solid var(--pm-line);border-radius:16px;background:var(--pm-card2)}
+.psim-decay-bar{fill:var(--pm-primary);opacity:.8}.psim-decay-expected{fill:var(--pm-accent);stroke:var(--pm-card);stroke-width:1.5}
+.psim-half-life-line{fill:none;stroke:var(--pm-primary);stroke-width:4}.psim-half-life-marker{fill:var(--pm-accent);stroke:var(--pm-card);stroke-width:2}
+.psim-mass-orb{fill:var(--pm-primary-soft);stroke:var(--pm-primary);stroke-width:3}.psim-mass-energy-stage .mass-label{font-size:20px;font-weight:900}
+.psim-energy-arrow{fill:none;stroke:var(--pm-accent);stroke-width:7;stroke-linecap:round}
+.psim-energy-spark{fill:var(--pm-accent);opacity:.85}
+.psim-evidence-columns{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+.psim-evidence-column{border:1px solid var(--pm-line);border-radius:16px;background:var(--pm-card2);padding:14px}
+.psim-evidence-column h4{margin:0 0 10px;color:var(--pm-ink)}
+.psim-evidence-column button{width:100%;min-height:54px;margin:6px 0;padding:10px 12px;border:1px solid var(--pm-line);border-radius:12px;background:var(--pm-card);color:var(--pm-ink);font:inherit;text-align:left;cursor:pointer}
+.psim-evidence-column button.selected{border-color:var(--pm-primary);background:var(--pm-primary-soft);font-weight:800}
+.psim-evidence-column.risk button.selected{border-color:var(--pm-accent)}
+.psim-balance-scale{position:relative;height:150px;margin:10px 0 18px}
+.psim-balance-beam{position:absolute;left:15%;right:15%;top:58px;height:8px;border-radius:999px;background:var(--pm-ink);transform-origin:center;transition:transform .2s ease}
+.psim-balance-pivot{position:absolute;left:50%;top:64px;transform:translateX(-50%);width:0;height:0;border-left:38px solid transparent;border-right:38px solid transparent;border-bottom:72px solid var(--pm-muted)}
+.psim-balance-scale .left,.psim-balance-scale .right{position:absolute;top:18px;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--pm-primary-soft);color:var(--pm-ink);font-weight:900}
+.psim-balance-scale .left{left:18%}.psim-balance-scale .right{right:18%}
+@media(max-width:700px){.psim-evidence-columns{grid-template-columns:1fr}.psim-nuclear-equation{gap:10px}.psim-nuclide-box{width:76px}.psim-nuclear-arrow,.psim-nuclear-plus{font-size:28px}}
+@media(max-width:520px){.psim-decay-chart,.psim-half-life-chart,.psim-mass-energy-stage{border-radius:13px}.psim-nuclear-equation{padding:12px}}
