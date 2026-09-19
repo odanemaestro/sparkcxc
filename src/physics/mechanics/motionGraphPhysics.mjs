@@ -65,3 +65,19 @@ export function describeLinearMotionSegment({v1,v2}) {
   if (speedChange<0) return acceleration>0 ? 'slowing down with positive acceleration' : 'slowing down with negative acceleration';
   return 'changing direction with constant speed magnitude over the interval endpoints';
 }
+
+// Uniform acceleration (constant a) in a straight line, used by the A4
+// motion-track and Newton's-second-law interactives. Signed quantities:
+// v = u + at, s = ut + ½at².
+export function uniformAccelerationState({ u = 0, a = 0, t = 0 }) {
+  const initial = finite(u, 'u');
+  const acceleration = finite(a, 'a');
+  const time = finite(t, 't');
+  if (time < 0) throw new RangeError('t must be non-negative');
+  return {
+    t: time,
+    a: acceleration,
+    v: initial + acceleration * time,
+    s: initial * time + 0.5 * acceleration * time * time,
+  };
+}

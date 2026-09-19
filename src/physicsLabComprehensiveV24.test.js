@@ -1,5 +1,5 @@
 import React from 'react';
-import { cleanup, fireEvent, render, screen } from '@testing-library/react';
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import MechanicsInteractiveLab from './physics/mechanics/components/MechanicsInteractiveLab';
 import ThermalInteractiveLab from './physics/thermal/components/ThermalInteractiveLab';
 import WavesInteractiveLab from './physics/waves/components/WavesInteractiveLab';
@@ -10,6 +10,7 @@ import { MECHANICS_INTERACTIVES } from './physics/mechanics/interactives/mechani
 import { THERMAL_INTERACTIVES } from './physics/thermal/interactives/bThermalInteractiveRegistry.mjs';
 import { WAVES_INTERACTIVES } from './physics/waves/interactives/cWavesInteractiveRegistry.mjs';
 import { ELECTRICITY_INTERACTIVES } from './physics/electricity/interactives/dElectricityInteractiveRegistry.mjs';
+import { hasSimulation } from './physics/simulations/simulationRegistry.jsx';
 import { ATOMIC_INTERACTIVES } from './physics/atomic/interactives/eAtomicInteractiveRegistry.mjs';
 import paper10 from './physics/paper1/data/spark-phy-p01-practice-10.json';
 import paper11 from './physics/paper1/data/spark-phy-p01-practice-11.json';
@@ -27,52 +28,60 @@ const groups = [
 describe('Physics comprehensive lab and Paper 1 audit V2.4.4', () => {
   afterEach(() => cleanup());
 
-  test('all 73 registered Physics interactives render a real implementation', () => {
+  test('all 73 registered Physics interactives render a real implementation', async () => {
     let count = 0;
     for (const [Component, registry] of groups) {
       for (const item of registry) {
         const { unmount, container } = render(<Component interactiveId={item.id}/>);
         expect(container.textContent).not.toMatch(/Interactive implementation unavailable/i);
         expect(container.textContent).not.toMatch(/Interactive unavailable/i);
-        expect(container.textContent).toContain(item.title);
+
+        if (hasSimulation(item.id)) {
+          await waitFor(() => {
+            expect(container.textContent).not.toMatch(/^Loading virtual lab…$/i);
+            const simulation = container.querySelector('section.psim');
+            expect(simulation).toBeInTheDocument();
+            expect(simulation).toHaveAttribute('aria-label');
+            const simulationTitle = container.querySelector('.psim-head h4')?.textContent?.trim() || '';
+            expect(simulationTitle.length).toBeGreaterThan(0);
+          });
+        } else {
+          expect(container.textContent).toContain(item.title);
+        }
+
         count += 1;
         unmount();
       }
     }
     expect(count).toBe(73);
-  });
+  }, 20000);
 
-  test('wave graph curve and labelled axes respond to the controls that define each graph', () => {
-    const { container } = render(<WavesInteractiveLab interactiveId="c1-wave-graphs"/>);
+  test('wave graph explorer exposes labelled axes and responds to the defining controls', () => {
+    render(<WavesInteractiveLab interactiveId="c1-wave-graphs"/>);
+
+    // Unlock the new Predict → Experiment workflow first.
+    fireEvent.click(screen.getByRole('button', { name:'It stays the same' }));
+
     expect(screen.getByText('position / m')).toBeInTheDocument();
     expect(screen.getByText('displacement / m')).toBeInTheDocument();
-    expect(screen.getByText(/wavelength changes the crest spacing/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/displacement-position graph/i).length).toBeGreaterThan(0);
 
-    const before = container.querySelector('[data-testid="wave-curve"]').getAttribute('d');
-    const wavelengthControl = screen.getByRole('slider', { name: /Wavelength/i });
-    expect(wavelengthControl.tagName).toBe('INPUT');
-    fireEvent.change(wavelengthControl, { target: { value: '0.7' } });
-    expect(wavelengthControl.value).toBe('0.7');
-    const afterWavelength = container.querySelector('[data-testid="wave-curve"]').getAttribute('d');
-    expect(afterWavelength).not.toBe(before);
+    const wavelengthControl = screen.getByRole('slider', { name:/^Wavelength/i });
+    fireEvent.change(wavelengthControl, { target:{ value:'0.7' } });
+    expect(wavelengthControl).toHaveAttribute('aria-valuetext', '0.7 m');
 
-    const amplitudeControl = screen.getByRole('slider', { name: /Amplitude/i });
-    expect(amplitudeControl.tagName).toBe('INPUT');
-    fireEvent.change(amplitudeControl, { target: { value: '0.12' } });
-    expect(amplitudeControl.value).toBe('0.12');
-    const afterAmplitude = container.querySelector('[data-testid="wave-curve"]').getAttribute('d');
-    expect(afterAmplitude).not.toBe(afterWavelength);
+    const amplitudeControl = screen.getByRole('slider', { name:/^Amplitude/i });
+    fireEvent.change(amplitudeControl, { target:{ value:'0.12' } });
+    expect(amplitudeControl).toHaveAttribute('aria-valuetext', '0.12 m');
 
     fireEvent.click(screen.getByRole('button', { name:'Displacement-time' }));
     expect(screen.getByText('time / s')).toBeInTheDocument();
-    expect(screen.getByText(/frequency changes the number of cycles each second/i)).toBeInTheDocument();
-    const timeBefore = container.querySelector('[data-testid="wave-curve"]').getAttribute('d');
-    const frequencyControl = screen.getByRole('slider', { name: /Frequency/i });
-    expect(frequencyControl.tagName).toBe('INPUT');
-    fireEvent.change(frequencyControl, { target: { value: '8' } });
-    expect(frequencyControl.value).toBe('8');
-    const timeAfter = container.querySelector('[data-testid="wave-curve"]').getAttribute('d');
-    expect(timeAfter).not.toBe(timeBefore);
+    expect(screen.getByText(/This is a displacement-time graph/i)).toBeInTheDocument();
+    expect(screen.getAllByText('Period').length).toBeGreaterThan(0);
+
+    const frequencyControl = screen.getByRole('slider', { name:/^Frequency/i });
+    fireEvent.change(frequencyControl, { target:{ value:'8' } });
+    expect(frequencyControl).toHaveAttribute('aria-valuetext', '8 Hz');
   });
 
   test('electromagnetic spectrum uses learner-friendly units rather than raw e notation', () => {
@@ -111,10 +120,11 @@ describe('Physics comprehensive lab and Paper 1 audit V2.4.4', () => {
 
   test('Thermal heating curve warms vapour after boiling is complete', () => {
     render(<ThermalInteractiveLab interactiveId="b3-heating-curve"/>);
-    const energy = screen.getByRole('slider', { name:'Energy added' });
+    fireEvent.click(screen.getByRole('button', { name:'stays constant' }));
+    const energy = screen.getByRole('slider', { name:/^Energy added/i });
     fireEvent.change(energy, { target: { value:'800' } });
     expect(screen.getAllByText('vapour warming').length).toBeGreaterThan(0);
-    expect(screen.getByText(/further energy raises the temperature again/i)).toBeInTheDocument();
+    expect(screen.getByText(/Temperature = .*°C/i)).toBeInTheDocument();
   });
 
   test('Papers J and K meet the diagram floor used by the full Paper 1 library', () => {

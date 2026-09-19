@@ -1,4 +1,5 @@
 import React, { useMemo, useState } from 'react';
+import { PhysicsSimulationSlot, hasSimulation } from '../../simulations/simulationRegistry.jsx';
 import MathText from '../../../practice/MathText';
 import { ELECTRICITY_INTERACTIVES } from '../interactives/dElectricityInteractiveRegistry.mjs';
 import {
@@ -225,9 +226,13 @@ const MAP = {
   'd7-transformer': Transformer
 };
 
-export default function ElectricityInteractiveLab({ interactiveId }) {
+export default function ElectricityInteractiveLab({ interactiveId, onEvidence }) {
   const meta = ELECTRICITY_INTERACTIVES.find(item => item.id === interactiveId);
   if (!meta) return <div className="pm-empty">Interactive not found.</div>;
   const Component = MAP[interactiveId];
-  return Component ? <Component meta={meta}/> : <div className="pm-empty">Interactive implementation unavailable.</div>;
+  if (!Component) return <div className="pm-empty">Interactive implementation unavailable.</div>;
+  const evidence = payload => onEvidence?.({ interactiveId: meta.id, topic: meta.topic, ...payload });
+  return hasSimulation(interactiveId)
+    ? <PhysicsSimulationSlot interactiveId={interactiveId} onEvidence={evidence}/>
+    : <Component meta={meta}/>;
 }

@@ -32,7 +32,8 @@ describe("Physics mathematical rendering regression", () => {
     ];
     for (const relative of files) {
       const source = fs.readFileSync(path.join(__dirname, relative), "utf8");
-      expect(source).toMatch(/MathText[^>]*>\{(?:c|card)\.front\}<\/MathText>/);
+      expect(source).toContain("physicsFlashcardQuestion");
+      expect(source).toMatch(/MathText[^>]*>\{physicsFlashcardQuestion\((?:c|card)\)\}<\/MathText>/);
       expect(source).toMatch(/MathText[^>]*>\{(?:c|card)\.back\}<\/MathText>/);
       expect(source).toContain("pm-flashcard-panel-head");
     }

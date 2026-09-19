@@ -1,4 +1,4 @@
-import { analyseVelocityTime, describeLinearMotionSegment } from '../motionGraphPhysics.mjs';
+import { analyseVelocityTime, describeLinearMotionSegment, uniformAccelerationState } from '../motionGraphPhysics.mjs';
 
 function finite(name,v){const n=Number(v);if(!Number.isFinite(n))throw new TypeError(`${name} must be finite`);return n;}
 function positive(name,v){const n=finite(name,v);if(!(n>0))throw new RangeError(`${name} must be greater than zero`);return n;}
@@ -42,5 +42,18 @@ export function buildVelocityAreaComparison(points){
     negativeAreaMagnitudeM:analysis.segments.filter(s=>s.displacement<0).reduce((s,x)=>s+Math.abs(x.displacement),0),
     reversedDirection:analysis.segments.some(s=>s.displacement<0),
     segments:analysis.segments,
+  };
+}
+
+// Canonical uniform-acceleration model for the A4 interactives and the
+// animated motion-track / trolley simulations.
+export function buildUniformAccelerationModel({ initialVelocityMPerS = 0, accelerationMPerS2 = 0, timeS = 0 } = {}) {
+  const state = uniformAccelerationState({ u: initialVelocityMPerS, a: accelerationMPerS2, t: timeS });
+  return {
+    timeS: state.t,
+    accelerationMPerS2: state.a,
+    velocityMPerS: state.v,
+    displacementM: state.s,
+    description: describeLinearMotionSegment({ v1: initialVelocityMPerS, v2: state.v }),
   };
 }

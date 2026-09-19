@@ -11,6 +11,14 @@ function BackIcon() {
   return <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.5 5.5 8 10l4.5 4.5M8 10h8"/></svg>;
 }
 
+
+function OpenArrowIcon() {
+  return (
+    <svg className="it-open-arrow-icon" viewBox="0 0 20 20" focusable="false" aria-hidden="true">
+      <path d="M6 14L14 6M8 6h6v6"/>
+    </svg>
+  );
+}
 const LESSON_STEPS = [
   { id: "learn", label: "Learn" },
   { id: "see", label: "See it" },
@@ -399,7 +407,7 @@ function SectionView({ section, onBack, onOpenTopic }) {
                 <span>{topic.purpose}</span>
                 <em>Objectives {topic.objectives}</em>
               </span>
-              <span className="it-open-arrow" aria-hidden="true">↗</span>
+              <span className="it-open-arrow" aria-hidden="true"><OpenArrowIcon/></span>
             </button>
           ))}
         </div>
@@ -479,7 +487,7 @@ export default function InformationTechnologySubjectView({ onBack, userId, onAct
               <strong>SPARK Practical Labs</strong>
               <p>Work inside interactive Word, Excel, Access, PowerPoint, web-design and programming simulators. Complete real tasks and record them in your progress.</p>
             </span>
-            <b aria-hidden="true">↗</b>
+            <span className="it-practical-labs-arrow" aria-hidden="true"><OpenArrowIcon/></span>
           </button>
         </section>
 
@@ -494,7 +502,7 @@ export default function InformationTechnologySubjectView({ onBack, userId, onAct
                   <strong>{sectionItem.title}</strong>
                   <span>{topicCount} topics · {sectionItem.objectives} objectives</span>
                 </span>
-                <span className="it-open-arrow" aria-hidden="true">↗</span>
+                <span className="it-open-arrow" aria-hidden="true"><OpenArrowIcon/></span>
               </button>
             );
           })}

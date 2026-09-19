@@ -35,3 +35,22 @@ export function sameLevelPressure({densityKgM3,gNPerKg=10,depthA,depthB}){
   const a=fluidGaugePressure(densityKgM3,gNPerKg,depthA);const b=fluidGaugePressure(densityKgM3,gNPerKg,depthB);
   return {pressureA:a,pressureB:b,equal:Math.abs(a-b)<1e-9};
 }
+
+// Hydraulic press (Pascal's principle). Pressure is transmitted equally through
+// the enclosed liquid, so P = F1/A1 and the load force is F2 = P x A2. The
+// liquid is incompressible, so A1 d1 = A2 d2 and the load moves the smaller
+// distance: work in equals work out for an ideal press.
+export function hydraulicPressForces({ effortForceN, effortAreaM2, loadAreaM2, effortStrokeM = 0 }) {
+  const a1 = nonNegative('effortAreaM2', effortAreaM2);
+  if (a1 === 0) throw new RangeError('effortAreaM2 must be greater than zero');
+  const a2 = nonNegative('loadAreaM2', loadAreaM2);
+  const pressurePa = pressureFromForce(effortForceN, a1);
+  const stroke = nonNegative('effortStrokeM', effortStrokeM);
+  return {
+    pressurePa,
+    loadForceN: pressurePa * a2,
+    forceMultiplier: a2 / a1,
+    effortStrokeM: stroke,
+    loadStrokeM: a2 === 0 ? 0 : stroke * a1 / a2,
+  };
+}

@@ -2,9 +2,11 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { usePhysicsStudyRoute } from '../../../routing/sparkRoutingV270';
 import MathText from '../../../practice/MathText';
 import PhysicsFlashcardVisual from '../../components/PhysicsFlashcardVisual';
+import { physicsFlashcardQuestion } from '../../course/physicsFlashcardLanguage.mjs';
 import PhysicsStudyToolkit from '../../components/PhysicsStudyToolkit';
 import PhysicsPracticalNotebook from '../../labs/PhysicsPracticalNotebook';
 import MechanicsInteractiveLab from './MechanicsInteractiveLab';
+import { hasSimulation } from '../../simulations/simulationRegistry.jsx';
 import { SECTION_A_TOPICS, SECTION_A_MCQ_BANK, SECTION_A_FLASHCARDS, sectionAStats } from '../sectionAMechanics.mjs';
 import { MECHANICS_INTERACTIVES } from '../interactives/mechanicsInteractiveRegistry.mjs';
 import { readPhysicsMechanicsProgress, setPhysicsMechanicsCompletion } from '../physicsMechanicsProgress.mjs';
@@ -39,11 +41,31 @@ function StudyView({topic,progress,setCompleted}){
 }
 function LabsView({topic,progress,setCompleted,onEvidence,userId}){
   const labs=MECHANICS_INTERACTIVES.filter(i=>i.topic===topic.id);
-  return <div className="pm-labs-grid">{labs.map(lab=><div key={lab.id}><MechanicsInteractiveLab interactiveId={lab.id} onEvidence={onEvidence}/><PhysicsPracticalNotebook interactiveId={lab.id} userId={userId}/><div className="pm-completion"><button type="button" className={progress[`lab:${lab.id}`]?'done':''} onClick={()=>setCompleted(`lab:${lab.id}`,!progress[`lab:${lab.id}`])}>{progress[`lab:${lab.id}`]?'✓ Lab explored':'Mark lab explored'}</button><span className="pm-feedback">Exploration completion does not award a mastery score.</span></div></div>)}</div>;
+  return <div className="pm-labs-grid">{labs.map(lab=>{
+    const upgraded=hasSimulation(lab.id);
+    const complete=Boolean(progress[`lab:${lab.id}`]);
+    const evidence=payload=>{
+      onEvidence?.(payload);
+      if(upgraded&&payload?.source==='physics_virtual_simulation'&&payload?.result==='completed'&&!complete){
+        setCompleted(`lab:${lab.id}`,true);
+      }
+    };
+    return <div key={lab.id}>
+      <MechanicsInteractiveLab interactiveId={lab.id} onEvidence={evidence}/>
+      <PhysicsPracticalNotebook interactiveId={lab.id} userId={userId}/>
+      {upgraded ? <div className="pm-completion">
+        <span className={`psim-status ${complete?'done':''}`} role="status">{complete?'✓ Lab explored':'Virtual experiment in progress'}</span>
+        <span className="pm-feedback">Upgraded virtual labs are marked automatically when all experiment tasks are complete.</span>
+      </div> : <div className="pm-completion">
+        <button type="button" className={complete?'done':''} onClick={()=>setCompleted(`lab:${lab.id}`,!complete)}>{complete?'✓ Lab explored':'Mark lab explored'}</button>
+        <span className="pm-feedback">Exploration completion does not award a mastery score.</span>
+      </div>}
+    </div>;
+  })}</div>;
 }
 function FlashcardsView({topic}){
   const cards=topic.flashcards;const [index,setIndex]=useState(0),[back,setBack]=useState(false);const c=cards[index%cards.length];
-  return <div className="pm-panel pm-flashcard-panel"><div className="pm-challenge-row pm-flashcard-panel-head"><div><strong>{topic.id} · {topic.title}</strong><span>Flashcard {index+1} of {cards.length} · {c.objective}</span></div></div><button type="button" className="pm-flashcard pm-flashcard-polished" onClick={()=>setBack(v=>!v)} aria-label={back?'Show question side':'Reveal answer'}>{back?<><small>ANSWER</small><MathText as="p" prose>{c.back}</MathText><PhysicsFlashcardVisual objective={c.objective}/></>:<><small>{c.objective}</small><MathText as="h3" prose>{c.front}</MathText><p>Click to reveal</p></>}</button><div className="pm-action-row pm-flashcard-actions"><button type="button" className="pm-btn secondary" onClick={()=>{setIndex(i=>(i-1+cards.length)%cards.length);setBack(false)}}>← Previous</button><button type="button" className="pm-btn" onClick={()=>{setIndex(i=>(i+1)%cards.length);setBack(false)}}>Next card →</button></div></div>;
+  return <div className="pm-panel pm-flashcard-panel"><div className="pm-challenge-row pm-flashcard-panel-head"><div><strong>{topic.id} · {topic.title}</strong><span>Flashcard {index+1} of {cards.length} · {c.objective}</span></div></div><button type="button" className="pm-flashcard pm-flashcard-polished" onClick={()=>setBack(v=>!v)} aria-label={back?'Show question side':'Reveal answer'}>{back?<><small>ANSWER</small><MathText as="p" prose>{c.back}</MathText><PhysicsFlashcardVisual objective={c.objective}/></>:<><small>{c.objective}</small><MathText as="h3" prose>{physicsFlashcardQuestion(c)}</MathText><p>Click to reveal</p></>}</button><div className="pm-action-row pm-flashcard-actions"><button type="button" className="pm-btn secondary" onClick={()=>{setIndex(i=>(i-1+cards.length)%cards.length);setBack(false)}}>← Previous</button><button type="button" className="pm-btn" onClick={()=>{setIndex(i=>(i+1)%cards.length);setBack(false)}}>Next card →</button></div></div>;
 }
 export function PhysicsTopicQuiz({topic,onActivity}){
   const [seed,setSeed]=useState(1),[answers,setAnswers]=useState({}),[submitted,setSubmitted]=useState(false);const questions=useMemo(()=>stableShuffle(topic.mcq,seed).slice(0,10),[topic,seed]);

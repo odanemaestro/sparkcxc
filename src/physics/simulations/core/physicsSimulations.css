@@ -1,0 +1,512 @@
+/* SPARK Physics virtual-lab simulations. Every colour comes from the existing
+   --pm-* tokens defined in physicsMechanics.css so light and dark mode both work. */
+.psim{margin:14px 0 6px;border:1px solid var(--pm-line);border-radius:16px;background:var(--pm-card2);padding:14px;color:var(--pm-ink);container-type:inline-size}
+.psim *{box-sizing:border-box}
+.psim-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:6px}
+.psim-head h4{margin:2px 0 4px;font-size:16px}
+.psim-head p{margin:0;font-size:13px;color:var(--pm-muted);line-height:1.45}
+.psim-eyebrow{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--pm-primary)}
+.psim-status{flex:0 0 auto;font-size:12px;font-weight:750;padding:6px 10px;border-radius:999px;border:1px solid var(--pm-line);background:var(--pm-card);color:var(--pm-muted)}
+.psim-status.done{color:var(--pm-good);border-color:var(--pm-good)}
+.psim-step{margin-top:12px;padding-top:10px;border-top:1px dashed var(--pm-line)}
+.psim-step>strong{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--pm-muted);margin-bottom:6px}
+.psim-step p{margin:4px 0;font-size:14px;line-height:1.5}
+.psim-experiment-body{min-width:0}
+.psim-experiment.locked .psim-experiment-body{opacity:.45;pointer-events:none;filter:saturate(.6)}
+.psim-options{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.psim-option,.psim-chip,.psim-btn,.psim-switch{min-height:44px;border:1px solid var(--pm-line);background:var(--pm-card);color:var(--pm-ink);border-radius:12px;padding:8px 14px;font:inherit;font-weight:700;cursor:pointer;line-height:1.2}
+.psim-option.selected,.psim-chip.active{background:var(--pm-primary-soft);border-color:var(--pm-primary);color:var(--pm-primary)}
+.psim-option.correct{border-color:var(--pm-good);color:var(--pm-good)}
+.psim-option.incorrect{border-color:var(--pm-danger);color:var(--pm-danger)}
+.psim-btn{background:var(--pm-primary);border-color:var(--pm-primary);color:#fff;min-width:84px}
+.dark .psim-btn,[data-theme="dark"] .psim-btn{color:#082f2b}
+.psim-btn.secondary{background:var(--pm-card);color:var(--pm-ink);border-color:var(--pm-line)}
+.psim-option:focus-visible,.psim-chip:focus-visible,.psim-btn:focus-visible,.psim-switch:focus-visible,.psim input[type=range]:focus-visible,.psim-handle:focus-visible{outline:3px solid var(--pm-blue);outline-offset:2px}
+.psim-hint{font-size:12px;color:var(--pm-muted);display:inline-block;margin-top:6px}
+.psim-toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+.psim-speed,.psim-toggle{display:flex;gap:6px;flex-wrap:wrap}
+.psim-time{font-variant-numeric:tabular-nums;font-weight:750;color:var(--pm-primary);padding:0 6px}
+.psim-controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin:10px 0}
+.psim-slider input[type=range]{width:100%;height:44px;margin:0;accent-color:var(--pm-primary)}
+.psim-switch{display:inline-flex;align-items:center;gap:10px}
+.psim-switch i{width:40px;height:22px;border-radius:999px;background:var(--pm-line);position:relative;transition:background .2s}
+.psim-switch i::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:var(--pm-card);transition:transform .2s;box-shadow:0 1px 2px rgba(0,0,0,.25)}
+.psim-switch.on i{background:var(--pm-good)}
+.psim-switch.on i::after{transform:translateX(18px)}
+.psim-layout{display:grid;grid-template-columns:1fr;gap:12px}
+@container (min-width: 820px){.psim-layout{grid-template-columns:minmax(0,1.6fr) minmax(220px,1fr)}}
+.psim-stage-wrap{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.psim-stage{display:block;width:100%;height:auto;border:1px solid var(--pm-line);border-radius:14px;background:var(--pm-card);touch-action:pan-y}
+.psim-stage.wide{min-width:520px}
+.psim-graph{display:block;width:100%;height:auto;border:1px solid var(--pm-line);border-radius:14px;background:var(--pm-card);margin-top:10px}
+.psim-graphs{display:grid;grid-template-columns:1fr;gap:10px}
+@container (min-width: 700px){.psim-graphs{grid-template-columns:1fr 1fr}}
+.psim-readouts{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:10px 0 0}
+.psim-readout{border:1px solid var(--pm-line);border-radius:12px;background:var(--pm-card);padding:10px 12px}
+.psim-readout dt{font-size:11px;color:var(--pm-muted);font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.psim-readout dd{margin:2px 0 0;font-size:15px;font-weight:800;font-variant-numeric:tabular-nums}
+.psim-readout.good dd{color:var(--pm-good)}
+.psim-readout.warn dd{color:var(--pm-accent)}
+.psim-readout.danger dd{color:var(--pm-danger)}
+.psim-live{font-size:13px;color:var(--pm-muted);margin:8px 0 0;line-height:1.45}
+.psim-stage-note{font-size:12px;color:var(--pm-muted);line-height:1.45;margin:6px 4px 0}
+.psim-svg-summary rect{fill:var(--pm-card);stroke:var(--pm-line);stroke-width:1.2;opacity:.96}
+.psim-svg-summary text{fill:var(--pm-ink);font-size:10px;font-weight:700;paint-order:stroke;stroke:var(--pm-card);stroke-width:2px;stroke-linejoin:round}
+.psim-tasks{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.psim-tasks li{display:flex;gap:8px;font-size:14px;color:var(--pm-muted)}
+.psim-tasks li.done{color:var(--pm-good)}
+.psim-tasks li span{font-weight:900;width:16px}
+.psim-observation{color:var(--pm-ink)}
+.psim-verdict{font-weight:700;padding:8px 10px;border-radius:10px;background:var(--pm-primary-soft)}
+.psim-verdict.warn{background:var(--pm-accent-soft)}
+.psim-explain-body p{color:var(--pm-ink)}
+.psim-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+.psim-table th,.psim-table td{border:1px solid var(--pm-line);padding:6px 8px;text-align:right;font-variant-numeric:tabular-nums}
+.psim-table th{background:var(--pm-card);text-align:center}
+.psim-equation{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:14px;font-weight:700;padding:8px 10px;border-radius:10px;background:var(--pm-card);border:1px solid var(--pm-line);margin-top:8px;overflow-x:auto}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+
+/* SVG primitives */
+.psim svg text{font-family:inherit}
+.psim-axis{stroke:var(--pm-ink);stroke-width:1.6;fill:none}
+.psim-gridline{stroke:var(--pm-line);stroke-width:1}
+.psim-tick{fill:var(--pm-muted);font-size:10px}
+.psim-axis-label{fill:var(--pm-ink);font-size:11px;font-weight:700}
+.psim-label{fill:var(--pm-ink);font-size:12px;font-weight:700;paint-order:stroke;stroke:var(--pm-card);stroke-width:3px;stroke-linejoin:round}
+.psim-label.muted{fill:var(--pm-muted);font-weight:600}
+.psim-series{fill:none;stroke:var(--pm-primary);stroke-width:2.5;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+.psim-series.b{stroke:var(--pm-blue)}
+.psim-series.r{stroke:var(--pm-accent)}
+.psim-series.dashed{stroke-dasharray:6 5}
+.psim-marker line{stroke:var(--pm-accent);stroke-dasharray:4 4;stroke-width:1.5}
+.psim-marker circle{fill:var(--pm-accent);stroke:var(--pm-card);stroke-width:2}
+.psim-arrow line{stroke:var(--pm-primary);stroke-linecap:round}
+.psim-arrow polygon{fill:var(--pm-primary)}
+.psim-arrow.b line{stroke:var(--pm-blue)}.psim-arrow.b polygon{fill:var(--pm-blue)}
+.psim-arrow.r line{stroke:var(--pm-accent)}.psim-arrow.r polygon{fill:var(--pm-accent)}
+.psim-arrow.d line{stroke:var(--pm-danger)}.psim-arrow.d polygon{fill:var(--pm-danger)}
+.psim-arrow.g line{stroke:var(--pm-good)}.psim-arrow.g polygon{fill:var(--pm-good)}
+.psim-arrow.muted line{stroke:var(--pm-muted)}.psim-arrow.muted polygon{fill:var(--pm-muted)}
+.psim-arrow.faint{opacity:.45}
+.psim-grid line{stroke:var(--pm-line);stroke-width:1}
+.psim-handle circle.hit{fill:transparent;stroke:none}
+.psim-handle circle.knob{fill:var(--pm-card);stroke:var(--pm-primary);stroke-width:3}
+.psim-handle.active circle.knob,.psim-handle:focus-visible circle.knob{fill:var(--pm-primary-soft);stroke-width:4}
+.psim-handle.b circle.knob{stroke:var(--pm-blue)}
+.psim-handle.r circle.knob{stroke:var(--pm-accent)}
+.psim-handle:focus{outline:none}
+.psim-handle:focus-visible circle.knob{stroke:var(--pm-blue)}
+.psim-solid{fill:var(--pm-ink)}
+.psim-fill-primary{fill:var(--pm-primary)}
+.psim-fill-soft{fill:var(--pm-primary-soft)}
+.psim-fill-accent{fill:var(--pm-accent)}
+.psim-fill-muted{fill:var(--pm-muted)}
+.psim-fill-card{fill:var(--pm-card)}
+.psim-fill-line{fill:var(--pm-line)}
+.psim-stroke{stroke:var(--pm-ink);fill:none;stroke-width:2}
+.psim-stroke-muted{stroke:var(--pm-muted);fill:none;stroke-width:1.5}
+.psim-stroke-line{stroke:var(--pm-line);fill:none;stroke-width:1.5}
+.psim-dash{stroke:var(--pm-muted);stroke-dasharray:5 5;stroke-width:1.5;fill:none}
+.psim-water{fill:var(--pm-blue);opacity:.28}
+.psim-water-line{stroke:var(--pm-blue);stroke-width:2}
+.psim-thermal{fill:var(--pm-danger)}
+.psim-beam{fill:var(--pm-card);stroke:var(--pm-ink);stroke-width:2}
+.psim-mass{fill:var(--pm-primary-soft);stroke:var(--pm-primary);stroke-width:2}
+.psim-wire{stroke:var(--pm-ink);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.psim-wire.off{stroke:var(--pm-muted)}
+.psim-component{fill:var(--pm-card);stroke:var(--pm-ink);stroke-width:2}
+.psim-meter text{font-size:11px;font-weight:800;fill:var(--pm-ink)}
+.psim-electron{fill:var(--pm-blue)}
+.psim-lamp-glow{fill:var(--pm-accent)}
+.psim-field{stroke:var(--pm-blue);fill:none;stroke-width:1.6}
+.psim-pole-n{fill:var(--pm-danger)}
+.psim-pole-s{fill:var(--pm-blue)}
+.psim-bar{fill:var(--pm-primary)}
+.psim-bar.ke{fill:var(--pm-blue)}
+.psim-bar.th{fill:var(--pm-danger)}
+.psim-bar-track{fill:var(--pm-card);stroke:var(--pm-line)}
+.psim-ghost{opacity:.35}
+
+@media (prefers-reduced-motion: reduce){
+  .psim *,.psim *::before,.psim *::after{transition:none!important;animation:none!important}
+}
+@media (max-width:560px){
+  .psim{padding:12px 10px}
+  .psim-readouts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .psim-btn{min-width:0;flex:1 1 auto}
+}
+@supports(padding:max(0px)){
+  .psim{padding-left:max(12px,env(safe-area-inset-left));padding-right:max(12px,env(safe-area-inset-right))}
+}
+
+/* SPARK PHYSICS WAVES BATCH 1 V1 */
+.psim-wave-stage{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:360px;
+  margin:14px 0;
+  border:1px solid var(--pm-line);
+  border-radius:16px;
+  background:var(--pm-card2);
+  overflow:hidden;
+}
+.psim-wave-axis{stroke:var(--pm-muted);stroke-width:1.3;stroke-dasharray:5 5}
+.psim-wave-line{fill:none;stroke:var(--pm-primary);stroke-width:3;vector-effect:non-scaling-stroke}
+.psim-wave-guide{stroke:var(--pm-line);stroke-width:1;stroke-dasharray:3 4}
+.psim-wave-particle{fill:var(--pm-accent);stroke:var(--pm-card);stroke-width:1.5;vector-effect:non-scaling-stroke}
+.psim-wave-caption{fill:var(--pm-muted);font-size:12px;font-weight:700}
+.psim-wave-travel{fill:none;stroke:var(--pm-good);stroke-width:2.5;vector-effect:non-scaling-stroke}
+.psim-echo-source circle{fill:var(--pm-primary-soft);stroke:var(--pm-primary);stroke-width:2}
+.psim-echo-source path{fill:none;stroke:var(--pm-primary);stroke-width:2;stroke-linecap:round}
+.psim-echo-reflector rect{fill:var(--pm-card);stroke:var(--pm-ink);stroke-width:2}
+.psim-echo-reflector line{stroke:var(--pm-ink);stroke-width:2}
+.psim-echo-path{stroke:var(--pm-line);stroke-width:4;stroke-linecap:round}
+.psim-echo-pulse{fill:var(--pm-primary);stroke:var(--pm-card);stroke-width:2}
+.psim-echo-pulse.returning{fill:var(--pm-accent)}
+.psim-speaker rect{fill:var(--pm-card);stroke:var(--pm-ink);stroke-width:2}
+.psim-speaker polygon{fill:var(--pm-primary-soft);stroke:var(--pm-primary);stroke-width:2}
+.psim-speaker line{stroke:var(--pm-accent);stroke-width:3;stroke-linecap:round}
+@media(max-width:780px){
+  .psim-wave-stage{max-height:300px}
+}
+@media(max-width:560px){
+  .psim-wave-stage{margin:10px 0;max-height:250px;border-radius:13px}
+  .psim-wave-caption{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){
+  .psim-wave-stage *{transition:none!important;animation:none!important}
+}
+
+/* SPARK PHYSICS WAVES BATCH 2 V1 */
+.psim-em-spectrum{
+  display:grid;
+  grid-template-columns:repeat(7,minmax(0,1fr));
+  gap:6px;
+  margin:12px 0 4px;
+}
+.psim-em-spectrum button{
+  min-height:44px;
+  border:1px solid var(--pm-line);
+  border-radius:10px;
+  background:var(--pm-card2);
+  color:var(--pm-ink);
+  padding:8px 5px;
+  font:inherit;
+  font-size:12px;
+  font-weight:750;
+  overflow-wrap:anywhere;
+  cursor:pointer;
+}
+.psim-em-spectrum button.active{
+  background:var(--pm-primary-soft);
+  border-color:var(--pm-primary);
+  color:var(--pm-primary);
+}
+.psim-em-wave{
+  fill:none;
+  stroke:var(--pm-accent);
+  stroke-width:3;
+  vector-effect:non-scaling-stroke;
+}
+.psim-optics-stage{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:390px;
+  margin:14px 0;
+  border:1px solid var(--pm-line);
+  border-radius:16px;
+  background:var(--pm-card2);
+  overflow:hidden;
+}
+.psim-mirror{stroke:var(--pm-ink);stroke-width:7;stroke-linecap:round}
+.psim-normal{stroke:var(--pm-muted);stroke-width:1.6;stroke-dasharray:6 5}
+.psim-boundary{stroke:var(--pm-ink);stroke-width:2}
+.psim-medium-fill{fill:var(--pm-primary-soft);opacity:.56}
+.psim-ray{stroke:var(--pm-primary);stroke-width:4;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.psim-ray.reflected{stroke:var(--pm-accent)}
+.psim-ray.refracted{stroke:var(--pm-good)}
+.psim-ray.critical{stroke:var(--pm-accent);stroke-dasharray:7 5}
+.psim-ray-pulse{fill:var(--pm-accent);stroke:var(--pm-card);stroke-width:2}
+.psim-angle-arc{fill:none;stroke:var(--pm-muted);stroke-width:1.4;stroke-dasharray:3 3}
+.psim-optics-label{fill:var(--pm-ink);font-size:12px;font-weight:700}
+.psim-double-slit-layout{
+  display:grid;
+  grid-template-columns:minmax(0,1.6fr) minmax(130px,.5fr);
+  gap:14px;
+  align-items:stretch;
+  margin:14px 0;
+}
+.psim-double-slit-stage{
+  display:block;
+  width:100%;
+  min-height:260px;
+  border:1px solid var(--pm-line);
+  border-radius:16px;
+  background:var(--pm-card2);
+}
+.psim-slit-barrier{stroke:var(--pm-ink);stroke-width:8;stroke-linecap:round}
+.psim-source-dot{fill:var(--pm-primary)}
+.psim-wavefront{fill:none;stroke:var(--pm-primary);stroke-width:1.4;opacity:.62}
+.psim-wavefront.secondary{stroke:var(--pm-accent);opacity:.42}
+.psim-screen-line{stroke:var(--pm-ink);stroke-width:5}
+.psim-fringe-screen{
+  min-height:260px;
+  height:auto;
+  position:relative;
+  border-radius:16px;
+}
+@media(max-width:780px){
+  .psim-em-spectrum{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .psim-double-slit-layout{grid-template-columns:1fr}
+  .psim-fringe-screen{min-height:190px}
+}
+@media(max-width:560px){
+  .psim-em-spectrum{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .psim-optics-stage{max-height:300px;border-radius:13px}
+  .psim-optics-label{font-size:10px}
+  .psim-double-slit-stage{min-height:220px}
+  .psim-fringe-screen{min-height:170px}
+}
+
+/* SPARK PHYSICS WAVES BATCH 3 V1 */
+.psim-lens-presets{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:12px 0;
+}
+.psim-lens-presets button{
+  min-height:44px;
+  border:1px solid var(--pm-line);
+  border-radius:999px;
+  background:var(--pm-card);
+  color:var(--pm-ink);
+  padding:9px 14px;
+  font:inherit;
+  font-weight:800;
+  cursor:pointer;
+}
+.psim-lens-presets button.active{
+  border-color:var(--pm-primary);
+  background:var(--pm-primary-soft);
+  color:var(--pm-primary);
+}
+.psim-lens-stage,.psim-optical-bench{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:410px;
+  margin:14px 0;
+  border:1px solid var(--pm-line);
+  border-radius:16px;
+  background:var(--pm-card2);
+  overflow:hidden;
+}
+.psim-principal-axis,.psim-bench-axis{
+  stroke:var(--pm-ink);
+  stroke-width:1.8;
+}
+.psim-lens-shape,.psim-bench-lens{
+  fill:var(--pm-primary-soft);
+  stroke:var(--pm-primary);
+  stroke-width:2.4;
+}
+.psim-lens-centre{
+  stroke:var(--pm-primary);
+  stroke-width:1.2;
+  stroke-dasharray:5 4;
+}
+.psim-focus-tick{
+  stroke:var(--pm-ink);
+  stroke-width:2;
+}
+.psim-lens-label{
+  fill:var(--pm-ink);
+  font-size:11px;
+  font-weight:750;
+}
+.psim-object-arrow{
+  fill:none;
+  stroke:var(--pm-ink);
+  stroke-width:4;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.psim-image-arrow{
+  fill:none;
+  stroke-width:4;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.psim-image-arrow.real{stroke:var(--pm-good)}
+.psim-image-arrow.virtual{stroke:var(--pm-accent)}
+.psim-principal-ray{
+  fill:none;
+  stroke:var(--pm-primary);
+  stroke-width:2.2;
+  vector-effect:non-scaling-stroke;
+}
+.psim-principal-ray.ray-two{stroke:var(--pm-accent)}
+.psim-virtual-extension{
+  stroke:var(--pm-accent);
+  stroke-width:1.6;
+  stroke-dasharray:6 5;
+}
+.psim-bench-object rect{
+  fill:var(--pm-card);
+  stroke:var(--pm-ink);
+  stroke-width:2;
+}
+.psim-bench-object path{
+  fill:none;
+  stroke:var(--pm-ink);
+  stroke-width:3;
+}
+.psim-bench-screen{
+  fill:var(--pm-card);
+  stroke:var(--pm-ink);
+  stroke-width:2;
+}
+.psim-bench-ray{
+  stroke:var(--pm-primary);
+  stroke-width:2;
+}
+.psim-bench-ray.secondary{stroke:var(--pm-accent)}
+.psim-screen-image line{
+  stroke:var(--pm-good);
+  stroke-width:4;
+  stroke-linecap:round;
+}
+.psim-screen-image.nearly-sharp line{stroke-width:7;opacity:.72}
+.psim-screen-image.blurred line{stroke-width:12;opacity:.38}
+.psim-focus-status{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  gap:8px 16px;
+  margin:10px 0 12px;
+  padding:11px 13px;
+  border:1px solid var(--pm-line);
+  border-radius:12px;
+  background:var(--pm-card2);
+}
+.psim-focus-status strong{color:var(--pm-primary)}
+.psim-focus-status span{color:var(--pm-muted)}
+.psim-table-wrap{
+  width:100%;
+  overflow-x:auto;
+  margin:12px 0;
+}
+.psim-data-table{
+  width:100%;
+  min-width:420px;
+  border-collapse:collapse;
+}
+.psim-data-table th,.psim-data-table td{
+  border:1px solid var(--pm-line);
+  padding:8px 10px;
+  text-align:center;
+}
+.psim-data-table th{
+  background:var(--pm-card2);
+  color:var(--pm-ink);
+}
+@media(max-width:620px){
+  .psim-lens-presets{display:grid;grid-template-columns:1fr 1fr}
+  .psim-lens-stage,.psim-optical-bench{max-height:310px;border-radius:13px}
+  .psim-lens-label{font-size:9px}
+}
+@media(max-width:420px){
+  .psim-lens-presets{grid-template-columns:1fr}
+}
+
+/* SPARK PHYSICS THERMAL BATCH 1 V1 */
+.psim-thermal-stage,.psim-kelvin-stage,.psim-heating-graph,.psim-particle-box{display:block;width:100%;height:auto;margin:14px 0;border:1px solid var(--pm-line);border-radius:16px;background:var(--pm-card2)}
+.psim-thermal-label{fill:var(--pm-ink);font-size:12px;font-weight:700}
+.psim-rope{stroke:var(--pm-muted);stroke-width:3}.psim-weight{fill:var(--pm-primary-soft);stroke:var(--pm-primary);stroke-width:2}
+.psim-water-vessel{fill:var(--pm-card);stroke:var(--pm-ink);stroke-width:2}.psim-water-fill{fill:var(--pm-primary-soft);opacity:.78}
+.psim-paddle{stroke:var(--pm-accent);stroke-width:7;stroke-linecap:round}.psim-thermometer{fill:var(--pm-card);stroke:var(--pm-ink);stroke-width:2}.psim-thermometer-level{fill:var(--pm-accent)}
+.psim-gas-cylinder{fill:var(--pm-card);stroke:var(--pm-ink);stroke-width:2}.psim-piston{stroke:var(--pm-muted);stroke-width:8}.psim-piston.active{stroke:var(--pm-primary)}
+.psim-gas-particle{fill:var(--pm-muted);opacity:.7}.psim-gas-particle.active{fill:var(--pm-primary);opacity:.9}
+.psim-graph-axis{stroke:var(--pm-ink);stroke-width:1.8}.psim-graph-grid{stroke:var(--pm-line);stroke-width:1}.psim-kelvin-line{stroke:var(--pm-primary);stroke-width:3}.psim-kelvin-point{fill:var(--pm-accent)}
+.psim-kelvin-intercept{stroke:var(--pm-primary);stroke-width:3}.psim-kelvin-intercept-label{fill:var(--pm-primary);font-size:13px;font-weight:900}
+.psim-fixed-support{fill:var(--pm-ink)}.psim-expansion-bar{fill:var(--pm-primary)}.psim-expansion-reference{stroke:var(--pm-muted);stroke-width:2;stroke-dasharray:6 5}.psim-expansion-free-end{stroke:var(--pm-accent);stroke-width:4}
+.psim-heat-arrow{fill:none;stroke:var(--pm-accent);stroke-width:4;stroke-linecap:round}.psim-heating-layout{display:grid;grid-template-columns:1.2fr .8fr;gap:14px}
+.psim-heating-line{fill:none;stroke:var(--pm-primary);stroke-width:4;stroke-linejoin:round}.psim-heating-marker{fill:var(--pm-accent);stroke:var(--pm-card);stroke-width:2}
+.psim-particle-container{fill:var(--pm-card);stroke:var(--pm-line);stroke-width:2}.psim-thermal-particle{fill:var(--pm-primary);opacity:.9}.psim-thermal-particle.melting,.psim-thermal-particle.boiling{fill:var(--pm-accent)}.psim-thermal-particle.liquid-warming{fill:var(--pm-good)}
+@media(max-width:780px){.psim-heating-layout{grid-template-columns:1fr}}@media(max-width:560px){.psim-thermal-stage,.psim-kelvin-stage,.psim-heating-graph,.psim-particle-box{border-radius:13px}.psim-thermal-label{font-size:10px}}
+
+/* SPARK PHYSICS THERMAL BATCH 2 V1 */
+.psim-shc-block{fill:var(--pm-primary-soft);stroke:var(--pm-primary);stroke-width:2}
+.psim-heater-element{fill:var(--pm-accent)}
+.psim-heater-lead{fill:none;stroke:var(--pm-ink);stroke-width:3}
+.psim-power-terminal{fill:var(--pm-card);stroke:var(--pm-ink);stroke-width:2}
+.psim-ice-container{fill:var(--pm-card);stroke:var(--pm-ink);stroke-width:2}
+.psim-ice-block{fill:var(--pm-primary-soft);stroke:var(--pm-primary);stroke-width:2}
+.psim-melt-stream{stroke:var(--pm-primary);stroke-width:6;stroke-linecap:round}
+.psim-collector{fill:var(--pm-card);stroke:var(--pm-ink);stroke-width:2}
+.psim-collected-water{fill:var(--pm-primary-soft)}
+.psim-radiation-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0}
+.psim-radiation-grid button{min-height:210px;border:1px solid var(--pm-line);border-radius:16px;background:var(--pm-card2);color:var(--pm-ink);padding:14px;display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;font:inherit;cursor:pointer}
+.psim-radiation-grid button.active{border-color:var(--pm-primary);box-shadow:0 0 0 2px var(--pm-primary-soft) inset}
+.psim-radiation-grid em{font-style:normal;color:var(--pm-muted);font-size:12px}
+.psim-radiation-surface{position:relative;display:block;width:110px;height:74px;border-radius:12px;border:1px solid var(--pm-line)}
+.psim-radiation-surface.dull-black{background:#191919}
+.psim-radiation-surface.dull-white{background:#ececec}
+.psim-radiation-surface.shiny-metal{background:linear-gradient(135deg,#aaa,#f8f8f8,#9a9a9a)}
+.psim-radiation-surface i{position:absolute;left:70px;top:34px;width:34px;height:2px;background:var(--pm-accent);transform-origin:left center;box-shadow:0 -14px 0 var(--pm-accent),0 14px 0 var(--pm-accent)}
+.psim-convection-vessel{fill:var(--pm-card);stroke:var(--pm-ink);stroke-width:2}
+.psim-hot-zone{fill:var(--pm-accent);opacity:.42}
+.psim-cool-zone{fill:var(--pm-primary-soft)}
+.psim-convection-loop{fill:none;stroke:var(--pm-primary);stroke-width:5;stroke-dasharray:10 8}
+.psim-convection-loop.reversed{stroke:var(--pm-accent)}
+.psim-convection-loop.neutral{stroke:var(--pm-muted);opacity:.35}
+.psim-convection-particle.warm{fill:var(--pm-accent)}
+.psim-convection-particle.cool{fill:var(--pm-primary)}
+@media(max-width:700px){.psim-radiation-grid{grid-template-columns:1fr}.psim-radiation-grid button{min-height:150px}}
+
+/* SPARK PHYSICS ATOMIC BATCH 1 V1 */
+.psim-atomic-stage,.psim-atom-stage{display:block;width:100%;height:auto;margin:14px 0;border:1px solid var(--pm-line);border-radius:16px;background:var(--pm-card2)}
+.psim-atomic-label{fill:var(--pm-ink);font-size:12px;font-weight:700}
+.psim-nucleus,.psim-atom-nucleus{fill:var(--pm-accent);stroke:var(--pm-ink);stroke-width:2}
+.psim-alpha-path,.psim-radiation-track,.psim-deflection-path{fill:none;stroke:var(--pm-primary);stroke-width:3;vector-effect:non-scaling-stroke}
+.psim-alpha-particle{fill:var(--pm-accent);stroke:var(--pm-card);stroke-width:2}
+.psim-electron-shell{fill:none;stroke:var(--pm-line);stroke-width:1.5}
+.psim-electron{fill:var(--pm-primary)}
+.psim-isotope-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:14px 0}
+.psim-isotope-card{min-height:150px;border:1px solid var(--pm-line);border-radius:16px;background:var(--pm-card2);display:grid;grid-template-columns:42px 1fr;grid-template-rows:40px 40px auto;align-items:center;justify-items:center;padding:18px;color:var(--pm-ink)}
+.psim-isotope-card strong{grid-column:2;grid-row:1/3;font-size:48px}.psim-isotope-card em{grid-column:1/3;font-style:normal;color:var(--pm-muted)}
+.psim-nuclide-A,.psim-nuclide-Z{font-weight:900}
+.psim-absorber{stroke:var(--pm-ink);stroke-width:1.5}.psim-absorber-0{fill:#eee}.psim-absorber-1{fill:#aaa}.psim-absorber-2{fill:#555}
+.psim-radiation-track.alpha{stroke:var(--pm-accent)}.psim-radiation-track.beta{stroke:var(--pm-primary)}.psim-radiation-track.gamma{stroke:var(--pm-good)}
+.psim-field-plate{fill:var(--pm-card);stroke:var(--pm-ink);stroke-width:2}.psim-field-plate.positive{stroke:var(--pm-accent)}.psim-field-plate.negative{stroke:var(--pm-primary)}
+.psim-field-dot{fill:var(--pm-primary)}.psim-deflection-path.alpha{stroke:var(--pm-accent)}.psim-deflection-path.beta{stroke:var(--pm-primary)}.psim-deflection-path.gamma{stroke:var(--pm-good)}
+@media(max-width:560px){.psim-atomic-stage,.psim-atom-stage{border-radius:13px}.psim-atomic-label{font-size:10px}.psim-isotope-grid{grid-template-columns:1fr}}
+
+/* SPARK PHYSICS ATOMIC BATCH 2 V1 */
+.psim-nuclear-equation{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;margin:18px 0;padding:18px;border:1px solid var(--pm-line);border-radius:16px;background:var(--pm-card2)}
+.psim-nuclide-box{position:relative;width:98px;height:100px;display:grid;place-items:center;color:var(--pm-ink)}
+.psim-nuclide-box strong{font-size:42px}.psim-nuclide-box.emitted strong{font-size:34px}
+.psim-nuclide-top,.psim-nuclide-bottom{position:absolute;left:4px;font-weight:900}.psim-nuclide-top{top:14px}.psim-nuclide-bottom{bottom:14px}
+.psim-nuclear-arrow,.psim-nuclear-plus{font-size:34px;font-weight:900;color:var(--pm-muted)}
+.psim-decay-chart,.psim-half-life-chart,.psim-mass-energy-stage{display:block;width:100%;height:auto;margin:14px 0;border:1px solid var(--pm-line);border-radius:16px;background:var(--pm-card2)}
+.psim-decay-bar{fill:var(--pm-primary);opacity:.8}.psim-decay-expected{fill:var(--pm-accent);stroke:var(--pm-card);stroke-width:1.5}
+.psim-half-life-line{fill:none;stroke:var(--pm-primary);stroke-width:4}.psim-half-life-marker{fill:var(--pm-accent);stroke:var(--pm-card);stroke-width:2}
+.psim-mass-orb{fill:var(--pm-primary-soft);stroke:var(--pm-primary);stroke-width:3}.psim-mass-energy-stage .mass-label{font-size:20px;font-weight:900}
+.psim-energy-arrow{fill:none;stroke:var(--pm-accent);stroke-width:7;stroke-linecap:round}
+.psim-energy-spark{fill:var(--pm-accent);opacity:.85}
+.psim-evidence-columns{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+.psim-evidence-column{border:1px solid var(--pm-line);border-radius:16px;background:var(--pm-card2);padding:14px}
+.psim-evidence-column h4{margin:0 0 10px;color:var(--pm-ink)}
+.psim-evidence-column button{width:100%;min-height:54px;margin:6px 0;padding:10px 12px;border:1px solid var(--pm-line);border-radius:12px;background:var(--pm-card);color:var(--pm-ink);font:inherit;text-align:left;cursor:pointer}
+.psim-evidence-column button.selected{border-color:var(--pm-primary);background:var(--pm-primary-soft);font-weight:800}
+.psim-evidence-column.risk button.selected{border-color:var(--pm-accent)}
+.psim-balance-scale{position:relative;height:150px;margin:10px 0 18px}
+.psim-balance-beam{position:absolute;left:15%;right:15%;top:58px;height:8px;border-radius:999px;background:var(--pm-ink);transform-origin:center;transition:transform .2s ease}
+.psim-balance-pivot{position:absolute;left:50%;top:64px;transform:translateX(-50%);width:0;height:0;border-left:38px solid transparent;border-right:38px solid transparent;border-bottom:72px solid var(--pm-muted)}
+.psim-balance-scale .left,.psim-balance-scale .right{position:absolute;top:18px;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--pm-primary-soft);color:var(--pm-ink);font-weight:900}
+.psim-balance-scale .left{left:18%}.psim-balance-scale .right{right:18%}
+@media(max-width:700px){.psim-evidence-columns{grid-template-columns:1fr}.psim-nuclear-equation{gap:10px}.psim-nuclide-box{width:76px}.psim-nuclear-arrow,.psim-nuclear-plus{font-size:28px}}
+@media(max-width:520px){.psim-decay-chart,.psim-half-life-chart,.psim-mass-energy-stage{border-radius:13px}.psim-nuclear-equation{padding:12px}}
