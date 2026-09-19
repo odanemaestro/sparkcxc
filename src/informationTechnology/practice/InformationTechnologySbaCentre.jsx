@@ -201,4 +201,169 @@ function sampleWebPageHtml(project) {
 <title>${escapeHtml(project.title)}</title>
 <style>
 body{font-family:Arial,sans-serif;margin:0;background:#f5f7fa;color:#172337}header,main,footer{max-width:960px;margin:auto;padding:24px}
-header{ba
+header{background:#17375e;color:white;max-width:none}header>div{max-width:960px;margin:auto;display:flex;align-items:center;gap:14px}
+.logo{width:56px;height:56px;border-radius:14px;background:#0d8069;display:grid;place-items:center;font-weight:900;font-size:20px}
+nav a{color:#0d8069;font-weight:700;margin-right:16px}section{background:white;border:1px solid #d8e0e8;border-radius:12px;padding:20px;margin:16px 0}
+.hero{background:linear-gradient(135deg,#17375e,#0d8069);color:white}footer{color:#657488}
+</style>
+</head>
+<body>
+<header><div><div class="logo" role="img" aria-label="${escapeHtml(project.title)} logo">${escapeHtml(initials)}</div><div><h1>${escapeHtml(project.title)}</h1><p>${escapeHtml(project.accent)}</p></div></div></header>
+<main>
+<nav><a href="#about">About</a><a href="#services">Information</a><a href="#contact">Contact</a></nav>
+<section id="about" class="hero"><h2>Welcome</h2><p>${escapeHtml(project.scenario)}</p></section>
+<section id="services"><h2>What you need to know</h2><ul>${items.map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
+<section id="contact"><h2>Contact</h2><p>Email: <a href="mailto:info@example.com">info@example.com</a></p><p>This is fictional contact information for the SPARK practice project.</p></section>
+</main>
+<footer>SPARK reference web page. Replace all content with your own project work.</footer>
+</body>
+</html>`;
+}
+
+function checklistText(project) {
+  return [
+    `SPARK SBA FINAL CHECK - ${project.title}`,
+    "",
+    "PROJECT CONTROL",
+    "[ ] I used my teacher's current project brief.",
+    "[ ] Every filename matches the required naming convention.",
+    "[ ] I kept backup copies of each component.",
+    "[ ] Facts such as names, fees and dates agree across the project.",
+    "",
+    "DATABASE",
+    "[ ] At least two tables use suitable primary keys.",
+    "[ ] Relationships match the real situation.",
+    "[ ] Simple, complex and calculated queries return correct results.",
+    "[ ] The form and subform are easy to use.",
+    "[ ] The report includes required grouping, sorting, summary values and title.",
+    "",
+    "SPREADSHEET",
+    "[ ] Formulas use cell references instead of typed answers.",
+    "[ ] At least three suitable functions work correctly.",
+    "[ ] Relative and absolute references copy correctly.",
+    "[ ] Sorting and filtering produce the required records.",
+    "[ ] Summary and chart use the correct source data.",
+    "[ ] At least one cell links between worksheets.",
+    "",
+    "WORD PROCESSING",
+    "[ ] Page layout and formatting are consistent.",
+    "[ ] Required advanced features work.",
+    "[ ] Mail merge fields or form controls have been tested.",
+    "[ ] Imported charts, tables or graphics fit the page.",
+    "",
+    "WEB PAGE",
+    "[ ] The current SPARK reference uses one page.",
+    "[ ] Text and graphics suit the audience.",
+    "[ ] At least two required hyperlink types work.",
+    "[ ] The page agrees with the other SBA components.",
+    "",
+    "PROBLEM-SOLVING AND PROGRAMMING",
+    "[ ] Problem definition is clear.",
+    "[ ] Pseudocode or flowchart includes input, processing, output, selection and looping.",
+    "[ ] Trace table uses suitable normal, boundary and invalid data where appropriate.",
+    "[ ] Program output matches the expected test results.",
+    "[ ] Screenshots clearly show data entry and output.",
+    "[ ] Program documentation contains the required evidence.",
+    "",
+    "INTEGRITY",
+    "[ ] I understand this SPARK project is a reference example only.",
+    "[ ] I did not copy the SPARK project and present it as my assigned SBA.",
+    "[ ] I followed my school's rules and current CXC guidance for any AI-assisted work.",
+  ].join("\r\n");
+}
+
+function projectBriefText(project) {
+  return [
+    "CSEC INFORMATION TECHNOLOGY",
+    "SPARK PRACTICE SBA",
+    project.title.toUpperCase(),
+    "",
+    "DESCRIPTION OF PROJECT",
+    project.scenario,
+    "",
+    "PURPOSE",
+    project.purpose,
+    "",
+    "CURRENT CXC GUARDRAILS USED BY SPARK",
+    ...IT_SBA_CURRENT_LIMITS.flatMap(item => [`${item.title}: ${item.text}`, ""]),
+    ...IT_SBA_COMPONENTS.flatMap(item => [
+      `${item.title.toUpperCase()} - ${item.marks} MARKS`,
+      project.components[item.id].produce,
+      "",
+    ]),
+    "IMPORTANT",
+    "This is an original SPARK practice project. Use it to learn how the parts of an SBA connect. Do not submit this project, its data or its wording as your own school-assigned SBA.",
+  ].join("\r\n");
+}
+
+function traceCsv(project) {
+  const trace = project.components.programming.completed.trace;
+  const maxColumns = Math.max(1, ...trace.map(row => row.length));
+  const headings = Array.from({ length: maxColumns }, (_, index) => index === 0 ? "Test record" : `Trace value ${index}`);
+  return rowsToCsv([headings, ...trace]);
+}
+
+function dateLabel(date) {
+  return new Intl.DateTimeFormat(undefined, { year: "numeric", month: "short", day: "numeric" }).format(date);
+}
+
+function plannedMilestones(deadlineValue) {
+  if (!deadlineValue) return [];
+  const deadline = new Date(`${deadlineValue}T12:00:00`);
+  if (Number.isNaN(deadline.getTime())) return [];
+  const plan = [
+    ["Planning and folder setup", 98],
+    ["Database draft", 84],
+    ["Spreadsheet draft", 63],
+    ["Word Processing draft", 49],
+    ["Web page draft", 35],
+    ["Algorithm and trace table", 28],
+    ["Program implementation", 18],
+    ["Documentation and final testing", 7],
+    ["Final submission target", 0],
+  ];
+  return plan.map(([label, daysBefore]) => {
+    const date = new Date(deadline);
+    date.setDate(date.getDate() - daysBefore);
+    return { label, date };
+  });
+}
+
+function CentreHome({ openProject, onBack }) {
+  const [deadline, setDeadline] = useState("");
+  const milestones = useMemo(() => plannedMilestones(deadline), [deadline]);
+
+  return (
+    <main className="it-sba-page">
+      <section className="it-sba-shell">
+        <button type="button" className="it-practice-back it-sba-back" data-spark-action="nav" onClick={onBack}>
+          <BackArrowIcon/><span>Information Technology Practice</span>
+        </button>
+
+        <header className="it-sba-hero">
+          <div>
+            <div className="it-practice-eyebrow">CSEC Information Technology SBA Centre</div>
+            <h1>Build your SBA one part at a time.</h1>
+            <p>Learn what each section is asking you to do, follow a clear step-by-step guide, practise with five original SPARK projects and download completed reference examples to study.</p>
+          </div>
+          <div className="it-sba-hero-badge"><strong>5</strong><span>complete sample projects</span></div>
+        </header>
+
+        <section className="it-sba-current-card">
+          <div>
+            <div className="it-practice-label">Current CXC structure</div>
+            <h2>One practical project with five related areas.</h2>
+            <p>SPARK follows the current CSEC Information Technology syllabus structure. The productivity-tool areas total 70 raw marks and are divided by two to give 35 marks. Problem-Solving and Programming contributes 15 marks. Paper 03 therefore contributes 50 marks and 25% of the final subject grade.</p>
+          </div>
+          <div className="it-sba-mark-grid">
+            {IT_SBA_MARKS.map(item => <div key={item.label}><strong>{item.marks}</strong><span>{item.label}</span></div>)}
+          </div>
+          <div className="it-sba-syllabus-note">
+            <strong>Important web-page note</strong>
+            <p>The current CXC syllabus states that the Web Page Design SBA task should be limited to one web page. Some older school assignments used several linked pages. SPARK uses one page in these practice projects. Always follow your teacher's current assignment and instructions.</p>
+          </div>
+          <div className="it-sba-limit-grid">
+            {IT_SBA_CURRENT_LIMITS.map(item => (
+              <article key={item.id}>
+                <SbaIcon type={item.id} size={20}/>
+                <di
