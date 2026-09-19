@@ -485,6 +485,7 @@ export function useInformationTechnologyLabRoute(labIds = []) {
 function informationTechnologyPracticeModeFromPath(path) {
   if (path === `${IT_PRACTICE_BASE}/paper-1`) return "paper1";
   if (path === `${IT_PRACTICE_BASE}/paper-2`) return "paper2";
+  if (path === `${IT_PRACTICE_BASE}/sba` || path?.startsWith(`${IT_PRACTICE_BASE}/sba/`)) return "sba";
   return "home";
 }
 
@@ -501,7 +502,7 @@ export function useInformationTechnologyPracticeRoute(active = true) {
   const setMode = useCallback(nextValue => {
     const current = modeRef.current;
     const raw = String(resolveSetter(nextValue, current) || "home");
-    const safe = ["home", "paper1", "paper2"].includes(raw) ? raw : "home";
+    const safe = ["home", "paper1", "paper2", "sba"].includes(raw) ? raw : "home";
 
     modeRef.current = safe;
     setModeState(safe);
@@ -510,6 +511,7 @@ export function useInformationTechnologyPracticeRoute(active = true) {
 
     if (safe === "paper1") writeSparkNestedRoute(`${IT_PRACTICE_BASE}/paper-1`);
     else if (safe === "paper2") writeSparkNestedRoute(`${IT_PRACTICE_BASE}/paper-2`);
+    else if (safe === "sba") writeSparkNestedRoute(`${IT_PRACTICE_BASE}/sba`);
     else writeSparkNestedRoute(IT_PRACTICE_BASE);
   }, [active]);
 
@@ -528,6 +530,108 @@ export function useInformationTechnologyPracticeRoute(active = true) {
   }, [active]);
 
   return [mode, setMode];
+}
+
+// SPARK_INFORMATION_TECHNOLOGY_SBA_ROUTING_V1
+function informationTechnologySbaState(path) {
+  const safePath = String(path || "");
+  const base = `${IT_PRACTICE_BASE}/sba`;
+
+  if (safePath === base) {
+    return { page: "home", projectId: null, componentId: null };
+  }
+
+  const componentMatch = safePath.match(/^\/practice\/information-technology\/sba\/project\/([^/]+)\/([^/]+)$/i);
+  if (componentMatch) {
+    return {
+      page: "component",
+      projectId: decodeURIComponent(componentMatch[1]),
+      componentId: decodeURIComponent(componentMatch[2]),
+    };
+  }
+
+  const projectMatch = safePath.match(/^\/practice\/information-technology\/sba\/project\/([^/]+)$/i);
+  if (projectMatch) {
+    return {
+      page: "project",
+      projectId: decodeURIComponent(projectMatch[1]),
+      componentId: null,
+    };
+  }
+
+  return { page: "home", projectId: null, componentId: null };
+}
+
+export function useInformationTechnologySbaRoute(active = true) {
+  const read = useCallback(
+    () => informationTechnologySbaState(readSparkHashRoute().path),
+    []
+  );
+
+  const initial = useRef(read());
+  const [state, setState] = useState(initial.current);
+  const stateRef = useRef(initial.current);
+
+  const commit = useCallback(next => {
+    stateRef.current = next;
+    setState(next);
+
+    const base = `${IT_PRACTICE_BASE}/sba`;
+    if (next.page === "component" && next.projectId && next.componentId) {
+      writeSparkNestedRoute(
+        `${base}/project/${encodeURIComponent(next.projectId)}/${encodeURIComponent(next.componentId)}`
+      );
+      return;
+    }
+
+    if (next.page === "project" && next.projectId) {
+      writeSparkNestedRoute(
+        `${base}/project/${encodeURIComponent(next.projectId)}`
+      );
+      return;
+    }
+
+    writeSparkNestedRoute(base);
+  }, []);
+
+  const openHome = useCallback(() => {
+    if (!active && !readSparkHashRoute().path?.startsWith(`${IT_PRACTICE_BASE}/sba`)) return;
+    commit({ page: "home", projectId: null, componentId: null });
+  }, [active, commit]);
+
+  const openProject = useCallback(projectId => {
+    const safeProject = String(projectId || "").trim();
+    if (!safeProject) return;
+    commit({ page: "project", projectId: safeProject, componentId: null });
+  }, [commit]);
+
+  const openComponent = useCallback((projectId, componentId) => {
+    const safeProject = String(projectId || "").trim();
+    const safeComponent = String(componentId || "").trim();
+    if (!safeProject || !safeComponent) return;
+    commit({ page: "component", projectId: safeProject, componentId: safeComponent });
+  }, [commit]);
+
+  useEffect(() => {
+    if (!active) return undefined;
+
+    const sync = route => {
+      if (!route.path?.startsWith(`${IT_PRACTICE_BASE}/sba`)) return;
+      const next = informationTechnologySbaState(route.path);
+      stateRef.current = next;
+      setState(next);
+    };
+
+    sync(readSparkHashRoute());
+    return subscribeSparkRoute(sync);
+  }, [active]);
+
+  return {
+    ...state,
+    openHome,
+    openProject,
+    openComponent,
+  };
 }
 
 
