@@ -883,3 +883,35 @@ export const IT_SBA_PROJECTS = [
         "    write('Amount paid: '); readln(amountPaid);",
         "    if packageCode = 'CUL' then begin adultRate := 6000; childRate := 2500; end",
         "    else if packageCode = 'ADV' then begin adultRate := 7000; childRate := 4000; end",
+        "    else begin adultRate := 7000; childRate := 3000; end;",
+        "    cost := (adults * adultRate) + (children * childRate);",
+        "    if adults + children >= 5 then discount := cost * 0.08 else discount := 0;",
+        "    finalCost := cost - discount;",
+        "    balance := finalCost - amountPaid;",
+        "    totalValue := totalValue + finalCost;",
+        "    writeln(customerName, ' balance: ', balance:0:2);",
+        "  end;",
+        "  writeln('Total booking value: ', totalValue:0:2);",
+        "end.",
+      ],
+    },
+    starterRows: [
+      ["BookingID","CustomerName","PackageCode","Adults","Children","AmountPaid"],
+      ["B001","Nadia Cole","CUL","2","1","5000"],
+      ["B002","Eric Stone","ADV","4","2","12000"],
+      ["B003","Maya Singh","NAT","1","0","4000"],
+      ["B004","Troy Lewis","CUL","3","2","15000"],
+      ["B005","Sarah James","NAT","2","2","9000"],
+      ["B006","Andre Morgan","ADV","1","1","6000"],
+    ],
+  }),
+];
+
+export function findItSbaProject(projectId) {
+  return IT_SBA_PROJECTS.find(project => project.id === projectId) || null;
+}
+
+export function findItSbaComponent(project, componentId) {
+  if (!project || !componentId) return null;
+  return project.components?.[componentId] || null;
+}
