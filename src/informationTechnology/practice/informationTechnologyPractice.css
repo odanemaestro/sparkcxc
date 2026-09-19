@@ -613,3 +613,11 @@ body[data-theme="dark"] .it-flag-question.active{
     padding-bottom:calc(46px + env(safe-area-inset-bottom,0px));
   }
 }
+
+
+/* SPARK IT SBA PRACTICE CARD GRID V1 */
+@media(min-width:901px){
+  .it-practice-mode-grid.it-practice-mode-grid-three{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+}
