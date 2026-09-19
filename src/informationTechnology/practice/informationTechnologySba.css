@@ -305,4 +305,238 @@
   border-radius:18px;
   background:var(--it-card,#fff);
 }
-.it-sba-component-card.don
+.it-sba-component-card.done{border-color:rgba(13,128,105,.42);box-shadow:inset 0 0 0 1px rgba(13,128,105,.08)}
+.it-sba-component-head{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.it-sba-component-head .it-sba-component-icon{width:42px;height:42px;margin:0}
+.it-sba-component-head>span{
+  color:#0d8069;
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+.it-sba-component-head>strong{
+  margin-left:auto;
+  color:var(--it-muted,#64717e);
+  font-size:11px;
+}
+.it-sba-component-card h2{margin:16px 0 9px;font-size:22px}
+.it-sba-component-card p{
+  flex:1;
+  margin:0 0 18px;
+  color:var(--it-muted,#64717e);
+  font-size:13px;
+  line-height:1.6;
+}
+.it-sba-component-card button{align-self:flex-start;min-height:46px}
+.it-sba-download-card{
+  display:grid;
+  grid-template-columns:minmax(240px,.7fr) minmax(0,1.3fr);
+  gap:24px;
+  align-items:start;
+}
+.it-sba-download-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:9px;
+}
+.it-sba-download-grid button{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr);
+  gap:10px;
+  align-items:center;
+  min-height:62px;
+  padding:11px 12px;
+  border:1px solid var(--it-line,#dce3e9);
+  border-radius:12px;
+  background:var(--it-page,#f6f8fb);
+  color:inherit;
+  text-align:left;
+  cursor:pointer;
+}
+.it-sba-download-grid button:hover{border-color:#159a76;background:rgba(13,128,105,.06)}
+.it-sba-download-grid svg{color:#0d8069}
+.it-sba-download-grid span{display:grid;gap:3px;min-width:0}
+.it-sba-download-grid strong{font-size:12px}
+.it-sba-download-grid small{color:var(--it-muted,#64717e);font-size:10px}
+.it-sba-progress-actions{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+.it-sba-progress-actions>span{color:var(--it-muted,#64717e);font-size:12px}
+.it-sba-component-hero{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr);
+  gap:18px;
+  align-items:center;
+  padding:26px;
+  border:1px solid var(--it-line,#dce3e9);
+  border-radius:22px;
+  background:var(--it-card,#fff);
+}
+.it-sba-component-icon.large{width:66px;height:66px;margin:0;border-radius:18px}
+.it-sba-guide-layout{
+  display:grid;
+  grid-template-columns:minmax(0,1.5fr) minmax(260px,.5fr);
+  gap:16px;
+  margin-top:20px;
+}
+.it-sba-guide-main,
+.it-sba-guide-side{min-width:0}
+.it-sba-step-list{display:grid;gap:10px}
+.it-sba-step-card{
+  display:grid;
+  grid-template-columns:42px minmax(0,1fr);
+  gap:12px;
+  padding:16px;
+  border:1px solid var(--it-line,#dce3e9);
+  border-radius:14px;
+  background:var(--it-card,#fff);
+}
+.it-sba-step-card>span{
+  display:grid;
+  place-items:center;
+  width:36px;
+  height:36px;
+  border-radius:11px;
+  background:rgba(13,128,105,.1);
+  color:#0d8069;
+  font-weight:900;
+}
+.it-sba-step-card h3{margin:0 0 5px;font-size:15px}
+.it-sba-step-card p{margin:0;color:var(--it-muted,#64717e);font-size:12px;line-height:1.6}
+.it-sba-guide-side{display:grid;align-content:start;gap:10px}
+.it-sba-side-card{
+  padding:17px;
+  border:1px solid var(--it-line,#dce3e9);
+  border-radius:14px;
+  background:var(--it-card,#fff);
+}
+.it-sba-side-card.caution{border-color:rgba(183,126,0,.28);background:rgba(183,126,0,.05)}
+.it-sba-side-card h3{margin:6px 0 9px}
+.it-sba-side-card ul,
+.it-sba-completed-example ul{margin:0;padding-left:19px}
+.it-sba-side-card li,
+.it-sba-completed-example li{margin:7px 0;color:var(--it-muted,#64717e);font-size:12px;line-height:1.55}
+.it-sba-completed-example{
+  margin-top:16px;
+  padding:18px;
+  border:1px solid var(--it-line,#dce3e9);
+  border-radius:14px;
+  background:var(--it-page,#f6f8fb);
+}
+.it-sba-completed-example h3{margin:18px 0 8px}
+.it-sba-completed-example h3:first-child{margin-top:0}
+.it-sba-ipo-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:9px;
+  margin:12px 0 18px;
+}
+.it-sba-ipo-grid>div{
+  padding:13px;
+  border:1px solid var(--it-line,#dce3e9);
+  border-radius:10px;
+  background:var(--it-card,#fff);
+}
+.it-sba-ipo-grid ul{margin:8px 0 0;padding-left:17px}
+.it-sba-code{
+  max-width:100%;
+  margin:8px 0 18px;
+  padding:15px;
+  overflow:auto;
+  border-radius:11px;
+  background:#101820;
+  color:#eaf6f2;
+  font:12px/1.65 ui-monospace,SFMono-Regular,Menlo,monospace;
+  white-space:pre-wrap;
+}
+.it-sba-table-wrap{max-width:100%;overflow:auto}
+.it-sba-table{width:100%;min-width:640px;border-collapse:collapse;background:var(--it-card,#fff)}
+.it-sba-table td{padding:9px;border:1px solid var(--it-line,#dce3e9);font-size:11px}
+.it-sba-component-actions{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:18px;
+}
+.it-sba-component-actions button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  min-height:46px;
+}
+html[data-theme="dark"] .it-sba-page,
+body[data-theme="dark"] .it-sba-page{
+  --it-page:#0f1720;
+  --it-card:#16212c;
+  --it-line:#2a3947;
+  --it-ink:#eef4f8;
+  --it-muted:#aebdca;
+}
+html[data-theme="dark"] .it-sba-mark-grid strong,
+html[data-theme="dark"] .it-sba-project-focus,
+html[data-theme="dark"] .it-sba-roadmap-item>span,
+body[data-theme="dark"] .it-sba-mark-grid strong,
+body[data-theme="dark"] .it-sba-project-focus,
+body[data-theme="dark"] .it-sba-roadmap-item>span{color:#dce8f6}
+html[data-theme="dark"] .it-sba-code,
+body[data-theme="dark"] .it-sba-code{background:#0a111a}
+@media(max-width:980px){
+  .it-sba-roadmap{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .it-sba-project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .it-sba-mark-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .it-sba-download-card{grid-template-columns:1fr}
+  .it-sba-guide-layout{grid-template-columns:1fr}
+  .it-sba-guide-side{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  .it-sba-page{padding:16px 12px 48px}
+  .it-sba-back{min-height:46px;margin-bottom:24px;padding:10px 15px}
+  .it-sba-hero,.it-sba-project-hero{grid-template-columns:1fr;padding:22px}
+  .it-sba-hero-badge,.it-sba-progress-ring{width:100%;min-height:92px}
+  .it-sba-mark-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .it-sba-roadmap{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .it-sba-project-grid,.it-sba-component-grid{grid-template-columns:1fr}
+  .it-sba-milestones{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .it-sba-component-hero{grid-template-columns:1fr;padding:20px}
+  .it-sba-component-icon.large{width:56px;height:56px}
+  .it-sba-guide-side{grid-template-columns:1fr}
+  .it-sba-ipo-grid{grid-template-columns:1fr}
+  .it-sba-progress-actions{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:560px){
+  .it-sba-page{padding-left:10px;padding-right:10px}
+  .it-sba-hero,.it-sba-project-hero,.it-sba-component-hero{padding:17px;border-radius:17px}
+  .it-sba-current-card,.it-sba-timeline-card,.it-sba-integrity-card,.it-sba-project-purpose,.it-sba-download-card,.it-sba-reference-card,.it-sba-progress-actions{padding:16px;border-radius:15px}
+  .it-sba-mark-grid,.it-sba-roadmap,.it-sba-milestones{grid-template-columns:1fr}
+  .it-sba-download-grid{grid-template-columns:1fr}
+  .it-sba-download-grid button{min-height:64px}
+  .it-sba-integrity-card{grid-template-columns:1fr}
+  .it-sba-project-card{padding:16px}
+  .it-sba-component-actions{display:grid;grid-template-columns:1fr}
+  .it-sba-component-actions button{width:100%}
+  .it-sba-step-card{grid-template-columns:36px minmax(0,1fr);padding:13px}
+  .it-sba-step-card>span{width:32px;height:32px}
+  .it-sba-code{font-size:11px}
+}
+@media(max-width:380px){
+  .it-sba-page{padding-left:8px;padding-right:8px}
+  .it-sba-hero h1,.it-sba-project-hero h1,.it-sba-component-hero h1{font-size:31px}
+  .it-sba-project-card button{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  .it-sba-page *{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+}
+
+@media(max-width:760px){
+  .it-sba-limit-grid{grid-template-columns:1fr}
+}
