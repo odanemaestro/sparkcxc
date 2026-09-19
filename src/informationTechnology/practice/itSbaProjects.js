@@ -184,4 +184,184 @@ const GUIDE_STEPS = {
   spreadsheet: [
     {
       title: "Import or enter the source data",
-      detail: "Ke
+      detail: "Keep the source data in a clean rectangular list with one heading row. Do not place decorative headings inside the data range.",
+    },
+    {
+      title: "Plan the workbook as two major tasks",
+      detail: "Use two or more worksheets, but keep the assessed assignment within the current limit of TWO major tasks with no more than THREE requirements in each task. Group related calculations and analysis together.",
+    },
+    {
+      title: "Use efficient formulas",
+      detail: "Create formulas from cell references instead of typing values into the formula. Use one formula and fill it down where possible.",
+    },
+    {
+      title: "Use at least three different functions",
+      detail: "Choose functions that solve a real task in the project. SUM, AVERAGE, IF, COUNTIF, VLOOKUP and PMT are examples, but the brief should determine your choice.",
+    },
+    {
+      title: "Show relative and absolute referencing",
+      detail: "Use absolute references or named ranges when a rate, fee or lookup table must stay fixed while a formula is copied.",
+    },
+    {
+      title: "Format the worksheet",
+      detail: "Apply suitable number formats, alignment, fonts, borders and headings. Money should look like money and percentages should look like percentages.",
+    },
+    {
+      title: "Sort and filter the data",
+      detail: "Use the criteria stated in the project. Check that the displayed records match the requirement after the operation.",
+    },
+    {
+      title: "Create a summary",
+      detail: "Use a pivot table or another appropriate summary method to answer a useful question about the data.",
+    },
+    {
+      title: "Create and label suitable charts",
+      detail: "Choose chart types that match the data. Add useful titles and the required axes or data labels. The current SBA guidance limits the assignment to no more than TWO chart types.",
+    },
+    {
+      title: "Link worksheets",
+      detail: "Use a formula that refers to another worksheet so changes in the source data are reflected automatically.",
+    },
+  ],
+  word: [
+    {
+      title: "Choose the two advanced features",
+      detail: "The current marking scheme allows a choice of TWO advanced features from table of contents, mail merge and fillable forms. Your teacher may specify the pair. If you use a fillable form, keep it within the current control limit.",
+    },
+    {
+      title: "Set up the document correctly",
+      detail: "Set margins, orientation, header or footer and any required page numbering before the document becomes too large.",
+    },
+    {
+      title: "Apply document formatting",
+      detail: "Use clear fonts, suitable sizes, bold, underline or italics only where they help the reader. Keep the layout consistent.",
+    },
+    {
+      title: "Insert useful content",
+      detail: "Add a table, columns, chart or imported graphic only when it supports the task. Size imported items so they fit the page properly.",
+    },
+    {
+      title: "Complete advanced feature one",
+      detail: "For mail merge, check the data source, primary document, merge fields and final merged output. For a fillable form, use clearly labelled controls and no more than four controls in the assignment.",
+    },
+    {
+      title: "Complete advanced feature two",
+      detail: "If using a table of contents, use heading levels first and then generate the table automatically. If using another advanced feature, test every part.",
+    },
+    {
+      title: "Proofread and test",
+      detail: "Check spelling, names, numbers, merge output, form controls, page breaks and imported content.",
+    },
+    {
+      title: "Save with a sensible filename",
+      detail: "Use the exact filename requested by your teacher. Keep a backup copy before making final changes.",
+    },
+  ],
+  web: [
+    {
+      title: "Identify the audience and purpose",
+      detail: "Decide who will use the page and what information they need first.",
+    },
+    {
+      title: "Plan one page",
+      detail: "The current CXC syllabus limits this SBA task to one web page. Plan clear sections on the same page, including a project logo, a navigation area and a content area. Follow your teacher's current instructions if they provide additional requirements.",
+    },
+    {
+      title: "Write the content",
+      detail: "Use short headings and useful paragraphs. The information should match the project and be suitable for the intended audience.",
+    },
+    {
+      title: "Add and size graphics",
+      detail: "Use relevant images or graphics. Keep them clear, appropriately sized and positioned.",
+    },
+    {
+      title: "Add at least two hyperlink types",
+      detail: "Use at least two suitable hyperlink types from the current list, such as another web page, a location on the page, an email address or a user-created file. Test every link.",
+    },
+    {
+      title: "Check consistency",
+      detail: "Make sure names, fees, dates, services and contact details agree with the other SBA components.",
+    },
+    {
+      title: "Test the final page",
+      detail: "Open the page in a browser. Test every link, check the layout at more than one screen width and correct any missing content.",
+    },
+  ],
+  programming: [
+    {
+      title: "Define the problem",
+      detail: "State the part of the overall project that the program will solve. Keep the programmed task small enough to test properly.",
+    },
+    {
+      title: "List inputs, processes and outputs",
+      detail: "Write down what the user enters, what calculations or decisions are made, and what the program must display.",
+    },
+    {
+      title: "Choose variables",
+      detail: "Use clear variable names and identify the data each variable will store.",
+    },
+    {
+      title: "Design the algorithm",
+      detail: "Write pseudocode or draw a flowchart. Include prompts, input, processing, output, at least one selection and at least one loop.",
+    },
+    {
+      title: "Create the trace table",
+      detail: "Use test data that follows the algorithm. Show how important variable values change.",
+    },
+    {
+      title: "Add boundary and invalid test data",
+      detail: "Test values at decision boundaries and include at least one incorrect input where the project allows validation.",
+    },
+    {
+      title: "Write the program",
+      detail: "Translate the tested algorithm into the selected programming language. Keep the logic close to the pseudocode.",
+    },
+    {
+      title: "Run and correct the program",
+      detail: "Use the same test data from the trace table and compare the program output with the expected result.",
+    },
+    {
+      title: "Capture evidence",
+      detail: "Take clear screenshots showing data entry and results. Make sure each screenshot proves a specific test.",
+    },
+    {
+      title: "Prepare the PDF documentation",
+      detail: "Include the cover sheet, problem definition, algorithm, source code, trace table, test data and screenshots of program execution.",
+    },
+  ],
+};
+
+function makeProject(config) {
+  return {
+    ...config,
+    components: {
+      database: {
+        title: "Database Management",
+        produce: config.databaseProduce,
+        steps: GUIDE_STEPS.database,
+        completed: config.databaseCompleted,
+        mistakes: COMMON_MISTAKES.database,
+      },
+      spreadsheet: {
+        title: "Spreadsheet",
+        produce: config.spreadsheetProduce,
+        steps: GUIDE_STEPS.spreadsheet,
+        completed: config.spreadsheetCompleted,
+        mistakes: COMMON_MISTAKES.spreadsheet,
+      },
+      word: {
+        title: "Word Processing",
+        produce: config.wordProduce,
+        steps: GUIDE_STEPS.word,
+        completed: config.wordCompleted,
+        mistakes: COMMON_MISTAKES.word,
+      },
+      web: {
+        title: "Web Page Design",
+        produce: config.webProduce,
+        steps: GUIDE_STEPS.web,
+        completed: config.webCompleted,
+        mistakes: COMMON_MISTAKES.web,
+      },
+      programming: {
+       
