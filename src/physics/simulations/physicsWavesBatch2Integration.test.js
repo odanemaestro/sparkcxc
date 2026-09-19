@@ -27,10 +27,8 @@ describe('Physics Waves Batch 2 integration', () => {
     expect(section).toContain("payload?.source === 'physics_virtual_simulation'");
     expect(section).toContain("payload?.result === 'completed'");
   });
-
-  test('C5 labs remain legacy/manual until Batch 3', () => {
-    expect(registry).not.toContain("'c5-lens-rays': wrap");
-    expect(registry).not.toContain("'c5-focal-length': wrap");
-    expect(section).toContain("Mark lab explored");
+  test('C5 labs are upgraded by Waves Batch 3', () => {
+    expect(registry).toContain("'c5-lens-rays': wrap");
+    expect(registry).toContain("'c5-focal-length': wrap");
   });
 });

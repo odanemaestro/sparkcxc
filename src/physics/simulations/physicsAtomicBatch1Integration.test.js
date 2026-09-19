@@ -23,11 +23,9 @@ describe('Physics Atomic Batch 1 integration',()=>{
     expect(section).toContain("payload?.source === 'physics_virtual_simulation'");
     expect(section).toContain("payload?.result === 'completed'");
   });
-
-  test('remaining Atomic labs stay manual until Batch 2',()=>{
-    for(const id of['e3-nuclear-equations','e3-random-decay','e3-half-life','e3-mass-energy','e3-nuclear-energy-balance']){
-      expect(registry).not.toContain(`'${id}': wrap`);
+  test('Atomic Batch 2 upgrades the remaining Atomic labs',()=>{
+    for(const id of ['e3-nuclear-equations','e3-random-decay','e3-half-life','e3-mass-energy','e3-nuclear-energy-balance']){
+      expect(registry).toContain(`'${id}': wrap`);
     }
-    expect(section).toContain('Mark lab explored');
   });
 });

@@ -21,6 +21,9 @@ import OhmsLawSim from './electricity/OhmsLawSim.jsx';
 import CircuitBuilderSim from './electricity/CircuitBuilderSim.jsx';
 import ElectromagnetismSim from './electricity/ElectromagnetismSim.jsx';
 import MechanicsInteractiveLab from '../mechanics/components/MechanicsInteractiveLab.jsx';
+import { WAVES_INTERACTIVES } from '../waves/interactives/cWavesInteractiveRegistry.mjs';
+import { THERMAL_INTERACTIVES } from '../thermal/interactives/bThermalInteractiveRegistry.mjs';
+import { ATOMIC_INTERACTIVES } from '../atomic/interactives/eAtomicInteractiveRegistry.mjs';
 
 describe('task-gate helpers contain task logic only', () => {
   it('judges balanced moments within tolerance', () => {
@@ -80,9 +83,15 @@ describe('the Physics model layer stays the source of truth', () => {
 
 describe('simulation registry integrity', () => {
   it('every simulation id exists in the SPARK Physics registries', () => {
-    const known = new Set([...MECHANICS_INTERACTIVES, ...ELECTRICITY_INTERACTIVES].map(i => i.id));
+    const known = new Set([
+      ...MECHANICS_INTERACTIVES,
+      ...ELECTRICITY_INTERACTIVES,
+      ...WAVES_INTERACTIVES,
+      ...THERMAL_INTERACTIVES,
+      ...ATOMIC_INTERACTIVES,
+    ].map(i => i.id));
     for (const id of Object.keys(PHYSICS_SIMULATIONS)) expect(known.has(id)).toBe(true);
-    expect(Object.keys(PHYSICS_SIMULATIONS)).toHaveLength(11);
+    expect(Object.keys(PHYSICS_SIMULATIONS)).toHaveLength(41);
     expect(hasSimulation('a2-resultant')).toBe(true);
     expect(hasSimulation('a1-pendulum')).toBe(false);
   });
