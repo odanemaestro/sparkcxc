@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import MathText from "./MathText";
+import BackArrowIcon from "../components/ui/BackArrowIcon";
 import Paper2ResponseInput from "./Paper2ResponseInput";
 import { buildCanonicalPaper2Response } from "./paper2RichGrader";
 import {
@@ -469,7 +470,7 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
   if (!started && !submitted) {
     return (
       <main className="paper-start-shell paper2-start-shell">
-        <button className="paper-text-button" type="button" onClick={onExit}>← Back to Practice</button>
+        <button className="paper-text-button" type="button" onClick={onExit}><BackArrowIcon/><span>Back to Practice</span></button>
         <section className="paper-start-card paper2-start-card">
           <div className="paper-start-kicker">CSEC Mathematics</div>
           <h1>Paper 2 Practice Examination</h1>
@@ -649,7 +650,7 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
     <main className="paper-exam-shell paper2-exam-shell">
       <header className="paper-exam-header paper2-exam-header">
         <div className="paper2-brand-wrap">
-          <button type="button" className="paper2-back-control" onClick={onExit}>← Practice</button>
+          <button type="button" className="paper2-back-control" onClick={onExit}><BackArrowIcon/><span>Practice</span></button>
           <div className="paper-exam-brand"><strong>SPARK</strong><div><span>CSEC Mathematics</span><b>Paper 2 Simulation</b></div></div>
         </div>
         <div className={`paper-timer ${remaining <= 600 ? "is-low" : ""}`}><span>Time remaining</span><strong>{formatClock(remaining)}</strong></div>

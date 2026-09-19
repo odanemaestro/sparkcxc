@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import MathText from "./MathText";
+import BackArrowIcon from "../components/ui/BackArrowIcon";
 import {
   PAPER1_DURATION_SECONDS,
   buildPaper1Exam,
@@ -300,7 +301,7 @@ export default function Paper1Exam({ onExit, startFresh = false, supabase, userI
   if (!started && exam && !result) {
     return (
       <main className="paper-start-shell">
-        <button className="paper-text-button" type="button" onClick={onExit}>Back to Practice</button>
+        <button className="paper-text-button" type="button" onClick={onExit}><BackArrowIcon/><span>Back to Practice</span></button>
         <section className="paper-start-card">
           <div className="paper-start-kicker">CSEC Mathematics</div>
           <h1>Paper 1 Practice Examination</h1>

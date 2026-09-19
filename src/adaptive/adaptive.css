@@ -114,6 +114,12 @@
 html[data-theme="dark"] .csec-adaptive-practice button{
   color:#042F2E;
 }
+.csec-adaptive-practice .adaptive-back-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
 .csec-adaptive-practice button:hover{
   filter:brightness(.95);
 }

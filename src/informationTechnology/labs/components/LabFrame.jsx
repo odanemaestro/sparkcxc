@@ -1,4 +1,5 @@
 import React from "react";
+import { ArrowLeftIcon } from "./Icons";
 
 export function TaskList({ tasks }) {
   const done = tasks.filter(task => task.done).length;
@@ -54,7 +55,7 @@ export function LabFrame({
   return (
     <main className="itv2-lab-page">
       <div className="itv2-lab-page-inner">
-        <button type="button" className="itv2-back" onClick={onBack}>← Practical Labs</button>
+        <button type="button" className="itv2-back" onClick={onBack} data-spark-action="nav"><ArrowLeftIcon/> <span>Practical Labs</span></button>
         <header className="itv2-lab-hero">
           <div>
             <div className="itv2-kicker">CSEC INFORMATION TECHNOLOGY · PRACTICAL</div>

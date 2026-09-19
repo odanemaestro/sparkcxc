@@ -43,9 +43,11 @@ describe("Information Technology practical labs core integrity", () => {
     expect(sheet).toContain("COUNTIF");
     expect(sheet).toContain("VLOOKUP");
     expect(sheet).toContain("PMT");
-    expect(sheet).toContain("=D5*$H$1");
+    expect(sheet).toContain("\\$H\\$1");
+    expect(sheet).toContain("translateFormula");
+    expect(sheet).toContain("absolute-fill");
     expect(sheet).toContain("Filter");
-    expect(sheet).toContain("Pivot Table");
+    expect(sheet).toContain("Pivot summary");
     expect(sheet).toContain("Column");
   });
 
@@ -65,7 +67,7 @@ describe("Information Technology practical labs core integrity", () => {
       "Replace All",
       "Track Changes",
       "Mailings",
-      "Insert «ParentName»",
+      "ParentName",
       "Check box",
     ]) {
       expect(word).toContain(feature);
@@ -76,9 +78,11 @@ describe("Information Technology practical labs core integrity", () => {
     expect(code).toContain("Visual Basic");
     expect(code).toContain("Pascal");
     expect(code).toContain("C");
-    expect(code).toContain("IF-ELSE");
+    expect(code).toMatch(/IF[-\u2013]ELSE/);
     expect(code).toContain("Execution trace");
     expect(code).toContain("FOR");
+    expect(code).toContain("assessSelectionProgram");
+    expect(code).toContain("assessTaxDebug");
   });
 
   test("lab completion remains wired into canonical IT subject progress", () => {

@@ -19,6 +19,7 @@ import { answerEvidenceForSelfAssessment, canonicalOptionKey, recordAnswerObserv
 import { adaptiveOptionDisplayText } from "./adaptiveOptionPresentation";
 import ReportQuestionButton from "../components/ui/ReportQuestionButton";
 import MathText from "../practice/MathText";
+import BackArrowIcon from "../components/ui/BackArrowIcon";
 import "./adaptive.css";
 
 function isAdaptiveMultipleChoice(question) {
@@ -48,7 +49,7 @@ function AdaptiveStimulus({ stimulus }) {
   );
 }
 
-export default function AdaptivePractice({ supabase, userId, setView, backLabel = "← Back to Study" }) {
+export default function AdaptivePractice({ supabase, userId, setView, backLabel = "Back to Study" }) {
   const [manifest, setManifest] = useState(null);
   const [session, setSession] = useState([]);
   const [index, setIndex] = useState(0);
@@ -385,7 +386,7 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
     <main className="csec-adaptive-practice">
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:12,flexWrap:"wrap"}}>
         <h1>CSEC Mathematics Topic Practice</h1>
-        <button type="button" onClick={() => setView?.("lesson")}>{backLabel}</button>
+        <button type="button" className="adaptive-back-button" onClick={() => setView?.("lesson")}><BackArrowIcon/><span>{backLabel}</span></button>
       </div>
       <p>Questions are selected from the topics identified for further practice.</p>
       {dbMessage && <p role="status" className="csec-db-message">{dbMessage}</p>}

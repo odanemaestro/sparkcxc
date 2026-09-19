@@ -2,6 +2,7 @@ import React, { lazy, Suspense, useMemo, useState } from "react";
 import { INFORMATION_TECHNOLOGY_PRACTICAL_LABS } from "./labCatalog";
 import { readLabCompletion, writeLabCompletion } from "./labProgress";
 import { useInformationTechnologyLabRoute } from "../../routing/sparkRoutingV270";
+import { ArrowLeftIcon, ArrowUpRightIcon } from "./components/Icons";
 import "./informationTechnologyLabs.css";
 
 const WordLab = lazy(() => import("./labs/WordLab"));
@@ -71,7 +72,7 @@ export default function InformationTechnologyPracticalLabs({ userId, onBack, onA
   return (
     <main className="itv2-labs-home">
       <div className="itv2-labs-home-inner">
-        <button type="button" className="itv2-back" onClick={onBack}>← Information Technology</button>
+        <button type="button" className="itv2-back" onClick={onBack} data-spark-action="nav"><ArrowLeftIcon/> <span>Information Technology</span></button>
         <header className="itv2-labs-hero">
           <div>
             <div className="itv2-kicker">SPARK PRACTICAL LABS</div>
@@ -93,7 +94,7 @@ export default function InformationTechnologyPracticalLabs({ userId, onBack, onA
                   <span>{lab.description}</span>
                   <em>{lab.outcomes.join(" · ")}</em>
                 </span>
-                <b aria-hidden="true">↗</b>
+                <span className="itv2-card-arrow" aria-hidden="true"><ArrowUpRightIcon/></span>
               </button>
             );
           })}

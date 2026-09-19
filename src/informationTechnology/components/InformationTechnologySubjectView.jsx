@@ -274,7 +274,7 @@ function TopicLesson({ topic, onBack, completed = false, onToggleComplete }) {
   return (
     <main className="it-subject-view">
       <div className="it-shell">
-        <button type="button" className="it-back" onClick={onBack}><BackIcon/><span>Back to section</span></button>
+        <button type="button" className="it-back" onClick={onBack} data-spark-action="nav"><BackIcon/><span>Back to section</span></button>
 
         <header className="it-topic-hero">
           <div className="it-eyebrow">CSEC Information Technology · Section {topic.section}</div>
@@ -390,7 +390,7 @@ function SectionView({ section, onBack, onOpenTopic }) {
   return (
     <main className="it-subject-view">
       <div className="it-shell">
-        <button type="button" className="it-back" onClick={onBack}><BackIcon/><span>All sections</span></button>
+        <button type="button" className="it-back" onClick={onBack} data-spark-action="nav"><BackIcon/><span>All sections</span></button>
         <header className="it-section-hero">
           <div className="it-eyebrow">Section {section.id}</div>
           <h1>{section.title}</h1>
@@ -467,7 +467,7 @@ export default function InformationTechnologySubjectView({ onBack, userId, onAct
       <div className="it-shell">
         <header className="it-hero">
           <div>
-            {onBack && <button type="button" className="it-back" onClick={onBack}><BackIcon/><span>Back</span></button>}
+            {onBack && <button type="button" className="it-back" onClick={onBack} data-spark-action="nav"><BackIcon/><span>Back</span></button>}
             <div className="it-eyebrow">CSEC Information Technology</div>
             <h1>Choose a section</h1>
             <p>Learn the theory, see how it works and practise with SPARK tools built around the current CSEC Information Technology syllabus.</p>

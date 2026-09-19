@@ -176,7 +176,11 @@ function TechnologyImpact({ meta }) {
   </Shell>;
 }
 
-function Magnet({ meta }) { const [a,setA]=useState('N'),[b,setB]=useState('S'); const r=useMemo(()=>buildMagnetModel({poleA:a,poleB:b}),[a,b]); return <Shell meta={meta} note="Like poles repel and unlike poles attract. Outside a magnet, magnetic field direction is from N to S."><div className="electric-magnets"><button type="button" onClick={()=>setA(a==='N'?'S':'N')}>{a}</button><span>↔</span><button type="button" onClick={()=>setB(b==='N'?'S':'N')}>{b}</button></div><Metrics items={[["Force",r.force],["Certain test of magnetism","repulsion"]]}/></Shell>; }
+function Magnet({ meta }) { const [a,setA]=useState('N'),[b,setB]=useState('S'); const r=useMemo(()=>buildMagnetModel({poleA:a,poleB:b}),[a,b]); return <Shell meta={meta} note="Like poles repel and unlike poles attract. Outside a magnet, magnetic field direction is from N to S."><div className="electric-magnets"><button type="button" onClick={()=>setA(a==='N'?'S':'N')}>{a}</button><span className="electric-magnet-arrow" aria-hidden="true">
+        <svg viewBox="0 0 28 18" focusable="false">
+          <path d="M3 9h22M7 4 2 9l5 5M21 4l5 5-5 5"/>
+        </svg>
+      </span><button type="button" onClick={()=>setB(b==='N'?'S':'N')}>{b}</button></div><Metrics items={[["Force",r.force],["Certain test of magnetism","repulsion"]]}/></Shell>; }
 
 function CurrentField({ meta }) {
   const [currentDirection,setCurrentDirection]=useState('up');

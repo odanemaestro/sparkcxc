@@ -107,7 +107,7 @@
 
 .paper2-exam-header{grid-template-columns:minmax(250px,1fr) auto minmax(250px,1fr);background:#fff}
 .paper2-brand-wrap{display:flex;align-items:center;gap:13px;min-width:0}
-.paper2-back-control{min-height:36px;border:1px solid #d5dee9;border-radius:9px;background:#f8fafc;color:#31445f;padding:0 11px;font-family:inherit;font-size:11px;font-weight:800;cursor:pointer;transition:.15s ease}
+.paper2-back-control{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:36px;border:1px solid #d5dee9;border-radius:9px;background:#f8fafc;color:#31445f;padding:0 11px;font-family:inherit;font-size:11px;font-weight:800;cursor:pointer;transition:.15s ease}
 .paper2-back-control:hover{background:#eef3f8;border-color:#aebdce;color:var(--paper-navy)}
 .paper2-header-actions{display:flex;align-items:center;justify-content:flex-end;gap:9px}
 .paper2-header-actions>button{min-height:38px;border-radius:10px;padding:0 13px;font-family:inherit;font-size:11px;font-weight:850;cursor:pointer;transition:.15s ease}
@@ -177,7 +177,7 @@
   .practice-back,.paper-text-button{min-height:40px}.paper2-question-card{padding:18px 14px}.paper2-stem{font-size:17px}.paper2-part-card{padding:15px 13px}.paper2-review-answer-grid{grid-template-columns:1fr}.paper2-symbol-toolbar{align-items:flex-start}.paper2-answer-state{font-size:11px}
 }
 @media(max-width:520px){
-  .paper2-back-control{font-size:0;width:36px;padding:0}.paper2-back-control::before{content:'←';font-size:16px}.paper2-header-actions>button{flex:1}.paper2-header-actions{width:100%}.paper2-question-actions{grid-template-columns:1fr 1fr}.paper2-question-actions .paper-answer-state{grid-column:1/-1;grid-row:1}.paper2-data-table{min-width:500px}
+  .paper2-back-control{width:40px;padding:0}.paper2-back-control span{display:none}.paper2-header-actions>button{flex:1}.paper2-header-actions{width:100%}.paper2-question-actions{grid-template-columns:1fr 1fr}.paper2-question-actions .paper-answer-state{grid-column:1/-1;grid-row:1}.paper2-data-table{min-width:500px}
 }
 
 

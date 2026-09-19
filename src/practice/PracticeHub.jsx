@@ -4,6 +4,7 @@ import { useMathPracticeRoute } from "../routing/sparkRoutingV270";
 import { getSparkSubjectRegistry, subjectsForCapability } from "../subjects/subjectRegistry";
 import { syncLocalPracticeResults } from "./persistence";
 import SparkLoader from "../components/ui/SparkLoader";
+import BackArrowIcon from "../components/ui/BackArrowIcon";
 import "./practiceExam.css";
 
 const AdaptivePractice = lazy(() => import("../adaptive/AdaptivePractice"));
@@ -113,7 +114,7 @@ export default function PracticeHub({ supabase, userId, setView, physicsEnabled 
 if (mode === "adaptive") {
     return (
       <PracticeLazyBoundary label="Loading adaptive practice">
-        <AdaptivePractice supabase={supabase} userId={userId} setView={() => setMode("home")} backLabel="â† Back to Practice" />
+        <AdaptivePractice supabase={supabase} userId={userId} setView={() => setMode("home")} backLabel="Back to Practice" />
       </PracticeLazyBoundary>
     );
   }
@@ -150,7 +151,7 @@ if (mode === "adaptive") {
           <h1>Practise under examination conditions.</h1>
           <p>Select a full Paper 1 or Paper 2 examination, or practise a selected topic.</p>
         </div>
-        <button className="practice-back" type="button" onClick={() => { setMode("home"); setView?.("practice"); }}>â† Change subject</button>
+        <button className="practice-back" type="button" onClick={() => { setMode("home"); setView?.("practice"); }}><BackArrowIcon/><span>Change subject</span></button>
       </section>
 
       <section className="practice-mode-grid practice-mode-grid-three">
@@ -159,7 +160,7 @@ if (mode === "adaptive") {
           <div className="practice-mode-label">Paper 1 examination</div>
           <h2>Paper 1 Simulator</h2>
           <p>Answer 60 multiple-choice questions in 1 hour 30 minutes. Questions are selected to reflect the topic coverage and question types used in CSEC Mathematics Paper 01.</p>
-          <div className="practice-specs-line">60 questions <span>Â·</span> 90 minutes <span>Â·</span> 60 marks <span>Â·</span> Multiple choice</div>
+          <div className="practice-specs-line">60 questions <span>&middot;</span> 90 minutes <span>&middot;</span> 60 marks <span>&middot;</span> Multiple choice</div>
           <div className="practice-card-actions">
             {paper1Active?.questionIds?.length === 60 && <button type="button" className="practice-primary" onClick={() => { setExamIntent("resume"); setMode("paper1"); }}>Resume paper</button>}
             <button type="button" className={paper1Active?.questionIds?.length === 60 ? "practice-secondary" : "practice-primary"} onClick={() => { setExamIntent("new"); setMode("paper1"); }}>Start new paper</button>
@@ -171,7 +172,7 @@ if (mode === "adaptive") {
           <div className="practice-mode-label">Paper 2 examination</div>
           <h2>Paper 2 Simulator</h2>
           <p>Answer 10 compulsory structured questions in 2 hours 40 minutes. The paper follows the Section I and Section II mark allocation used in CSEC Mathematics Paper 02. Answers are marked when the paper is submitted.</p>
-          <div className="practice-specs-line">10 questions <span>Â·</span> 160 minutes <span>Â·</span> 100 marks <span>Â·</span> Auto-graded</div>
+          <div className="practice-specs-line">10 questions <span>&middot;</span> 160 minutes <span>&middot;</span> 100 marks <span>&middot;</span> Auto-graded</div>
           <div className="practice-card-actions">
             {paper2Active?.exam?.questions?.length === 10 && <button type="button" className="practice-primary" onClick={() => { setExamIntent("resume"); setMode("paper2"); }}>Resume paper</button>}
             <button type="button" className={paper2Active?.exam?.questions?.length === 10 ? "practice-secondary" : "practice-primary"} onClick={() => { setExamIntent("new"); setMode("paper2"); }}>Start new paper</button>
@@ -179,21 +180,21 @@ if (mode === "adaptive") {
         </article>
 
         <article className="practice-mode-card adaptive-mode-card">
-          <div className="practice-mode-icon adaptive-icon" aria-hidden="true">â—Ž</div>
+          <div className="practice-mode-icon adaptive-icon" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" focusable="false" fill="none" stroke="currentColor" strokeWidth="1.8"><circle cx="16" cy="16" r="10"/><circle cx="16" cy="16" r="5"/><circle cx="16" cy="16" r="1.7" fill="currentColor" stroke="none"/></svg></div>
           <div className="practice-mode-label">Topic practice</div>
           <h2>Adaptive Practice</h2>
           <p>Select a topic and answer questions based on your recent performance.</p>
-          <div className="practice-specs-line">Topic focused <span>Â·</span> Worked solutions <span>Â·</span> Immediate feedback</div>
+          <div className="practice-specs-line">Topic focused <span>&middot;</span> Worked solutions <span>&middot;</span> Immediate feedback</div>
           <div className="practice-card-actions"><button type="button" className="practice-primary" onClick={() => setMode("adaptive")}>Open adaptive practice</button></div>
         </article>
       </section>
 
       <section className="practice-2027-feature-card">
         <div className="practice-2027-feature-copy">
-          <div className="practice-2027-feature-kicker"><span>NEW</span> Effective for examinations from Mayâ€“June 2027</div>
+          <div className="practice-2027-feature-kicker"><span>NEW</span> Effective for examinations from May&ndash;June 2027</div>
           <h2>2027 Syllabus Practice</h2>
           <p>Practise the revised modular CSEC Mathematics format, including the compulsory Module 1 investigation and questions written for the amended syllabus objectives.</p>
-          <div className="practice-feature-specs-line">3 modules <span>Â·</span> New Paper 2 structure <span>Â·</span> Conceptual Knowledge <span>Â·</span> Algorithmic Knowledge <span>Â·</span> Reasoning</div>
+          <div className="practice-feature-specs-line">3 modules <span>&middot;</span> New Paper 2 structure <span>&middot;</span> Conceptual Knowledge <span>&middot;</span> Algorithmic Knowledge <span>&middot;</span> Reasoning</div>
         </div>
         <button type="button" className="practice-primary practice-2027-open" onClick={() => setMode("2027")}>Open 2027 practice</button>
       </section>

@@ -6482,6 +6482,46 @@ useEffect(() => () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [view]);
+  // SPARK_PHYSICS_IT_NESTED_SCROLL_RESET
+  // Main-view changes already reset scroll above. Physics and IT also use
+  // nested hash routes while staying inside the same main view, so reset
+  // scroll whenever one of those nested pages is entered, restored or
+  // reached with browser Back/Forward.
+  useLayoutEffect(() => {
+    const resetPhysicsAndItScroll = () => {
+      const path = normalizedSparkPathFromBrowserHash();
+      const isPhysicsOrItRoute =
+        path === "/physics" ||
+        path === "/information-technology" ||
+        path?.startsWith("/study/physics") ||
+        path?.startsWith("/practice/physics") ||
+        path?.startsWith("/study/information-technology") ||
+        path?.startsWith("/practice/information-technology");
+
+      if (!isPhysicsOrItRoute) return;
+
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "auto",
+      });
+    };
+
+    // Covers direct entry and hard refresh.
+    resetPhysicsAndItScroll();
+
+    // Covers browser navigation, direct hash changes and SPARK's pushState
+    // nested routing.
+    window.addEventListener("popstate", resetPhysicsAndItScroll);
+    window.addEventListener("hashchange", resetPhysicsAndItScroll);
+    window.addEventListener("spark:routechange", resetPhysicsAndItScroll);
+
+    return () => {
+      window.removeEventListener("popstate", resetPhysicsAndItScroll);
+      window.removeEventListener("hashchange", resetPhysicsAndItScroll);
+      window.removeEventListener("spark:routechange", resetPhysicsAndItScroll);
+    };
+  }, []);
 
   useEffect(() => {
     // SPARK_K753_CLEAR_ABANDONED_TUTOR_SEED

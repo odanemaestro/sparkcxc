@@ -27,11 +27,15 @@ describe("Information Technology Practical Labs V2", () => {
     }
   });
 
-  test("Spreadsheet studio includes formula bar, functions, data tools, chart, pivot and linked sheets", () => {
-    for (const feature of ["formulaBar","SUM","AVERAGE","IF","COUNTIF","VLOOKUP","PMT","Pivot Table","Column","Summary"]) {
+  test("Spreadsheet studio includes formula bar, functions, data tools, chart, summary and linked sheets", () => {
+    for (const feature of ["formulaBar","SUM","AVERAGE","IF","COUNTIF","VLOOKUP","PMT","Pivot summary","Column","Summary"]) {
       expect(sheet).toContain(feature);
     }
-    expect(sheet).toContain("=D5*$H$1");
+
+    expect(sheet).toContain("translateFormula");
+    expect(sheet).toContain("\\$H\\$1");
+    expect(sheet).toContain('evidence.has("absolute-fill")');
+    expect(sheet).toContain('B2: "=Sales!D6"');
   });
 
   test("Database studio includes tables, relationships, queries, forms and reports", () => {
@@ -40,8 +44,8 @@ describe("Information Technology Practical Labs V2", () => {
     }
   });
 
-  test("Presentation studio includes thumbnails, slides, themes, transitions, notes and slide show", () => {
-    for (const feature of ["New Slide","Title and Content","Transitions","Slide Show","Notes","Ocean","Slate","Light"]) {
+  test("Presentation studio includes slides, themes, transitions, notes and slide show", () => {
+    for (const feature of ["New Slide","Title and Content","Transitions","Slide Show","Notes","PRESENTATION_THEMES"]) {
       expect(ppt).toContain(feature);
     }
 
@@ -56,10 +60,26 @@ describe("Information Technology Practical Labs V2", () => {
     }
   });
 
-  test("Programming studio supports Visual Basic, Pascal and C with run, test and debug workflows", () => {
-    for (const feature of ["Visual Basic","Pascal","C","Code","Test","Debug","Documentation","Execution trace","FOR"]) {
+  test("Programming studio supports CXC languages plus run, test, trace, debug and documentation workflows", () => {
+    for (const feature of [
+      "Visual Basic",
+      "Pascal",
+      "C",
+      "Code",
+      "Test & Output",
+      "Variable Trace",
+      "Debug",
+      "Execution trace",
+      "FOR",
+      "Add useful comment",
+      "PROGRAMMING_TEMPLATES",
+      "assessSelectionProgram",
+      "assessTaxDebug",
+    ]) {
       expect(code).toContain(feature);
     }
+
+    expect(code).toMatch(/IF[-\u2013]ELSE/);
   });
 
   test("responsive and dark mode lab styling remains present", () => {
