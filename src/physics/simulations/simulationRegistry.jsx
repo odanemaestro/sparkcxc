@@ -48,6 +48,13 @@ export const PHYSICS_SIMULATIONS = {
   'b3-latent-heat': wrap(() => import('./thermal/LatentHeatSim.jsx')),
   'b4-radiation-surfaces': wrap(() => import('./thermal/RadiationSurfacesSim.jsx')),
   'b4-convection': wrap(() => import('./thermal/ConvectionSim.jsx')),
+  // E The Physics of the Atom · Batch 1
+  'e1-scattering': wrap(() => import('./atomic/RutherfordScatteringSim.jsx')),
+  'e2-atom-builder': wrap(() => import('./atomic/AtomBuilderSim.jsx')),
+  'e2-isotope-builder': wrap(() => import('./atomic/IsotopeExplorerSim.jsx')),
+  'e3-radiation-properties': wrap(() => import('./atomic/RadiationPropertiesSim.jsx')),
+  'e3-field-deflection': wrap(() => import('./atomic/FieldDeflectionSim.jsx')),
+
 };
 
 export const hasSimulation = id => Object.prototype.hasOwnProperty.call(PHYSICS_SIMULATIONS, id);

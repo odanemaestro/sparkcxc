@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import MathText from '../../../practice/MathText';
 import { ATOMIC_INTERACTIVES } from '../interactives/eAtomicInteractiveRegistry.mjs';
+import { PhysicsSimulationSlot, hasSimulation } from '../../simulations/simulationRegistry.jsx';
 import { buildScatteringModel, buildAtomModel, buildIsotopeModel, buildRadiationModel, buildDeflectionModel, buildNuclearEquationModel, buildDecayModel, buildHalfLifeModel, buildMassEnergyModel, buildNuclearEnergyBalance } from '../interactives/eAtomicInteractiveModels.mjs';
 import './physicsAtomic.css';
 
@@ -24,4 +25,4 @@ function MassEnergy({meta}){const[mass,setMass]=useState(2);const r=useMemo(()=>
 function EnergyBalance({meta}){const[benefits,setBenefits]=useState(2),[risks,setRisks]=useState(2);const r=useMemo(()=>buildNuclearEnergyBalance({benefits,risks}),[benefits,risks]);return <Shell meta={meta} note="A strong evaluation names specific benefits and specific risks rather than arguing only one side."><div className="pm-controls-grid"><Range label="Evidence points for" value={benefits} setValue={setBenefits} min={0} max={5}/><Range label="Evidence points against" value={risks} setValue={setRisks} min={0} max={5}/></div><Metrics items={[["Balanced evaluation",r.balanced?'Yes':'Not yet'],["For",r.benefits],["Against",r.risks]]}/></Shell>}
 
 const MAP={'e1-scattering':Scattering,'e2-atom-builder':Atom,'e2-isotope-builder':Isotope,'e3-radiation-properties':Radiation,'e3-field-deflection':Deflection,'e3-nuclear-equations':NuclearEquation,'e3-random-decay':RandomDecay,'e3-half-life':HalfLife,'e3-mass-energy':MassEnergy,'e3-nuclear-energy-balance':EnergyBalance};
-export default function AtomicInteractiveLab({interactiveId}){const meta=ATOMIC_INTERACTIVES.find(x=>x.id===interactiveId);if(!meta)return <div className="pm-empty">Interactive not found.</div>;const C=MAP[interactiveId];return C?<C meta={meta}/>:<div className="pm-empty">Interactive not found.</div>}
+export default function AtomicInteractiveLab({interactiveId,onEvidence}){const meta=ATOMIC_INTERACTIVES.find(x=>x.id===interactiveId);if(!meta)return <div className="pm-empty">Interactive not found.</div>;const C=MAP[interactiveId];const evidence=payload=>onEvidence?.({interactiveId:meta.id,topic:meta.topic,...payload});if(hasSimulation(interactiveId))return <PhysicsSimulationSlot interactiveId={interactiveId} onEvidence={evidence}/>;return C?<C meta={meta}/>:<div className="pm-empty">Interactive not found.</div>}
