@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 import InformationTechnologyPaper1Exam from "./InformationTechnologyPaper1Exam";
 import InformationTechnologyPaper2Exam from "./InformationTechnologyPaper2Exam";
+import InformationTechnologySbaCentre from "./InformationTechnologySbaCentre";
+import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import "./informationTechnologyPractice.css";
 import { useInformationTechnologyPracticeRoute } from "../../routing/sparkRoutingV270";
 import { syncInformationTechnologyLocalProgress } from "../../subjects/subjectProgress";
@@ -48,6 +50,7 @@ export default function InformationTechnologyPracticeHub({ onBack, supabase, use
 
   if (mode === "paper1") return <InformationTechnologyPaper1Exam startFresh={fresh} onActivity={onActivity} onExit={() => setMode("home")}/>;
   if (mode === "paper2") return <InformationTechnologyPaper2Exam startFresh={fresh} onActivity={onActivity} onExit={() => setMode("home")}/>;
+  if (mode === "sba") return <InformationTechnologySbaCentre onBack={() => setMode("home")}/>;
 
   return (
     <main className="it-practice-hub">
@@ -55,12 +58,12 @@ export default function InformationTechnologyPracticeHub({ onBack, supabase, use
         <div>
           <div className="it-practice-eyebrow">CSEC Information Technology practice</div>
           <h1>Practise under examination conditions.</h1>
-          <p>SPARK includes nine complete Paper 01 simulations and nine complete Paper 02 simulations, with original questions modelled on the current CSEC format, language and syllabus coverage.</p>
+          <p>Prepare for Paper 01 and Paper 02, or work through the SBA Centre with guided projects, clear steps and original SPARK reference examples.</p>
         </div>
-        <button className="it-practice-back" type="button" onClick={onBack}>← Change subject</button>
+        <button className="it-practice-back" data-spark-action="nav" type="button" onClick={onBack}><BackArrowIcon/><span>Change subject</span></button>
       </section>
 
-      <section className="it-practice-mode-grid">
+      <section className="it-practice-mode-grid it-practice-mode-grid-three">
         <article className="it-practice-mode-card">
           <div className="it-practice-mode-icon">PAPER 01</div>
           <div className="it-practice-label">Multiple-choice examination</div>
@@ -82,6 +85,17 @@ export default function InformationTechnologyPracticeHub({ onBack, supabase, use
           <div className="it-practice-actions">
             {snapshot.p2Active?.paperId && <button className="it-practice-primary" type="button" onClick={() => { setFresh(false); setMode("paper2"); }}>Resume paper</button>}
             <button className={snapshot.p2Active?.paperId ? "it-practice-secondary" : "it-practice-primary"} type="button" onClick={() => { setFresh(true); setMode("paper2"); }}>{snapshot.p2Active?.paperId ? "New paper instructions" : "View instructions"}</button>
+          </div>
+        </article>
+
+        <article className="it-practice-mode-card it-sba-mode-card">
+          <div className="it-practice-mode-icon">SBA</div>
+          <div className="it-practice-label">School-Based Assessment</div>
+          <h2>SBA Centre</h2>
+          <p>Work through five original practice projects. Follow each component step by step, compare your thinking with completed SPARK references and download useful starter and reference files.</p>
+          <div className="it-practice-specs">5 guided projects <span>&middot;</span> 5 linked areas <span>&middot;</span> Reference downloads</div>
+          <div className="it-practice-actions">
+            <button className="it-practice-primary" type="button" onClick={() => setMode("sba")}>Open SBA Centre</button>
           </div>
         </article>
       </section>
