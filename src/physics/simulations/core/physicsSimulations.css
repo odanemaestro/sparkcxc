@@ -437,3 +437,32 @@
 .psim-heating-line{fill:none;stroke:var(--pm-primary);stroke-width:4;stroke-linejoin:round}.psim-heating-marker{fill:var(--pm-accent);stroke:var(--pm-card);stroke-width:2}
 .psim-particle-container{fill:var(--pm-card);stroke:var(--pm-line);stroke-width:2}.psim-thermal-particle{fill:var(--pm-primary);opacity:.9}.psim-thermal-particle.melting,.psim-thermal-particle.boiling{fill:var(--pm-accent)}.psim-thermal-particle.liquid-warming{fill:var(--pm-good)}
 @media(max-width:780px){.psim-heating-layout{grid-template-columns:1fr}}@media(max-width:560px){.psim-thermal-stage,.psim-kelvin-stage,.psim-heating-graph,.psim-particle-box{border-radius:13px}.psim-thermal-label{font-size:10px}}
+
+/* SPARK PHYSICS THERMAL BATCH 2 V1 */
+.psim-shc-block{fill:var(--pm-primary-soft);stroke:var(--pm-primary);stroke-width:2}
+.psim-heater-element{fill:var(--pm-accent)}
+.psim-heater-lead{fill:none;stroke:var(--pm-ink);stroke-width:3}
+.psim-power-terminal{fill:var(--pm-card);stroke:var(--pm-ink);stroke-width:2}
+.psim-ice-container{fill:var(--pm-card);stroke:var(--pm-ink);stroke-width:2}
+.psim-ice-block{fill:var(--pm-primary-soft);stroke:var(--pm-primary);stroke-width:2}
+.psim-melt-stream{stroke:var(--pm-primary);stroke-width:6;stroke-linecap:round}
+.psim-collector{fill:var(--pm-card);stroke:var(--pm-ink);stroke-width:2}
+.psim-collected-water{fill:var(--pm-primary-soft)}
+.psim-radiation-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0}
+.psim-radiation-grid button{min-height:210px;border:1px solid var(--pm-line);border-radius:16px;background:var(--pm-card2);color:var(--pm-ink);padding:14px;display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:center;font:inherit;cursor:pointer}
+.psim-radiation-grid button.active{border-color:var(--pm-primary);box-shadow:0 0 0 2px var(--pm-primary-soft) inset}
+.psim-radiation-grid em{font-style:normal;color:var(--pm-muted);font-size:12px}
+.psim-radiation-surface{position:relative;display:block;width:110px;height:74px;border-radius:12px;border:1px solid var(--pm-line)}
+.psim-radiation-surface.dull-black{background:#191919}
+.psim-radiation-surface.dull-white{background:#ececec}
+.psim-radiation-surface.shiny-metal{background:linear-gradient(135deg,#aaa,#f8f8f8,#9a9a9a)}
+.psim-radiation-surface i{position:absolute;left:70px;top:34px;width:34px;height:2px;background:var(--pm-accent);transform-origin:left center;box-shadow:0 -14px 0 var(--pm-accent),0 14px 0 var(--pm-accent)}
+.psim-convection-vessel{fill:var(--pm-card);stroke:var(--pm-ink);stroke-width:2}
+.psim-hot-zone{fill:var(--pm-accent);opacity:.42}
+.psim-cool-zone{fill:var(--pm-primary-soft)}
+.psim-convection-loop{fill:none;stroke:var(--pm-primary);stroke-width:5;stroke-dasharray:10 8}
+.psim-convection-loop.reversed{stroke:var(--pm-accent)}
+.psim-convection-loop.neutral{stroke:var(--pm-muted);opacity:.35}
+.psim-convection-particle.warm{fill:var(--pm-accent)}
+.psim-convection-particle.cool{fill:var(--pm-primary)}
+@media(max-width:700px){.psim-radiation-grid{grid-template-columns:1fr}.psim-radiation-grid button{min-height:150px}}

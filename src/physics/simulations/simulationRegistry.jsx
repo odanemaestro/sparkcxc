@@ -43,6 +43,11 @@ export const PHYSICS_SIMULATIONS = {
   'b2-kelvin-extrapolation': wrap(() => import('./thermal/KelvinExtrapolationSim.jsx')),
   'b2-expansion': wrap(() => import('./thermal/ThermalExpansionSim.jsx')),
   'b3-heating-curve': wrap(() => import('./thermal/HeatingCurveSim.jsx')),
+  // B Thermal Physics · Batch 2
+  'b3-specific-heat': wrap(() => import('./thermal/SpecificHeatSim.jsx')),
+  'b3-latent-heat': wrap(() => import('./thermal/LatentHeatSim.jsx')),
+  'b4-radiation-surfaces': wrap(() => import('./thermal/RadiationSurfacesSim.jsx')),
+  'b4-convection': wrap(() => import('./thermal/ConvectionSim.jsx')),
 };
 
 export const hasSimulation = id => Object.prototype.hasOwnProperty.call(PHYSICS_SIMULATIONS, id);
