@@ -366,4 +366,161 @@ function CentreHome({ openProject, onBack }) {
             {IT_SBA_CURRENT_LIMITS.map(item => (
               <article key={item.id}>
                 <SbaIcon type={item.id} size={20}/>
-                <di
+                <div><strong>{item.title}</strong><p>{item.text}</p></div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="it-sba-roadmap-section">
+          <div className="it-sba-section-heading">
+            <div>
+              <div className="it-practice-label">How the work connects</div>
+              <h2>Your SBA should feel like one project, not five unrelated tasks.</h2>
+            </div>
+          </div>
+          <div className="it-sba-roadmap">
+            {IT_SBA_COMPONENTS.map((item, index) => (
+              <div key={item.id} className="it-sba-roadmap-item">
+                <span>{index + 1}</span>
+                <SbaIcon type={item.id}/>
+                <strong>{item.title}</strong>
+                <p>{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="it-sba-projects-section">
+          <div className="it-sba-section-heading">
+            <div>
+              <div className="it-practice-label">Guided sample projects</div>
+              <h2>Choose a realistic scenario and work through the full SBA flow.</h2>
+              <p>Each project uses original SPARK wording and fictional data. The examples are designed for learning, not for submission as your own SBA.</p>
+            </div>
+          </div>
+          <div className="it-sba-project-grid">
+            {IT_SBA_PROJECTS.map(project => (
+              <article className="it-sba-project-card" key={project.id}>
+                <div className="it-sba-project-topline"><span>{project.code}</span><em>{project.level}</em></div>
+                <div className="it-sba-project-icon"><SbaIcon type="project" size={28}/></div>
+                <div className="it-practice-label">{project.sector}</div>
+                <h3>{project.title}</h3>
+                <p>{project.scenario}</p>
+                <div className="it-sba-project-focus">{project.accent}</div>
+                <button type="button" className="it-practice-primary" onClick={() => openProject(project.id)}>Open guided project</button>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="it-sba-timeline-card">
+          <div className="it-sba-timeline-copy">
+            <SbaIcon type="calendar" size={28}/>
+            <div>
+              <div className="it-practice-label">SBA timeline planner</div>
+              <h2>Work backwards from your school deadline.</h2>
+              <p>Enter your target submission date and SPARK will suggest checkpoints. Your teacher's dates always take priority.</p>
+            </div>
+          </div>
+          <label className="it-sba-date-field">Target submission date
+            <input type="date" value={deadline} onChange={event => setDeadline(event.target.value)}/>
+          </label>
+          {milestones.length > 0 && <div className="it-sba-milestones">
+            {milestones.map(item => <div key={item.label}><strong>{dateLabel(item.date)}</strong><span>{item.label}</span></div>)}
+          </div>}
+        </section>
+
+        <section className="it-sba-integrity-card">
+          <div className="it-sba-integrity-icon"><SbaIcon type="check" size={30}/></div>
+          <div>
+            <div className="it-practice-label">Use SPARK properly</div>
+            <h2>Study the examples. Build your own assigned project.</h2>
+            <p>These completed examples are SPARK practice projects. Do not submit them, rename them or copy their data as your own SBA. Your teacher should guide and monitor your actual project. If you use AI tools in assessed work, follow your school rules and current CXC disclosure requirements.</p>
+          </div>
+        </section>
+      </section>
+    </main>
+  );
+}
+
+function ProjectOverview({ project, openHome, openComponent }) {
+  const [progress, setProgress] = useState(() => readProgress(project.id));
+  const completeCount = IT_SBA_COMPONENTS.filter(item => progress[item.id]).length;
+
+  useEffect(() => {
+    setProgress(readProgress(project.id));
+  }, [project.id]);
+
+  function resetProgress() {
+    const next = {};
+    setProgress(next);
+    writeProgress(project.id, next);
+  }
+
+  return (
+    <main className="it-sba-page">
+      <section className="it-sba-shell">
+        <button type="button" className="it-practice-back it-sba-back" data-spark-action="nav" onClick={openHome}>
+          <BackArrowIcon/><span>All SBA projects</span>
+        </button>
+
+        <header className="it-sba-project-hero">
+          <div>
+            <div className="it-practice-eyebrow">{project.code} - {project.sector}</div>
+            <h1>{project.title}</h1>
+            <p>{project.scenario}</p>
+          </div>
+          <div className="it-sba-progress-ring" aria-label={`${completeCount} of 5 sections reviewed`}>
+            <strong>{completeCount}/5</strong>
+            <span>sections reviewed</span>
+          </div>
+        </header>
+
+        <section className="it-sba-project-purpose">
+          <div className="it-practice-label">Description of Project</div>
+          <h2>What you are building</h2>
+          <p>{project.purpose}</p>
+        </section>
+
+        <section className="it-sba-component-grid">
+          {IT_SBA_COMPONENTS.map((item, index) => {
+            const component = project.components[item.id];
+            const done = Boolean(progress[item.id]);
+            return (
+              <article key={item.id} className={`it-sba-component-card ${done ? "done" : ""}`}>
+                <div className="it-sba-component-head">
+                  <div className="it-sba-component-icon"><SbaIcon type={item.id}/></div>
+                  <span>Task {String.fromCharCode(65 + index)}</span>
+                  <strong>{item.marks} marks</strong>
+                </div>
+                <h2>{item.title}</h2>
+                <p>{component.produce}</p>
+                <button type="button" className={done ? "it-practice-secondary" : "it-practice-primary"} onClick={() => openComponent(project.id, item.id)}>
+                  {done ? "Review section" : "Start section"}
+                </button>
+              </article>
+            );
+          })}
+        </section>
+
+        <section className="it-sba-download-card">
+          <div>
+            <div className="it-practice-label">SPARK download centre</div>
+            <h2>Download the reference material for this practice project.</h2>
+            <p>The completed reference is an original SPARK example. Study how the parts connect, then use the same thinking on your own teacher-assigned project.</p>
+          </div>
+          <div className="it-sba-download-grid">
+            <button type="button" onClick={() => downloadTextFile(`${safeFilename(project.title)}-completed-reference.html`, referenceGuideHtml(project), "text/html;charset=utf-8")}>
+              <SbaIcon type="download"/><span><strong>Completed reference</strong><small>Full HTML guide</small></span>
+            </button>
+            <button type="button" onClick={() => downloadTextFile(`${safeFilename(project.title)}-starter-data.csv`, rowsToCsv(project.starterRows), "text/csv;charset=utf-8")}>
+              <SbaIcon type="download"/><span><strong>Starter data</strong><small>CSV file</small></span>
+            </button>
+            <button type="button" onClick={() => downloadTextFile(`${safeFilename(project.title)}-sample-web-page.html`, sampleWebPageHtml(project), "text/html;charset=utf-8")}>
+              <SbaIcon type="download"/><span><strong>Sample web page</strong><small>HTML file</small></span>
+            </button>
+            <button type="button" onClick={() => downloadTextFile(`${safeFilename(project.title)}-sample-program.pas`, project.components.programming.completed.pascal.join("\r\n"))}>
+              <SbaIcon type="download"/><span><strong>Sample Pascal program</strong><small>PAS file</small></span>
+            </button>
+            <button type="button" onClick={() => downloadTextFile(`${safeFilename(project.title)}
