@@ -71,7 +71,7 @@ export default function InformationTechnologyPracticalLabs({ userId, onBack, onA
   return (
     <main className="itv2-labs-home">
       <div className="itv2-labs-home-inner">
-        <button type="button" className="itv2-back" onClick={onBack}>← Information Technology</button>
+        <button type="button" className="itv2-back" data-spark-action="nav" onClick={onBack}>← Information Technology</button>
         <header className="itv2-labs-hero">
           <div>
             <div className="itv2-kicker">SPARK PRACTICAL LABS</div>
