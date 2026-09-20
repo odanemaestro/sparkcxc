@@ -6,6 +6,11 @@ import { loadGenericSubjectStructure } from "./genericSubjectCatalog";
 import InteractiveLabelDiagram from "./components/InteractiveLabelDiagram";
 import TransportProcessExplorer from "./components/TransportProcessExplorer";
 import {
+  adjacentGenericTopic,
+  buildSequentialProgression,
+  resolveSequentialTopic,
+} from "./genericSubjectProgression";
+import {
   readSparkHashRoute,
   subscribeSparkRoute,
   writeSparkNestedRoute,
@@ -200,12 +205,33 @@ export default function GenericSubjectStudyView({
 
   const subjectId = String(subject?.id || "").trim().toLowerCase();
   const studyPath = subject?.routes?.study || (subjectId ? `/study/${subjectId}` : "/study");
+  const sequentialLessons = String(subject?.learningConfig?.progression || "").toLowerCase() === "sequential";
 
   const applySelection = useCallback((nextStructure, completed) => {
     if (!nextStructure) return;
 
     const safeCompleted = completed || new Set();
     const routed = routeSelection(studyPath, nextStructure);
+
+    if (sequentialLessons) {
+      const topic = resolveSequentialTopic({
+        structure:nextStructure,
+        completedIds:safeCompleted,
+        requestedTopicId:routed.topicId,
+        requestedSectionId:routed.sectionId,
+      });
+
+      setActiveSectionId(topic?.sectionId || nextStructure.sections?.[0]?.id || null);
+      setActiveTopicId(topic?.id || null);
+
+      if (topic && routed.topicId && routed.topicId !== topic.id) {
+        writeSparkNestedRoute(studyPath, {
+          section:topic.sectionId || null,
+          topic:topic.id,
+        }, { replace:true });
+      }
+      return;
+    }
 
     if (routed.topicId) {
       setActiveSectionId(routed.sectionId);
@@ -224,7 +250,7 @@ export default function GenericSubjectStudyView({
     const topic = firstTopic(nextStructure, safeCompleted);
     setActiveSectionId(topic?.sectionId || nextStructure.sections?.[0]?.id || null);
     setActiveTopicId(topic?.id || null);
-  }, [studyPath]);
+  }, [sequentialLessons, studyPath]);
 
   useEffect(() => {
     let cancelled = false;
@@ -296,6 +322,28 @@ export default function GenericSubjectStudyView({
       if (route.path !== studyPath) return;
 
       const next = routeSelection(studyPath, structure);
+
+      if (sequentialLessons) {
+        const topic = resolveSequentialTopic({
+          structure,
+          completedIds:completedTopicIds,
+          requestedTopicId:next.topicId,
+          requestedSectionId:next.sectionId,
+        });
+        if (!topic) return;
+
+        setActiveSectionId(topic.sectionId || null);
+        setActiveTopicId(topic.id);
+
+        if (next.topicId && next.topicId !== topic.id) {
+          writeSparkNestedRoute(studyPath, {
+            section:topic.sectionId || null,
+            topic:topic.id,
+          }, { replace:true });
+        }
+        return;
+      }
+
       if (next.topicId) {
         setActiveSectionId(next.sectionId);
         setActiveTopicId(next.topicId);
@@ -308,7 +356,7 @@ export default function GenericSubjectStudyView({
         setActiveTopicId(topic?.id || null);
       }
     });
-  }, [structure, studyPath, subjectId]);
+  }, [completedTopicIds, sequentialLessons, structure, studyPath, subjectId]);
 
   const activeTopic = useMemo(
     () => structure?.topics?.find(topic => topic.id === activeTopicId) || null,
@@ -331,8 +379,25 @@ export default function GenericSubjectStudyView({
     ? Math.round((completedCount / totalTopics) * 100)
     : 0;
 
+  const sequentialProgression = useMemo(
+    () => buildSequentialProgression(structure || {},completedTopicIds),
+    [completedTopicIds,structure]
+  );
+  const previousTopic = useMemo(
+    () => adjacentGenericTopic(structure || {},activeTopicId,-1),
+    [activeTopicId,structure]
+  );
+  const nextTopic = useMemo(
+    () => adjacentGenericTopic(structure || {},activeTopicId,1),
+    [activeTopicId,structure]
+  );
+
   const openTopic = useCallback((topic, sectionId) => {
     if (!topic) return;
+    if (sequentialLessons && !sequentialProgression.isUnlocked(topic)) {
+      showToast?.("Complete the current lesson before opening this lesson.","info");
+      return;
+    }
 
     setActiveSectionId(sectionId || topic.sectionId || null);
     setActiveTopicId(topic.id);
@@ -343,7 +408,7 @@ export default function GenericSubjectStudyView({
     });
 
     if (typeof window !== "undefined") window.scrollTo?.(0, 0);
-  }, [studyPath]);
+  }, [sequentialLessons,sequentialProgression,showToast,studyPath]);
 
   const recordInteractiveComplete = useCallback(async ({
     activityId,
@@ -561,17 +626,26 @@ export default function GenericSubjectStudyView({
                     {section.topics.map(topic => {
                       const active = topic.id === activeTopicId;
                       const complete = completedTopicIds.has(topic.id);
+                      const locked = sequentialLessons && !sequentialProgression.isUnlocked(topic);
 
                       return (
                         <button
                           type="button"
                           key={topic.id}
-                          className={`${active ? "active" : ""} ${complete ? "complete" : ""}`}
+                          className={`${active ? "active" : ""} ${complete ? "complete" : ""} ${locked ? "locked" : ""}`}
                           onClick={() => openTopic(topic, section.id)}
                           aria-current={active ? "page" : undefined}
+                          aria-disabled={locked ? "true" : undefined}
+                          disabled={locked}
+                          title={locked ? "Complete the current lesson to unlock this lesson." : undefined}
                         >
                           <span className="spark-generic-topic-state" aria-hidden="true">
-                            {complete ? (
+                            {locked ? (
+                              <svg viewBox="0 0 20 20" focusable="false">
+                                <rect x="5.5" y="9" width="9" height="7" rx="1.5" />
+                                <path d="M7.5 9V7a2.5 2.5 0 015 0v2" />
+                              </svg>
+                            ) : complete ? (
                               <svg viewBox="0 0 20 20" focusable="false">
                                 <path d="M5 10.5l3 3L15 7" />
                               </svg>
@@ -594,25 +668,37 @@ export default function GenericSubjectStudyView({
                     <small>{structure.unassignedTopics.length}</small>
                   </div>
                   <div className="spark-generic-outline-topics">
-                    {structure.unassignedTopics.map(topic => (
-                      <button
-                        type="button"
-                        key={topic.id}
-                        className={topic.id === activeTopicId ? "active" : ""}
-                        onClick={() => openTopic(topic, null)}
-                      >
-                        <span className="spark-generic-topic-state" aria-hidden="true">
-                          {completedTopicIds.has(topic.id) ? (
-                            <svg viewBox="0 0 20 20" focusable="false">
-                              <path d="M5 10.5l3 3L15 7" />
-                            </svg>
-                          ) : (
-                            <span className="spark-generic-topic-dot" />
-                          )}
-                        </span>
-                        <span>{topic.title}</span>
-                      </button>
-                    ))}
+                    {structure.unassignedTopics.map(topic => {
+                      const complete = completedTopicIds.has(topic.id);
+                      const locked = sequentialLessons && !sequentialProgression.isUnlocked(topic);
+                      return (
+                        <button
+                          type="button"
+                          key={topic.id}
+                          className={`${topic.id === activeTopicId ? "active" : ""} ${complete ? "complete" : ""} ${locked ? "locked" : ""}`}
+                          onClick={() => openTopic(topic, null)}
+                          disabled={locked}
+                          aria-disabled={locked ? "true" : undefined}
+                          title={locked ? "Complete the current lesson to unlock this lesson." : undefined}
+                        >
+                          <span className="spark-generic-topic-state" aria-hidden="true">
+                            {locked ? (
+                              <svg viewBox="0 0 20 20" focusable="false">
+                                <rect x="5.5" y="9" width="9" height="7" rx="1.5" />
+                                <path d="M7.5 9V7a2.5 2.5 0 015 0v2" />
+                              </svg>
+                            ) : complete ? (
+                              <svg viewBox="0 0 20 20" focusable="false">
+                                <path d="M5 10.5l3 3L15 7" />
+                              </svg>
+                            ) : (
+                              <span className="spark-generic-topic-dot" />
+                            )}
+                          </span>
+                          <span>{topic.title}</span>
+                        </button>
+                      );
+                    })}
                   </div>
                 </section>
               )}
@@ -641,18 +727,40 @@ export default function GenericSubjectStudyView({
                   />
 
                   <div className="spark-generic-lesson-footer">
-                    <button
-                      type="button"
-                      className={completedTopicIds.has(activeTopic.id) ? "completed" : ""}
-                      disabled={saving || completedTopicIds.has(activeTopic.id)}
-                      onClick={markComplete}
-                    >
-                      {saving
-                        ? "Saving..."
-                        : completedTopicIds.has(activeTopic.id)
-                          ? "Lesson completed"
-                          : "Mark lesson complete"}
-                    </button>
+                    <div className="spark-generic-lesson-nav-left">
+                      {previousTopic && (
+                        <button
+                          type="button"
+                          className="secondary"
+                          onClick={() => openTopic(previousTopic,previousTopic.sectionId)}
+                        >
+                          Previous
+                        </button>
+                      )}
+                    </div>
+
+                    <div className="spark-generic-lesson-nav-right">
+                      {!completedTopicIds.has(activeTopic.id) ? (
+                        <button
+                          type="button"
+                          disabled={saving}
+                          onClick={markComplete}
+                        >
+                          {saving ? "Saving..." : "Mark lesson complete"}
+                        </button>
+                      ) : nextTopic && (!sequentialLessons || sequentialProgression.isUnlocked(nextTopic)) ? (
+                        <button
+                          type="button"
+                          onClick={() => openTopic(nextTopic,nextTopic.sectionId)}
+                        >
+                          Next lesson
+                        </button>
+                      ) : (
+                        <button type="button" className="completed" disabled>
+                          {nextTopic ? "Next lesson locked" : "Course complete"}
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </>
               ) : (

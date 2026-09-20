@@ -71,3 +71,63 @@ body[data-theme="dark"] .spark-generic-study-hero-actions button:hover,
 .spark-generic-objectives>strong{color:var(--spark-teal-dark,#087f73);font-size:12px;font-weight:900;text-transform:uppercase}
 .spark-generic-objectives ul{margin:10px 0 0;padding-left:20px}
 .spark-generic-objectives li{margin:5px 0}
+
+/* SPARK_GENERIC_SEQUENTIAL_LESSONS_V1 */
+.spark-generic-outline-topics button.locked,
+.spark-generic-outline-topics button.locked:hover{
+  background:transparent;
+  color:var(--spark-text-muted,#7b8794);
+  cursor:not-allowed;
+  opacity:.68;
+}
+.spark-generic-outline-topics button.locked .spark-generic-topic-state{
+  background:var(--spark-muted,#edf2f7);
+  color:var(--spark-text-muted,#7b8794);
+}
+.spark-generic-outline-topics button.locked .spark-generic-topic-state svg{
+  fill:none;
+  stroke:currentColor;
+}
+.spark-generic-lesson-footer{
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.spark-generic-lesson-nav-left,
+.spark-generic-lesson-nav-right{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.spark-generic-lesson-footer button.secondary{
+  border:1px solid var(--spark-border,#d9e2ec);
+  background:var(--spark-paper,#fff);
+  color:var(--spark-ink,#102a43);
+}
+html[data-theme="dark"] .spark-generic-outline-topics button.locked,
+body[data-theme="dark"] .spark-generic-outline-topics button.locked,
+.dark .spark-generic-outline-topics button.locked{
+  color:#94a3b8;
+  opacity:.78;
+}
+html[data-theme="dark"] .spark-generic-lesson-footer button.secondary,
+body[data-theme="dark"] .spark-generic-lesson-footer button.secondary,
+.dark .spark-generic-lesson-footer button.secondary{
+  border-color:#39566e;
+  background:#15314b;
+  color:#e7f2fb;
+}
+@media(max-width:640px){
+  .spark-generic-lesson-footer{
+    display:grid;
+    grid-template-columns:1fr;
+  }
+  .spark-generic-lesson-nav-left,
+  .spark-generic-lesson-nav-right{
+    width:100%;
+  }
+  .spark-generic-lesson-nav-left button,
+  .spark-generic-lesson-nav-right button{
+    width:100%;
+  }
+}
