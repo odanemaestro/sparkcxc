@@ -39,13 +39,14 @@ function StudyView({topic,progress,setCompleted}){
     </aside>
   </div>;
 }
-function LabsView({topic,progress,setCompleted,onEvidence,userId}){
+function LabsView({topic,progress,setCompleted,onEvidence,onActivity,userId}){
   const labs=MECHANICS_INTERACTIVES.filter(i=>i.topic===topic.id);
   return <div className="pm-labs-grid">{labs.map(lab=>{
     const upgraded=hasSimulation(lab.id);
     const complete=Boolean(progress[`lab:${lab.id}`]);
     const evidence=payload=>{
       onEvidence?.(payload);
+      onActivity?.({type:'physics_lab_evidence',subject:'CSEC Physics',section:'A',topic:topic.id,lab:lab.id,...payload});
       if(upgraded&&payload?.source==='physics_virtual_simulation'&&payload?.result==='completed'&&!complete){
         setCompleted(`lab:${lab.id}`,true);
       }
@@ -88,7 +89,7 @@ export default function PhysicsMechanicsSection({userId,onBack,onActivity,onEvid
     <div className="pm-topic-head"><div><h2>{topic.id}. {topic.title}</h2><MathText as="p" prose>{topicSummary(topic)}</MathText></div><div className="pm-topic-progress"><strong>{pct}% explored</strong><div className="pm-progress-track"><i style={{width:`${pct}%`}}></i></div><span>{completedCount}/{totalCount} study activities marked complete</span></div></div>
     <nav className="pm-modebar" aria-label="Physics learning mode"><button type="button" aria-pressed={mode==='study'} className={`pm-mode-btn ${mode==='study'?'active':''}`} onClick={()=>setMode('study')}>Study</button><button type="button" aria-pressed={mode==='labs'} className={`pm-mode-btn ${mode==='labs'?'active':''}`} onClick={()=>setMode('labs')}>Labs & practicals</button><button type="button" aria-pressed={mode==='flashcards'} className={`pm-mode-btn ${mode==='flashcards'?'active':''}`} onClick={()=>setMode('flashcards')}>Flashcards</button><button type="button" aria-pressed={mode==='quiz'} className={`pm-mode-btn ${mode==='quiz'?'active':''}`} onClick={()=>setMode('quiz')}>Topic test</button><button type="button" aria-pressed={mode==='checkpoint'} className={`pm-mode-btn ${mode==='checkpoint'?'active':''}`} onClick={()=>setMode('checkpoint')}>Mechanics checkpoint</button></nav>
     {mode==='study'&&<StudyView topic={topic} progress={progress} setCompleted={setCompleted}/>}
-    {mode==='labs'&&<LabsView topic={topic} progress={progress} setCompleted={setCompleted} onEvidence={onEvidence} userId={userId}/>}
+    {mode==='labs'&&<LabsView topic={topic} progress={progress} setCompleted={setCompleted} onEvidence={onEvidence} onActivity={onActivity} userId={userId}/>}
     {mode==='flashcards'&&<FlashcardsView key={`fc-${topic.id}`} topic={topic}/>}
     {mode==='quiz'&&<PhysicsTopicQuiz key={`q-${topic.id}`} topic={topic} onActivity={onActivity}/>}
     {mode==='checkpoint'&&<PhysicsMechanicsCheckpoint onActivity={onActivity}/>}
