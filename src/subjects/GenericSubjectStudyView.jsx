@@ -5,6 +5,7 @@ import { recordSubjectActivity } from "./subjectProgress";
 import { loadGenericSubjectStructure } from "./genericSubjectCatalog";
 import InteractiveLabelDiagram from "./components/InteractiveLabelDiagram";
 import TransportProcessExplorer from "./components/TransportProcessExplorer";
+import TransportInvestigationExplorer from "./components/TransportInvestigationExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -47,6 +48,49 @@ function interactiveModels(topic = {}) {
   return Array.isArray(lesson.interactiveModels) ? lesson.interactiveModels.filter(Boolean) : [];
 }
 
+function lessonChecks(topic = {}) {
+  const lesson = lessonData(topic);
+  return Array.isArray(lesson.checks) ? lesson.checks.filter(Boolean) : [];
+}
+
+function LessonKnowledgeCheck({ checks = [] }) {
+  const [revealed,setRevealed] = useState({});
+  if (!checks.length) return null;
+
+  return (
+    <section className="spark-generic-knowledge-check">
+      <div className="spark-generic-knowledge-check-head">
+        <span>CHECK YOUR UNDERSTANDING</span>
+        <h3>Check your understanding</h3>
+      </div>
+
+      <div className="spark-generic-knowledge-check-list">
+        {checks.map((check,index) => {
+          const open = Boolean(revealed[index]);
+          return (
+            <article key={index}>
+              <strong>{index + 1}. {String(check?.prompt || "")}</strong>
+              <button
+                type="button"
+                aria-expanded={open}
+                onClick={() => setRevealed(current => ({...current,[index]:!current[index]}))}
+              >
+                {open ? "Hide answer" : "Show answer"}
+              </button>
+              {open && (
+                <div className="spark-generic-knowledge-check-answer">
+                  <b>{String(check?.answer || "")}</b>
+                  {check?.explanation && <p>{String(check.explanation)}</p>}
+                </div>
+              )}
+            </article>
+          );
+        })}
+      </div>
+    </section>
+  );
+}
+
 function routeSelection(path, structure) {
   const route = readSparkHashRoute();
   if (route.path !== path) return { sectionId:null, topicId:null };
@@ -83,6 +127,7 @@ function GenericLessonContent({
   const objectives = lessonObjectives(topic);
   const diagrams = interactiveDiagrams(topic);
   const models = interactiveModels(topic);
+  const checks = lessonChecks(topic);
   const intro = String(lesson.introduction || topic?.description || "").trim();
   const summary = String(lesson.summary || "").trim();
   const example = lesson.workedExample && typeof lesson.workedExample === "object"
@@ -127,11 +172,15 @@ function GenericLessonContent({
         );
       })}
 
-      {models.map(model => (
-        model?.type === "membrane-transport"
-          ? <TransportProcessExplorer key={model.id || "membrane-transport"} />
-          : null
-      ))}
+      {models.map(model => {
+        if (model?.type === "membrane-transport") {
+          return <TransportProcessExplorer key={model.id || "membrane-transport"} />;
+        }
+        if (model?.type === "transport-investigations") {
+          return <TransportInvestigationExplorer key={model.id || "transport-investigations"} />;
+        }
+        return null;
+      })}
 
       {diagrams.map(diagram => (
         <InteractiveLabelDiagram
@@ -168,6 +217,8 @@ function GenericLessonContent({
           {example.answer && <div className="spark-generic-example-answer">{example.answer}</div>}
         </Card>
       )}
+
+      <LessonKnowledgeCheck checks={checks} />
 
       {summary && (
         <section className="spark-generic-lesson-summary">

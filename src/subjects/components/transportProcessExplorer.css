@@ -62,3 +62,17 @@ html[data-theme="dark"] .spark-transport-tabs button.active,body[data-theme="dar
     stroke-width:9;
   }
 }
+
+/* SPARK_TRANSPORT_DARK_STAGE_V2 */
+html[data-theme="dark"] .spark-transport-stage,
+body[data-theme="dark"] .spark-transport-stage,
+.dark .spark-transport-stage{
+  background:#eaf3f7;
+  border-color:#39566e;
+}
+html[data-theme="dark"] .spark-transport-stage .chamber,
+body[data-theme="dark"] .spark-transport-stage .chamber,
+.dark .spark-transport-stage .chamber{
+  fill:#f8fbfd;
+  stroke:#7890a4;
+}
