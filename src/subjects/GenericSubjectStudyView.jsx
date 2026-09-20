@@ -17,6 +17,7 @@ import AnimalAsexualReproductionExplorer from "./components/AnimalAsexualReprodu
 import MenstrualCycleExplorer from "./components/MenstrualCycleExplorer";
 import PregnancyStagesExplorer from "./components/PregnancyStagesExplorer";
 import BirthControlExplorer from "./components/BirthControlExplorer";
+import MaternalBabyCareExplorer from "./components/MaternalBabyCareExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -222,6 +223,9 @@ function GenericLessonContent({
         }
         if (model?.type === "birth-control") {
           return <BirthControlExplorer key={model.id || "birth-control"} />;
+        }
+        if (model?.type === "maternal-baby-care") {
+          return <MaternalBabyCareExplorer key={model.id || "maternal-baby-care"} />;
         }
         return null;
       })}
