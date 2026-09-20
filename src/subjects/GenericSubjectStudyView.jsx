@@ -46,6 +46,7 @@ import FoodMicroorganismExplorer from "./components/FoodMicroorganismExplorer";
 import FoodPreservationExplorer from "./components/FoodPreservationExplorer";
 import EnergyConceptExplorer from "./components/EnergyConceptExplorer";
 import EnergyConversionExplorer from "./components/EnergyConversionExplorer";
+import PhotosynthesisEnergyExplorer from "./components/PhotosynthesisEnergyExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -338,6 +339,9 @@ function GenericLessonContent({
         }
         if (model?.type === "energy-conversion") {
           return <EnergyConversionExplorer key={model.id || "energy-conversion"} />;
+        }
+        if (model?.type === "photosynthesis-energy") {
+          return <PhotosynthesisEnergyExplorer key={model.id || "photosynthesis-energy"} />;
         }
         return null;
       })}
