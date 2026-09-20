@@ -627,6 +627,7 @@ begin
   select id into v_id
   from public.spark_learning_recommendations
   where user_id=v_user_id and action_key=p_action_key
+    and status in ('shown','started')
     and shown_at>=now()-interval '12 hours'
   order by shown_at desc limit 1;
 
@@ -655,22 +656,31 @@ returns void
 language plpgsql
 security definer
 set search_path = public
-as $$
+as $
 declare
   v_subject text;
   v_action text;
+  v_status text;
 begin
+  select subject_id,action_type,status
+    into v_subject,v_action,v_status
+  from public.spark_learning_recommendations
+  where id=p_recommendation_id and user_id=auth.uid()
+  for update;
+
+  if v_subject is null then raise exception 'Recommendation not found'; end if;
+  if v_status='started' then return; end if;
+  if v_status<>'shown' then raise exception 'Recommendation is no longer startable'; end if;
+
   update public.spark_learning_recommendations
-  set status='started',started_at=coalesce(started_at,now())
-  where id=p_recommendation_id and user_id=auth.uid() and status in('shown','started')
-  returning subject_id,action_type into v_subject,v_action;
-  if not found then raise exception 'Recommendation not found'; end if;
+  set status='started',started_at=now()
+  where id=p_recommendation_id;
 
   update public.spark_learning_action_effectiveness
   set starts=starts+1,updated_at=now()
   where subject_id=v_subject and action_type=v_action;
 end;
-$$;
+$;
 
 create or replace function public.spark_refresh_learning_action_effectiveness(
   p_subject_id text,
