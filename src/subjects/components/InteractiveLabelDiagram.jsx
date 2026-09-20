@@ -399,6 +399,21 @@ function HumanDigestiveTemplate() {
   );
 }
 
+function HumanToothTemplate() {
+  return (
+    <g className="spark-diagram-tooth" aria-hidden="true">
+      <path className="tooth-enamel" d="M390 115Q500 55 610 115Q650 175 625 245Q600 300 565 335L555 505Q550 560 505 575Q460 560 455 505L445 335Q400 300 375 245Q350 175 390 115Z" />
+      <path className="tooth-dentine" d="M415 135Q500 92 585 135Q615 180 595 235Q575 275 535 310L528 495Q525 525 500 538Q475 525 472 495L465 310Q425 275 405 235Q385 180 415 135Z" />
+      <path className="tooth-pulp" d="M465 165Q500 145 535 165Q555 205 530 250Q510 285 510 350V485Q500 505 490 485V350Q490 285 470 250Q445 205 465 165Z" />
+      <path className="tooth-gum" d="M250 315Q375 285 445 320Q500 350 555 320Q625 285 750 315V390Q625 365 555 385Q500 405 445 385Q375 365 250 390Z" />
+      <line className="tooth-neck-line" x1="355" y1="330" x2="645" y2="330" />
+      <path className="tooth-root-vessels" d="M500 485V570M490 500Q470 535 465 570M510 500Q530 535 535 570" />
+      <text className="tooth-region-label" x="500" y="80" textAnchor="middle">crown</text>
+      <text className="tooth-region-label" x="500" y="610" textAnchor="middle">root in jaw socket</text>
+    </g>
+  );
+}
+
 function DiagramTemplate({ template }) {
   if (template === "plant-cell") return <PlantCellTemplate />;
   if (template === "animal-cell") return <AnimalCellTemplate />;
@@ -413,6 +428,7 @@ function DiagramTemplate({ template }) {
   if (template === "human-brain") return <HumanBrainTemplate />;
   if (template === "endocrine-system") return <EndocrineSystemTemplate />;
   if (template === "human-digestive-system") return <HumanDigestiveTemplate />;
+  if (template === "human-tooth") return <HumanToothTemplate />;
   if (template === "human-heart") return <HumanHeartTemplate />;
   if (template === "kidney-longitudinal") return <KidneyLongitudinalTemplate />;
   if (template === "nephron") return <NephronTemplate />;
