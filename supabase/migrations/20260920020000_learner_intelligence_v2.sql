@@ -1077,9 +1077,8 @@ declare
   v_min_samples int:=200;
   v_margin numeric:=0.02;
 begin
-  if coalesce(current_setting('request.jwt.claim.role',true),'') <> 'service_role' then
-    raise exception 'Service role required';
-  end if;
+  -- EXECUTE is granted only to service_role below. Rely on database privileges
+  -- rather than JWT text parsing so scheduled/service calls are not rejected.
   select * into v_candidate from public.spark_learning_model_versions where version_key=p_version_key and status='candidate' for update;
   if v_candidate.version_key is null then raise exception 'Candidate model not found'; end if;
   select * into v_champion from public.spark_learning_model_versions where status='champion' order by promoted_at desc nulls last,created_at desc limit 1 for update;
