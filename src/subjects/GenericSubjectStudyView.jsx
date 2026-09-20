@@ -32,6 +32,7 @@ import SightDefectsExplorer from "./components/SightDefectsExplorer";
 import EarFunctionExplorer from "./components/EarFunctionExplorer";
 import NervousSystemExplorer from "./components/NervousSystemExplorer";
 import EndocrineSystemExplorer from "./components/EndocrineSystemExplorer";
+import MicrobeExplorer from "./components/MicrobeExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -282,6 +283,9 @@ function GenericLessonContent({
         }
         if (model?.type === "endocrine-system") {
           return <EndocrineSystemExplorer key={model.id || "endocrine-system"} />;
+        }
+        if (model?.type === "microbes") {
+          return <MicrobeExplorer key={model.id || "microbes"} />;
         }
         return null;
       })}
