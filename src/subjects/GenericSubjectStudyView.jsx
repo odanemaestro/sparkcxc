@@ -50,6 +50,7 @@ import PhotosynthesisEnergyExplorer from "./components/PhotosynthesisEnergyExplo
 import EnvironmentEnergyExplorer from "./components/EnvironmentEnergyExplorer";
 import FoodEnergyNutritionExplorer from "./components/FoodEnergyNutritionExplorer";
 import HumanDigestionExplorer from "./components/HumanDigestionExplorer";
+import TeethFunctionExplorer from "./components/TeethFunctionExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -354,6 +355,9 @@ function GenericLessonContent({
         }
         if (model?.type === "human-digestion") {
           return <HumanDigestionExplorer key={model.id || "human-digestion"} />;
+        }
+        if (model?.type === "teeth-function") {
+          return <TeethFunctionExplorer key={model.id || "teeth-function"} />;
         }
         return null;
       })}
