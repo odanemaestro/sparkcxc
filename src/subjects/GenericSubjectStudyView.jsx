@@ -21,6 +21,7 @@ import MaternalBabyCareExplorer from "./components/MaternalBabyCareExplorer";
 import HumanGrowthExplorer from "./components/HumanGrowthExplorer";
 import PopulationGrowthExplorer from "./components/PopulationGrowthExplorer";
 import TransportSystemNeedExplorer from "./components/TransportSystemNeedExplorer";
+import TransportStructuresExplorer from "./components/TransportStructuresExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -238,6 +239,9 @@ function GenericLessonContent({
         }
         if (model?.type === "transport-system-need") {
           return <TransportSystemNeedExplorer key={model.id || "transport-system-need"} />;
+        }
+        if (model?.type === "transport-structures") {
+          return <TransportStructuresExplorer key={model.id || "transport-structures"} />;
         }
         return null;
       })}
