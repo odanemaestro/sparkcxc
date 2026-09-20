@@ -12,9 +12,9 @@ describe("Integrated Science Objective 1.1.1 acceptance audit V1", () => {
 
   test("canonical objective codes are used for the first two lessons", () => {
     expect(migration).toContain("1.1.1 Diffusion, Osmosis and Active Transport");
-    expect(migration).toContain("'\\\"1.1.1\\\"'::jsonb");
+    expect(migration).toContain("'\"1.1.1\"'::jsonb");
     expect(migration).toContain("1.1.2 Animal and Plant Cells");
-    expect(migration).toContain("'\\\"1.1.2\\\"'::jsonb");
+    expect(migration).toContain("'\"1.1.2\"'::jsonb");
   });
 
   test("Integrated Science enables sequential lesson progression and direct-route protection", () => {
