@@ -41,7 +41,7 @@ describe("Integrated Science Objective 2.3.1 acceptance audit", () => {
   test("covers thermal power-station energy conversion", () => {
     expect(migration).toContain("chemical → heat → kinetic → electrical energy");
     expect(explorer).toContain("Power station");
-    expect(explorer).toContain("High-pressure steam");
+    expect(explorer).toContain("high-pressure steam");
   });
 
   test("covers greenhouse warming and Caribbean impacts", () => {
