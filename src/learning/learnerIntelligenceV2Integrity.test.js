@@ -57,7 +57,10 @@ describe("SPARK Learner Intelligence V2 integration integrity", () => {
     expect(migration).toContain("spark_learning_recommendations");
     expect(migration).toContain("spark_learning_action_effectiveness");
     expect(migration).toContain("spark_apply_learning_evidence_outcome");
+    expect(migration).toContain("spark_build_learning_model_candidate");
+    expect(migration).toContain("spark_recalculate_all_learning_states_v2");
     expect(migration).toContain("spark_promote_learning_model_candidate");
+    expect(migration).toContain("learned_from_recommendation_outcomes");
     expect(migration).toContain("min_candidate_samples");
     expect(migration).toContain("promotion_margin");
   });
