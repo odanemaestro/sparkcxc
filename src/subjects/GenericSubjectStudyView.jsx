@@ -40,6 +40,7 @@ import ExercisePhysiologyExplorer from "./components/ExercisePhysiologyExplorer"
 import DrugEffectsExplorer from "./components/DrugEffectsExplorer";
 import PersonalHygieneExplorer from "./components/PersonalHygieneExplorer";
 import PestVectorExplorer from "./components/PestVectorExplorer";
+import PestControlExplorer from "./components/PestControlExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -314,6 +315,9 @@ function GenericLessonContent({
         }
         if (model?.type === "pest-vectors") {
           return <PestVectorExplorer key={model.id || "pest-vectors"} />;
+        }
+        if (model?.type === "pest-control") {
+          return <PestControlExplorer key={model.id || "pest-control"} />;
         }
         return null;
       })}
