@@ -15,6 +15,7 @@ import { SECTION_E_TOPICS } from "../physics/atomic/sectionEAtomic.mjs";
 import { ATOMIC_INTERACTIVES } from "../physics/atomic/interactives/eAtomicInteractiveRegistry.mjs";
 import { readPhysicsAtomicProgress } from "../physics/atomic/physicsAtomicProgress.mjs";
 import { readPhysicsCourseProgress } from "../physics/course/physicsCourseProgress.mjs";
+import { recordLearningEvidenceFromSubjectEvent } from "../learning/learningIntelligenceV2";
 
 export const SUBJECT_PROGRESS_VERSION = 1;
 
@@ -1078,10 +1079,20 @@ export async function recordInformationTechnologySubjectActivity({ supabase, eve
 
 export async function recordSparkSubjectActivity({ supabase, event } = {}) {
   const type = String(event?.type || "").trim().toLowerCase();
-  if (type.startsWith("it_")) {
-    return recordInformationTechnologySubjectActivity({ supabase, event });
-  }
-  return recordPhysicsSubjectActivity({ supabase, event });
+  const progressResult = type.startsWith("it_")
+    ? await recordInformationTechnologySubjectActivity({ supabase, event })
+    : await recordPhysicsSubjectActivity({ supabase, event });
+
+  // Learner Intelligence V2 is observational. It consumes the same activity
+  // event after canonical progress is recorded. A learner-model failure never
+  // blocks lesson, lab, exam or SBA progress.
+  recordLearningEvidenceFromSubjectEvent({ supabase, event }).then(result => {
+    if (result?.error && !["PGRST202", "42P01", "42883"].includes(result.error.code)) {
+      console.warn("SPARK learner intelligence evidence was not synced", result.error);
+    }
+  }).catch(error => console.warn("SPARK learner intelligence evidence was not synced", error));
+
+  return progressResult;
 }
 
 function informationTechnologyBackfillRows(paper1Results = [], paper2Results = []) {
