@@ -208,7 +208,7 @@ export default function InteractiveLabelDiagram({
   };
 
   return (
-    <section className="spark-label-diagram">
+    <section className={`spark-label-diagram ${completed ? "is-completed" : ""}`}>
       <div className="spark-label-diagram-heading">
         <div>
           <span>INTERACTIVE DIAGRAM</span>
@@ -254,7 +254,7 @@ export default function InteractiveLabelDiagram({
           >
             <DiagramTemplate template={normalized.template} />
 
-            {normalized.targets.map(target => {
+            {normalized.targets.map((target,index) => {
               const [startX,startY] = lineStart(target);
               const placedId = placements[target.id];
               const isCorrect = placedId === target.labelId;
@@ -267,6 +267,21 @@ export default function InteractiveLabelDiagram({
                 <g key={target.id} className={`spark-label-target-group ${stateClass} ${hintTargetId === target.id ? "hint" : ""}`}>
                   <line x1={startX} y1={startY} x2={target.anchorX} y2={target.anchorY} />
                   <circle cx={target.anchorX} cy={target.anchorY} r="8" />
+                  <g className="spark-label-target-index" aria-hidden="true">
+                    <circle
+                      className="spark-label-target-index-circle"
+                      cx={target.anchorX + 28}
+                      cy={target.anchorY - 26}
+                      r="25"
+                    />
+                    <text
+                      x={target.anchorX + 28}
+                      y={target.anchorY - 17}
+                      textAnchor="middle"
+                    >
+                      {index + 1}
+                    </text>
+                  </g>
                   <foreignObject
                     x={target.boxX}
                     y={target.boxY}
@@ -297,6 +312,9 @@ export default function InteractiveLabelDiagram({
         </div>
 
         <div className="spark-label-diagram-mobile-targets" aria-label="Diagram targets">
+          <strong className="spark-label-diagram-mobile-key-title">
+            {completed ? "Diagram label key" : "Place the labels"}
+          </strong>
           {normalized.targets.map((target,index) => {
             const placedId = placements[target.id];
             const label = placedId ? labelById.get(placedId) : null;

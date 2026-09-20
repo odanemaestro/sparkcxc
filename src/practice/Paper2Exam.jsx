@@ -470,7 +470,7 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
   if (!started && !submitted) {
     return (
       <main className="paper-start-shell paper2-start-shell">
-        <button className="paper-text-button" type="button" onClick={onExit}><BackArrowIcon/><span>Back to Practice</span></button>
+        <button className="paper-text-button" type="button" onClick={onExit}><BackArrowIcon size={16} className="paper-back-arrow-icon"/><span>Back to Practice</span></button>
         <section className="paper-start-card paper2-start-card">
           <div className="paper-start-kicker">CSEC Mathematics</div>
           <h1>Paper 2 Practice Examination</h1>

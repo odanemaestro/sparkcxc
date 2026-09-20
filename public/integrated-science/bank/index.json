@@ -1,0 +1,33 @@
+{
+ "subject": "CSEC Integrated Science",
+ "subjectCode": "IS",
+ "version": "1.2.0",
+ "syllabus": "CXC 23/G/SYLL 23 (amended) - effective May-June 2027",
+ "files": [
+  {
+   "module": 1,
+   "title": "Organisms and Life Processes",
+   "file": "is_module1.json",
+   "paper01Items": 514,
+   "paper02Questions": 28
+  },
+  {
+   "module": 2,
+   "title": "Energy",
+   "file": "is_module2.json",
+   "paper01Items": 460,
+   "paper02Questions": 28
+  },
+  {
+   "module": 3,
+   "title": "Our Planet",
+   "file": "is_module3.json",
+   "paper01Items": 587,
+   "paper02Questions": 28
+  }
+ ],
+ "totals": {
+  "paper01Items": 1561,
+  "paper02Questions": 84
+ }
+}

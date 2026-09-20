@@ -17,7 +17,11 @@ describe("SPARK desktop dashboard spacing regression", () => {
   test("desktop subject cards keep compact spacing and the family card remains compact", () => {
     expect(app).toContain('<SubjectDashboardOverview');
     expect(app).toContain('family-code-card student-overview-family-card');
-    expect(subjectOverview).toContain('.spark-subject-overview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}');
+    expect(subjectOverview).toContain('.spark-subject-overview-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}');
+    expect(subjectOverview).toContain('@media(min-width:1800px)');
+    expect(subjectOverview).toContain('.spark-subject-overview-grid{grid-template-columns:repeat(3,minmax(0,1fr))}');
+    expect(subjectOverview).toContain('@media(max-width:840px)');
+    expect(subjectOverview).toContain('.spark-subject-overview-grid{grid-template-columns:1fr}');
     expect(subjectOverview).toContain('.spark-subject-overview-card{display:grid;gap:13px}');
     expect(responsive).toContain('@media(min-width:821px)');
     expect(responsive).toContain('.student-overview-family-card{');

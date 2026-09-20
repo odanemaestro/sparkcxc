@@ -72,12 +72,46 @@ function daysSince(value, now = new Date()) {
   return Math.max(0, (now.getTime() - date.getTime()) / DAY_MS);
 }
 
-function titleFromKey(value) {
-  return String(value || "")
+export function displaySkillLabel(value) {
+  const raw = String(value || "").trim();
+  if (!raw) return "Learning skill";
+  if (/^[A-E]\d+$/i.test(raw)) return raw.toUpperCase();
+
+  const cleaned = raw
     .replace(/^lesson:|^lab:|^flashcard:|^checkpoint:|^paper[12]:|^sba:/i, "")
+    // Generic-subject topic IDs are routing/evidence keys, not learner-facing names.
+    .replace(/^m\d+[-_:]t\d+(?:[-_:]\d+)+[-_:]/i, "")
+    .replace(/^t\d+(?:[-_:]\d+)+[-_:]/i, "")
     .replace(/[:_-]+/g, " ")
-    .replace(/\b\w/g, char => char.toUpperCase())
-    .trim() || "Learning skill";
+    .replace(/\s+/g, " ")
+    .trim();
+
+  if (!cleaned) return "Learning skill";
+
+  const smallWords = new Set(["and","of","the","to","in","for","with","on","at","by"]);
+  const acronyms = new Map([
+    ["csec","CSEC"],
+    ["sba","SBA"],
+    ["it","IT"],
+    ["si","SI"],
+    ["kc","KC"],
+    ["uk","UK"],
+    ["xs","XS"],
+  ]);
+
+  return cleaned
+    .split(" ")
+    .map((word,index) => {
+      const lowerWord = word.toLowerCase();
+      if (acronyms.has(lowerWord)) return acronyms.get(lowerWord);
+      if (index > 0 && smallWords.has(lowerWord)) return lowerWord;
+      return lowerWord.charAt(0).toUpperCase() + lowerWord.slice(1);
+    })
+    .join(" ");
+}
+
+function titleFromKey(value) {
+  return displaySkillLabel(value);
 }
 
 function skillKeyForRow(row = {}) {
@@ -272,6 +306,7 @@ export function buildSkillStateFromEvidence(skill, rows = [], options = {}) {
 
   const state = {
     skill: String(skill || "General"),
+    displaySkill: displaySkillLabel(skill || "General"),
     mastery,
     masteryPercent: pct(mastery),
     modelConfidence,
@@ -318,14 +353,17 @@ function actionForState(subjectId, state, prerequisiteRisk = []) {
       why: ["There is not enough scored evidence yet.", "Start with one lesson and a short practice set."],
     };
   }
+
+  const skillLabel = state.displaySkill || displaySkillLabel(state.skill);
+
   if (prerequisiteRisk.length) {
     return {
       actionType: "prerequisite_review",
       targetActivityType: "lesson",
       title: `Review ${prerequisiteRisk[0].skill} first`,
-      detail: `${state.skill} may be difficult because a supporting skill is not secure yet.`,
+      detail: `${skillLabel} may be difficult because a supporting skill is not secure yet.`,
       why: [
-        `${state.skill} currently has ${state.masteryPercent}% estimated mastery.`,
+        `${skillLabel} currently has ${state.masteryPercent}% estimated mastery.`,
         `${prerequisiteRisk[0].skill} is a prerequisite and needs attention.`,
       ],
     };
@@ -335,7 +373,7 @@ function actionForState(subjectId, state, prerequisiteRisk = []) {
       actionType: "targeted_practice",
       targetActivityType: "topic_quiz",
       title: `Fix the ${state.commonError.label.toLowerCase()} pattern`,
-      detail: `SPARK has seen the same error more than once in ${state.skill}.`,
+      detail: `SPARK has seen the same error more than once in ${skillLabel}.`,
       why: [
         `${state.commonError.label} has appeared ${state.commonError.count} times.`,
         `Targeted questions will test whether that specific error has been corrected.`,
@@ -358,7 +396,7 @@ function actionForState(subjectId, state, prerequisiteRisk = []) {
     return {
       actionType: "flashcards",
       targetActivityType: "flashcard_review",
-      title: `Refresh ${state.skill}`,
+      title: `Refresh ${skillLabel}`,
       detail: "The skill was stronger before, but the evidence is becoming old enough that recall may be fading.",
       why: [
         `Estimated mastery is ${state.masteryPercent}%.`,
@@ -371,7 +409,7 @@ function actionForState(subjectId, state, prerequisiteRisk = []) {
     return {
       actionType: labFriendly ? "lesson_or_lab" : "lesson",
       targetActivityType: labFriendly ? "lab" : "lesson",
-      title: labFriendly ? `Rebuild ${state.skill} with a lesson or practical` : `Review ${state.skill} before harder questions`,
+      title: labFriendly ? `Rebuild ${skillLabel} with a lesson or practical` : `Review ${skillLabel} before harder questions`,
       detail: "The current evidence suggests the foundation needs strengthening first.",
       why: [
         `Estimated mastery is ${state.masteryPercent}%.`,
@@ -383,7 +421,7 @@ function actionForState(subjectId, state, prerequisiteRisk = []) {
     return {
       actionType: "targeted_practice",
       targetActivityType: "topic_quiz",
-      title: `Do a short targeted set on ${state.skill}`,
+      title: `Do a short targeted set on ${skillLabel}`,
       detail: "The foundation is there. The next step is making the skill more reliable.",
       why: [
         `Estimated mastery is ${state.masteryPercent}%.`,
@@ -394,7 +432,7 @@ function actionForState(subjectId, state, prerequisiteRisk = []) {
   return {
     actionType: "assessment",
     targetActivityType: "section_checkpoint",
-    title: `Test ${state.skill} under exam-style conditions`,
+    title: `Test ${skillLabel} under exam-style conditions`,
     detail: "The skill looks secure enough to verify with broader, harder evidence.",
     why: [
       `Estimated mastery is ${state.masteryPercent}%.`,
@@ -524,6 +562,7 @@ export function buildLearnerIntelligenceFromSkillStates({
     const winner = Object.entries(misconceptionCounts).sort((a,b)=>Number(b[1])-Number(a[1]))[0];
     const state = {
       skill: String(row.skill || "Mathematics"),
+      displaySkill: displaySkillLabel(row.skill || "Mathematics"),
       mastery,
       masteryPercent:pct(mastery),
       modelConfidence,
@@ -575,8 +614,9 @@ export function buildLearnerIntelligenceFromSkillStates({
 export function explanationForIntelligence(intelligence = {}) {
   const focus = intelligence.focus;
   if (!focus) return "SPARK needs a little more learning evidence before it can make a strong recommendation.";
+  const focusLabel = focus.displaySkill || displaySkillLabel(focus.skill);
   const pieces = [
-    `${focus.skill} is the current priority at ${focus.masteryPercent}% estimated mastery.`,
+    `${focusLabel} is the current priority at ${focus.masteryPercent}% estimated mastery.`,
     `SPARK is ${focus.modelConfidencePercent}% confident in that estimate.`,
   ];
   if (focus.daysSincePractice < 999) pieces.push(`The last meaningful evidence was about ${focus.daysSincePractice} day${focus.daysSincePractice===1?"":"s"} ago.`);

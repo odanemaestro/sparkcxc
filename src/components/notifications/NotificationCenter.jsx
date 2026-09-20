@@ -96,6 +96,15 @@ function notificationTypeMeta(notification) {
     if (type === "child_topic_quiz_completed") return { ...base, icon: "IT", label: "IT topic test" };
     if (type === "child_section_test_completed") return { ...base, icon: "IT", label: "IT checkpoint" };
   }
+  if (String(metadata?.subject_id || "").toLowerCase() === "integrated-science") {
+    const type = String(notification?.type || "");
+    if (type === "paper1_completed") return { ...base, icon: "P1", label: "Integrated Science Paper 1" };
+    if (type === "paper2_completed") return { ...base, icon: "P2", label: "Integrated Science Paper 2" };
+    if (type === "child_paper1_completed" || type === "child_paper2_completed") return { ...base, icon: "IS", label: "Integrated Science result" };
+    if (type === "child_lesson_completed") return { ...base, icon: "IS", label: "Integrated Science lesson" };
+    if (type === "child_topic_quiz_completed") return { ...base, icon: "IS", label: "Integrated Science topic test" };
+    if (type === "child_section_test_completed") return { ...base, icon: "IS", label: "Integrated Science checkpoint" };
+  }
   return base;
 }
 

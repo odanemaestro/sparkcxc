@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import Card from "../ui/Card";
-import { explanationForIntelligence } from "../../learning/learnerIntelligenceV2";
+import { displaySkillLabel, explanationForIntelligence } from "../../learning/learnerIntelligenceV2";
 import { recordLearnerRecommendation } from "../../learning/learnerIntelligencePersistence";
 import "./learnerIntelligencePanel.css";
 
@@ -13,7 +13,7 @@ function FocusRow({ state }) {
   return (
     <div className="spark-li-focus-row">
       <div>
-        <strong>{state.skill}</strong>
+        <strong>{state.displaySkill || displaySkillLabel(state.skill)}</strong>
         <span>{state.trendLabel} | {state.evidenceCount} evidence item{state.evidenceCount === 1 ? "" : "s"}</span>
       </div>
       <div className="spark-li-focus-scores">

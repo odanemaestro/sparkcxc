@@ -15,6 +15,7 @@ import { INFORMATION_TECHNOLOGY_PRACTICAL_LABS } from "../informationTechnology/
 import { IT_SBA_PROJECTS } from "../informationTechnology/practice/itSbaProjects";
 import { recommendedDeckIdsForSkills } from "./flashcards";
 import { writeSparkNestedRoute } from "../routing/sparkRoutingV270";
+import { displaySkillLabel } from "./learnerIntelligenceV2";
 import {
   LEARNING_LOOP_VERSION,
   championLearningStrategy,
@@ -455,7 +456,7 @@ export function exactTargetForAction(subjectId, skill, actionType, options = {})
     path:id ? `/study/${encodeURIComponent(id)}` : "/study",
     params:{},
     kind:"lesson",
-    label:id ? `${id.replace(/-/g, " ")} study` : "Study",
+    label:id ? `${displaySkillLabel(id)} study` : "Study",
     exact:false,
   };
 }
@@ -562,8 +563,9 @@ function effectivenessAdjustment(candidate, effectiveness = []) {
 }
 
 function commonWhy(state) {
+  const skillLabel = state.displaySkill || displaySkillLabel(state.skill);
   const why = [
-    `${state.skill} is currently estimated at ${state.masteryPercent}% mastery.`,
+    `${skillLabel} is currently estimated at ${state.masteryPercent}% mastery.`,
   ];
   if (state.modelConfidencePercent != null) why.push(`SPARK is ${state.modelConfidencePercent}% confident in that estimate.`);
   if (state.commonError?.count >= 2) why.push(`${state.commonError.label} has appeared ${state.commonError.count} times.`);
@@ -589,7 +591,7 @@ function candidateBaseScore(state, actionType) {
 }
 
 function wordingForCandidate(subjectId, state, actionType, target) {
-  const skill = state.skill;
+  const skill = state.displaySkill || displaySkillLabel(state.skill);
   const subject = lower(subjectId);
 
   if (target?.broadProfile) {

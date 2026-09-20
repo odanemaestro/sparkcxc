@@ -1,4 +1,4 @@
-﻿import React, { lazy, Suspense, useEffect, useMemo, useState } from "react";
+import React, { lazy, Suspense, useEffect, useMemo, useState } from "react";
 import SubjectSelectionView from "../subjects/SubjectSelectionView";
 import { useMathPracticeRoute } from "../routing/sparkRoutingV270";
 import { getSparkSubjectRegistry, subjectsForCapability } from "../subjects/subjectRegistry";
@@ -14,6 +14,9 @@ const Syllabus2027Hub = lazy(() => import("./Syllabus2027Hub"));
 const PhysicsPracticeHub = lazy(() => import("../physics/course/components/PhysicsPracticeHub"));
 const InformationTechnologyPracticeHub = lazy(() =>
   import("../informationTechnology/practice/InformationTechnologyPracticeHub")
+);
+const IntegratedSciencePracticeHub = lazy(() =>
+  import("../integratedScience/practice/IntegratedSciencePracticeHub")
 );
 
 function PracticeLazyBoundary({ label, children }) {
@@ -37,7 +40,7 @@ function readJson(key, fallback) {
   }
 }
 
-export default function PracticeHub({ supabase, userId, setView, physicsEnabled = false, enrolledSubjectIds = null, initialSubject = null, onSubjectActivity }) {
+export default function PracticeHub({ supabase, userId, setView, physicsEnabled = false, enrolledSubjectIds = null, initialSubject = null, onSubjectActivity, subjects = null }) {
   const [subject, setSubject] = useState(initialSubject);
   const { mode, setMode, examIntent, setExamIntent } = useMathPracticeRoute(initialSubject === "mathematics");
 
@@ -64,11 +67,14 @@ export default function PracticeHub({ supabase, userId, setView, physicsEnabled 
   }, [supabase, userId]);
 
   const practiceSubjects = useMemo(() => {
-    const supported = subjectsForCapability(getSparkSubjectRegistry({ physicsEnabled }), "practice");
+    const supported = subjectsForCapability(
+      Array.isArray(subjects) ? subjects : getSparkSubjectRegistry({ physicsEnabled }),
+      "practice"
+    );
     if (!Array.isArray(enrolledSubjectIds)) return supported;
     const enrolled = new Set(enrolledSubjectIds.map(id => String(id || "").trim().toLowerCase()).filter(Boolean));
     return supported.filter(item => enrolled.has(String(item.id || "").toLowerCase()));
-  }, [physicsEnabled, enrolledSubjectIds]);
+  }, [physicsEnabled, enrolledSubjectIds, subjects]);
   const selectedSubject = !subject || !Array.isArray(enrolledSubjectIds) || practiceSubjects.some(item => item.id === subject)
     ? subject
     : null;
@@ -80,7 +86,18 @@ export default function PracticeHub({ supabase, userId, setView, physicsEnabled 
       description="Select the CSEC subject you want to practise. Each subject only shows assessment modes supported by its current content."
       capability="practice"
       subjects={practiceSubjects}
-      onSelect={item => { setMode("home"); setView?.(item.id === "physics" ? "practice-physics" : item.id === "information-technology" ? "practice-information-technology" : "practice-math"); }}
+      onSelect={item => {
+        setMode("home");
+        setView?.(
+          item.id === "physics"
+            ? "practice-physics"
+            : item.id === "information-technology"
+              ? "practice-information-technology"
+              : item.id === "integrated-science"
+                ? "practice-integrated-science"
+                : "practice-math"
+        );
+      }}
       onBack={() => setView?.("dashboard")}
     />;
   }
@@ -97,6 +114,18 @@ export default function PracticeHub({ supabase, userId, setView, physicsEnabled 
     );
   }
 
+
+  if (selectedSubject === "integrated-science") {
+    return (
+      <PracticeLazyBoundary label="Loading Integrated Science practice">
+        <IntegratedSciencePracticeHub
+          supabase={supabase}
+          userId={userId}
+          onBack={() => setView?.("practice")}
+        />
+      </PracticeLazyBoundary>
+    );
+  }
 
   if (selectedSubject === "information-technology") {
     return (

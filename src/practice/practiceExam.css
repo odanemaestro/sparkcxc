@@ -2035,3 +2035,48 @@ html[data-theme="dark"] .paper2-part-context p{color:var(--spark-ink)!important}
   .paper2-axis-editor-grid{grid-template-columns:1fr 1fr;gap:8px}
 }
 /* SPARK PHYSICS PAPER 2 CUSTOM AXIS SETUP V7 END */
+
+/* SPARK_MATH_BACK_BUTTON_ALIGNMENT_V1 */
+.paper-text-button{
+  align-items:center;
+}
+.paper-text-button>.paper-back-arrow-icon{
+  display:block;
+  width:16px;
+  height:16px;
+  flex:0 0 16px;
+  margin:0;
+  align-self:center;
+}
+.paper-text-button>span{
+  display:block;
+  line-height:16px;
+}
+/* SPARK_MATH_BACK_BUTTON_ALIGNMENT_V2
+   The start-screen button itself must be flex. The original start-shell rule
+   made it display:block, which allowed the SVG and text to stack vertically. */
+.paper-start-shell>.paper-text-button{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  width:fit-content;
+  max-width:880px;
+  margin:0 auto 14px;
+}
+
+.paper-start-shell>.paper-text-button>svg,
+.paper-start-shell>.paper-text-button>.paper-back-arrow-icon{
+  display:block;
+  width:16px;
+  height:16px;
+  flex:0 0 16px;
+  margin:0;
+  align-self:center;
+}
+
+.paper-start-shell>.paper-text-button>span{
+  display:inline-block;
+  line-height:1.2;
+  margin:0;
+}

@@ -77,3 +77,95 @@ body[data-theme="dark"] .spark-label-diagram-actions button:disabled,
   background:#17324a;
   color:#b8c9d7;
 }
+/* SPARK_PORTRAIT_DIAGRAM_LABELS_V1
+   Portrait screens use numbered structures plus a readable HTML key.
+   Landscape and desktop keep the full leader-line callouts. */
+.spark-label-target-index{display:none}
+.spark-label-target-index-circle{
+  fill:#0f2740!important;
+  stroke:#ffffff!important;
+  stroke-width:4!important;
+}
+.spark-label-target-index text{
+  fill:#ffffff;
+  font:900 28px/1 var(--font-body,"Inter",sans-serif);
+  pointer-events:none;
+}
+.spark-label-diagram-mobile-key-title{
+  display:none;
+  grid-column:1/-1;
+  color:var(--spark-ink,#102a43);
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.02em;
+}
+
+@media (max-width:700px), (max-width:900px) and (orientation:portrait){
+  .spark-label-target-fo,
+  .spark-label-target-group>line{
+    display:none!important;
+  }
+
+  .spark-label-target-index{
+    display:block;
+  }
+
+  .spark-label-diagram-mobile-targets{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:8px;
+    margin-top:10px;
+  }
+
+  .spark-label-diagram-mobile-key-title{
+    display:block;
+  }
+
+  .spark-label-diagram-mobile-targets button{
+    display:grid;
+    grid-template-columns:30px minmax(0,1fr);
+    align-items:center;
+    gap:9px;
+    min-height:46px;
+    padding:8px 10px;
+    border:1px solid var(--spark-border,#d9e2ec);
+    border-radius:9px;
+    background:var(--spark-paper,#fff);
+    color:var(--spark-ink,#102a43);
+    text-align:left;
+  }
+
+  .spark-label-diagram-mobile-targets button>span{
+    display:grid;
+    place-items:center;
+    width:27px;
+    height:27px;
+    border-radius:50%;
+    background:#0f2740;
+    color:#fff;
+    font-size:11px;
+    font-weight:900;
+  }
+
+  .spark-label-diagram-mobile-targets button.correct{
+    border-color:#0d9488;
+    background:#d9fbf4;
+    color:#087f73;
+  }
+
+  .spark-label-diagram-mobile-targets button.incorrect{
+    border-color:#c2414d;
+    background:#fff1f2;
+    color:#9f2533;
+  }
+
+  .spark-label-diagram.is-completed .spark-label-bank{
+    display:none;
+  }
+}
+
+@media(max-width:560px){
+  .spark-label-diagram-mobile-targets{
+    grid-template-columns:1fr;
+  }
+}
