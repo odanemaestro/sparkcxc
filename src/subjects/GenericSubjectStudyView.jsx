@@ -44,6 +44,7 @@ import PestControlExplorer from "./components/PestControlExplorer";
 import FoodContaminationExplorer from "./components/FoodContaminationExplorer";
 import FoodMicroorganismExplorer from "./components/FoodMicroorganismExplorer";
 import FoodPreservationExplorer from "./components/FoodPreservationExplorer";
+import EnergyConceptExplorer from "./components/EnergyConceptExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -330,6 +331,9 @@ function GenericLessonContent({
         }
         if (model?.type === "food-preservation") {
           return <FoodPreservationExplorer key={model.id || "food-preservation"} />;
+        }
+        if (model?.type === "energy-concept") {
+          return <EnergyConceptExplorer key={model.id || "energy-concept"} />;
         }
         return null;
       })}
