@@ -29,7 +29,7 @@ import "./studyPracticeSemanticsV261";
 // ============================================================================
 import React, { lazy, Suspense, useState, useEffect, useCallback, useRef, useLayoutEffect } from "react";
 import { createPortal } from "react-dom";
-import { useMathLessonRoute } from "./routing/sparkRoutingV270";
+import { useMathLessonRoute, writeSparkNestedRoute } from "./routing/sparkRoutingV270";
 // SPARK_PHYSICS_SECTION_A_RC1_IMPORTS
 import SubjectSelectionView, { SubjectChangeButton } from "./subjects/SubjectSelectionView";
 import { getSparkSubjectRegistry, subjectsForCapability, getSparkSubject, enabledSparkSubjects, subjectsForEnrollmentIds } from "./subjects/subjectRegistry";
@@ -4341,6 +4341,10 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 if (action?.route === "flashcards") {
                   setDashboardSection("flashcards");
                   setFlashcardSubjectRoute(action.subjectId || "mathematics");
+                  return;
+                }
+                if (action?.targetPath) {
+                  writeSparkNestedRoute(action.targetPath, action.targetParams || {});
                   return;
                 }
                 if (action?.subjectId === "physics") {
