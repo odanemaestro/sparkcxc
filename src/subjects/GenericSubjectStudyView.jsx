@@ -27,6 +27,7 @@ import ExcretionEgestionExplorer from "./components/ExcretionEgestionExplorer";
 import HumanExcretionMechanismsExplorer from "./components/HumanExcretionMechanismsExplorer";
 import PlantExcretionExplorer from "./components/PlantExcretionExplorer";
 import SenseOrgansExplorer from "./components/SenseOrgansExplorer";
+import EyeFunctionExplorer from "./components/EyeFunctionExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -262,6 +263,9 @@ function GenericLessonContent({
         }
         if (model?.type === "sense-organs") {
           return <SenseOrgansExplorer key={model.id || "sense-organs"} />;
+        }
+        if (model?.type === "eye-function") {
+          return <EyeFunctionExplorer key={model.id || "eye-function"} />;
         }
         return null;
       })}
