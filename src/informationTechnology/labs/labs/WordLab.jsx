@@ -11,7 +11,7 @@ function selectionInside(editor, selection) {
   return editor.contains(range.commonAncestorContainer);
 }
 
-export default function WordLab({ lab, completed, onBack, onComplete }) {
+export default function WordLab({ lab, completed, onBack, onComplete, onEvidence }) {
   const editorRef = useRef(null);
   const savedRange = useRef(null);
   const [tab, setTab] = useState("Home");
@@ -35,7 +35,7 @@ export default function WordLab({ lab, completed, onBack, onComplete }) {
   const [mergeField, setMergeField] = useState(false);
   const [formControl, setFormControl] = useState(false);
   const [message, setMessage] = useState("Select text in the document, then choose a formatting command.");
-  const { evidence, record } = useTaskEvidence();
+  const { evidence, record } = useTaskEvidence(onEvidence);
 
   const words = useMemo(() => bodyText.trim() ? bodyText.trim().split(/\s+/).length : 0, [bodyText]);
   const matchCount = useMemo(() => countTextMatches(bodyText, findText), [bodyText, findText]);
