@@ -1,0 +1,40 @@
+.spark-food-microorganisms{margin:28px 0;padding:20px;border:1px solid var(--spark-border,#d9e2ec);border-radius:16px;background:var(--spark-paper,#fff)}
+.spark-food-microorganisms header>span{color:var(--spark-teal-dark,#087f73);font-size:11px;font-weight:900;letter-spacing:.05em}
+.spark-food-microorganisms header h3{margin:4px 0 7px;color:var(--spark-ink,#102a43);font-size:20px}
+.spark-food-microorganisms header p{margin:0;color:var(--spark-text-muted,#627d98);font-size:13px;line-height:1.6}
+.spark-food-microbe-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:17px 0}
+.spark-food-microbe-tabs button{min-height:42px;padding:0 12px;border:1px solid var(--spark-border,#d9e2ec);border-radius:9px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:11px;font-weight:850;cursor:pointer}
+.spark-food-microbe-tabs button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}
+.spark-food-microbe-stage{overflow:hidden;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:14px;background:#f5f8fb}
+.spark-food-microbe-stage.cards{padding:15px}
+.spark-food-microbe-stage svg{display:block;width:100%;height:auto}
+.spark-food-microbe-factors{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.spark-food-microbe-factors article{display:flex;gap:12px;padding:14px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.spark-food-microbe-factors article>span{display:grid;place-items:center;min-width:36px;height:36px;border-radius:50%;background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73);font-size:12px;font-weight:900}
+.spark-food-microbe-factors b{color:var(--spark-ink,#102a43);font-size:13px}
+.spark-food-microbe-factors p{margin:4px 0 0;color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.5}
+.spark-bread-investigation{display:grid;gap:14px}
+.spark-bread-bars{display:grid;gap:12px}
+.spark-bread-row{display:grid;grid-template-columns:220px minmax(0,1fr) 50px;gap:12px;align-items:center}
+.spark-bread-name{display:grid;gap:2px}.spark-bread-name b{color:var(--spark-ink,#102a43);font-size:12px}.spark-bread-name span{color:var(--spark-ink-soft,#334e68);font-size:11px}
+.spark-bread-track{height:18px;border-radius:999px;background:#e6edf1;overflow:hidden}.spark-bread-track span{display:block;height:100%;background:#668e73;border-radius:inherit;min-width:0}
+.spark-bread-row>strong{color:var(--spark-ink,#102a43);font-size:12px;text-align:right}
+.spark-bread-interpretation{padding:12px;border:1px solid #b9d6c3;border-radius:10px;background:#eef8f1}.spark-bread-interpretation b{color:#2f7253;font-size:12px}.spark-bread-interpretation p{margin:4px 0 0;color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.5}
+.spark-food-microbe-stage .fm-axis{stroke:#4d677a;stroke-width:3}.spark-food-microbe-stage .fm-grid{stroke:#dce4e9;stroke-width:1.4}.spark-food-microbe-stage .fm-tick,.spark-food-microbe-stage .fm-axis-label{fill:#405d72;font-size:13px;font-weight:800}
+.spark-food-microbe-stage .fm-line{fill:none;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}.spark-food-microbe-stage .fm-line.cold{stroke:#3987ad}.spark-food-microbe-stage .fm-line.warm{stroke:#bd5b58}
+.spark-food-microbe-stage .fm-point{stroke:#fff;stroke-width:2}.spark-food-microbe-stage .fm-point.cold{fill:#3987ad}.spark-food-microbe-stage .fm-point.warm{fill:#bd5b58}
+.spark-food-microbe-stage .fm-legend{font-size:13px;font-weight:900}.spark-food-microbe-stage .fm-legend.cold{fill:#317998}.spark-food-microbe-stage .fm-legend.warm{fill:#a64848}
+.spark-useful-microbes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.spark-useful-microbes article{display:grid;gap:5px;padding:14px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.spark-useful-microbes article>span{color:var(--spark-teal-dark,#087f73);font-size:11px;font-weight:900;text-transform:uppercase}.spark-useful-microbes b{color:var(--spark-ink,#102a43);font-size:13px}.spark-useful-microbes p{margin:0;color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.5}
+.spark-food-microbe-summary{display:grid;gap:5px;margin-top:14px;padding:13px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:11px;background:var(--spark-bg,#f7fafc)}
+.spark-food-microbe-summary strong{color:var(--spark-teal-dark,#087f73);font-size:12px}.spark-food-microbe-summary span{color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.55}
+html[data-theme="dark"] .spark-food-microorganisms,body[data-theme="dark"] .spark-food-microorganisms,.dark .spark-food-microorganisms{background:#122b43;border-color:#2a4863}
+html[data-theme="dark"] .spark-food-microbe-tabs button,body[data-theme="dark"] .spark-food-microbe-tabs button,.dark .spark-food-microbe-tabs button{background:#15314b;border-color:#39566e;color:#e7f2fb}
+html[data-theme="dark"] .spark-food-microbe-tabs button.active,body[data-theme="dark"] .spark-food-microbe-tabs button.active,.dark .spark-food-microbe-tabs button.active{background:#164e4a;color:#d7fffa;border-color:#2dd4bf}
+html[data-theme="dark"] .spark-food-microbe-stage,body[data-theme="dark"] .spark-food-microbe-stage,.dark .spark-food-microbe-stage{background:#f2f6f8;border-color:#39566e}
+html[data-theme="dark"] .spark-food-microbe-factors article,body[data-theme="dark"] .spark-food-microbe-factors article,.dark .spark-food-microbe-factors article,html[data-theme="dark"] .spark-useful-microbes article,body[data-theme="dark"] .spark-useful-microbes article,.dark .spark-useful-microbes article,html[data-theme="dark"] .spark-food-microbe-summary,body[data-theme="dark"] .spark-food-microbe-summary,.dark .spark-food-microbe-summary{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .spark-bread-interpretation,body[data-theme="dark"] .spark-bread-interpretation,.dark .spark-bread-interpretation{background:#173a2c;border-color:#376e53}
+@media(max-width:850px){.spark-food-microbe-factors,.spark-useful-microbes{grid-template-columns:1fr}.spark-food-microbe-tabs{display:grid;grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.spark-food-microorganisms{padding:14px}.spark-bread-row{grid-template-columns:1fr}.spark-bread-row>strong{text-align:left}.spark-food-microbe-stage .fm-tick,.spark-food-microbe-stage .fm-axis-label,.spark-food-microbe-stage .fm-legend{font-size:17px}}
+@media(max-width:390px){.spark-food-microbe-tabs{grid-template-columns:1fr}}
