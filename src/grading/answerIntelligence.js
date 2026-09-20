@@ -485,6 +485,41 @@ export async function recordAnswerObservation({ supabase, userId, question, evid
         answer_candidate_extracted: Boolean(evidence.answer_candidate_extracted),
       },
     });
+
+    // Learner Intelligence V2 observes the already-decided canonical grade.
+    // It cannot alter correctness or marks. Partial credit becomes a 0..1
+    // evidence score and misconception metadata is retained for diagnosis.
+    const marksAvailable = Math.max(1, Number(evidence.marks_available || question.marks || 1));
+    const marksEarned = Math.max(0, Number(evidence.marks_earned || 0));
+    const observedScore = Math.max(0, Math.min(1, marksEarned / marksAvailable));
+    const observedAt = new Date().toISOString();
+    supabase.rpc("spark_record_learning_evidence_v2", {
+      p_subject_id: "mathematics",
+      p_skill: clean(question.subtopic || question.skill || question.topic || "CSEC Mathematics"),
+      p_source: "adaptive_practice",
+      p_item_id: clean(question.id || question.question_id) || null,
+      p_observed_score: observedScore,
+      p_correct: observedScore >= 0.999,
+      p_evidence_weight: 1,
+      p_difficulty: question.difficulty || null,
+      p_student_confidence: null,
+      p_help_used: false,
+      p_error_code: evidence.error_code || null,
+      p_error_label: evidence.error_label || null,
+      p_metadata: {
+        canonical_validated: Boolean(evidence.canonical_validated),
+        canonical_conflict: Boolean(evidence.canonical_conflict),
+        grader: evidence.grader || ANSWER_INTELLIGENCE_VERSION,
+        self_assessed: Boolean(selfAssessed || evidence.self_assessed),
+      },
+      p_evidence_key: `adaptive:${clean(question.id || question.question_id) || "question"}:${observedAt}`,
+      p_occurred_at: observedAt,
+    }).then(({ error: learnerV2Error }) => {
+      if (learnerV2Error && learnerV2Error.code !== "PGRST202") {
+        console.warn("Could not update SPARK learner intelligence V2:", learnerV2Error);
+      }
+    }).catch(() => {});
+
     return { data, error };
   } catch (error) {
     return { data: null, error };
