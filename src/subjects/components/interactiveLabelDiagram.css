@@ -169,3 +169,23 @@ body[data-theme="dark"] .spark-label-diagram-actions button:disabled,
     grid-template-columns:1fr;
   }
 }
+
+/* SPARK_FLOWER_AND_SEED_TEMPLATES_V1 */
+.spark-diagram-flower .flower-petal{fill:#f3a7b9;stroke:#a44c67;stroke-width:5}
+.spark-diagram-flower .flower-petal.far-left,.spark-diagram-flower .flower-petal.far-right{fill:#f6bdc9}
+.spark-diagram-flower .flower-sepal{fill:#71af62;stroke:#3e7737;stroke-width:5}
+.spark-diagram-flower .flower-ovary{fill:#98c97d;stroke:#477f3e;stroke-width:6}
+.spark-diagram-flower .flower-ovule{fill:#f7e7aa;stroke:#9b7a2f;stroke-width:4}
+.spark-diagram-flower .flower-style{fill:#bee0a3;stroke:#477f3e;stroke-width:4}
+.spark-diagram-flower .flower-stigma{fill:#d9efc4;stroke:#477f3e;stroke-width:4}
+.spark-diagram-flower .flower-stamens path{fill:none;stroke:#6a8e45;stroke-width:5;stroke-linecap:round}
+.spark-diagram-flower .flower-stamens ellipse{fill:#e9c857;stroke:#9a7620;stroke-width:4}
+.spark-diagram-flower .flower-receptacle{fill:#78a95c;stroke:#436f36;stroke-width:5}
+.spark-diagram-flower .flower-stalk{fill:#72a95b;stroke:#3e7737;stroke-width:5}
+.spark-diagram-seed .seed-testa{fill:#bb8755;stroke:#704828;stroke-width:8}
+.spark-diagram-seed .seed-cotyledon{fill:#f1df9a;stroke:#9e8231;stroke-width:5}
+.spark-diagram-seed .seed-cotyledon.right{fill:#ead487}
+.spark-diagram-seed .seed-embryo-axis{fill:none;stroke:#668e45;stroke-width:9;stroke-linecap:round}
+.spark-diagram-seed .seed-plumule{fill:#8fc56b;stroke:#4f803b;stroke-width:4}
+.spark-diagram-seed .seed-radicle{fill:#d7e9a9;stroke:#708d3e;stroke-width:4}
+.spark-diagram-seed .seed-hilum{fill:#8e633e;stroke:#5a3d27;stroke-width:3}
