@@ -1314,6 +1314,94 @@ $;
 revoke all on function public.spark_promote_learning_model_candidate(text) from public,anon,authenticated;
 grant execute on function public.spark_promote_learning_model_candidate(text) to service_role;
 
+create or replace function public.spark_run_learning_model_cycle()
+returns jsonb
+language plpgsql
+security definer
+set search_path = public
+as $
+declare
+  v_champion public.spark_learning_model_versions%rowtype;
+  v_samples integer := 0;
+  v_min_samples integer := 200;
+  v_result jsonb;
+  v_version text;
+  v_eligible boolean := false;
+begin
+  select * into v_champion
+  from public.spark_learning_model_versions
+  where status='champion'
+  order by promoted_at desc nulls last,created_at desc
+  limit 1;
+
+  if v_champion.version_key is null then
+    return jsonb_build_object('status','no_champion');
+  end if;
+
+  v_min_samples := coalesce((v_champion.weights->>'min_candidate_samples')::integer,200);
+
+  select count(*)::integer into v_samples
+  from public.spark_learning_recommendations
+  where completed_at is not null
+    and outcome_delta is not null
+    and rationale ? 'features';
+
+  if v_samples<v_min_samples then
+    return jsonb_build_object(
+      'status','waiting_for_evidence',
+      'sample_size',v_samples,
+      'required_samples',v_min_samples,
+      'champion',v_champion.version_key
+    );
+  end if;
+
+  v_version := 'li-candidate-'||to_char(now(),'YYYYMMDDHH24MISS');
+  v_result := public.spark_build_learning_model_candidate(v_version);
+  v_eligible := coalesce((v_result->>'eligible_for_promotion')::boolean,false);
+
+  if v_eligible then
+    perform public.spark_promote_learning_model_candidate(v_version);
+    return v_result||jsonb_build_object('status','promoted','promoted_version',v_version);
+  end if;
+
+  return v_result||jsonb_build_object('status','candidate_retained','champion',v_champion.version_key);
+end;
+$;
+
+revoke all on function public.spark_run_learning_model_cycle() from public,anon,authenticated;
+grant execute on function public.spark_run_learning_model_cycle() to service_role;
+
+-- When pg_cron is available, keep forgetting estimates fresh and let SPARK run
+-- its guarded champion/candidate evaluation automatically. The commands are
+-- added dynamically so projects without pg_cron still apply this migration.
+do $
+declare
+  r record;
+begin
+  if exists(select 1 from pg_extension where extname='pg_cron') then
+    for r in
+      select jobid
+      from cron.job
+      where jobname in ('spark-learner-retention-refresh','spark-learner-model-cycle')
+    loop
+      perform cron.unschedule(r.jobid);
+    end loop;
+
+    perform cron.schedule(
+      'spark-learner-retention-refresh',
+      '17 7 * * *',
+      'select public.spark_recalculate_all_learning_states_v2();'
+    );
+
+    perform cron.schedule(
+      'spark-learner-model-cycle',
+      '37 7 * * 1',
+      'select public.spark_run_learning_model_cycle();'
+    );
+  end if;
+end;
+$;
+
 comment on table public.spark_learning_evidence_v2 is
 'Immutable SPARK learner evidence. Exposure-only events may have no observed score and therefore do not masquerade as mastery.';
 comment on table public.spark_learning_skill_state_v2 is
