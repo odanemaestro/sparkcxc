@@ -5847,7 +5847,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
 
   const loadChildData = useCallback(async () => {
     if (!selectedChild?.id) { setChildData(null); return; }
-    const [prog, attempts, lessons, bookings, examAttempts, milestones, studyCircle, flashcards, flashcardReviews, goals, learnerStates, subjectProgress, subjectEvents, subjectEnrollments] = await Promise.all([
+    const [prog, attempts, lessons, bookings, examAttempts, milestones, studyCircle, flashcards, flashcardReviews, goals, learnerStates, learnerStatesV2, subjectProgress, subjectEvents, subjectEnrollments] = await Promise.all([
       supabase.from("csec_skill_progress").select("*").eq("user_id", selectedChild.id).order("mastery_score", {ascending:true}),
       supabase.from("csec_question_attempts").select("id,correct,attempted_at,skill").eq("user_id", selectedChild.id).order("attempted_at", {ascending:false}).limit(500),
       supabase.from("lesson_progress").select("id,lesson_id,completed,completed_at,lessons(title)").eq("user_id", selectedChild.id).eq("completed", true),
@@ -5859,6 +5859,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
       supabase.from("spark_flashcard_review_events").select("id,card_id,rating,reviewed_at").eq("user_id", selectedChild.id).order("reviewed_at", {ascending:false}).limit(1000),
       supabase.from("spark_student_goals").select("*").eq("student_id", selectedChild.id).eq("status", "active").order("created_at", {ascending:false}).limit(1),
       supabase.from("spark_learner_skill_state").select("*").eq("user_id", selectedChild.id).order("mastery_probability", {ascending:true}),
+      supabase.from("spark_learning_skill_state_v2").select("*").eq("user_id", selectedChild.id).order("priority_score", {ascending:false}),
       supabase.from("spark_subject_progress").select("subject_id,activity_key,activity_type,section_id,topic_id,title,completed,score,max_score,percent,best_percent,attempt_count,metadata,first_recorded_at,updated_at").eq("user_id", selectedChild.id).order("updated_at", {ascending:false}),
       supabase.from("spark_subject_activity_events").select("id,subject_id,activity_key,activity_type,section_id,topic_id,title,completed,score,max_score,percent,metadata,occurred_at,created_at").eq("user_id", selectedChild.id).order("occurred_at", {ascending:false}).limit(1000),
       supabase.from("spark_student_subject_enrollments").select("student_id,subject_id,status,enrolled_at,updated_at").eq("student_id", selectedChild.id).order("updated_at", {ascending:false}),
@@ -5867,7 +5868,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
     const attemptsRows = attempts.data || [];
     const mastery = rows.length ? Math.round(rows.reduce((s,r)=>s+Number(r.mastery_score||0),0)/rows.length) : 0;
     const weakest = rows.filter(r=>Number(r.mastery_score)<80).slice(0,3);
-    setChildData({ progress:rows, attempts:attemptsRows, lessons:lessons.data||[], bookings:bookings.data||[], examAttempts:examAttempts.data||[], milestones:milestones.data||[], studyCircle:studyCircle.data||{active:false}, flashcardProgress:flashcards.error?[]:(flashcards.data||[]), flashcardReviewEvents:flashcardReviews.error?[]:(flashcardReviews.data||[]), goal:goals.error?null:(goals.data?.[0]||null), learnerStates:learnerStates.error?[]:(learnerStates.data||[]), subjectProgressRows:subjectProgress.error?[]:(subjectProgress.data||[]), subjectActivityEvents:subjectEvents.error?[]:(subjectEvents.data||[]), subjectEnrollments:subjectEnrollments.error?[]:(subjectEnrollments.data||[]), subjectEnrollmentAvailable:!subjectEnrollments.error, mastery, weakest });
+    setChildData({ progress:rows, attempts:attemptsRows, lessons:lessons.data||[], bookings:bookings.data||[], examAttempts:examAttempts.data||[], milestones:milestones.data||[], studyCircle:studyCircle.data||{active:false}, flashcardProgress:flashcards.error?[]:(flashcards.data||[]), flashcardReviewEvents:flashcardReviews.error?[]:(flashcardReviews.data||[]), goal:goals.error?null:(goals.data?.[0]||null), learnerStates:learnerStates.error?[]:(learnerStates.data||[]), learnerStatesV2:learnerStatesV2.error?[]:(learnerStatesV2.data||[]), subjectProgressRows:subjectProgress.error?[]:(subjectProgress.data||[]), subjectActivityEvents:subjectEvents.error?[]:(subjectEvents.data||[]), subjectEnrollments:subjectEnrollments.error?[]:(subjectEnrollments.data||[]), subjectEnrollmentAvailable:!subjectEnrollments.error, mastery, weakest });
   }, [selectedChild?.id]);
 
   useEffect(() => { loadChildData(); }, [loadChildData]);
@@ -5952,7 +5953,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
   const paper2027Attempts = examAttempts.filter(isCsec2027ExamAttempt);
   const examAverage = examAttempts.length ? Math.round(examAttempts.reduce((sum, a) => sum + Number(a.percent || 0), 0) / examAttempts.length) : 0;
   const learningMilestones = childData?.milestones || [];
-  const parentLearnerModel = buildLearnerModelProfile(childData?.learnerStates || []);
+  const parentLearnerModel = buildLearnerModelProfile([...(childData?.learnerStates || []), ...(childData?.learnerStatesV2 || [])]);
   const parentMathematicsLessonRows = mergeMathematicsLessonRowsForReporting(
     childData?.lessons || [],
     childData?.subjectProgressRows || [],
