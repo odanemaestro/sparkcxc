@@ -25,7 +25,7 @@ function RelationshipConnector() {
   );
 }
 
-export default function DatabaseLab({ lab, completed, onBack, onComplete }) {
+export default function DatabaseLab({ lab, completed, onBack, onComplete, onEvidence }) {
   const [tab, setTab] = useState("Tables");
   const { state: database, setState: setDatabase, undo, redo, canUndo, canRedo } = useWorkspaceHistory({ schema: EMPTY_SCHEMA, records: STARTING_RECORDS });
   const [relationship, setRelationship] = useState("");
@@ -39,7 +39,7 @@ export default function DatabaseLab({ lab, completed, onBack, onComplete }) {
   const [groupBy, setGroupBy] = useState("");
   const [summary, setSummary] = useState("");
   const [message, setMessage] = useState("Choose field properties, then run a query against the current records.");
-  const { evidence, record } = useTaskEvidence();
+  const { evidence, record } = useTaskEvidence(onEvidence);
 
   const schemaResult = useMemo(() => validateSchema(database.schema), [database.schema]);
   const criteria = useMemo(() => [
