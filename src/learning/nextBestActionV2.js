@@ -451,11 +451,11 @@ export function exactTargetForAction(subjectId, skill, actionType, options = {})
 
   return {
     subjectId:id,
-    view:"study",
-    path:"/study",
+    view:"generic-study",
+    path:id ? `/study/${encodeURIComponent(id)}` : "/study",
     params:{},
     kind:"lesson",
-    label:"Study",
+    label:id ? `${id.replace(/-/g, " ")} study` : "Study",
     exact:false,
   };
 }

@@ -170,6 +170,21 @@ export function mergeSubjectCatalog(baseSubjects = [], catalogRows = []) {
     .sort((a,b) => (a.sortOrder - b.sortOrder) || a.name.localeCompare(b.name));
 }
 
+export function runtimeSubjectCatalog(baseSubjects = [], catalogRows = [], { catalogAvailable = false } = {}) {
+  if (!catalogAvailable) {
+    return publicCatalogSubjects(mergeSubjectCatalog(baseSubjects, []));
+  }
+
+  const liveRows = publicCatalogSubjects(
+    (catalogRows || []).map(normalizeCatalogSubject).filter(Boolean)
+  );
+  const publishedIds = new Set(liveRows.map(subject => subject.id));
+
+  return publicCatalogSubjects(
+    mergeSubjectCatalog(baseSubjects, liveRows)
+  ).filter(subject => publishedIds.has(subject.id));
+}
+
 export function publicCatalogSubjects(subjects = []) {
   return (subjects || []).filter(subject =>
     subject &&

@@ -33,6 +33,7 @@ import { useMathLessonRoute, writeSparkNestedRoute } from "./routing/sparkRoutin
 // SPARK_PHYSICS_SECTION_A_RC1_IMPORTS
 import SubjectSelectionView, { SubjectChangeButton } from "./subjects/SubjectSelectionView";
 import { getSparkSubjectRegistry, subjectsForCapability, getSparkSubject, enabledSparkSubjects, subjectsForEnrollmentIds } from "./subjects/subjectRegistry";
+import { loadSubjectCatalog, runtimeSubjectCatalog } from "./subjects/subjectCatalog";
 import { sectionAStats as getPhysicsSectionAStats } from "./physics/mechanics/sectionAMechanics.mjs";
 import { physicsFullCourseStats } from "./physics/course/fullCourseIndex.mjs";
 import { physicsSectionAEnabled } from "./physics/mechanics/physicsFeatureGate.mjs";
@@ -119,6 +120,7 @@ const PracticeHub = lazy(() => import("./practice/PracticeHub"));
 const PhysicsSubjectView = lazy(() => import("./physics/course/components/PhysicsSubjectView"));
 const InformationTechnologySubjectView = lazy(() => import("./informationTechnology/components/InformationTechnologySubjectView"));
 const InformationTechnologyFlashcardsPanel = lazy(() => import("./informationTechnology/components/InformationTechnologyFlashcardsPanel"));
+const GenericSubjectStudyView = lazy(() => import("./subjects/GenericSubjectStudyView"));
 const PhysicsMechanicsFlashcardsPanel = lazy(() =>
   import("./physics/mechanics/components/PhysicsMechanicsSupportPanels")
     .then(module => ({ default: module.PhysicsMechanicsFlashcardsPanel }))
@@ -155,6 +157,7 @@ const VIEW_ROUTE_PATHS = Object.freeze({
   dashboard: "/dashboard",
   admin: "/admin",
   study: "/study",
+  "generic-study": "/study",
   lesson: "/study/mathematics",
   practice: "/practice",
   "practice-math": "/practice/mathematics",
@@ -241,11 +244,23 @@ function viewFromBrowserHash() {
   if (normalizedPath === "/study/mathematics" || normalizedPath.startsWith("/study/mathematics/")) return "lesson";
   if (normalizedPath === "/study/physics" || normalizedPath.startsWith("/study/physics/")) return PHYSICS_SECTION_A_ENABLED ? "physics" : "home";
   if (normalizedPath === "/study/information-technology" || normalizedPath.startsWith("/study/information-technology/")) return "information-technology";
+  if (/^\/study\/[^/]+(?:\/.*)?$/.test(normalizedPath)) return "generic-study";
   if (normalizedPath === "/practice/mathematics" || normalizedPath.startsWith("/practice/mathematics/")) return "practice-math";
   if (normalizedPath === "/practice/physics" || normalizedPath.startsWith("/practice/physics/")) return PHYSICS_SECTION_A_ENABLED ? "practice-physics" : "practice";
 
   if (normalizedPath === "/practice/information-technology" || normalizedPath.startsWith("/practice/information-technology/")) return "practice-information-technology";
   return ROUTE_PATH_VIEWS[normalizedPath] || "home";
+}
+
+function genericStudySubjectFromBrowserHash() {
+  const path = normalizedSparkPathFromBrowserHash();
+  const match = String(path || "").match(/^\/study\/([^/]+)(?:\/.*)?$/);
+  if (!match) return null;
+
+  const id = decodeURIComponent(match[1] || "").trim().toLowerCase();
+  return ["mathematics","physics","information-technology"].includes(id)
+    ? null
+    : id;
 }
 
 function dashboardSectionFromBrowserHash() {
@@ -1418,7 +1433,7 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
   );
 }
 
-function StudySubjectHub({ setView, subjects = [], onManageSubjects }) {
+function StudySubjectHub({ setView, subjects = [], onManageSubjects, onOpenSubject }) {
   const studySubjects = subjectsForCapability(subjects, "study");
   if (!studySubjects.length) {
     return <SubjectEnrollmentRequiredView onManageSubjects={onManageSubjects} onBack={() => setView("dashboard")} />;
@@ -1429,7 +1444,7 @@ function StudySubjectHub({ setView, subjects = [], onManageSubjects }) {
     description="Select one of your enrolled subjects to study. Each subject keeps its own learning path and progress."
     capability="study"
     subjects={studySubjects}
-    onSelect={subject => setView(subject.studyView)}
+    onSelect={subject => onOpenSubject ? onOpenSubject(subject) : setView(subject.studyView)}
     onBack={() => setView("dashboard")}
   />;
 }
@@ -1477,7 +1492,7 @@ function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorAp
   ) : (
     <>
       <NavBtn onClick={() => navigate("dashboard")} active={view === "dashboard"}>Dashboard</NavBtn>
-      {!isTutor && !isParent && <NavBtn onClick={() => navigate("study")} active={view === "study" || view === "lesson" || view === "physics"}>Study</NavBtn>}
+      {!isTutor && !isParent && <NavBtn onClick={() => navigate("study")} active={view === "study" || view === "lesson" || view === "physics" || view === "information-technology" || view === "generic-study"}>Study</NavBtn>}
       {!isTutor && !isParent && <NavBtn onClick={() => navigate("practice")} active={view === "practice" || view === "practice-math" || view === "practice-physics"}>Practice</NavBtn>}
       <NavBtn onClick={() => navigate("tutors")} active={view === "tutors"}>Tutors</NavBtn>
       {!isStudent && !isParent && !hasTutorApp && view !== "become-tutor" && (
@@ -3332,7 +3347,7 @@ function ProfilePhotoEditor({
   );
 }
 
-function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorApp, tutorAppLoaded = true, onProfileUpdated }) {
+function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorApp, tutorAppLoaded = true, onProfileUpdated, subjects = SPARK_SUBJECTS, onOpenSubject }) {
   // profile.role is only set once, at signup - it's never flipped to "tutor"
   // when someone who signed up as a student later applies and gets approved.
   // Falling back to an approved tutor-application status keeps this accurate
@@ -3340,6 +3355,10 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   // weren't showing up here).
   const isTutor = tutorApp?.status === "approved";
   const isStudent = profile?.role === "student";
+  const openSubject = useCallback(subject => {
+    if (onOpenSubject) onOpenSubject(subject);
+    else setView(subject?.studyView || "study");
+  }, [onOpenSubject, setView]);
   // Student profiles can later become approved tutors without profile.role
   // changing. Wait for that tutor lookup before canonicalizing a nested
   // dashboard route, otherwise #/dashboard/sessions could briefly be mistaken
@@ -3970,7 +3989,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   const mergedSubjectProgressRows = mergeSubjectProgressRows(subjectProgressRows, localPhysicsSubjectRows);
   const mathematicsLessonRows = mergeMathematicsLessonRowsForReporting(progressData, mergedSubjectProgressRows);
   const done = mathematicsLessonRows.length;
-  const availableSparkSubjects = enabledSparkSubjects(SPARK_SUBJECTS);
+  const availableSparkSubjects = enabledSparkSubjects(subjects);
   const legacyEnrollmentIds = [...new Set([
     "mathematics",
     ...mergedSubjectProgressRows.map(row => String(row?.subject_id || "").toLowerCase()).filter(Boolean),
@@ -3978,7 +3997,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   const enrolledSubjectIds = subjectEnrollmentAvailable === true
     ? subjectEnrollments.filter(row => row.status === "active").map(row => String(row.subject_id || "").toLowerCase())
     : legacyEnrollmentIds;
-  const studentEnrolledSubjects = subjectsForEnrollmentIds(SPARK_SUBJECTS, enrolledSubjectIds)
+  const studentEnrolledSubjects = subjectsForEnrollmentIds(subjects, enrolledSubjectIds, {allowUnknown:false})
     .filter(subject => subject.enabled !== false);
   const enrolledSubjectIdSet = new Set(studentEnrolledSubjects.map(subject => String(subject.id || "").toLowerCase()));
   const streak = computeStudyStreak({
@@ -4002,7 +4021,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   });
   const studentLearnerModel = buildLearnerModelProfile(studentLearnerStates);
   const studentMathBaseIntelligence = buildLearnerIntelligenceFromSkillStates({
-    subject: getSparkSubject(SPARK_SUBJECTS, "mathematics"),
+    subject: getSparkSubject(subjects, "mathematics"),
     learnerStates: studentLearnerStates,
     summary: {
       lessonPercent: totalTopics ? Math.round((done / totalTopics) * 100) : 0,
@@ -4344,7 +4363,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
             </div>
             <SubjectDashboardOverview
               summaries={subjectDashboardSummaries}
-              onOpenSubject={subject => setView(subject.studyView || "study")}
+              onOpenSubject={subject => openSubject(subject)}
               onOpenProgress={subject => { setProgressSubject(subject?.id || "all"); setDashboardSection("progress"); }}
               onOpenReport={() => { setStudentReportSubject("all"); setStudentReportOpen(true); }}
               subjectInsights={dashboardSubjectInsights}
@@ -4637,7 +4656,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
             busySubjectId={subjectEnrollmentBusy}
             enrollmentAvailable={subjectEnrollmentAvailable === true}
             onToggle={updateStudentSubjectEnrollment}
-            onOpenSubject={subject => setView(subject.studyView || "study")}
+            onOpenSubject={subject => openSubject(subject)}
           />
         )}
 
@@ -4655,7 +4674,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 summary={allSubjectsSummary}
                 summaries={subjectDashboardSummaries}
                 recentActivity={recentSubjectActivity}
-                onOpenSubject={subject => setView(subject.studyView || "study")}
+                onOpenSubject={subject => openSubject(subject)}
                 onSelectSubject={subjectId => setProgressSubject(subjectId || "all")}
                 onOpenReport={() => { setStudentReportSubject("all"); setStudentReportOpen(true); }}
               />
@@ -4704,7 +4723,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
             ) : (
               <div data-notification-anchor="student-subject-progress">
                 <SubjectProgressDetail
-                  subject={subjectDashboardSummaries.find(subject => subject.id === progressSubject) || getSparkSubject(SPARK_SUBJECTS, progressSubject)}
+                  subject={subjectDashboardSummaries.find(subject => subject.id === progressSubject) || getSparkSubject(subjects, progressSubject)}
                   rows={mergedSubjectProgressRows}
                   supabase={supabase}
                   intelligence={studentIntelligenceBySubject[progressSubject]}
@@ -5773,7 +5792,7 @@ const PARENT_MILESTONE_META = {
   skill_improved: { short: "↑", label: "Skill improving" },
 };
 
-function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
+function ParentView({ user, profile, setView, showToast, onProfileUpdated, subjects = SPARK_SUBJECTS }) {
   const [links, setLinks] = useState([]);
   const [children, setChildren] = useState([]);
   const [code, setCode] = useState("");
@@ -6012,7 +6031,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
   const parentEnrolledSubjectIds = childData?.subjectEnrollmentAvailable === true
     ? (childData?.subjectEnrollments || []).filter(row => row.status === "active").map(row => String(row.subject_id || "").toLowerCase())
     : parentLegacyEnrollmentIds;
-  const parentEnrolledSubjects = subjectsForEnrollmentIds(SPARK_SUBJECTS, parentEnrolledSubjectIds)
+  const parentEnrolledSubjects = subjectsForEnrollmentIds(subjects, parentEnrolledSubjectIds, {allowUnknown:false})
     .filter(subject => subject.enabled !== false);
   const parentSubjectDashboardSummaries = buildSubjectDashboardSummaries({
     subjects: parentEnrolledSubjects,
@@ -6025,7 +6044,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
     discoverFromProgress: childData?.subjectEnrollmentAvailable !== true,
   });
   const parentMathBaseIntelligence = buildLearnerIntelligenceFromSkillStates({
-    subject:getSparkSubject(SPARK_SUBJECTS, "mathematics"),
+    subject:getSparkSubject(subjects, "mathematics"),
     learnerStates:childData?.learnerStates || [],
     summary:{
       lessonPercent:SYLLABUS_SECTIONS.reduce((sum, section) => sum + section.topics.length, 0)
@@ -6223,7 +6242,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
           ) : (
             <div data-notification-anchor="parent-subject-progress">
               <SubjectProgressDetail
-                subject={parentSubjectDashboardSummaries.find(subject => subject.id === parentProgressSubject) || getSparkSubject(SPARK_SUBJECTS, parentProgressSubject)}
+                subject={parentSubjectDashboardSummaries.find(subject => subject.id === parentProgressSubject) || getSparkSubject(subjects, parentProgressSubject)}
                 rows={childData.subjectProgressRows || []}
                 intelligence={parentIntelligenceBySubject[parentProgressSubject]}
                 onOpenReport={subject => { setParentReportSubject(subject?.id || parentProgressSubject); setParentReportOpen(true); }}
@@ -6393,6 +6412,9 @@ export default function App() {
   const [appSubjectEnrollmentIds, setAppSubjectEnrollmentIds] = useState([]);
   const [appSubjectEnrollmentsLoaded, setAppSubjectEnrollmentsLoaded] = useState(false);
   const [appSubjectEnrollmentAvailable, setAppSubjectEnrollmentAvailable] = useState(null);
+  const [appCatalogRows, setAppCatalogRows] = useState([]);
+  const [appCatalogLoaded, setAppCatalogLoaded] = useState(false);
+  const [appCatalogAvailable, setAppCatalogAvailable] = useState(false);
   // The signed-in user's own row in `tutors` (id + status), or null if
   // they've never applied. Only a `rejected` status (or no row at all)
   // should let someone see/use "Become a tutor" - pending, approved, and
@@ -6440,6 +6462,59 @@ export default function App() {
     viewRef.current = "dashboard";
     setViewState("dashboard");
     writeDashboardSectionToBrowserHash("subjects");
+  }, []);
+
+  const openStudentSubject = useCallback(subject => {
+    const id = String(subject?.id || "").trim().toLowerCase();
+    if (!id) {
+      setView("study");
+      return;
+    }
+
+    const builtinView = {
+      mathematics:"lesson",
+      physics:"physics",
+      "information-technology":"information-technology",
+    }[id];
+
+    if (builtinView) {
+      setView(builtinView);
+      return;
+    }
+
+    const configured = String(subject?.routes?.study || "").trim();
+    const path = configured && configured !== "/study"
+      ? configured
+      : `/study/${encodeURIComponent(id)}`;
+
+    viewRef.current = "generic-study";
+    setViewState("generic-study");
+    writeSparkNestedRoute(path);
+  }, [setView]);
+
+  useEffect(() => {
+    let cancelled = false;
+    setAppCatalogLoaded(false);
+
+    loadSubjectCatalog({ supabase }).then(result => {
+      if (cancelled) return;
+
+      if (result?.error) {
+        console.warn("Could not load the public SPARK subject catalog", result.error);
+      }
+
+      setAppCatalogRows(result?.data || []);
+      setAppCatalogAvailable(!result?.error && !result?.unavailable);
+      setAppCatalogLoaded(true);
+    }).catch(error => {
+      if (cancelled) return;
+      console.warn("Could not load the public SPARK subject catalog", error);
+      setAppCatalogRows([]);
+      setAppCatalogAvailable(false);
+      setAppCatalogLoaded(true);
+    });
+
+    return () => { cancelled = true; };
   }, []);
 
   // Keep React in sync when the user uses browser Back/Forward or manually
@@ -7045,17 +7120,29 @@ const handleLogout = async () => {
   // lookup have resolved. getSession() and onAuthStateChange() can overlap
   // during refresh, so `loading` alone is not a sufficient render guard.
   const tutorVerificationResumePending = !!session && view !== "become-tutor" && tutorVerificationHandoffMatchesUser(loadTutorVerificationHandoff(), session.user);
-  const authenticatedRolePending = !!session && (!profile || (!isDedicatedAdmin && !tutorAppLoaded) || googleOAuthResolving || tutorVerificationResumePending);
+  const authenticatedRolePending = !!session && (!profile || (!isDedicatedAdmin && !tutorAppLoaded) || googleOAuthResolving || tutorVerificationResumePending || (!isDedicatedAdmin && !appCatalogLoaded));
+  const runtimeSparkSubjects = runtimeSubjectCatalog(
+    SPARK_SUBJECTS,
+    appCatalogRows,
+    { catalogAvailable:appCatalogAvailable }
+  );
   const appStudentEnrolledSubjects = profile?.role === "student"
-    ? subjectsForEnrollmentIds(SPARK_SUBJECTS, appSubjectEnrollmentIds).filter(subject => subject.enabled !== false)
+    ? subjectsForEnrollmentIds(runtimeSparkSubjects, appSubjectEnrollmentIds, {allowUnknown:false}).filter(subject => subject.enabled !== false)
     : [];
   const appStudentEnrolledSubjectIds = new Set(appStudentEnrolledSubjects.map(subject => String(subject.id || "").toLowerCase()));
-  const appSubjectAccessPending = !!session && profile?.role === "student" && !appSubjectEnrollmentsLoaded;
+  const appSubjectAccessPending = !!session && profile?.role === "student" && (!appSubjectEnrollmentsLoaded || !appCatalogLoaded);
   const appHasMathematics = appStudentEnrolledSubjectIds.has("mathematics");
   const appHasPhysics = appStudentEnrolledSubjectIds.has("physics");
-
-
   const appHasInformationTechnology = appStudentEnrolledSubjectIds.has("information-technology");
+  const appGenericStudySubjectId = view === "generic-study"
+    ? genericStudySubjectFromBrowserHash()
+    : null;
+  const appGenericStudySubject = appGenericStudySubjectId
+    ? getSparkSubject(runtimeSparkSubjects, appGenericStudySubjectId)
+    : null;
+  const appHasGenericStudySubject = Boolean(
+    appGenericStudySubjectId && appStudentEnrolledSubjectIds.has(appGenericStudySubjectId)
+  );
   if (googleOAuthError && session) {
     return (
       <GoogleOAuthGateErrorView
@@ -7105,7 +7192,7 @@ if (loading || authenticatedRolePending) {
           recoveryMode={view === "auth-recovery"}
         />
       )}
-      {view === "dashboard"    && session && profile?.role === "parent" ? <ParentView user={session.user} profile={profile} setView={setView} showToast={showToast} onProfileUpdated={updateProfileState}/> : null}
+      {view === "dashboard"    && session && profile?.role === "parent" ? <ParentView user={session.user} profile={profile} setView={setView} showToast={showToast} onProfileUpdated={updateProfileState} subjects={runtimeSparkSubjects}/> : null}
       {/* SPARK_K75_TUTOR_DASHBOARD_APPROVAL_GATE */}
       {view === "dashboard" && session && profile?.role !== "parent" && (
         profile?.role === "tutor" && tutorApp?.status !== "approved" ? (
@@ -7119,14 +7206,14 @@ if (loading || authenticatedRolePending) {
             onApplicationSubmitted={loadTutorApp}
           />
         ) : (
-          <DashboardView user={session.user} profile={profile} setView={setView} showToast={showToast} hasTutorApp={hideTutorApplyLink} tutorApp={tutorApp} tutorAppLoaded={tutorAppLoaded} onProfileUpdated={updateProfileState}/>
+          <DashboardView user={session.user} profile={profile} setView={setView} showToast={showToast} hasTutorApp={hideTutorApplyLink} tutorApp={tutorApp} tutorAppLoaded={tutorAppLoaded} onProfileUpdated={updateProfileState} subjects={runtimeSparkSubjects} onOpenSubject={openStudentSubject}/>
         )
       )}
       {view === "admin"        && session && profile?.is_admin && <AdminView showToast={showToast} adminUserId={session.user.id} profile={profile}/>}
       {view === "study" && session && profile?.role === "student" && (
         appSubjectAccessPending
           ? <SparkLoader variant="section" label="Loading your subjects" />
-          : <StudySubjectHub setView={setView} subjects={appStudentEnrolledSubjects} onManageSubjects={openMySubjects}/>
+          : <StudySubjectHub setView={setView} subjects={appStudentEnrolledSubjects} onManageSubjects={openMySubjects} onOpenSubject={openStudentSubject}/>
       )}
       {view === "lesson" && session && profile?.role === "student" && (
         appSubjectAccessPending
@@ -7159,6 +7246,42 @@ if (loading || authenticatedRolePending) {
                 onManageSubjects={openMySubjects}
                 onBack={() => setView("study")}
               />
+      )}
+
+      {view === "generic-study" && session && profile?.role === "student" && (
+        appSubjectAccessPending
+          ? <SparkLoader variant="section" label="Checking subject access" />
+          : !appGenericStudySubject
+            ? (
+              <Suspense fallback={<SparkLoader variant="section" label="Loading subject" />}>
+                <GenericSubjectStudyView
+                  supabase={supabase}
+                  userId={session.user.id}
+                  subject={null}
+                  onBack={() => setView("study")}
+                  onManageSubjects={openMySubjects}
+                  showToast={showToast}
+                />
+              </Suspense>
+            )
+            : !appHasGenericStudySubject
+              ? <SubjectEnrollmentRequiredView
+                  subjectName={appGenericStudySubject.shortName || appGenericStudySubject.name}
+                  onManageSubjects={openMySubjects}
+                  onBack={() => setView("study")}
+                />
+              : (
+                <Suspense fallback={<SparkLoader variant="section" label={`Loading ${appGenericStudySubject.shortName || appGenericStudySubject.name}`} />}>
+                  <GenericSubjectStudyView
+                    supabase={supabase}
+                    userId={session.user.id}
+                    subject={appGenericStudySubject}
+                    onBack={() => setView("study")}
+                    onManageSubjects={openMySubjects}
+                    showToast={showToast}
+                  />
+                </Suspense>
+              )
       )}
 
       {/* SPARK_PHYSICS_SECTION_A_RC1_VIEW */}
@@ -7243,7 +7366,7 @@ if (loading || authenticatedRolePending) {
 
 
 	  {// SPARK_PHYSICS_SECTION_A_RC1_AUTH_GUARD
-	  (view === "dashboard" || view === "study" || view === "lesson" || view === "physics" || view === "information-technology") && !session && (
+	  (view === "dashboard" || view === "study" || view === "lesson" || view === "physics" || view === "information-technology" || view === "generic-study") && !session && (
         <div style={{flex:1,padding:"4rem",textAlign:"center",color:T.textMuted}}>
           Please <span style={{color:T.teal,cursor:"pointer"}} onClick={() => setView("login")}>sign in</span> to continue.
         </div>

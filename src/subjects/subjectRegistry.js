@@ -140,22 +140,28 @@ export function subjectsForCapability(subjects, capability) {
   return enabledSparkSubjects(subjects).filter(subject => Boolean(subject.capabilities?.[capability]));
 }
 
-export function subjectsForEnrollmentIds(subjects, subjectIds = []) {
+export function subjectsForEnrollmentIds(subjects, subjectIds = [], options = {}) {
   const wanted = new Set((subjectIds || []).map(id => String(id || "").trim().toLowerCase()).filter(Boolean));
   if (!wanted.size) return [];
+
+  const allowUnknown = options.allowUnknown !== false;
   const known = new Map((subjects || []).map(subject => [String(subject?.id || "").toLowerCase(), subject]));
+
   return [...wanted].map(id => {
     const subject = known.get(id);
     if (subject) return subject;
+    if (!allowUnknown) return null;
+
     const label = id
       .replace(/[_-]+/g, " ")
       .replace(/\b\w/g, character => character.toUpperCase());
+
     return {
       id,
       name: label,
       shortName: label,
       qualification: "CSEC",
-      mark: label.slice(0, 1) || "•",
+      mark: label.slice(0, 1) || "â€¢",
       description: "Continue learning and track your progress in this subject.",
       enabled: true,
       status: "live",
@@ -167,9 +173,8 @@ export function subjectsForEnrollmentIds(subjects, subjectIds = []) {
       stats: {},
       discoveredFromEnrollment: true,
     };
-  });
+  }).filter(Boolean);
 }
-
 export function getSparkSubject(subjects, subjectId) {
   return (subjects || []).find(subject => subject.id === subjectId) || null;
 }

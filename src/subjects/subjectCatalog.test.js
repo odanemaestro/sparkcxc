@@ -3,6 +3,7 @@ import {
   mergeSubjectCatalog,
   normalizeCatalogSubject,
   publicCatalogSubjects,
+  runtimeSubjectCatalog,
   subjectIdFromValue,
 } from "./subjectCatalog";
 
@@ -43,6 +44,23 @@ describe("SPARK Dynamic Subject Catalog V1", () => {
       normalizeCatalogSubject({id:"bio",name:"Bio",status:"live",enabled:false}),
     ];
     expect(publicCatalogSubjects(rows).map(item => item.id)).toEqual(["math"]);
+  });
+
+  test("runtime catalog uses the public database list as learner discovery authority", () => {
+    const base = [
+      {id:"mathematics",name:"Math",enabled:true,status:"live",capabilities:{progress:true}},
+      {id:"physics",name:"Physics",enabled:true,status:"live",capabilities:{progress:true}},
+    ];
+    const published = [
+      {id:"mathematics",name:"Math",enabled:true,status:"live",sort_order:10,capabilities:{progress:true}},
+      {id:"chemistry",name:"Chemistry",enabled:true,status:"live",sort_order:40,capabilities:{study:true,progress:true},routes:{study:"/study/chemistry"}},
+    ];
+
+    expect(runtimeSubjectCatalog(base, published, {catalogAvailable:true}).map(item => item.id))
+      .toEqual(["mathematics","chemistry"]);
+
+    expect(runtimeSubjectCatalog(base, [], {catalogAvailable:false}).map(item => item.id))
+      .toEqual(["mathematics","physics"]);
   });
 
   test("serializes subject manifests for the secure sync RPC", () => {

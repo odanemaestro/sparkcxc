@@ -1,0 +1,555 @@
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import SparkLoader from "../components/ui/SparkLoader";
+import Card from "../components/ui/Card";
+import { recordSubjectActivity } from "./subjectProgress";
+import { loadGenericSubjectStructure } from "./genericSubjectCatalog";
+import {
+  readSparkHashRoute,
+  subscribeSparkRoute,
+  writeSparkNestedRoute,
+} from "../routing/sparkRoutingV270";
+import "./genericSubjectStudy.css";
+
+function lessonData(topic = {}) {
+  const lesson = topic?.metadata?.lesson;
+  return lesson && typeof lesson === "object" && !Array.isArray(lesson) ? lesson : {};
+}
+
+function lessonSections(topic = {}) {
+  const lesson = lessonData(topic);
+  return Array.isArray(lesson.sections) ? lesson.sections.filter(Boolean) : [];
+}
+
+function keyPoints(topic = {}) {
+  const lesson = lessonData(topic);
+  return Array.isArray(lesson.keyPoints) ? lesson.keyPoints.filter(Boolean) : [];
+}
+
+function routeSelection(path, structure) {
+  const route = readSparkHashRoute();
+  if (route.path !== path) return { sectionId:null, topicId:null };
+
+  const sectionId = String(route.params.get("section") || "");
+  const topicId = String(route.params.get("topic") || "");
+  const topic = (structure?.topics || []).find(item => item.id === topicId);
+
+  if (topic) {
+    return {
+      sectionId:topic.sectionId || sectionId || null,
+      topicId:topic.id,
+    };
+  }
+
+  const section = (structure?.sections || []).find(item => item.id === sectionId);
+  return { sectionId:section?.id || null, topicId:null };
+}
+
+function firstTopic(structure, completedIds = new Set()) {
+  return (structure?.topics || []).find(topic => !completedIds.has(topic.id))
+    || structure?.topics?.[0]
+    || null;
+}
+
+function GenericLessonContent({ topic }) {
+  const lesson = lessonData(topic);
+  const blocks = lessonSections(topic);
+  const points = keyPoints(topic);
+  const intro = String(lesson.introduction || topic?.description || "").trim();
+  const summary = String(lesson.summary || "").trim();
+  const example = lesson.workedExample && typeof lesson.workedExample === "object"
+    ? lesson.workedExample
+    : null;
+
+  return (
+    <div className="spark-generic-lesson-body">
+      {intro && <p className="spark-generic-lesson-intro">{intro}</p>}
+
+      {blocks.map((block, index) => {
+        const paragraphs = Array.isArray(block?.paragraphs)
+          ? block.paragraphs
+          : block?.body
+            ? [block.body]
+            : [];
+        const bullets = Array.isArray(block?.bullets) ? block.bullets : [];
+
+        return (
+          <section key={`${block?.title || "section"}-${index}`} className="spark-generic-lesson-section">
+            {block?.title && <h3>{block.title}</h3>}
+            {paragraphs.filter(Boolean).map((paragraph, paragraphIndex) => (
+              <p key={paragraphIndex}>{String(paragraph)}</p>
+            ))}
+            {bullets.length > 0 && (
+              <ul>
+                {bullets.filter(Boolean).map((item, bulletIndex) => (
+                  <li key={bulletIndex}>{String(item)}</li>
+                ))}
+              </ul>
+            )}
+          </section>
+        );
+      })}
+
+      {points.length > 0 && (
+        <Card className="spark-generic-key-points">
+          <strong>Key points</strong>
+          <ul>
+            {points.map((point, index) => <li key={index}>{String(point)}</li>)}
+          </ul>
+        </Card>
+      )}
+
+      {example && (
+        <Card className="spark-generic-worked-example">
+          <span>Worked example</span>
+          {example.title && <h3>{example.title}</h3>}
+          {example.prompt && <p>{example.prompt}</p>}
+          {Array.isArray(example.steps) && example.steps.length > 0 && (
+            <ol>
+              {example.steps.map((step, index) => <li key={index}>{String(step)}</li>)}
+            </ol>
+          )}
+          {example.answer && <div className="spark-generic-example-answer">{example.answer}</div>}
+        </Card>
+      )}
+
+      {summary && (
+        <section className="spark-generic-lesson-summary">
+          <h3>Lesson summary</h3>
+          <p>{summary}</p>
+        </section>
+      )}
+
+      {!intro && blocks.length === 0 && points.length === 0 && !example && !summary && (
+        <Card className="spark-generic-content-empty">
+          <strong>Lesson content is being prepared.</strong>
+          <p>This topic is in the course structure, but its learner notes have not been published yet.</p>
+        </Card>
+      )}
+    </div>
+  );
+}
+
+export default function GenericSubjectStudyView({
+  supabase,
+  userId,
+  subject,
+  onBack,
+  onManageSubjects,
+  showToast,
+}) {
+  const [structure, setStructure] = useState(null);
+  const [loading, setLoading] = useState(Boolean(subject?.id));
+  const [error, setError] = useState(null);
+  const [completedTopicIds, setCompletedTopicIds] = useState(new Set());
+  const [activeSectionId, setActiveSectionId] = useState(null);
+  const [activeTopicId, setActiveTopicId] = useState(null);
+  const [saving, setSaving] = useState(false);
+
+  const subjectId = String(subject?.id || "").trim().toLowerCase();
+  const studyPath = subject?.routes?.study || (subjectId ? `/study/${subjectId}` : "/study");
+
+  const applySelection = useCallback((nextStructure, completed) => {
+    if (!nextStructure) return;
+
+    const safeCompleted = completed || new Set();
+    const routed = routeSelection(studyPath, nextStructure);
+
+    if (routed.topicId) {
+      setActiveSectionId(routed.sectionId);
+      setActiveTopicId(routed.topicId);
+      return;
+    }
+
+    if (routed.sectionId) {
+      const section = nextStructure.sections.find(item => item.id === routed.sectionId);
+      const topic = section?.topics?.[0] || null;
+      setActiveSectionId(routed.sectionId);
+      setActiveTopicId(topic?.id || null);
+      return;
+    }
+
+    const topic = firstTopic(nextStructure, safeCompleted);
+    setActiveSectionId(topic?.sectionId || nextStructure.sections?.[0]?.id || null);
+    setActiveTopicId(topic?.id || null);
+  }, [studyPath]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    if (!subjectId) {
+      setLoading(false);
+      setStructure(null);
+      return () => { cancelled = true; };
+    }
+
+    setLoading(true);
+    setError(null);
+
+    Promise.all([
+      loadGenericSubjectStructure({ supabase, subjectId }),
+      userId
+        ? supabase.from("spark_subject_progress")
+            .select("topic_id,activity_key,completed")
+            .eq("user_id", userId)
+            .eq("subject_id", subjectId)
+            .eq("activity_type", "lesson")
+            .eq("completed", true)
+        : Promise.resolve({ data:[], error:null }),
+    ]).then(([structureResult, progressResult]) => {
+      if (cancelled) return;
+
+      if (structureResult.error) {
+        setError(structureResult.error);
+        setStructure(null);
+        setLoading(false);
+        return;
+      }
+
+      const completed = new Set(
+        (progressResult.data || [])
+          .map(row => String(
+            row.topic_id || String(row.activity_key || "").replace(/^lesson:/, "")
+          ).trim())
+          .filter(Boolean)
+      );
+
+      setCompletedTopicIds(completed);
+      setStructure(structureResult.data);
+      applySelection(structureResult.data, completed);
+
+      if (progressResult.error && !["42P01","PGRST205"].includes(progressResult.error.code)) {
+        console.warn("Could not load generic subject lesson progress", progressResult.error);
+      }
+
+      setLoading(false);
+    }).catch(loadError => {
+      if (cancelled) return;
+      setError(loadError);
+      setLoading(false);
+    });
+
+    return () => { cancelled = true; };
+  }, [applySelection, subjectId, supabase, userId]);
+
+  useEffect(() => {
+    if (!structure || !subjectId) return undefined;
+
+    return subscribeSparkRoute(route => {
+      if (route.path !== studyPath) return;
+
+      const next = routeSelection(studyPath, structure);
+      if (next.topicId) {
+        setActiveSectionId(next.sectionId);
+        setActiveTopicId(next.topicId);
+      } else if (next.sectionId) {
+        const topic = structure.sections
+          .find(section => section.id === next.sectionId)
+          ?.topics?.[0];
+
+        setActiveSectionId(next.sectionId);
+        setActiveTopicId(topic?.id || null);
+      }
+    });
+  }, [structure, studyPath, subjectId]);
+
+  const activeTopic = useMemo(
+    () => structure?.topics?.find(topic => topic.id === activeTopicId) || null,
+    [activeTopicId, structure]
+  );
+
+  const activeSection = useMemo(
+    () => structure?.sections?.find(
+      section => section.id === (activeTopic?.sectionId || activeSectionId)
+    ) || null,
+    [activeSectionId, activeTopic, structure]
+  );
+
+  const completedCount = structure?.topics
+    ?.filter(topic => completedTopicIds.has(topic.id))
+    .length || 0;
+
+  const totalTopics = structure?.topicCount || 0;
+  const progressPercent = totalTopics
+    ? Math.round((completedCount / totalTopics) * 100)
+    : 0;
+
+  const openTopic = useCallback((topic, sectionId) => {
+    if (!topic) return;
+
+    setActiveSectionId(sectionId || topic.sectionId || null);
+    setActiveTopicId(topic.id);
+
+    writeSparkNestedRoute(studyPath, {
+      section:sectionId || topic.sectionId || null,
+      topic:topic.id,
+    });
+
+    if (typeof window !== "undefined") window.scrollTo?.(0, 0);
+  }, [studyPath]);
+
+  const markComplete = useCallback(async () => {
+    if (!activeTopic || !subjectId || saving) return;
+    if (completedTopicIds.has(activeTopic.id)) return;
+
+    setSaving(true);
+
+    try {
+      const result = await recordSubjectActivity({
+        supabase,
+        activity:{
+          subjectId,
+          activityKey:`lesson:${activeTopic.id}`,
+          activityType:"lesson",
+          sectionId:activeTopic.sectionId || activeSection?.id || null,
+          topicId:activeTopic.id,
+          title:activeTopic.title,
+          completed:true,
+          metadata:{
+            source:"generic_subject_study",
+            adapter:"generic-subject-v1",
+            at:new Date().toISOString(),
+          },
+        },
+      });
+
+      if (result?.error) throw result.error;
+
+      setCompletedTopicIds(current => new Set([...current, activeTopic.id]));
+      showToast?.(`${activeTopic.title} completed.`, "success");
+    } catch (saveError) {
+      console.error("Could not save generic subject lesson progress", saveError);
+      showToast?.(
+        saveError?.message || "Could not mark this lesson complete.",
+        "error"
+      );
+    } finally {
+      setSaving(false);
+    }
+  }, [
+    activeSection?.id,
+    activeTopic,
+    completedTopicIds,
+    saving,
+    showToast,
+    subjectId,
+    supabase,
+  ]);
+
+  if (!subject) {
+    return (
+      <main className="spark-generic-study">
+        <div className="spark-generic-study-shell">
+          <Card className="spark-generic-unavailable">
+            <span className="section-kicker">SUBJECT UNAVAILABLE</span>
+            <h1>This subject is not available for learners.</h1>
+            <p>It may still be a draft, disabled, or no longer published.</p>
+            <div className="spark-generic-empty-actions">
+              {onBack && <button type="button" onClick={onBack}>Back to Study</button>}
+              {onManageSubjects && (
+                <button type="button" className="secondary" onClick={onManageSubjects}>
+                  My subjects
+                </button>
+              )}
+            </div>
+          </Card>
+        </div>
+      </main>
+    );
+  }
+
+  if (loading) {
+    return (
+      <SparkLoader
+        variant="section"
+        label={`Loading ${subject.shortName || subject.name}`}
+      />
+    );
+  }
+
+  if (error) {
+    return (
+      <main className="spark-generic-study">
+        <div className="spark-generic-study-shell">
+          <Card className="spark-generic-unavailable">
+            <span className="section-kicker">COURSE LOAD ERROR</span>
+            <h1>We could not open {subject.shortName || subject.name}.</h1>
+            <p>{error?.message || "The course structure could not be loaded."}</p>
+            {onBack && <button type="button" onClick={onBack}>Back to Study</button>}
+          </Card>
+        </div>
+      </main>
+    );
+  }
+
+  return (
+    <main className="spark-generic-study">
+      <div className="spark-generic-study-shell">
+        <header className="spark-generic-study-hero">
+          <div className="spark-generic-study-mark" aria-hidden="true">
+            {subject.mark || subject.shortName?.slice(0,2) || "â€¢"}
+          </div>
+
+          <div className="spark-generic-study-hero-copy">
+            <span className="section-kicker">{subject.qualification || "CSEC"} COURSE</span>
+            <h1>{subject.name}</h1>
+            <p>{subject.description}</p>
+          </div>
+
+          <div className="spark-generic-study-hero-actions">
+            {onBack && (
+              <button type="button" onClick={onBack}>Change subject</button>
+            )}
+          </div>
+        </header>
+
+        <section
+          className="spark-generic-progress-card"
+          aria-label={`${subject.shortName || subject.name} progress`}
+        >
+          <div>
+            <strong>{completedCount}/{totalTopics || 0}</strong>
+            <span>topics completed</span>
+          </div>
+          <div className="spark-generic-progress-track" aria-hidden="true">
+            <span style={{width:`${progressPercent}%`}} />
+          </div>
+          <b>{progressPercent}%</b>
+        </section>
+
+        {!structure?.topicCount ? (
+          <Card className="spark-generic-empty-course">
+            <span className="section-kicker">COURSE STRUCTURE</span>
+            <h2>Lessons are being prepared.</h2>
+            <p>
+              {subject.shortName || subject.name} is published in the subject
+              catalog, but no learner topics are available yet.
+            </p>
+            {onBack && (
+              <button type="button" onClick={onBack}>Choose another subject</button>
+            )}
+          </Card>
+        ) : (
+          <div className="spark-generic-learning-layout">
+            <aside
+              className="spark-generic-outline"
+              aria-label={`${subject.shortName || subject.name} course outline`}
+            >
+              <div className="spark-generic-outline-head">
+                <span>Course outline</span>
+                <strong>{totalTopics} topics</strong>
+              </div>
+
+              {structure.sections.map(section => (
+                <section key={section.id} className="spark-generic-outline-section">
+                  <div className="spark-generic-outline-section-title">
+                    <span>{section.title}</span>
+                    <small>{section.topics.length}</small>
+                  </div>
+
+                  <div className="spark-generic-outline-topics">
+                    {section.topics.map(topic => {
+                      const active = topic.id === activeTopicId;
+                      const complete = completedTopicIds.has(topic.id);
+
+                      return (
+                        <button
+                          type="button"
+                          key={topic.id}
+                          className={`${active ? "active" : ""} ${complete ? "complete" : ""}`}
+                          onClick={() => openTopic(topic, section.id)}
+                          aria-current={active ? "page" : undefined}
+                        >
+                          <span className="spark-generic-topic-state" aria-hidden="true">
+                            {complete ? (
+                              <svg viewBox="0 0 20 20" focusable="false">
+                                <path d="M5 10.5l3 3L15 7" />
+                              </svg>
+                            ) : (
+                              <span className="spark-generic-topic-dot" />
+                            )}
+                          </span>
+                          <span>{topic.title}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </section>
+              ))}
+
+              {structure.unassignedTopics.length > 0 && (
+                <section className="spark-generic-outline-section">
+                  <div className="spark-generic-outline-section-title">
+                    <span>More topics</span>
+                    <small>{structure.unassignedTopics.length}</small>
+                  </div>
+                  <div className="spark-generic-outline-topics">
+                    {structure.unassignedTopics.map(topic => (
+                      <button
+                        type="button"
+                        key={topic.id}
+                        className={topic.id === activeTopicId ? "active" : ""}
+                        onClick={() => openTopic(topic, null)}
+                      >
+                        <span className="spark-generic-topic-state" aria-hidden="true">
+                          {completedTopicIds.has(topic.id) ? (
+                            <svg viewBox="0 0 20 20" focusable="false">
+                              <path d="M5 10.5l3 3L15 7" />
+                            </svg>
+                          ) : (
+                            <span className="spark-generic-topic-dot" />
+                          )}
+                        </span>
+                        <span>{topic.title}</span>
+                      </button>
+                    ))}
+                  </div>
+                </section>
+              )}
+            </aside>
+
+            <article className="spark-generic-lesson">
+              {activeTopic ? (
+                <>
+                  <div className="spark-generic-lesson-head">
+                    <div>
+                      <span className="section-kicker">
+                        {activeSection?.title || "COURSE TOPIC"}
+                      </span>
+                      <h2>{activeTopic.title}</h2>
+                    </div>
+
+                    {completedTopicIds.has(activeTopic.id) && (
+                      <span className="spark-generic-complete-chip">Completed</span>
+                    )}
+                  </div>
+
+                  <GenericLessonContent topic={activeTopic} />
+
+                  <div className="spark-generic-lesson-footer">
+                    <button
+                      type="button"
+                      className={completedTopicIds.has(activeTopic.id) ? "completed" : ""}
+                      disabled={saving || completedTopicIds.has(activeTopic.id)}
+                      onClick={markComplete}
+                    >
+                      {saving
+                        ? "Saving..."
+                        : completedTopicIds.has(activeTopic.id)
+                          ? "Lesson completed"
+                          : "Mark lesson complete"}
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <Card className="spark-generic-content-empty">
+                  <strong>Choose a topic</strong>
+                  <p>Select a topic from the course outline to begin.</p>
+                </Card>
+              )}
+            </article>
+          </div>
+        )}
+      </div>
+    </main>
+  );
+}
