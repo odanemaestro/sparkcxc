@@ -1,3 +1,5 @@
+const fs = require("fs");
+const path = require("path");
 const {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -60,5 +62,15 @@ describe("generic subject sequential lesson progression", () => {
     expect(progress.currentTopic?.id).toBe("m2-1");
     expect(progress.isUnlocked("m2-1")).toBe(true);
     expect(progress.isUnlocked("m2-2")).toBe(false);
+  });
+
+  test("study view rewrites a future section route to the current unlocked lesson", () => {
+    const source = fs.readFileSync(
+      path.join(__dirname,"subjects","GenericSubjectStudyView.jsx"),
+      "utf8"
+    );
+    expect(source).toContain("routed.sectionId && routed.sectionId !== topic.sectionId");
+    expect(source).toContain("next.sectionId && next.sectionId !== topic.sectionId");
+    expect(source).toContain("{ replace:true }");
   });
 });
