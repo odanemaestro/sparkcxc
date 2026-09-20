@@ -15,6 +15,7 @@ import SoilFertilityExplorer from "./components/SoilFertilityExplorer";
 import SoilErosionExplorer from "./components/SoilErosionExplorer";
 import AnimalAsexualReproductionExplorer from "./components/AnimalAsexualReproductionExplorer";
 import MenstrualCycleExplorer from "./components/MenstrualCycleExplorer";
+import PregnancyStagesExplorer from "./components/PregnancyStagesExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -214,6 +215,9 @@ function GenericLessonContent({
         }
         if (model?.type === "menstrual-cycle") {
           return <MenstrualCycleExplorer key={model.id || "menstrual-cycle"} />;
+        }
+        if (model?.type === "pregnancy-stages") {
+          return <PregnancyStagesExplorer key={model.id || "pregnancy-stages"} />;
         }
         return null;
       })}
