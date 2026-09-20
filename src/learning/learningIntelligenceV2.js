@@ -102,6 +102,30 @@ export function learningEvidenceFromSubjectEvent(event={}){
     };
   }
 
+  if(type==="it_lab_skill_evidence"){
+    const itemId=event.labId||event.lab||"lab";
+    const taskId=event.taskId||event.skillId||"task";
+    const taskLabel=String(event.taskLabel||taskId).replace(/[-_]+/g," ").replace(/\b\w/g,char=>char.toUpperCase());
+    const observedScore=Number.isFinite(Number(event.score))?clamp(Number(event.score)>1?Number(event.score)/Math.max(1,Number(event.maxScore||event.score)):Number(event.score)):1;
+    return {
+      subjectId:"information-technology",
+      skill:`Information Technology :: ${event.labTitle||itemId} :: ${taskLabel}`,
+      source:"it_lab_skill_evidence",
+      itemId:`${itemId}:${taskId}`,
+      observedScore,
+      correct:observedScore>=0.6,
+      evidenceWeight:0.45,
+      difficulty:event.difficulty||null,
+      errorCode:event.errorCode||null,
+      errorLabel:event.errorLabel||null,
+      helpUsed:Boolean(event.helpUsed),
+      studentConfidence:event.studentConfidence??null,
+      evidenceKey:`it-lab-skill:${keyPart(itemId)}:${keyPart(taskId)}:${at}`,
+      occurredAt:at,
+      metadata:{...event,source_event:type},
+    };
+  }
+
   if(type==="it_lab_completion"){
     if(event.completed===false) return null;
     const itemId=event.labId||event.lab||"lab";
