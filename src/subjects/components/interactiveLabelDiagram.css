@@ -189,3 +189,28 @@ body[data-theme="dark"] .spark-label-diagram-actions button:disabled,
 .spark-diagram-seed .seed-plumule{fill:#8fc56b;stroke:#4f803b;stroke-width:4}
 .spark-diagram-seed .seed-radicle{fill:#d7e9a9;stroke:#708d3e;stroke-width:4}
 .spark-diagram-seed .seed-hilum{fill:#8e633e;stroke:#5a3d27;stroke-width:3}
+
+
+/* SPARK_HUMAN_REPRODUCTIVE_TEMPLATES_V1 */
+.spark-diagram-reproductive .repro-orientation{fill:#60768a;font-size:14px;font-weight:800}
+.spark-diagram-female-reproductive .female-uterus{fill:#e5a2ad;stroke:#9b5261;stroke-width:6}
+.spark-diagram-female-reproductive .female-endometrium{fill:#f7c7cf;stroke:#bd7180;stroke-width:4}
+.spark-diagram-female-reproductive .female-oviduct{fill:none;stroke:#a85c69;stroke-width:12;stroke-linecap:round}
+.spark-diagram-female-reproductive .female-fimbriae{fill:none;stroke:#a85c69;stroke-width:7;stroke-linecap:round}
+.spark-diagram-female-reproductive .female-ovary{fill:#f2cf83;stroke:#a77d2e;stroke-width:5}
+.spark-diagram-female-reproductive .female-cervix{fill:#d98d9b;stroke:#924957;stroke-width:5}
+.spark-diagram-female-reproductive .female-vagina{fill:#e9b1bb;stroke:#9b5261;stroke-width:5}
+.spark-diagram-male-reproductive .male-bladder{fill:#d9edf5;stroke:#6791a5;stroke-width:5}
+.spark-diagram-male-reproductive .male-sperm-duct{fill:none;stroke:#6d8f5e;stroke-width:9;stroke-linecap:round}
+.spark-diagram-male-reproductive .male-seminal-vesicle{fill:#e2b975;stroke:#9a7337;stroke-width:5}
+.spark-diagram-male-reproductive .male-prostate{fill:#c9986c;stroke:#825b39;stroke-width:5}
+.spark-diagram-male-reproductive .male-cowper{fill:#e4bf79;stroke:#94713a;stroke-width:4}
+.spark-diagram-male-reproductive .male-urethra{fill:none;stroke:#477f9d;stroke-width:8;stroke-linecap:round}
+.spark-diagram-male-reproductive .male-penis{fill:#e3ae8f;stroke:#9c6548;stroke-width:5}
+.spark-diagram-male-reproductive .male-scrotum{fill:#e6b79a;stroke:#99684d;stroke-width:5}
+.spark-diagram-male-reproductive .male-testis{fill:#edcf97;stroke:#a47b3f;stroke-width:5}
+.spark-diagram-male-reproductive .male-epididymis{fill:none;stroke:#5d7e50;stroke-width:10;stroke-linecap:round}
+.spark-diagram-male-reproductive .male-cowper-duct{fill:none;stroke:#8d6a37;stroke-width:5;stroke-linecap:round}
+@media(max-width:560px){
+  .spark-diagram-reproductive .repro-orientation{font-size:20px}
+}
