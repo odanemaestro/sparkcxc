@@ -10,6 +10,7 @@ import ReproductionComparisonExplorer from "./components/ReproductionComparisonE
 import VegetativePropagationExplorer from "./components/VegetativePropagationExplorer";
 import FlowerReproductionProcess from "./components/FlowerReproductionProcess";
 import PlantGrowthExplorer from "./components/PlantGrowthExplorer";
+import CropProductionExplorer from "./components/CropProductionExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -194,6 +195,9 @@ function GenericLessonContent({
         }
         if (model?.type === "plant-growth-investigation") {
           return <PlantGrowthExplorer key={model.id || "plant-growth-investigation"} />;
+        }
+        if (model?.type === "crop-production-systems") {
+          return <CropProductionExplorer key={model.id || "crop-production-systems"} />;
         }
         return null;
       })}
