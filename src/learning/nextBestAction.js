@@ -104,8 +104,17 @@ export function buildNextBestAction({
   const selected=candidates[0];
   const reasons=why(focus,selected.type);
   const explanation=reasons.join(" ");
+  const featureVector = {
+    mastery_gap: clamp(1 - Number(focus?.effectiveMastery ?? focus?.mastery ?? 50) / 100),
+    confidence_gap: clamp(1 - Number(focus?.modelConfidence ?? focus?.confidence ?? 0) / 100),
+    retention_risk: clamp(focus?.retentionRisk ?? 0),
+    trend_risk: clamp(Math.max(0, -(Number(focus?.trendScore) || 0))),
+    prerequisite_risk: clamp(focus?.prerequisiteRisk ?? 0),
+    misconception_signal: focus?.commonError ? 1 : 0,
+  };
   return {
     ...selected,
+    featureVector,
     actionKey:`${subjectId}:${selected.type}:${String(focus?.rawSkill||focus?.skill||"baseline").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")}`,
     title:focus?.skill? `${selected.label}: ${focus.skill}` : selected.label,
     reasons,
