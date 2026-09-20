@@ -299,3 +299,16 @@ body[data-theme="dark"] .spark-label-diagram-actions button:disabled,
 .spark-diagram-eye .eye-optic-nerve{fill:#d9c08c;stroke:#95794a;stroke-width:5}
 .spark-diagram-eye .eye-fovea{fill:#d28a48;stroke:#985b25;stroke-width:3}
 .spark-diagram-eye .eye-blind-spot{fill:#83694b;stroke:#5f4a35;stroke-width:3}
+
+
+/* SPARK_MAMMALIAN_EAR_TEMPLATE_V1 */
+.spark-diagram-ear .ear-pinna{fill:none;stroke:#bd8062;stroke-width:24;stroke-linecap:round;stroke-linejoin:round}
+.spark-diagram-ear .ear-canal{fill:none;stroke:#8b634f;stroke-width:18;stroke-linecap:round}
+.spark-diagram-ear .ear-drum{fill:#dca79a;stroke:#925f58;stroke-width:5}
+.spark-diagram-ear .ear-middle-cavity{fill:#f1dfcf;fill-opacity:.7;stroke:#b88f78;stroke-width:4}
+.spark-diagram-ear .ear-ossicles path{fill:none;stroke:#d8c6aa;stroke-width:9;stroke-linecap:round;stroke-linejoin:round}
+.spark-diagram-ear .ear-ossicles circle{fill:#eadcc8;stroke:#9c8667;stroke-width:4}
+.spark-diagram-ear .ear-cochlea{fill:none;stroke:#d7a358;stroke-width:20;stroke-linecap:round;stroke-linejoin:round}
+.spark-diagram-ear .ear-auditory-nerve{fill:none;stroke:#8f6ba7;stroke-width:14;stroke-linecap:round}
+.spark-diagram-ear .ear-semicircular path{fill:none;stroke:#77a993;stroke-width:16;stroke-linecap:round}
+.spark-diagram-ear .ear-eustachian{fill:none;stroke:#6d98ad;stroke-width:14;stroke-linecap:round}
