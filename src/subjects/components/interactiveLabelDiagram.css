@@ -388,3 +388,22 @@ body[data-theme="dark"] .spark-label-diagram-actions button:disabled,
 @media(max-width:560px){
   .spark-diagram-respiratory .repro-orientation{font-size:19px}
 }
+
+
+/* SPARK_THREE_PIN_PLUG_TEMPLATE_V1 */
+.spark-diagram-plug .plug-body{fill:#eef3f6;stroke:#6f8492;stroke-width:7}
+.spark-diagram-plug .plug-earth-pin,.spark-diagram-plug .plug-neutral-pin,.spark-diagram-plug .plug-live-pin{fill:#c7b58a;stroke:#776640;stroke-width:5}
+.spark-diagram-plug .plug-earth-wire{fill:none;stroke:#79a959;stroke-width:18;stroke-linecap:round}
+.spark-diagram-plug .plug-neutral-wire{fill:none;stroke:#4d7fb2;stroke-width:18;stroke-linecap:round}
+.spark-diagram-plug .plug-live-wire{fill:none;stroke:#9a5b3e;stroke-width:18;stroke-linecap:round}
+.spark-diagram-plug .plug-fuse{fill:#e6d3a0;stroke:#8b7440;stroke-width:4}
+.spark-diagram-plug .plug-cable-grip{fill:#526b7d;stroke:#30495b;stroke-width:4}
+.spark-diagram-plug .plug-flex{fill:none;stroke:#4c5962;stroke-width:32;stroke-linecap:round}
+.spark-diagram-plug .plug-wire-text{font-size:14px;font-weight:900}
+.spark-diagram-plug .plug-wire-text.earth{fill:#567b3d}
+.spark-diagram-plug .plug-wire-text.neutral{fill:#346795}
+.spark-diagram-plug .plug-wire-text.live{fill:#82452f}
+.spark-diagram-plug .plug-fuse-text{fill:#6c572b;font-size:13px;font-weight:900}
+@media(max-width:560px){
+  .spark-diagram-plug .plug-wire-text,.spark-diagram-plug .plug-fuse-text,.spark-diagram-plug .repro-orientation{font-size:19px}
+}
