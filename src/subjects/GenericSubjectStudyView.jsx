@@ -59,6 +59,7 @@ import SmokingGasExchangeExplorer from "./components/SmokingGasExchangeExplorer"
 import FossilFuelsExplorer from "./components/FossilFuelsExplorer";
 import AlternativeEnergyExplorer from "./components/AlternativeEnergyExplorer";
 import ElectricalConductorsExplorer from "./components/ElectricalConductorsExplorer";
+import ElectricCircuitFlowExplorer from "./components/ElectricCircuitFlowExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -390,6 +391,9 @@ function GenericLessonContent({
         }
         if (model?.type === "electrical-conductors") {
           return <ElectricalConductorsExplorer key={model.id || "electrical-conductors"} />;
+        }
+        if (model?.type === "electric-circuit-flow") {
+          return <ElectricCircuitFlowExplorer key={model.id || "electric-circuit-flow"} />;
         }
         return null;
       })}
