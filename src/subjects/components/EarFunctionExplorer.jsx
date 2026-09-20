@@ -46,10 +46,11 @@ function HearingScene() {
 }
 
 function SoundScene() {
-  const wave = (y,amp,cycles) => {
+  const wave = (y,amp,cycles,startX=70,endX=420) => {
     const pts=[];
-    for(let x=70;x<=420;x+=10){
-      const phase=((x-70)/350)*Math.PI*2*cycles;
+    const span=endX-startX;
+    for(let x=startX;x<=endX;x+=10){
+      const phase=((x-startX)/span)*Math.PI*2*cycles;
       pts.push((pts.length?"L":"M")+x+" "+(y+Math.sin(phase)*amp).toFixed(1));
     }
     return pts.join(" ");
@@ -63,9 +64,9 @@ function SoundScene() {
       <text className="earfx-small" x="245" y="375" textAnchor="middle">high frequency, higher pitch</text>
 
       <text className="earfx-heading" x="735" y="45" textAnchor="middle">Loudness depends on amplitude</text>
-      <path className="earfx-sound quiet" d={wave(150,20,4).replaceAll("70 ","560 ").replaceAll("420 ","910 ")} />
+      <path className="earfx-sound quiet" d={wave(150,20,4,560,910)} />
       <text className="earfx-small" x="735" y="210" textAnchor="middle">small amplitude, quieter</text>
-      <path className="earfx-sound loud" d={wave(315,60,4).replaceAll("70 ","560 ").replaceAll("420 ","910 ")} />
+      <path className="earfx-sound loud" d={wave(315,60,4,560,910)} />
       <text className="earfx-small" x="735" y="405" textAnchor="middle">large amplitude, louder</text>
 
       <text className="earfx-warning" x="735" y="470" textAnchor="middle">prolonged loud noise can damage cochlear hair cells</text>
