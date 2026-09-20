@@ -22,6 +22,7 @@ import HumanGrowthExplorer from "./components/HumanGrowthExplorer";
 import PopulationGrowthExplorer from "./components/PopulationGrowthExplorer";
 import TransportSystemNeedExplorer from "./components/TransportSystemNeedExplorer";
 import TransportStructuresExplorer from "./components/TransportStructuresExplorer";
+import BloodGroupExplorer from "./components/BloodGroupExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -242,6 +243,9 @@ function GenericLessonContent({
         }
         if (model?.type === "transport-structures") {
           return <TransportStructuresExplorer key={model.id || "transport-structures"} />;
+        }
+        if (model?.type === "blood-groups") {
+          return <BloodGroupExplorer key={model.id || "blood-groups"} />;
         }
         return null;
       })}
