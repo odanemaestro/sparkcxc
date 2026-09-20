@@ -80,10 +80,62 @@ function LightMicroscopeTemplate() {
   );
 }
 
+function FlowerLongitudinalTemplate() {
+  return (
+    <g className="spark-diagram-flower" aria-hidden="true">
+      <path className="flower-petal left" d="M500 310 C390 305 300 230 305 125 C390 135 465 195 500 285Z" />
+      <path className="flower-petal right" d="M500 310 C610 305 700 230 695 125 C610 135 535 195 500 285Z" />
+      <path className="flower-petal far-left" d="M485 305 C410 270 365 165 410 80 C475 130 505 205 500 285Z" />
+      <path className="flower-petal far-right" d="M515 305 C590 270 635 165 590 80 C525 130 495 205 500 285Z" />
+
+      <path className="flower-sepal left" d="M455 335 C385 350 340 330 315 290 C375 285 425 300 465 320Z" />
+      <path className="flower-sepal right" d="M545 335 C615 350 660 330 685 290 C625 285 575 300 535 320Z" />
+
+      <ellipse className="flower-ovary" cx="500" cy="360" rx="92" ry="72" />
+      <ellipse className="flower-ovule" cx="465" cy="350" rx="18" ry="26" />
+      <ellipse className="flower-ovule" cx="535" cy="350" rx="18" ry="26" />
+      <ellipse className="flower-ovule" cx="500" cy="388" rx="18" ry="24" />
+
+      <path className="flower-style" d="M490 300 L490 145 Q500 120 510 145 L510 300Z" />
+      <path className="flower-stigma" d="M462 125 Q500 90 538 125 Q520 150 500 145 Q480 150 462 125Z" />
+
+      <g className="flower-stamens">
+        <path d="M430 310 Q405 245 400 185" />
+        <path d="M465 305 Q455 230 460 165" />
+        <path d="M535 305 Q545 230 540 165" />
+        <path d="M570 310 Q595 245 600 185" />
+        <ellipse cx="398" cy="175" rx="28" ry="13" transform="rotate(-18 398 175)" />
+        <ellipse cx="460" cy="155" rx="28" ry="13" transform="rotate(-8 460 155)" />
+        <ellipse cx="540" cy="155" rx="28" ry="13" transform="rotate(8 540 155)" />
+        <ellipse cx="602" cy="175" rx="28" ry="13" transform="rotate(18 602 175)" />
+      </g>
+
+      <path className="flower-receptacle" d="M420 415 Q500 450 580 415 L555 445 Q500 470 445 445Z" />
+      <path className="flower-stalk" d="M485 445 L480 535 L520 535 L515 445Z" />
+    </g>
+  );
+}
+
+function BeanSeedTemplate() {
+  return (
+    <g className="spark-diagram-seed" aria-hidden="true">
+      <path className="seed-testa" d="M280 310 C285 170 405 95 560 115 C690 132 755 235 720 355 C685 475 545 525 410 485 C320 458 278 395 280 310Z" />
+      <path className="seed-cotyledon left" d="M310 315 C315 205 400 140 500 145 C485 235 470 365 495 455 C390 470 310 415 310 315Z" />
+      <path className="seed-cotyledon right" d="M505 145 C620 145 700 220 690 325 C680 420 600 470 510 455 C535 350 530 235 505 145Z" />
+      <path className="seed-embryo-axis" d="M485 190 Q515 215 510 260 L505 380 Q500 420 470 445" />
+      <path className="seed-plumule" d="M485 195 Q455 160 440 195 Q465 205 485 220 Q515 180 535 205 Q510 220 495 232" />
+      <path className="seed-radicle" d="M505 372 Q515 415 470 448 Q470 420 490 385Z" />
+      <circle className="seed-hilum" cx="300" cy="360" r="15" />
+    </g>
+  );
+}
+
 function DiagramTemplate({ template }) {
   if (template === "plant-cell") return <PlantCellTemplate />;
   if (template === "animal-cell") return <AnimalCellTemplate />;
   if (template === "light-microscope") return <LightMicroscopeTemplate />;
+  if (template === "flower-longitudinal") return <FlowerLongitudinalTemplate />;
+  if (template === "bean-seed") return <BeanSeedTemplate />;
   return (
     <g aria-hidden="true">
       <rect className="unknown-template" x="260" y="120" width="480" height="360" rx="28" />
