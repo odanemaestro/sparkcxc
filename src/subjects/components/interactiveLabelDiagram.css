@@ -246,3 +246,41 @@ body[data-theme="dark"] .spark-label-diagram-actions button:disabled,
 @media(max-width:560px){
   .spark-diagram-heart .heart-side-label{font-size:19px}
 }
+
+
+/* SPARK_EXCRETION_DIAGRAM_TEMPLATES_V1 */
+.spark-diagram-kidney .kidney-outline{fill:#b96a76;stroke:#7f4650;stroke-width:7}
+.spark-diagram-kidney .kidney-cortex{fill:#dd9aa4;stroke:#95555f;stroke-width:4}
+.spark-diagram-kidney .kidney-medulla path{fill:#e8c3a4;stroke:#a87952;stroke-width:4}
+.spark-diagram-kidney .kidney-pelvis{fill:#f2ddd0;stroke:#a17d66;stroke-width:4}
+.spark-diagram-kidney .kidney-ureter{fill:none;stroke:#c79b78;stroke-width:13;stroke-linecap:round}
+.spark-diagram-kidney .kidney-artery{stroke:#b74a4a;stroke-width:15;stroke-linecap:round}
+.spark-diagram-kidney .kidney-vein{stroke:#4d7fa7;stroke-width:15;stroke-linecap:round}
+.spark-diagram-kidney .kidney-orientation{fill:#526b7d;font-size:14px;font-weight:850}
+.spark-diagram-nephron .nephron-bowman{fill:#f3ddd0;stroke:#a8785c;stroke-width:5}
+.spark-diagram-nephron .nephron-glomerulus{fill:none;stroke:#b84c57;stroke-width:9;stroke-linecap:round}
+.spark-diagram-nephron .nephron-afferent{stroke:#b84c57;stroke-width:16;stroke-linecap:round}
+.spark-diagram-nephron .nephron-efferent{stroke:#8a3c46;stroke-width:12;stroke-linecap:round}
+.spark-diagram-nephron .nephron-tubule,.spark-diagram-nephron .nephron-loop,.spark-diagram-nephron .nephron-distal,.spark-diagram-nephron .nephron-join{fill:none;stroke:#c99a72;stroke-width:16;stroke-linecap:round;stroke-linejoin:round}
+.spark-diagram-nephron .nephron-collecting{stroke:#7b98ad;stroke-width:18;stroke-linecap:round}
+.spark-diagram-nephron .nephron-urine-arrow{stroke:#4c89a9;stroke-width:7;stroke-linecap:round}
+.spark-diagram-nephron .nephron-urine-label{fill:#47667a;font-size:15px;font-weight:900}
+.spark-diagram-skin .skin-surface{fill:none;stroke:#87583f;stroke-width:6}
+.spark-diagram-skin .skin-epidermis{fill:#f3c9aa;stroke:#a67858;stroke-width:4}
+.spark-diagram-skin .skin-dermis{fill:#e8b28d;stroke:#a36f4d;stroke-width:4}
+.spark-diagram-skin .skin-fat-layer{fill:#f4df8f;stroke:#ae9547;stroke-width:4}
+.spark-diagram-skin .skin-fat-cell{fill:#f6e8aa;stroke:#b69c50;stroke-width:2}
+.spark-diagram-skin .skin-hair{stroke:#4f392f;stroke-width:8;stroke-linecap:round}
+.spark-diagram-skin .skin-hair-follicle{fill:#ba8e6f;stroke:#775640;stroke-width:4}
+.spark-diagram-skin .skin-sweat-gland,.spark-diagram-skin .skin-sweat-duct{fill:none;stroke:#4f84a2;stroke-width:9;stroke-linecap:round}
+.spark-diagram-skin .skin-sweat-drop{fill:#72b9db;stroke:#3d7e9e;stroke-width:3}
+.spark-diagram-skin .skin-blood-vessel{fill:none;stroke-width:9;stroke-linecap:round}
+.spark-diagram-skin .skin-blood-vessel.red{stroke:#b74b4b}
+.spark-diagram-skin .skin-blood-vessel.blue{stroke:#4b78a5}
+.spark-diagram-skin .skin-nerve{fill:none;stroke:#e0b13f;stroke-width:6;stroke-linecap:round}
+.spark-diagram-skin .skin-orientation{fill:#526b7d;font-size:14px;font-weight:850}
+@media(max-width:560px){
+  .spark-diagram-kidney .kidney-orientation,
+  .spark-diagram-skin .skin-orientation,
+  .spark-diagram-nephron .nephron-urine-label{font-size:19px}
+}
