@@ -157,6 +157,17 @@ export async function recordLearningEvidenceV2({supabase,evidence}={}){
       p_evidence_key:evidence.evidenceKey,
       p_occurred_at:evidence.occurredAt||nowIso(),
     });
+    if(!error&&data){
+      if(typeof window!=="undefined"){
+        window.dispatchEvent(new CustomEvent("spark:learner-intelligence-updated",{detail:{state:data}}));
+      }
+      if(evidence.observedScore!=null){
+        supabase.rpc("spark_apply_learning_evidence_outcome",{
+          p_subject_id:evidence.subjectId,
+          p_skill:evidence.skill,
+        }).catch(()=>{});
+      }
+    }
     return {data,error};
   }catch(error){return {data:null,error};}
 }
