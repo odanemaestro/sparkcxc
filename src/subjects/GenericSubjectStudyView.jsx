@@ -38,6 +38,7 @@ import ImmunisationExplorer from "./components/ImmunisationExplorer";
 import NonCommunicableDiseaseExplorer from "./components/NonCommunicableDiseaseExplorer";
 import ExercisePhysiologyExplorer from "./components/ExercisePhysiologyExplorer";
 import DrugEffectsExplorer from "./components/DrugEffectsExplorer";
+import PersonalHygieneExplorer from "./components/PersonalHygieneExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -306,6 +307,9 @@ function GenericLessonContent({
         }
         if (model?.type === "drug-effects") {
           return <DrugEffectsExplorer key={model.id || "drug-effects"} />;
+        }
+        if (model?.type === "personal-hygiene") {
+          return <PersonalHygieneExplorer key={model.id || "personal-hygiene"} />;
         }
         return null;
       })}
