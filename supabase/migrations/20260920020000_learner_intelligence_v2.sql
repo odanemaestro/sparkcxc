@@ -632,6 +632,71 @@ $$;
 
 revoke all on function public.spark_refresh_learning_action_effectiveness(text,text) from public,anon,authenticated;
 
+create or replace function public.spark_apply_learning_evidence_outcome(
+  p_subject_id text,
+  p_skill text
+)
+returns jsonb
+language plpgsql
+security definer
+set search_path = public
+as $
+declare
+  v_user_id uuid := auth.uid();
+  v_rec public.spark_learning_recommendations%rowtype;
+  v_mastery numeric;
+  v_delta numeric;
+begin
+  if v_user_id is null then raise exception 'Authentication required'; end if;
+
+  select * into v_rec
+  from public.spark_learning_recommendations
+  where user_id=v_user_id
+    and subject_id=lower(trim(p_subject_id))
+    and status='started'
+    and completed_at is null
+    and (skill is null or skill=trim(p_skill))
+    and started_at>=now()-interval '14 days'
+  order by started_at desc
+  limit 1
+  for update;
+
+  if v_rec.id is null then
+    return jsonb_build_object('matched',false);
+  end if;
+
+  select effective_mastery*100 into v_mastery
+  from public.spark_learning_skill_state_v2
+  where user_id=v_user_id
+    and subject_id=lower(trim(p_subject_id))
+    and skill=trim(p_skill);
+
+  v_delta := case
+    when v_mastery is null or v_rec.baseline_mastery is null then 0
+    else v_mastery-v_rec.baseline_mastery
+  end;
+
+  update public.spark_learning_recommendations
+  set status='completed',
+      completed_at=now(),
+      outcome_mastery=v_mastery,
+      outcome_delta=v_delta
+  where id=v_rec.id;
+
+  perform public.spark_refresh_learning_action_effectiveness(v_rec.subject_id,v_rec.action_type);
+
+  return jsonb_build_object(
+    'matched',true,
+    'recommendation_id',v_rec.id,
+    'outcome_mastery',v_mastery,
+    'outcome_delta',v_delta
+  );
+end;
+$;
+
+revoke all on function public.spark_apply_learning_evidence_outcome(text,text) from public,anon;
+grant execute on function public.spark_apply_learning_evidence_outcome(text,text) to authenticated;
+
 create or replace function public.spark_complete_learning_recommendation(p_recommendation_id uuid)
 returns jsonb
 language plpgsql
