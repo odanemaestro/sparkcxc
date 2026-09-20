@@ -434,6 +434,28 @@ function HumanRespiratoryTemplate() {
   );
 }
 
+function ThreePinPlugTemplate() {
+  return (
+    <g className="spark-diagram-plug" aria-hidden="true">
+      <path className="plug-body" d="M300 120Q500 65 700 120V500Q500 555 300 500Z" />
+      <rect className="plug-earth-pin" x="465" y="35" width="70" height="115" rx="12" />
+      <rect className="plug-neutral-pin" x="255" y="470" width="105" height="60" rx="10" />
+      <rect className="plug-live-pin" x="640" y="470" width="105" height="60" rx="10" />
+      <path className="plug-earth-wire" d="M500 155Q500 245 430 300" />
+      <path className="plug-neutral-wire" d="M430 300Q350 330 330 455" />
+      <path className="plug-live-wire" d="M570 300Q655 325 690 455" />
+      <rect className="plug-fuse" x="610" y="290" width="105" height="42" rx="8" />
+      <rect className="plug-cable-grip" x="415" y="410" width="170" height="38" rx="10" />
+      <path className="plug-flex" d="M500 445V600" />
+      <text className="plug-wire-text earth" x="405" y="280">green/yellow</text>
+      <text className="plug-wire-text neutral" x="315" y="375">blue</text>
+      <text className="plug-wire-text live" x="670" y="375">brown</text>
+      <text className="plug-fuse-text" x="662" y="317" textAnchor="middle">fuse</text>
+      <text className="repro-orientation" x="500" y="630" textAnchor="middle">simplified three-pin plug</text>
+    </g>
+  );
+}
+
 function DiagramTemplate({ template }) {
   if (template === "plant-cell") return <PlantCellTemplate />;
   if (template === "animal-cell") return <AnimalCellTemplate />;
@@ -450,6 +472,7 @@ function DiagramTemplate({ template }) {
   if (template === "human-digestive-system") return <HumanDigestiveTemplate />;
   if (template === "human-tooth") return <HumanToothTemplate />;
   if (template === "human-respiratory-system") return <HumanRespiratoryTemplate />;
+  if (template === "three-pin-plug") return <ThreePinPlugTemplate />;
   if (template === "human-heart") return <HumanHeartTemplate />;
   if (template === "kidney-longitudinal") return <KidneyLongitudinalTemplate />;
   if (template === "nephron") return <NephronTemplate />;
