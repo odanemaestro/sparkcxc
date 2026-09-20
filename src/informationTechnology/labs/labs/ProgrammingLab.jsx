@@ -35,7 +35,7 @@ function TraceTable({ trace }) {
   );
 }
 
-export default function ProgrammingLab({ lab, completed, onBack, onComplete }) {
+export default function ProgrammingLab({ lab, completed, onBack, onComplete, onEvidence }) {
   const [tab, setTab] = useState("Code");
   const [language, setLanguage] = useState("Visual Basic");
   const [exercise, setExercise] = useState("selection");
@@ -50,7 +50,7 @@ export default function ProgrammingLab({ lab, completed, onBack, onComplete }) {
   const [selectionTests, setSelectionTests] = useState([]);
   const [debugTests, setDebugTests] = useState([]);
   const [runCount, setRunCount] = useState(0);
-  const { evidence, record } = useTaskEvidence();
+  const { evidence, record } = useTaskEvidence(onEvidence);
   const code = sources[exercise];
   const template = PROGRAMMING_TEMPLATES[language];
 
