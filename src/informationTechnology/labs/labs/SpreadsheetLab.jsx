@@ -26,7 +26,7 @@ function displayValue(result, currency = false) {
   return String(result ?? "");
 }
 
-export default function SpreadsheetLab({ lab, completed, onBack, onComplete }) {
+export default function SpreadsheetLab({ lab, completed, onBack, onComplete, onEvidence }) {
   const [tab, setTab] = useState("Home");
   const [sheet, setSheet] = useState("Sales");
   const [selected, setSelected] = useState("D2");
@@ -39,7 +39,7 @@ export default function SpreadsheetLab({ lab, completed, onBack, onComplete }) {
   const [linked, setLinked] = useState(false);
   const [formatCurrency, setFormatCurrency] = useState(false);
   const [message, setMessage] = useState("Select a cell, enter a value or formula, then press Enter.");
-  const { evidence, record } = useTaskEvidence();
+  const { evidence, record } = useTaskEvidence(onEvidence);
   const calculationChecks = useRef(new Map());
 
   const selectedRaw = workbook[sheet]?.[selected] ?? "";
