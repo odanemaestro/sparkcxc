@@ -324,3 +324,22 @@ body[data-theme="dark"] .spark-label-diagram-actions button:disabled,
 .spark-diagram-brain .brain-hypothalamus{fill:#d69a69;stroke:#95633b;stroke-width:4}
 .spark-diagram-brain .brain-pituitary{fill:#c97882;stroke:#8b4d56;stroke-width:4}
 .spark-diagram-brain .brain-pituitary-stalk{stroke:#8b4d56;stroke-width:5;stroke-linecap:round}
+
+
+/* SPARK_ENDOCRINE_SYSTEM_TEMPLATE_V1 */
+.spark-diagram-endocrine .endo-head{fill:#e3b79a;stroke:#9b6a4e;stroke-width:5}
+.spark-diagram-endocrine .endo-body{fill:#dde7ee;stroke:#758b9b;stroke-width:6}
+.spark-diagram-endocrine .endo-arm,.spark-diagram-endocrine .endo-leg{fill:none;stroke:#758b9b;stroke-width:18;stroke-linecap:round}
+.spark-diagram-endocrine .endo-pituitary{fill:#b9687a;stroke:#7e4352;stroke-width:3}
+.spark-diagram-endocrine .endo-thyroid{fill:#c88658;stroke:#8d5c38;stroke-width:4}
+.spark-diagram-endocrine .endo-kidney{fill:#b76672;stroke:#804650;stroke-width:4}
+.spark-diagram-endocrine .endo-adrenal{fill:#e3b452;stroke:#9b782b;stroke-width:4}
+.spark-diagram-endocrine .endo-pancreas{fill:#d7a866;stroke:#936d35;stroke-width:4}
+.spark-diagram-endocrine .endo-ovaries ellipse{fill:#e0a36f;stroke:#995f36;stroke-width:3}
+.spark-diagram-endocrine .endo-ovaries path{fill:none;stroke:#a66c49;stroke-width:5;stroke-linecap:round}
+.spark-diagram-endocrine .endo-testes-inset ellipse{fill:#e4bc83;stroke:#9e743d;stroke-width:3}
+.spark-diagram-endocrine .endo-inset-box{fill:#f7fafc;stroke:#9cafbc;stroke-width:3}
+.spark-diagram-endocrine .endo-inset-label{fill:#526b7d;font-size:14px;font-weight:850}
+@media(max-width:560px){
+  .spark-diagram-endocrine .endo-inset-label{font-size:19px}
+}
