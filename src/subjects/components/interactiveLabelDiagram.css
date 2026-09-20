@@ -373,3 +373,18 @@ body[data-theme="dark"] .spark-label-diagram-actions button:disabled,
 @media(max-width:560px){
   .spark-diagram-tooth .tooth-region-label{font-size:20px}
 }
+
+
+/* SPARK_HUMAN_RESPIRATORY_TEMPLATE_V1 */
+.spark-diagram-respiratory .resp-head{fill:#e3b79a;stroke:#9b6a4e;stroke-width:5}
+.spark-diagram-respiratory .resp-neck{fill:#eef3f6;stroke:#758b9b;stroke-width:5}
+.spark-diagram-respiratory .resp-ribcage{fill:#f3f6f8;fill-opacity:.35;stroke:#7f929f;stroke-width:5}
+.spark-diagram-respiratory .resp-trachea{fill:none;stroke:#79a2b6;stroke-width:20;stroke-linecap:round;stroke-dasharray:8 5}
+.spark-diagram-respiratory .resp-bronchus{fill:none;stroke:#79a2b6;stroke-width:15;stroke-linecap:round}
+.spark-diagram-respiratory .resp-lung{fill:#e7a8ad;stroke:#9e5a62;stroke-width:6}
+.spark-diagram-respiratory .resp-bronchioles{fill:none;stroke:#b9787e;stroke-width:6;stroke-linecap:round}
+.spark-diagram-respiratory .resp-diaphragm{fill:none;stroke:#b47a55;stroke-width:15;stroke-linecap:round}
+.spark-diagram-respiratory .resp-ribs{fill:none;stroke:#b7c3ca;stroke-width:6;stroke-linecap:round}
+@media(max-width:560px){
+  .spark-diagram-respiratory .repro-orientation{font-size:19px}
+}
