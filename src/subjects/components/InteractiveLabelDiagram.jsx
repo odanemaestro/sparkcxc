@@ -276,6 +276,26 @@ function SkinSectionTemplate() {
   );
 }
 
+function MammalianEyeTemplate() {
+  return (
+    <g className="spark-diagram-eye" aria-hidden="true">
+      <circle className="eye-sclera" cx="500" cy="310" r="190" />
+      <path className="eye-cornea" d="M320 245Q245 310 320 375" />
+      <path className="eye-choroid" d="M335 190Q500 105 655 200Q690 225 700 310Q690 395 655 420Q500 515 335 430" />
+      <path className="eye-retina" d="M365 205Q500 145 625 215Q655 240 665 310Q655 380 625 405Q500 475 365 415" />
+      <ellipse className="eye-lens" cx="405" cy="310" rx="55" ry="88" />
+      <path className="eye-iris" d="M335 245Q375 270 375 310Q375 350 335 375" />
+      <circle className="eye-pupil" cx="345" cy="310" r="24" />
+      <path className="eye-ciliary" d="M350 205Q410 175 455 205M350 415Q410 445 455 415" />
+      <path className="eye-suspensory" d="M365 225L390 255M365 395L390 365M450 235L430 270M450 385L430 350" />
+      <path className="eye-optic-nerve" d="M675 295Q760 290 840 330L825 385Q745 340 670 335Z" />
+      <circle className="eye-fovea" cx="625" cy="310" r="12" />
+      <circle className="eye-blind-spot" cx="675" cy="315" r="10" />
+      <text className="repro-orientation" x="500" y="560" textAnchor="middle">horizontal section through the eye</text>
+    </g>
+  );
+}
+
 function DiagramTemplate({ template }) {
   if (template === "plant-cell") return <PlantCellTemplate />;
   if (template === "animal-cell") return <AnimalCellTemplate />;
@@ -285,6 +305,7 @@ function DiagramTemplate({ template }) {
   if (template === "female-reproductive-system") return <FemaleReproductiveTemplate />;
   if (template === "male-reproductive-system") return <MaleReproductiveTemplate />;
   if (template === "pregnancy-uterus") return <PregnancyUterusTemplate />;
+  if (template === "mammalian-eye") return <MammalianEyeTemplate />;
   if (template === "human-heart") return <HumanHeartTemplate />;
   if (template === "kidney-longitudinal") return <KidneyLongitudinalTemplate />;
   if (template === "nephron") return <NephronTemplate />;
