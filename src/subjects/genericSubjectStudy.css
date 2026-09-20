@@ -66,3 +66,8 @@ body[data-theme="dark"] .spark-generic-study-hero-actions button:hover,
   background:#19405e!important;
   color:#ffffff!important;
 }
+/* SPARK_GENERIC_SYLLABUS_OBJECTIVES_V1 */
+.spark-generic-objectives{margin-top:22px;padding:18px!important;border-left:4px solid var(--spark-teal,#0d9488)!important}
+.spark-generic-objectives>strong{color:var(--spark-teal-dark,#087f73);font-size:12px;font-weight:900;text-transform:uppercase}
+.spark-generic-objectives ul{margin:10px 0 0;padding-left:20px}
+.spark-generic-objectives li{margin:5px 0}

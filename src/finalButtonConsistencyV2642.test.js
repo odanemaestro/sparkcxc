@@ -45,7 +45,7 @@ describe("SPARK final semantic button consistency V2.6.4.2", () => {
 
   test("destructive booking actions remain red and are not reclassified", () => {
     const source = read("App.js");
-    expect(source).toContain('background:T.red,borderColor:T.red');
+    expect(source).toContain('background:T.red');
     expect(source).toContain('"Cancel session"');
     expect(source).toContain('"Decline booking"');
   });

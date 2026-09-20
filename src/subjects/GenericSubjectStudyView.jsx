@@ -3,6 +3,8 @@ import SparkLoader from "../components/ui/SparkLoader";
 import Card from "../components/ui/Card";
 import { recordSubjectActivity } from "./subjectProgress";
 import { loadGenericSubjectStructure } from "./genericSubjectCatalog";
+import InteractiveLabelDiagram from "./components/InteractiveLabelDiagram";
+import TransportProcessExplorer from "./components/TransportProcessExplorer";
 import {
   readSparkHashRoute,
   subscribeSparkRoute,
@@ -23,6 +25,21 @@ function lessonSections(topic = {}) {
 function keyPoints(topic = {}) {
   const lesson = lessonData(topic);
   return Array.isArray(lesson.keyPoints) ? lesson.keyPoints.filter(Boolean) : [];
+}
+
+function lessonObjectives(topic = {}) {
+  const lesson = lessonData(topic);
+  return Array.isArray(lesson.objectives) ? lesson.objectives.filter(Boolean) : [];
+}
+
+function interactiveDiagrams(topic = {}) {
+  const lesson = lessonData(topic);
+  return Array.isArray(lesson.interactiveDiagrams) ? lesson.interactiveDiagrams.filter(Boolean) : [];
+}
+
+function interactiveModels(topic = {}) {
+  const lesson = lessonData(topic);
+  return Array.isArray(lesson.interactiveModels) ? lesson.interactiveModels.filter(Boolean) : [];
 }
 
 function routeSelection(path, structure) {
@@ -50,10 +67,17 @@ function firstTopic(structure, completedIds = new Set()) {
     || null;
 }
 
-function GenericLessonContent({ topic }) {
+function GenericLessonContent({
+  topic,
+  completedActivityKeys = new Set(),
+  onActivityComplete,
+}) {
   const lesson = lessonData(topic);
   const blocks = lessonSections(topic);
   const points = keyPoints(topic);
+  const objectives = lessonObjectives(topic);
+  const diagrams = interactiveDiagrams(topic);
+  const models = interactiveModels(topic);
   const intro = String(lesson.introduction || topic?.description || "").trim();
   const summary = String(lesson.summary || "").trim();
   const example = lesson.workedExample && typeof lesson.workedExample === "object"
@@ -63,6 +87,15 @@ function GenericLessonContent({ topic }) {
   return (
     <div className="spark-generic-lesson-body">
       {intro && <p className="spark-generic-lesson-intro">{intro}</p>}
+
+      {objectives.length > 0 && (
+        <Card className="spark-generic-objectives">
+          <strong>What you should be able to do</strong>
+          <ul>
+            {objectives.map((objective,index) => <li key={index}>{String(objective)}</li>)}
+          </ul>
+        </Card>
+      )}
 
       {blocks.map((block, index) => {
         const paragraphs = Array.isArray(block?.paragraphs)
@@ -88,6 +121,25 @@ function GenericLessonContent({ topic }) {
           </section>
         );
       })}
+
+      {models.map(model => (
+        model?.type === "membrane-transport"
+          ? <TransportProcessExplorer key={model.id || "membrane-transport"} />
+          : null
+      ))}
+
+      {diagrams.map(diagram => (
+        <InteractiveLabelDiagram
+          key={diagram.id || diagram.title}
+          activity={diagram}
+          completed={completedActivityKeys.has(`diagram:${diagram.id}`)}
+          onComplete={result => onActivityComplete?.({
+            ...result,
+            topicId:topic.id,
+            sectionId:topic.sectionId,
+          })}
+        />
+      ))}
 
       {points.length > 0 && (
         <Card className="spark-generic-key-points">
@@ -141,6 +193,7 @@ export default function GenericSubjectStudyView({
   const [loading, setLoading] = useState(Boolean(subject?.id));
   const [error, setError] = useState(null);
   const [completedTopicIds, setCompletedTopicIds] = useState(new Set());
+  const [completedActivityKeys, setCompletedActivityKeys] = useState(new Set());
   const [activeSectionId, setActiveSectionId] = useState(null);
   const [activeTopicId, setActiveTopicId] = useState(null);
   const [saving, setSaving] = useState(false);
@@ -189,10 +242,9 @@ export default function GenericSubjectStudyView({
       loadGenericSubjectStructure({ supabase, subjectId }),
       userId
         ? supabase.from("spark_subject_progress")
-            .select("topic_id,activity_key,completed")
+            .select("topic_id,activity_key,activity_type,completed")
             .eq("user_id", userId)
             .eq("subject_id", subjectId)
-            .eq("activity_type", "lesson")
             .eq("completed", true)
         : Promise.resolve({ data:[], error:null }),
     ]).then(([structureResult, progressResult]) => {
@@ -205,15 +257,21 @@ export default function GenericSubjectStudyView({
         return;
       }
 
+      const completedRows = progressResult.data || [];
       const completed = new Set(
-        (progressResult.data || [])
+        completedRows
+          .filter(row => row.activity_type === "lesson")
           .map(row => String(
             row.topic_id || String(row.activity_key || "").replace(/^lesson:/, "")
           ).trim())
           .filter(Boolean)
       );
+      const completedKeys = new Set(
+        completedRows.map(row => String(row.activity_key || "").trim()).filter(Boolean)
+      );
 
       setCompletedTopicIds(completed);
+      setCompletedActivityKeys(completedKeys);
       setStructure(structureResult.data);
       applySelection(structureResult.data, completed);
 
@@ -286,6 +344,59 @@ export default function GenericSubjectStudyView({
 
     if (typeof window !== "undefined") window.scrollTo?.(0, 0);
   }, [studyPath]);
+
+  const recordInteractiveComplete = useCallback(async ({
+    activityId,
+    title,
+    score,
+    total,
+    percent,
+    topicId,
+    sectionId,
+  }) => {
+    const activityKey = `diagram:${activityId}`;
+    if (!activityId || completedActivityKeys.has(activityKey)) return;
+
+    try {
+      const result = await recordSubjectActivity({
+        supabase,
+        activity:{
+          subjectId,
+          activityKey,
+          activityType:"diagram",
+          sectionId:sectionId || activeSection?.id || null,
+          topicId:topicId || activeTopic?.id || null,
+          title:title || "Interactive diagram",
+          completed:true,
+          score,
+          maxScore:total,
+          percent,
+          metadata:{
+            source:"generic_subject_interactive_diagram",
+            adapter:"generic-subject-v1",
+            at:new Date().toISOString(),
+          },
+        },
+      });
+
+      if (result?.error) throw result.error;
+      setCompletedActivityKeys(current => new Set([...current,activityKey]));
+      showToast?.(`${title || "Interactive diagram"} completed.`, "success");
+    } catch (activityError) {
+      console.error("Could not save interactive diagram progress",activityError);
+      showToast?.(
+        activityError?.message || "Your diagram score could not be saved.",
+        "error"
+      );
+    }
+  }, [
+    activeSection?.id,
+    activeTopic?.id,
+    completedActivityKeys,
+    showToast,
+    subjectId,
+    supabase,
+  ]);
 
   const markComplete = useCallback(async () => {
     if (!activeTopic || !subjectId || saving) return;
@@ -523,7 +634,11 @@ export default function GenericSubjectStudyView({
                     )}
                   </div>
 
-                  <GenericLessonContent topic={activeTopic} />
+                  <GenericLessonContent
+                    topic={activeTopic}
+                    completedActivityKeys={completedActivityKeys}
+                    onActivityComplete={recordInteractiveComplete}
+                  />
 
                   <div className="spark-generic-lesson-footer">
                     <button

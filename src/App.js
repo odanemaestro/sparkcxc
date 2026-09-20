@@ -1531,7 +1531,7 @@ function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorAp
                 {signedInLinks}
                 <span className="spark-nav-name">{profile?.name?.split(" ")[0]}</span>
                 <Btn v="outline" onClick={onLogout}
-                  style={{color:"#fff",borderColor:"rgba(255,255,255,.25)",padding:"8px 16px",fontSize:13}}>
+                  style={{color:"#fff",border:"1.5px solid rgba(255,255,255,.25)",padding:"8px 16px",fontSize:13}}>
                   Log out
                 </Btn>
               </>
@@ -5027,7 +5027,7 @@ function CancelBookingModal({ booking, onClose, onConfirm }) {
       <div className="booking-action-modal-actions" style={{display:"flex",gap:10}}>
         <Btn v="outline" action="forward-secondary" onClick={onClose} style={{flex:1,justifyContent:"center"}}>Keep booking</Btn>
         <Btn onClick={async () => { setSubmitting(true); await onConfirm(reason); setSubmitting(false); }}
-          disabled={submitting || !reason.trim()} style={{flex:2,justifyContent:"center",background:T.red,borderColor:T.red}}>
+          disabled={submitting || !reason.trim()} style={{flex:2,justifyContent:"center",background:T.red}}>
           {submitting ? "Cancelling…" : "Cancel booking"}
         </Btn>
       </div>
@@ -5060,7 +5060,7 @@ function DeclineBookingModal({ booking, onClose, onConfirm }) {
       <div className="booking-action-modal-actions" style={{display:"flex",gap:10}}>
         <Btn v="outline" action="forward-secondary" onClick={onClose} style={{flex:1,justifyContent:"center"}}>Keep pending</Btn>
         <Btn onClick={async () => { setSubmitting(true); await onConfirm(reason); setSubmitting(false); }}
-          disabled={submitting || !reason.trim()} style={{flex:2,justifyContent:"center",background:T.red,borderColor:T.red}}>
+          disabled={submitting || !reason.trim()} style={{flex:2,justifyContent:"center",background:T.red}}>
           {submitting ? "Declining…" : "Decline booking"}
         </Btn>
       </div>
@@ -5092,7 +5092,7 @@ function TutorCancelBookingModal({ booking, onClose, onConfirm }) {
       <div className="booking-action-modal-actions" style={{display:"flex",gap:10}}>
         <Btn v="outline" action="forward-secondary" onClick={onClose} style={{flex:1,justifyContent:"center"}}>Keep session</Btn>
         <Btn onClick={async () => { setSubmitting(true); await onConfirm(reason); setSubmitting(false); }}
-          disabled={submitting || !reason.trim()} style={{flex:2,justifyContent:"center",background:T.red,borderColor:T.red}}>
+          disabled={submitting || !reason.trim()} style={{flex:2,justifyContent:"center",background:T.red}}>
           {submitting ? "Cancelling…" : "Cancel session"}
         </Btn>
       </div>
@@ -5228,13 +5228,13 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
           <input className="tutor-search" value={search} onChange={e => setSearch(e.target.value)} placeholder="Search tutors…"
             style={{padding:"10px 15px",border:`1.5px solid ${T.border}`,borderRadius:T.rSm,
               fontSize:14,width:210,outline:"none",fontFamily:FB,transition:`border-color .18s ${T.ease},box-shadow .18s ${T.ease}`}}
-            onFocus={e=>{e.target.style.borderColor=T.teal;e.target.style.boxShadow=`0 0 0 3px ${T.tealLight}`;}}
-            onBlur={e=>{e.target.style.borderColor=T.border;e.target.style.boxShadow="none";}}/>
+            onFocus={e=>{e.target.style.border=`1.5px solid ${T.teal}`;e.target.style.boxShadow=`0 0 0 3px ${T.tealLight}`;}}
+            onBlur={e=>{e.target.style.border=`1.5px solid ${T.border}`;e.target.style.boxShadow="none";}}/>
           <select className="tutor-sort" value={sortBy} onChange={e => setSortBy(e.target.value)} aria-label="Sort tutors"
             style={{padding:"10px 15px",border:`1.5px solid ${T.border}`,borderRadius:T.rSm,
               fontSize:14,outline:"none",fontFamily:FB,color:T.ink,background:T.paper,cursor:"pointer"}}
-            onFocus={e=>{e.target.style.borderColor=T.teal;e.target.style.boxShadow=`0 0 0 3px ${T.tealLight}`;}}
-            onBlur={e=>{e.target.style.borderColor=T.border;e.target.style.boxShadow="none";}}>
+            onFocus={e=>{e.target.style.border=`1.5px solid ${T.teal}`;e.target.style.boxShadow=`0 0 0 3px ${T.tealLight}`;}}
+            onBlur={e=>{e.target.style.border=`1.5px solid ${T.border}`;e.target.style.boxShadow="none";}}>
             <option value="default">Sort: Featured</option>
             <option value="rating_desc">Sort: Highest rated</option>
             <option value="price_asc">Sort: Price (low to high)</option>
@@ -5606,14 +5606,14 @@ function AdminView({ showToast, adminUserId, profile }) {
                       {busyId===t.id ? "…" : "Approve"}
                     </Btn>
                     <Btn v="outline" onClick={() => setStatus(t.id, "rejected")} disabled={busyId===t.id}
-                      style={{fontSize:12,padding:"7px 14px",color:T.red,borderColor:T.red}}>
+                      style={{fontSize:12,padding:"7px 14px",color:T.red,border:`1.5px solid ${T.red}`}}>
                       {busyId===t.id ? "…" : "Reject"}
                     </Btn>
                   </>
                 )}
                 {t.status === "approved" && (
                   <Btn v="outline" onClick={() => setStatus(t.id, "deactivated")} disabled={busyId===t.id}
-                    style={{fontSize:12,padding:"7px 14px",color:T.red,borderColor:T.red}}>
+                    style={{fontSize:12,padding:"7px 14px",color:T.red,border:`1.5px solid ${T.red}`}}>
                     {busyId===t.id ? "…" : "Deactivate"}
                   </Btn>
                 )}
@@ -5682,7 +5682,7 @@ function AdminView({ showToast, adminUserId, profile }) {
                 </div>
                 <div style={{display:"flex",gap:8,flexWrap:"wrap"}}>
                   <Btn v="outline" onClick={() => resolveStudyCircleReport(report.report_id, "dismissed", false)} disabled={circleReportBusyId===report.report_id} style={{fontSize:12,padding:"7px 12px"}}>Dismiss</Btn>
-                  <Btn onClick={() => resolveStudyCircleReport(report.report_id, "resolved", true)} disabled={circleReportBusyId===report.report_id} style={{fontSize:12,padding:"7px 12px",background:T.red,borderColor:T.red}}>Remove post</Btn>
+                  <Btn onClick={() => resolveStudyCircleReport(report.report_id, "resolved", true)} disabled={circleReportBusyId===report.report_id} style={{fontSize:12,padding:"7px 12px",background:T.red}}>Remove post</Btn>
                 </div>
               </div>
             </div>
@@ -7632,7 +7632,7 @@ function ContactView({ setView, showToast, hasTutorApp, isParent }) {
                 </div>
               </div>
             ))}
-            <Card style={{ background: T.tealLight, borderColor: T.teal, marginTop: 8 }}>
+            <Card style={{ background: T.tealLight, border: `1px solid ${T.teal}`, marginTop: 8 }}>
               <div style={{ fontFamily: FD, fontSize: 16, fontWeight: 600, color: T.tealDark, marginBottom: 6 }}>
                 School partnerships
               </div>
@@ -7655,8 +7655,8 @@ function ContactView({ setView, showToast, hasTutorApp, isParent }) {
                   <input type={type} value={val} onChange={e => setter(e.target.value)} placeholder={ph}
                     style={{ width: "100%", padding: "10px 13px", border: `1.5px solid ${T.border}`, borderRadius: 7,
                       fontSize: 14, color: T.ink, background: T.paper, outline: "none" }}
-                    onFocus={e => e.target.style.borderColor = T.teal}
-                    onBlur={e => e.target.style.borderColor = T.border} />
+                    onFocus={e => e.target.style.border = `1.5px solid ${T.teal}`}
+                    onBlur={e => e.target.style.border = `1.5px solid ${T.border}`} />
                 </div>
               ))}
               <div style={{ marginBottom: 14 }}>
@@ -7681,8 +7681,8 @@ function ContactView({ setView, showToast, hasTutorApp, isParent }) {
                   placeholder="Tell us what's on your mind…" rows={5}
                   style={{ width: "100%", padding: "10px 13px", border: `1.5px solid ${T.border}`, borderRadius: 7,
                     fontSize: 14, color: T.ink, background: T.paper, outline: "none", resize: "vertical", fontFamily: FB }}
-                  onFocus={e => e.target.style.borderColor = T.teal}
-                  onBlur={e => e.target.style.borderColor = T.border} />
+                  onFocus={e => e.target.style.border = `1.5px solid ${T.teal}`}
+                  onBlur={e => e.target.style.border = `1.5px solid ${T.border}`} />
               </div>
               <Btn onClick={sendMessage} full>Send message</Btn>
             </Card>
@@ -7773,8 +7773,8 @@ const InputField = ({ label, value, onChange, placeholder, type = "text", requir
         ariaDescribedBy={error ? `${label.replace(/\s+/g, "-").toLowerCase()}-error` : undefined}
         style={{ width: "100%", padding: "10px 13px", border: `1.5px solid ${error ? T.red : T.border}`, borderRadius: 7,
           fontSize: 14, color: T.ink, background: T.paper, outline: "none" }}
-        onFocus={e => e.target.style.borderColor = error ? T.red : T.teal}
-        onBlur={e => { e.target.style.borderColor = error ? T.red : T.border; onBlur?.(e); }}
+        onFocus={e => e.target.style.border = `1.5px solid ${error ? T.red : T.teal}`}
+        onBlur={e => { e.target.style.border = `1.5px solid ${error ? T.red : T.border}`; onBlur?.(e); }}
       />
     ) : (
       <input type={type} value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder}
@@ -7782,8 +7782,8 @@ const InputField = ({ label, value, onChange, placeholder, type = "text", requir
         aria-invalid={!!error} aria-describedby={error ? `${label.replace(/\s+/g, "-").toLowerCase()}-error` : undefined}
         style={{ width: "100%", padding: "10px 13px", border: `1.5px solid ${error ? T.red : T.border}`, borderRadius: 7,
           fontSize: 14, color: T.ink, background: T.paper, outline: "none" }}
-        onFocus={e => e.target.style.borderColor = error ? T.red : T.teal}
-        onBlur={e => { e.target.style.borderColor = error ? T.red : T.border; onBlur?.(e); }} />
+        onFocus={e => e.target.style.border = `1.5px solid ${error ? T.red : T.teal}`}
+        onBlur={e => { e.target.style.border = `1.5px solid ${error ? T.red : T.border}`; onBlur?.(e); }} />
     )}
     {error && <div id={`${label.replace(/\s+/g, "-").toLowerCase()}-error`} className="spark-form-error spark-form-error--field" role="alert">{error}</div>}
   </div>
@@ -7955,8 +7955,8 @@ const PhoneInputWithCountry = ({
             flex: "1 1 auto", minWidth: 0, padding: "10px 13px", border: `1.5px solid ${error ? T.red : T.border}`,
             borderRadius: 7, fontSize: 14, color: T.ink, background: T.paper, outline: "none",
           }}
-          onFocus={e => e.target.style.borderColor = error ? T.red : T.teal}
-          onBlur={e => { e.target.style.borderColor = error ? T.red : T.border; onBlur?.(e); }}
+          onFocus={e => e.target.style.border = `1.5px solid ${error ? T.red : T.teal}`}
+          onBlur={e => { e.target.style.border = `1.5px solid ${error ? T.red : T.border}`; onBlur?.(e); }}
         />
       </div>
       <div style={{ marginTop: 5, fontSize: 12, color: T.textMuted }}>
@@ -7975,8 +7975,8 @@ const TextareaField = ({ label, value, onChange, placeholder, required = false, 
     <textarea value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder} rows={rows}
       style={{ width: "100%", padding: "10px 13px", border: `1.5px solid ${T.border}`, borderRadius: 7,
         fontSize: 14, color: T.ink, background: T.paper, outline: "none", resize: "vertical", fontFamily: FB }}
-      onFocus={e => e.target.style.borderColor = T.teal}
-      onBlur={e => e.target.style.borderColor = T.border} />
+      onFocus={e => e.target.style.border = `1.5px solid ${T.teal}`}
+      onBlur={e => e.target.style.border = `1.5px solid ${T.border}`} />
   </div>
 );
 
@@ -8460,7 +8460,7 @@ const validateApplication = () => validateStep1() || validateStep2() || validate
               placeholder="How long have you been tutoring? Any schools, academies or platforms? Approximate number of students?" />
             <TextareaField label="Typical availability" value={form.availability} onChange={v => update("availability", v)} rows={3}
               placeholder="e.g. Weekday afternoons 3–8pm, Saturday mornings. Note any weeks you're unavailable." />
-            <Card style={{ background: T.amberLight, borderColor: T.amber, marginBottom: 20 }}>
+            <Card style={{ background: T.amberLight, border: `1px solid ${T.amber}`, marginBottom: 20 }}>
               <div style={{ fontSize: 13, color: T.amber, fontWeight: 600, marginBottom: 4 }}>⚠ Verification note</div>
               <div style={{ fontSize: 13, color: T.inkSoft, lineHeight: 1.55 }}>
                 Every tutor is reviewed before the profile is published. We may request copies of qualifications. Verification is usually completed within 3 business days.
