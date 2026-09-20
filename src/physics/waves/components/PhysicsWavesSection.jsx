@@ -63,6 +63,7 @@ function LabsView({ topic, progress, setProgress, onActivity, userId }) {
     const upgraded = hasSimulation(lab.id);
     const complete = Boolean(progress[`lab:${lab.id}`]);
     const evidence = payload => {
+      onActivity?.({ type:'physics_lab_evidence', subject:'CSEC Physics', section:'C', topic:topic.id, lab:lab.id, ...payload });
       if (upgraded && payload?.source === 'physics_virtual_simulation' && payload?.result === 'completed' && !complete) {
         setLabCompletion(lab, true);
       }
