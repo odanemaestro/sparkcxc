@@ -95,7 +95,8 @@ export function buildNextBestAction({
     return {
       ...meta,
       subjectId,
-      skill:focus?.skill||null,
+      skill:focus?.rawSkill||focus?.skill||null,
+      displaySkill:focus?.skill||null,
       score:candidateScore(type,focus,effectiveness),
       effectiveness,
     };
