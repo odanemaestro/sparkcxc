@@ -57,12 +57,20 @@ function topMisconception(counts, labels = {}) {
 }
 
 function derivedRetention(row, masteryProbability) {
+  // Retention must continue to change even on days when the student has not
+  // produced new evidence. Recompute it from the last meaningful practice
+  // timestamp and stored stability instead of trusting a stale persisted value.
+  if (row.last_practised_at) {
+    const last = new Date(row.last_practised_at).getTime();
+    if (Number.isFinite(last)) {
+      const ageDays = Math.max(0, (Date.now() - last) / 86400000);
+      const stability = Math.max(4, Number(row.stability_days || (14 + masteryProbability * 60)));
+      return clamp(Math.exp(-ageDays / stability));
+    }
+  }
   const explicit = Number(row.retention_probability);
   if (Number.isFinite(explicit)) return probability(explicit, 1);
-  if (!row.last_practised_at) return 0.82;
-  const ageDays = Math.max(0, (Date.now() - new Date(row.last_practised_at).getTime()) / 86400000);
-  const stability = Math.max(4, Number(row.stability_days || (14 + masteryProbability * 60)));
-  return clamp(Math.exp(-ageDays / stability));
+  return 0.82;
 }
 
 function confidenceBias(studentConfidence, mastery) {
