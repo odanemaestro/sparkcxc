@@ -380,6 +380,25 @@ function EndocrineSystemTemplate() {
   );
 }
 
+function HumanDigestiveTemplate() {
+  return (
+    <g className="spark-diagram-digestive" aria-hidden="true">
+      <circle className="digestive-head" cx="500" cy="78" r="48" />
+      <path className="digestive-body" d="M420 135Q500 105 580 135Q630 220 610 350Q595 470 555 565H445Q405 470 390 350Q370 220 420 135Z" />
+      <path className="digestive-mouth" d="M475 78Q500 92 525 78" />
+      <path className="digestive-oesophagus" d="M500 122V245" />
+      <path className="digestive-stomach" d="M500 245Q555 230 575 275Q585 325 545 355Q495 365 475 325Q458 285 500 245Z" />
+      <path className="digestive-liver" d="M405 235Q465 190 535 220Q525 270 480 292Q430 295 405 265Z" />
+      <path className="digestive-gall" d="M455 275Q470 268 478 282Q477 307 458 315Q445 302 455 275Z" />
+      <path className="digestive-pancreas" d="M480 350Q540 330 585 350Q550 385 500 380Q485 370 480 350Z" />
+      <path className="digestive-small" d="M455 380Q500 350 545 382Q565 405 540 425Q515 440 545 462Q560 480 535 500Q500 520 470 500Q445 482 470 460Q495 442 465 425Q438 410 455 380Z" />
+      <path className="digestive-large" d="M420 365Q400 390 405 455Q410 520 455 535M580 365Q600 390 595 455Q590 520 545 535M420 365Q500 340 580 365M455 535Q500 555 545 535" />
+      <path className="digestive-rectum" d="M500 535V590" />
+      <text className="repro-orientation" x="500" y="612" textAnchor="middle">simplified human digestive system</text>
+    </g>
+  );
+}
+
 function DiagramTemplate({ template }) {
   if (template === "plant-cell") return <PlantCellTemplate />;
   if (template === "animal-cell") return <AnimalCellTemplate />;
@@ -393,6 +412,7 @@ function DiagramTemplate({ template }) {
   if (template === "mammalian-ear") return <MammalianEarTemplate />;
   if (template === "human-brain") return <HumanBrainTemplate />;
   if (template === "endocrine-system") return <EndocrineSystemTemplate />;
+  if (template === "human-digestive-system") return <HumanDigestiveTemplate />;
   if (template === "human-heart") return <HumanHeartTemplate />;
   if (template === "kidney-longitudinal") return <KidneyLongitudinalTemplate />;
   if (template === "nephron") return <NephronTemplate />;
