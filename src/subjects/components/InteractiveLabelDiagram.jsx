@@ -187,6 +187,35 @@ function PregnancyUterusTemplate() {
   );
 }
 
+function HumanHeartTemplate() {
+  return (
+    <g className="spark-diagram-heart" aria-hidden="true">
+      <path className="heart-outline" d="M330 165Q405 115 500 165Q595 115 670 165Q730 225 690 355Q650 475 500 545Q350 475 310 355Q270 225 330 165Z" />
+
+      <path className="heart-right-atrium" d="M338 190Q410 155 470 205L468 300Q405 330 340 292Q315 240 338 190Z" />
+      <path className="heart-right-ventricle" d="M340 315Q405 280 468 315L485 475Q405 450 355 390Q325 350 340 315Z" />
+      <path className="heart-left-atrium" d="M532 205Q590 155 662 190Q685 240 660 292Q595 330 532 300Z" />
+      <path className="heart-left-ventricle" d="M532 315Q595 280 660 315Q675 350 645 405Q600 480 515 505Z" />
+
+      <path className="heart-septum" d="M500 190Q490 300 505 505" />
+
+      <path className="heart-vena-cava" d="M365 190V65M365 292Q315 360 320 500" />
+      <path className="heart-aorta" d="M595 185V100Q595 45 655 45Q720 45 730 100V155" />
+      <path className="heart-pulmonary-artery" d="M430 315Q455 210 500 190Q535 170 560 140Q585 110 620 120" />
+      <path className="heart-pulmonary-vein" d="M662 220H785M532 235H230" />
+
+      <path className="heart-tricuspid" d="M385 302L420 330L455 302" />
+      <path className="heart-bicuspid" d="M545 302L590 335L635 302" />
+
+      <path className="heart-flow deoxygenated" d="M365 85V185M390 220V285M410 350Q455 270 500 215" />
+      <path className="heart-flow oxygenated" d="M760 220H665M610 230V290M600 355Q610 180 620 105" />
+
+      <text className="heart-side-label deoxygenated" x="370" y="565" textAnchor="middle">right side, deoxygenated blood</text>
+      <text className="heart-side-label oxygenated" x="635" y="565" textAnchor="middle">left side, oxygenated blood</text>
+    </g>
+  );
+}
+
 function DiagramTemplate({ template }) {
   if (template === "plant-cell") return <PlantCellTemplate />;
   if (template === "animal-cell") return <AnimalCellTemplate />;
@@ -196,6 +225,7 @@ function DiagramTemplate({ template }) {
   if (template === "female-reproductive-system") return <FemaleReproductiveTemplate />;
   if (template === "male-reproductive-system") return <MaleReproductiveTemplate />;
   if (template === "pregnancy-uterus") return <PregnancyUterusTemplate />;
+  if (template === "human-heart") return <HumanHeartTemplate />;
   return (
     <g aria-hidden="true">
       <rect className="unknown-template" x="260" y="120" width="480" height="360" rx="28" />
