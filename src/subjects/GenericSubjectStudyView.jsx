@@ -30,6 +30,7 @@ import SenseOrgansExplorer from "./components/SenseOrgansExplorer";
 import EyeFunctionExplorer from "./components/EyeFunctionExplorer";
 import SightDefectsExplorer from "./components/SightDefectsExplorer";
 import EarFunctionExplorer from "./components/EarFunctionExplorer";
+import NervousSystemExplorer from "./components/NervousSystemExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -274,6 +275,9 @@ function GenericLessonContent({
         }
         if (model?.type === "ear-function") {
           return <EarFunctionExplorer key={model.id || "ear-function"} />;
+        }
+        if (model?.type === "nervous-system") {
+          return <NervousSystemExplorer key={model.id || "nervous-system"} />;
         }
         return null;
       })}
