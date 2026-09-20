@@ -7,6 +7,7 @@ import InteractiveLabelDiagram from "./components/InteractiveLabelDiagram";
 import TransportProcessExplorer from "./components/TransportProcessExplorer";
 import TransportInvestigationExplorer from "./components/TransportInvestigationExplorer";
 import ReproductionComparisonExplorer from "./components/ReproductionComparisonExplorer";
+import VegetativePropagationExplorer from "./components/VegetativePropagationExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -182,6 +183,9 @@ function GenericLessonContent({
         }
         if (model?.type === "reproduction-comparison") {
           return <ReproductionComparisonExplorer key={model.id || "reproduction-comparison"} />;
+        }
+        if (model?.type === "vegetative-propagation") {
+          return <VegetativePropagationExplorer key={model.id || "vegetative-propagation"} />;
         }
         return null;
       })}
