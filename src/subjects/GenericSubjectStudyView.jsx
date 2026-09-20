@@ -33,6 +33,7 @@ import EarFunctionExplorer from "./components/EarFunctionExplorer";
 import NervousSystemExplorer from "./components/NervousSystemExplorer";
 import EndocrineSystemExplorer from "./components/EndocrineSystemExplorer";
 import MicrobeExplorer from "./components/MicrobeExplorer";
+import InfectiousDiseaseExplorer from "./components/InfectiousDiseaseExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -286,6 +287,9 @@ function GenericLessonContent({
         }
         if (model?.type === "microbes") {
           return <MicrobeExplorer key={model.id || "microbes"} />;
+        }
+        if (model?.type === "infectious-disease") {
+          return <InfectiousDiseaseExplorer key={model.id || "infectious-disease"} />;
         }
         return null;
       })}
