@@ -130,12 +130,50 @@ function BeanSeedTemplate() {
   );
 }
 
+function FemaleReproductiveTemplate() {
+  return (
+    <g className="spark-diagram-reproductive spark-diagram-female-reproductive" aria-hidden="true">
+      <path className="female-uterus" d="M430 235 Q500 185 570 235 Q585 300 555 375 Q530 420 500 438 Q470 420 445 375 Q415 300 430 235Z" />
+      <path className="female-endometrium" d="M458 250 Q500 222 542 250 Q550 305 530 355 Q515 382 500 392 Q485 382 470 355 Q450 305 458 250Z" />
+      <path className="female-oviduct" d="M445 245 Q395 185 330 185 Q292 185 270 215" />
+      <path className="female-oviduct" d="M555 245 Q605 185 670 185 Q708 185 730 215" />
+      <path className="female-fimbriae" d="M270 215l-24-18m24 18l-28 2m28-2l-20 21M730 215l24-18m-24 18l28 2m-28-2l20 21" />
+      <ellipse className="female-ovary" cx="235" cy="225" rx="42" ry="30" transform="rotate(-15 235 225)" />
+      <ellipse className="female-ovary" cx="765" cy="225" rx="42" ry="30" transform="rotate(15 765 225)" />
+      <path className="female-cervix" d="M475 405 Q500 420 525 405 L525 465 Q500 480 475 465Z" />
+      <path className="female-vagina" d="M478 465 L455 555 Q500 580 545 555 L522 465Z" />
+      <text className="repro-orientation" x="500" y="610" textAnchor="middle">front view</text>
+    </g>
+  );
+}
+
+function MaleReproductiveTemplate() {
+  return (
+    <g className="spark-diagram-reproductive spark-diagram-male-reproductive" aria-hidden="true">
+      <ellipse className="male-bladder" cx="495" cy="155" rx="78" ry="68" />
+      <path className="male-sperm-duct" d="M405 425 Q345 330 365 230 Q380 165 430 155 Q450 150 465 170" />
+      <path className="male-seminal-vesicle" d="M568 175 Q625 145 640 190 Q620 235 572 222 Q550 205 568 175Z" />
+      <ellipse className="male-prostate" cx="505" cy="250" rx="58" ry="38" />
+      <circle className="male-cowper" cx="530" cy="302" r="15" />
+      <path className="male-urethra" d="M500 205 Q500 250 505 292 Q515 335 610 345 Q700 350 790 370" />
+      <path className="male-penis" d="M565 322 Q655 305 790 333 Q835 343 842 375 Q830 410 775 405 Q670 395 585 370 Q552 355 565 322Z" />
+      <ellipse className="male-scrotum" cx="405" cy="462" rx="80" ry="72" />
+      <ellipse className="male-testis" cx="405" cy="458" rx="46" ry="57" />
+      <path className="male-epididymis" d="M365 415 Q335 460 365 505" />
+      <path className="male-cowper-duct" d="M540 312 Q565 330 585 340" />
+      <text className="repro-orientation" x="500" y="590" textAnchor="middle">simplified side view</text>
+    </g>
+  );
+}
+
 function DiagramTemplate({ template }) {
   if (template === "plant-cell") return <PlantCellTemplate />;
   if (template === "animal-cell") return <AnimalCellTemplate />;
   if (template === "light-microscope") return <LightMicroscopeTemplate />;
   if (template === "flower-longitudinal") return <FlowerLongitudinalTemplate />;
   if (template === "bean-seed") return <BeanSeedTemplate />;
+  if (template === "female-reproductive-system") return <FemaleReproductiveTemplate />;
+  if (template === "male-reproductive-system") return <MaleReproductiveTemplate />;
   return (
     <g aria-hidden="true">
       <rect className="unknown-template" x="260" y="120" width="480" height="360" rx="28" />
