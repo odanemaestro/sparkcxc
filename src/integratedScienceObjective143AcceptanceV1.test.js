@@ -46,7 +46,7 @@ describe("Integrated Science Objective 1.4.3 acceptance audit", () => {
   test("explains agglutination and cross-matching", () => {
     expect(migration).toContain("Agglutination is the clumping of red blood cells");
     expect(migration).toContain("cross-match donor red cells with recipient plasma");
-    expect(migration).toContain("reduce the risk of agglutination");
+    expect(migration).toContain("reduces the risk of agglutination");
   });
 
   test("teaches ABO compatibility with clinical nuance", () => {
