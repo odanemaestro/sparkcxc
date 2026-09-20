@@ -53,6 +53,7 @@ import HumanDigestionExplorer from "./components/HumanDigestionExplorer";
 import TeethFunctionExplorer from "./components/TeethFunctionExplorer";
 import RespirationImportanceExplorer from "./components/RespirationImportanceExplorer";
 import AnaerobicRespirationExplorer from "./components/AnaerobicRespirationExplorer";
+import BreathingMechanismExplorer from "./components/BreathingMechanismExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -366,6 +367,9 @@ function GenericLessonContent({
         }
         if (model?.type === "anaerobic-respiration") {
           return <AnaerobicRespirationExplorer key={model.id || "anaerobic-respiration"} />;
+        }
+        if (model?.type === "breathing-mechanism") {
+          return <BreathingMechanismExplorer key={model.id || "breathing-mechanism"} />;
         }
         return null;
       })}
