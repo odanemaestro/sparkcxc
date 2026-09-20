@@ -551,7 +551,9 @@ begin
     user_id,subject_id,skill,source,item_id,evidence_key,observed_score,correct,
     evidence_weight,difficulty,metadata,occurred_at
   ) values (
-    new.user_id,'mathematics','Mathematics :: Exam readiness','practice_exam',
+    new.user_id,'mathematics',
+    case when lower(coalesce(new.paper_type,''))='paper2' then 'Mathematics :: Paper 2' else 'Mathematics :: Paper 1' end,
+    'practice_exam',
     coalesce(new.attempt_key,new.id::text),v_key,v_score,
     case when v_score is null then null else v_score>=0.60 end,
     case when lower(coalesce(new.paper_type,''))='paper2' then 1.50 else 1.30 end,
@@ -561,7 +563,11 @@ begin
   )
   on conflict(user_id,evidence_key) do nothing;
 
-  perform public.spark_recalculate_learning_skill_v2(new.user_id,'mathematics','Mathematics :: Exam readiness');
+  perform public.spark_recalculate_learning_skill_v2(
+    new.user_id,
+    'mathematics',
+    case when lower(coalesce(new.paper_type,''))='paper2' then 'Mathematics :: Paper 2' else 'Mathematics :: Paper 1' end
+  );
   return new;
 end;
 $;
@@ -660,7 +666,7 @@ insert into public.spark_learning_evidence_v2(
 select
   pe.user_id,
   'mathematics',
-  'Mathematics :: Exam readiness',
+  case when lower(coalesce(pe.paper_type,''))='paper2' then 'Mathematics :: Paper 2' else 'Mathematics :: Paper 1' end,
   'practice_exam_history',
   coalesce(pe.attempt_key,pe.id::text),
   'backfill:math-exam:'||pe.id::text,
