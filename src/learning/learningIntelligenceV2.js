@@ -258,7 +258,12 @@ export async function recordLearningRecommendation({supabase,action}={}){
     p_action_type:action.type,
     p_action_key:action.actionKey,
     p_priority_score:Number(action.priorityScore||0),
-    p_rationale:{reasons:action.reasons||[],explanation:action.explanation||"",effectiveness:action.effectiveness??null},
+    p_rationale:{
+      reasons:action.reasons||[],
+      explanation:action.explanation||"",
+      effectiveness:action.effectiveness??null,
+      features:action.featureVector||{},
+    },
     p_baseline_mastery:Number(action.baselineMastery||0),
     p_model_version:action.modelVersion||"li-v2.0",
   });
