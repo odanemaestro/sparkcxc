@@ -414,6 +414,26 @@ function HumanToothTemplate() {
   );
 }
 
+function HumanRespiratoryTemplate() {
+  return (
+    <g className="spark-diagram-respiratory" aria-hidden="true">
+      <circle className="resp-head" cx="500" cy="78" r="46" />
+      <path className="resp-neck" d="M470 118L460 175H540L530 118Z" />
+      <path className="resp-ribcage" d="M350 175Q500 125 650 175Q705 285 660 445Q595 515 500 530Q405 515 340 445Q295 285 350 175Z" />
+      <path className="resp-trachea" d="M500 112V260" />
+      <path className="resp-bronchus left" d="M500 260Q455 275 420 315" />
+      <path className="resp-bronchus right" d="M500 260Q545 275 580 315" />
+      <path className="resp-lung left" d="M405 215Q340 260 350 380Q365 455 445 465Q475 420 470 330Q465 250 405 215Z" />
+      <path className="resp-lung right" d="M595 215Q660 260 650 380Q635 455 555 465Q525 420 530 330Q535 250 595 215Z" />
+      <path className="resp-bronchioles left" d="M420 315Q395 335 385 365M425 315Q445 345 448 390M405 335Q380 400 400 430" />
+      <path className="resp-bronchioles right" d="M580 315Q605 335 615 365M575 315Q555 345 552 390M595 335Q620 400 600 430" />
+      <path className="resp-diaphragm" d="M335 470Q500 405 665 470" />
+      <path className="resp-ribs" d="M335 205Q500 155 665 205M325 245Q500 195 675 245M320 290Q500 240 680 290M320 335Q500 285 680 335M325 380Q500 330 675 380M335 425Q500 375 665 425" />
+      <text className="repro-orientation" x="500" y="585" textAnchor="middle">simplified human respiratory system</text>
+    </g>
+  );
+}
+
 function DiagramTemplate({ template }) {
   if (template === "plant-cell") return <PlantCellTemplate />;
   if (template === "animal-cell") return <AnimalCellTemplate />;
@@ -429,6 +449,7 @@ function DiagramTemplate({ template }) {
   if (template === "endocrine-system") return <EndocrineSystemTemplate />;
   if (template === "human-digestive-system") return <HumanDigestiveTemplate />;
   if (template === "human-tooth") return <HumanToothTemplate />;
+  if (template === "human-respiratory-system") return <HumanRespiratoryTemplate />;
   if (template === "human-heart") return <HumanHeartTemplate />;
   if (template === "kidney-longitudinal") return <KidneyLongitudinalTemplate />;
   if (template === "nephron") return <NephronTemplate />;
