@@ -29,6 +29,7 @@ import PlantExcretionExplorer from "./components/PlantExcretionExplorer";
 import SenseOrgansExplorer from "./components/SenseOrgansExplorer";
 import EyeFunctionExplorer from "./components/EyeFunctionExplorer";
 import SightDefectsExplorer from "./components/SightDefectsExplorer";
+import EarFunctionExplorer from "./components/EarFunctionExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -270,6 +271,9 @@ function GenericLessonContent({
         }
         if (model?.type === "sight-defects") {
           return <SightDefectsExplorer key={model.id || "sight-defects"} />;
+        }
+        if (model?.type === "ear-function") {
+          return <EarFunctionExplorer key={model.id || "ear-function"} />;
         }
         return null;
       })}
