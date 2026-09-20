@@ -48,6 +48,7 @@ import EnergyConceptExplorer from "./components/EnergyConceptExplorer";
 import EnergyConversionExplorer from "./components/EnergyConversionExplorer";
 import PhotosynthesisEnergyExplorer from "./components/PhotosynthesisEnergyExplorer";
 import EnvironmentEnergyExplorer from "./components/EnvironmentEnergyExplorer";
+import FoodEnergyNutritionExplorer from "./components/FoodEnergyNutritionExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -346,6 +347,9 @@ function GenericLessonContent({
         }
         if (model?.type === "environment-energy") {
           return <EnvironmentEnergyExplorer key={model.id || "environment-energy"} />;
+        }
+        if (model?.type === "food-energy-nutrition") {
+          return <FoodEnergyNutritionExplorer key={model.id || "food-energy-nutrition"} />;
         }
         return null;
       })}
