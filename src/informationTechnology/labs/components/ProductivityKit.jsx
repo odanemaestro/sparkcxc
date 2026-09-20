@@ -38,9 +38,15 @@ export function useWorkspaceHistory(initialState, limit = 30) {
   return { state, setState, undo, redo, canUndo: history.current.past.length > 0, canRedo: history.current.future.length > 0 };
 }
 
-export function useTaskEvidence() {
+export function useTaskEvidence(onEvidence) {
   const [evidence, setEvidence] = useState(() => new Set());
-  const record = useCallback(id => setEvidence(previous => previous.has(id) ? previous : new Set(previous).add(id)), []);
+  const record = useCallback((id, detail = {}) => {
+    setEvidence(previous => {
+      if (previous.has(id)) return previous;
+      onEvidence?.({ taskId:id, score:1, result:"completed", at:new Date().toISOString(), ...detail });
+      return new Set(previous).add(id);
+    });
+  }, [onEvidence]);
   return { evidence, record };
 }
 
