@@ -37,6 +37,7 @@ import InfectiousDiseaseExplorer from "./components/InfectiousDiseaseExplorer";
 import ImmunisationExplorer from "./components/ImmunisationExplorer";
 import NonCommunicableDiseaseExplorer from "./components/NonCommunicableDiseaseExplorer";
 import ExercisePhysiologyExplorer from "./components/ExercisePhysiologyExplorer";
+import DrugEffectsExplorer from "./components/DrugEffectsExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -302,6 +303,9 @@ function GenericLessonContent({
         }
         if (model?.type === "exercise-physiology") {
           return <ExercisePhysiologyExplorer key={model.id || "exercise-physiology"} />;
+        }
+        if (model?.type === "drug-effects") {
+          return <DrugEffectsExplorer key={model.id || "drug-effects"} />;
         }
         return null;
       })}
