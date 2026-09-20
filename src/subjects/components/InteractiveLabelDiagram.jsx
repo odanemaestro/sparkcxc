@@ -296,6 +296,37 @@ function MammalianEyeTemplate() {
   );
 }
 
+function MammalianEarTemplate() {
+  return (
+    <g className="spark-diagram-ear" aria-hidden="true">
+      <path className="ear-pinna" d="M120 145Q55 145 52 255Q50 370 145 398Q225 405 225 325Q225 265 175 270Q135 275 140 315Q145 345 175 330Q195 320 192 292" />
+      <path className="ear-canal" d="M188 292Q275 282 340 295" />
+      <ellipse className="ear-drum" cx="360" cy="295" rx="18" ry="72" transform="rotate(-8 360 295)" />
+
+      <g className="ear-ossicles">
+        <path d="M378 275L420 245L455 270L492 242" />
+        <circle cx="420" cy="245" r="14" />
+        <circle cx="455" cy="270" r="13" />
+        <circle cx="492" cy="242" r="12" />
+      </g>
+
+      <path className="ear-cochlea" d="M600 315Q675 245 735 300Q785 345 745 395Q710 435 660 405Q625 382 640 350Q655 325 682 336Q700 346 692 365" />
+      <path className="ear-auditory-nerve" d="M715 350Q790 332 855 370" />
+
+      <g className="ear-semicircular">
+        <path d="M545 180Q505 105 565 85Q635 65 655 135Q670 195 625 220" />
+        <path d="M590 205Q575 115 650 110Q720 108 724 182Q727 238 670 250" />
+        <path d="M545 235Q485 190 515 135Q550 80 605 105Q650 128 645 180" />
+      </g>
+
+      <path className="ear-eustachian" d="M515 295Q545 350 560 435Q570 480 620 515" />
+      <path className="ear-middle-cavity" d="M390 225Q500 205 570 255Q560 335 500 360Q425 352 390 330Z" />
+
+      <text className="repro-orientation" x="500" y="575" textAnchor="middle">simplified section through the mammalian ear</text>
+    </g>
+  );
+}
+
 function DiagramTemplate({ template }) {
   if (template === "plant-cell") return <PlantCellTemplate />;
   if (template === "animal-cell") return <AnimalCellTemplate />;
@@ -306,6 +337,7 @@ function DiagramTemplate({ template }) {
   if (template === "male-reproductive-system") return <MaleReproductiveTemplate />;
   if (template === "pregnancy-uterus") return <PregnancyUterusTemplate />;
   if (template === "mammalian-eye") return <MammalianEyeTemplate />;
+  if (template === "mammalian-ear") return <MammalianEarTemplate />;
   if (template === "human-heart") return <HumanHeartTemplate />;
   if (template === "kidney-longitudinal") return <KidneyLongitudinalTemplate />;
   if (template === "nephron") return <NephronTemplate />;
