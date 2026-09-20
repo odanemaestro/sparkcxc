@@ -24,6 +24,7 @@ import TransportSystemNeedExplorer from "./components/TransportSystemNeedExplore
 import TransportStructuresExplorer from "./components/TransportStructuresExplorer";
 import BloodGroupExplorer from "./components/BloodGroupExplorer";
 import ExcretionEgestionExplorer from "./components/ExcretionEgestionExplorer";
+import HumanExcretionMechanismsExplorer from "./components/HumanExcretionMechanismsExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -250,6 +251,9 @@ function GenericLessonContent({
         }
         if (model?.type === "excretion-egestion") {
           return <ExcretionEgestionExplorer key={model.id || "excretion-egestion"} />;
+        }
+        if (model?.type === "human-excretion-mechanisms") {
+          return <HumanExcretionMechanismsExplorer key={model.id || "human-excretion-mechanisms"} />;
         }
         return null;
       })}
