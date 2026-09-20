@@ -15,6 +15,7 @@
 .spark-crop-stage .cp-field-card{fill:#eef4e6;stroke:#6f9450;stroke-width:4}.spark-crop-stage .cp-year{fill:#536c3e;font-size:16px;font-weight:900}.spark-crop-stage .cp-crop{fill:#24435c;font-size:23px;font-weight:900}.spark-crop-stage .cp-cycle-arrow{fill:none;stroke:#0d9488;stroke-width:6;stroke-linecap:round}
 .spark-crop-stage .cp-hillside{fill:#caa26d;stroke:#8b6b43;stroke-width:4}.spark-crop-stage .cp-strip{fill:none;stroke:#58944d;stroke-width:24;stroke-linecap:round}.spark-crop-stage .cp-strip.alt{stroke:#e6c253}
 .spark-crop-stage .cp-compost{fill:#8d6845;stroke:#63482f;stroke-width:5}.spark-crop-stage .cp-compost-text{fill:#fff;font-size:22px;font-weight:900}.spark-crop-stage .cp-ladybird circle{fill:#d9534f;stroke:#7b2b2b;stroke-width:4}.spark-crop-stage .cp-ladybird line{stroke:#432020;stroke-width:4}
+.spark-crop-stage .cp-lab-bench{fill:#8ca0ad}.spark-crop-stage .cp-culture-flask{fill:#eef8fb;fill-opacity:.72;stroke:#658397;stroke-width:5}.spark-crop-stage .cp-culture-medium{fill:#d9c58c;stroke:#9b8146;stroke-width:2}.spark-crop-stage .cp-flask-stop{fill:#dce5ea;stroke:#6e8797;stroke-width:3}
 .spark-crop-stage .cp-label{fill:#37536b;font-size:16px;font-weight:850}
 .spark-crop-grid aside{padding:16px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:12px;background:var(--spark-bg,#f7fafc)}
 .spark-crop-grid aside>strong{color:var(--spark-ink,#102a43);font-size:16px}.spark-crop-grid aside>p{color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.6}
