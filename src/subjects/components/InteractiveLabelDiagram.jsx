@@ -216,6 +216,66 @@ function HumanHeartTemplate() {
   );
 }
 
+function KidneyLongitudinalTemplate() {
+  return (
+    <g className="spark-diagram-kidney" aria-hidden="true">
+      <path className="kidney-outline" d="M500 75Q330 55 270 205Q220 355 315 485Q390 575 510 535Q585 510 600 430Q565 360 585 300Q600 245 650 195Q640 105 500 75Z" />
+      <path className="kidney-cortex" d="M480 112Q355 100 310 220Q275 340 345 455Q405 515 500 480Q535 458 545 410Q515 350 530 300Q545 250 585 205Q570 135 480 112Z" />
+      <g className="kidney-medulla">
+        <path d="M360 185L470 225L370 260Z" />
+        <path d="M340 285L475 305L355 350Z" />
+        <path d="M375 390L490 365L405 440Z" />
+      </g>
+      <path className="kidney-pelvis" d="M505 235Q605 290 515 390Q545 320 505 235Z" />
+      <path className="kidney-ureter" d="M565 345Q645 390 665 555" />
+      <path className="kidney-artery" d="M615 245H745" />
+      <path className="kidney-vein" d="M610 275H745" />
+      <text className="kidney-orientation" x="500" y="610" textAnchor="middle">longitudinal section through a kidney</text>
+    </g>
+  );
+}
+
+function NephronTemplate() {
+  return (
+    <g className="spark-diagram-nephron" aria-hidden="true">
+      <g transform="translate(265 165)">
+        <circle className="nephron-bowman" cx="0" cy="0" r="78" />
+        <path className="nephron-glomerulus" d="M-45-5q20-45 45-5q24-42 48 3q-20 45-45 10q-28 40-48-8Z" />
+        <path className="nephron-afferent" d="M-135-45H-65" />
+        <path className="nephron-efferent" d="M55-45H125" />
+      </g>
+      <path className="nephron-tubule" d="M342 170Q405 120 440 175Q470 225 420 260Q375 290 430 320Q485 350 450 395" />
+      <path className="nephron-loop" d="M450 395V515Q450 555 485 555Q520 555 520 515V345" />
+      <path className="nephron-distal" d="M520 345Q555 295 600 325Q640 355 610 395Q585 425 635 445" />
+      <path className="nephron-collecting" d="M665 150V560" />
+      <path className="nephron-join" d="M635 445Q650 450 665 440" />
+      <path className="nephron-urine-arrow" d="M665 530V590" />
+      <text className="nephron-urine-label" x="665" y="612" textAnchor="middle">urine</text>
+    </g>
+  );
+}
+
+function SkinSectionTemplate() {
+  return (
+    <g className="spark-diagram-skin" aria-hidden="true">
+      <path className="skin-surface" d="M180 105Q260 85 340 105Q420 125 500 105Q580 85 660 105Q740 125 820 105" />
+      <rect className="skin-epidermis" x="180" y="105" width="640" height="75" />
+      <rect className="skin-dermis" x="180" y="180" width="640" height="250" />
+      <rect className="skin-fat-layer" x="180" y="430" width="640" height="120" />
+      {[215,270,325,380,435,490,545,600,655,710,765].map((x,index)=><circle key={x} className="skin-fat-cell" cx={x} cy={475+(index%2)*38} r="21" />)}
+      <path className="skin-hair" d="M350 360L390 55" />
+      <ellipse className="skin-hair-follicle" cx="350" cy="365" rx="38" ry="24" transform="rotate(-8 350 365)" />
+      <path className="skin-sweat-gland" d="M620 375q-38-20 0-42q38-20 0-42q-38-20 0-42q38-20 0-42" />
+      <path className="skin-sweat-duct" d="M620 205V105" />
+      <circle className="skin-sweat-drop" cx="620" cy="72" r="14" />
+      <path className="skin-blood-vessel red" d="M230 310Q400 265 560 310T770 300" />
+      <path className="skin-blood-vessel blue" d="M230 345Q400 390 560 345T770 355" />
+      <path className="skin-nerve" d="M510 415Q500 350 530 290Q555 250 550 205" />
+      <text className="skin-orientation" x="500" y="605" textAnchor="middle">section through human skin</text>
+    </g>
+  );
+}
+
 function DiagramTemplate({ template }) {
   if (template === "plant-cell") return <PlantCellTemplate />;
   if (template === "animal-cell") return <AnimalCellTemplate />;
@@ -226,6 +286,9 @@ function DiagramTemplate({ template }) {
   if (template === "male-reproductive-system") return <MaleReproductiveTemplate />;
   if (template === "pregnancy-uterus") return <PregnancyUterusTemplate />;
   if (template === "human-heart") return <HumanHeartTemplate />;
+  if (template === "kidney-longitudinal") return <KidneyLongitudinalTemplate />;
+  if (template === "nephron") return <NephronTemplate />;
+  if (template === "skin-section") return <SkinSectionTemplate />;
   return (
     <g aria-hidden="true">
       <rect className="unknown-template" x="260" y="120" width="480" height="360" rx="28" />
