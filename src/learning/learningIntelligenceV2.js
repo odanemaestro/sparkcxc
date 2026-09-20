@@ -70,8 +70,13 @@ export function learningEvidenceFromSubjectEvent(event={}){
     const source=type;
     const itemId=event.paperId||event.topic||event.section||type;
     const weight=type.includes("paper2")?1.45:type.includes("paper1")?1.25:type.includes("checkpoint")?1.15:0.95;
+    const skill = type==="physics_paper1_exam"
+      ? "Physics :: Paper 1"
+      : type==="physics_paper2_exam"
+        ? "Physics :: Paper 2"
+        : physicsSkill(event);
     return {
-      subjectId:"physics",skill:physicsSkill(event),source,itemId:String(itemId),
+      subjectId:"physics",skill,source,itemId:String(itemId),
       observedScore:scored,correct:scored==null?null:scored>=0.6,evidenceWeight:weight,
       difficulty:event.difficulty||null,errorCode:event.errorCode||null,errorLabel:event.errorLabel||null,
       helpUsed:false,studentConfidence:event.studentConfidence??null,
@@ -104,8 +109,9 @@ export function learningEvidenceFromSubjectEvent(event={}){
 
   if(type==="it_paper1_exam"||type==="it_paper2_exam"){
     const itemId=event.paperId||event.paperTitle||type;
+    const skill=type==="it_paper1_exam" ? "Information Technology :: Paper 1" : "Information Technology :: Paper 2";
     return {
-      subjectId:"information-technology",skill:itSkill({...event,title:event.paperTitle||"Exam readiness"}),
+      subjectId:"information-technology",skill,
       source:type,itemId:String(itemId),observedScore:scored,correct:scored==null?null:scored>=0.6,
       evidenceWeight:type==="it_paper2_exam"?1.45:1.25,difficulty:null,
       evidenceKey:`${type}:${keyPart(itemId)}:${at}`,occurredAt:at,
