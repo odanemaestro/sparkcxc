@@ -14,6 +14,7 @@ import CropProductionExplorer from "./components/CropProductionExplorer";
 import SoilFertilityExplorer from "./components/SoilFertilityExplorer";
 import SoilErosionExplorer from "./components/SoilErosionExplorer";
 import AnimalAsexualReproductionExplorer from "./components/AnimalAsexualReproductionExplorer";
+import MenstrualCycleExplorer from "./components/MenstrualCycleExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -210,6 +211,9 @@ function GenericLessonContent({
         }
         if (model?.type === "animal-asexual-reproduction") {
           return <AnimalAsexualReproductionExplorer key={model.id || "animal-asexual-reproduction"} />;
+        }
+        if (model?.type === "menstrual-cycle") {
+          return <MenstrualCycleExplorer key={model.id || "menstrual-cycle"} />;
         }
         return null;
       })}
