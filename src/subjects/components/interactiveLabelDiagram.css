@@ -214,3 +214,15 @@ body[data-theme="dark"] .spark-label-diagram-actions button:disabled,
 @media(max-width:560px){
   .spark-diagram-reproductive .repro-orientation{font-size:20px}
 }
+
+
+/* SPARK_PREGNANCY_UTERUS_TEMPLATE_V1 */
+.spark-diagram-pregnancy .pregnancy-uterus-wall{fill:#e8a7b3;stroke:#965565;stroke-width:8}
+.spark-diagram-pregnancy .pregnancy-amnion{fill:#d9eef8;fill-opacity:.78;stroke:#6e9eb6;stroke-width:5}
+.spark-diagram-pregnancy .pregnancy-placenta{fill:#b9606f;stroke:#7d3f4b;stroke-width:5}
+.spark-diagram-pregnancy .pregnancy-umbilical{fill:none;stroke:#7f6599;stroke-width:12;stroke-linecap:round}
+.spark-diagram-pregnancy .pregnancy-foetus circle{fill:#efc2a4;stroke:#9b694e;stroke-width:4}
+.spark-diagram-pregnancy .pregnancy-foetus path{fill:#efc2a4;stroke:#9b694e;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.spark-diagram-pregnancy .pregnancy-cervix{fill:#d48696;stroke:#8e4c5b;stroke-width:5}
+.spark-diagram-pregnancy .pregnancy-vagina{fill:#e7a7b2;stroke:#965565;stroke-width:5}
+.spark-diagram-pregnancy .pregnancy-fluid-marker{fill:#7bbbd8;opacity:.75}
