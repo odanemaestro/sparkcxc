@@ -26,6 +26,7 @@ import BloodGroupExplorer from "./components/BloodGroupExplorer";
 import ExcretionEgestionExplorer from "./components/ExcretionEgestionExplorer";
 import HumanExcretionMechanismsExplorer from "./components/HumanExcretionMechanismsExplorer";
 import PlantExcretionExplorer from "./components/PlantExcretionExplorer";
+import SenseOrgansExplorer from "./components/SenseOrgansExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -258,6 +259,9 @@ function GenericLessonContent({
         }
         if (model?.type === "plant-excretion") {
           return <PlantExcretionExplorer key={model.id || "plant-excretion"} />;
+        }
+        if (model?.type === "sense-organs") {
+          return <SenseOrgansExplorer key={model.id || "sense-organs"} />;
         }
         return null;
       })}
