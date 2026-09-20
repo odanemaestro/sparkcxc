@@ -54,6 +54,7 @@ import TeethFunctionExplorer from "./components/TeethFunctionExplorer";
 import RespirationImportanceExplorer from "./components/RespirationImportanceExplorer";
 import AnaerobicRespirationExplorer from "./components/AnaerobicRespirationExplorer";
 import BreathingMechanismExplorer from "./components/BreathingMechanismExplorer";
+import GaseousExchangeExplorer from "./components/GaseousExchangeExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -370,6 +371,9 @@ function GenericLessonContent({
         }
         if (model?.type === "breathing-mechanism") {
           return <BreathingMechanismExplorer key={model.id || "breathing-mechanism"} />;
+        }
+        if (model?.type === "gaseous-exchange") {
+          return <GaseousExchangeExplorer key={model.id || "gaseous-exchange"} />;
         }
         return null;
       })}
