@@ -17,7 +17,9 @@ export default function ParentOverviewIntelligence({
   learnerModel,
   onOpenReport,
 }) {
-  const priorities = learnerModel?.hasEvidence ? learnerModel.prioritySkills?.slice(0, 3) || [] : [];
+  const mathematicsModel = learnerModel?.subjects?.mathematics || null;
+  const priorities = mathematicsModel?.hasEvidence ? mathematicsModel.prioritySkills?.slice(0, 3) || [] : [];
+  const readiness = mathematicsModel?.readiness || null;
 
   return (
     <div className="spark-parent-intelligence">
@@ -37,9 +39,10 @@ export default function ParentOverviewIntelligence({
 
       {priorities.length > 0 && <Card className="spark-parent-learner-model-card">
         <div className="spark-card-heading-row"><div><span className="section-kicker">LEARNER MODEL</span><h3>What SPARK is seeing</h3></div><span className="spark-model-explainer">Based on recent learning activity</span></div>
+        {readiness && <div className="spark-parent-readiness-summary"><span>Estimated exam readiness</span><strong>{readiness.score}%</strong><small>{readiness.label} · {readiness.confidence}% model confidence</small></div>}
         <div className="spark-parent-learner-list">{priorities.map(item => <div key={item.skill} className="spark-parent-learner-row">
-          <div><strong>{item.skill}</strong><span>{item.confidenceLabel} confidence · {item.trendLabel}{item.commonError ? ` · Recurring issue: ${item.commonError.label}` : ""}</span></div>
-          <strong>{item.mastery}%</strong>
+          <div><strong>{item.skill}</strong><span>{item.confidenceLabel} model confidence · {item.retention}% retention · {item.trendLabel}{item.commonError ? ` · Recurring issue: ${item.commonError.label}` : ""}</span></div>
+          <strong>{item.effectiveMastery}%</strong>
         </div>)}</div>
         <p className="spark-model-recommendation">Next priority: {priorities[0].recommendation}</p>
       </Card>}
