@@ -61,6 +61,55 @@ function why(focus,type){
   return reasons;
 }
 
+function routeTargetForAction(subjectId,type,focus){
+  const raw=String(focus?.rawSkill||focus?.skill||"");
+  if(subjectId==="physics"){
+    const match=raw.match(/\b([A-E])(\d+)\b/i);
+    if(!match) return null;
+    const section=match[1].toUpperCase();
+    const topic=`${section}${match[2]}`;
+    if(["lesson","lab"].includes(type)){
+      return {
+        path:`/study/physics/section/${section}`,
+        params:{topic,mode:type==="lab"?"labs":"study"},
+      };
+    }
+    if(["targeted_practice","checkpoint","exam_question"].includes(type)){
+      return {
+        path:`/practice/physics/section/${section}`,
+        params:{
+          topic,
+          mode:type==="checkpoint"?"checkpoint":type==="exam_question"?"structured":"topic",
+        },
+      };
+    }
+  }
+
+  if(subjectId==="information-technology"){
+    if(type==="sba_guide") return {path:"/practice/information-technology/sba",params:{}};
+    if(type==="lab"){
+      const value=raw.toLowerCase();
+      const labId=value.includes("spreadsheet")?"spreadsheet"
+        :value.includes("database")?"database"
+        :value.includes("word")?"word-processing"
+        :value.includes("presentation")?"presentation"
+        :value.includes("web")?"web-design"
+        :value.includes("program")?"programming"
+        :null;
+      if(labId) return {path:`/study/information-technology/labs/${labId}`,params:{}};
+    }
+  }
+
+  if(subjectId==="mathematics" && ["targeted_practice","checkpoint","exam_question"].includes(type)){
+    return {
+      path:"/practice/mathematics",
+      params:{mode:"adaptive",skill:focus?.skill||null},
+    };
+  }
+
+  return null;
+}
+
 function preferredTypes(focus,subjectId){
   if(!focus) return ["baseline"];
   if((focus.evidenceCount||0)<2 || (focus.modelConfidence??focus.confidence??0)<25) return ["baseline","lesson","targeted_practice"];
@@ -112,9 +161,12 @@ export function buildNextBestAction({
     prerequisite_risk: clamp(focus?.prerequisiteRisk ?? 0),
     misconception_signal: focus?.commonError ? 1 : 0,
   };
+  const target=routeTargetForAction(subjectId,selected.type,focus);
   return {
     ...selected,
     featureVector,
+    targetPath:target?.path||null,
+    targetParams:target?.params||null,
     actionKey:`${subjectId}:${selected.type}:${String(focus?.rawSkill||focus?.skill||"baseline").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")}`,
     title:focus?.skill? `${selected.label}: ${focus.skill}` : selected.label,
     reasons,
