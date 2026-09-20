@@ -343,3 +343,20 @@ body[data-theme="dark"] .spark-label-diagram-actions button:disabled,
 @media(max-width:560px){
   .spark-diagram-endocrine .endo-inset-label{font-size:19px}
 }
+
+
+/* SPARK_HUMAN_DIGESTIVE_TEMPLATE_V1 */
+.spark-diagram-digestive .digestive-head{fill:#e3b79a;stroke:#9b6a4e;stroke-width:5}
+.spark-diagram-digestive .digestive-body{fill:#eef3f6;stroke:#758b9b;stroke-width:6}
+.spark-diagram-digestive .digestive-mouth{fill:none;stroke:#9d5a58;stroke-width:6;stroke-linecap:round}
+.spark-diagram-digestive .digestive-oesophagus{fill:none;stroke:#c98774;stroke-width:14;stroke-linecap:round}
+.spark-diagram-digestive .digestive-stomach{fill:#dfa68a;stroke:#9d6249;stroke-width:5}
+.spark-diagram-digestive .digestive-liver{fill:#a86358;stroke:#70453e;stroke-width:5}
+.spark-diagram-digestive .digestive-gall{fill:#7da05a;stroke:#4f6f36;stroke-width:4}
+.spark-diagram-digestive .digestive-pancreas{fill:#d8ad64;stroke:#92703a;stroke-width:4}
+.spark-diagram-digestive .digestive-small{fill:none;stroke:#d99b7d;stroke-width:18;stroke-linecap:round;stroke-linejoin:round}
+.spark-diagram-digestive .digestive-large{fill:none;stroke:#a97b5d;stroke-width:24;stroke-linecap:round;stroke-linejoin:round}
+.spark-diagram-digestive .digestive-rectum{stroke:#9a6a50;stroke-width:16;stroke-linecap:round}
+@media(max-width:560px){
+  .spark-diagram-digestive .repro-orientation{font-size:19px}
+}
