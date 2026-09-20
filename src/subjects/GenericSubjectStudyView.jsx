@@ -19,6 +19,7 @@ import PregnancyStagesExplorer from "./components/PregnancyStagesExplorer";
 import BirthControlExplorer from "./components/BirthControlExplorer";
 import MaternalBabyCareExplorer from "./components/MaternalBabyCareExplorer";
 import HumanGrowthExplorer from "./components/HumanGrowthExplorer";
+import PopulationGrowthExplorer from "./components/PopulationGrowthExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -230,6 +231,9 @@ function GenericLessonContent({
         }
         if (model?.type === "human-growth") {
           return <HumanGrowthExplorer key={model.id || "human-growth"} />;
+        }
+        if (model?.type === "population-growth") {
+          return <PopulationGrowthExplorer key={model.id || "population-growth"} />;
         }
         return null;
       })}
