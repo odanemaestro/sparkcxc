@@ -184,18 +184,61 @@ function preferV2Rows(rows = []) {
 
 function readinessForSubject(states = []) {
   const withEvidence = states.filter(item => item.evidenceCount > 0 || item.modelConfidence > 0);
-  if (!withEvidence.length) return { score:0, confidence:0, breadth:0, label:"Building baseline" };
-  const mastery = withEvidence.reduce((sum,item)=>sum+item.effectiveMastery,0)/withEvidence.length;
+  if (!withEvidence.length) {
+    return {
+      score:0, confidence:0, breadth:0, label:"Building baseline",
+      components:{ knowledge:0, retention:0, paper1:null, paper2:null, consistency:0, breadth:0 },
+    };
+  }
+
+  const exam1 = withEvidence.find(item => /\bpaper\s*1\b/i.test(item.skill));
+  const exam2 = withEvidence.find(item => /\bpaper\s*2\b/i.test(item.skill));
+  const knowledgeRows = withEvidence.filter(item => !/\bpaper\s*[12]\b/i.test(item.skill));
+  const basis = knowledgeRows.length ? knowledgeRows : withEvidence;
+  const knowledge = basis.reduce((sum,item)=>sum+item.effectiveMastery,0)/basis.length;
   const confidence = withEvidence.reduce((sum,item)=>sum+item.modelConfidence,0)/withEvidence.length;
-  const retention = withEvidence.reduce((sum,item)=>sum+item.retention,0)/withEvidence.length;
-  const improving = withEvidence.filter(item=>item.trendLabel==="Improving").length/withEvidence.length*100;
-  const breadth = Math.min(100, withEvidence.length * 8);
-  const score = Math.round(mastery*0.55 + confidence*0.15 + retention*0.15 + improving*0.10 + breadth*0.05);
+  const retention = basis.reduce((sum,item)=>sum+item.retention,0)/basis.length;
+  const now = Date.now();
+  const recent = basis.filter(item => {
+    const value = item.lastPractisedAt ? new Date(item.lastPractisedAt).getTime() : NaN;
+    return Number.isFinite(value) && now-value <= 14*86400000;
+  }).length;
+  const consistency = basis.length ? Math.round(recent/basis.length*100) : 0;
+  const breadth = Math.min(100, basis.length * 8);
+  const paper1 = exam1?.effectiveMastery ?? null;
+  const paper2 = exam2?.effectiveMastery ?? null;
+
+  // A missing full-paper result is not treated as mastery. We use a conservative
+  // fraction of current knowledge until SPARK has direct exam evidence.
+  const paper1Contribution = paper1 == null ? knowledge*0.60 : paper1;
+  const paper2Contribution = paper2 == null ? knowledge*0.60 : paper2;
+
+  const score = Math.round(
+    knowledge*0.35 +
+    retention*0.15 +
+    confidence*0.10 +
+    paper1Contribution*0.125 +
+    paper2Contribution*0.125 +
+    consistency*0.10 +
+    breadth*0.05
+  );
+  const evidenceConfidence = Math.round(Math.min(100,
+    confidence*0.65 + (paper1 != null ? 15 : 0) + (paper2 != null ? 15 : 0) + Math.min(5,basis.length)*1
+  ));
+
   return {
     score,
-    confidence:Math.round(confidence),
+    confidence:evidenceConfidence,
     breadth:Math.round(breadth),
     label:score>=80?"Strong":score>=65?"Developing well":score>=45?"Building":"Needs attention",
+    components:{
+      knowledge:Math.round(knowledge),
+      retention:Math.round(retention),
+      paper1:paper1 == null ? null : Math.round(paper1),
+      paper2:paper2 == null ? null : Math.round(paper2),
+      consistency,
+      breadth:Math.round(breadth),
+    },
   };
 }
 
