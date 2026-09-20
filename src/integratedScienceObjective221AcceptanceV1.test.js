@@ -64,7 +64,7 @@ describe("Integrated Science Objective 2.2.1 acceptance audit", () => {
     expect(migration).toContain("Benedict''s solution");
     expect(migration).toContain("Biuret reagent");
     expect(migration).toContain("grease-spot test");
-    expect(explorer).toContain("Brick-red");
+    expect(explorer).toContain("brick-red");
     expect(explorer).toContain("Purple or lilac");
     expect(explorer).toContain("Persistent translucent grease spot");
   });
