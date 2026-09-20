@@ -76,6 +76,7 @@ import StudyCirclesPanel from "./components/studyCircles/StudyCirclesPanel";
 import NotificationCenter from "./components/notifications/NotificationCenter";
 import FlashcardsPanel from "./components/learning/FlashcardsPanel";
 import SubjectDashboardOverview from "./components/learning/SubjectDashboardOverview";
+import LearnerIntelligencePanel from "./components/learning/LearnerIntelligencePanel";
 import SubjectProgressDetail from "./components/learning/SubjectProgressDetail";
 import AllSubjectsProgress from "./components/learning/AllSubjectsProgress";
 import StudentGoalCard from "./components/learning/StudentGoalCard";
@@ -87,6 +88,7 @@ import ProgressReportModal from "./components/reports/ProgressReportModal";
 import SparkRewardsPanel from "./components/rewards/SparkRewardsPanel"; // SPARK_V570_REWARDS
 import { buildLearningSummary } from "./insights/progressAnalytics";
 import { buildLearnerModelProfile, learnerModelWeakSkills } from "./learning/learnerModel";
+import { fetchLearningActionEffectiveness, recordMathematicsLearningEvidenceV2 } from "./learning/learningIntelligenceV2";
 import { friendlyErrorMessage } from "./lib/errorMessages";
 import { computeStudyStreak } from "./lib/studyStreak";
 import { getExamPerformanceStatus } from "./lib/examPerformance";
@@ -732,6 +734,21 @@ function QuizEngine({ topicName, userId, onBack, onComplete, showToast }) {
           console.warn("Could not update learner model from topic quiz:", learnerError);
         }
       });
+      recordMathematicsLearningEvidenceV2({
+        supabase,
+        skill: topicName,
+        source: "topic_quiz_v2",
+        itemId: q?.id || `topic-quiz-${qi}`,
+        observedScore: isCorrect ? 1 : 0,
+        correct: isCorrect,
+        evidenceWeight: 1,
+        difficulty: q?.difficulty || null,
+        errorCode: !isCorrect ? misconception?.code || null : null,
+        errorLabel: !isCorrect ? misconception?.label || null : null,
+        metadata: { topic: topicName, question_type: q?.type || "mcq", selected_index: optionIdx },
+        evidenceKey: `topic-quiz-v2:${q?.id || qi}:${occurredAt}`,
+        occurredAt,
+      }).catch(() => {});
     }
   };
 
@@ -3361,6 +3378,8 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   // SPARK_V5310_LEARNING_INTELLIGENCE
   const [studentSkills, setStudentSkills] = useState([]);
   const [studentLearnerStates, setStudentLearnerStates] = useState([]);
+  const [studentLearnerStatesV2, setStudentLearnerStatesV2] = useState([]);
+  const [learningActionEffectiveness, setLearningActionEffectiveness] = useState({});
   const [studentQuestionAttempts, setStudentQuestionAttempts] = useState([]);
   const [studentMilestones, setStudentMilestones] = useState([]);
   const [studentFlashcardProgress, setStudentFlashcardProgress] = useState([]);
@@ -3373,6 +3392,19 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   const [flashcardSubject, setFlashcardSubject] = useState(() => flashcardSubjectFromBrowserHash());
   const [subjectProgressRows, setSubjectProgressRows] = useState([]);
   const [subjectActivityEvents, setSubjectActivityEvents] = useState([]);
+
+  useEffect(() => {
+    const onLearnerIntelligenceUpdated = event => {
+      const row = event?.detail?.state;
+      if (!row || row.user_id !== user?.id) return;
+      setStudentLearnerStatesV2(current => {
+        const key = `${row.subject_id}::${row.skill}`;
+        return current.filter(item => `${item.subject_id}::${item.skill}` !== key).concat(row);
+      });
+    };
+    window.addEventListener("spark:learner-intelligence-updated", onLearnerIntelligenceUpdated);
+    return () => window.removeEventListener("spark:learner-intelligence-updated", onLearnerIntelligenceUpdated);
+  }, [user?.id]);
   const [subjectEnrollments, setSubjectEnrollments] = useState([]);
   const [subjectEnrollmentsLoaded, setSubjectEnrollmentsLoaded] = useState(false);
   const [subjectEnrollmentAvailable, setSubjectEnrollmentAvailable] = useState(null);
@@ -3650,6 +3682,11 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       .then(({data}) => setStudentSkills(data || []));
     supabase.from("spark_learner_skill_state").select("*").eq("user_id", user.id).order("mastery_probability", {ascending:true})
       .then(({data,error}) => { if (!error) setStudentLearnerStates(data || []); });
+    supabase.from("spark_learning_skill_state_v2").select("*").eq("user_id", user.id).order("priority_score", {ascending:false})
+      .then(({data,error}) => { if (!error) setStudentLearnerStatesV2(data || []); });
+    fetchLearningActionEffectiveness({ supabase, userId:user.id })
+      .then(data => setLearningActionEffectiveness(data || {}))
+      .catch(() => {});
     supabase.from("csec_question_attempts").select("id,correct,attempted_at,skill").eq("user_id", user.id).order("attempted_at", {ascending:false}).limit(500)
       .then(({data}) => setStudentQuestionAttempts(data || []));
     supabase.from("learning_milestones").select("id,event_type,title,score,max_score,percent,skill,lesson_id,metadata,created_at").eq("user_id", user.id).order("created_at", {ascending:false}).limit(80)
@@ -3971,7 +4008,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     flashcardProgress: studentFlashcardProgress,
     goal: studentGoal,
   });
-  const studentLearnerModel = buildLearnerModelProfile(studentLearnerStates);
+  const studentLearnerModel = buildLearnerModelProfile([...studentLearnerStates, ...studentLearnerStatesV2]);
   const studentReportData = {
     skills: studentSkills,
     questionAttempts: studentQuestionAttempts,
@@ -3999,12 +4036,15 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     mathematicsMilestones: studentMilestones,
     subjects: studentEnrolledSubjects,
   });
-  const dashboardSubjectInsights = {
-    mathematics: studentLearnerModel?.hasEvidence && studentLearnerModel?.focus ? {
-      title: studentLearnerModel.focus.skill,
-      detail: studentLearnerModel.focus.recommendation,
-    } : null,
-  };
+  const dashboardSubjectInsights = Object.fromEntries(
+    ["mathematics","physics","information-technology"].map(subjectId => {
+      const focus = studentLearnerModel?.subjects?.[subjectId]?.focus || null;
+      return [subjectId, focus ? {
+        title: focus.skill,
+        detail: focus.recommendation,
+      } : null];
+    })
+  );
   const now = new Date();
   const upcomingSessions = bookings.filter(b => { const status = bookingDisplayStatus(b); return status === "pending" || status === "confirmed"; });
   // A session becomes completed only after its actual end time has passed. The database
@@ -4291,6 +4331,28 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
               onOpenReport={() => { setStudentReportSubject("all"); setStudentReportOpen(true); }}
               subjectInsights={dashboardSubjectInsights}
               onManageSubjects={() => setDashboardSection("subjects")}
+            />
+            <LearnerIntelligencePanel
+              userId={user.id}
+              supabase={supabase}
+              learnerModel={studentLearnerModel}
+              actionEffectiveness={learningActionEffectiveness}
+              onNavigate={action => {
+                if (action?.route === "flashcards") {
+                  setDashboardSection("flashcards");
+                  setFlashcardSubjectRoute(action.subjectId || "mathematics");
+                  return;
+                }
+                if (action?.subjectId === "physics") {
+                  setView(action?.route === "practice" ? "practice-physics" : "physics");
+                  return;
+                }
+                if (action?.subjectId === "information-technology") {
+                  setView(action?.route === "practice" ? "practice-information-technology" : "information-technology");
+                  return;
+                }
+                setView(action?.route === "study" ? "lesson" : "practice-math");
+              }}
             />
             <StudentGoalCard
               userId={user.id}
