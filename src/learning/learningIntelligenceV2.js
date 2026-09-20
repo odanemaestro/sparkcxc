@@ -27,6 +27,28 @@ export function learningEvidenceFromSubjectEvent(event={}){
   const at=event.at||event.completedAt||nowIso();
   const scored=scoreFromEvent(event);
 
+  if(type==="physics_question_evidence"){
+    const itemId=event.itemId||event.questionId||"physics-question";
+    const observedScore=scoreFromEvent(event);
+    return {
+      subjectId:"physics",
+      skill:physicsSkill(event),
+      source:"physics_question",
+      itemId:String(itemId),
+      observedScore,
+      correct:observedScore==null?null:observedScore>=0.999,
+      evidenceWeight:Number(event.evidenceWeight||0.85),
+      difficulty:event.difficulty||null,
+      errorCode:event.errorCode||null,
+      errorLabel:event.errorLabel||null,
+      helpUsed:Boolean(event.helpUsed),
+      studentConfidence:event.studentConfidence??null,
+      evidenceKey:`physics-question:${keyPart(itemId)}:${at}`,
+      occurredAt:at,
+      metadata:{...event,source_event:type},
+    };
+  }
+
   if(type==="physics_lab_evidence"){
     const itemId=event.interactiveId||event.lab||event.labId||event.objective||"physics-lab";
     const rawScore=Number(event.score);
