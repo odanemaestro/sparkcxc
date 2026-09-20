@@ -14,7 +14,7 @@ const NEW_PAGES = [
   { id: "contact", title: "Contact", path: "/contact", heading: "Contact the Club", body: "Get in touch with the school technology club." },
 ];
 
-export default function WebDesignLab({ lab, completed, onBack, onComplete }) {
+export default function WebDesignLab({ lab, completed, onBack, onComplete, onEvidence }) {
   const [tab, setTab] = useState("Design");
   const [pages, setPages] = useState([{ id: "home", title: "Home", path: "/", heading: "Technology Club", body: "Welcome to our technology club website." }]);
   const [selected, setSelected] = useState("home");
@@ -26,7 +26,7 @@ export default function WebDesignLab({ lab, completed, onBack, onComplete }) {
   const [preview, setPreview] = useState("desktop");
   const [report, setReport] = useState(null);
   const revision = useRef(0);
-  const { evidence, record } = useTaskEvidence();
+  const { evidence, record } = useTaskEvidence(onEvidence);
 
   const page = pages.find(item => item.id === selected) ?? pages[0];
   const livePage = pages.find(item => item.id === visited) ?? pages[0];
