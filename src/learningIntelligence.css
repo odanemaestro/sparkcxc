@@ -419,3 +419,36 @@ body[data-theme="dark"] .spark-flashcard-nav > button:disabled .spark-nav-arrow{
     min-width:96px !important;
   }
 }
+/* SPARK LEARNER INTELLIGENCE V2 PARENT READINESS */
+.spark-parent-readiness-summary{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:4px 14px;
+  align-items:center;
+  margin:14px 0 4px;
+  padding:12px 14px;
+  border:1px solid color-mix(in srgb,var(--spark-teal,#20c9b7) 28%,var(--spark-border,#d7e2ee));
+  border-radius:12px;
+  background:color-mix(in srgb,var(--spark-teal-light,#e7faf6) 40%,var(--spark-paper,#fff));
+}
+.spark-parent-readiness-summary>span{
+  color:var(--spark-ink-soft,#42566b);
+  font-size:12px;
+  font-weight:700;
+}
+.spark-parent-readiness-summary>strong{
+  grid-row:1/3;
+  grid-column:2;
+  align-self:center;
+  font-family:Georgia,serif;
+  font-size:23px;
+  color:var(--spark-teal-dark,#087f73);
+}
+.spark-parent-readiness-summary>small{
+  color:var(--spark-text-muted,#6b7c93);
+  font-size:10.5px;
+}
+html[data-theme="dark"] .spark-parent-readiness-summary,
+body[data-theme="dark"] .spark-parent-readiness-summary{
+  background:color-mix(in srgb,var(--spark-teal-light,#123d3a) 32%,var(--spark-paper,#102239));
+}
