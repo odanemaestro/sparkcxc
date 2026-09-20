@@ -35,6 +35,7 @@ import EndocrineSystemExplorer from "./components/EndocrineSystemExplorer";
 import MicrobeExplorer from "./components/MicrobeExplorer";
 import InfectiousDiseaseExplorer from "./components/InfectiousDiseaseExplorer";
 import ImmunisationExplorer from "./components/ImmunisationExplorer";
+import NonCommunicableDiseaseExplorer from "./components/NonCommunicableDiseaseExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -294,6 +295,9 @@ function GenericLessonContent({
         }
         if (model?.type === "immunisation") {
           return <ImmunisationExplorer key={model.id || "immunisation"} />;
+        }
+        if (model?.type === "non-communicable-disease") {
+          return <NonCommunicableDiseaseExplorer key={model.id || "non-communicable-disease"} />;
         }
         return null;
       })}
