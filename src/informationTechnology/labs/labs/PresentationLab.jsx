@@ -16,7 +16,7 @@ function SlideCanvas({ slide, theme, footer, heading = false }) {
   </article>;
 }
 
-export default function PresentationLab({ lab, completed, onBack, onComplete }) {
+export default function PresentationLab({ lab, completed, onBack, onComplete, onEvidence }) {
   const [tab, setTab] = useState("Home");
   const [slides, setSlides] = useState([FIRST_SLIDE]);
   const [selected, setSelected] = useState(1);
@@ -25,7 +25,7 @@ export default function PresentationLab({ lab, completed, onBack, onComplete }) 
   const [showMode, setShowMode] = useState(false);
   const [showIndex, setShowIndex] = useState(0);
   const [message, setMessage] = useState("Create and edit slides, then run the slide show to verify your presentation.");
-  const { evidence, record } = useTaskEvidence();
+  const { evidence, record } = useTaskEvidence(onEvidence);
   const slide = slides.find(item => item.id === selected) ?? slides[0];
   const proof = useMemo(() => presentationProof(slides, theme, footer), [slides, theme, footer]);
   const showSlide = slides[showIndex] ?? slides[0];
