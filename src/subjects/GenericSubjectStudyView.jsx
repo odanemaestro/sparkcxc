@@ -60,6 +60,7 @@ import FossilFuelsExplorer from "./components/FossilFuelsExplorer";
 import AlternativeEnergyExplorer from "./components/AlternativeEnergyExplorer";
 import ElectricalConductorsExplorer from "./components/ElectricalConductorsExplorer";
 import ElectricCircuitFlowExplorer from "./components/ElectricCircuitFlowExplorer";
+import ElectricityConsumptionExplorer from "./components/ElectricityConsumptionExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -394,6 +395,9 @@ function GenericLessonContent({
         }
         if (model?.type === "electric-circuit-flow") {
           return <ElectricCircuitFlowExplorer key={model.id || "electric-circuit-flow"} />;
+        }
+        if (model?.type === "electricity-consumption") {
+          return <ElectricityConsumptionExplorer key={model.id || "electricity-consumption"} />;
         }
         return null;
       })}
