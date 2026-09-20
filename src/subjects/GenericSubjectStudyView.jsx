@@ -36,6 +36,7 @@ import MicrobeExplorer from "./components/MicrobeExplorer";
 import InfectiousDiseaseExplorer from "./components/InfectiousDiseaseExplorer";
 import ImmunisationExplorer from "./components/ImmunisationExplorer";
 import NonCommunicableDiseaseExplorer from "./components/NonCommunicableDiseaseExplorer";
+import ExercisePhysiologyExplorer from "./components/ExercisePhysiologyExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -298,6 +299,9 @@ function GenericLessonContent({
         }
         if (model?.type === "non-communicable-disease") {
           return <NonCommunicableDiseaseExplorer key={model.id || "non-communicable-disease"} />;
+        }
+        if (model?.type === "exercise-physiology") {
+          return <ExercisePhysiologyExplorer key={model.id || "exercise-physiology"} />;
         }
         return null;
       })}
