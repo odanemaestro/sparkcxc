@@ -327,6 +327,23 @@ function MammalianEarTemplate() {
   );
 }
 
+function HumanBrainTemplate() {
+  return (
+    <g className="spark-diagram-brain" aria-hidden="true">
+      <path className="brain-cerebrum" d="M285 135Q350 65 470 72Q590 55 690 120Q770 178 758 280Q748 365 680 405Q610 440 540 420Q470 455 390 425Q300 390 270 320Q235 235 285 135Z" />
+      <path className="brain-cerebrum-fold" d="M330 145Q385 110 430 145M430 100Q490 130 535 100M545 135Q610 100 655 145M315 220Q385 185 435 220M480 190Q550 230 620 195M330 295Q390 260 450 300M500 280Q575 315 650 270" />
+      <path className="brain-cerebellum" d="M565 350Q650 320 720 365Q755 405 720 450Q665 490 585 455Q545 420 565 350Z" />
+      <path className="brain-brainstem" d="M505 345Q545 340 575 372Q570 425 595 472L550 510Q505 470 490 405Z" />
+      <path className="brain-medulla" d="M520 390Q555 388 570 415L582 470L548 500Q515 462 508 425Z" />
+      <path className="brain-spinal-cord" d="M550 492Q570 525 568 610" />
+      <path className="brain-hypothalamus" d="M465 318Q500 292 535 322Q525 350 495 360Q468 350 465 318Z" />
+      <circle className="brain-pituitary" cx="500" cy="383" r="20" />
+      <path className="brain-pituitary-stalk" d="M500 355V365" />
+      <text className="repro-orientation" x="500" y="635" textAnchor="middle">simplified side view of the human brain</text>
+    </g>
+  );
+}
+
 function DiagramTemplate({ template }) {
   if (template === "plant-cell") return <PlantCellTemplate />;
   if (template === "animal-cell") return <AnimalCellTemplate />;
@@ -338,6 +355,7 @@ function DiagramTemplate({ template }) {
   if (template === "pregnancy-uterus") return <PregnancyUterusTemplate />;
   if (template === "mammalian-eye") return <MammalianEyeTemplate />;
   if (template === "mammalian-ear") return <MammalianEarTemplate />;
+  if (template === "human-brain") return <HumanBrainTemplate />;
   if (template === "human-heart") return <HumanHeartTemplate />;
   if (template === "kidney-longitudinal") return <KidneyLongitudinalTemplate />;
   if (template === "nephron") return <NephronTemplate />;
