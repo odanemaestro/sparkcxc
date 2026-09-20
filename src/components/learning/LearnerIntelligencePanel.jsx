@@ -97,7 +97,10 @@ export default function LearnerIntelligencePanel({
               <div key={subjectId}>
                 <span>{subjectLabel(subjectId)}</span>
                 <strong>{row.score}%</strong>
-                <small>{row.label} · {row.confidence}% model confidence</small>
+                <small>
+                  {row.label} · {row.confidence}% evidence confidence
+                  {row.components ? ` · Knowledge ${row.components.knowledge}% · Retention ${row.components.retention}% · ${row.components.paper1 == null ? "Paper 1 needed" : `P1 ${row.components.paper1}%`} · ${row.components.paper2 == null ? "Paper 2 needed" : `P2 ${row.components.paper2}%`}` : ""}
+                </small>
               </div>
             )) : <p>SPARK needs more assessment evidence before estimating readiness.</p>}
           </div>
