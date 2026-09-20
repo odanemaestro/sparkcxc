@@ -344,6 +344,42 @@ function HumanBrainTemplate() {
   );
 }
 
+function EndocrineSystemTemplate() {
+  return (
+    <g className="spark-diagram-endocrine" aria-hidden="true">
+      <circle className="endo-head" cx="500" cy="100" r="62" />
+      <path className="endo-body" d="M425 175Q500 145 575 175Q625 250 605 365Q590 455 555 560H445Q410 455 395 365Q375 250 425 175Z" />
+      <path className="endo-arm" d="M420 220Q330 285 305 400M580 220Q670 285 695 400" />
+      <path className="endo-leg" d="M460 555Q430 605 415 635M540 555Q570 605 585 635" />
+
+      <circle className="endo-pituitary" cx="500" cy="112" r="12" />
+      <path className="endo-thyroid" d="M475 190Q490 175 500 192Q510 175 525 190Q525 218 500 225Q475 218 475 190Z" />
+
+      <path className="endo-kidney left" d="M430 330Q400 315 392 350Q390 395 425 405Q447 390 442 355Q440 340 430 330Z" />
+      <path className="endo-kidney right" d="M570 330Q600 315 608 350Q610 395 575 405Q553 390 558 355Q560 340 570 330Z" />
+      <path className="endo-adrenal left" d="M400 322Q418 295 438 320Z" />
+      <path className="endo-adrenal right" d="M562 320Q582 295 600 322Z" />
+
+      <path className="endo-pancreas" d="M430 425Q500 395 570 425Q535 458 465 455Q440 450 430 425Z" />
+
+      <g className="endo-ovaries">
+        <ellipse cx="455" cy="505" rx="18" ry="13" />
+        <ellipse cx="545" cy="505" rx="18" ry="13" />
+        <path d="M473 505Q500 485 527 505" />
+      </g>
+
+      <g className="endo-testes-inset" transform="translate(745 455)">
+        <rect className="endo-inset-box" x="-55" y="-45" width="120" height="130" rx="16" />
+        <ellipse cx="-10" cy="25" rx="20" ry="28" />
+        <ellipse cx="25" cy="25" rx="20" ry="28" />
+        <text className="endo-inset-label" x="5" y="70" textAnchor="middle">testes</text>
+      </g>
+
+      <text className="repro-orientation" x="500" y="660" textAnchor="middle">major endocrine glands</text>
+    </g>
+  );
+}
+
 function DiagramTemplate({ template }) {
   if (template === "plant-cell") return <PlantCellTemplate />;
   if (template === "animal-cell") return <AnimalCellTemplate />;
@@ -356,6 +392,7 @@ function DiagramTemplate({ template }) {
   if (template === "mammalian-eye") return <MammalianEyeTemplate />;
   if (template === "mammalian-ear") return <MammalianEarTemplate />;
   if (template === "human-brain") return <HumanBrainTemplate />;
+  if (template === "endocrine-system") return <EndocrineSystemTemplate />;
   if (template === "human-heart") return <HumanHeartTemplate />;
   if (template === "kidney-longitudinal") return <KidneyLongitudinalTemplate />;
   if (template === "nephron") return <NephronTemplate />;
