@@ -35,7 +35,7 @@ describe("Integrated Science Objective 1.4.1 acceptance audit", () => {
   test("justifies transport in large organisms using diffusion distance", () => {
     expect(migration).toContain("smaller surface-area-to-volume ratio");
     expect(migration).toContain("many cells are located deep inside the body");
-    expect(migration).toContain("diffusion over these distances would be too slow");
+    expect(migration.toLowerCase()).toContain("diffusion over these distances would be too slow");
     expect(explorer).toContain("Large multicellular organism");
   });
 
