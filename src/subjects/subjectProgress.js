@@ -286,7 +286,12 @@ export async function recordSubjectActivity({ supabase, activity, silent = false
       activityType,
       activityKey,
       percent: activity.percent,
-      metadata: activity.metadata || {},
+      metadata:{
+        ...(activity.metadata || {}),
+        topic_id:activity.topicId ?? activity.topic_id ?? null,
+        section_id:activity.sectionId ?? activity.section_id ?? null,
+        activity_key:activityKey,
+      },
     }).then(({ error }) => {
       if (error && !["PGRST202", "42P01", "42883"].includes(error.code)) {
         console.warn("Could not observe SPARK recommendation outcome", error);

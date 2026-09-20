@@ -15,6 +15,12 @@ import { INFORMATION_TECHNOLOGY_PRACTICAL_LABS } from "../informationTechnology/
 import { IT_SBA_PROJECTS } from "../informationTechnology/practice/itSbaProjects";
 import { recommendedDeckIdsForSkills } from "./flashcards";
 import { writeSparkNestedRoute } from "../routing/sparkRoutingV270";
+import {
+  LEARNING_LOOP_VERSION,
+  championLearningStrategy,
+  normalizeLearningStrategyAssignment,
+  strategyAdjustmentForCandidate,
+} from "./learningStrategyV3";
 
 export const NEXT_BEST_ACTION_VERSION = "spark-next-best-action-v2.0";
 
@@ -151,6 +157,7 @@ function mathAdaptiveTarget(skill) {
     kind: "practice",
     label: `${skill} targeted practice`,
     exact: true,
+    outcomeScope:{ skill },
   };
 }
 
@@ -190,6 +197,7 @@ function physicsTarget(skill, actionType) {
       kind: "section_checkpoint",
       label: `${section} checkpoint`,
       exact: Boolean(topicId),
+      outcomeScope:{ sectionId:section },
     };
   }
 
@@ -202,6 +210,7 @@ function physicsTarget(skill, actionType) {
       kind: "topic_quiz",
       label: topicId ? `${topicId} topic practice` : `${section} topic practice`,
       exact: Boolean(topicId),
+      outcomeScope:topicId ? { topicId, sectionId:section } : { sectionId:section },
     };
   }
 
@@ -219,6 +228,7 @@ function physicsTarget(skill, actionType) {
     kind: actionType === "lab" ? "lab" : actionType === "flashcards" ? "flashcard_review" : "lesson",
     label: topic?.title ? `${topic.id} ${topic.title}` : topicId || `Section ${section}`,
     exact: Boolean(topicId),
+    outcomeScope:topicId ? { topicId, sectionId:section } : { sectionId:section },
   };
 }
 
@@ -252,6 +262,7 @@ function itBroadProfileTarget(skill, actionType) {
       exact:false,
       broadProfile:true,
       expectedMinutes:120,
+      outcomeScope:{ activityKeyPrefix:"paper2:" },
     };
   }
 
@@ -339,6 +350,7 @@ function itTarget(skill, actionType, sourceRows = []) {
       kind: "sba_review",
       label: `${componentId.replace(/-/g, " ")} SBA reference`,
       exact: true,
+      outcomeScope:{ activityKeyPrefix:`sba:${projectId}:${componentId}` },
     };
   }
 
@@ -353,6 +365,7 @@ function itTarget(skill, actionType, sourceRows = []) {
         kind: "lab",
         label: lab.title,
         exact: true,
+        outcomeScope:{ activityKeyPrefix:`lab:${lab.id}` },
       };
     }
   }
@@ -366,6 +379,7 @@ function itTarget(skill, actionType, sourceRows = []) {
       kind:"exam",
       label:"Information Technology Paper 01 practice",
       exact:true,
+      outcomeScope:{ activityKeyPrefix:"paper1:" },
     };
   }
 
@@ -396,6 +410,7 @@ function itTarget(skill, actionType, sourceRows = []) {
       kind: actionType === "targeted_practice" || actionType === "baseline" ? "practice" : "lesson",
       label: `${topic.title} | ${step === "practice" ? "Practise it" : "Learn"}`,
       exact: true,
+      outcomeScope:{ topicId:String(topic.id), sectionId:String(topic.section) },
     };
   }
 
@@ -672,9 +687,15 @@ function makeCandidate(subjectId, state, actionType, options = {}) {
 
   const historySignal = candidateHistoryAdjustment(candidate, options.history || [], options.now || new Date());
   const effectivenessSignal = effectivenessAdjustment(candidate, options.effectiveness || []);
-  candidate.score += historySignal.adjustment + effectivenessSignal.adjustment;
+  const strategySignal = strategyAdjustmentForCandidate(
+    candidate,
+    state,
+    options.strategyAssignment || championLearningStrategy()
+  );
+  candidate.score += historySignal.adjustment + effectivenessSignal.adjustment + strategySignal.adjustment;
   candidate.historySignal = historySignal;
   candidate.effectivenessSignal = effectivenessSignal;
+  candidate.strategySignal = strategySignal;
   candidate.score = Math.round(candidate.score * 10) / 10;
 
   if (historySignal.recentStart) {
@@ -768,9 +789,15 @@ function crossSubjectCandidate(subjectId, state, allSubjectIntelligence = {}, op
 
   const historySignal = candidateHistoryAdjustment(candidate, options.history || [], options.now || new Date());
   const effectivenessSignal = effectivenessAdjustment(candidate, options.effectiveness || []);
-  candidate.score = Math.round((candidate.score + historySignal.adjustment + effectivenessSignal.adjustment) * 10) / 10;
+  const strategySignal = strategyAdjustmentForCandidate(
+    candidate,
+    weakMath,
+    options.strategyAssignment || championLearningStrategy()
+  );
+  candidate.score = Math.round((candidate.score + historySignal.adjustment + effectivenessSignal.adjustment + strategySignal.adjustment) * 10) / 10;
   candidate.historySignal = historySignal;
   candidate.effectivenessSignal = effectivenessSignal;
+  candidate.strategySignal = strategySignal;
   return candidate;
 }
 
@@ -837,11 +864,16 @@ export function buildNextBestActionPlan({
   effectiveness = [],
   allSubjectIntelligence = {},
   sourceRows = [],
+  strategyAssignment = null,
   now = new Date(),
 } = {}) {
+  const strategy = normalizeLearningStrategyAssignment(strategyAssignment || championLearningStrategy());
+
   if (!intelligence?.hasEvidence) {
     return {
       version:NEXT_BEST_ACTION_VERSION,
+      learningLoopVersion:LEARNING_LOOP_VERSION,
+      strategy,
       primary:null,
       alternatives:[],
       candidates:[],
@@ -859,12 +891,12 @@ export function buildNextBestActionPlan({
   priorityStates.forEach((state, index) => {
     const statePenalty = index * 4;
     actionTypesForState(subjectId, state, { sourceRows }).forEach(actionType => {
-      const candidate = makeCandidate(subjectId, state, actionType, { history, effectiveness, sourceRows, now });
+      const candidate = makeCandidate(subjectId, state, actionType, { history, effectiveness, sourceRows, strategyAssignment:strategy, now });
       candidate.score -= statePenalty;
       candidates.push(candidate);
     });
 
-    const cross = crossSubjectCandidate(subjectId, state, allSubjectIntelligence, { history, effectiveness, now });
+    const cross = crossSubjectCandidate(subjectId, state, allSubjectIntelligence, { history, effectiveness, strategyAssignment:strategy, now });
     if (cross) {
       cross.score -= statePenalty;
       candidates.push(cross);
@@ -893,6 +925,8 @@ export function buildNextBestActionPlan({
 
   return {
     version:NEXT_BEST_ACTION_VERSION,
+    learningLoopVersion:LEARNING_LOOP_VERSION,
+    strategy,
     generatedAt:(now instanceof Date ? now : new Date(now)).toISOString(),
     primary,
     alternatives,
@@ -918,6 +952,7 @@ export function enhanceLearnerIntelligence(intelligence, options = {}) {
         }
       : intelligence.recommendation,
     nextBestActionPlan:plan,
+    learningStrategy:plan.strategy,
   };
 }
 

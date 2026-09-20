@@ -5,10 +5,25 @@
 // here must never block a lesson, lab, test or mark from being saved.
 // ============================================================================
 
+import {
+  championLearningStrategy,
+  normalizeLearningStrategyAssignment,
+  strategyMetadata,
+} from "./learningStrategyV3";
+
+function intelligenceStrategy(intelligence = {}) {
+  return normalizeLearningStrategyAssignment(
+    intelligence.learningStrategy ||
+    intelligence.nextBestActionPlan?.strategy ||
+    championLearningStrategy()
+  );
+}
+
 function safeHistoryRow(intelligence, id = null) {
   const recommendation = intelligence?.recommendation;
   if (!recommendation) return null;
   const now = new Date().toISOString();
+  const strategy = intelligenceStrategy(intelligence);
   return {
     id:id || `local-${Date.now()}`,
     subject_id:recommendation.subjectId || intelligence.subjectId,
@@ -19,7 +34,7 @@ function safeHistoryRow(intelligence, id = null) {
     reason:recommendation.detail || null,
     baseline_mastery:recommendation.baselineMastery ?? null,
     baseline_readiness:recommendation.readinessPercent ?? intelligence.metrics?.readinessPercent ?? null,
-    model_version:intelligence.version || "spark-next-best-action-v2.0",
+    model_version:intelligence.version || "spark-learning-loop-v3.0",
     status:"started",
     metadata:{
       recommendation_key:recommendation.recommendationKey || null,
@@ -29,8 +44,9 @@ function safeHistoryRow(intelligence, id = null) {
       expected_minutes:recommendation.expectedMinutes ?? null,
       why:recommendation.why || [],
       prerequisite_risks:recommendation.prerequisiteRisks || [],
-      phase:intelligence.nextBestActionPlan ? "next_best_action_v2" : "learner_intelligence_v2",
+      phase:intelligence.nextBestActionPlan ? "learning_loop_v3" : "learner_intelligence_v2",
       generated_at:intelligence.generatedAt || now,
+      ...strategyMetadata(strategy),
     },
     started_at:now,
     created_at:now,
@@ -44,6 +60,7 @@ export async function recordLearnerRecommendation({ supabase, intelligence } = {
     return { data:null, error:null, skipped:true, historyRow:null };
   }
 
+  const strategy = intelligenceStrategy(intelligence);
   const metadata = {
     why:recommendation.why || [],
     prerequisite_risks:recommendation.prerequisiteRisks || [],
@@ -53,8 +70,9 @@ export async function recordLearnerRecommendation({ supabase, intelligence } = {
     rank_score:recommendation.score ?? null,
     expected_minutes:recommendation.expectedMinutes ?? null,
     exact_target:Boolean(recommendation.exactTarget),
-    phase:intelligence.nextBestActionPlan ? "next_best_action_v2" : "learner_intelligence_v2",
+    phase:intelligence.nextBestActionPlan ? "learning_loop_v3" : "learner_intelligence_v2",
     generated_at:intelligence.generatedAt || new Date().toISOString(),
+    ...strategyMetadata(strategy),
   };
 
   try {
@@ -67,7 +85,7 @@ export async function recordLearnerRecommendation({ supabase, intelligence } = {
       p_reason:recommendation.detail || null,
       p_baseline_mastery:recommendation.baselineMastery ?? null,
       p_baseline_readiness:recommendation.readinessPercent ?? intelligence.metrics?.readinessPercent ?? null,
-      p_model_version:intelligence.version || "spark-next-best-action-v2.0",
+      p_model_version:intelligence.version || "spark-learning-loop-v3.0",
       p_metadata:metadata,
     });
 
@@ -119,6 +137,60 @@ export async function loadRecommendationEffectiveness({ supabase } = {}) {
   try {
     const { data, error } = await supabase.rpc("spark_recommendation_effectiveness_signal_v2");
     if (error && ["PGRST202","42883"].includes(error.code)) return { data:[], error:null, unavailable:true };
+    return { data:data || [], error };
+  } catch (error) {
+    return { data:[], error };
+  }
+}
+
+export async function loadLearningStrategyAssignments({
+  supabase,
+  subjectIds = [],
+} = {}) {
+  const ids = [...new Set((subjectIds || []).map(value => String(value || "").trim().toLowerCase()).filter(Boolean))];
+  if (!ids.length) return { data:{}, error:null, skipped:true };
+
+  const fallback = Object.fromEntries(ids.map(id => [id, championLearningStrategy()]));
+  if (!supabase?.rpc) return { data:fallback, error:null, skipped:true };
+
+  try {
+    const results = await Promise.all(ids.map(async subjectId => {
+      try {
+        const { data, error } = await supabase.rpc("spark_get_learning_strategy_assignment", {
+          p_subject_id:subjectId,
+        });
+        if (error) {
+          if (["PGRST202","42883","42P01"].includes(error.code)) {
+            return [subjectId, championLearningStrategy(), null];
+          }
+          return [subjectId, championLearningStrategy(), error];
+        }
+        const row = Array.isArray(data) ? data[0] : data;
+        return [subjectId, normalizeLearningStrategyAssignment(row || {}), null];
+      } catch (error) {
+        return [subjectId, championLearningStrategy(), error];
+      }
+    }));
+
+    const data = {};
+    let firstError = null;
+    results.forEach(([subjectId, assignment, error]) => {
+      data[subjectId] = assignment;
+      if (!firstError && error) firstError = error;
+    });
+    return { data, error:firstError };
+  } catch (error) {
+    return { data:fallback, error };
+  }
+}
+
+export async function loadLearningStrategyPerformance({ supabase } = {}) {
+  if (!supabase?.rpc) return { data:[], error:null, skipped:true };
+  try {
+    const { data, error } = await supabase.rpc("spark_learning_strategy_performance_signal_v3");
+    if (error && ["PGRST202","42883","42P01"].includes(error.code)) {
+      return { data:[], error:null, unavailable:true };
+    }
     return { data:data || [], error };
   } catch (error) {
     return { data:[], error };

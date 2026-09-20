@@ -85,12 +85,17 @@ import StudentSubjectEnrollment from "./components/learning/StudentSubjectEnroll
 import ParentSubjectGoalCard from "./components/learning/ParentSubjectGoalCard";
 import ParentOverviewIntelligence from "./components/learning/ParentOverviewIntelligence";
 import ProgressReportModal from "./components/reports/ProgressReportModal";
+import LearningEngineAdminPanel from "./components/admin/LearningEngineAdminPanel";
 import SparkRewardsPanel from "./components/rewards/SparkRewardsPanel"; // SPARK_V570_REWARDS
 import { buildLearningSummary } from "./insights/progressAnalytics";
 import { buildLearnerModelProfile, learnerModelWeakSkills } from "./learning/learnerModel";
 import { buildLearnerIntelligenceFromSkillStates, buildSubjectLearnerIntelligence } from "./learning/learnerIntelligenceV2";
 import { enhanceLearnerIntelligence, openNextBestActionTarget } from "./learning/nextBestActionV2";
-import { loadLearnerRecommendationHistory, loadRecommendationEffectiveness } from "./learning/learnerIntelligencePersistence";
+import {
+  loadLearnerRecommendationHistory,
+  loadRecommendationEffectiveness,
+  loadLearningStrategyAssignments,
+} from "./learning/learnerIntelligencePersistence";
 import { friendlyErrorMessage } from "./lib/errorMessages";
 import { computeStudyStreak } from "./lib/studyStreak";
 import { getExamPerformanceStatus } from "./lib/examPerformance";
@@ -3372,6 +3377,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   const [studentGoal, setStudentGoal] = useState(null);
   const [studentRecommendationHistory, setStudentRecommendationHistory] = useState([]);
   const [studentRecommendationEffectiveness, setStudentRecommendationEffectiveness] = useState([]);
+  const [studentLearningStrategyAssignments, setStudentLearningStrategyAssignments] = useState({});
   const [studentStudyCircle, setStudentStudyCircle] = useState({ active: false });
   const [studentReportOpen, setStudentReportOpen] = useState(false);
   const [studentReportSubject, setStudentReportSubject] = useState("all");
@@ -3671,6 +3677,12 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       .catch(() => {});
     loadRecommendationEffectiveness({ supabase })
       .then(({data,error}) => { if (!error) setStudentRecommendationEffectiveness(data || []); })
+      .catch(() => {});
+    loadLearningStrategyAssignments({
+      supabase,
+      subjectIds:["mathematics","physics","information-technology"],
+    })
+      .then(({data}) => setStudentLearningStrategyAssignments(data || {}))
       .catch(() => {});
     // Reports expose only a privacy-safe Study Circle participation summary.
     // The full Study Circle board/member data stays inside the Circles feature.
@@ -4024,6 +4036,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       effectiveness:studentRecommendationEffectiveness,
       allSubjectIntelligence:studentBaseIntelligenceBySubject,
       sourceRows:mergedSubjectProgressRows,
+      strategyAssignment:studentLearningStrategyAssignments[subject.id],
     }),
   ]));
   const studentMathIntelligence = studentIntelligenceBySubject.mathematics || studentMathBaseIntelligence;
@@ -5604,6 +5617,8 @@ function AdminView({ showToast, adminUserId }) {
           ))}
         </Card>
       </div>
+
+      <LearningEngineAdminPanel supabase={supabase} showToast={showToast}/>
 
       <div style={{marginTop:36}}>
         <h2 style={{fontFamily:FD,fontSize:20,color:T.ink,marginBottom:5}}>Study Circle safety reports</h2>
