@@ -596,6 +596,230 @@ on public.lesson_progress
 for each row execute function public.spark_capture_math_lesson_learning_v2();
 
 -- ---------------------------------------------------------------------------
+-- Historical bootstrap. V2 should learn from the evidence SPARK already owns
+-- instead of treating existing students as brand new. These inserts preserve
+-- source identity and are idempotent through evidence_key uniqueness.
+-- ---------------------------------------------------------------------------
+insert into public.spark_learning_evidence_v2(
+  user_id,subject_id,skill,source,item_id,evidence_key,observed_score,correct,
+  evidence_weight,difficulty,student_confidence,help_used,error_code,error_label,
+  metadata,occurred_at
+)
+select
+  a.user_id,
+  'mathematics',
+  coalesce(nullif(trim(a.skill),''),'CSEC Mathematics'),
+  'adaptive_practice_history',
+  a.question_id::text,
+  'backfill:csec-question:'||a.id::text,
+  greatest(0,least(1,
+    case
+      when coalesce(a.marks,0)>0 and a.marks_earned is not null then a.marks_earned::numeric/a.marks::numeric
+      when a.correct then 1 else 0
+    end
+  )),
+  a.correct,
+  1,
+  a.difficulty,
+  null,
+  false,
+  null,
+  null,
+  jsonb_build_object(
+    'backfilled',true,
+    'topic',a.topic,
+    'curriculum_area',a.curriculum_area,
+    'self_assessed',coalesce(a.self_assessed,false)
+  ),
+  coalesce(a.attempted_at,now())
+from public.csec_question_attempts a
+where a.user_id is not null
+on conflict(user_id,evidence_key) do nothing;
+
+insert into public.spark_learning_evidence_v2(
+  user_id,subject_id,skill,source,item_id,evidence_key,observed_score,correct,
+  evidence_weight,difficulty,metadata,occurred_at
+)
+select
+  pe.user_id,
+  'mathematics',
+  'Mathematics :: Exam readiness',
+  'practice_exam_history',
+  coalesce(pe.attempt_key,pe.id::text),
+  'backfill:math-exam:'||pe.id::text,
+  case
+    when pe.percent is not null then greatest(0,least(1,pe.percent/100.0))
+    when coalesce(pe.max_score,0)>0 and pe.score is not null then greatest(0,least(1,pe.score::numeric/pe.max_score::numeric))
+    else null
+  end,
+  case
+    when pe.percent is not null then pe.percent>=60
+    when coalesce(pe.max_score,0)>0 and pe.score is not null then (pe.score::numeric/pe.max_score::numeric)>=0.60
+    else null
+  end,
+  case when lower(coalesce(pe.paper_type,''))='paper2' then 1.50 else 1.30 end,
+  'hard',
+  jsonb_build_object('backfilled',true,'paper_type',pe.paper_type,'attempt_key',pe.attempt_key),
+  coalesce(pe.completed_at,now())
+from public.practice_exam_attempts pe
+where pe.user_id is not null and pe.completed_at is not null
+on conflict(user_id,evidence_key) do nothing;
+
+insert into public.spark_learning_evidence_v2(
+  user_id,subject_id,skill,source,item_id,evidence_key,observed_score,correct,
+  evidence_weight,metadata,occurred_at
+)
+select
+  lp.user_id,
+  'mathematics',
+  'Mathematics :: '||coalesce(nullif(l.title,''),lp.lesson_id::text),
+  'lesson_history',
+  lp.lesson_id::text,
+  'backfill:math-lesson:'||lp.user_id::text||':'||lp.lesson_id::text,
+  null,
+  null,
+  0.08,
+  jsonb_build_object('backfilled',true,'exposure_only',true,'lesson_id',lp.lesson_id),
+  coalesce(lp.completed_at,now())
+from public.lesson_progress lp
+left join public.lessons l on l.id=lp.lesson_id
+where lp.user_id is not null and lp.completed=true
+on conflict(user_id,evidence_key) do nothing;
+
+insert into public.spark_learning_evidence_v2(
+  user_id,subject_id,skill,source,item_id,evidence_key,observed_score,correct,
+  evidence_weight,difficulty,metadata,occurred_at
+)
+select
+  sp.user_id,
+  sp.subject_id,
+  case
+    when sp.subject_id='physics' then
+      'Physics :: '||coalesce(nullif(sp.topic_id,''),nullif(sp.title,''),nullif(sp.section_id,''),sp.activity_key)
+    when sp.subject_id='information-technology' then
+      'Information Technology :: '||coalesce(nullif(sp.topic_id,''),nullif(sp.title,''),nullif(sp.section_id,''),sp.activity_key)
+    else coalesce(nullif(sp.title,''),sp.activity_key)
+  end,
+  'subject_progress_history',
+  sp.activity_key,
+  'backfill:subject-progress:'||sp.subject_id||':'||sp.activity_key,
+  case
+    when sp.percent is not null then greatest(0,least(1,sp.percent/100.0))
+    when coalesce(sp.max_score,0)>0 and sp.score is not null then greatest(0,least(1,sp.score::numeric/sp.max_score::numeric))
+    else null
+  end,
+  case
+    when sp.percent is not null then sp.percent>=60
+    when coalesce(sp.max_score,0)>0 and sp.score is not null then (sp.score::numeric/sp.max_score::numeric)>=0.60
+    else null
+  end,
+  case
+    when sp.activity_type='exam' then 1.30
+    when sp.activity_type='section_checkpoint' then 1.15
+    when sp.activity_type='topic_quiz' then 0.95
+    when sp.activity_type='lab' then 0.12
+    else 0.08
+  end,
+  case when sp.activity_type in('exam','section_checkpoint') then 'hard' else null end,
+  coalesce(sp.metadata,'{}'::jsonb)||jsonb_build_object(
+    'backfilled',true,
+    'activity_type',sp.activity_type,
+    'exposure_only',sp.percent is null and sp.score is null
+  ),
+  coalesce(sp.completed_at,sp.updated_at,sp.first_recorded_at,now())
+from public.spark_subject_progress sp
+where sp.user_id is not null
+  and sp.subject_id in('physics','information-technology')
+  and (sp.completed=true or sp.percent is not null or sp.score is not null)
+on conflict(user_id,evidence_key) do nothing;
+
+insert into public.spark_learning_evidence_v2(
+  user_id,subject_id,skill,source,item_id,evidence_key,observed_score,correct,
+  evidence_weight,student_confidence,metadata,occurred_at
+)
+select
+  fp.user_id,
+  'mathematics',
+  'Mathematics :: Flashcards',
+  'flashcard_history',
+  fp.card_id,
+  'backfill:math-flashcard:'||fp.user_id::text||':'||fp.card_id,
+  case fp.last_rating
+    when 'again' then 0.10
+    when 'hard' then 0.45
+    when 'got_it' then 0.82
+    when 'easy' then 0.96
+    else null
+  end,
+  case when fp.last_rating in('got_it','easy') then true when fp.last_rating in('again','hard') then false else null end,
+  0.30,
+  case fp.last_rating
+    when 'again' then 0.25
+    when 'hard' then 0.45
+    when 'got_it' then 0.75
+    when 'easy' then 0.95
+    else null
+  end,
+  jsonb_build_object('backfilled',true,'rating',fp.last_rating,'review_count',fp.review_count),
+  coalesce(fp.last_reviewed_at,fp.updated_at,now())
+from public.spark_flashcard_progress fp
+where fp.user_id is not null and fp.last_rating is not null
+on conflict(user_id,evidence_key) do nothing;
+
+-- Build observed item difficulty from historical scored evidence.
+insert into public.spark_learning_item_calibration(
+  subject_id,item_id,source,authored_difficulty,attempts,weight_sum,score_sum,
+  mean_score,observed_difficulty,mismatch_flag,updated_at
+)
+select
+  subject_id,
+  item_id,
+  source,
+  max(difficulty) filter(where difficulty is not null),
+  count(*)::int,
+  sum(evidence_weight),
+  sum(observed_score*evidence_weight),
+  sum(observed_score*evidence_weight)/nullif(sum(evidence_weight),0),
+  1-(sum(observed_score*evidence_weight)/nullif(sum(evidence_weight),0)),
+  case
+    when count(*)>=8
+      and lower(coalesce(max(difficulty) filter(where difficulty is not null),''))='easy'
+      and sum(observed_score*evidence_weight)/nullif(sum(evidence_weight),0)<0.55 then true
+    when count(*)>=8
+      and lower(coalesce(max(difficulty) filter(where difficulty is not null),''))='hard'
+      and sum(observed_score*evidence_weight)/nullif(sum(evidence_weight),0)>0.82 then true
+    else false
+  end,
+  now()
+from public.spark_learning_evidence_v2
+where item_id is not null and observed_score is not null
+group by subject_id,item_id,source
+on conflict(subject_id,item_id,source) do update set
+  authored_difficulty=excluded.authored_difficulty,
+  attempts=excluded.attempts,
+  weight_sum=excluded.weight_sum,
+  score_sum=excluded.score_sum,
+  mean_score=excluded.mean_score,
+  observed_difficulty=excluded.observed_difficulty,
+  mismatch_flag=excluded.mismatch_flag,
+  updated_at=now();
+
+-- Materialise learner states immediately so existing users receive useful
+-- recommendations on first load after deployment.
+do $
+declare
+  r record;
+begin
+  for r in
+    select distinct user_id,subject_id,skill
+    from public.spark_learning_evidence_v2
+  loop
+    perform public.spark_recalculate_learning_skill_v2(r.user_id,r.subject_id,r.skill);
+  end loop;
+end;
+$;
+
+-- ---------------------------------------------------------------------------
 -- Recommendation loop. SPARK records what it recommended and whether following
 -- that advice improved the learner state. Effectiveness then becomes a bounded
 -- input to future recommendation ranking.
