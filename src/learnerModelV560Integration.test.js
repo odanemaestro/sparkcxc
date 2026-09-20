@@ -18,8 +18,15 @@ describe("SPARK V5.6.0 learner model integration", () => {
   test("student and parent dashboards load explainable learner state", () => {
     expect(app).toContain('from("spark_learner_skill_state")');
     expect(app).toContain("dashboardSubjectInsights");
-    expect(app).toContain("studentLearnerModel.focus.skill");
+
+    // SPARK Learner Intelligence V2 supersedes the old direct
+    // studentLearnerModel.focus rendering while keeping the original learner
+    // state as a data source and preserving parent insight integration.
+    expect(app).toContain("studentMathIntelligence");
+    expect(app).toContain("buildLearnerIntelligenceFromSkillStates");
+    expect(app).toContain("intelligence={studentMathIntelligence}");
     expect(app).toContain('learnerModel={parentLearnerModel}');
+
     expect(student).toContain("Recurring issue:");
     expect(parent).toContain("What SPARK is seeing");
   });

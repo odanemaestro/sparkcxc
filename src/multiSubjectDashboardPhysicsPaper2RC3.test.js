@@ -89,18 +89,29 @@ describe("SPARK RC3 dashboard restoration and Physics Paper 2", () => {
     expect(neutronCriterion.check.unit).toBe("neutrons");
   });
 
-  test("completed Physics Paper 2 results use generic subject progress without a new migration", async () => {
+  test("completed Physics Paper 2 results use generic subject progress and feed the V2 learning loop", async () => {
     const calls = [];
     const supabase = { rpc: async (name, args) => { calls.push({ name, args }); return { data: {}, error: null }; } };
     await recordPhysicsSubjectActivity({
       supabase,
       event: { type:"physics_paper2_exam", paperId:"spark-phy-p02-practice-4", paperNumber:4, paperLabel:"D", score:72, maxScore:100, percent:72 },
     });
-    expect(calls).toHaveLength(1);
-    expect(calls[0].name).toBe("spark_record_subject_progress");
-    expect(calls[0].args.p_subject_id).toBe("physics");
-    expect(calls[0].args.p_activity_type).toBe("exam");
-    expect(calls[0].args.p_activity_key).toBe("paper2:spark-phy-p02-practice-4");
+
+    const progressCalls = calls.filter(call => call.name === "spark_record_subject_progress");
+    const outcomeCalls = calls.filter(call => call.name === "spark_observe_recommendation_outcome");
+
+    // Canonical subject progress remains the authoritative activity record.
+    expect(progressCalls).toHaveLength(1);
+    expect(progressCalls[0].args.p_subject_id).toBe("physics");
+    expect(progressCalls[0].args.p_activity_type).toBe("exam");
+    expect(progressCalls[0].args.p_activity_key).toBe("paper2:spark-phy-p02-practice-4");
+
+    // Learner Intelligence V2 observes the successful activity separately.
+    expect(outcomeCalls).toHaveLength(1);
+    expect(outcomeCalls[0].args.p_subject_id).toBe("physics");
+    expect(outcomeCalls[0].args.p_activity_type).toBe("exam");
+    expect(outcomeCalls[0].args.p_activity_key).toBe("paper2:spark-phy-p02-practice-4");
+    expect(outcomeCalls[0].args.p_percent).toBe(72);
   });
 
   test("full Physics exams contribute to generic assessment summaries", () => {

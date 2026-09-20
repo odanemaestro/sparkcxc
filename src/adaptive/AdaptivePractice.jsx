@@ -16,6 +16,7 @@ import { fetchAttempts, upsertSkillProgress } from "./persistence";
 import { adaptiveQuestionUsesWorking, gradeAdaptiveResponse } from "./adaptiveCxcGrader";
 import { adaptiveSessionStorageKey, clearAdaptiveSession, readAdaptiveSession, rebuildAdaptiveSession, writeAdaptiveSession } from "./adaptiveSessionPersistence";
 import { answerEvidenceForSelfAssessment, canonicalOptionKey, recordAnswerObservation } from "../grading/answerIntelligence";
+import { observeRecommendationOutcome } from "../learning/learnerIntelligencePersistence";
 import { adaptiveOptionDisplayText } from "./adaptiveOptionPresentation";
 import ReportQuestionButton from "../components/ui/ReportQuestionButton";
 import MathText from "../practice/MathText";
@@ -354,7 +355,26 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
         question_count: session.length
       }
     });
-    if (error) console.warn("Could not save Adaptive Practice milestone:", error);
+    if (error) {
+      console.warn("Could not save Adaptive Practice milestone:", error);
+    } else {
+      observeRecommendationOutcome({
+        supabase,
+        subjectId: "mathematics",
+        activityType: "practice",
+        activityKey: `adaptive-session:${requestedSkill || selectedTopic || selectedArea || "mathematics"}`,
+        percent: totalMarks > 0 ? Math.round((score / totalMarks) * 100) : null,
+        metadata: {
+          skill: requestedSkill || selectedTopic || null,
+          topic: selectedTopic || null,
+          question_count: session.length,
+        },
+      }).then(({ error: outcomeError }) => {
+        if (outcomeError && !["PGRST202", "42P01", "42883"].includes(outcomeError.code)) {
+          console.warn("Could not observe Adaptive Practice recommendation outcome", outcomeError);
+        }
+      }).catch(outcomeError => console.warn("Could not observe Adaptive Practice recommendation outcome", outcomeError));
+    }
   }
 
   async function next() {

@@ -15,6 +15,7 @@ import { SECTION_E_TOPICS } from "../physics/atomic/sectionEAtomic.mjs";
 import { ATOMIC_INTERACTIVES } from "../physics/atomic/interactives/eAtomicInteractiveRegistry.mjs";
 import { readPhysicsAtomicProgress } from "../physics/atomic/physicsAtomicProgress.mjs";
 import { readPhysicsCourseProgress } from "../physics/course/physicsCourseProgress.mjs";
+import { observeRecommendationOutcome } from "../learning/learnerIntelligencePersistence";
 
 export const SUBJECT_PROGRESS_VERSION = 1;
 
@@ -261,7 +262,8 @@ export async function recordSubjectActivity({ supabase, activity, silent = false
   const activityKey = String(activity.activityKey || activity.activity_key || "").trim();
   const activityType = String(activity.activityType || activity.activity_type || "").trim().toLowerCase();
   if (!subjectId || !activityKey || !activityType) return { data: null, error: null, skipped: true };
-  return supabase.rpc("spark_record_subject_progress", {
+
+  const result = await supabase.rpc("spark_record_subject_progress", {
     p_subject_id: subjectId,
     p_activity_key: activityKey,
     p_activity_type: activityType,
@@ -275,6 +277,24 @@ export async function recordSubjectActivity({ supabase, activity, silent = false
     p_metadata: activity.metadata || {},
     p_silent: Boolean(silent),
   });
+
+  // Recommendation outcome tracking must never block canonical progress.
+  if (!result?.error && activity.completed) {
+    observeRecommendationOutcome({
+      supabase,
+      subjectId,
+      activityType,
+      activityKey,
+      percent: activity.percent,
+      metadata: activity.metadata || {},
+    }).then(({ error }) => {
+      if (error && !["PGRST202", "42P01", "42883"].includes(error.code)) {
+        console.warn("Could not observe SPARK recommendation outcome", error);
+      }
+    }).catch(error => console.warn("Could not observe SPARK recommendation outcome", error));
+  }
+
+  return result;
 }
 
 export async function recordPhysicsSubjectActivity({ supabase, event }) {

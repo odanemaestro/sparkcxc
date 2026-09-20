@@ -29,7 +29,7 @@ import "./studyPracticeSemanticsV261";
 // ============================================================================
 import React, { lazy, Suspense, useState, useEffect, useCallback, useRef, useLayoutEffect } from "react";
 import { createPortal } from "react-dom";
-import { useMathLessonRoute } from "./routing/sparkRoutingV270";
+import { useMathLessonRoute, writeSparkNestedRoute } from "./routing/sparkRoutingV270";
 // SPARK_PHYSICS_SECTION_A_RC1_IMPORTS
 import SubjectSelectionView, { SubjectChangeButton } from "./subjects/SubjectSelectionView";
 import { getSparkSubjectRegistry, subjectsForCapability, getSparkSubject, enabledSparkSubjects, subjectsForEnrollmentIds } from "./subjects/subjectRegistry";
@@ -77,6 +77,7 @@ import NotificationCenter from "./components/notifications/NotificationCenter";
 import FlashcardsPanel from "./components/learning/FlashcardsPanel";
 import SubjectDashboardOverview from "./components/learning/SubjectDashboardOverview";
 import SubjectProgressDetail from "./components/learning/SubjectProgressDetail";
+import LearnerIntelligencePanel from "./components/learning/LearnerIntelligencePanel";
 import AllSubjectsProgress from "./components/learning/AllSubjectsProgress";
 import StudentGoalCard from "./components/learning/StudentGoalCard";
 import StudentDashboardSupportCards from "./components/learning/StudentDashboardSupportCards";
@@ -87,6 +88,7 @@ import ProgressReportModal from "./components/reports/ProgressReportModal";
 import SparkRewardsPanel from "./components/rewards/SparkRewardsPanel"; // SPARK_V570_REWARDS
 import { buildLearningSummary } from "./insights/progressAnalytics";
 import { buildLearnerModelProfile, learnerModelWeakSkills } from "./learning/learnerModel";
+import { buildLearnerIntelligenceFromSkillStates, buildSubjectLearnerIntelligence } from "./learning/learnerIntelligenceV2";
 import { friendlyErrorMessage } from "./lib/errorMessages";
 import { computeStudyStreak } from "./lib/studyStreak";
 import { getExamPerformanceStatus } from "./lib/examPerformance";
@@ -3972,6 +3974,15 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     goal: studentGoal,
   });
   const studentLearnerModel = buildLearnerModelProfile(studentLearnerStates);
+  const studentMathIntelligence = buildLearnerIntelligenceFromSkillStates({
+    subject: getSparkSubject(SPARK_SUBJECTS, "mathematics"),
+    learnerStates: studentLearnerStates,
+    summary: {
+      lessonPercent: totalTopics ? Math.round((done / totalTopics) * 100) : 0,
+      mastery: studentSummary.mastery || 0,
+      practiceAverage: studentSummary.mastery || 0,
+    },
+  });
   const studentReportData = {
     skills: studentSkills,
     questionAttempts: studentQuestionAttempts,
@@ -3999,12 +4010,24 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     mathematicsMilestones: studentMilestones,
     subjects: studentEnrolledSubjects,
   });
-  const dashboardSubjectInsights = {
-    mathematics: studentLearnerModel?.hasEvidence && studentLearnerModel?.focus ? {
-      title: studentLearnerModel.focus.skill,
-      detail: studentLearnerModel.focus.recommendation,
-    } : null,
-  };
+  const dashboardSubjectInsights = Object.fromEntries(subjectDashboardSummaries.map(subject => {
+    if (subject.id === "mathematics") {
+      return [subject.id, studentMathIntelligence?.hasEvidence && studentMathIntelligence?.recommendation ? {
+        title: studentMathIntelligence.recommendation.title,
+        detail: studentMathIntelligence.recommendation.detail,
+      } : null];
+    }
+
+    const intelligence = buildSubjectLearnerIntelligence({
+      subject,
+      rows: mergedSubjectProgressRows,
+    });
+
+    return [subject.id, intelligence?.hasEvidence && intelligence?.recommendation ? {
+      title: intelligence.recommendation.title,
+      detail: intelligence.recommendation.detail,
+    } : null];
+  }));
   const now = new Date();
   const upcomingSessions = bookings.filter(b => { const status = bookingDisplayStatus(b); return status === "pending" || status === "confirmed"; });
   // A session becomes completed only after its actual end time has passed. The database
@@ -4613,7 +4636,27 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                   <Card><div style={{fontFamily:FD,fontSize:30,fontWeight:700,color:T.ink}}>{studentSummary.questionAttemptCount || 0}</div><div style={{fontSize:12,color:T.textMuted,textTransform:"uppercase",letterSpacing:"0.04em"}}>Practice questions</div></Card>
                   <Card><div style={{fontFamily:FD,fontSize:30,fontWeight:700,color:T.teal}}>{studentSummary.mastery || 0}%</div><div style={{fontSize:12,color:T.textMuted,textTransform:"uppercase",letterSpacing:"0.04em"}}>Skill mastery</div></Card>
                 </div>
-                {studentLearnerModel?.hasEvidence && studentLearnerModel?.focus && <Card className="spark-subject-progress-insight" style={{marginBottom:20}}><span className="section-kicker">CURRENT FOCUS</span><p><strong>{studentLearnerModel.focus.skill}.</strong> {studentLearnerModel.focus.recommendation}</p></Card>}
+                <div style={{marginBottom:20}}>
+                  <LearnerIntelligencePanel
+                    intelligence={studentMathIntelligence}
+                    supabase={supabase}
+                    onStartRecommendation={recommendation => {
+                      if (recommendation?.actionType === "flashcards") {
+                        setDashboardSection("flashcards");
+                        setFlashcardSubjectRoute("mathematics");
+                        return;
+                      }
+
+                      if (["lesson", "prerequisite_review"].includes(recommendation?.actionType)) {
+                        setView("lesson");
+                        return;
+                      }
+
+                      setView("practice-math");
+                      writeSparkNestedRoute("/practice/mathematics", { mode: "adaptive" });
+                    }}
+                  />
+                </div>
                 <Card style={{marginBottom:20}}>
                   <div style={{fontFamily:FD,fontSize:17,fontWeight:600,color:T.ink,marginBottom:5}}>Paper 1 and Paper 2 results</div>
                   <div style={{fontSize:12,color:T.textMuted,marginBottom:14}}>Your latest full Mathematics examination results.</div>
@@ -4637,7 +4680,15 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 <SubjectProgressDetail
                   subject={subjectDashboardSummaries.find(subject => subject.id === progressSubject) || getSparkSubject(SPARK_SUBJECTS, progressSubject)}
                   rows={mergedSubjectProgressRows}
-                  onOpenSubject={subject => setView(subject?.studyView || "study")}
+                  supabase={supabase}
+                  onOpenSubject={(subject, recommendation) => {
+                    if (recommendation?.actionType === "flashcards") {
+                      setDashboardSection("flashcards");
+                      setFlashcardSubjectRoute(subject?.id);
+                      return;
+                    }
+                    setView(subject?.studyView || "study");
+                  }}
                   onOpenReport={subject => { setStudentReportSubject(subject?.id || progressSubject); setStudentReportOpen(true); }}
                 />
               </div>

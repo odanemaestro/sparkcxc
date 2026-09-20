@@ -12,6 +12,7 @@ import {
   recommendedDeckIdsForSkills,
 } from "../../learning/flashcards";
 import { flashcardEvidenceForRating } from "../../learning/learnerModel";
+import { observeRecommendationOutcome } from "../../learning/learnerIntelligencePersistence";
 
 function deckCount(deckId) {
   return FLASHCARDS.filter(card => card.deck === deckId).length;
@@ -108,6 +109,21 @@ export default function FlashcardsPanel({ userId, supabase, showToast, onProgres
     onProgressChange?.(nextRows);
     const reviewedAt = savedRow.last_reviewed_at || new Date().toISOString();
     onReviewRecorded?.({ card_id: current.id, rating, reviewed_at: reviewedAt });
+
+    observeRecommendationOutcome({
+      supabase,
+      subjectId: "mathematics",
+      activityType: "flashcard_review",
+      activityKey: `flashcard:${current.id}`,
+      metadata: {
+        deck_id: current.deck,
+        rating,
+      },
+    }).then(({ error: outcomeError }) => {
+      if (outcomeError && !["PGRST202", "42P01", "42883"].includes(outcomeError.code)) {
+        console.warn("Could not observe Mathematics flashcard recommendation outcome", outcomeError);
+      }
+    }).catch(outcomeError => console.warn("Could not observe Mathematics flashcard recommendation outcome", outcomeError));
 
     // Flashcard self-ratings are useful learner evidence, but carry less weight
     // than scored quiz or Adaptive Practice answers. A failure here never

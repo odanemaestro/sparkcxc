@@ -2,15 +2,18 @@ import React, { useMemo } from "react";
 import Card from "../ui/Card";
 import ProgressBar from "../ui/ProgressBar";
 import { buildGenericSubjectProgressReport, summarizeSubjectProgress } from "../../subjects/subjectProgress";
+import { buildSubjectLearnerIntelligence } from "../../learning/learnerIntelligenceV2";
+import LearnerIntelligencePanel from "./LearnerIntelligencePanel";
 import "./subjectProgressDetail.css";
 
 function SkillList({ title, rows = [], empty }) {
   return <Card className="spark-subject-progress-skill-card"><h3>{title}</h3>{rows.length ? <div className="spark-subject-progress-skill-list">{rows.map(row => <div key={`${title}-${row.skill}`}><span>{row.skill}</span><strong>{Math.round(Number(row.score || 0))}%</strong></div>)}</div> : <p>{empty}</p>}</Card>;
 }
 
-export default function SubjectProgressDetail({ subject, rows = [], onOpenSubject, onOpenReport }) {
+export default function SubjectProgressDetail({ subject, rows = [], supabase, onOpenSubject, onOpenReport }) {
   const summary = useMemo(() => summarizeSubjectProgress(rows, { subjectId: subject?.id, totalTopics: subject?.stats?.topics || 0 }), [rows, subject]);
   const report = useMemo(() => buildGenericSubjectProgressReport({ subject, rows }, { period: "term" }), [rows, subject]);
+  const intelligence = useMemo(() => buildSubjectLearnerIntelligence({ subject, rows }), [rows, subject]);
   const assessments = report.exams || [];
   const supportsLabs = Boolean(subject?.capabilities?.labs);
   const isInformationTechnology = subject?.id === "information-technology";
@@ -49,6 +52,13 @@ export default function SubjectProgressDetail({ subject, rows = [], onOpenSubjec
     </Card>
 
     <Card className="spark-subject-progress-insight"><span className="section-kicker">SPARK INSIGHT</span><p>{report.summary?.insight}</p></Card>
+
+    <LearnerIntelligencePanel
+      intelligence={intelligence}
+      supabase={supabase}
+      readOnly={!supabase}
+      onStartRecommendation={onOpenSubject ? recommendation => onOpenSubject(subject, recommendation) : undefined}
+    />
 
     <div className="spark-subject-progress-two-col">
       <SkillList title="Strongest recorded areas" rows={report.strongestSkills || []} empty="Complete topic tests to establish stronger areas." />
