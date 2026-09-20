@@ -312,3 +312,15 @@ body[data-theme="dark"] .spark-label-diagram-actions button:disabled,
 .spark-diagram-ear .ear-auditory-nerve{fill:none;stroke:#8f6ba7;stroke-width:14;stroke-linecap:round}
 .spark-diagram-ear .ear-semicircular path{fill:none;stroke:#77a993;stroke-width:16;stroke-linecap:round}
 .spark-diagram-ear .ear-eustachian{fill:none;stroke:#6d98ad;stroke-width:14;stroke-linecap:round}
+
+
+/* SPARK_HUMAN_BRAIN_TEMPLATE_V1 */
+.spark-diagram-brain .brain-cerebrum{fill:#d9a8aa;stroke:#8f5f64;stroke-width:7}
+.spark-diagram-brain .brain-cerebrum-fold{fill:none;stroke:#a46d72;stroke-width:5;stroke-linecap:round}
+.spark-diagram-brain .brain-cerebellum{fill:#c88c91;stroke:#85545a;stroke-width:6}
+.spark-diagram-brain .brain-brainstem{fill:#d4b18e;stroke:#8e6d4e;stroke-width:6}
+.spark-diagram-brain .brain-medulla{fill:#c89c78;stroke:#825d41;stroke-width:5}
+.spark-diagram-brain .brain-spinal-cord{fill:none;stroke:#c9a47f;stroke-width:20;stroke-linecap:round}
+.spark-diagram-brain .brain-hypothalamus{fill:#d69a69;stroke:#95633b;stroke-width:4}
+.spark-diagram-brain .brain-pituitary{fill:#c97882;stroke:#8b4d56;stroke-width:4}
+.spark-diagram-brain .brain-pituitary-stalk{stroke:#8b4d56;stroke-width:5;stroke-linecap:round}
