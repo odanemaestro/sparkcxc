@@ -4,6 +4,7 @@ import "./humanDigestionExplorer.css";
 const ENZYMES=[
   {name:"Salivary amylase",where:"Mouth",substrate:"Starch",product:"Maltose",condition:"Near-neutral pH"},
   {name:"Pepsin",where:"Stomach",substrate:"Protein",product:"Shorter polypeptides",condition:"Acidic pH, about pH 2"},
+  {name:"Rennin (chymosin)",where:"Stomach of young mammals",substrate:"Milk protein",product:"Clotted milk protein",condition:"Acidic stomach conditions"},
   {name:"Trypsin",where:"Small intestine",substrate:"Protein / polypeptides",product:"Smaller peptides",condition:"Alkaline conditions"},
   {name:"Pancreatic amylase",where:"Small intestine",substrate:"Starch",product:"Maltose",condition:"Alkaline conditions"},
   {name:"Maltase",where:"Small intestine",substrate:"Maltose",product:"Glucose",condition:"Small-intestine conditions"},
