@@ -266,6 +266,10 @@ declare
   v_retention numeric := 1;
   v_priority numeric := 50;
   v_days numeric := 0;
+  v_w_mastery numeric := 0.52;
+  v_w_confidence numeric := 0.18;
+  v_w_retention numeric := 0.18;
+  v_w_trend numeric := 0.12;
   v_miscounts jsonb := '{}'::jsonb;
   v_mislabels jsonb := '{}'::jsonb;
   v_row public.spark_learning_skill_state_v2;
@@ -347,11 +351,24 @@ begin
     order by error_code,occurred_at desc
   ) s;
 
+  select
+    coalesce((weights->>'mastery')::numeric,0.52),
+    coalesce((weights->>'confidence')::numeric,0.18),
+    coalesce((weights->>'retention')::numeric,0.18),
+    coalesce((weights->>'trend')::numeric,0.12)
+  into v_w_mastery,v_w_confidence,v_w_retention,v_w_trend
+  from public.spark_learning_model_versions
+  where status='champion'
+  order by promoted_at desc nulls last,created_at desc
+  limit 1;
+
   v_priority := least(100,greatest(0,
-    (1-v_effective_mastery)*52
-    + (1-v_model_confidence)*18
-    + (1-v_retention)*18
-    + greatest(0,-v_trend)*100*12/100
+    (
+      (1-v_effective_mastery)*v_w_mastery
+      + (1-v_model_confidence)*v_w_confidence
+      + (1-v_retention)*v_w_retention
+      + greatest(0,-v_trend)*v_w_trend
+    )*100
   ));
 
   insert into public.spark_learning_skill_state_v2(
@@ -1065,6 +1082,200 @@ grant execute on function public.spark_complete_learning_recommendation(uuid) to
 -- champion unless it has enough evidence and wins a backtest by the configured
 -- margin. Promotion itself remains service-role only.
 -- ---------------------------------------------------------------------------
+create or replace function public.spark_recalculate_all_learning_states_v2()
+returns integer
+language plpgsql
+security definer
+set search_path = public
+as $
+declare
+  r record;
+  v_count integer := 0;
+begin
+  for r in
+    select distinct user_id,subject_id,skill
+    from public.spark_learning_evidence_v2
+  loop
+    perform public.spark_recalculate_learning_skill_v2(r.user_id,r.subject_id,r.skill);
+    v_count := v_count+1;
+  end loop;
+  return v_count;
+end;
+$;
+
+revoke all on function public.spark_recalculate_all_learning_states_v2() from public,anon,authenticated;
+grant execute on function public.spark_recalculate_all_learning_states_v2() to service_role;
+
+create or replace function public.spark_build_learning_model_candidate(
+  p_version_key text default null
+)
+returns jsonb
+language plpgsql
+security definer
+set search_path = public
+as $
+declare
+  v_version text := coalesce(nullif(trim(p_version_key),''),'li-candidate-'||to_char(now(),'YYYYMMDDHH24MISS'));
+  v_samples integer := 0;
+  v_min_samples integer := 200;
+  v_margin numeric := 0.02;
+  v_pos_m numeric;
+  v_neg_m numeric;
+  v_pos_c numeric;
+  v_neg_c numeric;
+  v_pos_r numeric;
+  v_neg_r numeric;
+  v_pos_t numeric;
+  v_neg_t numeric;
+  v_raw_m numeric;
+  v_raw_c numeric;
+  v_raw_r numeric;
+  v_raw_t numeric;
+  v_total numeric;
+  v_w_m numeric;
+  v_w_c numeric;
+  v_w_r numeric;
+  v_w_t numeric;
+  v_candidate_corr double precision;
+  v_champion_corr double precision;
+  v_candidate_score numeric;
+  v_champion_score numeric;
+  v_champion_weights jsonb;
+begin
+  select weights into v_champion_weights
+  from public.spark_learning_model_versions
+  where status='champion'
+  order by promoted_at desc nulls last,created_at desc
+  limit 1;
+
+  if v_champion_weights is null then
+    raise exception 'Champion model is not configured';
+  end if;
+
+  v_min_samples := coalesce((v_champion_weights->>'min_candidate_samples')::integer,200);
+  v_margin := coalesce((v_champion_weights->>'promotion_margin')::numeric,0.02);
+
+  with data as (
+    select
+      coalesce(nullif(rationale #>> '{features,mastery_gap}','')::numeric,0) m,
+      coalesce(nullif(rationale #>> '{features,confidence_gap}','')::numeric,0) c,
+      coalesce(nullif(rationale #>> '{features,retention_risk}','')::numeric,0) r,
+      coalesce(nullif(rationale #>> '{features,trend_risk}','')::numeric,0) t,
+      (coalesce(outcome_delta,0)>2)::integer positive
+    from public.spark_learning_recommendations
+    where completed_at is not null
+      and outcome_delta is not null
+      and rationale ? 'features'
+  )
+  select
+    count(*)::integer,
+    avg(m) filter(where positive=1),avg(m) filter(where positive=0),
+    avg(c) filter(where positive=1),avg(c) filter(where positive=0),
+    avg(r) filter(where positive=1),avg(r) filter(where positive=0),
+    avg(t) filter(where positive=1),avg(t) filter(where positive=0)
+  into
+    v_samples,
+    v_pos_m,v_neg_m,
+    v_pos_c,v_neg_c,
+    v_pos_r,v_neg_r,
+    v_pos_t,v_neg_t
+  from data;
+
+  if v_samples<v_min_samples then
+    raise exception 'Not enough completed recommendation outcomes to build a candidate model. Need %, have %',v_min_samples,v_samples;
+  end if;
+
+  -- Features that are more present in successful interventions receive more
+  -- weight. A small floor prevents any one signal from disappearing entirely.
+  v_raw_m := greatest(0.03,coalesce(v_pos_m-v_neg_m,0));
+  v_raw_c := greatest(0.03,coalesce(v_pos_c-v_neg_c,0));
+  v_raw_r := greatest(0.03,coalesce(v_pos_r-v_neg_r,0));
+  v_raw_t := greatest(0.03,coalesce(v_pos_t-v_neg_t,0));
+  v_total := v_raw_m+v_raw_c+v_raw_r+v_raw_t;
+  v_w_m := v_raw_m/v_total;
+  v_w_c := v_raw_c/v_total;
+  v_w_r := v_raw_r/v_total;
+  v_w_t := v_raw_t/v_total;
+
+  with data as (
+    select
+      coalesce(nullif(rationale #>> '{features,mastery_gap}','')::numeric,0) m,
+      coalesce(nullif(rationale #>> '{features,confidence_gap}','')::numeric,0) c,
+      coalesce(nullif(rationale #>> '{features,retention_risk}','')::numeric,0) r,
+      coalesce(nullif(rationale #>> '{features,trend_risk}','')::numeric,0) t,
+      (coalesce(outcome_delta,0)>2)::integer positive
+    from public.spark_learning_recommendations
+    where completed_at is not null and outcome_delta is not null and rationale ? 'features'
+  ),
+  scored as (
+    select
+      (m*v_w_m+c*v_w_c+r*v_w_r+t*v_w_t)::double precision candidate_priority,
+      (
+        m*coalesce((v_champion_weights->>'mastery')::numeric,0.52)
+        + c*coalesce((v_champion_weights->>'confidence')::numeric,0.18)
+        + r*coalesce((v_champion_weights->>'retention')::numeric,0.18)
+        + t*coalesce((v_champion_weights->>'trend')::numeric,0.12)
+      )::double precision champion_priority,
+      positive::double precision outcome
+    from data
+  )
+  select corr(candidate_priority,outcome),corr(champion_priority,outcome)
+  into v_candidate_corr,v_champion_corr
+  from scored;
+
+  v_candidate_score := greatest(0,least(1,0.5+0.5*coalesce(v_candidate_corr,0)));
+  v_champion_score := greatest(0,least(1,0.5+0.5*coalesce(v_champion_corr,0)));
+
+  update public.spark_learning_model_versions
+  set backtest_score=v_champion_score,
+      sample_size=greatest(sample_size,v_samples)
+  where status='champion';
+
+  insert into public.spark_learning_model_versions(
+    version_key,status,weights,sample_size,backtest_score,notes,created_at
+  ) values (
+    v_version,
+    'candidate',
+    jsonb_build_object(
+      'mastery',round(v_w_m,6),
+      'confidence',round(v_w_c,6),
+      'retention',round(v_w_r,6),
+      'trend',round(v_w_t,6),
+      'min_candidate_samples',v_min_samples,
+      'promotion_margin',v_margin,
+      'learned_from_recommendation_outcomes',true
+    ),
+    v_samples,
+    v_candidate_score,
+    'Automatically fitted from completed recommendation outcomes. Promotion remains guarded by champion backtesting.',
+    now()
+  )
+  on conflict(version_key) do update set
+    weights=excluded.weights,
+    sample_size=excluded.sample_size,
+    backtest_score=excluded.backtest_score,
+    notes=excluded.notes;
+
+  return jsonb_build_object(
+    'version_key',v_version,
+    'sample_size',v_samples,
+    'candidate_score',v_candidate_score,
+    'champion_score',v_champion_score,
+    'required_margin',v_margin,
+    'eligible_for_promotion',v_candidate_score>=v_champion_score+v_margin,
+    'weights',jsonb_build_object(
+      'mastery',v_w_m,
+      'confidence',v_w_c,
+      'retention',v_w_r,
+      'trend',v_w_t
+    )
+  );
+end;
+$;
+
+revoke all on function public.spark_build_learning_model_candidate(text) from public,anon,authenticated;
+grant execute on function public.spark_build_learning_model_candidate(text) to service_role;
+
 create or replace function public.spark_promote_learning_model_candidate(p_version_key text)
 returns void
 language plpgsql
@@ -1090,8 +1301,9 @@ begin
   end if;
   update public.spark_learning_model_versions set status='retired' where status='champion';
   update public.spark_learning_model_versions set status='champion',promoted_at=now() where version_key=v_candidate.version_key;
+  perform public.spark_recalculate_all_learning_states_v2();
 end;
-$$;
+$;
 
 revoke all on function public.spark_promote_learning_model_candidate(text) from public,anon,authenticated;
 grant execute on function public.spark_promote_learning_model_candidate(text) to service_role;
