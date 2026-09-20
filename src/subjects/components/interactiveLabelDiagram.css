@@ -360,3 +360,16 @@ body[data-theme="dark"] .spark-label-diagram-actions button:disabled,
 @media(max-width:560px){
   .spark-diagram-digestive .repro-orientation{font-size:19px}
 }
+
+
+/* SPARK_HUMAN_TOOTH_TEMPLATE_V1 */
+.spark-diagram-tooth .tooth-enamel{fill:#f5f8fa;stroke:#6d7f8b;stroke-width:8}
+.spark-diagram-tooth .tooth-dentine{fill:#ead7a0;stroke:#a58a45;stroke-width:5}
+.spark-diagram-tooth .tooth-pulp{fill:#e6a0a7;stroke:#a55b65;stroke-width:5}
+.spark-diagram-tooth .tooth-gum{fill:#e6a3a8;stroke:#9f5d65;stroke-width:5}
+.spark-diagram-tooth .tooth-neck-line{stroke:#758896;stroke-width:4;stroke-dasharray:10 8}
+.spark-diagram-tooth .tooth-root-vessels{fill:none;stroke:#b0525b;stroke-width:6;stroke-linecap:round}
+.spark-diagram-tooth .tooth-region-label{fill:#526b7d;font-size:15px;font-weight:900}
+@media(max-width:560px){
+  .spark-diagram-tooth .tooth-region-label{font-size:20px}
+}
