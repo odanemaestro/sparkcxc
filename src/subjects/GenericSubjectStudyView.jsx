@@ -43,6 +43,7 @@ import PestVectorExplorer from "./components/PestVectorExplorer";
 import PestControlExplorer from "./components/PestControlExplorer";
 import FoodContaminationExplorer from "./components/FoodContaminationExplorer";
 import FoodMicroorganismExplorer from "./components/FoodMicroorganismExplorer";
+import FoodPreservationExplorer from "./components/FoodPreservationExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -326,6 +327,9 @@ function GenericLessonContent({
         }
         if (model?.type === "food-microorganisms") {
           return <FoodMicroorganismExplorer key={model.id || "food-microorganisms"} />;
+        }
+        if (model?.type === "food-preservation") {
+          return <FoodPreservationExplorer key={model.id || "food-preservation"} />;
         }
         return null;
       })}
