@@ -64,6 +64,13 @@ export default function InformationTechnologyPracticalLabs({ userId, onBack, onA
           completed={Boolean(completion[activeId]?.completed)}
           onBack={() => setActiveId(null)}
           onComplete={() => completeLab(lab)}
+          onEvidence={payload => onActivity?.({
+            type:"it_lab_skill_evidence",
+            labId:lab.id,
+            labTitle:lab.title,
+            section:lab.section,
+            ...payload,
+          })}
         />
       </Suspense>
     );
