@@ -51,6 +51,7 @@ import EnvironmentEnergyExplorer from "./components/EnvironmentEnergyExplorer";
 import FoodEnergyNutritionExplorer from "./components/FoodEnergyNutritionExplorer";
 import HumanDigestionExplorer from "./components/HumanDigestionExplorer";
 import TeethFunctionExplorer from "./components/TeethFunctionExplorer";
+import RespirationImportanceExplorer from "./components/RespirationImportanceExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -358,6 +359,9 @@ function GenericLessonContent({
         }
         if (model?.type === "teeth-function") {
           return <TeethFunctionExplorer key={model.id || "teeth-function"} />;
+        }
+        if (model?.type === "respiration-importance") {
+          return <RespirationImportanceExplorer key={model.id || "respiration-importance"} />;
         }
         return null;
       })}
