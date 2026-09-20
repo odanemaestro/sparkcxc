@@ -114,13 +114,19 @@ export default function FlashcardsPanel({ userId, supabase, showToast, onProgres
     // blocks the spaced-repetition review that was already saved above.
     const deckTitle = FLASHCARD_DECKS.find(item => item.id === current.deck)?.title || current.deck || "Flashcards";
     const evidence = flashcardEvidenceForRating(rating);
-    supabase.rpc("spark_record_learner_evidence", {
+    supabase.rpc("spark_record_learning_evidence_v2", {
+      p_subject_id: "mathematics",
       p_skill: deckTitle,
       p_source: "flashcard",
       p_item_id: current.id,
+      p_observed_score: evidence.observedScore,
       p_correct: evidence.correct,
       p_evidence_weight: evidence.weight,
+      p_difficulty: null,
+      p_student_confidence: evidence.studentConfidence,
       p_help_used: evidence.helpUsed,
+      p_error_code: null,
+      p_error_label: null,
       p_metadata: { deck_id: current.deck, rating },
       p_evidence_key: `flashcard:${current.id}:${reviewedAt}`,
       p_occurred_at: reviewedAt,
