@@ -226,3 +226,23 @@ body[data-theme="dark"] .spark-label-diagram-actions button:disabled,
 .spark-diagram-pregnancy .pregnancy-cervix{fill:#d48696;stroke:#8e4c5b;stroke-width:5}
 .spark-diagram-pregnancy .pregnancy-vagina{fill:#e7a7b2;stroke:#965565;stroke-width:5}
 .spark-diagram-pregnancy .pregnancy-fluid-marker{fill:#7bbbd8;opacity:.75}
+
+
+/* SPARK_HUMAN_HEART_TEMPLATE_V1 */
+.spark-diagram-heart .heart-outline{fill:#ead3d7;stroke:#8e5360;stroke-width:8}
+.spark-diagram-heart .heart-right-atrium,.spark-diagram-heart .heart-right-ventricle{fill:#a9d1e5;stroke:#527f98;stroke-width:5}
+.spark-diagram-heart .heart-left-atrium,.spark-diagram-heart .heart-left-ventricle{fill:#efb3b3;stroke:#a95a5a;stroke-width:5}
+.spark-diagram-heart .heart-left-ventricle{stroke-width:12}
+.spark-diagram-heart .heart-septum{fill:none;stroke:#81505a;stroke-width:9}
+.spark-diagram-heart .heart-vena-cava,.spark-diagram-heart .heart-pulmonary-artery{fill:none;stroke:#5e91ad;stroke-width:18;stroke-linecap:round}
+.spark-diagram-heart .heart-aorta,.spark-diagram-heart .heart-pulmonary-vein{fill:none;stroke:#bd6262;stroke-width:18;stroke-linecap:round}
+.spark-diagram-heart .heart-tricuspid,.spark-diagram-heart .heart-bicuspid{fill:none;stroke:#f8f2e6;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
+.spark-diagram-heart .heart-flow{fill:none;stroke-width:6;stroke-linecap:round;stroke-dasharray:14 10}
+.spark-diagram-heart .heart-flow.deoxygenated{stroke:#276b94}
+.spark-diagram-heart .heart-flow.oxygenated{stroke:#b64040}
+.spark-diagram-heart .heart-side-label{font-size:15px;font-weight:900}
+.spark-diagram-heart .heart-side-label.deoxygenated{fill:#315f7c}
+.spark-diagram-heart .heart-side-label.oxygenated{fill:#913f3f}
+@media(max-width:560px){
+  .spark-diagram-heart .heart-side-label{font-size:19px}
+}
