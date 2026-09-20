@@ -56,6 +56,7 @@ import AnaerobicRespirationExplorer from "./components/AnaerobicRespirationExplo
 import BreathingMechanismExplorer from "./components/BreathingMechanismExplorer";
 import GaseousExchangeExplorer from "./components/GaseousExchangeExplorer";
 import SmokingGasExchangeExplorer from "./components/SmokingGasExchangeExplorer";
+import FossilFuelsExplorer from "./components/FossilFuelsExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -378,6 +379,9 @@ function GenericLessonContent({
         }
         if (model?.type === "smoking-gaseous-exchange") {
           return <SmokingGasExchangeExplorer key={model.id || "smoking-gaseous-exchange"} />;
+        }
+        if (model?.type === "fossil-fuels") {
+          return <FossilFuelsExplorer key={model.id || "fossil-fuels"} />;
         }
         return null;
       })}
