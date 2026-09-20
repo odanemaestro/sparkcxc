@@ -508,6 +508,94 @@ revoke all on function public.spark_record_learning_evidence_v2(text,text,text,t
 grant execute on function public.spark_record_learning_evidence_v2(text,text,text,text,numeric,boolean,numeric,text,numeric,boolean,text,text,jsonb,text,timestamptz) to authenticated;
 
 -- ---------------------------------------------------------------------------
+-- Automatic Mathematics evidence bridges. These keep full-paper and lesson
+-- activity in the same V2 model even when those screens use older persistence
+-- code. They observe stored results only; they never influence grading.
+-- ---------------------------------------------------------------------------
+create or replace function public.spark_capture_math_exam_learning_v2()
+returns trigger
+language plpgsql
+security definer
+set search_path = public
+as $
+declare
+  v_score numeric;
+  v_key text;
+begin
+  if new.completed_at is null then return new; end if;
+  v_score := case
+    when new.percent is not null then greatest(0,least(1,new.percent/100.0))
+    when new.max_score is not null and new.max_score>0 and new.score is not null then greatest(0,least(1,new.score/new.max_score))
+    else null
+  end;
+  v_key := 'math-exam:'||coalesce(new.attempt_key,new.id::text);
+
+  insert into public.spark_learning_evidence_v2(
+    user_id,subject_id,skill,source,item_id,evidence_key,observed_score,correct,
+    evidence_weight,difficulty,metadata,occurred_at
+  ) values (
+    new.user_id,'mathematics','Mathematics :: Exam readiness','practice_exam',
+    coalesce(new.attempt_key,new.id::text),v_key,v_score,
+    case when v_score is null then null else v_score>=0.60 end,
+    case when lower(coalesce(new.paper_type,''))='paper2' then 1.50 else 1.30 end,
+    'hard',
+    jsonb_build_object('paper_type',new.paper_type,'attempt_key',new.attempt_key),
+    coalesce(new.completed_at,now())
+  )
+  on conflict(user_id,evidence_key) do nothing;
+
+  perform public.spark_recalculate_learning_skill_v2(new.user_id,'mathematics','Mathematics :: Exam readiness');
+  return new;
+end;
+$;
+
+drop trigger if exists spark_capture_math_exam_learning_v2 on public.practice_exam_attempts;
+create trigger spark_capture_math_exam_learning_v2
+after insert or update of completed_at,percent,score
+on public.practice_exam_attempts
+for each row execute function public.spark_capture_math_exam_learning_v2();
+
+create or replace function public.spark_capture_math_lesson_learning_v2()
+returns trigger
+language plpgsql
+security definer
+set search_path = public
+as $
+declare
+  v_title text;
+  v_skill text;
+begin
+  if not coalesce(new.completed,false) then return new; end if;
+  begin
+    select title into v_title from public.lessons where id=new.lesson_id;
+  exception when others then
+    v_title := null;
+  end;
+  v_skill := 'Mathematics :: '||coalesce(nullif(v_title,''),new.lesson_id::text);
+
+  insert into public.spark_learning_evidence_v2(
+    user_id,subject_id,skill,source,item_id,evidence_key,observed_score,correct,
+    evidence_weight,metadata,occurred_at
+  ) values (
+    new.user_id,'mathematics',v_skill,'lesson',
+    new.lesson_id::text,'math-lesson:'||new.lesson_id::text,null,null,0.08,
+    jsonb_build_object('exposure_only',true,'lesson_id',new.lesson_id),
+    coalesce(new.completed_at,now())
+  )
+  on conflict(user_id,evidence_key) do nothing;
+
+  perform public.spark_recalculate_learning_skill_v2(new.user_id,'mathematics',v_skill);
+  return new;
+end;
+$;
+
+drop trigger if exists spark_capture_math_lesson_learning_v2 on public.lesson_progress;
+create trigger spark_capture_math_lesson_learning_v2
+after insert or update of completed,completed_at
+on public.lesson_progress
+for each row execute function public.spark_capture_math_lesson_learning_v2();
+
+-- ---------------------------------------------------------------------------
 -- Recommendation loop. SPARK records what it recommended and whether following
 -- that advice improved the learner state. Effectiveness then becomes a bounded
 -- input to future recommendation ranking.
