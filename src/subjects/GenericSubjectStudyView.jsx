@@ -52,6 +52,7 @@ import FoodEnergyNutritionExplorer from "./components/FoodEnergyNutritionExplore
 import HumanDigestionExplorer from "./components/HumanDigestionExplorer";
 import TeethFunctionExplorer from "./components/TeethFunctionExplorer";
 import RespirationImportanceExplorer from "./components/RespirationImportanceExplorer";
+import AnaerobicRespirationExplorer from "./components/AnaerobicRespirationExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -362,6 +363,9 @@ function GenericLessonContent({
         }
         if (model?.type === "respiration-importance") {
           return <RespirationImportanceExplorer key={model.id || "respiration-importance"} />;
+        }
+        if (model?.type === "anaerobic-respiration") {
+          return <AnaerobicRespirationExplorer key={model.id || "anaerobic-respiration"} />;
         }
         return null;
       })}
