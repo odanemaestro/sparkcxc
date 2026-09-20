@@ -13,6 +13,7 @@ import {
 } from "../../learning/flashcards";
 import { flashcardEvidenceForRating } from "../../learning/learnerModel";
 import { observeRecommendationOutcome } from "../../learning/learnerIntelligencePersistence";
+import { readSparkHashRoute, subscribeSparkRoute } from "../../routing/sparkRoutingV270";
 
 function deckCount(deckId) {
   return FLASHCARDS.filter(card => card.deck === deckId).length;
@@ -20,7 +21,9 @@ function deckCount(deckId) {
 
 export default function FlashcardsPanel({ userId, supabase, showToast, onProgressChange, onReviewRecorded, onLearnerStateChange, weakSkills = [] }) {
   const [rows, setRows] = useState([]);
-  const [deck, setDeck] = useState("all");
+  const requestedDeck = readSparkHashRoute().params.get("deck");
+  const validRequestedDeck = FLASHCARD_DECKS.some(item => item.id === requestedDeck) ? requestedDeck : null;
+  const [deck, setDeck] = useState(validRequestedDeck || "all");
   const [mode, setMode] = useState("due");
   const [index, setIndex] = useState(0);
   const [revealed, setRevealed] = useState(false);
@@ -57,6 +60,11 @@ export default function FlashcardsPanel({ userId, supabase, showToast, onProgres
   }, [userId, supabase, onProgressChange]);
 
   useEffect(() => { load(); }, [load]);
+
+  useEffect(() => subscribeSparkRoute(() => {
+    const requested = readSparkHashRoute().params.get("deck");
+    if (FLASHCARD_DECKS.some(item => item.id === requested)) setDeck(requested);
+  }), []);
 
   const progress = useMemo(() => normalizeFlashcardProgress(rows), [rows]);
   const priorityDecks = useMemo(() => recommendedDeckIdsForSkills(weakSkills), [weakSkills]);

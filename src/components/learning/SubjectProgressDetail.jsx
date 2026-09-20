@@ -10,10 +10,19 @@ function SkillList({ title, rows = [], empty }) {
   return <Card className="spark-subject-progress-skill-card"><h3>{title}</h3>{rows.length ? <div className="spark-subject-progress-skill-list">{rows.map(row => <div key={`${title}-${row.skill}`}><span>{row.skill}</span><strong>{Math.round(Number(row.score || 0))}%</strong></div>)}</div> : <p>{empty}</p>}</Card>;
 }
 
-export default function SubjectProgressDetail({ subject, rows = [], supabase, onOpenSubject, onOpenReport }) {
+export default function SubjectProgressDetail({
+  subject,
+  rows = [],
+  supabase,
+  intelligence: providedIntelligence = null,
+  onOpenSubject,
+  onOpenReport,
+  onRecommendationRecorded,
+}) {
   const summary = useMemo(() => summarizeSubjectProgress(rows, { subjectId: subject?.id, totalTopics: subject?.stats?.topics || 0 }), [rows, subject]);
   const report = useMemo(() => buildGenericSubjectProgressReport({ subject, rows }, { period: "term" }), [rows, subject]);
-  const intelligence = useMemo(() => buildSubjectLearnerIntelligence({ subject, rows }), [rows, subject]);
+  const computedIntelligence = useMemo(() => buildSubjectLearnerIntelligence({ subject, rows }), [rows, subject]);
+  const intelligence = providedIntelligence || computedIntelligence;
   const assessments = report.exams || [];
   const supportsLabs = Boolean(subject?.capabilities?.labs);
   const isInformationTechnology = subject?.id === "information-technology";
@@ -58,6 +67,7 @@ export default function SubjectProgressDetail({ subject, rows = [], supabase, on
       supabase={supabase}
       readOnly={!supabase}
       onStartRecommendation={onOpenSubject ? recommendation => onOpenSubject(subject, recommendation) : undefined}
+      onRecommendationRecorded={onRecommendationRecorded}
     />
 
     <div className="spark-subject-progress-two-col">

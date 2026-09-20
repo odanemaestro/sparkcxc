@@ -89,6 +89,8 @@ import SparkRewardsPanel from "./components/rewards/SparkRewardsPanel"; // SPARK
 import { buildLearningSummary } from "./insights/progressAnalytics";
 import { buildLearnerModelProfile, learnerModelWeakSkills } from "./learning/learnerModel";
 import { buildLearnerIntelligenceFromSkillStates, buildSubjectLearnerIntelligence } from "./learning/learnerIntelligenceV2";
+import { enhanceLearnerIntelligence, openNextBestActionTarget } from "./learning/nextBestActionV2";
+import { loadLearnerRecommendationHistory, loadRecommendationEffectiveness } from "./learning/learnerIntelligencePersistence";
 import { friendlyErrorMessage } from "./lib/errorMessages";
 import { computeStudyStreak } from "./lib/studyStreak";
 import { getExamPerformanceStatus } from "./lib/examPerformance";
@@ -3368,6 +3370,8 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   const [studentFlashcardProgress, setStudentFlashcardProgress] = useState([]);
   const [studentFlashcardReviewEvents, setStudentFlashcardReviewEvents] = useState([]);
   const [studentGoal, setStudentGoal] = useState(null);
+  const [studentRecommendationHistory, setStudentRecommendationHistory] = useState([]);
+  const [studentRecommendationEffectiveness, setStudentRecommendationEffectiveness] = useState([]);
   const [studentStudyCircle, setStudentStudyCircle] = useState({ active: false });
   const [studentReportOpen, setStudentReportOpen] = useState(false);
   const [studentReportSubject, setStudentReportSubject] = useState("all");
@@ -3662,6 +3666,12 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       .then(({data,error}) => { if (!error) setStudentFlashcardReviewEvents(data || []); });
     supabase.from("spark_student_goals").select("*").eq("student_id", user.id).eq("status", "active").order("created_at", {ascending:false}).limit(1)
       .then(({data,error}) => { if (!error) setStudentGoal(data?.[0] || null); });
+    loadLearnerRecommendationHistory({ supabase, limit:120 })
+      .then(({data,error}) => { if (!error) setStudentRecommendationHistory(data || []); })
+      .catch(() => {});
+    loadRecommendationEffectiveness({ supabase })
+      .then(({data,error}) => { if (!error) setStudentRecommendationEffectiveness(data || []); })
+      .catch(() => {});
     // Reports expose only a privacy-safe Study Circle participation summary.
     // The full Study Circle board/member data stays inside the Circles feature.
     supabase.rpc("spark_get_study_circle_home")
@@ -3974,7 +3984,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     goal: studentGoal,
   });
   const studentLearnerModel = buildLearnerModelProfile(studentLearnerStates);
-  const studentMathIntelligence = buildLearnerIntelligenceFromSkillStates({
+  const studentMathBaseIntelligence = buildLearnerIntelligenceFromSkillStates({
     subject: getSparkSubject(SPARK_SUBJECTS, "mathematics"),
     learnerStates: studentLearnerStates,
     summary: {
@@ -4001,31 +4011,38 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     subjectProgressRows: mergedSubjectProgressRows,
     discoverFromProgress: subjectEnrollmentAvailable !== true,
   });
+  const studentBaseIntelligenceBySubject = Object.fromEntries(subjectDashboardSummaries.map(subject => [
+    subject.id,
+    subject.id === "mathematics"
+      ? studentMathBaseIntelligence
+      : buildSubjectLearnerIntelligence({ subject, rows:mergedSubjectProgressRows }),
+  ]));
+  const studentIntelligenceBySubject = Object.fromEntries(subjectDashboardSummaries.map(subject => [
+    subject.id,
+    enhanceLearnerIntelligence(studentBaseIntelligenceBySubject[subject.id], {
+      history:studentRecommendationHistory.filter(row => String(row.subject_id || "").toLowerCase() === subject.id),
+      effectiveness:studentRecommendationEffectiveness,
+      allSubjectIntelligence:studentBaseIntelligenceBySubject,
+      sourceRows:mergedSubjectProgressRows,
+    }),
+  ]));
+  const studentMathIntelligence = studentIntelligenceBySubject.mathematics || studentMathBaseIntelligence;
   const allSubjectsSummary = summarizeAllSubjects(subjectDashboardSummaries);
   const subjectReportSources = subjectDashboardSummaries.map(item => item.id === "mathematics"
-    ? { subject:item, kind:"mathematics", data:studentReportData }
-    : { subject:item, kind:"subject", rows:mergedSubjectProgressRows, events:subjectActivityEvents });
+    ? { subject:item, kind:"mathematics", data:studentReportData, intelligence:studentIntelligenceBySubject[item.id] }
+    : { subject:item, kind:"subject", rows:mergedSubjectProgressRows, events:subjectActivityEvents, intelligence:studentIntelligenceBySubject[item.id] });
   const recentSubjectActivity = buildRecentSubjectActivity({
     subjectProgressRows: [...mergedSubjectProgressRows, ...subjectActivityEvents],
     mathematicsMilestones: studentMilestones,
     subjects: studentEnrolledSubjects,
   });
   const dashboardSubjectInsights = Object.fromEntries(subjectDashboardSummaries.map(subject => {
-    if (subject.id === "mathematics") {
-      return [subject.id, studentMathIntelligence?.hasEvidence && studentMathIntelligence?.recommendation ? {
-        title: studentMathIntelligence.recommendation.title,
-        detail: studentMathIntelligence.recommendation.detail,
-      } : null];
-    }
-
-    const intelligence = buildSubjectLearnerIntelligence({
-      subject,
-      rows: mergedSubjectProgressRows,
-    });
-
+    const intelligence = studentIntelligenceBySubject[subject.id];
     return [subject.id, intelligence?.hasEvidence && intelligence?.recommendation ? {
-      title: intelligence.recommendation.title,
-      detail: intelligence.recommendation.detail,
+      title:intelligence.recommendation.title,
+      detail:intelligence.recommendation.target?.label
+        ? `${intelligence.recommendation.detail} Next: ${intelligence.recommendation.target.label}.`
+        : intelligence.recommendation.detail,
     } : null];
   }));
   const now = new Date();
@@ -4640,21 +4657,12 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                   <LearnerIntelligencePanel
                     intelligence={studentMathIntelligence}
                     supabase={supabase}
-                    onStartRecommendation={recommendation => {
-                      if (recommendation?.actionType === "flashcards") {
-                        setDashboardSection("flashcards");
-                        setFlashcardSubjectRoute("mathematics");
-                        return;
-                      }
-
-                      if (["lesson", "prerequisite_review"].includes(recommendation?.actionType)) {
-                        setView("lesson");
-                        return;
-                      }
-
-                      setView("practice-math");
-                      writeSparkNestedRoute("/practice/mathematics", { mode: "adaptive" });
-                    }}
+                    onStartRecommendation={recommendation => openNextBestActionTarget(recommendation, {
+                      setView,
+                      setDashboardSection,
+                      setFlashcardSubjectRoute,
+                    })}
+                    onRecommendationRecorded={row => row && setStudentRecommendationHistory(current => [row, ...current].slice(0, 200))}
                   />
                 </div>
                 <Card style={{marginBottom:20}}>
@@ -4681,14 +4689,13 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                   subject={subjectDashboardSummaries.find(subject => subject.id === progressSubject) || getSparkSubject(SPARK_SUBJECTS, progressSubject)}
                   rows={mergedSubjectProgressRows}
                   supabase={supabase}
-                  onOpenSubject={(subject, recommendation) => {
-                    if (recommendation?.actionType === "flashcards") {
-                      setDashboardSection("flashcards");
-                      setFlashcardSubjectRoute(subject?.id);
-                      return;
-                    }
-                    setView(subject?.studyView || "study");
-                  }}
+                  intelligence={studentIntelligenceBySubject[progressSubject]}
+                  onOpenSubject={(subject, recommendation) => openNextBestActionTarget(recommendation, {
+                    setView,
+                    setDashboardSection,
+                    setFlashcardSubjectRoute,
+                  })}
+                  onRecommendationRecorded={row => row && setStudentRecommendationHistory(current => [row, ...current].slice(0, 200))}
                   onOpenReport={subject => { setStudentReportSubject(subject?.id || progressSubject); setStudentReportOpen(true); }}
                 />
               </div>
@@ -5976,6 +5983,30 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
     subjectProgressRows: childData?.subjectProgressRows || [],
     discoverFromProgress: childData?.subjectEnrollmentAvailable !== true,
   });
+  const parentMathBaseIntelligence = buildLearnerIntelligenceFromSkillStates({
+    subject:getSparkSubject(SPARK_SUBJECTS, "mathematics"),
+    learnerStates:childData?.learnerStates || [],
+    summary:{
+      lessonPercent:SYLLABUS_SECTIONS.reduce((sum, section) => sum + section.topics.length, 0)
+        ? Math.round((parentMathematicsLessonRows.length / SYLLABUS_SECTIONS.reduce((sum, section) => sum + section.topics.length, 0)) * 100)
+        : 0,
+      mastery:parentLearningSummary.mastery || 0,
+      practiceAverage:parentLearningSummary.mastery || 0,
+    },
+  });
+  const parentBaseIntelligenceBySubject = Object.fromEntries(parentSubjectDashboardSummaries.map(subject => [
+    subject.id,
+    subject.id === "mathematics"
+      ? parentMathBaseIntelligence
+      : buildSubjectLearnerIntelligence({ subject, rows:childData?.subjectProgressRows || [] }),
+  ]));
+  const parentIntelligenceBySubject = Object.fromEntries(parentSubjectDashboardSummaries.map(subject => [
+    subject.id,
+    enhanceLearnerIntelligence(parentBaseIntelligenceBySubject[subject.id], {
+      allSubjectIntelligence:parentBaseIntelligenceBySubject,
+      sourceRows:childData?.subjectProgressRows || [],
+    }),
+  ]));
   const parentAllSubjectsSummary = summarizeAllSubjects(parentSubjectDashboardSummaries);
   const parentRecentSubjectActivity = buildRecentSubjectActivity({
     subjectProgressRows: [...(childData?.subjectProgressRows || []), ...(childData?.subjectActivityEvents || [])],
@@ -5995,8 +6026,8 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
     studyCircle: childData?.studyCircle || null,
   };
   const parentSubjectReportSources = parentSubjectDashboardSummaries.map(item => item.id === "mathematics"
-    ? { subject:item, kind:"mathematics", data:parentReportData }
-    : { subject:item, kind:"subject", rows:childData?.subjectProgressRows || [], events:childData?.subjectActivityEvents || [] });
+    ? { subject:item, kind:"mathematics", data:parentReportData, intelligence:parentIntelligenceBySubject[item.id] }
+    : { subject:item, kind:"subject", rows:childData?.subjectProgressRows || [], events:childData?.subjectActivityEvents || [], intelligence:parentIntelligenceBySubject[item.id] });
   const formatExamDuration = seconds => {
     const safe = Math.max(0, Number(seconds) || 0);
     const hours = Math.floor(safe / 3600);
@@ -6095,6 +6126,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
                 child={selectedChild}
                 summary={parentLearningSummary}
                 learnerModel={parentLearnerModel}
+                learnerIntelligence={parentIntelligenceBySubject.mathematics}
                 goal={childData.goal}
                 supabase={supabase}
                 parentUserId={user.id}
@@ -6152,6 +6184,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated }) {
               <SubjectProgressDetail
                 subject={parentSubjectDashboardSummaries.find(subject => subject.id === parentProgressSubject) || getSparkSubject(SPARK_SUBJECTS, parentProgressSubject)}
                 rows={childData.subjectProgressRows || []}
+                intelligence={parentIntelligenceBySubject[parentProgressSubject]}
                 onOpenReport={subject => { setParentReportSubject(subject?.id || parentProgressSubject); setParentReportOpen(true); }}
               />
             </div>

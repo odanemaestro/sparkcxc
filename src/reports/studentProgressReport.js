@@ -235,6 +235,20 @@ export function generateStudentProgressPdfBytes({ studentName, report, parentNam
     y2 -= 24;
   }
 
+  if (report.learnerIntelligence?.hasEvidence) {
+    const intelligence = report.learnerIntelligence;
+    y2 = sectionTitle(page2, "SPARK learner intelligence", y2);
+    page2.text(`Exam readiness: ${Number(intelligence.metrics?.readinessPercent || 0)}%`, 48, y2, 10.5, true, "#0D9488");
+    y2 -= 18;
+    if (intelligence.recommendation?.title) {
+      y2 = page2.paragraph(`Next best action: ${cleanText(intelligence.recommendation.title)}. ${cleanText(intelligence.recommendation.detail || "")}`, 48, y2, { size:9.7, maxChars:86, color:"#334E68" }) - 6;
+    }
+    const limiter = intelligence.nextBestActionPlan?.readinessLimiters?.[0];
+    if (limiter) {
+      y2 = page2.paragraph(`Main readiness limiter: ${cleanText(limiter.label)} (${Math.round(Number(limiter.value || 0))}%). ${cleanText(limiter.detail || "")}`, 48, y2, { size:9.3, maxChars:86, color:"#6B7C93" }) - 8;
+    }
+  }
+
   y2 = sectionTitle(page2, "Recommended next steps", y2);
   (report.recommendations || []).slice(0, 4).forEach((recommendation, index) => {
     page2.text(`${index + 1}.`, 48, y2, 10, true, "#0D9488");

@@ -1,9 +1,9 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import course from "../course/itCourseData.json";
 import InformationTechnologyTools from "./InformationTechnologyTools";
 import InformationTechnologyVisuals from "./InformationTechnologyVisuals";
 import InformationTechnologyPracticalLabs from "../labs/InformationTechnologyPracticalLabs";
-import { useInformationTechnologyStudyRoute } from "../../routing/sparkRoutingV270";
+import { readSparkHashRoute, useInformationTechnologyStudyRoute } from "../../routing/sparkRoutingV270";
 import objectiveCoverage from "../course/itObjectiveCoverage.json";
 import "./informationTechnology.css";
 
@@ -110,14 +110,16 @@ function CoreNotes({ text }) {
   );
 }
 
-function TopicPractice({ topicId }) {
+function TopicPractice({ topicId, onResult }) {
   const item = PRACTICE_BANK[topicId];
   const [choice, setChoice] = useState(null);
   const [checked, setChecked] = useState(false);
+  const recordedRef = useRef(false);
 
   useEffect(() => {
     setChoice(null);
     setChecked(false);
+    recordedRef.current = false;
   }, [topicId]);
 
   if (!item) return null;
@@ -144,7 +146,13 @@ function TopicPractice({ topicId }) {
         ))}
       </div>
       <div className="it-practice-check-row">
-        <button type="button" className="it-primary" disabled={choice == null} onClick={() => setChecked(true)}>Check answer</button>
+        <button type="button" className="it-primary" disabled={choice == null} onClick={() => {
+          setChecked(true);
+          if (!recordedRef.current) {
+            recordedRef.current = true;
+            onResult?.({ correct, choice, answer:item.answer });
+          }
+        }}>Check answer</button>
         {checked && (
           <div className={`it-inline-feedback ${correct ? "correct" : "wrong"}`} role="status">
             <strong>{correct ? "Correct." : "Not quite."}</strong> {item.why}
@@ -235,24 +243,57 @@ function ExamIt({ topic }) {
   </div>;
 }
 
-function TopicLesson({ topic, onBack, completed = false, onToggleComplete }) {
+function TopicLesson({ topic, onBack, completed = false, onToggleComplete, onActivity, initialStep = "learn" }) {
   const [toolOpen, setToolOpen] = useState(true);
-  const [activeStep, setActiveStep] = useState("learn");
+  const [activeStep, setActiveStep] = useState(LESSON_STEPS.some(step => step.id === initialStep) ? initialStep : "learn");
   const refs = useRef({});
 
   const setSectionRef = id => node => {
     if (node) refs.current[id] = node;
   };
 
-  const moveTo = id => {
+  const moveTo = (id, options = {}) => {
     const node = refs.current[id];
-    if (!node) return;
+    if (!node) return false;
+    const behavior = options.behavior || "smooth";
+    const shouldFocus = options.focus !== false;
     setActiveStep(id);
-    node.scrollIntoView({ behavior: "smooth", block: "start" });
-    window.setTimeout(() => {
-      if (typeof node.focus === "function") node.focus({ preventScroll: true });
-    }, 380);
+    node.scrollIntoView({ behavior, block: "start" });
+    if (shouldFocus) {
+      window.setTimeout(() => {
+        if (typeof node.focus === "function") node.focus({ preventScroll: true });
+      }, behavior === "smooth" ? 380 : 0);
+    }
+    return true;
   };
+
+  // SPARK_NEXT_BEST_ACTION_IT_STEP
+  // Direct recommendations must land on the requested lesson stage even though
+  // the app shell also resets nested Physics/IT routes to the page top.
+  useLayoutEffect(() => {
+    const safeStep = LESSON_STEPS.some(step => step.id === initialStep) ? initialStep : "learn";
+    setActiveStep(safeStep);
+
+    let frame1 = 0;
+    let frame2 = 0;
+    const settleTimer = window.setTimeout(() => {
+      moveTo(safeStep, { behavior:"auto", focus:false });
+    }, 260);
+
+    frame1 = window.requestAnimationFrame(() => {
+      frame2 = window.requestAnimationFrame(() => {
+        moveTo(safeStep, { behavior:"auto", focus:false });
+      });
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frame1);
+      window.cancelAnimationFrame(frame2);
+      window.clearTimeout(settleTimer);
+    };
+    // moveTo is intentionally local to the rendered topic.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [topic.id, initialStep]);
 
   useEffect(() => {
     const nodes = LESSON_STEPS.map(step => refs.current[step.id]).filter(Boolean);
@@ -355,7 +396,20 @@ function TopicLesson({ topic, onBack, completed = false, onToggleComplete }) {
           <div className="it-panel-label">Practise it</div>
           <h2>Try one yourself</h2>
           <p className="it-section-intro">Choose an answer first. SPARK will explain the result after you check it.</p>
-          <TopicPractice topicId={topic.id}/>
+          <TopicPractice
+            topicId={topic.id}
+            onResult={result => onActivity?.({
+              type:"it_topic_practice",
+              topicId:topic.id,
+              section:topic.section,
+              title:topic.title,
+              score:result.correct ? 1 : 0,
+              maxScore:1,
+              percent:result.correct ? 100 : 0,
+              completed:true,
+              at:new Date().toISOString(),
+            })}
+          />
         </section>
 
         <section ref={setSectionRef("check")} data-lesson-step="check" tabIndex="-1" className="it-panel it-scroll-target">
@@ -458,7 +512,17 @@ export default function InformationTechnologySubjectView({ onBack, userId, onAct
   const section = sectionId ? course.sections.find(item => item.id === sectionId) : null;
   const topic = topicId ? course.topics.find(item => item.id === topicId) : null;
 
-  if (topic) return <TopicLesson topic={topic} completed={Boolean(lessonProgress[`lesson:${topic.id}`])} onToggleComplete={value => setLessonCompleted(topic, value)} onBack={() => setTopicId(null)}/>;
+  if (topic) {
+    const requestedStep = readSparkHashRoute().params.get("step") || "learn";
+    return <TopicLesson
+      topic={topic}
+      initialStep={requestedStep}
+      completed={Boolean(lessonProgress[`lesson:${topic.id}`])}
+      onToggleComplete={value => setLessonCompleted(topic, value)}
+      onActivity={onActivity}
+      onBack={() => setTopicId(null)}
+    />;
+  }
   if (labsOpen) return <InformationTechnologyPracticalLabs userId={userId} onActivity={onActivity} onBack={() => setLabsOpen(false)}/>;
   if (section) return <SectionView section={section} onBack={() => setSectionId(null)} onOpenTopic={setTopicId}/>;
 

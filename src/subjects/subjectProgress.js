@@ -997,6 +997,28 @@ export function activityPayloadFromInformationTechnologyEvent(event = {}) {
     };
   }
 
+  if (type === "it_topic_practice") {
+    const topicId = String(event.topicId || event.topic || "").trim();
+    if (!topicId) return null;
+    return {
+      subjectId:"information-technology",
+      activityKey:`topic-practice:${topicId}`,
+      activityType:"practice",
+      sectionId:event.section != null ? String(event.section) : null,
+      topicId,
+      title:event.title || `Information Technology topic ${topicId} practice`,
+      completed:event.completed !== false,
+      score:event.score ?? null,
+      maxScore:event.maxScore ?? null,
+      percent:event.percent ?? null,
+      metadata:{
+        source:"information_technology_topic_practice",
+        event_type:type,
+        at:event.at || new Date().toISOString(),
+      },
+    };
+  }
+
   if (type === "it_lab_completion") {
     const labId = String(event.labId || "").trim();
     if (!labId) return null;

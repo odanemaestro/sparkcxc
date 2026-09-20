@@ -5,6 +5,62 @@ import {
   LEARNER_INTELLIGENCE_VERSION,
 } from "./learnerIntelligenceV2";
 
+describe("IT broad-exam skill attribution", () => {
+  test("decomposes IT Paper 02 profiles into real learner skills", () => {
+    const subject = { id:"information-technology", name:"CSEC Information Technology", stats:{ topics:26 } };
+    const result = buildSubjectLearnerIntelligence({
+      subject,
+      rows:[{
+        subject_id:"information-technology",
+        activity_key:"paper2:P2-E",
+        activity_type:"exam",
+        title:"Practice Paper 02 - E",
+        completed:true,
+        percent:28,
+        metadata:{
+          source:"information_technology_practice",
+          paper_type:"paper2",
+          profiles:{
+            "Theory":7,
+            "Productivity Tools":24,
+            "Problem-Solving and Programming":10,
+          },
+        },
+        updated_at:"2026-09-20T04:00:00Z",
+      }],
+      now:new Date("2026-09-20T05:00:00Z"),
+    });
+
+    expect(result.states.map(item => item.skill)).toEqual(expect.arrayContaining([
+      "Theory",
+      "Productivity Tools",
+      "Problem-Solving and Programming",
+    ]));
+    expect(result.states.some(item => /Practice Paper 02/i.test(item.skill))).toBe(false);
+  });
+
+  test("does not turn a whole IT Paper 01 title into a learner skill", () => {
+    const subject = { id:"information-technology", name:"CSEC Information Technology", stats:{ topics:26 } };
+    const result = buildSubjectLearnerIntelligence({
+      subject,
+      rows:[{
+        subject_id:"information-technology",
+        activity_key:"paper1:P1-A",
+        activity_type:"exam",
+        title:"Practice Paper 01 - A",
+        completed:true,
+        percent:55,
+        metadata:{ source:"information_technology_practice", paper_type:"paper1" },
+        updated_at:"2026-09-20T04:00:00Z",
+      }],
+      now:new Date("2026-09-20T05:00:00Z"),
+    });
+
+    expect(result.hasEvidence).toBe(true);
+    expect(result.metrics.assessmentAverage).toBe(55);
+    expect(result.states.some(item => /Practice Paper 01/i.test(item.skill))).toBe(false);
+  });
+});
 describe("SPARK Learner Intelligence V2", () => {
   test("weights scored assessment evidence more strongly than lesson completion", () => {
     const now = new Date("2026-09-20T00:00:00Z");

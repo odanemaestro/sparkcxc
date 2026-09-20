@@ -21,12 +21,29 @@ import { adaptiveOptionDisplayText } from "./adaptiveOptionPresentation";
 import ReportQuestionButton from "../components/ui/ReportQuestionButton";
 import MathText from "../practice/MathText";
 import BackArrowIcon from "../components/ui/BackArrowIcon";
+import { readSparkHashRoute } from "../routing/sparkRoutingV270";
 import "./adaptive.css";
 
 function isAdaptiveMultipleChoice(question) {
   const type = String(question?.question_type || question?.response_mode || "").toLowerCase();
   return type === "multiple_choice" || type === "mcq" || Array.isArray(question?.options);
 }
+function findRequestedSkillLocation(manifest, requestedSkill) {
+  const wanted = String(requestedSkill || "").trim().toLowerCase();
+  if (!wanted || !manifest?.areas) return null;
+
+  for (const area of manifest.areas) {
+    for (const topic of area.topics || []) {
+      const values = [topic.name, ...(topic.skills || [])]
+        .map(value => String(value || "").trim().toLowerCase());
+      if (values.some(value => value === wanted || value.includes(wanted) || wanted.includes(value))) {
+        return { area, topic };
+      }
+    }
+  }
+  return null;
+}
+
 function adaptiveOptionKey(option, index) {
   if (typeof option === "string") return String.fromCharCode(65 + index);
   return String(option?.key || String.fromCharCode(65 + index)).toUpperCase();
@@ -69,7 +86,7 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
   const [dbMessage, setDbMessage] = useState("");
   const [sessionHydrated, setSessionHydrated] = useState(false);
   const storageKey = adaptiveSessionStorageKey(userId);
-  const requestedSkill = new URLSearchParams(window.location.search).get("skill");
+  const requestedSkill = readSparkHashRoute().params.get("skill");
 
   useEffect(() => {
     let cancelled = false;
@@ -77,16 +94,18 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
       if (cancelled) return;
       setManifest(m);
 
+      const requestedLocation = findRequestedSkillLocation(m, requestedSkill);
       const saved = readAdaptiveSession(storageKey);
       const savedArea = m.areas?.find(item => item.name === saved?.selectedArea);
       const savedTopic = savedArea?.topics?.find(item => item.name === saved?.selectedTopic);
-      const area = savedArea || m.areas?.[0];
+      const area = requestedLocation?.area || savedArea || m.areas?.[0];
+      const topic = requestedLocation?.topic || savedTopic || area?.topics?.[0];
 
       setSelectedArea(area?.name || "");
-      setSelectedTopic(savedTopic?.name || area?.topics?.[0]?.name || "");
+      setSelectedTopic(topic?.name || "");
     });
     return () => { cancelled = true; };
-  }, [storageKey]);
+  }, [storageKey, requestedSkill]);
 
   useEffect(() => {
     let cancelled = false;

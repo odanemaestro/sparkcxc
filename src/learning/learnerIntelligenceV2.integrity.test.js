@@ -10,13 +10,17 @@ describe("SPARK Learner Intelligence V2 integration", () => {
   const panel = fs.readFileSync(path.join(root, "components", "learning", "LearnerIntelligencePanel.jsx"), "utf8");
   const adaptive = fs.readFileSync(path.join(root, "adaptive", "AdaptivePractice.jsx"), "utf8");
   const mathFlashcards = fs.readFileSync(path.join(root, "components", "learning", "FlashcardsPanel.jsx"), "utf8");
+  const nextBestAction = fs.readFileSync(path.join(root, "learning", "nextBestActionV2.js"), "utf8");
   const migration = fs.readFileSync(path.join(root, "..", "supabase", "migrations", "20260920213000_learner_intelligence_v2.sql"), "utf8");
 
   test("student progress surfaces learner intelligence for Mathematics and other subjects", () => {
     expect(app).toContain("buildLearnerIntelligenceFromSkillStates");
     expect(app).toContain("studentMathIntelligence");
     expect(app).toContain("<LearnerIntelligencePanel");
-    expect(app).toContain('writeSparkNestedRoute("/practice/mathematics", { mode: "adaptive" })');
+    expect(app).toContain("openNextBestActionTarget");
+    expect(app).toContain("studentIntelligenceBySubject");
+    expect(nextBestAction).toMatch(/path\s*:\s*["']\/practice\/mathematics["']/);
+    expect(nextBestAction).toMatch(/params\s*:\s*\{\s*mode\s*:\s*["']adaptive["']\s*,\s*skill\s*\}/);
     expect(detail).toContain("buildSubjectLearnerIntelligence");
     expect(detail).toContain("<LearnerIntelligencePanel");
   });

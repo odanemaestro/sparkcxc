@@ -60,19 +60,25 @@ export default function ProgressReportModal({
   const report = useMemo(() => {
     const options = { period, custom: { start: customStart, end: customEnd } };
     if (subjectId === "all" && normalizedSources.length > 1) {
-      return buildAllSubjectsProgressReport({
+      const built = buildAllSubjectsProgressReport({
         subjectSources: normalizedSources.map(source => source.kind === "mathematics"
           ? { ...source, data: { ...(source.data || {}), learnerName: student?.name || "", goal: null } }
           : { ...source, goal: null }),
         goal: overallGoal,
       }, options);
+      const priorityIntelligence = normalizedSources
+        .map(source => source.intelligence)
+        .filter(item => item?.hasEvidence)
+        .sort((a,b) => Number(a.metrics?.readinessPercent || 0) - Number(b.metrics?.readinessPercent || 0))[0] || null;
+      return { ...built, learnerIntelligence:priorityIntelligence };
     }
     const source = normalizedSources.find(item => item.subject?.id === subjectId) || normalizedSources[0];
     if (source?.kind === "mathematics") {
       const built = buildProgressReport({ ...(source.data || data || {}), learnerName: student?.name || "" }, options);
-      return { ...built, subjectId: source.subject.id, subjectName: source.subject.name };
+      return { ...built, subjectId:source.subject.id, subjectName:source.subject.name, learnerIntelligence:source.intelligence || null };
     }
-    return buildGenericSubjectProgressReport({ subject: source?.subject, rows: source?.rows || [], events: source?.events || [] }, options);
+    const built = buildGenericSubjectProgressReport({ subject:source?.subject, rows:source?.rows || [], events:source?.events || [] }, options);
+    return { ...built, learnerIntelligence:source?.intelligence || null };
   }, [subjectId, normalizedSources, data, student?.name, period, customStart, customEnd, overallGoal]);
 
   const selectedSubjectName = report?.subjectName || (subjectId === "all" ? "All subjects" : normalizedSources.find(item => item.subject?.id === subjectId)?.subject?.name) || "Learning progress";
@@ -119,6 +125,7 @@ export default function ProgressReportModal({
             assessmentLabel: report.assessmentLabel || "",
             goal: report.goal || null,
             studyCircle: report.studyCircle || null,
+            learnerIntelligence: report.learnerIntelligence || null,
           },
           pdf_base64: pdfBytesToBase64(bytes),
         },
@@ -181,6 +188,10 @@ export default function ProgressReportModal({
             </>}
           </div>
           <div className="spark-report-insight"><span>SPARK INSIGHT</span><p><InsightText text={summary.insight}/></p></div>
+          {report.learnerIntelligence?.hasEvidence && <div className="spark-report-insight">
+            <span>SPARK LEARNER INTELLIGENCE</span>
+            <p><strong>Exam readiness: {report.learnerIntelligence.metrics?.readinessPercent ?? 0}%.</strong> Next best action: {report.learnerIntelligence.recommendation?.title || "Continue building learning evidence"}{report.learnerIntelligence.recommendation?.target?.label ? ` | ${report.learnerIntelligence.recommendation.target.label}` : ""}.</p>
+          </div>}
           <div className="spark-report-skill-grid">
             <ReportSkillList title={report.strongestAreaTitle || "Strongest areas"} rows={report.strongestSkills} empty={report.strongestEmpty || "No mastery data yet."}/>
             <ReportSkillList title={report.weakestAreaTitle || "Areas to improve"} rows={report.weakestSkills} empty={report.weakestEmpty || "No priority areas recorded."}/>

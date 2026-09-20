@@ -44,7 +44,7 @@ describe("SPARK multi-subject dashboard and progress v1", () => {
     expect(subjectProgress).toContain("buildGenericSubjectProgressReport({ subject, rows = [], events = [] }");
     expect(subjectProgress).toContain("buildAllSubjectsProgressReport({ subjectSources = [], goal = null }");
     expect(subjectProgress).toContain("events: source.events || []");
-    expect(reportModal).toContain("events: source?.events || []");
+    expect(reportModal).toMatch(/events\s*:\s*source\?\.events\s*\|\|\s*\[\]/);
     expect(app).toContain("events:subjectActivityEvents");
     expect(app).toContain("events:childData?.subjectActivityEvents || []");
   });

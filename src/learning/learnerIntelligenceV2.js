@@ -85,6 +85,51 @@ function skillKeyForRow(row = {}) {
   return String(explicit || row.topic_id || row.section_id || row.title || row.activity_key || "general").trim();
 }
 
+const IT_PROFILE_SKILL_MAX = Object.freeze({
+  "Theory": 35,
+  "Productivity Tools": 30,
+  "Problem-Solving and Programming": 25,
+});
+
+function hasExplicitSkillScope(row = {}) {
+  return Boolean(
+    row?.metadata?.skill ||
+    row?.metadata?.objective ||
+    row?.metadata?.subtopic ||
+    row?.topic_id ||
+    row?.section_id
+  );
+}
+
+function informationTechnologyProfileEvidence(row = {}) {
+  if (normalized(row?.subject_id) !== "information-technology") return [];
+  if (normalized(row?.activity_type) !== "exam") return [];
+
+  const profiles = row?.metadata?.profiles;
+  if (!profiles || typeof profiles !== "object") return [];
+
+  return Object.entries(IT_PROFILE_SKILL_MAX)
+    .map(([skill, max]) => {
+      const earned = Number(profiles?.[skill]);
+      if (!Number.isFinite(earned)) return null;
+      const percent = Math.max(0, Math.min(100, Math.round((earned / max) * 100)));
+      return {
+        ...row,
+        percent,
+        best_percent:percent,
+        metadata:{
+          ...(row.metadata || {}),
+          skill,
+          profile_name:skill,
+          profile_earned:earned,
+          profile_max:max,
+          source:`${row?.metadata?.source || "information_technology_practice"}:profile`,
+        },
+      };
+    })
+    .filter(Boolean);
+}
+
 function evidenceScore(row = {}) {
   const percent = Number(row.percent ?? row.best_percent);
   if (Number.isFinite(percent)) return clamp(percent / 100);
@@ -360,11 +405,30 @@ function actionForState(subjectId, state, prerequisiteRisk = []) {
 
 function groupRowsBySkill(rows = [], subjectId = "") {
   const grouped = new Map();
-  for (const row of rows || []) {
-    if (subjectId && normalized(row.subject_id) && normalized(row.subject_id) !== normalized(subjectId)) continue;
+
+  const add = row => {
     const key = skillKeyForRow(row);
     if (!grouped.has(key)) grouped.set(key, []);
     grouped.get(key).push(row);
+  };
+
+  for (const row of rows || []) {
+    if (subjectId && normalized(row.subject_id) && normalized(row.subject_id) !== normalized(subjectId)) continue;
+
+    const profileRows = informationTechnologyProfileEvidence(row);
+    if (profileRows.length) {
+      profileRows.forEach(add);
+      continue;
+    }
+
+    // A full Paper 01/Paper 02 result is valuable assessment evidence for
+    // readiness, but its paper title is not a learner skill. Only an exam row
+    // with an actual topic/section/skill scope may create a skill state.
+    if (normalized(row.activity_type) === "exam" && !hasExplicitSkillScope(row)) {
+      continue;
+    }
+
+    add(row);
   }
   return grouped;
 }

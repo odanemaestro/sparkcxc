@@ -15,6 +15,7 @@ export default function ParentOverviewIntelligence({
   child,
   summary,
   learnerModel,
+  learnerIntelligence = null,
   onOpenReport,
 }) {
   const priorities = learnerModel?.hasEvidence ? learnerModel.prioritySkills?.slice(0, 3) || [] : [];
@@ -35,10 +36,19 @@ export default function ParentOverviewIntelligence({
         <div><strong>{summary?.weekly?.tutorSessions || 0}</strong><span>Tutor sessions</span></div>
       </div>
 
+      {learnerIntelligence?.recommendation && <Card className="spark-parent-learner-model-card">
+        <div className="spark-card-heading-row">
+          <div><span className="section-kicker">NEXT BEST ACTION</span><h3>What SPARK recommends next</h3></div>
+          <span className="spark-model-explainer">{learnerIntelligence.metrics?.readinessPercent ?? 0}% exam readiness</span>
+        </div>
+        <p className="spark-model-recommendation"><strong>{learnerIntelligence.recommendation.title}.</strong> {learnerIntelligence.recommendation.detail}</p>
+        {learnerIntelligence.recommendation.target?.label && <p className="spark-model-recommendation">Target activity: {learnerIntelligence.recommendation.target.label}{learnerIntelligence.recommendation.expectedMinutes ? ` | about ${learnerIntelligence.recommendation.expectedMinutes} minutes` : ""}.</p>}
+      </Card>}
+
       {priorities.length > 0 && <Card className="spark-parent-learner-model-card">
         <div className="spark-card-heading-row"><div><span className="section-kicker">LEARNER MODEL</span><h3>What SPARK is seeing</h3></div><span className="spark-model-explainer">Based on recent learning activity</span></div>
         <div className="spark-parent-learner-list">{priorities.map(item => <div key={item.skill} className="spark-parent-learner-row">
-          <div><strong>{item.skill}</strong><span>{item.confidenceLabel} confidence · {item.trendLabel}{item.commonError ? ` · Recurring issue: ${item.commonError.label}` : ""}</span></div>
+          <div><strong>{item.skill}</strong><span>{item.confidenceLabel} confidence | {item.trendLabel}{item.commonError ? ` | Recurring issue: ${item.commonError.label}` : ""}</span></div>
           <strong>{item.mastery}%</strong>
         </div>)}</div>
         <p className="spark-model-recommendation">Next priority: {priorities[0].recommendation}</p>
