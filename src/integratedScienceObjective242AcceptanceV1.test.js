@@ -56,7 +56,7 @@ describe("Integrated Science Objective 2.4.2 acceptance audit", () => {
   });
 
   test("covers parallel-circuit rules", () => {
-    expect(migration).toContain("main current entering equals the total current leaving");
+    expect(migration).toContain("total current entering equals the total current leaving");
     expect(migration).toContain("0.3 A and 0.2 A");
     expect(migration).toContain("remain lit");
     expect(migration).toContain("switched independently");
