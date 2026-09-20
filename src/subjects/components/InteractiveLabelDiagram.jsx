@@ -166,6 +166,27 @@ function MaleReproductiveTemplate() {
   );
 }
 
+function PregnancyUterusTemplate() {
+  return (
+    <g className="spark-diagram-pregnancy" aria-hidden="true">
+      <path className="pregnancy-uterus-wall" d="M325 105 Q500 55 675 105 Q755 225 710 405 Q675 515 500 555 Q325 515 290 405 Q245 225 325 105Z" />
+      <path className="pregnancy-amnion" d="M355 145 Q500 105 625 170 Q690 255 640 390 Q585 485 465 485 Q350 470 315 365 Q285 245 355 145Z" />
+      <path className="pregnancy-placenta" d="M330 160 Q295 235 320 325 Q345 385 385 405 Q430 345 420 250 Q410 185 330 160Z" />
+      <path className="pregnancy-umbilical" d="M395 300 Q455 255 505 310 Q545 355 585 320" />
+      <g className="pregnancy-foetus">
+        <circle cx="570" cy="270" r="54" />
+        <path d="M525 310 Q490 350 520 405 Q560 450 610 420 Q640 385 610 350 Q585 330 560 325Z" />
+        <path d="M535 370 Q490 395 470 435M590 405 Q620 445 655 452" />
+      </g>
+      <path className="pregnancy-cervix" d="M455 520 Q500 542 545 520 L540 570 Q500 592 460 570Z" />
+      <path className="pregnancy-vagina" d="M465 570 L450 615 H550 L535 570Z" />
+      <circle className="pregnancy-fluid-marker" cx="485" cy="225" r="8" />
+      <circle className="pregnancy-fluid-marker" cx="615" cy="350" r="8" />
+      <text className="repro-orientation" x="500" y="80" textAnchor="middle">foetus in uterus</text>
+    </g>
+  );
+}
+
 function DiagramTemplate({ template }) {
   if (template === "plant-cell") return <PlantCellTemplate />;
   if (template === "animal-cell") return <AnimalCellTemplate />;
@@ -174,6 +195,7 @@ function DiagramTemplate({ template }) {
   if (template === "bean-seed") return <BeanSeedTemplate />;
   if (template === "female-reproductive-system") return <FemaleReproductiveTemplate />;
   if (template === "male-reproductive-system") return <MaleReproductiveTemplate />;
+  if (template === "pregnancy-uterus") return <PregnancyUterusTemplate />;
   return (
     <g aria-hidden="true">
       <rect className="unknown-template" x="260" y="120" width="480" height="360" rx="28" />
