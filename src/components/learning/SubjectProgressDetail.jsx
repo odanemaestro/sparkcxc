@@ -13,14 +13,17 @@ export default function SubjectProgressDetail({ subject, rows = [], onOpenSubjec
   const report = useMemo(() => buildGenericSubjectProgressReport({ subject, rows }, { period: "term" }), [rows, subject]);
   const assessments = report.exams || [];
   const supportsLabs = Boolean(subject?.capabilities?.labs);
+  const isInformationTechnology = subject?.id === "information-technology";
   const finalMetric = supportsLabs
     ? { value: summary.labsCompleted || 0, label: "Labs explored" }
     : subject?.id === "mathematics"
       ? { value: summary.skillsTracked || 0, label: "Skills tracked" }
       : { value: summary.topicsPractised || 0, label: "Topics practised" };
-  const detailDescription = supportsLabs
-    ? "Review lesson coverage, practice performance, labs and assessments recorded in SPARK."
-    : "Review lesson coverage, practice performance and assessments recorded in SPARK.";
+  const detailDescription = isInformationTechnology
+    ? "Review lesson coverage, practice performance, practical labs, SBA guide reviews, flashcards and assessments recorded in SPARK."
+    : supportsLabs
+      ? "Review lesson coverage, practice performance, labs and assessments recorded in SPARK."
+      : "Review lesson coverage, practice performance and assessments recorded in SPARK.";
 
   return <div className="spark-subject-progress-detail">
     <div className="spark-subject-progress-detail-head">
@@ -35,6 +38,8 @@ export default function SubjectProgressDetail({ subject, rows = [], onOpenSubjec
       <Card><strong>{summary.practiceAttempts ? `${summary.practiceAverage}%` : "—"}</strong><span>Practice average</span></Card>
       <Card><strong>{summary.assessments ?? summary.checkpoints ?? 0}</strong><span>Assessments</span></Card>
       <Card><strong>{finalMetric.value}</strong><span>{finalMetric.label}</span></Card>
+      {isInformationTechnology && <Card><strong>{summary.sbaSectionsReviewed || 0}</strong><span>SBA guide sections reviewed</span></Card>}
+      {isInformationTechnology && <Card><strong>{summary.flashcardsReviewed || 0}</strong><span>Flashcards reviewed</span></Card>}
     </div>
 
     <Card className="spark-subject-progress-coverage-card">

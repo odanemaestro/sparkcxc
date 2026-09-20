@@ -4665,6 +4665,13 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
               <InformationTechnologyFlashcardsPanel
                 userId={user.id}
                 onChangeSubject={() => setFlashcardSubjectRoute(null)}
+                onActivity={event => {
+                  recordSparkSubjectActivity({ supabase, event }).then(result => {
+                    if (result?.error && !["PGRST202", "42P01", "42883"].includes(result.error.code)) {
+                      console.warn("IT flashcard progress was not synced", result.error);
+                    }
+                  }).catch(error => console.warn("IT flashcard progress was not synced", error));
+                }}
               />
             </Suspense>
           ) : (

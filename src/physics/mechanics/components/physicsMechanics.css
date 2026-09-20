@@ -1015,3 +1015,177 @@
 .pm-flashcards-dashboard .pm-flashcard-answer-text.spark-math-prose{
   text-align:left;
 }
+
+/* SPARK PHYSICS FLASHCARD SHARED THEME V1
+   Physics flashcards use the same SPARK appearance tokens as Mathematics and
+   Information Technology. This is intentionally scoped to the dashboard
+   flashcard surface so Physics labs and study tools keep their own visual
+   treatment while the cross-subject flashcard experience stays consistent. */
+.pm-flashcards-dashboard{
+  --pm-bg:var(--spark-bg,#FAFAF8);
+  --pm-card:var(--spark-paper,#FFFFFF);
+  --pm-card2:var(--spark-muted,#F4F4F1);
+  --pm-ink:var(--spark-ink,#0F2557);
+  --pm-muted:var(--spark-text-muted,#64748B);
+  --pm-line:var(--spark-border,#E2E8F0);
+  --pm-primary:var(--spark-teal,#0D9488);
+  --pm-primary-soft:var(--spark-teal-light,#CCFBF1);
+  background:var(--spark-bg,#FAFAF8);
+  color:var(--spark-ink,#0F2557);
+}
+
+/* Section cards follow the same neutral-paper + teal-active pattern used by
+   the Mathematics and IT flashcard selectors. */
+.pm-flashcards-dashboard .pm-section-filter{
+  background:var(--spark-paper,#FFFFFF);
+  border-color:var(--spark-border,#E2E8F0);
+  color:var(--spark-ink,#0F2557);
+}
+.pm-flashcards-dashboard .pm-section-filter span{
+  color:var(--spark-text-muted,#64748B);
+}
+.pm-flashcards-dashboard .pm-section-filter.active{
+  background:var(--spark-teal-light,#CCFBF1);
+  border-color:var(--spark-teal,#0D9488);
+}
+.pm-flashcards-dashboard .pm-section-filter.active span,
+.pm-flashcards-dashboard .pm-section-filter.active strong{
+  color:var(--spark-teal-dark,#0A7268);
+}
+
+/* Topic pills no longer use the full bright Physics teal fill. The selected
+   topic now uses the same tinted active state as the other subject decks. */
+.pm-flashcards-dashboard .pm-flashcard-topics .pm-topic-btn{
+  background:var(--spark-paper,#FFFFFF);
+  border-color:var(--spark-border,#E2E8F0);
+  color:var(--spark-ink-soft,#2D3E6B);
+}
+.pm-flashcards-dashboard .pm-flashcard-topics .pm-topic-btn:hover:not(:disabled){
+  border-color:color-mix(in srgb,var(--spark-teal,#0D9488) 46%,var(--spark-border,#E2E8F0));
+  background:color-mix(in srgb,var(--spark-teal-light,#CCFBF1) 38%,var(--spark-paper,#FFFFFF));
+}
+.pm-flashcards-dashboard .pm-flashcard-topics .pm-topic-btn.active{
+  background:var(--spark-teal-light,#CCFBF1);
+  border-color:var(--spark-teal,#0D9488);
+  color:var(--spark-teal-dark,#0A7268);
+}
+
+/* Main card matches the shared SPARK navy/paper surface instead of the older
+   charcoal Physics surface. */
+.pm-flashcards-dashboard .pm-flashcard-polished{
+  background:
+    linear-gradient(
+      145deg,
+      var(--spark-paper,#FFFFFF),
+      color-mix(in srgb,var(--spark-teal-light,#CCFBF1) 32%,var(--spark-paper,#FFFFFF))
+    );
+  border-color:var(--spark-border,#E2E8F0);
+  color:var(--spark-ink,#0F2557);
+  box-shadow:var(--spark-shadow-md,0 4px 14px rgba(15,37,87,.09));
+}
+.pm-flashcards-dashboard .pm-flashcard-polished:hover{
+  border-color:color-mix(in srgb,var(--spark-teal,#0D9488) 42%,var(--spark-border,#E2E8F0));
+  box-shadow:var(--spark-shadow-lg,0 12px 32px rgba(15,37,87,.14));
+}
+.pm-flashcards-dashboard .pm-flashcard-polished.revealed{
+  border-color:color-mix(in srgb,var(--spark-teal,#0D9488) 42%,var(--spark-border,#E2E8F0));
+}
+.pm-flashcards-dashboard .pm-flashcard-question-text,
+.pm-flashcards-dashboard .pm-flashcard-answer-text{
+  color:var(--spark-ink,#0F2557);
+}
+.pm-flashcards-dashboard .pm-flashcard-side-label{
+  color:var(--spark-teal-dark,#0A7268);
+}
+.pm-flashcards-dashboard .pm-flashcard-hint,
+.pm-flashcards-dashboard .pm-flashcard-study-meta>div span{
+  color:var(--spark-text-muted,#64748B);
+}
+.pm-flashcards-dashboard .pm-chip{
+  border-color:var(--spark-border,#E2E8F0);
+  background:var(--spark-paper,#FFFFFF);
+  color:var(--spark-ink-soft,#2D3E6B);
+}
+
+/* Progress and navigation use the same shared teal/navy tokens. */
+.pm-flashcards-dashboard .pm-flashcard-progress-dots{
+  background:var(--spark-border,#E2E8F0);
+}
+.pm-flashcards-dashboard .pm-flashcard-progress-dots span{
+  background:var(--spark-teal,#0D9488);
+}
+.pm-flashcards-dashboard .pm-flashcard-nav-row .pm-btn:not(.secondary){
+  background:var(--spark-teal,#0D9488);
+  border:1px solid var(--spark-teal,#0D9488);
+  color:#07111f;
+}
+.pm-flashcards-dashboard .pm-flashcard-nav-row .pm-btn.secondary,
+.pm-flashcards-dashboard .pm-change-subject-btn{
+  background:var(--spark-paper,#FFFFFF);
+  border-color:var(--spark-border-strong,#CBD5E1);
+  color:var(--spark-ink-soft,#2D3E6B);
+}
+.pm-flashcards-dashboard .pm-flashcard-nav-row .pm-btn.secondary:hover:not(:disabled),
+.pm-flashcards-dashboard .pm-change-subject-btn:hover:not(:disabled){
+  background:var(--spark-muted,#F4F4F1);
+  border-color:var(--spark-border-strong,#CBD5E1);
+}
+
+/* Dark mode is fully token-driven. These explicit rules guard against older
+   Physics button/card rules later in the cascade taking the flashcard deck
+   back to charcoal surfaces or full-aqua active pills. */
+html[data-theme="dark"] .pm-flashcards-dashboard,
+body[data-theme="dark"] .pm-flashcards-dashboard{
+  background:var(--spark-bg,#0A1626);
+  color:var(--spark-ink,#EAF2FF);
+}
+html[data-theme="dark"] .pm-flashcards-dashboard .pm-section-filter,
+body[data-theme="dark"] .pm-flashcards-dashboard .pm-section-filter,
+html[data-theme="dark"] .pm-flashcards-dashboard .pm-flashcard-topics .pm-topic-btn,
+body[data-theme="dark"] .pm-flashcards-dashboard .pm-flashcard-topics .pm-topic-btn,
+html[data-theme="dark"] .pm-flashcards-dashboard .pm-flashcard-nav-row .pm-btn.secondary,
+body[data-theme="dark"] .pm-flashcards-dashboard .pm-flashcard-nav-row .pm-btn.secondary,
+html[data-theme="dark"] .pm-flashcards-dashboard .pm-change-subject-btn,
+body[data-theme="dark"] .pm-flashcards-dashboard .pm-change-subject-btn{
+  background:var(--spark-paper,#102239);
+  border-color:var(--spark-border,#29405E);
+  color:var(--spark-ink-soft,#C7D4E7);
+}
+html[data-theme="dark"] .pm-flashcards-dashboard .pm-section-filter.active,
+body[data-theme="dark"] .pm-flashcards-dashboard .pm-section-filter.active,
+html[data-theme="dark"] .pm-flashcards-dashboard .pm-flashcard-topics .pm-topic-btn.active,
+body[data-theme="dark"] .pm-flashcards-dashboard .pm-flashcard-topics .pm-topic-btn.active{
+  background:var(--spark-teal-light,#123D3A);
+  border-color:var(--spark-teal,#2DD4BF);
+  color:var(--spark-teal-dark,#5EEAD4);
+}
+html[data-theme="dark"] .pm-flashcards-dashboard .pm-section-filter.active span,
+html[data-theme="dark"] .pm-flashcards-dashboard .pm-section-filter.active strong,
+body[data-theme="dark"] .pm-flashcards-dashboard .pm-section-filter.active span,
+body[data-theme="dark"] .pm-flashcards-dashboard .pm-section-filter.active strong{
+  color:var(--spark-teal-dark,#5EEAD4);
+}
+html[data-theme="dark"] .pm-flashcards-dashboard .pm-flashcard-polished,
+body[data-theme="dark"] .pm-flashcards-dashboard .pm-flashcard-polished{
+  background:
+    linear-gradient(
+      145deg,
+      var(--spark-paper,#102239),
+      color-mix(in srgb,var(--spark-teal-light,#123D3A) 32%,var(--spark-paper,#102239))
+    );
+  border-color:var(--spark-border,#29405E);
+  color:var(--spark-ink,#EAF2FF);
+  box-shadow:var(--spark-shadow-md,0 5px 18px rgba(0,0,0,.30));
+}
+html[data-theme="dark"] .pm-flashcards-dashboard .pm-flashcard-question-text,
+html[data-theme="dark"] .pm-flashcards-dashboard .pm-flashcard-answer-text,
+body[data-theme="dark"] .pm-flashcards-dashboard .pm-flashcard-question-text,
+body[data-theme="dark"] .pm-flashcards-dashboard .pm-flashcard-answer-text{
+  color:var(--spark-ink,#EAF2FF);
+}
+html[data-theme="dark"] .pm-flashcards-dashboard .pm-flashcard-nav-row .pm-btn:not(.secondary),
+body[data-theme="dark"] .pm-flashcards-dashboard .pm-flashcard-nav-row .pm-btn:not(.secondary){
+  background:var(--spark-teal,#2DD4BF);
+  border-color:var(--spark-teal,#2DD4BF);
+  color:#fff;
+}

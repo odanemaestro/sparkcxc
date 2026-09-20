@@ -49,7 +49,7 @@ function ObjectiveAnswer({ card }) {
   );
 }
 
-export default function InformationTechnologyFlashcardsPanel({ userId, onChangeSubject }) {
+export default function InformationTechnologyFlashcardsPanel({ userId, onChangeSubject, onActivity }) {
   const sections = course.sections || [];
   const topics = course.topics || [];
   const [mode, setMode] = useState("objectives");
@@ -103,6 +103,7 @@ export default function InformationTechnologyFlashcardsPanel({ userId, onChangeS
 
   function markReviewed(card) {
     if (!card) return;
+    const alreadyReviewed = (progress.reviewedIds || []).includes(card.id);
     const nextIds = Array.from(new Set([...(progress.reviewedIds || []), card.id]));
     const next = {
       ...progress,
@@ -112,6 +113,18 @@ export default function InformationTechnologyFlashcardsPanel({ userId, onChangeS
     };
     setProgress(next);
     writeProgress(userId, next);
+
+    if (!alreadyReviewed) {
+      onActivity?.({
+        type: "it_flashcard_review",
+        cardId: card.id,
+        cardTitle: card.front || card.objectiveTitle || card.title || "Information Technology flashcard",
+        section: card.sectionId != null ? String(card.sectionId) : null,
+        topicId: card.topicId != null ? String(card.topicId) : null,
+        completed: true,
+        at: new Date().toISOString(),
+      });
+    }
   }
 
   function toggleReveal() {

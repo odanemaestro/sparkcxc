@@ -3,702 +3,330 @@ import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import {
   IT_SBA_COMPONENTS,
   IT_SBA_CURRENT_LIMITS,
-  IT_SBA_MARKING_GUIDE,
   IT_SBA_MARKS,
   IT_SBA_PROJECTS,
   findItSbaComponent,
   findItSbaProject,
 } from "./itSbaProjects";
+import { getItSbaProjectTasks } from "./itSbaProjectTasks";
 import { useInformationTechnologySbaRoute } from "../../routing/sparkRoutingV270";
 import "./informationTechnologySba.css";
 
-const PROGRESS_PREFIX = "spark-it-sba-progress-v1-";
+const PROGRESS_PREFIX = "spark-it-sba-progress-v2-";
+const COMPONENT_FILE = {
+  database: "database-completed.pdf",
+  spreadsheet: "spreadsheet-completed.pdf",
+  word: "word-completed.pdf",
+  web: "web-completed.pdf",
+  programming: "programming-completed.pdf",
+};
+
+const IT_SBA_NATIVE_FILES = {
+  "sports-academy": {
+    database: [
+      { label: "Completed Access database", file: "SportsAcademy_Database.accdb", format: "Microsoft Access (.accdb)", detail: "Inspect the tables, sample records, relationships and saved queries." },
+      { label: "Database schema reference", file: "Database_Schema.sql", format: "Access SQL (.sql)", detail: "Fallback structure and sample-data script used to build the reference database." },
+    ],
+    spreadsheet: [
+      { label: "Completed Excel workbook", file: "SportsAcademy_Financials.xlsx", format: "Microsoft Excel (.xlsx)", detail: "Members, programme lookups, formulas, summary values and chart." },
+    ],
+    word: [
+      { label: "Athlete registration form", file: "Registration_Form.docx", format: "Microsoft Word (.docx)", detail: "Completed form layout with the required control types." },
+      { label: "Generic mail merge", file: "Generic_Mail_Merge.docx", format: "Microsoft Word (.docx)", detail: "Main document showing the merge fields before the merge." },
+      { label: "Merged output", file: "Merged_Output.docx", format: "Microsoft Word (.docx)", detail: "Completed personalised reference output using fictional data." },
+    ],
+    web: [
+      { label: "Completed web page", file: "Web_Page.html", format: "Web page (.html)", detail: "Open it in a browser to inspect the finished one-page SBA design.", preview: true },
+    ],
+    programming: [
+      { label: "Pascal source code", file: "AcademyFees.pas", format: "Pascal source (.pas)", detail: "Working reference implementation matching the algorithm." },
+      { label: "Program documentation", file: "Program_Documentation.docx", format: "Microsoft Word (.docx)", detail: "Problem definition, pseudocode, trace table, source code and evidence section." },
+    ],
+  },
+  "medical-centre": {
+    database: [
+      { label: "Completed Access database", file: "IslandCare_Database.accdb", format: "Microsoft Access (.accdb)", detail: "Inspect patient, service and appointment data plus saved queries." },
+      { label: "Database schema reference", file: "Database_Schema.sql", format: "Access SQL (.sql)", detail: "Fallback structure and sample-data script used to build the reference database." },
+    ],
+    spreadsheet: [{ label: "Completed Excel workbook", file: "MedicalAccounts.xlsx", format: "Microsoft Excel (.xlsx)", detail: "Accounts, service lookups, senior discount, balances, dashboard and chart." }],
+    word: [
+      { label: "Patient information form", file: "Registration_Form.docx", format: "Microsoft Word (.docx)", detail: "Reference form layout with suitable control types." },
+      { label: "Generic mail merge", file: "Generic_Mail_Merge.docx", format: "Microsoft Word (.docx)", detail: "Appointment and balance notice with merge fields." },
+      { label: "Merged output", file: "Merged_Output.docx", format: "Microsoft Word (.docx)", detail: "Completed fictional patient notice." },
+    ],
+    web: [{ label: "Completed web page", file: "Web_Page.html", format: "Web page (.html)", detail: "Patient-information page with internal and email links.", preview: true }],
+    programming: [
+      { label: "Pascal source code", file: "MedicalBalances.pas", format: "Pascal source (.pas)", detail: "Working balance-calculation program." },
+      { label: "Program documentation", file: "Program_Documentation.docx", format: "Microsoft Word (.docx)", detail: "Problem definition, algorithm, trace table and source code." },
+    ],
+  },
+  "community-market": {
+    database: [
+      { label: "Completed Access database", file: "YardFresh_Database.accdb", format: "Microsoft Access (.accdb)", detail: "Inspect product, supplier and stock-purchase data plus saved queries." },
+      { label: "Database schema reference", file: "Database_Schema.sql", format: "Access SQL (.sql)", detail: "Fallback structure and sample-data script used to build the reference database." },
+    ],
+    spreadsheet: [{ label: "Completed Excel workbook", file: "SalesAnalysis.xlsx", format: "Microsoft Excel (.xlsx)", detail: "Sales formulas, discount, GCT, dashboard and category chart." }],
+    word: [
+      { label: "Supplier registration form", file: "Registration_Form.docx", format: "Microsoft Word (.docx)", detail: "Reference supplier form layout." },
+      { label: "Generic mail merge", file: "Generic_Mail_Merge.docx", format: "Microsoft Word (.docx)", detail: "Reorder notice with merge fields." },
+      { label: "Merged output", file: "Merged_Output.docx", format: "Microsoft Word (.docx)", detail: "Completed fictional supplier notice." },
+    ],
+    web: [{ label: "Completed web page", file: "Web_Page.html", format: "Web page (.html)", detail: "Completed market information page.", preview: true }],
+    programming: [
+      { label: "Pascal source code", file: "MarketCheckout.pas", format: "Pascal source (.pas)", detail: "Working checkout, discount and GCT program." },
+      { label: "Program documentation", file: "Program_Documentation.docx", format: "Microsoft Word (.docx)", detail: "Completed problem-solving documentation." },
+    ],
+  },
+  "community-library": {
+    database: [
+      { label: "Completed Access database", file: "HarbourView_Database.accdb", format: "Microsoft Access (.accdb)", detail: "Inspect member, book and loan records plus saved queries." },
+      { label: "Database schema reference", file: "Database_Schema.sql", format: "Access SQL (.sql)", detail: "Fallback structure and sample-data script used to build the reference database." },
+    ],
+    spreadsheet: [{ label: "Completed Excel workbook", file: "LoansAnalysis.xlsx", format: "Microsoft Excel (.xlsx)", detail: "Late-day formulas, concessions, fine analysis, dashboard and chart." }],
+    word: [
+      { label: "Membership form", file: "Registration_Form.docx", format: "Microsoft Word (.docx)", detail: "Reference membership form layout." },
+      { label: "Generic mail merge", file: "Generic_Mail_Merge.docx", format: "Microsoft Word (.docx)", detail: "Overdue notice with merge fields." },
+      { label: "Merged output", file: "Merged_Output.docx", format: "Microsoft Word (.docx)", detail: "Completed fictional overdue notice." },
+    ],
+    web: [{ label: "Completed web page", file: "Web_Page.html", format: "Web page (.html)", detail: "Completed library information page.", preview: true }],
+    programming: [
+      { label: "Pascal source code", file: "LibraryFines.pas", format: "Pascal source (.pas)", detail: "Working overdue-fine program." },
+      { label: "Program documentation", file: "Program_Documentation.docx", format: "Microsoft Word (.docx)", detail: "Completed problem-solving documentation." },
+    ],
+  },
+  "island-tours": {
+    database: [
+      { label: "Completed Access database", file: "BlueWave_Database.accdb", format: "Microsoft Access (.accdb)", detail: "Inspect customer, package and booking records plus saved queries." },
+      { label: "Database schema reference", file: "Database_Schema.sql", format: "Access SQL (.sql)", detail: "Fallback structure and sample-data script used to build the reference database." },
+    ],
+    spreadsheet: [{ label: "Completed Excel workbook", file: "TourBookings.xlsx", format: "Microsoft Excel (.xlsx)", detail: "Package lookups, booking calculations, discount, balance, dashboard and chart." }],
+    word: [
+      { label: "Booking request form", file: "Registration_Form.docx", format: "Microsoft Word (.docx)", detail: "Reference tour-booking form layout." },
+      { label: "Generic mail merge", file: "Generic_Mail_Merge.docx", format: "Microsoft Word (.docx)", detail: "Booking confirmation with merge fields." },
+      { label: "Merged output", file: "Merged_Output.docx", format: "Microsoft Word (.docx)", detail: "Completed fictional booking confirmation." },
+    ],
+    web: [{ label: "Completed web page", file: "Web_Page.html", format: "Web page (.html)", detail: "Completed visitor information page.", preview: true }],
+    programming: [
+      { label: "Pascal source code", file: "TourBookings.pas", format: "Pascal source (.pas)", detail: "Working booking-cost and balance program." },
+      { label: "Program documentation", file: "Program_Documentation.docx", format: "Microsoft Word (.docx)", detail: "Completed problem-solving documentation." },
+    ],
+  },
+};
+
+function assetUrl(path) {
+  return `${process.env.PUBLIC_URL || ""}${path}`;
+}
+
+function projectPdf(projectId) {
+  return assetUrl(`/it-sba/${projectId}/full-sba.pdf`);
+}
+
+function completedPdf(projectId, componentId) {
+  return assetUrl(`/it-sba/${projectId}/${COMPONENT_FILE[componentId]}`);
+}
+
+function nativeAssetUrl(projectId, file) {
+  return assetUrl(`/it-sba/${projectId}/native/${file}`);
+}
+
+function NativeFileDownloads({ project, componentId = null, compact = false }) {
+  const groups = componentId
+    ? [[componentId, IT_SBA_NATIVE_FILES[project.id]?.[componentId] || []]]
+    : IT_SBA_COMPONENTS.map(item => [item.id, IT_SBA_NATIVE_FILES[project.id]?.[item.id] || []]);
+
+  return (
+    <section className={`it-sba-native-card ${compact ? "compact" : ""}`}>
+      <div className="it-sba-native-heading">
+        <div>
+          <div className="it-practice-label">Actual working files</div>
+          <h2>Open the files in the software used for the SBA.</h2>
+          <p>These are the working reference files behind the completed PDFs. Open the Excel workbook in spreadsheet software, the Word files in a word processor, the web page in a browser, the Pascal source in a code editor and the Access database in Microsoft Access.</p>
+        </div>
+      </div>
+      <div className="it-sba-native-groups">
+        {groups.map(([id,files]) => {
+          const meta = IT_SBA_COMPONENTS.find(item => item.id === id);
+          if (!meta || !files.length) return null;
+          return <div className="it-sba-native-group" key={id}>
+            <div className="it-sba-native-group-title"><SbaIcon type={id} size={19}/><strong>{meta.title}</strong></div>
+            <div className="it-sba-native-grid">
+              {files.map(file => <a key={file.file} className="it-sba-native-file" href={nativeAssetUrl(project.id,file.file)} {...(file.preview ? { target:"_blank", rel:"noreferrer" } : { download:true })}>
+                <span className="it-sba-native-file-icon"><SbaIcon type={file.preview ? "web" : "download"} size={20}/></span>
+                <span className="it-sba-native-file-copy"><strong>{file.label}</strong><small>{file.format}</small><em>{file.detail}</em></span>
+              </a>)}
+            </div>
+          </div>;
+        })}
+      </div>
+      <div className="it-sba-native-note"><strong>SPARK reference protection</strong><p>The Word files and Excel sheets contain visible SPARK reference markings. The HTML and source files also carry a reference notice. The Access database includes a SPARK reference table when it is generated. The files are for study and comparison, not submission.</p></div>
+    </section>
+  );
+}
 
 function SbaIcon({ type = "project", size = 24 }) {
-  const common = {
-    width: size,
-    height: size,
-    viewBox: "0 0 24 24",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: 1.8,
-    strokeLinecap: "round",
-    strokeLinejoin: "round",
-    focusable: "false",
-    "aria-hidden": "true",
-  };
-
-  if (type === "database") {
-    return <svg {...common}><ellipse cx="12" cy="5" rx="7" ry="3"/><path d="M5 5v6c0 1.7 3.1 3 7 3s7-1.3 7-3V5M5 11v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg>;
-  }
-  if (type === "spreadsheet") {
-    return <svg {...common}><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M4 8h16M9 8v13M15 8v13M4 13h16M4 17h16"/></svg>;
-  }
-  if (type === "word") {
-    return <svg {...common}><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v5h4M9 12h7M9 16h7"/></svg>;
-  }
-  if (type === "web") {
-    return <svg {...common}><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01M8 13h8M8 16h5"/></svg>;
-  }
-  if (type === "programming") {
-    return <svg {...common}><path d="m9 8-4 4 4 4M15 8l4 4-4 4M13 5l-2 14"/></svg>;
-  }
-  if (type === "download") {
-    return <svg {...common}><path d="M12 3v12M7.5 10.5 12 15l4.5-4.5M5 20h14"/></svg>;
-  }
-  if (type === "check") {
-    return <svg {...common}><path d="m5 12 4 4L19 6"/></svg>;
-  }
-  if (type === "calendar") {
-    return <svg {...common}><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>;
-  }
+  const common = { width:size, height:size, viewBox:"0 0 24 24", fill:"none", stroke:"currentColor", strokeWidth:1.8, strokeLinecap:"round", strokeLinejoin:"round", focusable:"false", "aria-hidden":"true" };
+  if (type === "database") return <svg {...common}><ellipse cx="12" cy="5" rx="7" ry="3"/><path d="M5 5v6c0 1.7 3.1 3 7 3s7-1.3 7-3V5M5 11v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg>;
+  if (type === "spreadsheet") return <svg {...common}><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M4 8h16M9 8v13M15 8v13M4 13h16M4 17h16"/></svg>;
+  if (type === "word") return <svg {...common}><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v5h4M9 12h7M9 16h7"/></svg>;
+  if (type === "web") return <svg {...common}><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01M8 13h8M8 16h5"/></svg>;
+  if (type === "programming") return <svg {...common}><path d="m9 8-4 4 4 4M15 8l4 4-4 4M13 5l-2 14"/></svg>;
+  if (type === "download") return <svg {...common}><path d="M12 3v12M7.5 10.5 12 15l4.5-4.5M5 20h14"/></svg>;
+  if (type === "pdf") return <svg {...common}><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v5h4M9 12h6M9 16h4"/></svg>;
+  if (type === "check") return <svg {...common}><path d="m5 12 4 4L19 6"/></svg>;
+  if (type === "calendar") return <svg {...common}><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>;
   return <svg {...common}><path d="M4 4h16v16H4zM8 8h8M8 12h8M8 16h5"/></svg>;
 }
 
-function readProgress(projectId) {
+function progressStorageKey(userId, projectId) {
+  return `${PROGRESS_PREFIX}${String(userId || "guest")}:${projectId}`;
+}
+
+function readProgress(userId, projectId) {
   try {
-    const parsed = JSON.parse(localStorage.getItem(`${PROGRESS_PREFIX}${projectId}`) || "{}");
-    return parsed && typeof parsed === "object" ? parsed : {};
+    const key = progressStorageKey(userId, projectId);
+    const stored = localStorage.getItem(key);
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      return parsed && typeof parsed === "object" ? parsed : {};
+    }
+
+    // V2/V3 compatibility. Migrate the old device-only project key into the
+    // signed-in learner's key once, then keep all future review state separate.
+    if (userId) {
+      const legacyKey = `${PROGRESS_PREFIX}${projectId}`;
+      const legacy = localStorage.getItem(legacyKey);
+      if (legacy) {
+        const parsed = JSON.parse(legacy);
+        const safe = parsed && typeof parsed === "object" ? parsed : {};
+        localStorage.setItem(key, JSON.stringify(safe));
+        localStorage.removeItem(legacyKey);
+        return safe;
+      }
+    }
+
+    return {};
   } catch {
     return {};
   }
 }
 
-function writeProgress(projectId, progress) {
-  try {
-    localStorage.setItem(`${PROGRESS_PREFIX}${projectId}`, JSON.stringify(progress));
-  } catch {
-    // Local progress is optional.
-  }
+function writeProgress(userId, projectId, progress) {
+  try { localStorage.setItem(progressStorageKey(userId, projectId), JSON.stringify(progress)); } catch {}
 }
 
-function escapeHtml(value) {
-  return String(value ?? "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
-
-function csvCell(value) {
-  const text = String(value ?? "");
-  return /[",\n]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
-}
-
-function rowsToCsv(rows) {
-  return rows.map(row => row.map(csvCell).join(",")).join("\r\n");
-}
-
-function safeFilename(value) {
-  return String(value || "spark-sba").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-}
-
-function downloadTextFile(filename, content, type = "text/plain;charset=utf-8") {
-  const blob = new Blob([content], { type });
-  const url = URL.createObjectURL(blob);
-  const anchor = document.createElement("a");
-  anchor.href = url;
-  anchor.download = filename;
-  document.body.appendChild(anchor);
-  anchor.click();
-  anchor.remove();
-  window.setTimeout(() => URL.revokeObjectURL(url), 1000);
-}
-
-function referenceGuideHtml(project) {
-  const componentSections = IT_SBA_COMPONENTS.map(item => {
-    const component = project.components[item.id];
-    const completed = Array.isArray(component.completed)
-      ? component.completed
-      : [
-          `Problem: ${component.completed.problem}`,
-          `Inputs: ${component.completed.inputs.join(", ")}`,
-          `Processes: ${component.completed.processes.join(", ")}`,
-          `Outputs: ${component.completed.outputs.join(", ")}`,
-        ];
-
-    return `
-      <section>
-        <h2>${escapeHtml(item.title)} - ${escapeHtml(item.marks)} marks</h2>
-        <p><strong>What this sample produces:</strong> ${escapeHtml(component.produce)}</p>
-        <h3>Marking focus</h3>
-        <ul>${IT_SBA_MARKING_GUIDE[item.id].map(mark => `<li>${escapeHtml(mark.label)} - ${escapeHtml(mark.marks)} mark${mark.marks === 1 ? "" : "s"}</li>`).join("")}</ul>
-        <h3>Completed SPARK reference</h3>
-        <ul>${completed.map(line => `<li>${escapeHtml(line)}</li>`).join("")}</ul>
-        ${item.id === "programming" ? `
-          <h3>Pseudocode</h3>
-          <pre>${escapeHtml(component.completed.pseudocode.join("\n"))}</pre>
-          <h3>Pascal reference</h3>
-          <pre>${escapeHtml(component.completed.pascal.join("\n"))}</pre>
-        ` : ""}
-      </section>`;
-  }).join("");
-
-  return `<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${escapeHtml(project.title)} - SPARK SBA Reference</title>
-<style>
-body{font-family:Arial,sans-serif;max-width:900px;margin:0 auto;padding:32px;color:#172337;line-height:1.6}
-h1,h2,h3{color:#17375e}header,section{border-bottom:1px solid #d9e1e8;padding:0 0 24px;margin:0 0 24px}
-.notice{padding:16px;border:1px solid #0d8069;background:#eef9f6;border-radius:10px}
-pre{white-space:pre-wrap;background:#f4f7fa;border:1px solid #d9e1e8;border-radius:8px;padding:14px;overflow:auto}
-table{width:100%;border-collapse:collapse}th,td{border:1px solid #d9e1e8;padding:8px;text-align:left}
-small{color:#657488}
-</style>
-</head>
-<body>
-<header>
-<p>SPARK CSEC Information Technology SBA Centre</p>
-<h1>${escapeHtml(project.title)}</h1>
-<p>${escapeHtml(project.scenario)}</p>
-<div class="notice"><strong>Reference example only.</strong> Learn from the structure, methods and quality of the work. Do not submit this SPARK project, its wording or its data as your own SBA.</div>
-</header>
-<section>
-<h2>Project purpose</h2>
-<p>${escapeHtml(project.purpose)}</p>
-<h3>Current CXC structure used by SPARK</h3>
-<p>The project is organised around Word Processing, Web Page Design, Spreadsheet, Database Management and Problem-Solving and Programming. Follow your teacher's current assignment and deadlines.</p>
-<ul>${IT_SBA_CURRENT_LIMITS.map(item => `<li><strong>${escapeHtml(item.title)}:</strong> ${escapeHtml(item.text)}</li>`).join("")}</ul>
-</section>
-${componentSections}
-<section>
-<h2>Starter data</h2>
-<table>
-${project.starterRows.map((row, index) => `<tr>${row.map(cell => index === 0 ? `<th>${escapeHtml(cell)}</th>` : `<td>${escapeHtml(cell)}</td>`).join("")}</tr>`).join("")}
-</table>
-</section>
-<section>
-<h2>Final self-check</h2>
-<ul>
-<li>Every required file opens and uses the required filename.</li>
-<li>Database relationships, queries, form and report have been tested.</li>
-<li>Spreadsheet formulas recalculate and copied references behave correctly.</li>
-<li>Word Processing advanced features work with the correct data.</li>
-<li>The web page is one clear page and every link works.</li>
-<li>The algorithm, trace table, program and screenshots use matching test data.</li>
-<li>Names, fees, dates and other project facts agree across all components.</li>
-<li>You have followed your teacher's instructions and current CXC guidance.</li>
-</ul>
-</section>
-<footer><small>Created by SPARK as an original practice reference.</small></footer>
-</body>
-</html>`;
-}
-
-function sampleWebPageHtml(project) {
-  const web = project.components.web;
-  const items = Array.isArray(web.completed) ? web.completed : [];
-  const initials = project.title.split(/\s+/).filter(Boolean).slice(0, 2).map(word => word[0]).join("").toUpperCase();
-  return `<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${escapeHtml(project.title)}</title>
-<style>
-body{font-family:Arial,sans-serif;margin:0;background:#f5f7fa;color:#172337}header,main,footer{max-width:960px;margin:auto;padding:24px}
-header{background:#17375e;color:white;max-width:none}header>div{max-width:960px;margin:auto;display:flex;align-items:center;gap:14px}
-.logo{width:56px;height:56px;border-radius:14px;background:#0d8069;display:grid;place-items:center;font-weight:900;font-size:20px}
-nav a{color:#0d8069;font-weight:700;margin-right:16px}section{background:white;border:1px solid #d8e0e8;border-radius:12px;padding:20px;margin:16px 0}
-.hero{background:linear-gradient(135deg,#17375e,#0d8069);color:white}footer{color:#657488}
-</style>
-</head>
-<body>
-<header><div><div class="logo" role="img" aria-label="${escapeHtml(project.title)} logo">${escapeHtml(initials)}</div><div><h1>${escapeHtml(project.title)}</h1><p>${escapeHtml(project.accent)}</p></div></div></header>
-<main>
-<nav><a href="#about">About</a><a href="#services">Information</a><a href="#contact">Contact</a></nav>
-<section id="about" class="hero"><h2>Welcome</h2><p>${escapeHtml(project.scenario)}</p></section>
-<section id="services"><h2>What you need to know</h2><ul>${items.map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
-<section id="contact"><h2>Contact</h2><p>Email: <a href="mailto:info@example.com">info@example.com</a></p><p>This is fictional contact information for the SPARK practice project.</p></section>
-</main>
-<footer>SPARK reference web page. Replace all content with your own project work.</footer>
-</body>
-</html>`;
-}
-
-function checklistText(project) {
-  return [
-    `SPARK SBA FINAL CHECK - ${project.title}`,
-    "",
-    "PROJECT CONTROL",
-    "[ ] I used my teacher's current project brief.",
-    "[ ] Every filename matches the required naming convention.",
-    "[ ] I kept backup copies of each component.",
-    "[ ] Facts such as names, fees and dates agree across the project.",
-    "",
-    "DATABASE",
-    "[ ] At least two tables use suitable primary keys.",
-    "[ ] Relationships match the real situation.",
-    "[ ] Simple, complex and calculated queries return correct results.",
-    "[ ] The form and subform are easy to use.",
-    "[ ] The report includes required grouping, sorting, summary values and title.",
-    "",
-    "SPREADSHEET",
-    "[ ] Formulas use cell references instead of typed answers.",
-    "[ ] At least three suitable functions work correctly.",
-    "[ ] Relative and absolute references copy correctly.",
-    "[ ] Sorting and filtering produce the required records.",
-    "[ ] Summary and chart use the correct source data.",
-    "[ ] At least one cell links between worksheets.",
-    "",
-    "WORD PROCESSING",
-    "[ ] Page layout and formatting are consistent.",
-    "[ ] Required advanced features work.",
-    "[ ] Mail merge fields or form controls have been tested.",
-    "[ ] Imported charts, tables or graphics fit the page.",
-    "",
-    "WEB PAGE",
-    "[ ] The current SPARK reference uses one page.",
-    "[ ] Text and graphics suit the audience.",
-    "[ ] At least two required hyperlink types work.",
-    "[ ] The page agrees with the other SBA components.",
-    "",
-    "PROBLEM-SOLVING AND PROGRAMMING",
-    "[ ] Problem definition is clear.",
-    "[ ] Pseudocode or flowchart includes input, processing, output, selection and looping.",
-    "[ ] Trace table uses suitable normal, boundary and invalid data where appropriate.",
-    "[ ] Program output matches the expected test results.",
-    "[ ] Screenshots clearly show data entry and output.",
-    "[ ] Program documentation contains the required evidence.",
-    "",
-    "INTEGRITY",
-    "[ ] I understand this SPARK project is a reference example only.",
-    "[ ] I did not copy the SPARK project and present it as my assigned SBA.",
-    "[ ] I followed my school's rules and current CXC guidance for any AI-assisted work.",
-  ].join("\r\n");
-}
-
-function projectBriefText(project) {
-  return [
-    "CSEC INFORMATION TECHNOLOGY",
-    "SPARK PRACTICE SBA",
-    project.title.toUpperCase(),
-    "",
-    "DESCRIPTION OF PROJECT",
-    project.scenario,
-    "",
-    "PURPOSE",
-    project.purpose,
-    "",
-    "CURRENT CXC GUARDRAILS USED BY SPARK",
-    ...IT_SBA_CURRENT_LIMITS.flatMap(item => [`${item.title}: ${item.text}`, ""]),
-    ...IT_SBA_COMPONENTS.flatMap(item => [
-      `${item.title.toUpperCase()} - ${item.marks} MARKS`,
-      project.components[item.id].produce,
-      "",
-    ]),
-    "IMPORTANT",
-    "This is an original SPARK practice project. Use it to learn how the parts of an SBA connect. Do not submit this project, its data or its wording as your own school-assigned SBA.",
-  ].join("\r\n");
-}
-
-function traceCsv(project) {
-  const trace = project.components.programming.completed.trace;
-  const maxColumns = Math.max(1, ...trace.map(row => row.length));
-  const headings = Array.from({ length: maxColumns }, (_, index) => index === 0 ? "Test record" : `Trace value ${index}`);
-  return rowsToCsv([headings, ...trace]);
+function emitSbaReviewActivity(onActivity, project, componentId, completed) {
+  if (!project || !componentId) return;
+  const component = IT_SBA_COMPONENTS.find(item => item.id === componentId);
+  onActivity?.({
+    type: "it_sba_section_reviewed",
+    projectId: project.id,
+    projectTitle: project.title,
+    componentId,
+    componentTitle: component?.title || componentId,
+    title: `${project.title} - ${component?.title || componentId}`,
+    completed: Boolean(completed),
+    at: new Date().toISOString(),
+  });
 }
 
 function dateLabel(date) {
-  return new Intl.DateTimeFormat(undefined, { year: "numeric", month: "short", day: "numeric" }).format(date);
+  return new Intl.DateTimeFormat(undefined, { day:"numeric", month:"short", year:"numeric" }).format(date);
 }
 
 function plannedMilestones(deadlineValue) {
   if (!deadlineValue) return [];
   const deadline = new Date(`${deadlineValue}T12:00:00`);
   if (Number.isNaN(deadline.getTime())) return [];
-  const plan = [
-    ["Planning and folder setup", 98],
-    ["Database draft", 84],
-    ["Spreadsheet draft", 63],
-    ["Word Processing draft", 49],
-    ["Web page draft", 35],
-    ["Algorithm and trace table", 28],
-    ["Program implementation", 18],
-    ["Documentation and final testing", 7],
-    ["Final submission target", 0],
+  const items = [
+    ["Final review and backups",0],["Programming documentation",-7],["Program testing",-14],["Web page",-21],["Word Processing",-28],["Spreadsheet",-38],["Database",-50],["Planning and data design",-58],
   ];
-  return plan.map(([label, daysBefore]) => {
-    const date = new Date(deadline);
-    date.setDate(date.getDate() - daysBefore);
-    return { label, date };
-  });
+  return items.map(([label,offset]) => { const d=new Date(deadline); d.setDate(d.getDate()+offset); return {label,date:d}; }).reverse();
 }
 
-function CentreHome({ openProject, onBack }) {
-  const [deadline, setDeadline] = useState("");
-  const milestones = useMemo(() => plannedMilestones(deadline), [deadline]);
-
+function PdfActions({ project, componentId = null, compact = false }) {
+  const href = componentId ? completedPdf(project.id, componentId) : projectPdf(project.id);
+  const label = componentId ? `completed ${componentId} reference` : "full SBA";
   return (
-    <main className="it-sba-page">
-      <section className="it-sba-shell">
-        <button type="button" className="it-practice-back it-sba-back" data-spark-action="nav" onClick={onBack}>
-          <BackArrowIcon/><span>Information Technology Practice</span>
-        </button>
-
-        <header className="it-sba-hero">
-          <div>
-            <div className="it-practice-eyebrow">CSEC Information Technology SBA Centre</div>
-            <h1>Build your SBA one part at a time.</h1>
-            <p>Learn what each section is asking you to do, follow a clear step-by-step guide, practise with five original SPARK projects and download completed reference examples to study.</p>
-          </div>
-          <div className="it-sba-hero-badge"><strong>5</strong><span>complete sample projects</span></div>
-        </header>
-
-        <section className="it-sba-current-card">
-          <div>
-            <div className="it-practice-label">Current CXC structure</div>
-            <h2>One practical project with five related areas.</h2>
-            <p>SPARK follows the current CSEC Information Technology syllabus structure. The productivity-tool areas total 70 raw marks and are divided by two to give 35 marks. Problem-Solving and Programming contributes 15 marks. Paper 03 therefore contributes 50 marks and 25% of the final subject grade.</p>
-          </div>
-          <div className="it-sba-mark-grid">
-            {IT_SBA_MARKS.map(item => <div key={item.label}><strong>{item.marks}</strong><span>{item.label}</span></div>)}
-          </div>
-          <div className="it-sba-syllabus-note">
-            <strong>Important web-page note</strong>
-            <p>The current CXC syllabus states that the Web Page Design SBA task should be limited to one web page. Some older school assignments used several linked pages. SPARK uses one page in these practice projects. Always follow your teacher's current assignment and instructions.</p>
-          </div>
-          <div className="it-sba-limit-grid">
-            {IT_SBA_CURRENT_LIMITS.map(item => (
-              <article key={item.id}>
-                <SbaIcon type={item.id} size={20}/>
-                <div><strong>{item.title}</strong><p>{item.text}</p></div>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="it-sba-roadmap-section">
-          <div className="it-sba-section-heading">
-            <div>
-              <div className="it-practice-label">How the work connects</div>
-              <h2>Your SBA should feel like one project, not five unrelated tasks.</h2>
-            </div>
-          </div>
-          <div className="it-sba-roadmap">
-            {IT_SBA_COMPONENTS.map((item, index) => (
-              <div key={item.id} className="it-sba-roadmap-item">
-                <span>{index + 1}</span>
-                <SbaIcon type={item.id}/>
-                <strong>{item.title}</strong>
-                <p>{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="it-sba-projects-section">
-          <div className="it-sba-section-heading">
-            <div>
-              <div className="it-practice-label">Guided sample projects</div>
-              <h2>Choose a realistic scenario and work through the full SBA flow.</h2>
-              <p>Each project uses original SPARK wording and fictional data. The examples are designed for learning, not for submission as your own SBA.</p>
-            </div>
-          </div>
-          <div className="it-sba-project-grid">
-            {IT_SBA_PROJECTS.map(project => (
-              <article className="it-sba-project-card" key={project.id}>
-                <div className="it-sba-project-topline"><span>{project.code}</span><em>{project.level}</em></div>
-                <div className="it-sba-project-icon"><SbaIcon type="project" size={28}/></div>
-                <div className="it-practice-label">{project.sector}</div>
-                <h3>{project.title}</h3>
-                <p>{project.scenario}</p>
-                <div className="it-sba-project-focus">{project.accent}</div>
-                <button type="button" className="it-practice-primary" onClick={() => openProject(project.id)}>Open guided project</button>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="it-sba-timeline-card">
-          <div className="it-sba-timeline-copy">
-            <SbaIcon type="calendar" size={28}/>
-            <div>
-              <div className="it-practice-label">SBA timeline planner</div>
-              <h2>Work backwards from your school deadline.</h2>
-              <p>Enter your target submission date and SPARK will suggest checkpoints. Your teacher's dates always take priority.</p>
-            </div>
-          </div>
-          <label className="it-sba-date-field">Target submission date
-            <input type="date" value={deadline} onChange={event => setDeadline(event.target.value)}/>
-          </label>
-          {milestones.length > 0 && <div className="it-sba-milestones">
-            {milestones.map(item => <div key={item.label}><strong>{dateLabel(item.date)}</strong><span>{item.label}</span></div>)}
-          </div>}
-        </section>
-
-        <section className="it-sba-integrity-card">
-          <div className="it-sba-integrity-icon"><SbaIcon type="check" size={30}/></div>
-          <div>
-            <div className="it-practice-label">Use SPARK properly</div>
-            <h2>Study the examples. Build your own assigned project.</h2>
-            <p>These completed examples are SPARK practice projects. Do not submit them, rename them or copy their data as your own SBA. Your teacher should guide and monitor your actual project. If you use AI tools in assessed work, follow your school rules and current CXC disclosure requirements.</p>
-          </div>
-        </section>
-      </section>
-    </main>
-  );
-}
-
-function ProjectOverview({ project, openHome, openComponent }) {
-  const [progress, setProgress] = useState(() => readProgress(project.id));
-  const completeCount = IT_SBA_COMPONENTS.filter(item => progress[item.id]).length;
-
-  useEffect(() => {
-    setProgress(readProgress(project.id));
-  }, [project.id]);
-
-  function resetProgress() {
-    const next = {};
-    setProgress(next);
-    writeProgress(project.id, next);
-  }
-
-  return (
-    <main className="it-sba-page">
-      <section className="it-sba-shell">
-        <button type="button" className="it-practice-back it-sba-back" data-spark-action="nav" onClick={openHome}>
-          <BackArrowIcon/><span>All SBA projects</span>
-        </button>
-
-        <header className="it-sba-project-hero">
-          <div>
-            <div className="it-practice-eyebrow">{project.code} - {project.sector}</div>
-            <h1>{project.title}</h1>
-            <p>{project.scenario}</p>
-          </div>
-          <div className="it-sba-progress-ring" aria-label={`${completeCount} of 5 sections reviewed`}>
-            <strong>{completeCount}/5</strong>
-            <span>sections reviewed</span>
-          </div>
-        </header>
-
-        <section className="it-sba-project-purpose">
-          <div className="it-practice-label">Description of Project</div>
-          <h2>What you are building</h2>
-          <p>{project.purpose}</p>
-        </section>
-
-        <section className="it-sba-component-grid">
-          {IT_SBA_COMPONENTS.map((item, index) => {
-            const component = project.components[item.id];
-            const done = Boolean(progress[item.id]);
-            return (
-              <article key={item.id} className={`it-sba-component-card ${done ? "done" : ""}`}>
-                <div className="it-sba-component-head">
-                  <div className="it-sba-component-icon"><SbaIcon type={item.id}/></div>
-                  <span>Task {String.fromCharCode(65 + index)}</span>
-                  <strong>{item.marks} marks</strong>
-                </div>
-                <h2>{item.title}</h2>
-                <p>{component.produce}</p>
-                <button type="button" className={done ? "it-practice-secondary" : "it-practice-primary"} onClick={() => openComponent(project.id, item.id)}>
-                  {done ? "Review section" : "Start section"}
-                </button>
-              </article>
-            );
-          })}
-        </section>
-
-        <section className="it-sba-download-card">
-          <div>
-            <div className="it-practice-label">SPARK download centre</div>
-            <h2>Download the reference material for this practice project.</h2>
-            <p>The completed reference is an original SPARK example. Study how the parts connect, then use the same thinking on your own teacher-assigned project.</p>
-          </div>
-          <div className="it-sba-download-grid">
-            <button type="button" onClick={() => downloadTextFile(`${safeFilename(project.title)}-completed-reference.html`, referenceGuideHtml(project), "text/html;charset=utf-8")}>
-              <SbaIcon type="download"/><span><strong>Completed reference</strong><small>Full HTML guide</small></span>
-            </button>
-            <button type="button" onClick={() => downloadTextFile(`${safeFilename(project.title)}-starter-data.csv`, rowsToCsv(project.starterRows), "text/csv;charset=utf-8")}>
-              <SbaIcon type="download"/><span><strong>Starter data</strong><small>CSV file</small></span>
-            </button>
-            <button type="button" onClick={() => downloadTextFile(`${safeFilename(project.title)}-sample-web-page.html`, sampleWebPageHtml(project), "text/html;charset=utf-8")}>
-              <SbaIcon type="download"/><span><strong>Sample web page</strong><small>HTML file</small></span>
-            </button>
-            <button type="button" onClick={() => downloadTextFile(`${safeFilename(project.title)}-sample-program.pas`, project.components.programming.completed.pascal.join("\r\n"))}>
-              <SbaIcon type="download"/><span><strong>Sample Pascal program</strong><small>PAS file</small></span>
-            </button>
-            <button type="button" onClick={() => downloadTextFile(`${safeFilename(project.title)}-trace-table.csv`, traceCsv(project), "text/csv;charset=utf-8")}>
-              <SbaIcon type="download"/><span><strong>Trace table</strong><small>CSV file</small></span>
-            </button>
-            <button type="button" onClick={() => downloadTextFile(`${safeFilename(project.title)}-final-checklist.txt`, checklistText(project))}>
-              <SbaIcon type="download"/><span><strong>Final checklist</strong><small>Text file</small></span>
-            </button>
-            <button type="button" onClick={() => downloadTextFile(`${safeFilename(project.title)}-project-brief.txt`, projectBriefText(project))}>
-              <SbaIcon type="download"/><span><strong>Practice project brief</strong><small>Text file</small></span>
-            </button>
-          </div>
-        </section>
-
-        <section className="it-sba-progress-actions">
-          <span>Your review progress is stored on this device.</span>
-          {completeCount > 0 && <button type="button" className="it-practice-secondary" onClick={resetProgress}>Reset review progress</button>}
-        </section>
-      </section>
-    </main>
-  );
-}
-
-function CompletedExample({ componentId, component }) {
-  if (componentId === "programming") {
-    const completed = component.completed;
-    return (
-      <div className="it-sba-completed-example">
-        <h3>Problem definition</h3>
-        <p>{completed.problem}</p>
-        <div className="it-sba-ipo-grid">
-          <div><strong>Inputs</strong><ul>{completed.inputs.map(item => <li key={item}>{item}</li>)}</ul></div>
-          <div><strong>Processes</strong><ul>{completed.processes.map(item => <li key={item}>{item}</li>)}</ul></div>
-          <div><strong>Outputs</strong><ul>{completed.outputs.map(item => <li key={item}>{item}</li>)}</ul></div>
-        </div>
-        <h3>Pseudocode reference</h3>
-        <pre className="it-sba-code">{completed.pseudocode.join("\n")}</pre>
-        <h3>Sample trace data</h3>
-        <div className="it-sba-table-wrap">
-          <table className="it-sba-table">
-            <tbody>{completed.trace.map((row, index) => <tr key={index}>{row.map((cell, cellIndex) => <td key={cellIndex}>{cell}</td>)}</tr>)}</tbody>
-          </table>
-        </div>
-        <h3>Pascal reference</h3>
-        <p className="it-sba-reference-note">SPARK uses Pascal for these reference programs because it matches the style of the supplied practice material. Use the programming language selected by your centre for your assessed SBA.</p>
-        <pre className="it-sba-code">{completed.pascal.join("\n")}</pre>
-      </div>
-    );
-  }
-
-  return (
-    <div className="it-sba-completed-example">
-      <ul>{component.completed.map(item => <li key={item}>{item}</li>)}</ul>
+    <div className={`it-sba-pdf-actions ${compact ? "compact" : ""}`}>
+      <a className="it-practice-primary" href={href} target="_blank" rel="noreferrer"><SbaIcon type="pdf" size={18}/><span>View {label} PDF</span></a>
+      <a className="it-practice-secondary" href={href} download><SbaIcon type="download" size={18}/><span>Download PDF</span></a>
     </div>
   );
 }
 
-function ComponentGuide({ project, componentId, openProject, openComponent }) {
-  const component = findItSbaComponent(project, componentId);
-  const componentIndex = IT_SBA_COMPONENTS.findIndex(item => item.id === componentId);
-  const meta = IT_SBA_COMPONENTS[componentIndex];
-  const [progress, setProgress] = useState(() => readProgress(project.id));
-  const done = Boolean(progress[componentId]);
-  const nextMeta = IT_SBA_COMPONENTS[componentIndex + 1] || null;
-
-  if (!component || !meta) return null;
-
-  function toggleReviewed() {
-    const next = { ...progress, [componentId]: !done };
-    setProgress(next);
-    writeProgress(project.id, next);
-  }
-
-  return (
-    <main className="it-sba-page">
-      <section className="it-sba-shell">
-        <button type="button" className="it-practice-back it-sba-back" data-spark-action="nav" onClick={() => openProject(project.id)}>
-          <BackArrowIcon/><span>{project.title}</span>
-        </button>
-
-        <header className="it-sba-component-hero">
-          <div className="it-sba-component-icon large"><SbaIcon type={componentId} size={32}/></div>
-          <div>
-            <div className="it-practice-eyebrow">{project.code} - {meta.marks} marks</div>
-            <h1>{meta.title}</h1>
-            <p>{component.produce}</p>
-          </div>
-        </header>
-
-        <section className="it-sba-guide-layout">
-          <div className="it-sba-guide-main">
-            <div className="it-sba-section-heading">
-              <div>
-                <div className="it-practice-label">Step-by-step guide</div>
-                <h2>Complete the section in this order.</h2>
-              </div>
-            </div>
-            <div className="it-sba-step-list">
-              {component.steps.map((step, index) => (
-                <article key={step.title} className="it-sba-step-card">
-                  <span>{index + 1}</span>
-                  <div><h3>{step.title}</h3><p>{step.detail}</p></div>
-                </article>
-              ))}
-            </div>
-          </div>
-
-          <aside className="it-sba-guide-side">
-            <div className="it-sba-side-card">
-              <div className="it-practice-label">Before you move on</div>
-              <h3>Ask yourself</h3>
-              <ul>
-                <li>Does this part solve the task stated in the project brief?</li>
-                <li>Can I explain why I used each feature?</li>
-                <li>Did I test the result instead of assuming it works?</li>
-                <li>Does the information agree with the other SBA sections?</li>
-              </ul>
-            </div>
-            <div className="it-sba-side-card marks">
-              <div className="it-practice-label">What earns marks</div>
-              <div className="it-sba-marking-list">
-                {IT_SBA_MARKING_GUIDE[componentId].map(item => (
-                  <div key={item.label}><span>{item.label}</span><strong>{item.marks}</strong></div>
-                ))}
-              </div>
-            </div>
-            <div className="it-sba-side-card caution">
-              <div className="it-practice-label">Common mistakes</div>
-              <ul>{component.mistakes.map(item => <li key={item}>{item}</li>)}</ul>
-            </div>
-          </aside>
-        </section>
-
-        <section className="it-sba-reference-card">
-          <div className="it-practice-label">Completed SPARK reference</div>
-          <h2>See what a completed version could include.</h2>
-          <p>This is one valid SPARK approach for this fictional practice project. Your teacher may require different fields, formulas, queries, formatting or program logic for your real SBA.</p>
-          <CompletedExample componentId={componentId} component={component}/>
-        </section>
-
-        <section className="it-sba-component-actions">
-          <button type="button" className={done ? "it-practice-secondary" : "it-practice-primary"} onClick={toggleReviewed}>
-            <SbaIcon type="check" size={18}/><span>{done ? "Marked as reviewed" : "Mark section as reviewed"}</span>
-          </button>
-          {nextMeta ? (
-            <button type="button" className="it-practice-primary" onClick={() => openComponent(project.id, nextMeta.id)}>Next: {nextMeta.title}</button>
-          ) : (
-            <button type="button" className="it-practice-primary" onClick={() => openProject(project.id)}>Return to project overview</button>
-          )}
-        </section>
-      </section>
-    </main>
-  );
+function CentreHome({ openProject, onBack }) {
+  const [deadline,setDeadline]=useState("");
+  const milestones=useMemo(()=>plannedMilestones(deadline),[deadline]);
+  return <main className="it-sba-page"><section className="it-sba-shell">
+    <button type="button" className="it-practice-back it-sba-back" data-spark-action="nav" onClick={onBack}><BackArrowIcon/><span>Information Technology Practice</span></button>
+    <header className="it-sba-hero"><div><div className="it-practice-eyebrow">CSEC Information Technology SBA Centre</div><h1>Read the full SBA. Then build it question by question.</h1><p>Each SPARK project now includes the full practice SBA as a PDF, a question-by-question guide and a completed watermarked PDF for every practical section.</p></div><div className="it-sba-hero-badge"><strong>5</strong><span>complete practice SBAs</span></div></header>
+    <section className="it-sba-current-card"><div><div className="it-practice-label">How SPARK uses these projects</div><h2>The PDF gives you the assignment. The guide shows you how to answer it.</h2><p>Read the project PDF first so you understand the scenario and exact questions. Then open the guided project and work through each question in order. Your teacher's current assignment and marking instructions always take priority.</p></div><div className="it-sba-mark-grid">{IT_SBA_MARKS.map(item=><div key={item.label}><strong>{item.marks}</strong><span>{item.label}</span></div>)}</div><div className="it-sba-syllabus-note"><strong>Web page reminder</strong><p>SPARK keeps the current practice web task to one web page. Older school projects sometimes used several linked pages. Follow the assignment your teacher gives you.</p></div><div className="it-sba-limit-grid">{IT_SBA_CURRENT_LIMITS.map(item=><article key={item.id}><SbaIcon type={item.id} size={20}/><div><strong>{item.title}</strong><p>{item.text}</p></div></article>)}</div></section>
+    <section className="it-sba-projects-section"><div className="it-sba-section-heading"><div><div className="it-practice-label">Full sample SBAs</div><h2>Choose a scenario and read the question paper before you start.</h2><p>The five projects use original SPARK wording and fictional data. Every completed document is watermarked as a reference example.</p></div></div><div className="it-sba-project-grid">{IT_SBA_PROJECTS.map(project=><article className="it-sba-project-card" key={project.id}><div className="it-sba-project-topline"><span>{project.code}</span><em>{project.level}</em></div><div className="it-sba-project-icon"><SbaIcon type="project" size={28}/></div><div className="it-practice-label">{project.sector}</div><h3>{project.title}</h3><p>{project.scenario}</p><div className="it-sba-project-focus">{project.accent}</div><div className="it-sba-card-actions"><button type="button" className="it-practice-primary" onClick={()=>openProject(project.id)}>Open guided project</button><a className="it-practice-secondary" href={projectPdf(project.id)} target="_blank" rel="noreferrer"><SbaIcon type="pdf" size={17}/><span>View full SBA</span></a></div></article>)}</div></section>
+    <section className="it-sba-timeline-card"><div className="it-sba-timeline-copy"><SbaIcon type="calendar" size={28}/><div><div className="it-practice-label">SBA timeline planner</div><h2>Work backwards from your school deadline.</h2><p>Enter your target submission date and SPARK will suggest checkpoints. Your teacher's dates take priority.</p></div></div><label className="it-sba-date-field">Target submission date<input type="date" value={deadline} onChange={e=>setDeadline(e.target.value)}/></label>{milestones.length>0&&<div className="it-sba-milestones">{milestones.map(item=><div key={item.label}><strong>{dateLabel(item.date)}</strong><span>{item.label}</span></div>)}</div>}</section>
+    <section className="it-sba-integrity-card"><div className="it-sba-integrity-icon"><SbaIcon type="check" size={30}/></div><div><div className="it-practice-label">Reference examples only</div><h2>Study the completed work. Do your own assigned SBA.</h2><p>Every completed PDF carries a SPARK watermark. Do not submit, rename or reproduce the reference projects as your own work. Use them to understand what a complete answer looks like and how one section connects to the next.</p></div></section>
+  </section></main>;
 }
 
-export default function InformationTechnologySbaCentre({ onBack }) {
-  const {
-    page,
-    projectId,
-    componentId,
-    openHome,
-    openProject,
-    openComponent,
-  } = useInformationTechnologySbaRoute(true);
-
-  const project = findItSbaProject(projectId);
-
-  useLayoutEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, [page, projectId, componentId]);
-
-  if (page === "project" && project) {
-    return <ProjectOverview project={project} openHome={openHome} openComponent={openComponent}/>;
+function ProjectOverview({ project, userId, onActivity, openHome, openComponent }) {
+  const [progress,setProgress]=useState(()=>readProgress(userId,project.id));
+  const completeCount=IT_SBA_COMPONENTS.filter(item=>progress[item.id]).length;
+  useEffect(()=>setProgress(readProgress(userId,project.id)),[userId,project.id]);
+  function resetProgress(){
+    const reviewedIds=IT_SBA_COMPONENTS.filter(item=>progress[item.id]).map(item=>item.id);
+    const next={};
+    setProgress(next);
+    writeProgress(userId,project.id,next);
+    reviewedIds.forEach(componentId=>emitSbaReviewActivity(onActivity,project,componentId,false));
   }
+  return <main className="it-sba-page"><section className="it-sba-shell">
+    <button type="button" className="it-practice-back it-sba-back" data-spark-action="nav" onClick={openHome}><BackArrowIcon/><span>All SBA projects</span></button>
+    <header className="it-sba-project-hero"><div><div className="it-practice-eyebrow">{project.code} - {project.sector}</div><h1>{project.title}</h1><p>{project.scenario}</p></div><div className="it-sba-progress-ring" aria-label={`${completeCount} of 5 sections reviewed`}><strong>{completeCount}/5</strong><span>sections reviewed</span></div></header>
+    <section className="it-sba-pdf-feature"><div><div className="it-practice-label">Start here</div><h2>Read the full SBA question paper.</h2><p>This PDF contains the scenario and all questions in the order a student would receive them. Read it before opening the step-by-step guides.</p><PdfActions project={project}/></div><object className="it-sba-pdf-viewer" data={projectPdf(project.id)} type="application/pdf" aria-label={`${project.title} full SBA PDF`}><p>Your browser does not display PDFs inside the page. <a href={projectPdf(project.id)} target="_blank" rel="noreferrer">Open the full SBA PDF</a>.</p></object></section>
+    <section className="it-sba-project-purpose"><div className="it-practice-label">Description of Project</div><h2>What you are building</h2><p>{project.purpose}</p></section>
+    <section className="it-sba-component-grid">{IT_SBA_COMPONENTS.map((item,index)=>{const component=project.components[item.id];const done=Boolean(progress[item.id]);const count=getItSbaProjectTasks(project.id,item.id).length;return <article key={item.id} className={`it-sba-component-card ${done?"done":""}`}><div className="it-sba-component-head"><div className="it-sba-component-icon"><SbaIcon type={item.id}/></div><span>Section {index+1}</span><strong>{count} questions</strong></div><h2>{item.title}</h2><p>{component.produce}</p><div className="it-sba-card-actions"><button type="button" className={done?"it-practice-secondary":"it-practice-primary"} onClick={()=>openComponent(project.id,item.id)}>{done?"Review questions":"Start questions"}</button><a className="it-sba-text-link" href={completedPdf(project.id,item.id)} target="_blank" rel="noreferrer">View completed PDF</a></div></article>;})}</section>
+    <section className="it-sba-download-card"><div><div className="it-practice-label">Completed SBA downloads</div><h2>Download the completed SPARK reference for each section.</h2><p>These are full section PDFs, not short answer sheets. Each one shows the exact questions being answered, the method used and the completed result. The SPARK watermark is placed throughout the document.</p></div><div className="it-sba-download-grid"><a href={projectPdf(project.id)} download><SbaIcon type="pdf"/><span><strong>Full SBA question paper</strong><small>PDF</small></span></a>{IT_SBA_COMPONENTS.map(item=><a key={item.id} href={completedPdf(project.id,item.id)} download><SbaIcon type={item.id}/><span><strong>Completed {item.title}</strong><small>Watermarked PDF</small></span></a>)}</div></section>
+    <NativeFileDownloads project={project}/>
+    <section className="it-sba-progress-actions"><span>Your review progress is saved to your SPARK progress and kept separately for your account on this device.</span>{completeCount>0&&<button type="button" className="it-practice-secondary" onClick={resetProgress}>Reset review progress</button>}</section>
+  </section></main>;
+}
 
-  if (page === "component" && project && findItSbaComponent(project, componentId)) {
-    return <ComponentGuide project={project} componentId={componentId} openProject={openProject} openComponent={openComponent}/>;
+function QuestionCard({ task, index }) {
+  return <article className="it-sba-question-card"><div className="it-sba-question-number"><span>Question</span><strong>{index+1}</strong></div><div className="it-sba-question-body"><div className="it-sba-question-group">{task.group}</div><h3>{task.question}</h3><div className="it-sba-how"><h4>How to complete this question</h4><ol>{task.how.map(step=><li key={step}>{step}</li>)}</ol></div><div className="it-sba-answer"><h4>What the completed SPARK answer shows</h4><p>{task.answer}</p></div></div></article>;
+}
+
+function ComponentGuide({ project, componentId, userId, onActivity, openProject, openComponent }) {
+  const component=findItSbaComponent(project,componentId);
+  const componentIndex=IT_SBA_COMPONENTS.findIndex(item=>item.id===componentId);
+  const meta=IT_SBA_COMPONENTS[componentIndex];
+  const questions=getItSbaProjectTasks(project.id,componentId);
+  const [progress,setProgress]=useState(()=>readProgress(userId,project.id));
+  const done=Boolean(progress[componentId]);
+  const nextMeta=IT_SBA_COMPONENTS[componentIndex+1]||null;
+  if(!component||!meta)return null;
+  function toggleReviewed(){
+    const completed=!done;
+    const next={...progress,[componentId]:completed};
+    setProgress(next);
+    writeProgress(userId,project.id,next);
+    emitSbaReviewActivity(onActivity,project,componentId,completed);
   }
+  const pdf=completedPdf(project.id,componentId);
+  return <main className="it-sba-page"><section className="it-sba-shell">
+    <button type="button" className="it-practice-back it-sba-back" data-spark-action="nav" onClick={()=>openProject(project.id)}><BackArrowIcon/><span>{project.title}</span></button>
+    <header className="it-sba-component-hero"><div className="it-sba-component-icon large"><SbaIcon type={componentId} size={32}/></div><div><div className="it-practice-eyebrow">{project.code} - {questions.length} guided questions</div><h1>{meta.title}</h1><p>{component.produce}</p></div></header>
+    <section className="it-sba-question-intro"><div className="it-practice-label">Question-by-question guide</div><h2>Know the exact question before you start clicking.</h2><p>Each card below repeats the practice-SBA question, tells you exactly how to approach it, then shows what the completed SPARK result contains. Keep the full SBA PDF open beside you while you work.</p><a className="it-practice-secondary" href={projectPdf(project.id)} target="_blank" rel="noreferrer"><SbaIcon type="pdf" size={18}/><span>View full SBA</span></a></section>
+    <section className="it-sba-question-list">{questions.map((task,index)=><QuestionCard key={task.id} task={task} index={index}/>)}</section>
+    <section className="it-sba-section-pdf"><div><div className="it-practice-label">Completed {meta.title} SBA</div><h2>Read the completed section exactly as a reference submission.</h2><p>The PDF answers every question above and includes the completed structures, formulas, layouts, trace data or code needed for this fictional project. The watermark is repeated on every page.</p><PdfActions project={project} componentId={componentId}/></div><object className="it-sba-pdf-viewer section" data={pdf} type="application/pdf" aria-label={`${project.title} ${meta.title} completed PDF`}><p>Your browser does not display PDFs inside the page. <a href={pdf} target="_blank" rel="noreferrer">Open the completed section PDF</a>.</p></object></section>
+    <NativeFileDownloads project={project} componentId={componentId} compact/>
+    <section className="it-sba-component-actions"><button type="button" className={done?"it-practice-secondary":"it-practice-primary"} onClick={toggleReviewed}><SbaIcon type="check" size={18}/><span>{done?"Marked as reviewed":"Mark section as reviewed"}</span></button>{nextMeta?<button type="button" className="it-practice-primary" onClick={()=>openComponent(project.id,nextMeta.id)}>Next: {nextMeta.title}</button>:<button type="button" className="it-practice-primary" onClick={()=>openProject(project.id)}>Return to project overview</button>}</section>
+  </section></main>;
+}
 
+export default function InformationTechnologySbaCentre({ userId, onActivity, onBack }) {
+  const { page,projectId,componentId,openHome,openProject,openComponent }=useInformationTechnologySbaRoute(true);
+  const project=findItSbaProject(projectId);
+  useLayoutEffect(()=>{window.scrollTo({top:0,left:0,behavior:"auto"});},[page,projectId,componentId]);
+  if(page==="project"&&project)return <ProjectOverview project={project} userId={userId} onActivity={onActivity} openHome={openHome} openComponent={openComponent}/>;
+  if(page==="component"&&project&&findItSbaComponent(project,componentId))return <ComponentGuide project={project} componentId={componentId} userId={userId} onActivity={onActivity} openProject={openProject} openComponent={openComponent}/>;
   return <CentreHome openProject={openProject} onBack={onBack}/>;
 }

@@ -84,7 +84,17 @@
 .it-flashcards-nav button:last-child{background:#0d8069}.it-flashcards-nav button:disabled{opacity:.38;cursor:not-allowed}
 .it-flashcards-empty{padding:50px 20px;text-align:center;color:var(--it-muted,#657488)}
 
-html[data-theme="dark"] .it-flashcards,body[data-theme="dark"] .it-flashcards{--it-card:#142033;--it-soft:#1b2940;--it-line:#2b3d55;--it-ink:#e9f0f8;--it-muted:#a9b8ca}
+html[data-theme="dark"] .it-flashcards,
+body[data-theme="dark"] .it-flashcards{
+  --it-bg:#0f1928;
+  --it-card:#142033;
+  --it-soft:#1b2940;
+  --it-line:#2b3d55;
+  --it-ink:#e9f0f8;
+  --it-muted:#a9b8ca;
+  background:var(--it-bg);
+  color:var(--it-ink);
+}
 html[data-theme="dark"] .it-flashcards-change,body[data-theme="dark"] .it-flashcards-change{background:rgba(126,158,198,.14);border-color:rgba(156,184,219,.3);color:#dce8f6}
 html[data-theme="dark"] .it-flashcards-summary strong,body[data-theme="dark"] .it-flashcards-summary strong,
 html[data-theme="dark"] .it-flashcards-topic-number,body[data-theme="dark"] .it-flashcards-topic-number{color:#dce8f6}
@@ -156,4 +166,27 @@ html[data-theme="dark"] .it-flashcard.revealed,body[data-theme="dark"] .it-flash
   .it-fc-objective-answer{
     width:100%;
   }
+}
+
+/* SPARK IT FLASHCARDS DARK SURFACE V1 */
+html[data-theme="dark"] .it-flashcards-mode button.active,
+body[data-theme="dark"] .it-flashcards-mode button.active{
+  background:#17342f;
+  border-color:rgba(71,191,154,.42);
+}
+html[data-theme="dark"] .it-flashcards-sections button.active,
+body[data-theme="dark"] .it-flashcards-sections button.active,
+html[data-theme="dark"] .it-flashcards-topics button.active,
+body[data-theme="dark"] .it-flashcards-topics button.active{
+  background:#17312f;
+}
+html[data-theme="dark"] .it-flashcards-head,
+body[data-theme="dark"] .it-flashcards-head,
+html[data-theme="dark"] .it-flashcards-summary>div,
+body[data-theme="dark"] .it-flashcards-summary>div,
+html[data-theme="dark"] .it-flashcards-browser,
+body[data-theme="dark"] .it-flashcards-browser,
+html[data-theme="dark"] .it-flashcards-study,
+body[data-theme="dark"] .it-flashcards-study{
+  box-shadow:none;
 }

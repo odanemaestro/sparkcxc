@@ -374,6 +374,8 @@ export function summarizeSubjectProgress(rows = [], options = {}) {
   const scoped = subjectId ? subjectRows(rows, subjectId) : [...rows];
   const lessons = scoped.filter(row => row.activity_type === "lesson" && row.completed);
   const labs = scoped.filter(row => row.activity_type === "lab" && row.completed);
+  const sbaReviews = scoped.filter(row => row.activity_type === "sba_review" && row.completed);
+  const flashcardReviews = scoped.filter(row => row.activity_type === "flashcard_review" && row.completed);
   const quizzes = scoped.filter(row => row.activity_type === "topic_quiz" && (safeNumber(row.attempt_count) > 0 || row.percent != null));
   const checkpoints = scoped.filter(row => row.activity_type === "section_checkpoint" && (safeNumber(row.attempt_count) > 0 || row.percent != null));
   const exams = scoped.filter(row => row.activity_type === "exam" && (safeNumber(row.attempt_count) > 0 || row.percent != null));
@@ -394,6 +396,8 @@ export function summarizeSubjectProgress(rows = [], options = {}) {
     totalTopics,
     lessonPercent,
     labsCompleted: labs.length,
+    sbaSectionsReviewed: sbaReviews.length,
+    flashcardsReviewed: flashcardReviews.length,
     topicTests: quizzes.length,
     topicsPractised,
     skillsTracked: topicsPractised,
@@ -507,6 +511,8 @@ export function summarizeAllSubjects(subjectSummaries = []) {
   const exams = active.reduce((sum, item) => sum + safeNumber(item.progress?.exams), 0);
   const assessments = active.reduce((sum, item) => sum + safeNumber(item.progress?.assessments ?? item.progress?.checkpoints), 0);
   const labsCompleted = active.reduce((sum, item) => sum + safeNumber(item.progress?.labsCompleted), 0);
+  const sbaSectionsReviewed = active.reduce((sum, item) => sum + safeNumber(item.progress?.sbaSectionsReviewed), 0);
+  const flashcardsReviewed = active.reduce((sum, item) => sum + safeNumber(item.progress?.flashcardsReviewed), 0);
   const skillsTracked = active.reduce((sum, item) => sum + safeNumber(item.progress?.skillsTracked), 0);
   const lessonPercent = totalTopics ? Math.min(100, Math.round(lessonsCompleted / totalTopics * 100)) : 0;
   return {
@@ -521,6 +527,8 @@ export function summarizeAllSubjects(subjectSummaries = []) {
     exams,
     assessments,
     labsCompleted,
+    sbaSectionsReviewed,
+    flashcardsReviewed,
     skillsTracked,
     overallPerformance: goalMetric.value,
     hasOverallPerformance: goalMetric.hasData,
@@ -762,7 +770,7 @@ function buildInformationTechnologyProgressReport({ subject, rows = [], events =
       examAverage: periodExamAverage || 0,
       hasExamAverage: periodExamAverage != null,
       tutorSessions: 0,
-      flashcardsReviewed: 0,
+      flashcardsReviewed: periodSummary.flashcardsReviewed || 0,
       milestones: periodRows.length,
       labsCompleted: periodSummary.labsCompleted,
     },
@@ -857,7 +865,7 @@ export function buildGenericSubjectProgressReport({ subject, rows = [], events =
       examAverage: periodSummary.practiceAverage,
       hasExamAverage: periodSummary.practiceAttempts > 0,
       tutorSessions: 0,
-      flashcardsReviewed: 0,
+      flashcardsReviewed: periodSummary.flashcardsReviewed || 0,
       milestones: periodRows.length,
       labsCompleted: periodSummary.labsCompleted,
     },
@@ -983,6 +991,50 @@ export function activityPayloadFromInformationTechnologyEvent(event = {}) {
         source: "information_technology_practical_labs",
         event_type: type,
         lab_id: labId,
+        at: event.at || new Date().toISOString(),
+      },
+    };
+  }
+
+  if (type === "it_sba_section_reviewed") {
+    const projectId = String(event.projectId || "").trim();
+    const componentId = String(event.componentId || "").trim();
+    if (!projectId || !componentId) return null;
+    return {
+      subjectId: "information-technology",
+      activityKey: `sba:${projectId}:${componentId}`,
+      activityType: "sba_review",
+      sectionId: "SBA",
+      topicId: componentId,
+      title: event.title || `${event.projectTitle || projectId} - ${event.componentTitle || componentId}`,
+      completed: event.completed !== false,
+      metadata: {
+        source: "information_technology_sba_centre",
+        event_type: type,
+        project_id: projectId,
+        project_title: event.projectTitle || null,
+        component_id: componentId,
+        component_title: event.componentTitle || null,
+        at: event.at || new Date().toISOString(),
+      },
+    };
+  }
+
+  if (type === "it_flashcard_review") {
+    const cardId = String(event.cardId || "").trim();
+    if (!cardId) return null;
+    return {
+      subjectId: "information-technology",
+      activityKey: `flashcard:${cardId}`,
+      activityType: "flashcard_review",
+      sectionId: event.section != null ? String(event.section) : null,
+      topicId: event.topicId != null ? String(event.topicId) : null,
+      title: event.cardTitle || "Information Technology flashcard",
+      completed: event.completed !== false,
+      metadata: {
+        source: "information_technology_flashcards",
+        event_type: type,
+        card_id: cardId,
         at: event.at || new Date().toISOString(),
       },
     };

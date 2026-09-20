@@ -51,7 +51,7 @@ export function weeklyScoreBreakdown(metrics = {}) {
     ["Consistency", Number(metrics.consistency_points) || 0, 25],
     ["Improvement", Number(metrics.improvement_points) || 0, 25],
     ["Practice", Number(metrics.practice_points) || 0, 20],
-    ["Lessons & quizzes", Number(metrics.lesson_points) || 0, 15],
+    ["Learning activities", Number(metrics.lesson_points) || 0, 15],
     ["Exam practice", Number(metrics.exam_points) || 0, 10],
     ["Flashcards", Number(metrics.flashcard_points) || 0, 5],
   ];

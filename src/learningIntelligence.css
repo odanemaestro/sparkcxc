@@ -338,3 +338,84 @@
     width:100%;
   }
 }
+
+/* SPARK MATH FLASHCARD NAV CONSISTENCY V2
+   CSS-only fix so it works regardless of the current JSX formatting.
+   Previous and Next keep the same transparent outer control with a circular
+   arrow. Disabled Previous is muted instead of becoming a filled navy pill. */
+.spark-flashcard-nav{
+  min-height:48px;
+  align-items:center;
+}
+
+.spark-flashcard-nav > button{
+  min-width:108px !important;
+  min-height:44px !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:8px !important;
+  padding:6px 4px !important;
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  color:var(--spark-teal-dark,#087f73) !important;
+  font-weight:800 !important;
+  opacity:1;
+  transform:none !important;
+}
+
+.spark-flashcard-nav > button:first-child{
+  justify-content:flex-start !important;
+}
+
+.spark-flashcard-nav > button:last-child{
+  justify-content:flex-end !important;
+}
+
+.spark-flashcard-nav > button:hover:not(:disabled){
+  border:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+}
+
+.spark-flashcard-nav > button:disabled{
+  border:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  color:var(--spark-text-muted,#64748B) !important;
+  opacity:.46 !important;
+  cursor:default !important;
+}
+
+.spark-flashcard-nav > button:disabled .spark-nav-arrow{
+  border-color:var(--spark-border-strong,#CBD5E1) !important;
+  background:var(--spark-muted,#F4F4F1) !important;
+  color:var(--spark-text-muted,#64748B) !important;
+  box-shadow:none !important;
+}
+
+html[data-theme="dark"] .spark-flashcard-nav > button,
+body[data-theme="dark"] .spark-flashcard-nav > button{
+  background:transparent !important;
+}
+
+html[data-theme="dark"] .spark-flashcard-nav > button:disabled,
+body[data-theme="dark"] .spark-flashcard-nav > button:disabled{
+  background:transparent !important;
+  color:var(--spark-text-muted,#91A5BF) !important;
+  opacity:.48 !important;
+}
+
+html[data-theme="dark"] .spark-flashcard-nav > button:disabled .spark-nav-arrow,
+body[data-theme="dark"] .spark-flashcard-nav > button:disabled .spark-nav-arrow{
+  border-color:var(--spark-border-strong,#3B5575) !important;
+  background:var(--spark-muted,#172A43) !important;
+  color:var(--spark-text-muted,#91A5BF) !important;
+}
+
+@media(max-width:480px){
+  .spark-flashcard-nav > button{
+    min-width:96px !important;
+  }
+}
