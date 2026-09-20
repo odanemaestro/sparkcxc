@@ -13,6 +13,7 @@ import PlantGrowthExplorer from "./components/PlantGrowthExplorer";
 import CropProductionExplorer from "./components/CropProductionExplorer";
 import SoilFertilityExplorer from "./components/SoilFertilityExplorer";
 import SoilErosionExplorer from "./components/SoilErosionExplorer";
+import AnimalAsexualReproductionExplorer from "./components/AnimalAsexualReproductionExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -206,6 +207,9 @@ function GenericLessonContent({
         }
         if (model?.type === "soil-erosion-food-production") {
           return <SoilErosionExplorer key={model.id || "soil-erosion-food-production"} />;
+        }
+        if (model?.type === "animal-asexual-reproduction") {
+          return <AnimalAsexualReproductionExplorer key={model.id || "animal-asexual-reproduction"} />;
         }
         return null;
       })}
