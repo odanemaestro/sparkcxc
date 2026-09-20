@@ -6,6 +6,7 @@ import { loadGenericSubjectStructure } from "./genericSubjectCatalog";
 import InteractiveLabelDiagram from "./components/InteractiveLabelDiagram";
 import TransportProcessExplorer from "./components/TransportProcessExplorer";
 import TransportInvestigationExplorer from "./components/TransportInvestigationExplorer";
+import ReproductionComparisonExplorer from "./components/ReproductionComparisonExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -178,6 +179,9 @@ function GenericLessonContent({
         }
         if (model?.type === "transport-investigations") {
           return <TransportInvestigationExplorer key={model.id || "transport-investigations"} />;
+        }
+        if (model?.type === "reproduction-comparison") {
+          return <ReproductionComparisonExplorer key={model.id || "reproduction-comparison"} />;
         }
         return null;
       })}
