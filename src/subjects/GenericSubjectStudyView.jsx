@@ -275,7 +275,13 @@ export default function GenericSubjectStudyView({
       setActiveSectionId(topic?.sectionId || nextStructure.sections?.[0]?.id || null);
       setActiveTopicId(topic?.id || null);
 
-      if (topic && routed.topicId && routed.topicId !== topic.id) {
+      if (
+        topic &&
+        (
+          (routed.topicId && routed.topicId !== topic.id) ||
+          (routed.sectionId && routed.sectionId !== topic.sectionId)
+        )
+      ) {
         writeSparkNestedRoute(studyPath, {
           section:topic.sectionId || null,
           topic:topic.id,
@@ -386,7 +392,10 @@ export default function GenericSubjectStudyView({
         setActiveSectionId(topic.sectionId || null);
         setActiveTopicId(topic.id);
 
-        if (next.topicId && next.topicId !== topic.id) {
+        if (
+          (next.topicId && next.topicId !== topic.id) ||
+          (next.sectionId && next.sectionId !== topic.sectionId)
+        ) {
           writeSparkNestedRoute(studyPath, {
             section:topic.sectionId || null,
             topic:topic.id,
