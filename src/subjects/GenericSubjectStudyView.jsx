@@ -11,6 +11,7 @@ import VegetativePropagationExplorer from "./components/VegetativePropagationExp
 import FlowerReproductionProcess from "./components/FlowerReproductionProcess";
 import PlantGrowthExplorer from "./components/PlantGrowthExplorer";
 import CropProductionExplorer from "./components/CropProductionExplorer";
+import SoilFertilityExplorer from "./components/SoilFertilityExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -198,6 +199,9 @@ function GenericLessonContent({
         }
         if (model?.type === "crop-production-systems") {
           return <CropProductionExplorer key={model.id || "crop-production-systems"} />;
+        }
+        if (model?.type === "soil-fertility") {
+          return <SoilFertilityExplorer key={model.id || "soil-fertility"} />;
         }
         return null;
       })}
