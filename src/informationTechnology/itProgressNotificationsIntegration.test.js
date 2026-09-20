@@ -199,8 +199,8 @@ describe("Information Technology progress, reports and notifications", () => {
       "utf8"
     );
     const start = registry.indexOf("informationTechnology: Object.freeze({");
-    const end = registry.indexOf("}),", start);
-    const block = registry.slice(start, end + 3);
+    const end = registry.indexOf("export function getSparkSubjectRegistry", start);
+    const block = registry.slice(start, end);
     expect(block).toContain("labs: true");
     expect(block).not.toContain("labs: false");
   });

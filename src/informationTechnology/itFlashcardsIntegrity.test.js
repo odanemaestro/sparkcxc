@@ -52,8 +52,8 @@ describe("Information Technology flashcards V2 coverage and presentation", () =>
 
   test("IT remains enabled as a flashcard-capable subject", () => {
     const start = registry.indexOf("informationTechnology: Object.freeze({");
-    const end = registry.indexOf("}),", start);
-    const block = registry.slice(start, end + 3);
+    const end = registry.indexOf("export function getSparkSubjectRegistry", start);
+    const block = registry.slice(start, end);
     expect(block).toContain("flashcards: true");
   });
 

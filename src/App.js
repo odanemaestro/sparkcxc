@@ -86,6 +86,8 @@ import ParentSubjectGoalCard from "./components/learning/ParentSubjectGoalCard";
 import ParentOverviewIntelligence from "./components/learning/ParentOverviewIntelligence";
 import ProgressReportModal from "./components/reports/ProgressReportModal";
 import LearningEngineAdminPanel from "./components/admin/LearningEngineAdminPanel";
+import AdminAccountsPanel from "./components/admin/AdminAccountsPanel";
+import SubjectManagementPanel from "./components/admin/SubjectManagementPanel";
 import SparkRewardsPanel from "./components/rewards/SparkRewardsPanel"; // SPARK_V570_REWARDS
 import { buildLearningSummary } from "./insights/progressAnalytics";
 import { buildLearnerModelProfile, learnerModelWeakSkills } from "./learning/learnerModel";
@@ -1461,6 +1463,7 @@ function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorAp
   const isTutor = profile?.role === "tutor" || tutorApp?.status === "approved";
   const isStudent = profile?.role === "student";
   const isParent = profile?.role === "parent";
+  const isDedicatedAdmin = Boolean(profile?.is_admin && profile?.account_type === "admin");
 
   useEffect(() => { setMenuOpen(false); }, [view]);
 
@@ -1469,7 +1472,9 @@ function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorAp
     setView(nextView);
   };
 
-  const signedInLinks = (
+  const signedInLinks = isDedicatedAdmin ? (
+    <NavBtn onClick={() => navigate("admin")} active={view === "admin"}>Admin</NavBtn>
+  ) : (
     <>
       <NavBtn onClick={() => navigate("dashboard")} active={view === "dashboard"}>Dashboard</NavBtn>
       {!isTutor && !isParent && <NavBtn onClick={() => navigate("study")} active={view === "study" || view === "lesson" || view === "physics"}>Study</NavBtn>}
@@ -1493,7 +1498,7 @@ function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorAp
   return (
     <nav className="glass-nav spark-nav" aria-label="Primary navigation">
       <div className="spark-nav-inner">
-        <button type="button" className="spark-brand" onClick={() => navigate("home")} aria-label="SPARK home">
+        <button type="button" className="spark-brand" onClick={() => navigate(isDedicatedAdmin ? "admin" : "home")} aria-label="SPARK home">
           <svg width="26" height="26" viewBox="0 0 512 512" aria-hidden="true">
             <path d="M 340 110 C 340 78, 312 60, 268 60 C 268 60, 190 60, 190 60 C 130 60, 92 96, 92 148 C 92 198, 128 226, 186 236 C 186 236, 296 254, 296 254 C 216 258, 326 276, 326 276 C 384 286, 420 314, 420 364 C 420 416, 382 452, 322 452 C 322 452, 244 452, 244 452 C 200 452, 172 434, 172 402"
               fill="none" stroke="#5EEAD4" strokeWidth="44" strokeLinecap="round" strokeLinejoin="round"/>
@@ -1503,7 +1508,7 @@ function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorAp
         </button>
 
         <div className="spark-nav-actions">
-          {user && <NotificationCenter user={user} profile={profile} setView={navigate} />}
+          {user && !isDedicatedAdmin && <NotificationCenter user={user} profile={profile} setView={navigate} />}
 
           <div className="spark-nav-desktop">
             {user ? (
@@ -5399,7 +5404,7 @@ const STATUS_BADGE = {
   deactivated: { c: "red",   label: "Deactivated" },
 };
 
-function AdminView({ showToast, adminUserId }) {
+function AdminView({ showToast, adminUserId, profile }) {
   const [tutors, setTutors] = useState([]);
   const [loading, setLoading] = useState(true);
   const [busyId, setBusyId] = useState(null);
@@ -5486,8 +5491,27 @@ function AdminView({ showToast, adminUserId }) {
   const filtered = visibleTutors.filter(t => filter === "all" || t.status === filter);
 
   return (
-    <div style={{maxWidth:920,margin:"0 auto",padding:"40px 28px",flex:1,width:"100%"}}>
-      <h1 style={{fontFamily:FD,fontSize:26,fontWeight:700,color:T.ink,marginBottom:6}}>Tutor applications</h1>
+    <div style={{maxWidth:1080,margin:"0 auto",padding:"40px 28px",flex:1,width:"100%"}}>
+      <h1 style={{fontFamily:FD,fontSize:28,fontWeight:700,color:T.ink,marginBottom:6}}>SPARK administration</h1>
+      <p style={{color:T.textMuted,fontSize:14,marginBottom:8}}>
+        Manage platform access, subjects, learning strategy, tutors and safety operations.
+      </p>
+
+      <AdminAccountsPanel
+        supabase={supabase}
+        showToast={showToast}
+        currentUserId={adminUserId}
+        currentProfile={profile}
+      />
+
+      <SubjectManagementPanel
+        supabase={supabase}
+        showToast={showToast}
+        manifestSubjects={SPARK_SUBJECTS}
+      />
+
+      <div style={{marginTop:38}}>
+      <h2 style={{fontFamily:FD,fontSize:22,fontWeight:700,color:T.ink,marginBottom:6}}>Tutor applications</h2>
       <p style={{color:T.textMuted,fontSize:14,marginBottom:20}}>
         Approve or reject tutor applications. Approving sets a tutor live on the Tutors page.
       </p>
@@ -5585,6 +5609,8 @@ function AdminView({ showToast, adminUserId }) {
           </div>
         </Card>
       ))}
+
+      </div>
 
       <div style={{marginTop:36}}>
         <h2 style={{fontFamily:FD,fontSize:20,color:T.ink,marginBottom:5}}>Tutor payouts</h2>
@@ -6390,7 +6416,8 @@ export default function App() {
   // downstream to control that one link, so folding the student check in
   // here keeps every one of those call sites correct without touching each
   // of them individually.
-  const hideTutorApplyLink = profile?.role === "student" || hasTutorApp;
+  const isDedicatedAdmin = Boolean(profile?.is_admin && profile?.account_type === "admin");
+  const hideTutorApplyLink = isDedicatedAdmin || profile?.role === "student" || hasTutorApp;
 
   const setView = useCallback((nextView, options = {}) => {
     const requestedView = typeof nextView === "function"
@@ -6402,6 +6429,12 @@ export default function App() {
     setViewState(resolvedView);
     writeViewToBrowserHash(resolvedView, options);
   }, []);
+
+  // SPARK_DEDICATED_ADMIN_ROUTE_GUARD
+  useEffect(() => {
+    if (!session || !isDedicatedAdmin || view === "admin" || view === "auth-recovery") return;
+    setView("admin", { replace: true });
+  }, [session, isDedicatedAdmin, view, setView]);
 
   const openMySubjects = useCallback(() => {
     viewRef.current = "dashboard";
@@ -6843,6 +6876,12 @@ useEffect(() => () => {
 
     const {data} = await supabase.from("profiles").select("*").eq("id", uid).single();
     setProfile(data);
+    if (data?.is_admin && data?.account_type === "admin") {
+      setTutorApp(null);
+      setTutorAppLoaded(true);
+      setLoading(false);
+      return;
+    }
     // Resolve tutor status before revealing the authenticated UI. This avoids
     // a student-dashboard flash for approved tutors and lets nested dashboard
     // routes be interpreted correctly on the very first rendered frame.
@@ -7006,7 +7045,7 @@ const handleLogout = async () => {
   // lookup have resolved. getSession() and onAuthStateChange() can overlap
   // during refresh, so `loading` alone is not a sufficient render guard.
   const tutorVerificationResumePending = !!session && view !== "become-tutor" && tutorVerificationHandoffMatchesUser(loadTutorVerificationHandoff(), session.user);
-  const authenticatedRolePending = !!session && (!profile || !tutorAppLoaded || googleOAuthResolving || tutorVerificationResumePending);
+  const authenticatedRolePending = !!session && (!profile || (!isDedicatedAdmin && !tutorAppLoaded) || googleOAuthResolving || tutorVerificationResumePending);
   const appStudentEnrolledSubjects = profile?.role === "student"
     ? subjectsForEnrollmentIds(SPARK_SUBJECTS, appSubjectEnrollmentIds).filter(subject => subject.enabled !== false)
     : [];
@@ -7040,6 +7079,10 @@ const handleLogout = async () => {
 
 if (loading || authenticatedRolePending) {
     return <SparkLoader variant="screen" label="Loading SPARK" />;
+  }
+
+  if (session && isDedicatedAdmin && view !== "admin") {
+    return <SparkLoader variant="screen" label="Opening SPARK Admin" />;
   }
 
   const navProps = { setView, user: session?.user, profile, onLogout: handleLogout, liveStats, hasTutorApp: hideTutorApplyLink, tutorApp, view, themeMode, resolvedTheme, setThemeMode };
@@ -7079,7 +7122,7 @@ if (loading || authenticatedRolePending) {
           <DashboardView user={session.user} profile={profile} setView={setView} showToast={showToast} hasTutorApp={hideTutorApplyLink} tutorApp={tutorApp} tutorAppLoaded={tutorAppLoaded} onProfileUpdated={updateProfileState}/>
         )
       )}
-      {view === "admin"        && session && profile?.is_admin && <AdminView showToast={showToast} adminUserId={session.user.id}/>}
+      {view === "admin"        && session && profile?.is_admin && <AdminView showToast={showToast} adminUserId={session.user.id} profile={profile}/>}
       {view === "study" && session && profile?.role === "student" && (
         appSubjectAccessPending
           ? <SparkLoader variant="section" label="Loading your subjects" />
