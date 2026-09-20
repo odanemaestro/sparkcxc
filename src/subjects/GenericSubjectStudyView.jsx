@@ -34,6 +34,7 @@ import NervousSystemExplorer from "./components/NervousSystemExplorer";
 import EndocrineSystemExplorer from "./components/EndocrineSystemExplorer";
 import MicrobeExplorer from "./components/MicrobeExplorer";
 import InfectiousDiseaseExplorer from "./components/InfectiousDiseaseExplorer";
+import ImmunisationExplorer from "./components/ImmunisationExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -290,6 +291,9 @@ function GenericLessonContent({
         }
         if (model?.type === "infectious-disease") {
           return <InfectiousDiseaseExplorer key={model.id || "infectious-disease"} />;
+        }
+        if (model?.type === "immunisation") {
+          return <ImmunisationExplorer key={model.id || "immunisation"} />;
         }
         return null;
       })}
