@@ -45,7 +45,7 @@ describe("Integrated Science Objective 1.5.1 acceptance audit", () => {
     expect(migration).toContain("Faeces contain a mixture of substances");
     expect(migration).toContain("undigested food");
     expect(migration).toContain("bile pigments in faeces are excretory products");
-    expect(migration).toContain("classification depends on the origin of the material");
+    expect(migration).toContain("Classification depends on the origin of the material");
   });
 
   test("relates products to the main routes out of the body", () => {
