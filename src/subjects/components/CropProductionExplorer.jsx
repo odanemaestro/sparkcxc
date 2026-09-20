@@ -32,6 +32,12 @@ const METHODS = {
     advantage:"Helps reduce erosion and can slow the spread of pests.",
     limitation:"Field layout and machinery use may be more difficult.",
   },
+  tissueCulture:{
+    title:"Tissue culture",
+    note:"Small pieces of plant tissue are grown under sterile conditions on a nutrient medium until they form plantlets.",
+    advantage:"Produces many genetically identical plants quickly and can provide disease-free planting material.",
+    limitation:"Requires sterile technique, trained workers and specialised equipment.",
+  },
   organic:{
     title:"Organic farming",
     note:"Natural nutrient sources and biological pest controls are emphasised instead of synthetic fertilisers and pesticides.",
@@ -123,6 +129,25 @@ function Scene({ method }) {
           <path key={i} className={i%2 ? "cp-strip alt" : "cp-strip"} d={"M" + (120+i*135) + " 330Q" + (180+i*100) + " 230 " + (245+i*95) + " 175"} />
         ))}
         <text className="cp-label" x="450" y="415" textAnchor="middle">alternating crop strips across the field</text>
+      </svg>
+    );
+  }
+
+  if (method === "tissueCulture") {
+    return (
+      <svg viewBox="0 0 900 430" role="img" aria-label="Plant tissue culture production">
+        <rect className="cp-lab-bench" x="90" y="335" width="720" height="28" rx="8" />
+        {[215,450,685].map((x,index) => (
+          <g key={x}>
+            <path className="cp-culture-flask" d={"M" + (x-42) + " 130H" + (x+42) + "V185L" + (x+78) + " 315Q" + (x+82) + " 335 " + (x+60) + " 335H" + (x-60) + "Q" + (x-82) + " 335 " + (x-78) + " 315L" + (x-42) + " 185Z"} />
+            <path className="cp-culture-medium" d={"M" + (x-66) + " 285Q" + x + " 270 " + (x+66) + " 285L" + (x+78) + " 315Q" + (x+82) + " 335 " + (x+60) + " 335H" + (x-60) + "Q" + (x-82) + " 335 " + (x-78) + " 315Z"} />
+            <path className="cp-stem" d={"M" + x + " 282V" + (225-index*10)} />
+            <ellipse className="cp-leaf" cx={x-26} cy={245-index*8} rx="30" ry="15" transform={"rotate(-24 " + (x-26) + " " + (245-index*8) + ")"} />
+            <ellipse className="cp-leaf" cx={x+27} cy={260-index*8} rx="30" ry="15" transform={"rotate(24 " + (x+27) + " " + (260-index*8) + ")"} />
+            <rect className="cp-flask-stop" x={x-48} y="112" width="96" height="24" rx="7" />
+          </g>
+        ))}
+        <text className="cp-label" x="450" y="402" textAnchor="middle">sterile nutrient medium supports many identical plantlets</text>
       </svg>
     );
   }
