@@ -41,6 +41,7 @@ import DrugEffectsExplorer from "./components/DrugEffectsExplorer";
 import PersonalHygieneExplorer from "./components/PersonalHygieneExplorer";
 import PestVectorExplorer from "./components/PestVectorExplorer";
 import PestControlExplorer from "./components/PestControlExplorer";
+import FoodContaminationExplorer from "./components/FoodContaminationExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -318,6 +319,9 @@ function GenericLessonContent({
         }
         if (model?.type === "pest-control") {
           return <PestControlExplorer key={model.id || "pest-control"} />;
+        }
+        if (model?.type === "food-contamination") {
+          return <FoodContaminationExplorer key={model.id || "food-contamination"} />;
         }
         return null;
       })}
