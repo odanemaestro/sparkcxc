@@ -20,6 +20,7 @@ import { adaptiveOptionDisplayText } from "./adaptiveOptionPresentation";
 import ReportQuestionButton from "../components/ui/ReportQuestionButton";
 import MathText from "../practice/MathText";
 import BackArrowIcon from "../components/ui/BackArrowIcon";
+import { readSparkHashRoute } from "../routing/sparkRoutingV270";
 import "./adaptive.css";
 
 function isAdaptiveMultipleChoice(question) {
@@ -68,7 +69,7 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
   const [dbMessage, setDbMessage] = useState("");
   const [sessionHydrated, setSessionHydrated] = useState(false);
   const storageKey = adaptiveSessionStorageKey(userId);
-  const requestedSkill = new URLSearchParams(window.location.search).get("skill");
+  const requestedSkill = readSparkHashRoute().params.get("skill") || new URLSearchParams(window.location.search).get("skill");
 
   useEffect(() => {
     let cancelled = false;
