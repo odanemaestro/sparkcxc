@@ -55,6 +55,21 @@ describe("Integrated Science Objective 1.7.10 acceptance audit", () => {
     expect(explorer).toContain("Aflatoxin risk");
   });
 
+  test("renders the storage to mould to aflatoxin risk pathway", () => {
+    for (const term of [
+      "spark-aflatoxin-svg",
+      "warm, humid storage",
+      "Aspergillus mould may grow",
+      "some strains can produce aflatoxins",
+      "visible mould is only part of the risk",
+      "long-term exposure can damage the liver",
+      "increase liver-cancer risk"
+    ]) expect(explorer).toContain(term);
+    expect(css).toContain(".spark-aflatoxin-svg");
+    expect(css).toContain(".af-mould-hyphae");
+    expect(css).toContain(".af-toxin-dots");
+  });
+
   test("uses the food contamination explorer in the shared lesson shell", () => {
     expect(migration).toContain('"type":"food-contamination"');
     expect(view).toContain("FoodContaminationExplorer");
