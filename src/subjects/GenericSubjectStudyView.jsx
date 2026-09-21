@@ -89,6 +89,7 @@ import ForcePrinciplesExplorer from "./components/ForcePrinciplesExplorer";
 import GravityInertiaExplorer from "./components/GravityInertiaExplorer";
 import StabilityCentreGravityExplorer from "./components/StabilityCentreGravityExplorer";
 import MaterialPropertiesExplorer from "./components/MaterialPropertiesExplorer";
+import MetalReactivityExplorer from "./components/MetalReactivityExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -510,6 +511,9 @@ function GenericLessonContent({
         }
         if (model?.type === "material-properties") {
           return <MaterialPropertiesExplorer key={model.id || "material-properties"} />;
+        }
+        if (model?.type === "metal-reactivity") {
+          return <MetalReactivityExplorer key={model.id || "metal-reactivity"} />;
         }
         return null;
       })}
