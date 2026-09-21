@@ -16,7 +16,7 @@ values(
    {"title":"Two trolleys","paragraphs":["A 2 kg trolley moving at 3 m/s has 6 kg m/s of momentum.","If it sticks to a stationary 1 kg trolley, the combined mass is 3 kg and their speed is 6 ÷ 3 = 2 m/s."]},
    {"title":"Rocket propulsion","paragraphs":["A rocket expels gases backward at high speed.","The gases gain backward momentum while the rocket gains forward momentum, conserving total momentum when external effects are neglected."]},
    {"title":"Skaters","paragraphs":["Two skaters initially at rest have total momentum zero.","When they push apart, they move in opposite directions with equal and opposite momenta so total momentum remains zero."]},
-   {"title":"Seat belts and stopping time","paragraphs":["A passenger's momentum must change during a collision.","For the same change in momentum, increasing the stopping time reduces the average force.","Seat belts and crumple zones help increase stopping time while controlling the passenger's motion."]}
+   {"title":"Seat belts and stopping time","paragraphs":["A passenger''s momentum must change during a collision.","For the same change in momentum, increasing the stopping time reduces the average force.","Seat belts and crumple zones help increase stopping time while controlling the passenger''s motion."]}
   ],
   "interactiveModels":[{"id":"m3-t4-5-momentum","type":"momentum-conservation","title":"Momentum and collision explorer"}],
   "keyPoints":["p = mv.","Momentum unit is kg m/s.","Total momentum is conserved when external impulse is negligible.","1 000 kg at 20 m/s gives 20 000 kg m/s.","60 kg at 10 m/s gives 600 kg m/s.","A 2 kg ball at 4 m/s transfers 8 kg m/s.","A longer stopping time reduces average collision force."],
@@ -24,7 +24,7 @@ values(
   "checks":[
    {"prompt":"What is the momentum of a 1 000 kg car at 20 m/s?","answer":"20 000 kg m/s.","explanation":"p = mv."},
    {"prompt":"What is conserved in an isolated collision?","answer":"Total momentum.","explanation":"Total before equals total after."},
-   {"prompt":"Why do seat belts reduce average force?","answer":"They help increase the time over which the passenger's momentum changes.","explanation":"Force depends on rate of change of momentum."}
+   {"prompt":"Why do seat belts reduce average force?","answer":"They help increase the time over which the passenger''s momentum changes.","explanation":"Force depends on rate of change of momentum."}
   ],
   "summary":"Momentum conservation explains collisions, recoil and propulsion."
  }
