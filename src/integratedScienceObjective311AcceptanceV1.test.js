@@ -5,6 +5,7 @@ const css=fs.readFileSync(path.join(__dirname,"subjects","components","universeC
 const view=fs.readFileSync(path.join(__dirname,"subjects","GenericSubjectStudyView.jsx"),"utf8");
 
 describe("Integrated Science Objective 3.1.1 acceptance audit",()=>{
+ test("creates the Module 3 section before inserting topics",()=>{expect(migration).toContain("insert into public.spark_subject_sections");expect(migration).toContain("module-3-environment");expect(migration).toContain("Module 3: Our Planet");});
  test("maps to canonical objective",()=>{expect(migration).toContain('"objective":"3.1.1"');expect(migration).toContain("3.1.1 Components of the Universe");});
  test("covers Milky Way and nearest star",()=>{expect(migration).toContain("Milky Way");expect(migration).toContain("nearest star to Earth");});
  test("covers asteroid comet and dwarf planet",()=>{expect(migration).toContain("between Mars and Jupiter");expect(migration).toContain("ice, dust and rock");expect(migration).toContain("Pluto");});
