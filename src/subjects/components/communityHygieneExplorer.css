@@ -14,3 +14,31 @@ html[data-theme="dark"] .ch-label,body[data-theme="dark"] .ch-label,.dark .ch-la
 @media(max-width:900px){.spark-hygiene-pests,.spark-hygiene-disease,.spark-hygiene-aesthetic{grid-template-columns:1fr}.spark-treatment-flow{flex-direction:column}.spark-treatment-flow span{transform:rotate(90deg)}}
 @media(max-width:620px){.spark-community-hygiene{padding:14px}.spark-hygiene-tabs{display:grid;grid-template-columns:1fr 1fr}.ch-label{font-size:18px}.spark-septic-tank{left:35%;width:180px}.spark-drain-field{width:170px}}
 @media(max-width:390px){.spark-hygiene-tabs{grid-template-columns:1fr}}
+
+.spark-sanitation-diagram{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.ch-sky{fill:#dceff6}.ch-ground{fill:#b99d72}
+.ch-house-body{fill:#d7c2a0;stroke:#6f604a;stroke-width:4}.ch-house-roof{fill:#a98b69;stroke:#6f604a;stroke-width:4}
+.ch-sewer-pipe,.ch-outlet-pipe,.ch-drain-main,.ch-drain-branch,.ch-process-pipe{fill:none;stroke:#677985;stroke-width:9;stroke-linecap:round;stroke-linejoin:round}
+.ch-process-pipe{stroke:#8bb6c4;stroke-width:12}
+.ch-process-arrow,.ch-sewer-pipe,.ch-outlet-pipe{stroke:#2d8f85}.ch-arrow-head{fill:#2d8f85}
+.ch-tank-shell{fill:#72808a;stroke:#455560;stroke-width:5}.ch-tank-liquid{fill:#8fc6d9}
+.ch-scum{fill:#84714e}.ch-sludge,.ch-settled-solids{fill:#735944}
+.ch-baffle{fill:none;stroke:#d9e2e8;stroke-width:8}.ch-perforation{fill:#35596c}.ch-soil-flow{stroke:#5d8a79;stroke-width:5;stroke-dasharray:8 8}
+.ch-screen-channel,.ch-aeration,.ch-disinfection{fill:#dcebf1;stroke:#627985;stroke-width:5}
+.ch-screen-bar{stroke:#596a75;stroke-width:6}.ch-clarifier{fill:#b8d9e5;stroke:#627985;stroke-width:5}
+.ch-clarifier.secondary{fill:#a8d1c7}.ch-air-bubble{fill:#f2fbff;stroke:#5d9fbd;stroke-width:2}
+.ch-disinfection-ray{stroke:#7860a8;stroke-width:6;stroke-linecap:round}
+.ch-small{fill:#526b7d;font-size:12px;font-weight:750}
+html[data-theme="dark"] .spark-sanitation-diagram,
+body[data-theme="dark"] .spark-sanitation-diagram,
+.dark .spark-sanitation-diagram{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .ch-sky,
+body[data-theme="dark"] .ch-sky,
+.dark .ch-sky{fill:#17354e}
+html[data-theme="dark"] .ch-ground,
+body[data-theme="dark"] .ch-ground,
+.dark .ch-ground{fill:#4b4031}
+html[data-theme="dark"] .ch-small,
+body[data-theme="dark"] .ch-small,
+.dark .ch-small{fill:#d6e4ee}
+@media(max-width:620px){.ch-small{font-size:15px}}
