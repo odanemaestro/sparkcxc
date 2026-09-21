@@ -14,3 +14,59 @@ html[data-theme="dark"] .vs-label,body[data-theme="dark"] .vs-label,.dark .vs-la
 @media(max-width:900px){.spark-volcano-types,.spark-volcano-caribbean,.spark-volcano-monitoring{grid-template-columns:1fr}}
 @media(max-width:620px){.spark-volcano-eruptions{padding:14px}.spark-volcano-tabs{display:grid;grid-template-columns:1fr 1fr}.vs-label,.vp-label{font-size:18px}}
 @media(max-width:390px){.spark-volcano-tabs{grid-template-columns:1fr}}
+
+.spark-eruption-cross-section{overflow:hidden;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.spark-eruption-cross-section svg{display:block;width:100%;height:auto}
+.ve-sky{fill:#dceff6;stroke:#bfd4df;stroke-width:2}
+.ve-ground{stroke:#8a775d;stroke-width:9;stroke-linecap:round}
+.ve-cone{fill:#8b735c;stroke:#5c493d;stroke-width:6;stroke-linejoin:round}
+.ve-crater{fill:#60483c;stroke:#49352d;stroke-width:4}
+.ve-vent{fill:none;stroke:#594035;stroke-width:18;stroke-linecap:round}
+.ve-chamber{fill:#df6442;stroke:#9c3e2b;stroke-width:5}
+.ve-gas circle{stroke-width:3}
+.ve-gas.escaping circle{fill:#ffe1b3;stroke:#c2873d}
+.ve-gas.trapped circle{fill:#f4b08e;stroke:#ad6449}
+.ve-gas-arrow,.ve-pressure-arrow,.ve-ejecta path{fill:none;stroke-linecap:round}
+.ve-gas-arrow{stroke:#c2873d;stroke-width:7}
+.ve-pressure-arrow{stroke:#a34c43;stroke-width:7}
+.ve-ejecta path{stroke:#5f4d43;stroke-width:10}
+.ve-ash-cloud circle{fill:#77736f;stroke:#585451;stroke-width:3}
+.ve-pyroclastic{fill:none;stroke:#72584c;stroke-width:22;stroke-linecap:round;stroke-dasharray:9 6}
+.ve-lava-flow{fill:none;stroke:#e25b38;stroke-width:20;stroke-linecap:round}
+.ve-gas-clouds circle{fill:#f1d5ae;stroke:#b9833e;stroke-width:2}
+.ve-label{fill:#334e68;font-size:13px;font-weight:850}
+.ve-label.danger,.ve-label.pressure{fill:#93433e}
+.ve-label.lava{fill:#b84c36}
+.ve-label.chamber{fill:#fff}
+.ve-properties rect{fill:#f7fafc;stroke:#c7d4dc;stroke-width:2.5}
+.ve-prop-title{fill:#29495f;font-size:13px;font-weight:900}
+.ve-prop-text{fill:#526b7d;font-size:12px;font-weight:750}
+html[data-theme="dark"] .spark-eruption-cross-section,
+body[data-theme="dark"] .spark-eruption-cross-section,
+.dark .spark-eruption-cross-section{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .ve-sky,
+body[data-theme="dark"] .ve-sky,
+.dark .ve-sky{fill:#18354e;stroke:#36566e}
+html[data-theme="dark"] .ve-properties rect,
+body[data-theme="dark"] .ve-properties rect,
+.dark .ve-properties rect{fill:#17334b;stroke:#39566e}
+html[data-theme="dark"] .ve-prop-title,
+body[data-theme="dark"] .ve-prop-title,
+.dark .ve-prop-title,
+html[data-theme="dark"] .ve-prop-text,
+body[data-theme="dark"] .ve-prop-text,
+.dark .ve-prop-text,
+html[data-theme="dark"] .ve-label,
+body[data-theme="dark"] .ve-label,
+.dark .ve-label{fill:#e1edf5}
+html[data-theme="dark"] .ve-label.danger,
+body[data-theme="dark"] .ve-label.danger,
+.dark .ve-label.danger,
+html[data-theme="dark"] .ve-label.pressure,
+body[data-theme="dark"] .ve-label.pressure,
+.dark .ve-label.pressure{fill:#ffb4aa}
+@media(max-width:620px){
+  .ve-label{font-size:18px}
+  .ve-prop-title{font-size:17px}
+  .ve-prop-text{font-size:16px}
+}
