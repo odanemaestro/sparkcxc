@@ -24,16 +24,39 @@ function ResultantView(){
   const L=Math.max(0,Number(left)||0),R=Math.max(0,Number(right)||0);
   const result=R-L;
   const direction=result>0?"right":result<0?"left":"balanced";
+  const leftLength=Math.min(190,45+L*3);
+  const rightLength=Math.min(190,45+R*3);
+  const resultantLength=Math.min(210,55+Math.abs(result)*5);
+  const resultPath=direction==="right"
+    ?"M410 305H"+(410+resultantLength)
+    :direction==="left"
+      ?"M410 305H"+(410-resultantLength)
+      :"";
   return <div className="spark-resultant-force">
     <div className="spark-resultant-inputs">
       <label>Left force, N<input type="number" min="0" value={left} onChange={e=>setLeft(e.target.value)}/></label>
       <label>Right force, N<input type="number" min="0" value={right} onChange={e=>setRight(e.target.value)}/></label>
     </div>
-    <div className="spark-force-box">
-      <span className="left">← {L} N</span><div>box</div><span className="right">{R} N →</span>
-    </div>
-    <strong>{direction==="balanced"?"Resultant = 0 N":`Resultant = ${Math.abs(result)} N to the ${direction}`}</strong>
-    <p>The resultant force is the single force that has the same overall effect as all the forces acting together.</p>
+    <svg className="spark-resultant-svg" viewBox="0 0 820 390" role="img" aria-label={"Free-body diagram with "+L+" newtons left, "+R+" newtons right and resultant "+Math.abs(result)+" newtons "+direction}>
+      <defs>
+        <marker id="fp-force-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" className="fp-force-head"/></marker>
+        <marker id="fp-resultant-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" className="fp-resultant-head"/></marker>
+      </defs>
+      <rect className="fp-fbd-bg" x="0" y="0" width="820" height="390" rx="18"/>
+      <text className="fp-fbd-title" x="410" y="42" textAnchor="middle">horizontal force diagram</text>
+      <rect className="fp-fbd-object" x="350" y="145" width="120" height="92" rx="12"/>
+      <text className="fp-fbd-object-label" x="410" y="197" textAnchor="middle">object</text>
+      <line className="fp-force-arrow left" x1="350" y1="191" x2={350-leftLength} y2="191" markerEnd="url(#fp-force-arrow)"/>
+      <text className="fp-force-label left" x={350-leftLength/2} y="166" textAnchor="middle">{L} N left</text>
+      <line className="fp-force-arrow right" x1="470" y1="191" x2={470+rightLength} y2="191" markerEnd="url(#fp-force-arrow)"/>
+      <text className="fp-force-label right" x={470+rightLength/2} y="166" textAnchor="middle">{R} N right</text>
+      <text className="fp-resultant-title" x="410" y="278" textAnchor="middle">resultant force, ΣF</text>
+      {direction==="balanced"
+        ?<g className="fp-balanced-result"><circle cx="410" cy="305" r="13"/><text x="410" y="346" textAnchor="middle">0 N, forces are balanced</text></g>
+        :<g><path className={"fp-resultant-arrow "+direction} d={resultPath} markerEnd="url(#fp-resultant-arrow)"/><text className="fp-resultant-label" x="410" y="348" textAnchor="middle">{Math.abs(result)} N to the {direction}</text></g>}
+    </svg>
+    <strong>{direction==="balanced"?"Resultant = 0 N":"Resultant = "+Math.abs(result)+" N to the "+direction}</strong>
+    <p>The resultant force is the vector sum of the forces. Opposite horizontal forces subtract, so 35 N right and 20 N left give a resultant of 15 N to the right.</p>
   </div>;
 }
 
@@ -46,12 +69,54 @@ function ThirdLawView(){
   }[example];
   return <div className="spark-third-law">
     <div className="spark-force-toggle">{["rocket","jet","gun"].map(k=><button type="button" key={k} className={example===k?"active":""} onClick={()=>setExample(k)}>{k[0].toUpperCase()+k.slice(1)}</button>)}</div>
+    <svg className="spark-third-law-svg" viewBox="0 0 820 430" role="img" aria-label={data[0]+" Newton third-law force pair acting on different objects"}>
+      <defs>
+        <marker id="fp-third-action-head" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" className="fp-third-action-head"/></marker>
+        <marker id="fp-third-reaction-head" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" className="fp-third-reaction-head"/></marker>
+      </defs>
+      <rect className="fp-third-bg" x="0" y="0" width="820" height="430" rx="18"/>
+      <text className="fp-third-title" x="410" y="42" textAnchor="middle">equal and opposite forces act on different objects</text>
+      {example==="rocket"&&<g className="fp-third-example rocket">
+        <path className="fp-rocket-body" d="M375 235Q410 112 445 235L432 285H388Z"/>
+        <circle className="fp-rocket-window" cx="410" cy="180" r="13"/>
+        <path className="fp-exhaust" d="M393 285Q410 360 427 285Z"/>
+        <line className="fp-third-action" x1="410" y1="300" x2="410" y2="382" markerEnd="url(#fp-third-action-head)"/>
+        <line className="fp-third-reaction" x1="410" y1="145" x2="410" y2="70" markerEnd="url(#fp-third-reaction-head)"/>
+        <text className="fp-third-action-label" x="438" y="372">force on gases</text>
+        <text className="fp-third-reaction-label" x="438" y="86">force on rocket</text>
+        <text className="fp-third-object-label" x="410" y="324" textAnchor="middle">exhaust gases</text>
+      </g>}
+      {example==="jet"&&<g className="fp-third-example jet">
+        <path className="fp-jet-body" d="M270 205L485 187L595 205L485 224L270 210Z"/>
+        <path className="fp-jet-wing" d="M420 200L500 118L530 124L483 201M420 214L500 296L530 290L483 212"/>
+        <path className="fp-exhaust jet" d="M270 199L185 172L212 207L183 244L270 216Z"/>
+        <line className="fp-third-action" x1="248" y1="270" x2="115" y2="270" markerEnd="url(#fp-third-action-head)"/>
+        <line className="fp-third-reaction" x1="470" y1="100" x2="610" y2="100" markerEnd="url(#fp-third-reaction-head)"/>
+        <text className="fp-third-action-label" x="182" y="298" textAnchor="middle">force on gases</text>
+        <text className="fp-third-reaction-label" x="540" y="86" textAnchor="middle">force on aircraft</text>
+      </g>}
+      {example==="gun"&&<g className="fp-third-example gun">
+        <rect className="fp-gun-barrel" x="290" y="180" width="245" height="42" rx="6"/>
+        <path className="fp-gun-grip" d="M335 220H402L385 322H332Z"/>
+        <circle className="fp-bullet" cx="625" cy="201" r="14"/>
+        <line className="fp-third-action" x1="545" y1="145" x2="690" y2="145" markerEnd="url(#fp-third-action-head)"/>
+        <line className="fp-third-reaction" x1="315" y1="350" x2="170" y2="350" markerEnd="url(#fp-third-reaction-head)"/>
+        <text className="fp-third-action-label" x="615" y="130" textAnchor="middle">force on bullet</text>
+        <text className="fp-third-reaction-label" x="243" y="378" textAnchor="middle">force on gun</text>
+      </g>}
+      <g className="fp-third-key">
+        <line className="fp-third-action" x1="585" y1="360" x2="635" y2="360" markerEnd="url(#fp-third-action-head)"/>
+        <text x="650" y="365">force on object A</text>
+        <line className="fp-third-reaction" x1="585" y1="392" x2="635" y2="392" markerEnd="url(#fp-third-reaction-head)"/>
+        <text x="650" y="397">force on object B</text>
+      </g>
+    </svg>
     <div className="spark-third-law-pair">
-      <article><span>ACTION</span><h4>{data[1]}</h4></article>
+      <article><span>FORCE ON ONE OBJECT</span><h4>{data[1]}</h4></article>
       <div>↔</div>
-      <article><span>REACTION</span><h4>{data[2]}</h4></article>
+      <article><span>FORCE ON THE OTHER OBJECT</span><h4>{data[2]}</h4></article>
     </div>
-    <p>{data[0]} motion illustrates Newton's third law. The two forces are equal in size and opposite in direction, and they act on different objects.</p>
+    <p>{data[0]} motion illustrates Newton's third law. The force pair is equal in size and opposite in direction, but the two forces do not cancel because they act on different objects.</p>
   </div>;
 }
 
