@@ -201,6 +201,17 @@ describe("Integrated Science learner polish V1", () => {
     expect(diagram).toContain("pregnancy-myometrium");
     expect(diagram).toContain("pregnancy-placental-villi");
     expect(diagram).toContain("pregnancy-umbilical-inner");
+
+    const pregnancy = fs.readFileSync(
+      path.join(__dirname,"subjects","components","PregnancyStagesExplorer.jsx"),
+      "utf8"
+    );
+    expect(pregnancy).toContain("ps-amniotic-sac");
+    expect(pregnancy).toContain("ps-amniotic-fluid");
+    expect(pregnancy).toContain("ps-foetus-head");
+    expect(pregnancy).toContain("ps-placental-villi");
+    expect(pregnancy).toContain("ps-umbilical-inner artery");
+    expect(pregnancy).toContain("maternal and foetal blood do not normally mix directly");
     expect(diagram).toContain("foetus-head");
     expect(diagram).toContain("foetus-torso");
     expect(diagram).toContain("digestive-duodenum");
