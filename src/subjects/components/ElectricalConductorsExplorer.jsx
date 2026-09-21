@@ -72,12 +72,57 @@ function WireView(){
 }
 
 function WaterView(){
-  return <div className="spark-water-conductivity">
-    <article><span>PURE WATER</span><h4>Very poor conductor</h4><p>Pure water contains very few ions available to carry electric charge.</p></article>
-    <div className="spark-water-arrow" aria-hidden="true">+</div>
-    <article><span>DISSOLVED SALTS</span><h4>Provide mobile ions</h4><p>Tap water and many natural waters contain dissolved ionic substances.</p></article>
-    <div className="spark-water-arrow" aria-hidden="true">→</div>
-    <article><span>TAP WATER</span><h4>Conducts more readily</h4><p>Mobile dissolved ions carry charge through the water. This is one reason electrical equipment and wet hands are a dangerous combination.</p></article>
+  const ions=[[660,210,"+"],[710,250,"−"],[760,205,"+"],[805,270,"−"],[685,315,"−"],[750,330,"+"],[820,225,"+"]];
+
+  return <div className="spark-water-conductivity-view">
+    <svg className="spark-water-ion-svg" viewBox="0 0 980 520" role="img" aria-label="Comparison of very pure water and tap water in conductivity circuits, showing few charge carriers and an unlit lamp in pure water, versus dissolved positive and negative ions carrying charge and a lit lamp in tap water">
+      <defs>
+        <marker id="ion-flow-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path d="M0 0L9 4.5L0 9Z" className="wi-arrow-head"/>
+        </marker>
+      </defs>
+
+      <g className="wi-panel pure" transform="translate(35 35)">
+        <rect className="wi-panel-bg" x="0" y="0" width="420" height="440" rx="20"/>
+        <text className="wi-title" x="210" y="36" textAnchor="middle">VERY PURE WATER</text>
+        <circle className="wi-lamp off" cx="210" cy="88" r="42"/>
+        <path className="wi-lamp-cross" d="M183 61L237 115M237 61L183 115"/>
+        <path className="wi-wire" d="M168 88H95V165M252 88H325V165"/>
+        <rect className="wi-electrode" x="80" y="160" width="30" height="175" rx="4"/>
+        <rect className="wi-electrode" x="310" y="160" width="30" height="175" rx="4"/>
+        <path className="wi-beaker" d="M55 145V365Q55 395 85 395H335Q365 395 365 365V145"/>
+        <path className="wi-water" d="M60 220H360V365Q360 390 335 390H85Q60 390 60 365Z"/>
+        <circle className="wi-rare-ion" cx="175" cy="285" r="10"/><circle className="wi-rare-ion" cx="258" cy="318" r="10"/>
+        <text className="wi-small" x="210" y="430" textAnchor="middle">very few ions available to carry charge</text>
+        <text className="wi-result off" x="210" y="138" textAnchor="middle">lamp stays off or extremely dim</text>
+      </g>
+
+      <g className="wi-panel tap" transform="translate(525 35)">
+        <rect className="wi-panel-bg" x="0" y="0" width="420" height="440" rx="20"/>
+        <text className="wi-title" x="210" y="36" textAnchor="middle">TAP WATER WITH DISSOLVED IONS</text>
+        <circle className="wi-lamp on" cx="210" cy="88" r="42"/>
+        <path className="wi-lamp-cross" d="M183 61L237 115M237 61L183 115"/>
+        <path className="wi-wire" d="M168 88H95V165M252 88H325V165"/>
+        <rect className="wi-electrode negative" x="80" y="160" width="30" height="175" rx="4"/>
+        <rect className="wi-electrode positive" x="310" y="160" width="30" height="175" rx="4"/>
+        <path className="wi-beaker" d="M55 145V365Q55 395 85 395H335Q365 395 365 365V145"/>
+        <path className="wi-water" d="M60 220H360V365Q360 390 335 390H85Q60 390 60 365Z"/>
+
+        {ions.map(([x,y,sign],i)=><g key={i} className={"wi-ion "+(sign==="+"?"cation":"anion")} transform={"translate("+(x-525)+" "+(y-35)+")"}>
+          <circle cx="0" cy="0" r="14"/><text x="0" y="5" textAnchor="middle">{sign}</text>
+        </g>)}
+
+        <path className="wi-ion-flow cation" d="M250 255Q185 250 115 255" markerEnd="url(#ion-flow-arrow)"/>
+        <path className="wi-ion-flow anion" d="M175 315Q245 320 305 300" markerEnd="url(#ion-flow-arrow)"/>
+        <text className="wi-small" x="170" y="245">positive ions → negative electrode</text>
+        <text className="wi-small" x="175" y="345">negative ions → positive electrode</text>
+        <text className="wi-result on" x="210" y="138" textAnchor="middle">lamp lights more readily</text>
+        <text className="wi-small" x="210" y="430" textAnchor="middle">mobile dissolved ions carry charge through the water</text>
+      </g>
+
+      <text className="wi-caption" x="490" y="505" textAnchor="middle">Electrical conduction in water depends strongly on the concentration of mobile ions.</text>
+    </svg>
+    <p>Very pure water contains very few ions and is therefore a poor conductor. Tap water and many natural waters contain dissolved ionic substances. Positive and negative ions move through the solution and allow electric current to pass more readily.</p>
   </div>;
 }
 
