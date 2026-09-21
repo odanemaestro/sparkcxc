@@ -4,11 +4,11 @@ Branch: `integrated-science-acceptance-audit`
 
 ## Recovery anchor
 
-The full content/visual package immediately before this checkpoint commit is:
+The verified final-package code baseline is:
 
-`2668d9987b1a8e5ee586fda47a446ce45882b416`
+`13fc6f84cbd6b0987c693cb30c1b8fa1fda98b45`
 
-SPARK Quality Gate run 869 was started against that exact final-package SHA during final packaging.
+SPARK Quality Gate run 871 completed successfully against that exact final-package SHA.
 
 If the chat/session is interrupted, resume from this branch and first check the latest branch HEAD and the Quality Gate result. Do not restart the broad content audit unless the final gate exposes a specific regression.
 
@@ -27,22 +27,19 @@ Completed:
 
 ## Current final-package state
 
-- Final packaging head before this checkpoint update: `2668d9987b1a8e5ee586fda47a446ce45882b416`
-- Run 869 is the exact-head SPARK Quality Gate for that SHA.
-- The stale PostgreSQL `DO $ ... END $;` assertion was corrected on the final package head.
+- Verified package code SHA: `13fc6f84cbd6b0987c693cb30c1b8fa1fda98b45`
+- SPARK Quality Gate run 871: **success**
+- Full Jest suite: **passed**
+- Production build: **passed**
+- PostgreSQL learner-polish `DO $ ... END $;` block: **repaired and tested**
+- This checkpoint file is documentation-only and records the recovery state after the green package gate.
 
 ## Final package tasks remaining
 
-1. Obtain a green SPARK Quality Gate on the latest final-package HEAD.
-2. Fix only concrete failing regressions found by the gate.
-3. Run/confirm the production build on that same final HEAD.
-4. Perform the final acceptance sweep:
-   - no missing canonical objectives
-   - no obvious placeholder/weak scientific diagrams
-   - responsive mobile/tablet/iPad/desktop behaviour
-   - light/dark theme readability
-   - no malformed scientific text or mojibake
-5. Record the final exact commit SHA and package/handoff state.
+1. Confirm the documentation-only checkpoint commit also receives a green Quality Gate.
+2. Preserve `13fc6f84cbd6b0987c693cb30c1b8fa1fda98b45` as the verified package code baseline.
+3. Use this checkpoint as the recovery handoff if the chat/session is interrupted.
+4. Do not resume broad content construction unless a new, specific regression is discovered.
 
 ## Important acceptance rules
 
