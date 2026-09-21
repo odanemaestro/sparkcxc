@@ -78,7 +78,7 @@ describe("Integrated Science Objective 1.5.2 acceptance audit", () => {
     expect(explorer).toContain("Bowman&apos;s capsule");
     expect(explorer).toContain("Selective reabsorption");
     expect(explorer).toContain("MORE ADH");
-    expect(explorer).toContain("coiled sweat gland");
+    expect(explorer).toContain("hex-sweat-gland");
     expect(explorer).toContain("CO2 diffuses from blood into alveoli");
     expect(explorer).toContain("urea diffuses out, useful glucose is retained");
   });
