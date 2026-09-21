@@ -91,6 +91,7 @@ import WaterPurificationExplorer from "./components/WaterPurificationExplorer";
 import FlotationExplorer from "./components/FlotationExplorer";
 import MarineNavigationExplorer from "./components/MarineNavigationExplorer";
 import WaterSafetyExplorer from "./components/WaterSafetyExplorer";
+import DivingEffectsExplorer from "./components/DivingEffectsExplorer";
 import ForcePrinciplesExplorer from "./components/ForcePrinciplesExplorer";
 import GravityInertiaExplorer from "./components/GravityInertiaExplorer";
 import StabilityCentreGravityExplorer from "./components/StabilityCentreGravityExplorer";
@@ -537,6 +538,9 @@ function GenericLessonContent({
         }
         if (model?.type === "water-safety") {
           return <WaterSafetyExplorer key={model.id || "water-safety"} />;
+        }
+        if (model?.type === "diving-effects") {
+          return <DivingEffectsExplorer key={model.id || "diving-effects"} />;
         }
         if (model?.type === "force-principles") {
           return <ForcePrinciplesExplorer key={model.id || "force-principles"} />;
