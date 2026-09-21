@@ -14,3 +14,22 @@ html[data-theme="dark"] .ec-lamp-label,body[data-theme="dark"] .ec-lamp-label,.d
 @media(max-width:900px){.spark-conductor-tester,.spark-conductor-categories{grid-template-columns:1fr}.spark-conductor-buttons{grid-template-columns:1fr 1fr}.spark-wire-cards{grid-template-columns:1fr}.spark-water-conductivity{flex-direction:column}.spark-water-arrow{text-align:center}}
 @media(max-width:620px){.spark-electrical-conductors{padding:14px}.spark-conductor-tabs{display:grid;grid-template-columns:1fr 1fr}.spark-conductor-buttons{grid-template-columns:1fr}.ec-material-label,.ec-lamp-label,.wd-label,.wd-note{font-size:17px}}
 @media(max-width:390px){.spark-conductor-tabs{grid-template-columns:1fr}}
+
+
+.spark-water-conductivity-view{display:grid;gap:12px}
+.spark-water-ion-svg{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.wi-panel-bg{fill:#f7fafc;stroke:#c8d6df;stroke-width:3}.wi-title{fill:#294d64;font-size:14px;font-weight:950}
+.wi-lamp{stroke:#657d8d;stroke-width:4}.wi-lamp.off{fill:#edf2f4}.wi-lamp.on{fill:#f2d56c}.wi-lamp-cross{stroke:#657d8d;stroke-width:4}
+.wi-wire{fill:none;stroke:#536b79;stroke-width:6;stroke-linecap:round}.wi-electrode{fill:#747f85;stroke:#47545b;stroke-width:3}.wi-electrode.negative{stroke:#486f9b}.wi-electrode.positive{stroke:#aa5a58}
+.wi-beaker{fill:none;stroke:#708694;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.wi-water{fill:#b9ddec;fill-opacity:.88}
+.wi-rare-ion{fill:#cad6dc;stroke:#7a8c95;stroke-width:2}
+.wi-ion circle{stroke-width:2}.wi-ion.cation circle{fill:#d8e8f5;stroke:#54799a}.wi-ion.anion circle{fill:#f0d9d9;stroke:#9d5e5e}.wi-ion text{fill:#28465a;font-size:14px;font-weight:950}
+.wi-ion-flow{fill:none;stroke-width:5;stroke-linecap:round}.wi-ion-flow.cation{stroke:#527d9f}.wi-ion-flow.anion{stroke:#a66767}.wi-arrow-head{fill:#54788d}
+.wi-small,.wi-caption,.wi-result{fill:#4d6878;font-weight:800}.wi-small{font-size:11px}.wi-caption{font-size:12px}.wi-result{font-size:12px}.wi-result.on{fill:#0f766e}.wi-result.off{fill:#6a7d88}
+html[data-theme="dark"] .spark-water-ion-svg,body[data-theme="dark"] .spark-water-ion-svg,.dark .spark-water-ion-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .wi-panel-bg,body[data-theme="dark"] .wi-panel-bg,.dark .wi-panel-bg{fill:#153148;stroke:#39566e}
+html[data-theme="dark"] .wi-title,body[data-theme="dark"] .wi-title,.dark .wi-title,
+html[data-theme="dark"] .wi-small,body[data-theme="dark"] .wi-small,.dark .wi-small,
+html[data-theme="dark"] .wi-caption,body[data-theme="dark"] .wi-caption,.dark .wi-caption,
+html[data-theme="dark"] .wi-result,body[data-theme="dark"] .wi-result,.dark .wi-result{fill:#e1edf5}
+@media(max-width:620px){.wi-title{font-size:18px}.wi-small,.wi-caption,.wi-result{font-size:15px}}
