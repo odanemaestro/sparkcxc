@@ -7,6 +7,7 @@ const view=fs.readFileSync(path.join(__dirname,"subjects","GenericSubjectStudyVi
 describe("Integrated Science Objective 3.7.1 acceptance audit",()=>{
  test("maps to canonical objective",()=>{expect(migration).toContain('"objective":"3.7.1"');expect(migration).toContain("3.7.1 Effects of Air Pollution");});
  test("covers acid rain gases accurately",()=>{expect(migration).toContain("Sulfur dioxide and nitrogen oxides");expect(migration).toContain("Carbon monoxide is poisonous but is not a principal acid-rain gas");expect(explorer).toContain("Acid rain");});
+ test("renders acid rain formation and deposition spatially",()=>{expect(explorer).toContain("spark-acidrain-diagram");expect(explorer).toContain("SO₂ + NOₓ");expect(explorer).toContain("atmospheric oxidation");expect(explorer).toContain("acid deposition");expect(explorer).toContain("ap-rain");expect(css).toContain(".spark-acidrain-diagram");});
  test("covers dust effects on plants",()=>{expect(migration).toContain("reduce the amount of light");expect(migration).toContain("interfere with stomata");expect(explorer).toContain("Dust and plants");});
  test("covers asthma allergies and CO",()=>{expect(migration).toContain("worsen asthma");expect(migration).toContain("Pollen and dust");expect(migration).toContain("binds strongly to haemoglobin");});
  test("covers open burning carefully",()=>{expect(migration).toContain("exact toxic products depend on the materials");expect(migration).toContain("uncontrolled garbage burning should be avoided");expect(explorer).toContain("Open burning");});
