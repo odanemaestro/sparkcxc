@@ -55,11 +55,46 @@ function PanView(){
 
 function FirebreakView(){
   return <div className="spark-firebreak">
-    <div className="spark-firebreak-row">
-      <article className="burning"><span>VEGETATION</span><div className="fb-flames">▲ ▲ ▲ ▲</div><p>Fuel allows the bush fire to advance.</p></article>
-      <article className="break"><span>FIREBREAK</span><strong>wide strip cleared of vegetation</strong><p>The fuel path is interrupted.</p></article>
-      <article className="unburned"><span>VEGETATION</span><div className="fb-trees">♣ ♣ ♣ ♣</div><p>Fire has less fuel to continue across the break.</p></article>
-    </div>
+    <svg className="spark-firebreak-svg" viewBox="0 0 980 500" role="img" aria-label="Vegetation fire approaching a cleared firebreak, showing burning fuel on one side, a wide strip with vegetation removed, and unburned vegetation beyond the gap">
+      <defs>
+        <marker id="fire-spread-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path d="M0 0L9 4.5L0 9Z" className="fb-arrow-head"/>
+        </marker>
+      </defs>
+
+      <rect className="fb-sky" x="0" y="0" width="980" height="500"/>
+      <path className="fb-ground" d="M0 325Q160 285 315 325Q490 360 660 315Q825 275 980 315V500H0Z"/>
+      <path className="fb-cleared-strip" d="M405 315Q480 340 565 328L610 500H360Z"/>
+
+      <g className="fb-burning-vegetation">
+        {[70,135,205,275,335].map((x,i)=><g key={x} transform={"translate("+x+" "+(320-(i%2)*18)+")"}>
+          <path className="fb-trunk" d="M0 0V-72"/>
+          <path className="fb-crown" d="M0 -120Q-35 -100 -28 -74Q-48 -55 -25 -38Q0 -22 23 -40Q48 -58 28 -77Q35 -102 0 -120Z"/>
+          <path className="fb-flame-shape" d="M-15 -10Q-38 -44 -11 -72Q-8 -48 7 -58Q30 -28 16 -3Q6 10 -7 5Q-21 -1 -15 -10Z"/>
+        </g>)}
+      </g>
+
+      <g className="fb-unburned-vegetation">
+        {[660,725,790,855,925].map((x,i)=><g key={x} transform={"translate("+x+" "+(310-(i%2)*14)+")"}>
+          <path className="fb-trunk" d="M0 0V-80"/>
+          <path className="fb-crown safe" d="M0 -132Q-38 -108 -29 -79Q-50 -58 -27 -38Q0 -20 27 -40Q52 -60 30 -82Q38 -110 0 -132Z"/>
+        </g>)}
+      </g>
+
+      <path className="fb-spread-arrow" d="M105 215Q235 205 350 250" markerEnd="url(#fire-spread-arrow)"/>
+      <text className="fb-label" x="205" y="190" textAnchor="middle">fire spreads while continuous vegetation provides fuel</text>
+
+      <path className="fb-stop-arrow" d="M350 285Q405 300 440 315"/>
+      <line className="fb-stop-bar" x1="440" y1="276" x2="440" y2="345"/>
+      <text className="fb-label" x="485" y="215" textAnchor="middle">fuel path interrupted</text>
+
+      <text className="fb-break-label" x="485" y="410" textAnchor="middle">FIREBREAK</text>
+      <text className="fb-small" x="485" y="438" textAnchor="middle">wide strip cleared of vegetation</text>
+      <text className="fb-small" x="485" y="462" textAnchor="middle">less combustible material is available for the fire to cross</text>
+
+      <text className="fb-label" x="805" y="170" textAnchor="middle">unburned vegetation beyond the cleared gap</text>
+    </svg>
+    <p>A firebreak removes vegetation from a strip ahead of a vegetation fire. By interrupting the continuous supply of fuel, it can slow or stop fire spread across that line, although real wildfire control depends on conditions and trained fire-management decisions.</p>
   </div>;
 }
 
