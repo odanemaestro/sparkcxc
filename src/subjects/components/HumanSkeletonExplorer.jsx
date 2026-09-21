@@ -36,20 +36,80 @@ function SkeletonDiagram({selected,onSelect}){
   >
     <line x1={x} y1={y} x2={tx} y2={ty}/><circle cx={x} cy={y} r="6"/><text x={tx+(tx<x?-8:8)} y={ty+4} textAnchor={tx<x?"end":"start"}>{key==="vertebrae"?"vertebral column":key}</text>
   </g>;
-  return <svg viewBox="0 0 760 940" role="img" aria-label="Human skeleton with major bones labelled">
-    <g className="hs-bones">
-      <ellipse cx="380" cy="85" rx="58" ry="68"/><path d="M350 125Q380 145 410 125"/>
-      <line x1="380" y1="150" x2="380" y2="430"/>
-      <path d="M335 180Q380 155 425 180"/><line x1="338" y1="180" x2="290" y2="225"/><line x1="422" y1="180" x2="470" y2="225"/>
-      <path d="M325 205Q380 175 435 205M315 225Q380 195 445 225M310 245Q380 215 450 245M315 265Q380 235 445 265M325 285Q380 255 435 285"/>
-      <line x1="295" y1="225" x2="270" y2="380"/><line x1="465" y1="225" x2="490" y2="380"/>
-      <line x1="270" y1="380" x2="250" y2="535"/><line x1="270" y1="380" x2="300" y2="535"/>
-      <line x1="490" y1="380" x2="460" y2="535"/><line x1="490" y1="380" x2="510" y2="535"/>
-      <path d="M320 415Q380 380 440 415L425 495Q380 525 335 495Z"/>
-      <line x1="345" y1="495" x2="320" y2="705"/><line x1="415" y1="495" x2="440" y2="705"/>
-      <line x1="320" y1="705" x2="305" y2="885"/><line x1="320" y1="705" x2="342" y2="885"/>
-      <line x1="440" y1="705" x2="418" y2="885"/><line x1="440" y1="705" x2="455" y2="885"/>
+
+  return <svg viewBox="0 0 760 940" role="img" aria-label="Front view of the human skeleton with major bones labelled">
+    <g className="hs-bones hs-anatomical">
+      <ellipse className="hs-skull" cx="380" cy="82" rx="54" ry="62"/>
+      <path className="hs-jaw" d="M345 100Q380 130 415 100Q410 139 380 148Q350 139 345 100Z"/>
+      <circle className="hs-eye-socket" cx="360" cy="76" r="11"/>
+      <circle className="hs-eye-socket" cx="400" cy="76" r="11"/>
+
+      <g className="hs-spine">
+        {[158,177,196,215,234,253,272,291,310,329,348,367,386,405].map((y,index)=>(
+          <rect key={y} x={index<5?371:369} y={y} width={index<5?18:22} height="12" rx="4"/>
+        ))}
+        <path d="M380 417Q368 440 380 462Q392 440 380 417Z"/>
+      </g>
+
+      <path className="hs-clavicle" d="M375 175Q337 162 301 181M385 175Q423 162 459 181"/>
+      <path className="hs-scapula left" d="M317 184Q286 199 293 240Q309 264 333 238Q337 210 317 184Z"/>
+      <path className="hs-scapula right" d="M443 184Q474 199 467 240Q451 264 427 238Q423 210 443 184Z"/>
+
+      <path className="hs-sternum" d="M380 182V308"/>
+      <g className="hs-ribs">
+        {[0,1,2,3,4,5].map(i=>{
+          const y=198+i*24;
+          const spread=58+i*7;
+          return <path key={i} d={`M376 ${y}Q${380-spread} ${y-10} ${316-i*3} ${y+16}M384 ${y}Q${380+spread} ${y-10} ${444+i*3} ${y+16}`}/>;
+        })}
+      </g>
+
+      <g className="hs-arm left">
+        <path className="hs-humerus" d="M300 225Q282 300 272 377"/>
+        <circle className="hs-joint" cx="299" cy="224" r="10"/>
+        <circle className="hs-joint" cx="272" cy="381" r="9"/>
+        <path className="hs-radius" d="M264 388Q252 457 248 532"/>
+        <path className="hs-ulna" d="M281 388Q293 457 300 532"/>
+        <g className="hs-hand" transform="translate(273 545)">
+          <path d="M-25-8L-33 36M-12-10L-14 40M0-10V43M12-8L15 39M24-5L31 33"/>
+          <path d="M-28-8Q0-22 28-7"/>
+        </g>
+      </g>
+
+      <g className="hs-arm right">
+        <path className="hs-humerus" d="M460 225Q478 300 488 377"/>
+        <circle className="hs-joint" cx="461" cy="224" r="10"/>
+        <circle className="hs-joint" cx="488" cy="381" r="9"/>
+        <path className="hs-radius" d="M496 388Q508 457 512 532"/>
+        <path className="hs-ulna" d="M479 388Q467 457 460 532"/>
+        <g className="hs-hand" transform="translate(487 545)">
+          <path d="M-25-5L-31 33M-12-8L-15 39M0-10V43M12-10L14 40M25-8L33 36"/>
+          <path d="M-28-7Q0-22 28-8"/>
+        </g>
+      </g>
+
+      <path className="hs-pelvis" d="M319 408Q347 382 380 398Q413 382 441 408Q456 442 431 484Q405 506 380 498Q355 506 329 484Q304 442 319 408Z"/>
+      <path className="hs-sacrum" d="M365 414Q380 402 395 414L390 472Q380 486 370 472Z"/>
+
+      <g className="hs-leg left">
+        <path className="hs-femur" d="M345 493Q330 594 320 700"/>
+        <circle className="hs-hip" cx="345" cy="494" r="11"/>
+        <circle className="hs-knee" cx="320" cy="705" r="12"/>
+        <path className="hs-tibia" d="M315 718Q306 799 304 878"/>
+        <path className="hs-fibula" d="M333 718Q342 798 342 875"/>
+        <path className="hs-foot" d="M302 878Q317 895 354 890Q361 900 350 910Q316 915 292 900Z"/>
+      </g>
+
+      <g className="hs-leg right">
+        <path className="hs-femur" d="M415 493Q430 594 440 700"/>
+        <circle className="hs-hip" cx="415" cy="494" r="11"/>
+        <circle className="hs-knee" cx="440" cy="705" r="12"/>
+        <path className="hs-tibia" d="M445 718Q454 799 456 878"/>
+        <path className="hs-fibula" d="M427 718Q418 798 418 875"/>
+        <path className="hs-foot" d="M458 878Q443 895 406 890Q399 900 410 910Q444 915 468 900Z"/>
+      </g>
     </g>
+
     {label("skull",380,70,145,75)}
     {label("clavicle",350,175,120,155)}
     {label("scapula",325,205,110,220)}
