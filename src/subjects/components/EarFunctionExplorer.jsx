@@ -26,21 +26,33 @@ const VIEWS = {
 
 function HearingScene() {
   return (
-    <svg viewBox="0 0 980 500" role="img" aria-label="Sound pathway through the ear">
-      <path className="earfx-wave" d="M30 120q35-35 70 0t70 0t70 0" />
-      <path className="earfx-wave" d="M30 180q35-35 70 0t70 0t70 0" />
-      <path className="earfx-canal" d="M250 150H390" />
-      <ellipse className="earfx-drum" cx="420" cy="150" rx="15" ry="65" />
-      <path className="earfx-ossicles" d="M438 135L480 105L520 135L560 105" />
-      <path className="earfx-cochlea" d="M650 170Q720 105 775 150Q825 195 785 240Q750 278 705 250Q675 232 687 205Q700 184 724 194Q741 203 735 220" />
-      <path className="earfx-nerve" d="M770 220Q845 210 920 250" />
-      <path className="earfx-arrow" d="M205 150H235M395 150H405M565 120H620M790 230H835" />
-      <text className="earfx-label" x="135" y="290" textAnchor="middle">1. sound waves</text>
-      <text className="earfx-label" x="330" y="290" textAnchor="middle">2. ear canal</text>
-      <text className="earfx-label" x="470" y="290" textAnchor="middle">3. ear drum + ossicles</text>
-      <text className="earfx-label" x="710" y="290" textAnchor="middle">4. cochlea</text>
-      <text className="earfx-label" x="860" y="290" textAnchor="middle">5. auditory nerve</text>
-      <text className="earfx-small" x="490" y="385" textAnchor="middle">Sound path: ear canal → ear drum → ossicles → cochlea → auditory nerve</text>
+    <svg viewBox="0 0 980 500" role="img" aria-label="Sound pathway through outer, middle and inner ear">
+      <path className="earfx-wave" d="M20 120q30-32 60 0t60 0t60 0" />
+      <path className="earfx-wave" d="M20 180q30-32 60 0t60 0t60 0" />
+
+      <path className="earfx-pinna" d="M210 85Q160 85 150 155Q145 235 220 255Q275 260 280 205Q284 165 247 160Q218 158 214 187Q212 212 235 211Q252 210 252 185" />
+      <path className="earfx-canal" d="M245 185Q315 174 386 184" />
+      <ellipse className="earfx-drum" cx="410" cy="184" rx="14" ry="60" transform="rotate(-8 410 184)" />
+
+      <path className="earfx-middle-cavity" d="M427 128Q505 115 568 151Q575 198 542 232Q486 248 431 217Z" />
+      <path className="earfx-ossicles" d="M426 166Q445 145 465 147L476 169L462 190M470 149Q494 142 505 160L496 181L516 191M514 191L532 171M516 196L536 214M532 171Q547 192 536 214" />
+
+      <path className="earfx-semicircular" d="M590 145Q555 82 600 58Q652 31 682 83Q705 124 675 169M621 164Q610 92 670 80Q724 69 733 128Q742 178 690 200M590 185Q545 153 565 107Q585 62 633 83Q675 101 670 145" />
+      <ellipse className="earfx-vestibule" cx="676" cy="218" rx="28" ry="38" />
+
+      <path className="earfx-cochlea" d="M694 258Q735 211 786 232Q835 252 832 300Q828 343 786 355Q745 365 719 337Q700 316 710 291Q719 269 742 268Q767 266 778 284Q788 302 778 317Q768 330 753 327Q741 324 739 312" />
+      <path className="earfx-nerve" d="M785 286Q848 269 922 304" />
+
+      <path className="earfx-eustachian" d="M535 211Q560 246 577 309Q590 352 632 386" />
+
+      <path className="earfx-arrow" d="M190 150H228M389 184H399M542 190H577M812 296H850" />
+
+      <text className="earfx-label" x="90" y="305" textAnchor="middle">1. sound waves</text>
+      <text className="earfx-label" x="300" y="305" textAnchor="middle">2. pinna + ear canal</text>
+      <text className="earfx-label" x="480" y="305" textAnchor="middle">3. ear drum + ossicles</text>
+      <text className="earfx-label" x="735" y="405" textAnchor="middle">4. cochlea</text>
+      <text className="earfx-label" x="875" y="355" textAnchor="middle">5. auditory nerve</text>
+      <text className="earfx-small" x="500" y="465" textAnchor="middle">Sound path: pinna → ear canal → ear drum → ossicles → cochlea → auditory nerve</text>
     </svg>
   );
 }
