@@ -144,6 +144,11 @@ describe("Integrated Science learner polish V1", () => {
     expect(nervous).toContain("ns-brain cerebrum");
     expect(nervous).toContain("ns-brain cerebellum");
     expect(nervous).toContain("ns-nerve fine");
+    expect(nervous).toContain("ns-silhouette");
+    expect(nervous).toContain("ns-spinal-roots");
+    expect(nervous).toContain("ns-pns upper");
+    expect(nervous).toContain("Central nervous system (CNS)");
+    expect(nervous).toContain("Peripheral nervous system (PNS)");
 
     const gasExchange = fs.readFileSync(
       path.join(__dirname,"subjects","components","GaseousExchangeExplorer.jsx"),
@@ -179,7 +184,13 @@ describe("Integrated Science learner polish V1", () => {
     expect(diagram).toContain("female-follicle");
     expect(diagram).toContain("male-erectile-tissue");
     expect(diagram).toContain("rough-er");
+    expect(diagram).toContain("smooth-er");
     expect(diagram).toContain("golgi");
+    expect(diagram).toContain("lysosomes");
+    expect(diagram).toContain("centrosome");
+    expect(diagram).toContain("cytoskeleton");
+    expect(diagram).toContain("plant-peroxisomes");
+    expect(diagram).toContain("plasmodesmata");
     expect(diagram).toContain("plant-central-vacuole");
     expect(diagram).toContain("plant-golgi");
     expect(diagram).toContain("golgi-vesicle");
