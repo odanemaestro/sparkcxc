@@ -86,6 +86,7 @@ import WaterPropertiesExplorer from "./components/WaterPropertiesExplorer";
 import HardWaterExplorer from "./components/HardWaterExplorer";
 import WaterUsesExplorer from "./components/WaterUsesExplorer";
 import FishingMethodsExplorer from "./components/FishingMethodsExplorer";
+import WaterPollutionExplorer from "./components/WaterPollutionExplorer";
 import ForcePrinciplesExplorer from "./components/ForcePrinciplesExplorer";
 import GravityInertiaExplorer from "./components/GravityInertiaExplorer";
 import StabilityCentreGravityExplorer from "./components/StabilityCentreGravityExplorer";
@@ -517,6 +518,9 @@ function GenericLessonContent({
         }
         if (model?.type === "fishing-methods") {
           return <FishingMethodsExplorer key={model.id || "fishing-methods"} />;
+        }
+        if (model?.type === "water-pollution") {
+          return <WaterPollutionExplorer key={model.id || "water-pollution"} />;
         }
         if (model?.type === "force-principles") {
           return <ForcePrinciplesExplorer key={model.id || "force-principles"} />;
