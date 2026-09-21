@@ -14,3 +14,17 @@ html[data-theme="dark"] .td-label,body[data-theme="dark"] .td-label,.dark .td-la
 @media(max-width:900px){.spark-tide-timing,.spark-tide-coast{grid-template-columns:1fr}.spark-tsunami-sequence{flex-direction:column}.spark-tsunami-sequence>div{text-align:center;transform:rotate(90deg)}}
 @media(max-width:620px){.spark-tides-explorer{padding:14px}.spark-tide-tabs{display:grid;grid-template-columns:1fr 1fr}.td-label,.sn-label{font-size:18px}}
 @media(max-width:390px){.spark-tide-tabs{grid-template-columns:1fr}}
+
+.sn-water{fill:#b7d8e6;fill-opacity:.78;stroke:#6192a8;stroke-width:4}
+.sn-water.spring-range{fill:#a8d2e4}
+.sn-water.neap-range{fill:#c3dde7}
+.sn-range-guide{fill:none;stroke:#748b99;stroke-width:3;stroke-linecap:round}
+.sn-range-label{fill:#2d596f;font-size:14px;font-weight:900}
+.sn-bulge-label{fill:#456f82;font-size:12px;font-weight:850}
+html[data-theme="dark"] .sn-range-label,
+body[data-theme="dark"] .sn-range-label,
+.dark .sn-range-label,
+html[data-theme="dark"] .sn-bulge-label,
+body[data-theme="dark"] .sn-bulge-label,
+.dark .sn-bulge-label{fill:#d6e4ee}
+@media(max-width:620px){.sn-range-label{font-size:18px}.sn-bulge-label{font-size:16px}}
