@@ -4,3 +4,66 @@
 .spark-ro-view label{display:grid;gap:6px;color:var(--spark-ink,#102a43);font-size:11px;font-weight:850}.spark-ro-model{display:grid;grid-template-columns:1fr .8fr 1fr;grid-template-areas:"feed membrane product" "feed membrane brine";gap:10px;margin:16px 0}.spark-ro-model>div{display:grid;place-items:center;min-height:80px;padding:12px;border-radius:10px;text-align:center;font-size:10px;font-weight:850}.spark-ro-feed{grid-area:feed;background:#9fd0e3;color:#315b70}.spark-ro-membrane{grid-area:membrane;background:#d8e2e6;color:#405766}.spark-ro-product{grid-area:product;background:#d9fbf4;color:#087f73}.spark-ro-brine{grid-area:brine;background:#d6c39e;color:#5f4c2b}.spark-purification-household{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.spark-purification-summary{display:grid;gap:5px;margin-top:14px;padding:13px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:11px;background:var(--spark-bg,#f7fafc)}.spark-purification-summary strong{color:var(--spark-teal-dark,#087f73);font-size:12px}.spark-purification-summary span{color:var(--spark-ink-soft,#334e68);font-size:12px}
 html[data-theme="dark"] .spark-water-purification,body[data-theme="dark"] .spark-water-purification,.dark .spark-water-purification{background:#122b43;border-color:#2a4863}html[data-theme="dark"] .spark-purification-tabs button,body[data-theme="dark"] .spark-purification-tabs button,.dark .spark-purification-tabs button,html[data-theme="dark"] .spark-purification-buttons button,body[data-theme="dark"] .spark-purification-buttons button,.dark .spark-purification-buttons button,html[data-theme="dark"] .spark-purification-treatment>article,body[data-theme="dark"] .spark-purification-treatment>article,.dark .spark-purification-treatment>article,html[data-theme="dark"] .spark-purification-distillation svg,body[data-theme="dark"] .spark-purification-distillation svg,.dark .spark-purification-distillation svg,html[data-theme="dark"] .spark-purification-household article,body[data-theme="dark"] .spark-purification-household article,.dark .spark-purification-household article,html[data-theme="dark"] .spark-purification-summary,body[data-theme="dark"] .spark-purification-summary,.dark .spark-purification-summary{background:#0d2134;border-color:#29465f}html[data-theme="dark"] .spark-purification-tabs button.active,body[data-theme="dark"] .spark-purification-tabs button.active,.dark .spark-purification-tabs button.active,html[data-theme="dark"] .spark-purification-buttons button.active,body[data-theme="dark"] .spark-purification-buttons button.active,.dark .spark-purification-buttons button.active{background:#164e4a;color:#d7fffa}html[data-theme="dark"] .wp-label,body[data-theme="dark"] .wp-label,.dark .wp-label{fill:#d6e4ee}
 @media(max-width:900px){.spark-purification-household{grid-template-columns:1fr}.spark-ro-model{grid-template-columns:1fr;grid-template-areas:"feed" "membrane" "product" "brine"}}@media(max-width:620px){.spark-water-purification{padding:14px}.spark-purification-tabs{display:grid;grid-template-columns:1fr 1fr}}@media(max-width:390px){.spark-purification-tabs{grid-template-columns:1fr}}
+
+/* SPARK_WATER_TREATMENT_PROCESS_V2 */
+.spark-treatment-process{overflow:hidden;margin-bottom:12px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.spark-treatment-process svg{display:block;width:100%;height:auto}
+.spark-treatment-process .wp-process-heading{fill:#29495f;font-size:17px;font-weight:900}
+.spark-treatment-process .wp-process-card{fill:#f9fbfc;stroke:#c9d8e1;stroke-width:3}
+.spark-treatment-process .wp-treatment-step.active .wp-process-card{fill:#ecfbf7;stroke:#0d9488;stroke-width:5}
+.spark-treatment-process .wp-step-number{fill:#0d9488;font-size:18px;font-weight:900}
+.spark-treatment-process .wp-step-title{fill:#2e4f64;font-size:14px;font-weight:900}
+.spark-treatment-process .wp-small{fill:#526b7d;font-size:11px;font-weight:800}
+.spark-treatment-process .wp-tank,.spark-treatment-process .wp-settling-tank,.spark-treatment-process .wp-filter,.spark-treatment-process .wp-contact-tank{fill:#edf3f5;stroke:#6f8796;stroke-width:4}
+.spark-treatment-process .wp-raw-water,.spark-treatment-process .wp-settled-water{fill:url(#wp-raw-water)}
+.spark-treatment-process .wp-clean-water,.spark-treatment-process .wp-water-layer,.spark-treatment-process .wp-filter-outlet{fill:url(#wp-clean-water)}
+.spark-treatment-process .wp-particle.fine{fill:#765e48}
+.spark-treatment-process .wp-particle.trapped{fill:#6e5c48}
+.spark-treatment-process .wp-alum-pipe,.spark-treatment-process .wp-chlorine-pipe{fill:none;stroke:#6c7f8a;stroke-width:6;stroke-linecap:round}
+.spark-treatment-process .wp-alum-drop{fill:#dbc6ef;stroke:#896da2;stroke-width:2}
+.spark-treatment-process .wp-chlorine-drop{fill:#b7dca3;stroke:#6f975d;stroke-width:2}
+.spark-treatment-process .wp-mixer{fill:none;stroke:#516b7c;stroke-width:6;stroke-linecap:round}
+.spark-treatment-process .wp-flocs circle,.spark-treatment-process .wp-floc-dot{fill:#8f7556;opacity:.9}
+.spark-treatment-process .wp-sludge{fill:#826344;stroke:#5b412b;stroke-width:2}
+.spark-treatment-process .wp-settle-arrow,.spark-treatment-process .wp-filter-arrow{fill:none;stroke:#3f7d98;stroke-width:6;stroke-linecap:round}
+.spark-treatment-process .wp-sand-layer{fill:#d7bd7c}
+.spark-treatment-process .wp-gravel-layer{fill:#9c8a74}
+.spark-treatment-process .wp-layer-label{fill:#40586a;font-size:11px;font-weight:900}
+.spark-treatment-process .wp-microbes circle{fill:#aa6770;stroke:#814852;stroke-width:2}
+.spark-treatment-process .wp-microbes path{fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round}
+.spark-treatment-process .wp-flow-arrow,.spark-treatment-process .wp-intake-arrow,.spark-treatment-process .wp-treated-pipe{fill:none;stroke:#0d9488;stroke-width:7;stroke-linecap:round}
+.spark-treatment-process .wp-raw-label,.spark-treatment-process .wp-treated-label{fill:#334e68;font-size:12px;font-weight:850}
+
+html[data-theme="dark"] .spark-treatment-process,
+body[data-theme="dark"] .spark-treatment-process,
+.dark .spark-treatment-process{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .spark-treatment-process .wp-process-card,
+body[data-theme="dark"] .spark-treatment-process .wp-process-card,
+.dark .spark-treatment-process .wp-process-card{fill:#132a3e;stroke:#365268}
+html[data-theme="dark"] .spark-treatment-process .wp-treatment-step.active .wp-process-card,
+body[data-theme="dark"] .spark-treatment-process .wp-treatment-step.active .wp-process-card,
+.dark .spark-treatment-process .wp-treatment-step.active .wp-process-card{fill:#123c3a;stroke:#2dd4bf}
+html[data-theme="dark"] .spark-treatment-process .wp-process-heading,
+body[data-theme="dark"] .spark-treatment-process .wp-process-heading,
+.dark .spark-treatment-process .wp-process-heading,
+html[data-theme="dark"] .spark-treatment-process .wp-step-title,
+body[data-theme="dark"] .spark-treatment-process .wp-step-title,
+.dark .spark-treatment-process .wp-step-title,
+html[data-theme="dark"] .spark-treatment-process .wp-small,
+body[data-theme="dark"] .spark-treatment-process .wp-small,
+.dark .spark-treatment-process .wp-small,
+html[data-theme="dark"] .spark-treatment-process .wp-layer-label,
+body[data-theme="dark"] .spark-treatment-process .wp-layer-label,
+.dark .spark-treatment-process .wp-layer-label,
+html[data-theme="dark"] .spark-treatment-process .wp-raw-label,
+body[data-theme="dark"] .spark-treatment-process .wp-raw-label,
+.dark .spark-treatment-process .wp-raw-label,
+html[data-theme="dark"] .spark-treatment-process .wp-treated-label,
+body[data-theme="dark"] .spark-treatment-process .wp-treated-label,
+.dark .spark-treatment-process .wp-treated-label{fill:#d6e4ee}
+
+@media(max-width:620px){
+  .spark-treatment-process .wp-process-heading{font-size:22px}
+  .spark-treatment-process .wp-step-title{font-size:18px}
+  .spark-treatment-process .wp-small,.spark-treatment-process .wp-layer-label,.spark-treatment-process .wp-raw-label,.spark-treatment-process .wp-treated-label{font-size:16px}
+}
