@@ -120,6 +120,9 @@ describe("Integrated Science learner polish V1", () => {
     expect(diagram).toContain("male-erectile-tissue");
     expect(diagram).toContain("rough-er");
     expect(diagram).toContain("golgi");
+    expect(diagram).toContain("plant-central-vacuole");
+    expect(diagram).toContain("plant-golgi");
+    expect(diagram).toContain("golgi-vesicle");
 
     const excretion = fs.readFileSync(
       path.join(__dirname,"subjects","components","HumanExcretionMechanismsExplorer.jsx"),
