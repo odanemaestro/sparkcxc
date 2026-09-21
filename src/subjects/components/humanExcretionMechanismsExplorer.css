@@ -31,3 +31,11 @@ html[data-theme="dark"] .spark-human-excretion-summary,body[data-theme="dark"] .
 @media(max-width:850px){.spark-human-excretion-tabs{display:grid;grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.spark-human-excretion{padding:14px}.spark-human-excretion-stage .hex-label{font-size:21px}.spark-human-excretion-stage .hex-heading{font-size:23px}.spark-human-excretion-stage .hex-small{font-size:18px}.spark-human-excretion-stage .hex-process{font-size:19px}}
 @media(max-width:390px){.spark-human-excretion-tabs{grid-template-columns:1fr}}
+
+.spark-human-excretion-stage .hex-kidney-calyces path{fill:none;stroke:#d9b79d;stroke-width:5;stroke-linecap:round}
+.spark-human-excretion-stage .hex-renal-artery,.spark-human-excretion-stage .hex-renal-vein{fill:none;stroke-width:11;stroke-linecap:round}
+.spark-human-excretion-stage .hex-renal-artery{stroke:#b84c55}
+.spark-human-excretion-stage .hex-renal-vein{stroke:#4f7ea6}
+.spark-human-excretion-stage .hex-renal-artery.branch,.spark-human-excretion-stage .hex-renal-vein.branch{stroke-width:5}
+.spark-human-excretion-stage .hex-small.vessel.artery{fill:#93414a}
+.spark-human-excretion-stage .hex-small.vessel.vein{fill:#3d6688}
