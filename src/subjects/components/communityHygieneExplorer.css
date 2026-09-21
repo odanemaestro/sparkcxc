@@ -42,3 +42,15 @@ html[data-theme="dark"] .ch-small,
 body[data-theme="dark"] .ch-small,
 .dark .ch-small{fill:#d6e4ee}
 @media(max-width:620px){.ch-small{font-size:15px}}
+
+
+.spark-landfill-cross-section{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.lf-sky{fill:#dceff6}.lf-cell-shell{fill:#7b6c5f;stroke:#55483e;stroke-width:4}.lf-cover{fill:#9f8f72;stroke:#6d614d;stroke-width:3}
+.lf-waste-details rect,.lf-waste-details circle,.lf-waste-details path{fill:#9b8069;stroke:#5e4f43;stroke-width:3}
+.lf-drainage-layer{fill:#b6ad8b;stroke:#746d59;stroke-width:3}.lf-liner{fill:#364b57;stroke:#1f313b;stroke-width:4}
+.lf-collection-pipe,.lf-collected-leachate{fill:none;stroke:#2d8f85;stroke-width:8;stroke-linecap:round}.lf-arrow-head{fill:#2d8f85}.lf-pipe-hole{fill:#d8f4f0;stroke:#2d8f85;stroke-width:2}
+.lf-leachate-tank{fill:#697b86;stroke:#40505a;stroke-width:4}.lf-tank-liquid{fill:#806246}.lf-small{fill:#526b7d;font-size:12px;font-weight:750}
+html[data-theme="dark"] .spark-landfill-cross-section,body[data-theme="dark"] .spark-landfill-cross-section,.dark .spark-landfill-cross-section{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .lf-sky,body[data-theme="dark"] .lf-sky,.dark .lf-sky{fill:#17354e}
+html[data-theme="dark"] .lf-small,body[data-theme="dark"] .lf-small,.dark .lf-small{fill:#d6e4ee}
+@media(max-width:620px){.lf-small{font-size:15px}}
