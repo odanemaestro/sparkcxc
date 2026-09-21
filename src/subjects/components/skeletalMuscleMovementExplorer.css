@@ -21,3 +21,22 @@ body[data-theme="dark"] .spark-knee-svg,
 html[data-theme="dark"] .sm-small,
 body[data-theme="dark"] .sm-small,
 .dark .sm-small{fill:#d6e4ee}
+
+.spark-joint-grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(220px,.8fr);gap:14px;align-items:stretch}
+.spark-joint-diagram{display:block;width:100%;height:auto;min-height:230px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:11px;background:var(--spark-paper,#fff)}
+.sm-joint-bone{fill:none;stroke:#e0d2b2;stroke-width:34;stroke-linecap:round}
+.sm-joint-cartilage{fill:#c9dce4;stroke:#557489;stroke-width:4}
+.sm-joint-ligament{fill:none;stroke:#d7b56d;stroke-width:10;stroke-linecap:round}
+.sm-joint-motion{fill:none;stroke:#2d8f85;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.sm-joint-socket{fill:#e6dcc8;stroke:#796c58;stroke-width:4}
+.sm-joint-ball{fill:#d8c3a2;stroke:#796c58;stroke-width:4}
+.sm-joint-plate{fill:#e6dcc8;stroke:#796c58;stroke-width:3}
+.sm-joint-suture{fill:none;stroke:#6f6253;stroke-width:6;stroke-linejoin:round}
+.sm-joint-glide{fill:#e0d2b2;stroke:#796c58;stroke-width:4}
+html[data-theme="dark"] .spark-joint-diagram,
+body[data-theme="dark"] .spark-joint-diagram,
+.dark .spark-joint-diagram{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .sm-joint-motion,
+body[data-theme="dark"] .sm-joint-motion,
+.dark .sm-joint-motion{stroke:#6ee7d8}
+@media(max-width:760px){.spark-joint-grid{grid-template-columns:1fr}.spark-joint-diagram{min-height:0}}
