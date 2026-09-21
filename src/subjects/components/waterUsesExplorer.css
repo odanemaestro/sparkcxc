@@ -41,3 +41,6 @@ html[data-theme="dark"] .wu-label,body[data-theme="dark"] .wu-label,.dark .wu-la
 html[data-theme="dark"] .spark-hydroponics-svg,body[data-theme="dark"] .spark-hydroponics-svg,.dark .spark-hydroponics-svg{background:#0d2134;border-color:#29465f}
 html[data-theme="dark"] .wh-label,body[data-theme="dark"] .wh-label,.dark .wh-label,html[data-theme="dark"] .wh-small,body[data-theme="dark"] .wh-small,.dark .wh-small{fill:#e0edf5}
 @media(max-width:620px){.wh-label{font-size:18px}.wh-small{font-size:15px}}
+
+.wu-interception circle{fill:#5b9db7;stroke:#3e7186;stroke-width:1.5}
+.wu-percolation{stroke:#5f7e9b}.wu-throughflow{stroke:#698b79}
