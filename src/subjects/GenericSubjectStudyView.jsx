@@ -79,6 +79,7 @@ import SolarSystemExplorer from "./components/SolarSystemExplorer";
 import EarthMoonEffectsExplorer from "./components/EarthMoonEffectsExplorer";
 import SpaceExplorationExplorer from "./components/SpaceExplorationExplorer";
 import AirMassFrontsExplorer from "./components/AirMassFrontsExplorer";
+import CaribbeanWeatherExplorer from "./components/CaribbeanWeatherExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -470,6 +471,9 @@ function GenericLessonContent({
         }
         if (model?.type === "air-mass-fronts") {
           return <AirMassFrontsExplorer key={model.id || "air-mass-fronts"} />;
+        }
+        if (model?.type === "caribbean-weather") {
+          return <CaribbeanWeatherExplorer key={model.id || "caribbean-weather"} />;
         }
         return null;
       })}
