@@ -51,29 +51,65 @@ function EarlyDevelopmentScene() {
 
 function PlacentaScene() {
   return (
-    <svg viewBox="0 0 960 520" role="img" aria-label="Placental exchange between mother and foetus without direct mixing of blood">
-      <rect className="ps-maternal-side" x="55" y="95" width="300" height="335" rx="24" />
-      <rect className="ps-foetal-side" x="605" y="95" width="300" height="335" rx="24" />
-      <rect className="ps-placenta-barrier" x="425" y="75" width="110" height="375" rx="35" />
+    <svg viewBox="0 0 980 560" role="img" aria-label="Pregnant uterus showing foetus, amniotic sac, placenta, umbilical cord and placental exchange without direct mixing of maternal and foetal blood">
+      <g className="ps-pregnant-uterus" transform="translate(18 20)">
+        <path className="ps-uterus-outer" d="M165 65Q300 8 438 80Q500 150 492 268Q484 382 407 472Q325 534 233 490Q150 445 111 353Q76 270 95 185Q111 111 165 65Z" />
+        <path className="ps-uterus-muscle" d="M183 88Q300 42 417 100Q468 157 461 261Q453 358 388 439Q321 490 245 455Q174 419 141 341Q111 271 127 197Q141 133 183 88Z" />
+        <path className="ps-amniotic-sac" d="M216 114Q310 75 396 121Q430 173 424 251Q418 337 361 400Q306 445 248 414Q192 383 168 318Q148 257 160 194Q172 145 216 114Z" />
+        <path className="ps-amniotic-fluid" d="M224 128Q310 94 385 135Q411 181 405 248Q399 323 350 382Q305 417 257 391Q210 363 190 307Q173 254 184 203Q194 159 224 128Z" />
 
-      <path className="ps-maternal-vessel" d="M105 155Q200 115 305 175T300 330Q205 385 105 325" />
-      <path className="ps-foetal-vessel" d="M655 160Q750 115 855 175T850 330Q755 385 655 325" />
-      <path className="ps-umbilical-cord" d="M655 245Q600 225 535 250" />
+        <g className="ps-foetus" transform="translate(275 235) rotate(-16)">
+          <ellipse className="ps-foetus-head" cx="60" cy="-70" rx="48" ry="55" />
+          <path className="ps-foetus-torso" d="M38-22Q80-20 98 18Q105 64 70 98Q33 120 7 89Q-10 64 2 32Q12 8 38-22Z" />
+          <path className="ps-foetus-arm" d="M55 4Q28 20 16 48M72 10Q94 28 91 53" />
+          <path className="ps-foetus-leg" d="M35 88Q8 111-4 132M70 94Q89 116 78 139" />
+        </g>
 
-      <path className="ps-exchange to-foetus" d="M330 175H620M330 225H620" />
-      <path className="ps-exchange to-mother" d="M620 315H330M620 360H330" />
+        <path className="ps-placenta" d="M128 153Q93 216 112 305Q125 360 167 390Q196 345 198 292Q198 220 167 166Q150 145 128 153Z" />
+        <g className="ps-placental-villi">
+          {[185,220,255,290,325,360].map((y,i)=>(
+            <path key={y} d={"M153 "+y+"q28 8 41 28"} />
+          ))}
+        </g>
 
-      <text className="ps-heading" x="205" y="65" textAnchor="middle">Mother</text>
-      <text className="ps-heading" x="755" y="65" textAnchor="middle">Foetus</text>
-      <text className="ps-label" x="475" y="165" textAnchor="middle">placenta</text>
-      <text className="ps-small" x="475" y="190" textAnchor="middle">thin exchange surface</text>
+        <path className="ps-umbilical-cord" d="M187 302Q233 304 269 280Q305 258 328 233" />
+        <path className="ps-umbilical-inner artery" d="M191 292Q238 294 273 271Q307 248 326 229" />
+        <path className="ps-umbilical-inner vein" d="M191 312Q235 314 271 290Q306 269 331 238" />
 
-      <text className="ps-exchange-label" x="475" y="152" textAnchor="middle">oxygen</text>
-      <text className="ps-exchange-label" x="475" y="214" textAnchor="middle">glucose + amino acids</text>
-      <text className="ps-exchange-label waste" x="475" y="305" textAnchor="middle">carbon dioxide</text>
-      <text className="ps-exchange-label waste" x="475" y="350" textAnchor="middle">urea</text>
+        <path className="ps-cervix" d="M270 449Q303 463 336 449L332 500Q301 516 274 500Z" />
+        <path className="ps-cervical-canal" d="M303 463V503" />
+        <path className="ps-vagina" d="M277 500L262 545H342L329 500Z" />
 
-      <text className="ps-warning" x="480" y="490" textAnchor="middle">maternal and foetal blood do not normally mix directly</text>
+        <text className="ps-label" x="302" y="36" textAnchor="middle">uterus</text>
+        <text className="ps-small" x="308" y="122">amniotic sac + fluid</text>
+        <text className="ps-small" x="74" y="264">placenta</text>
+        <text className="ps-small" x="226" y="282">umbilical cord</text>
+        <text className="ps-small" x="312" y="536">cervix</text>
+      </g>
+
+      <g className="ps-placenta-inset" transform="translate(555 58)">
+        <rect className="ps-inset-card" x="0" y="0" width="390" height="420" rx="22" />
+        <text className="ps-heading" x="195" y="42" textAnchor="middle">Placental exchange</text>
+
+        <path className="ps-maternal-vessel" d="M45 115Q115 80 185 118T335 118" />
+        <path className="ps-maternal-vessel return" d="M45 315Q115 350 185 312T335 312" />
+
+        <path className="ps-villus-main" d="M185 100Q152 155 170 214Q186 267 222 314" />
+        <path className="ps-villus-branch" d="M173 150Q133 170 116 205M180 190Q218 176 245 205M190 235Q147 250 130 280M202 270Q238 255 270 280" />
+        <path className="ps-foetal-vessel" d="M182 120Q178 183 194 244Q203 281 219 309" />
+
+        <path className="ps-exchange to-foetus" d="M70 165H285M70 205H285" />
+        <path className="ps-exchange to-mother" d="M285 255H70M285 295H70" />
+
+        <text className="ps-exchange-label" x="177" y="153" textAnchor="middle">oxygen</text>
+        <text className="ps-exchange-label" x="177" y="194" textAnchor="middle">glucose + amino acids</text>
+        <text className="ps-exchange-label waste" x="177" y="246" textAnchor="middle">carbon dioxide</text>
+        <text className="ps-exchange-label waste" x="177" y="286" textAnchor="middle">urea</text>
+
+        <text className="ps-small" x="28" y="98">maternal blood space</text>
+        <text className="ps-small" x="226" y="342">foetal capillaries in villi</text>
+        <text className="ps-warning" x="195" y="390" textAnchor="middle">maternal and foetal blood do not normally mix directly</text>
+      </g>
     </svg>
   );
 }
