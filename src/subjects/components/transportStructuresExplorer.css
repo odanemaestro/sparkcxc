@@ -42,3 +42,16 @@ html[data-theme="dark"] .spark-transport-structures-blood-layout aside,body[data
 @media(max-width:850px){.spark-transport-structures-blood-layout,.spark-transport-structures-circulation{grid-template-columns:1fr}.spark-transport-structures-note-grid{grid-template-columns:1fr}}
 @media(max-width:620px){.spark-transport-structures{padding:14px}.spark-transport-structures-tabs,.spark-transport-structures-choice{display:grid;grid-template-columns:1fr 1fr}.spark-transport-structures .ts-label,.spark-transport-structures .ts-vessel-note,.spark-transport-structures .ts-flow-label,.spark-transport-structures .ts-phase-label{font-size:18px}.spark-transport-structures .ts-vessel-title{font-size:25px}}
 @media(max-width:390px){.spark-transport-structures-tabs,.spark-transport-structures-choice{grid-template-columns:1fr}}
+
+.spark-transport-structures .ts-lung-trachea{fill:none;stroke:#6e91a2;stroke-width:8;stroke-linecap:round}
+.spark-transport-structures .ts-heart-outline{fill:#ead3d7;stroke:#8e5360;stroke-width:8}
+.spark-transport-structures .ts-heart-ra,.spark-transport-structures .ts-heart-rv{fill:#a9d1e5;stroke:#527f98;stroke-width:5}
+.spark-transport-structures .ts-heart-la,.spark-transport-structures .ts-heart-lv{fill:#efb3b3;stroke:#a95a5a;stroke-width:5}
+.spark-transport-structures .ts-heart-lv{stroke-width:11}
+.spark-transport-structures .ts-heart-septum{fill:none;stroke:#81505a;stroke-width:9}
+.spark-transport-structures .ts-heart-vessel{fill:none;stroke-width:18;stroke-linecap:round}
+.spark-transport-structures .ts-heart-vessel.blue{stroke:#5e91ad}
+.spark-transport-structures .ts-heart-vessel.red{stroke:#bd6262}
+.spark-transport-structures .ts-heart-valve{fill:none;stroke:#f8f2e6;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
+.spark-transport-structures .ts-heart-phase path{fill:none;stroke:#0d9488;stroke-width:8;stroke-linecap:round}
+.spark-transport-structures .ts-heart-phase.diastole path{stroke:#66879c}
