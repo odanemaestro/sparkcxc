@@ -15,3 +15,7 @@ html[data-theme="dark"] .gx-label,body[data-theme="dark"] .gx-label,.dark .gx-la
 @media(max-width:850px){.spark-gas-features,.spark-gas-alveolus-notes,.spark-gas-plant-notes{grid-template-columns:1fr}}
 @media(max-width:620px){.spark-gaseous-exchange{padding:14px}.spark-gas-tabs{display:grid;grid-template-columns:1fr 1fr}.gx-label,.gx-oxygen-text,.gx-carbon-text,.gx-co2-text,.gx-o2-text,.gx-water-text,.gx-panel-title{font-size:18px}.gx-small{font-size:16px}}
 @media(max-width:390px){.spark-gas-tabs{grid-template-columns:1fr}}
+
+.gx-bronchiole{fill:none;stroke:#7795a6;stroke-width:18;stroke-linecap:round}
+.gx-alveolar-opening{fill:none;stroke:#a65f67;stroke-width:5;stroke-linecap:round}
+.gx-exchange-barrier{fill:none;stroke:#8a9ba5;stroke-width:4;stroke-dasharray:7 5;stroke-linecap:round}
