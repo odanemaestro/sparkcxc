@@ -9,6 +9,12 @@ describe("Integrated Science Objective 2.5.4 acceptance audit",()=>{
  test("covers hypothalamus and normal temperature",()=>{expect(migration).toContain("about 37 °C");expect(migration).toContain("hypothalamus");});
  test("covers sweating humidity and latent heat",()=>{expect(migration).toContain("latent heat");expect(migration).toContain("Humid air");expect(explorer).toContain("Humidity and sweat");});
  test("covers vasodilation and vasoconstriction",()=>{expect(migration).toContain("Vasodilation");expect(migration).toContain("Vasoconstriction");expect(explorer).toContain("vasodilation");});
+ test("renders detailed thermoregulation skin anatomy",()=>{
+  ["spark-temp-skin-svg","bt-epidermis","bt-dermis","bt-fat-layer","bt-sweat-gland","bt-capillary-network dilated","bt-capillary-network constricted","bt-arrector","HOT: vasodilation + sweating increase heat loss","COLD: vasoconstriction reduces heat loss"].forEach(term=>expect(explorer).toContain(term));
+  expect(css).toContain(".spark-temp-skin-svg");
+  expect(css).toContain(".bt-capillary-network.dilated");
+  expect(css).toContain(".bt-capillary-network.constricted");
+ });
  test("covers shivering",()=>{expect(migration).toContain("rapid involuntary muscle contractions");expect(migration).toContain("raises respiration");});
  test("covers heat-stroke and dehydration risk",()=>{expect(migration).toContain("Heat stroke");expect(migration).toContain("dehydration");expect(explorer).toContain("HEAT STRESS");});
  test("covers high and low temperature effects",()=>{expect(migration).toContain("damage proteins");expect(migration).toContain("metabolic rate slow");});
