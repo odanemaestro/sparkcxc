@@ -29,3 +29,15 @@ html[data-theme="dark"] .wu-label,body[data-theme="dark"] .wu-label,.dark .wu-la
 @media(max-width:900px){.spark-water-body-use,.spark-water-conservation,.spark-water-energy-use,.spark-water-home,.spark-water-fire{grid-template-columns:1fr}}
 @media(max-width:620px){.spark-water-uses{padding:14px}.spark-water-use-tabs{display:grid;grid-template-columns:1fr 1fr}.wu-label,.wu-reservoir-label{font-size:18px}.wu-small,.wu-cycle-caption{font-size:15px}}
 @media(max-width:390px){.spark-water-use-tabs{grid-template-columns:1fr}}
+
+
+.spark-hydroponics-svg{display:block;width:100%;height:auto;margin-top:12px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.wh-reservoir{fill:#d9e2e7;stroke:#667985;stroke-width:5}.wh-solution{fill:#9fcfdf;stroke:#5c98ad;stroke-width:3}.wh-support{fill:#b99068;stroke:#76583f;stroke-width:4}
+.wh-stem{fill:none;stroke:#4f8b4f;stroke-width:12;stroke-linecap:round}.wh-leaf{fill:#72a85f;stroke:#4c783f;stroke-width:4}
+.wh-roots path{fill:none;stroke:#9b7650;stroke-width:6;stroke-linecap:round}
+.wh-nutrients circle{fill:#e6f2f6;stroke:#557f92;stroke-width:2}.wh-nutrients text{fill:#315b70;font-size:9px;font-weight:900}
+.wh-air-bubbles circle{fill:#edf9fc;stroke:#6aa7bf;stroke-width:2}.wh-uptake{fill:none;stroke:#2d8f85;stroke-width:5;stroke-linecap:round}.wh-arrow-head{fill:#2d8f85}
+.wh-label{fill:#28495a;font-size:14px;font-weight:900}.wh-small{fill:#4e6978;font-size:11px;font-weight:750}
+html[data-theme="dark"] .spark-hydroponics-svg,body[data-theme="dark"] .spark-hydroponics-svg,.dark .spark-hydroponics-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .wh-label,body[data-theme="dark"] .wh-label,.dark .wh-label,html[data-theme="dark"] .wh-small,body[data-theme="dark"] .wh-small,.dark .wh-small{fill:#e0edf5}
+@media(max-width:620px){.wh-label{font-size:18px}.wh-small{font-size:15px}}
