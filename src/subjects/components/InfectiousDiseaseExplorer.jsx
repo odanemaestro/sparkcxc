@@ -105,56 +105,68 @@ function PreventionScene() {
 
 function VectorScene() {
   return (
-    <svg viewBox="0 0 980 520" role="img" aria-label="Dengue transmission by Aedes mosquito and control of mosquito life stages">
-      <g transform="translate(55 65)">
-        <circle className="id-life-stage" cx="80" cy="90" r="58" />
-        <g className="id-eggs">
-          <ellipse cx="60" cy="90" rx="7" ry="15" />
-          <ellipse cx="80" cy="75" rx="7" ry="15" />
-          <ellipse cx="100" cy="95" rx="7" ry="15" />
+    <div className="spark-dengue-vector-scene">
+      <svg className="spark-dengue-transmission-svg" viewBox="0 0 1040 600" role="img" aria-label="Dengue transmission cycle showing an Aedes aegypti mosquito acquiring dengue virus from an infected person and transmitting it during a later bite to another person, plus aquatic mosquito stages targeted by standing-water control">
+        <defs>
+          <marker id="dengue-flow-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+            <path d="M0 0L9 4.5L0 9Z" className="id-dengue-arrow-head"/>
+          </marker>
+        </defs>
+
+        <g className="id-person infected" transform="translate(80 80)">
+          <circle cx="95" cy="72" r="42"/>
+          <path d="M95 116V240M40 160L95 140L150 160M95 240L55 318M95 240L135 318"/>
+          <g className="id-virus-particles">
+            <circle cx="68" cy="150" r="8"/><circle cx="105" cy="180" r="7"/><circle cx="128" cy="132" r="8"/>
+          </g>
+          <text className="id-label" x="95" y="350" textAnchor="middle">person with dengue virus</text>
         </g>
-        <text className="id-label" x="80" y="175" textAnchor="middle">eggs</text>
-      </g>
 
-      <path className="id-vector-arrow" d="M210 155H285" />
+        <path className="id-dengue-flow" d="M255 220Q330 185 390 220" markerEnd="url(#dengue-flow-arrow)"/>
+        <text className="id-small" x="325" y="170" textAnchor="middle">blood meal from infected person</text>
 
-      <g transform="translate(290 65)">
-        <circle className="id-life-stage" cx="80" cy="90" r="58" />
-        <path className="id-larva" d="M45 80q25-35 40 0t35 10q20 25-12 45" />
-        <text className="id-label" x="80" y="175" textAnchor="middle">larva</text>
-      </g>
-
-      <path className="id-vector-arrow" d="M445 155H520" />
-
-      <g transform="translate(525 65)">
-        <circle className="id-life-stage" cx="80" cy="90" r="58" />
-        <path className="id-pupa" d="M60 70q55 5 40 55q-12 35-42 15q-20-18 2-70Z" />
-        <text className="id-label" x="80" y="175" textAnchor="middle">pupa</text>
-      </g>
-
-      <path className="id-vector-arrow" d="M680 155H755" />
-
-      <g transform="translate(760 65)">
-        <circle className="id-life-stage adult" cx="80" cy="90" r="58" />
-        <g className="id-mosquito">
-          <ellipse cx="80" cy="90" rx="10" ry="35" />
-          <path d="M70 80L35 55M90 80L125 55M72 100L35 130M88 100L125 130M80 60V35" />
-          <ellipse cx="58" cy="72" rx="25" ry="14" transform="rotate(-25 58 72)" />
-          <ellipse cx="102" cy="72" rx="25" ry="14" transform="rotate(25 102 72)" />
+        <g className="id-aedes" transform="translate(415 125)">
+          <ellipse className="id-aedes-body" cx="105" cy="108" rx="14" ry="52"/>
+          <circle className="id-aedes-head" cx="105" cy="49" r="18"/>
+          <path className="id-aedes-proboscis" d="M105 31L105 0"/>
+          <ellipse className="id-aedes-wing" cx="65" cy="92" rx="48" ry="23" transform="rotate(-25 65 92)"/>
+          <ellipse className="id-aedes-wing" cx="145" cy="92" rx="48" ry="23" transform="rotate(25 145 92)"/>
+          <path className="id-aedes-leg" d="M93 95L42 60M117 95L168 60M93 120L35 142M117 120L175 142M94 142L52 190M116 142L160 190"/>
+          <path className="id-aedes-stripe" d="M94 80H116M92 102H118M92 126H118M94 150H116"/>
+          <g className="id-virus-particles mosquito">
+            <circle cx="105" cy="94" r="7"/><circle cx="105" cy="122" r="7"/><circle cx="105" cy="150" r="7"/>
+          </g>
+          <text className="id-label" x="105" y="235" textAnchor="middle">Aedes aegypti vector</text>
+          <text className="id-small" x="105" y="258" textAnchor="middle">mosquito carries dengue virus</text>
         </g>
-        <text className="id-label" x="80" y="175" textAnchor="middle">adult vector</text>
-      </g>
 
-      <rect className="id-control-box" x="85" y="320" width="370" height="115" rx="16" />
-      <text className="id-card-title" x="105" y="350">Target immature stages</text>
-      <text className="id-small left" x="105" y="380">Drain or cover standing water.</text>
-      <text className="id-small left" x="105" y="405">Remove containers that collect rainwater.</text>
+        <path className="id-dengue-flow" d="M640 220Q710 185 775 220" markerEnd="url(#dengue-flow-arrow)"/>
+        <text className="id-small" x="705" y="170" textAnchor="middle">later bite can transmit virus</text>
 
-      <rect className="id-control-box" x="525" y="320" width="370" height="115" rx="16" />
-      <text className="id-card-title" x="545" y="350">Reduce adult bites</text>
-      <text className="id-small left" x="545" y="380">Use screens, nets and approved control methods.</text>
-      <text className="id-small left" x="545" y="405">Reduce contact between mosquitoes and people.</text>
-    </svg>
+        <g className="id-person susceptible" transform="translate(775 80)">
+          <circle cx="95" cy="72" r="42"/>
+          <path d="M95 116V240M40 160L95 140L150 160M95 240L55 318M95 240L135 318"/>
+          <text className="id-label" x="95" y="350" textAnchor="middle">another person</text>
+        </g>
+
+        <rect className="id-vector-divider" x="75" y="450" width="890" height="2"/>
+        <text className="id-heading" x="520" y="430" textAnchor="middle">Vector control breaks the transmission route</text>
+
+        <g className="id-aquatic-stages" transform="translate(115 470)">
+          <g transform="translate(0 0)"><ellipse className="id-egg-stage" cx="45" cy="44" rx="8" ry="17"/><ellipse className="id-egg-stage" cx="65" cy="38" rx="8" ry="17"/><text className="id-small" x="55" y="92" textAnchor="middle">eggs</text></g>
+          <path className="id-stage-arrow" d="M110 44H165" markerEnd="url(#dengue-flow-arrow)"/>
+          <g transform="translate(175 0)"><path className="id-larva-stage" d="M20 28Q50 2 68 35T100 50Q112 76 82 78"/><text className="id-small" x="60" y="92" textAnchor="middle">larva, aquatic</text></g>
+          <path className="id-stage-arrow" d="M300 44H355" markerEnd="url(#dengue-flow-arrow)"/>
+          <g transform="translate(365 0)"><path className="id-pupa-stage" d="M28 20Q90 20 80 65Q71 88 42 73Q18 60 28 20Z"/><text className="id-small" x="58" y="92" textAnchor="middle">pupa, aquatic</text></g>
+          <path className="id-stage-arrow" d="M480 44H535" markerEnd="url(#dengue-flow-arrow)"/>
+          <g transform="translate(548 -3)"><ellipse className="id-mini-adult" cx="55" cy="42" rx="8" ry="28"/><path className="id-mini-adult-lines" d="M47 35L20 18M63 35L90 18M47 48L17 65M63 48L93 65"/><text className="id-small" x="55" y="95" textAnchor="middle">adult</text></g>
+          <rect className="id-source-reduction-box" x="690" y="-8" width="195" height="100" rx="14"/>
+          <text className="id-card-title" x="788" y="20" textAnchor="middle">Remove standing water</text>
+          <text className="id-small" x="788" y="48" textAnchor="middle">prevents aquatic stages</text>
+          <text className="id-small" x="788" y="70" textAnchor="middle">from developing into adults</text>
+        </g>
+      </svg>
+    </div>
   );
 }
 
