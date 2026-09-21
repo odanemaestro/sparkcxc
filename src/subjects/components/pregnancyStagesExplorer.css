@@ -29,3 +29,21 @@ html[data-theme="dark"] .spark-pregnancy-stage,body[data-theme="dark"] .spark-pr
 html[data-theme="dark"] .spark-pregnancy-explanation,body[data-theme="dark"] .spark-pregnancy-explanation,.dark .spark-pregnancy-explanation,html[data-theme="dark"] .spark-pregnancy-facts article,body[data-theme="dark"] .spark-pregnancy-facts article,.dark .spark-pregnancy-facts article{background:#0d2134;border-color:#29465f}
 @media(max-width:850px){.spark-pregnancy-facts{grid-template-columns:1fr}.spark-pregnancy-tabs{display:grid;grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.spark-pregnancy-stages{padding:14px}.spark-pregnancy-tabs{grid-template-columns:1fr}.spark-pregnancy-stage .ps-label{font-size:21px}.spark-pregnancy-stage .ps-small{font-size:18px}.spark-pregnancy-stage .ps-heading{font-size:25px}.spark-pregnancy-stage .ps-exchange-label,.spark-pregnancy-stage .ps-warning{font-size:18px}}
+
+.spark-pregnancy-stage .ps-uterus-outer{fill:#c96f79;stroke:#8f4d55;stroke-width:6}
+.spark-pregnancy-stage .ps-uterus-muscle{fill:#e2a0a5;stroke:#a85f67;stroke-width:4}
+.spark-pregnancy-stage .ps-amniotic-sac{fill:#d8edf3;fill-opacity:.85;stroke:#6d9fac;stroke-width:4}
+.spark-pregnancy-stage .ps-amniotic-fluid{fill:#eaf8fb;fill-opacity:.78;stroke:#a3cfd9;stroke-width:2}
+.spark-pregnancy-stage .ps-foetus-head,.spark-pregnancy-stage .ps-foetus-torso{fill:#efc3a6;stroke:#9c6c52;stroke-width:4}
+.spark-pregnancy-stage .ps-foetus-arm,.spark-pregnancy-stage .ps-foetus-leg{fill:none;stroke:#9c6c52;stroke-width:7;stroke-linecap:round}
+.spark-pregnancy-stage .ps-placenta{fill:#b95f6c;stroke:#7f3d49;stroke-width:5}
+.spark-pregnancy-stage .ps-placental-villi path{fill:none;stroke:#e7b6bd;stroke-width:5;stroke-linecap:round}
+.spark-pregnancy-stage .ps-umbilical-inner{fill:none;stroke-width:4;stroke-linecap:round}
+.spark-pregnancy-stage .ps-umbilical-inner.artery{stroke:#4f789c}
+.spark-pregnancy-stage .ps-umbilical-inner.vein{stroke:#bf5d66}
+.spark-pregnancy-stage .ps-cervix{fill:#d48890;stroke:#99555e;stroke-width:4}
+.spark-pregnancy-stage .ps-cervical-canal{fill:none;stroke:#8a4a53;stroke-width:5;stroke-linecap:round}
+.spark-pregnancy-stage .ps-vagina{fill:#dca2a6;stroke:#9b5c63;stroke-width:4}
+.spark-pregnancy-stage .ps-inset-card{fill:#fffafa;stroke:#d9c6ca;stroke-width:3}
+.spark-pregnancy-stage .ps-maternal-vessel.return{stroke:#9f3947}
+.spark-pregnancy-stage .ps-villus-main,.spark-pregnancy-stage .ps-villus-branch{fill:none;stroke:#bd7180;stroke-width:10;stroke-linecap:round}
