@@ -59,10 +59,73 @@ function LeverView(){
 
 function PulleyView(){
   const [strands,setStrands]=useState(2);
-  const n=Math.max(1,Number(strands)||1);
+  const n=Math.max(1,Math.min(4,Number(strands)||1));
+  const xs=Array.from({length:n},(_,i)=>n===1?430:300+i*(260/(n-1)));
+
   return <div className="spark-machines-pulley">
     <label>Supporting rope strands<input type="range" min="1" max="4" step="1" value={strands} onChange={e=>setStrands(e.target.value)}/></label>
-    <div className="spark-pulley-model"><div className="spark-pulley-wheel"></div><div className="spark-pulley-load">load</div><div className="spark-rope-lines">{Array.from({length:n}).map((_,i)=><span key={i} style={{left:(30+i*(40/Math.max(1,n-1)))+"%"}}></span>)}</div></div>
+
+    <svg className="spark-pulley-svg" viewBox="0 0 860 500" role="img" aria-label={n===1
+      ? "Single fixed pulley changing the direction of effort with ideal mechanical advantage one"
+      : `Idealised moving pulley system with ${n} rope strands supporting the load`}>
+
+      <rect className="sp-support" x="145" y="55" width="570" height="20" rx="10"/>
+
+      {n===1 ? <>
+        <g className="sp-fixed-pulley" transform="translate(430 150)">
+          <circle r="64"/>
+          <circle className="hub" r="12"/>
+        </g>
+        <path className="sp-rope" d="M250 330V150Q250 86 314 86H430Q494 86 494 150V315"/>
+        <g className="sp-effort-arrow">
+          <path d="M250 330V405"/>
+          <path d="M239 387L250 408L261 387"/>
+          <text x="250" y="438" textAnchor="middle">effort</text>
+        </g>
+        <rect className="sp-load" x="449" y="315" width="90" height="70" rx="10"/>
+        <text className="sp-load-label" x="494" y="356" textAnchor="middle">load</text>
+        <text className="sp-note" x="430" y="470" textAnchor="middle">fixed pulley changes force direction; ideal MA = 1</text>
+      </> : <>
+        <g className="sp-upper-block">
+          {[0,1].map(i=><g key={i} transform={`translate(${360+i*140} 145)`}><circle r="52"/><circle className="hub" r="10"/></g>)}
+        </g>
+
+        <g className="sp-moving-block" transform="translate(430 315)">
+          <circle r="66"/>
+          <circle className="hub" r="12"/>
+          <rect className="sp-load" x="-58" y="75" width="116" height="72" rx="10"/>
+          <text className="sp-load-label" x="0" y="118" textAnchor="middle">load</text>
+        </g>
+
+        <g className="sp-supporting-strands">
+          {xs.map((x,i)=><g key={i}>
+            <line x1={x} y1="86" x2={x} y2="315"/>
+            <text x={x} y="105" textAnchor="middle">{i+1}</text>
+          </g>)}
+        </g>
+
+        <path className="sp-effort-rope" d="M690 110V350"/>
+        <g className="sp-effort-arrow">
+          <path d="M690 350V420"/>
+          <path d="M679 402L690 423L701 402"/>
+          <text x="690" y="452" textAnchor="middle">effort</text>
+        </g>
+
+        <path className="sp-upthrust-arrow" d="M430 300V225"/>
+        <text className="sp-upthrust-label" x="445" y="245">combined support from {n} strands</text>
+
+        <text className="sp-note" x="430" y="480" textAnchor="middle">ideal mechanical advantage ≈ number of rope strands supporting the moving load</text>
+      </>}
+
+      <text className="sp-heading" x="430" y="32" textAnchor="middle">{n===1?"Single fixed pulley":`${n}-strand support model`}</text>
+    </svg>
+
+    <div className="spark-pulley-facts">
+      <article><b>Fixed pulley</b><span>Mainly changes the direction of the effort. Ideal MA = 1.</span></article>
+      <article><b>Moving pulley</b><span>The load is supported by more than one rope segment, so a smaller effort can lift it ideally.</span></article>
+      <article><b>Real systems</b><span>Friction means the actual mechanical advantage is lower than the ideal value.</span></article>
+    </div>
+
     <strong>Ideal mechanical advantage ≈ number of supporting strands = {n}</strong>
     <p>A single fixed pulley mainly changes the direction of the effort and has ideal mechanical advantage 1.</p>
   </div>;
