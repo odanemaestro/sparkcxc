@@ -32,6 +32,23 @@ describe("Integrated Science Objective 2.4.8 acceptance audit", () => {
     expect(explorer).toContain("Illegal connections");
   });
 
+  test("renders visual scenes for common electrical hazards", () => {
+    [
+      "spark-hazard-scene-svg",
+      "ehz-kite",
+      "ehz-ladder",
+      "ehz-hand",
+      "ehz-cable-outer",
+      "ehz-outlet",
+      "ehz-illegal-tap",
+      "keep people and equipment well away from live lines",
+      "wet skin and dissolved ions make unintended current paths more dangerous",
+      "overloading can overheat cables, plugs and insulation",
+    ].forEach(term => expect(explorer).toContain(term));
+    expect(css).toContain(".spark-hazard-scene-svg");
+    expect(css).toContain(".ehz-illegal-tap");
+  });
+
   test("covers stored charge", () => {
     expect(migration).toContain("capacitors that can retain electric charge");
     expect(migration).toContain("untrained persons should not remove the backs of televisions");
