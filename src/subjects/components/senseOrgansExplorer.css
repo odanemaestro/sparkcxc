@@ -27,3 +27,33 @@ html[data-theme="dark"] .spark-sense-flow article,body[data-theme="dark"] .spark
 @media(max-width:900px){.spark-sense-grid{grid-template-columns:1fr}.spark-sense-flow{grid-template-columns:1fr}.spark-sense-arrow{transform:rotate(90deg);justify-self:center}}
 @media(max-width:620px){.spark-sense-organs{padding:14px}.spark-sense-tabs{display:grid;grid-template-columns:1fr 1fr}.spark-sense-icon{min-height:220px}}
 @media(max-width:390px){.spark-sense-tabs{grid-template-columns:1fr}}
+
+
+.spark-sense-icon .so-receptor-anatomy-svg{width:min(420px,96%);height:auto}
+.spark-sense-icon .so-nasal-cavity{fill:#efd3c4;stroke:#9c6d4e;stroke-width:4}
+.spark-sense-icon .so-olfactory-epithelium{fill:#d7b1cc;stroke:#8d6480;stroke-width:4}
+.spark-sense-icon .so-mucus-layer{fill:none;stroke:#7ab7c8;stroke-width:5;stroke-linecap:round}
+.spark-sense-icon .so-olfactory-receptors circle{fill:#815d8e;stroke:#5c4168;stroke-width:2}
+.spark-sense-icon .so-olfactory-receptors path{fill:none;stroke:#695087;stroke-width:3;stroke-linecap:round}
+.spark-sense-icon .so-odour-molecules circle{fill:#d7a339;stroke:#8f6a1f;stroke-width:2}
+.spark-sense-icon .so-sensory-nerve{fill:none;stroke:#536f93;stroke-width:6;stroke-linecap:round}
+
+.spark-sense-icon .so-taste-papillae circle{fill:#b9535c;stroke:#823941;stroke-width:2}
+.spark-sense-icon .so-taste-bud-outline{fill:#f0bdc4;stroke:#9d5b66;stroke-width:4}
+.spark-sense-icon .so-taste-pore{fill:none;stroke:#7d444d;stroke-width:5;stroke-linecap:round}
+.spark-sense-icon .so-taste-cells path{fill:none;stroke:#a45161;stroke-width:5;stroke-linecap:round}
+.spark-sense-icon .so-taste-molecules circle{fill:#d4a337;stroke:#8f6a1f;stroke-width:2}
+.spark-sense-icon .so-taste-nerve{fill:none;stroke:#536f93;stroke-width:6;stroke-linecap:round}
+
+.spark-sense-icon .so-skin-epidermis{fill:#dfb394;stroke:#a67559;stroke-width:3}
+.spark-sense-icon .so-skin-dermis{fill:#c98f73;stroke:#98684f;stroke-width:3}
+.spark-sense-icon .so-skin-subcutaneous{fill:#e7c66e;stroke:#b39144;stroke-width:3}
+.spark-sense-icon .so-hair{fill:none;stroke:#55453d;stroke-width:7;stroke-linecap:round}
+.spark-sense-icon .so-hair-follicle{fill:#a86e56;fill-opacity:.5;stroke:#82513f;stroke-width:3}
+.spark-sense-icon .so-free-nerve{fill:none;stroke:#5b6fa4;stroke-width:4;stroke-linecap:round}
+.spark-sense-icon .so-touch-receptor{fill:#7ba7b9;stroke:#486f80;stroke-width:4}
+.spark-sense-icon .so-pressure-receptor ellipse{fill:none;stroke:#6b83a1;stroke-width:3}
+.spark-sense-icon .so-anatomy-label{fill:#294d64;font-size:12px;font-weight:850}
+
+html[data-theme="dark"] .spark-sense-icon .so-anatomy-label,body[data-theme="dark"] .spark-sense-icon .so-anatomy-label,.dark .spark-sense-icon .so-anatomy-label{fill:#17384d}
+@media(max-width:620px){.spark-sense-icon .so-anatomy-label{font-size:16px}}
