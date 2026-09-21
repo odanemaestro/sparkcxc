@@ -78,6 +78,7 @@ import OrbitMotionExplorer from "./components/OrbitMotionExplorer";
 import SolarSystemExplorer from "./components/SolarSystemExplorer";
 import EarthMoonEffectsExplorer from "./components/EarthMoonEffectsExplorer";
 import SpaceExplorationExplorer from "./components/SpaceExplorationExplorer";
+import AirMassFrontsExplorer from "./components/AirMassFrontsExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -466,6 +467,9 @@ function GenericLessonContent({
         }
         if (model?.type === "space-exploration") {
           return <SpaceExplorationExplorer key={model.id || "space-exploration"} />;
+        }
+        if (model?.type === "air-mass-fronts") {
+          return <AirMassFrontsExplorer key={model.id || "air-mass-fronts"} />;
         }
         return null;
       })}
