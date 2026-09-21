@@ -46,7 +46,6 @@ function AgricultureView(){
     hydroponics:{title:"Hydroponics",text:"Growing plants without soil while roots receive water containing dissolved mineral nutrients."}
   }[mode];
   return <div className="spark-water-agriculture">
-    <div className="spark-water-toggle">{Object.keys(data?{}:{} )}</div>
     <div className="spark-water-agri-buttons">{["aquaculture","mariculture","hydroponics"].map(k=><button type="button" key={k} className={mode===k?"active":""} onClick={()=>setMode(k)}>{k[0].toUpperCase()+k.slice(1)}</button>)}</div>
     <article><span>{data.title.toUpperCase()}</span><h4>{data.title}</h4><p>{data.text}</p></article>
     {mode==="hydroponics"&&<div className="spark-hydroponic-model"><div className="spark-plant">plant</div><div className="spark-roots">roots</div><div className="spark-nutrient-water">nutrient solution</div></div>}
