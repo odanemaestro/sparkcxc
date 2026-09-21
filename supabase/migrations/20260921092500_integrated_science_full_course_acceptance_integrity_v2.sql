@@ -57,6 +57,14 @@ set title = 'Module 3: Our Planet',
 where subject_id = 'integrated-science'
   and section_id = 'module-3-our-planet';
 
+-- Objective 1.1.1 was already established as
+-- m1-t1-1-diffusion-osmosis-active-transport. A later objective migration
+-- introduced m1-t1-1-cell-transport for the same syllabus objective. Keep the
+-- established learner/progress route and remove only the redundant later row.
+delete from public.spark_subject_topics
+where subject_id = 'integrated-science'
+  and topic_id = 'm1-t1-1-cell-transport';
+
 -- Objective 1.1.2 was already seeded as m1-t1-2-animal-and-plant-cells.
 -- A later migration introduced a second topic row with the same objective.
 -- The established topic keeps the richer acceptance-audited lesson, diagram
