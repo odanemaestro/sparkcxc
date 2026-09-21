@@ -80,15 +80,16 @@ function EutrophicationView(){
 
 function PollutantsView(){
   const [type,setType]=useState("oil");
-  const data={
+  const options={
     oil:{title:"Oil spills",effect:"Oil coats seabird feathers, reducing waterproofing and insulation. Birds may also ingest oil while preening."},
     sewage:{title:"Raw sewage",effect:"Sewage adds nutrients and pathogens. Decomposition can lower dissolved oxygen and disease risk increases."},
     pesticide:{title:"Pesticides",effect:"Some pesticides persist and can accumulate in organisms and food chains, harming higher trophic levels."},
     heat:{title:"Thermal pollution",effect:"Warm water holds less dissolved oxygen. Heated discharge can therefore stress or kill aquatic organisms."},
     silt:{title:"Sediment / silt",effect:"Suspended sediment reduces light and can settle on coral, smothering tissues and photosynthetic algae."}
-  }[type];
+  };
+  const data=options[type];
   return <div className="spark-waterpollution-pollutants">
-    <div className="spark-waterpollution-buttons">{Object.keys(data).map(k=><button key={k} type="button" className={type===k?"active":""} onClick={()=>setType(k)}>{data[k].title}</button>)}</div>
+    <div className="spark-waterpollution-buttons">{Object.entries(options).map(([key,item])=><button key={key} type="button" className={type===key?"active":""} onClick={()=>setType(key)}>{item.title}</button>)}</div>
     <article><span>{data.title.toUpperCase()}</span><h4>{data.title}</h4><p>{data.effect}</p></article>
   </div>;
 }
