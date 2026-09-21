@@ -67,3 +67,52 @@ body[data-theme="dark"] .spark-treatment-process .wp-treated-label,
   .spark-treatment-process .wp-step-title{font-size:18px}
   .spark-treatment-process .wp-small,.spark-treatment-process .wp-layer-label,.spark-treatment-process .wp-raw-label,.spark-treatment-process .wp-treated-label{font-size:16px}
 }
+
+.spark-ro-svg{display:block;width:100%;height:auto;margin:14px 0;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.spark-ro-svg .ro-chamber{fill:#eef4f7;stroke:#718796;stroke-width:4}
+.spark-ro-svg .ro-feed-water{fill:url(#ro-feed-water)}
+.spark-ro-svg .ro-product-water{fill:url(#ro-product-water)}
+.spark-ro-svg .ro-pressure-piston rect{fill:#d9e4e9;stroke:#6a8190;stroke-width:3}
+.spark-ro-svg .ro-pressure-arrow{fill:none;stroke:#0d9488;stroke-width:7;stroke-linecap:round}
+.spark-ro-svg .ro-pressure-text{fill:#29495f;font-size:13px;font-weight:900}
+.spark-ro-svg .ro-membrane rect{fill:#cfdce2;stroke:#6e8490;stroke-width:4}
+.spark-ro-svg .ro-membrane circle{fill:#6f8793}
+.spark-ro-svg .ro-membrane-label{fill:#415f71;font-size:12px;font-weight:850}
+.spark-ro-svg .ro-water-molecules circle{fill:#eaf9fd;stroke:#4d95b5;stroke-width:2}
+.spark-ro-svg .ro-salt-ions circle{fill:#e9c67e;stroke:#9b7637;stroke-width:2.5}
+.spark-ro-svg .ro-salt-ions text{fill:#5f4a26;font-size:9px;font-weight:900}
+.spark-ro-svg .ro-permeate-arrows path{fill:none;stroke:#0d9488;stroke-width:5;stroke-linecap:round}
+.spark-ro-svg .ro-brine-arrow{fill:none;stroke:#a97942;stroke-width:7;stroke-linecap:round}
+.spark-ro-svg .ro-product-arrow{fill:none;stroke:#4f95b5;stroke-width:7;stroke-linecap:round}
+.spark-ro-svg .ro-title{fill:#29495f;font-size:15px;font-weight:900}
+.spark-ro-svg .ro-note{fill:#526b7d;font-size:12px;font-weight:800}
+.spark-ro-svg .ro-rejection-callout path{fill:none;stroke:#8d7046;stroke-width:3}
+.spark-ro-svg .ro-rejection-callout text{fill:#6e562f;font-size:12px;font-weight:850}
+.spark-ro-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0}
+.spark-ro-facts article{display:grid;gap:5px;padding:12px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:10px;background:var(--spark-paper,#fff)}
+.spark-ro-facts b{color:var(--spark-ink,#102a43);font-size:11px}
+.spark-ro-facts span{color:var(--spark-ink-soft,#334e68);font-size:11px;line-height:1.5}
+.spark-ro-view label strong{color:var(--spark-teal-dark,#087f73);font-size:11px}
+html[data-theme="dark"] .spark-ro-svg,
+body[data-theme="dark"] .spark-ro-svg,
+.dark .spark-ro-svg,
+html[data-theme="dark"] .spark-ro-facts article,
+body[data-theme="dark"] .spark-ro-facts article,
+.dark .spark-ro-facts article{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .spark-ro-svg .ro-title,
+body[data-theme="dark"] .spark-ro-svg .ro-title,
+.dark .spark-ro-svg .ro-title,
+html[data-theme="dark"] .spark-ro-svg .ro-note,
+body[data-theme="dark"] .spark-ro-svg .ro-note,
+.dark .spark-ro-svg .ro-note,
+html[data-theme="dark"] .spark-ro-svg .ro-pressure-text,
+body[data-theme="dark"] .spark-ro-svg .ro-pressure-text,
+.dark .spark-ro-svg .ro-pressure-text,
+html[data-theme="dark"] .spark-ro-svg .ro-membrane-label,
+body[data-theme="dark"] .spark-ro-svg .ro-membrane-label,
+.dark .spark-ro-svg .ro-membrane-label{fill:#d6e4ee}
+@media(max-width:900px){.spark-ro-facts{grid-template-columns:1fr}}
+@media(max-width:620px){
+  .spark-ro-svg .ro-title{font-size:19px}
+  .spark-ro-svg .ro-note,.spark-ro-svg .ro-membrane-label,.spark-ro-svg .ro-rejection-callout text{font-size:16px}
+}
