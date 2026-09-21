@@ -91,13 +91,13 @@ values (
         "Comets are rich in ice and dust.",
         "Comet tails point away from the Sun.",
         "A meteor is a streak of light in the atmosphere.",
-        "A meteorite reaches Earth's surface.",
+        "A meteorite reaches Earth''s surface.",
         "Pluto is a dwarf planet.",
         "A light-year measures distance."
       ],
       "workedExample":{
         "title":"Distinguishing meteor and meteorite",
-        "prompt":"A small rocky body enters Earth's atmosphere, produces a bright streak and part of it lands on the ground. Name the bright streak and the landed fragment.",
+        "prompt":"A small rocky body enters Earth''s atmosphere, produces a bright streak and part of it lands on the ground. Name the bright streak and the landed fragment.",
         "steps":[
           "The atmospheric streak of light is called a meteor.",
           "The surviving fragment that reaches the surface is called a meteorite."
@@ -108,7 +108,7 @@ values (
         {"prompt":"Which galaxy contains the Solar System?","answer":"The Milky Way.","explanation":"It is a spiral galaxy."},
         {"prompt":"What is the nearest star to Earth?","answer":"The Sun.","explanation":"It is about 150 million km from Earth."},
         {"prompt":"What is the difference between a meteor and a meteorite?","answer":"A meteor is the atmospheric streak of light; a meteorite is material that reaches the ground.","explanation":"They describe different stages of the same incoming body."},
-        {"prompt":"Why does a comet tail point away from the Sun?","answer":"Solar radiation pressure and the solar wind push gas and dust away from the Sun.","explanation":"The tail direction is controlled by the Sun, not simply by the comet's motion."},
+        {"prompt":"Why does a comet tail point away from the Sun?","answer":"Solar radiation pressure and the solar wind push gas and dust away from the Sun.","explanation":"The tail direction is controlled by the Sun, not simply by the comet''s motion."},
         {"prompt":"What does a light-year measure?","answer":"Distance.","explanation":"It is the distance light travels in one year."}
       ],
       "summary":"Classify astronomical objects carefully and place the Solar System inside the Milky Way and the Milky Way inside the larger universe."
