@@ -84,13 +84,51 @@ function CalculatorView(){
 
 function TransformerView(){
   return <div className="spark-transformer-view">
-    <svg viewBox="0 0 780 350" role="img" aria-label="Transformer with two coils around an iron core">
-      <path className="tf-coil left" d="M250 65Q210 65 210 95Q210 125 250 125Q210 125 210 155Q210 185 250 185Q210 185 210 215Q210 245 250 245Q210 245 210 275Q210 305 250 305"/>
-      <path className="tf-coil right" d="M530 65Q570 65 570 95Q570 125 530 125Q570 125 570 155Q570 185 530 185Q570 185 570 215Q570 245 530 245Q570 245 570 275Q570 305 530 305"/>
-      <rect className="tf-core" x="335" y="45" width="110" height="280" rx="8"/>
-      <text className="tf-label" x="230" y="335" textAnchor="middle">primary coil</text><text className="tf-label" x="550" y="335" textAnchor="middle">secondary coil</text><text className="tf-label" x="390" y="185" textAnchor="middle" transform="rotate(-90 390 185)">iron core</text>
+    <svg className="spark-transformer-svg" viewBox="0 0 920 470" role="img" aria-label="Transformer showing alternating current in the primary coil producing changing magnetic flux in an iron core and inducing alternating voltage in the secondary coil">
+      <defs>
+        <marker id="tf-flux-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path d="M0 0L9 4.5L0 9Z" className="tf-arrow-head"/>
+        </marker>
+      </defs>
+
+      <g className="tf-core-frame">
+        <rect x="325" y="70" width="270" height="300" rx="18"/>
+        <rect className="tf-core-window" x="395" y="130" width="130" height="180" rx="10"/>
+      </g>
+
+      <g className="tf-primary-coil">
+        {[0,1,2,3,4,5].map(i=><path key={i} d={"M310 "+(115+i*42)+"Q265 "+(115+i*42)+" 265 "+(136+i*42)+"Q265 "+(157+i*42)+" 310 "+(157+i*42)}/>)}
+      </g>
+      <g className="tf-secondary-coil">
+        {[0,1,2,3,4,5].map(i=><path key={i} d={"M610 "+(115+i*42)+"Q655 "+(115+i*42)+" 655 "+(136+i*42)+"Q655 "+(157+i*42)+" 610 "+(157+i*42)}/>)}
+      </g>
+
+      <path className="tf-wire" d="M80 155H250M80 305H250"/>
+      <path className="tf-wire" d="M670 155H840M670 305H840"/>
+
+      <g className="tf-ac-input">
+        <path d="M100 210Q130 165 160 210T220 210"/>
+        <text x="160" y="245" textAnchor="middle">a.c. input</text>
+      </g>
+      <g className="tf-ac-output">
+        <path d="M700 210Q730 165 760 210T820 210"/>
+        <text x="760" y="245" textAnchor="middle">induced a.c. output</text>
+      </g>
+
+      <g className="tf-flux-path">
+        <path d="M365 105H555" markerEnd="url(#tf-flux-arrow)"/>
+        <path d="M560 335H370" markerEnd="url(#tf-flux-arrow)"/>
+      </g>
+      <text className="tf-flux-label" x="460" y="54" textAnchor="middle">changing magnetic flux in iron core</text>
+
+      <text className="tf-label" x="285" y="415" textAnchor="middle">primary coil</text>
+      <text className="tf-label" x="635" y="415" textAnchor="middle">secondary coil</text>
+      <text className="tf-label" x="460" y="220" textAnchor="middle" transform="rotate(-90 460 220)">iron core</text>
+
+      <text className="tf-small" x="160" y="355" textAnchor="middle">alternating current produces a changing magnetic field</text>
+      <text className="tf-small" x="760" y="355" textAnchor="middle">changing flux induces an alternating potential difference</text>
     </svg>
-    <p>A transformer changes the voltage of an alternating-current supply. It does not store electricity and it is not a measuring device.</p>
+    <p>A transformer changes the voltage of an alternating-current supply. Alternating current in the primary coil produces a changing magnetic field in the iron core. The changing magnetic flux links the secondary coil and induces an alternating potential difference there. A transformer does not store electricity and it is not a measuring device.</p>
   </div>;
 }
 
