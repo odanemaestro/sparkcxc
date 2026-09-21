@@ -10,28 +10,40 @@ import "./interactiveLabelDiagram.css";
 function PlantCellTemplate() {
   return (
     <g className="spark-diagram-cell spark-diagram-plant-cell" aria-hidden="true">
-      <rect className="cell-wall" x="250" y="85" width="500" height="430" rx="48" />
-      <rect className="cell-membrane" x="270" y="105" width="460" height="390" rx="42" />
-      <path className="cytoplasm" d="M300 155c55-35 120-28 180-3 78 32 135-18 207 12 29 13 42 61 20 102-25 45-14 90-18 133-5 54-47 79-99 63-67-21-119 19-182 2-60-16-95-67-77-122 16-49-28-87-20-133 4-22 2-38-11-54z" />
-      <ellipse className="vacuole" cx="525" cy="305" rx="150" ry="125" />
-      <circle className="nucleus" cx="405" cy="285" r="55" />
-      <circle className="nucleolus" cx="392" cy="270" r="17" />
+      <rect className="cell-wall" x="245" y="82" width="510" height="438" rx="44" />
+      <rect className="cell-membrane" x="268" y="105" width="464" height="392" rx="34" />
+      <rect className="cytoplasm plant-cytoplasm" x="286" y="123" width="428" height="356" rx="26" />
+      <ellipse className="vacuole" cx="535" cy="305" rx="150" ry="128" />
+      <circle className="nucleus nuclear-envelope" cx="405" cy="285" r="58" />
+      <circle className="nucleolus" cx="389" cy="268" r="17" />
+
       <g className="chloroplasts">
-        <ellipse cx="340" cy="180" rx="32" ry="14" transform="rotate(-20 340 180)" />
-        <ellipse cx="650" cy="190" rx="32" ry="14" transform="rotate(18 650 190)" />
-        <ellipse cx="335" cy="410" rx="32" ry="14" transform="rotate(20 335 410)" />
-        <ellipse cx="665" cy="410" rx="32" ry="14" transform="rotate(-14 665 410)" />
-      </g>
-      <g className="mitochondria">
-        <ellipse cx="655" cy="335" rx="34" ry="18" transform="rotate(-25 655 335)" />
-        <path d="M630 337c12-12 23 11 36-2 8-8 15-8 23-2" />
-        <ellipse cx="360" cy="350" rx="30" ry="16" transform="rotate(28 360 350)" />
-        <path d="M339 349c10-10 20 10 31-1 7-7 13-7 20-2" />
-      </g>
-      <g className="ribosomes">
-        {[0,1,2,3,4,5,6,7].map(i => (
-          <circle key={i} cx={455 + (i%4)*28} cy={155 + Math.floor(i/4)*250} r="5" />
+        {[
+          [338,180,-18],[650,188,16],[338,408,18],[665,405,-14],[620,145,-8],
+        ].map(([x,y,angle],index) => (
+          <g key={index} transform={`translate(${x} ${y}) rotate(${angle})`}>
+            <ellipse cx="0" cy="0" rx="34" ry="17" />
+            <path className="chloroplast-grana" d="M-18-7h12m-12 7h12m-12 7h12M5-7h13M5 0h13M5 7h13" />
+          </g>
         ))}
+      </g>
+
+      <g className="mitochondria">
+        <g transform="translate(655 335) rotate(-24)">
+          <ellipse cx="0" cy="0" rx="36" ry="20" />
+          <path className="cristae" d="M-23 0q8-12 16 0t16 0t16 0" />
+        </g>
+        <g transform="translate(358 352) rotate(25)">
+          <ellipse cx="0" cy="0" rx="33" ry="18" />
+          <path className="cristae" d="M-21 0q7-10 14 0t14 0t14 0" />
+        </g>
+      </g>
+
+      <g className="ribosomes">
+        {[
+          [455,155],[487,165],[520,150],[555,166],
+          [455,438],[492,447],[530,430],[568,445],[605,432],
+        ].map(([x,y],index) => <circle key={index} cx={x} cy={y} r="5" />)}
       </g>
     </g>
   );
@@ -40,21 +52,29 @@ function PlantCellTemplate() {
 function AnimalCellTemplate() {
   return (
     <g className="spark-diagram-cell spark-diagram-animal-cell" aria-hidden="true">
-      <path className="cell-membrane animal-outline" d="M285 305c-2-116 73-205 183-219 100-13 209 38 244 136 38 107-16 223-111 278-95 56-229 29-291-59-29-41-26-88-25-136z" />
-      <path className="cytoplasm animal-cytoplasm" d="M305 304c0-102 67-180 167-194 88-12 186 33 217 119 33 94-15 197-101 246-84 49-202 25-256-52-25-36-28-77-27-119z" />
-      <circle className="nucleus" cx="460" cy="300" r="70" />
-      <circle className="nucleolus" cx="443" cy="281" r="19" />
-      <ellipse className="vacuole small-vacuole" cx="590" cy="245" rx="47" ry="30" />
+      <path className="cell-membrane animal-outline" d="M285 304C282 190 360 100 468 86c104-14 212 38 246 137 37 107-17 222-112 278-96 56-229 31-292-58-31-43-27-92-25-139Z" />
+      <path className="cytoplasm animal-cytoplasm" d="M307 303c0-99 67-176 165-190 90-13 185 32 216 116 33 91-15 192-99 241-83 48-198 25-252-50-26-36-31-76-30-117Z" />
+      <circle className="nucleus nuclear-envelope" cx="460" cy="300" r="72" />
+      <circle className="nucleolus" cx="442" cy="281" r="19" />
+      <ellipse className="vacuole small-vacuole" cx="592" cy="246" rx="45" ry="28" />
+      <ellipse className="vacuole small-vacuole secondary" cx="355" cy="258" rx="31" ry="20" />
+
       <g className="mitochondria">
-        <ellipse cx="610" cy="350" rx="38" ry="20" transform="rotate(-24 610 350)" />
-        <path d="M581 351c13-12 25 11 39-2 9-8 17-8 26-2" />
-        <ellipse cx="375" cy="410" rx="34" ry="18" transform="rotate(27 375 410)" />
-        <path d="M350 409c12-10 23 10 35-1 8-7 15-7 23-2" />
-      </g>
-      <g className="ribosomes">
-        {[0,1,2,3,4,5,6,7,8].map(i => (
-          <circle key={i} cx={345 + (i%3)*116} cy={190 + Math.floor(i/3)*95} r="5" />
+        {[
+          [612,351,-22,38,20],[375,412,26,34,18],[625,205,18,31,17],
+        ].map(([x,y,angle,rx,ry],index) => (
+          <g key={index} transform={`translate(${x} ${y}) rotate(${angle})`}>
+            <ellipse cx="0" cy="0" rx={rx} ry={ry} />
+            <path className="cristae" d="M-22 0q8-11 15 0t15 0t15 0" />
+          </g>
         ))}
+      </g>
+
+      <g className="ribosomes">
+        {[
+          [345,190],[405,175],[530,185],[585,195],[350,345],
+          [405,390],[525,400],[575,315],[655,300],[525,245],
+        ].map(([x,y],index) => <circle key={index} cx={x} cy={y} r="5" />)}
       </g>
     </g>
   );
@@ -63,19 +83,36 @@ function AnimalCellTemplate() {
 function LightMicroscopeTemplate() {
   return (
     <g className="spark-diagram-microscope" aria-hidden="true">
-      <rect className="microscope-base" x="330" y="485" width="360" height="44" rx="20" />
-      <path className="microscope-arm" d="M550 155c95 85 92 222 25 310h-85c65-83 64-191-18-258z" />
-      <rect className="microscope-body" x="405" y="115" width="100" height="105" rx="18" transform="rotate(-18 455 168)" />
-      <rect className="microscope-eyepiece" x="395" y="62" width="92" height="48" rx="10" transform="rotate(-18 441 86)" />
-      <circle className="microscope-nosepiece" cx="492" cy="232" r="32" />
-      <rect className="microscope-objective" x="456" y="245" width="24" height="90" rx="8" transform="rotate(-8 468 290)" />
-      <rect className="microscope-objective" x="493" y="245" width="24" height="78" rx="8" transform="rotate(8 505 284)" />
-      <rect className="microscope-stage" x="315" y="340" width="310" height="34" rx="8" />
-      <line className="microscope-stage-clip" x1="350" y1="332" x2="435" y2="332" />
-      <line className="microscope-stage-clip" x1="505" y1="332" x2="590" y2="332" />
-      <circle className="microscope-light" cx="470" cy="430" r="40" />
-      <circle className="microscope-focus" cx="590" cy="260" r="28" />
-      <circle className="microscope-focus fine" cx="630" cy="285" r="18" />
+      <path className="microscope-base" d="M315 487Q500 452 690 487L715 515Q520 548 300 520Z" />
+      <path className="microscope-arm" d="M570 150Q660 215 635 335Q620 415 570 472H495Q555 395 556 326Q558 235 490 195Z" />
+
+      <g transform="rotate(-18 455 170)">
+        <rect className="microscope-body" x="407" y="112" width="96" height="118" rx="18" />
+        <rect className="microscope-eyepiece" x="395" y="62" width="92" height="50" rx="10" />
+        <rect className="microscope-eyepiece-rim" x="405" y="50" width="75" height="22" rx="8" />
+      </g>
+
+      <circle className="microscope-nosepiece" cx="490" cy="238" r="34" />
+      <path className="microscope-nosepiece-ring" d="M458 240Q490 215 522 240" />
+
+      <g className="microscope-objectives">
+        <rect className="microscope-objective" x="452" y="250" width="24" height="92" rx="8" transform="rotate(-9 464 296)" />
+        <rect className="microscope-objective" x="489" y="250" width="24" height="82" rx="8" transform="rotate(5 501 291)" />
+        <rect className="microscope-objective short" x="523" y="249" width="22" height="66" rx="8" transform="rotate(14 534 282)" />
+      </g>
+
+      <rect className="microscope-stage" x="315" y="344" width="310" height="34" rx="7" />
+      <circle className="microscope-stage-aperture" cx="470" cy="361" r="19" />
+      <line className="microscope-stage-clip" x1="350" y1="334" x2="435" y2="334" />
+      <line className="microscope-stage-clip" x1="505" y1="334" x2="590" y2="334" />
+
+      <path className="microscope-condenser" d="M430 392Q470 370 510 392L498 420H442Z" />
+      <circle className="microscope-light" cx="470" cy="440" r="38" />
+      <path className="microscope-light-beam" d="M450 417L462 382M470 414V382M490 417L478 382" />
+
+      <circle className="microscope-focus" cx="592" cy="266" r="31" />
+      <circle className="microscope-focus fine" cx="632" cy="294" r="19" />
+      <circle className="microscope-focus-centre" cx="592" cy="266" r="10" />
     </g>
   );
 }
