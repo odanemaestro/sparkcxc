@@ -33,10 +33,55 @@ function CompressionView(){
 }
 
 function ChangesView(){
+ const solidParticles=Array.from({length:12},(_,i)=>({x:126+(i%4)*22,y:235+Math.floor(i/4)*22}));
+ const liquidParticles=[{x:397,y:277},{x:420,y:274},{x:444,y:279},{x:468,y:272},{x:409,y:252},{x:435,y:250},{x:458,y:251},{x:420,y:229},{x:448,y:230}];
+ const gasParticles=[{x:696,y:222},{x:778,y:236},{x:727,y:278},{x:806,y:292},{x:688,y:306},{x:799,y:205}];
  return <div className="spark-change-state">
-   <div className="spark-change-row"><article><b>Solid</b></article><span>melting →</span><article><b>Liquid</b></article><span>evaporation / boiling →</span><article><b>Gas</b></article></div>
-   <div className="spark-change-row reverse"><article><b>Solid</b></article><span>← freezing</span><article><b>Liquid</b></article><span>← condensation</span><article><b>Gas</b></article></div>
-   <div className="spark-direct-changes"><article><span>SUBLIMATION</span><p>Solid → gas directly. Some solid air fresheners get smaller this way.</p></article><article><span>DEPOSITION</span><p>Gas → solid directly. It is the reverse of sublimation.</p></article></div>
+   <svg className="spark-state-change-svg" viewBox="0 0 920 520" role="img" aria-label="Changes of state between solid, liquid and gas showing melting, freezing, evaporation or boiling, condensation, sublimation and deposition">
+    <defs>
+      <marker id="sm-heat-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" className="sm-heat-head"/></marker>
+      <marker id="sm-cool-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" className="sm-cool-head"/></marker>
+    </defs>
+    <rect className="sm-change-bg" x="0" y="0" width="920" height="520" rx="22"/>
+    <text className="sm-energy-label heat" x="460" y="38" textAnchor="middle">energy added</text>
+    <text className="sm-energy-label cool" x="460" y="495" textAnchor="middle">energy removed</text>
+
+    <g className="sm-change-node solid">
+      <rect x="82" y="188" width="190" height="156" rx="18"/>
+      <text className="sm-node-title" x="177" y="216" textAnchor="middle">SOLID</text>
+      {solidParticles.map((p,i)=><circle key={i} className="sm-node-particle" cx={p.x} cy={p.y} r="9"/>)}
+      <text className="sm-node-note" x="177" y="329" textAnchor="middle">particles vibrate in fixed positions</text>
+    </g>
+    <g className="sm-change-node liquid">
+      <rect x="365" y="188" width="190" height="156" rx="18"/>
+      <text className="sm-node-title" x="460" y="216" textAnchor="middle">LIQUID</text>
+      {liquidParticles.map((p,i)=><circle key={i} className="sm-node-particle" cx={p.x} cy={p.y} r="9"/>)}
+      <path className="sm-liquid-level" d="M385 292Q420 283 458 292Q496 282 535 292"/>
+      <text className="sm-node-note" x="460" y="329" textAnchor="middle">particles stay close and move past one another</text>
+    </g>
+    <g className="sm-change-node gas">
+      <rect x="648" y="188" width="190" height="156" rx="18"/>
+      <text className="sm-node-title" x="743" y="216" textAnchor="middle">GAS</text>
+      {gasParticles.map((p,i)=><circle key={i} className="sm-node-particle" cx={p.x} cy={p.y} r="9"/>)}
+      <text className="sm-node-note" x="743" y="329" textAnchor="middle">particles are far apart and move freely</text>
+    </g>
+
+    <path className="sm-phase-arrow heat" d="M272 205C310 151 330 151 365 205" markerEnd="url(#sm-heat-arrow)"/>
+    <text className="sm-phase-label heat" x="319" y="142" textAnchor="middle">melting</text>
+    <path className="sm-phase-arrow heat" d="M555 205C593 151 613 151 648 205" markerEnd="url(#sm-heat-arrow)"/>
+    <text className="sm-phase-label heat" x="601" y="131" textAnchor="middle">evaporation / boiling</text>
+
+    <path className="sm-phase-arrow cool" d="M365 327C330 382 309 382 272 327" markerEnd="url(#sm-cool-arrow)"/>
+    <text className="sm-phase-label cool" x="319" y="404" textAnchor="middle">freezing</text>
+    <path className="sm-phase-arrow cool" d="M648 327C613 382 592 382 555 327" markerEnd="url(#sm-cool-arrow)"/>
+    <text className="sm-phase-label cool" x="601" y="404" textAnchor="middle">condensation</text>
+
+    <path className="sm-sublimation-path" d="M195 188C262 63 658 63 725 188" markerEnd="url(#sm-heat-arrow)"/>
+    <text className="sm-phase-label heat" x="460" y="79" textAnchor="middle">sublimation, solid → gas</text>
+    <path className="sm-deposition-path" d="M725 344C658 462 262 462 195 344" markerEnd="url(#sm-cool-arrow)"/>
+    <text className="sm-phase-label cool" x="460" y="459" textAnchor="middle">deposition, gas → solid</text>
+   </svg>
+   <p>Heating supplies energy that increases particle motion and helps overcome attractive forces. Cooling removes energy, so particles move less and can come closer together. Sublimation and deposition bypass the liquid state.</p>
  </div>;
 }
 
