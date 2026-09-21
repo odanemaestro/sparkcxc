@@ -58,6 +58,21 @@ describe("Integrated Science Objective 2.4.9 acceptance audit", () => {
     expect(explorer).toContain("Firebreak");
   });
 
+  test("renders a firebreak as spatial fuel interruption", () => {
+    for (const term of [
+      "spark-firebreak-svg",
+      "fire spreads while continuous vegetation provides fuel",
+      "fuel path interrupted",
+      "wide strip cleared of vegetation",
+      "less combustible material is available for the fire to cross",
+      "unburned vegetation beyond the cleared gap"
+    ]) expect(explorer).toContain(term);
+    expect(css).toContain(".spark-firebreak-svg");
+    expect(css).toContain(".fb-cleared-strip");
+    expect(css).toContain(".fb-spread-arrow");
+    expect(css).toContain(".fb-stop-bar");
+  });
+
   test("corrects the older damp-cloth item without losing the exam principle", () => {
     expect(migration).toContain("Some older bank items describe a damp cloth");
     expect(migration).toContain("examination principle is oxygen removal");
