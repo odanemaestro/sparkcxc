@@ -42,12 +42,70 @@ function SanitationView(){
   const [system,setSystem]=useState("septic");
   return <div className="spark-hygiene-sanitation">
     <div className="spark-hygiene-toggle"><button type="button" className={system==="septic"?"active":""} onClick={()=>setSystem("septic")}>Septic system</button><button type="button" className={system==="plant"?"active":""} onClick={()=>setSystem("plant")}>Sewage treatment plant</button></div>
-    {system==="septic"?<div className="spark-septic-model">
-      <div className="spark-house">home</div><div className="spark-pipe"></div><div className="spark-septic-tank">septic tank<br/><small>settling + microbial breakdown</small></div><div className="spark-drain-field">soil treatment area</div>
-    </div>:<div className="spark-treatment-flow">
-      {["screening","settling","biological treatment","disinfection / final treatment","safer effluent"].map((x,i)=><React.Fragment key={x}><article>{x}</article>{i<4&&<span>→</span>}</React.Fragment>)}
-    </div>}
-    <p>{system==="septic"?"Septic systems treat household sewage where there is no sewer connection. They need suitable siting, maintenance and separation from wells to protect groundwater.":"Treatment plants remove solids, reduce organic matter and pathogens, and may reduce nutrients before effluent is released."}</p>
+    {system==="septic"?<svg className="spark-sanitation-diagram" viewBox="0 0 940 470" role="img" aria-label="Septic system cross-section showing house sewer, septic tank, scum, wastewater, sludge, outlet and drain field">
+      <defs><marker id="ch-flow-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" className="ch-arrow-head"/></marker></defs>
+      <rect className="ch-sky" x="0" y="0" width="940" height="215"/>
+      <path className="ch-ground" d="M0 215H940V470H0Z"/>
+      <path className="ch-house-body" d="M62 125H205V220H62Z"/><path className="ch-house-roof" d="M45 125L134 61L222 125Z"/>
+      <path className="ch-sewer-pipe" d="M205 196H332" markerEnd="url(#ch-flow-arrow)"/>
+      <text className="ch-label" x="135" y="174" textAnchor="middle">house</text>
+      <text className="ch-small" x="269" y="181" textAnchor="middle">household sewage</text>
+
+      <rect className="ch-tank-shell" x="350" y="190" width="300" height="180" rx="22"/>
+      <rect className="ch-tank-liquid" x="365" y="242" width="270" height="96"/>
+      <path className="ch-scum" d="M365 242Q430 226 500 243Q570 225 635 242V265Q570 252 500 266Q430 251 365 265Z"/>
+      <path className="ch-sludge" d="M365 318Q435 300 500 320Q565 301 635 318V338H365Z"/>
+      <path className="ch-baffle" d="M425 203V284M575 203V284"/>
+      <text className="ch-small" x="500" y="222" textAnchor="middle">septic tank</text>
+      <text className="ch-small" x="500" y="257" textAnchor="middle">scum</text>
+      <text className="ch-small" x="500" y="298" textAnchor="middle">wastewater</text>
+      <text className="ch-small" x="500" y="334" textAnchor="middle">sludge</text>
+
+      <path className="ch-outlet-pipe" d="M650 275H735" markerEnd="url(#ch-flow-arrow)"/>
+      <path className="ch-drain-main" d="M735 275V330H862"/>
+      <path className="ch-drain-branch" d="M760 330V380M810 330V380M860 330V380"/>
+      <circle className="ch-perforation" cx="760" cy="358" r="4"/><circle className="ch-perforation" cx="810" cy="358" r="4"/><circle className="ch-perforation" cx="860" cy="358" r="4"/>
+      <path className="ch-soil-flow" d="M760 384V425M810 384V425M860 384V425"/>
+      <text className="ch-label" x="809" y="256" textAnchor="middle">drain field</text>
+      <text className="ch-small" x="809" y="451" textAnchor="middle">effluent filters through suitable soil</text>
+    </svg>:<svg className="spark-sanitation-diagram" viewBox="0 0 980 470" role="img" aria-label="Sewage treatment plant process showing screening, primary settling, aeration, secondary settling, disinfection and treated effluent">
+      <defs><marker id="ch-plant-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" className="ch-arrow-head"/></marker></defs>
+      <line className="ch-process-pipe" x1="50" y1="230" x2="925" y2="230"/>
+      <line className="ch-process-arrow" x1="55" y1="230" x2="118" y2="230" markerEnd="url(#ch-plant-arrow)"/>
+
+      <rect className="ch-screen-channel" x="125" y="160" width="105" height="140" rx="10"/>
+      <line className="ch-screen-bar" x1="150" y1="175" x2="150" y2="285"/><line className="ch-screen-bar" x1="173" y1="175" x2="173" y2="285"/><line className="ch-screen-bar" x1="196" y1="175" x2="196" y2="285"/>
+      <text className="ch-label" x="178" y="139" textAnchor="middle">1 Screening</text>
+      <text className="ch-small" x="178" y="327" textAnchor="middle">large debris removed</text>
+
+      <path className="ch-process-arrow" d="M230 230H285" markerEnd="url(#ch-plant-arrow)"/>
+      <ellipse className="ch-clarifier" cx="345" cy="230" rx="60" ry="84"/>
+      <path className="ch-settled-solids" d="M297 254Q345 292 393 254Q385 309 345 314Q305 309 297 254Z"/>
+      <text className="ch-label" x="345" y="123" textAnchor="middle">2 Primary settling</text>
+      <text className="ch-small" x="345" y="345" textAnchor="middle">solids settle as sludge</text>
+
+      <path className="ch-process-arrow" d="M405 230H465" markerEnd="url(#ch-plant-arrow)"/>
+      <rect className="ch-aeration" x="470" y="155" width="135" height="150" rx="12"/>
+      {Array.from({length:14},(_,i)=><circle key={i} className="ch-air-bubble" cx={490+(i%5)*23} cy={185+Math.floor(i/5)*37} r={4+(i%2)}/>)}
+      <text className="ch-label" x="538" y="129" textAnchor="middle">3 Aeration</text>
+      <text className="ch-small" x="538" y="333" textAnchor="middle">microbes break down organic matter</text>
+
+      <path className="ch-process-arrow" d="M605 230H652" markerEnd="url(#ch-plant-arrow)"/>
+      <ellipse className="ch-clarifier secondary" cx="710" cy="230" rx="58" ry="82"/>
+      <path className="ch-settled-solids" d="M665 255Q710 286 755 255Q748 306 710 311Q672 306 665 255Z"/>
+      <text className="ch-label" x="710" y="123" textAnchor="middle">4 Secondary settling</text>
+      <text className="ch-small" x="710" y="342" textAnchor="middle">biological solids settle</text>
+
+      <path className="ch-process-arrow" d="M768 230H814" markerEnd="url(#ch-plant-arrow)"/>
+      <rect className="ch-disinfection" x="820" y="171" width="95" height="118" rx="12"/>
+      <path className="ch-disinfection-ray" d="M840 201L895 259M895 201L840 259"/>
+      <text className="ch-label" x="868" y="145" textAnchor="middle">5 Final treatment</text>
+      <text className="ch-small" x="868" y="318" textAnchor="middle">pathogens reduced</text>
+
+      <path className="ch-process-arrow" d="M915 230H955" markerEnd="url(#ch-plant-arrow)"/>
+      <text className="ch-small" x="908" y="389" textAnchor="end">treated effluent is released only after required treatment and checks</text>
+    </svg>}
+    <p>{system==="septic"?"Septic systems treat household sewage where there is no sewer connection. Solids settle, microorganisms break down some waste, and clarified effluent enters a suitable drain field. Good siting, maintenance and separation from wells protect groundwater.":"Treatment plants screen debris, settle solids, use microorganisms to reduce organic matter, settle biological solids and apply final treatment before effluent is released. Some plants also remove nutrients depending on design and discharge requirements."}</p>
   </div>;
 }
 
