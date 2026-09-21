@@ -83,6 +83,23 @@ describe("Integrated Science Objective 2.4.2 acceptance audit", () => {
     expect(explorer).toContain("secondary coil");
   });
 
+  test("renders transformer induction as a coil core flux SVG", () => {
+    for (const term of [
+      "spark-transformer-svg",
+      "a.c. input",
+      "changing magnetic flux in iron core",
+      "primary coil",
+      "secondary coil",
+      "induced a.c. output",
+      "alternating current produces a changing magnetic field",
+      "changing flux induces an alternating potential difference"
+    ]) expect(explorer).toContain(term);
+    expect(css).toContain(".spark-transformer-svg");
+    expect(css).toContain(".tf-primary-coil");
+    expect(css).toContain(".tf-secondary-coil");
+    expect(css).toContain(".tf-flux-path");
+  });
+
   test("wires the explorer into the shared lesson shell", () => {
     expect(migration).toContain('"type":"electric-circuit-flow"');
     expect(view).toContain("ElectricCircuitFlowExplorer");
