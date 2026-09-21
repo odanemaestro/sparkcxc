@@ -463,3 +463,56 @@ body[data-theme="dark"] .spark-label-diagram-actions button:disabled,
 .spark-csec-reference .heart-aorta,
 .spark-csec-reference .heart-pulmonary-artery,
 .spark-csec-reference .heart-pulmonary-vein{stroke-width:13}
+
+
+/* SPARK_REFERENCE_REFINED_ANATOMY_V2 */
+.spark-reference-refined *{vector-effect:non-scaling-stroke}
+
+/* Cells */
+.spark-diagram-cell .vacuole-highlight{fill:none;stroke:#fff;stroke-opacity:.75;stroke-width:5;stroke-linecap:round}
+.spark-diagram-cell .nuclear-chromatin{fill:none;stroke:#7b68a4;stroke-width:3;stroke-linecap:round}
+.spark-diagram-cell .rough-er path{fill:none;stroke:#8c78b2;stroke-width:8;stroke-linecap:round}
+.spark-diagram-cell .golgi path{fill:none;stroke:#d56c91;stroke-width:7;stroke-linecap:round}
+
+/* Female reproductive system */
+.spark-diagram-female-reproductive .female-myometrium{fill:#d98f91;stroke:#9d575b;stroke-width:4}
+.spark-diagram-female-reproductive .female-cervical-canal{fill:none;stroke:#8d4f55;stroke-width:6;stroke-linecap:round}
+.spark-diagram-female-reproductive .female-vaginal-rugae path{fill:none;stroke:#a55e63;stroke-width:4;stroke-linecap:round}
+.spark-diagram-female-reproductive .female-follicle{fill:#f2c36e;stroke:#aa7930;stroke-width:2}
+
+/* Male reproductive system */
+.spark-diagram-male-reproductive .male-bladder-neck{fill:none;stroke:#7d6771;stroke-width:5;stroke-linecap:round}
+.spark-diagram-male-reproductive .male-sperm-duct.secondary,
+.spark-diagram-male-reproductive .male-epididymis.secondary{opacity:.78}
+.spark-diagram-male-reproductive .male-seminal-vesicle.secondary{opacity:.82}
+.spark-diagram-male-reproductive .male-cowper.secondary{opacity:.82}
+.spark-diagram-male-reproductive .male-testis.secondary{opacity:.9}
+.spark-diagram-male-reproductive .male-erectile-tissue{fill:#c77e76;fill-opacity:.55;stroke:#96544f;stroke-width:3}
+
+/* Heart */
+.spark-diagram-heart .heart-left-wall-inner{fill:none;stroke:#7f4653;stroke-width:10;stroke-linecap:round}
+.spark-diagram-heart .heart-chordae path{fill:none;stroke:#f5e9dd;stroke-width:3.5;stroke-linecap:round}
+.spark-diagram-heart .heart-aortic-branch{fill:none;stroke:#bd6262;stroke-width:12;stroke-linecap:round}
+.spark-diagram-heart .heart-pulmonary-artery.branch{stroke-width:12}
+.spark-diagram-heart .heart-semilunar{fill:none;stroke:#f8f2e6;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+
+/* Kidney */
+.spark-diagram-kidney .kidney-columns path{fill:none;stroke:#c37a82;stroke-width:7;stroke-linecap:round}
+.spark-diagram-kidney .kidney-vessel{fill:none;stroke-width:7;stroke-linecap:round}
+.spark-diagram-kidney .kidney-vessel.artery{stroke:#b74a4a}
+.spark-diagram-kidney .kidney-vessel.vein{stroke:#4d7fa7}
+
+/* Eye */
+.spark-diagram-eye .eye-retinal-vessels path{fill:none;stroke:#a45f62;stroke-width:3;stroke-linecap:round}
+.spark-diagram-eye .eye-optic-disc{fill:#e7c06f;stroke:#a47532;stroke-width:3}
+.spark-diagram-eye .eye-vitreous{fill:#f4c3c8;fill-opacity:.42;stroke:#d79ba4;stroke-width:2}
+.spark-diagram-eye .eye-aqueous{fill:#d9f1f7;fill-opacity:.82;stroke:#82b7c9;stroke-width:3}
+
+/* Ear */
+.spark-diagram-ear .ear-bone{fill:#ead7ba;fill-opacity:.7;stroke:#c39e73;stroke-width:4}
+.spark-diagram-ear .ear-canal-lumen{fill:none;stroke:#6f4c3f;stroke-width:7;stroke-linecap:round}
+.spark-diagram-ear .ear-oval-window{fill:#d7c9af;stroke:#8f775b;stroke-width:3}
+
+@media(max-width:560px){
+  .spark-reference-refined .repro-orientation{font-size:19px}
+}
