@@ -8,6 +8,53 @@ const SURFACE_FEATURES=[
   ["Steep concentration gradient","Ventilation, blood flow or continuous use and production of gases maintains diffusion gradients."],
 ];
 
+function RespiratorySystemView(){
+  return <div className="spark-respiratory-system">
+    <svg className="spark-respiratory-system-svg" viewBox="0 0 900 760" role="img" aria-label="Human respiratory system showing nasal cavity, pharynx, larynx, trachea, bronchi, bronchioles, lungs, alveoli and diaphragm">
+      <path className="gx-torso" d="M315 105Q450 58 585 105Q665 195 650 365Q635 520 570 650H330Q265 520 250 365Q235 195 315 105Z"/>
+      <circle className="gx-head" cx="450" cy="78" r="58"/>
+      <path className="gx-nasal" d="M418 72Q450 45 482 72Q470 94 450 101Q430 94 418 72Z"/>
+      <path className="gx-pharynx" d="M450 102Q470 126 454 153"/>
+      <path className="gx-larynx" d="M438 148Q450 138 462 148L460 170H440Z"/>
+      <path className="gx-trachea-main" d="M450 168V320"/>
+      {[190,210,230,250,270,290].map(y=><line key={y} className="gx-tracheal-ring" x1="432" y1={y} x2="468" y2={y}/>)}
+      <path className="gx-bronchus main-left" d="M450 315Q405 330 365 365"/>
+      <path className="gx-bronchus main-right" d="M450 315Q495 330 535 365"/>
+      <path className="gx-lung left" d="M336 205Q276 235 286 395Q293 536 382 590Q420 540 415 365Q410 245 336 205Z"/>
+      <path className="gx-lung right" d="M564 205Q624 235 614 395Q607 536 518 590Q480 540 485 365Q490 245 564 205Z"/>
+      <path className="gx-bronchiole-tree" d="M365 365Q333 397 320 438M365 365Q345 410 355 466M365 365Q385 405 390 455M535 365Q567 397 580 438M535 365Q555 410 545 466M535 365Q515 405 510 455"/>
+      <g className="gx-alveoli-cluster">
+        {[ [312,452],[350,480],[392,468],[588,452],[550,480],[508,468] ].map(([x,y],i)=><g key={i}><circle cx={x-12} cy={y} r="11"/><circle cx={x+10} cy={y-8} r="10"/><circle cx={x+14} cy={y+12} r="9"/><circle cx={x-8} cy={y+14} r="10"/></g>)}
+      </g>
+      <path className="gx-diaphragm" d="M292 596Q450 675 608 596"/>
+      <path className="gx-air-arrow inhale" d="M450 8V48"/>
+      <path className="gx-air-arrow exhale" d="M500 48V8"/>
+      <text className="gx-label" x="500" y="32">air movement</text>
+      <g className="gx-resp-labels left">
+        <text x="125" y="82">nasal cavity</text><path d="M225 78L415 76"/>
+        <text x="140" y="133">pharynx</text><path d="M210 130L440 120"/>
+        <text x="145" y="174">larynx</text><path d="M205 170L435 158"/>
+        <text x="145" y="238">trachea</text><path d="M205 234L430 232"/>
+        <text x="125" y="365">left bronchus</text><path d="M225 360L356 354"/>
+        <text x="115" y="470">bronchioles</text><path d="M215 465L320 430"/>
+      </g>
+      <g className="gx-resp-labels right">
+        <text x="690" y="238">right lung</text><path d="M560 250L680 242"/>
+        <text x="690" y="365">right bronchus</text><path d="M545 355L680 360"/>
+        <text x="690" y="470">alveoli</text><path d="M585 460L680 466"/>
+        <text x="690" y="612">diaphragm</text><path d="M600 596L680 605"/>
+      </g>
+      <text className="gx-resp-caption" x="450" y="720" textAnchor="middle">air pathway: nasal cavity → pharynx → larynx → trachea → bronchi → bronchioles → alveoli</text>
+    </svg>
+    <div className="spark-respiratory-system-notes">
+      <article><b>Conducting pathway</b><p>The nasal cavity, pharynx, larynx, trachea and bronchi conduct air towards the lungs.</p></article>
+      <article><b>Branching airways</b><p>Bronchi divide repeatedly into smaller bronchioles, spreading air throughout each lung.</p></article>
+      <article><b>Exchange region</b><p>Bronchioles end in clusters of alveoli, where oxygen and carbon dioxide diffuse between air and blood.</p></article>
+      <article><b>Ventilation</b><p>The diaphragm helps change thoracic volume during breathing, moving air into and out of the lungs.</p></article>
+    </div>
+  </div>;
+}
+
 function AlveolusView(){
   const redCells=[
     [180,118,-18],[235,95,12],[300,90,28],[370,98,-8],[444,124,16],[510,165,35],
@@ -136,6 +183,7 @@ export default function GaseousExchangeExplorer(){
   const [view,setView]=useState("features");
   const summary=useMemo(()=>({
     features:"Efficient exchange surfaces maximise area, minimise diffusion distance, remain moist and maintain concentration gradients.",
+    respiratory:"The respiratory system conducts air through branching airways to alveoli, where gas exchange occurs.",
     alveolus:"Oxygen diffuses from alveolar air into blood, while carbon dioxide diffuses in the opposite direction.",
     fish:"Fish gills depend on water to keep thin filaments spread out for a large exchange area.",
     plant:"Stomata regulate gas movement between leaf air spaces and the atmosphere.",
@@ -144,7 +192,7 @@ export default function GaseousExchangeExplorer(){
 
   return <section className="spark-gaseous-exchange">
     <header><span>GASEOUS EXCHANGE</span><h3>Compare the surfaces organisms use to exchange oxygen and carbon dioxide</h3><p>Gaseous exchange supplies gases needed for cellular processes and removes gases produced by metabolism. Diffusion drives movement across the exchange surface.</p></header>
-    <div className="spark-gas-tabs">{[["features","Surface features"],["alveolus","Alveolus"],["fish","Fish gills"],["plant","Stoma"],["insect","Insect tracheae"]].map(([key,label])=><button type="button" key={key} className={view===key?"active":""} onClick={()=>setView(key)}>{label}</button>)}</div>
+    <div className="spark-gas-tabs">{[["features","Surface features"],["respiratory","Respiratory system"],["alveolus","Alveolus"],["fish","Fish gills"],["plant","Stoma"],["insect","Insect tracheae"]].map(([key,label])=><button type="button" key={key} className={view===key?"active":""} onClick={()=>setView(key)}>{label}</button>)}</div>
     <div className="spark-gas-stage">
       {view==="features"&&<div className="spark-gas-features">{SURFACE_FEATURES.map(([name,text],i)=><article key={name}><span>{i+1}</span><div><b>{name}</b><p>{text}</p></div></article>)}</div>}
       {view==="alveolus"&&<AlveolusView/>}
