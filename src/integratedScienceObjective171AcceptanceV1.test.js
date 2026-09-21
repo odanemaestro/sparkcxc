@@ -68,6 +68,24 @@ describe("Integrated Science Objective 1.7.1 acceptance audit", () => {
     expect(explorer).toContain("decomposers recycle minerals");
   });
 
+  test("adds a labelled fungal-cell SVG that distinguishes fungi from bacteria", () => {
+    for (const term of [
+      "Fungal cell",
+      "spark-fungal-cell-svg",
+      "cell wall",
+      "cell membrane",
+      "cytoplasm",
+      "nucleus",
+      "large vacuole",
+      "mitochondrion",
+      "developing bud",
+      "eukaryotic fungal cell"
+    ]) expect(explorer).toContain(term);
+    expect(css).toContain(".spark-fungal-cell-svg");
+    expect(css).toContain(".fc-wall");
+    expect(css).toContain(".fc-nucleus");
+  });
+
   test("visual remains responsive and dark-mode ready", () => {
     expect(css).toContain("@media(max-width:800px)");
     expect(css).toContain("@media(max-width:620px)");
