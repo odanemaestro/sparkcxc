@@ -9,6 +9,8 @@ const respiration=read("RespirationImportanceExplorer.jsx");
 const respirationCss=read("respirationImportanceExplorer.css");
 const anaerobic=read("AnaerobicRespirationExplorer.jsx");
 const anaerobicCss=read("anaerobicRespirationExplorer.css");
+const nutrition=read("FoodEnergyNutritionExplorer.jsx");
+const nutritionCss=read("foodEnergyNutritionExplorer.css");
 
 describe("Integrated Science scientific apparatus SVG acceptance V1",()=>{
   test("leaf starch test renders the required laboratory sequence",()=>{
@@ -51,6 +53,29 @@ describe("Integrated Science scientific apparatus SVG acceptance V1",()=>{
     for(const term of [".ya-water-bath",".ya-flask",".ya-delivery",".ya-limewater",".ya-thermometer"]) expect(anaerobicCss).toContain(term);
   });
 
+  test("food tests render reagent, heating and result geometry",()=>{
+    for(const term of [
+      "spark-food-test-svg",
+      "Iodine test for starch",
+      "blue-black, starch present",
+      "Benedict's test for reducing sugar",
+      "hot-water bath",
+      "green → yellow → orange → brick-red",
+      "Biuret test for protein",
+      "lilac / purple, protein present",
+      "Brown paper grease-spot test",
+      "persistent translucent spot, fat present"
+    ]) expect(nutrition).toContain(term);
+    for(const term of [
+      ".ft-tile",
+      ".ft-benedict.blue",
+      ".ft-precipitate",
+      ".ft-biuret.purple",
+      ".ft-paper",
+      ".ft-grease-spot"
+    ]) expect(nutritionCss).toContain(term);
+  });
+
   test("apparatus diagrams retain responsive and dark theme coverage",()=>{
     expect(photoCss).toContain("@media(max-width:700px)");
     expect(photoCss).toContain('html[data-theme="dark"] .spark-photo-starch-svg');
@@ -58,5 +83,7 @@ describe("Integrated Science scientific apparatus SVG acceptance V1",()=>{
     expect(respirationCss).toContain('html[data-theme="dark"] .spark-respiration-evidence-svg');
     expect(anaerobicCss).toContain("@media(max-width:620px)");
     expect(anaerobicCss).toContain('html[data-theme="dark"] .spark-yeast-apparatus-svg');
+    expect(nutritionCss).toContain("@media(max-width:620px)");
+    expect(nutritionCss).toContain('html[data-theme="dark"] .spark-food-test-svg');
   });
 });
