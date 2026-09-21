@@ -14,3 +14,14 @@ html[data-theme="dark"] .spark-photo-limits .ph-label,body[data-theme="dark"] .s
 @media(max-width:850px){.spark-photo-evidence{grid-template-columns:1fr}}
 @media(max-width:620px){.spark-photosynthesis-energy{padding:14px}.spark-photo-tabs{display:grid;grid-template-columns:1fr 1fr}.spark-photo-equation-row{display:grid;grid-template-columns:1fr}.spark-photo-equation-row b{transform:rotate(90deg)}}
 @media(max-width:390px){.spark-photo-tabs{grid-template-columns:1fr}}
+
+.spark-photo-starch-svg{display:block;width:100%;height:auto;min-height:300px;margin-bottom:12px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.pst-step{fill:var(--spark-ink,#102a43);font-size:16px;font-weight:900}.pst-note,.pst-liquid-label,.pst-result-label{fill:var(--spark-text-muted,#627d98);font-size:12px;font-weight:800}.pst-note.warning{fill:#9b4f45}.pst-result-label{fill:#32457d;font-size:13px;font-weight:900}
+.pst-beaker{fill:#f8fcff;stroke:#6e8797;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}.pst-rim,.pst-test-rim{stroke:#6e8797;stroke-width:6;stroke-linecap:round}.pst-water{fill:#acd9e9;opacity:.78}.pst-water.bath{fill:#9fd2e5}.pst-test-tube{fill:#f9fdff;stroke:#7a8f9d;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.pst-ethanol{fill:#e8e1b5;opacity:.8}
+.pst-leaf{fill:#76a94f;stroke:#4f7a32;stroke-width:3}.pst-leaf.small{stroke-width:2}.pst-leaf.result{fill:#9aba61}.pst-leaf-vein{fill:none;stroke:#466f2f;stroke-width:3}.pst-blue-black{fill:#26365e;opacity:.9}
+.pst-flame{fill:#e3884e;stroke:#a65732;stroke-width:2}.pst-stand{stroke:#5e6970;stroke-width:6;stroke-linecap:round}.pst-dropper{fill:#d5dde2;stroke:#7a8a95;stroke-width:3}.pst-iodine-drop{fill:#8a5b26}.pst-arrow{stroke:#0d9488;stroke-width:5;stroke-linecap:round}.pst-arrow-head{fill:#0d9488}
+html[data-theme="dark"] .spark-photo-starch-svg,body[data-theme="dark"] .spark-photo-starch-svg,.dark .spark-photo-starch-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .pst-step,body[data-theme="dark"] .pst-step,.dark .pst-step{fill:#e7f0f7}
+html[data-theme="dark"] .pst-note,body[data-theme="dark"] .pst-note,.dark .pst-note,html[data-theme="dark"] .pst-liquid-label,body[data-theme="dark"] .pst-liquid-label,.dark .pst-liquid-label{fill:#b8c9d6}
+@media(max-width:700px){.spark-photo-starch-svg{min-height:260px}.pst-step{font-size:19px}.pst-note,.pst-liquid-label,.pst-result-label{font-size:16px}}
+@media(max-width:460px){.spark-photo-starch-svg{min-height:220px}}
