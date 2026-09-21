@@ -62,11 +62,57 @@ function ISSView(){
 
 function SuitView(){
   return <div className="spark-space-suit">
-    <div className="spark-suit-figure">
-      <div className="spark-suit-helmet">helmet</div>
-      <div className="spark-suit-body">pressurised suit</div>
-      <div className="spark-suit-pack">life support</div>
-    </div>
+    <svg className="spark-space-suit-svg" viewBox="0 0 620 640" role="img" aria-label="Extravehicular space suit showing pressure garment, helmet, oxygen and carbon dioxide life-support flow, thermal-control layers, gloves, boots and portable life-support backpack">
+      <defs>
+        <marker id="suit-flow-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path d="M0 0L9 4.5L0 9Z" className="ssu-arrow-head"/>
+        </marker>
+      </defs>
+
+      <g className="ssu-backpack">
+        <rect x="355" y="175" width="110" height="220" rx="20"/>
+        <rect x="375" y="205" width="70" height="65" rx="10"/>
+        <text className="ssu-pack-text" x="410" y="230" textAnchor="middle">PLSS</text>
+        <text className="ssu-small" x="410" y="252" textAnchor="middle">oxygen + cooling</text>
+      </g>
+
+      <g className="ssu-suit-body">
+        <circle className="ssu-helmet-shell" cx="280" cy="120" r="78"/>
+        <path className="ssu-visor" d="M225 105Q280 65 335 105Q330 155 280 168Q230 155 225 105Z"/>
+        <path className="ssu-torso" d="M205 190Q280 160 355 190L378 355Q330 400 280 400Q230 400 182 355Z"/>
+        <path className="ssu-left-arm" d="M205 205Q150 225 105 310L145 345Q185 285 225 270Z"/>
+        <path className="ssu-right-arm" d="M355 205Q405 225 455 305L418 342Q380 285 338 270Z"/>
+        <path className="ssu-left-leg" d="M225 385Q215 475 190 560H250L280 405Z"/>
+        <path className="ssu-right-leg" d="M335 385Q345 475 370 560H310L280 405Z"/>
+        <path className="ssu-glove" d="M104 302Q75 302 65 335Q82 365 120 350L145 335Z"/>
+        <path className="ssu-glove" d="M455 297Q486 300 496 332Q477 365 438 348L418 332Z"/>
+        <path className="ssu-boot" d="M183 548Q153 566 165 585H255L250 548Z"/>
+        <path className="ssu-boot" d="M377 548Q407 566 395 585H305L310 548Z"/>
+      </g>
+
+      <g className="ssu-layers">
+        <path d="M210 205Q280 180 350 205"/>
+        <path d="M205 225Q280 200 355 225"/>
+        <text className="ssu-small" x="280" y="218" textAnchor="middle">pressure garment + thermal / micrometeoroid layers</text>
+      </g>
+
+      <g className="ssu-life-support-flow">
+        <path className="oxygen" d="M410 275Q385 250 355 245Q325 238 314 205" markerEnd="url(#suit-flow-arrow)"/>
+        <text className="ssu-flow-label" x="425" y="290">O₂ supplied</text>
+        <path className="co2" d="M315 230Q340 270 372 290Q395 305 407 330" markerEnd="url(#suit-flow-arrow)"/>
+        <text className="ssu-flow-label" x="420" y="350">CO₂ removed</text>
+      </g>
+
+      <g className="ssu-callouts">
+        <path d="M210 82L115 45"/><text x="20" y="42">helmet + visor</text>
+        <path d="M185 250L65 205"/><text x="15" y="198">pressurised garment</text>
+        <path d="M110 332L38 355"/><text x="15" y="378">glove maintains pressure</text>
+        <path d="M410 195L515 135"/><text x="470" y="125">portable life-support</text>
+        <path d="M365 540L505 560"/><text x="455" y="590">boots + protective layers</text>
+      </g>
+
+      <text className="ssu-caption" x="310" y="625" textAnchor="middle">A space suit is a wearable life-support system for work in near-vacuum conditions.</text>
+    </svg>
     <div className="spark-suit-cards">
       <article><b>Pressure</b><p>Space is almost a vacuum. The suit maintains pressure needed for normal body function and breathing.</p></article>
       <article><b>Oxygen</b><p>Life-support systems provide breathable oxygen and remove carbon dioxide.</p></article>
