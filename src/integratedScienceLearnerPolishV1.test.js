@@ -95,5 +95,14 @@ describe("Integrated Science learner polish V1", () => {
     expect(transportNeed).toContain("tn-undiffused-core");
     expect(transportNeed).toContain("Same diffusion time for all three cubes");
     expect(transportNeed).toContain("Diffusion time");
+
+    expect(diagram).toContain("eye-vitreous");
+    expect(diagram).toContain("eye-aqueous");
+    expect(diagram).toContain("ear-vestibule");
+    expect(diagram).toContain('className="malleus"');
+    expect(diagram).toContain("heart-semilunar");
+    expect(diagram).toContain("heart-aortic-branch");
+    expect(diagram).toContain("kidney-calyces");
+    expect(diagram).toContain("kidney-hilum");
   });
 });
