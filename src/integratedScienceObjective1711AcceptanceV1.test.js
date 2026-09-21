@@ -53,6 +53,21 @@ describe("Integrated Science Objective 1.7.11 acceptance audit", () => {
     expect(migration).toContain("calcium propionate");
   });
 
+  test("renders mould hyphae, mycelium, spores and germination as a scientific SVG", () => {
+    for (const term of [
+      "Mould structure",
+      "spark-mould-structure-svg",
+      "hypha, one thread-like filament",
+      "mycelium, mass of hyphae",
+      "germinating spore",
+      "spores spread through the air",
+      "Suitable moisture and temperature allow a spore to germinate"
+    ]) expect(explorer).toContain(term);
+    expect(css).toContain(".spark-mould-structure-svg");
+    expect(css).toContain(".ms-hyphae");
+    expect(css).toContain(".ms-mycelium-highlight");
+  });
+
   test("uses the food microorganism explorer in the shared lesson shell", () => {
     expect(migration).toContain('"type":"food-microorganisms"');
     expect(view).toContain("FoodMicroorganismExplorer");
