@@ -227,28 +227,33 @@ function PregnancyUterusTemplate() {
 function HumanHeartTemplate() {
   return (
     <g className="spark-diagram-heart" aria-hidden="true">
-      <path className="heart-outline" d="M330 165Q405 115 500 165Q595 115 670 165Q730 225 690 355Q650 475 500 545Q350 475 310 355Q270 225 330 165Z" />
+      <path className="heart-outline" d="M335 165Q385 118 455 142Q500 105 555 135Q625 105 684 168Q735 228 702 345Q675 452 575 515Q530 545 500 565Q465 540 420 515Q330 465 300 365Q262 240 335 165Z" />
 
-      <path className="heart-right-atrium" d="M338 190Q410 155 470 205L468 300Q405 330 340 292Q315 240 338 190Z" />
-      <path className="heart-right-ventricle" d="M340 315Q405 280 468 315L485 475Q405 450 355 390Q325 350 340 315Z" />
-      <path className="heart-left-atrium" d="M532 205Q590 155 662 190Q685 240 660 292Q595 330 532 300Z" />
-      <path className="heart-left-ventricle" d="M532 315Q595 280 660 315Q675 350 645 405Q600 480 515 505Z" />
+      <path className="heart-right-atrium" d="M334 188Q390 155 458 200L458 292Q402 328 342 292Q313 250 334 188Z" />
+      <path className="heart-right-ventricle" d="M341 316Q400 281 465 315L488 486Q415 458 366 402Q329 362 341 316Z" />
+      <path className="heart-left-atrium" d="M538 202Q594 156 660 188Q687 232 660 292Q600 326 537 296Z" />
+      <path className="heart-left-ventricle" d="M536 315Q601 282 658 318Q681 365 648 424Q607 493 515 526L506 485Q548 442 556 382Q560 342 536 315Z" />
 
-      <path className="heart-septum" d="M500 190Q490 300 505 505" />
+      <path className="heart-septum" d="M500 205Q488 300 505 500" />
 
-      <path className="heart-vena-cava" d="M365 190V65M365 292Q315 360 320 500" />
-      <path className="heart-aorta" d="M595 185V100Q595 45 655 45Q720 45 730 100V155" />
-      <path className="heart-pulmonary-artery" d="M430 315Q455 210 500 190Q535 170 560 140Q585 110 620 120" />
-      <path className="heart-pulmonary-vein" d="M662 220H785M532 235H230" />
+      <path className="heart-vena-cava" d="M365 190V63M365 292Q315 362 318 515" />
+      <path className="heart-aorta" d="M594 188V108Q594 50 650 43Q708 36 735 86Q746 106 738 155" />
+      <path className="heart-aortic-branch" d="M630 72V30M675 58L690 22M715 72L744 38" />
+
+      <path className="heart-pulmonary-artery" d="M432 316Q453 224 496 196Q530 175 555 146Q584 112 623 123" />
+      <path className="heart-pulmonary-artery branch" d="M552 150Q515 125 470 122M563 145Q600 130 655 145" />
+      <path className="heart-pulmonary-vein" d="M662 220H790M535 235H228" />
 
       <path className="heart-tricuspid" d="M385 302L420 330L455 302" />
       <path className="heart-bicuspid" d="M545 302L590 335L635 302" />
+      <path className="heart-semilunar pulmonary" d="M475 214Q488 196 500 214Q512 196 525 214" />
+      <path className="heart-semilunar aortic" d="M583 193Q595 175 607 193Q619 175 632 193" />
 
-      <path className="heart-flow deoxygenated" d="M365 85V185M390 220V285M410 350Q455 270 500 215" />
-      <path className="heart-flow oxygenated" d="M760 220H665M610 230V290M600 355Q610 180 620 105" />
+      <path className="heart-flow deoxygenated" d="M365 84V182M390 220V282M410 352Q455 275 496 220" />
+      <path className="heart-flow oxygenated" d="M760 220H667M610 230V288M600 356Q610 188 620 108" />
 
-      <text className="heart-side-label deoxygenated" x="370" y="565" textAnchor="middle">right side, deoxygenated blood</text>
-      <text className="heart-side-label oxygenated" x="635" y="565" textAnchor="middle">left side, oxygenated blood</text>
+      <text className="heart-side-label deoxygenated" x="365" y="585" textAnchor="middle">right side, deoxygenated blood</text>
+      <text className="heart-side-label oxygenated" x="635" y="585" textAnchor="middle">left side, oxygenated blood</text>
     </g>
   );
 }
@@ -256,18 +261,29 @@ function HumanHeartTemplate() {
 function KidneyLongitudinalTemplate() {
   return (
     <g className="spark-diagram-kidney" aria-hidden="true">
-      <path className="kidney-outline" d="M500 75Q330 55 270 205Q220 355 315 485Q390 575 510 535Q585 510 600 430Q565 360 585 300Q600 245 650 195Q640 105 500 75Z" />
-      <path className="kidney-cortex" d="M480 112Q355 100 310 220Q275 340 345 455Q405 515 500 480Q535 458 545 410Q515 350 530 300Q545 250 585 205Q570 135 480 112Z" />
+      <path className="kidney-outline" d="M505 72Q350 45 275 180Q210 300 258 420Q300 535 414 565Q520 592 590 520Q635 472 612 420Q585 365 606 315Q628 262 681 214Q674 110 505 72Z" />
+      <path className="kidney-capsule" d="M503 91Q366 68 300 190Q245 300 284 406Q322 502 418 529Q508 554 565 492Q600 454 580 415Q553 360 575 305Q596 253 643 210Q631 128 503 91Z" />
+      <path className="kidney-cortex" d="M488 118Q380 102 326 210Q282 308 316 394Q350 474 426 494Q496 512 537 466Q560 439 545 401Q520 350 540 300Q558 256 598 213Q580 151 488 118Z" />
+
       <g className="kidney-medulla">
-        <path d="M360 185L470 225L370 260Z" />
-        <path d="M340 285L475 305L355 350Z" />
-        <path d="M375 390L490 365L405 440Z" />
+        <path d="M362 190L472 228L376 268Z" />
+        <path d="M338 283L478 309L354 354Z" />
+        <path d="M372 390L486 360L408 445Z" />
+        <path d="M430 150L505 228L410 238Z" />
       </g>
-      <path className="kidney-pelvis" d="M505 235Q605 290 515 390Q545 320 505 235Z" />
-      <path className="kidney-ureter" d="M565 345Q645 390 665 555" />
-      <path className="kidney-artery" d="M615 245H745" />
-      <path className="kidney-vein" d="M610 275H745" />
-      <text className="kidney-orientation" x="500" y="610" textAnchor="middle">longitudinal section through a kidney</text>
+
+      <g className="kidney-calyces">
+        <path d="M470 228Q515 240 535 267" />
+        <path d="M478 309Q522 308 545 326" />
+        <path d="M486 360Q525 355 548 350" />
+      </g>
+
+      <path className="kidney-pelvis" d="M505 232Q575 252 583 304Q590 348 522 402Q546 342 505 232Z" />
+      <path className="kidney-ureter" d="M555 365Q625 410 654 555" />
+      <path className="kidney-artery" d="M612 246H752" />
+      <path className="kidney-vein" d="M608 280H752" />
+      <circle className="kidney-hilum" cx="602" cy="264" r="8" />
+      <text className="kidney-orientation" x="500" y="615" textAnchor="middle">longitudinal section through a kidney</text>
     </g>
   );
 }
@@ -316,18 +332,25 @@ function SkinSectionTemplate() {
 function MammalianEyeTemplate() {
   return (
     <g className="spark-diagram-eye" aria-hidden="true">
-      <circle className="eye-sclera" cx="500" cy="310" r="190" />
-      <path className="eye-cornea" d="M320 245Q245 310 320 375" />
-      <path className="eye-choroid" d="M335 190Q500 105 655 200Q690 225 700 310Q690 395 655 420Q500 515 335 430" />
-      <path className="eye-retina" d="M365 205Q500 145 625 215Q655 240 665 310Q655 380 625 405Q500 475 365 415" />
-      <ellipse className="eye-lens" cx="405" cy="310" rx="55" ry="88" />
-      <path className="eye-iris" d="M335 245Q375 270 375 310Q375 350 335 375" />
-      <circle className="eye-pupil" cx="345" cy="310" r="24" />
-      <path className="eye-ciliary" d="M350 205Q410 175 455 205M350 415Q410 445 455 415" />
-      <path className="eye-suspensory" d="M365 225L390 255M365 395L390 365M450 235L430 270M450 385L430 350" />
-      <path className="eye-optic-nerve" d="M675 295Q760 290 840 330L825 385Q745 340 670 335Z" />
-      <circle className="eye-fovea" cx="625" cy="310" r="12" />
-      <circle className="eye-blind-spot" cx="675" cy="315" r="10" />
+      <path className="eye-sclera" d="M318 242Q410 112 575 128Q692 140 739 239Q770 306 741 380Q700 485 565 495Q408 505 320 382Q277 322 318 242Z" />
+      <path className="eye-vitreous" d="M390 205Q505 155 620 205Q690 238 704 309Q690 382 620 420Q505 468 390 416Z" />
+      <path className="eye-cornea" d="M321 241Q248 276 248 310Q248 344 321 382Q291 345 291 310Q291 277 321 241Z" />
+      <path className="eye-aqueous" d="M320 246Q352 267 365 310Q352 353 320 376Q290 344 290 310Q290 276 320 246Z" />
+      <path className="eye-choroid" d="M345 188Q505 118 662 198Q704 226 719 309Q705 394 662 425Q505 504 345 430" />
+      <path className="eye-retina" d="M370 207Q505 151 631 216Q665 240 677 310Q665 378 631 404Q505 464 370 414" />
+
+      <path className="eye-lens" d="M373 310Q398 226 427 226Q458 226 482 310Q458 394 427 394Q398 394 373 310Z" />
+      <path className="eye-iris" d="M333 248Q372 272 374 310Q372 349 333 373" />
+      <ellipse className="eye-pupil" cx="345" cy="310" rx="17" ry="29" />
+
+      <path className="eye-ciliary" d="M345 205Q400 170 464 205M345 415Q400 450 464 415" />
+      <path className="eye-suspensory" d="M360 224L397 258M360 396L397 362M462 222L448 263M462 398L448 357" />
+
+      <path className="eye-optic-nerve" d="M681 286Q760 278 845 318L833 387Q755 340 676 334Z" />
+      <circle className="eye-fovea" cx="626" cy="310" r="11" />
+      <circle className="eye-blind-spot" cx="679" cy="312" r="12" />
+      <path className="eye-optic-disc" d="M666 298Q682 285 698 300Q686 314 670 326" />
+
       <text className="repro-orientation" x="500" y="560" textAnchor="middle">horizontal section through the eye</text>
     </g>
   );
@@ -336,30 +359,34 @@ function MammalianEyeTemplate() {
 function MammalianEarTemplate() {
   return (
     <g className="spark-diagram-ear" aria-hidden="true">
-      <path className="ear-pinna" d="M120 145Q55 145 52 255Q50 370 145 398Q225 405 225 325Q225 265 175 270Q135 275 140 315Q145 345 175 330Q195 320 192 292" />
-      <path className="ear-canal" d="M188 292Q275 282 340 295" />
+      <path className="ear-pinna" d="M120 145Q58 145 52 252Q48 365 145 400Q222 406 228 330Q232 276 182 269Q142 268 138 309Q136 344 168 340Q195 336 193 295" />
+      <path className="ear-canal" d="M190 294Q278 282 342 296" />
       <ellipse className="ear-drum" cx="360" cy="295" rx="18" ry="72" transform="rotate(-8 360 295)" />
 
-      <g className="ear-ossicles">
-        <path d="M378 275L420 245L455 270L492 242" />
-        <circle cx="420" cy="245" r="14" />
-        <circle cx="455" cy="270" r="13" />
-        <circle cx="492" cy="242" r="12" />
-      </g>
+      <path className="ear-middle-cavity" d="M385 224Q488 204 572 254Q566 332 505 366Q431 356 386 329Z" />
 
-      <path className="ear-cochlea" d="M600 315Q675 245 735 300Q785 345 745 395Q710 435 660 405Q625 382 640 350Q655 325 682 336Q700 346 692 365" />
-      <path className="ear-auditory-nerve" d="M715 350Q790 332 855 370" />
+      <g className="ear-ossicles">
+        <path className="malleus" d="M378 274Q398 254 420 248L431 274L414 293" />
+        <path className="incus" d="M425 248Q450 238 462 260L451 282L472 294" />
+        <path className="stapes" d="M472 294L493 270M475 300L497 324M493 270Q512 296 497 324" />
+        <circle cx="418" cy="248" r="10" />
+        <circle cx="458" cy="262" r="9" />
+      </g>
 
       <g className="ear-semicircular">
-        <path d="M545 180Q505 105 565 85Q635 65 655 135Q670 195 625 220" />
-        <path d="M590 205Q575 115 650 110Q720 108 724 182Q727 238 670 250" />
-        <path d="M545 235Q485 190 515 135Q550 80 605 105Q650 128 645 180" />
+        <path d="M545 188Q501 112 558 82Q620 48 658 108Q686 153 650 210" />
+        <path d="M588 210Q570 120 648 104Q715 91 728 163Q740 224 678 252" />
+        <path d="M548 238Q484 194 512 132Q538 75 602 104Q655 128 647 184" />
       </g>
 
-      <path className="ear-eustachian" d="M515 295Q545 350 560 435Q570 480 620 515" />
-      <path className="ear-middle-cavity" d="M390 225Q500 205 570 255Q560 335 500 360Q425 352 390 330Z" />
+      <ellipse className="ear-vestibule" cx="596" cy="286" rx="38" ry="50" />
 
-      <text className="repro-orientation" x="500" y="575" textAnchor="middle">simplified section through the mammalian ear</text>
+      <path className="ear-cochlea" d="M607 332Q658 267 722 296Q787 326 774 386Q760 444 698 446Q645 447 624 408Q607 377 627 351Q647 327 676 339Q700 349 699 372Q698 392 681 400Q663 407 650 395" />
+      <path className="ear-auditory-nerve" d="M711 356Q785 333 858 372M620 270Q730 240 820 300" />
+
+      <path className="ear-eustachian" d="M507 327Q545 368 563 438Q576 486 627 523" />
+
+      <text className="repro-orientation" x="500" y="580" textAnchor="middle">section through the mammalian ear</text>
     </g>
   );
 }
