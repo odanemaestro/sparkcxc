@@ -2723,3 +2723,2649 @@ set stats=coalesce(stats,'{}'::jsonb)
   || '{"topicsBuilt":11,"objectivesBuilt":11}'::jsonb,
 updated_at=now()
 where id='integrated-science';
+
+-- ============================================================================
+-- SOURCE 16/120: supabase/migrations/20260921015500_integrated_science_objective_133.sql
+-- ============================================================================
+-- CSEC Integrated Science objective 1.3.3
+insert into public.spark_subject_topics(
+  subject_id,topic_id,section_id,title,description,sort_order,enabled,metadata
+)
+values (
+  'integrated-science',
+  'm1-t3-3-menstrual-cycle',
+  'module-1-organisms-life-processes',
+  '1.3.3 The Menstrual Cycle',
+  'Analyse changes in the uterine lining, ovulation, oestrogen and progesterone during a typical menstrual cycle and relate hormone changes to menstruation.',
+  120,
+  true,
+  '{
+    "syllabus":{
+      "module":1,
+      "topic":"Reproduction and Growth in Animals",
+      "objective":"1.3.3",
+      "source":"CXC 23/G/SYLL 23, amended 2026"
+    },
+    "lesson":{
+      "objectives":[
+        "Define menstruation and ovulation.",
+        "Describe changes in the uterine lining during a typical menstrual cycle.",
+        "Relate oestrogen to rebuilding of the uterine lining.",
+        "Relate progesterone to maintenance of the uterine lining after ovulation.",
+        "Explain why a fall in progesterone is associated with the start of menstruation when pregnancy does not occur.",
+        "Estimate the likely time of ovulation in a regular cycle using the approximate interval before the next period."
+      ],
+      "introduction":"The menstrual cycle is a repeating sequence of changes in the ovaries and uterus. A 28-day cycle is often used as a teaching example, but real cycles differ in length and timing. The important skill is to understand the pattern and the relationship among ovulation, the uterine lining and hormone levels.",
+      "sections":[
+        {
+          "title":"Menstruation",
+          "paragraphs":[
+            "Day 1 is the first day of menstrual bleeding. During menstruation, the thickened lining of the uterus breaks down and is shed with blood and tissue.",
+            "In a typical 28-day teaching cycle, menstruation commonly occupies about Days 1 to 5. The exact duration varies among individuals and from cycle to cycle."
+          ]
+        },
+        {
+          "title":"Rebuilding the uterine lining",
+          "paragraphs":[
+            "After menstruation, the endometrium repairs and becomes thicker again. Oestrogen produced by the developing ovarian follicle contributes to this rebuilding.",
+            "Oestrogen generally rises during the first half of the cycle and reaches a high level before ovulation."
+          ]
+        },
+        {
+          "title":"Ovulation",
+          "paragraphs":[
+            "Ovulation is the release of a mature ovum from an ovary. In a typical 28-day cycle, ovulation is often shown around Day 14.",
+            "Cycle length varies, so Day 14 should not be treated as a fixed date for every person. For a regular cycle, ovulation is often estimated at roughly 14 days before the next menstrual period."
+          ]
+        },
+        {
+          "title":"Progesterone after ovulation",
+          "paragraphs":[
+            "After ovulation, progesterone levels rise. Progesterone helps maintain the thick endometrium so that it is ready for possible implantation.",
+            "If pregnancy does not occur, progesterone levels fall near the end of the cycle. The uterine lining is no longer maintained and a new menstrual period begins."
+          ]
+        },
+        {
+          "title":"Reading a menstrual-cycle graph",
+          "paragraphs":[
+            "First identify the horizontal axis and the day of the cycle. Then look for the fall in lining thickness during menstruation, the rebuilding before ovulation and the maintained thick lining after ovulation.",
+            "On a simplified hormone graph, oestrogen rises before ovulation. Progesterone is low before ovulation, rises afterwards and falls again if pregnancy does not occur."
+          ]
+        },
+        {
+          "title":"Estimating ovulation in a regular cycle",
+          "paragraphs":[
+            "An approximate rule is to count back about 14 days from the expected start of the next period. For a regular 30-day cycle, this gives an estimate around Day 16.",
+            "This is an estimate, not a guarantee. Biological cycles vary and calendar prediction alone should not be treated as a precise indicator of fertility."
+          ]
+        },
+        {
+          "title":"Menopause",
+          "paragraphs":[
+            "Menopause is the stage when menstrual cycles permanently stop as ovarian activity declines. Oestrogen levels fall and ovulation ceases.",
+            "Menopause is a normal biological stage and should not be confused with a temporary missed period."
+          ]
+        }
+      ],
+      "interactiveModels":[
+        {
+          "id":"m1-t3-3-menstrual-cycle",
+          "type":"menstrual-cycle",
+          "title":"Menstrual cycle model"
+        }
+      ],
+      "keyPoints":[
+        "Menstruation is the shedding of the uterine lining.",
+        "Ovulation is the release of an ovum from an ovary.",
+        "Oestrogen helps rebuild and thicken the uterine lining before ovulation.",
+        "Progesterone helps maintain the uterine lining after ovulation.",
+        "If pregnancy does not occur, progesterone falls and menstruation begins.",
+        "Day 14 is a teaching estimate for a 28-day cycle, not a fixed ovulation day for every cycle.",
+        "Menopause is the permanent stopping of menstrual cycles as ovarian activity declines."
+      ],
+      "workedExample":{
+        "title":"Estimating ovulation in a 30-day cycle",
+        "prompt":"A woman has a regular 30-day menstrual cycle. Estimate the cycle day on which ovulation is most likely to occur.",
+        "steps":[
+          "Use the approximate rule that ovulation occurs about 14 days before the next period.",
+          "The next period is expected after a 30-day cycle.",
+          "Count back about 14 days from the end of the cycle.",
+          "30 minus 14 gives approximately Day 16."
+        ],
+        "answer":"Ovulation is estimated around Day 16. This is only an estimate because menstrual cycles vary."
+      },
+      "checks":[
+        {
+          "prompt":"What is ovulation?",
+          "answer":"The release of a mature ovum from an ovary.",
+          "explanation":"In a typical 28-day teaching cycle this is often shown around Day 14."
+        },
+        {
+          "prompt":"What happens to the uterine lining during menstruation?",
+          "answer":"The lining breaks down and is shed with blood and tissue.",
+          "explanation":"Day 1 of menstrual bleeding marks the start of a new cycle."
+        },
+        {
+          "prompt":"What is the main role of progesterone after ovulation?",
+          "answer":"It helps maintain the thickened uterine lining ready for possible implantation.",
+          "explanation":"A fall in progesterone when pregnancy does not occur is associated with breakdown of the lining."
+        },
+        {
+          "prompt":"Why should Day 14 not be treated as the ovulation day for every menstrual cycle?",
+          "answer":"Cycle length and timing vary. Day 14 is an estimate based on a typical 28-day cycle.",
+          "explanation":"Ovulation is often estimated more generally as about 14 days before the next period."
+        }
+      ],
+      "summary":"Analyse the cycle as a sequence. Menstruation removes the old lining, oestrogen helps rebuild it, ovulation releases an ovum, progesterone maintains the lining afterwards, and falling progesterone leads into the next period if pregnancy does not occur."
+    }
+  }'::jsonb
+)
+on conflict (subject_id,topic_id) do update set
+  section_id=excluded.section_id,
+  title=excluded.title,
+  description=excluded.description,
+  sort_order=excluded.sort_order,
+  enabled=excluded.enabled,
+  metadata=excluded.metadata,
+  updated_at=now();
+
+update public.spark_subjects
+set stats=coalesce(stats,'{}'::jsonb)
+  || '{"topicsBuilt":12,"objectivesBuilt":12}'::jsonb,
+updated_at=now()
+where id='integrated-science';
+
+-- ============================================================================
+-- SOURCE 17/120: supabase/migrations/20260921020000_integrated_science_objective_134.sql
+-- ============================================================================
+-- CSEC Integrated Science objective 1.3.4
+insert into public.spark_subject_topics(
+  subject_id,topic_id,section_id,title,description,sort_order,enabled,metadata
+)
+values (
+  'integrated-science',
+  'm1-t3-4-stages-pregnancy',
+  'module-1-organisms-life-processes',
+  '1.3.4 Stages of Pregnancy',
+  'Discuss fertilisation, implantation, embryo and foetal development, placental exchange, protection of the foetus and the stages of labour.',
+  130,
+  true,
+  '{
+    "syllabus":{
+      "module":1,
+      "topic":"Reproduction and Growth in Animals",
+      "objective":"1.3.4",
+      "source":"CXC 23/G/SYLL 23, amended 2026"
+    },
+    "lesson":{
+      "objectives":[
+        "Outline the sequence from fertilisation to implantation.",
+        "Distinguish between the embryo and foetus stages.",
+        "Describe the roles of the placenta, umbilical cord, amnion and amniotic fluid.",
+        "Explain how substances are exchanged between mother and foetus without normal direct mixing of their blood.",
+        "State the approximate duration of human pregnancy.",
+        "Describe the three stages of labour in the correct order."
+      ],
+      "introduction":"Pregnancy begins after fertilisation and continues through implantation, embryonic development, foetal growth and birth. Each stage depends on specialised structures that exchange materials, protect the developing baby and maintain a suitable environment inside the uterus.",
+      "sections":[
+        {
+          "title":"Fertilisation and the zygote",
+          "paragraphs":[
+            "Fertilisation is the fusion of the nucleus of a sperm with the nucleus of an ovum. It normally occurs in an oviduct and produces a zygote.",
+            "The zygote begins repeated cell divisions as it moves towards the uterus. The number of cells increases while the developing structure remains small enough to travel through the oviduct."
+          ]
+        },
+        {
+          "title":"Implantation",
+          "paragraphs":[
+            "About a week after fertilisation, the early embryo reaches the uterus and becomes attached to the thickened endometrium. This attachment is called implantation.",
+            "Implantation should not be confused with fertilisation. Fertilisation usually occurs in an oviduct, while implantation occurs in the lining of the uterus."
+          ]
+        },
+        {
+          "title":"Embryo and foetus",
+          "paragraphs":[
+            "During the early weeks, major body structures and organ systems begin to form. The developing human is called an embryo during this early period.",
+            "From about eight weeks after fertilisation, when the main body plan and major organs have formed, the developing human is called a foetus. Growth and maturation continue for the remainder of pregnancy."
+          ]
+        },
+        {
+          "title":"Placenta and umbilical cord",
+          "paragraphs":[
+            "The placenta develops where the embryo is attached to the uterine lining. It provides a large, thin exchange surface between the maternal and foetal circulations.",
+            "Oxygen, glucose, amino acids, water, mineral ions and some antibodies can pass from the mother towards the foetus. Carbon dioxide and urea pass from the foetus towards the mother.",
+            "The mother''s blood and the foetus''s blood normally remain in separate blood vessels and do not mix directly. Materials cross the placental barrier between the two circulations."
+          ],
+          "bullets":[
+            "The umbilical cord contains blood vessels that carry foetal blood between the foetus and the placenta.",
+            "The placenta does not act as a perfect barrier. Harmful substances such as alcohol, nicotine and some drugs can cross it."
+          ]
+        },
+        {
+          "title":"Amnion and amniotic fluid",
+          "paragraphs":[
+            "The foetus develops within a fluid-filled amniotic sac. The amnion is the membrane surrounding this space.",
+            "Amniotic fluid cushions the foetus against mechanical shocks, allows movement and helps maintain a stable physical environment."
+          ]
+        },
+        {
+          "title":"Length of pregnancy",
+          "paragraphs":[
+            "Human pregnancy lasts about nine months. Clinically, gestation is commonly described as about 40 weeks when counted from the first day of the last menstrual period.",
+            "The exact date of birth varies, so 40 weeks is an approximate reference rather than a fixed deadline."
+          ]
+        },
+        {
+          "title":"Twins",
+          "paragraphs":[
+            "Identical twins develop when one fertilised egg divides into two embryos. They therefore have the same genetic information apart from later mutations.",
+            "Non-identical twins develop from two separate ova fertilised by two separate sperm and are genetically similar to ordinary brothers or sisters."
+          ]
+        },
+        {
+          "title":"The three stages of labour",
+          "paragraphs":[
+            "During the first stage, rhythmic contractions of the uterus become stronger and the cervix dilates.",
+            "During the second stage, strong contractions push the baby through the cervix and vagina. Crowning occurs when the baby''s head becomes visible at the vaginal opening, followed by delivery of the baby.",
+            "During the third stage, the uterus continues to contract, the placenta separates from the uterine wall and is expelled through the vagina as the afterbirth."
+          ]
+        }
+      ],
+      "interactiveModels":[
+        {
+          "id":"m1-t3-4-pregnancy-stages",
+          "type":"pregnancy-stages",
+          "title":"Pregnancy and birth stages"
+        }
+      ],
+      "interactiveDiagrams":[
+        {
+          "id":"m1-t3-4-pregnancy-uterus",
+          "template":"pregnancy-uterus",
+          "title":"Label the foetus in the uterus",
+          "instructions":"Place each label on the correct pregnancy structure. On a phone or tablet, tap a label and then tap the numbered target.",
+          "labels":[
+            {"id":"placenta","text":"Placenta","hint":"Look for the specialised tissue attached to the uterine wall.","explanation":"The placenta is the exchange organ between maternal and foetal circulations."},
+            {"id":"umbilical-cord","text":"Umbilical cord","hint":"Look for the cord joining the foetus to the placenta.","explanation":"The umbilical cord contains blood vessels carrying foetal blood between the foetus and placenta."},
+            {"id":"foetus","text":"Foetus","hint":"Look for the developing baby inside the amniotic sac.","explanation":"The developing human is called a foetus from about eight weeks after fertilisation."},
+            {"id":"amnion","text":"Amnion","hint":"Look for the membrane surrounding the fluid-filled space.","explanation":"The amnion forms the membrane of the amniotic sac."},
+            {"id":"amniotic-fluid","text":"Amniotic fluid","hint":"Look for the fluid-filled space surrounding the foetus.","explanation":"Amniotic fluid cushions the foetus against shocks and allows movement."},
+            {"id":"cervix","text":"Cervix","hint":"Look for the narrow muscular neck at the lower end of the uterus.","explanation":"The cervix dilates during the first stage of labour."}
+          ],
+          "targets":[
+            {"id":"pregnancy-placenta-target","labelId":"placenta","boxX":20,"boxY":75,"anchorX":350,"anchorY":270,"side":"left"},
+            {"id":"pregnancy-umbilical-target","labelId":"umbilical-cord","boxX":20,"boxY":155,"anchorX":470,"anchorY":300,"side":"left"},
+            {"id":"pregnancy-amnion-target","labelId":"amnion","boxX":20,"boxY":235,"anchorX":630,"anchorY":195,"side":"left"},
+            {"id":"pregnancy-foetus-target","labelId":"foetus","boxX":790,"boxY":75,"anchorX":570,"anchorY":320,"side":"right"},
+            {"id":"pregnancy-fluid-target","labelId":"amniotic-fluid","boxX":790,"boxY":155,"anchorX":610,"anchorY":410,"side":"right"},
+            {"id":"pregnancy-cervix-target","labelId":"cervix","boxX":790,"boxY":235,"anchorX":500,"anchorY":545,"side":"right"}
+          ]
+        }
+      ],
+      "keyPoints":[
+        "Fertilisation is fusion of sperm and ovum nuclei and normally occurs in an oviduct.",
+        "Implantation is attachment of the embryo to the endometrium.",
+        "The developing human is called a foetus from about eight weeks after fertilisation.",
+        "The placenta exchanges materials between maternal and foetal circulations without normal direct mixing of their blood.",
+        "The umbilical cord carries foetal blood between the foetus and placenta.",
+        "Amniotic fluid cushions the foetus against shocks.",
+        "Human pregnancy lasts about nine months, approximately 40 weeks by clinical dating.",
+        "Labour proceeds through cervical dilation, delivery of the baby and expulsion of the placenta."
+      ],
+      "workedExample":{
+        "title":"Explaining placental exchange",
+        "prompt":"State two substances that move from mother to foetus, one substance that moves from foetus to mother, and explain whether the two blood supplies normally mix.",
+        "steps":[
+          "Choose substances needed by the foetus, such as oxygen and glucose.",
+          "Choose a foetal waste product, such as carbon dioxide or urea.",
+          "State that the maternal and foetal blood remain in separate vessels.",
+          "Explain that substances cross the placental exchange surface."
+        ],
+        "answer":"Oxygen and glucose can pass from mother to foetus, while carbon dioxide can pass from foetus to mother. The two blood supplies normally remain separate while materials cross the placenta."
+      },
+      "checks":[
+        {
+          "prompt":"What is implantation?",
+          "answer":"The attachment of the early embryo to the lining of the uterus.",
+          "explanation":"Implantation occurs after the dividing zygote reaches the uterus."
+        },
+        {
+          "prompt":"What is the function of amniotic fluid?",
+          "answer":"It cushions the foetus against mechanical shocks and allows movement.",
+          "explanation":"The fluid surrounds the foetus within the amniotic sac."
+        },
+        {
+          "prompt":"What does the umbilical cord carry?",
+          "answer":"Foetal blood between the foetus and the placenta.",
+          "explanation":"Its vessels connect the foetal circulation to the placenta."
+        },
+        {
+          "prompt":"State the three stages of labour in order.",
+          "answer":"Cervical dilation, delivery of the baby, then separation and expulsion of the placenta.",
+          "explanation":"The placenta is expelled after the baby as the afterbirth."
+        }
+      ],
+      "summary":"Follow pregnancy as a sequence: fertilisation, cell division, implantation, embryo development, foetal growth and labour. Link each stage to the placenta, umbilical cord, amnion, amniotic fluid and cervix."
+    }
+  }'::jsonb
+)
+on conflict (subject_id,topic_id) do update set
+  section_id=excluded.section_id,
+  title=excluded.title,
+  description=excluded.description,
+  sort_order=excluded.sort_order,
+  enabled=excluded.enabled,
+  metadata=excluded.metadata,
+  updated_at=now();
+
+insert into public.spark_subject_activity_catalog(
+  subject_id,activity_key,activity_type,section_id,topic_id,title,route,evidence_weight,enabled,metadata
+)
+values (
+  'integrated-science',
+  'diagram:m1-t3-4-pregnancy-uterus',
+  'diagram',
+  'module-1-organisms-life-processes',
+  'm1-t3-4-stages-pregnancy',
+  'Label the foetus in the uterus',
+  '/study/integrated-science?section=module-1-organisms-life-processes&topic=m1-t3-4-stages-pregnancy',
+  0.35,
+  true,
+  '{"syllabusObjective":"1.3.4","mode":"drag-drop-label"}'::jsonb
+)
+on conflict (subject_id,activity_key) do update set
+  activity_type=excluded.activity_type,
+  section_id=excluded.section_id,
+  topic_id=excluded.topic_id,
+  title=excluded.title,
+  route=excluded.route,
+  evidence_weight=excluded.evidence_weight,
+  enabled=excluded.enabled,
+  metadata=excluded.metadata,
+  updated_at=now();
+
+update public.spark_subjects
+set stats=coalesce(stats,'{}'::jsonb)
+  || '{"topicsBuilt":13,"objectivesBuilt":13}'::jsonb,
+updated_at=now()
+where id='integrated-science';
+
+-- ============================================================================
+-- SOURCE 18/120: supabase/migrations/20260921020500_integrated_science_objective_135.sql
+-- ============================================================================
+-- CSEC Integrated Science objective 1.3.5
+insert into public.spark_subject_topics(
+  subject_id,topic_id,section_id,title,description,sort_order,enabled,metadata
+)
+values (
+  'integrated-science',
+  'm1-t3-5-birth-control-methods',
+  'module-1-organisms-life-processes',
+  '1.3.5 Methods of Birth Control',
+  'Compare behavioural, barrier, hormonal, intrauterine and surgical methods of birth control, including how they work, their limitations and STI protection.',
+  140,
+  true,
+  '{
+    "syllabus":{
+      "module":1,
+      "topic":"Reproduction and Growth in Animals",
+      "objective":"1.3.5",
+      "source":"CXC 23/G/SYLL 23, amended 2026"
+    },
+    "lesson":{
+      "objectives":[
+        "Classify common birth-control methods.",
+        "Explain how selected methods reduce the chance of pregnancy.",
+        "Compare temporary and permanent methods.",
+        "Explain why fertility-awareness methods can be unreliable when ovulation varies.",
+        "Identify methods that reduce sexual transmission of infections.",
+        "Distinguish current IUD mechanisms from older simplified descriptions."
+      ],
+      "introduction":"Birth control includes methods used to reduce the chance of pregnancy. The methods differ in how they work, whether they require action each time sexual intercourse occurs, whether they contain hormones, and whether they are intended to be permanent. Preventing pregnancy and reducing STI transmission are separate issues.",
+      "sections":[
+        {
+          "title":"Abstinence",
+          "paragraphs":[
+            "Abstinence from sexual intercourse prevents sperm from reaching an ovum and therefore prevents pregnancy while it is maintained.",
+            "It also prevents sexual transmission of infections when sexual contact does not occur."
+          ]
+        },
+        {
+          "title":"Barrier methods",
+          "paragraphs":[
+            "Barrier methods physically prevent sperm from reaching the ovum. Examples include condoms, diaphragms and cervical caps.",
+            "Condoms also reduce the transmission of many sexually transmitted infections because they reduce contact with semen and other body fluids. Diaphragms and cervical caps do not provide the same STI protection."
+          ],
+          "bullets":[
+            "A condom must be used correctly each time sexual intercourse occurs.",
+            "A condom can tear or slip if it is damaged or used incorrectly.",
+            "Barrier methods do not permanently affect fertility."
+          ]
+        },
+        {
+          "title":"Hormonal methods",
+          "paragraphs":[
+            "Hormonal methods include contraceptive pills, injections, patches and implants. They mainly prevent ovulation and can also thicken cervical mucus.",
+            "These methods do not protect against sexually transmitted infections. Correct use and appropriate medical guidance are important."
+          ]
+        },
+        {
+          "title":"Intrauterine devices",
+          "paragraphs":[
+            "An intrauterine device, or IUD, is a small device placed inside the uterus by a trained health-care provider. Copper and hormonal IUDs work in different ways.",
+            "Copper IUDs interfere with sperm movement and fertilisation. Hormonal IUDs release progestin, thicken cervical mucus and inhibit sperm. IUDs do not protect against sexually transmitted infections.",
+            "Some older school descriptions state that an IUD prevents implantation. Current medical guidance describes prevention of fertilisation and inhibition of sperm as the main mechanisms, so this lesson uses the current explanation while recognising the older exam wording."
+          ]
+        },
+        {
+          "title":"Fertility-awareness methods",
+          "paragraphs":[
+            "The rhythm or calendar method estimates the fertile part of the menstrual cycle and avoids unprotected intercourse during that period. The Billings method uses changes in cervical mucus as an indicator of fertility.",
+            "These methods depend on recognising fertile days correctly. Ovulation can vary from one cycle to another, which makes prediction less reliable."
+          ]
+        },
+        {
+          "title":"Withdrawal",
+          "paragraphs":[
+            "Withdrawal involves removing the penis from the vagina before ejaculation. It is less reliable because withdrawal may be late and sperm may be present before full ejaculation.",
+            "Withdrawal does not protect against sexually transmitted infections."
+          ]
+        },
+        {
+          "title":"Surgical methods",
+          "paragraphs":[
+            "A vasectomy cuts or blocks the sperm ducts so sperm do not enter the semen. Tubal ligation cuts or blocks the oviducts so sperm and ovum cannot meet.",
+            "These procedures are intended as permanent methods. They do not protect against sexually transmitted infections."
+          ]
+        },
+        {
+          "title":"Comparing methods",
+          "paragraphs":[
+            "When comparing methods, consider how the method works, whether it is reversible, whether it depends on correct use each time, whether a health-care provider is needed and whether it reduces STI transmission.",
+            "A condom is important because it is a contraceptive method that also reduces the risk of many STIs. Other contraceptive methods should not be assumed to provide STI protection."
+          ]
+        }
+      ],
+      "interactiveModels":[
+        {
+          "id":"m1-t3-5-birth-control",
+          "type":"birth-control",
+          "title":"Birth control comparison"
+        }
+      ],
+      "keyPoints":[
+        "Barrier methods physically block sperm.",
+        "Hormonal methods mainly prevent ovulation and may thicken cervical mucus.",
+        "Fertility-awareness methods depend on estimating fertile days and can be affected by variation in ovulation.",
+        "Vasectomy blocks sperm ducts and tubal ligation blocks oviducts.",
+        "Condoms reduce transmission of many STIs as well as reducing the chance of pregnancy.",
+        "IUDs are intrauterine methods and do not protect against STIs.",
+        "Pregnancy prevention and STI protection should be considered separately."
+      ],
+      "workedExample":{
+        "title":"Comparing a condom and the contraceptive pill",
+        "prompt":"A student says that the contraceptive pill and a condom provide the same type of protection. Explain why this statement is incorrect.",
+        "steps":[
+          "Identify how each method prevents pregnancy.",
+          "The pill is hormonal and mainly prevents ovulation.",
+          "A condom is a physical barrier that prevents sperm from entering the female reproductive tract.",
+          "Compare STI protection."
+        ],
+        "answer":"Both methods reduce the chance of pregnancy, but they work differently. The pill mainly prevents ovulation and does not protect against STIs. A condom forms a barrier and also reduces transmission of many STIs."
+      },
+      "checks":[
+        {
+          "prompt":"Why can the rhythm method be unreliable?",
+          "answer":"The timing of ovulation can vary from one cycle to another.",
+          "explanation":"The method depends on predicting the fertile part of the cycle."
+        },
+        {
+          "prompt":"What is a vasectomy?",
+          "answer":"A surgical procedure that cuts or blocks the sperm ducts.",
+          "explanation":"Sperm are prevented from entering the semen."
+        },
+        {
+          "prompt":"Which contraceptive method in this lesson also reduces transmission of many STIs?",
+          "answer":"The condom.",
+          "explanation":"It acts as a physical barrier that reduces exchange of semen and other body fluids."
+        },
+        {
+          "prompt":"How does the Billings method estimate fertility?",
+          "answer":"By observing changes in cervical mucus.",
+          "explanation":"Changes in cervical mucus are used to identify likely fertile days."
+        }
+      ],
+      "summary":"Know how each method works and what it does not do. A method can prevent pregnancy without protecting against infection. Compare mechanism, correct-use requirements, reversibility and STI protection."
+    }
+  }'::jsonb
+)
+on conflict (subject_id,topic_id) do update set
+  section_id=excluded.section_id,
+  title=excluded.title,
+  description=excluded.description,
+  sort_order=excluded.sort_order,
+  enabled=excluded.enabled,
+  metadata=excluded.metadata,
+  updated_at=now();
+
+update public.spark_subjects
+set stats=coalesce(stats,'{}'::jsonb)
+  || '{"topicsBuilt":14,"objectivesBuilt":14}'::jsonb,
+updated_at=now()
+where id='integrated-science';
+
+-- ============================================================================
+-- SOURCE 19/120: supabase/migrations/20260921021000_integrated_science_objective_136.sql
+-- ============================================================================
+-- CSEC Integrated Science objective 1.3.6
+insert into public.spark_subject_topics(
+  subject_id,topic_id,section_id,title,description,sort_order,enabled,metadata
+)
+values (
+  'integrated-science',
+  'm1-t3-6-prenatal-postnatal-care',
+  'module-1-organisms-life-processes',
+  '1.3.6 Pre-natal and Post-natal Care',
+  'Assess how nutrition, clinical monitoring, avoidance of harmful exposures, breastfeeding, immunisation and follow-up care support mothers and babies.',
+  150,
+  true,
+  '{
+    "syllabus":{
+      "module":1,
+      "topic":"Reproduction and Growth in Animals",
+      "objective":"1.3.6",
+      "source":"CXC 23/G/SYLL 23, amended 2026"
+    },
+    "lesson":{
+      "objectives":[
+        "Explain the importance of regular pre-natal care.",
+        "Relate balanced nutrition, iron, folate and calcium to maternal and foetal health.",
+        "Explain how smoking, alcohol and selected infections can harm the developing foetus.",
+        "State suitable uses of ultrasound during pregnancy.",
+        "Assess the value of breastfeeding and post-natal follow-up.",
+        "Explain why childhood immunisation protects babies against infectious disease."
+      ],
+      "introduction":"Care during pregnancy and after birth reduces avoidable risks and helps health problems to be recognised early. Good care includes nutrition, clinical monitoring, safe choices about medicines and harmful substances, support for the mother after delivery and appropriate care of the newborn.",
+      "sections":[
+        {
+          "title":"Regular pre-natal care",
+          "paragraphs":[
+            "Pre-natal, or antenatal, visits allow health professionals to monitor the mother and developing baby. Checks can include blood pressure, growth of the uterus, laboratory tests and assessment of the baby''s growth and position.",
+            "Regular visits also provide opportunities to discuss nutrition, medicines, symptoms, vaccinations and preparation for birth."
+          ]
+        },
+        {
+          "title":"Nutrition during pregnancy",
+          "paragraphs":[
+            "A balanced diet supplies the energy, protein, vitamins and minerals needed by the mother and developing baby. Iron supports haemoglobin production and helps reduce the risk of iron-deficiency anaemia.",
+            "Folate, also called folic acid in supplements, is especially important early in development because adequate intake reduces the risk of neural tube defects. Calcium and vitamin D support normal development of bones and teeth.",
+            "Supplements should be taken according to health-care guidance because needs differ and excessive intake of some nutrients can also be harmful."
+          ]
+        },
+        {
+          "title":"Ultrasound and monitoring",
+          "paragraphs":[
+            "Ultrasound uses high-frequency sound waves to produce images. During pregnancy it can be used to estimate gestational age, check growth and position, identify multiple pregnancy and investigate some developmental concerns.",
+            "Ultrasound does not use ionising X-rays."
+          ]
+        },
+        {
+          "title":"Smoking and tobacco exposure",
+          "paragraphs":[
+            "Carbon monoxide from tobacco smoke binds strongly to haemoglobin and reduces the amount of oxygen that the blood can transport. Nicotine can also affect blood vessels.",
+            "Reduced oxygen and impaired placental blood flow can restrict foetal growth and increase the risk of low birth weight."
+          ]
+        },
+        {
+          "title":"Alcohol, drugs and radiation",
+          "paragraphs":[
+            "Alcohol crosses the placenta and can interfere with development of the foetal brain and other organs. Non-medical drug use can also create serious risks during pregnancy.",
+            "A pregnant person should tell health-care providers about the pregnancy before taking medicines or having medical imaging. Unnecessary ionising radiation should be avoided, while medically necessary imaging should be assessed and managed by qualified professionals."
+          ]
+        },
+        {
+          "title":"Infections during pregnancy",
+          "paragraphs":[
+            "Some infections can damage a developing foetus. Rubella infection during early pregnancy is an important syllabus example because it can cause serious congenital problems.",
+            "Prevention, vaccination before pregnancy where appropriate, good hygiene and prompt medical care reduce infection risks."
+          ]
+        },
+        {
+          "title":"Post-natal care of the mother",
+          "paragraphs":[
+            "Post-natal care checks that the mother is recovering after delivery. Health workers can assess bleeding, healing, blood pressure, emotional wellbeing and other health concerns.",
+            "Post-natal visits also provide support with feeding, contraception, rest, nutrition and care of the newborn."
+          ]
+        },
+        {
+          "title":"Breastfeeding",
+          "paragraphs":[
+            "Breast milk provides suitable nutrients for early growth and contains antibodies and other protective factors. These antibodies give the baby passive protection against some infections.",
+            "Breast milk is clean, readily available and normally at the correct temperature. Breastfeeding can also support close contact and bonding between mother and baby."
+          ]
+        },
+        {
+          "title":"Care of the newborn",
+          "paragraphs":[
+            "Newborn care includes monitoring growth, feeding, temperature and general health. Follow-up visits help identify problems early.",
+            "Vaccines expose the immune system to safe forms or components of disease-causing organisms. This stimulates production of antibodies and memory cells so the child can respond more effectively if exposed to the disease later."
+          ]
+        }
+      ],
+      "interactiveModels":[
+        {
+          "id":"m1-t3-6-maternal-baby-care",
+          "type":"maternal-baby-care",
+          "title":"Maternal and baby care"
+        }
+      ],
+      "keyPoints":[
+        "Regular pre-natal visits help monitor the health of mother and baby.",
+        "Iron supports haemoglobin, folate reduces the risk of neural tube defects and calcium supports bones and teeth.",
+        "Smoking can reduce oxygen reaching the foetus and is linked with low birth weight.",
+        "Alcohol can interfere with foetal brain and organ development.",
+        "Ultrasound uses sound waves to monitor growth, position and other features of pregnancy.",
+        "Breast milk provides nutrients and antibodies that give passive protection.",
+        "Post-natal care supports maternal recovery, infant feeding and newborn health.",
+        "Immunisation stimulates active immune protection and memory cells."
+      ],
+      "workedExample":{
+        "title":"Explaining low birth weight linked to smoking",
+        "prompt":"Explain why smoking during pregnancy can increase the risk of a baby having a low birth weight.",
+        "steps":[
+          "Tobacco smoke contains carbon monoxide.",
+          "Carbon monoxide binds to haemoglobin and reduces oxygen transport.",
+          "Nicotine can also reduce blood flow through blood vessels.",
+          "Less oxygen and poorer placental blood flow can restrict foetal growth."
+        ],
+        "answer":"Smoking can reduce the oxygen and blood supply available to the developing foetus. Growth may be restricted, increasing the risk of low birth weight."
+      },
+      "checks":[
+        {
+          "prompt":"Why are iron and folate important during pregnancy?",
+          "answer":"Iron supports haemoglobin and helps prevent iron-deficiency anaemia. Folate reduces the risk of neural tube defects in the developing baby.",
+          "explanation":"Both nutrients support important processes during maternal and foetal development."
+        },
+        {
+          "prompt":"State two uses of ultrasound during pregnancy.",
+          "answer":"Examples include checking foetal growth and position, estimating gestational age, identifying twins or investigating some abnormalities.",
+          "explanation":"Ultrasound creates images using sound waves rather than ionising X-rays."
+        },
+        {
+          "prompt":"Give two advantages of breastfeeding for a newborn baby.",
+          "answer":"Breast milk provides suitable nutrients and contains antibodies that help protect against infection.",
+          "explanation":"It also has practical advantages because it is clean and readily available."
+        },
+        {
+          "prompt":"Why are babies immunised?",
+          "answer":"Vaccination stimulates the immune system to make antibodies and memory cells against specific diseases.",
+          "explanation":"This prepares the child for a faster protective response after later exposure."
+        }
+      ],
+      "summary":"Pre-natal and post-natal care work together. Protect development before birth through nutrition, monitoring and avoidance of harmful exposures, then support recovery, feeding, growth and immunity after birth."
+    }
+  }'::jsonb
+)
+on conflict (subject_id,topic_id) do update set
+  section_id=excluded.section_id,
+  title=excluded.title,
+  description=excluded.description,
+  sort_order=excluded.sort_order,
+  enabled=excluded.enabled,
+  metadata=excluded.metadata,
+  updated_at=now();
+
+update public.spark_subjects
+set stats=coalesce(stats,'{}'::jsonb)
+  || '{"topicsBuilt":15,"objectivesBuilt":15}'::jsonb,
+updated_at=now()
+where id='integrated-science';
+
+-- ============================================================================
+-- SOURCE 20/120: supabase/migrations/20260921021500_integrated_science_objective_137.sql
+-- ============================================================================
+-- CSEC Integrated Science objective 1.3.7
+insert into public.spark_subject_topics(
+  subject_id,topic_id,section_id,title,description,sort_order,enabled,metadata
+)
+values (
+  'integrated-science',
+  'm1-t3-7-growth-patterns-males-females',
+  'module-1-organisms-life-processes',
+  '1.3.7 Growth Patterns of Males and Females',
+  'Compare average male and female growth patterns during childhood and adolescence using CSEC height and mass data and relate the differences to puberty.',
+  160,
+  true,
+  '{
+    "syllabus":{
+      "module":1,
+      "topic":"Reproduction and Growth in Animals",
+      "objective":"1.3.7",
+      "source":"CXC 23/G/SYLL 23, amended 2026"
+    },
+    "lesson":{
+      "objectives":[
+        "Interpret line graphs and tables showing average height and mass at different ages.",
+        "Compare the timing of adolescent growth spurts in boys and girls.",
+        "Calculate changes in height or mass over an age interval.",
+        "Relate puberty to rapid growth and development of secondary sexual characteristics.",
+        "Recognise that population averages do not predict the exact growth pattern of an individual."
+      ],
+      "introduction":"Human growth is not equally rapid at every age. Growth is fast during infancy, slows through much of childhood and increases again during the adolescent growth spurt. Boys and girls show overlapping patterns, but girls usually enter puberty and the adolescent growth spurt earlier on average.",
+      "sections":[
+        {
+          "title":"Reading growth data",
+          "paragraphs":[
+            "A growth graph shows how a measurement such as height changes with age. A steeper line means a greater increase over that interval.",
+            "Always read the axes and units before comparing the curves. A higher curve at one age shows a larger average measurement at that age, but it does not mean every individual in that group is taller or heavier."
+          ]
+        },
+        {
+          "title":"Height pattern in the SPARK CSEC dataset",
+          "paragraphs":[
+            "In the supplied practice dataset, boys and girls have similar average heights in the earlier years. The girls'' curve rises earlier during the first part of adolescence, reflecting the earlier average onset of puberty.",
+            "The boys'' curve becomes steeper later and continues rising strongly through the mid-teen years. By the later teen years, the boys'' average height is greater in this dataset."
+          ]
+        },
+        {
+          "title":"Mass pattern in the SPARK CSEC dataset",
+          "paragraphs":[
+            "At age 12, the table gives an average mass of 40 kg for boys and 42 kg for girls. At age 14, boys average 51 kg and girls 50 kg.",
+            "From age 12 to 14, boys increase by 11 kg, the largest two-year gain shown for boys in this dataset. After age 16, boys also gain more mass than girls in the table."
+          ]
+        },
+        {
+          "title":"Puberty and the growth spurt",
+          "paragraphs":[
+            "Puberty is the stage when reproductive maturity develops under the influence of hormones. It is associated with rapid growth and development of secondary sexual characteristics.",
+            "Girls usually begin puberty earlier on average. Oestrogen contributes to features such as breast development and widening of the hips. Boys generally begin their major adolescent growth spurt later, and testosterone contributes to features such as deepening of the voice, facial hair and broader shoulders."
+          ]
+        },
+        {
+          "title":"Individual variation",
+          "paragraphs":[
+            "Growth charts describe averages and ranges, not a fixed timetable for every person. Genetics, nutrition, health, physical activity, hormones and other factors affect growth.",
+            "A healthy individual may therefore grow earlier, later, faster or more slowly than the average curve."
+          ]
+        },
+        {
+          "title":"How to compare two growth curves",
+          "bullets":[
+            "Identify where one curve lies above the other.",
+            "Look for the steepest section to locate the greatest rate of increase.",
+            "Calculate a change by subtracting the earlier value from the later value.",
+            "Use age intervals, units and numerical evidence in the comparison.",
+            "Relate adolescent differences to the timing of puberty without treating averages as rules for individuals."
+          ]
+        }
+      ],
+      "interactiveModels":[
+        {
+          "id":"m1-t3-7-human-growth",
+          "type":"human-growth",
+          "title":"Human growth data explorer"
+        }
+      ],
+      "keyPoints":[
+        "Human growth is especially rapid during infancy and puberty.",
+        "Girls usually enter puberty and their adolescent growth spurt earlier on average than boys.",
+        "Boys commonly have a later major adolescent growth spurt.",
+        "The steepness of a graph shows how rapidly a measurement is changing.",
+        "The SPARK practice dataset shows girls heavier than boys at age 12 and boys making their greatest two-year mass gain from ages 12 to 14.",
+        "Growth data are averages and do not determine the growth of an individual."
+      ],
+      "workedExample":{
+        "title":"Comparing mass gain",
+        "prompt":"In the CSEC practice table, boys average 40 kg at age 12 and 51 kg at age 14. Girls average 42 kg at age 12 and 50 kg at age 14. Compare the mass gain of the two groups.",
+        "steps":[
+          "Boys: 51 kg - 40 kg = 11 kg.",
+          "Girls: 50 kg - 42 kg = 8 kg.",
+          "Compare the two changes.",
+          "11 kg - 8 kg = 3 kg."
+        ],
+        "answer":"Between ages 12 and 14, boys gain 11 kg on average and girls gain 8 kg on average in this dataset. The boys'' average gain is 3 kg greater."
+      },
+      "checks":[
+        {
+          "prompt":"Why is the steepest section of a growth curve important?",
+          "answer":"It shows the age interval with the greatest increase in the measured quantity.",
+          "explanation":"A steep line represents a large change over a small age interval."
+        },
+        {
+          "prompt":"At age 12 in the SPARK mass dataset, which group is heavier on average?",
+          "answer":"Girls, at 42 kg compared with 40 kg for boys.",
+          "explanation":"The values must be read directly from the table."
+        },
+        {
+          "prompt":"Why do girls often appear to have an earlier adolescent growth spurt than boys?",
+          "answer":"Girls usually enter puberty earlier on average.",
+          "explanation":"The timing of puberty shifts the timing of rapid adolescent growth."
+        },
+        {
+          "prompt":"Why should an average growth curve not be used to predict one student''s exact height?",
+          "answer":"Individuals vary because growth is affected by genetics, nutrition, health, hormones and other factors.",
+          "explanation":"Population averages describe groups, not fixed outcomes for each person."
+        }
+      ],
+      "summary":"Use data to compare growth patterns. Read the axes, identify the steepest sections, calculate changes and relate the adolescent growth spurts to puberty while remembering that individual growth varies."
+    }
+  }'::jsonb
+)
+on conflict (subject_id,topic_id) do update set
+  section_id=excluded.section_id,
+  title=excluded.title,
+  description=excluded.description,
+  sort_order=excluded.sort_order,
+  enabled=excluded.enabled,
+  metadata=excluded.metadata,
+  updated_at=now();
+
+update public.spark_subjects
+set stats=coalesce(stats,'{}'::jsonb)
+  || '{"topicsBuilt":16,"objectivesBuilt":16}'::jsonb,
+updated_at=now()
+where id='integrated-science';
+
+-- ============================================================================
+-- SOURCE 21/120: supabase/migrations/20260921022000_integrated_science_objective_138.sql
+-- ============================================================================
+-- CSEC Integrated Science objective 1.3.8
+insert into public.spark_subject_topics(
+  subject_id,topic_id,section_id,title,description,sort_order,enabled,metadata
+)
+values (
+  'integrated-science',
+  'm1-t3-8-human-population-control',
+  'module-1-organisms-life-processes',
+  '1.3.8 Human Population Growth and Control',
+  'Discuss why rapid population growth can place pressure on food, water, housing, employment and natural resources, and evaluate voluntary approaches to population planning.',
+  170,
+  true,
+  '{
+    "syllabus":{
+      "module":1,
+      "topic":"Reproduction and Growth in Animals",
+      "objective":"1.3.8",
+      "source":"CXC 23/G/SYLL 23, amended 2026"
+    },
+    "lesson":{
+      "objectives":[
+        "Explain how birth rate, death rate, immigration and emigration affect population size.",
+        "Interpret a population-growth graph and calculate change over time.",
+        "Explain how rapid population growth can affect food, water, housing, jobs, waste management and natural resources.",
+        "Explain how teenage pregnancy and early childbearing can increase population growth.",
+        "Assess voluntary approaches such as family-planning education, access to contraception and education of girls and women.",
+        "Explain why population planning should respect individual rights and informed choice."
+      ],
+      "introduction":"Human populations change when births, deaths and migration change. Rapid growth can improve the size of the labour force and increase demand for goods and services, but it can also place heavy pressure on resources and public services when growth is faster than a country can plan for.",
+      "sections":[
+        {
+          "title":"How population size changes",
+          "paragraphs":[
+            "A population increases when births and immigration are greater than deaths and emigration. It decreases when deaths and emigration are greater than births and immigration.",
+            "The natural increase of a population is the difference between births and deaths. Migration also changes the total number of people living in a country."
+          ],
+          "bullets":[
+            "A high birth rate increases population size.",
+            "A falling death rate can increase population growth if the birth rate remains high.",
+            "Immigration adds people to a population.",
+            "Emigration removes people from a population."
+          ]
+        },
+        {
+          "title":"Reading the SPARK CSEC population graph",
+          "paragraphs":[
+            "The practice graph shows a population rising from about 4 million in 1960 to about 28 million in 2020.",
+            "Between 1980 and 2020, the population rises from about 8 million to 28 million. The increase is therefore about 20 million.",
+            "The curve becomes steeper over time, showing that the absolute increase per decade becomes larger in the later part of the graph."
+          ]
+        },
+        {
+          "title":"Pressure on food and water",
+          "paragraphs":[
+            "More people require more food and clean water. If agricultural production, storage and distribution do not keep pace, food shortages and higher prices can occur.",
+            "Greater water demand can place pressure on rivers, reservoirs and groundwater supplies. Poor water infrastructure may increase the risk of shortages and contamination."
+          ]
+        },
+        {
+          "title":"Housing, jobs and public services",
+          "paragraphs":[
+            "Rapid population growth increases demand for housing, schools, health services, transport, electricity and employment.",
+            "When housing supply grows too slowly, overcrowding and informal settlements may increase. When job creation is too slow, unemployment and underemployment can rise."
+          ]
+        },
+        {
+          "title":"Waste and environmental pressure",
+          "paragraphs":[
+            "A larger population produces more sewage and solid waste. Without adequate collection and treatment, pollution and disease risk can increase.",
+            "Growing demand for land, food, timber and energy can contribute to deforestation, habitat loss, soil degradation, overfishing and pressure on fresh water."
+          ]
+        },
+        {
+          "title":"Teenage pregnancy and population growth",
+          "paragraphs":[
+            "When childbearing begins at a younger age, the time between generations becomes shorter. If a person also has more reproductive years remaining, the number of children over a lifetime may be greater.",
+            "For this reason, high rates of teenage pregnancy can contribute to faster population growth in a community or country."
+          ]
+        },
+        {
+          "title":"Voluntary family planning",
+          "paragraphs":[
+            "Family-planning education helps people understand reproduction, contraception, birth spacing and the health and economic effects of family size.",
+            "Voluntary access to safe and suitable contraceptive methods allows people to decide whether and when to have children. These decisions should be informed and free from coercion."
+          ]
+        },
+        {
+          "title":"Education and opportunity",
+          "paragraphs":[
+            "Continued education for girls and women is associated with wider employment opportunities, later average age at first birth and greater ability to make informed reproductive decisions.",
+            "Education of both males and females is important because decisions about relationships, contraception, parenting and family size involve shared responsibility."
+          ]
+        },
+        {
+          "title":"Population planning and human rights",
+          "paragraphs":[
+            "Governments need population information to plan schools, hospitals, housing, water systems, food supply, transport and waste management.",
+            "Population programmes should support voluntary, informed decisions and respect individual rights. Coercive population policies can cause serious ethical and social harm."
+          ]
+        }
+      ],
+      "interactiveModels":[
+        {
+          "id":"m1-t3-8-population-growth",
+          "type":"population-growth",
+          "title":"Population growth and resource pressure"
+        }
+      ],
+      "keyPoints":[
+        "Population change depends on births, deaths, immigration and emigration.",
+        "The SPARK practice graph increases from about 8 million in 1980 to 28 million in 2020, an increase of about 20 million.",
+        "Rapid population growth can increase demand for food, water, housing, jobs, schools, health care and waste services.",
+        "Population growth can increase pressure on forests, habitats, fresh water and other natural resources.",
+        "Early childbearing shortens generation time and can contribute to faster population growth.",
+        "Family-planning education and voluntary access to contraception support informed birth spacing and family-size decisions.",
+        "Population planning should respect human rights and informed choice."
+      ],
+      "workedExample":{
+        "title":"Calculating population increase",
+        "prompt":"A graph shows a population of 8 million in 1980 and 28 million in 2020. Calculate the increase and state one likely pressure caused by this growth.",
+        "steps":[
+          "Read the two population values from the graph.",
+          "Subtract the earlier population from the later population.",
+          "28 million - 8 million = 20 million.",
+          "Link the increase to a resource or service that more people require."
+        ],
+        "answer":"The population increased by about 20 million. One likely pressure is greater demand for housing, food, clean water or jobs."
+      },
+      "checks":[
+        {
+          "prompt":"When does a population increase naturally?",
+          "answer":"When the number of births is greater than the number of deaths.",
+          "explanation":"Migration also changes total population size, but natural increase refers to births minus deaths."
+        },
+        {
+          "prompt":"Why can better health care increase population growth?",
+          "answer":"If health care lowers the death rate while the birth rate remains high, more people survive and the population grows.",
+          "explanation":"Population growth depends on the balance between births and deaths."
+        },
+        {
+          "prompt":"How can teenage pregnancy contribute to rapid population growth?",
+          "answer":"Earlier childbearing shortens the time between generations and may increase the number of children a person has over a lifetime.",
+          "explanation":"Shorter generation intervals can increase the rate at which a population grows."
+        },
+        {
+          "prompt":"State two voluntary measures that can help reduce rapid population growth.",
+          "answer":"Examples include family-planning education, access to contraception, sex education and continued education of girls and women.",
+          "explanation":"These approaches support informed decisions rather than coercion."
+        }
+      ],
+      "summary":"Population growth must be understood through data and resource demand. Compare births and deaths, include migration, calculate changes from graphs and connect rapid growth to food, water, housing, employment, public services and environmental pressure."
+    }
+  }'::jsonb
+)
+on conflict (subject_id,topic_id) do update set
+  section_id=excluded.section_id,
+  title=excluded.title,
+  description=excluded.description,
+  sort_order=excluded.sort_order,
+  enabled=excluded.enabled,
+  metadata=excluded.metadata,
+  updated_at=now();
+
+update public.spark_subjects
+set stats=coalesce(stats,'{}'::jsonb)
+  || '{"topicsBuilt":17,"objectivesBuilt":17}'::jsonb,
+updated_at=now()
+where id='integrated-science';
+
+-- ============================================================================
+-- SOURCE 22/120: supabase/migrations/20260921022500_integrated_science_objective_141.sql
+-- ============================================================================
+-- CSEC Integrated Science objective 1.4.1
+insert into public.spark_subject_topics(
+  subject_id,topic_id,section_id,title,description,sort_order,enabled,metadata
+)
+values (
+  'integrated-science',
+  'm1-t4-1-need-for-transport-systems',
+  'module-1-organisms-life-processes',
+  '1.4.1 Why Living Organisms Need Transport Systems',
+  'Justify the need for transport systems by relating surface-area-to-volume ratio and diffusion distance to the movement of materials in large organisms, and connect plant water transport to transpiration.',
+  180,
+  true,
+  '{
+    "syllabus":{
+      "module":1,
+      "topic":"Transport Systems",
+      "objective":"1.4.1",
+      "source":"CXC 23/G/SYLL 23, amended 2026"
+    },
+    "lesson":{
+      "objectives":[
+        "Calculate surface area, volume and surface-area-to-volume ratio for cubes.",
+        "Explain why diffusion alone can meet the needs of small organisms but not large multicellular organisms.",
+        "State substances carried by human transport systems.",
+        "Define transpiration and relate it to water movement through xylem.",
+        "Predict how temperature, humidity, wind and light affect transpiration.",
+        "Interpret a potometer investigation and identify suitable variables and precautions."
+      ],
+      "introduction":"Every living cell needs materials such as oxygen, water and nutrients and must remove waste products. Small organisms can exchange enough material directly across their surface. In larger multicellular organisms, many cells lie far from the body surface and diffusion distances are longer, so specialised transport systems are needed.",
+      "sections":[
+        {
+          "title":"Surface area compared with volume",
+          "paragraphs":[
+            "As an object becomes larger, its volume increases faster than its surface area. This means its surface-area-to-volume ratio decreases.",
+            "For a cube, surface area is 6 × side² and volume is side³. A 1 cm cube has a ratio of 6:1, a 2 cm cube has a ratio of 3:1, and a 3 cm cube has a ratio of 2:1.",
+            "The smaller cube therefore has more surface area available for exchange relative to the amount of material inside it."
+          ]
+        },
+        {
+          "title":"The agar-cube diffusion investigation",
+          "paragraphs":[
+            "Agar cubes containing an indicator can be placed in dilute acid. The acid diffuses inward from the surface and changes the colour of the indicator.",
+            "The 1 cm cube has the largest surface-area-to-volume ratio and the shortest distance from its surface to its centre, so acid reaches the centre first.",
+            "As surface-area-to-volume ratio decreases, the time needed for diffusion to reach the centre increases."
+          ],
+          "bullets":[
+            "1 cm cube: surface area 6 cm², volume 1 cm³, ratio 6:1.",
+            "2 cm cube: surface area 24 cm², volume 8 cm³, ratio 3:1.",
+            "3 cm cube: surface area 54 cm², volume 27 cm³, ratio 2:1."
+          ]
+        },
+        {
+          "title":"Why small organisms can rely on diffusion",
+          "paragraphs":[
+            "A unicellular organism such as Amoeba has a large surface area relative to its volume and all parts of the cytoplasm are close to the cell surface.",
+            "Oxygen and dissolved nutrients can therefore diffuse inward over short distances, while carbon dioxide and other wastes can diffuse outward."
+          ]
+        },
+        {
+          "title":"Why large organisms need bulk transport",
+          "paragraphs":[
+            "Large multicellular organisms have a smaller surface-area-to-volume ratio, and many cells are located deep inside the body. Diffusion over these distances would be too slow to meet the needs of active cells.",
+            "A transport system moves materials quickly between exchange surfaces and cells. In humans, blood carries oxygen and digested food to cells and carries carbon dioxide, urea and other wastes away.",
+            "Undigested fibre is not transported around the body by blood. It remains in the alimentary canal and is eventually egested."
+          ]
+        },
+        {
+          "title":"Water transport in flowering plants",
+          "paragraphs":[
+            "Plant roots absorb water from the soil. Water and dissolved mineral ions move upward through xylem vessels to stems and leaves.",
+            "Water is needed for photosynthesis, maintaining cell turgor, transport of mineral ions and other cell processes."
+          ]
+        },
+        {
+          "title":"Transpiration and the transpiration stream",
+          "paragraphs":[
+            "Transpiration is the loss of water vapour from the aerial parts of a plant, mainly through stomata in the leaves.",
+            "Water evaporates from moist cell surfaces inside the leaf and water vapour diffuses out through stomata. This loss of water helps create a transpiration pull that draws a continuous column of water upward through the xylem.",
+            "The transpiration stream also carries dissolved mineral ions from the roots and evaporation can help cool the leaves."
+          ]
+        },
+        {
+          "title":"Environmental factors affecting transpiration",
+          "bullets":[
+            "Higher temperature usually increases evaporation and therefore increases transpiration if water is available.",
+            "Moving air removes humid air from around the leaf, maintaining a steep water-vapour concentration gradient and increasing transpiration.",
+            "High humidity reduces the concentration gradient between the leaf and the air, so transpiration decreases.",
+            "Bright light usually increases transpiration because stomata tend to open for photosynthesis.",
+            "Darkness usually reduces transpiration because stomata tend to close."
+          ]
+        },
+        {
+          "title":"Wilting",
+          "paragraphs":[
+            "On a hot, sunny day a plant can lose water by transpiration faster than its roots replace it. Cells then lose water and turgor pressure decreases.",
+            "Leaves and young stems become less firm, producing wilting. If water uptake catches up with water loss, turgor can be restored."
+          ]
+        },
+        {
+          "title":"Using a potometer",
+          "paragraphs":[
+            "A potometer measures the rate at which a leafy shoot takes up water. Water uptake is commonly used as an estimate of transpiration rate, although not every molecule of water taken up is lost by transpiration.",
+            "An air bubble in the capillary tube acts as a marker. Faster movement of the bubble over a fixed time indicates a faster rate of water uptake."
+          ],
+          "bullets":[
+            "Manipulated variable: for example presence or speed of wind from a fan.",
+            "Responding variable: distance moved by the air bubble in a fixed time, or calculated rate of water uptake.",
+            "Keep light, temperature, leaf area and measurement time constant when wind is being tested.",
+            "Cut the shoot under water to reduce the chance of air entering the xylem.",
+            "Make sure the apparatus is airtight.",
+            "Repeat readings and calculate an average."
+          ]
+        },
+        {
+          "title":"Predicting potometer results",
+          "paragraphs":[
+            "A shoot next to a fan in bright light should usually show faster bubble movement because wind and light increase transpiration.",
+            "If the shoot is covered with a clear plastic bag, water vapour accumulates and humidity rises around the leaves. The water-vapour gradient becomes smaller, so transpiration and bubble movement decrease."
+          ]
+        }
+      ],
+      "interactiveModels":[
+        {
+          "id":"m1-t4-1-transport-system-need",
+          "type":"transport-system-need",
+          "title":"Why organisms need transport systems"
+        }
+      ],
+      "keyPoints":[
+        "As organism size increases, surface-area-to-volume ratio decreases.",
+        "Large organisms have long diffusion distances, so diffusion alone is too slow to supply all cells.",
+        "Bulk transport moves useful substances to cells and carries wastes away.",
+        "Xylem carries water and mineral ions upward in flowering plants.",
+        "Transpiration is the loss of water vapour mainly through leaf stomata.",
+        "Wind, higher temperature and bright light generally increase transpiration, while high humidity generally reduces it.",
+        "A potometer estimates transpiration by measuring water uptake by a leafy shoot."
+      ],
+      "workedExample":{
+        "title":"Surface-area-to-volume ratio of a 2 cm cube",
+        "prompt":"Calculate the surface-area-to-volume ratio of a cube with sides 2 cm long and explain why acid reaches its centre more slowly than the centre of a 1 cm cube.",
+        "steps":[
+          "Surface area = 6 × side² = 6 × 2² = 24 cm².",
+          "Volume = side³ = 2³ = 8 cm³.",
+          "Surface area : volume = 24 : 8 = 3 : 1.",
+          "A 1 cm cube has a larger ratio of 6:1 and a shorter diffusion distance to the centre."
+        ],
+        "answer":"The 2 cm cube has a surface-area-to-volume ratio of 3:1. Acid reaches its centre more slowly because less surface area is available per unit volume and the diffusion distance to the centre is greater."
+      },
+      "checks":[
+        {
+          "prompt":"Why does a large multicellular organism need a transport system?",
+          "answer":"It has a relatively small surface-area-to-volume ratio and many cells are far from the body surface, so diffusion alone is too slow.",
+          "explanation":"Bulk transport shortens the effective distance over which materials must diffuse to reach cells."
+        },
+        {
+          "prompt":"What is transpiration?",
+          "answer":"The loss of water vapour from the aerial parts of a plant, mainly through stomata in the leaves.",
+          "explanation":"Water evaporates inside the leaf and then diffuses out as vapour."
+        },
+        {
+          "prompt":"Why does high humidity reduce transpiration?",
+          "answer":"It reduces the water-vapour concentration gradient between the inside of the leaf and the surrounding air.",
+          "explanation":"A smaller gradient reduces the rate of diffusion of water vapour from the leaf."
+        },
+        {
+          "prompt":"Why should a shoot be cut under water when setting up a potometer?",
+          "answer":"To reduce the chance of air entering the xylem.",
+          "explanation":"Air bubbles in the xylem can break the continuous water column and interfere with water uptake."
+        }
+      ],
+      "summary":"The need for transport follows from scale. Larger organisms have less surface area relative to their volume and longer diffusion distances, so they use specialised transport systems. In plants, water movement through xylem is closely linked to transpiration from the leaves."
+    }
+  }'::jsonb
+)
+on conflict (subject_id,topic_id) do update set
+  section_id=excluded.section_id,
+  title=excluded.title,
+  description=excluded.description,
+  sort_order=excluded.sort_order,
+  enabled=excluded.enabled,
+  metadata=excluded.metadata,
+  updated_at=now();
+
+update public.spark_subjects
+set stats=coalesce(stats,'{}'::jsonb)
+  || '{"topicsBuilt":18,"objectivesBuilt":18}'::jsonb,
+updated_at=now()
+where id='integrated-science';
+
+-- ============================================================================
+-- SOURCE 23/120: supabase/migrations/20260921023000_integrated_science_objective_142.sql
+-- ============================================================================
+-- CSEC Integrated Science objective 1.4.2
+insert into public.spark_subject_topics(
+  subject_id,topic_id,section_id,title,description,sort_order,enabled,metadata
+)
+values (
+  'integrated-science',
+  'm1-t4-2-transport-structures-functions',
+  'module-1-organisms-life-processes',
+  '1.4.2 Structures and Functions in Transport Systems',
+  'Relate blood cells, blood vessels, heart structures, xylem and phloem to the transport functions they perform.',
+  190,
+  true,
+  '{
+    "syllabus":{
+      "module":1,
+      "topic":"Transport Systems",
+      "objective":"1.4.2",
+      "source":"CXC 23/G/SYLL 23, amended 2026"
+    },
+    "lesson":{
+      "objectives":[
+        "Relate the structures of red blood cells, white blood cells, platelets and plasma to their functions.",
+        "Compare arteries, veins and capillaries in structure and function.",
+        "Identify the main chambers, valves and blood vessels of the human heart.",
+        "Trace the pathway of blood through the heart, lungs and body.",
+        "Describe diastole, atrial systole and ventricular systole.",
+        "Compare xylem and phloem in terms of structure, substances transported and direction of movement.",
+        "Explain why removing a complete ring of bark can eventually kill a tree."
+      ],
+      "introduction":"Transport systems work because their structures are suited to their functions. Blood components carry different materials, arteries and veins withstand different pressures, capillaries provide thin exchange surfaces, heart chambers generate pressure, and plant vascular tissues move water, minerals and sugars.",
+      "sections":[
+        {
+          "title":"Blood plasma",
+          "paragraphs":[
+            "Plasma is the liquid part of blood and is mostly water. It carries blood cells and dissolved substances around the body.",
+            "Substances transported in plasma include glucose, amino acids, mineral ions, hormones, urea, much of the carbon dioxide, antibodies and other plasma proteins. Plasma also helps distribute heat."
+          ]
+        },
+        {
+          "title":"Red blood cells",
+          "paragraphs":[
+            "Red blood cells transport oxygen. They contain haemoglobin, which combines reversibly with oxygen in the lungs and releases it in tissues where oxygen concentration is lower.",
+            "A mature human red blood cell has no nucleus, leaving more space for haemoglobin. Its biconcave shape gives a large surface area and a short diffusion distance for oxygen."
+          ],
+          "bullets":[
+            "Red blood cells are flexible enough to pass through narrow capillaries.",
+            "Extra red blood cells increase the oxygen-carrying capacity of blood. This is why blood doping can improve endurance performance, although it is prohibited in sport and carries health risks."
+          ]
+        },
+        {
+          "title":"White blood cells and platelets",
+          "paragraphs":[
+            "Phagocytes protect the body by engulfing and digesting pathogens. Their flexible shape allows them to leave capillaries and move through tissues.",
+            "Lymphocytes produce antibodies that are specific to antigens on pathogens. Some lymphocytes form memory cells that support a faster response during later exposure.",
+            "Platelets are small cell fragments involved in blood clotting. At a damaged vessel they help start reactions that form a clot, reducing blood loss and helping block entry of pathogens."
+          ]
+        },
+        {
+          "title":"Arteries",
+          "paragraphs":[
+            "Arteries carry blood away from the heart. Blood leaves the ventricles under high pressure, so arteries have thick muscular and elastic walls.",
+            "Elastic tissue stretches when pressure rises and recoils when pressure falls, helping maintain blood flow between heartbeats. Arteries have a relatively narrow lumen compared with veins."
+          ]
+        },
+        {
+          "title":"Veins",
+          "paragraphs":[
+            "Veins carry blood towards the heart at lower pressure. Their walls are thinner than artery walls and their lumens are wider.",
+            "Many veins contain valves. These valves prevent backflow and help maintain one-way movement towards the heart, especially in the limbs."
+          ]
+        },
+        {
+          "title":"Capillaries",
+          "paragraphs":[
+            "Capillaries are microscopic vessels that connect small arteries to small veins and form dense networks close to body cells.",
+            "Their walls are only one cell thick, creating a short diffusion distance. Their narrow lumen slows blood flow and brings red cells close to the wall, supporting exchange of oxygen, nutrients and wastes."
+          ]
+        },
+        {
+          "title":"The four chambers of the heart",
+          "paragraphs":[
+            "The right atrium receives deoxygenated blood from the body through the vena cava. It passes blood through the tricuspid valve into the right ventricle.",
+            "The right ventricle pumps blood through the pulmonary artery to the lungs. Oxygenated blood returns through the pulmonary veins to the left atrium and passes through the bicuspid, or mitral, valve into the left ventricle.",
+            "The left ventricle pumps blood into the aorta and around the entire body. Its muscular wall is much thicker than the right ventricular wall because it must generate higher pressure for the systemic circulation."
+          ]
+        },
+        {
+          "title":"Valves and one-way flow",
+          "paragraphs":[
+            "Heart valves prevent backflow. The tricuspid valve lies between the right atrium and right ventricle, while the bicuspid valve lies between the left atrium and left ventricle.",
+            "Semilunar valves at the bases of the pulmonary artery and aorta prevent blood returning to the ventricles after it has been ejected."
+          ]
+        },
+        {
+          "title":"Pathway of blood",
+          "bullets":[
+            "Body → vena cava → right atrium → tricuspid valve → right ventricle → pulmonary artery → lungs.",
+            "Lungs → pulmonary veins → left atrium → bicuspid valve → left ventricle → aorta → body.",
+            "The pulmonary artery carries deoxygenated blood even though it is an artery.",
+            "The pulmonary veins carry oxygenated blood even though they are veins."
+          ]
+        },
+        {
+          "title":"The heartbeat",
+          "paragraphs":[
+            "During diastole, the heart muscle relaxes and the chambers fill with blood. The atrioventricular valves are open while blood flows from atria to ventricles.",
+            "During atrial systole, the atria contract and push the remaining blood into the ventricles.",
+            "During ventricular systole, the ventricles contract. The tricuspid and bicuspid valves close, preventing backflow into the atria, and blood is forced into the pulmonary artery and aorta."
+          ]
+        },
+        {
+          "title":"Xylem",
+          "paragraphs":[
+            "Xylem carries water and dissolved mineral ions mainly upward from roots to leaves. Mature xylem vessels are formed from dead cells joined end to end to make long hollow tubes.",
+            "Their walls are strengthened with lignin, which helps prevent collapse under tension and also gives mechanical support to the plant."
+          ]
+        },
+        {
+          "title":"Phloem",
+          "paragraphs":[
+            "Phloem transports dissolved organic food, mainly sucrose, from sources to sinks. Sources are regions that release sugar, such as photosynthesising leaves. Sinks are regions that use or store sugar, such as roots, fruits and growing tissues.",
+            "Phloem contains living sieve-tube elements supported by companion cells. Transport can occur upward or downward depending on the locations of sources and sinks."
+          ]
+        },
+        {
+          "title":"Ringing a tree",
+          "paragraphs":[
+            "Phloem lies close to the inner bark. If a complete ring of bark is removed around a trunk, phloem transport across that ring is interrupted.",
+            "Sugars made in the leaves cannot reach the roots below the ring. The roots eventually run out of stored food, respiration and active uptake decline, and the tree may die."
+          ]
+        }
+      ],
+      "interactiveModels":[
+        {
+          "id":"m1-t4-2-transport-structures",
+          "type":"transport-structures",
+          "title":"Transport structures and functions"
+        }
+      ],
+      "interactiveDiagrams":[
+        {
+          "id":"m1-t4-2-human-heart",
+          "template":"human-heart",
+          "title":"Label the human heart",
+          "instructions":"Place each label on the correct heart structure. On a phone or tablet, tap a label and then tap the numbered target.",
+          "labels":[
+            {"id":"right-atrium","text":"Right atrium","hint":"This upper chamber receives blood from the vena cava.","explanation":"The right atrium receives deoxygenated blood returning from the body."},
+            {"id":"right-ventricle","text":"Right ventricle","hint":"This lower chamber pumps blood towards the lungs.","explanation":"The right ventricle pumps deoxygenated blood into the pulmonary artery."},
+            {"id":"left-atrium","text":"Left atrium","hint":"This upper chamber receives blood returning from the lungs.","explanation":"The left atrium receives oxygenated blood through the pulmonary veins."},
+            {"id":"left-ventricle","text":"Left ventricle","hint":"Look for the lower chamber with the thickest muscular wall.","explanation":"The left ventricle pumps blood at high pressure through the aorta to the body."},
+            {"id":"aorta","text":"Aorta","hint":"This large artery leaves the left ventricle and arches upward.","explanation":"The aorta carries oxygenated blood from the left ventricle to the systemic circulation."},
+            {"id":"vena-cava","text":"Vena cava","hint":"This large vein returns blood from the body to the right atrium.","explanation":"The vena cava carries deoxygenated blood from the body to the right atrium."},
+            {"id":"pulmonary-artery","text":"Pulmonary artery","hint":"This vessel leaves the right ventricle and carries blood to the lungs.","explanation":"The pulmonary artery carries deoxygenated blood from the right ventricle to the lungs."},
+            {"id":"pulmonary-vein","text":"Pulmonary vein","hint":"This vessel enters the left atrium from the lungs.","explanation":"Pulmonary veins carry oxygenated blood from the lungs to the left atrium."},
+            {"id":"tricuspid","text":"Tricuspid valve","hint":"This valve lies between the right atrium and right ventricle.","explanation":"The tricuspid valve prevents backflow from the right ventricle into the right atrium."},
+            {"id":"bicuspid","text":"Bicuspid valve","hint":"This valve lies between the left atrium and left ventricle.","explanation":"The bicuspid, or mitral, valve prevents backflow from the left ventricle into the left atrium."}
+          ],
+          "targets":[
+            {"id":"heart-ra-target","labelId":"right-atrium","boxX":20,"boxY":55,"anchorX":390,"anchorY":230,"side":"left"},
+            {"id":"heart-rv-target","labelId":"right-ventricle","boxX":20,"boxY":125,"anchorX":400,"anchorY":390,"side":"left"},
+            {"id":"heart-vena-target","labelId":"vena-cava","boxX":20,"boxY":195,"anchorX":365,"anchorY":105,"side":"left"},
+            {"id":"heart-pa-target","labelId":"pulmonary-artery","boxX":20,"boxY":265,"anchorX":530,"anchorY":175,"side":"left"},
+            {"id":"heart-tricuspid-target","labelId":"tricuspid","boxX":20,"boxY":335,"anchorX":420,"anchorY":308,"side":"left"},
+            {"id":"heart-la-target","labelId":"left-atrium","boxX":790,"boxY":55,"anchorX":610,"anchorY":230,"side":"right"},
+            {"id":"heart-lv-target","labelId":"left-ventricle","boxX":790,"boxY":125,"anchorX":600,"anchorY":390,"side":"right"},
+            {"id":"heart-aorta-target","labelId":"aorta","boxX":790,"boxY":195,"anchorX":650,"anchorY":80,"side":"right"},
+            {"id":"heart-pv-target","labelId":"pulmonary-vein","boxX":790,"boxY":265,"anchorX":690,"anchorY":220,"side":"right"},
+            {"id":"heart-bicuspid-target","labelId":"bicuspid","boxX":790,"boxY":335,"anchorX":590,"anchorY":308,"side":"right"}
+          ]
+        }
+      ],
+      "keyPoints":[
+        "Red blood cells carry oxygen using haemoglobin and have no nucleus when mature.",
+        "Phagocytes engulf pathogens, lymphocytes produce antibodies, and platelets help blood clot.",
+        "Arteries have thick muscular and elastic walls, veins have valves and a wide lumen, and capillaries have walls one cell thick.",
+        "The left ventricle has the thickest wall because it pumps blood around the whole body.",
+        "Heart valves prevent backflow and maintain one-way movement.",
+        "The pulmonary artery carries deoxygenated blood to the lungs and pulmonary veins return oxygenated blood to the heart.",
+        "Xylem carries water and mineral ions mainly upward. Phloem transports dissolved food to sources and sinks in either direction."
+      ],
+      "workedExample":{
+        "title":"Explaining the thick wall of the left ventricle",
+        "prompt":"The wall of the left ventricle is much thicker than the wall of the right ventricle. Explain why.",
+        "steps":[
+          "Identify where each ventricle sends blood.",
+          "The right ventricle pumps only to the nearby lungs.",
+          "The left ventricle pumps through the systemic circulation to the whole body.",
+          "The left ventricle therefore needs more muscle to generate greater pressure."
+        ],
+        "answer":"The left ventricle has a thicker muscular wall because it must generate high pressure to pump blood around the whole body, while the right ventricle only pumps blood to the lungs."
+      },
+      "checks":[
+        {
+          "prompt":"Why are red blood cells well adapted to carry oxygen?",
+          "answer":"They contain haemoglobin, lack a nucleus when mature and have a biconcave shape that provides a large surface area and short diffusion distance.",
+          "explanation":"These features increase the amount and rate of oxygen transport."
+        },
+        {
+          "prompt":"Why do veins contain valves?",
+          "answer":"To prevent backflow of blood and maintain movement towards the heart.",
+          "explanation":"Blood pressure in veins is relatively low."
+        },
+        {
+          "prompt":"Trace the path of blood from the lungs to the body.",
+          "answer":"Pulmonary vein → left atrium → bicuspid valve → left ventricle → aorta → body.",
+          "explanation":"This is the oxygenated side of the double circulation."
+        },
+        {
+          "prompt":"Compare xylem and phloem transport.",
+          "answer":"Xylem carries water and mineral ions mainly upward from roots, while phloem carries dissolved organic food such as sucrose between sources and sinks and can transport in either direction.",
+          "explanation":"The tissues differ in both the materials carried and the direction of movement."
+        }
+      ],
+      "summary":"Structure determines transport function. Thick artery and ventricular walls handle pressure, thin capillary walls support exchange, valves maintain one-way flow, blood cells are specialised for transport and defence, and plant vascular tissues are specialised for water, minerals and food."
+    }
+  }'::jsonb
+)
+on conflict (subject_id,topic_id) do update set
+  section_id=excluded.section_id,
+  title=excluded.title,
+  description=excluded.description,
+  sort_order=excluded.sort_order,
+  enabled=excluded.enabled,
+  metadata=excluded.metadata,
+  updated_at=now();
+
+insert into public.spark_subject_activity_catalog(
+  subject_id,activity_key,activity_type,section_id,topic_id,title,route,evidence_weight,enabled,metadata
+)
+values (
+  'integrated-science',
+  'diagram:m1-t4-2-human-heart',
+  'diagram',
+  'module-1-organisms-life-processes',
+  'm1-t4-2-transport-structures-functions',
+  'Label the human heart',
+  '/study/integrated-science?section=module-1-organisms-life-processes&topic=m1-t4-2-transport-structures-functions',
+  0.35,
+  true,
+  '{"syllabusObjective":"1.4.2","mode":"drag-drop-label"}'::jsonb
+)
+on conflict (subject_id,activity_key) do update set
+  activity_type=excluded.activity_type,
+  section_id=excluded.section_id,
+  topic_id=excluded.topic_id,
+  title=excluded.title,
+  route=excluded.route,
+  evidence_weight=excluded.evidence_weight,
+  enabled=excluded.enabled,
+  metadata=excluded.metadata,
+  updated_at=now();
+
+update public.spark_subjects
+set stats=coalesce(stats,'{}'::jsonb)
+  || '{"topicsBuilt":19,"objectivesBuilt":19}'::jsonb,
+updated_at=now()
+where id='integrated-science';
+
+-- ============================================================================
+-- SOURCE 24/120: supabase/migrations/20260921023500_integrated_science_objective_143.sql
+-- ============================================================================
+-- CSEC Integrated Science objective 1.4.3
+insert into public.spark_subject_topics(
+  subject_id,topic_id,section_id,title,description,sort_order,enabled,metadata
+)
+values (
+  'integrated-science',
+  'm1-t4-3-blood-groups',
+  'module-1-organisms-life-processes',
+  '1.4.3 Blood Groups',
+  'Distinguish ABO and Rhesus blood groups using red-cell antigens, plasma antibodies, agglutination tests, inheritance and transfusion compatibility.',
+  200,
+  true,
+  '{
+    "syllabus":{
+      "module":1,
+      "topic":"Transport Systems",
+      "objective":"1.4.3",
+      "source":"CXC 23/G/SYLL 23, amended 2026"
+    },
+    "lesson":{
+      "objectives":[
+        "Distinguish blood groups A, B, AB and O by their red-cell antigens and plasma antibodies.",
+        "Interpret blood-typing tests using anti-A and anti-B sera.",
+        "Explain agglutination and why incompatible red-cell transfusions are dangerous.",
+        "Use an ABO compatibility table while recognising that clinical transfusion also requires Rh typing and cross-matching.",
+        "Explain how ABO blood group is inherited.",
+        "Explain Rhesus incompatibility in pregnancy and the purpose of anti-D immunoglobulin.",
+        "State basic safety precautions when handling blood."
+      ],
+      "introduction":"Blood groups are determined by antigens on the surface of red blood cells. In the ABO system, the important antigens are A and B. Plasma can contain antibodies against whichever ABO antigen is absent. If a matching antibody meets its antigen on transfused red cells, agglutination can occur.",
+      "sections":[
+        {
+          "title":"Blood group A",
+          "paragraphs":[
+            "Group A red blood cells carry antigen A. The plasma contains anti-B antibodies.",
+            "In an ABO typing test, group A blood clumps with anti-A serum but does not clump with anti-B serum."
+          ]
+        },
+        {
+          "title":"Blood group B",
+          "paragraphs":[
+            "Group B red blood cells carry antigen B. The plasma contains anti-A antibodies.",
+            "In an ABO typing test, group B blood does not clump with anti-A serum but clumps with anti-B serum."
+          ]
+        },
+        {
+          "title":"Blood group AB",
+          "paragraphs":[
+            "Group AB red blood cells carry both antigen A and antigen B. The plasma normally contains neither anti-A nor anti-B antibodies.",
+            "In an ABO typing test, group AB blood clumps with both anti-A and anti-B sera."
+          ]
+        },
+        {
+          "title":"Blood group O",
+          "paragraphs":[
+            "Group O red blood cells carry neither antigen A nor antigen B. The plasma contains both anti-A and anti-B antibodies.",
+            "In an ABO typing test, group O blood does not clump with either anti-A or anti-B serum."
+          ]
+        },
+        {
+          "title":"Agglutination",
+          "paragraphs":[
+            "Agglutination is the clumping of red blood cells when antibodies bind to matching antigens on their surfaces.",
+            "For example, anti-A antibodies react with red cells carrying antigen A. In an incompatible transfusion, widespread agglutination and destruction of red cells can obstruct small vessels and cause a dangerous transfusion reaction."
+          ]
+        },
+        {
+          "title":"Reading the W, X, Y and Z blood test",
+          "paragraphs":[
+            "The SPARK question-bank table shows sample W clumping with anti-A only, so W is group A. Sample X clumps with anti-B only, so X is group B.",
+            "Sample Y clumps with both sera, so Y is group AB. Sample Z does not clump with either serum, so Z is group O."
+          ]
+        },
+        {
+          "title":"ABO red-cell compatibility",
+          "paragraphs":[
+            "For ABO red-cell transfusion, donor red-cell antigens must not react with antibodies in the recipient plasma.",
+            "Group A can receive ABO red cells from A or O. Group B can receive from B or O. Group AB can receive from A, B, AB or O in the ABO system. Group O can receive ABO red cells only from O."
+          ],
+          "bullets":[
+            "Group O red cells have no A or B antigens. This is why school questions often describe group O as the universal donor in the ABO system.",
+            "Group AB plasma has no anti-A or anti-B antibodies. This is why school questions often describe group AB as the universal recipient in the ABO system.",
+            "In real transfusion practice, Rh type and other red-cell antigens also matter. O negative red cells are used when a broadly compatible emergency red-cell type is required, and compatibility testing remains essential."
+          ]
+        },
+        {
+          "title":"Cross-matching",
+          "paragraphs":[
+            "Before a planned transfusion, laboratory staff determine blood groups and cross-match donor red cells with recipient plasma to look for harmful reactions.",
+            "Cross-matching reduces the risk of agglutination caused by ABO, Rh or other clinically important blood-group antigens."
+          ]
+        },
+        {
+          "title":"Inheritance of ABO blood group",
+          "paragraphs":[
+            "ABO blood group is inherited through genes from both parents. The A and B alleles are codominant, while the O allele is recessive to both A and B.",
+            "A person with group A may carry A and A or A and O alleles. A person with group B may carry B and B or B and O. Group AB has one A and one B allele, while group O has two O alleles.",
+            "Because group A and group B parents may each carry an O allele, some A-by-B parental combinations can produce children with group A, B, AB or O."
+          ]
+        },
+        {
+          "title":"The Rhesus factor",
+          "paragraphs":[
+            "The Rhesus, or Rh, system is separate from the ABO system. A person whose red cells carry the D antigen is described as Rh positive. A person without the D antigen is Rh negative.",
+            "Rh type must be considered in transfusion compatibility as well as ABO type."
+          ]
+        },
+        {
+          "title":"Rhesus incompatibility in pregnancy",
+          "paragraphs":[
+            "An Rh-negative mother carrying an Rh-positive foetus can be exposed to small numbers of foetal Rh-positive red cells, especially around delivery. This exposure can sensitise her immune system to the D antigen.",
+            "After sensitisation, maternal anti-D antibodies can cross the placenta during a later Rh-positive pregnancy and destroy foetal red blood cells. This can cause haemolytic disease of the foetus and newborn."
+          ]
+        },
+        {
+          "title":"Why anti-D is given",
+          "paragraphs":[
+            "Anti-D immunoglobulin is given to eligible Rh-negative pregnant women at recommended times and after events where Rh-positive foetal cells may enter the maternal circulation.",
+            "The anti-D removes or neutralises Rh-positive foetal red cells before the mother develops her own long-lasting immune response, reducing the risk of sensitisation and protecting future Rh-positive pregnancies."
+          ]
+        },
+        {
+          "title":"Handling blood safely",
+          "paragraphs":[
+            "Blood must be treated as potentially infectious. Health workers use gloves and other infection-control procedures to reduce exposure to blood-borne pathogens such as HIV and hepatitis viruses.",
+            "Gloves do not prevent agglutination. Their purpose is to reduce contact between blood and the worker."
+          ]
+        }
+      ],
+      "interactiveModels":[
+        {
+          "id":"m1-t4-3-blood-groups",
+          "type":"blood-groups",
+          "title":"ABO and Rhesus blood groups"
+        }
+      ],
+      "keyPoints":[
+        "Group A has antigen A and anti-B antibodies.",
+        "Group B has antigen B and anti-A antibodies.",
+        "Group AB has both A and B antigens and neither anti-A nor anti-B antibodies.",
+        "Group O has neither A nor B antigen and has both anti-A and anti-B antibodies.",
+        "Agglutination occurs when an antibody reacts with its matching antigen on red cells.",
+        "ABO typing uses anti-A and anti-B sera. Clumping shows that the corresponding antigen is present.",
+        "ABO-only compatibility is a simplified school model. Rh type, other antigens and cross-matching are also important in real transfusion practice.",
+        "Anti-D immunoglobulin helps prevent sensitisation of an Rh-negative mother to Rh-positive foetal red cells."
+      ],
+      "workedExample":{
+        "title":"Identifying a blood sample",
+        "prompt":"A blood sample clumps when mixed with anti-A serum but shows no clumping with anti-B serum. Identify the ABO blood group and explain your answer.",
+        "steps":[
+          "Clumping with anti-A means antigen A is present on the red blood cells.",
+          "No clumping with anti-B means antigen B is absent.",
+          "Red cells with antigen A but not antigen B are group A."
+        ],
+        "answer":"The sample is blood group A because its red cells carry antigen A but not antigen B."
+      },
+      "checks":[
+        {
+          "prompt":"Why does incompatible blood agglutinate?",
+          "answer":"Antibodies in the plasma bind to matching antigens on red blood cells, linking the cells together into clumps.",
+          "explanation":"This antigen-antibody reaction is the basis of both blood typing and dangerous incompatible transfusion reactions."
+        },
+        {
+          "prompt":"A sample clumps with both anti-A and anti-B serum. What is its ABO group?",
+          "answer":"AB.",
+          "explanation":"Both antigen A and antigen B are present on the red cells."
+        },
+        {
+          "prompt":"Why is group O called a universal donor in simplified ABO questions?",
+          "answer":"Group O red cells have neither A nor B antigens, so recipient anti-A or anti-B antibodies do not react with those ABO antigens.",
+          "explanation":"This statement applies to the simplified ABO red-cell model. Rh type and cross-matching are also required in clinical transfusion."
+        },
+        {
+          "prompt":"Why may an Rh-negative mother be given anti-D immunoglobulin?",
+          "answer":"To reduce the chance that she becomes sensitised to Rh-positive foetal red cells and forms long-lasting anti-D antibodies.",
+          "explanation":"Preventing sensitisation lowers the risk to a later Rh-positive foetus."
+        }
+      ],
+      "summary":"Identify ABO groups from antigens and antibodies, use agglutination to interpret blood tests, and apply compatibility rules carefully. Then add the Rhesus factor and cross-matching to understand why real transfusion safety is more detailed than the simplified ABO table."
+    }
+  }'::jsonb
+)
+on conflict (subject_id,topic_id) do update set
+  section_id=excluded.section_id,
+  title=excluded.title,
+  description=excluded.description,
+  sort_order=excluded.sort_order,
+  enabled=excluded.enabled,
+  metadata=excluded.metadata,
+  updated_at=now();
+
+update public.spark_subjects
+set stats=coalesce(stats,'{}'::jsonb)
+  || '{"topicsBuilt":20,"objectivesBuilt":20}'::jsonb,
+updated_at=now()
+where id='integrated-science';
+
+-- ============================================================================
+-- SOURCE 25/120: supabase/migrations/20260921024000_integrated_science_objective_151.sql
+-- ============================================================================
+-- CSEC Integrated Science objective 1.5.1
+insert into public.spark_subject_topics(
+  subject_id,topic_id,section_id,title,description,sort_order,enabled,metadata
+)
+values (
+  'integrated-science',
+  'm1-t5-1-excretion-egestion',
+  'module-1-organisms-life-processes',
+  '1.5.1 Excretion and Egestion',
+  'Distinguish excretion from egestion by tracing the origin of removed materials and relating metabolic wastes to the organs that remove them.',
+  210,
+  true,
+  '{
+    "syllabus":{
+      "module":1,
+      "topic":"Excretion",
+      "objective":"1.5.1",
+      "source":"CXC 23/G/SYLL 23, amended 2026"
+    },
+    "lesson":{
+      "objectives":[
+        "Define excretion and egestion.",
+        "Distinguish metabolic waste from undigested or unabsorbed food.",
+        "Identify carbon dioxide, urea, excess water and salts as excretory products.",
+        "Relate common human excretory products to their origins and routes out of the body.",
+        "Explain why faeces are mainly associated with egestion while some substances within faeces, such as bile pigments, are excretory products."
+      ],
+      "introduction":"Excretion and egestion both remove material from the body, but they are not the same process. The distinction depends on where the material came from. Excretion removes waste products formed by metabolism inside the body, while egestion removes undigested or unabsorbed material from the alimentary canal.",
+      "sections":[
+        {
+          "title":"What is excretion?",
+          "paragraphs":[
+            "Excretion is the removal from the body of waste products produced by metabolism, together with substances present in excess.",
+            "These materials have been produced by body cells or are part of the internal body environment. If they accumulate, they can disturb normal cell function."
+          ]
+        },
+        {
+          "title":"What is egestion?",
+          "paragraphs":[
+            "Egestion is the removal of undigested or unabsorbed food from the alimentary canal.",
+            "This material was never absorbed into the internal body environment and never became part of body cells. It passes through the digestive tract and leaves through the anus."
+          ]
+        },
+        {
+          "title":"Carbon dioxide",
+          "paragraphs":[
+            "Carbon dioxide is produced by aerobic respiration in body cells. Because it is a metabolic waste product, its removal is excretion.",
+            "Carbon dioxide is transported in the blood to the lungs and leaves the body in exhaled air. Water vapour is also lost through the lungs."
+          ]
+        },
+        {
+          "title":"Urea",
+          "paragraphs":[
+            "Proteins are digested to amino acids. The body cannot store large quantities of excess amino acids.",
+            "In the liver, excess amino acids are deaminated. The nitrogen-containing part is converted to urea. Urea is carried in the blood to the kidneys and removed mainly in urine.",
+            "Urea is therefore an excretory product because it is formed by metabolism inside the body."
+          ]
+        },
+        {
+          "title":"Water and mineral salts",
+          "paragraphs":[
+            "Water and mineral salts are essential to the body, but amounts above what is needed must be regulated.",
+            "The kidneys remove excess water and salts in urine. Sweat glands in the skin also remove water, salts and a small amount of urea in sweat."
+          ]
+        },
+        {
+          "title":"Bile pigments",
+          "paragraphs":[
+            "Old red blood cells are broken down and haemoglobin is processed. Pigments formed from this breakdown are handled by the liver and released in bile into the gut.",
+            "These pigments eventually leave the body in faeces. Although they leave through the alimentary canal, they are excretory products because they originated from metabolism inside the body."
+          ]
+        },
+        {
+          "title":"Why faeces are not simply an excretory product",
+          "paragraphs":[
+            "Faeces contain a mixture of substances. Much of the solid material is undigested food, especially fibre, plus bacteria and other material from the gut.",
+            "The removal of undigested food is egestion because the food was never absorbed into body cells. This is different from excretory substances such as bile pigments that are released into the gut after being produced inside the body."
+          ]
+        },
+        {
+          "title":"Excretory organs and products",
+          "bullets":[
+            "Lungs: carbon dioxide and water vapour.",
+            "Kidneys: urea, excess water and excess mineral salts.",
+            "Skin: water, mineral salts and a small amount of urea in sweat.",
+            "Liver: forms urea from excess amino acids and releases bile pigments into bile.",
+            "Anus: route by which egested undigested material leaves the alimentary canal."
+          ]
+        },
+        {
+          "title":"A reliable way to distinguish the two",
+          "paragraphs":[
+            "Ask whether the material was produced by metabolism or entered the internal body environment. If it is a metabolic waste or an excess internal substance being removed, the process is excretion.",
+            "If the material is undigested or unabsorbed food that stayed within the alimentary canal, its removal is egestion."
+          ]
+        }
+      ],
+      "interactiveModels":[
+        {
+          "id":"m1-t5-1-excretion-egestion",
+          "type":"excretion-egestion",
+          "title":"Excretion or egestion?"
+        }
+      ],
+      "keyPoints":[
+        "Excretion removes metabolic wastes and excess substances from the internal body environment.",
+        "Egestion removes undigested or unabsorbed food from the alimentary canal.",
+        "Carbon dioxide is an excretory product of respiration.",
+        "Urea is produced in the liver from the breakdown of excess amino acids.",
+        "The skin excretes water, salts and a small amount of urea in sweat.",
+        "Faeces are mainly associated with egestion, but bile pigments in faeces are excretory products."
+      ],
+      "workedExample":{
+        "title":"Classifying carbon dioxide and fibre",
+        "prompt":"A student says that breathing out carbon dioxide and passing out undigested fibre are both examples of excretion because both remove unwanted material. Explain why the statement is incorrect.",
+        "steps":[
+          "Identify the origin of carbon dioxide.",
+          "Carbon dioxide is produced by respiration in body cells.",
+          "Identify the origin of undigested fibre.",
+          "Fibre remains in the alimentary canal and is not digested and absorbed into body cells.",
+          "Classify each process according to origin."
+        ],
+        "answer":"Breathing out carbon dioxide is excretion because carbon dioxide is a metabolic waste produced by respiration. Passing out undigested fibre is egestion because the fibre was never absorbed into body cells."
+      },
+      "checks":[
+        {
+          "prompt":"What is excretion?",
+          "answer":"The removal from the body of waste products produced by metabolism and substances present in excess.",
+          "explanation":"Examples include carbon dioxide, urea and excess water and salts."
+        },
+        {
+          "prompt":"Why is passing out faeces usually described as egestion?",
+          "answer":"Much of the material is undigested or unabsorbed food that never entered body cells.",
+          "explanation":"Egestion concerns material remaining in the alimentary canal rather than metabolic wastes from cells."
+        },
+        {
+          "prompt":"Why is urea an excretory product?",
+          "answer":"It is formed in the liver from the breakdown of excess amino acids.",
+          "explanation":"Because it is produced by metabolism inside the body, its removal is excretion."
+        },
+        {
+          "prompt":"Bile pigments leave the body in faeces. Why are they still described as excretory products?",
+          "answer":"They originate from the breakdown of substances inside the body, including haemoglobin from old red blood cells.",
+          "explanation":"Classification depends on the origin of the material, not only the route by which it leaves."
+        }
+      ],
+      "summary":"To distinguish excretion from egestion, trace the material back to its origin. Metabolic waste from inside the body is excreted. Undigested or unabsorbed food that stayed in the alimentary canal is egested."
+    }
+  }'::jsonb
+)
+on conflict (subject_id,topic_id) do update set
+  section_id=excluded.section_id,
+  title=excluded.title,
+  description=excluded.description,
+  sort_order=excluded.sort_order,
+  enabled=excluded.enabled,
+  metadata=excluded.metadata,
+  updated_at=now();
+
+update public.spark_subjects
+set stats=coalesce(stats,'{}'::jsonb)
+  || '{"topicsBuilt":21,"objectivesBuilt":21}'::jsonb,
+updated_at=now()
+where id='integrated-science';
+
+-- ============================================================================
+-- SOURCE 26/120: supabase/migrations/20260921024500_integrated_science_objective_152.sql
+-- ============================================================================
+-- CSEC Integrated Science objective 1.5.2
+insert into public.spark_subject_topics(
+  subject_id,topic_id,section_id,title,description,sort_order,enabled,metadata
+)
+values (
+  'integrated-science',
+  'm1-t5-2-human-excretion-mechanisms',
+  'module-1-organisms-life-processes',
+  '1.5.2 Excretion by the Lungs, Skin and Kidneys',
+  'Explain how the lungs, skin and kidneys remove metabolic wastes and regulate water and salts, including nephron function, ADH and dialysis.',
+  220,
+  true,
+  '{
+    "syllabus":{
+      "module":1,
+      "topic":"Excretion",
+      "objective":"1.5.2",
+      "source":"CXC 23/G/SYLL 23, amended 2026"
+    },
+    "lesson":{
+      "objectives":[
+        "Explain how carbon dioxide and water vapour are excreted by the lungs.",
+        "Explain how sweat glands excrete water, mineral salts and a small amount of urea.",
+        "Describe the gross structure of the kidney and the route of urine to the bladder.",
+        "Explain ultrafiltration and selective reabsorption in the nephron.",
+        "Relate ADH to water reabsorption and urine concentration.",
+        "Explain the principles of dialysis when kidneys fail."
+      ],
+      "introduction":"The lungs, skin and kidneys all remove substances from the internal body environment, but they do so in different ways. The lungs remove gaseous wastes, the skin removes substances in sweat, and the kidneys filter the blood and regulate its water and salt content.",
+      "sections":[
+        {
+          "title":"Excretion by the lungs",
+          "paragraphs":[
+            "Carbon dioxide is produced during aerobic respiration in body cells and is carried in the blood to the lungs.",
+            "At the alveoli, carbon dioxide diffuses from the blood into the air spaces because its concentration is higher in the blood than in the alveolar air. It leaves the body when the person exhales.",
+            "Water vapour is also lost from the moist respiratory surfaces and leaves in exhaled air."
+          ]
+        },
+        {
+          "title":"Excretion by the skin",
+          "paragraphs":[
+            "Sweat glands in the dermis produce sweat containing mainly water and mineral salts, with a small amount of urea.",
+            "Sweat travels through ducts to pores at the skin surface. When it evaporates, heat is removed from the skin, helping to cool the body.",
+            "When the body is too hot, more sweat is produced and blood vessels near the skin surface dilate so more heat can be lost."
+          ]
+        },
+        {
+          "title":"Gross structure of the kidney",
+          "paragraphs":[
+            "The kidney has an outer cortex, an inner medulla and a central pelvis. The pelvis collects urine and leads into the ureter.",
+            "The ureter carries urine from each kidney to the bladder. The bladder stores urine before it leaves through the urethra.",
+            "Many glomeruli and Bowman''s capsules are found in the cortex, while loops of Henle and collecting ducts extend into the medulla."
+          ]
+        },
+        {
+          "title":"The nephron",
+          "paragraphs":[
+            "A nephron is the functional unit of the kidney. It begins with Bowman''s capsule surrounding a glomerulus and continues through the proximal coiled tubule, loop of Henle, distal tubule and collecting duct."
+          ]
+        },
+        {
+          "title":"Ultrafiltration",
+          "paragraphs":[
+            "Blood enters the glomerulus under relatively high pressure. Water and small dissolved substances such as glucose, urea and mineral salts are forced through the filtration barrier into Bowman''s capsule.",
+            "Blood cells and large plasma proteins normally remain in the blood because they are too large to pass through the filtration barrier."
+          ]
+        },
+        {
+          "title":"Selective reabsorption",
+          "paragraphs":[
+            "Useful substances are returned from the filtrate to the blood as the filtrate passes along the nephron.",
+            "In a healthy person, all filtered glucose is normally reabsorbed, mainly in the proximal coiled tubule. Much of the water and needed mineral salts are also reabsorbed.",
+            "The remaining fluid contains urea together with excess water and mineral salts. This becomes urine and passes into collecting ducts."
+          ]
+        },
+        {
+          "title":"Water balance and ADH",
+          "paragraphs":[
+            "Antidiuretic hormone, ADH, helps regulate the amount of water reabsorbed by the kidney tubules and collecting ducts.",
+            "When a person loses much water through sweating, the blood becomes more concentrated. More ADH is released by the pituitary gland, more water is reabsorbed, and a small volume of concentrated urine is produced.",
+            "After drinking a large amount of water, less ADH is released. Less water is reabsorbed and a larger volume of dilute urine is produced."
+          ]
+        },
+        {
+          "title":"What healthy urine contains",
+          "paragraphs":[
+            "Healthy urine normally contains water, urea and dissolved mineral salts. It should not normally contain significant amounts of glucose or large proteins.",
+            "Protein molecules are normally too large to pass through the glomerular filtration barrier. Glucose is filtered but normally reabsorbed completely."
+          ]
+        },
+        {
+          "title":"Dialysis",
+          "paragraphs":[
+            "If the kidneys fail, wastes and excess water and salts can accumulate in the blood. Dialysis can remove these substances from the blood.",
+            "In haemodialysis, the patient''s blood flows past dialysis fluid across a partially permeable membrane. Urea diffuses from the blood into the dialysis fluid because the fluid initially contains little or no urea.",
+            "The dialysis fluid contains glucose and appropriate mineral salts at concentrations similar to normal blood so that useful substances are not lost in large amounts.",
+            "Dialysis can keep a patient alive but is time-consuming, expensive and carries risks such as infection. A kidney transplant may be another treatment option for some patients."
+          ]
+        }
+      ],
+      "interactiveModels":[
+        {
+          "id":"m1-t5-2-human-excretion-mechanisms",
+          "type":"human-excretion-mechanisms",
+          "title":"Human excretion mechanisms"
+        }
+      ],
+      "keyPoints":[
+        "The lungs excrete carbon dioxide and water vapour.",
+        "Sweat contains water, mineral salts and a small amount of urea.",
+        "Ultrafiltration occurs at the glomerulus and Bowman''s capsule.",
+        "Selective reabsorption returns useful substances such as glucose to the blood.",
+        "ADH increases water reabsorption and reduces urine volume when the body needs to conserve water.",
+        "Healthy urine normally contains urea, water and salts but not significant glucose or large proteins.",
+        "Dialysis removes urea and excess water and salts when kidneys fail."
+      ],
+      "workedExample":{
+        "title":"Explaining concentrated urine on a hot day",
+        "prompt":"A student plays football in the hot sun and drinks very little water. Later, the student produces a small volume of dark urine. Explain the change.",
+        "steps":[
+          "The student loses water by sweating.",
+          "The blood becomes more concentrated.",
+          "The pituitary releases more ADH.",
+          "The kidney tubules and collecting ducts reabsorb more water.",
+          "Less water remains in the urine, so the urine volume is small and more concentrated."
+        ],
+        "answer":"Water loss in sweat increases ADH release. More water is reabsorbed by the kidneys, producing a small volume of concentrated urine."
+      },
+      "checks":[
+        {
+          "prompt":"What is ultrafiltration?",
+          "answer":"The filtration of water and small dissolved substances from blood in the glomerulus into Bowman''s capsule under pressure.",
+          "explanation":"Blood cells and large proteins normally remain in the blood."
+        },
+        {
+          "prompt":"Why is glucose normally absent from the urine of a healthy person?",
+          "answer":"Although glucose is filtered at the glomerulus, it is normally completely reabsorbed into the blood.",
+          "explanation":"Most glucose reabsorption occurs in the proximal coiled tubule."
+        },
+        {
+          "prompt":"How does ADH affect urine when the body is short of water?",
+          "answer":"More ADH increases water reabsorption, producing a smaller volume of more concentrated urine.",
+          "explanation":"This helps conserve body water."
+        },
+        {
+          "prompt":"Why does dialysis fluid contain glucose and salts at concentrations similar to normal blood?",
+          "answer":"So there is little or no concentration gradient causing useful glucose and necessary salts to leave the blood.",
+          "explanation":"The main aim is to remove wastes such as urea and correct excess water and salt levels."
+        }
+      ],
+      "summary":"Excretion by the lungs, skin and kidneys depends on different mechanisms. Diffusion removes carbon dioxide at the lungs, sweat glands release water and salts at the skin, and the kidneys use filtration, selective reabsorption and hormonal control to regulate the blood and form urine."
+    }
+  }'::jsonb
+)
+on conflict (subject_id,topic_id) do update set
+  section_id=excluded.section_id,
+  title=excluded.title,
+  description=excluded.description,
+  sort_order=excluded.sort_order,
+  enabled=excluded.enabled,
+  metadata=excluded.metadata,
+  updated_at=now();
+
+update public.spark_subjects
+set stats=coalesce(stats,'{}'::jsonb)
+  || '{"topicsBuilt":22,"objectivesBuilt":22}'::jsonb,
+updated_at=now()
+where id='integrated-science';
+
+-- ============================================================================
+-- SOURCE 27/120: supabase/migrations/20260921025000_integrated_science_objective_153.sql
+-- ============================================================================
+-- CSEC Integrated Science objective 1.5.3
+insert into public.spark_subject_topics(
+  subject_id,topic_id,section_id,title,description,sort_order,enabled,metadata
+)
+values (
+  'integrated-science',
+  'm1-t5-3-excretion-flowering-plants',
+  'module-1-organisms-life-processes',
+  '1.5.3 Excretion in Flowering Plants',
+  'Identify how flowering plants remove gaseous wastes, excess water and stored waste products through stomata and tissue shedding.',
+  230,
+  true,
+  '{
+    "syllabus":{
+      "module":1,
+      "topic":"Excretion",
+      "objective":"1.5.3",
+      "source":"CXC 23/G/SYLL 23, amended 2026"
+    },
+    "lesson":{
+      "objectives":[
+        "Identify oxygen, carbon dioxide and water vapour as substances flowering plants may remove.",
+        "Explain how stomata provide a route for gaseous wastes and excess water vapour.",
+        "Compare gaseous outputs in bright light and darkness.",
+        "Explain how waste substances stored in leaves or bark can be removed when those tissues are shed.",
+        "Explain why flowering plants do not require specialised excretory organs like kidneys."
+      ],
+      "introduction":"Flowering plants do not have specialised excretory organs such as kidneys. They produce fewer toxic metabolic wastes than animals, can reuse some products, and remove other substances by diffusion, transpiration or storage in tissues that are later shed.",
+      "sections":[
+        {
+          "title":"Gases leave through stomata",
+          "paragraphs":[
+            "Stomata are pores in the leaf epidermis controlled by guard cells. They provide a route for gas exchange between the leaf and the surrounding air.",
+            "Excess oxygen produced during photosynthesis can diffuse out through stomata. Carbon dioxide produced by respiration can also diffuse out when it is not being used rapidly by photosynthesis."
+          ]
+        },
+        {
+          "title":"Water vapour",
+          "paragraphs":[
+            "Water evaporates from moist cell surfaces inside the leaf and diffuses out through stomata as water vapour. This loss of water vapour is part of transpiration.",
+            "When water loss exceeds the amount needed by the plant, the excess water is therefore removed through the leaves."
+          ]
+        },
+        {
+          "title":"Bright light and darkness",
+          "paragraphs":[
+            "In bright light, photosynthesis usually occurs faster than respiration in green leaves. More oxygen is produced than the plant needs for respiration, so excess oxygen diffuses out.",
+            "At night, photosynthesis stops because light is unavailable, but respiration continues. Carbon dioxide produced by respiration is therefore released."
+          ]
+        },
+        {
+          "title":"Storage in leaves and bark",
+          "paragraphs":[
+            "Some waste products are stored in plant tissues such as old leaves or bark. Examples include tannins and other compounds that the plant does not need to keep in active tissues.",
+            "When old leaves fall or bark peels away, the stored waste leaves the plant with the shed tissue."
+          ]
+        },
+        {
+          "title":"Why no specialised excretory organs are needed",
+          "paragraphs":[
+            "Plants can reuse several metabolic products. Carbon dioxide from respiration can be used in photosynthesis, while oxygen from photosynthesis can be used in respiration.",
+            "Many plant wastes are produced relatively slowly, can diffuse directly through stomata or can be isolated safely in tissues. This reduces the need for a specialised excretory system."
+          ]
+        }
+      ],
+      "interactiveModels":[
+        {
+          "id":"m1-t5-3-plant-excretion",
+          "type":"plant-excretion",
+          "title":"Excretion in flowering plants"
+        }
+      ],
+      "keyPoints":[
+        "Excess oxygen from photosynthesis can diffuse out through stomata.",
+        "Carbon dioxide from respiration is released when it is not being used by photosynthesis.",
+        "Water vapour leaves mainly through stomata during transpiration.",
+        "At night respiration continues while photosynthesis stops, so carbon dioxide is released.",
+        "Some wastes are stored in leaves or bark and removed when those tissues are shed.",
+        "Plants can reuse some metabolic products and therefore do not need kidney-like excretory organs."
+      ],
+      "workedExample":{
+        "title":"Comparing a leaf in daylight and darkness",
+        "prompt":"A green leaf is kept in bright sunlight and another similar leaf is kept in darkness. State the main gaseous waste expected from each and explain the difference.",
+        "steps":[
+          "In bright light, both photosynthesis and respiration occur.",
+          "Photosynthesis is usually faster, so more oxygen is produced than is needed for respiration.",
+          "In darkness, photosynthesis stops but respiration continues.",
+          "Respiration produces carbon dioxide."
+        ],
+        "answer":"The leaf in bright light mainly releases excess oxygen, while the leaf in darkness releases carbon dioxide because respiration continues but photosynthesis stops."
+      },
+      "checks":[
+        {
+          "prompt":"Through which structures do leaves mainly lose excess water vapour?",
+          "answer":"Through stomata.",
+          "explanation":"Water vapour diffuses from internal leaf air spaces through the stomatal pores."
+        },
+        {
+          "prompt":"Why can a green plant release carbon dioxide at night?",
+          "answer":"Respiration continues at night while photosynthesis stops.",
+          "explanation":"Without photosynthesis using the carbon dioxide, the gas diffuses out."
+        },
+        {
+          "prompt":"How can a plant remove wastes stored in old leaves?",
+          "answer":"The wastes leave the plant when the old leaves are shed.",
+          "explanation":"Some waste compounds are isolated in tissues that are later discarded."
+        },
+        {
+          "prompt":"Why do plants not need specialised excretory organs like kidneys?",
+          "answer":"They produce fewer toxic wastes, reuse some metabolic products, and can remove other wastes by diffusion or tissue shedding.",
+          "explanation":"Their waste-removal needs differ from those of animals."
+        }
+      ],
+      "summary":"Flowering plants excrete by using existing structures rather than specialised organs. Stomata release gases and water vapour, while some wastes are stored in leaves or bark and removed when those tissues are shed."
+    }
+  }'::jsonb
+)
+on conflict (subject_id,topic_id) do update set
+  section_id=excluded.section_id,
+  title=excluded.title,
+  description=excluded.description,
+  sort_order=excluded.sort_order,
+  enabled=excluded.enabled,
+  metadata=excluded.metadata,
+  updated_at=now();
+
+update public.spark_subjects
+set stats=coalesce(stats,'{}'::jsonb)
+  || '{"topicsBuilt":23,"objectivesBuilt":23}'::jsonb,
+updated_at=now()
+where id='integrated-science';
+
+-- ============================================================================
+-- SOURCE 28/120: supabase/migrations/20260921025500_integrated_science_objective_161.sql
+-- ============================================================================
+-- CSEC Integrated Science objective 1.6.1
+insert into public.spark_subject_topics(
+  subject_id,topic_id,section_id,title,description,sort_order,enabled,metadata
+)
+values (
+  'integrated-science',
+  'm1-t6-1-sense-organs-functions',
+  'module-1-organisms-life-processes',
+  '1.6.1 Sense Organs and Their Functions',
+  'Describe the eye, ear, nose, tongue and skin as sense organs containing receptors that detect stimuli and produce nerve impulses.',
+  240,
+  true,
+  '{
+    "syllabus":{
+      "module":1,
+      "topic":"Sense Organs and Coordination",
+      "objective":"1.6.1",
+      "source":"CXC 23/G/SYLL 23, amended 2026"
+    },
+    "lesson":{
+      "objectives":[
+        "Name the five major sense organs and the main stimuli they detect.",
+        "Explain that receptors convert stimuli into nerve impulses.",
+        "Distinguish photoreceptors, mechanoreceptors and chemoreceptors by the stimuli they detect.",
+        "Explain how smell contributes to the flavour of food.",
+        "Explain why receptor density affects sensitivity in different parts of the skin."
+      ],
+      "introduction":"A stimulus is a change in the internal or external environment that can be detected. Sense organs contain specialised receptor cells that respond to particular stimuli and convert them into nerve impulses that travel towards the central nervous system.",
+      "sections":[
+        {
+          "title":"Receptors and stimuli",
+          "paragraphs":[
+            "Receptors are specialised cells or nerve endings that detect specific kinds of change. When stimulated strongly enough, they generate electrical nerve impulses.",
+            "The nervous system receives and processes these impulses, allowing the body to become aware of changes and respond appropriately."
+          ]
+        },
+        {
+          "title":"The eye",
+          "paragraphs":[
+            "The eye detects light. Light-sensitive receptor cells called rods and cones are found in the retina.",
+            "These photoreceptors convert light energy into nerve impulses that pass along the optic nerve towards the brain."
+          ]
+        },
+        {
+          "title":"The ear",
+          "paragraphs":[
+            "The ear detects sound vibrations. Mechanoreceptors in the inner ear respond when sound causes structures to vibrate.",
+            "Other receptors in the inner ear respond to movement and position of the head and therefore contribute to balance."
+          ]
+        },
+        {
+          "title":"The nose",
+          "paragraphs":[
+            "The nose detects chemicals carried in the air. Odour molecules dissolve in the mucus lining the nose and stimulate chemoreceptors.",
+            "The resulting nerve impulses travel to the brain and are interpreted as smell."
+          ]
+        },
+        {
+          "title":"The tongue",
+          "paragraphs":[
+            "Taste buds on the tongue contain chemoreceptors that detect chemicals dissolved in saliva.",
+            "Taste and smell work together to produce flavour. When the nose is blocked during a cold, fewer smell signals reach the brain and food may seem to have little flavour even though taste receptors are still working."
+          ]
+        },
+        {
+          "title":"The skin",
+          "paragraphs":[
+            "The skin contains receptors for touch, pressure, pain and temperature. Different receptor types respond to different kinds of stimulus.",
+            "Sensitivity varies across the body. Fingertips contain many touch receptors packed into a small area and are therefore especially sensitive to fine touch."
+          ]
+        },
+        {
+          "title":"From stimulus to response",
+          "paragraphs":[
+            "A general sequence is: stimulus, receptor, nerve impulse, central nervous system and then, where appropriate, a response.",
+            "This same principle forms the basis of later work on neurones, reflex actions and coordination."
+          ]
+        }
+      ],
+      "interactiveModels":[
+        {
+          "id":"m1-t6-1-sense-organs",
+          "type":"sense-organs",
+          "title":"Sense organs and receptors"
+        }
+      ],
+      "keyPoints":[
+        "The eye detects light using photoreceptors in the retina.",
+        "The ear detects sound and contributes to balance using mechanoreceptors.",
+        "The nose detects chemicals in the air using chemoreceptors.",
+        "The tongue detects chemicals dissolved in saliva using taste receptors.",
+        "The skin contains receptors for touch, pressure, pain and temperature.",
+        "Receptors convert stimuli into nerve impulses.",
+        "Smell contributes strongly to flavour.",
+        "Areas with a high density of touch receptors, such as fingertips, are especially sensitive."
+      ],
+      "workedExample":{
+        "title":"Why food tastes bland during a cold",
+        "prompt":"A student with a blocked nose says that food has almost no flavour, even though the tongue is not injured. Explain why.",
+        "steps":[
+          "Taste buds still detect chemicals dissolved in saliva.",
+          "A blocked nose reduces the movement of odour molecules to smell receptors.",
+          "Fewer smell impulses reach the brain.",
+          "Flavour depends on information from both taste and smell."
+        ],
+        "answer":"Food seems bland because smell is reduced. Taste receptors on the tongue still work, but fewer odour signals combine with taste information to create flavour."
+      },
+      "checks":[
+        {
+          "prompt":"Which sense organ detects chemicals dissolved in saliva?",
+          "answer":"The tongue.",
+          "explanation":"Taste receptors in taste buds respond to chemicals dissolved in saliva."
+        },
+        {
+          "prompt":"What do sensory receptors produce when they are stimulated?",
+          "answer":"Nerve impulses.",
+          "explanation":"Receptors convert stimulus energy into electrical signals in the nervous system."
+        },
+        {
+          "prompt":"Why are fingertips highly sensitive to touch?",
+          "answer":"They contain a high density of touch receptors.",
+          "explanation":"More receptors in a small area allow finer discrimination of touch."
+        },
+        {
+          "prompt":"Which sense organ detects chemicals in the air?",
+          "answer":"The nose.",
+          "explanation":"Odour molecules stimulate chemoreceptors after dissolving in nasal mucus."
+        }
+      ],
+      "summary":"Each sense organ contains receptors specialised for particular stimuli. These receptors convert changes such as light, sound, chemicals, pressure or temperature into nerve impulses that the nervous system can process."
+    }
+  }'::jsonb
+)
+on conflict (subject_id,topic_id) do update set
+  section_id=excluded.section_id,
+  title=excluded.title,
+  description=excluded.description,
+  sort_order=excluded.sort_order,
+  enabled=excluded.enabled,
+  metadata=excluded.metadata,
+  updated_at=now();
+
+update public.spark_subjects
+set stats=coalesce(stats,'{}'::jsonb)
+  || '{"topicsBuilt":24,"objectivesBuilt":24}'::jsonb,
+updated_at=now()
+where id='integrated-science';
+
+-- ============================================================================
+-- SOURCE 29/120: supabase/migrations/20260921030000_integrated_science_objective_162.sql
+-- ============================================================================
+-- CSEC Integrated Science objective 1.6.2
+insert into public.spark_subject_topics(
+  subject_id,topic_id,section_id,title,description,sort_order,enabled,metadata
+)
+values (
+  'integrated-science',
+  'm1-t6-2-mammalian-eye',
+  'module-1-organisms-life-processes',
+  '1.6.2 Structure and Function of the Mammalian Eye',
+  'Relate the structures of the mammalian eye to their functions and explain accommodation and pupil responses.',
+  250,
+  true,
+  '{
+    "syllabus":{
+      "module":1,
+      "topic":"Sense Organs and Coordination",
+      "objective":"1.6.2",
+      "source":"CXC 23/G/SYLL 23, amended 2026"
+    },
+    "lesson":{
+      "objectives":[
+        "Identify the major structures of the mammalian eye.",
+        "Relate each eye structure to its function.",
+        "Explain accommodation for near and distant vision.",
+        "Explain how the iris controls pupil size in bright and dim light.",
+        "Describe the image formed on the retina."
+      ],
+      "introduction":"The eye forms an image by refracting light and focusing it on the retina. Different structures protect the eye, control the amount of light entering, adjust focus and convert light into nerve impulses.",
+      "sections":[
+        {
+          "title":"Cornea and sclera",
+          "paragraphs":[
+            "The sclera is the tough white outer coat that protects the eyeball and helps maintain its shape.",
+            "At the front of the eye, the sclera becomes the transparent cornea. The cornea allows light to enter and provides most of the refraction, or bending, of light entering the eye."
+          ]
+        },
+        {
+          "title":"Iris and pupil",
+          "paragraphs":[
+            "The iris is the coloured muscular part of the eye. The pupil is the opening in the centre of the iris.",
+            "In bright light, circular muscles of the iris contract and the pupil becomes smaller, reducing the amount of light entering.",
+            "In dim light, radial muscles contract and the pupil becomes larger, allowing more light to enter."
+          ]
+        },
+        {
+          "title":"Lens, ciliary muscles and suspensory ligaments",
+          "paragraphs":[
+            "The lens is transparent and elastic. It fine-tunes the focus of light onto the retina.",
+            "For a near object, the ciliary muscles contract, the suspensory ligaments slacken and the lens becomes fatter or more convex. This increases its refractive power.",
+            "For a distant object, the ciliary muscles relax, the suspensory ligaments tighten and the lens becomes thinner. This reduces its refractive power."
+          ]
+        },
+        {
+          "title":"Retina, fovea and blind spot",
+          "paragraphs":[
+            "The retina contains rods and cones, which are light-sensitive receptor cells.",
+            "The fovea is the region of sharpest vision because it has a high concentration of cones.",
+            "The blind spot is where the optic nerve leaves the eye. It contains no photoreceptors, so an image falling there cannot be detected."
+          ]
+        },
+        {
+          "title":"Choroid and optic nerve",
+          "paragraphs":[
+            "The choroid is a dark, blood-rich layer inside the sclera. It supplies tissues of the eye and absorbs stray light, reducing internal reflection.",
+            "The optic nerve carries nerve impulses from the retina to the brain."
+          ]
+        },
+        {
+          "title":"Image formation",
+          "paragraphs":[
+            "Light is refracted mainly by the cornea and then adjusted by the lens so that rays meet on the retina.",
+            "The image formed on the retina is real, inverted and smaller than the object. The brain processes the pattern of nerve impulses so that the visual scene is perceived in its normal orientation."
+          ]
+        }
+      ],
+      "interactiveModels":[
+        {
+          "id":"m1-t6-2-eye-function",
+          "type":"eye-function",
+          "title":"Eye accommodation and pupil response"
+        }
+      ],
+      "interactiveDiagrams":[
+        {
+          "id":"m1-t6-2-mammalian-eye",
+          "template":"mammalian-eye",
+          "title":"Label the mammalian eye",
+          "instructions":"Drag each label to the correct structure. On a phone or tablet, tap a label and then tap the numbered target.",
+          "labels":[
+            {"id":"cornea","text":"Cornea","hint":"Look at the transparent curved front of the eye.","explanation":"The cornea allows light to enter and provides most of the eye''s refraction."},
+            {"id":"iris","text":"Iris","hint":"Look for the muscular ring near the front of the eye.","explanation":"The iris controls pupil size and therefore the amount of light entering."},
+            {"id":"lens","text":"Lens","hint":"Look for the transparent oval structure behind the pupil.","explanation":"The lens changes shape during accommodation and fine-tunes focus on the retina."},
+            {"id":"retina","text":"Retina","hint":"Look for the light-sensitive inner layer at the back of the eye.","explanation":"The retina contains rods and cones that convert light into nerve impulses."},
+            {"id":"choroid","text":"Choroid","hint":"Look for the dark layer between sclera and retina.","explanation":"The choroid supplies blood and absorbs stray light."},
+            {"id":"sclera","text":"Sclera","hint":"Look for the tough outer coat of the eyeball.","explanation":"The sclera protects the eye and maintains its shape."},
+            {"id":"optic-nerve","text":"Optic nerve","hint":"Look for the nerve leaving the back of the eye.","explanation":"The optic nerve carries impulses from the retina to the brain."},
+            {"id":"fovea","text":"Fovea","hint":"Look for the small retinal region associated with sharpest vision.","explanation":"The fovea has a high concentration of cones and gives the sharpest vision."}
+          ],
+          "targets":[
+            {"id":"eye-cornea-target","labelId":"cornea","boxX":20,"boxY":55,"anchorX":300,"anchorY":310,"side":"left"},
+            {"id":"eye-iris-target","labelId":"iris","boxX":20,"boxY":125,"anchorX":350,"anchorY":255,"side":"left"},
+            {"id":"eye-lens-target","labelId":"lens","boxX":20,"boxY":195,"anchorX":405,"anchorY":310,"side":"left"},
+            {"id":"eye-sclera-target","labelId":"sclera","boxX":20,"boxY":265,"anchorX":520,"anchorY":125,"side":"left"},
+            {"id":"eye-retina-target","labelId":"retina","boxX":790,"boxY":55,"anchorX":635,"anchorY":260,"side":"right"},
+            {"id":"eye-choroid-target","labelId":"choroid","boxX":790,"boxY":125,"anchorX":660,"anchorY":225,"side":"right"},
+            {"id":"eye-optic-nerve-target","labelId":"optic-nerve","boxX":790,"boxY":195,"anchorX":770,"anchorY":340,"side":"right"},
+            {"id":"eye-fovea-target","labelId":"fovea","boxX":790,"boxY":265,"anchorX":625,"anchorY":310,"side":"right"}
+          ]
+        }
+      ],
+      "keyPoints":[
+        "The cornea provides most refraction of incoming light.",
+        "The iris controls pupil size.",
+        "The lens changes shape during accommodation.",
+        "For near vision, ciliary muscles contract, suspensory ligaments slacken and the lens becomes more convex.",
+        "For distant vision, ciliary muscles relax, suspensory ligaments tighten and the lens becomes thinner.",
+        "The retina contains rods and cones.",
+        "The fovea gives the sharpest vision and the blind spot contains no photoreceptors.",
+        "The optic nerve carries impulses to the brain."
+      ],
+      "workedExample":{
+        "title":"Focusing on a near object",
+        "prompt":"Explain how the eye changes when a student shifts focus from the classroom board to a book held nearby.",
+        "steps":[
+          "The object is now near the eye.",
+          "The ciliary muscles contract.",
+          "The suspensory ligaments slacken.",
+          "The elastic lens becomes fatter or more convex.",
+          "The thicker lens bends light more strongly so it focuses on the retina."
+        ],
+        "answer":"For near vision, ciliary muscles contract, suspensory ligaments slacken and the lens becomes more convex so that light is focused on the retina."
+      },
+      "checks":[
+        {
+          "prompt":"Which part of the eye provides most of the refraction of incoming light?",
+          "answer":"The cornea.",
+          "explanation":"The lens adjusts focus, but the cornea provides most of the initial bending of light."
+        },
+        {
+          "prompt":"What happens to the pupil in bright light?",
+          "answer":"It becomes smaller because the circular muscles of the iris contract.",
+          "explanation":"This reduces the amount of light entering the eye."
+        },
+        {
+          "prompt":"Why is vision sharpest at the fovea?",
+          "answer":"The fovea has a high concentration of cone cells.",
+          "explanation":"Cones provide detailed colour vision."
+        },
+        {
+          "prompt":"Describe the image formed on the retina.",
+          "answer":"It is real, inverted and smaller than the object.",
+          "explanation":"The brain processes the resulting nerve impulses so the scene is perceived normally."
+        }
+      ],
+      "summary":"Relate every structure to a function. The cornea and lens focus light, the iris controls light entry, the retina detects light and the optic nerve carries visual impulses to the brain."
+    }
+  }'::jsonb
+)
+on conflict (subject_id,topic_id) do update set
+  section_id=excluded.section_id,
+  title=excluded.title,
+  description=excluded.description,
+  sort_order=excluded.sort_order,
+  enabled=excluded.enabled,
+  metadata=excluded.metadata,
+  updated_at=now();
+
+insert into public.spark_subject_activity_catalog(
+  subject_id,activity_key,activity_type,section_id,topic_id,title,route,evidence_weight,enabled,metadata
+)
+values (
+  'integrated-science',
+  'diagram:m1-t6-2-mammalian-eye',
+  'diagram',
+  'module-1-organisms-life-processes',
+  'm1-t6-2-mammalian-eye',
+  'Label the mammalian eye',
+  '/study/integrated-science?section=module-1-organisms-life-processes&topic=m1-t6-2-mammalian-eye',
+  0.35,
+  true,
+  '{"syllabusObjective":"1.6.2","mode":"drag-drop-label"}'::jsonb
+)
+on conflict (subject_id,activity_key) do update set
+  activity_type=excluded.activity_type,
+  section_id=excluded.section_id,
+  topic_id=excluded.topic_id,
+  title=excluded.title,
+  route=excluded.route,
+  evidence_weight=excluded.evidence_weight,
+  enabled=excluded.enabled,
+  metadata=excluded.metadata,
+  updated_at=now();
+
+update public.spark_subjects
+set stats=coalesce(stats,'{}'::jsonb)
+  || '{"topicsBuilt":25,"objectivesBuilt":25}'::jsonb,
+updated_at=now()
+where id='integrated-science';
+
+-- ============================================================================
+-- SOURCE 30/120: supabase/migrations/20260921030500_integrated_science_objective_163.sql
+-- ============================================================================
+-- CSEC Integrated Science objective 1.6.3
+insert into public.spark_subject_topics(
+  subject_id,topic_id,section_id,title,description,sort_order,enabled,metadata
+)
+values (
+  'integrated-science',
+  'm1-t6-3-sight-defects',
+  'module-1-organisms-life-processes',
+  '1.6.3 Sight Defects and Eye Conditions',
+  'Analyse short sight, long sight, astigmatism, cataract, glaucoma and colour vision deficiency, including causes and correction or management.',
+  260,
+  true,
+  '{
+    "syllabus":{
+      "module":1,
+      "topic":"Sense Organs and Coordination",
+      "objective":"1.6.3",
+      "source":"CXC 23/G/SYLL 23, amended 2026"
+    },
+    "lesson":{
+      "objectives":[
+        "Distinguish short sight from long sight using where light is focused relative to the retina.",
+        "Explain how concave and convex spectacle lenses correct refractive errors.",
+        "Explain why astigmatism causes blurred vision.",
+        "Describe cataract, glaucoma and colour vision deficiency.",
+        "State appropriate correction or management for the sight defects covered."
+      ],
+      "introduction":"Sight problems do not all have the same cause. Some are refractive defects, where light is not focused correctly on the retina. Others affect the lens, optic nerve or cone cells. Correct identification depends on linking the defect to the structure or focusing problem involved.",
+      "sections":[
+        {
+          "title":"Short sight or myopia",
+          "paragraphs":[
+            "A short-sighted person sees near objects clearly but distant objects appear blurred. Light from distant objects is focused in front of the retina.",
+            "A concave, or diverging, lens spreads incoming light rays before they enter the eye. The eye then focuses the rays farther back so that they meet on the retina."
+          ]
+        },
+        {
+          "title":"Long sight or hypermetropia",
+          "paragraphs":[
+            "A long-sighted person has difficulty focusing clearly on near objects. Light from a near object would be focused behind the retina if the eye cannot increase its focusing power enough.",
+            "A convex, or converging, lens bends incoming rays towards one another before they enter the eye, helping the eye focus them on the retina."
+          ]
+        },
+        {
+          "title":"Astigmatism",
+          "paragraphs":[
+            "Astigmatism occurs when the cornea or lens has uneven curvature. Light is not brought to one sharp focal point, so images can appear blurred or distorted.",
+            "Corrective cylindrical or toric lenses compensate for the uneven focusing."
+          ]
+        },
+        {
+          "title":"Cataract",
+          "paragraphs":[
+            "A cataract is clouding of the lens. The cloudy lens reduces clear transmission of light to the retina and causes progressively blurred or hazy vision.",
+            "Cataracts may be treated by surgery in which the cloudy natural lens is removed and replaced with an artificial lens."
+          ]
+        },
+        {
+          "title":"Glaucoma",
+          "paragraphs":[
+            "Glaucoma is a group of conditions that damage the optic nerve. Increased pressure inside the eye is an important risk factor in many forms.",
+            "Damage to the optic nerve can cause permanent loss of vision, so early detection and treatment are important."
+          ]
+        },
+        {
+          "title":"Colour vision deficiency",
+          "paragraphs":[
+            "Inherited colour vision deficiency results from altered function of particular cone cells in the retina.",
+            "Ordinary spectacle lenses do not restore normal colour discrimination because the problem is not caused by the focusing of light."
+          ]
+        },
+        {
+          "title":"Protecting the retina",
+          "paragraphs":[
+            "Looking directly at the Sun is dangerous. The eye focuses intense sunlight onto the retina, where it can cause permanent damage.",
+            "Students should never use ordinary sunglasses, exposed film or improvised filters to view the Sun directly."
+          ]
+        }
+      ],
+      "interactiveModels":[
+        {
+          "id":"m1-t6-3-sight-defects",
+          "type":"sight-defects",
+          "title":"Sight defects and correction"
+        }
+      ],
+      "keyPoints":[
+        "Myopia focuses distant images in front of the retina and is corrected with a concave lens.",
+        "Hypermetropia focuses near images behind the retina and is corrected with a convex lens.",
+        "Astigmatism results from uneven curvature of the cornea or lens.",
+        "A cataract is clouding of the lens.",
+        "Glaucoma damages the optic nerve and can cause permanent vision loss.",
+        "Colour vision deficiency results from altered cone function and is not corrected by ordinary focusing lenses.",
+        "Direct viewing of the Sun can damage the retina."
+      ],
+      "workedExample":{
+        "title":"Correcting short sight",
+        "prompt":"Tamika can read a book clearly but cannot see writing on the classroom board clearly. Name the defect and explain how spectacles correct it.",
+        "steps":[
+          "The near object is clear while the distant object is blurred.",
+          "This pattern indicates short sight or myopia.",
+          "In myopia, distant light focuses in front of the retina.",
+          "A concave lens diverges the incoming rays.",
+          "The eye then focuses them farther back, on the retina."
+        ],
+        "answer":"Tamika is short-sighted. A concave lens spreads the incoming light rays so that the eye focuses them on the retina instead of in front of it."
+      },
+      "checks":[
+        {
+          "prompt":"Which lens corrects short sight?",
+          "answer":"A concave or diverging lens.",
+          "explanation":"It spreads incoming rays so their final focus moves farther back onto the retina."
+        },
+        {
+          "prompt":"Where is the image formed in an uncorrected long-sighted eye when viewing a near object?",
+          "answer":"Behind the retina.",
+          "explanation":"A convex lens increases convergence before the rays enter the eye."
+        },
+        {
+          "prompt":"Why does astigmatism cause blurred vision?",
+          "answer":"The cornea or lens is unevenly curved, so light is not focused to one point.",
+          "explanation":"Different rays can be focused at different positions."
+        },
+        {
+          "prompt":"Why should glaucoma be detected and treated early?",
+          "answer":"Because optic nerve damage can lead to permanent loss of vision.",
+          "explanation":"Vision already lost from optic nerve damage may not be restored."
+        }
+      ],
+      "summary":"Analyse a sight problem by identifying where the defect occurs. Refractive problems alter the position of the focus, while cataract, glaucoma and colour vision deficiency affect different eye structures or receptor functions."
+    }
+  }'::jsonb
+)
+on conflict (subject_id,topic_id) do update set
+  section_id=excluded.section_id,
+  title=excluded.title,
+  description=excluded.description,
+  sort_order=excluded.sort_order,
+  enabled=excluded.enabled,
+  metadata=excluded.metadata,
+  updated_at=now();
+
+update public.spark_subjects
+set stats=coalesce(stats,'{}'::jsonb)
+  || '{"topicsBuilt":26,"objectivesBuilt":26}'::jsonb,
+updated_at=now()
+where id='integrated-science';
