@@ -66,6 +66,7 @@ import EnergyConservationMeasuresExplorer from "./components/EnergyConservationM
 import ArtificialLightingExplorer from "./components/ArtificialLightingExplorer";
 import ElectricalAccidentFirstAidExplorer from "./components/ElectricalAccidentFirstAidExplorer";
 import ElectricalHazardsExplorer from "./components/ElectricalHazardsExplorer";
+import FireExtinguishingExplorer from "./components/FireExtinguishingExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -418,6 +419,9 @@ function GenericLessonContent({
         }
         if (model?.type === "electrical-hazards") {
           return <ElectricalHazardsExplorer key={model.id || "electrical-hazards"} />;
+        }
+        if (model?.type === "fire-extinguishing") {
+          return <FireExtinguishingExplorer key={model.id || "fire-extinguishing"} />;
         }
         return null;
       })}
