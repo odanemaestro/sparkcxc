@@ -55,7 +55,7 @@ describe("Integrated Science Objective 2.1.2 acceptance audit", () => {
   test("covers vehicle fuel use and emissions", () => {
     expect(migration).toContain("properly inflated");
     expect(migration).toContain("carbon monoxide");
-    expect(migration).toContain("catalytic converters");
+    expect(migration).toContain("Catalytic converters");
     expect(migration).toContain("Public transport and car-pooling");
     expect(explorer).toContain("Keep tyres properly inflated");
   });
