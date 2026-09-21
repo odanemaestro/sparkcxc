@@ -87,5 +87,13 @@ describe("Integrated Science learner polish V1", () => {
     expect(transport).toContain("MembraneBilayer");
     expect(transport).toContain("net movement");
     expect(transport).toContain("from respiration");
+
+    const transportNeed = fs.readFileSync(
+      path.join(__dirname,"subjects","components","TransportSystemNeedExplorer.jsx"),
+      "utf8"
+    );
+    expect(transportNeed).toContain("tn-undiffused-core");
+    expect(transportNeed).toContain("Same diffusion time for all three cubes");
+    expect(transportNeed).toContain("Diffusion time");
   });
 });
