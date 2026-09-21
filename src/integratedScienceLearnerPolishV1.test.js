@@ -107,11 +107,19 @@ describe("Integrated Science learner polish V1", () => {
     expect(diagram).toContain("heart-semilunar");
     expect(diagram).toContain("heart-inner-wall");
 
-    expect(diagram).toContain("spark-csec-reference");
-    expect(diagram).toContain("M110 110Q95 110 95 135V200");
-    expect(diagram).toContain("M144 210.2A105 105");
-    expect(diagram).toContain("M158 212Q80 180 65 90");
-    expect(diagram).toContain("M60 120Q60 40 170 40");
+    expect(diagram).toContain("spark-reference-refined");
+    expect(diagram).toContain("heart-left-wall-inner");
+    expect(diagram).toContain("heart-chordae");
+    expect(diagram).toContain("kidney-columns");
+    expect(diagram).toContain("kidney-vessel branch artery");
+    expect(diagram).toContain("eye-retinal-vessels");
+    expect(diagram).toContain("ear-bone");
+    expect(diagram).toContain("ear-oval-window");
+    expect(diagram).toContain("female-myometrium");
+    expect(diagram).toContain("female-follicle");
+    expect(diagram).toContain("male-erectile-tissue");
+    expect(diagram).toContain("rough-er");
+    expect(diagram).toContain("golgi");
 
     const excretion = fs.readFileSync(
       path.join(__dirname,"subjects","components","HumanExcretionMechanismsExplorer.jsx"),
