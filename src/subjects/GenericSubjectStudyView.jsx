@@ -64,6 +64,7 @@ import ElectricityConsumptionExplorer from "./components/ElectricityConsumptionE
 import HouseholdElectricalSafetyExplorer from "./components/HouseholdElectricalSafetyExplorer";
 import EnergyConservationMeasuresExplorer from "./components/EnergyConservationMeasuresExplorer";
 import ArtificialLightingExplorer from "./components/ArtificialLightingExplorer";
+import ElectricalAccidentFirstAidExplorer from "./components/ElectricalAccidentFirstAidExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -410,6 +411,9 @@ function GenericLessonContent({
         }
         if (model?.type === "artificial-lighting") {
           return <ArtificialLightingExplorer key={model.id || "artificial-lighting"} />;
+        }
+        if (model?.type === "electrical-accident-first-aid") {
+          return <ElectricalAccidentFirstAidExplorer key={model.id || "electrical-accident-first-aid"} />;
         }
         return null;
       })}
