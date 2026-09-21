@@ -47,13 +47,62 @@ function StructureView(){
 }
 
 function EnergyView(){
+  const [surface,setSurface]=useState("ocean");
+  const ocean=surface==="ocean";
   return <div className="spark-cyclone-energy">
-    <article><span>WARM OCEAN</span><h4>Evaporation supplies moisture</h4><p>Warm tropical water supports strong evaporation into the lower atmosphere.</p></article>
-    <div>→</div>
-    <article><span>RISING MOIST AIR</span><h4>Condensation releases latent heat</h4><p>As moist air rises and condenses, latent heat is released and helps drive vigorous convection.</p></article>
-    <div>→</div>
-    <article><span>LOW PRESSURE</span><h4>Air converges toward the centre</h4><p>Organised inflow and rotation sustain the tropical cyclone when other atmospheric conditions are favourable.</p></article>
-    <aside><b>Why storms weaken over land</b><p>They lose direct access to their warm-ocean moisture and energy source, while land friction also disrupts circulation.</p></aside>
+    <div className="spark-weather-energy-toggle"><button type="button" className={ocean?"active":""} onClick={()=>setSurface("ocean")}>Over warm ocean</button><button type="button" className={!ocean?"active":""} onClick={()=>setSurface("land")}>Moves over land</button></div>
+    <svg className="spark-hurricane-energy-svg" viewBox="0 0 900 500" role="img" aria-label={ocean?"Tropical cyclone energy cycle over warm ocean showing evaporation, rising moist air, condensation, latent heat, surface inflow and upper outflow":"Tropical cyclone over land showing reduced moisture supply, friction and weakening convection"}>
+      <defs>
+        <marker id="hw-energy-blue-head" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" className="hw-energy-blue-head"/></marker>
+        <marker id="hw-energy-warm-head" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" className="hw-energy-warm-head"/></marker>
+      </defs>
+      <rect className="hw-energy-bg" x="0" y="0" width="900" height="500" rx="20"/>
+      {ocean?<React.Fragment>
+        <rect className="hw-warm-ocean" x="0" y="380" width="900" height="120"/>
+        <path className="hw-ocean-surface" d="M0 380Q110 362 220 380T440 380T660 380T900 380"/>
+        <text className="hw-energy-label ocean" x="450" y="466" textAnchor="middle">warm ocean supplies heat and water vapour</text>
+        {[330,395,460,525,590].map((x,i)=><path key={x} className="hw-evaporation" d={"M"+x+" 370Q"+(x-18)+" 326 "+x+" "+(286-(i%2)*12)} markerEnd="url(#hw-energy-warm-head)"/>)}
+        <text className="hw-energy-label" x="290" y="322">evaporation</text>
+      </React.Fragment>:<React.Fragment>
+        <path className="hw-land-surface" d="M0 395Q100 360 200 390Q310 348 430 390Q560 350 680 392Q790 360 900 392V500H0Z"/>
+        <text className="hw-energy-label land" x="450" y="466" textAnchor="middle">land cuts off the direct warm-ocean moisture supply</text>
+        <path className="hw-friction-mark" d="M265 386L315 355M300 391L350 360M550 386L600 355M585 391L635 360"/>
+        <text className="hw-energy-label" x="450" y="423" textAnchor="middle">greater surface friction disrupts low-level circulation</text>
+      </React.Fragment>}
+
+      <g className={ocean?"hw-convection active":"hw-convection weak"}>
+        <path className="hw-cloud-tower" d="M335 305Q315 254 360 230Q345 174 405 165Q405 104 462 112Q505 76 545 119Q598 121 593 177Q638 194 615 235Q655 275 614 309Z"/>
+        <ellipse className="hw-cloud-top" cx="475" cy="119" rx="128" ry="38"/>
+        <text className="hw-energy-label cloud" x="474" y="154" textAnchor="middle">deep cloud and condensation</text>
+      </g>
+
+      <path className={ocean?"hw-rising-air":"hw-rising-air weak"} d="M450 350Q424 292 448 236Q468 198 470 158" markerEnd="url(#hw-energy-warm-head)"/>
+      <text className="hw-energy-label" x="485" y="268">rising moist air</text>
+
+      {ocean&&<React.Fragment>
+        <circle className="hw-latent-heat" cx="560" cy="205" r="47"/>
+        <text className="hw-latent-title" x="560" y="198" textAnchor="middle">LATENT</text>
+        <text className="hw-latent-title" x="560" y="217" textAnchor="middle">HEAT</text>
+        <text className="hw-energy-small" x="560" y="267" textAnchor="middle">released during condensation</text>
+
+        <circle className="hw-low-pressure" cx="450" cy="356" r="28"/>
+        <text className="hw-low-text" x="450" y="365" textAnchor="middle">L</text>
+        <path className="hw-surface-inflow left" d="M95 352Q235 330 412 355" markerEnd="url(#hw-energy-blue-head)"/>
+        <path className="hw-surface-inflow right" d="M805 352Q665 330 488 355" markerEnd="url(#hw-energy-blue-head)"/>
+        <text className="hw-energy-label" x="146" y="324">surface air converges toward lower pressure</text>
+
+        <path className="hw-upper-outflow left" d="M430 98Q300 65 175 95" markerEnd="url(#hw-energy-blue-head)"/>
+        <path className="hw-upper-outflow right" d="M520 98Q650 65 775 95" markerEnd="url(#hw-energy-blue-head)"/>
+        <text className="hw-energy-label" x="475" y="54" textAnchor="middle">upper-level outflow removes rising air</text>
+      </React.Fragment>}
+
+      {!ocean&&<React.Fragment>
+        <path className="hw-cutoff" d="M320 332L580 332M345 310L555 354"/>
+        <text className="hw-energy-label danger" x="450" y="300" textAnchor="middle">less evaporation and moisture available</text>
+        <text className="hw-energy-small" x="450" y="82" textAnchor="middle">convection and organised circulation weaken</text>
+      </React.Fragment>}
+    </svg>
+    <p>{ocean?"Warm ocean water supplies moisture through evaporation. Rising moist air cools and condenses, releasing latent heat. This supports deep convection and lower surface pressure, drawing in more moist air while air flows outward aloft.":"Over land, the cyclone loses direct access to warm-ocean evaporation and moisture. Greater surface friction also disrupts circulation, so organised convection and wind usually weaken."}</p>
   </div>;
 }
 
