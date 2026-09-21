@@ -100,6 +100,15 @@ describe("Integrated Science learner polish V1", () => {
     expect(transportNeed).toContain("Same diffusion time for all three cubes");
     expect(transportNeed).toContain("Diffusion time");
 
+    const transportStructures = fs.readFileSync(
+      path.join(__dirname,"subjects","components","TransportStructuresExplorer.jsx"),
+      "utf8"
+    );
+    expect(transportStructures).toContain("ts-anatomical-heart");
+    expect(transportStructures).toContain("ts-heart-ra");
+    expect(transportStructures).toContain("ts-heart-lv");
+    expect(transportStructures).toContain("ts-heart-valve");
+
     expect(diagram).toContain("eye-vitreous");
     expect(diagram).toContain("eye-aqueous");
     expect(diagram).toContain("ear-vestibule");
