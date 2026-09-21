@@ -34,3 +34,5 @@ html[data-theme="dark"] .spark-respiratory-anatomy-svg,body[data-theme="dark"] .
 html[data-theme="dark"] .ra-labels text,body[data-theme="dark"] .ra-labels text,.dark .ra-labels text,html[data-theme="dark"] .ra-caption,body[data-theme="dark"] .ra-caption,.dark .ra-caption{fill:#e7f0f7}
 @media(max-width:850px){.spark-respiratory-anatomy-notes{grid-template-columns:1fr}.spark-respiratory-anatomy-svg{min-height:340px}}
 @media(max-width:560px){.spark-respiratory-anatomy-svg{min-height:270px;padding:3px}.ra-labels text{font-size:18px}.ra-caption{font-size:17px}}
+
+.ra-fissure{fill:none;stroke:#a45b64;stroke-width:3.5;stroke-linecap:round;opacity:.8}
