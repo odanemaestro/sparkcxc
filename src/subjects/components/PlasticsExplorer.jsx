@@ -12,13 +12,14 @@ function BenefitsView(){
 
 function UsesView(){
   const [use,setUse]=useState("medicine");
-  const data={
+  const uses={
     medicine:{title:"Medicine",text:"Disposable syringes, tubing, gloves and sterile packaging use plastics because they are light, mouldable and can be manufactured hygienically."},
     construction:{title:"Construction",text:"PVC pipes, electrical insulation, roofing membranes and window frames use plastics because they are durable, light and resistant to corrosion."},
     packaging:{title:"Packaging",text:"Plastic containers protect products and reduce transport mass, but unnecessary single-use packaging creates persistent waste."}
-  }[use];
+  };
+  const data=uses[use];
   return <div className="spark-plastics-uses">
-    <div className="spark-plastics-toggle">{Object.keys(data).map(k=><button type="button" key={k} className={use===k?"active":""} onClick={()=>setUse(k)}>{data[k].title}</button>)}</div>
+    <div className="spark-plastics-toggle">{Object.entries(uses).map(([key,item])=><button type="button" key={key} className={use===key?"active":""} onClick={()=>setUse(key)}>{item.title}</button>)}</div>
     <article><span>{data.title.toUpperCase()}</span><h4>{data.title}</h4><p>{data.text}</p></article>
   </div>;
 }
@@ -36,10 +37,49 @@ function MarineView(){
   return <div className="spark-plastics-marine">
     <div className="spark-plastics-toggle"><button type="button" className={mode==="turtle"?"active":""} onClick={()=>setMode("turtle")}>Sea turtles</button><button type="button" className={mode==="micro"?"active":""} onClick={()=>setMode("micro")}>Microplastics</button></div>
     {mode==="turtle"?<div className="spark-turtle-model">
-      <div className="spark-turtle">turtle</div><div className="spark-bag">plastic bag</div><div className="spark-jelly">jellyfish shape</div>
+      <svg viewBox="0 0 820 390" role="img" aria-label="Sea turtle approaching a floating plastic bag that resembles jellyfish prey">
+        <defs><marker id="plastic-risk-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" className="pl-arrow-head"/></marker></defs>
+        <rect className="pl-sea" x="0" y="0" width="820" height="390"/>
+        <path className="pl-surface" d="M0 68Q75 48 150 68T300 68T450 68T600 68T820 68"/>
+        <ellipse className="pl-turtle-shell" cx="282" cy="216" rx="112" ry="66"/>
+        <path className="pl-turtle-head" d="M383 194Q430 180 455 210Q431 244 383 232Z"/>
+        <circle className="pl-turtle-eye" cx="432" cy="207" r="5"/>
+        <path className="pl-flipper" d="M241 160Q199 105 159 136Q187 184 231 197Z"/>
+        <path className="pl-flipper" d="M242 267Q194 314 159 280Q192 239 235 231Z"/>
+        <path className="pl-flipper rear" d="M342 169Q379 124 411 144Q393 183 356 202Z"/>
+        <path className="pl-flipper rear" d="M340 260Q383 294 405 268Q385 236 354 228Z"/>
+        <path className="pl-bag" d="M586 116H675L663 230Q632 251 598 230Z"/>
+        <path className="pl-bag-handle" d="M597 116Q606 75 625 75Q644 75 654 116"/>
+        <path className="pl-jelly" d="M574 274Q620 236 667 274Q670 306 621 311Q575 307 574 274Z"/>
+        <path className="pl-jelly-tentacle" d="M592 303Q581 339 601 350M620 309Q612 343 629 357M648 304Q662 337 647 354"/>
+        <line className="pl-risk-arrow" x1="476" y1="207" x2="566" y2="173" markerEnd="url(#plastic-risk-arrow)"/>
+        <text className="pl-label" x="630" y="103" textAnchor="middle">floating plastic bag</text>
+        <text className="pl-label" x="621" y="371" textAnchor="middle">jellyfish prey</text>
+        <text className="pl-small" x="500" y="195" textAnchor="middle">mistaken for food</text>
+      </svg>
       <p>Floating plastic bags can resemble jellyfish. Turtles may ingest them, which can block or injure the digestive system and reduce feeding.</p>
     </div>:<div className="spark-microplastic-chain">
-      {["microplastic particle","plankton / small organisms","small fish","larger predators"].map((x,i)=><React.Fragment key={x}><article>{x}</article>{i<3&&<span>→</span>}</React.Fragment>)}
+      <svg viewBox="0 0 900 330" role="img" aria-label="Microplastics entering a marine food web from particles to plankton, small fish and larger predators">
+        <defs><marker id="plastic-food-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" className="pl-arrow-head"/></marker></defs>
+        <rect className="pl-sea" x="0" y="0" width="900" height="330"/>
+        {Array.from({length:16},(_,i)=><circle key={i} className="pl-micro" cx={65+(i%4)*25} cy={100+Math.floor(i/4)*25} r={4+(i%3)}/>)}
+        <text className="pl-label" x="110" y="65" textAnchor="middle">microplastic particles</text>
+        <g className="pl-plankton" transform="translate(275 165)">
+          <circle cx="0" cy="0" r="24"/><path d="M-18 -18L-39 -36M18 -18L39 -36M-21 15L-43 29M21 15L43 29"/>
+        </g>
+        <text className="pl-label" x="275" y="230" textAnchor="middle">plankton / small organisms</text>
+        <g className="pl-fish small" transform="translate(500 158)">
+          <ellipse cx="0" cy="0" rx="66" ry="34"/><path d="M-62 0L-112 -38V38Z"/><circle cx="42" cy="-8" r="5"/>
+        </g>
+        <text className="pl-label" x="500" y="230" textAnchor="middle">small fish</text>
+        <g className="pl-fish large" transform="translate(750 150)">
+          <ellipse cx="0" cy="0" rx="92" ry="47"/><path d="M-85 0L-151 -50V50Z"/><circle cx="59" cy="-12" r="7"/>
+        </g>
+        <text className="pl-label" x="750" y="230" textAnchor="middle">larger predator</text>
+        <line className="pl-food-arrow" x1="170" y1="160" x2="228" y2="160" markerEnd="url(#plastic-food-arrow)"/>
+        <line className="pl-food-arrow" x1="327" y1="160" x2="411" y2="160" markerEnd="url(#plastic-food-arrow)"/>
+        <line className="pl-food-arrow" x1="568" y1="160" x2="645" y2="160" markerEnd="url(#plastic-food-arrow)"/>
+      </svg>
       <p>Microplastics can be ingested by marine organisms and move through food webs. Their biological effects depend on particle size, chemistry, exposure and species.</p>
     </div>}
   </div>;
