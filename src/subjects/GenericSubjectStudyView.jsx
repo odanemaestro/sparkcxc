@@ -101,6 +101,7 @@ import MixturesExplorer from "./components/MixturesExplorer";
 import SeparationTechniquesExplorer from "./components/SeparationTechniquesExplorer";
 import CleaningAgentsEffectsExplorer from "./components/CleaningAgentsEffectsExplorer";
 import SoapDetergentsExplorer from "./components/SoapDetergentsExplorer";
+import AirPollutionExplorer from "./components/AirPollutionExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -558,6 +559,9 @@ function GenericLessonContent({
         }
         if (model?.type === "soap-detergents") {
           return <SoapDetergentsExplorer key={model.id || "soap-detergents"} />;
+        }
+        if (model?.type === "air-pollution") {
+          return <AirPollutionExplorer key={model.id || "air-pollution"} />;
         }
         return null;
       })}
