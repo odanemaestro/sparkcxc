@@ -118,3 +118,25 @@ html[data-theme="dark"] .fc-caption,body[data-theme="dark"] .fc-caption,.dark .f
 
 .spark-bacterial-cell-svg .bac-nucleoid{fill:#f5eef7;fill-opacity:.38;stroke:#8b6c91;stroke-width:3;stroke-dasharray:9 7}
 html[data-theme="dark"] .spark-bacterial-cell-svg .bac-nucleoid,body[data-theme="dark"] .spark-bacterial-cell-svg .bac-nucleoid,.dark .spark-bacterial-cell-svg .bac-nucleoid{fill:#533d5d;fill-opacity:.25;stroke:#c4a6cb}
+
+
+.spark-virus-structure-scene{display:grid;gap:14px;padding:14px}
+.spark-virus-structure-svg{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.vs-envelope{fill:#c9a2c9;fill-opacity:.72;stroke:#79587d;stroke-width:7}
+.vs-envelope-inner{fill:#e5d4e7;fill-opacity:.45;stroke:#9a78a0;stroke-width:3}
+.vs-spikes line{stroke:#75527b;stroke-width:6;stroke-linecap:round}.vs-spikes circle{fill:#a76ca6;stroke:#6e496d;stroke-width:3}
+.vs-capsid{fill:#805a97;fill-opacity:.82;stroke:#5d3f72;stroke-width:6;stroke-linejoin:round}
+.vs-genome{fill:none;stroke:#f0d56e;stroke-width:8;stroke-linecap:round}
+.vs-callouts path{fill:none;stroke:#60788a;stroke-width:2.5}.vs-arrow-head{fill:#60788a}.vs-callouts text,.vs-envelope-note{fill:#26485a;font-size:14px;font-weight:850}
+.vs-scale-note rect{fill:#eef4f7;stroke:#8297a3;stroke-width:3}.vs-scale-note text{fill:#294d64;font-size:15px;font-weight:900}.vs-scale-note .vs-small{font-size:12px;font-weight:750}
+.spark-virus-structure-notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.spark-virus-structure-notes article{padding:13px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:11px;background:var(--spark-paper,#fff)}
+.spark-virus-structure-notes b{color:var(--spark-ink,#102a43);font-size:12px}.spark-virus-structure-notes p{margin:5px 0 0;color:var(--spark-ink-soft,#334e68);font-size:11px;line-height:1.5}
+html[data-theme="dark"] .spark-virus-structure-svg,body[data-theme="dark"] .spark-virus-structure-svg,.dark .spark-virus-structure-svg,
+html[data-theme="dark"] .spark-virus-structure-notes article,body[data-theme="dark"] .spark-virus-structure-notes article,.dark .spark-virus-structure-notes article{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .vs-callouts text,body[data-theme="dark"] .vs-callouts text,.dark .vs-callouts text,
+html[data-theme="dark"] .vs-envelope-note,body[data-theme="dark"] .vs-envelope-note,.dark .vs-envelope-note{fill:#e7f0f7}
+html[data-theme="dark"] .vs-scale-note rect,body[data-theme="dark"] .vs-scale-note rect,.dark .vs-scale-note rect{fill:#15314b;stroke:#496377}
+html[data-theme="dark"] .vs-scale-note text,body[data-theme="dark"] .vs-scale-note text,.dark .vs-scale-note text{fill:#e7f0f7}
+@media(max-width:800px){.spark-virus-structure-notes{grid-template-columns:1fr}}
+@media(max-width:620px){.spark-virus-structure-scene{padding:8px}.vs-callouts text,.vs-envelope-note{font-size:18px}.vs-scale-note text{font-size:17px}.vs-scale-note .vs-small{font-size:15px}}
