@@ -6,11 +6,11 @@ const migration = fs.readFileSync(
   "utf8"
 );
 const explorer = fs.readFileSync(
-  path.join(__dirname,"subjects","components","HouseholdElectricalSafetyExplorer.jsx"),
+  path.join(__dirname,"subjects","components","HouseholdHouseholdElectricalSafetyExplorer.jsx"),
   "utf8"
 );
 const css = fs.readFileSync(
-  path.join(__dirname,"subjects","components","householdElectricalSafetyExplorer.css"),
+  path.join(__dirname,"subjects","components","householdHouseholdElectricalSafetyExplorer.css"),
   "utf8"
 );
 const diagram = fs.readFileSync(
@@ -77,7 +77,7 @@ describe("Integrated Science Objective 2.4.4 acceptance audit", () => {
 
   test("wires the explorer into the shared lesson shell", () => {
     expect(migration).toContain('"type":"household-electrical-safety"');
-    expect(view).toContain("HouseholdElectricalSafetyExplorer");
+    expect(view).toContain("HouseholdHouseholdElectricalSafetyExplorer");
     expect(explorer).toContain("Protection devices");
   });
 
