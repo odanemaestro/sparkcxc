@@ -13,3 +13,13 @@ html[data-theme="dark"] .spark-alloy-tabs button.active,body[data-theme="dark"] 
 @media(max-width:900px){.spark-alloy-selector,.spark-stainless-use,.spark-alloy-plating{grid-template-columns:1fr}.spark-alloy-plating aside{grid-column:auto}}
 @media(max-width:620px){.spark-alloys{padding:14px}.spark-alloy-tabs{display:grid;grid-template-columns:1fr 1fr}.spark-atom-grid{grid-template-columns:repeat(6,32px)}.spark-atom-grid span{width:32px;height:32px}.spark-atom-grid span.different{width:24px;height:24px;margin:4px}}
 @media(max-width:390px){.spark-alloy-tabs{grid-template-columns:1fr}}
+
+.spark-alloy-lattice-svg{display:block;width:100%;height:auto;min-height:300px;margin:12px 0;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.al-lattice-panel{fill:#f3f6f8;stroke:#c3d1d9;stroke-width:3}.al-atom.host circle,.al-key .host{fill:#9fa9ae;stroke:#6f7d84;stroke-width:2}.al-atom.different circle,.al-key .different{fill:#c58a62;stroke:#8f5b3d;stroke-width:2}.al-atom.different text{fill:#fff;font-size:12px;font-weight:900}
+.al-slip path{fill:none;stroke:#0d9488;stroke-width:6;stroke-linecap:round}.al-blocked-slip path{fill:none;stroke:#82929a;stroke-width:6;stroke-linecap:round}.al-stop{stroke:#b6534b!important;stroke-width:6!important}.al-arrow-head{fill:#0d9488}
+.al-label,.al-title,.al-key-text{fill:var(--spark-ink,#102a43);font-weight:850}.al-label{font-size:14px}.al-title{font-size:16px}.al-key-text{font-size:12px}
+html[data-theme="dark"] .spark-alloy-lattice-svg,body[data-theme="dark"] .spark-alloy-lattice-svg,.dark .spark-alloy-lattice-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .al-lattice-panel,body[data-theme="dark"] .al-lattice-panel,.dark .al-lattice-panel{fill:#132a3e;stroke:#365268}
+html[data-theme="dark"] .al-label,body[data-theme="dark"] .al-label,.dark .al-label,html[data-theme="dark"] .al-title,body[data-theme="dark"] .al-title,.dark .al-title,html[data-theme="dark"] .al-key-text,body[data-theme="dark"] .al-key-text,.dark .al-key-text{fill:#d6e4ee}
+@media(max-width:900px){.spark-alloy-lattice-svg{min-height:270px}}
+@media(max-width:620px){.spark-alloy-lattice-svg{min-height:230px}.al-label,.al-title{font-size:18px}.al-key-text{font-size:15px}}
