@@ -8,6 +8,7 @@ describe("Integrated Science Objective 1.1.1 acceptance audit V1", () => {
   const studyView = read("subjects/GenericSubjectStudyView.jsx");
   const investigation = read("subjects/components/TransportInvestigationExplorer.jsx");
   const investigationCss = read("subjects/components/transportInvestigationExplorer.css");
+  const transport = read("subjects/components/TransportProcessExplorer.jsx");
   const transportCss = read("subjects/components/transportProcessExplorer.css");
 
   test("canonical objective codes are used for the first two lessons", () => {
@@ -47,6 +48,26 @@ describe("Integrated Science Objective 1.1.1 acceptance audit V1", () => {
     expect(investigation).toContain("Changed");
     expect(investigation).toContain("Measured");
     expect(investigation).toContain("Keep constant");
+  });
+
+  test("protects diffusion osmosis and active-transport mechanism SVGs", () => {
+    for (const term of [
+      "Diffusion particle model",
+      "Higher concentration",
+      "Lower concentration",
+      "net movement",
+      "Osmosis membrane model",
+      "More water molecules",
+      "More solute",
+      "Selectively permeable membrane",
+      "Active transport membrane model",
+      "carrier",
+      "ENERGY REQUIRED",
+      "from respiration"
+    ]) expect(transport).toContain(term);
+    expect(transportCss).toContain(".membrane-bilayer");
+    expect(transportCss).toContain(".carrier");
+    expect(transportCss).toContain(".energy-badge");
   });
 
   test("lesson includes worked CSEC application and learner checks", () => {
