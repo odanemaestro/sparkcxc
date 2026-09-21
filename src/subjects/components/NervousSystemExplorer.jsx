@@ -26,20 +26,32 @@ const VIEWS = {
 
 function CNSScene() {
   return (
-    <svg viewBox="0 0 980 520" role="img" aria-label="Central nervous system showing brain, spinal cord and peripheral nerves">
-      <circle className="ns-head" cx="300" cy="115" r="75" />
-      <path className="ns-torso" d="M220 205Q300 165 380 205L415 420H185Z" />
-      <path className="ns-brain" d="M260 95Q300 60 345 90Q365 130 330 155Q285 170 250 135Q240 110 260 95Z" />
-      <path className="ns-spinal" d="M300 165V405" />
-      <path className="ns-nerve" d="M300 245L190 285M300 245L410 285M300 330L205 390M300 330L395 390" />
-      <text className="ns-label" x="470" y="115">brain</text>
-      <path className="ns-guide" d="M355 110H455" />
-      <text className="ns-label" x="470" y="260">spinal cord</text>
-      <path className="ns-guide" d="M315 260H455" />
-      <text className="ns-label" x="470" y="360">peripheral nerves</text>
-      <path className="ns-guide" d="M405 335H455" />
+    <svg viewBox="0 0 980 520" role="img" aria-label="Central nervous system showing brain regions, spinal cord and peripheral nerves">
+      <g className="ns-body" transform="translate(30 18)">
+        <circle className="ns-head" cx="300" cy="105" r="78" />
+        <path className="ns-torso" d="M223 195Q300 162 377 195Q420 278 405 421H195Q180 278 223 195Z" />
+        <path className="ns-arm" d="M224 222Q158 274 128 370M376 222Q442 274 472 370" />
+        <path className="ns-leg" d="M260 420Q236 468 224 500M340 420Q364 468 376 500" />
 
-      <g transform="translate(610 90)">
+        <path className="ns-brain cerebrum" d="M258 78Q278 43 321 48Q354 45 374 71Q389 99 373 127Q350 147 316 139Q286 153 259 133Q240 111 258 78Z" />
+        <path className="ns-brain cerebellum" d="M335 124Q368 116 388 136Q395 156 379 170Q352 179 329 163Q319 145 335 124Z" />
+        <path className="ns-brainstem" d="M322 130Q338 135 344 154V183" />
+        <path className="ns-spinal" d="M300 167V415" />
+
+        <path className="ns-nerve" d="M300 226Q238 240 190 282M300 226Q362 240 410 282" />
+        <path className="ns-nerve" d="M300 292Q231 324 166 364M300 292Q369 324 434 364" />
+        <path className="ns-nerve" d="M300 355Q260 390 238 430M300 355Q340 390 362 430" />
+        <path className="ns-nerve fine" d="M190 282Q160 310 145 344M410 282Q440 310 455 344M238 430Q225 455 220 478M362 430Q375 455 380 478" />
+      </g>
+
+      <text className="ns-label" x="510" y="105">brain</text>
+      <path className="ns-guide" d="M397 105H495" />
+      <text className="ns-label" x="510" y="245">spinal cord</text>
+      <path className="ns-guide" d="M340 245H495" />
+      <text className="ns-label" x="510" y="350">peripheral nerves</text>
+      <path className="ns-guide" d="M430 335H495" />
+
+      <g transform="translate(650 72)">
         <rect className="ns-card" x="0" y="0" width="285" height="115" rx="16" />
         <text className="ns-card-title" x="18" y="30">Cerebrum</text>
         <text className="ns-card-text" x="18" y="58">thinking, memory and</text>
