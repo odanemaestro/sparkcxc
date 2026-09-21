@@ -232,6 +232,17 @@ describe("Integrated Science learner polish V1", () => {
     expect(digestion).toContain("dg-route");
     expect(diagram).toContain("tooth-root-canal");
     expect(diagram).toContain("tooth-periodontal");
+
+    const teeth = fs.readFileSync(
+      path.join(__dirname,"subjects","components","TeethFunctionExplorer.jsx"),
+      "utf8"
+    );
+    expect(teeth).toContain("function ToothShape");
+    expect(teeth).toContain("Incisor tooth with chisel-shaped crown");
+    expect(teeth).toContain("Canine tooth with pointed crown");
+    expect(teeth).toContain("Premolar tooth with two cusps");
+    expect(teeth).toContain("Molar tooth with broad multi-cusped crown");
+    expect(teeth).toContain("spark-tooth-shape");
     expect(diagram).toContain("resp-tracheal-ring");
     expect(diagram).toContain("resp-alveoli");
     expect(diagram).toContain("brain-corpus-callosum");
