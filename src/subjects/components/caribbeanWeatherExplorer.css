@@ -16,3 +16,26 @@ html[data-theme="dark"] .hw-label,body[data-theme="dark"] .hw-label,.dark .hw-la
 @media(max-width:900px){.spark-cyclone-stages,.spark-cyclone-energy{flex-direction:column}.spark-cyclone-stages>div,.spark-cyclone-energy>div{text-align:center;transform:rotate(90deg)}.spark-weather-hazards{grid-template-columns:1fr}.spark-cyclone-energy aside{flex-basis:auto}}
 @media(max-width:620px){.spark-caribbean-weather{padding:14px}.spark-weather-tabs{display:grid;grid-template-columns:1fr 1fr}.hw-label{font-size:18px}}
 @media(max-width:390px){.spark-weather-tabs{grid-template-columns:1fr}}
+
+
+.spark-cyclone-energy{display:block}
+.spark-weather-energy-toggle{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.spark-weather-energy-toggle button{min-height:42px;padding:0 12px;border:1px solid var(--spark-border,#d9e2ec);border-radius:9px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:11px;font-weight:850}
+.spark-weather-energy-toggle button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}
+.spark-hurricane-energy-svg{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:14px;background:var(--spark-paper,#fff)}
+.hw-energy-bg{fill:var(--spark-paper,#fff)}.hw-warm-ocean{fill:#79b8d3}.hw-ocean-surface{fill:none;stroke:#3f819e;stroke-width:5}.hw-land-surface{fill:#b79b70;stroke:#776548;stroke-width:4}
+.hw-evaporation,.hw-rising-air{fill:none;stroke:#d7794c;stroke-width:5;stroke-linecap:round}.hw-rising-air.weak{stroke-dasharray:10 8;opacity:.55}.hw-energy-warm-head{fill:#d7794c}
+.hw-cloud-tower,.hw-cloud-top{fill:#e7edf1;stroke:#8fa4b0;stroke-width:3}.hw-convection.weak{opacity:.48}
+.hw-latent-heat{fill:#f4c86c;fill-opacity:.85;stroke:#b58128;stroke-width:3}.hw-latent-title{fill:#6f4c16;font-size:13px;font-weight:900}
+.hw-low-pressure{fill:#dcebf2;stroke:#537e92;stroke-width:3}.hw-low-text{fill:#315b70;font-size:29px;font-weight:900}
+.hw-surface-inflow,.hw-upper-outflow{fill:none;stroke:#3d7f9d;stroke-width:5;stroke-linecap:round}.hw-energy-blue-head{fill:#3d7f9d}
+.hw-energy-label,.hw-energy-small{fill:var(--spark-ink,#102a43);font-weight:850}.hw-energy-label{font-size:12px}.hw-energy-small{font-size:11px}.hw-energy-label.danger{fill:#9b443c}
+.hw-friction-mark,.hw-cutoff{fill:none;stroke:#9b443c;stroke-width:6;stroke-linecap:round}
+html[data-theme="dark"] .spark-weather-energy-toggle button,body[data-theme="dark"] .spark-weather-energy-toggle button,.dark .spark-weather-energy-toggle button{background:#0d2134;border-color:#29465f;color:#d6e4ee}
+html[data-theme="dark"] .spark-weather-energy-toggle button.active,body[data-theme="dark"] .spark-weather-energy-toggle button.active,.dark .spark-weather-energy-toggle button.active{background:#164e4a;color:#d7fffa}
+html[data-theme="dark"] .spark-hurricane-energy-svg,body[data-theme="dark"] .spark-hurricane-energy-svg,.dark .spark-hurricane-energy-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .hw-energy-bg,body[data-theme="dark"] .hw-energy-bg,.dark .hw-energy-bg{fill:#0d2134}
+html[data-theme="dark"] .hw-energy-label,body[data-theme="dark"] .hw-energy-label,.dark .hw-energy-label,html[data-theme="dark"] .hw-energy-small,body[data-theme="dark"] .hw-energy-small,.dark .hw-energy-small{fill:#d6e4ee}
+html[data-theme="dark"] .hw-energy-label.danger,body[data-theme="dark"] .hw-energy-label.danger,.dark .hw-energy-label.danger{fill:#f0aaa3}
+@media(max-width:900px){.spark-cyclone-energy>.spark-weather-energy-toggle{transform:none;text-align:left}.spark-weather-energy-toggle{display:grid;grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.hw-energy-label{font-size:15px}.hw-energy-small{font-size:14px}.hw-latent-title{font-size:16px}}
