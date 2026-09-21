@@ -2,8 +2,79 @@ import React,{useMemo,useState} from "react";
 import "./waterPollutionExplorer.css";
 
 function EutrophicationView(){
-  return <div className="spark-waterpollution-flow">
-    {["fertiliser / sewage nutrients","rapid algal growth","algae die","bacteria decompose","dissolved oxygen falls","fish may die"].map((x,i)=><React.Fragment key={x}><article>{x}</article>{i<5&&<span>→</span>}</React.Fragment>)}
+  const steps=[
+    ["1","Nutrient input","Fertiliser runoff or sewage adds nitrates and phosphates."],
+    ["2","Algal bloom","Algae multiply rapidly near the water surface."],
+    ["3","Algae die","Dead algae and organic matter sink."],
+    ["4","Decomposition","Bacteria and other decomposers respire while breaking down the material."],
+    ["5","Oxygen falls","Dissolved oxygen is used faster than it is replaced."],
+    ["6","Aquatic life stressed","Fish and other animals may suffocate and die."]
+  ];
+  return <div className="spark-eutrophication-model">
+    <svg viewBox="0 0 1040 560" role="img" aria-label="Eutrophication in a water body showing nutrient runoff, algal bloom, sinking dead algae, decomposition, oxygen loss and fish death">
+      <defs>
+        <linearGradient id="wp-lake-water" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="#9fd2df" />
+          <stop offset="100%" stopColor="#4f899c" />
+        </linearGradient>
+      </defs>
+
+      <rect className="eu-sky" x="20" y="20" width="1000" height="500" rx="20" />
+      <path className="eu-bank" d="M20 160Q165 105 305 150L345 225H20Z" />
+      <path className="eu-lake" d="M20 225H1020V520H20Z" />
+
+      <g className="eu-farm" transform="translate(45 68)">
+        <path className="eu-field" d="M0 85Q100 35 230 78L260 135H0Z" />
+        {[35,75,115,155,195].map((x,i)=><path key={x} className="eu-crop" d={`M${x} 85V${55-(i%2)*8}M${x} 68L${x-12} 55M${x} 68L${x+12} 55`} />)}
+        <text className="eu-label" x="125" y="22" textAnchor="middle">fertiliser / sewage nutrients</text>
+      </g>
+
+      <path className="eu-runoff" d="M245 150Q320 175 390 235" />
+      <g className="eu-nutrient-dots">
+        {[285,315,345,375].map((x,i)=><circle key={x} cx={x} cy={180+i*14} r="7" />)}
+      </g>
+      <text className="eu-small" x="330" y="150" textAnchor="middle">nitrates + phosphates enter water</text>
+
+      <g className="eu-algal-bloom">
+        <path d="M390 230Q520 200 650 225T910 225V265Q775 250 650 267T390 260Z" />
+        {[420,455,495,535,575,615,655,695,735,775,815,855,895].map((x,i)=><circle key={x} cx={x} cy={235+(i%3)*8} r={5+(i%2)*2} />)}
+      </g>
+      <text className="eu-stage-label bloom" x="650" y="195" textAnchor="middle">rapid algal bloom near surface</text>
+
+      <g className="eu-dead-algae">
+        {[470,520,570,620,670,720].map((x,i)=><path key={x} d={`M${x} 285Q${x+10} ${310+i*4} ${x-5} ${335+i*7}`} />)}
+      </g>
+      <text className="eu-small" x="555" y="340" textAnchor="middle">dead algae sink</text>
+
+      <g className="eu-decomposers">
+        {[455,500,548,595,645,690].map((x,i)=><g key={x} transform={`translate(${x} ${410+(i%2)*24})`}><circle r="10"/><path d="M-15 0H15M0-15V15M-11-11L11 11M11-11L-11 11"/></g>)}
+      </g>
+      <text className="eu-small" x="570" y="470" textAnchor="middle">decomposers respire and use dissolved oxygen</text>
+
+      <g className="eu-oxygen high">
+        {[405,440,775,820].map((x,i)=><circle key={x} cx={x} cy={310+(i%2)*40} r="9" />)}
+      </g>
+      <g className="eu-oxygen low">
+        {[735,865].map((x,i)=><circle key={x} cx={x} cy={390+i*36} r="6" />)}
+      </g>
+      <text className="eu-oxygen-label" x="832" y="360">dissolved O₂ falls</text>
+
+      <g className="eu-fish alive" transform="translate(290 345)">
+        <path d="M0 0Q35-25 75 0Q35 25 0 0Z" /><path d="M0 0L-28-22V22Z" /><circle cx="55" cy="-5" r="3" />
+      </g>
+      <g className="eu-fish stressed" transform="translate(835 455) rotate(18)">
+        <path d="M0 0Q35-25 75 0Q35 25 0 0Z" /><path d="M0 0L-28-22V22Z" /><path className="eu-fish-x" d="M48-11L62 3M62-11L48 3" />
+      </g>
+      <text className="eu-stage-label fish" x="870" y="505">fish may die</text>
+
+      <g className="eu-step-key" transform="translate(35 535)">
+        <text x="0" y="0">nutrients → bloom → death/sinking → decomposition → oxygen depletion → animal stress</text>
+      </g>
+    </svg>
+
+    <div className="spark-eutrophication-steps">
+      {steps.map(([n,title,text])=><article key={n}><span>{n}</span><div><b>{title}</b><p>{text}</p></div></article>)}
+    </div>
   </div>;
 }
 
