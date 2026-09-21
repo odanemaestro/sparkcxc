@@ -137,11 +137,39 @@ function SkeletonDiagram({selected,onSelect}){
 }
 
 function RegionsView(){
-  return <div className="spark-skeleton-regions">
-    <article><span>CERVICAL</span><h4>Neck</h4><p>Seven cervical vertebrae support the head and protect the upper spinal cord.</p></article>
-    <article><span>THORACIC</span><h4>Chest</h4><p>Thoracic vertebrae articulate with ribs and help form the thoracic cage.</p></article>
-    <article><span>LUMBAR</span><h4>Lower back</h4><p>Large lumbar vertebrae bear substantial body weight.</p></article>
-    <article><span>SACRUM + COCCYX</span><h4>Base of the spine</h4><p>These fused or small terminal bones connect the vertebral column with the pelvis and form its lower end.</p></article>
+  const vertebrae=[
+    ...Array.from({length:7},(_,i)=>({y:95+i*24,region:"cervical"})),
+    ...Array.from({length:12},(_,i)=>({y:280+i*22,region:"thoracic"})),
+    ...Array.from({length:5},(_,i)=>({y:560+i*28,region:"lumbar"})),
+  ];
+  return <div className="spark-skeleton-regions-view">
+    <svg className="spark-spinal-regions-svg" viewBox="0 0 760 820" role="img" aria-label="Human vertebral column showing seven cervical, twelve thoracic and five lumbar vertebrae followed by the sacrum and coccyx">
+      <path className="sr-spinal-curve" d="M370 70Q342 155 370 250Q397 350 368 455Q344 545 376 655Q390 700 378 760"/>
+      <g className="sr-vertebrae">
+        {vertebrae.map(({y,region},i)=><g key={i} className={"sr-vertebra "+region}>
+          <rect x={region==="lumbar"?337:region==="thoracic"?344:351} y={y} width={region==="lumbar"?66:region==="thoracic"?52:38} height={region==="lumbar"?20:17} rx="6"/>
+          <path d={"M"+(370)+" "+(y+4)+"L"+(region==="lumbar"?320:region==="thoracic"?326:335)+" "+(y+10)+"M370 "+(y+4)+"L"+(region==="lumbar"?420:region==="thoracic"?414:405)+" "+(y+10)}/>
+        </g>)}
+      </g>
+      <path className="sr-sacrum" d="M340 712Q380 690 420 712L408 775Q380 800 352 775Z"/>
+      <path className="sr-coccyx" d="M380 780Q394 795 382 815Q370 800 380 780Z"/>
+
+      <g className="sr-brackets">
+        <path className="cervical" d="M275 92H300V255H275"/><text x="255" y="175" textAnchor="end">CERVICAL</text><text className="sr-count" x="255" y="198" textAnchor="end">7 vertebrae</text>
+        <path className="thoracic" d="M275 278H300V535H275"/><text x="255" y="400" textAnchor="end">THORACIC</text><text className="sr-count" x="255" y="423" textAnchor="end">12 vertebrae</text>
+        <path className="lumbar" d="M275 558H300V690H275"/><text x="255" y="620" textAnchor="end">LUMBAR</text><text className="sr-count" x="255" y="643" textAnchor="end">5 vertebrae</text>
+        <path className="sacral" d="M460 705H485V812H460"/><text x="505" y="745">SACRUM</text><text className="sr-count" x="505" y="768">fused vertebrae</text><text x="505" y="805">COCCYX</text>
+      </g>
+
+      <text className="sr-title" x="380" y="42" textAnchor="middle">regions of the vertebral column</text>
+      <text className="sr-small" x="380" y="805" textAnchor="middle">vertebrae surround and protect the spinal cord while supporting the trunk and head</text>
+    </svg>
+    <div className="spark-skeleton-regions">
+      <article><span>CERVICAL</span><h4>Neck</h4><p>Seven cervical vertebrae support the head and protect the upper spinal cord.</p></article>
+      <article><span>THORACIC</span><h4>Chest</h4><p>Twelve thoracic vertebrae articulate with ribs and help form the thoracic cage.</p></article>
+      <article><span>LUMBAR</span><h4>Lower back</h4><p>Five large lumbar vertebrae bear substantial body weight.</p></article>
+      <article><span>SACRUM + COCCYX</span><h4>Base of the spine</h4><p>These fused or small terminal bones connect the vertebral column with the pelvis and form its lower end.</p></article>
+    </div>
   </div>;
 }
 
