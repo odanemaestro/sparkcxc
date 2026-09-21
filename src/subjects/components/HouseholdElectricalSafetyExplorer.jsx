@@ -76,6 +76,73 @@ function FuseView(){
 
 function ProtectionView(){
   return <div className="spark-safety-protection">
+    <svg className="spark-protection-device-svg" viewBox="0 0 1040 600" role="img" aria-label="Electrical safety fault path showing live fault to a metal appliance case earth wire fuse and circuit breaker protection">
+      <defs>
+        <marker id="es-fault-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+          <path className="es-arrow-head" d="M0 0L10 5L0 10Z"/>
+        </marker>
+      </defs>
+
+      <text className="es-title" x="55" y="55">supply</text>
+      <path className="es-live-line" d="M70 105H365"/>
+      <path className="es-neutral-line" d="M70 175H365"/>
+      <path className="es-earth-line" d="M70 245H365"/>
+
+      <rect className="es-fuse-body" x="165" y="78" width="100" height="54" rx="12"/>
+      <path className="es-fuse-link" d="M182 105Q205 87 228 105T250 105"/>
+      <text className="es-small" x="215" y="64" textAnchor="middle">fuse in live conductor</text>
+
+      <g className="es-appliance">
+        <rect className="es-case" x="365" y="80" width="305" height="275" rx="30"/>
+        <circle className="es-motor" cx="520" cy="205" r="68"/>
+        <path className="es-motor-coil" d="M475 205Q500 155 525 205Q550 255 575 205"/>
+        <path className="es-live-internal" d="M365 105H455Q500 105 500 145"/>
+        <path className="es-neutral-internal" d="M365 175H455Q500 175 500 155"/>
+        <path className="es-earth-bond" d="M365 245H405V315H625"/>
+        <circle className="es-earth-terminal" cx="625" cy="315" r="10"/>
+        <path className="es-fault" d="M500 145Q570 120 625 172V305" markerEnd="url(#es-fault-arrow)"/>
+        <text className="es-label" x="520" y="380" textAnchor="middle">metal appliance case</text>
+        <text className="es-small fault" x="600" y="130">insulation fault</text>
+      </g>
+
+      <path className="es-fault-current" d="M625 315Q735 360 790 450" markerEnd="url(#es-fault-arrow)"/>
+      <text className="es-label" x="748" y="360">large fault current</text>
+      <text className="es-small" x="744" y="385">low-resistance earth path</text>
+
+      <g className="es-ground" transform="translate(790 442)">
+        <path d="M0 0V55"/>
+        <path d="M-45 55H45M-30 70H30M-16 85H16"/>
+        <text className="es-label" x="0" y="120" textAnchor="middle">earth</text>
+      </g>
+
+      <g className="es-breaker-panel" transform="translate(735 75)">
+        <rect className="es-device-card" x="0" y="0" width="245" height="205" rx="18"/>
+        <text className="es-title" x="122" y="34" textAnchor="middle">circuit breaker</text>
+        <circle className="es-breaker-contact" cx="72" cy="105" r="8"/>
+        <circle className="es-breaker-contact" cx="170" cy="105" r="8"/>
+        <path className="es-breaker-arm" d="M80 100L150 62"/>
+        <path className="es-magnetic-trip" d="M112 130Q122 112 132 130Q142 148 152 130"/>
+        <path className="es-trip-arrow" d="M132 155V118" markerEnd="url(#es-fault-arrow)"/>
+        <text className="es-small" x="122" y="185" textAnchor="middle">excess current trips contacts open</text>
+      </g>
+
+      <g className="es-fuse-panel" transform="translate(40 365)">
+        <rect className="es-device-card" x="0" y="0" width="360" height="165" rx="18"/>
+        <text className="es-title" x="180" y="34" textAnchor="middle">fuse action</text>
+        <path className="es-live-line" d="M40 90H125M235 90H320"/>
+        <rect className="es-fuse-body" x="120" y="63" width="120" height="54" rx="12"/>
+        <path className="es-fuse-link broken" d="M137 90L170 90M190 78L210 102M215 90L228 90"/>
+        <text className="es-small" x="180" y="145" textAnchor="middle">fuse link melts and opens the live circuit</text>
+      </g>
+
+      <g className="es-sequence" transform="translate(430 455)">
+        <text className="es-title" x="0" y="0">fault protection sequence</text>
+        <text className="es-small" x="0" y="32">1. live conductor touches metal case</text>
+        <text className="es-small" x="0" y="58">2. earth conductor carries a large fault current</text>
+        <text className="es-small" x="0" y="84">3. fuse melts or breaker trips</text>
+        <text className="es-small" x="0" y="110">4. dangerous live supply is disconnected</text>
+      </g>
+    </svg>
     <article><span>FUSE</span><h4>Melts when current exceeds its rating</h4><p>The fuse wire heats and melts, breaking the live connection. A blown fuse must be replaced with the correct rating.</p></article>
     <article><span>CIRCUIT BREAKER</span><h4>Trips and opens the circuit</h4><p>Many household circuits use breakers because they disconnect on excessive current and can be reset after the fault is corrected.</p></article>
     <article><span>EARTHING</span><h4>Protects exposed metal cases</h4><p>If a fault connects live wiring to the case, the earth conductor provides a low-resistance fault path so a protective device disconnects the circuit.</p></article>
