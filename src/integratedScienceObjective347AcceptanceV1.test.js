@@ -10,6 +10,6 @@ describe("Integrated Science Objective 3.4.7 acceptance audit",()=>{
  test("covers vertebral regions",()=>{expect(migration).toContain("cervical vertebrae");expect(migration).toContain("thoracic vertebrae");expect(migration).toContain("lumbar vertebrae");});
  test("has recognisable labelled diagram",()=>{expect(explorer).toContain("Human skeleton with major bones labelled");expect(explorer).toContain("SkeletonDiagram");});
  test("wires explorer",()=>{expect(migration).toContain('"type":"human-skeleton"');expect(view).toContain("HumanSkeletonExplorer");});
- test("responsive and dark",()=>{expect(css).toContain("@media(max-width:900px)");expect(css).toContain('html[data-theme="dark"]');});
+ test("keyboard accessible bone labels",()=>{expect(explorer).toContain("onKeyDown");expect(explorer).toContain('event.key==="Enter"');expect(explorer).toContain('event.key===" "');expect(explorer).toContain("aria-pressed");expect(explorer).toContain("aria-label");});\n test("responsive and dark",()=>{expect(css).toContain("@media(max-width:900px)");expect(css).toContain('html[data-theme="dark"]');});
  test("preserves total",()=>expect(migration).toContain('"objectivesBuilt":96'));
 });
