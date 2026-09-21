@@ -28,3 +28,35 @@ html[data-theme="dark"] .sn-bulge-label,
 body[data-theme="dark"] .sn-bulge-label,
 .dark .sn-bulge-label{fill:#d6e4ee}
 @media(max-width:620px){.sn-range-label{font-size:18px}.sn-bulge-label{font-size:16px}}
+
+.spark-tide-bulges .td-water{fill:url(#td-ocean-gradient)}
+.spark-tide-bulges .td-pull{fill:none;stroke-linecap:round}
+.spark-tide-bulges .td-pull.strongest{stroke:#527f9e;stroke-width:8}
+.spark-tide-bulges .td-pull.middle{stroke:#6f91a7;stroke-width:6}
+.spark-tide-bulges .td-pull.weakest{stroke:#91a8b8;stroke-width:4}
+.spark-tide-bulges .td-bulge-guides path{fill:none;stroke:#7b8f9d;stroke-width:2.5;stroke-dasharray:6 5}
+.spark-tide-bulges .td-rotation{fill:none;stroke:#0d9488;stroke-width:6;stroke-linecap:round}
+.spark-tide-bulges .td-small{fill:#526b7d;font-size:12px;font-weight:800}
+.spark-tide-bulges .td-small.heading{fill:#29495f;font-weight:900}
+.spark-tide-bulges .td-caption{fill:#3d5a6c;font-size:12px;font-weight:850}
+.spark-tide-bulges .td-gradient-key rect{fill:#f7fafc;stroke:#c4d4de;stroke-width:2}
+.spark-tide-bulge-notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px}
+.spark-tide-bulge-notes article{display:grid;gap:5px;padding:12px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:10px;background:var(--spark-paper,#fff)}
+.spark-tide-bulge-notes b{color:var(--spark-ink,#102a43);font-size:11px}
+.spark-tide-bulge-notes span{color:var(--spark-ink-soft,#334e68);font-size:11px;line-height:1.5}
+html[data-theme="dark"] .spark-tide-bulges .td-gradient-key rect,
+body[data-theme="dark"] .spark-tide-bulges .td-gradient-key rect,
+.dark .spark-tide-bulges .td-gradient-key rect,
+html[data-theme="dark"] .spark-tide-bulge-notes article,
+body[data-theme="dark"] .spark-tide-bulge-notes article,
+.dark .spark-tide-bulge-notes article{fill:#0d2134;background:#0d2134;stroke:#29465f;border-color:#29465f}
+html[data-theme="dark"] .spark-tide-bulges .td-small,
+body[data-theme="dark"] .spark-tide-bulges .td-small,
+.dark .spark-tide-bulges .td-small,
+html[data-theme="dark"] .spark-tide-bulges .td-caption,
+body[data-theme="dark"] .spark-tide-bulges .td-caption,
+.dark .spark-tide-bulges .td-caption{fill:#d6e4ee}
+@media(max-width:900px){.spark-tide-bulge-notes{grid-template-columns:1fr}}
+@media(max-width:620px){
+  .spark-tide-bulges .td-small,.spark-tide-bulges .td-caption{font-size:17px}
+}
