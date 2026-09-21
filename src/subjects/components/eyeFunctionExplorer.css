@@ -19,3 +19,11 @@ html[data-theme="dark"] .spark-eye-function-stage,body[data-theme="dark"] .spark
 html[data-theme="dark"] .spark-eye-function-note,body[data-theme="dark"] .spark-eye-function-note,.dark .spark-eye-function-note{background:#0d2134;border-color:#29465f}
 @media(max-width:620px){.spark-eye-function{padding:14px}.spark-eye-function-tabs,.spark-eye-function-toggle{display:grid;grid-template-columns:1fr 1fr}.spark-eye-function-stage .ef-heading{font-size:24px}.spark-eye-function-stage .ef-label{font-size:18px}.spark-eye-function-stage .ef-small{font-size:17px}}
 @media(max-width:390px){.spark-eye-function-tabs,.spark-eye-function-toggle{grid-template-columns:1fr}}
+
+.spark-eye-function-stage .ef-sclera{fill:#f5f7f8;stroke:#718593;stroke-width:6}
+.spark-eye-function-stage .ef-vitreous{fill:#f2c8cf;fill-opacity:.42;stroke:#d79ba4;stroke-width:2}
+.spark-eye-function-stage .ef-choroid{fill:none;stroke:#6f5847;stroke-width:8;stroke-linecap:round}
+.spark-eye-function-stage .ef-aqueous{fill:#dff1f7;fill-opacity:.82;stroke:#82b7c9;stroke-width:3}
+.spark-eye-function-stage .ef-iris{fill:none;stroke:#6e95a8;stroke-width:12;stroke-linecap:round}
+.spark-eye-function-stage .ef-pupil-small{fill:#1d2b34}
+.spark-eye-function-stage .ef-optic-nerve{fill:#d9c08c;stroke:#95794a;stroke-width:5}
