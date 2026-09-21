@@ -120,6 +120,23 @@ describe("Integrated Science learner polish V1", () => {
     expect(skeleton).toContain("hs-femur");
     expect(skeleton).toContain("aria-pressed");
 
+    const eyeFunction = fs.readFileSync(
+      path.join(__dirname,"subjects","components","EyeFunctionExplorer.jsx"),
+      "utf8"
+    );
+    expect(eyeFunction).toContain("ef-anatomical-eye");
+    expect(eyeFunction).toContain("ef-optic-nerve");
+    expect(eyeFunction).toContain("ef-aqueous");
+
+    const muscleMovement = fs.readFileSync(
+      path.join(__dirname,"subjects","components","SkeletalMuscleMovementExplorer.jsx"),
+      "utf8"
+    );
+    expect(muscleMovement).toContain("sm-scapula");
+    expect(muscleMovement).toContain("sm-bone radius");
+    expect(muscleMovement).toContain("spark-knee-svg");
+    expect(muscleMovement).toContain("sm-patella");
+
     expect(diagram).toContain("eye-vitreous");
     expect(diagram).toContain("eye-aqueous");
     expect(diagram).toContain("ear-vestibule");
