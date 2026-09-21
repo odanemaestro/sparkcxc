@@ -12,6 +12,11 @@ const VIEWS = {
     title:"A bacterium is a prokaryotic cell with specialised structures",
     note:"A typical bacterium has cytoplasm, ribosomes, a cell membrane and cell wall. Its main chromosome lies free in the cytoplasm. Some bacteria also have plasmids, a capsule or slime layer, pili and one or more flagella.",
   },
+  fungal:{
+    label:"Fungal cell",
+    title:"A fungal cell is eukaryotic and contains a membrane-bound nucleus",
+    note:"This budding yeast example shows the cell wall, cell membrane, cytoplasm, nucleus, vacuole and mitochondria. Fungi are eukaryotes, unlike bacteria, and fungal cells do not contain chloroplasts.",
+  },
   useful:{
     label:"Useful roles",
     title:"Microorganisms support food production and nutrient cycling",
@@ -131,6 +136,71 @@ function BacterialCellScene() {
   );
 }
 
+function FungalCellScene() {
+  return (
+    <div className="spark-fungal-cell-scene">
+      <svg className="spark-fungal-cell-svg" viewBox="0 0 980 580" role="img" aria-label="Labelled budding yeast fungal cell showing cell wall, cell membrane, cytoplasm, nucleus, nucleolus, vacuole, mitochondria and a developing bud">
+        <defs>
+          <marker id="fungal-callout-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+            <path d="M0 0L9 4.5L0 9Z" className="fc-arrow-head"/>
+          </marker>
+        </defs>
+
+        <ellipse className="fc-wall" cx="480" cy="290" rx="245" ry="205"/>
+        <ellipse className="fc-membrane" cx="480" cy="290" rx="226" ry="186"/>
+        <ellipse className="fc-cytoplasm" cx="480" cy="290" rx="211" ry="171"/>
+
+        <circle className="fc-vacuole" cx="545" cy="302" r="82"/>
+        <circle className="fc-nucleus" cx="400" cy="245" r="58"/>
+        <circle className="fc-nucleolus" cx="414" cy="237" r="17"/>
+
+        <g className="fc-mitochondria">
+          <g transform="translate(365 352) rotate(-18)">
+            <ellipse cx="0" cy="0" rx="54" ry="25"/>
+            <path d="M-35 -3Q-20 -18 -6 -3T24 -3T39 -3"/>
+          </g>
+          <g transform="translate(575 190) rotate(22)">
+            <ellipse cx="0" cy="0" rx="48" ry="23"/>
+            <path d="M-31 -2Q-17 -15 -4 -2T20 -2T34 -2"/>
+          </g>
+        </g>
+
+        <g className="fc-ribosomes">
+          {[[330,205],[345,285],[378,315],[438,365],[485,180],[610,265],[620,340],[505,405],[420,160],[650,300]].map(([x,y],i)=><circle key={i} cx={x} cy={y} r="5"/>)}
+        </g>
+
+        <g className="fc-bud">
+          <ellipse className="fc-bud-wall" cx="700" cy="185" rx="83" ry="72"/>
+          <ellipse className="fc-bud-membrane" cx="700" cy="185" rx="69" ry="59"/>
+          <path className="fc-bud-neck" d="M642 225Q627 249 606 258"/>
+          <circle className="fc-bud-nucleus" cx="681" cy="181" r="23"/>
+        </g>
+
+        <g className="fc-callouts">
+          <path d="M271 180L145 105" markerEnd="url(#fungal-callout-arrow)"/><text x="130" y="104" textAnchor="end">cell wall</text>
+          <path d="M286 220L150 185" markerEnd="url(#fungal-callout-arrow)"/><text x="135" y="190" textAnchor="end">cell membrane</text>
+          <path d="M331 301L150 285" markerEnd="url(#fungal-callout-arrow)"/><text x="135" y="290" textAnchor="end">cytoplasm</text>
+          <path d="M390 244L150 385" markerEnd="url(#fungal-callout-arrow)"/><text x="135" y="390" textAnchor="end">nucleus</text>
+
+          <path d="M548 302L802 305" markerEnd="url(#fungal-callout-arrow)"/><text x="818" y="310">large vacuole</text>
+          <path d="M573 191L804 175" markerEnd="url(#fungal-callout-arrow)"/><text x="818" y="180">mitochondrion</text>
+          <path d="M701 184L810 90" markerEnd="url(#fungal-callout-arrow)"/><text x="824" y="94">developing bud</text>
+          <path d="M420 237L805 405" markerEnd="url(#fungal-callout-arrow)"/><text x="818" y="410">nucleolus</text>
+        </g>
+
+        <text className="fc-caption" x="480" y="542" textAnchor="middle">budding yeast example, a eukaryotic fungal cell</text>
+      </svg>
+
+      <div className="spark-fungal-cell-notes">
+        <article><b>Cell wall and membrane</b><p>The cell wall supports and protects the fungal cell. The cell membrane controls movement of substances into and out of the cytoplasm.</p></article>
+        <article><b>Nucleus</b><p>Fungal DNA is enclosed inside a membrane-bound nucleus, which distinguishes fungi from prokaryotic bacteria.</p></article>
+        <article><b>Vacuole and mitochondria</b><p>Vacuoles store dissolved substances and help cell balance. Mitochondria release usable energy during aerobic respiration.</p></article>
+        <article><b>Budding</b><p>Many yeasts reproduce asexually by budding. A small outgrowth enlarges and separates to form a new cell.</p></article>
+      </div>
+    </div>
+  );
+}
+
 function UsefulScene() {
   return (
     <svg viewBox="0 0 980 520" role="img" aria-label="Useful roles of microbes in yoghurt production nitrogen fixation and decomposition">
@@ -226,6 +296,7 @@ export default function MicrobeExplorer() {
       <div className={view==="compare"||view==="harmful" ? "spark-microbe-stage cards" : "spark-microbe-stage"}>
         {view==="compare" && <CompareScene />}
         {view==="bacterial" && <BacterialCellScene />}
+        {view==="fungal" && <FungalCellScene />}
         {view==="useful" && <UsefulScene />}
         {view==="harmful" && <HarmfulScene />}
         {view==="antibiotics" && <AntibioticScene />}
