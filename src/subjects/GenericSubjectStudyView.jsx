@@ -73,6 +73,7 @@ import ThermostatExplorer from "./components/ThermostatExplorer";
 import ThermometerTypesExplorer from "./components/ThermometerTypesExplorer";
 import BodyTemperatureRegulationExplorer from "./components/BodyTemperatureRegulationExplorer";
 import VentilationExplorer from "./components/VentilationExplorer";
+import UniverseComponentsExplorer from "./components/UniverseComponentsExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -446,6 +447,9 @@ function GenericLessonContent({
         }
         if (model?.type === "ventilation") {
           return <VentilationExplorer key={model.id || "ventilation"} />;
+        }
+        if (model?.type === "universe-components") {
+          return <UniverseComponentsExplorer key={model.id || "universe-components"} />;
         }
         return null;
       })}
