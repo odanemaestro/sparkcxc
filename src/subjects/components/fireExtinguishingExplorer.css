@@ -15,3 +15,18 @@ html[data-theme="dark"] .ft-label,body[data-theme="dark"] .ft-label,.dark .ft-la
 @media(max-width:900px){.spark-fire-triangle,.spark-fire-selector,.spark-firebreak-row,.spark-fire-exam-notes{grid-template-columns:1fr}.spark-pan-fire-steps{grid-template-columns:1fr 1fr}.spark-fire-selector-buttons{grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.spark-fire-extinguishing{padding:14px}.spark-fire-tabs{display:grid;grid-template-columns:1fr 1fr}.spark-fire-selector-buttons,.spark-pan-fire-steps{grid-template-columns:1fr}.ft-label,.pf-label{font-size:18px}}
 @media(max-width:390px){.spark-fire-tabs{grid-template-columns:1fr}}
+
+
+.spark-firebreak-svg{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.fb-sky{fill:#e7f2f6}.fb-ground{fill:#8a7854;stroke:#66553b;stroke-width:4}.fb-cleared-strip{fill:#c7b58d;stroke:#8e7956;stroke-width:3}
+.fb-trunk{fill:none;stroke:#684b35;stroke-width:9;stroke-linecap:round}.fb-crown{fill:#7c6b45;stroke:#51452f;stroke-width:3}.fb-crown.safe{fill:#668d4d;stroke:#416135}
+.fb-flame-shape{fill:#dc6438;stroke:#a74428;stroke-width:3}
+.fb-spread-arrow,.fb-stop-arrow{fill:none;stroke:#c95f34;stroke-width:6;stroke-linecap:round}.fb-arrow-head{fill:#c95f34}.fb-stop-bar{stroke:#8b3d2a;stroke-width:8;stroke-linecap:round}
+.fb-label,.fb-break-label{fill:#294d64;font-weight:900}.fb-label{font-size:14px}.fb-break-label{font-size:20px}.fb-small{fill:#536d80;font-size:12px;font-weight:800}
+.spark-firebreak>p{margin:12px 0 0;color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.55}
+html[data-theme="dark"] .spark-firebreak-svg,body[data-theme="dark"] .spark-firebreak-svg,.dark .spark-firebreak-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .fb-sky,body[data-theme="dark"] .fb-sky,.dark .fb-sky{fill:#153148}
+html[data-theme="dark"] .fb-label,body[data-theme="dark"] .fb-label,.dark .fb-label,
+html[data-theme="dark"] .fb-break-label,body[data-theme="dark"] .fb-break-label,.dark .fb-break-label,
+html[data-theme="dark"] .fb-small,body[data-theme="dark"] .fb-small,.dark .fb-small{fill:#e1edf5}
+@media(max-width:620px){.fb-label{font-size:18px}.fb-break-label{font-size:24px}.fb-small{font-size:16px}}
