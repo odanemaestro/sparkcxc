@@ -42,3 +42,20 @@ html[data-theme="dark"] .cp-small,
 body[data-theme="dark"] .cp-small,
 .dark .cp-small{fill:#d6e4ee}
 @media(max-width:620px){.cp-label{font-size:17px}.cp-small{font-size:14px}}
+
+
+.spark-galvanising-svg{display:block;width:100%;height:auto;margin:14px 0;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.gv-air{fill:#e8f4f8}.gv-water-drops path{fill:#69a9c5;stroke:#467d95;stroke-width:2}
+.gv-zinc{fill:#a8b4ba;stroke:#68777f;stroke-width:4}.gv-iron{fill:#66737a;stroke:#424d53;stroke-width:4}
+.gv-block-arrow,.gv-exposure-arrow,.gv-protection-flow,.gv-zinc-corrosion path{fill:none;stroke:#2d8f85;stroke-width:5;stroke-linecap:round}
+.gv-arrow-head{fill:#2d8f85}.gv-scratch{fill:#e9eef1;stroke:#6e7d85;stroke-width:3}
+.gv-zinc-corrosion circle{fill:#8a9ba3;stroke:#5f6d74;stroke-width:2}
+.gv-label,.gv-layer-label,.gv-note,.gv-scratch-label{fill:#294d64;font-weight:900}.gv-label,.gv-layer-label,.gv-scratch-label{font-size:14px}.gv-note{font-size:12px}.gv-small{fill:#536d80;font-size:11px;font-weight:750}.gv-layer-label.light{fill:#f3f7fa}
+html[data-theme="dark"] .spark-galvanising-svg,body[data-theme="dark"] .spark-galvanising-svg,.dark .spark-galvanising-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .gv-air,body[data-theme="dark"] .gv-air,.dark .gv-air{fill:#153148}
+html[data-theme="dark"] .gv-label,body[data-theme="dark"] .gv-label,.dark .gv-label,
+html[data-theme="dark"] .gv-layer-label,body[data-theme="dark"] .gv-layer-label,.dark .gv-layer-label,
+html[data-theme="dark"] .gv-note,body[data-theme="dark"] .gv-note,.dark .gv-note,
+html[data-theme="dark"] .gv-scratch-label,body[data-theme="dark"] .gv-scratch-label,.dark .gv-scratch-label,
+html[data-theme="dark"] .gv-small,body[data-theme="dark"] .gv-small,.dark .gv-small{fill:#e1edf5}
+@media(max-width:620px){.gv-label,.gv-layer-label,.gv-scratch-label{font-size:18px}.gv-note,.gv-small{font-size:15px}}
