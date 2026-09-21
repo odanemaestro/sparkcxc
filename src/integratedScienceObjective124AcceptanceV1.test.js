@@ -44,7 +44,25 @@ describe("Integrated Science Objective 1.2.4 acceptance audit", () => {
     expect(explorer).toContain("Germination conditions");
     expect(explorer).toContain("Height against time");
     expect(explorer).toContain("Dry mass");
-    expect(explorer).toContain("No oxygen");
+    expect(explorer).toContain("Oxygen");
+  });
+
+  test("renders germination requirements and the temperature fair test accurately", () => {
+    for (const term of [
+      "spark-germination-requirements-svg",
+      "Three main requirements for germination",
+      "Water",
+      "Oxygen",
+      "Suitable temperature",
+      "Fair test: investigate the effect of temperature",
+      "keep seed type, seed number, water and observation time constant",
+      "equal moist material + 5 similar seeds",
+      "Responding variable: number or percentage of seeds germinated"
+    ]) expect(explorer).toContain(term);
+    expect(css).toContain(".spark-germination-requirements-svg");
+    expect(css).toContain(".pg-petri-base");
+    expect(css).toContain(".pg-moist-material");
+    expect(css).toContain(".pg-thermometer");
   });
 
   test("visual model is responsive and dark-mode ready", () => {
