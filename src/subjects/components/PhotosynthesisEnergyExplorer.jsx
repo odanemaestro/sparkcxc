@@ -17,6 +17,60 @@ function EquationView(){
   </div>;
 }
 
+function StarchApparatusDiagram(){
+  return <svg className="spark-photo-starch-svg" viewBox="0 0 980 440" role="img" aria-label="Leaf starch test apparatus showing boiling water, ethanol heated in a water bath, rinsing and iodine test">
+    <defs>
+      <marker id="photo-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+        <path className="pst-arrow-head" d="M0 0L10 5L0 10Z"/>
+      </marker>
+    </defs>
+
+    <g transform="translate(35 45)">
+      <text className="pst-step" x="115" y="18" textAnchor="middle">1. Boil leaf in water</text>
+      <path className="pst-beaker" d="M35 55V270Q35 300 65 300H205Q235 300 235 270V55"/>
+      <line className="pst-rim" x1="20" y1="55" x2="250" y2="55"/>
+      <path className="pst-water" d="M35 135H235V270Q235 300 205 300H65Q35 300 35 270Z"/>
+      <path className="pst-leaf" d="M92 170Q132 126 181 163Q164 222 106 225Q75 211 92 170Z"/>
+      <path className="pst-leaf-vein" d="M104 214Q132 190 168 157"/>
+      <path className="pst-flame" d="M105 338Q130 300 152 338Q142 370 128 380Q115 365 105 338Z"/>
+      <line className="pst-stand" x1="45" y1="318" x2="225" y2="318"/>
+      <text className="pst-note" x="135" y="405" textAnchor="middle">kills leaf and stops reactions</text>
+    </g>
+
+    <path className="pst-arrow" d="M300 215H365" markerEnd="url(#photo-arrow)"/>
+
+    <g transform="translate(365 45)">
+      <text className="pst-step" x="145" y="18" textAnchor="middle">2. Heat leaf in ethanol</text>
+      <path className="pst-beaker" d="M40 70V275Q40 302 68 302H238Q266 302 266 275V70"/>
+      <line className="pst-rim" x1="25" y1="70" x2="281" y2="70"/>
+      <path className="pst-water bath" d="M40 150H266V275Q266 302 238 302H68Q40 302 40 275Z"/>
+      <path className="pst-test-tube" d="M118 78V240Q118 267 147 267Q176 267 176 240V78"/>
+      <line className="pst-test-rim" x1="108" y1="78" x2="186" y2="78"/>
+      <path className="pst-ethanol" d="M118 145H176V240Q176 267 147 267Q118 267 118 240Z"/>
+      <path className="pst-leaf small" d="M128 175Q146 153 166 174Q157 208 135 209Q122 201 128 175Z"/>
+      <path className="pst-flame" d="M120 338Q145 300 167 338Q157 370 143 380Q130 365 120 338Z"/>
+      <line className="pst-stand" x1="48" y1="318" x2="258" y2="318"/>
+      <text className="pst-liquid-label" x="147" y="132" textAnchor="middle">ethanol</text>
+      <text className="pst-liquid-label" x="225" y="188" textAnchor="middle">hot water bath</text>
+      <text className="pst-note warning" x="153" y="405" textAnchor="middle">ethanol is flammable, heat indirectly</text>
+    </g>
+
+    <path className="pst-arrow" d="M675 215H735" markerEnd="url(#photo-arrow)"/>
+
+    <g transform="translate(720 45)">
+      <text className="pst-step" x="115" y="18" textAnchor="middle">3. Rinse and add iodine</text>
+      <rect className="pst-tile" x="20" y="145" width="220" height="150" rx="12"/>
+      <path className="pst-leaf result" d="M65 190Q118 135 195 185Q172 258 88 260Q43 239 65 190Z"/>
+      <path className="pst-blue-black" d="M85 193Q118 165 162 185Q150 225 101 230Q76 218 85 193Z"/>
+      <path className="pst-dropper" d="M175 70L205 105L188 122L158 88Z"/>
+      <circle className="pst-iodine-drop" cx="170" cy="133" r="7"/>
+      <text className="pst-liquid-label" x="206" y="73">iodine</text>
+      <text className="pst-result-label" x="130" y="330" textAnchor="middle">blue-black = starch present</text>
+      <text className="pst-note" x="130" y="405" textAnchor="middle">brown/yellow-brown = no starch</text>
+    </g>
+  </svg>;
+}
+
 function StarchView(){
   const steps=[
     ["Destarch the plant","Keep the plant in darkness long enough to use stored starch before the investigation."],
@@ -25,7 +79,7 @@ function StarchView(){
     ["Heat in ethanol using a water bath","Removes chlorophyll so the iodine colour change is visible. Ethanol is flammable, so do not heat it directly over a flame."],
     ["Rinse and add iodine","A blue-black colour shows starch. Brown or yellow-brown means starch is absent."],
   ];
-  return <div className="spark-photo-starch">{steps.map((s,i)=><article key={s[0]}><span>{i+1}</span><div><b>{s[0]}</b><p>{s[1]}</p></div></article>)}</div>;
+  return <div className="spark-photo-starch"><StarchApparatusDiagram/>{steps.map((s,i)=><article key={s[0]}><span>{i+1}</span><div><b>{s[0]}</b><p>{s[1]}</p></div></article>)}</div>;
 }
 
 function EvidenceView(){
