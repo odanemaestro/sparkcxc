@@ -12,3 +12,27 @@ html[data-theme="dark"] .spark-rust-tabs button.active,body[data-theme="dark"] .
 @media(max-width:900px){.spark-rust-equation>div{grid-template-columns:1fr}.spark-rust-caribbean,.spark-rust-vs-tarnish{grid-template-columns:1fr}.spark-rust-vs-tarnish aside{grid-column:auto}}
 @media(max-width:620px){.spark-rusting-conditions{padding:14px}.spark-rust-tabs{display:grid;grid-template-columns:1fr 1fr}}
 @media(max-width:390px){.spark-rust-tabs{grid-template-columns:1fr}}
+
+.spark-rusting-comparison{display:block;width:100%;height:auto;margin:14px 0;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.rt-tube{fill:#eef5f7;fill-opacity:.65;stroke:#667d89;stroke-width:7;stroke-linecap:round}
+.rt-water{fill:#abd7e8}.rt-water.salty{fill:#91c9de}.rt-oil{fill:#d8c07e}
+.rt-desiccant{fill:#d9d2c4;stroke:#9c907b;stroke-width:2}
+.rt-nail{fill:#848b8e;stroke:#596166;stroke-width:3}.rt-nail.rusty{fill:url(#none);fill:#a86647}.rt-nail.heavy{fill:#a34d31}
+.rt-group{cursor:pointer;outline:none}.rt-group.selected .rt-tube{stroke:#0d9488;stroke-width:9}
+.rt-title{fill:#243f55;font-size:18px;font-weight:900}.rt-label{fill:#243f55;font-size:13px;font-weight:850}.rt-small{fill:#526b7d;font-size:11px;font-weight:750}
+html[data-theme="dark"] .spark-rusting-comparison,
+body[data-theme="dark"] .spark-rusting-comparison,
+.dark .spark-rusting-comparison{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .rt-tube,
+body[data-theme="dark"] .rt-tube,
+.dark .rt-tube{fill:#18344d;stroke:#9bb0c1}
+html[data-theme="dark"] .rt-title,
+body[data-theme="dark"] .rt-title,
+.dark .rt-title,
+html[data-theme="dark"] .rt-label,
+body[data-theme="dark"] .rt-label,
+.dark .rt-label,
+html[data-theme="dark"] .rt-small,
+body[data-theme="dark"] .rt-small,
+.dark .rt-small{fill:#d6e4ee}
+@media(max-width:620px){.rt-title{font-size:21px}.rt-label{font-size:16px}.rt-small{font-size:14px}}
