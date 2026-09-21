@@ -11,10 +11,48 @@ const ALLOYS=[
 
 function StructureView(){
   const [alloy,setAlloy]=useState(false);
-  const atoms=Array.from({length:36},(_,i)=>i);
+  const rows=[0,1,2,3,4];
+  const cols=[0,1,2,3,4,5,6];
+  const substitutions=new Set(["1-2","2-5","3-1","4-4"]);
   return <div className="spark-alloy-structure">
     <div className="spark-alloy-toggle"><button type="button" className={!alloy?"active":""} onClick={()=>setAlloy(false)}>Pure metal</button><button type="button" className={alloy?"active":""} onClick={()=>setAlloy(true)}>Alloy</button></div>
-    <div className={"spark-atom-grid "+(alloy?"mixed":"pure")}>{atoms.map((i)=><span key={i} className={alloy&&[8,15,22,29].includes(i)?"different":""}></span>)}</div>
+    <svg className="spark-alloy-lattice-svg" viewBox="0 0 920 500" role="img" aria-label={alloy?"Alloy lattice with different-sized atoms disrupting regular metal layers":"Pure metal lattice with regular layers of similar-sized atoms"}>
+      <defs>
+        <marker id="alloy-slide-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+          <path className="al-arrow-head" d="M0 0L10 5L0 10Z"/>
+        </marker>
+      </defs>
+      <rect className="al-lattice-panel" x="75" y="65" width="770" height="330" rx="22"/>
+      {rows.map(r=>cols.map(col=>{
+        const key=`${r}-${col}`;
+        const different=alloy&&substitutions.has(key);
+        const x=145+col*96+(r%2?18:0);
+        const y=125+r*58;
+        const rr=different?(key==="2-5"?31:22):26;
+        return <g key={key} className={different?"al-atom different":"al-atom host"}>
+          <circle cx={x} cy={y} r={rr}/>
+          {different&&<text x={x} y={y+5} textAnchor="middle">B</text>}
+        </g>;
+      }))}
+
+      {!alloy?<g className="al-slip">
+        <path d="M145 215H730" markerEnd="url(#alloy-slide-arrow)"/>
+        <path d="M165 274H750" markerEnd="url(#alloy-slide-arrow)"/>
+        <text className="al-label" x="455" y="455" textAnchor="middle">regular layers can slide past one another more easily</text>
+      </g>:<g className="al-blocked-slip">
+        <path d="M145 215H355"/>
+        <path d="M145 274H540"/>
+        <path className="al-stop" d="M365 190L390 240M390 190L365 240"/>
+        <path className="al-stop" d="M550 250L575 300M575 250L550 300"/>
+        <text className="al-label" x="455" y="455" textAnchor="middle">different-sized atoms distort the lattice and hinder layer movement</text>
+      </g>}
+
+      <g className="al-key" transform="translate(105 410)">
+        <circle className="host" cx="18" cy="18" r="16"/><text className="al-key-text" x="45" y="23">main metal atoms</text>
+        {alloy&&<><circle className="different" cx="230" cy="18" r="14"/><text className="al-key-text" x="255" y="23">different alloying atoms</text></>}
+      </g>
+      <text className="al-title" x="460" y="42" textAnchor="middle">{alloy?"alloy: distorted metallic lattice":"pure metal: regular metallic lattice"}</text>
+    </svg>
     <p>{alloy?"Different-sized atoms disturb the regular layers. This makes it harder for layers to slide over each other, so many alloys are harder than the pure metals from which they are made.":"In a pure metal, similar-sized atoms are arranged more regularly, so layers can often slide more easily when a force is applied."}</p>
   </div>;
 }
