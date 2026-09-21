@@ -10,18 +10,32 @@ const SURFACE_FEATURES=[
 
 function AlveolusView(){
   return <div className="spark-gas-alveolus">
-    <svg viewBox="0 0 820 470" role="img" aria-label="Alveolus beside a blood capillary showing oxygen diffusing into blood and carbon dioxide diffusing into the alveolus">
-      <circle className="gx-alveolus" cx="315" cy="220" r="150"/>
-      <path className="gx-capillary" d="M510 75Q650 85 690 200Q725 315 600 390Q535 425 475 385"/>
-      <circle className="gx-rbc" cx="590" cy="135" r="24"/>
-      <circle className="gx-rbc" cx="650" cy="210" r="24"/>
-      <circle className="gx-rbc" cx="625" cy="310" r="24"/>
-      <path className="gx-oxygen-arrow" d="M390 180Q485 150 555 150"/>
-      <path className="gx-carbon-arrow" d="M555 280Q480 300 390 270"/>
-      <text className="gx-oxygen-text" x="475" y="135">O₂ to blood</text>
-      <text className="gx-carbon-text" x="450" y="330">CO₂ to alveolus</text>
-      <text className="gx-label" x="315" y="225" textAnchor="middle">alveolar air</text>
-      <text className="gx-small" x="600" y="440" textAnchor="middle">capillary with red blood cells</text>
+    <svg viewBox="0 0 820 470" role="img" aria-label="Cluster of alveoli with surrounding capillary showing oxygen entering blood and carbon dioxide entering alveolar air">
+      <g className="gx-alveolar-cluster">
+        <path className="gx-bronchiole" d="M145 235Q205 230 245 245" />
+        <circle className="gx-alveolus" cx="310" cy="175" r="83"/>
+        <circle className="gx-alveolus" cx="390" cy="245" r="90"/>
+        <circle className="gx-alveolus" cx="292" cy="304" r="78"/>
+        <circle className="gx-alveolus" cx="215" cy="245" r="70"/>
+        <path className="gx-alveolar-opening" d="M245 245Q275 230 300 245" />
+      </g>
+
+      <path className="gx-capillary" d="M165 115Q290 70 425 112Q545 150 565 247Q582 343 492 395Q380 450 250 405Q145 370 125 275Q108 190 165 115Z" />
+
+      {[
+        [185,126],[265,102],[360,105],[455,132],[526,195],
+        [548,285],[505,357],[420,401],[320,420],[220,391],[150,320],[132,225]
+      ].map(([x,y],i)=><ellipse key={i} className="gx-rbc" cx={x} cy={y} rx="22" ry="14" transform={`rotate(${(i*23)%160} ${x} ${y})`} />)}
+
+      <path className="gx-exchange-barrier" d="M440 220Q472 226 490 250Q505 272 496 300" />
+      <path className="gx-oxygen-arrow" d="M415 230Q455 212 500 200" />
+      <path className="gx-carbon-arrow" d="M500 300Q456 306 420 287" />
+
+      <text className="gx-oxygen-text" x="500" y="180">O₂ diffuses into blood</text>
+      <text className="gx-carbon-text" x="478" y="335">CO₂ diffuses into alveolar air</text>
+      <text className="gx-label" x="325" y="247" textAnchor="middle">alveolar air</text>
+      <text className="gx-small" x="440" y="435" textAnchor="middle">capillary closely surrounds the thin alveolar walls</text>
+      <text className="gx-small" x="595" y="248">thin exchange barrier</text>
     </svg>
     <div className="spark-gas-alveolus-notes">
       <article><b>Large surface area</b><p>Millions of alveoli provide a large total exchange surface.</p></article>
