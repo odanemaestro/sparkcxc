@@ -37,6 +37,24 @@ describe("Integrated Science Objective 2.5.2 acceptance audit", () => {
     expect(explorer).toContain("Why it bends");
   });
 
+  test("renders unequal thermal expansion and joined-strip bending", () => {
+    for (const term of [
+      "spark-bimetal-expansion-svg",
+      "same starting length",
+      "brass expands more",
+      "iron expands less",
+      "strip bends toward the metal that expands less",
+      "brass on outside of curve",
+      "iron on inside of curve",
+      "unequal thermal expansion produces bending"
+    ]) expect(explorer).toContain(term);
+    expect(css).toContain(".spark-bimetal-expansion-svg");
+    expect(css).toContain(".be-bar.brass");
+    expect(css).toContain(".be-bar.iron");
+    expect(css).toContain(".be-joined.brass");
+    expect(css).toContain(".be-joined.iron");
+  });
+
   test("covers electric-iron switching", () => {
     expect(migration).toContain("breaks the circuit");
     expect(migration).toContain("closes the contact");
