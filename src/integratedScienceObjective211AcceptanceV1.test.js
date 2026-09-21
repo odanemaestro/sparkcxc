@@ -56,6 +56,24 @@ describe("Integrated Science Objective 2.1.1 acceptance audit", () => {
     expect(explorer).toContain("No displacement, no mechanical work");
   });
 
+  test("renders force and displacement for work and zero-work cases", () => {
+    for (const term of [
+      "spark-work-mechanism-svg",
+      "Mechanical work is done",
+      "force, F",
+      "distance moved, d",
+      "Work = force × distance",
+      "No mechanical work on the wall",
+      "displacement = 0",
+      "Work = F × 0 = 0 J",
+      "force must cause displacement in the direction of the force"
+    ]) expect(explorer).toContain(term);
+    expect(css).toContain(".spark-work-mechanism-svg");
+    expect(css).toContain(".ew-force-arrow");
+    expect(css).toContain(".ew-displacement-arrow");
+    expect(css).toContain(".ew-zero-displacement");
+  });
+
   test("wires the interactive explorer into the shared lesson shell", () => {
     expect(migration).toContain('"type":"energy-concept"');
     expect(view).toContain("EnergyConceptExplorer");
