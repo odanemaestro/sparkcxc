@@ -34,6 +34,27 @@ describe("Integrated Science Objective 2.3.2 acceptance audit", () => {
     expect(explorer).toContain("Wave energy");
   });
 
+  test("renders renewable source geometry beyond text cards", () => {
+    [
+      "spark-alt-source-svg",
+      "aes-panel",
+      "aes-collector",
+      "aes-blades",
+      "aes-penstock",
+      "aes-injection-well",
+      "aes-production-well",
+      "aes-boiler",
+      "aes-digester",
+      "aes-wave-float",
+      "anaerobic digester",
+      "falling water → turbine → generator → electricity",
+      "Earth's heat transfers energy to circulating water",
+    ].forEach(term => expect(explorer).toContain(term));
+    expect(css).toContain(".spark-alt-source-svg");
+    expect(css).toContain(".aes-blades");
+    expect(css).toContain(".aes-digester");
+  });
+
   test("distinguishes photovoltaic from solar thermal", () => {
     expect(migration).toContain("light energy directly into electrical energy");
     expect(migration).toContain("Solar water heaters use solar radiation to heat water");
