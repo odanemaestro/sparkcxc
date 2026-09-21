@@ -33,7 +33,7 @@ describe("Integrated Science Objective 2.5.1 acceptance audit", () => {
 
   test("covers convection in liquids gases and balloons", () => {
     expect(migration).toContain("Convection occurs in liquids and gases");
-    expect(migration).toContain("become less dense and rises");
+    expect(migration).toContain("becomes less dense and rises");
     expect(migration).toContain("hot-air balloon");
     expect(explorer).toContain("Hot-air balloon");
   });
