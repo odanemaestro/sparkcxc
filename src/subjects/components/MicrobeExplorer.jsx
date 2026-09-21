@@ -7,6 +7,11 @@ const VIEWS = {
     title:"Viruses, bacteria and fungi differ in structure and reproduction",
     note:"Bacteria are single-celled organisms. Fungi include yeasts and moulds. Viruses are not cells and reproduce only inside living host cells.",
   },
+  bacterial:{
+    label:"Bacterial cell",
+    title:"A bacterium is a prokaryotic cell with specialised structures",
+    note:"A typical bacterium has cytoplasm, ribosomes, a cell membrane and cell wall. Its main chromosome lies free in the cytoplasm. Some bacteria also have plasmids, a capsule or slime layer, pili and one or more flagella.",
+  },
   useful:{
     label:"Useful roles",
     title:"Microorganisms support food production and nutrient cycling",
@@ -69,6 +74,59 @@ function CompareScene() {
         <b>Fungus</b>
         <span>Includes yeasts and moulds. Many decompose organic material.</span>
       </article>
+    </div>
+  );
+}
+
+function BacterialCellScene() {
+  const ribosomes=[[360,180],[405,155],[455,190],[505,160],[555,200],[392,235],[448,255],[520,245],[575,265],[335,275],[410,305],[490,300],[550,325],[610,300],[375,350],[460,370],[535,365],[600,350]];
+  const pili=[[[255,150],[205,115]],[[245,205],[185,190]],[[255,330],[195,360]],[[665,145],[725,105]],[[680,205],[750,190]],[[670,320],[735,355]]];
+  return (
+    <div className="spark-bacterial-cell-scene">
+      <svg className="spark-bacterial-cell-svg" viewBox="0 0 980 560" role="img" aria-label="Labelled bacterium showing capsule, cell wall, cell membrane, cytoplasm, ribosomes, chromosome, plasmid, storage granules, pili and flagellum">
+        <defs>
+          <clipPath id="bacteria-inner-clip"><rect x="265" y="125" width="390" height="300" rx="150"/></clipPath>
+        </defs>
+
+        <rect className="bac-capsule" x="225" y="85" width="470" height="380" rx="190"/>
+        <rect className="bac-wall" x="245" y="105" width="430" height="340" rx="170"/>
+        <rect className="bac-membrane" x="265" y="125" width="390" height="300" rx="150"/>
+        <rect className="bac-cytoplasm" x="275" y="135" width="370" height="280" rx="140"/>
+
+        <g clipPath="url(#bacteria-inner-clip)">
+          {ribosomes.map(([cx,cy],i)=><circle key={i} className="bac-ribosome" cx={cx} cy={cy} r="6"/>)}
+          <path className="bac-chromosome" d="M365 270C390 205 430 330 462 245C493 167 527 330 564 245C589 187 614 248 590 295C562 350 510 255 475 335C449 394 404 323 386 357C363 399 330 350 350 310C370 270 390 295 405 265"/>
+          <path className="bac-plasmid" d="M330 205C300 180 292 232 323 238C356 245 363 213 340 199C328 191 313 195 308 207"/>
+          <path className="bac-plasmid second" d="M575 215C550 190 535 232 560 245C589 260 611 231 594 207C584 194 566 195 556 208"/>
+          <circle className="bac-inclusion" cx="330" cy="330" r="18"/>
+          <circle className="bac-inclusion" cx="596" cy="335" r="15"/>
+        </g>
+
+        {pili.map((p,i)=><line key={i} className="bac-pilus" x1={p[0][0]} y1={p[0][1]} x2={p[1][0]} y2={p[1][1]}/>)}
+        <path className="bac-flagellum" d="M690 275C760 215 790 350 840 288C890 226 935 300 900 355"/>
+
+        <g className="bac-callouts">
+          <path d="M250 120L115 75"/><text x="105" y="72" textAnchor="end">capsule / slime layer</text>
+          <path d="M260 155L118 145"/><text x="108" y="150" textAnchor="end">cell wall</text>
+          <path d="M275 185L120 215"/><text x="110" y="220" textAnchor="end">cell membrane</text>
+          <path d="M330 330L135 310"/><text x="125" y="315" textAnchor="end">storage granule</text>
+          <path d="M365 280L142 395"/><text x="132" y="400" textAnchor="end">chromosome DNA</text>
+
+          <path d="M555 198L805 95"/><text x="818" y="100">ribosomes</text>
+          <path d="M575 220L805 165"/><text x="818" y="170">plasmid</text>
+          <path d="M612 275L805 245"/><text x="818" y="250">cytoplasm</text>
+          <path d="M680 205L805 320"/><text x="818" y="325">pilus</text>
+          <path d="M820 290L805 395"/><text x="818" y="405">flagellum</text>
+        </g>
+
+        <text className="bac-caption" x="460" y="520" textAnchor="middle">prokaryotic cell, no membrane-bound nucleus</text>
+      </svg>
+      <div className="spark-bacterial-cell-notes">
+        <article><b>Cell envelope</b><p>The cell membrane controls movement of substances. The cell wall supports the cell. A capsule or slime layer can add protection and help attachment.</p></article>
+        <article><b>Genetic material</b><p>The main circular chromosome lies in the cytoplasm. Small extra DNA rings called plasmids may also occur.</p></article>
+        <article><b>Protein synthesis</b><p>Ribosomes make proteins. Bacterial ribosomes are smaller than those in eukaryotic cells.</p></article>
+        <article><b>Movement and attachment</b><p>Some bacteria use flagella for movement and pili for attachment or DNA transfer.</p></article>
+      </div>
     </div>
   );
 }
@@ -167,6 +225,7 @@ export default function MicrobeExplorer() {
 
       <div className={view==="compare"||view==="harmful" ? "spark-microbe-stage cards" : "spark-microbe-stage"}>
         {view==="compare" && <CompareScene />}
+        {view==="bacterial" && <BacterialCellScene />}
         {view==="useful" && <UsefulScene />}
         {view==="harmful" && <HarmfulScene />}
         {view==="antibiotics" && <AntibioticScene />}
