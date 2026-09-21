@@ -1066,7 +1066,7 @@ export default function GenericSubjectStudyView({
       <div className="spark-generic-study-shell">
         <header className="spark-generic-study-hero">
           <div className="spark-generic-study-mark" aria-hidden="true">
-            {subject.mark || subject.shortName?.slice(0,2) || "â€¢"}
+            {subject.mark || subject.shortName?.slice(0,2) || "•"}
           </div>
 
           <div className="spark-generic-study-hero-copy">
