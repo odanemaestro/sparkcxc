@@ -1,6 +1,38 @@
 import React,{useMemo,useState} from "react";
 import "./mixturesExplorer.css";
 
+const PARTICLES={
+  solution:[[110,84],[145,112],[190,78],[236,116],[282,86],[326,122],[365,91],[128,158],[174,190],[222,156],[270,194],[318,160],[350,205],[150,232],[205,248],[258,226],[312,246],[365,238]],
+  suspension:[[118,92],[178,126],[245,82],[315,132],[350,102],[135,188],[225,176],[300,206],[166,246],[248,258],[332,266]],
+  colloid:[[110,88],[145,118],[190,82],[232,126],[278,94],[326,124],[366,90],[126,166],[171,198],[221,164],[271,202],[317,170],[356,214],[149,238],[202,252],[256,232],[309,250],[362,244]]
+};
+
+function ParticleModel({type}){
+  const title=type==="solution"?"Solution particle model":type==="suspension"?"Suspension particle model":"Colloid particle model";
+  return <div className="spark-mixture-particle-model">
+    <svg className="spark-mixture-particle-svg" viewBox="0 0 470 330" role="img" aria-label={title}>
+      <path className="mix-vessel" d="M76 38V270Q76 294 100 294H370Q394 294 394 270V38"/>
+      <line className="mix-rim" x1="60" y1="38" x2="410" y2="38"/>
+      <path className="mix-liquid" d="M76 78H394V270Q394 294 370 294H100Q76 294 76 270Z"/>
+      {type==="solution"&&PARTICLES.solution.map(([cx,cy],i)=><circle key={i} className="mix-particle solution" cx={cx} cy={cy} r="5"/>)}
+      {type==="suspension"&&<>
+        {PARTICLES.suspension.map(([cx,cy],i)=><circle key={i} className="mix-particle suspension" cx={cx} cy={cy} r={i%2===0?13:10}/>)}
+        <path className="mix-settle-arrow" d="M426 115V238"/>
+        <path className="mix-arrow-head" d="M417 228L426 242L435 228"/>
+        <text className="mix-side-label" x="426" y="95" textAnchor="middle">settles</text>
+      </>}
+      {type==="colloid"&&PARTICLES.colloid.map(([cx,cy],i)=><circle key={i} className="mix-particle colloid" cx={cx} cy={cy} r={i%3===0?9:7}/>)}
+      <text className="mix-bottom-label" x="235" y="318" textAnchor="middle">
+        {type==="solution"?"particles remain evenly distributed":type==="suspension"?"larger particles settle on standing":"intermediate particles remain dispersed"}
+      </text>
+    </svg>
+    <div className="spark-mixture-particle-key">
+      <span><i className={"mix-key-dot "+type}></i>{type==="solution"?"dissolved solute particles":type==="suspension"?"large suspended particles":"colloidal particles"}</span>
+      <strong>{type==="solution"?"do not settle, pass ordinary filter paper":type==="suspension"?"settle and are removable by filtration":"do not settle readily, scatter light"}</strong>
+    </div>
+  </div>;
+}
+
 function TypeView(){
   const [type,setType]=useState("solution");
   const data={
@@ -10,7 +42,10 @@ function TypeView(){
   }[type];
   return <div className="spark-mixture-type">
     <div className="spark-mixture-buttons">{["solution","suspension","colloid"].map(k=><button type="button" key={k} className={type===k?"active":""} onClick={()=>setType(k)}>{k[0].toUpperCase()+k.slice(1)}</button>)}</div>
-    <article><span>{data.name.toUpperCase()}</span><h4>{data.example}</h4><p>{data.desc}</p><strong>{data.filter}</strong></article>
+    <div className="spark-mixture-type-content">
+      <ParticleModel type={type}/>
+      <article><span>{data.name.toUpperCase()}</span><h4>{data.example}</h4><p>{data.desc}</p><strong>{data.filter}</strong></article>
+    </div>
   </div>;
 }
 
