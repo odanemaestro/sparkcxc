@@ -21,6 +21,47 @@ function UsesView(){
   return <div className="spark-respiration-uses">{USES.map(([name,text],i)=><article key={name}><span>{i+1}</span><div><b>{name}</b><p>{text}</p></div></article>)}</div>;
 }
 
+function EvidenceDiagram({caseId}){
+  if(caseId==="co2") return <svg className="spark-respiration-evidence-svg" viewBox="0 0 760 360" role="img" aria-label="Germinating seeds connected by a delivery tube to limewater">
+    <path className="re-flask" d="M120 55V115L75 265Q68 300 105 300H285Q322 300 315 265L270 115V55Z"/>
+    <path className="re-seed-bed" d="M98 225Q195 200 292 225V280H98Z"/>
+    {[130,165,200,235,270].map((x,i)=><ellipse key={x} className="re-seed" cx={x} cy={235+(i%2)*20} rx="13" ry="9"/>)}
+    <path className="re-delivery" d="M270 80H430Q475 80 475 135V220"/>
+    <path className="re-test-tube" d="M430 135V285Q430 315 475 315Q520 315 520 285V135"/>
+    <path className="re-limewater" d="M430 225H520V285Q520 315 475 315Q430 315 430 285Z"/>
+    <circle className="re-cloud" cx="458" cy="255" r="18"/><circle className="re-cloud" cx="487" cy="265" r="20"/><circle className="re-cloud" cx="476" cy="244" r="16"/>
+    <text className="re-label" x="195" y="335" textAnchor="middle">germinating seeds</text>
+    <text className="re-label" x="475" y="335" textAnchor="middle">limewater turns milky</text>
+    <text className="re-small" x="360" y="58" textAnchor="middle">CO₂ carried through delivery tube</text>
+  </svg>;
+
+  if(caseId==="indicator") return <svg className="spark-respiration-evidence-svg" viewBox="0 0 760 360" role="img" aria-label="Woodlice in a closed chamber with bicarbonate indicator changing from red to yellow">
+    <rect className="re-chamber" x="105" y="55" width="550" height="235" rx="28"/>
+    <rect className="re-indicator" x="145" y="225" width="470" height="40" rx="8"/>
+    {[200,285,375,465,550].map((x,i)=><g key={x} transform={"translate("+x+" "+(145+(i%2)*22)+")"}>
+      <ellipse className="re-woodlouse" cx="0" cy="0" rx="28" ry="16"/>
+      {[-16,-8,0,8,16].map(v=><line key={v} className="re-woodlouse-segment" x1={v} y1="-13" x2={v} y2="13"/>)}
+      <line className="re-leg" x1="-18" y1="12" x2="-28" y2="24"/><line className="re-leg" x1="18" y1="12" x2="28" y2="24"/>
+    </g>)}
+    <path className="re-co2-arrow" d="M365 180V220"/>
+    <text className="re-label" x="380" y="116" textAnchor="middle">living woodlice respire</text>
+    <text className="re-small" x="380" y="318" textAnchor="middle">bicarbonate indicator: red → yellow as CO₂ rises</text>
+  </svg>;
+
+  return <svg className="spark-respiration-evidence-svg" viewBox="0 0 760 360" role="img" aria-label="Insulated flask containing germinating seeds and a thermometer showing heat release">
+    <path className="re-thermos" d="M180 55H420V295Q420 320 395 320H205Q180 320 180 295Z"/>
+    <path className="re-insulation" d="M198 75H402V292Q402 303 390 303H210Q198 303 198 292Z"/>
+    <path className="re-seed-bed" d="M215 220Q300 196 385 220V285H215Z"/>
+    {[238,272,307,342,373].map((x,i)=><ellipse key={x} className="re-seed" cx={x} cy={232+(i%2)*20} rx="13" ry="9"/>)}
+    <rect className="re-thermometer" x="292" y="38" width="16" height="190" rx="8"/>
+    <circle className="re-thermometer-bulb" cx="300" cy="228" r="18"/>
+    <rect className="re-mercury" x="297" y="98" width="6" height="130" rx="3"/>
+    <path className="re-heat-arrow" d="M445 180Q520 140 585 110"/>
+    <text className="re-label" x="610" y="105" textAnchor="middle">temperature rises</text>
+    <text className="re-small" x="300" y="345" textAnchor="middle">insulated flask reduces heat exchange with surroundings</text>
+  </svg>;
+}
+
 function EvidenceView(){
   const [caseId,setCaseId]=useState("co2");
   const cases={
@@ -41,7 +82,7 @@ function EvidenceView(){
     },
   };
   const item=cases[caseId];
-  return <div className="spark-respiration-evidence"><div className="spark-respiration-evidence-buttons">{Object.entries(cases).map(([key,val])=><button type="button" key={key} className={caseId===key?"active":""} onClick={()=>setCaseId(key)}>{val.title}</button>)}</div><article><h4>{item.title}</h4>{item.steps.map((step,i)=><div key={step}><span>{i+1}</span><p>{step}</p></div>)}<strong>{item.control}</strong></article></div>;
+  return <div className="spark-respiration-evidence"><div className="spark-respiration-evidence-buttons">{Object.entries(cases).map(([key,val])=><button type="button" key={key} className={caseId===key?"active":""} onClick={()=>setCaseId(key)}>{val.title}</button>)}</div><article><h4>{item.title}</h4><EvidenceDiagram caseId={caseId}/>{item.steps.map((step,i)=><div key={step}><span>{i+1}</span><p>{step}</p></div>)}<strong>{item.control}</strong></article></div>;
 }
 
 function FuelView(){
