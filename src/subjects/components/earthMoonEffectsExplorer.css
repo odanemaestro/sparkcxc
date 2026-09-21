@@ -13,3 +13,51 @@ html[data-theme="dark"] .eme-label,body[data-theme="dark"] .eme-label,.dark .eme
 @media(max-width:900px){.spark-shadow-principle{grid-template-columns:1fr}.spark-phase-cards{grid-template-columns:1fr}}
 @media(max-width:620px){.spark-earth-moon-effects{padding:14px}.spark-eme-tabs{display:grid;grid-template-columns:1fr 1fr}.eme-label,.ey-label,.eem-label{font-size:18px}.spark-phase-orbit{min-height:280px}}
 @media(max-width:390px){.spark-eme-tabs{grid-template-columns:1fr}}
+
+/* SPARK_MOON_PHASE_GEOMETRY_V2 */
+.spark-moon-phase-svg{display:block;width:100%;height:auto;border-radius:12px;background:var(--spark-paper,#fff)}
+.spark-moon-phase-svg .eme-phase-heading{fill:#29495f;font-size:17px;font-weight:900}
+.spark-moon-phase-svg .eme-phase-sun{fill:url(#eme-sun-glow);stroke:#a9771f;stroke-width:5}
+.spark-moon-phase-svg .eme-phase-rays line{stroke:#deb14f;stroke-width:5;stroke-linecap:round}
+.spark-moon-phase-svg .eme-phase-orbit{fill:none;stroke:#8ba0ad;stroke-width:3;stroke-dasharray:9 8}
+.spark-moon-phase-svg .eme-phase-earth{fill:#6e9fbc;stroke:#3f6f89;stroke-width:5}
+.spark-moon-phase-svg .eme-phase-earth-night{fill:#243846;opacity:.9}
+.spark-moon-phase-svg .eme-moon-dark{fill:#343b43;stroke:#707982;stroke-width:3}
+.spark-moon-phase-svg .eme-moon-lit-space{fill:#d7d6cb;stroke:#a7a69d;stroke-width:2}
+.spark-moon-phase-svg .eme-phase-label{fill:#334e68;font-size:13px;font-weight:850}
+.spark-moon-phase-svg .eme-phase-label.sun{fill:#8a621d}
+.spark-moon-phase-svg .eme-phase-label.earth{fill:#fff}
+.spark-moon-phase-svg .eme-phase-note{fill:#526b7d;font-size:12px;font-weight:800}
+.spark-moon-phase-svg .eme-phase-earth-view{border-top:1px solid var(--spark-border-soft,#dce5ec)}
+.spark-moon-phase-svg .eme-view-disc.dark{fill:#303840;stroke:#6d7780;stroke-width:3}
+.spark-moon-phase-svg .eme-view-disc.lit{fill:#deddd1;stroke:#a4a49a;stroke-width:2}
+.spark-moon-phase-svg .eme-view-disc.lit.full{stroke-width:3}
+.spark-moon-phase-svg .eme-view-label{fill:#334e68;font-size:12px;font-weight:850}
+
+html[data-theme="dark"] .spark-moon-phase-svg,
+body[data-theme="dark"] .spark-moon-phase-svg,
+.dark .spark-moon-phase-svg{background:#0d2134}
+html[data-theme="dark"] .spark-moon-phase-svg .eme-phase-heading,
+body[data-theme="dark"] .spark-moon-phase-svg .eme-phase-heading,
+.dark .spark-moon-phase-svg .eme-phase-heading,
+html[data-theme="dark"] .spark-moon-phase-svg .eme-phase-label,
+body[data-theme="dark"] .spark-moon-phase-svg .eme-phase-label,
+.dark .spark-moon-phase-svg .eme-phase-label,
+html[data-theme="dark"] .spark-moon-phase-svg .eme-phase-note,
+body[data-theme="dark"] .spark-moon-phase-svg .eme-phase-note,
+.dark .spark-moon-phase-svg .eme-phase-note,
+html[data-theme="dark"] .spark-moon-phase-svg .eme-view-label,
+body[data-theme="dark"] .spark-moon-phase-svg .eme-view-label,
+.dark .spark-moon-phase-svg .eme-view-label{fill:#d6e4ee}
+html[data-theme="dark"] .spark-moon-phase-svg .eme-phase-label.sun,
+body[data-theme="dark"] .spark-moon-phase-svg .eme-phase-label.sun,
+.dark .spark-moon-phase-svg .eme-phase-label.sun{fill:#f0c965}
+html[data-theme="dark"] .spark-moon-phase-svg .eme-phase-label.earth,
+body[data-theme="dark"] .spark-moon-phase-svg .eme-phase-label.earth,
+.dark .spark-moon-phase-svg .eme-phase-label.earth{fill:#fff}
+
+@media(max-width:620px){
+  .spark-moon-phase-svg .eme-phase-heading{font-size:22px}
+  .spark-moon-phase-svg .eme-phase-label{font-size:18px}
+  .spark-moon-phase-svg .eme-phase-note,.spark-moon-phase-svg .eme-view-label{font-size:17px}
+}
