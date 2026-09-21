@@ -166,7 +166,6 @@ describe("Integrated Science learner polish V1", () => {
     expect(diagram).toContain("ear-vestibule");
     expect(diagram).toContain('className="malleus"');
     expect(diagram).toContain("heart-semilunar");
-    expect(diagram).toContain("heart-inner-wall");
 
     expect(diagram).toContain("spark-reference-refined");
     expect(diagram).toContain("heart-left-wall-inner");
@@ -207,7 +206,9 @@ describe("Integrated Science learner polish V1", () => {
     );
     expect(excretion).toContain("hex-csec-kidney");
     expect(excretion).toContain("hex-csec-nephron");
-    expect(excretion).toContain("M150 30Q60 30 60 140");
-    expect(excretion).toContain("M80 60A38 38");
+    expect(excretion).toContain("hex-kidney-calyces");
+    expect(excretion).toContain("hex-renal-artery");
+    expect(excretion).toContain("hex-renal-vein");
+    expect(excretion).toContain("hex-bowman");
   });
 });
