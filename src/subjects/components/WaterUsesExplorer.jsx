@@ -48,7 +48,33 @@ function AgricultureView(){
   return <div className="spark-water-agriculture">
     <div className="spark-water-agri-buttons">{["aquaculture","mariculture","hydroponics"].map(k=><button type="button" key={k} className={mode===k?"active":""} onClick={()=>setMode(k)}>{k[0].toUpperCase()+k.slice(1)}</button>)}</div>
     <article><span>{data.title.toUpperCase()}</span><h4>{data.title}</h4><p>{data.text}</p></article>
-    {mode==="hydroponics"&&<div className="spark-hydroponic-model"><div className="spark-plant">plant</div><div className="spark-roots">roots</div><div className="spark-nutrient-water">nutrient solution</div></div>}
+    {mode==="hydroponics"&&<svg className="spark-hydroponics-svg" viewBox="0 0 900 430" role="img" aria-label="Hydroponic plant growing without soil with roots suspended in aerated nutrient solution containing dissolved mineral ions">
+      <defs>
+        <marker id="hydro-uptake-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path className="wh-arrow-head" d="M0 0L9 4.5L0 9Z"/></marker>
+      </defs>
+      <rect className="wh-reservoir" x="150" y="225" width="600" height="150" rx="16"/>
+      <rect className="wh-solution" x="165" y="270" width="570" height="90"/>
+      <rect className="wh-support" x="325" y="205" width="250" height="46" rx="12"/>
+      <path className="wh-stem" d="M450 215V105"/>
+      <path className="wh-leaf left" d="M450 145Q380 92 323 128Q365 183 450 165Z"/>
+      <path className="wh-leaf right" d="M450 125Q515 68 581 104Q536 163 450 149Z"/>
+      <g className="wh-roots">
+        <path d="M430 245Q410 292 398 348M450 245Q452 302 442 350M470 245Q492 294 510 350M438 286Q416 312 414 345M466 292Q485 316 486 348"/>
+      </g>
+      <g className="wh-nutrients">
+        {[[220,310],[270,335],[330,300],[380,337],[540,315],[590,340],[650,302],[700,330]].map(([x,y],i)=><g key={i}><circle cx={x} cy={y} r="9"/><text x={x} y={y+4} textAnchor="middle">{i%2?"K⁺":"NO₃⁻"}</text></g>)}
+      </g>
+      <g className="wh-air-bubbles">
+        {[205,245,285,625,665,705].map((x,i)=><circle key={i} cx={x} cy={345-(i%3)*24} r={5+(i%2)*2}/>)}
+      </g>
+      <path className="wh-uptake" d="M365 320Q390 290 420 270" markerEnd="url(#hydro-uptake-arrow)"/>
+      <path className="wh-uptake" d="M535 325Q510 292 482 272" markerEnd="url(#hydro-uptake-arrow)"/>
+      <text className="wh-label" x="450" y="77" textAnchor="middle">plant shoot above the solution</text>
+      <text className="wh-label" x="450" y="198" textAnchor="middle">support holds plant, no soil</text>
+      <text className="wh-label" x="450" y="398" textAnchor="middle">water with dissolved mineral nutrients</text>
+      <text className="wh-small" x="200" y="262">aeration supplies oxygen to roots</text>
+      <text className="wh-small" x="590" y="262">roots absorb water and mineral ions</text>
+    </svg>}
   </div>;
 }
 
