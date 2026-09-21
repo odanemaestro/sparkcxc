@@ -23,12 +23,51 @@ function GalvaniseView(){
   const [scratch,setScratch]=useState(false);
   return <div className="spark-galvanise">
     <div className="spark-protect-toggle"><button type="button" className={!scratch?"active":""} onClick={()=>setScratch(false)}>Coating intact</button><button type="button" className={scratch?"active":""} onClick={()=>setScratch(true)}>Coating scratched</button></div>
-    <div className="spark-galvanised-strip">
-      <div className={"spark-zinc-layer top "+(scratch?"scratched":"")}></div>
-      <div className="spark-iron-core">iron / steel</div>
-      <div className="spark-zinc-layer bottom"></div>
-    </div>
-    <p>{scratch?"Zinc is more reactive than iron, so exposed zinc corrodes preferentially and can continue protecting nearby iron at a scratch. This is sacrificial protection.":"With the coating intact, zinc also acts as a physical barrier preventing water and oxygen from reaching the iron."}</p>
+    <svg className="spark-galvanising-svg" viewBox="0 0 920 470" role="img" aria-label={scratch?"Scratched galvanised steel showing exposed iron beside zinc coating, oxygen and water at the scratch, and zinc corroding sacrificially to protect nearby iron":"Galvanised steel with continuous zinc coating acting as a barrier between iron and oxygen and water"}>
+      <defs>
+        <marker id="galv-flow-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path d="M0 0L9 4.5L0 9Z" className="gv-arrow-head"/>
+        </marker>
+      </defs>
+
+      <rect className="gv-air" x="40" y="40" width="840" height="120" rx="18"/>
+      <text className="gv-label" x="460" y="72" textAnchor="middle">air above the galvanised surface</text>
+      <g className="gv-water-drops">
+        <path d="M250 105Q235 128 250 145Q265 128 250 105Z"/>
+        <path d="M650 100Q635 123 650 140Q665 123 650 100Z"/>
+      </g>
+      <text className="gv-small" x="285" y="132">water</text>
+      <text className="gv-small" x="685" y="126">oxygen in air</text>
+
+      {!scratch ? <>
+        <rect className="gv-zinc intact" x="130" y="185" width="660" height="70" rx="10"/>
+        <rect className="gv-iron" x="130" y="255" width="660" height="120" rx="0 0 12 12"/>
+        <path className="gv-block-arrow" d="M250 150V180M650 150V180"/>
+        <text className="gv-layer-label" x="460" y="228" textAnchor="middle">continuous zinc coating</text>
+        <text className="gv-layer-label light" x="460" y="322" textAnchor="middle">iron / steel</text>
+        <text className="gv-note" x="460" y="420" textAnchor="middle">intact zinc acts as a physical barrier, so water and oxygen do not reach the iron surface</text>
+      </> : <>
+        <path className="gv-zinc scratched" d="M130 185H392V255H130ZM528 185H790V255H528Z"/>
+        <rect className="gv-iron" x="130" y="255" width="660" height="120" rx="0 0 12 12"/>
+        <path className="gv-scratch" d="M392 185L420 255H500L528 185"/>
+        <text className="gv-scratch-label" x="460" y="175" textAnchor="middle">scratch exposes iron</text>
+        <path className="gv-exposure-arrow" d="M460 135V242" markerEnd="url(#galv-flow-arrow)"/>
+        <text className="gv-small" x="480" y="156">water + oxygen reach scratch</text>
+
+        <g className="gv-zinc-corrosion">
+          <circle cx="370" cy="220" r="11"/><circle cx="550" cy="220" r="11"/>
+          <path d="M370 205V172M550 205V172" markerEnd="url(#galv-flow-arrow)"/>
+        </g>
+        <text className="gv-small" x="325" y="166">zinc oxidises</text>
+        <text className="gv-small" x="565" y="166">zinc oxidises</text>
+
+        <path className="gv-protection-flow" d="M392 280Q425 250 446 278" markerEnd="url(#galv-flow-arrow)"/>
+        <path className="gv-protection-flow" d="M528 280Q495 250 474 278" markerEnd="url(#galv-flow-arrow)"/>
+        <text className="gv-layer-label light" x="460" y="328" textAnchor="middle">nearby iron remains protected while zinc is sacrificed</text>
+        <text className="gv-note" x="460" y="420" textAnchor="middle">zinc is more reactive than iron, so zinc corrodes preferentially around the damaged coating</text>
+      </>}
+    </svg>
+    <p>{scratch?"Zinc is more reactive than iron, so zinc near the scratch oxidises preferentially. This sacrificial action can protect the nearby exposed iron as long as enough zinc remains electrically connected to it.":"With the coating intact, zinc acts as a physical barrier preventing water and oxygen from reaching the iron."}</p>
   </div>;
 }
 
