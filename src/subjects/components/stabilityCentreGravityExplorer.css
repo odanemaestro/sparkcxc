@@ -14,3 +14,58 @@ html[data-theme="dark"] .pc-label,body[data-theme="dark"] .pc-label,.dark .pc-la
 @media(max-width:900px){.spark-racing-stability,.spark-cog-shapes,.spark-loading-rules{grid-template-columns:1fr}}
 @media(max-width:620px){.spark-stability-cog{padding:14px}.spark-stability-tabs{display:grid;grid-template-columns:1fr 1fr}.pc-label{font-size:18px}}
 @media(max-width:390px){.spark-stability-tabs{grid-template-columns:1fr}}
+
+.spark-stability-angle{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;margin:10px 0 14px;color:var(--spark-ink,#102a43);font-size:11px;font-weight:850}
+.spark-stability-angle strong{color:var(--spark-teal-dark,#087f73);font-size:12px}
+.spark-stability-svg{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.spark-stability-svg .scg-ground{fill:#6f777c}
+.spark-stability-svg .scg-base-zone line{stroke:#526b7d;stroke-width:3}
+.spark-stability-svg .scg-base-zone text{fill:#334e68;font-size:13px;font-weight:850}
+.spark-stability-svg .scg-object rect{fill:#a88b66;stroke:#6e5b43;stroke-width:5}
+.spark-stability-svg .scg-object.low rect{fill:#b49a72}
+.spark-stability-svg .scg-object.tall rect{fill:#9b7c5e}
+.spark-stability-svg .scg-cg{fill:#c34f55;stroke:#7d3035;stroke-width:3}
+.spark-stability-svg .scg-cg-label{fill:#5f2d31;font-size:12px;font-weight:900}
+.spark-stability-svg .scg-weight-line{fill:none;stroke-width:5;stroke-dasharray:8 6}
+.spark-stability-svg .scg-weight-line.stable,.spark-stability-svg .scg-weight-arrow.stable{stroke:#0d9488}
+.spark-stability-svg .scg-weight-line.tipping,.spark-stability-svg .scg-weight-arrow.tipping{stroke:#c2524d}
+.spark-stability-svg .scg-weight-arrow{fill:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.spark-stability-svg .scg-weight-label{font-size:12px;font-weight:850}
+.spark-stability-svg .scg-weight-label.stable{fill:#0b756d}
+.spark-stability-svg .scg-weight-label.tipping{fill:#9b3d39}
+.spark-stability-svg .scg-pivot{fill:#394f5d}
+.spark-stability-svg .scg-pivot-label{fill:#526b7d;font-size:11px;font-weight:800}
+.spark-stability-svg .scg-status rect{stroke-width:3}
+.spark-stability-svg .scg-status.stable rect{fill:#ecfbf7;stroke:#0d9488}
+.spark-stability-svg .scg-status.tipping rect{fill:#fff1ee;stroke:#c2524d}
+.spark-stability-svg .scg-status text{fill:#334e68;font-size:12px;font-weight:800}
+.spark-stability-svg .scg-status .title{font-size:13px;font-weight:900}
+.spark-stability-svg .scg-caption{fill:#3d5a6c;font-size:12px;font-weight:850}
+.spark-stability-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px}
+.spark-stability-facts article{display:grid;gap:5px;padding:12px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:10px;background:var(--spark-paper,#fff)}
+.spark-stability-facts b{color:var(--spark-ink,#102a43);font-size:11px}
+.spark-stability-facts span{color:var(--spark-ink-soft,#334e68);font-size:11px;line-height:1.5}
+html[data-theme="dark"] .spark-stability-svg,
+body[data-theme="dark"] .spark-stability-svg,
+.dark .spark-stability-svg,
+html[data-theme="dark"] .spark-stability-facts article,
+body[data-theme="dark"] .spark-stability-facts article,
+.dark .spark-stability-facts article{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .spark-stability-svg .scg-base-zone text,
+body[data-theme="dark"] .spark-stability-svg .scg-base-zone text,
+.dark .spark-stability-svg .scg-base-zone text,
+html[data-theme="dark"] .spark-stability-svg .scg-pivot-label,
+body[data-theme="dark"] .spark-stability-svg .scg-pivot-label,
+.dark .spark-stability-svg .scg-pivot-label,
+html[data-theme="dark"] .spark-stability-svg .scg-caption,
+body[data-theme="dark"] .spark-stability-svg .scg-caption,
+.dark .spark-stability-svg .scg-caption{fill:#d6e4ee}
+@media(max-width:900px){.spark-stability-facts{grid-template-columns:1fr}}
+@media(max-width:620px){
+  .spark-stability-angle{grid-template-columns:1fr}
+  .spark-stability-svg .scg-base-zone text,
+  .spark-stability-svg .scg-weight-label,
+  .spark-stability-svg .scg-pivot-label,
+  .spark-stability-svg .scg-status text,
+  .spark-stability-svg .scg-caption{font-size:16px}
+}
