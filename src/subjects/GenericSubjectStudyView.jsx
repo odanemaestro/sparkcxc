@@ -84,6 +84,7 @@ import TidesExplorer from "./components/TidesExplorer";
 import VolcanoEruptionsExplorer from "./components/VolcanoEruptionsExplorer";
 import WaterPropertiesExplorer from "./components/WaterPropertiesExplorer";
 import HardWaterExplorer from "./components/HardWaterExplorer";
+import WaterUsesExplorer from "./components/WaterUsesExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -490,6 +491,9 @@ function GenericLessonContent({
         }
         if (model?.type === "hard-water") {
           return <HardWaterExplorer key={model.id || "hard-water"} />;
+        }
+        if (model?.type === "water-uses") {
+          return <WaterUsesExplorer key={model.id || "water-uses"} />;
         }
         return null;
       })}
