@@ -24,17 +24,40 @@ function PestsView(){
 
 function LandfillView(){
   return <div className="spark-hygiene-landfill">
-    <svg viewBox="0 0 860 430" role="img" aria-label="Simplified landfill showing rainwater leachate moving through waste toward groundwater">
-      <path className="ch-soil" d="M0 170Q210 120 430 165Q650 115 860 175V430H0Z"/>
-      <path className="ch-waste" d="M175 170Q330 120 520 165Q620 190 705 205L650 290L205 285Z"/>
-      <path className="ch-rain" d="M250 40V120M340 35V125M430 45V130"/>
-      <path className="ch-leach" d="M330 220Q350 310 390 360"/>
-      <path className="ch-water" d="M0 350Q210 330 430 355Q650 330 860 350V430H0Z"/>
-      <text className="ch-label" x="430" y="205" textAnchor="middle">landfill waste</text>
-      <text className="ch-label" x="410" y="330">leachate</text>
-      <text className="ch-label" x="650" y="390">groundwater</text>
+    <svg className="spark-landfill-cross-section" viewBox="0 0 980 520" role="img" aria-label="Managed landfill cross-section showing cover, compacted waste, rain infiltration, leachate drainage layer, collection pipe, impermeable liner, surrounding soil and groundwater">
+      <defs>
+        <marker id="landfill-flow-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" className="lf-arrow-head"/></marker>
+      </defs>
+      <rect className="lf-sky" x="0" y="0" width="980" height="190"/>
+      <path className="ch-soil" d="M0 190H980V520H0Z"/>
+      <path className="ch-water" d="M0 420Q210 398 425 422Q650 395 980 420V520H0Z"/>
+      <path className="lf-cell-shell" d="M150 205Q490 110 830 205L785 385H195Z"/>
+      <path className="lf-cover" d="M160 208Q490 126 820 208L812 235Q490 158 168 235Z"/>
+      <path className="ch-waste" d="M170 235Q490 165 810 235L775 345H205Z"/>
+      <g className="lf-waste-details">
+        <rect x="240" y="246" width="65" height="30" rx="5"/><circle cx="350" cy="270" r="18"/><path d="M405 245L455 270L420 300Z"/>
+        <rect x="505" y="242" width="75" height="34" rx="6"/><circle cx="625" cy="280" r="21"/><path d="M684 248L740 275L700 308Z"/>
+      </g>
+      <path className="lf-drainage-layer" d="M205 345H775L766 370H214Z"/>
+      <path className="lf-liner" d="M195 385Q490 410 785 385L778 401Q490 428 202 401Z"/>
+      <path className="lf-collection-pipe" d="M260 360H715" markerEnd="url(#landfill-flow-arrow)"/>
+      <circle className="lf-pipe-hole" cx="330" cy="360" r="4"/><circle className="lf-pipe-hole" cx="430" cy="360" r="4"/><circle className="lf-pipe-hole" cx="530" cy="360" r="4"/><circle className="lf-pipe-hole" cx="630" cy="360" r="4"/>
+      <path className="ch-rain" d="M285 55V150M420 42V152M555 52V150M690 38V152"/>
+      <path className="ch-leach" d="M320 220Q330 286 350 342M465 215Q472 280 480 342M610 220Q600 288 592 342"/>
+      <path className="lf-collected-leachate" d="M715 360Q795 360 846 318" markerEnd="url(#landfill-flow-arrow)"/>
+      <rect className="lf-leachate-tank" x="840" y="270" width="95" height="92" rx="14"/>
+      <path className="lf-tank-liquid" d="M848 325H927V353H848Z"/>
+
+      <text className="ch-label" x="490" y="205" textAnchor="middle">daily/final cover reduces rain infiltration</text>
+      <text className="ch-label" x="490" y="285" textAnchor="middle">compacted landfill waste</text>
+      <text className="lf-small" x="490" y="337" textAnchor="middle">leachate drains downward through waste</text>
+      <text className="ch-label" x="490" y="382" textAnchor="middle">drainage layer + perforated collection pipe</text>
+      <text className="ch-label" x="490" y="414" textAnchor="middle">impermeable liner</text>
+      <text className="lf-small" x="884" y="252" textAnchor="middle">leachate collection</text>
+      <text className="lf-small" x="884" y="379" textAnchor="middle">sent for treatment</text>
+      <text className="ch-label" x="720" y="470" textAnchor="middle">groundwater below landfill</text>
     </svg>
-    <p>Rainwater can pass through landfill waste and form leachate containing dissolved chemicals. If a landfill is poorly designed or managed, leachate can contaminate soil and groundwater.</p>
+    <p>Rainwater passing through waste forms leachate. A managed landfill uses cover, a drainage layer, collection pipes and an impermeable liner to capture leachate before it reaches groundwater. Poor siting, damaged liners or inadequate leachate control increase contamination risk.</p>
   </div>;
 }
 
