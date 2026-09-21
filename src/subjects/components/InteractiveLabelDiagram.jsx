@@ -9,20 +9,35 @@ import "./interactiveLabelDiagram.css";
 
 function PlantCellTemplate() {
   return (
-    <g className="spark-diagram-cell spark-diagram-plant-cell" aria-hidden="true">
-      <rect className="cell-wall" x="245" y="82" width="510" height="438" rx="44" />
-      <rect className="cell-membrane" x="268" y="105" width="464" height="392" rx="34" />
-      <rect className="cytoplasm plant-cytoplasm" x="286" y="123" width="428" height="356" rx="26" />
-      <ellipse className="vacuole" cx="535" cy="305" rx="150" ry="128" />
+    <g className="spark-diagram-cell spark-diagram-plant-cell spark-reference-refined" aria-hidden="true">
+      <path className="cell-wall" d="M260 86Q245 86 245 112V490Q245 520 278 520H724Q755 520 755 488V116Q755 82 720 86Z" />
+      <path className="cell-membrane" d="M278 110Q268 110 268 130V468Q268 495 296 495H700Q730 495 730 466V136Q730 108 702 110Z" />
+      <path className="cytoplasm plant-cytoplasm" d="M292 128H704V475H292Z" />
+
+      <path className="vacuole" d="M438 160Q555 132 643 190Q690 255 665 360Q640 444 520 452Q415 447 389 373Q361 283 395 210Q410 180 438 160Z" />
+      <path className="vacuole-highlight" d="M455 177Q515 158 578 175" />
+
       <circle className="nucleus nuclear-envelope" cx="405" cy="285" r="58" />
-      <circle className="nucleolus" cx="389" cy="268" r="17" />
+      <circle className="nucleolus" cx="388" cy="270" r="17" />
+      <path className="nuclear-chromatin" d="M374 301Q405 278 435 302M382 255Q405 240 429 255" />
+
+      <g className="rough-er">
+        <path d="M342 221Q305 228 312 251Q335 268 318 286Q302 305 328 321" />
+        <path d="M344 335Q312 345 327 367Q350 382 330 398" />
+      </g>
+
+      <g className="golgi">
+        <path d="M592 392Q625 373 661 385" />
+        <path d="M585 407Q625 386 669 402" />
+        <path d="M588 422Q627 404 664 418" />
+      </g>
 
       <g className="chloroplasts">
         {[
           [338,180,-18],[650,188,16],[338,408,18],[665,405,-14],[620,145,-8],
         ].map(([x,y,angle],index) => (
           <g key={index} transform={`translate(${x} ${y}) rotate(${angle})`}>
-            <ellipse cx="0" cy="0" rx="34" ry="17" />
+            <ellipse cx="0" cy="0" rx="34" ry="18" />
             <path className="chloroplast-grana" d="M-18-7h12m-12 7h12m-12 7h12M5-7h13M5 0h13M5 7h13" />
           </g>
         ))}
@@ -41,9 +56,9 @@ function PlantCellTemplate() {
 
       <g className="ribosomes">
         {[
-          [455,155],[487,165],[520,150],[555,166],
+          [345,190],[365,205],[455,155],[487,165],[520,150],[555,166],
           [455,438],[492,447],[530,430],[568,445],[605,432],
-        ].map(([x,y],index) => <circle key={index} cx={x} cy={y} r="5" />)}
+        ].map(([x,y],index) => <circle key={index} cx={x} cy={y} r="4.5" />)}
       </g>
     </g>
   );
@@ -51,11 +66,25 @@ function PlantCellTemplate() {
 
 function AnimalCellTemplate() {
   return (
-    <g className="spark-diagram-cell spark-diagram-animal-cell" aria-hidden="true">
-      <path className="cell-membrane animal-outline" d="M285 304C282 190 360 100 468 86c104-14 212 38 246 137 37 107-17 222-112 278-96 56-229 31-292-58-31-43-27-92-25-139Z" />
-      <path className="cytoplasm animal-cytoplasm" d="M307 303c0-99 67-176 165-190 90-13 185 32 216 116 33 91-15 192-99 241-83 48-198 25-252-50-26-36-31-76-30-117Z" />
+    <g className="spark-diagram-cell spark-diagram-animal-cell spark-reference-refined" aria-hidden="true">
+      <path className="cell-membrane animal-outline" d="M285 305C280 205 340 118 434 91C537 60 652 101 704 192C760 291 723 410 628 474C539 535 402 521 330 437C293 394 281 349 285 305Z" />
+      <path className="cytoplasm animal-cytoplasm" d="M307 305C303 218 354 143 440 118C528 92 625 127 673 205C722 285 690 383 608 439C530 492 417 480 354 410C320 372 304 339 307 305Z" />
+
       <circle className="nucleus nuclear-envelope" cx="460" cy="300" r="72" />
-      <circle className="nucleolus" cx="442" cy="281" r="19" />
+      <circle className="nucleolus" cx="441" cy="281" r="19" />
+      <path className="nuclear-chromatin" d="M425 325Q460 292 495 322M427 267Q462 244 492 269" />
+
+      <g className="rough-er">
+        <path d="M495 228Q545 204 578 229Q596 244 576 263Q555 281 588 292" />
+        <path d="M498 348Q548 371 583 351Q601 337 583 319" />
+      </g>
+
+      <g className="golgi">
+        <path d="M525 405Q565 384 607 397" />
+        <path d="M518 421Q565 398 613 414" />
+        <path d="M523 437Q568 417 607 432" />
+      </g>
+
       <ellipse className="vacuole small-vacuole" cx="592" cy="246" rx="45" ry="28" />
       <ellipse className="vacuole small-vacuole secondary" cx="355" cy="258" rx="31" ry="20" />
 
@@ -74,7 +103,7 @@ function AnimalCellTemplate() {
         {[
           [345,190],[405,175],[530,185],[585,195],[350,345],
           [405,390],[525,400],[575,315],[655,300],[525,245],
-        ].map(([x,y],index) => <circle key={index} cx={x} cy={y} r="5" />)}
+        ].map(([x,y],index) => <circle key={index} cx={x} cy={y} r="4.5" />)}
       </g>
     </g>
   );
@@ -169,16 +198,32 @@ function BeanSeedTemplate() {
 
 function FemaleReproductiveTemplate() {
   return (
-    <g className="spark-diagram-reproductive spark-diagram-female-reproductive" aria-hidden="true">
-      <path className="female-uterus" d="M430 235 Q500 185 570 235 Q585 300 555 375 Q530 420 500 438 Q470 420 445 375 Q415 300 430 235Z" />
-      <path className="female-endometrium" d="M458 250 Q500 222 542 250 Q550 305 530 355 Q515 382 500 392 Q485 382 470 355 Q450 305 458 250Z" />
-      <path className="female-oviduct" d="M445 245 Q395 185 330 185 Q292 185 270 215" />
-      <path className="female-oviduct" d="M555 245 Q605 185 670 185 Q708 185 730 215" />
-      <path className="female-fimbriae" d="M270 215l-24-18m24 18l-28 2m28-2l-20 21M730 215l24-18m-24 18l28 2m-28-2l20 21" />
-      <ellipse className="female-ovary" cx="235" cy="225" rx="42" ry="30" transform="rotate(-15 235 225)" />
-      <ellipse className="female-ovary" cx="765" cy="225" rx="42" ry="30" transform="rotate(15 765 225)" />
-      <path className="female-cervix" d="M475 405 Q500 420 525 405 L525 465 Q500 480 475 465Z" />
-      <path className="female-vagina" d="M478 465 L455 555 Q500 580 545 555 L522 465Z" />
+    <g className="spark-diagram-reproductive spark-diagram-female-reproductive spark-reference-refined" aria-hidden="true">
+      <path className="female-uterus" d="M420 220Q500 170 580 220Q598 278 576 350Q557 404 526 425Q500 442 474 425Q443 404 424 350Q402 278 420 220Z" />
+      <path className="female-myometrium" d="M438 232Q500 197 562 232Q575 285 557 341Q542 382 520 399Q500 413 480 399Q458 382 443 341Q425 285 438 232Z" />
+      <path className="female-endometrium" d="M462 244Q500 223 538 244Q545 292 532 332Q520 364 500 378Q480 364 468 332Q455 292 462 244Z" />
+
+      <path className="female-oviduct" d="M438 240Q390 182 330 178Q285 175 255 205" />
+      <path className="female-oviduct" d="M562 240Q610 182 670 178Q715 175 745 205" />
+
+      <g className="female-fimbriae">
+        <path d="M258 205l-26-18m26 18l-31 2m31-2l-22 23m22-23l-8 30" />
+        <path d="M742 205l26-18m-26 18l31 2m-31-2l22 23m-22-23l8 30" />
+      </g>
+
+      <g className="female-ovaries">
+        <ellipse className="female-ovary" cx="235" cy="225" rx="42" ry="30" transform="rotate(-15 235 225)" />
+        <ellipse className="female-ovary" cx="765" cy="225" rx="42" ry="30" transform="rotate(15 765 225)" />
+        {[[-12,-5,7],[7,-10,6],[14,7,5]].map(([dx,dy,r],i)=><circle key={"l"+i} className="female-follicle" cx={235+dx} cy={225+dy} r={r} />)}
+        {[[-12,-5,7],[7,-10,6],[14,7,5]].map(([dx,dy,r],i)=><circle key={"r"+i} className="female-follicle" cx={765+dx} cy={225+dy} r={r} />)}
+      </g>
+
+      <path className="female-cervix" d="M474 404Q500 420 526 404L524 463Q500 480 476 463Z" />
+      <path className="female-cervical-canal" d="M500 420V466" />
+      <path className="female-vagina" d="M477 463L456 555Q500 579 544 555L523 463Z" />
+      <g className="female-vaginal-rugae">
+        <path d="M475 490Q500 505 525 490M470 515Q500 531 530 515M466 540Q500 555 534 540" />
+      </g>
       <text className="repro-orientation" x="500" y="610" textAnchor="middle">front view</text>
     </g>
   );
@@ -186,19 +231,32 @@ function FemaleReproductiveTemplate() {
 
 function MaleReproductiveTemplate() {
   return (
-    <g className="spark-diagram-reproductive spark-diagram-male-reproductive" aria-hidden="true">
-      <ellipse className="male-bladder" cx="495" cy="155" rx="78" ry="68" />
-      <path className="male-sperm-duct" d="M405 425 Q345 330 365 230 Q380 165 430 155 Q450 150 465 170" />
-      <path className="male-seminal-vesicle" d="M568 175 Q625 145 640 190 Q620 235 572 222 Q550 205 568 175Z" />
-      <ellipse className="male-prostate" cx="505" cy="250" rx="58" ry="38" />
-      <circle className="male-cowper" cx="530" cy="302" r="15" />
-      <path className="male-urethra" d="M500 205 Q500 250 505 292 Q515 335 610 345 Q700 350 790 370" />
-      <path className="male-penis" d="M565 322 Q655 305 790 333 Q835 343 842 375 Q830 410 775 405 Q670 395 585 370 Q552 355 565 322Z" />
+    <g className="spark-diagram-reproductive spark-diagram-male-reproductive spark-reference-refined" aria-hidden="true">
+      <ellipse className="male-bladder" cx="495" cy="155" rx="78" ry="66" />
+      <path className="male-bladder-neck" d="M480 208Q495 223 510 208" />
+
+      <path className="male-sperm-duct" d="M405 425Q352 352 360 275Q365 215 401 179Q430 151 463 164" />
+      <path className="male-sperm-duct secondary" d="M600 425Q650 350 640 275Q634 220 603 183Q575 151 538 164" />
+
+      <path className="male-seminal-vesicle" d="M560 170Q596 145 628 163Q646 181 630 207Q612 229 579 220Q555 209 560 170Z" />
+      <path className="male-seminal-vesicle secondary" d="M430 170Q394 145 362 163Q344 181 360 207Q378 229 411 220Q435 209 430 170Z" />
+
+      <path className="male-prostate" d="M454 234Q500 214 546 234Q560 265 538 286Q500 302 462 286Q440 265 454 234Z" />
+      <circle className="male-cowper" cx="530" cy="302" r="14" />
+      <circle className="male-cowper secondary" cx="475" cy="302" r="14" />
+
+      <path className="male-urethra" d="M500 205Q500 250 505 292Q515 335 610 345Q700 350 790 370" />
+      <path className="male-penis" d="M565 322Q655 305 790 333Q835 343 842 375Q830 410 775 405Q670 395 585 370Q552 355 565 322Z" />
+      <path className="male-erectile-tissue" d="M590 338Q680 329 790 350Q805 355 812 370Q800 386 777 383Q682 372 595 356Z" />
+
       <ellipse className="male-scrotum" cx="405" cy="462" rx="80" ry="72" />
       <ellipse className="male-testis" cx="405" cy="458" rx="46" ry="57" />
-      <path className="male-epididymis" d="M365 415 Q335 460 365 505" />
-      <path className="male-cowper-duct" d="M540 312 Q565 330 585 340" />
-      <text className="repro-orientation" x="500" y="590" textAnchor="middle">simplified side view</text>
+      <ellipse className="male-testis secondary" cx="605" cy="458" rx="46" ry="57" />
+      <path className="male-epididymis" d="M365 415Q335 460 365 505" />
+      <path className="male-epididymis secondary" d="M645 415Q675 460 645 505" />
+      <path className="male-cowper-duct" d="M540 312Q565 330 585 340" />
+
+      <text className="repro-orientation" x="500" y="590" textAnchor="middle">simplified anterior-oblique view</text>
     </g>
   );
 }
@@ -226,63 +284,76 @@ function PregnancyUterusTemplate() {
 
 function HumanHeartTemplate() {
   return (
-    <g className="spark-diagram-heart spark-csec-reference" aria-hidden="true">
-      <g transform="translate(225 12) scale(1.35 1.55)">
-        <path className="heart-outline" d="M110 110Q95 110 95 135V200Q100 280 205 330Q310 285 318 200V135Q318 110 300 110Z" />
+    <g className="spark-diagram-heart spark-reference-refined" aria-hidden="true">
+      <path className="heart-outline" d="M329 150Q370 112 430 130Q475 143 501 178Q525 136 584 127Q648 118 691 165Q731 210 713 300Q694 399 628 473Q574 532 500 566Q423 530 365 474Q297 408 282 316Q264 218 329 150Z" />
 
-        <path className="heart-right-atrium" d="M98 113H205V173H95V135Q95 116 110 113Z" />
-        <path className="heart-right-ventricle" d="M95 177H205V328Q105 283 98 202Z" />
-        <path className="heart-left-atrium" d="M205 113H300Q318 113 318 135V173H205Z" />
-        <path className="heart-left-ventricle" d="M205 177H318V200Q310 285 205 330Z" />
+      <path className="heart-right-atrium" d="M330 175Q385 142 451 185L452 287Q401 319 345 291Q315 250 330 175Z" />
+      <path className="heart-right-ventricle" d="M342 315Q399 284 458 313Q472 363 476 448Q435 445 387 409Q350 381 342 315Z" />
 
-        <path className="heart-septum" d="M205 112V330" />
+      <path className="heart-left-atrium" d="M544 184Q598 147 657 177Q684 214 664 278Q611 307 548 286Z" />
+      <path className="heart-left-ventricle" d="M535 314Q595 281 653 316Q668 367 638 425Q600 493 515 532L503 487Q538 445 551 387Q560 345 535 314Z" />
+      <path className="heart-left-wall-inner" d="M618 333Q627 385 600 429Q572 474 525 498" />
 
-        <path className="heart-vena-cava" d="M122 112V40M122 175Q100 235 106 280" />
-        <path className="heart-aorta" d="M226 178V62Q226 30 258 30Q294 30 294 64V80" />
-        <path className="heart-pulmonary-artery" d="M171 178V122Q171 102 197 98H215" />
-        <path className="heart-pulmonary-vein" d="M318 143H355M205 143H182" />
+      <path className="heart-septum" d="M500 203Q489 303 503 492" />
 
-        <path className="heart-tricuspid" d="M150 175L158 195M170 175L163 195" />
-        <path className="heart-bicuspid" d="M245 175L252 195M265 175L258 195" />
-        <path className="heart-semilunar" d="M215 160Q226 170 238 160" />
+      <path className="heart-vena-cava" d="M365 188V62M364 286Q315 352 318 515" />
+      <path className="heart-aorta" d="M596 183V105Q596 54 646 43Q702 31 733 75Q749 98 741 149" />
+      <path className="heart-aortic-branch" d="M626 73V31M674 57L688 20M713 72L741 37" />
 
-        <path className="heart-inner-wall" d="M318 180Q322 260 225 318M300 185Q302 255 215 305" />
+      <path className="heart-pulmonary-artery" d="M431 315Q445 238 482 206Q508 184 536 159Q567 129 605 128" />
+      <path className="heart-pulmonary-artery branch" d="M532 160Q495 138 454 133M544 155Q582 135 631 145" />
+      <path className="heart-pulmonary-vein" d="M657 222H790M548 235H233" />
 
-        <path className="heart-flow deoxygenated" d="M122 55V132M130 150V172M150 210Q165 235 188 255" />
-        <path className="heart-flow oxygenated" d="M342 143H315M275 215Q260 260 230 300M270 70Q285 52 294 65" />
+      <path className="heart-tricuspid" d="M385 304Q406 317 420 338Q433 317 451 304" />
+      <path className="heart-bicuspid" d="M548 303Q570 318 589 337Q608 318 635 303" />
+      <path className="heart-semilunar pulmonary" d="M476 214Q490 198 503 214Q516 198 529 214" />
+      <path className="heart-semilunar aortic" d="M583 191Q596 174 609 191Q622 174 636 191" />
+
+      <g className="heart-chordae">
+        <path d="M399 327L407 374M438 327L448 376M565 327L573 382M615 327L604 389" />
       </g>
 
-      <text className="heart-side-label deoxygenated" x="385" y="565" textAnchor="middle">right side, deoxygenated blood</text>
-      <text className="heart-side-label oxygenated" x="625" y="565" textAnchor="middle">left side, oxygenated blood</text>
+      <path className="heart-flow deoxygenated" d="M365 84V181M389 220V282M408 356Q448 285 487 226" />
+      <path className="heart-flow oxygenated" d="M761 222H668M607 233V287M601 360Q608 193 620 111" />
+
+      <text className="heart-side-label deoxygenated" x="365" y="595" textAnchor="middle">right side, deoxygenated blood</text>
+      <text className="heart-side-label oxygenated" x="635" y="595" textAnchor="middle">left side, oxygenated blood</text>
     </g>
   );
 }
 
 function KidneyLongitudinalTemplate() {
   return (
-    <g className="spark-diagram-kidney" aria-hidden="true">
-      <path className="kidney-outline" d="M505 72Q350 45 275 180Q210 300 258 420Q300 535 414 565Q520 592 590 520Q635 472 612 420Q585 365 606 315Q628 262 681 214Q674 110 505 72Z" />
-      <path className="kidney-capsule" d="M503 91Q366 68 300 190Q245 300 284 406Q322 502 418 529Q508 554 565 492Q600 454 580 415Q553 360 575 305Q596 253 643 210Q631 128 503 91Z" />
-      <path className="kidney-cortex" d="M488 118Q380 102 326 210Q282 308 316 394Q350 474 426 494Q496 512 537 466Q560 439 545 401Q520 350 540 300Q558 256 598 213Q580 151 488 118Z" />
+    <g className="spark-diagram-kidney spark-reference-refined" aria-hidden="true">
+      <path className="kidney-outline" d="M505 70Q352 42 276 175Q210 288 250 415Q286 532 403 568Q512 603 590 532Q640 487 614 425Q587 368 608 313Q629 260 680 213Q671 108 505 70Z" />
+      <path className="kidney-capsule" d="M505 88Q370 65 304 186Q247 294 283 400Q317 500 414 531Q505 558 565 500Q602 463 582 416Q557 357 578 307Q597 260 642 212Q630 128 505 88Z" />
+      <path className="kidney-cortex" d="M490 116Q391 101 340 207Q295 301 326 389Q355 470 431 494Q501 514 541 471Q565 443 549 402Q525 350 544 302Q561 261 599 216Q582 152 490 116Z" />
 
       <g className="kidney-medulla">
-        <path d="M362 190L472 228L376 268Z" />
-        <path d="M338 283L478 309L354 354Z" />
-        <path d="M372 390L486 360L408 445Z" />
-        <path d="M430 150L505 228L410 238Z" />
+        <path d="M367 171Q411 182 456 219L376 259Q353 218 367 171Z" />
+        <path d="M335 257Q392 268 470 307L354 344Q331 305 335 257Z" />
+        <path d="M352 359Q405 363 480 357L406 447Q368 414 352 359Z" />
+        <path d="M414 131Q458 157 507 225L407 236Q397 178 414 131Z" />
+        <path d="M470 115Q519 144 548 210L493 232Q478 169 470 115Z" />
+      </g>
+
+      <g className="kidney-columns">
+        <path d="M390 158Q381 224 395 273M418 245Q403 311 420 369M457 233Q447 302 455 366" />
       </g>
 
       <g className="kidney-calyces">
-        <path d="M470 228Q515 240 535 267" />
-        <path d="M478 309Q522 308 545 326" />
-        <path d="M486 360Q525 355 548 350" />
+        <path d="M456 219Q503 238 527 264M470 307Q514 306 542 328M480 357Q519 355 548 349M507 225Q531 238 544 259" />
       </g>
 
-      <path className="kidney-pelvis" d="M505 232Q575 252 583 304Q590 348 522 402Q546 342 505 232Z" />
-      <path className="kidney-ureter" d="M555 365Q625 410 654 555" />
-      <path className="kidney-artery" d="M612 246H752" />
-      <path className="kidney-vein" d="M608 280H752" />
+      <path className="kidney-pelvis" d="M503 230Q570 250 584 300Q594 344 523 405Q546 345 503 230Z" />
+      <path className="kidney-ureter" d="M557 366Q623 410 654 555" />
+
+      <path className="kidney-artery" d="M612 245H756" />
+      <path className="kidney-vein" d="M610 282H756" />
+      <path className="kidney-vessel branch artery" d="M610 246Q555 250 528 282M606 247Q558 220 525 190M608 248Q560 300 530 347" />
+      <path className="kidney-vessel branch vein" d="M610 282Q560 278 535 302M608 282Q563 332 530 365" />
       <circle className="kidney-hilum" cx="602" cy="264" r="8" />
+
       <text className="kidney-orientation" x="500" y="615" textAnchor="middle">longitudinal section through a kidney</text>
     </g>
   );
@@ -331,26 +402,29 @@ function SkinSectionTemplate() {
 
 function MammalianEyeTemplate() {
   return (
-    <g className="spark-diagram-eye spark-csec-reference" aria-hidden="true">
-      <g transform="translate(89 48) scale(1.75)">
-        <path className="eye-sclera" d="M144 210.2A105 105 0 1 0 144 89.8Q70 150 144 210.2Z" />
-        <circle className="eye-vitreous" cx="235" cy="150" r="91" />
+    <g className="spark-diagram-eye spark-reference-refined" aria-hidden="true">
+      <path className="eye-sclera" d="M319 241Q378 127 507 112Q642 97 724 194Q779 258 762 348Q742 454 626 493Q493 537 373 459Q307 417 286 355Q266 296 319 241Z" />
+      <path className="eye-vitreous" d="M391 186Q500 147 610 184Q686 210 714 280Q739 344 702 400Q657 464 561 472Q459 482 390 425Q348 391 342 332Q335 258 391 186Z" />
 
-        <path className="eye-choroid" d="M148.9 206.8A99 99 0 1 0 148.9 93.2" />
-        <path className="eye-retina" d="M153 203.9A94 94 0 1 0 153 96.1" />
-        <path className="eye-cornea" d="M144 210.2Q70 150 144 89.8Q126 116 126 150Q126 184 144 210.2Z" />
-        <path className="eye-aqueous" d="M143 203Q112 180 104 150Q112 120 143 97Q132 122 132 150Q132 178 143 203Z" />
+      <path className="eye-cornea" d="M321 239Q248 271 246 309Q245 349 322 383Q294 350 294 310Q294 271 321 239Z" />
+      <path className="eye-aqueous" d="M319 247Q287 271 282 310Q287 350 319 375Q309 344 309 310Q309 277 319 247Z" />
 
-        <ellipse className="eye-lens" cx="168" cy="150" rx="14" ry="36" />
-        <path className="eye-iris" d="M150 88V130M150 170V212" />
-        <ellipse className="eye-pupil" cx="150" cy="150" rx="6" ry="18" />
+      <path className="eye-choroid" d="M350 196Q485 121 627 171Q700 197 733 267Q749 302 741 345Q724 423 642 457" />
+      <path className="eye-retina" d="M370 211Q492 145 619 187Q681 208 710 268Q723 298 718 334Q707 397 636 432" />
 
-        <path className="eye-ciliary" d="M160 80L176 78L174 92L162 92ZM160 220L176 222L174 208L162 208Z" />
-        <path className="eye-suspensory" d="M168 92V114M172 92L174 116M168 208V186M172 208L174 184" />
+      <path className="eye-iris" d="M338 247Q365 272 366 309Q365 347 338 374" />
+      <ellipse className="eye-pupil" cx="350" cy="310" rx="14" ry="27" />
+      <path className="eye-lens" d="M381 310Q399 243 424 239Q452 244 472 310Q452 376 424 381Q399 377 381 310Z" />
 
-        <path className="eye-optic-nerve" d="M333 158L395 162V180H333Z" />
-        <path className="eye-optic-disc" d="M324 138Q318 144 324 150" />
-        <circle className="eye-fovea" cx="311" cy="150" r="5" />
+      <path className="eye-ciliary" d="M346 211Q380 186 432 197M346 409Q380 434 432 423" />
+      <path className="eye-suspensory" d="M367 222L397 258M383 210L407 255M367 398L397 362M383 410L407 365" />
+
+      <path className="eye-optic-nerve" d="M680 306Q760 304 844 339L833 392Q756 354 677 348Z" />
+      <path className="eye-optic-disc" d="M669 294Q686 304 689 323Q685 342 669 352" />
+      <circle className="eye-fovea" cx="625" cy="310" r="10" />
+
+      <g className="eye-retinal-vessels">
+        <path d="M680 323Q644 289 607 271M680 323Q641 329 600 352M680 323Q653 363 624 389" />
       </g>
 
       <text className="repro-orientation" x="500" y="560" textAnchor="middle">horizontal section through the eye</text>
@@ -360,33 +434,37 @@ function MammalianEyeTemplate() {
 
 function MammalianEarTemplate() {
   return (
-    <g className="spark-diagram-ear" aria-hidden="true">
-      <path className="ear-pinna" d="M120 145Q58 145 52 252Q48 365 145 400Q222 406 228 330Q232 276 182 269Q142 268 138 309Q136 344 168 340Q195 336 193 295" />
-      <path className="ear-canal" d="M190 294Q278 282 342 296" />
+    <g className="spark-diagram-ear spark-reference-refined" aria-hidden="true">
+      <path className="ear-bone" d="M210 118Q320 78 445 110Q555 136 624 210Q688 276 815 294L862 420Q748 460 640 430Q553 406 476 374Q382 337 270 349Q185 356 120 405L75 350Q128 305 184 292Q143 239 164 184Q180 143 210 118Z" />
+
+      <path className="ear-pinna" d="M118 143Q62 143 50 237Q38 345 126 399Q204 421 226 347Q244 287 191 268Q148 254 136 297Q126 334 158 343Q189 349 195 303" />
+      <path className="ear-canal" d="M191 294Q270 280 343 295" />
+      <path className="ear-canal-lumen" d="M202 294Q272 289 340 297" />
       <ellipse className="ear-drum" cx="360" cy="295" rx="18" ry="72" transform="rotate(-8 360 295)" />
 
-      <path className="ear-middle-cavity" d="M385 224Q488 204 572 254Q566 332 505 366Q431 356 386 329Z" />
+      <path className="ear-middle-cavity" d="M382 228Q468 208 548 249Q569 277 552 325Q514 361 449 354Q405 347 382 326Z" />
 
       <g className="ear-ossicles">
-        <path className="malleus" d="M378 274Q398 254 420 248L431 274L414 293" />
-        <path className="incus" d="M425 248Q450 238 462 260L451 282L472 294" />
-        <path className="stapes" d="M472 294L493 270M475 300L497 324M493 270Q512 296 497 324" />
-        <circle cx="418" cy="248" r="10" />
-        <circle cx="458" cy="262" r="9" />
+        <path className="malleus" d="M377 273Q395 248 418 246L429 271L412 296" />
+        <path className="incus" d="M422 247Q451 237 463 258L452 282L476 296" />
+        <path className="stapes" d="M474 296L494 273M476 303L498 324M494 273Q512 296 498 324" />
+        <circle cx="418" cy="247" r="10" />
+        <circle cx="458" cy="261" r="9" />
       </g>
 
       <g className="ear-semicircular">
-        <path d="M545 188Q501 112 558 82Q620 48 658 108Q686 153 650 210" />
-        <path d="M588 210Q570 120 648 104Q715 91 728 163Q740 224 678 252" />
-        <path d="M548 238Q484 194 512 132Q538 75 602 104Q655 128 647 184" />
+        <path d="M553 194Q511 117 564 82Q623 43 662 103Q694 151 653 215" />
+        <path d="M589 211Q574 121 651 104Q715 90 731 160Q746 225 679 254" />
+        <path d="M550 238Q491 197 516 139Q541 82 604 108Q655 130 648 186" />
       </g>
 
-      <ellipse className="ear-vestibule" cx="596" cy="286" rx="38" ry="50" />
+      <ellipse className="ear-vestibule" cx="598" cy="286" rx="38" ry="48" />
+      <ellipse className="ear-oval-window" cx="535" cy="297" rx="11" ry="20" transform="rotate(-8 535 297)" />
 
-      <path className="ear-cochlea" d="M607 332Q658 267 722 296Q787 326 774 386Q760 444 698 446Q645 447 624 408Q607 377 627 351Q647 327 676 339Q700 349 699 372Q698 392 681 400Q663 407 650 395" />
-      <path className="ear-auditory-nerve" d="M711 356Q785 333 858 372M620 270Q730 240 820 300" />
+      <path className="ear-cochlea" d="M611 334Q658 270 722 295Q784 320 778 380Q772 433 718 448Q666 462 632 425Q607 397 620 364Q631 337 660 334Q691 330 705 352Q719 374 706 394Q694 411 675 407Q659 404 656 389" />
+      <path className="ear-auditory-nerve" d="M712 356Q785 333 858 372M617 267Q711 244 812 297" />
 
-      <path className="ear-eustachian" d="M507 327Q545 368 563 438Q576 486 627 523" />
+      <path className="ear-eustachian" d="M505 326Q540 365 559 435Q575 490 627 523" />
 
       <text className="repro-orientation" x="500" y="580" textAnchor="middle">section through the mammalian ear</text>
     </g>
