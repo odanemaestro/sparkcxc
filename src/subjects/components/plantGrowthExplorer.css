@@ -23,3 +23,20 @@ html[data-theme="dark"] .spark-plant-growth-stage,body[data-theme="dark"] .spark
 html[data-theme="dark"] .spark-plant-growth-grid aside,body[data-theme="dark"] .spark-plant-growth-grid aside,.dark .spark-plant-growth-grid aside{background:#0d2134;border-color:#29465f}
 @media(max-width:850px){.spark-plant-growth-grid{grid-template-columns:1fr}}
 @media(max-width:560px){.spark-plant-growth-explorer{padding:14px}.spark-plant-growth-tabs{display:grid;grid-template-columns:1fr}.spark-plant-growth-tabs button{width:100%}.spark-plant-growth-stage .pg-tube-label{font-size:26px}.spark-plant-growth-stage .pg-tube-note{font-size:19px}.spark-plant-growth-stage .pg-axis-label{font-size:19px}.spark-plant-growth-stage .pg-point-label{font-size:17px}}
+
+
+.spark-germination-requirements-svg{display:block;width:100%;height:auto}
+.pg-requirement rect{fill:#f7fbfd;stroke:#8fa6b3;stroke-width:3}
+.pg-requirement.water rect{fill:#eef8fb}.pg-requirement.oxygen rect{fill:#f3f8f1}.pg-requirement.temperature rect{fill:#fff7ea}
+.pg-water-drop{fill:#63b6d7;stroke:#347f9c;stroke-width:3}
+.pg-seed.large{fill:#b9844e;stroke:#704828;stroke-width:3}
+.pg-oxygen-arrow{fill:none;stroke:#4d91a8;stroke-width:5;stroke-linecap:round}.pg-arrow-head{fill:#4d91a8}.pg-gas-label{fill:#315b70;font-size:16px;font-weight:900}
+.pg-thermometer{fill:#eef2f4;stroke:#6b7d87;stroke-width:3}.pg-thermometer-bulb{fill:#dc6958;stroke:#9f4337;stroke-width:3}.pg-thermometer-mercury{fill:#dc6958}
+.pg-card-title,.pg-section-title,.pg-dish-label,.pg-response-label{fill:#294d64;font-weight:900}.pg-section-title{font-size:18px}.pg-card-title{font-size:15px}.pg-dish-label{font-size:14px}.pg-response-label{font-size:12px}
+.pg-card-note,.pg-section-subtitle,.pg-dish-note{fill:#536d80;font-weight:750}.pg-card-note{font-size:10px}.pg-section-subtitle{font-size:12px}.pg-dish-note{font-size:10px}
+.pg-petri-base{fill:#f8fbfd;stroke:#718894;stroke-width:4}.pg-moist-material{fill:#d9e8ee;stroke:#9bb2bd;stroke-width:2}
+html[data-theme="dark"] .spark-germination-requirements-svg,body[data-theme="dark"] .spark-germination-requirements-svg,.dark .spark-germination-requirements-svg{background:#0d2134}
+html[data-theme="dark"] .pg-section-title,body[data-theme="dark"] .pg-section-title,.dark .pg-section-title,
+html[data-theme="dark"] .pg-section-subtitle,body[data-theme="dark"] .pg-section-subtitle,.dark .pg-section-subtitle,
+html[data-theme="dark"] .pg-response-label,body[data-theme="dark"] .pg-response-label,.dark .pg-response-label{fill:#e1edf5}
+@media(max-width:560px){.pg-section-title{font-size:23px}.pg-card-title{font-size:20px}.pg-card-note,.pg-section-subtitle,.pg-dish-note,.pg-response-label{font-size:15px}.pg-dish-label{font-size:19px}.pg-gas-label{font-size:20px}}
