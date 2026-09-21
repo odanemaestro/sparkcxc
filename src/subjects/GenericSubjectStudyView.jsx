@@ -103,6 +103,7 @@ import CleaningAgentsEffectsExplorer from "./components/CleaningAgentsEffectsExp
 import SoapDetergentsExplorer from "./components/SoapDetergentsExplorer";
 import AirPollutionExplorer from "./components/AirPollutionExplorer";
 import CommunityHygieneExplorer from "./components/CommunityHygieneExplorer";
+import PlasticsExplorer from "./components/PlasticsExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -566,6 +567,9 @@ function GenericLessonContent({
         }
         if (model?.type === "community-hygiene") {
           return <CommunityHygieneExplorer key={model.id || "community-hygiene"} />;
+        }
+        if (model?.type === "plastics") {
+          return <PlasticsExplorer key={model.id || "plastics"} />;
         }
         return null;
       })}
