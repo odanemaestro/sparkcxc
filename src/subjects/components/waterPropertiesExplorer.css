@@ -15,3 +15,27 @@ html[data-theme="dark"] .spark-water-tabs button.active,body[data-theme="dark"] 
 @media(max-width:900px){.spark-water-phase-cards,.spark-water-solvent,.spark-water-marine{grid-template-columns:1fr}}
 @media(max-width:620px){.spark-water-properties{padding:14px}.spark-water-tabs{display:grid;grid-template-columns:1fr 1fr}}
 @media(max-width:390px){.spark-water-tabs{grid-template-columns:1fr}}
+
+
+.spark-water-density-svg,.spark-surface-tension-svg,.spark-water-osmosis-svg{display:block;width:100%;height:auto;margin:12px 0;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:14px;background:var(--spark-paper,#fff)}
+.wp-density-bg,.wp-surface-bg,.wp-osmosis-bg{fill:var(--spark-paper,#fff)}
+.wp-tank-wall{fill:none;stroke:#617b89;stroke-width:5;stroke-linecap:round}.wp-water-fill{fill:#a9d6e8}.wp-water-fill.sea{fill:#8fc6dc}.wp-waterline{stroke:#4f8aa5;stroke-width:3}
+.wp-ice-block-svg{fill:#edf8fc;stroke:#aad3e3;stroke-width:3}.wp-ice-submerged{fill:#d6edf6;fill-opacity:.72}
+.wp-salt-ion{fill:#537d91}.wp-density-label,.wp-density-small,.wp-density-note,.wp-vector-label{fill:var(--spark-ink,#102a43);font-weight:850}.wp-density-label{font-size:14px}.wp-density-small,.wp-vector-label{font-size:11px}.wp-density-note{font-size:12px}
+.wp-weight-vector{stroke:#b0524a;stroke-width:5}.wp-down-head{fill:#b0524a}.wp-upthrust-vector{stroke:#347e9e;stroke-width:5}.wp-up-head{fill:#347e9e}.wp-submerged-guide{stroke:#718793;stroke-width:2;stroke-dasharray:5 4}
+
+.wp-surface-water{fill:#a9d6e8}.wp-interface{fill:none;stroke:#457e98;stroke-width:5}.wp-interface.reduced{stroke:#6f9fb5;stroke-width:3;stroke-dasharray:10 7}
+.wp-water-molecule circle{fill:#dff4fb;stroke:#4f8da8;stroke-width:2}.wp-water-molecule text{fill:#315f75;font-size:8px;font-weight:900}.wp-water-molecule.bulk{opacity:.9}
+.wp-cohesion-bond{stroke:#4f8da8;stroke-width:3;stroke-dasharray:5 4}.wp-insect-body-svg{fill:#596b58;stroke:#344735;stroke-width:3}.wp-insect-leg-svg{fill:none;stroke:#344735;stroke-width:5;stroke-linecap:round}
+.wp-surface-force{stroke:#b0524a;stroke-width:4}.wp-surface-label,.wp-surface-note{fill:var(--spark-ink,#102a43);font-weight:850}.wp-surface-label{font-size:12px}.wp-surface-note{font-size:11px}
+.wp-surfactant-head{fill:#4f9ec0;stroke:#316d87;stroke-width:2}.wp-surfactant-tail{stroke:#9a704e;stroke-width:4;stroke-linecap:round}
+
+.wp-external-water{fill:#a9d6e8;stroke:#5e92aa;stroke-width:3}.wp-fish-body{fill:#7e9f8c;stroke:#4c705d;stroke-width:4}.wp-fish-tail{fill:#73947f;stroke:#4c705d;stroke-width:4}.wp-fish-eye{fill:#233c34}.wp-body-fluid{fill:#c1ddd0;stroke:#5b806c;stroke-width:2;stroke-dasharray:6 5}
+.wp-solute-dot.external{fill:#476f82}.wp-solute-dot.internal{fill:#795f4e}.wp-osmosis-label,.wp-osmosis-small,.wp-osmosis-flow-label{fill:var(--spark-ink,#102a43);font-weight:850}.wp-osmosis-label{font-size:13px}.wp-osmosis-small{font-size:11px}.wp-osmosis-flow-label{font-size:13px}
+.wp-osmosis-arrow{stroke:#347e9e;stroke-width:6;stroke-linecap:round}.wp-osmosis-head{fill:#347e9e}
+
+html[data-theme="dark"] .spark-water-density-svg,body[data-theme="dark"] .spark-water-density-svg,.dark .spark-water-density-svg,html[data-theme="dark"] .spark-surface-tension-svg,body[data-theme="dark"] .spark-surface-tension-svg,.dark .spark-surface-tension-svg,html[data-theme="dark"] .spark-water-osmosis-svg,body[data-theme="dark"] .spark-water-osmosis-svg,.dark .spark-water-osmosis-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .wp-density-bg,body[data-theme="dark"] .wp-density-bg,.dark .wp-density-bg,html[data-theme="dark"] .wp-surface-bg,body[data-theme="dark"] .wp-surface-bg,.dark .wp-surface-bg,html[data-theme="dark"] .wp-osmosis-bg,body[data-theme="dark"] .wp-osmosis-bg,.dark .wp-osmosis-bg{fill:#0d2134}
+html[data-theme="dark"] .wp-density-label,body[data-theme="dark"] .wp-density-label,.dark .wp-density-label,html[data-theme="dark"] .wp-density-small,body[data-theme="dark"] .wp-density-small,.dark .wp-density-small,html[data-theme="dark"] .wp-density-note,body[data-theme="dark"] .wp-density-note,.dark .wp-density-note,html[data-theme="dark"] .wp-vector-label,body[data-theme="dark"] .wp-vector-label,.dark .wp-vector-label,html[data-theme="dark"] .wp-surface-label,body[data-theme="dark"] .wp-surface-label,.dark .wp-surface-label,html[data-theme="dark"] .wp-surface-note,body[data-theme="dark"] .wp-surface-note,.dark .wp-surface-note,html[data-theme="dark"] .wp-osmosis-label,body[data-theme="dark"] .wp-osmosis-label,.dark .wp-osmosis-label,html[data-theme="dark"] .wp-osmosis-small,body[data-theme="dark"] .wp-osmosis-small,.dark .wp-osmosis-small,html[data-theme="dark"] .wp-osmosis-flow-label,body[data-theme="dark"] .wp-osmosis-flow-label,.dark .wp-osmosis-flow-label{fill:#d6e4ee}
+
+@media(max-width:620px){.wp-density-label{font-size:17px}.wp-density-small,.wp-vector-label,.wp-surface-label,.wp-surface-note,.wp-osmosis-small{font-size:14px}.wp-density-note,.wp-osmosis-label,.wp-osmosis-flow-label{font-size:15px}}
