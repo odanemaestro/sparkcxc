@@ -82,6 +82,7 @@ import AirMassFrontsExplorer from "./components/AirMassFrontsExplorer";
 import CaribbeanWeatherExplorer from "./components/CaribbeanWeatherExplorer";
 import TidesExplorer from "./components/TidesExplorer";
 import VolcanoEruptionsExplorer from "./components/VolcanoEruptionsExplorer";
+import WaterPropertiesExplorer from "./components/WaterPropertiesExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -482,6 +483,9 @@ function GenericLessonContent({
         }
         if (model?.type === "volcano-eruptions") {
           return <VolcanoEruptionsExplorer key={model.id || "volcano-eruptions"} />;
+        }
+        if (model?.type === "water-properties") {
+          return <WaterPropertiesExplorer key={model.id || "water-properties"} />;
         }
         return null;
       })}
