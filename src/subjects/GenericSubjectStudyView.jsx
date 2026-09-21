@@ -98,6 +98,7 @@ import HouseholdChemicalsExplorer from "./components/HouseholdChemicalsExplorer"
 import AcidsBasesSaltsExplorer from "./components/AcidsBasesSaltsExplorer";
 import StatesMatterExplorer from "./components/StatesMatterExplorer";
 import MixturesExplorer from "./components/MixturesExplorer";
+import SeparationTechniquesExplorer from "./components/SeparationTechniquesExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -546,6 +547,9 @@ function GenericLessonContent({
         }
         if (model?.type === "mixtures") {
           return <MixturesExplorer key={model.id || "mixtures"} />;
+        }
+        if (model?.type === "separation-techniques") {
+          return <SeparationTechniquesExplorer key={model.id || "separation-techniques"} />;
         }
         return null;
       })}
