@@ -94,6 +94,7 @@ import AluminiumUtensilsExplorer from "./components/AluminiumUtensilsExplorer";
 import AlloysExplorer from "./components/AlloysExplorer";
 import RustingConditionsExplorer from "./components/RustingConditionsExplorer";
 import CorrosionProtectionExplorer from "./components/CorrosionProtectionExplorer";
+import HouseholdChemicalsExplorer from "./components/HouseholdChemicalsExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -530,6 +531,9 @@ function GenericLessonContent({
         }
         if (model?.type === "corrosion-protection") {
           return <CorrosionProtectionExplorer key={model.id || "corrosion-protection"} />;
+        }
+        if (model?.type === "household-chemicals") {
+          return <HouseholdChemicalsExplorer key={model.id || "household-chemicals"} />;
         }
         return null;
       })}
