@@ -15,10 +15,67 @@ function WasteTypesView(){
 }
 
 function PestsView(){
-  return <div className="spark-hygiene-pests">
-    <article><span>OPEN GARBAGE</span><h4>Food and shelter for pests</h4><p>Uncovered garbage attracts rats and flies and can hold water in containers that breed mosquitoes.</p></article>
-    <article><span>BLOCKED DRAINS</span><h4>Standing water</h4><p>Litter can obstruct drains, increase local flooding and leave stagnant water that supports mosquito breeding.</p></article>
-    <article><span>COMMUNITY EFFECT</span><h4>More disease risk and nuisance</h4><p>Good waste storage and regular collection reduce pests, bad odours and unsightly surroundings.</p></article>
+  return <div className="spark-hygiene-pests-view">
+    <svg className="spark-pests-drains-svg" viewBox="0 0 980 560" role="img" aria-label="Community hygiene diagram showing litter blocking a drain, stagnant water supporting mosquito eggs larvae and pupae, and open garbage attracting flies and rats">
+      <defs>
+        <marker id="pest-flow-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path d="M0 0L9 4.5L0 9Z" className="pd-arrow-head"/>
+        </marker>
+      </defs>
+
+      <rect className="pd-ground" x="0" y="0" width="980" height="560"/>
+      <g className="pd-drain">
+        <path className="pd-road" d="M40 160H940V300H40Z"/>
+        <rect className="pd-drain-channel" x="110" y="250" width="760" height="115" rx="18"/>
+        <path className="pd-water" d="M125 300Q260 282 390 302T650 302T855 300V350H125Z"/>
+        <g className="pd-litter">
+          <rect x="425" y="265" width="65" height="30" rx="5"/><path d="M515 270L565 294L530 325Z"/><circle cx="595" cy="286" r="20"/>
+        </g>
+        <path className="pd-flow blocked" d="M185 320Q305 320 390 315" markerEnd="url(#pest-flow-arrow)"/>
+        <path className="pd-flow weak" d="M650 320Q720 318 790 320"/>
+        <text className="pd-label" x="500" y="228" textAnchor="middle">litter blocks the drain</text>
+        <text className="pd-small" x="745" y="346">water movement slows</text>
+      </g>
+
+      <g className="pd-mosquito-cycle" transform="translate(80 380)">
+        <text className="pd-heading" x="190" y="-12" textAnchor="middle">stagnant water supports mosquito breeding</text>
+        <g transform="translate(0 10)">
+          <ellipse className="pd-egg" cx="35" cy="35" rx="7" ry="15"/><ellipse className="pd-egg" cx="53" cy="31" rx="7" ry="15"/>
+          <text className="pd-small" x="45" y="78" textAnchor="middle">eggs</text>
+        </g>
+        <path className="pd-stage-arrow" d="M85 45H135" markerEnd="url(#pest-flow-arrow)"/>
+        <g transform="translate(145 0)"><path className="pd-larva" d="M15 20Q48 0 62 30T96 45Q100 70 72 72"/><text className="pd-small" x="55" y="82" textAnchor="middle">larva</text></g>
+        <path className="pd-stage-arrow" d="M260 45H310" markerEnd="url(#pest-flow-arrow)"/>
+        <g transform="translate(320 0)"><path className="pd-pupa" d="M20 18Q77 18 70 58Q63 80 38 68Q15 58 20 18Z"/><text className="pd-small" x="48" y="82" textAnchor="middle">pupa</text></g>
+        <path className="pd-stage-arrow" d="M420 45H470" markerEnd="url(#pest-flow-arrow)"/>
+        <g transform="translate(480 -6)">
+          <ellipse className="pd-mosquito-body" cx="55" cy="42" rx="8" ry="27"/>
+          <circle className="pd-mosquito-head" cx="55" cy="12" r="9"/>
+          <path className="pd-mosquito-lines" d="M47 34L18 16M63 34L92 16M47 46L15 63M63 46L95 63M55 4V-14"/>
+          <text className="pd-small" x="55" y="86" textAnchor="middle">adult mosquito</text>
+        </g>
+      </g>
+
+      <g className="pd-garbage" transform="translate(685 380)">
+        <rect className="pd-bin" x="0" y="35" width="135" height="105" rx="10"/>
+        <path className="pd-bin-lid" d="M-8 40H143L125 12H10Z"/>
+        <path className="pd-bag" d="M45 20Q65 0 85 20L98 72Q65 95 32 72Z"/>
+        <g className="pd-flies">
+          <circle cx="18" cy="5" r="4"/><circle cx="115" cy="0" r="4"/><circle cx="136" cy="28" r="4"/>
+        </g>
+        <g className="pd-rat" transform="translate(148 85)">
+          <ellipse cx="32" cy="25" rx="34" ry="20"/><circle cx="60" cy="20" r="12"/><circle cx="63" cy="8" r="5"/>
+          <path d="M2 24Q-25 8 -30 32"/>
+        </g>
+        <text className="pd-heading" x="75" y="168" textAnchor="middle">open garbage attracts flies and rats</text>
+      </g>
+    </svg>
+
+    <div className="spark-hygiene-pests">
+      <article><span>OPEN GARBAGE</span><h4>Food and shelter for pests</h4><p>Uncovered garbage attracts rats and flies and can hold water in containers that breed mosquitoes.</p></article>
+      <article><span>BLOCKED DRAINS</span><h4>Standing water</h4><p>Litter can obstruct drains, increase local flooding and leave stagnant water that supports mosquito breeding.</p></article>
+      <article><span>COMMUNITY EFFECT</span><h4>More disease risk and nuisance</h4><p>Good waste storage and regular collection reduce pests, bad odours and unsightly surroundings.</p></article>
+    </div>
   </div>;
 }
 
