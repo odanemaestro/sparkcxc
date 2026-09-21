@@ -61,14 +61,15 @@ function DiseaseView(){
 
 function RecoverView(){
   const [mode,setMode]=useState("compost");
-  const data={
+  const options={
     compost:{title:"Composting",text:"Aerobic decomposers break down kitchen and garden waste to form humus-rich compost that can improve soil."},
     biogas:{title:"Biogas",text:"Anaerobic microorganisms can break down animal manure and food waste, producing methane-rich biogas that can be used as a fuel."},
     repurpose:{title:"Repurposing",text:"An item is used for a different purpose instead of being discarded, for example using a safe old container as a planter."},
     recycle:{title:"Reduce, reuse and recycle",text:"Reducing waste at the source is usually best. Reuse and recycling then keep more material out of landfills."}
-  }[mode];
+  };
+  const data=options[mode];
   return <div className="spark-hygiene-recovery">
-    <div className="spark-hygiene-toggle">{Object.keys(data).map(k=><button type="button" key={k} className={mode===k?"active":""} onClick={()=>setMode(k)}>{data[k].title}</button>)}</div>
+    <div className="spark-hygiene-toggle">{Object.entries(options).map(([key,item])=><button type="button" key={key} aria-pressed={mode===key} className={mode===key?"active":""} onClick={()=>setMode(key)}>{item.title}</button>)}</div>
     <article><span>{data.title.toUpperCase()}</span><h4>{data.title}</h4><p>{data.text}</p></article>
   </div>;
 }
