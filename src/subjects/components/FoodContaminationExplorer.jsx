@@ -70,19 +70,68 @@ function CrossScene(){
 
 function ToxinScene(){
   return(
-    <div className="spark-food-toxin-grid">
-      <article>
-        <span>1</span><b>Poor storage</b><p>Warm, humid storage can encourage mould growth on peanuts, maize and other susceptible foods.</p>
-      </article>
-      <article>
-        <span>2</span><b>Aflatoxin risk</b><p>Some Aspergillus moulds produce aflatoxins. Long-term exposure can damage the liver and increase liver-cancer risk.</p>
-      </article>
-      <article>
-        <span>3</span><b>Visible mould is a warning</b><p>Removing only the visible mould does not prove the remaining food is safe because toxins can extend beyond what is seen.</p>
-      </article>
-      <article>
-        <span>4</span><b>Prevention</b><p>Keep dry foods dry, use suitable storage, inspect supplies and discard food showing unsafe mould or spoilage.</p>
-      </article>
+    <div className="spark-aflatoxin-scene">
+      <svg className="spark-aflatoxin-svg" viewBox="0 0 980 540" role="img" aria-label="Aflatoxin risk pathway showing warm humid storage, mould growth on stored peanuts, toxin contamination extending beyond visible mould, and liver health risk from long-term exposure">
+        <defs>
+          <marker id="aflatoxin-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+            <path d="M0 0L9 4.5L0 9Z" className="af-arrow-head"/>
+          </marker>
+        </defs>
+
+        <g className="af-stage storage" transform="translate(55 80)">
+          <rect className="af-store" x="0" y="60" width="190" height="220" rx="14"/>
+          <path className="af-roof" d="M-15 60L95 5L205 60Z"/>
+          <g className="af-peanuts">
+            {[38,75,112,149].map((x,i)=><ellipse key={x} cx={x} cy={180+(i%2)*42} rx="22" ry="13" transform={"rotate("+(i%2?18:-18)+" "+x+" "+(180+(i%2)*42)+")"}/>)}
+          </g>
+          <path className="af-humidity" d="M30 105Q50 75 70 105T110 105T150 105"/>
+          <text className="af-title" x="95" y="320" textAnchor="middle">warm, humid storage</text>
+          <text className="af-small" x="95" y="344" textAnchor="middle">favours mould growth</text>
+        </g>
+
+        <path className="af-flow" d="M270 220H335" markerEnd="url(#aflatoxin-arrow)"/>
+
+        <g className="af-stage mould" transform="translate(345 70)">
+          <rect className="af-food-sample" x="0" y="100" width="210" height="150" rx="18"/>
+          <g className="af-mould-hyphae">
+            <path d="M35 205Q60 160 85 190Q112 220 135 165Q158 120 185 155"/>
+            <path d="M62 188Q45 145 57 118M123 176Q110 133 120 108M170 160Q176 127 190 112"/>
+          </g>
+          <g className="af-mould-spores">
+            {[55,120,190].map((x,i)=><circle key={x} cx={x} cy={102-(i%2)*14} r="10"/>)}
+          </g>
+          <g className="af-toxin-dots">
+            {[45,80,115,150,180].map((x,i)=><circle key={x} cx={x} cy={215-(i%2)*32} r="7"/>)}
+          </g>
+          <text className="af-title" x="105" y="292" textAnchor="middle">Aspergillus mould may grow</text>
+          <text className="af-small" x="105" y="318" textAnchor="middle">some strains can produce aflatoxins</text>
+        </g>
+
+        <path className="af-flow" d="M580 220H645" markerEnd="url(#aflatoxin-arrow)"/>
+
+        <g className="af-stage spread" transform="translate(660 65)">
+          <rect className="af-food-sample" x="0" y="105" width="250" height="155" rx="18"/>
+          <path className="af-visible-mould" d="M15 118Q45 82 85 115Q110 88 145 118Q125 154 80 150Q40 155 15 118Z"/>
+          <g className="af-toxin-dots spread">
+            {[35,70,105,140,175,210].map((x,i)=><circle key={x} cx={x} cy={190+(i%2)*34} r="7"/>)}
+          </g>
+          <path className="af-warning-line" d="M22 278H228"/>
+          <text className="af-title" x="125" y="315" textAnchor="middle">visible mould is only part of the risk</text>
+          <text className="af-small" x="125" y="340" textAnchor="middle">removing the visible patch does not prove the food is safe</text>
+        </g>
+
+        <path className="af-risk-arrow" d="M780 415Q700 455 610 455Q520 455 455 425" markerEnd="url(#aflatoxin-arrow)"/>
+        <g className="af-liver-risk" transform="translate(300 390)">
+          <path className="af-liver" d="M40 58Q110 5 210 35Q245 45 254 84Q215 132 145 143Q78 151 40 120Q20 95 40 58Z"/>
+          <text className="af-title" x="145" y="175" textAnchor="middle">long-term exposure can damage the liver</text>
+          <text className="af-small" x="145" y="198" textAnchor="middle">and increase liver-cancer risk</text>
+        </g>
+      </svg>
+
+      <div className="spark-food-toxin-grid">
+        <article><span>1</span><b>Keep dry foods dry</b><p>Use suitable storage and reduce warm, humid conditions that encourage mould growth.</p></article>
+        <article><span>2</span><b>Inspect and discard unsafe food</b><p>Do not assume food is safe after scraping away visible mould because contamination can extend beyond the visible growth.</p></article>
+      </div>
     </div>
   );
 }
