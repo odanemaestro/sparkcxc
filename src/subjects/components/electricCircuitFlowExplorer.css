@@ -14,3 +14,21 @@ html[data-theme="dark"] .cs-meter-text,body[data-theme="dark"] .cs-meter-text,.d
 @media(max-width:900px){.spark-circuit-symbols{grid-template-columns:repeat(2,1fr)}.spark-circuit-comparison,.spark-meter-notes,.spark-circuit-calculators{grid-template-columns:1fr}}
 @media(max-width:620px){.spark-electric-circuit-flow{padding:14px}.spark-circuit-tabs{display:grid;grid-template-columns:1fr 1fr}.spark-circuit-symbols{grid-template-columns:1fr}.cp-title,.mp-note,.tf-label{font-size:18px}}
 @media(max-width:390px){.spark-circuit-tabs{grid-template-columns:1fr}}
+
+
+.spark-transformer-svg{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.tf-core-frame>rect:first-child{fill:#c5d0d6;stroke:#6e7f89;stroke-width:5}
+.tf-core-window{fill:var(--spark-paper,#fff);stroke:#6e7f89;stroke-width:4}
+.tf-primary-coil path,.tf-secondary-coil path{fill:none;stroke:#597684;stroke-width:7;stroke-linecap:round}
+.tf-wire{fill:none;stroke:#536d7d;stroke-width:5;stroke-linecap:round}
+.tf-ac-input path,.tf-ac-output path{fill:none;stroke:#0d9488;stroke-width:5;stroke-linecap:round}
+.tf-ac-input text,.tf-ac-output text,.tf-flux-label,.tf-small{fill:#294d64;font-weight:850}
+.tf-ac-input text,.tf-ac-output text{font-size:14px}.tf-flux-label{font-size:15px}.tf-small{font-size:11px}
+.tf-flux-path path{fill:none;stroke:#b06d2f;stroke-width:6;stroke-linecap:round}.tf-arrow-head{fill:#b06d2f}
+html[data-theme="dark"] .spark-transformer-svg,body[data-theme="dark"] .spark-transformer-svg,.dark .spark-transformer-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .tf-core-window,body[data-theme="dark"] .tf-core-window,.dark .tf-core-window{fill:#0d2134}
+html[data-theme="dark"] .tf-ac-input text,body[data-theme="dark"] .tf-ac-input text,.dark .tf-ac-input text,
+html[data-theme="dark"] .tf-ac-output text,body[data-theme="dark"] .tf-ac-output text,.dark .tf-ac-output text,
+html[data-theme="dark"] .tf-flux-label,body[data-theme="dark"] .tf-flux-label,.dark .tf-flux-label,
+html[data-theme="dark"] .tf-small,body[data-theme="dark"] .tf-small,.dark .tf-small{fill:#e1edf5}
+@media(max-width:620px){.tf-ac-input text,.tf-ac-output text{font-size:18px}.tf-flux-label{font-size:19px}.tf-small{font-size:15px}}
