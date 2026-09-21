@@ -1,0 +1,70 @@
+import React,{useMemo,useState} from "react";
+import "./alloysExplorer.css";
+
+const ALLOYS=[
+  {id:"brass",name:"Brass",parts:"Copper + zinc",benefit:"Harder than copper, attractive and corrosion resistant.",use:"Door handles, locks and decorative fittings."},
+  {id:"bronze",name:"Bronze",parts:"Copper + tin",benefit:"Hard, wear resistant and corrosion resistant.",use:"Medals, statues and bearings."},
+  {id:"steel",name:"Steel",parts:"Iron + carbon",benefit:"Stronger and harder than pure iron.",use:"Tools, structures and household hardware."},
+  {id:"stainless",name:"Stainless steel",parts:"Iron + chromium, usually with other elements",benefit:"Hard and highly resistant to rusting.",use:"Cutlery, sinks and cookware."},
+  {id:"solder",name:"Traditional solder",parts:"Tin + lead",benefit:"Low melting point compared with its component metals.",use:"Joining metal parts in the traditional syllabus example."},
+];
+
+function StructureView(){
+  const [alloy,setAlloy]=useState(false);
+  const atoms=Array.from({length:36},(_,i)=>i);
+  return <div className="spark-alloy-structure">
+    <div className="spark-alloy-toggle"><button type="button" className={!alloy?"active":""} onClick={()=>setAlloy(false)}>Pure metal</button><button type="button" className={alloy?"active":""} onClick={()=>setAlloy(true)}>Alloy</button></div>
+    <div className={"spark-atom-grid "+(alloy?"mixed":"pure")}>{atoms.map((i)=><span key={i} className={alloy&&[8,15,22,29].includes(i)?"different":""}></span>)}</div>
+    <p>{alloy?"Different-sized atoms disturb the regular layers. This makes it harder for layers to slide over each other, so many alloys are harder than the pure metals from which they are made.":"In a pure metal, similar-sized atoms are arranged more regularly, so layers can often slide more easily when a force is applied."}</p>
+  </div>;
+}
+
+function AlloyView(){
+  const [id,setId]=useState("brass");
+  const a=ALLOYS.find(x=>x.id===id);
+  return <div className="spark-alloy-selector">
+    <div className="spark-alloy-buttons">{ALLOYS.map(x=><button type="button" key={x.id} className={id===x.id?"active":""} onClick={()=>setId(x.id)}>{x.name}</button>)}</div>
+    <article><span>{a.name.toUpperCase()}</span><h4>{a.parts}</h4><strong>Improved property</strong><p>{a.benefit}</p><strong>Household or practical use</strong><p>{a.use}</p></article>
+  </div>;
+}
+
+function StainlessView(){
+  return <div className="spark-stainless-use">
+    <article><span>CUTLERY</span><h4>Hard and corrosion resistant</h4><p>Stainless steel resists rusting and keeps a durable surface during repeated washing and food contact.</p></article>
+    <article><span>SINKS</span><h4>Durable in wet conditions</h4><p>The chromium-containing alloy forms a protective surface layer that strongly resists ordinary corrosion.</p></article>
+    <article><span>COOKWARE</span><h4>Strong and easy to clean</h4><p>Stainless steel is widely used where hardness, durability and corrosion resistance are important.</p></article>
+  </div>;
+}
+
+function SolderView(){
+  return <div className="spark-solder-use">
+    <div className="spark-solder-joint"><div className="spark-wire a"></div><div className="spark-wire b"></div><div className="spark-solder-blob">solder</div></div>
+    <p>The syllabus example uses a tin-lead solder because the alloy melts at a relatively low temperature and can join metal parts without melting the conductors themselves.</p>
+  </div>;
+}
+
+function PlatingView(){
+  return <div className="spark-alloy-plating">
+    <article><span>ALLOYING</span><h4>Changes the whole material</h4><p>Different elements are mixed throughout the metal to change properties such as hardness or corrosion resistance.</p></article>
+    <article><span>ELECTROPLATING</span><h4>Changes only the surface</h4><p>A thin layer of another metal is deposited using electricity, improving appearance or corrosion resistance without changing the whole object.</p></article>
+    <aside><strong>Do not confuse the two</strong><p>Silver-plating a steel spoon is not alloying. The spoon remains steel underneath with a thin silver surface coating.</p></aside>
+  </div>;
+}
+
+export default function AlloysExplorer(){
+  const [view,setView]=useState("structure");
+  const summary=useMemo(()=>({
+    structure:"Alloys often become harder because different-sized atoms disrupt the regular metal lattice and hinder layer movement.",
+    alloys:"Brass, bronze, steel, stainless steel and solder are chosen because alloying changes useful properties.",
+    stainless:"Stainless steel combines hardness with strong corrosion resistance, making it useful for household items.",
+    solder:"A low melting point allows solder to melt and form joints without melting the main metal parts.",
+    plating:"Alloying changes the bulk material; electroplating changes the surface."
+  })[view],[view]);
+  return <section className="spark-alloys">
+    <header><span>ALLOYS</span><h3>Explain why mixtures of metals can outperform pure metals</h3><p>An alloy is a mixture containing a metal and one or more other elements. Alloying is used to improve properties such as hardness, strength, corrosion resistance or melting behaviour.</p></header>
+    <div className="spark-alloy-tabs">{[["structure","Why alloys are harder"],["alloys","Common alloys"],["stainless","Stainless steel"],["solder","Solder"],["plating","Alloy vs plating"]].map(([k,l])=><button type="button" key={k} className={view===k?"active":""} onClick={()=>setView(k)}>{l}</button>)}</div>
+    <div className="spark-alloy-stage">{view==="structure"&&<StructureView/>}{view==="alloys"&&<AlloyView/>}{view==="stainless"&&<StainlessView/>}{view==="solder"&&<SolderView/>}{view==="plating"&&<PlatingView/>}</div>
+    <div className="spark-alloy-summary"><strong>{summary}</strong><span>Brass = copper + zinc. Bronze = copper + tin. Steel = iron + carbon.</span></div>
+  </section>;
+}
+export { ALLOYS };
