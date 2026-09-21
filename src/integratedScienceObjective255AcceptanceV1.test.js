@@ -9,6 +9,12 @@ describe("Integrated Science Objective 2.5.5 acceptance audit",()=>{
  test("covers ventilation need and crowded rooms",()=>{expect(migration).toContain("carbon dioxide, heat and humidity");expect(migration).toContain("supplies fresh outdoor air");});
  test("covers cross ventilation and high vents",()=>{expect(migration).toContain("opposite walls");expect(migration).toContain("Warm air is less dense");expect(explorer).toContain("Cross-ventilation");});
  test("covers louvre windows",()=>{expect(migration).toContain("Louvre windows");expect(migration).toContain("helping to keep out rain");expect(explorer).toContain("LOUVRE WINDOWS");});
+ test("renders natural and mechanical ventilation geometry",()=>{
+  ["spark-natural-ventilation-svg","vn-louvres","vn-high-vent","vn-cross-flow","vn-warm-rise","spark-mechanical-ventilation-svg","vm-fan-frame","vm-ac","vm-ceiling-blade","does not by itself supply fresh outdoor air"].forEach(term=>expect(explorer).toContain(term));
+  expect(css).toContain(".spark-natural-ventilation-svg");
+  expect(css).toContain(".spark-mechanical-ventilation-svg");
+  expect(css).toContain(".vm-circulation");
+ });
  test("covers mechanical ventilation",()=>{expect(migration).toContain("Exhaust fans");expect(migration).toContain("Air-conditioning systems");expect(explorer).toContain("Mechanical ventilation");});
  test("covers carbon monoxide hazards",()=>{expect(migration).toContain("Burning charcoal in a closed room");expect(migration).toContain("gasoline generator in a garage");expect(explorer).toContain("GENERATOR");});
  test("clarifies ceiling fans",()=>{expect(migration).toContain("fan alone does not necessarily replace stale indoor air");expect(explorer).toContain("CEILING FAN");});
