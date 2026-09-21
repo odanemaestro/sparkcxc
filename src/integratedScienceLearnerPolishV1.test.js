@@ -66,6 +66,10 @@ describe("Integrated Science learner polish V1", () => {
     expect(migration).toContain("m1-t1-2-animal-and-plant-cells");
     expect(migration).toContain("sort_order = 10");
     expect(migration).toContain("sort_order = 20");
+    expect(migration).toContain("'Ã—','×'");
+    expect(migration).toContain("'Â²','²'");
+    expect(migration).toContain("'Â³','³'");
+    expect(migration).toContain("'Â°','°'");
   });
 
   test("cell and microscope templates include recognisable internal structures", () => {
