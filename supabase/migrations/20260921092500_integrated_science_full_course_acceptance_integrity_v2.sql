@@ -16,6 +16,7 @@ where subject_id = 'integrated-science'
 update public.spark_subjects
 set stats = coalesce(stats,'{}'::jsonb)
   || '{
+    "sections":3,
     "topics":114,
     "objectives":114,
     "topicsBuilt":114,
@@ -28,9 +29,16 @@ where id = 'integrated-science';
 -- one-topic-per-objective mapping against the 114-code canonical bank.
 do $$
 declare
+  v_section_count integer;
   v_topic_count integer;
   v_objective_count integer;
 begin
+  select count(*)
+    into v_section_count
+  from public.spark_subject_sections
+  where subject_id = 'integrated-science'
+    and enabled = true;
+
   select count(*)
     into v_topic_count
   from public.spark_subject_topics
@@ -43,6 +51,10 @@ begin
   where subject_id = 'integrated-science'
     and enabled = true
     and nullif(metadata #>> '{syllabus,objective}','') is not null;
+
+  if v_section_count <> 3 then
+    raise exception 'Integrated Science acceptance gate failed: expected 3 enabled sections, found %', v_section_count;
+  end if;
 
   if v_topic_count <> 114 then
     raise exception 'Integrated Science acceptance gate failed: expected 114 enabled topics, found %', v_topic_count;
