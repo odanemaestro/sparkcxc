@@ -56,7 +56,13 @@ describe("Integrated Science Objective 2.2.3 acceptance audit", () => {
     expect(migration).toContain('"text":"Root"');
     expect(diagram).toContain("HumanToothTemplate");
     expect(diagram).toContain('template === "human-tooth"');
+    expect(diagram).toContain("tooth-template-crown-clip");
+    expect(diagram).toContain("tooth-template-root-clip");
+    expect(diagram).toContain("tooth-cementum");
+    expect(diagram).toContain("crown, enamel-covered");
+    expect(diagram).toContain("root, cementum-covered, in jaw socket");
     expect(diagramCss).toContain("SPARK_HUMAN_TOOTH_TEMPLATE_V1");
+    expect(diagramCss).toContain(".spark-diagram-tooth .tooth-cementum");
   });
 
   test("covers key internal tooth functions", () => {
