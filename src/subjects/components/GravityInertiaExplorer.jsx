@@ -19,11 +19,44 @@ function FallView(){
   const [vacuum,setVacuum]=useState(false);
   return <div className="spark-fall-view">
     <div className="spark-gravity-toggle"><button type="button" className={!vacuum?"active":""} onClick={()=>setVacuum(false)}>With air</button><button type="button" className={vacuum?"active":""} onClick={()=>setVacuum(true)}>Vacuum</button></div>
-    <div className="spark-fall-stage">
-      <div className={"spark-falling book "+(vacuum?"vacuum":"air")}>book</div>
-      <div className={"spark-falling feather "+(vacuum?"vacuum":"air")}>feather</div>
-      {!vacuum&&<div className="spark-drag-label">air resistance affects the feather more relative to its weight</div>}
-    </div>
+    <svg className="spark-freefall-svg" viewBox="0 0 820 440" role="img" aria-label={vacuum?"Book and feather falling together in a vacuum with the same gravitational acceleration":"Book falling faster than a feather in air because drag is large compared with the feather's weight"}>
+      <defs>
+        <marker id="gi-weight-head" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" className="gi-weight-head"/></marker>
+        <marker id="gi-drag-head" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" className="gi-drag-head"/></marker>
+      </defs>
+      <rect className="gi-fall-bg" x="0" y="0" width="820" height="440" rx="18"/>
+      <line className="gi-ground" x1="45" y1="382" x2="775" y2="382"/>
+      <text className="gi-fall-title" x="410" y="40" textAnchor="middle">{vacuum?"VACUUM, NO AIR RESISTANCE":"AIR PRESENT, DRAG ACTS"}</text>
+
+      <g className="gi-fall-object book" transform={vacuum?"translate(230 236)":"translate(230 250)"}>
+        <rect x="-48" y="-30" width="96" height="60" rx="7"/>
+        <line x1="-32" y1="-16" x2="28" y2="-16"/><line x1="-32" y1="-2" x2="34" y2="-2"/><line x1="-32" y1="12" x2="24" y2="12"/>
+        <text className="gi-object-label" x="0" y="56" textAnchor="middle">book</text>
+      </g>
+      <g className="gi-fall-object feather" transform={vacuum?"translate(590 236)":"translate(590 150)"}>
+        <path d="M-8 35Q-52 6 -31 -42Q14 -22 17 16Q13 29 -8 35Z"/>
+        <path className="gi-feather-shaft" d="M-29 -34L16 32M-21 -19L-42 -8M-12 -6L-38 7M-1 8L-25 22M0 -16L19 -28M8 -1L29 -14M14 14L34 4"/>
+        <text className="gi-object-label" x="0" y="62" textAnchor="middle">feather</text>
+      </g>
+
+      <line className="gi-weight-arrow" x1="230" y1={vacuum?276:292} x2="230" y2={vacuum?347:355} markerEnd="url(#gi-weight-head)"/>
+      <text className="gi-weight-label" x="250" y={vacuum?338:346}>weight</text>
+      <line className="gi-weight-arrow" x1="590" y1={vacuum?276:190} x2="590" y2={vacuum?332:250} markerEnd="url(#gi-weight-head)"/>
+      <text className="gi-weight-label" x="610" y={vacuum?324:242}>weight</text>
+
+      {!vacuum&&<React.Fragment>
+        <line className="gi-drag-arrow book" x1="205" y1="239" x2="205" y2="205" markerEnd="url(#gi-drag-head)"/>
+        <text className="gi-drag-label-svg" x="92" y="206">smaller drag effect</text>
+        <line className="gi-drag-arrow feather" x1="562" y1="126" x2="562" y2="70" markerEnd="url(#gi-drag-head)"/>
+        <text className="gi-drag-label-svg" x="585" y="78">air resistance is large relative to feather weight</text>
+        <text className="gi-fall-note" x="410" y="415" textAnchor="middle">different motion in air comes from drag, not a different value of gravitational acceleration</text>
+      </React.Fragment>}
+      {vacuum&&<React.Fragment>
+        <line className="gi-equal-level" x1="150" y1="236" x2="670" y2="236"/>
+        <text className="gi-fall-note" x="410" y="100" textAnchor="middle">same gravitational acceleration, g</text>
+        <text className="gi-fall-note" x="410" y="415" textAnchor="middle">without air resistance, both objects fall together from the same starting conditions</text>
+      </React.Fragment>}
+    </svg>
     <p>{vacuum?"With no air resistance, a feather and a hammer or light and heavy objects fall with the same gravitational acceleration.":"In air, a sheet of paper or feather may fall more slowly because air resistance is large compared with its weight."}</p>
   </div>;
 }
@@ -32,11 +65,36 @@ function InertiaView(){
   const [moving,setMoving]=useState(true);
   return <div className="spark-inertia-view">
     <div className="spark-gravity-toggle"><button type="button" className={moving?"active":""} onClick={()=>setMoving(true)}>Car moving</button><button type="button" className={!moving?"active":""} onClick={()=>setMoving(false)}>Car stops suddenly</button></div>
-    <div className="spark-car-inertia">
-      <div className="spark-car-body">car</div>
-      <div className={"spark-passenger "+(!moving?"forward":"")}>passenger</div>
-      {!moving&&<div className="spark-seatbelt">seat belt provides stopping force</div>}
-    </div>
+    <svg className="spark-inertia-svg" viewBox="0 0 860 430" role="img" aria-label={moving?"Car and passenger moving together at constant velocity":"Car braking suddenly while the passenger tends to continue forward and the seat belt exerts a stopping force"}>
+      <defs>
+        <marker id="gi-motion-head" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" className="gi-motion-head"/></marker>
+        <marker id="gi-belt-head" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" className="gi-belt-head"/></marker>
+      </defs>
+      <rect className="gi-inertia-bg" x="0" y="0" width="860" height="430" rx="18"/>
+      <line className="gi-road-line" x1="40" y1="340" x2="820" y2="340"/>
+      <path className="gi-car-shell" d="M155 300L195 220Q220 186 270 186H510Q560 188 605 235L690 250Q720 257 730 300V326H145V300Z"/>
+      <circle className="gi-wheel" cx="245" cy="326" r="38"/><circle className="gi-wheel" cx="625" cy="326" r="38"/>
+      <circle className="gi-wheel-hub" cx="245" cy="326" r="13"/><circle className="gi-wheel-hub" cx="625" cy="326" r="13"/>
+      <rect className="gi-seat" x="405" y="229" width="80" height="70" rx="10"/>
+      <g className={!moving?"gi-passenger-svg forward":"gi-passenger-svg"}>
+        <circle cx="445" cy="170" r="30"/>
+        <path d="M420 202Q445 190 470 202L483 265H407Z"/>
+      </g>
+      <path className={!moving?"gi-seatbelt-svg active":"gi-seatbelt-svg"} d="M410 206L478 274"/>
+      {moving?<React.Fragment>
+        <line className="gi-motion-arrow" x1="270" y1="105" x2="650" y2="105" markerEnd="url(#gi-motion-head)"/>
+        <text className="gi-motion-label" x="460" y="88" textAnchor="middle">car and passenger have the same forward velocity</text>
+        <text className="gi-inertia-note" x="430" y="398" textAnchor="middle">with zero resultant force, motion stays unchanged</text>
+      </React.Fragment>:<React.Fragment>
+        <line className="gi-brake-arrow" x1="265" y1="105" x2="125" y2="105" markerEnd="url(#gi-belt-head)"/>
+        <text className="gi-belt-label" x="195" y="88" textAnchor="middle">braking force on car</text>
+        <line className="gi-continue-arrow" x1="470" y1="145" x2="655" y2="145" markerEnd="url(#gi-motion-head)"/>
+        <text className="gi-motion-label" x="570" y="128" textAnchor="middle">passenger tends to continue forward</text>
+        <line className="gi-seatbelt-force" x1="438" y1="238" x2="342" y2="238" markerEnd="url(#gi-belt-head)"/>
+        <text className="gi-belt-label" x="325" y="222" textAnchor="middle">seat-belt force on passenger</text>
+        <text className="gi-inertia-note" x="430" y="398" textAnchor="middle">the belt supplies the resultant force that decelerates the passenger with the car</text>
+      </React.Fragment>}
+    </svg>
     <p>{moving?"Newton's first law says motion remains unchanged unless a resultant force acts.":"When the car stops, the passenger's body tends to continue moving forward because of inertia. The seat belt supplies the force that changes the passenger's motion."}</p>
   </div>;
 }
