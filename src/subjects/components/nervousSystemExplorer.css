@@ -56,3 +56,12 @@ html[data-theme="dark"] .spark-nervous-actions article,body[data-theme="dark"] .
 .spark-nervous-stage .ns-brain.cerebellum{fill:#c8888f;stroke:#825159;stroke-width:4}
 .spark-nervous-stage .ns-brainstem{fill:none;stroke:#d2af89;stroke-width:10;stroke-linecap:round}
 .spark-nervous-stage .ns-nerve.fine{stroke-width:4}
+
+.spark-nervous-stage .ns-silhouette{fill:#f0d3c2;stroke:#9e7966;stroke-width:5}
+.spark-nervous-stage .ns-spinal-roots path{fill:none;stroke:#5da8d8;stroke-width:3.2;stroke-linecap:round}
+.spark-nervous-stage .ns-pns .ns-nerve,.spark-nervous-stage .ns-cranial-nerves .ns-nerve{stroke:#48a5d8}
+.spark-nervous-stage .ns-pns .ns-nerve.major{stroke-width:6}
+.spark-nervous-stage .ns-key-card{fill:#edf3f6;stroke:#8ba0ad;stroke-width:3}
+.spark-nervous-stage .ns-key-line{stroke-width:8;stroke-linecap:round}
+.spark-nervous-stage .ns-key-line.cns{stroke:#d09a9f}
+.spark-nervous-stage .ns-key-line.pns{stroke:#48a5d8}
