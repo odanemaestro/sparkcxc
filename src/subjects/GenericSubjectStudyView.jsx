@@ -75,6 +75,7 @@ import BodyTemperatureRegulationExplorer from "./components/BodyTemperatureRegul
 import VentilationExplorer from "./components/VentilationExplorer";
 import UniverseComponentsExplorer from "./components/UniverseComponentsExplorer";
 import OrbitMotionExplorer from "./components/OrbitMotionExplorer";
+import SolarSystemExplorer from "./components/SolarSystemExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -454,6 +455,9 @@ function GenericLessonContent({
         }
         if (model?.type === "orbit-motion") {
           return <OrbitMotionExplorer key={model.id || "orbit-motion"} />;
+        }
+        if (model?.type === "solar-system") {
+          return <SolarSystemExplorer key={model.id || "solar-system"} />;
         }
         return null;
       })}
