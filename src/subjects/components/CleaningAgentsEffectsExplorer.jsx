@@ -23,18 +23,73 @@ function MatchView(){
 
 function AbrasionView(){
   const [abrasive,setAbrasive]=useState(false);
+  const particles=Array.from({length:7},(_,i)=>i);
   return <div className="spark-abrasion-view">
     <div className="spark-cleaning-toggle"><button type="button" className={!abrasive?"active":""} onClick={()=>setAbrasive(false)}>Soft cleaner</button><button type="button" className={abrasive?"active":""} onClick={()=>setAbrasive(true)}>Scouring powder</button></div>
-    <div className="spark-coated-surface"><div className={abrasive?"spark-coating scratched":"spark-coating"}></div><div className="spark-pan-base">base material</div>{abrasive&&<div className="spark-abrasive-grains">•• •• •••</div>}</div>
-    <p>{abrasive?"Abrasive particles remove stains by rubbing, but the same action can scratch polished silver or damage a non-stick coating.":"A non-abrasive cleaner can remove suitable soils while preserving delicate surface coatings."}</p>
+    <svg className="spark-abrasion-svg" viewBox="0 0 820 390" role="img" aria-label={abrasive?"Cross-section of a non-stick pan showing abrasive particles scraping grooves through the coating":"Cross-section of a non-stick pan showing an intact coating under a non-abrasive cleaner"}>
+      <defs>
+        <marker id="clean-abrasion-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" className="ca-arrow-head"/></marker>
+      </defs>
+      <rect className="ca-panel-bg" x="0" y="0" width="820" height="390" rx="20"/>
+      <path className="ca-pan-base" d="M80 265H740V344Q740 358 726 358H94Q80 358 80 344Z"/>
+      <path className="ca-nonstick-coating" d={abrasive?"M80 230H220V246H270L294 230H398V247H448L473 230H740V266H80Z":"M80 230H740V266H80Z"}/>
+      <path className="ca-soil-layer" d="M110 207Q162 187 214 207Q268 185 321 207Q381 184 438 207Q501 185 558 207Q620 184 690 208V230H110Z"/>
+      <text className="ca-label" x="115" y="321">base material</text>
+      <line className="ca-leader" x1="248" y1="247" x2="154" y2="150" markerEnd="url(#clean-abrasion-arrow)"/>
+      <text className="ca-label" x="88" y="135">non-stick coating</text>
+      <line className="ca-leader" x1="414" y1="211" x2="414" y2="155" markerEnd="url(#clean-abrasion-arrow)"/>
+      <text className="ca-label" x="414" y="134" textAnchor="middle">food soil / stain</text>
+      {abrasive?particles.map((i)=>{
+        const x=182+i*74;
+        const y=128+(i%2)*18;
+        return <g key={i} className="ca-abrasive-particle" transform={"translate("+x+" "+y+") rotate("+(i*17-36)+")"}>
+          <path d="M-17 12L-5 -17L18 -8L13 15Z"/>
+          <line className="ca-motion-line" x1="-31" y1="-7" x2="-7" y2="-7"/>
+        </g>;
+      }):<React.Fragment>
+        <path className="ca-soft-cleaner" d="M165 106Q181 77 197 106Q211 130 181 139Q151 131 165 106Z"/>
+        <path className="ca-soft-cleaner" d="M364 91Q380 62 396 91Q410 115 380 124Q350 116 364 91Z"/>
+        <path className="ca-soft-cleaner" d="M569 108Q585 79 601 108Q615 132 585 141Q555 133 569 108Z"/>
+      </React.Fragment>}
+      {abrasive&&<React.Fragment>
+        <path className="ca-scratch-groove" d="M244 229L269 246L295 229"/>
+        <path className="ca-scratch-groove" d="M423 229L447 247L474 229"/>
+        <line className="ca-leader danger" x1="269" y1="250" x2="612" y2="166" markerEnd="url(#clean-abrasion-arrow)"/>
+        <text className="ca-label danger" x="626" y="151">coating scratched away</text>
+        <text className="ca-small" x="410" y="378" textAnchor="middle">abrasive particles scrape the coating and can expose the base material</text>
+      </React.Fragment>}
+      {!abrasive&&<text className="ca-small" x="410" y="378" textAnchor="middle">non-abrasive cleaning leaves the protective coating continuous</text>}
+    </svg>
+    <p>{abrasive?"Abrasive particles remove stains by rubbing, but the same action can scratch polished silver or damage a non-stick coating. Once the coating is cut through, the base material becomes exposed.":"A non-abrasive cleaner can loosen suitable soils while preserving a delicate surface coating."}</p>
   </div>;
 }
 
 function ScaleView(){
+  const [treated,setTreated]=useState(false);
   return <div className="spark-scale-cleaning">
-    <div className="spark-scale-kettle"><div className="spark-scale-layer">CaCO₃ scale</div><div className="spark-vinegar-layer">vinegar / weak acid</div></div>
+    <div className="spark-cleaning-toggle"><button type="button" className={!treated?"active":""} onClick={()=>setTreated(false)}>Before vinegar</button><button type="button" className={treated?"active":""} onClick={()=>setTreated(true)}>Weak acid added</button></div>
+    <svg className="spark-scale-reaction-svg" viewBox="0 0 860 400" role="img" aria-label={treated?"Kettle wall cross-section showing weak acid reacting with calcium carbonate scale, carbon dioxide bubbles and thinning scale":"Kettle wall cross-section showing calcium carbonate scale deposited on the metal surface"}>
+      <defs>
+        <marker id="clean-scale-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" className="ca-arrow-head"/></marker>
+      </defs>
+      <rect className="ca-panel-bg" x="0" y="0" width="860" height="400" rx="20"/>
+      <rect className="ca-kettle-metal" x="74" y="270" width="712" height="64" rx="7"/>
+      <path className={treated?"ca-scale-layer reacting":"ca-scale-layer"} d={treated?"M74 224H175V242H242V229H315V246H390V231H465V244H540V226H615V241H684V229H786V270H74Z":"M74 205Q160 189 244 205Q333 188 421 205Q510 188 596 205Q686 188 786 206V270H74Z"}/>
+      <rect className={treated?"ca-acid-layer active":"ca-acid-layer"} x="74" y="75" width="712" height={treated?"151":"130"} rx="16"/>
+      <text className="ca-label" x="106" y="310">kettle metal</text>
+      <line className="ca-leader" x1="168" y1="240" x2="126" y2="166" markerEnd="url(#clean-scale-arrow)"/>
+      <text className="ca-label" x="92" y="149">CaCO₃ scale</text>
+      <text className="ca-label" x="430" y="118" textAnchor="middle">vinegar / weak acid</text>
+      {treated&&<React.Fragment>
+        {[0,1,2,3,4,5,6,7].map(i=><circle key={i} className="ca-co2-bubble" cx={184+(i%4)*155} cy={175-Math.floor(i/4)*45-(i%2)*12} r={8+(i%3)*3}/>)}
+        <text className="ca-small" x="617" y="149">CO₂ bubbles</text>
+        <line className="ca-leader" x1="659" y1="159" x2="650" y2="190" markerEnd="url(#clean-scale-arrow)"/>
+        <text className="ca-small" x="430" y="367" textAnchor="middle">acid reacts at the scale surface, so the calcium carbonate deposit becomes thinner</text>
+      </React.Fragment>}
+      {!treated&&<text className="ca-small" x="430" y="367" textAnchor="middle">hard-water heating leaves a calcium carbonate deposit on the metal surface</text>}
+    </svg>
     <div className="spark-scale-equation"><span>acid</span><b>+</b><span>calcium carbonate</span><b>→</b><span>calcium salt + water + carbon dioxide</span></div>
-    <p>Weak household acids can react with calcium carbonate scale. The exact product depends on the acid used.</p>
+    <p>Weak household acids can react with calcium carbonate scale. Carbon dioxide bubbles are released as the scale dissolves. The exact calcium salt formed depends on the acid used.</p>
   </div>;
 }
 
