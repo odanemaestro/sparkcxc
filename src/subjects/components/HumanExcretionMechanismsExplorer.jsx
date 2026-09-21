@@ -31,30 +31,43 @@ const VIEWS = {
 
 function KidneyScene() {
   return (
-    <svg viewBox="0 0 980 560" role="img" aria-label="CSEC-style kidney and nephron showing ultrafiltration, reabsorption and urine formation">
-      <g className="hex-csec-kidney" transform="translate(48 55) scale(1.08 1.38)">
-        <path className="hex-kidney" d="M150 30Q60 30 60 140Q60 250 150 250Q200 250 205 200Q185 170 190 140Q185 110 205 80Q200 30 150 30Z" />
-        <path className="hex-kidney-cortex-boundary" d="M150 52Q82 52 82 140Q82 228 150 228Q180 228 184 196" />
+    <svg viewBox="0 0 980 560" role="img" aria-label="Kidney and nephron showing gross kidney anatomy, ultrafiltration, reabsorption and urine formation">
+      <g className="hex-csec-kidney" transform="translate(35 35) scale(1.02 1.15)">
+        <path className="hex-kidney" d="M185 35Q86 18 70 132Q55 242 132 316Q187 368 249 325Q286 298 267 253Q247 209 263 170Q279 132 315 101Q306 48 238 36Q210 31 185 35Z" />
+        <path className="hex-kidney-cortex-boundary" d="M184 60Q105 50 94 140Q86 224 145 282Q188 323 233 292Q258 274 246 243" />
 
         <g className="hex-kidney-pyramids">
-          <path d="M100 65L150 74L100 95Z" />
-          <path d="M100 100L150 113L100 130Z" />
-          <path d="M100 135L150 152L100 165Z" />
-          <path d="M100 170L150 191L100 200Z" />
+          <path d="M118 90Q155 103 194 136L125 160Q111 127 118 90Z" />
+          <path d="M103 153Q152 164 205 196L118 219Q101 190 103 153Z" />
+          <path d="M118 226Q159 231 214 225L160 286Q132 265 118 226Z" />
+          <path d="M164 68Q199 89 228 140L171 147Q159 105 164 68Z" />
         </g>
 
-        <path className="hex-kidney-pelvis" d="M160 110Q200 140 160 170Q175 140 160 110Z" />
-        <path className="hex-ureter" d="M220 145Q238 178 241 220Q244 250 245 280" />
+        <g className="hex-kidney-calyces">
+          <path d="M194 136Q223 149 239 165" />
+          <path d="M205 196Q231 195 247 207" />
+          <path d="M214 225Q236 223 251 219" />
+        </g>
+
+        <path className="hex-kidney-pelvis" d="M221 143Q267 158 274 193Q281 224 230 266Q247 225 221 143Z" />
+        <path className="hex-ureter" d="M257 237Q302 274 314 370" />
+
+        <path className="hex-renal-artery" d="M274 160H365" />
+        <path className="hex-renal-vein" d="M273 188H365" />
+        <path className="hex-renal-artery branch" d="M278 160Q246 160 230 181M279 160Q246 137 222 115M279 160Q250 206 230 230" />
+        <path className="hex-renal-vein branch" d="M278 188Q248 188 231 202M278 188Q250 226 232 244" />
       </g>
 
-      <text className="hex-label" x="205" y="430" textAnchor="middle">longitudinal section of kidney</text>
-      <text className="hex-small" x="130" y="115">cortex</text>
-      <text className="hex-small" x="160" y="270">medulla</text>
-      <text className="hex-small" x="255" y="270">pelvis</text>
-      <text className="hex-small" x="310" y="405">ureter</text>
+      <text className="hex-label" x="200" y="430" textAnchor="middle">longitudinal section of kidney</text>
+      <text className="hex-small" x="112" y="115">cortex</text>
+      <text className="hex-small" x="150" y="270">medulla</text>
+      <text className="hex-small" x="258" y="258">renal pelvis</text>
+      <text className="hex-small" x="315" y="390">ureter</text>
+      <text className="hex-small vessel artery" x="335" y="212">renal artery</text>
+      <text className="hex-small vessel vein" x="335" y="247">renal vein</text>
 
       <g className="hex-csec-nephron" transform="translate(450 48) scale(1.16 1.2)">
-        <path className="hex-bowman" aria-label="Bowman\'s capsule" d="M80 60A38 38 0 1 0 118 98" />
+        <path className="hex-bowman" aria-label="Bowman&apos;s capsule" d="M80 60A38 38 0 1 0 118 98" />
         <path className="hex-bowman-inner" d="M92 66A26 26 0 1 0 112 92" />
         <path className="hex-glomerulus" d="M70 80q8-12 16 0q8 12 16 0q-8-14-16-2q-8 14-16 2" />
 
