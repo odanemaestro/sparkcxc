@@ -24,6 +24,12 @@
 .spark-diagram-cell .mitochondria ellipse{fill:#f4b483;stroke:#a65d33;stroke-width:4}
 .spark-diagram-cell .mitochondria path{fill:none;stroke:#a65d33;stroke-width:4}
 .spark-diagram-cell .ribosomes circle{fill:#3d556b}
+.spark-diagram-cell .plant-cytoplasm{fill:#e9f3d2}
+.spark-diagram-cell .nuclear-envelope{stroke-width:6}
+.spark-diagram-cell .chloroplasts .chloroplast-grana{fill:none;stroke:#285f2f;stroke-width:3;stroke-linecap:round}
+.spark-diagram-cell .mitochondria .cristae{fill:none;stroke:#8e4f2f;stroke-width:3.5;stroke-linecap:round}
+.spark-diagram-cell .small-vacuole.secondary{fill:#e7f7ff;opacity:.92}
+
 .spark-diagram-cell .animal-outline{fill:#f6d7d7;stroke:#b65a6d;stroke-width:7}
 .spark-diagram-cell .animal-cytoplasm{fill:#f7e8d8;stroke:none}
 .spark-diagram-cell .small-vacuole{fill:#d9f2ff;stroke:#6aa9c8;stroke-width:4}
@@ -64,6 +70,14 @@ html[data-theme="dark"] .spark-label-diagram-actions button.secondary,body[data-
 .spark-diagram-microscope .microscope-light{fill:#fff4b8;stroke:#b89a38;stroke-width:5}
 .spark-diagram-microscope .microscope-focus{fill:#7893a6;stroke:#3f5b6d;stroke-width:5}
 .spark-diagram-microscope .microscope-focus.fine{fill:#adc0cc}
+.spark-diagram-microscope .microscope-eyepiece-rim{fill:#243745;stroke:#172630;stroke-width:4}
+.spark-diagram-microscope .microscope-nosepiece-ring{fill:none;stroke:#d7e3ea;stroke-width:5;stroke-linecap:round}
+.spark-diagram-microscope .microscope-objective.short{fill:#c7d7e1}
+.spark-diagram-microscope .microscope-stage-aperture{fill:#1e3443;stroke:#dce9ef;stroke-width:4}
+.spark-diagram-microscope .microscope-condenser{fill:#9db4c2;stroke:#4b6577;stroke-width:4}
+.spark-diagram-microscope .microscope-light-beam{fill:none;stroke:#f3d56f;stroke-width:4;stroke-linecap:round}
+.spark-diagram-microscope .microscope-focus-centre{fill:#405d70}
+
 .spark-label-diagram-actions button:disabled{
   opacity:1;
   background:var(--spark-muted,#edf2f7);
