@@ -120,12 +120,59 @@ function CoastView(){
 
 function TsunamiView(){
   return <div className="spark-tsunami-view">
+    <svg className="spark-tsunami-svg" viewBox="0 0 1040 560" role="img" aria-label="Tsunami cross-section showing sudden sea-floor displacement, long low waves travelling across deep water, wave slowing and increasing in height in shallow water, and coastal inundation">
+      <defs>
+        <marker id="tsunami-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path d="M0 0L9 4.5L0 9Z" className="ts-arrow-head"/>
+        </marker>
+      </defs>
+
+      <rect className="ts-sky" x="0" y="0" width="1040" height="560"/>
+      <path className="ts-sea" d="M0 235Q80 226 160 235T320 235T480 235T640 235Q760 230 845 220Q930 210 1040 195V560H0Z"/>
+      <path className="ts-seafloor" d="M0 500Q165 505 330 492Q510 476 650 440Q785 405 875 345Q945 300 1040 270V560H0Z"/>
+
+      <g className="ts-source" transform="translate(125 0)">
+        <path className="ts-fault-left" d="M0 475L115 390L185 430"/>
+        <path className="ts-fault-right" d="M185 430L255 365L330 425"/>
+        <path className="ts-uplift" d="M185 428V350" markerEnd="url(#tsunami-arrow)"/>
+        <path className="ts-subsidence" d="M115 390V452" markerEnd="url(#tsunami-arrow)"/>
+        <text className="ts-label" x="168" y="330" textAnchor="middle">sudden sea-floor displacement</text>
+        <text className="ts-small" x="168" y="350" textAnchor="middle">for example, an undersea earthquake</text>
+      </g>
+
+      <g className="ts-deep-waves">
+        <path d="M315 220Q370 200 425 220T535 220T645 220"/>
+        <path d="M335 240Q390 220 445 240T555 240T665 240"/>
+      </g>
+      <path className="ts-travel-arrow" d="M365 175H690" markerEnd="url(#tsunami-arrow)"/>
+      <text className="ts-label" x="520" y="150" textAnchor="middle">long wave train travels rapidly across deep water</text>
+      <text className="ts-small" x="520" y="168" textAnchor="middle">wave height may be modest offshore</text>
+
+      <g className="ts-shoaling">
+        <path d="M700 222Q740 192 780 222T860 214"/>
+        <path d="M750 235Q795 185 835 220T900 198"/>
+      </g>
+      <path className="ts-slowing-arrow" d="M720 300Q790 272 850 250" markerEnd="url(#tsunami-arrow)"/>
+      <text className="ts-label" x="805" y="320" textAnchor="middle">shallower water slows the wave</text>
+      <text className="ts-small" x="805" y="340" textAnchor="middle">water piles up and wave height increases</text>
+
+      <path className="ts-coast" d="M875 345Q930 305 1040 270V560H920Q900 430 875 345Z"/>
+      <path className="ts-inundation" d="M892 230Q940 200 1030 208Q1000 245 925 260Z"/>
+      <path className="ts-inundation-arrow" d="M895 210H1010" markerEnd="url(#tsunami-arrow)"/>
+      <text className="ts-label danger" x="940" y="175" textAnchor="middle">coastal inundation</text>
+
+      <path className="ts-sea-drawback" d="M900 285Q945 300 1000 285" markerEnd="url(#tsunami-arrow)"/>
+      <text className="ts-small" x="930" y="370" textAnchor="middle">an unusual rapid sea withdrawal can be a natural warning sign</text>
+
+      <text className="ts-caption" x="520" y="535" textAnchor="middle">A tsunami is caused by sudden water displacement. It is not part of the regular gravitational tide cycle.</text>
+    </svg>
+
     <div className="spark-tsunami-sequence">
-      <article><span>1</span><b>Water displaced</b><p>An undersea earthquake, landslide or volcanic eruption suddenly displaces a large volume of water.</p></article>
+      <article><span>1</span><b>Water displaced</b><p>An undersea earthquake, landslide or volcanic eruption can suddenly displace a large volume of water.</p></article>
       <div>→</div>
-      <article><span>2</span><b>Wave train travels</b><p>A series of long waves moves across the ocean.</p></article>
+      <article><span>2</span><b>Wave train travels</b><p>A series of long waves moves across deep ocean water.</p></article>
       <div>→</div>
-      <article><span>3</span><b>Coast impact</b><p>As the waves enter shallow water they can grow in height and flood coastal areas.</p></article>
+      <article><span>3</span><b>Coast impact</b><p>As the waves enter shallow water, they slow, increase in height and can flood coastal areas.</p></article>
     </div>
     <aside><strong>Tsunami is not a tide</strong><p>A tsunami is a series of waves caused by sudden water displacement. It is not produced by the regular gravitational tide cycle.</p></aside>
     <aside><strong>Natural warning sign</strong><p>If the sea suddenly draws back unusually far after a strong or long earthquake, move immediately to higher ground and follow official tsunami warnings.</p></aside>
