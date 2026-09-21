@@ -216,6 +216,20 @@ describe("Integrated Science learner polish V1", () => {
     expect(diagram).toContain("foetus-torso");
     expect(diagram).toContain("digestive-duodenum");
     expect(diagram).toContain("digestive-appendix");
+
+    const digestion = fs.readFileSync(
+      path.join(__dirname,"subjects","components","HumanDigestionExplorer.jsx"),
+      "utf8"
+    );
+    expect(digestion).toContain("spark-digestion-system-svg");
+    expect(digestion).toContain("dg-oesophagus");
+    expect(digestion).toContain("dg-stomach");
+    expect(digestion).toContain("dg-liver");
+    expect(digestion).toContain("dg-pancreas");
+    expect(digestion).toContain("dg-duodenum");
+    expect(digestion).toContain("dg-small");
+    expect(digestion).toContain("dg-large");
+    expect(digestion).toContain("dg-route");
     expect(diagram).toContain("tooth-root-canal");
     expect(diagram).toContain("tooth-periodontal");
     expect(diagram).toContain("resp-tracheal-ring");
