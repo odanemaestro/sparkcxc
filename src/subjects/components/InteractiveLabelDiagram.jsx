@@ -35,6 +35,25 @@ function PlantCellTemplate() {
         <circle className="golgi-vesicle" cx="431" cy="414" r="5" />
       </g>
 
+      <g className="smooth-er plant-smooth-er">
+        <path d="M452 176Q486 164 510 178Q531 191 514 205Q498 217 523 226" />
+        <path d="M326 330Q304 347 320 362Q338 379 360 364" />
+      </g>
+
+      <g className="plant-peroxisomes">
+        <circle cx="590" cy="395" r="11" />
+        <circle cx="314" cy="370" r="9" />
+      </g>
+
+      <g className="plasmodesmata">
+        {[188,262,338,414].map(y=>(
+          <g key={y}>
+            <line x1="247" y1={y} x2="269" y2={y} />
+            <circle cx="258" cy={y} r="3.5" />
+          </g>
+        ))}
+      </g>
+
       <g className="chloroplasts">
         {[
           [338,170,-18],[650,188,16],[350,455,12],[660,408,-14],[612,148,-8],
@@ -86,6 +105,33 @@ function AnimalCellTemplate() {
         <path d="M525 405Q565 384 607 397" />
         <path d="M518 421Q565 398 613 414" />
         <path d="M523 437Q568 417 607 432" />
+        <circle className="golgi-vesicle" cx="618" cy="403" r="7" />
+        <circle className="golgi-vesicle" cx="626" cy="425" r="5.5" />
+      </g>
+
+      <g className="smooth-er">
+        <path d="M382 218Q349 205 334 226Q322 246 345 258Q368 269 348 286Q332 301 350 319" />
+        <path d="M376 332Q342 347 357 365Q374 384 398 368" />
+      </g>
+
+      <g className="centrosome" transform="translate(385 318)">
+        <rect x="-10" y="-32" width="18" height="64" rx="8" transform="rotate(16)" />
+        <rect x="-10" y="-32" width="18" height="64" rx="8" transform="rotate(96)" />
+        <g className="centrosome-rays">
+          <path d="M0-44V-72M0 44V72M-44 0H-72M44 0H72M-31-31L-51-51M31 31L51 51M31-31L51-51M-31 31L-51 51" />
+        </g>
+      </g>
+
+      <g className="lysosomes">
+        <circle cx="648" cy="276" r="13" />
+        <circle cx="565" cy="180" r="11" />
+        <circle cx="338" cy="330" r="10" />
+      </g>
+
+      <g className="cytoskeleton">
+        <path d="M326 214Q392 151 470 164Q557 176 643 246" />
+        <path d="M330 390Q410 453 510 458Q594 461 662 393" />
+        <path d="M350 175Q412 240 422 377" />
       </g>
 
       <ellipse className="vacuole small-vacuole" cx="592" cy="246" rx="45" ry="28" />
