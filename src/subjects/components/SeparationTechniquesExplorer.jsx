@@ -123,6 +123,57 @@ function FunnelView(){
 
 function CrystalsView(){
   return <div className="spark-crystals-view">
+    <svg className="spark-crystallisation-svg" viewBox="0 0 1040 520" role="img" aria-label="Crystallisation process showing gentle heating of a solution, cooling to form crystals, then filtration and drying">
+      <defs>
+        <marker id="sep-crystal-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+          <path className="sep-arrow-head" d="M0 0L10 5L0 10Z"/>
+        </marker>
+      </defs>
+
+      <g transform="translate(35 85)">
+        <text className="sep-crystal-title" x="145" y="-25" textAnchor="middle">1. concentrate solution</text>
+        <path className="sep-evap-dish" d="M45 115Q145 155 245 115L220 180Q145 215 70 180Z"/>
+        <path className="sep-crystal-solution" d="M70 135Q145 165 220 135L205 172Q145 195 85 172Z"/>
+        <path className="sep-tripod-small" d="M65 215H225M95 215L75 285M195 215L215 285"/>
+        <path className="sep-flame-small" d="M145 300Q115 270 145 235Q175 270 145 300Z"/>
+        <path className="sep-vapour-small" d="M105 98q12-18 24 0t24 0M155 85q12-18 24 0t24 0"/>
+        <text className="sep-crystal-note" x="145" y="335" textAnchor="middle">heat gently to evaporate some solvent</text>
+      </g>
+
+      <path className="sep-process-arrow" d="M305 250H365" markerEnd="url(#sep-crystal-arrow)"/>
+
+      <g transform="translate(365 85)">
+        <text className="sep-crystal-title" x="145" y="-25" textAnchor="middle">2. cool concentrated solution</text>
+        <path className="sep-crystal-beaker" d="M55 80V245Q55 270 80 270H210Q235 270 235 245V80"/>
+        <line className="sep-crystal-rim" x1="40" y1="80" x2="250" y2="80"/>
+        <path className="sep-crystal-solution cool" d="M55 150H235V245Q235 270 210 270H80Q55 270 55 245Z"/>
+        {[[95,215],[135,235],[175,205],[205,238],[150,185]].map(([x,y],i)=><polygon key={i} className="sep-crystal-solid" points={`${x},${y-12} ${x+11},${y} ${x},${y+12} ${x-11},${y}`}/>)}
+        <path className="sep-cooling-arrow" d="M265 140Q300 175 270 215" markerEnd="url(#sep-crystal-arrow)"/>
+        <text className="sep-crystal-note" x="145" y="335" textAnchor="middle">solubility falls and crystals grow</text>
+      </g>
+
+      <path className="sep-process-arrow" d="M635 250H695" markerEnd="url(#sep-crystal-arrow)"/>
+
+      <g transform="translate(690 70)">
+        <text className="sep-crystal-title" x="145" y="-10" textAnchor="middle">3. filter and dry crystals</text>
+        <path className="sep-crystal-funnel" d="M55 80H235L175 185H115Z"/>
+        <path className="sep-crystal-paper" d="M75 95H215L168 172H122Z"/>
+        <g className="sep-crystal-residue">
+          {[[120,135],[145,145],[170,132],[190,150]].map(([x,y],i)=><polygon key={i} points={`${x},${y-9} ${x+9},${y} ${x},${y+9} ${x-9},${y}`}/>)}
+        </g>
+        <path className="sep-crystal-stem" d="M145 185V235"/>
+        <path className="sep-crystal-flask" d="M85 235H205L230 320H60Z"/>
+        <path className="sep-mother-liquor" d="M78 292H212L220 320H70Z"/>
+        <text className="sep-crystal-label" x="255" y="140">crystals remain on paper</text><path className="sep-crystal-callout" d="M195 145L240 142"/>
+        <text className="sep-crystal-label" x="245" y="292">mother liquor</text><path className="sep-crystal-callout" d="M205 300L235 294"/>
+      </g>
+
+      <g className="sep-crystal-key" transform="translate(355 430)">
+        <rect x="0" y="0" width="330" height="62" rx="14"/>
+        <text className="sep-crystal-note" x="165" y="25" textAnchor="middle">do not boil to dryness when good crystals are required</text>
+        <text className="sep-crystal-note" x="165" y="47" textAnchor="middle">slow cooling generally gives larger, better-formed crystals</text>
+      </g>
+    </svg>
     <div className="spark-crystal-steps"><article><b>Heat gently</b><p>Evaporate some solvent until the solution becomes concentrated.</p></article><div>→</div><article><b>Cool slowly</b><p>Solubility decreases and crystals begin to form.</p></article><div>→</div><article><b>Filter and dry</b><p>Separate the crystals from remaining solution.</p></article></div>
     <aside><strong>Do not simply boil to dryness when good crystals are required.</strong><p>Slow cooling of a concentrated solution usually produces larger, better-formed crystals.</p></aside>
   </div>;
