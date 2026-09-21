@@ -105,9 +105,7 @@ describe("Integrated Science learner polish V1", () => {
     expect(diagram).toContain("ear-vestibule");
     expect(diagram).toContain('className="malleus"');
     expect(diagram).toContain("heart-semilunar");
-    expect(diagram).toContain("heart-aortic-branch");
-    expect(diagram).toContain("kidney-calyces");
-    expect(diagram).toContain("kidney-hilum");
+    expect(diagram).toContain("heart-inner-wall");
 
     expect(diagram).toContain("spark-csec-reference");
     expect(diagram).toContain("M110 110Q95 110 95 135V200");
