@@ -87,6 +87,7 @@ import HardWaterExplorer from "./components/HardWaterExplorer";
 import WaterUsesExplorer from "./components/WaterUsesExplorer";
 import ForcePrinciplesExplorer from "./components/ForcePrinciplesExplorer";
 import GravityInertiaExplorer from "./components/GravityInertiaExplorer";
+import StabilityCentreGravityExplorer from "./components/StabilityCentreGravityExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -502,6 +503,9 @@ function GenericLessonContent({
         }
         if (model?.type === "gravity-inertia") {
           return <GravityInertiaExplorer key={model.id || "gravity-inertia"} />;
+        }
+        if (model?.type === "stability-centre-gravity") {
+          return <StabilityCentreGravityExplorer key={model.id || "stability-centre-gravity"} />;
         }
         return null;
       })}
