@@ -108,5 +108,20 @@ describe("Integrated Science learner polish V1", () => {
     expect(diagram).toContain("heart-aortic-branch");
     expect(diagram).toContain("kidney-calyces");
     expect(diagram).toContain("kidney-hilum");
+
+    expect(diagram).toContain("spark-csec-reference");
+    expect(diagram).toContain("M110 110Q95 110 95 135V200");
+    expect(diagram).toContain("M144 210.2A105 105");
+    expect(diagram).toContain("M158 212Q80 180 65 90");
+    expect(diagram).toContain("M60 120Q60 40 170 40");
+
+    const excretion = fs.readFileSync(
+      path.join(__dirname,"subjects","components","HumanExcretionMechanismsExplorer.jsx"),
+      "utf8"
+    );
+    expect(excretion).toContain("hex-csec-kidney");
+    expect(excretion).toContain("hex-csec-nephron");
+    expect(excretion).toContain("M150 30Q60 30 60 140");
+    expect(excretion).toContain("M80 60A38 38");
   });
 });
