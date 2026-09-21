@@ -137,6 +137,12 @@ describe("Integrated Science learner polish V1", () => {
     expect(diagram).toContain("pregnancy-umbilical-inner");
     expect(diagram).toContain("foetus-head");
     expect(diagram).toContain("foetus-torso");
+    expect(diagram).toContain("digestive-duodenum");
+    expect(diagram).toContain("digestive-appendix");
+    expect(diagram).toContain("tooth-root-canal");
+    expect(diagram).toContain("tooth-periodontal");
+    expect(diagram).toContain("resp-tracheal-ring");
+    expect(diagram).toContain("resp-alveoli");
 
     const excretion = fs.readFileSync(
       path.join(__dirname,"subjects","components","HumanExcretionMechanismsExplorer.jsx"),
