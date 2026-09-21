@@ -21,6 +21,37 @@ function SourcesView(){
 
 function AcidRainView(){
   return <div className="spark-acid-rain">
+    <svg className="spark-acidrain-diagram" viewBox="0 0 920 470" role="img" aria-label="Acid rain formation showing sulfur dioxide and nitrogen oxides rising from combustion sources, atmospheric reactions in clouds and acidic deposition on land and water">
+      <defs>
+        <marker id="air-acid-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" className="ap-arrow-head"/></marker>
+      </defs>
+      <rect className="ap-sky" x="0" y="0" width="920" height="315"/>
+      <path className="ap-ground" d="M0 315Q180 278 350 318Q530 270 700 310Q810 282 920 305V470H0Z"/>
+      <path className="ap-water" d="M620 357Q746 326 920 355V470H620Z"/>
+      <rect className="ap-factory" x="90" y="245" width="128" height="92" rx="5"/>
+      <rect className="ap-stack" x="112" y="157" width="34" height="91"/>
+      <rect className="ap-stack" x="171" y="185" width="30" height="63"/>
+      <path className="ap-smoke" d="M128 151Q99 119 132 94Q165 70 183 104Q215 98 222 126Q203 157 163 151Z"/>
+      <path className="ap-emission" d="M190 139Q315 88 399 122" markerEnd="url(#air-acid-arrow)"/>
+      <text className="ap-label" x="284" y="87" textAnchor="middle">SO₂ + NOₓ</text>
+
+      <path className="ap-cloud" d="M410 96Q430 51 478 66Q508 25 557 61Q604 44 628 82Q671 76 684 115Q675 151 629 151H438Q396 147 398 118Q399 103 410 96Z"/>
+      <text className="ap-label" x="542" y="103" textAnchor="middle">atmospheric oxidation</text>
+      <text className="ap-small" x="542" y="126" textAnchor="middle">acidic sulfate and nitrate compounds form</text>
+
+      <path className="ap-rain" d="M451 160L425 226M505 160L478 241M559 160L535 228M615 160L589 244"/>
+      <path className="ap-deposition-arrow" d="M650 148Q736 188 752 273" markerEnd="url(#air-acid-arrow)"/>
+      <text className="ap-label" x="755" y="203" textAnchor="middle">acid deposition</text>
+
+      <path className="ap-tree-trunk" d="M340 286V385"/>
+      <path className="ap-tree" d="M340 218Q292 245 309 292Q269 306 300 340Q340 358 376 337Q414 315 380 288Q395 248 340 218Z"/>
+      <path className="ap-building" d="M485 300H583V405H485Z"/>
+      <path className="ap-roof" d="M470 300L534 249L598 300Z"/>
+      <text className="ap-small" x="335" y="420" textAnchor="middle">soil + vegetation</text>
+      <text className="ap-small" x="536" y="434" textAnchor="middle">limestone structures</text>
+      <text className="ap-small" x="770" y="421" textAnchor="middle">lakes and streams</text>
+      <text className="ap-small" x="149" y="365" textAnchor="middle">combustion source</text>
+    </svg>
     <div className="spark-acidrain-flow">
       <article><span>1</span><b>SO₂ and NOₓ released</b><p>Combustion and industrial sources release sulfur dioxide and nitrogen oxides.</p></article><div>→</div>
       <article><span>2</span><b>Atmospheric reactions</b><p>The gases react with water and oxidants in the atmosphere to form acidic compounds.</p></article><div>→</div>
