@@ -33,7 +33,7 @@ describe("Integrated Science full-course acceptance integrity V2", () => {
     expect(migration).toContain("expected 114 enabled topics");
   });
 
-  test("fails migration when objective uniqueness drifts from the bank", () => {
+  test("shared course mark fallback has no mojibake", () => {\n    expect(studyView).toContain('subject.mark || subject.shortName?.slice(0,2) || "•"');\n    expect(studyView).not.toContain("â€¢");\n  });\n\n  test("fails migration when objective uniqueness drifts from the bank", () => {
     expect(migration).toContain(
       "count(distinct metadata #>> '{syllabus,objective}')"
     );
