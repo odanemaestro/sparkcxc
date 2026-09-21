@@ -3,6 +3,7 @@ import "./photosynthesisEnergyExplorer.css";
 
 const TABS=[
   ["equation","Equation"],
+  ["chloroplast","Leaf + chloroplast"],
   ["starch","Starch test"],
   ["evidence","Evidence"],
   ["limits","Limiting factors"],
@@ -14,6 +15,92 @@ function EquationView(){
     <div className="spark-photo-condition">light energy absorbed by chlorophyll</div>
     <div className="spark-photo-balanced">6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂</div>
     <article><strong>Energy conversion</strong><p>Light energy is converted to chemical energy stored in glucose.</p></article>
+  </div>;
+}
+
+
+function ChloroplastView(){
+  return <div className="spark-photo-chloroplast">
+    <svg className="spark-photo-chloroplast-svg" viewBox="0 0 980 590" role="img" aria-label="Leaf cross-section with palisade cells containing chloroplasts and an enlarged chloroplast showing grana and stroma">
+      <defs>
+        <marker id="photo-light-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+          <path className="pcl-arrow-head" d="M0 0L10 5L0 10Z"/>
+        </marker>
+      </defs>
+
+      <g className="pcl-leaf-section" transform="translate(35 55)">
+        <path className="pcl-cuticle" d="M55 45Q215 25 380 45Q445 52 500 45"/>
+        <path className="pcl-upper-epidermis" d="M55 55Q215 35 380 55Q445 62 500 55V100H55Z"/>
+        <g className="pcl-palisade">
+          {[82,128,174,220,266,312,358,404,450].map((x,i)=><g key={x}>
+            <rect x={x} y={105} width="34" height={150-(i%2)*12} rx="15"/>
+            {[126,156,186,216].map((y,j)=><circle key={j} className="pcl-chloroplast-dot" cx={x+17} cy={y+(i%2)*5} r="6"/>)}
+          </g>)}
+        </g>
+        <g className="pcl-spongy">
+          {[
+            [88,290,38,26],[154,320,44,27],[224,282,42,28],[292,326,45,30],[366,285,41,27],[438,327,44,29],
+            [118,385,43,28],[202,380,46,30],[290,392,42,28],[382,382,45,30],[462,392,37,26]
+          ].map(([cx,cy,rx,ry],i)=><ellipse key={i} cx={cx} cy={cy} rx={rx} ry={ry}/>)}
+        </g>
+        <rect className="pcl-lower-epidermis" x="55" y="430" width="445" height="50" rx="10"/>
+        <g className="pcl-stoma">
+          <ellipse cx="276" cy="456" rx="31" ry="14" transform="rotate(-18 276 456)"/>
+          <ellipse cx="340" cy="456" rx="31" ry="14" transform="rotate(18 340 456)"/>
+          <ellipse className="pcl-stoma-pore" cx="308" cy="456" rx="12" ry="8"/>
+        </g>
+        <g className="pcl-vein">
+          <ellipse cx="454" cy="360" rx="48" ry="34"/>
+          <circle className="pcl-xylem" cx="438" cy="352" r="12"/>
+          <circle className="pcl-phloem" cx="468" cy="370" r="12"/>
+        </g>
+
+        <path className="pcl-light-ray" d="M130 0V80" markerEnd="url(#photo-light-arrow)"/>
+        <path className="pcl-light-ray" d="M240 0V80" markerEnd="url(#photo-light-arrow)"/>
+        <path className="pcl-light-ray" d="M350 0V80" markerEnd="url(#photo-light-arrow)"/>
+        <text className="pcl-label" x="240" y="18" textAnchor="middle">light</text>
+
+        <path className="pcl-co2-arrow" d="M308 535V485" markerEnd="url(#photo-light-arrow)"/>
+        <text className="pcl-small" x="308" y="560" textAnchor="middle">CO₂ enters through stomata</text>
+
+        <text className="pcl-label" x="520" y="82">upper epidermis</text><path className="pcl-callout" d="M495 78H510"/>
+        <text className="pcl-label" x="520" y="160">palisade mesophyll</text><path className="pcl-callout" d="M470 158H510"/>
+        <text className="pcl-label" x="520" y="310">spongy mesophyll</text><path className="pcl-callout" d="M472 306H510"/>
+        <text className="pcl-label" x="520" y="385">vascular bundle</text><path className="pcl-callout" d="M490 365H510"/>
+        <text className="pcl-label" x="520" y="465">lower epidermis + stoma</text><path className="pcl-callout" d="M470 455H510"/>
+      </g>
+
+      <path className="pcl-zoom-line" d="M450 185Q590 165 650 205"/>
+      <circle className="pcl-zoom-ring" cx="448" cy="185" r="22"/>
+
+      <g className="pcl-chloroplast-detail" transform="translate(610 135)">
+        <ellipse className="pcl-chloroplast-shell" cx="150" cy="155" rx="145" ry="105"/>
+        <ellipse className="pcl-chloroplast-inner" cx="150" cy="155" rx="130" ry="90"/>
+        <g className="pcl-grana">
+          {[ [82,115],[130,190],[188,110],[220,180] ].map(([x,y],i)=><g key={i}>
+            <rect x={x-24} y={y-18} width="48" height="8" rx="4"/>
+            <rect x={x-24} y={y-7} width="48" height="8" rx="4"/>
+            <rect x={x-24} y={y+4} width="48" height="8" rx="4"/>
+            <rect x={x-24} y={y+15} width="48" height="8" rx="4"/>
+          </g>)}
+        </g>
+        <path className="pcl-lamella" d="M106 115Q142 145 164 112M154 190Q185 164 198 180"/>
+        <circle className="pcl-starch-grain" cx="150" cy="145" r="16"/>
+        <text className="pcl-detail-title" x="150" y="20" textAnchor="middle">enlarged chloroplast</text>
+        <text className="pcl-label" x="300" y="100">grana</text><path className="pcl-callout" d="M230 110L286 102"/>
+        <text className="pcl-label" x="300" y="160">stroma</text><path className="pcl-callout" d="M242 155L286 158"/>
+        <text className="pcl-label" x="300" y="215">starch grain</text><path className="pcl-callout" d="M165 150Q240 205 286 210"/>
+      </g>
+
+      <text className="pcl-caption" x="750" y="500" textAnchor="middle">chlorophyll in chloroplast membranes absorbs light energy</text>
+      <text className="pcl-caption" x="750" y="528" textAnchor="middle">palisade cells contain many chloroplasts near the upper leaf surface</text>
+    </svg>
+    <div className="spark-photo-chloroplast-notes">
+      <article><b>Palisade mesophyll</b><p>Cells are closely packed near the upper surface and contain many chloroplasts, helping them absorb light.</p></article>
+      <article><b>Chloroplast</b><p>Chlorophyll is located in chloroplast membranes and absorbs light energy used during photosynthesis.</p></article>
+      <article><b>Stomata</b><p>Carbon dioxide enters through stomata and diffuses through leaf air spaces to photosynthesising cells.</p></article>
+      <article><b>Vascular bundle</b><p>Xylem supplies water. Phloem transports sugars and other organic substances away from the leaf.</p></article>
+    </div>
   </div>;
 }
 
