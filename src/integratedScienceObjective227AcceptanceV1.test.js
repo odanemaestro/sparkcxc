@@ -35,7 +35,7 @@ describe("Integrated Science Objective 2.2.7 acceptance audit", () => {
   test("explains human alveolar diffusion", () => {
     expect(migration).toContain("Oxygen diffuses from alveolar air");
     expect(migration).toContain("Carbon dioxide diffuses in the opposite direction");
-    expect(explorer).toContain("O₂ to blood");
+    expect(explorer).toContain("O₂ diffuses into blood");
     expect(explorer).toContain("CO₂ to alveolus");
   });
 
