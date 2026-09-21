@@ -95,6 +95,7 @@ import AlloysExplorer from "./components/AlloysExplorer";
 import RustingConditionsExplorer from "./components/RustingConditionsExplorer";
 import CorrosionProtectionExplorer from "./components/CorrosionProtectionExplorer";
 import HouseholdChemicalsExplorer from "./components/HouseholdChemicalsExplorer";
+import AcidsBasesSaltsExplorer from "./components/AcidsBasesSaltsExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -534,6 +535,9 @@ function GenericLessonContent({
         }
         if (model?.type === "household-chemicals") {
           return <HouseholdChemicalsExplorer key={model.id || "household-chemicals"} />;
+        }
+        if (model?.type === "acids-bases-salts") {
+          return <AcidsBasesSaltsExplorer key={model.id || "acids-bases-salts"} />;
         }
         return null;
       })}
