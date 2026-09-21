@@ -13,3 +13,14 @@ html[data-theme="dark"] .spark-food-energy-tabs button.active,body[data-theme="d
 @media(max-width:850px){.spark-food-energy-nutrients,.spark-caribbean-food-groups,.spark-food-deficiencies,.spark-food-energy-needs,.spark-food-tests{grid-template-columns:1fr}.spark-food-test-buttons{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:620px){.spark-food-energy-nutrition{padding:14px}.spark-food-energy-tabs{display:grid;grid-template-columns:1fr 1fr}.spark-food-test-buttons{grid-template-columns:1fr}}
 @media(max-width:390px){.spark-food-energy-tabs{grid-template-columns:1fr}}
+
+.spark-food-test-svg{display:block;width:100%;height:auto;min-height:250px;margin:12px 0;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-bg,#f7fafc)}
+.ft-tile{fill:#f1f3f4;stroke:#9aa8b1;stroke-width:3}.ft-paper{fill:#c99a62;stroke:#8d663d;stroke-width:3}.ft-sample.starch{fill:#d4c083;stroke:#947f49;stroke-width:2}.ft-sample.positive-starch{fill:#26345e;stroke:#141d3a;stroke-width:2}.ft-dropper{fill:#dbe3e7;stroke:#718795;stroke-width:3}.ft-iodine,.ft-biuret-drop{fill:#8a5b26}
+.ft-arrow{stroke:#0d9488;stroke-width:5;stroke-linecap:round}.ft-beaker,.ft-test-tube{fill:#f8fcff;stroke:#6e8797;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}.ft-rim,.ft-test-rim{stroke:#6e8797;stroke-width:5;stroke-linecap:round}.ft-water{fill:#9fd2e5;opacity:.82}.ft-benedict.blue,.ft-biuret.blue{fill:#5a9dd1;opacity:.92}.ft-precipitate{fill:#b84a2d;stroke:#82301d;stroke-width:2}.ft-biuret.purple{fill:#865bb2;opacity:.92}
+.ft-result-chip{stroke:#657581;stroke-width:1.5}.ft-result-chip.green{fill:#5c9e5c}.ft-result-chip.yellow{fill:#e3c847}.ft-result-chip.orange{fill:#df8534}.ft-result-chip.red{fill:#b94d36}.ft-food-smear{fill:#9d7648;stroke:#75542f;stroke-width:2}.ft-grease-spot{fill:#e0c69d;stroke:#9f7544;stroke-width:3;opacity:.48}
+.ft-title,.ft-label{fill:var(--spark-ink,#102a43);font-size:14px;font-weight:850}.ft-title.positive{fill:var(--spark-teal-dark,#087f73)}.ft-small{fill:var(--spark-text-muted,#627d98);font-size:12px;font-weight:800}
+html[data-theme="dark"] .spark-food-test-svg,body[data-theme="dark"] .spark-food-test-svg,.dark .spark-food-test-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .ft-title,body[data-theme="dark"] .ft-title,.dark .ft-title,html[data-theme="dark"] .ft-label,body[data-theme="dark"] .ft-label,.dark .ft-label{fill:#e7f0f7}
+html[data-theme="dark"] .ft-title.positive,body[data-theme="dark"] .ft-title.positive,.dark .ft-title.positive{fill:#66e3d5}
+html[data-theme="dark"] .ft-small,body[data-theme="dark"] .ft-small,.dark .ft-small{fill:#b8c9d6}
+@media(max-width:620px){.spark-food-test-svg{min-height:220px}.ft-title,.ft-label{font-size:18px}.ft-small{font-size:16px}}
