@@ -69,7 +69,48 @@ function PlantDustView(){
   const [dust,setDust]=useState(false);
   return <div className="spark-dust-leaf">
     <div className="spark-airpollution-toggle"><button type="button" className={!dust?"active":""} onClick={()=>setDust(false)}>Clean leaf</button><button type="button" className={dust?"active":""} onClick={()=>setDust(true)}>Dust-coated leaf</button></div>
-    <div className={"spark-leaf-model "+(dust?"dusty":"clean")}><div className="spark-leaf-blade"></div>{dust&&Array.from({length:24},(_,i)=><span key={i} style={{left:(12+(i*19)%75)+"%",top:(10+(i*23)%70)+"%"}}></span>)}</div>
+    <svg className={"spark-leaf-dust-svg "+(dust?"dusty":"clean")} viewBox="0 0 940 520" role="img" aria-label={dust?"Leaf cross-section with dust blocking light and partly covering stomata":"Clean leaf cross-section showing light reaching palisade cells and carbon dioxide entering through an open stoma"}>
+      <defs>
+        <marker id="leaf-light-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" className="ld-light-head"/></marker>
+        <marker id="leaf-gas-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" className="ld-gas-head"/></marker>
+      </defs>
+      <rect className="ld-air" x="0" y="0" width="940" height="520"/>
+      <path className="ld-cuticle" d="M95 135Q470 92 845 135L830 168Q470 132 110 168Z"/>
+      <path className="ld-upper-epidermis" d="M110 168Q470 132 830 168L818 205Q470 173 122 205Z"/>
+      <g className="ld-palisade">
+        {Array.from({length:12},(_,i)=><rect key={i} x={140+i*55} y={205+(i%2)*4} width="39" height={dust?112:122} rx="15"/>)}
+      </g>
+      <path className="ld-spongy" d="M125 332Q220 290 310 340Q410 292 505 340Q610 292 705 340Q770 310 815 345L805 407Q700 384 610 414Q505 378 410 414Q300 375 205 414Q160 401 135 392Z"/>
+      <path className="ld-lower-epidermis" d="M135 407Q470 382 805 407L795 448Q470 430 145 448Z"/>
+      <ellipse className="ld-guard-cell" cx="455" cy="439" rx="38" ry="17" transform="rotate(-18 455 439)"/>
+      <ellipse className="ld-guard-cell" cx="515" cy="439" rx="38" ry="17" transform="rotate(18 515 439)"/>
+      <ellipse className={dust?"ld-stoma partly-blocked":"ld-stoma"} cx="485" cy="440" rx={dust?10:18} ry={dust?5:8}/>
+      <text className="ld-label" x="485" y="487" textAnchor="middle">stoma</text>
+      <text className="ld-small" x="170" y="188">upper epidermis</text>
+      <text className="ld-small" x="170" y="270">palisade cells</text>
+      <text className="ld-small" x="170" y="366">spongy mesophyll</text>
+
+      <path className={dust?"ld-light reduced":"ld-light"} d="M250 35V188" markerEnd="url(#leaf-light-arrow)"/>
+      <path className={dust?"ld-light reduced":"ld-light"} d="M390 25V190" markerEnd="url(#leaf-light-arrow)"/>
+      <path className={dust?"ld-light reduced":"ld-light"} d="M535 25V190" markerEnd="url(#leaf-light-arrow)"/>
+      <path className={dust?"ld-light reduced":"ld-light"} d="M680 35V188" markerEnd="url(#leaf-light-arrow)"/>
+      <text className="ld-label" x="465" y="55" textAnchor="middle">{dust?"less light reaches photosynthetic tissue":"light reaches photosynthetic tissue"}</text>
+
+      {!dust&&<g className="ld-gas-flow">
+        <path d="M485 505V463" markerEnd="url(#leaf-gas-arrow)"/>
+        <text className="ld-label" x="565" y="495">CO₂ enters</text>
+        <path d="M610 423Q650 462 692 482" markerEnd="url(#leaf-gas-arrow)"/>
+        <text className="ld-small" x="705" y="490">O₂ and water vapour leave</text>
+      </g>}
+
+      {dust&&<g className="ld-dust-layer">
+        {Array.from({length:34},(_,i)=><circle key={i} cx={125+(i*67)%700} cy={115+((i*29)%31)} r={6+(i%4)}/>)}
+        {Array.from({length:10},(_,i)=><circle key={"s"+i} cx={440+(i*11)} cy={426+(i%3)*8} r={5+(i%2)}/>)}
+        <path className="ld-block-mark" d="M435 462L535 420M435 420L535 462"/>
+        <text className="ld-warning" x="610" y="454">dust can partly cover stomata</text>
+        <text className="ld-warning" x="465" y="92" textAnchor="middle">dust layer scatters and blocks some incoming light</text>
+      </g>}
+    </svg>
     <p>{dust?"Heavy dust deposits can reduce light reaching the leaf surface and interfere with stomatal gas exchange, lowering photosynthesis and growth.":"A clean leaf surface receives light and allows normal gas exchange through stomata."}</p>
   </div>;
 }
