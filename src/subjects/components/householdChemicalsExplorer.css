@@ -13,3 +13,10 @@ html[data-theme="dark"] .spark-housechem-mixing .danger,body[data-theme="dark"] 
 @media(max-width:900px){.spark-housechem-products,.spark-housechem-hazards,.spark-housechem-storage,.spark-housechem-economy,.spark-housechem-sanitiser{grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.spark-household-chemicals{padding:14px}.spark-housechem-tabs{display:grid;grid-template-columns:1fr 1fr}.spark-housechem-products,.spark-housechem-hazards,.spark-housechem-storage,.spark-housechem-economy,.spark-housechem-sanitiser{grid-template-columns:1fr}}
 @media(max-width:390px){.spark-housechem-tabs{grid-template-columns:1fr}}
+
+
+.spark-ghs-hazard-svg{display:block;width:100%;height:auto}
+.hc-tube{fill:none;stroke:#111;stroke-width:5;stroke-linejoin:round}.hc-liquid-stream{fill:none;stroke:#111;stroke-width:4;stroke-linecap:round}
+.hc-hand{fill:#111}.hc-metal-bar{fill:#111}.hc-corrosion-bite{fill:none;stroke:#fff;stroke-width:3}
+.hc-crossbone{fill:none;stroke:#111;stroke-width:9;stroke-linecap:round}.hc-fragment{fill:#111}.hc-explosion path{stroke-linejoin:round}
+html[data-theme="dark"] .hc-diamond,body[data-theme="dark"] .hc-diamond,.dark .hc-diamond{fill:#fff}
