@@ -549,3 +549,19 @@ body[data-theme="dark"] .spark-label-diagram-actions button:disabled,
 .spark-diagram-respiratory .resp-tracheal-ring{stroke:#557a8d;stroke-width:3}
 .spark-diagram-respiratory .resp-cardiac-notch{fill:none;stroke:#9e5a62;stroke-width:5;stroke-linecap:round}
 .spark-diagram-respiratory .resp-alveoli circle{fill:#f3c2c8;stroke:#9e5a62;stroke-width:3}
+
+
+/* SPARK_NEURO_ENDOCRINE_POLISH_V1 */
+.spark-diagram-brain .brain-lobe{stroke:#9a666c;stroke-width:3}
+.spark-diagram-brain .brain-lobe.frontal{fill:#e2b2b3}
+.spark-diagram-brain .brain-lobe.parietal{fill:#dda5aa}
+.spark-diagram-brain .brain-lobe.temporal{fill:#d89ba0}
+.spark-diagram-brain .brain-lobe.occipital{fill:#d59aa2}
+.spark-diagram-brain .brain-corpus-callosum{fill:#e8d6c9;stroke:#9b806c;stroke-width:4}
+.spark-diagram-brain .brain-thalamus{fill:#d7a27d;stroke:#94694a;stroke-width:4}
+.spark-diagram-brain .brain-cerebellum-fold{fill:none;stroke:#9a6268;stroke-width:4;stroke-linecap:round}
+.spark-diagram-brain .brain-pons{fill:#d2a17f;stroke:#8e694d;stroke-width:4}
+
+.spark-diagram-endocrine .endo-trachea{fill:none;stroke:#8ba4b5;stroke-width:10;stroke-linecap:round;stroke-dasharray:8 5}
+.spark-diagram-endocrine .endo-pancreatic-duct{fill:none;stroke:#a57a3f;stroke-width:3;stroke-linecap:round}
+.spark-diagram-endocrine .endo-epididymis{fill:none;stroke:#9b7345;stroke-width:4;stroke-linecap:round}
