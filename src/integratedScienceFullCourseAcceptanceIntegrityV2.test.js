@@ -23,6 +23,11 @@ describe("Integrated Science full-course acceptance integrity V2", () => {
     expect(migration).toContain("public.spark_subject_sections");
   });
 
+  test("removes the duplicate Objective 1.1.1 learner topic", () => {
+    expect(migration).toContain("m1-t1-1-cell-transport");
+    expect(migration).toContain("m1-t1-1-diffusion-osmosis-active-transport");
+  });
+
   test("removes the duplicate Objective 1.1.2 learner topic", () => {
     expect(migration).toContain("m1-t1-2-plant-animal-cells");
     expect(migration).toContain("delete from public.spark_subject_topics");
