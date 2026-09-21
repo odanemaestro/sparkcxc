@@ -65,6 +65,20 @@ describe("Integrated Science Objective 2.2.3 acceptance audit", () => {
     expect(migration).toContain("root is embedded in the jaw");
   });
 
+  test("corrects crown and root surface anatomy in the scientific tooth SVG", () => {
+    for (const term of [
+      "ts-cementum",
+      "tooth-crown-clip",
+      "tooth-root-clip",
+      "enamel, crown only",
+      "cementum, root covering",
+      "gingiva (gum)",
+      "enamel covers the crown while cementum covers the roots"
+    ]) expect(explorer).toContain(term);
+    expect(explorerCss).toContain(".ts-cementum");
+    expect(explorerCss).toContain(".ts-neck-guide");
+  });
+
   test("explains chewing as surface-area increase", () => {
     expect(migration).toContain("increases the total surface area");
     expect(explorer).toContain("Greater total surface area");
