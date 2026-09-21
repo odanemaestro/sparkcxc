@@ -50,6 +50,28 @@ describe("Integrated Science Objective 1.7.8 acceptance audit", () => {
     expect(migration).toContain("Cockroaches move through waste");
   });
 
+  test("renders disease transmission routes as source carrier exposure SVGs", () => {
+    for (const term of [
+      "spark-pest-route-visuals",
+      "pv-route-svg",
+      "SOURCE",
+      "CARRIER",
+      "VECTOR",
+      "EXPOSURE",
+      "faeces or garbage",
+      "fly body and legs",
+      "infected person",
+      "mosquito vector",
+      "infected urine",
+      "wet soil or water",
+      "cockroach body"
+    ]) expect(explorer).toContain(term);
+    expect(css).toContain(".pv-route-node.source");
+    expect(css).toContain(".pv-route-node.carrier");
+    expect(css).toContain(".pv-route-node.exposure");
+    expect(css).toContain(".pv-route-flow");
+  });
+
   test("relates household waste food and standing water to risk", () => {
     expect(migration).toContain("Improperly stored domestic waste");
     expect(migration).toContain("Pet food left outdoors can attract rodents");
