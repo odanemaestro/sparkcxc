@@ -10,31 +10,34 @@ import "./interactiveLabelDiagram.css";
 function PlantCellTemplate() {
   return (
     <g className="spark-diagram-cell spark-diagram-plant-cell spark-reference-refined" aria-hidden="true">
-      <path className="cell-wall" d="M260 86Q245 86 245 112V490Q245 520 278 520H724Q755 520 755 488V116Q755 82 720 86Z" />
-      <path className="cell-membrane" d="M278 110Q268 110 268 130V468Q268 495 296 495H700Q730 495 730 466V136Q730 108 702 110Z" />
-      <path className="cytoplasm plant-cytoplasm" d="M292 128H704V475H292Z" />
+      <path className="cell-wall" d="M264 82Q245 82 245 105V495Q245 520 270 520H729Q755 520 755 494V108Q755 82 728 82Z" />
+      <path className="cell-membrane" d="M282 108Q268 108 268 126V475Q268 496 290 496H708Q731 496 731 473V131Q731 108 708 108Z" />
+      <path className="cytoplasm plant-cytoplasm" d="M289 126H710V477H289Z" />
 
-      <path className="vacuole" d="M438 160Q555 132 643 190Q690 255 665 360Q640 444 520 452Q415 447 389 373Q361 283 395 210Q410 180 438 160Z" />
-      <path className="vacuole-highlight" d="M455 177Q515 158 578 175" />
+      <path className="vacuole plant-central-vacuole" d="M454 214Q540 178 623 218Q680 254 674 336Q667 421 588 455Q507 487 430 443Q377 412 375 343Q373 276 413 238Q431 221 454 214Z" />
+      <path className="vacuole-highlight" d="M444 236Q508 205 571 219" />
 
-      <circle className="nucleus nuclear-envelope" cx="405" cy="285" r="58" />
-      <circle className="nucleolus" cx="388" cy="270" r="17" />
-      <path className="nuclear-chromatin" d="M374 301Q405 278 435 302M382 255Q405 240 429 255" />
+      <circle className="nucleus nuclear-envelope" cx="405" cy="250" r="57" />
+      <circle className="nucleolus" cx="388" cy="234" r="17" />
+      <path className="nuclear-chromatin" d="M371 266Q405 243 437 267M378 222Q405 207 431 222" />
 
-      <g className="rough-er">
-        <path d="M342 221Q305 228 312 251Q335 268 318 286Q302 305 328 321" />
-        <path d="M344 335Q312 345 327 367Q350 382 330 398" />
+      <g className="rough-er plant-er">
+        <path d="M348 203Q315 197 305 216Q298 232 322 239Q343 245 319 260Q301 272 321 287Q338 299 318 312" />
+        <path d="M357 312Q324 322 329 341Q333 359 358 361" />
+        <path d="M456 210Q486 196 510 208Q531 218 512 234Q497 247 522 255" />
       </g>
 
-      <g className="golgi">
-        <path d="M592 392Q625 373 661 385" />
-        <path d="M585 407Q625 386 669 402" />
-        <path d="M588 422Q627 404 664 418" />
+      <g className="golgi plant-golgi">
+        <path d="M330 395Q369 373 410 387" />
+        <path d="M323 411Q370 388 418 405" />
+        <path d="M329 428Q372 408 413 422" />
+        <circle className="golgi-vesicle" cx="421" cy="390" r="6" />
+        <circle className="golgi-vesicle" cx="431" cy="414" r="5" />
       </g>
 
       <g className="chloroplasts">
         {[
-          [338,180,-18],[650,188,16],[338,408,18],[665,405,-14],[620,145,-8],
+          [338,170,-18],[650,188,16],[350,455,12],[660,408,-14],[612,148,-8],
         ].map(([x,y,angle],index) => (
           <g key={index} transform={`translate(${x} ${y}) rotate(${angle})`}>
             <ellipse cx="0" cy="0" rx="34" ry="18" />
@@ -48,7 +51,7 @@ function PlantCellTemplate() {
           <ellipse cx="0" cy="0" rx="36" ry="20" />
           <path className="cristae" d="M-23 0q8-12 16 0t16 0t16 0" />
         </g>
-        <g transform="translate(358 352) rotate(25)">
+        <g transform="translate(360 350) rotate(25)">
           <ellipse cx="0" cy="0" rx="33" ry="18" />
           <path className="cristae" d="M-21 0q7-10 14 0t14 0t14 0" />
         </g>
@@ -56,8 +59,8 @@ function PlantCellTemplate() {
 
       <g className="ribosomes">
         {[
-          [345,190],[365,205],[455,155],[487,165],[520,150],[555,166],
-          [455,438],[492,447],[530,430],[568,445],[605,432],
+          [348,190],[365,202],[456,158],[486,171],[520,150],[551,168],
+          [452,464],[488,451],[533,462],[568,445],[605,450],
         ].map(([x,y],index) => <circle key={index} cx={x} cy={y} r="4.5" />)}
       </g>
     </g>
