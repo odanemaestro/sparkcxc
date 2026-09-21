@@ -43,10 +43,37 @@ function DryView(){
 
 function PlatingView(){
   const [metal,setMetal]=useState("chromium");
+  const names={chromium:"chromium",silver:"silver",tin:"tin"};
+  const name=names[metal];
   return <div className="spark-electroplate">
     <div className="spark-protect-toggle"><button type="button" className={metal==="chromium"?"active":""} onClick={()=>setMetal("chromium")}>Chromium</button><button type="button" className={metal==="silver"?"active":""} onClick={()=>setMetal("silver")}>Silver</button><button type="button" className={metal==="tin"?"active":""} onClick={()=>setMetal("tin")}>Tin</button></div>
-    <div className="spark-plated-object"><div className={"spark-plating-layer "+metal}></div><div className="spark-steel-core">base metal</div></div>
-    <p>{metal==="chromium"?"Chromium plating provides a shiny, corrosion-resistant surface on fittings and older-style bumpers.":metal==="silver"?"Silver plating gives an attractive surface and corrosion resistance while using much less silver than a solid object would require.":"Tin-coated steel is used for food cans because the tin surface resists corrosion and separates the steel from the contents while the coating remains intact."}</p>
+    <svg className="spark-electroplating-diagram" viewBox="0 0 860 470" role="img" aria-label={"Electroplating cell showing a base-metal object connected as the cathode in a "+name+"-containing electrolyte"}>
+      <defs><marker id="cp-ion-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" className="cp-arrow-head"/></marker></defs>
+      <rect className="cp-beaker" x="170" y="135" width="520" height="275" rx="20"/>
+      <path className="cp-electrolyte" d="M184 221H676V390Q676 397 669 397H191Q184 397 184 390Z"/>
+      <text className="cp-label" x="430" y="374" textAnchor="middle">{name}-containing electrolyte</text>
+
+      <rect className="cp-anode" x="245" y="190" width="62" height="150" rx="8"/>
+      <path className={"cp-cathode "+metal} d="M520 185H590V335H520Q493 310 493 260Q493 210 520 185Z"/>
+      <text className="cp-label" x="276" y="360" textAnchor="middle">positive electrode</text>
+      <text className="cp-small" x="276" y="382" textAnchor="middle">anode / source electrode</text>
+      <text className="cp-label" x="543" y="360" textAnchor="middle">object to be plated</text>
+      <text className="cp-small" x="543" y="382" textAnchor="middle">cathode, negative</text>
+
+      <path className="cp-wire" d="M276 190V88H390"/>
+      <path className="cp-wire" d="M553 185V88H470"/>
+      <rect className="cp-supply" x="390" y="52" width="80" height="72" rx="10"/>
+      <text className="cp-supply-text" x="430" y="82" textAnchor="middle">DC</text>
+      <text className="cp-polarity" x="401" y="112">+</text><text className="cp-polarity" x="453" y="112">−</text>
+
+      {Array.from({length:8},(_,i)=><g key={i}>
+        <circle className={"cp-ion "+metal} cx={360+(i%2)*55} cy={245+Math.floor(i/2)*28} r="9"/>
+        <path className="cp-ion-flow" d={`M${382+(i%2)*35} ${245+Math.floor(i/2)*28}Q455 ${235+Math.floor(i/2)*28} 492 ${245+Math.floor(i/2)*28}`} markerEnd="url(#cp-ion-arrow)"/>
+      </g>)}
+      <text className="cp-small" x="430" y="202" textAnchor="middle">metal ions move through the electrolyte and are deposited at the object</text>
+    </svg>
+    <div className="spark-plated-object"><div className={"spark-plating-layer "+metal}></div><div className="spark-steel-core">base metal with {name} coating</div></div>
+    <p>{metal==="chromium"?"Chromium plating provides a hard, shiny, corrosion-resistant finish. Industrial chromium-plating chemistry uses specialised electrolytes and electrodes, but the object being plated is still connected to the negative side of the direct-current supply.":metal==="silver"?"Silver plating uses electric current to deposit a thin silver layer on the object, giving an attractive conductive surface while using much less silver than a solid object would require.":"Tin plating uses electric current to deposit a protective tin layer. Tin-coated steel is widely used for food cans because the coating separates the steel from the contents while it remains intact."}</p>
   </div>;
 }
 
