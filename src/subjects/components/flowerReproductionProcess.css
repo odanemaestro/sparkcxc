@@ -27,3 +27,15 @@ html[data-theme="dark"] .spark-flower-step-controls button,html[data-theme="dark
 html[data-theme="dark"] .spark-flower-step-controls button.active,html[data-theme="dark"] .spark-pollination-tabs button.active,body[data-theme="dark"] .spark-flower-step-controls button.active,body[data-theme="dark"] .spark-pollination-tabs button.active,.dark .spark-flower-step-controls button.active,.dark .spark-pollination-tabs button.active{background:#164e4a;color:#d7fffa;border-color:#2dd4bf}
 @media(max-width:850px){.spark-flower-process-grid{grid-template-columns:1fr}}
 @media(max-width:560px){.spark-flower-process{padding:14px}.spark-pollination-tabs{display:grid;grid-template-columns:1fr}.spark-flower-stage .frp-label{font-size:27px}.spark-flower-stage .frp-small{font-size:20px}.spark-flower-sequence{display:grid;grid-template-columns:1fr;text-align:center}.spark-flower-sequence b{transform:rotate(90deg)}}
+
+
+.spark-pollination-structure-svg{display:block;width:100%;height:auto;margin:12px 0;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.pc-petal{fill:#efa2b7;stroke:#a44c67;stroke-width:4}.pc-petal.small{fill:#d9cfc2;stroke:#7d7267}
+.pc-sepal{fill:#72aa62;stroke:#3d7336;stroke-width:4}.pc-ovary{fill:#99c67d;stroke:#477f3e;stroke-width:4}.pc-style{fill:#b9d99f;stroke:#477f3e;stroke-width:3}
+.pc-stigma.sticky{fill:#d9efc4;stroke:#477f3e;stroke-width:4}.pc-stigma.feathery path{fill:none;stroke:#6b8d4e;stroke-width:5;stroke-linecap:round}
+.pc-stamens path{fill:none;stroke:#6a8e45;stroke-width:5;stroke-linecap:round}.pc-stamens ellipse{fill:#e9c857;stroke:#9a7620;stroke-width:3}
+.pc-pollen{fill:#dca52f;stroke:#966819;stroke-width:2}.pc-pollen.small{opacity:.85}
+.pc-callouts text{fill:#294d64;font-size:13px;font-weight:850}
+html[data-theme="dark"] .spark-pollination-structure-svg,body[data-theme="dark"] .spark-pollination-structure-svg,.dark .spark-pollination-structure-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .pc-callouts text,body[data-theme="dark"] .pc-callouts text,.dark .pc-callouts text{fill:#e1edf5}
+@media(max-width:560px){.pc-callouts text{font-size:17px}}
