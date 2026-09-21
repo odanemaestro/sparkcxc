@@ -521,3 +521,10 @@ body[data-theme="dark"] .spark-label-diagram-actions button:disabled,
 .spark-diagram-cell .plant-er path{stroke:#7c6bb0}
 .spark-diagram-cell .plant-golgi path{stroke:#e07b9b}
 .spark-diagram-cell .golgi-vesicle{fill:#f1a3bb;stroke:#b95e7d;stroke-width:2}
+
+.spark-diagram-pregnancy .pregnancy-myometrium{fill:#d98796;stroke:#9b5362;stroke-width:5}
+.spark-diagram-pregnancy .pregnancy-placental-villi path{fill:none;stroke:#8d4a57;stroke-width:5;stroke-linecap:round}
+.spark-diagram-pregnancy .pregnancy-umbilical-inner{fill:none;stroke:#b6d2df;stroke-width:4;stroke-linecap:round}
+.spark-diagram-pregnancy .foetus-head,.spark-diagram-pregnancy .foetus-torso{fill:#efc2a4;stroke:#9b694e;stroke-width:4}
+.spark-diagram-pregnancy .foetus-face,.spark-diagram-pregnancy .foetus-back,.spark-diagram-pregnancy .foetus-arm,.spark-diagram-pregnancy .foetus-leg,.spark-diagram-pregnancy .foetus-hand,.spark-diagram-pregnancy .foetus-foot{fill:none;stroke:#9b694e;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.spark-diagram-pregnancy .pregnancy-cervical-canal{fill:none;stroke:#7f4350;stroke-width:5;stroke-linecap:round}
