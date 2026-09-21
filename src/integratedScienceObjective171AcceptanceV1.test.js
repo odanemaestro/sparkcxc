@@ -93,6 +93,22 @@ describe("Integrated Science Objective 1.7.1 acceptance audit", () => {
     expect(css).toContain(".bac-nucleoid");
   });
 
+  test("adds a labelled virus-particle schematic without implying every virus is enveloped", () => {
+    for (const term of [
+      "Virus particle",
+      "spark-virus-structure-svg",
+      "surface protein / spike",
+      "lipid envelope",
+      "protein capsid",
+      "genetic material, DNA or RNA",
+      "Virus particles are not cells",
+      "some viruses lack a lipid envelope"
+    ]) expect(explorer).toContain(term);
+    expect(css).toContain(".spark-virus-structure-svg");
+    expect(css).toContain(".vs-capsid");
+    expect(css).toContain(".vs-genome");
+  });
+
   test("visual remains responsive and dark-mode ready", () => {
     expect(css).toContain("@media(max-width:800px)");
     expect(css).toContain("@media(max-width:620px)");
