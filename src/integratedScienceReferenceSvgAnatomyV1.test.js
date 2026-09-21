@@ -23,13 +23,14 @@ describe("Integrated Science reference-driven SVG anatomy V1",()=>{
       "cell membrane",
       "cytoplasm",
       "ribosomes",
-      "chromosome DNA",
+      "nucleoid, chromosome region",
       "plasmid",
       "storage granule",
       "pilus",
       "flagellum"
     ]) expect(microbe).toContain(term);
     expect(microbeCss).toContain(".bac-capsule");
+    expect(microbeCss).toContain(".bac-nucleoid");
     expect(microbeCss).toContain(".bac-chromosome");
   });
 
