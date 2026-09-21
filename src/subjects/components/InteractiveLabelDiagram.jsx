@@ -266,21 +266,42 @@ function MaleReproductiveTemplate() {
 
 function PregnancyUterusTemplate() {
   return (
-    <g className="spark-diagram-pregnancy" aria-hidden="true">
-      <path className="pregnancy-uterus-wall" d="M325 105 Q500 55 675 105 Q755 225 710 405 Q675 515 500 555 Q325 515 290 405 Q245 225 325 105Z" />
-      <path className="pregnancy-amnion" d="M355 145 Q500 105 625 170 Q690 255 640 390 Q585 485 465 485 Q350 470 315 365 Q285 245 355 145Z" />
-      <path className="pregnancy-placenta" d="M330 160 Q295 235 320 325 Q345 385 385 405 Q430 345 420 250 Q410 185 330 160Z" />
-      <path className="pregnancy-umbilical" d="M395 300 Q455 255 505 310 Q545 355 585 320" />
-      <g className="pregnancy-foetus">
-        <circle cx="570" cy="270" r="54" />
-        <path d="M525 310 Q490 350 520 405 Q560 450 610 420 Q640 385 610 350 Q585 330 560 325Z" />
-        <path d="M535 370 Q490 395 470 435M590 405 Q620 445 655 452" />
+    <g className="spark-diagram-pregnancy spark-reference-refined" aria-hidden="true">
+      <path className="pregnancy-uterus-wall" d="M326 102Q499 55 674 103Q738 176 742 280Q746 392 681 479Q626 548 515 560Q401 555 330 487Q265 423 264 317Q263 194 326 102Z" />
+      <path className="pregnancy-myometrium" d="M348 126Q500 87 650 128Q705 194 706 285Q706 376 653 451Q607 510 516 523Q424 519 363 459Q307 403 305 316Q303 213 348 126Z" />
+      <path className="pregnancy-amnion" d="M373 150Q500 118 621 157Q676 220 671 304Q665 390 615 447Q568 494 486 491Q402 488 351 430Q314 384 316 308Q317 219 373 150Z" />
+
+      <path className="pregnancy-placenta" d="M329 171Q294 237 312 317Q327 378 374 420Q408 391 421 339Q435 283 417 221Q399 177 329 171Z" />
+      <g className="pregnancy-placental-villi">
+        <path d="M343 197Q373 214 385 246M334 238Q369 251 388 284M337 282Q372 296 390 331M350 329Q375 344 388 375" />
       </g>
-      <path className="pregnancy-cervix" d="M455 520 Q500 542 545 520 L540 570 Q500 592 460 570Z" />
-      <path className="pregnancy-vagina" d="M465 570 L450 615 H550 L535 570Z" />
-      <circle className="pregnancy-fluid-marker" cx="485" cy="225" r="8" />
-      <circle className="pregnancy-fluid-marker" cx="615" cy="350" r="8" />
-      <text className="repro-orientation" x="500" y="80" textAnchor="middle">foetus in uterus</text>
+
+      <path className="pregnancy-umbilical" d="M392 312Q431 273 472 292Q503 306 499 337Q495 365 529 372Q563 379 587 349" />
+      <path className="pregnancy-umbilical-inner" d="M398 314Q435 284 469 300Q491 310 488 334Q486 354 513 361Q543 368 579 345" />
+
+      <g className="pregnancy-foetus">
+        <ellipse className="foetus-head" cx="574" cy="280" rx="48" ry="57" transform="rotate(18 574 280)" />
+        <path className="foetus-face" d="M602 269Q613 277 604 284Q595 290 607 296" />
+        <path className="foetus-torso" d="M539 325Q500 347 501 390Q506 438 551 452Q602 466 625 425Q641 393 620 356Q597 325 570 322Z" />
+        <path className="foetus-back" d="M550 326Q585 338 606 371Q621 397 610 423" />
+        <path className="foetus-arm" d="M542 348Q514 342 492 322M525 357Q508 376 490 385" />
+        <path className="foetus-leg" d="M572 438Q548 463 521 468M600 430Q617 454 638 461" />
+        <path className="foetus-hand" d="M492 322l-11-8m12 9l-14 2" />
+        <path className="foetus-foot" d="M638 461l13 2m-13-2l10 8" />
+      </g>
+
+      <g className="pregnancy-fluid">
+        <circle className="pregnancy-fluid-marker" cx="476" cy="207" r="8" />
+        <circle className="pregnancy-fluid-marker" cx="625" cy="215" r="8" />
+        <circle className="pregnancy-fluid-marker" cx="618" cy="414" r="8" />
+        <circle className="pregnancy-fluid-marker" cx="445" cy="430" r="8" />
+      </g>
+
+      <path className="pregnancy-cervix" d="M455 518Q500 542 545 518L541 575Q500 596 459 575Z" />
+      <path className="pregnancy-cervical-canal" d="M500 535V578" />
+      <path className="pregnancy-vagina" d="M464 573L448 626H552L536 573Z" />
+
+      <text className="repro-orientation" x="500" y="78" textAnchor="middle">foetus in uterus</text>
     </g>
   );
 }
