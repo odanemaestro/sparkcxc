@@ -436,3 +436,30 @@ body[data-theme="dark"] .spark-label-diagram-actions button:disabled,
 @media(max-width:560px){
   .spark-diagram-plug .plug-wire-text,.spark-diagram-plug .plug-fuse-text,.spark-diagram-plug .repro-orientation{font-size:19px}
 }
+
+
+/* SPARK_CSEC_REFERENCE_GEOMETRY_V1
+   Keep CSEC-style reference proportions crisp when scaled into the
+   interactive labelling canvas. */
+.spark-csec-reference *{vector-effect:non-scaling-stroke}
+.spark-csec-reference .eye-choroid{fill:none;stroke-width:7}
+.spark-csec-reference .eye-retina{fill:none;stroke-width:5}
+.spark-csec-reference .eye-sclera{stroke-width:7}
+.spark-csec-reference .eye-cornea{stroke-width:5}
+.spark-csec-reference .eye-aqueous{stroke-width:3}
+.spark-csec-reference .eye-iris{stroke-width:10}
+.spark-csec-reference .eye-suspensory{fill:none;stroke-width:3}
+.spark-csec-reference .heart-outline{stroke-width:7}
+.spark-csec-reference .heart-right-atrium,
+.spark-csec-reference .heart-right-ventricle,
+.spark-csec-reference .heart-left-atrium,
+.spark-csec-reference .heart-left-ventricle{stroke-width:4}
+.spark-csec-reference .heart-inner-wall{fill:none;stroke:#7b4d58;stroke-width:2}
+.spark-csec-reference .heart-septum{stroke-width:7}
+.spark-csec-reference .heart-tricuspid,
+.spark-csec-reference .heart-bicuspid,
+.spark-csec-reference .heart-semilunar{stroke-width:6}
+.spark-csec-reference .heart-vena-cava,
+.spark-csec-reference .heart-aorta,
+.spark-csec-reference .heart-pulmonary-artery,
+.spark-csec-reference .heart-pulmonary-vein{stroke-width:13}
