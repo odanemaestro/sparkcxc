@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import "./endocrineSystemExplorer.css";
 
 const VIEWS = {
+  anatomy:{
+    label:"Gland map",
+    title:"Endocrine glands occupy specific positions throughout the body",
+    note:"The pituitary lies at the base of the brain. The thyroid and parathyroids are in the neck. The adrenal glands sit above the kidneys, the pancreas lies across the upper abdomen, and the gonads are the ovaries or testes.",
+  },
   transport:{
     label:"Hormone transport",
     title:"Endocrine glands release hormones into the blood",
@@ -23,6 +28,69 @@ const VIEWS = {
     note:"Nerve impulses travel rapidly along neurones and their effects are often brief and specific. Hormones travel in blood, act more slowly and often produce longer-lasting effects.",
   },
 };
+
+function AnatomyScene() {
+  return (
+    <div className="spark-endocrine-anatomy">
+      <svg className="spark-endocrine-anatomy-svg" viewBox="0 0 980 700" role="img" aria-label="Female and male endocrine gland map showing pituitary, thyroid, parathyroid, adrenal glands, pancreas, ovaries and testes">
+        <g className="ea-person female">
+          <circle className="ea-head" cx="300" cy="95" r="62"/>
+          <path className="ea-body" d="M255 155Q300 130 345 155Q392 220 380 340L360 555H240L220 340Q208 220 255 155Z"/>
+          <path className="ea-arm" d="M245 190Q185 260 175 420M355 190Q415 260 425 420"/>
+          <path className="ea-leg" d="M265 550L245 650M335 550L355 650"/>
+          <circle className="ea-pituitary" cx="307" cy="102" r="8"/>
+          <path className="ea-thyroid" d="M278 178Q290 165 300 178Q310 165 322 178Q318 202 300 205Q282 202 278 178Z"/>
+          <circle className="ea-parathyroid" cx="288" cy="184" r="4"/><circle className="ea-parathyroid" cx="312" cy="184" r="4"/>
+          <path className="ea-kidney" d="M260 337Q235 326 232 354Q234 384 258 390Q276 377 272 351Z"/>
+          <path className="ea-kidney" d="M340 337Q365 326 368 354Q366 384 342 390Q324 377 328 351Z"/>
+          <path className="ea-adrenal" d="M235 334Q252 309 272 337ZM328 337Q348 309 365 334Z"/>
+          <path className="ea-pancreas" d="M250 385Q300 360 352 384Q332 412 282 417Q260 412 250 385Z"/>
+          <ellipse className="ea-ovary" cx="270" cy="505" rx="12" ry="9"/><ellipse className="ea-ovary" cx="330" cy="505" rx="12" ry="9"/>
+          <path className="ea-uterus" d="M284 505Q300 524 316 505L311 548H289Z"/>
+        </g>
+
+        <g className="ea-person male">
+          <circle className="ea-head" cx="680" cy="95" r="62"/>
+          <path className="ea-body" d="M635 155Q680 130 725 155Q772 220 760 340L740 555H620L600 340Q588 220 635 155Z"/>
+          <path className="ea-arm" d="M625 190Q565 260 555 420M735 190Q795 260 805 420"/>
+          <path className="ea-leg" d="M645 550L625 650M715 550L735 650"/>
+          <circle className="ea-pituitary" cx="687" cy="102" r="8"/>
+          <path className="ea-thyroid" d="M658 178Q670 165 680 178Q690 165 702 178Q698 202 680 205Q662 202 658 178Z"/>
+          <circle className="ea-parathyroid" cx="668" cy="184" r="4"/><circle className="ea-parathyroid" cx="692" cy="184" r="4"/>
+          <path className="ea-kidney" d="M640 337Q615 326 612 354Q614 384 638 390Q656 377 652 351Z"/>
+          <path className="ea-kidney" d="M720 337Q745 326 748 354Q746 384 722 390Q704 377 708 351Z"/>
+          <path className="ea-adrenal" d="M615 334Q632 309 652 337ZM708 337Q728 309 745 334Z"/>
+          <path className="ea-pancreas" d="M630 385Q680 360 732 384Q712 412 662 417Q640 412 630 385Z"/>
+          <ellipse className="ea-testis" cx="664" cy="575" rx="13" ry="19"/><ellipse className="ea-testis" cx="696" cy="575" rx="13" ry="19"/>
+        </g>
+
+        <g className="ea-labels">
+          <path d="M307 102L145 70"/><text x="132" y="73" textAnchor="end">pituitary gland</text>
+          <path d="M300 188L145 165"/><text x="132" y="170" textAnchor="end">thyroid gland</text>
+          <path d="M288 184L145 215"/><text x="132" y="220" textAnchor="end">parathyroid glands</text>
+          <path d="M245 326L145 305"/><text x="132" y="310" textAnchor="end">adrenal glands</text>
+          <path d="M255 397L145 385"/><text x="132" y="390" textAnchor="end">pancreas</text>
+          <path d="M270 505L145 495"/><text x="132" y="500" textAnchor="end">ovaries</text>
+
+          <path d="M687 102L835 70"/><text x="848" y="73">pituitary gland</text>
+          <path d="M680 188L835 165"/><text x="848" y="170">thyroid gland</text>
+          <path d="M692 184L835 215"/><text x="848" y="220">parathyroid glands</text>
+          <path d="M735 326L835 305"/><text x="848" y="310">adrenal glands</text>
+          <path d="M725 397L835 385"/><text x="848" y="390">pancreas</text>
+          <path d="M696 575L835 555"/><text x="848" y="560">testes</text>
+        </g>
+        <text className="ea-sex-label" x="300" y="682" textAnchor="middle">female</text>
+        <text className="ea-sex-label" x="680" y="682" textAnchor="middle">male</text>
+      </svg>
+      <div className="spark-endocrine-anatomy-notes">
+        <article><b>Pituitary</b><p>Often called a master gland because several of its hormones regulate other endocrine glands.</p></article>
+        <article><b>Thyroid and parathyroids</b><p>The thyroid lies in the neck. Small parathyroid glands lie on its posterior surface and help regulate blood calcium.</p></article>
+        <article><b>Adrenals and pancreas</b><p>Adrenal glands sit above the kidneys. The pancreas has endocrine cells that release hormones such as insulin.</p></article>
+        <article><b>Gonads</b><p>Ovaries and testes produce sex hormones as well as reproductive cells.</p></article>
+      </div>
+    </div>
+  );
+}
 
 function TransportScene() {
   return (
@@ -129,7 +197,7 @@ function CompareScene() {
 }
 
 export default function EndocrineSystemExplorer() {
-  const [view,setView] = useState("transport");
+  const [view,setView] = useState("anatomy");
   const info = VIEWS[view];
 
   return (
@@ -149,6 +217,7 @@ export default function EndocrineSystemExplorer() {
       </div>
 
       <div className={view==="compare" ? "spark-endocrine-stage compare" : "spark-endocrine-stage"}>
+        {view==="anatomy" && <AnatomyScene />}
         {view==="transport" && <TransportScene />}
         {view==="insulin" && <InsulinScene />}
         {view==="adrenaline" && <AdrenalineScene />}
