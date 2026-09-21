@@ -15,3 +15,30 @@ html[data-theme="dark"] .fp-label,body[data-theme="dark"] .fp-label,.dark .fp-la
 @media(max-width:900px){.spark-force-inputs,.spark-resultant-inputs,.spark-friction-cards{grid-template-columns:1fr}.spark-third-law-pair{grid-template-columns:1fr}.spark-third-law-pair>div{text-align:center;transform:rotate(90deg)}}
 @media(max-width:620px){.spark-force-principles{padding:14px}.spark-force-tabs{display:grid;grid-template-columns:1fr 1fr}.spark-force-box{grid-template-columns:1fr}.spark-force-box span{text-align:center!important}.fp-label{font-size:18px}}
 @media(max-width:390px){.spark-force-tabs{grid-template-columns:1fr}}
+
+
+.spark-resultant-svg,.spark-third-law-svg{display:block;width:100%;height:auto;margin:14px 0;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:14px;background:var(--spark-paper,#fff)}
+.fp-fbd-bg,.fp-third-bg{fill:var(--spark-paper,#fff)}
+.fp-fbd-object{fill:#b68b61;stroke:#765333;stroke-width:3}
+.fp-fbd-object-label,.fp-fbd-title,.fp-resultant-title,.fp-force-label,.fp-resultant-label{fill:var(--spark-ink,#102a43);font-weight:850}
+.fp-fbd-title,.fp-resultant-title{font-size:15px}.fp-fbd-object-label{fill:#fff;font-size:15px}.fp-force-label,.fp-resultant-label{font-size:13px}
+.fp-force-arrow{stroke:#386f8b;stroke-width:6;stroke-linecap:round}.fp-force-head{fill:#386f8b}
+.fp-resultant-arrow{fill:none;stroke:#b0524a;stroke-width:7;stroke-linecap:round}.fp-resultant-head{fill:#b0524a}
+.fp-balanced-result circle{fill:#f0c76d;stroke:#8a6923;stroke-width:3}.fp-balanced-result text{fill:var(--spark-ink,#102a43);font-size:13px;font-weight:850}
+
+.fp-third-title{fill:var(--spark-ink,#102a43);font-size:15px;font-weight:900}
+.fp-rocket-body,.fp-jet-body,.fp-gun-barrel,.fp-gun-grip{fill:#7f929e;stroke:#405866;stroke-width:3}
+.fp-rocket-window{fill:#8bc5de;stroke:#3f6f86;stroke-width:3}.fp-jet-wing{fill:#9aaab3;stroke:#405866;stroke-width:3}
+.fp-exhaust{fill:#d7794d;stroke:#a54b32;stroke-width:3}.fp-exhaust.jet{fill:#d89b65}.fp-bullet{fill:#b78b54;stroke:#76552f;stroke-width:3}
+.fp-third-action,.fp-third-reaction{stroke-width:6;stroke-linecap:round}.fp-third-action{stroke:#396f8a}.fp-third-reaction{stroke:#b0524a}
+.fp-third-action-head{fill:#396f8a}.fp-third-reaction-head{fill:#b0524a}
+.fp-third-action-label,.fp-third-reaction-label,.fp-third-object-label,.fp-third-key text{font-size:12px;font-weight:850}
+.fp-third-action-label{fill:#2c607a}.fp-third-reaction-label{fill:#99423c}.fp-third-object-label,.fp-third-key text{fill:var(--spark-ink,#102a43)}
+.fp-third-key{opacity:.92}
+
+html[data-theme="dark"] .spark-resultant-svg,body[data-theme="dark"] .spark-resultant-svg,.dark .spark-resultant-svg,html[data-theme="dark"] .spark-third-law-svg,body[data-theme="dark"] .spark-third-law-svg,.dark .spark-third-law-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .fp-fbd-bg,body[data-theme="dark"] .fp-fbd-bg,.dark .fp-fbd-bg,html[data-theme="dark"] .fp-third-bg,body[data-theme="dark"] .fp-third-bg,.dark .fp-third-bg{fill:#0d2134}
+html[data-theme="dark"] .fp-fbd-title,body[data-theme="dark"] .fp-fbd-title,.dark .fp-fbd-title,html[data-theme="dark"] .fp-resultant-title,body[data-theme="dark"] .fp-resultant-title,.dark .fp-resultant-title,html[data-theme="dark"] .fp-force-label,body[data-theme="dark"] .fp-force-label,.dark .fp-force-label,html[data-theme="dark"] .fp-resultant-label,body[data-theme="dark"] .fp-resultant-label,.dark .fp-resultant-label,html[data-theme="dark"] .fp-third-title,body[data-theme="dark"] .fp-third-title,.dark .fp-third-title,html[data-theme="dark"] .fp-third-object-label,body[data-theme="dark"] .fp-third-object-label,.dark .fp-third-object-label,html[data-theme="dark"] .fp-third-key text,body[data-theme="dark"] .fp-third-key text,.dark .fp-third-key text{fill:#d6e4ee}
+html[data-theme="dark"] .fp-balanced-result text,body[data-theme="dark"] .fp-balanced-result text,.dark .fp-balanced-result text{fill:#d6e4ee}
+
+@media(max-width:620px){.fp-fbd-title,.fp-resultant-title,.fp-third-title{font-size:18px}.fp-force-label,.fp-resultant-label,.fp-third-action-label,.fp-third-reaction-label,.fp-third-object-label,.fp-third-key text{font-size:15px}}
