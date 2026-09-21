@@ -60,7 +60,7 @@ describe("Integrated Science Objective 2.3.1 acceptance audit", () => {
   test("keeps leaded gasoline clearly historical", () => {
     expect(migration).toContain("Older vehicles that used leaded gasoline");
     expect(migration).toContain("historical pollution example");
-    expect(explorer).toContain("Historical pollutant");
+    expect(explorer).toContain("HISTORICAL POLLUTANT");
   });
 
   test("covers Trinidad and Tobago with current regional context", () => {
