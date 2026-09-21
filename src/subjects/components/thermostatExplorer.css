@@ -15,3 +15,19 @@ html[data-theme="dark"] .tb-label,body[data-theme="dark"] .tb-label,.dark .tb-la
 @media(max-width:900px){.spark-thermostat-knob,.spark-thermostat-appliance,.spark-bimetal-expansion{grid-template-columns:1fr}.spark-expansion-result{grid-column:auto}.spark-thermostat-appliance-buttons{grid-template-columns:1fr 1fr}.spark-thermostat-feedback{flex-direction:column}.spark-thermostat-feedback>div{text-align:center;transform:rotate(90deg)}}
 @media(max-width:620px){.spark-thermostat-explorer{padding:14px}.spark-thermostat-tabs{display:grid;grid-template-columns:1fr 1fr}.spark-thermostat-appliance-buttons{grid-template-columns:1fr}.tb-label{font-size:18px}}
 @media(max-width:390px){.spark-thermostat-tabs{grid-template-columns:1fr}}
+
+
+.spark-bimetal-expansion-view{display:grid;gap:12px}
+.spark-bimetal-expansion-svg{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.be-heading{fill:#294d64;font-size:16px;font-weight:950}.be-label{font-size:13px;font-weight:950}.be-label.brass,.be-result.brass{fill:#9e7628}.be-label.iron,.be-result.iron{fill:#526b7d}
+.be-bar{stroke-width:3}.be-bar.brass{fill:#d4b055;stroke:#9b7527}.be-bar.iron{fill:#91a2ad;stroke:#607580}
+.be-heat-source path{fill:#d96a3b;stroke:#a4472a;stroke-width:2}.be-heat-flow,.be-curve-arrow{fill:none;stroke:#c7673f;stroke-width:5;stroke-linecap:round}.be-arrow-head{fill:#c7673f}
+.be-small,.be-result,.be-caption{fill:#536d80;font-weight:800}.be-small{font-size:12px}.be-result{font-size:13px}.be-caption{font-size:12px}
+.be-divider{stroke:#c5d2d9;stroke-width:2}.be-joined{fill:none;stroke-width:18;stroke-linecap:round}.be-joined.brass{stroke:#c59d43}.be-joined.iron{stroke:#768895}.be-bracket{fill:none;stroke:#586f7e;stroke-width:5;stroke-linecap:round}
+.spark-bimetal-expansion-view>p{margin:0;color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.55}
+html[data-theme="dark"] .spark-bimetal-expansion-svg,body[data-theme="dark"] .spark-bimetal-expansion-svg,.dark .spark-bimetal-expansion-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .be-heading,body[data-theme="dark"] .be-heading,.dark .be-heading,
+html[data-theme="dark"] .be-small,body[data-theme="dark"] .be-small,.dark .be-small,
+html[data-theme="dark"] .be-result,body[data-theme="dark"] .be-result,.dark .be-result,
+html[data-theme="dark"] .be-caption,body[data-theme="dark"] .be-caption,.dark .be-caption{fill:#e1edf5}
+@media(max-width:620px){.be-heading{font-size:20px}.be-label,.be-result{font-size:17px}.be-small,.be-caption{font-size:15px}}
