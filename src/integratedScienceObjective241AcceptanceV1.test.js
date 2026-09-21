@@ -61,6 +61,24 @@ describe("Integrated Science Objective 2.4.1 acceptance audit", () => {
     expect(explorer).toContain("TAP WATER");
   });
 
+  test("renders water conductivity through mobile ions in a scientific SVG", () => {
+    for (const term of [
+      "spark-water-ion-svg",
+      "VERY PURE WATER",
+      "TAP WATER WITH DISSOLVED IONS",
+      "very few ions available to carry charge",
+      "lamp stays off or extremely dim",
+      "positive ions → negative electrode",
+      "negative ions → positive electrode",
+      "lamp lights more readily",
+      "mobile dissolved ions carry charge through the water"
+    ]) expect(explorer).toContain(term);
+    expect(css).toContain(".spark-water-ion-svg");
+    expect(css).toContain(".wi-ion.cation");
+    expect(css).toContain(".wi-ion.anion");
+    expect(css).toContain(".wi-ion-flow");
+  });
+
   test("wires the explorer into the shared lesson shell", () => {
     expect(migration).toContain('"type":"electrical-conductors"');
     expect(view).toContain("ElectricalConductorsExplorer");
