@@ -89,17 +89,65 @@ function KneeView(){
   </div>;
 }
 
+function JointDiagram({joint}){
+  if(joint==="hinge"){
+    return <svg className="spark-joint-diagram" viewBox="0 0 520 250" role="img" aria-label="Hinge joint showing two bones moving mainly in one plane">
+      <path className="sm-joint-bone" d="M95 64L235 115"/>
+      <path className="sm-joint-bone" d="M278 136L427 194"/>
+      <circle className="sm-joint-cartilage" cx="252" cy="126" r="37"/>
+      <path className="sm-joint-ligament" d="M221 105Q252 72 284 111"/>
+      <path className="sm-joint-ligament" d="M221 146Q252 179 284 140"/>
+      <path className="sm-joint-motion" d="M357 90Q423 112 438 156"/>
+      <path className="sm-joint-motion" d="M438 156l-16-10m16 10l-3-19"/>
+      <text className="sm-small" x="252" y="224" textAnchor="middle">hinge permits flexion and extension mainly in one plane</text>
+    </svg>;
+  }
+  if(joint==="ball"){
+    return <svg className="spark-joint-diagram" viewBox="0 0 520 250" role="img" aria-label="Ball and socket joint showing a rounded bone head fitting into a socket">
+      <path className="sm-joint-socket" d="M154 74Q115 126 154 178Q193 145 193 126Q193 107 154 74Z"/>
+      <circle className="sm-joint-ball" cx="221" cy="126" r="43"/>
+      <path className="sm-joint-bone" d="M253 126L403 126"/>
+      <path className="sm-joint-motion" d="M252 65Q329 25 400 72"/>
+      <path className="sm-joint-motion" d="M252 187Q329 227 400 180"/>
+      <path className="sm-joint-motion" d="M400 72l-18-2m18 2l-8 16"/>
+      <path className="sm-joint-motion" d="M400 180l-18 2m18-2l-8-16"/>
+      <text className="sm-small" x="260" y="226" textAnchor="middle">rounded head moves in many directions within the socket</text>
+    </svg>;
+  }
+  if(joint==="fixed"){
+    return <svg className="spark-joint-diagram" viewBox="0 0 520 250" role="img" aria-label="Fixed skull suture joint showing interlocking bone edges">
+      <path className="sm-joint-plate" d="M86 58H248L236 82L254 101L238 121L255 141L238 161L252 190H86Z"/>
+      <path className="sm-joint-plate" d="M434 58H272L284 82L266 101L282 121L265 141L282 161L268 190H434Z"/>
+      <path className="sm-joint-suture" d="M248 58L236 82L254 101L238 121L255 141L238 161L252 190"/>
+      <text className="sm-small" x="260" y="226" textAnchor="middle">interlocking cranial sutures permit little or no movement</text>
+    </svg>;
+  }
+  return <svg className="spark-joint-diagram" viewBox="0 0 520 250" role="img" aria-label="Gliding joint showing adjacent bone surfaces sliding over one another">
+    <rect className="sm-joint-glide" x="104" y="82" width="142" height="60" rx="24"/>
+    <rect className="sm-joint-glide" x="274" y="108" width="142" height="60" rx="24"/>
+    <path className="sm-joint-motion" d="M143 60H218"/>
+    <path className="sm-joint-motion" d="M218 60l-17-10m17 10l-17 10"/>
+    <path className="sm-joint-motion" d="M377 190H302"/>
+    <path className="sm-joint-motion" d="M302 190l17-10m-17 10l17 10"/>
+    <text className="sm-small" x="260" y="226" textAnchor="middle">nearly flat surfaces slide a short distance past one another</text>
+  </svg>;
+}
+
 function JointView(){
   const [joint,setJoint]=useState("hinge");
-  const data={
+  const jointData={
     hinge:{title:"Hinge joint",places:"Elbow and knee",movement:"Mainly movement in one plane, like opening and closing a door."},
     ball:{title:"Ball-and-socket joint",places:"Shoulder and hip",movement:"Movement in many directions, including rotation."},
     fixed:{title:"Fixed joint",places:"Sutures between bones of the cranium",movement:"Little or no movement."},
     gliding:{title:"Gliding joint",places:"Between some vertebrae; also wrist and ankle regions",movement:"Small sliding movements between surfaces."}
-  }[joint];
+  };
+  const data=jointData[joint];
   return <div className="spark-joint-types">
-    <div className="spark-muscle-toggle">{Object.keys(data).map(k=><button key={k} type="button" className={joint===k?"active":""} onClick={()=>setJoint(k)}>{data[k].title}</button>)}</div>
-    <article><span>{data.title.toUpperCase()}</span><h4>{data.places}</h4><p>{data.movement}</p></article>
+    <div className="spark-muscle-toggle">{Object.entries(jointData).map(([key,item])=><button key={key} type="button" className={joint===key?"active":""} onClick={()=>setJoint(key)}>{item.title}</button>)}</div>
+    <div className="spark-joint-grid">
+      <JointDiagram joint={joint}/>
+      <article><span>{data.title.toUpperCase()}</span><h4>{data.places}</h4><p>{data.movement}</p></article>
+    </div>
   </div>;
 }
 
