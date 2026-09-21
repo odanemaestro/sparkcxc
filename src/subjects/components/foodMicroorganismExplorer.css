@@ -38,3 +38,23 @@ html[data-theme="dark"] .spark-bread-interpretation,body[data-theme="dark"] .spa
 @media(max-width:850px){.spark-food-microbe-factors,.spark-useful-microbes{grid-template-columns:1fr}.spark-food-microbe-tabs{display:grid;grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.spark-food-microorganisms{padding:14px}.spark-bread-row{grid-template-columns:1fr}.spark-bread-row>strong{text-align:left}.spark-food-microbe-stage .fm-tick,.spark-food-microbe-stage .fm-axis-label,.spark-food-microbe-stage .fm-legend{font-size:17px}}
 @media(max-width:390px){.spark-food-microbe-tabs{grid-template-columns:1fr}}
+
+
+.spark-mould-structure-scene{display:grid;gap:14px;padding:14px}
+.spark-mould-structure-svg{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.ms-air{fill:#eef6f8}.ms-bread{fill:#d8b986;stroke:#9c7a4e;stroke-width:4}.ms-bread-surface{fill:none;stroke:#b08d5a;stroke-width:5}
+.ms-spores circle,.ms-germination circle{fill:#7f6b56;stroke:#594b3d;stroke-width:3}
+.ms-germination path{fill:none;stroke:#667b4c;stroke-width:6;stroke-linecap:round}
+.ms-hyphae path{fill:none;stroke:#6c7d51;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+.ms-mycelium-highlight path{fill:none;stroke:#98a776;stroke-width:3;stroke-dasharray:8 6}
+.ms-callouts path{fill:none;stroke:#60788a;stroke-width:2.5}.ms-arrow-head{fill:#60788a}
+.ms-label,.ms-callouts text,.ms-bread-label{fill:#294d64;font-size:14px;font-weight:850}.ms-small{fill:#536d80;font-size:12px;font-weight:750}
+.spark-mould-structure-notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.spark-mould-structure-notes article{padding:13px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:11px;background:var(--spark-paper,#fff)}
+.spark-mould-structure-notes b{color:var(--spark-ink,#102a43);font-size:12px}.spark-mould-structure-notes p{margin:5px 0 0;color:var(--spark-ink-soft,#334e68);font-size:11px;line-height:1.5}
+html[data-theme="dark"] .spark-mould-structure-svg,body[data-theme="dark"] .spark-mould-structure-svg,.dark .spark-mould-structure-svg,
+html[data-theme="dark"] .spark-mould-structure-notes article,body[data-theme="dark"] .spark-mould-structure-notes article,.dark .spark-mould-structure-notes article{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .ms-air,body[data-theme="dark"] .ms-air,.dark .ms-air{fill:#153148}
+html[data-theme="dark"] .ms-label,body[data-theme="dark"] .ms-label,.dark .ms-label,html[data-theme="dark"] .ms-callouts text,body[data-theme="dark"] .ms-callouts text,.dark .ms-callouts text,html[data-theme="dark"] .ms-bread-label,body[data-theme="dark"] .ms-bread-label,.dark .ms-bread-label,html[data-theme="dark"] .ms-small,body[data-theme="dark"] .ms-small,.dark .ms-small{fill:#e7f0f7}
+@media(max-width:850px){.spark-mould-structure-notes{grid-template-columns:1fr}}
+@media(max-width:620px){.spark-mould-structure-scene{padding:8px}.ms-label,.ms-callouts text,.ms-bread-label{font-size:18px}.ms-small{font-size:15px}}
