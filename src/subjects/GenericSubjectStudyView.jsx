@@ -85,6 +85,7 @@ import VolcanoEruptionsExplorer from "./components/VolcanoEruptionsExplorer";
 import WaterPropertiesExplorer from "./components/WaterPropertiesExplorer";
 import HardWaterExplorer from "./components/HardWaterExplorer";
 import WaterUsesExplorer from "./components/WaterUsesExplorer";
+import ForcePrinciplesExplorer from "./components/ForcePrinciplesExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -494,6 +495,9 @@ function GenericLessonContent({
         }
         if (model?.type === "water-uses") {
           return <WaterUsesExplorer key={model.id || "water-uses"} />;
+        }
+        if (model?.type === "force-principles") {
+          return <ForcePrinciplesExplorer key={model.id || "force-principles"} />;
         }
         return null;
       })}
