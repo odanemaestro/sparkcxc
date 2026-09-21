@@ -155,8 +155,12 @@ describe("Integrated Science learner polish V1", () => {
       "utf8"
     );
     expect(gasExchange).toContain("gx-alveolar-cluster");
+    expect(gasExchange).toContain("gx-capillary-network");
     expect(gasExchange).toContain("gx-exchange-barrier");
     expect(gasExchange).toContain("thin exchange barrier");
+    expect(gasExchange).toContain("deoxygenated blood enters");
+    expect(gasExchange).toContain("oxygenated blood leaves");
+    expect(gasExchange).toContain("walls one cell thick");
 
     const breathing = fs.readFileSync(
       path.join(__dirname,"subjects","components","BreathingMechanismExplorer.jsx"),
