@@ -3,17 +3,64 @@ import "./tidesExplorer.css";
 
 function BulgeView(){
   return <div className="spark-tide-bulges">
-    <svg viewBox="0 0 860 430" role="img" aria-label="Earth with two tidal bulges aligned approximately with the Moon">
-      <ellipse className="td-water" cx="390" cy="215" rx="185" ry="105"/>
-      <circle className="td-earth" cx="390" cy="215" r="92"/>
-      <circle className="td-moon" cx="720" cy="215" r="38"/>
-      <line className="td-pull" x1="675" y1="215" x2="520" y2="215"/>
-      <text className="td-label" x="390" y="220" textAnchor="middle">Earth</text>
-      <text className="td-label" x="720" y="275" textAnchor="middle">Moon</text>
-      <text className="td-label" x="525" y="165">high-tide bulge</text>
-      <text className="td-label" x="180" y="165">high-tide bulge</text>
+    <svg viewBox="0 0 920 500" role="img" aria-label="Earth with near-side and far-side tidal bulges aligned with the Moon and low-tide regions at right angles">
+      <defs>
+        <linearGradient id="td-ocean-gradient" x1="0" x2="1">
+          <stop offset="0%" stopColor="#b9ddea"/>
+          <stop offset="50%" stopColor="#8dc5dc"/>
+          <stop offset="100%" stopColor="#b9ddea"/>
+        </linearGradient>
+      </defs>
+
+      <ellipse className="td-water" cx="405" cy="250" rx="205" ry="116"/>
+      <circle className="td-earth" cx="405" cy="250" r="94"/>
+      <circle className="td-moon" cx="790" cy="250" r="42"/>
+
+      <g className="td-gravity-gradient">
+        <path className="td-pull strongest" d="M505 215H685"/>
+        <path className="td-pull middle" d="M430 250H685"/>
+        <path className="td-pull weakest" d="M305 285H685"/>
+      </g>
+
+      <g className="td-bulge-guides">
+        <path d="M610 250H705"/>
+        <path d="M200 250H115"/>
+        <path d="M405 134V82"/>
+        <path d="M405 366V418"/>
+      </g>
+
+      <text className="td-label earth" x="405" y="256" textAnchor="middle">Earth</text>
+      <text className="td-label" x="790" y="316" textAnchor="middle">Moon</text>
+
+      <text className="td-label high near" x="650" y="230">high tide</text>
+      <text className="td-small" x="650" y="251">near-side bulge</text>
+
+      <text className="td-label high far" x="60" y="230">high tide</text>
+      <text className="td-small" x="60" y="251">far-side bulge</text>
+
+      <text className="td-label low" x="405" y="66" textAnchor="middle">low tide</text>
+      <text className="td-label low" x="405" y="452" textAnchor="middle">low tide</text>
+
+      <path className="td-rotation" d="M334 150Q405 105 476 150"/>
+      <text className="td-small" x="405" y="110" textAnchor="middle">Earth rotates through both bulges</text>
+
+      <g className="td-gradient-key" transform="translate(570 35)">
+        <rect x="0" y="0" width="310" height="108" rx="14"/>
+        <text className="td-small heading" x="16" y="28">Moon's pull differs across Earth</text>
+        <line className="td-pull strongest" x1="18" y1="50" x2="96" y2="50"/>
+        <text className="td-small" x="112" y="55">stronger on near side</text>
+        <line className="td-pull weakest" x1="18" y1="79" x2="70" y2="79"/>
+        <text className="td-small" x="112" y="84">weaker on far side</text>
+      </g>
+
+      <text className="td-caption" x="405" y="486" textAnchor="middle">The difference in lunar gravitational pull across Earth produces two broad tidal bulges.</text>
     </svg>
-    <p>The Moon's gravity is the main cause of ocean tides. The tidal pattern produces two broad high-tide bulges, so many coastal locations experience about two high tides and two low tides in a lunar day.</p>
+    <div className="spark-tide-bulge-notes">
+      <article><b>Two high tides</b><span>Water forms broad bulges on the side facing the Moon and on the opposite side.</span></article>
+      <article><b>Two low tides</b><span>Areas roughly 90° from the Earth-Moon line lie between the bulges and experience lower sea level.</span></article>
+      <article><b>Why the times shift</b><span>The Moon also moves in its orbit, so Earth must rotate a little more than 24 hours to face the Moon again. A lunar day is about 24 h 50 min.</span></article>
+    </div>
+    <p>The Moon's gravity is the main cause of ocean tides. Because the Moon's gravitational pull is stronger on the side of Earth nearer the Moon and weaker on the far side, two broad tidal bulges form. As Earth rotates through them, many coastal locations experience about two high tides and two low tides during a lunar day.</p>
   </div>;
 }
 
