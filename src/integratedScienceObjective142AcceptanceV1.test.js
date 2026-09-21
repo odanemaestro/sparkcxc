@@ -42,6 +42,11 @@ describe("Integrated Science Objective 1.4.2 acceptance audit", () => {
     expect(explorer).toContain("Phagocyte");
     expect(explorer).toContain("Lymphocyte");
     expect(explorer).toContain("Platelets");
+    expect(explorer).toContain("ts-rbc-centre");
+    expect(explorer).toContain("ts-phagocyte-nucleus");
+    expect(explorer).toContain("ts-lymph-nucleus");
+    expect(explorer).toContain("ts-platelet-cluster");
+    expect(explorer).toContain("plasma is the liquid transport medium");
   });
 
   test("relates red blood cell structure to oxygen transport", () => {
@@ -58,6 +63,13 @@ describe("Integrated Science Objective 1.4.2 acceptance audit", () => {
     expect(explorer).toContain("Artery");
     expect(explorer).toContain("Vein");
     expect(explorer).toContain("Capillary");
+    expect(explorer).toContain("ts-capillary-network");
+    expect(explorer).toContain("arteriole");
+    expect(explorer).toContain("venule");
+    expect(explorer).toContain("capillary wall = one layer of endothelial cells");
+    expect(explorer).toContain("O₂ + nutrients to tissues");
+    expect(explorer).toContain("CO₂ + wastes to blood");
+    expect(explorer).toContain("ts-vessel-valve");
   });
 
   test("covers heart chambers, valves and major vessels", () => {
@@ -113,6 +125,9 @@ describe("Integrated Science Objective 1.4.2 acceptance audit", () => {
     expect(explorerCss).toContain("@media(max-width:850px)");
     expect(explorerCss).toContain("@media(max-width:620px)");
     expect(explorerCss).toContain('html[data-theme="dark"]');
+    expect(explorerCss).toContain("SPARK_TRANSPORT_VISUAL_REFINEMENT_V2");
+    expect(explorerCss).toContain(".spark-vessel-cross-sections");
+    expect(explorerCss).toContain(".ts-focus-field");
   });
 
   test("lesson includes application checks", () => {
