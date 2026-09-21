@@ -10,13 +10,30 @@ function MakeView(){
 
 function CleaningView(){
   const [grease,setGrease]=useState(false);
+  const surfactants=Array.from({length:14},(_,i)=>i);
   return <div className="spark-detergent-cleaning">
     <div className="spark-detergent-toggle"><button type="button" className={!grease?"active":""} onClick={()=>setGrease(false)}>Before washing</button><button type="button" className={grease?"active":""} onClick={()=>setGrease(true)}>With surfactant</button></div>
-    <div className="spark-grease-model">
-      <div className="spark-grease-drop">grease</div>
-      {grease&&Array.from({length:12},(_,i)=><span key={i} className="spark-surfactant" style={{transform:`rotate(${i*30}deg) translateY(-70px)`}}>●</span>)}
-    </div>
-    <p>{grease?"Surfactant molecules surround grease droplets. Their oil-attracting parts face inward and their water-attracting parts face outward, helping disperse grease into the wash water.":"Grease does not mix well with water on its own."}</p>
+    <svg className="spark-surfactant-diagram" viewBox="0 0 720 390" role="img" aria-label={grease?"Micelle around a grease droplet with hydrophobic tails pointing inward and hydrophilic heads facing water":"Grease droplet separated from surrounding water before surfactant is added"}>
+      <rect className="sd-water" x="0" y="0" width="720" height="390"/>
+      <path className="sd-grease" d="M265 116Q352 73 447 118Q503 168 470 250Q430 320 340 304Q251 319 218 243Q190 166 265 116Z"/>
+      <text className="sd-grease-label" x="350" y="214" textAnchor="middle">grease</text>
+      {grease&&surfactants.map(i=><g key={i} className="sd-surfactant" transform={`translate(350 205) rotate(${i*(360/surfactants.length)})`}>
+        <line className="sd-tail" x1="0" y1="-86" x2="0" y2="-128"/>
+        <circle className="sd-head" cx="0" cy="-145" r="15"/>
+      </g>)}
+      {grease?<React.Fragment>
+        <line className="sd-key-tail" x1="535" y1="84" x2="588" y2="84"/>
+        <circle className="sd-key-head" cx="612" cy="84" r="13"/>
+        <text className="sd-label" x="535" y="53">surfactant molecule</text>
+        <text className="sd-small" x="535" y="109">tail attracts oil</text>
+        <text className="sd-small" x="535" y="131">head interacts with water</text>
+        <text className="sd-label" x="350" y="359" textAnchor="middle">grease is emulsified into a micelle-like droplet</text>
+      </React.Fragment>:<React.Fragment>
+        <circle className="sd-water-particle" cx="115" cy="96" r="8"/><circle className="sd-water-particle" cx="590" cy="150" r="8"/><circle className="sd-water-particle" cx="130" cy="290" r="8"/><circle className="sd-water-particle" cx="606" cy="296" r="8"/>
+        <text className="sd-label" x="350" y="359" textAnchor="middle">grease remains separate from water</text>
+      </React.Fragment>}
+    </svg>
+    <p>{grease?"Surfactant molecules surround grease droplets. Their hydrophobic, oil-attracting tails point into the grease while their hydrophilic heads face the surrounding water. This keeps small grease droplets dispersed so they can be rinsed away.":"Grease is non-polar and does not mix well with water on its own."}</p>
   </div>;
 }
 
