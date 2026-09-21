@@ -80,7 +80,7 @@ where subject_id = 'integrated-science'
     or metadata::text like '%Ã—%' or metadata::text like '%Â²%' or metadata::text like '%Â³%' or metadata::text like '%Â°%'
   );
 
-do $
+do $$
 declare
   v_first text;
   v_second text;
