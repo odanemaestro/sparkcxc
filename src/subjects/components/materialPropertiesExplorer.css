@@ -11,3 +11,35 @@ html[data-theme="dark"] .spark-material-tabs button.active,body[data-theme="dark
 @media(max-width:900px){.spark-material-compare,.spark-material-kitchen,.spark-material-sport,.spark-material-property,.spark-material-uses{grid-template-columns:1fr}}
 @media(max-width:620px){.spark-material-properties{padding:14px}.spark-material-tabs{display:grid;grid-template-columns:1fr 1fr}}
 @media(max-width:390px){.spark-material-tabs{grid-template-columns:1fr}}
+
+.spark-property-diagram{display:block;width:100%;height:auto;margin:12px 0 15px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:11px;background:var(--spark-bg,#f7fafc)}
+.mp-metal,.mp-density{fill:#c3ccd4;stroke:#5d7182;stroke-width:4}
+.mp-die,.mp-press{fill:#71889a;stroke:#40586c;stroke-width:4}
+.mp-wire,.mp-sheet,.mp-spring,.mp-tensile-bar,.mp-conductor,.mp-circuit{fill:none;stroke:#6d7f8d;stroke-width:10;stroke-linecap:round;stroke-linejoin:round}
+.mp-sheet{stroke-width:9}
+.mp-spring{stroke:#2d8f85;stroke-width:7}.mp-spring.stretched{stroke:#b77945}
+.mp-force,.mp-return,.mp-heat{fill:none;stroke:#2d8f85;stroke-width:5;stroke-linecap:round}
+.mp-return{stroke:#b77945}
+.mp-arrow-head{fill:#2d8f85}
+.mp-hot{fill:#d66b57;stroke:#8f4438;stroke-width:4}
+.mp-bulb{fill:#fff2a8;stroke:#8d7734;stroke-width:4}
+.mp-filament{fill:none;stroke:#9f7f21;stroke-width:4}
+.mp-density.light{fill:#d8ece8;stroke:#2d8f85}.mp-density.heavy{fill:#a9b6c1;stroke:#526b7d}
+.mp-label{fill:#243f55;font-size:14px;font-weight:850}
+.mp-small{fill:#526b7d;font-size:12px;font-weight:750}
+html[data-theme="dark"] .spark-property-diagram,
+body[data-theme="dark"] .spark-property-diagram,
+.dark .spark-property-diagram{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .mp-label,
+body[data-theme="dark"] .mp-label,
+.dark .mp-label,
+html[data-theme="dark"] .mp-small,
+body[data-theme="dark"] .mp-small,
+.dark .mp-small{fill:#d6e4ee}
+html[data-theme="dark"] .mp-metal,
+body[data-theme="dark"] .mp-metal,
+.dark .mp-metal,
+html[data-theme="dark"] .mp-density,
+body[data-theme="dark"] .mp-density,
+.dark .mp-density{fill:#405264;stroke:#9bb0c1}
+@media(max-width:620px){.spark-property-diagram{margin:10px 0}.mp-label{font-size:17px}.mp-small{font-size:15px}}
