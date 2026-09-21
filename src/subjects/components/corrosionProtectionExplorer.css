@@ -13,3 +13,32 @@ html[data-theme="dark"] .spark-protect-tabs button.active,body[data-theme="dark"
 @media(max-width:900px){.spark-protect-method,.spark-tarnish-cards,.spark-protect-choose{grid-template-columns:1fr}}
 @media(max-width:620px){.spark-corrosion-protection{padding:14px}.spark-protect-tabs{display:grid;grid-template-columns:1fr 1fr}}
 @media(max-width:390px){.spark-protect-tabs{grid-template-columns:1fr}}
+
+.spark-electroplating-diagram{display:block;width:100%;height:auto;margin:14px 0;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.cp-beaker{fill:none;stroke:#667d89;stroke-width:7}.cp-electrolyte{fill:#b8dce9;opacity:.85}
+.cp-anode{fill:#89979f;stroke:#52616a;stroke-width:4}.cp-cathode{fill:#737e85;stroke:#46535b;stroke-width:5}
+.cp-cathode.chromium{stroke:#aeb9bf}.cp-cathode.silver{stroke:#d3d8da}.cp-cathode.tin{stroke:#aeb7bb}
+.cp-wire{fill:none;stroke:#536a79;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+.cp-supply{fill:#e5ebef;stroke:#5d7180;stroke-width:4}.cp-supply-text,.cp-polarity{fill:#243f55;font-size:18px;font-weight:900}
+.cp-ion.chromium{fill:#9caeb8}.cp-ion.silver{fill:#d4d9dc}.cp-ion.tin{fill:#aeb7bb}
+.cp-ion-flow{fill:none;stroke:#2d8f85;stroke-width:4;stroke-linecap:round}.cp-arrow-head{fill:#2d8f85}
+.cp-label{fill:#243f55;font-size:14px;font-weight:900}.cp-small{fill:#526b7d;font-size:11px;font-weight:750}
+html[data-theme="dark"] .spark-electroplating-diagram,
+body[data-theme="dark"] .spark-electroplating-diagram,
+.dark .spark-electroplating-diagram{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .cp-supply,
+body[data-theme="dark"] .cp-supply,
+.dark .cp-supply{fill:#223c52;stroke:#8fa4b4}
+html[data-theme="dark"] .cp-supply-text,
+body[data-theme="dark"] .cp-supply-text,
+.dark .cp-supply-text,
+html[data-theme="dark"] .cp-polarity,
+body[data-theme="dark"] .cp-polarity,
+.dark .cp-polarity,
+html[data-theme="dark"] .cp-label,
+body[data-theme="dark"] .cp-label,
+.dark .cp-label,
+html[data-theme="dark"] .cp-small,
+body[data-theme="dark"] .cp-small,
+.dark .cp-small{fill:#d6e4ee}
+@media(max-width:620px){.cp-label{font-size:17px}.cp-small{font-size:14px}}
