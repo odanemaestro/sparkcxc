@@ -135,6 +135,7 @@ function CycleView(){
 
       <path className="wu-transpiration wu-cycle-flow" d="M615 386Q610 295 655 245" markerEnd="url(#wu-cycle-arrow)"/>
       <text className="wu-label" x="642" y="315">transpiration</text>
+      <text className="wu-small" x="642" y="336">contributes to evapotranspiration</text>
 
       <path className="wu-condensation wu-cycle-flow" d="M430 235Q460 213 478 192" markerEnd="url(#wu-cycle-arrow)"/>
       <text className="wu-label" x="505" y="232">condensation</text>
@@ -152,8 +153,19 @@ function CycleView(){
       <path className="wu-runoff wu-cycle-flow" d="M932 421Q885 470 832 486" markerEnd="url(#wu-cycle-arrow)"/>
       <text className="wu-label" x="917" y="465">surface run-off</text>
 
-      <path className="wu-infiltration wu-cycle-flow" d="M715 505V565" markerEnd="url(#wu-cycle-arrow)"/>
-      <text className="wu-label" x="733" y="545">infiltration</text>
+      <g className="wu-interception">
+        <circle cx="604" cy="388" r="6"/><circle cx="625" cy="399" r="5"/><circle cx="964" cy="374" r="6"/>
+      </g>
+      <text className="wu-small" x="880" y="350">some rain is intercepted by vegetation</text>
+
+      <path className="wu-infiltration wu-cycle-flow" d="M715 505V548" markerEnd="url(#wu-cycle-arrow)"/>
+      <text className="wu-label" x="733" y="535">infiltration</text>
+
+      <path className="wu-percolation wu-cycle-flow" d="M735 548V595" markerEnd="url(#wu-cycle-arrow)"/>
+      <text className="wu-small" x="750" y="580">percolation to groundwater</text>
+
+      <path className="wu-throughflow wu-cycle-flow" d="M910 535Q840 548 770 550Q715 551 680 540" markerEnd="url(#wu-cycle-arrow)"/>
+      <text className="wu-small" x="845" y="524">throughflow through soil</text>
 
       <path className="wu-groundwater-layer" d="M565 575Q750 545 1035 570V650H565Z"/>
       <path className="wu-groundwater-flow wu-cycle-flow" d="M965 604Q800 620 610 618Q520 617 455 595" markerEnd="url(#wu-cycle-arrow)"/>
@@ -167,7 +179,7 @@ function CycleView(){
       <text className="wu-reservoir-label" x="872" y="588" textAnchor="middle">fresh groundwater</text>
       <text className="wu-cycle-caption" x="540" y="635" textAnchor="middle">Water moves continuously between atmosphere, land, surface water and groundwater.</text>
     </svg>
-    <p>The water cycle continually moves water through evaporation, transpiration, condensation, precipitation, surface run-off, infiltration and groundwater flow. Rivers and underground water return part of this water toward the sea, while precipitation renews freshwater stores used by people and ecosystems.</p>
+    <p>The water cycle continually moves water through evaporation, transpiration, condensation, precipitation, interception, surface run-off, infiltration, percolation, throughflow and groundwater flow. Rivers and underground water return part of this water toward the sea, while precipitation renews freshwater stores used by people and ecosystems.</p>
   </div>;
 }
 
