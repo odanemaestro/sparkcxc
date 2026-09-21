@@ -17,6 +17,11 @@ const VIEWS = {
     title:"A fungal cell is eukaryotic and contains a membrane-bound nucleus",
     note:"This budding yeast example shows the cell wall, cell membrane, cytoplasm, nucleus, vacuole and mitochondria. Fungi are eukaryotes, unlike bacteria, and fungal cells do not contain chloroplasts.",
   },
+  viral:{
+    label:"Virus particle",
+    title:"A virus is an acellular particle built from genetic material and a protein coat",
+    note:"This diagram shows a typical enveloped-virus example. Viral structures vary, and some viruses do not have a lipid envelope. Viruses have no cytoplasm or ribosomes and reproduce only inside living host cells.",
+  },
   useful:{
     label:"Useful roles",
     title:"Microorganisms support food production and nutrient cycling",
@@ -202,6 +207,66 @@ function FungalCellScene() {
   );
 }
 
+function VirusStructureScene() {
+  const spikes=Array.from({length:16},(_,i)=>{
+    const angle=i*22.5*Math.PI/180;
+    const x1=480+Math.cos(angle)*155;
+    const y1=280+Math.sin(angle)*155;
+    const x2=480+Math.cos(angle)*195;
+    const y2=280+Math.sin(angle)*195;
+    return {i,x1,y1,x2,y2};
+  });
+
+  return (
+    <div className="spark-virus-structure-scene">
+      <svg className="spark-virus-structure-svg" viewBox="0 0 980 590" role="img" aria-label="Labelled example of an enveloped virus showing surface proteins, lipid envelope, protein capsid and genetic material, with a note that not all viruses have envelopes">
+        <defs>
+          <marker id="virus-callout-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+            <path d="M0 0L9 4.5L0 9Z" className="vs-arrow-head"/>
+          </marker>
+        </defs>
+
+        <circle className="vs-envelope" cx="480" cy="280" r="155"/>
+        <circle className="vs-envelope-inner" cx="480" cy="280" r="137"/>
+
+        <g className="vs-spikes">
+          {spikes.map(({i,x1,y1,x2,y2})=><g key={i}>
+            <line x1={x1} y1={y1} x2={x2} y2={y2}/>
+            <circle cx={x2} cy={y2} r="13"/>
+          </g>)}
+        </g>
+
+        <path className="vs-capsid" d="M480 177L569 228L569 331L480 383L391 331L391 228Z"/>
+        <path className="vs-genome" d="M421 280Q438 235 458 278T497 278T538 278Q552 247 560 278Q548 323 522 289T477 291T435 291Q419 318 407 286"/>
+
+        <g className="vs-callouts">
+          <path d="M620 165L795 95" markerEnd="url(#virus-callout-arrow)"/><text x="815" y="100">surface protein / spike</text>
+          <path d="M617 245L795 205" markerEnd="url(#virus-callout-arrow)"/><text x="815" y="210">lipid envelope</text>
+          <path d="M557 320L795 315" markerEnd="url(#virus-callout-arrow)"/><text x="815" y="320">protein capsid</text>
+          <path d="M500 282L795 420" markerEnd="url(#virus-callout-arrow)"/><text x="815" y="425">genetic material, DNA or RNA</text>
+        </g>
+
+        <g className="vs-scale-note">
+          <rect x="80" y="395" width="285" height="120" rx="16"/>
+          <text x="103" y="430">Virus particles are not cells</text>
+          <text className="vs-small" x="103" y="460">no cytoplasm</text>
+          <text className="vs-small" x="103" y="485">no ribosomes</text>
+          <text className="vs-small" x="103" y="510">depend on host cells for reproduction</text>
+        </g>
+
+        <text className="vs-envelope-note" x="480" y="535" textAnchor="middle">example enveloped virus, some viruses lack a lipid envelope</text>
+      </svg>
+
+      <div className="spark-virus-structure-notes">
+        <article><b>Genetic material</b><p>A virus carries genetic information as DNA or RNA, depending on the virus.</p></article>
+        <article><b>Capsid</b><p>A protein coat surrounds and protects the viral genetic material.</p></article>
+        <article><b>Envelope and spikes</b><p>Some viruses have a lipid envelope with surface proteins used in attachment to host cells. Other viruses are non-enveloped.</p></article>
+        <article><b>Acellular</b><p>Viruses are not cells. They do not have cytoplasm, ribosomes or independent cellular metabolism.</p></article>
+      </div>
+    </div>
+  );
+}
+
 function UsefulScene() {
   return (
     <svg viewBox="0 0 980 520" role="img" aria-label="Useful roles of microbes in yoghurt production nitrogen fixation and decomposition">
@@ -298,6 +363,7 @@ export default function MicrobeExplorer() {
         {view==="compare" && <CompareScene />}
         {view==="bacterial" && <BacterialCellScene />}
         {view==="fungal" && <FungalCellScene />}
+        {view==="viral" && <VirusStructureScene />}
         {view==="useful" && <UsefulScene />}
         {view==="harmful" && <HarmfulScene />}
         {view==="antibiotics" && <AntibioticScene />}
