@@ -51,3 +51,11 @@ html[data-theme="dark"] .sep-pour-beaker,
 body[data-theme="dark"] .sep-pour-beaker,
 .dark .sep-pour-beaker{fill:#18344d;stroke:#9bb0c1}
 @media(max-width:620px){.sep-small{font-size:16px}}
+
+.spark-crystallisation-svg{display:block;width:100%;height:auto;min-height:320px;margin-bottom:14px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.sep-evap-dish,.sep-crystal-beaker,.sep-crystal-flask{fill:#eef3f5;stroke:#697f8b;stroke-width:5}.sep-crystal-rim{stroke:#697f8b;stroke-width:5;stroke-linecap:round}.sep-crystal-solution{fill:#b3d9e7}.sep-crystal-solution.cool{fill:#a9d3e2}.sep-tripod-small{fill:none;stroke:#5f6d75;stroke-width:6;stroke-linecap:round}.sep-flame-small{fill:#e58249;stroke:#a95631;stroke-width:3}.sep-vapour-small{fill:none;stroke:#7fa0b1;stroke-width:4;stroke-linecap:round}
+.sep-process-arrow,.sep-cooling-arrow{fill:none;stroke:#0d9488;stroke-width:6;stroke-linecap:round}.sep-crystal-solid,.sep-crystal-residue polygon{fill:#d9e5ec;stroke:#738b98;stroke-width:2}.sep-crystal-funnel{fill:#eef3f5;stroke:#697f8b;stroke-width:5}.sep-crystal-paper{fill:#f4f0df;stroke:#9e9573;stroke-width:3}.sep-crystal-stem{stroke:#697f8b;stroke-width:7;stroke-linecap:round}.sep-mother-liquor{fill:#b3d9e7}.sep-crystal-callout{stroke:#647987;stroke-width:2}.sep-crystal-title,.sep-crystal-label,.sep-crystal-note{fill:var(--spark-ink,#102a43);font-weight:850}.sep-crystal-title{font-size:15px}.sep-crystal-label{font-size:13px}.sep-crystal-note{font-size:12px}.sep-crystal-key rect{fill:#f5f8fa;stroke:#c4d2dc;stroke-width:2}
+html[data-theme="dark"] .spark-crystallisation-svg,body[data-theme="dark"] .spark-crystallisation-svg,.dark .spark-crystallisation-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .sep-crystal-title,body[data-theme="dark"] .sep-crystal-title,.dark .sep-crystal-title,html[data-theme="dark"] .sep-crystal-label,body[data-theme="dark"] .sep-crystal-label,.dark .sep-crystal-label,html[data-theme="dark"] .sep-crystal-note,body[data-theme="dark"] .sep-crystal-note,.dark .sep-crystal-note{fill:#e7f0f7}
+@media(max-width:900px){.spark-crystallisation-svg{min-height:285px}}
+@media(max-width:620px){.spark-crystallisation-svg{min-height:240px}.sep-crystal-title{font-size:18px}.sep-crystal-label,.sep-crystal-note{font-size:16px}}
