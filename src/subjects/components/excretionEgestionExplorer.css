@@ -45,3 +45,23 @@ html[data-theme="dark"] .spark-excretion-route-stage,body[data-theme="dark"] .sp
 @media(max-width:850px){.spark-excretion-route-layout{grid-template-columns:1fr}}
 @media(max-width:620px){.spark-excretion-egestion{padding:14px}.spark-excretion-tabs,.spark-excretion-choice{display:grid;grid-template-columns:1fr 1fr}.spark-excretion-decision-arrows,.spark-excretion-decision-outcomes{grid-template-columns:1fr}.spark-excretion-route-stage .ee-label,.spark-excretion-route-stage .ee-organ-label,.spark-excretion-route-stage .ee-exit-label{font-size:19px}}
 @media(max-width:390px){.spark-excretion-tabs,.spark-excretion-choice{grid-template-columns:1fr}}
+
+
+.spark-excretion-decision-svg{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.eed-start{fill:#eef6f8;stroke:#6f8998;stroke-width:3}
+.eed-heading,.eed-card-title,.eed-outcome-title,.eed-example{fill:#294d64;font-weight:900}
+.eed-heading{font-size:18px}.eed-card-title{font-size:14px}.eed-outcome-title{font-size:18px}.eed-example{font-size:12px}
+.eed-small,.eed-card-note{fill:#536d80;font-weight:750}.eed-small{font-size:12px}.eed-card-note{font-size:10px}
+.eed-branch,.eed-outcome-arrow,.eed-metabolism-arrow,.eed-not-absorbed{fill:none;stroke-width:5;stroke-linecap:round}.eed-branch.excretion,.eed-outcome-arrow.excretion,.eed-metabolism-arrow{stroke:#2f8b70}.eed-branch.egestion,.eed-outcome-arrow.egestion,.eed-not-absorbed{stroke:#aa7440}.eed-arrow-head{fill:#60788a}
+.eed-origin-cell rect{fill:#edf8f3;stroke:#83ad9e;stroke-width:3}.eed-origin-gut rect{fill:#fff6ec;stroke:#c79b72;stroke-width:3}
+.eed-cell{fill:#d9e9f2;stroke:#6489a0;stroke-width:4}.eed-nucleus{fill:#987caf;stroke:#664e7d;stroke-width:3}.eed-waste-dot{fill:#2f8b70}
+.eed-gut{fill:none;stroke:#bb8e6f;stroke-width:16;stroke-linejoin:round}.eed-food-dots circle{fill:#aa7440}
+.eed-outcome.excretion rect{fill:#e8f6f0;stroke:#6fae97;stroke-width:3}.eed-outcome.egestion rect{fill:#fff0e2;stroke:#c69061;stroke-width:3}
+html[data-theme="dark"] .spark-excretion-decision-svg,body[data-theme="dark"] .spark-excretion-decision-svg,.dark .spark-excretion-decision-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .eed-heading,body[data-theme="dark"] .eed-heading,.dark .eed-heading,
+html[data-theme="dark"] .eed-card-title,body[data-theme="dark"] .eed-card-title,.dark .eed-card-title,
+html[data-theme="dark"] .eed-outcome-title,body[data-theme="dark"] .eed-outcome-title,.dark .eed-outcome-title,
+html[data-theme="dark"] .eed-example,body[data-theme="dark"] .eed-example,.dark .eed-example,
+html[data-theme="dark"] .eed-small,body[data-theme="dark"] .eed-small,.dark .eed-small,
+html[data-theme="dark"] .eed-card-note,body[data-theme="dark"] .eed-card-note,.dark .eed-card-note{fill:#e1edf5}
+@media(max-width:620px){.eed-heading{font-size:23px}.eed-card-title{font-size:18px}.eed-outcome-title{font-size:23px}.eed-small,.eed-example{font-size:16px}.eed-card-note{font-size:14px}}
