@@ -97,8 +97,47 @@ function BuoyancyView(){
   const [jacket,setJacket]=useState(true);
   return <div className="spark-water-safety-buoyancy">
     <div className="spark-water-safety-buttons"><button type="button" className={jacket?"active":""} onClick={()=>setJacket(true)}>With life jacket</button><button type="button" className={!jacket?"active":""} onClick={()=>setJacket(false)}>Without jacket</button></div>
-    <div className="spark-safety-water"><div className={"spark-safety-person "+(jacket?"high":"low")}>{jacket&&<span>buoyant jacket</span>}person</div></div>
-    <p>{jacket?"The low-density material adds volume with little mass, lowering average density and allowing enough water to be displaced for upthrust to support the person.":"Without added flotation, a person must rely on their own buoyancy and swimming ability."}</p>
+    <svg className="spark-water-buoyancy-svg" viewBox="0 0 860 520" role="img" aria-label={jacket?"Person wearing a life jacket floating higher because increased volume displaces more water":"Person without a life jacket floating lower in the water"}>
+      <defs>
+        <marker id="ws-force-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+          <path className="ws-force-head" d="M0 0L10 5L0 10Z"/>
+        </marker>
+      </defs>
+      <path className="ws-buoy-water" d="M25 245Q120 225 215 245T405 245T595 245T835 245V500H25Z"/>
+      <line className="ws-waterline-main" x1="25" y1="245" x2="835" y2="245"/>
+
+      <g className={jacket?"ws-floating-person jacketed":"ws-floating-person unjacketed"}>
+        <circle className="ws-buoy-head" cx="430" cy={jacket?145:205} r="38"/>
+        <path className="ws-buoy-body" d={jacket?"M392 185Q430 165 468 185L486 360H374Z":"M392 245Q430 225 468 245L486 410H374Z"}/>
+        <path className="ws-buoy-arm" d={jacket?"M402 220L300 285M458 220L560 285":"M402 280L315 335M458 280L545 335"}/>
+        <path className="ws-buoy-leg" d={jacket?"M405 350L360 470M455 350L500 470":"M405 400L375 485M455 400L485 485"}/>
+        {jacket&&<path className="ws-buoy-jacket" d="M382 195Q405 175 420 205L430 290L440 205Q455 175 478 195L472 315Q430 335 388 315Z"/>}
+      </g>
+
+      <path className={jacket?"ws-displaced-region jacket":"ws-displaced-region body"} d={jacket?"M350 245Q430 220 510 245V395Q430 430 350 395Z":"M375 245Q430 235 485 245V430Q430 455 375 430Z"}/>
+      <text className="ws-buoy-label" x="610" y="335">{jacket?"larger displaced-water volume":"smaller added flotation volume"}</text>
+      <path className="ws-buoy-callout" d={jacket?"M505 340H595":"M485 365H595"}/>
+
+      <path className="ws-force up" d={jacket?"M430 420V315":"M430 455V355"} markerEnd="url(#ws-force-arrow)"/>
+      <text className="ws-force-label up" x="455" y={jacket?395:430}>upthrust</text>
+      <path className="ws-force down" d={jacket?"M430 120V205":"M430 180V265"} markerEnd="url(#ws-force-arrow)"/>
+      <text className="ws-force-label down" x="455" y={jacket?155:215}>weight</text>
+
+      {jacket&&<g className="ws-jacket-air">
+        <circle cx="404" cy="230" r="8"/><circle cx="455" cy="235" r="7"/><circle cx="414" cy="270" r="6"/><circle cx="447" cy="280" r="6"/>
+      </g>}
+
+      <g className="ws-buoy-key">
+        <rect x="35" y="35" width="300" height="150" rx="16"/>
+        <text className="ws-key-title" x="55" y="68">{jacket?"Life jacket adds volume":"No added flotation"}</text>
+        <text className="ws-key-text" x="55" y="98">{jacket?"low-density foam or trapped air":"average body density alone"}</text>
+        <text className="ws-key-text" x="55" y="126">{jacket?"more water displaced before sinking deeply":"person sits lower in the water"}</text>
+        <text className="ws-key-text" x="55" y="154">{jacket?"greater margin for keeping airway clear":"less flotation support"}</text>
+      </g>
+
+      <text className="ws-buoy-caption" x="430" y="505" textAnchor="middle">{jacket?"life jacket increases volume with little added mass, lowering average density":"without a life jacket, flotation depends mainly on the person's own average density and swimming ability"}</text>
+    </svg>
+    <p>{jacket?"The low-density material adds volume with little mass, lowering average density and allowing more water to be displaced. The resulting upthrust helps support the person higher in the water.":"Without added flotation, a person must rely on their own buoyancy and swimming ability. A life jacket does not make weight disappear; it helps enough water be displaced for upthrust to balance the person's weight at a safer position."}</p>
   </div>;
 }
 
