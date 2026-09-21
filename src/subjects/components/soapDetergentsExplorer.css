@@ -14,3 +14,22 @@ html[data-theme="dark"] .spark-detergent-tabs button.active,body[data-theme="dar
 @media(max-width:900px){.spark-soap-compare,.spark-detergent-skin{grid-template-columns:1fr}.spark-phosphate-view{flex-direction:column}.spark-phosphate-view>div{text-align:center;transform:rotate(90deg)}.spark-phosphate-view aside{flex-basis:auto}.spark-soap-equation{grid-template-columns:1fr}}
 @media(max-width:620px){.spark-soap-detergents{padding:14px}.spark-detergent-tabs{display:grid;grid-template-columns:1fr 1fr}}
 @media(max-width:390px){.spark-detergent-tabs{grid-template-columns:1fr}}
+
+.spark-surfactant-diagram{display:block;width:100%;height:auto;margin:14px 0;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.sd-water{fill:#a9d6e8}.sd-grease{fill:#d5ad58;stroke:#80661f;stroke-width:5}
+.sd-grease-label{fill:#624b12;font-size:20px;font-weight:900}.sd-tail{stroke:#80661f;stroke-width:8;stroke-linecap:round}
+.sd-head,.sd-key-head{fill:#4d8faa;stroke:#2f647a;stroke-width:3}.sd-key-tail{stroke:#80661f;stroke-width:8;stroke-linecap:round}
+.sd-label{fill:#234559;font-size:15px;font-weight:900}.sd-small{fill:#31576b;font-size:12px;font-weight:750}.sd-water-particle{fill:#e9f8ff;stroke:#5f9eb8;stroke-width:2}
+html[data-theme="dark"] .spark-surfactant-diagram,
+body[data-theme="dark"] .spark-surfactant-diagram,
+.dark .spark-surfactant-diagram{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .sd-water,
+body[data-theme="dark"] .sd-water,
+.dark .sd-water{fill:#174761}
+html[data-theme="dark"] .sd-label,
+body[data-theme="dark"] .sd-label,
+.dark .sd-label,
+html[data-theme="dark"] .sd-small,
+body[data-theme="dark"] .sd-small,
+.dark .sd-small{fill:#e0edf5}
+@media(max-width:620px){.sd-label{font-size:18px}.sd-small{font-size:15px}}
