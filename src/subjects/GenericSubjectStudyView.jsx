@@ -69,6 +69,7 @@ import ElectricalHazardsExplorer from "./components/ElectricalHazardsExplorer";
 import FireExtinguishingExplorer from "./components/FireExtinguishingExplorer";
 import ProtectiveGearExplorer from "./components/ProtectiveGearExplorer";
 import HeatTransferApplicationsExplorer from "./components/HeatTransferApplicationsExplorer";
+import ThermostatExplorer from "./components/ThermostatExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -430,6 +431,9 @@ function GenericLessonContent({
         }
         if (model?.type === "heat-transfer-applications") {
           return <HeatTransferApplicationsExplorer key={model.id || "heat-transfer-applications"} />;
+        }
+        if (model?.type === "thermostat-control") {
+          return <ThermostatExplorer key={model.id || "thermostat-control"} />;
         }
         return null;
       })}
