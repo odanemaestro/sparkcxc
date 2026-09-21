@@ -5,6 +5,24 @@ begin;
 -- Keep one enabled learner topic for each canonical syllabus objective.
 -- ============================================================================
 
+-- Retire legacy full-course placeholder topics that used the m1-o-..., m2-o-...
+-- and m3-o-... identifiers. Keep the rows for historical references, but remove
+-- them from the learner structure once the acceptance-audited canonical topics
+-- have been inserted.
+update public.spark_subject_topics
+set enabled = false,
+    updated_at = now()
+where subject_id = 'integrated-science'
+  and topic_id ~ '^m[123]-o-';
+
+-- Preserve old catalog records for audit/history while preventing activities
+-- tied to retired placeholder topic IDs from surfacing in the learner shell.
+update public.spark_subject_activity_catalog
+set enabled = false,
+    updated_at = now()
+where subject_id = 'integrated-science'
+  and topic_id ~ '^m[123]-o-';
+
 -- Objective 1.1.2 was already seeded as m1-t1-2-animal-and-plant-cells.
 -- A later migration introduced a second topic row with the same objective.
 -- The established topic keeps the richer acceptance-audited lesson, diagram
