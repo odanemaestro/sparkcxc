@@ -393,6 +393,7 @@ body[data-theme="dark"] .spark-label-diagram-actions button:disabled,
 
 /* SPARK_HUMAN_TOOTH_TEMPLATE_V1 */
 .spark-diagram-tooth .tooth-enamel{fill:#f5f8fa;stroke:#6d7f8b;stroke-width:8}
+.spark-diagram-tooth .tooth-cementum{fill:#d7c5a5;stroke:#9b8767;stroke-width:7}
 .spark-diagram-tooth .tooth-dentine{fill:#ead7a0;stroke:#a58a45;stroke-width:5}
 .spark-diagram-tooth .tooth-pulp{fill:#e6a0a7;stroke:#a55b65;stroke-width:5}
 .spark-diagram-tooth .tooth-gum{fill:#e6a3a8;stroke:#9f5d65;stroke-width:5}
