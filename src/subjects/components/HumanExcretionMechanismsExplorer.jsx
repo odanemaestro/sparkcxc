@@ -31,44 +31,58 @@ const VIEWS = {
 
 function KidneyScene() {
   return (
-    <svg viewBox="0 0 980 560" role="img" aria-label="Kidney and nephron showing ultrafiltration, reabsorption and urine formation">
-      <g transform="translate(60 55)">
-        <path className="hex-kidney" d="M165 20Q55 40 40 180Q30 330 150 410Q265 370 285 245Q300 130 250 65Q220 25 165 20Z" />
-        <path className="hex-kidney-medulla" d="M165 80Q95 95 90 190Q92 285 165 340Q225 300 235 220Q240 140 205 100Q188 82 165 80Z" />
-        <path className="hex-kidney-pelvis" d="M175 205Q220 195 260 225Q225 248 195 275Z" />
-        <path className="hex-ureter" d="M245 235Q285 285 280 420" />
-        <text className="hex-label" x="145" y="465">kidney</text>
-        <text className="hex-small" x="255" y="445">ureter to bladder</text>
+    <svg viewBox="0 0 980 560" role="img" aria-label="CSEC-style kidney and nephron showing ultrafiltration, reabsorption and urine formation">
+      <g className="hex-csec-kidney" transform="translate(48 55) scale(1.08 1.38)">
+        <path className="hex-kidney" d="M150 30Q60 30 60 140Q60 250 150 250Q200 250 205 200Q185 170 190 140Q185 110 205 80Q200 30 150 30Z" />
+        <path className="hex-kidney-cortex-boundary" d="M150 52Q82 52 82 140Q82 228 150 228Q180 228 184 196" />
+
+        <g className="hex-kidney-pyramids">
+          <path d="M100 65L150 74L100 95Z" />
+          <path d="M100 100L150 113L100 130Z" />
+          <path d="M100 135L150 152L100 165Z" />
+          <path d="M100 170L150 191L100 200Z" />
+        </g>
+
+        <path className="hex-kidney-pelvis" d="M160 110Q200 140 160 170Q175 140 160 110Z" />
+        <path className="hex-ureter" d="M220 145Q238 178 241 220Q244 250 245 280" />
       </g>
 
-      <g transform="translate(390 45)">
-        <circle className="hex-bowman" cx="110" cy="95" r="72" />
-        <path className="hex-glomerulus" d="M60 95q18-45 38 0t38 0t38 0" />
-        <path className="hex-arteriole in" d="M0 80H42" />
-        <path className="hex-arteriole out" d="M178 110H230" />
+      <text className="hex-label" x="205" y="430" textAnchor="middle">longitudinal section of kidney</text>
+      <text className="hex-small" x="130" y="115">cortex</text>
+      <text className="hex-small" x="160" y="270">medulla</text>
+      <text className="hex-small" x="255" y="270">pelvis</text>
+      <text className="hex-small" x="310" y="405">ureter</text>
 
-        <path className="hex-tubule" d="M110 170Q50 205 95 245Q150 280 115 320Q65 360 135 390Q205 415 180 460Q160 495 210 520" />
-        <path className="hex-loop" d="M210 190V425Q210 470 245 470Q280 470 280 425V235" />
-        <path className="hex-collecting" d="M355 170V505" />
-        <path className="hex-tubule link" d="M280 235Q320 190 355 210" />
+      <g className="hex-csec-nephron" transform="translate(450 48) scale(1.16 1.2)">
+        <path className="hex-bowman" d="M80 60A38 38 0 1 0 118 98" />
+        <path className="hex-bowman-inner" d="M92 66A26 26 0 1 0 112 92" />
+        <path className="hex-glomerulus" d="M70 80q8-12 16 0q8 12 16 0q-8-14-16-2q-8 14-16 2" />
 
-        <path className="hex-filter-arrow" d="M110 90V145" />
-        <text className="hex-process" x="10" y="20">1. Ultrafiltration</text>
-        <text className="hex-small" x="10" y="42">water, urea, salts and glucose enter filtrate</text>
-        <text className="hex-small" x="10" y="62">blood cells and large proteins stay in blood</text>
+        <path className="hex-arteriole in" d="M60 15L78 62" />
+        <path className="hex-arteriole out" d="M100 15L95 62" />
 
-        <text className="hex-process" x="405" y="185">2. Selective reabsorption</text>
-        <text className="hex-small" x="405" y="207">all glucose, needed salts and much water</text>
-        <path className="hex-reabsorb-arrow" d="M175 250Q310 275 395 235" />
+        <path className="hex-tubule" d="M118 98q20 10 30-5q10-20 30-10q18 10 5 25q-15 12 5 25q15 8 25-2" />
+        <path className="hex-loop" d="M213 133V280Q228 300 243 280V120" />
+        <path className="hex-tubule link" d="M243 120q10-20 30-10q15 10 30 0q10-8 20 0" />
+        <path className="hex-collecting" d="M335 40V300" />
 
-        <text className="hex-process" x="405" y="365">3. Urine</text>
-        <text className="hex-small" x="405" y="387">urea + excess water + excess salts</text>
-        <path className="hex-urine-arrow" d="M355 425V520" />
+        <path className="hex-filter-arrow" d="M91 90Q108 106 124 112" />
+        <path className="hex-reabsorb-arrow" d="M170 120Q205 86 245 82" />
+        <path className="hex-urine-arrow" d="M335 245V295" />
+      </g>
 
-        <text className="hex-label" x="110" y="105" textAnchor="middle">glomerulus</text>
-        <text className="hex-small" x="110" y="137" textAnchor="middle">Bowman's capsule</text>
-        <text className="hex-small" x="190" y="545" textAnchor="middle">nephron tubule</text>
-        <text className="hex-small" x="355" y="545" textAnchor="middle">collecting duct</text>
+      <text className="hex-label" x="545" y="145" textAnchor="middle">glomerulus</text>
+      <text className="hex-small" x="560" y="180" textAnchor="middle">Bowman&apos;s capsule</text>
+      <text className="hex-small" x="725" y="445" textAnchor="middle">loop of Henle</text>
+      <text className="hex-small" x="845" y="175" textAnchor="middle">collecting duct</text>
+
+      <g className="hex-kidney-process-key">
+        <text className="hex-process" x="470" y="485">1. Ultrafiltration</text>
+        <text className="hex-small" x="470" y="508">small molecules enter the filtrate</text>
+        <text className="hex-process" x="670" y="485">2. Selective reabsorption</text>
+        <text className="hex-small" x="670" y="508">useful substances return to blood</text>
+        <text className="hex-process" x="865" y="485" textAnchor="end">3. Urine</text>
+        <text className="hex-small" x="865" y="508" textAnchor="end">urea + excess water + salts</text>
       </g>
     </svg>
   );
