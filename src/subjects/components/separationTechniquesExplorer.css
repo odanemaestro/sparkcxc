@@ -15,3 +15,39 @@ html[data-theme="dark"] .sep-label,body[data-theme="dark"] .sep-label,.dark .sep
 @media(max-width:900px){.spark-separation-selector{grid-template-columns:1fr}.spark-sand-salt,.spark-crystal-steps{flex-direction:column}.spark-sand-salt>div,.spark-crystal-steps>div{text-align:center;transform:rotate(90deg)}}
 @media(max-width:620px){.spark-separation-techniques{padding:14px}.spark-separation-tabs{display:grid;grid-template-columns:1fr 1fr}.sep-label,.sf-label{font-size:18px}}
 @media(max-width:390px){.spark-separation-tabs{grid-template-columns:1fr}}
+
+.spark-filtration-view svg{display:block;width:100%;height:auto;border-radius:10px;background:var(--spark-paper,#fff)}
+.sep-pour-beaker,.sep-funnel,.sep-flask-outline,.sep-round-flask,.sep-receiver{fill:#eef3f5;stroke:#697f8b;stroke-width:5}
+.sep-muddy{fill:#b9a077;opacity:.85}.sep-pour-stream{fill:none;stroke:#b9a077;stroke-width:10;stroke-linecap:round}
+.sep-filter-paper{fill:#f7f4e8;stroke:#a99f83;stroke-width:3}
+.sep-residue{fill:#9c805c}.sep-filtrate,.sep-distillate{fill:#a9d6e8}
+.sep-funnel-stem,.sep-neck,.sep-vapour-tube,.sep-delivery{fill:none;stroke:#697f8b;stroke-width:8;stroke-linecap:round}
+.sep-flow-arrow,.sep-vapour-arrow,.sep-water-arrow{fill:none;stroke:#2d8f85;stroke-width:5;stroke-linecap:round}
+.sep-arrow-head{fill:#2d8f85}.sep-small{fill:#526b7d;font-size:12px;font-weight:750}
+.sep-thermometer{stroke:#6d7f8d;stroke-width:6}.sep-thermometer-bulb{fill:#c25c4c;stroke:#843b31;stroke-width:3}
+.sep-condenser-jacket{fill:#dcebf1;stroke:#697f8b;stroke-width:5}.sep-condenser-tube{stroke:#7e9fb0;stroke-width:8}
+.sep-water-port{fill:none;stroke:#4d8fb3;stroke-width:7;stroke-linecap:round}
+.sep-tripod{fill:none;stroke:#5e6670;stroke-width:7;stroke-linecap:round}
+.sep-flame{fill:#df7d3c;stroke:#a94f25;stroke-width:3}
+html[data-theme="dark"] .spark-filtration-view svg,
+body[data-theme="dark"] .spark-filtration-view svg,
+.dark .spark-filtration-view svg{background:#0d2134}
+html[data-theme="dark"] .sep-small,
+body[data-theme="dark"] .sep-small,
+.dark .sep-small{fill:#d6e4ee}
+html[data-theme="dark"] .sep-round-flask,
+body[data-theme="dark"] .sep-round-flask,
+.dark .sep-round-flask,
+html[data-theme="dark"] .sep-receiver,
+body[data-theme="dark"] .sep-receiver,
+.dark .sep-receiver,
+html[data-theme="dark"] .sep-funnel,
+body[data-theme="dark"] .sep-funnel,
+.dark .sep-funnel,
+html[data-theme="dark"] .sep-flask-outline,
+body[data-theme="dark"] .sep-flask-outline,
+.dark .sep-flask-outline,
+html[data-theme="dark"] .sep-pour-beaker,
+body[data-theme="dark"] .sep-pour-beaker,
+.dark .sep-pour-beaker{fill:#18344d;stroke:#9bb0c1}
+@media(max-width:620px){.sep-small{font-size:16px}}
