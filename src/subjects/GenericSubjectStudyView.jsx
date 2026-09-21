@@ -88,6 +88,7 @@ import WaterUsesExplorer from "./components/WaterUsesExplorer";
 import ForcePrinciplesExplorer from "./components/ForcePrinciplesExplorer";
 import GravityInertiaExplorer from "./components/GravityInertiaExplorer";
 import StabilityCentreGravityExplorer from "./components/StabilityCentreGravityExplorer";
+import MaterialPropertiesExplorer from "./components/MaterialPropertiesExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -506,6 +507,9 @@ function GenericLessonContent({
         }
         if (model?.type === "stability-centre-gravity") {
           return <StabilityCentreGravityExplorer key={model.id || "stability-centre-gravity"} />;
+        }
+        if (model?.type === "material-properties") {
+          return <MaterialPropertiesExplorer key={model.id || "material-properties"} />;
         }
         return null;
       })}
