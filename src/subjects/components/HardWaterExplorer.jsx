@@ -8,13 +8,64 @@ function LatherView(){
     temp:{name:"Temporary hard water",lather:35,scum:65,text:"Calcium or magnesium hydrogencarbonates react with soap and reduce lather."},
     perm:{name:"Permanent hard water",lather:25,scum:75,text:"Calcium or magnesium sulphates and other non-hydrogencarbonate salts reduce lather and form scum."}
   }[sample];
+  const foamTop=290-(data.lather*1.65);
+  const scumY=350-(data.scum*0.42);
+  const bubbles=Array.from({length:14},(_,i)=>({
+    cx:368+(i%5)*34+(i%2)*7,
+    cy:foamTop+22+Math.floor(i/5)*27,
+    r:9+(i%3)*3
+  }));
   return <div className="spark-hardwater-lather">
     <div className="spark-hardwater-toggle">{[["soft","Soft"],["temp","Temporary hard"],["perm","Permanent hard"]].map(([k,l])=><button type="button" key={k} className={sample===k?"active":""} onClick={()=>setSample(k)}>{l}</button>)}</div>
-    <div className="spark-lather-bottle">
-      <div className="spark-lather-water"></div>
-      <div className="spark-lather-foam" style={{height:data.lather+"%"}}></div>
-      <div className="spark-lather-scum" style={{height:data.scum/4+"%"}}></div>
-    </div>
+
+    <svg className="spark-hardwater-soaptest-svg" viewBox="0 0 900 500" role="img" aria-label={data.name+" soap-lather test showing equal water and soap conditions, foam height and scum formation after shaking"}>
+      <defs>
+        <marker id="hw-shake-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path d="M0 0L9 4.5L0 9Z" className="hw-soap-arrow-head"/>
+        </marker>
+      </defs>
+
+      <g className="hw-soap-method" transform="translate(55 75)">
+        <rect x="0" y="0" width="235" height="300" rx="18"/>
+        <text className="hw-title" x="118" y="38" textAnchor="middle">fair soap test</text>
+        <text className="hw-small" x="28" y="84">1. same water volume</text>
+        <text className="hw-small" x="28" y="120">2. same amount of soap</text>
+        <text className="hw-small" x="28" y="156">3. stopper and shake equally</text>
+        <text className="hw-small" x="28" y="192">4. compare lather and scum</text>
+        <path className="hw-shake-path" d="M48 250Q118 215 186 250" markerEnd="url(#hw-shake-arrow)"/>
+        <text className="hw-small" x="118" y="280" textAnchor="middle">keep conditions constant</text>
+      </g>
+
+      <g className="hw-soap-bottle" transform="translate(325 45)">
+        <rect className="hw-soap-neck" x="100" y="0" width="95" height="70" rx="12"/>
+        <path className="hw-soap-glass" d="M70 62H225V105Q225 122 246 148Q275 183 275 245V380Q275 422 235 438H60Q20 422 20 380V245Q20 183 49 148Q70 122 70 105Z"/>
+        <path className="hw-soap-water" d="M34 260H261V380Q261 404 231 416H64Q34 404 34 380Z"/>
+        <line className="hw-water-level" x1="34" y1="260" x2="261" y2="260"/>
+        <text className="hw-small" x="148" y="286" textAnchor="middle">water + soap</text>
+
+        <rect className="hw-foam-zone" x="38" y={foamTop} width="219" height={Math.max(18,260-foamTop)} rx="18"/>
+        <g className="hw-foam-bubbles">
+          {bubbles.filter(b=>b.cy<255).map((b,i)=><circle key={i} cx={b.cx-325} cy={b.cy-45} r={b.r}/>)}
+        </g>
+
+        <g className="hw-scum-particles">
+          {Array.from({length:Math.max(2,Math.round(data.scum/10))},(_,i)=><ellipse key={i} cx={62+i*26} cy={scumY-45+(i%2)*5} rx="11" ry="5"/>)}
+        </g>
+        <text className="hw-soap-label" x="148" y={foamTop-16} textAnchor="middle">lather / foam</text>
+        <text className="hw-soap-label scum" x="148" y={Math.min(400,scumY-58)} textAnchor="middle">soap scum</text>
+      </g>
+
+      <g className="hw-soap-result" transform="translate(650 100)">
+        <rect x="0" y="0" width="195" height="250" rx="18"/>
+        <text className="hw-title" x="98" y="38" textAnchor="middle">{data.name}</text>
+        <text className="hw-result-value" x="98" y="95" textAnchor="middle">{data.lather}%</text>
+        <text className="hw-small" x="98" y="118" textAnchor="middle">relative lather</text>
+        <text className="hw-result-value scum" x="98" y="175" textAnchor="middle">{data.scum}%</text>
+        <text className="hw-small" x="98" y="198" textAnchor="middle">relative scum</text>
+        <text className="hw-small" x="98" y="226" textAnchor="middle">more lather = softer water</text>
+      </g>
+    </svg>
+
     <strong>{data.name}</strong><p>{data.text}</p>
   </div>;
 }
