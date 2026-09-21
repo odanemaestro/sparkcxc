@@ -70,3 +70,16 @@ body[data-theme="dark"] .ve-label.pressure,
   .ve-prop-title{font-size:17px}
   .ve-prop-text{font-size:16px}
 }
+
+
+.spark-volcano-type-svg{display:block;width:100%;height:auto;margin:2px 0 10px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:10px;background:var(--spark-paper,#fff)}
+.vt-ground{stroke:#7b684f;stroke-width:6;stroke-linecap:round}
+.vt-shield-cone{fill:#92775e;stroke:#5d4939;stroke-width:4}.vt-composite-cone{fill:#896d58;stroke:#574335;stroke-width:4}.vt-cinder-cone{fill:#8a715d;stroke:#594737;stroke-width:4}
+.vt-lava-layer,.vt-layer{fill:none;stroke-linecap:round}.vt-lava-layer{stroke:#c55f42;stroke-width:4}.vt-layer.ash{stroke:#5f564f;stroke-width:5}.vt-layer.lava{stroke:#d45b3c;stroke-width:5}
+.vt-central-vent{fill:none;stroke:#cc5639;stroke-width:8;stroke-linecap:round}.vt-crater{fill:#5a4438;stroke:#44332b;stroke-width:3}
+.vt-cinders circle{fill:#5f5148;stroke:#423831;stroke-width:2}.vt-water{fill:#9fcfe2}.vt-waterline{stroke:#4f8ba4;stroke-width:4}
+.vt-submarine-cone-svg{fill:#79685c;stroke:#55463d;stroke-width:4}.vt-submarine-plume circle{fill:#d8dde0;stroke:#788890;stroke-width:2}
+.vt-svg-label{fill:#294d64;font-size:13px;font-weight:900}.vt-svg-small{fill:#536d80;font-size:11px;font-weight:750}
+html[data-theme="dark"] .spark-volcano-type-svg,body[data-theme="dark"] .spark-volcano-type-svg,.dark .spark-volcano-type-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .vt-svg-label,body[data-theme="dark"] .vt-svg-label,.dark .vt-svg-label,html[data-theme="dark"] .vt-svg-small,body[data-theme="dark"] .vt-svg-small,.dark .vt-svg-small{fill:#e1edf5}
+@media(max-width:620px){.vt-svg-label{font-size:17px}.vt-svg-small{font-size:15px}}
