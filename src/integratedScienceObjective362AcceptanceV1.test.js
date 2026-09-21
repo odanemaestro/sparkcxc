@@ -9,6 +9,12 @@ describe("Integrated Science Objective 3.6.2 acceptance audit",()=>{
  test("covers pH and indicators",()=>{expect(migration).toContain("pH below 7 are acidic");expect(migration).toContain("Blue litmus turns red");expect(migration).toContain("Universal indicator");expect(explorer).toContain("pH scale");});
  test("distinguishes base alkali and salt",()=>{expect(migration).toContain("An alkali is a base that dissolves in water");expect(migration).toContain("Sodium chloride, common table salt");});
  test("covers neutralisation applications",()=>{expect(migration).toContain("acid + base → salt + water");expect(migration).toContain("Antacids");expect(migration).toContain("Farmers may add lime");expect(migration).toContain("Wastewater treatment");});
+ test("renders neutralisation and carbonate reaction geometry",()=>{
+  ["spark-neutralisation-svg","ab-ion hydrogen","ab-ion hydroxide","H⁺ + OH⁻ → H₂O","spark-carbonate-reaction-svg","ab-reaction-flask","ab-delivery-tube","limewater turns milky","acid + carbonate → salt + water + carbon dioxide"].forEach(term=>expect(explorer).toContain(term));
+  expect(css).toContain(".spark-neutralisation-svg");
+  expect(css).toContain(".spark-carbonate-reaction-svg");
+  expect(css).toContain(".ab-gas-bubble");
+ });
  test("covers acid carbonate reaction",()=>{expect(migration).toContain("acid + carbonate → salt + water + carbon dioxide");expect(migration).toContain("Limestone");});
  test("corrects outdated sting treatment",()=>{expect(migration).toContain("should not be taught as real first aid");expect(migration).toContain("Current NHS guidance");expect(explorer).toContain("Sting myth correction");});
  test("covers household examples",()=>{expect(migration).toContain("Vinegar and citrus juice are acidic");expect(migration).toContain("oven cleaners are strongly alkaline");expect(migration).toContain("Toothpaste is often mildly alkaline");});
