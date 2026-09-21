@@ -86,6 +86,13 @@ describe("Integrated Science Objective 1.7.1 acceptance audit", () => {
     expect(css).toContain(".fc-nucleus");
   });
 
+  test("shows the bacterial chromosome in a non-membrane-bound nucleoid region", () => {
+    expect(explorer).toContain("bac-nucleoid");
+    expect(explorer).toContain("nucleoid, chromosome region");
+    expect(explorer).toContain("The nucleoid is not surrounded by a membrane");
+    expect(css).toContain(".bac-nucleoid");
+  });
+
   test("visual remains responsive and dark-mode ready", () => {
     expect(css).toContain("@media(max-width:800px)");
     expect(css).toContain("@media(max-width:620px)");
