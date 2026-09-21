@@ -51,3 +51,17 @@ html[data-theme="dark"] .spark-infectious-route-grid article,body[data-theme="da
 @media(max-width:800px){.spark-infectious-route-grid,.spark-sti-profile-grid{grid-template-columns:1fr}.spark-infectious-tabs{display:grid;grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.spark-infectious-disease{padding:14px}.spark-infectious-stage .id-label{font-size:19px}.spark-infectious-stage .id-heading{font-size:24px}.spark-infectious-stage .id-small{font-size:17px}.spark-infectious-stage .id-card-title{font-size:20px}}
 @media(max-width:390px){.spark-infectious-tabs{grid-template-columns:1fr}}
+
+
+.spark-dengue-vector-scene{padding:12px}
+.spark-dengue-transmission-svg{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.id-person circle{fill:#e9c2aa;stroke:#9a6c52;stroke-width:4}.id-person path{fill:none;stroke:#8b6755;stroke-width:7;stroke-linecap:round}
+.id-virus-particles circle{fill:#b05b74;stroke:#7e3f53;stroke-width:2}.id-virus-particles.mosquito circle{fill:#b74968}
+.id-dengue-flow,.id-stage-arrow{fill:none;stroke:#0d9488;stroke-width:6;stroke-linecap:round}.id-dengue-arrow-head{fill:#0d9488}
+.id-aedes-body,.id-aedes-head{fill:#50534d;stroke:#2f312d;stroke-width:3}.id-aedes-wing{fill:#dce8ee;fill-opacity:.8;stroke:#718b98;stroke-width:3}
+.id-aedes-proboscis,.id-aedes-leg,.id-mini-adult-lines{fill:none;stroke:#3f423c;stroke-width:4;stroke-linecap:round}.id-aedes-stripe{fill:none;stroke:#e9ece7;stroke-width:5}
+.id-vector-divider{fill:#b7c8d2}.id-egg-stage{fill:#806e56;stroke:#574b3d;stroke-width:2}.id-larva-stage,.id-pupa-stage{fill:none;stroke:#667b4c;stroke-width:7;stroke-linecap:round}
+.id-mini-adult{fill:#50534d;stroke:#2f312d;stroke-width:3}.id-source-reduction-box{fill:#e8f3ef;stroke:#6d9e8d;stroke-width:3}
+html[data-theme="dark"] .spark-dengue-transmission-svg,body[data-theme="dark"] .spark-dengue-transmission-svg,.dark .spark-dengue-transmission-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .id-source-reduction-box,body[data-theme="dark"] .id-source-reduction-box,.dark .id-source-reduction-box{fill:#17392f;stroke:#57967e}
+@media(max-width:620px){.spark-dengue-vector-scene{padding:6px}}
