@@ -117,22 +117,48 @@ function HypertensionScene() {
 
 function ImmuneScene() {
   return (
-    <div className="spark-ncd-immune-grid">
-      <article>
-        <span>ALLERGY</span>
-        <h4>Response to a usually harmless trigger</h4>
-        <p>Examples include reactions to dust, pollen or some foods. Symptoms may include sneezing, itchy eyes or skin reactions.</p>
-      </article>
-      <article>
-        <span>AUTOIMMUNE DISEASE</span>
-        <h4>Immune attack on the body's own tissues</h4>
-        <p>Lupus and rheumatoid arthritis are syllabus examples. The immune response is directed against self tissues.</p>
-      </article>
-      <article>
-        <span>ASTHMA</span>
-        <h4>Chronic inflammatory airway condition</h4>
-        <p>Airways become inflamed and narrowed. Air pollution, smoke, allergens or infections can trigger or worsen symptoms in susceptible people.</p>
-      </article>
+    <div className="spark-ncd-immune-wrap">
+      <div className="spark-ncd-immune-grid">
+        <article>
+          <span>ALLERGY</span>
+          <h4>Response to a usually harmless trigger</h4>
+          <p>Examples include reactions to dust, pollen or some foods. Symptoms may include sneezing, itchy eyes or skin reactions.</p>
+        </article>
+        <article>
+          <span>AUTOIMMUNE DISEASE</span>
+          <h4>Immune attack on the body's own tissues</h4>
+          <p>Lupus and rheumatoid arthritis are syllabus examples. The immune response is directed against self tissues.</p>
+        </article>
+      </div>
+
+      <svg className="spark-asthma-airway-svg" viewBox="0 0 920 430" role="img" aria-label="Cross-sections comparing a healthy airway with an asthma airway showing narrowed lumen, swollen lining, tightened smooth muscle and excess mucus">
+        <g className="asthma-panel healthy" transform="translate(70 60)">
+          <text className="asthma-title" x="180" y="0" textAnchor="middle">Healthy airway</text>
+          <circle className="asthma-outer" cx="180" cy="165" r="120"/>
+          <circle className="asthma-muscle" cx="180" cy="165" r="96"/>
+          <circle className="asthma-lining" cx="180" cy="165" r="78"/>
+          <circle className="asthma-lumen" cx="180" cy="165" r="62"/>
+          <path className="asthma-airflow" d="M125 165H235"/>
+          <text className="asthma-label" x="180" y="315" textAnchor="middle">wide airway opening, easier airflow</text>
+        </g>
+
+        <g className="asthma-panel affected" transform="translate(490 60)">
+          <text className="asthma-title" x="180" y="0" textAnchor="middle">Asthma airway</text>
+          <circle className="asthma-outer" cx="180" cy="165" r="120"/>
+          <circle className="asthma-muscle tightened" cx="180" cy="165" r="98"/>
+          <circle className="asthma-lining swollen" cx="180" cy="165" r="82"/>
+          <circle className="asthma-lumen narrowed" cx="180" cy="165" r="38"/>
+          <path className="asthma-mucus" d="M154 142Q180 125 206 142Q193 162 174 155Q158 162 154 142Z"/>
+          <path className="asthma-airflow restricted" d="M150 190H210"/>
+          <text className="asthma-label" x="180" y="315" textAnchor="middle">narrowed opening makes airflow more difficult</text>
+
+          <path className="asthma-callout" d="M80 73L118 107"/><text className="asthma-small" x="5" y="68">tightened smooth muscle</text>
+          <path className="asthma-callout" d="M302 108L260 130"/><text className="asthma-small" x="305" y="104">swollen inflamed lining</text>
+          <path className="asthma-callout" d="M307 210L215 176"/><text className="asthma-small" x="310" y="216">excess mucus</text>
+        </g>
+
+        <text className="asthma-caption" x="460" y="410" textAnchor="middle">Smoke, air pollution, allergens or infections can trigger or worsen symptoms in susceptible people.</text>
+      </svg>
     </div>
   );
 }
