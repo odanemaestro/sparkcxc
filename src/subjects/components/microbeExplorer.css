@@ -115,3 +115,6 @@ html[data-theme="dark"] .fc-callouts text,body[data-theme="dark"] .fc-callouts t
 html[data-theme="dark"] .fc-caption,body[data-theme="dark"] .fc-caption,.dark .fc-caption{fill:#e7f0f7}
 @media(max-width:800px){.spark-fungal-cell-notes{grid-template-columns:1fr}}
 @media(max-width:620px){.spark-fungal-cell-scene{padding:8px}.fc-callouts text{font-size:18px}.fc-caption{font-size:17px}}
+
+.spark-bacterial-cell-svg .bac-nucleoid{fill:#f5eef7;fill-opacity:.38;stroke:#8b6c91;stroke-width:3;stroke-dasharray:9 7}
+html[data-theme="dark"] .spark-bacterial-cell-svg .bac-nucleoid,body[data-theme="dark"] .spark-bacterial-cell-svg .bac-nucleoid,.dark .spark-bacterial-cell-svg .bac-nucleoid{fill:#533d5d;fill-opacity:.25;stroke:#c4a6cb}
