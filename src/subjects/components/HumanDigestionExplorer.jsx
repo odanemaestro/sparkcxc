@@ -14,46 +14,66 @@ const ENZYMES=[
 
 function DigestiveSystemScene(){
   return (
-    <svg className="spark-digestion-system-svg" viewBox="0 0 620 760" role="img" aria-label="Human digestive system showing the pathway from mouth to anus and the liver, gall bladder and pancreas">
-      <circle className="dg-head" cx="310" cy="72" r="52" />
-      <path className="dg-mouth" d="M282 74Q310 90 338 74" />
-      <path className="dg-pharynx" d="M310 100V132" />
+    <svg className="spark-digestion-system-svg" viewBox="0 0 760 900" role="img" aria-label="Detailed human digestive system showing salivary glands, pharynx, oesophagus, liver, gall bladder, bile duct, stomach, pancreas, duodenum, small intestine, colon, cecum, appendix, rectum and anus">
+      <circle className="dg-head" cx="380" cy="78" r="58"/>
+      <path className="dg-mouth" d="M347 80Q380 96 413 80"/>
+      <ellipse className="dg-salivary" cx="346" cy="60" rx="12" ry="8"/>
+      <ellipse className="dg-salivary" cx="405" cy="96" rx="11" ry="7"/>
+      <ellipse className="dg-salivary" cx="358" cy="103" rx="10" ry="7"/>
+      <path className="dg-pharynx" d="M380 105Q395 123 382 146"/>
+      <path className="dg-body" d="M282 150Q380 113 478 150Q532 255 505 430Q487 565 445 760H315Q273 565 255 430Q228 255 282 150Z"/>
 
-      <path className="dg-body" d="M225 140Q310 105 395 140Q448 235 430 385Q417 500 380 640H240Q203 500 190 385Q172 235 225 140Z" />
+      <path className="dg-oesophagus" d="M382 140V318"/>
+      <path className="dg-liver" d="M250 302Q307 245 401 268Q438 281 452 325Q414 374 348 388Q281 392 250 357Z"/>
+      <path className="dg-gall" d="M334 371Q351 364 361 380Q359 409 337 419Q321 403 334 371Z"/>
+      <path className="dg-bile-duct" d="M348 395Q365 425 378 454"/>
 
-      <path className="dg-oesophagus" d="M310 112V285" />
-      <path className="dg-liver" d="M205 265Q258 215 337 236Q371 247 382 282Q350 326 292 340Q232 347 205 312Z" />
-      <path className="dg-gall" d="M275 323Q290 317 299 331Q297 356 278 365Q264 351 275 323Z" />
+      <path className="dg-stomach" d="M424 321Q475 305 499 345Q522 390 496 435Q474 472 429 463Q381 454 372 416Q362 374 389 344Q402 330 424 321Z"/>
+      <path className="dg-pancreas" d="M350 456Q407 429 478 453Q454 489 391 498Q366 494 350 456Z"/>
+      <path className="dg-pancreatic-duct" d="M370 469Q411 471 458 463"/>
+      <path className="dg-duodenum" d="M445 465Q500 478 500 520Q500 558 454 570"/>
 
-      <path className="dg-stomach" d="M340 280Q388 267 410 305Q431 347 409 387Q389 421 348 414Q305 407 296 372Q287 336 311 307Q323 292 340 280Z" />
-      <path className="dg-duodenum" d="M367 409Q408 420 409 455Q409 487 370 497" />
-      <path className="dg-pancreas" d="M286 414Q338 390 400 410Q378 442 325 450Q302 447 286 414Z" />
+      <path className="dg-colon ascending" d="M286 515Q250 565 264 690"/>
+      <path className="dg-colon transverse" d="M285 515Q380 482 478 515"/>
+      <path className="dg-colon descending" d="M478 515Q510 565 496 690"/>
+      <path className="dg-colon sigmoid" d="M496 690Q475 735 430 742Q395 744 381 767"/>
+      <path className="dg-cecum" d="M263 681Q244 705 263 730Q286 739 299 718Q301 694 286 681Z"/>
+      <path className="dg-appendix" d="M263 724Q236 746 246 780"/>
 
-      <path className="dg-large" d="M225 430Q205 458 210 535Q214 612 262 632M395 430Q415 458 410 535Q406 612 358 632M225 430Q310 402 395 430M262 632Q310 654 358 632" />
-      <path className="dg-appendix" d="M220 538Q192 558 202 588" />
+      <path className="dg-small" d="M310 535Q360 503 421 532Q455 552 426 578Q399 599 429 620Q451 641 420 663Q388 687 348 664Q317 646 346 623Q376 602 342 582Q309 563 310 535Z"/>
+      <path className="dg-small inner" d="M328 545Q362 525 398 544Q417 558 396 574Q373 592 399 609Q418 624 397 641Q372 660 348 643Q327 629 348 611Q369 594 348 580Q326 565 328 545Z"/>
 
-      <path className="dg-small" d="M262 454Q310 420 358 452Q385 476 358 500Q333 520 360 542Q379 564 348 584Q314 608 278 585Q251 564 279 542Q305 520 274 501Q245 482 262 454Z" />
-      <path className="dg-small inner" d="M280 463Q314 444 339 462Q355 477 336 491Q315 506 339 523Q354 538 335 553Q311 572 290 555Q272 541 290 525Q307 509 288 496Q268 482 280 463Z" />
+      <path className="dg-rectum" d="M381 767V826"/>
+      <path className="dg-anus" d="M364 826Q381 842 398 826"/>
+      <path className="dg-route" d="M380 94Q384 120 382 145V318Q411 338 427 366Q439 398 425 430Q412 459 466 480Q494 493 492 520Q486 553 454 570Q422 589 429 620Q444 657 411 680Q388 701 390 742Q383 774 381 824"/>
 
-      <path className="dg-rectum" d="M310 632V694" />
-      <path className="dg-anus" d="M294 694Q310 707 326 694" />
-
-      <path className="dg-route" d="M310 91V281Q333 300 345 325Q353 351 343 380Q334 405 365 421Q390 438 383 465Q374 495 345 512Q315 530 333 557Q352 586 330 612Q316 627 310 646V690" />
-
-      <g className="dg-labels">
-        <text x="88" y="78">mouth</text><path d="M135 74H275"/>
-        <text x="70" y="185">oesophagus</text><path d="M150 180H300"/>
-        <text x="68" y="282">liver</text><path d="M115 278H213"/>
-        <text x="447" y="320">stomach</text><path d="M405 315H440"/>
-        <text x="447" y="424">pancreas</text><path d="M395 419H440"/>
-        <text x="455" y="478">duodenum</text><path d="M408 474H448"/>
-        <text x="74" y="490">small intestine</text><path d="M160 486H258"/>
-        <text x="55" y="570">large intestine</text><path d="M155 565H215"/>
-        <text x="446" y="648">rectum</text><path d="M322 643H438"/>
-        <text x="446" y="704">anus</text><path d="M327 700H438"/>
+      <g className="dg-labels left">
+        <text x="106" y="54">salivary glands</text><path d="M205 50L338 61"/>
+        <text x="108" y="112">mouth</text><path d="M158 108L342 84"/>
+        <text x="96" y="164">pharynx</text><path d="M160 160L372 130"/>
+        <text x="82" y="230">oesophagus</text><path d="M165 226L372 220"/>
+        <text x="95" y="320">liver</text><path d="M142 316L260 314"/>
+        <text x="62" y="382">gall bladder</text><path d="M160 378L326 385"/>
+        <text x="50" y="430">common bile duct</text><path d="M175 426L360 420"/>
+        <text x="62" y="560">ascending colon</text><path d="M170 556L268 555"/>
+        <text x="115" y="700">cecum</text><path d="M162 696L255 700"/>
+        <text x="100" y="770">appendix</text><path d="M160 766L243 755"/>
       </g>
 
-      <text className="dg-caption" x="310" y="742" textAnchor="middle">food pathway through the alimentary canal</text>
+      <g className="dg-labels right">
+        <text x="586" y="336">stomach</text><path d="M500 332L575 332"/>
+        <text x="586" y="438">pancreas</text><path d="M474 462L575 438"/>
+        <text x="586" y="482">pancreatic duct</text><path d="M456 470L575 478"/>
+        <text x="586" y="536">duodenum</text><path d="M500 520L575 532"/>
+        <text x="586" y="585">small intestine</text><path d="M430 580L575 580"/>
+        <text x="586" y="520">transverse colon</text><path d="M472 512L575 512"/>
+        <text x="586" y="625">descending colon</text><path d="M498 615L575 620"/>
+        <text x="586" y="718">sigmoid colon</text><path d="M470 716L575 714"/>
+        <text x="586" y="790">rectum</text><path d="M392 786L575 786"/>
+        <text x="586" y="838">anus</text><path d="M400 833L575 833"/>
+      </g>
+
+      <text className="dg-caption" x="380" y="882" textAnchor="middle">food pathway through the alimentary canal, with accessory digestive organs</text>
     </svg>
   );
 }
