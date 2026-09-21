@@ -68,6 +68,7 @@ import ElectricalAccidentFirstAidExplorer from "./components/ElectricalAccidentF
 import ElectricalHazardsExplorer from "./components/ElectricalHazardsExplorer";
 import FireExtinguishingExplorer from "./components/FireExtinguishingExplorer";
 import ProtectiveGearExplorer from "./components/ProtectiveGearExplorer";
+import HeatTransferApplicationsExplorer from "./components/HeatTransferApplicationsExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -426,6 +427,9 @@ function GenericLessonContent({
         }
         if (model?.type === "protective-gear") {
           return <ProtectiveGearExplorer key={model.id || "protective-gear"} />;
+        }
+        if (model?.type === "heat-transfer-applications") {
+          return <HeatTransferApplicationsExplorer key={model.id || "heat-transfer-applications"} />;
         }
         return null;
       })}
