@@ -99,6 +99,7 @@ import AcidsBasesSaltsExplorer from "./components/AcidsBasesSaltsExplorer";
 import StatesMatterExplorer from "./components/StatesMatterExplorer";
 import MixturesExplorer from "./components/MixturesExplorer";
 import SeparationTechniquesExplorer from "./components/SeparationTechniquesExplorer";
+import CleaningAgentsEffectsExplorer from "./components/CleaningAgentsEffectsExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -550,6 +551,9 @@ function GenericLessonContent({
         }
         if (model?.type === "separation-techniques") {
           return <SeparationTechniquesExplorer key={model.id || "separation-techniques"} />;
+        }
+        if (model?.type === "cleaning-agent-effects") {
+          return <CleaningAgentsEffectsExplorer key={model.id || "cleaning-agent-effects"} />;
         }
         return null;
       })}
