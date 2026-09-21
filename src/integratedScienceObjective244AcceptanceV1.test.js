@@ -51,6 +51,23 @@ describe("Integrated Science Objective 2.4.4 acceptance audit", () => {
     expect(diagramCss).toContain("SPARK_THREE_PIN_PLUG_TEMPLATE_V1");
   });
 
+  test("renders electrical fault protection geometry", () => {
+    [
+      "spark-protection-device-svg",
+      "es-fuse-body",
+      "es-breaker-panel",
+      "es-earth-bond",
+      "es-fault-current",
+      "low-resistance earth path",
+      "fuse link melts and opens the live circuit",
+      "excess current trips contacts open",
+      "fault protection sequence",
+    ].forEach(term => expect(explorer).toContain(term));
+    expect(css).toContain(".spark-protection-device-svg");
+    expect(css).toContain(".es-fault-current");
+    expect(css).toContain(".es-breaker-arm");
+  });
+
   test("covers fuse selection examples", () => {
     expect(migration).toContain("690 ÷ 230 = 3 A");
     expect(migration).toContain("5 A fuse");
