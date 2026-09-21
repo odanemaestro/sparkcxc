@@ -83,3 +83,19 @@ body[data-theme="dark"] .ve-label.pressure,
 html[data-theme="dark"] .spark-volcano-type-svg,body[data-theme="dark"] .spark-volcano-type-svg,.dark .spark-volcano-type-svg{background:#0d2134;border-color:#29465f}
 html[data-theme="dark"] .vt-svg-label,body[data-theme="dark"] .vt-svg-label,.dark .vt-svg-label,html[data-theme="dark"] .vt-svg-small,body[data-theme="dark"] .vt-svg-small,.dark .vt-svg-small{fill:#e1edf5}
 @media(max-width:620px){.vt-svg-label{font-size:17px}.vt-svg-small{font-size:15px}}
+
+
+.spark-volcano-structure-svg{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.vs-sky{fill:#e5f2f7}.vs-ground{stroke:#7f6b51;stroke-width:8;stroke-linecap:round}
+.vs-cone-layers path{fill:none;stroke:#6f5846;stroke-width:5;opacity:.65}
+.vs-main-vent,.vs-secondary-vent{fill:none;stroke:#5a3d33;stroke-linecap:round}.vs-main-vent{stroke-width:22}.vs-secondary-vent{stroke-width:15}
+.vs-magma-rise{fill:none;stroke:#e75b31;stroke-width:12;stroke-linecap:round}.vs-lava-flow{fill:none;stroke:#ef5a2c;stroke-width:14;stroke-linecap:round}
+.vs-eruption-column path{fill:none;stroke:#d76642;stroke-width:10;stroke-linecap:round}
+.vs-ash-cloud circle{fill:#7a7775;stroke:#575452;stroke-width:3}.vs-ejected-fragments circle{fill:#5a4b43;stroke:#3c332e;stroke-width:2}
+.vs-callouts path{fill:none;stroke:#60788a;stroke-width:2.5}.vs-arrow-head{fill:#60788a}
+.vs-magma-label{fill:#7d2e24;font-size:14px;font-weight:950}.vs-lava-label{fill:#a33b29;font-size:14px;font-weight:950}.vs-caption{fill:#405d72;font-size:13px;font-weight:850}
+html[data-theme="dark"] .spark-volcano-structure-svg,body[data-theme="dark"] .spark-volcano-structure-svg,.dark .spark-volcano-structure-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .vs-sky,body[data-theme="dark"] .vs-sky,.dark .vs-sky{fill:#153148}
+html[data-theme="dark"] .vs-magma-label,body[data-theme="dark"] .vs-magma-label,.dark .vs-magma-label,html[data-theme="dark"] .vs-lava-label,body[data-theme="dark"] .vs-lava-label,.dark .vs-lava-label{fill:#ffb39b}
+html[data-theme="dark"] .vs-caption,body[data-theme="dark"] .vs-caption,.dark .vs-caption{fill:#d6e4ee}
+@media(max-width:620px){.vs-magma-label,.vs-lava-label{font-size:18px}.vs-caption{font-size:17px}}
