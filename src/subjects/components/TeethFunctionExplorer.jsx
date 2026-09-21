@@ -47,6 +47,46 @@ function TypesView(){
   </article>)}</div>;
 }
 
+function StructureView(){
+  return <div className="spark-tooth-structure-view">
+    <svg className="spark-tooth-structure-svg" viewBox="0 0 760 620" role="img" aria-label="Cross-section of a tooth showing enamel, dentine, pulp cavity, nerves, blood vessels, gum, jaw bone, crown, neck and root">
+      <path className="ts-jaw" d="M70 395Q150 350 240 372Q310 390 380 370Q465 344 555 378Q630 405 700 390V590H70Z"/>
+      <path className="ts-gum" d="M70 350Q150 305 245 338Q305 360 380 338Q470 305 555 340Q630 365 700 350V430Q615 445 540 414Q465 388 380 414Q305 441 235 417Q150 390 70 420Z"/>
+
+      <path className="ts-enamel" d="M220 80Q285 35 380 45Q475 35 540 80Q568 108 553 180Q543 225 522 274Q505 312 490 350L468 482Q458 555 414 560Q382 555 380 492Q378 555 346 560Q302 555 292 482L270 350Q255 312 238 274Q217 225 207 180Q192 108 220 80Z"/>
+      <path className="ts-dentine" d="M247 102Q304 68 380 76Q456 68 513 102Q532 126 521 180Q512 221 493 264Q474 305 461 344L445 474Q440 515 414 520Q394 512 392 466L388 353Q384 329 380 312Q376 329 372 353L368 466Q366 512 346 520Q320 515 315 474L299 344Q286 305 267 264Q248 221 239 180Q228 126 247 102Z"/>
+      <path className="ts-pulp" d="M315 180Q345 160 380 166Q415 160 445 180Q456 215 444 263Q430 306 414 333L405 458Q402 483 388 486Q380 477 380 452Q380 477 372 486Q358 483 355 458L346 333Q330 306 316 263Q304 215 315 180Z"/>
+
+      <path className="ts-nerve" d="M374 486V330Q357 287 356 220M386 486V330Q405 285 408 216"/>
+      <path className="ts-vessel one" d="M363 490V336Q347 300 340 255"/>
+      <path className="ts-vessel two" d="M397 490V336Q415 300 424 250"/>
+
+      <line className="ts-crown-line" x1="178" y1="95" x2="178" y2="330"/>
+      <line className="ts-root-line" x1="178" y1="360" x2="178" y2="555"/>
+      <text className="ts-region-label" x="160" y="210" textAnchor="end">crown</text>
+      <text className="ts-region-label" x="160" y="356" textAnchor="end">neck</text>
+      <text className="ts-region-label" x="160" y="470" textAnchor="end">root</text>
+
+      <g className="ts-callouts">
+        <path d="M488 110L610 80"/><text x="625" y="84">enamel</text>
+        <path d="M470 165L610 145"/><text x="625" y="150">dentine</text>
+        <path d="M430 230L610 225"/><text x="625" y="230">pulp cavity</text>
+        <path d="M405 360L610 310"/><text x="625" y="315">nerves and blood vessels</text>
+        <path d="M518 385L610 390"/><text x="625" y="395">gum</text>
+        <path d="M515 500L610 500"/><text x="625" y="505">jaw bone</text>
+      </g>
+
+      <text className="ts-caption" x="380" y="600" textAnchor="middle">tooth cross-section</text>
+    </svg>
+    <div className="spark-tooth-structure-notes">
+      <article><b>Enamel</b><p>Hard outer covering of the crown. It protects the tooth from wear and acid attack.</p></article>
+      <article><b>Dentine</b><p>Hard tissue beneath enamel. It forms most of the tooth and is less resistant to decay than enamel.</p></article>
+      <article><b>Pulp cavity</b><p>Contains nerves and blood vessels that keep the living tissues supplied.</p></article>
+      <article><b>Root and supporting tissues</b><p>The root anchors the tooth in the jaw. Gum and jaw bone support the tooth around the socket.</p></article>
+    </div>
+  </div>;
+}
+
 function FormulaView(){
   return <div className="spark-dental-formula">
     <article><span>ONE SIDE OF UPPER JAW</span><strong>2 incisors + 1 canine + 2 premolars + 3 molars</strong></article>
@@ -92,6 +132,7 @@ export default function TeethFunctionExplorer(){
   const [view,setView]=useState("types");
   const summary=useMemo(()=>({
     types:"Tooth shape matches function during mechanical digestion.",
+    structure:"A tooth has specialised layers and supporting tissues that protect living pulp and anchor the tooth in the jaw.",
     formula:"A complete adult dentition contains 32 teeth when third molars are present.",
     chewing:"Chewing increases the surface area of food available to digestive enzymes.",
     health:"Plaque control, fluoride and sensible sugar intake help protect teeth and gums.",
@@ -99,9 +140,10 @@ export default function TeethFunctionExplorer(){
 
   return <section className="spark-teeth-function">
     <header><span>TEETH AND DIGESTION</span><h3>Relate tooth structure to cutting, tearing, crushing and grinding</h3><p>Teeth begin mechanical digestion by breaking food into smaller pieces before enzyme-controlled chemical digestion continues.</p></header>
-    <div className="spark-teeth-tabs">{[["types","Tooth types"],["formula","Dental formula"],["chewing","Why chew?"],["health","Dental health"]].map(([key,label])=><button type="button" key={key} className={view===key?"active":""} onClick={()=>setView(key)}>{label}</button>)}</div>
+    <div className="spark-teeth-tabs">{[["types","Tooth types"],["structure","Tooth structure"],["formula","Dental formula"],["chewing","Why chew?"],["health","Dental health"]].map(([key,label])=><button type="button" key={key} className={view===key?"active":""} onClick={()=>setView(key)}>{label}</button>)}</div>
     <div className="spark-teeth-stage">
       {view==="types"&&<TypesView/>}
+      {view==="structure"&&<StructureView/>}
       {view==="formula"&&<FormulaView/>}
       {view==="chewing"&&<ChewingView/>}
       {view==="health"&&<HealthView/>}
