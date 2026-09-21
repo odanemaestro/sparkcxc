@@ -12,6 +12,52 @@ const ENZYMES=[
   {name:"Lipase",where:"Small intestine",substrate:"Fat",product:"Fatty acids + glycerol",condition:"Works efficiently after fat is emulsified"},
 ];
 
+function DigestiveSystemScene(){
+  return (
+    <svg className="spark-digestion-system-svg" viewBox="0 0 620 760" role="img" aria-label="Human digestive system showing the pathway from mouth to anus and the liver, gall bladder and pancreas">
+      <circle className="dg-head" cx="310" cy="72" r="52" />
+      <path className="dg-mouth" d="M282 74Q310 90 338 74" />
+      <path className="dg-pharynx" d="M310 100V132" />
+
+      <path className="dg-body" d="M225 140Q310 105 395 140Q448 235 430 385Q417 500 380 640H240Q203 500 190 385Q172 235 225 140Z" />
+
+      <path className="dg-oesophagus" d="M310 112V285" />
+      <path className="dg-liver" d="M205 265Q258 215 337 236Q371 247 382 282Q350 326 292 340Q232 347 205 312Z" />
+      <path className="dg-gall" d="M275 323Q290 317 299 331Q297 356 278 365Q264 351 275 323Z" />
+
+      <path className="dg-stomach" d="M340 280Q388 267 410 305Q431 347 409 387Q389 421 348 414Q305 407 296 372Q287 336 311 307Q323 292 340 280Z" />
+      <path className="dg-duodenum" d="M367 409Q408 420 409 455Q409 487 370 497" />
+      <path className="dg-pancreas" d="M286 414Q338 390 400 410Q378 442 325 450Q302 447 286 414Z" />
+
+      <path className="dg-large" d="M225 430Q205 458 210 535Q214 612 262 632M395 430Q415 458 410 535Q406 612 358 632M225 430Q310 402 395 430M262 632Q310 654 358 632" />
+      <path className="dg-appendix" d="M220 538Q192 558 202 588" />
+
+      <path className="dg-small" d="M262 454Q310 420 358 452Q385 476 358 500Q333 520 360 542Q379 564 348 584Q314 608 278 585Q251 564 279 542Q305 520 274 501Q245 482 262 454Z" />
+      <path className="dg-small inner" d="M280 463Q314 444 339 462Q355 477 336 491Q315 506 339 523Q354 538 335 553Q311 572 290 555Q272 541 290 525Q307 509 288 496Q268 482 280 463Z" />
+
+      <path className="dg-rectum" d="M310 632V694" />
+      <path className="dg-anus" d="M294 694Q310 707 326 694" />
+
+      <path className="dg-route" d="M310 91V281Q333 300 345 325Q353 351 343 380Q334 405 365 421Q390 438 383 465Q374 495 345 512Q315 530 333 557Q352 586 330 612Q316 627 310 646V690" />
+
+      <g className="dg-labels">
+        <text x="88" y="78">mouth</text><path d="M135 74H275"/>
+        <text x="70" y="185">oesophagus</text><path d="M150 180H300"/>
+        <text x="68" y="282">liver</text><path d="M115 278H213"/>
+        <text x="447" y="320">stomach</text><path d="M405 315H440"/>
+        <text x="447" y="424">pancreas</text><path d="M395 419H440"/>
+        <text x="455" y="478">duodenum</text><path d="M408 474H448"/>
+        <text x="74" y="490">small intestine</text><path d="M160 486H258"/>
+        <text x="55" y="570">large intestine</text><path d="M155 565H215"/>
+        <text x="446" y="648">rectum</text><path d="M322 643H438"/>
+        <text x="446" y="704">anus</text><path d="M327 700H438"/>
+      </g>
+
+      <text className="dg-caption" x="310" y="742" textAnchor="middle">food pathway through the alimentary canal</text>
+    </svg>
+  );
+}
+
 function PathwayView(){
   const steps=[
     ["Mouth","Chewing gives mechanical digestion. Salivary amylase begins starch digestion."],
@@ -22,7 +68,10 @@ function PathwayView(){
     ["Large intestine","Much of the remaining water is absorbed."],
     ["Rectum and anus","Undigested material is stored briefly and then egested."],
   ];
-  return <div className="spark-digestion-pathway">{steps.map((row,i)=><article key={row[0]}><span>{i+1}</span><div><b>{row[0]}</b><p>{row[1]}</p></div></article>)}</div>;
+  return <div className="spark-digestion-pathway-layout">
+    <div className="spark-digestion-system"><DigestiveSystemScene /></div>
+    <div className="spark-digestion-pathway">{steps.map((row,i)=><article key={row[0]}><span>{i+1}</span><div><b>{row[0]}</b><p>{row[1]}</p></div></article>)}</div>
+  </div>;
 }
 
 function EnzymeView(){
