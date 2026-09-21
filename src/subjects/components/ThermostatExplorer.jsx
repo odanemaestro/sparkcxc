@@ -55,10 +55,56 @@ function FeedbackView(){
 }
 
 function ExpansionView(){
-  return <div className="spark-bimetal-expansion">
-    <article className="brass"><span>BRASS</span><div className="spark-expansion-bar wide"></div><strong>expands more</strong></article>
-    <article className="iron"><span>IRON</span><div className="spark-expansion-bar narrow"></div><strong>expands less</strong></article>
-    <div className="spark-expansion-result"><b>Joined together</b><p>Because the two metals cannot expand independently, the strip bends. The metal that expands more lies on the outside of the curve.</p></div>
+  return <div className="spark-bimetal-expansion-view">
+    <svg className="spark-bimetal-expansion-svg" viewBox="0 0 980 560" role="img" aria-label="Bimetallic strip explanation showing brass and iron starting at the same length, brass expanding more when heated, iron expanding less, and the joined strip bending with brass on the outside of the curve">
+      <defs>
+        <marker id="bimetal-heat-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path d="M0 0L9 4.5L0 9Z" className="be-arrow-head"/>
+        </marker>
+      </defs>
+
+      <text className="be-heading" x="245" y="40" textAnchor="middle">metals free to expand separately</text>
+      <g className="be-free-metals">
+        <text className="be-label brass" x="70" y="115">BRASS</text>
+        <rect className="be-bar brass initial" x="160" y="88" width="250" height="34" rx="17"/>
+        <text className="be-small" x="285" y="145" textAnchor="middle">same starting length</text>
+
+        <text className="be-label iron" x="70" y="225">IRON</text>
+        <rect className="be-bar iron initial" x="160" y="198" width="250" height="34" rx="17"/>
+        <text className="be-small" x="285" y="255" textAnchor="middle">same starting length</text>
+
+        <g className="be-heat-source">
+          <path d="M455 75Q430 45 455 20Q460 48 475 32Q500 60 478 82Z"/>
+          <text className="be-small" x="465" y="110" textAnchor="middle">heated</text>
+        </g>
+
+        <path className="be-heat-flow" d="M505 105H555" markerEnd="url(#bimetal-heat-arrow)"/>
+        <path className="be-heat-flow" d="M505 215H555" markerEnd="url(#bimetal-heat-arrow)"/>
+
+        <rect className="be-bar brass expanded" x="575" y="88" width="330" height="34" rx="17"/>
+        <rect className="be-bar iron expanded" x="575" y="198" width="290" height="34" rx="17"/>
+        <text className="be-result brass" x="740" y="145" textAnchor="middle">brass expands more</text>
+        <text className="be-result iron" x="720" y="255" textAnchor="middle">iron expands less</text>
+      </g>
+
+      <line className="be-divider" x1="70" y1="300" x2="910" y2="300"/>
+      <text className="be-heading" x="490" y="340" textAnchor="middle">when the metals are firmly joined</text>
+
+      <g className="be-joined-strip">
+        <path className="be-joined brass" d="M205 470Q440 335 725 420"/>
+        <path className="be-joined iron" d="M205 488Q440 353 725 438"/>
+        <path className="be-bracket" d="M185 455V505M175 480H205"/>
+        <text className="be-small" x="140" y="486" textAnchor="end">fixed end</text>
+
+        <path className="be-curve-arrow" d="M720 385Q790 350 830 390" markerEnd="url(#bimetal-heat-arrow)"/>
+        <text className="be-result" x="820" y="330" textAnchor="middle">strip bends toward the metal that expands less</text>
+        <text className="be-label brass" x="470" y="388">brass on outside of curve</text>
+        <text className="be-label iron" x="470" y="465">iron on inside of curve</text>
+      </g>
+
+      <text className="be-caption" x="490" y="535" textAnchor="middle">The joined metals cannot reach their separate heated lengths, so unequal thermal expansion produces bending.</text>
+    </svg>
+    <p>Brass expands more than iron for the same temperature rise. When they are bonded together, they cannot expand independently. The pair therefore bends, with brass on the outside of the curve and iron on the inside.</p>
   </div>;
 }
 
