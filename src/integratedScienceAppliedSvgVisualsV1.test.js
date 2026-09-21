@@ -6,6 +6,8 @@ const water=read("WaterSafetyExplorer.jsx");
 const waterCss=read("waterSafetyExplorer.css");
 const fishing=read("FishingMethodsExplorer.jsx");
 const fishingCss=read("fishingMethodsExplorer.css");
+const electrical=read("HouseholdElectricalSafetyExplorer.jsx");
+const electricalCss=read("householdElectricalSafetyExplorer.css");
 
 describe("Integrated Science applied SVG visual acceptance V1",()=>{
   test("water safety renders recognisable flotation and rescue devices",()=>{
@@ -54,10 +56,33 @@ describe("Integrated Science applied SVG visual acceptance V1",()=>{
     ]) expect(fishingCss).toContain(term);
   });
 
+  test("three-pin plug renders live neutral earth fuse and cable grip spatially",()=>{
+    for(const term of [
+      "spark-three-pin-plug-svg",
+      "earth pin",
+      "neutral pin",
+      "live pin",
+      "green/yellow earth wire",
+      "blue neutral wire",
+      "brown live wire",
+      "fuse in live wire",
+      "cable grip"
+    ]) expect(electrical).toContain(term);
+    for(const term of [
+      ".ep-wire.live",
+      ".ep-wire.neutral",
+      ".ep-wire.earth",
+      ".ep-fuse",
+      ".ep-grip"
+    ]) expect(electricalCss).toContain(term);
+  });
+
   test("applied visuals retain responsive and dark theme coverage",()=>{
     expect(waterCss).toContain("@media(max-width:900px)");
     expect(waterCss).toContain('html[data-theme="dark"] .spark-water-device-svg');
     expect(fishingCss).toContain("@media(max-width:900px)");
     expect(fishingCss).toContain('html[data-theme="dark"] .spark-fishing-gear-svg');
+    expect(electricalCss).toContain("@media(max-width:900px)");
+    expect(electricalCss).toContain('html[data-theme="dark"] .spark-three-pin-plug-svg');
   });
 });
