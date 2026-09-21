@@ -12,3 +12,37 @@ html[data-theme="dark"] .spark-plastics-tabs button.active,body[data-theme="dark
 @media(max-width:900px){.spark-plastics-benefits,.spark-plastics-persistence,.spark-plastics-burning,.spark-plastics-policy{grid-template-columns:1fr}.spark-microplastic-chain{flex-direction:column}.spark-microplastic-chain span{transform:rotate(90deg)}}
 @media(max-width:620px){.spark-plastics-explorer{padding:14px}.spark-plastics-tabs{display:grid;grid-template-columns:1fr 1fr}}
 @media(max-width:390px){.spark-plastics-tabs{grid-template-columns:1fr}}
+
+.spark-turtle-model{min-height:0;background:none}
+.spark-turtle-model svg,.spark-microplastic-chain svg{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.spark-turtle-model p{position:static;margin:10px 0 0;background:transparent;padding:0}
+.pl-sea{fill:#8dc8df}.pl-surface{fill:none;stroke:#e1f5fb;stroke-width:6}
+.pl-turtle-shell{fill:#748f62;stroke:#405c37;stroke-width:5}
+.pl-turtle-head,.pl-flipper{fill:#819d70;stroke:#405c37;stroke-width:4}
+.pl-turtle-eye{fill:#192c34}.pl-bag{fill:rgba(242,248,250,.5);stroke:#f2f8fa;stroke-width:5}
+.pl-bag-handle,.pl-jelly-tentacle{fill:none;stroke:#f2f8fa;stroke-width:5;stroke-linecap:round}
+.pl-jelly{fill:#d4e8ef;fill-opacity:.65;stroke:#f0f8fb;stroke-width:4}
+.pl-risk-arrow,.pl-food-arrow{fill:none;stroke:#b65d4f;stroke-width:5;stroke-linecap:round}
+.pl-arrow-head{fill:#b65d4f}.pl-label{fill:#17384b;font-size:15px;font-weight:900}.pl-small{fill:#31576b;font-size:12px;font-weight:800}
+.spark-microplastic-chain{display:block}
+.spark-microplastic-chain p{margin-top:10px}
+.pl-micro{fill:#df6c69;stroke:#934440;stroke-width:2}
+.pl-plankton{fill:#d5b85d;stroke:#785f20;stroke-width:4}
+.pl-plankton path{fill:none;stroke:#785f20;stroke-width:4;stroke-linecap:round}
+.pl-fish{fill:#6f9eb6;stroke:#365f74;stroke-width:4}.pl-fish.large{fill:#527f98}
+html[data-theme="dark"] .spark-turtle-model svg,
+body[data-theme="dark"] .spark-turtle-model svg,
+.dark .spark-turtle-model svg,
+html[data-theme="dark"] .spark-microplastic-chain svg,
+body[data-theme="dark"] .spark-microplastic-chain svg,
+.dark .spark-microplastic-chain svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .pl-sea,
+body[data-theme="dark"] .pl-sea,
+.dark .pl-sea{fill:#174761}
+html[data-theme="dark"] .pl-label,
+body[data-theme="dark"] .pl-label,
+.dark .pl-label,
+html[data-theme="dark"] .pl-small,
+body[data-theme="dark"] .pl-small,
+.dark .pl-small{fill:#e0edf5}
+@media(max-width:620px){.pl-label{font-size:18px}.pl-small{font-size:15px}}
