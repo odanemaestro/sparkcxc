@@ -13,3 +13,19 @@ html[data-theme="dark"] .spark-teeth-tabs button.active,body[data-theme="dark"] 
 @media(max-width:850px){.spark-teeth-types,.spark-dental-formula,.spark-dental-health{grid-template-columns:1fr}.spark-dental-total{grid-column:auto}.spark-chewing-model{flex-direction:column}.spark-chewing-arrow{text-align:center;transform:rotate(90deg)}}
 @media(max-width:620px){.spark-teeth-function{padding:14px}.spark-teeth-tabs{display:grid;grid-template-columns:1fr 1fr}}
 @media(max-width:390px){.spark-teeth-tabs{grid-template-columns:1fr}}
+
+.spark-teeth-types article{align-items:center}
+.spark-tooth-shape{display:grid;place-items:center;flex:0 0 92px;min-width:92px}
+.spark-tooth-shape svg{display:block;width:82px;height:auto}
+.spark-tooth-shape .tf-tooth{fill:#f3eadb;stroke:#8d725b;stroke-width:4;stroke-linejoin:round}
+.spark-tooth-shape .tf-edge{fill:none;stroke:#d3b99b;stroke-width:4;stroke-linecap:round}
+.spark-tooth-shape .tf-enamel-line{fill:none;stroke:#fff8ea;stroke-width:3;stroke-linecap:round}
+.spark-tooth-shape .tf-pulp-line{fill:none;stroke:#bf6a69;stroke-width:4;stroke-linecap:round}
+html[data-theme="dark"] .spark-tooth-shape .tf-tooth,
+body[data-theme="dark"] .spark-tooth-shape .tf-tooth,
+.dark .spark-tooth-shape .tf-tooth{fill:#eadfce;stroke:#9e826a}
+@media(max-width:520px){
+  .spark-teeth-types article{align-items:flex-start}
+  .spark-tooth-shape{flex-basis:72px;min-width:72px}
+  .spark-tooth-shape svg{width:66px}
+}
