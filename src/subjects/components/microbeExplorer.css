@@ -84,3 +84,34 @@ html[data-theme="dark"] .spark-bacterial-cell-scene,body[data-theme="dark"] .spa
 html[data-theme="dark"] .bac-callouts text,body[data-theme="dark"] .bac-callouts text,.dark .bac-callouts text,html[data-theme="dark"] .bac-caption,body[data-theme="dark"] .bac-caption,.dark .bac-caption{fill:#e6f0f6}
 @media(max-width:800px){.spark-bacterial-cell-notes{grid-template-columns:1fr}.spark-bacterial-cell-svg{min-height:300px}}
 @media(max-width:560px){.spark-bacterial-cell-scene{padding:8px}.spark-bacterial-cell-svg{min-height:240px}.bac-callouts text{font-size:18px}.bac-caption{font-size:17px}}
+
+
+.spark-fungal-cell-scene{display:grid;gap:14px;padding:14px}
+.spark-fungal-cell-svg{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.fc-wall{fill:#c8b889;stroke:#7d6c45;stroke-width:7}
+.fc-membrane{fill:#8ebea7;stroke:#527d69;stroke-width:5}
+.fc-cytoplasm{fill:#d9eee5;stroke:#89ad9e;stroke-width:2}
+.fc-vacuole{fill:#bfdbe9;stroke:#6e9bb0;stroke-width:4}
+.fc-nucleus{fill:#c7a3c9;stroke:#7f6383;stroke-width:4}
+.fc-nucleolus{fill:#8d668f}
+.fc-mitochondria ellipse{fill:#e8ad78;stroke:#9b663d;stroke-width:4}
+.fc-mitochondria path{fill:none;stroke:#9b663d;stroke-width:3}
+.fc-ribosomes circle{fill:#55778a}
+.fc-bud-wall{fill:#c8b889;stroke:#7d6c45;stroke-width:6}
+.fc-bud-membrane{fill:#d9eee5;stroke:#527d69;stroke-width:4}
+.fc-bud-neck{fill:none;stroke:#7d6c45;stroke-width:7;stroke-linecap:round}
+.fc-bud-nucleus{fill:#c7a3c9;stroke:#7f6383;stroke-width:3}
+.fc-callouts path{fill:none;stroke:#60788a;stroke-width:2.5}
+.fc-arrow-head{fill:#60788a}
+.fc-callouts text,.fc-caption{fill:#26485a;font-size:14px;font-weight:850}
+.fc-caption{font-size:13px}
+.spark-fungal-cell-notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.spark-fungal-cell-notes article{padding:13px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:11px;background:var(--spark-paper,#fff)}
+.spark-fungal-cell-notes b{color:var(--spark-ink,#102a43);font-size:12px}
+.spark-fungal-cell-notes p{margin:5px 0 0;color:var(--spark-ink-soft,#334e68);font-size:11px;line-height:1.5}
+html[data-theme="dark"] .spark-fungal-cell-svg,body[data-theme="dark"] .spark-fungal-cell-svg,.dark .spark-fungal-cell-svg,
+html[data-theme="dark"] .spark-fungal-cell-notes article,body[data-theme="dark"] .spark-fungal-cell-notes article,.dark .spark-fungal-cell-notes article{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .fc-callouts text,body[data-theme="dark"] .fc-callouts text,.dark .fc-callouts text,
+html[data-theme="dark"] .fc-caption,body[data-theme="dark"] .fc-caption,.dark .fc-caption{fill:#e7f0f7}
+@media(max-width:800px){.spark-fungal-cell-notes{grid-template-columns:1fr}}
+@media(max-width:620px){.spark-fungal-cell-scene{padding:8px}.fc-callouts text{font-size:18px}.fc-caption{font-size:17px}}
