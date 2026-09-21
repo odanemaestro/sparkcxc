@@ -56,6 +56,23 @@ describe("Integrated Science Objective 1.2.3 acceptance audit", () => {
     expect(process).toContain("Wind-pollinated");
   });
 
+  test("renders insect and wind pollination structures visually", () => {
+    for (const term of [
+      "spark-pollination-structure-svg",
+      "pc-petal large",
+      "pc-petal small",
+      "pc-stigma sticky",
+      "pc-stigma feathery",
+      "pc-stamens enclosed",
+      "pc-stamens exposed",
+      "fewer, larger sticky or spiky pollen grains",
+      "many small, light, smooth pollen grains"
+    ]) expect(process).toContain(term);
+    expect(processCss).toContain(".spark-pollination-structure-svg");
+    expect(processCss).toContain(".pc-stigma.feathery");
+    expect(processCss).toContain(".pc-pollen.small");
+  });
+
   test("lesson covers germination and biological drawing expectations", () => {
     expect(migration).toContain("Water, oxygen and a suitable temperature");
     expect(migration).toContain("clear single lines");
