@@ -59,6 +59,23 @@ describe("Integrated Science Objective 1.7.4 acceptance audit", () => {
     expect(migration).toContain("air pollution");
   });
 
+  test("renders asthma airway narrowing as a tissue cross-section", () => {
+    for (const term of [
+      "spark-asthma-airway-svg",
+      "Healthy airway",
+      "Asthma airway",
+      "tightened smooth muscle",
+      "swollen inflamed lining",
+      "excess mucus",
+      "narrowed opening makes airflow more difficult",
+      "Smoke, air pollution, allergens or infections"
+    ]) expect(explorer).toContain(term);
+    expect(css).toContain(".spark-asthma-airway-svg");
+    expect(css).toContain(".asthma-muscle.tightened");
+    expect(css).toContain(".asthma-lining.swollen");
+    expect(css).toContain(".asthma-lumen.narrowed");
+  });
+
   test("uses the non-communicable disease explorer in the shared lesson shell", () => {
     expect(migration).toContain('"type":"non-communicable-disease"');
     expect(view).toContain("NonCommunicableDiseaseExplorer");
