@@ -27,3 +27,8 @@ body[data-theme="dark"] .hs-anatomical .hs-pelvis,
   .hs-anatomical{stroke-width:11}
   .hs-anatomical .hs-humerus,.hs-anatomical .hs-radius,.hs-anatomical .hs-ulna,.hs-anatomical .hs-femur,.hs-anatomical .hs-tibia,.hs-anatomical .hs-fibula{stroke-width:16}
 }
+
+.hs-anatomical .hs-frontal{fill:#e4ecef;stroke:#617783;stroke-width:3}
+.hs-anatomical .hs-temporal{fill:#dce7eb;stroke:#617783;stroke-width:3}
+.hs-anatomical .hs-nasal,.hs-anatomical .hs-zygoma,.hs-anatomical .hs-maxilla{fill:#eaf0f2;stroke:#617783;stroke-width:3}
+.hs-anatomical .hs-teeth rect{fill:#f7fafc;stroke:#7b8e98;stroke-width:1.5}
