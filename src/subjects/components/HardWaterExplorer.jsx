@@ -31,19 +31,101 @@ function BoilingView(){
   const [before,setBefore]=useState(true);
   return <div className="spark-hardwater-boil">
     <div className="spark-hardwater-toggle"><button type="button" className={before?"active":""} onClick={()=>setBefore(true)}>Before boiling</button><button type="button" className={!before?"active":""} onClick={()=>setBefore(false)}>After boiling</button></div>
-    <div className="spark-kettle-model">
-      <div className="spark-kettle-body">
-        {!before&&<div className="spark-kettle-scale">CaCO₃ scale</div>}
-        <div className="spark-kettle-water">{before?"Ca(HCO₃)₂ dissolved":"softer water"}</div>
-      </div>
-      <div className="spark-kettle-spout"></div>
-    </div>
+    <svg className="spark-hardwater-boiling-svg" viewBox="0 0 860 470" role="img" aria-label={before?"Temporary hard water before boiling showing dissolved calcium hydrogencarbonate ions":"Temporary hard water after boiling showing calcium carbonate precipitate and scale"}>
+      <defs>
+        <marker id="hw-heat-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+          <path className="hw-arrow-head" d="M0 0L10 5L0 10Z"/>
+        </marker>
+      </defs>
+
+      <path className="hw-kettle" d="M175 105Q315 70 455 105Q505 135 500 315Q495 390 425 410H220Q150 390 145 315Q140 145 175 105Z"/>
+      <path className="hw-spout" d="M470 155Q560 125 620 170L565 215Q525 205 490 220"/>
+      <path className="hw-handle" d="M185 150Q75 175 92 300Q105 365 170 350"/>
+      <path className="hw-water-fill" d="M160 220Q320 205 485 220V325Q480 380 420 392H225Q165 380 160 325Z"/>
+
+      {before ? <>
+        <g className="hw-dissolved-ions">
+          {[[220,255,"Ca²⁺"],[300,285,"HCO₃⁻"],[390,250,"Mg²⁺"],[440,315,"HCO₃⁻"],[255,335,"HCO₃⁻"],[360,340,"Ca²⁺"]].map(([x,y,t],i)=><g key={i}><circle cx={x} cy={y} r={t==="HCO₃⁻"?22:18}/><text x={x} y={y+5} textAnchor="middle">{t}</text></g>)}
+        </g>
+        <text className="hw-label" x="325" y="445" textAnchor="middle">calcium and magnesium hydrogencarbonate ions remain dissolved</text>
+      </> : <>
+        <g className="hw-precipitate">
+          {[205,242,278,315,352,389,426,458].map((x,i)=><circle key={x} cx={x} cy={355+(i%2)*10} r={10+(i%3)}/>)}
+        </g>
+        <path className="hw-scale-layer" d="M170 338Q320 315 474 340V375Q320 350 175 374Z"/>
+        <text className="hw-scale-text" x="325" y="365" textAnchor="middle">CaCO₃ scale / precipitate</text>
+        <g className="hw-softened-ions">
+          <circle cx="250" cy="275" r="18"/><text x="250" y="280" textAnchor="middle">H₂O</text>
+          <circle cx="390" cy="285" r="18"/><text x="390" y="290" textAnchor="middle">H₂O</text>
+        </g>
+        <text className="hw-label" x="325" y="445" textAnchor="middle">insoluble carbonate removes hardness ions from the water</text>
+      </>}
+
+      <path className="hw-heater" d="M250 435q20-28 40 0t40 0t40 0t40 0"/>
+      <path className="hw-heat-flow" d="M325 420V385" markerEnd="url(#hw-heat-arrow)"/>
+      <text className="hw-small" x="585" y="295">{before?"temporary hardness is soluble":"solid carbonate deposits form"}</text>
+      <text className="hw-small" x="585" y="325">{before?"before heating":"after hydrogencarbonate decomposes"}</text>
+    </svg>
     <p>{before?"Temporary hardness remains dissolved before heating.":"Boiling decomposes calcium hydrogencarbonate and forms insoluble calcium carbonate. The precipitate removes calcium ions from solution but may form scale in the kettle."}</p>
   </div>;
 }
 
 function SodaView(){
   return <div className="spark-washing-soda">
+    <svg className="spark-washing-soda-svg" viewBox="0 0 980 510" role="img" aria-label="Washing soda softening permanent hard water by precipitating calcium and magnesium carbonate">
+      <defs>
+        <marker id="hw-mix-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+          <path className="hw-arrow-head" d="M0 0L10 5L0 10Z"/>
+        </marker>
+      </defs>
+
+      <g transform="translate(45 70)">
+        <rect className="hw-beaker" x="0" y="0" width="255" height="315" rx="18"/>
+        <path className="hw-beaker-water" d="M12 95H243V290Q243 303 230 303H25Q12 303 12 290Z"/>
+        <text className="hw-title" x="127" y="-22" textAnchor="middle">permanent hard water</text>
+        <g className="hw-hard-ions">
+          {[[60,140,"Ca²⁺"],[135,170,"Mg²⁺"],[195,130,"Ca²⁺"],[85,235,"Mg²⁺"],[185,255,"Ca²⁺"]].map(([x,y,t],i)=><g key={i}><circle cx={x} cy={y} r="23"/><text x={x} y={y+5} textAnchor="middle">{t}</text></g>)}
+        </g>
+        <text className="hw-small" x="127" y="335" textAnchor="middle">ions stay dissolved if water is only boiled</text>
+      </g>
+
+      <path className="hw-mix-arrow" d="M330 225H420" markerEnd="url(#hw-mix-arrow)"/>
+      <g transform="translate(345 80)">
+        <path className="hw-soda-packet" d="M0 0H115L135 165H-20Z"/>
+        <text className="hw-title" x="57" y="55" textAnchor="middle">washing</text>
+        <text className="hw-title" x="57" y="80" textAnchor="middle">soda</text>
+        <text className="hw-small" x="57" y="112" textAnchor="middle">Na₂CO₃</text>
+        <circle className="hw-carbonate-ion" cx="40" cy="145" r="18"/><text className="hw-ion-text" x="40" y="150" textAnchor="middle">CO₃²⁻</text>
+        <circle className="hw-carbonate-ion" cx="82" cy="145" r="18"/><text className="hw-ion-text" x="82" y="150" textAnchor="middle">CO₃²⁻</text>
+      </g>
+
+      <g transform="translate(520 70)">
+        <rect className="hw-beaker" x="0" y="0" width="380" height="315" rx="18"/>
+        <path className="hw-beaker-water" d="M12 95H368V290Q368 303 355 303H25Q12 303 12 290Z"/>
+        <text className="hw-title" x="190" y="-22" textAnchor="middle">after carbonate ions are mixed in</text>
+
+        <g className="hw-reaction-pairs">
+          <g transform="translate(85 150)">
+            <circle className="hw-hard-ion" cx="0" cy="0" r="23"/><text x="0" y="5" textAnchor="middle">Ca²⁺</text>
+            <text className="hw-plus" x="42" y="6">+</text>
+            <circle className="hw-carbonate-ion" cx="85" cy="0" r="23"/><text className="hw-ion-text" x="85" y="5" textAnchor="middle">CO₃²⁻</text>
+            <path className="hw-down-arrow" d="M42 35V82" markerEnd="url(#hw-mix-arrow)"/>
+            <ellipse className="hw-solid" cx="42" cy="110" rx="48" ry="20"/>
+            <text className="hw-solid-label" x="42" y="116" textAnchor="middle">CaCO₃(s)</text>
+          </g>
+          <g transform="translate(255 150)">
+            <circle className="hw-hard-ion" cx="0" cy="0" r="23"/><text x="0" y="5" textAnchor="middle">Mg²⁺</text>
+            <text className="hw-plus" x="42" y="6">+</text>
+            <circle className="hw-carbonate-ion" cx="85" cy="0" r="23"/><text className="hw-ion-text" x="85" y="5" textAnchor="middle">CO₃²⁻</text>
+            <path className="hw-down-arrow" d="M42 35V82" markerEnd="url(#hw-mix-arrow)"/>
+            <ellipse className="hw-solid" cx="42" cy="110" rx="48" ry="20"/>
+            <text className="hw-solid-label" x="42" y="116" textAnchor="middle">MgCO₃(s)</text>
+          </g>
+        </g>
+      </g>
+
+      <text className="hw-caption" x="490" y="465" textAnchor="middle">carbonate ions convert dissolved hardness ions into insoluble solids that can be removed</text>
+    </svg>
     <div className="spark-soda-equation"><span>hard water with Ca²⁺ / Mg²⁺</span><b>+</b><span>washing soda, Na₂CO₃</span><b>→</b><span>insoluble carbonates</span></div>
     <p>Washing soda supplies carbonate ions. Calcium and magnesium ions form insoluble carbonates that can be removed, so permanent hardness is reduced.</p>
     <aside><strong>Why boiling is different</strong><span>Boiling removes temporary hydrogencarbonate hardness, but it does not remove permanent hardness caused by salts such as calcium sulphate.</span></aside>
