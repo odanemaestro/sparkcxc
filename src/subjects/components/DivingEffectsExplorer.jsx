@@ -26,7 +26,71 @@ function EarView(){
   const [equalized,setEqualized]=useState(false);
   return <div className="spark-diving-ear">
     <div className="spark-diving-toggle"><button type="button" className={!equalized?"active":""} onClick={()=>setEqualized(false)}>Pressure not equalised</button><button type="button" className={equalized?"active":""} onClick={()=>setEqualized(true)}>Pressure equalised</button></div>
-    <div className={"spark-ear-model "+(equalized?"equal":"unequal")}><div className="spark-ear-outside">water pressure</div><div className="spark-eardrum"></div><div className="spark-ear-inside">middle ear</div></div>
+
+    <svg className="spark-diving-ear-svg" viewBox="0 0 920 500" role="img" aria-label={equalized
+      ? "Ear cross-section with equal pressure on both sides of the eardrum and an open Eustachian tube"
+      : "Ear cross-section with greater external water pressure bending the eardrum inward while middle-ear pressure is lower"}>
+      <defs>
+        <linearGradient id="de-water" x1="0" x2="1">
+          <stop offset="0%" stopColor="#78b9d3"/>
+          <stop offset="100%" stopColor="#b6dbe8"/>
+        </linearGradient>
+      </defs>
+
+      <rect className="de-water-field" x="20" y="30" width="250" height="400" rx="20"/>
+
+      <path className="de-pinna" d="M300 90Q222 72 190 145Q160 210 200 285Q238 350 292 330Q342 312 330 270Q321 240 289 244Q259 248 260 275Q264 300 287 290" />
+      <path className="de-ear-canal" d="M287 291Q360 280 420 270" />
+
+      <path className={equalized?"de-eardrum equal":"de-eardrum unequal"} d={equalized
+        ? "M430 205Q446 255 430 320"
+        : "M430 205Q465 252 445 320"} />
+
+      <path className="de-middle-ear" d="M448 212Q525 200 594 232L594 315Q520 330 450 315Z" />
+      <g className="de-ossicles">
+        <path className="de-malleus" d="M470 235Q485 247 486 270L498 284" />
+        <path className="de-incus" d="M498 284Q516 272 530 281L542 270" />
+        <path className="de-stapes" d="M542 270l18-9l12 17l-18 11Z" />
+      </g>
+
+      <path className={equalized?"de-eustachian open":"de-eustachian"} d="M540 310Q576 352 638 408" />
+      <path className="de-throat" d="M638 408Q676 430 705 400" />
+
+      <g className="de-external-pressure">
+        <path d="M70 170H165M70 230H165M70 290H165"/>
+        <text x="118" y="142" textAnchor="middle">water pressure</text>
+      </g>
+
+      <g className={equalized?"de-middle-pressure equal":"de-middle-pressure low"}>
+        <path d="M570 248H480M570 292H480"/>
+        <text x="525" y="205" textAnchor="middle">{equalized?"middle-ear pressure equal":"lower middle-ear pressure"}</text>
+      </g>
+
+      {!equalized&&<>
+        <path className="de-drum-force" d="M390 262H440"/>
+        <text className="de-warning" x="345" y="350">pressure difference bends eardrum inward</text>
+      </>}
+
+      {equalized&&<>
+        <path className="de-equalise-arrow" d="M690 420Q632 385 579 340"/>
+        <text className="de-equalise-label" x="707" y="453" textAnchor="end">air moves through Eustachian tube</text>
+      </>}
+
+      <g className="de-labels">
+        <text x="130" y="470">external ear / water</text>
+        <text x="344" y="245">ear canal</text>
+        <text x="430" y="190" textAnchor="middle">eardrum</text>
+        <text x="526" y="350" textAnchor="middle">middle ear</text>
+        <text x="650" y="350">Eustachian tube</text>
+      </g>
+    </svg>
+
+    <div className="spark-diving-ear-facts">
+      <article><b>Descent</b><span>External water pressure rises with depth. If middle-ear pressure does not increase, the eardrum is pushed inward.</span></article>
+      <article><b>Equalisation</b><span>The Eustachian tube connects the middle ear to the throat and allows pressure to be balanced.</span></article>
+      <article><b>Barotrauma risk</b><span>A large pressure difference can cause pain and tissue injury. Divers equalise early and gently during descent.</span></article>
+    </div>
+
     <p>{equalized?"Equalising pressure reduces the pressure difference across the eardrum.":"If pressure outside the eardrum rises faster than pressure in the middle ear, pain and barotrauma can occur."}</p>
   </div>;
 }
