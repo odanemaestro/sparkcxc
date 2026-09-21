@@ -45,29 +45,69 @@ const HEART_PHASES = {
 };
 
 function BloodScene({selected}) {
+  const redCells=[
+    [120,132,-12,1],[205,215,22,.9],[296,118,15,1.05],[390,205,-28,.92],
+    [480,115,38,.88],[585,220,10,1.05],[685,128,-18,.95],[775,230,26,.9],
+    [155,320,18,.86],[330,332,-20,1.0],[515,325,30,.9],[720,335,-8,1.02],
+  ];
+  const platelets=[[255,295,0],[440,280,30],[625,300,-18],[815,142,20],[85,260,-25]];
+
   return (
     <div className="spark-transport-structures-blood-layout">
       <div className="spark-transport-structures-stage">
-        <svg viewBox="0 0 900 480" role="img" aria-label="Major blood components">
-          <rect className="ts-plasma-field" x="40" y="45" width="820" height="375" rx="28" />
-          {[120,240,370,520,675,790].map((x,index) => (
-            <g key={x} className={selected === "redCell" ? "ts-focus" : ""}>
-              <ellipse className="ts-rbc" cx={x} cy={150 + (index%2)*155} rx="58" ry="35" />
-              <ellipse className="ts-rbc-centre" cx={x} cy={150 + (index%2)*155} rx="29" ry="13" />
-            </g>
-          ))}
-          <g className={selected === "phagocyte" ? "ts-focus" : ""} transform="translate(300 290)">
-            <circle className="ts-wbc" cx="0" cy="0" r="58" />
-            <path className="ts-phagocyte-nucleus" d="M-28-10q12-30 33-10q22-25 35 6q18 22-6 38q-20 15-35-4q-25 15-38-7q-8-13 11-23Z" />
+        <svg viewBox="0 0 900 500" role="img" aria-label="Blood flowing inside a vessel showing plasma, red blood cells, white blood cells and platelets">
+          <defs>
+            <linearGradient id="ts-plasma-gradient" x1="0" x2="1">
+              <stop offset="0%" stopColor="#f8e4b9" />
+              <stop offset="55%" stopColor="#f3d89e" />
+              <stop offset="100%" stopColor="#edc77c" />
+            </linearGradient>
+          </defs>
+
+          <path className="ts-vessel-cutaway outer" d="M36 94Q115 42 235 60L835 60Q870 60 870 95V405Q870 440 835 440H238Q120 458 36 405Q70 330 70 250Q70 170 36 94Z" />
+          <path className="ts-vessel-cutaway inner" d="M63 107Q130 70 235 82H838Q848 82 848 96V404Q848 418 838 418H235Q135 430 63 393Q92 324 92 250Q92 176 63 107Z" />
+          <path className={selected==="plasma"?"ts-plasma-field ts-focus-field":"ts-plasma-field"} d="M92 119Q145 93 236 99H831V401H236Q150 410 92 381Q112 318 112 250Q112 182 92 119Z" />
+
+          <g className={selected === "redCell" ? "ts-focus ts-rbc-group" : "ts-rbc-group"}>
+            {redCells.map(([x,y,angle,scale],index)=>(
+              <g key={index} transform={`translate(${x} ${y}) rotate(${angle}) scale(${scale})`}>
+                <ellipse className="ts-rbc-shadow" cx="4" cy="6" rx="47" ry="29" />
+                <ellipse className="ts-rbc" cx="0" cy="0" rx="48" ry="30" />
+                <ellipse className="ts-rbc-centre" cx="0" cy="0" rx="24" ry="11" />
+                <path className="ts-rbc-highlight" d="M-31-9Q-10-22 15-15" />
+              </g>
+            ))}
           </g>
-          <g className={selected === "lymphocyte" ? "ts-focus" : ""} transform="translate(575 225)">
-            <circle className="ts-wbc" cx="0" cy="0" r="53" />
-            <circle className="ts-lymph-nucleus" cx="4" cy="2" r="38" />
+
+          <g className={selected === "phagocyte" ? "ts-focus" : ""} transform="translate(400 135)">
+            <circle className="ts-wbc halo" cx="0" cy="0" r="59" />
+            <circle className="ts-wbc" cx="0" cy="0" r="52" />
+            <path className="ts-phagocyte-nucleus" d="M-29-11q11-30 31-11q18-25 34 2q18 18-2 35q-17 16-31 2q-24 15-37-6q-9-13 5-22Z" />
+            {[[-29,20],[-12,-31],[13,30],[31,-18],[29,12]].map(([x,y],i)=><circle key={i} className="ts-wbc-granule" cx={x} cy={y} r="4" />)}
           </g>
+
+          <g className={selected === "lymphocyte" ? "ts-focus" : ""} transform="translate(620 340)">
+            <circle className="ts-wbc halo" cx="0" cy="0" r="56" />
+            <circle className="ts-wbc" cx="0" cy="0" r="49" />
+            <circle className="ts-lymph-nucleus" cx="5" cy="3" r="36" />
+            <path className="ts-lymph-rim" d="M-29 24Q-46 3-31-24" />
+          </g>
+
           <g className={selected === "platelets" ? "ts-focus" : ""}>
-            {[[170,365],[210,385],[470,120],[730,350],[760,105]].map(([x,y],i)=><path key={i} className="ts-platelet" d={"M"+x+" "+y+"l12-8l9 12l-12 11Z"} />)}
+            {platelets.map(([x,y,angle],i)=>(
+              <g key={i} className="ts-platelet-cluster" transform={`translate(${x} ${y}) rotate(${angle})`}>
+                <path className="ts-platelet" d="M0-10L6-4L15-6L11 2L17 9L7 8L2 16L-3 8L-13 11L-9 2L-15-4L-6-5Z" />
+                <path className="ts-platelet-spike" d="M0-12V-19M13-7L19-12M15 9L23 12M-11 11L-17 17M-14-4L-22-8" />
+              </g>
+            ))}
           </g>
-          <text className="ts-label" x="450" y="458" textAnchor="middle">plasma surrounds and transports the blood cells and dissolved substances</text>
+
+          <g className="ts-blood-labels">
+            <text x="128" y="468">blood vessel wall</text>
+            <path d="M205 455L115 409" />
+            <text x="430" y="468">plasma is the liquid transport medium</text>
+            <text x="708" y="468">formed elements are suspended in plasma</text>
+          </g>
         </svg>
       </div>
       <aside>
@@ -81,37 +121,118 @@ function BloodScene({selected}) {
 }
 
 function VesselScene() {
+  const capillaryCells=[
+    [447,183,-8],[494,162,12],[540,178,-18],[586,160,9],
+    [455,244,14],[506,226,-9],[555,245,16],[602,225,-12],
+    [450,306,-12],[498,290,11],[548,306,-8],[595,286,14],
+  ];
   return (
     <div className="spark-transport-structures-vessels">
-      <svg viewBox="0 0 930 470" role="img" aria-label="Comparison of artery, vein and capillary cross-sections">
-        <g transform="translate(175 215)">
-          <circle className="ts-artery-wall outer" r="118" />
-          <circle className="ts-artery-wall muscle" r="88" />
-          <circle className="ts-lumen artery" r="42" />
-          <text className="ts-vessel-title" x="0" y="-145" textAnchor="middle">Artery</text>
-          <text className="ts-vessel-note" x="0" y="160" textAnchor="middle">thick muscular, elastic wall</text>
-          <text className="ts-vessel-note" x="0" y="182" textAnchor="middle">relatively narrow lumen</text>
-        </g>
-        <g transform="translate(465 215)">
-          <circle className="ts-vein-wall" r="108" />
-          <circle className="ts-lumen vein" r="78" />
-          <path className="ts-valve" d="M-25-22Q0 4 25-22M-25 22Q0-4 25 22" />
-          <text className="ts-vessel-title" x="0" y="-145" textAnchor="middle">Vein</text>
-          <text className="ts-vessel-note" x="0" y="160" textAnchor="middle">thinner wall, wide lumen</text>
-          <text className="ts-vessel-note" x="0" y="182" textAnchor="middle">valves prevent backflow</text>
-        </g>
-        <g transform="translate(760 215)">
-          <circle className="ts-capillary-wall" r="48" />
-          <circle className="ts-lumen capillary" r="34" />
-          <text className="ts-vessel-title" x="0" y="-145" textAnchor="middle">Capillary</text>
-          <text className="ts-vessel-note" x="0" y="160" textAnchor="middle">wall one cell thick</text>
-          <text className="ts-vessel-note" x="0" y="182" textAnchor="middle">short exchange distance</text>
-        </g>
-      </svg>
+      <div className="spark-vessel-network-card">
+        <svg viewBox="0 0 1040 460" role="img" aria-label="Blood vessel pathway from artery through arteriole and capillary bed to venule and vein">
+          <defs>
+            <linearGradient id="ts-artery-flow" x1="0" x2="1">
+              <stop offset="0%" stopColor="#c94e57" />
+              <stop offset="100%" stopColor="#e37a78" />
+            </linearGradient>
+            <linearGradient id="ts-vein-flow" x1="0" x2="1">
+              <stop offset="0%" stopColor="#729fbd" />
+              <stop offset="100%" stopColor="#4f7f9e" />
+            </linearGradient>
+          </defs>
+
+          <g className="ts-network-vessel artery">
+            <path className="wall outer" d="M55 95Q115 72 165 95V365Q115 388 55 365Z" />
+            <path className="wall muscle" d="M76 109Q115 94 144 108V352Q115 368 76 351Z" />
+            <path className="lumen" d="M94 119Q115 111 127 119V342Q115 350 94 341Z" />
+            <path className="flow-arrow" d="M110 315V150" />
+            <text className="ts-vessel-title" x="110" y="58" textAnchor="middle">Artery</text>
+            <text className="ts-vessel-note" x="110" y="405" textAnchor="middle">from heart</text>
+          </g>
+
+          <path className="ts-arteriole-route" d="M165 230Q250 220 318 230" />
+          <path className="ts-arteriole-route branch" d="M250 230Q294 165 365 150M250 230Q300 292 365 310" />
+          <text className="ts-vessel-note" x="245" y="195" textAnchor="middle">arteriole</text>
+
+          <g className="ts-capillary-network">
+            {[0,1,2,3].map(row=>(
+              <path key={row} d={`M355 ${145+row*55}Q445 ${110+row*58} 520 ${145+row*55}T685 ${145+row*55}`} />
+            ))}
+            <path d="M375 150Q420 205 380 255M430 130Q470 190 440 270M505 145Q540 205 510 315M580 140Q610 205 590 305M640 150Q665 215 650 290" />
+          </g>
+
+          <g className="ts-capillary-rbcs">
+            {capillaryCells.map(([x,y,a],i)=>(
+              <g key={i} transform={`translate(${x} ${y}) rotate(${a})`}>
+                <ellipse className="ts-mini-rbc" rx="16" ry="10" />
+                <ellipse className="ts-mini-rbc-centre" rx="7" ry="3.5" />
+              </g>
+            ))}
+          </g>
+
+          <path className="ts-venule-route branch" d="M685 150Q754 172 790 228M685 310Q755 288 790 232" />
+          <path className="ts-venule-route" d="M790 230Q840 230 870 230" />
+          <text className="ts-vessel-note" x="785" y="195" textAnchor="middle">venule</text>
+
+          <g className="ts-network-vessel vein">
+            <path className="wall outer" d="M870 95Q930 72 990 95V365Q930 388 870 365Z" />
+            <path className="lumen" d="M895 112Q930 98 965 112V348Q930 362 895 348Z" />
+            <path className="ts-vessel-valve" d="M902 240Q930 214 958 240M902 220Q930 246 958 220" />
+            <path className="flow-arrow" d="M930 315V150" />
+            <text className="ts-vessel-title" x="930" y="58" textAnchor="middle">Vein</text>
+            <text className="ts-vessel-note" x="930" y="405" textAnchor="middle">to heart</text>
+          </g>
+
+          <g className="ts-endothelium-callout">
+            <path d="M520 82V128" />
+            <text x="520" y="64" textAnchor="middle">capillary wall = one layer of endothelial cells</text>
+          </g>
+          <g className="ts-exchange-arrows">
+            <path className="out" d="M500 338V395" />
+            <path className="in" d="M560 395V338" />
+            <text x="450" y="420">O₂ + nutrients to tissues</text>
+            <text x="585" y="420">CO₂ + wastes to blood</text>
+          </g>
+        </svg>
+      </div>
+
+      <div className="spark-vessel-cross-sections">
+        <article>
+          <svg viewBox="0 0 260 240" role="img" aria-label="Artery cross-section with thick muscular elastic wall and narrow lumen">
+            <circle className="ts-artery-wall outer" cx="130" cy="112" r="88" />
+            <circle className="ts-artery-wall muscle" cx="130" cy="112" r="63" />
+            <circle className="ts-lumen artery" cx="130" cy="112" r="31" />
+            <text className="ts-vessel-title" x="130" y="224" textAnchor="middle">Artery</text>
+          </svg>
+          <b>Thick muscular, elastic wall</b><span>Relatively narrow lumen for high-pressure blood leaving the heart.</span>
+        </article>
+
+        <article>
+          <svg viewBox="0 0 260 240" role="img" aria-label="Vein cross-section with thinner wall wide lumen and valve">
+            <circle className="ts-vein-wall" cx="130" cy="112" r="80" />
+            <circle className="ts-lumen vein" cx="130" cy="112" r="60" />
+            <path className="ts-valve" d="M105 95Q130 118 155 95M105 129Q130 106 155 129" />
+            <text className="ts-vessel-title" x="130" y="224" textAnchor="middle">Vein</text>
+          </svg>
+          <b>Thinner wall, wider lumen, valves</b><span>Returns blood at lower pressure and valves prevent backflow.</span>
+        </article>
+
+        <article>
+          <svg viewBox="0 0 260 240" role="img" aria-label="Capillary cross-section one endothelial cell thick with a red blood cell close to the wall">
+            <circle className="ts-capillary-wall" cx="130" cy="112" r="47" />
+            <circle className="ts-lumen capillary" cx="130" cy="112" r="36" />
+            <ellipse className="ts-mini-rbc" cx="130" cy="112" rx="26" ry="15" />
+            <ellipse className="ts-mini-rbc-centre" cx="130" cy="112" rx="12" ry="5" />
+            <text className="ts-vessel-title" x="130" y="224" textAnchor="middle">Capillary</text>
+          </svg>
+          <b>Wall one cell thick</b><span>Very short diffusion distance for exchange with body tissues.</span>
+        </article>
+      </div>
+
       <div className="spark-transport-structures-note-grid">
         <article><b>Arteries</b><span>Carry blood away from the heart at high pressure. Thick muscular and elastic walls withstand and smooth pressure changes.</span></article>
         <article><b>Veins</b><span>Return blood to the heart at lower pressure. Their wider lumen reduces resistance and valves reduce backflow.</span></article>
-        <article><b>Capillaries</b><span>Form exchange networks near cells. Their one-cell-thick walls give a short diffusion distance.</span></article>
+        <article><b>Capillaries</b><span>Form branching exchange networks near cells. Their one-cell-thick endothelium gives a short diffusion distance.</span></article>
       </div>
     </div>
   );
