@@ -8,8 +8,43 @@ const HAZARDS=[
   ["Wrong fuse","A fuse rated far above normal operating current may fail to protect the cable and appliance during a fault."],
 ];
 
+function ThreePinPlugDiagram(){
+  return <svg className="spark-three-pin-plug-svg" viewBox="0 0 860 560" role="img" aria-label="Inside a three-pin plug showing earth, neutral and live wires, fuse, cable grip and three pins">
+    <path className="ep-body" d="M170 95Q430 35 690 95L730 420Q630 505 430 510Q230 505 130 420Z"/>
+    <rect className="ep-pin earth" x="398" y="18" width="64" height="145" rx="8"/>
+    <rect className="ep-pin neutral" x="168" y="380" width="64" height="145" rx="8"/>
+    <rect className="ep-pin live" x="628" y="380" width="64" height="145" rx="8"/>
+
+    <path className="ep-cable" d="M430 510V430"/>
+    <rect className="ep-grip" x="365" y="402" width="130" height="52" rx="12"/>
+    <path className="ep-wire earth" d="M415 415Q370 350 430 160"/>
+    <path className="ep-wire neutral" d="M430 420Q325 350 225 355"/>
+    <path className="ep-wire live" d="M445 420Q520 362 590 330"/>
+    <rect className="ep-fuse" x="575" y="270" width="58" height="125" rx="14"/>
+    <line className="ep-fuse-link" x1="604" y1="290" x2="604" y2="374"/>
+    <path className="ep-wire live" d="M604 270Q635 230 660 180"/>
+
+    <circle className="ep-terminal earth" cx="430" cy="160" r="17"/>
+    <circle className="ep-terminal neutral" cx="225" cy="355" r="17"/>
+    <circle className="ep-terminal live" cx="660" cy="180" r="17"/>
+
+    <g className="ep-callouts">
+      <path d="M430 125L430 70"/><text x="430" y="58" textAnchor="middle">earth pin</text>
+      <path d="M215 385L75 340"/><text x="62" y="342" textAnchor="end">neutral pin</text>
+      <path d="M665 385L785 342"/><text x="798" y="344">live pin</text>
+      <path d="M355 280L86 225"/><text x="72" y="228" textAnchor="end">green/yellow earth wire</text>
+      <path d="M288 350L86 295"/><text x="72" y="298" textAnchor="end">blue neutral wire</text>
+      <path d="M542 355L774 285"/><text x="788" y="288">brown live wire</text>
+      <path d="M632 320L774 220"/><text x="788" y="223">fuse in live wire</text>
+      <path d="M430 420L774 420"/><text x="788" y="424">cable grip</text>
+    </g>
+    <text className="ep-caption" x="430" y="545" textAnchor="middle">protective earth connects to the longest upper pin, live passes through the fuse</text>
+  </svg>;
+}
+
 function PlugView(){
   return <div className="spark-safety-plug">
+    <ThreePinPlugDiagram/>
     <div className="spark-safety-wire-card live"><span>BROWN</span><b>Live</b><p>Carries the alternating supply to the appliance. The fuse is placed in this wire.</p></div>
     <div className="spark-safety-wire-card neutral"><span>BLUE</span><b>Neutral</b><p>Completes the normal circuit back to the supply.</p></div>
     <div className="spark-safety-wire-card earth"><span>GREEN / YELLOW</span><b>Earth</b><p>Provides a low-resistance path for fault current if a metal case becomes live.</p></div>
