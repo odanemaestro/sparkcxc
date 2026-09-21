@@ -210,5 +210,16 @@ describe("Integrated Science learner polish V1", () => {
     expect(excretion).toContain("hex-renal-artery");
     expect(excretion).toContain("hex-renal-vein");
     expect(excretion).toContain("hex-bowman");
+    expect(excretion).toContain("hex-sebaceous-gland");
+    expect(excretion).toContain("hex-arrector");
+    expect(excretion).toContain("hex-sensory-nerve");
+    expect(excretion).toContain("subcutaneous fat");
+
+    expect(skeleton).toContain("hs-frontal");
+    expect(skeleton).toContain("hs-temporal");
+    expect(skeleton).toContain("hs-nasal");
+    expect(skeleton).toContain("hs-zygoma");
+    expect(skeleton).toContain("hs-maxilla");
+    expect(skeleton).toContain("hs-teeth");
   });
 });
