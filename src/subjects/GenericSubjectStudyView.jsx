@@ -89,6 +89,7 @@ import FishingMethodsExplorer from "./components/FishingMethodsExplorer";
 import WaterPollutionExplorer from "./components/WaterPollutionExplorer";
 import WaterPurificationExplorer from "./components/WaterPurificationExplorer";
 import FlotationExplorer from "./components/FlotationExplorer";
+import MarineNavigationExplorer from "./components/MarineNavigationExplorer";
 import ForcePrinciplesExplorer from "./components/ForcePrinciplesExplorer";
 import GravityInertiaExplorer from "./components/GravityInertiaExplorer";
 import StabilityCentreGravityExplorer from "./components/StabilityCentreGravityExplorer";
@@ -529,6 +530,9 @@ function GenericLessonContent({
         }
         if (model?.type === "flotation") {
           return <FlotationExplorer key={model.id || "flotation"} />;
+        }
+        if (model?.type === "marine-navigation") {
+          return <MarineNavigationExplorer key={model.id || "marine-navigation"} />;
         }
         if (model?.type === "force-principles") {
           return <ForcePrinciplesExplorer key={model.id || "force-principles"} />;
