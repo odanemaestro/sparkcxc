@@ -20,7 +20,17 @@ function BalanceView(){
   const [w1,setW1]=useState(400);
   const [d1,setD1]=useState(1.5);
   const [w2,setW2]=useState(300);
-  const rightDistance=(Number(w1)||0)*(Number(d1)||0)/Math.max(0.1,Number(w2)||0.1);
+  const leftForce=Math.max(0,Number(w1)||0);
+  const leftDistance=Math.max(0,Number(d1)||0);
+  const rightForce=Math.max(0.1,Number(w2)||0.1);
+  const rightDistance=leftForce*leftDistance/rightForce;
+  const maxDistance=Math.max(leftDistance,rightDistance,0.5);
+  const scale=245/maxDistance;
+  const pivotX=430;
+  const leftX=pivotX-leftDistance*scale;
+  const rightX=pivotX+rightDistance*scale;
+  const moment=leftForce*leftDistance;
+
   return <div className="spark-equilibrium-balance">
     <div className="spark-equilibrium-inputs">
       <label>Left force, N<input type="number" value={w1} onChange={e=>setW1(e.target.value)}/></label>
@@ -28,6 +38,56 @@ function BalanceView(){
       <label>Right force, N<input type="number" value={w2} onChange={e=>setW2(e.target.value)}/></label>
     </div>
     <strong>Balance distance on right = {rightDistance.toFixed(2)} m</strong>
+
+    <svg className="spark-moments-balance-svg" viewBox="0 0 860 480" role="img" aria-label="Balanced beam showing equal clockwise and anticlockwise moments about a pivot">
+      <rect className="em-ground" x="75" y="365" width="710" height="14" rx="7"/>
+      <rect className="em-beam" x="110" y="240" width="640" height="20" rx="10"/>
+
+      <g className="em-pivot" transform="translate(430 260)">
+        <path d="M0 0L-48 94H48Z"/>
+        <circle cx="0" cy="0" r="9"/>
+        <text x="0" y="128" textAnchor="middle">pivot</text>
+      </g>
+
+      <g className="em-force left" transform={`translate(${leftX} 0)`}>
+        <path d="M0 110V235"/>
+        <path d="M-10 216L0 238L10 216"/>
+        <text x="0" y="90" textAnchor="middle">{leftForce.toFixed(0)} N</text>
+      </g>
+
+      <g className="em-force right" transform={`translate(${rightX} 0)`}>
+        <path d="M0 110V235"/>
+        <path d="M-10 216L0 238L10 216"/>
+        <text x="0" y="90" textAnchor="middle">{rightForce.toFixed(0)} N</text>
+      </g>
+
+      <g className="em-distance left">
+        <line x1={leftX} y1="300" x2={pivotX} y2="300"/>
+        <line x1={leftX} y1="288" x2={leftX} y2="312"/>
+        <line x1={pivotX} y1="288" x2={pivotX} y2="312"/>
+        <text x={(leftX+pivotX)/2} y="330" textAnchor="middle">{leftDistance.toFixed(2)} m</text>
+      </g>
+
+      <g className="em-distance right">
+        <line x1={pivotX} y1="300" x2={rightX} y2="300"/>
+        <line x1={rightX} y1="288" x2={rightX} y2="312"/>
+        <text x={(rightX+pivotX)/2} y="330" textAnchor="middle">{rightDistance.toFixed(2)} m</text>
+      </g>
+
+      <path className="em-moment-arrow anti" d="M350 190Q430 120 510 190"/>
+      <path className="em-moment-arrow clockwise" d="M510 205Q430 275 350 205"/>
+      <text className="em-moment-label anti" x="430" y="125" textAnchor="middle">anticlockwise moment = {moment.toFixed(1)} N m</text>
+      <text className="em-moment-label clockwise" x="430" y="420" textAnchor="middle">clockwise moment = {moment.toFixed(1)} N m</text>
+
+      <text className="em-balance-note" x="430" y="455" textAnchor="middle">clockwise moment = anticlockwise moment</text>
+    </svg>
+
+    <div className="spark-moment-facts">
+      <article><b>Moment</b><span>Force × perpendicular distance from the pivot.</span></article>
+      <article><b>Rotational equilibrium</b><span>Total clockwise moment equals total anticlockwise moment.</span></article>
+      <article><b>Complete equilibrium</b><span>The resultant force must also be zero, so upward and downward forces balance.</span></article>
+    </div>
+
     <p>For rotational equilibrium, total clockwise moment equals total anticlockwise moment. For complete equilibrium under parallel forces, upward and downward forces must also balance.</p>
   </div>;
 }
