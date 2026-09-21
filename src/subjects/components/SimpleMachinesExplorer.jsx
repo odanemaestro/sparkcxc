@@ -4,13 +4,55 @@ import "./simpleMachinesExplorer.css";
 function LeverView(){
   const [type,setType]=useState("first");
   const data={
-    first:{title:"First-class lever",order:["Effort","Fulcrum","Load"],example:"See-saw or scissors",text:"The fulcrum lies between effort and load."},
-    second:{title:"Second-class lever",order:["Fulcrum","Load","Effort"],example:"Wheelbarrow or bottle opener",text:"The load lies between fulcrum and effort. Ideal mechanical advantage is greater than 1."},
-    third:{title:"Third-class lever",order:["Fulcrum","Effort","Load"],example:"Tweezers or human forearm",text:"The effort lies between fulcrum and load. This gives speed and range of movement rather than force multiplication."}
+    first:{title:"First-class lever",positions:{effort:180,fulcrum:430,load:680},example:"See-saw or scissors",text:"The fulcrum lies between effort and load."},
+    second:{title:"Second-class lever",positions:{fulcrum:180,load:430,effort:680},example:"Wheelbarrow or bottle opener",text:"The load lies between fulcrum and effort. Ideal mechanical advantage is greater than 1."},
+    third:{title:"Third-class lever",positions:{fulcrum:180,effort:430,load:680},example:"Tweezers or human forearm",text:"The effort lies between fulcrum and load. This gives speed and range of movement rather than force multiplication."}
   }[type];
+
+  const {effort,fulcrum,load}=data.positions;
+
   return <div className="spark-machines-levers">
-    <div className="spark-machines-buttons">{["first","second","third"].map(k=><button key={k} type="button" className={type===k?"active":""} onClick={()=>setType(k)}>{data[k].title}</button>)}</div>
-    <div className="spark-lever-diagram">{data.order.map((x,i)=><React.Fragment key={x}><article className={x.toLowerCase()}>{x}</article>{i<2&&<span>—</span>}</React.Fragment>)}</div>
+    <div className="spark-machines-buttons">{["first","second","third"].map(k=><button key={k} type="button" className={type===k?"active":""} onClick={()=>setType(k)}>{({
+      first:"First-class lever",second:"Second-class lever",third:"Third-class lever"
+    })[k]}</button>)}</div>
+
+    <svg className="spark-lever-svg" viewBox="0 0 860 430" role="img" aria-label={data.title+" showing the relative positions of effort fulcrum and load"}>
+      <rect className="sl-ground" x="85" y="325" width="690" height="14" rx="7"/>
+      <rect className="sl-beam" x="110" y="220" width="640" height="22" rx="11"/>
+
+      <g className="sl-fulcrum" transform={`translate(${fulcrum} 242)`}>
+        <path d="M0 0L-42 83H42Z"/>
+        <circle cx="0" cy="0" r="10"/>
+        <text x="0" y="118" textAnchor="middle">FULCRUM</text>
+      </g>
+
+      <g className="sl-effort" transform={`translate(${effort} 0)`}>
+        <path d="M0 105V215"/>
+        <path d="M-11 197L0 218L11 197"/>
+        <text x="0" y="85" textAnchor="middle">EFFORT</text>
+      </g>
+
+      <g className="sl-load" transform={`translate(${load} 0)`}>
+        <rect x="-34" y="135" width="68" height="58" rx="8"/>
+        <path d="M0 193V215"/>
+        <text x="0" y="120" textAnchor="middle">LOAD</text>
+      </g>
+
+      <g className="sl-order-guide">
+        {[180,430,680].map(x=><line key={x} x1={x} y1="345" x2={x} y2="365"/>)}
+        <line x1="180" y1="355" x2="680" y2="355"/>
+      </g>
+
+      <text className="sl-class-title" x="430" y="42" textAnchor="middle">{data.title}</text>
+      <text className="sl-rule" x="430" y="398" textAnchor="middle">{data.text}</text>
+    </svg>
+
+    <div className="spark-lever-legend">
+      <article><span className="effort-dot"></span><b>Effort</b><small>the applied force</small></article>
+      <article><span className="fulcrum-dot"></span><b>Fulcrum</b><small>the pivot</small></article>
+      <article><span className="load-dot"></span><b>Load</b><small>the resistance moved</small></article>
+    </div>
+
     <p><b>{data.example}:</b> {data.text}</p>
   </div>;
 }
