@@ -74,10 +74,12 @@ describe("Integrated Science Objective 1.3.2 acceptance audit", () => {
     expect(migration).toContain('"mode":"drag-drop-label"');
   });
 
-  test("phone and tablet label interaction remains available", () => {
+  test("phone tablet and dark-mode label interaction remains available", () => {
     expect(diagram).toContain("tap a label");
     expect(diagram).toContain("spark-label-target-index");
-    expect(css).toContain("(orientation:portrait)");
+    expect(css).toContain("@media(max-width:700px)");
+    expect(css).toContain("(max-width:900px) and (orientation:portrait)");
+    expect(css).toContain('html[data-theme="dark"] .spark-label-diagram');
     expect(css).toContain("SPARK_HUMAN_REPRODUCTIVE_TEMPLATES_V1");
   });
 
