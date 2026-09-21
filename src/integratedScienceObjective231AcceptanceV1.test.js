@@ -38,6 +38,27 @@ describe("Integrated Science Objective 2.3.1 acceptance audit", () => {
     expect(explorer).toContain("Natural gas");
   });
 
+  test("renders geological formation and thermal power-station SVG geometry", () => {
+    [
+      "spark-fossil-formation-svg",
+      "ff-coal-seam",
+      "ff-oil-trap",
+      "natural gas",
+      "crude oil",
+      "increasing",
+      "heat + pressure",
+      "spark-fossil-power-svg",
+      "ff-boiler",
+      "ff-turbine",
+      "ff-generator",
+      "ff-condenser",
+      "pump returns water",
+      "electrical energy to grid",
+    ].forEach(term => expect(explorer).toContain(term));
+    expect(css).toContain(".spark-fossil-formation-svg");
+    expect(css).toContain(".spark-fossil-power-svg");
+  });
+
   test("covers thermal power-station energy conversion", () => {
     expect(migration).toContain("chemical → heat → kinetic → electrical energy");
     expect(explorer).toContain("Power station");
