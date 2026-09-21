@@ -54,7 +54,7 @@ function KidneyScene() {
       <text className="hex-small" x="310" y="405">ureter</text>
 
       <g className="hex-csec-nephron" transform="translate(450 48) scale(1.16 1.2)">
-        <path className="hex-bowman" d="M80 60A38 38 0 1 0 118 98" />
+        <path className="hex-bowman" aria-label="Bowman\'s capsule" d="M80 60A38 38 0 1 0 118 98" />
         <path className="hex-bowman-inner" d="M92 66A26 26 0 1 0 112 92" />
         <path className="hex-glomerulus" d="M70 80q8-12 16 0q8 12 16 0q-8-14-16-2q-8 14-16 2" />
 
