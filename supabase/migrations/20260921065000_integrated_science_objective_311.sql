@@ -67,7 +67,7 @@ values (
         {"title":"Comets","paragraphs":[
           "Comets are made mainly of ice, dust and rock.",
           "Near the Sun, heating releases gas and dust, forming a coma and tails.",
-          "Solar radiation pressure and the solar wind push the tails away from the Sun, so the tails do not simply trail behind the comet's direction of motion."
+          "Solar radiation pressure and the solar wind push the tails away from the Sun, so the tails do not simply trail behind the comet''s direction of motion."
         ]},
         {"title":"Meteoroids, meteors and meteorites","paragraphs":[
           "A meteoroid is a small natural body moving through space.",
