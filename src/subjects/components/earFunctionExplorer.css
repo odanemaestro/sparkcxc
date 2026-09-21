@@ -42,3 +42,8 @@ html[data-theme="dark"] .spark-ear-function-summary,body[data-theme="dark"] .spa
 @media(max-width:700px){.spark-ear-function-tabs{display:grid;grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.spark-ear-function{padding:14px}.spark-ear-function-stage .earfx-heading{font-size:24px}.spark-ear-function-stage .earfx-label{font-size:18px}.spark-ear-function-stage .earfx-small{font-size:17px}.spark-ear-function-stage .earfx-warning{font-size:18px}}
 @media(max-width:390px){.spark-ear-function-tabs{grid-template-columns:1fr}}
+
+.spark-ear-function-stage .earfx-pinna{fill:none;stroke:#bd8062;stroke-width:20;stroke-linecap:round;stroke-linejoin:round}
+.spark-ear-function-stage .earfx-middle-cavity{fill:#f0dfcf;stroke:#b78f77;stroke-width:4}
+.spark-ear-function-stage .earfx-vestibule{fill:#c8dfd5;stroke:#648d7d;stroke-width:4}
+.spark-ear-function-stage .earfx-eustachian{fill:none;stroke:#6798ad;stroke-width:13;stroke-linecap:round}
