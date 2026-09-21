@@ -40,7 +40,6 @@ function ClimateView(){
     acidic:{name:"Humid polluted air",rate:"faster",reason:"Acidic gases can dissolve in moisture and increase corrosion."}
   }[condition];
   return <div className="spark-rust-climate">
-    <div className="spark-rust-buttons">{Object.keys(data?{}:{} )}</div>
     <div className="spark-rust-climate-buttons">{["dry","humid","coastal","acidic"].map(k=><button type="button" key={k} className={condition===k?"active":""} onClick={()=>setCondition(k)}>{k[0].toUpperCase()+k.slice(1)}</button>)}</div>
     <article><span>{data.name.toUpperCase()}</span><h4>Rusting rate: {data.rate}</h4><p>{data.reason}</p></article>
   </div>;
