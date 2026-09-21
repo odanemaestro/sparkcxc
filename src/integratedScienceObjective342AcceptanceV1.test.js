@@ -11,7 +11,17 @@ describe("Integrated Science Objective 3.4.2 acceptance audit",()=>{
  test("covers banked weight calculations",()=>{expect(migration).toContain("50 × 10 = 500 N");expect(migration).toContain("5 × 10 = 50 N");});
  test("covers Moon mass and weight",()=>{expect(migration).toContain("mass is the same on Earth and on the Moon");expect(migration).toContain("weight is smaller on the Moon");});
  test("covers free fall and air resistance",()=>{expect(migration).toContain("feather and a hammer");expect(migration).toContain("air resistance");expect(explorer).toContain("Vacuum");});
+ test("renders free fall with weight drag and vacuum comparison",()=>{
+  ["spark-freefall-svg","gi-weight-arrow","gi-drag-arrow","same gravitational acceleration, g","different motion in air comes from drag","without air resistance, both objects fall together"].forEach(term=>expect(explorer).toContain(term));
+  expect(css).toContain(".spark-freefall-svg");
+  expect(css).toContain(".gi-drag-arrow");
+ });
  test("covers inertia and seat belts",()=>{expect(migration).toContain("Newton''s first law");expect(migration).toContain("seat belt provides the force");expect(explorer).toContain("Inertia");});
+ test("renders sudden-stop inertia and the seat-belt stopping force",()=>{
+  ["spark-inertia-svg","gi-car-shell","gi-passenger-svg forward","gi-brake-arrow","gi-continue-arrow","gi-seatbelt-force","passenger tends to continue forward","seat-belt force on passenger"].forEach(term=>expect(explorer).toContain(term));
+  expect(css).toContain(".spark-inertia-svg");
+  expect(css).toContain(".gi-seatbelt-force");
+ });
  test("covers centripetal force and tangent motion",()=>{expect(migration).toContain("gravity provides the centripetal force");expect(migration).toContain("straight line tangent");expect(explorer).toContain("String breaks");});
  test("wires the explorer",()=>{expect(migration).toContain('"type":"gravity-inertia"');expect(view).toContain("GravityInertiaExplorer");});
  test("responsive and dark-mode ready",()=>{expect(css).toContain("@media(max-width:900px)");expect(css).toContain('html[data-theme="dark"]');});
