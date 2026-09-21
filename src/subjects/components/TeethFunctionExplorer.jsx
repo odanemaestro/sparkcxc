@@ -48,12 +48,19 @@ function TypesView(){
 }
 
 function StructureView(){
+  const outerToothPath="M220 80Q285 35 380 45Q475 35 540 80Q568 108 553 180Q543 225 522 274Q505 312 490 350L468 482Q458 555 414 560Q382 555 380 492Q378 555 346 560Q302 555 292 482L270 350Q255 312 238 274Q217 225 207 180Q192 108 220 80Z";
   return <div className="spark-tooth-structure-view">
-    <svg className="spark-tooth-structure-svg" viewBox="0 0 760 620" role="img" aria-label="Cross-section of a tooth showing enamel, dentine, pulp cavity, nerves, blood vessels, gum, jaw bone, crown, neck and root">
-      <path className="ts-jaw" d="M70 395Q150 350 240 372Q310 390 380 370Q465 344 555 378Q630 405 700 390V590H70Z"/>
-      <path className="ts-gum" d="M70 350Q150 305 245 338Q305 360 380 338Q470 305 555 340Q630 365 700 350V430Q615 445 540 414Q465 388 380 414Q305 441 235 417Q150 390 70 420Z"/>
+    <svg className="spark-tooth-structure-svg" viewBox="0 0 800 640" role="img" aria-label="Cross-section of a tooth showing enamel on the crown, dentine, pulp cavity, nerves, blood vessels, cementum on the roots, gingiva, jaw bone, crown, neck and root">
+      <defs>
+        <clipPath id="tooth-crown-clip"><rect x="185" y="20" width="390" height="340"/></clipPath>
+        <clipPath id="tooth-root-clip"><rect x="185" y="350" width="390" height="235"/></clipPath>
+      </defs>
 
-      <path className="ts-enamel" d="M220 80Q285 35 380 45Q475 35 540 80Q568 108 553 180Q543 225 522 274Q505 312 490 350L468 482Q458 555 414 560Q382 555 380 492Q378 555 346 560Q302 555 292 482L270 350Q255 312 238 274Q217 225 207 180Q192 108 220 80Z"/>
+      <path className="ts-jaw" d="M70 410Q150 360 240 382Q310 400 380 380Q465 354 555 388Q650 415 730 398V610H70Z"/>
+      <path className="ts-gum" d="M70 356Q150 310 245 340Q305 362 380 340Q470 307 555 342Q645 370 730 354V438Q630 450 540 420Q465 394 380 420Q305 447 235 421Q150 394 70 425Z"/>
+
+      <path className="ts-cementum" d={outerToothPath} clipPath="url(#tooth-root-clip)"/>
+      <path className="ts-enamel" d={outerToothPath} clipPath="url(#tooth-crown-clip)"/>
       <path className="ts-dentine" d="M247 102Q304 68 380 76Q456 68 513 102Q532 126 521 180Q512 221 493 264Q474 305 461 344L445 474Q440 515 414 520Q394 512 392 466L388 353Q384 329 380 312Q376 329 372 353L368 466Q366 512 346 520Q320 515 315 474L299 344Q286 305 267 264Q248 221 239 180Q228 126 247 102Z"/>
       <path className="ts-pulp" d="M315 180Q345 160 380 166Q415 160 445 180Q456 215 444 263Q430 306 414 333L405 458Q402 483 388 486Q380 477 380 452Q380 477 372 486Q358 483 355 458L346 333Q330 306 316 263Q304 215 315 180Z"/>
 
@@ -61,28 +68,30 @@ function StructureView(){
       <path className="ts-vessel one" d="M363 490V336Q347 300 340 255"/>
       <path className="ts-vessel two" d="M397 490V336Q415 300 424 250"/>
 
+      <line className="ts-neck-guide" x1="203" y1="350" x2="557" y2="350"/>
       <line className="ts-crown-line" x1="178" y1="95" x2="178" y2="330"/>
-      <line className="ts-root-line" x1="178" y1="360" x2="178" y2="555"/>
+      <line className="ts-root-line" x1="178" y1="370" x2="178" y2="565"/>
       <text className="ts-region-label" x="160" y="210" textAnchor="end">crown</text>
       <text className="ts-region-label" x="160" y="356" textAnchor="end">neck</text>
-      <text className="ts-region-label" x="160" y="470" textAnchor="end">root</text>
+      <text className="ts-region-label" x="160" y="485" textAnchor="end">root</text>
 
       <g className="ts-callouts">
-        <path d="M488 110L610 80"/><text x="625" y="84">enamel</text>
-        <path d="M470 165L610 145"/><text x="625" y="150">dentine</text>
-        <path d="M430 230L610 225"/><text x="625" y="230">pulp cavity</text>
-        <path d="M405 360L610 310"/><text x="625" y="315">nerves and blood vessels</text>
-        <path d="M518 385L610 390"/><text x="625" y="395">gum</text>
-        <path d="M515 500L610 500"/><text x="625" y="505">jaw bone</text>
+        <path d="M500 110L635 72"/><text x="650" y="78">enamel, crown only</text>
+        <path d="M470 165L635 137"/><text x="650" y="143">dentine</text>
+        <path d="M430 230L635 205"/><text x="650" y="211">pulp cavity</text>
+        <path d="M405 360L635 275"/><text x="650" y="281">nerves and blood vessels</text>
+        <path d="M470 430L635 350"/><text x="650" y="356">cementum, root covering</text>
+        <path d="M528 390L635 420"/><text x="650" y="426">gingiva (gum)</text>
+        <path d="M515 515L635 520"/><text x="650" y="526">jaw bone</text>
       </g>
 
-      <text className="ts-caption" x="380" y="600" textAnchor="middle">tooth cross-section</text>
+      <text className="ts-caption" x="400" y="620" textAnchor="middle">tooth cross-section, enamel covers the crown while cementum covers the roots</text>
     </svg>
     <div className="spark-tooth-structure-notes">
       <article><b>Enamel</b><p>Hard outer covering of the crown. It protects the tooth from wear and acid attack.</p></article>
-      <article><b>Dentine</b><p>Hard tissue beneath enamel. It forms most of the tooth and is less resistant to decay than enamel.</p></article>
+      <article><b>Dentine</b><p>Hard tissue beneath enamel and cementum. It forms most of the tooth and is less resistant to decay than enamel.</p></article>
       <article><b>Pulp cavity</b><p>Contains nerves and blood vessels that keep the living tissues supplied.</p></article>
-      <article><b>Root and supporting tissues</b><p>The root anchors the tooth in the jaw. Gum and jaw bone support the tooth around the socket.</p></article>
+      <article><b>Cementum and supporting tissues</b><p>Cementum covers the root surface. The root is held in the jaw, while the gingiva surrounds the neck of the tooth.</p></article>
     </div>
   </div>;
 }
