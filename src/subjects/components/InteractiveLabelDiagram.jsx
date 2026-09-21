@@ -121,8 +121,8 @@ function FlowerLongitudinalTemplate() {
   return (
     <g className="spark-diagram-flower spark-csec-reference" aria-hidden="true">
       <g transform="translate(130 5) scale(1.85 1.6)">
-        <path className="flower-stalk" d="M192 300V240M208 300V240" />
-        <path className="flower-receptacle" d="M192 240Q160 230 155 215H245Q240 230 208 240Z" />
+        <path className="flower-stalk" d="M192 300V265M208 300V265" />
+        <path className="flower-receptacle" d="M192 265Q160 255 155 215H245Q240 255 208 265Z" />
 
         <path className="flower-ovary" d="M172 215Q166 175 192 160H208Q234 175 228 215Z" />
         <g className="flower-ovules">
@@ -135,7 +135,7 @@ function FlowerLongitudinalTemplate() {
         <path className="flower-style" d="M196 160V85H204V160Z" />
         <path className="flower-stigma" d="M196 85Q186 77 188 69Q194 73 200 73Q206 73 212 69Q214 77 204 85Z" />
 
-        <path className="flower-sepal left" d="M155 215Q115 215 100 245Q130 235 160 225Z" />
+        <path className="flower-sepal left" d="M155 215Q115 190 100 220Q130 220 160 225Z" />
         <path className="flower-sepal right" d="M245 215Q285 215 300 245Q270 235 240 225Z" />
 
         <path className="flower-petal left" d="M158 212Q80 180 65 90Q120 120 164 205Z" />
@@ -159,9 +159,9 @@ function BeanSeedTemplate() {
         <path className="seed-testa" d="M60 120Q60 40 170 40Q280 40 290 110Q295 190 180 200Q70 205 60 120Z" />
         <path className="seed-cotyledon" d="M72 120Q72 54 170 54Q268 54 276 112Q280 182 180 188Q84 192 72 120Z" />
 
-        <path className="seed-radicle" d="M95 120Q87 140 101 154Q111 162 117 148Q119 130 109 118Z" />
-        <path className="seed-plumule" d="M104 118Q114 96 138 92Q132 100 128 106Q138 104 146 110Q130 114 122 122Z" />
-        <path className="seed-embryo-axis" d="M109 118Q116 125 116 143Q114 151 107 156" />
+        <path className="seed-plumule" d="M164 118Q168 96 178 92Q184 98 180 106Q192 101 202 110Q187 114 176 122Z" />
+        <path className="seed-embryo-axis" d="M176 118Q182 140 184 165Q186 185 189 196" />
+        <path className="seed-radicle" d="M184 186Q180 198 189 205Q198 198 194 187Z" />
       </g>
     </g>
   );
