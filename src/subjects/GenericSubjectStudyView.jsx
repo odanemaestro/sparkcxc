@@ -98,6 +98,7 @@ import StabilityCentreGravityExplorer from "./components/StabilityCentreGravityE
 import EquilibriumMomentsExplorer from "./components/EquilibriumMomentsExplorer";
 import MomentumConservationExplorer from "./components/MomentumConservationExplorer";
 import SimpleMachinesExplorer from "./components/SimpleMachinesExplorer";
+import HumanSkeletonExplorer from "./components/HumanSkeletonExplorer";
 import MaterialPropertiesExplorer from "./components/MaterialPropertiesExplorer";
 import MetalReactivityExplorer from "./components/MetalReactivityExplorer";
 import AluminiumUtensilsExplorer from "./components/AluminiumUtensilsExplorer";
@@ -562,6 +563,9 @@ function GenericLessonContent({
         }
         if (model?.type === "simple-machines") {
           return <SimpleMachinesExplorer key={model.id || "simple-machines"} />;
+        }
+        if (model?.type === "human-skeleton") {
+          return <HumanSkeletonExplorer key={model.id || "human-skeleton"} />;
         }
         if (model?.type === "material-properties") {
           return <MaterialPropertiesExplorer key={model.id || "material-properties"} />;
