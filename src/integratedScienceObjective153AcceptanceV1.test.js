@@ -58,10 +58,22 @@ describe("Integrated Science Objective 1.5.3 acceptance audit", () => {
   });
 
   test("visual includes stomata, day-night balance and tissue shedding", () => {
-    expect(explorer).toContain("stoma in leaf epidermis");
+    expect(explorer).toContain("spark-stoma-excretion-svg");
+    expect(explorer).toContain("guard cell");
+    expect(explorer).toContain("stomatal pore");
+    expect(explorer).toContain("chloroplasts in guard cells");
+    expect(explorer).toContain("surrounding epidermal cells");
+    expect(explorer).toContain("spongy mesophyll with air spaces");
+    expect(explorer).toContain("substomatal air space");
+    expect(explorer).toContain("H₂O vapour out");
+    expect(explorer).toContain("O₂ out");
+    expect(explorer).toContain("CO₂ can diffuse in or out");
     expect(explorer).toContain("photosynthesis usually exceeds respiration");
     expect(explorer).toContain("respiration continues, photosynthesis stops");
     expect(explorer).toContain("old leaf falls");
+    expect(css).toContain(".spark-stoma-excretion-svg");
+    expect(css).toContain(".pex-guard-chloroplasts");
+    expect(css).toContain(".pex-substomatal-space");
   });
 
   test("visual remains responsive and dark-mode ready", () => {
