@@ -54,3 +54,20 @@ html[data-theme="dark"] .spark-landfill-cross-section,body[data-theme="dark"] .s
 html[data-theme="dark"] .lf-sky,body[data-theme="dark"] .lf-sky,.dark .lf-sky{fill:#17354e}
 html[data-theme="dark"] .lf-small,body[data-theme="dark"] .lf-small,.dark .lf-small{fill:#d6e4ee}
 @media(max-width:620px){.lf-small{font-size:15px}}
+
+
+.spark-hygiene-pests-view{display:grid;gap:14px}
+.spark-pests-drains-svg{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.pd-ground{fill:#eef4f1}.pd-road{fill:#b7bdc0}.pd-drain-channel{fill:#7f8587;stroke:#555d61;stroke-width:4}.pd-water{fill:#78b7cf;stroke:#4d8ca5;stroke-width:3}
+.pd-litter rect,.pd-litter path,.pd-litter circle{fill:#8a7562;stroke:#5e4c3e;stroke-width:2}.pd-flow,.pd-stage-arrow{fill:none;stroke:#367f9d;stroke-width:5;stroke-linecap:round}.pd-flow.weak{stroke-dasharray:10 8;opacity:.6}.pd-arrow-head{fill:#367f9d}
+.pd-egg{fill:#6e6255;stroke:#4e463d;stroke-width:2}.pd-larva,.pd-pupa{fill:none;stroke:#6b7d50;stroke-width:6;stroke-linecap:round}
+.pd-mosquito-body,.pd-mosquito-head{fill:#4f534d;stroke:#2e322d;stroke-width:2}.pd-mosquito-lines{fill:none;stroke:#40443f;stroke-width:3;stroke-linecap:round}
+.pd-bin{fill:#6f7f69;stroke:#485444;stroke-width:4}.pd-bin-lid{fill:#5e6d59;stroke:#485444;stroke-width:4}.pd-bag{fill:#9b8b74;stroke:#675b4c;stroke-width:3}.pd-flies circle{fill:#323a3c}
+.pd-rat ellipse,.pd-rat circle{fill:#7f756f;stroke:#544e4a;stroke-width:2}.pd-rat path{fill:none;stroke:#544e4a;stroke-width:3}
+.pd-label,.pd-heading{fill:#294d64;font-weight:900}.pd-label{font-size:14px}.pd-heading{font-size:13px}.pd-small{fill:#536d80;font-size:11px;font-weight:750}
+html[data-theme="dark"] .spark-pests-drains-svg,body[data-theme="dark"] .spark-pests-drains-svg,.dark .spark-pests-drains-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .pd-ground,body[data-theme="dark"] .pd-ground,.dark .pd-ground{fill:#153148}
+html[data-theme="dark"] .pd-label,body[data-theme="dark"] .pd-label,.dark .pd-label,
+html[data-theme="dark"] .pd-heading,body[data-theme="dark"] .pd-heading,.dark .pd-heading,
+html[data-theme="dark"] .pd-small,body[data-theme="dark"] .pd-small,.dark .pd-small{fill:#e1edf5}
+@media(max-width:620px){.pd-label{font-size:18px}.pd-heading{font-size:17px}.pd-small{font-size:15px}}
