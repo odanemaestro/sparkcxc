@@ -20,6 +20,32 @@ function objectiveMigrations(){
     .sort((a,b)=>a.name.localeCompare(b.name));
 }
 
+function rawApostrophesInJsonStrings(content){
+  const violations=[];
+  const jsonStrings=content.match(/"(?:\\.|[^"\\])*"/g) || [];
+
+  jsonStrings.forEach(token=>{
+    for(let index=0; index<token.length;){
+      if(token[index] !== "'"){
+        index += 1;
+        continue;
+      }
+
+      let end=index;
+      while(end < token.length && token[end] === "'") end += 1;
+      const runLength=end-index;
+
+      if(runLength % 2 !== 0){
+        violations.push(token.slice(Math.max(0,index-36),Math.min(token.length,end+36)));
+      }
+
+      index=end;
+    }
+  });
+
+  return violations;
+}
+
 describe("Integrated Science full-course lesson quality V3",()=>{
   const migrations=objectiveMigrations();
   const studyView=fs.readFileSync(
@@ -42,6 +68,13 @@ describe("Integrated Science full-course lesson quality V3",()=>{
       expect(content).toContain('"workedExample"');
       expect(content).toContain('"checks"');
       expect(content).toContain('"summary"');
+    }
+  );
+
+  test.each(migrations.map(item=>[item.name,item.content]))(
+    "%s escapes apostrophes inside SQL JSON strings",
+    (_name,content)=>{
+      expect(rawApostrophesInJsonStrings(content)).toEqual([]);
     }
   );
 
