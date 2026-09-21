@@ -22,13 +22,32 @@ function SpringNeapView(){
   const spring=type==="spring";
   return <div className="spark-spring-neap">
     <div className="spark-tide-toggle"><button type="button" className={spring?"active":""} onClick={()=>setType("spring")}>Spring tide</button><button type="button" className={!spring?"active":""} onClick={()=>setType("neap")}>Neap tide</button></div>
-    <svg viewBox="0 0 860 430" role="img" aria-label={spring?"Sun Earth and Moon aligned for spring tide":"Sun and Moon at right angles for neap tide"}>
+    <svg viewBox="0 0 860 430" role="img" aria-label={spring?"Sun Earth and Moon aligned with a large tidal range for spring tide":"Sun and Moon at right angles with a smaller tidal range for neap tide"}>
       <circle className="sn-sun" cx="110" cy="215" r="58"/>
+
+      {spring
+        ? <ellipse className="sn-water spring-range" cx="430" cy="215" rx="118" ry="79"/>
+        : <ellipse className="sn-water neap-range" cx="430" cy="215" rx="82" ry="94"/>}
       <circle className="sn-earth" cx="430" cy="215" r="70"/>
+
       {spring?<circle className="sn-moon" cx="715" cy="215" r="30"/>:<circle className="sn-moon" cx="430" cy="60" r="30"/>}
+
       <path className="sn-force sun" d="M180 215H350"/>
       <path className="sn-force moon" d={spring?"M680 215H510":"M430 95V145"}/>
-      <text className="sn-label" x="110" y="300" textAnchor="middle">Sun</text><text className="sn-label" x="430" y="315" textAnchor="middle">Earth</text><text className="sn-label" x={spring?715:500} y={spring?285:65}>Moon</text>
+
+      {spring ? <>
+        <path className="sn-range-guide" d="M312 315V350M548 315V350M312 342H548"/>
+        <text className="sn-range-label" x="430" y="374" textAnchor="middle">largest tidal range</text>
+        <text className="sn-bulge-label" x="575" y="184">larger high-tide bulge</text>
+      </> : <>
+        <path className="sn-range-guide" d="M348 315V350M512 315V350M348 342H512"/>
+        <text className="sn-range-label" x="430" y="374" textAnchor="middle">smallest tidal range</text>
+        <text className="sn-bulge-label" x="535" y="145">smaller bulges</text>
+      </>}
+
+      <text className="sn-label" x="110" y="300" textAnchor="middle">Sun</text>
+      <text className="sn-label" x="430" y="222" textAnchor="middle">Earth</text>
+      <text className="sn-label" x={spring?715:485} y={spring?285:62}>Moon</text>
     </svg>
     <p>{spring?"At new moon and full moon, the Sun, Earth and Moon are approximately aligned. Their tidal effects reinforce each other, producing the greatest tidal range.":"At first and last quarter, the Sun and Moon pull at roughly right angles. Their tidal effects partly oppose each other, producing the smallest tidal range."}</p>
   </div>;
