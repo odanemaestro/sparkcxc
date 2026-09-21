@@ -45,6 +45,20 @@ describe("Integrated Science full-course lesson quality V3",()=>{
     }
   );
 
+  test("every objective interactive model type is rendered by the shared study view",()=>{
+    const types=new Set();
+    migrations.forEach(({content})=>{
+      const modelBlocks=[...content.matchAll(/"interactiveModels"\s*:\s*\[([\s\S]*?)\]/g)];
+      modelBlocks.forEach(block=>{
+        for(const match of block[1].matchAll(/"type"\s*:\s*"([^"]+)"/g)) types.add(match[1]);
+      });
+    });
+    expect(types.size).toBeGreaterThan(0);
+    for(const type of types){
+      expect(studyView).toContain(`model?.type === "${type}"`);
+    }
+  });
+
   test.each(migrations.map(item=>[item.suffix,item.name]))(
     "objective suffix %s has its own acceptance regression",
     (suffix)=>{
