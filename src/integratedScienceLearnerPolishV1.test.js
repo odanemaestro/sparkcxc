@@ -137,6 +137,30 @@ describe("Integrated Science learner polish V1", () => {
     expect(muscleMovement).toContain("spark-knee-svg");
     expect(muscleMovement).toContain("sm-patella");
 
+    const nervous = fs.readFileSync(
+      path.join(__dirname,"subjects","components","NervousSystemExplorer.jsx"),
+      "utf8"
+    );
+    expect(nervous).toContain("ns-brain cerebrum");
+    expect(nervous).toContain("ns-brain cerebellum");
+    expect(nervous).toContain("ns-nerve fine");
+
+    const gasExchange = fs.readFileSync(
+      path.join(__dirname,"subjects","components","GaseousExchangeExplorer.jsx"),
+      "utf8"
+    );
+    expect(gasExchange).toContain("gx-alveolar-cluster");
+    expect(gasExchange).toContain("gx-exchange-barrier");
+    expect(gasExchange).toContain("thin exchange barrier");
+
+    const breathing = fs.readFileSync(
+      path.join(__dirname,"subjects","components","BreathingMechanismExplorer.jsx"),
+      "utf8"
+    );
+    expect(breathing).toContain("bm-trachea");
+    expect(breathing).toContain("bm-bronchioles");
+    expect(breathing).toContain("bm-rib-arrow");
+
     expect(diagram).toContain("eye-vitreous");
     expect(diagram).toContain("eye-aqueous");
     expect(diagram).toContain("ear-vestibule");
