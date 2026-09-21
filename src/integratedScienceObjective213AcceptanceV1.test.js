@@ -36,6 +36,20 @@ describe("Integrated Science Objective 2.1.3 acceptance audit", () => {
     expect(explorer).toContain("Light energy is converted to chemical energy stored in glucose");
   });
 
+  test("renders leaf tissue and chloroplast structure for light capture", () => {
+    expect(explorer).toContain("Leaf + chloroplast");
+    expect(explorer).toContain("spark-photo-chloroplast-svg");
+    expect(explorer).toContain("pcl-palisade");
+    expect(explorer).toContain("pcl-chloroplast-dot");
+    expect(explorer).toContain("pcl-stoma");
+    expect(explorer).toContain("pcl-xylem");
+    expect(explorer).toContain("pcl-phloem");
+    expect(explorer).toContain("pcl-grana");
+    expect(explorer).toContain("pcl-starch-grain");
+    expect(explorer).toContain("chlorophyll in chloroplast membranes absorbs light energy");
+    expect(css).toContain(".spark-photo-chloroplast-svg");
+  });
+
   test("covers the full starch-test method and safety", () => {
     expect(migration).toContain("destarched");
     expect(migration).toContain("heated in ethanol using a water bath");
