@@ -22,3 +22,20 @@ html[data-theme="dark"] .spark-plant-excretion-summary,body[data-theme="dark"] .
 @media(max-width:850px){.spark-plant-excretion-tabs{display:grid;grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.spark-plant-excretion{padding:14px}.spark-plant-excretion-stage .pex-label{font-size:21px}.spark-plant-excretion-stage .pex-heading{font-size:23px}.spark-plant-excretion-stage .pex-small{font-size:18px}.spark-plant-excretion-stage .pex-gas-label{font-size:23px}}
 @media(max-width:390px){.spark-plant-excretion-tabs{grid-template-columns:1fr}}
+
+
+.spark-stoma-excretion-svg{display:block;width:100%;height:auto;border-radius:12px}
+.pex-epidermis-field{fill:#dfead7;stroke:#839b76;stroke-width:4}
+.pex-epidermal-cells ellipse{fill:#edf4e8;stroke:#9aad90;stroke-width:2}
+.pex-guard-cell{fill:#79ad62;stroke:#3e7541;stroke-width:5}.pex-pore{fill:#edf5f8;stroke:#52788a;stroke-width:4}
+.pex-guard-chloroplasts ellipse{fill:#4b8444;stroke:#2f6030;stroke-width:2}.pex-guard-nucleus{fill:#a7c295;stroke:#577453;stroke-width:2}
+.pex-surface-callouts path{fill:none;stroke:#60788a;stroke-width:2.5}.pex-surface-callouts text{fill:#294d64;font-size:13px;font-weight:850}
+.pex-gas-flow,.pex-section-flow{fill:none;stroke-width:5;stroke-linecap:round}.pex-gas-flow.oxygen,.pex-section-flow.oxygen{stroke:#4f9b67}.pex-gas-flow.water,.pex-section-flow.water{stroke:#4d8fb0}.pex-gas-flow.carbon,.pex-section-flow.carbon{stroke:#7c6f69}
+.pex-stoma-arrow-head{fill:#60788a}
+.pex-upper-tissue{fill:#b8d99e;stroke:#70935e;stroke-width:3}.pex-lower-epidermis{fill:#d9e8cd;stroke:#7c9a6d;stroke-width:3}
+.pex-section-pore{fill:none;stroke:#4b7451;stroke-width:7;stroke-linecap:round}
+.pex-substomatal-space{fill:#edf5f8;stroke:#7e9aa7;stroke-width:3}.pex-spongy-cells ellipse{fill:#b9d29f;stroke:#789268;stroke-width:3}
+.pex-stoma-caption{fill:#294d64;font-size:13px;font-weight:900}
+html[data-theme="dark"] .pex-surface-callouts text,body[data-theme="dark"] .pex-surface-callouts text,.dark .pex-surface-callouts text,
+html[data-theme="dark"] .pex-stoma-caption,body[data-theme="dark"] .pex-stoma-caption,.dark .pex-stoma-caption{fill:#dceaf2}
+@media(max-width:620px){.pex-surface-callouts text{font-size:17px}.pex-stoma-caption{font-size:17px}}
