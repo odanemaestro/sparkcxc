@@ -33,10 +33,10 @@ function DigestiveSystemScene(){
       <path className="dg-pancreatic-duct" d="M370 469Q411 471 458 463"/>
       <path className="dg-duodenum" d="M445 465Q500 478 500 520Q500 558 454 570"/>
 
-      <path className="dg-colon ascending" d="M286 515Q250 565 264 690"/>
-      <path className="dg-colon transverse" d="M285 515Q380 482 478 515"/>
-      <path className="dg-colon descending" d="M478 515Q510 565 496 690"/>
-      <path className="dg-colon sigmoid" d="M496 690Q475 735 430 742Q395 744 381 767"/>
+      <path className="dg-large dg-colon ascending" d="M286 515Q250 565 264 690"/>
+      <path className="dg-large dg-colon transverse" d="M285 515Q380 482 478 515"/>
+      <path className="dg-large dg-colon descending" d="M478 515Q510 565 496 690"/>
+      <path className="dg-large dg-colon sigmoid" d="M496 690Q475 735 430 742Q395 744 381 767"/>
       <path className="dg-cecum" d="M263 681Q244 705 263 730Q286 739 299 718Q301 694 286 681Z"/>
       <path className="dg-appendix" d="M263 724Q236 746 246 780"/>
 
