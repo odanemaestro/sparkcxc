@@ -91,6 +91,7 @@ import StabilityCentreGravityExplorer from "./components/StabilityCentreGravityE
 import MaterialPropertiesExplorer from "./components/MaterialPropertiesExplorer";
 import MetalReactivityExplorer from "./components/MetalReactivityExplorer";
 import AluminiumUtensilsExplorer from "./components/AluminiumUtensilsExplorer";
+import AlloysExplorer from "./components/AlloysExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -518,6 +519,9 @@ function GenericLessonContent({
         }
         if (model?.type === "aluminium-utensils") {
           return <AluminiumUtensilsExplorer key={model.id || "aluminium-utensils"} />;
+        }
+        if (model?.type === "alloys") {
+          return <AlloysExplorer key={model.id || "alloys"} />;
         }
         return null;
       })}
