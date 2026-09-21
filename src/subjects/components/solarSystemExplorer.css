@@ -2,16 +2,60 @@
 .spark-solar-system header>span{color:var(--spark-teal-dark,#087f73);font-size:11px;font-weight:900}.spark-solar-system header h3{margin:4px 0 7px;color:var(--spark-ink,#102a43);font-size:20px}.spark-solar-system header p{margin:0;color:var(--spark-text-muted,#627d98);font-size:13px;line-height:1.6}
 .spark-solar-tabs,.spark-planet-buttons{display:flex;flex-wrap:wrap;gap:8px;margin:17px 0}.spark-solar-tabs button,.spark-planet-buttons button{min-height:42px;padding:0 12px;border:1px solid var(--spark-border,#d9e2ec);border-radius:9px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:11px;font-weight:850}.spark-solar-tabs button.active,.spark-planet-buttons button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}
 .spark-solar-stage{padding:15px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:14px;background:var(--spark-bg,#f7fafc)}
-.spark-solar-order{display:flex;align-items:flex-end;gap:10px;overflow-x:auto;padding:20px 8px}.spark-sun-disc{display:grid;place-items:center;min-width:90px;height:90px;border-radius:50%;background:#e4b34b;color:#57400f;font-weight:900}.spark-solar-order article{display:grid;justify-items:center;gap:4px;min-width:78px;padding:10px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:10px;background:var(--spark-paper,#fff)}.spark-solar-order article>span{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73);font-size:10px;font-weight:900}.spark-solar-order b{color:var(--spark-ink,#102a43);font-size:11px}.spark-solar-order small{color:var(--spark-text-muted,#627d98);font-size:9px;text-align:center}
+
+.spark-solar-order{width:100%;overflow:hidden}
+.spark-solar-order-svg{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:14px;background:var(--spark-paper,#fff)}
+.ss-order-bg{fill:var(--spark-paper,#fff)}
+.ss-inner-zone{fill:#f7fafc;stroke:#8ca0ad;stroke-width:2;stroke-dasharray:7 6}
+.ss-outer-zone{fill:#f3f7fa;stroke:#8ca0ad;stroke-width:2;stroke-dasharray:7 6}
+.ss-zone-label{fill:var(--spark-ink,#102a43);font-size:13px;font-weight:900;letter-spacing:.6px}
+.ss-order-axis,.ss-planet-guide{stroke:#91a2ac;stroke-width:2}
+.ss-order-sun{stroke:#a97822;stroke-width:3}.ss-sun-core{stop-color:#ffe88a}.ss-sun-edge{stop-color:#e1a52e}
+.ss-order-sun-label{fill:#5c410e;font-size:15px;font-weight:900}
+.ss-order-planet>circle:not(.ss-order-number){fill:#7e9cab;stroke:#4e6e7e;stroke-width:2.5}
+.ss-order-planet.mercury>circle:not(.ss-order-number){fill:#8f8984}
+.ss-order-planet.venus>circle:not(.ss-order-number){fill:#d4aa6e}
+.ss-order-planet.earth>circle:not(.ss-order-number){fill:#5b8fb8}
+.ss-order-planet.mars>circle:not(.ss-order-number){fill:#b8664d}
+.ss-order-planet.jupiter>circle:not(.ss-order-number){fill:#c99b70}
+.ss-order-planet.saturn>circle:not(.ss-order-number){fill:#d0b477}
+.ss-order-planet.uranus>circle:not(.ss-order-number){fill:#78b8c4}
+.ss-order-planet.neptune>circle:not(.ss-order-number){fill:#5579b5}
+.ss-order-rings{fill:none;stroke:#ad9660;stroke-width:5}
+.ss-order-number{fill:var(--spark-teal-light,#d9fbf4);stroke:var(--spark-teal,#0d9488);stroke-width:2}
+.ss-number-text{fill:var(--spark-teal-dark,#087f73);font-size:11px;font-weight:900}
+.ss-planet-name{fill:var(--spark-ink,#102a43);font-size:13px;font-weight:900}
+.ss-planet-type{fill:var(--spark-text-muted,#627d98);font-size:10px;font-weight:750}
+.ss-order-distance-arrow{fill:none;stroke:#637d8b;stroke-width:3;stroke-linecap:round}
+.ss-order-distance-arrow:after{content:""}
+.ss-order-note{fill:#466170;font-size:12px;font-weight:850}
+.ss-order-scale-note{fill:var(--spark-text-muted,#627d98);font-size:10px;font-weight:750}
+
 .spark-planet-facts{display:grid;grid-template-columns:.8fr 1.2fr;gap:14px}.spark-planet-buttons{display:grid;margin:0}.spark-planet-buttons button{text-align:left}.spark-planet-buttons.compact{display:flex;margin-bottom:12px}.spark-planet-facts>article{padding:18px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}.spark-planet-facts span,.spark-planet-groups span{color:var(--spark-teal-dark,#087f73);font-size:10px;font-weight:900}.spark-planet-facts h4,.spark-planet-groups h4{margin:5px 0;color:var(--spark-ink,#102a43);font-size:15px}.spark-planet-facts strong{display:block;color:var(--spark-teal-dark,#087f73);font-size:11px}.spark-planet-facts p,.spark-solar-orbit p,.spark-planet-groups p,.spark-planet-memory p{color:var(--spark-ink-soft,#334e68);font-size:11px;line-height:1.55}
-.spark-solar-orbit svg{display:block;width:100%;height:auto;border-radius:10px;background:var(--spark-paper,#fff)}.sse-sun{fill:#e4b34b;stroke:#aa7d24;stroke-width:5}.sse-orbit{fill:none;stroke:#839aa7;stroke-width:3;stroke-dasharray:8 7}.sse-planet{fill:#7d9eb0;stroke:#4e6e7e;stroke-width:4}.sse-planet.mars{fill:#b8674e}.sse-planet.jupiter{fill:#c9a37d}.sse-planet.saturn{fill:#d2bb7c}.sse-rings{fill:none;stroke:#b49b61;stroke-width:6}.sse-label{fill:#334e68;font-size:14px;font-weight:850}
+
+.spark-solar-orbit-svg{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.sse-sun{fill:#e4b34b;stroke:#aa7d24;stroke-width:5}.sse-orbit{fill:none;stroke:#839aa7;stroke-width:3;stroke-dasharray:8 7}
+.sse-major-axis{stroke:#b9c5cc;stroke-width:1.5;stroke-dasharray:5 5}
+.sse-ellipse-centre{fill:#526b79}.sse-focus-marker{fill:#c87932;opacity:.45}
+.sse-focus-guide{stroke:#6d7f89;stroke-width:2;stroke-dasharray:5 4}
+.sse-motion-arrow{fill:none;stroke:#34799a;stroke-width:4;stroke-linecap:round}
+.sse-planet{fill:#7d9eb0;stroke:#4e6e7e;stroke-width:4}.sse-planet.mars{fill:#b8674e}.sse-planet.jupiter{fill:#c9a37d}.sse-planet.saturn{fill:#d2bb7c}.sse-rings{fill:none;stroke:#b49b61;stroke-width:6}
+.sse-label{fill:#334e68;font-size:14px;font-weight:850}.sse-small-label{fill:#4f7082;font-size:11px;font-weight:750}
+
 .spark-planet-groups{display:grid;grid-template-columns:1fr 1fr;gap:12px}.spark-planet-groups article{padding:15px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:11px;background:var(--spark-paper,#fff)}
 .spark-planet-memory{padding:25px;text-align:center;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}.spark-planet-memory strong{color:var(--spark-teal-dark,#087f73);font-size:15px;line-height:1.7}
 .spark-solar-summary{display:grid;gap:5px;margin-top:14px;padding:13px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:11px;background:var(--spark-bg,#f7fafc)}.spark-solar-summary strong{color:var(--spark-teal-dark,#087f73);font-size:12px}.spark-solar-summary span{color:var(--spark-ink-soft,#334e68);font-size:12px}
+
 html[data-theme="dark"] .spark-solar-system,body[data-theme="dark"] .spark-solar-system,.dark .spark-solar-system{background:#122b43;border-color:#2a4863}
-html[data-theme="dark"] .spark-solar-tabs button,body[data-theme="dark"] .spark-solar-tabs button,.dark .spark-solar-tabs button,html[data-theme="dark"] .spark-planet-buttons button,body[data-theme="dark"] .spark-planet-buttons button,.dark .spark-planet-buttons button,html[data-theme="dark"] .spark-solar-order article,body[data-theme="dark"] .spark-solar-order article,.dark .spark-solar-order article,html[data-theme="dark"] .spark-planet-facts>article,body[data-theme="dark"] .spark-planet-facts>article,.dark .spark-planet-facts>article,html[data-theme="dark"] .spark-solar-orbit svg,body[data-theme="dark"] .spark-solar-orbit svg,.dark .spark-solar-orbit svg,html[data-theme="dark"] .spark-planet-groups article,body[data-theme="dark"] .spark-planet-groups article,.dark .spark-planet-groups article,html[data-theme="dark"] .spark-planet-memory,body[data-theme="dark"] .spark-planet-memory,.dark .spark-planet-memory,html[data-theme="dark"] .spark-solar-summary,body[data-theme="dark"] .spark-solar-summary,.dark .spark-solar-summary{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .spark-solar-tabs button,body[data-theme="dark"] .spark-solar-tabs button,.dark .spark-solar-tabs button,html[data-theme="dark"] .spark-planet-buttons button,body[data-theme="dark"] .spark-planet-buttons button,.dark .spark-planet-buttons button,html[data-theme="dark"] .spark-planet-facts>article,body[data-theme="dark"] .spark-planet-facts>article,.dark .spark-planet-facts>article,html[data-theme="dark"] .spark-planet-groups article,body[data-theme="dark"] .spark-planet-groups article,.dark .spark-planet-groups article,html[data-theme="dark"] .spark-planet-memory,body[data-theme="dark"] .spark-planet-memory,.dark .spark-planet-memory,html[data-theme="dark"] .spark-solar-summary,body[data-theme="dark"] .spark-solar-summary,.dark .spark-solar-summary{background:#0d2134;border-color:#29465f}
 html[data-theme="dark"] .spark-solar-tabs button.active,body[data-theme="dark"] .spark-solar-tabs button.active,.dark .spark-solar-tabs button.active,html[data-theme="dark"] .spark-planet-buttons button.active,body[data-theme="dark"] .spark-planet-buttons button.active,.dark .spark-planet-buttons button.active{background:#164e4a;color:#d7fffa}
-html[data-theme="dark"] .sse-label,body[data-theme="dark"] .sse-label,.dark .sse-label{fill:#d6e4ee}
-@media(max-width:900px){.spark-planet-facts,.spark-planet-groups{grid-template-columns:1fr}.spark-planet-buttons{grid-template-columns:1fr 1fr}}
-@media(max-width:620px){.spark-solar-system{padding:14px}.spark-solar-tabs{display:grid;grid-template-columns:1fr 1fr}.spark-planet-buttons{grid-template-columns:1fr}.sse-label{font-size:18px}}
+html[data-theme="dark"] .spark-solar-order-svg,body[data-theme="dark"] .spark-solar-order-svg,.dark .spark-solar-order-svg,html[data-theme="dark"] .spark-solar-orbit-svg,body[data-theme="dark"] .spark-solar-orbit-svg,.dark .spark-solar-orbit-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .ss-order-bg,body[data-theme="dark"] .ss-order-bg,.dark .ss-order-bg{fill:#0d2134}
+html[data-theme="dark"] .ss-inner-zone,body[data-theme="dark"] .ss-inner-zone,.dark .ss-inner-zone,html[data-theme="dark"] .ss-outer-zone,body[data-theme="dark"] .ss-outer-zone,.dark .ss-outer-zone{fill:#132d43;stroke:#426079}
+html[data-theme="dark"] .ss-zone-label,body[data-theme="dark"] .ss-zone-label,.dark .ss-zone-label,html[data-theme="dark"] .ss-planet-name,body[data-theme="dark"] .ss-planet-name,.dark .ss-planet-name,html[data-theme="dark"] .sse-label,body[data-theme="dark"] .sse-label,.dark .sse-label{fill:#d6e4ee}
+html[data-theme="dark"] .ss-planet-type,body[data-theme="dark"] .ss-planet-type,.dark .ss-planet-type,html[data-theme="dark"] .ss-order-scale-note,body[data-theme="dark"] .ss-order-scale-note,.dark .ss-order-scale-note,html[data-theme="dark"] .sse-small-label,body[data-theme="dark"] .sse-small-label,.dark .sse-small-label{fill:#a9bdca}
+html[data-theme="dark"] .ss-order-note,body[data-theme="dark"] .ss-order-note,.dark .ss-order-note{fill:#c8d8e2}
+
+@media(max-width:900px){.spark-planet-facts,.spark-planet-groups{grid-template-columns:1fr}.spark-planet-buttons{grid-template-columns:1fr 1fr}.ss-planet-name{font-size:15px}.ss-planet-type{font-size:12px}}
+@media(max-width:620px){.spark-solar-system{padding:14px}.spark-solar-tabs{display:grid;grid-template-columns:1fr 1fr}.spark-planet-buttons{grid-template-columns:1fr}.spark-solar-stage{padding:10px}.ss-zone-label{font-size:16px}.ss-planet-name{font-size:17px}.ss-planet-type{font-size:14px}.ss-order-note{font-size:15px}.ss-order-scale-note{font-size:13px}.sse-label{font-size:18px}.sse-small-label{font-size:15px}}
 @media(max-width:390px){.spark-solar-tabs{grid-template-columns:1fr}}
