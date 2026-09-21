@@ -20,31 +20,74 @@ const DRY_MASS = [
 ];
 
 function GerminationSetup() {
-  const tubes = [
-    { x:80, label:"I", state:"No water" },
-    { x:270, label:"II", state:"Germinates" },
-    { x:460, label:"III", state:"Too cold" },
-    { x:650, label:"IV", state:"No oxygen" },
-  ];
+  const seeds=[0,1,2,3,4];
   return (
-    <svg viewBox="0 0 900 480" role="img" aria-label="Seed germination condition experiment">
-      {tubes.map(tube => (
-        <g key={tube.label}>
-          <path className="pg-test-tube" d={"M" + tube.x + " 90V360Q" + (tube.x + 60) + " 420 " + (tube.x + 120) + " 360V90"} />
-          {tube.label !== "I" && (
-            <path className="pg-water" d={"M" + (tube.x + 5) + " 255H" + (tube.x + 115) + "V355Q" + (tube.x + 60) + " 405 " + (tube.x + 5) + " 355Z"} />
-          )}
-          {[0,1,2].map(i => (
-            <ellipse key={i} className="pg-seed" cx={tube.x + 38 + i * 25} cy={tube.label === "I" ? 315 : 285} rx="12" ry="8" />
-          ))}
-          {tube.label === "IV" && <rect className="pg-oil" x={tube.x + 5} y="245" width="110" height="12" />}
-          {tube.label === "II" && (
-            <path className="pg-radicle" d={"M" + (tube.x + 62) + " 293Q" + (tube.x + 72) + " 320 " + (tube.x + 60) + " 345"} />
-          )}
-          <text className="pg-tube-label" x={tube.x + 60} y="55" textAnchor="middle">{tube.label}</text>
-          <text className="pg-tube-note" x={tube.x + 60} y="445" textAnchor="middle">{tube.state}</text>
+    <svg className="spark-germination-requirements-svg" viewBox="0 0 980 620" role="img" aria-label="Seed germination requirements and a fair investigation of temperature using equal numbers of similar seeds on equal amounts of moist material">
+      <defs>
+        <marker id="pg-requirement-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path d="M0 0L9 4.5L0 9Z" className="pg-arrow-head"/>
+        </marker>
+      </defs>
+
+      <text className="pg-section-title" x="490" y="38" textAnchor="middle">Three main requirements for germination</text>
+
+      <g className="pg-requirement water" transform="translate(55 72)">
+        <rect x="0" y="0" width="260" height="185" rx="18"/>
+        <path className="pg-water-drop" d="M72 42Q42 84 72 112Q102 84 72 42Z"/>
+        <ellipse className="pg-seed large" cx="170" cy="86" rx="34" ry="22"/>
+        <path className="pg-radicle" d="M174 102Q190 128 180 156"/>
+        <text className="pg-card-title" x="130" y="145" textAnchor="middle">Water</text>
+        <text className="pg-card-note" x="130" y="168" textAnchor="middle">rehydrates tissues and activates enzymes</text>
+      </g>
+
+      <g className="pg-requirement oxygen" transform="translate(360 72)">
+        <rect x="0" y="0" width="260" height="185" rx="18"/>
+        <ellipse className="pg-seed large" cx="130" cy="82" rx="34" ry="22"/>
+        <path className="pg-oxygen-arrow" d="M42 82H88" markerEnd="url(#pg-requirement-arrow)"/>
+        <path className="pg-oxygen-arrow" d="M218 82H172" markerEnd="url(#pg-requirement-arrow)"/>
+        <text className="pg-gas-label" x="40" y="65">O₂</text>
+        <text className="pg-gas-label" x="210" y="65">O₂</text>
+        <text className="pg-card-title" x="130" y="145" textAnchor="middle">Oxygen</text>
+        <text className="pg-card-note" x="130" y="168" textAnchor="middle">needed for aerobic respiration</text>
+      </g>
+
+      <g className="pg-requirement temperature" transform="translate(665 72)">
+        <rect x="0" y="0" width="260" height="185" rx="18"/>
+        <rect className="pg-thermometer" x="64" y="34" width="18" height="74" rx="9"/>
+        <circle className="pg-thermometer-bulb" cx="73" cy="116" r="22"/>
+        <rect className="pg-thermometer-mercury" x="69" y="62" width="8" height="52" rx="4"/>
+        <ellipse className="pg-seed large" cx="170" cy="86" rx="34" ry="22"/>
+        <path className="pg-radicle" d="M174 102Q190 128 180 156"/>
+        <text className="pg-card-title" x="130" y="145" textAnchor="middle">Suitable temperature</text>
+        <text className="pg-card-note" x="130" y="168" textAnchor="middle">allows enzymes to work effectively</text>
+      </g>
+
+      <text className="pg-section-title" x="490" y="300" textAnchor="middle">Fair test: investigate the effect of temperature</text>
+      <text className="pg-section-subtitle" x="490" y="326" textAnchor="middle">change temperature only; keep seed type, seed number, water and observation time constant</text>
+
+      {[
+        {x:95,label:"low temperature",germinated:1},
+        {x:365,label:"suitable temperature",germinated:4},
+        {x:635,label:"high temperature",germinated:1},
+      ].map((dish,index)=>(
+        <g key={dish.label} className={"pg-petri setup-"+index} transform={`translate(${dish.x} 355)`}>
+          <ellipse className="pg-petri-base" cx="110" cy="95" rx="102" ry="66"/>
+          <ellipse className="pg-moist-material" cx="110" cy="95" rx="86" ry="50"/>
+          {seeds.map((seedIndex)=>{
+            const positions=[[58,82],[90,110],[126,76],[156,108],[118,122]];
+            const [cx,cy]=positions[seedIndex];
+            const germinated=seedIndex<dish.germinated;
+            return <g key={seedIndex}>
+              <ellipse className="pg-seed" cx={cx} cy={cy} rx="12" ry="8"/>
+              {germinated && <path className="pg-radicle" d={`M${cx+5} ${cy+5}Q${cx+14} ${cy+22} ${cx+9} ${cy+38}`}/>}
+            </g>;
+          })}
+          <text className="pg-dish-label" x="110" y="188" textAnchor="middle">{dish.label}</text>
+          <text className="pg-dish-note" x="110" y="211" textAnchor="middle">equal moist material + 5 similar seeds</text>
         </g>
       ))}
+
+      <text className="pg-response-label" x="490" y="594" textAnchor="middle">Responding variable: number or percentage of seeds germinated after the same fixed time.</text>
     </svg>
   );
 }
