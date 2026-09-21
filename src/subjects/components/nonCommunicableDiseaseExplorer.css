@@ -53,3 +53,23 @@ html[data-theme="dark"] .spark-ncd-diabetes-notes article,body[data-theme="dark"
 @media(max-width:850px){.spark-ncd-diabetes-notes,.spark-ncd-immune-grid{grid-template-columns:1fr}.spark-ncd-prevention-grid{grid-template-columns:1fr}.spark-ncd-tabs{display:grid;grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.spark-ncd-explorer{padding:14px}.spark-ncd-stage .ncd-tick,.spark-ncd-stage .ncd-axis-label{font-size:18px}.spark-ncd-stage .ncd-label{font-size:19px}.spark-ncd-stage .ncd-heading{font-size:24px}.spark-ncd-stage .ncd-small{font-size:17px}.spark-ncd-stage .ncd-card-title{font-size:20px}}
 @media(max-width:390px){.spark-ncd-tabs{grid-template-columns:1fr}}
+
+
+.spark-ncd-immune-wrap{display:grid;gap:14px}
+.spark-asthma-airway-svg{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.asthma-outer{fill:#e8d9cc;stroke:#9a7d68;stroke-width:4}
+.asthma-muscle{fill:#c98d86;stroke:#8d5f5a;stroke-width:4}
+.asthma-lining{fill:#e9b9b3;stroke:#a56d68;stroke-width:4}
+.asthma-lumen{fill:#edf7fb;stroke:#6f9aac;stroke-width:4}
+.asthma-muscle.tightened{fill:#b86e69}.asthma-lining.swollen{fill:#dc8f88}.asthma-lumen.narrowed{fill:#dfeff5}
+.asthma-mucus{fill:#d6c36c;stroke:#927f35;stroke-width:3}
+.asthma-airflow{fill:none;stroke:#3e92b2;stroke-width:7;stroke-linecap:round}.asthma-airflow.restricted{stroke-width:5;stroke-dasharray:8 6}
+.asthma-callout{fill:none;stroke:#60788a;stroke-width:2.5}
+.asthma-title,.asthma-label,.asthma-caption,.asthma-small{fill:#294d64;font-weight:850}
+.asthma-title{font-size:18px}.asthma-label{font-size:13px}.asthma-caption{font-size:12px}.asthma-small{font-size:11px}
+html[data-theme="dark"] .spark-asthma-airway-svg,body[data-theme="dark"] .spark-asthma-airway-svg,.dark .spark-asthma-airway-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .asthma-title,body[data-theme="dark"] .asthma-title,.dark .asthma-title,
+html[data-theme="dark"] .asthma-label,body[data-theme="dark"] .asthma-label,.dark .asthma-label,
+html[data-theme="dark"] .asthma-caption,body[data-theme="dark"] .asthma-caption,.dark .asthma-caption,
+html[data-theme="dark"] .asthma-small,body[data-theme="dark"] .asthma-small,.dark .asthma-small{fill:#e1edf5}
+@media(max-width:620px){.asthma-title{font-size:22px}.asthma-label{font-size:17px}.asthma-caption{font-size:16px}.asthma-small{font-size:15px}}
