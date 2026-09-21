@@ -111,6 +111,71 @@ function TimingView(){
 
 function CoastView(){
   return <div className="spark-tide-coast">
+    <svg className="spark-tide-coast-svg" viewBox="0 0 1040 610" role="img" aria-label="Comparison of a mangrove-fringed shore and a sea-wall shore showing incoming wave energy, sediment trapping, reflected wave energy, toe scour, and the intertidal zone exposed between high and low tide">
+      <defs>
+        <marker id="coast-wave-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path d="M0 0L9 4.5L0 9Z" className="tc-arrow-head"/>
+        </marker>
+      </defs>
+
+      <rect className="tc-sky" x="0" y="0" width="1040" height="610"/>
+
+      <g className="tc-panel natural">
+        <text className="tc-title" x="255" y="42" textAnchor="middle">Mangrove-fringed shore</text>
+        <path className="tc-sea" d="M25 235Q110 222 195 235T365 235V500H25Z"/>
+        <path className="tc-beach" d="M250 500Q315 438 365 355Q420 270 505 245V500Z"/>
+        <line className="tc-high-tide" x1="85" y1="245" x2="375" y2="245"/>
+        <line className="tc-low-tide" x1="90" y1="325" x2="340" y2="325"/>
+        <path className="tc-intertidal" d="M275 325Q322 293 365 245L375 245Q330 315 300 350Z"/>
+        <text className="tc-small" x="115" y="230">high tide</text>
+        <text className="tc-small" x="115" y="312">low tide</text>
+        <text className="tc-label" x="300" y="372" textAnchor="middle">intertidal shore exposed at low tide</text>
+
+        <g className="tc-mangroves">
+          {[382,425,468].map((x,i)=><g key={x}>
+            <path className="tc-trunk" d={"M"+x+" 275V185"}/>
+            <path className="tc-canopy" d={"M"+(x-38)+" 190Q"+x+" "+(145-i*6)+" "+(x+38)+" 190Q"+x+" 226 "+(x-38)+" 190Z"}/>
+            <path className="tc-roots" d={"M"+x+" 275L"+(x-38)+" 330M"+x+" 275L"+(x+38)+" 332M"+x+" 278L"+(x-18)+" 342M"+x+" 278L"+(x+18)+" 342"}/>
+          </g>)}
+        </g>
+
+        <path className="tc-wave-energy incoming" d="M55 390Q140 365 225 392Q270 405 310 380" markerEnd="url(#coast-wave-arrow)"/>
+        <path className="tc-wave-energy reduced" d="M310 380Q345 360 372 350" markerEnd="url(#coast-wave-arrow)"/>
+        <text className="tc-small" x="160" y="425" textAnchor="middle">incoming wave energy</text>
+        <text className="tc-small" x="385" y="415">reduced behind roots</text>
+
+        <g className="tc-sediment">
+          {[320,345,365,388,408].map((x,i)=><circle key={x} cx={x} cy={455-(i%2)*9} r={6+(i%2)*2}/>)}
+        </g>
+        <text className="tc-label" x="390" y="485" textAnchor="middle">roots slow water and trap sediment</text>
+      </g>
+
+      <line className="tc-divider" x1="520" y1="50" x2="520" y2="555"/>
+
+      <g className="tc-panel seawall">
+        <text className="tc-title" x="780" y="42" textAnchor="middle">Sea-wall shore</text>
+        <path className="tc-sea" d="M545 250Q620 235 700 250T820 250V500H545Z"/>
+        <path className="tc-beach" d="M760 500Q820 425 855 355L900 330V500Z"/>
+        <path className="tc-seawall" d="M818 190H875V455H818Z"/>
+        <path className="tc-seawall-cap" d="M805 185H888V205H805Z"/>
+        <text className="tc-label" x="848" y="165" textAnchor="middle">sea wall</text>
+
+        <path className="tc-wave-energy incoming" d="M560 385Q640 360 725 386Q780 402 812 360" markerEnd="url(#coast-wave-arrow)"/>
+        <path className="tc-wave-energy reflected" d="M812 330Q745 305 672 330" markerEnd="url(#coast-wave-arrow)"/>
+        <text className="tc-small" x="650" y="420" textAnchor="middle">incoming wave energy</text>
+        <text className="tc-small" x="700" y="294" textAnchor="middle">reflected wave energy</text>
+
+        <path className="tc-scour" d="M775 455Q820 430 868 455Q840 490 790 488Z"/>
+        <g className="tc-scour-particles">
+          {[792,810,830,850].map((x,i)=><circle key={x} cx={x} cy={465+(i%2)*10} r="6"/>)}
+        </g>
+        <text className="tc-label warning" x="800" y="525" textAnchor="middle">scour can remove sediment near the wall</text>
+        <text className="tc-small" x="780" y="550" textAnchor="middle">protection at one site can alter erosion nearby</text>
+      </g>
+
+      <text className="tc-caption" x="520" y="592" textAnchor="middle">Coastal protection works by changing how wave energy and sediment move along the shore.</text>
+    </svg>
+
     <article><span>LOW TIDE</span><h4>More shore exposed</h4><p>Rock pools, reefs and shellfish areas become more accessible when the sea level falls.</p></article>
     <article><span>COASTAL EROSION</span><h4>Waves and tides move sediment</h4><p>Repeated wave action and tidal currents can remove sand and weaken coastlines.</p></article>
     <article><span>MANGROVES</span><h4>Natural energy absorber</h4><p>Mangrove roots slow water, trap sediment and help reduce erosion and wave energy.</p></article>
