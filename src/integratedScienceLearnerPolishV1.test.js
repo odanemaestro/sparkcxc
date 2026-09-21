@@ -70,8 +70,8 @@ describe("Integrated Science learner polish V1", () => {
     expect(migration).toContain("'Â²','²'");
     expect(migration).toContain("'Â³','³'");
     expect(migration).toContain("'Â°','°'");
-    expect(migration).toContain("do $");
-    expect(migration).toContain("end\n$;");
+    expect(migration).toContain("do $$");
+    expect(migration).toContain("end\n$$;");
   });
 
   test("cell and microscope templates include recognisable internal structures", () => {
