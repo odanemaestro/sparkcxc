@@ -77,19 +77,76 @@ function MosquitoScene() {
 
 function RoutesScene() {
   const routes=[
-    ["Housefly","Faeces or garbage → fly body/legs → uncovered food","Mechanical transfer can contribute to intestinal infections."],
-    ["Aedes mosquito","Infected person → mosquito → another person","Aedes mosquitoes can transmit dengue, Zika and chikungunya viruses."],
-    ["Rat or other infected animal","Urine → wet soil or water → human exposure","Leptospira bacteria can spread through urine from infected animals, including rodents."],
-    ["Cockroach","Waste or contaminated surfaces → body → food/surfaces","Cockroaches can contaminate food and preparation areas with microorganisms."],
+    {
+      key:"fly",
+      title:"Housefly",
+      source:"faeces or garbage",
+      carrier:"fly body and legs",
+      exposure:"uncovered food",
+      note:"mechanical transfer can contribute to intestinal infections",
+    },
+    {
+      key:"mosquito",
+      title:"Aedes mosquito",
+      source:"infected person",
+      carrier:"mosquito vector",
+      exposure:"another person",
+      note:"may transmit dengue, Zika and chikungunya viruses",
+    },
+    {
+      key:"rat",
+      title:"Rat or infected animal",
+      source:"infected urine",
+      carrier:"wet soil or water",
+      exposure:"human skin or mucous membranes",
+      note:"Leptospira bacteria can enter during exposure to contaminated water or soil",
+    },
+    {
+      key:"cockroach",
+      title:"Cockroach",
+      source:"waste or contaminated surface",
+      carrier:"cockroach body",
+      exposure:"food or preparation surface",
+      note:"microorganisms can be transferred onto food-handling areas",
+    },
   ];
+
   return (
-    <div className="spark-pest-route-grid">
-      {routes.map(([name,path,text],index)=>(
-        <article key={name}>
-          <span>{index+1}</span>
-          <b>{name}</b>
-          <strong>{path}</strong>
-          <p>{text}</p>
+    <div className="spark-pest-route-visuals">
+      {routes.map(route=>(
+        <article key={route.key} className={"pv-route-card "+route.key}>
+          <svg className="pv-route-svg" viewBox="0 0 720 210" role="img" aria-label={route.title+" disease transmission route"}>
+            <defs>
+              <marker id={"pv-route-arrow-"+route.key} markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+                <path d="M0 0L9 4.5L0 9Z" className="pv-route-arrow-head"/>
+              </marker>
+            </defs>
+
+            <g className="pv-route-node source">
+              <rect x="20" y="55" width="180" height="95" rx="16"/>
+              <text x="110" y="88" textAnchor="middle">SOURCE</text>
+              <text className="pv-route-node-text" x="110" y="118" textAnchor="middle">{route.source}</text>
+            </g>
+
+            <path className="pv-route-flow" d="M210 102H278" markerEnd={"url(#pv-route-arrow-"+route.key+")"}/>
+
+            <g className="pv-route-node carrier">
+              <rect x="288" y="55" width="180" height="95" rx="16"/>
+              <text x="378" y="88" textAnchor="middle">{route.key==="mosquito"?"VECTOR":"CARRIER"}</text>
+              <text className="pv-route-node-text" x="378" y="118" textAnchor="middle">{route.carrier}</text>
+            </g>
+
+            <path className="pv-route-flow" d="M478 102H546" markerEnd={"url(#pv-route-arrow-"+route.key+")"}/>
+
+            <g className="pv-route-node exposure">
+              <rect x="556" y="55" width="145" height="95" rx="16"/>
+              <text x="628" y="88" textAnchor="middle">EXPOSURE</text>
+              <text className="pv-route-node-text" x="628" y="118" textAnchor="middle">{route.exposure}</text>
+            </g>
+
+            <text className="pv-route-title" x="20" y="28">{route.title}</text>
+            <text className="pv-route-note" x="360" y="188" textAnchor="middle">{route.note}</text>
+          </svg>
         </article>
       ))}
     </div>
