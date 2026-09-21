@@ -122,39 +122,65 @@ function CirculationScene({phase}) {
   return (
     <div className="spark-transport-structures-circulation">
       <div className="spark-transport-structures-stage">
-        <svg viewBox="0 0 900 500" role="img" aria-label={"Double circulation and " + phaseInfo.title}>
-          <g transform="translate(450 245)">
-            <path className="ts-heart-shape" d="M0 175Q-155 70-150-55Q-145-145-55-145Q-5-145 0-90Q5-145 55-145Q145-145 150-55Q155 70 0 175Z" />
-            <path className="ts-heart-divider" d="M0-90V142" />
-            <text className="ts-heart-side blue" x="-72" y="-10" textAnchor="middle">RIGHT</text>
-            <text className="ts-heart-side red" x="72" y="-10" textAnchor="middle">LEFT</text>
+        <svg viewBox="0 0 900 540" role="img" aria-label={"Double circulation and " + phaseInfo.title}>
+          <g className="ts-lungs" transform="translate(450 58)">
+            <ellipse cx="-62" cy="0" rx="48" ry="66" />
+            <ellipse cx="62" cy="0" rx="48" ry="66" />
+            <path className="ts-lung-trachea" d="M0-68V-18M0-18L-42 12M0-18L42 12" />
           </g>
 
-          <g className="ts-lungs" transform="translate(450 65)">
-            <ellipse cx="-58" cy="0" rx="46" ry="65" />
-            <ellipse cx="58" cy="0" rx="46" ry="65" />
+          <g className="ts-anatomical-heart" transform="translate(285 100) scale(.62)">
+            <path className="ts-heart-outline" d="M329 150Q370 112 430 130Q475 143 501 178Q525 136 584 127Q648 118 691 165Q731 210 713 300Q694 399 628 473Q574 532 500 566Q423 530 365 474Q297 408 282 316Q264 218 329 150Z" />
+
+            <path className="ts-heart-ra" d="M330 175Q385 142 451 185L452 287Q401 319 345 291Q315 250 330 175Z" />
+            <path className="ts-heart-rv" d="M342 315Q399 284 458 313Q472 363 476 448Q435 445 387 409Q350 381 342 315Z" />
+            <path className="ts-heart-la" d="M544 184Q598 147 657 177Q684 214 664 278Q611 307 548 286Z" />
+            <path className="ts-heart-lv" d="M535 314Q595 281 653 316Q668 367 638 425Q600 493 515 532L503 487Q538 445 551 387Q560 345 535 314Z" />
+            <path className="ts-heart-septum" d="M500 203Q489 303 503 492" />
+
+            <path className="ts-heart-vessel blue" d="M365 188V62M364 286Q315 352 318 515" />
+            <path className="ts-heart-vessel red" d="M596 183V105Q596 54 646 43Q702 31 733 75Q749 98 741 149" />
+            <path className="ts-heart-vessel blue pa" d="M431 315Q445 238 482 206Q508 184 536 159Q567 129 605 128" />
+            <path className="ts-heart-vessel red pv" d="M657 222H790M548 235H233" />
+
+            <path className="ts-heart-valve" d="M385 304Q406 317 420 338Q433 317 451 304M548 303Q570 318 589 337Q608 318 635 303" />
+
+            {phase === "ventricular" && (
+              <g className="ts-heart-phase ventricular">
+                <path d="M335 350H375M665 350H625" />
+                <path d="M410 440Q445 414 470 378M595 445Q570 414 553 378" />
+              </g>
+            )}
+            {phase === "atrial" && (
+              <g className="ts-heart-phase atrial">
+                <path d="M337 232H380M663 232H620" />
+              </g>
+            )}
+            {phase === "diastole" && (
+              <g className="ts-heart-phase diastole">
+                <path d="M405 190V260M595 190V260" />
+              </g>
+            )}
           </g>
-          <g className="ts-body-box" transform="translate(450 455)">
-            <rect x="-150" y="-34" width="300" height="58" rx="18" />
+
+          <g className="ts-body-box" transform="translate(450 500)">
+            <rect x="-155" y="-34" width="310" height="58" rx="18" />
             <text x="0" y="4" textAnchor="middle">BODY TISSUES</text>
           </g>
 
-          <path className="ts-flow blue" d="M375 250Q250 170 360 80" />
-          <path className="ts-flow red" d="M540 85Q660 170 525 250" />
-          <path className="ts-flow red" d="M520 300Q650 370 565 425" />
-          <path className="ts-flow blue" d="M335 425Q250 360 380 300" />
+          <path className="ts-flow blue" d="M377 282Q232 198 350 98" />
+          <path className="ts-flow red" d="M550 98Q682 194 526 282" />
+          <path className="ts-flow red" d="M538 355Q676 410 560 466" />
+          <path className="ts-flow blue" d="M336 466Q224 408 376 355" />
 
-          <text className="ts-flow-label blue" x="255" y="150">pulmonary artery</text>
-          <text className="ts-flow-label red" x="635" y="150">pulmonary vein</text>
-          <text className="ts-flow-label red" x="635" y="370">aorta</text>
-          <text className="ts-flow-label blue" x="220" y="370">vena cava</text>
+          <text className="ts-flow-label blue" x="218" y="177">pulmonary artery</text>
+          <text className="ts-flow-label red" x="630" y="177">pulmonary vein</text>
+          <text className="ts-flow-label red" x="640" y="423">aorta</text>
+          <text className="ts-flow-label blue" x="211" y="423">vena cava</text>
 
-          {phase === "ventricular" && <>
-            <path className="ts-contraction" d="M350 245H395M550 245H505" />
-            <text className="ts-phase-label" x="450" y="240" textAnchor="middle">ventricles contract</text>
-          </>}
-          {phase === "atrial" && <text className="ts-phase-label" x="450" y="205" textAnchor="middle">atria contract</text>}
-          {phase === "diastole" && <text className="ts-phase-label" x="450" y="205" textAnchor="middle">chambers relax and fill</text>}
+          <text className="ts-phase-label" x="450" y="388" textAnchor="middle">
+            {phaseInfo.title}
+          </text>
         </svg>
       </div>
       <aside>
