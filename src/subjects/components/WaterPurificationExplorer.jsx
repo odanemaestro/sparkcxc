@@ -3,15 +3,16 @@ import "./waterPurificationExplorer.css";
 
 function TreatmentView(){
   const [stage,setStage]=useState("sedimentation");
-  const data={
+  const stages={
     sedimentation:{title:"Sedimentation",text:"Larger suspended particles settle when water is left still or after coagulation has formed heavier flocs."},
     coagulation:{title:"Coagulation with alum",text:"Alum helps tiny suspended particles clump together into larger flocs that settle more easily."},
     filtration:{title:"Filtration",text:"Sand and other filter media trap fine suspended solids that remain after settling."},
     chlorination:{title:"Chlorination",text:"A controlled chlorine dose disinfects water by killing or inactivating many disease-causing microorganisms."}
-  }[stage];
+  };
+  const data=stages[stage];
 
   return <div className="spark-purification-treatment">
-    <div className="spark-purification-buttons">{Object.keys(data).map(k=><button key={k} type="button" className={stage===k?"active":""} onClick={()=>setStage(k)}>{data[k].title}</button>)}</div>
+    <div className="spark-purification-buttons">{Object.entries(stages).map(([key,item])=><button key={key} type="button" aria-pressed={stage===key} className={stage===key?"active":""} onClick={()=>setStage(key)}>{item.title}</button>)}</div>
 
     <div className="spark-treatment-process">
       <svg viewBox="0 0 1080 560" role="img" aria-label="Water treatment plant sequence from raw water through coagulation with alum, sedimentation, sand filtration and chlorination to treated water">
