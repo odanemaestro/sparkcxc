@@ -16,6 +16,7 @@ describe("Integrated Science Objective 3.2.2 acceptance audit",()=>{
   expect(css).toContain(".hw-surface-inflow");
  });
  test("covers eye and eyewall",()=>{expect(migration).toContain("eye is the relatively calm");expect(migration).toContain("eyewall");expect(explorer).toContain("eyewall: strongest winds and rain");});
+ test("renders hurricane structure as curved spiral rainbands rather than concentric rings",()=>{for(const term of ["spark-hurricane-structure-svg","hw-spiral-band","hw-eyewall-ring","hw-eye-core","curved spiral rainbands","surface air spirals inward toward lower pressure"]) expect(explorer).toContain(term);expect(css).toContain(".spark-hurricane-structure-svg");expect(css).toContain(".hw-spiral-band");expect(css).toContain(".hw-eyewall-ring");});
  test("covers storm surge and pressure",()=>{expect(migration).toContain("Storm surge is an abnormal rise");expect(migration).toContain("965 mb");expect(explorer).toContain("Pressure");});
  test("covers preparation",()=>{expect(migration).toContain("store safe drinking water");expect(migration).toContain("secure loose outdoor objects");expect(explorer).toContain("Hazards and preparation");});
  test("wires the explorer",()=>{expect(migration).toContain('"type":"caribbean-weather"');expect(view).toContain("CaribbeanWeatherExplorer");});
