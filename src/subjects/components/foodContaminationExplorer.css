@@ -41,3 +41,16 @@ html[data-theme="dark"] .spark-food-contam-types article,body[data-theme="dark"]
 @media(max-width:850px){.spark-food-contam-types{grid-template-columns:1fr}.spark-food-toxin-grid,.spark-food-handler-grid{grid-template-columns:1fr}.spark-food-contam-tabs{display:grid;grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.spark-food-contamination{padding:14px}.spark-food-contam-stage .fc-label{font-size:19px}.spark-food-contam-stage .fc-small{font-size:17px}}
 @media(max-width:390px){.spark-food-contam-tabs{grid-template-columns:1fr}}
+
+
+.spark-aflatoxin-scene{display:grid;gap:14px}
+.spark-aflatoxin-svg{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.af-store{fill:#d7c4a2;stroke:#8a7354;stroke-width:4}.af-roof{fill:#a98662;stroke:#6e553d;stroke-width:4}
+.af-peanuts ellipse{fill:#c79b67;stroke:#8b663e;stroke-width:3}.af-humidity{fill:none;stroke:#6697a8;stroke-width:5;stroke-linecap:round}
+.af-food-sample{fill:#d9b77f;stroke:#987440;stroke-width:4}.af-mould-hyphae path{fill:none;stroke:#718154;stroke-width:6;stroke-linecap:round}.af-mould-spores circle{fill:#75624e;stroke:#514334;stroke-width:2}
+.af-toxin-dots circle{fill:#b85d5d;stroke:#7d3d3d;stroke-width:2}.af-visible-mould{fill:#738557;stroke:#52613b;stroke-width:4}
+.af-flow,.af-risk-arrow{fill:none;stroke:#0d9488;stroke-width:6;stroke-linecap:round}.af-arrow-head{fill:#0d9488}.af-warning-line{stroke:#b94f55;stroke-width:6;stroke-linecap:round}
+.af-liver{fill:#a95555;stroke:#753b3b;stroke-width:4}.af-title{fill:#294d64;font-size:14px;font-weight:900}.af-small{fill:#536d80;font-size:12px;font-weight:750}
+html[data-theme="dark"] .spark-aflatoxin-svg,body[data-theme="dark"] .spark-aflatoxin-svg,.dark .spark-aflatoxin-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .af-title,body[data-theme="dark"] .af-title,.dark .af-title,html[data-theme="dark"] .af-small,body[data-theme="dark"] .af-small,.dark .af-small{fill:#e7f0f7}
+@media(max-width:620px){.af-title{font-size:18px}.af-small{font-size:15px}}
