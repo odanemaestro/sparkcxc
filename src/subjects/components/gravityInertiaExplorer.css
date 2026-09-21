@@ -14,3 +14,28 @@ html[data-theme="dark"] .gi-label,body[data-theme="dark"] .gi-label,.dark .gi-la
 @media(max-width:900px){.spark-weight-cards,.spark-noncontact-forces{grid-template-columns:1fr}}
 @media(max-width:620px){.spark-gravity-inertia{padding:14px}.spark-gravity-tabs{display:grid;grid-template-columns:1fr 1fr}.gi-label{font-size:18px}}
 @media(max-width:390px){.spark-gravity-tabs{grid-template-columns:1fr}}
+
+
+.spark-freefall-svg,.spark-inertia-svg{display:block;width:100%;height:auto;margin:12px 0;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:14px;background:var(--spark-paper,#fff)}
+.gi-fall-bg,.gi-inertia-bg{fill:var(--spark-paper,#fff)}
+.gi-ground,.gi-road-line{stroke:#7a8171;stroke-width:7;stroke-linecap:round}
+.gi-fall-title,.gi-fall-note,.gi-object-label,.gi-weight-label,.gi-drag-label-svg,.gi-motion-label,.gi-belt-label,.gi-inertia-note{fill:var(--spark-ink,#102a43);font-weight:850}
+.gi-fall-title{font-size:15px}.gi-fall-note,.gi-inertia-note{font-size:12px}.gi-object-label,.gi-weight-label,.gi-drag-label-svg,.gi-motion-label,.gi-belt-label{font-size:12px}
+.gi-fall-object.book rect{fill:#876b50;stroke:#604934;stroke-width:3}.gi-fall-object.book line{stroke:#d8cab9;stroke-width:2}
+.gi-fall-object.feather>path:first-child{fill:#d9e2e7;stroke:#758a96;stroke-width:2.5}.gi-feather-shaft{fill:none;stroke:#758a96;stroke-width:2}
+.gi-weight-arrow{stroke:#b0524a;stroke-width:5;stroke-linecap:round}.gi-weight-head{fill:#b0524a}
+.gi-drag-arrow{stroke:#357b9b;stroke-width:5;stroke-linecap:round}.gi-drag-head{fill:#357b9b}
+.gi-equal-level{stroke:#6c8795;stroke-width:2;stroke-dasharray:7 6}
+
+.gi-car-shell{fill:#667f8d;stroke:#3e5867;stroke-width:4}.gi-wheel{fill:#343a3e;stroke:#1f2528;stroke-width:3}.gi-wheel-hub{fill:#8b969c}
+.gi-seat{fill:#4c6170;stroke:#314651;stroke-width:3}.gi-passenger-svg circle,.gi-passenger-svg path{fill:#d8c2ac;stroke:#755f4e;stroke-width:2.5}
+.gi-passenger-svg.forward{transform:translate(28px,0) rotate(8deg);transform-origin:445px 225px}
+.gi-seatbelt-svg{fill:none;stroke:#d8bc67;stroke-width:5;stroke-linecap:round}.gi-seatbelt-svg.active{stroke:#f0c765;stroke-width:7}
+.gi-motion-arrow,.gi-continue-arrow{stroke:#357b9b;stroke-width:6;stroke-linecap:round}.gi-motion-head{fill:#357b9b}
+.gi-brake-arrow,.gi-seatbelt-force{stroke:#b0524a;stroke-width:6;stroke-linecap:round}.gi-belt-head{fill:#b0524a}
+
+html[data-theme="dark"] .spark-freefall-svg,body[data-theme="dark"] .spark-freefall-svg,.dark .spark-freefall-svg,html[data-theme="dark"] .spark-inertia-svg,body[data-theme="dark"] .spark-inertia-svg,.dark .spark-inertia-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .gi-fall-bg,body[data-theme="dark"] .gi-fall-bg,.dark .gi-fall-bg,html[data-theme="dark"] .gi-inertia-bg,body[data-theme="dark"] .gi-inertia-bg,.dark .gi-inertia-bg{fill:#0d2134}
+html[data-theme="dark"] .gi-fall-title,body[data-theme="dark"] .gi-fall-title,.dark .gi-fall-title,html[data-theme="dark"] .gi-fall-note,body[data-theme="dark"] .gi-fall-note,.dark .gi-fall-note,html[data-theme="dark"] .gi-object-label,body[data-theme="dark"] .gi-object-label,.dark .gi-object-label,html[data-theme="dark"] .gi-weight-label,body[data-theme="dark"] .gi-weight-label,.dark .gi-weight-label,html[data-theme="dark"] .gi-drag-label-svg,body[data-theme="dark"] .gi-drag-label-svg,.dark .gi-drag-label-svg,html[data-theme="dark"] .gi-motion-label,body[data-theme="dark"] .gi-motion-label,.dark .gi-motion-label,html[data-theme="dark"] .gi-belt-label,body[data-theme="dark"] .gi-belt-label,.dark .gi-belt-label,html[data-theme="dark"] .gi-inertia-note,body[data-theme="dark"] .gi-inertia-note,.dark .gi-inertia-note{fill:#d6e4ee}
+
+@media(max-width:620px){.gi-fall-title{font-size:18px}.gi-fall-note,.gi-inertia-note,.gi-object-label,.gi-weight-label,.gi-drag-label-svg,.gi-motion-label,.gi-belt-label{font-size:15px}}
