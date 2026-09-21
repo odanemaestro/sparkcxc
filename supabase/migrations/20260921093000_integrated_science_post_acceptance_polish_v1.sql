@@ -37,7 +37,50 @@ set
 where subject_id = 'integrated-science'
   and topic_id = 'm1-t1-2-animal-and-plant-cells';
 
-do $$
+-- Repair common UTF-8 mojibake introduced by earlier Windows/SQL transfer
+-- paths. Keep this database-level cleanup even though the learner adapter also
+-- repairs these sequences defensively.
+update public.spark_subject_topics
+set
+  title = replace(
+    replace(
+      replace(
+        replace(title,'Ã—','×'),
+        'Â²','²'
+      ),
+      'Â³','³'
+    ),
+    'Â°','°'
+  ),
+  description = replace(
+    replace(
+      replace(
+        replace(description,'Ã—','×'),
+        'Â²','²'
+      ),
+      'Â³','³'
+    ),
+    'Â°','°'
+  ),
+  metadata = replace(
+    replace(
+      replace(
+        replace(metadata::text,'Ã—','×'),
+        'Â²','²'
+      ),
+      'Â³','³'
+    ),
+    'Â°','°'
+  )::jsonb,
+  updated_at = now()
+where subject_id = 'integrated-science'
+  and (
+    title like '%Ã—%' or title like '%Â²%' or title like '%Â³%' or title like '%Â°%'
+    or description like '%Ã—%' or description like '%Â²%' or description like '%Â³%' or description like '%Â°%'
+    or metadata::text like '%Ã—%' or metadata::text like '%Â²%' or metadata::text like '%Â³%' or metadata::text like '%Â°%'
+  );
+
+do $
 declare
   v_first text;
   v_second text;
