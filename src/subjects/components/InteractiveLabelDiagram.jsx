@@ -643,12 +643,19 @@ function HumanDigestiveTemplate() {
 }
 
 function HumanToothTemplate() {
+  const outerToothPath="M390 115Q500 55 610 115Q650 175 625 245Q600 300 565 335L555 505Q550 560 505 575Q460 560 455 505L445 335Q400 300 375 245Q350 175 390 115Z";
   return (
     <g className="spark-diagram-tooth spark-reference-refined" aria-hidden="true">
+      <defs>
+        <clipPath id="tooth-template-crown-clip"><rect x="340" y="45" width="320" height="292"/></clipPath>
+        <clipPath id="tooth-template-root-clip"><rect x="340" y="333" width="320" height="260"/></clipPath>
+      </defs>
+
       <path className="tooth-jaw" d="M245 355Q375 320 445 350Q500 373 555 350Q625 320 755 355V520Q625 500 560 516Q500 535 440 516Q375 500 245 520Z" />
       <path className="tooth-gum" d="M250 315Q375 285 445 320Q500 350 555 320Q625 285 750 315V390Q625 365 555 385Q500 405 445 385Q375 365 250 390Z" />
 
-      <path className="tooth-enamel" d="M390 115Q500 55 610 115Q650 175 625 245Q600 300 565 335L555 505Q550 560 505 575Q460 560 455 505L445 335Q400 300 375 245Q350 175 390 115Z" />
+      <path className="tooth-cementum" d={outerToothPath} clipPath="url(#tooth-template-root-clip)" />
+      <path className="tooth-enamel" d={outerToothPath} clipPath="url(#tooth-template-crown-clip)" />
       <path className="tooth-dentine" d="M415 135Q500 92 585 135Q615 180 595 235Q575 275 535 310L528 495Q525 525 500 538Q475 525 472 495L465 310Q425 275 405 235Q385 180 415 135Z" />
 
       <path className="tooth-pulp" d="M465 165Q500 145 535 165Q555 205 530 250Q510 285 510 350V485Q500 505 490 485V350Q490 285 470 250Q445 205 465 165Z" />
@@ -660,8 +667,8 @@ function HumanToothTemplate() {
       <path className="tooth-periodontal" d="M452 350Q432 421 444 510M548 350Q568 421 556 510" />
       <line className="tooth-neck-line" x1="355" y1="330" x2="645" y2="330" />
 
-      <text className="tooth-region-label" x="500" y="80" textAnchor="middle">crown</text>
-      <text className="tooth-region-label" x="500" y="610" textAnchor="middle">root in jaw socket</text>
+      <text className="tooth-region-label" x="500" y="80" textAnchor="middle">crown, enamel-covered</text>
+      <text className="tooth-region-label" x="500" y="610" textAnchor="middle">root, cementum-covered, in jaw socket</text>
     </g>
   );
 }
