@@ -29,3 +29,12 @@ body[data-theme="dark"] .spark-tooth-shape .tf-tooth,
   .spark-tooth-shape{flex-basis:72px;min-width:72px}
   .spark-tooth-shape svg{width:66px}
 }
+
+.spark-tooth-structure-view{display:grid;gap:14px}
+.spark-tooth-structure-svg{display:block;width:100%;height:auto;min-height:380px;padding:8px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:13px;background:var(--spark-paper,#fff)}
+.ts-jaw{fill:#e8dfc8;stroke:#b9ad90;stroke-width:3}.ts-gum{fill:#f4b7b5;stroke:#d38e8c;stroke-width:3}.ts-enamel{fill:#fffdf7;stroke:#b9b9b9;stroke-width:4}.ts-dentine{fill:#d8d6d1;stroke:#b4b1aa;stroke-width:3}.ts-pulp{fill:#d99595;stroke:#ae6565;stroke-width:3}.ts-nerve{fill:none;stroke:#445ad3;stroke-width:4}.ts-vessel{fill:none;stroke-width:4}.ts-vessel.one{stroke:#d84e4e}.ts-vessel.two{stroke:#31a6a6}.ts-crown-line,.ts-root-line{stroke:#6d8090;stroke-width:2;stroke-dasharray:5 5}.ts-region-label,.ts-callouts text,.ts-caption{fill:var(--spark-ink,#102a43);font-size:14px;font-weight:800}.ts-callouts path{fill:none;stroke:#6d8090;stroke-width:2}.ts-caption{font-size:13px}
+.spark-tooth-structure-notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.spark-tooth-structure-notes article{padding:13px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:11px;background:var(--spark-paper,#fff)}.spark-tooth-structure-notes b{color:var(--spark-ink,#102a43);font-size:12px}.spark-tooth-structure-notes p{margin:5px 0 0;color:var(--spark-ink-soft,#334e68);font-size:11px;line-height:1.5}
+html[data-theme="dark"] .spark-tooth-structure-svg,body[data-theme="dark"] .spark-tooth-structure-svg,.dark .spark-tooth-structure-svg,html[data-theme="dark"] .spark-tooth-structure-notes article,body[data-theme="dark"] .spark-tooth-structure-notes article,.dark .spark-tooth-structure-notes article{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .ts-region-label,body[data-theme="dark"] .ts-region-label,.dark .ts-region-label,html[data-theme="dark"] .ts-callouts text,body[data-theme="dark"] .ts-callouts text,.dark .ts-callouts text,html[data-theme="dark"] .ts-caption,body[data-theme="dark"] .ts-caption,.dark .ts-caption{fill:#e7f0f7}
+@media(max-width:850px){.spark-tooth-structure-notes{grid-template-columns:1fr}.spark-tooth-structure-svg{min-height:320px}}
+@media(max-width:560px){.spark-tooth-structure-svg{min-height:260px;padding:3px}.ts-region-label,.ts-callouts text{font-size:18px}.ts-caption{font-size:17px}}
