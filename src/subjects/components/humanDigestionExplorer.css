@@ -15,3 +15,33 @@ html[data-theme="dark"] .villus-label,body[data-theme="dark"] .villus-label,.dar
 @media(max-width:850px){.spark-digestion-enzymes{grid-template-columns:1fr}.spark-digestion-enzyme-buttons{grid-template-columns:repeat(2,1fr)}.spark-digestion-bile{flex-direction:column}.spark-digestion-bile-arrow{text-align:center;transform:rotate(90deg)}.spark-villus-cards,.spark-enzyme-condition-notes{grid-template-columns:1fr}}
 @media(max-width:620px){.spark-human-digestion{padding:14px}.spark-digestion-tabs{display:grid;grid-template-columns:1fr 1fr}.spark-digestion-enzyme-buttons{grid-template-columns:1fr}.villus-label{font-size:18px}.villus-small,.enzyme-label,.enzyme-note{font-size:16px}}
 @media(max-width:390px){.spark-digestion-tabs{grid-template-columns:1fr}}
+
+.spark-digestion-pathway-layout{display:grid;grid-template-columns:minmax(300px,.9fr) 1.1fr;gap:14px;align-items:start}
+.spark-digestion-system{padding:10px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.spark-digestion-system-svg{display:block;width:100%;height:auto}
+.spark-digestion-system-svg .dg-head{fill:#e6c1aa;stroke:#9c6b50;stroke-width:4}
+.spark-digestion-system-svg .dg-body{fill:#e9edf0;stroke:#7e929f;stroke-width:4}
+.spark-digestion-system-svg .dg-mouth,.spark-digestion-system-svg .dg-pharynx,.spark-digestion-system-svg .dg-oesophagus,.spark-digestion-system-svg .dg-rectum,.spark-digestion-system-svg .dg-anus{fill:none;stroke:#9d655a;stroke-width:7;stroke-linecap:round}
+.spark-digestion-system-svg .dg-liver{fill:#9f5b55;stroke:#713d39;stroke-width:4}
+.spark-digestion-system-svg .dg-gall{fill:#6e9b5d;stroke:#456b39;stroke-width:3}
+.spark-digestion-system-svg .dg-stomach{fill:#d79282;stroke:#95594e;stroke-width:4}
+.spark-digestion-system-svg .dg-duodenum{fill:none;stroke:#c4836e;stroke-width:15;stroke-linecap:round}
+.spark-digestion-system-svg .dg-pancreas{fill:#e0b36b;stroke:#a57935;stroke-width:4}
+.spark-digestion-system-svg .dg-large{fill:none;stroke:#b97964;stroke-width:22;stroke-linecap:round;stroke-linejoin:round}
+.spark-digestion-system-svg .dg-appendix{fill:none;stroke:#b97964;stroke-width:9;stroke-linecap:round}
+.spark-digestion-system-svg .dg-small{fill:none;stroke:#d6a08e;stroke-width:14;stroke-linecap:round;stroke-linejoin:round}
+.spark-digestion-system-svg .dg-small.inner{stroke-width:10}
+.spark-digestion-system-svg .dg-route{fill:none;stroke:#0d9488;stroke-width:5;stroke-dasharray:10 8;stroke-linecap:round}
+.spark-digestion-system-svg .dg-labels text{fill:#334e68;font-size:15px;font-weight:850}
+.spark-digestion-system-svg .dg-labels path{fill:none;stroke:#6c8293;stroke-width:2.5}
+.spark-digestion-system-svg .dg-caption{fill:#526b7d;font-size:12px;font-weight:800}
+html[data-theme="dark"] .spark-digestion-system,
+body[data-theme="dark"] .spark-digestion-system,
+.dark .spark-digestion-system{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .spark-digestion-system-svg .dg-labels text,
+body[data-theme="dark"] .spark-digestion-system-svg .dg-labels text,
+.dark .spark-digestion-system-svg .dg-labels text,
+html[data-theme="dark"] .spark-digestion-system-svg .dg-caption,
+body[data-theme="dark"] .spark-digestion-system-svg .dg-caption,
+.dark .spark-digestion-system-svg .dg-caption{fill:#d6e4ee}
+@media(max-width:900px){.spark-digestion-pathway-layout{grid-template-columns:1fr}.spark-digestion-system{max-width:620px;margin:0 auto}}
