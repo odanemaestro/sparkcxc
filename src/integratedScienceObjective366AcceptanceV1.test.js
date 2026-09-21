@@ -7,7 +7,17 @@ const view=fs.readFileSync(path.join(__dirname,"subjects","GenericSubjectStudyVi
 describe("Integrated Science Objective 3.6.6 acceptance audit",()=>{
  test("maps to canonical objective",()=>{expect(migration).toContain('"objective":"3.6.6"');expect(migration).toContain("3.6.6 Effects of Cleaning Agents on Household Surfaces");});
  test("covers abrasion",()=>{expect(migration).toContain("Scouring powders contain abrasive particles");expect(migration).toContain("non-stick pans");expect(explorer).toContain("Abrasion");});
+ test("renders abrasion as a coating cross-section with mechanical damage",()=>{
+  ["spark-abrasion-svg","ca-pan-base","ca-nonstick-coating","ca-soil-layer","ca-abrasive-particle","ca-scratch-groove","abrasive particles scrape the coating and can expose the base material"].forEach(term=>expect(explorer).toContain(term));
+  expect(css).toContain(".spark-abrasion-svg");
+  expect(css).toContain(".ca-scratch-groove");
+ });
  test("covers vinegar and scale",()=>{expect(migration).toContain("Weak acids such as vinegar");expect(migration).toContain("calcium carbonate");expect(explorer).toContain("Lime scale");});
+ test("renders lime-scale removal as an acid-carbonate reaction",()=>{
+  ["spark-scale-reaction-svg","ca-kettle-metal","ca-scale-layer","ca-acid-layer","ca-co2-bubble","CaCO₃ scale","CO₂ bubbles","acid reacts at the scale surface"].forEach(term=>expect(explorer).toContain(term));
+  expect(css).toContain(".spark-scale-reaction-svg");
+  expect(css).toContain(".ca-co2-bubble");
+ });
  test("covers oven cleaner chemistry",()=>{expect(migration).toContain("sodium hydroxide");expect(migration).toContain("react with fats and grease");expect(migration).toContain("corrode an aluminium utensil");});
  test("covers bleach damage",()=>{expect(migration).toContain("remove dyes and weaken some textile fibres");expect(migration).toContain("attack metals including silver and aluminium");expect(explorer).toContain("Bleach");});
  test("covers acids on galvanised zinc",()=>{expect(migration).toContain("dissolve zinc");expect(migration).toContain("protective coating");});
