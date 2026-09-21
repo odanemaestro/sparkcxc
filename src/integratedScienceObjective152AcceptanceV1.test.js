@@ -75,7 +75,7 @@ describe("Integrated Science Objective 1.5.2 acceptance audit", () => {
 
   test("visual includes the high-value structures and mechanisms", () => {
     expect(explorer).toContain("glomerulus");
-    expect(explorer).toContain("Bowman's capsule");
+    expect(explorer).toContain("Bowman&apos;s capsule");
     expect(explorer).toContain("Selective reabsorption");
     expect(explorer).toContain("MORE ADH");
     expect(explorer).toContain("coiled sweat gland");
