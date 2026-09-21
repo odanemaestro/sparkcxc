@@ -1,6 +1,56 @@
 import React,{useMemo,useState} from "react";
 import "./breathingMechanismExplorer.css";
 
+function AnatomyView(){
+  return <div className="spark-respiratory-anatomy">
+    <svg className="spark-respiratory-anatomy-svg" viewBox="0 0 900 720" role="img" aria-label="Human respiratory system showing nasal cavity, oral cavity, pharynx, epiglottis, larynx, trachea, bronchi, bronchioles, lungs and diaphragm">
+      <path className="ra-profile" d="M330 72Q275 88 260 130Q253 176 292 205Q315 220 325 250V320"/>
+      <path className="ra-nasal" d="M270 130Q320 103 357 130Q337 155 302 163Q283 159 270 130Z"/>
+      <path className="ra-oral" d="M286 176Q323 160 354 181Q331 202 302 203Q289 196 286 176Z"/>
+      <path className="ra-pharynx" d="M354 132Q378 175 357 222"/>
+      <path className="ra-epiglottis" d="M350 218Q372 223 364 245Q347 241 350 218Z"/>
+      <path className="ra-larynx" d="M348 238Q375 248 365 284H341Q331 250 348 238Z"/>
+      <path className="ra-trachea" d="M353 280V404"/>
+      {[300,322,344,366,388].map(y=><line key={y} className="ra-ring" x1="339" y1={y} x2="367" y2={y}/>)}
+      <path className="ra-bronchi" d="M353 405Q315 430 288 456M353 405Q391 430 418 456"/>
+      <path className="ra-lung left" d="M245 365Q177 400 170 510Q172 604 265 630Q328 605 327 492Q323 401 278 372Q260 362 245 365Z"/>
+      <path className="ra-lung right" d="M461 365Q529 400 536 510Q534 604 441 630Q378 605 379 492Q383 401 428 372Q446 362 461 365Z"/>
+      <g className="ra-bronchioles">
+        <path d="M288 456Q250 475 228 510M288 456Q303 492 299 535M228 510Q210 535 210 566M299 535Q318 555 310 582"/>
+        <path d="M418 456Q456 475 478 510M418 456Q403 492 407 535M478 510Q496 535 496 566M407 535Q388 555 396 582"/>
+      </g>
+      <g className="ra-alveoli">
+        <circle cx="210" cy="575" r="11"/><circle cx="224" cy="584" r="11"/><circle cx="238" cy="575" r="11"/>
+        <circle cx="468" cy="575" r="11"/><circle cx="482" cy="584" r="11"/><circle cx="496" cy="575" r="11"/>
+      </g>
+      <path className="ra-diaphragm" d="M155 626Q353 675 551 626"/>
+
+      <g className="ra-labels">
+        <path d="M303 140L100 102"/><text x="86" y="106" textAnchor="end">nasal cavity</text>
+        <path d="M308 184L100 170"/><text x="86" y="175" textAnchor="end">oral cavity</text>
+        <path d="M359 180L100 238"/><text x="86" y="243" textAnchor="end">pharynx</text>
+        <path d="M356 230L100 300"/><text x="86" y="305" textAnchor="end">epiglottis</text>
+        <path d="M353 258L100 350"/><text x="86" y="355" textAnchor="end">larynx</text>
+
+        <path d="M353 330L670 185"/><text x="685" y="190">trachea</text>
+        <path d="M391 430L670 265"/><text x="685" y="270">primary bronchi</text>
+        <path d="M454 490L670 345"/><text x="685" y="350">bronchioles</text>
+        <path d="M462 430L670 425"/><text x="685" y="430">right lung</text>
+        <path d="M238 575L670 505"/><text x="685" y="510">alveoli</text>
+        <path d="M440 642L670 590"/><text x="685" y="595">diaphragm</text>
+      </g>
+      <path className="ra-airway-arrow" d="M303 120Q330 135 341 165Q350 195 353 245V395"/>
+      <text className="ra-caption" x="355" y="700" textAnchor="middle">air pathway: nose or mouth → pharynx → larynx → trachea → bronchi → bronchioles → alveoli</text>
+    </svg>
+    <div className="spark-respiratory-anatomy-notes">
+      <article><b>Upper airway</b><p>The nose filters, warms and moistens incoming air. The pharynx conducts air towards the larynx.</p></article>
+      <article><b>Epiglottis and larynx</b><p>The epiglottis helps protect the airway during swallowing. The larynx contains the vocal folds.</p></article>
+      <article><b>Conducting passages</b><p>The trachea divides into bronchi. These branch repeatedly into smaller bronchioles inside the lungs.</p></article>
+      <article><b>Exchange region</b><p>Bronchioles lead to alveoli, where oxygen and carbon dioxide diffuse between air and blood.</p></article>
+    </div>
+  </div>;
+}
+
 function MechanismView(){
   const [phase,setPhase]=useState("inhale");
   const inhale=phase==="inhale";
@@ -99,6 +149,7 @@ function CPRView(){
 export default function BreathingMechanismExplorer(){
   const [view,setView]=useState("mechanism");
   const summary=useMemo(()=>({
+    anatomy:"Air travels through a branching respiratory tract before reaching the alveoli for gaseous exchange.",
     mechanism:"Air moves because respiratory muscles change thoracic volume and therefore pressure.",
     model:"The bell-jar model demonstrates the pressure-volume principle but does not reproduce every feature of the rib cage.",
     air:"Exhaled air contains less oxygen and more carbon dioxide and water vapour than inhaled air.",
@@ -107,8 +158,9 @@ export default function BreathingMechanismExplorer(){
 
   return <section className="spark-breathing-mechanism-explorer">
     <header><span>MECHANISM OF BREATHING</span><h3>Link muscle action to chest volume, pressure and airflow</h3><p>Breathing depends on pressure differences created when the diaphragm and intercostal muscles change the volume of the thoracic cavity.</p></header>
-    <div className="spark-breathing-tabs">{[["mechanism","Inhale and exhale"],["model","Bell-jar model"],["air","Air composition"],["cpr","CPR"]].map(([key,label])=><button type="button" key={key} className={view===key?"active":""} onClick={()=>setView(key)}>{label}</button>)}</div>
+    <div className="spark-breathing-tabs">{[["anatomy","Respiratory anatomy"],["mechanism","Inhale and exhale"],["model","Bell-jar model"],["air","Air composition"],["cpr","CPR"]].map(([key,label])=><button type="button" key={key} className={view===key?"active":""} onClick={()=>setView(key)}>{label}</button>)}</div>
     <div className="spark-breathing-stage">
+      {view==="anatomy"&&<AnatomyView/>}
       {view==="mechanism"&&<MechanismView/>}
       {view==="model"&&<BellJarView/>}
       {view==="air"&&<AirView/>}
