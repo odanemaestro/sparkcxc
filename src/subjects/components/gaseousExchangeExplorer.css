@@ -19,3 +19,12 @@ html[data-theme="dark"] .gx-label,body[data-theme="dark"] .gx-label,.dark .gx-la
 .gx-bronchiole{fill:none;stroke:#7795a6;stroke-width:18;stroke-linecap:round}
 .gx-alveolar-opening{fill:none;stroke:#a65f67;stroke-width:5;stroke-linecap:round}
 .gx-exchange-barrier{fill:none;stroke:#8a9ba5;stroke-width:4;stroke-dasharray:7 5;stroke-linecap:round}
+
+.gx-alveolar-duct{fill:none;stroke:#8ba7b5;stroke-width:16;stroke-linecap:round}
+.gx-capillary-network .gx-vessel{fill:none;stroke-width:18;stroke-linecap:round}
+.gx-capillary-network .gx-vessel.deoxygenated{stroke:#4d79a7}
+.gx-capillary-network .gx-vessel.oxygenated{stroke:#bd5d61}
+.gx-exchange-key rect{fill:#f7fafc;stroke:#bfd0da;stroke-width:2.5}
+.gx-exchange-key .gx-panel-title{font-size:13px}
+.gx-small.vessel-label.deoxygenated{fill:#416a91}
+.gx-small.vessel-label.oxygenated{fill:#a54e53}
