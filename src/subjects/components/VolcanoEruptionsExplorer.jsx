@@ -76,10 +76,63 @@ function StyleView(){
 
 function TypesView(){
   return <div className="spark-volcano-types">
-    <article><div className="vt-shape shield"></div><span>SHIELD</span><h4>Broad, gentle slopes</h4><p>Built mainly by fluid lava that spreads far from the vent.</p></article>
-    <article><div className="vt-shape composite"></div><span>COMPOSITE / STRATOVOLCANO</span><h4>Tall, steep and layered</h4><p>Alternating lava and pyroclastic deposits. Viscous magma can trap gases and produce explosive eruptions.</p></article>
-    <article><div className="vt-shape cinder"></div><span>CINDER CONE</span><h4>Small, steep cone</h4><p>Built mainly from cinders and fragments of lava thrown into the air around a vent.</p></article>
-    <article><div className="vt-sea"><div className="vt-submarine"></div></div><span>SUBMARINE VOLCANO</span><h4>Erupts below sea level</h4><p>Kick-'em-Jenny north of Grenada is a regional example.</p></article>
+    <article>
+      <svg className="spark-volcano-type-svg" viewBox="0 0 360 190" role="img" aria-label="Shield volcano with broad gentle slopes built by repeated fluid lava flows">
+        <path className="vt-ground" d="M10 165H350"/>
+        <path className="vt-shield-cone" d="M20 165Q90 135 145 105Q180 88 215 105Q270 135 340 165Z"/>
+        <path className="vt-lava-layer" d="M55 152Q120 130 180 112Q242 130 305 152"/>
+        <path className="vt-lava-layer" d="M88 145Q137 126 180 118Q225 126 273 145"/>
+        <path className="vt-central-vent" d="M180 160V105"/>
+        <text className="vt-svg-label" x="180" y="32" textAnchor="middle">broad, gentle slopes</text>
+        <text className="vt-svg-small" x="180" y="182" textAnchor="middle">repeated low-viscosity lava flows</text>
+      </svg>
+      <span>SHIELD</span><h4>Broad, gentle slopes</h4><p>Built mainly by fluid lava that spreads far from the vent.</p>
+    </article>
+
+    <article>
+      <svg className="spark-volcano-type-svg" viewBox="0 0 360 190" role="img" aria-label="Composite volcano with steep sides, central vent and alternating lava and ash layers">
+        <path className="vt-ground" d="M10 165H350"/>
+        <path className="vt-composite-cone" d="M55 165L158 48Q180 25 202 48L305 165Z"/>
+        <path className="vt-layer ash" d="M88 148L167 64Q180 52 193 64L272 148"/>
+        <path className="vt-layer lava" d="M108 154L170 83Q180 74 190 83L252 154"/>
+        <path className="vt-layer ash" d="M128 158L174 105Q180 99 186 105L232 158"/>
+        <path className="vt-central-vent" d="M180 160V52"/>
+        <ellipse className="vt-crater" cx="180" cy="47" rx="24" ry="8"/>
+        <text className="vt-svg-label" x="286" y="50">steep cone</text>
+        <text className="vt-svg-small" x="180" y="182" textAnchor="middle">alternating lava and pyroclastic layers</text>
+      </svg>
+      <span>COMPOSITE / STRATOVOLCANO</span><h4>Tall, steep and layered</h4><p>Alternating lava and pyroclastic deposits. Viscous magma can trap gases and produce explosive eruptions.</p>
+    </article>
+
+    <article>
+      <svg className="spark-volcano-type-svg" viewBox="0 0 360 190" role="img" aria-label="Ash and cinder cone with a crater and loose erupted fragments piled around a central vent">
+        <path className="vt-ground" d="M10 165H350"/>
+        <path className="vt-cinder-cone" d="M78 165L160 72Q180 54 200 72L282 165Z"/>
+        <ellipse className="vt-crater" cx="180" cy="69" rx="30" ry="10"/>
+        <path className="vt-central-vent" d="M180 160V78"/>
+        <g className="vt-cinders">
+          {[[110,142],[128,126],[145,112],[213,112],[233,132],[250,148],[155,150],[205,147]].map(([x,y],i)=><circle key={i} cx={x} cy={y} r={5+(i%2)*2}/>)}
+        </g>
+        <text className="vt-svg-label" x="180" y="30" textAnchor="middle">ash and cinders fall around vent</text>
+        <text className="vt-svg-small" x="180" y="182" textAnchor="middle">small, steep-sided cone of fragments</text>
+      </svg>
+      <span>ASH / CINDER CONE</span><h4>Small, steep cone</h4><p>Built mainly from cinders, ash and fragments of lava thrown into the air around a vent.</p>
+    </article>
+
+    <article>
+      <svg className="spark-volcano-type-svg" viewBox="0 0 360 190" role="img" aria-label="Submarine volcano erupting below sea level with a volcanic cone rising from the sea floor">
+        <rect className="vt-water" x="10" y="60" width="340" height="105"/>
+        <line className="vt-waterline" x1="10" y1="60" x2="350" y2="60"/>
+        <path className="vt-submarine-cone-svg" d="M62 165L154 92Q180 72 206 92L298 165Z"/>
+        <path className="vt-central-vent" d="M180 160V94"/>
+        <g className="vt-submarine-plume">
+          <circle cx="180" cy="82" r="13"/><circle cx="165" cy="69" r="11"/><circle cx="194" cy="65" r="10"/>
+        </g>
+        <text className="vt-svg-label" x="72" y="42">sea level</text>
+        <text className="vt-svg-small" x="180" y="182" textAnchor="middle">eruption occurs below the sea surface</text>
+      </svg>
+      <span>SUBMARINE VOLCANO</span><h4>Erupts below sea level</h4><p>Kick-'em-Jenny north of Grenada is a regional example.</p>
+    </article>
   </div>;
 }
 
