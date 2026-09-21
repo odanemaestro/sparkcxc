@@ -15,3 +15,21 @@ html[data-theme="dark"] .se-label,body[data-theme="dark"] .se-label,.dark .se-la
 @media(max-width:900px){.spark-space-missions,.spark-space-suit,.spark-space-telescopes,.spark-space-health,.spark-space-benefits{grid-template-columns:1fr}.spark-suit-cards{grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.spark-space-exploration{padding:14px}.spark-space-tabs{display:grid;grid-template-columns:1fr 1fr}.spark-space-buttons{grid-template-columns:1fr}.spark-suit-cards{grid-template-columns:1fr}.se-label{font-size:18px}}
 @media(max-width:390px){.spark-space-tabs{grid-template-columns:1fr}}
+
+
+.spark-space-suit-svg{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.ssu-backpack rect{fill:#8a9aa3;stroke:#53636c;stroke-width:4}.ssu-backpack rect:nth-child(2){fill:#a9bac3}
+.ssu-pack-text,.ssu-small,.ssu-flow-label,.ssu-callouts text,.ssu-caption{fill:#294d64;font-weight:850}
+.ssu-pack-text{font-size:18px}.ssu-small{font-size:11px}.ssu-flow-label{font-size:12px}.ssu-callouts text{font-size:12px}.ssu-caption{font-size:12px}
+.ssu-helmet-shell{fill:#e8eef1;stroke:#8798a1;stroke-width:5}.ssu-visor{fill:#8fb8c9;stroke:#557d8e;stroke-width:4}
+.ssu-torso,.ssu-left-arm,.ssu-right-arm,.ssu-left-leg,.ssu-right-leg,.ssu-glove,.ssu-boot{fill:#f2f5f6;stroke:#7d8f99;stroke-width:5;stroke-linejoin:round}
+.ssu-layers path{fill:none;stroke:#b5c0c6;stroke-width:4;stroke-dasharray:8 6}
+.ssu-life-support-flow path{fill:none;stroke-width:5;stroke-linecap:round}.ssu-life-support-flow .oxygen{stroke:#3488a7}.ssu-life-support-flow .co2{stroke:#b85d58}.ssu-arrow-head{fill:#60788a}
+.ssu-callouts path{fill:none;stroke:#60788a;stroke-width:2.5}
+html[data-theme="dark"] .spark-space-suit-svg,body[data-theme="dark"] .spark-space-suit-svg,.dark .spark-space-suit-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .ssu-pack-text,body[data-theme="dark"] .ssu-pack-text,.dark .ssu-pack-text,
+html[data-theme="dark"] .ssu-small,body[data-theme="dark"] .ssu-small,.dark .ssu-small,
+html[data-theme="dark"] .ssu-flow-label,body[data-theme="dark"] .ssu-flow-label,.dark .ssu-flow-label,
+html[data-theme="dark"] .ssu-callouts text,body[data-theme="dark"] .ssu-callouts text,.dark .ssu-callouts text,
+html[data-theme="dark"] .ssu-caption,body[data-theme="dark"] .ssu-caption,.dark .ssu-caption{fill:#e1edf5}
+@media(max-width:620px){.ssu-pack-text{font-size:22px}.ssu-small{font-size:15px}.ssu-flow-label,.ssu-callouts text,.ssu-caption{font-size:16px}}
