@@ -25,6 +25,11 @@ const VIEWS={
     title:"Moisture and warmth strongly affect mould growth",
     note:"The bank data show 65% mould on moist bread at 25 °C, compared with 5% at 4 °C and 10% when salt is added.",
   },
+  mould:{
+    label:"Mould structure",
+    title:"Bread mould grows as branching hyphae that together form a mycelium",
+    note:"Spores spread the fungus. Under suitable moisture and temperature, a spore can germinate and produce hyphae that branch across and into the food.",
+  },
   milk:{
     label:"Milk pH data",
     title:"Warm milk becomes more acidic as microorganisms produce acids",
@@ -63,6 +68,67 @@ function BreadScene(){
       <div className="spark-bread-interpretation">
         <b>Reference condition</b>
         <p>Dish B is the moist 25 °C condition used to compare the effect of drying, refrigeration and salt.</p>
+      </div>
+    </div>
+  );
+}
+
+function MouldStructureScene(){
+  const spores=[[120,90],[185,70],[255,105],[720,75],[790,100],[850,68]];
+  return(
+    <div className="spark-mould-structure-scene">
+      <svg className="spark-mould-structure-svg" viewBox="0 0 980 520" role="img" aria-label="Bread mould structure showing spores, a germinating spore, branching thread-like hyphae and a mycelium spreading through bread">
+        <defs>
+          <marker id="mould-callout-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+            <path d="M0 0L9 4.5L0 9Z" className="ms-arrow-head"/>
+          </marker>
+        </defs>
+
+        <rect className="ms-air" x="0" y="0" width="980" height="520"/>
+        <path className="ms-bread" d="M70 290Q210 250 355 285Q500 320 640 282Q790 245 910 292V470H70Z"/>
+        <path className="ms-bread-surface" d="M70 290Q210 250 355 285Q500 320 640 282Q790 245 910 292"/>
+
+        <g className="ms-spores">
+          {spores.map(([x,y],i)=><circle key={i} cx={x} cy={y} r={10+(i%2)*2}/>)}
+        </g>
+        <text className="ms-label" x="180" y="48" textAnchor="middle">spores spread through the air</text>
+
+        <g className="ms-germination">
+          <circle cx="350" cy="160" r="15"/>
+          <path d="M362 170Q395 190 410 225"/>
+          <text className="ms-small" x="350" y="130" textAnchor="middle">germinating spore</text>
+        </g>
+
+        <g className="ms-hyphae">
+          <path d="M410 225Q430 270 425 320Q420 370 390 430"/>
+          <path d="M430 280Q485 255 535 278Q580 300 610 350"/>
+          <path d="M455 305Q500 335 518 395"/>
+          <path d="M425 325Q365 325 318 350Q270 375 238 425"/>
+          <path d="M390 355Q345 382 330 435"/>
+          <path d="M535 278Q570 245 625 230"/>
+          <path d="M610 350Q665 338 722 365Q765 385 804 430"/>
+          <path d="M518 395Q565 375 620 410"/>
+        </g>
+
+        <g className="ms-mycelium-highlight">
+          <path d="M240 420Q310 372 390 348Q470 325 550 360Q640 397 808 430"/>
+          <path d="M270 445Q380 402 485 400Q600 398 760 450"/>
+        </g>
+
+        <g className="ms-callouts">
+          <path d="M500 300L720 190" markerEnd="url(#mould-callout-arrow)"/><text x="742" y="194">hypha, one thread-like filament</text>
+          <path d="M545 405L760 390" markerEnd="url(#mould-callout-arrow)"/><text x="782" y="395">mycelium, mass of hyphae</text>
+          <path d="M165 92L105 185" markerEnd="url(#mould-callout-arrow)"/><text x="94" y="190" textAnchor="end">spore</text>
+          <path d="M350 160L190 235" markerEnd="url(#mould-callout-arrow)"/><text x="178" y="240" textAnchor="end">germination begins in suitable conditions</text>
+        </g>
+
+        <text className="ms-bread-label" x="490" y="485" textAnchor="middle">bread provides nutrients while moisture and suitable temperature support growth</text>
+      </svg>
+      <div className="spark-mould-structure-notes">
+        <article><b>Hyphae</b><p>Mould grows as thread-like hyphae that spread through or over the food.</p></article>
+        <article><b>Mycelium</b><p>A mass of branching hyphae forms the body of the mould called a mycelium.</p></article>
+        <article><b>Spores</b><p>Spores allow mould to reproduce and spread to new locations.</p></article>
+        <article><b>Germination</b><p>Suitable moisture and temperature allow a spore to germinate and new hyphae to grow.</p></article>
       </div>
     </div>
   );
@@ -116,6 +182,7 @@ export default function FoodMicroorganismExplorer(){
       <div className={view==="milk"?"spark-food-microbe-stage":"spark-food-microbe-stage cards"}>
         {view==="growth"&&<GrowthScene/>}
         {view==="bread"&&<BreadScene/>}
+        {view==="mould"&&<MouldStructureScene/>}
         {view==="milk"&&<MilkGraph/>}
         {view==="useful"&&<UsefulScene/>}
       </div>
