@@ -74,6 +74,7 @@ import ThermometerTypesExplorer from "./components/ThermometerTypesExplorer";
 import BodyTemperatureRegulationExplorer from "./components/BodyTemperatureRegulationExplorer";
 import VentilationExplorer from "./components/VentilationExplorer";
 import UniverseComponentsExplorer from "./components/UniverseComponentsExplorer";
+import OrbitMotionExplorer from "./components/OrbitMotionExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -450,6 +451,9 @@ function GenericLessonContent({
         }
         if (model?.type === "universe-components") {
           return <UniverseComponentsExplorer key={model.id || "universe-components"} />;
+        }
+        if (model?.type === "orbit-motion") {
+          return <OrbitMotionExplorer key={model.id || "orbit-motion"} />;
         }
         return null;
       })}
