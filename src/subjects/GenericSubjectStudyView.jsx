@@ -72,6 +72,7 @@ import HeatTransferApplicationsExplorer from "./components/HeatTransferApplicati
 import ThermostatExplorer from "./components/ThermostatExplorer";
 import ThermometerTypesExplorer from "./components/ThermometerTypesExplorer";
 import BodyTemperatureRegulationExplorer from "./components/BodyTemperatureRegulationExplorer";
+import VentilationExplorer from "./components/VentilationExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -442,6 +443,9 @@ function GenericLessonContent({
         }
         if (model?.type === "body-temperature-regulation") {
           return <BodyTemperatureRegulationExplorer key={model.id || "body-temperature-regulation"} />;
+        }
+        if (model?.type === "ventilation") {
+          return <VentilationExplorer key={model.id || "ventilation"} />;
         }
         return null;
       })}
