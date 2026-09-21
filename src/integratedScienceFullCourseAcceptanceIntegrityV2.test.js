@@ -15,11 +15,17 @@ describe("Integrated Science full-course acceptance integrity V2", () => {
     expect(migration).toContain("m1-t1-2-animal-and-plant-cells");
   });
 
-  test("publishes the canonical 114-topic and 114-objective counters", () => {
+  test("publishes the canonical three-section 114-topic and 114-objective counters", () => {
+    expect(migration).toContain('"sections":3');
     expect(migration).toContain('"topics":114');
     expect(migration).toContain('"objectives":114');
     expect(migration).toContain('"topicsBuilt":114');
     expect(migration).toContain('"objectivesBuilt":114');
+  });
+
+  test("fails migration when section count drifts from the three syllabus modules", () => {
+    expect(migration).toContain("v_section_count <> 3");
+    expect(migration).toContain("expected 3 enabled sections");
   });
 
   test("fails migration when enabled topic count drifts from the bank", () => {
