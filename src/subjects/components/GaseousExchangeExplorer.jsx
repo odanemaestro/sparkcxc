@@ -9,33 +9,58 @@ const SURFACE_FEATURES=[
 ];
 
 function AlveolusView(){
+  const redCells=[
+    [180,118,-18],[235,95,12],[300,90,28],[370,98,-8],[444,124,16],[510,165,35],
+    [544,225,-18],[548,295,24],[516,354,-30],[455,392,18],[380,414,-12],[302,408,22],
+    [232,382,-30],[177,343,14],[143,285,-10],[139,220,18],[151,165,-25],
+  ];
   return <div className="spark-gas-alveolus">
-    <svg viewBox="0 0 820 470" role="img" aria-label="Cluster of alveoli with surrounding capillary showing oxygen entering blood and carbon dioxide entering alveolar air">
+    <svg viewBox="0 0 900 520" role="img" aria-label="Alveolar sac with surrounding capillary network showing oxygen entering blood and carbon dioxide entering alveolar air">
       <g className="gx-alveolar-cluster">
-        <path className="gx-bronchiole" d="M145 235Q205 230 245 245" />
-        <circle className="gx-alveolus" cx="310" cy="175" r="83"/>
-        <circle className="gx-alveolus" cx="390" cy="245" r="90"/>
-        <circle className="gx-alveolus" cx="292" cy="304" r="78"/>
-        <circle className="gx-alveolus" cx="215" cy="245" r="70"/>
-        <path className="gx-alveolar-opening" d="M245 245Q275 230 300 245" />
+        <path className="gx-bronchiole" d="M80 250Q150 245 214 264" />
+        <path className="gx-alveolar-duct" d="M205 264Q240 260 265 276" />
+
+        {[
+          [290,170,76],[372,154,72],[444,205,78],
+          [452,302,76],[374,354,82],[282,330,77],[235,250,70],[345,254,88],
+        ].map(([x,y,r],i)=>(
+          <circle key={i} className="gx-alveolus" cx={x} cy={y} r={r}/>
+        ))}
+
+        <path className="gx-alveolar-opening" d="M257 259Q278 243 300 251M318 190Q338 176 356 186M405 192Q421 183 438 192M421 316Q437 305 451 315M314 328Q334 314 350 326" />
+
+        <text className="gx-label" x="345" y="260" textAnchor="middle">alveolar air</text>
       </g>
 
-      <path className="gx-capillary" d="M165 115Q290 70 425 112Q545 150 565 247Q582 343 492 395Q380 450 250 405Q145 370 125 275Q108 190 165 115Z" />
+      <g className="gx-capillary-network">
+        <path className="gx-vessel deoxygenated" d="M620 95Q575 122 548 158" />
+        <path className="gx-capillary" d="M170 105Q280 58 414 82Q545 105 596 208Q638 292 596 365Q547 446 433 465Q295 487 188 424Q104 374 95 284Q87 188 170 105Z" />
+        <path className="gx-vessel oxygenated" d="M590 366Q628 399 678 414" />
+      </g>
 
-      {[
-        [185,126],[265,102],[360,105],[455,132],[526,195],
-        [548,285],[505,357],[420,401],[320,420],[220,391],[150,320],[132,225]
-      ].map(([x,y],i)=><ellipse key={i} className="gx-rbc" cx={x} cy={y} rx="22" ry="14" transform={`rotate(${(i*23)%160} ${x} ${y})`} />)}
+      {redCells.map(([x,y,angle],i)=><ellipse key={i} className="gx-rbc" cx={x} cy={y} rx="21" ry="13" transform={`rotate(${angle} ${x} ${y})`} />)}
 
-      <path className="gx-exchange-barrier" d="M440 220Q472 226 490 250Q505 272 496 300" />
-      <path className="gx-oxygen-arrow" d="M415 230Q455 212 500 200" />
-      <path className="gx-carbon-arrow" d="M500 300Q456 306 420 287" />
+      <path className="gx-exchange-barrier" d="M472 210Q506 218 526 246Q543 270 535 302" />
 
-      <text className="gx-oxygen-text" x="500" y="180">O₂ diffuses into blood</text>
-      <text className="gx-carbon-text" x="478" y="335">CO₂ diffuses into alveolar air</text>
-      <text className="gx-label" x="325" y="247" textAnchor="middle">alveolar air</text>
-      <text className="gx-small" x="440" y="435" textAnchor="middle">capillary closely surrounds the thin alveolar walls</text>
-      <text className="gx-small" x="595" y="248">thin exchange barrier</text>
+      <path className="gx-oxygen-arrow" d="M442 233Q486 216 528 203" />
+      <path className="gx-carbon-arrow" d="M530 311Q488 321 447 301" />
+
+      <text className="gx-oxygen-text" x="535" y="187">O₂ diffuses into blood</text>
+      <text className="gx-carbon-text" x="523" y="340">CO₂ diffuses into alveolar air</text>
+
+      <text className="gx-small" x="575" y="255">thin exchange barrier</text>
+      <text className="gx-small" x="320" y="492" textAnchor="middle">capillary closely surrounds the thin, moist alveolar walls</text>
+      <text className="gx-small vessel-label deoxygenated" x="650" y="92">deoxygenated blood enters</text>
+      <text className="gx-small vessel-label oxygenated" x="694" y="430">oxygenated blood leaves</text>
+
+      <g className="gx-exchange-key" transform="translate(665 165)">
+        <rect x="0" y="0" width="205" height="156" rx="14" />
+        <text className="gx-panel-title" x="16" y="28">Why alveoli work well</text>
+        <text className="gx-small" x="16" y="57">• very large total area</text>
+        <text className="gx-small" x="16" y="82">• walls one cell thick</text>
+        <text className="gx-small" x="16" y="107">• moist surface</text>
+        <text className="gx-small" x="16" y="132">• dense capillary supply</text>
+      </g>
     </svg>
     <div className="spark-gas-alveolus-notes">
       <article><b>Large surface area</b><p>Millions of alveoli provide a large total exchange surface.</p></article>
