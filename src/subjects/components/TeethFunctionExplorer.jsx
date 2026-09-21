@@ -8,8 +8,43 @@ const TYPES=[
   {name:"Molar",shape:"Large broad crown with several cusps",function:"Crushing and grinding",count:"12 in a full adult set, including wisdom teeth"},
 ];
 
+function ToothShape({type}){
+  const common=<>
+    <path className="tf-enamel-line" d="M42 62Q70 48 98 62" />
+    <path className="tf-pulp-line" d="M70 72V132" />
+  </>;
+
+  if(type==="Incisor") return <svg viewBox="0 0 140 180" role="img" aria-label="Incisor tooth with chisel-shaped crown and single root">
+    <path className="tf-tooth" d="M35 34Q70 18 105 34L101 75Q95 96 84 112L79 165Q70 174 61 165L56 112Q45 96 39 75Z" />
+    <path className="tf-edge" d="M40 38Q70 29 100 38" />
+    {common}
+  </svg>;
+
+  if(type==="Canine") return <svg viewBox="0 0 140 180" role="img" aria-label="Canine tooth with pointed crown and long single root">
+    <path className="tf-tooth" d="M39 46Q54 20 70 11Q86 20 101 46L96 79Q91 100 81 113L77 169Q70 177 63 169L59 113Q49 100 44 79Z" />
+    <path className="tf-edge" d="M43 48Q56 32 70 19Q84 32 97 48" />
+    {common}
+  </svg>;
+
+  if(type==="Premolar") return <svg viewBox="0 0 140 180" role="img" aria-label="Premolar tooth with two cusps and two roots">
+    <path className="tf-tooth" d="M29 48Q42 24 58 35Q70 18 82 35Q98 24 111 48L105 82Q99 103 86 116L89 159Q84 171 76 159L70 121L64 159Q56 171 51 159L54 116Q41 103 35 82Z" />
+    <path className="tf-edge" d="M33 50Q45 35 58 43Q70 28 82 43Q95 35 107 50" />
+    {common}
+  </svg>;
+
+  return <svg viewBox="0 0 140 180" role="img" aria-label="Molar tooth with broad multi-cusped crown and multiple roots">
+    <path className="tf-tooth" d="M20 52Q30 25 47 36Q58 20 70 36Q82 20 93 36Q110 25 120 52L114 88Q108 105 95 116L101 157Q98 171 88 160L78 122L75 162Q70 176 65 162L62 122L52 160Q42 171 39 157L45 116Q32 105 26 88Z" />
+    <path className="tf-edge" d="M25 54Q34 37 47 45Q58 31 70 45Q82 31 93 45Q106 37 115 54" />
+    {common}
+  </svg>;
+}
+
 function TypesView(){
-  return <div className="spark-teeth-types">{TYPES.map((item,i)=><article key={item.name}><span>{i+1}</span><div><b>{item.name}</b><strong>{item.function}</strong><p>{item.shape}</p><small>{item.count}</small></div></article>)}</div>;
+  return <div className="spark-teeth-types">{TYPES.map((item,i)=><article key={item.name}>
+    <span>{i+1}</span>
+    <div className="spark-tooth-shape"><ToothShape type={item.name}/></div>
+    <div><b>{item.name}</b><strong>{item.function}</strong><p>{item.shape}</p><small>{item.count}</small></div>
+  </article>)}</div>;
 }
 
 function FormulaView(){
