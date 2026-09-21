@@ -62,6 +62,7 @@ import ElectricalConductorsExplorer from "./components/ElectricalConductorsExplo
 import ElectricCircuitFlowExplorer from "./components/ElectricCircuitFlowExplorer";
 import ElectricityConsumptionExplorer from "./components/ElectricityConsumptionExplorer";
 import HouseholdElectricalSafetyExplorer from "./components/HouseholdElectricalSafetyExplorer";
+import EnergyConservationMeasuresExplorer from "./components/EnergyConservationMeasuresExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -402,6 +403,9 @@ function GenericLessonContent({
         }
         if (model?.type === "household-electrical-safety") {
           return <HouseholdElectricalSafetyExplorer key={model.id || "household-electrical-safety"} />;
+        }
+        if (model?.type === "energy-conservation-measures") {
+          return <EnergyConservationMeasuresExplorer key={model.id || "energy-conservation-measures"} />;
         }
         return null;
       })}
