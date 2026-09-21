@@ -6,6 +6,12 @@ const view=fs.readFileSync(path.join(__dirname,"subjects","GenericSubjectStudyVi
 describe("Integrated Science Objective 3.3.9 acceptance audit",()=>{
  test("maps to canonical objective",()=>{expect(migration).toContain('"objective":"3.3.9"');expect(migration).toContain("3.3.9 Water Safety Devices");});
  test("covers life jacket buoyancy and visibility",()=>{expect(migration).toContain("buoyant foam or trapped air");expect(migration).toContain("bright colours");expect(explorer).toContain("Why jackets float");});
+ test("renders life-jacket buoyancy with forces and displaced water",()=>{
+  ["spark-water-buoyancy-svg","ws-displaced-region jacket","ws-force up","ws-force down","upthrust","weight","more water displaced before sinking deeply","life jacket increases volume with little added mass"].forEach(term=>expect(explorer).toContain(term));
+  expect(css).toContain(".spark-water-buoyancy-svg");
+  expect(css).toContain(".ws-displaced-region");
+  expect(css).toContain(".ws-force.up");
+ });
  test("covers ring buoys and life rafts",()=>{expect(migration).toContain("ring buoy");expect(migration).toContain("life raft");expect(explorer).toContain("Flotation devices");});
  test("covers boat safety equipment",()=>{expect(migration).toContain("life jackets, flares and a two-way radio");expect(explorer).toContain("Boat equipment");});
  test("covers beach warning carefully",()=>{expect(migration).toContain("red beach flag");expect(migration).toContain("flag systems can vary");expect(explorer).toContain("Beach warnings");});
