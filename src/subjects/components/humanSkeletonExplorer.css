@@ -32,3 +32,20 @@ body[data-theme="dark"] .hs-anatomical .hs-pelvis,
 .hs-anatomical .hs-temporal{fill:#dce7eb;stroke:#617783;stroke-width:3}
 .hs-anatomical .hs-nasal,.hs-anatomical .hs-zygoma,.hs-anatomical .hs-maxilla{fill:#eaf0f2;stroke:#617783;stroke-width:3}
 .hs-anatomical .hs-teeth rect{fill:#f7fafc;stroke:#7b8e98;stroke-width:1.5}
+
+
+.spark-skeleton-regions-view{display:grid;gap:14px}
+.spark-spinal-regions-svg{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.sr-spinal-curve{fill:none;stroke:#8aa0ac;stroke-width:5;stroke-dasharray:8 7}
+.sr-vertebra rect{stroke-width:3}.sr-vertebra path{fill:none;stroke-width:4;stroke-linecap:round}
+.sr-vertebra.cervical rect{fill:#d7ece8;stroke:#5d8f87}.sr-vertebra.cervical path{stroke:#5d8f87}
+.sr-vertebra.thoracic rect{fill:#dce8f1;stroke:#64849a}.sr-vertebra.thoracic path{stroke:#64849a}
+.sr-vertebra.lumbar rect{fill:#eadfca;stroke:#957b57}.sr-vertebra.lumbar path{stroke:#957b57}
+.sr-sacrum{fill:#d9c6a7;stroke:#8f7652;stroke-width:4}.sr-coccyx{fill:#d0b998;stroke:#8f7652;stroke-width:4}
+.sr-brackets path{fill:none;stroke-width:5}.sr-brackets .cervical{stroke:#5d8f87}.sr-brackets .thoracic{stroke:#64849a}.sr-brackets .lumbar{stroke:#957b57}.sr-brackets .sacral{stroke:#8f7652}
+.sr-brackets text,.sr-title,.sr-small{fill:#294d64;font-weight:900}.sr-brackets text{font-size:16px}.sr-brackets .sr-count,.sr-small{font-size:12px;font-weight:750}.sr-title{font-size:18px}
+html[data-theme="dark"] .spark-spinal-regions-svg,body[data-theme="dark"] .spark-spinal-regions-svg,.dark .spark-spinal-regions-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .sr-brackets text,body[data-theme="dark"] .sr-brackets text,.dark .sr-brackets text,
+html[data-theme="dark"] .sr-title,body[data-theme="dark"] .sr-title,.dark .sr-title,
+html[data-theme="dark"] .sr-small,body[data-theme="dark"] .sr-small,.dark .sr-small{fill:#e1edf5}
+@media(max-width:620px){.sr-brackets text{font-size:20px}.sr-brackets .sr-count,.sr-small{font-size:16px}.sr-title{font-size:22px}}
