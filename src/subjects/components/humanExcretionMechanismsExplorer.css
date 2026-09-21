@@ -39,3 +39,19 @@ html[data-theme="dark"] .spark-human-excretion-summary,body[data-theme="dark"] .
 .spark-human-excretion-stage .hex-renal-artery.branch,.spark-human-excretion-stage .hex-renal-vein.branch{stroke-width:5}
 .spark-human-excretion-stage .hex-small.vessel.artery{fill:#93414a}
 .spark-human-excretion-stage .hex-small.vessel.vein{fill:#3d6688}
+
+.spark-human-excretion-stage .hex-skin-surface{fill:none;stroke:#b9785e;stroke-width:4}
+.spark-human-excretion-stage .hex-subcutaneous{fill:#efcf7a}
+.spark-human-excretion-stage .hex-fat-lobules circle{fill:#f3dc94;stroke:#c79f47;stroke-width:2}
+.spark-human-excretion-stage .hex-hair-shaft{fill:none;stroke:#4d3d36;stroke-width:9;stroke-linecap:round}
+.spark-human-excretion-stage .hex-hair-follicle{fill:#d9a58d;fill-opacity:.45;stroke:#9a6b58;stroke-width:4}
+.spark-human-excretion-stage .hex-hair-bulb{fill:#bb7f69;stroke:#7f5548;stroke-width:3}
+.spark-human-excretion-stage .hex-sebaceous-gland{fill:#e7ba8f;stroke:#ad7a58;stroke-width:3}
+.spark-human-excretion-stage .hex-sebaceous-duct{fill:none;stroke:#aa7656;stroke-width:4;stroke-linecap:round}
+.spark-human-excretion-stage .hex-arrector{fill:none;stroke:#b76767;stroke-width:8;stroke-linecap:round}
+.spark-human-excretion-stage .hex-sweat-pore{fill:none;stroke:#4f8eaa;stroke-width:4;stroke-linecap:round}
+.spark-human-excretion-stage .hex-blood-vessel.artery{stroke:#c94f56}
+.spark-human-excretion-stage .hex-blood-vessel.vein{stroke:#4b7da4}
+.spark-human-excretion-stage .hex-capillary-loop{fill:none;stroke:#bb5b61;stroke-width:6;stroke-linecap:round}
+.spark-human-excretion-stage .hex-sensory-nerve{fill:none;stroke:#c8912f;stroke-width:5;stroke-linecap:round}
+.spark-human-excretion-stage .hex-sensory-ending{fill:#f0c56d;stroke:#a47723;stroke-width:3}
