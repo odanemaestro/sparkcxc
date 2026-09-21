@@ -14,3 +14,12 @@ html[data-theme="dark"] .spark-safety-tabs button.active,body[data-theme="dark"]
 @media(max-width:900px){.spark-safety-plug,.spark-fuse-selector,.spark-safety-protection,.spark-safety-hazards,.spark-safety-cable{grid-template-columns:1fr}.spark-safety-plug-note{grid-column:auto}}
 @media(max-width:620px){.spark-household-safety{padding:14px}.spark-safety-tabs{display:grid;grid-template-columns:1fr 1fr}}
 @media(max-width:390px){.spark-safety-tabs{grid-template-columns:1fr}}
+
+.spark-three-pin-plug-svg{grid-column:1/-1;display:block;width:100%;height:auto;min-height:360px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:13px;background:var(--spark-paper,#fff)}
+.ep-body{fill:#eef1f3;stroke:#7c8d98;stroke-width:5}.ep-pin{fill:#c7c7c2;stroke:#777873;stroke-width:3}.ep-cable{fill:none;stroke:#565f65;stroke-width:36;stroke-linecap:round}.ep-grip{fill:#788690;stroke:#4e5a62;stroke-width:3}
+.ep-wire{fill:none;stroke-width:15;stroke-linecap:round}.ep-wire.live{stroke:#8a5133}.ep-wire.neutral{stroke:#3674a5}.ep-wire.earth{stroke:#6d9b4d}.ep-terminal{stroke:#535d63;stroke-width:3}.ep-terminal.live{fill:#8a5133}.ep-terminal.neutral{fill:#3674a5}.ep-terminal.earth{fill:#6d9b4d}.ep-fuse{fill:#ede6d2;stroke:#a08b58;stroke-width:4}.ep-fuse-link{stroke:#785b2b;stroke-width:4}
+.ep-callouts path{fill:none;stroke:#647987;stroke-width:2}.ep-callouts text,.ep-caption{fill:var(--spark-ink,#102a43);font-size:14px;font-weight:850}.ep-caption{font-size:13px}
+html[data-theme="dark"] .spark-three-pin-plug-svg,body[data-theme="dark"] .spark-three-pin-plug-svg,.dark .spark-three-pin-plug-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .ep-callouts text,body[data-theme="dark"] .ep-callouts text,.dark .ep-callouts text,html[data-theme="dark"] .ep-caption,body[data-theme="dark"] .ep-caption,.dark .ep-caption{fill:#e7f0f7}
+@media(max-width:900px){.spark-three-pin-plug-svg{min-height:300px}}
+@media(max-width:560px){.spark-three-pin-plug-svg{min-height:245px}.ep-callouts text{font-size:18px}.ep-caption{font-size:16px}}
