@@ -27,16 +27,65 @@ function SandSaltView(){
   </div>;
 }
 
+function FiltrationView(){
+ return <div className="spark-filtration-view">
+  <svg viewBox="0 0 760 450" role="img" aria-label="Filtration apparatus showing mixture poured into filter paper with residue retained and filtrate collected">
+    <defs><marker id="sep-filter-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" className="sep-arrow-head"/></marker></defs>
+    <path className="sep-pour-beaker" d="M80 82H235L215 215H100Z"/>
+    <path className="sep-muddy" d="M96 148H220L211 205H104Z"/>
+    <path className="sep-pour-stream" d="M218 154Q286 167 330 212"/>
+    <path className="sep-funnel" d="M285 180H475L405 302H355Z"/>
+    <path className="sep-filter-paper" d="M309 193H451L399 280H361Z"/>
+    <path className="sep-residue" d="M337 225Q380 245 423 225L399 267H361Z"/>
+    <path className="sep-funnel-stem" d="M380 302V352"/>
+    <path className="sep-flask-outline" d="M314 350H446L480 417H280Z"/>
+    <path className="sep-filtrate" d="M305 393H455L467 417H293Z"/>
+    <line className="sep-flow-arrow" x1="535" y1="208" x2="535" y2="336" markerEnd="url(#sep-filter-arrow)"/>
+    <text className="sep-label" x="155" y="63" textAnchor="middle">sand + water</text>
+    <text className="sep-label" x="380" y="164" textAnchor="middle">filter funnel + paper</text>
+    <text className="sep-label" x="380" y="241" textAnchor="middle">residue</text>
+    <text className="sep-label" x="380" y="438" textAnchor="middle">filtrate</text>
+    <text className="sep-small" x="552" y="275">liquid passes through</text>
+  </svg>
+  <p>Filter paper traps an insoluble solid as the residue. The liquid passing through the paper is the filtrate.</p>
+ </div>;
+}
+
 function DistillView(){
  return <div className="spark-distill-view">
-  <svg viewBox="0 0 900 420" role="img" aria-label="Simple distillation apparatus">
-    <ellipse className="sep-flask" cx="190" cy="270" rx="95" ry="90"/>
-    <path className="sep-liquid" d="M115 280Q190 315 265 280V315Q190 350 115 315Z"/>
-    <path className="sep-vapour" d="M190 180V105H370"/>
-    <rect className="sep-condenser" x="370" y="82" width="280" height="46" rx="22"/>
-    <path className="sep-output" d="M650 105Q740 105 740 230"/>
-    <rect className="sep-beaker" x="680" y="230" width="125" height="120" rx="8"/>
-    <text className="sep-label" x="190" y="330" textAnchor="middle">mixture</text><text className="sep-label" x="510" y="65" textAnchor="middle">condenser</text><text className="sep-label" x="742" y="300" textAnchor="middle">distillate</text>
+  <svg viewBox="0 0 940 470" role="img" aria-label="Simple distillation apparatus with heated flask, thermometer, Liebig condenser, cooling water and receiver">
+    <defs><marker id="sep-distill-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" className="sep-arrow-head"/></marker></defs>
+    <path className="sep-round-flask" d="M205 170V208Q126 238 126 326Q126 397 215 397Q304 397 304 326Q304 238 225 208V170Z"/>
+    <path className="sep-liquid" d="M145 314Q215 345 285 314V350Q215 381 145 350Z"/>
+    <path className="sep-neck" d="M205 170V105H265"/>
+    <line className="sep-thermometer" x1="215" y1="55" x2="215" y2="184"/>
+    <circle className="sep-thermometer-bulb" cx="215" cy="184" r="10"/>
+    <text className="sep-small" x="142" y="58">thermometer bulb near side arm</text>
+
+    <path className="sep-vapour-tube" d="M265 105H405"/>
+    <rect className="sep-condenser-jacket" x="390" y="72" width="320" height="72" rx="34"/>
+    <line className="sep-condenser-tube" x1="405" y1="108" x2="695" y2="108"/>
+    <line className="sep-vapour-arrow" x1="302" y1="108" x2="372" y2="108" markerEnd="url(#sep-distill-arrow)"/>
+    <line className="sep-vapour-arrow" x1="445" y1="108" x2="535" y2="108" markerEnd="url(#sep-distill-arrow)"/>
+    <line className="sep-vapour-arrow" x1="570" y1="108" x2="660" y2="108" markerEnd="url(#sep-distill-arrow)"/>
+
+    <path className="sep-water-port" d="M430 72V34"/>
+    <path className="sep-water-port" d="M670 144V184"/>
+    <line className="sep-water-arrow" x1="670" y1="212" x2="670" y2="164" markerEnd="url(#sep-distill-arrow)"/>
+    <line className="sep-water-arrow" x1="430" y1="60" x2="430" y2="24" markerEnd="url(#sep-distill-arrow)"/>
+    <text className="sep-small" x="702" y="209">cold water in</text>
+    <text className="sep-small" x="452" y="28">water out</text>
+
+    <path className="sep-delivery" d="M695 108Q770 108 770 218"/>
+    <path className="sep-receiver" d="M721 218H819L845 394H695Z"/>
+    <path className="sep-distillate" d="M711 342H829L837 394H703Z"/>
+    <text className="sep-label" x="770" y="326" textAnchor="middle">distillate</text>
+
+    <path className="sep-tripod" d="M120 408H310M160 408L135 455M270 408L295 455"/>
+    <path className="sep-flame" d="M215 450Q180 423 214 389Q248 423 215 450Z"/>
+    <text className="sep-label" x="215" y="294" textAnchor="middle">mixture</text>
+    <text className="sep-label" x="550" y="58" textAnchor="middle">Liebig condenser</text>
+    <text className="sep-small" x="518" y="167" textAnchor="middle">vapour cools and condenses</text>
   </svg>
   <p>Distillation is useful when the solvent is required. For an alcohol-water mixture, the lower-boiling component becomes richer in the first vapour, although real beverage distillation produces mixtures rather than perfectly pure ethanol in one simple step.</p>
  </div>;
@@ -83,6 +132,7 @@ export default function SeparationTechniquesExplorer(){
   const [view,setView]=useState("selector");
   const summary=useMemo(()=>({
     selector:"Choose a separation technique by using physical differences such as solubility, particle size, boiling point or immiscibility.",
+    filtration:"Filtration separates an insoluble solid from a liquid using filter paper.",
     sandsalt:"Sand and salt require more than one method: dissolve, filter, then evaporate or crystallise.",
     distill:"Distillation vaporises and then condenses a component so it can be collected.",
     chrom:"Chromatography separates dissolved substances because they travel at different rates.",
@@ -91,8 +141,8 @@ export default function SeparationTechniquesExplorer(){
   })[view],[view]);
   return <section className="spark-separation-techniques">
     <header><span>SEPARATION TECHNIQUES</span><h3>Choose the method that matches the physical properties of the mixture</h3><p>Mixtures can be separated without changing the chemical identity of their components by exploiting differences in particle size, solubility, boiling point, movement or density.</p></header>
-    <div className="spark-separation-tabs">{[["selector","Choose technique"],["sandsalt","Sand + salt"],["distill","Distillation"],["chrom","Chromatography"],["funnel","Separating funnel"],["crystals","Crystallisation"]].map(([k,l])=><button type="button" key={k} className={view===k?"active":""} onClick={()=>setView(k)}>{l}</button>)}</div>
-    <div className="spark-separation-stage">{view==="selector"&&<SelectorView/>}{view==="sandsalt"&&<SandSaltView/>}{view==="distill"&&<DistillView/>}{view==="chrom"&&<ChromatographyView/>}{view==="funnel"&&<FunnelView/>}{view==="crystals"&&<CrystalsView/>}</div>
+    <div className="spark-separation-tabs">{[["selector","Choose technique"],["filtration","Filtration"],["sandsalt","Sand + salt"],["distill","Distillation"],["chrom","Chromatography"],["funnel","Separating funnel"],["crystals","Crystallisation"]].map(([k,l])=><button type="button" key={k} className={view===k?"active":""} onClick={()=>setView(k)}>{l}</button>)}</div>
+    <div className="spark-separation-stage">{view==="selector"&&<SelectorView/>}{view==="filtration"&&<FiltrationView/>}{view==="sandsalt"&&<SandSaltView/>}{view==="distill"&&<DistillView/>}{view==="chrom"&&<ChromatographyView/>}{view==="funnel"&&<FunnelView/>}{view==="crystals"&&<CrystalsView/>}</div>
     <div className="spark-separation-summary"><strong>{summary}</strong><span>Salt water → evaporation if only salt is wanted; distillation if the water must be collected.</span></div>
   </section>;
 }
