@@ -8,7 +8,13 @@ function objectiveMigrations(){
   return fs.readdirSync(migrationsDir)
     .map(name => {
       const match = name.match(objectiveMigrationPattern);
-      return match ? {name,suffix:match[1],content:fs.readFileSync(path.join(migrationsDir,name),"utf8")} : null;
+      return match
+        ? {
+            name,
+            suffix:match[1],
+            content:fs.readFileSync(path.join(migrationsDir,name),"utf8"),
+          }
+        : null;
     })
     .filter(Boolean)
     .sort((a,b)=>a.name.localeCompare(b.name));
@@ -16,6 +22,10 @@ function objectiveMigrations(){
 
 describe("Integrated Science full-course lesson quality V3",()=>{
   const migrations=objectiveMigrations();
+  const studyView=fs.readFileSync(
+    path.join(__dirname,"subjects","GenericSubjectStudyView.jsx"),
+    "utf8"
+  );
 
   test("has exactly one objective migration for each of the 114 canonical syllabus objectives",()=>{
     expect(migrations).toHaveLength(114);
@@ -47,13 +57,21 @@ describe("Integrated Science full-course lesson quality V3",()=>{
 
   test("every objective interactive model type is rendered by the shared study view",()=>{
     const types=new Set();
+
     migrations.forEach(({content})=>{
-      const modelBlocks=[...content.matchAll(/"interactiveModels"\s*:\s*\[([\s\S]*?)\]/g)];
+      const modelBlocks=[
+        ...content.matchAll(/"interactiveModels"\s*:\s*\[([\s\S]*?)\]/g),
+      ];
+
       modelBlocks.forEach(block=>{
-        for(const match of block[1].matchAll(/"type"\s*:\s*"([^"]+)"/g)) types.add(match[1]);
+        for(const match of block[1].matchAll(/"type"\s*:\s*"([^"]+)"/g)){
+          types.add(match[1]);
+        }
       });
     });
+
     expect(types.size).toBeGreaterThan(0);
+
     for(const type of types){
       expect(studyView).toContain(`model?.type === "${type}"`);
     }
