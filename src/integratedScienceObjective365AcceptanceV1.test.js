@@ -6,7 +6,8 @@ const view=fs.readFileSync(path.join(__dirname,"subjects","GenericSubjectStudyVi
 
 describe("Integrated Science Objective 3.6.5 acceptance audit",()=>{
  test("maps to canonical objective",()=>{expect(migration).toContain('"objective":"3.6.5"');expect(migration).toContain("3.6.5 Separation Techniques");});
- test("covers filtration evaporation and crystallisation",()=>{expect(migration).toContain("Filtration separates");expect(migration).toContain("Evaporation is useful");expect(migration).toContain("Crystallisation is used");});
+ test("covers filtration evaporation and crystallisation",()=>{expect(migration).toContain("Filtration separates");expect(migration).toContain("Evaporation is useful");expect(migration).toContain("Crystallisation is used");expect(explorer).toContain("Filtration");expect(explorer).toContain("sep-filter-paper");expect(explorer).toContain("residue");expect(explorer).toContain("filtrate");});
+ test("renders complete simple distillation apparatus",()=>{expect(explorer).toContain("sep-thermometer");expect(explorer).toContain("sep-condenser-jacket");expect(explorer).toContain("cold water in");expect(explorer).toContain("water out");expect(explorer).toContain("sep-flame");expect(css).toContain(".spark-filtration-view svg");});
  test("covers distillation",()=>{expect(migration).toContain("Distillation involves boiling");expect(migration).toContain("pure water from a solution such as ink");expect(migration).toContain("rum production");expect(explorer).toContain("Distillation");});
  test("covers chromatography",()=>{expect(migration).toContain("Chromatography separates");expect(migration).toContain("food colouring or ink");expect(explorer).toContain("Chromatography");});
  test("covers separating funnel",()=>{expect(migration).toContain("immiscible liquids such as oil and water");expect(explorer).toContain("Separating funnel");});
