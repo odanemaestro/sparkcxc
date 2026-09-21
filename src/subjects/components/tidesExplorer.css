@@ -60,3 +60,15 @@ body[data-theme="dark"] .spark-tide-bulges .td-caption,
 @media(max-width:620px){
   .spark-tide-bulges .td-small,.spark-tide-bulges .td-caption{font-size:17px}
 }
+
+
+.spark-tsunami-svg{display:block;width:100%;height:auto;margin-bottom:14px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.ts-sky{fill:#e3f2f7}.ts-sea{fill:#83bdd4}.ts-seafloor{fill:#9a7c5d;stroke:#6f5943;stroke-width:4}.ts-coast{fill:#b7a076;stroke:#806d50;stroke-width:4}
+.ts-fault-left,.ts-fault-right{fill:none;stroke:#5f5148;stroke-width:10;stroke-linecap:round;stroke-linejoin:round}.ts-uplift,.ts-subsidence,.ts-travel-arrow,.ts-slowing-arrow,.ts-inundation-arrow,.ts-sea-drawback{fill:none;stroke:#387f9e;stroke-width:6;stroke-linecap:round}
+.ts-arrow-head{fill:#387f9e}.ts-deep-waves path,.ts-shoaling path{fill:none;stroke:#e9f7fb;stroke-width:6;stroke-linecap:round}.ts-shoaling path{stroke-width:9}
+.ts-inundation{fill:#6caecb;stroke:#3f829f;stroke-width:3}.ts-label,.ts-caption{fill:#294d64;font-size:14px;font-weight:900}.ts-small{fill:#506b7c;font-size:11px;font-weight:750}.ts-label.danger{fill:#9d4138}
+html[data-theme="dark"] .spark-tsunami-svg,body[data-theme="dark"] .spark-tsunami-svg,.dark .spark-tsunami-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .ts-sky,body[data-theme="dark"] .ts-sky,.dark .ts-sky{fill:#153148}
+html[data-theme="dark"] .ts-label,body[data-theme="dark"] .ts-label,.dark .ts-label,html[data-theme="dark"] .ts-small,body[data-theme="dark"] .ts-small,.dark .ts-small,html[data-theme="dark"] .ts-caption,body[data-theme="dark"] .ts-caption,.dark .ts-caption{fill:#dceaf2}
+html[data-theme="dark"] .ts-label.danger,body[data-theme="dark"] .ts-label.danger,.dark .ts-label.danger{fill:#ffaaa0}
+@media(max-width:620px){.ts-label{font-size:18px}.ts-small,.ts-caption{font-size:15px}}
