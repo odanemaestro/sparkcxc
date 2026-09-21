@@ -20,14 +20,33 @@ function ProductView(){
 }
 
 function HazardIcon({type,label}){
-  return <article className="spark-hazard-card">
-    <svg viewBox="0 0 120 120" role="img" aria-label={label+" hazard symbol"}>
-      <polygon className="hc-diamond" points="60,7 113,60 60,113 7,60"/>
-      {type==="flammable"&&<path className="hc-black" d="M60 87Q38 77 47 54Q51 65 57 63Q51 48 63 31Q65 48 75 56Q84 69 72 84Z"/>}
-      {type==="corrosive"&&<><rect className="hc-black" x="29" y="79" width="62" height="9"/><path className="hc-line" d="M38 36L55 50M70 36L85 50"/><circle className="hc-black" cx="54" cy="61" r="4"/><circle className="hc-black" cx="78" cy="64" r="4"/></>}
-      {type==="toxic"&&<><circle className="hc-black" cx="60" cy="48" r="15"/><circle className="hc-white" cx="54" cy="46" r="4"/><circle className="hc-white" cx="66" cy="46" r="4"/><path className="hc-line thick" d="M39 73L81 92M39 92L81 73"/></>}
-      {type==="explosive"&&<><circle className="hc-black" cx="57" cy="69" r="10"/><path className="hc-line" d="M57 53V34M71 57L85 43M74 70H94M70 82L85 98M46 56L32 43"/></>}
-      {type==="irritant"&&<><rect className="hc-black" x="55" y="31" width="10" height="39" rx="3"/><circle className="hc-black" cx="60" cy="84" r="6"/></>}
+  return <article className={"spark-hazard-card "+type}>
+    <svg className="spark-ghs-hazard-svg" viewBox="0 0 140 140" role="img" aria-label={label+" hazard pictogram"}>
+      <polygon className="hc-diamond" points="70,8 132,70 70,132 8,70"/>
+      {type==="flammable"&&<g className="hc-flame">
+        <path className="hc-black" d="M72 111Q42 98 49 72Q53 58 65 49Q62 65 72 66Q66 45 82 27Q83 48 96 60Q108 72 103 90Q98 106 83 112Q87 99 79 91Q78 104 72 111Z"/>
+      </g>}
+      {type==="corrosive"&&<g className="hc-corrosion">
+        <path className="hc-tube" d="M30 33L50 39L43 60L23 54Z"/><path className="hc-tube" d="M79 31L99 38L91 59L71 52Z"/>
+        <path className="hc-liquid-stream" d="M41 58Q45 68 49 75"/><path className="hc-liquid-stream" d="M88 57Q83 67 80 76"/>
+        <circle className="hc-black" cx="50" cy="78" r="5"/><circle className="hc-black" cx="79" cy="79" r="5"/>
+        <path className="hc-hand" d="M22 94Q36 89 49 94L62 101Q68 107 61 113H35Q28 109 22 103Z"/>
+        <path className="hc-metal-bar" d="M73 99H113V110H73Z"/><path className="hc-corrosion-bite" d="M88 99Q94 91 100 99Q105 92 111 99"/>
+      </g>}
+      {type==="toxic"&&<g className="hc-skull-crossbones">
+        <path className="hc-crossbone" d="M29 105L107 73M31 74L105 106"/>
+        <circle className="hc-black" cx="69" cy="59" r="23"/>
+        <circle className="hc-white" cx="61" cy="55" r="6"/><circle className="hc-white" cx="77" cy="55" r="6"/>
+        <path className="hc-white" d="M62 70H76L73 80H65Z"/>
+      </g>}
+      {type==="explosive"&&<g className="hc-explosion">
+        <path className="hc-black" d="M37 92Q43 72 58 68Q69 65 77 73Q84 82 77 96Q68 109 50 107Q39 104 37 92Z"/>
+        <path className="hc-fragment" d="M61 61L55 39L69 48L76 27L83 51L103 38L94 61L118 60L98 72L118 84L92 82L101 107L82 91"/>
+        <circle className="hc-black" cx="42" cy="61" r="5"/><circle className="hc-black" cx="107" cy="102" r="5"/>
+      </g>}
+      {type==="irritant"&&<g className="hc-exclamation">
+        <path className="hc-black" d="M62 34H78L75 82H65Z"/><circle className="hc-black" cx="70" cy="101" r="9"/>
+      </g>}
     </svg>
     <b>{label}</b>
   </article>;
