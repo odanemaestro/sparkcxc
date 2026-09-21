@@ -13,3 +13,35 @@ html[data-theme="dark"] .spark-airpollution-tabs button.active,body[data-theme="
 @media(max-width:900px){.spark-airpollution-sources,.spark-acidrain-effects,.spark-airpollution-health,.spark-open-burning,.spark-airpollution-solutions{grid-template-columns:1fr}.spark-acidrain-flow{flex-direction:column}.spark-acidrain-flow>div{text-align:center;transform:rotate(90deg)}}
 @media(max-width:620px){.spark-air-pollution{padding:14px}.spark-airpollution-tabs{display:grid;grid-template-columns:1fr 1fr}}
 @media(max-width:390px){.spark-airpollution-tabs{grid-template-columns:1fr}}
+
+.spark-acidrain-diagram{display:block;width:100%;height:auto;margin-bottom:14px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.ap-sky{fill:#dceff6}.ap-ground{fill:#b9cfa0}.ap-water{fill:#8dc8df}
+.ap-factory{fill:#7d8790;stroke:#4f5d68;stroke-width:4}.ap-stack{fill:#646f78;stroke:#46525b;stroke-width:4}
+.ap-smoke{fill:#9aa3a8;opacity:.88}.ap-emission,.ap-deposition-arrow{fill:none;stroke:#6a596e;stroke-width:6;stroke-linecap:round}
+.ap-arrow-head{fill:#6a596e}.ap-cloud{fill:#e8edf0;stroke:#7b8891;stroke-width:4}
+.ap-rain{stroke:#547f9c;stroke-width:5;stroke-linecap:round}
+.ap-tree-trunk{stroke:#765b3a;stroke-width:18;stroke-linecap:round}.ap-tree{fill:#6f9b58;stroke:#4d7340;stroke-width:4}
+.ap-building{fill:#d7c9ab;stroke:#756a55;stroke-width:4}.ap-roof{fill:#a98b69;stroke:#756a55;stroke-width:4}
+.ap-label{fill:#243f55;font-size:15px;font-weight:900}.ap-small{fill:#445f72;font-size:12px;font-weight:750}
+html[data-theme="dark"] .spark-acidrain-diagram,
+body[data-theme="dark"] .spark-acidrain-diagram,
+.dark .spark-acidrain-diagram{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .ap-sky,
+body[data-theme="dark"] .ap-sky,
+.dark .ap-sky{fill:#17354e}
+html[data-theme="dark"] .ap-ground,
+body[data-theme="dark"] .ap-ground,
+.dark .ap-ground{fill:#344c39}
+html[data-theme="dark"] .ap-water,
+body[data-theme="dark"] .ap-water,
+.dark .ap-water{fill:#285b73}
+html[data-theme="dark"] .ap-cloud,
+body[data-theme="dark"] .ap-cloud,
+.dark .ap-cloud{fill:#42515d;stroke:#8495a2}
+html[data-theme="dark"] .ap-label,
+body[data-theme="dark"] .ap-label,
+.dark .ap-label,
+html[data-theme="dark"] .ap-small,
+body[data-theme="dark"] .ap-small,
+.dark .ap-small{fill:#e0edf5}
+@media(max-width:620px){.ap-label{font-size:18px}.ap-small{font-size:15px}}
