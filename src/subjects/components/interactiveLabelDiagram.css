@@ -565,3 +565,12 @@ body[data-theme="dark"] .spark-label-diagram-actions button:disabled,
 .spark-diagram-endocrine .endo-trachea{fill:none;stroke:#8ba4b5;stroke-width:10;stroke-linecap:round;stroke-dasharray:8 5}
 .spark-diagram-endocrine .endo-pancreatic-duct{fill:none;stroke:#a57a3f;stroke-width:3;stroke-linecap:round}
 .spark-diagram-endocrine .endo-epididymis{fill:none;stroke:#9b7345;stroke-width:4;stroke-linecap:round}
+
+.spark-diagram-cell .smooth-er path{fill:none;stroke:#91a7c7;stroke-width:7;stroke-linecap:round}
+.spark-diagram-cell .centrosome rect{fill:#69b9d1;stroke:#317f9a;stroke-width:3}
+.spark-diagram-cell .centrosome-rays path{fill:none;stroke:#75a7bc;stroke-width:2.5;stroke-linecap:round}
+.spark-diagram-cell .lysosomes circle{fill:#e98f8f;stroke:#a65454;stroke-width:3}
+.spark-diagram-cell .cytoskeleton path{fill:none;stroke:#72c5a5;stroke-width:2.6;stroke-opacity:.8;stroke-linecap:round}
+.spark-diagram-cell .plant-peroxisomes circle{fill:#f0c85f;stroke:#a88426;stroke-width:3}
+.spark-diagram-cell .plasmodesmata line{stroke:#597f4d;stroke-width:4;stroke-linecap:round}
+.spark-diagram-cell .plasmodesmata circle{fill:#7aa66c;stroke:#4f7245;stroke-width:1.5}
