@@ -23,6 +23,40 @@ set enabled = false,
 where subject_id = 'integrated-science'
   and topic_id ~ '^m[123]-o-';
 
+-- Reconcile the accepted Module 3 learner structure with databases that
+-- already use the original module-3-our-planet section id. The audited
+-- objective migrations temporarily write to module-3-environment, then this
+-- final gate moves those canonical topics and activities onto the established
+-- section and retires the temporary duplicate.
+update public.spark_subject_topics
+set section_id = 'module-3-our-planet',
+    updated_at = now()
+where subject_id = 'integrated-science'
+  and section_id = 'module-3-environment';
+
+update public.spark_subject_activity_catalog
+set section_id = 'module-3-our-planet',
+    updated_at = now()
+where subject_id = 'integrated-science'
+  and section_id = 'module-3-environment';
+
+update public.spark_subject_sections
+set enabled = false,
+    updated_at = now()
+where subject_id = 'integrated-science'
+  and section_id = 'module-3-environment';
+
+update public.spark_subject_sections
+set title = 'Module 3: Our Planet',
+    description = 'Study the universe and Solar System, Caribbean weather and terrestrial processes, water and aquatic environments, forces, materials, household chemicals, pollution and environmental responsibility.',
+    sort_order = 30,
+    enabled = true,
+    metadata = coalesce(metadata,'{}'::jsonb)
+      || '{"module":3,"skills":["Knowledge and Comprehension","Use of Knowledge","Experimental Skills"]}'::jsonb,
+    updated_at = now()
+where subject_id = 'integrated-science'
+  and section_id = 'module-3-our-planet';
+
 -- Objective 1.1.2 was already seeded as m1-t1-2-animal-and-plant-cells.
 -- A later migration introduced a second topic row with the same objective.
 -- The established topic keeps the richer acceptance-audited lesson, diagram
