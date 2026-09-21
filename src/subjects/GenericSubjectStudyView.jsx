@@ -77,6 +77,7 @@ import UniverseComponentsExplorer from "./components/UniverseComponentsExplorer"
 import OrbitMotionExplorer from "./components/OrbitMotionExplorer";
 import SolarSystemExplorer from "./components/SolarSystemExplorer";
 import EarthMoonEffectsExplorer from "./components/EarthMoonEffectsExplorer";
+import SpaceExplorationExplorer from "./components/SpaceExplorationExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -462,6 +463,9 @@ function GenericLessonContent({
         }
         if (model?.type === "earth-moon-effects") {
           return <EarthMoonEffectsExplorer key={model.id || "earth-moon-effects"} />;
+        }
+        if (model?.type === "space-exploration") {
+          return <SpaceExplorationExplorer key={model.id || "space-exploration"} />;
         }
         return null;
       })}
