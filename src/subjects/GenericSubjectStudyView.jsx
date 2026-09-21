@@ -97,6 +97,7 @@ import CorrosionProtectionExplorer from "./components/CorrosionProtectionExplore
 import HouseholdChemicalsExplorer from "./components/HouseholdChemicalsExplorer";
 import AcidsBasesSaltsExplorer from "./components/AcidsBasesSaltsExplorer";
 import StatesMatterExplorer from "./components/StatesMatterExplorer";
+import MixturesExplorer from "./components/MixturesExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -542,6 +543,9 @@ function GenericLessonContent({
         }
         if (model?.type === "states-matter") {
           return <StatesMatterExplorer key={model.id || "states-matter"} />;
+        }
+        if (model?.type === "mixtures") {
+          return <MixturesExplorer key={model.id || "mixtures"} />;
         }
         return null;
       })}
