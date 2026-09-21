@@ -78,7 +78,7 @@ values (
         "steps":[
           "Foam has low density and adds volume without adding much mass.",
           "The combined person and jacket have a lower average density.",
-          "More water can be displaced while the person's head remains higher.",
+          "More water can be displaced while the person''s head remains higher.",
           "The resulting upthrust helps support the person."
         ],
         "answer":"The low-density jacket increases buoyant volume and helps enough water be displaced to support the person."
