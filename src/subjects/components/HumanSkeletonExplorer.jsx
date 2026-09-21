@@ -18,7 +18,22 @@ const BONES={
 };
 
 function SkeletonDiagram({selected,onSelect}){
-  const label=(key,x,y,tx,ty)=><g key={key} onClick={()=>onSelect(key)} className={"hs-label-group "+(selected===key?"active":"")} role="button" tabIndex="0">
+  const activateLabel=(event,key)=>{
+    if(event.key==="Enter"||event.key===" "){
+      event.preventDefault();
+      onSelect(key);
+    }
+  };
+  const label=(key,x,y,tx,ty)=><g
+    key={key}
+    onClick={()=>onSelect(key)}
+    onKeyDown={event=>activateLabel(event,key)}
+    className={"hs-label-group "+(selected===key?"active":"")}
+    role="button"
+    tabIndex="0"
+    aria-pressed={selected===key}
+    aria-label={`${BONES[key][0]}: ${BONES[key][1]}`}
+  >
     <line x1={x} y1={y} x2={tx} y2={ty}/><circle cx={x} cy={y} r="6"/><text x={tx+(tx<x?-8:8)} y={ty+4} textAnchor={tx<x?"end":"start"}>{key==="vertebrae"?"vertebral column":key}</text>
   </g>;
   return <svg viewBox="0 0 760 940" role="img" aria-label="Human skeleton with major bones labelled">
