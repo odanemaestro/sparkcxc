@@ -61,6 +61,23 @@ describe("Integrated Science Objective 1.7.2 acceptance audit", () => {
     expect(explorer).toContain("Aedes aegypti mosquitoes transmit dengue virus");
   });
 
+  test("renders dengue as human to mosquito to human vector transmission", () => {
+    for (const term of [
+      "spark-dengue-transmission-svg",
+      "person with dengue virus",
+      "blood meal from infected person",
+      "Aedes aegypti vector",
+      "mosquito carries dengue virus",
+      "later bite can transmit virus",
+      "Remove standing water",
+      "larva, aquatic",
+      "pupa, aquatic"
+    ]) expect(explorer).toContain(term);
+    expect(css).toContain(".spark-dengue-transmission-svg");
+    expect(css).toContain(".id-dengue-flow");
+    expect(css).toContain(".id-aedes-body");
+  });
+
   test("covers prevention and antibiotic limits", () => {
     expect(migration).toContain("Correct and consistent condom use");
     expect(migration).toContain("not sharing needles");
