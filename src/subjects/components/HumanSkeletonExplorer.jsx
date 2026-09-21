@@ -39,10 +39,20 @@ function SkeletonDiagram({selected,onSelect}){
 
   return <svg viewBox="0 0 760 940" role="img" aria-label="Front view of the human skeleton with major bones labelled">
     <g className="hs-bones hs-anatomical">
-      <ellipse className="hs-skull" cx="380" cy="82" rx="54" ry="62"/>
-      <path className="hs-jaw" d="M345 100Q380 130 415 100Q410 139 380 148Q350 139 345 100Z"/>
-      <circle className="hs-eye-socket" cx="360" cy="76" r="11"/>
-      <circle className="hs-eye-socket" cx="400" cy="76" r="11"/>
+      <path className="hs-skull" d="M326 75Q330 25 380 18Q430 25 434 75Q436 110 415 128Q402 140 397 154H363Q358 140 345 128Q324 110 326 75Z"/>
+      <path className="hs-frontal" d="M343 49Q380 28 417 49Q412 72 404 88H356Q348 72 343 49Z"/>
+      <path className="hs-temporal left" d="M329 78Q339 66 350 73Q356 91 348 109Q337 108 330 97Z"/>
+      <path className="hs-temporal right" d="M431 78Q421 66 410 73Q404 91 412 109Q423 108 430 97Z"/>
+      <circle className="hs-eye-socket" cx="359" cy="82" r="13"/>
+      <circle className="hs-eye-socket" cx="401" cy="82" r="13"/>
+      <path className="hs-nasal" d="M376 83L368 108Q380 116 392 108L384 83Z"/>
+      <path className="hs-zygoma left" d="M347 94Q334 99 339 111Q349 118 359 108"/>
+      <path className="hs-zygoma right" d="M413 94Q426 99 421 111Q411 118 401 108"/>
+      <path className="hs-maxilla" d="M352 111Q380 122 408 111L404 128Q380 137 356 128Z"/>
+      <path className="hs-jaw" d="M348 121Q380 138 412 121Q410 151 395 164Q380 175 365 164Q350 151 348 121Z"/>
+      <g className="hs-teeth">
+        {[360,370,380,390,400].map(x=><rect key={x} x={x-3} y="123" width="6" height="9" rx="2"/>)}
+      </g>
 
       <g className="hs-spine">
         {[158,177,196,215,234,253,272,291,310,329,348,367,386,405].map((y,index)=>(
