@@ -92,6 +92,7 @@ import MaterialPropertiesExplorer from "./components/MaterialPropertiesExplorer"
 import MetalReactivityExplorer from "./components/MetalReactivityExplorer";
 import AluminiumUtensilsExplorer from "./components/AluminiumUtensilsExplorer";
 import AlloysExplorer from "./components/AlloysExplorer";
+import RustingConditionsExplorer from "./components/RustingConditionsExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -522,6 +523,9 @@ function GenericLessonContent({
         }
         if (model?.type === "alloys") {
           return <AlloysExplorer key={model.id || "alloys"} />;
+        }
+        if (model?.type === "rusting-conditions") {
+          return <RustingConditionsExplorer key={model.id || "rusting-conditions"} />;
         }
         return null;
       })}
