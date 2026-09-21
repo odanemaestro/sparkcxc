@@ -15,11 +15,44 @@ function AcidView(){
   const acidic=food==="acid";
   return <div className="spark-aluminium-acid">
     <div className="spark-aluminium-toggle"><button type="button" className={!acidic?"active":""} onClick={()=>setFood("neutral")}>Neutral food</button><button type="button" className={acidic?"active":""} onClick={()=>setFood("acid")}>Acidic food</button></div>
-    <div className="spark-aluminium-pot">
-      <div className="spark-pot-rim"></div>
-      <div className={"spark-pot-food "+(acidic?"acid":"neutral")}>{acidic?"tomato / acidic food":"neutral food"}</div>
-      <div className={acidic?"spark-pot-oxide damaged":"spark-pot-oxide"}></div>
-    </div>
+    <svg className="spark-aluminium-acid-svg" viewBox="0 0 900 520" role="img" aria-label={acidic?"Aluminium cookware cross-section showing acidic food attacking the protective oxide layer":"Aluminium cookware cross-section showing intact protective oxide layer under neutral food"}>
+      <defs>
+        <marker id="al-acid-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+          <path className="alx-arrow-head" d="M0 0L10 5L0 10Z"/>
+        </marker>
+      </defs>
+      <path className="alx-pot-wall" d="M160 90Q450 60 740 90L705 415Q450 465 195 415Z"/>
+      <path className="alx-metal-layer" d="M200 135Q450 112 700 135L670 385Q450 425 230 385Z"/>
+      <path className={acidic?"alx-oxide-layer damaged":"alx-oxide-layer"} d="M218 155Q450 135 682 155"/>
+      <path className={acidic?"alx-food acid":"alx-food neutral"} d="M220 175Q450 155 680 175L665 345Q450 380 235 345Z"/>
+      <text className="alx-label" x="450" y="250" textAnchor="middle">{acidic?"tomato / acidic food":"neutral food"}</text>
+
+      <g className="alx-callouts">
+        <text x="785" y="150">food</text><path d="M680 190L770 155"/>
+        <text x="785" y="235">aluminium oxide</text><path d="M675 160L770 230"/>
+        <text x="785" y="330">aluminium metal</text><path d="M680 325L770 325"/>
+      </g>
+
+      {acidic?<g className="alx-acid-attack">
+        <path d="M330 205V175" markerEnd="url(#al-acid-arrow)"/>
+        <path d="M450 205V175" markerEnd="url(#al-acid-arrow)"/>
+        <path d="M570 205V175" markerEnd="url(#al-acid-arrow)"/>
+        <circle cx="365" cy="160" r="8"/><circle cx="475" cy="162" r="7"/><circle cx="545" cy="158" r="8"/>
+        <text className="alx-warning" x="450" y="110" textAnchor="middle">acidic conditions can disrupt the protective surface</text>
+        <text className="alx-small" x="450" y="440" textAnchor="middle">surface reaction can increase aluminium transfer into food during prolonged contact</text>
+      </g>:<g className="alx-protected">
+        <path d="M300 128H600"/>
+        <text className="alx-safe" x="450" y="110" textAnchor="middle">thin oxide layer remains continuous and protective</text>
+        <text className="alx-small" x="450" y="440" textAnchor="middle">oxide separates the bulk aluminium from the food and limits further reaction</text>
+      </g>}
+
+      <g className="alx-key" transform="translate(65 65)">
+        <rect x="0" y="0" width="245" height="105" rx="14"/>
+        <line className="alx-key-metal" x1="20" y1="32" x2="75" y2="32"/><text x="88" y="38">aluminium metal</text>
+        <line className="alx-key-oxide" x1="20" y1="63" x2="75" y2="63"/><text x="88" y="69">protective oxide</text>
+        <line className={acidic?"alx-key-food acid":"alx-key-food neutral"} x1="20" y1="92" x2="75" y2="92"/><text x="88" y="98">{acidic?"acidic food":"neutral food"}</text>
+      </g>
+    </svg>
     <p>{acidic?"Acidic foods can attack the protective oxide surface and increase the amount of aluminium that transfers into the food. Long storage or prolonged cooking of acidic foods in uncoated aluminium should therefore be avoided.":"With non-acidic foods, the protective oxide layer helps limit reaction between the aluminium surface and the food."}</p>
   </div>;
 }
