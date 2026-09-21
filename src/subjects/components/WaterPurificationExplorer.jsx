@@ -129,14 +129,84 @@ function DistillationView(){
 
 function ReverseOsmosisView(){
   const [pressure,setPressure]=useState(70);
+  const high=Number(pressure)>=60;
+  const waterCount=high?7:4;
+
   return <div className="spark-ro-view">
-    <label>Applied pressure<input type="range" min="20" max="100" value={pressure} onChange={e=>setPressure(e.target.value)}/></label>
-    <div className="spark-ro-model">
-      <div className="spark-ro-feed">salty water<br/><small>water + ions</small></div>
-      <div className="spark-ro-membrane">semi-permeable membrane</div>
-      <div className="spark-ro-product">fresh water</div>
-      <div className="spark-ro-brine">concentrated brine</div>
+    <label>
+      Applied pressure
+      <input type="range" min="20" max="100" value={pressure} onChange={e=>setPressure(e.target.value)}/>
+      <strong>{pressure}% model pressure</strong>
+    </label>
+
+    <svg className="spark-ro-svg" viewBox="0 0 940 470" role="img" aria-label="Reverse osmosis showing applied pressure forcing water through a semi-permeable membrane while salt ions are rejected">
+      <defs>
+        <linearGradient id="ro-feed-water" x1="0" x2="1">
+          <stop offset="0%" stopColor="#8fc8df"/>
+          <stop offset="100%" stopColor="#6aa8c5"/>
+        </linearGradient>
+        <linearGradient id="ro-product-water" x1="0" x2="1">
+          <stop offset="0%" stopColor="#d5f2f8"/>
+          <stop offset="100%" stopColor="#aee3ef"/>
+        </linearGradient>
+      </defs>
+
+      <rect className="ro-chamber feed" x="55" y="90" width="360" height="280" rx="24"/>
+      <rect className="ro-chamber product" x="525" y="90" width="360" height="280" rx="24"/>
+      <rect className="ro-feed-water" x="70" y="145" width="330" height="210" rx="16"/>
+      <rect className="ro-product-water" x="540" y="145" width="330" height="210" rx="16"/>
+
+      <g className="ro-pressure-piston">
+        <rect x="100" y="42" width="180" height="42" rx="12"/>
+        <path className="ro-pressure-arrow" d="M190 82V138"/>
+        <text className="ro-pressure-text" x="190" y="68" textAnchor="middle">applied pressure</text>
+      </g>
+
+      <g className="ro-membrane">
+        <rect x="442" y="75" width="56" height="310" rx="18"/>
+        {[110,145,180,215,250,285,320,355].map(y=><circle key={y} cx="470" cy={y} r="5"/>)}
+        <text className="ro-membrane-label" x="470" y="410" textAnchor="middle">semi-permeable membrane</text>
+      </g>
+
+      <g className="ro-water-molecules feed">
+        {[[120,185],[175,250],[250,190],[325,280],[145,315],[300,330],[355,220]].map(([x,y],i)=><g key={i} transform={`translate(${x} ${y})`}><circle r="9"/><circle cx="-11" cy="8" r="4"/><circle cx="11" cy="8" r="4"/></g>)}
+      </g>
+
+      <g className="ro-salt-ions">
+        {[[145,215,"Na⁺"],[220,320,"Cl⁻"],[285,235,"Na⁺"],[355,310,"Cl⁻"],[325,175,"Na⁺"],[185,280,"Cl⁻"]].map(([x,y,t],i)=><g key={i}><circle cx={x} cy={y} r="15"/><text x={x} y={y+5} textAnchor="middle">{t}</text></g>)}
+      </g>
+
+      <g className="ro-permeate-arrows">
+        {Array.from({length:waterCount}).map((_,i)=>{
+          const y=145+i*31;
+          return <path key={i} d={`M390 ${y}H535`}/>;
+        })}
+      </g>
+
+      <g className="ro-water-molecules product">
+        {[[600,180],[680,245],[760,190],[825,300],[620,320],[735,330]].map(([x,y],i)=><g key={i} transform={`translate(${x} ${y})`}><circle r="9"/><circle cx="-11" cy="8" r="4"/><circle cx="11" cy="8" r="4"/></g>)}
+      </g>
+
+      <path className="ro-brine-arrow" d="M225 355V430"/>
+      <path className="ro-product-arrow" d="M705 355V430"/>
+
+      <text className="ro-title" x="235" y="120" textAnchor="middle">salty feed water</text>
+      <text className="ro-title" x="705" y="120" textAnchor="middle">fresh-water permeate</text>
+      <text className="ro-note" x="235" y="452" textAnchor="middle">concentrated brine leaves</text>
+      <text className="ro-note" x="705" y="452" textAnchor="middle">most dissolved salts remain behind</text>
+
+      <g className="ro-rejection-callout">
+        <path d="M350 215Q405 210 438 202"/>
+        <text x="280" y="200">salt ions rejected</text>
+      </g>
+    </svg>
+
+    <div className="spark-ro-facts">
+      <article><b>Pressure</b><span>Pressure greater than the natural osmotic tendency forces water through the membrane.</span></article>
+      <article><b>Selective membrane</b><span>Water passes much more readily than dissolved salt ions.</span></article>
+      <article><b>Two outlets</b><span>One stream is fresher permeate. The other is concentrated brine containing rejected salts.</span></article>
     </div>
+
     <p>Reverse osmosis uses pressure to force water through a membrane that rejects most dissolved salts. Higher pressure is required than for ordinary osmosis.</p>
   </div>;
 }
