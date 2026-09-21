@@ -26,3 +26,20 @@ html[data-theme="dark"] .hw-label,body[data-theme="dark"] .hw-label,.dark .hw-la
 html[data-theme="dark"] .hw-small,body[data-theme="dark"] .hw-small,.dark .hw-small{fill:#b8c9d6}
 @media(max-width:900px){.spark-hardwater-boiling-svg,.spark-washing-soda-svg{min-height:270px}}
 @media(max-width:620px){.spark-hardwater-boiling-svg,.spark-washing-soda-svg{min-height:230px}.hw-label,.hw-title{font-size:18px}.hw-small,.hw-caption{font-size:15px}}
+
+
+.spark-hardwater-soaptest-svg{display:block;width:100%;height:auto;margin:10px 0 14px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.hw-soap-method rect,.hw-soap-result rect{fill:#f4f8fa;stroke:#8297a3;stroke-width:3}
+.hw-soap-neck,.hw-soap-glass{fill:#eef5f7;fill-opacity:.72;stroke:#667b87;stroke-width:6}
+.hw-soap-water{fill:#a9d6e8;stroke:none}.hw-water-level{stroke:#4c96b5;stroke-width:3}
+.hw-foam-zone{fill:#f6fbfd;fill-opacity:.9;stroke:#b8ced8;stroke-width:2}.hw-foam-bubbles circle{fill:#fff;stroke:#a6bcc7;stroke-width:2}
+.hw-scum-particles ellipse{fill:#d2c2a2;stroke:#968365;stroke-width:2}
+.hw-shake-path{fill:none;stroke:#0d9488;stroke-width:6;stroke-linecap:round}.hw-soap-arrow-head{fill:#0d9488}
+.hw-soap-label{fill:#315b70;font-size:12px;font-weight:900}.hw-soap-label.scum{fill:#725d39}
+.hw-result-value{fill:#17796f;font-size:30px;font-weight:950}.hw-result-value.scum{fill:#8a6d3e}
+html[data-theme="dark"] .spark-hardwater-soaptest-svg,body[data-theme="dark"] .spark-hardwater-soaptest-svg,.dark .spark-hardwater-soaptest-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .hw-soap-method rect,body[data-theme="dark"] .hw-soap-method rect,.dark .hw-soap-method rect,
+html[data-theme="dark"] .hw-soap-result rect,body[data-theme="dark"] .hw-soap-result rect,.dark .hw-soap-result rect{fill:#15314b;stroke:#496377}
+html[data-theme="dark"] .hw-soap-label,body[data-theme="dark"] .hw-soap-label,.dark .hw-soap-label{fill:#d6e4ee}
+html[data-theme="dark"] .hw-soap-label.scum,body[data-theme="dark"] .hw-soap-label.scum,.dark .hw-soap-label.scum{fill:#e8d6ae}
+@media(max-width:620px){.hw-soap-label{font-size:16px}.hw-result-value{font-size:36px}}
