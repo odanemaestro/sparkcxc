@@ -15,9 +15,12 @@ function AnatomyView(){
       <path className="ra-bronchi" d="M353 405Q315 430 288 456M353 405Q391 430 418 456"/>
       <path className="ra-lung left" d="M245 365Q177 400 170 510Q172 604 265 630Q328 605 327 492Q323 401 278 372Q260 362 245 365Z"/>
       <path className="ra-lung right" d="M461 365Q529 400 536 510Q534 604 441 630Q378 605 379 492Q383 401 428 372Q446 362 461 365Z"/>
+      <path className="ra-fissure left" d="M186 510Q250 535 315 505"/>
+      <path className="ra-fissure right upper" d="M392 470Q455 492 523 476"/>
+      <path className="ra-fissure right lower" d="M390 515Q452 548 520 525"/>
       <g className="ra-bronchioles">
-        <path d="M288 456Q250 475 228 510M288 456Q303 492 299 535M228 510Q210 535 210 566M299 535Q318 555 310 582"/>
-        <path d="M418 456Q456 475 478 510M418 456Q403 492 407 535M478 510Q496 535 496 566M407 535Q388 555 396 582"/>
+        <path d="M288 456Q250 475 228 510M288 456Q303 492 299 535M228 510Q210 535 210 566M228 510Q248 528 252 553M299 535Q318 555 310 582M299 535Q280 560 277 590"/>
+        <path d="M418 456Q456 475 478 510M418 456Q403 492 407 535M478 510Q496 535 496 566M478 510Q455 532 452 558M407 535Q388 555 396 582M407 535Q426 560 430 590"/>
       </g>
       <g className="ra-alveoli">
         <circle cx="210" cy="575" r="11"/><circle cx="224" cy="584" r="11"/><circle cx="238" cy="575" r="11"/>
@@ -35,8 +38,9 @@ function AnatomyView(){
         <path d="M353 330L670 185"/><text x="685" y="190">trachea</text>
         <path d="M391 430L670 265"/><text x="685" y="270">primary bronchi</text>
         <path d="M454 490L670 345"/><text x="685" y="350">bronchioles</text>
-        <path d="M462 430L670 425"/><text x="685" y="430">right lung</text>
-        <path d="M238 575L670 505"/><text x="685" y="510">alveoli</text>
+        <path d="M462 430L670 425"/><text x="685" y="430">right lung, 3 lobes</text>
+        <path d="M247 430L670 465"/><text x="685" y="470">left lung, 2 lobes</text>
+        <path d="M238 575L670 525"/><text x="685" y="530">alveoli</text>
         <path d="M440 642L670 590"/><text x="685" y="595">diaphragm</text>
       </g>
       <path className="ra-airway-arrow" d="M303 120Q330 135 341 165Q350 195 353 245V395"/>
