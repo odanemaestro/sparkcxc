@@ -65,7 +65,9 @@ describe("Integrated Science Objective 1.1.1 acceptance audit V1", () => {
       "ENERGY REQUIRED",
       "from respiration"
     ]) expect(transport).toContain(term);
-    expect(transportCss).toContain(".membrane-bilayer");
+    expect(transport).toContain('className="membrane-bilayer"');
+    expect(transportCss).toContain(".membrane-head");
+    expect(transportCss).toContain(".membrane-tail");
     expect(transportCss).toContain(".carrier");
     expect(transportCss).toContain(".energy-badge");
   });
