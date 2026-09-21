@@ -80,6 +80,7 @@ import EarthMoonEffectsExplorer from "./components/EarthMoonEffectsExplorer";
 import SpaceExplorationExplorer from "./components/SpaceExplorationExplorer";
 import AirMassFrontsExplorer from "./components/AirMassFrontsExplorer";
 import CaribbeanWeatherExplorer from "./components/CaribbeanWeatherExplorer";
+import TidesExplorer from "./components/TidesExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -474,6 +475,9 @@ function GenericLessonContent({
         }
         if (model?.type === "caribbean-weather") {
           return <CaribbeanWeatherExplorer key={model.id || "caribbean-weather"} />;
+        }
+        if (model?.type === "tides") {
+          return <TidesExplorer key={model.id || "tides"} />;
         }
         return null;
       })}
