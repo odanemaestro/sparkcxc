@@ -8,17 +8,34 @@ const TESTS=[
   {id:"salt",name:"Salt water + air",oxygen:true,water:true,salt:true,rust:"fastest",note:"Salt increases conductivity of the water and speeds electrochemical corrosion."},
 ];
 
+function RustTube({x,id,label,selected,onSelect}){
+  const isBoiled=id==="boiled",isDry=id==="dry",isSalt=id==="salt",rusty=id==="airwater"||isSalt;
+  return <g className={selected?"rt-group selected":"rt-group"} role="button" tabIndex="0" onClick={onSelect} onKeyDown={e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();onSelect();}}}>
+    <path className="rt-tube" d={`M${x} 82V286Q${x} 336 ${x+62} 336Q${x+124} 336 ${x+124} 286V82`}/>
+    {!isDry&&<path className={isSalt?"rt-water salty":"rt-water"} d={`M${x+6} 205H${x+118}V286Q${x+118} 329 ${x+62} 329Q${x+6} 329 ${x+6} 286Z`}/>}
+    {isBoiled&&<rect className="rt-oil" x={x+6} y="187" width="112" height="20"/>}
+    {isDry&&<path className="rt-desiccant" d={`M${x+10} 286Q${x+62} 266 ${x+114} 286V320Q${x+62} 337 ${x+10} 320Z`}/>}
+    <rect className={rusty?(isSalt?"rt-nail heavy":"rt-nail rusty"):"rt-nail"} x={x+49} y="116" width="26" height="178" rx="8" transform={`rotate(-5 ${x+62} 205)`}/>
+    {isBoiled&&<text className="rt-small" x={x+62} y="201" textAnchor="middle">oil layer</text>}
+    {isDry&&<text className="rt-small" x={x+62} y="309" textAnchor="middle">drying agent</text>}
+    <text className="rt-label" x={x+62} y="365" textAnchor="middle">{label}</text>
+    <text className="rt-small" x={x+62} y="389" textAnchor="middle">{id==="airwater"?"rust":isSalt?"heavy rust":"little / no rust"}</text>
+  </g>;
+}
+
 function TestTubeView(){
   const [id,setId]=useState("airwater");
   const t=TESTS.find(x=>x.id===id);
   return <div className="spark-rusting-tubes">
     <div className="spark-rust-buttons">{TESTS.map(x=><button type="button" key={x.id} className={id===x.id?"active":""} onClick={()=>setId(x.id)}>{x.name}</button>)}</div>
-    <div className="spark-rust-tube">
-      {t.water&&<div className={"spark-rust-water "+(t.salt?"salty":"")}></div>}
-      {id==="boiled"&&<div className="spark-oil-layer">oil</div>}
-      {id==="dry"&&<div className="spark-desiccant">drying agent</div>}
-      <div className={"spark-rust-nail "+(t.rust==="fastest"?"heavy":t.rust==="rusts"?"some":"clean")}>iron nail</div>
-    </div>
+    <svg className="spark-rusting-comparison" viewBox="0 0 820 430" role="img" aria-label="Four-test-tube rusting experiment comparing air and water, boiled water under oil, dry air and salt water with air">
+      <text className="rt-title" x="410" y="35" textAnchor="middle">Controlled rusting experiment</text>
+      <text className="rt-small" x="410" y="57" textAnchor="middle">same iron nails, different oxygen and water conditions</text>
+      <RustTube x={45} id="airwater" label="Air + water" selected={id==="airwater"} onSelect={()=>setId("airwater")}/>
+      <RustTube x={240} id="boiled" label="Boiled water + oil" selected={id==="boiled"} onSelect={()=>setId("boiled")}/>
+      <RustTube x={435} id="dry" label="Dry air" selected={id==="dry"} onSelect={()=>setId("dry")}/>
+      <RustTube x={630} id="salt" label="Salt water + air" selected={id==="salt"} onSelect={()=>setId("salt")}/>
+    </svg>
     <div className="spark-rust-result"><strong>{t.name}: {t.rust}</strong><p>{t.note}</p></div>
   </div>;
 }
