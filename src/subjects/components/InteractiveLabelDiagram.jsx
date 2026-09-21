@@ -550,32 +550,53 @@ function EndocrineSystemTemplate() {
 
 function HumanDigestiveTemplate() {
   return (
-    <g className="spark-diagram-digestive" aria-hidden="true">
+    <g className="spark-diagram-digestive spark-reference-refined" aria-hidden="true">
       <circle className="digestive-head" cx="500" cy="78" r="48" />
       <path className="digestive-body" d="M420 135Q500 105 580 135Q630 220 610 350Q595 470 555 565H445Q405 470 390 350Q370 220 420 135Z" />
-      <path className="digestive-mouth" d="M475 78Q500 92 525 78" />
-      <path className="digestive-oesophagus" d="M500 122V245" />
-      <path className="digestive-stomach" d="M500 245Q555 230 575 275Q585 325 545 355Q495 365 475 325Q458 285 500 245Z" />
-      <path className="digestive-liver" d="M405 235Q465 190 535 220Q525 270 480 292Q430 295 405 265Z" />
-      <path className="digestive-gall" d="M455 275Q470 268 478 282Q477 307 458 315Q445 302 455 275Z" />
-      <path className="digestive-pancreas" d="M480 350Q540 330 585 350Q550 385 500 380Q485 370 480 350Z" />
-      <path className="digestive-small" d="M455 380Q500 350 545 382Q565 405 540 425Q515 440 545 462Q560 480 535 500Q500 520 470 500Q445 482 470 460Q495 442 465 425Q438 410 455 380Z" />
+
+      <path className="digestive-mouth" d="M474 77Q500 91 526 77" />
+      <path className="digestive-pharynx" d="M500 105Q495 130 500 150" />
+      <path className="digestive-oesophagus" d="M500 122V250" />
+
+      <path className="digestive-liver" d="M397 225Q447 184 520 206Q549 217 556 245Q530 280 477 292Q425 298 397 270Z" />
+      <path className="digestive-gall" d="M458 273Q472 268 480 282Q478 307 459 316Q447 302 458 273Z" />
+
+      <path className="digestive-stomach" d="M520 238Q561 229 580 262Q598 296 580 329Q562 359 526 354Q488 350 480 321Q472 290 493 265Q502 252 520 238Z" />
+      <path className="digestive-duodenum" d="M548 348Q585 360 584 391Q582 420 548 427" />
+      <path className="digestive-pancreas" d="M478 352Q527 331 582 348Q561 376 514 383Q490 380 478 352Z" />
+
       <path className="digestive-large" d="M420 365Q400 390 405 455Q410 520 455 535M580 365Q600 390 595 455Q590 520 545 535M420 365Q500 340 580 365M455 535Q500 555 545 535" />
+      <path className="digestive-appendix" d="M416 455Q390 474 399 500" />
+
+      <path className="digestive-small" d="M455 384Q500 354 545 382Q570 403 545 425Q521 443 548 462Q565 481 536 500Q504 520 470 500Q445 482 471 461Q495 443 466 426Q438 410 455 384Z" />
+      <path className="digestive-small inner" d="M474 392Q507 377 529 393Q543 406 525 419Q505 432 529 447Q542 459 525 474Q503 492 482 476Q466 464 483 449Q499 435 480 423Q462 411 474 392Z" />
+
       <path className="digestive-rectum" d="M500 535V590" />
-      <text className="repro-orientation" x="500" y="612" textAnchor="middle">simplified human digestive system</text>
+      <path className="digestive-anus" d="M486 590Q500 602 514 590" />
+
+      <text className="repro-orientation" x="500" y="615" textAnchor="middle">human digestive system</text>
     </g>
   );
 }
 
 function HumanToothTemplate() {
   return (
-    <g className="spark-diagram-tooth" aria-hidden="true">
+    <g className="spark-diagram-tooth spark-reference-refined" aria-hidden="true">
+      <path className="tooth-jaw" d="M245 355Q375 320 445 350Q500 373 555 350Q625 320 755 355V520Q625 500 560 516Q500 535 440 516Q375 500 245 520Z" />
+      <path className="tooth-gum" d="M250 315Q375 285 445 320Q500 350 555 320Q625 285 750 315V390Q625 365 555 385Q500 405 445 385Q375 365 250 390Z" />
+
       <path className="tooth-enamel" d="M390 115Q500 55 610 115Q650 175 625 245Q600 300 565 335L555 505Q550 560 505 575Q460 560 455 505L445 335Q400 300 375 245Q350 175 390 115Z" />
       <path className="tooth-dentine" d="M415 135Q500 92 585 135Q615 180 595 235Q575 275 535 310L528 495Q525 525 500 538Q475 525 472 495L465 310Q425 275 405 235Q385 180 415 135Z" />
+
       <path className="tooth-pulp" d="M465 165Q500 145 535 165Q555 205 530 250Q510 285 510 350V485Q500 505 490 485V350Q490 285 470 250Q445 205 465 165Z" />
-      <path className="tooth-gum" d="M250 315Q375 285 445 320Q500 350 555 320Q625 285 750 315V390Q625 365 555 385Q500 405 445 385Q375 365 250 390Z" />
+      <path className="tooth-root-canal" d="M500 340V548" />
+      <path className="tooth-root-vessels red" d="M500 470Q487 520 480 570" />
+      <path className="tooth-root-vessels blue" d="M505 470Q520 520 528 570" />
+      <path className="tooth-nerve" d="M497 470V570" />
+
+      <path className="tooth-periodontal" d="M452 350Q432 421 444 510M548 350Q568 421 556 510" />
       <line className="tooth-neck-line" x1="355" y1="330" x2="645" y2="330" />
-      <path className="tooth-root-vessels" d="M500 485V570M490 500Q470 535 465 570M510 500Q530 535 535 570" />
+
       <text className="tooth-region-label" x="500" y="80" textAnchor="middle">crown</text>
       <text className="tooth-region-label" x="500" y="610" textAnchor="middle">root in jaw socket</text>
     </g>
@@ -584,20 +605,41 @@ function HumanToothTemplate() {
 
 function HumanRespiratoryTemplate() {
   return (
-    <g className="spark-diagram-respiratory" aria-hidden="true">
+    <g className="spark-diagram-respiratory spark-reference-refined" aria-hidden="true">
       <circle className="resp-head" cx="500" cy="78" r="46" />
       <path className="resp-neck" d="M470 118L460 175H540L530 118Z" />
       <path className="resp-ribcage" d="M350 175Q500 125 650 175Q705 285 660 445Q595 515 500 530Q405 515 340 445Q295 285 350 175Z" />
-      <path className="resp-trachea" d="M500 112V260" />
-      <path className="resp-bronchus left" d="M500 260Q455 275 420 315" />
-      <path className="resp-bronchus right" d="M500 260Q545 275 580 315" />
-      <path className="resp-lung left" d="M405 215Q340 260 350 380Q365 455 445 465Q475 420 470 330Q465 250 405 215Z" />
-      <path className="resp-lung right" d="M595 215Q660 260 650 380Q635 455 555 465Q525 420 530 330Q535 250 595 215Z" />
-      <path className="resp-bronchioles left" d="M420 315Q395 335 385 365M425 315Q445 345 448 390M405 335Q380 400 400 430" />
-      <path className="resp-bronchioles right" d="M580 315Q605 335 615 365M575 315Q555 345 552 390M595 335Q620 400 600 430" />
+
+      <path className="resp-nasal" d="M475 68Q500 52 525 68Q511 79 500 86Q488 79 475 68Z" />
+      <path className="resp-pharynx" d="M500 92V120" />
+      <path className="resp-trachea" d="M500 112V258" />
+      {[140,160,180,200,220,240].map(y=><line key={y} className="resp-tracheal-ring" x1="486" y1={y} x2="514" y2={y} />)}
+
+      <path className="resp-lung left" d="M407 211Q353 245 344 334Q338 418 405 463Q441 479 466 452Q480 409 474 331Q468 256 407 211Z" />
+      <path className="resp-lung right" d="M593 211Q649 244 656 337Q660 418 595 463Q560 479 536 452Q521 410 527 331Q533 257 593 211Z" />
+      <path className="resp-cardiac-notch" d="M535 350Q559 340 570 365Q560 394 535 405" />
+
+      <path className="resp-bronchus left" d="M500 258Q458 272 420 310" />
+      <path className="resp-bronchus right" d="M500 258Q542 272 580 310" />
+
+      <g className="resp-bronchioles left">
+        <path d="M420 310Q390 331 378 365M420 310Q446 339 449 389M392 338Q370 388 389 429" />
+        <path d="M399 356Q418 371 425 397M383 388Q405 402 410 427" />
+      </g>
+      <g className="resp-bronchioles right">
+        <path d="M580 310Q610 331 622 365M580 310Q554 339 551 389M608 338Q630 388 611 429" />
+        <path d="M601 356Q582 371 575 397M617 388Q595 402 590 427" />
+      </g>
+
+      <g className="resp-alveoli">
+        <circle cx="383" cy="426" r="10" /><circle cx="401" cy="432" r="10" /><circle cx="393" cy="413" r="10" />
+        <circle cx="617" cy="426" r="10" /><circle cx="599" cy="432" r="10" /><circle cx="607" cy="413" r="10" />
+      </g>
+
       <path className="resp-diaphragm" d="M335 470Q500 405 665 470" />
       <path className="resp-ribs" d="M335 205Q500 155 665 205M325 245Q500 195 675 245M320 290Q500 240 680 290M320 335Q500 285 680 335M325 380Q500 330 675 380M335 425Q500 375 665 425" />
-      <text className="repro-orientation" x="500" y="585" textAnchor="middle">simplified human respiratory system</text>
+
+      <text className="repro-orientation" x="500" y="585" textAnchor="middle">human respiratory system</text>
     </g>
   );
 }
