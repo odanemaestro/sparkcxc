@@ -95,6 +95,7 @@ import DivingEffectsExplorer from "./components/DivingEffectsExplorer";
 import ForcePrinciplesExplorer from "./components/ForcePrinciplesExplorer";
 import GravityInertiaExplorer from "./components/GravityInertiaExplorer";
 import StabilityCentreGravityExplorer from "./components/StabilityCentreGravityExplorer";
+import EquilibriumMomentsExplorer from "./components/EquilibriumMomentsExplorer";
 import MaterialPropertiesExplorer from "./components/MaterialPropertiesExplorer";
 import MetalReactivityExplorer from "./components/MetalReactivityExplorer";
 import AluminiumUtensilsExplorer from "./components/AluminiumUtensilsExplorer";
@@ -550,6 +551,9 @@ function GenericLessonContent({
         }
         if (model?.type === "stability-centre-gravity") {
           return <StabilityCentreGravityExplorer key={model.id || "stability-centre-gravity"} />;
+        }
+        if (model?.type === "equilibrium-moments") {
+          return <EquilibriumMomentsExplorer key={model.id || "equilibrium-moments"} />;
         }
         if (model?.type === "material-properties") {
           return <MaterialPropertiesExplorer key={model.id || "material-properties"} />;
