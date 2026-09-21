@@ -69,18 +69,79 @@ function FireView(){
 
 function CycleView(){
   return <div className="spark-water-cycle-use">
-    <svg viewBox="0 0 860 450" role="img" aria-label="Simplified water cycle showing evaporation condensation precipitation runoff and infiltration">
-      <rect className="wu-sea" x="0" y="300" width="860" height="150"/>
-      <path className="wu-mountain" d="M470 300L650 105L810 300Z"/>
-      <circle className="wu-sun" cx="105" cy="90" r="50"/>
-      <path className="wu-evap" d="M190 310Q185 215 250 165"/>
-      <path className="wu-cloud" d="M260 135Q300 85 350 125Q405 80 455 135Q440 175 290 175Z"/>
-      <path className="wu-rain" d="M340 180V260M380 180V265M420 180V255"/>
-      <path className="wu-runoff" d="M650 150Q610 240 540 315"/>
-      <path className="wu-infiltration" d="M600 300V390"/>
-      <text className="wu-label" x="210" y="205">evaporation</text><text className="wu-label" x="350" y="105">condensation</text><text className="wu-label" x="430" y="245">precipitation</text><text className="wu-label" x="565" y="250">run-off</text><text className="wu-label" x="610" y="405">infiltration</text>
+    <svg className="spark-water-cycle-svg" viewBox="0 0 1080 650" role="img" aria-label="Water cycle showing solar heating, evaporation from the sea, transpiration from plants, condensation into clouds, precipitation, surface runoff, infiltration, groundwater flow, rivers and return to the sea">
+      <defs>
+        <marker id="wu-cycle-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path className="wu-arrow-head" d="M0 0L9 4.5L0 9Z"/>
+        </marker>
+      </defs>
+
+      <rect className="wu-sky" x="0" y="0" width="1080" height="650"/>
+      <circle className="wu-sun" cx="118" cy="100" r="55"/>
+      <g className="wu-sun-rays">
+        <path d="M118 20V0M118 200V180M38 100H18M218 100H198M61 43L45 27M175 157L191 173M175 43L191 27M61 157L45 173"/>
+      </g>
+
+      <path className="wu-sea" d="M0 440Q170 418 350 438Q515 458 665 435V650H0Z"/>
+      <path className="wu-land" d="M540 650V430Q610 380 680 360Q760 335 845 370Q945 410 1080 390V650Z"/>
+      <path className="wu-mountain-back" d="M625 425L760 210L885 420Z"/>
+      <path className="wu-mountain-front" d="M745 425L875 275L1015 420Z"/>
+      <path className="wu-snowcap" d="M714 286L760 210L805 288Q781 274 760 288Q738 275 714 286Z"/>
+      <path className="wu-river" d="M815 390Q780 440 735 465Q690 490 660 535Q625 584 540 615"/>
+      <path className="wu-lake" d="M730 465Q800 444 865 472Q830 508 752 505Q716 495 730 465Z"/>
+
+      <g className="wu-vegetation">
+        <path className="wu-tree-trunk" d="M612 436V514"/>
+        <path className="wu-tree-crown" d="M612 360Q565 388 579 426Q548 444 575 472Q612 493 644 469Q680 448 651 424Q665 389 612 360Z"/>
+        <path className="wu-tree-trunk" d="M964 412V487"/>
+        <path className="wu-tree-crown" d="M964 345Q920 369 932 406Q904 424 930 450Q965 468 994 447Q1027 427 1000 405Q1015 373 964 345Z"/>
+      </g>
+
+      <g className="wu-cloud-group">
+        <path className="wu-cloud" d="M305 155Q328 105 379 119Q410 72 466 111Q510 92 540 132Q582 126 596 165Q588 205 540 207H334Q292 205 292 176Q292 162 305 155Z"/>
+        <path className="wu-cloud secondary" d="M690 145Q713 105 756 116Q786 82 829 111Q865 99 887 130Q922 128 934 158Q927 191 889 193H716Q681 192 680 169Q680 155 690 145Z"/>
+      </g>
+
+      <path className="wu-evap wu-cycle-flow" d="M200 445Q190 330 270 245" markerEnd="url(#wu-cycle-arrow)"/>
+      <path className="wu-evap second wu-cycle-flow" d="M350 440Q360 320 410 235" markerEnd="url(#wu-cycle-arrow)"/>
+      <text className="wu-label" x="195" y="330">evaporation</text>
+      <text className="wu-small" x="160" y="355">solar heating changes liquid water to vapour</text>
+
+      <path className="wu-transpiration wu-cycle-flow" d="M615 386Q610 295 655 245" markerEnd="url(#wu-cycle-arrow)"/>
+      <text className="wu-label" x="642" y="315">transpiration</text>
+
+      <path className="wu-condensation wu-cycle-flow" d="M430 235Q460 213 478 192" markerEnd="url(#wu-cycle-arrow)"/>
+      <text className="wu-label" x="505" y="232">condensation</text>
+      <text className="wu-small" x="505" y="253">water vapour cools and forms cloud droplets</text>
+
+      <g className="wu-precipitation">
+        <path d="M370 216L342 302M420 216L392 316M472 216L445 300M760 204L730 294M812 204L783 315M864 204L835 297"/>
+      </g>
+      <text className="wu-label" x="405" y="338">precipitation</text>
+      <text className="wu-small" x="405" y="358">rain or snow returns water to the surface</text>
+
+      <path className="wu-melt-runoff wu-cycle-flow" d="M782 286Q798 340 816 388" markerEnd="url(#wu-cycle-arrow)"/>
+      <text className="wu-small" x="835" y="325">snowmelt</text>
+
+      <path className="wu-runoff wu-cycle-flow" d="M932 421Q885 470 832 486" markerEnd="url(#wu-cycle-arrow)"/>
+      <text className="wu-label" x="917" y="465">surface run-off</text>
+
+      <path className="wu-infiltration wu-cycle-flow" d="M715 505V565" markerEnd="url(#wu-cycle-arrow)"/>
+      <text className="wu-label" x="733" y="545">infiltration</text>
+
+      <path className="wu-groundwater-layer" d="M565 575Q750 545 1035 570V650H565Z"/>
+      <path className="wu-groundwater-flow wu-cycle-flow" d="M965 604Q800 620 610 618Q520 617 455 595" markerEnd="url(#wu-cycle-arrow)"/>
+      <text className="wu-label" x="812" y="625">groundwater flow</text>
+
+      <path className="wu-river-flow wu-cycle-flow" d="M742 530Q660 568 575 607Q510 637 428 621" markerEnd="url(#wu-cycle-arrow)"/>
+      <text className="wu-label" x="616" y="566">river flow</text>
+
+      <text className="wu-reservoir-label" x="218" y="560" textAnchor="middle">sea and ocean storage</text>
+      <text className="wu-reservoir-label" x="804" y="485" textAnchor="middle">lakes and rivers</text>
+      <text className="wu-reservoir-label" x="872" y="588" textAnchor="middle">fresh groundwater</text>
+      <text className="wu-cycle-caption" x="540" y="635" textAnchor="middle">Water moves continuously between atmosphere, land, surface water and groundwater.</text>
     </svg>
-    <p>The water cycle continually moves water through evaporation, condensation, precipitation, run-off and infiltration. Precipitation renews rivers, reservoirs and groundwater used by people and ecosystems.</p>
+    <p>The water cycle continually moves water through evaporation, transpiration, condensation, precipitation, surface run-off, infiltration and groundwater flow. Rivers and underground water return part of this water toward the sea, while precipitation renews freshwater stores used by people and ecosystems.</p>
   </div>;
 }
 
