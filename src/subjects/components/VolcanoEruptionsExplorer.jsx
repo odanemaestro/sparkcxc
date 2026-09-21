@@ -138,19 +138,56 @@ function TypesView(){
 
 function StructureView(){
   return <div className="spark-volcano-structure">
-    <svg viewBox="0 0 840 520" role="img" aria-label="Cross-section of a volcano showing crater vent cone lava and magma chamber">
-      <path className="vs-cone" d="M150 400L360 125Q420 80 480 125L690 400Z"/>
-      <path className="vs-vent" d="M410 145V370"/>
-      <ellipse className="vs-crater" cx="420" cy="130" rx="68" ry="24"/>
-      <ellipse className="vs-chamber" cx="420" cy="410" rx="115" ry="58"/>
-      <path className="vs-magma" d="M420 365V155"/>
-      <path className="vs-lava" d="M470 145Q540 195 600 310"/>
-      <line className="vs-call" x1="420" y1="110" x2="675" y2="65"/><text className="vs-label" x="685" y="68">crater</text>
-      <line className="vs-call" x1="432" y1="260" x2="690" y2="225"/><text className="vs-label" x="700" y="230">main vent</text>
-      <line className="vs-call" x1="490" y1="365" x2="700" y2="350"/><text className="vs-label" x="710" y="355">cone</text>
-      <line className="vs-call" x1="420" y1="410" x2="150" y2="450"/><text className="vs-label" x="140" y="455" textAnchor="end">magma chamber</text>
+    <svg className="spark-volcano-structure-svg" viewBox="0 0 980 620" role="img" aria-label="Cross-section of an erupting volcano showing crater, ash and gas plume, layered cone, main vent, secondary vent, magma chamber, magma below ground and lava flowing on the surface">
+      <defs>
+        <marker id="volcano-callout-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path d="M0 0L9 4.5L0 9Z" className="vs-arrow-head"/>
+        </marker>
+      </defs>
+
+      <rect className="vs-sky" x="0" y="0" width="980" height="620"/>
+      <path className="vs-ground" d="M45 470H935"/>
+
+      <path className="vs-cone" d="M145 470L400 165Q455 105 510 165L785 470Z"/>
+      <g className="vs-cone-layers">
+        <path d="M188 451L410 190Q455 145 500 190L742 451"/>
+        <path d="M225 455L417 220Q455 185 493 220L705 455"/>
+        <path d="M260 458L424 255Q455 226 486 255L670 458"/>
+        <path d="M300 462L433 300Q455 281 477 300L630 462"/>
+      </g>
+
+      <ellipse className="vs-crater" cx="455" cy="164" rx="72" ry="25"/>
+      <path className="vs-main-vent" d="M455 180V445"/>
+      <path className="vs-secondary-vent" d="M455 330Q540 325 585 250"/>
+      <ellipse className="vs-chamber" cx="455" cy="510" rx="135" ry="70"/>
+      <path className="vs-magma-rise" d="M455 448V188"/>
+      <path className="vs-lava-flow" d="M515 180Q585 215 650 290Q720 365 815 425"/>
+
+      <g className="vs-eruption-column">
+        <path d="M430 148Q410 90 440 52M458 147Q455 85 480 42M486 148Q505 98 526 66"/>
+      </g>
+      <g className="vs-ash-cloud">
+        <circle cx="430" cy="62" r="47"/><circle cx="472" cy="42" r="58"/><circle cx="527" cy="63" r="50"/><circle cx="565" cy="84" r="37"/>
+      </g>
+      <g className="vs-ejected-fragments">
+        {[[370,105],[340,135],[550,120],[585,145],[315,170],[620,178]].map(([x,y],i)=><circle key={i} cx={x} cy={y} r={6+(i%2)*2}/>)}
+      </g>
+
+      <g className="vs-callouts">
+        <path d="M455 142L730 62" markerEnd="url(#volcano-callout-arrow)"/><text x="748" y="65">crater</text>
+        <path d="M455 285L745 195" markerEnd="url(#volcano-callout-arrow)"/><text x="763" y="200">main vent</text>
+        <path d="M558 279L750 275" markerEnd="url(#volcano-callout-arrow)"/><text x="768" y="280">secondary vent</text>
+        <path d="M695 330L825 355" markerEnd="url(#volcano-callout-arrow)"/><text x="842" y="361">lava flow</text>
+        <path d="M530 407L765 430" markerEnd="url(#volcano-callout-arrow)"/><text x="784" y="436">layers of lava and pyroclastic material</text>
+        <path d="M455 505L190 535" markerEnd="url(#volcano-callout-arrow)"/><text x="170" y="541" textAnchor="end">magma chamber</text>
+        <path d="M505 65L770 118" markerEnd="url(#volcano-callout-arrow)"/><text x="788" y="123">ash and gas plume</text>
+      </g>
+
+      <text className="vs-magma-label" x="455" y="520" textAnchor="middle">MAGMA below the surface</text>
+      <text className="vs-lava-label" x="742" y="392">LAVA at the surface</text>
+      <text className="vs-caption" x="490" y="598" textAnchor="middle">When magma reaches Earth's surface it is called lava.</text>
     </svg>
-    <p>Molten rock below the surface is magma. When it reaches the surface it is called lava. Magma rises from storage regions through vents and may erupt from a crater or fissures.</p>
+    <p>Molten rock below the surface is magma. It can collect in a magma chamber and rise through the main vent or a secondary vent. At the surface, magma is called lava. Repeated eruptions can build layers of lava and pyroclastic material around the vent, while explosive eruptions may send ash, gases and rock fragments above the crater.</p>
   </div>;
 }
 
