@@ -71,6 +71,7 @@ import ProtectiveGearExplorer from "./components/ProtectiveGearExplorer";
 import HeatTransferApplicationsExplorer from "./components/HeatTransferApplicationsExplorer";
 import ThermostatExplorer from "./components/ThermostatExplorer";
 import ThermometerTypesExplorer from "./components/ThermometerTypesExplorer";
+import BodyTemperatureRegulationExplorer from "./components/BodyTemperatureRegulationExplorer";
 import {
   adjacentGenericTopic,
   buildSequentialProgression,
@@ -438,6 +439,9 @@ function GenericLessonContent({
         }
         if (model?.type === "thermometer-types") {
           return <ThermometerTypesExplorer key={model.id || "thermometer-types"} />;
+        }
+        if (model?.type === "body-temperature-regulation") {
+          return <BodyTemperatureRegulationExplorer key={model.id || "body-temperature-regulation"} />;
         }
         return null;
       })}
