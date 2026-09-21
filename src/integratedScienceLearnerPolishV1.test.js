@@ -79,5 +79,13 @@ describe("Integrated Science learner polish V1", () => {
     expect(diagram).toContain("microscope-stage-aperture");
     expect(diagram).toContain("microscope-condenser");
     expect(diagram).toContain("microscope-light-beam");
+
+    const transport = fs.readFileSync(
+      path.join(__dirname,"subjects","components","TransportProcessExplorer.jsx"),
+      "utf8"
+    );
+    expect(transport).toContain("MembraneBilayer");
+    expect(transport).toContain("net movement");
+    expect(transport).toContain("from respiration");
   });
 });
