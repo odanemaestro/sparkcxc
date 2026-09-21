@@ -109,6 +109,17 @@ describe("Integrated Science learner polish V1", () => {
     expect(transportStructures).toContain("ts-heart-lv");
     expect(transportStructures).toContain("ts-heart-valve");
 
+    const skeleton = fs.readFileSync(
+      path.join(__dirname,"subjects","components","HumanSkeletonExplorer.jsx"),
+      "utf8"
+    );
+    expect(skeleton).toContain("hs-anatomical");
+    expect(skeleton).toContain("hs-skull");
+    expect(skeleton).toContain("hs-ribs");
+    expect(skeleton).toContain("hs-pelvis");
+    expect(skeleton).toContain("hs-femur");
+    expect(skeleton).toContain("aria-pressed");
+
     expect(diagram).toContain("eye-vitreous");
     expect(diagram).toContain("eye-aqueous");
     expect(diagram).toContain("ear-vestibule");
