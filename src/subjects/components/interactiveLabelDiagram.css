@@ -528,3 +528,24 @@ body[data-theme="dark"] .spark-label-diagram-actions button:disabled,
 .spark-diagram-pregnancy .foetus-head,.spark-diagram-pregnancy .foetus-torso{fill:#efc2a4;stroke:#9b694e;stroke-width:4}
 .spark-diagram-pregnancy .foetus-face,.spark-diagram-pregnancy .foetus-back,.spark-diagram-pregnancy .foetus-arm,.spark-diagram-pregnancy .foetus-leg,.spark-diagram-pregnancy .foetus-hand,.spark-diagram-pregnancy .foetus-foot{fill:none;stroke:#9b694e;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
 .spark-diagram-pregnancy .pregnancy-cervical-canal{fill:none;stroke:#7f4350;stroke-width:5;stroke-linecap:round}
+
+
+/* SPARK_ANATOMY_POLISH_BATCH_V3 */
+.spark-diagram-digestive .digestive-pharynx{fill:none;stroke:#c98774;stroke-width:9;stroke-linecap:round}
+.spark-diagram-digestive .digestive-duodenum{fill:none;stroke:#d99b7d;stroke-width:14;stroke-linecap:round}
+.spark-diagram-digestive .digestive-small.inner{stroke-width:12}
+.spark-diagram-digestive .digestive-appendix{fill:none;stroke:#a97b5d;stroke-width:10;stroke-linecap:round}
+.spark-diagram-digestive .digestive-anus{fill:none;stroke:#9a6a50;stroke-width:8;stroke-linecap:round}
+
+.spark-diagram-tooth .tooth-jaw{fill:#d7c4a9;stroke:#9f886d;stroke-width:5}
+.spark-diagram-tooth .tooth-root-canal{fill:none;stroke:#9d5965;stroke-width:5;stroke-linecap:round}
+.spark-diagram-tooth .tooth-root-vessels.red{stroke:#b0525b}
+.spark-diagram-tooth .tooth-root-vessels.blue{stroke:#4e7da4}
+.spark-diagram-tooth .tooth-nerve{fill:none;stroke:#e0b33e;stroke-width:4;stroke-linecap:round}
+.spark-diagram-tooth .tooth-periodontal{fill:none;stroke:#c3ad8c;stroke-width:4;stroke-dasharray:7 5}
+
+.spark-diagram-respiratory .resp-nasal{fill:#d7eef5;stroke:#6f9aac;stroke-width:4}
+.spark-diagram-respiratory .resp-pharynx{fill:none;stroke:#79a2b6;stroke-width:10;stroke-linecap:round}
+.spark-diagram-respiratory .resp-tracheal-ring{stroke:#557a8d;stroke-width:3}
+.spark-diagram-respiratory .resp-cardiac-notch{fill:none;stroke:#9e5a62;stroke-width:5;stroke-linecap:round}
+.spark-diagram-respiratory .resp-alveoli circle{fill:#f3c2c8;stroke:#9e5a62;stroke-width:3}
