@@ -1,17 +1,75 @@
 import React,{useMemo,useState} from "react";
 import "./volcanoEruptionsExplorer.css";
 
+function EruptionStyleDiagram({explosive}){
+  const gasBubbles = explosive
+    ? [[410,345,13],[438,330,11],[395,315,10],[430,298,13],[405,280,9],[439,260,11]]
+    : [[410,345,12],[429,300,10],[416,250,9],[426,195,8],[420,145,7]];
+
+  return <svg viewBox="0 0 900 520" role="img" aria-label={explosive
+    ? "High-viscosity volcano cross-section showing trapped gas, pressure build-up and explosive eruption"
+    : "Low-viscosity volcano cross-section showing easy gas escape and a flowing lava eruption"}>
+
+    <rect className="ve-sky" x="20" y="20" width="860" height="455" rx="18" />
+    <path className="ve-ground" d="M20 410H880" />
+
+    <path className="ve-cone" d={explosive
+      ? "M185 410L365 132Q420 80 475 132L655 410Z"
+      : "M105 410Q245 308 365 216Q420 170 475 216Q595 308 795 410Z"} />
+
+    <ellipse className="ve-crater" cx="420" cy={explosive?130:206} rx={explosive?58:70} ry="20" />
+    <path className="ve-vent" d={explosive?"M420 145V355":"M420 220V355"} />
+    <ellipse className="ve-chamber" cx="420" cy="390" rx="120" ry="62" />
+
+    <g className={explosive?"ve-gas trapped":"ve-gas escaping"}>
+      {gasBubbles.map(([x,y,r],i)=><circle key={i} cx={x} cy={y} r={r}/>)}
+    </g>
+
+    {explosive ? <>
+      <path className="ve-pressure-arrow left" d="M390 285Q350 250 326 215" />
+      <path className="ve-pressure-arrow right" d="M450 285Q490 250 514 215" />
+
+      <g className="ve-ash-cloud" transform="translate(420 62)">
+        <circle cx="-65" cy="8" r="45"/><circle cx="-25" cy="-15" r="60"/><circle cx="32" cy="-12" r="58"/><circle cx="75" cy="15" r="44"/>
+      </g>
+      <g className="ve-ejecta">
+        {[
+          [326,110,-52,-58],[350,88,-32,-74],[485,86,35,-76],[514,108,58,-58],
+        ].map(([x,y,dx,dy],i)=><path key={i} d={`M${x} ${y}l${dx} ${dy}`} />)}
+      </g>
+      <path className="ve-pyroclastic" d="M360 160Q300 185 246 250Q204 300 170 366" />
+      <text className="ve-label danger" x="420" y="40" textAnchor="middle">ash + gas + rock fragments</text>
+      <text className="ve-label pressure" x="570" y="270">gas trapped, pressure builds</text>
+      <text className="ve-label" x="135" y="320">pyroclastic material</text>
+    </> : <>
+      <path className="ve-gas-arrow" d="M420 235V95" />
+      <g className="ve-gas-clouds">
+        {[95,130,165].map((y,i)=><circle key={y} cx={420+(i-1)*16} cy={y} r={10-i*2}/>)}
+      </g>
+      <path className="ve-lava-flow" d="M465 218Q535 240 610 300Q680 352 770 390" />
+      <text className="ve-label" x="475" y="92">gas escapes readily</text>
+      <text className="ve-label lava" x="685" y="335">runny lava flows far</text>
+    </>}
+
+    <text className="ve-label chamber" x="420" y="400" textAnchor="middle">magma chamber</text>
+    <text className="ve-label" x="455" y={explosive?230:285}>main vent</text>
+
+    <g className="ve-properties" transform="translate(645 62)">
+      <rect x="0" y="0" width="210" height="130" rx="15" />
+      <text className="ve-prop-title" x="16" y="30">{explosive?"HIGH VISCOSITY":"LOW VISCOSITY"}</text>
+      <text className="ve-prop-text" x="16" y="57">{explosive?"thick, resistant to flow":"runny, flows easily"}</text>
+      <text className="ve-prop-text" x="16" y="82">{explosive?"gas escapes slowly":"gas escapes more easily"}</text>
+      <text className="ve-prop-text" x="16" y="107">{explosive?"explosive potential":"mainly effusive eruption"}</text>
+    </g>
+  </svg>;
+}
+
 function StyleView(){
   const [viscosity,setViscosity]=useState("low");
   const explosive=viscosity==="high";
   return <div className="spark-volcano-style">
     <div className="spark-volcano-toggle"><button type="button" className={!explosive?"active":""} onClick={()=>setViscosity("low")}>Low-viscosity magma</button><button type="button" className={explosive?"active":""} onClick={()=>setViscosity("high")}>High-viscosity magma</button></div>
-    <div className={"spark-eruption-model "+(explosive?"explosive":"effusive")}>
-      <div className="spark-eruption-cone"></div>
-      <div className="spark-eruption-vent"></div>
-      <div className="spark-eruption-magma"></div>
-      {explosive?<><div className="spark-ash-cloud">ash + gas</div><div className="spark-ejecta one"></div><div className="spark-ejecta two"></div><div className="spark-ejecta three"></div></>:<div className="spark-lava-flow">runny lava flow</div>}
-    </div>
+    <div className="spark-eruption-cross-section"><EruptionStyleDiagram explosive={explosive}/></div>
     <p>{explosive?"Thick, sticky magma resists flow and traps gases. Pressure can build until gas expands violently, producing explosive eruptions, ash and pyroclastic material.":"Runny, low-viscosity magma allows gases to escape more easily and can travel long distances as lava, producing mainly effusive eruptions."}</p>
   </div>;
 }
