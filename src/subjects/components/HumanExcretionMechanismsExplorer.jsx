@@ -146,27 +146,57 @@ function AdhScene() {
 
 function SkinScene() {
   return (
-    <svg viewBox="0 0 980 520" role="img" aria-label="Skin showing sweat gland, sweat duct, surface vessels and fat layer">
-      <rect className="hex-epidermis" x="100" y="90" width="780" height="70" />
-      <rect className="hex-dermis" x="100" y="160" width="780" height="220" />
-      <rect className="hex-fat" x="100" y="380" width="780" height="90" />
+    <svg viewBox="0 0 980 540" role="img" aria-label="Cross-section of human skin showing epidermis, dermis, subcutaneous fat, hair follicle, sebaceous gland, sweat gland, blood vessels and sensory nerves">
+      <path className="hex-skin-surface" d="M80 95Q180 78 280 94T480 94T680 94T900 92" />
+      <path className="hex-epidermis" d="M80 95Q180 78 280 94T480 94T680 94T900 92V165H80Z" />
+      <rect className="hex-dermis" x="80" y="165" width="820" height="225" />
+      <rect className="hex-subcutaneous" x="80" y="390" width="820" height="100" />
 
-      <path className="hex-sweat-duct" d="M300 335Q260 280 310 235Q360 190 320 145V90" />
-      <path className="hex-sweat-gland" d="M240 330q30-45 60 0t60 0t60 0q-30 50-60 5t-60 0t-60-5Z" />
-      <path className="hex-sweat-drop" d="M320 45q-18 25 0 43q18-18 0-43Z" />
+      <g className="hex-fat-lobules">
+        {[120,185,250,315,380,445,510,575,640,705,770,835].map((x,i)=>(
+          <circle key={x} cx={x} cy={438+(i%2)*22} r="30" />
+        ))}
+      </g>
 
-      <path className="hex-blood-vessel" d="M520 290q95-60 190 0t110 0" />
-      <path className="hex-blood-vessel surface" d="M510 205q85-45 170 0t130 0" />
-      <path className="hex-hair" d="M635 230L600 70" />
-      <circle className="hex-hair-root" cx="640" cy="260" r="28" />
+      <path className="hex-hair-shaft" d="M610 250Q600 155 584 58" />
+      <path className="hex-hair-follicle" d="M584 145Q560 220 568 332Q572 372 606 386Q640 370 641 330Q638 230 606 148Z" />
+      <ellipse className="hex-hair-bulb" cx="607" cy="360" rx="34" ry="30" />
 
-      <text className="hex-label" x="200" y="125">epidermis</text>
-      <text className="hex-label" x="200" y="250">dermis</text>
-      <text className="hex-label" x="200" y="430">fat layer</text>
-      <text className="hex-small" x="345" y="365">coiled sweat gland</text>
-      <text className="hex-small" x="365" y="105">sweat duct</text>
-      <text className="hex-small" x="705" y="195">surface blood vessels</text>
-      <text className="hex-process" x="490" y="500" textAnchor="middle">Evaporation of sweat removes heat from the body</text>
+      <path className="hex-sebaceous-gland" d="M535 230Q500 200 474 224Q460 247 482 263Q505 277 526 261Q544 246 535 230Z" />
+      <path className="hex-sebaceous-duct" d="M528 250Q556 245 578 228" />
+
+      <path className="hex-arrector" d="M520 320L575 245" />
+
+      <path className="hex-sweat-duct" d="M290 355Q246 315 275 270Q309 223 295 176V101" />
+      <g className="hex-sweat-gland">
+        <path d="M220 350q35-50 70 0t70 0t70 0q-35 52-70 7t-70 0t-70-7Z" />
+        <path d="M235 374q30-36 60 0t60 0t55 0" />
+      </g>
+      <path className="hex-sweat-pore" d="M287 102Q296 90 305 102" />
+      <path className="hex-sweat-drop" d="M296 52q-16 23 0 39q16-16 0-39Z" />
+
+      <path className="hex-blood-vessel artery" d="M520 338Q635 293 735 330T860 332" />
+      <path className="hex-blood-vessel vein" d="M505 360Q620 410 735 365T865 370" />
+      <path className="hex-capillary-loop" d="M670 330Q655 270 700 246Q743 228 760 277Q774 314 744 338" />
+
+      <path className="hex-sensory-nerve" d="M410 445Q420 385 448 340Q472 305 470 245" />
+      <circle className="hex-sensory-ending" cx="470" cy="235" r="12" />
+
+      <text className="hex-label" x="115" y="135">epidermis</text>
+      <text className="hex-label" x="115" y="250">dermis</text>
+      <text className="hex-label" x="115" y="445">subcutaneous fat</text>
+
+      <text className="hex-small" x="210" y="385">sweat gland</text>
+      <text className="hex-small" x="310" y="120">sweat duct</text>
+      <text className="hex-small" x="445" y="205">sebaceous gland</text>
+      <text className="hex-small" x="500" y="330">arrector pili muscle</text>
+      <text className="hex-small" x="620" y="205">hair follicle</text>
+      <text className="hex-small" x="700" y="305">surface capillaries</text>
+      <text className="hex-small" x="420" y="470">sensory nerve</text>
+
+      <text className="hex-process" x="500" y="520" textAnchor="middle">
+        Sweat reaches the surface through a duct; evaporation removes heat from the body
+      </text>
     </svg>
   );
 }
