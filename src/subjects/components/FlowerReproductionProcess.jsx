@@ -85,6 +85,71 @@ const POLLINATION = {
   ],
 };
 
+function PollinationComparisonDiagram({agent}) {
+  const insect=agent==="insect";
+  return (
+    <svg className={"spark-pollination-structure-svg "+agent} viewBox="0 0 900 420" role="img" aria-label={insect?"Insect-pollinated flower showing large petals, enclosed anthers, sticky stigma and relatively few larger pollen grains":"Wind-pollinated flower showing small petals, exposed dangling anthers, feathery stigma and many small light pollen grains"}>
+      <g className="pc-flower" transform="translate(450 225)">
+        {insect ? <>
+          <path className="pc-petal large left" d="M-20 15Q-170 5-205-115Q-70-105-8-35Z"/>
+          <path className="pc-petal large right" d="M20 15Q170 5 205-115Q70-105 8-35Z"/>
+          <path className="pc-petal large upper" d="M-55-30Q0-180 55-30Q24 15 0 22Q-24 15-55-30Z"/>
+        </> : <>
+          <path className="pc-petal small left" d="M-18 15Q-80 5-92-42Q-40-40-6-20Z"/>
+          <path className="pc-petal small right" d="M18 15Q80 5 92-42Q40-40 6-20Z"/>
+        </>}
+
+        <path className="pc-sepal" d="M-70 35Q0 5 70 35Q55 80 0 88Q-55 80-70 35Z"/>
+        <ellipse className="pc-ovary" cx="0" cy="92" rx="58" ry="43"/>
+        <path className="pc-style" d="M-8 70V-72H8V70Z"/>
+
+        {insect ? (
+          <>
+            <path className="pc-stigma sticky" d="M-34-82Q0-116 34-82Q18-62 0-65Q-18-62-34-82Z"/>
+            <g className="pc-stamens enclosed">
+              <path d="M-75 50Q-55-15-52-58M75 50Q55-15 52-58"/>
+              <ellipse cx="-52" cy="-66" rx="25" ry="10"/><ellipse cx="52" cy="-66" rx="25" ry="10"/>
+            </g>
+          </>
+        ) : (
+          <>
+            <g className="pc-stigma feathery">
+              <path d="M0-75V-132M0-112L-35-142M0-112L35-142M0-95L-42-112M0-95L42-112"/>
+            </g>
+            <g className="pc-stamens exposed">
+              <path d="M-70 35Q-105-10-120-78M70 35Q105-10 120-78"/>
+              <ellipse cx="-120" cy="-87" rx="30" ry="12" transform="rotate(-12 -120 -87)"/>
+              <ellipse cx="120" cy="-87" rx="30" ry="12" transform="rotate(12 120 -87)"/>
+            </g>
+          </>
+        )}
+      </g>
+
+      <g className="pc-pollen-cloud">
+        {Array.from({length:insect?8:30},(_,i)=>{
+          const x=90+(i*73)%720;
+          const y=80+((i*47)%190);
+          return <circle key={i} className={insect?"pc-pollen large":"pc-pollen small"} cx={x} cy={y} r={insect?7:3.5}/>;
+        })}
+      </g>
+
+      <g className="pc-callouts">
+        {insect ? <>
+          <text x="70" y="55">large, conspicuous petals</text>
+          <text x="650" y="70">sticky stigma</text>
+          <text x="650" y="110">anthers usually held inside flower</text>
+          <text x="70" y="355">fewer, larger sticky or spiky pollen grains</text>
+        </> : <>
+          <text x="70" y="55">small, inconspicuous petals</text>
+          <text x="650" y="70">large feathery stigma exposed to air</text>
+          <text x="650" y="110">anthers hang outside flower</text>
+          <text x="70" y="355">many small, light, smooth pollen grains</text>
+        </>}
+      </g>
+    </svg>
+  );
+}
+
 export default function FlowerReproductionProcess() {
   const [step,setStep] = useState(0);
   const [agent,setAgent] = useState("insect");
@@ -124,6 +189,7 @@ export default function FlowerReproductionProcess() {
           <button type="button" className={agent === "insect" ? "active" : ""} onClick={() => setAgent("insect")}>Insect-pollinated</button>
           <button type="button" className={agent === "wind" ? "active" : ""} onClick={() => setAgent("wind")}>Wind-pollinated</button>
         </div>
+        <PollinationComparisonDiagram agent={agent}/>
         <ul>{POLLINATION[agent].map(item => <li key={item}>{item}</li>)}</ul>
       </div>
     </section>
