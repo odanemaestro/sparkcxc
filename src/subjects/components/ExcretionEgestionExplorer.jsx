@@ -42,26 +42,59 @@ const ITEMS = {
 function DecisionScene() {
   return (
     <div className="spark-excretion-decision">
-      <article className="start">
-        <span>START</span>
-        <strong>Where did the material come from?</strong>
-      </article>
-      <div className="spark-excretion-decision-arrows">
-        <span>made by metabolism in body cells</span>
-        <span>never absorbed into body cells</span>
-      </div>
-      <div className="spark-excretion-decision-outcomes">
-        <article className="excretion">
-          <b>EXCRETION</b>
-          <p>Removal of metabolic waste products from the body.</p>
-          <small>Examples: carbon dioxide, urea, excess salts and water.</small>
-        </article>
-        <article className="egestion">
-          <b>EGESTION</b>
-          <p>Removal of undigested or unabsorbed food from the alimentary canal.</p>
-          <small>Example: undigested fibre leaving in faeces.</small>
-        </article>
-      </div>
+      <svg className="spark-excretion-decision-svg" viewBox="0 0 980 600" role="img" aria-label="Decision pathway distinguishing excretion from egestion by tracing whether material was produced by metabolism inside the body or remained undigested and unabsorbed in the alimentary canal">
+        <defs>
+          <marker id="ee-decision-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+            <path d="M0 0L9 4.5L0 9Z" className="eed-arrow-head"/>
+          </marker>
+        </defs>
+
+        <rect className="eed-start" x="330" y="35" width="320" height="90" rx="18"/>
+        <text className="eed-heading" x="490" y="72" textAnchor="middle">Where did the material come from?</text>
+        <text className="eed-small" x="490" y="100" textAnchor="middle">trace its origin before naming the process</text>
+
+        <path className="eed-branch excretion" d="M420 125Q300 175 245 230" markerEnd="url(#ee-decision-arrow)"/>
+        <path className="eed-branch egestion" d="M560 125Q680 175 735 230" markerEnd="url(#ee-decision-arrow)"/>
+
+        <g className="eed-origin-cell" transform="translate(80 210)">
+          <rect x="0" y="0" width="340" height="185" rx="18"/>
+          <circle className="eed-cell" cx="85" cy="80" r="48"/>
+          <circle className="eed-nucleus" cx="85" cy="80" r="18"/>
+          <path className="eed-metabolism-arrow" d="M145 80H210" markerEnd="url(#ee-decision-arrow)"/>
+          <circle className="eed-waste-dot" cx="232" cy="80" r="12"/>
+          <text className="eed-card-title" x="170" y="135" textAnchor="middle">made by metabolism</text>
+          <text className="eed-card-note" x="170" y="160" textAnchor="middle">or present in excess in the internal body environment</text>
+        </g>
+
+        <g className="eed-origin-gut" transform="translate(560 210)">
+          <rect x="0" y="0" width="340" height="185" rx="18"/>
+          <path className="eed-gut" d="M70 35H155V72H120V122H155V158H70V122H103V72H70Z"/>
+          <g className="eed-food-dots">
+            <circle cx="92" cy="61" r="7"/><circle cx="129" cy="96" r="7"/><circle cx="91" cy="137" r="7"/>
+          </g>
+          <path className="eed-not-absorbed" d="M175 96H230" markerEnd="url(#ee-decision-arrow)"/>
+          <text className="eed-card-title" x="170" y="135" textAnchor="middle">undigested or unabsorbed food</text>
+          <text className="eed-card-note" x="170" y="160" textAnchor="middle">remains inside the alimentary canal</text>
+        </g>
+
+        <path className="eed-outcome-arrow excretion" d="M250 405V465" markerEnd="url(#ee-decision-arrow)"/>
+        <path className="eed-outcome-arrow egestion" d="M730 405V465" markerEnd="url(#ee-decision-arrow)"/>
+
+        <g className="eed-outcome excretion">
+          <rect x="90" y="475" width="320" height="90" rx="18"/>
+          <text className="eed-outcome-title" x="250" y="512" textAnchor="middle">EXCRETION</text>
+          <text className="eed-small" x="250" y="540" textAnchor="middle">removal of metabolic wastes or excess substances</text>
+        </g>
+
+        <g className="eed-outcome egestion">
+          <rect x="570" y="475" width="320" height="90" rx="18"/>
+          <text className="eed-outcome-title" x="730" y="512" textAnchor="middle">EGESTION</text>
+          <text className="eed-small" x="730" y="540" textAnchor="middle">removal of undigested material from the alimentary canal</text>
+        </g>
+
+        <text className="eed-example" x="250" y="590" textAnchor="middle">CO₂, urea, excess salts and water</text>
+        <text className="eed-example" x="730" y="590" textAnchor="middle">undigested fibre in faeces</text>
+      </svg>
     </div>
   );
 }
