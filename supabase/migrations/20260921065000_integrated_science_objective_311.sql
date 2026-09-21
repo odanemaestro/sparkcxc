@@ -1,5 +1,26 @@
 begin;
 
+-- Create Module 3 before inserting its topics.
+insert into public.spark_subject_sections(
+  subject_id,section_id,title,description,sort_order,enabled,metadata
+)
+values (
+  'integrated-science',
+  'module-3-environment',
+  'Module 3: Our Planet',
+  'Study the universe and Solar System, Caribbean weather and terrestrial processes, water and aquatic environments, forces, materials, household chemicals, pollution and environmental responsibility.',
+  30,
+  true,
+  '{"module":3,"skills":["Knowledge and Comprehension","Use of Knowledge","Experimental Skills"]}'::jsonb
+)
+on conflict (subject_id,section_id) do update set
+  title=excluded.title,
+  description=excluded.description,
+  sort_order=excluded.sort_order,
+  enabled=excluded.enabled,
+  metadata=excluded.metadata,
+  updated_at=now();
+
 -- CSEC Integrated Science objective 3.1.1
 insert into public.spark_subject_topics(
   subject_id,topic_id,section_id,title,description,sort_order,enabled,metadata
