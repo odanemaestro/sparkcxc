@@ -60,3 +60,27 @@ html[data-theme="dark"] .spark-microbe-cards article,body[data-theme="dark"] .sp
 @media(max-width:800px){.spark-microbe-cards{grid-template-columns:1fr}.spark-microbe-harm-grid{grid-template-columns:1fr}.spark-microbe-tabs{display:grid;grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.spark-microbe-explorer{padding:14px}.spark-microbe-stage .microbe-label{font-size:19px}.spark-microbe-stage .microbe-small{font-size:17px}.spark-microbe-stage .microbe-card-title{font-size:21px}}
 @media(max-width:390px){.spark-microbe-tabs{grid-template-columns:1fr}}
+
+.spark-bacterial-cell-scene{padding:16px;background:var(--spark-paper,#fff)}
+.spark-bacterial-cell-svg{display:block;width:100%;height:auto;min-height:360px}
+.bac-capsule{fill:#d8a54f;stroke:#9b6818;stroke-width:5}
+.bac-wall{fill:#f1c05e;stroke:#8c5a12;stroke-width:4}
+.bac-membrane{fill:#a86a4e;stroke:#6f4030;stroke-width:3}
+.bac-cytoplasm{fill:#d9c1ef;stroke:#8d70a8;stroke-width:2}
+.bac-ribosome{fill:#8a8a8a}
+.bac-chromosome,.bac-plasmid{fill:none;stroke:#356f45;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.bac-plasmid.second{stroke:#6c4f9a}
+.bac-inclusion{fill:#f2bf42;stroke:#c18d12;stroke-width:2}
+.bac-pilus{stroke:#8d5a17;stroke-width:4;stroke-linecap:round}
+.bac-flagellum{fill:none;stroke:#b9b9b9;stroke-width:8;stroke-linecap:round}
+.bac-callouts path{fill:none;stroke:#3e5261;stroke-width:2}
+.bac-callouts text,.bac-caption{fill:#294d64;font-size:15px;font-weight:800}
+.bac-caption{font-size:14px}
+.spark-bacterial-cell-notes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+.spark-bacterial-cell-notes article{padding:13px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:11px;background:var(--spark-bg,#f7fafc)}
+.spark-bacterial-cell-notes b{color:var(--spark-ink,#102a43);font-size:12px}
+.spark-bacterial-cell-notes p{margin:5px 0 0;color:var(--spark-ink-soft,#334e68);font-size:11px;line-height:1.5}
+html[data-theme="dark"] .spark-bacterial-cell-scene,body[data-theme="dark"] .spark-bacterial-cell-scene,.dark .spark-bacterial-cell-scene,html[data-theme="dark"] .spark-bacterial-cell-notes article,body[data-theme="dark"] .spark-bacterial-cell-notes article,.dark .spark-bacterial-cell-notes article{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .bac-callouts text,body[data-theme="dark"] .bac-callouts text,.dark .bac-callouts text,html[data-theme="dark"] .bac-caption,body[data-theme="dark"] .bac-caption,.dark .bac-caption{fill:#e6f0f6}
+@media(max-width:800px){.spark-bacterial-cell-notes{grid-template-columns:1fr}.spark-bacterial-cell-svg{min-height:300px}}
+@media(max-width:560px){.spark-bacterial-cell-scene{padding:8px}.spark-bacterial-cell-svg{min-height:240px}.bac-callouts text{font-size:18px}.bac-caption{font-size:17px}}
