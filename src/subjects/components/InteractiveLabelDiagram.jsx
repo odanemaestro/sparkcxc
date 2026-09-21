@@ -497,38 +497,54 @@ function MammalianEarTemplate() {
 
 function HumanBrainTemplate() {
   return (
-    <g className="spark-diagram-brain" aria-hidden="true">
-      <path className="brain-cerebrum" d="M285 135Q350 65 470 72Q590 55 690 120Q770 178 758 280Q748 365 680 405Q610 440 540 420Q470 455 390 425Q300 390 270 320Q235 235 285 135Z" />
-      <path className="brain-cerebrum-fold" d="M330 145Q385 110 430 145M430 100Q490 130 535 100M545 135Q610 100 655 145M315 220Q385 185 435 220M480 190Q550 230 620 195M330 295Q390 260 450 300M500 280Q575 315 650 270" />
-      <path className="brain-cerebellum" d="M565 350Q650 320 720 365Q755 405 720 450Q665 490 585 455Q545 420 565 350Z" />
-      <path className="brain-brainstem" d="M505 345Q545 340 575 372Q570 425 595 472L550 510Q505 470 490 405Z" />
-      <path className="brain-medulla" d="M520 390Q555 388 570 415L582 470L548 500Q515 462 508 425Z" />
-      <path className="brain-spinal-cord" d="M550 492Q570 525 568 610" />
-      <path className="brain-hypothalamus" d="M465 318Q500 292 535 322Q525 350 495 360Q468 350 465 318Z" />
-      <circle className="brain-pituitary" cx="500" cy="383" r="20" />
+    <g className="spark-diagram-brain spark-reference-refined" aria-hidden="true">
+      <path className="brain-cerebrum" d="M285 137Q322 82 392 73Q454 48 522 68Q599 55 670 99Q741 143 757 221Q773 301 727 359Q688 406 622 414Q582 431 539 419Q490 449 426 433Q345 415 298 359Q257 309 259 239Q260 184 285 137Z" />
+
+      <path className="brain-lobe frontal" d="M310 143Q357 94 426 91Q459 111 464 154Q450 207 391 227Q332 223 302 189Z" />
+      <path className="brain-lobe parietal" d="M455 93Q530 68 596 91Q642 117 648 163Q622 213 556 225Q486 213 464 154Z" />
+      <path className="brain-lobe temporal" d="M365 235Q430 210 493 230Q525 267 504 318Q463 355 398 341Q358 307 365 235Z" />
+      <path className="brain-lobe occipital" d="M604 166Q680 166 724 217Q741 277 706 325Q667 355 620 326Q594 271 604 166Z" />
+
+      <path className="brain-cerebrum-fold" d="M326 149Q371 119 415 146M430 105Q482 132 525 103M544 130Q602 104 645 143M312 218Q372 188 425 218M471 189Q532 227 599 195M327 292Q387 263 444 298M500 279Q565 309 628 272" />
+
+      <path className="brain-corpus-callosum" d="M395 227Q475 177 554 220Q575 235 559 254Q500 222 427 255Q402 265 387 249Z" />
+      <path className="brain-thalamus" d="M456 270Q493 246 532 269Q542 296 512 312Q477 316 456 290Z" />
+      <path className="brain-hypothalamus" d="M466 316Q500 292 533 321Q522 348 496 359Q471 348 466 316Z" />
+      <circle className="brain-pituitary" cx="500" cy="382" r="19" />
       <path className="brain-pituitary-stalk" d="M500 355V365" />
-      <text className="repro-orientation" x="500" y="635" textAnchor="middle">simplified side view of the human brain</text>
+
+      <path className="brain-cerebellum" d="M566 347Q638 319 706 353Q744 386 726 431Q692 478 617 468Q566 457 549 416Q546 379 566 347Z" />
+      <path className="brain-cerebellum-fold" d="M578 375Q629 350 682 373M568 402Q628 378 696 403M579 430Q633 409 683 430" />
+
+      <path className="brain-pons" d="M513 351Q551 338 578 361Q585 386 564 402Q536 407 514 388Z" />
+      <path className="brain-brainstem" d="M507 344Q546 340 576 370Q572 423 594 470L550 510Q508 470 492 406Z" />
+      <path className="brain-medulla" d="M520 394Q553 390 570 416L581 470L550 500Q518 464 510 427Z" />
+      <path className="brain-spinal-cord" d="M550 492Q570 527 568 610" />
+
+      <text className="repro-orientation" x="500" y="635" textAnchor="middle">simplified sagittal view of the human brain</text>
     </g>
   );
 }
 
 function EndocrineSystemTemplate() {
   return (
-    <g className="spark-diagram-endocrine" aria-hidden="true">
+    <g className="spark-diagram-endocrine spark-reference-refined" aria-hidden="true">
       <circle className="endo-head" cx="500" cy="100" r="62" />
       <path className="endo-body" d="M425 175Q500 145 575 175Q625 250 605 365Q590 455 555 560H445Q410 455 395 365Q375 250 425 175Z" />
       <path className="endo-arm" d="M420 220Q330 285 305 400M580 220Q670 285 695 400" />
       <path className="endo-leg" d="M460 555Q430 605 415 635M540 555Q570 605 585 635" />
 
       <circle className="endo-pituitary" cx="500" cy="112" r="12" />
-      <path className="endo-thyroid" d="M475 190Q490 175 500 192Q510 175 525 190Q525 218 500 225Q475 218 475 190Z" />
+      <path className="endo-thyroid" d="M468 188Q481 169 497 187L500 207L503 187Q519 169 532 188Q534 217 506 228Q500 230 494 228Q466 217 468 188Z" />
+      <path className="endo-trachea" d="M500 160V244" />
 
       <path className="endo-kidney left" d="M430 330Q400 315 392 350Q390 395 425 405Q447 390 442 355Q440 340 430 330Z" />
       <path className="endo-kidney right" d="M570 330Q600 315 608 350Q610 395 575 405Q553 390 558 355Q560 340 570 330Z" />
-      <path className="endo-adrenal left" d="M400 322Q418 295 438 320Z" />
-      <path className="endo-adrenal right" d="M562 320Q582 295 600 322Z" />
+      <path className="endo-adrenal left" d="M397 324Q417 293 440 319Q429 333 397 324Z" />
+      <path className="endo-adrenal right" d="M560 319Q583 293 603 324Q571 333 560 319Z" />
 
-      <path className="endo-pancreas" d="M430 425Q500 395 570 425Q535 458 465 455Q440 450 430 425Z" />
+      <path className="endo-pancreas" d="M425 425Q463 402 516 407Q552 410 580 428Q550 454 498 455Q449 455 425 425Z" />
+      <path className="endo-pancreatic-duct" d="M447 431Q500 425 555 434" />
 
       <g className="endo-ovaries">
         <ellipse cx="455" cy="505" rx="18" ry="13" />
@@ -540,6 +556,7 @@ function EndocrineSystemTemplate() {
         <rect className="endo-inset-box" x="-55" y="-45" width="120" height="130" rx="16" />
         <ellipse cx="-10" cy="25" rx="20" ry="28" />
         <ellipse cx="25" cy="25" rx="20" ry="28" />
+        <path className="endo-epididymis" d="M-31 7Q-42 25-31 45M46 7Q57 25 46 45" />
         <text className="endo-inset-label" x="5" y="70" textAnchor="middle">testes</text>
       </g>
 
