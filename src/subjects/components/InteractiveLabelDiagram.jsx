@@ -226,34 +226,34 @@ function PregnancyUterusTemplate() {
 
 function HumanHeartTemplate() {
   return (
-    <g className="spark-diagram-heart" aria-hidden="true">
-      <path className="heart-outline" d="M335 165Q385 118 455 142Q500 105 555 135Q625 105 684 168Q735 228 702 345Q675 452 575 515Q530 545 500 565Q465 540 420 515Q330 465 300 365Q262 240 335 165Z" />
+    <g className="spark-diagram-heart spark-csec-reference" aria-hidden="true">
+      <g transform="translate(225 12) scale(1.35 1.55)">
+        <path className="heart-outline" d="M110 110Q95 110 95 135V200Q100 280 205 330Q310 285 318 200V135Q318 110 300 110Z" />
 
-      <path className="heart-right-atrium" d="M334 188Q390 155 458 200L458 292Q402 328 342 292Q313 250 334 188Z" />
-      <path className="heart-right-ventricle" d="M341 316Q400 281 465 315L488 486Q415 458 366 402Q329 362 341 316Z" />
-      <path className="heart-left-atrium" d="M538 202Q594 156 660 188Q687 232 660 292Q600 326 537 296Z" />
-      <path className="heart-left-ventricle" d="M536 315Q601 282 658 318Q681 365 648 424Q607 493 515 526L506 485Q548 442 556 382Q560 342 536 315Z" />
+        <path className="heart-right-atrium" d="M98 113H205V173H95V135Q95 116 110 113Z" />
+        <path className="heart-right-ventricle" d="M95 177H205V328Q105 283 98 202Z" />
+        <path className="heart-left-atrium" d="M205 113H300Q318 113 318 135V173H205Z" />
+        <path className="heart-left-ventricle" d="M205 177H318V200Q310 285 205 330Z" />
 
-      <path className="heart-septum" d="M500 205Q488 300 505 500" />
+        <path className="heart-septum" d="M205 112V330" />
 
-      <path className="heart-vena-cava" d="M365 190V63M365 292Q315 362 318 515" />
-      <path className="heart-aorta" d="M594 188V108Q594 50 650 43Q708 36 735 86Q746 106 738 155" />
-      <path className="heart-aortic-branch" d="M630 72V30M675 58L690 22M715 72L744 38" />
+        <path className="heart-vena-cava" d="M122 112V40M122 175Q100 235 106 280" />
+        <path className="heart-aorta" d="M226 178V62Q226 30 258 30Q294 30 294 64V80" />
+        <path className="heart-pulmonary-artery" d="M171 178V122Q171 102 197 98H215" />
+        <path className="heart-pulmonary-vein" d="M318 143H355M205 143H182" />
 
-      <path className="heart-pulmonary-artery" d="M432 316Q453 224 496 196Q530 175 555 146Q584 112 623 123" />
-      <path className="heart-pulmonary-artery branch" d="M552 150Q515 125 470 122M563 145Q600 130 655 145" />
-      <path className="heart-pulmonary-vein" d="M662 220H790M535 235H228" />
+        <path className="heart-tricuspid" d="M150 175L158 195M170 175L163 195" />
+        <path className="heart-bicuspid" d="M245 175L252 195M265 175L258 195" />
+        <path className="heart-semilunar" d="M215 160Q226 170 238 160" />
 
-      <path className="heart-tricuspid" d="M385 302L420 330L455 302" />
-      <path className="heart-bicuspid" d="M545 302L590 335L635 302" />
-      <path className="heart-semilunar pulmonary" d="M475 214Q488 196 500 214Q512 196 525 214" />
-      <path className="heart-semilunar aortic" d="M583 193Q595 175 607 193Q619 175 632 193" />
+        <path className="heart-inner-wall" d="M318 180Q322 260 225 318M300 185Q302 255 215 305" />
 
-      <path className="heart-flow deoxygenated" d="M365 84V182M390 220V282M410 352Q455 275 496 220" />
-      <path className="heart-flow oxygenated" d="M760 220H667M610 230V288M600 356Q610 188 620 108" />
+        <path className="heart-flow deoxygenated" d="M122 55V132M130 150V172M150 210Q165 235 188 255" />
+        <path className="heart-flow oxygenated" d="M342 143H315M275 215Q260 260 230 300M270 70Q285 52 294 65" />
+      </g>
 
-      <text className="heart-side-label deoxygenated" x="365" y="585" textAnchor="middle">right side, deoxygenated blood</text>
-      <text className="heart-side-label oxygenated" x="635" y="585" textAnchor="middle">left side, oxygenated blood</text>
+      <text className="heart-side-label deoxygenated" x="385" y="565" textAnchor="middle">right side, deoxygenated blood</text>
+      <text className="heart-side-label oxygenated" x="625" y="565" textAnchor="middle">left side, oxygenated blood</text>
     </g>
   );
 }
@@ -331,25 +331,27 @@ function SkinSectionTemplate() {
 
 function MammalianEyeTemplate() {
   return (
-    <g className="spark-diagram-eye" aria-hidden="true">
-      <path className="eye-sclera" d="M318 242Q410 112 575 128Q692 140 739 239Q770 306 741 380Q700 485 565 495Q408 505 320 382Q277 322 318 242Z" />
-      <path className="eye-vitreous" d="M390 205Q505 155 620 205Q690 238 704 309Q690 382 620 420Q505 468 390 416Z" />
-      <path className="eye-cornea" d="M321 241Q248 276 248 310Q248 344 321 382Q291 345 291 310Q291 277 321 241Z" />
-      <path className="eye-aqueous" d="M320 246Q352 267 365 310Q352 353 320 376Q290 344 290 310Q290 276 320 246Z" />
-      <path className="eye-choroid" d="M345 188Q505 118 662 198Q704 226 719 309Q705 394 662 425Q505 504 345 430" />
-      <path className="eye-retina" d="M370 207Q505 151 631 216Q665 240 677 310Q665 378 631 404Q505 464 370 414" />
+    <g className="spark-diagram-eye spark-csec-reference" aria-hidden="true">
+      <g transform="translate(89 48) scale(1.75)">
+        <path className="eye-sclera" d="M144 210.2A105 105 0 1 0 144 89.8Q70 150 144 210.2Z" />
+        <circle className="eye-vitreous" cx="235" cy="150" r="91" />
 
-      <path className="eye-lens" d="M373 310Q398 226 427 226Q458 226 482 310Q458 394 427 394Q398 394 373 310Z" />
-      <path className="eye-iris" d="M333 248Q372 272 374 310Q372 349 333 373" />
-      <ellipse className="eye-pupil" cx="345" cy="310" rx="17" ry="29" />
+        <path className="eye-choroid" d="M148.9 206.8A99 99 0 1 0 148.9 93.2" />
+        <path className="eye-retina" d="M153 203.9A94 94 0 1 0 153 96.1" />
+        <path className="eye-cornea" d="M144 210.2Q70 150 144 89.8Q126 116 126 150Q126 184 144 210.2Z" />
+        <path className="eye-aqueous" d="M143 203Q112 180 104 150Q112 120 143 97Q132 122 132 150Q132 178 143 203Z" />
 
-      <path className="eye-ciliary" d="M345 205Q400 170 464 205M345 415Q400 450 464 415" />
-      <path className="eye-suspensory" d="M360 224L397 258M360 396L397 362M462 222L448 263M462 398L448 357" />
+        <ellipse className="eye-lens" cx="168" cy="150" rx="14" ry="36" />
+        <path className="eye-iris" d="M150 88V130M150 170V212" />
+        <ellipse className="eye-pupil" cx="150" cy="150" rx="6" ry="18" />
 
-      <path className="eye-optic-nerve" d="M681 286Q760 278 845 318L833 387Q755 340 676 334Z" />
-      <circle className="eye-fovea" cx="626" cy="310" r="11" />
-      <circle className="eye-blind-spot" cx="679" cy="312" r="12" />
-      <path className="eye-optic-disc" d="M666 298Q682 285 698 300Q686 314 670 326" />
+        <path className="eye-ciliary" d="M160 80L176 78L174 92L162 92ZM160 220L176 222L174 208L162 208Z" />
+        <path className="eye-suspensory" d="M168 92V114M172 92L174 116M168 208V186M172 208L174 184" />
+
+        <path className="eye-optic-nerve" d="M333 158L395 162V180H333Z" />
+        <path className="eye-optic-disc" d="M324 138Q318 144 324 150" />
+        <circle className="eye-fovea" cx="311" cy="150" r="5" />
+      </g>
 
       <text className="repro-orientation" x="500" y="560" textAnchor="middle">horizontal section through the eye</text>
     </g>
