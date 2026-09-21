@@ -45,14 +45,80 @@ function MoonPhaseView(){
     ["Last quarter","The opposite half of the visible disc appears illuminated."]
   ];
   return <div className="spark-moon-phases">
-    <div className="spark-phase-orbit">
-      <div className="spark-phase-sun">Sun</div>
-      <div className="spark-phase-earth">Earth</div>
-      <div className="spark-phase-moon new">●<span>new</span></div>
-      <div className="spark-phase-moon first">◐<span>first quarter</span></div>
-      <div className="spark-phase-moon full">○<span>full</span></div>
-      <div className="spark-phase-moon last">◑<span>last quarter</span></div>
-    </div>
+    <svg className="spark-moon-phase-svg" viewBox="0 0 940 610" role="img" aria-label="Sun Earth and Moon geometry for new moon, first quarter, full moon and last quarter with the corresponding view from Earth">
+      <defs>
+        <radialGradient id="eme-sun-glow" cx="50%" cy="50%" r="60%">
+          <stop offset="0%" stopColor="#ffd46a" />
+          <stop offset="70%" stopColor="#e8b346" />
+          <stop offset="100%" stopColor="#c7861f" />
+        </radialGradient>
+      </defs>
+
+      <g className="eme-phase-space">
+        <text className="eme-phase-heading" x="470" y="38" textAnchor="middle">Sun–Earth–Moon geometry</text>
+
+        <circle className="eme-phase-sun" cx="110" cy="240" r="64" />
+        <g className="eme-phase-rays">
+          {[155,185,215,245,275,305].map(y=><line key={y} x1="180" y1={y} x2="315" y2={y}/>)}
+        </g>
+
+        <ellipse className="eme-phase-orbit" cx="560" cy="240" rx="230" ry="150" />
+        <circle className="eme-phase-earth" cx="560" cy="240" r="57" />
+        <path className="eme-phase-earth-night" d="M560 183A57 57 0 0 1 560 297A30 57 0 0 0 560 183Z" />
+
+        <g className="eme-orbit-moon new" transform="translate(350 240)">
+          <circle className="eme-moon-dark" r="28" />
+          <path className="eme-moon-lit-space" d="M0-28A28 28 0 0 0 0 28A14 28 0 0 1 0-28Z" />
+        </g>
+        <g className="eme-orbit-moon first" transform="translate(560 95)">
+          <circle className="eme-moon-dark" r="28" />
+          <path className="eme-moon-lit-space" d="M0-28A28 28 0 0 0 0 28A14 28 0 0 1 0-28Z" />
+        </g>
+        <g className="eme-orbit-moon full" transform="translate(790 240)">
+          <circle className="eme-moon-dark" r="28" />
+          <path className="eme-moon-lit-space" d="M0-28A28 28 0 0 0 0 28A14 28 0 0 1 0-28Z" />
+        </g>
+        <g className="eme-orbit-moon last" transform="translate(560 385)">
+          <circle className="eme-moon-dark" r="28" />
+          <path className="eme-moon-lit-space" d="M0-28A28 28 0 0 0 0 28A14 28 0 0 1 0-28Z" />
+        </g>
+
+        <text className="eme-phase-label" x="350" y="286" textAnchor="middle">new moon</text>
+        <text className="eme-phase-label" x="560" y="62" textAnchor="middle">first quarter</text>
+        <text className="eme-phase-label" x="790" y="286" textAnchor="middle">full moon</text>
+        <text className="eme-phase-label" x="560" y="430" textAnchor="middle">last quarter</text>
+        <text className="eme-phase-label sun" x="110" y="330" textAnchor="middle">Sun</text>
+        <text className="eme-phase-label earth" x="560" y="246" textAnchor="middle">Earth</text>
+        <text className="eme-phase-note" x="470" y="458" textAnchor="middle">The half of the Moon facing the Sun is always illuminated.</text>
+      </g>
+
+      <g className="eme-phase-earth-view" transform="translate(0 470)">
+        <text className="eme-phase-heading" x="470" y="28" textAnchor="middle">View from Earth</text>
+
+        <g transform="translate(185 88)">
+          <circle className="eme-view-disc dark" r="42" />
+          <text className="eme-view-label" x="0" y="66" textAnchor="middle">New moon</text>
+        </g>
+
+        <g transform="translate(375 88)">
+          <circle className="eme-view-disc dark" r="42" />
+          <path className="eme-view-disc lit" d="M0-42A42 42 0 0 1 0 42Z" />
+          <text className="eme-view-label" x="0" y="66" textAnchor="middle">First quarter</text>
+        </g>
+
+        <g transform="translate(565 88)">
+          <circle className="eme-view-disc lit full" r="42" />
+          <text className="eme-view-label" x="0" y="66" textAnchor="middle">Full moon</text>
+        </g>
+
+        <g transform="translate(755 88)">
+          <circle className="eme-view-disc dark" r="42" />
+          <path className="eme-view-disc lit" d="M0-42A42 42 0 0 0 0 42Z" />
+          <text className="eme-view-label" x="0" y="66" textAnchor="middle">Last quarter</text>
+        </g>
+      </g>
+    </svg>
+
     <div className="spark-phase-cards">{phases.map(([name,text])=><article key={name}><b>{name}</b><p>{text}</p></article>)}</div>
     <strong>About 29½ days from one full moon to the next</strong>
   </div>;
