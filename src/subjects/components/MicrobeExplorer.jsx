@@ -100,6 +100,7 @@ function BacterialCellScene() {
 
         <g clipPath="url(#bacteria-inner-clip)">
           {ribosomes.map(([cx,cy],i)=><circle key={i} className="bac-ribosome" cx={cx} cy={cy} r="6"/>)}
+          <ellipse className="bac-nucleoid" cx="475" cy="292" rx="145" ry="112"/>
           <path className="bac-chromosome" d="M365 270C390 205 430 330 462 245C493 167 527 330 564 245C589 187 614 248 590 295C562 350 510 255 475 335C449 394 404 323 386 357C363 399 330 350 350 310C370 270 390 295 405 265"/>
           <path className="bac-plasmid" d="M330 205C300 180 292 232 323 238C356 245 363 213 340 199C328 191 313 195 308 207"/>
           <path className="bac-plasmid second" d="M575 215C550 190 535 232 560 245C589 260 611 231 594 207C584 194 566 195 556 208"/>
@@ -115,7 +116,7 @@ function BacterialCellScene() {
           <path d="M260 155L118 145"/><text x="108" y="150" textAnchor="end">cell wall</text>
           <path d="M275 185L120 215"/><text x="110" y="220" textAnchor="end">cell membrane</text>
           <path d="M330 330L135 310"/><text x="125" y="315" textAnchor="end">storage granule</text>
-          <path d="M365 280L142 395"/><text x="132" y="400" textAnchor="end">chromosome DNA</text>
+          <path d="M365 280L142 395"/><text x="132" y="400" textAnchor="end">nucleoid, chromosome region</text>
 
           <path d="M555 198L805 95"/><text x="818" y="100">ribosomes</text>
           <path d="M575 220L805 165"/><text x="818" y="170">plasmid</text>
@@ -128,7 +129,7 @@ function BacterialCellScene() {
       </svg>
       <div className="spark-bacterial-cell-notes">
         <article><b>Cell envelope</b><p>The cell membrane controls movement of substances. The cell wall supports the cell. A capsule or slime layer can add protection and help attachment.</p></article>
-        <article><b>Genetic material</b><p>The main circular chromosome lies in the cytoplasm. Small extra DNA rings called plasmids may also occur.</p></article>
+        <article><b>Genetic material</b><p>The main circular chromosome occupies a nucleoid region in the cytoplasm. The nucleoid is not surrounded by a membrane. Small extra DNA rings called plasmids may also occur.</p></article>
         <article><b>Protein synthesis</b><p>Ribosomes make proteins. Bacterial ribosomes are smaller than those in eukaryotic cells.</p></article>
         <article><b>Movement and attachment</b><p>Some bacteria use flagella for movement and pili for attachment or DNA transfer.</p></article>
       </div>
