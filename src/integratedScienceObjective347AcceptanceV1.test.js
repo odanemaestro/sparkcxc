@@ -9,7 +9,7 @@ describe("Integrated Science Objective 3.4.7 acceptance audit",()=>{
  test("covers major bones",()=>{for(const value of ["clavicle","scapula","sternum","humerus","radius","ulna","femur","tibia","fibula"])expect(migration).toContain(value);});
  test("covers skeleton protection",()=>{expect(migration).toContain("protects the brain");expect(migration).toContain("protects the spinal cord");expect(migration).toContain("protect the heart and lungs");});
  test("covers vertebral regions",()=>{expect(migration).toContain("cervical vertebrae");expect(migration).toContain("thoracic vertebrae");expect(migration).toContain("lumbar vertebrae");});
- test("has recognisable labelled diagram",()=>{expect(explorer).toContain("Human skeleton with major bones labelled");expect(explorer).toContain("SkeletonDiagram");});
+ test("has recognisable labelled diagram",()=>{expect(explorer).toContain("human skeleton with major bones labelled");expect(explorer).toContain("SkeletonDiagram");});
  test("wires explorer",()=>{expect(migration).toContain('"type":"human-skeleton"');expect(view).toContain("HumanSkeletonExplorer");});
  test("keyboard accessible bone labels",()=>{expect(explorer).toContain("onKeyDown");expect(explorer).toContain('event.key==="Enter"');expect(explorer).toContain('event.key===" "');expect(explorer).toContain("aria-pressed");expect(explorer).toContain("aria-label");});
  test("responsive and dark",()=>{expect(css).toContain("@media(max-width:900px)");expect(css).toContain('html[data-theme="dark"]');});
