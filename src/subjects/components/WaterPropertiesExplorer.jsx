@@ -20,14 +20,34 @@ function PhaseView(){
 function DensityView(){
   const [sample,setSample]=useState("fresh");
   const sea=sample==="sea";
+  const surfaceY=sea?210:194;
   return <div className="spark-water-density">
     <div className="spark-water-toggle"><button type="button" className={!sea?"active":""} onClick={()=>setSample("fresh")}>Fresh water</button><button type="button" className={sea?"active":""} onClick={()=>setSample("sea")}>Sea water</button></div>
-    <div className="spark-density-tank">
-      <div className={"spark-density-water "+(sea?"sea":"fresh")}></div>
-      <div className="spark-ice-block">ice</div>
-      {sea&&<div className="spark-salt-label">more dissolved salts</div>}
-    </div>
-    <p>{sea?"Dissolved salts make sea water denser than fresh water. Sea water also freezes below 0 °C and boils slightly above 100 °C.":"Ice floats because freezing produces a more open structure, making ice less dense than liquid water."}</p>
+    <svg className="spark-water-density-svg" viewBox="0 0 820 400" role="img" aria-label={sea?"Ice floating higher in denser sea water with a smaller submerged volume":"Ice floating in fresh water because ice is less dense than liquid water"}>
+      <defs>
+        <marker id="wp-density-up-head" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" className="wp-up-head"/></marker>
+        <marker id="wp-density-down-head" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" className="wp-down-head"/></marker>
+      </defs>
+      <rect className="wp-density-bg" x="0" y="0" width="820" height="400" rx="18"/>
+      <path className="wp-tank-wall" d="M95 70V340Q95 360 115 360H705Q725 360 725 340V70"/>
+      <rect className={sea?"wp-water-fill sea":"wp-water-fill fresh"} x="98" y={surfaceY} width="624" height={360-surfaceY}/>
+      <line className="wp-waterline" x1="98" y1={surfaceY} x2="722" y2={surfaceY}/>
+      {sea&&Array.from({length:18},(_,i)=><circle key={i} className="wp-salt-ion" cx={125+(i%9)*68} cy={238+Math.floor(i/9)*72+(i%3)*7} r="4"/>)}
+      <rect className="wp-ice-block-svg" x="330" y="120" width="160" height="118" rx="16"/>
+      <rect className="wp-ice-submerged" x="330" y={surfaceY} width="160" height={238-surfaceY} rx="0"/>
+      <text className="wp-density-label" x="410" y="157" textAnchor="middle">ICE</text>
+      <text className="wp-density-small" x="410" y="178" textAnchor="middle">less dense than liquid water</text>
+      <line className="wp-weight-vector" x1="410" y1="95" x2="410" y2="157" markerEnd="url(#wp-density-down-head)"/>
+      <text className="wp-vector-label" x="430" y="108">weight</text>
+      <line className="wp-upthrust-vector" x1="410" y1="292" x2="410" y2="235" markerEnd="url(#wp-density-up-head)"/>
+      <text className="wp-vector-label" x="430" y="286">upthrust</text>
+      <text className="wp-density-label" x="130" y={surfaceY-14}>{sea?"sea water, higher density":"fresh water"}</text>
+      <line className="wp-submerged-guide" x1="512" y1={surfaceY} x2="600" y2={surfaceY}/>
+      <line className="wp-submerged-guide" x1="600" y1={surfaceY} x2="600" y2="238"/>
+      <text className="wp-density-small" x="612" y={(surfaceY+238)/2}>{sea?"smaller submerged":"submerged"} volume</text>
+      <text className="wp-density-note" x="410" y="386" textAnchor="middle">{sea?"Dissolved salts increase water density, so the same ice block needs to displace less water.":"Ice floats when the upthrust from displaced water balances its weight."}</text>
+    </svg>
+    <p>{sea?"Dissolved salts make sea water denser than fresh water. The same ice block floats slightly higher because a smaller displaced volume provides the required upthrust. Sea water also freezes below 0 °C and boils slightly above 100 °C.":"Ice floats because freezing produces a more open structure, making ice less dense than liquid water."}</p>
   </div>;
 }
 
@@ -51,10 +71,38 @@ function SolventView(){
 
 function SurfaceView(){
   const [detergent,setDetergent]=useState(false);
+  const surfaceMolecules=[145,220,295,370,445,520,595,670];
+  const bulkMolecules=[{x:175,y:265},{x:260,y:300},{x:350,y:275},{x:455,y:305},{x:555,y:270},{x:645,y:310}];
   return <div className="spark-water-surface">
     <div className="spark-water-toggle"><button type="button" className={!detergent?"active":""} onClick={()=>setDetergent(false)}>Clean water</button><button type="button" className={detergent?"active":""} onClick={()=>setDetergent(true)}>With detergent</button></div>
-    <div className={"spark-surface-model "+(detergent?"broken":"intact")}><div className="spark-surface-line"></div><div className="spark-water-insect">insect</div></div>
-    <p>{detergent?"Detergents reduce surface tension by interfering with cohesive forces at the surface.":"Cohesive attraction between water molecules creates surface tension. Small insects can be supported if they do not break the surface."}</p>
+    <svg className="spark-surface-tension-svg" viewBox="0 0 820 410" role="img" aria-label={detergent?"Surfactant molecules at the water surface reducing surface tension":"Water molecules at a clean surface held together by cohesive attraction and supporting an insect leg"}>
+      <rect className="wp-surface-bg" x="0" y="0" width="820" height="410" rx="18"/>
+      <rect className="wp-surface-water" x="60" y="192" width="700" height="178" rx="0 0 16 16"/>
+      <path className={detergent?"wp-interface reduced":"wp-interface"} d={detergent?"M60 192Q145 199 230 190T400 194T570 190T760 195":"M60 192Q145 170 230 192T400 192T570 192T760 192"}/>
+      {!detergent&&surfaceMolecules.slice(0,-1).map((x,i)=><line key={"bond"+i} className="wp-cohesion-bond" x1={x+13} y1="205" x2={surfaceMolecules[i+1]-13} y2="205"/>)}
+      {surfaceMolecules.map((x,i)=><g key={x} className="wp-water-molecule"><circle cx={x} cy="205" r="13"/><text x={x} y="209" textAnchor="middle">H₂O</text></g>)}
+      {bulkMolecules.map((p,i)=><g key={i} className="wp-water-molecule bulk"><circle cx={p.x} cy={p.y} r="13"/><text x={p.x} y={p.y+4} textAnchor="middle">H₂O</text></g>)}
+      {!detergent&&<React.Fragment>
+        <path className="wp-insect-leg-svg" d="M335 82Q365 126 383 174"/>
+        <path className="wp-insect-leg-svg" d="M485 82Q455 126 437 174"/>
+        <ellipse className="wp-insect-body-svg" cx="410" cy="72" rx="82" ry="31"/>
+        <text className="wp-surface-label" x="410" y="48" textAnchor="middle">water-strider body</text>
+        <line className="wp-surface-force" x1="370" y1="184" x2="370" y2="128"/>
+        <line className="wp-surface-force" x1="450" y1="184" x2="450" y2="128"/>
+        <text className="wp-surface-label" x="505" y="145">surface supports the legs</text>
+        <text className="wp-surface-note" x="410" y="395" textAnchor="middle">cohesive attraction between water molecules creates a resistant surface film</text>
+      </React.Fragment>}
+      {detergent&&<React.Fragment>
+        {[175,285,395,505,615].map((x,i)=><g key={x} className="wp-surfactant">
+          <circle className="wp-surfactant-head" cx={x} cy="181" r="10"/>
+          <line className="wp-surfactant-tail" x1={x} y1="191" x2={x+(i%2?8:-8)} y2="235"/>
+        </g>)}
+        <text className="wp-surface-label" x="410" y="86" textAnchor="middle">detergent surfactants collect at the air-water interface</text>
+        <text className="wp-surface-label" x="410" y="120" textAnchor="middle">surface tension decreases</text>
+        <text className="wp-surface-note" x="410" y="395" textAnchor="middle">surfactants disrupt the cohesive surface arrangement, so the surface is easier to deform</text>
+      </React.Fragment>}
+    </svg>
+    <p>{detergent?"Detergents reduce surface tension because surfactant molecules collect at the interface and disrupt the cohesive arrangement of water molecules.":"Cohesive attraction between water molecules creates surface tension. Small insects can be supported if they do not break the surface."}</p>
   </div>;
 }
 
@@ -71,12 +119,37 @@ function OxygenView(){
 function OsmosisView(){
   const [fish,setFish]=useState("fresh");
   const freshwater=fish==="fresh";
+  const externalDots=freshwater?28:8;
+  const internalDots=freshwater?10:20;
   return <div className="spark-water-osmosis">
     <div className="spark-water-toggle"><button type="button" className={freshwater?"active":""} onClick={()=>setFish("fresh")}>Freshwater fish in sea water</button><button type="button" className={!freshwater?"active":""} onClick={()=>setFish("marine")}>Marine fish in fresh water</button></div>
-    <div className="spark-fish-model">
-      <div className="spark-fish-body">fish</div>
-      {freshwater?<><div className="spark-osmosis-arrow out left">→</div><div className="spark-osmosis-arrow out right">→</div></>:<><div className="spark-osmosis-arrow in left">→</div><div className="spark-osmosis-arrow in right">→</div></>}
-    </div>
+    <svg className="spark-water-osmosis-svg" viewBox="0 0 860 420" role="img" aria-label={freshwater?"Freshwater fish in concentrated sea water losing water by osmosis":"Marine fish in dilute fresh water gaining water by osmosis"}>
+      <defs>
+        <marker id="wp-osmosis-head" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" className="wp-osmosis-head"/></marker>
+      </defs>
+      <rect className="wp-osmosis-bg" x="0" y="0" width="860" height="420" rx="18"/>
+      <rect className="wp-external-water" x="42" y="60" width="776" height="305" rx="20"/>
+      {Array.from({length:externalDots},(_,i)=><circle key={"out"+i} className="wp-solute-dot external" cx={70+(i%14)*53} cy={90+Math.floor(i/14)*225+(i%4)*16} r="4"/>)}
+      <path className="wp-fish-body" d="M285 210Q350 130 520 145Q615 155 660 210Q615 267 520 276Q350 292 285 210Z"/>
+      <path className="wp-fish-tail" d="M292 210L205 143L213 210L205 277Z"/>
+      <circle className="wp-fish-eye" cx="610" cy="190" r="7"/>
+      <path className="wp-body-fluid" d="M337 210Q395 166 510 173Q565 178 596 210Q565 242 510 248Q395 255 337 210Z"/>
+      {Array.from({length:internalDots},(_,i)=><circle key={"in"+i} className="wp-solute-dot internal" cx={375+(i%7)*30} cy={192+Math.floor(i/7)*31+(i%2)*5} r="4"/>)}
+      <text className="wp-osmosis-label" x="462" y="215" textAnchor="middle">body fluids</text>
+      <text className="wp-osmosis-label" x="430" y="88" textAnchor="middle">{freshwater?"sea water, more concentrated outside":"fresh water, more dilute outside"}</text>
+      <text className="wp-osmosis-small" x="430" y="338" textAnchor="middle">{freshwater?"water concentration is lower outside the fish":"water concentration is higher outside the fish"}</text>
+      {freshwater?<React.Fragment>
+        <line className="wp-osmosis-arrow" x1="320" y1="170" x2="215" y2="110" markerEnd="url(#wp-osmosis-head)"/>
+        <line className="wp-osmosis-arrow" x1="322" y1="250" x2="218" y2="310" markerEnd="url(#wp-osmosis-head)"/>
+        <line className="wp-osmosis-arrow" x1="586" y1="150" x2="700" y2="108" markerEnd="url(#wp-osmosis-head)"/>
+        <text className="wp-osmosis-flow-label" x="430" y="390" textAnchor="middle">net water movement OUT by osmosis</text>
+      </React.Fragment>:<React.Fragment>
+        <line className="wp-osmosis-arrow" x1="215" y1="110" x2="320" y2="170" markerEnd="url(#wp-osmosis-head)"/>
+        <line className="wp-osmosis-arrow" x1="218" y1="310" x2="322" y2="250" markerEnd="url(#wp-osmosis-head)"/>
+        <line className="wp-osmosis-arrow" x1="700" y1="108" x2="586" y2="150" markerEnd="url(#wp-osmosis-head)"/>
+        <text className="wp-osmosis-flow-label" x="430" y="390" textAnchor="middle">net water movement IN by osmosis</text>
+      </React.Fragment>}
+    </svg>
     <p>{freshwater?"Sea water is more concentrated than the body fluids of a freshwater fish, so water tends to leave its cells by osmosis.":"Fresh water is more dilute than the body fluids of a marine fish, so water tends to enter its cells by osmosis."}</p>
   </div>;
 }
