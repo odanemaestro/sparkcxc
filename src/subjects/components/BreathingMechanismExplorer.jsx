@@ -10,13 +10,44 @@ function MechanismView(){
       <button type="button" className={!inhale?"active":""} onClick={()=>setPhase("exhale")}>Exhalation</button>
     </div>
     <div className={"spark-breathing-chest "+(inhale?"inhale":"exhale")}>
-      <svg viewBox="0 0 700 420" role="img" aria-label={inhale?"Chest changes during inhalation":"Chest changes during exhalation"}>
-        <path className="bm-ribcage" d={inhale?"M165 85Q350 25 535 85Q600 210 535 340Q350 395 165 340Q100 210 165 85Z":"M195 105Q350 55 505 105Q555 210 505 315Q350 355 195 315Q145 210 195 105Z"}/>
-        <path className="bm-lung left" d={inhale?"M225 125Q165 190 195 295Q225 350 315 335Q340 260 325 180Q300 125 225 125Z":"M245 145Q200 200 220 280Q245 320 310 310Q325 250 315 195Q295 150 245 145Z"}/>
-        <path className="bm-lung right" d={inhale?"M475 125Q535 190 505 295Q475 350 385 335Q360 260 375 180Q400 125 475 125Z":"M455 145Q500 200 480 280Q455 320 390 310Q375 250 385 195Q405 150 455 145Z"}/>
-        <path className="bm-diaphragm" d={inhale?"M160 340Q350 365 540 340":"M180 320Q350 255 520 320"}/>
-        <path className="bm-air-arrow" d={inhale?"M350 15V92":"M350 92V15"}/>
-        <text className="bm-air-label" x="365" y="55">{inhale?"air enters":"air leaves"}</text>
+      <svg viewBox="0 0 700 440" role="img" aria-label={inhale?"Chest changes during inhalation":"Chest changes during exhalation"}>
+        <path className="bm-ribcage" d={inhale
+          ?"M155 88Q350 25 545 88Q610 210 545 342Q350 400 155 342Q90 210 155 88Z"
+          :"M190 108Q350 58 510 108Q560 210 510 316Q350 360 190 316Q140 210 190 108Z"}/>
+
+        <path className="bm-trachea" d="M350 30V145M350 142L295 192M350 142L405 192"/>
+        {[65,85,105,125].map(y=><line key={y} className="bm-tracheal-ring" x1="338" y1={y} x2="362" y2={y}/>)}
+
+        <path className="bm-lung left" d={inhale
+          ?"M229 126Q166 190 190 298Q219 354 313 338Q338 265 325 177Q298 124 229 126Z"
+          :"M247 146Q201 201 219 282Q244 322 310 310Q327 253 317 194Q296 149 247 146Z"}/>
+        <path className="bm-lung right" d={inhale
+          ?"M471 126Q534 190 510 298Q481 354 387 338Q362 265 375 177Q402 124 471 126Z"
+          :"M453 146Q499 201 481 282Q456 322 390 310Q373 253 383 194Q404 149 453 146Z"}/>
+
+        <g className="bm-bronchioles">
+          <path d="M295 192Q263 214 246 247M296 193Q312 226 307 270M405 192Q437 214 454 247M404 193Q388 226 393 270"/>
+          <path d="M254 236Q238 263 238 288M446 236Q462 263 462 288"/>
+        </g>
+
+        <g className="bm-ribs">
+          {[0,1,2,3,4].map(i=>{
+            const y=115+i*45;
+            const leftX=inhale?145+i*3:180+i*2;
+            const rightX=inhale?555-i*3:520-i*2;
+            return <path key={i} d={`M${leftX} ${y}Q350 ${y-45} ${rightX} ${y}`}/>;
+          })}
+        </g>
+
+        <path className="bm-sternum" d="M350 102V315"/>
+        <path className="bm-diaphragm" d={inhale?"M150 340Q350 365 550 340":"M180 320Q350 255 520 320"}/>
+
+        <path className="bm-air-arrow" d={inhale?"M350 5V65":"M350 65V5"}/>
+        <text className="bm-air-label" x="370" y="42">{inhale?"air enters":"air leaves"}</text>
+
+        <path className="bm-rib-arrow left" d={inhale?"M165 215L115 180":"M120 180L170 215"}/>
+        <path className="bm-rib-arrow right" d={inhale?"M535 215L585 180":"M580 180L530 215"}/>
+        <text className="bm-rib-label" x="350" y="405" textAnchor="middle">{inhale?"ribs move up and out; diaphragm flattens":"ribs move down and in; diaphragm domes upward"}</text>
       </svg>
       <div className="spark-breathing-facts">
         <article><span>Diaphragm</span><strong>{inhale?"contracts and flattens":"relaxes and becomes dome-shaped"}</strong></article>
