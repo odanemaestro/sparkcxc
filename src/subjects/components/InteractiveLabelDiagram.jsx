@@ -119,50 +119,50 @@ function LightMicroscopeTemplate() {
 
 function FlowerLongitudinalTemplate() {
   return (
-    <g className="spark-diagram-flower" aria-hidden="true">
-      <path className="flower-petal left" d="M500 310 C390 305 300 230 305 125 C390 135 465 195 500 285Z" />
-      <path className="flower-petal right" d="M500 310 C610 305 700 230 695 125 C610 135 535 195 500 285Z" />
-      <path className="flower-petal far-left" d="M485 305 C410 270 365 165 410 80 C475 130 505 205 500 285Z" />
-      <path className="flower-petal far-right" d="M515 305 C590 270 635 165 590 80 C525 130 495 205 500 285Z" />
+    <g className="spark-diagram-flower spark-csec-reference" aria-hidden="true">
+      <g transform="translate(130 5) scale(1.85 1.6)">
+        <path className="flower-stalk" d="M192 300V240M208 300V240" />
+        <path className="flower-receptacle" d="M192 240Q160 230 155 215H245Q240 230 208 240Z" />
 
-      <path className="flower-sepal left" d="M455 335 C385 350 340 330 315 290 C375 285 425 300 465 320Z" />
-      <path className="flower-sepal right" d="M545 335 C615 350 660 330 685 290 C625 285 575 300 535 320Z" />
+        <path className="flower-ovary" d="M172 215Q166 175 192 160H208Q234 175 228 215Z" />
+        <g className="flower-ovules">
+          <ellipse className="flower-ovule" cx="190" cy="178" rx="5" ry="4" />
+          <ellipse className="flower-ovule" cx="210" cy="178" rx="5" ry="4" />
+          <ellipse className="flower-ovule" cx="190" cy="195" rx="5" ry="4" />
+          <ellipse className="flower-ovule" cx="210" cy="195" rx="5" ry="4" />
+        </g>
 
-      <ellipse className="flower-ovary" cx="500" cy="360" rx="92" ry="72" />
-      <ellipse className="flower-ovule" cx="465" cy="350" rx="18" ry="26" />
-      <ellipse className="flower-ovule" cx="535" cy="350" rx="18" ry="26" />
-      <ellipse className="flower-ovule" cx="500" cy="388" rx="18" ry="24" />
+        <path className="flower-style" d="M196 160V85H204V160Z" />
+        <path className="flower-stigma" d="M196 85Q186 77 188 69Q194 73 200 73Q206 73 212 69Q214 77 204 85Z" />
 
-      <path className="flower-style" d="M490 300 L490 145 Q500 120 510 145 L510 300Z" />
-      <path className="flower-stigma" d="M462 125 Q500 90 538 125 Q520 150 500 145 Q480 150 462 125Z" />
+        <path className="flower-sepal left" d="M155 215Q115 215 100 245Q130 235 160 225Z" />
+        <path className="flower-sepal right" d="M245 215Q285 215 300 245Q270 235 240 225Z" />
 
-      <g className="flower-stamens">
-        <path d="M430 310 Q405 245 400 185" />
-        <path d="M465 305 Q455 230 460 165" />
-        <path d="M535 305 Q545 230 540 165" />
-        <path d="M570 310 Q595 245 600 185" />
-        <ellipse cx="398" cy="175" rx="28" ry="13" transform="rotate(-18 398 175)" />
-        <ellipse cx="460" cy="155" rx="28" ry="13" transform="rotate(-8 460 155)" />
-        <ellipse cx="540" cy="155" rx="28" ry="13" transform="rotate(8 540 155)" />
-        <ellipse cx="602" cy="175" rx="28" ry="13" transform="rotate(18 602 175)" />
+        <path className="flower-petal left" d="M158 212Q80 180 65 90Q120 120 164 205Z" />
+        <path className="flower-petal right" d="M242 212Q320 180 335 90Q280 120 236 205Z" />
+
+        <g className="flower-stamens">
+          <path d="M166 212Q145 160 138 110" />
+          <ellipse cx="136" cy="100" rx="7" ry="13" transform="rotate(-15 136 100)" />
+          <path d="M234 212Q255 160 262 110" />
+          <ellipse cx="264" cy="100" rx="7" ry="13" transform="rotate(15 264 100)" />
+        </g>
       </g>
-
-      <path className="flower-receptacle" d="M420 415 Q500 450 580 415 L555 445 Q500 470 445 445Z" />
-      <path className="flower-stalk" d="M485 445 L480 535 L520 535 L515 445Z" />
     </g>
   );
 }
 
 function BeanSeedTemplate() {
   return (
-    <g className="spark-diagram-seed" aria-hidden="true">
-      <path className="seed-testa" d="M280 310 C285 170 405 95 560 115 C690 132 755 235 720 355 C685 475 545 525 410 485 C320 458 278 395 280 310Z" />
-      <path className="seed-cotyledon left" d="M310 315 C315 205 400 140 500 145 C485 235 470 365 495 455 C390 470 310 415 310 315Z" />
-      <path className="seed-cotyledon right" d="M505 145 C620 145 700 220 690 325 C680 420 600 470 510 455 C535 350 530 235 505 145Z" />
-      <path className="seed-embryo-axis" d="M485 190 Q515 215 510 260 L505 380 Q500 420 470 445" />
-      <path className="seed-plumule" d="M485 195 Q455 160 440 195 Q465 205 485 220 Q515 180 535 205 Q510 220 495 232" />
-      <path className="seed-radicle" d="M505 372 Q515 415 470 448 Q470 420 490 385Z" />
-      <circle className="seed-hilum" cx="300" cy="360" r="15" />
+    <g className="spark-diagram-seed spark-csec-reference" aria-hidden="true">
+      <g transform="translate(150 20) scale(1.8 2)">
+        <path className="seed-testa" d="M60 120Q60 40 170 40Q280 40 290 110Q295 190 180 200Q70 205 60 120Z" />
+        <path className="seed-cotyledon" d="M72 120Q72 54 170 54Q268 54 276 112Q280 182 180 188Q84 192 72 120Z" />
+
+        <path className="seed-radicle" d="M95 120Q87 140 101 154Q111 162 117 148Q119 130 109 118Z" />
+        <path className="seed-plumule" d="M104 118Q114 96 138 92Q132 100 128 106Q138 104 146 110Q130 114 122 122Z" />
+        <path className="seed-embryo-axis" d="M109 118Q116 125 116 143Q114 151 107 156" />
+      </g>
     </g>
   );
 }
