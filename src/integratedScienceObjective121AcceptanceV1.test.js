@@ -52,6 +52,24 @@ describe("Integrated Science Objective 1.2.1 acceptance audit", () => {
     expect(explorer).toContain("Fertilisation");
   });
 
+  test("renders chromosome-number changes for mitosis, meiosis and fertilisation", () => {
+    for (const term of [
+      "spark-asexual-repro-svg",
+      "spark-sexual-repro-svg",
+      "diploid, 2n",
+      "chromosome number is maintained",
+      "offspring are genetically identical clones, 2n",
+      "halves chromosome number",
+      "male gamete, n",
+      "female gamete, n",
+      "zygote, 2n",
+      "Fertilisation restores the diploid chromosome number"
+    ]) expect(explorer).toContain(term);
+    expect(css).toContain(".spark-repro-chromosome");
+    expect(css).toContain(".repro-meiosis-box");
+    expect(css).toContain(".repro-gametes");
+  });
+
   test("visual is responsive and dark-mode ready", () => {
     expect(css).toContain("@media(max-width:850px)");
     expect(css).toContain("@media(max-width:560px)");
