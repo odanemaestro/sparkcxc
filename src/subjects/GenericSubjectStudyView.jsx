@@ -96,6 +96,7 @@ import ForcePrinciplesExplorer from "./components/ForcePrinciplesExplorer";
 import GravityInertiaExplorer from "./components/GravityInertiaExplorer";
 import StabilityCentreGravityExplorer from "./components/StabilityCentreGravityExplorer";
 import EquilibriumMomentsExplorer from "./components/EquilibriumMomentsExplorer";
+import MomentumConservationExplorer from "./components/MomentumConservationExplorer";
 import MaterialPropertiesExplorer from "./components/MaterialPropertiesExplorer";
 import MetalReactivityExplorer from "./components/MetalReactivityExplorer";
 import AluminiumUtensilsExplorer from "./components/AluminiumUtensilsExplorer";
@@ -554,6 +555,9 @@ function GenericLessonContent({
         }
         if (model?.type === "equilibrium-moments") {
           return <EquilibriumMomentsExplorer key={model.id || "equilibrium-moments"} />;
+        }
+        if (model?.type === "momentum-conservation") {
+          return <MomentumConservationExplorer key={model.id || "momentum-conservation"} />;
         }
         if (model?.type === "material-properties") {
           return <MaterialPropertiesExplorer key={model.id || "material-properties"} />;
