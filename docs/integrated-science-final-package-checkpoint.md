@@ -6,9 +6,9 @@ Branch: `integrated-science-acceptance-audit`
 
 The full content/visual package immediately before this checkpoint commit is:
 
-`1096c3625bef6cf49d7000ba88457a2ec310caaf`
+`2668d9987b1a8e5ee586fda47a446ce45882b416`
 
-SPARK Quality Gate run 867 was started against that exact content SHA during final packaging.
+SPARK Quality Gate run 869 was started against that exact final-package SHA during final packaging.
 
 If the chat/session is interrupted, resume from this branch and first check the latest branch HEAD and the Quality Gate result. Do not restart the broad content audit unless the final gate exposes a specific regression.
 
@@ -24,6 +24,12 @@ Completed:
 - regression tests for the new scientific diagrams and mechanisms
 - water cycle, hurricane, volcano, hydroponics, microbiology, tooth, dengue, mould, aflatoxin, vertebral column, galvanising, hazards, blocked drains, smell/taste/skin receptors, disease routes, asthma, work/force-displacement, transformer induction and space-suit life-support upgrades
 - preservation of already-strong anatomy/apparatus diagrams instead of unnecessary redraws
+
+## Current final-package state
+
+- Final packaging head before this checkpoint update: `2668d9987b1a8e5ee586fda47a446ce45882b416`
+- Run 869 is the exact-head SPARK Quality Gate for that SHA.
+- The stale PostgreSQL `DO $ ... END $;` assertion was corrected on the final package head.
 
 ## Final package tasks remaining
 
