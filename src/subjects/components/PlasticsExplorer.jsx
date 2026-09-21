@@ -26,9 +26,48 @@ function UsesView(){
 
 function PersistenceView(){
   return <div className="spark-plastics-persistence">
-    <article><span>NON-BIODEGRADABLE</span><h4>Most common plastics break down very slowly</h4><p>Microorganisms do not easily digest the long synthetic polymer chains in many conventional plastics.</p></article>
-    <article><span>FRAGMENTATION</span><h4>Smaller does not mean gone</h4><p>Sunlight, heat and abrasion can fragment plastic into smaller pieces without fully mineralising it.</p></article>
-    <article><span>LANDFILL AND LITTER</span><h4>Waste can persist for decades or longer</h4><p>Durability is useful during a product's life but becomes a problem when discarded material is poorly managed.</p></article>
+    <svg className="spark-plastic-persistence-svg" viewBox="0 0 980 470" role="img" aria-label="Plastic persistence diagram showing a large plastic item fragmenting under sunlight, heat and abrasion into smaller fragments and microplastics without complete biodegradation">
+      <defs>
+        <marker id="plastic-fragment-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" className="pp-arrow-head"/></marker>
+      </defs>
+      <rect className="pp-environment" x="0" y="0" width="980" height="470"/>
+      <circle className="pp-sun" cx="105" cy="90" r="42"/>
+      <path className="pp-sun-ray" d="M105 24V4M105 176V156M39 90H19M191 90H171M59 44L43 28M151 136L167 152M151 44L167 28M59 136L43 152"/>
+      <text className="pp-label" x="105" y="154" textAnchor="middle">UV sunlight + heat</text>
+
+      <path className="pp-bottle" d="M220 105H320V145Q350 166 350 205V352Q350 388 315 398H225Q190 388 190 352V205Q190 166 220 145Z"/>
+      <rect className="pp-cap" x="232" y="78" width="76" height="35" rx="8"/>
+      <text className="pp-label" x="270" y="432" textAnchor="middle">discarded plastic item</text>
+      <path className="pp-stress" d="M250 182L285 218L250 254L290 292L250 326"/>
+      <text className="pp-small" x="270" y="55" textAnchor="middle">weathering weakens the material</text>
+
+      <path className="pp-arrow" d="M382 238H470" markerEnd="url(#plastic-fragment-arrow)"/>
+      <text className="pp-label" x="426" y="206" textAnchor="middle">fragmentation</text>
+      <text className="pp-small" x="426" y="265" textAnchor="middle">abrasion + cracking</text>
+
+      <g className="pp-fragments">
+        <path d="M520 150L590 172L564 235L498 216Z"/>
+        <path d="M604 138L660 165L645 220L588 207Z"/>
+        <path d="M530 262L580 242L612 294L554 318Z"/>
+        <path d="M632 255L687 238L711 294L653 316Z"/>
+      </g>
+      <text className="pp-label" x="603" y="355" textAnchor="middle">smaller plastic fragments</text>
+
+      <path className="pp-arrow" d="M725 238H795" markerEnd="url(#plastic-fragment-arrow)"/>
+      <g className="pp-microplastics">
+        {Array.from({length:24},(_,i)=><circle key={i} cx={835+(i%6)*18} cy={165+Math.floor(i/6)*30} r={4+(i%3)}/>)}
+      </g>
+      <text className="pp-label" x="875" y="330" textAnchor="middle">microplastics</text>
+
+      <path className="pp-not-equal" d="M505 405H690"/>
+      <text className="pp-warning" x="598" y="392" textAnchor="middle">fragmentation ≠ biodegradation</text>
+      <text className="pp-small" x="598" y="431" textAnchor="middle">smaller pieces still contain plastic polymer unless the material is chemically broken down</text>
+    </svg>
+    <div className="spark-plastics-persistence-notes">
+      <article><span>NON-BIODEGRADABLE</span><h4>Most common plastics break down very slowly</h4><p>Microorganisms do not easily digest the long synthetic polymer chains in many conventional plastics.</p></article>
+      <article><span>FRAGMENTATION</span><h4>Smaller does not mean gone</h4><p>Sunlight, heat and abrasion can fragment plastic into smaller pieces without fully mineralising it.</p></article>
+      <article><span>LANDFILL AND LITTER</span><h4>Waste can persist for decades or longer</h4><p>Durability is useful during a product's life but becomes a problem when discarded material is poorly managed.</p></article>
+    </div>
   </div>;
 }
 
@@ -95,14 +134,15 @@ function BurningView(){
 
 function RsView(){
   const [mode,setMode]=useState("refuse");
-  const data={
+  const options={
     refuse:{title:"Refuse",text:"Avoid unnecessary single-use items, for example carry a reusable shopping bag instead of accepting a new plastic bag."},
     reduce:{title:"Reduce",text:"Use fewer disposable plastic products and choose refillable or longer-lasting alternatives."},
     reuse:{title:"Reuse",text:"Use suitable durable containers and bags repeatedly before disposal."},
     recycle:{title:"Recycle",text:"Where collection and processing exist, recycling can reduce landfill waste and reduce demand for virgin raw material."}
-  }[mode];
+  };
+  const data=options[mode];
   return <div className="spark-plastics-rs">
-    <div className="spark-plastics-toggle">{Object.keys(data).map(k=><button type="button" key={k} className={mode===k?"active":""} onClick={()=>setMode(k)}>{data[k].title}</button>)}</div>
+    <div className="spark-plastics-toggle">{Object.entries(options).map(([key,item])=><button type="button" key={key} className={mode===key?"active":""} onClick={()=>setMode(key)}>{item.title}</button>)}</div>
     <article><span>{data.title.toUpperCase()}</span><h4>{data.title}</h4><p>{data.text}</p></article>
   </div>;
 }
