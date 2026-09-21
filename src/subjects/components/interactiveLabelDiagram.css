@@ -257,6 +257,10 @@ body[data-theme="dark"] .spark-label-diagram-actions button:disabled,
 .spark-diagram-heart .heart-side-label{font-size:15px;font-weight:900}
 .spark-diagram-heart .heart-side-label.deoxygenated{fill:#315f7c}
 .spark-diagram-heart .heart-side-label.oxygenated{fill:#913f3f}
+.spark-diagram-heart .heart-aortic-branch{fill:none;stroke:#bd6262;stroke-width:12;stroke-linecap:round}
+.spark-diagram-heart .heart-pulmonary-artery.branch{stroke-width:13}
+.spark-diagram-heart .heart-semilunar{fill:none;stroke:#f8f2e6;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+
 @media(max-width:560px){
   .spark-diagram-heart .heart-side-label{font-size:19px}
 }
@@ -271,6 +275,10 @@ body[data-theme="dark"] .spark-label-diagram-actions button:disabled,
 .spark-diagram-kidney .kidney-artery{stroke:#b74a4a;stroke-width:15;stroke-linecap:round}
 .spark-diagram-kidney .kidney-vein{stroke:#4d7fa7;stroke-width:15;stroke-linecap:round}
 .spark-diagram-kidney .kidney-orientation{fill:#526b7d;font-size:14px;font-weight:850}
+.spark-diagram-kidney .kidney-capsule{fill:#d88794;stroke:#8d4f5b;stroke-width:5}
+.spark-diagram-kidney .kidney-calyces path{fill:none;stroke:#d9b7a0;stroke-width:7;stroke-linecap:round}
+.spark-diagram-kidney .kidney-hilum{fill:#f0d6c7;stroke:#a47a65;stroke-width:3}
+
 .spark-diagram-nephron .nephron-bowman{fill:#f3ddd0;stroke:#a8785c;stroke-width:5}
 .spark-diagram-nephron .nephron-glomerulus{fill:none;stroke:#b84c57;stroke-width:9;stroke-linecap:round}
 .spark-diagram-nephron .nephron-afferent{stroke:#b84c57;stroke-width:16;stroke-linecap:round}
@@ -313,6 +321,10 @@ body[data-theme="dark"] .spark-label-diagram-actions button:disabled,
 .spark-diagram-eye .eye-optic-nerve{fill:#d9c08c;stroke:#95794a;stroke-width:5}
 .spark-diagram-eye .eye-fovea{fill:#d28a48;stroke:#985b25;stroke-width:3}
 .spark-diagram-eye .eye-blind-spot{fill:#83694b;stroke:#5f4a35;stroke-width:3}
+.spark-diagram-eye .eye-vitreous{fill:#e8f5fb;fill-opacity:.86;stroke:#9ec9db;stroke-width:3}
+.spark-diagram-eye .eye-aqueous{fill:#dff3fa;fill-opacity:.88;stroke:#8ebdce;stroke-width:3}
+.spark-diagram-eye .eye-optic-disc{fill:none;stroke:#9e7c50;stroke-width:4;stroke-linecap:round}
+
 
 
 /* SPARK_MAMMALIAN_EAR_TEMPLATE_V1 */
@@ -326,6 +338,9 @@ body[data-theme="dark"] .spark-label-diagram-actions button:disabled,
 .spark-diagram-ear .ear-auditory-nerve{fill:none;stroke:#8f6ba7;stroke-width:14;stroke-linecap:round}
 .spark-diagram-ear .ear-semicircular path{fill:none;stroke:#77a993;stroke-width:16;stroke-linecap:round}
 .spark-diagram-ear .ear-eustachian{fill:none;stroke:#6d98ad;stroke-width:14;stroke-linecap:round}
+.spark-diagram-ear .ear-vestibule{fill:#c8dfd5;stroke:#648d7d;stroke-width:5}
+.spark-diagram-ear .ear-ossicles .malleus,.spark-diagram-ear .ear-ossicles .incus,.spark-diagram-ear .ear-ossicles .stapes{fill:none;stroke:#cdbb9d;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
+
 
 
 /* SPARK_HUMAN_BRAIN_TEMPLATE_V1 */
