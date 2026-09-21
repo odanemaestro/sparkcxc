@@ -30,19 +30,49 @@ function DevelopmentView(){
 }
 
 function StructureView(){
+  const rainbands=[
+    "M170 300Q220 130 390 100Q565 70 690 205Q760 300 690 390",
+    "M210 375Q320 455 470 420Q620 388 670 255Q700 150 620 88",
+    "M260 120Q135 220 205 350Q275 455 420 440",
+    "M650 350Q730 240 650 145Q565 45 420 78",
+    "M285 170Q355 105 455 115Q565 125 610 220Q650 310 585 370",
+    "M555 390Q455 450 355 402Q265 360 260 265Q255 190 315 145"
+  ];
   return <div className="spark-hurricane-structure">
-    <svg viewBox="0 0 820 460" role="img" aria-label="Simplified hurricane with eye, eyewall and spiral rainbands">
-      <circle className="hw-band outer" cx="410" cy="225" r="175"/>
-      <circle className="hw-band middle" cx="410" cy="225" r="125"/>
-      <circle className="hw-eyewall" cx="410" cy="225" r="72"/>
-      <circle className="hw-eye" cx="410" cy="225" r="35"/>
-      <path className="hw-spiral" d="M250 140Q360 70 480 115Q590 155 575 280Q555 365 445 385"/>
-      <path className="hw-spiral" d="M570 135Q650 230 570 335Q465 425 330 355Q210 300 225 190"/>
-      <line className="hw-callout" x1="445" y1="225" x2="670" y2="95"/><text className="hw-label" x="680" y="92">eye: relatively calm centre</text>
-      <line className="hw-callout" x1="480" y1="175" x2="680" y2="175"/><text className="hw-label" x="690" y="180">eyewall: strongest winds and rain</text>
-      <line className="hw-callout" x1="290" y1="315" x2="125" y2="365"/><text className="hw-label" x="115" y="385">spiral rainbands</text>
+    <svg className="spark-hurricane-structure-svg" viewBox="0 0 900 540" role="img" aria-label="Top view of a hurricane showing a relatively calm eye, surrounding eyewall, curved spiral rainbands and inward surface flow toward the low-pressure centre">
+      <defs>
+        <marker id="hw-structure-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path d="M0 0L9 4.5L0 9Z" className="hw-structure-arrow-head"/>
+        </marker>
+      </defs>
+      <rect className="hw-structure-bg" x="0" y="0" width="900" height="540" rx="20"/>
+
+      <g className="hw-rainbands">
+        {rainbands.map((d,i)=><path key={i} className={"hw-spiral-band band-"+i} d={d}/>)}
+      </g>
+
+      <circle className="hw-eyewall-ring" cx="445" cy="270" r="92"/>
+      <circle className="hw-eye-core" cx="445" cy="270" r="42"/>
+      <text className="hw-eye-text" x="445" y="276" textAnchor="middle">EYE</text>
+
+      <g className="hw-surface-inflow-top">
+        <path d="M110 420Q235 400 325 340" markerEnd="url(#hw-structure-arrow)"/>
+        <path d="M780 420Q655 395 570 340" markerEnd="url(#hw-structure-arrow)"/>
+        <path d="M120 115Q245 135 330 195" markerEnd="url(#hw-structure-arrow)"/>
+      </g>
+
+      <line className="hw-callout" x1="487" y1="270" x2="690" y2="110"/>
+      <text className="hw-label" x="704" y="106">eye: relatively calm centre</text>
+
+      <line className="hw-callout" x1="515" y1="215" x2="704" y2="200"/>
+      <text className="hw-label" x="718" y="205">eyewall: strongest winds and rain</text>
+
+      <line className="hw-callout" x1="275" y1="385" x2="105" y2="455"/>
+      <text className="hw-label" x="92" y="475">curved spiral rainbands</text>
+
+      <text className="hw-small-label" x="445" y="505" textAnchor="middle">surface air spirals inward toward lower pressure and rises strongly near the eyewall</text>
     </svg>
-    <p>A hurricane is a low-pressure tropical cyclone. Air spirals inward and rises around the centre. The eye is relatively calm, while the surrounding eyewall contains the strongest winds.</p>
+    <p>A hurricane is a low-pressure tropical cyclone. Its cloud and rain bands curve around a central eye rather than forming simple circular rings. Surface air spirals inward toward lower pressure and rises strongly in the eyewall, where the most intense winds and rainfall occur.</p>
   </div>;
 }
 
