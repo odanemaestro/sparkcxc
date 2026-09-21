@@ -516,3 +516,8 @@ body[data-theme="dark"] .spark-label-diagram-actions button:disabled,
 @media(max-width:560px){
   .spark-reference-refined .repro-orientation{font-size:19px}
 }
+
+.spark-diagram-cell .plant-central-vacuole{fill:#e7f7ff;stroke:#7fb6cd;stroke-width:5}
+.spark-diagram-cell .plant-er path{stroke:#7c6bb0}
+.spark-diagram-cell .plant-golgi path{stroke:#e07b9b}
+.spark-diagram-cell .golgi-vesicle{fill:#f1a3bb;stroke:#b95e7d;stroke-width:2}
