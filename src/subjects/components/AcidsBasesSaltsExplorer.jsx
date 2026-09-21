@@ -48,6 +48,47 @@ function NeutralisationView(){
   }[context];
   return <div className="spark-neutralisation-view">
     <div className="spark-acidbase-buttons">{["general","stomach","soil","sewage","cooking"].map(k=><button type="button" key={k} className={context===k?"active":""} onClick={()=>setContext(k)}>{k==="general"?"General":k[0].toUpperCase()+k.slice(1)}</button>)}</div>
+    {context==="general"&&<svg className="spark-neutralisation-svg" viewBox="0 0 940 450" role="img" aria-label="Particle model of acid-base neutralisation showing hydrogen ions reacting with hydroxide ions to form water while spectator ions remain in solution">
+      <defs>
+        <marker id="ab-reaction-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+          <path className="ab-arrow-head" d="M0 0L10 5L0 10Z"/>
+        </marker>
+      </defs>
+      <g transform="translate(35 65)">
+        <rect className="ab-beaker" x="0" y="0" width="250" height="280" rx="18"/>
+        <path className="ab-acid-water" d="M12 90H238V258Q238 268 228 268H22Q12 268 12 258Z"/>
+        <text className="ab-title" x="125" y="-20" textAnchor="middle">acid solution</text>
+        {[[58,125,"H⁺"],[128,155,"H⁺"],[195,118,"H⁺"],[88,220,"Cl⁻"],[180,215,"Cl⁻"]].map(([x,y,t],i)=><g key={i} className={t==="H⁺"?"ab-ion hydrogen":"ab-ion spectator"}><circle cx={x} cy={y} r="22"/><text x={x} y={y+5} textAnchor="middle">{t}</text></g>)}
+      </g>
+
+      <text className="ab-plus-sign" x="315" y="220">+</text>
+
+      <g transform="translate(345 65)">
+        <rect className="ab-beaker" x="0" y="0" width="250" height="280" rx="18"/>
+        <path className="ab-alkali-water" d="M12 90H238V258Q238 268 228 268H22Q12 268 12 258Z"/>
+        <text className="ab-title" x="125" y="-20" textAnchor="middle">alkali solution</text>
+        {[[58,125,"OH⁻"],[128,155,"OH⁻"],[195,118,"OH⁻"],[88,220,"Na⁺"],[180,215,"Na⁺"]].map(([x,y,t],i)=><g key={i} className={t==="OH⁻"?"ab-ion hydroxide":"ab-ion spectator"}><circle cx={x} cy={y} r="22"/><text x={x} y={y+5} textAnchor="middle">{t}</text></g>)}
+      </g>
+
+      <path className="ab-main-arrow" d="M620 205H700" markerEnd="url(#ab-reaction-arrow)"/>
+
+      <g transform="translate(705 65)">
+        <rect className="ab-beaker" x="0" y="0" width="200" height="280" rx="18"/>
+        <path className="ab-neutral-water" d="M12 90H188V258Q188 268 178 268H22Q12 268 12 258Z"/>
+        <text className="ab-title" x="100" y="-20" textAnchor="middle">after neutralisation</text>
+        <g className="ab-water-molecules">
+          <g transform="translate(62 135)"><circle className="oxygen" r="18"/><circle className="hydrogen" cx="-18" cy="16" r="10"/><circle className="hydrogen" cx="18" cy="16" r="10"/><text x="0" y="55" textAnchor="middle">H₂O</text></g>
+          <g transform="translate(135 175)"><circle className="oxygen" r="18"/><circle className="hydrogen" cx="-18" cy="16" r="10"/><circle className="hydrogen" cx="18" cy="16" r="10"/><text x="0" y="55" textAnchor="middle">H₂O</text></g>
+        </g>
+        <g className="ab-spectator-after">
+          <circle cx="55" cy="235" r="18"/><text x="55" y="240" textAnchor="middle">Na⁺</text>
+          <circle cx="145" cy="235" r="18"/><text x="145" y="240" textAnchor="middle">Cl⁻</text>
+        </g>
+      </g>
+
+      <text className="ab-equation-label" x="470" y="410" textAnchor="middle">H⁺ + OH⁻ → H₂O</text>
+      <text className="ab-caption" x="470" y="438" textAnchor="middle">hydrogen ions and hydroxide ions form water; other ions remain dissolved and make the salt solution</text>
+    </svg>}
     <div className="spark-neutral-equation">{data[0]}</div>
     <p>{data[1]}</p>
   </div>;
@@ -55,6 +96,38 @@ function NeutralisationView(){
 
 function CarbonateView(){
   return <div className="spark-carbonate-view">
+    <svg className="spark-carbonate-reaction-svg" viewBox="0 0 940 500" role="img" aria-label="Acid reacting with calcium carbonate in a flask to produce carbon dioxide gas collected and tested with limewater">
+      <defs>
+        <marker id="ab-gas-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+          <path className="ab-arrow-head" d="M0 0L10 5L0 10Z"/>
+        </marker>
+      </defs>
+
+      <g transform="translate(70 85)">
+        <path className="ab-reaction-flask" d="M100 0V75L35 250Q22 285 55 300H245Q278 285 265 250L200 75V0Z"/>
+        <path className="ab-reaction-liquid" d="M72 205Q150 188 228 205L260 275Q263 286 247 290H53Q37 286 40 275Z"/>
+        <g className="ab-carbonate-chips">
+          <path d="M95 250l28-18 20 24-30 18Z"/><path d="M150 260l24-20 25 18-19 27Z"/><path d="M205 248l20-17 18 22-22 22Z"/>
+        </g>
+        {[115,145,175,205].map((x,i)=><circle key={x} className="ab-gas-bubble" cx={x} cy={185-i*25} r={8+i%2*2}/>)}
+        <text className="ab-label" x="150" y="335" textAnchor="middle">acid + calcium carbonate</text>
+      </g>
+
+      <path className="ab-delivery-tube" d="M270 90V55Q270 30 300 30H590Q620 30 620 65V205"/>
+      <path className="ab-gas-flow" d="M330 30H565" markerEnd="url(#ab-gas-arrow)"/>
+      <text className="ab-label" x="445" y="18" textAnchor="middle">carbon dioxide travels through delivery tube</text>
+
+      <g transform="translate(600 195)">
+        <rect className="ab-limewater-beaker" x="0" y="0" width="230" height="205" rx="16"/>
+        <path className="ab-limewater" d="M12 80H218V185Q218 193 210 193H20Q12 193 12 185Z"/>
+        <path className="ab-dip-tube" d="M20 10H65V155"/>
+        {[72,90,108,126].map((y,i)=><circle key={y} className="ab-gas-bubble" cx={65+(i%2)*12} cy={y} r="7"/>)}
+        <path className="ab-milky-cloud" d="M85 120Q115 95 145 120Q175 102 195 132Q170 155 140 150Q110 160 85 140Z"/>
+        <text className="ab-label" x="115" y="230" textAnchor="middle">limewater turns milky</text>
+      </g>
+
+      <text className="ab-caption" x="470" y="468" textAnchor="middle">acid + carbonate → salt + water + carbon dioxide</text>
+    </svg>
     <div className="spark-carbonate-equation"><span>acid</span><b>+</b><span>carbonate</span><b>→</b><span>salt</span><b>+</b><span>water</span><b>+</b><span>carbon dioxide</span></div>
     <article><span>LIMESTONE</span><h4>Calcium carbonate reacts with acids</h4><p>Acidic rainwater or pollution can react with limestone, gradually damaging buildings and monuments made from carbonate rock.</p></article>
   </div>;
