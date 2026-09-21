@@ -35,28 +35,62 @@ const CONDITIONS = {
   },
 };
 
-function CubeScene({size}) {
+function CubeScene({size,time}) {
   const selected = CUBES[size];
+  const penetration = Number(time) * 12;
+
   return (
     <div className="spark-transport-need-cube-layout">
-      <svg viewBox="0 0 760 390" role="img" aria-label={"Agar cube surface-area-to-volume model for a " + selected.side + " centimetre cube"}>
+      <svg viewBox="0 0 760 410" role="img" aria-label={"Agar cube diffusion model for a " + selected.side + " centimetre cube"}>
+        <g className="tn-diffusion-legend" transform="translate(80 48)">
+          <rect className="tn-penetrated-swatch" x="0" y="0" width="22" height="22" rx="4" />
+          <text x="32" y="17">acid penetrated</text>
+          <rect className="tn-core-swatch" x="190" y="0" width="22" height="22" rx="4" />
+          <text x="222" y="17">undiffused core</text>
+        </g>
+
         {[1,2,3].map((cube,index) => {
           const x = 80 + index*225;
           const side = 50 + cube*28;
           const y = 245-side/2;
           const active = Number(size) === cube;
+          const inset = Math.min(side/2,penetration);
+          const coreSide = Math.max(0,side-(inset*2));
+
           return (
             <g key={cube} className={active ? "tn-cube-group active" : "tn-cube-group"}>
               <rect className="tn-cube-front" x={x} y={y} width={side} height={side} />
               <path className="tn-cube-top" d={"M"+x+" "+y+"l28-24h"+side+"l-28 24Z"} />
               <path className="tn-cube-side" d={"M"+(x+side)+" "+y+"l28-24v"+side+"l-28 24Z"} />
-              <path className="tn-diffusion-edge" d={"M"+(x+10)+" "+(y+10)+"h"+(side-20)+"v"+(side-20)+"h-"+(side-20)+"Z"} />
+
+              {coreSide > 2 && (
+                <rect
+                  className="tn-undiffused-core"
+                  x={x+inset}
+                  y={y+inset}
+                  width={coreSide}
+                  height={coreSide}
+                  rx={Math.min(8,coreSide/5)}
+                />
+              )}
+
+              {coreSide <= 2 && Number(time) > 0 && (
+                <text className="tn-centre-reached" x={x+side/2} y={y+side/2+5} textAnchor="middle">
+                  centre reached
+                </text>
+              )}
+
               <text className="tn-cube-label" x={x+side/2+12} y="350" textAnchor="middle">{cube} cm cube</text>
               <text className="tn-cube-ratio" x={x+side/2+12} y="372" textAnchor="middle">SA:V {CUBES[cube].ratio}:1</text>
             </g>
           );
         })}
+
+        <text className="tn-time-label" x="380" y="402" textAnchor="middle">
+          Same diffusion time for all three cubes
+        </text>
       </svg>
+
       <aside>
         <span>Selected cube</span>
         <strong>{selected.side} cm</strong>
@@ -66,10 +100,10 @@ function CubeScene({size}) {
           <div><dt>SA:V</dt><dd>{selected.ratio}:1</dd></div>
         </dl>
         <p>{selected.side === 1
-          ? "The smallest cube has the largest surface area relative to its volume, so acid reaches the centre fastest."
+          ? "The smallest cube has the largest surface area relative to its volume and the shortest path to the centre, so the undiffused core disappears first."
           : selected.side === 2
-            ? "For the 2 cm cube, 24 cm² ÷ 8 cm³ gives a surface-area-to-volume ratio of 3:1."
-            : "The 3 cm cube has the smallest surface area relative to its volume, so diffusion to the centre takes longer."}</p>
+            ? "The 2 cm cube has a smaller surface-area-to-volume ratio than the 1 cm cube, so a larger undiffused core remains at the same time."
+            : "The 3 cm cube has the smallest surface area relative to its volume and the longest path to the centre, so its undiffused core remains largest."}</p>
       </aside>
     </div>
   );
@@ -181,6 +215,7 @@ export default function TransportSystemNeedExplorer() {
   const [view,setView] = useState("surface");
   const [cube,setCube] = useState("2");
   const [condition,setCondition] = useState("baseline");
+  const [diffusionTime,setDiffusionTime] = useState("2");
 
   const cubeConfig = useMemo(() => CUBES[cube],[cube]);
 
@@ -206,7 +241,25 @@ export default function TransportSystemNeedExplorer() {
               <button type="button" key={value} className={Number(cube)===value?"active":""} onClick={()=>setCube(String(value))}>{value} cm cube</button>
             ))}
           </div>
-          <CubeScene size={cube} />
+          <div className="spark-transport-need-time" aria-label="Diffusion time">
+            <span>Diffusion time</span>
+            {[
+              ["0","Start"],
+              ["1","Short"],
+              ["2","Medium"],
+              ["3","Longer"],
+            ].map(([value,label]) => (
+              <button
+                type="button"
+                key={value}
+                className={diffusionTime===value?"active":""}
+                onClick={()=>setDiffusionTime(value)}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+          <CubeScene size={cube} time={diffusionTime} />
           <div className="spark-transport-need-formula">
             <strong>Cube formula</strong>
             <span>Surface area = 6 × side². Volume = side³. For the selected {cubeConfig.side} cm cube, {cubeConfig.surfaceArea} ÷ {cubeConfig.volume} = {cubeConfig.ratio}:1.</span>
