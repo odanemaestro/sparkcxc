@@ -45,3 +45,11 @@ html[data-theme="dark"] .spark-digestion-system-svg .dg-caption,
 body[data-theme="dark"] .spark-digestion-system-svg .dg-caption,
 .dark .spark-digestion-system-svg .dg-caption{fill:#d6e4ee}
 @media(max-width:900px){.spark-digestion-pathway-layout{grid-template-columns:1fr}.spark-digestion-system{max-width:620px;margin:0 auto}}
+
+.spark-digestion-system-svg .dg-salivary{fill:#e6bd58;stroke:#99752a;stroke-width:2}
+.spark-digestion-system-svg .dg-bile-duct{fill:none;stroke:#5d8d4f;stroke-width:7;stroke-linecap:round}
+.spark-digestion-system-svg .dg-pancreatic-duct{fill:none;stroke:#8b6d3c;stroke-width:4;stroke-linecap:round}
+.spark-digestion-system-svg .dg-colon{fill:none;stroke:#80a54f;stroke-width:25;stroke-linecap:round;stroke-linejoin:round}
+.spark-digestion-system-svg .dg-cecum{fill:#80a54f;stroke:#587632;stroke-width:4}
+.spark-digestion-system-svg .dg-labels.right text,.spark-digestion-system-svg .dg-labels.left text{font-size:14px}
+@media(max-width:620px){.spark-digestion-system-svg .dg-labels.right text,.spark-digestion-system-svg .dg-labels.left text{font-size:18px}}
