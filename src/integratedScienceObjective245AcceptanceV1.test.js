@@ -56,7 +56,7 @@ describe("Integrated Science Objective 2.4.5 acceptance audit", () => {
   });
 
   test("covers school household and transport actions", () => {
-    expect(migration).toContain("computer laboratories");
+    expect(migration).toContain("Computer laboratories");
     expect(migration).toContain("Drying clothes on a line");
     expect(migration).toContain("Car-pooling");
     expect(explorer).toContain("At school");
