@@ -85,6 +85,7 @@ import VolcanoEruptionsExplorer from "./components/VolcanoEruptionsExplorer";
 import WaterPropertiesExplorer from "./components/WaterPropertiesExplorer";
 import HardWaterExplorer from "./components/HardWaterExplorer";
 import WaterUsesExplorer from "./components/WaterUsesExplorer";
+import FishingMethodsExplorer from "./components/FishingMethodsExplorer";
 import ForcePrinciplesExplorer from "./components/ForcePrinciplesExplorer";
 import GravityInertiaExplorer from "./components/GravityInertiaExplorer";
 import StabilityCentreGravityExplorer from "./components/StabilityCentreGravityExplorer";
@@ -513,6 +514,9 @@ function GenericLessonContent({
         }
         if (model?.type === "water-uses") {
           return <WaterUsesExplorer key={model.id || "water-uses"} />;
+        }
+        if (model?.type === "fishing-methods") {
+          return <FishingMethodsExplorer key={model.id || "fishing-methods"} />;
         }
         if (model?.type === "force-principles") {
           return <ForcePrinciplesExplorer key={model.id || "force-principles"} />;
