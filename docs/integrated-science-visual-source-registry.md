@@ -38,3 +38,7 @@ The prior technically green package is preserved on:
 The active visual replacement branch is:
 
 `integrated-science-visual-replacement-pass`
+
+## CI checkpoint
+
+The visual replacement pass is validated through draft PR #3. The PR is a CI vehicle only and must not be merged until the complete visual audit is finished.
