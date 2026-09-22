@@ -2,6 +2,14 @@
 
 This branch replaces custom placeholder-style scientific drawings with supplied images or reusable scientific references. SPARK interaction (drag/drop, tap targets, hints, scoring, zoom/reveal where applicable) is layered over the real reference image.
 
+## Approved source libraries
+
+- **User-supplied references:** first choice when scientifically suitable.
+- **Servier Medical Art (SMART):** professional medical illustrations covering anatomy, physiology, pathology, treatments and equipment. Medical images are licensed under CC BY 4.0 and must be credited to Servier Medical Art with the licence identified.
+- **Wikimedia Commons:** use only individual files whose licences are verified and recorded.
+- **NIH / NIAID BioArt, CDC, NOAA, NASA, USGS and other government scientific sources:** prefer public-domain material where it fits the objective.
+- **OpenStax and similar educational sources:** use reusable figures only when the licence permits SPARK's intended use.
+
 ## Current priority replacements
 
 | SPARK template / visual | Reference source | Licence / status | Notes |
@@ -63,7 +71,7 @@ This branch replaces custom placeholder-style scientific drawings with supplied 
 ## Replacement policy
 
 1. Prefer user-supplied images when they are scientifically suitable.
-2. Otherwise prefer a reusable scientific image or diagram from Wikimedia Commons, NIH, CDC, OpenStax or a similarly reputable source.
+2. Otherwise search Servier Medical Art, Wikimedia Commons, NIH, CDC, OpenStax and other reputable scientific/educational sources for a reusable reference. Prefer the clearest scientifically appropriate visual, not a particular provider.
 3. Do not redraw a scientific structure merely to match SPARK's visual style.
 4. Keep interactive behaviour separate from the underlying image:
    - desktop drag-and-drop labels
@@ -72,7 +80,7 @@ This branch replaces custom placeholder-style scientific drawings with supplied 
    - answer checking
    - completed-state labels
    - zoom/reveal where useful
-5. Every externally sourced visual must keep its source and licence information in the repository and, where practical, beside the activity.
+5. Every externally sourced visual must keep its source and licence information in the repository and, where practical, beside the activity. Servier Medical Art assets must be credited as Servier Medical Art and identified as CC BY 4.0.
 6. When a CC BY-SA visual is adapted, preserve attribution and compatible licensing for that derivative asset.
 7. Custom SVG remains acceptable only where a suitable reference does not exist or where the task itself is abstract (for example a force-vector model), and it must be grounded in a scientific reference.
 
