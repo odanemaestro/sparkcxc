@@ -136,4 +136,10 @@ describe("Integrated Science Objective 1.4.2 acceptance audit", () => {
     expect(migration).toContain("Why do veins contain valves?");
     expect(migration).toContain("Trace the path of blood from the lungs to the body.");
   });
+  test("uses a real unlabeled heart reference beneath SPARK targets", () => {
+    expect(diagram).toContain("Diagram_of_the_human_heart_%28no_labels%29.svg");
+    expect(diagram).toContain("heart-ra-target");
+    expect(diagram).toContain("heart-lv-target");
+  });
+
 });
