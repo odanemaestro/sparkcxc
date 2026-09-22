@@ -65,25 +65,19 @@ describe("Integrated Science Objective 1.6.1 acceptance audit", () => {
     expect(explorer).toContain("Nerve impulses travel towards the central nervous system");
   });
 
-  test("renders smell taste and skin receptor anatomy as scientific SVGs", () => {
+  test("uses sourced scientific references for all five sense organs", () => {
     for (const term of [
-      "so-receptor-anatomy-svg",
-      "olfactory epithelium",
-      "olfactory receptors",
-      "odour molecules",
-      "taste pore",
-      "taste receptor cells",
-      "chemicals dissolved in saliva",
-      "so-skin-epidermis",
-      "so-skin-dermis",
-      "free nerve endings, pain and temperature",
-      "touch receptor",
-      "pressure receptor"
+      "Diagram_of_human_eye_without_labels.svg",
+      "Anatomy_of_the_Human_Ear_blank.svg",
+      "Early_Olfactory_System.svg",
+      "Taste_bud.svg",
+      "Skin_Cross-Section_%28NIH_BioArt_677%29.png",
+      "Jmarchn",
+      "NEUROtiker",
+      "NIH NIAID, Ryan Kissinger",
+      "Public domain"
     ]) expect(explorer).toContain(term);
-    expect(css).toContain(".so-olfactory-epithelium");
-    expect(css).toContain(".so-taste-bud-outline");
-    expect(css).toContain(".so-skin-epidermis");
-    expect(css).toContain(".so-pressure-receptor");
+    expect(css).toContain(".spark-sense-reference");
   });
 
   test("visual remains responsive and dark-mode ready", () => {
