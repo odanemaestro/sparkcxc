@@ -759,11 +759,11 @@ const REFERENCE_TEMPLATE_MEDIA = {
     source:"https://commons.wikimedia.org/wiki/File:Compound_Microscope.JPG",
   },
   "female-reproductive-system":{
-    href:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Female_internal_genitalia_unlabeled.svg",
-    x:255,y:42,width:490,height:535,
-    credit:"RWhitwam, adapted from Servier Medical Art",
+    href:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Female_reproductive_organs%2C_frontal_view%2C_unlabeled.svg",
+    x:245,y:52,width:510,height:515,
+    credit:"RWhitwam, adapted from Illu cervix.svg",
     license:"CC BY-SA 4.0",
-    source:"https://commons.wikimedia.org/wiki/File:Female_internal_genitalia_unlabeled.svg",
+    source:"https://commons.wikimedia.org/wiki/File:Female_reproductive_organs,_frontal_view,_unlabeled.svg",
   },
   "male-reproductive-system":{
     href:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Male_genital_system_-_Front_view-1_for_quizzing.svg",
