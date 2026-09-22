@@ -102,6 +102,15 @@ describe("Integrated Science Objective 2.2.2 acceptance audit", () => {
     expect(explorer).toContain("Enzyme conditions");
   });
 
+  test("uses the public-domain digestive anatomy reference in the pathway explorer", () => {
+    expect(explorer).toContain("Digestive_system_without_labels.svg");
+    expect(explorer).toContain("LadyofHats / Mariana Ruiz");
+    expect(explorer).toContain("Public domain");
+    expect(explorer).toContain("spark-digestion-hotspot");
+    expect(explorer).toContain("spark-digestion-reference-stage");
+    expect(explorerCss).toContain(".spark-digestion-reference-stage");
+  });
+
   test("visuals remain responsive and dark-mode ready", () => {
     expect(explorerCss).toContain("@media(max-width:850px)");
     expect(explorerCss).toContain("@media(max-width:620px)");
