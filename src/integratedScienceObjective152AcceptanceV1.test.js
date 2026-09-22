@@ -73,14 +73,24 @@ describe("Integrated Science Objective 1.5.2 acceptance audit", () => {
     expect(explorer).toContain("Dialysis");
   });
 
-  test("visual includes the high-value structures and mechanisms", () => {
+  test("visual uses sourced kidney nephron and skin references plus the required mechanisms", () => {
+    expect(explorer).toContain("KidneyAndNephron-v4_Antares42.svg");
+    expect(explorer).toContain("Antares42");
+    expect(explorer).toContain("CC BY-SA 3.0");
     expect(explorer).toContain("glomerulus");
-    expect(explorer).toContain("Bowman&apos;s capsule");
+    expect(explorer).toContain("Bowman’s capsule");
     expect(explorer).toContain("Selective reabsorption");
+    expect(explorer).toContain("Skin_Cross-Section_%28NIH_BioArt_677%29.png");
+    expect(explorer).toContain("NIH NIAID BioArt, Ryan Kissinger");
+    expect(explorer).toContain("Public domain");
+    expect(explorer).toContain("Sweat gland");
+    expect(explorer).toContain("Evaporative cooling");
     expect(explorer).toContain("MORE ADH");
-    expect(explorer).toContain("hex-sweat-gland");
     expect(explorer).toContain("CO2 diffuses from blood into alveoli");
     expect(explorer).toContain("urea diffuses out, useful glucose is retained");
+    expect(css).toContain(".hex-reference-scene");
+    expect(css).toContain(".hex-reference-figure img");
+    expect(css).toContain(".hex-reference-focus");
   });
 
   test("visual remains responsive and dark-mode ready", () => {
