@@ -111,4 +111,11 @@ describe("Integrated Science Objective 1.6.4 acceptance audit", () => {
     expect(migration).toContain("What determines the pitch of a sound?");
     expect(migration).toContain("Why can a person feel dizzy after spinning?");
   });
+  test("uses a real blank human-ear reference beneath SPARK targets", () => {
+    expect(diagram).toContain("Anatomy_of_the_Human_Ear_blank.svg");
+    expect(diagram).toContain("CC BY 2.5");
+    expect(diagram).toContain("ear-pinna-target");
+    expect(diagram).toContain("ear-cochlea-target");
+  });
+
 });
