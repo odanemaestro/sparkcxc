@@ -24,9 +24,13 @@ describe("Integrated Science Objective 1.2.3 acceptance audit", () => {
     expect(migration).toContain("1.2.3 Sexual Reproduction in Plants");
   });
 
-  test("flower anatomy is taught through an interactive biological diagram", () => {
-    expect(diagram).toContain("FlowerLongitudinalTemplate");
+  test("flower anatomy uses a real numbered botanical reference beneath SPARK targets", () => {
     expect(migration).toContain('"template":"flower-longitudinal"');
+    expect(diagram).toContain("Flordiagramnumbered.jpg");
+    expect(diagram).toContain("Mgoodyear");
+    expect(diagram).toContain("CC BY-SA 4.0");
+    expect(diagram).toContain("flower-petal");
+    expect(diagram).toContain("flower-ovary");
     [
       '"text":"Petal"',
       '"text":"Sepal"',
@@ -40,9 +44,14 @@ describe("Integrated Science Objective 1.2.3 acceptance audit", () => {
     ].forEach(term => expect(migration).toContain(term));
   });
 
-  test("bean seed anatomy is interactive and linked to function", () => {
-    expect(diagram).toContain("BeanSeedTemplate");
+  test("bean seed anatomy uses a real split-seed photograph beneath SPARK targets", () => {
     expect(migration).toContain('"template":"bean-seed"');
+    expect(diagram).toContain("Broad_bean_seed_split_in_half_%28top_view%29.jpg");
+    expect(diagram).toContain("Bodhi Peace");
+    expect(diagram).toContain("seed-testa");
+    expect(diagram).toContain("seed-cotyledon");
+    expect(diagram).toContain("seed-plumule");
+    expect(diagram).toContain("seed-radicle");
     ["Testa","Cotyledon","Plumule","Radicle"].forEach(term => expect(migration).toContain(term));
   });
 
