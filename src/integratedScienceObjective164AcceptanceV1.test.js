@@ -98,6 +98,16 @@ describe("Integrated Science Objective 1.6.4 acceptance audit", () => {
     expect(explorer).toContain("Pressure");
   });
 
+  test("uses sourced ear anatomy and vestibular references in the explorer", () => {
+    expect(explorer).toContain("Anatomy_of_the_Human_Ear_blank.svg");
+    expect(explorer).toContain("CC BY 2.5");
+    expect(explorer).toContain("STS-65_fig6.png");
+    expect(explorer).toContain("NASA");
+    expect(explorer).toContain("Public domain");
+    expect(explorer).toContain("spark-ear-reference-focus");
+    expect(explorerCss).toContain(".spark-ear-reference-view");
+  });
+
   test("ear visuals remain responsive and dark-mode ready", () => {
     expect(explorerCss).toContain("@media(max-width:700px)");
     expect(explorerCss).toContain("@media(max-width:620px)");
