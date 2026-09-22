@@ -49,6 +49,17 @@ This branch replaces custom placeholder-style scientific drawings with supplied 
 | pregnancy-placenta | Wikimedia Commons: Fetal circulation.jpg | CC BY-SA 4.0 | Foetus, umbilical cord, amniotic sac, placenta and maternal-foetal interface |
 | pregnancy-labour | Wikimedia Commons: 2920 Stages of Childbirth-en.svg | CC BY-SA 3.0 | Medical stages-of-childbirth reference |
 
+
+| sense-eye | Wikimedia Commons: Diagram of human eye without labels.svg | CC BY-SA 3.0 | Sense-organ overview |
+| sense-ear | Wikimedia Commons: Anatomy of the Human Ear blank.svg | CC BY 2.5 | Sense-organ overview |
+| sense-smell | Wikimedia Commons: Early Olfactory System.svg | CC BY 3.0 | Olfactory epithelium/bulb reference |
+| sense-taste | Wikimedia Commons: Taste bud.svg | CC BY-SA 2.5 | Taste-bud receptor reference |
+| sense-skin | Wikimedia Commons: Skin Cross-Section (NIH BioArt 677).png | Public domain | NIH skin reference |
+| animal-asexual-binary | Wikimedia Commons: Binary fission.svg | CC BY-SA 3.0 | Binary fission reference |
+| animal-asexual-budding | Wikimedia Commons: Hydra Budding.svg | CC BY-SA 4.0 | Hydra budding sequence |
+| animal-asexual-fragmentation | Wikimedia Commons: Regeneracion.jpg | CC BY-SA 3.0 | Real planarian regeneration photograph |
+| animal-asexual-parthenogenesis | Wikimedia Commons: Live Birth in Aphids.jpg | CC BY-SA 4.0 | Real aphid parthenogenesis photograph |
+
 ## Replacement policy
 
 1. Prefer user-supplied images when they are scientifically suitable.
