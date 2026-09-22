@@ -58,12 +58,15 @@ describe("Integrated Science Objective 1.3.4 acceptance audit", () => {
     expect(explorer).toContain("Labour and birth");
   });
 
-  test("includes a recognisable pregnancy uterus label diagram", () => {
+  test("uses a public-domain pregnancy anatomy reference with SPARK overlay targets", () => {
     expect(migration).toContain('"template":"pregnancy-uterus"');
-    expect(diagram).toContain("PregnancyUterusTemplate");
-    expect(diagram).toContain("pregnancy-placenta");
-    expect(diagram).toContain("pregnancy-umbilical");
-    expect(diagram).toContain("pregnancy-foetus");
+    expect(diagram).toContain('"pregnancy-uterus"');
+    expect(diagram).toContain("Gray38.png");
+    expect(diagram).toContain("Gray's Anatomy");
+    expect(diagram).toContain("Public domain");
+    expect(diagram).toContain("pregnancy-placenta-target");
+    expect(diagram).toContain("pregnancy-umbilical-target");
+    expect(diagram).toContain("pregnancy-foetus-target");
     expect(migration).toContain("'diagram:m1-t3-4-pregnancy-uterus'");
   });
 
