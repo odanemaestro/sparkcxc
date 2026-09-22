@@ -6,6 +6,9 @@ This branch replaces custom placeholder-style scientific drawings with supplied 
 
 | SPARK template / visual | Reference source | Licence / status | Notes |
 | --- | --- | --- | --- |
+| flower-longitudinal | Wikimedia Commons: Flordiagramnumbered.jpg by Mgoodyear | CC BY-SA 4.0 | Numbered floral anatomy reference beneath SPARK label targets |
+| bean-seed | Wikimedia Commons: Broad bean seed split in half (top view).jpg by Bodhi Peace | CC BY-SA 4.0 | Real split-seed photograph beneath SPARK label targets |
+| respiratory-system | Wikimedia Commons: Respiratory system complete no labels.svg by Bibi Saint-Pol / Jmarchn | CC BY-SA 3.0 | Complete unlabeled respiratory anatomy with interactive focus panel |
 | plant-cell | Wikimedia Commons: Plant cell structure no text | Public domain | Real reference-backed cell structure used beneath SPARK targets |
 | animal-cell | Wikimedia Commons: Animal cell structure no text | Public domain | Real reference-backed cell structure used beneath SPARK targets |
 | light-microscope | Wikimedia Commons: Compound Microscope.JPG by Acagastya | CC0 1.0 | Real microscope photograph; SPARK provides the labels/targets |
