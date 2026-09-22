@@ -12,85 +12,63 @@ const ENZYMES=[
   {name:"Lipase",where:"Small intestine",substrate:"Fat",product:"Fatty acids + glycerol",condition:"Works efficiently after fat is emulsified"},
 ];
 
-function DigestiveSystemScene(){
+function DigestiveSystemScene({selected,onSelect}){
+  const hotspots={
+    mouth:[50,8],oesophagus:[51,22],liver:[39,36],stomach:[60,39],gall:[44,43],
+    pancreas:[56,46],duodenum:[60,50],small:[52,61],large:[52,57],rectum:[50,83]
+  };
+  const labels={
+    mouth:"Mouth",oesophagus:"Oesophagus",liver:"Liver",stomach:"Stomach",gall:"Gall bladder",
+    pancreas:"Pancreas",duodenum:"Duodenum",small:"Small intestine",large:"Large intestine",rectum:"Rectum"
+  };
   return (
-    <svg className="spark-digestion-system-svg" viewBox="0 0 760 900" role="img" aria-label="Detailed human digestive system showing salivary glands, pharynx, oesophagus, liver, gall bladder, bile duct, stomach, pancreas, duodenum, small intestine, colon, cecum, appendix, rectum and anus">
-      <circle className="dg-head" cx="380" cy="78" r="58"/>
-      <path className="dg-mouth" d="M347 80Q380 96 413 80"/>
-      <ellipse className="dg-salivary" cx="346" cy="60" rx="12" ry="8"/>
-      <ellipse className="dg-salivary" cx="405" cy="96" rx="11" ry="7"/>
-      <ellipse className="dg-salivary" cx="358" cy="103" rx="10" ry="7"/>
-      <path className="dg-pharynx" d="M380 105Q395 123 382 146"/>
-      <path className="dg-body" d="M282 150Q380 113 478 150Q532 255 505 430Q487 565 445 760H315Q273 565 255 430Q228 255 282 150Z"/>
-
-      <path className="dg-oesophagus" d="M382 140V318"/>
-      <path className="dg-liver" d="M250 302Q307 245 401 268Q438 281 452 325Q414 374 348 388Q281 392 250 357Z"/>
-      <path className="dg-gall" d="M334 371Q351 364 361 380Q359 409 337 419Q321 403 334 371Z"/>
-      <path className="dg-bile-duct" d="M348 395Q365 425 378 454"/>
-
-      <path className="dg-stomach" d="M424 321Q475 305 499 345Q522 390 496 435Q474 472 429 463Q381 454 372 416Q362 374 389 344Q402 330 424 321Z"/>
-      <path className="dg-pancreas" d="M350 456Q407 429 478 453Q454 489 391 498Q366 494 350 456Z"/>
-      <path className="dg-pancreatic-duct" d="M370 469Q411 471 458 463"/>
-      <path className="dg-duodenum" d="M445 465Q500 478 500 520Q500 558 454 570"/>
-
-      <path className="dg-large dg-colon ascending" d="M286 515Q250 565 264 690"/>
-      <path className="dg-large dg-colon transverse" d="M285 515Q380 482 478 515"/>
-      <path className="dg-large dg-colon descending" d="M478 515Q510 565 496 690"/>
-      <path className="dg-large dg-colon sigmoid" d="M496 690Q475 735 430 742Q395 744 381 767"/>
-      <path className="dg-cecum" d="M263 681Q244 705 263 730Q286 739 299 718Q301 694 286 681Z"/>
-      <path className="dg-appendix" d="M263 724Q236 746 246 780"/>
-
-      <path className="dg-small" d="M310 535Q360 503 421 532Q455 552 426 578Q399 599 429 620Q451 641 420 663Q388 687 348 664Q317 646 346 623Q376 602 342 582Q309 563 310 535Z"/>
-      <path className="dg-small inner" d="M328 545Q362 525 398 544Q417 558 396 574Q373 592 399 609Q418 624 397 641Q372 660 348 643Q327 629 348 611Q369 594 348 580Q326 565 328 545Z"/>
-
-      <path className="dg-rectum" d="M381 767V826"/>
-      <path className="dg-anus" d="M364 826Q381 842 398 826"/>
-      <path className="dg-route" d="M380 94Q384 120 382 145V318Q411 338 427 366Q439 398 425 430Q412 459 466 480Q494 493 492 520Q486 553 454 570Q422 589 429 620Q444 657 411 680Q388 701 390 742Q383 774 381 824"/>
-
-      <g className="dg-labels left">
-        <text x="106" y="54">salivary glands</text><path d="M205 50L338 61"/>
-        <text x="108" y="112">mouth</text><path d="M158 108L342 84"/>
-        <text x="96" y="164">pharynx</text><path d="M160 160L372 130"/>
-        <text x="82" y="230">oesophagus</text><path d="M165 226L372 220"/>
-        <text x="95" y="320">liver</text><path d="M142 316L260 314"/>
-        <text x="62" y="382">gall bladder</text><path d="M160 378L326 385"/>
-        <text x="50" y="430">common bile duct</text><path d="M175 426L360 420"/>
-        <text x="62" y="560">ascending colon</text><path d="M170 556L268 555"/>
-        <text x="115" y="700">cecum</text><path d="M162 696L255 700"/>
-        <text x="100" y="770">appendix</text><path d="M160 766L243 755"/>
-      </g>
-
-      <g className="dg-labels right">
-        <text x="586" y="336">stomach</text><path d="M500 332L575 332"/>
-        <text x="586" y="438">pancreas</text><path d="M474 462L575 438"/>
-        <text x="586" y="482">pancreatic duct</text><path d="M456 470L575 478"/>
-        <text x="586" y="536">duodenum</text><path d="M500 520L575 532"/>
-        <text x="586" y="585">small intestine</text><path d="M430 580L575 580"/>
-        <text x="586" y="520">transverse colon</text><path d="M472 512L575 512"/>
-        <text x="586" y="625">descending colon</text><path d="M498 615L575 620"/>
-        <text x="586" y="718">sigmoid colon</text><path d="M470 716L575 714"/>
-        <text x="586" y="790">rectum</text><path d="M392 786L575 786"/>
-        <text x="586" y="838">anus</text><path d="M400 833L575 833"/>
-      </g>
-
-      <text className="dg-caption" x="380" y="882" textAnchor="middle">food pathway through the alimentary canal, with accessory digestive organs</text>
-    </svg>
+    <figure className="spark-digestion-reference-figure">
+      <div className="spark-digestion-reference-stage">
+        <img
+          src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Digestive_system_without_labels.svg"
+          alt="Public-domain unlabeled human digestive system"
+          loading="lazy"
+        />
+        {Object.entries(hotspots).map(([key,[left,top]])=>(
+          <button
+            type="button"
+            key={key}
+            className={"spark-digestion-hotspot "+(selected===key?"active":"")}
+            style={{left:left+"%",top:top+"%"}}
+            onClick={()=>onSelect(key)}
+            aria-pressed={selected===key}
+            aria-label={labels[key]}
+            title={labels[key]}
+          >
+            <span aria-hidden="true"></span>
+          </button>
+        ))}
+      </div>
+      <figcaption>
+        <span>Human digestive system</span>
+        <small>
+          Reference: <a href="https://commons.wikimedia.org/wiki/File:Digestive_system_without_labels.svg" target="_blank" rel="noreferrer">LadyofHats / Mariana Ruiz</a>
+          {" · "}Public domain
+        </small>
+      </figcaption>
+    </figure>
   );
 }
 
 function PathwayView(){
   const steps=[
-    ["Mouth","Chewing gives mechanical digestion. Salivary amylase begins starch digestion."],
-    ["Oesophagus","Peristalsis moves the bolus towards the stomach."],
-    ["Stomach","Muscular churning mixes food. Hydrochloric acid kills many microbes and provides the low pH needed by pepsin."],
-    ["Duodenum","Bile enters from the liver and gall bladder. Pancreatic enzymes enter from the pancreas."],
-    ["Small intestine","Digestion is completed and most digested nutrients are absorbed through villi."],
-    ["Large intestine","Much of the remaining water is absorbed."],
-    ["Rectum and anus","Undigested material is stored briefly and then egested."],
+    ["mouth","Mouth","Chewing gives mechanical digestion. Salivary amylase begins starch digestion."],
+    ["oesophagus","Oesophagus","Peristalsis moves the bolus towards the stomach."],
+    ["stomach","Stomach","Muscular churning mixes food. Hydrochloric acid kills many microbes and provides the low pH needed by pepsin."],
+    ["duodenum","Duodenum","Bile enters from the liver and gall bladder. Pancreatic enzymes enter from the pancreas."],
+    ["small","Small intestine","Digestion is completed and most digested nutrients are absorbed through villi."],
+    ["large","Large intestine","Much of the remaining water is absorbed."],
+    ["rectum","Rectum and anus","Undigested material is stored briefly and then egested."]
   ];
+  const [selected,setSelected]=useState("mouth");
   return <div className="spark-digestion-pathway-layout">
-    <div className="spark-digestion-system"><DigestiveSystemScene /></div>
-    <div className="spark-digestion-pathway">{steps.map((row,i)=><article key={row[0]}><span>{i+1}</span><div><b>{row[0]}</b><p>{row[1]}</p></div></article>)}</div>
+    <div className="spark-digestion-system"><DigestiveSystemScene selected={selected} onSelect={setSelected}/></div>
+    <div className="spark-digestion-pathway">{steps.map((row,i)=><article key={row[0]} className={selected===row[0]?"active":""} onClick={()=>setSelected(row[0])}><span>{i+1}</span><div><b>{row[1]}</b><p>{row[2]}</p></div></article>)}</div>
   </div>;
 }
 
