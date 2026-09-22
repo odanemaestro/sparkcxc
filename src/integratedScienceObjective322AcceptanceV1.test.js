@@ -15,7 +15,7 @@ describe("Integrated Science Objective 3.2.2 acceptance audit",()=>{
   expect(css).toContain(".hw-latent-heat");
   expect(css).toContain(".hw-surface-inflow");
  });
- test("covers eye and eyewall",()=>{expect(migration).toContain("eye is the relatively calm");expect(migration).toContain("eyewall");expect(explorer).toContain("eyewall: strongest winds and rain");});
+ test("covers eye and eyewall",()=>{expect(migration).toContain("eye is the relatively calm");expect(migration).toContain("eyewall");expect(explorer).toContain("The ring of intense thunderstorms around the eye contains the strongest winds");});
  test("uses public-domain NOAA satellite imagery for hurricane structure",()=>{for(const term of ["Hurricane_Nigel%E2%80%99s_Large_Eye_Swirls_%28CIRA_2023-09-19%29.png","CSU/CIRA & NOAA, GOES-16","Public domain","Eye","Eyewall","Spiral rainbands","Cyclonic circulation"]) expect(explorer).toContain(term);expect(css).toContain(".spark-hurricane-reference-view");expect(css).toContain(".spark-hurricane-reference-figure img");expect(css).toContain(".spark-hurricane-reference-focus");});
  test("covers storm surge and pressure",()=>{expect(migration).toContain("Storm surge is an abnormal rise");expect(migration).toContain("965 mb");expect(explorer).toContain("Pressure");});
  test("covers preparation",()=>{expect(migration).toContain("store safe drinking water");expect(migration).toContain("secure loose outdoor objects");expect(explorer).toContain("Hazards and preparation");});
