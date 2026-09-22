@@ -98,6 +98,15 @@ describe("Integrated Science Objective 1.6.5 acceptance audit", () => {
     expect(explorer).toContain("Actions");
   });
 
+  test("uses a sourced human nervous-system reference for the CNS overview", () => {
+    expect(explorer).toContain("Nervous_system_diagram_unlabeled.svg");
+    expect(explorer).toContain("Medium69 / Jmarchn");
+    expect(explorer).toContain("CC BY-SA 4.0");
+    expect(explorer).toContain("spark-nervous-hotspot");
+    expect(explorer).toContain("spark-nervous-reference-focus");
+    expect(explorerCss).toContain(".spark-nervous-reference-view");
+  });
+
   test("visual remains responsive and dark-mode ready", () => {
     expect(explorerCss).toContain("@media(max-width:780px)");
     expect(explorerCss).toContain("@media(max-width:620px)");
