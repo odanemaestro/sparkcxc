@@ -737,6 +737,41 @@ function ThreePinPlugTemplate() {
 }
 
 const REFERENCE_TEMPLATE_MEDIA = {
+  "mammalian-eye":{
+    href:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Diagram_of_human_eye_without_labels.svg",
+    x:285,y:45,width:430,height:500,
+    credit:"Jmarchn",
+    license:"CC BY-SA 3.0",
+    source:"https://commons.wikimedia.org/wiki/File:Diagram_of_human_eye_without_labels.svg",
+  },
+  "mammalian-ear":{
+    href:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Anatomy_of_the_Human_Ear_blank.svg",
+    x:165,y:55,width:670,height:525,
+    credit:"Chittka L, Brockmann; blank derivative by M. Komorniczak",
+    license:"CC BY 2.5",
+    source:"https://commons.wikimedia.org/wiki/File:Anatomy_of_the_Human_Ear_blank.svg",
+  },
+  "human-digestive-system":{
+    href:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Digestive_system_without_labels.svg",
+    x:350,y:18,width:300,height:580,
+    credit:"Mariana Ruiz / Jmarchn",
+    license:"Public domain",
+    source:"https://commons.wikimedia.org/wiki/File:Digestive_system_without_labels.svg",
+  },
+  "human-tooth":{
+    href:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Basic_tooth.svg",
+    x:355,y:15,width:290,height:585,
+    credit:"K. D. Schroeder",
+    license:"CC BY-SA 4.0",
+    source:"https://commons.wikimedia.org/wiki/File:Basic_tooth.svg",
+  },
+  "human-heart":{
+    href:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Diagram_of_the_human_heart_%28no_labels%29.svg",
+    x:330,y:22,width:340,height:565,
+    credit:"Stenemo / Jmarchn",
+    license:"CC BY-SA 4.0",
+    source:"https://commons.wikimedia.org/wiki/File:Diagram_of_the_human_heart_(no_labels).svg",
+  },
   "plant-cell":{
     href:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Plant_cell_structure_no_text.png",
     x:250,y:35,width:500,height:550,
@@ -782,6 +817,56 @@ const REFERENCE_TEMPLATE_MEDIA = {
 };
 
 const REFERENCE_TARGET_OVERRIDES = {
+  "mammalian-eye":{
+    "eye-cornea-target":{anchorX:315,anchorY:310},
+    "eye-iris-target":{anchorX:365,anchorY:275},
+    "eye-lens-target":{anchorX:420,anchorY:310},
+    "eye-sclera-target":{anchorX:520,anchorY:105},
+    "eye-retina-target":{anchorX:640,anchorY:255},
+    "eye-choroid-target":{anchorX:625,anchorY:220},
+    "eye-optic-nerve-target":{anchorX:700,anchorY:335},
+    "eye-fovea-target":{anchorX:635,anchorY:310},
+  },
+  "mammalian-ear":{
+    "ear-pinna-target":{anchorX:205,anchorY:265},
+    "ear-canal-target":{anchorX:340,anchorY:292},
+    "ear-drum-target":{anchorX:420,anchorY:295},
+    "ear-ossicles-target":{anchorX:490,anchorY:260},
+    "ear-cochlea-target":{anchorX:655,anchorY:345},
+    "ear-semicircular-target":{anchorX:620,anchorY:170},
+    "ear-auditory-nerve-target":{anchorX:745,anchorY:345},
+    "ear-eustachian-target":{anchorX:565,anchorY:435},
+  },
+  "human-digestive-system":{
+    "digestive-mouth-target":{anchorX:505,anchorY:75},
+    "digestive-oesophagus-target":{anchorX:505,anchorY:180},
+    "digestive-liver-target":{anchorX:450,anchorY:250},
+    "digestive-gall-target":{anchorX:470,anchorY:295},
+    "digestive-stomach-target":{anchorX:545,anchorY:300},
+    "digestive-pancreas-target":{anchorX:535,anchorY:355},
+    "digestive-small-target":{anchorX:505,anchorY:455},
+    "digestive-large-target":{anchorX:455,anchorY:430},
+  },
+  "human-tooth":{
+    "tooth-crown-target":{anchorX:500,anchorY:95},
+    "tooth-enamel-target":{anchorX:430,anchorY:165},
+    "tooth-dentine-target":{anchorX:465,anchorY:225},
+    "tooth-pulp-target":{anchorX:505,anchorY:245},
+    "tooth-gum-target":{anchorX:590,anchorY:350},
+    "tooth-root-target":{anchorX:515,anchorY:505},
+  },
+  "human-heart":{
+    "heart-ra-target":{anchorX:450,anchorY:245},
+    "heart-rv-target":{anchorX:455,anchorY:390},
+    "heart-vena-target":{anchorX:420,anchorY:105},
+    "heart-pa-target":{anchorX:520,anchorY:175},
+    "heart-tricuspid-target":{anchorX:465,anchorY:310},
+    "heart-la-target":{anchorX:565,anchorY:245},
+    "heart-lv-target":{anchorX:570,anchorY:395},
+    "heart-aorta-target":{anchorX:575,anchorY:85},
+    "heart-pv-target":{anchorX:625,anchorY:225},
+    "heart-bicuspid-target":{anchorX:545,anchorY:310},
+  },
   "female-reproductive-system":{
     "female-ovary-target":{anchorX:372,anchorY:283},
     "female-oviduct-target":{anchorX:410,anchorY:266},
