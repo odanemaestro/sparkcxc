@@ -108,4 +108,12 @@ describe("Integrated Science Objective 1.6.6 acceptance audit", () => {
     expect(migration).toContain("Which gland produces insulin?");
     expect(migration).toContain("Give one difference between nervous and endocrine communication.");
   });
+  test("uses a real unlabeled endocrine-system reference beneath SPARK targets", () => {
+    expect(diagram).toContain("Human_endocrine_male_%26_female_svg_no_labels.svg");
+    expect(diagram).toContain("OpenStax & Tomáš Kebert & umimeto.org");
+    expect(diagram).toContain("endo-pituitary-target");
+    expect(diagram).toContain("endo-adrenal-target");
+    expect(diagram).toContain("endo-testes-target");
+  });
+
 });
