@@ -3,27 +3,26 @@ const explorer=fs.readFileSync(path.join(__dirname,"subjects","components","Gase
 const css=fs.readFileSync(path.join(__dirname,"subjects","components","gaseousExchangeExplorer.css"),"utf8");
 
 describe("Integrated Science respiratory-system SVG acceptance V1",()=>{
-  test("renders full human respiratory anatomy",()=>{
+  test("renders full human respiratory anatomy from a real reusable reference",()=>{
     [
-      "spark-respiratory-system-svg",
-      "nasal cavity",
-      "pharynx",
-      "larynx",
-      "trachea",
-      "left bronchus",
-      "right bronchus",
-      "bronchioles",
-      "alveoli",
-      "diaphragm",
+      "Respiratory_system_complete_no_labels.svg",
+      "Bibi Saint-Pol / Jmarchn",
+      "CC BY-SA 3.0",
+      "Air pathway",
+      "Branching airways",
+      "Alveoli",
+      "Diaphragm",
+      "air pathway: nasal cavity → pharynx → larynx → trachea → bronchi → bronchioles → alveoli",
     ].forEach(term=>expect(explorer).toContain(term));
+    expect(css).toContain(".spark-respiratory-reference");
+    expect(css).toContain(".spark-respiratory-reference img");
+    expect(css).toContain(".spark-respiratory-reference-focus");
   });
 
-  test("shows branching airway geometry and alveolar region",()=>{
-    expect(explorer).toContain("gx-trachea-main");
-    expect(explorer).toContain("gx-bronchus");
-    expect(explorer).toContain("gx-bronchiole-tree");
-    expect(explorer).toContain("gx-alveoli-cluster");
-    expect(explorer).toContain("air pathway: nasal cavity → pharynx → larynx → trachea → bronchi → bronchioles → alveoli");
+  test("respiratory-system tab actually mounts the real anatomy view",()=>{
+    expect(explorer).toContain('["respiratory","Respiratory system"]');
+    expect(explorer).toContain('{view==="respiratory"&&<RespiratorySystemView/>}');
+    expect(explorer).toContain("RespiratorySystemView");
   });
 
   test("keeps respiratory anatomy separate from alveolar gas exchange",()=>{
@@ -35,7 +34,7 @@ describe("Integrated Science respiratory-system SVG acceptance V1",()=>{
   });
 
   test("is responsive and dark-mode ready",()=>{
-    expect(css).toContain(".spark-respiratory-system-svg");
+    expect(css).toContain(".spark-respiratory-reference");
     expect(css).toContain(".spark-respiratory-system-notes");
     expect(css).toContain("@media(max-width:850px)");
     expect(css).toContain("@media(max-width:620px)");
