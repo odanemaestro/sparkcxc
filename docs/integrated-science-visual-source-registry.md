@@ -36,6 +36,10 @@ This branch replaces custom placeholder-style scientific drawings with supplied 
 | nervous-system-overview | Wikimedia Commons: Nervous system diagram unlabeled.svg | CC BY-SA 4.0 | CNS/PNS anatomy with SPARK hotspots and focus states |
 | human-digestion-pathway | Wikimedia Commons: Digestive system without labels.svg | Public domain | Digestive anatomy with SPARK organ hotspots and pathway steps |
 
+
+| neuron-structure | Wikimedia Commons: Derived Neuron schema with no labels.svg | CC BY-SA 3.0 / GFDL | Neurone structure with SPARK hotspots |
+| reflex-arc | Wikimedia Commons: Reflex Arc.svg | CC BY-SA 4.0 | Reflex pathway with SPARK step focus |
+
 ## Replacement policy
 
 1. Prefer user-supplied images when they are scientifically suitable.
