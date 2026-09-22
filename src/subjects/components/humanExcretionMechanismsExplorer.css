@@ -55,3 +55,29 @@ html[data-theme="dark"] .spark-human-excretion-summary,body[data-theme="dark"] .
 .spark-human-excretion-stage .hex-capillary-loop{fill:none;stroke:#bb5b61;stroke-width:6;stroke-linecap:round}
 .spark-human-excretion-stage .hex-sensory-nerve{fill:none;stroke:#c8912f;stroke-width:5;stroke-linecap:round}
 .spark-human-excretion-stage .hex-sensory-ending{fill:#f0c56d;stroke:#a47723;stroke-width:3}
+
+
+.hex-reference-scene{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(250px,.65fr);gap:14px;align-items:start}
+.hex-reference-figure{margin:0;display:grid;gap:8px;padding:10px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:12px;background:var(--spark-paper,#fff)}
+.hex-reference-figure img{display:block;width:100%;max-height:560px;object-fit:contain;border-radius:9px;background:#fff}
+.hex-reference-figure figcaption{display:grid;gap:4px}
+.hex-reference-figure figcaption>span{color:var(--spark-ink,#102a43);font-size:12px;font-weight:850}
+.hex-reference-figure figcaption small{color:var(--spark-text-muted,#627d98);font-size:9px;line-height:1.45}
+.hex-reference-figure figcaption a{color:var(--spark-teal-dark,#087f73);font-weight:800}
+.hex-reference-focus{display:grid;gap:10px;padding:13px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:12px;background:var(--spark-bg,#f7fafc)}
+.hex-reference-focus>span{color:var(--spark-teal-dark,#087f73);font-size:10px;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
+.hex-reference-focus>div{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.hex-reference-focus button{min-height:40px;padding:8px;border:1px solid var(--spark-border,#d9e2ec);border-radius:8px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:10px;font-weight:850;cursor:pointer}
+.hex-reference-focus button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}
+.hex-reference-focus article{padding:11px;border-radius:9px;background:var(--spark-paper,#fff);border:1px solid var(--spark-border-soft,#edf2f7)}
+.hex-reference-focus article strong{color:var(--spark-ink,#102a43);font-size:12px}
+.hex-reference-focus article p{margin:5px 0 0;color:var(--spark-ink-soft,#334e68);font-size:11px;line-height:1.55}
+html[data-theme="dark"] .hex-reference-figure,body[data-theme="dark"] .hex-reference-figure,.dark .hex-reference-figure,
+html[data-theme="dark"] .hex-reference-focus,body[data-theme="dark"] .hex-reference-focus,.dark .hex-reference-focus{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .hex-reference-focus button,body[data-theme="dark"] .hex-reference-focus button,.dark .hex-reference-focus button,
+html[data-theme="dark"] .hex-reference-focus article,body[data-theme="dark"] .hex-reference-focus article,.dark .hex-reference-focus article{background:#15314b;border-color:#39566e;color:#e7f2fb}
+html[data-theme="dark"] .hex-reference-focus button.active,body[data-theme="dark"] .hex-reference-focus button.active,.dark .hex-reference-focus button.active{background:#164e4a;color:#d7fffa;border-color:#2dd4bf}
+html[data-theme="dark"] .hex-reference-focus article strong,body[data-theme="dark"] .hex-reference-focus article strong,.dark .hex-reference-focus article strong,
+html[data-theme="dark"] .hex-reference-focus article p,body[data-theme="dark"] .hex-reference-focus article p,.dark .hex-reference-focus article p{color:#e7f2fb}
+@media(max-width:850px){.hex-reference-scene{grid-template-columns:1fr}}
+@media(max-width:500px){.hex-reference-focus>div{grid-template-columns:1fr}.hex-reference-figure img{max-height:430px}}
