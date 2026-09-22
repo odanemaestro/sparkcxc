@@ -88,59 +88,98 @@ function CNSScene() {
 }
 
 function NeuroneScene() {
+  const [focus,setFocus]=useState("dendrites");
+  const details={
+    dendrites:["Dendrites","Dendrites receive signals and carry them towards the cell body."],
+    body:["Cell body and nucleus","The cell body contains the nucleus and much of the neurone's cytoplasm."],
+    axon:["Axon","The axon carries the nerve impulse away from the cell body."],
+    myelin:["Myelin sheath","Myelin electrically insulates the axon and increases the speed of impulse transmission."],
+    endings:["Nerve endings","Axon terminals pass the signal to another neurone, muscle or gland."]
+  };
+  const hotspots={dendrites:[16,48],body:[31,49],axon:[55,50],myelin:[68,50],endings:[91,49]};
+  const selected=details[focus];
   return (
-    <svg viewBox="0 0 980 520" role="img" aria-label="Motor neurone showing dendrites, cell body, axon, myelin sheath and nerve endings">
-      <g transform="translate(60 65)">
-        <circle className="ns-cell-body" cx="185" cy="200" r="70" />
-        <circle className="ns-nucleus" cx="185" cy="200" r="23" />
-        <path className="ns-dendrite" d="M125 160Q70 115 30 130M120 195Q60 180 20 205M128 232Q80 275 35 265M155 140Q150 75 110 45" />
-        <path className="ns-axon" d="M255 200H805" />
-        {[300,385,470,555,640,725].map(x => <rect key={x} className="ns-myelin" x={x} y="175" width="62" height="50" rx="24" />)}
-        <path className="ns-terminal" d="M805 200Q855 165 900 145M805 200Q860 200 915 200M805 200Q855 235 900 255" />
-
-        <text className="ns-label" x="130" y="345">cell body</text>
-        <path className="ns-guide" d="M185 270V325" />
-        <text className="ns-label" x="470" y="345">axon</text>
-        <path className="ns-guide" d="M500 210V325" />
-        <text className="ns-label" x="655" y="115">myelin sheath</text>
-        <path className="ns-guide" d="M660 130V170" />
-        <text className="ns-label" x="790" y="345">nerve endings</text>
-        <path className="ns-guide" d="M840 250V325" />
-        <path className="ns-impulse" d="M285 150H770" />
-        <text className="ns-small" x="525" y="135" textAnchor="middle">direction of nerve impulse</text>
-      </g>
-    </svg>
+    <div className="spark-neurone-reference-view">
+      <figure className="spark-neurone-reference-figure">
+        <div className="spark-neurone-image-stage">
+          <img
+            src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Derived_Neuron_schema_with_no_labels.svg"
+            alt="Unlabeled scientific neuron diagram showing dendrites, cell body, axon, myelin and nerve endings"
+            loading="lazy"
+          />
+          {Object.entries(hotspots).map(([key,[left,top]])=>(
+            <button
+              type="button"
+              key={key}
+              className={"spark-neurone-hotspot "+(focus===key?"active":"")}
+              style={{left:left+"%",top:top+"%"}}
+              onClick={()=>setFocus(key)}
+              aria-pressed={focus===key}
+              aria-label={details[key][0]}
+              title={details[key][0]}
+            >
+              <span aria-hidden="true"></span>
+            </button>
+          ))}
+        </div>
+        <figcaption>
+          <span>Neuron structure</span>
+          <small>
+            Reference: <a href="https://commons.wikimedia.org/wiki/File:Derived_Neuron_schema_with_no_labels.svg" target="_blank" rel="noreferrer">Dhp1080 / Actam</a>
+            {" · "}CC BY-SA 3.0 / GFDL
+          </small>
+        </figcaption>
+      </figure>
+      <div className="spark-neurone-reference-focus">
+        <span>Explore a neurone</span>
+        <div>
+          {Object.entries(details).map(([key,[title]])=>(
+            <button type="button" key={key} className={focus===key?"active":""} onClick={()=>setFocus(key)}>{title}</button>
+          ))}
+        </div>
+        <article role="status"><strong>{selected[0]}</strong><p>{selected[1]}</p></article>
+      </div>
+    </div>
   );
 }
 
 function ReflexScene() {
-  const stages = [
-    {x:95,label:"Receptor",sub:"skin detects heat"},
-    {x:285,label:"Sensory neurone",sub:"impulse to CNS"},
-    {x:480,label:"Relay neurone",sub:"within spinal cord"},
-    {x:675,label:"Motor neurone",sub:"impulse from CNS"},
-    {x:865,label:"Effector",sub:"muscle contracts"},
-  ];
+  const [focus,setFocus]=useState("stimulus");
+  const details={
+    stimulus:["Stimulus and receptor","A painful or harmful stimulus is detected by a receptor in the skin."],
+    sensory:["Sensory neurone","The sensory neurone carries the impulse from the receptor towards the spinal cord."],
+    relay:["Relay neurone","A relay neurone within the spinal cord links the sensory pathway to the motor pathway."],
+    motor:["Motor neurone","The motor neurone carries the impulse from the spinal cord to the effector."],
+    effector:["Effector","A muscle contracts rapidly to withdraw the body part from danger."]
+  };
+  const selected=details[focus];
   return (
-    <svg viewBox="0 0 980 500" role="img" aria-label="Reflex arc from receptor through sensory relay and motor neurones to an effector">
-      <path className="ns-hot-object" d="M35 385H160V455H35Z" />
-      <path className="ns-heat" d="M60 365q18-30 36 0M105 365q18-30 36 0" />
-      <path className="ns-hand" d="M115 320Q155 280 190 305Q210 330 195 365Q160 390 130 370Z" />
-
-      {stages.map((stage,index)=>(
-        <g key={stage.label}>
-          <circle className={index===2 ? "ns-reflex-node relay" : "ns-reflex-node"} cx={stage.x} cy="170" r="58" />
-          <text className="ns-node-title" x={stage.x} y="165" textAnchor="middle">{stage.label}</text>
-          <text className="ns-node-sub" x={stage.x} y="190" textAnchor="middle">{stage.sub}</text>
-          {index<stages.length-1 && <path className="ns-reflex-arrow" d={"M"+(stage.x+65)+" 170H"+(stages[index+1].x-65)} />}
-        </g>
-      ))}
-      <path className="ns-reflex-link" d="M95 230Q120 280 150 315" />
-      <path className="ns-reflex-link" d="M865 230Q825 300 770 360" />
-      <path className="ns-muscle" d="M700 355Q780 325 850 375Q810 440 720 420Q680 400 700 355Z" />
-      <text className="ns-small" x="490" y="300" textAnchor="middle">rapid automatic pathway through the spinal cord</text>
-      <text className="ns-small" x="490" y="335" textAnchor="middle">the brain is informed, but the protective response begins before conscious action</text>
-    </svg>
+    <div className="spark-reflex-reference-view">
+      <figure className="spark-reflex-reference-figure">
+        <img
+          src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Reflex_Arc.svg"
+          alt="Scientific reflex-arc diagram showing a painful stimulus, sensory neuron, spinal cord, interneuron, motor neuron and responding muscle"
+          loading="lazy"
+        />
+        <figcaption>
+          <span>Reflex arc</span>
+          <small>
+            Reference: <a href="https://commons.wikimedia.org/wiki/File:Reflex_Arc.svg" target="_blank" rel="noreferrer">Verona Dethran</a>
+            {" · "}CC BY-SA 4.0
+          </small>
+        </figcaption>
+      </figure>
+      <div className="spark-reflex-reference-focus">
+        <span>Trace the reflex</span>
+        <div>
+          {Object.entries(details).map(([key,[title]])=>(
+            <button type="button" key={key} className={focus===key?"active":""} onClick={()=>setFocus(key)}>{title}</button>
+          ))}
+        </div>
+        <article role="status"><strong>{selected[0]}</strong><p>{selected[1]}</p></article>
+        <p className="spark-reflex-reference-note">Pathway: receptor → sensory neurone → relay neurone → motor neurone → effector.</p>
+      </div>
+    </div>
   );
 }
 
