@@ -25,6 +25,11 @@ This branch replaces custom placeholder-style scientific drawings with supplied 
 | human-heart | Wikimedia Commons: Diagram of the human heart (no labels).svg | CC BY-SA 4.0 | Unlabeled anatomical heart reference |
 | pregnancy-uterus | Wikimedia Commons: Gray38.png, Gray's Anatomy plate by Henry Vandyke Carter | Public domain | Unlabeled fetus-in-utero anatomical plate with SPARK overlay targets |
 
+| water-cycle | USGS / Wikimedia Commons: Watercycle-notext.jpg | Public domain | Real water-cycle landscape with SPARK process focus |
+| volcano-types | Wikimedia Commons: Volcanic Profiles-01.svg by Carie Frantz | CC BY-SA 4.0 | Comparative volcano profiles with SPARK type focus |
+| volcano-structure | Wikimedia Commons: Stratovolcano cross-section.svg by Woudloper | CC BY-SA 3.0 / GFDL | Scientific cross-section with SPARK structure focus |
+| hurricane-structure | NOAA GOES / CSU-CIRA: Hurricane Nigel’s Large Eye Swirls | Public domain | Real satellite hurricane structure with SPARK eye/eyewall/rainband focus |
+
 ## Replacement policy
 
 1. Prefer user-supplied images when they are scientifically suitable.
