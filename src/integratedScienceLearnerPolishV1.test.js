@@ -257,15 +257,15 @@ describe("Integrated Science learner polish V1", () => {
       path.join(__dirname,"subjects","components","HumanExcretionMechanismsExplorer.jsx"),
       "utf8"
     );
-    expect(excretion).toContain("hex-csec-kidney");
-    expect(excretion).toContain("hex-csec-nephron");
-    expect(excretion).toContain("hex-kidney-calyces");
-    expect(excretion).toContain("hex-renal-artery");
-    expect(excretion).toContain("hex-renal-vein");
-    expect(excretion).toContain("hex-bowman");
-    expect(excretion).toContain("hex-sebaceous-gland");
-    expect(excretion).toContain("hex-arrector");
-    expect(excretion).toContain("hex-sensory-nerve");
+    expect(excretion).toContain("KidneyAndNephron-v4_Antares42.svg");
+    expect(excretion).toContain("Kidney and nephron reference");
+    expect(excretion).toContain("Antares42");
+    expect(excretion).toContain("CC BY-SA 3.0");
+    expect(excretion).toContain("glomerulus");
+    expect(excretion).toContain("Bowman’s capsule");
+    expect(excretion).toContain("Skin_Cross-Section_%28NIH_BioArt_677%29.png");
+    expect(excretion).toContain("NIH NIAID BioArt");
+    expect(excretion).toContain("Public domain");
     expect(excretion).toContain("subcutaneous fat");
 
     expect(skeleton).toContain("hs-frontal");
