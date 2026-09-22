@@ -27,3 +27,17 @@ html[data-theme="dark"] .spark-eye-function-note,body[data-theme="dark"] .spark-
 .spark-eye-function-stage .ef-iris{fill:none;stroke:#6e95a8;stroke-width:12;stroke-linecap:round}
 .spark-eye-function-stage .ef-pupil-small{fill:#1d2b34}
 .spark-eye-function-stage .ef-optic-nerve{fill:#d9c08c;stroke:#95794a;stroke-width:5}
+
+
+.spark-eye-reference-view,.spark-pupil-reference-view{display:grid;grid-template-columns:minmax(300px,1.1fr) .9fr;gap:16px;align-items:start}
+.spark-eye-reference-figure,.spark-pupil-reference-figure{margin:0;padding:12px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.spark-eye-reference-figure img,.spark-pupil-reference-figure img{display:block;width:100%;height:auto;max-height:620px;object-fit:contain}
+.spark-eye-reference-figure figcaption,.spark-pupil-reference-figure figcaption{display:grid;gap:3px;margin-top:8px;color:var(--spark-ink-soft,#334e68);font-size:11px}
+.spark-eye-reference-figure figcaption span,.spark-pupil-reference-figure figcaption span{font-weight:900;color:var(--spark-ink,#102a43)}
+.spark-eye-reference-figure figcaption a,.spark-pupil-reference-figure figcaption a{color:var(--spark-teal-dark,#087f73)}
+.spark-eye-reference-note{padding:16px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.spark-eye-reference-note strong{color:var(--spark-teal-dark,#087f73);font-size:15px}.spark-eye-reference-note p{margin:7px 0 0;color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.6}
+html[data-theme="dark"] .spark-eye-reference-figure,body[data-theme="dark"] .spark-eye-reference-figure,.dark .spark-eye-reference-figure,
+html[data-theme="dark"] .spark-pupil-reference-figure,body[data-theme="dark"] .spark-pupil-reference-figure,.dark .spark-pupil-reference-figure,
+html[data-theme="dark"] .spark-eye-reference-note,body[data-theme="dark"] .spark-eye-reference-note,.dark .spark-eye-reference-note{background:#0d2134;border-color:#29465f}
+@media(max-width:760px){.spark-eye-reference-view,.spark-pupil-reference-view{grid-template-columns:1fr}}
