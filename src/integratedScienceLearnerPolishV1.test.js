@@ -126,9 +126,9 @@ describe("Integrated Science learner polish V1", () => {
       path.join(__dirname,"subjects","components","EyeFunctionExplorer.jsx"),
       "utf8"
     );
-    expect(eyeFunction).toContain("ef-anatomical-eye");
-    expect(eyeFunction).toContain("ef-optic-nerve");
-    expect(eyeFunction).toContain("ef-aqueous");
+    expect(eyeFunction).toContain("Accommodation-far-point-near-point.svg");
+    expect(eyeFunction).toContain("Pupillary_light_reflex.jpg");
+    expect(eyeFunction).toContain("spark-eye-reference-view");
 
     const muscleMovement = fs.readFileSync(
       path.join(__dirname,"subjects","components","SkeletalMuscleMovementExplorer.jsx"),
