@@ -53,3 +53,14 @@ body[data-theme="dark"] .spark-digestion-system-svg .dg-caption,
 .spark-digestion-system-svg .dg-cecum{fill:#80a54f;stroke:#587632;stroke-width:4}
 .spark-digestion-system-svg .dg-labels.right text,.spark-digestion-system-svg .dg-labels.left text{font-size:14px}
 @media(max-width:620px){.spark-digestion-system-svg .dg-labels.right text,.spark-digestion-system-svg .dg-labels.left text{font-size:18px}}
+
+
+.spark-digestion-reference-figure{margin:0}
+.spark-digestion-reference-stage{position:relative;max-width:470px;margin:0 auto}
+.spark-digestion-reference-stage img{display:block;width:100%;height:auto;max-height:760px;object-fit:contain}
+.spark-digestion-hotspot{position:absolute;transform:translate(-50%,-50%);width:24px;height:24px;padding:0;border:2px solid #fff;border-radius:50%;background:#0d9488;box-shadow:0 0 0 3px rgba(13,148,136,.22);cursor:pointer}
+.spark-digestion-hotspot.active{width:30px;height:30px;background:#0f766e;box-shadow:0 0 0 5px rgba(13,148,136,.28)}
+.spark-digestion-reference-figure figcaption{display:grid;gap:3px;margin-top:8px;color:var(--spark-ink-soft,#334e68);font-size:11px}.spark-digestion-reference-figure figcaption span{font-weight:900;color:var(--spark-ink,#102a43)}.spark-digestion-reference-figure figcaption a{color:var(--spark-teal-dark,#087f73)}
+.spark-digestion-pathway article{cursor:pointer}.spark-digestion-pathway article.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4)}
+html[data-theme="dark"] .spark-digestion-pathway article.active,body[data-theme="dark"] .spark-digestion-pathway article.active,.dark .spark-digestion-pathway article.active{background:#164e4a;border-color:#2dd4bf}
+@media(max-width:620px){.spark-digestion-hotspot{width:28px;height:28px}}
