@@ -28,3 +28,14 @@ html[data-theme="dark"] .spark-animal-asexual-notes article,body[data-theme="dar
 @media(max-width:850px){.spark-animal-asexual-notes{grid-template-columns:1fr}.spark-animal-asexual-tabs{display:grid;grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.spark-animal-asexual{padding:14px}.spark-animal-asexual-stage .aar-label{font-size:21px}.spark-animal-asexual-stage .aar-note{font-size:20px}}
 @media(max-width:390px){.spark-animal-asexual-tabs{grid-template-columns:1fr}}
+
+
+.spark-animal-asexual-reference{margin:0;display:grid;gap:8px;width:100%;padding:12px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.spark-animal-asexual-reference img{display:block;width:100%;height:auto;max-height:520px;object-fit:contain;border-radius:9px}
+.spark-animal-asexual-reference.fragmentation img,.spark-animal-asexual-reference.parthenogenesis img{max-height:460px}
+.spark-animal-asexual-reference figcaption{display:grid;gap:3px;color:var(--spark-ink-soft,#334e68);font-size:11px;text-align:left}
+.spark-animal-asexual-reference figcaption span{font-weight:900;color:var(--spark-ink,#102a43)}
+.spark-animal-asexual-reference figcaption a{color:var(--spark-teal-dark,#087f73)}
+html[data-theme="dark"] .spark-animal-asexual-reference,body[data-theme="dark"] .spark-animal-asexual-reference,.dark .spark-animal-asexual-reference{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .spark-animal-asexual-reference img,body[data-theme="dark"] .spark-animal-asexual-reference img,.dark .spark-animal-asexual-reference img{background:#f8fbfc}
+@media(max-width:620px){.spark-animal-asexual-reference figcaption{font-size:12px}.spark-animal-asexual-reference img{max-height:560px}}
