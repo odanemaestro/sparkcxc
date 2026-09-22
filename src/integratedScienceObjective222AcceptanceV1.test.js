@@ -112,4 +112,11 @@ describe("Integrated Science Objective 2.2.2 acceptance audit", () => {
     expect(migration).toContain('"topicsBuilt":47');
     expect(migration).toContain('"objectivesBuilt":47');
   });
+  test("uses a real unlabeled digestive-system reference beneath SPARK targets", () => {
+    expect(diagram).toContain("Digestive_system_without_labels.svg");
+    expect(diagram).toContain("Public domain");
+    expect(diagram).toContain("digestive-mouth-target");
+    expect(diagram).toContain("digestive-small-target");
+  });
+
 });
