@@ -89,6 +89,16 @@ describe("Integrated Science Objective 1.6.2 acceptance audit", () => {
     expect(explorer).toContain("Pupil response");
   });
 
+  test("uses sourced accommodation and real pupil-response visuals", () => {
+    expect(explorer).toContain("Accommodation-far-point-near-point.svg");
+    expect(explorer).toContain("MikeRun");
+    expect(explorer).toContain("CC BY-SA 4.0");
+    expect(explorer).toContain("Pupillary_light_reflex.jpg");
+    expect(explorer).toContain("Rapidreflex");
+    expect(explorer).toContain("spark-eye-reference-view");
+    expect(explorerCss).toContain(".spark-eye-reference-view");
+  });
+
   test("eye mechanism visual remains responsive and dark-mode ready", () => {
     expect(explorerCss).toContain("@media(max-width:620px)");
     expect(explorerCss).toContain('html[data-theme="dark"]');
