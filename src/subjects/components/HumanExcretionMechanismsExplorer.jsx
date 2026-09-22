@@ -30,74 +30,58 @@ const VIEWS = {
 };
 
 function KidneyScene() {
+  const [focus,setFocus] = useState("anatomy");
+  const notes = {
+    anatomy:{
+      title:"Kidney structure",
+      text:"Use the reference plate to locate the renal cortex, medulla, renal artery, renal vein and ureter before tracing a single nephron.",
+    },
+    filtration:{
+      title:"Ultrafiltration",
+      text:"At the renal corpuscle, the glomerulus lies inside Bowman’s capsule. Water and small dissolved substances enter the filtrate while cells and large proteins remain in the blood.",
+    },
+    reabsorption:{
+      title:"Selective reabsorption",
+      text:"As filtrate passes along the nephron tubules and loop of Henle, useful substances and much of the water return to the blood.",
+    },
+    urine:{
+      title:"Urine formation",
+      text:"Urea together with excess water and mineral salts remains in the tubule fluid and passes towards collecting ducts and the ureter.",
+    },
+  };
+  const note=notes[focus];
   return (
-    <svg viewBox="0 0 980 560" role="img" aria-label="Kidney and nephron showing gross kidney anatomy, ultrafiltration, reabsorption and urine formation">
-      <g className="hex-csec-kidney" transform="translate(35 35) scale(1.02 1.15)">
-        <path className="hex-kidney" d="M185 35Q86 18 70 132Q55 242 132 316Q187 368 249 325Q286 298 267 253Q247 209 263 170Q279 132 315 101Q306 48 238 36Q210 31 185 35Z" />
-        <path className="hex-kidney-cortex-boundary" d="M184 60Q105 50 94 140Q86 224 145 282Q188 323 233 292Q258 274 246 243" />
+    <div className="hex-reference-scene">
+      <figure className="hex-reference-figure kidney-nephron">
+        <img
+          src="https://commons.wikimedia.org/wiki/Special:Redirect/file/KidneyAndNephron-v4_Antares42.svg"
+          alt="Scientific reference diagram showing a kidney cross-section and nephron, including cortex, medulla, renal vessels, ureter, glomerulus, Bowman's capsule and nephron tubules"
+          loading="lazy"
+        />
+        <figcaption>
+          <span>Kidney and nephron reference</span>
+          <small>
+            Reference: <a href="https://commons.wikimedia.org/wiki/File:KidneyAndNephron-v4_Antares42.svg" target="_blank" rel="noreferrer">Antares42</a>
+            {" · "}CC BY-SA 3.0
+          </small>
+        </figcaption>
+      </figure>
 
-        <g className="hex-kidney-pyramids">
-          <path d="M118 90Q155 103 194 136L125 160Q111 127 118 90Z" />
-          <path d="M103 153Q152 164 205 196L118 219Q101 190 103 153Z" />
-          <path d="M118 226Q159 231 214 225L160 286Q132 265 118 226Z" />
-          <path d="M164 68Q199 89 228 140L171 147Q159 105 164 68Z" />
-        </g>
-
-        <g className="hex-kidney-calyces">
-          <path d="M194 136Q223 149 239 165" />
-          <path d="M205 196Q231 195 247 207" />
-          <path d="M214 225Q236 223 251 219" />
-        </g>
-
-        <path className="hex-kidney-pelvis" d="M221 143Q267 158 274 193Q281 224 230 266Q247 225 221 143Z" />
-        <path className="hex-ureter" d="M257 237Q302 274 314 370" />
-
-        <path className="hex-renal-artery" d="M274 160H365" />
-        <path className="hex-renal-vein" d="M273 188H365" />
-        <path className="hex-renal-artery branch" d="M278 160Q246 160 230 181M279 160Q246 137 222 115M279 160Q250 206 230 230" />
-        <path className="hex-renal-vein branch" d="M278 188Q248 188 231 202M278 188Q250 226 232 244" />
-      </g>
-
-      <text className="hex-label" x="200" y="430" textAnchor="middle">longitudinal section of kidney</text>
-      <text className="hex-small" x="112" y="115">cortex</text>
-      <text className="hex-small" x="150" y="270">medulla</text>
-      <text className="hex-small" x="258" y="258">renal pelvis</text>
-      <text className="hex-small" x="315" y="390">ureter</text>
-      <text className="hex-small vessel artery" x="335" y="212">renal artery</text>
-      <text className="hex-small vessel vein" x="335" y="247">renal vein</text>
-
-      <g className="hex-csec-nephron" transform="translate(450 48) scale(1.16 1.2)">
-        <path className="hex-bowman" aria-label="Bowman&apos;s capsule" d="M80 60A38 38 0 1 0 118 98" />
-        <path className="hex-bowman-inner" d="M92 66A26 26 0 1 0 112 92" />
-        <path className="hex-glomerulus" d="M70 80q8-12 16 0q8 12 16 0q-8-14-16-2q-8 14-16 2" />
-
-        <path className="hex-arteriole in" d="M60 15L78 62" />
-        <path className="hex-arteriole out" d="M100 15L95 62" />
-
-        <path className="hex-tubule" d="M118 98q20 10 30-5q10-20 30-10q18 10 5 25q-15 12 5 25q15 8 25-2" />
-        <path className="hex-loop" d="M213 133V280Q228 300 243 280V120" />
-        <path className="hex-tubule link" d="M243 120q10-20 30-10q15 10 30 0q10-8 20 0" />
-        <path className="hex-collecting" d="M335 40V300" />
-
-        <path className="hex-filter-arrow" d="M91 90Q108 106 124 112" />
-        <path className="hex-reabsorb-arrow" d="M170 120Q205 86 245 82" />
-        <path className="hex-urine-arrow" d="M335 245V295" />
-      </g>
-
-      <text className="hex-label" x="545" y="145" textAnchor="middle">glomerulus</text>
-      <text className="hex-small" x="560" y="180" textAnchor="middle">Bowman&apos;s capsule</text>
-      <text className="hex-small" x="725" y="445" textAnchor="middle">loop of Henle</text>
-      <text className="hex-small" x="845" y="175" textAnchor="middle">collecting duct</text>
-
-      <g className="hex-kidney-process-key">
-        <text className="hex-process" x="470" y="485">1. Ultrafiltration</text>
-        <text className="hex-small" x="470" y="508">small molecules enter the filtrate</text>
-        <text className="hex-process" x="670" y="485">2. Selective reabsorption</text>
-        <text className="hex-small" x="670" y="508">useful substances return to blood</text>
-        <text className="hex-process" x="865" y="485" textAnchor="end">3. Urine</text>
-        <text className="hex-small" x="865" y="508" textAnchor="end">urea + excess water + salts</text>
-      </g>
-    </svg>
+      <div className="hex-reference-focus">
+        <span>Explore the process</span>
+        <div>
+          {Object.entries(notes).map(([key,item])=>(
+            <button type="button" key={key} className={focus===key?"active":""} onClick={()=>setFocus(key)}>
+              {item.title}
+            </button>
+          ))}
+        </div>
+        <article role="status">
+          <strong>{note.title}</strong>
+          <p>{note.text}</p>
+        </article>
+      </div>
+    </div>
   );
 }
 
@@ -145,59 +129,46 @@ function AdhScene() {
 }
 
 function SkinScene() {
+  const [feature,setFeature] = useState("sweat");
+  const features = {
+    sweat:["Sweat gland","Sweat glands in the dermis release water, mineral salts and a small amount of urea through ducts to the skin surface."],
+    layers:["Skin layers","The epidermis forms the outer layer, the dermis contains glands, vessels and receptors, and the deeper region contains subcutaneous fat."],
+    cooling:["Evaporative cooling","When sweat evaporates from the skin surface, latent heat is removed from the body and the skin cools."],
+    hair:["Hair follicle","Hair follicles extend through the dermis and are associated with surrounding glands and supporting tissues."],
+  };
+  const selected=features[feature];
   return (
-    <svg viewBox="0 0 980 540" role="img" aria-label="Cross-section of human skin showing epidermis, dermis, subcutaneous fat, hair follicle, sebaceous gland, sweat gland, blood vessels and sensory nerves">
-      <path className="hex-skin-surface" d="M80 95Q180 78 280 94T480 94T680 94T900 92" />
-      <path className="hex-epidermis" d="M80 95Q180 78 280 94T480 94T680 94T900 92V165H80Z" />
-      <rect className="hex-dermis" x="80" y="165" width="820" height="225" />
-      <rect className="hex-subcutaneous" x="80" y="390" width="820" height="100" />
+    <div className="hex-reference-scene">
+      <figure className="hex-reference-figure skin-reference">
+        <img
+          src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Skin_Cross-Section_%28NIH_BioArt_677%29.png"
+          alt="Public-domain NIH cross-section of human skin showing epidermis, dermis, fat, sweat glands and hair follicles"
+          loading="lazy"
+        />
+        <figcaption>
+          <span>Human skin cross-section</span>
+          <small>
+            Reference: <a href="https://commons.wikimedia.org/wiki/File:Skin_Cross-Section_(NIH_BioArt_677).png" target="_blank" rel="noreferrer">NIH NIAID BioArt, Ryan Kissinger</a>
+            {" · "}Public domain
+          </small>
+        </figcaption>
+      </figure>
 
-      <g className="hex-fat-lobules">
-        {[120,185,250,315,380,445,510,575,640,705,770,835].map((x,i)=>(
-          <circle key={x} cx={x} cy={438+(i%2)*22} r="30" />
-        ))}
-      </g>
-
-      <path className="hex-hair-shaft" d="M610 250Q600 155 584 58" />
-      <path className="hex-hair-follicle" d="M584 145Q560 220 568 332Q572 372 606 386Q640 370 641 330Q638 230 606 148Z" />
-      <ellipse className="hex-hair-bulb" cx="607" cy="360" rx="34" ry="30" />
-
-      <path className="hex-sebaceous-gland" d="M535 230Q500 200 474 224Q460 247 482 263Q505 277 526 261Q544 246 535 230Z" />
-      <path className="hex-sebaceous-duct" d="M528 250Q556 245 578 228" />
-
-      <path className="hex-arrector" d="M520 320L575 245" />
-
-      <path className="hex-sweat-duct" d="M290 355Q246 315 275 270Q309 223 295 176V101" />
-      <g className="hex-sweat-gland">
-        <path d="M220 350q35-50 70 0t70 0t70 0q-35 52-70 7t-70 0t-70-7Z" />
-        <path d="M235 374q30-36 60 0t60 0t55 0" />
-      </g>
-      <path className="hex-sweat-pore" d="M287 102Q296 90 305 102" />
-      <path className="hex-sweat-drop" d="M296 52q-16 23 0 39q16-16 0-39Z" />
-
-      <path className="hex-blood-vessel artery" d="M520 338Q635 293 735 330T860 332" />
-      <path className="hex-blood-vessel vein" d="M505 360Q620 410 735 365T865 370" />
-      <path className="hex-capillary-loop" d="M670 330Q655 270 700 246Q743 228 760 277Q774 314 744 338" />
-
-      <path className="hex-sensory-nerve" d="M410 445Q420 385 448 340Q472 305 470 245" />
-      <circle className="hex-sensory-ending" cx="470" cy="235" r="12" />
-
-      <text className="hex-label" x="115" y="135">epidermis</text>
-      <text className="hex-label" x="115" y="250">dermis</text>
-      <text className="hex-label" x="115" y="445">subcutaneous fat</text>
-
-      <text className="hex-small" x="210" y="385">sweat gland</text>
-      <text className="hex-small" x="310" y="120">sweat duct</text>
-      <text className="hex-small" x="445" y="205">sebaceous gland</text>
-      <text className="hex-small" x="500" y="330">arrector pili muscle</text>
-      <text className="hex-small" x="620" y="205">hair follicle</text>
-      <text className="hex-small" x="700" y="305">surface capillaries</text>
-      <text className="hex-small" x="420" y="470">sensory nerve</text>
-
-      <text className="hex-process" x="500" y="520" textAnchor="middle">
-        Sweat reaches the surface through a duct; evaporation removes heat from the body
-      </text>
-    </svg>
+      <div className="hex-reference-focus">
+        <span>Tap a structure or process</span>
+        <div>
+          {Object.entries(features).map(([key,[title]])=>(
+            <button type="button" key={key} className={feature===key?"active":""} onClick={()=>setFeature(key)}>
+              {title}
+            </button>
+          ))}
+        </div>
+        <article role="status">
+          <strong>{selected[0]}</strong>
+          <p>{selected[1]}</p>
+        </article>
+      </div>
+    </div>
   );
 }
 
