@@ -115,11 +115,11 @@ describe("Integrated Science learner polish V1", () => {
       path.join(__dirname,"subjects","components","HumanSkeletonExplorer.jsx"),
       "utf8"
     );
-    expect(skeleton).toContain("hs-anatomical");
-    expect(skeleton).toContain("hs-skull");
-    expect(skeleton).toContain("hs-ribs");
-    expect(skeleton).toContain("hs-pelvis");
-    expect(skeleton).toContain("hs-femur");
+    expect(skeleton).toContain("Human_skeleton_front_-_no_labels.svg");
+    expect(skeleton).toContain("Segments_of_Vertebrae.svg");
+    expect(skeleton).toContain("spark-skeleton-hotspot");
+    expect(skeleton).toContain("spark-skeleton-region-focus");
+    expect(skeleton).toContain("Public domain");
     expect(skeleton).toContain("aria-pressed");
 
     const eyeFunction = fs.readFileSync(
@@ -268,11 +268,5 @@ describe("Integrated Science learner polish V1", () => {
     expect(excretion).toContain("Public domain");
     expect(excretion).toContain("subcutaneous fat");
 
-    expect(skeleton).toContain("hs-frontal");
-    expect(skeleton).toContain("hs-temporal");
-    expect(skeleton).toContain("hs-nasal");
-    expect(skeleton).toContain("hs-zygoma");
-    expect(skeleton).toContain("hs-maxilla");
-    expect(skeleton).toContain("hs-teeth");
   });
 });
