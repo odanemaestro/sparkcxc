@@ -736,15 +736,84 @@ function ThreePinPlugTemplate() {
   );
 }
 
+const REFERENCE_TEMPLATE_MEDIA = {
+  "plant-cell":{
+    href:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Plant_cell_structure_no_text.png",
+    x:250,y:35,width:500,height:550,
+    credit:"LadyofHats",
+    license:"Public domain",
+    source:"https://commons.wikimedia.org/wiki/File:Plant_cell_structure_no_text.png",
+  },
+  "animal-cell":{
+    href:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Animal_cell_structure_no_text.svg",
+    x:255,y:35,width:490,height:550,
+    credit:"LadyofHats / MesserWoland",
+    license:"Public domain",
+    source:"https://commons.wikimedia.org/wiki/File:Animal_cell_structure_no_text.svg",
+  },
+  "light-microscope":{
+    href:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Compound_Microscope.JPG",
+    x:320,y:28,width:360,height:550,
+    credit:"Acagastya",
+    license:"CC0 1.0",
+    source:"https://commons.wikimedia.org/wiki/File:Compound_Microscope.JPG",
+  },
+  "female-reproductive-system":{
+    href:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Female_internal_genitalia_unlabeled.svg",
+    x:255,y:42,width:490,height:535,
+    credit:"RWhitwam, adapted from Servier Medical Art",
+    license:"CC BY-SA 4.0",
+    source:"https://commons.wikimedia.org/wiki/File:Female_internal_genitalia_unlabeled.svg",
+  },
+  "male-reproductive-system":{
+    href:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Male_genital_system_-_Front_view-1_for_quizzing.svg",
+    x:245,y:35,width:510,height:545,
+    credit:"RWhitwam / Servier Medical Art",
+    license:"CC BY-SA 4.0",
+    source:"https://commons.wikimedia.org/wiki/File:Male_genital_system_-_Front_view-1_for_quizzing.svg",
+  },
+  "pregnancy-uterus":{
+    href:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Pregnant_Human_and_Fetus_in_Uterus_%28NIH_BioArt_420_-_633834%29.svg",
+    x:260,y:30,width:480,height:555,
+    credit:"NIAID NIH BioArt",
+    license:"Public domain",
+    source:"https://commons.wikimedia.org/wiki/File:Pregnant_Human_and_Fetus_in_Uterus_(NIH_BioArt_420_-_633834).svg",
+  },
+};
+
+function ReferenceTemplate({ template }) {
+  const media = REFERENCE_TEMPLATE_MEDIA[template];
+  if (!media) return null;
+  return (
+    <g className={"spark-reference-template spark-reference-template-"+template} aria-hidden="true">
+      <rect className="spark-reference-template-backdrop" x={media.x-12} y={media.y-12} width={media.width+24} height={media.height+24} rx="18" />
+      <image
+        href={media.href}
+        x={media.x}
+        y={media.y}
+        width={media.width}
+        height={media.height}
+        preserveAspectRatio="xMidYMid meet"
+      />
+    </g>
+  );
+}
+
+function ReferenceCredit({ template }) {
+  const media = REFERENCE_TEMPLATE_MEDIA[template];
+  if (!media) return null;
+  return (
+    <small className="spark-reference-credit">
+      Reference image: <a href={media.source} target="_blank" rel="noreferrer">{media.credit}</a>
+      {" · "}{media.license}
+    </small>
+  );
+}
+
 function DiagramTemplate({ template }) {
-  if (template === "plant-cell") return <PlantCellTemplate />;
-  if (template === "animal-cell") return <AnimalCellTemplate />;
-  if (template === "light-microscope") return <LightMicroscopeTemplate />;
+  if (REFERENCE_TEMPLATE_MEDIA[template]) return <ReferenceTemplate template={template} />;
   if (template === "flower-longitudinal") return <FlowerLongitudinalTemplate />;
   if (template === "bean-seed") return <BeanSeedTemplate />;
-  if (template === "female-reproductive-system") return <FemaleReproductiveTemplate />;
-  if (template === "male-reproductive-system") return <MaleReproductiveTemplate />;
-  if (template === "pregnancy-uterus") return <PregnancyUterusTemplate />;
   if (template === "mammalian-eye") return <MammalianEyeTemplate />;
   if (template === "mammalian-ear") return <MammalianEarTemplate />;
   if (template === "human-brain") return <HumanBrainTemplate />;
@@ -982,6 +1051,7 @@ export default function InteractiveLabelDiagram({
               );
             })}
           </svg>
+          <ReferenceCredit template={normalized.template} />
         </div>
 
         <div className="spark-label-diagram-mobile-targets" aria-label="Diagram targets">
