@@ -117,4 +117,11 @@ describe("Integrated Science Objective 2.2.3 acceptance audit", () => {
     expect(migration).toContain('"topicsBuilt":48');
     expect(migration).toContain('"objectivesBuilt":48');
   });
+  test("uses a real unlabeled tooth reference beneath SPARK targets", () => {
+    expect(diagram).toContain("Basic_tooth.svg");
+    expect(diagram).toContain("K. D. Schroeder");
+    expect(diagram).toContain("tooth-enamel-target");
+    expect(diagram).toContain("tooth-root-target");
+  });
+
 });
