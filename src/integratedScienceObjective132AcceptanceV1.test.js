@@ -55,15 +55,16 @@ describe("Integrated Science Objective 1.3.2 acceptance audit", () => {
     expect(migration).toContain("lubricating and alkaline fluid");
   });
 
-  test("includes separate recognisable male and female anatomy templates", () => {
-    expect(diagram).toContain("FemaleReproductiveTemplate");
-    expect(diagram).toContain("MaleReproductiveTemplate");
+  test("uses real unlabeled male and female anatomy references beneath SPARK targets", () => {
     expect(diagram).toContain('"female-reproductive-system"');
+    expect(diagram).toContain("Female_reproductive_organs%2C_frontal_view%2C_unlabeled.svg");
+    expect(diagram).toContain("RWhitwam");
     expect(diagram).toContain('"male-reproductive-system"');
-    expect(diagram).toContain("female-uterus");
-    expect(diagram).toContain("female-ovary");
-    expect(diagram).toContain("male-testis");
-    expect(diagram).toContain("male-epididymis");
+    expect(diagram).toContain("Male_reproductive_frontal_without_labels.svg");
+    expect(diagram).toContain("T. Kebert");
+    expect(diagram).toContain("REFERENCE_TARGET_OVERRIDES");
+    expect(diagram).toContain("female-ovary-target");
+    expect(diagram).toContain("male-testis-target");
   });
 
   test("both anatomy diagrams use the established interactive label engine", () => {
