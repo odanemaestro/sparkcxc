@@ -107,6 +107,18 @@ describe("Integrated Science Objective 1.6.5 acceptance audit", () => {
     expect(explorerCss).toContain(".spark-nervous-reference-view");
   });
 
+  test("uses sourced neurone and reflex-arc references", () => {
+    expect(explorer).toContain("Derived_Neuron_schema_with_no_labels.svg");
+    expect(explorer).toContain("Dhp1080 / Actam");
+    expect(explorer).toContain("CC BY-SA 3.0 / GFDL");
+    expect(explorer).toContain("Reflex_Arc.svg");
+    expect(explorer).toContain("Verona Dethran");
+    expect(explorer).toContain("spark-neurone-hotspot");
+    expect(explorer).toContain("spark-reflex-reference-focus");
+    expect(explorerCss).toContain(".spark-neurone-reference-view");
+    expect(explorerCss).toContain(".spark-reflex-reference-view");
+  });
+
   test("visual remains responsive and dark-mode ready", () => {
     expect(explorerCss).toContain("@media(max-width:780px)");
     expect(explorerCss).toContain("@media(max-width:620px)");
