@@ -100,4 +100,11 @@ describe("Integrated Science Objective 1.6.2 acceptance audit", () => {
     expect(migration).toContain("Focusing on a near object");
     expect(migration).toContain("What happens to the pupil in bright light?");
   });
+  test("uses a real unlabeled eye reference beneath SPARK targets", () => {
+    expect(diagram).toContain("Diagram_of_human_eye_without_labels.svg");
+    expect(diagram).toContain("Jmarchn");
+    expect(diagram).toContain("eye-cornea-target");
+    expect(diagram).toContain("eye-optic-nerve-target");
+  });
+
 });
