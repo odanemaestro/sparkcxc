@@ -25,35 +25,43 @@ const VIEWS = {
 };
 
 function HearingScene() {
+  const [focus,setFocus]=useState("pinna");
+  const details={
+    pinna:["Pinna","The pinna collects sound waves and directs them into the ear canal."],
+    canal:["Ear canal","The ear canal carries sound waves towards the ear drum."],
+    drum:["Ear drum","The tympanic membrane vibrates when sound waves reach it."],
+    ossicles:["Ossicles","The malleus, incus and stapes transmit and amplify vibrations through the middle ear."],
+    cochlea:["Cochlea","Vibrations enter the fluid-filled cochlea, where sensory hair cells convert mechanical movement into nerve impulses."],
+    nerve:["Auditory nerve","The auditory nerve carries impulses from the cochlea towards the brain."]
+  };
+  const selected=details[focus];
   return (
-    <svg viewBox="0 0 980 500" role="img" aria-label="Sound pathway through outer, middle and inner ear">
-      <path className="earfx-wave" d="M20 120q30-32 60 0t60 0t60 0" />
-      <path className="earfx-wave" d="M20 180q30-32 60 0t60 0t60 0" />
-
-      <path className="earfx-pinna" d="M210 85Q160 85 150 155Q145 235 220 255Q275 260 280 205Q284 165 247 160Q218 158 214 187Q212 212 235 211Q252 210 252 185" />
-      <path className="earfx-canal" d="M245 185Q315 174 386 184" />
-      <ellipse className="earfx-drum" cx="410" cy="184" rx="14" ry="60" transform="rotate(-8 410 184)" />
-
-      <path className="earfx-middle-cavity" d="M427 128Q505 115 568 151Q575 198 542 232Q486 248 431 217Z" />
-      <path className="earfx-ossicles" d="M426 166Q445 145 465 147L476 169L462 190M470 149Q494 142 505 160L496 181L516 191M514 191L532 171M516 196L536 214M532 171Q547 192 536 214" />
-
-      <path className="earfx-semicircular" d="M590 145Q555 82 600 58Q652 31 682 83Q705 124 675 169M621 164Q610 92 670 80Q724 69 733 128Q742 178 690 200M590 185Q545 153 565 107Q585 62 633 83Q675 101 670 145" />
-      <ellipse className="earfx-vestibule" cx="676" cy="218" rx="28" ry="38" />
-
-      <path className="earfx-cochlea" d="M694 258Q735 211 786 232Q835 252 832 300Q828 343 786 355Q745 365 719 337Q700 316 710 291Q719 269 742 268Q767 266 778 284Q788 302 778 317Q768 330 753 327Q741 324 739 312" />
-      <path className="earfx-nerve" d="M785 286Q848 269 922 304" />
-
-      <path className="earfx-eustachian" d="M535 211Q560 246 577 309Q590 352 632 386" />
-
-      <path className="earfx-arrow" d="M190 150H228M389 184H399M542 190H577M812 296H850" />
-
-      <text className="earfx-label" x="90" y="305" textAnchor="middle">1. sound waves</text>
-      <text className="earfx-label" x="300" y="305" textAnchor="middle">2. pinna + ear canal</text>
-      <text className="earfx-label" x="480" y="305" textAnchor="middle">3. ear drum + ossicles</text>
-      <text className="earfx-label" x="735" y="405" textAnchor="middle">4. cochlea</text>
-      <text className="earfx-label" x="875" y="355" textAnchor="middle">5. auditory nerve</text>
-      <text className="earfx-small" x="500" y="465" textAnchor="middle">Sound path: pinna → ear canal → ear drum → ossicles → cochlea → auditory nerve</text>
-    </svg>
+    <div className="spark-ear-reference-view">
+      <figure className="spark-ear-reference-figure">
+        <img
+          src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Anatomy_of_the_Human_Ear_blank.svg"
+          alt="Blank scientific cross-section of the human ear showing outer, middle and inner ear anatomy"
+          loading="lazy"
+        />
+        <figcaption>
+          <span>Human ear anatomy</span>
+          <small>
+            Reference: <a href="https://commons.wikimedia.org/wiki/File:Anatomy_of_the_Human_Ear_blank.svg" target="_blank" rel="noreferrer">Chittka L, Brockmann / M.Komorniczak</a>
+            {" · "}CC BY 2.5
+          </small>
+        </figcaption>
+      </figure>
+      <div className="spark-ear-reference-focus">
+        <span>Follow the hearing pathway</span>
+        <div>
+          {Object.entries(details).map(([key,[title]])=>(
+            <button type="button" key={key} className={focus===key?"active":""} onClick={()=>setFocus(key)}>{title}</button>
+          ))}
+        </div>
+        <article role="status"><strong>{selected[0]}</strong><p>{selected[1]}</p></article>
+        <p className="spark-ear-reference-note">Sound path: pinna → ear canal → ear drum → ossicles → cochlea → auditory nerve.</p>
+      </div>
+    </div>
   );
 }
 
@@ -87,42 +95,78 @@ function SoundScene() {
 }
 
 function BalanceScene() {
+  const [focus,setFocus]=useState("canals");
+  const details={
+    canals:["Semicircular canals","Three semicircular canals are arranged in different planes and help detect rotational movement of the head."],
+    fluid:["Fluid movement","When the head rotates, fluid in the canals lags behind and bends sensory structures."],
+    receptors:["Sensory receptors","Hair-cell receptors convert movement of the fluid and associated structures into nerve signals."],
+    dizziness:["After spinning","After rotation stops, fluid may continue moving briefly, which can make a person feel dizzy."]
+  };
+  const selected=details[focus];
   return (
-    <svg viewBox="0 0 980 500" role="img" aria-label="Semicircular canals showing fluid movement during rotation">
-      <g transform="translate(130 70)">
-        <path className="earfx-semicircular" d="M180 250Q60 160 120 65Q200-15 285 75Q340 140 300 225" />
-        <path className="earfx-semicircular" d="M205 245Q150 110 250 75Q355 40 375 150Q388 225 310 270" />
-        <path className="earfx-semicircular" d="M185 275Q80 255 72 165Q68 75 155 65Q245 55 275 150" />
-        <path className="earfx-fluid" d="M110 160Q160 100 220 115" />
-        <path className="earfx-fluid" d="M230 95Q300 110 330 170" />
-        <path className="earfx-fluid" d="M100 215Q160 265 230 245" />
-        <text className="earfx-label" x="215" y="355" textAnchor="middle">fluid moves when the head rotates</text>
-      </g>
-      <g transform="translate(610 135)">
-        <circle className="earfx-head" cx="80" cy="85" r="55" />
-        <path className="earfx-body" d="M80 145V280M80 190L15 235M80 190L150 230M80 280L25 365M80 280L145 365" />
-        <path className="earfx-spin" d="M5 45Q80-20 155 45" />
-        <text className="earfx-small" x="80" y="400" textAnchor="middle">fluid may keep moving briefly after spinning stops</text>
-      </g>
-    </svg>
+    <div className="spark-ear-reference-view">
+      <figure className="spark-ear-reference-figure">
+        <img
+          src="https://commons.wikimedia.org/wiki/Special:Redirect/file/STS-65_fig6.png"
+          alt="NASA diagram of the vestibular apparatus showing semicircular canals and otolith organs involved in balance and motion sensing"
+          loading="lazy"
+        />
+        <figcaption>
+          <span>Vestibular apparatus and balance</span>
+          <small>
+            Reference: <a href="https://commons.wikimedia.org/wiki/File:STS-65_fig6.png" target="_blank" rel="noreferrer">NASA</a>
+            {" · "}Public domain
+          </small>
+        </figcaption>
+      </figure>
+      <div className="spark-ear-reference-focus">
+        <span>Explore balance</span>
+        <div>
+          {Object.entries(details).map(([key,[title]])=>(
+            <button type="button" key={key} className={focus===key?"active":""} onClick={()=>setFocus(key)}>{title}</button>
+          ))}
+        </div>
+        <article role="status"><strong>{selected[0]}</strong><p>{selected[1]}</p></article>
+      </div>
+    </div>
   );
 }
 
 function PressureScene() {
+  const [focus,setFocus]=useState("difference");
+  const details={
+    difference:["Unequal pressure","Rapid changes in outside air pressure can create a pressure difference across the ear drum."],
+    tube:["Eustachian tube","The Eustachian tube connects the middle ear with the throat and helps equalise air pressure."],
+    opening:["Swallowing or yawning","Swallowing or yawning can help open the Eustachian tube so air moves between the throat and middle ear."],
+    pop:["The familiar 'pop'","When pressure equalises across the ear drum, discomfort reduces and a person may feel or hear the ears 'pop'."]
+  };
+  const selected=details[focus];
   return (
-    <svg viewBox="0 0 980 500" role="img" aria-label="Eustachian tube equalising pressure across the ear drum">
-      <g transform="translate(80 70)">
-        <rect className="earfx-outer-air" x="0" y="60" width="250" height="280" rx="20" />
-        <ellipse className="earfx-drum big" cx="290" cy="200" rx="18" ry="110" />
-        <rect className="earfx-middle-air" x="325" y="60" width="250" height="280" rx="20" />
-        <path className="earfx-eustachian" d="M480 265Q500 340 585 390" />
-        <path className="earfx-pressure-arrow" d="M90 200H245M500 200H340" />
-        <text className="earfx-heading" x="125" y="45" textAnchor="middle">outside air</text>
-        <text className="earfx-heading" x="450" y="45" textAnchor="middle">middle ear</text>
-        <text className="earfx-label" x="445" y="430">Eustachian tube opens to throat</text>
-      </g>
-      <text className="earfx-small" x="500" y="475" textAnchor="middle">equal pressure on both sides of the ear drum reduces discomfort and causes the 'pop'</text>
-    </svg>
+    <div className="spark-ear-reference-view">
+      <figure className="spark-ear-reference-figure">
+        <img
+          src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Anatomy_of_the_Human_Ear_blank.svg"
+          alt="Scientific cross-section of the human ear including the middle ear and Eustachian tube"
+          loading="lazy"
+        />
+        <figcaption>
+          <span>Middle ear and Eustachian tube</span>
+          <small>
+            Reference: <a href="https://commons.wikimedia.org/wiki/File:Anatomy_of_the_Human_Ear_blank.svg" target="_blank" rel="noreferrer">Chittka L, Brockmann / M.Komorniczak</a>
+            {" · "}CC BY 2.5
+          </small>
+        </figcaption>
+      </figure>
+      <div className="spark-ear-reference-focus">
+        <span>Explore pressure equalisation</span>
+        <div>
+          {Object.entries(details).map(([key,[title]])=>(
+            <button type="button" key={key} className={focus===key?"active":""} onClick={()=>setFocus(key)}>{title}</button>
+          ))}
+        </div>
+        <article role="status"><strong>{selected[0]}</strong><p>{selected[1]}</p></article>
+      </div>
+    </div>
   );
 }
 
