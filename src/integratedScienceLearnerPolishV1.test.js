@@ -223,15 +223,15 @@ describe("Integrated Science learner polish V1", () => {
       path.join(__dirname,"subjects","components","HumanDigestionExplorer.jsx"),
       "utf8"
     );
-    expect(digestion).toContain("spark-digestion-system-svg");
-    expect(digestion).toContain("dg-oesophagus");
-    expect(digestion).toContain("dg-stomach");
-    expect(digestion).toContain("dg-liver");
-    expect(digestion).toContain("dg-pancreas");
-    expect(digestion).toContain("dg-duodenum");
-    expect(digestion).toContain("dg-small");
-    expect(digestion).toContain("dg-large");
-    expect(digestion).toContain("dg-route");
+    expect(digestion).toContain("Digestive_system_without_labels.svg");
+    expect(digestion).toContain("spark-digestion-reference-stage");
+    expect(digestion).toContain("spark-digestion-hotspot");
+    expect(digestion).toContain("LadyofHats / Mariana Ruiz");
+    expect(digestion).toContain("Public domain");
+    expect(digestion).toContain("Oesophagus");
+    expect(digestion).toContain("Stomach");
+    expect(digestion).toContain("Small intestine");
+    expect(digestion).toContain("Large intestine");
     expect(diagram).toContain("tooth-root-canal");
     expect(diagram).toContain("tooth-periodontal");
 
