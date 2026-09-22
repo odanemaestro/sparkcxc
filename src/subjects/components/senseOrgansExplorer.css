@@ -57,3 +57,13 @@ html[data-theme="dark"] .spark-sense-flow article,body[data-theme="dark"] .spark
 
 html[data-theme="dark"] .spark-sense-icon .so-anatomy-label,body[data-theme="dark"] .spark-sense-icon .so-anatomy-label,.dark .spark-sense-icon .so-anatomy-label{fill:#17384d}
 @media(max-width:620px){.spark-sense-icon .so-anatomy-label{font-size:16px}}
+
+
+.spark-sense-reference{margin:0;display:grid;gap:8px;width:100%}
+.spark-sense-reference img{display:block;width:100%;height:auto;max-height:430px;object-fit:contain;border-radius:10px;background:var(--spark-paper,#fff)}
+.spark-sense-reference figcaption{display:grid;gap:3px;color:var(--spark-ink-soft,#334e68);font-size:10px;text-align:left}
+.spark-sense-reference figcaption span{font-weight:900;color:var(--spark-ink,#102a43)}
+.spark-sense-reference figcaption a{color:var(--spark-teal-dark,#087f73)}
+.spark-sense-icon{align-items:flex-start}
+html[data-theme="dark"] .spark-sense-reference img,body[data-theme="dark"] .spark-sense-reference img,.dark .spark-sense-reference img{background:#f8fbfc}
+@media(max-width:620px){.spark-sense-reference figcaption{font-size:12px}.spark-sense-reference img{max-height:520px}}
