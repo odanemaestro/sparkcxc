@@ -30,6 +30,12 @@ This branch replaces custom placeholder-style scientific drawings with supplied 
 | volcano-structure | Wikimedia Commons: Stratovolcano cross-section.svg by Woudloper | CC BY-SA 3.0 / GFDL | Scientific cross-section with SPARK structure focus |
 | hurricane-structure | NOAA GOES / CSU-CIRA: Hurricane Nigel’s Large Eye Swirls | Public domain | Real satellite hurricane structure with SPARK eye/eyewall/rainband focus |
 
+
+| human-skeleton-major-bones | Wikimedia Commons: Human skeleton front - no labels.svg | Public domain | Full skeleton reference with SPARK bone hotspots |
+| human-skeleton-spinal-regions | Wikimedia Commons: Segments of Vertebrae.svg | CC BY-SA 4.0 | Cervical, thoracic, lumbar, sacral and coccygeal regions with SPARK focus controls |
+| nervous-system-overview | Wikimedia Commons: Nervous system diagram unlabeled.svg | CC BY-SA 4.0 | CNS/PNS anatomy with SPARK hotspots and focus states |
+| human-digestion-pathway | Wikimedia Commons: Digestive system without labels.svg | Public domain | Digestive anatomy with SPARK organ hotspots and pathway steps |
+
 ## Replacement policy
 
 1. Prefer user-supplied images when they are scientifically suitable.
