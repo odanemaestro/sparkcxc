@@ -47,3 +47,23 @@ html[data-theme="dark"] .spark-pregnancy-explanation,body[data-theme="dark"] .sp
 .spark-pregnancy-stage .ps-inset-card{fill:#fffafa;stroke:#d9c6ca;stroke-width:3}
 .spark-pregnancy-stage .ps-maternal-vessel.return{stroke:#9f3947}
 .spark-pregnancy-stage .ps-villus-main,.spark-pregnancy-stage .ps-villus-branch{fill:none;stroke:#bd7180;stroke-width:10;stroke-linecap:round}
+
+
+.spark-pregnancy-reference-view{display:grid;grid-template-columns:minmax(320px,1.1fr) .9fr;gap:16px;align-items:start}
+.spark-pregnancy-reference-figure{margin:0;padding:12px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.spark-pregnancy-reference-figure img{display:block;width:100%;height:auto;max-height:680px;object-fit:contain}
+.spark-pregnancy-reference-figure.childbirth img{max-height:760px}
+.spark-pregnancy-reference-figure figcaption{display:grid;gap:3px;margin-top:8px;color:var(--spark-ink-soft,#334e68);font-size:11px}
+.spark-pregnancy-reference-figure figcaption span{font-weight:900;color:var(--spark-ink,#102a43)}
+.spark-pregnancy-reference-figure figcaption a{color:var(--spark-teal-dark,#087f73)}
+.spark-pregnancy-reference-focus{display:grid;gap:12px}.spark-pregnancy-reference-focus>span{color:var(--spark-teal-dark,#087f73);font-size:10px;font-weight:900}
+.spark-pregnancy-reference-focus>div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.spark-pregnancy-reference-focus button{min-height:40px;padding:8px 10px;border:1px solid var(--spark-border,#d9e2ec);border-radius:9px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:11px;font-weight:850;text-align:left;cursor:pointer}
+.spark-pregnancy-reference-focus button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}
+.spark-pregnancy-reference-focus article{padding:15px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:11px;background:var(--spark-paper,#fff)}
+.spark-pregnancy-reference-focus article strong{color:var(--spark-ink,#102a43);font-size:14px}.spark-pregnancy-reference-focus article p{margin:5px 0 0;color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.55}
+html[data-theme="dark"] .spark-pregnancy-reference-figure,body[data-theme="dark"] .spark-pregnancy-reference-figure,.dark .spark-pregnancy-reference-figure,
+html[data-theme="dark"] .spark-pregnancy-reference-focus button,body[data-theme="dark"] .spark-pregnancy-reference-focus button,.dark .spark-pregnancy-reference-focus button,
+html[data-theme="dark"] .spark-pregnancy-reference-focus article,body[data-theme="dark"] .spark-pregnancy-reference-focus article,.dark .spark-pregnancy-reference-focus article{background:#0d2134;border-color:#29465f;color:#e7f2fb}
+@media(max-width:850px){.spark-pregnancy-reference-view{grid-template-columns:1fr}.spark-pregnancy-reference-figure{max-width:680px;margin:0 auto}}
+@media(max-width:560px){.spark-pregnancy-reference-focus>div{grid-template-columns:1fr}}
