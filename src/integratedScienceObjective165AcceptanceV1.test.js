@@ -111,4 +111,12 @@ describe("Integrated Science Objective 1.6.5 acceptance audit", () => {
     expect(migration).toContain("Which part of the brain controls thinking, memory and many voluntary actions?");
     expect(migration).toContain("What is the function of the myelin sheath?");
   });
+  test("uses a real sagittal brain reference beneath SPARK targets", () => {
+    expect(diagram).toContain("Brain_human_sagittal_section.svg");
+    expect(diagram).toContain("Patrick J. Lynch");
+    expect(diagram).toContain("brain-cerebrum-target");
+    expect(diagram).toContain("brain-pituitary-target");
+    expect(diagram).toContain("brain-spinal-target");
+  });
+
 });
