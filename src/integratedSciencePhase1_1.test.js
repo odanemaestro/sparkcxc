@@ -53,8 +53,9 @@ describe("SPARK CSEC Integrated Science Phase 1.1", () => {
     expect(migration).toContain("m1-t1-2-light-microscope");
     expect(migration).toContain('"classification":"practical-support"');
     expect(migration).toContain("examining prepared slides under a microscope");
-    expect(diagram).toContain('template === "light-microscope"');
-    expect(diagram).toContain("LightMicroscopeTemplate");
+    expect(diagram).toContain('"light-microscope":{');
+    expect(diagram).toContain("Compound_Microscope.JPG");
+    expect(diagram).toContain("ReferenceTemplate");
   });
 
   test("microscope activity is saved as a canonical diagram", () => {
