@@ -143,14 +143,14 @@ describe("Integrated Science learner polish V1", () => {
       path.join(__dirname,"subjects","components","NervousSystemExplorer.jsx"),
       "utf8"
     );
-    expect(nervous).toContain("ns-brain cerebrum");
-    expect(nervous).toContain("ns-brain cerebellum");
-    expect(nervous).toContain("ns-nerve fine");
-    expect(nervous).toContain("ns-silhouette");
-    expect(nervous).toContain("ns-spinal-roots");
-    expect(nervous).toContain("ns-pns upper");
-    expect(nervous).toContain("Central nervous system (CNS)");
-    expect(nervous).toContain("Peripheral nervous system (PNS)");
+    expect(nervous).toContain("Nervous_system_diagram_unlabeled.svg");
+    expect(nervous).toContain("spark-nervous-hotspot");
+    expect(nervous).toContain("spark-nervous-reference-focus");
+    expect(nervous).toContain("Brain");
+    expect(nervous).toContain("Spinal cord");
+    expect(nervous).toContain("Peripheral nerves");
+    expect(nervous).toContain("Cerebrum");
+    expect(nervous).toContain("Cerebellum");
 
     const gasExchange = fs.readFileSync(
       path.join(__dirname,"subjects","components","GaseousExchangeExplorer.jsx"),
