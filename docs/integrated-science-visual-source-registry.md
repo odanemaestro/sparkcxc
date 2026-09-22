@@ -11,6 +11,11 @@ This branch replaces custom placeholder-style scientific drawings with supplied 
 | light-microscope | Wikimedia Commons: Compound Microscope.JPG by Acagastya | CC0 1.0 | Real microscope photograph; SPARK provides the labels/targets |
 | female-reproductive-system | Wikimedia Commons: Female reproductive organs, frontal view, unlabeled.svg by RWhitwam | CC BY-SA 4.0 | Shows ovary, oviduct, uterus, cervix, vagina and uterine layers including endometrium |
 | male-reproductive-system | Wikimedia Commons: Male reproductive frontal without labels.svg by T. Kebert | CC BY-SA 4.0 | Fully unlabeled frontal anatomy with SPARK targets overlaid |
+| mammalian-eye | Wikimedia Commons: Diagram of human eye without labels.svg by Jmarchn | CC BY-SA 3.0 | Real eye cross-section beneath SPARK targets |
+| mammalian-ear | Wikimedia Commons: Anatomy of the Human Ear blank.svg | CC BY 2.5 | Blank anatomical ear reference beneath SPARK targets |
+| human-digestive-system | Wikimedia Commons: Digestive system without labels.svg by Mariana Ruiz / Jmarchn | Public domain | Real reference-backed digestive anatomy |
+| human-tooth | Wikimedia Commons: Basic tooth.svg by K. D. Schroeder | CC BY-SA 4.0 | Unlabeled tooth cross-section with attribution |
+| human-heart | Wikimedia Commons: Diagram of the human heart (no labels).svg | CC BY-SA 4.0 | Unlabeled anatomical heart reference |
 | pregnancy-uterus | Wikimedia Commons: Gray38.png, Gray's Anatomy plate by Henry Vandyke Carter | Public domain | Unlabeled fetus-in-utero anatomical plate with SPARK overlay targets |
 
 ## Replacement policy
