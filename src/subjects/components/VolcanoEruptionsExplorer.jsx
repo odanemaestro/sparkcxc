@@ -75,119 +75,75 @@ function StyleView(){
 }
 
 function TypesView(){
-  return <div className="spark-volcano-types">
-    <article>
-      <svg className="spark-volcano-type-svg" viewBox="0 0 360 190" role="img" aria-label="Shield volcano with broad gentle slopes built by repeated fluid lava flows">
-        <path className="vt-ground" d="M10 165H350"/>
-        <path className="vt-shield-cone" d="M20 165Q90 135 145 105Q180 88 215 105Q270 135 340 165Z"/>
-        <path className="vt-lava-layer" d="M55 152Q120 130 180 112Q242 130 305 152"/>
-        <path className="vt-lava-layer" d="M88 145Q137 126 180 118Q225 126 273 145"/>
-        <path className="vt-central-vent" d="M180 160V105"/>
-        <text className="vt-svg-label" x="180" y="32" textAnchor="middle">broad, gentle slopes</text>
-        <text className="vt-svg-small" x="180" y="182" textAnchor="middle">repeated low-viscosity lava flows</text>
-      </svg>
-      <span>SHIELD</span><h4>Broad, gentle slopes</h4><p>Built mainly by fluid lava that spreads far from the vent.</p>
-    </article>
-
-    <article>
-      <svg className="spark-volcano-type-svg" viewBox="0 0 360 190" role="img" aria-label="Composite volcano with steep sides, central vent and alternating lava and ash layers">
-        <path className="vt-ground" d="M10 165H350"/>
-        <path className="vt-composite-cone" d="M55 165L158 48Q180 25 202 48L305 165Z"/>
-        <path className="vt-layer ash" d="M88 148L167 64Q180 52 193 64L272 148"/>
-        <path className="vt-layer lava" d="M108 154L170 83Q180 74 190 83L252 154"/>
-        <path className="vt-layer ash" d="M128 158L174 105Q180 99 186 105L232 158"/>
-        <path className="vt-central-vent" d="M180 160V52"/>
-        <ellipse className="vt-crater" cx="180" cy="47" rx="24" ry="8"/>
-        <text className="vt-svg-label" x="286" y="50">steep cone</text>
-        <text className="vt-svg-small" x="180" y="182" textAnchor="middle">alternating lava and pyroclastic layers</text>
-      </svg>
-      <span>COMPOSITE / STRATOVOLCANO</span><h4>Tall, steep and layered</h4><p>Alternating lava and pyroclastic deposits. Viscous magma can trap gases and produce explosive eruptions.</p>
-    </article>
-
-    <article>
-      <svg className="spark-volcano-type-svg" viewBox="0 0 360 190" role="img" aria-label="Ash and cinder cone with a crater and loose erupted fragments piled around a central vent">
-        <path className="vt-ground" d="M10 165H350"/>
-        <path className="vt-cinder-cone" d="M78 165L160 72Q180 54 200 72L282 165Z"/>
-        <ellipse className="vt-crater" cx="180" cy="69" rx="30" ry="10"/>
-        <path className="vt-central-vent" d="M180 160V78"/>
-        <g className="vt-cinders">
-          {[[110,142],[128,126],[145,112],[213,112],[233,132],[250,148],[155,150],[205,147]].map(([x,y],i)=><circle key={i} cx={x} cy={y} r={5+(i%2)*2}/>)}
-        </g>
-        <text className="vt-svg-label" x="180" y="30" textAnchor="middle">ash and cinders fall around vent</text>
-        <text className="vt-svg-small" x="180" y="182" textAnchor="middle">small, steep-sided cone of fragments</text>
-      </svg>
-      <span>ASH / CINDER CONE</span><h4>Small, steep cone</h4><p>Built mainly from cinders, ash and fragments of lava thrown into the air around a vent.</p>
-    </article>
-
-    <article>
-      <svg className="spark-volcano-type-svg" viewBox="0 0 360 190" role="img" aria-label="Submarine volcano erupting below sea level with a volcanic cone rising from the sea floor">
-        <rect className="vt-water" x="10" y="60" width="340" height="105"/>
-        <line className="vt-waterline" x1="10" y1="60" x2="350" y2="60"/>
-        <path className="vt-submarine-cone-svg" d="M62 165L154 92Q180 72 206 92L298 165Z"/>
-        <path className="vt-central-vent" d="M180 160V94"/>
-        <g className="vt-submarine-plume">
-          <circle cx="180" cy="82" r="13"/><circle cx="165" cy="69" r="11"/><circle cx="194" cy="65" r="10"/>
-        </g>
-        <text className="vt-svg-label" x="72" y="42">sea level</text>
-        <text className="vt-svg-small" x="180" y="182" textAnchor="middle">eruption occurs below the sea surface</text>
-      </svg>
-      <span>SUBMARINE VOLCANO</span><h4>Erupts below sea level</h4><p>Kick-'em-Jenny north of Grenada is a regional example.</p>
-    </article>
+  const [focus,setFocus]=useState("shield");
+  const details={
+    shield:["Shield volcano","Broad, gentle slopes form where low-viscosity lava can travel far from the vent. Mauna Loa is shown in the reference profile."],
+    composite:["Composite / stratovolcano","Steeper profiles develop from repeated lava and pyroclastic deposits. Mount Rainier is shown in the reference profile."],
+    cinder:["Cinder cone","Cinder cones are relatively small and steep-sided, built mainly from loose volcanic fragments. Parícutin is shown in the reference profile."],
+    submarine:["Submarine volcano","Submarine volcanoes erupt below sea level. Kick-'em-Jenny north of Grenada is an important Eastern Caribbean example."],
+  };
+  const selected=details[focus];
+  return <div className="spark-volcano-reference-view">
+    <figure className="spark-volcano-reference-figure types">
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Volcanic_Profiles-01.svg"
+        alt="Approximate to-scale profiles of a cinder cone, shield volcano and stratovolcano"
+        loading="lazy"
+      />
+      <figcaption>
+        <span>Three major volcano profiles, shown approximately to scale</span>
+        <small>
+          Reference: <a href="https://commons.wikimedia.org/wiki/File:Volcanic_Profiles-01.svg" target="_blank" rel="noreferrer">Carie Frantz</a>
+          {" · "}CC BY-SA 4.0
+        </small>
+      </figcaption>
+    </figure>
+    <div className="spark-volcano-reference-focus">
+      <span>Compare volcano types</span>
+      <div>
+        {Object.entries(details).map(([key,[title]])=>(
+          <button type="button" key={key} className={focus===key?"active":""} onClick={()=>setFocus(key)}>{title}</button>
+        ))}
+      </div>
+      <article role="status"><strong>{selected[0]}</strong><p>{selected[1]}</p></article>
+    </div>
   </div>;
 }
 
 function StructureView(){
-  return <div className="spark-volcano-structure">
-    <svg className="spark-volcano-structure-svg" viewBox="0 0 980 620" role="img" aria-label="Cross-section of an erupting volcano showing crater, ash and gas plume, layered cone, main vent, secondary vent, magma chamber, magma below ground and lava flowing on the surface">
-      <defs>
-        <marker id="volcano-callout-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
-          <path d="M0 0L9 4.5L0 9Z" className="vs-arrow-head"/>
-        </marker>
-      </defs>
-
-      <rect className="vs-sky" x="0" y="0" width="980" height="620"/>
-      <path className="vs-ground" d="M45 470H935"/>
-
-      <path className="vs-cone" d="M145 470L400 165Q455 105 510 165L785 470Z"/>
-      <g className="vs-cone-layers">
-        <path d="M188 451L410 190Q455 145 500 190L742 451"/>
-        <path d="M225 455L417 220Q455 185 493 220L705 455"/>
-        <path d="M260 458L424 255Q455 226 486 255L670 458"/>
-        <path d="M300 462L433 300Q455 281 477 300L630 462"/>
-      </g>
-
-      <ellipse className="vs-crater" cx="455" cy="164" rx="72" ry="25"/>
-      <path className="vs-main-vent" d="M455 180V445"/>
-      <path className="vs-secondary-vent" d="M455 330Q540 325 585 250"/>
-      <ellipse className="vs-chamber" cx="455" cy="510" rx="135" ry="70"/>
-      <path className="vs-magma-rise" d="M455 448V188"/>
-      <path className="vs-lava-flow" d="M515 180Q585 215 650 290Q720 365 815 425"/>
-
-      <g className="vs-eruption-column">
-        <path d="M430 148Q410 90 440 52M458 147Q455 85 480 42M486 148Q505 98 526 66"/>
-      </g>
-      <g className="vs-ash-cloud">
-        <circle cx="430" cy="62" r="47"/><circle cx="472" cy="42" r="58"/><circle cx="527" cy="63" r="50"/><circle cx="565" cy="84" r="37"/>
-      </g>
-      <g className="vs-ejected-fragments">
-        {[[370,105],[340,135],[550,120],[585,145],[315,170],[620,178]].map(([x,y],i)=><circle key={i} cx={x} cy={y} r={6+(i%2)*2}/>)}
-      </g>
-
-      <g className="vs-callouts">
-        <path d="M455 142L730 62" markerEnd="url(#volcano-callout-arrow)"/><text x="748" y="65">crater</text>
-        <path d="M455 285L745 195" markerEnd="url(#volcano-callout-arrow)"/><text x="763" y="200">main vent</text>
-        <path d="M558 279L750 275" markerEnd="url(#volcano-callout-arrow)"/><text x="768" y="280">secondary vent</text>
-        <path d="M695 330L825 355" markerEnd="url(#volcano-callout-arrow)"/><text x="842" y="361">lava flow</text>
-        <path d="M530 407L765 430" markerEnd="url(#volcano-callout-arrow)"/><text x="784" y="436">layers of lava and pyroclastic material</text>
-        <path d="M455 505L190 535" markerEnd="url(#volcano-callout-arrow)"/><text x="170" y="541" textAnchor="end">magma chamber</text>
-        <path d="M505 65L770 118" markerEnd="url(#volcano-callout-arrow)"/><text x="788" y="123">ash and gas plume</text>
-      </g>
-
-      <text className="vs-magma-label" x="455" y="520" textAnchor="middle">MAGMA below the surface</text>
-      <text className="vs-lava-label" x="742" y="392">LAVA at the surface</text>
-      <text className="vs-caption" x="490" y="598" textAnchor="middle">When magma reaches Earth's surface it is called lava.</text>
-    </svg>
-    <p>Molten rock below the surface is magma. It can collect in a magma chamber and rise through the main vent or a secondary vent. At the surface, magma is called lava. Repeated eruptions can build layers of lava and pyroclastic material around the vent, while explosive eruptions may send ash, gases and rock fragments above the crater.</p>
+  const [focus,setFocus]=useState("vent");
+  const details={
+    vent:["Central vent","Magma rises through the main conduit or central vent towards the crater."],
+    deposits:["Layers and deposits","Repeated eruptions build alternating lava flows and pyroclastic deposits around the volcano."],
+    flank:["Flank features","Older vents, sills and small pyroclastic cones may develop on the flanks."],
+    surface:["Magma and lava","Molten rock below the surface is magma. Once it reaches the surface, it is called lava."],
+  };
+  const selected=details[focus];
+  return <div className="spark-volcano-reference-view">
+    <figure className="spark-volcano-reference-figure structure">
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Stratovolcano_cross-section.svg"
+        alt="Scientific schematic cross-section of a stratovolcano showing the central vent, crater, lava flow, sill, pyroclastic deposits and older vent"
+        loading="lazy"
+      />
+      <figcaption>
+        <span>Stratovolcano cross-section</span>
+        <small>
+          Reference: <a href="https://commons.wikimedia.org/wiki/File:Stratovolcano_cross-section.svg" target="_blank" rel="noreferrer">Woudloper</a>
+          {" · "}CC BY-SA 3.0 / GFDL
+        </small>
+      </figcaption>
+    </figure>
+    <div className="spark-volcano-reference-focus">
+      <span>Explore the structure</span>
+      <div>
+        {Object.entries(details).map(([key,[title]])=>(
+          <button type="button" key={key} className={focus===key?"active":""} onClick={()=>setFocus(key)}>{title}</button>
+        ))}
+      </div>
+      <article role="status"><strong>{selected[0]}</strong><p>{selected[1]}</p></article>
+      <p className="spark-volcano-reference-note">When magma reaches Earth's surface it is called lava.</p>
+    </div>
   </div>;
 }
 
