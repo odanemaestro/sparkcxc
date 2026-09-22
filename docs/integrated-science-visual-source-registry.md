@@ -10,8 +10,8 @@ This branch replaces custom placeholder-style scientific drawings with supplied 
 | animal-cell | Wikimedia Commons: Animal cell structure no text | Public domain | Real reference-backed cell structure used beneath SPARK targets |
 | light-microscope | Wikimedia Commons: Compound Microscope.JPG by Acagastya | CC0 1.0 | Real microscope photograph; SPARK provides the labels/targets |
 | female-reproductive-system | Wikimedia Commons: Female reproductive organs, frontal view, unlabeled.svg by RWhitwam | CC BY-SA 4.0 | Shows ovary, oviduct, uterus, cervix, vagina and uterine layers including endometrium |
-| male-reproductive-system | Wikimedia Commons: Male genital system - Front view-1 for quizzing.svg by RWhitwam | CC BY-SA 4.0 | Quiz-ready scientific anatomy reference |
-| pregnancy-uterus | Wikimedia Commons / NIAID NIH BioArt: Pregnant Human and Fetus in Uterus | Public domain (US Government/NIAID) | Real NIH BioArt reference with SPARK overlay targets |
+| male-reproductive-system | Wikimedia Commons: Male reproductive frontal without labels.svg by T. Kebert | CC BY-SA 4.0 | Fully unlabeled frontal anatomy with SPARK targets overlaid |
+| pregnancy-uterus | Wikimedia Commons: Gray38.png, Gray's Anatomy plate by Henry Vandyke Carter | Public domain | Unlabeled fetus-in-utero anatomical plate with SPARK overlay targets |
 
 ## Replacement policy
 
