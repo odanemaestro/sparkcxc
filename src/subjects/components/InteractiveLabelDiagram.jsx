@@ -737,6 +737,20 @@ function ThreePinPlugTemplate() {
 }
 
 const REFERENCE_TEMPLATE_MEDIA = {
+  "human-brain":{
+    href:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Brain_human_sagittal_section.svg",
+    x:300,y:24,width:400,height:565,
+    credit:"Patrick J. Lynch, medical illustrator",
+    license:"CC BY 2.5",
+    source:"https://commons.wikimedia.org/wiki/File:Brain_human_sagittal_section.svg",
+  },
+  "endocrine-system":{
+    href:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Human_endocrine_male_%26_female_svg_no_labels.svg",
+    x:250,y:30,width:500,height:555,
+    credit:"OpenStax & Tomáš Kebert & umimeto.org",
+    license:"CC BY-SA 4.0",
+    source:"https://commons.wikimedia.org/wiki/File:Human_endocrine_male_%26_female_svg_no_labels.svg",
+  },
   "mammalian-eye":{
     href:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Diagram_of_human_eye_without_labels.svg",
     x:285,y:45,width:430,height:500,
@@ -817,6 +831,22 @@ const REFERENCE_TEMPLATE_MEDIA = {
 };
 
 const REFERENCE_TARGET_OVERRIDES = {
+  "human-brain":{
+    "brain-cerebrum-target":{anchorX:505,anchorY:175},
+    "brain-hypothalamus-target":{anchorX:500,anchorY:335},
+    "brain-pituitary-target":{anchorX:500,anchorY:378},
+    "brain-cerebellum-target":{anchorX:610,anchorY:405},
+    "brain-medulla-target":{anchorX:545,anchorY:447},
+    "brain-spinal-target":{anchorX:555,anchorY:545},
+  },
+  "endocrine-system":{
+    "endo-pituitary-target":{anchorX:385,anchorY:122},
+    "endo-thyroid-target":{anchorX:385,anchorY:207},
+    "endo-adrenal-target":{anchorX:375,anchorY:325},
+    "endo-pancreas-target":{anchorX:385,anchorY:382},
+    "endo-ovaries-target":{anchorX:385,anchorY:482},
+    "endo-testes-target":{anchorX:620,anchorY:505},
+  },
   "mammalian-eye":{
     "eye-cornea-target":{anchorX:315,anchorY:310},
     "eye-iris-target":{anchorX:365,anchorY:275},
