@@ -773,13 +773,48 @@ const REFERENCE_TEMPLATE_MEDIA = {
     source:"https://commons.wikimedia.org/wiki/File:Male_reproductive_frontal_without_labels.svg",
   },
   "pregnancy-uterus":{
-    href:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Pregnant_Human_and_Fetus_in_Uterus_%28NIH_BioArt_420_-_633839%29.svg",
-    x:325,y:25,width:350,height:500,
-    credit:"NIAID / Ryan Kissinger",
-    license:"Public domain (U.S. Government work)",
-    source:"https://commons.wikimedia.org/wiki/File:Pregnant_Human_and_Fetus_in_Uterus_(NIH_BioArt_420_-_633839).svg",
+    href:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Gray38.png",
+    x:315,y:30,width:370,height:480,
+    credit:"Henry Vandyke Carter / Gray's Anatomy",
+    license:"Public domain",
+    source:"https://commons.wikimedia.org/wiki/File:Gray38.png",
   },
 };
+
+const REFERENCE_TARGET_OVERRIDES = {
+  "female-reproductive-system":{
+    "female-ovary-target":{anchorX:372,anchorY:283},
+    "female-oviduct-target":{anchorX:410,anchorY:266},
+    "female-uterus-target":{anchorX:500,anchorY:318},
+    "female-endometrium-target":{anchorX:500,anchorY:327},
+    "female-cervix-target":{anchorX:503,anchorY:378},
+    "female-vagina-target":{anchorX:505,anchorY:414},
+  },
+  "male-reproductive-system":{
+    "male-testis-target":{anchorX:428,anchorY:434},
+    "male-scrotum-target":{anchorX:423,anchorY:457},
+    "male-epididymis-target":{anchorX:410,anchorY:410},
+    "male-sperm-duct-target":{anchorX:390,anchorY:270},
+    "male-seminal-vesicle-target":{anchorX:455,anchorY:220},
+    "male-prostate-target":{anchorX:500,anchorY:257},
+    "male-cowper-target":{anchorX:500,anchorY:301},
+    "male-urethra-target":{anchorX:500,anchorY:358},
+    "male-penis-target":{anchorX:500,anchorY:442},
+  },
+  "pregnancy-uterus":{
+    "pregnancy-placenta-target":{anchorX:575,anchorY:175},
+    "pregnancy-umbilical-target":{anchorX:520,anchorY:270},
+    "pregnancy-amnion-target":{anchorX:405,anchorY:182},
+    "pregnancy-foetus-target":{anchorX:455,anchorY:280},
+    "pregnancy-fluid-target":{anchorX:420,anchorY:335},
+    "pregnancy-cervix-target":{anchorX:515,anchorY:455},
+  },
+};
+
+function displayTarget(template,target) {
+  const override = REFERENCE_TARGET_OVERRIDES[template]?.[target.id];
+  return override ? {...target,...override} : target;
+}
 
 function ReferenceTemplate({ template }) {
   const media = REFERENCE_TEMPLATE_MEDIA[template];
@@ -875,9 +910,13 @@ export default function InteractiveLabelDiagram({
     () => new Map(normalized.labels.map(label => [label.id,label])),
     [normalized.labels]
   );
+  const displayTargets = useMemo(
+    () => normalized.targets.map(target => displayTarget(normalized.template,target)),
+    [normalized.template,normalized.targets]
+  );
   const targetById = useMemo(
-    () => new Map(normalized.targets.map(target => [target.id,target])),
-    [normalized.targets]
+    () => new Map(displayTargets.map(target => [target.id,target])),
+    [displayTargets]
   );
 
   const usedLabelIds = new Set(Object.values(placements));
@@ -996,7 +1035,7 @@ export default function InteractiveLabelDiagram({
           >
             <DiagramTemplate template={normalized.template} />
 
-            {normalized.targets.map((target,index) => {
+            {displayTargets.map((target,index) => {
               const [startX,startY] = lineStart(target);
               const placedId = placements[target.id];
               const isCorrect = placedId === target.labelId;
