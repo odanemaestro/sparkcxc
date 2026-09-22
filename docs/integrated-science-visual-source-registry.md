@@ -40,6 +40,15 @@ This branch replaces custom placeholder-style scientific drawings with supplied 
 | neuron-structure | Wikimedia Commons: Derived Neuron schema with no labels.svg | CC BY-SA 3.0 / GFDL | Neurone structure with SPARK hotspots |
 | reflex-arc | Wikimedia Commons: Reflex Arc.svg | CC BY-SA 4.0 | Reflex pathway with SPARK step focus |
 
+
+| eye-accommodation | Wikimedia Commons: Accommodation-far-point-near-point.svg | CC BY-SA 4.0 | Far/near accommodation reference with SPARK Near/Distant focus |
+| eye-pupil-response | Wikimedia Commons: Pupillary light reflex.jpg | CC BY-SA 4.0 | Real eye photographs in bright and dim light |
+| ear-hearing-pressure | Wikimedia Commons: Anatomy of the Human Ear blank.svg | CC BY 2.5 | Ear anatomy reused for hearing pathway and Eustachian-tube pressure |
+| ear-balance | Wikimedia Commons: STS-65 fig6.png | Public domain, NASA | Vestibular apparatus and balance reference |
+| pregnancy-early-development | Wikimedia Commons: Human Fertilization.png | CC BY-SA 3.0 | Fertilisation, zygote, cleavage and implantation |
+| pregnancy-placenta | Wikimedia Commons: Fetal circulation.jpg | CC BY-SA 4.0 | Foetus, umbilical cord, amniotic sac, placenta and maternal-foetal interface |
+| pregnancy-labour | Wikimedia Commons: 2920 Stages of Childbirth-en.svg | CC BY-SA 3.0 | Medical stages-of-childbirth reference |
+
 ## Replacement policy
 
 1. Prefer user-supplied images when they are scientifically suitable.
