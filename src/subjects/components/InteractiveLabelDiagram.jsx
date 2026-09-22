@@ -737,6 +737,20 @@ function ThreePinPlugTemplate() {
 }
 
 const REFERENCE_TEMPLATE_MEDIA = {
+  "flower-longitudinal":{
+    href:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Flordiagramnumbered.jpg",
+    x:235,y:85,width:530,height:365,
+    credit:"Mgoodyear",
+    license:"CC BY-SA 4.0",
+    source:"https://commons.wikimedia.org/wiki/File:Flordiagramnumbered.jpg",
+  },
+  "bean-seed":{
+    href:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Broad_bean_seed_split_in_half_%28top_view%29.jpg",
+    x:255,y:95,width:490,height:365,
+    credit:"Bodhi Peace",
+    license:"CC BY-SA 4.0",
+    source:"https://commons.wikimedia.org/wiki/File:Broad_bean_seed_split_in_half_(top_view).jpg",
+  },
   "human-brain":{
     href:"https://commons.wikimedia.org/wiki/Special:Redirect/file/Brain_human_sagittal_section.svg",
     x:300,y:24,width:400,height:565,
@@ -831,6 +845,23 @@ const REFERENCE_TEMPLATE_MEDIA = {
 };
 
 const REFERENCE_TARGET_OVERRIDES = {
+  "flower-longitudinal":{
+    "flower-petal":{anchorX:365,anchorY:205},
+    "flower-sepal":{anchorX:375,anchorY:325},
+    "flower-anther":{anchorX:435,anchorY:205},
+    "flower-filament":{anchorX:445,anchorY:270},
+    "flower-receptacle":{anchorX:500,anchorY:405},
+    "flower-stigma":{anchorX:520,anchorY:155},
+    "flower-style":{anchorX:520,anchorY:245},
+    "flower-ovary":{anchorX:525,anchorY:335},
+    "flower-ovule":{anchorX:545,anchorY:345},
+  },
+  "bean-seed":{
+    "seed-testa":{anchorX:330,anchorY:310},
+    "seed-cotyledon":{anchorX:420,anchorY:310},
+    "seed-plumule":{anchorX:500,anchorY:255},
+    "seed-radicle":{anchorX:500,anchorY:365},
+  },
   "human-brain":{
     "brain-cerebrum-target":{anchorX:505,anchorY:175},
     "brain-hypothalamus-target":{anchorX:500,anchorY:335},
