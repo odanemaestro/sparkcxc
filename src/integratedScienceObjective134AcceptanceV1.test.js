@@ -58,6 +58,17 @@ describe("Integrated Science Objective 1.3.4 acceptance audit", () => {
     expect(explorer).toContain("Labour and birth");
   });
 
+  test("uses sourced medical references for early development placenta and childbirth", () => {
+    expect(explorer).toContain("Human_Fertilization.png");
+    expect(explorer).toContain("Ttrue12");
+    expect(explorer).toContain("Fetal_circulation.jpg");
+    expect(explorer).toContain("Bonnie Urquhart Gruenberg");
+    expect(explorer).toContain("2920_Stages_of_Childbirth-en.svg");
+    expect(explorer).toContain("Jmarchn / OpenStax-derived anatomy");
+    expect(explorer).toContain("spark-pregnancy-reference-focus");
+    expect(explorerCss).toContain(".spark-pregnancy-reference-view");
+  });
+
   test("uses a public-domain pregnancy anatomy reference with SPARK overlay targets", () => {
     expect(migration).toContain('"template":"pregnancy-uterus"');
     expect(diagram).toContain('"pregnancy-uterus"');
@@ -71,10 +82,9 @@ describe("Integrated Science Objective 1.3.4 acceptance audit", () => {
   });
 
   test("pregnancy model includes material exchange and blood-separation concept", () => {
-    expect(explorer).toContain("oxygen");
-    expect(explorer).toContain("glucose + amino acids");
-    expect(explorer).toContain("carbon dioxide");
-    expect(explorer).toContain("maternal and foetal blood do not normally mix directly");
+    expect(explorer).toContain("Oxygen, glucose, amino acids");
+    expect(explorer).toContain("Carbon dioxide, urea");
+    expect(explorer).toContain("Maternal and foetal blood normally remain in separate vessels");
   });
 
   test("visuals remain responsive and dark-mode ready", () => {
