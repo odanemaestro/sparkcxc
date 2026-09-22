@@ -30,49 +30,39 @@ function DevelopmentView(){
 }
 
 function StructureView(){
-  const rainbands=[
-    "M170 300Q220 130 390 100Q565 70 690 205Q760 300 690 390",
-    "M210 375Q320 455 470 420Q620 388 670 255Q700 150 620 88",
-    "M260 120Q135 220 205 350Q275 455 420 440",
-    "M650 350Q730 240 650 145Q565 45 420 78",
-    "M285 170Q355 105 455 115Q565 125 610 220Q650 310 585 370",
-    "M555 390Q455 450 355 402Q265 360 260 265Q255 190 315 145"
-  ];
-  return <div className="spark-hurricane-structure">
-    <svg className="spark-hurricane-structure-svg" viewBox="0 0 900 540" role="img" aria-label="Top view of a hurricane showing a relatively calm eye, surrounding eyewall, curved spiral rainbands and inward surface flow toward the low-pressure centre">
-      <defs>
-        <marker id="hw-structure-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
-          <path d="M0 0L9 4.5L0 9Z" className="hw-structure-arrow-head"/>
-        </marker>
-      </defs>
-      <rect className="hw-structure-bg" x="0" y="0" width="900" height="540" rx="20"/>
-
-      <g className="hw-rainbands">
-        {rainbands.map((d,i)=><path key={i} className={"hw-spiral-band band-"+i} d={d}/>)}
-      </g>
-
-      <circle className="hw-eyewall-ring" cx="445" cy="270" r="92"/>
-      <circle className="hw-eye-core" cx="445" cy="270" r="42"/>
-      <text className="hw-eye-text" x="445" y="276" textAnchor="middle">EYE</text>
-
-      <g className="hw-surface-inflow-top">
-        <path d="M110 420Q235 400 325 340" markerEnd="url(#hw-structure-arrow)"/>
-        <path d="M780 420Q655 395 570 340" markerEnd="url(#hw-structure-arrow)"/>
-        <path d="M120 115Q245 135 330 195" markerEnd="url(#hw-structure-arrow)"/>
-      </g>
-
-      <line className="hw-callout" x1="487" y1="270" x2="690" y2="110"/>
-      <text className="hw-label" x="704" y="106">eye: relatively calm centre</text>
-
-      <line className="hw-callout" x1="515" y1="215" x2="704" y2="200"/>
-      <text className="hw-label" x="718" y="205">eyewall: strongest winds and rain</text>
-
-      <line className="hw-callout" x1="275" y1="385" x2="105" y2="455"/>
-      <text className="hw-label" x="92" y="475">curved spiral rainbands</text>
-
-      <text className="hw-small-label" x="445" y="505" textAnchor="middle">surface air spirals inward toward lower pressure and rises strongly near the eyewall</text>
-    </svg>
-    <p>A hurricane is a low-pressure tropical cyclone. Its cloud and rain bands curve around a central eye rather than forming simple circular rings. Surface air spirals inward toward lower pressure and rises strongly in the eyewall, where the most intense winds and rainfall occur.</p>
+  const [focus,setFocus]=useState("eye");
+  const details={
+    eye:["Eye","The eye is the relatively calm central region of a mature tropical cyclone. Skies may partly clear and winds are lighter than in the surrounding eyewall."],
+    eyewall:["Eyewall","The ring of intense thunderstorms around the eye contains the strongest winds and some of the heaviest rainfall."],
+    rainbands:["Spiral rainbands","Curved bands of cloud and thunderstorms spiral around the storm and can produce heavy rain, gusty winds and flooding far from the eye."],
+    circulation:["Cyclonic circulation","Near the surface, air spirals inward towards lower pressure. Rising moist air around the eyewall supports deep convection."],
+  };
+  const selected=details[focus];
+  return <div className="spark-hurricane-reference-view">
+    <figure className="spark-hurricane-reference-figure">
+      <img
+        src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Hurricane_Nigel%E2%80%99s_Large_Eye_Swirls_%28CIRA_2023-09-19%29.png"
+        alt="Public-domain NOAA GOES satellite image of Hurricane Nigel showing a clear eye and spiral cloud bands"
+        loading="lazy"
+      />
+      <figcaption>
+        <span>Hurricane structure from GOES satellite imagery</span>
+        <small>
+          Reference: <a href="https://commons.wikimedia.org/wiki/File:Hurricane_Nigel%E2%80%99s_Large_Eye_Swirls_(CIRA_2023-09-19).png" target="_blank" rel="noreferrer">CSU/CIRA & NOAA, GOES-16</a>
+          {" · "}Public domain
+        </small>
+      </figcaption>
+    </figure>
+    <div className="spark-hurricane-reference-focus">
+      <span>Explore the storm</span>
+      <div>
+        {Object.entries(details).map(([key,[title]])=>(
+          <button type="button" key={key} className={focus===key?"active":""} onClick={()=>setFocus(key)}>{title}</button>
+        ))}
+      </div>
+      <article role="status"><strong>{selected[0]}</strong><p>{selected[1]}</p></article>
+      <p className="spark-hurricane-reference-note">A hurricane is a low-pressure tropical cyclone. The eye is not the dangerous part of the storm; the surrounding eyewall contains the strongest winds.</p>
+    </div>
   </div>;
 }
 
