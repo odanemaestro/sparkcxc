@@ -151,7 +151,23 @@ function lessonObjectives(topic = {}) {
 
 function interactiveDiagrams(topic = {}) {
   const lesson = lessonData(topic);
-  return Array.isArray(lesson.interactiveDiagrams) ? lesson.interactiveDiagrams.filter(Boolean) : [];
+  const diagrams = Array.isArray(lesson.interactiveDiagrams)
+    ? lesson.interactiveDiagrams.filter(Boolean)
+    : [];
+
+  const seen = new Set();
+  return diagrams.filter((diagram,index) => {
+    const explicitId = String(diagram?.id || "").trim();
+    const fallback = [
+      String(diagram?.template || "").trim(),
+      String(diagram?.title || "").trim(),
+      String(diagram?.instructions || "").trim(),
+    ].join("|");
+    const key = explicitId || fallback || `diagram-${index}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 }
 
 function interactiveModels(topic = {}) {
