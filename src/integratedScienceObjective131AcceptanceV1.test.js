@@ -55,10 +55,16 @@ describe("Integrated Science Objective 1.3.1 acceptance audit", () => {
     expect(explorer).toContain("Parthenogenesis");
   });
 
-  test("process visual contains recognisable examples", () => {
-    expect(explorer).toContain('aria-label="Budding process in Hydra"');
-    expect(explorer).toContain("planarian flatworm");
-    expect(explorer).toContain("unfertilised egg");
+  test("process visual uses sourced references for recognisable examples", () => {
+    expect(explorer).toContain("Binary_fission.svg");
+    expect(explorer).toContain("Hydra_Budding.svg");
+    expect(explorer).toContain("Regeneracion.jpg");
+    expect(explorer).toContain("Live_Birth_in_Aphids.jpg");
+    expect(explorer).toContain("JWSchmidt / JTojnar");
+    expect(explorer).toContain("A.houghton19");
+    expect(explorer).toContain("Hhgutierrez49");
+    expect(explorer).toContain("MicrocosmicWorld");
+    expect(css).toContain(".spark-animal-asexual-reference");
   });
 
   test("visual remains responsive and dark-mode ready", () => {
