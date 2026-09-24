@@ -134,6 +134,9 @@ export default function NotificationCenter({ user, profile, setView }) {
   const [pendingPushId, setPendingPushId] = useState(initialPushNotificationId);
   const mounted = useRef(true);
   const handledPushIds = useRef(new Set());
+  const drawerRef = useRef(null);
+  const scrimRef = useRef(null);
+  const dragRef = useRef({ pointerId: null, startY: 0, lastY: 0, lastTime: 0, velocity: 0 });
 
   const load = useCallback(async () => {
     if (!user?.id) return;
@@ -206,6 +209,65 @@ export default function NotificationCenter({ user, profile, setView }) {
     () => filter === "unread" ? items.filter(item => !item.read_at) : items,
     [items, filter]
   );
+
+  const beginDrawerDrag = useCallback(event => {
+    if (typeof window === "undefined" || !window.matchMedia("(max-width: 560px)").matches) return;
+    const now = performance.now();
+    dragRef.current = {
+      pointerId: event.pointerId,
+      startY: event.clientY,
+      lastY: event.clientY,
+      lastTime: now,
+      velocity: 0,
+    };
+    event.currentTarget.setPointerCapture?.(event.pointerId);
+  }, []);
+
+  const moveDrawerDrag = useCallback(event => {
+    const state = dragRef.current;
+    if (state.pointerId !== event.pointerId) return;
+
+    const delta = Math.max(0, event.clientY - state.startY);
+    const now = performance.now();
+    const elapsed = Math.max(1, now - state.lastTime);
+    state.velocity = (event.clientY - state.lastY) / elapsed;
+    state.lastY = event.clientY;
+    state.lastTime = now;
+
+    if (delta < 2) return;
+
+    if (drawerRef.current) {
+      drawerRef.current.style.transition = "none";
+      drawerRef.current.style.transform = `translate3d(0, ${delta}px, 0)`;
+    }
+    if (scrimRef.current) {
+      scrimRef.current.style.transition = "none";
+      scrimRef.current.style.opacity = String(Math.max(0.32, 1 - delta / 360));
+    }
+  }, []);
+
+  const endDrawerDrag = useCallback(event => {
+    const state = dragRef.current;
+    if (state.pointerId !== event.pointerId) return;
+
+    const delta = Math.max(0, event.clientY - state.startY);
+    const shouldDismiss = delta > 96 || state.velocity > 0.55;
+    dragRef.current.pointerId = null;
+
+    if (shouldDismiss) {
+      setOpen(false);
+      return;
+    }
+
+    if (drawerRef.current) {
+      drawerRef.current.style.transition = "transform 260ms cubic-bezier(.32,.72,0,1)";
+      drawerRef.current.style.transform = "";
+    }
+    if (scrimRef.current) {
+      scrimRef.current.style.transition = "opacity 180ms ease-out";
+      scrimRef.current.style.opacity = "";
+    }
+  }, []);
 
   useEffect(() => { setSparkAppBadge(unreadCount); }, [unreadCount]);
 
@@ -303,8 +365,18 @@ export default function NotificationCenter({ user, profile, setView }) {
 
       {open && (
         <div className="notification-layer" role="presentation">
-          <button className="notification-scrim" aria-label="Close notifications" onClick={() => setOpen(false)} />
-          <aside className="notification-drawer" role="dialog" aria-modal="true" aria-label="Notifications">
+          <button ref={scrimRef} className="notification-scrim" aria-label="Close notifications" onClick={() => setOpen(false)} />
+          <aside ref={drawerRef} className="notification-drawer" role="dialog" aria-modal="true" aria-label="Notifications">
+            <div
+              className="notification-drag-handle"
+              aria-hidden="true"
+              onPointerDown={beginDrawerDrag}
+              onPointerMove={moveDrawerDrag}
+              onPointerUp={endDrawerDrag}
+              onPointerCancel={endDrawerDrag}
+            >
+              <span />
+            </div>
             <div className="notification-head">
               <div>
                 <div className="notification-kicker">SPARK</div>
@@ -350,6 +422,14 @@ export default function NotificationCenter({ user, profile, setView }) {
                       key={notification.id}
                       className={`notification-item ${notification.read_at ? "" : "unread"}`}
                       onClick={() => openNotification(notification)}
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={event => {
+                        if (event.key === "Enter" || event.key === " ") {
+                          event.preventDefault();
+                          openNotification(notification);
+                        }
+                      }}
                     >
                       <div className={`notification-type-icon ${meta.tone}`}>{meta.icon}</div>
                       <div className="notification-copy">
