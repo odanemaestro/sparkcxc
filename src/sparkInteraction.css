@@ -1,0 +1,148 @@
+/* ==========================================================================
+   SPARK INTERACTION SYSTEM V1
+   Apple-inspired interaction principles adapted to SPARK's own design language.
+   ========================================================================== */
+
+:root {
+  --spark-motion-press: 110ms;
+  --spark-motion-fast: 180ms;
+  --spark-motion-sheet: 300ms;
+  --spark-ease-out: cubic-bezier(.23, 1, .32, 1);
+  --spark-ease-drawer: cubic-bezier(.32, .72, 0, 1);
+  --spark-focus-ring: color-mix(in srgb, var(--spark-teal, #0d9488) 32%, transparent);
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:where(button, [role="button"], a) {
+  touch-action: manipulation;
+}
+
+:where(button, [role="button"]):not(:disabled):active {
+  scale: .97;
+}
+
+:where(button, [role="button"], a, input, select, textarea):focus-visible {
+  outline: 3px solid var(--spark-focus-ring);
+  outline-offset: 2px;
+}
+
+.spark-btn,
+.spark-card--interactive,
+.spark-flashcard,
+.spark-flashcard-rating button,
+.spark-flashcard-nav button,
+.spark-segmented-control button,
+.notification-trigger,
+.notification-close,
+.notification-tabs button,
+.notification-item {
+  transform-origin: center;
+}
+
+.spark-card--interactive {
+  will-change: transform, scale;
+}
+
+.spark-card--interactive:active {
+  scale: .985;
+}
+
+.spark-flashcard {
+  transform-origin: center center;
+  will-change: scale;
+}
+
+.spark-flashcard:active {
+  scale: .992;
+}
+
+.spark-flashcard.revealed {
+  animation: spark-content-settle var(--spark-motion-fast) var(--spark-ease-out) both;
+}
+
+.spark-flashcard-rating button:active,
+.spark-flashcard-nav button:active,
+.spark-segmented-control button:active {
+  scale: .96;
+}
+
+/* Shared modal motion. The backdrop and card move separately so depth stays clear. */
+.spark-modal-backdrop.fade-in {
+  animation: spark-backdrop-in var(--spark-motion-fast) ease-out both;
+}
+
+.spark-modal-card.fade-in {
+  animation: spark-modal-in 240ms var(--spark-ease-out) both;
+  transform-origin: center center;
+}
+
+@keyframes spark-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes spark-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes spark-content-settle {
+  from { opacity: .72; scale: .985; }
+  to { opacity: 1; scale: 1; }
+}
+
+/* Loading placeholders keep their geometry stable while content arrives. */
+.spark-skeleton {
+  position: relative;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--spark-border, #dbe4ee) 62%, transparent);
+}
+
+.spark-skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--spark-paper, #fff) 72%, transparent),
+    transparent
+  );
+  animation: spark-skeleton-shimmer 1.2s ease-in-out infinite;
+}
+
+@keyframes spark-skeleton-shimmer {
+  to { transform: translateX(100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(button, [role="button"]):not(:disabled):active,
+  .spark-card--interactive:active,
+  .spark-flashcard:active,
+  .spark-flashcard-rating button:active,
+  .spark-flashcard-nav button:active,
+  .spark-segmented-control button:active {
+    scale: 1;
+  }
+
+  .spark-modal-backdrop.fade-in,
+  .spark-modal-card.fade-in,
+  .spark-flashcard.revealed,
+  .spark-skeleton::after {
+    animation: none !important;
+  }
+
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+  }
+}
