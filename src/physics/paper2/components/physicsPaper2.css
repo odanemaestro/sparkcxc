@@ -349,3 +349,35 @@
   .phy-p2-result-actions>.phy-p2-primary:not(.phy-p2-back-practice){width:100%;min-height:44px}
 }
 /* END SPARK PHYSICS PRACTICE BUTTON SYSTEM V15.4 */
+
+
+/* SPARK INTERACTION PASS V1: PHYSICS PAPER 2 MOTION */
+.phy-p2-modal-backdrop{
+  animation:spark-phy-p2-scrim-in 180ms ease-out both;
+}
+.phy-p2-confirm-modal,
+.phy-p2-constants-modal{
+  animation:spark-phy-p2-modal-in 240ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1)) both;
+  transform-origin:center center;
+}
+@keyframes spark-phy-p2-scrim-in{
+  from{opacity:0}
+  to{opacity:1}
+}
+@keyframes spark-phy-p2-modal-in{
+  from{opacity:0;transform:translateY(10px) scale(.97)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+@media(max-width:560px){
+  .phy-p2-confirm-modal,
+  .phy-p2-constants-modal{
+    transform-origin:center bottom;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .phy-p2-modal-backdrop,
+  .phy-p2-confirm-modal,
+  .phy-p2-constants-modal{
+    animation:none!important;
+  }
+}
