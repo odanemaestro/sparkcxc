@@ -4,7 +4,7 @@
 import { useState } from "react";
 import { T } from "../../theme";
 
-const Btn = ({ children, onClick, v = "primary", style: s = {}, disabled = false, full = false, action = null }) => {
+const Btn = ({ children, onClick, v = "primary", style: s = {}, disabled = false, full = false, action = null, className = "" }) => {
   const [hover, setHover] = useState(false);
   const base = { padding:"12px 24px",borderRadius:T.rSm,fontSize:14,fontWeight:600,cursor:disabled?"not-allowed":"pointer",
     opacity:disabled?.5:1,transition:`all .2s ${T.ease}`,display:"inline-flex",alignItems:"center",gap:7,
@@ -19,7 +19,7 @@ const Btn = ({ children, onClick, v = "primary", style: s = {}, disabled = false
     tealOutline:{ background:hover&&!disabled?T.tealLight:"transparent",color:T.teal,border:`1.5px solid ${T.teal}` },
     success:{ background:T.emerald,color:"#fff",boxShadow:hover&&!disabled?"0 6px 18px rgba(5,150,105,.3)":"0 2px 8px rgba(5,150,105,.18)" },
   };
-  return <button className="press" data-spark-action={action || undefined} style={{...base,...(vs[v]||vs.primary),...s}} onClick={onClick} disabled={disabled}
+  return <button className={`spark-btn spark-btn--${v} press ${className}`.trim()} data-spark-action={action || undefined} style={{...base,...(vs[v]||vs.primary),...s}} onClick={onClick} disabled={disabled}
     onMouseEnter={()=>setHover(true)} onMouseLeave={()=>setHover(false)}>{children}</button>;
 };
 
