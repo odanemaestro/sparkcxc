@@ -94,3 +94,44 @@
 .phy-p1-audit-note>div{min-width:180px}.phy-p1-audit-note strong{display:block;margin-top:3px;font-family:Georgia,serif;font-size:18px;color:var(--p1-ink)}.phy-p1-audit-note p{margin:0;max-width:720px;color:var(--p1-muted);font-size:12px;line-height:1.6}
 @media(max-width:680px){.phy-p1-audit-note{display:grid;gap:8px;padding:14px 15px}.phy-p1-audit-note>div{min-width:0}}
 /* END SPARK PHYSICS PAPER 1 AUDIT BENCHMARK V1 */
+
+
+/* SPARK INTERACTION PASS V1: PHYSICS PAPER 1 MOTION */
+.phy-p1-nav-drawer-backdrop{
+  animation:spark-phy-p1-scrim-in 180ms ease-out both;
+}
+.phy-p1-nav-drawer{
+  animation:spark-phy-p1-drawer-in var(--spark-motion-sheet,300ms) var(--spark-ease-drawer,cubic-bezier(.32,.72,0,1)) both;
+  will-change:transform;
+}
+.phy-p1-confirm-modal{
+  animation:spark-phy-p1-modal-in 240ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1)) both;
+}
+@keyframes spark-phy-p1-scrim-in{
+  from{opacity:0}
+  to{opacity:1}
+}
+@keyframes spark-phy-p1-drawer-in{
+  from{transform:translate3d(100%,0,0)}
+  to{transform:translate3d(0,0,0)}
+}
+@keyframes spark-phy-p1-sheet-in{
+  from{transform:translate3d(0,100%,0)}
+  to{transform:translate3d(0,0,0)}
+}
+@keyframes spark-phy-p1-modal-in{
+  from{opacity:0;transform:translateY(10px) scale(.97)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+@media(max-width:680px){
+  .phy-p1-nav-drawer{
+    animation-name:spark-phy-p1-sheet-in;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .phy-p1-nav-drawer-backdrop,
+  .phy-p1-nav-drawer,
+  .phy-p1-confirm-modal{
+    animation:none!important;
+  }
+}
