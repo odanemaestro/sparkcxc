@@ -21,6 +21,7 @@ import { adaptiveOptionDisplayText } from "./adaptiveOptionPresentation";
 import ReportQuestionButton from "../components/ui/ReportQuestionButton";
 import MathText from "../practice/MathText";
 import BackArrowIcon from "../components/ui/BackArrowIcon";
+import SparkLoader from "../components/ui/SparkLoader";
 import { readSparkHashRoute } from "../routing/sparkRoutingV270";
 import "./adaptive.css";
 
@@ -419,7 +420,7 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
     return () => window.cancelAnimationFrame(frame);
   }, [index, q]);
 
-  if (!manifest) return <div>Loading CSEC practice…</div>;
+  if (!manifest) return <SparkLoader variant="section" label="Loading CSEC practice" />;
 
   return (
     <main className="csec-adaptive-practice">
@@ -488,8 +489,24 @@ export default function AdaptivePractice({ supabase, userId, setView, backLabel 
                     className={`adaptive-mcq-option${stateClass}`}
                     role="radio"
                     aria-checked={selected}
+                    data-option-key={key}
                     disabled={submitted}
                     onClick={() => setAnswer(key)}
+                    onKeyDown={event => {
+                      if (!["ArrowDown", "ArrowRight", "ArrowUp", "ArrowLeft", "Home", "End"].includes(event.key)) return;
+                      const options = Array.from(event.currentTarget.parentElement?.querySelectorAll('button[role="radio"]:not(:disabled)') || []);
+                      if (!options.length) return;
+                      event.preventDefault();
+                      const currentIndex = options.indexOf(event.currentTarget);
+                      let nextIndex = currentIndex;
+                      if (event.key === "Home") nextIndex = 0;
+                      else if (event.key === "End") nextIndex = options.length - 1;
+                      else if (event.key === "ArrowDown" || event.key === "ArrowRight") nextIndex = (currentIndex + 1) % options.length;
+                      else nextIndex = (currentIndex - 1 + options.length) % options.length;
+                      const nextOption = options[nextIndex];
+                      setAnswer(nextOption.dataset.optionKey || "");
+                      nextOption.focus();
+                    }}
                   >
                     <span className="adaptive-mcq-key">({key})</span>
                     <MathText as="span" className="adaptive-mcq-option-text">{adaptiveOptionDisplayText(option, optionIndex)}</MathText>
