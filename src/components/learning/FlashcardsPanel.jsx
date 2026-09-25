@@ -315,6 +315,15 @@ export default function FlashcardsPanel({ userId, supabase, showToast, onProgres
                   }
                   setRevealed(true);
                 }}
+                onKeyDown={event => {
+                  if (event.key === "ArrowLeft") {
+                    event.preventDefault();
+                    moveCard("previous");
+                  } else if (event.key === "ArrowRight") {
+                    event.preventDefault();
+                    moveCard("next");
+                  }
+                }}
                 aria-label={revealed ? `Flashcard answer: ${current.back}` : `Flashcard question: ${current.front}. Reveal answer.`}
               >
                 <div className="spark-flashcard-label">{FLASHCARD_DECKS.find(item => item.id === current.deck)?.title}</div>
