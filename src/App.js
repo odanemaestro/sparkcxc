@@ -1478,12 +1478,39 @@ function SubjectEnrollmentRequiredView({ subjectName = "", onManageSubjects, onB
 // ─── NAV ────────────────────────────────────────────────────────────────────
 function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorApp, view, themeMode, resolvedTheme, setThemeMode }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuButtonRef = useRef(null);
+  const mobileMenuRef = useRef(null);
   const isTutor = profile?.role === "tutor" || tutorApp?.status === "approved";
   const isStudent = profile?.role === "student";
   const isParent = profile?.role === "parent";
   const isDedicatedAdmin = Boolean(profile?.is_admin && profile?.account_type === "admin");
 
   useEffect(() => { setMenuOpen(false); }, [view]);
+
+  useEffect(() => {
+    if (!menuOpen) return undefined;
+
+    const onKeyDown = event => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        menuButtonRef.current?.focus({ preventScroll: true });
+      }
+    };
+
+    const onPointerDown = event => {
+      const insideButton = menuButtonRef.current?.contains(event.target);
+      const insideMenu = mobileMenuRef.current?.contains(event.target);
+      if (!insideButton && !insideMenu) setMenuOpen(false);
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    document.addEventListener("pointerdown", onPointerDown);
+
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("pointerdown", onPointerDown);
+    };
+  }, [menuOpen]);
 
   const navigate = (nextView) => {
     setMenuOpen(false);
@@ -1551,11 +1578,13 @@ function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorAp
             <ThemeSelector value={themeMode} resolvedTheme={resolvedTheme} onChange={setThemeMode}/>
           </div>
           <button
+            ref={menuButtonRef}
             type="button"
             className={`spark-menu-button ${menuOpen ? "open" : ""}`}
             onClick={() => setMenuOpen(value => !value)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
+            aria-controls="spark-mobile-navigation"
           >
             <span/><span/><span/>
           </button>
@@ -1563,7 +1592,7 @@ function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorAp
       </div>
 
       {menuOpen && (
-        <div className="spark-mobile-menu fade-in">
+        <div ref={mobileMenuRef} id="spark-mobile-navigation" className="spark-mobile-menu">
           <div className="spark-mobile-menu-links">
             {user ? signedInLinks : publicLinks}
           </div>
@@ -1588,7 +1617,7 @@ const NavBtn = ({ children, onClick, active = false }) => {
       style={{background:active?"rgba(255,255,255,.1)":hover?"rgba(255,255,255,.07)":"none",
         border:"none",color:active?"#fff":hover?"#fff":"rgba(255,255,255,.75)",
         padding:"8px 13px",borderRadius:7,fontSize:13.5,fontWeight:active?600:500,
-        transition:`all .18s ${T.ease}`,position:"relative"}}>
+        transition:`background-color .18s ${T.ease}, color .18s ${T.ease}, transform .16s ${T.ease}`,position:"relative"}}>
       {children}
       {active && <span style={{position:"absolute",bottom:1,left:13,right:13,height:2,
         borderRadius:2,background:"#5EEAD4"}}/>}
