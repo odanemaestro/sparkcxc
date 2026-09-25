@@ -22,6 +22,7 @@ describe("SPARK subject navigation and generic flashcards V1", () => {
     expect(progressDetail).toContain("onOpenSubject(subject)");
     expect(app).toContain("if (!recommendation)");
     expect(app).toContain("openSubject(subject)");
+    expect(app).toContain('getSparkSubject(subjects, "mathematics")');
   });
 
   test("flashcard routes accept safe dynamic subject ids", () => {
