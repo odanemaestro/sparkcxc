@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { supabase } from "../../lib/supabaseClient";
 import SparkLoader from "../ui/SparkLoader";
 import "./studyCircles.css";
@@ -75,6 +75,8 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
   const [reportReason, setReportReason] = useState("Personal information");
   const [reportDetails, setReportDetails] = useState("");
   const [leaveOpen, setLeaveOpen] = useState(false);
+  const modalRef = useRef(null);
+  const previousModalFocusRef = useRef(null);
 
   const load = useCallback(async ({ quiet = false } = {}) => {
     if (!user?.id) return;
@@ -132,6 +134,32 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
       .subscribe();
     return () => { supabase.removeChannel(channel); };
   }, [user?.id, load]);
+
+  useEffect(() => {
+    if (!reportTarget && !leaveOpen) return undefined;
+
+    previousModalFocusRef.current = document.activeElement;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const onKeyDown = event => {
+      if (event.key !== "Escape") return;
+      if (reportTarget) setReportTarget(null);
+      else setLeaveOpen(false);
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    const frame = window.requestAnimationFrame(() => {
+      modalRef.current?.focus({ preventScroll: true });
+    });
+
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+      window.cancelAnimationFrame(frame);
+      previousModalFocusRef.current?.focus?.({ preventScroll: true });
+    };
+  }, [leaveOpen, reportTarget]);
 
   const profile = home?.profile || {};
   const profileReady = Boolean(profile.profile_ready);
@@ -255,7 +283,11 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
   const startReply = post => {
     setReplyTarget(post);
     window.setTimeout(() => {
-      document.getElementById("study-circle-composer")?.scrollIntoView({ behavior: "smooth", block: "center" });
+      const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+      document.getElementById("study-circle-composer")?.scrollIntoView({
+        behavior: reduceMotion ? "auto" : "smooth",
+        block: "center",
+      });
       document.getElementById("study-circle-message")?.focus({ preventScroll: true });
     }, 0);
   };
@@ -666,7 +698,7 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
       {reportTarget && (
         <div className="study-circle-modal-layer" role="presentation">
           <button type="button" className="study-circle-modal-scrim" aria-label="Close report" onClick={() => setReportTarget(null)} />
-          <div className="study-circle-modal" role="dialog" aria-modal="true" aria-labelledby="study-circle-report-title">
+          <div ref={modalRef} tabIndex={-1} className="study-circle-modal" role="dialog" aria-modal="true" aria-labelledby="study-circle-report-title">
             <div className="study-circle-modal-head">
               <div>
                 <span className="study-circle-kicker">KEEP THE CIRCLE SAFE</span>
@@ -701,7 +733,7 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
       {leaveOpen && (
         <div className="study-circle-modal-layer" role="presentation">
           <button type="button" className="study-circle-modal-scrim" aria-label="Close" onClick={() => setLeaveOpen(false)} />
-          <div className="study-circle-modal compact-modal" role="dialog" aria-modal="true" aria-labelledby="study-circle-leave-title">
+          <div ref={modalRef} tabIndex={-1} className="study-circle-modal compact-modal" role="dialog" aria-modal="true" aria-labelledby="study-circle-leave-title">
             <div className="study-circle-modal-head">
               <div>
                 <span className="study-circle-kicker">STUDY CIRCLE</span>
