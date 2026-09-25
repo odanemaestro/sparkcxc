@@ -272,6 +272,58 @@ export function useMathPracticeRoute(active = false) {
   return { mode, setMode, examIntent, setExamIntent };
 }
 
+// SPARK_INTEGRATED_SCIENCE_PRACTICE_ROUTING_V1
+const INTEGRATED_SCIENCE_PRACTICE_BASE = "/practice/integrated-science";
+const INTEGRATED_SCIENCE_PRACTICE_MODES = new Set(["home", "paper1", "paper2", "topic"]);
+
+function integratedSciencePracticeModeFromRoute(route) {
+  if (route?.path !== INTEGRATED_SCIENCE_PRACTICE_BASE) return "home";
+  const requested = route.params.get("mode") || "home";
+  return INTEGRATED_SCIENCE_PRACTICE_MODES.has(requested) ? requested : "home";
+}
+
+export function useIntegratedSciencePracticeRoute(active = true) {
+  const read = useCallback(
+    () => integratedSciencePracticeModeFromRoute(readSparkHashRoute()),
+    []
+  );
+
+  const initial = useRef(read());
+  const [mode, setModeState] = useState(initial.current);
+  const modeRef = useRef(initial.current);
+
+  const setMode = useCallback(nextValue => {
+    const raw = String(resolveSetter(nextValue, modeRef.current) || "home");
+    const safe = INTEGRATED_SCIENCE_PRACTICE_MODES.has(raw) ? raw : "home";
+
+    modeRef.current = safe;
+    setModeState(safe);
+
+    if (!active && readSparkHashRoute().path !== INTEGRATED_SCIENCE_PRACTICE_BASE) return;
+
+    writeSparkNestedRoute(
+      INTEGRATED_SCIENCE_PRACTICE_BASE,
+      safe === "home" ? {} : { mode: safe }
+    );
+  }, [active]);
+
+  useEffect(() => {
+    if (!active) return undefined;
+
+    const sync = route => {
+      if (route.path !== INTEGRATED_SCIENCE_PRACTICE_BASE) return;
+      const next = integratedSciencePracticeModeFromRoute(route);
+      modeRef.current = next;
+      setModeState(next);
+    };
+
+    sync(readSparkHashRoute());
+    return subscribeSparkRoute(sync);
+  }, [active]);
+
+  return [mode, setMode];
+}
+
 // SPARK_INFORMATION_TECHNOLOGY_NESTED_ROUTING_V1
 const IT_STUDY_BASE = "/study/information-technology";
 const IT_PRACTICE_BASE = "/practice/information-technology";
