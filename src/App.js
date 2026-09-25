@@ -3422,10 +3422,25 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   // weren't showing up here).
   const isTutor = tutorApp?.status === "approved";
   const isStudent = profile?.role === "student";
+  const resolveDashboardSubject = useCallback(subject => {
+    const id = String(subject?.id || subject || "").trim().toLowerCase();
+    if (!id) return null;
+    return getSparkSubject(subjects, id) || (typeof subject === "object" ? subject : null);
+  }, [subjects]);
+
   const openSubject = useCallback(subject => {
-    if (onOpenSubject) onOpenSubject(subject);
-    else setView(subject?.studyView || "study");
-  }, [onOpenSubject, setView]);
+    const resolved = resolveDashboardSubject(subject);
+    if (!resolved) {
+      showToast?.("This subject could not be opened. Please refresh and try again.", "error");
+      return;
+    }
+    if (resolved.capabilities?.study === false) {
+      showToast?.((resolved.shortName || resolved.name) + " lessons are not available yet.", "error");
+      return;
+    }
+    if (onOpenSubject) onOpenSubject(resolved);
+    else setView(resolved?.studyView || "study");
+  }, [onOpenSubject, resolveDashboardSubject, setView, showToast]);
   // Student profiles can later become approved tutors without profile.role
   // changing. Wait for that tutor lookup before canonicalizing a nested
   // dashboard route, otherwise #/dashboard/sessions could briefly be mistaken
@@ -3514,6 +3529,22 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     setFlashcardSubject(next);
     writeFlashcardSubjectToBrowserHash(next, options);
   }, []);
+
+  const openFlashcardSubject = useCallback(subject => {
+    const id = normalizeFlashcardSubjectId(subject?.id || subject);
+    if (!id) {
+      showToast?.("This flashcard deck could not be opened. Please refresh and try again.", "error");
+      return;
+    }
+
+    const resolved = getSparkSubject(subjects, id);
+    if (!resolved || resolved.capabilities?.flashcards !== true) {
+      showToast?.("Flashcards are not available for this subject yet.", "error");
+      return;
+    }
+
+    setFlashcardSubjectRoute(id);
+  }, [setFlashcardSubjectRoute, showToast, subjects]);
 
   const updateDashTabsOverflow = useCallback(() => {
     const el = dashSidebarRef.current;
@@ -4827,7 +4858,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
               description="Open the flashcard deck for the subject you want to review."
               capability="flashcards"
               subjects={studentFlashcardSubjects}
-              onSelect={subject => setFlashcardSubjectRoute(subject.id)}
+              onSelect={openFlashcardSubject}
             />
           ) : flashcardSubject === "physics" ? (
             <Suspense fallback={<SparkLoader variant="section" label="Loading Physics flashcards" />}>
@@ -4863,6 +4894,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
           ) : (
             <Suspense fallback={<SparkLoader variant="section" label={`Loading ${activeFlashcardSubject.shortName || activeFlashcardSubject.name} flashcards`} />}>
               <GenericSubjectFlashcardsPanel
+                key={activeFlashcardSubject.id}
                 supabase={supabase}
                 userId={user.id}
                 subject={activeFlashcardSubject}
