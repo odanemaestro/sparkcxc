@@ -139,6 +139,8 @@ export default function NotificationCenter({ user, profile, setView }) {
   const scrimRef = useRef(null);
   const dragRef = useRef({ pointerId: null, startY: 0, lastY: 0, lastTime: 0, velocity: 0 });
   const closeTimerRef = useRef(null);
+  const triggerRef = useRef(null);
+  const previousDrawerFocusRef = useRef(null);
 
   const closeNotifications = useCallback(() => {
     if (!open || closing) return;
@@ -205,6 +207,25 @@ export default function NotificationCenter({ user, profile, setView }) {
   }, [load]);
 
   useEffect(() => {
+    if (!open) return undefined;
+
+    previousDrawerFocusRef.current = document.activeElement;
+    const frame = window.requestAnimationFrame(() => {
+      drawerRef.current?.focus({ preventScroll: true });
+    });
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      const previous = previousDrawerFocusRef.current;
+      if (previous && typeof previous.focus === "function") {
+        previous.focus({ preventScroll: true });
+      } else {
+        triggerRef.current?.focus({ preventScroll: true });
+      }
+    };
+  }, [open]);
+
+  useEffect(() => {
     if (!user?.id) return undefined;
     const channel = supabase
       .channel(`notification-centre-${user.id}`)
@@ -233,7 +254,34 @@ export default function NotificationCenter({ user, profile, setView }) {
     });
 
     const onKeyDown = event => {
-      if (event.key === "Escape") closeNotifications();
+      if (event.key === "Escape") {
+        closeNotifications();
+        return;
+      }
+
+      if (event.key !== "Tab" || !drawerRef.current) return;
+
+      const focusable = Array.from(drawerRef.current.querySelectorAll(
+        'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])'
+      )).filter(element => !element.hasAttribute("hidden") && element.getAttribute("aria-hidden") !== "true");
+
+      if (!focusable.length) {
+        event.preventDefault();
+        drawerRef.current.focus();
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement;
+
+      if (event.shiftKey && (active === first || active === drawerRef.current)) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && active === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
 
     document.addEventListener("keydown", onKeyDown);
@@ -407,6 +455,7 @@ export default function NotificationCenter({ user, profile, setView }) {
   return (
     <>
       <button
+        ref={triggerRef}
         type="button"
         className="notification-trigger"
         aria-label={unreadCount ? `Notifications, ${unreadCount} unread` : "Notifications"}
@@ -420,7 +469,7 @@ export default function NotificationCenter({ user, profile, setView }) {
       {open && (
         <div className={`notification-layer ${closing ? "is-closing" : ""}`} role="presentation">
           <button ref={scrimRef} className="notification-scrim" aria-label="Close notifications" onClick={closeNotifications} />
-          <aside ref={drawerRef} className="notification-drawer" role="dialog" aria-modal="true" aria-label="Notifications">
+          <aside ref={drawerRef} tabIndex={-1} className="notification-drawer" role="dialog" aria-modal="true" aria-label="Notifications">
             <div
               className="notification-drag-handle"
               aria-hidden="true"
