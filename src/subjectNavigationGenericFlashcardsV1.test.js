@@ -69,17 +69,11 @@ describe("SPARK subject navigation and generic flashcards V1", () => {
     expect(app).toContain("const routedView = viewFromBrowserHash()");
   });
 
-  test("signed-in student Home includes Choose a subject using enrolled subjects", () => {
-    expect(app).toContain('className="spark-home-subjects"');
-    expect(app).toContain('title="Choose a subject"');
-    expect(app).toContain('subjects={appStudentEnrolledSubjects}');
-    expect(app).toContain('onOpenSubject={openStudentSubject}');
-    expect(app).toContain('onSelect={subject => onOpenSubject?.(subject)}');
-    expect(app).toContain('subject.id !== "mathematics"');
-    expect(app).toContain('profile?.role === "student"');
-    expect(app).toContain("function studySubjectsForNavigation");
-    expect(app).toContain('subject?.routes?.study');
-    expect(app).toContain('subject?.implementation === "generic"');
+  test("footer Study menu keeps only Choose a subject", () => {
+    expect(app).toContain('["Study", [["Choose a subject",()=>setView("study")]]]');
+    expect(app).not.toContain('["Study", [["Choose a subject",()=>setView("study")],["Mathematics"');
+    expect(app).not.toContain('["Physics",()=>setView("physics")]');
+    expect(app).not.toContain('className="spark-home-subjects"');
   });
 
   test("generic flashcard recommendations open the dashboard flashcard route", () => {
