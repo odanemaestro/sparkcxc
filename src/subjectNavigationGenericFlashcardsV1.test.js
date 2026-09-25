@@ -10,6 +10,7 @@ describe("SPARK subject navigation and generic flashcards V1", () => {
   const progressDetail = source("components", "learning", "SubjectProgressDetail.jsx");
   const genericFlashcards = source("subjects", "GenericSubjectFlashcardsPanel.jsx");
   const selection = source("subjects", "SubjectSelectionView.jsx");
+  const nextBestAction = source("learning", "nextBestActionV2.js");
   const migration = source(
     "..",
     "supabase",
@@ -55,5 +56,11 @@ describe("SPARK subject navigation and generic flashcards V1", () => {
     expect(migration).toContain("/study/integrated-science");
     expect(migration).toContain("/dashboard/flashcards/integrated-science");
     expect(selection).toContain("Review cards built from this subject's published SPARK lessons");
+  });
+
+  test("generic flashcard recommendations open the dashboard flashcard route", () => {
+    expect(nextBestAction).toContain('actionType === "flashcards"');
+    expect(nextBestAction).toContain('special:"dashboard-flashcards"');
+    expect(nextBestAction).toContain('/dashboard/flashcards/');
   });
 });
