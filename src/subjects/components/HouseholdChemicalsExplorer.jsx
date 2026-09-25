@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./householdChemicalsExplorer.css";
 
@@ -21,7 +22,7 @@ function ProductView(){
 
 function HazardIcon({type,label}){
   return <article className={"spark-hazard-card "+type}>
-    <svg className="spark-ghs-hazard-svg" viewBox="0 0 140 140" role="img" aria-label={label+" hazard pictogram"}>
+    <ReviewedScienceDiagram site="HouseholdChemicalsExplorer.jsx:24"><svg className="spark-ghs-hazard-svg" viewBox="0 0 140 140" role="img" aria-label={label+" hazard pictogram"}>
       <polygon className="hc-diamond" points="70,8 132,70 70,132 8,70"/>
       {type==="flammable"&&<g className="hc-flame">
         <path className="hc-black" d="M72 111Q42 98 49 72Q53 58 65 49Q62 65 72 66Q66 45 82 27Q83 48 96 60Q108 72 103 90Q98 106 83 112Q87 99 79 91Q78 104 72 111Z"/>
@@ -47,7 +48,7 @@ function HazardIcon({type,label}){
       {type==="irritant"&&<g className="hc-exclamation">
         <path className="hc-black" d="M62 34H78L75 82H65Z"/><circle className="hc-black" cx="70" cy="101" r="9"/>
       </g>}
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <b>{label}</b>
   </article>;
 }

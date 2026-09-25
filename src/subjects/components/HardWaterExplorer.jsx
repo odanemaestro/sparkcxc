@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./hardWaterExplorer.css";
 
@@ -18,7 +19,7 @@ function LatherView(){
   return <div className="spark-hardwater-lather">
     <div className="spark-hardwater-toggle">{[["soft","Soft"],["temp","Temporary hard"],["perm","Permanent hard"]].map(([k,l])=><button type="button" key={k} className={sample===k?"active":""} onClick={()=>setSample(k)}>{l}</button>)}</div>
 
-    <svg className="spark-hardwater-soaptest-svg" viewBox="0 0 900 500" role="img" aria-label={data.name+" soap-lather test showing equal water and soap conditions, foam height and scum formation after shaking"}>
+    <ReviewedScienceDiagram site="HardWaterExplorer.jsx:21"><svg className="spark-hardwater-soaptest-svg" viewBox="0 0 900 500" role="img" aria-label={data.name+" soap-lather test showing equal water and soap conditions, foam height and scum formation after shaking"}>
       <defs>
         <marker id="hw-shake-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
           <path d="M0 0L9 4.5L0 9Z" className="hw-soap-arrow-head"/>
@@ -64,7 +65,7 @@ function LatherView(){
         <text className="hw-small" x="98" y="198" textAnchor="middle">relative scum</text>
         <text className="hw-small" x="98" y="226" textAnchor="middle">more lather = softer water</text>
       </g>
-    </svg>
+    </svg></ReviewedScienceDiagram>
 
     <strong>{data.name}</strong><p>{data.text}</p>
   </div>;
@@ -82,7 +83,7 @@ function BoilingView(){
   const [before,setBefore]=useState(true);
   return <div className="spark-hardwater-boil">
     <div className="spark-hardwater-toggle"><button type="button" className={before?"active":""} onClick={()=>setBefore(true)}>Before boiling</button><button type="button" className={!before?"active":""} onClick={()=>setBefore(false)}>After boiling</button></div>
-    <svg className="spark-hardwater-boiling-svg" viewBox="0 0 860 470" role="img" aria-label={before?"Temporary hard water before boiling showing dissolved calcium hydrogencarbonate ions":"Temporary hard water after boiling showing calcium carbonate precipitate and scale"}>
+    <ReviewedScienceDiagram site="HardWaterExplorer.jsx:85"><svg className="spark-hardwater-boiling-svg" viewBox="0 0 860 470" role="img" aria-label={before?"Temporary hard water before boiling showing dissolved calcium hydrogencarbonate ions":"Temporary hard water after boiling showing calcium carbonate precipitate and scale"}>
       <defs>
         <marker id="hw-heat-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
           <path className="hw-arrow-head" d="M0 0L10 5L0 10Z"/>
@@ -116,14 +117,14 @@ function BoilingView(){
       <path className="hw-heat-flow" d="M325 420V385" markerEnd="url(#hw-heat-arrow)"/>
       <text className="hw-small" x="585" y="295">{before?"temporary hardness is soluble":"solid carbonate deposits form"}</text>
       <text className="hw-small" x="585" y="325">{before?"before heating":"after hydrogencarbonate decomposes"}</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>{before?"Temporary hardness remains dissolved before heating.":"Boiling decomposes calcium hydrogencarbonate and forms insoluble calcium carbonate. The precipitate removes calcium ions from solution but may form scale in the kettle."}</p>
   </div>;
 }
 
 function SodaView(){
   return <div className="spark-washing-soda">
-    <svg className="spark-washing-soda-svg" viewBox="0 0 980 510" role="img" aria-label="Washing soda softening permanent hard water by precipitating calcium and magnesium carbonate">
+    <ReviewedScienceDiagram site="HardWaterExplorer.jsx:126"><svg className="spark-washing-soda-svg" viewBox="0 0 980 510" role="img" aria-label="Washing soda softening permanent hard water by precipitating calcium and magnesium carbonate">
       <defs>
         <marker id="hw-mix-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
           <path className="hw-arrow-head" d="M0 0L10 5L0 10Z"/>
@@ -176,7 +177,7 @@ function SodaView(){
       </g>
 
       <text className="hw-caption" x="490" y="465" textAnchor="middle">carbonate ions convert dissolved hardness ions into insoluble solids that can be removed</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-soda-equation"><span>hard water with Ca²⁺ / Mg²⁺</span><b>+</b><span>washing soda, Na₂CO₃</span><b>→</b><span>insoluble carbonates</span></div>
     <p>Washing soda supplies carbonate ions. Calcium and magnesium ions form insoluble carbonates that can be removed, so permanent hardness is reduced.</p>
     <aside><strong>Why boiling is different</strong><span>Boiling removes temporary hydrogencarbonate hardness, but it does not remove permanent hardness caused by salts such as calcium sulphate.</span></aside>
@@ -185,7 +186,7 @@ function SodaView(){
 
 function DistillationView(){
   return <div className="spark-hardwater-distill">
-    <svg viewBox="0 0 860 380" role="img" aria-label="Simple distillation of hard water showing dissolved salts left behind">
+    <ReviewedScienceDiagram site="HardWaterExplorer.jsx:188"><svg viewBox="0 0 860 380" role="img" aria-label="Simple distillation of hard water showing dissolved salts left behind">
       <rect className="hd-flask" x="90" y="145" width="155" height="150" rx="55"/>
       <path className="hd-water" d="M110 215H225V275Q165 310 110 275Z"/>
       <text className="hd-label" x="165" y="245" textAnchor="middle">hard water</text>
@@ -195,7 +196,7 @@ function DistillationView(){
       <rect className="hd-beaker" x="620" y="185" width="120" height="115" rx="8"/>
       <text className="hd-label" x="680" y="245" textAnchor="middle">distilled water</text>
       <text className="hd-label" x="165" y="330" textAnchor="middle">dissolved salts remain</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>During distillation, water evaporates and then condenses. Dissolved non-volatile salts remain behind, so the collected water is soft.</p>
   </div>;
 }

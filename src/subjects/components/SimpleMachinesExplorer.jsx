@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./simpleMachinesExplorer.css";
 
@@ -16,7 +17,7 @@ function LeverView(){
       first:"First-class lever",second:"Second-class lever",third:"Third-class lever"
     })[k]}</button>)}</div>
 
-    <svg className="spark-lever-svg" viewBox="0 0 860 430" role="img" aria-label={data.title+" showing the relative positions of effort fulcrum and load"}>
+    <ReviewedScienceDiagram site="SimpleMachinesExplorer.jsx:19"><svg className="spark-lever-svg" viewBox="0 0 860 430" role="img" aria-label={data.title+" showing the relative positions of effort fulcrum and load"}>
       <rect className="sl-ground" x="85" y="325" width="690" height="14" rx="7"/>
       <rect className="sl-beam" x="110" y="220" width="640" height="22" rx="11"/>
 
@@ -45,7 +46,7 @@ function LeverView(){
 
       <text className="sl-class-title" x="430" y="42" textAnchor="middle">{data.title}</text>
       <text className="sl-rule" x="430" y="398" textAnchor="middle">{data.text}</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
 
     <div className="spark-lever-legend">
       <article><span className="effort-dot"></span><b>Effort</b><small>the applied force</small></article>
@@ -65,7 +66,7 @@ function PulleyView(){
   return <div className="spark-machines-pulley">
     <label>Supporting rope strands<input type="range" min="1" max="4" step="1" value={strands} onChange={e=>setStrands(e.target.value)}/></label>
 
-    <svg className="spark-pulley-svg" viewBox="0 0 860 500" role="img" aria-label={n===1
+    <ReviewedScienceDiagram site="SimpleMachinesExplorer.jsx:68"><svg className="spark-pulley-svg" viewBox="0 0 860 500" role="img" aria-label={n===1
       ? "Single fixed pulley changing the direction of effort with ideal mechanical advantage one"
       : `Idealised moving pulley system with ${n} rope strands supporting the load`}>
 
@@ -118,7 +119,7 @@ function PulleyView(){
       </>}
 
       <text className="sp-heading" x="430" y="32" textAnchor="middle">{n===1?"Single fixed pulley":`${n}-strand support model`}</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
 
     <div className="spark-pulley-facts">
       <article><b>Fixed pulley</b><span>Mainly changes the direction of the effort. Ideal MA = 1.</span></article>

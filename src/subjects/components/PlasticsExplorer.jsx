@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./plasticsExplorer.css";
 
@@ -26,7 +27,7 @@ function UsesView(){
 
 function PersistenceView(){
   return <div className="spark-plastics-persistence">
-    <svg className="spark-plastic-persistence-svg" viewBox="0 0 980 470" role="img" aria-label="Plastic persistence diagram showing a large plastic item fragmenting under sunlight, heat and abrasion into smaller fragments and microplastics without complete biodegradation">
+    <ReviewedScienceDiagram site="PlasticsExplorer.jsx:29"><svg className="spark-plastic-persistence-svg" viewBox="0 0 980 470" role="img" aria-label="Plastic persistence diagram showing a large plastic item fragmenting under sunlight, heat and abrasion into smaller fragments and microplastics without complete biodegradation">
       <defs>
         <marker id="plastic-fragment-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" className="pp-arrow-head"/></marker>
       </defs>
@@ -62,7 +63,7 @@ function PersistenceView(){
       <path className="pp-not-equal" d="M505 405H690"/>
       <text className="pp-warning" x="598" y="392" textAnchor="middle">fragmentation ≠ biodegradation</text>
       <text className="pp-small" x="598" y="431" textAnchor="middle">smaller pieces still contain plastic polymer unless the material is chemically broken down</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-plastics-persistence-notes">
       <article><span>NON-BIODEGRADABLE</span><h4>Most common plastics break down very slowly</h4><p>Microorganisms do not easily digest the long synthetic polymer chains in many conventional plastics.</p></article>
       <article><span>FRAGMENTATION</span><h4>Smaller does not mean gone</h4><p>Sunlight, heat and abrasion can fragment plastic into smaller pieces without fully mineralising it.</p></article>
@@ -76,7 +77,7 @@ function MarineView(){
   return <div className="spark-plastics-marine">
     <div className="spark-plastics-toggle"><button type="button" className={mode==="turtle"?"active":""} onClick={()=>setMode("turtle")}>Sea turtles</button><button type="button" className={mode==="micro"?"active":""} onClick={()=>setMode("micro")}>Microplastics</button></div>
     {mode==="turtle"?<div className="spark-turtle-model">
-      <svg viewBox="0 0 820 390" role="img" aria-label="Sea turtle approaching a floating plastic bag that resembles jellyfish prey">
+      <ReviewedScienceDiagram site="PlasticsExplorer.jsx:79"><svg viewBox="0 0 820 390" role="img" aria-label="Sea turtle approaching a floating plastic bag that resembles jellyfish prey">
         <defs><marker id="plastic-risk-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" className="pl-arrow-head"/></marker></defs>
         <rect className="pl-sea" x="0" y="0" width="820" height="390"/>
         <path className="pl-surface" d="M0 68Q75 48 150 68T300 68T450 68T600 68T820 68"/>
@@ -95,10 +96,10 @@ function MarineView(){
         <text className="pl-label" x="630" y="103" textAnchor="middle">floating plastic bag</text>
         <text className="pl-label" x="621" y="371" textAnchor="middle">jellyfish prey</text>
         <text className="pl-small" x="500" y="195" textAnchor="middle">mistaken for food</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
       <p>Floating plastic bags can resemble jellyfish. Turtles may ingest them, which can block or injure the digestive system and reduce feeding.</p>
     </div>:<div className="spark-microplastic-chain">
-      <svg viewBox="0 0 900 330" role="img" aria-label="Microplastics entering a marine food web from particles to plankton, small fish and larger predators">
+      <ReviewedScienceDiagram site="PlasticsExplorer.jsx:101"><svg viewBox="0 0 900 330" role="img" aria-label="Microplastics entering a marine food web from particles to plankton, small fish and larger predators">
         <defs><marker id="plastic-food-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" className="pl-arrow-head"/></marker></defs>
         <rect className="pl-sea" x="0" y="0" width="900" height="330"/>
         {Array.from({length:16},(_,i)=><circle key={i} className="pl-micro" cx={65+(i%4)*25} cy={100+Math.floor(i/4)*25} r={4+(i%3)}/>)}
@@ -118,7 +119,7 @@ function MarineView(){
         <line className="pl-food-arrow" x1="170" y1="160" x2="228" y2="160" markerEnd="url(#plastic-food-arrow)"/>
         <line className="pl-food-arrow" x1="327" y1="160" x2="411" y2="160" markerEnd="url(#plastic-food-arrow)"/>
         <line className="pl-food-arrow" x1="568" y1="160" x2="645" y2="160" markerEnd="url(#plastic-food-arrow)"/>
-      </svg>
+      </svg></ReviewedScienceDiagram>
       <p>Microplastics can be ingested by marine organisms and move through food webs. Their biological effects depend on particle size, chemistry, exposure and species.</p>
     </div>}
   </div>;

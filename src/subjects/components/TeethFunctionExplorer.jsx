@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./teethFunctionExplorer.css";
 
@@ -14,29 +15,29 @@ function ToothShape({type}){
     <path className="tf-pulp-line" d="M70 72V132" />
   </>;
 
-  if(type==="Incisor") return <svg viewBox="0 0 140 180" role="img" aria-label="Incisor tooth with chisel-shaped crown and single root">
+  if(type==="Incisor") return <ReviewedScienceDiagram site="TeethFunctionExplorer.jsx:17"><svg viewBox="0 0 140 180" role="img" aria-label="Incisor tooth with chisel-shaped crown and single root">
     <path className="tf-tooth" d="M35 34Q70 18 105 34L101 75Q95 96 84 112L79 165Q70 174 61 165L56 112Q45 96 39 75Z" />
     <path className="tf-edge" d="M40 38Q70 29 100 38" />
     {common}
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 
-  if(type==="Canine") return <svg viewBox="0 0 140 180" role="img" aria-label="Canine tooth with pointed crown and long single root">
+  if(type==="Canine") return <ReviewedScienceDiagram site="TeethFunctionExplorer.jsx:23"><svg viewBox="0 0 140 180" role="img" aria-label="Canine tooth with pointed crown and long single root">
     <path className="tf-tooth" d="M39 46Q54 20 70 11Q86 20 101 46L96 79Q91 100 81 113L77 169Q70 177 63 169L59 113Q49 100 44 79Z" />
     <path className="tf-edge" d="M43 48Q56 32 70 19Q84 32 97 48" />
     {common}
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 
-  if(type==="Premolar") return <svg viewBox="0 0 140 180" role="img" aria-label="Premolar tooth with two cusps and two roots">
+  if(type==="Premolar") return <ReviewedScienceDiagram site="TeethFunctionExplorer.jsx:29"><svg viewBox="0 0 140 180" role="img" aria-label="Premolar tooth with two cusps and two roots">
     <path className="tf-tooth" d="M29 48Q42 24 58 35Q70 18 82 35Q98 24 111 48L105 82Q99 103 86 116L89 159Q84 171 76 159L70 121L64 159Q56 171 51 159L54 116Q41 103 35 82Z" />
     <path className="tf-edge" d="M33 50Q45 35 58 43Q70 28 82 43Q95 35 107 50" />
     {common}
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 
-  return <svg viewBox="0 0 140 180" role="img" aria-label="Molar tooth with broad multi-cusped crown and multiple roots">
+  return <ReviewedScienceDiagram site="TeethFunctionExplorer.jsx:35"><svg viewBox="0 0 140 180" role="img" aria-label="Molar tooth with broad multi-cusped crown and multiple roots">
     <path className="tf-tooth" d="M20 52Q30 25 47 36Q58 20 70 36Q82 20 93 36Q110 25 120 52L114 88Q108 105 95 116L101 157Q98 171 88 160L78 122L75 162Q70 176 65 162L62 122L52 160Q42 171 39 157L45 116Q32 105 26 88Z" />
     <path className="tf-edge" d="M25 54Q34 37 47 45Q58 31 70 45Q82 31 93 45Q106 37 115 54" />
     {common}
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 }
 
 function TypesView(){
@@ -50,7 +51,7 @@ function TypesView(){
 function StructureView(){
   const outerToothPath="M220 80Q285 35 380 45Q475 35 540 80Q568 108 553 180Q543 225 522 274Q505 312 490 350L468 482Q458 555 414 560Q382 555 380 492Q378 555 346 560Q302 555 292 482L270 350Q255 312 238 274Q217 225 207 180Q192 108 220 80Z";
   return <div className="spark-tooth-structure-view">
-    <svg className="spark-tooth-structure-svg" viewBox="0 0 800 640" role="img" aria-label="Cross-section of a tooth showing enamel on the crown, dentine, pulp cavity, nerves, blood vessels, cementum on the roots, gingiva, jaw bone, crown, neck and root">
+    <ReviewedScienceDiagram site="TeethFunctionExplorer.jsx:53"><svg className="spark-tooth-structure-svg" viewBox="0 0 800 640" role="img" aria-label="Cross-section of a tooth showing enamel on the crown, dentine, pulp cavity, nerves, blood vessels, cementum on the roots, gingiva, jaw bone, crown, neck and root">
       <defs>
         <clipPath id="tooth-crown-clip"><rect x="185" y="20" width="390" height="340"/></clipPath>
         <clipPath id="tooth-root-clip"><rect x="185" y="350" width="390" height="235"/></clipPath>
@@ -86,7 +87,7 @@ function StructureView(){
       </g>
 
       <text className="ts-caption" x="400" y="620" textAnchor="middle">tooth cross-section, enamel covers the crown while cementum covers the roots</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-tooth-structure-notes">
       <article><b>Enamel</b><p>Hard outer covering of the crown. It protects the tooth from wear and acid attack.</p></article>
       <article><b>Dentine</b><p>Hard tissue beneath enamel and cementum. It forms most of the tooth and is less resistant to decay than enamel.</p></article>

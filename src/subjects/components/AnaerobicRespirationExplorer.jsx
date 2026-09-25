@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./anaerobicRespirationExplorer.css";
 
@@ -16,7 +17,7 @@ function CompareView(){
 }
 
 function YeastApparatusDiagram(){
-  return <svg className="spark-yeast-apparatus-svg" viewBox="0 0 900 430" role="img" aria-label="Yeast fermentation apparatus with glucose solution in a warm water bath connected to limewater">
+  return <ReviewedScienceDiagram site="AnaerobicRespirationExplorer.jsx:19"><svg className="spark-yeast-apparatus-svg" viewBox="0 0 900 430" role="img" aria-label="Yeast fermentation apparatus with glucose solution in a warm water bath connected to limewater">
     <path className="ya-water-bath" d="M70 145V330Q70 355 95 355H390Q415 355 415 330V145"/>
     <line className="ya-rim" x1="55" y1="145" x2="430" y2="145"/>
     <path className="ya-bath-water" d="M70 220H415V330Q415 355 390 355H95Q70 355 70 330Z"/>
@@ -37,7 +38,7 @@ function YeastApparatusDiagram(){
     <path className="ya-stop-air" d="M720 120L790 190M790 120L720 190"/>
     <text className="ya-label" x="755" y="225" textAnchor="middle">low oxygen</text>
     <text className="ya-small" x="755" y="250" textAnchor="middle">favours fermentation</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 }
 
 function YeastView(){

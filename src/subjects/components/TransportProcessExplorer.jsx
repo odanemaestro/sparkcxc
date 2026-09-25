@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useMemo, useState } from "react";
 import "./transportProcessExplorer.css";
 
@@ -60,7 +61,7 @@ function DiffusionScene({ running }) {
   const right = [[625,170],[690,280],[610,390]];
 
   return (
-    <svg viewBox="0 0 800 520" role="img" aria-label="Diffusion particle model">
+    <ReviewedScienceDiagram site="TransportProcessExplorer.jsx:63"><svg viewBox="0 0 800 520" role="img" aria-label="Diffusion particle model">
       <rect className="chamber" x="70" y="70" width="660" height="390" rx="26" />
       <text className="zone-label" x="190" y="105" textAnchor="middle">Higher concentration</text>
       <text className="zone-label" x="610" y="105" textAnchor="middle">Lower concentration</text>
@@ -78,7 +79,7 @@ function DiffusionScene({ running }) {
       <path className="process-arrow" d="M310 250h170" />
       <path className="process-arrow-head" d="M465 235l25 15-25 15" />
       <text className="net-movement-label" x="400" y="225" textAnchor="middle">net movement</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
@@ -88,7 +89,7 @@ function OsmosisScene({ running }) {
   const soluteRight = [[565,155],[650,165],[600,245],[690,290],[575,350],[650,410]];
 
   return (
-    <svg viewBox="0 0 800 520" role="img" aria-label="Osmosis membrane model">
+    <ReviewedScienceDiagram site="TransportProcessExplorer.jsx:91"><svg viewBox="0 0 800 520" role="img" aria-label="Osmosis membrane model">
       <rect className="chamber" x="70" y="70" width="660" height="390" rx="26" />
       <MembraneBilayer />
       <text className="zone-label" x="190" y="105" textAnchor="middle">More water molecules</text>
@@ -106,7 +107,7 @@ function OsmosisScene({ running }) {
       <path className="process-arrow water-arrow" d="M285 260h165" />
       <path className="process-arrow-head water-arrow" d="M435 245l25 15-25 15" />
       <text className="membrane-label" x="400" y="480" textAnchor="middle">Selectively permeable membrane</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
@@ -115,7 +116,7 @@ function ActiveTransportScene({ running }) {
   const right = [[565,130],[635,165],[685,220],[545,275],[625,320],[690,365],[560,410],[645,430]];
 
   return (
-    <svg viewBox="0 0 800 520" role="img" aria-label="Active transport membrane model">
+    <ReviewedScienceDiagram site="TransportProcessExplorer.jsx:118"><svg viewBox="0 0 800 520" role="img" aria-label="Active transport membrane model">
       <rect className="chamber" x="70" y="70" width="660" height="390" rx="26" />
       <MembraneBilayer />
       <path className={`carrier ${running ? "running" : ""}`} d="M365 215Q400 190 435 215V305Q400 330 365 305Z" />
@@ -138,7 +139,7 @@ function ActiveTransportScene({ running }) {
         <text x="400" y="408" textAnchor="middle">{running ? "ENERGY IN USE" : "ENERGY REQUIRED"}</text>
         <text className="energy-caption" x="400" y="426" textAnchor="middle">from respiration</text>
       </g>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

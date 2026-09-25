@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./humanDigestionExplorer.css";
 
@@ -14,7 +15,7 @@ const ENZYMES=[
 
 function DigestiveSystemScene(){
   return (
-    <svg className="spark-digestion-system-svg" viewBox="0 0 760 900" role="img" aria-label="Detailed human digestive system showing salivary glands, pharynx, oesophagus, liver, gall bladder, bile duct, stomach, pancreas, duodenum, small intestine, colon, cecum, appendix, rectum and anus">
+    <ReviewedScienceDiagram site="HumanDigestionExplorer.jsx:17"><svg className="spark-digestion-system-svg" viewBox="0 0 760 900" role="img" aria-label="Detailed human digestive system showing salivary glands, pharynx, oesophagus, liver, gall bladder, bile duct, stomach, pancreas, duodenum, small intestine, colon, cecum, appendix, rectum and anus">
       <circle className="dg-head" cx="380" cy="78" r="58"/>
       <path className="dg-mouth" d="M347 80Q380 96 413 80"/>
       <ellipse className="dg-salivary" cx="346" cy="60" rx="12" ry="8"/>
@@ -74,7 +75,7 @@ function DigestiveSystemScene(){
       </g>
 
       <text className="dg-caption" x="380" y="882" textAnchor="middle">food pathway through the alimentary canal, with accessory digestive organs</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
@@ -122,7 +123,7 @@ function BileView(){
 
 function VillusView(){
   return <div className="spark-villus-view">
-    <svg viewBox="0 0 760 420" role="img" aria-label="Simplified intestinal villus showing thin epithelium, blood capillaries and a central lacteal">
+    <ReviewedScienceDiagram site="HumanDigestionExplorer.jsx:125"><svg viewBox="0 0 760 420" role="img" aria-label="Simplified intestinal villus showing thin epithelium, blood capillaries and a central lacteal">
       <path className="villus-outline" d="M260 370Q270 230 300 100Q330 40 380 40Q430 40 460 100Q490 230 500 370Z"/>
       <path className="villus-lacteal" d="M380 315V100"/>
       <path className="villus-capillary" d="M320 330Q300 220 335 130Q355 95 380 125Q405 95 425 130Q460 220 440 330"/>
@@ -133,7 +134,7 @@ function VillusView(){
       <line className="villus-label-line" x1="380" y1="235" x2="615" y2="215"/>
       <text className="villus-label" x="625" y="220">lacteal</text>
       <text className="villus-small" x="380" y="400" textAnchor="middle">large surface area + short diffusion distance + good transport away</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-villus-cards">
       <article><b>Glucose and amino acids</b><p>Enter blood capillaries and are carried away in the blood.</p></article>
       <article><b>Products of fat digestion</b><p>Enter the lacteal and move through the lymphatic system.</p></article>
@@ -144,7 +145,7 @@ function VillusView(){
 
 function ConditionsView(){
   return <div className="spark-enzyme-conditions">
-    <svg viewBox="0 0 760 370" role="img" aria-label="Enzyme activity rises to an optimum near 37 degrees Celsius and then falls sharply at high temperature">
+    <ReviewedScienceDiagram site="HumanDigestionExplorer.jsx:147"><svg viewBox="0 0 760 370" role="img" aria-label="Enzyme activity rises to an optimum near 37 degrees Celsius and then falls sharply at high temperature">
       <line className="enzyme-axis" x1="85" y1="300" x2="690" y2="300"/>
       <line className="enzyme-axis" x1="85" y1="300" x2="85" y2="55"/>
       <path className="enzyme-curve" d="M95 280C180 270 250 220 330 120C365 78 405 72 440 110C475 150 490 245 505 292L680 298"/>
@@ -153,7 +154,7 @@ function ConditionsView(){
       <text className="enzyme-label" x="390" y="355" textAnchor="middle">Temperature</text>
       <text className="enzyme-label" x="28" y="190" transform="rotate(-90 28 190)">Enzyme activity</text>
       <text className="enzyme-note" x="520" y="130">high temperature can denature enzyme</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-enzyme-condition-notes">
       <p>At low temperature, enzyme-controlled reactions are slow because particles have less kinetic energy.</p>
       <p>Activity rises towards an optimum. For many human digestive enzymes this is close to body temperature, about 37 °C.</p>

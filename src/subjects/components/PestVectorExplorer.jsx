@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./pestVectorExplorer.css";
 
@@ -45,7 +46,7 @@ function RolesScene() {
 
 function MosquitoScene() {
   return (
-    <svg viewBox="0 0 980 520" role="img" aria-label="Standing water in containers supporting mosquito breeding near a home">
+    <ReviewedScienceDiagram site="PestVectorExplorer.jsx:48"><svg viewBox="0 0 980 520" role="img" aria-label="Standing water in containers supporting mosquito breeding near a home">
       <g transform="translate(45 100)">
         <path className="pv-house" d="M20 120L150 25L280 120V315H20Z"/>
         <rect className="pv-door" x="120" y="210" width="60" height="105" rx="5"/>
@@ -71,7 +72,7 @@ function MosquitoScene() {
         <path d="M-8-6Q-35-40-55-15M-8 6Q-35 40-55 15M5-8L25-35M5 8L25 35M30 0L58-8"/>
       </g>
       <text className="pv-small" x="490" y="485" textAnchor="middle">Standing water in containers gives mosquitoes a place to develop from egg to adult.</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
@@ -115,7 +116,7 @@ function RoutesScene() {
     <div className="spark-pest-route-visuals">
       {routes.map(route=>(
         <article key={route.key} className={"pv-route-card "+route.key}>
-          <svg className="pv-route-svg" viewBox="0 0 720 210" role="img" aria-label={route.title+" disease transmission route"}>
+          <ReviewedScienceDiagram site="PestVectorExplorer.jsx:118"><svg className="pv-route-svg" viewBox="0 0 720 210" role="img" aria-label={route.title+" disease transmission route"}>
             <defs>
               <marker id={"pv-route-arrow-"+route.key} markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
                 <path d="M0 0L9 4.5L0 9Z" className="pv-route-arrow-head"/>
@@ -146,7 +147,7 @@ function RoutesScene() {
 
             <text className="pv-route-title" x="20" y="28">{route.title}</text>
             <text className="pv-route-note" x="360" y="188" textAnchor="middle">{route.note}</text>
-          </svg>
+          </svg></ReviewedScienceDiagram>
         </article>
       ))}
     </div>

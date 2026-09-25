@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./spaceExplorationExplorer.css";
 
@@ -40,7 +41,7 @@ function ISSView(){
   return <div className="spark-iss-view">
     <div className="spark-space-toggle"><button type="button" className={mode==="float"?"active":""} onClick={()=>setMode("float")}>Why astronauts float</button><button type="button" className={mode==="health"?"active":""} onClick={()=>setMode("health")}>Body effects</button></div>
     {mode==="float"?<div className="spark-freefall-model">
-      <svg viewBox="0 0 820 420" role="img" aria-label="International Space Station and astronaut falling around Earth together">
+      <ReviewedScienceDiagram site="SpaceExplorationExplorer.jsx:43"><svg viewBox="0 0 820 420" role="img" aria-label="International Space Station and astronaut falling around Earth together">
         <circle className="se-earth" cx="350" cy="225" r="110"/>
         <ellipse className="se-orbit" cx="350" cy="225" rx="260" ry="145"/>
         <rect className="se-iss" x="575" y="100" width="80" height="28" rx="5"/>
@@ -49,7 +50,7 @@ function ISSView(){
         <path className="se-fall" d="M610 135Q520 175 470 220"/>
         <text className="se-label" x="350" y="230" textAnchor="middle">Earth</text>
         <text className="se-label" x="615" y="80" textAnchor="middle">ISS and crew in free fall</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
       <p>The ISS, astronauts and loose objects are all falling toward Earth together while moving sideways fast enough to keep missing the surface. This produces microgravity, not an absence of gravity.</p>
     </div>:<div className="spark-space-health">
       <article><span>BONE</span><h4>Reduced loading weakens bone</h4><p>Weight-bearing bones lose density in microgravity unless astronauts use countermeasures such as exercise.</p></article>
@@ -62,7 +63,7 @@ function ISSView(){
 
 function SuitView(){
   return <div className="spark-space-suit">
-    <svg className="spark-space-suit-svg" viewBox="0 0 620 640" role="img" aria-label="Extravehicular space suit showing pressure garment, helmet, oxygen and carbon dioxide life-support flow, thermal-control layers, gloves, boots and portable life-support backpack">
+    <ReviewedScienceDiagram site="SpaceExplorationExplorer.jsx:65"><svg className="spark-space-suit-svg" viewBox="0 0 620 640" role="img" aria-label="Extravehicular space suit showing pressure garment, helmet, oxygen and carbon dioxide life-support flow, thermal-control layers, gloves, boots and portable life-support backpack">
       <defs>
         <marker id="suit-flow-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
           <path d="M0 0L9 4.5L0 9Z" className="ssu-arrow-head"/>
@@ -112,7 +113,7 @@ function SuitView(){
       </g>
 
       <text className="ssu-caption" x="310" y="625" textAnchor="middle">A space suit is a wearable life-support system for work in near-vacuum conditions.</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-suit-cards">
       <article><b>Pressure</b><p>Space is almost a vacuum. The suit maintains pressure needed for normal body function and breathing.</p></article>
       <article><b>Oxygen</b><p>Life-support systems provide breathable oxygen and remove carbon dioxide.</p></article>

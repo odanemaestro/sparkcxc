@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./statesMatterExplorer.css";
 
@@ -7,7 +8,7 @@ function ParticleBox({state}){
   liquid:[{x:18,y:74},{x:36,y:72},{x:54,y:74},{x:72,y:72},{x:90,y:74},{x:28,y:56},{x:47,y:55},{x:66,y:57},{x:84,y:56},{x:38,y:38},{x:58,y:39},{x:77,y:41},{x:20,y:41}],
   gas:[{x:20,y:20},{x:78,y:25},{x:50,y:55},{x:98,y:80},{x:28,y:84},{x:95,y:18}]
  }[state]||[];
- return <svg viewBox="0 0 120 100" role="img" aria-label={state+" particle arrangement"}><rect x="5" y="5" width="110" height="90" className="sm-box"/>{positions.map((p,i)=><circle key={i} cx={p.x} cy={p.y} r="7" className="sm-particle"/>)}</svg>;
+ return <ReviewedScienceDiagram site="StatesMatterExplorer.jsx:10"><svg viewBox="0 0 120 100" role="img" aria-label={state+" particle arrangement"}><rect x="5" y="5" width="110" height="90" className="sm-box"/>{positions.map((p,i)=><circle key={i} cx={p.x} cy={p.y} r="7" className="sm-particle"/>)}</svg></ReviewedScienceDiagram>;
 }
 
 function StatesView(){
@@ -37,7 +38,7 @@ function ChangesView(){
  const liquidParticles=[{x:397,y:277},{x:420,y:274},{x:444,y:279},{x:468,y:272},{x:409,y:252},{x:435,y:250},{x:458,y:251},{x:420,y:229},{x:448,y:230}];
  const gasParticles=[{x:696,y:222},{x:778,y:236},{x:727,y:278},{x:806,y:292},{x:688,y:306},{x:799,y:205}];
  return <div className="spark-change-state">
-   <svg className="spark-state-change-svg" viewBox="0 0 920 520" role="img" aria-label="Changes of state between solid, liquid and gas showing melting, freezing, evaporation or boiling, condensation, sublimation and deposition">
+   <ReviewedScienceDiagram site="StatesMatterExplorer.jsx:40"><svg className="spark-state-change-svg" viewBox="0 0 920 520" role="img" aria-label="Changes of state between solid, liquid and gas showing melting, freezing, evaporation or boiling, condensation, sublimation and deposition">
     <defs>
       <marker id="sm-heat-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" className="sm-heat-head"/></marker>
       <marker id="sm-cool-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" className="sm-cool-head"/></marker>
@@ -80,7 +81,7 @@ function ChangesView(){
     <text className="sm-phase-label heat" x="460" y="79" textAnchor="middle">sublimation, solid → gas</text>
     <path className="sm-deposition-path" d="M725 344C658 462 262 462 195 344" markerEnd="url(#sm-cool-arrow)"/>
     <text className="sm-phase-label cool" x="460" y="459" textAnchor="middle">deposition, gas → solid</text>
-   </svg>
+   </svg></ReviewedScienceDiagram>
    <p>Heating supplies energy that increases particle motion and helps overcome attractive forces. Cooling removes energy, so particles move less and can come closer together. Sublimation and deposition bypass the liquid state.</p>
  </div>;
 }
@@ -95,12 +96,12 @@ function EverydayView(){
 
 function HeatingView(){
  return <div className="spark-heating-curve">
-   <svg viewBox="0 0 820 420" role="img" aria-label="Heating curve showing temperature plateaus during melting and boiling">
+   <ReviewedScienceDiagram site="StatesMatterExplorer.jsx:98"><svg viewBox="0 0 820 420" role="img" aria-label="Heating curve showing temperature plateaus during melting and boiling">
     <line className="hc-axis" x1="90" y1="340" x2="750" y2="340"/><line className="hc-axis" x1="90" y1="340" x2="90" y2="45"/>
     <path className="hc-lineplot" d="M100 305L220 245L355 245L475 150L610 150L730 70"/>
     <text className="hc-label" x="250" y="225">melting plateau</text><text className="hc-label" x="615" y="130">boiling plateau</text>
     <text className="hc-label" x="390" y="385">heat supplied / time</text><text className="hc-label" x="25" y="190" transform="rotate(-90 25 190)">temperature</text>
-   </svg>
+   </svg></ReviewedScienceDiagram>
    <p>During a phase change, supplied energy is used to overcome attractive forces between particles rather than immediately raising temperature. The temperature can therefore stay constant until the change is complete.</p>
  </div>;
 }

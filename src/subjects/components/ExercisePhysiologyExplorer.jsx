@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./exercisePhysiologyExplorer.css";
 
@@ -38,7 +39,7 @@ const VIEWS = {
 
 function AcuteScene() {
   return (
-    <svg viewBox="0 0 980 520" role="img" aria-label="Physiological responses during exercise">
+    <ReviewedScienceDiagram site="ExercisePhysiologyExplorer.jsx:41"><svg viewBox="0 0 980 520" role="img" aria-label="Physiological responses during exercise">
       <g transform="translate(355 80)">
         <circle className="ex-head" cx="135" cy="65" r="48" />
         <path className="ex-body" d="M135 115V285M135 165L40 235M135 165L235 210M135 285L55 410M135 285L240 390" />
@@ -56,7 +57,7 @@ function AcuteScene() {
       </g>
       <path className="ex-flow-arrow" d="M260 250H355M625 250H700" />
       <text className="ex-small" x="490" y="475" textAnchor="middle">more oxygen + glucose to muscles, faster removal of carbon dioxide and heat</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
@@ -65,7 +66,7 @@ function RecoveryGraph() {
   const py=p=>420-((p-60)/90)*340;
   const path=RECOVERY.pulse.map((p,i)=>(i?"L":"M")+px(RECOVERY.minutes[i]).toFixed(1)+" "+py(p).toFixed(1)).join(" ");
   return (
-    <svg viewBox="0 0 960 520" role="img" aria-label="Pulse recovery after exercise using CSEC practice data">
+    <ReviewedScienceDiagram site="ExercisePhysiologyExplorer.jsx:68"><svg viewBox="0 0 960 520" role="img" aria-label="Pulse recovery after exercise using CSEC practice data">
       <line className="ex-axis" x1="90" y1="80" x2="90" y2="420"/>
       <line className="ex-axis" x1="90" y1="420" x2="880" y2="420"/>
       {[60,80,100,120,140].map(v=>(
@@ -86,7 +87,7 @@ function RecoveryGraph() {
       <text className="ex-small" x="725" y={py(72)-10}>resting pulse 72 bpm</text>
       <text className="ex-axis-label" x="485" y="490" textAnchor="middle">Time after exercise / minutes</text>
       <text className="ex-axis-label" x="24" y="250" textAnchor="middle" transform="rotate(-90 24 250)">Pulse rate / beats per minute</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

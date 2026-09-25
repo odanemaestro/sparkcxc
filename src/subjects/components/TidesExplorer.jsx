@@ -1,9 +1,10 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./tidesExplorer.css";
 
 function BulgeView(){
   return <div className="spark-tide-bulges">
-    <svg viewBox="0 0 920 500" role="img" aria-label="Earth with near-side and far-side tidal bulges aligned with the Moon and low-tide regions at right angles">
+    <ReviewedScienceDiagram site="TidesExplorer.jsx:6"><svg viewBox="0 0 920 500" role="img" aria-label="Earth with near-side and far-side tidal bulges aligned with the Moon and low-tide regions at right angles">
       <defs>
         <linearGradient id="td-ocean-gradient" x1="0" x2="1">
           <stop offset="0%" stopColor="#b9ddea"/>
@@ -54,7 +55,7 @@ function BulgeView(){
       </g>
 
       <text className="td-caption" x="405" y="486" textAnchor="middle">The difference in lunar gravitational pull across Earth produces two broad tidal bulges.</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-tide-bulge-notes">
       <article><b>Two high tides</b><span>Water forms broad bulges on the side facing the Moon and on the opposite side.</span></article>
       <article><b>Two low tides</b><span>Areas roughly 90° from the Earth-Moon line lie between the bulges and experience lower sea level.</span></article>
@@ -69,7 +70,7 @@ function SpringNeapView(){
   const spring=type==="spring";
   return <div className="spark-spring-neap">
     <div className="spark-tide-toggle"><button type="button" className={spring?"active":""} onClick={()=>setType("spring")}>Spring tide</button><button type="button" className={!spring?"active":""} onClick={()=>setType("neap")}>Neap tide</button></div>
-    <svg viewBox="0 0 860 430" role="img" aria-label={spring?"Sun Earth and Moon aligned with a large tidal range for spring tide":"Sun and Moon at right angles with a smaller tidal range for neap tide"}>
+    <ReviewedScienceDiagram site="TidesExplorer.jsx:72"><svg viewBox="0 0 860 430" role="img" aria-label={spring?"Sun Earth and Moon aligned with a large tidal range for spring tide":"Sun and Moon at right angles with a smaller tidal range for neap tide"}>
       <circle className="sn-sun" cx="110" cy="215" r="58"/>
 
       {spring
@@ -95,7 +96,7 @@ function SpringNeapView(){
       <text className="sn-label" x="110" y="300" textAnchor="middle">Sun</text>
       <text className="sn-label" x="430" y="222" textAnchor="middle">Earth</text>
       <text className="sn-label" x={spring?715:485} y={spring?285:62}>Moon</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>{spring?"At new moon and full moon, the Sun, Earth and Moon are approximately aligned. Their tidal effects reinforce each other, producing the greatest tidal range.":"At first and last quarter, the Sun and Moon pull at roughly right angles. Their tidal effects partly oppose each other, producing the smallest tidal range."}</p>
   </div>;
 }
@@ -111,7 +112,7 @@ function TimingView(){
 
 function CoastView(){
   return <div className="spark-tide-coast">
-    <svg className="spark-tide-coast-svg" viewBox="0 0 1040 610" role="img" aria-label="Comparison of a mangrove-fringed shore and a sea-wall shore showing incoming wave energy, sediment trapping, reflected wave energy, toe scour, and the intertidal zone exposed between high and low tide">
+    <ReviewedScienceDiagram site="TidesExplorer.jsx:114"><svg className="spark-tide-coast-svg" viewBox="0 0 1040 610" role="img" aria-label="Comparison of a mangrove-fringed shore and a sea-wall shore showing incoming wave energy, sediment trapping, reflected wave energy, toe scour, and the intertidal zone exposed between high and low tide">
       <defs>
         <marker id="coast-wave-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
           <path d="M0 0L9 4.5L0 9Z" className="tc-arrow-head"/>
@@ -174,7 +175,7 @@ function CoastView(){
       </g>
 
       <text className="tc-caption" x="520" y="592" textAnchor="middle">Coastal protection works by changing how wave energy and sediment move along the shore.</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
 
     <article><span>LOW TIDE</span><h4>More shore exposed</h4><p>Rock pools, reefs and shellfish areas become more accessible when the sea level falls.</p></article>
     <article><span>COASTAL EROSION</span><h4>Waves and tides move sediment</h4><p>Repeated wave action and tidal currents can remove sand and weaken coastlines.</p></article>
@@ -185,7 +186,7 @@ function CoastView(){
 
 function TsunamiView(){
   return <div className="spark-tsunami-view">
-    <svg className="spark-tsunami-svg" viewBox="0 0 1040 560" role="img" aria-label="Tsunami cross-section showing sudden sea-floor displacement, long low waves travelling across deep water, wave slowing and increasing in height in shallow water, and coastal inundation">
+    <ReviewedScienceDiagram site="TidesExplorer.jsx:188"><svg className="spark-tsunami-svg" viewBox="0 0 1040 560" role="img" aria-label="Tsunami cross-section showing sudden sea-floor displacement, long low waves travelling across deep water, wave slowing and increasing in height in shallow water, and coastal inundation">
       <defs>
         <marker id="tsunami-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
           <path d="M0 0L9 4.5L0 9Z" className="ts-arrow-head"/>
@@ -230,7 +231,7 @@ function TsunamiView(){
       <text className="ts-small" x="930" y="370" textAnchor="middle">an unusual rapid sea withdrawal can be a natural warning sign</text>
 
       <text className="ts-caption" x="520" y="535" textAnchor="middle">A tsunami is caused by sudden water displacement. It is not part of the regular gravitational tide cycle.</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
 
     <div className="spark-tsunami-sequence">
       <article><span>1</span><b>Water displaced</b><p>An undersea earthquake, landslide or volcanic eruption can suddenly displace a large volume of water.</p></article>

@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./humanExcretionMechanismsExplorer.css";
 
@@ -31,7 +32,7 @@ const VIEWS = {
 
 function KidneyScene() {
   return (
-    <svg viewBox="0 0 980 560" role="img" aria-label="Kidney and nephron showing gross kidney anatomy, ultrafiltration, reabsorption and urine formation">
+    <ReviewedScienceDiagram site="HumanExcretionMechanismsExplorer.jsx:34"><svg viewBox="0 0 980 560" role="img" aria-label="Kidney and nephron showing gross kidney anatomy, ultrafiltration, reabsorption and urine formation">
       <g className="hex-csec-kidney" transform="translate(35 35) scale(1.02 1.15)">
         <path className="hex-kidney" d="M185 35Q86 18 70 132Q55 242 132 316Q187 368 249 325Q286 298 267 253Q247 209 263 170Q279 132 315 101Q306 48 238 36Q210 31 185 35Z" />
         <path className="hex-kidney-cortex-boundary" d="M184 60Q105 50 94 140Q86 224 145 282Q188 323 233 292Q258 274 246 243" />
@@ -97,13 +98,13 @@ function KidneyScene() {
         <text className="hex-process" x="865" y="485" textAnchor="end">3. Urine</text>
         <text className="hex-small" x="865" y="508" textAnchor="end">urea + excess water + salts</text>
       </g>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function AdhScene() {
   return (
-    <svg viewBox="0 0 980 520" role="img" aria-label="ADH response to water loss and high water intake">
+    <ReviewedScienceDiagram site="HumanExcretionMechanismsExplorer.jsx:106"><svg viewBox="0 0 980 520" role="img" aria-label="ADH response to water loss and high water intake">
       <text className="hex-heading" x="250" y="45" textAnchor="middle">Water loss, hot day or exercise</text>
       <text className="hex-heading" x="730" y="45" textAnchor="middle">Large water intake</text>
 
@@ -140,13 +141,13 @@ function AdhScene() {
         <text className="hex-small" x="615" y="430" textAnchor="middle">larger volume</text>
         <text className="hex-small" x="615" y="450" textAnchor="middle">dilute urine</text>
       </g>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function SkinScene() {
   return (
-    <svg viewBox="0 0 980 540" role="img" aria-label="Cross-section of human skin showing epidermis, dermis, subcutaneous fat, hair follicle, sebaceous gland, sweat gland, blood vessels and sensory nerves">
+    <ReviewedScienceDiagram site="HumanExcretionMechanismsExplorer.jsx:149"><svg viewBox="0 0 980 540" role="img" aria-label="Cross-section of human skin showing epidermis, dermis, subcutaneous fat, hair follicle, sebaceous gland, sweat gland, blood vessels and sensory nerves">
       <path className="hex-skin-surface" d="M80 95Q180 78 280 94T480 94T680 94T900 92" />
       <path className="hex-epidermis" d="M80 95Q180 78 280 94T480 94T680 94T900 92V165H80Z" />
       <rect className="hex-dermis" x="80" y="165" width="820" height="225" />
@@ -197,13 +198,13 @@ function SkinScene() {
       <text className="hex-process" x="500" y="520" textAnchor="middle">
         Sweat reaches the surface through a duct; evaporation removes heat from the body
       </text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function LungsScene() {
   return (
-    <svg viewBox="0 0 980 520" role="img" aria-label="Lung alveolus showing carbon dioxide and water vapour leaving blood">
+    <ReviewedScienceDiagram site="HumanExcretionMechanismsExplorer.jsx:206"><svg viewBox="0 0 980 520" role="img" aria-label="Lung alveolus showing carbon dioxide and water vapour leaving blood">
       <path className="hex-airway" d="M470 40V145Q470 175 420 205M470 145Q470 175 520 205" />
       {[330,410,490,570,650].map((x,index)=>(
         <circle key={x} className="hex-alveolus" cx={x} cy={285 + (index%2)*28} r="70" />
@@ -216,13 +217,13 @@ function LungsScene() {
       <text className="hex-process" x="250" y="470">CO2 diffuses from blood into alveoli</text>
       <text className="hex-process" x="610" y="470">water vapour is also lost</text>
       <text className="hex-label" x="470" y="55" textAnchor="middle">exhaled air</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function DialysisScene() {
   return (
-    <svg viewBox="0 0 980 520" role="img" aria-label="Dialysis showing blood and dialysis fluid separated by a partially permeable membrane">
+    <ReviewedScienceDiagram site="HumanExcretionMechanismsExplorer.jsx:225"><svg viewBox="0 0 980 520" role="img" aria-label="Dialysis showing blood and dialysis fluid separated by a partially permeable membrane">
       <rect className="hex-dialysis-machine" x="80" y="80" width="820" height="350" rx="25" />
       <path className="hex-blood-tube" d="M135 150H390Q455 150 455 220V320Q455 365 390 365H135" />
       <path className="hex-dialysis-fluid" d="M535 150H845M535 365H845" />
@@ -235,7 +236,7 @@ function DialysisScene() {
       <text className="hex-small" x="685" y="245" textAnchor="middle">normal glucose concentration</text>
       <text className="hex-small" x="685" y="280" textAnchor="middle">normal salt concentration</text>
       <text className="hex-process" x="490" y="480" textAnchor="middle">urea diffuses out, useful glucose is retained</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

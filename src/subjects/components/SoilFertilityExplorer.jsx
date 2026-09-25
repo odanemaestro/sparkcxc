@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./soilFertilityExplorer.css";
 
@@ -10,7 +11,7 @@ const TABS = [
 
 function TextureScene() {
   return (
-    <svg viewBox="0 0 960 500" role="img" aria-label="Comparison of sandy, clay and loam soil structure">
+    <ReviewedScienceDiagram site="SoilFertilityExplorer.jsx:13"><svg viewBox="0 0 960 500" role="img" aria-label="Comparison of sandy, clay and loam soil structure">
       <text className="sf-title" x="160" y="42" textAnchor="middle">Sandy soil</text>
       <text className="sf-title" x="480" y="42" textAnchor="middle">Clay soil</text>
       <text className="sf-title" x="800" y="42" textAnchor="middle">Loam soil</text>
@@ -45,7 +46,7 @@ function TextureScene() {
       <path className="sf-water-arrow medium" d="M800 80V330" />
       <text className="sf-small" x="800" y="432" textAnchor="middle">mixed particles plus humus</text>
       <text className="sf-small" x="800" y="456" textAnchor="middle">good drainage and retention</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
@@ -56,7 +57,7 @@ function DrainageScene() {
     {x:790,label:"Loam",drained:48,retained:52,level:355},
   ];
   return (
-    <svg viewBox="0 0 960 540" role="img" aria-label="Soil drainage and water retention investigation">
+    <ReviewedScienceDiagram site="SoilFertilityExplorer.jsx:59"><svg viewBox="0 0 960 540" role="img" aria-label="Soil drainage and water retention investigation">
       <text className="sf-note" x="480" y="36" textAnchor="middle">Equal soil mass + 100 cm3 water + equal drainage time</text>
       {sets.map(item => (
         <g key={item.label}>
@@ -70,13 +71,13 @@ function DrainageScene() {
           <text className="sf-small" x={item.x} y="392" textAnchor="middle">{item.retained} cm3 retained</text>
         </g>
       ))}
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function ProfileScene() {
   return (
-    <svg viewBox="0 0 960 540" role="img" aria-label="Soil profile showing topsoil, subsoil, weathered rock and bedrock">
+    <ReviewedScienceDiagram site="SoilFertilityExplorer.jsx:79"><svg viewBox="0 0 960 540" role="img" aria-label="Soil profile showing topsoil, subsoil, weathered rock and bedrock">
       <rect className="sf-sky" x="40" y="40" width="880" height="100" rx="18" />
       <path className="sf-grass" d="M40 140H920" />
       <rect className="sf-topsoil" x="40" y="140" width="880" height="105" />
@@ -98,13 +99,13 @@ function ProfileScene() {
       <text className="sf-layer-label" x="70" y="395">WEATHERED PARENT MATERIAL</text>
       <text className="sf-layer-label light" x="70" y="487">BEDROCK</text>
       <text className="sf-earthworm-label light" x="690" y="160">earthworm burrow improves aeration and drainage</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function FertilityScene() {
   return (
-    <svg viewBox="0 0 960 600" role="img" aria-label="Soil fertility processes including nitrogen-fixing bacteria, decomposers, nitrifying bacteria and denitrifying bacteria">
+    <ReviewedScienceDiagram site="SoilFertilityExplorer.jsx:107"><svg viewBox="0 0 960 600" role="img" aria-label="Soil fertility processes including nitrogen-fixing bacteria, decomposers, nitrifying bacteria and denitrifying bacteria">
       <text className="sf-title" x="480" y="38" textAnchor="middle">Nitrogen and organic matter in fertile soil</text>
 
       <ellipse className="sf-atmosphere" cx="150" cy="110" rx="105" ry="52" />
@@ -143,7 +144,7 @@ function FertilityScene() {
       <path className="sf-process-arrow warning" d="M120 365Q70 250 105 165" />
       <path className="sf-process-arrow" d="M220 135Q300 210 345 375" />
       <text className="sf-small" x="278" y="236">nitrogen fixation</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

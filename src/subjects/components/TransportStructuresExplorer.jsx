@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useMemo, useState } from "react";
 import "./transportStructuresExplorer.css";
 
@@ -55,7 +56,7 @@ function BloodScene({selected}) {
   return (
     <div className="spark-transport-structures-blood-layout">
       <div className="spark-transport-structures-stage">
-        <svg viewBox="0 0 900 500" role="img" aria-label="Blood flowing inside a vessel showing plasma, red blood cells, white blood cells and platelets">
+        <ReviewedScienceDiagram site="TransportStructuresExplorer.jsx:58"><svg viewBox="0 0 900 500" role="img" aria-label="Blood flowing inside a vessel showing plasma, red blood cells, white blood cells and platelets">
           <defs>
             <linearGradient id="ts-plasma-gradient" x1="0" x2="1">
               <stop offset="0%" stopColor="#f8e4b9" />
@@ -108,7 +109,7 @@ function BloodScene({selected}) {
             <text x="430" y="468">plasma is the liquid transport medium</text>
             <text x="708" y="468">formed elements are suspended in plasma</text>
           </g>
-        </svg>
+        </svg></ReviewedScienceDiagram>
       </div>
       <aside>
         <span>Selected component</span>
@@ -129,7 +130,7 @@ function VesselScene() {
   return (
     <div className="spark-transport-structures-vessels">
       <div className="spark-vessel-network-card">
-        <svg viewBox="0 0 1040 460" role="img" aria-label="Blood vessel pathway from artery through arteriole and capillary bed to venule and vein">
+        <ReviewedScienceDiagram site="TransportStructuresExplorer.jsx:132"><svg viewBox="0 0 1040 460" role="img" aria-label="Blood vessel pathway from artery through arteriole and capillary bed to venule and vein">
           <defs>
             <linearGradient id="ts-artery-flow" x1="0" x2="1">
               <stop offset="0%" stopColor="#c94e57" />
@@ -193,38 +194,38 @@ function VesselScene() {
             <text x="450" y="420">O₂ + nutrients to tissues</text>
             <text x="585" y="420">CO₂ + wastes to blood</text>
           </g>
-        </svg>
+        </svg></ReviewedScienceDiagram>
       </div>
 
       <div className="spark-vessel-cross-sections">
         <article>
-          <svg viewBox="0 0 260 240" role="img" aria-label="Artery cross-section with thick muscular elastic wall and narrow lumen">
+          <ReviewedScienceDiagram site="TransportStructuresExplorer.jsx:201"><svg viewBox="0 0 260 240" role="img" aria-label="Artery cross-section with thick muscular elastic wall and narrow lumen">
             <circle className="ts-artery-wall outer" cx="130" cy="112" r="88" />
             <circle className="ts-artery-wall muscle" cx="130" cy="112" r="63" />
             <circle className="ts-lumen artery" cx="130" cy="112" r="31" />
             <text className="ts-vessel-title" x="130" y="224" textAnchor="middle">Artery</text>
-          </svg>
+          </svg></ReviewedScienceDiagram>
           <b>Thick muscular, elastic wall</b><span>Relatively narrow lumen for high-pressure blood leaving the heart.</span>
         </article>
 
         <article>
-          <svg viewBox="0 0 260 240" role="img" aria-label="Vein cross-section with thinner wall wide lumen and valve">
+          <ReviewedScienceDiagram site="TransportStructuresExplorer.jsx:211"><svg viewBox="0 0 260 240" role="img" aria-label="Vein cross-section with thinner wall wide lumen and valve">
             <circle className="ts-vein-wall" cx="130" cy="112" r="80" />
             <circle className="ts-lumen vein" cx="130" cy="112" r="60" />
             <path className="ts-valve" d="M105 95Q130 118 155 95M105 129Q130 106 155 129" />
             <text className="ts-vessel-title" x="130" y="224" textAnchor="middle">Vein</text>
-          </svg>
+          </svg></ReviewedScienceDiagram>
           <b>Thinner wall, wider lumen, valves</b><span>Returns blood at lower pressure and valves prevent backflow.</span>
         </article>
 
         <article>
-          <svg viewBox="0 0 260 240" role="img" aria-label="Capillary cross-section one endothelial cell thick with a red blood cell close to the wall">
+          <ReviewedScienceDiagram site="TransportStructuresExplorer.jsx:221"><svg viewBox="0 0 260 240" role="img" aria-label="Capillary cross-section one endothelial cell thick with a red blood cell close to the wall">
             <circle className="ts-capillary-wall" cx="130" cy="112" r="47" />
             <circle className="ts-lumen capillary" cx="130" cy="112" r="36" />
             <ellipse className="ts-mini-rbc" cx="130" cy="112" rx="26" ry="15" />
             <ellipse className="ts-mini-rbc-centre" cx="130" cy="112" rx="12" ry="5" />
             <text className="ts-vessel-title" x="130" y="224" textAnchor="middle">Capillary</text>
-          </svg>
+          </svg></ReviewedScienceDiagram>
           <b>Wall one cell thick</b><span>Very short diffusion distance for exchange with body tissues.</span>
         </article>
       </div>
@@ -243,7 +244,7 @@ function CirculationScene({phase}) {
   return (
     <div className="spark-transport-structures-circulation">
       <div className="spark-transport-structures-stage">
-        <svg viewBox="0 0 900 540" role="img" aria-label={"Double circulation and " + phaseInfo.title}>
+        <ReviewedScienceDiagram site="TransportStructuresExplorer.jsx:246"><svg viewBox="0 0 900 540" role="img" aria-label={"Double circulation and " + phaseInfo.title}>
           <g className="ts-lungs" transform="translate(450 58)">
             <ellipse cx="-62" cy="0" rx="48" ry="66" />
             <ellipse cx="62" cy="0" rx="48" ry="66" />
@@ -302,7 +303,7 @@ function CirculationScene({phase}) {
           <text className="ts-phase-label" x="450" y="388" textAnchor="middle">
             {phaseInfo.title}
           </text>
-        </svg>
+        </svg></ReviewedScienceDiagram>
       </div>
       <aside>
         <span>Heartbeat phase</span>
@@ -323,7 +324,7 @@ function PlantTransportScene() {
   return (
     <div className="spark-transport-structures-plants">
       <div className="spark-transport-structures-stage">
-        <svg viewBox="0 0 900 500" role="img" aria-label="Comparison of xylem and phloem transport in a flowering plant">
+        <ReviewedScienceDiagram site="TransportStructuresExplorer.jsx:326"><svg viewBox="0 0 900 500" role="img" aria-label="Comparison of xylem and phloem transport in a flowering plant">
           <g transform="translate(255 55)">
             <rect className="ts-xylem-tube" x="0" y="0" width="150" height="330" rx="16" />
             {[55,110,165,220,275].map(y=><line key={y} className="ts-xylem-ring" x1="5" y1={y} x2="145" y2={y} />)}
@@ -343,7 +344,7 @@ function PlantTransportScene() {
             <text className="ts-vessel-note" x="75" y="425" textAnchor="middle">moves to sources and sinks</text>
           </g>
           <text className="ts-label" x="450" y="475" textAnchor="middle">xylem vessels are hollow and lignified; phloem has living sieve tubes with companion cells</text>
-        </svg>
+        </svg></ReviewedScienceDiagram>
       </div>
       <div className="spark-transport-structures-ringing">
         <strong>Why ringing can kill a tree</strong>

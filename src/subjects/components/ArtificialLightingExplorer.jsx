@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./artificialLightingExplorer.css";
 
@@ -29,7 +30,7 @@ function ShadowView(){
   const [extended,setExtended]=useState(false);
   return <div className="spark-light-shadow">
     <div className="spark-shadow-toggle"><button type="button" className={!extended?"active":""} onClick={()=>setExtended(false)}>Point source</button><button type="button" className={extended?"active":""} onClick={()=>setExtended(true)}>Extended source</button></div>
-    <svg viewBox="0 0 860 430" role="img" aria-label={extended?"Extended light source produces umbra and penumbra":"Point light source produces a sharp shadow"}>
+    <ReviewedScienceDiagram site="ArtificialLightingExplorer.jsx:32"><svg viewBox="0 0 860 430" role="img" aria-label={extended?"Extended light source produces umbra and penumbra":"Point light source produces a sharp shadow"}>
       {extended?<rect className="ls-source extended" x="70" y="85" width="38" height="205" rx="18"/>:<circle className="ls-source point" cx="90" cy="190" r="23"/>}
       <rect className="ls-object" x="390" y="120" width="55" height="145" rx="10"/>
       <rect className="ls-screen" x="735" y="55" width="18" height="280" rx="4"/>
@@ -44,7 +45,7 @@ function ShadowView(){
         <text className="ls-label" x="635" y="210">sharp shadow</text>
       </>}
       <text className="ls-note" x="90" y="365" textAnchor="middle">{extended?"long source":"small source"}</text><text className="ls-note" x="417" y="365" textAnchor="middle">opaque object</text><text className="ls-note" x="744" y="365" textAnchor="middle">screen</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>{extended?"A fluorescent tube behaves as an extended source. Different parts of the source are blocked differently, producing a penumbra and a softer shadow edge.":"A small point source sends light from essentially one position, so the shadow edge is sharp with little penumbra."}</p>
   </div>;
 }

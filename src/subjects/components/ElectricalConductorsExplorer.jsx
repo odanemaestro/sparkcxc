@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./electricalConductorsExplorer.css";
 
@@ -18,7 +19,7 @@ function TesterView(){
   return <div className="spark-conductor-tester">
     <div className="spark-conductor-buttons">{MATERIALS.map(row=><button type="button" key={row.id} className={id===row.id?"active":""} onClick={()=>setId(row.id)}>{row.name}</button>)}</div>
     <div className="spark-conductor-circuit">
-      <svg viewBox="0 0 760 350" role="img" aria-label={"Test circuit for "+item.name}>
+      <ReviewedScienceDiagram site="ElectricalConductorsExplorer.jsx:21"><svg viewBox="0 0 760 350" role="img" aria-label={"Test circuit for "+item.name}>
         <line className="ec-wire" x1="120" y1="175" x2="230" y2="175"/>
         <line className="ec-wire" x1="530" y1="175" x2="640" y2="175"/>
         <line className="ec-wire" x1="120" y1="175" x2="120" y2="280"/>
@@ -38,7 +39,7 @@ function TesterView(){
         <rect className={"ec-test-material "+item.class.toLowerCase()} x="230" y="150" width="300" height="50" rx="12"/>
         <text className="ec-material-label" x="380" y="181" textAnchor="middle">{item.name}</text>
         <text className="ec-lamp-label" x="380" y="20" textAnchor="middle">{item.lamp===true?"lamp lights":item.lamp===false?"lamp stays off":"semiconductor response depends on device conditions"}</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
       <div className="spark-conductor-result"><strong>{item.class}</strong><p>{item.why}</p></div>
     </div>
   </div>;
@@ -54,7 +55,7 @@ function CategoriesView(){
 
 function WireView(){
   return <div className="spark-wire-design">
-    <svg viewBox="0 0 800 360" role="img" aria-label="Copper electrical wire with plastic insulation">
+    <ReviewedScienceDiagram site="ElectricalConductorsExplorer.jsx:57"><svg viewBox="0 0 800 360" role="img" aria-label="Copper electrical wire with plastic insulation">
       <rect className="wd-plastic" x="120" y="115" width="560" height="130" rx="65"/>
       <rect className="wd-copper" x="190" y="150" width="420" height="60" rx="30"/>
       <line className="wd-callout" x1="325" y1="150" x2="245" y2="75"/>
@@ -62,7 +63,7 @@ function WireView(){
       <line className="wd-callout" x1="575" y1="120" x2="650" y2="65"/>
       <text className="wd-label" x="660" y="60">plastic insulation</text>
       <text className="wd-note" x="400" y="305" textAnchor="middle">conducting core carries current, insulating cover protects users and nearby conductors</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-wire-cards">
       <article><b>Household wiring</b><p>Copper conducts well. Plastic insulation helps prevent shock and short circuits.</p></article>
       <article><b>Overhead cables</b><p>Aluminium is less dense than copper, so long cable spans place less weight on supports.</p></article>
@@ -75,7 +76,7 @@ function WaterView(){
   const ions=[[660,210,"+"],[710,250,"−"],[760,205,"+"],[805,270,"−"],[685,315,"−"],[750,330,"+"],[820,225,"+"]];
 
   return <div className="spark-water-conductivity-view">
-    <svg className="spark-water-ion-svg" viewBox="0 0 980 520" role="img" aria-label="Comparison of very pure water and tap water in conductivity circuits, showing few charge carriers and an unlit lamp in pure water, versus dissolved positive and negative ions carrying charge and a lit lamp in tap water">
+    <ReviewedScienceDiagram site="ElectricalConductorsExplorer.jsx:78"><svg className="spark-water-ion-svg" viewBox="0 0 980 520" role="img" aria-label="Comparison of very pure water and tap water in conductivity circuits, showing few charge carriers and an unlit lamp in pure water, versus dissolved positive and negative ions carrying charge and a lit lamp in tap water">
       <defs>
         <marker id="ion-flow-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
           <path d="M0 0L9 4.5L0 9Z" className="wi-arrow-head"/>
@@ -121,7 +122,7 @@ function WaterView(){
       </g>
 
       <text className="wi-caption" x="490" y="505" textAnchor="middle">Electrical conduction in water depends strongly on the concentration of mobile ions.</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>Very pure water contains very few ions and is therefore a poor conductor. Tap water and many natural waters contain dissolved ionic substances. Positive and negative ions move through the solution and allow electric current to pass more readily.</p>
   </div>;
 }

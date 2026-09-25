@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./populationGrowthExplorer.css";
 
@@ -19,7 +20,7 @@ function PopulationGraph() {
   ).join(" ");
 
   return (
-    <svg viewBox="0 0 930 500" role="img" aria-label="CSEC practice population graph from 1960 to 2020">
+    <ReviewedScienceDiagram site="PopulationGrowthExplorer.jsx:22"><svg viewBox="0 0 930 500" role="img" aria-label="CSEC practice population graph from 1960 to 2020">
       <line className="pg-axis" x1="85" y1="65" x2="85" y2="415" />
       <line className="pg-axis" x1="85" y1="415" x2="845" y2="415" />
       {[0,5,10,15,20,25,30].map(value => (
@@ -38,7 +39,7 @@ function PopulationGraph() {
       {POPULATION.map(row => <circle key={row.year} className="pg-point" cx={px(row.year)} cy={py(row.value)} r="7" />)}
       <text className="pg-axis-title" x="465" y="480" textAnchor="middle">Year</text>
       <text className="pg-axis-title" x="22" y="240" textAnchor="middle" transform="rotate(-90 22 240)">Population / millions</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

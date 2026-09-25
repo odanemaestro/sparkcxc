@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./momentumConservationExplorer.css";
 
@@ -25,7 +26,7 @@ function CollisionView(){
       <label>Initial speed, m/s<input type="number" value={v1} onChange={e=>setV1(e.target.value)}/></label>
       <label>Stationary trolley mass, kg<input type="number" value={m2} onChange={e=>setM2(e.target.value)}/></label>
     </div>
-    <svg className="spark-momentum-collision-diagram" viewBox="0 0 860 420" role="img" aria-label="Perfectly inelastic trolley collision showing momentum before and after the trolleys stick together">
+    <ReviewedScienceDiagram site="MomentumConservationExplorer.jsx:28"><svg className="spark-momentum-collision-diagram" viewBox="0 0 860 420" role="img" aria-label="Perfectly inelastic trolley collision showing momentum before and after the trolleys stick together">
       <defs><marker id="mom-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" className="mc-arrow-head"/></marker></defs>
       <text className="mc-title" x="45" y="45">BEFORE</text>
       <line className="mc-track" x1="60" y1="175" x2="800" y2="175"/>
@@ -54,14 +55,14 @@ function CollisionView(){
       <line className="mc-velocity" x1="335" y1="278" x2="520" y2="278" markerEnd="url(#mom-arrow)"/>
       <text className="mc-small" x="428" y="260" textAnchor="middle">v = {final.toFixed(2)} m/s</text>
       <text className="mc-equation" x="690" y="277" textAnchor="middle">m₁v₁ = (m₁ + m₂)v</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <strong>If they stick together: final speed = {final.toFixed(2)} m/s</strong>
     <p>Total momentum before equals total momentum after when external impulse is negligible.</p>
   </div>;
 }
 
 function MomentumExampleDiagram({example}){
-  if(example==="rocket") return <svg className="spark-momentum-example-diagram" viewBox="0 0 760 300" role="img" aria-label="Rocket moving forward while exhaust gases move backward with opposite momentum">
+  if(example==="rocket") return <ReviewedScienceDiagram site="MomentumConservationExplorer.jsx:64"><svg className="spark-momentum-example-diagram" viewBox="0 0 760 300" role="img" aria-label="Rocket moving forward while exhaust gases move backward with opposite momentum">
     <defs><marker id="mom-example-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" className="mc-arrow-head"/></marker></defs>
     <path className="mx-rocket" d="M410 150L330 105L250 118L210 150L250 182L330 195Z"/>
     <circle className="mx-window" cx="330" cy="150" r="18"/>
@@ -70,8 +71,8 @@ function MomentumExampleDiagram({example}){
     <line className="mx-backward" x1="205" y1="220" x2="65" y2="220" markerEnd="url(#mom-example-arrow)"/>
     <text className="mx-label" x="520" y="91" textAnchor="middle">rocket momentum forward</text>
     <text className="mx-label" x="140" y="249" textAnchor="middle">gas momentum backward</text>
-  </svg>;
-  if(example==="balls") return <svg className="spark-momentum-example-diagram" viewBox="0 0 760 300" role="img" aria-label="Equal billiard balls showing momentum transferred from the moving ball to the stationary ball">
+  </svg></ReviewedScienceDiagram>;
+  if(example==="balls") return <ReviewedScienceDiagram site="MomentumConservationExplorer.jsx:74"><svg className="spark-momentum-example-diagram" viewBox="0 0 760 300" role="img" aria-label="Equal billiard balls showing momentum transferred from the moving ball to the stationary ball">
     <defs><marker id="mom-ball-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" className="mc-arrow-head"/></marker></defs>
     <text className="mx-label" x="115" y="48">before</text>
     <circle className="mx-ball moving" cx="185" cy="105" r="36"/><circle className="mx-ball" cx="360" cy="105" r="36"/>
@@ -80,8 +81,8 @@ function MomentumExampleDiagram({example}){
     <circle className="mx-ball stopped" cx="185" cy="238" r="36"/><circle className="mx-ball moving" cx="360" cy="238" r="36"/>
     <line className="mx-forward" x1="393" y1="195" x2="525" y2="195" markerEnd="url(#mom-ball-arrow)"/>
     <text className="mx-small" x="185" y="286" textAnchor="middle">first ball stops</text><text className="mx-small" x="445" y="286" textAnchor="middle">second ball carries momentum</text>
-  </svg>;
-  return <svg className="spark-momentum-example-diagram" viewBox="0 0 760 300" role="img" aria-label="Two skaters pushing apart with equal and opposite momenta">
+  </svg></ReviewedScienceDiagram>;
+  return <ReviewedScienceDiagram site="MomentumConservationExplorer.jsx:84"><svg className="spark-momentum-example-diagram" viewBox="0 0 760 300" role="img" aria-label="Two skaters pushing apart with equal and opposite momenta">
     <defs><marker id="mom-skater-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" className="mc-arrow-head"/></marker></defs>
     <circle className="mx-head" cx="290" cy="103" r="24"/><path className="mx-person" d="M290 128V196M290 150L245 173M290 150L335 173M290 196L255 245M290 196L325 245"/>
     <circle className="mx-head" cx="470" cy="103" r="24"/><path className="mx-person" d="M470 128V196M470 150L425 173M470 150L515 173M470 196L435 245M470 196L505 245"/>
@@ -89,7 +90,7 @@ function MomentumExampleDiagram({example}){
     <line className="mx-forward" x1="512" y1="73" x2="670" y2="73" markerEnd="url(#mom-skater-arrow)"/>
     <text className="mx-label" x="165" y="54" textAnchor="middle">momentum left</text><text className="mx-label" x="595" y="54" textAnchor="middle">momentum right</text>
     <text className="mx-small" x="380" y="280" textAnchor="middle">total momentum remains zero if they start at rest</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 }
 
 function PairView(){

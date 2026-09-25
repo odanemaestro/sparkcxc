@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useMemo, useState } from "react";
 import "./menstrualCycleExplorer.css";
 
@@ -19,7 +20,7 @@ function Timeline({ day }) {
   const y = 245 + Math.sin(radians) * 142;
 
   return (
-    <svg viewBox="0 0 520 500" role="img" aria-label="Typical 28-day menstrual cycle timeline">
+    <ReviewedScienceDiagram site="MenstrualCycleExplorer.jsx:22"><svg viewBox="0 0 520 500" role="img" aria-label="Typical 28-day menstrual cycle timeline">
       <circle className="mc-ring-base" cx="260" cy="245" r="142" />
       <path className="mc-ring menstruation" d="M260 103 A142 142 0 0 1 387 182" />
       <path className="mc-ring follicular" d="M387 182 A142 142 0 0 1 260 387" />
@@ -36,13 +37,13 @@ function Timeline({ day }) {
       <text className="mc-sub-label" x="350" y="427">ovulation in a 28-day cycle</text>
       <text className="mc-label" x="35" y="205">Days 15-28</text>
       <text className="mc-sub-label" x="35" y="227">progesterone supports lining</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function Graph() {
   return (
-    <svg viewBox="0 0 920 500" role="img" aria-label="Simplified changes in uterine lining, oestrogen and progesterone across a 28-day menstrual cycle">
+    <ReviewedScienceDiagram site="MenstrualCycleExplorer.jsx:45"><svg viewBox="0 0 920 500" role="img" aria-label="Simplified changes in uterine lining, oestrogen and progesterone across a 28-day menstrual cycle">
       <line className="mc-axis" x1="75" y1="420" x2="870" y2="420" />
       <line className="mc-axis" x1="75" y1="65" x2="75" y2="420" />
       {[1,5,14,21,28].map(day => {
@@ -73,7 +74,7 @@ function Graph() {
         <line className="mc-legend-line progesterone" x1="0" y1="56" x2="48" y2="56" />
         <text className="mc-legend-text" x="58" y="61">progesterone</text>
       </g>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

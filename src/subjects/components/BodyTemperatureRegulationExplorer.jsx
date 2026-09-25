@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./bodyTemperatureRegulationExplorer.css";
 
@@ -22,7 +23,7 @@ function SkinView(){
   const [hot,setHot]=useState(true);
   return <div className="spark-temp-skin">
     <div className="spark-temp-toggle"><button type="button" className={hot?"active":""} onClick={()=>setHot(true)}>Hot conditions</button><button type="button" className={!hot?"active":""} onClick={()=>setHot(false)}>Cold conditions</button></div>
-    <svg className="spark-temp-skin-svg" viewBox="0 0 940 590" role="img" aria-label={hot?"Detailed skin cross-section showing vasodilation and sweating in hot conditions":"Detailed skin cross-section showing vasoconstriction and reduced sweating in cold conditions"}>
+    <ReviewedScienceDiagram site="BodyTemperatureRegulationExplorer.jsx:25"><svg className="spark-temp-skin-svg" viewBox="0 0 940 590" role="img" aria-label={hot?"Detailed skin cross-section showing vasodilation and sweating in hot conditions":"Detailed skin cross-section showing vasoconstriction and reduced sweating in cold conditions"}>
       <defs>
         <marker id="bt-heat-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
           <path className="bt-arrow-head" d="M0 0L10 5L0 10Z"/>
@@ -83,7 +84,7 @@ function SkinView(){
       </g>
 
       <text className="bt-state-title" x="470" y="550" textAnchor="middle">{hot?"HOT: vasodilation + sweating increase heat loss":"COLD: vasoconstriction reduces heat loss; shivering can produce heat"}</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-temp-skin-notes">
       <article><b>Skin blood vessels</b><p>{hot?"Arterioles dilate, sending more warm blood through surface capillaries.":"Arterioles constrict, reducing blood flow through surface capillaries."}</p></article>
       <article><b>Sweat glands</b><p>{hot?"More sweat reaches the skin surface. Evaporation transfers latent heat away from the body.":"Sweat production is reduced, limiting unnecessary evaporative heat loss."}</p></article>

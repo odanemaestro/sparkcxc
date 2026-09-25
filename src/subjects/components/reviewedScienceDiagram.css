@@ -1,0 +1,18 @@
+.spark-reviewed-science-diagram{min-width:0;width:100%}
+.spark-reviewed-science-diagram>[hidden]{display:none!important}
+.spark-reviewed-science-diagram figure{margin:0;padding:12px;background:#fff;border:1px solid #d8e3e8;border-radius:12px;color:#183747}
+.spark-science-image-button{display:block;width:100%;padding:0;border:0;background:#fff;cursor:zoom-in}
+.spark-science-image-button img{display:block;width:100%;max-height:760px;object-fit:contain}
+.spark-reviewed-science-diagram figcaption{font-size:14px;line-height:1.6;padding:12px 8px;color:#36596b}
+.spark-science-image-credits{padding:8px;font-size:12px;color:#536c7a}
+.spark-science-image-credits summary{cursor:pointer}
+.spark-science-image-credits a{color:#087b83;text-decoration:underline}
+.spark-science-image-dialog{width:min(1200px,95vw);height:94vh;max-width:95vw;max-height:94vh;padding:16px;border:1px solid #b8ced6;border-radius:12px;background:#fff;color:#183747}
+.spark-science-image-dialog::backdrop{background:#112b3dd9}
+.spark-science-image-dialog header{display:flex;align-items:center;gap:20px;justify-content:space-between;padding:0 0 12px}
+.spark-science-image-dialog header button{padding:8px 18px;border:1px solid #7898a6;border-radius:6px;background:#fff;color:#183747;cursor:pointer}
+.spark-science-image-dialog>img{display:block;width:100%;height:calc(100% - 65px);object-fit:contain}
+.spark-science-process{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding:22px}
+.spark-science-process p{margin:0;padding:16px 20px;border:1px solid #b9d8dc;border-radius:8px;background:#edf8f7;max-width:240px;font-size:16px;line-height:1.5}
+.spark-science-process>span{font-size:22px;color:#227d85}
+@media(max-width:640px){.spark-reviewed-science-diagram figure{padding:8px}.spark-science-image-dialog{padding:10px}.spark-science-image-dialog header strong{font-size:14px}.spark-science-process{gap:8px;padding:12px}.spark-science-process p{font-size:14px}}

@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./mixturesExplorer.css";
 
@@ -10,7 +11,7 @@ const PARTICLES={
 function ParticleModel({type}){
   const title=type==="solution"?"Solution particle model":type==="suspension"?"Suspension particle model":"Colloid particle model";
   return <div className="spark-mixture-particle-model">
-    <svg className="spark-mixture-particle-svg" viewBox="0 0 470 330" role="img" aria-label={title}>
+    <ReviewedScienceDiagram site="MixturesExplorer.jsx:13"><svg className="spark-mixture-particle-svg" viewBox="0 0 470 330" role="img" aria-label={title}>
       <path className="mix-vessel" d="M76 38V270Q76 294 100 294H370Q394 294 394 270V38"/>
       <line className="mix-rim" x1="60" y1="38" x2="410" y2="38"/>
       <path className="mix-liquid" d="M76 78H394V270Q394 294 370 294H100Q76 294 76 270Z"/>
@@ -25,7 +26,7 @@ function ParticleModel({type}){
       <text className="mix-bottom-label" x="235" y="318" textAnchor="middle">
         {type==="solution"?"particles remain evenly distributed":type==="suspension"?"larger particles settle on standing":"intermediate particles remain dispersed"}
       </text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-mixture-particle-key">
       <span><i className={"mix-key-dot "+type}></i>{type==="solution"?"dissolved solute particles":type==="suspension"?"large suspended particles":"colloidal particles"}</span>
       <strong>{type==="solution"?"do not settle, pass ordinary filter paper":type==="suspension"?"settle and are removable by filtration":"do not settle readily, scatter light"}</strong>

@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./soapDetergentsExplorer.css";
 
@@ -13,7 +14,7 @@ function CleaningView(){
   const surfactants=Array.from({length:14},(_,i)=>i);
   return <div className="spark-detergent-cleaning">
     <div className="spark-detergent-toggle"><button type="button" className={!grease?"active":""} onClick={()=>setGrease(false)}>Before washing</button><button type="button" className={grease?"active":""} onClick={()=>setGrease(true)}>With surfactant</button></div>
-    <svg className="spark-surfactant-diagram" viewBox="0 0 720 390" role="img" aria-label={grease?"Micelle around a grease droplet with hydrophobic tails pointing inward and hydrophilic heads facing water":"Grease droplet separated from surrounding water before surfactant is added"}>
+    <ReviewedScienceDiagram site="SoapDetergentsExplorer.jsx:16"><svg className="spark-surfactant-diagram" viewBox="0 0 720 390" role="img" aria-label={grease?"Micelle around a grease droplet with hydrophobic tails pointing inward and hydrophilic heads facing water":"Grease droplet separated from surrounding water before surfactant is added"}>
       <rect className="sd-water" x="0" y="0" width="720" height="390"/>
       <path className="sd-grease" d="M265 116Q352 73 447 118Q503 168 470 250Q430 320 340 304Q251 319 218 243Q190 166 265 116Z"/>
       <text className="sd-grease-label" x="350" y="214" textAnchor="middle">grease</text>
@@ -32,7 +33,7 @@ function CleaningView(){
         <circle className="sd-water-particle" cx="115" cy="96" r="8"/><circle className="sd-water-particle" cx="590" cy="150" r="8"/><circle className="sd-water-particle" cx="130" cy="290" r="8"/><circle className="sd-water-particle" cx="606" cy="296" r="8"/>
         <text className="sd-label" x="350" y="359" textAnchor="middle">grease remains separate from water</text>
       </React.Fragment>}
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>{grease?"Surfactant molecules surround grease droplets. Their hydrophobic, oil-attracting tails point into the grease while their hydrophilic heads face the surrounding water. This keeps small grease droplets dispersed so they can be rinsed away.":"Grease is non-polar and does not mix well with water on its own."}</p>
   </div>;
 }

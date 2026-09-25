@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./flotationExplorer.css";
 
@@ -32,7 +33,7 @@ function ArchimedesView(){
     <strong>Upthrust = {up.toFixed(1)} N</strong>
 
     <div className="spark-archimedes-diagram">
-      <svg viewBox="0 0 960 520" role="img" aria-label="Immersed object suspended from a spring balance in an overflow can showing weight downward, upthrust upward and displaced water collected">
+      <ReviewedScienceDiagram site="FlotationExplorer.jsx:35"><svg viewBox="0 0 960 520" role="img" aria-label="Immersed object suspended from a spring balance in an overflow can showing weight downward, upthrust upward and displaced water collected">
         <g className="fa-support">
           <path className="fa-stand" d="M105 55V430M75 430H235M105 75H340" />
           <rect className="fa-spring-case" x="255" y="72" width="126" height="112" rx="18" />
@@ -75,7 +76,7 @@ function ArchimedesView(){
           <text x="728" y="169" textAnchor="middle">{weight.toFixed(1)} N − {apparent.toFixed(1)} N = {up.toFixed(1)} N</text>
           <text className="fa-equation-note" x="728" y="196" textAnchor="middle">this difference is the upthrust</text>
         </g>
-      </svg>
+      </svg></ReviewedScienceDiagram>
     </div>
 
     <p>Archimedes' principle states that the upthrust on an immersed object equals the weight of fluid displaced. The spring balance reads less in water because the upward buoyant force supports part of the object's weight.</p>

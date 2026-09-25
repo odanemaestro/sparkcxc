@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./corrosionProtectionExplorer.css";
 
@@ -23,7 +24,7 @@ function GalvaniseView(){
   const [scratch,setScratch]=useState(false);
   return <div className="spark-galvanise">
     <div className="spark-protect-toggle"><button type="button" className={!scratch?"active":""} onClick={()=>setScratch(false)}>Coating intact</button><button type="button" className={scratch?"active":""} onClick={()=>setScratch(true)}>Coating scratched</button></div>
-    <svg className="spark-galvanising-svg" viewBox="0 0 920 470" role="img" aria-label={scratch?"Scratched galvanised steel showing exposed iron beside zinc coating, oxygen and water at the scratch, and zinc corroding sacrificially to protect nearby iron":"Galvanised steel with continuous zinc coating acting as a barrier between iron and oxygen and water"}>
+    <ReviewedScienceDiagram site="CorrosionProtectionExplorer.jsx:26"><svg className="spark-galvanising-svg" viewBox="0 0 920 470" role="img" aria-label={scratch?"Scratched galvanised steel showing exposed iron beside zinc coating, oxygen and water at the scratch, and zinc corroding sacrificially to protect nearby iron":"Galvanised steel with continuous zinc coating acting as a barrier between iron and oxygen and water"}>
       <defs>
         <marker id="galv-flow-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
           <path d="M0 0L9 4.5L0 9Z" className="gv-arrow-head"/>
@@ -66,7 +67,7 @@ function GalvaniseView(){
         <text className="gv-layer-label light" x="460" y="328" textAnchor="middle">nearby iron remains protected while zinc is sacrificed</text>
         <text className="gv-note" x="460" y="420" textAnchor="middle">zinc is more reactive than iron, so zinc corrodes preferentially around the damaged coating</text>
       </>}
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>{scratch?"Zinc is more reactive than iron, so zinc near the scratch oxidises preferentially. This sacrificial action can protect the nearby exposed iron as long as enough zinc remains electrically connected to it.":"With the coating intact, zinc acts as a physical barrier preventing water and oxygen from reaching the iron."}</p>
   </div>;
 }
@@ -86,7 +87,7 @@ function PlatingView(){
   const name=names[metal];
   return <div className="spark-electroplate">
     <div className="spark-protect-toggle"><button type="button" className={metal==="chromium"?"active":""} onClick={()=>setMetal("chromium")}>Chromium</button><button type="button" className={metal==="silver"?"active":""} onClick={()=>setMetal("silver")}>Silver</button><button type="button" className={metal==="tin"?"active":""} onClick={()=>setMetal("tin")}>Tin</button></div>
-    <svg className="spark-electroplating-diagram" viewBox="0 0 860 470" role="img" aria-label={"Electroplating cell showing a base-metal object connected as the cathode in a "+name+"-containing electrolyte"}>
+    <ReviewedScienceDiagram site="CorrosionProtectionExplorer.jsx:89"><svg className="spark-electroplating-diagram" viewBox="0 0 860 470" role="img" aria-label={"Electroplating cell showing a base-metal object connected as the cathode in a "+name+"-containing electrolyte"}>
       <defs><marker id="cp-ion-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" className="cp-arrow-head"/></marker></defs>
       <rect className="cp-beaker" x="170" y="135" width="520" height="275" rx="20"/>
       <path className="cp-electrolyte" d="M184 221H676V390Q676 397 669 397H191Q184 397 184 390Z"/>
@@ -110,7 +111,7 @@ function PlatingView(){
         <path className="cp-ion-flow" d={`M${382+(i%2)*35} ${245+Math.floor(i/2)*28}Q455 ${235+Math.floor(i/2)*28} 492 ${245+Math.floor(i/2)*28}`} markerEnd="url(#cp-ion-arrow)"/>
       </g>)}
       <text className="cp-small" x="430" y="202" textAnchor="middle">metal ions move through the electrolyte and are deposited at the object</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-plated-object"><div className={"spark-plating-layer "+metal}></div><div className="spark-steel-core">base metal with {name} coating</div></div>
     <p>{metal==="chromium"?"Chromium plating provides a hard, shiny, corrosion-resistant finish. Industrial chromium-plating chemistry uses specialised electrolytes and electrodes, but the object being plated is still connected to the negative side of the direct-current supply.":metal==="silver"?"Silver plating uses electric current to deposit a thin silver layer on the object, giving an attractive conductive surface while using much less silver than a solid object would require.":"Tin plating uses electric current to deposit a protective tin layer. Tin-coated steel is widely used for food cans because the coating separates the steel from the contents while it remains intact."}</p>
   </div>;

@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useMemo, useState } from "react";
 import "./transportInvestigationExplorer.css";
 
@@ -33,7 +34,7 @@ const INVESTIGATIONS = {
 
 function OsmometerScene({ ran }) {
   return (
-    <svg viewBox="0 0 800 470" role="img" aria-label="Osmometer investigation">
+    <ReviewedScienceDiagram site="TransportInvestigationExplorer.jsx:36"><svg viewBox="0 0 800 470" role="img" aria-label="Osmometer investigation">
       <rect className="lab-bench" x="70" y="120" width="420" height="260" rx="18" />
       <path className="lab-water" d="M85 205H475V365H85Z" />
       <path className="lab-membrane-bag" d="M215 210v105q65 60 130 0V210Z" />
@@ -50,7 +51,7 @@ function OsmometerScene({ ran }) {
       <path className="lab-arrow" d="M170 300h85" />
       <path className="lab-arrow-head" d="M240 286l24 14-24 14" />
       {ran && <text className="lab-result" x="280" y="35" textAnchor="middle">liquid level rises</text>}
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
@@ -58,7 +59,7 @@ function PotatoScene({ ran }) {
   const concentrations = ["0.0","0.2","0.4","0.6","0.8"];
   const changes = [6,3,0,-3,-5];
   return (
-    <svg viewBox="0 0 800 470" role="img" aria-label="Potato osmosis investigation">
+    <ReviewedScienceDiagram site="TransportInvestigationExplorer.jsx:61"><svg viewBox="0 0 800 470" role="img" aria-label="Potato osmosis investigation">
       {concentrations.map((value,index) => {
         const x = 70 + index * 140;
         const change = changes[index];
@@ -79,13 +80,13 @@ function PotatoScene({ ran }) {
       })}
       <text className="lab-axis-label" x="400" y="458" textAnchor="middle">Sugar solution concentration / mol dm⁻³</text>
       <text className="lab-result" x="400" y="65" textAnchor="middle">{ran ? "Compare the change in strip length" : "Each strip starts at the same length"}</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function ViskingScene({ ran }) {
   return (
-    <svg viewBox="0 0 800 470" role="img" aria-label="Visking tubing selective permeability investigation">
+    <ReviewedScienceDiagram site="TransportInvestigationExplorer.jsx:88"><svg viewBox="0 0 800 470" role="img" aria-label="Visking tubing selective permeability investigation">
       <path className="lab-beaker" d="M135 90v300h330V90" />
       <path className="lab-water iodine" d="M140 175h320v210H140Z" />
       <path className={ran ? "lab-membrane-bag stained" : "lab-membrane-bag"} d="M245 110v200q55 55 110 0V110Z" />
@@ -105,7 +106,7 @@ function ViskingScene({ ran }) {
           <text className="lab-result" x="300" y="62" textAnchor="middle">starch mixture turns blue-black</text>
         </>
       )}
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./respirationImportanceExplorer.css";
 
@@ -22,7 +23,7 @@ function UsesView(){
 }
 
 function EvidenceDiagram({caseId}){
-  if(caseId==="co2") return <svg className="spark-respiration-evidence-svg" viewBox="0 0 760 360" role="img" aria-label="Germinating seeds connected by a delivery tube to limewater">
+  if(caseId==="co2") return <ReviewedScienceDiagram site="RespirationImportanceExplorer.jsx:25"><svg className="spark-respiration-evidence-svg" viewBox="0 0 760 360" role="img" aria-label="Germinating seeds connected by a delivery tube to limewater">
     <path className="re-flask" d="M120 55V115L75 265Q68 300 105 300H285Q322 300 315 265L270 115V55Z"/>
     <path className="re-seed-bed" d="M98 225Q195 200 292 225V280H98Z"/>
     {[130,165,200,235,270].map((x,i)=><ellipse key={x} className="re-seed" cx={x} cy={235+(i%2)*20} rx="13" ry="9"/>)}
@@ -33,9 +34,9 @@ function EvidenceDiagram({caseId}){
     <text className="re-label" x="195" y="335" textAnchor="middle">germinating seeds</text>
     <text className="re-label" x="475" y="335" textAnchor="middle">limewater turns milky</text>
     <text className="re-small" x="360" y="58" textAnchor="middle">CO₂ carried through delivery tube</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 
-  if(caseId==="indicator") return <svg className="spark-respiration-evidence-svg" viewBox="0 0 760 360" role="img" aria-label="Woodlice in a closed chamber with bicarbonate indicator changing from red to yellow">
+  if(caseId==="indicator") return <ReviewedScienceDiagram site="RespirationImportanceExplorer.jsx:38"><svg className="spark-respiration-evidence-svg" viewBox="0 0 760 360" role="img" aria-label="Woodlice in a closed chamber with bicarbonate indicator changing from red to yellow">
     <rect className="re-chamber" x="105" y="55" width="550" height="235" rx="28"/>
     <rect className="re-indicator" x="145" y="225" width="470" height="40" rx="8"/>
     {[200,285,375,465,550].map((x,i)=><g key={x} transform={"translate("+x+" "+(145+(i%2)*22)+")"}>
@@ -46,9 +47,9 @@ function EvidenceDiagram({caseId}){
     <path className="re-co2-arrow" d="M365 180V220"/>
     <text className="re-label" x="380" y="116" textAnchor="middle">living woodlice respire</text>
     <text className="re-small" x="380" y="318" textAnchor="middle">bicarbonate indicator: red → yellow as CO₂ rises</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 
-  return <svg className="spark-respiration-evidence-svg" viewBox="0 0 760 360" role="img" aria-label="Insulated flask containing germinating seeds and a thermometer showing heat release">
+  return <ReviewedScienceDiagram site="RespirationImportanceExplorer.jsx:51"><svg className="spark-respiration-evidence-svg" viewBox="0 0 760 360" role="img" aria-label="Insulated flask containing germinating seeds and a thermometer showing heat release">
     <path className="re-thermos" d="M180 55H420V295Q420 320 395 320H205Q180 320 180 295Z"/>
     <path className="re-insulation" d="M198 75H402V292Q402 303 390 303H210Q198 303 198 292Z"/>
     <path className="re-seed-bed" d="M215 220Q300 196 385 220V285H215Z"/>
@@ -59,7 +60,7 @@ function EvidenceDiagram({caseId}){
     <path className="re-heat-arrow" d="M445 180Q520 140 585 110"/>
     <text className="re-label" x="610" y="105" textAnchor="middle">temperature rises</text>
     <text className="re-small" x="300" y="345" textAnchor="middle">insulated flask reduces heat exchange with surroundings</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 }
 
 function EvidenceView(){

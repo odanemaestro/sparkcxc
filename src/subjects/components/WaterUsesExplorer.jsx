@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./waterUsesExplorer.css";
 
@@ -48,7 +49,7 @@ function AgricultureView(){
   return <div className="spark-water-agriculture">
     <div className="spark-water-agri-buttons">{["aquaculture","mariculture","hydroponics"].map(k=><button type="button" key={k} className={mode===k?"active":""} onClick={()=>setMode(k)}>{k[0].toUpperCase()+k.slice(1)}</button>)}</div>
     <article><span>{data.title.toUpperCase()}</span><h4>{data.title}</h4><p>{data.text}</p></article>
-    {mode==="hydroponics"&&<svg className="spark-hydroponics-svg" viewBox="0 0 900 430" role="img" aria-label="Hydroponic plant growing without soil with roots suspended in aerated nutrient solution containing dissolved mineral ions">
+    {mode==="hydroponics"&&<ReviewedScienceDiagram site="WaterUsesExplorer.jsx:51"><svg className="spark-hydroponics-svg" viewBox="0 0 900 430" role="img" aria-label="Hydroponic plant growing without soil with roots suspended in aerated nutrient solution containing dissolved mineral ions">
       <defs>
         <marker id="hydro-uptake-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path className="wh-arrow-head" d="M0 0L9 4.5L0 9Z"/></marker>
       </defs>
@@ -74,7 +75,7 @@ function AgricultureView(){
       <text className="wh-label" x="450" y="398" textAnchor="middle">water with dissolved mineral nutrients</text>
       <text className="wh-small" x="200" y="262">aeration supplies oxygen to roots</text>
       <text className="wh-small" x="590" y="262">roots absorb water and mineral ions</text>
-    </svg>}
+    </svg></ReviewedScienceDiagram>}
   </div>;
 }
 
@@ -95,7 +96,7 @@ function FireView(){
 
 function CycleView(){
   return <div className="spark-water-cycle-use">
-    <svg className="spark-water-cycle-svg" viewBox="0 0 1080 650" role="img" aria-label="Water cycle showing solar heating, evaporation from the sea, transpiration from plants, condensation into clouds, precipitation, surface runoff, infiltration, groundwater flow, rivers and return to the sea">
+    <ReviewedScienceDiagram site="WaterUsesExplorer.jsx:98"><svg className="spark-water-cycle-svg" viewBox="0 0 1080 650" role="img" aria-label="Water cycle showing solar heating, evaporation from the sea, transpiration from plants, condensation into clouds, precipitation, surface runoff, infiltration, groundwater flow, rivers and return to the sea">
       <defs>
         <marker id="wu-cycle-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
           <path className="wu-arrow-head" d="M0 0L9 4.5L0 9Z"/>
@@ -178,7 +179,7 @@ function CycleView(){
       <text className="wu-reservoir-label" x="804" y="485" textAnchor="middle">lakes and rivers</text>
       <text className="wu-reservoir-label" x="872" y="588" textAnchor="middle">fresh groundwater</text>
       <text className="wu-cycle-caption" x="540" y="635" textAnchor="middle">Water moves continuously between atmosphere, land, surface water and groundwater.</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>The water cycle continually moves water through evaporation, transpiration, condensation, precipitation, interception, surface run-off, infiltration, percolation, throughflow and groundwater flow. Rivers and underground water return part of this water toward the sea, while precipitation renews freshwater stores used by people and ecosystems.</p>
   </div>;
 }

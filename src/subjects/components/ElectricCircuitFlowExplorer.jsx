@@ -1,9 +1,10 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./electricCircuitFlowExplorer.css";
 
 function Symbol({type,label}){
   return <div className="spark-circuit-symbol-card">
-    <svg viewBox="0 0 180 80" role="img" aria-label={label}>
+    <ReviewedScienceDiagram site="ElectricCircuitFlowExplorer.jsx:6"><svg viewBox="0 0 180 80" role="img" aria-label={label}>
       <line className="cs-wire" x1="10" y1="40" x2="55" y2="40"/>
       <line className="cs-wire" x1="125" y1="40" x2="170" y2="40"/>
       {type==="cell"&&<><line className="cs-cell-long" x1="78" y1="15" x2="78" y2="65"/><line className="cs-cell-short" x1="101" y1="26" x2="101" y2="54"/><line className="cs-wire" x1="55" y1="40" x2="78" y2="40"/><line className="cs-wire" x1="101" y1="40" x2="125" y2="40"/></>}
@@ -14,7 +15,7 @@ function Symbol({type,label}){
       {type==="ammeter"&&<><line className="cs-wire" x1="55" y1="40" x2="68" y2="40"/><circle className="cs-component" cx="90" cy="40" r="22"/><text className="cs-meter-text" x="90" y="47" textAnchor="middle">A</text><line className="cs-wire" x1="112" y1="40" x2="125" y2="40"/></>}
       {type==="voltmeter"&&<><line className="cs-wire" x1="55" y1="40" x2="68" y2="40"/><circle className="cs-component" cx="90" cy="40" r="22"/><text className="cs-meter-text" x="90" y="47" textAnchor="middle">V</text><line className="cs-wire" x1="112" y1="40" x2="125" y2="40"/></>}
       {type==="transformer"&&<><path className="cs-coil" d="M63 18Q78 18 78 28Q78 38 63 38Q78 38 78 48Q78 58 63 58"/><path className="cs-coil" d="M117 18Q102 18 102 28Q102 38 117 38Q102 38 102 48Q102 58 117 58"/><line className="cs-core" x1="86" y1="10" x2="86" y2="70"/><line className="cs-core" x1="94" y1="10" x2="94" y2="70"/></>}
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <strong>{label}</strong>
   </div>;
 }
@@ -29,7 +30,7 @@ function SeriesParallelView(){
   const series=mode==="series";
   return <div className="spark-series-parallel">
     <div className="spark-series-toggle"><button type="button" className={series?"active":""} onClick={()=>setMode("series")}>Series</button><button type="button" className={!series?"active":""} onClick={()=>setMode("parallel")}>Parallel</button></div>
-    <svg viewBox="0 0 820 400" role="img" aria-label={series?"Two lamps in series":"Two lamps in parallel"}>
+    <ReviewedScienceDiagram site="ElectricCircuitFlowExplorer.jsx:32"><svg viewBox="0 0 820 400" role="img" aria-label={series?"Two lamps in series":"Two lamps in parallel"}>
       {series?<>
         <path className="cp-wire" d="M130 200H245M325 200H495M575 200H690V315H130V200"/>
         <line className="cp-cell-long" x1="360" y1="285" x2="360" y2="345"/><line className="cp-cell-short" x1="410" y1="297" x2="410" y2="333"/>
@@ -43,7 +44,7 @@ function SeriesParallelView(){
         <circle className="cp-lamp" cx="560" cy="210" r="40"/><line className="cp-cross" x1="533" y1="183" x2="587" y2="237"/><line className="cp-cross" x1="533" y1="237" x2="587" y2="183"/>
         <text className="cp-title" x="410" y="70" textAnchor="middle">separate branches</text>
       </>}
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-circuit-comparison">
       {series?<><article><b>Current</b><p>Same current flows through every component in the single path.</p></article><article><b>Resistance</b><p>Series resistances add. Adding another lamp raises total resistance and usually reduces current.</p></article><article><b>Broken lamp</b><p>A break stops current everywhere, so all lamps go out.</p></article></>:<><article><b>Voltage</b><p>Each branch is connected across the supply and receives the full branch voltage.</p></article><article><b>Current</b><p>Main current equals the sum of branch currents.</p></article><article><b>Broken lamp</b><p>Other branches stay complete, so other lamps remain lit.</p></article></>}
     </div>
@@ -53,7 +54,7 @@ function SeriesParallelView(){
 function MetersView(){
   return <div className="spark-meter-placement">
     <div className="spark-meter-diagram">
-      <svg viewBox="0 0 800 390" role="img" aria-label="Circuit showing ammeter in series and voltmeter in parallel across a resistor">
+      <ReviewedScienceDiagram site="ElectricCircuitFlowExplorer.jsx:56"><svg viewBox="0 0 800 390" role="img" aria-label="Circuit showing ammeter in series and voltmeter in parallel across a resistor">
         <path className="mp-wire" d="M135 210H245M315 210H480M570 210H665V330H135V210"/>
         <circle className="mp-meter" cx="280" cy="210" r="35"/><text className="mp-meter-text" x="280" y="220" textAnchor="middle">A</text>
         <rect className="mp-resistor" x="480" y="185" width="90" height="50" rx="4"/>
@@ -62,7 +63,7 @@ function MetersView(){
         <line className="mp-cell-long" x1="365" y1="300" x2="365" y2="360"/><line className="mp-cell-short" x1="420" y1="312" x2="420" y2="348"/>
         <text className="mp-note" x="280" y="160" textAnchor="middle">ammeter in series</text>
         <text className="mp-note" x="525" y="50" textAnchor="middle">voltmeter in parallel</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
     </div>
     <div className="spark-meter-notes"><article><b>Current</b><p>Measured in amperes, A. An ammeter is placed in series so the circuit current passes through it.</p></article><article><b>Potential difference</b><p>Measured in volts, V. A voltmeter is connected in parallel across the component.</p></article><article><b>Resistance</b><p>Measured in ohms, Ω. For an ohmic component, V = IR.</p></article><article><b>Power</b><p>Measured in watts, W. Electrical power is P = IV.</p></article></div>
   </div>;
@@ -84,7 +85,7 @@ function CalculatorView(){
 
 function TransformerView(){
   return <div className="spark-transformer-view">
-    <svg className="spark-transformer-svg" viewBox="0 0 920 470" role="img" aria-label="Transformer showing alternating current in the primary coil producing changing magnetic flux in an iron core and inducing alternating voltage in the secondary coil">
+    <ReviewedScienceDiagram site="ElectricCircuitFlowExplorer.jsx:87"><svg className="spark-transformer-svg" viewBox="0 0 920 470" role="img" aria-label="Transformer showing alternating current in the primary coil producing changing magnetic flux in an iron core and inducing alternating voltage in the secondary coil">
       <defs>
         <marker id="tf-flux-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
           <path d="M0 0L9 4.5L0 9Z" className="tf-arrow-head"/>
@@ -127,7 +128,7 @@ function TransformerView(){
 
       <text className="tf-small" x="160" y="355" textAnchor="middle">alternating current produces a changing magnetic field</text>
       <text className="tf-small" x="760" y="355" textAnchor="middle">changing flux induces an alternating potential difference</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>A transformer changes the voltage of an alternating-current supply. Alternating current in the primary coil produces a changing magnetic field in the iron core. The changing magnetic flux links the secondary coil and induces an alternating potential difference there. A transformer does not store electricity and it is not a measuring device.</p>
   </div>;
 }

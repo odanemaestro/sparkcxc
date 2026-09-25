@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./skeletalMuscleMovementExplorer.css";
 
@@ -9,7 +10,7 @@ function ArmView(){
       <button type="button" className={bend?"active":""} onClick={()=>setMotion("bend")}>Bend elbow</button>
       <button type="button" className={!bend?"active":""} onClick={()=>setMotion("straighten")}>Straighten elbow</button>
     </div>
-    <svg viewBox="0 0 820 470" role="img" aria-label={bend?"Arm bending with biceps contracted and triceps relaxed":"Arm straightening with triceps contracted and biceps relaxed"}>
+    <ReviewedScienceDiagram site="SkeletalMuscleMovementExplorer.jsx:12"><svg viewBox="0 0 820 470" role="img" aria-label={bend?"Arm bending with biceps contracted and triceps relaxed":"Arm straightening with triceps contracted and biceps relaxed"}>
       <path className="sm-scapula" d="M180 105Q225 80 265 105Q280 140 255 180Q220 200 185 170Q165 140 180 105Z"/>
       <circle className="sm-shoulder" cx="245" cy="155" r="31"/>
 
@@ -44,7 +45,7 @@ function ArmView(){
 
       <text className="sm-label" x="421" y="345">elbow hinge joint</text>
       <text className="sm-small" x="540" y="405" textAnchor="middle">muscles pull through tendons; they do not actively push</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>{bend?"The biceps shortens and pulls the forearm upward while the triceps relaxes.":"The triceps shortens and pulls to extend the forearm while the biceps relaxes."}</p>
   </div>;
 }
@@ -56,7 +57,7 @@ function KneeView(){
       <button type="button" className={!straight?"active":""} onClick={()=>setStraight(false)}>Knee bent</button>
       <button type="button" className={straight?"active":""} onClick={()=>setStraight(true)}>Straighten knee</button>
     </div>
-    <svg className="spark-knee-svg" viewBox="0 0 820 470" role="img" aria-label={straight?"Knee straightened by quadriceps contraction":"Knee flexed by hamstring contraction"}>
+    <ReviewedScienceDiagram site="SkeletalMuscleMovementExplorer.jsx:59"><svg className="spark-knee-svg" viewBox="0 0 820 470" role="img" aria-label={straight?"Knee straightened by quadriceps contraction":"Knee flexed by hamstring contraction"}>
       <path className="sm-pelvis-fragment" d="M250 70Q320 40 390 82Q377 121 335 137Q284 130 250 70Z"/>
       <path className="sm-bone femur" d="M335 128Q365 215 392 285"/>
       <circle className="sm-knee-joint" cx="397" cy="294" r="24"/>
@@ -84,14 +85,14 @@ function KneeView(){
       <text className="sm-label" x="500" y="205">{straight?"hamstrings relax":"hamstrings contract"}</text>
       <text className="sm-label" x="505" y="310">knee hinge joint</text>
       <text className="sm-small" x="410" y="455" textAnchor="middle">{straight?"quadriceps extends the lower leg":"hamstrings flex the lower leg"}</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>{straight?"The quadriceps contracts while the hamstrings relax to straighten the knee.":"Flexing the knee involves contraction of the hamstrings while the quadriceps relaxes."}</p>
   </div>;
 }
 
 function JointDiagram({joint}){
   if(joint==="hinge"){
-    return <svg className="spark-joint-diagram" viewBox="0 0 520 250" role="img" aria-label="Hinge joint showing two bones moving mainly in one plane">
+    return <ReviewedScienceDiagram site="SkeletalMuscleMovementExplorer.jsx:94"><svg className="spark-joint-diagram" viewBox="0 0 520 250" role="img" aria-label="Hinge joint showing two bones moving mainly in one plane">
       <path className="sm-joint-bone" d="M95 64L235 115"/>
       <path className="sm-joint-bone" d="M278 136L427 194"/>
       <circle className="sm-joint-cartilage" cx="252" cy="126" r="37"/>
@@ -100,10 +101,10 @@ function JointDiagram({joint}){
       <path className="sm-joint-motion" d="M357 90Q423 112 438 156"/>
       <path className="sm-joint-motion" d="M438 156l-16-10m16 10l-3-19"/>
       <text className="sm-small" x="252" y="224" textAnchor="middle">hinge permits flexion and extension mainly in one plane</text>
-    </svg>;
+    </svg></ReviewedScienceDiagram>;
   }
   if(joint==="ball"){
-    return <svg className="spark-joint-diagram" viewBox="0 0 520 250" role="img" aria-label="Ball and socket joint showing a rounded bone head fitting into a socket">
+    return <ReviewedScienceDiagram site="SkeletalMuscleMovementExplorer.jsx:106"><svg className="spark-joint-diagram" viewBox="0 0 520 250" role="img" aria-label="Ball and socket joint showing a rounded bone head fitting into a socket">
       <path className="sm-joint-socket" d="M154 74Q115 126 154 178Q193 145 193 126Q193 107 154 74Z"/>
       <circle className="sm-joint-ball" cx="221" cy="126" r="43"/>
       <path className="sm-joint-bone" d="M253 126L403 126"/>
@@ -112,17 +113,17 @@ function JointDiagram({joint}){
       <path className="sm-joint-motion" d="M400 72l-18-2m18 2l-8 16"/>
       <path className="sm-joint-motion" d="M400 180l-18 2m18-2l-8-16"/>
       <text className="sm-small" x="260" y="226" textAnchor="middle">rounded head moves in many directions within the socket</text>
-    </svg>;
+    </svg></ReviewedScienceDiagram>;
   }
   if(joint==="fixed"){
-    return <svg className="spark-joint-diagram" viewBox="0 0 520 250" role="img" aria-label="Fixed skull suture joint showing interlocking bone edges">
+    return <ReviewedScienceDiagram site="SkeletalMuscleMovementExplorer.jsx:118"><svg className="spark-joint-diagram" viewBox="0 0 520 250" role="img" aria-label="Fixed skull suture joint showing interlocking bone edges">
       <path className="sm-joint-plate" d="M86 58H248L236 82L254 101L238 121L255 141L238 161L252 190H86Z"/>
       <path className="sm-joint-plate" d="M434 58H272L284 82L266 101L282 121L265 141L282 161L268 190H434Z"/>
       <path className="sm-joint-suture" d="M248 58L236 82L254 101L238 121L255 141L238 161L252 190"/>
       <text className="sm-small" x="260" y="226" textAnchor="middle">interlocking cranial sutures permit little or no movement</text>
-    </svg>;
+    </svg></ReviewedScienceDiagram>;
   }
-  return <svg className="spark-joint-diagram" viewBox="0 0 520 250" role="img" aria-label="Gliding joint showing adjacent bone surfaces sliding over one another">
+  return <ReviewedScienceDiagram site="SkeletalMuscleMovementExplorer.jsx:125"><svg className="spark-joint-diagram" viewBox="0 0 520 250" role="img" aria-label="Gliding joint showing adjacent bone surfaces sliding over one another">
     <rect className="sm-joint-glide" x="104" y="82" width="142" height="60" rx="24"/>
     <rect className="sm-joint-glide" x="274" y="108" width="142" height="60" rx="24"/>
     <path className="sm-joint-motion" d="M143 60H218"/>
@@ -130,7 +131,7 @@ function JointDiagram({joint}){
     <path className="sm-joint-motion" d="M377 190H302"/>
     <path className="sm-joint-motion" d="M302 190l17-10m-17 10l17 10"/>
     <text className="sm-small" x="260" y="226" textAnchor="middle">nearly flat surfaces slide a short distance past one another</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 }
 
 function JointView(){

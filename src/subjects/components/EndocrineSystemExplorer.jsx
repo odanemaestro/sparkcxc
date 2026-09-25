@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./endocrineSystemExplorer.css";
 
@@ -32,7 +33,7 @@ const VIEWS = {
 function AnatomyScene() {
   return (
     <div className="spark-endocrine-anatomy">
-      <svg className="spark-endocrine-anatomy-svg" viewBox="0 0 980 700" role="img" aria-label="Female and male endocrine gland map showing pituitary, thyroid, parathyroid, adrenal glands, pancreas, ovaries and testes">
+      <ReviewedScienceDiagram site="EndocrineSystemExplorer.jsx:35"><svg className="spark-endocrine-anatomy-svg" viewBox="0 0 980 700" role="img" aria-label="Female and male endocrine gland map showing pituitary, thyroid, parathyroid, adrenal glands, pancreas, ovaries and testes">
         <g className="ea-person female">
           <circle className="ea-head" cx="300" cy="95" r="62"/>
           <path className="ea-body" d="M255 155Q300 130 345 155Q392 220 380 340L360 555H240L220 340Q208 220 255 155Z"/>
@@ -81,7 +82,7 @@ function AnatomyScene() {
         </g>
         <text className="ea-sex-label" x="300" y="682" textAnchor="middle">female</text>
         <text className="ea-sex-label" x="680" y="682" textAnchor="middle">male</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
       <div className="spark-endocrine-anatomy-notes">
         <article><b>Pituitary</b><p>Often called a master gland because several of its hormones regulate other endocrine glands.</p></article>
         <article><b>Thyroid and parathyroids</b><p>The thyroid lies in the neck. Small parathyroid glands lie on its posterior surface and help regulate blood calcium.</p></article>
@@ -94,7 +95,7 @@ function AnatomyScene() {
 
 function TransportScene() {
   return (
-    <svg viewBox="0 0 980 520" role="img" aria-label="Hormone released from an endocrine gland into blood and reaching target organs">
+    <ReviewedScienceDiagram site="EndocrineSystemExplorer.jsx:97"><svg viewBox="0 0 980 520" role="img" aria-label="Hormone released from an endocrine gland into blood and reaching target organs">
       <circle className="es-gland" cx="145" cy="260" r="75" />
       <text className="es-label" x="145" y="255" textAnchor="middle">endocrine</text>
       <text className="es-label" x="145" y="280" textAnchor="middle">gland</text>
@@ -116,13 +117,13 @@ function TransportScene() {
         <text className="es-card-text" x="90" y="221">no matching receptor</text>
       </g>
       <text className="es-small" x="480" y="455" textAnchor="middle">blood carries the hormone widely, receptor matching determines the response</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function InsulinScene() {
   return (
-    <svg viewBox="0 0 980 520" role="img" aria-label="Insulin response to raised blood glucose">
+    <ReviewedScienceDiagram site="EndocrineSystemExplorer.jsx:125"><svg viewBox="0 0 980 520" role="img" aria-label="Insulin response to raised blood glucose">
       <g transform="translate(70 75)">
         <rect className="es-step" x="0" y="80" width="190" height="140" rx="20" />
         <text className="es-step-title" x="95" y="120" textAnchor="middle">Blood glucose rises</text>
@@ -143,13 +144,13 @@ function InsulinScene() {
         <text className="es-result" x="130" y="280" textAnchor="middle">blood glucose falls</text>
       </g>
       <text className="es-small" x="480" y="455" textAnchor="middle">too little effective insulin allows blood glucose to remain abnormally high</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function AdrenalineScene() {
   return (
-    <svg viewBox="0 0 980 520" role="img" aria-label="Adrenaline fight or flight effects on heart breathing and blood glucose">
+    <ReviewedScienceDiagram site="EndocrineSystemExplorer.jsx:152"><svg viewBox="0 0 980 520" role="img" aria-label="Adrenaline fight or flight effects on heart breathing and blood glucose">
       <path className="es-body" d="M430 95Q490 65 550 95Q595 165 580 270Q565 350 535 435H445Q415 350 400 270Q385 165 430 95Z" />
       <path className="es-kidney" d="M430 260Q405 250 400 280Q400 315 425 323Q445 310 440 280Z" />
       <path className="es-kidney" d="M550 260Q575 250 580 280Q580 315 555 323Q535 310 540 280Z" />
@@ -171,7 +172,7 @@ function AdrenalineScene() {
         <text className="es-label" x="100" y="80" textAnchor="middle">more glucose available</text>
       </g>
       <text className="es-small" x="490" y="480" textAnchor="middle">adrenal glands sit on top of the kidneys</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

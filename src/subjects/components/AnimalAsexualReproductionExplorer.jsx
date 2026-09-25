@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./animalAsexualReproductionExplorer.css";
 
@@ -30,7 +31,7 @@ const METHODS = {
 
 function BinaryScene() {
   return (
-    <svg viewBox="0 0 900 430" role="img" aria-label="Binary fission process in a unicellular organism">
+    <ReviewedScienceDiagram site="AnimalAsexualReproductionExplorer.jsx:33"><svg viewBox="0 0 900 430" role="img" aria-label="Binary fission process in a unicellular organism">
       <g transform="translate(160 205)">
         <ellipse className="aar-cell" rx="92" ry="72" />
         <circle className="aar-nucleus" cx="0" cy="0" r="26" />
@@ -54,13 +55,13 @@ function BinaryScene() {
       <text className="aar-label" x="160" y="330" textAnchor="middle">one parent cell</text>
       <text className="aar-label" x="450" y="330" textAnchor="middle">nucleus copies, cell divides</text>
       <text className="aar-label" x="735" y="350" textAnchor="middle">two daughter cells</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function BuddingScene() {
   return (
-    <svg viewBox="0 0 900 430" role="img" aria-label="Budding process in Hydra">
+    <ReviewedScienceDiagram site="AnimalAsexualReproductionExplorer.jsx:63"><svg viewBox="0 0 900 430" role="img" aria-label="Budding process in Hydra">
       <g transform="translate(175 105)">
         <path className="aar-hydra-body" d="M-40 220Q-55 130-38 55Q0 15 38 55Q55 130 40 220Z" />
         <path className="aar-tentacle" d="M-28 55Q-70 10-95 25M-12 43Q-30-10-10-30M10 43Q35-8 55-25M28 55Q75 15 95 35" />
@@ -80,13 +81,13 @@ function BuddingScene() {
       <text className="aar-label" x="175" y="375" textAnchor="middle">parent Hydra</text>
       <text className="aar-label" x="465" y="375" textAnchor="middle">bud grows on parent</text>
       <text className="aar-label" x="750" y="350" textAnchor="middle">bud separates</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function FragmentationScene() {
   return (
-    <svg viewBox="0 0 900 430" role="img" aria-label="Fragmentation and regeneration in a planarian flatworm">
+    <ReviewedScienceDiagram site="AnimalAsexualReproductionExplorer.jsx:89"><svg viewBox="0 0 900 430" role="img" aria-label="Fragmentation and regeneration in a planarian flatworm">
       <path className="aar-planarian" d="M75 200Q130 125 220 155Q270 180 245 225Q205 285 105 260Q55 240 75 200Z" />
       <circle className="aar-eye" cx="120" cy="188" r="7" /><circle className="aar-eye" cx="145" cy="185" r="7" />
       <path className="aar-cut" d="M180 150L165 270" />
@@ -102,13 +103,13 @@ function FragmentationScene() {
       <text className="aar-label" x="160" y="370" textAnchor="middle">body is divided</text>
       <text className="aar-label" x="460" y="370" textAnchor="middle">fragments survive</text>
       <text className="aar-label" x="715" y="390" textAnchor="middle">missing parts regenerate</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function ParthenogenesisScene() {
   return (
-    <svg viewBox="0 0 900 430" role="img" aria-label="Parthenogenesis showing development from an unfertilised egg">
+    <ReviewedScienceDiagram site="AnimalAsexualReproductionExplorer.jsx:111"><svg viewBox="0 0 900 430" role="img" aria-label="Parthenogenesis showing development from an unfertilised egg">
       <ellipse className="aar-egg" cx="155" cy="205" rx="75" ry="95" />
       <circle className="aar-egg-nucleus" cx="155" cy="205" r="24" />
       <text className="aar-label" x="155" y="335" textAnchor="middle">unfertilised egg</text>
@@ -131,7 +132,7 @@ function ParthenogenesisScene() {
       </g>
       <text className="aar-label" x="750" y="335" textAnchor="middle">new individual</text>
       <text className="aar-note" x="450" y="390" textAnchor="middle">no fertilisation and no fusion of gametes</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

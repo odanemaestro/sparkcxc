@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./foodPreservationExplorer.css";
 
@@ -40,7 +41,7 @@ function MethodsScene(){
 
 function OsmosisScene(){
   return(
-    <svg viewBox="0 0 980 500" role="img" aria-label="Osmosis drawing water out of a microbial cell in concentrated salt or sugar solution">
+    <ReviewedScienceDiagram site="FoodPreservationExplorer.jsx:43"><svg viewBox="0 0 980 500" role="img" aria-label="Osmosis drawing water out of a microbial cell in concentrated salt or sugar solution">
       <g transform="translate(95 95)">
         <circle className="fp-cell" cx="150" cy="150" r="100"/>
         <circle className="fp-core" cx="150" cy="150" r="45"/>
@@ -57,7 +58,7 @@ function OsmosisScene(){
       <path className="fp-water-arrow" d="M350 260C455 315 525 315 625 260"/>
       <text className="fp-water-text" x="490" y="185" textAnchor="middle">water moves out</text>
       <text className="fp-small" x="490" y="455" textAnchor="middle">Less available water slows growth and can damage microbial cells.</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

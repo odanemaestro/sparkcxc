@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./acidsBasesSaltsExplorer.css";
 
@@ -48,7 +49,7 @@ function NeutralisationView(){
   }[context];
   return <div className="spark-neutralisation-view">
     <div className="spark-acidbase-buttons">{["general","stomach","soil","sewage","cooking"].map(k=><button type="button" key={k} className={context===k?"active":""} onClick={()=>setContext(k)}>{k==="general"?"General":k[0].toUpperCase()+k.slice(1)}</button>)}</div>
-    {context==="general"&&<svg className="spark-neutralisation-svg" viewBox="0 0 940 450" role="img" aria-label="Particle model of acid-base neutralisation showing hydrogen ions reacting with hydroxide ions to form water while spectator ions remain in solution">
+    {context==="general"&&<ReviewedScienceDiagram site="AcidsBasesSaltsExplorer.jsx:51"><svg className="spark-neutralisation-svg" viewBox="0 0 940 450" role="img" aria-label="Particle model of acid-base neutralisation showing hydrogen ions reacting with hydroxide ions to form water while spectator ions remain in solution">
       <defs>
         <marker id="ab-reaction-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
           <path className="ab-arrow-head" d="M0 0L10 5L0 10Z"/>
@@ -88,7 +89,7 @@ function NeutralisationView(){
 
       <text className="ab-equation-label" x="470" y="410" textAnchor="middle">H⁺ + OH⁻ → H₂O</text>
       <text className="ab-caption" x="470" y="438" textAnchor="middle">hydrogen ions and hydroxide ions form water; other ions remain dissolved and make the salt solution</text>
-    </svg>}
+    </svg></ReviewedScienceDiagram>}
     <div className="spark-neutral-equation">{data[0]}</div>
     <p>{data[1]}</p>
   </div>;
@@ -96,7 +97,7 @@ function NeutralisationView(){
 
 function CarbonateView(){
   return <div className="spark-carbonate-view">
-    <svg className="spark-carbonate-reaction-svg" viewBox="0 0 940 500" role="img" aria-label="Acid reacting with calcium carbonate in a flask to produce carbon dioxide gas collected and tested with limewater">
+    <ReviewedScienceDiagram site="AcidsBasesSaltsExplorer.jsx:99"><svg className="spark-carbonate-reaction-svg" viewBox="0 0 940 500" role="img" aria-label="Acid reacting with calcium carbonate in a flask to produce carbon dioxide gas collected and tested with limewater">
       <defs>
         <marker id="ab-gas-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
           <path className="ab-arrow-head" d="M0 0L10 5L0 10Z"/>
@@ -127,7 +128,7 @@ function CarbonateView(){
       </g>
 
       <text className="ab-caption" x="470" y="468" textAnchor="middle">acid + carbonate → salt + water + carbon dioxide</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-carbonate-equation"><span>acid</span><b>+</b><span>carbonate</span><b>→</b><span>salt</span><b>+</b><span>water</span><b>+</b><span>carbon dioxide</span></div>
     <article><span>LIMESTONE</span><h4>Calcium carbonate reacts with acids</h4><p>Acidic rainwater or pollution can react with limestone, gradually damaging buildings and monuments made from carbonate rock.</p></article>
   </div>;

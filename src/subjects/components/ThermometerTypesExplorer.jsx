@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./thermometerTypesExplorer.css";
 
@@ -21,13 +22,13 @@ function LiquidView(){
   const t=Math.min(50,Math.max(0,Number(temp)||0));
   const x=70+(t/50)*360;
   return <div className="spark-liquid-thermometer">
-    <svg viewBox="0 0 500 150" role="img" aria-label={"Thermometer reading "+t+" degrees Celsius"}>
+    <ReviewedScienceDiagram site="ThermometerTypesExplorer.jsx:24"><svg viewBox="0 0 500 150" role="img" aria-label={"Thermometer reading "+t+" degrees Celsius"}>
       <rect className="tt-body" x="35" y="45" width="430" height="36" rx="18"/>
       <circle className="tt-bulb" cx="50" cy="63" r="14"/>
       <line className="tt-column" x1="50" y1="63" x2={x} y2="63"/>
       {[0,10,20,30,40,50].map(v=>{const tx=70+(v/50)*360;return <g key={v}><line className="tt-tick" x1={tx} y1="42" x2={tx} y2="57"/><text className="tt-scale" x={tx} y="112" textAnchor="middle">{v}</text></g>})}
       <text className="tt-unit" x="450" y="112">°C</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <label>Set reading<input type="range" min="0" max="50" value={t} onChange={e=>setTemp(e.target.value)}/></label>
     <strong>{t} °C</strong>
     <p>The liquid expands when heated and rises along the narrow bore. A narrow bore makes small volume changes easier to see.</p>
@@ -36,7 +37,7 @@ function LiquidView(){
 
 function ClinicalView(){
   return <div className="spark-clinical-thermometer">
-    <svg viewBox="0 0 780 330" role="img" aria-label="Clinical thermometer with bulb, narrow bore and constriction">
+    <ReviewedScienceDiagram site="ThermometerTypesExplorer.jsx:39"><svg viewBox="0 0 780 330" role="img" aria-label="Clinical thermometer with bulb, narrow bore and constriction">
       <rect className="ct-glass" x="110" y="135" width="560" height="64" rx="32"/>
       <circle className="ct-bulb" cx="135" cy="167" r="28"/>
       <line className="ct-mercury" x1="135" y1="167" x2="480" y2="167"/>
@@ -49,7 +50,7 @@ function ClinicalView(){
       <text className="ct-label" x="615" y="95" textAnchor="middle">held reading</text>
       <line className="ct-callout" x1="615" y1="110" x2="615" y2="142"/>
       <text className="ct-range" x="390" y="255" textAnchor="middle">Typical clinical range: 35 °C to 42 °C</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-clinical-notes"><article><b>Why a constriction?</b><p>It prevents the liquid column from returning immediately to the bulb, so the maximum reading remains visible after removal.</p></article><article><b>Why shake before reuse?</b><p>Shaking forces the liquid back past the constriction into the bulb so a new reading can be taken.</p></article></div>
   </div>;
 }

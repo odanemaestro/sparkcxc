@@ -1,0 +1,1716 @@
+{
+  "AirMassFrontsExplorer.jsx:26": {
+    "6cf10b3e": {
+      "id": "0004",
+      "title": "Warm front weather symbol",
+      "caption": "Red semicircles point in the direction the warm front is moving.",
+      "sources": [
+        {
+          "title": "Warm front symbol.svg",
+          "url": "https://commons.wikimedia.org/wiki/File:Warm_front_symbol.svg",
+          "author": "cs:User:-xfi-",
+          "license": "Public domain",
+          "licenseUrl": "",
+          "changes": "Unmodified source artwork"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0004.svg"
+    },
+    "66fa3851": {
+      "id": "0006",
+      "title": "Stationary front weather symbol",
+      "caption": "Blue triangles and red semicircles lie on opposite sides of the boundary.",
+      "sources": [
+        {
+          "title": "Stationary front symbol.svg",
+          "url": "https://commons.wikimedia.org/wiki/File:Stationary_front_symbol.svg",
+          "author": "cs:User:-xfi-",
+          "license": "Public domain",
+          "licenseUrl": "",
+          "changes": "Unmodified source artwork"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0006.svg"
+    }
+  },
+  "AirMassFrontsExplorer.jsx:142": {
+    "f01834c6": {
+      "id": "0008",
+      "title": "Saharan dust carried west across the Atlantic",
+      "caption": "NASA GEOS visualisation for 26 June 2020, 14:00 UTC. The dust plume extends from North Africa across the Atlantic into the Caribbean and toward the Gulf of Mexico. Darker orange indicates greater dust loading. This is a historical model visualisation, supplied as a PNG rather than an SVG.",
+      "sources": [
+        {
+          "title": "Saharan Dust Makes the Journey to the Americas",
+          "url": "https://gmao.gsfc.nasa.gov/science-snapshots/atmospheric-dust-rivers-saharan-dust-makes-the-journey-to-the-americas/",
+          "author": "NASA Global Modeling and Assimilation Office; Anton Darmenov and Peter Colarco",
+          "license": "NASA media usage guidelines",
+          "licenseUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+          "changes": "Unmodified NASA GEOS visualisation (PNG, not SVG)"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0008.png"
+    }
+  },
+  "AirPollutionExplorer.jsx:72": {
+    "1cb36f8c": {
+      "id": "0014",
+      "title": "Leaf cross-section with dust blocking light and partly covering stomata",
+      "path": "/integrated-science/diagrams/0014.svg",
+      "sources": []
+    }
+  },
+  "AlternativeEnergyExplorer.jsx:53": {
+    "3d6e8290": {
+      "id": "0023",
+      "title": "Hydroelectric dam",
+      "caption": "Water stored above the turbine has gravitational potential energy. Falling water turns the turbine, which drives the generator.",
+      "sources": [
+        {
+          "title": "Hydroelectric dam.svg",
+          "url": "https://commons.wikimedia.org/wiki/File:Hydroelectric_dam.svg",
+          "author": "Tennessee Valley Authority; SVG version by Tomia",
+          "license": "CC BY 2.5",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+          "changes": "Unmodified source artwork"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0023.svg"
+    }
+  },
+  "AnaerobicRespirationExplorer.jsx:19": {
+    "abb35d11": {
+      "id": "0030",
+      "title": "Yeast fermentation apparatus with glucose solution in a warm water bath connected to limewater",
+      "path": "/integrated-science/diagrams/0030.svg",
+      "sources": []
+    }
+  },
+  "AnimalAsexualReproductionExplorer.jsx:63": {
+    "73a73b4c": {
+      "id": "0032",
+      "title": "Budding in Hydra",
+      "caption": "A bud grows on the parent, develops tentacles and separates as a new individual.",
+      "sources": [
+        {
+          "title": "Hydra Budding.svg",
+          "url": "https://commons.wikimedia.org/wiki/File:Hydra_Budding.svg",
+          "author": "A.houghton19",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "changes": "Unmodified source artwork"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0032.svg"
+    }
+  },
+  "AnimalAsexualReproductionExplorer.jsx:111": {
+    "eb572aec": {
+      "id": "0034",
+      "title": "Parthenogenesis showing development from an unfertilised egg",
+      "path": "/integrated-science/diagrams/0034.svg",
+      "sources": []
+    }
+  },
+  "ArtificialLightingExplorer.jsx:32": {
+    "db0baa99": {
+      "id": "0036",
+      "title": "Extended light source produces umbra and penumbra",
+      "path": "/integrated-science/diagrams/0036.svg",
+      "sources": []
+    }
+  },
+  "BirthControlExplorer.jsx:88": {
+    "f3f21969": {
+      "id": "0040",
+      "title": "Intrauterine device inside the uterus",
+      "caption": "The source illustration shows where an IUD sits inside the uterus.",
+      "sources": [
+        {
+          "title": "Iud inside uterus svg hariadhi.svg",
+          "url": "https://commons.wikimedia.org/wiki/File:Iud_inside_uterus_svg_hariadhi.svg",
+          "author": "Hariadhi",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "changes": "Unmodified source artwork"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0040.svg"
+    }
+  },
+  "BirthControlExplorer.jsx:117": {
+    "983b6071": {
+      "id": "0041",
+      "title": "Fertility awareness tracks changes across the menstrual cycle",
+      "path": "/integrated-science/diagrams/0041.svg",
+      "sources": []
+    }
+  },
+  "BloodGroupExplorer.jsx:73": {
+    "ff45c55f": {
+      "id": "0044",
+      "title": "ABO blood group A antigens and antibodies",
+      "path": "/integrated-science/diagrams/0044.svg",
+      "sources": []
+    }
+  },
+  "BreathingMechanismExplorer.jsx:6": {
+    "c5716fe5": {
+      "id": "0056",
+      "title": "The respiratory system",
+      "path": "/integrated-science/diagrams/0056.svg",
+      "sources": []
+    }
+  },
+  "CleaningAgentsEffectsExplorer.jsx:71": {
+    "d42add46": {
+      "id": "0064",
+      "title": "Kettle wall cross-section showing calcium carbonate scale deposited on the metal surface",
+      "path": "/integrated-science/diagrams/0064.svg",
+      "sources": []
+    },
+    "ef69ddca": {
+      "id": "0066",
+      "title": "Kettle wall cross-section showing weak acid reacting with calcium carbonate scale, carbon dioxide bubbles and thinning scale",
+      "path": "/integrated-science/diagrams/0066.svg",
+      "sources": []
+    }
+  },
+  "CorrosionProtectionExplorer.jsx:26": {
+    "ea4998e3": {
+      "id": "0071",
+      "title": "Galvanised steel with continuous zinc coating acting as a barrier between iron and oxygen and water",
+      "path": "/integrated-science/diagrams/0071.svg",
+      "sources": []
+    }
+  },
+  "CropProductionExplorer.jsx:52": {
+    "9efc133a": {
+      "id": "0076",
+      "title": "Hydroponic crop system",
+      "path": "/integrated-science/diagrams/0076.svg",
+      "sources": []
+    }
+  },
+  "CropProductionExplorer.jsx:71": {
+    "ee9efb76": {
+      "id": "0077",
+      "title": "Greenhouse crop production",
+      "path": "/integrated-science/diagrams/0077.svg",
+      "sources": []
+    }
+  },
+  "CropProductionExplorer.jsx:89": {
+    "f6cf4b4f": {
+      "id": "0078",
+      "title": "Container gardening",
+      "path": "/integrated-science/diagrams/0078.svg",
+      "sources": []
+    }
+  },
+  "CropProductionExplorer.jsx:106": {
+    "ef67b591": {
+      "id": "0079",
+      "title": "Crop rotation example",
+      "caption": "The published example rotates maize, soybeans, cotton and peanuts. Legumes can restore nitrogen through their association with nitrogen-fixing bacteria.",
+      "sources": [
+        {
+          "title": "Crop Rotation.svg",
+          "url": "https://commons.wikimedia.org/wiki/File:Crop_Rotation.svg",
+          "author": "Timblanch",
+          "license": "CC0",
+          "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+          "changes": "Unmodified source artwork"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0079.svg"
+    }
+  },
+  "CropProductionExplorer.jsx:156": {
+    "ba3ce0bc": {
+      "id": "0082",
+      "title": "Organic farming system",
+      "path": "/integrated-science/diagrams/0082.svg",
+      "sources": []
+    }
+  },
+  "DivingEffectsExplorer.jsx:30": {
+    "e2e3497d": {
+      "id": "0083",
+      "title": "Ear anatomy during pressure changes",
+      "caption": "This anatomical reference locates the eardrum and Eustachian tube. On descent, water pressure outside the eardrum increases; a pressure difference can push the eardrum inward. The illustration does not show deformation.",
+      "sources": [
+        {
+          "title": "ear.svg",
+          "url": "https://github.com/duerrsimon/bioicons/blob/main/static/icons/cc-by-3.0/Human_physiology/Servier/ear.svg",
+          "author": "Servier Medical Art",
+          "license": "CC-BY-3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+          "changes": "Unmodified source artwork"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0083.svg"
+    },
+    "9716170f": {
+      "id": "0084",
+      "title": "Ear anatomy and pressure equalisation",
+      "caption": "The Eustachian tube connects the middle ear to the throat and allows pressure to equalise across the eardrum.",
+      "sources": [
+        {
+          "title": "ear.svg",
+          "url": "https://github.com/duerrsimon/bioicons/blob/main/static/icons/cc-by-3.0/Human_physiology/Servier/ear.svg",
+          "author": "Servier Medical Art",
+          "license": "CC-BY-3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+          "changes": "Unmodified source artwork"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0084.svg"
+    }
+  },
+  "EarFunctionExplorer.jsx:29": {
+    "b7b1f21f": {
+      "id": "0086",
+      "title": "Sound transmission in the ear",
+      "path": "/integrated-science/diagrams/0086.svg",
+      "sources": []
+    }
+  },
+  "EarFunctionExplorer.jsx:71": {
+    "14ab8b4b": {
+      "id": "0087",
+      "title": "Frequency controls pitch and amplitude controls loudness",
+      "path": "/integrated-science/diagrams/0087.svg",
+      "sources": []
+    }
+  },
+  "EarFunctionExplorer.jsx:91": {
+    "e9af4ea": {
+      "id": "0088",
+      "title": "Semicircular canals of the inner ear",
+      "caption": "The three curved canals above the cochlea detect rotational movement. Movement of fluid bends sensory hair cells. This source is an anatomical reference, not a fluid-flow diagram.",
+      "sources": [
+        {
+          "title": "ear.svg",
+          "url": "https://github.com/duerrsimon/bioicons/blob/main/static/icons/cc-by-3.0/Human_physiology/Servier/ear.svg",
+          "author": "Servier Medical Art",
+          "license": "CC-BY-3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+          "changes": "Unmodified source artwork"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0088.svg"
+    }
+  },
+  "EarFunctionExplorer.jsx:113": {
+    "979f2e3a": {
+      "id": "0089",
+      "title": "Ear anatomy and pressure equalisation",
+      "caption": "The Eustachian tube connects the middle ear to the throat and allows pressure to equalise across the eardrum.",
+      "sources": [
+        {
+          "title": "ear.svg",
+          "url": "https://github.com/duerrsimon/bioicons/blob/main/static/icons/cc-by-3.0/Human_physiology/Servier/ear.svg",
+          "author": "Servier Medical Art",
+          "license": "CC-BY-3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+          "changes": "Unmodified source artwork"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0089.svg"
+    }
+  },
+  "EarthMoonEffectsExplorer.jsx:10": {
+    "348d5d02": {
+      "id": "0090",
+      "title": "Earth rotating with one side illuminated by the Sun",
+      "path": "/integrated-science/diagrams/0090.svg",
+      "sources": []
+    },
+    "1a5433ee": {
+      "id": "0094",
+      "title": "Earth rotating with one side illuminated by the Sun",
+      "path": "/integrated-science/diagrams/0094.svg",
+      "sources": []
+    }
+  },
+  "EarthMoonEffectsExplorer.jsx:48": {
+    "5e8497e8": {
+      "id": "0092",
+      "title": "Sun Earth and Moon geometry for new moon, first quarter, full moon and last quarter with the corresponding view from Earth",
+      "path": "/integrated-science/diagrams/0092.svg",
+      "sources": []
+    }
+  },
+  "EarthMoonEffectsExplorer.jsx:132": {
+    "b10f393f": {
+      "id": "0093",
+      "title": "Moon between Sun and Earth during a solar eclipse",
+      "path": "/integrated-science/diagrams/0093.svg",
+      "sources": []
+    },
+    "ce8eec72": {
+      "id": "0095",
+      "title": "Earth between Sun and Moon during a lunar eclipse",
+      "path": "/integrated-science/diagrams/0095.svg",
+      "sources": []
+    }
+  },
+  "ElectricalAccidentFirstAidExplorer.jsx:55": {
+    "146b485d": {
+      "id": "0097",
+      "title": "Side-lying recovery position",
+      "caption": "Published illustration of the recovery position.",
+      "sources": [
+        {
+          "title": "Recovery position.svg",
+          "url": "https://commons.wikimedia.org/wiki/File:Recovery_position.svg",
+          "author": "Rama",
+          "license": "CC BY-SA 3.0 fr",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/fr/deed.en",
+          "changes": "Unmodified source artwork"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0097.svg"
+    }
+  },
+  "ElectricalConductorsExplorer.jsx:21": {
+    "50236244": {
+      "id": "0104",
+      "title": "Conductivity test: Iron nail",
+      "path": "/integrated-science/diagrams/0104.svg",
+      "sources": []
+    },
+    "8153d73c": {
+      "id": "0099",
+      "title": "Conductivity test: Copper wire",
+      "path": "/integrated-science/diagrams/0099.svg",
+      "sources": []
+    },
+    "111016c4": {
+      "id": "0102",
+      "title": "Conductivity test: Aluminium foil",
+      "path": "/integrated-science/diagrams/0102.svg",
+      "sources": []
+    },
+    "4c33588": {
+      "id": "0103",
+      "title": "Conductivity test: Pencil graphite",
+      "path": "/integrated-science/diagrams/0103.svg",
+      "sources": []
+    },
+    "bf0a3426": {
+      "id": "0105",
+      "title": "Conductivity test: Plastic ruler",
+      "path": "/integrated-science/diagrams/0105.svg",
+      "sources": []
+    },
+    "df1f9d68": {
+      "id": "0106",
+      "title": "Conductivity test: Rubber band",
+      "path": "/integrated-science/diagrams/0106.svg",
+      "sources": []
+    },
+    "1eeed438": {
+      "id": "0107",
+      "title": "Conductivity test: Dry wood",
+      "path": "/integrated-science/diagrams/0107.svg",
+      "sources": []
+    },
+    "75e44a12": {
+      "id": "0108",
+      "title": "Conductivity test: Silicon",
+      "path": "/integrated-science/diagrams/0108.svg",
+      "sources": []
+    }
+  },
+  "ElectricalConductorsExplorer.jsx:57": {
+    "9a76c18b": {
+      "id": "0100",
+      "title": "Copper electrical wire with plastic insulation",
+      "path": "/integrated-science/diagrams/0100.svg",
+      "sources": []
+    }
+  },
+  "ElectricalHazardsExplorer.jsx:106": {
+    "f97a5f13": {
+      "id": "0111",
+      "title": "Glass container in microwave",
+      "path": "/integrated-science/diagrams/0111.svg",
+      "sources": []
+    },
+    "317ee2c5": {
+      "id": "0116",
+      "title": "Metal container in microwave with arcing risk",
+      "path": "/integrated-science/diagrams/0116.svg",
+      "sources": []
+    }
+  },
+  "ElectricalHazardsExplorer.jsx:39": {
+    "309438c6": {
+      "id": "0113",
+      "title": "Damaged electrical cord showing broken insulation and exposed conductors",
+      "type": "remove",
+      "sources": []
+    }
+  },
+  "ElectricCircuitFlowExplorer.jsx:6": {
+    "fe1e2036": {
+      "id": "0117",
+      "title": "Cell",
+      "path": "/integrated-science/diagrams/0117.svg",
+      "sources": []
+    },
+    "920c73e": {
+      "id": "0118",
+      "title": "Lamp",
+      "path": "/integrated-science/diagrams/0118.svg",
+      "sources": []
+    },
+    "104ef717": {
+      "id": "0121",
+      "title": "Open switch",
+      "path": "/integrated-science/diagrams/0121.svg",
+      "sources": []
+    },
+    "a30878e6": {
+      "id": "0122",
+      "title": "Ammeter",
+      "path": "/integrated-science/diagrams/0122.svg",
+      "sources": []
+    },
+    "18a6e628": {
+      "id": "0123",
+      "title": "Voltmeter",
+      "path": "/integrated-science/diagrams/0123.svg",
+      "sources": []
+    }
+  },
+  "ElectricCircuitFlowExplorer.jsx:32": {
+    "7c7596ac": {
+      "id": "0125",
+      "title": "Two lamps in series",
+      "path": "/integrated-science/diagrams/0125.svg",
+      "sources": []
+    },
+    "bdad958": {
+      "id": "0128",
+      "title": "Two lamps in parallel",
+      "path": "/integrated-science/diagrams/0128.svg",
+      "sources": []
+    }
+  },
+  "ElectricCircuitFlowExplorer.jsx:56": {
+    "94872c2a": {
+      "id": "0126",
+      "title": "Circuit showing ammeter in series and voltmeter in parallel across a resistor",
+      "path": "/integrated-science/diagrams/0126.svg",
+      "sources": []
+    }
+  },
+  "EndocrineSystemExplorer.jsx:35": {
+    "72ff0f5e": {
+      "id": "0129",
+      "title": "The endocrine system",
+      "path": "/integrated-science/diagrams/0129.svg",
+      "sources": []
+    }
+  },
+  "EndocrineSystemExplorer.jsx:125": {
+    "b23ae4a": {
+      "id": "0131",
+      "title": "Insulin response to raised blood glucose",
+      "type": "text",
+      "steps": [
+        "Blood glucose rises after a meal",
+        "Pancreatic beta cells release insulin",
+        "Body cells take up more glucose; liver and muscle store glucose as glycogen",
+        "Blood glucose returns toward its normal range"
+      ],
+      "sources": []
+    }
+  },
+  "EnergyConversionExplorer.jsx:34": {
+    "9c85d841": {
+      "id": "0135",
+      "title": "Torch energy conversion from chemical energy in a battery to electrical energy and light",
+      "path": "/integrated-science/diagrams/0135.svg",
+      "sources": []
+    }
+  },
+  "EnergyConversionExplorer.jsx:20": {
+    "2e74e3e0": {
+      "id": "0136",
+      "title": "Electric fan energy conversion from electrical energy to kinetic energy with heat and sound transfers",
+      "path": "/integrated-science/diagrams/0136.svg",
+      "sources": []
+    }
+  },
+  "EnergyConversionExplorer.jsx:48": {
+    "505fcc09": {
+      "id": "0137",
+      "title": "Hydroelectric dam",
+      "caption": "Water stored above the turbine has gravitational potential energy. Falling water turns the turbine, which drives the generator.",
+      "sources": [
+        {
+          "title": "Hydroelectric dam.svg",
+          "url": "https://commons.wikimedia.org/wiki/File:Hydroelectric_dam.svg",
+          "author": "Tennessee Valley Authority; SVG version by Tomia",
+          "license": "CC BY 2.5",
+          "licenseUrl": "https://creativecommons.org/licenses/by/2.5",
+          "changes": "Unmodified source artwork"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0137.svg"
+    }
+  },
+  "EnergyConversionExplorer.jsx:62": {
+    "f0d8b0f1": {
+      "id": "0138",
+      "title": "Car braking converting kinetic energy mainly to thermal energy through friction",
+      "type": "text",
+      "steps": [
+        "A moving car has kinetic energy",
+        "Friction during braking transfers energy to the brakes, tyres and surroundings",
+        "Thermal energy increases as the car slows"
+      ],
+      "sources": []
+    }
+  },
+  "EquilibriumMomentsExplorer.jsx:42": {
+    "4d877bf8": {
+      "id": "0143",
+      "title": "Balanced beam showing equal clockwise and anticlockwise moments about a pivot",
+      "path": "/integrated-science/diagrams/0143.svg",
+      "sources": []
+    }
+  },
+  "ExcretionEgestionExplorer.jsx:108": {
+    "a25b41ea": {
+      "id": "0145",
+      "title": "Carbon dioxide removal pathway",
+      "caption": "Cellular respiration produces carbon dioxide. Blood carries it to the lungs; it diffuses from the capillary blood into the alveolar air and leaves during exhalation. The SVG shows the gas-exchange step.",
+      "sources": [
+        {
+          "title": "Gas exchange in the alveolus",
+          "url": "https://commons.wikimedia.org/wiki/File:Gas_exchange_in_the_aveolus_simple_(en).svg",
+          "author": "domdomegg",
+          "license": "CC BY 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+          "changes": "Unmodified source artwork"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0145.svg"
+    },
+    "f8b5f8d": {
+      "id": "0146",
+      "title": "Urea removal pathway",
+      "caption": "Urea is made in the liver during the processing of excess amino acids. Blood carries it to the kidneys; urea remaining in the urine passes through the ureters to the bladder and leaves through the urethra. The SVG shows the urinary route, not urea production in the liver.",
+      "sources": [
+        {
+          "title": "Urinary system",
+          "url": "https://commons.wikimedia.org/wiki/File:Illu_urinary_system.svg",
+          "author": "US National Cancer Institute; SVG adaptation by Thstehle",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "changes": "User-supplied copy of the published SVG"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0146.svg"
+    },
+    "40e3141b": {
+      "id": "0147",
+      "title": "Water and salts in sweat removal pathway",
+      "caption": "Sweat glands form a watery secretion containing dissolved salts. Sweat passes from the coiled gland through its duct to the skin surface. Water and some salts leave the body; evaporation of the water cools the skin. The published SVG shows the gland and duct.",
+      "sources": [
+        {
+          "title": "Sweat Gland Cross Section",
+          "url": "https://bioart.niaid.nih.gov/bioart/504",
+          "author": "NIAID / Ryan Kissinger",
+          "license": "Public domain (US government work)",
+          "licenseUrl": "https://commons.wikimedia.org/wiki/File:Sweat_Gland_Cross_Section_(NIH_BioArt_504).svg",
+          "changes": "Unmodified source artwork"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0147.svg"
+    },
+    "5fb69548": {
+      "id": "0148",
+      "title": "Bile pigments removal pathway",
+      "caption": "Breakdown of haemoglobin from old red blood cells produces bile pigments such as bilirubin. The liver processes bilirubin and secretes it in bile. Bile flows through the bile ducts into the duodenum; intestinal breakdown products leave mainly in faeces. The SVG shows the liver-to-intestine route. Key: RHD = right hepatic duct; LHD = left hepatic duct; CHD = common hepatic duct.",
+      "sources": [
+        {
+          "title": "Biliary system",
+          "url": "https://commons.wikimedia.org/wiki/File:Biliary_system_new.svg",
+          "author": "Drriad; revised by Vishnu2011",
+          "license": "Public domain",
+          "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+          "changes": "Unmodified source artwork"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0148.svg"
+    },
+    "c54173f4": {
+      "id": "0149",
+      "title": "Undigested food in faeces removal pathway",
+      "type": "text",
+      "steps": [
+        "Food is digested and nutrients are absorbed",
+        "Undigested and unabsorbed material remains in the alimentary canal",
+        "Faeces leave through the anus: egestion, not excretion"
+      ],
+      "sources": []
+    }
+  },
+  "EyeFunctionExplorer.jsx:7": {
+    "4f65e2d6": {
+      "id": "0152",
+      "title": "Eye anatomy: focusing on a near object",
+      "caption": "For a near object, the ciliary muscles contract, tension in the suspensory ligaments decreases and the lens becomes thicker, increasing refraction. This reference shows the anatomy rather than a measured ray trace.",
+      "sources": [
+        {
+          "title": "eye-crosssection.svg",
+          "url": "https://github.com/duerrsimon/bioicons/blob/main/static/icons/cc-by-3.0/Human_physiology/Servier/eye-crosssection.svg",
+          "author": "Servier Medical Art",
+          "license": "CC-BY-3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+          "changes": "Unmodified source artwork"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0152.svg"
+    },
+    "bc78f401": {
+      "id": "0154",
+      "title": "Eye anatomy: focusing on a distant object",
+      "caption": "For a distant object, the ciliary muscles relax, the suspensory ligaments tighten and the lens becomes thinner, reducing refraction. This reference shows the anatomy rather than a measured ray trace.",
+      "sources": [
+        {
+          "title": "eye-crosssection.svg",
+          "url": "https://github.com/duerrsimon/bioicons/blob/main/static/icons/cc-by-3.0/Human_physiology/Servier/eye-crosssection.svg",
+          "author": "Servier Medical Art",
+          "license": "CC-BY-3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+          "changes": "Unmodified source artwork"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0154.svg"
+    }
+  },
+  "EyeFunctionExplorer.jsx:50": {
+    "c8e1987a": {
+      "id": "0153",
+      "title": "Eye anatomy: bright light",
+      "caption": "In bright light, the circular muscles of the iris contract and the radial muscles relax. The pupil narrows, reducing the light entering the eye.",
+      "sources": [
+        {
+          "title": "eye-crosssection.svg",
+          "url": "https://github.com/duerrsimon/bioicons/blob/main/static/icons/cc-by-3.0/Human_physiology/Servier/eye-crosssection.svg",
+          "author": "Servier Medical Art",
+          "license": "CC-BY-3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+          "changes": "Unmodified source artwork"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0153.svg"
+    },
+    "62a735ee": {
+      "id": "0155",
+      "title": "Eye anatomy: dim light",
+      "caption": "In dim light, the radial muscles of the iris contract and the circular muscles relax. The pupil widens, allowing more light to enter.",
+      "sources": [
+        {
+          "title": "eye-crosssection.svg",
+          "url": "https://github.com/duerrsimon/bioicons/blob/main/static/icons/cc-by-3.0/Human_physiology/Servier/eye-crosssection.svg",
+          "author": "Servier Medical Art",
+          "license": "CC-BY-3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+          "changes": "Unmodified source artwork"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0155.svg"
+    }
+  },
+  "FishingMethodsExplorer.jsx:15": {
+    "d13f66b6": {
+      "id": "0161",
+      "title": "Hand line fishing showing one line, hook and a single fish",
+      "path": "/integrated-science/diagrams/0161.svg",
+      "sources": []
+    }
+  },
+  "FoodEnergyNutritionExplorer.jsx:54": {
+    "f32a4f05": {
+      "id": "0179",
+      "title": "Benedict's test for reducing sugar showing a test tube heated in a hot-water bath and a brick-red precipitate",
+      "path": "/integrated-science/diagrams/0179.svg",
+      "sources": []
+    }
+  },
+  "FoodEnergyNutritionExplorer.jsx:74": {
+    "7dbec358": {
+      "id": "0180",
+      "title": "Biuret test for protein showing blue reagent becoming purple or lilac when protein is present",
+      "path": "/integrated-science/diagrams/0180.svg",
+      "sources": []
+    }
+  },
+  "FoodMicroorganismExplorer.jsx:80": {
+    "cb2d2b33": {
+      "id": "0182",
+      "title": "Bread mould structure showing spores, a germinating spore, branching thread-like hyphae and a mycelium spreading through bread",
+      "path": "/integrated-science/diagrams/0182.svg",
+      "sources": []
+    }
+  },
+  "FoodMicroorganismExplorer.jsx:142": {
+    "c919751a": {
+      "id": "0183",
+      "title": "Milk pH at 4 degrees Celsius and 30 degrees Celsius over 48 hours",
+      "path": "/integrated-science/diagrams/0183.svg",
+      "sources": []
+    }
+  },
+  "ForcePrinciplesExplorer.jsx:40": {
+    "4a1dabab": {
+      "id": "0185",
+      "title": "Free-body diagram with 20 newtons left, 35 newtons right and resultant 15 newtons right",
+      "path": "/integrated-science/diagrams/0185.svg",
+      "sources": []
+    },
+    "e55ba6d7": {
+      "id": "0188",
+      "title": "Free-body diagram with 0 newtons left, 35 newtons right and resultant 35 newtons right",
+      "path": "/integrated-science/diagrams/0188.svg",
+      "sources": []
+    },
+    "d46c5b26": {
+      "id": "0189",
+      "title": "Free-body diagram with 20 newtons left, 0 newtons right and resultant 20 newtons left",
+      "path": "/integrated-science/diagrams/0189.svg",
+      "sources": []
+    },
+    "fc0cfd4c": {
+      "id": "0193",
+      "title": "Free-body diagram with 0 newtons left, 0 newtons right and resultant 0 newtons balanced",
+      "path": "/integrated-science/diagrams/0193.svg",
+      "sources": []
+    }
+  },
+  "GaseousExchangeExplorer.jsx:65": {
+    "4b9709fc": {
+      "id": "0196",
+      "title": "Alveolar sacs and surrounding capillaries",
+      "caption": "Oxygen diffuses from the alveolar air into the blood; carbon dioxide diffuses from the blood into the alveoli.",
+      "sources": [
+        {
+          "title": "Alveolar sacs and capillary beds",
+          "url": "https://commons.wikimedia.org/wiki/File:Alveolus_diagram.svg",
+          "author": "Mariana Ruiz Villarreal (LadyofHats)",
+          "license": "Public domain",
+          "licenseUrl": "https://commons.wikimedia.org/wiki/File:Alveolus_diagram.svg#Licensing",
+          "changes": "User-supplied copy; unmodified source artwork"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0196.svg"
+    }
+  },
+  "GaseousExchangeExplorer.jsx:13": {
+    "31895d7e": {
+      "id": "0200",
+      "title": "The respiratory system",
+      "path": "/integrated-science/diagrams/0200.svg",
+      "sources": []
+    }
+  },
+  "HouseholdChemicalsExplorer.jsx:24": {
+    "2d05efa4": {
+      "id": "0226",
+      "title": "Irritant / harmful hazard pictogram",
+      "path": "/integrated-science/diagrams/0226.svg",
+      "sources": []
+    }
+  },
+  "HumanDigestionExplorer.jsx:17": {
+    "4d46c113": {
+      "id": "0229",
+      "title": "The digestive system",
+      "path": "/integrated-science/diagrams/0229.svg",
+      "sources": []
+    }
+  },
+  "HumanDigestionExplorer.jsx:125": {
+    "47a2c550": {
+      "id": "0230",
+      "title": "Intestinal villi",
+      "caption": "A thin epithelium and extensive capillary network support absorption. Lacteals transport absorbed lipid products.",
+      "sources": [
+        {
+          "title": "intestinal villi",
+          "url": "https://github.com/duerrsimon/bioicons/blob/main/static/icons/cc-by-3.0/Human_physiology/Servier/intestinal-villi.svg",
+          "author": "Servier Medical Art",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+          "changes": "Unmodified source artwork; distributed by Bioicons under CC BY 3.0"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0230.svg"
+    }
+  },
+  "HumanExcretionMechanismsExplorer.jsx:149": {
+    "e16e0415": {
+      "id": "0234",
+      "title": "Cross-section of human skin",
+      "caption": "Servier anatomical illustration showing the skin layers, hair follicle, glands, vessels and sensory structures.",
+      "sources": [
+        {
+          "title": "skin.svg",
+          "url": "https://github.com/duerrsimon/bioicons/blob/main/static/icons/cc-by-3.0/Human_physiology/Servier/skin.svg",
+          "author": "Servier Medical Art",
+          "license": "CC-BY-3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+          "changes": "Unmodified source artwork"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0234.svg"
+    }
+  },
+  "HumanExcretionMechanismsExplorer.jsx:206": {
+    "569d309c": {
+      "id": "0235",
+      "title": "Gas exchange at the alveoli",
+      "caption": "Carbon dioxide diffuses from blood into alveolar air and is exhaled. Exhaled air also carries water vapour.",
+      "sources": [
+        {
+          "title": "Alveolar sacs and capillary beds",
+          "url": "https://commons.wikimedia.org/wiki/File:Alveolus_diagram.svg",
+          "author": "Mariana Ruiz Villarreal (LadyofHats)",
+          "license": "Public domain",
+          "licenseUrl": "https://commons.wikimedia.org/wiki/File:Alveolus_diagram.svg#Licensing",
+          "changes": "User-supplied copy; unmodified source artwork"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0235.svg"
+    }
+  },
+  "MachineEfficiencyExplorer.jsx:13": {
+    "5c1ed6fe": {
+      "id": "0279",
+      "title": "Lever showing load force, effort force and fulcrum",
+      "path": "/integrated-science/diagrams/0279.svg",
+      "sources": []
+    },
+    "3dfdd3bf": {
+      "id": "0284",
+      "title": "Lever showing load force, effort force and fulcrum",
+      "path": "/integrated-science/diagrams/0284.svg",
+      "sources": []
+    },
+    "f8612f0b": {
+      "id": "0285",
+      "title": "Lever showing load force, effort force and fulcrum",
+      "path": "/integrated-science/diagrams/0285.svg",
+      "sources": []
+    },
+    "a5b956f1": {
+      "id": "0286",
+      "title": "Lever showing load force, effort force and fulcrum",
+      "path": "/integrated-science/diagrams/0286.svg",
+      "sources": []
+    }
+  },
+  "MachineEfficiencyExplorer.jsx:36": {
+    "773a2e04": {
+      "id": "0287",
+      "title": "Box moved by a horizontal force through a measured distance",
+      "path": "/integrated-science/diagrams/0287.svg",
+      "sources": []
+    },
+    "5b95c0de": {
+      "id": "0288",
+      "title": "Box moved by a horizontal force through a measured distance",
+      "path": "/integrated-science/diagrams/0288.svg",
+      "sources": []
+    },
+    "20a68f7e": {
+      "id": "0289",
+      "title": "Box moved by a horizontal force through a measured distance",
+      "path": "/integrated-science/diagrams/0289.svg",
+      "sources": []
+    }
+  },
+  "MachineEfficiencyExplorer.jsx:60": {
+    "7b1f917d": {
+      "id": "0290",
+      "title": "Energy flow through a machine showing input, useful output and energy dissipated as heat and sound",
+      "path": "/integrated-science/diagrams/0290.svg",
+      "sources": []
+    },
+    "461bfc05": {
+      "id": "0291",
+      "title": "Energy flow through a machine showing input, useful output and energy dissipated as heat and sound",
+      "path": "/integrated-science/diagrams/0291.svg",
+      "sources": []
+    },
+    "51695c61": {
+      "id": "0292",
+      "title": "Energy flow through a machine showing input, useful output and energy dissipated as heat and sound",
+      "path": "/integrated-science/diagrams/0292.svg",
+      "sources": []
+    }
+  },
+  "MarineNavigationExplorer.jsx:28": {
+    "eb1cb1bb": {
+      "id": "0297",
+      "title": "Boat sonar showing an outgoing sound pulse, returning echo, round-trip distance 600 metres and depth 300 metres",
+      "path": "/integrated-science/diagrams/0297.svg",
+      "sources": []
+    },
+    "9400550f": {
+      "id": "0298",
+      "title": "Boat sonar showing an outgoing sound pulse, returning echo, round-trip distance 0 metres and depth 0 metres",
+      "path": "/integrated-science/diagrams/0298.svg",
+      "sources": []
+    }
+  },
+  "MenstrualCycleExplorer.jsx:22": {
+    "af3fd6de": {
+      "id": "0309",
+      "title": "Typical 28-day menstrual cycle timeline",
+      "path": "/integrated-science/diagrams/0309.svg",
+      "sources": []
+    },
+    "a859c48f": {
+      "id": "0311",
+      "title": "Typical 28-day menstrual cycle timeline",
+      "path": "/integrated-science/diagrams/0311.svg",
+      "sources": []
+    }
+  },
+  "MetalReactivityExplorer.jsx:22": {
+    "8b87d282": {
+      "id": "0312",
+      "title": "Zinc reacting with dilute hydrochloric acid in a test tube",
+      "path": "/integrated-science/diagrams/0312.svg",
+      "sources": []
+    },
+    "ccf58374": {
+      "id": "0314",
+      "title": "Iron reacting with dilute hydrochloric acid in a test tube",
+      "path": "/integrated-science/diagrams/0314.svg",
+      "sources": []
+    },
+    "6b4aa840": {
+      "id": "0315",
+      "title": "Copper reacting with dilute hydrochloric acid in a test tube",
+      "path": "/integrated-science/diagrams/0315.svg",
+      "sources": []
+    },
+    "68f78c58": {
+      "id": "0316",
+      "title": "Silver reacting with dilute hydrochloric acid in a test tube",
+      "path": "/integrated-science/diagrams/0316.svg",
+      "sources": []
+    }
+  },
+  "MetalReactivityExplorer.jsx:55": {
+    "6f5c0602": {
+      "id": "0313",
+      "title": "Iron nail in copper two sulfate solution showing copper deposition",
+      "path": "/integrated-science/diagrams/0313.svg",
+      "sources": []
+    },
+    "90945d7": {
+      "id": "0317",
+      "title": "Copper strip in iron salt solution showing no displacement",
+      "path": "/integrated-science/diagrams/0317.svg",
+      "sources": []
+    }
+  },
+  "MicrobeExplorer.jsx:47": {
+    "b967f966": {
+      "id": "0318",
+      "title": "Bacterial cell",
+      "caption": "Bacteria are prokaryotes: their DNA is not enclosed in a nucleus. This source shows the cell envelope, cytoplasm, genetic material and external structures.",
+      "sources": [
+        {
+          "title": "bacterium-interior.svg",
+          "url": "https://github.com/duerrsimon/bioicons/blob/main/static/icons/cc-by-3.0/Microbiology/Servier/bacterium-interior.svg",
+          "author": "Servier Medical Art",
+          "license": "CC-BY-3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+          "changes": "Unmodified source artwork"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0318.svg"
+    }
+  },
+  "MicrobeExplorer.jsx:59": {
+    "cd73b8fc": {
+      "id": "0319",
+      "title": "Fungal hypha and cells",
+      "caption": "Fungi are eukaryotes with nuclei and cell walls. The published illustration shows hyphal cell organisation and spores.",
+      "sources": [
+        {
+          "title": "Fungal_cells.svg",
+          "url": "https://github.com/duerrsimon/bioicons/blob/main/static/icons/cc-by-4.0/Microbiology/SwissBioPics/Fungal_cells.svg",
+          "author": "SwissBioPics",
+          "license": "CC-BY-4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+          "changes": "Removed non-rendering editor extensions and/or external links; illustration geometry unchanged"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0319.svg"
+    }
+  },
+  "MicrobeExplorer.jsx:75": {
+    "261f414c": {
+      "id": "0320",
+      "title": "Influenza virus structure",
+      "caption": "This source shows an enveloped influenza virus. A virus is not a cell; genetic material is protected by proteins, with a lipid envelope in influenza.",
+      "sources": [
+        {
+          "title": "influenza-virus-interior.svg",
+          "url": "https://github.com/duerrsimon/bioicons/blob/main/static/icons/cc-by-3.0/Viruses/Servier/influenza-virus-interior.svg",
+          "author": "Servier Medical Art",
+          "license": "CC-BY-3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+          "changes": "Unmodified source artwork"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0320.svg"
+    }
+  },
+  "MicrobeExplorer.jsx:96": {
+    "d988a211": {
+      "id": "0321",
+      "title": "Inside a bacterial cell",
+      "path": "/integrated-science/diagrams/0321.svg",
+      "sources": []
+    }
+  },
+  "MicrobeExplorer.jsx:148": {
+    "4cc4c6e": {
+      "id": "0322",
+      "title": "A budding yeast cell",
+      "path": "/integrated-science/diagrams/0322.svg",
+      "sources": []
+    }
+  },
+  "MicrobeExplorer.jsx:222": {
+    "4277185c": {
+      "id": "0323",
+      "title": "An enveloped virus",
+      "path": "/integrated-science/diagrams/0323.svg",
+      "sources": []
+    }
+  },
+  "MixturesExplorer.jsx:13": {
+    "e21e529f": {
+      "id": "0326",
+      "title": "Solution particle model",
+      "path": "/integrated-science/diagrams/0326.svg",
+      "sources": []
+    },
+    "c2b3335a": {
+      "id": "0327",
+      "title": "Suspension particle model",
+      "path": "/integrated-science/diagrams/0327.svg",
+      "sources": []
+    },
+    "1f6a49a1": {
+      "id": "0328",
+      "title": "Colloid particle model",
+      "path": "/integrated-science/diagrams/0328.svg",
+      "sources": []
+    }
+  },
+  "MomentumConservationExplorer.jsx:28": {
+    "de0ba780": {
+      "id": "0329",
+      "title": "Perfectly inelastic trolley collision showing momentum before and after the trolleys stick together",
+      "path": "/integrated-science/diagrams/0329.svg",
+      "sources": []
+    },
+    "ae3d730a": {
+      "id": "0331",
+      "title": "Perfectly inelastic trolley collision showing momentum before and after the trolleys stick together",
+      "path": "/integrated-science/diagrams/0331.svg",
+      "sources": []
+    },
+    "1db48abe": {
+      "id": "0332",
+      "title": "Perfectly inelastic trolley collision showing momentum before and after the trolleys stick together",
+      "path": "/integrated-science/diagrams/0332.svg",
+      "sources": []
+    },
+    "b33b959": {
+      "id": "0333",
+      "title": "Perfectly inelastic trolley collision showing momentum before and after the trolleys stick together",
+      "path": "/integrated-science/diagrams/0333.svg",
+      "sources": []
+    }
+  },
+  "MomentumConservationExplorer.jsx:84": {
+    "f06ada7b": {
+      "id": "0330",
+      "title": "Two skaters pushing apart with equal and opposite momenta",
+      "path": "/integrated-science/diagrams/0330.svg",
+      "sources": []
+    }
+  },
+  "NervousSystemExplorer.jsx:30": {
+    "ffe91226": {
+      "id": "0336",
+      "title": "The human nervous system",
+      "path": "/integrated-science/diagrams/0336.svg",
+      "sources": []
+    }
+  },
+  "NervousSystemExplorer.jsx:115": {
+    "2fd3eaa": {
+      "id": "0337",
+      "title": "Motor neurone",
+      "caption": "A motor neurone carries impulses from the central nervous system to an effector. The source shows its cell body, long axon, myelin and muscle connection.",
+      "sources": [
+        {
+          "title": "Motor_neuron.svg",
+          "url": "https://github.com/duerrsimon/bioicons/blob/main/static/icons/cc-by-4.0/Human_physiology/DBCLS/Motor_neuron.svg",
+          "author": "DBCLS",
+          "license": "CC-BY-4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+          "changes": "Removed non-rendering editor extensions and/or external links; illustration geometry unchanged"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0337.svg"
+    }
+  },
+  "PersonalHygieneExplorer.jsx:42": {
+    "7a9d1a3e": {
+      "id": "0345",
+      "title": "Bacterial colonies after different hand washing methods",
+      "path": "/integrated-science/diagrams/0345.svg",
+      "sources": []
+    }
+  },
+  "PestVectorExplorer.jsx:118": {
+    "5f8381f6": {
+      "id": "0350",
+      "title": "Housefly disease transmission route",
+      "path": "/integrated-science/diagrams/0350.svg",
+      "sources": []
+    },
+    "91f4fcca": {
+      "id": "0351",
+      "title": "Aedes mosquito disease transmission route",
+      "path": "/integrated-science/diagrams/0351.svg",
+      "sources": []
+    }
+  },
+  "SenseOrgansExplorer.jsx:38": {
+    "f530e859": {
+      "id": "0380",
+      "title": "Inside the eye",
+      "path": "/integrated-science/diagrams/0380.svg",
+      "sources": []
+    }
+  },
+  "SenseOrgansExplorer.jsx:41": {
+    "16b22763": {
+      "id": "0381",
+      "title": "Inside the ear",
+      "path": "/integrated-science/diagrams/0381.svg",
+      "sources": []
+    }
+  },
+  "SenseOrgansExplorer.jsx:44": {
+    "b0d38c39": {
+      "id": "0382",
+      "title": "Olfactory epithelium and bulb",
+      "caption": "Odour molecules stimulate receptor cells in the nasal epithelium. Their nerve fibres pass to the olfactory bulb.",
+      "sources": [
+        {
+          "title": "olfactory bulb",
+          "url": "https://github.com/duerrsimon/bioicons/blob/main/static/icons/cc-by-3.0/Human_physiology/Servier/olfactory-bulb.svg",
+          "author": "Servier Medical Art",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+          "changes": "Unmodified source artwork; distributed by Bioicons under CC BY 3.0"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0382.svg"
+    }
+  },
+  "SenseOrgansExplorer.jsx:64": {
+    "cc8fe5de": {
+      "id": "0383",
+      "title": "Taste buds in the epithelium",
+      "caption": "Dissolved substances stimulate receptor cells inside taste buds. Nerve fibres carry the signals to the brain.",
+      "sources": [
+        {
+          "title": "taste buds",
+          "url": "https://github.com/duerrsimon/bioicons/blob/main/static/icons/cc-by-3.0/Human_physiology/Servier/taste-buds.svg",
+          "author": "Servier Medical Art",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+          "changes": "Unmodified source artwork; distributed by Bioicons under CC BY 3.0"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0383.svg"
+    }
+  },
+  "SenseOrgansExplorer.jsx:85": {
+    "94168e13": {
+      "id": "0384",
+      "title": "Layers and structures of the skin",
+      "path": "/integrated-science/diagrams/0384.svg",
+      "sources": []
+    }
+  },
+  "SightDefectsExplorer.jsx:46": {
+    "fd4a991f": {
+      "id": "0390",
+      "title": "Short sight: focus in front of the retina",
+      "caption": "Servier illustrates uncorrected short sight. A concave (diverging) correcting lens moves the focus back onto the retina; the correcting lens is not shown in this source.",
+      "sources": [
+        {
+          "title": "short sighted eye",
+          "url": "https://github.com/duerrsimon/bioicons/blob/main/static/icons/cc-by-3.0/Human_physiology/Servier/short-sighted-eye.svg",
+          "author": "Servier Medical Art",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+          "changes": "Unmodified source artwork; distributed by Bioicons under CC BY 3.0"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0390.svg"
+    },
+    "b294a999": {
+      "id": "0391",
+      "title": "Long sight: focus behind the retina",
+      "caption": "Servier illustrates uncorrected long sight. A convex (converging) correcting lens brings the focus forward onto the retina; the correcting lens is not shown in this source.",
+      "sources": [
+        {
+          "title": "long sighted eye",
+          "url": "https://github.com/duerrsimon/bioicons/blob/main/static/icons/cc-by-3.0/Human_physiology/Servier/long-sighted-eye.svg",
+          "author": "Servier Medical Art",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+          "changes": "Unmodified source artwork; distributed by Bioicons under CC BY 3.0"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0391.svg"
+    }
+  },
+  "SightDefectsExplorer.jsx:111": {
+    "c59a8f0e": {
+      "id": "0392",
+      "title": "Astigmatism",
+      "caption": "Uneven curvature causes different light rays to focus at different positions.",
+      "sources": [
+        {
+          "title": "astigmatic eye",
+          "url": "https://github.com/duerrsimon/bioicons/blob/main/static/icons/cc-by-3.0/Human_physiology/Servier/astigmatic-eye.svg",
+          "author": "Servier Medical Art",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+          "changes": "Unmodified source artwork; distributed by Bioicons under CC BY 3.0"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0392.svg"
+    }
+  },
+  "SightDefectsExplorer.jsx:123": {
+    "776e97c": {
+      "id": "0395",
+      "title": "Retinal cone cell",
+      "caption": "Cone cells support colour vision. Differences in cone photopigments or cone function can cause colour vision deficiency.",
+      "sources": [
+        {
+          "title": "retina cone cell",
+          "url": "https://github.com/duerrsimon/bioicons/blob/main/static/icons/cc-by-3.0/Human_physiology/Servier/retina-cone-cell.svg",
+          "author": "Servier Medical Art",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+          "changes": "Unmodified source artwork; distributed by Bioicons under CC BY 3.0"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0395.svg"
+    }
+  },
+  "SmokingGasExchangeExplorer.jsx:44": {
+    "1773dcfb": {
+      "id": "0412",
+      "title": "Alveolar damage in emphysema",
+      "caption": "Destruction of alveolar walls creates larger air spaces and reduces the surface area available for gas exchange.",
+      "sources": [
+        {
+          "title": "emphysema",
+          "url": "https://github.com/duerrsimon/bioicons/blob/main/static/icons/cc-by-3.0/Human_physiology/Servier/emphysema.svg",
+          "author": "Servier Medical Art",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+          "changes": "Unmodified source artwork; distributed by Bioicons under CC BY 3.0"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0412.svg"
+    }
+  },
+  "SoilErosionExplorer.jsx:55": {
+    "c45304f6": {
+      "id": "0416",
+      "title": "Effect of soil erosion on crop growth and food production",
+      "path": "/integrated-science/diagrams/0416.svg",
+      "sources": []
+    }
+  },
+  "SoilErosionExplorer.jsx:91": {
+    "df8f116c": {
+      "id": "0421",
+      "title": "Windbreaks soil erosion control",
+      "path": "/integrated-science/diagrams/0421.svg",
+      "sources": []
+    }
+  },
+  "SolarSystemExplorer.jsx:22": {
+    "7472688f": {
+      "id": "0427",
+      "title": "Schematic order of the eight planets from the Sun, with the four inner rocky planets followed by Jupiter, Saturn, Uranus and Neptune",
+      "path": "/integrated-science/diagrams/0427.svg",
+      "sources": []
+    }
+  },
+  "TeethFunctionExplorer.jsx:53": {
+    "1457cce6": {
+      "id": "0452",
+      "title": "Structure of a tooth",
+      "path": "/integrated-science/diagrams/0452.svg",
+      "sources": []
+    }
+  },
+  "TransportInvestigationExplorer.jsx:36": {
+    "107e93af": {
+      "id": "0470",
+      "title": "Osmometer investigation",
+      "path": "/integrated-science/diagrams/0470.svg",
+      "sources": []
+    },
+    "b837e928": {
+      "id": "0473",
+      "title": "Osmometer investigation",
+      "path": "/integrated-science/diagrams/0473.svg",
+      "sources": []
+    }
+  },
+  "TransportInvestigationExplorer.jsx:61": {
+    "d6642627": {
+      "id": "0471",
+      "title": "Potato osmosis investigation",
+      "path": "/integrated-science/diagrams/0471.svg",
+      "sources": []
+    },
+    "fba724e8": {
+      "id": "0474",
+      "title": "Potato osmosis investigation",
+      "path": "/integrated-science/diagrams/0474.svg",
+      "sources": []
+    }
+  },
+  "TransportInvestigationExplorer.jsx:88": {
+    "43bcb760": {
+      "id": "0472",
+      "title": "Visking tubing selective permeability investigation",
+      "path": "/integrated-science/diagrams/0472.svg",
+      "sources": []
+    },
+    "2027360e": {
+      "id": "0475",
+      "title": "Visking tubing selective permeability investigation",
+      "path": "/integrated-science/diagrams/0475.svg",
+      "sources": []
+    }
+  },
+  "TransportStructuresExplorer.jsx:58": {
+    "7cb247b3": {
+      "id": "0482",
+      "title": "Blood: red blood cells",
+      "path": "/integrated-science/diagrams/0482.svg",
+      "sources": []
+    },
+    "eaaa7664": {
+      "id": "0489",
+      "title": "Blood: phagocyte",
+      "path": "/integrated-science/diagrams/0489.svg",
+      "sources": []
+    },
+    "6c2e2e4a": {
+      "id": "0490",
+      "title": "Blood: lymphocyte",
+      "path": "/integrated-science/diagrams/0490.svg",
+      "sources": []
+    },
+    "7d69264c": {
+      "id": "0491",
+      "title": "Blood: platelets",
+      "path": "/integrated-science/diagrams/0491.svg",
+      "sources": []
+    },
+    "994504e6": {
+      "id": "0492",
+      "title": "Blood: plasma",
+      "path": "/integrated-science/diagrams/0492.svg",
+      "sources": []
+    }
+  },
+  "TransportStructuresExplorer.jsx:132": {
+    "a8d86e56": {
+      "id": "0483",
+      "title": "Arteries, capillaries and veins",
+      "path": "/integrated-science/diagrams/0483.svg",
+      "sources": []
+    }
+  },
+  "TransportStructuresExplorer.jsx:201": {
+    "95c2d2a7": {
+      "id": "0484",
+      "title": "Layers of an artery wall",
+      "caption": "Arteries have thick muscular and elastic walls that withstand blood pressure.",
+      "sources": [
+        {
+          "title": "vascular tunic artery",
+          "url": "https://github.com/duerrsimon/bioicons/blob/main/static/icons/cc-by-3.0/Human_physiology/Servier/vascular-tunic-artery.svg",
+          "author": "Servier Medical Art",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+          "changes": "Unmodified source artwork; distributed by Bioicons under CC BY 3.0"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0484.svg"
+    }
+  },
+  "TransportStructuresExplorer.jsx:211": {
+    "fe1a7cf": {
+      "id": "0485",
+      "title": "Vein cross-section",
+      "caption": "Veins return blood at lower pressure and have thinner walls than comparable arteries.",
+      "sources": [
+        {
+          "title": "vein crosssection",
+          "url": "https://github.com/duerrsimon/bioicons/blob/main/static/icons/cc-by-3.0/Human_physiology/Servier/vein-crosssection.svg",
+          "author": "Servier Medical Art",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+          "changes": "Unmodified source artwork; distributed by Bioicons under CC BY 3.0"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0485.svg"
+    }
+  },
+  "TransportStructuresExplorer.jsx:221": {
+    "b817f4e": {
+      "id": "0486",
+      "title": "Capillary and red blood cells",
+      "caption": "Capillary walls are one endothelial cell thick, shortening the diffusion distance between blood and tissues.",
+      "sources": [
+        {
+          "title": "capillary",
+          "url": "https://github.com/duerrsimon/bioicons/blob/main/static/icons/cc-by-3.0/Human_physiology/Servier/capillary.svg",
+          "author": "Servier Medical Art",
+          "license": "CC BY 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+          "changes": "Unmodified source artwork; distributed by Bioicons under CC BY 3.0"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0486.svg"
+    }
+  },
+  "TransportSystemNeedExplorer.jsx:44": {
+    "82358507": {
+      "id": "0503",
+      "title": "Agar cube diffusion model for a 2 centimetre cube",
+      "path": "/integrated-science/diagrams/0503.svg",
+      "sources": []
+    },
+    "d0f9f30d": {
+      "id": "0495",
+      "title": "Agar cube diffusion model for a 2 centimetre cube",
+      "path": "/integrated-science/diagrams/0495.svg",
+      "sources": []
+    },
+    "ecb35cd8": {
+      "id": "0499",
+      "title": "Agar cube diffusion model for a 1 centimetre cube",
+      "path": "/integrated-science/diagrams/0499.svg",
+      "sources": []
+    },
+    "1d8243d8": {
+      "id": "0500",
+      "title": "Agar cube diffusion model for a 3 centimetre cube",
+      "path": "/integrated-science/diagrams/0500.svg",
+      "sources": []
+    },
+    "50cd564e": {
+      "id": "0501",
+      "title": "Agar cube diffusion model for a 2 centimetre cube",
+      "path": "/integrated-science/diagrams/0501.svg",
+      "sources": []
+    },
+    "5200ab02": {
+      "id": "0502",
+      "title": "Agar cube diffusion model for a 2 centimetre cube",
+      "path": "/integrated-science/diagrams/0502.svg",
+      "sources": []
+    },
+    "a9fa35d1": {
+      "id": "0508",
+      "title": "Agar cube diffusion model for a 1 centimetre cube",
+      "path": "/integrated-science/diagrams/0508.svg",
+      "sources": []
+    },
+    "3bc18279": {
+      "id": "0509",
+      "title": "Agar cube diffusion model for a 1 centimetre cube",
+      "path": "/integrated-science/diagrams/0509.svg",
+      "sources": []
+    },
+    "bddbdb34": {
+      "id": "0510",
+      "title": "Agar cube diffusion model for a 1 centimetre cube",
+      "path": "/integrated-science/diagrams/0510.svg",
+      "sources": []
+    },
+    "a190c76b": {
+      "id": "0511",
+      "title": "Agar cube diffusion model for a 3 centimetre cube",
+      "path": "/integrated-science/diagrams/0511.svg",
+      "sources": []
+    },
+    "a612cb41": {
+      "id": "0512",
+      "title": "Agar cube diffusion model for a 3 centimetre cube",
+      "path": "/integrated-science/diagrams/0512.svg",
+      "sources": []
+    },
+    "956ded84": {
+      "id": "0513",
+      "title": "Agar cube diffusion model for a 3 centimetre cube",
+      "path": "/integrated-science/diagrams/0513.svg",
+      "sources": []
+    }
+  },
+  "VegetativePropagationExplorer.jsx:142": {
+    "caa2b87f": {
+      "id": "0518",
+      "title": "Propagation from a stem cutting",
+      "caption": "The source shows preparation of a leafy stem cutting and the development of roots.",
+      "sources": [
+        {
+          "title": "CuttingPlantsCorrectly.svg",
+          "url": "https://commons.wikimedia.org/wiki/File:CuttingPlantsCorrectly.svg",
+          "author": "Simon A. Eugster – Simon / ?! 19:56, 7 October 2008 (UTC)",
+          "license": "CC BY-SA 3.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+          "changes": "Unmodified source artwork"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0518.svg"
+    }
+  },
+  "VegetativePropagationExplorer.jsx:115": {
+    "d9bef6e8": {
+      "id": "0522",
+      "title": "Potato stem tuber",
+      "caption": "A potato is a storage stem. Its eyes are nodes with buds that can grow into new shoots.",
+      "sources": [
+        {
+          "title": "Potato tuber morphology.svg",
+          "url": "https://commons.wikimedia.org/wiki/File:Potato_tuber_morphology.svg",
+          "author": "Smartse",
+          "license": "CC BY-SA 4.0",
+          "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+          "changes": "Unmodified source artwork"
+        }
+      ],
+      "path": "/integrated-science/diagrams/0522.svg"
+    }
+  },
+  "VolcanoEruptionsExplorer.jsx:123": {
+    "5720506d": {
+      "id": "0534",
+      "title": "Submarine volcano erupting below sea level with a volcanic cone rising from the sea floor",
+      "path": "/integrated-science/diagrams/0534.svg",
+      "sources": []
+    }
+  },
+  "WaterPollutionExplorer.jsx:14": {
+    "c499dd0f": {
+      "id": "0538",
+      "title": "Eutrophication in a water body showing nutrient runoff, algal bloom, sinking dead algae, decomposition, oxygen loss and fish death",
+      "path": "/integrated-science/diagrams/0538.svg",
+      "sources": []
+    }
+  },
+  "WaterPropertiesExplorer.jsx:126": {
+    "81e75313": {
+      "id": "0541",
+      "title": "Freshwater fish in concentrated sea water losing water by osmosis",
+      "path": "/integrated-science/diagrams/0541.svg",
+      "sources": []
+    }
+  },
+  "WaterPurificationExplorer.jsx:18": {
+    "f1c0ed21": {
+      "id": "0545",
+      "title": "Water treatment plant sequence from raw water through coagulation with alum, sedimentation, sand filtration and chlorination to treated water",
+      "path": "/integrated-science/diagrams/0545.svg",
+      "sources": []
+    },
+    "c83c5927": {
+      "id": "0548",
+      "title": "Water treatment plant sequence from raw water through coagulation with alum, sedimentation, sand filtration and chlorination to treated water",
+      "path": "/integrated-science/diagrams/0548.svg",
+      "sources": []
+    },
+    "53a8e2f5": {
+      "id": "0549",
+      "title": "Water treatment plant sequence from raw water through coagulation with alum, sedimentation, sand filtration and chlorination to treated water",
+      "path": "/integrated-science/diagrams/0549.svg",
+      "sources": []
+    },
+    "afa8f365": {
+      "id": "0550",
+      "title": "Water treatment plant sequence from raw water through coagulation with alum, sedimentation, sand filtration and chlorination to treated water",
+      "path": "/integrated-science/diagrams/0550.svg",
+      "sources": []
+    }
+  },
+  "WaterSafetyExplorer.jsx:5": {
+    "6dc9acd6": {
+      "id": "0552",
+      "title": "Life jacket fitted around a person showing buoyant foam, reflective strips and whistle",
+      "path": "/integrated-science/diagrams/0552.svg",
+      "sources": []
+    }
+  },
+  "WaterSafetyExplorer.jsx:20": {
+    "9c8da25e": {
+      "id": "0555",
+      "title": "Ring buoy with attached rescue line",
+      "path": "/integrated-science/diagrams/0555.svg",
+      "sources": []
+    }
+  },
+  "WaterUsesExplorer.jsx:98": {
+    "dde39f0c": {
+      "id": "0558",
+      "title": "The water cycle",
+      "path": "/integrated-science/diagrams/0558.svg",
+      "sources": []
+    }
+  },
+  "WaterUsesExplorer.jsx:51": {
+    "a16a0f05": {
+      "id": "0559",
+      "title": "Hydroponic plant growing without soil with roots suspended in aerated nutrient solution containing dissolved mineral ions",
+      "path": "/integrated-science/diagrams/0559.svg",
+      "sources": []
+    }
+  }
+}

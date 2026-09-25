@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./senseOrgansExplorer.css";
 
@@ -35,13 +36,13 @@ const SENSES = {
 };
 
 function EyeIcon() {
-  return <svg viewBox="0 0 300 210" role="img" aria-label="Eye"><path className="so-eye" d="M30 105Q150 20 270 105Q150 190 30 105Z"/><circle className="so-iris" cx="150" cy="105" r="48"/><circle className="so-pupil" cx="150" cy="105" r="22"/></svg>;
+  return <ReviewedScienceDiagram site="SenseOrgansExplorer.jsx:38"><svg viewBox="0 0 300 210" role="img" aria-label="Eye"><path className="so-eye" d="M30 105Q150 20 270 105Q150 190 30 105Z"/><circle className="so-iris" cx="150" cy="105" r="48"/><circle className="so-pupil" cx="150" cy="105" r="22"/></svg></ReviewedScienceDiagram>;
 }
 function EarIcon() {
-  return <svg viewBox="0 0 300 210" role="img" aria-label="Ear"><path className="so-ear" d="M175 25Q85 20 70 110Q65 180 135 188Q190 190 195 140Q195 100 155 100Q125 100 130 135Q135 160 165 145Q185 135 182 110"/><path className="so-ear-canal" d="M165 145Q205 125 240 130"/></svg>;
+  return <ReviewedScienceDiagram site="SenseOrgansExplorer.jsx:41"><svg viewBox="0 0 300 210" role="img" aria-label="Ear"><path className="so-ear" d="M175 25Q85 20 70 110Q65 180 135 188Q190 190 195 140Q195 100 155 100Q125 100 130 135Q135 160 165 145Q185 135 182 110"/><path className="so-ear-canal" d="M165 145Q205 125 240 130"/></svg></ReviewedScienceDiagram>;
 }
 function NoseIcon() {
-  return <svg className="so-receptor-anatomy-svg" viewBox="0 0 420 280" role="img" aria-label="Nose and olfactory epithelium showing odour molecules dissolving in mucus and stimulating smell receptors">
+  return <ReviewedScienceDiagram site="SenseOrgansExplorer.jsx:44"><svg className="so-receptor-anatomy-svg" viewBox="0 0 420 280" role="img" aria-label="Nose and olfactory epithelium showing odour molecules dissolving in mucus and stimulating smell receptors">
     <path className="so-nose" d="M95 35Q85 115 58 170Q73 199 98 184Q124 203 145 176Q117 125 95 35Z"/>
     <path className="so-nostril" d="M66 176Q80 167 94 176M105 176Q122 167 139 176"/>
     <path className="so-nasal-cavity" d="M150 92Q235 46 326 83Q354 106 338 140Q322 169 274 168Q225 165 185 190"/>
@@ -58,10 +59,10 @@ function NoseIcon() {
     <text className="so-anatomy-label" x="320" y="72">mucus</text>
     <text className="so-anatomy-label" x="315" y="128">olfactory receptors</text>
     <text className="so-anatomy-label" x="285" y="235">sensory nerve impulses</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 }
 function TongueIcon() {
-  return <svg className="so-receptor-anatomy-svg" viewBox="0 0 420 280" role="img" aria-label="Tongue and taste bud showing dissolved chemicals entering a taste pore and stimulating receptor cells connected to sensory nerves">
+  return <ReviewedScienceDiagram site="SenseOrgansExplorer.jsx:64"><svg className="so-receptor-anatomy-svg" viewBox="0 0 420 280" role="img" aria-label="Tongue and taste bud showing dissolved chemicals entering a taste pore and stimulating receptor cells connected to sensory nerves">
     <path className="so-mouth" d="M30 70Q115 36 200 70Q170 104 115 109Q60 104 30 70Z"/>
     <path className="so-tongue" d="M60 96Q115 86 170 96Q170 165 115 178Q60 165 60 96Z"/>
     <g className="so-taste-papillae">{[82,108,134,158].map((x,i)=><circle key={x} cx={x} cy={126+(i%2)*12} r="6"/>)}</g>
@@ -79,10 +80,10 @@ function TongueIcon() {
     <text className="so-anatomy-label" x="347" y="67">taste pore</text>
     <text className="so-anatomy-label" x="342" y="128">taste receptor cells</text>
     <text className="so-anatomy-label" x="300" y="260" textAnchor="middle">sensory nerve</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 }
 function SkinIcon() {
-  return <svg className="so-receptor-anatomy-svg" viewBox="0 0 420 300" role="img" aria-label="Cross-section of skin showing epidermis, dermis, free nerve endings, touch receptor, pressure receptor and sensory nerves">
+  return <ReviewedScienceDiagram site="SenseOrgansExplorer.jsx:85"><svg className="so-receptor-anatomy-svg" viewBox="0 0 420 300" role="img" aria-label="Cross-section of skin showing epidermis, dermis, free nerve endings, touch receptor, pressure receptor and sensory nerves">
     <rect className="so-skin-epidermis" x="35" y="45" width="350" height="52"/>
     <rect className="so-skin-dermis" x="35" y="97" width="350" height="150"/>
     <rect className="so-skin-subcutaneous" x="35" y="247" width="350" height="35"/>
@@ -100,7 +101,7 @@ function SkinIcon() {
     <text className="so-anatomy-label" x="180" y="105">free nerve endings, pain and temperature</text>
     <text className="so-anatomy-label" x="278" y="102">touch receptor</text>
     <text className="so-anatomy-label" x="256" y="198">pressure receptor</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 }
 
 function Icon({sense}) {

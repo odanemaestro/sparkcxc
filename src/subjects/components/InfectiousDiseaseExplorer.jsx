@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./infectiousDiseaseExplorer.css";
 
@@ -69,7 +70,7 @@ function STIProfiles() {
 
 function PreventionScene() {
   return (
-    <svg viewBox="0 0 980 520" role="img" aria-label="Ways to break infectious disease transmission">
+    <ReviewedScienceDiagram site="InfectiousDiseaseExplorer.jsx:72"><svg viewBox="0 0 980 520" role="img" aria-label="Ways to break infectious disease transmission">
       <g transform="translate(70 60)">
         <circle className="id-prevention-node hygiene" cx="110" cy="100" r="70" />
         <path className="id-hands" d="M65 100q35-35 45 10q10-45 42-10q20 25-10 55q-40 28-75-5q-22-25-2-50Z" />
@@ -99,14 +100,14 @@ function PreventionScene() {
       <text className="id-heading" x="490" y="315" textAnchor="middle">Break the chain of transmission</text>
       <text className="id-small" x="490" y="390" textAnchor="middle">Match prevention to the pathogen and route of spread</text>
       <text className="id-small" x="490" y="425" textAnchor="middle">Testing and early treatment also reduce complications and onward transmission</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function VectorScene() {
   return (
     <div className="spark-dengue-vector-scene">
-      <svg className="spark-dengue-transmission-svg" viewBox="0 0 1040 600" role="img" aria-label="Dengue transmission cycle showing an Aedes aegypti mosquito acquiring dengue virus from an infected person and transmitting it during a later bite to another person, plus aquatic mosquito stages targeted by standing-water control">
+      <ReviewedScienceDiagram site="InfectiousDiseaseExplorer.jsx:109"><svg className="spark-dengue-transmission-svg" viewBox="0 0 1040 600" role="img" aria-label="Dengue transmission cycle showing an Aedes aegypti mosquito acquiring dengue virus from an infected person and transmitting it during a later bite to another person, plus aquatic mosquito stages targeted by standing-water control">
         <defs>
           <marker id="dengue-flow-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
             <path d="M0 0L9 4.5L0 9Z" className="id-dengue-arrow-head"/>
@@ -165,7 +166,7 @@ function VectorScene() {
           <text className="id-small" x="788" y="48" textAnchor="middle">prevents aquatic stages</text>
           <text className="id-small" x="788" y="70" textAnchor="middle">from developing into adults</text>
         </g>
-      </svg>
+      </svg></ReviewedScienceDiagram>
     </div>
   );
 }

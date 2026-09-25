@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./solarSystemExplorer.css";
 
@@ -19,7 +20,7 @@ const ORDER_POSITIONS={
 
 function OrderView(){
   return <div className="spark-solar-order">
-    <svg className="spark-solar-order-svg" viewBox="0 0 900 390" role="img" aria-label="Schematic order of the eight planets from the Sun, with the four inner rocky planets followed by Jupiter, Saturn, Uranus and Neptune">
+    <ReviewedScienceDiagram site="SolarSystemExplorer.jsx:22"><svg className="spark-solar-order-svg" viewBox="0 0 900 390" role="img" aria-label="Schematic order of the eight planets from the Sun, with the four inner rocky planets followed by Jupiter, Saturn, Uranus and Neptune">
       <defs>
         <radialGradient id="ss-order-sun-glow" cx="50%" cy="50%" r="50%">
           <stop offset="0%" className="ss-sun-core"/>
@@ -49,7 +50,7 @@ function OrderView(){
       <path className="ss-order-distance-arrow" d="M108 322H848"/>
       <text className="ss-order-note" x="478" y="350" textAnchor="middle">increasing distance from the Sun</text>
       <text className="ss-order-scale-note" x="478" y="374" textAnchor="middle">planet sizes and distances are not to scale</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   </div>;
 }
 
@@ -81,7 +82,7 @@ function OrbitView(){
   const planetRadius=p.id==="jupiter"?24:p.id==="saturn"?22:14;
   return <div className="spark-solar-orbit">
     <div className="spark-planet-buttons compact">{PLANETS.map(x=><button type="button" key={x.id} className={planet===x.id?"active":""} onClick={()=>setPlanet(x.id)}>{x.name}</button>)}</div>
-    <svg className="spark-solar-orbit-svg" viewBox="0 0 860 470" role="img" aria-label={p.name+" in an elliptical orbit with the Sun at one focus"}>
+    <ReviewedScienceDiagram site="SolarSystemExplorer.jsx:84"><svg className="spark-solar-orbit-svg" viewBox="0 0 860 470" role="img" aria-label={p.name+" in an elliptical orbit with the Sun at one focus"}>
       <ellipse className="sse-orbit" cx={centerX} cy={centerY} rx={rx} ry={ry}/>
       <line className="sse-major-axis" x1={centerX-rx} y1={centerY} x2={centerX+rx} y2={centerY}/>
       <circle className="sse-ellipse-centre" cx={centerX} cy={centerY} r="5"/>
@@ -95,7 +96,7 @@ function OrbitView(){
       <text className="sse-label" x={centerX} y={centerY+24} textAnchor="middle">ellipse centre</text>
       <text className="sse-label" x={planetX} y={centerY+62} textAnchor="middle">{p.name}</text>
       <text className="sse-small-label" x={planetX-91} y={centerY-102} textAnchor="middle">direction of motion</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>Planetary orbits are ellipses, with the Sun at one focus rather than at the geometric centre. This teaching diagram exaggerates the oval shape so the focus is easy to see. Real planetary orbits are much closer to circular.</p>
   </div>;
 }

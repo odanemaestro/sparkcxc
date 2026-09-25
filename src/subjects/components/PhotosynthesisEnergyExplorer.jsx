@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useState} from "react";
 import "./photosynthesisEnergyExplorer.css";
 
@@ -21,7 +22,7 @@ function EquationView(){
 
 function ChloroplastView(){
   return <div className="spark-photo-chloroplast">
-    <svg className="spark-photo-chloroplast-svg" viewBox="0 0 980 590" role="img" aria-label="Leaf cross-section with palisade cells containing chloroplasts and an enlarged chloroplast showing grana and stroma">
+    <ReviewedScienceDiagram site="PhotosynthesisEnergyExplorer.jsx:24"><svg className="spark-photo-chloroplast-svg" viewBox="0 0 980 590" role="img" aria-label="Leaf cross-section with palisade cells containing chloroplasts and an enlarged chloroplast showing grana and stroma">
       <defs>
         <marker id="photo-light-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
           <path className="pcl-arrow-head" d="M0 0L10 5L0 10Z"/>
@@ -94,7 +95,7 @@ function ChloroplastView(){
 
       <text className="pcl-caption" x="750" y="500" textAnchor="middle">chlorophyll in chloroplast membranes absorbs light energy</text>
       <text className="pcl-caption" x="750" y="528" textAnchor="middle">palisade cells contain many chloroplasts near the upper leaf surface</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-photo-chloroplast-notes">
       <article><b>Palisade mesophyll</b><p>Cells are closely packed near the upper surface and contain many chloroplasts, helping them absorb light.</p></article>
       <article><b>Chloroplast</b><p>Chlorophyll is located in chloroplast membranes and absorbs light energy used during photosynthesis.</p></article>
@@ -105,7 +106,7 @@ function ChloroplastView(){
 }
 
 function StarchApparatusDiagram(){
-  return <svg className="spark-photo-starch-svg" viewBox="0 0 980 440" role="img" aria-label="Leaf starch test apparatus showing boiling water, ethanol heated in a water bath, rinsing and iodine test">
+  return <ReviewedScienceDiagram site="PhotosynthesisEnergyExplorer.jsx:108"><svg className="spark-photo-starch-svg" viewBox="0 0 980 440" role="img" aria-label="Leaf starch test apparatus showing boiling water, ethanol heated in a water bath, rinsing and iodine test">
     <defs>
       <marker id="photo-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
         <path className="pst-arrow-head" d="M0 0L10 5L0 10Z"/>
@@ -155,7 +156,7 @@ function StarchApparatusDiagram(){
       <text className="pst-result-label" x="130" y="330" textAnchor="middle">blue-black = starch present</text>
       <text className="pst-note" x="130" y="405" textAnchor="middle">brown/yellow-brown = no starch</text>
     </g>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 }
 
 function StarchView(){
@@ -180,13 +181,13 @@ function EvidenceView(){
 
 function LimitsView(){
   return <div className="spark-photo-limits">
-    <svg viewBox="0 0 760 360" role="img" aria-label="Rate of photosynthesis rises with light intensity and then levels off when another factor becomes limiting">
+    <ReviewedScienceDiagram site="PhotosynthesisEnergyExplorer.jsx:183"><svg viewBox="0 0 760 360" role="img" aria-label="Rate of photosynthesis rises with light intensity and then levels off when another factor becomes limiting">
       <line className="ph-axis" x1="85" y1="290" x2="690" y2="290"/><line className="ph-axis" x1="85" y1="290" x2="85" y2="55"/>
       <path className="ph-curve" d="M90 282 C160 230 230 160 340 120 C430 90 540 88 680 88"/>
       <line className="ph-dash" x1="430" y1="88" x2="430" y2="290"/>
       <text className="ph-label" x="385" y="330">Light intensity</text><text className="ph-label" x="25" y="190" transform="rotate(-90 25 190)">Rate of photosynthesis</text>
       <text className="ph-note" x="450" y="78">another factor limits rate</text><text className="ph-note" x="445" y="315">about 6 units in bank example</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>When light is low, increasing light can increase photosynthesis. Once the curve levels off, another factor such as carbon dioxide concentration or temperature is limiting the rate.</p>
   </div>;
 }

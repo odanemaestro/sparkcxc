@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./foodContaminationExplorer.css";
 
@@ -45,7 +46,7 @@ function TypesScene(){
 
 function CrossScene(){
   return(
-    <svg viewBox="0 0 980 500" role="img" aria-label="Cross contamination from raw chicken through a chopping board to salad">
+    <ReviewedScienceDiagram site="FoodContaminationExplorer.jsx:48"><svg viewBox="0 0 980 500" role="img" aria-label="Cross contamination from raw chicken through a chopping board to salad">
       <g transform="translate(60 105)">
         <path className="fc-chicken" d="M40 150Q75 60 170 75Q245 90 230 180Q215 260 120 250Q45 240 40 150Z"/>
         <path className="fc-bone" d="M225 145L300 95M285 80l30 30M285 110l30-30"/>
@@ -64,14 +65,14 @@ function CrossScene(){
         <text className="fc-label" x="110" y="310" textAnchor="middle">ready-to-eat salad</text>
       </g>
       <text className="fc-small" x="490" y="455" textAnchor="middle">Use separate boards and utensils, then wash and sanitise food-contact surfaces after raw meat.</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function ToxinScene(){
   return(
     <div className="spark-aflatoxin-scene">
-      <svg className="spark-aflatoxin-svg" viewBox="0 0 980 540" role="img" aria-label="Aflatoxin risk pathway showing warm humid storage, mould growth on stored peanuts, toxin contamination extending beyond visible mould, and liver health risk from long-term exposure">
+      <ReviewedScienceDiagram site="FoodContaminationExplorer.jsx:74"><svg className="spark-aflatoxin-svg" viewBox="0 0 980 540" role="img" aria-label="Aflatoxin risk pathway showing warm humid storage, mould growth on stored peanuts, toxin contamination extending beyond visible mould, and liver health risk from long-term exposure">
         <defs>
           <marker id="aflatoxin-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
             <path d="M0 0L9 4.5L0 9Z" className="af-arrow-head"/>
@@ -126,7 +127,7 @@ function ToxinScene(){
           <text className="af-title" x="145" y="175" textAnchor="middle">long-term exposure can damage the liver</text>
           <text className="af-small" x="145" y="198" textAnchor="middle">and increase liver-cancer risk</text>
         </g>
-      </svg>
+      </svg></ReviewedScienceDiagram>
 
       <div className="spark-food-toxin-grid">
         <article><span>1</span><b>Keep dry foods dry</b><p>Use suitable storage and reduce warm, humid conditions that encourage mould growth.</p></article>

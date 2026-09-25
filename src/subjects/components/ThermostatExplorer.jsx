@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./thermostatExplorer.css";
 
@@ -5,7 +6,7 @@ function BimetalView(){
   const [hot,setHot]=useState(false);
   return <div className="spark-thermostat-bimetal">
     <div className="spark-thermostat-toggle"><button type="button" className={!hot?"active":""} onClick={()=>setHot(false)}>Below set temperature</button><button type="button" className={hot?"active":""} onClick={()=>setHot(true)}>At or above set temperature</button></div>
-    <svg viewBox="0 0 820 410" role="img" aria-label={hot?"Heated bimetallic strip bends away and opens the contact":"Cool bimetallic strip touches contact and heater circuit is closed"}>
+    <ReviewedScienceDiagram site="ThermostatExplorer.jsx:8"><svg viewBox="0 0 820 410" role="img" aria-label={hot?"Heated bimetallic strip bends away and opens the contact":"Cool bimetallic strip touches contact and heater circuit is closed"}>
       <line className="tb-base" x1="130" y1="310" x2="690" y2="310"/>
       <rect className="tb-fixed" x="155" y="225" width="70" height="85" rx="8"/>
       <path className="tb-metal brass" d={hot?"M225 245Q380 170 535 230":"M225 245H535"}/>
@@ -16,7 +17,7 @@ function BimetalView(){
       <text className="tb-label" x="375" y="125" textAnchor="middle">{hot?"brass expands more, strip bends and contact opens":"strip touches contact, heater receives current"}</text>
       <text className="tb-small brass" x="375" y="210" textAnchor="middle">brass</text>
       <text className="tb-small iron" x="375" y="290" textAnchor="middle">iron</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-thermostat-state"><strong>{hot?"Heater OFF":"Heater ON"}</strong><p>{hot?"The circuit is broken after the strip bends far enough. As the appliance cools, the strip returns and the contact closes again.":"Current flows through the heater until the appliance reaches the selected temperature."}</p></div>
   </div>;
 }
@@ -56,7 +57,7 @@ function FeedbackView(){
 
 function ExpansionView(){
   return <div className="spark-bimetal-expansion-view">
-    <svg className="spark-bimetal-expansion-svg" viewBox="0 0 980 560" role="img" aria-label="Bimetallic strip explanation showing brass and iron starting at the same length, brass expanding more when heated, iron expanding less, and the joined strip bending with brass on the outside of the curve">
+    <ReviewedScienceDiagram site="ThermostatExplorer.jsx:59"><svg className="spark-bimetal-expansion-svg" viewBox="0 0 980 560" role="img" aria-label="Bimetallic strip explanation showing brass and iron starting at the same length, brass expanding more when heated, iron expanding less, and the joined strip bending with brass on the outside of the curve">
       <defs>
         <marker id="bimetal-heat-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
           <path d="M0 0L9 4.5L0 9Z" className="be-arrow-head"/>
@@ -103,7 +104,7 @@ function ExpansionView(){
       </g>
 
       <text className="be-caption" x="490" y="535" textAnchor="middle">The joined metals cannot reach their separate heated lengths, so unequal thermal expansion produces bending.</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>Brass expands more than iron for the same temperature rise. When they are bonded together, they cannot expand independently. The pair therefore bends, with brass on the outside of the curve and iron on the inside.</p>
   </div>;
 }

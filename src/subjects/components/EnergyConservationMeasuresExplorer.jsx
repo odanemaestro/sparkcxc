@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./energyConservationMeasuresExplorer.css";
 
@@ -34,14 +35,14 @@ function LightingView(){
 
 function CoolingView(){
   return <div className="spark-conserve-cooling">
-    <svg viewBox="0 0 820 430" role="img" aria-label="White roof reflecting more solar radiation than a dark roof">
+    <ReviewedScienceDiagram site="EnergyConservationMeasuresExplorer.jsx:37"><svg viewBox="0 0 820 430" role="img" aria-label="White roof reflecting more solar radiation than a dark roof">
       <circle className="ecm-sun" cx="105" cy="75" r="42"/>
       <path className="ecm-ray" d="M160 90L315 150M155 55L320 120M145 120L300 180"/>
       <path className="ecm-house" d="M230 210L410 90L590 210V360H230Z"/>
       <path className="ecm-roof" d="M205 215L410 70L615 215L585 235L410 115L235 235Z"/>
       <path className="ecm-reflect" d="M330 145L270 65M415 105L420 25M500 145L560 65"/>
       <text className="ecm-label" x="410" y="395" textAnchor="middle">white roof reflects more incoming solar radiation</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-conserve-cooling-notes">
       <p>White and light-coloured roofs reflect more solar radiation than dark surfaces, reducing heat gain and air-conditioning demand.</p>
       <p>Close doors and windows when air conditioning is operating so warm outside air does not continuously enter the cooled space.</p>

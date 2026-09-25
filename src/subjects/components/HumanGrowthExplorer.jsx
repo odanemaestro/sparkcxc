@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useMemo, useState } from "react";
 import "./humanGrowthExplorer.css";
 
@@ -31,7 +32,7 @@ function GrowthGraph({dataset,metric,unit}) {
   ).join(" ");
 
   return (
-    <svg viewBox="0 0 930 500" role="img" aria-label={"Average " + metric.toLowerCase() + " of boys and girls in the CSEC practice dataset"}>
+    <ReviewedScienceDiagram site="HumanGrowthExplorer.jsx:34"><svg viewBox="0 0 930 500" role="img" aria-label={"Average " + metric.toLowerCase() + " of boys and girls in the CSEC practice dataset"}>
       <line className="hg-axis" x1="90" y1="55" x2="90" y2="410" />
       <line className="hg-axis" x1="90" y1="410" x2="850" y2="410" />
       {dataset.ages.map(age => (
@@ -61,7 +62,7 @@ function GrowthGraph({dataset,metric,unit}) {
         <line className="hg-line girls" x1="0" y1="30" x2="50" y2="30" />
         <text className="hg-legend" x="60" y="35">girls</text>
       </g>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

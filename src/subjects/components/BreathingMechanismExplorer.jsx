@@ -1,9 +1,10 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./breathingMechanismExplorer.css";
 
 function AnatomyView(){
   return <div className="spark-respiratory-anatomy">
-    <svg className="spark-respiratory-anatomy-svg" viewBox="0 0 900 720" role="img" aria-label="Human respiratory system showing nasal cavity, oral cavity, pharynx, epiglottis, larynx, trachea, bronchi, bronchioles, lungs and diaphragm">
+    <ReviewedScienceDiagram site="BreathingMechanismExplorer.jsx:6"><svg className="spark-respiratory-anatomy-svg" viewBox="0 0 900 720" role="img" aria-label="Human respiratory system showing nasal cavity, oral cavity, pharynx, epiglottis, larynx, trachea, bronchi, bronchioles, lungs and diaphragm">
       <path className="ra-profile" d="M330 72Q275 88 260 130Q253 176 292 205Q315 220 325 250V320"/>
       <path className="ra-nasal" d="M270 130Q320 103 357 130Q337 155 302 163Q283 159 270 130Z"/>
       <path className="ra-oral" d="M286 176Q323 160 354 181Q331 202 302 203Q289 196 286 176Z"/>
@@ -45,7 +46,7 @@ function AnatomyView(){
       </g>
       <path className="ra-airway-arrow" d="M303 120Q330 135 341 165Q350 195 353 245V395"/>
       <text className="ra-caption" x="355" y="700" textAnchor="middle">air pathway: nose or mouth → pharynx → larynx → trachea → bronchi → bronchioles → alveoli</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-respiratory-anatomy-notes">
       <article><b>Upper airway</b><p>The nose filters, warms and moistens incoming air. The pharynx conducts air towards the larynx.</p></article>
       <article><b>Epiglottis and larynx</b><p>The epiglottis helps protect the airway during swallowing. The larynx contains the vocal folds.</p></article>
@@ -64,7 +65,7 @@ function MechanismView(){
       <button type="button" className={!inhale?"active":""} onClick={()=>setPhase("exhale")}>Exhalation</button>
     </div>
     <div className={"spark-breathing-chest "+(inhale?"inhale":"exhale")}>
-      <svg viewBox="0 0 700 440" role="img" aria-label={inhale?"Chest changes during inhalation":"Chest changes during exhalation"}>
+      <ReviewedScienceDiagram site="BreathingMechanismExplorer.jsx:67"><svg viewBox="0 0 700 440" role="img" aria-label={inhale?"Chest changes during inhalation":"Chest changes during exhalation"}>
         <path className="bm-ribcage" d={inhale
           ?"M155 88Q350 25 545 88Q610 210 545 342Q350 400 155 342Q90 210 155 88Z"
           :"M190 108Q350 58 510 108Q560 210 510 316Q350 360 190 316Q140 210 190 108Z"}/>
@@ -102,7 +103,7 @@ function MechanismView(){
         <path className="bm-rib-arrow left" d={inhale?"M165 215L115 180":"M120 180L170 215"}/>
         <path className="bm-rib-arrow right" d={inhale?"M535 215L585 180":"M580 180L530 215"}/>
         <text className="bm-rib-label" x="350" y="405" textAnchor="middle">{inhale?"ribs move up and out; diaphragm flattens":"ribs move down and in; diaphragm domes upward"}</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
       <div className="spark-breathing-facts">
         <article><span>Diaphragm</span><strong>{inhale?"contracts and flattens":"relaxes and becomes dome-shaped"}</strong></article>
         <article><span>Ribs</span><strong>{inhale?"move up and out":"move down and in"}</strong></article>
@@ -117,14 +118,14 @@ function BellJarView(){
   const [pulled,setPulled]=useState(true);
   return <div className="spark-bell-jar">
     <div className="spark-bell-jar-controls"><button type="button" className={pulled?"active":""} onClick={()=>setPulled(true)}>Pull sheet down</button><button type="button" className={!pulled?"active":""} onClick={()=>setPulled(false)}>Push sheet up</button></div>
-    <svg viewBox="0 0 760 430" role="img" aria-label="Bell jar model of breathing">
+    <ReviewedScienceDiagram site="BreathingMechanismExplorer.jsx:120"><svg viewBox="0 0 760 430" role="img" aria-label="Bell jar model of breathing">
       <path className="bj-jar" d="M210 65H550V345Q550 385 510 385H250Q210 385 210 345Z"/>
       <path className="bj-tube" d="M380 35V160M380 155L315 220M380 155L445 220"/>
       <ellipse className={"bj-balloon "+(pulled?"inflated":"deflated")} cx="300" cy="255" rx={pulled?65:45} ry={pulled?95:65}/>
       <ellipse className={"bj-balloon "+(pulled?"inflated":"deflated")} cx="460" cy="255" rx={pulled?65:45} ry={pulled?95:65}/>
       <path className="bj-sheet" d={pulled?"M205 365Q380 410 555 365":"M205 365Q380 315 555 365"}/>
       <text className="bj-label" x="380" y="418" textAnchor="middle">{pulled?"rubber sheet pulled down":"rubber sheet pushed up"}</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>{pulled?"Pulling the sheet down increases jar volume and lowers internal pressure, so air enters the balloons and they inflate.":"Pushing the sheet up decreases jar volume and raises internal pressure, so air leaves the balloons and they deflate."}</p>
     <small>The rubber sheet represents the diaphragm. The balloons represent the lungs. The jar wall does not model rib movement accurately, so this is a simplified model.</small>
   </div>;

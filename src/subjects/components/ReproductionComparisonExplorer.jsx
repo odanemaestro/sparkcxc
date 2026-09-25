@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./reproductionComparisonExplorer.css";
 
@@ -46,7 +47,7 @@ function ChromosomePair({x,y,variant="same"}) {
 
 function AsexualDiagram() {
   return (
-    <svg className="spark-asexual-repro-svg" viewBox="0 0 980 500" role="img" aria-label="Asexual reproduction showing one diploid parent cell undergoing mitosis to form genetically identical diploid offspring cells">
+    <ReviewedScienceDiagram site="ReproductionComparisonExplorer.jsx:49"><svg className="spark-asexual-repro-svg" viewBox="0 0 980 500" role="img" aria-label="Asexual reproduction showing one diploid parent cell undergoing mitosis to form genetically identical diploid offspring cells">
       <defs>
         <marker id="repro-asexual-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
           <path d="M0 0L9 4.5L0 9Z" className="spark-repro-arrow-fill"/>
@@ -82,13 +83,13 @@ function AsexualDiagram() {
 
       <text className="spark-repro-caption" x="825" y="445" textAnchor="middle">offspring are genetically identical clones, 2n</text>
       <text className="spark-repro-caption emphasis" x="490" y="55" textAnchor="middle">No gametes fuse in asexual reproduction.</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function SexualDiagram() {
   return (
-    <svg className="spark-sexual-repro-svg" viewBox="0 0 1040 560" role="img" aria-label="Sexual reproduction showing diploid parent cells producing haploid gametes by meiosis and fertilisation restoring the diploid chromosome number in a genetically varied zygote">
+    <ReviewedScienceDiagram site="ReproductionComparisonExplorer.jsx:91"><svg className="spark-sexual-repro-svg" viewBox="0 0 1040 560" role="img" aria-label="Sexual reproduction showing diploid parent cells producing haploid gametes by meiosis and fertilisation restoring the diploid chromosome number in a genetically varied zygote">
       <defs>
         <marker id="repro-sexual-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
           <path d="M0 0L9 4.5L0 9Z" className="spark-repro-arrow-fill"/>
@@ -147,7 +148,7 @@ function SexualDiagram() {
 
       <text className="spark-repro-caption emphasis" x="520" y="38" textAnchor="middle">Meiosis makes haploid gametes. Fertilisation restores the diploid chromosome number.</text>
       <text className="spark-repro-caption" x="520" y="535" textAnchor="middle">The zygote contains genetic material from both parents, producing variation.</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
