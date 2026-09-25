@@ -65,9 +65,11 @@ function ScrollToTopButton({ raised = false }) {
   }, [raised]);
 
   const handleClick = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+    const behavior = reduceMotion ? "auto" : "smooth";
+    window.scrollTo({ top: 0, behavior });
     document.querySelectorAll(".app-scroll-panel").forEach(el => {
-      el.scrollTo({ top: 0, behavior: "smooth" });
+      el.scrollTo({ top: 0, behavior });
     });
   };
 
@@ -76,6 +78,7 @@ function ScrollToTopButton({ raised = false }) {
 
   return (
     <button
+      className="spark-scroll-top"
       onClick={handleClick}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
