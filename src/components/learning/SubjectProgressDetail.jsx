@@ -30,7 +30,11 @@ export default function SubjectProgressDetail({
   const canOpenSubject = Boolean(
     subject?.id &&
     onOpenSubject &&
-    subject?.capabilities?.study !== false
+    (
+      subject?.capabilities?.study !== false ||
+      subject?.routes?.study ||
+      subject?.implementation === "generic"
+    )
   );
   const finalMetric = supportsLabs
     ? { value: summary.labsCompleted || 0, label: "Labs explored" }
