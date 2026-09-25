@@ -450,6 +450,19 @@ export function exactTargetForAction(subjectId, skill, actionType, options = {})
   if (id === "physics") return physicsTarget(skill, actionType);
   if (id === "information-technology") return itTarget(skill, actionType, options.sourceRows || []);
 
+  if (id && actionType === "flashcards") {
+    return {
+      subjectId:id,
+      view:"dashboard",
+      path:`/dashboard/flashcards/${encodeURIComponent(id)}`,
+      params:{},
+      special:"dashboard-flashcards",
+      kind:"flashcards",
+      label:`${displaySkillLabel(id)} flashcards`,
+      exact:false,
+    };
+  }
+
   return {
     subjectId:id,
     view:"generic-study",
