@@ -143,6 +143,7 @@ export default function GenericSubjectFlashcardsPanel({
   const [structure, setStructure] = useState(null);
   const [loading, setLoading] = useState(Boolean(subjectId));
   const [error, setError] = useState("");
+  const [reloadKey, setReloadKey] = useState(0);
   const [activeSectionId, setActiveSectionId] = useState("all");
   const [index, setIndex] = useState(0);
   const [revealed, setRevealed] = useState(false);
@@ -201,7 +202,7 @@ export default function GenericSubjectFlashcardsPanel({
     });
 
     return () => { cancelled = true; };
-  }, [subjectId, supabase, userId]);
+  }, [reloadKey, subjectId, supabase, userId]);
 
   const allCards = useMemo(() => buildGenericSubjectFlashcards(structure), [structure]);
   const cards = useMemo(
@@ -361,7 +362,10 @@ export default function GenericSubjectFlashcardsPanel({
         <Card className="spark-generic-flashcards-empty">
           <h2>Flashcards could not be loaded</h2>
           <p>{error}</p>
-          <button type="button" className="spark-generic-flashcard-action" onClick={onChangeSubject}>Choose another subject</button>
+          <div className="spark-generic-flashcard-empty-actions">
+            <button type="button" className="spark-generic-flashcard-action" onClick={() => setReloadKey(value => value + 1)}>Try again</button>
+            <button type="button" className="spark-generic-flashcard-action secondary" onClick={onChangeSubject}>Choose another subject</button>
+          </div>
         </Card>
       ) : allCards.length === 0 ? (
         <Card className="spark-generic-flashcards-empty">
