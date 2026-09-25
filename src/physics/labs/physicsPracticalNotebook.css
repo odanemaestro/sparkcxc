@@ -15,3 +15,52 @@
 @media(max-width:760px){.ppn-head{flex-direction:column;padding:14px}.ppn-source{align-self:flex-start}.ppn-overview,.ppn-evaluation-grid,.ppn-writeup{grid-template-columns:1fr;padding-left:13px;padding-right:13px}.ppn-section,.ppn-graph-card,.ppn-followup{margin-left:13px;margin-right:13px}.ppn-fit{flex-direction:column}.ppn-graph-wrap svg{min-width:420px}}
 /* V2.4 practical reading rhythm and responsive spacing */
 .ppn-head,.ppn-overview,.ppn-section,.ppn-graph-card,.ppn-evaluation-grid,.ppn-writeup,.ppn-followup{min-width:0}.ppn-head h4,.ppn h5,.ppn-subhead h5{line-height:1.3}.ppn-overview section>p+ p{margin-top:9px}.ppn-section>summary{line-height:1.4}.ppn-section li,.ppn-evaluation-grid li,.ppn-followup summary,.ppn-followup details>div{overflow-wrap:anywhere}.ppn-evaluation-grid section{display:flex;flex-direction:column;gap:2px}.ppn-evaluation-grid h5{margin-bottom:7px}.ppn-writeup textarea{line-height:1.55}.ppn-graph-card .ppn-subhead{align-items:flex-start}.ppn-graph-card .ppn-subhead small{line-height:1.4;text-align:right}.ppn-table-wrap th{line-height:1.35}.ppn-table-wrap td{vertical-align:middle}@media(max-width:560px){.ppn{border-radius:15px}.ppn-head{gap:10px}.ppn-overview,.ppn-evaluation-grid,.ppn-writeup{gap:10px}.ppn-section,.ppn-graph-card,.ppn-followup{margin-top:10px}.ppn-section>summary{padding:11px 12px}.ppn-section>ol,.ppn-section>ul{padding-left:31px;padding-right:12px}.ppn-table-wrap table{min-width:520px}.ppn-followup{margin-bottom:13px}}
+
+
+/* SPARK PHYSICS NOTEBOOK DESKTOP FIT V16 */
+@media (min-width:1024px){
+  .pm-lab-mode .ppn{
+    width:100%;
+    max-width:100%;
+    margin-top:10px;
+  }
+  .pm-lab-mode .ppn-head{
+    padding:14px 16px;
+  }
+  .pm-lab-mode .ppn-overview{
+    padding:12px 16px 0;
+  }
+  .pm-lab-mode .ppn-section,
+  .pm-lab-mode .ppn-graph-card,
+  .pm-lab-mode .ppn-followup{
+    margin-left:16px;
+    margin-right:16px;
+  }
+  .pm-lab-mode .ppn-evaluation-grid,
+  .pm-lab-mode .ppn-writeup{
+    padding-left:16px;
+    padding-right:16px;
+  }
+  .pm-lab-mode .ppn-table-wrap{
+    max-width:100%;
+    overflow-x:hidden;
+  }
+  .pm-lab-mode .ppn-table-wrap table{
+    width:100%;
+    min-width:0;
+    table-layout:fixed;
+  }
+  .pm-lab-mode .ppn-table-wrap input{
+    min-width:0;
+  }
+  .pm-lab-mode .ppn-graph-wrap{
+    max-width:100%;
+    overflow:hidden;
+  }
+  .pm-lab-mode .ppn-graph-wrap svg{
+    width:100%;
+    min-width:0;
+    max-width:100%;
+    max-height:min(42vh,360px);
+  }
+}
