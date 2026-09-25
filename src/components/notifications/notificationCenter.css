@@ -300,3 +300,39 @@ html[data-theme="dark"] .notification-drag-handle span{
     border-radius:11px;
   }
 }
+
+
+/* SPARK NOTIFICATION BODY PORTAL MOBILE V5
+   NotificationCenter now renders directly under document.body. Keep the
+   mobile sheet independent of transformed/sticky header ancestors. */
+.notification-layer{
+  isolation:isolate;
+}
+@media(max-width:560px){
+  .notification-layer{
+    align-items:flex-end;
+    justify-content:center;
+    padding-top:max(8px,env(safe-area-inset-top));
+  }
+  .notification-drawer{
+    width:100%;
+    max-width:none;
+    height:calc(100dvh - max(8px,env(safe-area-inset-top)));
+    max-height:none;
+    border-radius:20px 20px 0 0;
+    overflow:hidden;
+    box-shadow:0 -16px 46px rgba(8,26,61,.18);
+  }
+  .notification-head{
+    flex:0 0 auto;
+  }
+  .notification-toolbar{
+    flex:0 0 auto;
+  }
+  .notification-list{
+    min-height:0;
+    flex:1 1 auto;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+}
