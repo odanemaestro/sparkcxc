@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect, useMemo, useState } from "react";
+import React, { lazy, Suspense, useEffect, useMemo } from "react";
 import SubjectSelectionView from "../subjects/SubjectSelectionView";
 import { useMathPracticeRoute } from "../routing/sparkRoutingV270";
 import { getSparkSubjectRegistry, subjectsForCapability } from "../subjects/subjectRegistry";
@@ -41,7 +41,7 @@ function readJson(key, fallback) {
 }
 
 export default function PracticeHub({ supabase, userId, setView, physicsEnabled = false, enrolledSubjectIds = null, initialSubject = null, onSubjectActivity, subjects = null }) {
-  const [subject, setSubject] = useState(initialSubject);
+  const subject = initialSubject;
   const { mode, setMode, examIntent, setExamIntent } = useMathPracticeRoute(initialSubject === "mathematics");
 
   const paper1Active = readJson(PAPER1_ACTIVE_KEY, null);
@@ -52,7 +52,6 @@ export default function PracticeHub({ supabase, userId, setView, physicsEnabled 
   const paper2Latest = paper2Results[0];
 
   useEffect(() => {
-    setSubject(initialSubject);
     if (!initialSubject) {
       setMode("home");
       setExamIntent("resume");
