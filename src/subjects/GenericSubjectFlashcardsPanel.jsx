@@ -212,6 +212,7 @@ export default function GenericSubjectFlashcardsPanel({
   );
 
   const current = cards.length ? cards[Math.min(index, cards.length - 1)] : null;
+  const totalReviewed = allCards.filter(card => reviewedKeys.has(`flashcard:${card.id}`)).length;
   const currentReviewed = cards.filter(card => reviewedKeys.has(`flashcard:${card.id}`)).length;
 
   useEffect(() => {
@@ -372,7 +373,7 @@ export default function GenericSubjectFlashcardsPanel({
         <>
           <div className="spark-generic-flashcards-summary">
             <Card><strong>{allCards.length}</strong><span>Review cards</span></Card>
-            <Card><strong>{reviewedKeys.size}</strong><span>Reviewed</span></Card>
+            <Card><strong>{totalReviewed}</strong><span>Reviewed</span></Card>
             <Card><strong>{structure?.topicCount || 0}</strong><span>Topics represented</span></Card>
           </div>
 
