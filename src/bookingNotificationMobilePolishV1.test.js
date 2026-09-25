@@ -4,12 +4,12 @@ const path = require("path");
 const read = relative => fs.readFileSync(path.join(__dirname, relative), "utf8");
 
 describe("SPARK booking + notification mobile polish V1", () => {
-  test("SPARK UI uses Inter/system fonts so zeros are not slashed by Atkinson", () => {
+  test("SPARK keeps the original Atkinson Hyperlegible interface typography", () => {
     const theme = read("theme.js");
     const globals = read("components/ui/GlobalStyles.jsx");
-    expect(theme).toContain("'Inter',system-ui");
-    expect(theme).not.toContain("'Inter','Atkinson Hyperlegible'");
-    expect(globals).toContain("family=Inter:wght@400;500;600;700;800");
+    expect(theme).toContain("'Atkinson Hyperlegible','Inter',sans-serif");
+    expect(globals).toContain("family=Atkinson+Hyperlegible:wght@400;700");
+    expect(globals).not.toContain("family=Inter:wght@400;500;600;700;800");
   });
 
   test("Notifications render through document.body so mobile sheets are not clipped by the header", () => {
