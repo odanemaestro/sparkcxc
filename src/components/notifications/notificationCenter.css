@@ -231,3 +231,13 @@ html[data-theme="dark"] .notification-drag-handle span{
     animation:none!important;
   }
 }
+
+
+/* SPARK NOTIFICATION EXIT MOTION V2 */
+.notification-layer.is-closing{
+  pointer-events:none;
+}
+.notification-layer.is-closing .notification-drawer,
+.notification-layer.is-closing .notification-scrim{
+  animation:none!important;
+}
