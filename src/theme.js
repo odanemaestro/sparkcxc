@@ -40,4 +40,4 @@ export const T = {
 };
 
 export const FD = "'Crimson Pro', Georgia, serif";
-export const FB = "'Atkinson Hyperlegible','Inter',sans-serif";
+export const FB = "'Inter','Atkinson Hyperlegible',sans-serif";
