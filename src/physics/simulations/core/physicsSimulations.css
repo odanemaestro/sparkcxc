@@ -553,7 +553,10 @@
   .pm-lab-mode .psim-heating-graph,
   .pm-lab-mode .psim-particle-box,
   .pm-lab-mode .psim-atomic-stage,
-  .pm-lab-mode .psim-atom-stage{
+  .pm-lab-mode .psim-atom-stage,
+  .pm-lab-mode .psim-decay-chart,
+  .pm-lab-mode .psim-half-life-chart,
+  .pm-lab-mode .psim-mass-energy-stage{
     width:100%;
     max-width:100%;
     max-height:min(44vh,430px);
