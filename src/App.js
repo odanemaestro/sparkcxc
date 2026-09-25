@@ -1799,7 +1799,7 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
         </div>
       </div>
 
-      {!!user && profile?.role === "student" && homeSubjects.length > 0 && (
+      {!!user && profile?.role === "student" && (
         <section className="spark-home-subjects" aria-label="Choose a subject">
           <div className="spark-home-subjects-inner">
             <SubjectSelectionView
