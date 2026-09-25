@@ -10,6 +10,9 @@ describe("SPARK learner intelligence duration numerals V1", () => {
     expect(panel).toContain('className="spark-li-duration-number">{recommendation.expectedMinutes}</span>&nbsp;min');
     expect(css).toContain(".spark-li-duration-number");
     expect(css).toContain('font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif');
+    expect(css).toContain(".spark-li-target-meta>span{");
+    expect(css).toContain(".spark-li-target-meta .spark-li-duration-number{");
+    expect(css).not.toContain(".spark-li-target-meta span{");
   });
 
   test("learner intelligence UI has no known mojibake placeholders", () => {
