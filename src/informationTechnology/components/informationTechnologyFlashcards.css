@@ -80,8 +80,8 @@
 .it-flashcards-progress-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:13px 17px 4px;font-size:8.5px;color:var(--it-muted,#657488)}
 .it-flashcards-progress-track{height:7px;border-radius:999px;background:var(--it-soft,#f4f7fa);overflow:hidden}.it-flashcards-progress-track i{display:block;height:100%;border-radius:inherit;background:#0d8069}
 .it-flashcards-nav{display:flex;justify-content:space-between;gap:10px;padding:12px 16px 15px}
-.it-flashcards-nav button{min-height:44px;min-width:125px;padding:9px 14px;border:0;border-radius:11px;background:#17375e;color:#fff;font:inherit;font-size:10px;font-weight:850;cursor:pointer}
-.it-flashcards-nav button:last-child{background:#0d8069}.it-flashcards-nav button:disabled{opacity:.38;cursor:not-allowed}
+.it-flashcards-nav button{min-height:44px;min-width:125px;padding:9px 14px;border:1px solid var(--it-line,#d8e0e8);border-radius:11px;background:var(--it-card,#fff);color:#17375e;font:inherit;font-size:10px;font-weight:850;cursor:pointer}
+.it-flashcards-nav button:last-child{background:#0d8069;border-color:#0d8069;color:#fff}.it-flashcards-nav button:disabled{opacity:.38;cursor:not-allowed}
 .it-flashcards-empty{padding:50px 20px;text-align:center;color:var(--it-muted,#657488)}
 
 html[data-theme="dark"] .it-flashcards,
