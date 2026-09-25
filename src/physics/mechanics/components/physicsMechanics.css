@@ -1243,3 +1243,55 @@ body[data-theme="dark"] .pm-flashcards-dashboard .pm-flashcard-nav-row .pm-btn:n
     transition:none!important;
   }
 }
+
+
+/* SPARK PHYSICS DESKTOP LAB FIT V16
+   Lab mode gets a wider, denser desktop canvas while normal Physics study,
+   flashcards and practice keep their existing reading width. */
+@media (min-width:1024px){
+  .physics-mechanics.pm-lab-mode .pm-shell{
+    width:calc(100% - 28px);
+    max-width:1500px;
+    padding:18px 18px 44px;
+  }
+  .physics-mechanics.pm-lab-mode .pm-hero{
+    padding:20px 22px;
+    margin-bottom:14px;
+  }
+  .physics-mechanics.pm-lab-mode .pm-topic-head{
+    margin:14px 0 10px;
+  }
+  .physics-mechanics.pm-lab-mode .pm-modebar{
+    margin:0 0 12px;
+  }
+  .physics-mechanics.pm-lab-mode .pm-labs-grid{
+    gap:14px;
+  }
+  .physics-mechanics.pm-lab-mode .pm-labs-grid > div,
+  .physics-mechanics.pm-lab-mode .pm-interactive,
+  .physics-mechanics.pm-lab-mode .pm-lab-frame{
+    width:100%;
+    min-width:0;
+    max-width:100%;
+  }
+  .physics-mechanics.pm-lab-mode .pm-lab-frame{
+    padding:14px 16px;
+  }
+  .physics-mechanics.pm-lab-mode .pm-lab-heading{
+    margin-bottom:10px;
+  }
+  .physics-mechanics.pm-lab-mode .pm-controls-grid{
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:10px;
+    margin:10px 0;
+  }
+  .physics-mechanics.pm-lab-mode .pm-lab-metrics,
+  .physics-mechanics.pm-lab-mode .pm-metrics{
+    grid-template-columns:repeat(auto-fit,minmax(145px,1fr));
+    gap:8px;
+    margin-top:10px;
+  }
+  .physics-mechanics.pm-lab-mode .pm-completion{
+    margin-top:12px;
+  }
+}
