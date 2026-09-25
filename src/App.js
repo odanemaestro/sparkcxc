@@ -1434,8 +1434,16 @@ function LessonView({ user, setView, showToast, hasTutorApp }) {
   );
 }
 
+function studySubjectsForNavigation(subjects = []) {
+  return enabledSparkSubjects(subjects).filter(subject =>
+    subject?.capabilities?.study !== false ||
+    Boolean(String(subject?.routes?.study || "").trim()) ||
+    subject?.implementation === "generic"
+  );
+}
+
 function StudySubjectHub({ setView, subjects = [], onManageSubjects, onOpenSubject }) {
-  const studySubjects = subjectsForCapability(subjects, "study");
+  const studySubjects = studySubjectsForNavigation(subjects);
   if (!studySubjects.length) {
     return <SubjectEnrollmentRequiredView onManageSubjects={onManageSubjects} onBack={() => setView("dashboard")} />;
   }
@@ -1799,7 +1807,7 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
               title="Choose a subject"
               description="Jump straight back into one of your enrolled CSEC subjects."
               capability="study"
-              subjects={subjectsForCapability(subjects, "study")}
+              subjects={studySubjectsForNavigation(subjects)}
               onSelect={subject => onOpenSubject?.(subject)}
             />
           </div>
