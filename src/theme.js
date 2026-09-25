@@ -40,4 +40,4 @@ export const T = {
 };
 
 export const FD = "'Crimson Pro', Georgia, serif";
-export const FB = "'Inter','Atkinson Hyperlegible',sans-serif";
+export const FB = "'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif";
