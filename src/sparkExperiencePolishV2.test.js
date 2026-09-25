@@ -24,6 +24,17 @@ describe("SPARK experience polish V2", () => {
     expect(css).toContain("touch-action:pan-y");
   });
 
+  test("Physics flashcards use the same direct manipulation model", () => {
+    const source = read("physics/mechanics/components/PhysicsMechanicsSupportPanels.jsx");
+    const css = read("physics/mechanics/components/physicsMechanics.css");
+    expect(source).toContain("beginCardDrag");
+    expect(source).toContain("setPointerCapture");
+    expect(source).toContain('moveCard("previous")');
+    expect(source).toContain('moveCard("next")');
+    expect(css).toContain("--pm-flashcard-drag-x");
+    expect(css).toContain("touch-action:pan-y");
+  });
+
   test("notification drawer dismisses along its entrance path and contains focus", () => {
     const source = read("components/notifications/NotificationCenter.jsx");
     const css = read("components/notifications/notificationCenter.css");
