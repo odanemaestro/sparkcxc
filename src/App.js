@@ -1675,7 +1675,7 @@ function Footer({ setView, hasTutorApp, isTutor, isParent }) {
 }
 
 // ─── HOME VIEW ───────────────────────────────────────────────────────────────
-function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, isParent }) {
+function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, isParent, subjects = [], onOpenSubject }) {
   const [demoAnswer, setDemoAnswer] = useState(null);
   const totalTopics = SYLLABUS_SECTIONS.reduce((a, s) => a + s.topics.length, 0);
   // Tutors don't take lessons or book other tutors themselves, so the
@@ -1789,6 +1789,22 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
         </div>
         </div>
       </div>
+
+      {!!user && profile?.role === "student" && subjects.length > 0 && (
+        <section className="spark-home-subjects" aria-label="Choose a subject">
+          <div className="spark-home-subjects-inner">
+            <SubjectSelectionView
+              embedded
+              eyebrow="Your subjects"
+              title="Choose a subject"
+              description="Jump straight back into one of your enrolled CSEC subjects."
+              capability="study"
+              subjects={subjectsForCapability(subjects, "study")}
+              onSelect={subject => onOpenSubject?.(subject)}
+            />
+          </div>
+        </section>
+      )}
 
       {/* Features */}
       <div style={{background:T.paper,borderTop:`1px solid ${T.border}`,flexShrink:0}}>
@@ -6594,26 +6610,35 @@ export default function App() {
       return;
     }
 
-    const builtinView = {
-      mathematics:"lesson",
-      physics:"physics",
-      "information-technology":"information-technology",
+    const configured = String(subject?.routes?.study || "").trim();
+    const builtinPath = {
+      mathematics:"/study/mathematics",
+      physics:"/study/physics",
+      "information-technology":"/study/information-technology",
+      "integrated-science":"/study/integrated-science",
     }[id];
 
-    if (builtinView) {
-      setView(builtinView);
-      return;
-    }
-
-    const configured = String(subject?.routes?.study || "").trim();
     const path = configured && configured !== "/study"
       ? configured
-      : `/study/${encodeURIComponent(id)}`;
+      : builtinPath || `/study/${encodeURIComponent(id)}`;
 
     writeSparkNestedRoute(path);
+
     const routedView = viewFromBrowserHash();
-    viewRef.current = routedView;
-    setViewState(routedView);
+    if (routedView === "home" && path.startsWith("/study/")) {
+      // Defensive fallback: a published study route should never collapse to
+      // Home. Keep the learner in the subject shell even if a new subject has
+      // not yet been added to the top-level route table.
+      viewRef.current = "generic-study";
+      setViewState("generic-study");
+    } else {
+      viewRef.current = routedView;
+      setViewState(routedView);
+    }
+
+    if (typeof window !== "undefined") {
+      window.requestAnimationFrame(() => window.scrollTo?.({ top:0, behavior:"auto" }));
+    }
   }, [setView]);
 
   useEffect(() => {
@@ -7303,7 +7328,7 @@ if (loading || authenticatedRolePending) {
     <div className="spark-app-root" style={{minHeight:"100vh",display:"flex",flexDirection:"column",background:T.bg,color:T.ink}}>
       <GlobalStyles/>
       <Nav {...navProps}/>
-      {view === "home"         && <HomeView setView={setView} liveStats={liveStats} hasTutorApp={hideTutorApplyLink} user={session?.user} profile={profile} tutorApp={tutorApp} isParent={profile?.role === "parent"}/>}
+      {view === "home"         && <HomeView setView={setView} liveStats={liveStats} hasTutorApp={hideTutorApplyLink} user={session?.user} profile={profile} tutorApp={tutorApp} isParent={profile?.role === "parent"} subjects={appStudentEnrolledSubjects} onOpenSubject={openStudentSubject}/>}
       {/* key={view} forces a fresh mount when switching between the "auth"
           and "login" routes, so AuthView's internal mode state re-reads
           initialMode each time instead of staying frozen on whichever tab
