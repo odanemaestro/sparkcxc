@@ -3526,6 +3526,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
 
   const setFlashcardSubjectRoute = useCallback((subjectId, options = {}) => {
     const next = normalizeFlashcardSubjectId(subjectId);
+    setSec("flashcards");
     setFlashcardSubject(next);
     writeFlashcardSubjectToBrowserHash(next, options);
   }, []);
@@ -6607,9 +6608,10 @@ export default function App() {
       ? configured
       : `/study/${encodeURIComponent(id)}`;
 
-    viewRef.current = "generic-study";
-    setViewState("generic-study");
     writeSparkNestedRoute(path);
+    const routedView = viewFromBrowserHash();
+    viewRef.current = routedView;
+    setViewState(routedView);
   }, [setView]);
 
   useEffect(() => {
