@@ -241,3 +241,62 @@ html[data-theme="dark"] .notification-drag-handle span{
 .notification-layer.is-closing .notification-scrim{
   animation:none!important;
 }
+
+
+/* SPARK NOTIFICATION SKELETON V3 */
+.notification-loading-list{
+  display:grid;
+  gap:8px;
+  padding:10px 10px 24px;
+}
+.notification-loading-item{
+  display:grid;
+  grid-template-columns:42px minmax(0,1fr);
+  gap:12px;
+  align-items:start;
+  min-height:96px;
+  padding:14px 12px;
+  border:1px solid var(--spark-border,#e2e8f0);
+  border-radius:14px;
+  background:var(--spark-paper,#fff);
+}
+.notification-loading-avatar{
+  width:40px;
+  height:40px;
+  border-radius:12px;
+}
+.notification-loading-copy{
+  display:grid;
+  gap:9px;
+  min-width:0;
+  padding-top:2px;
+}
+.notification-loading-line{
+  display:block;
+  width:88%;
+  height:10px;
+  border-radius:999px;
+}
+.notification-loading-line-title{
+  width:56%;
+  height:12px;
+}
+.notification-loading-line-short{
+  width:38%;
+}
+@media(max-width:560px){
+  .notification-loading-list{
+    padding:8px 8px calc(18px + env(safe-area-inset-bottom));
+  }
+  .notification-loading-item{
+    grid-template-columns:38px minmax(0,1fr);
+    gap:10px;
+    min-height:92px;
+    padding:13px 11px;
+  }
+  .notification-loading-avatar{
+    width:36px;
+    height:36px;
+    border-radius:11px;
+  }
+}
