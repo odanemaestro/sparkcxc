@@ -190,3 +190,62 @@ html[data-theme="dark"] .it-flashcards-study,
 body[data-theme="dark"] .it-flashcards-study{
   box-shadow:none;
 }
+
+/* SPARK IT FLASHCARD INTERACTION PASS V2 */
+.it-flashcard{
+  translate:var(--it-flashcard-drag-x,0px) 0;
+  touch-action:pan-y;
+  will-change:translate;
+  transition:
+    translate 260ms var(--spark-ease-drawer,cubic-bezier(.32,.72,0,1)),
+    scale 110ms ease-out,
+    border-color 180ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1)),
+    box-shadow 180ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1)),
+    background-color 180ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1));
+}
+.it-flashcard.is-dragging{
+  cursor:grabbing;
+  user-select:none;
+  transition:none!important;
+}
+.it-flashcard.is-settling{
+  transition:translate 260ms var(--spark-ease-drawer,cubic-bezier(.32,.72,0,1))!important;
+}
+.it-flashcard:hover:not(.is-dragging){
+  transform:translateY(-2px);
+}
+.it-flashcards-progress-track i{
+  transition:width 260ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1));
+}
+.it-flashcards-mode button,
+.it-flashcards-sections button,
+.it-flashcards-topics button,
+.it-flashcards-toolbar button,
+.it-flashcards-nav button,
+.it-flashcards-change{
+  transition:
+    scale 110ms ease-out,
+    transform 180ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1)),
+    background-color 180ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1)),
+    border-color 180ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1)),
+    color 180ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1)),
+    box-shadow 180ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1));
+}
+@media(pointer:coarse){
+  .it-flashcard:hover:not(.is-dragging){
+    transform:none;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .it-flashcard,
+  .it-flashcard.is-settling,
+  .it-flashcards-progress-track i,
+  .it-flashcards-mode button,
+  .it-flashcards-sections button,
+  .it-flashcards-topics button,
+  .it-flashcards-toolbar button,
+  .it-flashcards-nav button,
+  .it-flashcards-change{
+    transition:none!important;
+  }
+}
