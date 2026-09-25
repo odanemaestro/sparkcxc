@@ -240,26 +240,12 @@ function TopicBank({ supabase, userId, onBack }) {
 }
 
 export default function IntegratedSciencePracticeHub({ supabase, userId, onBack }) {
-  const [mode,setModeState] = useState(readPracticeMode);
+  const [mode,setMode] = useIntegratedSciencePracticeRoute(true);
   const [bankIndex,setBankIndex] = useState(null);
 
   useEffect(() => {
     loadIntegratedScienceBankIndex().then(setBankIndex).catch(() => {});
-    const sync = () => setModeState(readPracticeMode());
-    window.addEventListener("popstate",sync);
-    window.addEventListener("hashchange",sync);
-    window.addEventListener("spark:routechange",sync);
-    return () => {
-      window.removeEventListener("popstate",sync);
-      window.removeEventListener("hashchange",sync);
-      window.removeEventListener("spark:routechange",sync);
-    };
   },[]);
-
-  const setMode = next => {
-    setModeState(next);
-    writePracticeMode(next);
-  };
 
   if (mode === "paper1") {
     return <IntegratedSciencePaper1Exam supabase={supabase} userId={userId} onBack={() => setMode("home")} />;
