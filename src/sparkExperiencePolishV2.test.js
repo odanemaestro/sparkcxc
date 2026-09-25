@@ -110,4 +110,25 @@ describe("SPARK experience polish V2", () => {
     expect(responsive).toContain("SPARK MOBILE NAV INTERACTION PASS V2");
     expect(responsive).toContain("spark-mobile-menu-in");
   });
+
+  test("dashboard subject navigation resolves canonical subjects before opening", () => {
+    const app = read("App.js");
+    const detail = read("components/learning/SubjectProgressDetail.jsx");
+    expect(app).toContain("resolveDashboardSubject");
+    expect(app).toContain("getSparkSubject(subjects, id)");
+    expect(app).toContain("const routedView = viewFromBrowserHash()");
+    expect(detail).toContain("const canOpenSubject");
+    expect(detail).toContain("subject?.capabilities?.study !== false");
+  });
+
+  test("Integrated Science flashcards have a published capability and canonical dashboard route", () => {
+    const app = read("App.js");
+    const migration = read("../supabase/migrations/20260925010000_integrated_science_flashcards.sql");
+    expect(app).toContain("openFlashcardSubject");
+    expect(app).toContain("setSec(\"flashcards\")");
+    expect(app).toContain("key={activeFlashcardSubject.id}");
+    expect(migration).toContain("'{flashcards}'");
+    expect(migration).toContain("/dashboard/flashcards/integrated-science");
+    expect(migration).toContain("/study/integrated-science");
+  });
 });
