@@ -69,6 +69,7 @@ import Card from "./components/ui/Card";
 import ProgressBar from "./components/ui/ProgressBar";
 import Toast from "./components/ui/Toast";
 import Modal from "./components/ui/Modal";
+import BookingDatePicker from "./components/booking/BookingDatePicker";
 import ScrollToTopButton from "./components/ui/ScrollToTopButton";
 import SparkLoader from "./components/ui/SparkLoader";
 import ReportQuestionButton from "./components/ui/ReportQuestionButton";
@@ -5447,10 +5448,12 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
               </div>
               <div style={{marginBottom:14}}>
                 <div style={{fontSize:13,fontWeight:500,color:T.inkSoft,marginBottom:6}}>Date</div>
-                <input type="date" value={date} onChange={e=>setDate(e.target.value)}
-                  min={jamaicaNowParts().dateKey}
-                  style={{width:"100%",padding:"10px 12px",border:`1.5px solid ${T.border}`,
-                    borderRadius:7,fontSize:14,fontFamily:FB,color:T.ink,outline:"none"}}/>
+                <BookingDatePicker
+                  value={date}
+                  onChange={setDate}
+                  minDate={jamaicaNowParts().dateKey}
+                  label="Choose booking date"
+                />
               </div>
               <div style={{marginBottom:14}}>
                 <div style={{fontSize:13,fontWeight:500,color:T.inkSoft,marginBottom:6}}>Duration</div>
