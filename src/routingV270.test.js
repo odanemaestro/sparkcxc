@@ -79,6 +79,21 @@ describe("SPARK comprehensive refresh-safe routing V2.7.0", () => {
     });
   });
 
+  test("Integrated Science Practice restores the selected mode from the URL", () => {
+    const source = read("integratedScience/practice/IntegratedSciencePracticeHub.jsx");
+    const routing = read("routing/sparkRoutingV270.js");
+    expect(source).toContain("useIntegratedSciencePracticeRoute");
+    expect(routing).toContain('const INTEGRATED_SCIENCE_PRACTICE_BASE = "/practice/integrated-science"');
+    expect(routing).toContain('new Set(["home", "paper1", "paper2", "topic"])');
+    expect(routing).toContain("safe === \"home\" ? {} : { mode: safe }");
+  });
+
+  test("Practice subject selection follows the app route instead of local subject state", () => {
+    const source = read("practice/PracticeHub.jsx");
+    expect(source).toContain("const subject = initialSubject");
+    expect(source).not.toContain("const [subject, setSubject]");
+  });
+
   test("Physics Practice routes papers Sections A-E modes and topics", () => {
     expect(read("physics/course/components/PhysicsPracticeHub.jsx")).toContain("usePhysicsPracticeHubRoute");
     const files = {
