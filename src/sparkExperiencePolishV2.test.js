@@ -121,6 +121,9 @@ describe("SPARK experience polish V2", () => {
     expect(detail).toContain("subject?.capabilities?.study !== false");
     expect(detail).toContain("subject?.routes?.study");
     expect(detail).toContain('subject?.implementation === "generic"');
+    const enrollment = read("components/learning/StudentSubjectEnrollment.jsx");
+    expect(enrollment).toContain("subject.routes?.study");
+    expect(enrollment).toContain('subject.implementation === "generic"');
   });
 
   test("Integrated Science flashcards have a published capability and canonical dashboard route", () => {
