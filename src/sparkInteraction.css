@@ -226,3 +226,14 @@ html {
     transform:none;
   }
 }
+
+/* SPARK MOTION ACCESSIBILITY V3 */
+.spark-progress-bar__fill{
+  will-change:width;
+}
+@media (prefers-reduced-motion:reduce){
+  .spark-progress-bar__fill,
+  .spark-scroll-top{
+    transition:none!important;
+  }
+}
