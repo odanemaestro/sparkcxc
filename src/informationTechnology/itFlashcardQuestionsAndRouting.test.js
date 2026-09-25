@@ -46,7 +46,9 @@ describe("IT flashcard questions and all-subject flashcard routing", () => {
     expect(app).toContain('"information-technology"');
     expect(app).toContain('useState(() => flashcardSubjectFromBrowserHash())');
     expect(app).toContain('setFlashcardSubject(normalized === "flashcards" ? flashcardSubjectFromBrowserHash() : null)');
-    expect(app).toContain("setFlashcardSubjectRoute(subject.id)");
+    expect(app).toContain("const openFlashcardSubject = useCallback(subject =>");
+    expect(app).toContain("onSelect={openFlashcardSubject}");
+    expect(app).toContain("setFlashcardSubjectRoute(id)");
     expect(app).toContain("setFlashcardSubjectRoute(null)");
   });
 
