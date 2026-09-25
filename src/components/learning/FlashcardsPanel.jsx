@@ -1,7 +1,8 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Card from "../ui/Card";
 import Btn from "../ui/Btn";
 import Icon from "../ui/Icon";
+import SparkLoader from "../ui/SparkLoader";
 import MathText from "../../practice/MathText";
 import {
   FLASHCARDS,
@@ -31,6 +32,11 @@ export default function FlashcardsPanel({ userId, supabase, showToast, onProgres
   const [saving, setSaving] = useState(false);
   const [loadError, setLoadError] = useState("");
   const [clock, setClock] = useState(() => Date.now());
+  const [dragX, setDragX] = useState(0);
+  const [dragging, setDragging] = useState(false);
+  const [cardSettling, setCardSettling] = useState(false);
+  const dragRef = useRef({ pointerId: null, startX: 0, lastX: 0, lastTime: 0, velocity: 0, dragged: false });
+  const suppressRevealRef = useRef(false);
 
   // Keep the due queue live during a study session. In particular, an "Again"
   // card should return after its short retry interval without requiring the
@@ -84,7 +90,90 @@ export default function FlashcardsPanel({ userId, supabase, showToast, onProgres
   useEffect(() => {
     setIndex(0);
     setRevealed(false);
+    setDragX(0);
   }, [deck, mode]);
+
+  const moveCard = useCallback(direction => {
+    if (!visibleCards.length) return false;
+    const nextIndex = direction === "next"
+      ? Math.min(visibleCards.length - 1, index + 1)
+      : Math.max(0, index - 1);
+    if (nextIndex === index) return false;
+    setIndex(nextIndex);
+    setRevealed(false);
+    return true;
+  }, [index, visibleCards.length]);
+
+  const beginFlashcardDrag = useCallback(event => {
+    if (saving || !current) return;
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+
+    const now = performance.now();
+    dragRef.current = {
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      lastX: event.clientX,
+      lastTime: now,
+      velocity: 0,
+      dragged: false,
+    };
+    setCardSettling(false);
+    setDragging(true);
+    event.currentTarget.setPointerCapture?.(event.pointerId);
+  }, [current, saving]);
+
+  const moveFlashcardDrag = useCallback(event => {
+    const state = dragRef.current;
+    if (state.pointerId !== event.pointerId) return;
+
+    const rawDelta = event.clientX - state.startX;
+    const atStart = index === 0 && rawDelta > 0;
+    const atEnd = index >= visibleCards.length - 1 && rawDelta < 0;
+    const delta = (atStart || atEnd) ? rawDelta * 0.24 : rawDelta;
+    const now = performance.now();
+    const elapsed = Math.max(1, now - state.lastTime);
+
+    state.velocity = (event.clientX - state.lastX) / elapsed;
+    state.lastX = event.clientX;
+    state.lastTime = now;
+    if (Math.abs(rawDelta) > 7) state.dragged = true;
+
+    setDragX(delta);
+  }, [index, visibleCards.length]);
+
+  const endFlashcardDrag = useCallback(event => {
+    const state = dragRef.current;
+    if (state.pointerId !== event.pointerId) return;
+
+    const rawDelta = event.clientX - state.startX;
+    const direction = rawDelta < 0 ? "next" : "previous";
+    const shouldMove = Math.abs(rawDelta) > 64 || Math.abs(state.velocity) > 0.45;
+    const moved = shouldMove ? moveCard(direction) : false;
+
+    suppressRevealRef.current = state.dragged;
+    dragRef.current.pointerId = null;
+    setDragging(false);
+    setCardSettling(!moved);
+    setDragX(0);
+
+    window.setTimeout(() => {
+      suppressRevealRef.current = false;
+      setCardSettling(false);
+    }, moved ? 0 : 260);
+  }, [moveCard]);
+
+  const cancelFlashcardDrag = useCallback(event => {
+    if (dragRef.current.pointerId !== event.pointerId) return;
+    suppressRevealRef.current = dragRef.current.dragged;
+    dragRef.current.pointerId = null;
+    setDragging(false);
+    setCardSettling(true);
+    setDragX(0);
+    window.setTimeout(() => {
+      suppressRevealRef.current = false;
+      setCardSettling(false);
+    }, 260);
+  }, []);
 
   const rate = async rating => {
     if (!current || saving) return;
@@ -200,7 +289,7 @@ export default function FlashcardsPanel({ userId, supabase, showToast, onProgres
           </div>
 
           {loading ? (
-            <Card className="spark-flashcard-empty"><p>Loading your flashcards…</p></Card>
+            <Card className="spark-flashcard-empty"><SparkLoader variant="inline" label="Loading your flashcards" /></Card>
           ) : !current ? (
             <Card className="spark-flashcard-empty">
               <div className="spark-feature-icon"><Icon name="flashcards" size={24}/></div>
@@ -211,9 +300,21 @@ export default function FlashcardsPanel({ userId, supabase, showToast, onProgres
           ) : (
             <>
               <button
+                key={current.id}
                 type="button"
-                className={`spark-flashcard ${revealed ? "revealed" : ""}`}
-                onClick={() => setRevealed(true)}
+                className={`spark-flashcard ${revealed ? "revealed" : ""} ${dragging ? "is-dragging" : ""} ${cardSettling ? "is-settling" : ""}`}
+                style={{ "--spark-flashcard-drag-x": `${dragX}px` }}
+                onPointerDown={beginFlashcardDrag}
+                onPointerMove={moveFlashcardDrag}
+                onPointerUp={endFlashcardDrag}
+                onPointerCancel={cancelFlashcardDrag}
+                onClick={event => {
+                  if (suppressRevealRef.current) {
+                    event.preventDefault();
+                    return;
+                  }
+                  setRevealed(true);
+                }}
                 aria-label={revealed ? `Flashcard answer: ${current.back}` : `Flashcard question: ${current.front}. Reveal answer.`}
               >
                 <div className="spark-flashcard-label">{FLASHCARD_DECKS.find(item => item.id === current.deck)?.title}</div>
