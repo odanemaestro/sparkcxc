@@ -29,6 +29,9 @@ describe("SPARK Physics desktop lab fit V16", () => {
     const css = read("physics/simulations/core/physicsSimulations.css");
     expect(css).toContain("SPARK PHYSICS SIMULATION DESKTOP FIT V16");
     expect(css).toContain(".pm-lab-mode .psim-stage.wide");
+    expect(css).toContain(".pm-lab-mode .psim-decay-chart");
+    expect(css).toContain(".pm-lab-mode .psim-half-life-chart");
+    expect(css).toContain(".pm-lab-mode .psim-mass-energy-stage");
     expect(css).toContain("min-width:0");
     expect(css).toContain("max-height:min(44vh,430px)");
   });
