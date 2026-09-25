@@ -29,7 +29,7 @@
 .spark-generic-flashcard-hint{margin-top:24px;font-size:10px;font-weight:750;opacity:.66}
 .spark-generic-flashcard-nav{display:flex;justify-content:space-between;gap:10px}
 .spark-generic-flashcard-nav button,.spark-generic-flashcard-action{min-height:44px;padding:10px 16px;border:1px solid var(--spark-border);border-radius:11px;background:var(--spark-paper);color:var(--spark-ink);font:800 12px 'Atkinson Hyperlegible','Inter',sans-serif;cursor:pointer;transition:scale 110ms ease-out,background-color 180ms var(--spark-ease-out),border-color 180ms var(--spark-ease-out)}
-.spark-generic-flashcard-nav button:last-child,.spark-generic-flashcard-action{background:var(--spark-teal);border-color:var(--spark-teal);color:#042f2e}
+.spark-generic-flashcard-nav button:last-child,.spark-generic-flashcard-action{background:var(--spark-teal);border-color:var(--spark-teal);color:#fff}
 .spark-generic-flashcard-nav button:active:not(:disabled),.spark-generic-flashcard-action:active{scale:.97}
 .spark-generic-flashcard-nav button:disabled{opacity:.4;cursor:default}
 .spark-generic-flashcards-empty{display:grid;justify-items:start;gap:9px;padding:28px}
