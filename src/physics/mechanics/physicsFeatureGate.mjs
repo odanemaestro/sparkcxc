@@ -1,10 +1,18 @@
 // Controls whether CSEC Physics is available throughout SPARK.
-// Physics is enabled only when the dedicated production feature flag
-// is explicitly set to "true".
+// Production remains opt-in through REACT_APP_ENABLE_PHYSICS.
+// Local development defaults Physics on so npm start can exercise the
+// published Physics experience without a separate shell environment variable.
 export function physicsEnabled(env = {}) {
-  return String(env.REACT_APP_ENABLE_PHYSICS || "")
+  const explicit = String(env.REACT_APP_ENABLE_PHYSICS || "")
     .trim()
-    .toLowerCase() === "true";
+    .toLowerCase();
+
+  if (explicit === "true") return true;
+  if (explicit === "false") return false;
+
+  return String(env.NODE_ENV || "")
+    .trim()
+    .toLowerCase() === "development";
 }
 
 // Kept for compatibility with the existing App.js import.
