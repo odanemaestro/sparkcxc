@@ -2094,3 +2094,47 @@ input,select,textarea,button{max-width:100%}
     width:100%!important;
   }
 }
+
+
+/* SPARK MOBILE NAV INTERACTION PASS V2 */
+.spark-menu-button{
+  transition:
+    scale 110ms ease-out,
+    background-color 180ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1)),
+    border-color 180ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1));
+}
+.spark-menu-button:active{
+  scale:.96;
+}
+.spark-mobile-menu{
+  transform-origin:top right;
+  animation:spark-mobile-menu-in 180ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1)) both;
+}
+.spark-mobile-menu .spark-nav-link{
+  transition:
+    scale 110ms ease-out,
+    background-color 160ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1)),
+    color 160ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1))!important;
+}
+.spark-mobile-menu .spark-nav-link:active{
+  scale:.985;
+}
+@keyframes spark-mobile-menu-in{
+  from{
+    opacity:0;
+    transform:translateY(-6px) scale(.985);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .spark-menu-button,
+  .spark-menu-button span,
+  .spark-mobile-menu,
+  .spark-mobile-menu .spark-nav-link{
+    transition:none!important;
+    animation:none!important;
+  }
+}
