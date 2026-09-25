@@ -60,11 +60,11 @@ function Switch({ checked, onChange, disabled, label }) {
 function friendlyPushError(code) {
   switch (code) {
     case "unsupported": return "Push notifications are not supported in this browser.";
-    case "not-configured": return "Phone notifications are still being configured for SPARK.";
+    case "not-configured": return "Notifications are still being configured for SPARK.";
     case "ios-install-required": return "Add SPARK to your iPhone Home Screen first, then open SPARK from the Home Screen and enable notifications here.";
     case "permission-denied": return "Notifications are blocked for SPARK. Allow notifications in your browser or device settings, then try again.";
-    case "service-worker-failed": return "SPARK could not prepare phone notifications on this device. Refresh the page and try again.";
-    default: return "SPARK could not enable phone notifications on this device. Please try again.";
+    case "service-worker-failed": return "SPARK could not prepare notifications on this device. Refresh the page and try again.";
+    default: return "SPARK could not enable notifications on this device. Please try again.";
   }
 }
 
@@ -93,7 +93,7 @@ export default function PushNotificationSettings({ user, profile }) {
       setDevice(currentDevice);
     } catch (error) {
       console.error("Failed to load push settings:", error);
-      setMessage({ type: "error", text: "SPARK could not load phone notification settings." });
+      setMessage({ type: "error", text: "SPARK could not load notification settings." });
     } finally {
       setLoading(false);
     }
@@ -123,11 +123,11 @@ export default function PushNotificationSettings({ user, profile }) {
         setMessage({ type: "error", text: friendlyPushError(result.code) });
       } else {
         setPrefs(current => ({ ...current, push_enabled: true }));
-        setMessage({ type: "success", text: "Phone notifications are enabled on this device." });
+        setMessage({ type: "success", text: "Notifications are enabled on this device." });
       }
     } catch (error) {
-      console.error("Failed to enable phone notifications:", error);
-      setMessage({ type: "error", text: "SPARK could not enable phone notifications on this device." });
+      console.error("Failed to enable notifications:", error);
+      setMessage({ type: "error", text: "SPARK could not enable notifications on this device." });
     } finally {
       await refresh();
       setBusy(false);
@@ -142,10 +142,10 @@ export default function PushNotificationSettings({ user, profile }) {
       if (!result.ok) throw result.error || new Error("Push account disable failed");
       setPrefs(current => ({ ...current, push_enabled: false }));
       setDevice(current => ({ ...current, subscribed: false }));
-      setMessage({ type: "success", text: "Phone notifications are off for your SPARK account." });
+      setMessage({ type: "success", text: "Notifications are off for your SPARK account." });
     } catch (error) {
-      console.error("Failed to disable phone notifications:", error);
-      setMessage({ type: "error", text: "SPARK could not update your phone notification setting." });
+      console.error("Failed to disable notifications:", error);
+      setMessage({ type: "error", text: "SPARK could not update your notification setting." });
     } finally {
       setBusy(false);
     }
@@ -157,18 +157,18 @@ export default function PushNotificationSettings({ user, profile }) {
     try {
       const result = await disablePushOnThisDevice();
       if (!result.ok) throw result.error || new Error("Push device removal failed");
-      setMessage({ type: "success", text: "Phone notifications are disabled on this device. Other connected devices are unchanged." });
+      setMessage({ type: "success", text: "Notifications are disabled on this device. Other connected devices are unchanged." });
       await refresh();
     } catch (error) {
       console.error("Failed to disable this push device:", error);
-      setMessage({ type: "error", text: "SPARK could not disable phone notifications on this device." });
+      setMessage({ type: "error", text: "SPARK could not disable notifications on this device." });
     } finally {
       setBusy(false);
     }
   };
 
   if (loading) {
-    return <div className="push-settings-state">Loading phone notification settings...</div>;
+    return <div className="push-settings-state">Loading notification settings...</div>;
   }
 
   return (
@@ -186,7 +186,7 @@ export default function PushNotificationSettings({ user, profile }) {
       {device.iosInstallRequired ? (
         <div className="push-settings-card ios-help">
           <strong>One step first on iPhone</strong>
-          <span>Tap Share in Safari, choose Add to Home Screen, open SPARK from the new Home Screen icon, then return here and enable phone notifications.</span>
+          <span>Tap Share in Safari, choose Add to Home Screen, open SPARK from the new Home Screen icon, then return here and enable notifications.</span>
         </div>
       ) : !device.supported ? (
         <div className="push-settings-card muted">
@@ -195,7 +195,7 @@ export default function PushNotificationSettings({ user, profile }) {
         </div>
       ) : !device.publicKeyConfigured ? (
         <div className="push-settings-card muted">
-          <strong>Phone notifications are being prepared</strong>
+          <strong>Notifications are being prepared</strong>
           <span>This SPARK deployment does not have its public push key yet.</span>
         </div>
       ) : (
@@ -208,7 +208,7 @@ export default function PushNotificationSettings({ user, profile }) {
             <Switch
               checked={prefs.push_enabled}
               disabled={busy}
-              label="Allow phone notifications"
+              label="Allow notifications"
               onChange={value => value ? enablePush() : turnOffEverywhere()}
             />
           </div>
