@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import MathText from "../../../practice/MathText";
 import PhysicsFlashcardVisual from "../../components/PhysicsFlashcardVisual";
 import { SECTION_A_TOPICS } from "../sectionAMechanics.mjs";
@@ -38,6 +38,11 @@ export function PhysicsMechanicsFlashcardsPanel({ onChangeSubject }) {
   const [topicId, setTopicId] = useState("A1");
   const [index, setIndex] = useState(0);
   const [revealed, setRevealed] = useState(false);
+  const [dragX, setDragX] = useState(0);
+  const [dragging, setDragging] = useState(false);
+  const [settling, setSettling] = useState(false);
+  const dragRef = useRef({ pointerId:null, startX:0, lastX:0, lastTime:0, velocity:0, dragged:false });
+  const suppressToggleRef = useRef(false);
   const topic = ALL_TOPICS.find(item => item.id === topicId) || ALL_TOPICS[0];
   const cards = topic.flashcards || [];
   const current = cards.length ? cards[index % cards.length] : null;
@@ -54,7 +59,93 @@ export function PhysicsMechanicsFlashcardsPanel({ onChangeSubject }) {
   })), [ALL_TOPICS]);
   const visibleTopics = sectionGroups.find(section => section.id === activeSection)?.topics || [];
 
-  useEffect(() => { setIndex(0); setRevealed(false); }, [topicId]);
+  useEffect(() => {
+    setIndex(0);
+    setRevealed(false);
+    setDragX(0);
+  }, [topicId]);
+
+  const moveCard = useCallback(direction => {
+    if (!cards.length) return false;
+    const nextIndex = direction === "next"
+      ? Math.min(cards.length - 1, index + 1)
+      : Math.max(0, index - 1);
+    if (nextIndex === index) return false;
+    setIndex(nextIndex);
+    setRevealed(false);
+    return true;
+  }, [cards.length, index]);
+
+  const beginCardDrag = useCallback(event => {
+    if (!current) return;
+    if (event.pointerType === "mouse" && event.button !== 0) return;
+
+    const now = performance.now();
+    dragRef.current = {
+      pointerId:event.pointerId,
+      startX:event.clientX,
+      lastX:event.clientX,
+      lastTime:now,
+      velocity:0,
+      dragged:false,
+    };
+    setSettling(false);
+    setDragging(true);
+    event.currentTarget.setPointerCapture?.(event.pointerId);
+  }, [current]);
+
+  const moveCardDrag = useCallback(event => {
+    const state = dragRef.current;
+    if (state.pointerId !== event.pointerId) return;
+
+    const rawDelta = event.clientX - state.startX;
+    const atStart = index === 0 && rawDelta > 0;
+    const atEnd = index >= cards.length - 1 && rawDelta < 0;
+    const delta = (atStart || atEnd) ? rawDelta * 0.24 : rawDelta;
+    const now = performance.now();
+    const elapsed = Math.max(1, now - state.lastTime);
+
+    state.velocity = (event.clientX - state.lastX) / elapsed;
+    state.lastX = event.clientX;
+    state.lastTime = now;
+    if (Math.abs(rawDelta) > 7) state.dragged = true;
+
+    setDragX(delta);
+  }, [cards.length, index]);
+
+  const finishCardDrag = useCallback(event => {
+    const state = dragRef.current;
+    if (state.pointerId !== event.pointerId) return;
+
+    const rawDelta = event.clientX - state.startX;
+    const direction = rawDelta < 0 ? "next" : "previous";
+    const shouldMove = Math.abs(rawDelta) > 64 || Math.abs(state.velocity) > 0.45;
+    const moved = shouldMove ? moveCard(direction) : false;
+
+    suppressToggleRef.current = state.dragged;
+    dragRef.current.pointerId = null;
+    setDragging(false);
+    setSettling(!moved);
+    setDragX(0);
+
+    window.setTimeout(() => {
+      suppressToggleRef.current = false;
+      setSettling(false);
+    }, moved ? 0 : 260);
+  }, [moveCard]);
+
+  const cancelCardDrag = useCallback(event => {
+    if (dragRef.current.pointerId !== event.pointerId) return;
+    suppressToggleRef.current = dragRef.current.dragged;
+    dragRef.current.pointerId = null;
+    setDragging(false);
+    setSettling(true);
+    setDragX(0);
+    window.setTimeout(() => {
+      suppressToggleRef.current = false;
+      setSettling(false);
+    }, 260);
+  }, []);
 
   function selectSection(sectionId) {
     const firstTopic = sectionGroups.find(section => section.id === sectionId)?.topics?.[0];
@@ -97,7 +188,33 @@ export function PhysicsMechanicsFlashcardsPanel({ onChangeSubject }) {
             <div><strong>{topic.id} · {topic.title}</strong><span>{index + 1} of {cards.length}</span></div>
             <span className="pm-chip">{current.objective}</span>
           </div>
-          <button type="button" className={`pm-flashcard pm-flashcard-polished ${revealed ? "revealed" : ""}`} onClick={() => setRevealed(value => !value)} aria-label={revealed ? "Show question side" : "Reveal answer"}>
+          <button
+            key={current.id || `${topic.id}-${index}`}
+            type="button"
+            className={`pm-flashcard pm-flashcard-polished ${revealed ? "revealed" : ""} ${dragging ? "is-dragging" : ""} ${settling ? "is-settling" : ""}`}
+            style={{ "--pm-flashcard-drag-x": `${dragX}px` }}
+            onPointerDown={beginCardDrag}
+            onPointerMove={moveCardDrag}
+            onPointerUp={finishCardDrag}
+            onPointerCancel={cancelCardDrag}
+            onClick={event => {
+              if (suppressToggleRef.current) {
+                event.preventDefault();
+                return;
+              }
+              setRevealed(value => !value);
+            }}
+            onKeyDown={event => {
+              if (event.key === "ArrowLeft") {
+                event.preventDefault();
+                moveCard("previous");
+              } else if (event.key === "ArrowRight") {
+                event.preventDefault();
+                moveCard("next");
+              }
+            }}
+            aria-label={revealed ? "Show question side" : "Reveal answer"}
+          >
             {revealed ? (
               <>
                 <small className="pm-flashcard-side-label">ANSWER</small>
@@ -114,9 +231,9 @@ export function PhysicsMechanicsFlashcardsPanel({ onChangeSubject }) {
             )}
           </button>
           <div className="pm-flashcard-nav-row">
-            <button type="button" className="pm-btn secondary" disabled={index === 0} onClick={() => { setIndex(value => Math.max(0, value - 1)); setRevealed(false); }}>← Previous</button>
+            <button type="button" className="pm-btn secondary" disabled={index === 0} onClick={() => moveCard("previous")}>← Previous</button>
             <div className="pm-flashcard-progress-dots" aria-hidden="true"><span style={{ width: `${((index + 1) / cards.length) * 100}%` }} /></div>
-            <button type="button" className="pm-btn" disabled={index >= cards.length - 1} onClick={() => { setIndex(value => Math.min(cards.length - 1, value + 1)); setRevealed(false); }}>Next card →</button>
+            <button type="button" className="pm-btn" disabled={index >= cards.length - 1} onClick={() => moveCard("next")}>Next card →</button>
           </div>
         </div>
       )}
