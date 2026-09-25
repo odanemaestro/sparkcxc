@@ -7870,7 +7870,25 @@ const CountryFlagDropdown = ({ countryIso2, onChange, error }) => {
     const el = btnRef.current;
     if (!el) return;
     const r = el.getBoundingClientRect();
-    setMenuPos({ left: r.left, top: r.bottom + 6, width: Math.max(r.width, 260) });
+    const margin = 10;
+    const width = Math.min(
+      Math.max(r.width, 260),
+      Math.max(180, window.innerWidth - (margin * 2))
+    );
+    const estimatedHeight = 320;
+    const belowTop = r.bottom + 6;
+    const fitsBelow = belowTop + estimatedHeight <= window.innerHeight - margin;
+    const top = fitsBelow ? belowTop : Math.max(margin, r.top - estimatedHeight - 6);
+    const left = Math.min(
+      Math.max(margin, r.left),
+      Math.max(margin, window.innerWidth - width - margin)
+    );
+    setMenuPos({
+      left,
+      top,
+      width,
+      origin: fitsBelow ? "top left" : "bottom left",
+    });
   }, []);
 
   useLayoutEffect(() => {
@@ -7878,22 +7896,66 @@ const CountryFlagDropdown = ({ countryIso2, onChange, error }) => {
   }, [open, computePos]);
 
   useEffect(() => {
-    if (!open) return;
-    filterInputRef.current?.focus();
-    const handleOutside = (e) => {
+    if (!open) return undefined;
+
+    const frame = window.requestAnimationFrame(() => {
+      filterInputRef.current?.focus({ preventScroll: true });
+    });
+
+    const handleOutside = e => {
       const insideButton = wrapRef.current && wrapRef.current.contains(e.target);
       const insideMenu = menuRef.current && menuRef.current.contains(e.target);
-      if (!insideButton && !insideMenu) { setOpen(false); setFilterText(""); }
+      if (!insideButton && !insideMenu) {
+        setOpen(false);
+        setFilterText("");
+      }
     };
-    const handleReflow = (event) => {
+
+    const handleReflow = event => {
       if (menuRef.current && menuRef.current.contains(event.target)) return;
       setOpen(false);
     };
+
+    const handleKeyDown = event => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        setFilterText("");
+        btnRef.current?.focus({ preventScroll: true });
+        return;
+      }
+
+      if (!["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) return;
+      if (!menuRef.current?.contains(document.activeElement)) return;
+
+      const options = Array.from(menuRef.current.querySelectorAll('[role="option"]'));
+      if (!options.length) return;
+
+      event.preventDefault();
+      const currentIndex = options.indexOf(document.activeElement);
+
+      if (event.key === "Home") {
+        options[0].focus();
+        return;
+      }
+      if (event.key === "End") {
+        options[options.length - 1].focus();
+        return;
+      }
+
+      const nextIndex = event.key === "ArrowDown"
+        ? (currentIndex < 0 ? 0 : Math.min(options.length - 1, currentIndex + 1))
+        : (currentIndex < 0 ? options.length - 1 : Math.max(0, currentIndex - 1));
+      options[nextIndex].focus();
+    };
+
     document.addEventListener("mousedown", handleOutside);
+    document.addEventListener("keydown", handleKeyDown);
     window.addEventListener("scroll", handleReflow, true);
     window.addEventListener("resize", handleReflow);
     return () => {
+      window.cancelAnimationFrame(frame);
       document.removeEventListener("mousedown", handleOutside);
+      document.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("scroll", handleReflow, true);
       window.removeEventListener("resize", handleReflow);
     };
@@ -7928,6 +7990,7 @@ const CountryFlagDropdown = ({ countryIso2, onChange, error }) => {
             position: "fixed", left: menuPos.left, top: menuPos.top, width: menuPos.width,
             background: T.paper, border: `1px solid ${T.border}`, borderRadius: 9,
             boxShadow: "0 8px 24px rgba(0,0,0,.12)", zIndex: 9999, overflow: "hidden",
+            transformOrigin: menuPos.origin,
           }}
         >
           <input
@@ -7935,6 +7998,7 @@ const CountryFlagDropdown = ({ countryIso2, onChange, error }) => {
             value={filterText}
             onChange={e => setFilterText(e.target.value)}
             placeholder="Search countries…"
+            aria-label="Search countries"
             style={{
               width: "100%", boxSizing: "border-box", padding: "9px 12px", border: "none",
               borderBottom: `1px solid ${T.borderSoft}`, outline: "none", fontSize: 13, fontFamily: FB,
@@ -7950,7 +8014,7 @@ const CountryFlagDropdown = ({ countryIso2, onChange, error }) => {
                 type="button"
                 role="option"
                 aria-selected={c.iso2 === countryIso2}
-                onClick={() => { onChange(c.iso2); setOpen(false); setFilterText(""); }}
+                onClick={() => { onChange(c.iso2); setOpen(false); setFilterText(""); btnRef.current?.focus({ preventScroll: true }); }}
                 style={{
                   width: "100%", display: "flex", alignItems: "center", gap: 10, padding: "8px 12px",
                   background: c.iso2 === countryIso2 ? T.tealLight : "none", border: "none", textAlign: "left",
