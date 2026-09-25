@@ -135,6 +135,7 @@ const PhysicsMechanicsFlashcardsPanel = lazy(() =>
 // SPARK_PHYSICS_SECTION_A_RC1_FEATURE_FLAG
 const PHYSICS_SECTION_A_ENABLED = physicsSectionAEnabled({
   REACT_APP_ENABLE_PHYSICS: process.env.REACT_APP_ENABLE_PHYSICS,
+  NODE_ENV: process.env.NODE_ENV,
 });
 const PHYSICS_SECTION_A_STATS = getPhysicsSectionAStats();
 const PHYSICS_FULL_COURSE_STATS = physicsFullCourseStats();
