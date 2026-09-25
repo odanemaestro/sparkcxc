@@ -119,14 +119,19 @@ describe("SPARK experience polish V2", () => {
     expect(app).toContain("const routedView = viewFromBrowserHash()");
     expect(detail).toContain("const canOpenSubject");
     expect(detail).toContain("subject?.capabilities?.study !== false");
+    expect(detail).toContain("subject?.routes?.study");
+    expect(detail).toContain('subject?.implementation === "generic"');
   });
 
   test("Integrated Science flashcards have a published capability and canonical dashboard route", () => {
     const app = read("App.js");
     const migration = read("../supabase/migrations/20260925010000_integrated_science_flashcards.sql");
+    const genericFlashcards = read("subjects/GenericSubjectFlashcardsPanel.jsx");
     expect(app).toContain("openFlashcardSubject");
     expect(app).toContain("setSec(\"flashcards\")");
     expect(app).toContain("key={activeFlashcardSubject.id}");
+    expect(genericFlashcards).toContain("setReloadKey");
+    expect(genericFlashcards).toContain("Try again");
     expect(migration).toContain("'{flashcards}'");
     expect(migration).toContain("/dashboard/flashcards/integrated-science");
     expect(migration).toContain("/study/integrated-science");
