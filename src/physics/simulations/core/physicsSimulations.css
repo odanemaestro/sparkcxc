@@ -510,3 +510,61 @@
 .psim-balance-scale .left{left:18%}.psim-balance-scale .right{right:18%}
 @media(max-width:700px){.psim-evidence-columns{grid-template-columns:1fr}.psim-nuclear-equation{gap:10px}.psim-nuclide-box{width:76px}.psim-nuclear-arrow,.psim-nuclear-plus{font-size:28px}}
 @media(max-width:520px){.psim-decay-chart,.psim-half-life-chart,.psim-mass-energy-stage{border-radius:13px}.psim-nuclear-equation{padding:12px}}
+
+
+/* SPARK PHYSICS SIMULATION DESKTOP FIT V16 */
+@media (min-width:1024px){
+  .pm-lab-mode .psim{
+    width:100%;
+    max-width:100%;
+    margin:10px 0 4px;
+    padding:12px;
+    overflow:hidden;
+  }
+  .pm-lab-mode .psim-head{
+    margin-bottom:4px;
+  }
+  .pm-lab-mode .psim-step{
+    margin-top:9px;
+    padding-top:8px;
+  }
+  .pm-lab-mode .psim-controls{
+    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+    gap:8px;
+    margin:8px 0;
+  }
+  .pm-lab-mode .psim-stage-wrap,
+  .pm-lab-mode .psim-table-wrap{
+    max-width:100%;
+    overflow-x:hidden;
+  }
+  .pm-lab-mode .psim-stage.wide{
+    min-width:0;
+  }
+  .pm-lab-mode .psim-stage,
+  .pm-lab-mode .psim-graph,
+  .pm-lab-mode .psim-wave-stage,
+  .pm-lab-mode .psim-optics-stage,
+  .pm-lab-mode .psim-double-slit-stage,
+  .pm-lab-mode .psim-lens-stage,
+  .pm-lab-mode .psim-optical-bench,
+  .pm-lab-mode .psim-thermal-stage,
+  .pm-lab-mode .psim-kelvin-stage,
+  .pm-lab-mode .psim-heating-graph,
+  .pm-lab-mode .psim-particle-box,
+  .pm-lab-mode .psim-atomic-stage,
+  .pm-lab-mode .psim-atom-stage{
+    width:100%;
+    max-width:100%;
+    max-height:min(44vh,430px);
+    height:auto;
+  }
+  .pm-lab-mode .psim-readouts{
+    grid-template-columns:repeat(auto-fit,minmax(115px,1fr));
+    gap:6px;
+    margin-top:8px;
+  }
+  .pm-lab-mode .psim-readout{
+    padding:8px 10px;
+  }
+}
