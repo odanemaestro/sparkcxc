@@ -1684,6 +1684,7 @@ function Footer({ setView, hasTutorApp, isTutor, isParent }) {
 
 // ─── HOME VIEW ───────────────────────────────────────────────────────────────
 function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, isParent, subjects = [], onOpenSubject }) {
+  const homeSubjects = studySubjectsForNavigation(subjects).filter(subject => subject.id !== "mathematics");
   const [demoAnswer, setDemoAnswer] = useState(null);
   const totalTopics = SYLLABUS_SECTIONS.reduce((a, s) => a + s.topics.length, 0);
   // Tutors don't take lessons or book other tutors themselves, so the
@@ -1798,7 +1799,7 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
         </div>
       </div>
 
-      {!!user && profile?.role === "student" && subjects.length > 0 && (
+      {!!user && profile?.role === "student" && homeSubjects.length > 0 && (
         <section className="spark-home-subjects" aria-label="Choose a subject">
           <div className="spark-home-subjects-inner">
             <SubjectSelectionView
@@ -1807,7 +1808,7 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
               title="Choose a subject"
               description="Jump straight back into one of your enrolled CSEC subjects."
               capability="study"
-              subjects={studySubjectsForNavigation(subjects)}
+              subjects={homeSubjects}
               onSelect={subject => onOpenSubject?.(subject)}
             />
           </div>
