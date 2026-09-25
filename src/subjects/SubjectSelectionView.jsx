@@ -23,6 +23,8 @@ function subjectMeta(subject, capability) {
     if (capability === "progress") return "Lessons, interactive labs and examination performance";
     return `${subject.stats?.sections || 8} sections · ${subject.stats?.topics || 26} topics · ${subject.stats?.objectives || 63} objectives`;
   }
+  if (capability === "flashcards") return "Review cards built from this subject's published SPARK lessons";
+  if (capability === "progress") return "Lesson, practice and assessment activity recorded in SPARK";
   return subject.description || "";
 }
 
