@@ -106,7 +106,7 @@ export default function SubjectDashboardOverview({
               </div>
               {focus && <div className="spark-subject-overview-focus"><span>Current focus</span><strong>{focus.title}</strong>{focus.detail && <small>{focus.detail}</small>}</div>}
               {(onOpenSubject || onOpenProgress) && <div className="spark-subject-overview-actions">
-                {onOpenSubject && subject.capabilities?.study !== false && <button type="button" className="spark-dashboard-card-action" onClick={() => onOpenSubject(subject)}>
+                {onOpenSubject && (subject.capabilities?.study !== false || subject.routes?.study || subject.implementation === "generic") && <button type="button" className="spark-dashboard-card-action" onClick={() => onOpenSubject(subject)}>
                   <span>{subject.id === "information-technology" ? "Continue IT" : `Continue ${subject.shortName}`}</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M6 14L14 6M8 6h6v6" /></svg></span>
                 </button>}
                 {onOpenProgress && <button type="button" className="spark-dashboard-card-action spark-dashboard-card-action-secondary" onClick={() => onOpenProgress(subject)}>
