@@ -1189,6 +1189,12 @@ body[data-theme="dark"] .pm-flashcards-dashboard .pm-flashcard-polished{
   color:var(--spark-ink,#EAF2FF);
   box-shadow:var(--spark-shadow-md,0 5px 18px rgba(0,0,0,.30));
 }
+html[data-theme="dark"] .pm-flashcards-dashboard .pm-flashcard-polished.revealed,
+body[data-theme="dark"] .pm-flashcards-dashboard .pm-flashcard-polished.revealed{
+  background:linear-gradient(145deg,#17375e,#0e2c49);
+  border-color:transparent;
+  color:#fff;
+}
 html[data-theme="dark"] .pm-flashcards-dashboard .pm-flashcard-question-text,
 html[data-theme="dark"] .pm-flashcards-dashboard .pm-flashcard-answer-text,
 body[data-theme="dark"] .pm-flashcards-dashboard .pm-flashcard-question-text,
