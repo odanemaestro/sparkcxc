@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { supabase } from "../../lib/supabaseClient";
 import { setSparkAppBadge } from "../../lib/pushNotifications";
 import Icon from "../ui/Icon";
@@ -466,7 +467,7 @@ export default function NotificationCenter({ user, profile, setView }) {
         {unreadCount > 0 && <span className="notification-badge">{unreadCount > 99 ? "99+" : unreadCount}</span>}
       </button>
 
-      {open && (
+      {open && typeof document !== "undefined" && createPortal(
         <div className={`notification-layer ${closing ? "is-closing" : ""}`} role="presentation">
           <button ref={scrimRef} className="notification-scrim" aria-label="Close notifications" onClick={closeNotifications} />
           <aside ref={drawerRef} tabIndex={-1} className="notification-drawer" role="dialog" aria-modal="true" aria-label="Notifications">
@@ -563,7 +564,8 @@ export default function NotificationCenter({ user, profile, setView }) {
               </div>
             )}
           </aside>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );
