@@ -146,3 +146,83 @@ html {
     scroll-behavior: auto !important;
   }
 }
+
+
+/* SPARK EXPERIENCE POLISH V2 */
+
+/* Flashcards: direct manipulation without introducing another motion library. */
+.spark-flashcard{
+  translate:var(--spark-flashcard-drag-x,0px) 0;
+  touch-action:pan-y;
+  cursor:pointer;
+  will-change:translate;
+  transition:
+    translate 260ms var(--spark-ease-drawer),
+    scale var(--spark-motion-press) ease-out,
+    box-shadow var(--spark-motion-fast) ease-out,
+    border-color var(--spark-motion-fast) ease-out;
+}
+.spark-flashcard.is-dragging{
+  cursor:grabbing;
+  user-select:none;
+  transition:none!important;
+}
+.spark-flashcard.is-settling{
+  transition:translate 260ms var(--spark-ease-drawer)!important;
+}
+.spark-flashcard-main{
+  overscroll-behavior-x:contain;
+}
+.spark-flashcard-decks button,
+.spark-flashcard-rating button,
+.spark-flashcard-nav button,
+.spark-segmented-control button{
+  transition:
+    scale var(--spark-motion-press) ease-out,
+    background-color var(--spark-motion-fast) var(--spark-ease-out),
+    border-color var(--spark-motion-fast) var(--spark-ease-out),
+    color var(--spark-motion-fast) var(--spark-ease-out),
+    box-shadow var(--spark-motion-fast) var(--spark-ease-out);
+}
+
+/* Dashboard actions should feel connected to the content they open. */
+.spark-dashboard-card-action{
+  transition:
+    scale var(--spark-motion-press) ease-out,
+    transform var(--spark-motion-fast) var(--spark-ease-out),
+    background-color var(--spark-motion-fast) var(--spark-ease-out),
+    border-color var(--spark-motion-fast) var(--spark-ease-out),
+    box-shadow var(--spark-motion-fast) var(--spark-ease-out)!important;
+}
+.spark-dashboard-card-action-icon{
+  transition:transform var(--spark-motion-fast) var(--spark-ease-out);
+}
+.spark-dashboard-card-action:hover .spark-dashboard-card-action-icon{
+  transform:translate(2px,-2px);
+}
+.spark-dashboard-card-action:active .spark-dashboard-card-action-icon{
+  transform:translate(1px,-1px);
+}
+
+@media (pointer:coarse){
+  .spark-flashcard{
+    cursor:default;
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  .spark-flashcard,
+  .spark-flashcard.is-settling,
+  .spark-flashcard-decks button,
+  .spark-flashcard-rating button,
+  .spark-flashcard-nav button,
+  .spark-segmented-control button,
+  .spark-dashboard-card-action,
+  .spark-dashboard-card-action-icon{
+    transition:none!important;
+  }
+  .spark-dashboard-card-action:hover .spark-dashboard-card-action-icon,
+  .spark-dashboard-card-action:active .spark-dashboard-card-action-icon{
+    transform:none;
+  }
+}
