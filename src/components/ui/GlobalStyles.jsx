@@ -14,7 +14,7 @@ export default function GlobalStyles() {
     const s = document.createElement("style");
     s.id = id;
     s.textContent = `
-      @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Crimson+Pro:wght@400;600;700;800&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Crimson+Pro:wght@400;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
       *{box-sizing:border-box;}
       html{scroll-behavior:smooth;}
       body{margin:0;font-family:${FB};background:${T.bg};color:${T.ink};-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
