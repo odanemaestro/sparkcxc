@@ -121,6 +121,7 @@ const PhysicsSubjectView = lazy(() => import("./physics/course/components/Physic
 const InformationTechnologySubjectView = lazy(() => import("./informationTechnology/components/InformationTechnologySubjectView"));
 const InformationTechnologyFlashcardsPanel = lazy(() => import("./informationTechnology/components/InformationTechnologyFlashcardsPanel"));
 const GenericSubjectStudyView = lazy(() => import("./subjects/GenericSubjectStudyView"));
+const GenericSubjectFlashcardsPanel = lazy(() => import("./subjects/GenericSubjectFlashcardsPanel"));
 const PhysicsMechanicsFlashcardsPanel = lazy(() =>
   import("./physics/mechanics/components/PhysicsMechanicsSupportPanels")
     .then(module => ({ default: module.PhysicsMechanicsFlashcardsPanel }))
@@ -275,19 +276,17 @@ function dashboardSectionFromBrowserHash() {
   return DASHBOARD_ROUTE_SECTIONS.has(section) ? section : "overview";
 }
 
-const FLASHCARD_ROUTE_SUBJECTS = new Set([
-  "mathematics",
-  "physics",
-  "information-technology",
-]);
+function normalizeFlashcardSubjectId(value) {
+  const subjectId = String(value || "").trim().toLowerCase();
+  return /^[a-z0-9][a-z0-9-]*$/.test(subjectId) ? subjectId : null;
+}
 
 function flashcardSubjectFromBrowserHash() {
   const path = normalizedSparkPathFromBrowserHash();
   if (!path || !path.startsWith("/dashboard/flashcards/")) return null;
 
   const raw = path.slice("/dashboard/flashcards/".length).split("/")[0];
-  const subjectId = decodeURIComponent(raw || "").trim().toLowerCase();
-  return FLASHCARD_ROUTE_SUBJECTS.has(subjectId) ? subjectId : null;
+  return normalizeFlashcardSubjectId(decodeURIComponent(raw || ""));
 }
 
 function emitSparkRouteChange() {
@@ -333,8 +332,7 @@ function writeDashboardSectionToBrowserHash(section, { replace = false } = {}) {
 }
 
 function writeFlashcardSubjectToBrowserHash(subjectId, { replace = false } = {}) {
-  const normalized = String(subjectId || "").trim().toLowerCase();
-  const safeSubject = FLASHCARD_ROUTE_SUBJECTS.has(normalized) ? normalized : null;
+  const safeSubject = normalizeFlashcardSubjectId(subjectId);
   const path = safeSubject
     ? `/dashboard/flashcards/${safeSubject}`
     : "/dashboard/flashcards";
@@ -3512,8 +3510,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   }, [dashboardRoleResolved, normalizeDashboardSection]);
 
   const setFlashcardSubjectRoute = useCallback((subjectId, options = {}) => {
-    const normalized = String(subjectId || "").trim().toLowerCase();
-    const next = FLASHCARD_ROUTE_SUBJECTS.has(normalized) ? normalized : null;
+    const next = normalizeFlashcardSubjectId(subjectId);
     setFlashcardSubject(next);
     writeFlashcardSubjectToBrowserHash(next, options);
   }, []);
@@ -4223,6 +4220,9 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   }
 
   const studentFlashcardSubjects = subjectsForCapability(studentEnrolledSubjects, "flashcards");
+  const activeFlashcardSubject = flashcardSubject
+    ? studentFlashcardSubjects.find(subject => subject.id === flashcardSubject) || null
+    : null;
   const studentHasFlashcards = studentFlashcardSubjects.length > 0;
   const studentHasMathematics = enrolledSubjectIdSet.has("mathematics");
   const navItems = isTutor ? [
@@ -4796,11 +4796,17 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                   rows={mergedSubjectProgressRows}
                   supabase={supabase}
                   intelligence={studentIntelligenceBySubject[progressSubject]}
-                  onOpenSubject={(subject, recommendation) => openNextBestActionTarget(recommendation, {
-                    setView,
-                    setDashboardSection,
-                    setFlashcardSubjectRoute,
-                  })}
+                  onOpenSubject={(subject, recommendation) => {
+                    if (!recommendation) {
+                      openSubject(subject);
+                      return;
+                    }
+                    openNextBestActionTarget(recommendation, {
+                      setView,
+                      setDashboardSection,
+                      setFlashcardSubjectRoute,
+                    });
+                  }}
                   onRecommendationRecorded={row => row && setStudentRecommendationHistory(current => [row, ...current].slice(0, 200))}
                   onOpenReport={subject => { setStudentReportSubject(subject?.id || progressSubject); setStudentReportOpen(true); }}
                 />
@@ -4810,14 +4816,14 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
         )}
 
         {sec === "flashcards" && isStudent && (
-          !flashcardSubject ? (
+          !flashcardSubject || !activeFlashcardSubject ? (
             <SubjectSelectionView
               embedded
               eyebrow="Flashcards"
               title="Choose a subject"
               description="Open the flashcard deck for the subject you want to review."
               capability="flashcards"
-              subjects={subjectsForCapability(studentEnrolledSubjects, "flashcards")}
+              subjects={studentFlashcardSubjects}
               onSelect={subject => setFlashcardSubjectRoute(subject.id)}
             />
           ) : flashcardSubject === "physics" ? (
@@ -4838,7 +4844,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 }}
               />
             </Suspense>
-          ) : (
+          ) : flashcardSubject === "mathematics" ? (
             <div>
               <div style={{display:"flex",justifyContent:"flex-end",marginBottom:12}}><SubjectChangeButton onClick={() => setFlashcardSubjectRoute(null)} /></div>
               <FlashcardsPanel
@@ -4851,6 +4857,16 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 weakSkills={learnerModelWeakSkills(studentLearnerModel, studentSummary.weakestSkills)}
               />
             </div>
+          ) : (
+            <Suspense fallback={<SparkLoader variant="section" label={`Loading ${activeFlashcardSubject.shortName || activeFlashcardSubject.name} flashcards`} />}>
+              <GenericSubjectFlashcardsPanel
+                supabase={supabase}
+                userId={user.id}
+                subject={activeFlashcardSubject}
+                showToast={showToast}
+                onChangeSubject={() => setFlashcardSubjectRoute(null)}
+              />
+            </Suspense>
           )
         )}
         {sec === "circles" && isStudent && (
