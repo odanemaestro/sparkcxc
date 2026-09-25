@@ -75,6 +75,8 @@ describe("SPARK subject navigation and generic flashcards V1", () => {
     expect(app).toContain('subjects={appStudentEnrolledSubjects}');
     expect(app).toContain('onOpenSubject={openStudentSubject}');
     expect(app).toContain('onSelect={subject => onOpenSubject?.(subject)}');
+    expect(app).toContain('subject.id !== "mathematics"');
+    expect(app).toContain('profile?.role === "student"');
     expect(app).toContain("function studySubjectsForNavigation");
     expect(app).toContain('subject?.routes?.study');
     expect(app).toContain('subject?.implementation === "generic"');
