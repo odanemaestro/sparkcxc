@@ -7,7 +7,7 @@ import { T } from "../../theme";
 const Btn = ({ children, onClick, v = "primary", style: s = {}, disabled = false, full = false, action = null, className = "" }) => {
   const [hover, setHover] = useState(false);
   const base = { padding:"12px 24px",borderRadius:T.rSm,fontSize:14,fontWeight:600,cursor:disabled?"not-allowed":"pointer",
-    opacity:disabled?.5:1,transition:`all .2s ${T.ease}`,display:"inline-flex",alignItems:"center",gap:7,
+    opacity:disabled?.5:1,transition:`transform .16s ${T.ease}, background-color .18s ${T.ease}, border-color .18s ${T.ease}, color .18s ${T.ease}, box-shadow .18s ${T.ease}`,display:"inline-flex",alignItems:"center",gap:7,
     border:"none",width:full?"100%":"auto",justifyContent:full?"center":"flex-start",letterSpacing:"0.01em",
     transform:hover&&!disabled?"translateY(-1px)":"translateY(0)" };
   const vs = {
