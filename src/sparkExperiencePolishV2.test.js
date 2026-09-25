@@ -13,6 +13,15 @@ describe("SPARK experience polish V2", () => {
     expect(source).toContain('SparkLoader variant="inline"');
   });
 
+  test("Mathematics flashcard navigation uses plain arrows without circular chips", () => {
+    const css = read("learningIntelligence.css");
+    expect(css).toContain("SPARK MATH FLASHCARD PLAIN ARROWS V3");
+    expect(css).toContain(".spark-flashcard-nav .spark-nav-arrow");
+    expect(css).toContain("border-radius:0 !important");
+    expect(css).toContain("background:transparent !important");
+    expect(css).toContain("border:0 !important");
+  });
+
   test("flashcard reveal and primary navigation colours are consistent across subjects", () => {
     const mathCss = read("learningIntelligence.css");
     const physicsCss = read("physics/mechanics/components/physicsMechanics.css");
