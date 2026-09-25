@@ -5,7 +5,7 @@ import { recordLearnerRecommendation } from "../../learning/learnerIntelligenceP
 import "./learnerIntelligencePanel.css";
 
 function Metric({ value, label, suffix = "%" }) {
-  return <div className="spark-li-metric"><strong>{value == null ? "â€”" : `${value}${suffix}`}</strong><span>{label}</span></div>;
+  return <div className="spark-li-metric"><strong>{value == null ? "N/A" : `${value}${suffix}`}</strong><span>{label}</span></div>;
 }
 
 function FocusRow({ state }) {
@@ -29,7 +29,7 @@ function TargetMeta({ recommendation }) {
   return (
     <div className="spark-li-target-meta">
       {recommendation.target?.label && <span>{recommendation.target.label}</span>}
-      {recommendation.expectedMinutes && <span>{recommendation.expectedMinutes} min</span>}
+      {recommendation.expectedMinutes && <span><span className="spark-li-duration-number">{recommendation.expectedMinutes}</span>&nbsp;min</span>}
       {recommendation.exactTarget && <span>Exact activity</span>}
     </div>
   );
@@ -133,9 +133,9 @@ export default function LearnerIntelligencePanel({
               disabled={Boolean(startingKey)}
             >
               {startingKey === (primary.recommendationKey || primary.title)
-                ? "Openingâ€¦"
+                ? "Opening..."
                 : primary.expectedMinutes
-                  ? `Start ${primary.expectedMinutes}-minute activity`
+                  ? <>Start <span className="spark-li-duration-number">{primary.expectedMinutes}</span>-minute activity</>
                   : "Start recommended activity"}
             </button>
           )}
