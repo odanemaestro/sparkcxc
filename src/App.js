@@ -3538,6 +3538,14 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     const normalized = normalizeDashboardSection(section);
     setSec(normalized);
     writeDashboardSectionToBrowserHash(normalized, options);
+
+    // Progress is opened from several dashboard buttons. Always begin at the
+    // top of the page instead of carrying over the previous scroll position.
+    if (normalized === "progress" && typeof window !== "undefined") {
+      window.requestAnimationFrame(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+      });
+    }
   }, [dashboardRoleResolved, normalizeDashboardSection]);
 
   const setFlashcardSubjectRoute = useCallback((subjectId, options = {}) => {
