@@ -143,9 +143,35 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
     document.body.style.overflow = "hidden";
 
     const onKeyDown = event => {
-      if (event.key !== "Escape") return;
-      if (reportTarget) setReportTarget(null);
-      else setLeaveOpen(false);
+      if (event.key === "Escape") {
+        if (reportTarget) setReportTarget(null);
+        else setLeaveOpen(false);
+        return;
+      }
+
+      if (event.key !== "Tab" || !modalRef.current) return;
+
+      const focusable = Array.from(modalRef.current.querySelectorAll(
+        'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])'
+      )).filter(element => !element.hasAttribute("hidden") && element.getAttribute("aria-hidden") !== "true");
+
+      if (!focusable.length) {
+        event.preventDefault();
+        modalRef.current.focus();
+        return;
+      }
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement;
+
+      if (event.shiftKey && (active === first || active === modalRef.current)) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && active === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
 
     document.addEventListener("keydown", onKeyDown);
