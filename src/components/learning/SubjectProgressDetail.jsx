@@ -25,6 +25,7 @@ export default function SubjectProgressDetail({
   const intelligence = providedIntelligence || computedIntelligence;
   const assessments = report.exams || [];
   const supportsLabs = Boolean(subject?.capabilities?.labs);
+  const supportsFlashcards = Boolean(subject?.capabilities?.flashcards);
   const isInformationTechnology = subject?.id === "information-technology";
   const finalMetric = supportsLabs
     ? { value: summary.labsCompleted || 0, label: "Labs explored" }
@@ -33,9 +34,13 @@ export default function SubjectProgressDetail({
       : { value: summary.topicsPractised || 0, label: "Topics practised" };
   const detailDescription = isInformationTechnology
     ? "Review lesson coverage, practice performance, practical labs, SBA guide reviews, flashcards and assessments recorded in SPARK."
-    : supportsLabs
-      ? "Review lesson coverage, practice performance, labs and assessments recorded in SPARK."
-      : "Review lesson coverage, practice performance and assessments recorded in SPARK.";
+    : supportsLabs && supportsFlashcards
+      ? "Review lesson coverage, practice performance, labs, flashcards and assessments recorded in SPARK."
+      : supportsLabs
+        ? "Review lesson coverage, practice performance, labs and assessments recorded in SPARK."
+        : supportsFlashcards
+          ? "Review lesson coverage, practice performance, flashcards and assessments recorded in SPARK."
+          : "Review lesson coverage, practice performance and assessments recorded in SPARK.";
 
   return <div className="spark-subject-progress-detail">
     <div className="spark-subject-progress-detail-head">
@@ -51,7 +56,7 @@ export default function SubjectProgressDetail({
       <Card><strong>{summary.assessments ?? summary.checkpoints ?? 0}</strong><span>Assessments</span></Card>
       <Card><strong>{finalMetric.value}</strong><span>{finalMetric.label}</span></Card>
       {isInformationTechnology && <Card><strong>{summary.sbaSectionsReviewed || 0}</strong><span>SBA guide sections reviewed</span></Card>}
-      {isInformationTechnology && <Card><strong>{summary.flashcardsReviewed || 0}</strong><span>Flashcards reviewed</span></Card>}
+      {supportsFlashcards && <Card><strong>{summary.flashcardsReviewed || 0}</strong><span>Flashcards reviewed</span></Card>}
     </div>
 
     <Card className="spark-subject-progress-coverage-card">
