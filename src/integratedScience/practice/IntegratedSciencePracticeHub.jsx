@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { useIntegratedSciencePracticeRoute } from "../../routing/sparkRoutingV270";
 import SparkLoader from "../../components/ui/SparkLoader";
 import { recordSubjectActivity } from "../../subjects/subjectProgress";
 import {
@@ -22,23 +23,6 @@ const MODULE_TITLES = {
   2:"Energy",
   3:"Our Planet",
 };
-
-function readPracticeMode() {
-  if (typeof window === "undefined") return "home";
-  const hash = String(window.location.hash || "");
-  const query = hash.includes("?") ? hash.slice(hash.indexOf("?") + 1) : "";
-  const mode = new URLSearchParams(query).get("mode");
-  return ["paper1","paper2","topic"].includes(mode) ? mode : "home";
-}
-
-function writePracticeMode(mode) {
-  if (typeof window === "undefined") return;
-  const base = "#/practice/integrated-science";
-  const next = mode === "home" ? base : `${base}?mode=${encodeURIComponent(mode)}`;
-  const url = `${window.location.pathname}${window.location.search}${next}`;
-  window.history.pushState(window.history.state,"",url);
-  window.dispatchEvent(new Event("spark:routechange"));
-}
 
 function TopicBank({ supabase, userId, onBack }) {
   const [moduleNumber,setModuleNumber] = useState(1);
