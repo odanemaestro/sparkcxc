@@ -13,6 +13,28 @@ describe("SPARK experience polish V2", () => {
     expect(source).toContain('SparkLoader variant="inline"');
   });
 
+  test("flashcard reveal and primary navigation colours are consistent across subjects", () => {
+    const mathCss = read("learningIntelligence.css");
+    const physicsCss = read("physics/mechanics/components/physicsMechanics.css");
+    const itCss = read("informationTechnology/components/informationTechnologyFlashcards.css");
+    const genericCss = read("subjects/genericSubjectFlashcards.css");
+
+    expect(mathCss).toContain("var(--spark-surface-navy,#102746)");
+    expect(mathCss).toContain("background:var(--spark-teal,#0D9488) !important");
+    expect(mathCss).toContain("color:#fff !important");
+
+    expect(physicsCss).toContain("var(--spark-surface-navy,#102746)");
+    expect(physicsCss).toContain("background:var(--spark-teal,#0D9488)");
+    expect(physicsCss).toContain("color:#fff;");
+
+    expect(itCss).toContain(".it-flashcard.revealed{background:linear-gradient(145deg,#17375e,#234d7e)");
+    expect(itCss).toContain(".it-flashcards-nav button:last-child{background:#0d8069;border-color:#0d8069;color:#fff}");
+
+    expect(genericCss).toContain("var(--spark-surface-navy,#102746)");
+    expect(genericCss).toContain(".spark-generic-flashcard-nav button:last-child");
+    expect(genericCss).toContain("color:#fff");
+  });
+
   test("IT flashcards use the same direct manipulation model", () => {
     const source = read("informationTechnology/components/InformationTechnologyFlashcardsPanel.jsx");
     const css = read("informationTechnology/components/informationTechnologyFlashcards.css");
