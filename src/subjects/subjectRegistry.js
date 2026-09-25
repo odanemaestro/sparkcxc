@@ -2,6 +2,7 @@ export const SPARK_SUBJECT_IDS = Object.freeze({
   MATHEMATICS: "mathematics",
   PHYSICS: "physics",
   INFORMATION_TECHNOLOGY: "information-technology",
+  INTEGRATED_SCIENCE: "integrated-science",
 });
 
 const BASE_SUBJECTS = Object.freeze({
