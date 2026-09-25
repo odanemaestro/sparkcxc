@@ -1189,3 +1189,39 @@ body[data-theme="dark"] .pm-flashcards-dashboard .pm-flashcard-nav-row .pm-btn:n
   border-color:var(--spark-teal,#2DD4BF);
   color:#fff;
 }
+
+/* SPARK PHYSICS FLASHCARD SWIPE V2 */
+.pm-flashcards-dashboard .pm-flashcard-polished{
+  translate:var(--pm-flashcard-drag-x,0px) 0;
+  touch-action:pan-y;
+  will-change:translate;
+  transition:
+    translate 260ms var(--spark-ease-drawer,cubic-bezier(.32,.72,0,1)),
+    scale 110ms ease-out,
+    border-color 180ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1)),
+    box-shadow 180ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1)),
+    background-color 180ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1));
+}
+.pm-flashcards-dashboard .pm-flashcard-polished.is-dragging{
+  cursor:grabbing;
+  user-select:none;
+  transition:none!important;
+}
+.pm-flashcards-dashboard .pm-flashcard-polished.is-settling{
+  transition:translate 260ms var(--spark-ease-drawer,cubic-bezier(.32,.72,0,1))!important;
+}
+.pm-flashcards-dashboard .pm-flashcard-progress-dots span{
+  transition:width 260ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1));
+}
+@media(pointer:coarse){
+  .pm-flashcards-dashboard .pm-flashcard-polished:hover{
+    transform:none;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .pm-flashcards-dashboard .pm-flashcard-polished,
+  .pm-flashcards-dashboard .pm-flashcard-polished.is-settling,
+  .pm-flashcards-dashboard .pm-flashcard-progress-dots span{
+    transition:none!important;
+  }
+}
