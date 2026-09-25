@@ -132,11 +132,47 @@ export default function NotificationCenter({ user, profile, setView }) {
   const [loading, setLoading] = useState(false);
   const [available, setAvailable] = useState(true);
   const [pendingPushId, setPendingPushId] = useState(initialPushNotificationId);
+  const [closing, setClosing] = useState(false);
   const mounted = useRef(true);
   const handledPushIds = useRef(new Set());
   const drawerRef = useRef(null);
   const scrimRef = useRef(null);
   const dragRef = useRef({ pointerId: null, startY: 0, lastY: 0, lastTime: 0, velocity: 0 });
+  const closeTimerRef = useRef(null);
+
+  const closeNotifications = useCallback(() => {
+    if (!open || closing) return;
+
+    const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+    if (reduceMotion) {
+      setClosing(false);
+      setOpen(false);
+      return;
+    }
+
+    setClosing(true);
+    const mobileSheet = window.matchMedia?.("(max-width: 560px)")?.matches;
+
+    window.requestAnimationFrame(() => {
+      if (drawerRef.current) {
+        drawerRef.current.style.transition = "transform 240ms cubic-bezier(.32,.72,0,1)";
+        drawerRef.current.style.transform = mobileSheet
+          ? "translate3d(0,100%,0)"
+          : "translate3d(100%,0,0)";
+      }
+      if (scrimRef.current) {
+        scrimRef.current.style.transition = "opacity 180ms ease-out";
+        scrimRef.current.style.opacity = "0";
+      }
+    });
+
+    if (closeTimerRef.current) window.clearTimeout(closeTimerRef.current);
+    closeTimerRef.current = window.setTimeout(() => {
+      setOpen(false);
+      setClosing(false);
+      closeTimerRef.current = null;
+    }, 250);
+  }, [closing, open]);
 
   const load = useCallback(async () => {
     if (!user?.id) return;
@@ -162,7 +198,10 @@ export default function NotificationCenter({ user, profile, setView }) {
   useEffect(() => {
     mounted.current = true;
     load();
-    return () => { mounted.current = false; };
+    return () => {
+      mounted.current = false;
+      if (closeTimerRef.current) window.clearTimeout(closeTimerRef.current);
+    };
   }, [load]);
 
   useEffect(() => {
@@ -181,17 +220,32 @@ export default function NotificationCenter({ user, profile, setView }) {
 
   useEffect(() => {
     if (!open) return undefined;
-    const onKeyDown = (event) => {
-      if (event.key === "Escape") setOpen(false);
+
+    const frame = window.requestAnimationFrame(() => {
+      if (!closing && drawerRef.current) {
+        drawerRef.current.style.transition = "";
+        drawerRef.current.style.transform = "";
+      }
+      if (!closing && scrimRef.current) {
+        scrimRef.current.style.transition = "";
+        scrimRef.current.style.opacity = "";
+      }
+    });
+
+    const onKeyDown = event => {
+      if (event.key === "Escape") closeNotifications();
     };
+
     document.addEventListener("keydown", onKeyDown);
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+
     return () => {
       document.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = previousOverflow;
+      window.cancelAnimationFrame(frame);
     };
-  }, [open]);
+  }, [closeNotifications, closing, open]);
 
   useEffect(() => {
     if (!("serviceWorker" in navigator)) return undefined;
@@ -255,7 +309,7 @@ export default function NotificationCenter({ user, profile, setView }) {
     dragRef.current.pointerId = null;
 
     if (shouldDismiss) {
-      setOpen(false);
+      closeNotifications();
       return;
     }
 
@@ -267,7 +321,7 @@ export default function NotificationCenter({ user, profile, setView }) {
       scrimRef.current.style.transition = "opacity 180ms ease-out";
       scrimRef.current.style.opacity = "";
     }
-  }, []);
+  }, [closeNotifications]);
 
   useEffect(() => { setSparkAppBadge(unreadCount); }, [unreadCount]);
 
@@ -321,8 +375,8 @@ export default function NotificationCenter({ user, profile, setView }) {
     }
 
     if (route.view && setView) setView(route.view);
-    setOpen(false);
-  }, [markRead, profile?.role, setView, user?.id]);
+    closeNotifications();
+  }, [closeNotifications, markRead, profile?.role, setView, user?.id]);
 
   useEffect(() => {
     if (!pendingPushId || !user?.id || loading || handledPushIds.current.has(pendingPushId)) return undefined;
@@ -356,16 +410,16 @@ export default function NotificationCenter({ user, profile, setView }) {
         type="button"
         className="notification-trigger"
         aria-label={unreadCount ? `Notifications, ${unreadCount} unread` : "Notifications"}
-        aria-expanded={open}
-        onClick={() => { setOpen(true); setFilter("all"); load(); }}
+        aria-expanded={open && !closing}
+        onClick={() => { setClosing(false); setOpen(true); setFilter("all"); load(); }}
       >
         <span className="notification-trigger-icon"><Icon name="bell" size={22} strokeWidth={2} /></span>
         {unreadCount > 0 && <span className="notification-badge">{unreadCount > 99 ? "99+" : unreadCount}</span>}
       </button>
 
       {open && (
-        <div className="notification-layer" role="presentation">
-          <button ref={scrimRef} className="notification-scrim" aria-label="Close notifications" onClick={() => setOpen(false)} />
+        <div className={`notification-layer ${closing ? "is-closing" : ""}`} role="presentation">
+          <button ref={scrimRef} className="notification-scrim" aria-label="Close notifications" onClick={closeNotifications} />
           <aside ref={drawerRef} className="notification-drawer" role="dialog" aria-modal="true" aria-label="Notifications">
             <div
               className="notification-drag-handle"
@@ -382,7 +436,7 @@ export default function NotificationCenter({ user, profile, setView }) {
                 <div className="notification-kicker">SPARK</div>
                 <h2>{filter === "settings" ? "Notification settings" : "Notifications"}</h2>
               </div>
-              <button className="notification-close" onClick={() => setOpen(false)} aria-label="Close notifications">×</button>
+              <button className="notification-close" onClick={closeNotifications} aria-label="Close notifications">×</button>
             </div>
 
             <div className="notification-toolbar">
