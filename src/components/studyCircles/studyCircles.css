@@ -891,3 +891,83 @@ html[data-theme="dark"] .study-circle-match-pill{
     flex-shrink:0;
   }
 }
+
+
+/* SPARK STUDY CIRCLES INTERACTION PASS V2 */
+.study-circle-modal-scrim{
+  animation:study-circle-scrim-in 180ms ease-out both;
+}
+.study-circle-modal{
+  animation:study-circle-modal-in 240ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1)) both;
+  transform-origin:center center;
+}
+.study-circle-button,
+.study-circle-availability button,
+.study-circle-modal-close,
+.study-circle-reply-link,
+.study-circle-report-link{
+  transition:
+    scale 110ms ease-out,
+    transform 180ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1)),
+    background-color 180ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1)),
+    border-color 180ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1)),
+    color 180ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1));
+}
+.study-circle-button:active:not(:disabled),
+.study-circle-availability button:active:not(:disabled),
+.study-circle-modal-close:active,
+.study-circle-reply-link:active,
+.study-circle-report-link:active{
+  scale:.97;
+}
+.study-circle-replying-banner{
+  animation:study-circle-reply-banner-in 180ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1)) both;
+}
+@keyframes study-circle-scrim-in{
+  from{opacity:0}
+  to{opacity:1}
+}
+@keyframes study-circle-modal-in{
+  from{opacity:0;transform:translateY(10px) scale(.97)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+@keyframes study-circle-sheet-in{
+  from{transform:translate3d(0,100%,0)}
+  to{transform:translate3d(0,0,0)}
+}
+@keyframes study-circle-reply-banner-in{
+  from{opacity:0;transform:translateY(-5px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@media(max-width:700px){
+  .study-circle-modal-layer{
+    align-items:end;
+    justify-items:stretch;
+    padding:max(12px,env(safe-area-inset-top)) 0 0;
+  }
+  .study-circle-modal,
+  .study-circle-modal.compact-modal{
+    width:100%;
+    max-width:none;
+    max-height:90dvh;
+    padding:20px 16px calc(18px + env(safe-area-inset-bottom));
+    border-radius:22px 22px 0 0;
+    border-bottom:0;
+    transform-origin:center bottom;
+    animation-name:study-circle-sheet-in;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .study-circle-modal-scrim,
+  .study-circle-modal,
+  .study-circle-replying-banner{
+    animation:none!important;
+  }
+  .study-circle-button,
+  .study-circle-availability button,
+  .study-circle-modal-close,
+  .study-circle-reply-link,
+  .study-circle-report-link{
+    transition:none!important;
+  }
+}
