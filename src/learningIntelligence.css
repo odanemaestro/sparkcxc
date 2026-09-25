@@ -388,6 +388,11 @@
   border-color:var(--spark-teal,#0D9488) !important;
   color:#fff !important;
 }
+.spark-flashcard-nav > button:last-child:not(:disabled) .spark-nav-arrow{
+  border-color:rgba(255,255,255,.32) !important;
+  background:rgba(255,255,255,.14) !important;
+  color:#fff !important;
+}
 
 .spark-flashcard-nav > button:hover:not(:disabled){
   box-shadow:0 6px 16px rgba(15,37,87,.08) !important;
@@ -402,9 +407,11 @@
 }
 
 .spark-flashcard-nav > button:disabled{
+  background:var(--spark-muted,#F4F4F1) !important;
+  border-color:var(--spark-border,#E2E8F0) !important;
   box-shadow:none !important;
   color:var(--spark-text-muted,#64748B) !important;
-  opacity:.42 !important;
+  opacity:.48 !important;
   cursor:default !important;
 }
 
