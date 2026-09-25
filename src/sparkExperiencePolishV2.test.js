@@ -75,4 +75,28 @@ describe("SPARK experience polish V2", () => {
     expect(interaction).toContain(".spark-progress-bar__fill");
     expect(interaction).toContain(".spark-scroll-top");
   });
+
+  test("Adaptive Practice uses the shared loader and radio keyboard navigation", () => {
+    const adaptive = read("adaptive/AdaptivePractice.jsx");
+    const css = read("adaptive/adaptive.css");
+    expect(adaptive).toContain('SparkLoader variant="section"');
+    expect(adaptive).toContain('data-option-key={key}');
+    expect(adaptive).toContain('"ArrowDown"');
+    expect(adaptive).toContain('"ArrowUp"');
+    expect(adaptive).toContain('"Home"');
+    expect(adaptive).toContain('"End"');
+    expect(css).toContain("SPARK ADAPTIVE INTERACTION PASS V2");
+  });
+
+  test("mobile navigation closes predictably and avoids broad transitions", () => {
+    const app = read("App.js");
+    const responsive = read("responsive.css");
+    expect(app).toContain("menuButtonRef");
+    expect(app).toContain("mobileMenuRef");
+    expect(app).toContain('aria-controls="spark-mobile-navigation"');
+    expect(app).toContain('event.key === "Escape"');
+    expect(app).toContain("background-color .18s");
+    expect(responsive).toContain("SPARK MOBILE NAV INTERACTION PASS V2");
+    expect(responsive).toContain("spark-mobile-menu-in");
+  });
 });
