@@ -8,7 +8,7 @@ const practiceHub = fs.readFileSync(path.join(root, "practice", "PracticeHub.jsx
 describe("SPARK V9 enrollment-gated study and practice access", () => {
   test("Study chooser is built only from the student's enrolled subjects", () => {
     expect(app).toContain('function StudySubjectHub({ setView, subjects = [], onManageSubjects, onOpenSubject })');
-    expect(app).toContain('const studySubjects = subjectsForCapability(subjects, "study")');
+    expect(app).toContain('const studySubjects = studySubjectsForNavigation(subjects)');
     expect(app).toContain('subjects={appStudentEnrolledSubjects}');
     expect(app).toContain('onSelect={subject => onOpenSubject ? onOpenSubject(subject) : setView(subject.studyView)}');
     expect(app).not.toContain('const subjects = subjectsForCapability(SPARK_SUBJECTS, "study")');
