@@ -4751,7 +4751,10 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
               <div>
                 <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:12,flexWrap:"wrap",marginBottom:20}}>
                   <div><div style={{fontSize:11,fontWeight:800,letterSpacing:".08em",textTransform:"uppercase",color:T.teal,marginBottom:4}}>CSEC Mathematics</div><h1 style={{fontFamily:FD,fontSize:22,fontWeight:700,color:T.ink,margin:0}}>Mathematics progress</h1></div>
-                  <button type="button" className="spark-dashboard-card-action" onClick={() => { setStudentReportSubject("mathematics"); setStudentReportOpen(true); }}><span>View report</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M6 14L14 6M8 6h6v6" /></svg></span></button>
+                  <div className="spark-subject-progress-detail-actions">
+                    <button type="button" className="spark-dashboard-card-action" onClick={() => openSubject(subjectDashboardSummaries.find(subject => subject.id === "mathematics") || getSparkSubject(subjects, "mathematics"))}><span>Open subject</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M6 14L14 6M8 6h6v6" /></svg></span></button>
+                    <button type="button" className="spark-dashboard-card-action spark-dashboard-card-action-secondary" onClick={() => { setStudentReportSubject("mathematics"); setStudentReportOpen(true); }}><span>View report</span><span className="spark-dashboard-card-action-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M6 14L14 6M8 6h6v6" /></svg></span></button>
+                  </div>
                 </div>
                 <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(180px,1fr))",gap:14,marginBottom:24}}>
                   <Card><div style={{fontFamily:FD,fontSize:30,fontWeight:700,color:T.ink}}>{done}</div><div style={{fontSize:12,color:T.textMuted,textTransform:"uppercase",letterSpacing:"0.04em"}}>Topics completed</div></Card>
