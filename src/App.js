@@ -2671,7 +2671,22 @@ function AddToCalendar({ booking, isTutor, user }) {
     const el = btnRef.current;
     if (!el) return;
     const r = el.getBoundingClientRect();
-    setMenuPos({ left: r.left, top: r.bottom + 6, width: 210 });
+    const margin = 10;
+    const width = Math.min(210, Math.max(160, window.innerWidth - (margin * 2)));
+    const estimatedHeight = 190;
+    const belowTop = r.bottom + 6;
+    const fitsBelow = belowTop + estimatedHeight <= window.innerHeight - margin;
+    const top = fitsBelow ? belowTop : Math.max(margin, r.top - estimatedHeight - 6);
+    const left = Math.min(
+      Math.max(margin, r.left),
+      Math.max(margin, window.innerWidth - width - margin)
+    );
+    setMenuPos({
+      left,
+      top,
+      width,
+      origin: fitsBelow ? "top left" : "bottom left",
+    });
   }, []);
 
   // Recompute position right before paint so the menu is aligned to the
@@ -2681,27 +2696,40 @@ function AddToCalendar({ booking, isTutor, user }) {
   }, [open, computePos]);
 
   useEffect(() => {
-    if (!open) return;
+    if (!open) return undefined;
 
-    const handleOutside = (e) => {
+    const handleOutside = e => {
       const insideButton = wrapRef.current && wrapRef.current.contains(e.target);
       const insideMenu = menuRef.current && menuRef.current.contains(e.target);
       if (!insideButton && !insideMenu) setOpen(false);
     };
-    // Close (rather than let it drift out of alignment) if the page
-    // scrolls or resizes while the menu is open - the button may be
-    // inside a scrollable list.
     const handleReflow = () => setOpen(false);
+    const handleKeyDown = e => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        btnRef.current?.focus({ preventScroll: true });
+      }
+    };
 
     document.addEventListener("mousedown", handleOutside);
+    document.addEventListener("keydown", handleKeyDown);
     window.addEventListener("scroll", handleReflow, true);
     window.addEventListener("resize", handleReflow);
     return () => {
       document.removeEventListener("mousedown", handleOutside);
+      document.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("scroll", handleReflow, true);
       window.removeEventListener("resize", handleReflow);
     };
   }, [open]);
+
+  useEffect(() => {
+    if (!open || !menuPos) return undefined;
+    const frame = window.requestAnimationFrame(() => {
+      menuRef.current?.querySelector("button")?.focus({ preventScroll: true });
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [menuPos, open]);
 
   const status = bookingDisplayStatus(booking);
 
@@ -2711,6 +2739,8 @@ function AddToCalendar({ booking, isTutor, user }) {
     <div ref={wrapRef} style={{position:"relative",display:"inline-block"}}>
       <button
         ref={btnRef}
+        aria-haspopup="menu"
+        aria-expanded={open}
         onClick={() => setOpen(v => !v)}
         style={{
           background:T.teal,
@@ -2731,6 +2761,8 @@ function AddToCalendar({ booking, isTutor, user }) {
         <div
           ref={menuRef}
           className="spark-calendar-menu"
+          role="menu"
+          aria-label="Add session to calendar"
           style={{
             position:"fixed",
             left:menuPos.left,
@@ -2741,10 +2773,12 @@ function AddToCalendar({ booking, isTutor, user }) {
             borderRadius:9,
             boxShadow:"0 8px 24px rgba(0,0,0,.12)",
             padding:6,
-            zIndex:9999
+            zIndex:9999,
+            transformOrigin:menuPos.origin
           }}
         >
           <button
+            role="menuitem"
             onClick={() => {
               addToGoogleCalendar(booking, isTutor, user);
               setOpen(false);
@@ -2770,6 +2804,7 @@ function AddToCalendar({ booking, isTutor, user }) {
           </button>
 
           <button
+            role="menuitem"
             onClick={() => {
               addToOutlookCalendar(booking, isTutor, user);
               setOpen(false);
@@ -2795,6 +2830,7 @@ function AddToCalendar({ booking, isTutor, user }) {
           </button>
 
           <button
+            role="menuitem"
             onClick={() => {
               downloadICSCalendar(booking, isTutor, user);
               setOpen(false);
@@ -2820,6 +2856,7 @@ function AddToCalendar({ booking, isTutor, user }) {
           </button>
 
           <button
+            role="menuitem"
             onClick={() => {
               downloadICSCalendar(booking, isTutor, user);
               setOpen(false);
