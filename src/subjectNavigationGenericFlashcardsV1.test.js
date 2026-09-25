@@ -59,6 +59,24 @@ describe("SPARK subject navigation and generic flashcards V1", () => {
     expect(selection).toContain("Review cards built from this subject's published SPARK lessons");
   });
 
+  test("all subject entry points use canonical study routes", () => {
+    expect(app).toContain("const openStudentSubject = useCallback(subject =>");
+    expect(app).toContain('mathematics:"/study/mathematics"');
+    expect(app).toContain('physics:"/study/physics"');
+    expect(app).toContain('"information-technology":"/study/information-technology"');
+    expect(app).toContain('"integrated-science":"/study/integrated-science"');
+    expect(app).toContain("writeSparkNestedRoute(path)");
+    expect(app).toContain("const routedView = viewFromBrowserHash()");
+  });
+
+  test("signed-in student Home includes Choose a subject using enrolled subjects", () => {
+    expect(app).toContain('className="spark-home-subjects"');
+    expect(app).toContain('title="Choose a subject"');
+    expect(app).toContain('subjects={appStudentEnrolledSubjects}');
+    expect(app).toContain('onOpenSubject={openStudentSubject}');
+    expect(app).toContain('onSelect={subject => onOpenSubject?.(subject)}');
+  });
+
   test("generic flashcard recommendations open the dashboard flashcard route", () => {
     expect(nextBestAction).toContain('actionType === "flashcards"');
     expect(nextBestAction).toContain('special:"dashboard-flashcards"');
