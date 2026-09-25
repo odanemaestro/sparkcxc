@@ -3434,7 +3434,9 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       showToast?.("This subject could not be opened. Please refresh and try again.", "error");
       return;
     }
-    if (resolved.capabilities?.study === false) {
+    const hasStudyRoute = Boolean(String(resolved.routes?.study || "").trim());
+    const canStudy = resolved.capabilities?.study !== false || hasStudyRoute || resolved.implementation === "generic";
+    if (!canStudy) {
       showToast?.((resolved.shortName || resolved.name) + " lessons are not available yet.", "error");
       return;
     }
