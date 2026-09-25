@@ -504,7 +504,18 @@ export default function NotificationCenter({ user, profile, setView }) {
             ) : (
               <div className="notification-list">
                 {loading && items.length === 0 ? (
-                  <div className="notification-empty"><div className="notification-empty-icon">•••</div><strong>Loading updates</strong></div>
+                  <div className="notification-loading-list" role="status" aria-label="Loading notifications">
+                    {[0, 1, 2].map(index => (
+                      <div className="notification-loading-item" aria-hidden="true" key={index}>
+                        <span className="notification-loading-avatar spark-skeleton" />
+                        <span className="notification-loading-copy">
+                          <span className="notification-loading-line notification-loading-line-title spark-skeleton" />
+                          <span className="notification-loading-line spark-skeleton" />
+                          <span className="notification-loading-line notification-loading-line-short spark-skeleton" />
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 ) : !available ? (
                   <div className="notification-empty">
                     <div className="notification-empty-icon">i</div>
