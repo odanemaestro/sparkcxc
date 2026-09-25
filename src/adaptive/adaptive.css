@@ -245,3 +245,44 @@ html[data-theme="dark"] .csec-adaptive-practice button.adaptive-mcq-option{color
 .csec-adaptive-mark-breakdown .is-earned{border-left:3px solid #0D9488}
 .csec-adaptive-mark-breakdown .is-missed{border-left:3px solid #b42318}
 @media(max-width:640px){.csec-adaptive-mark-breakdown li{grid-template-columns:40px 1fr}.csec-adaptive-mark-breakdown li>b{grid-column:2}}
+
+
+/* SPARK ADAPTIVE INTERACTION PASS V2 */
+.csec-adaptive-practice button{
+  transition:
+    scale 110ms ease-out,
+    transform 180ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1)),
+    background-color 180ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1)),
+    border-color 180ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1)),
+    color 180ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1)),
+    box-shadow 180ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1)),
+    filter 180ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1));
+}
+.csec-adaptive-practice button:active:not(:disabled){
+  scale:.97;
+}
+.csec-adaptive-practice button.adaptive-mcq-option{
+  transform-origin:center;
+}
+.csec-adaptive-practice button.adaptive-mcq-option:hover:not(:disabled){
+  transform:translateY(-1px);
+  box-shadow:0 5px 14px color-mix(in srgb,var(--spark-ink) 7%,transparent);
+}
+.csec-adaptive-practice button.adaptive-mcq-option:active:not(:disabled){
+  transform:translateY(0);
+}
+.csec-adaptive-practice button.adaptive-mcq-option:focus-visible{
+  outline:3px solid color-mix(in srgb,var(--spark-teal) 24%,transparent);
+  outline-offset:2px;
+}
+@media(pointer:coarse){
+  .csec-adaptive-practice button.adaptive-mcq-option:hover:not(:disabled){
+    transform:none;
+    box-shadow:none;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .csec-adaptive-practice button{
+    transition:none!important;
+  }
+}
