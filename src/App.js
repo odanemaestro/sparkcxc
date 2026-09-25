@@ -4940,8 +4940,8 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 <p style={{fontSize:13,color:T.textMuted,margin:"4px 0 0"}}>Keep track of every tutoring session in the view that works best for you.</p>
               </div>
               <div className="calendar-view-switch" aria-label="Booking view">
-                <button className={bookingView === "list" ? "active" : ""} onClick={() => setBookingView("list")}>☷ List</button>
-                <button className={bookingView === "calendar" ? "active" : ""} onClick={() => setBookingView("calendar")}>▦ Calendar</button>
+                <button className={bookingView === "list" ? "active" : ""} onClick={() => setBookingView("list")}><Icon name="list" size={14} />List</button>
+                <button className={bookingView === "calendar" ? "active" : ""} onClick={() => setBookingView("calendar")}><Icon name="calendar" size={14} />Calendar</button>
               </div>
             </div>
             {bookingsLoadError ? (
