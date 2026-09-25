@@ -41,3 +41,26 @@ html[data-theme="dark"] .spark-generic-flashcard.revealed{background:linear-grad
 @media(max-width:430px){.spark-generic-flashcards-summary{grid-template-columns:1fr}.spark-generic-flashcards-summary>div:last-child{grid-column:auto}.spark-generic-flashcards-head>button{width:100%}.spark-generic-flashcard{min-height:300px}}
 @media(pointer:coarse){.spark-generic-flashcard:hover:not(.is-dragging){border-color:var(--spark-border);box-shadow:var(--spark-shadow-lg)}}
 @media(prefers-reduced-motion:reduce){.spark-generic-flashcard,.spark-generic-flashcard.is-settling,.spark-generic-flashcards-sections button,.spark-generic-flashcard-nav button,.spark-generic-flashcard-action{transition:none!important}}
+
+
+/* SPARK_GENERIC_FLASHCARDS_ERROR_ACTIONS_V2 */
+.spark-generic-flashcard-empty-actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.spark-generic-flashcard-action.secondary{
+  background:var(--spark-paper);
+  border-color:var(--spark-border);
+  color:var(--spark-ink);
+}
+@media(max-width:520px){
+  .spark-generic-flashcard-empty-actions{
+    display:grid;
+    grid-template-columns:1fr;
+    width:100%;
+  }
+  .spark-generic-flashcard-empty-actions .spark-generic-flashcard-action{
+    width:100%;
+  }
+}
