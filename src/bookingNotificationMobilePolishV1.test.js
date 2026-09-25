@@ -34,4 +34,19 @@ describe("SPARK booking + notification mobile polish V1", () => {
     expect(css).toContain("@media(max-width:600px)");
     expect(css).toContain("position:relative");
   });
+
+  test("booking controls use SVG icons instead of font-dependent symbol glyphs", () => {
+    const app = read("App.js");
+    const icons = read("components/ui/Icon.jsx");
+    expect(app).toContain('<Icon name="plus" size={14} />');
+    expect(app).toContain('<Icon name="download" size={18}');
+    expect(app).toContain('<Icon name="list" size={14} />List');
+    expect(app).toContain('<Icon name="calendar" size={14} />Calendar');
+    expect(app).not.toContain("＋ Add to calendar");
+    expect(app).not.toContain(">☷ List</button>");
+    expect(app).not.toContain(">▦ Calendar</button>");
+    expect(icons).toContain("plus:");
+    expect(icons).toContain("download:");
+    expect(icons).toContain("list:");
+  });
 });

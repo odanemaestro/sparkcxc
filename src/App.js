@@ -2788,10 +2788,14 @@ function AddToCalendar({ booking, isTutor, user }) {
           fontSize:12,
           fontWeight:700,
           cursor:"pointer",
-          fontFamily:FB
+          fontFamily:FB,
+          display:"inline-flex",
+          alignItems:"center",
+          gap:6
         }}
       >
-        ＋ Add to calendar
+        <Icon name="plus" size={14} />
+        <span>Add to calendar</span>
       </button>
 
       {open && menuPos && createPortal(
@@ -2914,7 +2918,7 @@ function AddToCalendar({ booking, isTutor, user }) {
               color:T.ink
             }}
           >
-            <span style={{width:18,display:"inline-flex",justifyContent:"center",flexShrink:0,fontSize:14,opacity:.65}}>⬇</span>
+            <Icon name="download" size={18} color={T.textMuted} />
             Download .ics
           </button>
         </div>,
@@ -4544,8 +4548,8 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 <p style={{fontSize:13,color:T.textMuted,margin:"4px 0 0"}}>Manage upcoming tutoring sessions at a glance.</p>
               </div>
               <div className="calendar-view-switch" aria-label="Session view">
-                <button className={bookingView === "list" ? "active" : ""} onClick={() => setBookingView("list")}>☷ List</button>
-                <button className={bookingView === "calendar" ? "active" : ""} onClick={() => setBookingView("calendar")}>▦ Calendar</button>
+                <button className={bookingView === "list" ? "active" : ""} onClick={() => setBookingView("list")}><Icon name="list" size={14} />List</button>
+                <button className={bookingView === "calendar" ? "active" : ""} onClick={() => setBookingView("calendar")}><Icon name="calendar" size={14} />Calendar</button>
               </div>
             </div>
             {bookingsLoadError ? (
