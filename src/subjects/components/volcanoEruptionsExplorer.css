@@ -1,0 +1,126 @@
+.spark-volcano-eruptions{margin:28px 0;padding:20px;border:1px solid var(--spark-border,#d9e2ec);border-radius:16px;background:var(--spark-paper,#fff)}
+.spark-volcano-eruptions header>span{color:var(--spark-teal-dark,#087f73);font-size:11px;font-weight:900}.spark-volcano-eruptions header h3{margin:4px 0 7px;color:var(--spark-ink,#102a43);font-size:20px}.spark-volcano-eruptions header p{margin:0;color:var(--spark-text-muted,#627d98);font-size:13px;line-height:1.6}
+.spark-volcano-tabs,.spark-volcano-toggle{display:flex;flex-wrap:wrap;gap:8px;margin:17px 0}.spark-volcano-tabs button,.spark-volcano-toggle button{min-height:42px;padding:0 12px;border:1px solid var(--spark-border,#d9e2ec);border-radius:9px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:11px;font-weight:850}.spark-volcano-tabs button.active,.spark-volcano-toggle button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}
+.spark-volcano-stage{padding:15px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:14px;background:var(--spark-bg,#f7fafc)}
+.spark-eruption-model{position:relative;min-height:320px;overflow:hidden;border-radius:12px;background:linear-gradient(#d9edf4 0 55%,#d2bb8a 55%)}.spark-eruption-cone{position:absolute;left:30%;bottom:0;width:40%;height:62%;clip-path:polygon(50% 0,100% 100%,0 100%);background:#8b735c}.spark-eruption-vent{position:absolute;left:49%;bottom:8%;width:2%;height:48%;background:#51382f}.spark-eruption-magma{position:absolute;left:42%;bottom:4%;width:16%;height:12%;border-radius:50%;background:#d95c3d}.spark-lava-flow{position:absolute;left:50%;bottom:30%;width:35%;height:18px;border-radius:20px;background:#e25b38;color:#fff;font-size:10px;padding:4px;text-align:center;transform:rotate(24deg)}.spark-ash-cloud{position:absolute;left:35%;top:5%;width:30%;height:90px;display:grid;place-items:center;border-radius:50%;background:#77736f;color:#fff;font-size:12px;font-weight:900}.spark-ejecta{position:absolute;width:12px;height:12px;border-radius:50%;background:#5d4b43}.spark-ejecta.one{left:39%;top:30%}.spark-ejecta.two{left:58%;top:24%}.spark-ejecta.three{left:66%;top:35%}.spark-volcano-style p,.spark-volcano-types p,.spark-volcano-structure p,.spark-volcano-caribbean p,.spark-volcano-plates p,.spark-volcano-monitoring p{color:var(--spark-ink-soft,#334e68);font-size:11px;line-height:1.55}
+.spark-volcano-types{display:grid;grid-template-columns:1fr 1fr;gap:12px}.spark-volcano-types article,.spark-volcano-caribbean article,.spark-volcano-monitoring article{padding:15px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:11px;background:var(--spark-paper,#fff)}.spark-volcano-types span,.spark-volcano-caribbean span,.spark-volcano-monitoring span{color:var(--spark-teal-dark,#087f73);font-size:10px;font-weight:900}.spark-volcano-types h4,.spark-volcano-caribbean h4,.spark-volcano-monitoring h4{margin:5px 0;color:var(--spark-ink,#102a43);font-size:14px}.vt-shape{height:105px;margin:5px auto 12px;background:#8a7461}.vt-shape.shield{width:90%;clip-path:polygon(0 100%,35% 55%,50% 45%,65% 55%,100% 100%)}.vt-shape.composite{width:65%;clip-path:polygon(5% 100%,50% 0,95% 100%)}.vt-shape.cinder{width:58%;clip-path:polygon(5% 100%,50% 20%,95% 100%)}.vt-sea{height:105px;position:relative;background:#a9d1e3;overflow:hidden}.vt-submarine{position:absolute;left:20%;bottom:-5px;width:60%;height:90px;clip-path:polygon(0 100%,50% 10%,100% 100%);background:#806b5b}
+.spark-volcano-structure svg,.spark-volcano-plates svg{display:block;width:100%;height:auto;border-radius:10px;background:var(--spark-paper,#fff)}.vs-cone,.vp-volcano{fill:#8b735c;stroke:#5c493d;stroke-width:5}.vs-vent{stroke:#543b32;stroke-width:16}.vs-crater{fill:#654a3e;stroke:#49352d;stroke-width:4}.vs-chamber{fill:#df6442;stroke:#9c3e2b;stroke-width:5}.vs-magma,.vs-lava,.vp-magma-rise{fill:none;stroke:#dc5a39;stroke-width:15;stroke-linecap:round}.vs-call{stroke:#647b88;stroke-width:3}.vs-label,.vp-label{fill:#334e68;font-size:14px;font-weight:850}.spark-volcano-caribbean{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.vp-oceanic,.vp-continental{fill:none;stroke:#667e8d;stroke-width:22;stroke-linecap:round}.vp-oceanic{stroke:#557a90}.spark-volcano-monitoring{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.spark-seismo-trace{height:70px;margin-top:12px;background:repeating-linear-gradient(175deg,transparent 0 9px,#526b7d 10px 11px,transparent 12px 18px)}.spark-volcano-monitoring label{display:grid;gap:6px;color:var(--spark-ink,#102a43);font-size:11px;font-weight:850}.spark-volcano-monitoring strong{display:block;margin-top:8px;color:var(--spark-teal-dark,#087f73);font-size:11px}
+.spark-volcano-summary{display:grid;gap:5px;margin-top:14px;padding:13px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:11px;background:var(--spark-bg,#f7fafc)}.spark-volcano-summary strong{color:var(--spark-teal-dark,#087f73);font-size:12px}.spark-volcano-summary span{color:var(--spark-ink-soft,#334e68);font-size:12px}
+html[data-theme="dark"] .spark-volcano-eruptions,body[data-theme="dark"] .spark-volcano-eruptions,.dark .spark-volcano-eruptions{background:#122b43;border-color:#2a4863}
+html[data-theme="dark"] .spark-volcano-tabs button,body[data-theme="dark"] .spark-volcano-tabs button,.dark .spark-volcano-tabs button,html[data-theme="dark"] .spark-volcano-toggle button,body[data-theme="dark"] .spark-volcano-toggle button,.dark .spark-volcano-toggle button,html[data-theme="dark"] .spark-volcano-types article,body[data-theme="dark"] .spark-volcano-types article,.dark .spark-volcano-types article,html[data-theme="dark"] .spark-volcano-structure svg,body[data-theme="dark"] .spark-volcano-structure svg,.dark .spark-volcano-structure svg,html[data-theme="dark"] .spark-volcano-caribbean article,body[data-theme="dark"] .spark-volcano-caribbean article,.dark .spark-volcano-caribbean article,html[data-theme="dark"] .spark-volcano-plates svg,body[data-theme="dark"] .spark-volcano-plates svg,.dark .spark-volcano-plates svg,html[data-theme="dark"] .spark-volcano-monitoring article,body[data-theme="dark"] .spark-volcano-monitoring article,.dark .spark-volcano-monitoring article,html[data-theme="dark"] .spark-volcano-summary,body[data-theme="dark"] .spark-volcano-summary,.dark .spark-volcano-summary{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .spark-volcano-tabs button.active,body[data-theme="dark"] .spark-volcano-tabs button.active,.dark .spark-volcano-tabs button.active,html[data-theme="dark"] .spark-volcano-toggle button.active,body[data-theme="dark"] .spark-volcano-toggle button.active,.dark .spark-volcano-toggle button.active{background:#164e4a;color:#d7fffa}
+html[data-theme="dark"] .vs-label,body[data-theme="dark"] .vs-label,.dark .vs-label,html[data-theme="dark"] .vp-label,body[data-theme="dark"] .vp-label,.dark .vp-label{fill:#d6e4ee}
+@media(max-width:900px){.spark-volcano-types,.spark-volcano-caribbean,.spark-volcano-monitoring{grid-template-columns:1fr}}
+@media(max-width:620px){.spark-volcano-eruptions{padding:14px}.spark-volcano-tabs{display:grid;grid-template-columns:1fr 1fr}.vs-label,.vp-label{font-size:18px}}
+@media(max-width:390px){.spark-volcano-tabs{grid-template-columns:1fr}}
+
+.spark-eruption-cross-section{overflow:hidden;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.spark-eruption-cross-section svg{display:block;width:100%;height:auto}
+.ve-sky{fill:#dceff6;stroke:#bfd4df;stroke-width:2}
+.ve-ground{stroke:#8a775d;stroke-width:9;stroke-linecap:round}
+.ve-cone{fill:#8b735c;stroke:#5c493d;stroke-width:6;stroke-linejoin:round}
+.ve-crater{fill:#60483c;stroke:#49352d;stroke-width:4}
+.ve-vent{fill:none;stroke:#594035;stroke-width:18;stroke-linecap:round}
+.ve-chamber{fill:#df6442;stroke:#9c3e2b;stroke-width:5}
+.ve-gas circle{stroke-width:3}
+.ve-gas.escaping circle{fill:#ffe1b3;stroke:#c2873d}
+.ve-gas.trapped circle{fill:#f4b08e;stroke:#ad6449}
+.ve-gas-arrow,.ve-pressure-arrow,.ve-ejecta path{fill:none;stroke-linecap:round}
+.ve-gas-arrow{stroke:#c2873d;stroke-width:7}
+.ve-pressure-arrow{stroke:#a34c43;stroke-width:7}
+.ve-ejecta path{stroke:#5f4d43;stroke-width:10}
+.ve-ash-cloud circle{fill:#77736f;stroke:#585451;stroke-width:3}
+.ve-pyroclastic{fill:none;stroke:#72584c;stroke-width:22;stroke-linecap:round;stroke-dasharray:9 6}
+.ve-lava-flow{fill:none;stroke:#e25b38;stroke-width:20;stroke-linecap:round}
+.ve-gas-clouds circle{fill:#f1d5ae;stroke:#b9833e;stroke-width:2}
+.ve-label{fill:#334e68;font-size:13px;font-weight:850}
+.ve-label.danger,.ve-label.pressure{fill:#93433e}
+.ve-label.lava{fill:#b84c36}
+.ve-label.chamber{fill:#fff}
+.ve-properties rect{fill:#f7fafc;stroke:#c7d4dc;stroke-width:2.5}
+.ve-prop-title{fill:#29495f;font-size:13px;font-weight:900}
+.ve-prop-text{fill:#526b7d;font-size:12px;font-weight:750}
+html[data-theme="dark"] .spark-eruption-cross-section,
+body[data-theme="dark"] .spark-eruption-cross-section,
+.dark .spark-eruption-cross-section{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .ve-sky,
+body[data-theme="dark"] .ve-sky,
+.dark .ve-sky{fill:#18354e;stroke:#36566e}
+html[data-theme="dark"] .ve-properties rect,
+body[data-theme="dark"] .ve-properties rect,
+.dark .ve-properties rect{fill:#17334b;stroke:#39566e}
+html[data-theme="dark"] .ve-prop-title,
+body[data-theme="dark"] .ve-prop-title,
+.dark .ve-prop-title,
+html[data-theme="dark"] .ve-prop-text,
+body[data-theme="dark"] .ve-prop-text,
+.dark .ve-prop-text,
+html[data-theme="dark"] .ve-label,
+body[data-theme="dark"] .ve-label,
+.dark .ve-label{fill:#e1edf5}
+html[data-theme="dark"] .ve-label.danger,
+body[data-theme="dark"] .ve-label.danger,
+.dark .ve-label.danger,
+html[data-theme="dark"] .ve-label.pressure,
+body[data-theme="dark"] .ve-label.pressure,
+.dark .ve-label.pressure{fill:#ffb4aa}
+@media(max-width:620px){
+  .ve-label{font-size:18px}
+  .ve-prop-title{font-size:17px}
+  .ve-prop-text{font-size:16px}
+}
+
+
+.spark-volcano-type-svg{display:block;width:100%;height:auto;margin:2px 0 10px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:10px;background:var(--spark-paper,#fff)}
+.vt-ground{stroke:#7b684f;stroke-width:6;stroke-linecap:round}
+.vt-shield-cone{fill:#92775e;stroke:#5d4939;stroke-width:4}.vt-composite-cone{fill:#896d58;stroke:#574335;stroke-width:4}.vt-cinder-cone{fill:#8a715d;stroke:#594737;stroke-width:4}
+.vt-lava-layer,.vt-layer{fill:none;stroke-linecap:round}.vt-lava-layer{stroke:#c55f42;stroke-width:4}.vt-layer.ash{stroke:#5f564f;stroke-width:5}.vt-layer.lava{stroke:#d45b3c;stroke-width:5}
+.vt-central-vent{fill:none;stroke:#cc5639;stroke-width:8;stroke-linecap:round}.vt-crater{fill:#5a4438;stroke:#44332b;stroke-width:3}
+.vt-cinders circle{fill:#5f5148;stroke:#423831;stroke-width:2}.vt-water{fill:#9fcfe2}.vt-waterline{stroke:#4f8ba4;stroke-width:4}
+.vt-submarine-cone-svg{fill:#79685c;stroke:#55463d;stroke-width:4}.vt-submarine-plume circle{fill:#d8dde0;stroke:#788890;stroke-width:2}
+.vt-svg-label{fill:#294d64;font-size:13px;font-weight:900}.vt-svg-small{fill:#536d80;font-size:11px;font-weight:750}
+html[data-theme="dark"] .spark-volcano-type-svg,body[data-theme="dark"] .spark-volcano-type-svg,.dark .spark-volcano-type-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .vt-svg-label,body[data-theme="dark"] .vt-svg-label,.dark .vt-svg-label,html[data-theme="dark"] .vt-svg-small,body[data-theme="dark"] .vt-svg-small,.dark .vt-svg-small{fill:#e1edf5}
+@media(max-width:620px){.vt-svg-label{font-size:17px}.vt-svg-small{font-size:15px}}
+
+
+.spark-volcano-structure-svg{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.vs-sky{fill:#e5f2f7}.vs-ground{stroke:#7f6b51;stroke-width:8;stroke-linecap:round}
+.vs-cone-layers path{fill:none;stroke:#6f5846;stroke-width:5;opacity:.65}
+.vs-main-vent,.vs-secondary-vent{fill:none;stroke:#5a3d33;stroke-linecap:round}.vs-main-vent{stroke-width:22}.vs-secondary-vent{stroke-width:15}
+.vs-magma-rise{fill:none;stroke:#e75b31;stroke-width:12;stroke-linecap:round}.vs-lava-flow{fill:none;stroke:#ef5a2c;stroke-width:14;stroke-linecap:round}
+.vs-eruption-column path{fill:none;stroke:#d76642;stroke-width:10;stroke-linecap:round}
+.vs-ash-cloud circle{fill:#7a7775;stroke:#575452;stroke-width:3}.vs-ejected-fragments circle{fill:#5a4b43;stroke:#3c332e;stroke-width:2}
+.vs-callouts path{fill:none;stroke:#60788a;stroke-width:2.5}.vs-arrow-head{fill:#60788a}
+.vs-magma-label{fill:#7d2e24;font-size:14px;font-weight:950}.vs-lava-label{fill:#a33b29;font-size:14px;font-weight:950}.vs-caption{fill:#405d72;font-size:13px;font-weight:850}
+html[data-theme="dark"] .spark-volcano-structure-svg,body[data-theme="dark"] .spark-volcano-structure-svg,.dark .spark-volcano-structure-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .vs-sky,body[data-theme="dark"] .vs-sky,.dark .vs-sky{fill:#153148}
+html[data-theme="dark"] .vs-magma-label,body[data-theme="dark"] .vs-magma-label,.dark .vs-magma-label,html[data-theme="dark"] .vs-lava-label,body[data-theme="dark"] .vs-lava-label,.dark .vs-lava-label{fill:#ffb39b}
+html[data-theme="dark"] .vs-caption,body[data-theme="dark"] .vs-caption,.dark .vs-caption{fill:#d6e4ee}
+@media(max-width:620px){.vs-magma-label,.vs-lava-label{font-size:18px}.vs-caption{font-size:17px}}
+
+
+.spark-volcano-reference-view{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(260px,.65fr);gap:14px;align-items:start}
+.spark-volcano-reference-figure{margin:0;display:grid;gap:8px;padding:10px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:12px;background:var(--spark-paper,#fff)}
+.spark-volcano-reference-figure img{display:block;width:100%;max-height:620px;object-fit:contain;border-radius:9px;background:#fff}
+.spark-volcano-reference-figure figcaption{display:grid;gap:4px}
+.spark-volcano-reference-figure figcaption>span{color:var(--spark-ink,#102a43);font-size:12px;font-weight:850}
+.spark-volcano-reference-figure figcaption small{color:var(--spark-text-muted,#627d98);font-size:9px;line-height:1.45}
+.spark-volcano-reference-figure figcaption a{color:var(--spark-teal-dark,#087f73);font-weight:800}
+.spark-volcano-reference-focus{display:grid;gap:10px;padding:13px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:12px;background:var(--spark-bg,#f7fafc)}
+.spark-volcano-reference-focus>span{color:var(--spark-teal-dark,#087f73);font-size:10px;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
+.spark-volcano-reference-focus>div{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.spark-volcano-reference-focus button{min-height:40px;padding:8px;border:1px solid var(--spark-border,#d9e2ec);border-radius:8px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:10px;font-weight:850;cursor:pointer}
+.spark-volcano-reference-focus button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}
+.spark-volcano-reference-focus article,.spark-volcano-reference-note{padding:11px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:9px;background:var(--spark-paper,#fff)}
+.spark-volcano-reference-focus article strong{color:var(--spark-ink,#102a43);font-size:12px}
+.spark-volcano-reference-focus article p,.spark-volcano-reference-note{margin:5px 0 0;color:var(--spark-ink-soft,#334e68);font-size:11px;line-height:1.55}
+html[data-theme="dark"] .spark-volcano-reference-figure,body[data-theme="dark"] .spark-volcano-reference-figure,.dark .spark-volcano-reference-figure,
+html[data-theme="dark"] .spark-volcano-reference-focus,body[data-theme="dark"] .spark-volcano-reference-focus,.dark .spark-volcano-reference-focus{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .spark-volcano-reference-focus button,body[data-theme="dark"] .spark-volcano-reference-focus button,.dark .spark-volcano-reference-focus button,
+html[data-theme="dark"] .spark-volcano-reference-focus article,body[data-theme="dark"] .spark-volcano-reference-focus article,.dark .spark-volcano-reference-focus article,
+html[data-theme="dark"] .spark-volcano-reference-note,body[data-theme="dark"] .spark-volcano-reference-note,.dark .spark-volcano-reference-note{background:#15314b;border-color:#39566e;color:#e7f2fb}
+html[data-theme="dark"] .spark-volcano-reference-focus button.active,body[data-theme="dark"] .spark-volcano-reference-focus button.active,.dark .spark-volcano-reference-focus button.active{background:#164e4a;color:#d7fffa;border-color:#2dd4bf}
+@media(max-width:850px){.spark-volcano-reference-view{grid-template-columns:1fr}}
+@media(max-width:500px){.spark-volcano-reference-focus>div{grid-template-columns:1fr}.spark-volcano-reference-figure img{max-height:460px}}

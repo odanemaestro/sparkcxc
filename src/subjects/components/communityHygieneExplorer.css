@@ -1,0 +1,73 @@
+.spark-community-hygiene{margin:28px 0;padding:20px;border:1px solid var(--spark-border,#d9e2ec);border-radius:16px;background:var(--spark-paper,#fff)}
+.spark-community-hygiene header>span{color:var(--spark-teal-dark,#087f73);font-size:11px;font-weight:900}.spark-community-hygiene header h3{margin:4px 0 7px;color:var(--spark-ink,#102a43);font-size:20px}.spark-community-hygiene header p{margin:0;color:var(--spark-text-muted,#627d98);font-size:13px;line-height:1.6}
+.spark-hygiene-tabs,.spark-hygiene-toggle{display:flex;flex-wrap:wrap;gap:8px;margin:17px 0}.spark-hygiene-tabs button,.spark-hygiene-toggle button{min-height:42px;padding:0 12px;border:1px solid var(--spark-border,#d9e2ec);border-radius:9px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:11px;font-weight:850}.spark-hygiene-tabs button.active,.spark-hygiene-toggle button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}
+.spark-hygiene-stage{padding:15px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:14px;background:var(--spark-bg,#f7fafc)}
+.spark-hygiene-waste-types>article,.spark-hygiene-pests article,.spark-hygiene-disease article,.spark-hygiene-recovery>article,.spark-hygiene-aesthetic article{padding:15px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:11px;background:var(--spark-paper,#fff)}.spark-hygiene-waste-types span,.spark-hygiene-pests span,.spark-hygiene-disease span,.spark-hygiene-recovery span,.spark-hygiene-aesthetic span{color:var(--spark-teal-dark,#087f73);font-size:10px;font-weight:900}.spark-hygiene-waste-types h4,.spark-hygiene-pests h4,.spark-hygiene-disease h4,.spark-hygiene-recovery h4,.spark-hygiene-aesthetic h4{margin:5px 0;color:var(--spark-ink,#102a43);font-size:14px}.spark-hygiene-waste-types p,.spark-hygiene-pests p,.spark-hygiene-landfill p,.spark-hygiene-sanitation p,.spark-hygiene-disease p,.spark-hygiene-recovery p,.spark-hygiene-aesthetic p{color:var(--spark-ink-soft,#334e68);font-size:11px;line-height:1.55}
+.spark-hygiene-chips{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}.spark-hygiene-chips b{padding:7px 9px;border-radius:999px;background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73);font-size:10px}.spark-hygiene-pests,.spark-hygiene-disease,.spark-hygiene-aesthetic{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.spark-hygiene-landfill svg{display:block;width:100%;height:auto;border-radius:10px;background:var(--spark-paper,#fff)}.ch-soil{fill:#b99d72}.ch-waste{fill:#73675c;stroke:#50463e;stroke-width:4}.ch-rain{stroke:#5d9fbd;stroke-width:7}.ch-leach{fill:none;stroke:#7f5a3c;stroke-width:9}.ch-water{fill:#9ccfe3}.ch-label{fill:#334e68;font-size:14px;font-weight:850}
+.spark-septic-model{position:relative;min-height:260px;border-radius:12px;background:linear-gradient(#e8f2f5 0 55%,#b49b72 56%)}.spark-house{position:absolute;left:8%;top:45px;width:120px;height:100px;display:grid;place-items:center;background:#d7c2a0;color:#5d4f3a;font-weight:900}.spark-pipe{position:absolute;left:22%;top:132px;width:20%;height:12px;background:#6d7478}.spark-septic-tank{position:absolute;left:40%;top:115px;width:220px;height:90px;display:grid;place-items:center;border-radius:35px;background:#87949b;color:#fff;font-size:11px;font-weight:900;text-align:center}.spark-septic-tank small{font-size:9px}.spark-drain-field{position:absolute;right:5%;bottom:24px;width:220px;height:48px;display:grid;place-items:center;border-top:6px dashed #d9e4e8;color:#5a4b36;font-size:10px;font-weight:900}.spark-treatment-flow{display:flex;align-items:center;gap:7px;overflow-x:auto}.spark-treatment-flow article{min-width:125px;padding:15px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:10px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font-size:10px;font-weight:850;text-align:center}.spark-treatment-flow span{color:var(--spark-teal-dark,#087f73);font-weight:900}
+.spark-hygiene-summary{display:grid;gap:5px;margin-top:14px;padding:13px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:11px;background:var(--spark-bg,#f7fafc)}.spark-hygiene-summary strong{color:var(--spark-teal-dark,#087f73);font-size:12px}.spark-hygiene-summary span{color:var(--spark-ink-soft,#334e68);font-size:12px}
+html[data-theme="dark"] .spark-community-hygiene,body[data-theme="dark"] .spark-community-hygiene,.dark .spark-community-hygiene{background:#122b43;border-color:#2a4863}
+html[data-theme="dark"] .spark-hygiene-tabs button,body[data-theme="dark"] .spark-hygiene-tabs button,.dark .spark-hygiene-tabs button,html[data-theme="dark"] .spark-hygiene-toggle button,body[data-theme="dark"] .spark-hygiene-toggle button,.dark .spark-hygiene-toggle button,html[data-theme="dark"] .spark-hygiene-waste-types>article,body[data-theme="dark"] .spark-hygiene-waste-types>article,.dark .spark-hygiene-waste-types>article,html[data-theme="dark"] .spark-hygiene-pests article,body[data-theme="dark"] .spark-hygiene-pests article,.dark .spark-hygiene-pests article,html[data-theme="dark"] .spark-hygiene-landfill svg,body[data-theme="dark"] .spark-hygiene-landfill svg,.dark .spark-hygiene-landfill svg,html[data-theme="dark"] .spark-treatment-flow article,body[data-theme="dark"] .spark-treatment-flow article,.dark .spark-treatment-flow article,html[data-theme="dark"] .spark-hygiene-disease article,body[data-theme="dark"] .spark-hygiene-disease article,.dark .spark-hygiene-disease article,html[data-theme="dark"] .spark-hygiene-recovery>article,body[data-theme="dark"] .spark-hygiene-recovery>article,.dark .spark-hygiene-recovery>article,html[data-theme="dark"] .spark-hygiene-aesthetic article,body[data-theme="dark"] .spark-hygiene-aesthetic article,.dark .spark-hygiene-aesthetic article,html[data-theme="dark"] .spark-hygiene-summary,body[data-theme="dark"] .spark-hygiene-summary,.dark .spark-hygiene-summary{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .spark-hygiene-tabs button.active,body[data-theme="dark"] .spark-hygiene-tabs button.active,.dark .spark-hygiene-tabs button.active,html[data-theme="dark"] .spark-hygiene-toggle button.active,body[data-theme="dark"] .spark-hygiene-toggle button.active,.dark .spark-hygiene-toggle button.active{background:#164e4a;color:#d7fffa}
+html[data-theme="dark"] .ch-label,body[data-theme="dark"] .ch-label,.dark .ch-label{fill:#d6e4ee}
+@media(max-width:900px){.spark-hygiene-pests,.spark-hygiene-disease,.spark-hygiene-aesthetic{grid-template-columns:1fr}.spark-treatment-flow{flex-direction:column}.spark-treatment-flow span{transform:rotate(90deg)}}
+@media(max-width:620px){.spark-community-hygiene{padding:14px}.spark-hygiene-tabs{display:grid;grid-template-columns:1fr 1fr}.ch-label{font-size:18px}.spark-septic-tank{left:35%;width:180px}.spark-drain-field{width:170px}}
+@media(max-width:390px){.spark-hygiene-tabs{grid-template-columns:1fr}}
+
+.spark-sanitation-diagram{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.ch-sky{fill:#dceff6}.ch-ground{fill:#b99d72}
+.ch-house-body{fill:#d7c2a0;stroke:#6f604a;stroke-width:4}.ch-house-roof{fill:#a98b69;stroke:#6f604a;stroke-width:4}
+.ch-sewer-pipe,.ch-outlet-pipe,.ch-drain-main,.ch-drain-branch,.ch-process-pipe{fill:none;stroke:#677985;stroke-width:9;stroke-linecap:round;stroke-linejoin:round}
+.ch-process-pipe{stroke:#8bb6c4;stroke-width:12}
+.ch-process-arrow,.ch-sewer-pipe,.ch-outlet-pipe{stroke:#2d8f85}.ch-arrow-head{fill:#2d8f85}
+.ch-tank-shell{fill:#72808a;stroke:#455560;stroke-width:5}.ch-tank-liquid{fill:#8fc6d9}
+.ch-scum{fill:#84714e}.ch-sludge,.ch-settled-solids{fill:#735944}
+.ch-baffle{fill:none;stroke:#d9e2e8;stroke-width:8}.ch-perforation{fill:#35596c}.ch-soil-flow{stroke:#5d8a79;stroke-width:5;stroke-dasharray:8 8}
+.ch-screen-channel,.ch-aeration,.ch-disinfection{fill:#dcebf1;stroke:#627985;stroke-width:5}
+.ch-screen-bar{stroke:#596a75;stroke-width:6}.ch-clarifier{fill:#b8d9e5;stroke:#627985;stroke-width:5}
+.ch-clarifier.secondary{fill:#a8d1c7}.ch-air-bubble{fill:#f2fbff;stroke:#5d9fbd;stroke-width:2}
+.ch-disinfection-ray{stroke:#7860a8;stroke-width:6;stroke-linecap:round}
+.ch-small{fill:#526b7d;font-size:12px;font-weight:750}
+html[data-theme="dark"] .spark-sanitation-diagram,
+body[data-theme="dark"] .spark-sanitation-diagram,
+.dark .spark-sanitation-diagram{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .ch-sky,
+body[data-theme="dark"] .ch-sky,
+.dark .ch-sky{fill:#17354e}
+html[data-theme="dark"] .ch-ground,
+body[data-theme="dark"] .ch-ground,
+.dark .ch-ground{fill:#4b4031}
+html[data-theme="dark"] .ch-small,
+body[data-theme="dark"] .ch-small,
+.dark .ch-small{fill:#d6e4ee}
+@media(max-width:620px){.ch-small{font-size:15px}}
+
+
+.spark-landfill-cross-section{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.lf-sky{fill:#dceff6}.lf-cell-shell{fill:#7b6c5f;stroke:#55483e;stroke-width:4}.lf-cover{fill:#9f8f72;stroke:#6d614d;stroke-width:3}
+.lf-waste-details rect,.lf-waste-details circle,.lf-waste-details path{fill:#9b8069;stroke:#5e4f43;stroke-width:3}
+.lf-drainage-layer{fill:#b6ad8b;stroke:#746d59;stroke-width:3}.lf-liner{fill:#364b57;stroke:#1f313b;stroke-width:4}
+.lf-collection-pipe,.lf-collected-leachate{fill:none;stroke:#2d8f85;stroke-width:8;stroke-linecap:round}.lf-arrow-head{fill:#2d8f85}.lf-pipe-hole{fill:#d8f4f0;stroke:#2d8f85;stroke-width:2}
+.lf-leachate-tank{fill:#697b86;stroke:#40505a;stroke-width:4}.lf-tank-liquid{fill:#806246}.lf-small{fill:#526b7d;font-size:12px;font-weight:750}
+html[data-theme="dark"] .spark-landfill-cross-section,body[data-theme="dark"] .spark-landfill-cross-section,.dark .spark-landfill-cross-section{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .lf-sky,body[data-theme="dark"] .lf-sky,.dark .lf-sky{fill:#17354e}
+html[data-theme="dark"] .lf-small,body[data-theme="dark"] .lf-small,.dark .lf-small{fill:#d6e4ee}
+@media(max-width:620px){.lf-small{font-size:15px}}
+
+
+.spark-hygiene-pests-view{display:grid;gap:14px}
+.spark-pests-drains-svg{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.pd-ground{fill:#eef4f1}.pd-road{fill:#b7bdc0}.pd-drain-channel{fill:#7f8587;stroke:#555d61;stroke-width:4}.pd-water{fill:#78b7cf;stroke:#4d8ca5;stroke-width:3}
+.pd-litter rect,.pd-litter path,.pd-litter circle{fill:#8a7562;stroke:#5e4c3e;stroke-width:2}.pd-flow,.pd-stage-arrow{fill:none;stroke:#367f9d;stroke-width:5;stroke-linecap:round}.pd-flow.weak{stroke-dasharray:10 8;opacity:.6}.pd-arrow-head{fill:#367f9d}
+.pd-egg{fill:#6e6255;stroke:#4e463d;stroke-width:2}.pd-larva,.pd-pupa{fill:none;stroke:#6b7d50;stroke-width:6;stroke-linecap:round}
+.pd-mosquito-body,.pd-mosquito-head{fill:#4f534d;stroke:#2e322d;stroke-width:2}.pd-mosquito-lines{fill:none;stroke:#40443f;stroke-width:3;stroke-linecap:round}
+.pd-bin{fill:#6f7f69;stroke:#485444;stroke-width:4}.pd-bin-lid{fill:#5e6d59;stroke:#485444;stroke-width:4}.pd-bag{fill:#9b8b74;stroke:#675b4c;stroke-width:3}.pd-flies circle{fill:#323a3c}
+.pd-rat ellipse,.pd-rat circle{fill:#7f756f;stroke:#544e4a;stroke-width:2}.pd-rat path{fill:none;stroke:#544e4a;stroke-width:3}
+.pd-label,.pd-heading{fill:#294d64;font-weight:900}.pd-label{font-size:14px}.pd-heading{font-size:13px}.pd-small{fill:#536d80;font-size:11px;font-weight:750}
+html[data-theme="dark"] .spark-pests-drains-svg,body[data-theme="dark"] .spark-pests-drains-svg,.dark .spark-pests-drains-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .pd-ground,body[data-theme="dark"] .pd-ground,.dark .pd-ground{fill:#153148}
+html[data-theme="dark"] .pd-label,body[data-theme="dark"] .pd-label,.dark .pd-label,
+html[data-theme="dark"] .pd-heading,body[data-theme="dark"] .pd-heading,.dark .pd-heading,
+html[data-theme="dark"] .pd-small,body[data-theme="dark"] .pd-small,.dark .pd-small{fill:#e1edf5}
+@media(max-width:620px){.pd-label{font-size:18px}.pd-heading{font-size:17px}.pd-small{font-size:15px}}

@@ -1,0 +1,84 @@
+.spark-simple-machines{margin:28px 0;padding:20px;border:1px solid var(--spark-border,#d9e2ec);border-radius:16px;background:var(--spark-paper,#fff)}.spark-simple-machines header>span,.spark-machines-examples span{color:var(--spark-teal-dark,#087f73);font-size:10px;font-weight:900}.spark-simple-machines header h3{margin:4px 0 7px;color:var(--spark-ink,#102a43);font-size:20px}.spark-simple-machines header p,.spark-machines-levers p,.spark-machines-pulley p,.spark-machines-incline p,.spark-machines-examples p{color:var(--spark-ink-soft,#334e68);font-size:11px;line-height:1.55}
+.spark-machines-tabs,.spark-machines-buttons{display:flex;flex-wrap:wrap;gap:8px;margin:17px 0}.spark-machines-tabs button,.spark-machines-buttons button{min-height:42px;padding:0 12px;border:1px solid var(--spark-border,#d9e2ec);border-radius:9px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:11px;font-weight:850}.spark-machines-tabs button.active,.spark-machines-buttons button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}.spark-machines-stage{padding:15px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:14px;background:var(--spark-bg,#f7fafc)}
+.spark-lever-diagram{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:8px;align-items:center}.spark-lever-diagram article{padding:25px 10px;text-align:center;border-radius:12px;font-weight:900}.spark-lever-diagram .fulcrum{background:#d9e4e8}.spark-lever-diagram .effort{background:#d9fbf4}.spark-lever-diagram .load{background:#ead8b9}.spark-pulley-model{position:relative;min-height:260px}.spark-pulley-wheel{position:absolute;left:44%;top:25px;width:90px;height:90px;border:15px solid #768892;border-radius:50%}.spark-pulley-load{position:absolute;left:42%;bottom:20px;width:130px;height:70px;display:grid;place-items:center;background:#a18465;color:#fff;font-weight:900}.spark-rope-lines span{position:absolute;top:105px;bottom:90px;width:4px;background:#566b77}.spark-machines-pulley label,.spark-machines-inputs label{display:grid;gap:6px;color:var(--spark-ink,#102a43);font-size:11px;font-weight:850}.spark-machines-pulley strong,.spark-machines-incline strong{display:block;margin-top:10px;color:var(--spark-teal-dark,#087f73);font-size:14px}.spark-machines-inputs{display:grid;grid-template-columns:1fr 1fr;gap:12px}.spark-machines-inputs input{min-height:42px;padding:8px;border:1px solid var(--spark-border,#d9e2ec);border-radius:8px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43)}.spark-machines-examples{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.spark-machines-examples article{padding:15px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:11px;background:var(--spark-paper,#fff)}.spark-machines-examples h4{margin:5px 0;color:var(--spark-ink,#102a43);font-size:14px}.spark-machines-summary{display:grid;gap:5px;margin-top:14px;padding:13px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:11px;background:var(--spark-bg,#f7fafc)}.spark-machines-summary strong{color:var(--spark-teal-dark,#087f73);font-size:12px}.spark-machines-summary span{color:var(--spark-ink-soft,#334e68);font-size:12px}
+html[data-theme="dark"] .spark-simple-machines,body[data-theme="dark"] .spark-simple-machines,.dark .spark-simple-machines{background:#122b43;border-color:#2a4863}html[data-theme="dark"] .spark-machines-tabs button,body[data-theme="dark"] .spark-machines-tabs button,.dark .spark-machines-tabs button,html[data-theme="dark"] .spark-machines-buttons button,body[data-theme="dark"] .spark-machines-buttons button,.dark .spark-machines-buttons button,html[data-theme="dark"] .spark-machines-inputs input,body[data-theme="dark"] .spark-machines-inputs input,.dark .spark-machines-inputs input,html[data-theme="dark"] .spark-machines-examples article,body[data-theme="dark"] .spark-machines-examples article,.dark .spark-machines-examples article,html[data-theme="dark"] .spark-machines-summary,body[data-theme="dark"] .spark-machines-summary,.dark .spark-machines-summary{background:#0d2134;border-color:#29465f}html[data-theme="dark"] .spark-machines-tabs button.active,body[data-theme="dark"] .spark-machines-tabs button.active,.dark .spark-machines-tabs button.active,html[data-theme="dark"] .spark-machines-buttons button.active,body[data-theme="dark"] .spark-machines-buttons button.active,.dark .spark-machines-buttons button.active{background:#164e4a;color:#d7fffa}
+@media(max-width:900px){.spark-machines-inputs,.spark-machines-examples{grid-template-columns:1fr}}@media(max-width:620px){.spark-simple-machines{padding:14px}.spark-machines-tabs{display:grid;grid-template-columns:1fr 1fr}.spark-lever-diagram{grid-template-columns:1fr}.spark-lever-diagram span{text-align:center;transform:rotate(90deg)}}@media(max-width:390px){.spark-machines-tabs{grid-template-columns:1fr}}
+
+.spark-lever-svg{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.spark-lever-svg .sl-ground{fill:#70787d}
+.spark-lever-svg .sl-beam{fill:#9c805f;stroke:#6e5b43;stroke-width:4}
+.spark-lever-svg .sl-fulcrum path{fill:#d7dfe4;stroke:#6b7d88;stroke-width:4}
+.spark-lever-svg .sl-fulcrum circle{fill:#60747f}
+.spark-lever-svg .sl-fulcrum text{fill:#405766;font-size:12px;font-weight:900}
+.spark-lever-svg .sl-effort path{fill:none;stroke:#0d9488;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+.spark-lever-svg .sl-effort text{fill:#0b756d;font-size:13px;font-weight:900}
+.spark-lever-svg .sl-load rect{fill:#d7b878;stroke:#9b7a39;stroke-width:3}
+.spark-lever-svg .sl-load path{fill:none;stroke:#9b6c31;stroke-width:5}
+.spark-lever-svg .sl-load text{fill:#785625;font-size:13px;font-weight:900}
+.spark-lever-svg .sl-order-guide line{stroke:#7b8d98;stroke-width:2.5}
+.spark-lever-svg .sl-class-title{fill:#29495f;font-size:18px;font-weight:900}
+.spark-lever-svg .sl-rule{fill:#526b7d;font-size:13px;font-weight:850}
+.spark-lever-legend{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px}
+.spark-lever-legend article{display:grid;grid-template-columns:auto 1fr;column-gap:8px;row-gap:2px;align-items:center;padding:11px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:10px;background:var(--spark-paper,#fff)}
+.spark-lever-legend span{width:13px;height:13px;border-radius:50%}
+.spark-lever-legend .effort-dot{background:#0d9488}
+.spark-lever-legend .fulcrum-dot{background:#60747f}
+.spark-lever-legend .load-dot{background:#d7b878}
+.spark-lever-legend b{color:var(--spark-ink,#102a43);font-size:11px}
+.spark-lever-legend small{grid-column:2;color:var(--spark-text-muted,#627d98);font-size:10px}
+html[data-theme="dark"] .spark-lever-svg,
+body[data-theme="dark"] .spark-lever-svg,
+.dark .spark-lever-svg,
+html[data-theme="dark"] .spark-lever-legend article,
+body[data-theme="dark"] .spark-lever-legend article,
+.dark .spark-lever-legend article{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .spark-lever-svg .sl-class-title,
+body[data-theme="dark"] .spark-lever-svg .sl-class-title,
+.dark .spark-lever-svg .sl-class-title,
+html[data-theme="dark"] .spark-lever-svg .sl-rule,
+body[data-theme="dark"] .spark-lever-svg .sl-rule,
+.dark .spark-lever-svg .sl-rule,
+html[data-theme="dark"] .spark-lever-svg .sl-fulcrum text,
+body[data-theme="dark"] .spark-lever-svg .sl-fulcrum text,
+.dark .spark-lever-svg .sl-fulcrum text{fill:#d6e4ee}
+@media(max-width:900px){.spark-lever-legend{grid-template-columns:1fr}}
+@media(max-width:620px){
+  .spark-lever-svg .sl-class-title{font-size:22px}
+  .spark-lever-svg .sl-rule,.spark-lever-svg .sl-effort text,.spark-lever-svg .sl-load text,.spark-lever-svg .sl-fulcrum text{font-size:17px}
+}
+
+.spark-pulley-svg{display:block;width:100%;height:auto;margin-top:14px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.spark-pulley-svg .sp-support{fill:#647682}
+.spark-pulley-svg .sp-fixed-pulley circle,.spark-pulley-svg .sp-upper-block circle,.spark-pulley-svg .sp-moving-block>circle{fill:#d7e0e5;stroke:#637986;stroke-width:5}
+.spark-pulley-svg .hub{fill:#667b87;stroke:#435965;stroke-width:3}
+.spark-pulley-svg .sp-rope,.spark-pulley-svg .sp-effort-rope,.spark-pulley-svg .sp-supporting-strands line{fill:none;stroke:#5f6d74;stroke-width:5;stroke-linecap:round}
+.spark-pulley-svg .sp-supporting-strands text{fill:#0d9488;font-size:12px;font-weight:900}
+.spark-pulley-svg .sp-load{fill:#a48565;stroke:#6d543c;stroke-width:4}
+.spark-pulley-svg .sp-load-label{fill:#fff;font-size:13px;font-weight:900}
+.spark-pulley-svg .sp-effort-arrow path{fill:none;stroke:#0d9488;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+.spark-pulley-svg .sp-effort-arrow text{fill:#0b756d;font-size:13px;font-weight:900}
+.spark-pulley-svg .sp-upthrust-arrow{fill:none;stroke:#4c8eaa;stroke-width:7;stroke-linecap:round}
+.spark-pulley-svg .sp-upthrust-label{fill:#3f7188;font-size:12px;font-weight:850}
+.spark-pulley-svg .sp-note{fill:#526b7d;font-size:12px;font-weight:850}
+.spark-pulley-svg .sp-heading{fill:#29495f;font-size:18px;font-weight:900}
+.spark-pulley-facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px}
+.spark-pulley-facts article{display:grid;gap:5px;padding:12px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:10px;background:var(--spark-paper,#fff)}
+.spark-pulley-facts b{color:var(--spark-ink,#102a43);font-size:11px}
+.spark-pulley-facts span{color:var(--spark-ink-soft,#334e68);font-size:11px;line-height:1.5}
+html[data-theme="dark"] .spark-pulley-svg,
+body[data-theme="dark"] .spark-pulley-svg,
+.dark .spark-pulley-svg,
+html[data-theme="dark"] .spark-pulley-facts article,
+body[data-theme="dark"] .spark-pulley-facts article,
+.dark .spark-pulley-facts article{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .spark-pulley-svg .sp-note,
+body[data-theme="dark"] .spark-pulley-svg .sp-note,
+.dark .spark-pulley-svg .sp-note,
+html[data-theme="dark"] .spark-pulley-svg .sp-heading,
+body[data-theme="dark"] .spark-pulley-svg .sp-heading,
+.dark .spark-pulley-svg .sp-heading{fill:#d6e4ee}
+@media(max-width:900px){.spark-pulley-facts{grid-template-columns:1fr}}
+@media(max-width:620px){
+  .spark-pulley-svg .sp-heading{font-size:22px}
+  .spark-pulley-svg .sp-note,.spark-pulley-svg .sp-effort-arrow text,.spark-pulley-svg .sp-upthrust-label,.spark-pulley-svg .sp-load-label{font-size:17px}
+}

@@ -8,7 +8,7 @@ describe("SPARK canonical diagram progress support", () => {
       "..",
       "supabase",
       "migrations",
-      "20260921000500_subject_progress_diagram_activity.sql"
+      "20260921000600_subject_progress_diagram_activity.sql"
     ),
     "utf8"
   );

@@ -1,0 +1,42 @@
+.spark-skeletal-muscle{margin:28px 0;padding:20px;border:1px solid var(--spark-border,#d9e2ec);border-radius:16px;background:var(--spark-paper,#fff)}.spark-skeletal-muscle header>span,.spark-joint-types span,.spark-muscle-attachments span{color:var(--spark-teal-dark,#087f73);font-size:10px;font-weight:900}.spark-skeletal-muscle header h3{margin:4px 0 7px;color:var(--spark-ink,#102a43);font-size:20px}.spark-skeletal-muscle header p,.spark-muscle-arm p,.spark-muscle-knee p,.spark-joint-types p,.spark-muscle-attachments p{color:var(--spark-ink-soft,#334e68);font-size:11px;line-height:1.55}
+.spark-muscle-tabs,.spark-muscle-toggle{display:flex;flex-wrap:wrap;gap:8px;margin:17px 0}.spark-muscle-tabs button,.spark-muscle-toggle button{min-height:42px;padding:0 12px;border:1px solid var(--spark-border,#d9e2ec);border-radius:9px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:11px;font-weight:850}.spark-muscle-tabs button.active,.spark-muscle-toggle button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}.spark-muscle-stage{padding:15px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:14px;background:var(--spark-bg,#f7fafc)}
+.spark-muscle-arm svg{display:block;width:100%;height:auto;border-radius:10px;background:var(--spark-paper,#fff)}.sm-shoulder,.sm-elbow{fill:#d8c3a2;stroke:#796c58;stroke-width:4}.sm-bone{stroke:#e0d2b2;stroke-width:28;stroke-linecap:round}.sm-muscle{fill:#b87468;opacity:.55;stroke:#8f534b;stroke-width:3}.sm-muscle.active{fill:#b94d43;opacity:1}.sm-label{fill:#334e68;font-size:14px;font-weight:850}.spark-knee-model{position:relative;min-height:350px}.spark-thigh,.spark-lower-leg{position:absolute;left:44%;width:80px;background:#d9c8a9;color:#5f523e;font-size:10px;font-weight:900;text-align:center;transition:transform .2s}.spark-thigh{top:30px;height:145px}.spark-lower-leg{top:175px;height:150px;transform-origin:top center;transform:rotate(28deg)}.spark-lower-leg.straight{transform:rotate(0)}.spark-quadriceps,.spark-hamstring{position:absolute;left:33%;top:65px;width:90px;height:130px;border-radius:50%;display:grid;place-items:center;background:#c28a80;color:#fff;font-size:9px;font-weight:900}.spark-hamstring{left:57%;background:#a87575}.spark-quadriceps.active,.spark-hamstring.active{background:#b94d43}.spark-joint-types>article,.spark-muscle-attachments article{padding:15px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:11px;background:var(--spark-paper,#fff)}.spark-joint-types h4,.spark-muscle-attachments h4{margin:5px 0;color:var(--spark-ink,#102a43);font-size:14px}.spark-muscle-attachments{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.spark-muscle-summary{display:grid;gap:5px;margin-top:14px;padding:13px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:11px;background:var(--spark-bg,#f7fafc)}.spark-muscle-summary strong{color:var(--spark-teal-dark,#087f73);font-size:12px}.spark-muscle-summary span{color:var(--spark-ink-soft,#334e68);font-size:12px}
+html[data-theme="dark"] .spark-skeletal-muscle,body[data-theme="dark"] .spark-skeletal-muscle,.dark .spark-skeletal-muscle{background:#122b43;border-color:#2a4863}html[data-theme="dark"] .spark-muscle-tabs button,body[data-theme="dark"] .spark-muscle-tabs button,.dark .spark-muscle-tabs button,html[data-theme="dark"] .spark-muscle-toggle button,body[data-theme="dark"] .spark-muscle-toggle button,.dark .spark-muscle-toggle button,html[data-theme="dark"] .spark-muscle-arm svg,body[data-theme="dark"] .spark-muscle-arm svg,.dark .spark-muscle-arm svg,html[data-theme="dark"] .spark-joint-types>article,body[data-theme="dark"] .spark-joint-types>article,.dark .spark-joint-types>article,html[data-theme="dark"] .spark-muscle-attachments article,body[data-theme="dark"] .spark-muscle-attachments article,.dark .spark-muscle-attachments article,html[data-theme="dark"] .spark-muscle-summary,body[data-theme="dark"] .spark-muscle-summary,.dark .spark-muscle-summary{background:#0d2134;border-color:#29465f}html[data-theme="dark"] .spark-muscle-tabs button.active,body[data-theme="dark"] .spark-muscle-tabs button.active,.dark .spark-muscle-tabs button.active,html[data-theme="dark"] .spark-muscle-toggle button.active,body[data-theme="dark"] .spark-muscle-toggle button.active,.dark .spark-muscle-toggle button.active{background:#164e4a;color:#d7fffa}html[data-theme="dark"] .sm-label,body[data-theme="dark"] .sm-label,.dark .sm-label{fill:#d6e4ee}
+@media(max-width:900px){.spark-muscle-attachments{grid-template-columns:1fr}}@media(max-width:620px){.spark-skeletal-muscle{padding:14px}.spark-muscle-tabs{display:grid;grid-template-columns:1fr 1fr}.sm-label{font-size:18px}}@media(max-width:390px){.spark-muscle-tabs{grid-template-columns:1fr}}
+
+.sm-scapula,.sm-pelvis-fragment{fill:#e6dcc8;stroke:#796c58;stroke-width:4}
+.sm-shoulder,.sm-elbow,.sm-knee-joint,.sm-wrist{fill:#d8c3a2;stroke:#796c58;stroke-width:4}
+.sm-bone{fill:none;stroke:#e0d2b2;stroke-width:24;stroke-linecap:round}
+.sm-bone.radius,.sm-bone.ulna,.sm-bone.tibia,.sm-bone.fibula{stroke-width:18}
+.sm-patella{fill:#d9c6a7;stroke:#796c58;stroke-width:3}
+.sm-muscle{fill:#b87468;opacity:.58;stroke:#8f534b;stroke-width:3}
+.sm-muscle.active{fill:#b94d43;opacity:1}
+.sm-tendon{fill:none;stroke:#efe2c6;stroke-width:8;stroke-linecap:round}
+.sm-tendon.active{stroke:#f4e7c9}
+.sm-small{fill:#526b7d;font-size:12px;font-weight:750}
+.spark-knee-svg{display:block;width:100%;height:auto;border-radius:10px;background:var(--spark-paper,#fff)}
+html[data-theme="dark"] .spark-knee-svg,
+body[data-theme="dark"] .spark-knee-svg,
+.dark .spark-knee-svg{background:#0d2134}
+html[data-theme="dark"] .sm-small,
+body[data-theme="dark"] .sm-small,
+.dark .sm-small{fill:#d6e4ee}
+
+.spark-joint-grid{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(220px,.8fr);gap:14px;align-items:stretch}
+.spark-joint-diagram{display:block;width:100%;height:auto;min-height:230px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:11px;background:var(--spark-paper,#fff)}
+.sm-joint-bone{fill:none;stroke:#e0d2b2;stroke-width:34;stroke-linecap:round}
+.sm-joint-cartilage{fill:#c9dce4;stroke:#557489;stroke-width:4}
+.sm-joint-ligament{fill:none;stroke:#d7b56d;stroke-width:10;stroke-linecap:round}
+.sm-joint-motion{fill:none;stroke:#2d8f85;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.sm-joint-socket{fill:#e6dcc8;stroke:#796c58;stroke-width:4}
+.sm-joint-ball{fill:#d8c3a2;stroke:#796c58;stroke-width:4}
+.sm-joint-plate{fill:#e6dcc8;stroke:#796c58;stroke-width:3}
+.sm-joint-suture{fill:none;stroke:#6f6253;stroke-width:6;stroke-linejoin:round}
+.sm-joint-glide{fill:#e0d2b2;stroke:#796c58;stroke-width:4}
+html[data-theme="dark"] .spark-joint-diagram,
+body[data-theme="dark"] .spark-joint-diagram,
+.dark .spark-joint-diagram{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .sm-joint-motion,
+body[data-theme="dark"] .sm-joint-motion,
+.dark .sm-joint-motion{stroke:#6ee7d8}
+@media(max-width:760px){.spark-joint-grid{grid-template-columns:1fr}.spark-joint-diagram{min-height:0}}

@@ -1,0 +1,99 @@
+# Integrated Science visual source registry
+
+This branch replaces custom placeholder-style scientific drawings with supplied images or reusable scientific references. SPARK interaction (drag/drop, tap targets, hints, scoring, zoom/reveal where applicable) is layered over the real reference image.
+
+## Approved source libraries
+
+- **User-supplied references:** first choice when scientifically suitable.
+- **Servier Medical Art (SMART):** professional medical illustrations covering anatomy, physiology, pathology, treatments and equipment. Medical images are licensed under CC BY 4.0 and must be credited to Servier Medical Art with the licence identified.
+- **Wikimedia Commons:** use only individual files whose licences are verified and recorded.
+- **NIH / NIAID BioArt, CDC, NOAA, NASA, USGS and other government scientific sources:** prefer public-domain material where it fits the objective.
+- **OpenStax and similar educational sources:** use reusable figures only when the licence permits SPARK's intended use.
+
+## Current priority replacements
+
+| SPARK template / visual | Reference source | Licence / status | Notes |
+| --- | --- | --- | --- |
+| flower-longitudinal | Wikimedia Commons: Flordiagramnumbered.jpg by Mgoodyear | CC BY-SA 4.0 | Numbered floral anatomy reference beneath SPARK label targets |
+| bean-seed | Wikimedia Commons: Broad bean seed split in half (top view).jpg by Bodhi Peace | CC BY-SA 4.0 | Real split-seed photograph beneath SPARK label targets |
+| respiratory-system | Wikimedia Commons: Respiratory system complete no labels.svg by Bibi Saint-Pol / Jmarchn | CC BY-SA 3.0 | Complete unlabeled respiratory anatomy with interactive focus panel |
+| plant-cell | Wikimedia Commons: Plant cell structure no text | Public domain | Real reference-backed cell structure used beneath SPARK targets |
+| animal-cell | Wikimedia Commons: Animal cell structure no text | Public domain | Real reference-backed cell structure used beneath SPARK targets |
+| light-microscope | Wikimedia Commons: Compound Microscope.JPG by Acagastya | CC0 1.0 | Real microscope photograph; SPARK provides the labels/targets |
+| female-reproductive-system | Wikimedia Commons: Female reproductive organs, frontal view, unlabeled.svg by RWhitwam | CC BY-SA 4.0 | Shows ovary, oviduct, uterus, cervix, vagina and uterine layers including endometrium |
+| male-reproductive-system | Wikimedia Commons: Male reproductive frontal without labels.svg by T. Kebert | CC BY-SA 4.0 | Fully unlabeled frontal anatomy with SPARK targets overlaid |
+| human-brain | Wikimedia Commons: Brain human sagittal section.svg by Patrick J. Lynch | CC BY 2.5 | Sagittal medical illustration beneath SPARK targets |
+| endocrine-system | Wikimedia Commons: Human endocrine male & female svg no labels.svg by OpenStax / Tomáš Kebert / umimeto.org | CC BY-SA 4.0 | Unlabeled endocrine anatomy beneath SPARK targets |
+| kidney-nephron | Wikimedia Commons: KidneyAndNephron-v4 Antares42.svg | CC BY-SA 3.0 | Combined kidney/nephron reference with interactive process focus |
+| skin-excretion | NIH NIAID BioArt: Skin Cross-Section (NIH BioArt 677).png | Public domain | Human skin cross-section with interactive structure/process focus |
+| mammalian-eye | Wikimedia Commons: Diagram of human eye without labels.svg by Jmarchn | CC BY-SA 3.0 | Real eye cross-section beneath SPARK targets |
+| mammalian-ear | Wikimedia Commons: Anatomy of the Human Ear blank.svg | CC BY 2.5 | Blank anatomical ear reference beneath SPARK targets |
+| human-digestive-system | Wikimedia Commons: Digestive system without labels.svg by Mariana Ruiz / Jmarchn | Public domain | Real reference-backed digestive anatomy |
+| human-tooth | Wikimedia Commons: Basic tooth.svg by K. D. Schroeder | CC BY-SA 4.0 | Unlabeled tooth cross-section with attribution |
+| human-heart | Wikimedia Commons: Diagram of the human heart (no labels).svg | CC BY-SA 4.0 | Unlabeled anatomical heart reference |
+| pregnancy-uterus | Wikimedia Commons: Gray38.png, Gray's Anatomy plate by Henry Vandyke Carter | Public domain | Unlabeled fetus-in-utero anatomical plate with SPARK overlay targets |
+
+| water-cycle | USGS / Wikimedia Commons: Watercycle-notext.jpg | Public domain | Real water-cycle landscape with SPARK process focus |
+| volcano-types | Wikimedia Commons: Volcanic Profiles-01.svg by Carie Frantz | CC BY-SA 4.0 | Comparative volcano profiles with SPARK type focus |
+| volcano-structure | Wikimedia Commons: Stratovolcano cross-section.svg by Woudloper | CC BY-SA 3.0 / GFDL | Scientific cross-section with SPARK structure focus |
+| hurricane-structure | NOAA GOES / CSU-CIRA: Hurricane Nigel’s Large Eye Swirls | Public domain | Real satellite hurricane structure with SPARK eye/eyewall/rainband focus |
+
+
+| human-skeleton-major-bones | Wikimedia Commons: Human skeleton front - no labels.svg | Public domain | Full skeleton reference with SPARK bone hotspots |
+| human-skeleton-spinal-regions | Wikimedia Commons: Segments of Vertebrae.svg | CC BY-SA 4.0 | Cervical, thoracic, lumbar, sacral and coccygeal regions with SPARK focus controls |
+| nervous-system-overview | Wikimedia Commons: Nervous system diagram unlabeled.svg | CC BY-SA 4.0 | CNS/PNS anatomy with SPARK hotspots and focus states |
+| human-digestion-pathway | Wikimedia Commons: Digestive system without labels.svg | Public domain | Digestive anatomy with SPARK organ hotspots and pathway steps |
+
+
+| neuron-structure | Wikimedia Commons: Derived Neuron schema with no labels.svg | CC BY-SA 3.0 / GFDL | Neurone structure with SPARK hotspots |
+| reflex-arc | Wikimedia Commons: Reflex Arc.svg | CC BY-SA 4.0 | Reflex pathway with SPARK step focus |
+
+
+| eye-accommodation | Wikimedia Commons: Accommodation-far-point-near-point.svg | CC BY-SA 4.0 | Far/near accommodation reference with SPARK Near/Distant focus |
+| eye-pupil-response | Wikimedia Commons: Pupillary light reflex.jpg | CC BY-SA 4.0 | Real eye photographs in bright and dim light |
+| ear-hearing-pressure | Wikimedia Commons: Anatomy of the Human Ear blank.svg | CC BY 2.5 | Ear anatomy reused for hearing pathway and Eustachian-tube pressure |
+| ear-balance | Wikimedia Commons: STS-65 fig6.png | Public domain, NASA | Vestibular apparatus and balance reference |
+| pregnancy-early-development | Wikimedia Commons: Human Fertilization.png | CC BY-SA 3.0 | Fertilisation, zygote, cleavage and implantation |
+| pregnancy-placenta | Wikimedia Commons: Fetal circulation.jpg | CC BY-SA 4.0 | Foetus, umbilical cord, amniotic sac, placenta and maternal-foetal interface |
+| pregnancy-labour | Wikimedia Commons: 2920 Stages of Childbirth-en.svg | CC BY-SA 3.0 | Medical stages-of-childbirth reference |
+
+
+| sense-eye | Wikimedia Commons: Diagram of human eye without labels.svg | CC BY-SA 3.0 | Sense-organ overview |
+| sense-ear | Wikimedia Commons: Anatomy of the Human Ear blank.svg | CC BY 2.5 | Sense-organ overview |
+| sense-smell | Wikimedia Commons: Early Olfactory System.svg | CC BY 3.0 | Olfactory epithelium/bulb reference |
+| sense-taste | Wikimedia Commons: Taste bud.svg | CC BY-SA 2.5 | Taste-bud receptor reference |
+| sense-skin | Wikimedia Commons: Skin Cross-Section (NIH BioArt 677).png | Public domain | NIH skin reference |
+| animal-asexual-binary | Wikimedia Commons: Binary fission.svg | CC BY-SA 3.0 | Binary fission reference |
+| animal-asexual-budding | Wikimedia Commons: Hydra Budding.svg | CC BY-SA 4.0 | Hydra budding sequence |
+| animal-asexual-fragmentation | Wikimedia Commons: Regeneracion.jpg | CC BY-SA 3.0 | Real planarian regeneration photograph |
+| animal-asexual-parthenogenesis | Wikimedia Commons: Live Birth in Aphids.jpg | CC BY-SA 4.0 | Real aphid parthenogenesis photograph |
+
+## Replacement policy
+
+1. Prefer user-supplied images when they are scientifically suitable.
+2. Otherwise search Servier Medical Art, Wikimedia Commons, NIH, CDC, OpenStax and other reputable scientific/educational sources for a reusable reference. Prefer the clearest scientifically appropriate visual, not a particular provider.
+3. Do not redraw a scientific structure merely to match SPARK's visual style.
+4. Keep interactive behaviour separate from the underlying image:
+   - desktop drag-and-drop labels
+   - phone/tablet tap label then tap target
+   - hints
+   - answer checking
+   - completed-state labels
+   - zoom/reveal where useful
+5. Every externally sourced visual must keep its source and licence information in the repository and, where practical, beside the activity. Servier Medical Art assets must be credited as Servier Medical Art and identified as CC BY 4.0.
+6. When a CC BY-SA visual is adapted, preserve attribution and compatible licensing for that derivative asset.
+7. Custom SVG remains acceptable only where a suitable reference does not exist or where the task itself is abstract (for example a force-vector model), and it must be grounded in a scientific reference.
+
+## Rollback point
+
+The prior technically green package is preserved on:
+
+`integrated-science-final-package`
+
+The active visual replacement branch is:
+
+`integrated-science-visual-replacement-pass`
+
+## CI checkpoint
+
+The visual replacement pass is validated through draft PR #3. The PR is a CI vehicle only and must not be merged until the complete visual audit is finished.

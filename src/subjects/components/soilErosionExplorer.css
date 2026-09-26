@@ -1,0 +1,48 @@
+.spark-erosion-explorer{margin:28px 0;padding:20px;border:1px solid var(--spark-border,#d9e2ec);border-radius:16px;background:var(--spark-paper,#fff)}
+.spark-erosion-explorer header>span{color:var(--spark-teal-dark,#087f73);font-size:11px;font-weight:900;letter-spacing:.05em}
+.spark-erosion-explorer header h3{margin:4px 0 7px;color:var(--spark-ink,#102a43);font-size:20px}
+.spark-erosion-explorer header p{margin:0;color:var(--spark-text-muted,#627d98);font-size:13px;line-height:1.6}
+.spark-erosion-tabs,.spark-erosion-methods{display:flex;flex-wrap:wrap;gap:8px;margin:17px 0}
+.spark-erosion-tabs button,.spark-erosion-methods button{min-height:42px;padding:0 13px;border:1px solid var(--spark-border,#d9e2ec);border-radius:9px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:11px;font-weight:850;cursor:pointer}
+.spark-erosion-tabs button.active,.spark-erosion-methods button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}
+.spark-erosion-stage,.spark-erosion-control-stage{overflow:hidden;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:14px;background:#f3f7ef}
+.spark-erosion-stage svg,.spark-erosion-control-stage svg{display:block;width:100%;height:auto}
+.spark-erosion-stage .se-title,.spark-erosion-control-stage .se-title{fill:#203f58;font-size:20px;font-weight:900}
+.spark-erosion-stage .se-note,.spark-erosion-control-stage .se-note{fill:#456279;font-size:15px;font-weight:800}
+.spark-erosion-stage .se-note.warning,.spark-erosion-control-stage .se-note.warning{fill:#a94f32}
+.spark-erosion-stage .se-hill,.spark-erosion-control-stage .se-hill{stroke:#8a6946;stroke-width:4}
+.spark-erosion-stage .se-hill.bare,.spark-erosion-control-stage .se-hill.bare{fill:#bb8b5d}
+.spark-erosion-stage .se-hill.covered,.spark-erosion-control-stage .se-hill.covered{fill:#9fbd77}
+.spark-erosion-stage .se-rain,.spark-erosion-control-stage .se-rain{stroke:#4ca7cf;stroke-width:6;stroke-linecap:round}
+.spark-erosion-stage .se-runoff,.spark-erosion-control-stage .se-runoff{fill:none;stroke:#4a9bc1;stroke-width:10;stroke-linecap:round}
+.spark-erosion-stage .se-runoff.slow,.spark-erosion-control-stage .se-runoff.slow{stroke-width:6;stroke-dasharray:16 15}
+.spark-erosion-stage .se-soil-loss{fill:none;stroke:#8f5f39;stroke-width:12;stroke-linecap:round}
+.spark-erosion-stage .se-grass,.spark-erosion-control-stage .se-grass{fill:none;stroke:#3f8a42;stroke-width:7;stroke-linecap:round}
+.spark-erosion-stage .se-root,.spark-erosion-control-stage .se-root{fill:none;stroke:#8c673e;stroke-width:5;stroke-linecap:round}
+.spark-erosion-stage .se-topsoil.rich{fill:#67452d}.spark-erosion-stage .se-topsoil.thin{fill:#8c623f}.spark-erosion-stage .se-subsoil{fill:#b47e53}
+.spark-erosion-stage .se-crop-stem{fill:none;stroke-linecap:round}.spark-erosion-stage .se-crop-stem.healthy{stroke:#3f8a42;stroke-width:8}.spark-erosion-stage .se-crop-stem.weak{stroke:#7e9a5d;stroke-width:6}
+.spark-erosion-stage .se-crop-leaf.healthy{fill:#6db55f;stroke:#397c3d;stroke-width:3}.spark-erosion-stage .se-crop-leaf.weak{fill:#a9b876;stroke:#76845e;stroke-width:3}
+.spark-erosion-stage .se-layer{fill:#304c5f;font-size:14px;font-weight:800}.spark-erosion-stage .se-layer.light{fill:#fff}
+.spark-erosion-control-layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(230px,.5fr);gap:14px}
+.spark-erosion-control-layout aside{display:grid;align-content:start;gap:8px;padding:15px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:12px;background:var(--spark-bg,#f7fafc)}
+.spark-erosion-control-layout aside strong{color:var(--spark-ink,#102a43);font-size:16px}.spark-erosion-control-layout aside p{margin:0;color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.6}
+.spark-erosion-control-stage .se-terrace{fill:none;stroke:#7f5f3f;stroke-width:16;stroke-linejoin:round}
+.spark-erosion-control-stage .se-contour{fill:none;stroke:#4f8c47;stroke-width:12;stroke-linecap:round}
+.spark-erosion-control-stage .se-field{fill:#9c754f}.spark-erosion-control-stage .se-field.dry{fill:#c6a16f}
+.spark-erosion-control-stage .se-tree-trunk{fill:#7f5937}.spark-erosion-control-stage .se-tree{fill:#5a994c;stroke:#39733c;stroke-width:3}
+.spark-erosion-control-stage .se-wind{fill:none;stroke:#6aa8c8;stroke-width:8;stroke-linecap:round}.spark-erosion-control-stage .se-wind.slow{stroke-width:4;stroke-dasharray:18 14}
+.spark-erosion-control-stage .se-strip{fill:none;stroke:#4f9147;stroke-width:26;stroke-linecap:round}.spark-erosion-control-stage .se-strip.alt{stroke:#e1bd52}
+.spark-erosion-stage .se-river{fill:#7fc3df;stroke:#568ba4;stroke-width:4}.spark-erosion-stage .se-sediment{fill:#b38a61;fill-opacity:.7}
+.spark-erosion-stage .se-coral{fill:none;stroke:#d98778;stroke-width:10;stroke-linecap:round}.spark-erosion-stage .se-fish{fill:#6e9fc3;stroke:#426c89;stroke-width:3}.spark-erosion-stage .se-fish-tail{fill:#6e9fc3;stroke:#426c89;stroke-width:3}
+.spark-erosion-note-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
+.spark-erosion-note-grid article,.spark-erosion-impact{display:grid;gap:5px;padding:13px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:11px;background:var(--spark-bg,#f7fafc);margin-top:14px}
+.spark-erosion-note-grid b,.spark-erosion-impact strong{color:var(--spark-teal-dark,#087f73);font-size:11px;text-transform:uppercase}
+.spark-erosion-note-grid span,.spark-erosion-impact span{color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.55}
+html[data-theme="dark"] .spark-erosion-explorer,body[data-theme="dark"] .spark-erosion-explorer,.dark .spark-erosion-explorer{background:#122b43;border-color:#2a4863}
+html[data-theme="dark"] .spark-erosion-tabs button,body[data-theme="dark"] .spark-erosion-tabs button,.dark .spark-erosion-tabs button,html[data-theme="dark"] .spark-erosion-methods button,body[data-theme="dark"] .spark-erosion-methods button,.dark .spark-erosion-methods button{background:#15314b;border-color:#39566e;color:#e7f2fb}
+html[data-theme="dark"] .spark-erosion-tabs button.active,body[data-theme="dark"] .spark-erosion-tabs button.active,.dark .spark-erosion-tabs button.active,html[data-theme="dark"] .spark-erosion-methods button.active,body[data-theme="dark"] .spark-erosion-methods button.active,.dark .spark-erosion-methods button.active{background:#164e4a;color:#d7fffa;border-color:#2dd4bf}
+html[data-theme="dark"] .spark-erosion-stage,body[data-theme="dark"] .spark-erosion-stage,.dark .spark-erosion-stage,html[data-theme="dark"] .spark-erosion-control-stage,body[data-theme="dark"] .spark-erosion-control-stage,.dark .spark-erosion-control-stage{background:#eef5eb;border-color:#39566e}
+html[data-theme="dark"] .spark-erosion-note-grid article,body[data-theme="dark"] .spark-erosion-note-grid article,.dark .spark-erosion-note-grid article,html[data-theme="dark"] .spark-erosion-impact,body[data-theme="dark"] .spark-erosion-impact,.dark .spark-erosion-impact,html[data-theme="dark"] .spark-erosion-control-layout aside,body[data-theme="dark"] .spark-erosion-control-layout aside,.dark .spark-erosion-control-layout aside{background:#0d2134;border-color:#29465f}
+@media(max-width:850px){.spark-erosion-note-grid{grid-template-columns:1fr}.spark-erosion-control-layout{grid-template-columns:1fr}.spark-erosion-tabs{display:grid;grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.spark-erosion-explorer{padding:14px}.spark-erosion-methods{display:grid;grid-template-columns:1fr 1fr}.spark-erosion-stage .se-title,.spark-erosion-control-stage .se-title{font-size:25px}.spark-erosion-stage .se-note,.spark-erosion-control-stage .se-note{font-size:19px}.spark-erosion-stage .se-layer{font-size:18px}}
+@media(max-width:390px){.spark-erosion-tabs,.spark-erosion-methods{grid-template-columns:1fr}}

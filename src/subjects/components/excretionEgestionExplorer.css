@@ -1,0 +1,67 @@
+.spark-excretion-egestion{margin:28px 0;padding:20px;border:1px solid var(--spark-border,#d9e2ec);border-radius:16px;background:var(--spark-paper,#fff)}
+.spark-excretion-egestion header>span{color:var(--spark-teal-dark,#087f73);font-size:11px;font-weight:900;letter-spacing:.05em}
+.spark-excretion-egestion header h3{margin:4px 0 7px;color:var(--spark-ink,#102a43);font-size:20px}
+.spark-excretion-egestion header p{margin:0;color:var(--spark-text-muted,#627d98);font-size:13px;line-height:1.6}
+.spark-excretion-tabs,.spark-excretion-choice{display:flex;flex-wrap:wrap;gap:8px;margin:17px 0}
+.spark-excretion-tabs button,.spark-excretion-choice button{min-height:42px;padding:0 13px;border:1px solid var(--spark-border,#d9e2ec);border-radius:9px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:11px;font-weight:850;cursor:pointer}
+.spark-excretion-tabs button.active,.spark-excretion-choice button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}
+.spark-excretion-decision{display:grid;gap:14px;padding:16px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:14px;background:var(--spark-bg,#f7fafc)}
+.spark-excretion-decision .start{display:grid;justify-items:center;gap:5px;padding:16px;border-radius:12px;background:var(--spark-paper,#fff);border:1px solid var(--spark-border-soft,#edf2f7)}
+.spark-excretion-decision .start span{color:var(--spark-teal-dark,#087f73);font-size:10px;font-weight:900}.spark-excretion-decision .start strong{color:var(--spark-ink,#102a43);font-size:16px}
+.spark-excretion-decision-arrows,.spark-excretion-decision-outcomes{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.spark-excretion-decision-arrows span{text-align:center;color:var(--spark-text-muted,#627d98);font-size:11px;font-weight:800}
+.spark-excretion-decision-arrows span:before{content:"↓";display:block;color:var(--spark-teal,#0d9488);font-size:24px;line-height:1}
+.spark-excretion-decision-outcomes article{display:grid;gap:6px;padding:15px;border-radius:12px;border:1px solid var(--spark-border-soft,#edf2f7);background:var(--spark-paper,#fff)}
+.spark-excretion-decision-outcomes article.excretion{border-color:#8fc8b4}.spark-excretion-decision-outcomes article.egestion{border-color:#d9aa7f}
+.spark-excretion-decision-outcomes b{font-size:12px}.spark-excretion-decision-outcomes .excretion b{color:#1d6f59}.spark-excretion-decision-outcomes .egestion b{color:#8b5a2f}
+.spark-excretion-decision-outcomes p{margin:0;color:var(--spark-ink,#102a43);font-size:13px;font-weight:700}.spark-excretion-decision-outcomes small{color:var(--spark-text-muted,#627d98);font-size:11px;line-height:1.45}
+.spark-excretion-route-layout{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(250px,.6fr);gap:15px}
+.spark-excretion-route-stage{overflow:hidden;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:14px;background:#f5f8fa}
+.spark-excretion-route-stage svg{display:block;width:100%;height:auto}
+.spark-excretion-route-layout aside{display:grid;align-content:start;gap:9px;padding:15px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:12px;background:var(--spark-bg,#f7fafc)}
+.spark-excretion-route-layout aside>span{color:var(--spark-teal-dark,#087f73);font-size:10px;font-weight:900;text-transform:uppercase}
+.spark-excretion-route-layout aside h4{margin:0;color:var(--spark-ink,#102a43);font-size:18px}.spark-excretion-route-layout aside div{padding-top:8px;border-top:1px solid var(--spark-border-soft,#edf2f7)}
+.spark-excretion-route-layout aside b{color:var(--spark-ink,#102a43);font-size:11px}.spark-excretion-route-layout aside p{margin:4px 0 0;color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.55}
+.spark-excretion-route-layout .classification{display:grid;gap:4px}.spark-excretion-route-layout .classification.excretion strong{color:#1d6f59}.spark-excretion-route-layout .classification.egestion strong{color:#8b5a2f}
+.spark-excretion-route-stage .ee-cell{fill:#d9e9f2;stroke:#6489a0;stroke-width:5}.spark-excretion-route-stage .ee-nucleus{fill:#987caf;stroke:#664e7d;stroke-width:4}
+.spark-excretion-route-stage .ee-route{fill:none;stroke-width:8;stroke-linecap:round}.spark-excretion-route-stage .ee-route.excretion{stroke:#2f8b70}.spark-excretion-route-stage .ee-route.egestion{stroke:#aa7440}
+.spark-excretion-route-stage .ee-item-dot.excretion{fill:#2f8b70}.spark-excretion-route-stage .ee-item-dot.egestion{fill:#aa7440}
+.spark-excretion-route-stage .ee-lung{fill:#f1c3c7;stroke:#a8636a;stroke-width:5}.spark-excretion-route-stage .ee-trachea{stroke:#66899e;stroke-width:13;stroke-linecap:round}
+.spark-excretion-route-stage .ee-kidney{fill:#bc6d7a;stroke:#7f4651;stroke-width:5}.spark-excretion-route-stage .ee-ureter{fill:none;stroke:#ab7a56;stroke-width:8}
+.spark-excretion-route-stage .ee-skin{fill:#e5b895;stroke:#a47351;stroke-width:5}.spark-excretion-route-stage .ee-sweat-gland{fill:none;stroke:#547f9c;stroke-width:7}.spark-excretion-route-stage .ee-sweat-duct{stroke:#547f9c;stroke-width:7}.spark-excretion-route-stage .ee-sweat-drop{fill:#70b9db;stroke:#3e829f;stroke-width:3}
+.spark-excretion-route-stage .ee-liver{fill:#a95f49;stroke:#713e31;stroke-width:5}.spark-excretion-route-stage .ee-bile-duct{fill:none;stroke:#7d9345;stroke-width:7}.spark-excretion-route-stage .ee-gut{fill:none;stroke:#bb8e6f;stroke-width:13;stroke-linecap:round}
+.spark-excretion-route-stage .ee-gut-large{fill:none;stroke:#bb8e6f;stroke-width:20;stroke-linejoin:round}.spark-excretion-route-stage .ee-egestion-arrow,.spark-excretion-route-stage .ee-exit-arrow{fill:none;stroke:#aa7440;stroke-width:7;stroke-linecap:round}
+.spark-excretion-route-stage .ee-label,.spark-excretion-route-stage .ee-organ-label,.spark-excretion-route-stage .ee-exit-label{fill:#3d596e;font-size:14px;font-weight:850}
+.spark-excretion-selected{display:grid;gap:5px;margin-top:12px;padding:13px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:11px;background:var(--spark-bg,#f7fafc)}
+.spark-excretion-selected strong{color:var(--spark-teal-dark,#087f73);font-size:10px;text-transform:uppercase}.spark-excretion-selected span{color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.55}
+.spark-excretion-table{overflow-x:auto;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:14px;background:var(--spark-bg,#f7fafc)}
+.spark-excretion-table table{width:100%;border-collapse:collapse;min-width:650px}.spark-excretion-table th,.spark-excretion-table td{padding:12px;border-bottom:1px solid var(--spark-border-soft,#edf2f7);text-align:left;color:var(--spark-ink-soft,#334e68);font-size:12px}.spark-excretion-table thead th{color:var(--spark-ink,#102a43);font-size:10px;text-transform:uppercase}.spark-excretion-table td span{display:inline-block;padding:5px 8px;border-radius:999px;font-size:10px;font-weight:900;text-transform:uppercase}.spark-excretion-table td span.excretion{background:#e5f5ee;color:#1d6f59}.spark-excretion-table td span.egestion{background:#fff0e2;color:#8b5a2f}
+html[data-theme="dark"] .spark-excretion-egestion,body[data-theme="dark"] .spark-excretion-egestion,.dark .spark-excretion-egestion{background:#122b43;border-color:#2a4863}
+html[data-theme="dark"] .spark-excretion-tabs button,body[data-theme="dark"] .spark-excretion-tabs button,.dark .spark-excretion-tabs button,html[data-theme="dark"] .spark-excretion-choice button,body[data-theme="dark"] .spark-excretion-choice button,.dark .spark-excretion-choice button{background:#15314b;border-color:#39566e;color:#e7f2fb}
+html[data-theme="dark"] .spark-excretion-tabs button.active,body[data-theme="dark"] .spark-excretion-tabs button.active,.dark .spark-excretion-tabs button.active,html[data-theme="dark"] .spark-excretion-choice button.active,body[data-theme="dark"] .spark-excretion-choice button.active,.dark .spark-excretion-choice button.active{background:#164e4a;color:#d7fffa;border-color:#2dd4bf}
+html[data-theme="dark"] .spark-excretion-decision,body[data-theme="dark"] .spark-excretion-decision,.dark .spark-excretion-decision,html[data-theme="dark"] .spark-excretion-route-layout aside,body[data-theme="dark"] .spark-excretion-route-layout aside,.dark .spark-excretion-route-layout aside,html[data-theme="dark"] .spark-excretion-selected,body[data-theme="dark"] .spark-excretion-selected,.dark .spark-excretion-selected,html[data-theme="dark"] .spark-excretion-table,body[data-theme="dark"] .spark-excretion-table,.dark .spark-excretion-table{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .spark-excretion-decision .start,body[data-theme="dark"] .spark-excretion-decision .start,.dark .spark-excretion-decision .start,html[data-theme="dark"] .spark-excretion-decision-outcomes article,body[data-theme="dark"] .spark-excretion-decision-outcomes article,.dark .spark-excretion-decision-outcomes article{background:#15314b;border-color:#39566e}
+html[data-theme="dark"] .spark-excretion-route-stage,body[data-theme="dark"] .spark-excretion-route-stage,.dark .spark-excretion-route-stage{background:#f3f7f9;border-color:#39566e}
+@media(max-width:850px){.spark-excretion-route-layout{grid-template-columns:1fr}}
+@media(max-width:620px){.spark-excretion-egestion{padding:14px}.spark-excretion-tabs,.spark-excretion-choice{display:grid;grid-template-columns:1fr 1fr}.spark-excretion-decision-arrows,.spark-excretion-decision-outcomes{grid-template-columns:1fr}.spark-excretion-route-stage .ee-label,.spark-excretion-route-stage .ee-organ-label,.spark-excretion-route-stage .ee-exit-label{font-size:19px}}
+@media(max-width:390px){.spark-excretion-tabs,.spark-excretion-choice{grid-template-columns:1fr}}
+
+
+.spark-excretion-decision-svg{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.eed-start{fill:#eef6f8;stroke:#6f8998;stroke-width:3}
+.eed-heading,.eed-card-title,.eed-outcome-title,.eed-example{fill:#294d64;font-weight:900}
+.eed-heading{font-size:18px}.eed-card-title{font-size:14px}.eed-outcome-title{font-size:18px}.eed-example{font-size:12px}
+.eed-small,.eed-card-note{fill:#536d80;font-weight:750}.eed-small{font-size:12px}.eed-card-note{font-size:10px}
+.eed-branch,.eed-outcome-arrow,.eed-metabolism-arrow,.eed-not-absorbed{fill:none;stroke-width:5;stroke-linecap:round}.eed-branch.excretion,.eed-outcome-arrow.excretion,.eed-metabolism-arrow{stroke:#2f8b70}.eed-branch.egestion,.eed-outcome-arrow.egestion,.eed-not-absorbed{stroke:#aa7440}.eed-arrow-head{fill:#60788a}
+.eed-origin-cell rect{fill:#edf8f3;stroke:#83ad9e;stroke-width:3}.eed-origin-gut rect{fill:#fff6ec;stroke:#c79b72;stroke-width:3}
+.eed-cell{fill:#d9e9f2;stroke:#6489a0;stroke-width:4}.eed-nucleus{fill:#987caf;stroke:#664e7d;stroke-width:3}.eed-waste-dot{fill:#2f8b70}
+.eed-gut{fill:none;stroke:#bb8e6f;stroke-width:16;stroke-linejoin:round}.eed-food-dots circle{fill:#aa7440}
+.eed-outcome.excretion rect{fill:#e8f6f0;stroke:#6fae97;stroke-width:3}.eed-outcome.egestion rect{fill:#fff0e2;stroke:#c69061;stroke-width:3}
+html[data-theme="dark"] .spark-excretion-decision-svg,body[data-theme="dark"] .spark-excretion-decision-svg,.dark .spark-excretion-decision-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .eed-heading,body[data-theme="dark"] .eed-heading,.dark .eed-heading,
+html[data-theme="dark"] .eed-card-title,body[data-theme="dark"] .eed-card-title,.dark .eed-card-title,
+html[data-theme="dark"] .eed-outcome-title,body[data-theme="dark"] .eed-outcome-title,.dark .eed-outcome-title,
+html[data-theme="dark"] .eed-example,body[data-theme="dark"] .eed-example,.dark .eed-example,
+html[data-theme="dark"] .eed-small,body[data-theme="dark"] .eed-small,.dark .eed-small,
+html[data-theme="dark"] .eed-card-note,body[data-theme="dark"] .eed-card-note,.dark .eed-card-note{fill:#e1edf5}
+@media(max-width:620px){.eed-heading{font-size:23px}.eed-card-title{font-size:18px}.eed-outcome-title{font-size:23px}.eed-small,.eed-example{font-size:16px}.eed-card-note{font-size:14px}}

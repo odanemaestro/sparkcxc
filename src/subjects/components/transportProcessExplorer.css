@@ -12,14 +12,19 @@
 .spark-transport-stage .centre-guide{stroke:#8ea4b4;stroke-width:3;stroke-dasharray:8 9}
 .spark-transport-stage .zone-label,.spark-transport-stage .membrane-label{fill:#37536b;font-size:17px;font-weight:800}
 .spark-transport-stage .membrane{fill:#d5e4eb;stroke:#71899b;stroke-width:3}
+.spark-transport-stage .membrane-head{fill:#88b7c9;stroke:#416a7c;stroke-width:2}
+.spark-transport-stage .membrane-tail{stroke:#6f8f9d;stroke-width:3;stroke-linecap:round}
+.spark-transport-stage .net-movement-label{fill:#087f73;font-size:15px;font-weight:900}
+.spark-transport-stage .process-arrow.reverse,.spark-transport-stage .process-arrow-head.reverse{stroke:#8aa3b3;stroke-width:4}
+
 .spark-transport-particle.solute{fill:#7257b8;stroke:#4e3b84;stroke-width:2}
 .spark-transport-particle.water{fill:#54b7de;stroke:#2d7897;stroke-width:2}
 .spark-transport-stage .process-arrow,.spark-transport-stage .process-arrow-head{fill:none;stroke:#0d9488;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
 .spark-transport-stage .water-arrow{stroke:#2d91b8}
 .spark-transport-stage .active-arrow{stroke:#b36b24}
-.spark-transport-stage .carrier{fill:#ffe0b9;stroke:#b36b24;stroke-width:4}
+.spark-transport-stage .carrier{fill:#ffe0b9;stroke:#b36b24;stroke-width:4}.spark-transport-stage .carrier-site{fill:#fff8eb;stroke:#b36b24;stroke-width:3}
 .spark-transport-stage .carrier.running{fill:#ffd28f}
-.energy-badge rect{fill:#fff3da;stroke:#c37c24;stroke-width:2}.energy-badge text{fill:#8a5416;font-size:14px;font-weight:900}.energy-badge.on rect{fill:#fde68a}
+.energy-badge rect{fill:#fff3da;stroke:#c37c24;stroke-width:2}.energy-badge text{fill:#8a5416;font-size:14px;font-weight:900}.energy-badge .energy-caption{font-size:11px;font-weight:800}.energy-badge.on rect{fill:#fde68a}
 .spark-transport-notes{padding:16px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:12px;background:var(--spark-bg,#f7fafc)}
 .spark-transport-notes>strong{color:var(--spark-ink,#102a43);font-size:16px}
 .spark-transport-notes p{margin:8px 0;color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.6}
@@ -61,4 +66,18 @@ html[data-theme="dark"] .spark-transport-tabs button.active,body[data-theme="dar
   .spark-transport-stage .process-arrow-head{
     stroke-width:9;
   }
+}
+
+/* SPARK_TRANSPORT_DARK_STAGE_V2 */
+html[data-theme="dark"] .spark-transport-stage,
+body[data-theme="dark"] .spark-transport-stage,
+.dark .spark-transport-stage{
+  background:#eaf3f7;
+  border-color:#39566e;
+}
+html[data-theme="dark"] .spark-transport-stage .chamber,
+body[data-theme="dark"] .spark-transport-stage .chamber,
+.dark .spark-transport-stage .chamber{
+  fill:#f8fbfd;
+  stroke:#7890a4;
 }
