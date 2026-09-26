@@ -121,3 +121,23 @@ test("booking calendar and iPhone push guidance support the mobile glass pass", 
   expect(notificationCss).toContain(".push-ios-install-steps");
   expect(notificationCss).toContain('html[data-glass="true"] .notification-item');
 });
+
+
+test("mobile booking date picker floats as a sheet and booking modal has a close control", () => {
+  const picker = read("components/booking/BookingDatePicker.jsx");
+  const calendarCss = read("components/booking/bookingDatePicker.css");
+  const modal = read("components/ui/Modal.jsx");
+  const app = read("App.js");
+  const mobileCss = read("mobileDashboardV18.css");
+
+  expect(picker).toContain('import { createPortal } from "react-dom"');
+  expect(picker).toContain('className="booking-date-layer"');
+  expect(picker).toContain('className="booking-date-scrim"');
+  expect(picker).toContain('aria-modal={mobileSheet ? "true" : "false"}');
+  expect(calendarCss).toContain(".booking-date-layer");
+  expect(calendarCss).toContain("@keyframes booking-date-sheet-up");
+  expect(modal).toContain("showClose = false");
+  expect(modal).toContain('className="spark-modal-close"');
+  expect(app).toContain('closeLabel="Close booking"');
+  expect(mobileCss).toContain(".booking-session-modal .spark-modal-close");
+});
