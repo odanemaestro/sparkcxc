@@ -1,0 +1,36 @@
+.spark-momentum{margin:28px 0;padding:20px;border:1px solid var(--spark-border,#d9e2ec);border-radius:16px;background:var(--spark-paper,#fff)}.spark-momentum header>span,.spark-momentum-pairs span{color:var(--spark-teal-dark,#087f73);font-size:10px;font-weight:900}.spark-momentum header h3{margin:4px 0 7px;color:var(--spark-ink,#102a43);font-size:20px}.spark-momentum header p,.spark-momentum-calc p,.spark-momentum-collision p,.spark-momentum-seatbelt p{color:var(--spark-ink-soft,#334e68);font-size:11px;line-height:1.55}
+.spark-momentum-tabs,.spark-momentum-buttons{display:flex;flex-wrap:wrap;gap:8px;margin:17px 0}.spark-momentum-tabs button,.spark-momentum-buttons button{min-height:42px;padding:0 12px;border:1px solid var(--spark-border,#d9e2ec);border-radius:9px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:11px;font-weight:850}.spark-momentum-tabs button.active,.spark-momentum-buttons button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}.spark-momentum-stage{padding:15px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:14px;background:var(--spark-bg,#f7fafc)}
+.spark-momentum-inputs{display:grid;grid-template-columns:1fr 1fr;gap:12px}.spark-momentum-inputs.three{grid-template-columns:repeat(3,1fr)}.spark-momentum-inputs label,.spark-momentum-seatbelt label{display:grid;gap:6px;color:var(--spark-ink,#102a43);font-size:11px;font-weight:850}.spark-momentum-inputs input{min-height:42px;padding:8px;border:1px solid var(--spark-border,#d9e2ec);border-radius:8px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43)}.spark-momentum-calc strong,.spark-momentum-collision strong,.spark-momentum-seatbelt strong{display:block;margin-top:12px;color:var(--spark-teal-dark,#087f73);font-size:14px}.spark-trolley-scene{display:flex;align-items:center;justify-content:center;gap:30px;min-height:170px}.spark-trolley{display:grid;place-items:center;width:120px;height:70px;border-radius:10px;background:#738792;color:#fff;font-weight:900}.spark-trolley-scene span{font-size:30px;color:#087f73}.spark-momentum-pairs>article{padding:15px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:11px;background:var(--spark-paper,#fff)}.spark-momentum-pairs h4{margin:5px 0;color:var(--spark-ink,#102a43);font-size:14px}.spark-momentum-summary{display:grid;gap:5px;margin-top:14px;padding:13px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:11px;background:var(--spark-bg,#f7fafc)}.spark-momentum-summary strong{color:var(--spark-teal-dark,#087f73);font-size:12px}.spark-momentum-summary span{color:var(--spark-ink-soft,#334e68);font-size:12px}
+html[data-theme="dark"] .spark-momentum,body[data-theme="dark"] .spark-momentum,.dark .spark-momentum{background:#122b43;border-color:#2a4863}html[data-theme="dark"] .spark-momentum-tabs button,body[data-theme="dark"] .spark-momentum-tabs button,.dark .spark-momentum-tabs button,html[data-theme="dark"] .spark-momentum-buttons button,body[data-theme="dark"] .spark-momentum-buttons button,.dark .spark-momentum-buttons button,html[data-theme="dark"] .spark-momentum-inputs input,body[data-theme="dark"] .spark-momentum-inputs input,.dark .spark-momentum-inputs input,html[data-theme="dark"] .spark-momentum-pairs>article,body[data-theme="dark"] .spark-momentum-pairs>article,.dark .spark-momentum-pairs>article,html[data-theme="dark"] .spark-momentum-summary,body[data-theme="dark"] .spark-momentum-summary,.dark .spark-momentum-summary{background:#0d2134;border-color:#29465f}html[data-theme="dark"] .spark-momentum-tabs button.active,body[data-theme="dark"] .spark-momentum-tabs button.active,.dark .spark-momentum-tabs button.active,html[data-theme="dark"] .spark-momentum-buttons button.active,body[data-theme="dark"] .spark-momentum-buttons button.active,.dark .spark-momentum-buttons button.active{background:#164e4a;color:#d7fffa}
+@media(max-width:900px){.spark-momentum-inputs,.spark-momentum-inputs.three{grid-template-columns:1fr}}@media(max-width:620px){.spark-momentum{padding:14px}.spark-momentum-tabs{display:grid;grid-template-columns:1fr 1fr}}@media(max-width:390px){.spark-momentum-tabs{grid-template-columns:1fr}}
+
+.spark-momentum-collision-diagram,.spark-momentum-example-diagram{display:block;width:100%;height:auto;margin:14px 0;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.mc-track{stroke:#687b89;stroke-width:8;stroke-linecap:round}.mc-cart{fill:#738792;stroke:#41515c;stroke-width:4}.mc-cart.moving{fill:#547f98}.mc-cart.joined{fill:#5f8d83}
+.mc-wheel{fill:#34444f;stroke:#17232a;stroke-width:3}.mc-coupler{stroke:#d8e2e8;stroke-width:4}
+.mc-velocity,.mx-forward,.mx-backward{fill:none;stroke:#2d8f85;stroke-width:6;stroke-linecap:round}.mx-backward{stroke:#b45e55}
+.mc-arrow-head{fill:#2d8f85}.mc-title{fill:#243f55;font-size:15px;font-weight:900}.mc-cart-label{fill:#fff;font-size:13px;font-weight:850}.mc-small,.mx-small{fill:#526b7d;font-size:12px;font-weight:750}.mc-equation,.mx-label{fill:#243f55;font-size:14px;font-weight:850}
+.mx-rocket{fill:#748c9b;stroke:#405766;stroke-width:5}.mx-window{fill:#bfe4f2;stroke:#405766;stroke-width:4}.mx-flame{fill:#dc7a3f;stroke:#9a4e27;stroke-width:4}
+.mx-ball{fill:#b8c4cc;stroke:#526572;stroke-width:4}.mx-ball.moving{fill:#6d9db7}.mx-ball.stopped{fill:#9ea9b1}
+.mx-head{fill:#d8b58f;stroke:#765d46;stroke-width:4}.mx-person{fill:none;stroke:#536e80;stroke-width:10;stroke-linecap:round;stroke-linejoin:round}
+html[data-theme="dark"] .spark-momentum-collision-diagram,
+body[data-theme="dark"] .spark-momentum-collision-diagram,
+.dark .spark-momentum-collision-diagram,
+html[data-theme="dark"] .spark-momentum-example-diagram,
+body[data-theme="dark"] .spark-momentum-example-diagram,
+.dark .spark-momentum-example-diagram{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .mc-title,
+body[data-theme="dark"] .mc-title,
+.dark .mc-title,
+html[data-theme="dark"] .mc-small,
+body[data-theme="dark"] .mc-small,
+.dark .mc-small,
+html[data-theme="dark"] .mc-equation,
+body[data-theme="dark"] .mc-equation,
+.dark .mc-equation,
+html[data-theme="dark"] .mx-label,
+body[data-theme="dark"] .mx-label,
+.dark .mx-label,
+html[data-theme="dark"] .mx-small,
+body[data-theme="dark"] .mx-small,
+.dark .mx-small{fill:#d6e4ee}
+@media(max-width:620px){.mc-title,.mc-equation,.mx-label{font-size:17px}.mc-small,.mx-small{font-size:15px}}

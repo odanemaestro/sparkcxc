@@ -1,0 +1,56 @@
+.spark-food-contamination{margin:28px 0;padding:20px;border:1px solid var(--spark-border,#d9e2ec);border-radius:16px;background:var(--spark-paper,#fff)}
+.spark-food-contamination header>span{color:var(--spark-teal-dark,#087f73);font-size:11px;font-weight:900;letter-spacing:.05em}
+.spark-food-contamination header h3{margin:4px 0 7px;color:var(--spark-ink,#102a43);font-size:20px}
+.spark-food-contamination header p{margin:0;color:var(--spark-text-muted,#627d98);font-size:13px;line-height:1.6}
+.spark-food-contam-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:17px 0}
+.spark-food-contam-tabs button{min-height:42px;padding:0 12px;border:1px solid var(--spark-border,#d9e2ec);border-radius:9px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:11px;font-weight:850;cursor:pointer}
+.spark-food-contam-tabs button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}
+.spark-food-contam-stage{overflow:hidden;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:14px;background:#f5f8fb}
+.spark-food-contam-stage.cards{padding:15px}
+.spark-food-contam-stage svg{display:block;width:100%;height:auto}
+.spark-food-contam-types{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.spark-food-contam-types article{display:grid;gap:9px;padding:15px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.spark-food-contam-types article>span{font-size:11px;font-weight:900;letter-spacing:.06em;color:#586e7b}
+.spark-food-contam-types article.t1>span{color:#9b6429}.spark-food-contam-types article.t2>span{color:#8c4e53}
+.spark-food-contam-types p{margin:0;color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.5}
+.spark-food-contam-types article div{display:flex;flex-wrap:wrap;gap:6px}
+.spark-food-contam-types b{padding:5px 8px;border-radius:7px;background:var(--spark-bg,#f7fafc);color:var(--spark-ink,#102a43);font-size:11px}
+.spark-food-contam-stage .fc-chicken{fill:#db9d86;stroke:#965f4c;stroke-width:5}
+.spark-food-contam-stage .fc-bone{fill:none;stroke:#d7d0c5;stroke-width:12;stroke-linecap:round}
+.spark-food-contam-stage .fc-board{fill:#d5b47d;stroke:#987340;stroke-width:5}
+.spark-food-contam-stage .fc-bacteria{fill:#8d5d73;stroke:#633d50;stroke-width:2}
+.spark-food-contam-stage .fc-bowl{fill:#c4d9e4;stroke:#718f9f;stroke-width:5}
+.spark-food-contam-stage .fc-salad{fill:#75a96c;stroke:#4b7945;stroke-width:5}
+.spark-food-contam-stage .fc-arrow{fill:none;stroke-width:7;stroke-linecap:round}
+.spark-food-contam-stage .fc-arrow.bad{stroke:#b94f55}
+.spark-food-contam-stage .fc-label{fill:#31536a;font-size:14px;font-weight:900}
+.spark-food-contam-stage .fc-small{fill:#536d80;font-size:13px;font-weight:750}
+.spark-food-toxin-grid,.spark-food-handler-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.spark-food-toxin-grid article,.spark-food-handler-grid article{display:flex;gap:12px;padding:14px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.spark-food-toxin-grid article>span,.spark-food-handler-grid article>span{display:grid;place-items:center;min-width:36px;height:36px;border-radius:50%;background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73);font-size:12px;font-weight:900}
+.spark-food-toxin-grid b,.spark-food-handler-grid b{color:var(--spark-ink,#102a43);font-size:13px}
+.spark-food-toxin-grid p,.spark-food-handler-grid p{margin:4px 0 0;color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.5}
+.spark-food-contam-summary{display:grid;gap:5px;margin-top:14px;padding:13px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:11px;background:var(--spark-bg,#f7fafc)}
+.spark-food-contam-summary strong{color:var(--spark-teal-dark,#087f73);font-size:12px}
+.spark-food-contam-summary span{color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.55}
+html[data-theme="dark"] .spark-food-contamination,body[data-theme="dark"] .spark-food-contamination,.dark .spark-food-contamination{background:#122b43;border-color:#2a4863}
+html[data-theme="dark"] .spark-food-contam-tabs button,body[data-theme="dark"] .spark-food-contam-tabs button,.dark .spark-food-contam-tabs button{background:#15314b;border-color:#39566e;color:#e7f2fb}
+html[data-theme="dark"] .spark-food-contam-tabs button.active,body[data-theme="dark"] .spark-food-contam-tabs button.active,.dark .spark-food-contam-tabs button.active{background:#164e4a;color:#d7fffa;border-color:#2dd4bf}
+html[data-theme="dark"] .spark-food-contam-stage,body[data-theme="dark"] .spark-food-contam-stage,.dark .spark-food-contam-stage{background:#f2f6f8;border-color:#39566e}
+html[data-theme="dark"] .spark-food-contam-types article,body[data-theme="dark"] .spark-food-contam-types article,.dark .spark-food-contam-types article,html[data-theme="dark"] .spark-food-toxin-grid article,body[data-theme="dark"] .spark-food-toxin-grid article,.dark .spark-food-toxin-grid article,html[data-theme="dark"] .spark-food-handler-grid article,body[data-theme="dark"] .spark-food-handler-grid article,.dark .spark-food-handler-grid article,html[data-theme="dark"] .spark-food-contam-summary,body[data-theme="dark"] .spark-food-contam-summary,.dark .spark-food-contam-summary{background:#0d2134;border-color:#29465f}
+@media(max-width:850px){.spark-food-contam-types{grid-template-columns:1fr}.spark-food-toxin-grid,.spark-food-handler-grid{grid-template-columns:1fr}.spark-food-contam-tabs{display:grid;grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.spark-food-contamination{padding:14px}.spark-food-contam-stage .fc-label{font-size:19px}.spark-food-contam-stage .fc-small{font-size:17px}}
+@media(max-width:390px){.spark-food-contam-tabs{grid-template-columns:1fr}}
+
+
+.spark-aflatoxin-scene{display:grid;gap:14px}
+.spark-aflatoxin-svg{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.af-store{fill:#d7c4a2;stroke:#8a7354;stroke-width:4}.af-roof{fill:#a98662;stroke:#6e553d;stroke-width:4}
+.af-peanuts ellipse{fill:#c79b67;stroke:#8b663e;stroke-width:3}.af-humidity{fill:none;stroke:#6697a8;stroke-width:5;stroke-linecap:round}
+.af-food-sample{fill:#d9b77f;stroke:#987440;stroke-width:4}.af-mould-hyphae path{fill:none;stroke:#718154;stroke-width:6;stroke-linecap:round}.af-mould-spores circle{fill:#75624e;stroke:#514334;stroke-width:2}
+.af-toxin-dots circle{fill:#b85d5d;stroke:#7d3d3d;stroke-width:2}.af-visible-mould{fill:#738557;stroke:#52613b;stroke-width:4}
+.af-flow,.af-risk-arrow{fill:none;stroke:#0d9488;stroke-width:6;stroke-linecap:round}.af-arrow-head{fill:#0d9488}.af-warning-line{stroke:#b94f55;stroke-width:6;stroke-linecap:round}
+.af-liver{fill:#a95555;stroke:#753b3b;stroke-width:4}.af-title{fill:#294d64;font-size:14px;font-weight:900}.af-small{fill:#536d80;font-size:12px;font-weight:750}
+html[data-theme="dark"] .spark-aflatoxin-svg,body[data-theme="dark"] .spark-aflatoxin-svg,.dark .spark-aflatoxin-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .af-title,body[data-theme="dark"] .af-title,.dark .af-title,html[data-theme="dark"] .af-small,body[data-theme="dark"] .af-small,.dark .af-small{fill:#e7f0f7}
+@media(max-width:620px){.af-title{font-size:18px}.af-small{font-size:15px}}

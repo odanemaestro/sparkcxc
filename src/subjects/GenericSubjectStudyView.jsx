@@ -5,6 +5,123 @@ import { recordSubjectActivity } from "./subjectProgress";
 import { loadGenericSubjectStructure } from "./genericSubjectCatalog";
 import InteractiveLabelDiagram from "./components/InteractiveLabelDiagram";
 import TransportProcessExplorer from "./components/TransportProcessExplorer";
+import TransportInvestigationExplorer from "./components/TransportInvestigationExplorer";
+import ReproductionComparisonExplorer from "./components/ReproductionComparisonExplorer";
+import VegetativePropagationExplorer from "./components/VegetativePropagationExplorer";
+import FlowerReproductionProcess from "./components/FlowerReproductionProcess";
+import PlantGrowthExplorer from "./components/PlantGrowthExplorer";
+import CropProductionExplorer from "./components/CropProductionExplorer";
+import SoilFertilityExplorer from "./components/SoilFertilityExplorer";
+import SoilErosionExplorer from "./components/SoilErosionExplorer";
+import AnimalAsexualReproductionExplorer from "./components/AnimalAsexualReproductionExplorer";
+import MenstrualCycleExplorer from "./components/MenstrualCycleExplorer";
+import PregnancyStagesExplorer from "./components/PregnancyStagesExplorer";
+import BirthControlExplorer from "./components/BirthControlExplorer";
+import MaternalBabyCareExplorer from "./components/MaternalBabyCareExplorer";
+import HumanGrowthExplorer from "./components/HumanGrowthExplorer";
+import PopulationGrowthExplorer from "./components/PopulationGrowthExplorer";
+import TransportSystemNeedExplorer from "./components/TransportSystemNeedExplorer";
+import TransportStructuresExplorer from "./components/TransportStructuresExplorer";
+import BloodGroupExplorer from "./components/BloodGroupExplorer";
+import ExcretionEgestionExplorer from "./components/ExcretionEgestionExplorer";
+import HumanExcretionMechanismsExplorer from "./components/HumanExcretionMechanismsExplorer";
+import PlantExcretionExplorer from "./components/PlantExcretionExplorer";
+import SenseOrgansExplorer from "./components/SenseOrgansExplorer";
+import EyeFunctionExplorer from "./components/EyeFunctionExplorer";
+import SightDefectsExplorer from "./components/SightDefectsExplorer";
+import EarFunctionExplorer from "./components/EarFunctionExplorer";
+import NervousSystemExplorer from "./components/NervousSystemExplorer";
+import EndocrineSystemExplorer from "./components/EndocrineSystemExplorer";
+import MicrobeExplorer from "./components/MicrobeExplorer";
+import InfectiousDiseaseExplorer from "./components/InfectiousDiseaseExplorer";
+import ImmunisationExplorer from "./components/ImmunisationExplorer";
+import NonCommunicableDiseaseExplorer from "./components/NonCommunicableDiseaseExplorer";
+import ExercisePhysiologyExplorer from "./components/ExercisePhysiologyExplorer";
+import DrugEffectsExplorer from "./components/DrugEffectsExplorer";
+import PersonalHygieneExplorer from "./components/PersonalHygieneExplorer";
+import PestVectorExplorer from "./components/PestVectorExplorer";
+import PestControlExplorer from "./components/PestControlExplorer";
+import FoodContaminationExplorer from "./components/FoodContaminationExplorer";
+import FoodMicroorganismExplorer from "./components/FoodMicroorganismExplorer";
+import FoodPreservationExplorer from "./components/FoodPreservationExplorer";
+import EnergyConceptExplorer from "./components/EnergyConceptExplorer";
+import EnergyConversionExplorer from "./components/EnergyConversionExplorer";
+import PhotosynthesisEnergyExplorer from "./components/PhotosynthesisEnergyExplorer";
+import EnvironmentEnergyExplorer from "./components/EnvironmentEnergyExplorer";
+import FoodEnergyNutritionExplorer from "./components/FoodEnergyNutritionExplorer";
+import HumanDigestionExplorer from "./components/HumanDigestionExplorer";
+import TeethFunctionExplorer from "./components/TeethFunctionExplorer";
+import RespirationImportanceExplorer from "./components/RespirationImportanceExplorer";
+import AnaerobicRespirationExplorer from "./components/AnaerobicRespirationExplorer";
+import BreathingMechanismExplorer from "./components/BreathingMechanismExplorer";
+import GaseousExchangeExplorer from "./components/GaseousExchangeExplorer";
+import SmokingGasExchangeExplorer from "./components/SmokingGasExchangeExplorer";
+import FossilFuelsExplorer from "./components/FossilFuelsExplorer";
+import AlternativeEnergyExplorer from "./components/AlternativeEnergyExplorer";
+import ElectricalConductorsExplorer from "./components/ElectricalConductorsExplorer";
+import ElectricCircuitFlowExplorer from "./components/ElectricCircuitFlowExplorer";
+import ElectricityConsumptionExplorer from "./components/ElectricityConsumptionExplorer";
+import HouseholdElectricalSafetyExplorer from "./components/HouseholdElectricalSafetyExplorer";
+import EnergyConservationMeasuresExplorer from "./components/EnergyConservationMeasuresExplorer";
+import ArtificialLightingExplorer from "./components/ArtificialLightingExplorer";
+import ElectricalAccidentFirstAidExplorer from "./components/ElectricalAccidentFirstAidExplorer";
+import ElectricalHazardsExplorer from "./components/ElectricalHazardsExplorer";
+import FireExtinguishingExplorer from "./components/FireExtinguishingExplorer";
+import ProtectiveGearExplorer from "./components/ProtectiveGearExplorer";
+import HeatTransferApplicationsExplorer from "./components/HeatTransferApplicationsExplorer";
+import ThermostatExplorer from "./components/ThermostatExplorer";
+import ThermometerTypesExplorer from "./components/ThermometerTypesExplorer";
+import BodyTemperatureRegulationExplorer from "./components/BodyTemperatureRegulationExplorer";
+import VentilationExplorer from "./components/VentilationExplorer";
+import UniverseComponentsExplorer from "./components/UniverseComponentsExplorer";
+import OrbitMotionExplorer from "./components/OrbitMotionExplorer";
+import SolarSystemExplorer from "./components/SolarSystemExplorer";
+import EarthMoonEffectsExplorer from "./components/EarthMoonEffectsExplorer";
+import SpaceExplorationExplorer from "./components/SpaceExplorationExplorer";
+import AirMassFrontsExplorer from "./components/AirMassFrontsExplorer";
+import CaribbeanWeatherExplorer from "./components/CaribbeanWeatherExplorer";
+import TidesExplorer from "./components/TidesExplorer";
+import VolcanoEruptionsExplorer from "./components/VolcanoEruptionsExplorer";
+import WaterPropertiesExplorer from "./components/WaterPropertiesExplorer";
+import HardWaterExplorer from "./components/HardWaterExplorer";
+import WaterUsesExplorer from "./components/WaterUsesExplorer";
+import FishingMethodsExplorer from "./components/FishingMethodsExplorer";
+import WaterPollutionExplorer from "./components/WaterPollutionExplorer";
+import WaterPurificationExplorer from "./components/WaterPurificationExplorer";
+import FlotationExplorer from "./components/FlotationExplorer";
+import MarineNavigationExplorer from "./components/MarineNavigationExplorer";
+import WaterSafetyExplorer from "./components/WaterSafetyExplorer";
+import DivingEffectsExplorer from "./components/DivingEffectsExplorer";
+import ForcePrinciplesExplorer from "./components/ForcePrinciplesExplorer";
+import GravityInertiaExplorer from "./components/GravityInertiaExplorer";
+import StabilityCentreGravityExplorer from "./components/StabilityCentreGravityExplorer";
+import EquilibriumMomentsExplorer from "./components/EquilibriumMomentsExplorer";
+import MomentumConservationExplorer from "./components/MomentumConservationExplorer";
+import SimpleMachinesExplorer from "./components/SimpleMachinesExplorer";
+import HumanSkeletonExplorer from "./components/HumanSkeletonExplorer";
+import SkeletalMuscleMovementExplorer from "./components/SkeletalMuscleMovementExplorer";
+import MachineEfficiencyExplorer from "./components/MachineEfficiencyExplorer";
+import MaterialPropertiesExplorer from "./components/MaterialPropertiesExplorer";
+import MetalReactivityExplorer from "./components/MetalReactivityExplorer";
+import AluminiumUtensilsExplorer from "./components/AluminiumUtensilsExplorer";
+import AlloysExplorer from "./components/AlloysExplorer";
+import RustingConditionsExplorer from "./components/RustingConditionsExplorer";
+import CorrosionProtectionExplorer from "./components/CorrosionProtectionExplorer";
+import HouseholdChemicalsExplorer from "./components/HouseholdChemicalsExplorer";
+import AcidsBasesSaltsExplorer from "./components/AcidsBasesSaltsExplorer";
+import StatesMatterExplorer from "./components/StatesMatterExplorer";
+import MixturesExplorer from "./components/MixturesExplorer";
+import SeparationTechniquesExplorer from "./components/SeparationTechniquesExplorer";
+import CleaningAgentsEffectsExplorer from "./components/CleaningAgentsEffectsExplorer";
+import SoapDetergentsExplorer from "./components/SoapDetergentsExplorer";
+import AirPollutionExplorer from "./components/AirPollutionExplorer";
+import CommunityHygieneExplorer from "./components/CommunityHygieneExplorer";
+import PlasticsExplorer from "./components/PlasticsExplorer";
+import {
+  adjacentGenericTopic,
+  buildSequentialProgression,
+  resolveSequentialTopic,
+} from "./genericSubjectProgression";
 import {
   readSparkHashRoute,
   subscribeSparkRoute,
@@ -40,6 +157,49 @@ function interactiveDiagrams(topic = {}) {
 function interactiveModels(topic = {}) {
   const lesson = lessonData(topic);
   return Array.isArray(lesson.interactiveModels) ? lesson.interactiveModels.filter(Boolean) : [];
+}
+
+function lessonChecks(topic = {}) {
+  const lesson = lessonData(topic);
+  return Array.isArray(lesson.checks) ? lesson.checks.filter(Boolean) : [];
+}
+
+function LessonKnowledgeCheck({ checks = [] }) {
+  const [revealed,setRevealed] = useState({});
+  if (!checks.length) return null;
+
+  return (
+    <section className="spark-generic-knowledge-check">
+      <div className="spark-generic-knowledge-check-head">
+        <span>CHECK YOUR UNDERSTANDING</span>
+        <h3>Check your understanding</h3>
+      </div>
+
+      <div className="spark-generic-knowledge-check-list">
+        {checks.map((check,index) => {
+          const open = Boolean(revealed[index]);
+          return (
+            <article key={index}>
+              <strong>{index + 1}. {String(check?.prompt || "")}</strong>
+              <button
+                type="button"
+                aria-expanded={open}
+                onClick={() => setRevealed(current => ({...current,[index]:!current[index]}))}
+              >
+                {open ? "Hide answer" : "Show answer"}
+              </button>
+              {open && (
+                <div className="spark-generic-knowledge-check-answer">
+                  <b>{String(check?.answer || "")}</b>
+                  {check?.explanation && <p>{String(check.explanation)}</p>}
+                </div>
+              )}
+            </article>
+          );
+        })}
+      </div>
+    </section>
+  );
 }
 
 function routeSelection(path, structure) {
@@ -78,6 +238,7 @@ function GenericLessonContent({
   const objectives = lessonObjectives(topic);
   const diagrams = interactiveDiagrams(topic);
   const models = interactiveModels(topic);
+  const checks = lessonChecks(topic);
   const intro = String(lesson.introduction || topic?.description || "").trim();
   const summary = String(lesson.summary || "").trim();
   const example = lesson.workedExample && typeof lesson.workedExample === "object"
@@ -122,11 +283,348 @@ function GenericLessonContent({
         );
       })}
 
-      {models.map(model => (
-        model?.type === "membrane-transport"
-          ? <TransportProcessExplorer key={model.id || "membrane-transport"} />
-          : null
-      ))}
+      {models.map(model => {
+        if (model?.type === "membrane-transport") {
+          return <TransportProcessExplorer key={model.id || "membrane-transport"} />;
+        }
+        if (model?.type === "transport-investigations") {
+          return <TransportInvestigationExplorer key={model.id || "transport-investigations"} />;
+        }
+        if (model?.type === "reproduction-comparison") {
+          return <ReproductionComparisonExplorer key={model.id || "reproduction-comparison"} />;
+        }
+        if (model?.type === "vegetative-propagation") {
+          return <VegetativePropagationExplorer key={model.id || "vegetative-propagation"} />;
+        }
+        if (model?.type === "flower-reproduction-process") {
+          return <FlowerReproductionProcess key={model.id || "flower-reproduction-process"} />;
+        }
+        if (model?.type === "plant-growth-investigation") {
+          return <PlantGrowthExplorer key={model.id || "plant-growth-investigation"} />;
+        }
+        if (model?.type === "crop-production-systems") {
+          return <CropProductionExplorer key={model.id || "crop-production-systems"} />;
+        }
+        if (model?.type === "soil-fertility") {
+          return <SoilFertilityExplorer key={model.id || "soil-fertility"} />;
+        }
+        if (model?.type === "soil-erosion-food-production") {
+          return <SoilErosionExplorer key={model.id || "soil-erosion-food-production"} />;
+        }
+        if (model?.type === "animal-asexual-reproduction") {
+          return <AnimalAsexualReproductionExplorer key={model.id || "animal-asexual-reproduction"} />;
+        }
+        if (model?.type === "menstrual-cycle") {
+          return <MenstrualCycleExplorer key={model.id || "menstrual-cycle"} />;
+        }
+        if (model?.type === "pregnancy-stages") {
+          return <PregnancyStagesExplorer key={model.id || "pregnancy-stages"} />;
+        }
+        if (model?.type === "birth-control") {
+          return <BirthControlExplorer key={model.id || "birth-control"} />;
+        }
+        if (model?.type === "maternal-baby-care") {
+          return <MaternalBabyCareExplorer key={model.id || "maternal-baby-care"} />;
+        }
+        if (model?.type === "human-growth") {
+          return <HumanGrowthExplorer key={model.id || "human-growth"} />;
+        }
+        if (model?.type === "population-growth") {
+          return <PopulationGrowthExplorer key={model.id || "population-growth"} />;
+        }
+        if (model?.type === "transport-system-need") {
+          return <TransportSystemNeedExplorer key={model.id || "transport-system-need"} />;
+        }
+        if (model?.type === "transport-structures") {
+          return <TransportStructuresExplorer key={model.id || "transport-structures"} />;
+        }
+        if (model?.type === "blood-groups") {
+          return <BloodGroupExplorer key={model.id || "blood-groups"} />;
+        }
+        if (model?.type === "excretion-egestion") {
+          return <ExcretionEgestionExplorer key={model.id || "excretion-egestion"} />;
+        }
+        if (model?.type === "human-excretion-mechanisms") {
+          return <HumanExcretionMechanismsExplorer key={model.id || "human-excretion-mechanisms"} />;
+        }
+        if (model?.type === "plant-excretion") {
+          return <PlantExcretionExplorer key={model.id || "plant-excretion"} />;
+        }
+        if (model?.type === "sense-organs") {
+          return <SenseOrgansExplorer key={model.id || "sense-organs"} />;
+        }
+        if (model?.type === "eye-function") {
+          return <EyeFunctionExplorer key={model.id || "eye-function"} />;
+        }
+        if (model?.type === "sight-defects") {
+          return <SightDefectsExplorer key={model.id || "sight-defects"} />;
+        }
+        if (model?.type === "ear-function") {
+          return <EarFunctionExplorer key={model.id || "ear-function"} />;
+        }
+        if (model?.type === "nervous-system") {
+          return <NervousSystemExplorer key={model.id || "nervous-system"} />;
+        }
+        if (model?.type === "endocrine-system") {
+          return <EndocrineSystemExplorer key={model.id || "endocrine-system"} />;
+        }
+        if (model?.type === "microbes") {
+          return <MicrobeExplorer key={model.id || "microbes"} />;
+        }
+        if (model?.type === "infectious-disease") {
+          return <InfectiousDiseaseExplorer key={model.id || "infectious-disease"} />;
+        }
+        if (model?.type === "immunisation") {
+          return <ImmunisationExplorer key={model.id || "immunisation"} />;
+        }
+        if (model?.type === "non-communicable-disease") {
+          return <NonCommunicableDiseaseExplorer key={model.id || "non-communicable-disease"} />;
+        }
+        if (model?.type === "exercise-physiology") {
+          return <ExercisePhysiologyExplorer key={model.id || "exercise-physiology"} />;
+        }
+        if (model?.type === "drug-effects") {
+          return <DrugEffectsExplorer key={model.id || "drug-effects"} />;
+        }
+        if (model?.type === "personal-hygiene") {
+          return <PersonalHygieneExplorer key={model.id || "personal-hygiene"} />;
+        }
+        if (model?.type === "pest-vectors") {
+          return <PestVectorExplorer key={model.id || "pest-vectors"} />;
+        }
+        if (model?.type === "pest-control") {
+          return <PestControlExplorer key={model.id || "pest-control"} />;
+        }
+        if (model?.type === "food-contamination") {
+          return <FoodContaminationExplorer key={model.id || "food-contamination"} />;
+        }
+        if (model?.type === "food-microorganisms") {
+          return <FoodMicroorganismExplorer key={model.id || "food-microorganisms"} />;
+        }
+        if (model?.type === "food-preservation") {
+          return <FoodPreservationExplorer key={model.id || "food-preservation"} />;
+        }
+        if (model?.type === "energy-concept") {
+          return <EnergyConceptExplorer key={model.id || "energy-concept"} />;
+        }
+        if (model?.type === "energy-conversion") {
+          return <EnergyConversionExplorer key={model.id || "energy-conversion"} />;
+        }
+        if (model?.type === "photosynthesis-energy") {
+          return <PhotosynthesisEnergyExplorer key={model.id || "photosynthesis-energy"} />;
+        }
+        if (model?.type === "environment-energy") {
+          return <EnvironmentEnergyExplorer key={model.id || "environment-energy"} />;
+        }
+        if (model?.type === "food-energy-nutrition") {
+          return <FoodEnergyNutritionExplorer key={model.id || "food-energy-nutrition"} />;
+        }
+        if (model?.type === "human-digestion") {
+          return <HumanDigestionExplorer key={model.id || "human-digestion"} />;
+        }
+        if (model?.type === "teeth-function") {
+          return <TeethFunctionExplorer key={model.id || "teeth-function"} />;
+        }
+        if (model?.type === "respiration-importance") {
+          return <RespirationImportanceExplorer key={model.id || "respiration-importance"} />;
+        }
+        if (model?.type === "anaerobic-respiration") {
+          return <AnaerobicRespirationExplorer key={model.id || "anaerobic-respiration"} />;
+        }
+        if (model?.type === "breathing-mechanism") {
+          return <BreathingMechanismExplorer key={model.id || "breathing-mechanism"} />;
+        }
+        if (model?.type === "gaseous-exchange") {
+          return <GaseousExchangeExplorer key={model.id || "gaseous-exchange"} />;
+        }
+        if (model?.type === "smoking-gaseous-exchange") {
+          return <SmokingGasExchangeExplorer key={model.id || "smoking-gaseous-exchange"} />;
+        }
+        if (model?.type === "fossil-fuels") {
+          return <FossilFuelsExplorer key={model.id || "fossil-fuels"} />;
+        }
+        if (model?.type === "alternative-energy") {
+          return <AlternativeEnergyExplorer key={model.id || "alternative-energy"} />;
+        }
+        if (model?.type === "electrical-conductors") {
+          return <ElectricalConductorsExplorer key={model.id || "electrical-conductors"} />;
+        }
+        if (model?.type === "electric-circuit-flow") {
+          return <ElectricCircuitFlowExplorer key={model.id || "electric-circuit-flow"} />;
+        }
+        if (model?.type === "electricity-consumption") {
+          return <ElectricityConsumptionExplorer key={model.id || "electricity-consumption"} />;
+        }
+        if (model?.type === "household-electrical-safety") {
+          return <HouseholdElectricalSafetyExplorer key={model.id || "household-electrical-safety"} />;
+        }
+        if (model?.type === "energy-conservation-measures") {
+          return <EnergyConservationMeasuresExplorer key={model.id || "energy-conservation-measures"} />;
+        }
+        if (model?.type === "artificial-lighting") {
+          return <ArtificialLightingExplorer key={model.id || "artificial-lighting"} />;
+        }
+        if (model?.type === "electrical-accident-first-aid") {
+          return <ElectricalAccidentFirstAidExplorer key={model.id || "electrical-accident-first-aid"} />;
+        }
+        if (model?.type === "electrical-hazards") {
+          return <ElectricalHazardsExplorer key={model.id || "electrical-hazards"} />;
+        }
+        if (model?.type === "fire-extinguishing") {
+          return <FireExtinguishingExplorer key={model.id || "fire-extinguishing"} />;
+        }
+        if (model?.type === "protective-gear") {
+          return <ProtectiveGearExplorer key={model.id || "protective-gear"} />;
+        }
+        if (model?.type === "heat-transfer-applications") {
+          return <HeatTransferApplicationsExplorer key={model.id || "heat-transfer-applications"} />;
+        }
+        if (model?.type === "thermostat-control") {
+          return <ThermostatExplorer key={model.id || "thermostat-control"} />;
+        }
+        if (model?.type === "thermometer-types") {
+          return <ThermometerTypesExplorer key={model.id || "thermometer-types"} />;
+        }
+        if (model?.type === "body-temperature-regulation") {
+          return <BodyTemperatureRegulationExplorer key={model.id || "body-temperature-regulation"} />;
+        }
+        if (model?.type === "ventilation") {
+          return <VentilationExplorer key={model.id || "ventilation"} />;
+        }
+        if (model?.type === "universe-components") {
+          return <UniverseComponentsExplorer key={model.id || "universe-components"} />;
+        }
+        if (model?.type === "orbit-motion") {
+          return <OrbitMotionExplorer key={model.id || "orbit-motion"} />;
+        }
+        if (model?.type === "solar-system") {
+          return <SolarSystemExplorer key={model.id || "solar-system"} />;
+        }
+        if (model?.type === "earth-moon-effects") {
+          return <EarthMoonEffectsExplorer key={model.id || "earth-moon-effects"} />;
+        }
+        if (model?.type === "space-exploration") {
+          return <SpaceExplorationExplorer key={model.id || "space-exploration"} />;
+        }
+        if (model?.type === "air-mass-fronts") {
+          return <AirMassFrontsExplorer key={model.id || "air-mass-fronts"} />;
+        }
+        if (model?.type === "caribbean-weather") {
+          return <CaribbeanWeatherExplorer key={model.id || "caribbean-weather"} />;
+        }
+        if (model?.type === "tides") {
+          return <TidesExplorer key={model.id || "tides"} />;
+        }
+        if (model?.type === "volcano-eruptions") {
+          return <VolcanoEruptionsExplorer key={model.id || "volcano-eruptions"} />;
+        }
+        if (model?.type === "water-properties") {
+          return <WaterPropertiesExplorer key={model.id || "water-properties"} />;
+        }
+        if (model?.type === "hard-water") {
+          return <HardWaterExplorer key={model.id || "hard-water"} />;
+        }
+        if (model?.type === "water-uses") {
+          return <WaterUsesExplorer key={model.id || "water-uses"} />;
+        }
+        if (model?.type === "fishing-methods") {
+          return <FishingMethodsExplorer key={model.id || "fishing-methods"} />;
+        }
+        if (model?.type === "water-pollution") {
+          return <WaterPollutionExplorer key={model.id || "water-pollution"} />;
+        }
+        if (model?.type === "water-purification") {
+          return <WaterPurificationExplorer key={model.id || "water-purification"} />;
+        }
+        if (model?.type === "flotation") {
+          return <FlotationExplorer key={model.id || "flotation"} />;
+        }
+        if (model?.type === "marine-navigation") {
+          return <MarineNavigationExplorer key={model.id || "marine-navigation"} />;
+        }
+        if (model?.type === "water-safety") {
+          return <WaterSafetyExplorer key={model.id || "water-safety"} />;
+        }
+        if (model?.type === "diving-effects") {
+          return <DivingEffectsExplorer key={model.id || "diving-effects"} />;
+        }
+        if (model?.type === "force-principles") {
+          return <ForcePrinciplesExplorer key={model.id || "force-principles"} />;
+        }
+        if (model?.type === "gravity-inertia") {
+          return <GravityInertiaExplorer key={model.id || "gravity-inertia"} />;
+        }
+        if (model?.type === "stability-centre-gravity") {
+          return <StabilityCentreGravityExplorer key={model.id || "stability-centre-gravity"} />;
+        }
+        if (model?.type === "equilibrium-moments") {
+          return <EquilibriumMomentsExplorer key={model.id || "equilibrium-moments"} />;
+        }
+        if (model?.type === "momentum-conservation") {
+          return <MomentumConservationExplorer key={model.id || "momentum-conservation"} />;
+        }
+        if (model?.type === "simple-machines") {
+          return <SimpleMachinesExplorer key={model.id || "simple-machines"} />;
+        }
+        if (model?.type === "human-skeleton") {
+          return <HumanSkeletonExplorer key={model.id || "human-skeleton"} />;
+        }
+        if (model?.type === "skeletal-muscle-movement") {
+          return <SkeletalMuscleMovementExplorer key={model.id || "skeletal-muscle-movement"} />;
+        }
+        if (model?.type === "machine-efficiency") {
+          return <MachineEfficiencyExplorer key={model.id || "machine-efficiency"} />;
+        }
+        if (model?.type === "material-properties") {
+          return <MaterialPropertiesExplorer key={model.id || "material-properties"} />;
+        }
+        if (model?.type === "metal-reactivity") {
+          return <MetalReactivityExplorer key={model.id || "metal-reactivity"} />;
+        }
+        if (model?.type === "aluminium-utensils") {
+          return <AluminiumUtensilsExplorer key={model.id || "aluminium-utensils"} />;
+        }
+        if (model?.type === "alloys") {
+          return <AlloysExplorer key={model.id || "alloys"} />;
+        }
+        if (model?.type === "rusting-conditions") {
+          return <RustingConditionsExplorer key={model.id || "rusting-conditions"} />;
+        }
+        if (model?.type === "corrosion-protection") {
+          return <CorrosionProtectionExplorer key={model.id || "corrosion-protection"} />;
+        }
+        if (model?.type === "household-chemicals") {
+          return <HouseholdChemicalsExplorer key={model.id || "household-chemicals"} />;
+        }
+        if (model?.type === "acids-bases-salts") {
+          return <AcidsBasesSaltsExplorer key={model.id || "acids-bases-salts"} />;
+        }
+        if (model?.type === "states-matter") {
+          return <StatesMatterExplorer key={model.id || "states-matter"} />;
+        }
+        if (model?.type === "mixtures") {
+          return <MixturesExplorer key={model.id || "mixtures"} />;
+        }
+        if (model?.type === "separation-techniques") {
+          return <SeparationTechniquesExplorer key={model.id || "separation-techniques"} />;
+        }
+        if (model?.type === "cleaning-agent-effects") {
+          return <CleaningAgentsEffectsExplorer key={model.id || "cleaning-agent-effects"} />;
+        }
+        if (model?.type === "soap-detergents") {
+          return <SoapDetergentsExplorer key={model.id || "soap-detergents"} />;
+        }
+        if (model?.type === "air-pollution") {
+          return <AirPollutionExplorer key={model.id || "air-pollution"} />;
+        }
+        if (model?.type === "community-hygiene") {
+          return <CommunityHygieneExplorer key={model.id || "community-hygiene"} />;
+        }
+        if (model?.type === "plastics") {
+          return <PlasticsExplorer key={model.id || "plastics"} />;
+        }
+        return null;
+      })}
 
       {diagrams.map(diagram => (
         <InteractiveLabelDiagram
@@ -164,6 +662,8 @@ function GenericLessonContent({
         </Card>
       )}
 
+      <LessonKnowledgeCheck checks={checks} />
+
       {summary && (
         <section className="spark-generic-lesson-summary">
           <h3>Lesson summary</h3>
@@ -200,12 +700,39 @@ export default function GenericSubjectStudyView({
 
   const subjectId = String(subject?.id || "").trim().toLowerCase();
   const studyPath = subject?.routes?.study || (subjectId ? `/study/${subjectId}` : "/study");
+  const sequentialLessons = String(subject?.learningConfig?.progression || "").toLowerCase() === "sequential";
 
   const applySelection = useCallback((nextStructure, completed) => {
     if (!nextStructure) return;
 
     const safeCompleted = completed || new Set();
     const routed = routeSelection(studyPath, nextStructure);
+
+    if (sequentialLessons) {
+      const topic = resolveSequentialTopic({
+        structure:nextStructure,
+        completedIds:safeCompleted,
+        requestedTopicId:routed.topicId,
+        requestedSectionId:routed.sectionId,
+      });
+
+      setActiveSectionId(topic?.sectionId || nextStructure.sections?.[0]?.id || null);
+      setActiveTopicId(topic?.id || null);
+
+      if (
+        topic &&
+        (
+          (routed.topicId && routed.topicId !== topic.id) ||
+          (routed.sectionId && routed.sectionId !== topic.sectionId)
+        )
+      ) {
+        writeSparkNestedRoute(studyPath, {
+          section:topic.sectionId || null,
+          topic:topic.id,
+        }, { replace:true });
+      }
+      return;
+    }
 
     if (routed.topicId) {
       setActiveSectionId(routed.sectionId);
@@ -224,7 +751,7 @@ export default function GenericSubjectStudyView({
     const topic = firstTopic(nextStructure, safeCompleted);
     setActiveSectionId(topic?.sectionId || nextStructure.sections?.[0]?.id || null);
     setActiveTopicId(topic?.id || null);
-  }, [studyPath]);
+  }, [sequentialLessons, studyPath]);
 
   useEffect(() => {
     let cancelled = false;
@@ -296,6 +823,31 @@ export default function GenericSubjectStudyView({
       if (route.path !== studyPath) return;
 
       const next = routeSelection(studyPath, structure);
+
+      if (sequentialLessons) {
+        const topic = resolveSequentialTopic({
+          structure,
+          completedIds:completedTopicIds,
+          requestedTopicId:next.topicId,
+          requestedSectionId:next.sectionId,
+        });
+        if (!topic) return;
+
+        setActiveSectionId(topic.sectionId || null);
+        setActiveTopicId(topic.id);
+
+        if (
+          (next.topicId && next.topicId !== topic.id) ||
+          (next.sectionId && next.sectionId !== topic.sectionId)
+        ) {
+          writeSparkNestedRoute(studyPath, {
+            section:topic.sectionId || null,
+            topic:topic.id,
+          }, { replace:true });
+        }
+        return;
+      }
+
       if (next.topicId) {
         setActiveSectionId(next.sectionId);
         setActiveTopicId(next.topicId);
@@ -308,7 +860,7 @@ export default function GenericSubjectStudyView({
         setActiveTopicId(topic?.id || null);
       }
     });
-  }, [structure, studyPath, subjectId]);
+  }, [completedTopicIds, sequentialLessons, structure, studyPath, subjectId]);
 
   const activeTopic = useMemo(
     () => structure?.topics?.find(topic => topic.id === activeTopicId) || null,
@@ -331,8 +883,25 @@ export default function GenericSubjectStudyView({
     ? Math.round((completedCount / totalTopics) * 100)
     : 0;
 
+  const sequentialProgression = useMemo(
+    () => buildSequentialProgression(structure || {},completedTopicIds),
+    [completedTopicIds,structure]
+  );
+  const previousTopic = useMemo(
+    () => adjacentGenericTopic(structure || {},activeTopicId,-1),
+    [activeTopicId,structure]
+  );
+  const nextTopic = useMemo(
+    () => adjacentGenericTopic(structure || {},activeTopicId,1),
+    [activeTopicId,structure]
+  );
+
   const openTopic = useCallback((topic, sectionId) => {
     if (!topic) return;
+    if (sequentialLessons && !sequentialProgression.isUnlocked(topic)) {
+      showToast?.("Complete the current lesson before opening this lesson.","info");
+      return;
+    }
 
     setActiveSectionId(sectionId || topic.sectionId || null);
     setActiveTopicId(topic.id);
@@ -343,7 +912,7 @@ export default function GenericSubjectStudyView({
     });
 
     if (typeof window !== "undefined") window.scrollTo?.(0, 0);
-  }, [studyPath]);
+  }, [sequentialLessons,sequentialProgression,showToast,studyPath]);
 
   const recordInteractiveComplete = useCallback(async ({
     activityId,
@@ -497,7 +1066,7 @@ export default function GenericSubjectStudyView({
       <div className="spark-generic-study-shell">
         <header className="spark-generic-study-hero">
           <div className="spark-generic-study-mark" aria-hidden="true">
-            {subject.mark || subject.shortName?.slice(0,2) || "â€¢"}
+            {subject.mark || subject.shortName?.slice(0,2) || "•"}
           </div>
 
           <div className="spark-generic-study-hero-copy">
@@ -561,17 +1130,26 @@ export default function GenericSubjectStudyView({
                     {section.topics.map(topic => {
                       const active = topic.id === activeTopicId;
                       const complete = completedTopicIds.has(topic.id);
+                      const locked = sequentialLessons && !sequentialProgression.isUnlocked(topic);
 
                       return (
                         <button
                           type="button"
                           key={topic.id}
-                          className={`${active ? "active" : ""} ${complete ? "complete" : ""}`}
+                          className={`${active ? "active" : ""} ${complete ? "complete" : ""} ${locked ? "locked" : ""}`}
                           onClick={() => openTopic(topic, section.id)}
                           aria-current={active ? "page" : undefined}
+                          aria-disabled={locked ? "true" : undefined}
+                          disabled={locked}
+                          title={locked ? "Complete the current lesson to unlock this lesson." : undefined}
                         >
                           <span className="spark-generic-topic-state" aria-hidden="true">
-                            {complete ? (
+                            {locked ? (
+                              <svg viewBox="0 0 20 20" focusable="false">
+                                <rect x="5.5" y="9" width="9" height="7" rx="1.5" />
+                                <path d="M7.5 9V7a2.5 2.5 0 015 0v2" />
+                              </svg>
+                            ) : complete ? (
                               <svg viewBox="0 0 20 20" focusable="false">
                                 <path d="M5 10.5l3 3L15 7" />
                               </svg>
@@ -594,25 +1172,37 @@ export default function GenericSubjectStudyView({
                     <small>{structure.unassignedTopics.length}</small>
                   </div>
                   <div className="spark-generic-outline-topics">
-                    {structure.unassignedTopics.map(topic => (
-                      <button
-                        type="button"
-                        key={topic.id}
-                        className={topic.id === activeTopicId ? "active" : ""}
-                        onClick={() => openTopic(topic, null)}
-                      >
-                        <span className="spark-generic-topic-state" aria-hidden="true">
-                          {completedTopicIds.has(topic.id) ? (
-                            <svg viewBox="0 0 20 20" focusable="false">
-                              <path d="M5 10.5l3 3L15 7" />
-                            </svg>
-                          ) : (
-                            <span className="spark-generic-topic-dot" />
-                          )}
-                        </span>
-                        <span>{topic.title}</span>
-                      </button>
-                    ))}
+                    {structure.unassignedTopics.map(topic => {
+                      const complete = completedTopicIds.has(topic.id);
+                      const locked = sequentialLessons && !sequentialProgression.isUnlocked(topic);
+                      return (
+                        <button
+                          type="button"
+                          key={topic.id}
+                          className={`${topic.id === activeTopicId ? "active" : ""} ${complete ? "complete" : ""} ${locked ? "locked" : ""}`}
+                          onClick={() => openTopic(topic, null)}
+                          disabled={locked}
+                          aria-disabled={locked ? "true" : undefined}
+                          title={locked ? "Complete the current lesson to unlock this lesson." : undefined}
+                        >
+                          <span className="spark-generic-topic-state" aria-hidden="true">
+                            {locked ? (
+                              <svg viewBox="0 0 20 20" focusable="false">
+                                <rect x="5.5" y="9" width="9" height="7" rx="1.5" />
+                                <path d="M7.5 9V7a2.5 2.5 0 015 0v2" />
+                              </svg>
+                            ) : complete ? (
+                              <svg viewBox="0 0 20 20" focusable="false">
+                                <path d="M5 10.5l3 3L15 7" />
+                              </svg>
+                            ) : (
+                              <span className="spark-generic-topic-dot" />
+                            )}
+                          </span>
+                          <span>{topic.title}</span>
+                        </button>
+                      );
+                    })}
                   </div>
                 </section>
               )}
@@ -641,18 +1231,40 @@ export default function GenericSubjectStudyView({
                   />
 
                   <div className="spark-generic-lesson-footer">
-                    <button
-                      type="button"
-                      className={completedTopicIds.has(activeTopic.id) ? "completed" : ""}
-                      disabled={saving || completedTopicIds.has(activeTopic.id)}
-                      onClick={markComplete}
-                    >
-                      {saving
-                        ? "Saving..."
-                        : completedTopicIds.has(activeTopic.id)
-                          ? "Lesson completed"
-                          : "Mark lesson complete"}
-                    </button>
+                    <div className="spark-generic-lesson-nav-left">
+                      {previousTopic && (
+                        <button
+                          type="button"
+                          className="secondary"
+                          onClick={() => openTopic(previousTopic,previousTopic.sectionId)}
+                        >
+                          Previous
+                        </button>
+                      )}
+                    </div>
+
+                    <div className="spark-generic-lesson-nav-right">
+                      {!completedTopicIds.has(activeTopic.id) ? (
+                        <button
+                          type="button"
+                          disabled={saving}
+                          onClick={markComplete}
+                        >
+                          {saving ? "Saving..." : "Mark lesson complete"}
+                        </button>
+                      ) : nextTopic && (!sequentialLessons || sequentialProgression.isUnlocked(nextTopic)) ? (
+                        <button
+                          type="button"
+                          onClick={() => openTopic(nextTopic,nextTopic.sectionId)}
+                        >
+                          Next lesson
+                        </button>
+                      ) : (
+                        <button type="button" className="completed" disabled>
+                          {nextTopic ? "Next lesson locked" : "Course complete"}
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </>
               ) : (
