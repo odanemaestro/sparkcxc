@@ -115,17 +115,38 @@ function BestFitLab({ onEvidence }) {
 
 function GradientLab({ onEvidence }) {
   const slope=3.96, intercept=.02;
-  const [x1,setX1]=useState(.12),[x2,setX2]=useState(.70),[message,setMessage]=useState('');
-  const a=Math.min(x1,x2), b=Math.max(x1,x2), y1=slope*a+intercept, y2=slope*b+intercept;
-  const r=buildGradientToolModel({x1:a,y1,x2:b,y2,graphWidthX:.6});
-  const check=()=>{const ok=r.coversAtLeastHalfLine&&Math.abs(r.slope-slope)<.02;setMessage(ok?`Good triangle. Gradient ≈ ${r.slope.toFixed(2)} s² m⁻¹, giving g ≈ ${r.gFromPendulum.toFixed(2)} m s⁻².`:'Choose points farther apart on the line. A large gradient triangle reduces fractional reading error.');if(ok)onEvidence?.({objective:'A1.5',score:1,result:'completed'});};
-  return <LabFrame title="Gradient Tool" intro="Choose two well-separated points on the best-fit line, then use Δy/Δx. Use points on the line, not necessarily measured data points.">
-    <div className="pm-controls-grid"><Slider id="grad-x1" label="First x value" value={x1} min={.10} max={.72} step={.01} onChange={setX1} display={x1.toFixed(2)} /><Slider id="grad-x2" label="Second x value" value={x2} min={.10} max={.72} step={.01} onChange={setX2} display={x2.toFixed(2)} /></div>
+  const [x1,setX1]=useState(.12),[y1,setY1]=useState(.50),[x2,setX2]=useState(.70),[y2,setY2]=useState(2.79),[message,setMessage]=useState('');
+  const r=buildGradientToolModel({x1,y1,x2,y2,graphWidthX:.6});
+  const expectedY1=slope*x1+intercept, expectedY2=slope*x2+intercept;
+  const pointsOnLine=Math.abs(y1-expectedY1)<=.06&&Math.abs(y2-expectedY2)<=.06;
+  const gradientClose=Math.abs(r.slope-slope)<=.12;
+  const check=()=>{
+    const ok=r.coversAtLeastHalfLine&&pointsOnLine&&gradientClose;
+    if(ok){
+      setMessage(`Good triangle. Your gradient is ${r.slope.toFixed(2)} s² m⁻¹, giving g ≈ ${r.gFromPendulum.toFixed(2)} m s⁻².`);
+      onEvidence?.({objective:'A1.5',score:1,result:'completed'});
+    }else if(!r.coversAtLeastHalfLine){
+      setMessage('Choose points farther apart. A large gradient triangle reduces fractional reading error.');
+    }else if(!pointsOnLine){
+      setMessage('Move both selected points onto the best-fit line before calculating the gradient.');
+    }else{
+      setMessage('Check the coordinate readings and use ΔT² ÷ Δl. Your gradient should match the best-fit line.');
+    }
+  };
+  return <LabFrame title="Gradient Tool" intro="Read two well-separated points from the best-fit line, then calculate ΔT²/Δl. The gradient changes with the coordinates you choose, so accurate graph reading matters.">
+    <div className="pm-controls-grid">
+      <Slider id="grad-x1" label="Point 1: l" value={x1} min={.10} max={.35} step={.01} onChange={setX1} display={`${x1.toFixed(2)} m`} />
+      <Slider id="grad-y1" label="Point 1: T²" value={y1} min={.35} max={1.45} step={.01} onChange={setY1} display={`${y1.toFixed(2)} s²`} />
+      <Slider id="grad-x2" label="Point 2: l" value={x2} min={.45} max={.72} step={.01} onChange={setX2} display={`${x2.toFixed(2)} m`} />
+      <Slider id="grad-y2" label="Point 2: T²" value={y2} min={1.75} max={3.05} step={.01} onChange={setY2} display={`${y2.toFixed(2)} s²`} />
+    </div>
     <Plot label="Large gradient triangle on a pendulum best fit line"><Axes xLabel="l / m" yLabel="T² / s²"/>
       <line x1={sx(.1,.1,.75)} y1={sy(slope*.1+intercept,.35,3.05)} x2={sx(.75,.1,.75)} y2={sy(slope*.75+intercept,.35,3.05)} className="pm-fit"/>
-      <polyline points={`${sx(a,.1,.75)},${sy(y1,.35,3.05)} ${sx(b,.1,.75)},${sy(y1,.35,3.05)} ${sx(b,.1,.75)},${sy(y2,.35,3.05)}`} className="pm-triangle"/>
+      <circle cx={sx(x1,.1,.75)} cy={sy(y1,.35,3.05)} r="6" className="pm-preview-point"/>
+      <circle cx={sx(x2,.1,.75)} cy={sy(y2,.35,3.05)} r="6" className="pm-preview-point"/>
+      <polyline points={`${sx(x1,.1,.75)},${sy(y1,.35,3.05)} ${sx(x2,.1,.75)},${sy(y1,.35,3.05)} ${sx(x2,.1,.75)},${sy(y2,.35,3.05)}`} className="pm-triangle"/>
     </Plot>
-    <div className="pm-metrics"><Metric label="Δl" value={`${r.deltaX.toFixed(2)} m`}/><Metric label="ΔT²" value={`${r.deltaY.toFixed(2)} s²`}/><Metric label="Gradient" value={`${r.slope.toFixed(2)} s² m⁻¹`}/><Metric label="g from gradient" value={`${r.gFromPendulum.toFixed(2)} m s⁻²`}/></div>
+    <div className="pm-metrics"><Metric label="Δl" value={`${r.deltaX.toFixed(2)} m`}/><Metric label="ΔT²" value={`${r.deltaY.toFixed(2)} s²`}/><Metric label="Gradient" value={`${r.slope.toFixed(2)} s² m⁻¹`} tone={gradientClose?'good':'warn'}/><Metric label="g from gradient" value={r.gFromPendulum?`${r.gFromPendulum.toFixed(2)} m s⁻²`:'—'} /></div>
     <div className="pm-action-row"><button type="button" className="pm-btn" onClick={check}>Check triangle</button><span className="pm-feedback" aria-live="polite">{message}</span></div>
   </LabFrame>;
 }
@@ -133,12 +154,52 @@ function GradientLab({ onEvidence }) {
 function InstrumentLab() {
   const [mode,setMode]=useState('vernier'),[main,setMain]=useState(12),[division,setDivision]=useState(6),[zero,setZero]=useState(.2);
   const r=mode==='vernier'?readVernierCaliper({mainScaleMm:main,coincidentVernierDivision:division,leastCountMm:.1,zeroErrorMm:zero}):readMicrometer({sleeveMm:main/2,thimbleDivision:division,thimbleLeastCountMm:.01,zeroErrorMm:zero/10});
-  return <LabFrame title="Instrument Explorer" intro="Separate the scale reading from the zero correction. A positive zero error is subtracted from the observed reading.">
-    <div className="pm-segmented"><button type="button" className={mode==='vernier'?'active':''} onClick={()=>setMode('vernier')}>Vernier caliper</button><button type="button" className={mode==='micrometer'?'active':''} onClick={()=>setMode('micrometer')}>Micrometer</button></div>
+  const vernierX=70+((r.observedMm-4)/(25.9-4))*390;
+  const micrometerSleeve=r.sleeveMm;
+  const thimbleX=235+(micrometerSleeve/12.5)*175;
+  const thimbleAngle=(division/50)*360;
+  const switchMode=next=>{setMode(next);setMain(next==='vernier'?12:10);setDivision(next==='vernier'?6:24);setZero(.2);};
+  return <LabFrame title="Instrument Explorer" intro="Change the instrument controls and read the moving scale. The visual position, highlighted division and corrected reading all respond to the selected settings.">
+    <div className="pm-segmented"><button type="button" className={mode==='vernier'?'active':''} onClick={()=>switchMode('vernier')}>Vernier caliper</button><button type="button" className={mode==='micrometer'?'active':''} onClick={()=>switchMode('micrometer')}>Micrometer</button></div>
     <div className="pm-controls-grid"><Slider id="inst-main" label={mode==='vernier'?'Main scale before vernier zero':'Sleeve setting ×2'} value={main} min={4} max={25} step={1} onChange={setMain} display={mode==='vernier'?`${main} mm`:`${(main/2).toFixed(1)} mm`} /><Slider id="inst-div" label={mode==='vernier'?'Coincident vernier division':'Thimble division'} value={division} min={0} max={mode==='vernier'?9:49} step={1} onChange={setDivision} display={division}/><Slider id="inst-zero" label="Positive zero error" value={zero} min={0} max={.5} step={.1} onChange={setZero} display={mode==='vernier'?`${zero.toFixed(1)} mm`:`${(zero/10).toFixed(2)} mm`} /></div>
-    <div className="pm-instrument-scale" aria-label="Simplified instrument scale">
-      <div className="pm-main-scale">{Array.from({length:21},(_,i)=><span key={i} className={i%5===0?'major':''}></span>)}</div><div className="pm-vernier-scale" style={{transform:`translateX(${division*2}px)`}}>{Array.from({length:10},(_,i)=><span key={i}></span>)}</div>
-    </div>
+    {mode==='vernier' ? (
+      <svg className="pm-instrument-visual" viewBox="0 0 560 190" role="img" aria-label={`Vernier caliper showing ${r.observedMm.toFixed(1)} millimetres before zero correction`}>
+        <rect x="38" y="72" width="470" height="32" rx="8" className="pm-instrument-body"/>
+        <path d="M48 72V28H78V72M48 104v42h30v-42" className="pm-instrument-jaw"/>
+        <g className="pm-instrument-main-ticks">
+          {Array.from({length:31},(_,i)=>{const x=54+i*14.4;return <g key={i}><line x1={x} y1="72" x2={x} y2={i%5===0?48:58}/>{i%5===0&&<text x={x} y="42">{i}</text>}</g>})}
+        </g>
+        <g transform={`translate(${vernierX},0)`} className="pm-instrument-slider">
+          <rect x="-18" y="60" width="112" height="66" rx="10" className="pm-instrument-slider-body"/>
+          <path d="M0 60V25H24V60M0 126v35h24v-35" className="pm-instrument-jaw moving"/>
+          <line x1="0" y1="56" x2="0" y2="131" className="pm-instrument-zero"/>
+          <g className="pm-instrument-vernier-ticks">
+            {Array.from({length:10},(_,i)=>{const x=i*9.2;return <g key={i} className={i===division?'is-coincident':''}><line x1={x} y1="104" x2={x} y2={i===division?132:124}/><text x={x} y="145">{i}</text></g>})}
+          </g>
+        </g>
+        <text x="42" y="178" className="pm-instrument-caption">Vernier zero moves with the observed reading. The highlighted division is the coincident line.</text>
+      </svg>
+    ) : (
+      <svg className="pm-instrument-visual" viewBox="0 0 560 190" role="img" aria-label={`Micrometer showing ${r.observedMm.toFixed(2)} millimetres before zero correction`}>
+        <path d="M72 45C28 45 28 145 72 145H150" className="pm-micrometer-frame"/>
+        <line x1="92" y1="95" x2={thimbleX-8} y2="95" className="pm-micrometer-anvil"/>
+        <rect x="150" y="72" width={Math.max(92,thimbleX-150)} height="46" rx="8" className="pm-micrometer-sleeve"/>
+        <line x1="160" y1="95" x2={thimbleX} y2="95" className="pm-micrometer-reference"/>
+        <g className="pm-micrometer-sleeve-ticks">
+          {Array.from({length:26},(_,i)=>{const x=158+i*9.5;const value=i*.5;return <g key={i}><line x1={x} y1="95" x2={x} y2={i%2===0?77:84}/>{i%2===0&&<text x={x} y="68">{value.toFixed(0)}</text>}</g>})}
+        </g>
+        <g transform={`translate(${thimbleX},95)`}>
+          <rect x="-6" y="-50" width="92" height="100" rx="18" className="pm-micrometer-thimble"/>
+          <circle cx="38" cy="0" r="37" className="pm-micrometer-dial"/>
+          <g transform={`rotate(${thimbleAngle} 38 0)`} className="pm-micrometer-rotor">
+            <line x1="38" y1="-31" x2="38" y2="-12"/>
+            <circle cx="38" cy="-31" r="4"/>
+          </g>
+          <text x="38" y="6" className="pm-micrometer-division">{division}</text>
+        </g>
+        <text x="42" y="178" className="pm-instrument-caption">The thimble moves with the sleeve setting and rotates to the selected division.</text>
+      </svg>
+    )}
     <div className="pm-metrics"><Metric label="Observed" value={`${r.observedMm.toFixed(mode==='vernier'?1:2)} mm`}/><Metric label="Zero correction" value={`−${Math.abs(r.zeroErrorMm).toFixed(mode==='vernier'?1:2)} mm`}/><Metric label="Corrected reading" value={`${r.correctedMm.toFixed(mode==='vernier'?1:2)} mm`} tone="good"/></div>
   </LabFrame>;
 }
