@@ -4501,18 +4501,18 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
               </div>
             </div>
             <div className="student-mobile-quick-actions" aria-label="Quick learning actions">
-              <button type="button" onClick={() => setView("study")}>
-                <span className="student-mobile-quick-icon" aria-hidden="true"><Icon name="study" size={19}/></span>
-                <span>Continue study</span>
+              <button type="button" className="student-mobile-quick-action" onClick={() => setView("study")}>
+                <span className="student-mobile-quick-icon" aria-hidden="true"><Icon name="featureBook" size={19}/></span>
+                <span className="student-mobile-quick-label">Continue study</span>
               </button>
-              <button type="button" onClick={() => setView("practice")}>
+              <button type="button" className="student-mobile-quick-action" onClick={() => setView("practice")}>
                 <span className="student-mobile-quick-icon" aria-hidden="true"><Icon name="goal" size={19}/></span>
-                <span>Quick practice</span>
+                <span className="student-mobile-quick-label">Quick practice</span>
               </button>
               {studentHasFlashcards && (
-                <button type="button" onClick={() => setDashboardSection("flashcards")}>
+                <button type="button" className="student-mobile-quick-action" onClick={() => setDashboardSection("flashcards")}>
                   <span className="student-mobile-quick-icon" aria-hidden="true"><Icon name="flashcards" size={19}/></span>
-                  <span>Flashcards</span>
+                  <span className="student-mobile-quick-label">Flashcards</span>
                 </button>
               )}
             </div>
