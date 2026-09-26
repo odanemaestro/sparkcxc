@@ -65,6 +65,36 @@ function ConsistencyFlameIcon({ size = "1em", className = "" }) {
   );
 }
 
+function LessonBuilderBooksIcon({ size = "1em", className = "" }) {
+  return (
+    <svg
+      className={className}
+      width={size}
+      height={size}
+      viewBox="0 0 32 32"
+      fill="none"
+      aria-hidden="true"
+      focusable="false"
+      style={{ flexShrink: 0, display: "block" }}
+    >
+      <g fill="none">
+        <path fill="#00a6ed" d="M17.045 27.286H30V13a2 2 0 0 0-2-2H17.045z" />
+        <path fill="#d3d3d3" d="M15.682 27.964H30v1.357H15.682z" />
+        <path fill="#0074ba" d="M16.023 11A1.02 1.02 0 0 0 15 12.018v16.625h.682a.68.68 0 0 1 .682-.679h.681V11z" />
+        <path fill="#0074ba" d="M16.023 27.286A1.02 1.02 0 0 0 15 28.304v.678A1.02 1.02 0 0 0 16.023 30h12.954c.446 0 .824-.283.965-.678H16.364a.68.68 0 0 1-.682-.68a.68.68 0 0 1 .682-.678H30v-.678z" />
+        <path fill="#ca0b4a" d="M10.045 23.286H23V9a2 2 0 0 0-2-2H10.045z" />
+        <path fill="#d3d3d3" d="M8.682 23.964H23v1.357H8.682z" />
+        <path fill="#990838" d="M9.023 7A1.02 1.02 0 0 0 8 8.018v16.625h.682a.68.68 0 0 1 .682-.679h.681V7z" />
+        <path fill="#990838" d="M9.023 23.286A1.02 1.02 0 0 0 8 24.304v.678A1.02 1.02 0 0 0 9.023 26h12.954c.446 0 .824-.283.965-.678H9.364a.68.68 0 0 1-.682-.68a.68.68 0 0 1 .682-.678H23v-.678z" />
+        <path fill="#86d72f" d="M4.045 20.286H17V6a2 2 0 0 0-2-2H4.045z" />
+        <path fill="#d3d3d3" d="M2.682 20.964H17v1.357H2.682z" />
+        <path fill="#44911b" d="M3.023 4A1.02 1.02 0 0 0 2 5.018v16.625h.682a.68.68 0 0 1 .682-.679h.681V4z" />
+        <path fill="#008463" d="M3.023 20.286A1.02 1.02 0 0 0 2 21.304v.678A1.02 1.02 0 0 0 3.023 23h12.954c.446 0 .824-.283.965-.678H3.364a.68.68 0 0 1-.682-.68a.68.68 0 0 1 .682-.678H17v-.678z" />
+      </g>
+    </svg>
+  );
+}
+
 const paths = {
   overview: <><rect x="3" y="3" width="7" height="9" rx="1.5" /><rect x="14" y="3" width="7" height="5" rx="1.5" /><rect x="14" y="12" width="7" height="9" rx="1.5" /><rect x="3" y="16" width="7" height="5" rx="1.5" /></>,
   subjects: <><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" /></>,
@@ -86,7 +116,7 @@ const paths = {
   featureLesson: <><path d="M9 18h6" /><path d="M10 22h4" /><path d="M8.4 14.8A7 7 0 1 1 15.6 14.8C14.6 15.55 14 16.5 14 18h-4c0-1.5-.6-2.45-1.6-3.2z" /><path d="M12 2V.5M4.9 4.9L3.8 3.8M19.1 4.9l1.1-1.1" /></>,
   consistency: null,
   challenge: <><path d="M5 22V3" /><path d="M6 4h12v8H6z" /><path d="M9 4v8M12 4v8M15 4v8M6 8h12" /><rect x="6" y="4" width="3" height="4" fill="currentColor" stroke="none" /><rect x="12" y="4" width="3" height="4" fill="currentColor" stroke="none" /><rect x="9" y="8" width="3" height="4" fill="currentColor" stroke="none" /><rect x="15" y="8" width="3" height="4" fill="currentColor" stroke="none" /></>,
-  lessonBuilder: <><path d="M5 4h14v5H5a2 2 0 0 1 0-5z" /><path d="M7 9v5h12V9" /><path d="M5 14h14v5H5a2 2 0 0 1 0-5z" /><path d="M8 6.5h7M8 16.5h7" /></>,
+  lessonBuilder: null,
   bell: <><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9" /><path d="M13.7 21a2 2 0 0 1-3.4 0" /></>, // SPARK_V539L_NOTIFICATION_BELL
   bookings: <><rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" /></>,
   plus: <><path d="M12 5v14M5 12h14" /></>,
@@ -103,6 +133,7 @@ const paths = {
 
 export default function Icon({ name, size = "1em", color = "currentColor", strokeWidth = 2, className = "" }) {
   if (name === "consistency") return <ConsistencyFlameIcon size={size} className={className} />;
+  if (name === "lessonBuilder") return <LessonBuilderBooksIcon size={size} className={className} />;
   const content = paths[name];
   if (!content) return null;
   return (
