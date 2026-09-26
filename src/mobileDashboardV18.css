@@ -160,13 +160,15 @@
     gap:8px;
     margin:0 0 16px;
   }
-  .student-mobile-quick-actions>button{
+  .student-mobile-quick-actions>button,
+  .student-mobile-quick-actions>.student-mobile-quick-action,
+  .student-mobile-quick-actions>.student-mobile-quick-action:first-child{
     min-width:0;
     min-height:58px;
-    border:1px solid var(--spark-border,#e2e8f0);
+    border:1px solid var(--spark-border,#e2e8f0) !important;
     border-radius:14px;
-    background:var(--spark-paper,#fff);
-    color:var(--spark-ink,#0f2557);
+    background:var(--spark-paper,#fff) !important;
+    color:var(--spark-ink,#0f2557) !important;
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -196,6 +198,12 @@
     opacity:1 !important;
     visibility:visible !important;
     white-space:nowrap;
+  }
+  html[data-theme="dark"] .student-mobile-quick-actions>.student-mobile-quick-action,
+  html[data-theme="dark"] .student-mobile-quick-actions>.student-mobile-quick-action:first-child{
+    background:var(--spark-paper,#0d1c31) !important;
+    border-color:var(--spark-border,#29405e) !important;
+    color:var(--spark-ink,#eaf2ff) !important;
   }
 
   .spark-rewards-card{
@@ -385,9 +393,6 @@
     opacity:1 !important;
     color:#0f2557 !important;
     -webkit-text-fill-color:#0f2557 !important;
-  }
-  html[data-theme="light"][data-glass="true"] .student-mobile-quick-actions .student-mobile-quick-action:first-child{
-    color:#0f2557 !important;
   }
   html[data-glass="true"] .dash-sidebar{
     background:color-mix(in srgb,var(--spark-paper,#fff) 76%,transparent) !important;
