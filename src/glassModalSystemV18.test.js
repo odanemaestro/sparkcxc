@@ -127,3 +127,13 @@ test("question reporting dialog follows Glass mode", () => {
   expect(css).toContain('html[data-glass="true"] .spark-question-report-dialog');
   expect(css).toContain('html[data-theme="dark"][data-glass="true"] .spark-question-report-dialog textarea');
 });
+
+
+test("Mathematics formula sheet inner cards inherit Glass styling", () => {
+  const css = read("glassModalSystemV18.css");
+  expect(css).toContain('html[data-glass="true"] .paper2-formula-grid article');
+  expect(css).toContain('html[data-glass="true"] .paper2-formula-grid article > strong');
+  expect(css).toContain('html[data-glass="true"] .paper2-formula-label');
+  expect(css).toContain('html[data-glass="true"] .paper2-formula-math');
+  expect(css).toContain('html[data-theme="dark"][data-glass="true"] .paper2-formula-grid article');
+});
