@@ -420,3 +420,31 @@ html[data-theme="dark"][data-glass="true"] .study-circle-modal textarea{
     background:var(--spark-paper,#fff)!important;
   }
 }
+
+
+/* Inline question-report dialog */
+html[data-glass="true"] .spark-question-report-dialog{
+  background:color-mix(in srgb,var(--spark-paper,#fff) 82%,transparent)!important;
+  border-color:color-mix(in srgb,var(--spark-border,#d7e2ee) 68%,transparent)!important;
+  -webkit-backdrop-filter:blur(18px) saturate(150%);
+  backdrop-filter:blur(18px) saturate(150%);
+  box-shadow:0 14px 38px rgba(8,26,61,.14),inset 0 1px 0 rgba(255,255,255,.18)!important;
+}
+html[data-theme="dark"][data-glass="true"] .spark-question-report-dialog{
+  background:rgba(13,28,49,.80)!important;
+  border-color:rgba(145,165,191,.16)!important;
+  color:var(--spark-ink,#eaf2ff)!important;
+  box-shadow:0 16px 42px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.045)!important;
+}
+html[data-theme="dark"][data-glass="true"] .spark-question-report-dialog textarea{
+  background:rgba(8,18,32,.58)!important;
+  border-color:rgba(145,165,191,.16)!important;
+  color:var(--spark-ink,#eaf2ff)!important;
+}
+@media(prefers-reduced-transparency:reduce){
+  html[data-glass="true"] .spark-question-report-dialog{
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+    background:var(--spark-paper,#fff)!important;
+  }
+}
