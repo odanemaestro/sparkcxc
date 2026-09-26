@@ -24,9 +24,9 @@ const paths = {
   featureAnalytics: <><path d="M4 20V10" /><path d="M10 20V6" /><path d="M16 20v-7" /><path d="M22 20V4" /><path d="M3 20h19" /></>,
   featureExam: <><rect x="5" y="3.5" width="14" height="17" rx="2" /><path d="M9 3.5V2h6v1.5" /><path d="M8.5 9h7" /><path d="M8.5 13h4" /><path d="M8.5 17l1.5 1.5 3-3" /></>,
   featureLesson: <><path d="M9 18h6" /><path d="M10 22h4" /><path d="M8.4 14.8A7 7 0 1 1 15.6 14.8C14.6 15.55 14 16.5 14 18h-4c0-1.5-.6-2.45-1.6-3.2z" /><path d="M12 2V.5M4.9 4.9L3.8 3.8M19.1 4.9l1.1-1.1" /></>,
-  consistency: <><path d="M20 7a8 8 0 1 0 1 7" /><path d="M20 3v4h-4" /><path d="M8.5 12.5l2.2 2.2 4.8-5" /></>,
-  challenge: <><path d="M5 22V3" /><path d="M6 4h10l-2.2 3L16 10H6" /><path d="M9 15h8M9 19h6" /></>,
-  lessonBuilder: <><path d="M4 5.5A3 3 0 0 1 7 4h4v16H7a3 3 0 0 0-3 1z" /><path d="M20 5.5A3 3 0 0 0 17 4h-4v16h4a3 3 0 0 1 3 1z" /><path d="M12 7v6M9 10h6" /></>,
+  consistency: <><path d="M12.2 22a7.2 7.2 0 0 0 7.2-7.2c0-4.1-2.7-7-5.6-10.2.2 2.8-1.3 4.5-2.8 5.8-1.1-1.6-.9-3.4-.1-5.2-3.2 2.4-6.3 5.6-6.3 9.6A7.2 7.2 0 0 0 12.2 22z" /><path d="M10.2 18.8c-1.2-1-.9-2.8.1-3.8.9-.9 1.5-1.8 1.8-3.1 1.2 1.5 2.2 2.9 2.2 4.5a2.8 2.8 0 0 1-4.1 2.4z" /></>,
+  challenge: <><path d="M5 22V3" /><path d="M6 4h12v8H6z" /><path d="M9 4v8M12 4v8M15 4v8M6 8h12" /><rect x="6" y="4" width="3" height="4" fill="currentColor" stroke="none" /><rect x="12" y="4" width="3" height="4" fill="currentColor" stroke="none" /><rect x="9" y="8" width="3" height="4" fill="currentColor" stroke="none" /><rect x="15" y="8" width="3" height="4" fill="currentColor" stroke="none" /></>,
+  lessonBuilder: <><path d="M5 4h14v5H5a2 2 0 0 1 0-5z" /><path d="M7 9v5h12V9" /><path d="M5 14h14v5H5a2 2 0 0 1 0-5z" /><path d="M8 6.5h7M8 16.5h7" /></>,
   bell: <><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9" /><path d="M13.7 21a2 2 0 0 1-3.4 0" /></>, // SPARK_V539L_NOTIFICATION_BELL
   bookings: <><rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" /></>,
   plus: <><path d="M12 5v14M5 12h14" /></>,
