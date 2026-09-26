@@ -48,6 +48,8 @@ describe("SPARK mobile dashboard glass V18", () => {
     expect(app).toContain('<Icon name="featureBook" size={19}/>');
     expect(app).toContain('aria-current={sec===item.k ? "page" : undefined}');
     expect(app).toContain('scrollIntoView({ behavior:"smooth", block:"nearest", inline:"center" })');
+    expect(app).toContain('spark-nav-menu-open');
+    expect(app).toContain('className="booking-session-modal"');
   });
 
   test("glass appearance is optional, persisted and accessibility-aware", () => {
@@ -71,6 +73,11 @@ describe("SPARK mobile dashboard glass V18", () => {
     expect(css).toContain("@media(prefers-reduced-transparency:reduce)");
     expect(css).toContain("position:absolute !important");
     expect(css).toContain("min-height:26px !important");
+    expect(css).toContain(".spark-nav-menu-open::after");
+    expect(css).toContain(".dash-sidebar.dash-tabs-more::after");
+    expect(css).toContain('html[data-glass="true"] .notification-drawer');
+    expect(css).toContain('html[data-glass="true"] .booking-session-modal');
+    expect(css).toContain("@media(min-width:701px) and (max-width:900px)");
   });
 
   test("mobile density rules compact rewards and keep stats in a two-column grid", () => {
@@ -98,4 +105,19 @@ test("subject overview clamps impossible lesson totals before display", () => {
   expect(subjectOverview).toContain("const displayCompleted = total > 0 ? Math.min(Math.max(0, completed), total)");
   expect(subjectOverview).toContain("const percent = Math.min(100, Math.max(0, rawPercent))");
   expect(subjectOverview).toContain("{displayCompleted} of {total || 0} topic lessons complete");
+});
+
+
+test("booking calendar and iPhone push guidance support the mobile glass pass", () => {
+  const calendarCss = read("components/booking/bookingDatePicker.css");
+  const pushSettings = read("components/notifications/PushNotificationSettings.jsx");
+  const notificationCss = read("components/notifications/notificationCenter.css");
+
+  expect(calendarCss).toContain('html[data-glass="true"] .booking-date-popover');
+  expect(calendarCss).toContain("backdrop-filter:blur(22px) saturate(160%)");
+  expect(pushSettings).toContain("Install SPARK first on iPhone");
+  expect(pushSettings).toContain("Add to Home Screen");
+  expect(pushSettings).toContain("push-ios-install-steps");
+  expect(notificationCss).toContain(".push-ios-install-steps");
+  expect(notificationCss).toContain('html[data-glass="true"] .notification-item');
 });
