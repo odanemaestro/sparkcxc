@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import Card from "../ui/Card";
 import Icon from "../ui/Icon";
+import { dashboardAchievementMeta } from "./dashboardAchievementMeta";
 
 function DashboardCardAction({ label, onClick }) {
   if (!onClick) return null;
@@ -81,12 +82,15 @@ export default function StudentDashboardSupportCards({
         </div>
         {recentAchievements.length ? (
           <div className="spark-achievement-list">
-            {recentAchievements.map(item => (
-              <div key={item.id || `${item.subjectId}:${item.title}:${item.at}`}>
-                <Icon name="spark" size={15}/>
-                <span><strong>{item.subjectName}</strong> · {item.title}{item.percent != null ? ` · ${item.percent}%` : ""}</span>
-              </div>
-            ))}
+            {recentAchievements.map(item => {
+              const meta = dashboardAchievementMeta(item.title);
+              return (
+                <div key={item.id || `${item.subjectId}:${item.title}:${item.at}`}>
+                  <span className="spark-achievement-svg"><Icon name={meta.icon} size={17}/></span>
+                  <span><strong>{item.subjectName}</strong> · {meta.title}{item.percent != null ? ` · ${item.percent}%` : ""}</span>
+                </div>
+              );
+            })}
           </div>
         ) : <p className="spark-muted">Your completed lessons, practice results and milestones will appear here.</p>}
       </Card>
