@@ -5494,7 +5494,12 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
       <Footer setView={setView} hasTutorApp={hasTutorApp} isTutor={isTutor} isParent={isParent} />
 
       {bookingTutor && (
-        <Modal onClose={() => setBookingTutor(null)} className="booking-session-modal">
+        <Modal
+          onClose={() => setBookingTutor(null)}
+          className="booking-session-modal"
+          showClose
+          closeLabel="Close booking"
+        >
           {!bookingDone ? (
             <>
               <div style={{fontFamily:FD,fontSize:20,fontWeight:700,color:T.ink,marginBottom:4}}>Book a session</div>
