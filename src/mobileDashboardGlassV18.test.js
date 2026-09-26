@@ -171,3 +171,19 @@ test("booking modal focus and time list polish remain clean on mobile", () => {
   expect(css).toContain("scroll-snap-type:y proximity");
   expect(css).toContain("scroll-snap-align:start");
 });
+
+
+test("booking subject and duration controls use polished mobile styling", () => {
+  const app = read("App.js");
+  const css = read("mobileDashboardV18.css");
+
+  expect(app).toContain('className="booking-subject-select-wrap"');
+  expect(app).toContain('className="booking-subject-select"');
+  expect(app).toContain('className="booking-subject-chevron"');
+  expect(app).toContain('className="booking-duration-grid"');
+  expect(app).toContain('className="booking-duration-option"');
+  expect(css).toContain("appearance:none");
+  expect(css).toContain("grid-template-columns:repeat(6,minmax(0,1fr))");
+  expect(css).toContain(".booking-duration-option:nth-child(4)");
+  expect(css).toContain("grid-column:span 3");
+});
