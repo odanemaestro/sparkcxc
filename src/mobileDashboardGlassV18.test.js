@@ -79,6 +79,8 @@ describe("SPARK mobile dashboard glass V18", () => {
     expect(css).toContain("min-height:58px");
     expect(css).toContain(".student-mobile-quick-label");
     expect(css).toContain("scroll-snap-type:x proximity");
+    expect(css).toContain("font-size:9.75px !important");
+    expect(css).toContain("width:16px !important");
     expect(css).toContain("inset -34px 0 28px -24px");
   });
 });
