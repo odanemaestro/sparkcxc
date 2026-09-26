@@ -336,3 +336,58 @@ html[data-theme="dark"] .notification-drag-handle span{
     -webkit-overflow-scrolling:touch;
   }
 }
+
+
+/* SPARK MOBILE GLASS NOTIFICATION POLISH V18 */
+.push-ios-install-steps{
+  margin:10px 0 0;
+  padding-left:20px;
+  display:grid;
+  gap:6px;
+  color:#475569;
+  font-size:11.5px;
+  line-height:1.45;
+}
+.push-ios-install-note{
+  display:block;
+  margin-top:9px;
+  color:#64748B;
+  font-size:10.5px;
+  line-height:1.4;
+}
+
+@media(max-width:700px){
+  html[data-glass="true"] .notification-item,
+  html[data-glass="true"] .push-settings-card,
+  html[data-glass="true"] .push-preference-row,
+  html[data-glass="true"] .push-device-row{
+    background:color-mix(in srgb,var(--spark-paper,#fff) 78%,transparent)!important;
+    border-color:color-mix(in srgb,var(--spark-border,#e2e8f0) 70%,transparent)!important;
+    -webkit-backdrop-filter:blur(14px) saturate(145%);
+    backdrop-filter:blur(14px) saturate(145%);
+  }
+
+  html[data-theme="dark"][data-glass="true"] .notification-item,
+  html[data-theme="dark"][data-glass="true"] .push-settings-card,
+  html[data-theme="dark"][data-glass="true"] .push-preference-row,
+  html[data-theme="dark"][data-glass="true"] .push-device-row{
+    background:rgba(13,28,49,.76)!important;
+    border-color:rgba(145,165,191,.16)!important;
+  }
+
+  html[data-theme="dark"] .push-ios-install-steps,
+  html[data-theme="dark"] .push-ios-install-note{
+    color:var(--spark-text-muted,#91A5BF);
+  }
+}
+
+@media(prefers-reduced-transparency:reduce){
+  html[data-glass="true"] .notification-item,
+  html[data-glass="true"] .push-settings-card,
+  html[data-glass="true"] .push-preference-row,
+  html[data-glass="true"] .push-device-row{
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+    background:var(--spark-paper,#fff)!important;
+  }
+}
