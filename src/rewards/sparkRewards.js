@@ -37,12 +37,12 @@ export function weeklyAchievementBadges(metrics = {}) {
   const flashcards = Number(metrics.flashcard_reviews) || 0;
   const accuracy = attempts > 0 ? correct / attempts : 0;
 
-  if (studyDays >= 3) badges.push({ key: "consistency", icon: "🔥", label: "Consistency Builder" });
-  if (improved >= 1) badges.push({ key: "improvement", icon: "📈", label: "Skill Climber" });
-  if (attempts >= 10 && accuracy >= 0.8) badges.push({ key: "practice", icon: "🎯", label: "Practice Pro" });
-  if (exams >= 1) badges.push({ key: "exam", icon: "🏁", label: "Exam Challenger" });
-  if (lessons >= 2) badges.push({ key: "lesson", icon: "📚", label: "Lesson Builder" });
-  if (flashcards >= 15) badges.push({ key: "flashcards", icon: "🧠", label: "Revision Champion" });
+  if (studyDays >= 3) badges.push({ key: "consistency", icon: "consistency", label: "Consistency Builder" });
+  if (improved >= 1) badges.push({ key: "improvement", icon: "progress", label: "Skill Climber" });
+  if (attempts >= 10 && accuracy >= 0.8) badges.push({ key: "practice", icon: "goal", label: "Practice Pro" });
+  if (exams >= 1) badges.push({ key: "exam", icon: "challenge", label: "Exam Challenger" });
+  if (lessons >= 2) badges.push({ key: "lesson", icon: "lessonBuilder", label: "Lesson Builder" });
+  if (flashcards >= 15) badges.push({ key: "flashcards", icon: "flashcards", label: "Revision Champion" });
   return badges.slice(0, 4);
 }
 
