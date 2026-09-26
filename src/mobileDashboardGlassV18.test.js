@@ -143,3 +143,22 @@ test("mobile booking date picker floats as a sheet and booking modal has a close
   expect(app).toContain('closeLabel="Close booking"');
   expect(mobileCss).toContain(".booking-session-modal .spark-modal-close");
 });
+
+
+test("mobile booking time picker uses a floating sheet and booking modal border stays subtle", () => {
+  const app = read("App.js");
+  const css = read("mobileDashboardV18.css");
+  const calendarCss = read("components/booking/bookingDatePicker.css");
+
+  expect(app).toContain('className="booking-time-layer"');
+  expect(app).toContain('className="booking-time-scrim"');
+  expect(app).toContain('className={`booking-time-panel ${mobileSheet ? "is-mobile-sheet" : ""}`}');
+  expect(app).toContain('aria-label="Choose start time"');
+  expect(app).toContain('window.addEventListener("keydown", onKeyDown, true)');
+  expect(css).toContain(".booking-time-panel.is-mobile-sheet");
+  expect(css).toContain("@keyframes booking-time-sheet-up");
+  expect(css).toContain(".booking-session-modal{");
+  expect(css).toContain("border-color:rgba(255,255,255,.14) !important");
+  expect(calendarCss).toContain("min-height:46px");
+  expect(calendarCss).toContain("margin:-2px 0 8px");
+});
