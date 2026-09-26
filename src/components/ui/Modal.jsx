@@ -5,7 +5,7 @@
 import { useEffect, useRef } from "react";
 import { T } from "../../theme";
 
-const Modal = ({ children, onClose, maxWidth = 500 }) => {
+const Modal = ({ children, onClose, maxWidth = 500, className = "" }) => {
   const cardRef = useRef(null);
   const previousFocusRef = useRef(null);
 
@@ -81,7 +81,7 @@ const Modal = ({ children, onClose, maxWidth = 500 }) => {
     >
       <div
         ref={cardRef}
-        className="fade-in spark-modal-card"
+        className={`fade-in spark-modal-card ${className}`.trim()}
         role="dialog"
         aria-modal="true"
         tabIndex={-1}
