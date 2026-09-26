@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import Card from "../ui/Card";
+import ConfirmModal from "../ui/ConfirmModal";
 import "./learningEngineAdminPanel.css";
 
 function Metric({ label, value }) {
@@ -20,6 +21,7 @@ export default function LearningEngineAdminPanel({ supabase, showToast }) {
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(true);
   const [busyId, setBusyId] = useState("");
+  const [promoteTarget, setPromoteTarget] = useState(null);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -44,13 +46,12 @@ export default function LearningEngineAdminPanel({ supabase, showToast }) {
   const champion = useMemo(() => rows.find(row => row.status === "champion") || null, [rows]);
   const candidates = useMemo(() => rows.filter(row => ["candidate","paused"].includes(row.status)), [rows]);
 
-  async function updateStrategy(strategyId, action, rolloutPercent = null) {
+  async function updateStrategy(strategyId, action, rolloutPercent = null, { confirmed = false } = {}) {
     if (!strategyId || busyId) return;
-    if (action === "promote") {
-      const ok = window.confirm(
-        "Promote this candidate to champion? Existing champion assignments will move to the new champion the next time SPARK resolves a strategy. This does not change marking or answer keys."
-      );
-      if (!ok) return;
+    if (action === "promote" && !confirmed) {
+      const row = rows.find(item => item.strategy_id === strategyId) || null;
+      setPromoteTarget(row || { strategy_id: strategyId, label: "this candidate" });
+      return;
     }
 
     setBusyId(strategyId);
@@ -70,6 +71,7 @@ export default function LearningEngineAdminPanel({ supabase, showToast }) {
               ? "Candidate rollout paused."
               : "Candidate rollout updated."
         );
+        if (action === "promote") setPromoteTarget(null);
         await load();
       }
     } finally {
@@ -182,6 +184,16 @@ export default function LearningEngineAdminPanel({ supabase, showToast }) {
           ))}
         </>
       )}
+
+      <ConfirmModal
+        open={Boolean(promoteTarget)}
+        onClose={() => { if (!busyId) setPromoteTarget(null); }}
+        onConfirm={() => updateStrategy(promoteTarget?.strategy_id, "promote", null, { confirmed: true })}
+        title="Promote to champion?"
+        message={`${promoteTarget?.label || "This candidate"} will become the champion strategy. Existing champion assignments move the next time SPARK resolves a strategy. Marking and answer keys do not change.`}
+        confirmLabel="Promote strategy"
+        busy={Boolean(busyId)}
+      />
     </section>
   );
 }
