@@ -1550,7 +1550,7 @@ function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorAp
   );
 
   return (
-    <nav className="glass-nav spark-nav" aria-label="Primary navigation">
+    <nav className={`glass-nav spark-nav ${menuOpen ? "spark-nav-menu-open" : ""}`} aria-label="Primary navigation">
       <div className="spark-nav-inner">
         <button type="button" className="spark-brand" onClick={() => navigate(isDedicatedAdmin ? "admin" : "home")} aria-label="SPARK home">
           <svg width="26" height="26" viewBox="0 0 512 512" aria-hidden="true">
@@ -5494,7 +5494,7 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
       <Footer setView={setView} hasTutorApp={hasTutorApp} isTutor={isTutor} isParent={isParent} />
 
       {bookingTutor && (
-        <Modal onClose={() => setBookingTutor(null)}>
+        <Modal onClose={() => setBookingTutor(null)} className="booking-session-modal">
           {!bookingDone ? (
             <>
               <div style={{fontFamily:FD,fontSize:20,fontWeight:700,color:T.ink,marginBottom:4}}>Book a session</div>
