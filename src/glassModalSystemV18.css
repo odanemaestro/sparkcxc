@@ -1,0 +1,174 @@
+/* ==========================================================================
+   SPARK GLASS MODAL SYSTEM V18
+   Shared optional Glass treatment for SPARK dialogs, sheets and exam overlays.
+   Normal Light/Dark themes remain unchanged when data-glass is not true.
+   ========================================================================== */
+
+html[data-glass="true"] .spark-modal-backdrop,
+html[data-glass="true"] .paper-modal-backdrop,
+html[data-glass="true"] .paper-nav-drawer-backdrop,
+html[data-glass="true"] .is-exam-modal-backdrop,
+html[data-glass="true"] .is-exam-drawer-backdrop,
+html[data-glass="true"] .it-exit-overlay{
+  background:rgba(8,26,61,.40)!important;
+  -webkit-backdrop-filter:blur(8px) saturate(120%);
+  backdrop-filter:blur(8px) saturate(120%);
+}
+
+html[data-glass="true"] .spark-modal-card,
+html[data-glass="true"] .paper-submit-modal,
+html[data-glass="true"] .paper2-formula-modal,
+html[data-glass="true"] .paper-nav-drawer,
+html[data-glass="true"] .is-exam-modal,
+html[data-glass="true"] .is-exam-drawer,
+html[data-glass="true"] .it-exit-dialog{
+  background:color-mix(in srgb,var(--spark-paper,#fff) 84%,transparent)!important;
+  border:1px solid color-mix(in srgb,var(--spark-border,#d7e2ee) 68%,transparent)!important;
+  -webkit-backdrop-filter:blur(26px) saturate(165%);
+  backdrop-filter:blur(26px) saturate(165%);
+  box-shadow:
+    0 28px 72px rgba(8,26,61,.24),
+    inset 0 1px 0 rgba(255,255,255,.24)!important;
+}
+
+html[data-glass="true"] .spark-modal-close,
+html[data-glass="true"] .paper2-modal-head button,
+html[data-glass="true"] .paper-nav-drawer-head>button,
+html[data-glass="true"] .is-exam-drawer header button{
+  background:color-mix(in srgb,var(--spark-paper,#fff) 72%,transparent)!important;
+  border-color:color-mix(in srgb,var(--spark-border,#d7e2ee) 68%,transparent)!important;
+  -webkit-backdrop-filter:blur(14px) saturate(145%);
+  backdrop-filter:blur(14px) saturate(145%);
+}
+
+html[data-theme="dark"][data-glass="true"] .spark-modal-backdrop,
+html[data-theme="dark"][data-glass="true"] .paper-modal-backdrop,
+html[data-theme="dark"][data-glass="true"] .paper-nav-drawer-backdrop,
+html[data-theme="dark"][data-glass="true"] .is-exam-modal-backdrop,
+html[data-theme="dark"][data-glass="true"] .is-exam-drawer-backdrop,
+html[data-theme="dark"][data-glass="true"] .it-exit-overlay{
+  background:rgba(2,8,18,.58)!important;
+}
+
+html[data-theme="dark"][data-glass="true"] .spark-modal-card,
+html[data-theme="dark"][data-glass="true"] .paper-submit-modal,
+html[data-theme="dark"][data-glass="true"] .paper2-formula-modal,
+html[data-theme="dark"][data-glass="true"] .paper-nav-drawer,
+html[data-theme="dark"][data-glass="true"] .is-exam-modal,
+html[data-theme="dark"][data-glass="true"] .is-exam-drawer,
+html[data-theme="dark"][data-glass="true"] .it-exit-dialog{
+  background:rgba(13,28,49,.86)!important;
+  border-color:rgba(145,165,191,.16)!important;
+  color:var(--spark-ink,#eaf2ff)!important;
+  box-shadow:
+    0 30px 78px rgba(0,0,0,.42),
+    inset 0 1px 0 rgba(255,255,255,.055)!important;
+}
+
+html[data-theme="dark"][data-glass="true"] .spark-modal-close,
+html[data-theme="dark"][data-glass="true"] .paper2-modal-head button,
+html[data-theme="dark"][data-glass="true"] .paper-nav-drawer-head>button,
+html[data-theme="dark"][data-glass="true"] .is-exam-drawer header button{
+  background:rgba(255,255,255,.055)!important;
+  border-color:rgba(145,165,191,.18)!important;
+  color:var(--spark-ink,#eaf2ff)!important;
+}
+
+/* Exam dialog text must follow the active dark theme instead of hardcoded light colors. */
+html[data-theme="dark"][data-glass="true"] .paper-submit-modal h2,
+html[data-theme="dark"][data-glass="true"] .paper2-modal-head h2,
+html[data-theme="dark"][data-glass="true"] .paper-nav-drawer-head strong{
+  color:var(--spark-ink,#eaf2ff)!important;
+}
+html[data-theme="dark"][data-glass="true"] .paper-submit-modal p,
+html[data-theme="dark"][data-glass="true"] .paper-nav-drawer-head span{
+  color:var(--spark-text-muted,#91a5bf)!important;
+}
+
+html[data-theme="dark"][data-glass="true"] .paper-navigator.paper-navigator-drawer-panel{
+  background:transparent!important;
+  border-color:rgba(145,165,191,.14)!important;
+  box-shadow:none!important;
+}
+
+html[data-theme="dark"][data-glass="true"] .paper2-formula-scroll{
+  background:rgba(8,18,32,.52)!important;
+  border-color:rgba(145,165,191,.16)!important;
+}
+
+/* Integrated Science custom dialogs use their own theme variables. */
+html[data-glass="true"] .is-exam-modal,
+html[data-glass="true"] .is-exam-drawer{
+  --is-card:color-mix(in srgb,var(--spark-paper,#fff) 84%,transparent);
+}
+html[data-theme="dark"][data-glass="true"] .is-exam-modal,
+html[data-theme="dark"][data-glass="true"] .is-exam-drawer{
+  --is-card:rgba(13,28,49,.86);
+  --is-ink:var(--spark-ink,#eaf2ff);
+  --is-muted:var(--spark-text-muted,#91a5bf);
+  --is-border:rgba(145,165,191,.16);
+}
+
+/* IT custom exit confirmation follows the same Glass surface contract. */
+html[data-theme="dark"][data-glass="true"] .it-exit-dialog{
+  --it-card:rgba(13,28,49,.86);
+  --it-line:rgba(145,165,191,.16);
+  --it-ink:var(--spark-ink,#eaf2ff);
+  --it-muted:var(--spark-text-muted,#91a5bf);
+}
+
+/* Mobile sheets keep safe-area spacing and slightly stronger separation. */
+@media(max-width:700px){
+  html[data-glass="true"] .spark-modal-card,
+  html[data-glass="true"] .paper-submit-modal,
+  html[data-glass="true"] .paper2-formula-modal,
+  html[data-glass="true"] .is-exam-modal,
+  html[data-glass="true"] .it-exit-dialog{
+    box-shadow:
+      0 22px 56px rgba(8,26,61,.24),
+      inset 0 1px 0 rgba(255,255,255,.20)!important;
+  }
+
+  html[data-theme="dark"][data-glass="true"] .spark-modal-card,
+  html[data-theme="dark"][data-glass="true"] .paper-submit-modal,
+  html[data-theme="dark"][data-glass="true"] .paper2-formula-modal,
+  html[data-theme="dark"][data-glass="true"] .is-exam-modal,
+  html[data-theme="dark"][data-glass="true"] .it-exit-dialog{
+    box-shadow:
+      0 24px 62px rgba(0,0,0,.40),
+      inset 0 1px 0 rgba(255,255,255,.05)!important;
+  }
+}
+
+@media(prefers-reduced-transparency:reduce){
+  html[data-glass="true"] .spark-modal-backdrop,
+  html[data-glass="true"] .paper-modal-backdrop,
+  html[data-glass="true"] .paper-nav-drawer-backdrop,
+  html[data-glass="true"] .is-exam-modal-backdrop,
+  html[data-glass="true"] .is-exam-drawer-backdrop,
+  html[data-glass="true"] .it-exit-overlay,
+  html[data-glass="true"] .spark-modal-card,
+  html[data-glass="true"] .paper-submit-modal,
+  html[data-glass="true"] .paper2-formula-modal,
+  html[data-glass="true"] .paper-nav-drawer,
+  html[data-glass="true"] .is-exam-modal,
+  html[data-glass="true"] .is-exam-drawer,
+  html[data-glass="true"] .it-exit-dialog,
+  html[data-glass="true"] .spark-modal-close,
+  html[data-glass="true"] .paper2-modal-head button,
+  html[data-glass="true"] .paper-nav-drawer-head>button,
+  html[data-glass="true"] .is-exam-drawer header button{
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+  }
+
+  html[data-glass="true"] .spark-modal-card,
+  html[data-glass="true"] .paper-submit-modal,
+  html[data-glass="true"] .paper2-formula-modal,
+  html[data-glass="true"] .paper-nav-drawer,
+  html[data-glass="true"] .is-exam-modal,
+  html[data-glass="true"] .is-exam-drawer,
+  html[data-glass="true"] .it-exit-dialog{
+    background:var(--spark-paper,#fff)!important;
+  }
+}
