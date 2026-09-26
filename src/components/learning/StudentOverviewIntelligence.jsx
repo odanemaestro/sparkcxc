@@ -4,6 +4,7 @@ import Btn from "../ui/Btn";
 import Icon from "../ui/Icon";
 import InsightText from "./InsightText";
 import StudentGoalCard from "./StudentGoalCard";
+import { dashboardAchievementMeta } from "./dashboardAchievementMeta";
 import { getDueFlashcards } from "../../learning/flashcards";
 
 function DashboardCardAction({ label, onClick }) {
@@ -111,7 +112,7 @@ export default function StudentOverviewIntelligence({
 
         <Card className="spark-achievement-card">
           <div className="spark-card-heading-row"><div><span className="section-kicker">RECENT ACHIEVEMENTS</span><h3>Momentum</h3></div></div>
-          {recentAchievements.length ? <div className="spark-achievement-list">{recentAchievements.map(item => <div key={item.id || item.title}><Icon name="spark" size={15}/><span>{item.title || "Learning milestone"}</span></div>)}</div> : <p className="spark-muted">Your lesson, practice and mastery milestones will appear here.</p>}
+          {recentAchievements.length ? <div className="spark-achievement-list">{recentAchievements.map(item => { const meta = dashboardAchievementMeta(item.title); return <div key={item.id || item.title}><span className="spark-achievement-svg"><Icon name={meta.icon} size={17}/></span><span>{meta.title}</span></div>; })}</div> : <p className="spark-muted">Your lesson, practice and mastery milestones will appear here.</p>}
         </Card>
       </div>
 
