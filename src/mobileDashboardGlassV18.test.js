@@ -134,6 +134,8 @@ test("mobile booking date picker floats as a sheet and booking modal has a close
   expect(picker).toContain('className="booking-date-layer"');
   expect(picker).toContain('className="booking-date-scrim"');
   expect(picker).toContain('aria-modal={mobileSheet ? "true" : "false"}');
+  expect(picker).toContain('window.addEventListener("keydown", onKeyDown, true)');
+  expect(picker).toContain("event.stopPropagation()");
   expect(calendarCss).toContain(".booking-date-layer");
   expect(calendarCss).toContain("@keyframes booking-date-sheet-up");
   expect(modal).toContain("showClose = false");
