@@ -481,3 +481,49 @@ body[data-theme="dark"] .spark-flashcard-nav > button:disabled .spark-nav-arrow{
   box-shadow:none !important;
   color:inherit !important;
 }
+
+
+/* SPARK DASHBOARD SVG MILESTONE ICONS V17 */
+.spark-achievement-svg{
+  width:30px;
+  height:30px;
+  border-radius:9px;
+  display:inline-grid;
+  place-items:center;
+  flex:0 0 30px;
+  background:color-mix(in srgb,var(--spark-teal,#20c9b7) 12%,transparent);
+  color:var(--spark-teal-dark,#087f73);
+}
+.spark-achievement-list .spark-achievement-svg svg{
+  color:inherit;
+}
+.spark-empty-calendar-icon{
+  width:48px;
+  height:48px;
+  border-radius:14px;
+  display:grid;
+  place-items:center;
+  margin-left:auto;
+  margin-right:auto;
+  background:color-mix(in srgb,var(--spark-teal,#20c9b7) 12%,transparent);
+  color:var(--spark-teal-dark,#087f73);
+}
+.booking-summary-callout{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.booking-summary-icon{
+  width:30px;
+  height:30px;
+  border-radius:9px;
+  display:grid;
+  place-items:center;
+  flex:0 0 30px;
+  background:color-mix(in srgb,currentColor 10%,transparent);
+}
+@media(max-width:560px){
+  .booking-summary-callout{
+    align-items:flex-start;
+  }
+}
