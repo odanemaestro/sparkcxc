@@ -172,3 +172,84 @@ html[data-theme="dark"][data-glass="true"] .it-exit-dialog{
     background:var(--spark-paper,#fff)!important;
   }
 }
+
+
+/* Shared SPARK confirmation dialog */
+.spark-confirm-modal__body{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr);
+  gap:14px;
+  align-items:start;
+  padding-right:36px;
+}
+.spark-confirm-modal__icon{
+  width:44px;
+  height:44px;
+  border-radius:13px;
+  display:grid;
+  place-items:center;
+  background:var(--spark-teal-light,#e7faf6);
+  color:var(--spark-teal-dark,#087f73);
+  border:1px solid color-mix(in srgb,var(--spark-teal,#0d9488) 28%,var(--spark-border,#d7e2ee));
+}
+.spark-confirm-modal__icon.is-destructive{
+  background:color-mix(in srgb,var(--spark-red,#c2413b) 10%,var(--spark-paper,#fff));
+  color:var(--spark-red,#c2413b);
+  border-color:color-mix(in srgb,var(--spark-red,#c2413b) 34%,var(--spark-border,#d7e2ee));
+}
+.spark-confirm-modal__icon svg{
+  width:22px;
+  height:22px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.spark-confirm-modal__body h2{
+  margin:2px 0 7px;
+  color:var(--spark-ink,#0f2557);
+  font-family:"Crimson Pro",Georgia,serif;
+  font-size:24px;
+  line-height:1.15;
+}
+.spark-confirm-modal__body p{
+  margin:0;
+  color:var(--spark-text-muted,#64748b);
+  font-size:13.5px;
+  line-height:1.6;
+}
+.spark-confirm-modal__actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:22px;
+}
+.spark-confirm-modal__actions>button{
+  width:100%!important;
+  justify-content:center!important;
+  min-height:46px;
+}
+.spark-confirm-danger{
+  background:var(--spark-red,#c2413b)!important;
+  border-color:var(--spark-red,#c2413b)!important;
+  color:#fff!important;
+}
+html[data-theme="dark"][data-glass="true"] .spark-confirm-modal__icon{
+  background:rgba(45,212,191,.08);
+  border-color:rgba(94,234,212,.18);
+}
+html[data-theme="dark"][data-glass="true"] .spark-confirm-modal__icon.is-destructive{
+  background:rgba(239,68,68,.08);
+  border-color:rgba(248,113,113,.18);
+}
+
+@media(max-width:480px){
+  .spark-confirm-modal__body{
+    grid-template-columns:1fr;
+    padding-right:30px;
+  }
+  .spark-confirm-modal__actions{
+    grid-template-columns:1fr;
+  }
+}
