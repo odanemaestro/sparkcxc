@@ -113,7 +113,7 @@ test("booking calendar and iPhone push guidance support the mobile glass pass", 
   const pushSettings = read("components/notifications/PushNotificationSettings.jsx");
   const notificationCss = read("components/notifications/notificationCenter.css");
 
-  expect(calendarCss).toContain('html[data-glass="true"] .booking-date-popover');
+  expect(calendarCss).toContain('html[data-glass="true"] .booking-date-layer .booking-date-popover');
   expect(calendarCss).toContain("backdrop-filter:blur(22px) saturate(160%)");
   expect(pushSettings).toContain("Install SPARK first on iPhone");
   expect(pushSettings).toContain("Add to Home Screen");
