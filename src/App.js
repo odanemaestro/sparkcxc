@@ -3614,6 +3614,16 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     };
   }, [updateDashTabsOverflow, isTutor, sec]);
 
+  useEffect(() => {
+    const el = dashSidebarRef.current;
+    if (!el || typeof window === "undefined" || window.innerWidth > 700) return;
+    const active = el.querySelector('[aria-current="page"]');
+    if (!active || typeof active.scrollIntoView !== "function") return;
+    window.requestAnimationFrame(() => {
+      active.scrollIntoView({ behavior:"smooth", block:"nearest", inline:"center" });
+    });
+  }, [sec]);
+
   // Resolve the URL on first mount/refresh once we know whether this account
   // owns the student or tutor dashboard. This is what makes refreshing
   // #/dashboard/bookings or #/dashboard/sessions reopen the exact tab.
@@ -4344,6 +4354,15 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
           <div className="dash-nav-item" key={item.k} onClick={() => setDashboardSection(item.k)}
             title={item.label}
             aria-label={item.label}
+            aria-current={sec===item.k ? "page" : undefined}
+            role="button"
+            tabIndex={0}
+            onKeyDown={event => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                setDashboardSection(item.k);
+              }
+            }}
             style={{padding:"10px 14px",fontSize:14,cursor:"pointer",display:"flex",alignItems:"center",
               gap:8,borderRadius:T.rSm,
               color:sec===item.k?T.tealDark:T.textMuted,background:sec===item.k?T.tealLight:"transparent",
