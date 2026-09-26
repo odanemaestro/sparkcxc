@@ -96,6 +96,35 @@ html[data-theme="dark"][data-glass="true"] .paper2-formula-scroll{
   border-color:rgba(145,165,191,.16)!important;
 }
 
+html[data-theme="dark"][data-glass="true"] .paper-submit-icon{
+  background:rgba(45,212,191,.10)!important;
+  color:#5eead4!important;
+}
+
+html[data-theme="dark"][data-glass="true"] .paper-nav-grid button,
+html[data-theme="dark"][data-glass="true"] .paper-nav-legend i{
+  background:rgba(255,255,255,.04)!important;
+  border-color:rgba(145,165,191,.18)!important;
+  color:var(--spark-text-muted,#91a5bf)!important;
+}
+html[data-theme="dark"][data-glass="true"] .paper-nav-grid button.answered{
+  background:rgba(45,212,191,.10)!important;
+  border-color:rgba(94,234,212,.24)!important;
+  color:#99f6e4!important;
+}
+html[data-theme="dark"][data-glass="true"] .paper-nav-grid button.current{
+  box-shadow:0 0 0 2px rgba(234,242,255,.72)!important;
+  border-color:rgba(234,242,255,.72)!important;
+}
+
+html[data-theme="dark"][data-glass="true"] .paper2-navigator-summary{
+  background:rgba(255,255,255,.045)!important;
+}
+html[data-theme="dark"][data-glass="true"] .paper2-navigator-summary strong,
+html[data-theme="dark"][data-glass="true"] .paper2-section-label b{
+  color:var(--spark-ink,#eaf2ff)!important;
+}
+
 /* Integrated Science custom dialogs use their own theme variables. */
 html[data-glass="true"] .is-exam-modal,
 html[data-glass="true"] .is-exam-drawer{
