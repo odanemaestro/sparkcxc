@@ -282,3 +282,141 @@ html[data-theme="dark"][data-glass="true"] .spark-confirm-modal__icon.is-destruc
     grid-template-columns:1fr;
   }
 }
+
+
+/* Physics Paper 1 and Paper 2 custom modal families */
+html[data-glass="true"] .phy-p1-modal-backdrop,
+html[data-glass="true"] .phy-p1-nav-drawer-backdrop,
+html[data-glass="true"] .phy-p2-modal-backdrop{
+  background:rgba(8,26,61,.40)!important;
+  -webkit-backdrop-filter:blur(8px) saturate(120%);
+  backdrop-filter:blur(8px) saturate(120%);
+}
+
+html[data-glass="true"] .phy-p1-confirm-modal,
+html[data-glass="true"] .phy-p1-nav-drawer,
+html[data-glass="true"] .phy-p2-confirm-modal,
+html[data-glass="true"] .phy-p2-constants-modal{
+  background:color-mix(in srgb,var(--spark-paper,#fff) 84%,transparent)!important;
+  border-color:color-mix(in srgb,var(--spark-border,#d7e2ee) 68%,transparent)!important;
+  -webkit-backdrop-filter:blur(26px) saturate(165%);
+  backdrop-filter:blur(26px) saturate(165%);
+  box-shadow:0 28px 72px rgba(8,26,61,.24),inset 0 1px 0 rgba(255,255,255,.24)!important;
+}
+
+html[data-theme="dark"][data-glass="true"] .phy-p1-modal-backdrop,
+html[data-theme="dark"][data-glass="true"] .phy-p1-nav-drawer-backdrop,
+html[data-theme="dark"][data-glass="true"] .phy-p2-modal-backdrop{
+  background:rgba(2,8,18,.58)!important;
+}
+
+html[data-theme="dark"][data-glass="true"] .phy-p1-confirm-modal,
+html[data-theme="dark"][data-glass="true"] .phy-p1-nav-drawer{
+  --p1-card:rgba(13,28,49,.86);
+  --p1-bg:rgba(8,18,32,.58);
+  --p1-ink:var(--spark-ink,#eaf2ff);
+  --p1-soft-ink:#c0ccdb;
+  --p1-muted:var(--spark-text-muted,#91a5bf);
+  --p1-border:rgba(145,165,191,.16);
+  background:rgba(13,28,49,.86)!important;
+  border-color:rgba(145,165,191,.16)!important;
+  color:var(--spark-ink,#eaf2ff)!important;
+  box-shadow:0 30px 78px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.055)!important;
+}
+
+html[data-theme="dark"][data-glass="true"] .phy-p2-confirm-modal,
+html[data-theme="dark"][data-glass="true"] .phy-p2-constants-modal{
+  --p2-card:rgba(13,28,49,.86);
+  --p2-bg:rgba(8,18,32,.58);
+  --p2-ink:var(--spark-ink,#eaf2ff);
+  --p2-soft-ink:#c0ccdb;
+  --p2-muted:var(--spark-text-muted,#91a5bf);
+  --p2-border:rgba(145,165,191,.16);
+  background:rgba(13,28,49,.86)!important;
+  border-color:rgba(145,165,191,.16)!important;
+  color:var(--spark-ink,#eaf2ff)!important;
+  box-shadow:0 30px 78px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.055)!important;
+}
+
+html[data-glass="true"] .phy-p1-nav-drawer-head>button,
+html[data-glass="true"] .phy-p2-constants-head>button{
+  background:color-mix(in srgb,var(--spark-paper,#fff) 72%,transparent)!important;
+  border-color:color-mix(in srgb,var(--spark-border,#d7e2ee) 68%,transparent)!important;
+  -webkit-backdrop-filter:blur(14px) saturate(145%);
+  backdrop-filter:blur(14px) saturate(145%);
+}
+
+html[data-theme="dark"][data-glass="true"] .phy-p1-nav-drawer-head>button,
+html[data-theme="dark"][data-glass="true"] .phy-p2-constants-head>button{
+  background:rgba(255,255,255,.055)!important;
+  border-color:rgba(145,165,191,.18)!important;
+  color:var(--spark-ink,#eaf2ff)!important;
+}
+
+/* Study Circles report and leave sheets */
+html[data-glass="true"] .study-circle-modal-scrim{
+  background:rgba(8,26,61,.40)!important;
+  -webkit-backdrop-filter:blur(8px) saturate(120%);
+  backdrop-filter:blur(8px) saturate(120%);
+}
+
+html[data-glass="true"] .study-circle-modal{
+  background:color-mix(in srgb,var(--spark-paper,#fff) 84%,transparent)!important;
+  border-color:color-mix(in srgb,var(--spark-border,#d7e2ee) 68%,transparent)!important;
+  -webkit-backdrop-filter:blur(26px) saturate(165%);
+  backdrop-filter:blur(26px) saturate(165%);
+  box-shadow:0 28px 72px rgba(8,26,61,.24),inset 0 1px 0 rgba(255,255,255,.24)!important;
+}
+
+html[data-glass="true"] .study-circle-modal-close{
+  background:color-mix(in srgb,var(--spark-paper,#fff) 72%,transparent)!important;
+  border-color:color-mix(in srgb,var(--spark-border,#d7e2ee) 68%,transparent)!important;
+  -webkit-backdrop-filter:blur(14px) saturate(145%);
+  backdrop-filter:blur(14px) saturate(145%);
+}
+
+html[data-theme="dark"][data-glass="true"] .study-circle-modal{
+  background:rgba(13,28,49,.86)!important;
+  border-color:rgba(145,165,191,.16)!important;
+  box-shadow:0 30px 78px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.055)!important;
+}
+
+html[data-theme="dark"][data-glass="true"] .study-circle-modal-close{
+  background:rgba(255,255,255,.055)!important;
+  border-color:rgba(145,165,191,.18)!important;
+  color:var(--spark-ink,#eaf2ff)!important;
+}
+
+html[data-theme="dark"][data-glass="true"] .study-circle-modal select,
+html[data-theme="dark"][data-glass="true"] .study-circle-modal textarea{
+  background:rgba(8,18,32,.58)!important;
+  border-color:rgba(145,165,191,.16)!important;
+  color:var(--spark-ink,#eaf2ff)!important;
+}
+
+
+@media(prefers-reduced-transparency:reduce){
+  html[data-glass="true"] .phy-p1-modal-backdrop,
+  html[data-glass="true"] .phy-p1-nav-drawer-backdrop,
+  html[data-glass="true"] .phy-p2-modal-backdrop,
+  html[data-glass="true"] .phy-p1-confirm-modal,
+  html[data-glass="true"] .phy-p1-nav-drawer,
+  html[data-glass="true"] .phy-p2-confirm-modal,
+  html[data-glass="true"] .phy-p2-constants-modal,
+  html[data-glass="true"] .phy-p1-nav-drawer-head>button,
+  html[data-glass="true"] .phy-p2-constants-head>button,
+  html[data-glass="true"] .study-circle-modal-scrim,
+  html[data-glass="true"] .study-circle-modal,
+  html[data-glass="true"] .study-circle-modal-close{
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+  }
+
+  html[data-glass="true"] .phy-p1-confirm-modal,
+  html[data-glass="true"] .phy-p1-nav-drawer,
+  html[data-glass="true"] .phy-p2-confirm-modal,
+  html[data-glass="true"] .phy-p2-constants-modal,
+  html[data-glass="true"] .study-circle-modal{
+    background:var(--spark-paper,#fff)!important;
+  }
+}
