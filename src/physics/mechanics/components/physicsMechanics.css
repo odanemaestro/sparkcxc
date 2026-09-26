@@ -1295,3 +1295,116 @@ body[data-theme="dark"] .pm-flashcards-dashboard .pm-flashcard-nav-row .pm-btn:n
     margin-top:12px;
   }
 }
+
+
+/* SPARK A1 DYNAMIC INSTRUMENT VISUAL V17 */
+.pm-instrument-visual{
+  width:100%;
+  max-width:100%;
+  min-height:210px;
+  display:block;
+  margin:12px 0 4px;
+  border:1px solid var(--pm-line);
+  border-radius:16px;
+  background:linear-gradient(145deg,var(--pm-card2),color-mix(in srgb,var(--pm-primary) 5%,var(--pm-card2)));
+  overflow:hidden;
+}
+.pm-instrument-body,
+.pm-instrument-slider-body,
+.pm-micrometer-sleeve{
+  fill:color-mix(in srgb,var(--pm-primary) 10%,var(--pm-card));
+  stroke:var(--pm-line);
+  stroke-width:2;
+}
+.pm-instrument-jaw{
+  fill:none;
+  stroke:var(--pm-ink);
+  stroke-width:7;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.pm-instrument-jaw.moving{
+  stroke:var(--pm-primary);
+}
+.pm-instrument-main-ticks line,
+.pm-instrument-vernier-ticks line,
+.pm-micrometer-sleeve-ticks line{
+  stroke:var(--pm-ink);
+  stroke-width:1.4;
+}
+.pm-instrument-main-ticks text,
+.pm-instrument-vernier-ticks text,
+.pm-micrometer-sleeve-ticks text,
+.pm-micrometer-division{
+  fill:var(--pm-muted);
+  font-size:9px;
+  font-weight:700;
+  text-anchor:middle;
+}
+.pm-instrument-vernier-ticks .is-coincident line{
+  stroke:var(--pm-primary);
+  stroke-width:3.2;
+}
+.pm-instrument-vernier-ticks .is-coincident text{
+  fill:var(--pm-primary);
+  font-weight:900;
+}
+.pm-instrument-zero{
+  stroke:var(--pm-danger);
+  stroke-width:2.4;
+  stroke-dasharray:4 3;
+}
+.pm-micrometer-frame{
+  fill:none;
+  stroke:var(--pm-ink);
+  stroke-width:12;
+  stroke-linecap:round;
+}
+.pm-micrometer-anvil{
+  stroke:var(--pm-ink);
+  stroke-width:10;
+  stroke-linecap:round;
+}
+.pm-micrometer-reference{
+  stroke:var(--pm-danger);
+  stroke-width:2;
+}
+.pm-micrometer-thimble{
+  fill:color-mix(in srgb,var(--pm-primary) 14%,var(--pm-card));
+  stroke:var(--pm-primary);
+  stroke-width:2;
+}
+.pm-micrometer-dial{
+  fill:var(--pm-card);
+  stroke:var(--pm-line);
+  stroke-width:2;
+}
+.pm-micrometer-rotor line{
+  stroke:var(--pm-primary);
+  stroke-width:3;
+  stroke-linecap:round;
+}
+.pm-micrometer-rotor circle{
+  fill:var(--pm-primary);
+}
+.pm-micrometer-division{
+  fill:var(--pm-ink);
+  font-size:13px;
+  font-weight:900;
+}
+.pm-instrument-caption{
+  fill:var(--pm-muted);
+  font-size:10px;
+  font-weight:650;
+}
+@media(max-width:680px){
+  .pm-instrument-visual{
+    min-height:180px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .pm-instrument-slider,
+  .pm-micrometer-rotor{
+    transition:none!important;
+  }
+}
