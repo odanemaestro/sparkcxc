@@ -296,10 +296,23 @@
     box-shadow:0 8px 26px rgba(3,12,30,.18);
   }
   html[data-glass="true"] .spark-nav .spark-menu-button,
-  html[data-glass="true"] .spark-nav .spark-theme-toggle{
+  html[data-glass="true"] .spark-nav .spark-theme-toggle,
+  html[data-glass="true"] .spark-nav .notification-trigger{
+    width:44px !important;
+    height:44px !important;
+    min-width:44px !important;
+    min-height:44px !important;
+    border:1px solid rgba(255,255,255,.20) !important;
+    border-radius:13px !important;
     background:rgba(255,255,255,.10) !important;
-    border-color:rgba(255,255,255,.20) !important;
     box-shadow:inset 0 1px 0 rgba(255,255,255,.10);
+  }
+  html[data-glass="true"] .spark-nav .notification-trigger:hover,
+  html[data-glass="true"] .spark-nav .notification-trigger[aria-expanded="true"]{
+    background:rgba(255,255,255,.14) !important;
+  }
+  html[data-glass="true"] .spark-nav .notification-badge{
+    border-color:rgba(8,26,61,.72) !important;
   }
   html[data-glass="true"] .spark-mobile-menu{
     background:rgba(8,26,61,.80) !important;
@@ -332,6 +345,17 @@
     height:22px !important;
     filter:drop-shadow(0 1px 1px rgba(0,0,0,.26));
   }
+
+  html[data-theme="light"][data-glass="true"] .student-mobile-quick-actions .student-mobile-quick-label{
+    display:block !important;
+    visibility:visible !important;
+    opacity:1 !important;
+    color:#0f2557 !important;
+    -webkit-text-fill-color:#0f2557 !important;
+  }
+  html[data-theme="light"][data-glass="true"] .student-mobile-quick-actions .student-mobile-quick-action:first-child{
+    color:#0f2557 !important;
+  }
   html[data-glass="true"] .dash-sidebar{
     background:color-mix(in srgb,var(--spark-paper,#fff) 76%,transparent) !important;
     -webkit-backdrop-filter:blur(20px) saturate(155%);
@@ -342,8 +366,7 @@
   html[data-glass="true"] .student-mobile-quick-actions>button,
   html[data-glass="true"] .student-dashboard-stat-card,
   html[data-glass="true"] .spark-rewards-card,
-  html[data-glass="true"] .spark-dashboard-support-grid>.spark-card,
-  html[data-glass="true"] .spark-scroll-top{
+  html[data-glass="true"] .spark-dashboard-support-grid>.spark-card{
     background:color-mix(in srgb,var(--spark-paper,#fff) 78%,transparent) !important;
     -webkit-backdrop-filter:blur(18px) saturate(150%);
     backdrop-filter:blur(18px) saturate(150%);
@@ -375,7 +398,8 @@
   html[data-glass="true"] .student-mobile-quick-actions>button,
   html[data-glass="true"] .student-dashboard-stat-card,
   html[data-glass="true"] .spark-rewards-card,
-  html[data-glass="true"] .spark-dashboard-support-grid>.spark-card{
+  html[data-glass="true"] .spark-dashboard-support-grid>.spark-card,
+  html[data-glass="true"] .spark-scroll-top{
     -webkit-backdrop-filter:none !important;
     backdrop-filter:none !important;
   }
