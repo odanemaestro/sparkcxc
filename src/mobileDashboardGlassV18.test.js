@@ -69,6 +69,8 @@ describe("SPARK mobile dashboard glass V18", () => {
     expect(css).toContain("backdrop-filter:blur(22px) saturate(165%)");
     expect(css).toContain("env(safe-area-inset-top)");
     expect(css).toContain("@media(prefers-reduced-transparency:reduce)");
+    expect(css).toContain("position:absolute !important");
+    expect(css).toContain("min-height:26px !important");
   });
 
   test("mobile density rules compact rewards and keep stats in a two-column grid", () => {
@@ -86,4 +88,12 @@ describe("SPARK mobile dashboard glass V18", () => {
     expect(css).toContain("width:16px !important");
     expect(css).toContain("inset -34px 0 28px -24px");
   });
+});
+
+
+test("subject overview clamps impossible lesson totals before display", () => {
+  const subjectOverview = read("components/learning/SubjectDashboardOverview.jsx");
+  expect(subjectOverview).toContain("const displayCompleted = total > 0 ? Math.min(Math.max(0, completed), total)");
+  expect(subjectOverview).toContain("const percent = Math.min(100, Math.max(0, rawPercent))");
+  expect(subjectOverview).toContain("{displayCompleted} of {total || 0} topic lessons complete");
 });
