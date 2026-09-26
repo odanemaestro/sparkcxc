@@ -206,22 +206,24 @@ html[data-theme="dark"] .booking-date-nav{
   }
   .booking-date-sheet-top{
     position:relative;
-    min-height:32px;
+    min-height:46px;
     display:flex;
-    align-items:center;
+    align-items:flex-start;
     justify-content:center;
-    margin:-2px 0 4px;
+    margin:-2px 0 8px;
+    padding-top:8px;
   }
   .booking-date-sheet-handle{
     width:38px;
     height:5px;
+    margin-top:2px;
     border-radius:999px;
     background:var(--spark-border-strong,#cbd5e1);
   }
   .booking-date-close{
     position:absolute;
     right:0;
-    top:0;
+    top:4px;
     width:32px;
     height:32px;
     border:1px solid var(--spark-border,#d7e2ee);
