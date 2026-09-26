@@ -807,3 +807,67 @@
 @media(prefers-reduced-motion:reduce){
   .booking-time-panel.is-mobile-sheet{animation:none!important}
 }
+
+
+/* SPARK BOOKING CONTROL POLISH V18 */
+.booking-subject-select-wrap{
+  position:relative;
+}
+.booking-subject-select{
+  appearance:none;
+  -webkit-appearance:none;
+  background:var(--spark-paper,#fff);
+}
+.booking-subject-chevron{
+  position:absolute;
+  right:14px;
+  top:50%;
+  width:18px;
+  height:18px;
+  transform:translateY(-50%);
+  fill:none;
+  stroke:var(--spark-ink-soft,#334155);
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  pointer-events:none;
+}
+.booking-duration-grid{
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+}
+.booking-duration-option{
+  flex:0 0 auto;
+}
+
+@media(max-width:600px){
+  .booking-duration-grid{
+    display:grid;
+    grid-template-columns:repeat(6,minmax(0,1fr));
+    gap:8px;
+  }
+  .booking-duration-option{
+    width:100%;
+    min-height:48px;
+    padding:8px 8px !important;
+  }
+  .booking-duration-option:nth-child(1),
+  .booking-duration-option:nth-child(2),
+  .booking-duration-option:nth-child(3){
+    grid-column:span 2;
+  }
+  .booking-duration-option:nth-child(4),
+  .booking-duration-option:nth-child(5){
+    grid-column:span 3;
+  }
+  .booking-subject-select{
+    min-height:50px;
+    font-size:16px !important;
+  }
+  .booking-subject-chevron{
+    right:15px;
+    width:19px;
+    height:19px;
+  }
+}
