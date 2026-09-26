@@ -5,7 +5,14 @@
 
 .student-mobile-quick-actions{display:none}
 
-.spark-modal-card{position:relative}
+.spark-modal-card{
+  position:relative;
+  outline:none;
+}
+.spark-modal-card:focus,
+.spark-modal-card:focus-visible{
+  outline:none;
+}
 .spark-modal-close{
   position:absolute;
   top:14px;
@@ -626,9 +633,12 @@
   max-height:240px;
   overflow-y:auto;
   overscroll-behavior:contain;
+  scroll-snap-type:y proximity;
+  scroll-padding-block:4px;
 }
 .booking-time-option{
   width:100%;
+  scroll-snap-align:start;
   min-height:44px;
   padding:10px 14px;
   border:0;
@@ -744,6 +754,7 @@
   }
   .booking-time-list{
     max-height:min(54dvh,420px);
+    scroll-padding-block:0;
   }
   .booking-time-option{
     min-height:52px;
