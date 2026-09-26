@@ -29,7 +29,7 @@
 }
 .booking-date-trigger span.has-value{
   color:var(--spark-ink,#15324b);
-  font-weight:600;
+  font-weight:400;
 }
 .booking-date-trigger svg{
   width:20px;
