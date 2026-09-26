@@ -1,0 +1,343 @@
+/* ==========================================================================
+   SPARK MOBILE DASHBOARD + OPTIONAL GLASS V18
+   Mobile-first presentation layer. Core learning and exam surfaces stay solid.
+   ========================================================================== */
+
+.student-mobile-quick-actions{display:none}
+
+.spark-mobile-appearance-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:13px 12px;
+  margin:7px 0 8px;
+  border-top:1px solid rgba(255,255,255,.10);
+  border-bottom:1px solid rgba(255,255,255,.10);
+  color:#fff;
+}
+.spark-mobile-appearance-row>div{display:flex;flex-direction:column;gap:2px;min-width:0}
+.spark-mobile-appearance-row strong{font-size:13px}
+.spark-mobile-appearance-row span{font-size:11px;line-height:1.35;color:rgba(255,255,255,.62)}
+.spark-glass-switch{
+  width:44px;
+  height:26px;
+  flex:0 0 44px;
+  padding:2px;
+  border:1px solid rgba(255,255,255,.24);
+  border-radius:999px;
+  background:rgba(255,255,255,.12);
+  cursor:pointer;
+}
+.spark-glass-switch i{
+  display:block;
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  background:#fff;
+  box-shadow:0 2px 7px rgba(0,0,0,.22);
+  transition:transform .18s ease;
+}
+.spark-glass-switch.is-on{background:#0d9488;border-color:#5eead4}
+.spark-glass-switch.is-on i{transform:translateX(18px)}
+
+.spark-rewards-badges span{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+.spark-rewards-badges span svg{flex:none}
+.spark-rewards-badges span b{font:inherit}
+
+@media(max-width:700px){
+  .spark-nav{
+    padding-top:env(safe-area-inset-top) !important;
+  }
+  .spark-nav-inner{
+    min-height:58px !important;
+    padding:8px 14px !important;
+  }
+  .spark-brand{
+    min-height:44px;
+    gap:8px !important;
+  }
+  .spark-brand svg{width:24px;height:24px}
+  .spark-brand span{font-size:19px !important}
+  .spark-nav-actions{gap:7px !important}
+  .spark-menu-button,
+  .spark-theme-toggle{
+    width:44px !important;
+    height:44px !important;
+    min-width:44px !important;
+    min-height:44px !important;
+    border-radius:13px !important;
+  }
+
+  .dash-sidebar{
+    top:calc(58px + env(safe-area-inset-top)) !important;
+    gap:7px !important;
+    padding:8px 14px 9px !important;
+    scroll-padding-inline:14px;
+    scroll-snap-type:x mandatory !important;
+    box-shadow:0 5px 16px rgba(15,37,87,.05);
+  }
+  .dash-sidebar.dash-tabs-more{
+    box-shadow:inset -18px 0 18px -18px rgba(15,37,87,.45),0 5px 16px rgba(15,37,87,.05);
+  }
+  .dash-sidebar .dash-profile-card,
+  .dash-sidebar .dash-nav-divider{
+    display:none !important;
+  }
+  .dash-sidebar .dash-nav-item{
+    flex:0 0 auto;
+    min-height:44px;
+    padding:9px 13px !important;
+    gap:7px !important;
+    scroll-snap-align:center;
+    white-space:nowrap;
+    border:1px solid var(--spark-border,#e2e8f0);
+    border-radius:12px !important;
+    background:var(--spark-paper,#fff);
+  }
+  .dash-sidebar .dash-nav-icon{font-size:17px}
+  .dash-sidebar .dash-nav-label{font-size:13px}
+
+  .dash-layout>.app-scroll-panel{
+    padding:20px 16px 30px !important;
+  }
+
+  .student-dashboard-greeting-row{
+    gap:13px !important;
+    margin-bottom:15px !important;
+    align-items:center !important;
+  }
+  .student-mobile-greeting-photo .profile-photo-editor,
+  .student-mobile-greeting-photo img{
+    width:58px !important;
+    height:58px !important;
+  }
+  .student-dashboard-greeting-copy h1{
+    font-size:22px !important;
+    line-height:1.12 !important;
+  }
+  .student-dashboard-greeting-copy p{
+    font-size:13px !important;
+  }
+
+  .student-mobile-quick-actions{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:8px;
+    margin:0 0 16px;
+  }
+  .student-mobile-quick-actions>button{
+    min-width:0;
+    min-height:66px;
+    border:1px solid var(--spark-border,#e2e8f0);
+    border-radius:14px;
+    background:var(--spark-paper,#fff);
+    color:var(--spark-ink,#0f2557);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    padding:9px 6px;
+    font:700 11px/1.2 'Atkinson Hyperlegible','Inter',sans-serif;
+    text-align:center;
+    box-shadow:var(--spark-shadow-sm,0 2px 8px rgba(15,37,87,.05));
+  }
+  .student-mobile-quick-icon{
+    width:31px;
+    height:31px;
+    border-radius:10px;
+    display:grid;
+    place-items:center;
+    color:var(--spark-teal-dark,#087f73);
+    background:var(--spark-teal-light,#ccfbf1);
+  }
+
+  .spark-rewards-card{
+    border-radius:17px !important;
+    margin-bottom:16px !important;
+  }
+  .spark-rewards-hero{
+    grid-template-columns:42px minmax(0,1fr) !important;
+    gap:10px !important;
+    padding:14px 14px 13px !important;
+  }
+  .spark-rewards-trophy{
+    width:42px !important;
+    height:42px !important;
+    border-radius:13px !important;
+  }
+  .spark-rewards-trophy svg{width:23px !important;height:23px !important}
+  .spark-rewards-eyebrow{font-size:9.5px !important}
+  .spark-rewards-winner-copy>strong{font-size:17px !important}
+  .spark-rewards-winner-copy>span:last-child{
+    font-size:11.5px !important;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  .spark-rewards-leaders-button{
+    grid-column:2 !important;
+    width:auto !important;
+    justify-self:start;
+    min-height:36px;
+    padding:7px 10px !important;
+    margin-top:1px;
+    font-size:11.5px !important;
+  }
+
+  .spark-rewards-personal{
+    padding:13px 14px 14px !important;
+  }
+  .spark-rewards-personal-main{
+    grid-template-columns:105px minmax(0,1fr) !important;
+    gap:13px !important;
+    align-items:start !important;
+  }
+  .spark-rewards-personal-main>div:first-child>strong{
+    font-size:26px !important;
+    margin:3px 0 !important;
+  }
+  .spark-rewards-personal-rank{
+    font-size:10.5px !important;
+    line-height:1.3;
+  }
+  .spark-rewards-level-block{
+    column-gap:6px !important;
+    row-gap:2px !important;
+  }
+  .spark-rewards-level-block>strong{font-size:13px !important}
+  .spark-rewards-level-block>small{
+    font-size:10px !important;
+    line-height:1.25;
+  }
+  .spark-rewards-level-track{height:6px !important}
+
+  .spark-rewards-badges{
+    flex-wrap:nowrap !important;
+    overflow-x:auto;
+    overscroll-behavior-x:contain;
+    scrollbar-width:none;
+    gap:7px !important;
+    margin:12px -2px 0 !important;
+    padding:0 2px 2px;
+  }
+  .spark-rewards-badges::-webkit-scrollbar{display:none}
+  .spark-rewards-badges span{
+    flex:0 0 auto;
+    min-height:34px;
+    padding:6px 9px !important;
+    font-size:11px !important;
+  }
+  .spark-rewards-badges span svg{
+    width:18px !important;
+    height:18px !important;
+  }
+
+  .spark-rewards-privacy{
+    margin-top:11px !important;
+    padding-top:10px !important;
+  }
+  .spark-rewards-privacy strong{font-size:11.5px !important}
+  .spark-rewards-privacy small{font-size:10.5px !important}
+
+  .student-dashboard-stats-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    gap:9px !important;
+    margin-bottom:18px !important;
+  }
+  .student-dashboard-stat-card{
+    min-height:94px;
+    padding:14px !important;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .student-dashboard-stat-card>div:first-child{
+    font-size:25px !important;
+  }
+  .student-dashboard-stat-card>div:last-child{
+    font-size:9.5px !important;
+    line-height:1.3;
+  }
+}
+
+/* Glass is deliberately limited to navigation, dashboard cards and overlays.
+   Lessons, questions and long-form reading surfaces remain opaque. */
+@media(max-width:700px){
+  html[data-glass="true"] .spark-nav{
+    background:rgba(8,26,61,.72) !important;
+    -webkit-backdrop-filter:blur(22px) saturate(165%);
+    backdrop-filter:blur(22px) saturate(165%);
+    border-bottom:1px solid rgba(255,255,255,.14);
+    box-shadow:0 8px 26px rgba(3,12,30,.18);
+  }
+  html[data-glass="true"] .spark-nav .spark-menu-button,
+  html[data-glass="true"] .spark-nav .spark-theme-toggle{
+    background:rgba(255,255,255,.10) !important;
+    border-color:rgba(255,255,255,.20) !important;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.10);
+  }
+  html[data-glass="true"] .spark-mobile-menu{
+    background:rgba(8,26,61,.80) !important;
+    -webkit-backdrop-filter:blur(26px) saturate(170%);
+    backdrop-filter:blur(26px) saturate(170%);
+  }
+  html[data-glass="true"] .dash-sidebar{
+    background:color-mix(in srgb,var(--spark-paper,#fff) 76%,transparent) !important;
+    -webkit-backdrop-filter:blur(20px) saturate(155%);
+    backdrop-filter:blur(20px) saturate(155%);
+    border-bottom-color:color-mix(in srgb,var(--spark-border,#e2e8f0) 70%,transparent) !important;
+  }
+  html[data-glass="true"] .dash-sidebar .dash-nav-item,
+  html[data-glass="true"] .student-mobile-quick-actions>button,
+  html[data-glass="true"] .student-dashboard-stat-card,
+  html[data-glass="true"] .spark-rewards-card,
+  html[data-glass="true"] .spark-dashboard-support-grid>.spark-card{
+    background:color-mix(in srgb,var(--spark-paper,#fff) 78%,transparent) !important;
+    -webkit-backdrop-filter:blur(18px) saturate(150%);
+    backdrop-filter:blur(18px) saturate(150%);
+    border-color:color-mix(in srgb,var(--spark-border,#e2e8f0) 72%,transparent) !important;
+    box-shadow:0 12px 32px rgba(15,37,87,.09),inset 0 1px 0 rgba(255,255,255,.22) !important;
+  }
+  html[data-theme="dark"][data-glass="true"] .dash-sidebar .dash-nav-item,
+  html[data-theme="dark"][data-glass="true"] .student-mobile-quick-actions>button,
+  html[data-theme="dark"][data-glass="true"] .student-dashboard-stat-card,
+  html[data-theme="dark"][data-glass="true"] .spark-rewards-card,
+  html[data-theme="dark"][data-glass="true"] .spark-dashboard-support-grid>.spark-card{
+    background:rgba(13,28,49,.78) !important;
+    border-color:rgba(145,165,191,.18) !important;
+    box-shadow:0 14px 34px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.05) !important;
+  }
+}
+
+@media(max-width:380px){
+  .student-mobile-quick-actions{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .student-mobile-quick-actions>button:last-child:nth-child(3){grid-column:1/-1}
+  .spark-rewards-personal-main{grid-template-columns:1fr !important}
+}
+
+@media(prefers-reduced-transparency:reduce){
+  html[data-glass="true"] .spark-nav,
+  html[data-glass="true"] .spark-mobile-menu,
+  html[data-glass="true"] .dash-sidebar,
+  html[data-glass="true"] .dash-sidebar .dash-nav-item,
+  html[data-glass="true"] .student-mobile-quick-actions>button,
+  html[data-glass="true"] .student-dashboard-stat-card,
+  html[data-glass="true"] .spark-rewards-card,
+  html[data-glass="true"] .spark-dashboard-support-grid>.spark-card{
+    -webkit-backdrop-filter:none !important;
+    backdrop-filter:none !important;
+  }
+  html[data-glass="true"] .spark-nav,
+  html[data-glass="true"] .spark-mobile-menu{background:#081a3d !important}
+  html[data-glass="true"] .dash-sidebar .dash-nav-item,
+  html[data-glass="true"] .student-mobile-quick-actions>button,
+  html[data-glass="true"] .student-dashboard-stat-card,
+  html[data-glass="true"] .spark-rewards-card,
+  html[data-glass="true"] .spark-dashboard-support-grid>.spark-card{background:var(--spark-paper,#fff) !important}
+}
