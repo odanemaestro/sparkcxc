@@ -61,6 +61,8 @@ describe("SPARK mobile dashboard glass V18", () => {
     expect(app).toContain("aria-pressed={Boolean(glassMode)}");
     expect(css).toContain('html[data-glass="true"] .spark-nav');
     expect(css).toContain('html[data-glass="true"] .spark-scroll-top');
+    expect(css).toContain('html[data-glass="true"] .spark-nav .notification-trigger');
+    expect(css).toContain('html[data-theme="light"][data-glass="true"] .student-mobile-quick-actions .student-mobile-quick-label');
     expect(css).toContain("backdrop-filter:blur(22px) saturate(165%)");
     expect(css).toContain("env(safe-area-inset-top)");
     expect(css).toContain("@media(prefers-reduced-transparency:reduce)");
