@@ -65,12 +65,23 @@
   .spark-brand span{font-size:19px !important}
   .spark-nav-actions{gap:7px !important}
   .spark-menu-button,
-  .spark-theme-toggle{
+  .spark-theme-toggle,
+  .notification-trigger{
     width:44px !important;
     height:44px !important;
     min-width:44px !important;
     min-height:44px !important;
+    border:1px solid rgba(255,255,255,.20) !important;
     border-radius:13px !important;
+    background:rgba(255,255,255,.08) !important;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
+  }
+  .notification-trigger:hover,
+  .notification-trigger[aria-expanded="true"]{
+    background:rgba(255,255,255,.12) !important;
+  }
+  .notification-badge{
+    border-color:rgba(255,255,255,.22) !important;
   }
 
   .dash-sidebar{
@@ -313,7 +324,7 @@
     background:rgba(255,255,255,.14) !important;
   }
   html[data-glass="true"] .spark-nav .notification-badge{
-    border-color:rgba(8,26,61,.72) !important;
+    border-color:rgba(255,255,255,.24) !important;
   }
   html[data-glass="true"] .spark-mobile-menu{
     background:rgba(8,26,61,.80) !important;
