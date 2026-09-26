@@ -42,9 +42,10 @@ describe("SPARK mobile dashboard glass V18", () => {
   test("mobile dashboard includes quick actions and active-tab centering hooks", () => {
     const app = read("App.js");
     expect(app).toContain('className="student-mobile-quick-actions"');
-    expect(app).toContain(">Continue study<");
-    expect(app).toContain(">Quick practice<");
-    expect(app).toContain(">Flashcards<");
+    expect(app).toContain('className="student-mobile-quick-label">Continue study</span>');
+    expect(app).toContain('className="student-mobile-quick-label">Quick practice</span>');
+    expect(app).toContain('className="student-mobile-quick-label">Flashcards</span>');
+    expect(app).toContain('<Icon name="featureBook" size={19}/>');
     expect(app).toContain('aria-current={sec===item.k ? "page" : undefined}');
     expect(app).toContain('scrollIntoView({ behavior:"smooth", block:"nearest", inline:"center" })');
   });
@@ -71,5 +72,9 @@ describe("SPARK mobile dashboard glass V18", () => {
     expect(css).toContain("flex-wrap:nowrap !important");
     expect(css).toContain(".student-dashboard-stats-grid");
     expect(css).toContain("grid-template-columns:repeat(2,minmax(0,1fr)) !important");
+    expect(css).toContain("min-height:58px");
+    expect(css).toContain(".student-mobile-quick-label");
+    expect(css).toContain("scroll-snap-type:x proximity");
+    expect(css).toContain("inset -34px 0 28px -24px");
   });
 });
