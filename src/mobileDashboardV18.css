@@ -53,6 +53,84 @@
 .spark-rewards-badges span svg{flex:none}
 .spark-rewards-badges span b{font:inherit}
 
+/* Final mobile polish: menu overlay, booking glass and tablet spacing. */
+@media(max-width:700px){
+  .spark-nav-menu-open::after{
+    content:"";
+    position:fixed;
+    inset:calc(58px + env(safe-area-inset-top)) 0 0;
+    background:rgba(8,26,61,.20);
+    backdrop-filter:blur(1.5px);
+    -webkit-backdrop-filter:blur(1.5px);
+    z-index:735;
+    animation:spark-mobile-menu-scrim-in 160ms ease-out both;
+  }
+  .spark-nav-menu-open .spark-mobile-menu{
+    animation:spark-mobile-menu-float-in 180ms cubic-bezier(.23,1,.32,1) both;
+  }
+  @keyframes spark-mobile-menu-scrim-in{
+    from{opacity:0}
+    to{opacity:1}
+  }
+  @keyframes spark-mobile-menu-float-in{
+    from{opacity:0;transform:translateY(-8px) scale(.985)}
+    to{opacity:1;transform:translateY(0) scale(1)}
+  }
+
+  .dash-sidebar.dash-tabs-more{
+    position:sticky;
+  }
+  .dash-sidebar.dash-tabs-more::after{
+    content:"";
+    position:sticky;
+    right:0;
+    flex:0 0 20px;
+    align-self:stretch;
+    margin-left:-20px;
+    pointer-events:none;
+    background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--spark-paper,#fff) 88%,transparent));
+  }
+
+  html[data-glass="true"] .notification-drawer{
+    background:color-mix(in srgb,var(--spark-paper,#fff) 82%,transparent) !important;
+    border:1px solid color-mix(in srgb,var(--spark-border,#d7e2ee) 68%,transparent);
+    -webkit-backdrop-filter:blur(24px) saturate(165%);
+    backdrop-filter:blur(24px) saturate(165%);
+    box-shadow:0 -20px 52px rgba(8,26,61,.22) !important;
+  }
+  html[data-theme="dark"][data-glass="true"] .notification-drawer{
+    background:rgba(10,24,48,.86) !important;
+    border-color:rgba(145,165,191,.16) !important;
+    box-shadow:0 -22px 56px rgba(0,0,0,.34) !important;
+  }
+  html[data-glass="true"] .notification-head,
+  html[data-glass="true"] .notification-toolbar,
+  html[data-glass="true"] .notification-drag-handle{
+    background:transparent !important;
+  }
+
+  html[data-glass="true"] .booking-session-modal{
+    background:color-mix(in srgb,var(--spark-paper,#fff) 84%,transparent) !important;
+    -webkit-backdrop-filter:blur(24px) saturate(160%);
+    backdrop-filter:blur(24px) saturate(160%);
+    border-color:color-mix(in srgb,var(--spark-border,#d7e2ee) 70%,transparent) !important;
+    box-shadow:0 24px 60px rgba(8,26,61,.22),inset 0 1px 0 rgba(255,255,255,.28) !important;
+  }
+  html[data-theme="dark"][data-glass="true"] .booking-session-modal{
+    background:rgba(13,28,49,.88) !important;
+    border-color:rgba(145,165,191,.18) !important;
+    box-shadow:0 26px 64px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.05) !important;
+  }
+}
+
+@media(min-width:701px) and (max-width:900px){
+  .dash-layout>.app-scroll-panel{padding:24px 22px 34px !important}
+  .student-dashboard-greeting-row{margin-bottom:18px !important}
+  .student-dashboard-stats-grid{gap:12px !important}
+  .spark-rewards-card{margin-bottom:20px !important}
+  .spark-subject-dashboard-overview{gap:18px !important}
+}
+
 @media(max-width:700px){
   .spark-nav{
     padding-top:env(safe-area-inset-top) !important;
