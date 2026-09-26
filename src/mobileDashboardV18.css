@@ -82,7 +82,7 @@
     box-shadow:0 5px 16px rgba(15,37,87,.05);
   }
   .dash-sidebar.dash-tabs-more{
-    box-shadow:inset -18px 0 18px -18px rgba(15,37,87,.45),0 5px 16px rgba(15,37,87,.05);
+    box-shadow:inset -34px 0 28px -24px rgba(15,37,87,.58),0 5px 16px rgba(15,37,87,.05);
   }
   .dash-sidebar .dash-profile-card,
   .dash-sidebar .dash-nav-divider{
@@ -132,7 +132,7 @@
   }
   .student-mobile-quick-actions>button{
     min-width:0;
-    min-height:66px;
+    min-height:58px;
     border:1px solid var(--spark-border,#e2e8f0);
     border-radius:14px;
     background:var(--spark-paper,#fff);
@@ -141,20 +141,31 @@
     flex-direction:column;
     align-items:center;
     justify-content:center;
-    gap:6px;
-    padding:9px 6px;
+    gap:5px;
+    padding:7px 6px;
     font:700 11px/1.2 'Atkinson Hyperlegible','Inter',sans-serif;
     text-align:center;
     box-shadow:var(--spark-shadow-sm,0 2px 8px rgba(15,37,87,.05));
   }
   .student-mobile-quick-icon{
-    width:31px;
-    height:31px;
+    width:29px;
+    height:29px;
     border-radius:10px;
     display:grid;
     place-items:center;
     color:var(--spark-teal-dark,#087f73);
     background:var(--spark-teal-light,#ccfbf1);
+  }
+  .student-mobile-quick-icon svg{
+    color:var(--spark-teal-dark,#087f73) !important;
+    stroke:currentColor;
+  }
+  .student-mobile-quick-label{
+    display:block !important;
+    color:var(--spark-ink,#0f2557) !important;
+    opacity:1 !important;
+    visibility:visible !important;
+    white-space:nowrap;
   }
 
   .spark-rewards-card{
@@ -222,20 +233,28 @@
     overflow-x:auto;
     overscroll-behavior-x:contain;
     scrollbar-width:none;
-    gap:7px !important;
+    gap:6px !important;
     margin:12px -2px 0 !important;
-    padding:0 2px 2px;
+    padding:0 18px 3px 2px;
+    scroll-padding-inline:2px 18px;
+    scroll-snap-type:x proximity;
+  }
+  .spark-rewards-badges::after{
+    content:"";
+    flex:0 0 14px;
+    height:1px;
   }
   .spark-rewards-badges::-webkit-scrollbar{display:none}
   .spark-rewards-badges span{
     flex:0 0 auto;
-    min-height:34px;
-    padding:6px 9px !important;
-    font-size:11px !important;
+    min-height:33px;
+    padding:5px 8px !important;
+    font-size:10.5px !important;
+    scroll-snap-align:start;
   }
   .spark-rewards-badges span svg{
-    width:18px !important;
-    height:18px !important;
+    width:17px !important;
+    height:17px !important;
   }
 
   .spark-rewards-privacy{
