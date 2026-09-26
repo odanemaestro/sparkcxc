@@ -22,6 +22,10 @@
 .spark-glass-switch{
   width:44px;
   height:26px;
+  min-width:44px !important;
+  max-width:44px !important;
+  min-height:26px !important;
+  max-height:26px !important;
   flex:0 0 44px;
   padding:2px;
   border:1px solid rgba(255,255,255,.24);
@@ -64,6 +68,21 @@
   .spark-brand svg{width:24px;height:24px}
   .spark-brand span{font-size:19px !important}
   .spark-nav-actions{gap:7px !important}
+
+  .spark-mobile-menu{
+    position:absolute !important;
+    top:calc(100% + 8px);
+    left:12px;
+    right:12px;
+    width:auto !important;
+    max-height:calc(100dvh - 92px - env(safe-area-inset-top));
+    overflow-y:auto;
+    border:1px solid rgba(255,255,255,.10);
+    border-radius:18px;
+    box-shadow:0 18px 44px rgba(3,12,30,.24);
+    padding:10px 12px calc(12px + env(safe-area-inset-bottom)) !important;
+    z-index:760;
+  }
   .spark-menu-button,
   .spark-theme-toggle,
   .notification-trigger{
@@ -330,6 +349,8 @@
     background:rgba(8,26,61,.80) !important;
     -webkit-backdrop-filter:blur(26px) saturate(170%);
     backdrop-filter:blur(26px) saturate(170%);
+    border-color:rgba(255,255,255,.14) !important;
+    box-shadow:0 20px 48px rgba(3,12,30,.30),inset 0 1px 0 rgba(255,255,255,.05) !important;
   }
 
   html[data-glass="true"] .spark-scroll-top{
