@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import "./bookingDatePicker.css";
 
 const pad = value => String(value).padStart(2, "0");
@@ -43,11 +44,22 @@ function displayDate(value) {
 export default function BookingDatePicker({ value, onChange, minDate, label = "Booking date" }) {
   const rootRef = useRef(null);
   const triggerRef = useRef(null);
+  const popoverRef = useRef(null);
   const todayKey = useMemo(() => dateKey(new Date()), []);
   const minimumKey = minDate || todayKey;
   const baseDate = parseDateKey(value) || parseDateKey(minimumKey) || new Date();
   const [open, setOpen] = useState(false);
   const [month, setMonth] = useState(() => monthStart(baseDate));
+  const [mobileSheet, setMobileSheet] = useState(false);
+
+  useEffect(() => {
+    const media = window.matchMedia?.("(max-width: 600px)");
+    if (!media) return undefined;
+    const sync = () => setMobileSheet(media.matches);
+    sync();
+    media.addEventListener?.("change", sync);
+    return () => media.removeEventListener?.("change", sync);
+  }, []);
 
   useEffect(() => {
     if (!value) return;
@@ -59,7 +71,8 @@ export default function BookingDatePicker({ value, onChange, minDate, label = "B
     if (!open) return undefined;
 
     const onPointerDown = event => {
-      if (!rootRef.current?.contains(event.target)) setOpen(false);
+      if (rootRef.current?.contains(event.target) || popoverRef.current?.contains(event.target)) return;
+      setOpen(false);
     };
     const onKeyDown = event => {
       if (event.key !== "Escape") return;
@@ -69,11 +82,15 @@ export default function BookingDatePicker({ value, onChange, minDate, label = "B
 
     document.addEventListener("pointerdown", onPointerDown);
     document.addEventListener("keydown", onKeyDown);
+    const previousOverflow = document.body.style.overflow;
+    if (mobileSheet) document.body.style.overflow = "hidden";
+
     return () => {
       document.removeEventListener("pointerdown", onPointerDown);
       document.removeEventListener("keydown", onKeyDown);
+      if (mobileSheet) document.body.style.overflow = previousOverflow;
     };
-  }, [open]);
+  }, [open, mobileSheet]);
 
   const cells = useMemo(() => monthCells(month), [month]);
   const minimumMonth = monthStart(parseDateKey(minimumKey) || new Date());
@@ -85,12 +102,102 @@ export default function BookingDatePicker({ value, onChange, minDate, label = "B
     setMonth(current => new Date(current.getFullYear(), current.getMonth() + delta, 1));
   };
 
-  const chooseDate = key => {
-    if (key < minimumKey) return;
-    onChange?.(key);
+  const closeCalendar = () => {
     setOpen(false);
     window.requestAnimationFrame(() => triggerRef.current?.focus({ preventScroll: true }));
   };
+
+  const chooseDate = key => {
+    if (key < minimumKey) return;
+    onChange?.(key);
+    closeCalendar();
+  };
+
+  const calendar = (
+    <div
+      ref={popoverRef}
+      className="booking-date-popover"
+      role="dialog"
+      aria-modal={mobileSheet ? "true" : "false"}
+      aria-label={label}
+      onPointerDown={event => event.stopPropagation()}
+    >
+      {mobileSheet && (
+        <div className="booking-date-sheet-top">
+          <span aria-hidden="true" className="booking-date-sheet-handle" />
+          <button type="button" className="booking-date-close" aria-label="Close calendar" onClick={closeCalendar}>×</button>
+        </div>
+      )}
+
+      <div className="booking-date-head">
+        <button
+          type="button"
+          className="booking-date-nav"
+          aria-label="Previous month"
+          disabled={previousDisabled}
+          onClick={() => moveMonth(-1)}
+        >
+          ‹
+        </button>
+        <strong>{monthLabel(month)}</strong>
+        <button
+          type="button"
+          className="booking-date-nav"
+          aria-label="Next month"
+          onClick={() => moveMonth(1)}
+        >
+          ›
+        </button>
+      </div>
+
+      <div className="booking-date-weekdays" aria-hidden="true">
+        {["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].map(day => <span key={day}>{day}</span>)}
+      </div>
+
+      <div className="booking-date-grid">
+        {cells.map(day => {
+          const key = dateKey(day);
+          const outside = day.getMonth() !== month.getMonth();
+          const disabled = key < minimumKey;
+          const selected = key === value;
+          const today = key === todayKey;
+
+          return (
+            <button
+              type="button"
+              key={key}
+              className={[
+                "booking-date-day",
+                outside ? "is-outside" : "",
+                selected ? "is-selected" : "",
+                today ? "is-today" : "",
+              ].filter(Boolean).join(" ")}
+              disabled={disabled}
+              aria-pressed={selected}
+              aria-label={day.toLocaleDateString("en-US", { weekday:"long", month:"long", day:"numeric", year:"numeric" })}
+              onClick={() => chooseDate(key)}
+            >
+              {day.getDate()}
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="booking-date-foot">
+        <button
+          type="button"
+          onClick={() => {
+            const safeToday = todayKey < minimumKey ? minimumKey : todayKey;
+            const target = parseDateKey(safeToday);
+            if (target) setMonth(monthStart(target));
+            chooseDate(safeToday);
+          }}
+        >
+          Today
+        </button>
+      </div>
+    </div>
+  );
 
   return (
     <div className={`booking-date-picker ${open ? "is-open" : ""}`} ref={rootRef}>
@@ -108,83 +215,15 @@ export default function BookingDatePicker({ value, onChange, minDate, label = "B
         </svg>
       </button>
 
-      {open && (
-        <div
-          className="booking-date-popover"
-          role="dialog"
-          aria-modal="false"
-          aria-label={label}
-          onPointerDown={event => event.stopPropagation()}
-        >
-          <div className="booking-date-head">
-            <button
-              type="button"
-              className="booking-date-nav"
-              aria-label="Previous month"
-              disabled={previousDisabled}
-              onClick={() => moveMonth(-1)}
-            >
-              ‹
-            </button>
-            <strong>{monthLabel(month)}</strong>
-            <button
-              type="button"
-              className="booking-date-nav"
-              aria-label="Next month"
-              onClick={() => moveMonth(1)}
-            >
-              ›
-            </button>
-          </div>
-
-          <div className="booking-date-weekdays" aria-hidden="true">
-            {["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].map(day => <span key={day}>{day}</span>)}
-          </div>
-
-          <div className="booking-date-grid">
-            {cells.map(day => {
-              const key = dateKey(day);
-              const outside = day.getMonth() !== month.getMonth();
-              const disabled = key < minimumKey;
-              const selected = key === value;
-              const today = key === todayKey;
-
-              return (
-                <button
-                  type="button"
-                  key={key}
-                  className={[
-                    "booking-date-day",
-                    outside ? "is-outside" : "",
-                    selected ? "is-selected" : "",
-                    today ? "is-today" : "",
-                  ].filter(Boolean).join(" ")}
-                  disabled={disabled}
-                  aria-pressed={selected}
-                  aria-label={day.toLocaleDateString("en-US", { weekday:"long", month:"long", day:"numeric", year:"numeric" })}
-                  onClick={() => chooseDate(key)}
-                >
-                  {day.getDate()}
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="booking-date-foot">
-            <button
-              type="button"
-              onClick={() => {
-                const safeToday = todayKey < minimumKey ? minimumKey : todayKey;
-                const target = parseDateKey(safeToday);
-                if (target) setMonth(monthStart(target));
-                chooseDate(safeToday);
-              }}
-            >
-              Today
-            </button>
-          </div>
-        </div>
-      )}
+      {open && mobileSheet && typeof document !== "undefined"
+        ? createPortal(
+            <div className="booking-date-layer" role="presentation">
+              <button type="button" className="booking-date-scrim" aria-label="Close calendar" onClick={closeCalendar} />
+              {calendar}
+            </div>,
+            document.body
+          )
+        : open ? calendar : null}
     </div>
   );
 }
