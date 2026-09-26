@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import Card from "../ui/Card";
+import ConfirmModal from "../ui/ConfirmModal";
 import "./dynamicSubjectAdmin.css";
 
 export default function AdminAccountsPanel({
@@ -12,6 +13,7 @@ export default function AdminAccountsPanel({
   const [email,setEmail] = useState("");
   const [loading,setLoading] = useState(true);
   const [busy,setBusy] = useState(false);
+  const [revokeTarget,setRevokeTarget] = useState(null);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -55,8 +57,6 @@ export default function AdminAccountsPanel({
 
   async function revoke(row) {
     if (!row?.user_id || row.user_id === currentUserId || busy) return;
-    const ok = window.confirm(`Remove dedicated admin access from ${row.email}?`);
-    if (!ok) return;
     setBusy(true);
     try {
       const { error } = await supabase.rpc("spark_admin_revoke_dedicated_admin", {
@@ -65,6 +65,7 @@ export default function AdminAccountsPanel({
       if (error) showToast?.(error.message || "Could not revoke admin access.","error");
       else {
         showToast?.("Dedicated admin access removed.","success");
+        setRevokeTarget(null);
         await load();
       }
     } finally {
@@ -127,7 +128,7 @@ export default function AdminAccountsPanel({
                   <td className="spark-ds-table-action">
                     {row.user_id === currentUserId
                       ? <span className="spark-ds-muted">Current account</span>
-                      : <button type="button" onClick={() => revoke(row)} disabled={busy}>Revoke</button>}
+                      : <button type="button" onClick={() => setRevokeTarget(row)} disabled={busy}>Revoke</button>}
                   </td>
                 </tr>
               ))}
@@ -135,6 +136,17 @@ export default function AdminAccountsPanel({
           </table>
         </div>
       </Card>
+
+      <ConfirmModal
+        open={Boolean(revokeTarget)}
+        onClose={() => { if (!busy) setRevokeTarget(null); }}
+        onConfirm={() => revoke(revokeTarget)}
+        title="Revoke admin access?"
+        message={revokeTarget ? `Remove dedicated admin access from ${revokeTarget.email}? This account will no longer have administrator privileges.` : ""}
+        confirmLabel="Revoke access"
+        busy={busy}
+        destructive
+      />
     </section>
   );
 }
