@@ -5,7 +5,7 @@
 import { useEffect, useRef } from "react";
 import { T } from "../../theme";
 
-const Modal = ({ children, onClose, maxWidth = 500, className = "" }) => {
+const Modal = ({ children, onClose, maxWidth = 500, className = "", showClose = false, closeLabel = "Close dialog" }) => {
   const cardRef = useRef(null);
   const previousFocusRef = useRef(null);
 
@@ -97,6 +97,13 @@ const Modal = ({ children, onClose, maxWidth = 500, className = "" }) => {
           border:`1px solid ${T.borderSoft}`
         }}
       >
+        {showClose && (
+          <button type="button" className="spark-modal-close" aria-label={closeLabel} onClick={onClose}>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
+        )}
         {children}
       </div>
     </div>
