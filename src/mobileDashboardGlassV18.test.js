@@ -83,6 +83,8 @@ describe("SPARK mobile dashboard glass V18", () => {
     expect(css).toContain("grid-template-columns:repeat(2,minmax(0,1fr)) !important");
     expect(css).toContain("min-height:58px");
     expect(css).toContain(".student-mobile-quick-label");
+    expect(css).toContain(".student-mobile-quick-actions>.student-mobile-quick-action:first-child");
+    expect(css).toContain("background:var(--spark-paper,#fff) !important");
     expect(css).toContain("scroll-snap-type:x proximity");
     expect(css).toContain("font-size:9.75px !important");
     expect(css).toContain("width:16px !important");
