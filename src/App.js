@@ -429,22 +429,55 @@ function jamaicaNowParts() {
 
 const TimeSlotPicker = ({ value, onChange, date, duration, busyOnDate = [], placeholder = "Select a start time" }) => {
   const [open, setOpen] = useState(false);
+  const [mobileSheet, setMobileSheet] = useState(false);
   const wrapRef = useRef(null);
+  const sheetRef = useRef(null);
+  const triggerRef = useRef(null);
   const selectedRef = useRef(null);
 
   useEffect(() => {
-    if (!open) return;
-    const handler = (e) => { if (wrapRef.current && !wrapRef.current.contains(e.target)) setOpen(false); };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, [open]);
+    const media = window.matchMedia?.("(max-width: 600px)");
+    if (!media) return undefined;
+    const sync = () => setMobileSheet(media.matches);
+    sync();
+    media.addEventListener?.("change", sync);
+    return () => media.removeEventListener?.("change", sync);
+  }, []);
 
-  // Bring the current selection into view the moment the list opens, so
-  // reopening to check a late-afternoon slot doesn't mean scrolling past
-  // the whole morning again.
+  useEffect(() => {
+    if (!open) return undefined;
+
+    const close = () => {
+      setOpen(false);
+      window.requestAnimationFrame(() => triggerRef.current?.focus({ preventScroll:true }));
+    };
+
+    const onPointerDown = event => {
+      if (wrapRef.current?.contains(event.target) || sheetRef.current?.contains(event.target)) return;
+      close();
+    };
+    const onKeyDown = event => {
+      if (event.key !== "Escape") return;
+      event.preventDefault();
+      event.stopPropagation();
+      close();
+    };
+
+    document.addEventListener("pointerdown", onPointerDown);
+    window.addEventListener("keydown", onKeyDown, true);
+    const previousOverflow = document.body.style.overflow;
+    if (mobileSheet) document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      window.removeEventListener("keydown", onKeyDown, true);
+      if (mobileSheet) document.body.style.overflow = previousOverflow;
+    };
+  }, [open, mobileSheet]);
+
   useEffect(() => {
     if (open && selectedRef.current) {
-      selectedRef.current.scrollIntoView({ block: "center" });
+      window.requestAnimationFrame(() => selectedRef.current?.scrollIntoView({ block:"center" }));
     }
   }, [open]);
 
@@ -464,58 +497,85 @@ const TimeSlotPicker = ({ value, onChange, date, duration, busyOnDate = [], plac
   });
   const anyAvailable = slots.some(s => !s.disabled);
 
+  const closePicker = () => {
+    setOpen(false);
+    window.requestAnimationFrame(() => triggerRef.current?.focus({ preventScroll:true }));
+  };
+
+  const chooseTime = slot => {
+    if (slot.disabled) return;
+    onChange(slot.time);
+    closePicker();
+  };
+
+  const list = (
+    <div
+      ref={sheetRef}
+      className={`booking-time-panel ${mobileSheet ? "is-mobile-sheet" : ""}`}
+      role="dialog"
+      aria-modal={mobileSheet ? "true" : "false"}
+      aria-label="Choose start time"
+    >
+      {mobileSheet && (
+        <div className="booking-time-sheet-top">
+          <span className="booking-time-sheet-handle" aria-hidden="true" />
+          <strong>Choose a start time</strong>
+          <button type="button" className="booking-time-close" aria-label="Close time picker" onClick={closePicker}>×</button>
+        </div>
+      )}
+
+      {!date ? (
+        <div className="booking-time-state">Pick a date first to see available times.</div>
+      ) : !anyAvailable ? (
+        <div className="booking-time-state">No available times on this date. Try another day.</div>
+      ) : (
+        <div className="booking-time-list">
+          {slots.map(s => {
+            const active = value === s.time;
+            return (
+              <button
+                type="button"
+                key={s.time}
+                ref={active ? selectedRef : null}
+                className={`booking-time-option ${active ? "is-active" : ""}`}
+                disabled={s.disabled}
+                onClick={() => chooseTime(s)}
+              >
+                <span>{fmtClock(s.time)}</span>
+                {s.reason && <small>{s.reason}</small>}
+              </button>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+
   return (
-    <div ref={wrapRef}>
-      <button type="button" onClick={() => setOpen(o => !o)}
-        style={{width:"100%",padding:"11px 14px",border:`1.5px solid ${open?T.teal:T.border}`,
-          borderRadius:T.rSm,fontSize:14,fontFamily:FB,color:value?T.ink:T.textMuted,
-          background:T.paper,display:"flex",justifyContent:"space-between",alignItems:"center",
-          cursor:"pointer",transition:`all .18s ${T.ease}`,
-          boxShadow:open?`0 0 0 3px ${T.tealLight}`:"none"}}>
+    <div ref={wrapRef} className="booking-time-picker">
+      <button
+        ref={triggerRef}
+        type="button"
+        className={`booking-time-trigger ${open ? "is-open" : ""}`}
+        aria-haspopup="dialog"
+        aria-expanded={open}
+        onClick={() => setOpen(current => !current)}
+      >
         <span>{value ? fmtClock(value) : placeholder}</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
-          style={{opacity:.55,flexShrink:0,transform:open?"rotate(180deg)":"none",transition:`transform .18s ${T.ease}`}}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
           <path d="M6 9l6 6 6-6"/>
         </svg>
       </button>
-      {open && (
-        <div className="fade-in" style={{marginTop:8,border:`1px solid ${T.borderSoft}`,borderRadius:T.rSm,
-          boxShadow:T.shadowSm,maxHeight:240,overflowY:"auto",background:T.paper}}>
-          {!date ? (
-            <div style={{padding:"16px 12px",fontSize:13,color:T.textMuted,textAlign:"center"}}>
-              Pick a date first to see available times.
-            </div>
-          ) : !anyAvailable ? (
-            <div style={{padding:"16px 12px",fontSize:13,color:T.textMuted,textAlign:"center"}}>
-              No available times on this date. Try another day.
-            </div>
-          ) : (
-            slots.map((s, i) => {
-              const active = value === s.time;
-              return (
-                <div key={s.time}
-                  ref={active ? selectedRef : null}
-                  onClick={() => { if (!s.disabled) { onChange(s.time); setOpen(false); } }}
-                  style={{
-                    display:"flex",justifyContent:"space-between",alignItems:"center",
-                    padding:"10px 14px",
-                    cursor:s.disabled?"not-allowed":"pointer",
-                    fontSize:13.5,
-                    fontWeight:active?700:500,
-                    color:s.disabled?T.textMuted:(active?T.tealDark:T.inkSoft),
-                    background:active?T.tealLight:"transparent",
-                    opacity:s.disabled?.55:1,
-                    borderBottom:i<slots.length-1?`1px solid ${T.borderSoft}`:"none",
-                    transition:`background .12s ${T.ease}`
-                  }}>
-                  <span style={{textDecoration:s.disabled?"line-through":"none"}}>{fmtClock(s.time)}</span>
-                  {s.reason && <span style={{fontSize:10.5,fontWeight:700,textTransform:"uppercase",letterSpacing:"0.04em"}}>{s.reason}</span>}
-                </div>
-              );
-            })
-          )}
-        </div>
-      )}
+
+      {open && mobileSheet && typeof document !== "undefined"
+        ? createPortal(
+            <div className="booking-time-layer" role="presentation">
+              <button type="button" className="booking-time-scrim" aria-label="Close time picker" onClick={closePicker} />
+              {list}
+            </div>,
+            document.body
+          )
+        : open ? list : null}
     </div>
   );
 };
