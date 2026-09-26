@@ -76,18 +76,20 @@ export default function BookingDatePicker({ value, onChange, minDate, label = "B
     };
     const onKeyDown = event => {
       if (event.key !== "Escape") return;
+      event.preventDefault();
+      event.stopPropagation();
       setOpen(false);
       triggerRef.current?.focus({ preventScroll: true });
     };
 
     document.addEventListener("pointerdown", onPointerDown);
-    document.addEventListener("keydown", onKeyDown);
+    window.addEventListener("keydown", onKeyDown, true);
     const previousOverflow = document.body.style.overflow;
     if (mobileSheet) document.body.style.overflow = "hidden";
 
     return () => {
       document.removeEventListener("pointerdown", onPointerDown);
-      document.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("keydown", onKeyDown, true);
       if (mobileSheet) document.body.style.overflow = previousOverflow;
     };
   }, [open, mobileSheet]);
