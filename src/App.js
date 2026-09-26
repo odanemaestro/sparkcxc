@@ -69,6 +69,7 @@ import Card from "./components/ui/Card";
 import ProgressBar from "./components/ui/ProgressBar";
 import Toast from "./components/ui/Toast";
 import Modal from "./components/ui/Modal";
+import ConfirmModal from "./components/ui/ConfirmModal";
 import BookingDatePicker from "./components/booking/BookingDatePicker";
 import ScrollToTopButton from "./components/ui/ScrollToTopButton";
 import SparkLoader from "./components/ui/SparkLoader";
@@ -8359,6 +8360,7 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
   const [phoneLocal, setPhoneLocal] = React.useState(() => savedDraft?.phoneLocal || "");
   const [awaitingTutorVerification, setAwaitingTutorVerification] = React.useState(() => Boolean(loadTutorVerificationHandoff()) && !user);
   const [resendingTutorVerification, setResendingTutorVerification] = React.useState(false);
+  const [discardTutorDraftConfirm, setDiscardTutorDraftConfirm] = React.useState(false);
   const tutorVerificationResumeRef = React.useRef(false);
   const tutorVerificationStage = loadTutorVerificationHandoff()?.stage || "submit_application";
 
@@ -8676,20 +8678,30 @@ const validateApplication = () => validateStep1() || validateStep2() || validate
             background: T.tealLight, border: `1px solid ${T.teal}`, borderRadius: 8, padding: "10px 14px", marginBottom: 20, fontSize: 13 }}>
             <span style={{ color: T.tealDark }}>Your saved application has been restored. Continue from where you stopped.</span>
             <button
-              onClick={() => {
-                if (!window.confirm("Discard your saved progress and start over?")) return;
-                clearTutorApplicationDraft();
-                setForm({ name: profile?.name || "", email: "", password: "", phone: "", bio: "", subjects: [], rate: 1500, quals: "", experience: "", availability: "" });
-                setPhoneCountry("JM");
-                setPhoneLocal("");
-                setStep(1);
-              }}
+              onClick={() => setDiscardTutorDraftConfirm(true)}
               style={{ background: "none", border: "none", color: T.tealDark, textDecoration: "underline", cursor: "pointer", fontSize: 13, fontWeight: 600, flexShrink: 0 }}
             >
               Start over
             </button>
           </div>
         )}
+        <ConfirmModal
+          open={discardTutorDraftConfirm}
+          onClose={() => setDiscardTutorDraftConfirm(false)}
+          onConfirm={() => {
+            clearTutorApplicationDraft();
+            setForm({ name: profile?.name || "", email: "", password: "", phone: "", bio: "", subjects: [], rate: 1500, quals: "", experience: "", availability: "" });
+            setPhoneCountry("JM");
+            setPhoneLocal("");
+            setStep(1);
+            setDiscardTutorDraftConfirm(false);
+          }}
+          title="Start over?"
+          message="Discard your saved tutor application progress and start again from the beginning?"
+          confirmLabel="Discard progress"
+          destructive
+        />
+
         {/* Step indicator */}
         {step < 4 && (
           <div className="tutor-apply-stepper" style={{ display: "flex", gap: 0, marginBottom: 32, borderRadius: 8, overflow: "hidden", border: `1px solid ${T.border}` }}>
