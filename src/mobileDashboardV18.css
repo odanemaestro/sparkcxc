@@ -5,6 +5,33 @@
 
 .student-mobile-quick-actions{display:none}
 
+.spark-modal-card{position:relative}
+.spark-modal-close{
+  position:absolute;
+  top:14px;
+  right:14px;
+  width:38px;
+  height:38px;
+  min-width:38px;
+  min-height:38px;
+  padding:0;
+  border:1px solid var(--spark-border,#d7e2ee);
+  border-radius:12px;
+  background:var(--spark-paper,#fff);
+  color:var(--spark-ink,#0f2557);
+  display:grid;
+  place-items:center;
+  z-index:2;
+}
+.spark-modal-close svg{
+  width:20px;
+  height:20px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:2;
+  stroke-linecap:round;
+}
+
 .spark-mobile-appearance-row{
   display:flex;
   align-items:center;
@@ -527,4 +554,33 @@
   html[data-glass="true"] .spark-rewards-card,
   html[data-glass="true"] .spark-dashboard-support-grid>.spark-card{background:var(--spark-paper,#fff) !important}
   html[data-glass="true"] .spark-scroll-top{background:#18212d !important}
+}
+
+
+@media(max-width:700px){
+  .booking-session-modal{
+    padding-top:24px !important;
+  }
+  .booking-session-modal .spark-modal-close{
+    top:12px;
+    right:12px;
+  }
+  html[data-glass="true"] .booking-session-modal .spark-modal-close{
+    background:color-mix(in srgb,var(--spark-paper,#fff) 72%,transparent) !important;
+    border-color:color-mix(in srgb,var(--spark-border,#d7e2ee) 70%,transparent) !important;
+    -webkit-backdrop-filter:blur(14px) saturate(150%);
+    backdrop-filter:blur(14px) saturate(150%);
+  }
+  html[data-theme="dark"][data-glass="true"] .booking-session-modal .spark-modal-close{
+    background:rgba(13,28,49,.78) !important;
+    border-color:rgba(145,165,191,.18) !important;
+  }
+}
+
+@media(prefers-reduced-transparency:reduce){
+  html[data-glass="true"] .booking-session-modal .spark-modal-close{
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+    background:var(--spark-paper,#fff)!important;
+  }
 }
