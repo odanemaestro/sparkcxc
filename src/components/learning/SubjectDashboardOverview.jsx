@@ -84,9 +84,11 @@ export default function SubjectDashboardOverview({
           const progress = subject.progress || {};
           const total = Number(progress.totalTopics || subject.stats?.topics || 0);
           const completed = Number(progress.lessonsCompleted || 0);
-          const percent = Number.isFinite(Number(progress.lessonPercent))
+          const displayCompleted = total > 0 ? Math.min(Math.max(0, completed), total) : Math.max(0, completed);
+          const rawPercent = Number.isFinite(Number(progress.lessonPercent))
             ? Number(progress.lessonPercent)
             : (total ? Math.round(completed / total * 100) : 0);
+          const percent = Math.min(100, Math.max(0, rawPercent));
           const third = subjectMetricThird(progress);
           const fourth = subjectMetricFourth(subject, progress);
           const focus = subjectInsights?.[subject.id] || null;
@@ -96,8 +98,8 @@ export default function SubjectDashboardOverview({
                 <div className={`spark-subject-overview-mark ${subject.id}`} aria-hidden="true">{subject.mark || subject.shortName?.slice(0, 1) || "•"}</div>
                 <div><span>{subject.name}</span><small>{progress.active ? "Learning activity recorded" : "Ready when you are"}</small></div>
               </div>
-              <div className="spark-subject-overview-progress-row"><span>{completed} of {total || 0} topic lessons complete</span><strong>{percent}%</strong></div>
-              <ProgressBar value={completed} max={Math.max(1, total)} />
+              <div className="spark-subject-overview-progress-row"><span>{displayCompleted} of {total || 0} topic lessons complete</span><strong>{percent}%</strong></div>
+              <ProgressBar value={displayCompleted} max={Math.max(1, total)} />
               <div className="spark-subject-overview-metrics">
                 <div><strong>{progress.practiceAttempts || 0}</strong><span>practice results</span></div>
                 <div><strong>{progress.practiceAttempts ? `${Math.round(Number(progress.practiceAverage || 0))}%` : "—"}</strong><span>practice average</span></div>
