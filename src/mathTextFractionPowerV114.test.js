@@ -2,7 +2,9 @@ const fs = require("fs");
 const path = require("path");
 
 describe("MathText fraction power typography V11.4", () => {
-  const css = fs.readFileSync(path.join(__dirname, "practice", "mathText.css"), "utf8");
+  const css = fs
+    .readFileSync(path.join(__dirname, "practice", "mathText.css"), "utf8")
+    .replace(/\r\n?/g, "\n");
 
   test("powered denominators get extra clearance below the fraction bar", () => {
     expect(css).toContain(".spark-math .frac .fden{\n  padding-top:.82em;");
