@@ -1354,6 +1354,12 @@ body[data-theme="dark"] .pm-flashcards-dashboard .pm-flashcard-nav-row .pm-btn:n
   stroke-width:2.4;
   stroke-dasharray:4 3;
 }
+.pm-instrument-slider{
+  transition:transform 180ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1));
+}
+.pm-micrometer-rotor{
+  transition:transform 180ms var(--spark-ease-out,cubic-bezier(.23,1,.32,1));
+}
 .pm-micrometer-frame{
   fill:none;
   stroke:var(--pm-ink);
