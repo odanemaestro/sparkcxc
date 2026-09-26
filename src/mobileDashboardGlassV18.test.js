@@ -162,3 +162,12 @@ test("mobile booking time picker uses a floating sheet and booking modal border 
   expect(calendarCss).toContain("min-height:46px");
   expect(calendarCss).toContain("margin:-2px 0 8px");
 });
+
+
+test("booking modal focus and time list polish remain clean on mobile", () => {
+  const css = read("mobileDashboardV18.css");
+  expect(css).toContain(".spark-modal-card:focus-visible");
+  expect(css).toContain("outline:none");
+  expect(css).toContain("scroll-snap-type:y proximity");
+  expect(css).toContain("scroll-snap-align:start");
+});
