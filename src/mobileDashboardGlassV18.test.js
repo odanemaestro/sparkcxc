@@ -61,6 +61,9 @@ describe("SPARK mobile dashboard glass V18", () => {
     expect(app).toContain("aria-pressed={Boolean(glassMode)}");
     expect(css).toContain('html[data-glass="true"] .spark-nav');
     expect(css).toContain('html[data-glass="true"] .spark-scroll-top');
+    expect(css).toContain(".notification-trigger{");
+    expect(css).toContain("background:rgba(255,255,255,.08) !important");
+    expect(css).toContain("border-color:rgba(255,255,255,.22) !important");
     expect(css).toContain('html[data-glass="true"] .spark-nav .notification-trigger');
     expect(css).toContain('html[data-theme="light"][data-glass="true"] .student-mobile-quick-actions .student-mobile-quick-label');
     expect(css).toContain("backdrop-filter:blur(22px) saturate(165%)");
