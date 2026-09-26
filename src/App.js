@@ -4563,7 +4563,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
             {bookingsLoadError ? (
               <Card style={{textAlign:"center",padding:40}}><div style={{fontSize:32,marginBottom:12}}>!</div><div style={{fontFamily:FD,fontSize:18,color:T.ink,marginBottom:8}}>Couldn't load your sessions</div><p style={{color:T.textMuted,fontSize:14}}>Refresh the page to try again. If the problem continues, please contact support.</p></Card>
             ) : bookings.length === 0 ? (
-              <Card style={{textAlign:"center",padding:40}}><div style={{fontSize:32,marginBottom:12}}>📅</div><div style={{fontFamily:FD,fontSize:18,color:T.ink,marginBottom:8}}>No sessions booked yet</div><p style={{color:T.textMuted,fontSize:14}}>Sessions students book with you will show up here.</p></Card>
+              <Card style={{textAlign:"center",padding:40}}><div className="spark-empty-calendar-icon" style={{marginBottom:12}}><Icon name="calendar" size={30}/></div><div style={{fontFamily:FD,fontSize:18,color:T.ink,marginBottom:8}}>No sessions booked yet</div><p style={{color:T.textMuted,fontSize:14}}>Sessions students book with you will show up here.</p></Card>
             ) : bookingView === "calendar" ? (
               <SessionCalendar bookings={bookings} isTutor={true} user={user} onAccept={acceptBooking} onDecline={setDeclineTarget} onCancel={setTutorCancelTarget} onReview={() => {}} />
             ) : bookings.map(b => {
@@ -4947,7 +4947,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
             {bookingsLoadError ? (
               <Card style={{textAlign:"center",padding:40}}><div style={{fontSize:32,marginBottom:12}}>!</div><div style={{fontFamily:FD,fontSize:18,color:T.ink,marginBottom:8}}>Couldn't load your bookings</div><p style={{color:T.textMuted,fontSize:14}}>Refresh the page to try again. If the problem continues, please contact support.</p></Card>
             ) : bookings.length === 0 ? (
-              <Card style={{textAlign:"center",padding:40}}><div style={{fontSize:32,marginBottom:12}}>📅</div><div style={{fontFamily:FD,fontSize:18,color:T.ink,marginBottom:8}}>No sessions booked yet</div><p style={{color:T.textMuted,fontSize:14,marginBottom:20}}>Find a verified tutor and book your first session.</p><Btn onClick={() => setView("tutors")}>Find a tutor →</Btn></Card>
+              <Card style={{textAlign:"center",padding:40}}><div className="spark-empty-calendar-icon" style={{marginBottom:12}}><Icon name="calendar" size={30}/></div><div style={{fontFamily:FD,fontSize:18,color:T.ink,marginBottom:8}}>No sessions booked yet</div><p style={{color:T.textMuted,fontSize:14,marginBottom:20}}>Find a verified tutor and book your first session.</p><Btn onClick={() => setView("tutors")}>Find a tutor →</Btn></Card>
             ) : bookingView === "calendar" ? (
               <SessionCalendar bookings={bookings} isTutor={false} user={user} studentReviews={studentReviews} onCancel={setCancelTarget} onReview={setReviewTarget} onAccept={() => {}} onDecline={() => {}} />
             ) : (
@@ -5506,9 +5506,10 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
                 )}
               </div>
               {date && slot && !hasClash && (
-                <div style={{background:T.amberLight,borderRadius:8,padding:"11px 14px",
+                <div className="booking-summary-callout" style={{background:T.amberLight,borderRadius:8,padding:"11px 14px",
                   marginBottom:16,fontSize:13,color:T.amber,fontWeight:500}}>
-                  📅 {bookingTutor.name} · {subj} · {date} at {fmtSessionRange(slot, duration)} Jamaica time
+                  <span className="booking-summary-icon" aria-hidden="true"><Icon name="calendar" size={18}/></span>
+                  <span>{bookingTutor.name} · {subj} · {date} at {fmtSessionRange(slot, duration)} Jamaica time</span>
                 </div>
               )}
               <div style={{display:"flex",gap:10}}>
