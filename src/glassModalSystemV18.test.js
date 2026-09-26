@@ -91,3 +91,39 @@ describe("SPARK Glass modal system V18", () => {
     expect(report).toContain("<Modal onClose={onClose} maxWidth={760}>");
   });
 });
+
+
+test("Physics Paper 1 and Paper 2 custom dialogs follow Glass mode", () => {
+  const css = read("glassModalSystemV18.css");
+  const p1 = read("physics/paper1/components/PhysicsPaper1Exam.jsx");
+  const p2 = read("physics/paper2/components/PhysicsPaper2Exam.jsx");
+
+  expect(p1).toContain("phy-p1-confirm-modal");
+  expect(p1).toContain("phy-p1-nav-drawer");
+  expect(p2).toContain("phy-p2-confirm-modal");
+  expect(p2).toContain("phy-p2-constants-modal");
+  expect(css).toContain('html[data-glass="true"] .phy-p1-confirm-modal');
+  expect(css).toContain('html[data-glass="true"] .phy-p1-nav-drawer');
+  expect(css).toContain('html[data-glass="true"] .phy-p2-confirm-modal');
+  expect(css).toContain('html[data-glass="true"] .phy-p2-constants-modal');
+});
+
+test("Study Circles report and leave dialogs follow Glass mode", () => {
+  const css = read("glassModalSystemV18.css");
+  const circles = read("components/studyCircles/StudyCirclesPanel.jsx");
+
+  expect(circles).toContain("study-circle-modal");
+  expect(circles).toContain("study-circle-modal-scrim");
+  expect(css).toContain('html[data-glass="true"] .study-circle-modal');
+  expect(css).toContain('html[data-glass="true"] .study-circle-modal-scrim');
+  expect(css).toContain('html[data-theme="dark"][data-glass="true"] .study-circle-modal textarea');
+});
+
+test("question reporting dialog follows Glass mode", () => {
+  const css = read("glassModalSystemV18.css");
+  const report = read("components/ui/ReportQuestionButton.jsx");
+
+  expect(report).toContain("spark-question-report-dialog");
+  expect(css).toContain('html[data-glass="true"] .spark-question-report-dialog');
+  expect(css).toContain('html[data-theme="dark"][data-glass="true"] .spark-question-report-dialog textarea');
+});
