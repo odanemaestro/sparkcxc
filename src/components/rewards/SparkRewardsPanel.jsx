@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { rewardLevelForPoints, weeklyAchievementBadges, weeklyScoreBreakdown } from "../../rewards/sparkRewards";
+import Icon from "../ui/Icon";
 
 function safeNumber(value) {
   return Number.isFinite(Number(value)) ? Number(value) : 0;
@@ -124,7 +125,7 @@ export default function SparkRewardsPanel({
 
           {badges.length > 0 && (
             <div className="spark-rewards-badges" aria-label="Weekly achievements">
-              {badges.map(badge => <span key={badge.key}>{badge.icon} {badge.label}</span>)}
+              {badges.map(badge => <span key={badge.key}><Icon name={badge.icon} size={18}/><b>{badge.label}</b></span>)}
             </div>
           )}
 

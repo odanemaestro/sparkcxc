@@ -61,8 +61,10 @@ test("explains the iPhone Home Screen requirement", async () => {
     publicKeyConfigured: true,
   });
   render(<PushNotificationSettings user={{ id: "user-1" }} profile={{ role: "student" }} />);
-  expect(await screen.findByText("One step first on iPhone")).toBeInTheDocument();
+  expect(await screen.findByText("Install SPARK first on iPhone")).toBeInTheDocument();
   expect(screen.getByText(/Add to Home Screen/)).toBeInTheDocument();
+  expect(screen.getByText(/Apple requires Home Screen installation/)).toBeInTheDocument();
+  expect(screen.getByText(/You only need to install SPARK once/)).toBeInTheDocument();
 });
 
 test("parents receive a learning progress preference", async () => {

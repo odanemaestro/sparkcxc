@@ -69,6 +69,7 @@ import Card from "./components/ui/Card";
 import ProgressBar from "./components/ui/ProgressBar";
 import Toast from "./components/ui/Toast";
 import Modal from "./components/ui/Modal";
+import ConfirmModal from "./components/ui/ConfirmModal";
 import BookingDatePicker from "./components/booking/BookingDatePicker";
 import ScrollToTopButton from "./components/ui/ScrollToTopButton";
 import SparkLoader from "./components/ui/SparkLoader";
@@ -110,6 +111,8 @@ import "./theme.css";
 import "./passwordVisibility.css";
 import "./sparkRewards.css";
 import "./learningIntelligence.css";
+import "./mobileDashboardV18.css";
+import "./glassModalSystemV18.css";
 import "./sparkFinalButtonConsistencyV2642.css";
 import "./sparkSubjectLeaveModalV272.css";
 import GOOGLE_ICON_B64 from "./assets/icons/google-icon.png";
@@ -428,22 +431,55 @@ function jamaicaNowParts() {
 
 const TimeSlotPicker = ({ value, onChange, date, duration, busyOnDate = [], placeholder = "Select a start time" }) => {
   const [open, setOpen] = useState(false);
+  const [mobileSheet, setMobileSheet] = useState(false);
   const wrapRef = useRef(null);
+  const sheetRef = useRef(null);
+  const triggerRef = useRef(null);
   const selectedRef = useRef(null);
 
   useEffect(() => {
-    if (!open) return;
-    const handler = (e) => { if (wrapRef.current && !wrapRef.current.contains(e.target)) setOpen(false); };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, [open]);
+    const media = window.matchMedia?.("(max-width: 600px)");
+    if (!media) return undefined;
+    const sync = () => setMobileSheet(media.matches);
+    sync();
+    media.addEventListener?.("change", sync);
+    return () => media.removeEventListener?.("change", sync);
+  }, []);
 
-  // Bring the current selection into view the moment the list opens, so
-  // reopening to check a late-afternoon slot doesn't mean scrolling past
-  // the whole morning again.
+  useEffect(() => {
+    if (!open) return undefined;
+
+    const close = () => {
+      setOpen(false);
+      window.requestAnimationFrame(() => triggerRef.current?.focus({ preventScroll:true }));
+    };
+
+    const onPointerDown = event => {
+      if (wrapRef.current?.contains(event.target) || sheetRef.current?.contains(event.target)) return;
+      close();
+    };
+    const onKeyDown = event => {
+      if (event.key !== "Escape") return;
+      event.preventDefault();
+      event.stopPropagation();
+      close();
+    };
+
+    document.addEventListener("pointerdown", onPointerDown);
+    window.addEventListener("keydown", onKeyDown, true);
+    const previousOverflow = document.body.style.overflow;
+    if (mobileSheet) document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      window.removeEventListener("keydown", onKeyDown, true);
+      if (mobileSheet) document.body.style.overflow = previousOverflow;
+    };
+  }, [open, mobileSheet]);
+
   useEffect(() => {
     if (open && selectedRef.current) {
-      selectedRef.current.scrollIntoView({ block: "center" });
+      window.requestAnimationFrame(() => selectedRef.current?.scrollIntoView({ block:"center" }));
     }
   }, [open]);
 
@@ -463,58 +499,85 @@ const TimeSlotPicker = ({ value, onChange, date, duration, busyOnDate = [], plac
   });
   const anyAvailable = slots.some(s => !s.disabled);
 
+  const closePicker = () => {
+    setOpen(false);
+    window.requestAnimationFrame(() => triggerRef.current?.focus({ preventScroll:true }));
+  };
+
+  const chooseTime = slot => {
+    if (slot.disabled) return;
+    onChange(slot.time);
+    closePicker();
+  };
+
+  const list = (
+    <div
+      ref={sheetRef}
+      className={`booking-time-panel ${mobileSheet ? "is-mobile-sheet" : ""}`}
+      role="dialog"
+      aria-modal={mobileSheet ? "true" : "false"}
+      aria-label="Choose start time"
+    >
+      {mobileSheet && (
+        <div className="booking-time-sheet-top">
+          <span className="booking-time-sheet-handle" aria-hidden="true" />
+          <strong>Choose a start time</strong>
+          <button type="button" className="booking-time-close" aria-label="Close time picker" onClick={closePicker}>×</button>
+        </div>
+      )}
+
+      {!date ? (
+        <div className="booking-time-state">Pick a date first to see available times.</div>
+      ) : !anyAvailable ? (
+        <div className="booking-time-state">No available times on this date. Try another day.</div>
+      ) : (
+        <div className="booking-time-list">
+          {slots.map(s => {
+            const active = value === s.time;
+            return (
+              <button
+                type="button"
+                key={s.time}
+                ref={active ? selectedRef : null}
+                className={`booking-time-option ${active ? "is-active" : ""}`}
+                disabled={s.disabled}
+                onClick={() => chooseTime(s)}
+              >
+                <span>{fmtClock(s.time)}</span>
+                {s.reason && <small>{s.reason}</small>}
+              </button>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+
   return (
-    <div ref={wrapRef}>
-      <button type="button" onClick={() => setOpen(o => !o)}
-        style={{width:"100%",padding:"11px 14px",border:`1.5px solid ${open?T.teal:T.border}`,
-          borderRadius:T.rSm,fontSize:14,fontFamily:FB,color:value?T.ink:T.textMuted,
-          background:T.paper,display:"flex",justifyContent:"space-between",alignItems:"center",
-          cursor:"pointer",transition:`all .18s ${T.ease}`,
-          boxShadow:open?`0 0 0 3px ${T.tealLight}`:"none"}}>
+    <div ref={wrapRef} className="booking-time-picker">
+      <button
+        ref={triggerRef}
+        type="button"
+        className={`booking-time-trigger ${open ? "is-open" : ""}`}
+        aria-haspopup="dialog"
+        aria-expanded={open}
+        onClick={() => setOpen(current => !current)}
+      >
         <span>{value ? fmtClock(value) : placeholder}</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
-          style={{opacity:.55,flexShrink:0,transform:open?"rotate(180deg)":"none",transition:`transform .18s ${T.ease}`}}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
           <path d="M6 9l6 6 6-6"/>
         </svg>
       </button>
-      {open && (
-        <div className="fade-in" style={{marginTop:8,border:`1px solid ${T.borderSoft}`,borderRadius:T.rSm,
-          boxShadow:T.shadowSm,maxHeight:240,overflowY:"auto",background:T.paper}}>
-          {!date ? (
-            <div style={{padding:"16px 12px",fontSize:13,color:T.textMuted,textAlign:"center"}}>
-              Pick a date first to see available times.
-            </div>
-          ) : !anyAvailable ? (
-            <div style={{padding:"16px 12px",fontSize:13,color:T.textMuted,textAlign:"center"}}>
-              No available times on this date. Try another day.
-            </div>
-          ) : (
-            slots.map((s, i) => {
-              const active = value === s.time;
-              return (
-                <div key={s.time}
-                  ref={active ? selectedRef : null}
-                  onClick={() => { if (!s.disabled) { onChange(s.time); setOpen(false); } }}
-                  style={{
-                    display:"flex",justifyContent:"space-between",alignItems:"center",
-                    padding:"10px 14px",
-                    cursor:s.disabled?"not-allowed":"pointer",
-                    fontSize:13.5,
-                    fontWeight:active?700:500,
-                    color:s.disabled?T.textMuted:(active?T.tealDark:T.inkSoft),
-                    background:active?T.tealLight:"transparent",
-                    opacity:s.disabled?.55:1,
-                    borderBottom:i<slots.length-1?`1px solid ${T.borderSoft}`:"none",
-                    transition:`background .12s ${T.ease}`
-                  }}>
-                  <span style={{textDecoration:s.disabled?"line-through":"none"}}>{fmtClock(s.time)}</span>
-                  {s.reason && <span style={{fontSize:10.5,fontWeight:700,textTransform:"uppercase",letterSpacing:"0.04em"}}>{s.reason}</span>}
-                </div>
-              );
-            })
-          )}
-        </div>
-      )}
+
+      {open && mobileSheet && typeof document !== "undefined"
+        ? createPortal(
+            <div className="booking-time-layer" role="presentation">
+              <button type="button" className="booking-time-scrim" aria-label="Close time picker" onClick={closePicker} />
+              {list}
+            </div>,
+            document.body
+          )
+        : open ? list : null}
     </div>
   );
 };
@@ -1484,7 +1547,7 @@ function SubjectEnrollmentRequiredView({ subjectName = "", onManageSubjects, onB
 }
 
 // ─── NAV ────────────────────────────────────────────────────────────────────
-function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorApp, view, themeMode, resolvedTheme, setThemeMode }) {
+function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorApp, view, themeMode, resolvedTheme, setThemeMode, glassMode, setGlassMode }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButtonRef = useRef(null);
   const mobileMenuRef = useRef(null);
@@ -1549,7 +1612,7 @@ function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorAp
   );
 
   return (
-    <nav className="glass-nav spark-nav" aria-label="Primary navigation">
+    <nav className={`glass-nav spark-nav ${menuOpen ? "spark-nav-menu-open" : ""}`} aria-label="Primary navigation">
       <div className="spark-nav-inner">
         <button type="button" className="spark-brand" onClick={() => navigate(isDedicatedAdmin ? "admin" : "home")} aria-label="SPARK home">
           <svg width="26" height="26" viewBox="0 0 512 512" aria-hidden="true">
@@ -1603,6 +1666,21 @@ function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorAp
         <div ref={mobileMenuRef} id="spark-mobile-navigation" className="spark-mobile-menu">
           <div className="spark-mobile-menu-links">
             {user ? signedInLinks : publicLinks}
+          </div>
+          <div className="spark-mobile-appearance-row">
+            <div>
+              <strong>Glass appearance</strong>
+              <span>Use translucent, blurred surfaces on supported devices.</span>
+            </div>
+            <button
+              type="button"
+              className={`spark-glass-switch ${glassMode ? "is-on" : ""}`}
+              onClick={() => setGlassMode(!glassMode)}
+              aria-pressed={Boolean(glassMode)}
+              aria-label={glassMode ? "Turn off glass appearance" : "Turn on glass appearance"}
+            >
+              <i />
+            </button>
           </div>
           {user ? (
             <div className="spark-mobile-account-row">
@@ -3598,6 +3676,16 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     };
   }, [updateDashTabsOverflow, isTutor, sec]);
 
+  useEffect(() => {
+    const el = dashSidebarRef.current;
+    if (!el || typeof window === "undefined" || window.innerWidth > 700) return;
+    const active = el.querySelector('[aria-current="page"]');
+    if (!active || typeof active.scrollIntoView !== "function") return;
+    window.requestAnimationFrame(() => {
+      active.scrollIntoView({ behavior:"smooth", block:"nearest", inline:"center" });
+    });
+  }, [sec]);
+
   // Resolve the URL on first mount/refresh once we know whether this account
   // owns the student or tutor dashboard. This is what makes refreshing
   // #/dashboard/bookings or #/dashboard/sessions reopen the exact tab.
@@ -4328,6 +4416,15 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
           <div className="dash-nav-item" key={item.k} onClick={() => setDashboardSection(item.k)}
             title={item.label}
             aria-label={item.label}
+            aria-current={sec===item.k ? "page" : undefined}
+            role="button"
+            tabIndex={0}
+            onKeyDown={event => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                setDashboardSection(item.k);
+              }
+            }}
             style={{padding:"10px 14px",fontSize:14,cursor:"pointer",display:"flex",alignItems:"center",
               gap:8,borderRadius:T.rSm,
               color:sec===item.k?T.tealDark:T.textMuted,background:sec===item.k?T.tealLight:"transparent",
@@ -4464,6 +4561,22 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 </h1>
                 <p style={{color:T.textMuted,fontSize:14,marginBottom:24}}>Keep that momentum going.</p>
               </div>
+            </div>
+            <div className="student-mobile-quick-actions" aria-label="Quick learning actions">
+              <button type="button" className="student-mobile-quick-action" onClick={() => setView("study")}>
+                <span className="student-mobile-quick-icon" aria-hidden="true"><Icon name="featureBook" size={19}/></span>
+                <span className="student-mobile-quick-label">Continue study</span>
+              </button>
+              <button type="button" className="student-mobile-quick-action" onClick={() => setView("practice")}>
+                <span className="student-mobile-quick-icon" aria-hidden="true"><Icon name="goal" size={19}/></span>
+                <span className="student-mobile-quick-label">Quick practice</span>
+              </button>
+              {studentHasFlashcards && (
+                <button type="button" className="student-mobile-quick-action" onClick={() => setDashboardSection("flashcards")}>
+                  <span className="student-mobile-quick-icon" aria-hidden="true"><Icon name="flashcards" size={19}/></span>
+                  <span className="student-mobile-quick-label">Flashcards</span>
+                </button>
+              )}
             </div>
             <SparkRewardsPanel
               supabase={supabase}
@@ -5443,7 +5556,12 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
       <Footer setView={setView} hasTutorApp={hasTutorApp} isTutor={isTutor} isParent={isParent} />
 
       {bookingTutor && (
-        <Modal onClose={() => setBookingTutor(null)}>
+        <Modal
+          onClose={() => setBookingTutor(null)}
+          className="booking-session-modal"
+          showClose
+          closeLabel="Close booking"
+        >
           {!bookingDone ? (
             <>
               <div style={{fontFamily:FD,fontSize:20,fontWeight:700,color:T.ink,marginBottom:4}}>Book a session</div>
@@ -5452,11 +5570,16 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
               </div>
               <div style={{marginBottom:14}}>
                 <div style={{fontSize:13,fontWeight:500,color:T.inkSoft,marginBottom:6}}>Subject</div>
-                <select value={subj} onChange={e=>setSubj(e.target.value)}
-                  style={{width:"100%",padding:"10px 12px",border:`1.5px solid ${T.border}`,
-                    borderRadius:7,fontSize:14,fontFamily:FB,color:T.ink,outline:"none"}}>
-                  {(bookingTutor.subjects||[]).map(s => <option key={s} value={s}>{s}</option>)}
-                </select>
+                <div className="booking-subject-select-wrap">
+                  <select className="booking-subject-select" value={subj} onChange={e=>setSubj(e.target.value)}
+                    style={{width:"100%",padding:"10px 42px 10px 12px",border:`1.5px solid ${T.border}`,
+                      borderRadius:7,fontSize:14,fontFamily:FB,color:T.ink,outline:"none"}}>
+                    {(bookingTutor.subjects||[]).map(s => <option key={s} value={s}>{s}</option>)}
+                  </select>
+                  <svg className="booking-subject-chevron" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7 10l5 5 5-5"/>
+                  </svg>
+                </div>
               </div>
               <div style={{marginBottom:14}}>
                 <div style={{fontSize:13,fontWeight:500,color:T.inkSoft,marginBottom:6}}>Date</div>
@@ -5469,9 +5592,9 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
               </div>
               <div style={{marginBottom:14}}>
                 <div style={{fontSize:13,fontWeight:500,color:T.inkSoft,marginBottom:6}}>Duration</div>
-                <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
+                <div className="booking-duration-grid">
                   {SESSION_DURATIONS.map(d => (
-                    <button key={d.mins} onClick={() => setDuration(d.mins)}
+                    <button className="booking-duration-option" key={d.mins} onClick={() => setDuration(d.mins)}
                       style={{padding:"8px 12px",borderRadius:7,fontSize:12.5,cursor:"pointer",
                         fontFamily:FB,transition:"all .15s",
                         border:`1.5px solid ${duration===d.mins?T.teal:T.border}`,
@@ -6545,7 +6668,7 @@ function GoogleOAuthGateErrorView({ message, onRetry, onSignOut }) {
 
 export default function App() {
   const [view, setViewState] = useState(() => viewFromBrowserHash());
-  const { themeMode, resolvedTheme, setThemeMode } = useThemeMode();
+  const { themeMode, resolvedTheme, setThemeMode, glassMode, setGlassMode } = useThemeMode();
   const viewRef = useRef(view);
   const [session, setSession] = useState(null);
   const [profile, setProfile] = useState(null);
@@ -7331,7 +7454,7 @@ if (loading || authenticatedRolePending) {
     return <SparkLoader variant="screen" label="Opening SPARK Admin" />;
   }
 
-  const navProps = { setView, user: session?.user, profile, onLogout: handleLogout, liveStats, hasTutorApp: hideTutorApplyLink, tutorApp, view, themeMode, resolvedTheme, setThemeMode };
+  const navProps = { setView, user: session?.user, profile, onLogout: handleLogout, liveStats, hasTutorApp: hideTutorApplyLink, tutorApp, view, themeMode, resolvedTheme, setThemeMode, glassMode, setGlassMode };
 
   return (
     <div className="spark-app-root" style={{minHeight:"100vh",display:"flex",flexDirection:"column",background:T.bg,color:T.ink}}>
@@ -8237,6 +8360,7 @@ function BecomeTutorView({ setView, user, profile, showToast, hasTutorApp, tutor
   const [phoneLocal, setPhoneLocal] = React.useState(() => savedDraft?.phoneLocal || "");
   const [awaitingTutorVerification, setAwaitingTutorVerification] = React.useState(() => Boolean(loadTutorVerificationHandoff()) && !user);
   const [resendingTutorVerification, setResendingTutorVerification] = React.useState(false);
+  const [discardTutorDraftConfirm, setDiscardTutorDraftConfirm] = React.useState(false);
   const tutorVerificationResumeRef = React.useRef(false);
   const tutorVerificationStage = loadTutorVerificationHandoff()?.stage || "submit_application";
 
@@ -8554,20 +8678,30 @@ const validateApplication = () => validateStep1() || validateStep2() || validate
             background: T.tealLight, border: `1px solid ${T.teal}`, borderRadius: 8, padding: "10px 14px", marginBottom: 20, fontSize: 13 }}>
             <span style={{ color: T.tealDark }}>Your saved application has been restored. Continue from where you stopped.</span>
             <button
-              onClick={() => {
-                if (!window.confirm("Discard your saved progress and start over?")) return;
-                clearTutorApplicationDraft();
-                setForm({ name: profile?.name || "", email: "", password: "", phone: "", bio: "", subjects: [], rate: 1500, quals: "", experience: "", availability: "" });
-                setPhoneCountry("JM");
-                setPhoneLocal("");
-                setStep(1);
-              }}
+              onClick={() => setDiscardTutorDraftConfirm(true)}
               style={{ background: "none", border: "none", color: T.tealDark, textDecoration: "underline", cursor: "pointer", fontSize: 13, fontWeight: 600, flexShrink: 0 }}
             >
               Start over
             </button>
           </div>
         )}
+        <ConfirmModal
+          open={discardTutorDraftConfirm}
+          onClose={() => setDiscardTutorDraftConfirm(false)}
+          onConfirm={() => {
+            clearTutorApplicationDraft();
+            setForm({ name: profile?.name || "", email: "", password: "", phone: "", bio: "", subjects: [], rate: 1500, quals: "", experience: "", availability: "" });
+            setPhoneCountry("JM");
+            setPhoneLocal("");
+            setStep(1);
+            setDiscardTutorDraftConfirm(false);
+          }}
+          title="Start over?"
+          message="Discard your saved tutor application progress and start again from the beginning?"
+          confirmLabel="Discard progress"
+          destructive
+        />
+
         {/* Step indicator */}
         {step < 4 && (
           <div className="tutor-apply-stepper" style={{ display: "flex", gap: 0, marginBottom: 32, borderRadius: 8, overflow: "hidden", border: `1px solid ${T.border}` }}>

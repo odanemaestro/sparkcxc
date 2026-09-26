@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 
 export const THEME_STORAGE_KEY = "spark_theme_mode";
+export const GLASS_STORAGE_KEY = "spark_glass_mode";
 export const THEME_MODES = Object.freeze(["light", "dark"]);
 
 function prefersDark() {
@@ -16,18 +17,30 @@ function initialMode() {
     if (THEME_MODES.includes(saved)) return saved;
   } catch {}
 
-  // Preserve the user's current device appearance on first load, then persist
-  // the first explicit Light/Dark choice made with the new two-state toggle.
   return prefersDark() ? "dark" : "light";
+}
+
+function initialGlassMode() {
+  if (typeof window === "undefined") return false;
+  try {
+    return window.localStorage.getItem(GLASS_STORAGE_KEY) === "true";
+  } catch {
+    return false;
+  }
 }
 
 export default function useThemeMode() {
   const [themeMode, setThemeModeState] = useState(initialMode);
+  const [glassMode, setGlassModeState] = useState(initialGlassMode);
   const resolvedTheme = themeMode;
 
   const setThemeMode = useCallback(nextMode => {
     if (!THEME_MODES.includes(nextMode)) return;
     setThemeModeState(nextMode);
+  }, []);
+
+  const setGlassMode = useCallback(enabled => {
+    setGlassModeState(Boolean(enabled));
   }, []);
 
   useEffect(() => {
@@ -45,5 +58,13 @@ export default function useThemeMode() {
     if (meta) meta.setAttribute("content", themeColor);
   }, [themeMode, resolvedTheme]);
 
-  return { themeMode, resolvedTheme, setThemeMode };
+  useEffect(() => {
+    const root = document.documentElement;
+    root.dataset.glass = glassMode ? "true" : "false";
+    try {
+      window.localStorage.setItem(GLASS_STORAGE_KEY, glassMode ? "true" : "false");
+    } catch {}
+  }, [glassMode]);
+
+  return { themeMode, resolvedTheme, setThemeMode, glassMode, setGlassMode };
 }

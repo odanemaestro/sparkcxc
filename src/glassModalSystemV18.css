@@ -1,0 +1,489 @@
+/* ==========================================================================
+   SPARK GLASS MODAL SYSTEM V18
+   Shared optional Glass treatment for SPARK dialogs, sheets and exam overlays.
+   Normal Light/Dark themes remain unchanged when data-glass is not true.
+   ========================================================================== */
+
+html[data-glass="true"] .spark-modal-backdrop,
+html[data-glass="true"] .paper-modal-backdrop,
+html[data-glass="true"] .paper-nav-drawer-backdrop,
+html[data-glass="true"] .is-exam-modal-backdrop,
+html[data-glass="true"] .is-exam-drawer-backdrop,
+html[data-glass="true"] .it-exit-overlay{
+  background:rgba(8,26,61,.40)!important;
+  -webkit-backdrop-filter:blur(8px) saturate(120%);
+  backdrop-filter:blur(8px) saturate(120%);
+}
+
+html[data-glass="true"] .spark-modal-card,
+html[data-glass="true"] .paper-submit-modal,
+html[data-glass="true"] .paper2-formula-modal,
+html[data-glass="true"] .paper-nav-drawer,
+html[data-glass="true"] .is-exam-modal,
+html[data-glass="true"] .is-exam-drawer,
+html[data-glass="true"] .it-exit-dialog{
+  background:color-mix(in srgb,var(--spark-paper,#fff) 84%,transparent)!important;
+  border:1px solid color-mix(in srgb,var(--spark-border,#d7e2ee) 68%,transparent)!important;
+  -webkit-backdrop-filter:blur(26px) saturate(165%);
+  backdrop-filter:blur(26px) saturate(165%);
+  box-shadow:
+    0 28px 72px rgba(8,26,61,.24),
+    inset 0 1px 0 rgba(255,255,255,.24)!important;
+}
+
+html[data-glass="true"] .spark-modal-close,
+html[data-glass="true"] .paper2-modal-head button,
+html[data-glass="true"] .paper-nav-drawer-head>button,
+html[data-glass="true"] .is-exam-drawer header button{
+  background:color-mix(in srgb,var(--spark-paper,#fff) 72%,transparent)!important;
+  border-color:color-mix(in srgb,var(--spark-border,#d7e2ee) 68%,transparent)!important;
+  -webkit-backdrop-filter:blur(14px) saturate(145%);
+  backdrop-filter:blur(14px) saturate(145%);
+}
+
+html[data-theme="dark"][data-glass="true"] .spark-modal-backdrop,
+html[data-theme="dark"][data-glass="true"] .paper-modal-backdrop,
+html[data-theme="dark"][data-glass="true"] .paper-nav-drawer-backdrop,
+html[data-theme="dark"][data-glass="true"] .is-exam-modal-backdrop,
+html[data-theme="dark"][data-glass="true"] .is-exam-drawer-backdrop,
+html[data-theme="dark"][data-glass="true"] .it-exit-overlay{
+  background:rgba(2,8,18,.58)!important;
+}
+
+html[data-theme="dark"][data-glass="true"] .spark-modal-card,
+html[data-theme="dark"][data-glass="true"] .paper-submit-modal,
+html[data-theme="dark"][data-glass="true"] .paper2-formula-modal,
+html[data-theme="dark"][data-glass="true"] .paper-nav-drawer,
+html[data-theme="dark"][data-glass="true"] .is-exam-modal,
+html[data-theme="dark"][data-glass="true"] .is-exam-drawer,
+html[data-theme="dark"][data-glass="true"] .it-exit-dialog{
+  background:rgba(13,28,49,.86)!important;
+  border-color:rgba(145,165,191,.16)!important;
+  color:var(--spark-ink,#eaf2ff)!important;
+  box-shadow:
+    0 30px 78px rgba(0,0,0,.42),
+    inset 0 1px 0 rgba(255,255,255,.055)!important;
+}
+
+html[data-theme="dark"][data-glass="true"] .spark-modal-close,
+html[data-theme="dark"][data-glass="true"] .paper2-modal-head button,
+html[data-theme="dark"][data-glass="true"] .paper-nav-drawer-head>button,
+html[data-theme="dark"][data-glass="true"] .is-exam-drawer header button{
+  background:rgba(255,255,255,.055)!important;
+  border-color:rgba(145,165,191,.18)!important;
+  color:var(--spark-ink,#eaf2ff)!important;
+}
+
+/* Exam dialog text must follow the active dark theme instead of hardcoded light colors. */
+html[data-theme="dark"][data-glass="true"] .paper-submit-modal h2,
+html[data-theme="dark"][data-glass="true"] .paper2-modal-head h2,
+html[data-theme="dark"][data-glass="true"] .paper-nav-drawer-head strong{
+  color:var(--spark-ink,#eaf2ff)!important;
+}
+html[data-theme="dark"][data-glass="true"] .paper-submit-modal p,
+html[data-theme="dark"][data-glass="true"] .paper-nav-drawer-head span{
+  color:var(--spark-text-muted,#91a5bf)!important;
+}
+
+html[data-theme="dark"][data-glass="true"] .paper-navigator.paper-navigator-drawer-panel{
+  background:transparent!important;
+  border-color:rgba(145,165,191,.14)!important;
+  box-shadow:none!important;
+}
+
+html[data-theme="dark"][data-glass="true"] .paper2-formula-scroll{
+  background:rgba(8,18,32,.52)!important;
+  border-color:rgba(145,165,191,.16)!important;
+}
+
+html[data-theme="dark"][data-glass="true"] .paper-submit-icon{
+  background:rgba(45,212,191,.10)!important;
+  color:#5eead4!important;
+}
+
+html[data-theme="dark"][data-glass="true"] .paper-nav-grid button,
+html[data-theme="dark"][data-glass="true"] .paper-nav-legend i{
+  background:rgba(255,255,255,.04)!important;
+  border-color:rgba(145,165,191,.18)!important;
+  color:var(--spark-text-muted,#91a5bf)!important;
+}
+html[data-theme="dark"][data-glass="true"] .paper-nav-grid button.answered{
+  background:rgba(45,212,191,.10)!important;
+  border-color:rgba(94,234,212,.24)!important;
+  color:#99f6e4!important;
+}
+html[data-theme="dark"][data-glass="true"] .paper-nav-grid button.current{
+  box-shadow:0 0 0 2px rgba(234,242,255,.72)!important;
+  border-color:rgba(234,242,255,.72)!important;
+}
+
+html[data-theme="dark"][data-glass="true"] .paper2-navigator-summary{
+  background:rgba(255,255,255,.045)!important;
+}
+html[data-theme="dark"][data-glass="true"] .paper2-navigator-summary strong,
+html[data-theme="dark"][data-glass="true"] .paper2-section-label b{
+  color:var(--spark-ink,#eaf2ff)!important;
+}
+
+/* Integrated Science custom dialogs use their own theme variables. */
+html[data-glass="true"] .is-exam-modal,
+html[data-glass="true"] .is-exam-drawer{
+  --is-card:color-mix(in srgb,var(--spark-paper,#fff) 84%,transparent);
+}
+html[data-theme="dark"][data-glass="true"] .is-exam-modal,
+html[data-theme="dark"][data-glass="true"] .is-exam-drawer{
+  --is-card:rgba(13,28,49,.86);
+  --is-ink:var(--spark-ink,#eaf2ff);
+  --is-muted:var(--spark-text-muted,#91a5bf);
+  --is-border:rgba(145,165,191,.16);
+}
+
+/* IT custom exit confirmation follows the same Glass surface contract. */
+html[data-theme="dark"][data-glass="true"] .it-exit-dialog{
+  --it-card:rgba(13,28,49,.86);
+  --it-line:rgba(145,165,191,.16);
+  --it-ink:var(--spark-ink,#eaf2ff);
+  --it-muted:var(--spark-text-muted,#91a5bf);
+}
+
+/* Mobile sheets keep safe-area spacing and slightly stronger separation. */
+@media(max-width:700px){
+  html[data-glass="true"] .spark-modal-card,
+  html[data-glass="true"] .paper-submit-modal,
+  html[data-glass="true"] .paper2-formula-modal,
+  html[data-glass="true"] .is-exam-modal,
+  html[data-glass="true"] .it-exit-dialog{
+    box-shadow:
+      0 22px 56px rgba(8,26,61,.24),
+      inset 0 1px 0 rgba(255,255,255,.20)!important;
+  }
+
+  html[data-theme="dark"][data-glass="true"] .spark-modal-card,
+  html[data-theme="dark"][data-glass="true"] .paper-submit-modal,
+  html[data-theme="dark"][data-glass="true"] .paper2-formula-modal,
+  html[data-theme="dark"][data-glass="true"] .is-exam-modal,
+  html[data-theme="dark"][data-glass="true"] .it-exit-dialog{
+    box-shadow:
+      0 24px 62px rgba(0,0,0,.40),
+      inset 0 1px 0 rgba(255,255,255,.05)!important;
+  }
+}
+
+@media(prefers-reduced-transparency:reduce){
+  html[data-glass="true"] .spark-modal-backdrop,
+  html[data-glass="true"] .paper-modal-backdrop,
+  html[data-glass="true"] .paper-nav-drawer-backdrop,
+  html[data-glass="true"] .is-exam-modal-backdrop,
+  html[data-glass="true"] .is-exam-drawer-backdrop,
+  html[data-glass="true"] .it-exit-overlay,
+  html[data-glass="true"] .spark-modal-card,
+  html[data-glass="true"] .paper-submit-modal,
+  html[data-glass="true"] .paper2-formula-modal,
+  html[data-glass="true"] .paper-nav-drawer,
+  html[data-glass="true"] .is-exam-modal,
+  html[data-glass="true"] .is-exam-drawer,
+  html[data-glass="true"] .it-exit-dialog,
+  html[data-glass="true"] .spark-modal-close,
+  html[data-glass="true"] .paper2-modal-head button,
+  html[data-glass="true"] .paper-nav-drawer-head>button,
+  html[data-glass="true"] .is-exam-drawer header button{
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+  }
+
+  html[data-glass="true"] .spark-modal-card,
+  html[data-glass="true"] .paper-submit-modal,
+  html[data-glass="true"] .paper2-formula-modal,
+  html[data-glass="true"] .paper-nav-drawer,
+  html[data-glass="true"] .is-exam-modal,
+  html[data-glass="true"] .is-exam-drawer,
+  html[data-glass="true"] .it-exit-dialog{
+    background:var(--spark-paper,#fff)!important;
+  }
+}
+
+
+/* Shared SPARK confirmation dialog */
+.spark-confirm-modal__body{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr);
+  gap:14px;
+  align-items:start;
+  padding-right:36px;
+}
+.spark-confirm-modal__icon{
+  width:44px;
+  height:44px;
+  border-radius:13px;
+  display:grid;
+  place-items:center;
+  background:var(--spark-teal-light,#e7faf6);
+  color:var(--spark-teal-dark,#087f73);
+  border:1px solid color-mix(in srgb,var(--spark-teal,#0d9488) 28%,var(--spark-border,#d7e2ee));
+}
+.spark-confirm-modal__icon.is-destructive{
+  background:color-mix(in srgb,var(--spark-red,#c2413b) 10%,var(--spark-paper,#fff));
+  color:var(--spark-red,#c2413b);
+  border-color:color-mix(in srgb,var(--spark-red,#c2413b) 34%,var(--spark-border,#d7e2ee));
+}
+.spark-confirm-modal__icon svg{
+  width:22px;
+  height:22px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.spark-confirm-modal__body h2{
+  margin:2px 0 7px;
+  color:var(--spark-ink,#0f2557);
+  font-family:"Crimson Pro",Georgia,serif;
+  font-size:24px;
+  line-height:1.15;
+}
+.spark-confirm-modal__body p{
+  margin:0;
+  color:var(--spark-text-muted,#64748b);
+  font-size:13.5px;
+  line-height:1.6;
+}
+.spark-confirm-modal__actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:22px;
+}
+.spark-confirm-modal__actions>button{
+  width:100%!important;
+  justify-content:center!important;
+  min-height:46px;
+}
+.spark-confirm-danger{
+  background:var(--spark-red,#c2413b)!important;
+  border-color:var(--spark-red,#c2413b)!important;
+  color:#fff!important;
+}
+html[data-theme="dark"][data-glass="true"] .spark-confirm-modal__icon{
+  background:rgba(45,212,191,.08);
+  border-color:rgba(94,234,212,.18);
+}
+html[data-theme="dark"][data-glass="true"] .spark-confirm-modal__icon.is-destructive{
+  background:rgba(239,68,68,.08);
+  border-color:rgba(248,113,113,.18);
+}
+
+@media(max-width:480px){
+  .spark-confirm-modal__body{
+    grid-template-columns:1fr;
+    padding-right:30px;
+  }
+  .spark-confirm-modal__actions{
+    grid-template-columns:1fr;
+  }
+}
+
+
+/* Physics Paper 1 and Paper 2 custom modal families */
+html[data-glass="true"] .phy-p1-modal-backdrop,
+html[data-glass="true"] .phy-p1-nav-drawer-backdrop,
+html[data-glass="true"] .phy-p2-modal-backdrop{
+  background:rgba(8,26,61,.40)!important;
+  -webkit-backdrop-filter:blur(8px) saturate(120%);
+  backdrop-filter:blur(8px) saturate(120%);
+}
+
+html[data-glass="true"] .phy-p1-confirm-modal,
+html[data-glass="true"] .phy-p1-nav-drawer,
+html[data-glass="true"] .phy-p2-confirm-modal,
+html[data-glass="true"] .phy-p2-constants-modal{
+  background:color-mix(in srgb,var(--spark-paper,#fff) 84%,transparent)!important;
+  border-color:color-mix(in srgb,var(--spark-border,#d7e2ee) 68%,transparent)!important;
+  -webkit-backdrop-filter:blur(26px) saturate(165%);
+  backdrop-filter:blur(26px) saturate(165%);
+  box-shadow:0 28px 72px rgba(8,26,61,.24),inset 0 1px 0 rgba(255,255,255,.24)!important;
+}
+
+html[data-theme="dark"][data-glass="true"] .phy-p1-modal-backdrop,
+html[data-theme="dark"][data-glass="true"] .phy-p1-nav-drawer-backdrop,
+html[data-theme="dark"][data-glass="true"] .phy-p2-modal-backdrop{
+  background:rgba(2,8,18,.58)!important;
+}
+
+html[data-theme="dark"][data-glass="true"] .phy-p1-confirm-modal,
+html[data-theme="dark"][data-glass="true"] .phy-p1-nav-drawer{
+  --p1-card:rgba(13,28,49,.86);
+  --p1-bg:rgba(8,18,32,.58);
+  --p1-ink:var(--spark-ink,#eaf2ff);
+  --p1-soft-ink:#c0ccdb;
+  --p1-muted:var(--spark-text-muted,#91a5bf);
+  --p1-border:rgba(145,165,191,.16);
+  background:rgba(13,28,49,.86)!important;
+  border-color:rgba(145,165,191,.16)!important;
+  color:var(--spark-ink,#eaf2ff)!important;
+  box-shadow:0 30px 78px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.055)!important;
+}
+
+html[data-theme="dark"][data-glass="true"] .phy-p2-confirm-modal,
+html[data-theme="dark"][data-glass="true"] .phy-p2-constants-modal{
+  --p2-card:rgba(13,28,49,.86);
+  --p2-bg:rgba(8,18,32,.58);
+  --p2-ink:var(--spark-ink,#eaf2ff);
+  --p2-soft-ink:#c0ccdb;
+  --p2-muted:var(--spark-text-muted,#91a5bf);
+  --p2-border:rgba(145,165,191,.16);
+  background:rgba(13,28,49,.86)!important;
+  border-color:rgba(145,165,191,.16)!important;
+  color:var(--spark-ink,#eaf2ff)!important;
+  box-shadow:0 30px 78px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.055)!important;
+}
+
+html[data-glass="true"] .phy-p1-nav-drawer-head>button,
+html[data-glass="true"] .phy-p2-constants-head>button{
+  background:color-mix(in srgb,var(--spark-paper,#fff) 72%,transparent)!important;
+  border-color:color-mix(in srgb,var(--spark-border,#d7e2ee) 68%,transparent)!important;
+  -webkit-backdrop-filter:blur(14px) saturate(145%);
+  backdrop-filter:blur(14px) saturate(145%);
+}
+
+html[data-theme="dark"][data-glass="true"] .phy-p1-nav-drawer-head>button,
+html[data-theme="dark"][data-glass="true"] .phy-p2-constants-head>button{
+  background:rgba(255,255,255,.055)!important;
+  border-color:rgba(145,165,191,.18)!important;
+  color:var(--spark-ink,#eaf2ff)!important;
+}
+
+/* Study Circles report and leave sheets */
+html[data-glass="true"] .study-circle-modal-scrim{
+  background:rgba(8,26,61,.40)!important;
+  -webkit-backdrop-filter:blur(8px) saturate(120%);
+  backdrop-filter:blur(8px) saturate(120%);
+}
+
+html[data-glass="true"] .study-circle-modal{
+  background:color-mix(in srgb,var(--spark-paper,#fff) 84%,transparent)!important;
+  border-color:color-mix(in srgb,var(--spark-border,#d7e2ee) 68%,transparent)!important;
+  -webkit-backdrop-filter:blur(26px) saturate(165%);
+  backdrop-filter:blur(26px) saturate(165%);
+  box-shadow:0 28px 72px rgba(8,26,61,.24),inset 0 1px 0 rgba(255,255,255,.24)!important;
+}
+
+html[data-glass="true"] .study-circle-modal-close{
+  background:color-mix(in srgb,var(--spark-paper,#fff) 72%,transparent)!important;
+  border-color:color-mix(in srgb,var(--spark-border,#d7e2ee) 68%,transparent)!important;
+  -webkit-backdrop-filter:blur(14px) saturate(145%);
+  backdrop-filter:blur(14px) saturate(145%);
+}
+
+html[data-theme="dark"][data-glass="true"] .study-circle-modal{
+  background:rgba(13,28,49,.86)!important;
+  border-color:rgba(145,165,191,.16)!important;
+  box-shadow:0 30px 78px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.055)!important;
+}
+
+html[data-theme="dark"][data-glass="true"] .study-circle-modal-close{
+  background:rgba(255,255,255,.055)!important;
+  border-color:rgba(145,165,191,.18)!important;
+  color:var(--spark-ink,#eaf2ff)!important;
+}
+
+html[data-theme="dark"][data-glass="true"] .study-circle-modal select,
+html[data-theme="dark"][data-glass="true"] .study-circle-modal textarea{
+  background:rgba(8,18,32,.58)!important;
+  border-color:rgba(145,165,191,.16)!important;
+  color:var(--spark-ink,#eaf2ff)!important;
+}
+
+
+@media(prefers-reduced-transparency:reduce){
+  html[data-glass="true"] .phy-p1-modal-backdrop,
+  html[data-glass="true"] .phy-p1-nav-drawer-backdrop,
+  html[data-glass="true"] .phy-p2-modal-backdrop,
+  html[data-glass="true"] .phy-p1-confirm-modal,
+  html[data-glass="true"] .phy-p1-nav-drawer,
+  html[data-glass="true"] .phy-p2-confirm-modal,
+  html[data-glass="true"] .phy-p2-constants-modal,
+  html[data-glass="true"] .phy-p1-nav-drawer-head>button,
+  html[data-glass="true"] .phy-p2-constants-head>button,
+  html[data-glass="true"] .study-circle-modal-scrim,
+  html[data-glass="true"] .study-circle-modal,
+  html[data-glass="true"] .study-circle-modal-close{
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+  }
+
+  html[data-glass="true"] .phy-p1-confirm-modal,
+  html[data-glass="true"] .phy-p1-nav-drawer,
+  html[data-glass="true"] .phy-p2-confirm-modal,
+  html[data-glass="true"] .phy-p2-constants-modal,
+  html[data-glass="true"] .study-circle-modal{
+    background:var(--spark-paper,#fff)!important;
+  }
+}
+
+
+/* Inline question-report dialog */
+html[data-glass="true"] .spark-question-report-dialog{
+  background:color-mix(in srgb,var(--spark-paper,#fff) 82%,transparent)!important;
+  border-color:color-mix(in srgb,var(--spark-border,#d7e2ee) 68%,transparent)!important;
+  -webkit-backdrop-filter:blur(18px) saturate(150%);
+  backdrop-filter:blur(18px) saturate(150%);
+  box-shadow:0 14px 38px rgba(8,26,61,.14),inset 0 1px 0 rgba(255,255,255,.18)!important;
+}
+html[data-theme="dark"][data-glass="true"] .spark-question-report-dialog{
+  background:rgba(13,28,49,.80)!important;
+  border-color:rgba(145,165,191,.16)!important;
+  color:var(--spark-ink,#eaf2ff)!important;
+  box-shadow:0 16px 42px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.045)!important;
+}
+html[data-theme="dark"][data-glass="true"] .spark-question-report-dialog textarea{
+  background:rgba(8,18,32,.58)!important;
+  border-color:rgba(145,165,191,.16)!important;
+  color:var(--spark-ink,#eaf2ff)!important;
+}
+@media(prefers-reduced-transparency:reduce){
+  html[data-glass="true"] .spark-question-report-dialog{
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+    background:var(--spark-paper,#fff)!important;
+  }
+}
+
+
+/* Mathematics formula sheet content must visually belong to the Glass shell. */
+html[data-glass="true"] .paper2-formula-grid article{
+  background:color-mix(in srgb,var(--spark-paper,#fff) 72%,transparent)!important;
+  border-color:color-mix(in srgb,var(--spark-border,#d7e2ee) 62%,transparent)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14);
+}
+html[data-glass="true"] .paper2-modal-head{
+  background:transparent!important;
+}
+html[data-glass="true"] .paper2-formula-grid article > strong{
+  color:var(--spark-ink,#0f2557)!important;
+}
+html[data-glass="true"] .paper2-formula-label{
+  color:var(--spark-text-muted,#64748b)!important;
+}
+html[data-glass="true"] .paper2-formula-math{
+  color:var(--spark-ink-soft,#334155)!important;
+}
+
+html[data-theme="dark"][data-glass="true"] .paper2-formula-grid article{
+  background:rgba(255,255,255,.045)!important;
+  border-color:rgba(145,165,191,.14)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035);
+}
+html[data-theme="dark"][data-glass="true"] .paper2-formula-grid article > strong,
+html[data-theme="dark"][data-glass="true"] .paper2-formula-math{
+  color:var(--spark-ink,#eaf2ff)!important;
+}
+html[data-theme="dark"][data-glass="true"] .paper2-formula-label{
+  color:var(--spark-text-muted,#91a5bf)!important;
+}
+
+@media(prefers-reduced-transparency:reduce){
+  html[data-glass="true"] .paper2-formula-grid article{
+    background:var(--spark-paper,#fff)!important;
+  }
+}

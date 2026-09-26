@@ -185,8 +185,15 @@ export default function PushNotificationSettings({ user, profile }) {
 
       {device.iosInstallRequired ? (
         <div className="push-settings-card ios-help">
-          <strong>One step first on iPhone</strong>
-          <span>Tap Share in Safari, choose Add to Home Screen, open SPARK from the new Home Screen icon, then return here and enable notifications.</span>
+          <strong>Install SPARK first on iPhone</strong>
+          <span>Apple requires Home Screen installation before a web app can request push notifications.</span>
+          <ol className="push-ios-install-steps">
+            <li>Open SPARK in Safari and tap Share.</li>
+            <li>Choose Add to Home Screen, then confirm Add.</li>
+            <li>Open SPARK from the Home Screen icon.</li>
+            <li>Return to Notifications and turn alerts on.</li>
+          </ol>
+          <small className="push-ios-install-note">You only need to install SPARK once on this iPhone.</small>
         </div>
       ) : !device.supported ? (
         <div className="push-settings-card muted">

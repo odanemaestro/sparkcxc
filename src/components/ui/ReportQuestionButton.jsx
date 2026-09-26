@@ -94,7 +94,7 @@ export default function ReportQuestionButton({
         border: `1px solid ${T.border}`, borderRadius: 12, padding: 16, marginTop: 8,
         background: T.paper, color: T.ink, boxShadow: T.shadowSm, fontSize: 13.5, fontFamily: FB, ...style,
       }}
-      className={className}
+      className={["spark-question-report-dialog", className].filter(Boolean).join(" ")}
     >
       {status === "done" ? (
         <>
