@@ -448,3 +448,42 @@ html[data-theme="dark"][data-glass="true"] .spark-question-report-dialog textare
     background:var(--spark-paper,#fff)!important;
   }
 }
+
+
+/* Mathematics formula sheet content must visually belong to the Glass shell. */
+html[data-glass="true"] .paper2-formula-grid article{
+  background:color-mix(in srgb,var(--spark-paper,#fff) 72%,transparent)!important;
+  border-color:color-mix(in srgb,var(--spark-border,#d7e2ee) 62%,transparent)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14);
+}
+html[data-glass="true"] .paper2-modal-head{
+  background:transparent!important;
+}
+html[data-glass="true"] .paper2-formula-grid article > strong{
+  color:var(--spark-ink,#0f2557)!important;
+}
+html[data-glass="true"] .paper2-formula-label{
+  color:var(--spark-text-muted,#64748b)!important;
+}
+html[data-glass="true"] .paper2-formula-math{
+  color:var(--spark-ink-soft,#334155)!important;
+}
+
+html[data-theme="dark"][data-glass="true"] .paper2-formula-grid article{
+  background:rgba(255,255,255,.045)!important;
+  border-color:rgba(145,165,191,.14)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035);
+}
+html[data-theme="dark"][data-glass="true"] .paper2-formula-grid article > strong,
+html[data-theme="dark"][data-glass="true"] .paper2-formula-math{
+  color:var(--spark-ink,#eaf2ff)!important;
+}
+html[data-theme="dark"][data-glass="true"] .paper2-formula-label{
+  color:var(--spark-text-muted,#91a5bf)!important;
+}
+
+@media(prefers-reduced-transparency:reduce){
+  html[data-glass="true"] .paper2-formula-grid article{
+    background:var(--spark-paper,#fff)!important;
+  }
+}
