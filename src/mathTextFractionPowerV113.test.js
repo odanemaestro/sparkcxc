@@ -19,7 +19,9 @@ describe("MathText fraction power presentation V11.3", () => {
   });
 
   test("fraction CSS gives powered denominators clearance from the rule", () => {
-    const css = fs.readFileSync(path.join(__dirname, "practice", "mathText.css"), "utf8");
+    const css = fs
+      .readFileSync(path.join(__dirname, "practice", "mathText.css"), "utf8")
+      .replace(/\r\n?/g, "\n");
     expect(css).toContain("SPARK V11.3 FRACTION POWER CLEARANCE");
     expect(css).toContain(".spark-math .frac .fden sup");
     expect(css).toContain(".spark-math .frac .fden sup{\n  vertical-align:.05em;");
