@@ -5568,11 +5568,16 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
               </div>
               <div style={{marginBottom:14}}>
                 <div style={{fontSize:13,fontWeight:500,color:T.inkSoft,marginBottom:6}}>Subject</div>
-                <select value={subj} onChange={e=>setSubj(e.target.value)}
-                  style={{width:"100%",padding:"10px 12px",border:`1.5px solid ${T.border}`,
-                    borderRadius:7,fontSize:14,fontFamily:FB,color:T.ink,outline:"none"}}>
-                  {(bookingTutor.subjects||[]).map(s => <option key={s} value={s}>{s}</option>)}
-                </select>
+                <div className="booking-subject-select-wrap">
+                  <select className="booking-subject-select" value={subj} onChange={e=>setSubj(e.target.value)}
+                    style={{width:"100%",padding:"10px 42px 10px 12px",border:`1.5px solid ${T.border}`,
+                      borderRadius:7,fontSize:14,fontFamily:FB,color:T.ink,outline:"none"}}>
+                    {(bookingTutor.subjects||[]).map(s => <option key={s} value={s}>{s}</option>)}
+                  </select>
+                  <svg className="booking-subject-chevron" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7 10l5 5 5-5"/>
+                  </svg>
+                </div>
               </div>
               <div style={{marginBottom:14}}>
                 <div style={{fontSize:13,fontWeight:500,color:T.inkSoft,marginBottom:6}}>Date</div>
@@ -5585,9 +5590,9 @@ function TutorsView({ user, profile, tutorApp, setView, showToast, hasTutorApp, 
               </div>
               <div style={{marginBottom:14}}>
                 <div style={{fontSize:13,fontWeight:500,color:T.inkSoft,marginBottom:6}}>Duration</div>
-                <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>
+                <div className="booking-duration-grid">
                   {SESSION_DURATIONS.map(d => (
-                    <button key={d.mins} onClick={() => setDuration(d.mins)}
+                    <button className="booking-duration-option" key={d.mins} onClick={() => setDuration(d.mins)}
                       style={{padding:"8px 12px",borderRadius:7,fontSize:12.5,cursor:"pointer",
                         fontFamily:FB,transition:"all .15s",
                         border:`1.5px solid ${duration===d.mins?T.teal:T.border}`,
