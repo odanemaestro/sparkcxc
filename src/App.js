@@ -110,6 +110,7 @@ import "./theme.css";
 import "./passwordVisibility.css";
 import "./sparkRewards.css";
 import "./learningIntelligence.css";
+import "./mobileDashboardV18.css";
 import "./sparkFinalButtonConsistencyV2642.css";
 import "./sparkSubjectLeaveModalV272.css";
 import GOOGLE_ICON_B64 from "./assets/icons/google-icon.png";
@@ -1484,7 +1485,7 @@ function SubjectEnrollmentRequiredView({ subjectName = "", onManageSubjects, onB
 }
 
 // ─── NAV ────────────────────────────────────────────────────────────────────
-function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorApp, view, themeMode, resolvedTheme, setThemeMode }) {
+function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorApp, view, themeMode, resolvedTheme, setThemeMode, glassMode, setGlassMode }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButtonRef = useRef(null);
   const mobileMenuRef = useRef(null);
@@ -1603,6 +1604,21 @@ function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorAp
         <div ref={mobileMenuRef} id="spark-mobile-navigation" className="spark-mobile-menu">
           <div className="spark-mobile-menu-links">
             {user ? signedInLinks : publicLinks}
+          </div>
+          <div className="spark-mobile-appearance-row">
+            <div>
+              <strong>Glass appearance</strong>
+              <span>Use translucent, blurred surfaces on supported devices.</span>
+            </div>
+            <button
+              type="button"
+              className={`spark-glass-switch ${glassMode ? "is-on" : ""}`}
+              onClick={() => setGlassMode(!glassMode)}
+              aria-pressed={Boolean(glassMode)}
+              aria-label={glassMode ? "Turn off glass appearance" : "Turn on glass appearance"}
+            >
+              <i />
+            </button>
           </div>
           {user ? (
             <div className="spark-mobile-account-row">
@@ -4465,6 +4481,22 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 <p style={{color:T.textMuted,fontSize:14,marginBottom:24}}>Keep that momentum going.</p>
               </div>
             </div>
+            <div className="student-mobile-quick-actions" aria-label="Quick learning actions">
+              <button type="button" onClick={() => setView("study")}>
+                <span className="student-mobile-quick-icon" aria-hidden="true"><Icon name="study" size={19}/></span>
+                <span>Continue study</span>
+              </button>
+              <button type="button" onClick={() => setView("practice")}>
+                <span className="student-mobile-quick-icon" aria-hidden="true"><Icon name="goal" size={19}/></span>
+                <span>Quick practice</span>
+              </button>
+              {studentHasFlashcards && (
+                <button type="button" onClick={() => setDashboardSection("flashcards")}>
+                  <span className="student-mobile-quick-icon" aria-hidden="true"><Icon name="flashcards" size={19}/></span>
+                  <span>Flashcards</span>
+                </button>
+              )}
+            </div>
             <SparkRewardsPanel
               supabase={supabase}
               viewerUserId={user.id}
@@ -6545,7 +6577,7 @@ function GoogleOAuthGateErrorView({ message, onRetry, onSignOut }) {
 
 export default function App() {
   const [view, setViewState] = useState(() => viewFromBrowserHash());
-  const { themeMode, resolvedTheme, setThemeMode } = useThemeMode();
+  const { themeMode, resolvedTheme, setThemeMode, glassMode, setGlassMode } = useThemeMode();
   const viewRef = useRef(view);
   const [session, setSession] = useState(null);
   const [profile, setProfile] = useState(null);
@@ -7331,7 +7363,7 @@ if (loading || authenticatedRolePending) {
     return <SparkLoader variant="screen" label="Opening SPARK Admin" />;
   }
 
-  const navProps = { setView, user: session?.user, profile, onLogout: handleLogout, liveStats, hasTutorApp: hideTutorApplyLink, tutorApp, view, themeMode, resolvedTheme, setThemeMode };
+  const navProps = { setView, user: session?.user, profile, onLogout: handleLogout, liveStats, hasTutorApp: hideTutorApplyLink, tutorApp, view, themeMode, resolvedTheme, setThemeMode, glassMode, setGlassMode };
 
   return (
     <div className="spark-app-root" style={{minHeight:"100vh",display:"flex",flexDirection:"column",background:T.bg,color:T.ink}}>
