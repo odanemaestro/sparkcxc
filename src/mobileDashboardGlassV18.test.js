@@ -187,3 +187,14 @@ test("booking subject and duration controls use polished mobile styling", () => 
   expect(css).toContain(".booking-duration-option:nth-child(4)");
   expect(css).toContain("grid-column:span 3");
 });
+
+
+test("Glass dashboard styling covers iPad and tablet viewports", () => {
+  const css = read("mobileDashboardV18.css");
+  expect(css).toContain("@media (min-width:701px) and (max-width:1366px) and (pointer:coarse)");
+  expect(css).toContain("@media (min-width:701px) and (max-width:1024px)");
+  expect(css).toContain('html[data-glass="true"] .dash-sidebar');
+  expect(css).toContain('html[data-glass="true"] .student-dashboard-stat-card');
+  expect(css).toContain('html[data-theme="dark"][data-glass="true"] .spark-rewards-card');
+  expect(css).toContain("-webkit-backdrop-filter:blur(18px) saturate(150%)");
+});
