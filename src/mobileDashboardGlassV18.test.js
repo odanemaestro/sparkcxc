@@ -198,3 +198,13 @@ test("Glass dashboard styling covers iPad and tablet viewports", () => {
   expect(css).toContain('html[data-theme="dark"][data-glass="true"] .spark-rewards-card');
   expect(css).toContain("-webkit-backdrop-filter:blur(18px) saturate(150%)");
 });
+
+
+test("Glass More menu covers iPad responsive navigation widths", () => {
+  const css = read("mobileDashboardV18.css");
+  expect(css).toContain("@media (min-width:701px) and (max-width:980px)");
+  expect(css).toContain('html[data-glass="true"] .spark-mobile-menu');
+  expect(css).toContain('html[data-glass="true"] .spark-nav .spark-menu-button.open');
+  expect(css).toContain('html[data-glass="true"] .spark-glass-switch.is-on');
+  expect(css).toContain("backdrop-filter:blur(28px) saturate(175%)");
+});
