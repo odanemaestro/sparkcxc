@@ -979,3 +979,127 @@
     }
   }
 }
+
+
+/* ==========================================================================
+   SPARK iPAD / TABLET MORE-MENU GLASS V18.1
+   The responsive More menu activates at <=980px, so Glass must cover that
+   entire range instead of stopping at the phone-only <=700px breakpoint.
+   ========================================================================== */
+@media (min-width:701px) and (max-width:980px){
+  .spark-nav-menu-open::after{
+    content:"";
+    position:fixed;
+    inset:60px 0 0;
+    background:rgba(8,26,61,.18);
+    -webkit-backdrop-filter:blur(2px);
+    backdrop-filter:blur(2px);
+    z-index:735;
+    animation:spark-mobile-menu-scrim-in 160ms ease-out both;
+  }
+
+  .spark-nav-menu-open .spark-mobile-menu{
+    animation:spark-mobile-menu-float-in 180ms cubic-bezier(.23,1,.32,1) both;
+  }
+
+  .spark-mobile-menu{
+    position:absolute !important;
+    top:calc(100% + 8px);
+    right:16px;
+    left:auto;
+    width:min(390px,calc(100vw - 32px)) !important;
+    max-height:calc(100dvh - 84px);
+    overflow-y:auto;
+    border:1px solid rgba(255,255,255,.12) !important;
+    border-radius:18px;
+    padding:10px 12px 14px !important;
+    z-index:760;
+  }
+
+  html[data-glass="true"] .spark-nav{
+    background:rgba(8,26,61,.72) !important;
+    -webkit-backdrop-filter:blur(22px) saturate(165%);
+    backdrop-filter:blur(22px) saturate(165%);
+    border-bottom:1px solid rgba(255,255,255,.14);
+    box-shadow:0 8px 26px rgba(3,12,30,.18);
+  }
+
+  html[data-glass="true"] .spark-nav .spark-menu-button,
+  html[data-glass="true"] .spark-nav .spark-theme-toggle,
+  html[data-glass="true"] .spark-nav .notification-trigger{
+    border:1px solid rgba(255,255,255,.18) !important;
+    border-radius:13px !important;
+    background:rgba(255,255,255,.10) !important;
+    -webkit-backdrop-filter:blur(12px) saturate(145%);
+    backdrop-filter:blur(12px) saturate(145%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.10);
+  }
+
+  html[data-glass="true"] .spark-nav .spark-menu-button.open,
+  html[data-glass="true"] .spark-nav .spark-menu-button:active,
+  html[data-glass="true"] .spark-nav .notification-trigger[aria-expanded="true"]{
+    background:rgba(255,255,255,.18) !important;
+    border-color:rgba(255,255,255,.28) !important;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.14),
+      0 6px 18px rgba(0,0,0,.16) !important;
+  }
+
+  html[data-glass="true"] .spark-mobile-menu{
+    background:rgba(8,26,61,.76) !important;
+    -webkit-backdrop-filter:blur(28px) saturate(175%);
+    backdrop-filter:blur(28px) saturate(175%);
+    border-color:rgba(255,255,255,.16) !important;
+    box-shadow:
+      0 22px 54px rgba(3,12,30,.30),
+      inset 0 1px 0 rgba(255,255,255,.07) !important;
+  }
+
+  html[data-glass="true"] .spark-mobile-menu .spark-nav-link{
+    background:transparent !important;
+  }
+
+  html[data-glass="true"] .spark-mobile-menu .spark-nav-link:hover,
+  html[data-glass="true"] .spark-mobile-menu .spark-nav-link:focus-visible{
+    background:rgba(255,255,255,.08) !important;
+  }
+
+  html[data-glass="true"] .spark-mobile-appearance-row{
+    border-top-color:rgba(255,255,255,.12);
+    border-bottom-color:rgba(255,255,255,.12);
+  }
+
+  html[data-glass="true"] .spark-glass-switch{
+    background:rgba(255,255,255,.12);
+    border-color:rgba(255,255,255,.24);
+    -webkit-backdrop-filter:blur(10px);
+    backdrop-filter:blur(10px);
+  }
+
+  html[data-glass="true"] .spark-glass-switch.is-on{
+    background:rgba(13,148,136,.88);
+    border-color:rgba(94,234,212,.72);
+    box-shadow:
+      0 0 0 3px rgba(94,234,212,.10),
+      inset 0 1px 0 rgba(255,255,255,.16);
+  }
+}
+
+@media (prefers-reduced-transparency:reduce){
+  @media (min-width:701px) and (max-width:980px){
+    html[data-glass="true"] .spark-nav,
+    html[data-glass="true"] .spark-mobile-menu,
+    html[data-glass="true"] .spark-nav .spark-menu-button,
+    html[data-glass="true"] .spark-nav .spark-theme-toggle,
+    html[data-glass="true"] .spark-nav .notification-trigger,
+    html[data-glass="true"] .spark-glass-switch{
+      -webkit-backdrop-filter:none !important;
+      backdrop-filter:none !important;
+    }
+
+    html[data-glass="true"] .spark-nav,
+    html[data-glass="true"] .spark-mobile-menu{
+      background:#081a3d !important;
+    }
+  }
+}
