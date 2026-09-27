@@ -1,0 +1,41 @@
+.spark-animal-asexual{margin:28px 0;padding:20px;border:1px solid var(--spark-border,#d9e2ec);border-radius:16px;background:var(--spark-paper,#fff)}
+.spark-animal-asexual header>span{color:var(--spark-teal-dark,#087f73);font-size:11px;font-weight:900;letter-spacing:.05em}
+.spark-animal-asexual header h3{margin:4px 0 7px;color:var(--spark-ink,#102a43);font-size:20px}
+.spark-animal-asexual header p{margin:0;color:var(--spark-text-muted,#627d98);font-size:13px;line-height:1.6}
+.spark-animal-asexual-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:17px 0}
+.spark-animal-asexual-tabs button{min-height:42px;padding:0 13px;border:1px solid var(--spark-border,#d9e2ec);border-radius:9px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:11px;font-weight:850;cursor:pointer}
+.spark-animal-asexual-tabs button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}
+.spark-animal-asexual-stage{overflow:hidden;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:14px;background:#f6f8fb}
+.spark-animal-asexual-stage svg{display:block;width:100%;height:auto}
+.spark-animal-asexual-stage .aar-label{fill:#35536a;font-size:16px;font-weight:850}
+.spark-animal-asexual-stage .aar-note{fill:#49677c;font-size:15px;font-weight:800}
+.spark-animal-asexual-stage .aar-arrow{fill:none;stroke:#0d9488;stroke-width:7;stroke-linecap:round}
+.spark-animal-asexual-stage .aar-cell{fill:#cde7d5;stroke:#52866a;stroke-width:4}.spark-animal-asexual-stage .aar-cell.dividing{fill:#d9ecd9}.spark-animal-asexual-stage .aar-nucleus{fill:#7a92bf;stroke:#4f648f;stroke-width:3}.spark-animal-asexual-stage .aar-cleavage{fill:none;stroke:#52866a;stroke-width:4;stroke-dasharray:8 8}
+.spark-animal-asexual-stage .aar-hydra-body,.spark-animal-asexual-stage .aar-bud{fill:#f1b67f;stroke:#a76d45;stroke-width:5}.spark-animal-asexual-stage .aar-tentacle{fill:none;stroke:#a76d45;stroke-width:6;stroke-linecap:round}.spark-animal-asexual-stage .aar-tentacle.small{stroke-width:4}
+.spark-animal-asexual-stage .aar-planarian{fill:#d7a078;stroke:#8a5b3d;stroke-width:4}.spark-animal-asexual-stage .aar-planarian.piece,.spark-animal-asexual-stage .aar-planarian.small{fill:#e0ad87}.spark-animal-asexual-stage .aar-eye{fill:#283744}.spark-animal-asexual-stage .aar-cut{stroke:#d54a4a;stroke-width:6;stroke-dasharray:10 8}
+.spark-animal-asexual-stage .aar-egg{fill:#f2ead1;stroke:#b09a65;stroke-width:4}.spark-animal-asexual-stage .aar-egg-nucleus{fill:#8aa1c7}.spark-animal-asexual-stage .aar-embryo{fill:#c6a979;stroke:#8e724b;stroke-width:2}
+.spark-animal-asexual-stage .aar-bee-body{fill:#e7b83f;stroke:#695126;stroke-width:4}.spark-animal-asexual-stage .aar-bee-stripe{fill:#463b2a}.spark-animal-asexual-stage .aar-bee-head{fill:#463b2a}.spark-animal-asexual-stage .aar-wing{fill:#dceef6;fill-opacity:.75;stroke:#7aa7bb;stroke-width:3}
+.spark-animal-asexual-notes{display:grid;grid-template-columns:.7fr 1.3fr 1fr;gap:10px;margin-top:14px}
+.spark-animal-asexual-notes article,.spark-animal-asexual-warning{display:grid;gap:5px;padding:13px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:11px;background:var(--spark-bg,#f7fafc)}
+.spark-animal-asexual-notes b,.spark-animal-asexual-warning strong{color:var(--spark-teal-dark,#087f73);font-size:10px;text-transform:uppercase}
+.spark-animal-asexual-notes span,.spark-animal-asexual-warning span{color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.55}
+.spark-animal-asexual-warning{margin-top:10px;border-color:color-mix(in srgb,var(--spark-teal,#0d9488) 30%,var(--spark-border,#d9e2ec))}
+html[data-theme="dark"] .spark-animal-asexual,body[data-theme="dark"] .spark-animal-asexual,.dark .spark-animal-asexual{background:#122b43;border-color:#2a4863}
+html[data-theme="dark"] .spark-animal-asexual-tabs button,body[data-theme="dark"] .spark-animal-asexual-tabs button,.dark .spark-animal-asexual-tabs button{background:#15314b;border-color:#39566e;color:#e7f2fb}
+html[data-theme="dark"] .spark-animal-asexual-tabs button.active,body[data-theme="dark"] .spark-animal-asexual-tabs button.active,.dark .spark-animal-asexual-tabs button.active{background:#164e4a;color:#d7fffa;border-color:#2dd4bf}
+html[data-theme="dark"] .spark-animal-asexual-stage,body[data-theme="dark"] .spark-animal-asexual-stage,.dark .spark-animal-asexual-stage{background:#eef3f8;border-color:#39566e}
+html[data-theme="dark"] .spark-animal-asexual-notes article,body[data-theme="dark"] .spark-animal-asexual-notes article,.dark .spark-animal-asexual-notes article,html[data-theme="dark"] .spark-animal-asexual-warning,body[data-theme="dark"] .spark-animal-asexual-warning,.dark .spark-animal-asexual-warning{background:#0d2134;border-color:#29465f}
+@media(max-width:850px){.spark-animal-asexual-notes{grid-template-columns:1fr}.spark-animal-asexual-tabs{display:grid;grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.spark-animal-asexual{padding:14px}.spark-animal-asexual-stage .aar-label{font-size:21px}.spark-animal-asexual-stage .aar-note{font-size:20px}}
+@media(max-width:390px){.spark-animal-asexual-tabs{grid-template-columns:1fr}}
+
+
+.spark-animal-asexual-reference{margin:0;display:grid;gap:8px;width:100%;padding:12px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.spark-animal-asexual-reference img{display:block;width:100%;height:auto;max-height:520px;object-fit:contain;border-radius:9px}
+.spark-animal-asexual-reference.fragmentation img,.spark-animal-asexual-reference.parthenogenesis img{max-height:460px}
+.spark-animal-asexual-reference figcaption{display:grid;gap:3px;color:var(--spark-ink-soft,#334e68);font-size:11px;text-align:left}
+.spark-animal-asexual-reference figcaption span{font-weight:900;color:var(--spark-ink,#102a43)}
+.spark-animal-asexual-reference figcaption a{color:var(--spark-teal-dark,#087f73)}
+html[data-theme="dark"] .spark-animal-asexual-reference,body[data-theme="dark"] .spark-animal-asexual-reference,.dark .spark-animal-asexual-reference{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .spark-animal-asexual-reference img,body[data-theme="dark"] .spark-animal-asexual-reference img,.dark .spark-animal-asexual-reference img{background:#f8fbfc}
+@media(max-width:620px){.spark-animal-asexual-reference figcaption{font-size:12px}.spark-animal-asexual-reference img{max-height:560px}}

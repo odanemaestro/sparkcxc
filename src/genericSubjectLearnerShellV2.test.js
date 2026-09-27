@@ -57,6 +57,14 @@ describe("SPARK Generic Subject Learner Shell V2.1", () => {
     expect(css).toContain('html[data-theme="dark"]');
   });
 
+  test("duplicate interactive diagrams are filtered before lesson rendering", () => {
+    expect(view).toContain("const seen = new Set()");
+    expect(view).toContain("seen.has(key)");
+    expect(view).toContain("seen.add(key)");
+    expect(view).toContain("diagram?.template");
+    expect(view).toContain("diagram?.title");
+  });
+
   test("generic recommendations route to the subject Study path", () => {
     expect(nextBestAction).toContain('view:"generic-study"');
     expect(nextBestAction).toContain('`/study/${encodeURIComponent(id)}`');

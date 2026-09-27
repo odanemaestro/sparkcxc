@@ -1,0 +1,68 @@
+.spark-ear-function{margin:28px 0;padding:20px;border:1px solid var(--spark-border,#d9e2ec);border-radius:16px;background:var(--spark-paper,#fff)}
+.spark-ear-function header>span{color:var(--spark-teal-dark,#087f73);font-size:11px;font-weight:900;letter-spacing:.05em}
+.spark-ear-function header h3{margin:4px 0 7px;color:var(--spark-ink,#102a43);font-size:20px}
+.spark-ear-function header p{margin:0;color:var(--spark-text-muted,#627d98);font-size:13px;line-height:1.6}
+.spark-ear-function-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:17px 0}
+.spark-ear-function-tabs button{min-height:42px;padding:0 12px;border:1px solid var(--spark-border,#d9e2ec);border-radius:9px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:11px;font-weight:850;cursor:pointer}
+.spark-ear-function-tabs button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}
+.spark-ear-function-stage{overflow:hidden;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:14px;background:#f5f8fb}
+.spark-ear-function-stage svg{display:block;width:100%;height:auto}
+.spark-ear-function-stage .earfx-heading{fill:#24475e;font-size:20px;font-weight:900}
+.spark-ear-function-stage .earfx-label{fill:#31536a;font-size:14px;font-weight:900}
+.spark-ear-function-stage .earfx-small{fill:#536d80;font-size:13px;font-weight:750}
+.spark-ear-function-stage .earfx-warning{fill:#9c4944;font-size:14px;font-weight:900}
+.spark-ear-function-stage .earfx-wave,.spark-ear-function-stage .earfx-sound{fill:none;stroke:#4f89ad;stroke-width:5;stroke-linecap:round}
+.spark-ear-function-stage .earfx-canal{fill:none;stroke:#8e664f;stroke-width:18;stroke-linecap:round}
+.spark-ear-function-stage .earfx-drum{fill:#dda99b;stroke:#915d55;stroke-width:5}
+.spark-ear-function-stage .earfx-drum.big{stroke-width:7}
+.spark-ear-function-stage .earfx-ossicles{fill:none;stroke:#bfa98a;stroke-width:10;stroke-linecap:round;stroke-linejoin:round}
+.spark-ear-function-stage .earfx-cochlea{fill:none;stroke:#d6a152;stroke-width:18;stroke-linecap:round;stroke-linejoin:round}
+.spark-ear-function-stage .earfx-nerve{fill:none;stroke:#8d6ca5;stroke-width:14;stroke-linecap:round}
+.spark-ear-function-stage .earfx-arrow{fill:none;stroke:#0d9488;stroke-width:7;stroke-linecap:round}
+.spark-ear-function-stage .earfx-sound.low{stroke:#557fa1}
+.spark-ear-function-stage .earfx-sound.high{stroke:#826aa6}
+.spark-ear-function-stage .earfx-sound.quiet{stroke:#4c8e75}
+.spark-ear-function-stage .earfx-sound.loud{stroke:#c36255}
+.spark-ear-function-stage .earfx-semicircular{fill:none;stroke:#75a48e;stroke-width:16;stroke-linecap:round}
+.spark-ear-function-stage .earfx-fluid{fill:none;stroke:#4d97bc;stroke-width:7;stroke-linecap:round}
+.spark-ear-function-stage .earfx-head{fill:#dfb394;stroke:#98684d;stroke-width:5}
+.spark-ear-function-stage .earfx-body{fill:none;stroke:#557287;stroke-width:12;stroke-linecap:round}
+.spark-ear-function-stage .earfx-spin{fill:none;stroke:#b27648;stroke-width:7;stroke-linecap:round}
+.spark-ear-function-stage .earfx-outer-air,.spark-ear-function-stage .earfx-middle-air{fill:#eaf2f6;stroke:#7790a1;stroke-width:5}
+.spark-ear-function-stage .earfx-eustachian{fill:none;stroke:#6798ad;stroke-width:15;stroke-linecap:round}
+.spark-ear-function-stage .earfx-pressure-arrow{fill:none;stroke:#c06b52;stroke-width:8;stroke-linecap:round}
+.spark-ear-function-summary,.spark-ear-range{display:grid;gap:5px;margin-top:14px;padding:13px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:11px;background:var(--spark-bg,#f7fafc)}
+.spark-ear-function-summary strong,.spark-ear-range b{color:var(--spark-teal-dark,#087f73);font-size:12px}
+.spark-ear-function-summary span,.spark-ear-range span{color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.55}
+html[data-theme="dark"] .spark-ear-function,body[data-theme="dark"] .spark-ear-function,.dark .spark-ear-function{background:#122b43;border-color:#2a4863}
+html[data-theme="dark"] .spark-ear-function-tabs button,body[data-theme="dark"] .spark-ear-function-tabs button,.dark .spark-ear-function-tabs button{background:#15314b;border-color:#39566e;color:#e7f2fb}
+html[data-theme="dark"] .spark-ear-function-tabs button.active,body[data-theme="dark"] .spark-ear-function-tabs button.active,.dark .spark-ear-function-tabs button.active{background:#164e4a;color:#d7fffa;border-color:#2dd4bf}
+html[data-theme="dark"] .spark-ear-function-stage,body[data-theme="dark"] .spark-ear-function-stage,.dark .spark-ear-function-stage{background:#f2f6f8;border-color:#39566e}
+html[data-theme="dark"] .spark-ear-function-summary,body[data-theme="dark"] .spark-ear-function-summary,.dark .spark-ear-function-summary,html[data-theme="dark"] .spark-ear-range,body[data-theme="dark"] .spark-ear-range,.dark .spark-ear-range{background:#0d2134;border-color:#29465f}
+@media(max-width:700px){.spark-ear-function-tabs{display:grid;grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.spark-ear-function{padding:14px}.spark-ear-function-stage .earfx-heading{font-size:24px}.spark-ear-function-stage .earfx-label{font-size:18px}.spark-ear-function-stage .earfx-small{font-size:17px}.spark-ear-function-stage .earfx-warning{font-size:18px}}
+@media(max-width:390px){.spark-ear-function-tabs{grid-template-columns:1fr}}
+
+.spark-ear-function-stage .earfx-pinna{fill:none;stroke:#bd8062;stroke-width:20;stroke-linecap:round;stroke-linejoin:round}
+.spark-ear-function-stage .earfx-middle-cavity{fill:#f0dfcf;stroke:#b78f77;stroke-width:4}
+.spark-ear-function-stage .earfx-vestibule{fill:#c8dfd5;stroke:#648d7d;stroke-width:4}
+.spark-ear-function-stage .earfx-eustachian{fill:none;stroke:#6798ad;stroke-width:13;stroke-linecap:round}
+
+
+.spark-ear-reference-view{display:grid;grid-template-columns:minmax(300px,1.05fr) .95fr;gap:16px;align-items:start}
+.spark-ear-reference-figure{margin:0;padding:12px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.spark-ear-reference-figure img{display:block;width:100%;height:auto;max-height:620px;object-fit:contain}
+.spark-ear-reference-figure figcaption{display:grid;gap:3px;margin-top:8px;color:var(--spark-ink-soft,#334e68);font-size:11px}
+.spark-ear-reference-figure figcaption span{font-weight:900;color:var(--spark-ink,#102a43)}
+.spark-ear-reference-figure figcaption a{color:var(--spark-teal-dark,#087f73)}
+.spark-ear-reference-focus{display:grid;gap:12px}.spark-ear-reference-focus>span{color:var(--spark-teal-dark,#087f73);font-size:10px;font-weight:900}
+.spark-ear-reference-focus>div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.spark-ear-reference-focus button{min-height:40px;padding:8px 10px;border:1px solid var(--spark-border,#d9e2ec);border-radius:9px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:11px;font-weight:850;text-align:left;cursor:pointer}
+.spark-ear-reference-focus button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}
+.spark-ear-reference-focus article{padding:15px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:11px;background:var(--spark-paper,#fff)}
+.spark-ear-reference-focus article strong{color:var(--spark-ink,#102a43);font-size:14px}.spark-ear-reference-focus article p,.spark-ear-reference-note{margin:5px 0 0;color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.55}
+html[data-theme="dark"] .spark-ear-reference-figure,body[data-theme="dark"] .spark-ear-reference-figure,.dark .spark-ear-reference-figure,
+html[data-theme="dark"] .spark-ear-reference-focus button,body[data-theme="dark"] .spark-ear-reference-focus button,.dark .spark-ear-reference-focus button,
+html[data-theme="dark"] .spark-ear-reference-focus article,body[data-theme="dark"] .spark-ear-reference-focus article,.dark .spark-ear-reference-focus article{background:#0d2134;border-color:#29465f;color:#e7f2fb}
+@media(max-width:700px){.spark-ear-reference-view{grid-template-columns:1fr}}
+@media(max-width:620px){.spark-ear-reference-focus>div{grid-template-columns:1fr}}

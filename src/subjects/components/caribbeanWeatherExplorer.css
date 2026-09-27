@@ -1,0 +1,83 @@
+.spark-caribbean-weather{margin:28px 0;padding:20px;border:1px solid var(--spark-border,#d9e2ec);border-radius:16px;background:var(--spark-paper,#fff)}
+.spark-caribbean-weather header>span{color:var(--spark-teal-dark,#087f73);font-size:11px;font-weight:900}.spark-caribbean-weather header h3{margin:4px 0 7px;color:var(--spark-ink,#102a43);font-size:20px}.spark-caribbean-weather header p{margin:0;color:var(--spark-text-muted,#627d98);font-size:13px;line-height:1.6}
+.spark-weather-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:17px 0}.spark-weather-tabs button{min-height:42px;padding:0 12px;border:1px solid var(--spark-border,#d9e2ec);border-radius:9px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:11px;font-weight:850}.spark-weather-tabs button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}
+.spark-weather-stage{padding:15px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:14px;background:var(--spark-bg,#f7fafc)}
+.spark-season-bar{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;overflow-x:auto}.spark-season-bar>div{min-width:54px;padding:10px 4px;text-align:center;border-radius:8px}.spark-season-bar .dry{background:#efe2bb}.spark-season-bar .wet{background:#cce5ef}.spark-season-bar b{display:block;color:#334e68;font-size:10px}.spark-season-bar span{font-size:8px;color:#526b7d}.spark-weather-seasons article,.spark-weather-hazards article{margin-top:10px;padding:14px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:10px;background:var(--spark-paper,#fff)}.spark-weather-seasons span,.spark-weather-hazards span,.spark-cyclone-energy span{color:var(--spark-teal-dark,#087f73);font-size:10px;font-weight:900}.spark-weather-seasons h4,.spark-weather-hazards h4,.spark-cyclone-energy h4{margin:5px 0;color:var(--spark-ink,#102a43);font-size:14px}.spark-weather-seasons p,.spark-cyclone-development p,.spark-hurricane-structure p,.spark-cyclone-energy p,.spark-pressure-weather p,.spark-weather-hazards p{color:var(--spark-ink-soft,#334e68);font-size:11px;line-height:1.55}
+.spark-cyclone-stages{display:flex;gap:8px;align-items:stretch}.spark-cyclone-stages article{flex:1;padding:13px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:10px;background:var(--spark-paper,#fff)}.spark-cyclone-stages article.active{border-color:var(--spark-teal,#0d9488);box-shadow:0 0 0 2px var(--spark-teal-light,#d9fbf4)}.spark-cyclone-stages article>span{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73);font-size:10px;font-weight:900}.spark-cyclone-stages b{display:block;margin-top:5px;color:var(--spark-ink,#102a43);font-size:11px}.spark-cyclone-stages>div{align-self:center;color:var(--spark-teal-dark,#087f73);font-weight:900}.spark-cyclone-development label,.spark-pressure-weather label{display:grid;gap:6px;margin-top:14px;color:var(--spark-ink,#102a43);font-size:11px;font-weight:850}.spark-cyclone-development>strong,.spark-pressure-weather>strong{display:block;margin-top:8px;color:var(--spark-teal-dark,#087f73);font-size:14px}
+.spark-hurricane-structure svg{display:block;width:100%;height:auto;border-radius:10px;background:var(--spark-paper,#fff)}.hw-band{fill:none;stroke:#88afbf;stroke-width:18;opacity:.55}.hw-band.middle{stroke-width:23}.hw-eyewall{fill:none;stroke:#527f93;stroke-width:26}.hw-eye{fill:#eef4f6;stroke:#6f8792;stroke-width:5}.hw-spiral{fill:none;stroke:#6f9db1;stroke-width:11;stroke-linecap:round}.hw-callout{stroke:#607985;stroke-width:3}.hw-label{fill:#334e68;font-size:13px;font-weight:850}
+.spark-cyclone-energy{display:flex;gap:8px;align-items:stretch}.spark-cyclone-energy article{flex:1;padding:13px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:10px;background:var(--spark-paper,#fff)}.spark-cyclone-energy>div{align-self:center;color:var(--spark-teal-dark,#087f73);font-weight:900}.spark-cyclone-energy aside{flex-basis:100%;padding:13px;border-radius:10px;background:var(--spark-teal-light,#d9fbf4)}.spark-cyclone-energy aside b{color:var(--spark-teal-dark,#087f73);font-size:11px}
+.spark-pressure-map{display:grid;place-items:center;min-height:180px;margin-top:14px;border-radius:50%;background:radial-gradient(circle,#dbeaf0 0 18%,#c7dce5 19% 38%,#aecbd8 39% 60%,#93b8c8 61% 100%)}.spark-pressure-map b{font-size:42px;color:#355c70}.spark-pressure-map span{font-size:10px;color:#334e68}
+.spark-weather-hazards{display:grid;grid-template-columns:1fr 1fr;gap:12px}.spark-weather-hazards article{margin:0}
+.spark-weather-summary{display:grid;gap:5px;margin-top:14px;padding:13px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:11px;background:var(--spark-bg,#f7fafc)}.spark-weather-summary strong{color:var(--spark-teal-dark,#087f73);font-size:12px}.spark-weather-summary span{color:var(--spark-ink-soft,#334e68);font-size:12px}
+html[data-theme="dark"] .spark-caribbean-weather,body[data-theme="dark"] .spark-caribbean-weather,.dark .spark-caribbean-weather{background:#122b43;border-color:#2a4863}
+html[data-theme="dark"] .spark-weather-tabs button,body[data-theme="dark"] .spark-weather-tabs button,.dark .spark-weather-tabs button,html[data-theme="dark"] .spark-weather-seasons article,body[data-theme="dark"] .spark-weather-seasons article,.dark .spark-weather-seasons article,html[data-theme="dark"] .spark-cyclone-stages article,body[data-theme="dark"] .spark-cyclone-stages article,.dark .spark-cyclone-stages article,html[data-theme="dark"] .spark-hurricane-structure svg,body[data-theme="dark"] .spark-hurricane-structure svg,.dark .spark-hurricane-structure svg,html[data-theme="dark"] .spark-cyclone-energy article,body[data-theme="dark"] .spark-cyclone-energy article,.dark .spark-cyclone-energy article,html[data-theme="dark"] .spark-weather-hazards article,body[data-theme="dark"] .spark-weather-hazards article,.dark .spark-weather-hazards article,html[data-theme="dark"] .spark-weather-summary,body[data-theme="dark"] .spark-weather-summary,.dark .spark-weather-summary{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .spark-weather-tabs button.active,body[data-theme="dark"] .spark-weather-tabs button.active,.dark .spark-weather-tabs button.active{background:#164e4a;color:#d7fffa}
+html[data-theme="dark"] .hw-label,body[data-theme="dark"] .hw-label,.dark .hw-label{fill:#d6e4ee}
+@media(max-width:900px){.spark-cyclone-stages,.spark-cyclone-energy{flex-direction:column}.spark-cyclone-stages>div,.spark-cyclone-energy>div{text-align:center;transform:rotate(90deg)}.spark-weather-hazards{grid-template-columns:1fr}.spark-cyclone-energy aside{flex-basis:auto}}
+@media(max-width:620px){.spark-caribbean-weather{padding:14px}.spark-weather-tabs{display:grid;grid-template-columns:1fr 1fr}.hw-label{font-size:18px}}
+@media(max-width:390px){.spark-weather-tabs{grid-template-columns:1fr}}
+
+
+.spark-cyclone-energy{display:block}
+.spark-weather-energy-toggle{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+.spark-weather-energy-toggle button{min-height:42px;padding:0 12px;border:1px solid var(--spark-border,#d9e2ec);border-radius:9px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:11px;font-weight:850}
+.spark-weather-energy-toggle button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}
+.spark-hurricane-energy-svg{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:14px;background:var(--spark-paper,#fff)}
+.hw-energy-bg{fill:var(--spark-paper,#fff)}.hw-warm-ocean{fill:#79b8d3}.hw-ocean-surface{fill:none;stroke:#3f819e;stroke-width:5}.hw-land-surface{fill:#b79b70;stroke:#776548;stroke-width:4}
+.hw-evaporation,.hw-rising-air{fill:none;stroke:#d7794c;stroke-width:5;stroke-linecap:round}.hw-rising-air.weak{stroke-dasharray:10 8;opacity:.55}.hw-energy-warm-head{fill:#d7794c}
+.hw-cloud-tower,.hw-cloud-top{fill:#e7edf1;stroke:#8fa4b0;stroke-width:3}.hw-convection.weak{opacity:.48}
+.hw-latent-heat{fill:#f4c86c;fill-opacity:.85;stroke:#b58128;stroke-width:3}.hw-latent-title{fill:#6f4c16;font-size:13px;font-weight:900}
+.hw-low-pressure{fill:#dcebf2;stroke:#537e92;stroke-width:3}.hw-low-text{fill:#315b70;font-size:29px;font-weight:900}
+.hw-surface-inflow,.hw-upper-outflow{fill:none;stroke:#3d7f9d;stroke-width:5;stroke-linecap:round}.hw-energy-blue-head{fill:#3d7f9d}
+.hw-energy-label,.hw-energy-small{fill:var(--spark-ink,#102a43);font-weight:850}.hw-energy-label{font-size:12px}.hw-energy-small{font-size:11px}.hw-energy-label.danger{fill:#9b443c}
+.hw-friction-mark,.hw-cutoff{fill:none;stroke:#9b443c;stroke-width:6;stroke-linecap:round}
+html[data-theme="dark"] .spark-weather-energy-toggle button,body[data-theme="dark"] .spark-weather-energy-toggle button,.dark .spark-weather-energy-toggle button{background:#0d2134;border-color:#29465f;color:#d6e4ee}
+html[data-theme="dark"] .spark-weather-energy-toggle button.active,body[data-theme="dark"] .spark-weather-energy-toggle button.active,.dark .spark-weather-energy-toggle button.active{background:#164e4a;color:#d7fffa}
+html[data-theme="dark"] .spark-hurricane-energy-svg,body[data-theme="dark"] .spark-hurricane-energy-svg,.dark .spark-hurricane-energy-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .hw-energy-bg,body[data-theme="dark"] .hw-energy-bg,.dark .hw-energy-bg{fill:#0d2134}
+html[data-theme="dark"] .hw-energy-label,body[data-theme="dark"] .hw-energy-label,.dark .hw-energy-label,html[data-theme="dark"] .hw-energy-small,body[data-theme="dark"] .hw-energy-small,.dark .hw-energy-small{fill:#d6e4ee}
+html[data-theme="dark"] .hw-energy-label.danger,body[data-theme="dark"] .hw-energy-label.danger,.dark .hw-energy-label.danger{fill:#f0aaa3}
+@media(max-width:900px){.spark-cyclone-energy>.spark-weather-energy-toggle{transform:none;text-align:left}.spark-weather-energy-toggle{display:grid;grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.hw-energy-label{font-size:15px}.hw-energy-small{font-size:14px}.hw-latent-title{font-size:16px}}
+
+
+.spark-hurricane-structure-svg{display:block;width:100%;height:auto;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.hw-structure-bg{fill:#e8f4f8}
+.hw-spiral-band{fill:none;stroke:#78aabd;stroke-width:24;stroke-linecap:round;opacity:.58}
+.hw-spiral-band.band-1,.hw-spiral-band.band-4{stroke-width:18;opacity:.48}
+.hw-spiral-band.band-2,.hw-spiral-band.band-5{stroke-width:14;opacity:.4}
+.hw-eyewall-ring{fill:none;stroke:#456f84;stroke-width:34}
+.hw-eye-core{fill:#f4f8fa;stroke:#698391;stroke-width:5}
+.hw-eye-text{fill:#315b70;font-size:18px;font-weight:950}
+.hw-surface-inflow-top path{fill:none;stroke:#367f9d;stroke-width:6;stroke-linecap:round}.hw-structure-arrow-head{fill:#367f9d}
+.hw-small-label{fill:#4d6878;font-size:12px;font-weight:800}
+html[data-theme="dark"] .spark-hurricane-structure-svg,body[data-theme="dark"] .spark-hurricane-structure-svg,.dark .spark-hurricane-structure-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .hw-structure-bg,body[data-theme="dark"] .hw-structure-bg,.dark .hw-structure-bg{fill:#153148}
+html[data-theme="dark"] .hw-eye-core,body[data-theme="dark"] .hw-eye-core,.dark .hw-eye-core{fill:#d7e4eb}
+html[data-theme="dark"] .hw-small-label,body[data-theme="dark"] .hw-small-label,.dark .hw-small-label{fill:#d6e4ee}
+@media(max-width:620px){.hw-small-label{font-size:16px}.hw-eye-text{font-size:22px}}
+
+
+.spark-hurricane-reference-view{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(260px,.65fr);gap:14px;align-items:start}
+.spark-hurricane-reference-figure{margin:0;display:grid;gap:8px;padding:10px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:12px;background:var(--spark-paper,#fff)}
+.spark-hurricane-reference-figure img{display:block;width:100%;max-height:620px;object-fit:contain;border-radius:9px;background:#fff}
+.spark-hurricane-reference-figure figcaption{display:grid;gap:4px}
+.spark-hurricane-reference-figure figcaption>span{color:var(--spark-ink,#102a43);font-size:12px;font-weight:850}
+.spark-hurricane-reference-figure figcaption small{color:var(--spark-text-muted,#627d98);font-size:9px;line-height:1.45}
+.spark-hurricane-reference-figure figcaption a{color:var(--spark-teal-dark,#087f73);font-weight:800}
+.spark-hurricane-reference-focus{display:grid;gap:10px;padding:13px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:12px;background:var(--spark-bg,#f7fafc)}
+.spark-hurricane-reference-focus>span{color:var(--spark-teal-dark,#087f73);font-size:10px;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
+.spark-hurricane-reference-focus>div{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.spark-hurricane-reference-focus button{min-height:40px;padding:8px;border:1px solid var(--spark-border,#d9e2ec);border-radius:8px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:10px;font-weight:850;cursor:pointer}
+.spark-hurricane-reference-focus button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}
+.spark-hurricane-reference-focus article,.spark-hurricane-reference-note{padding:11px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:9px;background:var(--spark-paper,#fff)}
+.spark-hurricane-reference-focus article strong{color:var(--spark-ink,#102a43);font-size:12px}
+.spark-hurricane-reference-focus article p,.spark-hurricane-reference-note{margin:5px 0 0;color:var(--spark-ink-soft,#334e68);font-size:11px;line-height:1.55}
+html[data-theme="dark"] .spark-hurricane-reference-figure,body[data-theme="dark"] .spark-hurricane-reference-figure,.dark .spark-hurricane-reference-figure,
+html[data-theme="dark"] .spark-hurricane-reference-focus,body[data-theme="dark"] .spark-hurricane-reference-focus,.dark .spark-hurricane-reference-focus{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .spark-hurricane-reference-focus button,body[data-theme="dark"] .spark-hurricane-reference-focus button,.dark .spark-hurricane-reference-focus button,
+html[data-theme="dark"] .spark-hurricane-reference-focus article,body[data-theme="dark"] .spark-hurricane-reference-focus article,.dark .spark-hurricane-reference-focus article,
+html[data-theme="dark"] .spark-hurricane-reference-note,body[data-theme="dark"] .spark-hurricane-reference-note,.dark .spark-hurricane-reference-note{background:#15314b;border-color:#39566e;color:#e7f2fb}
+html[data-theme="dark"] .spark-hurricane-reference-focus button.active,body[data-theme="dark"] .spark-hurricane-reference-focus button.active,.dark .spark-hurricane-reference-focus button.active{background:#164e4a;color:#d7fffa;border-color:#2dd4bf}
+@media(max-width:850px){.spark-hurricane-reference-view{grid-template-columns:1fr}}
+@media(max-width:500px){.spark-hurricane-reference-focus>div{grid-template-columns:1fr}.spark-hurricane-reference-figure img{max-height:460px}}

@@ -24,6 +24,12 @@
 .spark-diagram-cell .mitochondria ellipse{fill:#f4b483;stroke:#a65d33;stroke-width:4}
 .spark-diagram-cell .mitochondria path{fill:none;stroke:#a65d33;stroke-width:4}
 .spark-diagram-cell .ribosomes circle{fill:#3d556b}
+.spark-diagram-cell .plant-cytoplasm{fill:#e9f3d2}
+.spark-diagram-cell .nuclear-envelope{stroke-width:6}
+.spark-diagram-cell .chloroplasts .chloroplast-grana{fill:none;stroke:#285f2f;stroke-width:3;stroke-linecap:round}
+.spark-diagram-cell .mitochondria .cristae{fill:none;stroke:#8e4f2f;stroke-width:3.5;stroke-linecap:round}
+.spark-diagram-cell .small-vacuole.secondary{fill:#e7f7ff;opacity:.92}
+
 .spark-diagram-cell .animal-outline{fill:#f6d7d7;stroke:#b65a6d;stroke-width:7}
 .spark-diagram-cell .animal-cytoplasm{fill:#f7e8d8;stroke:none}
 .spark-diagram-cell .small-vacuole{fill:#d9f2ff;stroke:#6aa9c8;stroke-width:4}
@@ -64,6 +70,14 @@ html[data-theme="dark"] .spark-label-diagram-actions button.secondary,body[data-
 .spark-diagram-microscope .microscope-light{fill:#fff4b8;stroke:#b89a38;stroke-width:5}
 .spark-diagram-microscope .microscope-focus{fill:#7893a6;stroke:#3f5b6d;stroke-width:5}
 .spark-diagram-microscope .microscope-focus.fine{fill:#adc0cc}
+.spark-diagram-microscope .microscope-eyepiece-rim{fill:#243745;stroke:#172630;stroke-width:4}
+.spark-diagram-microscope .microscope-nosepiece-ring{fill:none;stroke:#d7e3ea;stroke-width:5;stroke-linecap:round}
+.spark-diagram-microscope .microscope-objective.short{fill:#c7d7e1}
+.spark-diagram-microscope .microscope-stage-aperture{fill:#1e3443;stroke:#dce9ef;stroke-width:4}
+.spark-diagram-microscope .microscope-condenser{fill:#9db4c2;stroke:#4b6577;stroke-width:4}
+.spark-diagram-microscope .microscope-light-beam{fill:none;stroke:#f3d56f;stroke-width:4;stroke-linecap:round}
+.spark-diagram-microscope .microscope-focus-centre{fill:#405d70}
+
 .spark-label-diagram-actions button:disabled{
   opacity:1;
   background:var(--spark-muted,#edf2f7);
@@ -169,3 +183,395 @@ body[data-theme="dark"] .spark-label-diagram-actions button:disabled,
     grid-template-columns:1fr;
   }
 }
+
+/* SPARK_FLOWER_AND_SEED_TEMPLATES_V1 */
+.spark-diagram-flower .flower-petal{fill:#f3a7b9;stroke:#a44c67;stroke-width:5}
+.spark-diagram-flower .flower-petal.far-left,.spark-diagram-flower .flower-petal.far-right{fill:#f6bdc9}
+.spark-diagram-flower .flower-sepal{fill:#71af62;stroke:#3e7737;stroke-width:5}
+.spark-diagram-flower .flower-ovary{fill:#98c97d;stroke:#477f3e;stroke-width:6}
+.spark-diagram-flower .flower-ovule{fill:#f7e7aa;stroke:#9b7a2f;stroke-width:4}
+.spark-diagram-flower .flower-style{fill:#bee0a3;stroke:#477f3e;stroke-width:4}
+.spark-diagram-flower .flower-stigma{fill:#d9efc4;stroke:#477f3e;stroke-width:4}
+.spark-diagram-flower .flower-stamens path{fill:none;stroke:#6a8e45;stroke-width:5;stroke-linecap:round}
+.spark-diagram-flower .flower-stamens ellipse{fill:#e9c857;stroke:#9a7620;stroke-width:4}
+.spark-diagram-flower .flower-receptacle{fill:#78a95c;stroke:#436f36;stroke-width:5}
+.spark-diagram-flower .flower-stalk{fill:#72a95b;stroke:#3e7737;stroke-width:5}
+.spark-diagram-seed .seed-testa{fill:#bb8755;stroke:#704828;stroke-width:8}
+.spark-diagram-seed .seed-cotyledon{fill:#f1df9a;stroke:#9e8231;stroke-width:5}
+.spark-diagram-seed .seed-cotyledon.right{fill:#ead487}
+.spark-diagram-seed .seed-embryo-axis{fill:none;stroke:#668e45;stroke-width:9;stroke-linecap:round}
+.spark-diagram-seed .seed-plumule{fill:#8fc56b;stroke:#4f803b;stroke-width:4}
+.spark-diagram-seed .seed-radicle{fill:#d7e9a9;stroke:#708d3e;stroke-width:4}
+.spark-diagram-seed .seed-hilum{fill:#8e633e;stroke:#5a3d27;stroke-width:3}
+
+
+/* SPARK_HUMAN_REPRODUCTIVE_TEMPLATES_V1 */
+.spark-diagram-reproductive .repro-orientation{fill:#60768a;font-size:14px;font-weight:800}
+.spark-diagram-female-reproductive .female-uterus{fill:#e5a2ad;stroke:#9b5261;stroke-width:6}
+.spark-diagram-female-reproductive .female-endometrium{fill:#f7c7cf;stroke:#bd7180;stroke-width:4}
+.spark-diagram-female-reproductive .female-oviduct{fill:none;stroke:#a85c69;stroke-width:12;stroke-linecap:round}
+.spark-diagram-female-reproductive .female-fimbriae{fill:none;stroke:#a85c69;stroke-width:7;stroke-linecap:round}
+.spark-diagram-female-reproductive .female-ovary{fill:#f2cf83;stroke:#a77d2e;stroke-width:5}
+.spark-diagram-female-reproductive .female-cervix{fill:#d98d9b;stroke:#924957;stroke-width:5}
+.spark-diagram-female-reproductive .female-vagina{fill:#e9b1bb;stroke:#9b5261;stroke-width:5}
+.spark-diagram-male-reproductive .male-bladder{fill:#d9edf5;stroke:#6791a5;stroke-width:5}
+.spark-diagram-male-reproductive .male-sperm-duct{fill:none;stroke:#6d8f5e;stroke-width:9;stroke-linecap:round}
+.spark-diagram-male-reproductive .male-seminal-vesicle{fill:#e2b975;stroke:#9a7337;stroke-width:5}
+.spark-diagram-male-reproductive .male-prostate{fill:#c9986c;stroke:#825b39;stroke-width:5}
+.spark-diagram-male-reproductive .male-cowper{fill:#e4bf79;stroke:#94713a;stroke-width:4}
+.spark-diagram-male-reproductive .male-urethra{fill:none;stroke:#477f9d;stroke-width:8;stroke-linecap:round}
+.spark-diagram-male-reproductive .male-penis{fill:#e3ae8f;stroke:#9c6548;stroke-width:5}
+.spark-diagram-male-reproductive .male-scrotum{fill:#e6b79a;stroke:#99684d;stroke-width:5}
+.spark-diagram-male-reproductive .male-testis{fill:#edcf97;stroke:#a47b3f;stroke-width:5}
+.spark-diagram-male-reproductive .male-epididymis{fill:none;stroke:#5d7e50;stroke-width:10;stroke-linecap:round}
+.spark-diagram-male-reproductive .male-cowper-duct{fill:none;stroke:#8d6a37;stroke-width:5;stroke-linecap:round}
+@media(max-width:560px){
+  .spark-diagram-reproductive .repro-orientation{font-size:20px}
+}
+
+
+/* SPARK_PREGNANCY_UTERUS_TEMPLATE_V1 */
+.spark-diagram-pregnancy .pregnancy-uterus-wall{fill:#e8a7b3;stroke:#965565;stroke-width:8}
+.spark-diagram-pregnancy .pregnancy-amnion{fill:#d9eef8;fill-opacity:.78;stroke:#6e9eb6;stroke-width:5}
+.spark-diagram-pregnancy .pregnancy-placenta{fill:#b9606f;stroke:#7d3f4b;stroke-width:5}
+.spark-diagram-pregnancy .pregnancy-umbilical{fill:none;stroke:#7f6599;stroke-width:12;stroke-linecap:round}
+.spark-diagram-pregnancy .pregnancy-foetus circle{fill:#efc2a4;stroke:#9b694e;stroke-width:4}
+.spark-diagram-pregnancy .pregnancy-foetus path{fill:#efc2a4;stroke:#9b694e;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.spark-diagram-pregnancy .pregnancy-cervix{fill:#d48696;stroke:#8e4c5b;stroke-width:5}
+.spark-diagram-pregnancy .pregnancy-vagina{fill:#e7a7b2;stroke:#965565;stroke-width:5}
+.spark-diagram-pregnancy .pregnancy-fluid-marker{fill:#7bbbd8;opacity:.75}
+
+
+/* SPARK_HUMAN_HEART_TEMPLATE_V1 */
+.spark-diagram-heart .heart-outline{fill:#ead3d7;stroke:#8e5360;stroke-width:8}
+.spark-diagram-heart .heart-right-atrium,.spark-diagram-heart .heart-right-ventricle{fill:#a9d1e5;stroke:#527f98;stroke-width:5}
+.spark-diagram-heart .heart-left-atrium,.spark-diagram-heart .heart-left-ventricle{fill:#efb3b3;stroke:#a95a5a;stroke-width:5}
+.spark-diagram-heart .heart-left-ventricle{stroke-width:12}
+.spark-diagram-heart .heart-septum{fill:none;stroke:#81505a;stroke-width:9}
+.spark-diagram-heart .heart-vena-cava,.spark-diagram-heart .heart-pulmonary-artery{fill:none;stroke:#5e91ad;stroke-width:18;stroke-linecap:round}
+.spark-diagram-heart .heart-aorta,.spark-diagram-heart .heart-pulmonary-vein{fill:none;stroke:#bd6262;stroke-width:18;stroke-linecap:round}
+.spark-diagram-heart .heart-tricuspid,.spark-diagram-heart .heart-bicuspid{fill:none;stroke:#f8f2e6;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
+.spark-diagram-heart .heart-flow{fill:none;stroke-width:6;stroke-linecap:round;stroke-dasharray:14 10}
+.spark-diagram-heart .heart-flow.deoxygenated{stroke:#276b94}
+.spark-diagram-heart .heart-flow.oxygenated{stroke:#b64040}
+.spark-diagram-heart .heart-side-label{font-size:15px;font-weight:900}
+.spark-diagram-heart .heart-side-label.deoxygenated{fill:#315f7c}
+.spark-diagram-heart .heart-side-label.oxygenated{fill:#913f3f}
+.spark-diagram-heart .heart-aortic-branch{fill:none;stroke:#bd6262;stroke-width:12;stroke-linecap:round}
+.spark-diagram-heart .heart-pulmonary-artery.branch{stroke-width:13}
+.spark-diagram-heart .heart-semilunar{fill:none;stroke:#f8f2e6;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+
+@media(max-width:560px){
+  .spark-diagram-heart .heart-side-label{font-size:19px}
+}
+
+
+/* SPARK_EXCRETION_DIAGRAM_TEMPLATES_V1 */
+.spark-diagram-kidney .kidney-outline{fill:#b96a76;stroke:#7f4650;stroke-width:7}
+.spark-diagram-kidney .kidney-cortex{fill:#dd9aa4;stroke:#95555f;stroke-width:4}
+.spark-diagram-kidney .kidney-medulla path{fill:#e8c3a4;stroke:#a87952;stroke-width:4}
+.spark-diagram-kidney .kidney-pelvis{fill:#f2ddd0;stroke:#a17d66;stroke-width:4}
+.spark-diagram-kidney .kidney-ureter{fill:none;stroke:#c79b78;stroke-width:13;stroke-linecap:round}
+.spark-diagram-kidney .kidney-artery{stroke:#b74a4a;stroke-width:15;stroke-linecap:round}
+.spark-diagram-kidney .kidney-vein{stroke:#4d7fa7;stroke-width:15;stroke-linecap:round}
+.spark-diagram-kidney .kidney-orientation{fill:#526b7d;font-size:14px;font-weight:850}
+.spark-diagram-kidney .kidney-capsule{fill:#d88794;stroke:#8d4f5b;stroke-width:5}
+.spark-diagram-kidney .kidney-calyces path{fill:none;stroke:#d9b7a0;stroke-width:7;stroke-linecap:round}
+.spark-diagram-kidney .kidney-hilum{fill:#f0d6c7;stroke:#a47a65;stroke-width:3}
+
+.spark-diagram-nephron .nephron-bowman{fill:#f3ddd0;stroke:#a8785c;stroke-width:5}
+.spark-diagram-nephron .nephron-glomerulus{fill:none;stroke:#b84c57;stroke-width:9;stroke-linecap:round}
+.spark-diagram-nephron .nephron-afferent{stroke:#b84c57;stroke-width:16;stroke-linecap:round}
+.spark-diagram-nephron .nephron-efferent{stroke:#8a3c46;stroke-width:12;stroke-linecap:round}
+.spark-diagram-nephron .nephron-tubule,.spark-diagram-nephron .nephron-loop,.spark-diagram-nephron .nephron-distal,.spark-diagram-nephron .nephron-join{fill:none;stroke:#c99a72;stroke-width:16;stroke-linecap:round;stroke-linejoin:round}
+.spark-diagram-nephron .nephron-collecting{stroke:#7b98ad;stroke-width:18;stroke-linecap:round}
+.spark-diagram-nephron .nephron-urine-arrow{stroke:#4c89a9;stroke-width:7;stroke-linecap:round}
+.spark-diagram-nephron .nephron-urine-label{fill:#47667a;font-size:15px;font-weight:900}
+.spark-diagram-skin .skin-surface{fill:none;stroke:#87583f;stroke-width:6}
+.spark-diagram-skin .skin-epidermis{fill:#f3c9aa;stroke:#a67858;stroke-width:4}
+.spark-diagram-skin .skin-dermis{fill:#e8b28d;stroke:#a36f4d;stroke-width:4}
+.spark-diagram-skin .skin-fat-layer{fill:#f4df8f;stroke:#ae9547;stroke-width:4}
+.spark-diagram-skin .skin-fat-cell{fill:#f6e8aa;stroke:#b69c50;stroke-width:2}
+.spark-diagram-skin .skin-hair{stroke:#4f392f;stroke-width:8;stroke-linecap:round}
+.spark-diagram-skin .skin-hair-follicle{fill:#ba8e6f;stroke:#775640;stroke-width:4}
+.spark-diagram-skin .skin-sweat-gland,.spark-diagram-skin .skin-sweat-duct{fill:none;stroke:#4f84a2;stroke-width:9;stroke-linecap:round}
+.spark-diagram-skin .skin-sweat-drop{fill:#72b9db;stroke:#3d7e9e;stroke-width:3}
+.spark-diagram-skin .skin-blood-vessel{fill:none;stroke-width:9;stroke-linecap:round}
+.spark-diagram-skin .skin-blood-vessel.red{stroke:#b74b4b}
+.spark-diagram-skin .skin-blood-vessel.blue{stroke:#4b78a5}
+.spark-diagram-skin .skin-nerve{fill:none;stroke:#e0b13f;stroke-width:6;stroke-linecap:round}
+.spark-diagram-skin .skin-orientation{fill:#526b7d;font-size:14px;font-weight:850}
+@media(max-width:560px){
+  .spark-diagram-kidney .kidney-orientation,
+  .spark-diagram-skin .skin-orientation,
+  .spark-diagram-nephron .nephron-urine-label{font-size:19px}
+}
+
+
+/* SPARK_MAMMALIAN_EYE_TEMPLATE_V1 */
+.spark-diagram-eye .eye-sclera{fill:#f4f6f7;stroke:#6a7f8e;stroke-width:8}
+.spark-diagram-eye .eye-cornea{fill:#dff2f7;fill-opacity:.82;stroke:#6296aa;stroke-width:6}
+.spark-diagram-eye .eye-choroid{fill:#685343;stroke:#4e3d31;stroke-width:5}
+.spark-diagram-eye .eye-retina{fill:#e7cf8a;stroke:#a78837;stroke-width:4}
+.spark-diagram-eye .eye-lens{fill:#e8f0f5;fill-opacity:.92;stroke:#6c90a4;stroke-width:5}
+.spark-diagram-eye .eye-iris{fill:none;stroke:#6e95a8;stroke-width:16;stroke-linecap:round}
+.spark-diagram-eye .eye-pupil{fill:#1e2b34}
+.spark-diagram-eye .eye-ciliary{fill:none;stroke:#8f6c57;stroke-width:13;stroke-linecap:round}
+.spark-diagram-eye .eye-suspensory{stroke:#8e9b73;stroke-width:4}
+.spark-diagram-eye .eye-optic-nerve{fill:#d9c08c;stroke:#95794a;stroke-width:5}
+.spark-diagram-eye .eye-fovea{fill:#d28a48;stroke:#985b25;stroke-width:3}
+.spark-diagram-eye .eye-blind-spot{fill:#83694b;stroke:#5f4a35;stroke-width:3}
+.spark-diagram-eye .eye-vitreous{fill:#e8f5fb;fill-opacity:.86;stroke:#9ec9db;stroke-width:3}
+.spark-diagram-eye .eye-aqueous{fill:#dff3fa;fill-opacity:.88;stroke:#8ebdce;stroke-width:3}
+.spark-diagram-eye .eye-optic-disc{fill:none;stroke:#9e7c50;stroke-width:4;stroke-linecap:round}
+
+
+
+/* SPARK_MAMMALIAN_EAR_TEMPLATE_V1 */
+.spark-diagram-ear .ear-pinna{fill:none;stroke:#bd8062;stroke-width:24;stroke-linecap:round;stroke-linejoin:round}
+.spark-diagram-ear .ear-canal{fill:none;stroke:#8b634f;stroke-width:18;stroke-linecap:round}
+.spark-diagram-ear .ear-drum{fill:#dca79a;stroke:#925f58;stroke-width:5}
+.spark-diagram-ear .ear-middle-cavity{fill:#f1dfcf;fill-opacity:.7;stroke:#b88f78;stroke-width:4}
+.spark-diagram-ear .ear-ossicles path{fill:none;stroke:#d8c6aa;stroke-width:9;stroke-linecap:round;stroke-linejoin:round}
+.spark-diagram-ear .ear-ossicles circle{fill:#eadcc8;stroke:#9c8667;stroke-width:4}
+.spark-diagram-ear .ear-cochlea{fill:none;stroke:#d7a358;stroke-width:20;stroke-linecap:round;stroke-linejoin:round}
+.spark-diagram-ear .ear-auditory-nerve{fill:none;stroke:#8f6ba7;stroke-width:14;stroke-linecap:round}
+.spark-diagram-ear .ear-semicircular path{fill:none;stroke:#77a993;stroke-width:16;stroke-linecap:round}
+.spark-diagram-ear .ear-eustachian{fill:none;stroke:#6d98ad;stroke-width:14;stroke-linecap:round}
+.spark-diagram-ear .ear-vestibule{fill:#c8dfd5;stroke:#648d7d;stroke-width:5}
+.spark-diagram-ear .ear-ossicles .malleus,.spark-diagram-ear .ear-ossicles .incus,.spark-diagram-ear .ear-ossicles .stapes{fill:none;stroke:#cdbb9d;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
+
+
+
+/* SPARK_HUMAN_BRAIN_TEMPLATE_V1 */
+.spark-diagram-brain .brain-cerebrum{fill:#d9a8aa;stroke:#8f5f64;stroke-width:7}
+.spark-diagram-brain .brain-cerebrum-fold{fill:none;stroke:#a46d72;stroke-width:5;stroke-linecap:round}
+.spark-diagram-brain .brain-cerebellum{fill:#c88c91;stroke:#85545a;stroke-width:6}
+.spark-diagram-brain .brain-brainstem{fill:#d4b18e;stroke:#8e6d4e;stroke-width:6}
+.spark-diagram-brain .brain-medulla{fill:#c89c78;stroke:#825d41;stroke-width:5}
+.spark-diagram-brain .brain-spinal-cord{fill:none;stroke:#c9a47f;stroke-width:20;stroke-linecap:round}
+.spark-diagram-brain .brain-hypothalamus{fill:#d69a69;stroke:#95633b;stroke-width:4}
+.spark-diagram-brain .brain-pituitary{fill:#c97882;stroke:#8b4d56;stroke-width:4}
+.spark-diagram-brain .brain-pituitary-stalk{stroke:#8b4d56;stroke-width:5;stroke-linecap:round}
+
+
+/* SPARK_ENDOCRINE_SYSTEM_TEMPLATE_V1 */
+.spark-diagram-endocrine .endo-head{fill:#e3b79a;stroke:#9b6a4e;stroke-width:5}
+.spark-diagram-endocrine .endo-body{fill:#dde7ee;stroke:#758b9b;stroke-width:6}
+.spark-diagram-endocrine .endo-arm,.spark-diagram-endocrine .endo-leg{fill:none;stroke:#758b9b;stroke-width:18;stroke-linecap:round}
+.spark-diagram-endocrine .endo-pituitary{fill:#b9687a;stroke:#7e4352;stroke-width:3}
+.spark-diagram-endocrine .endo-thyroid{fill:#c88658;stroke:#8d5c38;stroke-width:4}
+.spark-diagram-endocrine .endo-kidney{fill:#b76672;stroke:#804650;stroke-width:4}
+.spark-diagram-endocrine .endo-adrenal{fill:#e3b452;stroke:#9b782b;stroke-width:4}
+.spark-diagram-endocrine .endo-pancreas{fill:#d7a866;stroke:#936d35;stroke-width:4}
+.spark-diagram-endocrine .endo-ovaries ellipse{fill:#e0a36f;stroke:#995f36;stroke-width:3}
+.spark-diagram-endocrine .endo-ovaries path{fill:none;stroke:#a66c49;stroke-width:5;stroke-linecap:round}
+.spark-diagram-endocrine .endo-testes-inset ellipse{fill:#e4bc83;stroke:#9e743d;stroke-width:3}
+.spark-diagram-endocrine .endo-inset-box{fill:#f7fafc;stroke:#9cafbc;stroke-width:3}
+.spark-diagram-endocrine .endo-inset-label{fill:#526b7d;font-size:14px;font-weight:850}
+@media(max-width:560px){
+  .spark-diagram-endocrine .endo-inset-label{font-size:19px}
+}
+
+
+/* SPARK_HUMAN_DIGESTIVE_TEMPLATE_V1 */
+.spark-diagram-digestive .digestive-head{fill:#e3b79a;stroke:#9b6a4e;stroke-width:5}
+.spark-diagram-digestive .digestive-body{fill:#eef3f6;stroke:#758b9b;stroke-width:6}
+.spark-diagram-digestive .digestive-mouth{fill:none;stroke:#9d5a58;stroke-width:6;stroke-linecap:round}
+.spark-diagram-digestive .digestive-oesophagus{fill:none;stroke:#c98774;stroke-width:14;stroke-linecap:round}
+.spark-diagram-digestive .digestive-stomach{fill:#dfa68a;stroke:#9d6249;stroke-width:5}
+.spark-diagram-digestive .digestive-liver{fill:#a86358;stroke:#70453e;stroke-width:5}
+.spark-diagram-digestive .digestive-gall{fill:#7da05a;stroke:#4f6f36;stroke-width:4}
+.spark-diagram-digestive .digestive-pancreas{fill:#d8ad64;stroke:#92703a;stroke-width:4}
+.spark-diagram-digestive .digestive-small{fill:none;stroke:#d99b7d;stroke-width:18;stroke-linecap:round;stroke-linejoin:round}
+.spark-diagram-digestive .digestive-large{fill:none;stroke:#a97b5d;stroke-width:24;stroke-linecap:round;stroke-linejoin:round}
+.spark-diagram-digestive .digestive-rectum{stroke:#9a6a50;stroke-width:16;stroke-linecap:round}
+@media(max-width:560px){
+  .spark-diagram-digestive .repro-orientation{font-size:19px}
+}
+
+
+/* SPARK_HUMAN_TOOTH_TEMPLATE_V1 */
+.spark-diagram-tooth .tooth-enamel{fill:#f5f8fa;stroke:#6d7f8b;stroke-width:8}
+.spark-diagram-tooth .tooth-cementum{fill:#d7c5a5;stroke:#9b8767;stroke-width:7}
+.spark-diagram-tooth .tooth-dentine{fill:#ead7a0;stroke:#a58a45;stroke-width:5}
+.spark-diagram-tooth .tooth-pulp{fill:#e6a0a7;stroke:#a55b65;stroke-width:5}
+.spark-diagram-tooth .tooth-gum{fill:#e6a3a8;stroke:#9f5d65;stroke-width:5}
+.spark-diagram-tooth .tooth-neck-line{stroke:#758896;stroke-width:4;stroke-dasharray:10 8}
+.spark-diagram-tooth .tooth-root-vessels{fill:none;stroke:#b0525b;stroke-width:6;stroke-linecap:round}
+.spark-diagram-tooth .tooth-region-label{fill:#526b7d;font-size:15px;font-weight:900}
+@media(max-width:560px){
+  .spark-diagram-tooth .tooth-region-label{font-size:20px}
+}
+
+
+/* SPARK_HUMAN_RESPIRATORY_TEMPLATE_V1 */
+.spark-diagram-respiratory .resp-head{fill:#e3b79a;stroke:#9b6a4e;stroke-width:5}
+.spark-diagram-respiratory .resp-neck{fill:#eef3f6;stroke:#758b9b;stroke-width:5}
+.spark-diagram-respiratory .resp-ribcage{fill:#f3f6f8;fill-opacity:.35;stroke:#7f929f;stroke-width:5}
+.spark-diagram-respiratory .resp-trachea{fill:none;stroke:#79a2b6;stroke-width:20;stroke-linecap:round;stroke-dasharray:8 5}
+.spark-diagram-respiratory .resp-bronchus{fill:none;stroke:#79a2b6;stroke-width:15;stroke-linecap:round}
+.spark-diagram-respiratory .resp-lung{fill:#e7a8ad;stroke:#9e5a62;stroke-width:6}
+.spark-diagram-respiratory .resp-bronchioles{fill:none;stroke:#b9787e;stroke-width:6;stroke-linecap:round}
+.spark-diagram-respiratory .resp-diaphragm{fill:none;stroke:#b47a55;stroke-width:15;stroke-linecap:round}
+.spark-diagram-respiratory .resp-ribs{fill:none;stroke:#b7c3ca;stroke-width:6;stroke-linecap:round}
+@media(max-width:560px){
+  .spark-diagram-respiratory .repro-orientation{font-size:19px}
+}
+
+
+/* SPARK_THREE_PIN_PLUG_TEMPLATE_V1 */
+.spark-diagram-plug .plug-body{fill:#eef3f6;stroke:#6f8492;stroke-width:7}
+.spark-diagram-plug .plug-earth-pin,.spark-diagram-plug .plug-neutral-pin,.spark-diagram-plug .plug-live-pin{fill:#c7b58a;stroke:#776640;stroke-width:5}
+.spark-diagram-plug .plug-earth-wire{fill:none;stroke:#79a959;stroke-width:18;stroke-linecap:round}
+.spark-diagram-plug .plug-neutral-wire{fill:none;stroke:#4d7fb2;stroke-width:18;stroke-linecap:round}
+.spark-diagram-plug .plug-live-wire{fill:none;stroke:#9a5b3e;stroke-width:18;stroke-linecap:round}
+.spark-diagram-plug .plug-fuse{fill:#e6d3a0;stroke:#8b7440;stroke-width:4}
+.spark-diagram-plug .plug-cable-grip{fill:#526b7d;stroke:#30495b;stroke-width:4}
+.spark-diagram-plug .plug-flex{fill:none;stroke:#4c5962;stroke-width:32;stroke-linecap:round}
+.spark-diagram-plug .plug-wire-text{font-size:14px;font-weight:900}
+.spark-diagram-plug .plug-wire-text.earth{fill:#567b3d}
+.spark-diagram-plug .plug-wire-text.neutral{fill:#346795}
+.spark-diagram-plug .plug-wire-text.live{fill:#82452f}
+.spark-diagram-plug .plug-fuse-text{fill:#6c572b;font-size:13px;font-weight:900}
+@media(max-width:560px){
+  .spark-diagram-plug .plug-wire-text,.spark-diagram-plug .plug-fuse-text,.spark-diagram-plug .repro-orientation{font-size:19px}
+}
+
+
+/* SPARK_CSEC_REFERENCE_GEOMETRY_V1
+   Keep CSEC-style reference proportions crisp when scaled into the
+   interactive labelling canvas. */
+.spark-csec-reference *{vector-effect:non-scaling-stroke}
+.spark-csec-reference .eye-choroid{fill:none;stroke-width:7}
+.spark-csec-reference .eye-retina{fill:none;stroke-width:5}
+.spark-csec-reference .eye-sclera{stroke-width:7}
+.spark-csec-reference .eye-cornea{stroke-width:5}
+.spark-csec-reference .eye-aqueous{stroke-width:3}
+.spark-csec-reference .eye-iris{stroke-width:10}
+.spark-csec-reference .eye-suspensory{fill:none;stroke-width:3}
+.spark-csec-reference .heart-outline{stroke-width:7}
+.spark-csec-reference .heart-right-atrium,
+.spark-csec-reference .heart-right-ventricle,
+.spark-csec-reference .heart-left-atrium,
+.spark-csec-reference .heart-left-ventricle{stroke-width:4}
+.spark-csec-reference .heart-inner-wall{fill:none;stroke:#7b4d58;stroke-width:2}
+.spark-csec-reference .heart-septum{stroke-width:7}
+.spark-csec-reference .heart-tricuspid,
+.spark-csec-reference .heart-bicuspid,
+.spark-csec-reference .heart-semilunar{stroke-width:6}
+.spark-csec-reference .heart-vena-cava,
+.spark-csec-reference .heart-aorta,
+.spark-csec-reference .heart-pulmonary-artery,
+.spark-csec-reference .heart-pulmonary-vein{stroke-width:13}
+
+
+/* SPARK_REFERENCE_REFINED_ANATOMY_V2 */
+.spark-reference-refined *{vector-effect:non-scaling-stroke}
+
+/* Cells */
+.spark-diagram-cell .vacuole-highlight{fill:none;stroke:#fff;stroke-opacity:.75;stroke-width:5;stroke-linecap:round}
+.spark-diagram-cell .nuclear-chromatin{fill:none;stroke:#7b68a4;stroke-width:3;stroke-linecap:round}
+.spark-diagram-cell .rough-er path{fill:none;stroke:#8c78b2;stroke-width:8;stroke-linecap:round}
+.spark-diagram-cell .golgi path{fill:none;stroke:#d56c91;stroke-width:7;stroke-linecap:round}
+
+/* Female reproductive system */
+.spark-diagram-female-reproductive .female-myometrium{fill:#d98f91;stroke:#9d575b;stroke-width:4}
+.spark-diagram-female-reproductive .female-cervical-canal{fill:none;stroke:#8d4f55;stroke-width:6;stroke-linecap:round}
+.spark-diagram-female-reproductive .female-vaginal-rugae path{fill:none;stroke:#a55e63;stroke-width:4;stroke-linecap:round}
+.spark-diagram-female-reproductive .female-follicle{fill:#f2c36e;stroke:#aa7930;stroke-width:2}
+
+/* Male reproductive system */
+.spark-diagram-male-reproductive .male-bladder-neck{fill:none;stroke:#7d6771;stroke-width:5;stroke-linecap:round}
+.spark-diagram-male-reproductive .male-sperm-duct.secondary,
+.spark-diagram-male-reproductive .male-epididymis.secondary{opacity:.78}
+.spark-diagram-male-reproductive .male-seminal-vesicle.secondary{opacity:.82}
+.spark-diagram-male-reproductive .male-cowper.secondary{opacity:.82}
+.spark-diagram-male-reproductive .male-testis.secondary{opacity:.9}
+.spark-diagram-male-reproductive .male-erectile-tissue{fill:#c77e76;fill-opacity:.55;stroke:#96544f;stroke-width:3}
+
+/* Heart */
+.spark-diagram-heart .heart-left-wall-inner{fill:none;stroke:#7f4653;stroke-width:10;stroke-linecap:round}
+.spark-diagram-heart .heart-chordae path{fill:none;stroke:#f5e9dd;stroke-width:3.5;stroke-linecap:round}
+.spark-diagram-heart .heart-aortic-branch{fill:none;stroke:#bd6262;stroke-width:12;stroke-linecap:round}
+.spark-diagram-heart .heart-pulmonary-artery.branch{stroke-width:12}
+.spark-diagram-heart .heart-semilunar{fill:none;stroke:#f8f2e6;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+
+/* Kidney */
+.spark-diagram-kidney .kidney-columns path{fill:none;stroke:#c37a82;stroke-width:7;stroke-linecap:round}
+.spark-diagram-kidney .kidney-vessel{fill:none;stroke-width:7;stroke-linecap:round}
+.spark-diagram-kidney .kidney-vessel.artery{stroke:#b74a4a}
+.spark-diagram-kidney .kidney-vessel.vein{stroke:#4d7fa7}
+
+/* Eye */
+.spark-diagram-eye .eye-retinal-vessels path{fill:none;stroke:#a45f62;stroke-width:3;stroke-linecap:round}
+.spark-diagram-eye .eye-optic-disc{fill:#e7c06f;stroke:#a47532;stroke-width:3}
+.spark-diagram-eye .eye-vitreous{fill:#f4c3c8;fill-opacity:.42;stroke:#d79ba4;stroke-width:2}
+.spark-diagram-eye .eye-aqueous{fill:#d9f1f7;fill-opacity:.82;stroke:#82b7c9;stroke-width:3}
+
+/* Ear */
+.spark-diagram-ear .ear-bone{fill:#ead7ba;fill-opacity:.7;stroke:#c39e73;stroke-width:4}
+.spark-diagram-ear .ear-canal-lumen{fill:none;stroke:#6f4c3f;stroke-width:7;stroke-linecap:round}
+.spark-diagram-ear .ear-oval-window{fill:#d7c9af;stroke:#8f775b;stroke-width:3}
+
+@media(max-width:560px){
+  .spark-reference-refined .repro-orientation{font-size:19px}
+}
+
+.spark-diagram-cell .plant-central-vacuole{fill:#e7f7ff;stroke:#7fb6cd;stroke-width:5}
+.spark-diagram-cell .plant-er path{stroke:#7c6bb0}
+.spark-diagram-cell .plant-golgi path{stroke:#e07b9b}
+.spark-diagram-cell .golgi-vesicle{fill:#f1a3bb;stroke:#b95e7d;stroke-width:2}
+
+.spark-diagram-pregnancy .pregnancy-myometrium{fill:#d98796;stroke:#9b5362;stroke-width:5}
+.spark-diagram-pregnancy .pregnancy-placental-villi path{fill:none;stroke:#8d4a57;stroke-width:5;stroke-linecap:round}
+.spark-diagram-pregnancy .pregnancy-umbilical-inner{fill:none;stroke:#b6d2df;stroke-width:4;stroke-linecap:round}
+.spark-diagram-pregnancy .foetus-head,.spark-diagram-pregnancy .foetus-torso{fill:#efc2a4;stroke:#9b694e;stroke-width:4}
+.spark-diagram-pregnancy .foetus-face,.spark-diagram-pregnancy .foetus-back,.spark-diagram-pregnancy .foetus-arm,.spark-diagram-pregnancy .foetus-leg,.spark-diagram-pregnancy .foetus-hand,.spark-diagram-pregnancy .foetus-foot{fill:none;stroke:#9b694e;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.spark-diagram-pregnancy .pregnancy-cervical-canal{fill:none;stroke:#7f4350;stroke-width:5;stroke-linecap:round}
+
+
+/* SPARK_ANATOMY_POLISH_BATCH_V3 */
+.spark-diagram-digestive .digestive-pharynx{fill:none;stroke:#c98774;stroke-width:9;stroke-linecap:round}
+.spark-diagram-digestive .digestive-duodenum{fill:none;stroke:#d99b7d;stroke-width:14;stroke-linecap:round}
+.spark-diagram-digestive .digestive-small.inner{stroke-width:12}
+.spark-diagram-digestive .digestive-appendix{fill:none;stroke:#a97b5d;stroke-width:10;stroke-linecap:round}
+.spark-diagram-digestive .digestive-anus{fill:none;stroke:#9a6a50;stroke-width:8;stroke-linecap:round}
+
+.spark-diagram-tooth .tooth-jaw{fill:#d7c4a9;stroke:#9f886d;stroke-width:5}
+.spark-diagram-tooth .tooth-root-canal{fill:none;stroke:#9d5965;stroke-width:5;stroke-linecap:round}
+.spark-diagram-tooth .tooth-root-vessels.red{stroke:#b0525b}
+.spark-diagram-tooth .tooth-root-vessels.blue{stroke:#4e7da4}
+.spark-diagram-tooth .tooth-nerve{fill:none;stroke:#e0b33e;stroke-width:4;stroke-linecap:round}
+.spark-diagram-tooth .tooth-periodontal{fill:none;stroke:#c3ad8c;stroke-width:4;stroke-dasharray:7 5}
+
+.spark-diagram-respiratory .resp-nasal{fill:#d7eef5;stroke:#6f9aac;stroke-width:4}
+.spark-diagram-respiratory .resp-pharynx{fill:none;stroke:#79a2b6;stroke-width:10;stroke-linecap:round}
+.spark-diagram-respiratory .resp-tracheal-ring{stroke:#557a8d;stroke-width:3}
+.spark-diagram-respiratory .resp-cardiac-notch{fill:none;stroke:#9e5a62;stroke-width:5;stroke-linecap:round}
+.spark-diagram-respiratory .resp-alveoli circle{fill:#f3c2c8;stroke:#9e5a62;stroke-width:3}
+
+
+/* SPARK_NEURO_ENDOCRINE_POLISH_V1 */
+.spark-diagram-brain .brain-lobe{stroke:#9a666c;stroke-width:3}
+.spark-diagram-brain .brain-lobe.frontal{fill:#e2b2b3}
+.spark-diagram-brain .brain-lobe.parietal{fill:#dda5aa}
+.spark-diagram-brain .brain-lobe.temporal{fill:#d89ba0}
+.spark-diagram-brain .brain-lobe.occipital{fill:#d59aa2}
+.spark-diagram-brain .brain-corpus-callosum{fill:#e8d6c9;stroke:#9b806c;stroke-width:4}
+.spark-diagram-brain .brain-thalamus{fill:#d7a27d;stroke:#94694a;stroke-width:4}
+.spark-diagram-brain .brain-cerebellum-fold{fill:none;stroke:#9a6268;stroke-width:4;stroke-linecap:round}
+.spark-diagram-brain .brain-pons{fill:#d2a17f;stroke:#8e694d;stroke-width:4}
+
+.spark-diagram-endocrine .endo-trachea{fill:none;stroke:#8ba4b5;stroke-width:10;stroke-linecap:round;stroke-dasharray:8 5}
+.spark-diagram-endocrine .endo-pancreatic-duct{fill:none;stroke:#a57a3f;stroke-width:3;stroke-linecap:round}
+.spark-diagram-endocrine .endo-epididymis{fill:none;stroke:#9b7345;stroke-width:4;stroke-linecap:round}
+
+.spark-diagram-cell .smooth-er path{fill:none;stroke:#91a7c7;stroke-width:7;stroke-linecap:round}
+.spark-diagram-cell .centrosome rect{fill:#69b9d1;stroke:#317f9a;stroke-width:3}
+.spark-diagram-cell .centrosome-rays path{fill:none;stroke:#75a7bc;stroke-width:2.5;stroke-linecap:round}
+.spark-diagram-cell .lysosomes circle{fill:#e98f8f;stroke:#a65454;stroke-width:3}
+.spark-diagram-cell .cytoskeleton path{fill:none;stroke:#72c5a5;stroke-width:2.6;stroke-opacity:.8;stroke-linecap:round}
+.spark-diagram-cell .plant-peroxisomes circle{fill:#f0c85f;stroke:#a88426;stroke-width:3}
+.spark-diagram-cell .plasmodesmata line{stroke:#597f4d;stroke-width:4;stroke-linecap:round}
+.spark-diagram-cell .plasmodesmata circle{fill:#7aa66c;stroke:#4f7245;stroke-width:1.5}

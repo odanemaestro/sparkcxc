@@ -1,0 +1,41 @@
+.spark-flower-process{margin:28px 0;padding:20px;border:1px solid var(--spark-border,#d9e2ec);border-radius:16px;background:var(--spark-paper,#fff)}
+.spark-flower-process header>span{color:var(--spark-teal-dark,#087f73);font-size:11px;font-weight:900;letter-spacing:.05em}
+.spark-flower-process header h3{margin:4px 0 7px;color:var(--spark-ink,#102a43);font-size:20px}
+.spark-flower-process header p{margin:0;color:var(--spark-text-muted,#627d98);font-size:13px;line-height:1.6}
+.spark-flower-process-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(250px,.65fr);gap:16px;margin-top:16px}
+.spark-flower-stage{overflow:hidden;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:14px;background:#f4f8f1}
+.spark-flower-stage svg{display:block;width:100%;height:auto}
+.spark-flower-stage .frp-petal{fill:#f3a7b9;stroke:#a44c67;stroke-width:5}.spark-flower-stage .frp-sepal{fill:#71af62;stroke:#3e7737;stroke-width:5}
+.spark-flower-stage .frp-ovary{fill:#98c97d;stroke:#477f3e;stroke-width:6}.spark-flower-stage .frp-ovule{fill:#f7e7aa;stroke:#9b7a2f;stroke-width:4}
+.spark-flower-stage .frp-style{fill:#bee0a3;stroke:#477f3e;stroke-width:4}.spark-flower-stage .frp-stigma{fill:#d9efc4;stroke:#477f3e;stroke-width:4}
+.spark-flower-stage .frp-stamens path{fill:none;stroke:#6a8e45;stroke-width:5;stroke-linecap:round}.spark-flower-stage .frp-stamens ellipse{fill:#e9c857;stroke:#9a7620;stroke-width:4}
+.spark-flower-stage .frp-pollen circle{fill:#e0a632;stroke:#986918;stroke-width:3}.spark-flower-stage .frp-pollen-arrow{fill:none;stroke:#d78b1d;stroke-width:5;stroke-dasharray:9 8}
+.spark-flower-stage .frp-pollen-tube{fill:none;stroke:#9a4d72;stroke-width:7;stroke-linecap:round}
+.spark-flower-stage .frp-male-nucleus{fill:#466bb1}.spark-flower-stage .frp-female-nucleus{fill:#c35b83}.spark-flower-stage .frp-zygote{fill:none;stroke:#5a3f8f;stroke-width:6}
+.spark-flower-stage .frp-fruit-outline{fill:#d7eba8;fill-opacity:.82;stroke:#6f9c4f;stroke-width:6}.spark-flower-stage .frp-seed{fill:#b9844e;stroke:#714725;stroke-width:4}
+.spark-flower-stage .frp-label{fill:#24435c;font-size:22px;font-weight:900}.spark-flower-stage .frp-small{fill:#52677a;font-size:16px;font-weight:750}
+.spark-flower-step-controls{display:flex;justify-content:center;gap:8px;margin-top:10px}.spark-flower-step-controls button{width:42px;height:42px;border:1px solid var(--spark-border,#d9e2ec);border-radius:50%;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-weight:900;cursor:pointer}.spark-flower-step-controls button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal,#0d9488);color:#fff}
+.spark-flower-step-note{padding:16px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:12px;background:var(--spark-bg,#f7fafc)}.spark-flower-step-note>strong{color:var(--spark-ink,#102a43);font-size:16px}.spark-flower-step-note>p{color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.6}
+.spark-flower-sequence{display:flex;flex-wrap:wrap;align-items:center;gap:5px;margin-top:14px;padding:10px;border-radius:9px;background:var(--spark-paper,#fff);font-size:10px;font-weight:800;color:var(--spark-ink,#102a43)}
+.spark-pollination-compare{margin-top:16px;padding:15px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:12px;background:var(--spark-bg,#f7fafc)}
+.spark-pollination-tabs{display:flex;gap:8px}.spark-pollination-tabs button{min-height:40px;padding:0 12px;border:1px solid var(--spark-border,#d9e2ec);border-radius:8px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:12px;font-weight:850;cursor:pointer}.spark-pollination-tabs button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}
+.spark-pollination-compare ul{margin:12px 0 0;padding-left:20px}.spark-pollination-compare li{margin:5px 0;color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.5}
+html[data-theme="dark"] .spark-flower-process,body[data-theme="dark"] .spark-flower-process,.dark .spark-flower-process{background:#122b43;border-color:#2a4863}
+html[data-theme="dark"] .spark-flower-step-note,html[data-theme="dark"] .spark-pollination-compare,body[data-theme="dark"] .spark-flower-step-note,body[data-theme="dark"] .spark-pollination-compare,.dark .spark-flower-step-note,.dark .spark-pollination-compare{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .spark-flower-stage,body[data-theme="dark"] .spark-flower-stage,.dark .spark-flower-stage{background:#edf5e9;border-color:#39566e}
+html[data-theme="dark"] .spark-flower-step-controls button,html[data-theme="dark"] .spark-pollination-tabs button,body[data-theme="dark"] .spark-flower-step-controls button,body[data-theme="dark"] .spark-pollination-tabs button,.dark .spark-flower-step-controls button,.dark .spark-pollination-tabs button{background:#15314b;border-color:#39566e;color:#e7f2fb}
+html[data-theme="dark"] .spark-flower-step-controls button.active,html[data-theme="dark"] .spark-pollination-tabs button.active,body[data-theme="dark"] .spark-flower-step-controls button.active,body[data-theme="dark"] .spark-pollination-tabs button.active,.dark .spark-flower-step-controls button.active,.dark .spark-pollination-tabs button.active{background:#164e4a;color:#d7fffa;border-color:#2dd4bf}
+@media(max-width:850px){.spark-flower-process-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.spark-flower-process{padding:14px}.spark-pollination-tabs{display:grid;grid-template-columns:1fr}.spark-flower-stage .frp-label{font-size:27px}.spark-flower-stage .frp-small{font-size:20px}.spark-flower-sequence{display:grid;grid-template-columns:1fr;text-align:center}.spark-flower-sequence b{transform:rotate(90deg)}}
+
+
+.spark-pollination-structure-svg{display:block;width:100%;height:auto;margin:12px 0;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.pc-petal{fill:#efa2b7;stroke:#a44c67;stroke-width:4}.pc-petal.small{fill:#d9cfc2;stroke:#7d7267}
+.pc-sepal{fill:#72aa62;stroke:#3d7336;stroke-width:4}.pc-ovary{fill:#99c67d;stroke:#477f3e;stroke-width:4}.pc-style{fill:#b9d99f;stroke:#477f3e;stroke-width:3}
+.pc-stigma.sticky{fill:#d9efc4;stroke:#477f3e;stroke-width:4}.pc-stigma.feathery path{fill:none;stroke:#6b8d4e;stroke-width:5;stroke-linecap:round}
+.pc-stamens path{fill:none;stroke:#6a8e45;stroke-width:5;stroke-linecap:round}.pc-stamens ellipse{fill:#e9c857;stroke:#9a7620;stroke-width:3}
+.pc-pollen{fill:#dca52f;stroke:#966819;stroke-width:2}.pc-pollen.small{opacity:.85}
+.pc-callouts text{fill:#294d64;font-size:13px;font-weight:850}
+html[data-theme="dark"] .spark-pollination-structure-svg,body[data-theme="dark"] .spark-pollination-structure-svg,.dark .spark-pollination-structure-svg{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .pc-callouts text,body[data-theme="dark"] .pc-callouts text,.dark .pc-callouts text{fill:#e1edf5}
+@media(max-width:560px){.pc-callouts text{font-size:17px}}

@@ -34,6 +34,24 @@ function Particle({ x, y, kind = "solute", index = 0 }) {
   );
 }
 
+function MembraneBilayer() {
+  const rows = [105,145,185,225,265,305,345,385,425];
+  return (
+    <g className="membrane-bilayer" aria-hidden="true">
+      {rows.map(y => (
+        <g key={y}>
+          <circle className="membrane-head" cx="386" cy={y} r="7" />
+          <line className="membrane-tail" x1="392" y1={y-4} x2="400" y2={y-12} />
+          <line className="membrane-tail" x1="392" y1={y+4} x2="400" y2={y+12} />
+          <circle className="membrane-head" cx="414" cy={y} r="7" />
+          <line className="membrane-tail" x1="408" y1={y-4} x2="400" y2={y-12} />
+          <line className="membrane-tail" x1="408" y1={y+4} x2="400" y2={y+12} />
+        </g>
+      ))}
+    </g>
+  );
+}
+
 function DiffusionScene({ running }) {
   const left = [
     [165,125],[205,150],[140,190],[225,215],[175,255],[245,285],
@@ -55,8 +73,11 @@ function DiffusionScene({ running }) {
         </g>
       ))}
       {right.map(([x,y],index) => <Particle key={`r-${index}`} x={x} y={y} index={index} />)}
-      <path className="process-arrow" d="M310 260h170" />
-      <path className="process-arrow-head" d="M465 245l25 15-25 15" />
+      <path className="process-arrow reverse" d="M470 300H365" />
+      <path className="process-arrow-head reverse" d="M380 287l-22 13 22 13" />
+      <path className="process-arrow" d="M310 250h170" />
+      <path className="process-arrow-head" d="M465 235l25 15-25 15" />
+      <text className="net-movement-label" x="400" y="225" textAnchor="middle">net movement</text>
     </svg>
   );
 }
@@ -69,7 +90,7 @@ function OsmosisScene({ running }) {
   return (
     <svg viewBox="0 0 800 520" role="img" aria-label="Osmosis membrane model">
       <rect className="chamber" x="70" y="70" width="660" height="390" rx="26" />
-      <rect className="membrane" x="390" y="80" width="20" height="370" rx="8" />
+      <MembraneBilayer />
       <text className="zone-label" x="190" y="105" textAnchor="middle">More water molecules</text>
       <text className="zone-label" x="610" y="105" textAnchor="middle">More solute</text>
       {watersLeft.map(([x,y],index) => (
@@ -96,8 +117,9 @@ function ActiveTransportScene({ running }) {
   return (
     <svg viewBox="0 0 800 520" role="img" aria-label="Active transport membrane model">
       <rect className="chamber" x="70" y="70" width="660" height="390" rx="26" />
-      <rect className="membrane" x="390" y="80" width="20" height="370" rx="8" />
-      <rect className={`carrier ${running ? "running" : ""}`} x="365" y="220" width="70" height="80" rx="28" />
+      <MembraneBilayer />
+      <path className={`carrier ${running ? "running" : ""}`} d="M365 215Q400 190 435 215V305Q400 330 365 305Z" />
+      <circle className="carrier-site" cx="400" cy="260" r="13" />
       <text className="zone-label" x="190" y="105" textAnchor="middle">Lower concentration</text>
       <text className="zone-label" x="610" y="105" textAnchor="middle">Higher concentration</text>
       {left.map(([x,y],index) => (
@@ -113,7 +135,8 @@ function ActiveTransportScene({ running }) {
       <path className="process-arrow-head active-arrow" d="M435 245l25 15-25 15" />
       <g className={`energy-badge ${running ? "on" : ""}`}>
         <rect x="300" y="385" width="200" height="48" rx="24" />
-        <text x="400" y="416" textAnchor="middle">{running ? "ENERGY IN USE" : "ENERGY REQUIRED"}</text>
+        <text x="400" y="408" textAnchor="middle">{running ? "ENERGY IN USE" : "ENERGY REQUIRED"}</text>
+        <text className="energy-caption" x="400" y="426" textAnchor="middle">from respiration</text>
       </g>
     </svg>
   );

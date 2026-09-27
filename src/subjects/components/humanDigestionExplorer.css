@@ -1,0 +1,66 @@
+.spark-human-digestion{margin:28px 0;padding:20px;border:1px solid var(--spark-border,#d9e2ec);border-radius:16px;background:var(--spark-paper,#fff)}
+.spark-human-digestion header>span{color:var(--spark-teal-dark,#087f73);font-size:11px;font-weight:900;letter-spacing:.05em}.spark-human-digestion header h3{margin:4px 0 7px;color:var(--spark-ink,#102a43);font-size:20px}.spark-human-digestion header p{margin:0;color:var(--spark-text-muted,#627d98);font-size:13px;line-height:1.6}
+.spark-digestion-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:17px 0}.spark-digestion-tabs button,.spark-digestion-enzyme-buttons button{min-height:42px;padding:0 12px;border:1px solid var(--spark-border,#d9e2ec);border-radius:9px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:11px;font-weight:850;cursor:pointer}.spark-digestion-tabs button.active,.spark-digestion-enzyme-buttons button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}
+.spark-digestion-stage{padding:15px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:14px;background:var(--spark-bg,#f7fafc)}
+.spark-digestion-pathway{display:grid;gap:10px}.spark-digestion-pathway article{display:flex;gap:12px;padding:13px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:11px;background:var(--spark-paper,#fff)}.spark-digestion-pathway article>span,.spark-digestion-bile article>span{display:grid;place-items:center;min-width:34px;height:34px;border-radius:50%;background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73);font-size:11px;font-weight:900}.spark-digestion-pathway b,.spark-digestion-bile b{color:var(--spark-ink,#102a43);font-size:12px}.spark-digestion-pathway p,.spark-digestion-bile p{margin:4px 0 0;color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.5}
+.spark-digestion-enzymes{display:grid;grid-template-columns:minmax(190px,.65fr) 1.35fr;gap:14px}.spark-digestion-enzyme-buttons{display:grid;gap:8px}.spark-digestion-enzyme-buttons button{text-align:left;padding:9px 11px}.spark-digestion-enzymes>article{padding:18px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}.spark-digestion-enzymes>article>span{color:var(--spark-teal-dark,#087f73);font-size:10px;font-weight:900}.spark-digestion-enzymes h4{margin:6px 0 12px;color:var(--spark-ink,#102a43);font-size:17px}.spark-digestion-enzymes article>div{display:flex;justify-content:space-between;gap:12px;margin:8px 0;padding:10px;border-radius:8px;background:var(--spark-bg,#f7fafc)}.spark-digestion-enzymes article>div b{color:var(--spark-ink,#102a43);font-size:11px}.spark-digestion-enzymes article>div strong{color:var(--spark-teal-dark,#087f73);font-size:11px;text-align:right}.spark-digestion-enzymes article>p{color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.55}
+.spark-digestion-bile{display:flex;align-items:stretch;gap:10px}.spark-digestion-bile article{display:flex;gap:10px;flex:1;padding:14px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:11px;background:var(--spark-paper,#fff)}.spark-digestion-bile-arrow{align-self:center;color:var(--spark-teal-dark,#087f73);font-size:23px;font-weight:900}
+.spark-villus-view svg,.spark-enzyme-conditions svg{display:block;width:100%;height:auto;border-radius:10px;background:var(--spark-paper,#fff)}.villus-outline{fill:#f2d6c1;stroke:#a8785a;stroke-width:7}.villus-lacteal{stroke:#8aae75;stroke-width:25;stroke-linecap:round}.villus-capillary{fill:none;stroke:#b85b62;stroke-width:12;stroke-linecap:round}.villus-label-line{stroke:#677f91;stroke-width:3}.villus-label{fill:#334e68;font-size:14px;font-weight:850}.villus-small{fill:#526b7d;font-size:12px;font-weight:800}.spark-villus-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}.spark-villus-cards article{padding:13px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:10px;background:var(--spark-paper,#fff)}.spark-villus-cards b{color:var(--spark-ink,#102a43);font-size:11px}.spark-villus-cards p{margin:5px 0 0;color:var(--spark-ink-soft,#334e68);font-size:11px;line-height:1.5}
+.enzyme-axis{stroke:#546a7b;stroke-width:3}.enzyme-curve{fill:none;stroke:#0d9488;stroke-width:6;stroke-linecap:round}.enzyme-optimum{stroke:#8ca0af;stroke-width:2;stroke-dasharray:7 7}.enzyme-label{fill:#334e68;font-size:14px;font-weight:800}.enzyme-note{fill:#9b4f45;font-size:12px;font-weight:850}.spark-enzyme-condition-notes{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}.spark-enzyme-condition-notes p{margin:0;padding:12px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:10px;background:var(--spark-paper,#fff);color:var(--spark-ink-soft,#334e68);font-size:11px;line-height:1.5}
+.spark-digestion-summary{display:grid;gap:5px;margin-top:14px;padding:13px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:11px;background:var(--spark-bg,#f7fafc)}.spark-digestion-summary strong{color:var(--spark-teal-dark,#087f73);font-size:12px}.spark-digestion-summary span{color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.55}
+html[data-theme="dark"] .spark-human-digestion,body[data-theme="dark"] .spark-human-digestion,.dark .spark-human-digestion{background:#122b43;border-color:#2a4863}
+html[data-theme="dark"] .spark-digestion-tabs button,body[data-theme="dark"] .spark-digestion-tabs button,.dark .spark-digestion-tabs button,html[data-theme="dark"] .spark-digestion-enzyme-buttons button,body[data-theme="dark"] .spark-digestion-enzyme-buttons button,.dark .spark-digestion-enzyme-buttons button,html[data-theme="dark"] .spark-digestion-pathway article,body[data-theme="dark"] .spark-digestion-pathway article,.dark .spark-digestion-pathway article,html[data-theme="dark"] .spark-digestion-enzymes>article,body[data-theme="dark"] .spark-digestion-enzymes>article,.dark .spark-digestion-enzymes>article,html[data-theme="dark"] .spark-digestion-bile article,body[data-theme="dark"] .spark-digestion-bile article,.dark .spark-digestion-bile article,html[data-theme="dark"] .spark-villus-view svg,body[data-theme="dark"] .spark-villus-view svg,.dark .spark-villus-view svg,html[data-theme="dark"] .spark-enzyme-conditions svg,body[data-theme="dark"] .spark-enzyme-conditions svg,.dark .spark-enzyme-conditions svg,html[data-theme="dark"] .spark-villus-cards article,body[data-theme="dark"] .spark-villus-cards article,.dark .spark-villus-cards article,html[data-theme="dark"] .spark-enzyme-condition-notes p,body[data-theme="dark"] .spark-enzyme-condition-notes p,.dark .spark-enzyme-condition-notes p,html[data-theme="dark"] .spark-digestion-summary,body[data-theme="dark"] .spark-digestion-summary,.dark .spark-digestion-summary{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .spark-digestion-tabs button.active,body[data-theme="dark"] .spark-digestion-tabs button.active,.dark .spark-digestion-tabs button.active,html[data-theme="dark"] .spark-digestion-enzyme-buttons button.active,body[data-theme="dark"] .spark-digestion-enzyme-buttons button.active,.dark .spark-digestion-enzyme-buttons button.active{background:#164e4a;color:#d7fffa;border-color:#2dd4bf}
+html[data-theme="dark"] .villus-label,body[data-theme="dark"] .villus-label,.dark .villus-label,html[data-theme="dark"] .villus-small,body[data-theme="dark"] .villus-small,.dark .villus-small,html[data-theme="dark"] .enzyme-label,body[data-theme="dark"] .enzyme-label,.dark .enzyme-label{fill:#d6e4ee}
+@media(max-width:850px){.spark-digestion-enzymes{grid-template-columns:1fr}.spark-digestion-enzyme-buttons{grid-template-columns:repeat(2,1fr)}.spark-digestion-bile{flex-direction:column}.spark-digestion-bile-arrow{text-align:center;transform:rotate(90deg)}.spark-villus-cards,.spark-enzyme-condition-notes{grid-template-columns:1fr}}
+@media(max-width:620px){.spark-human-digestion{padding:14px}.spark-digestion-tabs{display:grid;grid-template-columns:1fr 1fr}.spark-digestion-enzyme-buttons{grid-template-columns:1fr}.villus-label{font-size:18px}.villus-small,.enzyme-label,.enzyme-note{font-size:16px}}
+@media(max-width:390px){.spark-digestion-tabs{grid-template-columns:1fr}}
+
+.spark-digestion-pathway-layout{display:grid;grid-template-columns:minmax(300px,.9fr) 1.1fr;gap:14px;align-items:start}
+.spark-digestion-system{padding:10px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.spark-digestion-system-svg{display:block;width:100%;height:auto}
+.spark-digestion-system-svg .dg-head{fill:#e6c1aa;stroke:#9c6b50;stroke-width:4}
+.spark-digestion-system-svg .dg-body{fill:#e9edf0;stroke:#7e929f;stroke-width:4}
+.spark-digestion-system-svg .dg-mouth,.spark-digestion-system-svg .dg-pharynx,.spark-digestion-system-svg .dg-oesophagus,.spark-digestion-system-svg .dg-rectum,.spark-digestion-system-svg .dg-anus{fill:none;stroke:#9d655a;stroke-width:7;stroke-linecap:round}
+.spark-digestion-system-svg .dg-liver{fill:#9f5b55;stroke:#713d39;stroke-width:4}
+.spark-digestion-system-svg .dg-gall{fill:#6e9b5d;stroke:#456b39;stroke-width:3}
+.spark-digestion-system-svg .dg-stomach{fill:#d79282;stroke:#95594e;stroke-width:4}
+.spark-digestion-system-svg .dg-duodenum{fill:none;stroke:#c4836e;stroke-width:15;stroke-linecap:round}
+.spark-digestion-system-svg .dg-pancreas{fill:#e0b36b;stroke:#a57935;stroke-width:4}
+.spark-digestion-system-svg .dg-large{fill:none;stroke:#b97964;stroke-width:22;stroke-linecap:round;stroke-linejoin:round}
+.spark-digestion-system-svg .dg-appendix{fill:none;stroke:#b97964;stroke-width:9;stroke-linecap:round}
+.spark-digestion-system-svg .dg-small{fill:none;stroke:#d6a08e;stroke-width:14;stroke-linecap:round;stroke-linejoin:round}
+.spark-digestion-system-svg .dg-small.inner{stroke-width:10}
+.spark-digestion-system-svg .dg-route{fill:none;stroke:#0d9488;stroke-width:5;stroke-dasharray:10 8;stroke-linecap:round}
+.spark-digestion-system-svg .dg-labels text{fill:#334e68;font-size:15px;font-weight:850}
+.spark-digestion-system-svg .dg-labels path{fill:none;stroke:#6c8293;stroke-width:2.5}
+.spark-digestion-system-svg .dg-caption{fill:#526b7d;font-size:12px;font-weight:800}
+html[data-theme="dark"] .spark-digestion-system,
+body[data-theme="dark"] .spark-digestion-system,
+.dark .spark-digestion-system{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .spark-digestion-system-svg .dg-labels text,
+body[data-theme="dark"] .spark-digestion-system-svg .dg-labels text,
+.dark .spark-digestion-system-svg .dg-labels text,
+html[data-theme="dark"] .spark-digestion-system-svg .dg-caption,
+body[data-theme="dark"] .spark-digestion-system-svg .dg-caption,
+.dark .spark-digestion-system-svg .dg-caption{fill:#d6e4ee}
+@media(max-width:900px){.spark-digestion-pathway-layout{grid-template-columns:1fr}.spark-digestion-system{max-width:620px;margin:0 auto}}
+
+.spark-digestion-system-svg .dg-salivary{fill:#e6bd58;stroke:#99752a;stroke-width:2}
+.spark-digestion-system-svg .dg-bile-duct{fill:none;stroke:#5d8d4f;stroke-width:7;stroke-linecap:round}
+.spark-digestion-system-svg .dg-pancreatic-duct{fill:none;stroke:#8b6d3c;stroke-width:4;stroke-linecap:round}
+.spark-digestion-system-svg .dg-colon{fill:none;stroke:#80a54f;stroke-width:25;stroke-linecap:round;stroke-linejoin:round}
+.spark-digestion-system-svg .dg-cecum{fill:#80a54f;stroke:#587632;stroke-width:4}
+.spark-digestion-system-svg .dg-labels.right text,.spark-digestion-system-svg .dg-labels.left text{font-size:14px}
+@media(max-width:620px){.spark-digestion-system-svg .dg-labels.right text,.spark-digestion-system-svg .dg-labels.left text{font-size:18px}}
+
+
+.spark-digestion-reference-figure{margin:0}
+.spark-digestion-reference-stage{position:relative;max-width:470px;margin:0 auto}
+.spark-digestion-reference-stage img{display:block;width:100%;height:auto;max-height:760px;object-fit:contain}
+.spark-digestion-hotspot{position:absolute;transform:translate(-50%,-50%);width:24px;height:24px;padding:0;border:2px solid #fff;border-radius:50%;background:#0d9488;box-shadow:0 0 0 3px rgba(13,148,136,.22);cursor:pointer}
+.spark-digestion-hotspot.active{width:30px;height:30px;background:#0f766e;box-shadow:0 0 0 5px rgba(13,148,136,.28)}
+.spark-digestion-reference-figure figcaption{display:grid;gap:3px;margin-top:8px;color:var(--spark-ink-soft,#334e68);font-size:11px}.spark-digestion-reference-figure figcaption span{font-weight:900;color:var(--spark-ink,#102a43)}.spark-digestion-reference-figure figcaption a{color:var(--spark-teal-dark,#087f73)}
+.spark-digestion-pathway article{cursor:pointer}.spark-digestion-pathway article.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4)}
+html[data-theme="dark"] .spark-digestion-pathway article.active,body[data-theme="dark"] .spark-digestion-pathway article.active,.dark .spark-digestion-pathway article.active{background:#164e4a;border-color:#2dd4bf}
+@media(max-width:620px){.spark-digestion-hotspot{width:28px;height:28px}}

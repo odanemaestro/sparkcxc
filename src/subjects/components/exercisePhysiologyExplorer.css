@@ -1,0 +1,53 @@
+.spark-exercise-physiology{margin:28px 0;padding:20px;border:1px solid var(--spark-border,#d9e2ec);border-radius:16px;background:var(--spark-paper,#fff)}
+.spark-exercise-physiology header>span{color:var(--spark-teal-dark,#087f73);font-size:11px;font-weight:900;letter-spacing:.05em}
+.spark-exercise-physiology header h3{margin:4px 0 7px;color:var(--spark-ink,#102a43);font-size:20px}
+.spark-exercise-physiology header p{margin:0;color:var(--spark-text-muted,#627d98);font-size:13px;line-height:1.6}
+.spark-exercise-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:17px 0}
+.spark-exercise-tabs button{min-height:42px;padding:0 12px;border:1px solid var(--spark-border,#d9e2ec);border-radius:9px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:11px;font-weight:850;cursor:pointer}
+.spark-exercise-tabs button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}
+.spark-exercise-stage{overflow:hidden;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:14px;background:#f5f8fb}
+.spark-exercise-stage.cards{padding:15px}
+.spark-exercise-stage svg{display:block;width:100%;height:auto}
+.spark-exercise-stage .ex-head{fill:#dfb295;stroke:#97664b;stroke-width:5}
+.spark-exercise-stage .ex-body{fill:none;stroke:#5f7e94;stroke-width:14;stroke-linecap:round}
+.spark-exercise-stage .ex-motion{fill:none;stroke:#91a3af;stroke-width:5;stroke-linecap:round}
+.spark-exercise-stage .ex-heart{fill:#cf6b70;stroke:#8e464a;stroke-width:5}
+.spark-exercise-stage .ex-pulse{fill:none;stroke:#b94d54;stroke-width:6;stroke-linejoin:round}
+.spark-exercise-stage .ex-lungs{fill:#c7dce7;stroke:#668799;stroke-width:5}
+.spark-exercise-stage .ex-breath{fill:none;stroke:#4f8ead;stroke-width:6;stroke-linecap:round}
+.spark-exercise-stage .ex-flow-arrow{fill:none;stroke:#0d9488;stroke-width:7;stroke-linecap:round}
+.spark-exercise-stage .ex-label{fill:#31536a;font-size:15px;font-weight:900}
+.spark-exercise-stage .ex-small{fill:#536d80;font-size:13px;font-weight:750}
+.spark-exercise-stage .ex-axis{stroke:#4d677a;stroke-width:3}
+.spark-exercise-stage .ex-grid{stroke:#dce4e9;stroke-width:1.5}
+.spark-exercise-stage .ex-tick,.spark-exercise-stage .ex-axis-label{fill:#405d72;font-size:13px;font-weight:800}
+.spark-exercise-stage .ex-recovery-line{fill:none;stroke:#397fa2;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+.spark-exercise-stage .ex-point{fill:#397fa2;stroke:#fff;stroke-width:2}
+.spark-exercise-stage .ex-rest-line{stroke:#6e9873;stroke-width:3;stroke-dasharray:8 7}
+.spark-exercise-fitness{display:grid;gap:14px}
+.spark-exercise-table-wrap{overflow-x:auto}
+.spark-exercise-table-wrap table{width:100%;border-collapse:collapse;background:var(--spark-paper,#fff)}
+.spark-exercise-table-wrap th,.spark-exercise-table-wrap td{padding:12px;border-bottom:1px solid var(--spark-border-soft,#e3ebf0);text-align:left;color:var(--spark-ink,#102a43);font-size:12px}
+.spark-exercise-table-wrap th{background:var(--spark-bg,#f7fafc);font-size:11px;text-transform:uppercase}
+.spark-exercise-fitness-result{display:grid;gap:5px;padding:13px;border:1px solid #b9d6c3;border-radius:11px;background:#eef8f1}
+.spark-exercise-fitness-result strong{color:#2f7253;font-size:12px}
+.spark-exercise-fitness-result span{color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.55}
+.spark-exercise-longterm{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.spark-exercise-longterm article{display:flex;gap:12px;padding:14px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.spark-exercise-longterm article>span{display:grid;place-items:center;min-width:36px;height:36px;border-radius:50%;background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73);font-size:12px;font-weight:900}
+.spark-exercise-longterm b{color:var(--spark-ink,#102a43);font-size:13px}
+.spark-exercise-longterm p{margin:4px 0 0;color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.5}
+.spark-exercise-summary{display:grid;gap:5px;margin-top:14px;padding:13px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:11px;background:var(--spark-bg,#f7fafc)}
+.spark-exercise-summary strong{color:var(--spark-teal-dark,#087f73);font-size:12px}
+.spark-exercise-summary span{color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.55}
+html[data-theme="dark"] .spark-exercise-physiology,body[data-theme="dark"] .spark-exercise-physiology,.dark .spark-exercise-physiology{background:#122b43;border-color:#2a4863}
+html[data-theme="dark"] .spark-exercise-tabs button,body[data-theme="dark"] .spark-exercise-tabs button,.dark .spark-exercise-tabs button{background:#15314b;border-color:#39566e;color:#e7f2fb}
+html[data-theme="dark"] .spark-exercise-tabs button.active,body[data-theme="dark"] .spark-exercise-tabs button.active,.dark .spark-exercise-tabs button.active{background:#164e4a;color:#d7fffa;border-color:#2dd4bf}
+html[data-theme="dark"] .spark-exercise-stage,body[data-theme="dark"] .spark-exercise-stage,.dark .spark-exercise-stage{background:#f2f6f8;border-color:#39566e}
+html[data-theme="dark"] .spark-exercise-table-wrap table,body[data-theme="dark"] .spark-exercise-table-wrap table,.dark .spark-exercise-table-wrap table,html[data-theme="dark"] .spark-exercise-longterm article,body[data-theme="dark"] .spark-exercise-longterm article,.dark .spark-exercise-longterm article,html[data-theme="dark"] .spark-exercise-summary,body[data-theme="dark"] .spark-exercise-summary,.dark .spark-exercise-summary{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .spark-exercise-table-wrap th,body[data-theme="dark"] .spark-exercise-table-wrap th,.dark .spark-exercise-table-wrap th{background:#15314b;color:#e7f2fb}
+html[data-theme="dark"] .spark-exercise-table-wrap td,body[data-theme="dark"] .spark-exercise-table-wrap td,.dark .spark-exercise-table-wrap td{color:#e7f2fb}
+html[data-theme="dark"] .spark-exercise-fitness-result,body[data-theme="dark"] .spark-exercise-fitness-result,.dark .spark-exercise-fitness-result{background:#173a2c;border-color:#376e53}
+@media(max-width:850px){.spark-exercise-longterm{grid-template-columns:1fr}.spark-exercise-tabs{display:grid;grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.spark-exercise-physiology{padding:14px}.spark-exercise-stage .ex-label{font-size:19px}.spark-exercise-stage .ex-small{font-size:17px}.spark-exercise-stage .ex-tick,.spark-exercise-stage .ex-axis-label{font-size:18px}}
+@media(max-width:390px){.spark-exercise-tabs{grid-template-columns:1fr}}
