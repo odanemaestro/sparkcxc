@@ -98,6 +98,34 @@ describe("Social Studies short-answer marking", () => {
     expect(result.marks).toBe(4);
   });
 
+  test("follow-through explanations depend on the strategies given in the previous part", () => {
+    const explanationScheme=part(2,3).marking;
+
+    const linked=gradeSocialStudiesShortAnswer(
+      "Competitive pay reduces the financial reason to migrate, so skilled workers are more likely to remain.",
+      explanationScheme,
+      {previousResponse:"Government should improve salaries and compensation for skilled workers."}
+    );
+    expect(linked.marks).toBe(2);
+
+    const unrelated=gradeSocialStudiesShortAnswer(
+      "Regional shipping would become cheaper and goods would move faster.",
+      explanationScheme,
+      {previousResponse:"Government should improve salaries and compensation for skilled workers."}
+    );
+    expect(unrelated.marks).toBe(0);
+  });
+
+  test("one explanation is not reused to mark two earlier strategies", () => {
+    const explanationScheme=part(2,3).marking;
+    const result=gradeSocialStudiesShortAnswer(
+      "This would encourage skilled workers to remain in the country.",
+      explanationScheme,
+      {previousResponse:"Government should improve salaries and also create suitable skilled jobs."}
+    );
+    expect(result.marks).toBeLessThanOrEqual(2);
+  });
+
   test("provides 40 marked short-answer questions with balanced syllabus coverage", () => {
     const stats=socialStudiesShortAnswerStats();
     expect(stats.questions).toBe(40);
