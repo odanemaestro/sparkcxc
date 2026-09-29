@@ -15,7 +15,7 @@ export const DEVELOPMENT_CONCEPTS = Object.freeze({
   better_work_conditions:["better working conditions","improve workplace","safer workplaces","reasonable workload","improved benefits"],
   career_development:["career development","promotion opportunities","professional development","training opportunities","career progression"],
   improve_social_services:["improve social services","better healthcare","better education","improve infrastructure","raise standard of living"],
-  retain_workers:["retain skilled workers","workers remain","skilled workers remain","skilled workers stay","encourage skilled workers to remain","encourage skilled workers to stay","encourage professionals to stay","remain in the country","stay in the country","reduce emigration","keep trained workers","reduce brain drain"],
+  retain_workers:["retain skilled workers","workers remain","skilled workers remain","skilled workers stay","skilled workers are more likely to remain","workers are more likely to remain","workers are more likely to stay","encourage skilled workers to remain","encourage skilled workers to stay","encourage professionals to stay","remain in the country","stay in the country","reduce emigration","keep trained workers","reduce brain drain"],
 
   small_market:["small market","small domestic market","limited market size","small population market"],
   high_transport_cost:["high transport cost","high shipping cost","expensive shipping","expensive regional transport","high freight cost"],
