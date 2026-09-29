@@ -37,7 +37,7 @@ set stats = coalesce(stats,'{}'::jsonb) || '{
   "officialSyllabusParts":4,
   "topics":36,
   "numberedObjectives":62,
-  "flashcards":198,
+  "flashcards":201,
   "interactiveActivities":36,
   "sourcedVisuals":2
 }'::jsonb,
