@@ -71,3 +71,68 @@ body[data-theme="dark"] .spark-generic-study-hero-actions button:hover,
 .spark-generic-objectives>strong{color:var(--spark-teal-dark,#087f73);font-size:12px;font-weight:900;text-transform:uppercase}
 .spark-generic-objectives ul{margin:10px 0 0;padding-left:20px}
 .spark-generic-objectives li{margin:5px 0}
+
+/* Sourced lesson visuals: keep copyright/source context visible with the asset. */
+.spark-generic-sourced-visual{
+  margin:20px 0;
+  border:1px solid var(--spark-border,#d7e2ee);
+  border-radius:16px;
+  overflow:hidden;
+  background:var(--spark-paper,#fff);
+  box-shadow:0 10px 28px rgba(15,37,87,.06);
+}
+.spark-generic-sourced-visual-frame{
+  display:grid;
+  place-items:center;
+  min-height:220px;
+  padding:18px;
+  background:linear-gradient(180deg,var(--spark-muted,#f8fafc),var(--spark-paper,#fff));
+}
+.spark-generic-sourced-visual img{
+  display:block;
+  width:100%;
+  max-width:820px;
+  max-height:520px;
+  object-fit:contain;
+}
+.spark-generic-sourced-visual figcaption{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:14px;
+  align-items:center;
+  padding:12px 15px;
+  border-top:1px solid var(--spark-border-soft,#edf2f7);
+  color:var(--spark-text-muted,#64748b);
+  font-size:10.5px;
+  line-height:1.5;
+}
+.spark-generic-sourced-visual figcaption>div:first-child{
+  display:grid;
+  gap:2px;
+}
+.spark-generic-sourced-visual figcaption strong{
+  color:var(--spark-ink,#0f2557);
+  font-size:12px;
+}
+.spark-generic-sourced-visual-credit{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:10px;
+  flex-wrap:wrap;
+  text-align:right;
+}
+.spark-generic-sourced-visual-credit a{
+  color:var(--spark-teal,#0d9488);
+  font-weight:800;
+  text-decoration:none;
+}
+.spark-generic-sourced-visual-credit a:hover{text-decoration:underline}
+html[data-theme="dark"] .spark-generic-sourced-visual-frame{
+  background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.015));
+}
+@media(max-width:620px){
+  .spark-generic-sourced-visual-frame{min-height:160px;padding:10px}
+  .spark-generic-sourced-visual figcaption{grid-template-columns:1fr}
+  .spark-generic-sourced-visual-credit{justify-content:flex-start;text-align:left}
+}
