@@ -139,6 +139,18 @@ describe("Social Studies short-answer marking", () => {
     });
   });
 
+  test("does not award definition or distinction marks for repeating the term only", () => {
+    const density=SOCIAL_STUDIES_SHORT_ANSWER_BANK.find(item=>item.id==="ss-sa-b1-02");
+    const unions=SOCIAL_STUDIES_SHORT_ANSWER_BANK.find(item=>item.id==="ss-sa-a1-03");
+    const warming=SOCIAL_STUDIES_SHORT_ANSWER_BANK.find(item=>item.id==="ss-sa-b1-11");
+    const gdp=SOCIAL_STUDIES_SHORT_ANSWER_BANK.find(item=>item.id==="ss-sa-b2-11");
+
+    expect(gradeSocialStudiesShortAnswer("population density",density.marking).marks).toBe(0);
+    expect(gradeSocialStudiesShortAnswer("visiting union and common-law union",unions.marking).marks).toBe(0);
+    expect(gradeSocialStudiesShortAnswer("global warming",warming.marking).marks).toBe(0);
+    expect(gradeSocialStudiesShortAnswer("gross domestic product",gdp.marking).marks).toBe(0);
+  });
+
   test("marks 2026-aligned short-answer language", () => {
     const warming=SOCIAL_STUDIES_SHORT_ANSWER_BANK.find(item=>item.id==="ss-sa-b1-11");
     const unions=SOCIAL_STUDIES_SHORT_ANSWER_BANK.find(item=>item.id==="ss-sa-a1-11");
