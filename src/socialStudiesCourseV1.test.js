@@ -150,3 +150,18 @@ describe("CSEC Social Studies V1 course integrity", () => {
     expect(a2).not.toMatch(/best political party/i);
   });
 });
+
+
+test("Social Studies interactive progress uses SPARK's supported practice activity type", () => {
+  const study = read("src/subjects/GenericSubjectStudyView.jsx");
+  const backend = read("supabase/migrations/20260921000500_subject_progress_diagram_activity.sql");
+  const lessonSql = [files.a1,files.a2,files.b1,files.b2,files.toolkit]
+    .map(file => read(file))
+    .join("\n");
+
+  expect(backend).toContain("'practice'");
+  expect(study).toContain('const normalizedType = isInteractivePractice ? "practice" : "diagram"');
+  expect(study).toContain('isInteractivePractice ? "interactive" : "diagram"');
+  expect(lessonSql).not.toContain("'interactive','");
+  expect(lessonSql).toContain("'practice','");
+});
