@@ -551,7 +551,7 @@ export default function GenericSubjectStudyView({
   }
 
   return (
-    <main className="spark-generic-study">
+    <main className="spark-generic-study" data-subject={subjectId || undefined}>
       <div className="spark-generic-study-shell">
         <header className="spark-generic-study-hero">
           <div className="spark-generic-study-mark" aria-hidden="true">
@@ -609,7 +609,10 @@ export default function GenericSubjectStudyView({
               </div>
 
               {structure.sections.map(section => (
-                <section key={section.id} className="spark-generic-outline-section">
+                <section
+                  key={section.id}
+                  className={`spark-generic-outline-section ${section.metadata?.supportSection ? "is-support" : ""}`}
+                >
                   <div className="spark-generic-outline-section-title">
                     <span>{section.title}</span>
                     <small>{section.topics.length}</small>
