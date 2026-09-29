@@ -193,7 +193,7 @@ export const UNIT_A2_LESSONS = Object.freeze([
         title:"Functions in society",
         paragraphs:[
           "Economic institutions organise production, employment, exchange and finance. Educational institutions transmit knowledge and skills. Religious institutions support worship, values and community life. Political institutions organise public decision-making. Recreational institutions support leisure, sport and social interaction.",
-          "Institutions are interdependent. A school depends on families, public funding, transport, technology and the labour market. Changes in one institution can therefore affect others."
+          "Institutions are interdependent. A school depends on families, public funding, transport, technology and the labour market. Changes in one institution can therefore affect others. In a Caribbean community, a school closure after a hurricane may also affect parents’ work schedules, transport services and youth recreation."
         ]
       }
     ],
