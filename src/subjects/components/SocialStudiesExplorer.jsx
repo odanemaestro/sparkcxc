@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import Card from "../../components/ui/Card";
 import "./socialStudiesExplorer.css";
 
@@ -204,14 +204,11 @@ export default function SocialStudiesExplorer({ activity, completed=false, onCom
     onComplete?.({ activityId,title,...result });
   };
 
-  const body = useMemo(() => {
-    if (mode === "classify") return <ClassifyActivity activity={activity} onComplete={complete} />;
-    if (mode === "calculator") return <RateCalculator activity={activity} onComplete={complete} />;
-    if (mode === "evidence") return <EvidenceActivity activity={activity} onComplete={complete} />;
-    return <ChoiceActivity activity={activity} onComplete={complete} />;
-  // activity is intentionally treated as immutable published lesson metadata.
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activity,mode]);
+  let body;
+  if (mode === "classify") body = <ClassifyActivity activity={activity} onComplete={complete} />;
+  else if (mode === "calculator") body = <RateCalculator activity={activity} onComplete={complete} />;
+  else if (mode === "evidence") body = <EvidenceActivity activity={activity} onComplete={complete} />;
+  else body = <ChoiceActivity activity={activity} onComplete={complete} />;
 
   return (
     <Card className="ssx-card">
