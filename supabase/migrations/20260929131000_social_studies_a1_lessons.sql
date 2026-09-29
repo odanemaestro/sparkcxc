@@ -41,42 +41,42 @@ on conflict(subject_id,topic_id) do update set
 insert into public.spark_subject_activity_catalog(subject_id,activity_key,activity_type,section_id,topic_id,title,route,evidence_weight,enabled,metadata)
 values
 (
- 'social-studies','interactive:a1-source-detective','interactive','a1-individual-family','a1-family-functions-sources','Source Detective',
+ 'social-studies','interactive:a1-source-detective','practice','a1-individual-family','a1-family-functions-sources','Source Detective',
  '/study/social-studies?section=a1-individual-family&topic=a1-family-functions-sources',0.35,true,
  '{"syllabusObjectives":"1, 2","mode":"interactive-practice"}'::jsonb
 ),
 (
- 'social-studies','interactive:a1-family-classifier','interactive','a1-individual-family','a1-family-types-unions','Caribbean Family Classifier',
+ 'social-studies','interactive:a1-family-classifier','practice','a1-individual-family','a1-family-types-unions','Caribbean Family Classifier',
  '/study/social-studies?section=a1-individual-family&topic=a1-family-types-unions',0.35,true,
  '{"syllabusObjectives":"3a, 3b","mode":"interactive-practice"}'::jsonb
 ),
 (
- 'social-studies','interactive:a1-research-question-check','interactive','a1-individual-family','a1-family-roles-change-research','Research Question Workshop',
+ 'social-studies','interactive:a1-research-question-check','practice','a1-individual-family','a1-family-roles-change-research','Research Question Workshop',
  '/study/social-studies?section=a1-individual-family&topic=a1-family-roles-change-research',0.35,true,
  '{"syllabusObjectives":"4, 5a, 5b","mode":"interactive-practice"}'::jsonb
 ),
 (
- 'social-studies','interactive:a1-questionnaire-doctor','interactive','a1-individual-family','a1-parenthood-questionnaires','Questionnaire Doctor',
+ 'social-studies','interactive:a1-questionnaire-doctor','practice','a1-individual-family','a1-parenthood-questionnaires','Questionnaire Doctor',
  '/study/social-studies?section=a1-individual-family&topic=a1-parenthood-questionnaires',0.35,true,
  '{"syllabusObjectives":"6, 7","mode":"interactive-practice"}'::jsonb
 ),
 (
- 'social-studies','interactive:a1-parenting-scenarios','interactive','a1-individual-family','a1-effective-parenting','Parenting in Practice',
+ 'social-studies','interactive:a1-parenting-scenarios','practice','a1-individual-family','a1-effective-parenting','Parenting in Practice',
  '/study/social-studies?section=a1-individual-family&topic=a1-effective-parenting',0.35,true,
  '{"syllabusObjectives":"8","mode":"interactive-practice"}'::jsonb
 ),
 (
- 'social-studies','interactive:a1-cause-effect-solution','interactive','a1-individual-family','a1-social-issues-research','Cause, Effect or Response?',
+ 'social-studies','interactive:a1-cause-effect-solution','practice','a1-individual-family','a1-social-issues-research','Cause, Effect or Response?',
  '/study/social-studies?section=a1-individual-family&topic=a1-social-issues-research',0.35,true,
  '{"syllabusObjectives":"9a, 9b, 9c, 9d","mode":"interactive-practice"}'::jsonb
 ),
 (
- 'social-studies','interactive:a1-family-law-purpose','interactive','a1-individual-family','a1-family-law','Which Legal Area Fits?',
+ 'social-studies','interactive:a1-family-law-purpose','practice','a1-individual-family','a1-family-law','Which Legal Area Fits?',
  '/study/social-studies?section=a1-individual-family&topic=a1-family-law',0.35,true,
  '{"syllabusObjectives":"10","mode":"interactive-practice"}'::jsonb
 ),
 (
- 'social-studies','interactive:a1-culture-processes','interactive','a1-individual-family','a1-caribbean-culture','How Culture Moves and Changes',
+ 'social-studies','interactive:a1-culture-processes','practice','a1-individual-family','a1-caribbean-culture','How Culture Moves and Changes',
  '/study/social-studies?section=a1-individual-family&topic=a1-caribbean-culture',0.35,true,
  '{"syllabusObjectives":"11, 12, 13","mode":"interactive-practice"}'::jsonb
 )
