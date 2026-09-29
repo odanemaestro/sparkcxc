@@ -3,6 +3,7 @@ export const SPARK_SUBJECT_IDS = Object.freeze({
   PHYSICS: "physics",
   INFORMATION_TECHNOLOGY: "information-technology",
   INTEGRATED_SCIENCE: "integrated-science",
+  SOCIAL_STUDIES: "social-studies",
 });
 
 const BASE_SUBJECTS = Object.freeze({
@@ -99,9 +100,40 @@ const BASE_SUBJECTS = Object.freeze({
       sba: true,
     }),
   }),
+  socialStudies: Object.freeze({
+    id: "social-studies",
+    name: "CSEC Social Studies",
+    shortName: "Social Studies",
+    qualification: "CSEC",
+    mark: "SS",
+    description: "Study the current CSEC Social Studies syllabus through Caribbean-centred lessons, interactive activities, flashcards, research skills and original exam-style practice.",
+    enabled: true,
+    status: "live",
+    sortOrder: 40,
+    implementation: "custom",
+    studyView: "social-studies",
+    routes: Object.freeze({
+      study: "/study/social-studies",
+      practice: "/practice/social-studies",
+      flashcards: "/dashboard/flashcards/social-studies",
+      progress: "/dashboard/progress",
+    }),
+    capabilities: Object.freeze({
+      study: true,
+      practice: true,
+      flashcards: true,
+      progress: true,
+      paper1: false,
+      paper2: false,
+      adaptive: false,
+      structured: true,
+      labs: false,
+      sba: true,
+    }),
+  }),
 });
 
-export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = {}, physics = {}, informationTechnology = {} } = {}) {
+export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = {}, physics = {}, informationTechnology = {}, socialStudies = {} } = {}) {
   const mathematicsSubject = {
     ...BASE_SUBJECTS.mathematics,
     stats: {
@@ -130,7 +162,17 @@ export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = 
       flashcards: Number(informationTechnology.flashcards || 115),
     },
   };
-  return Object.freeze([mathematicsSubject, physicsSubject, informationTechnologySubject]);
+  const socialStudiesSubject = {
+    ...BASE_SUBJECTS.socialStudies,
+    stats: {
+      sections: Number(socialStudies.sections || 4),
+      topics: Number(socialStudies.topics || 39),
+      objectives: Number(socialStudies.objectives || 84),
+      mcq: Number(socialStudies.mcq || 78),
+      flashcards: Number(socialStudies.flashcards || 0),
+    },
+  };
+  return Object.freeze([mathematicsSubject, physicsSubject, informationTechnologySubject, socialStudiesSubject]);
 }
 
 export function enabledSparkSubjects(subjects) {
