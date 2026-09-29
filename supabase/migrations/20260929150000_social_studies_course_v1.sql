@@ -46,8 +46,8 @@ values (
     "practice":true,
     "flashcards":true,
     "progress":true,
-    "paper1":false,
-    "paper2":false,
+    "paper1":true,
+    "paper2":true,
     "adaptive":false,
     "structured":true,
     "labs":false,
@@ -64,6 +64,9 @@ values (
     "topics":39,
     "objectives":84,
     "mcq":156,
+    "paper1Items":60,
+    "shortAnswer":48,
+    "paper2StructuredMarks":56,
     "flashcards":342
   }'::jsonb,
   '{
@@ -78,7 +81,7 @@ values (
     ],
     "exam":{
       "paper1":{"items":60,"minutes":75,"sectionAItems":30,"sectionBItems":30},
-      "paper2":{"questions":6,"minutes":160,"compulsory":true},
+      "paper2":{"questions":6,"minutes":160,"compulsory":true,"structuredMarks":56,"essayMarks":44},
       "paper3":"SBA Paper 031 or Alternative Paper 032"
     },
     "content":{
@@ -87,7 +90,9 @@ values (
       "interactiveActivities":true,
       "flashcards":true,
       "originalPractice":true,
-      "researchSkills":true
+      "researchSkills":true,
+      "shortAnswerExaminer":true,
+      "autoMarkStructuredResponses":true
     }
   }'::jsonb,
   1
