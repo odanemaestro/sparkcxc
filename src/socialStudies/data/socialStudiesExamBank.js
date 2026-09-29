@@ -376,9 +376,9 @@ export const SOCIAL_STUDIES_PAPER2 = Object.freeze([
     }),
     totalMarks:14,
     parts:Object.freeze([
-      part("(a)","State the party which would win EACH constituency shown in the table.",4,["North Bay: Party R. Central: Party S. South Point: Party R. River Town: Party S."],
+      part("(a)","State the party which would win EACH constituency shown in the table.",4,["North Bay: Party S. Central: Party S. South Point: Party R. River Town: Party S."],
         pairsMark([
-          {id:"north",label:"North Bay — Party R",keys:["north bay"],concepts:["party_r"]},
+          {id:"north",label:"North Bay — Party S",keys:["north bay"],concepts:["party_s"]},
           {id:"central",label:"Central — Party S",keys:["central"],concepts:["party_s"]},
           {id:"south",label:"South Point — Party R",keys:["south point"],concepts:["party_r"]},
           {id:"river",label:"River Town — Party S",keys:["river town"],concepts:["party_s"]},
