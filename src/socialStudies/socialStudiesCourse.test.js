@@ -160,3 +160,62 @@ test("every lesson meets the Social Studies depth standard", () => {
   ).map(lesson => lesson.id);
   expect(weak).toEqual([]);
 });
+
+
+test("lesson writing avoids repetitive generic AI-style scaffolding", () => {
+  const banned = [
+    "this lesson follows the objective",
+    "in today's lesson, we will explore",
+    "in this comprehensive lesson",
+    "as an ai",
+    "overall,",
+  ];
+
+  SOCIAL_STUDIES_LESSONS.forEach(lesson => {
+    const prose = [
+      lesson.introduction,
+      ...(lesson.noteSections || []).flatMap(section => [
+        section.title,
+        ...(section.paragraphs || []),
+        ...(section.bullets || []),
+      ]),
+      ...(lesson.examples || []),
+      ...(lesson.keyPoints || []),
+    ].join(" ").toLowerCase();
+
+    banned.forEach(phrase => expect(prose).not.toContain(phrase));
+  });
+});
+
+test("every lesson contains substantial Caribbean-context teaching rather than definition-only notes", () => {
+  SOCIAL_STUDIES_LESSONS.forEach(lesson => {
+    const teachingWords = (lesson.noteSections || [])
+      .flatMap(section => [
+        ...(section.paragraphs || []),
+        ...(section.bullets || []),
+      ])
+      .join(" ")
+      .trim()
+      .split(/\s+/)
+      .filter(Boolean);
+
+    expect(teachingWords.length).toBeGreaterThanOrEqual(120);
+    expect((lesson.examples || []).length).toBeGreaterThanOrEqual(2);
+  });
+});
+
+test("the course keeps the revised 2025 examination structure and does not restore the retired option model", () => {
+  expect(SOCIAL_STUDIES_COURSE.exam.paper1.duration).toBe("1 hour 15 minutes");
+  expect(SOCIAL_STUDIES_COURSE.exam.paper2.duration).toBe("2 hours 40 minutes");
+  expect(SOCIAL_STUDIES_COURSE.exam.paper2.description).toContain("Six compulsory questions");
+  expect(SOCIAL_STUDIES_COURSE.sections.map(section => section.id)).toEqual(["A1","A2","B1","B2"]);
+  expect(SOCIAL_STUDIES_COURSE.sections.map(section => section.title).join(" ")).not.toMatch(/Consumer Affairs|Communication Option|Tourism Option/i);
+});
+
+test("licensed online SVGs retain visible reuse metadata", () => {
+  Object.values(SOCIAL_STUDIES_COURSE.visualSources).forEach(visual => {
+    expect(visual.sourceUrl).toContain("commons.wikimedia.org");
+    expect(visual.attribution.length).toBeGreaterThan(12);
+    expect(visual.license.length).toBeGreaterThan(2);
+  });
+});
