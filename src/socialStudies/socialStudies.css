@@ -555,3 +555,27 @@ html[data-theme="dark"][data-glass="true"] .ss-paper-summary{
   .ss-paper-nav-grid{grid-template-columns:repeat(5,1fr)}
   .ss-paper-head>b{grid-column:2;justify-self:end}
 }
+
+
+/* Social Studies short-answer marking */
+.ss-social-mark-lines{
+  display:grid;gap:7px;margin:10px 0
+}
+.ss-social-mark-lines>div{
+  display:grid;grid-template-columns:34px 1fr;gap:8px;align-items:start;padding:9px 10px;
+  border:1px solid var(--spark-border-soft,#edf2f7);border-radius:9px;background:var(--spark-paper,#fff)
+}
+.ss-social-mark-lines>div b{
+  display:grid;place-items:center;min-height:28px;border-radius:8px;font-size:10px
+}
+.ss-social-mark-lines>div span{
+  align-self:center;color:var(--spark-ink-soft,#334e68);font-size:10.5px;line-height:1.45
+}
+.ss-social-mark-lines>div.earned b{background:#e8f8f1;color:#176b49}
+.ss-social-mark-lines>div.missed b{background:#fff1f0;color:#9b2c2c}
+.ss-mark-review-note{
+  margin:10px 0 0!important;padding:9px 10px;border-radius:8px;background:var(--spark-muted,#edf2f7);
+  color:var(--spark-ink-soft,#334e68)!important;font-size:10px!important;line-height:1.5!important
+}
+html[data-theme="dark"] .ss-social-mark-lines>div.earned b{background:rgba(34,160,107,.12);color:#bbf7d0}
+html[data-theme="dark"] .ss-social-mark-lines>div.missed b{background:rgba(194,65,59,.13);color:#fecaca}
