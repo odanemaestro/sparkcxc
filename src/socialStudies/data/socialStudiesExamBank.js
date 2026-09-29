@@ -34,6 +34,15 @@ const developedMark=(maxPoints,points,profile="UK")=>({
   points,
 });
 
+const linkedDevelopedMark=(maxPoints,followFromPartIndex,links,profile="UK")=>({
+  type:"linked_development",
+  maxPoints,
+  maxMarks:maxPoints*2,
+  followFromPartIndex,
+  profile,
+  links,
+});
+
 const definitionMark=(groups,maxMarks=2,profile="KC")=>({
   type:"definition",
   groups,
@@ -348,12 +357,9 @@ export const SOCIAL_STUDIES_PAPER2 = Object.freeze([
           {id:"parenting-support",label:"Offer parenting workshops",concepts:["parenting_classes"],developmentConcepts:["informed_parenting","clear_communication"],allowGeneralDevelopment:true},
         ])),
       part("(c) (ii)","Explain why EACH strategy suggested in (c) (i) is likely to be successful.",4,["Develop one reason for each strategy by linking the action to a likely positive result."],
-        developedMark(2,[
-          {id:"money-control",label:"Helps families control spending and meet needs",concepts:["improved_money_control"],developmentConcepts:["budgeting","expense_tracking","reduced_financial_stress"],allowGeneralDevelopment:true},
-          {id:"financial-stress",label:"Reduces financial stress and conflict",concepts:["reduced_financial_stress"],developmentConcepts:["improved_family_relationships","improved_money_control"],allowGeneralDevelopment:true},
-          {id:"communication",label:"Improves communication and understanding",concepts:["clear_communication","active_listening"],developmentConcepts:["improved_family_relationships"],allowGeneralDevelopment:true},
-          {id:"relationships",label:"Builds trust and improves family relationships",concepts:["improved_family_relationships"],developmentConcepts:["clear_communication","active_listening"],allowGeneralDevelopment:true},
-          {id:"skills",label:"Gives parents practical skills and guidance",concepts:["informed_parenting"],developmentConcepts:["clear_communication","budgeting"],allowGeneralDevelopment:true},
+        linkedDevelopedMark(2,2,[
+          {id:"budget-support",label:"Explains why budgeting or financial support would help",triggerConcepts:["financial_counselling","budgeting","expense_tracking","savings_plan"],resultConcepts:["improved_money_control","reduced_financial_stress"]},
+          {id:"communication-support",label:"Explains why communication or family-support action would help",triggerConcepts:["family_meetings","communication_counselling","active_listening","clear_communication","parenting_classes"],resultConcepts:["clear_communication","improved_family_relationships","informed_parenting"]},
         ])),
     ]),
   }),
@@ -398,10 +404,9 @@ export const SOCIAL_STUDIES_PAPER2 = Object.freeze([
           {id:"outreach",label:"Use youth forums and community outreach",concepts:["community_outreach"],developmentConcepts:["increased_awareness","increased_participation"],allowGeneralDevelopment:true},
         ])),
       part("(c) (ii)","Explain why EACH strategy suggested in (c) (i) is likely to be successful.",4,["Explain the mechanism linking each strategy to improved participation."],
-        developedMark(2,[
-          {id:"awareness",label:"Young voters become better informed about voting",concepts:["increased_awareness"],developmentConcepts:["increased_participation"],allowGeneralDevelopment:true},
-          {id:"barriers",label:"Practical barriers to registration or voting are reduced",concepts:["reduced_access_barriers"],developmentConcepts:["increased_participation"],allowGeneralDevelopment:true},
-          {id:"turnout",label:"The strategy increases motivation or turnout",concepts:["increased_participation"],developmentConcepts:["civic_education","youth_social_media","community_outreach","voter_registration_drive","polling_access"],allowGeneralDevelopment:true},
+        linkedDevelopedMark(2,2,[
+          {id:"information",label:"Explains why education, media or outreach would help",triggerConcepts:["civic_education","school_civics","youth_social_media","community_outreach"],resultConcepts:["increased_awareness","increased_participation"]},
+          {id:"access",label:"Explains why registration or polling access would help",triggerConcepts:["voter_registration_drive","polling_access"],resultConcepts:["reduced_access_barriers","increased_participation"]},
         ])),
     ]),
   }),
@@ -439,12 +444,12 @@ export const SOCIAL_STUDIES_PAPER2 = Object.freeze([
           {id:"services",label:"Improve social services, infrastructure and quality of life",concepts:["improve_social_services"],developmentConcepts:["retain_workers"],allowGeneralDevelopment:true},
         ])),
       part("(c) (ii)","Explain why EACH action suggested in (c) (i) is likely to be successful.",4,["Link each action to a reason a skilled worker might choose to remain or return."],
-        developedMark(2,[
-          {id:"stay",label:"Makes skilled workers more likely to remain or return",concepts:["retain_workers"],developmentConcepts:["job_creation","better_wages","better_work_conditions","career_development","improve_social_services"],allowGeneralDevelopment:true},
-          {id:"jobs",label:"Workers gain employment suited to their training",concepts:["job_creation"],developmentConcepts:["retain_workers"],allowGeneralDevelopment:true},
-          {id:"pay",label:"Competitive pay reduces the financial incentive to migrate",concepts:["better_wages"],developmentConcepts:["retain_workers"],allowGeneralDevelopment:true},
-          {id:"career",label:"Career opportunities reduce the need to go abroad for advancement",concepts:["career_development"],developmentConcepts:["retain_workers"],allowGeneralDevelopment:true},
-          {id:"quality",label:"Better services and living conditions improve quality of life",concepts:["improve_social_services"],developmentConcepts:["retain_workers"],allowGeneralDevelopment:true},
+        linkedDevelopedMark(2,2,[
+          {id:"jobs",label:"Explains why creating suitable jobs would retain skilled workers",triggerConcepts:["job_creation"],resultConcepts:["retain_workers","employment"]},
+          {id:"pay",label:"Explains why better salaries would retain skilled workers",triggerConcepts:["better_wages"],resultConcepts:["retain_workers"]},
+          {id:"conditions",label:"Explains why better working conditions would retain skilled workers",triggerConcepts:["better_work_conditions"],resultConcepts:["retain_workers"]},
+          {id:"career",label:"Explains why career opportunities would retain skilled workers",triggerConcepts:["career_development"],resultConcepts:["retain_workers"]},
+          {id:"services",label:"Explains why stronger services and infrastructure would retain skilled workers",triggerConcepts:["improve_social_services"],resultConcepts:["retain_workers","low_standard_living"]},
         ])),
     ]),
   }),
@@ -483,11 +488,14 @@ export const SOCIAL_STUDIES_PAPER2 = Object.freeze([
           {id:"digital",label:"Use digital platforms and electronic trade systems",concepts:["digital_trade"],developmentConcepts:["faster_trade","lower_trade_costs"],allowGeneralDevelopment:true},
         ])),
       part("(c) (ii)","Explain why EACH strategy suggested in (c) (i) is likely to be successful.",4,["Show how each strategy reduces a barrier or creates a practical incentive for regional trade."],
-        developedMark(2,[
-          {id:"cost",label:"Reduces the cost of trading within the region",concepts:["lower_trade_costs"],developmentConcepts:["more_regional_trade"],allowGeneralDevelopment:true},
-          {id:"speed",label:"Reduces delays and moves goods faster",concepts:["faster_trade"],developmentConcepts:["more_regional_trade"],allowGeneralDevelopment:true},
-          {id:"market",label:"Creates more opportunities to sell within the region",concepts:["more_regional_trade","larger_market"],developmentConcepts:["economies_scale"],allowGeneralDevelopment:true},
-          {id:"resilience",label:"Makes regional supply networks more resilient to shocks",concepts:["resilience"],developmentConcepts:["regional_supply_chains","pooled_resources"],allowGeneralDevelopment:true},
+        linkedDevelopedMark(2,2,[
+          {id:"transport",label:"Explains why improved transport would strengthen trade",triggerConcepts:["improve_transport_links"],resultConcepts:["lower_trade_costs","faster_trade","more_regional_trade"]},
+          {id:"barriers",label:"Explains why reducing trade barriers would strengthen trade",triggerConcepts:["remove_trade_barriers"],resultConcepts:["lower_trade_costs","more_regional_trade"]},
+          {id:"customs",label:"Explains why simpler customs would strengthen trade",triggerConcepts:["harmonise_customs"],resultConcepts:["faster_trade","lower_trade_costs","more_regional_trade"]},
+          {id:"standards",label:"Explains why common standards would strengthen trade",triggerConcepts:["common_standards"],resultConcepts:["faster_trade","more_regional_trade"]},
+          {id:"supply",label:"Explains why regional supply chains would strengthen trade",triggerConcepts:["regional_supply_chains"],resultConcepts:["more_regional_trade","resilience"]},
+          {id:"finance",label:"Explains why trade finance would strengthen trade",triggerConcepts:["trade_finance"],resultConcepts:["more_regional_trade"]},
+          {id:"digital",label:"Explains why digital trade systems would strengthen trade",triggerConcepts:["digital_trade"],resultConcepts:["faster_trade","lower_trade_costs","more_regional_trade"]},
         ])),
     ]),
   }),
