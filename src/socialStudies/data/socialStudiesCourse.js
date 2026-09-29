@@ -6,12 +6,19 @@ import { UNIT_B2_LESSONS } from "./unitB2";
 import { CXC_SOCIAL_STUDIES_SOURCE, VISUAL_SOURCES } from "./courseHelpers";
 import { expandedPracticeForLesson } from "./socialStudiesPracticeExpansion";
 
-export const SOCIAL_STUDIES_LESSONS = Object.freeze([
+const SOCIAL_STUDIES_SOURCE_LESSONS = [
   ...UNIT_A1_LESSONS,
   ...UNIT_A2_LESSONS,
   ...UNIT_B1_LESSONS,
   ...UNIT_B2_LESSONS,
-]);
+];
+
+export const SOCIAL_STUDIES_LESSONS = Object.freeze(
+  SOCIAL_STUDIES_SOURCE_LESSONS.map(lesson => Object.freeze({
+    ...lesson,
+    practice:Object.freeze([...(lesson.practice || []), ...expandedPracticeForLesson(lesson.id)]),
+  }))
+);
 
 export const SOCIAL_STUDIES_EXAM = Object.freeze({
   paper1:{
