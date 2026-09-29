@@ -235,7 +235,83 @@ function gradeDevelopedPoints(value,scheme){
   };
 }
 
-export function gradeSocialStudiesShortAnswer(value,scheme={}){
+function gradeLinkedDevelopment(value,scheme,context={}){
+  const previous=String(context.previousResponse || "");
+  const maxPoints=Number(scheme.maxPoints || 2);
+  const windows=candidateWindows(value);
+  const eligible=(scheme.links || []).filter(link=>
+    (link.triggerConcepts || []).some(id=>mentionsSocialStudiesConcept(previous,id))
+    || (link.triggerPhrases || []).some(phrase=>mentionsSocialStudiesPhrase(previous,phrase))
+  );
+
+  const criteria=[];
+  const used=new Set();
+
+  eligible.forEach((link,index)=>{
+    let bestWindow="";
+    let resultMatch=false;
+    let partialMatch=false;
+
+    windows.forEach(window=>{
+      const effect=(link.resultConcepts || []).some(id=>mentionsSocialStudiesConcept(window,id))
+        || (link.resultPhrases || []).some(phrase=>mentionsSocialStudiesPhrase(window,phrase));
+      const strategy=(link.triggerConcepts || []).some(id=>mentionsSocialStudiesConcept(window,id))
+        || (link.triggerPhrases || []).some(phrase=>mentionsSocialStudiesPhrase(window,phrase));
+      const causal=hasDevelopmentLanguage(window);
+
+      if(effect && (causal || strategy || normalizeSocialStudiesText(window).split(/\s+/).length>=6)){
+        resultMatch=true;
+        bestWindow=window;
+      }else if(effect || (strategy && causal)){
+        partialMatch=true;
+        if(!bestWindow) bestWindow=window;
+      }
+    });
+
+    const marks=resultMatch?2:partialMatch?1:0;
+    if(marks>0 && !used.has(link.id)){
+      used.add(link.id);
+      criteria.push({
+        id:link.id,
+        code:link.code || ("UK"+(index+1)),
+        label:link.label || "Explains why the earlier strategy is likely to work",
+        earned:true,
+        developed:marks===2,
+        marks,
+        maxMarks:2,
+        profile:link.profile || scheme.profile || "UK",
+        evidence:bestWindow,
+      });
+    }
+  });
+
+  criteria.sort((a,b)=>b.marks-a.marks);
+  const selected=criteria.slice(0,maxPoints);
+  const maxMarks=Number(scheme.maxMarks || maxPoints*2);
+  const marks=Math.min(maxMarks,selected.reduce((sum,item)=>sum+item.marks,0));
+
+  if(!normalizeSocialStudiesText(previous)){
+    return {
+      marks:0,
+      maxMarks,
+      criteria:[],
+      feedback:"The explanation depends on the strategy or action given in the previous part.",
+    };
+  }
+
+  return {
+    marks,
+    maxMarks,
+    criteria:selected,
+    feedback:marks===maxMarks
+      ? "Full marks. The explanations follow through from the earlier strategies."
+      : marks>0
+        ? "Some follow-through credit earned. Explain how or why each earlier strategy produces the stated result."
+        : "The explanation does not yet connect clearly to the strategies given in the previous part.",
+  };
+}
+
+export function gradeSocialStudiesShortAnswer(value,scheme={},context={}){
   const maxMarks=Number(scheme.maxMarks || 0);
   if(!nonBlank(value)){
     return {
@@ -254,6 +330,7 @@ export function gradeSocialStudiesShortAnswer(value,scheme={}){
   else if(scheme.type==="pairs") result=gradePairs(value,scheme);
   else if(scheme.type==="criteria") result=gradeCriteria(value,scheme);
   else if(scheme.type==="developed_points") result=gradeDevelopedPoints(value,scheme);
+  else if(scheme.type==="linked_development") result=gradeLinkedDevelopment(value,scheme,context);
   else result={marks:0,maxMarks,criteria:[],feedback:"No automatic marking scheme is available for this part."};
 
   const words=normalizeSocialStudiesText(value).split(/\s+/).filter(Boolean).length;
@@ -278,7 +355,13 @@ export function gradeSocialStudiesStructuredPaper(responses={},questions=[]){
       const parts={};
       (question.parts || []).forEach((part,index)=>{
         const key=question.id+":part:"+index;
-        const result=gradeSocialStudiesShortAnswer(responses[key] || "",part.marking || {maxMarks:part.marks});
+        const followFrom=Number(part.marking?.followFromPartIndex);
+        const previousKey=Number.isInteger(followFrom) ? question.id+":part:"+followFrom : null;
+        const result=gradeSocialStudiesShortAnswer(
+          responses[key] || "",
+          part.marking || {maxMarks:part.marks},
+          {previousResponse:previousKey ? responses[previousKey] || "" : ""}
+        );
         parts[key]=result;
         score+=result.marks;
         maxScore+=result.maxMarks;
