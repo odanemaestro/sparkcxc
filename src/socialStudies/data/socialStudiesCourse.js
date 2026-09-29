@@ -82,7 +82,7 @@ export function socialStudiesPracticeQuestions(){
 export function socialStudiesStats(){
   const flashcards=socialStudiesFlashcards();
   const questions=socialStudiesPracticeQuestions();
-  const objectives=new Set(SOCIAL_STUDIES_LESSONS.flatMap(lesson => lesson.objectiveCodes || []));
+  const objectives=new Set(SOCIAL_STUDIES_LESSONS.flatMap(lesson => (lesson.objectiveCodes || []).map(code => `${lesson.sectionId}:${code}`)));
   return Object.freeze({
     sections:SOCIAL_STUDIES_SECTIONS.length,
     lessons:SOCIAL_STUDIES_LESSONS.length,
