@@ -23,10 +23,10 @@ on conflict(subject_id,topic_id) do update set
 
 insert into public.spark_subject_activity_catalog(subject_id,activity_key,activity_type,section_id,topic_id,title,route,evidence_weight,enabled,metadata)
 values
-('social-studies','interactive:ss-sba-problem-builder','interactive','social-studies-toolkit','ss-toolkit-sba-blueprint','SBA Problem Builder','/study/social-studies?section=social-studies-toolkit&topic=ss-toolkit-sba-blueprint',0.3,true,'{"support":true,"mode":"interactive-practice"}'::jsonb),
-('social-studies','interactive:ss-sba-instrument-audit','interactive','social-studies-toolkit','ss-toolkit-instruments-sampling','Instrument Audit','/study/social-studies?section=social-studies-toolkit&topic=ss-toolkit-instruments-sampling',0.3,true,'{"support":true,"mode":"interactive-practice"}'::jsonb),
-('social-studies','interactive:ss-sba-evidence-chain','interactive','social-studies-toolkit','ss-toolkit-data-findings','Evidence Chain Check','/study/social-studies?section=social-studies-toolkit&topic=ss-toolkit-data-findings',0.3,true,'{"support":true,"mode":"interactive-practice"}'::jsonb),
-('social-studies','interactive:ss-exam-command-words','interactive','social-studies-toolkit','ss-toolkit-exam-strategy','Command Word Trainer','/study/social-studies?section=social-studies-toolkit&topic=ss-toolkit-exam-strategy',0.3,true,'{"support":true,"mode":"interactive-practice"}'::jsonb)
+('social-studies','interactive:ss-sba-problem-builder','practice','social-studies-toolkit','ss-toolkit-sba-blueprint','SBA Problem Builder','/study/social-studies?section=social-studies-toolkit&topic=ss-toolkit-sba-blueprint',0.3,true,'{"support":true,"mode":"interactive-practice"}'::jsonb),
+('social-studies','interactive:ss-sba-instrument-audit','practice','social-studies-toolkit','ss-toolkit-instruments-sampling','Instrument Audit','/study/social-studies?section=social-studies-toolkit&topic=ss-toolkit-instruments-sampling',0.3,true,'{"support":true,"mode":"interactive-practice"}'::jsonb),
+('social-studies','interactive:ss-sba-evidence-chain','practice','social-studies-toolkit','ss-toolkit-data-findings','Evidence Chain Check','/study/social-studies?section=social-studies-toolkit&topic=ss-toolkit-data-findings',0.3,true,'{"support":true,"mode":"interactive-practice"}'::jsonb),
+('social-studies','interactive:ss-exam-command-words','practice','social-studies-toolkit','ss-toolkit-exam-strategy','Command Word Trainer','/study/social-studies?section=social-studies-toolkit&topic=ss-toolkit-exam-strategy',0.3,true,'{"support":true,"mode":"interactive-practice"}'::jsonb)
 on conflict(subject_id,activity_key) do update set
   activity_type=excluded.activity_type,section_id=excluded.section_id,topic_id=excluded.topic_id,title=excluded.title,
   route=excluded.route,evidence_weight=excluded.evidence_weight,enabled=excluded.enabled,metadata=excluded.metadata,updated_at=now();
