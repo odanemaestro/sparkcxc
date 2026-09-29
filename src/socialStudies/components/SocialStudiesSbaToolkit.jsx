@@ -218,7 +218,9 @@ export default function SocialStudiesSbaToolkit({onBack,onComplete}){
     setDone(finalDone);
     const index=stationIds.indexOf(id);
     if(index>=0 && index<stationIds.length-1)setActive(stationIds[index+1]);
-    if(id==="write" && finalDone.size===stationIds.length)onComplete?.({score:stationIds.length,total:stationIds.length});
+    if(finalDone.size===stationIds.length && done.size!==stationIds.length){
+      onComplete?.({score:stationIds.length,total:stationIds.length});
+    }
   };
 
   let body=<PlanStation onDone={()=>finish("plan")}/>;
