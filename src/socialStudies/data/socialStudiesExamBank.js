@@ -297,7 +297,7 @@ export const SOCIAL_STUDIES_PAPER2 = Object.freeze([
     data:Object.freeze({
       columns:Object.freeze(["Constituency","Party R","Party S","Party T"]),
       rows:Object.freeze([
-        Object.freeze(["North Bay","420","390","210"]),
+        Object.freeze(["North Bay","420","450","210"]),
         Object.freeze(["Central","315","480","290"]),
         Object.freeze(["South Point","510","505","260"]),
         Object.freeze(["River Town","280","455","300"]),
@@ -306,7 +306,7 @@ export const SOCIAL_STUDIES_PAPER2 = Object.freeze([
     totalMarks:14,
     parts:Object.freeze([
       part("(a)","State the party which would win EACH constituency shown in the table.",4,["North Bay: Party R. Central: Party S. South Point: Party R. River Town: Party S."]),
-      part("(b)","Using the first-past-the-post system, identify the party that would form the government from these four seats and justify your response.",2,["Party R and Party S each win two seats, so the data shown alone do not produce a single-seat majority. A correct response must use seats won, not total votes."]),
+      part("(b)","Using the first-past-the-post system, identify the party that would form the government from these four seats and justify your response.",2,["Party S would form the government because it wins three of the four constituency seats shown. The justification must use seats won, not total votes."]),
       part("(c) (i)","Suggest TWO strategies that could encourage greater participation by young adult voters.",4,["Strategies should be lawful, non-partisan and directed at access, information or civic participation."]),
       part("(c) (ii)","Explain why EACH strategy suggested in (c) (i) is likely to be successful.",4,["Explain the mechanism linking each strategy to improved participation."]),
     ]),
