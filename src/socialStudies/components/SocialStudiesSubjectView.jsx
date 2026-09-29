@@ -12,6 +12,7 @@ import {
   socialStudiesSection,
 } from "../data/socialStudiesCourse";
 import SocialStudiesInteractiveActivity from "./SocialStudiesInteractiveActivity";
+import SocialStudiesSbaToolkit from "./SocialStudiesSbaToolkit";
 import "../socialStudies.css";
 
 const SUBJECT_ID="social-studies";
@@ -184,6 +185,7 @@ export default function SocialStudiesSubjectView({ supabase, userId, onBack, sho
   const [activeLessonId,setActiveLessonId]=useState(routed.lessonId);
   const [completedIds,setCompletedIds]=useState(new Set());
   const [saving,setSaving]=useState(false);
+  const [toolkitOpen,setToolkitOpen]=useState(false);
 
   useEffect(()=>{
     let cancelled=false;
@@ -278,6 +280,33 @@ export default function SocialStudiesSubjectView({ supabase, userId, onBack, sho
     }
   },[completedIds,saving,showToast,supabase]);
 
+  if(toolkitOpen){
+    return <SocialStudiesSbaToolkit
+      onBack={()=>{setToolkitOpen(false);window.scrollTo?.(0,0);}}
+      onComplete={async ({score,total})=>{
+        const result=await recordSubjectActivity({
+          supabase,
+          silent:true,
+          activity:{
+            subjectId:SUBJECT_ID,
+            activityKey:"tool:sba-research-lab",
+            activityType:"practice",
+            sectionId:"research-skills",
+            topicId:"sba-research-toolkit",
+            title:"Social Studies Research & SBA toolkit",
+            completed:true,
+            score,
+            maxScore:total,
+            percent:total>0 ? Math.round(score/total*100) : 0,
+            metadata:{source:"social_studies_course_v1",kind:"research-toolkit",at:new Date().toISOString()},
+          },
+        });
+        if(result?.error) console.warn("Could not save Social Studies research toolkit progress",result.error);
+        else showToast?.("Research & SBA toolkit completed.","success");
+      }}
+    />;
+  }
+
   if(activeLesson){
     return <LessonView
       lesson={activeLesson}
@@ -305,6 +334,9 @@ export default function SocialStudiesSubjectView({ supabase, userId, onBack, sho
           <span><strong>4</strong> syllabus units</span>
           <span><strong>Paper 01 + 02</strong> exam preparation</span>
           <span><strong>SBA</strong> research skills throughout</span>
+        </div>
+        <div className="ss-course-hero-actions">
+          <button type="button" className="ss-primary" onClick={()=>{setToolkitOpen(true);window.scrollTo?.(0,0);}}>Open Research & SBA toolkit</button>
         </div>
       </header>
 
