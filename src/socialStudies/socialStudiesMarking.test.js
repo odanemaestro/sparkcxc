@@ -8,6 +8,10 @@ import {
   socialStudiesLexiconStats,
 } from "./marking/socialStudiesAnswerLexicon";
 import {
+  SOCIAL_STUDIES_SHORT_ANSWER_BANK,
+  socialStudiesShortAnswerStats,
+} from "./data/socialStudiesShortAnswerBank";
+import {
   SOCIAL_STUDIES_PAST_PAPER_ARCHIVE,
   SOCIAL_STUDIES_PAST_PAPER_AUDIT,
   SOCIAL_STUDIES_COMMAND_WORDS,
@@ -20,8 +24,8 @@ function part(questionIndex,partIndex){
 describe("Social Studies short-answer marking", () => {
   test("ships a large reusable vocabulary bank", () => {
     const stats=socialStudiesLexiconStats();
-    expect(stats.concepts).toBeGreaterThanOrEqual(150);
-    expect(stats.aliases).toBeGreaterThanOrEqual(700);
+    expect(stats.concepts).toBeGreaterThanOrEqual(280);
+    expect(stats.aliases).toBeGreaterThanOrEqual(1200);
   });
 
   test("accepts Caribbean Social Studies wording and common variants", () => {
@@ -94,6 +98,39 @@ describe("Social Studies short-answer marking", () => {
     expect(result.marks).toBe(4);
   });
 
+  test("provides 40 marked short-answer questions with balanced syllabus coverage", () => {
+    const stats=socialStudiesShortAnswerStats();
+    expect(stats.questions).toBe(40);
+    expect(stats.bySection).toEqual({A1:10,A2:10,B1:10,B2:10});
+    expect(stats.marks).toBeGreaterThanOrEqual(100);
+    SOCIAL_STUDIES_SHORT_ANSWER_BANK.forEach(item=>{
+      expect(item.marking).toBeTruthy();
+      expect(item.modelPoints.length).toBeGreaterThan(0);
+      expect(["A1","A2","B1","B2"]).toContain(item.sectionId);
+    });
+  });
+
+  test("marks course-wide short-answer wording outside the first Paper 02 set", () => {
+    const primary=SOCIAL_STUDIES_SHORT_ANSWER_BANK.find(item=>item.id==="ss-sa-a2-01");
+    const population=SOCIAL_STUDIES_SHORT_ANSWER_BANK.find(item=>item.id==="ss-sa-b1-04");
+    const integration=SOCIAL_STUDIES_SHORT_ANSWER_BANK.find(item=>item.id==="ss-sa-b2-05");
+
+    expect(gradeSocialStudiesShortAnswer(
+      "A primary group has close personal relationships, while a secondary group is more formal and goal oriented.",
+      primary.marking
+    ).marks).toBe(2);
+
+    expect(gradeSocialStudiesShortAnswer(
+      "Immigration is movement into a country to live. Emigration is movement out of a country to live elsewhere.",
+      population.marking
+    ).marks).toBe(2);
+
+    expect(gradeSocialStudiesShortAnswer(
+      "Regional integration gives producers a larger market, so firms can sell to more Caribbean customers and produce on a larger scale. Countries can also pool resources, which helps them respond to shared problems.",
+      integration.marking
+    ).marks).toBe(4);
+  });
+
   test("grades all four structured questions out of 56 marks", () => {
     const grade=gradeSocialStudiesStructuredPaper({},SOCIAL_STUDIES_PAPER2);
     expect(grade.score).toBe(0);
@@ -121,4 +158,16 @@ describe("Social Studies past-paper audit", () => {
     ["state","identify","define","outline","describe","explain","suggest","justify","compare","evaluate"]
       .forEach(word=>expect(words.has(word)).toBe(true));
   });
+});
+
+
+test("Practice hub exposes the Social Studies short-answer examiner", () => {
+  const fs=require("fs");
+  const path=require("path");
+  const hub=fs.readFileSync(path.join(__dirname,"practice","SocialStudiesPracticeHub.jsx"),"utf8");
+  const examiner=fs.readFileSync(path.join(__dirname,"practice","SocialStudiesShortAnswerPractice.jsx"),"utf8");
+  expect(hub).toContain("Short-answer examiner");
+  expect(hub).toContain('setMode("shortAnswer")');
+  expect(examiner).toContain("Mark my response");
+  expect(examiner).toContain("gradeSocialStudiesShortAnswer");
 });
