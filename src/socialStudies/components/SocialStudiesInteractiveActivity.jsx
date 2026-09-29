@@ -73,7 +73,7 @@ function SorterActivity({ activity, onComplete }){
 
 function PairActivity({ activity, onComplete }){
   const pairs=activity.pairs || [];
-  const options=useMemo(()=>pairs.map(pair=>pair.solution).sort(()=>0),[pairs]);
+  const options=useMemo(()=>pairs.map(pair=>pair.solution).sort((a,b)=>String(a).localeCompare(String(b))),[pairs]);
   const [answers,setAnswers]=useState({});
   const [checked,setChecked]=useState(false);
   const score=pairs.filter((pair,index)=>answers[index]===pair.solution).length;
