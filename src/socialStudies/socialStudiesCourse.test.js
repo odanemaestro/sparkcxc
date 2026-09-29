@@ -103,15 +103,17 @@ describe("CSEC Social Studies course V1", () => {
     });
   });
 
-  test("SPARK registry exposes Social Studies without claiming unfinished full-paper simulators", () => {
+  test("SPARK registry exposes the completed Social Studies exam-practice capabilities", () => {
     const registry = read("subjects/subjectRegistry.js");
     expect(registry).toContain('SOCIAL_STUDIES: "social-studies"');
     expect(registry).toContain('id: "social-studies"');
     expect(registry).toContain('study: "/study/social-studies"');
     expect(registry).toContain('practice: "/practice/social-studies"');
     expect(registry).toContain('flashcards: "/dashboard/flashcards/social-studies"');
-    expect(registry).toContain("paper1: false");
-    expect(registry).toContain("paper2: false");
+    expect(registry).toContain("paper1: true");
+    expect(registry).toContain("paper2: true");
+    expect(registry).toContain("paper1Items: Number(socialStudies.paper1Items || 60)");
+    expect(registry).toContain("shortAnswer: Number(socialStudies.shortAnswer || 48)");
     expect(registry).toContain("sba: true");
   });
 
@@ -135,6 +137,10 @@ describe("CSEC Social Studies course V1", () => {
     expect(migration).toContain('"study":true');
     expect(migration).toContain('"practice":true');
     expect(migration).toContain('"flashcards":true');
+    expect(migration).toContain('"paper1":true');
+    expect(migration).toContain('"paper2":true');
+    expect(migration).toContain('"shortAnswer":48');
+    expect(migration).toContain('"paper2StructuredMarks":56');
   });
 });
 
