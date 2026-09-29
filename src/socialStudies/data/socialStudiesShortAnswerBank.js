@@ -452,6 +452,86 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_BANK=freeze([
       {id:"cooperate",label:"Participate in regional partnerships and cooperation",concepts:["regional_integration","pooled_resources"],developmentConcepts:["resilience","more_regional_trade"],allowGeneralDevelopment:true},
     ]),
     ["Regional sourcing","Buy and sell Caribbean","Digital trade","Common standards","Regional partnerships"]),
+
+  item("ss-sa-a1-11","A1","a1-family-types-unions","describe",
+    "Describe TWO types of family unions found in the Caribbean.",
+    4,
+    developedScheme(2,[
+      {id:"visiting",label:"Visiting union",concepts:["visiting_union"],developmentConcepts:["union_separate_households"]},
+      {id:"common-law",label:"Common-law union",concepts:["common_law_union"],developmentConcepts:["union_cohabit_unmarried"]},
+      {id:"marriage",label:"Legal marriage",concepts:["legal_marriage"],developmentConcepts:["union_legal_formal"]},
+    ],"KC"),
+    ["Visiting union with separate households","Common-law union with partners cohabiting without legal marriage","Legal marriage recognised by law"]),
+
+  item("ss-sa-a1-12","A1","a1-family-social-issues","suggest",
+    "Suggest TWO actions a government agency could take to reduce the incidence of domestic abuse.",
+    4,
+    developedScheme(2,[
+      {id:"law",label:"Strengthen legal protection and enforcement",concepts:["legal_protection"],developmentConcepts:["family_protection","abuse_reporting"],allowGeneralDevelopment:true},
+      {id:"report",label:"Provide confidential reporting channels",concepts:["abuse_reporting"],developmentConcepts:["legal_protection","shelters_support"],allowGeneralDevelopment:true},
+      {id:"shelter",label:"Provide shelters and victim-support services",concepts:["shelters_support"],developmentConcepts:["family_protection","counselling_services"],allowGeneralDevelopment:true},
+      {id:"counselling",label:"Provide counselling and intervention services",concepts:["counselling_services"],developmentConcepts:["improved_family_relationships"],allowGeneralDevelopment:true},
+      {id:"education",label:"Run public-awareness programmes",concepts:["public_education_abuse"],developmentConcepts:["abuse_reporting","legal_protection"],allowGeneralDevelopment:true},
+    ]),
+    ["Legal protection","Safe reporting","Shelters","Counselling","Public education"]),
+
+  item("ss-sa-a2-11","A2","a2-electoral-systems","outline",
+    "Outline how a government is elected using the first-past-the-post electoral system.",
+    2,
+    criteriaScheme([
+      {id:"constituency",label:"Candidates contest constituencies or seats",anyConcepts:["constituency","fptp"],marks:1},
+      {id:"plurality",label:"The candidate with the most votes wins each constituency seat",anyConcepts:["largest_votes_wins"],marks:1},
+    ],2),
+    ["Candidates contest constituencies.","The candidate with the highest number of votes wins each seat."]),
+
+  item("ss-sa-a2-12","A2","a2-parties-information-decisions","distinguish",
+    "Outline ONE difference between a fact and propaganda in an electoral campaign.",
+    2,
+    criteriaScheme([
+      {id:"fact",label:"Fact is verifiable and supported by evidence",anyConcepts:["fact"],marks:1},
+      {id:"propaganda",label:"Propaganda is persuasive or one-sided information intended to influence",anyConcepts:["propaganda","bias"],marks:1},
+    ],2),
+    ["A fact can be checked against evidence.","Propaganda is one-sided persuasive information intended to influence people."]),
+
+  item("ss-sa-b1-11","B1","b1-climate-change","define",
+    "Define the term global warming.",
+    2,
+    definitionScheme([
+      {id:"increase",label:"Shows an increase or rise",phrases:["increase","rise","rising","warming"],marks:1},
+      {id:"temperature",label:"Refers to the Earth's average or global temperature",concepts:["global_warming"],phrases:["average global temperature","earth's average temperature","global temperature"],marks:1},
+    ]),
+    ["An increase","in the Earth's average global temperature"]),
+
+  item("ss-sa-b1-12","B1","b1-climate-change","suggest",
+    "Suggest TWO actions individuals could take to help reduce global warming.",
+    4,
+    developedScheme(2,[
+      {id:"renewable",label:"Use renewable energy",concepts:["renewable_energy"],developmentConcepts:["lower_emissions"],allowGeneralDevelopment:true},
+      {id:"efficiency",label:"Reduce energy use or improve efficiency",concepts:["energy_efficiency"],developmentConcepts:["lower_emissions"],allowGeneralDevelopment:true},
+      {id:"transport",label:"Use public transport or reduce private vehicle use",concepts:["public_transport"],developmentConcepts:["lower_emissions"],allowGeneralDevelopment:true},
+      {id:"trees",label:"Plant or protect trees",concepts:["reforestation"],developmentConcepts:["lower_emissions","protect_environment"],allowGeneralDevelopment:true},
+      {id:"waste",label:"Reduce, reuse or recycle waste",concepts:["waste_reduction"],developmentConcepts:["lower_emissions","protect_environment"],allowGeneralDevelopment:true},
+    ]),
+    ["Renewable energy","Energy efficiency","Public transport","Tree planting","Waste reduction"]),
+
+  item("ss-sa-b2-11","B2","b2-measuring-development","define",
+    "Define the term gross domestic product.",
+    2,
+    definitionScheme([
+      {id:"value",label:"Total or monetary value of goods and services produced",concepts:["gdp"],phrases:["value of goods and services","total value of goods and services"],marks:1},
+      {id:"place-time",label:"Produced within a country during a stated period",phrases:["within a country","in a country","within the country","during a year","in one year","during a period"],marks:1},
+    ]),
+    ["Value of goods and services produced","within a country during a given period"]),
+
+  item("ss-sa-b2-12","B2","b2-development-challenges","outline",
+    "Outline ONE way a high level of public debt may negatively affect sustainable development in the Caribbean.",
+    2,
+    developedScheme(1,[
+      {id:"services",label:"Debt limits money available for public services or development",concepts:["debt_burden"],developmentConcepts:["public_services","public_investment","infrastructure"],allowGeneralDevelopment:true},
+      {id:"tax",label:"Debt may increase pressure for taxes or spending cuts",concepts:["debt_burden"],developmentPhrases:["higher taxes","increase taxes","cut government spending","reduce public spending"],allowGeneralDevelopment:true},
+      {id:"investment",label:"Debt servicing may crowd out investment in development",concepts:["debt_burden"],developmentConcepts:["public_investment","human_resource_development"],allowGeneralDevelopment:true},
+    ],"KC"),
+    ["Debt servicing leaves less money for services and infrastructure.","Debt can lead to higher taxes or spending cuts.","Debt may reduce investment in development."]),
 ]);
 
 export const SOCIAL_STUDIES_SHORT_ANSWER_BY_SECTION=freeze(
