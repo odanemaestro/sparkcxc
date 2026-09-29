@@ -18,7 +18,7 @@ export const FAMILY_CONCEPTS = Object.freeze({
   legal_marriage:["legal marriage","marriage","married union","formal marriage"],
   union_legal_formal:["legally married","formal legal union","marriage ceremony","recognised by law","recognized by law"],
 
-  women_employment:["women working","women work outside the home","female employment","more women employed","women in paid employment","women entering workforce","working mothers","women have jobs"],
+  women_employment:["women working","women are working","women work outside the home","women working outside the home","women are working outside the home","female employment","more women employed","women in paid employment","women entering workforce","working mothers","women have jobs"],
   women_education:["women educated","girls education","female education","women professionals","women gaining qualifications","equal access to education"],
   changing_gender_norms:["changing gender roles","changing attitudes","gender equality","traditional roles changing","less rigid gender roles","shared gender roles","changing expectations of men and women"],
   technology_remote_work:["technology","work from home","remote work","working from home","technology allows flexible work","flexible work"],
