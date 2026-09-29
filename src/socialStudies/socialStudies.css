@@ -579,3 +579,74 @@ html[data-theme="dark"][data-glass="true"] .ss-paper-summary{
 }
 html[data-theme="dark"] .ss-social-mark-lines>div.earned b{background:rgba(34,160,107,.12);color:#bbf7d0}
 html[data-theme="dark"] .ss-social-mark-lines>div.missed b{background:rgba(194,65,59,.13);color:#fecaca}
+
+
+/* Short-answer examiner */
+.ss-short-answer-start,.ss-short-answer-card{
+  padding:clamp(20px,3vw,28px);border:1px solid var(--spark-border,#d9e2ec);border-radius:18px;
+  background:var(--spark-paper,#fff);box-shadow:0 8px 28px rgba(15,42,67,.05)
+}
+.ss-short-answer-start{display:grid;gap:13px;max-width:760px;margin:0 auto}
+.ss-short-answer-start>div{display:grid;gap:3px}
+.ss-short-answer-start>div span{color:var(--spark-teal-dark,#087f73);font-size:10px;font-weight:900;text-transform:uppercase}
+.ss-short-answer-start>div strong{color:var(--spark-ink,#102a43);font-size:17px}
+.ss-short-answer-start select{
+  min-height:46px;border:1px solid var(--spark-border,#d9e2ec);border-radius:10px;background:var(--spark-bg,#f7fafc);
+  color:var(--spark-ink,#102a43);padding:8px 10px;font:inherit;font-size:12px
+}
+.ss-short-answer-start p{margin:0;color:var(--spark-text-muted,#627d98);font-size:11px;line-height:1.55}
+
+.ss-short-answer-card{max-width:860px;margin:18px auto 0}
+.ss-short-answer-card>h1{
+  margin:0 0 13px;color:var(--spark-ink,#102a43);font-family:var(--font-display,'Crimson Pro',Georgia,serif);
+  font-size:clamp(22px,3.5vw,30px);line-height:1.35
+}
+.ss-short-answer-card>textarea{
+  width:100%;min-height:180px;box-sizing:border-box;margin:14px 0;padding:14px;border:1px solid var(--spark-border,#d9e2ec);
+  border-radius:11px;background:var(--spark-bg,#f7fafc);color:var(--spark-ink,#102a43);font:inherit;font-size:13.5px;line-height:1.65;resize:vertical
+}
+.ss-short-answer-card>textarea:focus{outline:none;border-color:var(--spark-teal,#0d9488);box-shadow:0 0 0 3px color-mix(in srgb,var(--spark-teal,#0d9488) 12%,transparent)}
+.ss-command-tip{
+  display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;padding:11px 13px;border-radius:10px;
+  background:var(--spark-muted,#edf2f7)
+}
+.ss-command-tip strong{
+  padding:4px 7px;border-radius:7px;background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73);
+  font-size:9px;text-transform:uppercase
+}
+.ss-command-tip span{color:var(--spark-ink-soft,#334e68);font-size:10.5px;line-height:1.5}
+.ss-short-answer-feedback{display:grid;gap:12px;margin-top:14px}
+.ss-short-answer-feedback>p{margin:0;color:var(--spark-ink-soft,#334e68);font-size:11.5px;line-height:1.55}
+.ss-short-answer-score{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 14px;border-radius:11px;background:var(--spark-teal-light,#d9fbf4)
+}
+.ss-short-answer-score span{color:var(--spark-teal-dark,#087f73);font-size:10px;font-weight:900;text-transform:uppercase}
+.ss-short-answer-score strong{color:var(--spark-ink,#102a43);font-size:20px}
+.ss-model-points{padding:13px 15px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:11px;background:var(--spark-bg,#f7fafc)}
+.ss-model-points strong{font-size:11px;color:var(--spark-ink,#102a43)}
+.ss-model-points ul{margin:8px 0 0;padding-left:20px}
+.ss-model-points li{margin:4px 0;color:var(--spark-ink-soft,#334e68);font-size:10.5px;line-height:1.45}
+.ss-short-answer-summary{display:grid;gap:9px;max-width:860px;margin:15px auto 0}
+.ss-short-answer-summary article{
+  padding:13px 15px;border:1px solid var(--spark-border,#d9e2ec);border-radius:11px;background:var(--spark-paper,#fff)
+}
+.ss-short-answer-summary article>div{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.ss-short-answer-summary span{color:var(--spark-teal-dark,#087f73);font-size:9.5px;font-weight:900}
+.ss-short-answer-summary strong{font-size:12px}
+.ss-short-answer-summary p{margin:6px 0 0;color:var(--spark-ink-soft,#334e68);font-size:11px;line-height:1.5}
+
+html[data-glass="true"] .ss-short-answer-start,
+html[data-glass="true"] .ss-short-answer-card,
+html[data-glass="true"] .ss-short-answer-summary article{
+  background:color-mix(in srgb,var(--spark-paper,#fff) 86%,transparent);
+  -webkit-backdrop-filter:blur(20px) saturate(150%);backdrop-filter:blur(20px) saturate(150%)
+}
+html[data-theme="dark"][data-glass="true"] .ss-short-answer-start,
+html[data-theme="dark"][data-glass="true"] .ss-short-answer-card,
+html[data-theme="dark"][data-glass="true"] .ss-short-answer-summary article{
+  background:rgba(13,28,49,.84);border-color:rgba(145,165,191,.16)
+}
+@media(max-width:700px){
+  .ss-command-tip{grid-template-columns:1fr}
+  .ss-short-answer-card>textarea{min-height:160px}
+}
