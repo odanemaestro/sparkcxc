@@ -128,14 +128,35 @@ describe("Social Studies short-answer marking", () => {
 
   test("provides 40 marked short-answer questions with balanced syllabus coverage", () => {
     const stats=socialStudiesShortAnswerStats();
-    expect(stats.questions).toBe(40);
-    expect(stats.bySection).toEqual({A1:10,A2:10,B1:10,B2:10});
+    expect(stats.questions).toBe(48);
+    expect(stats.bySection).toEqual({A1:12,A2:12,B1:12,B2:12});
     expect(stats.marks).toBeGreaterThanOrEqual(100);
     SOCIAL_STUDIES_SHORT_ANSWER_BANK.forEach(item=>{
       expect(item.marking).toBeTruthy();
       expect(item.modelPoints.length).toBeGreaterThan(0);
       expect(["A1","A2","B1","B2"]).toContain(item.sectionId);
     });
+  });
+
+  test("marks 2026-aligned short-answer language", () => {
+    const warming=SOCIAL_STUDIES_SHORT_ANSWER_BANK.find(item=>item.id==="ss-sa-b1-11");
+    const unions=SOCIAL_STUDIES_SHORT_ANSWER_BANK.find(item=>item.id==="ss-sa-a1-11");
+    const gdp=SOCIAL_STUDIES_SHORT_ANSWER_BANK.find(item=>item.id==="ss-sa-b2-11");
+
+    expect(gradeSocialStudiesShortAnswer(
+      "Global warming is the rise in the Earth's average temperature.",
+      warming.marking
+    ).marks).toBe(2);
+
+    expect(gradeSocialStudiesShortAnswer(
+      "In a visiting union the partners maintain separate homes. In a common-law union the partners live together without being legally married.",
+      unions.marking
+    ).marks).toBe(4);
+
+    expect(gradeSocialStudiesShortAnswer(
+      "GDP is the total value of goods and services produced within a country during a year.",
+      gdp.marking
+    ).marks).toBe(2);
   });
 
   test("marks course-wide short-answer wording outside the first Paper 02 set", () => {
