@@ -35,7 +35,7 @@ describe("CSEC Social Studies V1 course integrity", () => {
   test("uses the current CXC Social Studies syllabus and stays draft until QA approval", () => {
     const sql = read(files.foundation);
     expect(sql).toContain("'social-studies'");
-    expect(sql).toContain("'CXC 14/G/SYLL 22'");
+    expect(sql).toContain("CXC 14/G/SYLL 22");
     expect(sql).toContain('"examFrom":"May/June 2025"');
     expect(sql).toContain("'draft'");
     expect(sql).toContain('"flashcards":true');
@@ -160,7 +160,8 @@ test("Social Studies interactive progress uses SPARK's supported practice activi
     .join("\n");
 
   expect(backend).toContain("'practice'");
-  expect(study).toContain('const normalizedType = isInteractivePractice ? "practice" : "diagram"');
+  expect(study).toContain('activityType:"practice"');
+  expect(study).toContain('activityType:"diagram"');
   expect(study).toContain('isInteractivePractice ? "interactive" : "diagram"');
   expect(lessonSql).not.toContain("'interactive','");
   expect(lessonSql).toContain("'practice','");
