@@ -123,7 +123,7 @@ describe("CSEC Social Studies course V1", () => {
   test("dynamic subject catalog migration publishes the custom course", () => {
     const migration = read("../supabase/migrations/20260929150000_social_studies_course_v1.sql");
     expect(migration).toContain("'social-studies'");
-    expect(migration).toContain("'CXC 14/G/SYLL 22'");
+    expect(migration).toContain('"syllabusCode":"CXC 14/G/SYLL 22"');
     expect(migration).toContain("'custom'");
     expect(migration).toContain('"study":true');
     expect(migration).toContain('"practice":true');
