@@ -4,6 +4,7 @@ import { UNIT_A2_LESSONS } from "./unitA2";
 import { UNIT_B1_LESSONS } from "./unitB1";
 import { UNIT_B2_LESSONS } from "./unitB2";
 import { CXC_SOCIAL_STUDIES_SOURCE, VISUAL_SOURCES } from "./courseHelpers";
+import { expandedPracticeForLesson } from "./socialStudiesPracticeExpansion";
 
 export const SOCIAL_STUDIES_LESSONS = Object.freeze([
   ...UNIT_A1_LESSONS,
