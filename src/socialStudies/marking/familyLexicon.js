@@ -14,7 +14,7 @@ export const FAMILY_CONCEPTS = Object.freeze({
   visiting_union:["visiting union","visiting relationship"],
   union_separate_households:["partners live separately","separate households","do not share a permanent home","maintain separate homes"],
   common_law_union:["common law","common-law union","cohabitation","consensual union"],
-  union_cohabit_unmarried:["living together without marriage","live together without being married","share a home without legal marriage","cohabit without marriage"],
+  union_cohabit_unmarried:["living together without marriage","live together without being married","live together without being legally married","share a home without legal marriage","cohabit without marriage","cohabit without legal marriage"],
   legal_marriage:["legal marriage","marriage","married union","formal marriage"],
   union_legal_formal:["legally married","formal legal union","marriage ceremony","recognised by law","recognized by law"],
 
