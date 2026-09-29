@@ -145,3 +145,18 @@ test("Research and SBA toolkit covers the complete enquiry cycle", () => {
   expect(subjectView).toContain("tool:sba-research-lab");
   expect(subjectView).toContain("Open Research & SBA toolkit");
 });
+
+
+test("every lesson meets the Social Studies depth standard", () => {
+  const weak = SOCIAL_STUDIES_LESSONS.filter(lesson =>
+    (lesson.noteSections || []).length < 2 ||
+    (lesson.examples || []).length < 2 ||
+    (lesson.vocabulary || []).length < 3 ||
+    (lesson.keyPoints || []).length < 3 ||
+    (lesson.practice || []).length < 4 ||
+    !lesson.interactive?.type ||
+    !lesson.exam?.prompt ||
+    (lesson.exam?.guide || []).length < 2
+  ).map(lesson => lesson.id);
+  expect(weak).toEqual([]);
+});
