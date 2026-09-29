@@ -18,6 +18,9 @@ const InformationTechnologyPracticeHub = lazy(() =>
 const IntegratedSciencePracticeHub = lazy(() =>
   import("../integratedScience/practice/IntegratedSciencePracticeHub")
 );
+const SocialStudiesPracticeHub = lazy(() =>
+  import("../socialStudies/practice/SocialStudiesPracticeHub")
+);
 
 function PracticeLazyBoundary({ label, children }) {
   return (
@@ -94,7 +97,9 @@ export default function PracticeHub({ supabase, userId, setView, physicsEnabled 
               ? "practice-information-technology"
               : item.id === "integrated-science"
                 ? "practice-integrated-science"
-                : "practice-math"
+                : item.id === "social-studies"
+                  ? "practice-social-studies"
+                  : "practice-math"
         );
       }}
       onBack={() => setView?.("dashboard")}
@@ -133,6 +138,18 @@ export default function PracticeHub({ supabase, userId, setView, physicsEnabled 
       supabase={supabase}
       userId={userId}
       onActivity={onSubjectActivity}
+          onBack={() => { setMode("home"); setView?.("practice"); }}
+        />
+      </PracticeLazyBoundary>
+    );
+  }
+
+  if (selectedSubject === "social-studies") {
+    return (
+      <PracticeLazyBoundary label="Loading Social Studies practice">
+        <SocialStudiesPracticeHub
+          supabase={supabase}
+          userId={userId}
           onBack={() => { setMode("home"); setView?.("practice"); }}
         />
       </PracticeLazyBoundary>
