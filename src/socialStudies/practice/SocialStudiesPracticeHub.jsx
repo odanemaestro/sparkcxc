@@ -153,12 +153,15 @@ function Paper1Exam({ onExit, onComplete }){
   useEffect(()=>{
     if(submitted) return undefined;
     if(timeLeft<=0){
-      finish();
+      setSubmitted(true);
+      const timedScore=SOCIAL_STUDIES_PAPER1.reduce((total,item)=>total+(answers[item.id]===item.answer ? 1 : 0),0);
+      onComplete?.(timedScore,SOCIAL_STUDIES_PAPER1.length,answers);
+      window.scrollTo?.(0,0);
       return undefined;
     }
     const timer=window.setInterval(()=>setTimeLeft(value=>Math.max(0,value-1)),1000);
     return ()=>window.clearInterval(timer);
-  },[submitted,timeLeft]);
+  },[submitted,timeLeft,answers,onComplete]);
 
   const score=submitted
     ? SOCIAL_STUDIES_PAPER1.reduce((total,item)=>total+(answers[item.id]===item.answer ? 1 : 0),0)
@@ -256,6 +259,7 @@ function Paper2Practice({ onExit, onComplete }){
   const setResponse=(key,value)=>setResponses(previous=>({...previous,[key]:value}));
 
   const finish=()=>{
+    if(completed) return;
     setCompleted(true);
     onComplete?.();
     window.scrollTo?.(0,0);
