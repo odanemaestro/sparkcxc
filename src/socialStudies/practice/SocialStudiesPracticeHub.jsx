@@ -12,6 +12,7 @@ import {
   SOCIAL_STUDIES_PAPER1,
   SOCIAL_STUDIES_PAPER2,
 } from "../data/socialStudiesExamBank";
+import { gradeSocialStudiesStructuredPaper } from "../marking/socialStudiesShortAnswerGrader";
 import "../socialStudies.css";
 
 const ALL_QUESTIONS=socialStudiesPracticeQuestions();
@@ -255,13 +256,17 @@ function Paper2Practice({ onExit, onComplete }){
   const [revealed,setRevealed]=useState({});
   const [completed,setCompleted]=useState(false);
   const current=SOCIAL_STUDIES_PAPER2[index];
+  const structuredGrade=useMemo(
+    ()=>gradeSocialStudiesStructuredPaper(responses,SOCIAL_STUDIES_PAPER2),
+    [responses]
+  );
 
   const setResponse=(key,value)=>setResponses(previous=>({...previous,[key]:value}));
 
   const finish=()=>{
     if(completed) return;
     setCompleted(true);
-    onComplete?.();
+    onComplete?.(structuredGrade.score,structuredGrade.maxScore);
     window.scrollTo?.(0,0);
   };
 
@@ -277,9 +282,9 @@ function Paper2Practice({ onExit, onComplete }){
       </header>
 
       {completed && <section className="ss-paper-summary">
-        <span className="ss-eyebrow">Paper 02 practice complete</span>
-        <h1>6 questions</h1>
-        <p>Use the marking guides to check whether each response answers the command word, develops the point and uses relevant Caribbean examples.</p>
+        <span className="ss-eyebrow">Paper 02 structured marking</span>
+        <h1>{structuredGrade.score}/{structuredGrade.maxScore}</h1>
+        <p>{structuredGrade.percent}% on the 56 automatically marked structured-response marks. The two essays remain separate because CXC awards content plus organisation and development across the whole essay.</p>
       </section>}
 
       <div className="ss-paper2-layout">
@@ -302,18 +307,35 @@ function Paper2Practice({ onExit, onComplete }){
           {current.type==="structured" ? <div className="ss-paper2-parts">
             {current.parts.map((item,partIndex)=>{
               const key=`${current.id}:part:${partIndex}`;
+              const mark=structuredGrade.perQuestion?.[current.id]?.parts?.[key];
               return <section className="ss-paper2-part" key={key}>
-                <div><strong>{item.label}</strong><span>{item.marks} {item.marks===1 ? "mark" : "marks"}</span></div>
+                <div>
+                  <strong>{item.label}</strong>
+                  <span>{completed && mark ? `${mark.marks}/${mark.maxMarks} marks` : `${item.marks} ${item.marks===1 ? "mark" : "marks"}`}</span>
+                </div>
                 <p>{item.prompt}</p>
                 <textarea
                   value={responses[key] || ""}
                   onChange={event=>setResponse(key,event.target.value)}
                   placeholder="Write your response in complete sentences."
                 />
-                <button type="button" className="ss-secondary" onClick={()=>setRevealed(previous=>({...previous,[key]:!previous[key]}))}>
+                {!completed && <button type="button" className="ss-secondary" onClick={()=>setRevealed(previous=>({...previous,[key]:!previous[key]}))}>
                   {revealed[key] ? "Hide marking guide" : "Show marking guide"}
-                </button>
-                {revealed[key] && <div className="ss-paper2-guide"><strong>Marking guide</strong>{item.guide.map(point=><p key={point}>{point}</p>)}</div>}
+                </button>}
+                {(revealed[key] || completed) && <div className="ss-paper2-guide">
+                  <strong>{completed ? "SPARK marking breakdown" : "Marking guide"}</strong>
+                  {completed && mark?.criteria?.length>0 && <div className="ss-social-mark-lines">
+                    {mark.criteria.map((criterion,criterionIndex)=><div
+                      key={criterion.id || criterionIndex}
+                      className={criterion.earned ? "earned" : "missed"}
+                    >
+                      <b>{criterion.earned ? `+${criterion.marks}` : "0"}</b>
+                      <span>{criterion.label}{criterion.developed===false ? " — relevant point, but it needs development for the second mark." : ""}</span>
+                    </div>)}
+                  </div>}
+                  {completed && mark?.reviewSuggested && <p className="ss-mark-review-note">Your response contains substantial wording that the automatic dictionary did not fully match. Compare it with the guide before treating an unmatched point as wrong.</p>}
+                  {item.guide.map(point=><p key={point}>{point}</p>)}
+                </div>}
               </section>;
             })}
           </div> : <div className="ss-paper2-essay">
@@ -455,7 +477,7 @@ export default function SocialStudiesPracticeHub({ supabase, userId, onBack }){
   />;
   if(mode==="paper2") return <Paper2Practice
     onExit={()=>setMode("home")}
-    onComplete={()=>saveExamAttempt({paper:"Paper 02"})}
+    onComplete={(score,total)=>saveExamAttempt({paper:"Paper 02 structured",score,maxScore:total})}
   />;
   if(mode==="quiz") return <QuizSession title={sessionTitle} questions={session} onExit={()=>setMode("home")} onFinish={finish}/>;
   if(mode==="results") return <Results title={sessionTitle} answers={answers} total={session.length} examPrompt={examPrompt} onAgain={()=>start(sessionTitle.includes("research") ? "research" : sessionTitle.includes("20-question") ? "challenge" : "section",sectionId)} onHome={()=>setMode("home")}/>;
