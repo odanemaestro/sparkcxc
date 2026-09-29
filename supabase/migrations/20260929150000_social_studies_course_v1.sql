@@ -63,7 +63,8 @@ values (
     "sections":4,
     "topics":39,
     "objectives":84,
-    "mcq":78
+    "mcq":78,
+    "flashcards":342
   }'::jsonb,
   '{
     "syllabusCode":"CXC 14/G/SYLL 22",
