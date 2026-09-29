@@ -9,11 +9,50 @@ const pq = (id, sectionId, lessonId, prompt, choices, answer, explanation) => Ob
   explanation,
 });
 
-const part = (label, prompt, marks, guide) => Object.freeze({
+const part = (label, prompt, marks, guide, marking = null) => Object.freeze({
   label,
   prompt,
   marks,
   guide:Object.freeze(guide),
+  marking:marking ? Object.freeze(marking) : null,
+});
+
+const listMark=(maxPoints,points,profile="KC")=>({
+  type:"list",
+  maxPoints,
+  maxMarks:maxPoints,
+  marksPerPoint:1,
+  profile,
+  points,
+});
+
+const developedMark=(maxPoints,points,profile="UK")=>({
+  type:"developed_points",
+  maxPoints,
+  maxMarks:maxPoints*2,
+  profile,
+  points,
+});
+
+const definitionMark=(groups,maxMarks=2,profile="KC")=>({
+  type:"definition",
+  groups,
+  maxMarks,
+  profile,
+});
+
+const criteriaMark=(criteria,maxMarks,profile="KC")=>({
+  type:"criteria",
+  criteria,
+  maxMarks,
+  profile,
+});
+
+const pairsMark=(pairs,maxMarks,profile="KC")=>({
+  type:"pairs",
+  pairs,
+  maxMarks,
+  profile,
 });
 
 export const SOCIAL_STUDIES_EXAM_GUIDE = Object.freeze({
@@ -280,10 +319,42 @@ export const SOCIAL_STUDIES_PAPER2 = Object.freeze([
     context:"A community family-service agency reports that more parents are seeking help with budgeting, childcare and communication at home.",
     totalMarks:14,
     parts:Object.freeze([
-      part("(a)","Identify TWO functions performed by families in Caribbean society.",2,["Any two valid functions, such as socialisation, economic support, reproduction, emotional support or protection."]),
-      part("(b)","Outline TWO factors that may contribute to changing roles and responsibilities within Caribbean families.",4,["Name each factor and give a clear feature or link showing how it changes family roles."]),
-      part("(c) (i)","Suggest TWO strategies the agency could use to help parents improve family budgeting and communication.",4,["Give two practical strategies suited to the problem, two marks each."]),
-      part("(c) (ii)","Explain why EACH strategy suggested in (c) (i) is likely to be successful.",4,["Develop one reason for each strategy by linking the action to a likely positive result."]),
+      part("(a)","Identify TWO functions performed by families in Caribbean society.",2,["Any two valid functions, such as socialisation, economic support, reproduction, emotional support or protection."],
+        listMark(2,[
+          {id:"socialisation",label:"Socialisation",concepts:["family_socialisation"]},
+          {id:"economic",label:"Economic support",concepts:["family_economic_support"]},
+          {id:"emotional",label:"Emotional support",concepts:["family_emotional_support"]},
+          {id:"protection",label:"Protection and care",concepts:["family_protection"]},
+          {id:"reproduction",label:"Reproduction",concepts:["family_reproduction"]},
+          {id:"education",label:"Education",concepts:["family_education"]},
+          {id:"recreation",label:"Recreation",concepts:["family_recreation"]},
+        ])),
+      part("(b)","Outline TWO factors that may contribute to changing roles and responsibilities within Caribbean families.",4,["Name each factor and give a clear feature or link showing how it changes family roles."],
+        developedMark(2,[
+          {id:"women-work",label:"Women entering paid employment",concepts:["women_employment"],developmentConcepts:["role_sharing","economic_pressure"],allowGeneralDevelopment:true},
+          {id:"education",label:"Expanded education and professional opportunities for women",concepts:["women_education"],developmentConcepts:["role_sharing","changing_gender_norms"],allowGeneralDevelopment:true},
+          {id:"gender-norms",label:"Changing expectations about gender roles",concepts:["changing_gender_norms"],developmentConcepts:["role_sharing"],allowGeneralDevelopment:true},
+          {id:"technology",label:"Technology and flexible work",concepts:["technology_remote_work"],developmentConcepts:["role_sharing"],allowGeneralDevelopment:true},
+          {id:"economy",label:"Economic pressure and need for two incomes",concepts:["economic_pressure"],developmentConcepts:["role_sharing","women_employment"],allowGeneralDevelopment:true},
+          {id:"migration",label:"Migration changing household responsibilities",concepts:["migration_family_change"],developmentConcepts:["role_sharing"],allowGeneralDevelopment:true},
+        ],"KC")),
+      part("(c) (i)","Suggest TWO strategies the agency could use to help parents improve family budgeting and communication.",4,["Give two practical strategies suited to the problem, two marks each."],
+        developedMark(2,[
+          {id:"financial-counselling",label:"Provide budgeting or financial-literacy support",concepts:["financial_counselling"],developmentConcepts:["budgeting","expense_tracking","savings_plan"],allowGeneralDevelopment:true},
+          {id:"budget-plan",label:"Teach families to prepare and use a household budget",concepts:["budgeting"],developmentConcepts:["expense_tracking","savings_plan","improved_money_control"],allowGeneralDevelopment:true},
+          {id:"track-spending",label:"Teach expense tracking and spending review",concepts:["expense_tracking"],developmentConcepts:["improved_money_control","budgeting"],allowGeneralDevelopment:true},
+          {id:"family-meetings",label:"Encourage regular family meetings",concepts:["family_meetings"],developmentConcepts:["clear_communication","active_listening","improved_family_relationships"],allowGeneralDevelopment:true},
+          {id:"communication-support",label:"Provide family communication or counselling sessions",concepts:["communication_counselling"],developmentConcepts:["clear_communication","active_listening","improved_family_relationships"],allowGeneralDevelopment:true},
+          {id:"parenting-support",label:"Offer parenting workshops",concepts:["parenting_classes"],developmentConcepts:["informed_parenting","clear_communication"],allowGeneralDevelopment:true},
+        ])),
+      part("(c) (ii)","Explain why EACH strategy suggested in (c) (i) is likely to be successful.",4,["Develop one reason for each strategy by linking the action to a likely positive result."],
+        developedMark(2,[
+          {id:"money-control",label:"Helps families control spending and meet needs",concepts:["improved_money_control"],developmentConcepts:["budgeting","expense_tracking","reduced_financial_stress"],allowGeneralDevelopment:true},
+          {id:"financial-stress",label:"Reduces financial stress and conflict",concepts:["reduced_financial_stress"],developmentConcepts:["improved_family_relationships","improved_money_control"],allowGeneralDevelopment:true},
+          {id:"communication",label:"Improves communication and understanding",concepts:["clear_communication","active_listening"],developmentConcepts:["improved_family_relationships"],allowGeneralDevelopment:true},
+          {id:"relationships",label:"Builds trust and improves family relationships",concepts:["improved_family_relationships"],developmentConcepts:["clear_communication","active_listening"],allowGeneralDevelopment:true},
+          {id:"skills",label:"Gives parents practical skills and guidance",concepts:["informed_parenting"],developmentConcepts:["clear_communication","budgeting"],allowGeneralDevelopment:true},
+        ])),
     ]),
   }),
   Object.freeze({
@@ -305,10 +376,33 @@ export const SOCIAL_STUDIES_PAPER2 = Object.freeze([
     }),
     totalMarks:14,
     parts:Object.freeze([
-      part("(a)","State the party which would win EACH constituency shown in the table.",4,["North Bay: Party R. Central: Party S. South Point: Party R. River Town: Party S."]),
-      part("(b)","Using the first-past-the-post system, identify the party that would form the government from these four seats and justify your response.",2,["Party S would form the government because it wins three of the four constituency seats shown. The justification must use seats won, not total votes."]),
-      part("(c) (i)","Suggest TWO strategies that could encourage greater participation by young adult voters.",4,["Strategies should be lawful, non-partisan and directed at access, information or civic participation."]),
-      part("(c) (ii)","Explain why EACH strategy suggested in (c) (i) is likely to be successful.",4,["Explain the mechanism linking each strategy to improved participation."]),
+      part("(a)","State the party which would win EACH constituency shown in the table.",4,["North Bay: Party R. Central: Party S. South Point: Party R. River Town: Party S."],
+        pairsMark([
+          {id:"north",label:"North Bay — Party R",keys:["north bay"],concepts:["party_r"]},
+          {id:"central",label:"Central — Party S",keys:["central"],concepts:["party_s"]},
+          {id:"south",label:"South Point — Party R",keys:["south point"],concepts:["party_r"]},
+          {id:"river",label:"River Town — Party S",keys:["river town"],concepts:["party_s"]},
+        ],4)),
+      part("(b)","Using the first-past-the-post system, identify the party that would form the government from these four seats and justify your response.",2,["Party S would form the government because it wins three of the four constituency seats shown. The justification must use seats won, not total votes."],
+        criteriaMark([
+          {id:"party",label:"Identifies Party S",anyConcepts:["party_s"],marks:1},
+          {id:"seats",label:"Justifies the answer using the three seats won",anyConcepts:["three_seats"],marks:1},
+        ],2)),
+      part("(c) (i)","Suggest TWO strategies that could encourage greater participation by young adult voters.",4,["Strategies should be lawful, non-partisan and directed at access, information or civic participation."],
+        developedMark(2,[
+          {id:"civic",label:"Provide civic or voter education",concepts:["civic_education"],developmentConcepts:["increased_awareness","increased_participation"],allowGeneralDevelopment:true},
+          {id:"school",label:"Include electoral participation in school programmes",concepts:["school_civics"],developmentConcepts:["increased_awareness","increased_participation"],allowGeneralDevelopment:true},
+          {id:"social",label:"Use youth-focused social-media campaigns",concepts:["youth_social_media"],developmentConcepts:["increased_awareness","increased_participation"],allowGeneralDevelopment:true},
+          {id:"registration",label:"Run voter-registration drives",concepts:["voter_registration_drive"],developmentConcepts:["reduced_access_barriers","increased_participation"],allowGeneralDevelopment:true},
+          {id:"access",label:"Improve access to registration and polling",concepts:["polling_access"],developmentConcepts:["reduced_access_barriers","increased_participation"],allowGeneralDevelopment:true},
+          {id:"outreach",label:"Use youth forums and community outreach",concepts:["community_outreach"],developmentConcepts:["increased_awareness","increased_participation"],allowGeneralDevelopment:true},
+        ])),
+      part("(c) (ii)","Explain why EACH strategy suggested in (c) (i) is likely to be successful.",4,["Explain the mechanism linking each strategy to improved participation."],
+        developedMark(2,[
+          {id:"awareness",label:"Young voters become better informed about voting",concepts:["increased_awareness"],developmentConcepts:["increased_participation"],allowGeneralDevelopment:true},
+          {id:"barriers",label:"Practical barriers to registration or voting are reduced",concepts:["reduced_access_barriers"],developmentConcepts:["increased_participation"],allowGeneralDevelopment:true},
+          {id:"turnout",label:"The strategy increases motivation or turnout",concepts:["increased_participation"],developmentConcepts:["civic_education","youth_social_media","community_outreach","voter_registration_drive","polling_access"],allowGeneralDevelopment:true},
+        ])),
     ]),
   }),
   Object.freeze({
@@ -321,10 +415,37 @@ export const SOCIAL_STUDIES_PAPER2 = Object.freeze([
     context:"A Caribbean country reports that many nurses, teachers and technology workers have migrated overseas during the last five years.",
     totalMarks:14,
     parts:Object.freeze([
-      part("(a)","Define the term ‘brain drain’.",2,["The loss of skilled or highly trained people from a country through emigration."]),
-      part("(b)","Explain TWO push factors that may contribute to the migration of skilled workers.",4,["For each factor, state the unfavourable condition at home and explain how it encourages migration."]),
-      part("(c) (i)","Suggest TWO actions the government could take to improve the retention of skilled workers.",4,["Give two realistic actions linked to employment conditions, professional development, working conditions or quality of life."]),
-      part("(c) (ii)","Explain why EACH action suggested in (c) (i) is likely to be successful.",4,["Link each action to a reason a skilled worker might choose to remain or return."]),
+      part("(a)","Define the term ‘brain drain’.",2,["The loss of skilled or highly trained people from a country through emigration."],
+        definitionMark([
+          {id:"skilled",label:"Refers to skilled, trained or professional workers leaving",concepts:["brain_drain","skilled_workers"],marks:1},
+          {id:"emigration",label:"Shows movement out of the country to live or work abroad",concepts:["emigration"],marks:1},
+        ])),
+      part("(b)","Explain TWO push factors that may contribute to the migration of skilled workers.",4,["For each factor, state the unfavourable condition at home and explain how it encourages migration."],
+        developedMark(2,[
+          {id:"pay",label:"Low wages or salaries",concepts:["low_wages"],developmentConcepts:["emigration"],allowGeneralDevelopment:true},
+          {id:"jobs",label:"Unemployment or limited employment opportunities",concepts:["unemployment","underemployment"],developmentConcepts:["emigration"],allowGeneralDevelopment:true},
+          {id:"conditions",label:"Poor working conditions",concepts:["poor_working_conditions"],developmentConcepts:["emigration"],allowGeneralDevelopment:true},
+          {id:"career",label:"Limited career or promotion opportunities",concepts:["limited_career_growth"],developmentConcepts:["emigration"],allowGeneralDevelopment:true},
+          {id:"education",label:"Limited higher education or training opportunities",concepts:["limited_education_opportunities"],developmentConcepts:["emigration"],allowGeneralDevelopment:true},
+          {id:"crime",label:"Crime or insecurity",concepts:["insecurity_crime"],developmentConcepts:["emigration"],allowGeneralDevelopment:true},
+          {id:"living",label:"Low standard of living or weak public services",concepts:["low_standard_living"],developmentConcepts:["emigration"],allowGeneralDevelopment:true},
+        ],"KC")),
+      part("(c) (i)","Suggest TWO actions the government could take to improve the retention of skilled workers.",4,["Give two realistic actions linked to employment conditions, professional development, working conditions or quality of life."],
+        developedMark(2,[
+          {id:"jobs",label:"Create suitable skilled employment",concepts:["job_creation"],developmentConcepts:["retain_workers"],allowGeneralDevelopment:true},
+          {id:"wages",label:"Improve salaries and compensation",concepts:["better_wages"],developmentConcepts:["retain_workers"],allowGeneralDevelopment:true},
+          {id:"conditions",label:"Improve working conditions and benefits",concepts:["better_work_conditions"],developmentConcepts:["retain_workers"],allowGeneralDevelopment:true},
+          {id:"career",label:"Expand professional development and promotion",concepts:["career_development"],developmentConcepts:["retain_workers"],allowGeneralDevelopment:true},
+          {id:"services",label:"Improve social services, infrastructure and quality of life",concepts:["improve_social_services"],developmentConcepts:["retain_workers"],allowGeneralDevelopment:true},
+        ])),
+      part("(c) (ii)","Explain why EACH action suggested in (c) (i) is likely to be successful.",4,["Link each action to a reason a skilled worker might choose to remain or return."],
+        developedMark(2,[
+          {id:"stay",label:"Makes skilled workers more likely to remain or return",concepts:["retain_workers"],developmentConcepts:["job_creation","better_wages","better_work_conditions","career_development","improve_social_services"],allowGeneralDevelopment:true},
+          {id:"jobs",label:"Workers gain employment suited to their training",concepts:["job_creation"],developmentConcepts:["retain_workers"],allowGeneralDevelopment:true},
+          {id:"pay",label:"Competitive pay reduces the financial incentive to migrate",concepts:["better_wages"],developmentConcepts:["retain_workers"],allowGeneralDevelopment:true},
+          {id:"career",label:"Career opportunities reduce the need to go abroad for advancement",concepts:["career_development"],developmentConcepts:["retain_workers"],allowGeneralDevelopment:true},
+          {id:"quality",label:"Better services and living conditions improve quality of life",concepts:["improve_social_services"],developmentConcepts:["retain_workers"],allowGeneralDevelopment:true},
+        ])),
     ]),
   }),
   Object.freeze({
@@ -337,10 +458,37 @@ export const SOCIAL_STUDIES_PAPER2 = Object.freeze([
     context:"Several Caribbean producers report high shipping costs, small domestic markets and repeated disruption after hurricanes. Regional leaders want firms to trade more within the Caribbean.",
     totalMarks:14,
     parts:Object.freeze([
-      part("(a)","Identify TWO challenges to economic development shown in the situation above.",2,["Any two directly supported challenges, such as high transport costs, small markets or vulnerability to natural hazards."]),
-      part("(b)","Explain TWO ways regional integration may help Caribbean producers respond to the challenges identified.",4,["Explain how a larger market, shared services, joint transport arrangements, standards or pooled resources address a named challenge."]),
-      part("(c) (i)","Suggest TWO strategies Caribbean governments could use to strengthen intra-regional trade.",4,["Give two feasible regional actions, such as improving transport links, reducing agreed barriers, harmonising procedures or supporting regional production networks."]),
-      part("(c) (ii)","Explain why EACH strategy suggested in (c) (i) is likely to be successful.",4,["Show how each strategy reduces a barrier or creates a practical incentive for regional trade."]),
+      part("(a)","Identify TWO challenges to economic development shown in the situation above.",2,["Any two directly supported challenges, such as high transport costs, small markets or vulnerability to natural hazards."],
+        listMark(2,[
+          {id:"shipping",label:"High shipping or transport costs",concepts:["high_transport_cost"]},
+          {id:"market",label:"Small domestic markets",concepts:["small_market"]},
+          {id:"hazards",label:"Natural hazards and hurricane disruption",concepts:["natural_hazards","disaster_disruption"]},
+        ])),
+      part("(b)","Explain TWO ways regional integration may help Caribbean producers respond to the challenges identified.",4,["Explain how a larger market, shared services, joint transport arrangements, standards or pooled resources address a named challenge."],
+        developedMark(2,[
+          {id:"market",label:"Provides access to a larger regional market",concepts:["larger_market"],developmentConcepts:["economies_scale","more_regional_trade"],allowGeneralDevelopment:true},
+          {id:"resources",label:"Allows countries or firms to pool resources and expertise",concepts:["pooled_resources"],developmentConcepts:["resilience","lower_trade_costs"],allowGeneralDevelopment:true},
+          {id:"transport",label:"Supports shared or improved regional transport",concepts:["improve_transport_links"],developmentConcepts:["lower_trade_costs","faster_trade"],allowGeneralDevelopment:true},
+          {id:"standards",label:"Common standards and procedures make regional trade easier",concepts:["common_standards","harmonise_customs"],developmentConcepts:["faster_trade","lower_trade_costs"],allowGeneralDevelopment:true},
+          {id:"supply",label:"Builds regional supply and production networks",concepts:["regional_supply_chains"],developmentConcepts:["more_regional_trade","resilience"],allowGeneralDevelopment:true},
+        ],"KC")),
+      part("(c) (i)","Suggest TWO strategies Caribbean governments could use to strengthen intra-regional trade.",4,["Give two feasible regional actions, such as improving transport links, reducing agreed barriers, harmonising procedures or supporting regional production networks."],
+        developedMark(2,[
+          {id:"transport",label:"Improve regional transport and logistics",concepts:["improve_transport_links"],developmentConcepts:["lower_trade_costs","faster_trade","more_regional_trade"],allowGeneralDevelopment:true},
+          {id:"barriers",label:"Remove or reduce agreed trade barriers",concepts:["remove_trade_barriers"],developmentConcepts:["lower_trade_costs","more_regional_trade"],allowGeneralDevelopment:true},
+          {id:"customs",label:"Harmonise and simplify customs procedures",concepts:["harmonise_customs"],developmentConcepts:["faster_trade","lower_trade_costs"],allowGeneralDevelopment:true},
+          {id:"standards",label:"Adopt common regional standards",concepts:["common_standards"],developmentConcepts:["faster_trade","more_regional_trade"],allowGeneralDevelopment:true},
+          {id:"supply",label:"Support regional supply chains and production networks",concepts:["regional_supply_chains"],developmentConcepts:["more_regional_trade","resilience"],allowGeneralDevelopment:true},
+          {id:"finance",label:"Provide finance and support for regional exporters",concepts:["trade_finance"],developmentConcepts:["more_regional_trade"],allowGeneralDevelopment:true},
+          {id:"digital",label:"Use digital platforms and electronic trade systems",concepts:["digital_trade"],developmentConcepts:["faster_trade","lower_trade_costs"],allowGeneralDevelopment:true},
+        ])),
+      part("(c) (ii)","Explain why EACH strategy suggested in (c) (i) is likely to be successful.",4,["Show how each strategy reduces a barrier or creates a practical incentive for regional trade."],
+        developedMark(2,[
+          {id:"cost",label:"Reduces the cost of trading within the region",concepts:["lower_trade_costs"],developmentConcepts:["more_regional_trade"],allowGeneralDevelopment:true},
+          {id:"speed",label:"Reduces delays and moves goods faster",concepts:["faster_trade"],developmentConcepts:["more_regional_trade"],allowGeneralDevelopment:true},
+          {id:"market",label:"Creates more opportunities to sell within the region",concepts:["more_regional_trade","larger_market"],developmentConcepts:["economies_scale"],allowGeneralDevelopment:true},
+          {id:"resilience",label:"Makes regional supply networks more resilient to shocks",concepts:["resilience"],developmentConcepts:["regional_supply_chains","pooled_resources"],allowGeneralDevelopment:true},
+        ])),
     ]),
   }),
   Object.freeze({
