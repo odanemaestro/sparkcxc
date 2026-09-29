@@ -5,6 +5,7 @@ import { recordSubjectActivity } from "./subjectProgress";
 import { loadGenericSubjectStructure } from "./genericSubjectCatalog";
 import InteractiveLabelDiagram from "./components/InteractiveLabelDiagram";
 import TransportProcessExplorer from "./components/TransportProcessExplorer";
+import SocialStudiesExplorer from "./components/SocialStudiesExplorer";
 import {
   readSparkHashRoute,
   subscribeSparkRoute,
@@ -122,11 +123,28 @@ function GenericLessonContent({
         );
       })}
 
-      {models.map(model => (
-        model?.type === "membrane-transport"
-          ? <TransportProcessExplorer key={model.id || "membrane-transport"} />
-          : null
-      ))}
+      {models.map(model => {
+        if (model?.type === "membrane-transport") {
+          return <TransportProcessExplorer key={model.id || "membrane-transport"} />;
+        }
+        if (model?.type === "social-studies") {
+          const activityKey = `interactive:${model.id}`;
+          return (
+            <SocialStudiesExplorer
+              key={model.id || model.title}
+              activity={model}
+              completed={completedActivityKeys.has(activityKey)}
+              onComplete={result => onActivityComplete?.({
+                ...result,
+                topicId:topic.id,
+                sectionId:topic.sectionId,
+                activityType:"interactive",
+              })}
+            />
+          );
+        }
+        return null;
+      })}
 
       {diagrams.map(diagram => (
         <InteractiveLabelDiagram
@@ -353,8 +371,10 @@ export default function GenericSubjectStudyView({
     percent,
     topicId,
     sectionId,
+    activityType = "diagram",
   }) => {
-    const activityKey = `diagram:${activityId}`;
+    const normalizedType = activityType === "interactive" ? "interactive" : "diagram";
+    const activityKey = `${normalizedType}:${activityId}`;
     if (!activityId || completedActivityKeys.has(activityKey)) return;
 
     try {
@@ -363,7 +383,7 @@ export default function GenericSubjectStudyView({
         activity:{
           subjectId,
           activityKey,
-          activityType:"diagram",
+          activityType:normalizedType,
           sectionId:sectionId || activeSection?.id || null,
           topicId:topicId || activeTopic?.id || null,
           title:title || "Interactive diagram",
@@ -372,7 +392,7 @@ export default function GenericSubjectStudyView({
           maxScore:total,
           percent,
           metadata:{
-            source:"generic_subject_interactive_diagram",
+            source:normalizedType === "interactive" ? "generic_subject_interactive_practice" : "generic_subject_interactive_diagram",
             adapter:"generic-subject-v1",
             at:new Date().toISOString(),
           },
@@ -381,11 +401,11 @@ export default function GenericSubjectStudyView({
 
       if (result?.error) throw result.error;
       setCompletedActivityKeys(current => new Set([...current,activityKey]));
-      showToast?.(`${title || "Interactive diagram"} completed.`, "success");
+      showToast?.(`${title || "Interactive activity"} completed.`, "success");
     } catch (activityError) {
-      console.error("Could not save interactive diagram progress",activityError);
+      console.error("Could not save interactive activity progress",activityError);
       showToast?.(
-        activityError?.message || "Your diagram score could not be saved.",
+        activityError?.message || "Your activity score could not be saved.",
         "error"
       );
     }
