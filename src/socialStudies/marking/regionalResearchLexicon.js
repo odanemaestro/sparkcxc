@@ -12,7 +12,7 @@ export const REGIONAL_RESEARCH_CONCEPTS = Object.freeze({
   bargaining_power:["bargaining power","stronger negotiating position","greater negotiating power","collective voice"],
   free_movement:["free movement","movement of labour","movement of workers","movement of goods","movement of services","movement of capital"],
   regional_supply_chains:["regional supply chain","regional suppliers","regional production network","cross border suppliers","intra regional sourcing"],
-  improve_transport_links:["improve transport links","better shipping","regional ferry","better air links","better sea transport","regional logistics"],
+  improve_transport_links:["improve transport links","improve regional transport","improve regional shipping","better shipping","regional shipping","regional ferry","better air links","better sea transport","regional logistics"],
   harmonise_customs:["harmonise customs","harmonize customs","common customs procedures","standardise customs","standardize customs","simplify border procedures"],
   remove_trade_barriers:["remove trade barriers","reduce tariffs","reduce regional restrictions","remove customs barriers","facilitate trade"],
   common_standards:["common standards","harmonised standards","harmonized standards","regional standards","mutual recognition"],
