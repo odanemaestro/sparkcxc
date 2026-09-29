@@ -124,6 +124,8 @@ const PracticeHub = lazy(() => import("./practice/PracticeHub"));
 const PhysicsSubjectView = lazy(() => import("./physics/course/components/PhysicsSubjectView"));
 const InformationTechnologySubjectView = lazy(() => import("./informationTechnology/components/InformationTechnologySubjectView"));
 const InformationTechnologyFlashcardsPanel = lazy(() => import("./informationTechnology/components/InformationTechnologyFlashcardsPanel"));
+const SocialStudiesSubjectView = lazy(() => import("./socialStudies/components/SocialStudiesSubjectView"));
+const SocialStudiesFlashcardsPanel = lazy(() => import("./socialStudies/components/SocialStudiesFlashcardsPanel"));
 const GenericSubjectStudyView = lazy(() => import("./subjects/GenericSubjectStudyView"));
 const GenericSubjectFlashcardsPanel = lazy(() => import("./subjects/GenericSubjectFlashcardsPanel"));
 const PhysicsMechanicsFlashcardsPanel = lazy(() =>
@@ -151,6 +153,7 @@ const SPARK_SUBJECTS = getSparkSubjectRegistry({
   },
   physics: { ...PHYSICS_SECTION_A_STATS, ...PHYSICS_FULL_COURSE_STATS },
   informationTechnology: { sections: 8, topics: 26, objectives: 63, mcq: 540 },
+  socialStudies: { sections: 4, topics: 39, objectives: 84, mcq: 78 },
 });
 
 const VIEW_ROUTE_PATHS = Object.freeze({
@@ -170,9 +173,11 @@ const VIEW_ROUTE_PATHS = Object.freeze({
   "practice-physics": "/practice/physics",
   "practice-information-technology": "/practice/information-technology",
   "practice-integrated-science": "/practice/integrated-science",
+  "practice-social-studies": "/practice/social-studies",
   // SPARK_PHYSICS_SECTION_A_RC1_ROUTES
   physics: "/study/physics",
   "information-technology": "/study/information-technology",
+  "social-studies": "/study/social-studies",
   about: "/about",
   contact: "/contact",
   privacy: "/privacy",
@@ -198,10 +203,13 @@ const ROUTE_PATH_VIEWS = Object.freeze({
   "/practice/physics": PHYSICS_SECTION_A_ENABLED ? "practice-physics" : "practice",
   "/practice/information-technology": "practice-information-technology",
   "/practice/integrated-science": "practice-integrated-science",
+  "/practice/social-studies": "practice-social-studies",
   "/study/physics": PHYSICS_SECTION_A_ENABLED ? "physics" : "home",
   "/physics": PHYSICS_SECTION_A_ENABLED ? "physics" : "home",
   "/study/information-technology": "information-technology",
   "/information-technology": "information-technology",
+  "/study/social-studies": "social-studies",
+  "/social-studies": "social-studies",
   "/about": "about",
   "/contact": "contact",
   "/privacy": "privacy",
@@ -252,12 +260,14 @@ function viewFromBrowserHash() {
   if (normalizedPath === "/study/mathematics" || normalizedPath.startsWith("/study/mathematics/")) return "lesson";
   if (normalizedPath === "/study/physics" || normalizedPath.startsWith("/study/physics/")) return PHYSICS_SECTION_A_ENABLED ? "physics" : "home";
   if (normalizedPath === "/study/information-technology" || normalizedPath.startsWith("/study/information-technology/")) return "information-technology";
+  if (normalizedPath === "/study/social-studies" || normalizedPath.startsWith("/study/social-studies/")) return "social-studies";
   if (/^\/study\/[^/]+(?:\/.*)?$/.test(normalizedPath)) return "generic-study";
   if (normalizedPath === "/practice/mathematics" || normalizedPath.startsWith("/practice/mathematics/")) return "practice-math";
   if (normalizedPath === "/practice/physics" || normalizedPath.startsWith("/practice/physics/")) return PHYSICS_SECTION_A_ENABLED ? "practice-physics" : "practice";
 
   if (normalizedPath === "/practice/information-technology" || normalizedPath.startsWith("/practice/information-technology/")) return "practice-information-technology";
   if (normalizedPath === "/practice/integrated-science" || normalizedPath.startsWith("/practice/integrated-science/")) return "practice-integrated-science";
+  if (normalizedPath === "/practice/social-studies" || normalizedPath.startsWith("/practice/social-studies/")) return "practice-social-studies";
   return ROUTE_PATH_VIEWS[normalizedPath] || "home";
 }
 
@@ -267,7 +277,7 @@ function genericStudySubjectFromBrowserHash() {
   if (!match) return null;
 
   const id = decodeURIComponent(match[1] || "").trim().toLowerCase();
-  return ["mathematics","physics","information-technology"].includes(id)
+  return ["mathematics","physics","information-technology","social-studies"].includes(id)
     ? null
     : id;
 }
@@ -1593,8 +1603,8 @@ function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorAp
   ) : (
     <>
       <NavBtn onClick={() => navigate("dashboard")} active={view === "dashboard"}>Dashboard</NavBtn>
-      {!isTutor && !isParent && <NavBtn onClick={() => navigate("study")} active={view === "study" || view === "lesson" || view === "physics" || view === "information-technology" || view === "generic-study"}>Study</NavBtn>}
-      {!isTutor && !isParent && <NavBtn onClick={() => navigate("practice")} active={view === "practice" || view === "practice-math" || view === "practice-physics"}>Practice</NavBtn>}
+      {!isTutor && !isParent && <NavBtn onClick={() => navigate("study")} active={view === "study" || view === "lesson" || view === "physics" || view === "information-technology" || view === "social-studies" || view === "generic-study"}>Study</NavBtn>}
+      {!isTutor && !isParent && <NavBtn onClick={() => navigate("practice")} active={view === "practice" || view === "practice-math" || view === "practice-physics" || view === "practice-information-technology" || view === "practice-integrated-science" || view === "practice-social-studies"}>Practice</NavBtn>}
       <NavBtn onClick={() => navigate("tutors")} active={view === "tutors"}>Tutors</NavBtn>
       {!isStudent && !isParent && !hasTutorApp && view !== "become-tutor" && (
         <NavBtn onClick={() => navigate("become-tutor")}>Become a tutor</NavBtn>
@@ -5016,6 +5026,15 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 }}
               />
             </Suspense>
+          ) : flashcardSubject === "social-studies" ? (
+            <Suspense fallback={<SparkLoader variant="section" label="Loading Social Studies flashcards" />}>
+              <SocialStudiesFlashcardsPanel
+                supabase={supabase}
+                userId={user.id}
+                showToast={showToast}
+                onChangeSubject={() => setFlashcardSubjectRoute(null)}
+              />
+            </Suspense>
           ) : flashcardSubject === "mathematics" ? (
             <div>
               <div style={{display:"flex",justifyContent:"flex-end",marginBottom:12}}><SubjectChangeButton onClick={() => setFlashcardSubjectRoute(null)} /></div>
@@ -6748,6 +6767,7 @@ export default function App() {
       physics:"/study/physics",
       "information-technology":"/study/information-technology",
       "integrated-science":"/study/integrated-science",
+      "social-studies":"/study/social-studies",
     }[id];
 
     const path = configured && configured !== "/study"
@@ -7416,6 +7436,7 @@ const handleLogout = async () => {
   const appHasPhysics = appStudentEnrolledSubjectIds.has("physics");
   const appHasInformationTechnology = appStudentEnrolledSubjectIds.has("information-technology");
   const appHasIntegratedScience = appStudentEnrolledSubjectIds.has("integrated-science");
+  const appHasSocialStudies = appStudentEnrolledSubjectIds.has("social-studies");
   const appGenericStudySubjectId = view === "generic-study"
     ? genericStudySubjectFromBrowserHash()
     : null;
@@ -7530,6 +7551,27 @@ if (loading || authenticatedRolePending) {
               />
       )}
 
+      {view === "social-studies" && session && profile?.role === "student" && (
+        appSubjectAccessPending
+          ? <SparkLoader variant="section" label="Checking Social Studies enrollment" />
+          : appHasSocialStudies
+            ? (
+              <Suspense fallback={<SparkLoader variant="section" label="Loading Social Studies" />}>
+                <SocialStudiesSubjectView
+                  supabase={supabase}
+                  userId={session.user.id}
+                  onBack={() => setView("study")}
+                  showToast={showToast}
+                />
+              </Suspense>
+            )
+            : <SubjectEnrollmentRequiredView
+                subjectName="Social Studies"
+                onManageSubjects={openMySubjects}
+                onBack={() => setView("study")}
+              />
+      )}
+
       {view === "generic-study" && session && profile?.role === "student" && (
         appSubjectAccessPending
           ? <SparkLoader variant="section" label="Checking subject access" />
@@ -7594,7 +7636,7 @@ if (loading || authenticatedRolePending) {
           CSEC Physics study is available from a student account.
         </div>
       )}
-      {(view === "practice" || view === "practice-math" || view === "practice-physics" || view === "practice-information-technology" || view === "practice-integrated-science") && session && profile?.role === "student" && (
+      {(view === "practice" || view === "practice-math" || view === "practice-physics" || view === "practice-information-technology" || view === "practice-integrated-science" || view === "practice-social-studies") && session && profile?.role === "student" && (
         appSubjectAccessPending
           ? <SparkLoader variant="section" label="Loading your practice subjects" />
           : (view === "practice-math" && !appHasMathematics)
@@ -7605,6 +7647,8 @@ if (loading || authenticatedRolePending) {
                 ? <SubjectEnrollmentRequiredView subjectName="Information Technology" onManageSubjects={openMySubjects} onBack={() => setView("practice")}/>
               : (view === "practice-integrated-science" && !appHasIntegratedScience)
                 ? <SubjectEnrollmentRequiredView subjectName="Integrated Science" onManageSubjects={openMySubjects} onBack={() => setView("practice")}/>
+              : (view === "practice-social-studies" && !appHasSocialStudies)
+                ? <SubjectEnrollmentRequiredView subjectName="Social Studies" onManageSubjects={openMySubjects} onBack={() => setView("practice")}/>
               : appStudentEnrolledSubjects.length === 0
                 ? <SubjectEnrollmentRequiredView onManageSubjects={openMySubjects} onBack={() => setView("dashboard")}/>
                 : (
@@ -7616,7 +7660,7 @@ if (loading || authenticatedRolePending) {
                       physicsEnabled={PHYSICS_SECTION_A_ENABLED}
                       enrolledSubjectIds={appSubjectEnrollmentIds}
                       subjects={runtimeSparkSubjects}
-                      initialSubject={view === "practice-math" ? "mathematics" : view === "practice-physics" ? "physics" : view === "practice-information-technology" ? "information-technology" : view === "practice-integrated-science" ? "integrated-science" : null}
+                      initialSubject={view === "practice-math" ? "mathematics" : view === "practice-physics" ? "physics" : view === "practice-information-technology" ? "information-technology" : view === "practice-integrated-science" ? "integrated-science" : view === "practice-social-studies" ? "social-studies" : null}
                       onSubjectActivity={event => {
                         recordSparkSubjectActivity({ supabase, event }).then(result => {
                           if (result?.error && !["PGRST202", "42P01", "42883"].includes(result.error.code)) {
