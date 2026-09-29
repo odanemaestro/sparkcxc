@@ -497,8 +497,8 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_BANK=freeze([
     "Define the term global warming.",
     2,
     definitionScheme([
-      {id:"increase",label:"Shows an increase or rise",phrases:["increase","rise","rising","warming"],marks:1},
-      {id:"temperature",label:"Refers to the Earth's average or global temperature",concepts:["global_warming"],phrases:["average global temperature","earth's average temperature","global temperature"],marks:1},
+      {id:"increase",label:"Shows an increase or rise",phrases:["increase","rise","rising"],marks:1},
+      {id:"temperature",label:"Refers to the Earth's average or global temperature",phrases:["average global temperature","earth's average temperature","earth average temperature","global temperature","earth's temperature"],marks:1},
     ]),
     ["An increase","in the Earth's average global temperature"]),
 
