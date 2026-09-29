@@ -43,6 +43,11 @@ function interactiveModels(topic = {}) {
   return Array.isArray(lesson.interactiveModels) ? lesson.interactiveModels.filter(Boolean) : [];
 }
 
+function visualSources(topic = {}) {
+  const lesson = lessonData(topic);
+  return Array.isArray(lesson.visualSources) ? lesson.visualSources.filter(Boolean) : [];
+}
+
 function routeSelection(path, structure) {
   const route = readSparkHashRoute();
   if (route.path !== path) return { sectionId:null, topicId:null };
@@ -79,6 +84,7 @@ function GenericLessonContent({
   const objectives = lessonObjectives(topic);
   const diagrams = interactiveDiagrams(topic);
   const models = interactiveModels(topic);
+  const sourcedVisuals = visualSources(topic);
   const intro = String(lesson.introduction || topic?.description || "").trim();
   const summary = String(lesson.summary || "").trim();
   const example = lesson.workedExample && typeof lesson.workedExample === "object"
@@ -122,6 +128,37 @@ function GenericLessonContent({
           </section>
         );
       })}
+
+      {sourcedVisuals.map((visual,index) => (
+        visual?.assetUrl ? (
+          <figure key={visual.id || visual.assetUrl || index} className="spark-generic-sourced-visual">
+            <div className="spark-generic-sourced-visual-frame">
+              <img
+                src={visual.assetUrl}
+                alt={visual.alt || visual.title || "Lesson visual"}
+                loading="lazy"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+            <figcaption>
+              <div>
+                <strong>{visual.title || "Lesson visual"}</strong>
+                {visual.purpose && <span>{visual.purpose}</span>}
+              </div>
+              <div className="spark-generic-sourced-visual-credit">
+                <span>
+                  Source: {visual.source || "External source"}
+                  {visual.creator ? ` · ${visual.creator}` : ""}
+                  {visual.license ? ` · ${visual.license}` : ""}
+                </span>
+                {visual.url && (
+                  <a href={visual.url} target="_blank" rel="noreferrer">View source</a>
+                )}
+              </div>
+            </figcaption>
+          </figure>
+        ) : null
+      ))}
 
       {models.map(model => {
         if (model?.type === "membrane-transport") {
