@@ -238,7 +238,8 @@ function gradeDevelopedPoints(value,scheme){
 function gradeLinkedDevelopment(value,scheme,context={}){
   const previous=String(context.previousResponse || "");
   const maxPoints=Number(scheme.maxPoints || 2);
-  const windows=candidateWindows(value);
+  const segmented=splitResponse(value);
+  const windows=segmented.length ? segmented : [String(value || "")];
   const eligible=(scheme.links || []).filter(link=>
     (link.triggerConcepts || []).some(id=>mentionsSocialStudiesConcept(previous,id))
     || (link.triggerPhrases || []).some(phrase=>mentionsSocialStudiesPhrase(previous,phrase))
@@ -246,6 +247,7 @@ function gradeLinkedDevelopment(value,scheme,context={}){
 
   const criteria=[];
   const used=new Set();
+  const usedEvidence=new Set();
 
   eligible.forEach((link,index)=>{
     let bestWindow="";
@@ -253,6 +255,8 @@ function gradeLinkedDevelopment(value,scheme,context={}){
     let partialMatch=false;
 
     windows.forEach(window=>{
+      const evidenceKey=normalizeSocialStudiesText(window);
+      if(!evidenceKey || usedEvidence.has(evidenceKey)) return;
       const effect=(link.resultConcepts || []).some(id=>mentionsSocialStudiesConcept(window,id))
         || (link.resultPhrases || []).some(phrase=>mentionsSocialStudiesPhrase(window,phrase));
       const strategy=(link.triggerConcepts || []).some(id=>mentionsSocialStudiesConcept(window,id))
@@ -271,6 +275,7 @@ function gradeLinkedDevelopment(value,scheme,context={}){
     const marks=resultMatch?2:partialMatch?1:0;
     if(marks>0 && !used.has(link.id)){
       used.add(link.id);
+      if(bestWindow) usedEvidence.add(normalizeSocialStudiesText(bestWindow));
       criteria.push({
         id:link.id,
         code:link.code || ("UK"+(index+1)),
