@@ -21,7 +21,6 @@ function evidenceLabel(point){
 
 function hasDevelopmentLanguage(value){
   const text=normalizeSocialStudiesText(value);
-  if(text.split(/\s+/).filter(Boolean).length>=14) return true;
   return CAUSAL_WORDS.some(word=>text.includes(word));
 }
 
