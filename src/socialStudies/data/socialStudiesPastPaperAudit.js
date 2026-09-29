@@ -116,3 +116,102 @@ export const SOCIAL_STUDIES_PAST_PAPER_AUDIT = Object.freeze({
   currentSyllabus:"CXC 14/G/SYLL 22",
   principle:"Historical papers guide topic recurrence, Caribbean wording, stimulus design and command-word practice. Current SPARK simulations follow the examination structure effective from May–June 2025.",
 });
+
+
+export const SOCIAL_STUDIES_YEAR_PATTERN_NOTES = Object.freeze([
+  {
+    year:2012,
+    evidence:"paper-02-and-032",
+    observed:[
+      "Legacy three-section Paper 02 structure with question choice.",
+      "Research and data skills appear in Paper 032, including graph construction, statements from data and recommendations.",
+      "Developed explanations and proposals are explicitly required.",
+    ],
+  },
+  {
+    year:2017,
+    evidence:"paper-02-january-and-may-june",
+    observed:[
+      "Family conflict, child protection and domestic violence.",
+      "Education, group interaction and social services.",
+      "Migration, natural-resource conservation and employment data.",
+      "Regional trade, CSME and citizen involvement in integration.",
+      "Repeated 6-mark suggest-three plus 6-mark explain-three pattern.",
+    ],
+  },
+  {
+    year:2019,
+    evidence:"paper-02-january",
+    observed:[
+      "Extended family, family functions and preparation for parenthood.",
+      "Social groups, group cohesion and conflict management.",
+      "A strong pattern of outline, suggest and explain command words.",
+      "Three strategies commonly earn six marks, followed by six marks for developed explanations.",
+    ],
+  },
+  {
+    year:2021,
+    evidence:"paper-02-may-june",
+    observed:[
+      "Marriage and family functions.",
+      "Effective parenting.",
+      "Primary and secondary groups and government systems.",
+      "Education and changing labour-market needs.",
+      "Regional integration, copyright, thrift and tourism under the former option model.",
+    ],
+  },
+  {
+    year:2023,
+    evidence:"paper-02-may-june",
+    observed:[
+      "Extended family, ethnic groups and cultural diversity.",
+      "Parenting and group cohesion.",
+      "Voter-turnout data and social institutions.",
+      "Life expectancy, natural increase, dependency ratio and brain drain.",
+      "Regional integration barriers, CSME and citizen action.",
+      "Legacy optional Communication, Consumer Affairs and Tourism section still present.",
+    ],
+  },
+  {
+    year:2024,
+    evidence:"paper-02-may-june",
+    observed:[
+      "Sibling households and family-law responsibilities appear in the archived paper.",
+      "Paper 02 still uses the four-compulsory-plus-one-option structure.",
+      "Historical content remains useful for topic recurrence, but its option structure is retired under the current syllabus.",
+    ],
+  },
+  {
+    year:2026,
+    evidence:"paper-02-may-june",
+    observed:[
+      "Family-tree interpretation, Caribbean family unions and domestic-abuse responses.",
+      "First-past-the-post, facts versus propaganda and government provision for economic needs.",
+      "Global warming causes, consequences, action and explanation.",
+      "Caribbean map interpretation, GDP, debt and citizen action for regional integration.",
+      "Two compulsory 22-mark essays on cultural diversity and sustainable development.",
+      "Current four structured questions plus two compulsory essays format.",
+    ],
+  },
+]);
+
+export const SOCIAL_STUDIES_PATTERN_RULES = Object.freeze({
+  developedResponse:{
+    baseMark:"A relevant and feasible point can earn partial credit.",
+    developmentMark:"The additional mark requires a clear explanation, link, consequence, mechanism or other development appropriate to the command word.",
+    implementation:"SPARK stores the base concept separately from the accepted development concepts so a long answer is not automatically treated as developed.",
+  },
+  answerLanguage:{
+    principle:"Accept meaning, not one memorised sentence.",
+    coverage:[
+      "British and American spelling variants",
+      "Common Caribbean classroom wording",
+      "Recognised abbreviations such as CARICOM, CSME, OECS and CCJ",
+      "Synonyms and equivalent phrases",
+      "Minor spelling errors for distinctive single-word concepts",
+    ],
+  },
+  historicalUse:{
+    principle:"Past papers before the revised syllabus inform topic recurrence, wording, stimuli and command-word practice, not the current paper-choice structure.",
+  },
+});
