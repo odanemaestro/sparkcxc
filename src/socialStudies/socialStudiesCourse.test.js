@@ -1,6 +1,13 @@
 import fs from "fs";
 import path from "path";
 import {
+  SOCIAL_STUDIES_EXAM_GUIDE,
+  SOCIAL_STUDIES_PAPER1,
+  SOCIAL_STUDIES_PAPER2,
+  SOCIAL_STUDIES_PAPER2_TOTAL_MARKS,
+} from "./data/socialStudiesExamBank";
+
+import {
   SOCIAL_STUDIES_COURSE,
   SOCIAL_STUDIES_LESSONS,
   socialStudiesFlashcards,
@@ -218,4 +225,60 @@ test("licensed online SVGs retain visible reuse metadata", () => {
     expect(visual.attribution.length).toBeGreaterThan(12);
     expect(visual.license.length).toBeGreaterThan(2);
   });
+});
+
+
+test("Paper 01 exam-style bank matches the current 60-item distribution", () => {
+  expect(SOCIAL_STUDIES_PAPER1).toHaveLength(60);
+  expect(SOCIAL_STUDIES_PAPER1.filter(item => item.sectionId.startsWith("A"))).toHaveLength(30);
+  expect(SOCIAL_STUDIES_PAPER1.filter(item => item.sectionId.startsWith("B"))).toHaveLength(30);
+
+  SOCIAL_STUDIES_PAPER1.forEach((item,index) => {
+    expect(item.id).toBe(`ss-p1-${String(index+1).padStart(2,"0")}`);
+    expect(item.choices).toHaveLength(4);
+    expect(item.answer).toBeGreaterThanOrEqual(0);
+    expect(item.answer).toBeLessThan(4);
+    expect(item.prompt.length).toBeGreaterThan(25);
+    expect(item.explanation.length).toBeGreaterThan(20);
+    expect(["A1","A2","B1","B2"]).toContain(item.sectionId);
+  });
+});
+
+test("Paper 02 practice follows the revised six-question 100-mark format", () => {
+  expect(SOCIAL_STUDIES_PAPER2).toHaveLength(6);
+  expect(SOCIAL_STUDIES_PAPER2.filter(item => item.type === "structured")).toHaveLength(4);
+  expect(SOCIAL_STUDIES_PAPER2.filter(item => item.type === "essay")).toHaveLength(2);
+  expect(SOCIAL_STUDIES_PAPER2_TOTAL_MARKS).toBe(100);
+
+  SOCIAL_STUDIES_PAPER2.slice(0,4).forEach(item => {
+    expect(item.totalMarks).toBe(14);
+    expect(item.parts.length).toBeGreaterThanOrEqual(3);
+    expect(item.parts.reduce((sum, part) => sum + part.marks, 0)).toBe(14);
+  });
+
+  SOCIAL_STUDIES_PAPER2.slice(4).forEach(item => {
+    expect(item.totalMarks).toBe(22);
+    expect(item.contentMarks).toBe(18);
+    expect(item.organizationMarks).toBe(4);
+    expect(item.tasks.length).toBeGreaterThanOrEqual(5);
+  });
+});
+
+test("exam practice records the official specimen and supplied past-paper archive as format references", () => {
+  expect(SOCIAL_STUDIES_EXAM_GUIDE.syllabus).toBe("CXC 14/G/SYLL 22");
+  expect(SOCIAL_STUDIES_EXAM_GUIDE.officialSpecimenUrl).toContain("cxc.org");
+  expect(SOCIAL_STUDIES_EXAM_GUIDE.archiveUrl).toBe("https://cxcpastpapers.org/csec-social-studies-past-papers/");
+  expect(SOCIAL_STUDIES_EXAM_GUIDE.note).toContain("original questions");
+});
+
+test("Social Studies practice hub exposes Paper 01 and Paper 02 without restoring retired option papers", () => {
+  const practiceHub = read("socialStudies/practice/SocialStudiesPracticeHub.jsx");
+  expect(practiceHub).toContain("Paper 01 exam practice");
+  expect(practiceHub).toContain("Paper 02 structured practice");
+  expect(practiceHub).toContain('setMode("paper1")');
+  expect(practiceHub).toContain('setMode("paper2")');
+  expect(practiceHub).toContain("30 items from Section A and 30 from Section B");
+  expect(practiceHub).toContain("Questions 1–4 are structured. Questions 5–6 are essays.");
+  expect(practiceHub).not.toContain("Consumer Affairs option");
+  expect(practiceHub).not.toContain("Communication option");
 });
