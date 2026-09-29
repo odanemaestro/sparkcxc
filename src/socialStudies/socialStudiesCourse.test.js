@@ -42,8 +42,8 @@ describe("CSEC Social Studies course V1", () => {
     const stats = socialStudiesStats();
     expect(stats.sections).toBe(4);
     expect(stats.lessons).toBe(39);
-    expect(stats.practiceQuestions).toBeGreaterThanOrEqual(78);
-    expect(stats.flashcards).toBeGreaterThanOrEqual(300);
+    expect(stats.practiceQuestions).toBe(156);
+    expect(stats.flashcards).toBe(342);
   });
 
   test("every lesson has teacher notes, Caribbean examples, practice, exam writing and review cards", () => {
