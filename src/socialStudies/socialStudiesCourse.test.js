@@ -130,3 +130,18 @@ describe("CSEC Social Studies course V1", () => {
     expect(migration).toContain('"flashcards":true');
   });
 });
+
+
+test("Research and SBA toolkit covers the complete enquiry cycle", () => {
+  const toolkit = read("socialStudies/components/SocialStudiesSbaToolkit.jsx");
+  const subjectView = read("socialStudies/components/SocialStudiesSubjectView.jsx");
+  expect(toolkit).toContain("Research & SBA toolkit");
+  expect(toolkit).toContain("Questionnaire design");
+  expect(toolkit).toContain("Sampling");
+  expect(toolkit).toContain("Source evaluation");
+  expect(toolkit).toContain("Findings");
+  expect(toolkit).toContain("Write-up");
+  expect(toolkit).toContain("evidence → finding → conclusion → recommendation");
+  expect(subjectView).toContain("tool:sba-research-lab");
+  expect(subjectView).toContain("Open Research & SBA toolkit");
+});
