@@ -400,6 +400,12 @@ export function acceptedConceptsForScheme(scheme={}){
   if(scheme.type==="pairs"){
     return (scheme.pairs || []).flatMap(pair=>pair.concepts || []);
   }
+  if(scheme.type==="linked_development"){
+    return (scheme.links || []).flatMap(link=>[
+      ...(link.triggerConcepts || []),
+      ...(link.resultConcepts || []),
+    ]);
+  }
   return [];
 }
 
