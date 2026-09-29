@@ -168,7 +168,7 @@ export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = 
       sections: Number(socialStudies.sections || 4),
       topics: Number(socialStudies.topics || 39),
       objectives: Number(socialStudies.objectives || 84),
-      mcq: Number(socialStudies.mcq || 78),
+      mcq: Number(socialStudies.mcq || 156),
       flashcards: Number(socialStudies.flashcards || 342),
     },
   };
