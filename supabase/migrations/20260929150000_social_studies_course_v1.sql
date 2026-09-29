@@ -63,7 +63,7 @@ values (
     "sections":4,
     "topics":39,
     "objectives":84,
-    "mcq":78,
+    "mcq":156,
     "flashcards":342
   }'::jsonb,
   '{
