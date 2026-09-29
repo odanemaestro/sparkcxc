@@ -1,0 +1,50 @@
+.spark-personal-hygiene{margin:28px 0;padding:20px;border:1px solid var(--spark-border,#d9e2ec);border-radius:16px;background:var(--spark-paper,#fff)}
+.spark-personal-hygiene header>span{color:var(--spark-teal-dark,#087f73);font-size:11px;font-weight:900;letter-spacing:.05em}
+.spark-personal-hygiene header h3{margin:4px 0 7px;color:var(--spark-ink,#102a43);font-size:20px}
+.spark-personal-hygiene header p{margin:0;color:var(--spark-text-muted,#627d98);font-size:13px;line-height:1.6}
+.spark-hygiene-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:17px 0}
+.spark-hygiene-tabs button{min-height:42px;padding:0 12px;border:1px solid var(--spark-border,#d9e2ec);border-radius:9px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:11px;font-weight:850;cursor:pointer}
+.spark-hygiene-tabs button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}
+.spark-hygiene-stage{overflow:hidden;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:14px;background:#f5f8fb}
+.spark-hygiene-stage.cards{padding:15px}
+.spark-hygiene-stage svg{display:block;width:100%;height:auto}
+.spark-hygiene-stage .hyg-axis{stroke:#4d677a;stroke-width:3}
+.spark-hygiene-stage .hyg-grid{stroke:#dce4e9;stroke-width:1.5}
+.spark-hygiene-stage .hyg-tick,.spark-hygiene-stage .hyg-axis-label{fill:#405d72;font-size:13px;font-weight:800}
+.spark-hygiene-stage .hyg-bar{fill:#7fa8bb}
+.spark-hygiene-stage .hyg-bar.b2{fill:#5d9d76}
+.spark-hygiene-stage .hyg-bar.b3{fill:#729ab0}
+.spark-hygiene-stage .hyg-value{fill:#294d64;font-size:15px;font-weight:900}
+.spark-hygiene-stage .hyg-label{fill:#31536a;font-size:14px;font-weight:900}
+.spark-hygiene-stage .hyg-small{fill:#536d80;font-size:13px;font-weight:750}
+.spark-hygiene-stage .hyg-skin{fill:#d6a082;stroke:#94654c;stroke-width:5}
+.spark-hygiene-stage .hyg-sweat-gland{fill:none;stroke:#5b94b0;stroke-width:9;stroke-linecap:round}
+.spark-hygiene-stage .hyg-sweat-duct{fill:none;stroke:#5b94b0;stroke-width:7;stroke-linecap:round}
+.spark-hygiene-stage .hyg-drop{fill:#62afd0;stroke:#3d7d99;stroke-width:3}
+.spark-hygiene-stage .hyg-bacteria{fill:#7d9859;stroke:#556f39;stroke-width:2}
+.spark-hygiene-stage .hyg-arrow{fill:none;stroke:#0d9488;stroke-width:7;stroke-linecap:round}
+.spark-hygiene-stage .hyg-clean{fill:#e9f4f8;stroke:#7ba1b5;stroke-width:5}
+.spark-hygiene-stage .hyg-water{fill:none;stroke:#55a2c6;stroke-width:8;stroke-linecap:round}
+.spark-hygiene-checklist,.spark-hygiene-items{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.spark-hygiene-checklist article{display:flex;gap:12px;align-items:flex-start;padding:14px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.spark-hygiene-checklist article>span{display:grid;place-items:center;min-width:36px;height:36px;border-radius:50%;background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73);font-size:12px;font-weight:900}
+.spark-hygiene-checklist p{margin:5px 0 0;color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.5}
+.spark-hygiene-items article{display:grid;gap:6px;padding:15px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff)}
+.hyg-item-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#f6dddd;color:#a74449;font-weight:900}
+.spark-hygiene-items b{color:var(--spark-ink,#102a43);font-size:13px}
+.spark-hygiene-items span{color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.5}
+.spark-hygiene-stage .hyg-hand{fill:#ddb092;stroke:#946247;stroke-width:5}
+.spark-hygiene-stage .hyg-food{fill:#d8b273;stroke:#946c37;stroke-width:5}
+.spark-hygiene-stage .hyg-food-top{fill:#7da765;stroke:#51753e;stroke-width:4}
+.spark-hygiene-stage .hyg-stop{fill:none;stroke:#bd4b50;stroke-width:10;stroke-linecap:round}
+.spark-hygiene-summary{display:grid;gap:5px;margin-top:14px;padding:13px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:11px;background:var(--spark-bg,#f7fafc)}
+.spark-hygiene-summary strong{color:var(--spark-teal-dark,#087f73);font-size:12px}
+.spark-hygiene-summary span{color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.55}
+html[data-theme="dark"] .spark-personal-hygiene,body[data-theme="dark"] .spark-personal-hygiene,.dark .spark-personal-hygiene{background:#122b43;border-color:#2a4863}
+html[data-theme="dark"] .spark-hygiene-tabs button,body[data-theme="dark"] .spark-hygiene-tabs button,.dark .spark-hygiene-tabs button{background:#15314b;border-color:#39566e;color:#e7f2fb}
+html[data-theme="dark"] .spark-hygiene-tabs button.active,body[data-theme="dark"] .spark-hygiene-tabs button.active,.dark .spark-hygiene-tabs button.active{background:#164e4a;color:#d7fffa;border-color:#2dd4bf}
+html[data-theme="dark"] .spark-hygiene-stage,body[data-theme="dark"] .spark-hygiene-stage,.dark .spark-hygiene-stage{background:#f2f6f8;border-color:#39566e}
+html[data-theme="dark"] .spark-hygiene-checklist article,body[data-theme="dark"] .spark-hygiene-checklist article,.dark .spark-hygiene-checklist article,html[data-theme="dark"] .spark-hygiene-items article,body[data-theme="dark"] .spark-hygiene-items article,.dark .spark-hygiene-items article,html[data-theme="dark"] .spark-hygiene-summary,body[data-theme="dark"] .spark-hygiene-summary,.dark .spark-hygiene-summary{background:#0d2134;border-color:#29465f}
+@media(max-width:800px){.spark-hygiene-checklist,.spark-hygiene-items{grid-template-columns:1fr}.spark-hygiene-tabs{display:grid;grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.spark-personal-hygiene{padding:14px}.spark-hygiene-stage .hyg-label{font-size:18px}.spark-hygiene-stage .hyg-small,.spark-hygiene-stage .hyg-tick,.spark-hygiene-stage .hyg-axis-label{font-size:17px}}
+@media(max-width:390px){.spark-hygiene-tabs{grid-template-columns:1fr}}

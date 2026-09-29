@@ -1,0 +1,132 @@
+.spark-transport-structures{margin:28px 0;padding:20px;border:1px solid var(--spark-border,#d9e2ec);border-radius:16px;background:var(--spark-paper,#fff)}
+.spark-transport-structures header>span{color:var(--spark-teal-dark,#087f73);font-size:11px;font-weight:900;letter-spacing:.05em}
+.spark-transport-structures header h3{margin:4px 0 7px;color:var(--spark-ink,#102a43);font-size:20px}
+.spark-transport-structures header p{margin:0;color:var(--spark-text-muted,#627d98);font-size:13px;line-height:1.6}
+.spark-transport-structures-tabs,.spark-transport-structures-choice{display:flex;flex-wrap:wrap;gap:8px;margin:17px 0}
+.spark-transport-structures-tabs button,.spark-transport-structures-choice button{min-height:42px;padding:0 13px;border:1px solid var(--spark-border,#d9e2ec);border-radius:9px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:11px;font-weight:850;cursor:pointer}
+.spark-transport-structures-tabs button.active,.spark-transport-structures-choice button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}
+.spark-transport-structures-stage{overflow:hidden;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:14px;background:#f5f8fa}
+.spark-transport-structures-stage svg{display:block;width:100%;height:auto}
+.spark-transport-structures-blood-layout,.spark-transport-structures-circulation{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(250px,.6fr);gap:15px}
+.spark-transport-structures-blood-layout aside,.spark-transport-structures-circulation aside{display:grid;align-content:start;gap:9px;padding:15px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:12px;background:var(--spark-bg,#f7fafc)}
+.spark-transport-structures-blood-layout aside>span,.spark-transport-structures-circulation aside>span{color:var(--spark-teal-dark,#087f73);font-size:10px;font-weight:900;text-transform:uppercase}
+.spark-transport-structures-blood-layout aside>strong,.spark-transport-structures-circulation aside>strong{color:var(--spark-ink,#102a43);font-size:18px}
+.spark-transport-structures-blood-layout aside div{padding-top:8px;border-top:1px solid var(--spark-border-soft,#edf2f7)}
+.spark-transport-structures-blood-layout aside b,.spark-transport-flow-route b{color:var(--spark-ink,#102a43);font-size:11px}
+.spark-transport-structures-blood-layout aside p,.spark-transport-structures-circulation aside p,.spark-transport-flow-route span{margin:4px 0 0;color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.55}
+.spark-transport-structures .ts-plasma-field{fill:#f1d8a8;stroke:#bd9658;stroke-width:4}
+.spark-transport-structures .ts-rbc{fill:#d95c60;stroke:#96383c;stroke-width:4}.spark-transport-structures .ts-rbc-centre{fill:#ef999b;opacity:.8}
+.spark-transport-structures .ts-wbc{fill:#e8edf6;stroke:#7f8da7;stroke-width:4}.spark-transport-structures .ts-phagocyte-nucleus{fill:#8f74aa;stroke:#654c7c;stroke-width:3}.spark-transport-structures .ts-lymph-nucleus{fill:#80649e;stroke:#5b4473;stroke-width:3}
+.spark-transport-structures .ts-platelet{fill:#c69254;stroke:#876133;stroke-width:2}.spark-transport-structures .ts-focus{filter:drop-shadow(0 0 7px rgba(13,148,136,.75))}
+.spark-transport-structures .ts-label,.spark-transport-structures .ts-vessel-title,.spark-transport-structures .ts-vessel-note,.spark-transport-structures .ts-flow-label,.spark-transport-structures .ts-phase-label{fill:#3a586d;font-weight:850}
+.spark-transport-structures .ts-label,.spark-transport-structures .ts-vessel-note,.spark-transport-structures .ts-flow-label{font-size:13px}.spark-transport-structures .ts-vessel-title{font-size:20px}.spark-transport-structures .ts-phase-label{font-size:14px}
+.spark-transport-structures .ts-artery-wall.outer{fill:#d98787;stroke:#9f4747;stroke-width:5}.spark-transport-structures .ts-artery-wall.muscle{fill:#efb4b4;stroke:#ad5c5c;stroke-width:4}.spark-transport-structures .ts-lumen{fill:#fff}.spark-transport-structures .ts-lumen.artery{stroke:#9f4747;stroke-width:4}
+.spark-transport-structures .ts-vein-wall{fill:#b1d1e2;stroke:#5f88a0;stroke-width:5}.spark-transport-structures .ts-lumen.vein{stroke:#5f88a0;stroke-width:3}.spark-transport-structures .ts-valve{fill:none;stroke:#5f88a0;stroke-width:6;stroke-linecap:round}
+.spark-transport-structures .ts-capillary-wall{fill:#e6a0a0;stroke:#a55353;stroke-width:4}.spark-transport-structures .ts-lumen.capillary{stroke:#a55353;stroke-width:2}
+.spark-transport-structures-note-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
+.spark-transport-structures-note-grid article,.spark-transport-structures-selected,.spark-transport-structures-ringing{display:grid;gap:5px;padding:13px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:11px;background:var(--spark-bg,#f7fafc)}
+.spark-transport-structures-note-grid b,.spark-transport-structures-selected strong,.spark-transport-structures-ringing strong{color:var(--spark-teal-dark,#087f73);font-size:10px;text-transform:uppercase}.spark-transport-structures-note-grid span,.spark-transport-structures-selected span,.spark-transport-structures-ringing span{color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.55}
+.spark-transport-structures .ts-heart-shape{fill:#e4a4aa;stroke:#98525b;stroke-width:6}.spark-transport-structures .ts-heart-divider{fill:none;stroke:#82444d;stroke-width:7}.spark-transport-structures .ts-heart-side{font-size:18px;font-weight:900}.spark-transport-structures .ts-heart-side.blue{fill:#315f82}.spark-transport-structures .ts-heart-side.red{fill:#944145}
+.spark-transport-structures .ts-lungs ellipse{fill:#d7e7ef;stroke:#6e91a2;stroke-width:4}.spark-transport-structures .ts-body-box rect{fill:#e8eedc;stroke:#7f9658;stroke-width:4}.spark-transport-structures .ts-body-box text{fill:#53693b;font-size:15px;font-weight:900}
+.spark-transport-structures .ts-flow{fill:none;stroke-width:8;stroke-linecap:round}.spark-transport-structures .ts-flow.blue{stroke:#39769d}.spark-transport-structures .ts-flow.red{stroke:#b54e4e}.spark-transport-structures .ts-flow-label.blue{fill:#315f82}.spark-transport-structures .ts-flow-label.red{fill:#944145}.spark-transport-structures .ts-contraction{fill:none;stroke:#7e3742;stroke-width:7;stroke-linecap:round}
+.spark-transport-flow-route{display:grid;gap:4px;padding-top:10px;border-top:1px solid var(--spark-border-soft,#edf2f7)}
+.spark-transport-structures .ts-xylem-tube{fill:#dcecf3;stroke:#5e92aa;stroke-width:6}.spark-transport-structures .ts-xylem-ring{stroke:#7aa5b9;stroke-width:5}.spark-transport-structures .ts-xylem-arrow{fill:none;stroke:#2e8eaa;stroke-width:9;stroke-linecap:round}
+.spark-transport-structures .ts-phloem-tube{fill:#e7efcf;stroke:#718b46;stroke-width:6}.spark-transport-structures .ts-sieve-plate{stroke:#718b46;stroke-width:5;stroke-dasharray:7 5}.spark-transport-structures .ts-companion-cell{fill:#f0e6bc;stroke:#a38a43;stroke-width:5}
+.spark-transport-structures .ts-phloem-arrow{fill:none;stroke:#7d994a;stroke-width:8;stroke-linecap:round}.spark-transport-structures .ts-phloem-arrow.down{stroke:#a0743f}
+.spark-transport-structures-ringing{margin-top:14px}
+html[data-theme="dark"] .spark-transport-structures,body[data-theme="dark"] .spark-transport-structures,.dark .spark-transport-structures{background:#122b43;border-color:#2a4863}
+html[data-theme="dark"] .spark-transport-structures-tabs button,body[data-theme="dark"] .spark-transport-structures-tabs button,.dark .spark-transport-structures-tabs button,html[data-theme="dark"] .spark-transport-structures-choice button,body[data-theme="dark"] .spark-transport-structures-choice button,.dark .spark-transport-structures-choice button{background:#15314b;border-color:#39566e;color:#e7f2fb}
+html[data-theme="dark"] .spark-transport-structures-tabs button.active,body[data-theme="dark"] .spark-transport-structures-tabs button.active,.dark .spark-transport-structures-tabs button.active,html[data-theme="dark"] .spark-transport-structures-choice button.active,body[data-theme="dark"] .spark-transport-structures-choice button.active,.dark .spark-transport-structures-choice button.active{background:#164e4a;color:#d7fffa;border-color:#2dd4bf}
+html[data-theme="dark"] .spark-transport-structures-stage,body[data-theme="dark"] .spark-transport-structures-stage,.dark .spark-transport-structures-stage{background:#f2f6f8;border-color:#39566e}
+html[data-theme="dark"] .spark-transport-structures-blood-layout aside,body[data-theme="dark"] .spark-transport-structures-blood-layout aside,.dark .spark-transport-structures-blood-layout aside,html[data-theme="dark"] .spark-transport-structures-circulation aside,body[data-theme="dark"] .spark-transport-structures-circulation aside,.dark .spark-transport-structures-circulation aside,html[data-theme="dark"] .spark-transport-structures-note-grid article,body[data-theme="dark"] .spark-transport-structures-note-grid article,.dark .spark-transport-structures-note-grid article,html[data-theme="dark"] .spark-transport-structures-selected,body[data-theme="dark"] .spark-transport-structures-selected,.dark .spark-transport-structures-selected,html[data-theme="dark"] .spark-transport-structures-ringing,body[data-theme="dark"] .spark-transport-structures-ringing,.dark .spark-transport-structures-ringing{background:#0d2134;border-color:#29465f}
+@media(max-width:850px){.spark-transport-structures-blood-layout,.spark-transport-structures-circulation{grid-template-columns:1fr}.spark-transport-structures-note-grid{grid-template-columns:1fr}}
+@media(max-width:620px){.spark-transport-structures{padding:14px}.spark-transport-structures-tabs,.spark-transport-structures-choice{display:grid;grid-template-columns:1fr 1fr}.spark-transport-structures .ts-label,.spark-transport-structures .ts-vessel-note,.spark-transport-structures .ts-flow-label,.spark-transport-structures .ts-phase-label{font-size:18px}.spark-transport-structures .ts-vessel-title{font-size:25px}}
+@media(max-width:390px){.spark-transport-structures-tabs,.spark-transport-structures-choice{grid-template-columns:1fr}}
+
+.spark-transport-structures .ts-lung-trachea{fill:none;stroke:#6e91a2;stroke-width:8;stroke-linecap:round}
+.spark-transport-structures .ts-heart-outline{fill:#ead3d7;stroke:#8e5360;stroke-width:8}
+.spark-transport-structures .ts-heart-ra,.spark-transport-structures .ts-heart-rv{fill:#a9d1e5;stroke:#527f98;stroke-width:5}
+.spark-transport-structures .ts-heart-la,.spark-transport-structures .ts-heart-lv{fill:#efb3b3;stroke:#a95a5a;stroke-width:5}
+.spark-transport-structures .ts-heart-lv{stroke-width:11}
+.spark-transport-structures .ts-heart-septum{fill:none;stroke:#81505a;stroke-width:9}
+.spark-transport-structures .ts-heart-vessel{fill:none;stroke-width:18;stroke-linecap:round}
+.spark-transport-structures .ts-heart-vessel.blue{stroke:#5e91ad}
+.spark-transport-structures .ts-heart-vessel.red{stroke:#bd6262}
+.spark-transport-structures .ts-heart-valve{fill:none;stroke:#f8f2e6;stroke-width:8;stroke-linecap:round;stroke-linejoin:round}
+.spark-transport-structures .ts-heart-phase path{fill:none;stroke:#0d9488;stroke-width:8;stroke-linecap:round}
+.spark-transport-structures .ts-heart-phase.diastole path{stroke:#66879c}
+
+/* SPARK_TRANSPORT_VISUAL_REFINEMENT_V2 */
+.spark-transport-structures .ts-vessel-cutaway.outer{fill:#c87578;stroke:#8e454b;stroke-width:6}
+.spark-transport-structures .ts-vessel-cutaway.inner{fill:#e8a9a6;stroke:#a45a5e;stroke-width:4}
+.spark-transport-structures .ts-plasma-field{fill:url(#ts-plasma-gradient);stroke:#c49b54;stroke-width:3}
+.spark-transport-structures .ts-focus-field{filter:drop-shadow(0 0 10px rgba(13,148,136,.9));stroke:#0d9488;stroke-width:6}
+.spark-transport-structures .ts-rbc-shadow{fill:#9e353b;opacity:.32}
+.spark-transport-structures .ts-rbc{fill:#c94d54;stroke:#8f3036;stroke-width:3.5}
+.spark-transport-structures .ts-rbc-centre{fill:#e88a8e;opacity:.86}
+.spark-transport-structures .ts-rbc-highlight{fill:none;stroke:#f6b0b0;stroke-width:4;stroke-linecap:round;opacity:.8}
+.spark-transport-structures .ts-wbc.halo{fill:#d8e7ef;stroke:#9bb1bf;stroke-width:3;opacity:.88}
+.spark-transport-structures .ts-wbc{fill:#e8eef5;stroke:#7b8ba2;stroke-width:4}
+.spark-transport-structures .ts-wbc-granule{fill:#c9a7c9;opacity:.85}
+.spark-transport-structures .ts-lymph-rim{fill:none;stroke:#bdd4df;stroke-width:8;stroke-linecap:round}
+.spark-transport-structures .ts-platelet-spike{fill:none;stroke:#8b6336;stroke-width:2.2;stroke-linecap:round}
+.spark-transport-structures .ts-blood-labels text{fill:#415f71;font-size:12px;font-weight:800}
+.spark-transport-structures .ts-blood-labels path{fill:none;stroke:#6f8290;stroke-width:2.5}
+
+.spark-vessel-network-card{overflow:hidden;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:14px;background:var(--spark-paper,#fff)}
+.spark-vessel-network-card svg{display:block;width:100%;height:auto}
+.spark-transport-structures .ts-network-vessel .wall.outer{stroke-width:5}
+.spark-transport-structures .ts-network-vessel.artery .wall.outer{fill:#cc5660;stroke:#91343c}
+.spark-transport-structures .ts-network-vessel.artery .wall.muscle{fill:#ed9a9e;stroke:#ad5057;stroke-width:3.5}
+.spark-transport-structures .ts-network-vessel.artery .lumen{fill:url(#ts-artery-flow);stroke:#8b3138;stroke-width:2.5}
+.spark-transport-structures .ts-network-vessel.vein .wall.outer{fill:#739ab4;stroke:#4e7188}
+.spark-transport-structures .ts-network-vessel.vein .lumen{fill:url(#ts-vein-flow);stroke:#42677f;stroke-width:2.5}
+.spark-transport-structures .ts-network-vessel .flow-arrow{fill:none;stroke:#fff;stroke-width:8;stroke-linecap:round}
+.spark-transport-structures .ts-arteriole-route,.spark-transport-structures .ts-venule-route{fill:none;stroke-width:22;stroke-linecap:round}
+.spark-transport-structures .ts-arteriole-route{stroke:#c75259}
+.spark-transport-structures .ts-venule-route{stroke:#658da8}
+.spark-transport-structures .ts-capillary-network path{fill:none;stroke:#a94759;stroke-width:7;stroke-linecap:round}
+.spark-transport-structures .ts-mini-rbc{fill:#c84d55;stroke:#8e3037;stroke-width:2}
+.spark-transport-structures .ts-mini-rbc-centre{fill:#e98c90;opacity:.85}
+.spark-transport-structures .ts-vessel-valve{fill:none;stroke:#eef5f8;stroke-width:6;stroke-linecap:round}
+.spark-transport-structures .ts-endothelium-callout path{fill:none;stroke:#5c788b;stroke-width:2.5}
+.spark-transport-structures .ts-endothelium-callout text{fill:#3a586d;font-size:13px;font-weight:850}
+.spark-transport-structures .ts-exchange-arrows path{fill:none;stroke-width:5;stroke-linecap:round}
+.spark-transport-structures .ts-exchange-arrows .out{stroke:#a86542}
+.spark-transport-structures .ts-exchange-arrows .in{stroke:#477f9f}
+.spark-transport-structures .ts-exchange-arrows text{fill:#3d5a6c;font-size:12px;font-weight:800}
+
+.spark-vessel-cross-sections{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
+.spark-vessel-cross-sections article{display:grid;align-content:start;gap:6px;padding:12px;border:1px solid var(--spark-border-soft,#dce5ec);border-radius:12px;background:var(--spark-paper,#fff);text-align:center}
+.spark-vessel-cross-sections svg{display:block;width:100%;height:auto}
+.spark-vessel-cross-sections b{color:var(--spark-ink,#102a43);font-size:11px}
+.spark-vessel-cross-sections span{color:var(--spark-ink-soft,#334e68);font-size:11px;line-height:1.45}
+
+html[data-theme="dark"] .spark-vessel-network-card,
+body[data-theme="dark"] .spark-vessel-network-card,
+.dark .spark-vessel-network-card,
+html[data-theme="dark"] .spark-vessel-cross-sections article,
+body[data-theme="dark"] .spark-vessel-cross-sections article,
+.dark .spark-vessel-cross-sections article{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .spark-transport-structures .ts-blood-labels text,
+body[data-theme="dark"] .spark-transport-structures .ts-blood-labels text,
+.dark .spark-transport-structures .ts-blood-labels text,
+html[data-theme="dark"] .spark-transport-structures .ts-endothelium-callout text,
+body[data-theme="dark"] .spark-transport-structures .ts-endothelium-callout text,
+.dark .spark-transport-structures .ts-endothelium-callout text,
+html[data-theme="dark"] .spark-transport-structures .ts-exchange-arrows text,
+body[data-theme="dark"] .spark-transport-structures .ts-exchange-arrows text,
+.dark .spark-transport-structures .ts-exchange-arrows text{fill:#d6e4ee}
+
+@media(max-width:850px){
+  .spark-vessel-cross-sections{grid-template-columns:1fr}
+  .spark-vessel-cross-sections article{grid-template-columns:minmax(160px,.55fr) 1fr;column-gap:14px;text-align:left;align-items:center}
+  .spark-vessel-cross-sections article svg{grid-row:1/3}
+}
+@media(max-width:620px){
+  .spark-transport-structures .ts-blood-labels text,
+  .spark-transport-structures .ts-endothelium-callout text,
+  .spark-transport-structures .ts-exchange-arrows text{font-size:17px}
+  .spark-vessel-cross-sections article{grid-template-columns:1fr;text-align:center}
+  .spark-vessel-cross-sections article svg{grid-row:auto}
+}

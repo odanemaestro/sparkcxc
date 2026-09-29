@@ -1,3 +1,4 @@
+import { repairIntegratedScienceValue } from "../integratedScience/utils/repairIntegratedScienceText";
 // ============================================================================
 // SPARK Generic Subject Learner Shell V2
 //
@@ -31,15 +32,23 @@ export function normalizeGenericSection(row = {}) {
 export function normalizeGenericTopic(row = {}) {
   const id = clean(row.topic_id ?? row.id);
   if (!id) return null;
+  const subjectId = cleanId(row.subject_id);
+  const integratedScience = subjectId === "integrated-science";
   return {
     id,
-    subjectId:cleanId(row.subject_id),
+    subjectId,
     sectionId:clean(row.section_id ?? row.sectionId),
-    title:clean(row.title) || id,
-    description:clean(row.description),
+    title:integratedScience
+      ? repairIntegratedScienceValue(clean(row.title) || id)
+      : clean(row.title) || id,
+    description:integratedScience
+      ? repairIntegratedScienceValue(clean(row.description))
+      : clean(row.description),
     sortOrder:Number(row.sort_order ?? row.sortOrder ?? 100),
     enabled:row.enabled !== false,
-    metadata:objectValue(row.metadata),
+    metadata:integratedScience
+      ? repairIntegratedScienceValue(objectValue(row.metadata))
+      : objectValue(row.metadata),
   };
 }
 
@@ -73,7 +82,24 @@ export function buildGenericSubjectStructure({
   const normalizedTopics = (topics || [])
     .map(normalizeGenericTopic)
     .filter(item => item && item.enabled)
-    .sort((a,b) => (a.sortOrder - b.sortOrder) || a.title.localeCompare(b.title));
+    .sort((a,b) => {
+      if (a.subjectId === "integrated-science" && b.subjectId === "integrated-science") {
+        const aObjective = String(a?.metadata?.syllabus?.objective || "")
+          .split(".")
+          .map(part => Number.parseInt(part,10))
+          .filter(Number.isFinite);
+        const bObjective = String(b?.metadata?.syllabus?.objective || "")
+          .split(".")
+          .map(part => Number.parseInt(part,10))
+          .filter(Number.isFinite);
+        const length = Math.max(aObjective.length,bObjective.length);
+        for (let index=0; index<length; index+=1) {
+          const delta = (aObjective[index] ?? -1) - (bObjective[index] ?? -1);
+          if (delta) return delta;
+        }
+      }
+      return (a.sortOrder - b.sortOrder) || a.title.localeCompare(b.title);
+    });
 
   const normalizedActivities = (activities || [])
     .map(normalizeGenericActivity)
