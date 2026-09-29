@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
+import SocialStudiesShortAnswerPractice from "./SocialStudiesShortAnswerPractice";
 import ProgressBar from "../../components/ui/ProgressBar";
 import { recordSubjectActivity } from "../../subjects/subjectProgress";
 import {
@@ -471,6 +472,10 @@ export default function SocialStudiesPracticeHub({ supabase, userId, onBack }){
     return lesson?.exam || null;
   },[answers,session]);
 
+  if(mode==="shortAnswer") return <SocialStudiesShortAnswerPractice
+    onExit={()=>setMode("home")}
+    onComplete={(score,total)=>saveExamAttempt({paper:"Short-answer practice",score,maxScore:total})}
+  />;
   if(mode==="paper1") return <Paper1Exam
     onExit={()=>setMode("home")}
     onComplete={(score,total)=>saveExamAttempt({paper:"Paper 01",score,maxScore:total})}
@@ -513,12 +518,17 @@ export default function SocialStudiesPracticeHub({ supabase, userId, onBack }){
           <button type="button" className="ss-primary" onClick={()=>start("research")}>Practise research skills</button>
         </article>
         <article>
-          <span>04</span><h2>Paper 01 exam practice</h2>
+          <span>04</span><h2>Short-answer examiner</h2>
+          <p>Type CXC-style responses and receive partial credit for valid points, development marks for clear explanations, and feedback from the Social Studies answer dictionary.</p>
+          <button type="button" className="ss-primary" onClick={()=>setMode("shortAnswer")}>Practise short answers</button>
+        </article>
+        <article>
+          <span>05</span><h2>Paper 01 exam practice</h2>
           <p>60 original multiple-choice items in the current CXC distribution, with 30 items from Section A and 30 from Section B.</p>
           <button type="button" className="ss-primary" onClick={()=>setMode("paper1")}>Start Paper 01</button>
         </article>
         <article>
-          <span>05</span><h2>Paper 02 structured practice</h2>
+          <span>06</span><h2>Paper 02 structured practice</h2>
           <p>Six compulsory questions using the current format, four structured questions and two essays, for 100 marks.</p>
           <button type="button" className="ss-primary" onClick={()=>setMode("paper2")}>Open Paper 02</button>
         </article>
