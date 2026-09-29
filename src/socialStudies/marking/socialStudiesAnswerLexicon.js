@@ -59,6 +59,36 @@ function editDistance(a,b,cap=2){
   return previous[b.length];
 }
 
+function tokenTolerance(token){
+  if(token.length>=10) return 2;
+  if(token.length>=6) return 1;
+  return 0;
+}
+
+function fuzzyPhraseMatch(text,wanted){
+  const textTokens=text.split(/\s+/).filter(Boolean);
+  const wantedTokens=wanted.split(/\s+/).filter(Boolean);
+  if(wantedTokens.length<2 || textTokens.length<wantedTokens.length) return false;
+
+  for(let start=0;start<=textTokens.length-wantedTokens.length;start+=1){
+    let totalDistance=0;
+    let valid=true;
+    for(let index=0;index<wantedTokens.length;index+=1){
+      const expected=wantedTokens[index];
+      const actual=textTokens[start+index];
+      const tolerance=tokenTolerance(expected);
+      const distance=editDistance(actual,expected,tolerance);
+      if(distance>tolerance){
+        valid=false;
+        break;
+      }
+      totalDistance+=distance;
+    }
+    if(valid && totalDistance<=2) return true;
+  }
+  return false;
+}
+
 export function mentionsSocialStudiesPhrase(value,phrase){
   const text=normalizeSocialStudiesText(value);
   const wanted=normalizeSocialStudiesText(phrase);
@@ -66,7 +96,7 @@ export function mentionsSocialStudiesPhrase(value,phrase){
 
   const padded=" "+text+" ";
   if(padded.includes(" "+wanted+" ") || text.includes(wanted)) return true;
-  if(wanted.includes(" ")) return false;
+  if(wanted.includes(" ")) return fuzzyPhraseMatch(text,wanted);
 
   const tolerance=wanted.length>=9?2:wanted.length>=6?1:0;
   if(!tolerance) return false;
