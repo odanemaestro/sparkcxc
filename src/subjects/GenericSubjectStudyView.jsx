@@ -410,8 +410,9 @@ export default function GenericSubjectStudyView({
     sectionId,
     activityType = "diagram",
   }) => {
-    const normalizedType = activityType === "interactive" ? "interactive" : "diagram";
-    const activityKey = `${normalizedType}:${activityId}`;
+    const isInteractivePractice = activityType === "interactive";
+    const normalizedType = isInteractivePractice ? "practice" : "diagram";
+    const activityKey = `${isInteractivePractice ? "interactive" : "diagram"}:${activityId}`;
     if (!activityId || completedActivityKeys.has(activityKey)) return;
 
     try {
@@ -429,7 +430,7 @@ export default function GenericSubjectStudyView({
           maxScore:total,
           percent,
           metadata:{
-            source:normalizedType === "interactive" ? "generic_subject_interactive_practice" : "generic_subject_interactive_diagram",
+            source:isInteractivePractice ? "generic_subject_interactive_practice" : "generic_subject_interactive_diagram",
             adapter:"generic-subject-v1",
             at:new Date().toISOString(),
           },
