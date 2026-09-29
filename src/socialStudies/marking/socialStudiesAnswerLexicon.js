@@ -2,12 +2,14 @@ import { FAMILY_CONCEPTS } from "./familyLexicon";
 import { GOVERNANCE_CONCEPTS } from "./governanceLexicon";
 import { DEVELOPMENT_CONCEPTS } from "./developmentLexicon";
 import { REGIONAL_RESEARCH_CONCEPTS } from "./regionalResearchLexicon";
+import { SOCIETY_POPULATION_CONCEPTS } from "./societyPopulationLexicon";
 
 export const SOCIAL_STUDIES_CONCEPTS = Object.freeze({
   ...FAMILY_CONCEPTS,
   ...GOVERNANCE_CONCEPTS,
   ...DEVELOPMENT_CONCEPTS,
   ...REGIONAL_RESEARCH_CONCEPTS,
+  ...SOCIETY_POPULATION_CONCEPTS,
 });
 
 const NORMALISATIONS = Object.freeze([
