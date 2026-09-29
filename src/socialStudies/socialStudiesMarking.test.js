@@ -32,6 +32,7 @@ describe("Social Studies short-answer marking", () => {
     expect(mentionsSocialStudiesConcept("Parents teach children values and acceptable behavior.","family_socialisation")).toBe(true);
     expect(mentionsSocialStudiesConcept("Government should harmonize customs procedures.","harmonise_customs")).toBe(true);
     expect(mentionsSocialStudiesConcept("Professionals move overseas because salaries are poor.","emigration")).toBe(true);
+    expect(mentionsSocialStudiesConcept("The family provides econmic suport for children.","family_economic_support")).toBe(true);
   });
 
   test("awards one mark for a valid point and the second mark for development", () => {
