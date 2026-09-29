@@ -153,7 +153,7 @@ const SPARK_SUBJECTS = getSparkSubjectRegistry({
   },
   physics: { ...PHYSICS_SECTION_A_STATS, ...PHYSICS_FULL_COURSE_STATS },
   informationTechnology: { sections: 8, topics: 26, objectives: 63, mcq: 540 },
-  socialStudies: { sections: 4, topics: 39, objectives: 84, mcq: 78 },
+  socialStudies: { sections: 4, topics: 39, objectives: 84, mcq: 156 },
 });
 
 const VIEW_ROUTE_PATHS = Object.freeze({
