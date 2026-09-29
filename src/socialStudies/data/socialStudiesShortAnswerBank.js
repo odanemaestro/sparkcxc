@@ -49,8 +49,8 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_BANK=freeze([
     "Distinguish between a visiting union and a common-law union.",
     2,
     criteriaScheme([
-      {id:"visiting",label:"Visiting partners maintain separate households",anyConcepts:["visiting_union"],marks:1},
-      {id:"common-law",label:"Common-law partners live together without formal marriage",anyConcepts:["common_law_union"],marks:1},
+      {id:"visiting",label:"Visiting partners maintain separate households",anyConcepts:["visiting_union"],anyPhrases:["live separately","separate households","separate homes","do not share a permanent home"],marks:1},
+      {id:"common-law",label:"Common-law partners live together without formal marriage",anyConcepts:["common_law_union"],anyPhrases:["living together without marriage","live together without being married","live together without being legally married","cohabit without marriage"],marks:1},
     ],2),
     ["Visiting partners live in separate households.","Common-law partners cohabit without formal legal marriage."]),
 
@@ -118,7 +118,7 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_BANK=freeze([
     "Define the term socialisation in the context of the family.",
     2,
     definitionScheme([
-      {id:"learning",label:"Learning or teaching values, norms or behaviour",concepts:["family_socialisation"],marks:1},
+      {id:"learning",label:"Learning or teaching values, norms or behaviour",phrases:["teach values","teaches values","learn values","learn norms","teach norms","acceptable behaviour","acceptable behavior"],marks:1},
       {id:"society",label:"Prepares children or members to function in society",phrases:["prepare children for society","function in society","acceptable behaviour","acceptable behavior"],marks:1},
     ]),
     ["Learning values and norms","Preparation for participation in society"]),
@@ -138,8 +138,8 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_BANK=freeze([
     "Distinguish between a primary group and a secondary group.",
     2,
     criteriaScheme([
-      {id:"primary",label:"Primary groups have close personal relationships",anyConcepts:["primary_group"],marks:1},
-      {id:"secondary",label:"Secondary groups are more formal or goal-oriented",anyConcepts:["secondary_group"],marks:1},
+      {id:"primary",label:"Primary groups have close personal relationships",anyConcepts:["primary_group"],anyPhrases:["close personal","intimate group","strong personal relationships","close relationships"],marks:1},
+      {id:"secondary",label:"Secondary groups are more formal or goal-oriented",anyConcepts:["secondary_group"],anyPhrases:["formal","goal oriented","goal-oriented","impersonal","less personal"],marks:1},
     ],2),
     ["Primary groups are close and personal.","Secondary groups are more formal and goal-oriented."]),
 
@@ -159,8 +159,8 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_BANK=freeze([
     "Identify ONE positive sanction and ONE negative sanction that a school may use.",
     2,
     criteriaScheme([
-      {id:"positive",label:"Positive sanction",anyConcepts:["positive_sanction"],marks:1},
-      {id:"negative",label:"Negative sanction",anyConcepts:["negative_sanction"],marks:1},
+      {id:"positive",label:"Positive sanction",anyPhrases:["reward","praise","recognition","award"],marks:1},
+      {id:"negative",label:"Negative sanction",anyPhrases:["punishment","detention","fine","penalty","disciplinary action"],marks:1},
     ],2),
     ["Praise or reward","Detention or another penalty"]),
 
@@ -180,8 +180,8 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_BANK=freeze([
     "Distinguish between a constitutional monarchy and a republic.",
     2,
     criteriaScheme([
-      {id:"monarchy",label:"Constitutional monarchy has a monarch as head of state",anyConcepts:["constitutional_monarchy"],marks:1},
-      {id:"republic",label:"Republic has a non-monarchical head of state",anyConcepts:["republic"],marks:1},
+      {id:"monarchy",label:"Constitutional monarchy has a monarch as head of state",anyConcepts:["constitutional_monarchy"],anyPhrases:["monarch as head of state","king as head of state","queen as head of state"],marks:1},
+      {id:"republic",label:"Republic has a non-monarchical head of state",anyConcepts:["republic"],anyPhrases:["president as head of state","non monarchical head of state","non-monarchical head of state","no monarch as head of state"],marks:1},
     ],2),
     ["Monarch as head of state","Non-monarchical head of state"]),
 
@@ -199,7 +199,7 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_BANK=freeze([
     "Define the first-past-the-post electoral system.",
     2,
     definitionScheme([
-      {id:"constituency",label:"Election is contested by constituency or seat",concepts:["constituency","fptp"],marks:1},
+      {id:"constituency",label:"Election is contested by constituency or seat",concepts:["constituency"],marks:1},
       {id:"plurality",label:"Candidate with the largest number of votes wins",concepts:["largest_votes_wins"],marks:1},
     ]),
     ["Constituency-based system","Candidate with most votes wins the seat"]),
@@ -208,8 +208,8 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_BANK=freeze([
     "Distinguish between a fact and an opinion when evaluating political information.",
     2,
     criteriaScheme([
-      {id:"fact",label:"Fact is verifiable or supported by evidence",anyConcepts:["fact"],marks:1},
-      {id:"opinion",label:"Opinion is a personal judgement or view",anyConcepts:["opinion"],marks:1},
+      {id:"fact",label:"Fact is verifiable or supported by evidence",anyConcepts:["fact"],anyPhrases:["verifiable","can be checked","supported by evidence","proved with evidence"],marks:1},
+      {id:"opinion",label:"Opinion is a personal judgement or view",anyConcepts:["opinion"],anyPhrases:["personal view","personal judgement","personal judgment","belief","cannot be proven as fact"],marks:1},
     ],2),
     ["Fact can be verified.","Opinion expresses a judgement or view."]),
 
@@ -252,8 +252,8 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_BANK=freeze([
     "Define population density.",
     2,
     definitionScheme([
-      {id:"people",label:"Number of people living in an area",concepts:["population"],marks:1},
-      {id:"area",label:"Expressed relative to land area, usually per square kilometre",concepts:["population_density"],marks:1},
+      {id:"people",label:"Number of people living in an area",phrases:["number of people","population living in an area","people living in an area"],marks:1},
+      {id:"area",label:"Expressed relative to land area, usually per square kilometre",phrases:["per square kilometre","per square kilometer","divided by area","per unit area","relative to land area"],marks:1},
     ]),
     ["Population relative to land area","Usually people per square kilometre"]),
 
@@ -271,8 +271,8 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_BANK=freeze([
     "Distinguish between immigration and emigration.",
     2,
     criteriaScheme([
-      {id:"immigration",label:"Immigration is movement into a country to live",anyConcepts:["immigration"],marks:1},
-      {id:"emigration",label:"Emigration is movement out of a country to live elsewhere",anyConcepts:["emigration"],marks:1},
+      {id:"immigration",label:"Immigration is movement into a country to live",anyConcepts:["immigration"],anyPhrases:["move into country","movement into a country","enter country to live","people arriving to live"],marks:1},
+      {id:"emigration",label:"Emigration is movement out of a country to live elsewhere",anyConcepts:["emigration"],anyPhrases:["leave the country","movement out of a country","move overseas","migrate abroad","leave to live abroad"],marks:1},
     ],2),
     ["Immigration is movement in.","Emigration is movement out."]),
 
@@ -303,8 +303,8 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_BANK=freeze([
     "Distinguish between unemployment and underemployment.",
     2,
     criteriaScheme([
-      {id:"unemployment",label:"Unemployment means being without a job while seeking work",anyConcepts:["unemployment"],marks:1},
-      {id:"underemployment",label:"Underemployment means insufficient hours or work below productive capacity",anyConcepts:["underemployment"],marks:1},
+      {id:"unemployment",label:"Unemployment means being without a job while seeking work",anyConcepts:["unemployment"],anyPhrases:["without a job","no job","cannot find work","seeking work"],marks:1},
+      {id:"underemployment",label:"Underemployment means insufficient hours or work below productive capacity",anyConcepts:["underemployment"],anyPhrases:["insufficient hours","too few hours","below skill level","below productive capacity","part time when full time wanted"],marks:1},
     ],2),
     ["No job while seeking work","Too few hours or work below capacity"]),
 
@@ -312,8 +312,8 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_BANK=freeze([
     "Distinguish between renewable and non-renewable natural resources.",
     2,
     criteriaScheme([
-      {id:"renewable",label:"Renewable resources can regenerate or be replenished",anyConcepts:["renewable_resource"],marks:1},
-      {id:"nonrenewable",label:"Non-renewable resources are finite or regenerate too slowly",anyConcepts:["nonrenewable_resource"],marks:1},
+      {id:"renewable",label:"Renewable resources can regenerate or be replenished",anyConcepts:["renewable_resource"],anyPhrases:["can regenerate","can be replenished","replenishable"],marks:1},
+      {id:"nonrenewable",label:"Non-renewable resources are finite or regenerate too slowly",anyConcepts:["nonrenewable_resource"],anyPhrases:["finite","cannot quickly regenerate","cannot be replaced quickly","will run out"],marks:1},
     ],2),
     ["Renewable resources regenerate.","Non-renewable resources are finite."]),
 
@@ -331,8 +331,8 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_BANK=freeze([
     "Distinguish between climate-change mitigation and adaptation.",
     2,
     criteriaScheme([
-      {id:"mitigation",label:"Mitigation reduces causes or greenhouse-gas emissions",anyConcepts:["mitigation","lower_emissions"],marks:1},
-      {id:"adaptation",label:"Adaptation adjusts to impacts or reduces vulnerability",anyConcepts:["adaptation"],marks:1},
+      {id:"mitigation",label:"Mitigation reduces causes or greenhouse-gas emissions",anyConcepts:["mitigation"],anyPhrases:["reduce emissions","lower greenhouse gases","reduce causes","less carbon dioxide"],marks:1},
+      {id:"adaptation",label:"Adaptation adjusts to impacts or reduces vulnerability",anyConcepts:["adaptation"],anyPhrases:["adjust to impacts","cope with climate change","reduce vulnerability","adapt to effects"],marks:1},
     ],2),
     ["Mitigation reduces causes/emissions.","Adaptation adjusts to effects."]),
 
@@ -479,7 +479,7 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_BANK=freeze([
     "Outline how a government is elected using the first-past-the-post electoral system.",
     2,
     criteriaScheme([
-      {id:"constituency",label:"Candidates contest constituencies or seats",anyConcepts:["constituency","fptp"],marks:1},
+      {id:"constituency",label:"Candidates contest constituencies or seats",anyConcepts:["constituency"],marks:1},
       {id:"plurality",label:"The candidate with the most votes wins each constituency seat",anyConcepts:["largest_votes_wins"],marks:1},
     ],2),
     ["Candidates contest constituencies.","The candidate with the highest number of votes wins each seat."]),
@@ -488,8 +488,8 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_BANK=freeze([
     "Outline ONE difference between a fact and propaganda in an electoral campaign.",
     2,
     criteriaScheme([
-      {id:"fact",label:"Fact is verifiable and supported by evidence",anyConcepts:["fact"],marks:1},
-      {id:"propaganda",label:"Propaganda is persuasive or one-sided information intended to influence",anyConcepts:["propaganda","bias"],marks:1},
+      {id:"fact",label:"Fact is verifiable and supported by evidence",anyConcepts:["fact"],anyPhrases:["verifiable","can be checked","supported by evidence","proved with evidence"],marks:1},
+      {id:"propaganda",label:"Propaganda is persuasive or one-sided information intended to influence",anyConcepts:["propaganda"],anyPhrases:["one sided","one-sided","biased message","persuasive information","intended to influence"],marks:1},
     ],2),
     ["A fact can be checked against evidence.","Propaganda is one-sided persuasive information intended to influence people."]),
 
@@ -518,7 +518,7 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_BANK=freeze([
     "Define the term gross domestic product.",
     2,
     definitionScheme([
-      {id:"value",label:"Total or monetary value of goods and services produced",concepts:["gdp"],phrases:["value of goods and services","total value of goods and services"],marks:1},
+      {id:"value",label:"Total or monetary value of goods and services produced",phrases:["value of goods and services","total value of goods and services","monetary value of goods and services"],marks:1},
       {id:"place-time",label:"Produced within a country during a stated period",phrases:["within a country","in a country","within the country","during a year","in one year","during a period"],marks:1},
     ]),
     ["Value of goods and services produced","within a country during a given period"]),
