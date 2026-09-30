@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import Card from "../../components/ui/Card";
 import ProgressBar from "../../components/ui/ProgressBar";
 import { SubjectChangeButton } from "../../subjects/SubjectSelectionView";
 import { recordSubjectActivity } from "../../subjects/subjectProgress";
@@ -163,9 +164,9 @@ export default function SocialStudiesFlashcardsPanel({ supabase, userId, onChang
     </header>
 
     <div className="spark-generic-flashcards-summary">
-      <div><strong>{ALL_CARDS.length}</strong><span>Total cards</span></div>
-      <div><strong>{reviewed.size}</strong><span>Reviewed</span></div>
-      <div><strong>{SOCIAL_STUDIES_COURSE.sections.length}</strong><span>Units</span></div>
+      <Card><strong>{ALL_CARDS.length}</strong><span>Total cards</span></Card>
+      <Card><strong>{reviewed.size}</strong><span>Reviewed</span></Card>
+      <Card><strong>{SOCIAL_STUDIES_COURSE.sections.length}</strong><span>Units</span></Card>
     </div>
 
     <nav className="spark-generic-flashcards-sections" aria-label="Filter Social Studies flashcards">
