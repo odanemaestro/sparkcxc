@@ -1,3 +1,5 @@
+import { SOCIAL_STUDIES_SHORT_ANSWER_EXPANSION_2 } from "./socialStudiesShortAnswerExpansion2";
+
 const freeze=value=>Object.freeze(value);
 
 const listScheme=(maxPoints,points,profile="KC")=>freeze({
@@ -18,7 +20,7 @@ const item=(id,sectionId,lessonId,command,prompt,marks,marking,modelPoints)=>fre
   modelPoints:freeze(modelPoints || []),
 });
 
-export const SOCIAL_STUDIES_SHORT_ANSWER_BANK=freeze([
+const SOCIAL_STUDIES_SHORT_ANSWER_CORE=freeze([
   item("ss-sa-a1-01","A1","a1-family-foundations","identify",
     "Identify TWO functions performed by the family.",
     2,
@@ -1085,6 +1087,11 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_BANK=freeze([
       {id:"business",label:"Support businesses to adopt e-commerce and digital tools",concepts:["ict_ecommerce"],developmentConcepts:["larger_market","employment"],allowGeneralDevelopment:true},
     ]),
     ["Broadband access","Digital-skills training","E-government","Support digital business"]),
+]);
+
+export const SOCIAL_STUDIES_SHORT_ANSWER_BANK=freeze([
+  ...SOCIAL_STUDIES_SHORT_ANSWER_CORE,
+  ...SOCIAL_STUDIES_SHORT_ANSWER_EXPANSION_2,
 ]);
 
 export const SOCIAL_STUDIES_SHORT_ANSWER_BY_SECTION=freeze(
