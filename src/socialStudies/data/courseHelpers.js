@@ -47,16 +47,81 @@ export function question(prompt, choices, answer, explanation) {
   };
 }
 
+function trimCardPrompt(value,max=108){
+  const text=clean(value).replace(/\s+/g," ");
+  if(text.length<=max) return text;
+  const clipped=text.slice(0,max-1).replace(/\s+\S*$/,"").trim();
+  return `${clipped}…`;
+}
+
+function subjectFromClause(value){
+  return clean(value)
+    .replace(/^(a|an|the)\s+/i,"")
+    .replace(/\s+/g," ");
+}
+
+function keyPointQuestion(point,title){
+  const statement=clean(point).replace(/[.!?]+$/,"");
+  if(!statement) return trimCardPrompt(`Complete the idea from ${title}.`);
+
+  const paired=statement.match(/^(.+?)\s+(?:is|are)\s+.+?;\s*(.+?)\s+(?:is|are)\s+.+$/i);
+  if(paired){
+    const first=subjectFromClause(paired[1]);
+    const second=subjectFromClause(paired[2]);
+    return trimCardPrompt(`How do ${first} and ${second} differ?`);
+  }
+
+  const patterns=[
+    [/^(.+?)\s+perform(?:s)?\s+(.+)$/i,subject=>`What functions do ${subject} perform?`],
+    [/^(.+?)\s+include(?:s)?\s+(.+)$/i,subject=>`What does ${subject} include?`],
+    [/^(.+?)\s+involve(?:s)?\s+(.+)$/i,subject=>`What does ${subject} involve?`],
+    [/^(.+?)\s+combine(?:s)?\s+(.+)$/i,subject=>`What does ${subject} combine?`],
+    [/^(.+?)\s+describe(?:s)?\s+(.+)$/i,subject=>`What does ${subject} describe?`],
+    [/^(.+?)\s+depend(?:s)?\s+on\s+(.+)$/i,subject=>`What does ${subject} depend on?`],
+    [/^(.+?)\s+grow(?:s)?\s+from\s+(.+)$/i,subject=>`What strengthens ${subject}?`],
+    [/^(.+?)\s+come(?:s)?\s+from\s+(.+)$/i,subject=>`What should ${subject} be based on?`],
+    [/^(.+?)\s+reflect(?:s)?\s+(.+)$/i,subject=>`What does ${subject} reflect?`],
+    [/^(.+?)\s+use(?:s)?\s+(.+)$/i,subject=>`What does ${subject} use?`],
+    [/^(.+?)\s+help(?:s)?\s+(.+)$/i,subject=>`How does ${subject} help?`],
+    [/^(.+?)\s+support(?:s)?\s+(.+)$/i,subject=>`What does ${subject} support?`],
+    [/^(.+?)\s+require(?:s)?\s+(.+)$/i,subject=>`What does ${subject} require?`],
+    [/^(.+?)\s+guide(?:s)?\s+(.+)$/i,subject=>`What does ${subject} guide?`],
+    [/^(.+?)\s+create(?:s)?\s+(.+)$/i,subject=>`What can ${subject} create?`],
+    [/^(.+?)\s+build(?:s)?\s+(.+)$/i,subject=>`What does ${subject} build?`],
+    [/^(.+?)\s+address(?:es)?\s+(.+)$/i,subject=>`What does ${subject} address?`],
+    [/^(.+?)\s+can\s+(.+)$/i,subject=>`What can ${subject} do?`],
+    [/^(.+?)\s+may\s+(.+)$/i,subject=>`How may ${subject} affect society?`],
+    [/^(.+?)\s+should\s+be\s+(.+)$/i,subject=>`What should ${subject} be like?`],
+    [/^(.+?)\s+should\s+(.+)$/i,subject=>`What should ${subject} do?`],
+    [/^(.+?)\s+(?:is|are)\s+(.+)$/i,subject=>`What is important about ${subject}?`],
+  ];
+
+  for(const [pattern,build] of patterns){
+    const match=statement.match(pattern);
+    if(match){
+      const subject=subjectFromClause(match[1]);
+      if(subject.split(/\s+/).length<=10){
+        return trimCardPrompt(build(subject));
+      }
+    }
+  }
+
+  const words=statement.split(/\s+/).filter(Boolean);
+  const visibleCount=Math.max(4,Math.min(9,Math.ceil(words.length*0.55)));
+  const visible=words.slice(0,visibleCount).join(" ");
+  return trimCardPrompt(`Complete the idea: ${visible} …`);
+}
+
 export function makeLesson(config = {}) {
   const vocabulary = Array.isArray(config.vocabulary) ? config.vocabulary : [];
   const keyPoints = Array.isArray(config.keyPoints) ? config.keyPoints : [];
   const explicitCards = Array.isArray(config.flashcards) ? config.flashcards : [];
   const generatedTermCards = vocabulary.map(item => ({
-    front:item.term,
+    front:trimCardPrompt(`What does “${item.term}” mean?`),
     back:item.definition,
   }));
-  const generatedPointCards = keyPoints.slice(0,3).map((point,index) => ({
-    front:`${config.title} · key idea ${index + 1}`,
+  const generatedPointCards = keyPoints.slice(0,3).map(point => ({
+    front:keyPointQuestion(point,config.title),
     back:point,
   }));
 
