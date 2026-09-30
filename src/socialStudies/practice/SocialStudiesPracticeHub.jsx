@@ -404,7 +404,16 @@ function Paper2Practice({ onExit, onComplete }){
                 <div className="ss-essay-organisation">
                   <strong>Organisation band {essayGrade.perQuestion[current.id].organization.band}/4</strong>
                   <p>{essayGrade.perQuestion[current.id].organization.feedback}</p>
-                  <small>{essayGrade.perQuestion[current.id].organization.paragraphCount} paragraph blocks · {essayGrade.perQuestion[current.id].organization.linkingCount} linking signals · {essayGrade.perQuestion[current.id].organization.introduction ? "topic-focused introduction detected" : "no clear topic-focused introduction detected"}</small>
+                  <small>{essayGrade.perQuestion[current.id].organization.paragraphCount} paragraph blocks · {essayGrade.perQuestion[current.id].organization.developedParagraphCount} developed paragraphs · {essayGrade.perQuestion[current.id].organization.linkingCount} linking signals · {essayGrade.perQuestion[current.id].organization.introduction ? "topic-focused introduction detected" : "no clear topic-focused introduction detected"}</small>
+                  {essayGrade.perQuestion[current.id].organization.strengths?.length>0 && <div className="ss-essay-feedback-list">
+                    <b>What worked</b>
+                    <ul>{essayGrade.perQuestion[current.id].organization.strengths.map(item=><li key={item}>{item}</li>)}</ul>
+                  </div>}
+                  {essayGrade.perQuestion[current.id].organization.weaknesses?.length>0 && <div className="ss-essay-feedback-list">
+                    <b>Improve next</b>
+                    <ul>{essayGrade.perQuestion[current.id].organization.weaknesses.map(item=><li key={item}>{item}</li>)}</ul>
+                  </div>}
+                  <p className="ss-essay-next-step"><b>Next step:</b> {essayGrade.perQuestion[current.id].organization.nextStep}</p>
                 </div>
                 {essayGrade.perQuestion[current.id].reviewSuggested && <p className="ss-mark-review-note">This is a substantial essay with some unmatched content. Review the accepted directions below before treating every unmatched idea as incorrect.</p>}
               </>}
