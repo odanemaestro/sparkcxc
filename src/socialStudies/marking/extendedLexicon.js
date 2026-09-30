@@ -97,7 +97,7 @@ export const EXTENDED_SOCIAL_STUDIES_CONCEPTS = Object.freeze({
   environmental_law:["environmental law","enforce environmental regulations","environmental legislation"],
   climate_education:["climate education","public awareness about climate change","environmental education"],
   climate_resilient_infrastructure:["climate resilient infrastructure","stronger drainage","hurricane resistant buildings","flood defences","flood defenses"],
-  rainwater_harvesting:["rainwater harvesting","collect rainwater","water storage"],
+  rainwater_harvesting:["rainwater harvesting","collect rainwater","collect rain water","catch rainwater","catch rain water","rain water tank","rainwater tank","water storage"],
   drought_resistant_crops:["drought resistant crops","drought-resistant crops","climate resilient crops"],
   early_warning:["early warning system","storm warning system","flood warning","disaster warning","weather alert system"],
   disaster_preparedness:["disaster preparedness","emergency planning","evacuation plan","disaster response plan","community disaster plan"],
