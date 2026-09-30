@@ -412,8 +412,8 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_EXPANSION_2=freeze([
     "Suggest TWO measures households or communities could use to conserve water.",
     4,
     developedScheme(2,[
-      {id:"harvest",label:"Collect rainwater",concepts:["rainwater_harvesting","water_conservation"],developmentConcepts:["conservation"],allowGeneralDevelopment:true},
-      {id:"leaks",label:"Repair leaks and avoid unnecessary water loss",concepts:["water_conservation"],developmentPhrases:["fix leaks","repair leaks","reduce water waste"],allowGeneralDevelopment:true},
+      {id:"harvest",label:"Collect rainwater",concepts:["rainwater_harvesting"],phrases:["catch rain water","collect rain water","rain water tank","store rain water"],developmentConcepts:["conservation","water_conservation"],allowGeneralDevelopment:true},
+      {id:"leaks",label:"Repair leaks and avoid unnecessary water loss",phrases:["fix leaks","fix leaking pipes","repair leaks","repair leaking pipes","stop leaking pipes"],developmentConcepts:["water_conservation"],developmentPhrases:["reduce water waste","water is not wasted"],allowGeneralDevelopment:true},
       {id:"efficient",label:"Use water-efficient fixtures or practices",concepts:["water_conservation"],developmentPhrases:["low flow","use less water","water efficient"],allowGeneralDevelopment:true},
       {id:"reuse",label:"Reuse suitable water for gardening or cleaning",concepts:["water_conservation"],developmentPhrases:["reuse water","grey water","reuse suitable water"],allowGeneralDevelopment:true},
     ]),
