@@ -113,7 +113,7 @@ describe("CSEC Social Studies course V1", () => {
     expect(registry).toContain("paper1: true");
     expect(registry).toContain("paper2: true");
     expect(registry).toContain("paper1Items: Number(socialStudies.paper1Items || 60)");
-    expect(registry).toContain("shortAnswer: Number(socialStudies.shortAnswer || 80)");
+    expect(registry).toContain("shortAnswer: Number(socialStudies.shortAnswer || 100)");
     expect(registry).toContain("paper2Sets: Number(socialStudies.paper2Sets || 3)");
     expect(registry).toContain("sba: true");
   });
@@ -140,7 +140,7 @@ describe("CSEC Social Studies course V1", () => {
     expect(migration).toContain('"flashcards":true');
     expect(migration).toContain('"paper1":true');
     expect(migration).toContain('"paper2":true');
-    expect(migration).toContain('"shortAnswer":80');
+    expect(migration).toContain('"shortAnswer":100');
     expect(migration).toContain('"paper2Sets":3');
     expect(migration).toContain('"autoMarkEssayResponses":true');
     expect(migration).toContain('"paper2StructuredMarks":56');
