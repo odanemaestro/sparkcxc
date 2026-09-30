@@ -170,7 +170,7 @@ export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = 
       objectives: Number(socialStudies.objectives || 84),
       mcq: Number(socialStudies.mcq || 156),
       paper1Items: Number(socialStudies.paper1Items || 60),
-      shortAnswer: Number(socialStudies.shortAnswer || 80),
+      shortAnswer: Number(socialStudies.shortAnswer || 100),
       paper2StructuredMarks: Number(socialStudies.paper2StructuredMarks || 56),
       paper2EssayMarks: Number(socialStudies.paper2EssayMarks || 44),
       paper2Sets: Number(socialStudies.paper2Sets || 3),
