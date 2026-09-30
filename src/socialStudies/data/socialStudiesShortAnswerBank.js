@@ -725,7 +725,7 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_BANK=freeze([
     4,
     developedScheme(2,[
       {id:"services",label:"Plan public services such as schools and hospitals",concepts:["population_planning"],developmentConcepts:["public_services"],allowGeneralDevelopment:true},
-      {id:"resources",label:"Allocate resources to areas of greatest need",concepts:["population_resource_allocation"],developmentConcepts:["public_services"],allowGeneralDevelopment:true},
+      {id:"resources",label:"Allocate resources to areas of greatest need",concepts:["population_resource_allocation"],developmentConcepts:["public_services"],developmentPhrases:["greatest needs","greatest need","areas of greatest need","communities with the greatest needs"],allowGeneralDevelopment:true},
       {id:"forecast",label:"Project future population needs",concepts:["population_projection"],developmentConcepts:["population_planning"],allowGeneralDevelopment:true},
       {id:"infrastructure",label:"Plan housing and infrastructure",concepts:["population_planning","infrastructure"],developmentConcepts:["population_resource_allocation"],allowGeneralDevelopment:true},
     ]),
