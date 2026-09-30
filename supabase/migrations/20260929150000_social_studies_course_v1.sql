@@ -65,7 +65,7 @@ values (
     "objectives":84,
     "mcq":156,
     "paper1Items":60,
-    "shortAnswer":80,
+    "shortAnswer":100,
     "paper2StructuredMarks":56,
     "paper2EssayMarks":44,
     "paper2Sets":3,
