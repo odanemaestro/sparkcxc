@@ -95,4 +95,13 @@ export const ADVANCED_SOCIAL_STUDIES_CONCEPTS = Object.freeze({
   destination_marketing:["destination marketing","market the destination","tourism advertising","promote country to visitors"],
   visitor_safety:["visitor safety","tourist safety","security for visitors","safe tourism destination"],
   heritage_preservation:["heritage preservation","protect heritage sites","protect beaches and heritage sites","protect cultural and heritage sites","preserve historic sites","protect cultural heritage"],
+
+  // Additional cross-bank concepts used by structured and essay marking
+  agriculture_impact:["damage to agriculture","crop loss","reduced crop yields","lower farm output","food production falls","agriculture affected"],
+  health_impact:["health problems","heat illness","heat stress","spread of disease","public health impact","health effects"],
+  stronger_storms:["stronger storms","more intense hurricanes","more intense storms","severe hurricanes","extreme storms"],
+  temperature_rise:["rising temperatures","higher temperatures","increase in temperature","hotter conditions","heat waves","heatwaves"],
+  efficient_spending:["efficient spending","spend public money efficiently","better use of public funds","reduce wasteful spending","value for money"],
+  government_revenue:["government revenue","tax revenue","public revenue","money collected by government","state revenue"],
+  public_private_partnership:["public private partnership","public-private partnership","ppp","government and business partnership","partnership with private sector"],
 });
