@@ -32,8 +32,8 @@ function part(questionIndex,partIndex){
 describe("Social Studies short-answer marking", () => {
   test("ships a large reusable vocabulary bank", () => {
     const stats=socialStudiesLexiconStats();
-    expect(stats.concepts).toBeGreaterThanOrEqual(400);
-    expect(stats.aliases).toBeGreaterThanOrEqual(1750);
+    expect(stats.concepts).toBeGreaterThanOrEqual(490);
+    expect(stats.aliases).toBeGreaterThanOrEqual(2100);
   });
 
   test("accepts Caribbean Social Studies wording and common variants", () => {
@@ -135,11 +135,11 @@ describe("Social Studies short-answer marking", () => {
     expect(result.marks).toBeLessThanOrEqual(2);
   });
 
-  test("provides 80 marked short-answer questions with balanced syllabus coverage", () => {
+  test("provides 100 marked short-answer questions with balanced syllabus coverage", () => {
     const stats=socialStudiesShortAnswerStats();
-    expect(stats.questions).toBe(80);
-    expect(stats.bySection).toEqual({A1:20,A2:20,B1:20,B2:20});
-    expect(stats.marks).toBeGreaterThanOrEqual(200);
+    expect(stats.questions).toBe(100);
+    expect(stats.bySection).toEqual({A1:25,A2:25,B1:25,B2:25});
+    expect(stats.marks).toBeGreaterThanOrEqual(250);
     SOCIAL_STUDIES_SHORT_ANSWER_BANK.forEach(item=>{
       expect(item.marking).toBeTruthy();
       expect(item.modelPoints.length).toBeGreaterThan(0);
@@ -228,6 +228,34 @@ describe("Social Studies short-answer marking", () => {
     ).marks).toBe(4);
   });
 
+
+  test("marks the expanded research, civic, migration and tourism applications", () => {
+    const pilot=SOCIAL_STUDIES_SHORT_ANSWER_BANK.find(item=>item.id==="ss-sa-a1-24");
+    const media=SOCIAL_STUDIES_SHORT_ANSWER_BANK.find(item=>item.id==="ss-sa-a2-22");
+    const returnMigration=SOCIAL_STUDIES_SHORT_ANSWER_BANK.find(item=>item.id==="ss-sa-b1-23");
+    const tourism=SOCIAL_STUDIES_SHORT_ANSWER_BANK.find(item=>item.id==="ss-sa-b2-24");
+
+    expect(gradeSocialStudiesShortAnswer(
+      "A pilot study helps find confusing questions before the full questionnaire is used, so the researcher can improve the questions.",
+      pilot.marking
+    ).marks).toBe(2);
+
+    expect(gradeSocialStudiesShortAnswer(
+      "Investigative journalism can expose misuse of public money, which helps hold officials accountable. Media reports also give citizens information about government spending, so the public can scrutinise decisions.",
+      media.marking
+    ).marks).toBe(4);
+
+    expect(gradeSocialStudiesShortAnswer(
+      "Returning migrants bring professional skills and experience, which can improve the workforce. They may also invest savings in businesses, creating jobs.",
+      returnMigration.marking
+    ).marks).toBe(4);
+
+    expect(gradeSocialStudiesShortAnswer(
+      "Tourism businesses should buy from local farmers and suppliers so more visitor spending stays in the community. They should also protect beaches and heritage sites so tourism does not destroy the resources visitors come to enjoy.",
+      tourism.marking
+    ).marks).toBe(4);
+  });
+
   test("grades all four structured questions out of 56 marks", () => {
     const grade=gradeSocialStudiesStructuredPaper({},SOCIAL_STUDIES_PAPER2);
     expect(grade.score).toBe(0);
@@ -255,6 +283,19 @@ describe("Social Studies essay marking", () => {
     expect(result.contentMarks).toBeGreaterThanOrEqual(16);
     expect(result.organizationMarks).toBe(4);
     expect(result.marks).toBeGreaterThanOrEqual(20);
+  });
+
+  test("does not award the top organisation band for a long unstructured block", () => {
+    const response=[
+      "Caribbean culture is important and culture is passed from one generation to another because families teach values and traditions and the media also shares cultural forms.",
+      "Reggae music and Caribbean food are known outside the region because the diaspora and tourism spread them to other countries.",
+      "Schools should teach Caribbean heritage because this helps young people learn the culture and festivals should be promoted because visitors and communities take part."
+    ].join(" ");
+
+    const result=gradeSocialStudiesEssay(response,"ss-p2-q5");
+    expect(result.organizationMarks).toBeLessThanOrEqual(2);
+    expect(result.organization.developedParagraphCount).toBeLessThan(3);
+    expect(result.organization.weaknesses.length).toBeGreaterThan(0);
   });
 
   test("does not award essay organisation marks to a blank response", () => {
