@@ -152,10 +152,10 @@ export default function SocialStudiesFlashcardsPanel({ supabase, userId, onChang
     },260);
   },[]);
 
-  return <section className="spark-generic-flashcards ss-flashcards">
+  return <section className="spark-generic-flashcards">
     <header className="spark-generic-flashcards-head">
       <div>
-        <span className="ss-eyebrow">CSEC Social Studies</span>
+        <span className="section-kicker">CSEC SOCIAL STUDIES</span>
         <h1>Flashcards</h1>
         <p>Definitions, concepts and exam-ready ideas from every Social Studies unit.</p>
       </div>
