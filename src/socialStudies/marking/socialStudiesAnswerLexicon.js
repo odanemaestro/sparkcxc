@@ -36,7 +36,7 @@ export function normalizeSocialStudiesText(value){
     .toLowerCase()
     .replace(/[’‘]/g,"'")
     .replace(/[–—−]/g,"-")
-    .replace(/[^a-z0-9%$&\/+'\-\s.,;:()]/g," ")
+    .replace(/[^a-z0-9%.replace(/[^a-z0-9%$&\/+'\-\s.,;:()]/g," ")/+'\-\s.,;:()]/g," ")
     .replace(/\s+/g," ")
     .trim();
 
