@@ -237,15 +237,12 @@ function gradeDevelopedPoints(value,scheme){
   for(const candidate of candidates){
     if(selected.length>=maxPoints) break;
     if(usedPoints.has(candidate.id)) continue;
-    const evidenceAnchor=[
-      normalizeSocialStudiesText(candidate.evidence),
-      candidate.anchorKey || candidate.id,
-    ].join("::");
-    if(candidate.anchorKey && usedEvidenceAnchors.has(evidenceAnchor)) continue;
+    const evidenceAnchor=candidate.anchorKey || "";
+    if(evidenceAnchor && usedEvidenceAnchors.has(evidenceAnchor)) continue;
 
     selected.push(candidate);
     usedPoints.add(candidate.id);
-    if(candidate.anchorKey) usedEvidenceAnchors.add(evidenceAnchor);
+    if(evidenceAnchor) usedEvidenceAnchors.add(evidenceAnchor);
   }
 
   const maxMarks=Number(scheme.maxMarks || maxPoints*2);
