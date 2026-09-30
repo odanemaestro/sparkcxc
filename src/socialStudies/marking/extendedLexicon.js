@@ -57,7 +57,7 @@ export const EXTENDED_SOCIAL_STUDIES_CONCEPTS = Object.freeze({
   citizen_pay_taxes:["pay taxes","pay tax","contribute taxes"],
   citizen_community_service:["community service","volunteer","volunteerism","serve community"],
   party_candidates:["select candidates","choose candidates","nominate candidates"],
-  party_manifesto:["prepare manifesto","publish manifesto","develop party programme","develop party program","campaign promises"],
+  party_manifesto:["prepare manifesto","prepare a manifesto","write a manifesto","publish manifesto","publish a manifesto","develop party programme","develop party program","campaign promises"],
   party_campaign:["campaign","hold rallies","canvass voters","political campaign","campaign meetings"],
   party_government:["form government","seek political office","win election and govern","contest elections"],
   party_opposition:["provide opposition","criticise government","criticize government","hold government accountable"],
