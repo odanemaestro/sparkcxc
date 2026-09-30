@@ -13,11 +13,16 @@ import {
   SOCIAL_STUDIES_PAPER1,
   SOCIAL_STUDIES_PAPER2,
 } from "../data/socialStudiesExamBank";
+import { SOCIAL_STUDIES_PAPER2_VARIANTS } from "../data/socialStudiesPaper2Variants";
 import { gradeSocialStudiesStructuredPaper } from "../marking/socialStudiesShortAnswerGrader";
 import { gradeSocialStudiesEssays } from "../marking/socialStudiesEssayGrader";
 import "../socialStudies.css";
 
 const ALL_QUESTIONS=socialStudiesPracticeQuestions();
+const PAPER2_SETS=Object.freeze([
+  Object.freeze({id:"A",label:"Practice Paper A",questions:SOCIAL_STUDIES_PAPER2}),
+  ...SOCIAL_STUDIES_PAPER2_VARIANTS,
+]);
 const RESEARCH_LESSONS=new Set([
   "a1-family-foundations","a1-roles-changing-family","a1-parenthood-research",
   "a1-family-social-issues","a2-cohesion-control-interaction","a2-parties-information-decisions",
@@ -253,23 +258,35 @@ function Paper1Exam({ onExit, onComplete }){
 }
 
 function Paper2Practice({ onExit, onComplete }){
+  const [paperSetId,setPaperSetId]=useState("A");
   const [index,setIndex]=useState(0);
   const [responses,setResponses]=useState({});
   const [revealed,setRevealed]=useState({});
   const [completed,setCompleted]=useState(false);
-  const current=SOCIAL_STUDIES_PAPER2[index];
+  const selectedSet=PAPER2_SETS.find(item=>item.id===paperSetId) || PAPER2_SETS[0];
+  const questions=selectedSet.questions;
+  const current=questions[index];
   const structuredGrade=useMemo(
-    ()=>gradeSocialStudiesStructuredPaper(responses,SOCIAL_STUDIES_PAPER2),
-    [responses]
+    ()=>gradeSocialStudiesStructuredPaper(responses,questions),
+    [responses,questions]
   );
   const essayGrade=useMemo(
-    ()=>gradeSocialStudiesEssays(responses,SOCIAL_STUDIES_PAPER2),
-    [responses]
+    ()=>gradeSocialStudiesEssays(responses,questions),
+    [responses,questions]
   );
   const paperScore=structuredGrade.score+essayGrade.score;
   const paperMax=structuredGrade.maxScore+essayGrade.maxScore;
 
   const setResponse=(key,value)=>setResponses(previous=>({...previous,[key]:value}));
+
+  const changePaperSet=event=>{
+    setPaperSetId(event.target.value);
+    setIndex(0);
+    setResponses({});
+    setRevealed({});
+    setCompleted(false);
+    window.scrollTo?.(0,0);
+  };
 
   const finish=()=>{
     if(completed) return;
@@ -283,7 +300,7 @@ function Paper2Practice({ onExit, onComplete }){
       <header className="ss-practice-session-head ss-paper-head">
         <button type="button" className="ss-back" onClick={onExit}><BackArrowIcon/><span>Exit Paper 02</span></button>
         <div>
-          <span>Paper 02 · General Proficiency</span>
+          <span>Paper 02 · General Proficiency · {selectedSet.label}</span>
           <strong>Question {current.number} of 6 · {current.totalMarks} marks</strong>
         </div>
         <b>{current.type==="essay" ? "Essay" : "Structured"}</b>
@@ -293,6 +310,16 @@ function Paper2Practice({ onExit, onComplete }){
         <span className="ss-eyebrow">Paper 02 marking</span>
         <h1>{paperScore}/{paperMax}</h1>
         <p>{Math.round(paperScore/paperMax*100)}% across the full 100-mark practice paper. Structured responses contribute {structuredGrade.score}/56. Essays contribute {essayGrade.score}/44 using content plus the CXC organisation and development band.</p>
+      </section>}
+
+      {!completed && <section className="ss-paper-set-picker">
+        <div>
+          <span>Paper set</span>
+          <strong>Choose one of three original current-format simulations</strong>
+        </div>
+        <select value={paperSetId} onChange={changePaperSet}>
+          {PAPER2_SETS.map(set=><option key={set.id} value={set.id}>{set.label}</option>)}
+        </select>
       </section>}
 
       <div className="ss-paper2-layout">
@@ -399,7 +426,7 @@ function Paper2Practice({ onExit, onComplete }){
             <span>100 marks total</span>
           </div>
           <div className="ss-paper2-nav-grid">
-            {SOCIAL_STUDIES_PAPER2.map((item,itemIndex)=><button
+            {questions.map((item,itemIndex)=><button
               type="button"
               key={item.id}
               className={itemIndex===index ? "active" : ""}
@@ -556,13 +583,13 @@ export default function SocialStudiesPracticeHub({ supabase, userId, onBack }){
         </article>
         <article>
           <span>06</span><h2>Paper 02 structured practice</h2>
-          <p>Six compulsory questions using the current format, four structured questions and two essays, for 100 marks.</p>
+          <p>Three full current-format simulations. Each contains four structured questions and two essays for 100 marks.</p>
           <button type="button" className="ss-primary" onClick={()=>setMode("paper2")}>Open Paper 02</button>
         </article>
       </section>
 
       <section className="ss-practice-bank-note">
-        <strong>{ALL_QUESTIONS.length} topic questions + {SOCIAL_STUDIES_PAPER1.length} Paper 01 items + 6 Paper 02 questions</strong>
+        <strong>{ALL_QUESTIONS.length} topic questions + {SOCIAL_STUDIES_PAPER1.length} Paper 01 items + 3 full Paper 02 simulations + 80 marked short-answer questions</strong>
         <p>SPARK uses original questions. The exam sets follow the current CXC structure and the recurring command words, mark patterns and question style seen in the official specimen and historical papers indexed at the supplied archive.</p>
         <a href={SOCIAL_STUDIES_EXAM_GUIDE.archiveUrl} target="_blank" rel="noreferrer">Past-paper archive used as a style reference</a>
       </section>
