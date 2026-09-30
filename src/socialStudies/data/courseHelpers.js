@@ -121,9 +121,10 @@ function keyPointQuestion(point,title){
   }
 
   const words=statement.split(/\s+/).filter(Boolean);
-  const visibleCount=Math.max(4,Math.min(9,Math.ceil(words.length*0.55)));
+  const blankCount=words.length<=6 ? 1 : Math.max(2,Math.ceil(words.length*0.35));
+  const visibleCount=Math.max(1,words.length-blankCount);
   const visible=words.slice(0,visibleCount).join(" ");
-  return trimCardPrompt(`Complete the idea: ${visible} …`);
+  return trimCardPrompt(`Complete: ${visible} ____.`);
 }
 
 export function makeLesson(config = {}) {
