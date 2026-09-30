@@ -884,6 +884,207 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_BANK=freeze([
       {id:"tax",label:"Debt may lead to higher taxes or spending cuts",concepts:["debt_burden"],developmentPhrases:["higher taxes","cut government spending","reduce public spending"],allowGeneralDevelopment:true},
     ]),
     ["Less money for services","Reduced public investment","Higher taxes or spending cuts"]),
+
+  item("ss-sa-a1-21","A1","a1-parenthood-research","define",
+    "Define responsible parenthood.",
+    2,
+    definitionScheme([
+      {id:"responsibility",label:"Parents accept responsibility for the care and development of children",concepts:["responsible_parenthood","parental_responsibility"],marks:1},
+      {id:"needs",label:"Parents meet children's physical, emotional, educational or social needs",concepts:["child_welfare","family_protection","family_emotional_support","child_education_duty"],phrases:["meet children's needs","meet the needs of children","care for children's needs"],marks:1},
+    ]),
+    ["Accepting responsibility for children","Meeting children's physical, emotional, educational and social needs"]),
+
+  item("ss-sa-a1-22","A1","a1-parenthood-research","explain",
+    "Explain TWO reasons family members should make important household decisions together.",
+    4,
+    developedScheme(2,[
+      {id:"needs",label:"Joint decisions help the family prioritise important needs",concepts:["family_decision_making"],developmentConcepts:["prioritise_needs","family_needs"],allowGeneralDevelopment:true},
+      {id:"resources",label:"Joint decisions help families use limited resources wisely",concepts:["family_decision_making","family_resources"],developmentConcepts:["budgeting","improved_money_control"],allowGeneralDevelopment:true},
+      {id:"conflict",label:"Joint decisions reduce misunderstanding and conflict",concepts:["family_decision_making","clear_communication"],developmentConcepts:["improved_family_relationships","conflict_resolution"],allowGeneralDevelopment:true},
+      {id:"responsibility",label:"Joint decisions encourage shared responsibility",concepts:["family_decision_making"],developmentConcepts:["role_sharing","cooperation"],allowGeneralDevelopment:true},
+    ]),
+    ["Prioritise needs","Use resources wisely","Reduce conflict","Share responsibility"]),
+
+  item("ss-sa-a1-23","A1","a1-parenthood-research","distinguish",
+    "Distinguish between primary data and secondary data in a family research study.",
+    2,
+    criteriaScheme([
+      {id:"primary",label:"Primary data are collected directly by the researcher",anyConcepts:["primary_data"],marks:1},
+      {id:"secondary",label:"Secondary data already exist and were collected or published previously",anyConcepts:["secondary_data"],marks:1},
+    ],2),
+    ["Primary data are collected first-hand.","Secondary data come from existing sources."]),
+
+  item("ss-sa-a1-24","A1","a1-parenthood-research","justify",
+    "Justify piloting a questionnaire before using it in a full community study.",
+    2,
+    developedScheme(1,[
+      {id:"pilot",label:"A pilot test finds unclear, biased or unsuitable questions before the full study",concepts:["pilot_test"],developmentConcepts:["research_neutrality","research_validity","research_reliability"],developmentPhrases:["find unclear questions","identify confusing questions","fix questions before","improve questionnaire"],allowGeneralDevelopment:true},
+    ]),
+    ["A pilot test exposes confusing or biased questions so they can be corrected before full data collection."]),
+
+  item("ss-sa-a1-25","A1","a1-parenthood-research","identify",
+    "Identify THREE ethical practices a student should follow when collecting information from people.",
+    3,
+    listScheme(3,[
+      {id:"consent",label:"Obtain informed consent",concepts:["informed_consent"]},
+      {id:"confidentiality",label:"Keep responses confidential",concepts:["research_confidentiality","confidentiality"]},
+      {id:"anonymity",label:"Protect anonymity where appropriate",concepts:["research_anonymity","anonymity"]},
+      {id:"neutrality",label:"Avoid misleading or manipulative questions",concepts:["research_neutrality"]},
+    ]),
+    ["Informed consent","Confidentiality","Anonymity","Neutral and respectful questioning"]),
+
+  item("ss-sa-a2-21","A2","a2-governance-citizenship","identify",
+    "Identify THREE lawful ways citizens may participate in public affairs between elections.",
+    3,
+    listScheme(3,[
+      {id:"petition",label:"Sign or organise a petition",concepts:["petition"]},
+      {id:"consultation",label:"Attend public consultations or town halls",concepts:["public_consultation"]},
+      {id:"protest",label:"Join a peaceful lawful protest",concepts:["peaceful_protest"]},
+      {id:"representative",label:"Contact an elected representative",concepts:["contact_representative"]},
+      {id:"community",label:"Take part in community or civic organisations",concepts:["civic_participation","citizen_community_service"]},
+    ]),
+    ["Petitions","Public consultations","Peaceful protest","Contact representatives","Community participation"]),
+
+  item("ss-sa-a2-22","A2","a2-governance-citizenship","explain",
+    "Explain TWO ways the media may support government accountability.",
+    4,
+    developedScheme(2,[
+      {id:"investigate",label:"Investigative reporting may expose misuse of public resources",concepts:["watchdog_media"],developmentConcepts:["corruption","public_accountability"],allowGeneralDevelopment:true},
+      {id:"inform",label:"Reporting gives citizens information about government decisions and spending",concepts:["watchdog_media","official_information"],developmentConcepts:["transparency","public_accountability"],allowGeneralDevelopment:true},
+      {id:"debate",label:"Media platforms allow public scrutiny and debate",concepts:["watchdog_media","civic_participation"],developmentConcepts:["public_accountability"],allowGeneralDevelopment:true},
+    ]),
+    ["Investigative reporting","Informing citizens","Public scrutiny and debate"]),
+
+  item("ss-sa-a2-23","A2","a2-governance-citizenship","state",
+    "State TWO ways an ombudsman or independent complaints body may assist citizens.",
+    2,
+    listScheme(2,[
+      {id:"complaint",label:"Receives or investigates complaints",concepts:["ombudsman"],phrases:["investigate complaints","receive complaints"]},
+      {id:"redress",label:"Helps citizens seek redress or fair treatment",concepts:["redress","ombudsman"]},
+      {id:"accountability",label:"Promotes accountability in public administration",concepts:["public_accountability","ombudsman"]},
+    ]),
+    ["Investigates complaints","Supports redress or fair treatment","Promotes public accountability"]),
+
+  item("ss-sa-a2-24","A2","a2-parties-information-decisions","explain",
+    "Explain why citizens should verify political information before making an electoral decision.",
+    2,
+    developedScheme(1,[
+      {id:"verify",label:"Verification helps citizens separate reliable evidence from misleading or biased claims",concepts:["verify_information"],developmentConcepts:["source_reliability","propaganda","bias"],allowGeneralDevelopment:true},
+    ]),
+    ["Verification reduces the chance of making decisions based on false, biased or misleading claims."]),
+
+  item("ss-sa-a2-25","A2","a2-governance-citizenship","define",
+    "Define corruption in public office.",
+    2,
+    definitionScheme([
+      {id:"abuse",label:"Involves abuse or misuse of public office or authority",concepts:["corruption"],phrases:["abuse of public office","misuse of office","misuse of authority"],marks:1},
+      {id:"gain",label:"The abuse is for improper personal or private gain",phrases:["personal gain","private gain","bribe","bribery","benefit themselves","benefit friends"],marks:1},
+    ]),
+    ["Misuse of public office or authority","for improper personal or private gain"]),
+
+  item("ss-sa-b1-21","B1","b1-population-data","explain",
+    "Explain TWO factors that may cause a country's population to grow.",
+    4,
+    developedScheme(2,[
+      {id:"birth",label:"A high birth rate increases the number of people",concepts:["high_birth_rate","birth_rate"],developmentConcepts:["population_growth","natural_increase"],allowGeneralDevelopment:true},
+      {id:"death",label:"A low or falling death rate allows more people to survive",concepts:["low_death_rate","death_rate"],developmentConcepts:["population_growth","natural_increase"],allowGeneralDevelopment:true},
+      {id:"immigration",label:"Immigration adds people to the population",concepts:["immigration","positive_net_migration"],developmentConcepts:["population_growth"],allowGeneralDevelopment:true},
+    ]),
+    ["High birth rate","Low death rate","Immigration"]),
+
+  item("ss-sa-b1-22","B1","b1-population-data","explain",
+    "Explain TWO challenges a country may face when it has a high youth-dependency burden.",
+    4,
+    developedScheme(2,[
+      {id:"education",label:"More children increase demand for schools and education spending",concepts:["youth_dependency"],developmentConcepts:["public_services","population_resource_allocation"],allowGeneralDevelopment:true},
+      {id:"health",label:"More dependants increase demand for health and child services",concepts:["youth_dependency"],developmentConcepts:["public_services","population_resource_allocation"],allowGeneralDevelopment:true},
+      {id:"workers",label:"A smaller working population must support many dependants",concepts:["youth_dependency","dependency_ratio"],developmentConcepts:["economic_pressure"],allowGeneralDevelopment:true},
+    ]),
+    ["Pressure on schools","Pressure on health and child services","Working adults support more dependants"]),
+
+  item("ss-sa-b1-23","B1","b1-migration","explain",
+    "Explain TWO possible benefits of return migration to a Caribbean country.",
+    4,
+    developedScheme(2,[
+      {id:"skills",label:"Returning migrants bring skills and experience",concepts:["return_migration","brain_gain"],developmentConcepts:["human_resource_development","productivity"],allowGeneralDevelopment:true},
+      {id:"business",label:"Returnees may invest savings or start businesses",concepts:["return_migration","entrepreneurship"],developmentConcepts:["employment","job_creation"],allowGeneralDevelopment:true},
+      {id:"knowledge",label:"Returnees may transfer professional knowledge and networks",concepts:["brain_gain","return_migration"],developmentConcepts:["career_development","human_resource_development"],allowGeneralDevelopment:true},
+    ]),
+    ["Skills and experience","Investment and businesses","Knowledge and professional networks"]),
+
+  item("ss-sa-b1-24","B1","b1-population-foundations","distinguish",
+    "Distinguish between quantitative data and qualitative data.",
+    2,
+    criteriaScheme([
+      {id:"quantitative",label:"Quantitative data are numerical or measurable",anyConcepts:["quantitative_data"],marks:1},
+      {id:"qualitative",label:"Qualitative data describe opinions, experiences or qualities",anyConcepts:["qualitative_data"],marks:1},
+    ],2),
+    ["Quantitative data use numbers.","Qualitative data describe views, experiences or qualities."]),
+
+  item("ss-sa-b1-25","B1","b1-environmental-practices","suggest",
+    "Suggest TWO actions a community could take to improve environmental sustainability.",
+    4,
+    developedScheme(2,[
+      {id:"waste",label:"Improve waste collection, recycling or disposal",concepts:["waste_management","recycling_programme"],developmentConcepts:["protect_environment","pollution_control"],allowGeneralDevelopment:true},
+      {id:"water",label:"Conserve water",concepts:["water_conservation"],developmentConcepts:["protect_environment","conservation"],allowGeneralDevelopment:true},
+      {id:"energy",label:"Conserve energy",concepts:["energy_conservation","energy_efficiency"],developmentConcepts:["lower_emissions"],allowGeneralDevelopment:true},
+      {id:"education",label:"Run environmental-awareness programmes",concepts:["environmental_awareness"],developmentConcepts:["protect_environment"],allowGeneralDevelopment:true},
+      {id:"protected",label:"Support protected areas and local conservation",concepts:["protected_area","conservation"],developmentConcepts:["protect_environment"],allowGeneralDevelopment:true},
+    ]),
+    ["Waste management and recycling","Water conservation","Energy conservation","Environmental education","Protected areas"]),
+
+  item("ss-sa-b2-21","B2","b2-measuring-development","distinguish",
+    "Distinguish between economic growth and economic development.",
+    2,
+    criteriaScheme([
+      {id:"growth",label:"Economic growth is an increase in output or GDP",anyConcepts:["economic_growth"],marks:1},
+      {id:"development",label:"Economic development includes wider improvements in living standards and well-being",anyConcepts:["economic_development","quality_of_life"],marks:1},
+    ],2),
+    ["Economic growth means increased output.","Economic development includes broader improvements in quality of life."]),
+
+  item("ss-sa-b2-22","B2","b2-industries-ict","explain",
+    "Explain TWO ways the digital divide may slow Caribbean development.",
+    4,
+    developedScheme(2,[
+      {id:"education",label:"Limited internet access restricts online education and skills development",concepts:["digital_divide"],developmentConcepts:["ict_education","digital_skills","human_resource_development"],allowGeneralDevelopment:true},
+      {id:"business",label:"Limited access restricts e-commerce and digital business opportunities",concepts:["digital_divide"],developmentConcepts:["ict_ecommerce","larger_market"],allowGeneralDevelopment:true},
+      {id:"services",label:"Limited access makes online public and private services harder to use",concepts:["digital_divide"],developmentConcepts:["e_government","ict_remote_services"],allowGeneralDevelopment:true},
+    ]),
+    ["Restricts online learning","Restricts e-commerce","Restricts access to digital services"]),
+
+  item("ss-sa-b2-23","B2","b2-tourism-integration","explain",
+    "Explain TWO ways tourism may contribute to Caribbean development.",
+    4,
+    developedScheme(2,[
+      {id:"jobs",label:"Tourism creates direct and indirect employment",concepts:["tourism_employment"],developmentConcepts:["employment","tourism_multiplier"],allowGeneralDevelopment:true},
+      {id:"foreign",label:"Visitor spending earns foreign exchange",concepts:["tourism_foreign_exchange"],developmentConcepts:["foreign_exchange","gdp"],allowGeneralDevelopment:true},
+      {id:"linkages",label:"Tourism purchases may support local farmers, transport and other businesses",concepts:["local_linkages","tourism_multiplier"],developmentConcepts:["employment","value_added"],allowGeneralDevelopment:true},
+      {id:"infrastructure",label:"Tourism encourages investment in infrastructure and services",concepts:["tourism_infrastructure"],developmentConcepts:["infrastructure","public_investment"],allowGeneralDevelopment:true},
+    ]),
+    ["Employment","Foreign exchange","Local economic linkages","Infrastructure investment"]),
+
+  item("ss-sa-b2-24","B2","b2-tourism-integration","suggest",
+    "Suggest TWO measures that could make tourism more sustainable in a Caribbean destination.",
+    4,
+    developedScheme(2,[
+      {id:"environment",label:"Protect sensitive ecosystems and heritage sites",concepts:["sustainable_tourism","protected_area","heritage_preservation"],developmentConcepts:["protect_environment","cultural_identity"],allowGeneralDevelopment:true},
+      {id:"local",label:"Increase local ownership and purchasing",concepts:["local_ownership","local_linkages"],developmentConcepts:["tourism_multiplier","employment"],allowGeneralDevelopment:true},
+      {id:"community",label:"Expand community-based tourism",concepts:["community_tourism"],developmentConcepts:["local_linkages","employment"],allowGeneralDevelopment:true},
+      {id:"waste",label:"Improve waste and pollution management in tourism areas",concepts:["waste_management","pollution_control"],developmentConcepts:["protect_environment"],allowGeneralDevelopment:true},
+      {id:"training",label:"Train workers and businesses in sustainable tourism practices",concepts:["tourism_training","sustainable_tourism"],developmentConcepts:["human_resource_development","protect_environment"],allowGeneralDevelopment:true},
+    ]),
+    ["Protect ecosystems and heritage","Increase local linkages","Community tourism","Waste management","Training"]),
+
+  item("ss-sa-b2-25","B2","b2-industries-ict","suggest",
+    "Suggest TWO measures governments could use to increase the development benefits of ICT.",
+    4,
+    developedScheme(2,[
+      {id:"access",label:"Expand reliable and affordable broadband access",concepts:["broadband_access"],developmentConcepts:["ict_ecommerce","ict_education","e_government"],allowGeneralDevelopment:true},
+      {id:"skills",label:"Expand digital-skills training",concepts:["digital_skills"],developmentConcepts:["human_resource_development","employment"],allowGeneralDevelopment:true},
+      {id:"government",label:"Provide more e-government services",concepts:["e_government"],developmentConcepts:["ict_efficiency","public_services"],allowGeneralDevelopment:true},
+      {id:"business",label:"Support businesses to adopt e-commerce and digital tools",concepts:["ict_ecommerce"],developmentConcepts:["larger_market","employment"],allowGeneralDevelopment:true},
+    ]),
+    ["Broadband access","Digital-skills training","E-government","Support digital business"]),
 ]);
 
 export const SOCIAL_STUDIES_SHORT_ANSWER_BY_SECTION=freeze(
