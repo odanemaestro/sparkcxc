@@ -65,10 +65,11 @@ values (
     "objectives":84,
     "mcq":156,
     "paper1Items":60,
-    "shortAnswer":100,
+    "shortAnswer":152,
     "paper2StructuredMarks":56,
     "paper2EssayMarks":44,
     "paper2Sets":3,
+    "sbaRubricMarks":40,
     "flashcards":342
   }'::jsonb,
   '{
@@ -84,7 +85,8 @@ values (
     "exam":{
       "paper1":{"items":60,"minutes":75,"sectionAItems":30,"sectionBItems":30},
       "paper2":{"questions":6,"minutes":160,"compulsory":true,"structuredMarks":56,"essayMarks":44,"practiceSets":3},
-      "paper3":"SBA Paper 031 or Alternative Paper 032"
+      "paper3":"SBA Paper 031 or Alternative Paper 032",
+      "assessmentTransition":{"2027":"Schools may choose SBA or Paper 032","2028":"Full CSEC transition to Paper 032"}
     },
     "content":{
       "teacherNotes":true,
@@ -95,7 +97,8 @@ values (
       "researchSkills":true,
       "shortAnswerExaminer":true,
       "autoMarkStructuredResponses":true,
-      "autoMarkEssayResponses":true
+      "autoMarkEssayResponses":true,
+      "sbaProjectChecker":true
     }
   }'::jsonb,
   1
