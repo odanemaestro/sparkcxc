@@ -174,8 +174,6 @@ describe("Social Studies short-answer marking", () => {
     });
   });
 
-  });
-
   test("does not award definition or distinction marks for repeating the term only", () => {
     const density=SOCIAL_STUDIES_SHORT_ANSWER_BANK.find(item=>item.id==="ss-sa-b1-02");
     const unions=SOCIAL_STUDIES_SHORT_ANSWER_BANK.find(item=>item.id==="ss-sa-a1-03");
