@@ -598,7 +598,7 @@ export default function SocialStudiesPracticeHub({ supabase, userId, onBack }){
       </section>
 
       <section className="ss-practice-bank-note">
-        <strong>{ALL_QUESTIONS.length} topic questions + {SOCIAL_STUDIES_PAPER1.length} Paper 01 items + 3 full Paper 02 simulations + 80 marked short-answer questions</strong>
+        <strong>{ALL_QUESTIONS.length} topic questions + {SOCIAL_STUDIES_PAPER1.length} Paper 01 items + 3 full Paper 02 simulations + 100 marked short-answer questions</strong>
         <p>SPARK uses original questions. The exam sets follow the current CXC structure and the recurring command words, mark patterns and question style seen in the official specimen and historical papers indexed at the supplied archive.</p>
         <a href={SOCIAL_STUDIES_EXAM_GUIDE.archiveUrl} target="_blank" rel="noreferrer">Past-paper archive used as a style reference</a>
       </section>
