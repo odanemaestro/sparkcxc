@@ -94,6 +94,22 @@ describe("CSEC Social Studies course V1", () => {
     });
   });
 
+  test("Social Studies flashcards use real retrieval prompts instead of generic key-idea placeholders", () => {
+    const cards=socialStudiesFlashcards();
+    const familyDefinition=cards.find(card=>card.lessonId==="a1-family-foundations" && card.back.startsWith("A social group linked by kinship"));
+    const familyFunctions=cards.find(card=>card.back==="Families perform social, economic, emotional, protective and reproductive functions.");
+    const householdDifference=cards.find(card=>card.back==="A household is a living arrangement; a family is a social relationship.");
+    const evidenceCard=cards.find(card=>card.back==="Reliable Social Studies conclusions come from evidence, not assumptions.");
+
+    expect(cards).toHaveLength(342);
+    expect(cards.filter(card=>/key idea\s*\d+/i.test(card.front))).toEqual([]);
+    expect(cards.filter(card=>card.front.length>108)).toEqual([]);
+    expect(familyDefinition?.front).toBe("What does “family” mean?");
+    expect(familyFunctions?.front).toBe("What functions do families perform?");
+    expect(householdDifference?.front).toBe("How do household and family differ?");
+    expect(evidenceCard?.front).toBe("What should reliable Social Studies conclusions be based on?");
+  });
+
   test("external SVG visuals carry a source, attribution and reuse licence", () => {
     Object.values(SOCIAL_STUDIES_COURSE.visualSources).forEach(visual => {
       expect(visual.imageUrl).toMatch(/\.svg(?:$|\?)/i);
