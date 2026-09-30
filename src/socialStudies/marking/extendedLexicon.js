@@ -125,7 +125,7 @@ export const EXTENDED_SOCIAL_STUDIES_CONCEPTS = Object.freeze({
   tourism_leakage:["tourism leakage","profits leave country","imports for tourism","foreign-owned tourism profits"],
   tourism_seasonality:["seasonal tourism","tourism seasonality","jobs fluctuate with tourist season"],
   tourism_environment_pressure:["tourism damages environment","pressure on beaches","waste from tourism","damage to coral reefs"],
-  local_linkages:["buy local food","use local suppliers","support local farmers","support local craft producers"],
+  local_linkages:["buy local food","buy from local farmers","buy from local suppliers","buy from local farmers and suppliers","use local suppliers","source from local suppliers","support local farmers","support local craft producers","tourism businesses buy locally"],
   regional_branding:["regional branding","market caribbean jointly","joint tourism marketing","caribbean brand"],
   debt_service:["debt service","interest payments","repay national debt","debt repayment"],
   fiscal_space:["fiscal space","money available for government spending","budget room","public spending capacity"],
