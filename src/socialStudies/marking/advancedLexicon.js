@@ -86,7 +86,7 @@ export const ADVANCED_SOCIAL_STUDIES_CONCEPTS = Object.freeze({
   broadband_access:["broadband access","internet access","high speed internet","reliable internet"],
   digital_skills:["digital skills","computer skills","ict skills","technology skills"],
   e_government:["e-government","online government services","digital government services","government services online"],
-  sustainable_tourism:["sustainable tourism","tourism that protects environment and communities","responsible tourism"],
+  sustainable_tourism:["sustainable tourism","tourism that protects environment and communities","tourism that protects beaches","responsible tourism","tourism without destroying resources"],
   eco_tourism:["ecotourism","eco-tourism","nature-based tourism","environmentally responsible tourism"],
   community_tourism:["community tourism","community-based tourism","local community tourism"],
   tourism_multiplier:["tourism multiplier","tourist spending circulates locally","tourism spending supports other sectors"],
@@ -94,5 +94,5 @@ export const ADVANCED_SOCIAL_STUDIES_CONCEPTS = Object.freeze({
   tourism_training:["tourism training","hospitality training","train tourism workers","customer service training"],
   destination_marketing:["destination marketing","market the destination","tourism advertising","promote country to visitors"],
   visitor_safety:["visitor safety","tourist safety","security for visitors","safe tourism destination"],
-  heritage_preservation:["heritage preservation","protect heritage sites","preserve historic sites","protect cultural heritage"],
+  heritage_preservation:["heritage preservation","protect heritage sites","protect beaches and heritage sites","protect cultural and heritage sites","preserve historic sites","protect cultural heritage"],
 });
