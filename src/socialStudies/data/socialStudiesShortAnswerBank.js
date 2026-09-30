@@ -950,7 +950,7 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_BANK=freeze([
     4,
     developedScheme(2,[
       {id:"investigate",label:"Investigative reporting may expose misuse of public resources",concepts:["watchdog_media"],developmentConcepts:["corruption","public_accountability"],allowGeneralDevelopment:true},
-      {id:"inform",label:"Reporting gives citizens information about government decisions and spending",concepts:["watchdog_media","official_information"],developmentConcepts:["transparency","public_accountability"],allowGeneralDevelopment:true},
+      {id:"inform",label:"Reporting gives citizens information about government decisions and spending",concepts:["watchdog_media","official_information"],phrases:["media reports","reports give citizens information","information about government spending","report government spending","reports on government decisions"],developmentConcepts:["transparency","public_accountability"],allowGeneralDevelopment:true},
       {id:"debate",label:"Media platforms allow public scrutiny and debate",concepts:["watchdog_media","civic_participation"],developmentConcepts:["public_accountability"],allowGeneralDevelopment:true},
     ]),
     ["Investigative reporting","Informing citizens","Public scrutiny and debate"]),
