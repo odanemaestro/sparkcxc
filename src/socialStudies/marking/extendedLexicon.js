@@ -99,6 +99,9 @@ export const EXTENDED_SOCIAL_STUDIES_CONCEPTS = Object.freeze({
   climate_resilient_infrastructure:["climate resilient infrastructure","stronger drainage","hurricane resistant buildings","flood defences","flood defenses"],
   rainwater_harvesting:["rainwater harvesting","collect rainwater","water storage"],
   drought_resistant_crops:["drought resistant crops","drought-resistant crops","climate resilient crops"],
+  early_warning:["early warning system","storm warning system","flood warning","disaster warning","weather alert system"],
+  disaster_preparedness:["disaster preparedness","emergency planning","evacuation plan","disaster response plan","community disaster plan"],
+  coastal_protection:["coastal protection","sea wall","seawall","mangrove restoration","coastal defence","coastal defense"],
   renewable_policy:["renewable energy policy","solar incentives","wind energy investment","support clean energy"],
   emissions_standard:["emissions standards","vehicle emission limits","industrial emission limits","carbon regulation"],
 
