@@ -2,7 +2,7 @@ export const EXTENDED_SOCIAL_STUDIES_CONCEPTS = Object.freeze({
   // Family law, parenting and family relationships
   parental_responsibility:["parental responsibility","parents responsible for children","duty to care for children","responsibility for child welfare","legal responsibility for children"],
   child_maintenance:["child maintenance","financial maintenance","financial support for child","support children financially","provide financial support for children"],
-  child_education_duty:["send children to school","ensure education","provide education for children","support children's education","school attendance"],
+  child_education_duty:["send children to school","ensure children attend school","ensure they attend school","make sure children attend school","ensure education","provide education for children","support children's education","school attendance"],
   child_protection_duty:["protect children from harm","protect child from abuse","ensure child safety","keep children safe from harm"],
   inheritance_rights:["inheritance rights","right to inherit","inherit property","succession rights"],
   family_law_marriage:["marriage law","legal marriage requirements","laws governing marriage","legal age for marriage"],
