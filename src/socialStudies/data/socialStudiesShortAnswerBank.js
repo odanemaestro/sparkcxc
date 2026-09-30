@@ -1069,7 +1069,7 @@ const SOCIAL_STUDIES_SHORT_ANSWER_CORE=freeze([
     "Suggest TWO measures that could make tourism more sustainable in a Caribbean destination.",
     4,
     developedScheme(2,[
-      {id:"environment",label:"Protect sensitive ecosystems and heritage sites",concepts:["sustainable_tourism","protected_area","heritage_preservation"],developmentConcepts:["protect_environment","cultural_identity"],allowGeneralDevelopment:true},
+      {id:"environment",label:"Protect sensitive ecosystems and heritage sites",concepts:["protected_area","heritage_preservation"],developmentConcepts:["protect_environment","cultural_identity"],allowGeneralDevelopment:true},
       {id:"local",label:"Increase local ownership and purchasing",concepts:["local_ownership","local_linkages"],developmentConcepts:["tourism_multiplier","employment"],allowGeneralDevelopment:true},
       {id:"community",label:"Expand community-based tourism",concepts:["community_tourism"],developmentConcepts:["local_linkages","employment"],allowGeneralDevelopment:true},
       {id:"waste",label:"Improve waste and pollution management in tourism areas",concepts:["waste_management","pollution_control"],developmentConcepts:["protect_environment"],allowGeneralDevelopment:true},
