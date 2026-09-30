@@ -14,6 +14,7 @@ import {
   SOCIAL_STUDIES_PAPER2,
 } from "../data/socialStudiesExamBank";
 import { gradeSocialStudiesStructuredPaper } from "../marking/socialStudiesShortAnswerGrader";
+import { gradeSocialStudiesEssays } from "../marking/socialStudiesEssayGrader";
 import "../socialStudies.css";
 
 const ALL_QUESTIONS=socialStudiesPracticeQuestions();
@@ -261,13 +262,19 @@ function Paper2Practice({ onExit, onComplete }){
     ()=>gradeSocialStudiesStructuredPaper(responses,SOCIAL_STUDIES_PAPER2),
     [responses]
   );
+  const essayGrade=useMemo(
+    ()=>gradeSocialStudiesEssays(responses,SOCIAL_STUDIES_PAPER2),
+    [responses]
+  );
+  const paperScore=structuredGrade.score+essayGrade.score;
+  const paperMax=structuredGrade.maxScore+essayGrade.maxScore;
 
   const setResponse=(key,value)=>setResponses(previous=>({...previous,[key]:value}));
 
   const finish=()=>{
     if(completed) return;
     setCompleted(true);
-    onComplete?.(structuredGrade.score,structuredGrade.maxScore);
+    onComplete?.(paperScore,paperMax);
     window.scrollTo?.(0,0);
   };
 
@@ -283,9 +290,9 @@ function Paper2Practice({ onExit, onComplete }){
       </header>
 
       {completed && <section className="ss-paper-summary">
-        <span className="ss-eyebrow">Paper 02 structured marking</span>
-        <h1>{structuredGrade.score}/{structuredGrade.maxScore}</h1>
-        <p>{structuredGrade.percent}% on the 56 automatically marked structured-response marks. The two essays remain separate because CXC awards content plus organisation and development across the whole essay.</p>
+        <span className="ss-eyebrow">Paper 02 marking</span>
+        <h1>{paperScore}/{paperMax}</h1>
+        <p>{Math.round(paperScore/paperMax*100)}% across the full 100-mark practice paper. Structured responses contribute {structuredGrade.score}/56. Essays contribute {essayGrade.score}/44 using content plus the CXC organisation and development band.</p>
       </section>}
 
       <div className="ss-paper2-layout">
@@ -346,14 +353,34 @@ function Paper2Practice({ onExit, onComplete }){
             </div>
             <textarea
               value={responses[current.id] || ""}
+              disabled={completed}
               onChange={event=>setResponse(current.id,event.target.value)}
               placeholder="Plan briefly, then write your essay in organised paragraphs."
             />
-            <button type="button" className="ss-secondary" onClick={()=>setRevealed(previous=>({...previous,[current.id]:!previous[current.id]}))}>
+            {!completed && <button type="button" className="ss-secondary" onClick={()=>setRevealed(previous=>({...previous,[current.id]:!previous[current.id]}))}>
               {revealed[current.id] ? "Hide essay guide" : "Show essay guide"}
-            </button>
-            {revealed[current.id] && <div className="ss-paper2-guide">
-              <strong>18 content marks + 4 organisation and development marks</strong>
+            </button>}
+            {(revealed[current.id] || completed) && <div className="ss-paper2-guide">
+              <strong>{completed ? "SPARK essay marking breakdown" : "18 content marks + 4 organisation and development marks"}</strong>
+              {completed && essayGrade.perQuestion?.[current.id] && <>
+                <div className="ss-essay-score-grid">
+                  <div><span>Content</span><b>{essayGrade.perQuestion[current.id].contentMarks}/18</b></div>
+                  <div><span>Organisation and development</span><b>{essayGrade.perQuestion[current.id].organizationMarks}/4</b></div>
+                  <div><span>Total</span><b>{essayGrade.perQuestion[current.id].marks}/22</b></div>
+                </div>
+                <div className="ss-essay-components">
+                  {essayGrade.perQuestion[current.id].components.map(component=><div key={component.id}>
+                    <span>{component.label}</span>
+                    <b>{component.marks}/{component.maxMarks}</b>
+                  </div>)}
+                </div>
+                <div className="ss-essay-organisation">
+                  <strong>Organisation band {essayGrade.perQuestion[current.id].organization.band}/4</strong>
+                  <p>{essayGrade.perQuestion[current.id].organization.feedback}</p>
+                  <small>{essayGrade.perQuestion[current.id].organization.paragraphCount} paragraph blocks · {essayGrade.perQuestion[current.id].organization.linkingCount} linking signals · {essayGrade.perQuestion[current.id].organization.introduction ? "topic-focused introduction detected" : "no clear topic-focused introduction detected"}</small>
+                </div>
+                {essayGrade.perQuestion[current.id].reviewSuggested && <p className="ss-mark-review-note">This is a substantial essay with some unmatched content. Review the accepted directions below before treating every unmatched idea as incorrect.</p>}
+              </>}
               {current.guide.map(point=><p key={point}>{point}</p>)}
             </div>}
           </div>}
@@ -482,7 +509,7 @@ export default function SocialStudiesPracticeHub({ supabase, userId, onBack }){
   />;
   if(mode==="paper2") return <Paper2Practice
     onExit={()=>setMode("home")}
-    onComplete={(score,total)=>saveExamAttempt({paper:"Paper 02 structured",score,maxScore:total})}
+    onComplete={(score,total)=>saveExamAttempt({paper:"Paper 02",score,maxScore:total})}
   />;
   if(mode==="quiz") return <QuizSession title={sessionTitle} questions={session} onExit={()=>setMode("home")} onFinish={finish}/>;
   if(mode==="results") return <Results title={sessionTitle} answers={answers} total={session.length} examPrompt={examPrompt} onAgain={()=>start(sessionTitle.includes("research") ? "research" : sessionTitle.includes("20-question") ? "challenge" : "section",sectionId)} onHome={()=>setMode("home")}/>;
