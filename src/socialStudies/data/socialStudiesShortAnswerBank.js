@@ -1007,7 +1007,7 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_BANK=freeze([
     4,
     developedScheme(2,[
       {id:"skills",label:"Returning migrants bring skills and experience",concepts:["return_migration","brain_gain"],developmentConcepts:["human_resource_development","productivity"],allowGeneralDevelopment:true},
-      {id:"business",label:"Returnees may invest savings or start businesses",concepts:["return_migration","entrepreneurship"],developmentConcepts:["employment","job_creation"],allowGeneralDevelopment:true},
+      {id:"business",label:"Returnees may invest savings or start businesses",concepts:["returnee_investment","return_migration","entrepreneurship"],phrases:["invest savings","invest their savings","start businesses","open businesses"],developmentConcepts:["employment","job_creation"],allowGeneralDevelopment:true},
       {id:"knowledge",label:"Returnees may transfer professional knowledge and networks",concepts:["brain_gain","return_migration"],developmentConcepts:["career_development","human_resource_development"],allowGeneralDevelopment:true},
     ]),
     ["Skills and experience","Investment and businesses","Knowledge and professional networks"]),
