@@ -396,11 +396,19 @@ function Paper2Practice({ onExit, onComplete }){
                   <div><span>Total</span><b>{essayGrade.perQuestion[current.id].marks}/22</b></div>
                 </div>
                 <div className="ss-essay-components">
-                  {essayGrade.perQuestion[current.id].components.map(component=><div key={component.id}>
+                  {essayGrade.perQuestion[current.id].components.map(component=><div
+                    key={component.id}
+                    className={component.marks>=component.maxMarks ? "complete" : component.marks>0 ? "partial" : "missing"}
+                  >
                     <span>{component.label}</span>
                     <b>{component.marks}/{component.maxMarks}</b>
+                    <small>{component.feedback}</small>
                   </div>)}
                 </div>
+                {essayGrade.perQuestion[current.id].contentGaps?.length>0 && <div className="ss-essay-content-priority">
+                  <strong>Content priority</strong>
+                  <p>{essayGrade.perQuestion[current.id].nextContentPriority}</p>
+                </div>}
                 <div className="ss-essay-organisation">
                   <strong>Organisation band {essayGrade.perQuestion[current.id].organization.band}/4</strong>
                   <p>{essayGrade.perQuestion[current.id].organization.feedback}</p>
