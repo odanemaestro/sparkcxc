@@ -677,6 +677,14 @@ html[data-theme="dark"][data-glass="true"] .ss-short-answer-summary article{
 .ss-essay-organisation strong{color:var(--spark-ink,#102a43);font-size:11px}
 .ss-essay-organisation p{margin:0!important;color:var(--spark-ink-soft,#334e68)!important;font-size:10.5px!important;line-height:1.5!important}
 .ss-essay-organisation small{color:var(--spark-text-muted,#627d98);font-size:9.5px;line-height:1.45}
+.ss-essay-feedback-list{
+  display:grid;gap:4px;margin-top:5px;padding-top:7px;border-top:1px solid var(--spark-border-soft,#d9e2ec)
+}
+.ss-essay-feedback-list b{color:var(--spark-ink,#102a43);font-size:9.5px}
+.ss-essay-feedback-list ul{margin:0;padding-left:18px}
+.ss-essay-feedback-list li{margin:2px 0;color:var(--spark-ink-soft,#334e68);font-size:9.5px;line-height:1.45}
+.ss-essay-next-step{margin-top:5px!important;padding:8px 9px;border-radius:8px;background:var(--spark-paper,#fff)}
+.ss-essay-next-step b{color:var(--spark-teal-dark,#087f73)}
 html[data-theme="dark"] .ss-essay-score-grid>div,
 html[data-theme="dark"] .ss-essay-components>div{
   border-color:rgba(145,165,191,.16)
