@@ -211,9 +211,9 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_EXPANSION_2=freeze([
     "Explain TWO reasons the separation of powers is important in government.",
     4,
     developedScheme(2,[
-      {id:"abuse",label:"It helps prevent one arm from controlling all state power",concepts:["separation_of_powers"],developmentPhrases:["prevent abuse of power","avoid concentration of power","checks power"],allowGeneralDevelopment:true},
-      {id:"checks",label:"Different arms can check or review each other's actions",concepts:["separation_of_powers"],developmentConcepts:["accountability","rule_of_law"],allowGeneralDevelopment:true},
-      {id:"independence",label:"It supports independent law-making, administration and judging",concepts:["separation_of_powers"],developmentPhrases:["independent judiciary","independent arms","independent decisions"],allowGeneralDevelopment:true},
+      {id:"abuse",label:"It helps prevent one arm from controlling all state power",phrases:["prevent abuse of power","avoid concentration of power","prevent one arm controlling all power","checks power"],developmentConcepts:["accountability"],allowGeneralDevelopment:true},
+      {id:"checks",label:"Different arms can check or review each other's actions",phrases:["checks and balances","check each other","review each other's actions","review other arms"],developmentConcepts:["accountability","rule_of_law"],allowGeneralDevelopment:true},
+      {id:"independence",label:"It supports independent law-making, administration and judging",phrases:["independent judiciary","independent arms","independent decisions","judiciary can act independently"],developmentConcepts:["rule_of_law"],allowGeneralDevelopment:true},
     ]),
     ["Prevents concentration of power","Provides checks and balances","Supports independence of the arms"]),
 
@@ -423,10 +423,10 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_EXPANSION_2=freeze([
     "Explain TWO climate-change adaptation measures suitable for Caribbean communities.",
     4,
     developedScheme(2,[
-      {id:"coast",label:"Coastal protection reduces exposure to erosion or storm surge",concepts:["coastal_protection","adaptation"],developmentConcepts:["resilience"],allowGeneralDevelopment:true},
-      {id:"warning",label:"Early-warning systems help communities prepare for hazards",concepts:["early_warning","adaptation"],developmentConcepts:["disaster_preparedness","resilience"],allowGeneralDevelopment:true},
-      {id:"water",label:"Rainwater storage helps communities cope with drought",concepts:["rainwater_harvesting","adaptation"],developmentConcepts:["resilience"],allowGeneralDevelopment:true},
-      {id:"crops",label:"Drought-resistant crops help agriculture cope with changing rainfall",concepts:["drought_resistant_crops","adaptation"],developmentConcepts:["agriculture_impact","resilience"],allowGeneralDevelopment:true},
+      {id:"coast",label:"Coastal protection reduces exposure to erosion or storm surge",concepts:["coastal_protection"],developmentConcepts:["resilience"],allowGeneralDevelopment:true},
+      {id:"warning",label:"Early-warning systems help communities prepare for hazards",concepts:["early_warning"],developmentConcepts:["disaster_preparedness","resilience"],allowGeneralDevelopment:true},
+      {id:"water",label:"Rainwater storage helps communities cope with drought",concepts:["rainwater_harvesting"],developmentConcepts:["resilience"],allowGeneralDevelopment:true},
+      {id:"crops",label:"Drought-resistant crops help agriculture cope with changing rainfall",concepts:["drought_resistant_crops"],developmentConcepts:["agriculture_impact","resilience"],allowGeneralDevelopment:true},
     ]),
     ["Coastal protection","Early-warning systems","Rainwater storage","Drought-resistant crops"]),
 
@@ -465,10 +465,10 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_EXPANSION_2=freeze([
     "Explain ONE benefit and ONE possible challenge of foreign direct investment.",
     4,
     developedScheme(2,[
-      {id:"benefit-jobs",label:"Foreign investment may create jobs",concepts:["foreign_direct_investment"],developmentConcepts:["employment","job_creation"],allowGeneralDevelopment:true},
-      {id:"benefit-capital",label:"Foreign investment may provide capital, technology or skills",concepts:["foreign_direct_investment"],developmentPhrases:["bring capital","bring technology","transfer skills"],allowGeneralDevelopment:true},
-      {id:"challenge-profit",label:"Some profits may leave the country",concepts:["foreign_direct_investment"],developmentPhrases:["profits sent abroad","profits leave country","profit repatriation"],allowGeneralDevelopment:true},
-      {id:"challenge-control",label:"Heavy foreign ownership may reduce local control or local linkages",concepts:["foreign_direct_investment"],developmentConcepts:["local_ownership","local_linkages"],allowGeneralDevelopment:true},
+      {id:"benefit-jobs",label:"Foreign investment may create jobs",phrases:["create jobs","provide employment","new employment"],developmentConcepts:["employment","job_creation"],allowGeneralDevelopment:true},
+      {id:"benefit-capital",label:"Foreign investment may provide capital, technology or skills",phrases:["bring capital","provide capital","bring technology","transfer skills"],developmentConcepts:["productivity"],allowGeneralDevelopment:true},
+      {id:"challenge-profit",label:"Some profits may leave the country",phrases:["profits sent abroad","profits leave country","profit repatriation"],developmentConcepts:["foreign_exchange"],allowGeneralDevelopment:true},
+      {id:"challenge-control",label:"Heavy foreign ownership may reduce local control or local linkages",phrases:["reduce local control","foreign ownership","weak local linkages"],developmentConcepts:["local_ownership","local_linkages"],allowGeneralDevelopment:true},
     ]),
     ["Benefit: jobs or capital and technology","Challenge: profit outflow or limited local control"]),
 
@@ -498,10 +498,10 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_EXPANSION_2=freeze([
     "Explain TWO ways the CSME may support Caribbean development.",
     4,
     developedScheme(2,[
-      {id:"market",label:"A wider regional market gives firms access to more customers",concepts:["csme","larger_market"],developmentConcepts:["more_regional_trade","economies_scale"],allowGeneralDevelopment:true},
-      {id:"movement",label:"Agreed movement arrangements allow eligible workers or businesses greater regional mobility",concepts:["csme","free_movement"],developmentConcepts:["employment","more_regional_trade"],allowGeneralDevelopment:true},
-      {id:"capital",label:"Regional movement of capital and services may support investment",concepts:["csme"],developmentPhrases:["movement of capital","movement of services","regional investment"],allowGeneralDevelopment:true},
-      {id:"trade",label:"Reduced barriers can increase intra-regional trade",concepts:["csme","remove_trade_barriers"],developmentConcepts:["more_regional_trade"],allowGeneralDevelopment:true},
+      {id:"market",label:"A wider regional market gives firms access to more customers",concepts:["larger_market"],developmentConcepts:["more_regional_trade","economies_scale"],allowGeneralDevelopment:true},
+      {id:"movement",label:"Agreed movement arrangements allow eligible workers or businesses greater regional mobility",concepts:["free_movement"],developmentConcepts:["employment","more_regional_trade"],allowGeneralDevelopment:true},
+      {id:"capital",label:"Regional movement of capital and services may support investment",phrases:["movement of capital","movement of services","regional investment"],developmentConcepts:["economic_development"],allowGeneralDevelopment:true},
+      {id:"trade",label:"Reduced barriers can increase intra-regional trade",concepts:["remove_trade_barriers"],developmentConcepts:["more_regional_trade"],allowGeneralDevelopment:true},
     ]),
     ["Larger market","Free movement","Investment","More regional trade"]),
 
@@ -521,10 +521,10 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_EXPANSION_2=freeze([
     "Explain TWO ways CARICOM promotes regional cooperation.",
     4,
     developedScheme(2,[
-      {id:"policy",label:"CARICOM coordinates policies and regional action",concepts:["caricom","caricom_function"],developmentConcepts:["regional_integration"],allowGeneralDevelopment:true},
-      {id:"trade",label:"CARICOM supports economic cooperation and regional trade",concepts:["caricom","caricom_function"],developmentConcepts:["more_regional_trade","larger_market"],allowGeneralDevelopment:true},
-      {id:"issues",label:"Member states cooperate on shared regional problems",concepts:["caricom","pooled_resources"],developmentConcepts:["resilience"],allowGeneralDevelopment:true},
-      {id:"voice",label:"Regional cooperation may strengthen the Caribbean's collective international voice",concepts:["caricom","bargaining_power"],developmentConcepts:["regional_integration"],allowGeneralDevelopment:true},
+      {id:"policy",label:"CARICOM coordinates policies and regional action",concepts:["caricom_function"],developmentConcepts:["regional_integration"],allowGeneralDevelopment:true},
+      {id:"trade",label:"CARICOM supports economic cooperation and regional trade",phrases:["economic cooperation","regional trade"],developmentConcepts:["more_regional_trade","larger_market"],allowGeneralDevelopment:true},
+      {id:"issues",label:"Member states cooperate on shared regional problems",concepts:["pooled_resources"],developmentConcepts:["resilience"],allowGeneralDevelopment:true},
+      {id:"voice",label:"Regional cooperation may strengthen the Caribbean's collective international voice",concepts:["bargaining_power"],developmentConcepts:["regional_integration"],allowGeneralDevelopment:true},
     ]),
     ["Policy coordination","Economic cooperation","Shared problems","Collective international voice"]),
 
@@ -552,10 +552,10 @@ export const SOCIAL_STUDIES_SHORT_ANSWER_EXPANSION_2=freeze([
     "Explain TWO ways tourism leakage may reduce the development benefits of tourism.",
     4,
     developedScheme(2,[
-      {id:"profit",label:"Profits from foreign-owned tourism businesses may leave the country",concepts:["tourism_leakage"],developmentPhrases:["profits sent abroad","profits leave country"],allowGeneralDevelopment:true},
-      {id:"imports",label:"Imported food, equipment or services send tourism spending abroad",concepts:["tourism_leakage","import_dependence"],developmentPhrases:["imports for hotels","imported goods","money spent on imports"],allowGeneralDevelopment:true},
-      {id:"local",label:"Weak local linkages mean fewer benefits reach local producers",concepts:["tourism_leakage","local_linkages"],developmentConcepts:["tourism_multiplier","employment"],allowGeneralDevelopment:true},
-      {id:"foreign",label:"Leakage reduces the amount of foreign exchange retained locally",concepts:["tourism_leakage","foreign_exchange"],developmentConcepts:["economic_development"],allowGeneralDevelopment:true},
+      {id:"profit",label:"Profits from foreign-owned tourism businesses may leave the country",phrases:["profits sent abroad","profits leave country","foreign owned profits leave"],developmentConcepts:["foreign_exchange"],allowGeneralDevelopment:true},
+      {id:"imports",label:"Imported food, equipment or services send tourism spending abroad",concepts:["import_dependence"],developmentPhrases:["imports for hotels","imported goods","money spent on imports"],allowGeneralDevelopment:true},
+      {id:"local",label:"Weak local linkages mean fewer benefits reach local producers",concepts:["local_linkages"],developmentConcepts:["tourism_multiplier","employment"],allowGeneralDevelopment:true},
+      {id:"foreign",label:"Leakage reduces the amount of foreign exchange retained locally",concepts:["foreign_exchange"],developmentPhrases:["less foreign exchange retained","less money stays locally"],allowGeneralDevelopment:true},
     ]),
     ["Profit outflow","Imports","Weak local linkages","Less foreign exchange retained"]),
 
