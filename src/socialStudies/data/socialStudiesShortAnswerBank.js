@@ -1073,7 +1073,7 @@ const SOCIAL_STUDIES_SHORT_ANSWER_CORE=freeze([
       {id:"local",label:"Increase local ownership and purchasing",concepts:["local_ownership","local_linkages"],developmentConcepts:["tourism_multiplier","employment"],allowGeneralDevelopment:true},
       {id:"community",label:"Expand community-based tourism",concepts:["community_tourism"],developmentConcepts:["local_linkages","employment"],allowGeneralDevelopment:true},
       {id:"waste",label:"Improve waste and pollution management in tourism areas",concepts:["waste_management","pollution_control"],developmentConcepts:["protect_environment"],allowGeneralDevelopment:true},
-      {id:"training",label:"Train workers and businesses in sustainable tourism practices",concepts:["tourism_training","sustainable_tourism"],developmentConcepts:["human_resource_development","protect_environment"],allowGeneralDevelopment:true},
+      {id:"training",label:"Train workers and businesses in sustainable tourism practices",concepts:["tourism_training"],developmentConcepts:["human_resource_development","protect_environment"],allowGeneralDevelopment:true},
     ]),
     ["Protect ecosystems and heritage","Increase local linkages","Community tourism","Waste management","Training"]),
 
