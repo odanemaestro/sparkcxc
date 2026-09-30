@@ -5,6 +5,7 @@ import { recordSubjectActivity } from "./subjectProgress";
 import { loadGenericSubjectStructure } from "./genericSubjectCatalog";
 import InteractiveLabelDiagram from "./components/InteractiveLabelDiagram";
 import TransportProcessExplorer from "./components/TransportProcessExplorer";
+import SocialStudiesExplorer from "./components/SocialStudiesExplorer";
 import {
   readSparkHashRoute,
   subscribeSparkRoute,
@@ -40,6 +41,11 @@ function interactiveDiagrams(topic = {}) {
 function interactiveModels(topic = {}) {
   const lesson = lessonData(topic);
   return Array.isArray(lesson.interactiveModels) ? lesson.interactiveModels.filter(Boolean) : [];
+}
+
+function visualSources(topic = {}) {
+  const lesson = lessonData(topic);
+  return Array.isArray(lesson.visualSources) ? lesson.visualSources.filter(Boolean) : [];
 }
 
 function routeSelection(path, structure) {
@@ -78,6 +84,7 @@ function GenericLessonContent({
   const objectives = lessonObjectives(topic);
   const diagrams = interactiveDiagrams(topic);
   const models = interactiveModels(topic);
+  const sourcedVisuals = visualSources(topic);
   const intro = String(lesson.introduction || topic?.description || "").trim();
   const summary = String(lesson.summary || "").trim();
   const example = lesson.workedExample && typeof lesson.workedExample === "object"
@@ -122,11 +129,59 @@ function GenericLessonContent({
         );
       })}
 
-      {models.map(model => (
-        model?.type === "membrane-transport"
-          ? <TransportProcessExplorer key={model.id || "membrane-transport"} />
-          : null
+      {sourcedVisuals.map((visual,index) => (
+        visual?.assetUrl ? (
+          <figure key={visual.id || visual.assetUrl || index} className="spark-generic-sourced-visual">
+            <div className="spark-generic-sourced-visual-frame">
+              <img
+                src={visual.assetUrl}
+                alt={visual.alt || visual.title || "Lesson visual"}
+                loading="lazy"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+            <figcaption>
+              <div>
+                <strong>{visual.title || "Lesson visual"}</strong>
+                {visual.purpose && <span>{visual.purpose}</span>}
+              </div>
+              <div className="spark-generic-sourced-visual-credit">
+                <span>
+                  Source: {visual.source || "External source"}
+                  {visual.creator ? ` · ${visual.creator}` : ""}
+                  {visual.license ? ` · ${visual.license}` : ""}
+                </span>
+                {visual.url && (
+                  <a href={visual.url} target="_blank" rel="noreferrer">View source</a>
+                )}
+              </div>
+            </figcaption>
+          </figure>
+        ) : null
       ))}
+
+      {models.map(model => {
+        if (model?.type === "membrane-transport") {
+          return <TransportProcessExplorer key={model.id || "membrane-transport"} />;
+        }
+        if (model?.type === "social-studies") {
+          const activityKey = `interactive:${model.id}`;
+          return (
+            <SocialStudiesExplorer
+              key={model.id || model.title}
+              activity={model}
+              completed={completedActivityKeys.has(activityKey)}
+              onComplete={result => onActivityComplete?.({
+                ...result,
+                topicId:topic.id,
+                sectionId:topic.sectionId,
+                activityType:"interactive",
+              })}
+            />
+          );
+        }
+        return null;
+      })}
 
       {diagrams.map(diagram => (
         <InteractiveLabelDiagram
@@ -353,8 +408,13 @@ export default function GenericSubjectStudyView({
     percent,
     topicId,
     sectionId,
+    activityType = "diagram",
   }) => {
-    const activityKey = `diagram:${activityId}`;
+    const isInteractivePractice = activityType === "interactive";
+    const progressContract = isInteractivePractice
+      ? { activityType:"practice", source:"generic_subject_interactive_practice" }
+      : { activityType:"diagram", source:"generic_subject_interactive_diagram" };
+    const activityKey = `${isInteractivePractice ? "interactive" : "diagram"}:${activityId}`;
     if (!activityId || completedActivityKeys.has(activityKey)) return;
 
     try {
@@ -363,7 +423,7 @@ export default function GenericSubjectStudyView({
         activity:{
           subjectId,
           activityKey,
-          activityType:"diagram",
+          activityType:progressContract.activityType,
           sectionId:sectionId || activeSection?.id || null,
           topicId:topicId || activeTopic?.id || null,
           title:title || "Interactive diagram",
@@ -372,7 +432,7 @@ export default function GenericSubjectStudyView({
           maxScore:total,
           percent,
           metadata:{
-            source:"generic_subject_interactive_diagram",
+            source:progressContract.source,
             adapter:"generic-subject-v1",
             at:new Date().toISOString(),
           },
@@ -381,11 +441,11 @@ export default function GenericSubjectStudyView({
 
       if (result?.error) throw result.error;
       setCompletedActivityKeys(current => new Set([...current,activityKey]));
-      showToast?.(`${title || "Interactive diagram"} completed.`, "success");
+      showToast?.(`${title || "Interactive activity"} completed.`, "success");
     } catch (activityError) {
-      console.error("Could not save interactive diagram progress",activityError);
+      console.error("Could not save interactive activity progress",activityError);
       showToast?.(
-        activityError?.message || "Your diagram score could not be saved.",
+        activityError?.message || "Your activity score could not be saved.",
         "error"
       );
     }
@@ -493,7 +553,7 @@ export default function GenericSubjectStudyView({
   }
 
   return (
-    <main className="spark-generic-study">
+    <main className="spark-generic-study" data-subject={subjectId || undefined}>
       <div className="spark-generic-study-shell">
         <header className="spark-generic-study-hero">
           <div className="spark-generic-study-mark" aria-hidden="true">
@@ -551,7 +611,10 @@ export default function GenericSubjectStudyView({
               </div>
 
               {structure.sections.map(section => (
-                <section key={section.id} className="spark-generic-outline-section">
+                <section
+                  key={section.id}
+                  className={`spark-generic-outline-section ${section.metadata?.supportSection ? "is-support" : ""}`}
+                >
                   <div className="spark-generic-outline-section-title">
                     <span>{section.title}</span>
                     <small>{section.topics.length}</small>
