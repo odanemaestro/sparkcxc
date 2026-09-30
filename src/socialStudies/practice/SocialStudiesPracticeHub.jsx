@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import SocialStudiesShortAnswerPractice from "./SocialStudiesShortAnswerPractice";
+import SocialStudiesSbaPractice from "./SocialStudiesSbaPractice";
 import ProgressBar from "../../components/ui/ProgressBar";
 import { recordSubjectActivity } from "../../subjects/subjectProgress";
 import {
@@ -547,6 +548,10 @@ export default function SocialStudiesPracticeHub({ supabase, userId, onBack }){
     onExit={()=>setMode("home")}
     onComplete={(score,total)=>saveExamAttempt({paper:"Short-answer practice",score,maxScore:total})}
   />;
+  if(mode==="sba") return <SocialStudiesSbaPractice
+    onExit={()=>setMode("home")}
+    onComplete={(score,total)=>saveExamAttempt({paper:"SBA project checker",score,maxScore:total})}
+  />;
   if(mode==="paper1") return <Paper1Exam
     onExit={()=>setMode("home")}
     onComplete={(score,total)=>saveExamAttempt({paper:"Paper 01",score,maxScore:total})}
@@ -603,10 +608,15 @@ export default function SocialStudiesPracticeHub({ supabase, userId, onBack }){
           <p>Three full current-format simulations. Each contains four structured questions and two essays for 100 marks.</p>
           <button type="button" className="ss-primary" onClick={()=>setMode("paper2")}>Open Paper 02</button>
         </article>
+        <article>
+          <span>07</span><h2>SBA project checker</h2>
+          <p>Build a research project against the 40-mark CXC rubric, with criterion-level feedback for methods, data, analysis, findings and recommendations.</p>
+          <button type="button" className="ss-primary" onClick={()=>setMode("sba")}>Check an SBA project</button>
+        </article>
       </section>
 
       <section className="ss-practice-bank-note">
-        <strong>{ALL_QUESTIONS.length} topic questions + {SOCIAL_STUDIES_PAPER1.length} Paper 01 items + 3 full Paper 02 simulations + 100 marked short-answer questions</strong>
+        <strong>{ALL_QUESTIONS.length} topic questions + {SOCIAL_STUDIES_PAPER1.length} Paper 01 items + 3 full Paper 02 simulations + 152 marked short-answer questions + 40-mark SBA project checker</strong>
         <p>SPARK uses original questions. The exam sets follow the current CXC structure and the recurring command words, mark patterns and question style seen in the official specimen and historical papers indexed at the supplied archive.</p>
         <a href={SOCIAL_STUDIES_EXAM_GUIDE.archiveUrl} target="_blank" rel="noreferrer">Past-paper archive used as a style reference</a>
       </section>
