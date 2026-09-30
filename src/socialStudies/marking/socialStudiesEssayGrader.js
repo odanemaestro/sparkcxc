@@ -118,7 +118,6 @@ export const SOCIAL_STUDIES_ESSAY_SCHEMES=freeze({
         ])),
     ]),
   }),
-,
 
   "ss-p2-b-q5":freeze({
     topicPhrases:freeze(["cultural diversity","caribbean culture","celebrating cultural diversity"]),
