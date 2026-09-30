@@ -125,6 +125,15 @@ describe("Social Studies short-answer marking", () => {
     expect(unrelated.marks).toBe(0);
   });
 
+  test("one broad concept is not reused as two different developed points", () => {
+    const media=SOCIAL_STUDIES_SHORT_ANSWER_BANK.find(item=>item.id==="ss-sa-a2-22");
+    const result=gradeSocialStudiesShortAnswer(
+      "Investigative journalism exposes wrongdoing because the media acts as a watchdog.",
+      media.marking
+    );
+    expect(result.marks).toBeLessThanOrEqual(2);
+  });
+
   test("one explanation is not reused to mark two earlier strategies", () => {
     const explanationScheme=part(2,3).marking;
     const result=gradeSocialStudiesShortAnswer(
