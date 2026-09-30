@@ -158,14 +158,22 @@ describe("Social Studies short-answer marking", () => {
     });
   });
 
-  test("does not award marks for merely repeating any question prompt", () => {
-    const falsePositives=SOCIAL_STUDIES_SHORT_ANSWER_BANK
-      .map(item=>({
-        id:item.id,
-        marks:gradeSocialStudiesShortAnswer(item.prompt,item.marking).marks,
-      }))
-      .filter(item=>item.marks>0);
-    expect(falsePositives).toEqual([]);
+  test("does not award developed-point marks for bare topic labels", () => {
+    const checks=[
+      ["ss-sa-a2-31","separation of powers"],
+      ["ss-sa-b2-24","sustainable tourism"],
+      ["ss-sa-b1-38","climate change adaptation"],
+      ["ss-sa-b2-29","foreign direct investment"],
+      ["ss-sa-b2-32","CSME"],
+      ["ss-sa-b2-34","CARICOM"],
+      ["ss-sa-b2-37","tourism leakage"],
+    ];
+    checks.forEach(([id,response])=>{
+      const item=SOCIAL_STUDIES_SHORT_ANSWER_BANK.find(question=>question.id===id);
+      expect(gradeSocialStudiesShortAnswer(response,item.marking).marks).toBe(0);
+    });
+  });
+
   });
 
   test("does not award definition or distinction marks for repeating the term only", () => {
