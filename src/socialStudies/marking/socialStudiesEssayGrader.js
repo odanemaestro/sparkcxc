@@ -425,6 +425,21 @@ export function gradeSocialStudiesEssay(value,questionId){
   const marks=contentMarks+organization.marks;
   const normalized=normalizeSocialStudiesText(value);
   const words=normalized.split(/\s+/).filter(Boolean).length;
+  const contentStrengths=components
+    .filter(entry=>entry.marks>=entry.maxMarks)
+    .map(entry=>entry.label);
+  const contentGaps=components
+    .filter(entry=>entry.marks<entry.maxMarks)
+    .map(entry=>({
+      id:entry.id,
+      label:entry.label,
+      marks:entry.marks,
+      maxMarks:entry.maxMarks,
+      missingMarks:entry.maxMarks-entry.marks,
+      feedback:entry.feedback,
+    }))
+    .sort((a,b)=>b.missingMarks-a.missingMarks || a.label.localeCompare(b.label));
+  const nextContentPriority=contentGaps[0]?.label || "Check each paragraph against the command words and maintain the same level of development.";
 
   return {
     status:marks>=20 ? "strong" : marks>=14 ? "developing" : "needs-work",
@@ -433,6 +448,9 @@ export function gradeSocialStudiesEssay(value,questionId){
     marks,
     maxMarks:scheme.contentMarks+scheme.organizationMarks,
     components,
+    contentStrengths,
+    contentGaps,
+    nextContentPriority,
     organization,
     wordCount:words,
     reviewSuggested:words>=120 && contentMarks<scheme.contentMarks,
