@@ -346,14 +346,6 @@ export default function SocialStudiesSubjectView({ supabase, userId, onBack, sho
         <ProgressBar value={completedCount} max={SOCIAL_STUDIES_LESSONS.length}/>
       </section>
 
-      <section className="ss-exam-overview">
-        {Object.values(SOCIAL_STUDIES_COURSE.exam).map(item=><Card key={item.title}>
-          <span>{item.title}</span>
-          {item.duration && <strong>{item.duration}</strong>}
-          <p>{item.description}</p>
-        </Card>)}
-      </section>
-
       <section className="ss-section-grid">
         {SOCIAL_STUDIES_COURSE.sections.map(section=>{
           const lessons=socialStudiesLessonsForSection(section.id);
