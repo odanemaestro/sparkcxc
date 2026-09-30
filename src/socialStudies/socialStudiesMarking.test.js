@@ -8,6 +8,10 @@ import {
   socialStudiesLexiconStats,
 } from "./marking/socialStudiesAnswerLexicon";
 import {
+  gradeSocialStudiesEssay,
+  gradeSocialStudiesEssays,
+} from "./marking/socialStudiesEssayGrader";
+import {
   SOCIAL_STUDIES_SHORT_ANSWER_BANK,
   socialStudiesShortAnswerStats,
 } from "./data/socialStudiesShortAnswerBank";
@@ -24,8 +28,8 @@ function part(questionIndex,partIndex){
 describe("Social Studies short-answer marking", () => {
   test("ships a large reusable vocabulary bank", () => {
     const stats=socialStudiesLexiconStats();
-    expect(stats.concepts).toBeGreaterThanOrEqual(280);
-    expect(stats.aliases).toBeGreaterThanOrEqual(1200);
+    expect(stats.concepts).toBeGreaterThanOrEqual(380);
+    expect(stats.aliases).toBeGreaterThanOrEqual(1700);
   });
 
   test("accepts Caribbean Social Studies wording and common variants", () => {
@@ -127,11 +131,11 @@ describe("Social Studies short-answer marking", () => {
     expect(result.marks).toBeLessThanOrEqual(2);
   });
 
-  test("provides 40 marked short-answer questions with balanced syllabus coverage", () => {
+  test("provides 80 marked short-answer questions with balanced syllabus coverage", () => {
     const stats=socialStudiesShortAnswerStats();
-    expect(stats.questions).toBe(48);
-    expect(stats.bySection).toEqual({A1:12,A2:12,B1:12,B2:12});
-    expect(stats.marks).toBeGreaterThanOrEqual(100);
+    expect(stats.questions).toBe(80);
+    expect(stats.bySection).toEqual({A1:20,A2:20,B1:20,B2:20});
+    expect(stats.marks).toBeGreaterThanOrEqual(200);
     SOCIAL_STUDIES_SHORT_ANSWER_BANK.forEach(item=>{
       expect(item.marking).toBeTruthy();
       expect(item.modelPoints.length).toBeGreaterThan(0);
@@ -193,10 +197,67 @@ describe("Social Studies short-answer marking", () => {
     ).marks).toBe(4);
   });
 
+  test("marks newly expanded syllabus areas", () => {
+    const familyLaw=SOCIAL_STUDIES_SHORT_ANSWER_BANK.find(item=>item.id==="ss-sa-a1-13");
+    const parties=SOCIAL_STUDIES_SHORT_ANSWER_BANK.find(item=>item.id==="ss-sa-a2-16");
+    const planning=SOCIAL_STUDIES_SHORT_ANSWER_BANK.find(item=>item.id==="ss-sa-b1-14");
+    const ict=SOCIAL_STUDIES_SHORT_ANSWER_BANK.find(item=>item.id==="ss-sa-b2-17");
+
+    expect(gradeSocialStudiesShortAnswer(
+      "Parents must support children financially and ensure they attend school.",
+      familyLaw.marking
+    ).marks).toBe(2);
+
+    expect(gradeSocialStudiesShortAnswer(
+      "Political parties select candidates, prepare a manifesto and campaign for votes.",
+      parties.marking
+    ).marks).toBe(3);
+
+    expect(gradeSocialStudiesShortAnswer(
+      "Population statistics help government plan schools and hospitals because it knows where services are needed. They also help allocate resources to communities with the greatest needs.",
+      planning.marking
+    ).marks).toBe(4);
+
+    expect(gradeSocialStudiesShortAnswer(
+      "ICT supports e-commerce, so Caribbean firms can sell to a larger market. It also supports online learning, which helps people gain skills and develop the workforce.",
+      ict.marking
+    ).marks).toBe(4);
+  });
+
   test("grades all four structured questions out of 56 marks", () => {
     const grade=gradeSocialStudiesStructuredPaper({},SOCIAL_STUDIES_PAPER2);
     expect(grade.score).toBe(0);
     expect(grade.maxScore).toBe(56);
+  });
+});
+
+describe("Social Studies essay marking", () => {
+  test("grades the two Paper 02 essays out of 44 marks", () => {
+    const grade=gradeSocialStudiesEssays({},SOCIAL_STUDIES_PAPER2);
+    expect(grade.score).toBe(0);
+    expect(grade.maxScore).toBe(44);
+  });
+
+  test("uses the CXC four-mark organisation and development band", () => {
+    const essay=[
+      "Caribbean culture and identity are strengthened when traditions are passed from one generation to another. Family members and the media are important agents of cultural transmission. For example, reggae music and Caribbean cuisine have reached international audiences.",
+      "Cultural transmission builds a shared sense of Caribbean identity because young people learn the values and traditions of the region. In addition, preserving these traditions keeps cultural heritage alive and helps communities maintain a sense of belonging.",
+      "Schools should teach Caribbean heritage so that students pass culture to another generation. Cultural organisations should also use social media to promote culture to a global audience. Another strategy is to stage festivals and exhibitions because these activities showcase culture to visitors and international audiences.",
+      "These strategies are likely to work because social media reaches wider and younger audiences. Therefore, school programmes help cultural transmission continue across generations. As a result, cultural identity is strengthened while Caribbean culture gains wider international exposure."
+    ].join("\n\n");
+
+    const result=gradeSocialStudiesEssay(essay,"ss-p2-q5");
+    expect(result.maxMarks).toBe(22);
+    expect(result.contentMarks).toBeGreaterThanOrEqual(16);
+    expect(result.organizationMarks).toBe(4);
+    expect(result.marks).toBeGreaterThanOrEqual(20);
+  });
+
+  test("does not award essay organisation marks to a blank response", () => {
+    const result=gradeSocialStudiesEssay("","ss-p2-q6");
+    expect(result.contentMarks).toBe(0);
+    expect(result.organizationMarks).toBe(0);
+    expect(result.marks).toBe(0);
   });
 });
 
