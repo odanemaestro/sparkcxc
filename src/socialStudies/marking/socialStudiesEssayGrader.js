@@ -11,6 +11,10 @@ const developed=(maxPoints,points,profile="UK")=>freeze({
   type:"developed_points",maxPoints,maxMarks:maxPoints*2,profile,points:freeze(points),
 });
 
+const definition=(groups,maxMarks=2)=>freeze({
+  type:"definition",groups:freeze(groups),maxMarks,profile:"KC",
+});
+
 const component=(id,label,maxMarks,scheme)=>freeze({id,label,maxMarks,scheme});
 
 export const SOCIAL_STUDIES_ESSAY_SCHEMES=freeze({
@@ -111,6 +115,183 @@ export const SOCIAL_STUDIES_ESSAY_SCHEMES=freeze({
           {id:"trade",label:"Creates more opportunities for intra-regional trade",concepts:["more_regional_trade"],developmentConcepts:["larger_market"],allowGeneralDevelopment:true},
           {id:"resilience",label:"Makes regional production and supply more resilient",concepts:["resilience"],developmentConcepts:["regional_supply_chains","pooled_resources"],allowGeneralDevelopment:true},
           {id:"market",label:"Makes regional market access easier",concepts:["larger_market","free_movement"],developmentConcepts:["more_regional_trade"],allowGeneralDevelopment:true},
+        ])),
+    ]),
+  }),
+,
+
+  "ss-p2-b-q5":freeze({
+    topicPhrases:freeze(["cultural diversity","caribbean culture","celebrating cultural diversity"]),
+    contentMarks:18,
+    organizationMarks:4,
+    components:freeze([
+      component("forms","States TWO cultural forms found in the Caribbean",2,
+        list(2,[
+          {id:"music",label:"Music",concepts:["cultural_form_music"]},
+          {id:"dance",label:"Dance",concepts:["cultural_form_dance"]},
+          {id:"food",label:"Food and cuisine",concepts:["cultural_form_food"]},
+          {id:"festival",label:"Festivals",concepts:["cultural_form_festival"]},
+          {id:"language",label:"Language and dialect",concepts:["cultural_form_language"]},
+          {id:"religion",label:"Religious practices",concepts:["cultural_form_religion"]},
+          {id:"art",label:"Art and craft",concepts:["cultural_form_art"]},
+        ])),
+      component("reasons","Explains TWO reasons for cultural diversity in the Caribbean",4,
+        developed(2,[
+          {id:"african",label:"African heritage and enslavement",concepts:["african_heritage","slavery_culture"],developmentConcepts:["cultural_diversity"],allowGeneralDevelopment:true},
+          {id:"european",label:"European colonisation",concepts:["european_heritage","colonisation_culture"],developmentConcepts:["cultural_diversity"],allowGeneralDevelopment:true},
+          {id:"indian",label:"Indian indentureship and migration",concepts:["indian_heritage","indentureship_culture"],developmentConcepts:["cultural_diversity"],allowGeneralDevelopment:true},
+          {id:"indigenous",label:"Indigenous heritage",concepts:["indigenous_heritage"],developmentConcepts:["cultural_diversity"],allowGeneralDevelopment:true},
+          {id:"migration",label:"Migration from different regions",concepts:["migration_culture"],developmentConcepts:["cultural_diversity"],allowGeneralDevelopment:true},
+        ])),
+      component("benefit","Outlines ONE benefit of cultural diversity",2,
+        developed(1,[
+          {id:"identity",label:"Strengthens cultural identity and belonging",concepts:["cultural_identity"],developmentConcepts:["cultural_diversity"],allowGeneralDevelopment:true},
+          {id:"tourism",label:"Supports cultural tourism and economic activity",concepts:["cultural_tourism"],developmentConcepts:["employment","foreign_exchange"],allowGeneralDevelopment:true},
+          {id:"respect",label:"Builds respect for cultural differences",phrases:["respect different cultures","tolerance","appreciate differences","respect cultural differences"],developmentConcepts:["cultural_diversity"],allowGeneralDevelopment:true},
+          {id:"creativity",label:"Encourages cultural exchange and creative expression",phrases:["cultural exchange","creative expression","new cultural forms","mix of traditions"],developmentConcepts:["cultural_diversity"],allowGeneralDevelopment:true},
+        ])),
+      component("actions","Suggests THREE actions community groups may take to recognise cultural diversity",6,
+        developed(3,[
+          {id:"events",label:"Stage festivals, exhibitions or cultural fairs",concepts:["cultural_form_festival","promote_culture"],developmentConcepts:["cultural_identity","cultural_transmission"],allowGeneralDevelopment:true},
+          {id:"education",label:"Run school or community heritage workshops",concepts:["education_agent"],developmentConcepts:["cultural_transmission","cultural_identity"],allowGeneralDevelopment:true},
+          {id:"media",label:"Use media to showcase different cultural groups",concepts:["media_agent"],developmentConcepts:["promote_culture","global_cultural_reach"],allowGeneralDevelopment:true},
+          {id:"artists",label:"Include artistes and cultural organisations",concepts:["artistes_agent"],developmentConcepts:["promote_culture","cultural_transmission"],allowGeneralDevelopment:true},
+          {id:"diaspora",label:"Work with Caribbean diaspora groups",concepts:["emigrants_agent"],developmentConcepts:["diaspora_cultural_spread","global_cultural_reach"],allowGeneralDevelopment:true},
+          {id:"archive",label:"Document and preserve cultural practices",concepts:["preserve_culture"],developmentConcepts:["cultural_transmission"],allowGeneralDevelopment:true},
+        ])),
+      component("success","Explains why TWO cultural-diversity actions are likely to succeed",4,
+        developed(2,[
+          {id:"reach",label:"Reaches more people and raises cultural awareness",concepts:["global_cultural_reach"],developmentConcepts:["media_agent","promote_culture"],allowGeneralDevelopment:true},
+          {id:"transmission",label:"Passes cultural knowledge to younger generations",concepts:["cultural_transmission"],developmentConcepts:["education_agent","preserve_culture"],allowGeneralDevelopment:true},
+          {id:"identity",label:"Strengthens belonging and appreciation",concepts:["cultural_identity"],developmentConcepts:["cultural_diversity","promote_culture"],allowGeneralDevelopment:true},
+          {id:"participation",label:"Encourages community participation through cultural events",concepts:["cultural_form_festival"],developmentConcepts:["cultural_identity","promote_culture"],allowGeneralDevelopment:true},
+        ])),
+    ]),
+  }),
+
+  "ss-p2-b-q6":freeze({
+    topicPhrases:freeze(["sustainable development","future generations","protecting resources","climate change"]),
+    contentMarks:18,
+    organizationMarks:4,
+    components:freeze([
+      component("definition","Defines sustainable development",2,
+        definition([
+          {id:"present",label:"Meets present needs",phrases:["meet present needs","meets present needs","needs of the present"],marks:1},
+          {id:"future",label:"Protects the ability of future generations to meet their needs",concepts:["sustainable_development"],phrases:["future generations","without harming future generations","without compromising future generations"],marks:1},
+        ])),
+      component("resources","Identifies TWO natural resources to conserve",2,
+        list(2,[
+          {id:"forest",label:"Forests",concepts:["forest_resource"]},
+          {id:"water",label:"Water resources",concepts:["water_resource"]},
+          {id:"minerals",label:"Mineral resources",concepts:["mineral_resource"]},
+          {id:"fish",label:"Fisheries and marine resources",concepts:["fisheries"]},
+        ])),
+      component("farmland","Explains TWO ways agricultural land may be conserved",4,
+        developed(2,[
+          {id:"contour",label:"Use contour farming",concepts:["contour_farming"],developmentConcepts:["soil_erosion"],allowGeneralDevelopment:true},
+          {id:"terrace",label:"Use terracing on slopes",concepts:["terracing"],developmentConcepts:["soil_erosion"],allowGeneralDevelopment:true},
+          {id:"vegetation",label:"Maintain vegetation or tree cover",concepts:["reforestation"],developmentConcepts:["soil_erosion","conservation"],allowGeneralDevelopment:true},
+          {id:"grazing",label:"Prevent overgrazing",concepts:["overgrazing"],developmentConcepts:["soil_erosion"],allowGeneralDevelopment:true},
+        ])),
+      component("actions","Suggests THREE government actions to reduce causes of climate change",6,
+        developed(3,[
+          {id:"renewable",label:"Expand renewable energy",concepts:["renewable_policy","renewable_energy"],developmentConcepts:["lower_emissions"],allowGeneralDevelopment:true},
+          {id:"transport",label:"Improve public transport and reduce vehicle emissions",concepts:["public_transport","emissions_standard"],developmentConcepts:["lower_emissions"],allowGeneralDevelopment:true},
+          {id:"efficiency",label:"Promote energy efficiency",concepts:["energy_efficiency"],developmentConcepts:["lower_emissions"],allowGeneralDevelopment:true},
+          {id:"forest",label:"Protect and restore forests",concepts:["reforestation"],developmentConcepts:["lower_emissions","protect_environment"],allowGeneralDevelopment:true},
+          {id:"industry",label:"Enforce industrial emission standards",concepts:["emissions_standard"],developmentConcepts:["lower_emissions"],allowGeneralDevelopment:true},
+        ])),
+      component("success","Explains why TWO climate actions are likely to succeed",4,
+        developed(2,[
+          {id:"emissions",label:"Reduces greenhouse-gas emissions",concepts:["lower_emissions"],developmentConcepts:["climate_change"],allowGeneralDevelopment:true},
+          {id:"forest",label:"Protects or increases natural carbon absorption",concepts:["reforestation"],developmentConcepts:["lower_emissions","protect_environment"],allowGeneralDevelopment:true},
+          {id:"energy",label:"Reduces dependence on fossil fuels",concepts:["renewable_energy","energy_efficiency"],developmentConcepts:["fossil_fuels","lower_emissions"],allowGeneralDevelopment:true},
+          {id:"transport",label:"Reduces emissions from private vehicles",concepts:["public_transport"],developmentConcepts:["lower_emissions"],allowGeneralDevelopment:true},
+        ])),
+    ]),
+  }),
+
+  "ss-p2-c-q5":freeze({
+    topicPhrases:freeze(["government","elections","social services","democratic government"]),
+    contentMarks:18,
+    organizationMarks:4,
+    components:freeze([
+      component("definition","Defines democracy",2,
+        definition([
+          {id:"people",label:"Government involves citizens or their elected representatives",concepts:["democracy","democratic_participation"],phrases:["government by the people","citizens choose representatives"],marks:1},
+          {id:"elections",label:"Political leaders are chosen through elections or meaningful participation",concepts:["free_fair_elections","citizen_vote"],phrases:["elected by citizens","chosen in elections"],marks:1},
+        ])),
+      component("function","Outlines ONE government function other than providing social services",2,
+        developed(1,[
+          {id:"order",label:"Maintain law and order",concepts:["government_law_order"],developmentConcepts:["rule_of_law"],allowGeneralDevelopment:true},
+          {id:"economy",label:"Manage or support the economy",concepts:["government_economic_management"],developmentConcepts:["economic_growth","employment"],allowGeneralDevelopment:true},
+          {id:"relations",label:"Conduct foreign relations",concepts:["government_foreign_relations"],developmentConcepts:["bargaining_power"],allowGeneralDevelopment:true},
+          {id:"infrastructure",label:"Provide infrastructure",concepts:["infrastructure"],developmentConcepts:["public_investment"],allowGeneralDevelopment:true},
+        ],"KC")),
+      component("party","Describes TWO ways political parties prepare for elections",4,
+        developed(2,[
+          {id:"candidates",label:"Select and prepare candidates",concepts:["party_candidates"],developmentConcepts:["party_campaign"],allowGeneralDevelopment:true},
+          {id:"manifesto",label:"Prepare and publish a manifesto",concepts:["party_manifesto"],developmentConcepts:["party_campaign"],allowGeneralDevelopment:true},
+          {id:"campaign",label:"Organise campaigns, rallies and canvassing",concepts:["party_campaign"],developmentConcepts:["increased_awareness","increased_participation"],allowGeneralDevelopment:true},
+        ],"KC")),
+      component("strategies","Suggests THREE strategies government may use to maintain adequate social services",6,
+        developed(3,[
+          {id:"revenue",label:"Strengthen fair and effective revenue collection",concepts:["taxation","government_revenue"],developmentConcepts:["government_social_services","public_services"],allowGeneralDevelopment:true},
+          {id:"spending",label:"Prioritise and improve efficiency of public spending",concepts:["efficient_spending"],developmentConcepts:["fiscal_space","government_social_services"],allowGeneralDevelopment:true},
+          {id:"growth",label:"Promote economic growth and employment",concepts:["economic_growth","job_creation"],developmentConcepts:["government_revenue","public_services"],allowGeneralDevelopment:true},
+          {id:"partnership",label:"Use suitable public-private partnerships",concepts:["public_private_partnership"],developmentConcepts:["public_investment","public_services"],allowGeneralDevelopment:true},
+          {id:"debt",label:"Manage debt to protect fiscal space",concepts:["debt_burden","debt_service"],developmentConcepts:["fiscal_space","public_services"],allowGeneralDevelopment:true},
+        ])),
+      component("success","Explains why TWO social-service strategies are likely to succeed",4,
+        developed(2,[
+          {id:"revenue",label:"Increases reliable government revenue for services",concepts:["government_revenue"],developmentConcepts:["government_social_services","public_services"],allowGeneralDevelopment:true},
+          {id:"efficiency",label:"Reduces waste and directs more funds to priority services",concepts:["efficient_spending"],developmentConcepts:["fiscal_space","public_services"],allowGeneralDevelopment:true},
+          {id:"growth",label:"Economic growth expands employment and the revenue base",concepts:["economic_growth"],developmentConcepts:["government_revenue","employment"],allowGeneralDevelopment:true},
+          {id:"space",label:"Lower debt pressure leaves more fiscal space for services",concepts:["fiscal_space"],developmentConcepts:["public_services","debt_service"],allowGeneralDevelopment:true},
+        ])),
+    ]),
+  }),
+
+  "ss-p2-c-q6":freeze({
+    topicPhrases:freeze(["climate resilience","climate change","caribbean communities","adaptation"]),
+    contentMarks:18,
+    organizationMarks:4,
+    components:freeze([
+      component("definition","Defines climate-change adaptation",2,
+        definition([
+          {id:"adjust",label:"Adjusts to actual or expected climate impacts",concepts:["adaptation"],phrases:["adjust to climate impacts","cope with climate change","adapt to effects"],marks:1},
+          {id:"risk",label:"Reduces vulnerability or harm from those impacts",phrases:["reduce vulnerability","reduce climate risk","reduce damage","limit harm"],marks:1},
+        ])),
+      component("effects","Identifies TWO effects of climate change",2,
+        list(2,[
+          {id:"sea",label:"Sea-level rise",concepts:["sea_level_rise"]},
+          {id:"storm",label:"Stronger storms",concepts:["stronger_storms"]},
+          {id:"drought",label:"Drought",concepts:["drought"]},
+          {id:"flood",label:"Flooding",concepts:["flooding"]},
+          {id:"health",label:"Health impacts",concepts:["health_impact"]},
+          {id:"agriculture",label:"Agricultural impacts",concepts:["agriculture_impact"]},
+        ])),
+      component("community","Explains TWO ways households or communities may adapt",4,
+        developed(2,[
+          {id:"water",label:"Harvest and store rainwater",concepts:["rainwater_harvesting"],developmentConcepts:["drought"],allowGeneralDevelopment:true},
+          {id:"crops",label:"Use drought-resistant crops and climate-smart farming",concepts:["drought_resistant_crops"],developmentConcepts:["agriculture_impact"],allowGeneralDevelopment:true},
+          {id:"coast",label:"Protect coasts and restore mangroves",concepts:["coastal_protection"],developmentConcepts:["sea_level_rise","coastal_erosion"],allowGeneralDevelopment:true},
+          {id:"prepared",label:"Prepare evacuation and disaster plans",concepts:["disaster_preparedness"],developmentConcepts:["stronger_storms","flooding"],allowGeneralDevelopment:true},
+        ])),
+      component("government","Suggests THREE government measures to strengthen climate resilience",6,
+        developed(3,[
+          {id:"infrastructure",label:"Invest in climate-resilient infrastructure",concepts:["climate_resilient_infrastructure"],developmentConcepts:["flooding","stronger_storms"],allowGeneralDevelopment:true},
+          {id:"warning",label:"Strengthen early-warning systems",concepts:["early_warning"],developmentConcepts:["disaster_preparedness"],allowGeneralDevelopment:true},
+          {id:"coast",label:"Protect vulnerable coasts",concepts:["coastal_protection"],developmentConcepts:["sea_level_rise","coastal_erosion"],allowGeneralDevelopment:true},
+          {id:"water",label:"Expand water-conservation and storage systems",concepts:["rainwater_harvesting","watershed_protection"],developmentConcepts:["drought"],allowGeneralDevelopment:true},
+          {id:"planning",label:"Strengthen disaster preparedness and land-use planning",concepts:["disaster_preparedness"],developmentConcepts:["flooding","stronger_storms"],allowGeneralDevelopment:true},
+        ])),
+      component("success","Explains why TWO resilience measures are likely to succeed",4,
+        developed(2,[
+          {id:"damage",label:"Reduces physical damage and service disruption",concepts:["climate_resilient_infrastructure"],developmentConcepts:["disaster_disruption"],allowGeneralDevelopment:true},
+          {id:"warning",label:"Early warnings give people time to prepare or evacuate",concepts:["early_warning"],developmentConcepts:["disaster_preparedness"],allowGeneralDevelopment:true},
+          {id:"coast",label:"Coastal protection reduces erosion and storm-surge exposure",concepts:["coastal_protection"],developmentConcepts:["coastal_erosion","sea_level_rise"],allowGeneralDevelopment:true},
+          {id:"water",label:"Water storage reduces vulnerability during drought",concepts:["rainwater_harvesting"],developmentConcepts:["drought"],allowGeneralDevelopment:true},
         ])),
     ]),
   }),
