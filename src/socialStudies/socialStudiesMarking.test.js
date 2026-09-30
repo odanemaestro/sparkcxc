@@ -1,5 +1,9 @@
 import { SOCIAL_STUDIES_PAPER2 } from "./data/socialStudiesExamBank";
 import {
+  SOCIAL_STUDIES_PAPER2_VARIANTS,
+  socialStudiesPaper2VariantStats,
+} from "./data/socialStudiesPaper2Variants";
+import {
   gradeSocialStudiesShortAnswer,
   gradeSocialStudiesStructuredPaper,
 } from "./marking/socialStudiesShortAnswerGrader";
@@ -28,8 +32,8 @@ function part(questionIndex,partIndex){
 describe("Social Studies short-answer marking", () => {
   test("ships a large reusable vocabulary bank", () => {
     const stats=socialStudiesLexiconStats();
-    expect(stats.concepts).toBeGreaterThanOrEqual(380);
-    expect(stats.aliases).toBeGreaterThanOrEqual(1700);
+    expect(stats.concepts).toBeGreaterThanOrEqual(400);
+    expect(stats.aliases).toBeGreaterThanOrEqual(1750);
   });
 
   test("accepts Caribbean Social Studies wording and common variants", () => {
@@ -259,6 +263,42 @@ describe("Social Studies essay marking", () => {
     expect(result.organizationMarks).toBe(0);
     expect(result.marks).toBe(0);
   });
+
+  test("marks every alternate Paper 02 essay out of 22", () => {
+    const essayIds=SOCIAL_STUDIES_PAPER2_VARIANTS
+      .flatMap(set=>set.questions)
+      .filter(question=>question.type==="essay")
+      .map(question=>question.id);
+
+    expect(essayIds).toHaveLength(4);
+    essayIds.forEach(id=>{
+      const result=gradeSocialStudiesEssay("",id);
+      expect(result.maxMarks).toBe(22);
+      expect(result.marks).toBe(0);
+    });
+  });
+});
+
+describe("Social Studies alternate Paper 02 sets", () => {
+  test("provides two additional complete current-format papers", () => {
+    const stats=socialStudiesPaper2VariantStats();
+    expect(stats.sets).toBe(2);
+    expect(stats.questions).toBe(12);
+    expect(stats.structured).toBe(8);
+    expect(stats.essays).toBe(4);
+
+    SOCIAL_STUDIES_PAPER2_VARIANTS.forEach(set=>{
+      expect(set.questions).toHaveLength(6);
+      expect(set.questions.filter(question=>question.type==="structured")).toHaveLength(4);
+      expect(set.questions.filter(question=>question.type==="essay")).toHaveLength(2);
+      expect(set.questions.reduce((sum,question)=>sum+question.totalMarks,0)).toBe(100);
+
+      const structured=gradeSocialStudiesStructuredPaper({},set.questions);
+      const essays=gradeSocialStudiesEssays({},set.questions);
+      expect(structured.maxScore).toBe(56);
+      expect(essays.maxScore).toBe(44);
+    });
+  });
 });
 
 describe("Social Studies past-paper audit", () => {
@@ -291,6 +331,8 @@ test("Practice hub exposes the Social Studies short-answer examiner", () => {
   const examiner=fs.readFileSync(path.join(__dirname,"practice","SocialStudiesShortAnswerPractice.jsx"),"utf8");
   expect(hub).toContain("Short-answer examiner");
   expect(hub).toContain('setMode("shortAnswer")');
+  expect(hub).toContain("PAPER2_SETS");
+  expect(hub).toContain("Choose one of three original current-format simulations");
   expect(examiner).toContain("Mark my response");
   expect(examiner).toContain("gradeSocialStudiesShortAnswer");
 });
