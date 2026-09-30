@@ -725,3 +725,99 @@ html[data-glass="true"] .ss-paper-set-picker{
 @media(max-width:700px){
   .ss-paper-set-picker{grid-template-columns:1fr}
 }
+
+
+/* Social Studies SBA project checker */
+.ss-sba-head{margin-bottom:14px}
+.ss-sba-transition,
+.ss-sba-intro,
+.ss-sba-rubric-summary{
+  margin:12px 0;padding:14px 16px;border:1px solid var(--spark-border,#d9e2ec);
+  border-radius:12px;background:var(--spark-paper,#fff)
+}
+.ss-sba-transition{display:grid;gap:5px}
+.ss-sba-transition strong{font-size:11px;color:var(--spark-ink,#102a43)}
+.ss-sba-transition p{margin:0;color:var(--spark-ink-soft,#334e68);font-size:10.5px;line-height:1.5}
+.ss-sba-intro{display:grid;gap:7px}
+.ss-sba-intro h1{margin:0;color:var(--spark-ink,#102a43);font-size:clamp(20px,3vw,29px)}
+.ss-sba-intro p{margin:0;color:var(--spark-ink-soft,#334e68);line-height:1.55}
+.ss-sba-intro small{color:var(--spark-text-muted,#627d98)}
+.ss-sba-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:14px 0}
+.ss-sba-card{
+  display:grid;gap:9px;padding:15px;border:1px solid var(--spark-border,#d9e2ec);
+  border-radius:12px;background:var(--spark-paper,#fff)
+}
+.ss-sba-wide{grid-column:1 / -1}
+.ss-sba-card-head{display:flex;gap:10px;align-items:center}
+.ss-sba-card-head>span{
+  display:grid;place-items:center;width:30px;height:30px;border-radius:9px;
+  background:var(--spark-muted,#edf2f7);color:var(--spark-teal-dark,#087f73);font-size:11px;font-weight:900
+}
+.ss-sba-card-head>div{display:grid;gap:1px}
+.ss-sba-card-head h2{margin:0;color:var(--spark-ink,#102a43);font-size:13px}
+.ss-sba-card-head small{color:var(--spark-text-muted,#627d98);font-size:9.5px}
+.ss-sba-card>p{margin:0;color:var(--spark-ink-soft,#334e68);font-size:10.5px;line-height:1.5}
+.ss-sba-card label{display:grid;gap:5px;color:var(--spark-ink-soft,#334e68);font-size:10px;font-weight:700}
+.ss-sba-card textarea,
+.ss-sba-card input,
+.ss-sba-card select{
+  width:100%;box-sizing:border-box;border:1px solid var(--spark-border,#d9e2ec);
+  border-radius:9px;background:var(--spark-bg,#f7fafc);color:var(--spark-ink,#102a43);
+  padding:9px 10px;font:inherit;font-size:10.5px
+}
+.ss-sba-card textarea{min-height:88px;resize:vertical;line-height:1.5}
+.ss-sba-card .ss-sba-tall{min-height:150px}
+.ss-sba-card .ss-sba-report{min-height:240px}
+.ss-sba-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.ss-sba-presentations{display:grid;gap:9px}
+.ss-sba-presentation-row{
+  display:grid;grid-template-columns:110px minmax(120px,.8fr) minmax(150px,1.3fr) auto auto;
+  gap:8px;align-items:center;padding:9px;border-radius:9px;background:var(--spark-muted,#edf2f7)
+}
+.ss-sba-presentation-row strong{font-size:10px;color:var(--spark-ink,#102a43)}
+.ss-sba-presentation-row label{display:flex;align-items:center;gap:5px;font-size:9px;white-space:nowrap}
+.ss-sba-presentation-row label input{width:auto}
+.ss-sba-check-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.ss-sba-check-grid label{
+  display:flex;align-items:center;gap:7px;padding:9px;border:1px solid var(--spark-border-soft,#edf2f7);
+  border-radius:9px;background:var(--spark-bg,#f7fafc)
+}
+.ss-sba-check-grid input{width:auto}
+.ss-sba-result{display:grid;gap:4px;margin-top:3px;padding:9px 10px;border-radius:9px;background:var(--spark-muted,#edf2f7)}
+.ss-sba-result strong{font-size:10px;color:var(--spark-ink,#102a43)}
+.ss-sba-result p{margin:0;color:var(--spark-ink-soft,#334e68);font-size:9.5px;line-height:1.45}
+.ss-sba-result.complete{border-left:3px solid var(--spark-teal,#0d9488)}
+.ss-sba-result.partial{border-left:3px solid #d97706}
+.ss-sba-result.missing{border-left:3px solid #b91c1c}
+.ss-sba-priorities{display:grid;gap:5px;margin-top:10px}
+.ss-sba-priorities strong{font-size:10.5px}
+.ss-sba-priorities p{margin:0!important;font-size:10px!important}
+.ss-sba-rubric-summary{display:grid;gap:9px}
+.ss-sba-rubric-summary>strong{font-size:11px;color:var(--spark-ink,#102a43)}
+.ss-sba-rubric-summary>div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.ss-sba-rubric-summary span{
+  padding:7px 9px;border-radius:8px;background:var(--spark-muted,#edf2f7);
+  color:var(--spark-ink-soft,#334e68);font-size:9.5px
+}
+.ss-sba-actions{display:flex;gap:10px;flex-wrap:wrap;margin:15px 0 8px}
+html[data-glass="true"] .ss-sba-transition,
+html[data-glass="true"] .ss-sba-intro,
+html[data-glass="true"] .ss-sba-card,
+html[data-glass="true"] .ss-sba-rubric-summary{
+  background:color-mix(in srgb,var(--spark-paper,#fff) 86%,transparent);
+  -webkit-backdrop-filter:blur(18px) saturate(150%);backdrop-filter:blur(18px) saturate(150%)
+}
+html[data-theme="dark"] .ss-sba-result.partial{border-left-color:#f59e0b}
+html[data-theme="dark"] .ss-sba-result.missing{border-left-color:#ef4444}
+@media(max-width:900px){
+  .ss-sba-grid{grid-template-columns:1fr}
+  .ss-sba-wide{grid-column:auto}
+  .ss-sba-presentation-row{grid-template-columns:1fr 1fr}
+  .ss-sba-presentation-row strong{grid-column:1 / -1}
+}
+@media(max-width:620px){
+  .ss-sba-two,.ss-sba-check-grid,.ss-sba-rubric-summary>div{grid-template-columns:1fr}
+  .ss-sba-presentation-row{grid-template-columns:1fr}
+  .ss-sba-card{padding:12px}
+  .ss-sba-actions{display:grid}
+}
