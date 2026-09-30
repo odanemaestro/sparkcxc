@@ -189,6 +189,12 @@ function gradeCriteria(value,scheme){
 
 function scoreDevelopedPoint(window,point,scheme,index){
   if(!pointMatches(window,point)) return null;
+  const matchedConcepts=(point.concepts || []).filter(id=>mentionsSocialStudiesConcept(window,id));
+  const matchedPhrases=(point.phrases || []).filter(phrase=>mentionsSocialStudiesPhrase(window,phrase));
+  const anchorKey=[
+    ...matchedConcepts.map(id=>"concept:"+id),
+    ...matchedPhrases.map(phrase=>"phrase:"+normalizeSocialStudiesText(phrase)),
+  ].sort().join("|");
   const baseMarks=Number(point.baseMarks ?? 1);
   const developmentMarks=Number(point.developmentMarks ?? 1);
   const developed=developmentMatches(window,point);
@@ -201,6 +207,8 @@ function scoreDevelopedPoint(window,point,scheme,index){
     marks:baseMarks+(developed?developmentMarks:0),
     maxMarks:baseMarks+developmentMarks,
     profile:point.profile || scheme.profile || "UK",
+    evidence:window,
+    anchorKey,
   };
 }
 
@@ -210,16 +218,36 @@ function gradeDevelopedPoints(value,scheme){
   const candidates=[];
 
   (scheme.points || []).forEach((point,index)=>{
-    let best=null;
     windows.forEach(window=>{
       const result=scoreDevelopedPoint(window,point,scheme,index);
-      if(result && (!best || result.marks>best.marks)) best=result;
+      if(result) candidates.push(result);
     });
-    if(best) candidates.push(best);
   });
 
-  candidates.sort((a,b)=>b.marks-a.marks || a.id.localeCompare(b.id));
-  const selected=candidates.slice(0,maxPoints);
+  candidates.sort((a,b)=>
+    b.marks-a.marks
+    || normalizeSocialStudiesText(a.evidence).length-normalizeSocialStudiesText(b.evidence).length
+    || a.id.localeCompare(b.id)
+  );
+
+  const selected=[];
+  const usedPoints=new Set();
+  const usedEvidenceAnchors=new Set();
+
+  for(const candidate of candidates){
+    if(selected.length>=maxPoints) break;
+    if(usedPoints.has(candidate.id)) continue;
+    const evidenceAnchor=[
+      normalizeSocialStudiesText(candidate.evidence),
+      candidate.anchorKey || candidate.id,
+    ].join("::");
+    if(candidate.anchorKey && usedEvidenceAnchors.has(evidenceAnchor)) continue;
+
+    selected.push(candidate);
+    usedPoints.add(candidate.id);
+    if(candidate.anchorKey) usedEvidenceAnchors.add(evidenceAnchor);
+  }
+
   const maxMarks=Number(scheme.maxMarks || maxPoints*2);
   const marks=Math.min(maxMarks,selected.reduce((sum,item)=>sum+item.marks,0));
 
