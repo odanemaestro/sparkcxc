@@ -318,37 +318,77 @@ function introductionPresent(value,scheme){
 function organizationGrade(value,scheme){
   const text=normalizeSocialStudiesText(value);
   const wordCount=text.split(/\s+/).filter(Boolean).length;
+  const blocks=paragraphs(value);
+  const paragraphWordCounts=blocks.map(block=>normalizeSocialStudiesText(block).split(/\s+/).filter(Boolean).length);
+  const developedParagraphCount=paragraphWordCounts.filter(count=>count>=20).length;
+  const sentenceCount=String(value || "").split(/[.!?]+/).map(item=>item.trim()).filter(Boolean).length;
+
   if(wordCount<20){
     return {
       marks:0,maxMarks:4,band:0,
       feedback:"No clear essay organisation is demonstrated.",
-      paragraphCount:paragraphs(value).length,
+      paragraphCount:blocks.length,
+      developedParagraphCount,
+      paragraphWordCounts,
+      sentenceCount,
       linkingCount:0,
       introduction:false,
+      strengths:[],
+      weaknesses:["The response is too short to demonstrate an essay structure."],
+      nextStep:"Write an introduction and develop the response in connected paragraphs.",
     };
   }
 
-  const blocks=paragraphs(value);
-  const linkingCount=LINKING_PHRASES.reduce((sum,phrase)=>sum+(text.includes(phrase)?1:0),0);
+  const linkingSignals=LINKING_PHRASES.filter(phrase=>text.includes(phrase));
+  const linkingCount=linkingSignals.length;
   const introduction=introductionPresent(value,scheme);
 
   let marks=1;
-  if(blocks.length>=2) marks=2;
-  if(introduction && blocks.length>=3 && linkingCount>=2) marks=3;
-  if(introduction && blocks.length>=4 && linkingCount>=4) marks=4;
+  if(blocks.length>=2 && developedParagraphCount>=1) marks=2;
+  if(introduction && blocks.length>=3 && developedParagraphCount>=2 && linkingCount>=2) marks=3;
+  if(introduction && blocks.length>=4 && developedParagraphCount>=3 && linkingCount>=4 && sentenceCount>=8) marks=4;
+
+  const strengths=[];
+  const weaknesses=[];
+  if(introduction) strengths.push("The opening establishes the essay topic.");
+  else weaknesses.push("The opening does not clearly establish the essay topic.");
+  if(developedParagraphCount>=3) strengths.push("Several paragraphs develop complete points.");
+  else weaknesses.push("More paragraphs need developed points rather than short statements.");
+  if(linkingCount>=4) strengths.push("The essay uses effective linking language.");
+  else if(linkingCount>=2) strengths.push("Some useful linking language is present.");
+  else weaknesses.push("The essay needs clearer links between ideas.");
+  if(blocks.length>=4) strengths.push("The response uses a clear multi-paragraph essay format.");
+  else weaknesses.push("Use clearer paragraphing to separate the major parts of the response.");
 
   const feedback={
-    4:"Excellent organisation. The response uses an essay format with coherent paragraphs and effective links.",
-    3:"Good organisation. The response has a clear introduction and coherent paragraphs.",
-    2:"Some organisation is evident, but the essay needs stronger cohesion and paragraphing.",
-    1:"Essay organisation is weak. Build clear paragraphs and connect the points.",
+    4:"Excellent organisation. The response uses an essay format with coherent presentation of points, effective linkages, a clear introduction and developed paragraphs.",
+    3:"Good organisation. The response has a clear introduction and coherent paragraphs, but its linkages or development are not consistently strong.",
+    2:"Organisation is evident, but the essay is not consistently cohesive and some paragraphing or development is weak.",
+    1:"Essay organisation is weak. The response shows limited essay structure and little effective paragraph development.",
   }[marks];
+
+  const nextStep=marks===4
+    ? "Maintain this structure while checking that every paragraph directly answers the task."
+    : !introduction
+      ? "Open with a brief introduction that establishes the topic and direction of the essay."
+      : developedParagraphCount<3
+        ? "Develop each major point in its own paragraph with explanation and relevant support."
+        : linkingCount<4
+          ? "Use clearer transitions to show how one developed point connects to the next."
+          : "Strengthen the essay structure and keep each paragraph focused on one developed point.";
 
   return {
     marks,maxMarks:4,band:marks,feedback,
     paragraphCount:blocks.length,
+    developedParagraphCount,
+    paragraphWordCounts,
+    sentenceCount,
     linkingCount,
+    linkingSignals,
     introduction,
+    strengths,
+    weaknesses,
+    nextStep,
   };
 }
 
