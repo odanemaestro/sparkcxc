@@ -106,6 +106,14 @@ function notificationTypeMeta(notification) {
     if (type === "child_topic_quiz_completed") return { ...base, icon: "IS", label: "Integrated Science topic test" };
     if (type === "child_section_test_completed") return { ...base, icon: "IS", label: "Integrated Science checkpoint" };
   }
+  if (String(metadata?.subject_id || "").toLowerCase() === "social-studies") {
+    const type = String(notification?.type || "");
+    if (type === "paper1_completed") return { ...base, icon: "P1", label: "Social Studies Paper 1" };
+    if (type === "paper2_completed") return { ...base, icon: "P2", label: "Social Studies Paper 2" };
+    if (type === "child_paper1_completed" || type === "child_paper2_completed") return { ...base, icon: "SS", label: "Social Studies result" };
+    if (type === "child_lesson_completed") return { ...base, icon: "SS", label: "Social Studies lesson" };
+    if (type === "child_topic_quiz_completed") return { ...base, icon: "SS", label: "Social Studies unit practice" };
+  }
   return base;
 }
 

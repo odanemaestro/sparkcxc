@@ -814,8 +814,167 @@ function buildInformationTechnologyProgressReport({ subject, rows = [], events =
   };
 }
 
+// SPARK_SOCIAL_STUDIES_REPORT_V1
+function socialStudiesPaperKind(row) {
+  const key = String(row?.activity_key || "").toLowerCase();
+  const metadataType = String(row?.metadata?.paper_type || "").toLowerCase().replace(/\s+/g, "");
+  const eventType = String(row?.metadata?.event_type || "").toLowerCase();
+  const title = String(row?.title || "").toLowerCase();
+  if (
+    key.startsWith("paper1:") ||
+    metadataType === "paper1" ||
+    eventType === "social_studies_paper1_exam" ||
+    /paper\s*0?1\b/.test(title)
+  ) return "paper1";
+  if (
+    key.startsWith("paper2:") ||
+    metadataType === "paper2" ||
+    eventType === "social_studies_paper2_exam" ||
+    /paper\s*0?2\b/.test(title)
+  ) return "paper2";
+  return null;
+}
+
+function socialStudiesAverage(rows = []) {
+  const values = rows.map(row => Number(row?.percent)).filter(Number.isFinite);
+  return values.length ? Math.round(values.reduce((sum, value) => sum + value, 0) / values.length) : null;
+}
+
+function buildSocialStudiesProgressReport({ subject, rows = [], events = [] } = {}, options = {}) {
+  const now = options.now ? new Date(options.now) : new Date();
+  const period = reportPeriodDefinition(options.period || "month", now, options.custom || {});
+  const scoped = subjectRows(rows, "social-studies");
+  const scopedEvents = subjectRows(events, "social-studies");
+  const periodEvents = scopedEvents.filter(row => inPeriod(row, period));
+  const fallbackPeriodRows = scoped.filter(row => {
+    if (row?.metadata?.backfilled && !row?.metadata?.at) return false;
+    return inPeriod(row, period);
+  });
+  const periodRows = periodEvents.length ? periodEvents : fallbackPeriodRows;
+
+  const summary = summarizeSubjectProgress(scoped, {
+    subjectId: "social-studies",
+    totalTopics: Number(subject?.stats?.topics || 39),
+  });
+  const periodSummary = summarizeSubjectProgress(periodRows, {
+    subjectId: "social-studies",
+    totalTopics: Number(subject?.stats?.topics || 39),
+  });
+
+  const allPaper1 = scoped.filter(row => row.activity_type === "exam" && socialStudiesPaperKind(row) === "paper1");
+  const allPaper2 = scoped.filter(row => row.activity_type === "exam" && socialStudiesPaperKind(row) === "paper2");
+  const periodPaper1 = periodRows.filter(row => row.activity_type === "exam" && socialStudiesPaperKind(row) === "paper1");
+  const periodPaper2 = periodRows.filter(row => row.activity_type === "exam" && socialStudiesPaperKind(row) === "paper2");
+  const paper1Average = socialStudiesAverage(periodPaper1);
+  const paper2Average = socialStudiesAverage(periodPaper2);
+  const examRows = [...periodPaper1, ...periodPaper2];
+  const examAverage = socialStudiesAverage(examRows);
+
+  const strongestSkills = reportSkillRows(scoped, "strong");
+  const weakestSkills = reportSkillRows(scoped, "weak").filter(item => item.score < 80);
+
+  let insight;
+  if (!summary.active) {
+    insight = "No Social Studies learning activity has been recorded yet. Start with a lesson or unit practice to build your progress picture.";
+  } else {
+    const parts = [];
+    const overallPaper1 = socialStudiesAverage(allPaper1);
+    const overallPaper2 = socialStudiesAverage(allPaper2);
+    if (overallPaper1 != null) parts.push(`Paper 01 is averaging ${overallPaper1}%`);
+    if (overallPaper2 != null) parts.push(`Paper 02 is averaging ${overallPaper2}%`);
+    const examCopy = parts.length ? `${parts.join(" and ")}. ` : "";
+    insight = `${examCopy}${summary.lessonsCompleted} of ${summary.totalTopics || 39} Social Studies lessons are complete, with ${summary.practiceAttempts} recorded practice or assessment attempt${summary.practiceAttempts === 1 ? "" : "s"}.`;
+  }
+
+  const recommendations = [];
+  if (weakestSkills[0]) recommendations.push(`Review ${weakestSkills[0].skill}, then complete another unit practice set.`);
+  if (summary.lessonsCompleted < summary.totalTopics) recommendations.push("Continue the next incomplete Social Studies lesson.");
+  if (!allPaper1.length) recommendations.push("Complete a Social Studies Paper 01 simulation to test recall and application across the syllabus.");
+  if (!allPaper2.length) recommendations.push("Complete a Social Studies Paper 02 simulation to build structured-response and essay evidence.");
+  if (!summary.sbaSectionsReviewed) recommendations.push("Use the SBA project checker to review research and enquiry skills.");
+  if (!recommendations.length) recommendations.push("Keep a balanced routine of lessons, unit practice, Paper 01, Paper 02 and research skills.");
+
+  const assessments = periodRows
+    .filter(row => ["topic_quiz", "exam", "practice"].includes(row.activity_type) && row.percent != null)
+    .sort((a, b) => (rowDate(b)?.getTime() || 0) - (rowDate(a)?.getTime() || 0))
+    .slice(0, 10)
+    .map(row => {
+      const paperKind = row.activity_type === "exam" ? socialStudiesPaperKind(row) : null;
+      return {
+        id: `${row.subject_id}:${row.activity_key}`,
+        label: paperKind
+          ? `${paperKind === "paper1" ? "Paper 01" : "Paper 02"} · ${row.title || row.activity_key}`
+          : row.title || row.activity_key,
+        percent: Math.round(safeNumber(row.percent)),
+        score: safeNumber(row.score),
+        maxScore: safeNumber(row.max_score),
+        completedAt: row.updated_at || row.occurred_at || row.created_at || null,
+      };
+    });
+
+  return {
+    subjectId: "social-studies",
+    subjectName: subject?.name || "CSEC Social Studies",
+    generatedAt: now.toISOString(),
+    period,
+    metrics: [
+      { label: "Lesson coverage", value: `${summary.lessonsCompleted}/${summary.totalTopics || 39}` },
+      { label: "Paper 01 average", value: paper1Average == null ? "N/A" : `${paper1Average}%` },
+      { label: "Paper 02 average", value: paper2Average == null ? "N/A" : `${paper2Average}%` },
+      { label: "SBA reviews", value: String(summary.sbaSectionsReviewed || 0) },
+    ],
+    assessmentLabel: "Recent Social Studies practice and examination results",
+    emptyAssessmentCopy: "No Social Studies practice or examination results in this reporting period.",
+    strongestAreaTitle: "Strongest Social Studies units",
+    weakestAreaTitle: "Social Studies units to strengthen",
+    strongestEmpty: "Complete unit practice to identify your strongest Social Studies areas.",
+    weakestEmpty: "Complete unit practice to identify areas that need more work.",
+    activityLabels: {
+      questionsAttempted: "Practice attempts",
+      questionAccuracy: "Practice average",
+      examsCompleted: "Paper simulations",
+      examAverage: "Paper average",
+    },
+    summary: {
+      mastery: periodSummary.practiceAverage || 0,
+      skillCount: strongestSkills.length + weakestSkills.length,
+      examCount: examRows.length,
+      insight,
+    },
+    activity: {
+      lessonsCompleted: periodSummary.lessonsCompleted,
+      questionsAttempted: periodSummary.practiceAttempts,
+      questionAccuracy: periodSummary.practiceAverage,
+      hasQuestionAccuracy: periodSummary.practiceAttempts > 0,
+      examsCompleted: examRows.length,
+      examAverage: examAverage || 0,
+      hasExamAverage: examAverage != null,
+      tutorSessions: 0,
+      flashcardsReviewed: periodSummary.flashcardsReviewed || 0,
+      milestones: periodRows.length,
+      labsCompleted: 0,
+    },
+    exams: assessments,
+    milestones: periodRows.slice(0, 8).map(row => ({
+      id: `${row.subject_id}:${row.activity_key}`,
+      title: row.title || row.activity_key,
+      created_at: row.updated_at || row.occurred_at || row.created_at || now.toISOString(),
+      metadata: { subject_id: row.subject_id },
+    })),
+    strongestSkills,
+    weakestSkills,
+    recommendations: recommendations.slice(0, 4),
+    goal: null,
+    studyCircle: null,
+  };
+}
+
 export function buildGenericSubjectProgressReport({ subject, rows = [], events = [] } = {}, options = {}) {
-  if (String(subject?.id || "").toLowerCase() === "information-technology") {
+  const subjectId = String(subject?.id || "").toLowerCase();
+  if (subjectId === "social-studies") {
+    return buildSocialStudiesProgressReport({ subject, rows, events }, options);
+  }
+  if (subjectId === "information-technology") {
     return buildInformationTechnologyProgressReport({ subject, rows, events }, options);
   }
   const now = options.now ? new Date(options.now) : new Date();

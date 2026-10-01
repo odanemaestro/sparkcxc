@@ -186,8 +186,10 @@ function TimelineActivity({ activity, onComplete }){
   return <div className="ss-timeline">
     {items.map((item,index)=><div key={item} className="ss-timeline-row">
       <b>{index+1}</b><span>{item}</span>
-      <div><button type="button" disabled={index===0} onClick={()=>move(index,-1)} aria-label={`Move ${item} earlier`}>↑</button>
-      <button type="button" disabled={index===items.length-1} onClick={()=>move(index,1)} aria-label={`Move ${item} later`}>↓</button></div>
+      <div className="ss-timeline-controls">
+        <button type="button" disabled={index===0} onClick={()=>move(index,-1)} aria-label={`Move ${item} earlier`}>↑</button>
+        <button type="button" disabled={index===items.length-1} onClick={()=>move(index,1)} aria-label={`Move ${item} later`}>↓</button>
+      </div>
     </div>)}
     <button type="button" className="ss-primary" onClick={()=>{setChecked(true);if(isCorrect)onComplete?.({score:items.length,total:items.length});}}>Check order</button>
     {checked && <ResultMessage correct={isCorrect} text={isCorrect ? "The sequence is correct." : "Use the arrows and try the sequence again."}/>}
@@ -203,9 +205,15 @@ function MapSpotter({ activity, visual, onComplete }){
       <figcaption>{visual.attribution} <a href={visual.sourceUrl} target="_blank" rel="noreferrer">Source and licence</a></figcaption>
     </figure>}
     <div className="ss-map-questions">
-      {items.map((item,index)=><article key={item.label}>
+      {items.map((item,index)=><article className="ss-map-question" key={item.label}>
         <strong>{item.label}</strong>
-        <button type="button" onClick={()=>setRevealed(current=>({...current,[index]:!current[index]}))}>{revealed[index] ? "Hide answer" : "Reveal answer"}</button>
+        <button
+          type="button"
+          className={`ss-reveal-button ${revealed[index] ? "revealed" : ""}`}
+          onClick={()=>setRevealed(current=>({...current,[index]:!current[index]}))}
+        >
+          {revealed[index] ? "Hide answer" : "Reveal answer"}
+        </button>
         {revealed[index] && <p>{item.answer}</p>}
       </article>)}
     </div>
@@ -222,7 +230,13 @@ function FamilyTree({ activity, visual, onComplete }){
     </figure>}
     {(activity.items || []).map((item,index)=><div className="ss-reveal-row" key={item.label}>
       <span>{item.label}</span>
-      <button type="button" onClick={()=>setRevealed(current=>({...current,[index]:!current[index]}))}>{revealed[index] ? item.answer : "Reveal"}</button>
+      <button
+        type="button"
+        className={`ss-reveal-button ${revealed[index] ? "revealed" : ""}`}
+        onClick={()=>setRevealed(current=>({...current,[index]:!current[index]}))}
+      >
+        {revealed[index] ? item.answer : "Reveal"}
+      </button>
     </div>)}
     <button type="button" className="ss-primary" disabled={Object.keys(revealed).length<(activity.items || []).length} onClick={()=>onComplete?.({score:1,total:1})}>Complete relationship check</button>
   </div>;

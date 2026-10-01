@@ -4,6 +4,7 @@ import SocialStudiesShortAnswerPractice from "./SocialStudiesShortAnswerPractice
 import SocialStudiesSbaPractice from "./SocialStudiesSbaPractice";
 import ProgressBar from "../../components/ui/ProgressBar";
 import { recordSubjectActivity } from "../../subjects/subjectProgress";
+import { readSparkHashRoute, subscribeSparkRoute } from "../../routing/sparkRoutingV270";
 import {
   SOCIAL_STUDIES_COURSE,
   SOCIAL_STUDIES_LESSONS,
@@ -30,6 +31,19 @@ const RESEARCH_LESSONS=new Set([
   "a2-election-outcomes-data","b1-population-foundations","b1-population-data",
   "b1-environment-data-action"
 ]);
+const SOCIAL_STUDIES_SECTION_IDS=new Set(["A1","A2","B1","B2"]);
+
+function socialStudiesPracticeRoute(){
+  const route=readSparkHashRoute();
+  if(route.path!=="/practice/social-studies") return {sectionId:"A1",mode:"home"};
+  const requested=String(route.params.get("section") || "").toUpperCase();
+  const sectionId=SOCIAL_STUDIES_SECTION_IDS.has(requested) ? requested : "A1";
+  const requestedMode=String(route.params.get("mode") || "").toLowerCase();
+  return {
+    sectionId,
+    mode:requestedMode==="sba" ? "sba" : "home",
+  };
+}
 
 function shuffled(items){
   const copy=[...items];
@@ -462,31 +476,57 @@ function Paper2Practice({ onExit, onComplete }){
 }
 
 export default function SocialStudiesPracticeHub({ supabase, userId, onBack }){
-  const [mode,setMode]=useState("home");
-  const [sectionId,setSectionId]=useState("A1");
+  const initialRoute=useMemo(()=>socialStudiesPracticeRoute(),[]);
+  const [mode,setMode]=useState(initialRoute.mode);
+  const [sectionId,setSectionId]=useState(initialRoute.sectionId);
   const [session,setSession]=useState([]);
   const [answers,setAnswers]=useState([]);
   const [sessionTitle,setSessionTitle]=useState("");
+  const [practiceKind,setPracticeKind]=useState("section");
+
+  useEffect(()=>subscribeSparkRoute(route=>{
+    if(route.path!=="/practice/social-studies") return;
+    const requested=String(route.params.get("section") || "").toUpperCase();
+    if(SOCIAL_STUDIES_SECTION_IDS.has(requested)) setSectionId(requested);
+    if(String(route.params.get("mode") || "").toLowerCase()==="sba") setMode("sba");
+  }),[]);
 
   const saveExamAttempt=async ({ paper, score=null, maxScore=null })=>{
+    const label=String(paper || "Practice");
+    const normalized=label.toLowerCase();
+    const paperType=normalized==="paper 01" ? "paper1" : normalized==="paper 02" ? "paper2" : null;
+    const activityType=paperType ? "exam" : normalized==="sba project checker" ? "sba_review" : "practice";
+    const eventType=paperType
+      ? `social_studies_${paperType}_exam`
+      : activityType==="sba_review"
+        ? "social_studies_sba_review"
+        : "social_studies_practice";
     const percent=score!=null && maxScore ? Math.round(score/maxScore*100) : null;
+    const slug=normalized.replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"") || "practice";
+    const prefix=paperType || (activityType==="sba_review" ? "sba" : "practice");
     const result=await recordSubjectActivity({
       supabase,
       activity:{
         subjectId:"social-studies",
-        activityKey:`${paper.toLowerCase().replace(/\s+/g,"-")}:${Date.now()}`,
-        activityType:"practice",
+        activityKey:`${prefix}:${slug}`,
+        activityType,
         sectionId:null,
         topicId:null,
-        title:`Social Studies ${paper}`,
+        title:`Social Studies ${label}`,
         completed:true,
         score,
         maxScore,
         percent,
-        metadata:{source:"social_studies_exam_style_v1",paper,at:new Date().toISOString()},
+        metadata:{
+          source:"social_studies_exam_style_v1",
+          paper:label,
+          paper_type:paperType,
+          event_type:eventType,
+          at:new Date().toISOString(),
+        },
       },
     });
-    if(result?.error) console.warn(`Could not save Social Studies ${paper} attempt`,result.error);
+    if(result?.error) console.warn(`Could not save Social Studies ${label} attempt`,result.error);
   };
 
   const start=(kind,section=sectionId)=>{
@@ -508,6 +548,7 @@ export default function SocialStudiesPracticeHub({ supabase, userId, onBack }){
     }
     setSession(shuffled(pool).slice(0,count));
     setSessionTitle(title);
+    setPracticeKind(kind);
     setAnswers([]);
     setMode("quiz");
   };
@@ -518,21 +559,28 @@ export default function SocialStudiesPracticeHub({ supabase, userId, onBack }){
     const score=finalAnswers.filter(item=>item.correct).length;
     const total=finalAnswers.length;
     const percent=total ? Math.round(score/total*100) : 0;
-    const key=`practice:${Date.now()}`;
+    const unitPractice=practiceKind==="section";
+    const unitId=unitPractice ? sectionId : null;
+    const key=`${unitPractice ? "topic-quiz" : "practice"}:${unitId || practiceKind}`;
     const result=await recordSubjectActivity({
       supabase,
       activity:{
         subjectId:"social-studies",
         activityKey:key,
-        activityType:"practice",
-        sectionId:sessionTitle.startsWith("A1") || sessionTitle.startsWith("A2") || sessionTitle.startsWith("B1") || sessionTitle.startsWith("B2") ? sessionTitle.slice(0,2) : null,
-        topicId:null,
+        activityType:unitPractice ? "topic_quiz" : "practice",
+        sectionId:unitId,
+        topicId:unitId,
         title:sessionTitle,
         completed:true,
         score,
         maxScore:total,
         percent,
-        metadata:{source:"social_studies_practice_v1",question_ids:finalAnswers.map(item=>item.questionId),at:new Date().toISOString()},
+        metadata:{
+          source:"social_studies_practice_v1",
+          practice_kind:practiceKind,
+          question_ids:finalAnswers.map(item=>item.questionId),
+          at:new Date().toISOString(),
+        },
       },
     });
     if(result?.error) console.warn("Could not save Social Studies practice attempt",result.error);
@@ -561,7 +609,7 @@ export default function SocialStudiesPracticeHub({ supabase, userId, onBack }){
     onComplete={(score,total)=>saveExamAttempt({paper:"Paper 02",score,maxScore:total})}
   />;
   if(mode==="quiz") return <QuizSession title={sessionTitle} questions={session} onExit={()=>setMode("home")} onFinish={finish}/>;
-  if(mode==="results") return <Results title={sessionTitle} answers={answers} total={session.length} examPrompt={examPrompt} onAgain={()=>start(sessionTitle.includes("research") ? "research" : sessionTitle.includes("20-question") ? "challenge" : "section",sectionId)} onHome={()=>setMode("home")}/>;
+  if(mode==="results") return <Results title={sessionTitle} answers={answers} total={session.length} examPrompt={examPrompt} onAgain={()=>start(practiceKind,sectionId)} onHome={()=>setMode("home")}/>;
 
   return <main className="ss-practice-page">
     <div className="ss-practice-shell">
