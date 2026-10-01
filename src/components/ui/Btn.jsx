@@ -6,7 +6,7 @@ const Btn = ({ children, onClick, v = "primary", style: s = {}, disabled = false
   const base = {
     padding:"10px 18px",minHeight:42,borderRadius:T.rSm,fontSize:13.5,fontWeight:650,
     cursor:disabled?"not-allowed":"pointer",opacity:disabled?.48:1,
-    transition:`transform .14s ${T.ease}, background-color .16s ${T.ease}, border-color .16s ${T.ease}, color .16s ${T.ease}`,
+    transition:`transform .14s ${T.ease}, background-color .18s ${T.ease}, border-color .18s ${T.ease}, color .18s ${T.ease}`,
     display:"inline-flex",alignItems:"center",gap:7,width:full?"100%":"auto",
     justifyContent:full?"center":"flex-start",letterSpacing:"0",
     transform:hover&&!disabled?"translateY(-1px)":"translateY(0)",boxShadow:"none"
@@ -20,7 +20,7 @@ const Btn = ({ children, onClick, v = "primary", style: s = {}, disabled = false
     tealOutline:{background:hover&&!disabled?T.tealLight:"transparent",color:T.tealDark,border:`1px solid ${hover&&!disabled?T.teal:T.border}`},
     success:{background:T.emerald,color:"#fff",border:`1px solid ${T.emerald}`}
   };
-  return <button className={`spark-btn spark-btn--${v} press ${className}`.trim()} data-spark-action={action||undefined}
+  return <button className={`spark-btn spark-btn--${v} press ${className}`.trim()} data-spark-action={action || undefined}
     style={{...base,...(vs[v]||vs.primary),...s}} onClick={onClick} disabled={disabled}
     onMouseEnter={()=>setHover(true)} onMouseLeave={()=>setHover(false)}>{children}</button>;
 };
