@@ -115,6 +115,7 @@ import "./mobileDashboardV18.css";
 import "./glassModalSystemV18.css";
 import "./sparkFinalButtonConsistencyV2642.css";
 import "./sparkSubjectLeaveModalV272.css";
+import "./sparkMinimalV1.css";
 import GOOGLE_ICON_B64 from "./assets/icons/google-icon.png";
 import GOOGLE_CALENDAR_ICON_B64 from "./assets/icons/google-calendar-icon.png";
 import OUTLOOK_ICON_B64 from "./assets/icons/outlook-icon.png";
@@ -1706,20 +1707,15 @@ function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorAp
   );
 }
 
-const NavBtn = ({ children, onClick, active = false }) => {
-  const [hover, setHover] = useState(false);
-  return (
-    <button className="spark-nav-link" onClick={onClick} onMouseEnter={()=>setHover(true)} onMouseLeave={()=>setHover(false)}
-      style={{background:active?"rgba(255,255,255,.1)":hover?"rgba(255,255,255,.07)":"none",
-        border:"none",color:active?"#fff":hover?"#fff":"rgba(255,255,255,.75)",
-        padding:"8px 13px",borderRadius:7,fontSize:13.5,fontWeight:active?600:500,
-        transition:`background-color .18s ${T.ease}, color .18s ${T.ease}, transform .16s ${T.ease}`,position:"relative"}}>
-      {children}
-      {active && <span style={{position:"absolute",bottom:1,left:13,right:13,height:2,
-        borderRadius:2,background:"#5EEAD4"}}/>}
-    </button>
-  );
-};
+const NavBtn = ({ children, onClick, active = false }) => (
+  <button
+    className={`spark-nav-link${active ? " active" : ""}`}
+    onClick={onClick}
+    aria-current={active ? "page" : undefined}
+  >
+    {children}
+  </button>
+);
 
 // ─── FOOTER ─────────────────────────────────────────────────────────────────
 function Footer({ setView, hasTutorApp, isTutor, isParent }) {
@@ -1889,7 +1885,7 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
       </div>
 
       {/* Features */}
-      <div style={{background:T.paper,borderTop:`1px solid ${T.border}`,flexShrink:0}}>
+      <div className="spark-home-features" style={{background:T.paper,borderTop:`1px solid ${T.border}`,flexShrink:0}}>
         <div style={{maxWidth:1100,margin:"0 auto",padding:"64px 28px"}}>
           <div style={{fontSize:12,fontWeight:700,textTransform:"uppercase",letterSpacing:"0.08em",
             color:T.teal,marginBottom:10}}>How it works</div>
@@ -1906,7 +1902,7 @@ function HomeView({ setView, liveStats, hasTutorApp, user, profile, tutorApp, is
               ["featureExam","Section & final exams","After each section, a structured exam. Then a full final paper with Section A, B and C.",T.red,T.redLight],
               ["featureLesson","Interactive lessons","Lessons include key facts, examples, common errors and solutions for self-checking.",T.teal,T.tealLight],
             ].map(([icon, title, desc, accent, accentBg]) => (
-              <div key={title} className="hl"
+              <div key={title} className="hl spark-home-feature-card"
                 style={{background:T.paper,border:`1px solid ${T.border}`,borderRadius:T.rMd,padding:24,
                   boxShadow:T.shadowSm}}>
                 <div style={{width:44,height:44,borderRadius:T.rSm,background:accentBg,
