@@ -2213,3 +2213,256 @@ textarea:focus{
     padding:9px!important;
   }
 }
+
+
+/* ── Cross-subject flashcard parity ------------------------------------ */
+/* Mathematics, generic subjects and Social Studies already use the shared
+   flashcard surface. These overrides bring Physics and IT onto that same
+   runtime presentation without touching their swipe engines. */
+.pm-flashcards-dashboard{
+  --pm-bg:var(--spark-bg)!important;
+  --pm-card:var(--spark-paper)!important;
+  --pm-card2:var(--spark-paper-raised)!important;
+  --pm-ink:var(--spark-ink)!important;
+  --pm-muted:var(--spark-text-muted)!important;
+  --pm-line:var(--spark-border)!important;
+  --pm-primary:var(--spark-teal)!important;
+  --pm-primary-soft:var(--spark-teal-surface)!important;
+  background:var(--spark-bg)!important;
+  color:var(--spark-ink)!important;
+}
+
+.pm-flashcards-dashboard .pm-support-head h1,
+.it-flashcards-head h1{
+  font-family:var(--spark-font-sans)!important;
+  font-weight:660!important;
+  letter-spacing:-.03em!important;
+}
+
+.pm-flashcards-dashboard .pm-section-filter,
+.pm-flashcards-dashboard .pm-flashcard-topics .pm-topic-btn{
+  background:transparent!important;
+  border-color:transparent!important;
+  color:var(--spark-text-muted)!important;
+}
+
+.pm-flashcards-dashboard .pm-section-filter:hover,
+.pm-flashcards-dashboard .pm-flashcard-topics .pm-topic-btn:hover:not(:disabled){
+  background:var(--spark-muted)!important;
+  border-color:transparent!important;
+}
+
+.pm-flashcards-dashboard .pm-section-filter.active,
+.pm-flashcards-dashboard .pm-flashcard-topics .pm-topic-btn.active{
+  background:var(--spark-muted)!important;
+  border-color:var(--spark-border)!important;
+  color:var(--spark-ink)!important;
+}
+
+.pm-flashcards-dashboard .pm-flashcard-polished{
+  background:var(--spark-paper)!important;
+  border-color:var(--spark-border)!important;
+  border-radius:20px!important;
+  color:var(--spark-ink)!important;
+  box-shadow:none!important;
+}
+
+.pm-flashcards-dashboard .pm-flashcard-polished:hover:not(.is-dragging){
+  border-color:var(--spark-border-strong)!important;
+  box-shadow:var(--spark-shadow-sm)!important;
+}
+
+.pm-flashcards-dashboard .pm-flashcard-polished.revealed,
+html[data-theme="dark"] .pm-flashcards-dashboard .pm-flashcard-polished.revealed,
+body[data-theme="dark"] .pm-flashcards-dashboard .pm-flashcard-polished.revealed{
+  background:var(--spark-surface-navy)!important;
+  border-color:var(--spark-surface-navy)!important;
+  color:#fff!important;
+  box-shadow:none!important;
+}
+
+.pm-flashcards-dashboard .pm-flashcard-polished.revealed .pm-flashcard-question-text,
+.pm-flashcards-dashboard .pm-flashcard-polished.revealed .pm-flashcard-answer-text{
+  color:#fff!important;
+}
+
+.pm-flashcards-dashboard .pm-flashcard-nav-row .pm-btn.secondary,
+.pm-flashcards-dashboard .pm-change-subject-btn{
+  background:transparent!important;
+  border-color:var(--spark-border)!important;
+  color:var(--spark-ink-soft)!important;
+  box-shadow:none!important;
+}
+
+.it-flashcards{
+  --it-bg:var(--spark-bg)!important;
+  --it-card:var(--spark-paper)!important;
+  --it-soft:var(--spark-muted)!important;
+  --it-line:var(--spark-border)!important;
+  --it-ink:var(--spark-ink)!important;
+  --it-muted:var(--spark-text-muted)!important;
+  background:var(--spark-bg)!important;
+  color:var(--spark-ink)!important;
+  font-family:var(--spark-font-sans)!important;
+}
+
+.it-flashcards-shell{
+  max-width:1100px!important;
+}
+
+.it-flashcards-head{
+  padding:14px 0 26px!important;
+  border:0!important;
+  border-bottom:1px solid var(--spark-border-soft)!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+
+.it-flashcards-kicker{
+  color:var(--spark-text-muted)!important;
+  font-weight:700!important;
+}
+
+.it-flashcards-change{
+  border-color:var(--spark-border)!important;
+  border-radius:10px!important;
+  background:transparent!important;
+  color:var(--spark-ink-soft)!important;
+}
+
+.it-flashcards-change:hover{
+  background:var(--spark-muted)!important;
+}
+
+.it-flashcards-summary{
+  gap:0!important;
+  overflow:hidden;
+  border:1px solid var(--spark-border);
+  border-radius:14px;
+  background:var(--spark-paper);
+}
+
+.it-flashcards-summary>div{
+  border:0!important;
+  border-right:1px solid var(--spark-border-soft)!important;
+  border-radius:0!important;
+  background:transparent!important;
+}
+
+.it-flashcards-summary>div:last-child{
+  border-right:0!important;
+}
+
+.it-flashcards-summary strong{
+  color:var(--spark-ink)!important;
+  font-family:var(--spark-font-sans)!important;
+  font-weight:650!important;
+}
+
+.it-flashcards-mode button,
+.it-flashcards-sections button{
+  background:transparent!important;
+  border-color:transparent!important;
+}
+
+.it-flashcards-mode button:hover,
+.it-flashcards-sections button:hover{
+  background:var(--spark-muted)!important;
+}
+
+.it-flashcards-mode button.active,
+.it-flashcards-sections button.active{
+  background:var(--spark-muted)!important;
+  border-color:var(--spark-border)!important;
+}
+
+.it-flashcards-mode button.active strong,
+.it-flashcards-sections button.active strong{
+  color:var(--spark-ink)!important;
+}
+
+.it-flashcards-sections button.active>span:first-child{
+  background:var(--spark-paper)!important;
+  color:var(--spark-teal-dark)!important;
+  border:1px solid var(--spark-border);
+}
+
+.it-flashcards-browser,
+.it-flashcards-study{
+  border-color:var(--spark-border)!important;
+  border-radius:16px!important;
+  background:var(--spark-paper)!important;
+  box-shadow:none!important;
+}
+
+.it-flashcard,
+html[data-theme="dark"] .it-flashcard,
+body[data-theme="dark"] .it-flashcard{
+  background:var(--spark-paper)!important;
+  border-color:var(--spark-border)!important;
+  border-radius:20px!important;
+  color:var(--spark-ink)!important;
+  box-shadow:none!important;
+}
+
+.it-flashcard:hover:not(.is-dragging){
+  transform:translateY(-1px)!important;
+  border-color:var(--spark-border-strong)!important;
+  box-shadow:var(--spark-shadow-sm)!important;
+}
+
+.it-flashcard.revealed,
+html[data-theme="dark"] .it-flashcard.revealed,
+body[data-theme="dark"] .it-flashcard.revealed{
+  background:var(--spark-surface-navy)!important;
+  border-color:var(--spark-surface-navy)!important;
+  color:#fff!important;
+  box-shadow:none!important;
+}
+
+.it-flashcard.revealed .it-flashcard-side,
+.it-flashcard.revealed .it-fc-answer-title,
+.it-flashcard.revealed .it-fc-exam-focus strong{
+  color:#AEE8DF!important;
+}
+
+.it-flashcards-nav button{
+  border-radius:10px!important;
+  box-shadow:none!important;
+}
+
+.it-flashcards-nav button:not(:last-child){
+  background:transparent!important;
+  border-color:var(--spark-border)!important;
+  color:var(--spark-ink-soft)!important;
+}
+
+.it-flashcards-nav button:last-child{
+  background:var(--spark-teal)!important;
+  border-color:var(--spark-teal)!important;
+  color:#fff!important;
+}
+
+@media(max-width:620px){
+  .it-flashcards-summary{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+
+  .it-flashcards-summary>div{
+    border-right:1px solid var(--spark-border-soft)!important;
+    border-bottom:1px solid var(--spark-border-soft)!important;
+  }
+
+  .it-flashcards-summary>div:nth-child(2n){
+    border-right:0!important;
+  }
+
+  .it-flashcards-summary>div:nth-last-child(-n+2){
+    border-bottom:0!important;
+  }
+
+  .it-flashcards-head{
+    padding:8px 0 22px!important;
+  }
+}
