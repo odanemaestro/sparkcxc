@@ -1909,3 +1909,307 @@ html[data-theme="dark"] .spark-flashcard.revealed{
     border-color:var(--spark-border)!important;
   }
 }
+
+
+/* ── Authentication ----------------------------------------------------- */
+.spark-auth-shell{
+  min-height:calc(100dvh - 64px);
+  background:
+    radial-gradient(circle at 50% -10%,color-mix(in srgb,var(--spark-teal-light) 48%,transparent),transparent 25rem),
+    var(--spark-bg)!important;
+  padding:72px 20px!important;
+}
+
+.spark-auth-card{
+  max-width:430px!important;
+  padding:34px!important;
+  border:1px solid var(--spark-border)!important;
+  border-radius:18px!important;
+  background:var(--spark-paper)!important;
+  box-shadow:var(--spark-shadow-md)!important;
+}
+
+.spark-auth-card h1,
+.spark-auth-card h2{
+  font-family:var(--spark-font-sans)!important;
+  font-weight:670!important;
+  letter-spacing:-.03em!important;
+}
+
+.spark-auth-tabs{
+  padding:3px!important;
+  border-radius:11px!important;
+  background:var(--spark-muted)!important;
+}
+
+.spark-auth-tabs button{
+  border-radius:8px!important;
+  box-shadow:none!important;
+}
+
+.spark-auth-role-row button{
+  border-radius:10px!important;
+  box-shadow:none!important;
+}
+
+.spark-google-auth-button{
+  border-radius:10px!important;
+  box-shadow:none!important;
+}
+
+/* ── Public information pages ------------------------------------------ */
+.how-page,
+.about-page,
+.contact-page,
+.privacy-page{
+  background:var(--spark-bg)!important;
+  color:var(--spark-ink)!important;
+}
+
+.how-hero,
+.about-hero,
+.contact-hero,
+.privacy-hero,
+.tutor-apply-hero{
+  padding:72px var(--spark-page-x) 48px!important;
+  background:var(--spark-bg)!important;
+  color:var(--spark-ink)!important;
+  text-align:left!important;
+  border-bottom:1px solid var(--spark-border-soft);
+}
+
+.how-hero h1,
+.about-hero-title,
+.contact-hero-title,
+.privacy-hero h1,
+.tutor-apply-hero h1{
+  max-width:var(--spark-content-max);
+  margin-left:auto!important;
+  margin-right:auto!important;
+  color:var(--spark-ink)!important;
+  font-family:var(--spark-font-sans)!important;
+  font-size:clamp(40px,5vw,60px)!important;
+  font-weight:680!important;
+  letter-spacing:-.045em!important;
+}
+
+.how-hero p,
+.about-hero-copy,
+.contact-hero-copy,
+.privacy-hero p,
+.tutor-apply-hero p{
+  max-width:var(--spark-content-max)!important;
+  margin-left:auto!important;
+  margin-right:auto!important;
+  color:var(--spark-text-muted)!important;
+}
+
+.about-hero-kicker{
+  max-width:var(--spark-content-max);
+  margin-left:auto!important;
+  margin-right:auto!important;
+  color:var(--spark-teal-dark)!important;
+}
+
+.how-page-content,
+.about-content,
+.contact-content,
+.privacy-content,
+.tutor-apply-content{
+  width:min(var(--spark-content-max),calc(100% - 40px))!important;
+  max-width:var(--spark-content-max)!important;
+  padding:52px 0 72px!important;
+}
+
+.privacy-content{
+  max-width:760px!important;
+}
+
+.how-step>div:first-child{
+  width:32px!important;
+  height:32px!important;
+  border-radius:9px!important;
+  background:var(--spark-muted)!important;
+  color:var(--spark-ink)!important;
+  box-shadow:none!important;
+  font-weight:700!important;
+}
+
+.how-step{
+  padding:4px 0 18px;
+  border-bottom:1px solid var(--spark-border-soft);
+}
+
+.how-page-content .spark-card,
+.about-content .spark-card,
+.contact-content .spark-card{
+  box-shadow:none!important;
+}
+
+/* ── Tutor marketplace -------------------------------------------------- */
+.tutors-page-shell{
+  max-width:var(--spark-content-max)!important;
+  padding:58px var(--spark-page-x) 72px!important;
+}
+
+.tutors-kicker{
+  color:var(--spark-text-muted)!important;
+  font-size:10px!important;
+  font-weight:700!important;
+}
+
+.tutors-page-heading h1{
+  font-family:var(--spark-font-sans)!important;
+  font-size:clamp(38px,5vw,54px)!important;
+  font-weight:680!important;
+  letter-spacing:-.04em!important;
+}
+
+.tutors-toolbar{
+  padding:10px!important;
+  border:1px solid var(--spark-border)!important;
+  border-radius:14px!important;
+  background:var(--spark-paper)!important;
+  box-shadow:none!important;
+}
+
+.tutor-filter{
+  min-height:38px!important;
+  padding:7px 11px!important;
+  border:1px solid transparent!important;
+  border-radius:9px!important;
+  background:transparent!important;
+  color:var(--spark-text-muted)!important;
+  box-shadow:none!important;
+  font-weight:600!important;
+}
+
+.tutor-filter:hover{
+  background:var(--spark-muted)!important;
+  color:var(--spark-ink)!important;
+}
+
+.tutor-filter.active{
+  border-color:var(--spark-border)!important;
+  background:var(--spark-muted)!important;
+  color:var(--spark-ink)!important;
+  box-shadow:none!important;
+}
+
+.tutor-search,
+.tutor-sort{
+  border:1px solid var(--spark-border)!important;
+  border-radius:10px!important;
+  background:var(--spark-paper)!important;
+  box-shadow:none!important;
+}
+
+.tutor-card{
+  border-radius:16px!important;
+  box-shadow:none!important;
+}
+
+.tutor-card .spark-btn,
+.tutor-card button{
+  box-shadow:none!important;
+}
+
+/* ── Forms -------------------------------------------------------------- */
+input:not([type="range"]):not([type="checkbox"]):not([type="radio"]),
+select,
+textarea{
+  border-color:var(--spark-border)!important;
+  border-radius:10px!important;
+  box-shadow:none!important;
+}
+
+input:not([type="range"]):not([type="checkbox"]):not([type="radio"]):focus,
+select:focus,
+textarea:focus{
+  outline:none!important;
+  border-color:var(--spark-teal)!important;
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--spark-teal) 12%,transparent)!important;
+}
+
+/* ── Notifications ------------------------------------------------------ */
+.notification-drawer{
+  background:var(--spark-paper)!important;
+  border-color:var(--spark-border)!important;
+  box-shadow:var(--spark-shadow-xl)!important;
+}
+
+.notification-item{
+  border-radius:12px!important;
+  background:transparent!important;
+  border-color:transparent!important;
+}
+
+.notification-item:hover{
+  background:var(--spark-muted)!important;
+}
+
+.notification-item.unread{
+  background:var(--spark-teal-surface)!important;
+  border-color:transparent!important;
+}
+
+.notification-tabs{
+  padding:3px!important;
+  border-radius:10px!important;
+  background:var(--spark-muted)!important;
+}
+
+.notification-tabs button{
+  border-radius:8px!important;
+}
+
+.notification-tabs button.active{
+  background:var(--spark-paper)!important;
+  color:var(--spark-ink)!important;
+  box-shadow:var(--spark-shadow-sm)!important;
+}
+
+@media(max-width:700px){
+  .spark-auth-shell{
+    padding:34px 14px 54px!important;
+  }
+
+  .spark-auth-card{
+    padding:25px 20px!important;
+    border-radius:16px!important;
+    box-shadow:none!important;
+  }
+
+  .how-hero,
+  .about-hero,
+  .contact-hero,
+  .privacy-hero,
+  .tutor-apply-hero{
+    padding:48px 18px 34px!important;
+  }
+
+  .how-hero h1,
+  .about-hero-title,
+  .contact-hero-title,
+  .privacy-hero h1,
+  .tutor-apply-hero h1{
+    font-size:36px!important;
+  }
+
+  .how-page-content,
+  .about-content,
+  .contact-content,
+  .privacy-content,
+  .tutor-apply-content{
+    width:min(100% - 32px,var(--spark-content-max))!important;
+    padding:36px 0 54px!important;
+  }
+
+  .tutors-page-shell{
+    padding:36px 16px 56px!important;
+  }
+
+  .tutors-toolbar{
+    padding:9px!important;
+  }
+}
