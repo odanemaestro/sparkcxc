@@ -3,6 +3,7 @@ import path from "path";
 import { buildGenericSubjectProgressReport, summarizeSubjectProgress } from "../subjects/subjectProgress";
 import { buildSubjectLearnerIntelligence } from "../learning/learnerIntelligenceV2";
 import { getNotificationRoute } from "../components/notifications/notificationRouting";
+import { exactTargetForAction } from "../learning/nextBestActionV2";
 
 const read = relative => fs.readFileSync(path.join(__dirname, relative), "utf8");
 
@@ -174,6 +175,55 @@ describe("Social Studies platform parity", () => {
     expect(intelligence.states.some(item => item.skill === "A2")).toBe(true);
     expect(intelligence.states.some(item => /Social Studies Paper 0[12]/i.test(item.skill))).toBe(false);
     expect(intelligence.recommendation.why.length).toBeGreaterThan(0);
+  });
+
+  test("SPARK Intelligence actions open the correct Social Studies experiences", () => {
+    expect(exactTargetForAction("social-studies","A2","targeted_practice")).toMatchObject({
+      subjectId:"social-studies",
+      view:"practice-social-studies",
+      path:"/practice/social-studies",
+      params:{section:"A2"},
+      kind:"topic_quiz",
+    });
+
+    expect(exactTargetForAction("social-studies","a1-family-foundations","lesson")).toMatchObject({
+      subjectId:"social-studies",
+      view:"social-studies",
+      path:"/study/social-studies",
+      params:{section:"A1",topic:"a1-family-foundations"},
+      kind:"lesson",
+      exact:true,
+    });
+
+    expect(exactTargetForAction("social-studies","B1","flashcards")).toMatchObject({
+      subjectId:"social-studies",
+      view:"dashboard",
+      path:"/dashboard/flashcards/social-studies",
+      params:{section:"B1"},
+      special:"dashboard-flashcards",
+      kind:"flashcard_review",
+    });
+
+    expect(exactTargetForAction("social-studies","SBA project checker","sba_review")).toMatchObject({
+      subjectId:"social-studies",
+      view:"practice-social-studies",
+      path:"/practice/social-studies",
+      params:{mode:"sba"},
+      kind:"sba_review",
+    });
+  });
+
+  test("Social Studies practice and flashcards honour Intelligence route targets", () => {
+    const practice = read("practice/SocialStudiesPracticeHub.jsx");
+    const flashcards = read("components/SocialStudiesFlashcardsPanel.jsx");
+
+    expect(practice).toContain("readSparkHashRoute");
+    expect(practice).toContain("subscribeSparkRoute");
+    expect(practice).toContain('route.path!=="/practice/social-studies"');
+    expect(practice).toContain('requestedMode==="sba" ? "sba" : "home"');
+    expect(flashcards).toContain("readSparkHashRoute");
+    expect(flashcards).toContain("subscribeSparkRoute");
+    expect(flashcards).toContain('route.path!=="/dashboard/flashcards/social-studies"');
   });
 
   test("Social Studies notifications route students and parents to subject progress", () => {
