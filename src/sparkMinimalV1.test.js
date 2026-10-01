@@ -71,6 +71,22 @@ describe("SPARK Minimal V1 design system", () => {
     expect(minimal).toContain("-webkit-backdrop-filter:none!important");
   });
 
+
+  test("extends the minimal system across Physics, IT and Integrated Science chrome", () => {
+    expect(minimal).toContain(".physics-subject-view");
+    expect(minimal).toContain("--psv-bg:var(--spark-bg)!important");
+    expect(minimal).toContain(".it-subject-view");
+    expect(minimal).toContain("--it-page:var(--spark-bg)");
+    expect(minimal).toContain(".is-practice-hero");
+    expect(minimal).toContain(".is-bank-stats");
+  });
+
+  test("glass mode stays layered without restoring glossy mobile tiles", () => {
+    expect(minimal).toContain('html[data-glass="true"] .dash-sidebar .dash-nav-item');
+    expect(minimal).toContain("background:transparent!important");
+    expect(minimal).toContain('html[data-glass="true"] .dash-sidebar .dash-nav-item[aria-current="page"]');
+  });
+
   test("mobile keeps an intentional compact layout rather than shrinking desktop", () => {
     expect(minimal).toContain("@media(max-width:700px)");
     expect(minimal).toContain(".student-mobile-quick-actions");
