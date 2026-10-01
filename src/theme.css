@@ -1,91 +1,92 @@
 /* ==========================================================================
-   SPARK APPEARANCE SYSTEM V7 FIXED
+   SPARK APPEARANCE SYSTEM V8 · SPARK MINIMAL
+   Neutral learning canvas, restrained elevation, SPARK teal as accent.
    ========================================================================== */
 :root,
 html[data-theme="light"]{
   color-scheme:light;
-  --spark-ink:#0F2557;
-  --spark-ink-soft:#2D3E6B;
-  --spark-text-muted:#64748B;
-  --spark-bg:#FAFAF8;
+  --spark-ink:#202124;
+  --spark-ink-soft:#3F454D;
+  --spark-text-muted:#70757D;
+  --spark-bg:#F7F7F5;
   --spark-paper:#FFFFFF;
-  --spark-paper-raised:#FFFFFF;
-  --spark-muted:#F4F4F1;
-  --spark-border:#E2E8F0;
-  --spark-border-soft:#EDF1F6;
-  --spark-border-strong:#CBD5E1;
-  --spark-teal:#0D9488;
-  --spark-teal-dark:#0A7268;
-  --spark-teal-light:#CCFBF1;
-  --spark-teal-surface:#F0FDF9;
-  --spark-amber:#D97706;
-  --spark-amber-light:#FEF3C7;
-  --spark-emerald:#059669;
-  --spark-emerald-light:#D1FAE5;
-  --spark-red:#DC2626;
-  --spark-red-light:#FEE2E2;
-  --spark-purple:#7C3AED;
-  --spark-purple-light:#F3E8FF;
-  --spark-navy-deep:#081A3D;
-  --spark-navy-mid:#12305F;
-  --spark-surface-navy:#0F2557;
-  --spark-teal-deep:#0A5A52;
-  --spark-gold-soft:#FCD34D;
-  --spark-shadow-sm:0 1px 2px rgba(15,37,87,.06);
-  --spark-shadow-md:0 4px 14px rgba(15,37,87,.09);
-  --spark-shadow-lg:0 12px 32px rgba(15,37,87,.14);
-  --spark-shadow-xl:0 20px 60px rgba(15,37,87,.20);
-  --spark-overlay:rgba(8,26,61,.55);
-  --spark-nav:rgba(8,26,61,.82);
+  --spark-paper-raised:#FBFBFA;
+  --spark-muted:#F0F0ED;
+  --spark-border:#E4E4DF;
+  --spark-border-soft:#ECECE8;
+  --spark-border-strong:#CECEC7;
+  --spark-teal:#0F8A7F;
+  --spark-teal-dark:#0B6F67;
+  --spark-teal-light:#DDF4F0;
+  --spark-teal-surface:#F2FAF8;
+  --spark-amber:#B96C13;
+  --spark-amber-light:#FFF3DF;
+  --spark-emerald:#16845B;
+  --spark-emerald-light:#E2F5EC;
+  --spark-red:#C84C43;
+  --spark-red-light:#FBEAE8;
+  --spark-purple:#7459A6;
+  --spark-purple-light:#F0EAF8;
+  --spark-navy-deep:#171A1F;
+  --spark-navy-mid:#252A31;
+  --spark-surface-navy:#20242B;
+  --spark-teal-deep:#075E57;
+  --spark-gold-soft:#E8B44B;
+  --spark-shadow-sm:0 1px 2px rgba(24,24,22,.035);
+  --spark-shadow-md:0 8px 24px rgba(24,24,22,.055);
+  --spark-shadow-lg:0 18px 48px rgba(24,24,22,.075);
+  --spark-shadow-xl:0 30px 80px rgba(24,24,22,.10);
+  --spark-overlay:rgba(24,24,22,.44);
+  --spark-nav:rgba(255,255,255,.92);
 }
 
 html[data-theme="dark"]{
   color-scheme:dark;
-  --spark-ink:#EAF2FF;
-  --spark-ink-soft:#C7D4E7;
-  --spark-text-muted:#91A5BF;
-  --spark-bg:#0A1626;
-  --spark-paper:#102239;
-  --spark-paper-raised:#142A45;
-  --spark-muted:#172A43;
-  --spark-border:#29405E;
-  --spark-border-soft:#1B2D46;
-  --spark-border-strong:#3B5575;
-  --spark-teal:#2DD4BF;
-  --spark-teal-dark:#5EEAD4;
-  --spark-teal-light:#123D3A;
-  --spark-teal-surface:#0D302F;
-  --spark-amber:#FBBF24;
-  --spark-amber-light:#493710;
-  --spark-emerald:#34D399;
-  --spark-emerald-light:#103B2E;
-  --spark-red:#F87171;
-  --spark-red-light:#431C22;
-  --spark-purple:#A78BFA;
-  --spark-purple-light:#2E214A;
-  --spark-navy-deep:#050D1B;
-  --spark-navy-mid:#102A4F;
-  --spark-surface-navy:#0A1830;
-  --spark-teal-deep:#5EEAD4;
-  --spark-gold-soft:#FCD34D;
-  --spark-shadow-sm:0 1px 2px rgba(0,0,0,.28);
-  --spark-shadow-md:0 5px 18px rgba(0,0,0,.30);
-  --spark-shadow-lg:0 14px 36px rgba(0,0,0,.36);
-  --spark-shadow-xl:0 24px 70px rgba(0,0,0,.44);
-  --spark-overlay:rgba(1,7,16,.72);
-  --spark-nav:rgba(5,13,27,.91);
+  --spark-ink:#F1F1EF;
+  --spark-ink-soft:#D0D0CB;
+  --spark-text-muted:#9A9A94;
+  --spark-bg:#151513;
+  --spark-paper:#1D1D1A;
+  --spark-paper-raised:#242420;
+  --spark-muted:#292925;
+  --spark-border:#34342F;
+  --spark-border-soft:#2A2A26;
+  --spark-border-strong:#484841;
+  --spark-teal:#55C7B9;
+  --spark-teal-dark:#7ADDCF;
+  --spark-teal-light:#173C38;
+  --spark-teal-surface:#19312F;
+  --spark-amber:#E7AA5C;
+  --spark-amber-light:#3F3222;
+  --spark-emerald:#61C99A;
+  --spark-emerald-light:#19372A;
+  --spark-red:#ED827A;
+  --spark-red-light:#422623;
+  --spark-purple:#B5A2D6;
+  --spark-purple-light:#322B40;
+  --spark-navy-deep:#11110F;
+  --spark-navy-mid:#262621;
+  --spark-surface-navy:#1B1B18;
+  --spark-teal-deep:#7ADDCF;
+  --spark-gold-soft:#E8B44B;
+  --spark-shadow-sm:0 1px 2px rgba(0,0,0,.18);
+  --spark-shadow-md:0 8px 24px rgba(0,0,0,.22);
+  --spark-shadow-lg:0 18px 48px rgba(0,0,0,.28);
+  --spark-shadow-xl:0 30px 80px rgba(0,0,0,.34);
+  --spark-overlay:rgba(0,0,0,.62);
+  --spark-nav:rgba(29,29,26,.92);
 
   /* Paper 1/2 variables already used throughout practiceExam.css. */
-  --paper-navy:#EAF2FF;
-  --paper-navy-deep:#D9E8FF;
-  --paper-teal:#2DD4BF;
-  --paper-teal-dark:#5EEAD4;
-  --paper-bg:#07111F;
-  --paper-border:#29405E;
-  --paper-muted:#91A5BF;
-  --paper-red:#F87171;
-  --paper-green:#34D399;
-  --paper-amber:#FBBF24;
+  --paper-navy:#F1F1EF;
+  --paper-navy-deep:#E4E4DF;
+  --paper-teal:#55C7B9;
+  --paper-teal-dark:#7ADDCF;
+  --paper-bg:#151513;
+  --paper-border:#34342F;
+  --paper-muted:#9A9A94;
+  --paper-red:#ED827A;
+  --paper-green:#61C99A;
+  --paper-amber:#E7AA5C;
 }
 
 html,body,#root{
