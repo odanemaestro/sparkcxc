@@ -508,7 +508,7 @@ export default function SocialStudiesPracticeHub({ supabase, userId, onBack }){
       supabase,
       activity:{
         subjectId:"social-studies",
-        activityKey:`${prefix}:${slug}:${Date.now()}`,
+        activityKey:`${prefix}:${slug}`,
         activityType,
         sectionId:null,
         topicId:null,
@@ -561,7 +561,7 @@ export default function SocialStudiesPracticeHub({ supabase, userId, onBack }){
     const percent=total ? Math.round(score/total*100) : 0;
     const unitPractice=practiceKind==="section";
     const unitId=unitPractice ? sectionId : null;
-    const key=`${unitPractice ? "topic-quiz" : "practice"}:${unitId || practiceKind}:${Date.now()}`;
+    const key=`${unitPractice ? "topic-quiz" : "practice"}:${unitId || practiceKind}`;
     const result=await recordSubjectActivity({
       supabase,
       activity:{
