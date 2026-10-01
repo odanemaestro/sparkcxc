@@ -310,7 +310,7 @@ test("Social Studies practice hub exposes Paper 01 and Paper 02 without restorin
 
 test("lesson exam questions stay available without the Write like a CXC candidate heading", () => {
   const subjectView = read("socialStudies/components/SocialStudiesSubjectView.jsx");
-  expect(subjectView).toContain('className="ss-exam-panel"');
+  expect(subjectView).toContain('className="ss-panel ss-exam-panel"');
   expect(subjectView).toContain('{lesson.exam.prompt}');
   expect(subjectView).toContain('{lesson.exam.marks} marks');
   expect(subjectView).toContain("Show marking guide");
