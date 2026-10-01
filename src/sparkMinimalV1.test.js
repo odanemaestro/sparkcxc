@@ -87,6 +87,18 @@ describe("SPARK Minimal V1 design system", () => {
     expect(minimal).toContain('html[data-glass="true"] .dash-sidebar .dash-nav-item[aria-current="page"]');
   });
 
+
+  test("public, auth and marketplace surfaces use the same minimal system", () => {
+    expect(minimal).toContain(".spark-auth-shell");
+    expect(minimal).toContain(".spark-auth-card");
+    expect(minimal).toContain(".how-hero");
+    expect(minimal).toContain(".about-hero");
+    expect(minimal).toContain(".privacy-hero");
+    expect(minimal).toContain(".tutors-toolbar");
+    expect(minimal).toContain(".tutor-filter.active");
+    expect(minimal).toContain(".notification-item.unread");
+  });
+
   test("mobile keeps an intentional compact layout rather than shrinking desktop", () => {
     expect(minimal).toContain("@media(max-width:700px)");
     expect(minimal).toContain(".student-mobile-quick-actions");
