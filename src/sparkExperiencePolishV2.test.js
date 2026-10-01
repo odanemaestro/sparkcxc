@@ -133,11 +133,12 @@ describe("SPARK experience polish V2", () => {
   test("mobile navigation closes predictably and avoids broad transitions", () => {
     const app = read("App.js");
     const responsive = read("responsive.css");
+    const minimal = read("sparkMinimalV1.css");
     expect(app).toContain("menuButtonRef");
     expect(app).toContain("mobileMenuRef");
     expect(app).toContain('aria-controls="spark-mobile-navigation"');
     expect(app).toContain('event.key === "Escape"');
-    expect(app).toContain("background-color .18s");
+    expect(minimal).toContain("transition:background-color .16s ease,color .16s ease");
     expect(responsive).toContain("SPARK MOBILE NAV INTERACTION PASS V2");
     expect(responsive).toContain("spark-mobile-menu-in");
   });
