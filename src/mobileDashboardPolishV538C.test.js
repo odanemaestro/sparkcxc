@@ -34,11 +34,11 @@ describe("SPARK V5.3.8C mobile dashboard and dark-mode polish", () => {
     expect(css).toContain(".family-code-actions");
   });
 
-  test("dark neutral surfaces are lifted without changing the deep exam paper background", () => {
+  test("dark minimal surfaces remain layered while the exam paper stays deeper", () => {
     const theme = read("theme.css");
-    expect(theme).toContain("--spark-bg:#0A1626");
-    expect(theme).toContain("--spark-paper:#102239");
-    expect(theme).toContain("--spark-paper-raised:#142A45");
-    expect(theme).toContain("--paper-bg:#07111F");
+    expect(theme).toContain("--spark-bg:#151513");
+    expect(theme).toContain("--spark-paper:#1D1D1A");
+    expect(theme).toContain("--spark-paper-raised:#242420");
+    expect(theme).toContain("--paper-bg:#11110F");
   });
 });
