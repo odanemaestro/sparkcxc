@@ -851,6 +851,14 @@ function actionTypesForState(subjectId, state, options = {}) {
     actions.push("sba_review");
   }
 
+  if (
+    subject === "social-studies" &&
+    /(sba|research|enquiry|inquiry)/i.test(String(state.skill || "")) &&
+    (options.sourceRows || []).some(row => lower(row.activity_type) === "sba_review")
+  ) {
+    actions.push("sba_review");
+  }
+
   if (!actions.length) actions.push(state.masteryPercent >= 75 ? "assessment" : "targeted_practice");
   return [...new Set(actions)];
 }
