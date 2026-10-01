@@ -1433,3 +1433,443 @@ html[data-theme="dark"] .spark-flashcard.revealed{
     transition:none!important;
   }
 }
+
+
+/* ── Physics course / practice chrome ---------------------------------- */
+.physics-subject-view{
+  --psv-bg:var(--spark-bg)!important;
+  --psv-card:var(--spark-paper)!important;
+  --psv-ink:var(--spark-ink)!important;
+  --psv-muted:var(--spark-text-muted)!important;
+  --psv-line:var(--spark-border)!important;
+  --psv-primary:var(--spark-teal-dark)!important;
+  --psv-soft:var(--spark-teal-surface)!important;
+  background:var(--spark-bg)!important;
+  font-family:var(--spark-font-sans)!important;
+}
+
+.psv-shell{
+  max-width:var(--spark-content-max)!important;
+  padding:34px 20px 64px!important;
+}
+
+.psv-hero{
+  padding:16px 0 30px!important;
+  border:0!important;
+  border-bottom:1px solid var(--spark-border-soft)!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+}
+
+.psv-eyebrow{
+  color:var(--spark-text-muted)!important;
+  font-size:10px!important;
+  font-weight:700!important;
+}
+
+.psv-hero h1{
+  font-family:var(--spark-font-sans)!important;
+  font-weight:680!important;
+  letter-spacing:-.04em;
+}
+
+.psv-stats{
+  gap:0!important;
+  overflow:hidden;
+  border:1px solid var(--spark-border)!important;
+  border-radius:14px!important;
+  background:var(--spark-paper)!important;
+}
+
+.psv-stats div{
+  border:0!important;
+  border-right:1px solid var(--spark-border-soft)!important;
+  border-radius:0!important;
+  background:transparent!important;
+}
+
+.psv-stats div:last-child{
+  border-right:0!important;
+}
+
+.psv-stats strong{
+  font-family:var(--spark-font-sans)!important;
+  font-weight:650!important;
+  letter-spacing:-.025em;
+}
+
+.psv-section-grid{
+  gap:12px!important;
+  margin-top:24px!important;
+}
+
+.psv-section-card{
+  border-radius:16px!important;
+  box-shadow:none!important;
+  transition:transform .14s ease,border-color .14s ease,background-color .14s ease!important;
+}
+
+.psv-section-card:hover{
+  transform:translateY(-1px)!important;
+  border-color:var(--spark-border-strong)!important;
+  box-shadow:none!important;
+  background:var(--spark-paper-raised)!important;
+}
+
+.psv-section-code,
+.psv-section-status{
+  background:var(--spark-teal-surface)!important;
+  color:var(--spark-teal-dark)!important;
+}
+
+.psv-section-status{
+  border-radius:7px!important;
+}
+
+.psv-section-arrow{
+  border-radius:10px!important;
+  border-color:var(--spark-border)!important;
+  color:var(--spark-ink-soft)!important;
+}
+
+.psv-note{
+  border-radius:14px!important;
+  box-shadow:none!important;
+}
+
+.psv-back{
+  border-color:var(--spark-border)!important;
+  border-radius:10px!important;
+  background:transparent!important;
+  color:var(--spark-ink-soft)!important;
+}
+
+.psv-back:hover{
+  background:var(--spark-muted)!important;
+}
+
+/* ── Information Technology course / practice chrome ------------------- */
+.it-subject-view,
+.it-practice-hub,
+.it-exam{
+  --it-page:var(--spark-bg);
+  --it-card:var(--spark-paper);
+  --it-ink:var(--spark-ink);
+  --it-muted:var(--spark-text-muted);
+  --it-line:var(--spark-border);
+  background:var(--spark-bg)!important;
+  color:var(--spark-ink)!important;
+  font-family:var(--spark-font-sans)!important;
+}
+
+.it-shell,
+.it-practice-hub>section{
+  width:min(var(--spark-content-max),100%)!important;
+}
+
+.it-hero,
+.it-practice-hero,
+.it-topic-hero,
+.it-section-hero{
+  padding-bottom:26px!important;
+  border-bottom:1px solid var(--spark-border-soft);
+}
+
+.it-hero h1,
+.it-topic-hero h1,
+.it-section-hero h1,
+.it-practice-hero h1,
+.it-exam-instructions h1{
+  font-family:var(--spark-font-sans)!important;
+  font-weight:680!important;
+  letter-spacing:-.04em;
+}
+
+.it-eyebrow,
+.it-practice-eyebrow,
+.it-panel-label,
+.it-practice-label,
+.it-question-meta{
+  color:var(--spark-text-muted)!important;
+  font-size:10px!important;
+  font-weight:700!important;
+}
+
+.it-stats,
+.it-practice-stats{
+  gap:0!important;
+  overflow:hidden;
+  border:1px solid var(--spark-border);
+  border-radius:14px;
+  background:var(--spark-paper);
+}
+
+.it-stats div,
+.it-practice-stats div{
+  border:0!important;
+  border-right:1px solid var(--spark-border-soft)!important;
+  border-radius:0!important;
+  background:transparent!important;
+}
+
+.it-stats div:last-child,
+.it-practice-stats div:last-child{
+  border-right:0!important;
+}
+
+.it-stats strong,
+.it-practice-stats strong{
+  font-family:var(--spark-font-sans)!important;
+  font-weight:650!important;
+}
+
+.it-section-grid,
+.it-topic-grid,
+.it-practice-mode-grid{
+  gap:12px!important;
+}
+
+.it-section-card,
+.it-topic-card,
+.it-practice-mode-card{
+  border-color:var(--spark-border)!important;
+  border-radius:16px!important;
+  background:var(--spark-paper)!important;
+  box-shadow:none!important;
+}
+
+.it-section-card:hover,
+.it-topic-card:hover{
+  transform:translateY(-1px)!important;
+  border-color:var(--spark-border-strong)!important;
+  box-shadow:none!important;
+  background:var(--spark-paper-raised)!important;
+}
+
+.it-section-code,
+.it-topic-number,
+.it-practice-mode-icon{
+  border-radius:11px!important;
+  background:var(--spark-teal-surface)!important;
+  color:var(--spark-teal-dark)!important;
+}
+
+.it-objective-pill{
+  border-radius:8px!important;
+  background:var(--spark-muted)!important;
+  color:var(--spark-ink-soft)!important;
+}
+
+.it-explore-note{
+  border-radius:14px!important;
+  box-shadow:none!important;
+}
+
+/* Reading sections should feel like one continuous lesson. */
+.it-topic-hero + .it-panel,
+.it-section-hero + .it-panel{
+  border-top:0!important;
+}
+
+.it-panel{
+  box-shadow:none!important;
+}
+
+.it-secondary,
+.it-practice-secondary{
+  border:1px solid var(--spark-border)!important;
+  background:var(--spark-paper)!important;
+  color:var(--spark-ink)!important;
+}
+
+.it-secondary:hover,
+.it-practice-secondary:hover{
+  background:var(--spark-muted)!important;
+}
+
+.it-primary,
+.it-practice-primary{
+  background:var(--spark-teal)!important;
+  color:#fff!important;
+}
+
+.it-learning-flow span{
+  border-radius:8px!important;
+  background:var(--spark-muted)!important;
+}
+
+.it-practice-integrity{
+  border-radius:16px!important;
+  box-shadow:none!important;
+}
+
+.it-practice-results>div{
+  border-radius:12px!important;
+  box-shadow:none!important;
+}
+
+/* Leave IT labs and actual exam question surfaces visually distinct. */
+.it-lab-card,
+.it-question-card,
+.it-question-nav,
+.it-exam-instructions{
+  box-shadow:none!important;
+}
+
+/* ── Integrated Science practice chrome -------------------------------- */
+.is-practice-shell{
+  width:min(var(--spark-content-max),calc(100% - 32px))!important;
+}
+
+.is-practice-hero{
+  padding:12px 0 28px!important;
+  border:0!important;
+  border-bottom:1px solid var(--spark-border-soft)!important;
+  border-radius:0!important;
+  background:transparent!important;
+}
+
+.is-practice-hero h1,
+.is-practice-toolbar h1{
+  font-family:var(--spark-font-sans)!important;
+  font-weight:680!important;
+  letter-spacing:-.035em;
+}
+
+.is-practice-hero span,
+.is-practice-toolbar>div>span,
+.is-practice-mode-grid article>span{
+  color:var(--spark-text-muted)!important;
+  font-size:10px!important;
+  font-weight:700!important;
+}
+
+.is-bank-stats{
+  gap:0!important;
+  overflow:hidden;
+  border:1px solid var(--spark-border);
+  border-radius:14px;
+  background:var(--spark-paper);
+}
+
+.is-bank-stats>div{
+  border:0!important;
+  border-right:1px solid var(--spark-border-soft)!important;
+  border-radius:0!important;
+  background:transparent!important;
+}
+
+.is-bank-stats>div:last-child{
+  border-right:0!important;
+}
+
+.is-bank-stats strong{
+  font-family:var(--spark-font-sans)!important;
+  font-weight:650!important;
+}
+
+.is-practice-mode-grid{
+  gap:12px!important;
+}
+
+.is-practice-mode-grid article,
+.is-practice-section-card{
+  border-radius:16px!important;
+  box-shadow:none!important;
+}
+
+.is-practice-section-card:hover{
+  transform:translateY(-1px)!important;
+  border-color:var(--spark-border-strong)!important;
+}
+
+.is-practice-section-code{
+  border-radius:11px!important;
+  background:var(--spark-teal-surface)!important;
+  color:var(--spark-teal-dark)!important;
+}
+
+.is-practice-toolbar,
+.is-bank-filters{
+  border-radius:14px!important;
+  box-shadow:none!important;
+}
+
+.is-practice-exam-note{
+  background:var(--spark-muted)!important;
+  border-color:transparent!important;
+}
+
+/* Actual science question surfaces remain paper objects. */
+.is-p1-question,
+.is-p2-question{
+  box-shadow:none!important;
+}
+
+/* ── Large-screen reading comfort -------------------------------------- */
+@media(min-width:1100px){
+  .spark-generic-lesson-body,
+  .ss-panel>*,
+  .ss-panel>p,
+  .ss-panel>ul,
+  .ss-panel>ol,
+  .ss-note-stack,
+  .ss-example-grid,
+  .ss-term-grid{
+    max-width:880px;
+  }
+
+  .spark-generic-lesson-body{
+    max-width:900px;
+  }
+}
+
+@media(max-width:700px){
+  .psv-shell{
+    padding:18px 14px 48px!important;
+  }
+
+  .psv-hero{
+    padding-top:4px!important;
+  }
+
+  .psv-stats,
+  .it-stats,
+  .it-practice-stats,
+  .is-bank-stats{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  }
+
+  .psv-stats div,
+  .it-stats div,
+  .it-practice-stats div,
+  .is-bank-stats>div{
+    border-right:1px solid var(--spark-border-soft)!important;
+    border-bottom:1px solid var(--spark-border-soft)!important;
+  }
+
+  .psv-stats div:nth-child(2n),
+  .it-stats div:nth-child(2n),
+  .it-practice-stats div:nth-child(2n),
+  .is-bank-stats>div:nth-child(2n){
+    border-right:0!important;
+  }
+
+  .psv-stats div:nth-last-child(-n+2),
+  .it-stats div:nth-last-child(-n+2),
+  .it-practice-stats div:nth-last-child(-n+2),
+  .is-bank-stats>div:nth-last-child(-n+2){
+    border-bottom:0!important;
+  }
+
+  .it-subject-view,
+  .it-practice-hub{
+    padding-left:14px!important;
+    padding-right:14px!important;
+  }
+
+  .is-practice-shell{
+    width:min(100% - 28px,var(--spark-content-max))!important;
+  }
+}
