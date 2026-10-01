@@ -307,3 +307,27 @@ test("Social Studies practice hub exposes Paper 01 and Paper 02 without restorin
   expect(practiceHub).not.toContain("Consumer Affairs option");
   expect(practiceHub).not.toContain("Communication option");
 });
+
+test("lesson exam questions stay available without the Write like a CXC candidate heading", () => {
+  const subjectView = read("socialStudies/components/SocialStudiesSubjectView.jsx");
+  expect(subjectView).toContain('className="ss-exam-panel"');
+  expect(subjectView).toContain('{lesson.exam.prompt}');
+  expect(subjectView).toContain('{lesson.exam.marks} marks');
+  expect(subjectView).toContain("Show marking guide");
+  expect(subjectView).not.toContain("Write like a CXC candidate");
+  expect(subjectView).not.toContain("ss-objective-chips");
+});
+
+test("all Social Studies reveal and timeline controls use SPARK styling instead of browser defaults", () => {
+  const interactive = read("socialStudies/components/SocialStudiesInteractiveActivity.jsx");
+  const css = read("socialStudies/socialStudies.css");
+
+  expect(interactive).toContain('className="ss-timeline-controls"');
+  expect(interactive).toContain("ss-reveal-button");
+  expect(interactive).toContain('className="ss-map-question"');
+  expect(css).toContain(".ss-timeline-controls button");
+  expect(css).toContain(".ss-map-question,.ss-reveal-row");
+  expect(css).toContain(".ss-reveal-button");
+  expect(css).toContain(".ss-reveal-button.revealed");
+  expect(css).toContain("@media(max-width:620px)");
+});
