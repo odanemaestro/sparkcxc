@@ -33,10 +33,10 @@ export const T = {
   shadowLg:"var(--spark-shadow-lg)",
   shadowXl:"var(--spark-shadow-xl)",
   ease:"cubic-bezier(.4,0,.2,1)",
-  rSm:8,
-  rMd:12,
-  rLg:16,
-  rXl:22,
+  rSm:10,
+  rMd:14,
+  rLg:18,
+  rXl:24,
 };
 
 export const FD = "'Crimson Pro', Georgia, serif";
