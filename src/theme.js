@@ -39,5 +39,5 @@ export const T = {
   rXl:24,
 };
 
-export const FD = "'Crimson Pro', Georgia, serif";
-export const FB = "'Atkinson Hyperlegible','Inter',sans-serif";
+export const FD = "-apple-system,BlinkMacSystemFont,'Segoe UI','Atkinson Hyperlegible','Inter',sans-serif";
+export const FB = "-apple-system,BlinkMacSystemFont,'Segoe UI','Atkinson Hyperlegible','Inter',sans-serif";
