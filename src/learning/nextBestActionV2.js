@@ -13,6 +13,10 @@ import { PHYSICS_COURSE_LESSONS } from "../physics/course/fullCourseIndex.mjs";
 import itCourse from "../informationTechnology/course/itCourseData.json";
 import { INFORMATION_TECHNOLOGY_PRACTICAL_LABS } from "../informationTechnology/labs/labCatalog";
 import { IT_SBA_PROJECTS } from "../informationTechnology/practice/itSbaProjects";
+import {
+  SOCIAL_STUDIES_COURSE,
+  SOCIAL_STUDIES_LESSONS,
+} from "../socialStudies/data/socialStudiesCourse";
 import { recommendedDeckIdsForSkills } from "./flashcards";
 import { writeSparkNestedRoute } from "../routing/sparkRoutingV270";
 import { displaySkillLabel } from "./learnerIntelligenceV2";
@@ -426,6 +430,111 @@ function itTarget(skill, actionType, sourceRows = []) {
   };
 }
 
+function socialStudiesSectionForSkill(skill) {
+  const raw=String(skill || "").trim();
+  const directSection=(SOCIAL_STUDIES_COURSE.sections || []).find(section =>
+    lower(section.id)===lower(raw) ||
+    lower(section.title)===lower(raw)
+  );
+  if(directSection) return directSection.id;
+
+  const lesson=SOCIAL_STUDIES_LESSONS.find(item => lower(item.id)===lower(raw));
+  if(lesson?.sectionId) return lesson.sectionId;
+
+  const matchedSection=bestMatch(
+    raw,
+    SOCIAL_STUDIES_COURSE.sections || [],
+    section => `${section.id} ${section.title}`
+  );
+  return matchedSection?.item?.id || null;
+}
+
+function socialStudiesLessonForSkill(skill) {
+  const raw=String(skill || "").trim();
+  const direct=SOCIAL_STUDIES_LESSONS.find(item => lower(item.id)===lower(raw));
+  if(direct) return direct;
+
+  const sectionId=socialStudiesSectionForSkill(raw);
+  const candidates=sectionId
+    ? SOCIAL_STUDIES_LESSONS.filter(item => item.sectionId===sectionId)
+    : SOCIAL_STUDIES_LESSONS;
+  const matched=bestMatch(
+    raw,
+    candidates,
+    lesson => `${lesson.id} ${lesson.sectionId} ${lesson.title} ${(lesson.objectiveCodes || []).join(" ")}`
+  );
+  return matched?.item || (sectionId ? candidates[0] : null);
+}
+
+function socialStudiesTarget(skill, actionType) {
+  const lesson=socialStudiesLessonForSkill(skill);
+  const sectionId=lesson?.sectionId || socialStudiesSectionForSkill(skill);
+
+  if(actionType==="flashcards"){
+    return {
+      subjectId:"social-studies",
+      special:"dashboard-flashcards",
+      view:"dashboard",
+      path:"/dashboard/flashcards/social-studies",
+      params:sectionId ? {section:sectionId} : {},
+      kind:"flashcard_review",
+      label:sectionId ? `${sectionId} Social Studies flashcards` : "Social Studies flashcards",
+      exact:Boolean(sectionId),
+      outcomeScope:sectionId ? {sectionId} : {},
+    };
+  }
+
+  if(["targeted_practice","baseline","assessment"].includes(actionType)){
+    return {
+      subjectId:"social-studies",
+      view:"practice-social-studies",
+      path:"/practice/social-studies",
+      params:sectionId ? {section:sectionId} : {},
+      kind:actionType==="assessment" ? "practice" : "topic_quiz",
+      label:sectionId ? `${sectionId} Social Studies unit practice` : "Social Studies practice",
+      exact:Boolean(sectionId),
+      outcomeScope:sectionId ? {sectionId,topicId:sectionId} : {},
+    };
+  }
+
+  if(actionType==="sba_review"){
+    return {
+      subjectId:"social-studies",
+      view:"practice-social-studies",
+      path:"/practice/social-studies",
+      params:{mode:"sba"},
+      kind:"sba_review",
+      label:"Social Studies SBA project checker",
+      exact:true,
+      outcomeScope:{activityKeyPrefix:"sba:"},
+    };
+  }
+
+  if(lesson){
+    return {
+      subjectId:"social-studies",
+      view:"social-studies",
+      path:"/study/social-studies",
+      params:{section:lesson.sectionId,topic:lesson.id},
+      kind:"lesson",
+      label:lesson.title,
+      exact:true,
+      outcomeScope:{sectionId:lesson.sectionId,topicId:lesson.id},
+    };
+  }
+
+  return {
+    subjectId:"social-studies",
+    view:"social-studies",
+    path:"/study/social-studies",
+    params:sectionId ? {section:sectionId} : {},
+    kind:"lesson",
+    label:sectionId ? `${sectionId} Social Studies` : "Social Studies study",
+    exact:Boolean(sectionId),
+    outcomeScope:sectionId ? {sectionId} : {},
+  };
+}
+
 export function exactTargetForAction(subjectId, skill, actionType, options = {}) {
   const id = lower(subjectId);
 
@@ -449,6 +558,7 @@ export function exactTargetForAction(subjectId, skill, actionType, options = {})
 
   if (id === "physics") return physicsTarget(skill, actionType);
   if (id === "information-technology") return itTarget(skill, actionType, options.sourceRows || []);
+  if (id === "social-studies") return socialStudiesTarget(skill, actionType);
 
   if (id && actionType === "flashcards") {
     return {
