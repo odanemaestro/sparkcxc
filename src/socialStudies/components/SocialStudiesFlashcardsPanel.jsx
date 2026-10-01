@@ -3,14 +3,23 @@ import Card from "../../components/ui/Card";
 import ProgressBar from "../../components/ui/ProgressBar";
 import { SubjectChangeButton } from "../../subjects/SubjectSelectionView";
 import { recordSubjectActivity } from "../../subjects/subjectProgress";
+import { readSparkHashRoute, subscribeSparkRoute } from "../../routing/sparkRoutingV270";
 import { SOCIAL_STUDIES_COURSE, socialStudiesFlashcards } from "../data/socialStudiesCourse";
 import "../socialStudies.css";
 import "../../subjects/genericSubjectFlashcards.css";
 
 const ALL_CARDS=socialStudiesFlashcards();
+const SOCIAL_STUDIES_FLASHCARD_SECTIONS=new Set(["A1","A2","B1","B2"]);
+
+function socialStudiesFlashcardSectionFromRoute(){
+  const route=readSparkHashRoute();
+  if(route.path!=="/dashboard/flashcards/social-studies") return "all";
+  const requested=String(route.params.get("section") || "").toUpperCase();
+  return SOCIAL_STUDIES_FLASHCARD_SECTIONS.has(requested) ? requested : "all";
+}
 
 export default function SocialStudiesFlashcardsPanel({ supabase, userId, onChangeSubject, showToast }){
-  const [sectionId,setSectionId]=useState("all");
+  const [sectionId,setSectionId]=useState(()=>socialStudiesFlashcardSectionFromRoute());
   const [index,setIndex]=useState(0);
   const [revealed,setRevealed]=useState(false);
   const [reviewed,setReviewed]=useState(new Set());
@@ -19,6 +28,12 @@ export default function SocialStudiesFlashcardsPanel({ supabase, userId, onChang
   const [settling,setSettling]=useState(false);
   const dragRef=useRef({pointerId:null,startX:0,lastX:0,lastTime:0,velocity:0,dragged:false});
   const suppressRevealRef=useRef(false);
+
+  useEffect(()=>subscribeSparkRoute(route=>{
+    if(route.path!=="/dashboard/flashcards/social-studies") return;
+    const requested=String(route.params.get("section") || "").toUpperCase();
+    setSectionId(SOCIAL_STUDIES_FLASHCARD_SECTIONS.has(requested) ? requested : "all");
+  }),[]);
 
   useEffect(()=>{
     let cancelled=false;
