@@ -54,10 +54,11 @@ describe("SPARK V5.3.8 UI refinement", () => {
     expect(app).toContain('>Copy code</Btn>');
   });
 
-  test("ghost buttons have a visible resting border and fill", () => {
+  test("ghost buttons use the quiet neutral treatment in SPARK Minimal", () => {
     const btn = read("components/ui/Btn.jsx");
-    expect(btn).toContain('"rgba(255,255,255,.12)"');
-    expect(btn).toContain('1.5px solid rgba(255,255,255');
+    expect(btn).toContain('ghost:{background:hover&&!disabled?T.muted:"transparent"');
+    expect(btn).toContain('border:"1px solid transparent"');
+    expect(btn).toContain("color:T.inkSoft");
   });
 
   test("student stat cards use the same neutral tile treatment as the dashboard", () => {
