@@ -84,7 +84,13 @@ function PracticeCheck({ questions=[] , onComplete }){
 }
 
 function LessonView({ lesson, completed, onBack, onComplete, onActivity, saving }){
-  useEffect(()=>{window.scrollTo?.(0,0);},[lesson.id]);
+  const [examOpen,setExamOpen]=useState(false);
+  const [examAnswer,setExamAnswer]=useState("");
+  useEffect(()=>{
+    setExamOpen(false);
+    setExamAnswer("");
+    window.scrollTo?.(0,0);
+  },[lesson.id]);
 
   return <main className="ss-course">
     <div className="ss-shell">
@@ -144,6 +150,25 @@ function LessonView({ lesson, completed, onBack, onComplete, onActivity, saving 
         <PracticeCheck questions={lesson.practice} onComplete={({score,total})=>onActivity?.({score,total,kind:"lesson-check"})}/>
       </section>
 
+      <section className="ss-panel ss-exam-panel">
+        <div className="ss-exam-head">
+          <div className="ss-panel-label">Exam practice</div>
+          <span>{lesson.exam.marks} marks</span>
+        </div>
+        <p className="ss-exam-prompt">{lesson.exam.prompt}</p>
+        <textarea
+          value={examAnswer}
+          onChange={event=>setExamAnswer(event.target.value)}
+          placeholder="Plan and write your answer here before opening the guide."
+        />
+        <button type="button" className="ss-secondary" onClick={()=>setExamOpen(value=>!value)}>
+          {examOpen ? "Hide marking guide" : "Show marking guide"}
+        </button>
+        {examOpen && <div className="ss-marking-guide">
+          <strong>A strong answer should:</strong>
+          <ol>{lesson.exam.guide.map(point=><li key={point}>{point}</li>)}</ol>
+        </div>}
+      </section>
 
       <Card className="ss-key-points">
         <div className="ss-panel-label">Before you leave</div>
