@@ -4,6 +4,7 @@ import SocialStudiesShortAnswerPractice from "./SocialStudiesShortAnswerPractice
 import SocialStudiesSbaPractice from "./SocialStudiesSbaPractice";
 import ProgressBar from "../../components/ui/ProgressBar";
 import { recordSubjectActivity } from "../../subjects/subjectProgress";
+import { readSparkHashRoute, subscribeSparkRoute } from "../../routing/sparkRoutingV270";
 import {
   SOCIAL_STUDIES_COURSE,
   SOCIAL_STUDIES_LESSONS,
@@ -30,6 +31,19 @@ const RESEARCH_LESSONS=new Set([
   "a2-election-outcomes-data","b1-population-foundations","b1-population-data",
   "b1-environment-data-action"
 ]);
+const SOCIAL_STUDIES_SECTION_IDS=new Set(["A1","A2","B1","B2"]);
+
+function socialStudiesPracticeRoute(){
+  const route=readSparkHashRoute();
+  if(route.path!=="/practice/social-studies") return {sectionId:"A1",mode:"home"};
+  const requested=String(route.params.get("section") || "").toUpperCase();
+  const sectionId=SOCIAL_STUDIES_SECTION_IDS.has(requested) ? requested : "A1";
+  const requestedMode=String(route.params.get("mode") || "").toLowerCase();
+  return {
+    sectionId,
+    mode:requestedMode==="sba" ? "sba" : "home",
+  };
+}
 
 function shuffled(items){
   const copy=[...items];
@@ -462,12 +476,20 @@ function Paper2Practice({ onExit, onComplete }){
 }
 
 export default function SocialStudiesPracticeHub({ supabase, userId, onBack }){
-  const [mode,setMode]=useState("home");
-  const [sectionId,setSectionId]=useState("A1");
+  const initialRoute=useMemo(()=>socialStudiesPracticeRoute(),[]);
+  const [mode,setMode]=useState(initialRoute.mode);
+  const [sectionId,setSectionId]=useState(initialRoute.sectionId);
   const [session,setSession]=useState([]);
   const [answers,setAnswers]=useState([]);
   const [sessionTitle,setSessionTitle]=useState("");
   const [practiceKind,setPracticeKind]=useState("section");
+
+  useEffect(()=>subscribeSparkRoute(route=>{
+    if(route.path!=="/practice/social-studies") return;
+    const requested=String(route.params.get("section") || "").toUpperCase();
+    if(SOCIAL_STUDIES_SECTION_IDS.has(requested)) setSectionId(requested);
+    if(String(route.params.get("mode") || "").toLowerCase()==="sba") setMode("sba");
+  }),[]);
 
   const saveExamAttempt=async ({ paper, score=null, maxScore=null })=>{
     const label=String(paper || "Practice");
