@@ -19,7 +19,7 @@ const Card = ({ children, style: s = {}, onClick, className = "", ...rest }) => 
         boxShadow:hover ? T.shadowSm : "none",
         cursor:interactive ? "pointer" : "default",
         transform:hover ? "translateY(-1px)" : "translateY(0)",
-        transition:`transform .16s ${T.ease}, border-color .16s ${T.ease}, box-shadow .16s ${T.ease}, background-color .16s ${T.ease}`,
+        transition:`transform .18s ${T.ease}, border-color .18s ${T.ease}, box-shadow .18s ${T.ease}, background-color .18s ${T.ease}`,
         ...s,
       }}
     >{children}</div>
