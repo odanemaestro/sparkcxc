@@ -88,6 +88,15 @@ describe("SPARK Minimal V1 design system", () => {
   });
 
 
+
+  test("all subject flashcards share the minimal runtime surface", () => {
+    expect(minimal).toContain(".pm-flashcards-dashboard .pm-flashcard-polished");
+    expect(minimal).toContain(".it-flashcard.revealed");
+    expect(minimal).toContain("background:var(--spark-surface-navy)!important");
+    expect(minimal).toContain(".spark-generic-flashcard.revealed");
+    expect(minimal).toContain(".spark-flashcard.revealed");
+  });
+
   test("public, auth and marketplace surfaces use the same minimal system", () => {
     expect(minimal).toContain(".spark-auth-shell");
     expect(minimal).toContain(".spark-auth-card");
