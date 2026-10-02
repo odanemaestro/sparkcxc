@@ -34,19 +34,28 @@ function monthLabel(date) {
   return date.toLocaleDateString("en-US", { month: "long", year: "numeric" });
 }
 
-function displayDate(value) {
+function displayDate(value, placeholder) {
   const date = parseDateKey(value);
   return date
     ? date.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", year: "numeric" })
-    : "Choose a date";
+    : placeholder;
 }
 
-export default function BookingDatePicker({ value, onChange, minDate, label = "Booking date" }) {
+export default function BookingDatePicker({
+  value,
+  onChange,
+  minDate,
+  label = "Booking date",
+  placeholder = "Choose a date",
+  clearable = false,
+}) {
   const rootRef = useRef(null);
   const triggerRef = useRef(null);
   const popoverRef = useRef(null);
   const todayKey = useMemo(() => dateKey(new Date()), []);
-  const minimumKey = minDate || todayKey;
+  // Booking keeps its existing future-only default. Passing minDate={null}
+  // explicitly removes that restriction for historical/report date ranges.
+  const minimumKey = minDate === null ? "" : (minDate || todayKey);
   const baseDate = parseDateKey(value) || parseDateKey(minimumKey) || new Date();
   const [open, setOpen] = useState(false);
   const [month, setMonth] = useState(() => monthStart(baseDate));
@@ -95,10 +104,10 @@ export default function BookingDatePicker({ value, onChange, minDate, label = "B
   }, [open, mobileSheet]);
 
   const cells = useMemo(() => monthCells(month), [month]);
-  const minimumMonth = monthStart(parseDateKey(minimumKey) || new Date());
-  const previousDisabled =
-    month.getFullYear() === minimumMonth.getFullYear() &&
-    month.getMonth() <= minimumMonth.getMonth();
+  const minimumMonth = minimumKey ? monthStart(parseDateKey(minimumKey) || new Date()) : null;
+  const previousDisabled = minimumMonth
+    ? month.getFullYear() === minimumMonth.getFullYear() && month.getMonth() <= minimumMonth.getMonth()
+    : false;
 
   const moveMonth = delta => {
     setMonth(current => new Date(current.getFullYear(), current.getMonth() + delta, 1));
@@ -110,8 +119,13 @@ export default function BookingDatePicker({ value, onChange, minDate, label = "B
   };
 
   const chooseDate = key => {
-    if (key < minimumKey) return;
+    if (minimumKey && key < minimumKey) return;
     onChange?.(key);
+    closeCalendar();
+  };
+
+  const clearDate = () => {
+    onChange?.("");
     closeCalendar();
   };
 
@@ -160,7 +174,7 @@ export default function BookingDatePicker({ value, onChange, minDate, label = "B
         {cells.map(day => {
           const key = dateKey(day);
           const outside = day.getMonth() !== month.getMonth();
-          const disabled = key < minimumKey;
+          const disabled = Boolean(minimumKey && key < minimumKey);
           const selected = key === value;
           const today = key === todayKey;
 
@@ -185,11 +199,12 @@ export default function BookingDatePicker({ value, onChange, minDate, label = "B
         })}
       </div>
 
-      <div className="booking-date-foot">
+      <div className={`booking-date-foot ${clearable && value ? "has-clear" : ""}`}>
+        {clearable && value && <button type="button" className="booking-date-clear" onClick={clearDate}>Clear</button>}
         <button
           type="button"
           onClick={() => {
-            const safeToday = todayKey < minimumKey ? minimumKey : todayKey;
+            const safeToday = minimumKey && todayKey < minimumKey ? minimumKey : todayKey;
             const target = parseDateKey(safeToday);
             if (target) setMonth(monthStart(target));
             chooseDate(safeToday);
@@ -211,7 +226,7 @@ export default function BookingDatePicker({ value, onChange, minDate, label = "B
         aria-expanded={open}
         onClick={() => setOpen(current => !current)}
       >
-        <span className={value ? "has-value" : ""}>{displayDate(value)}</span>
+        <span className={value ? "has-value" : ""}>{displayDate(value, placeholder)}</span>
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path d="M7 3v3M17 3v3M4.5 9.5h15M6 5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" />
         </svg>
