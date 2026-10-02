@@ -41,6 +41,19 @@
   stroke-linecap:round;
   stroke-linejoin:round;
 }
+
+.booking-date-desktop-layer{
+  position:fixed;
+  z-index:1700;
+  pointer-events:none;
+}
+.booking-date-desktop-layer .booking-date-popover{
+  position:relative;
+  top:auto;
+  left:auto;
+  width:100%;
+  pointer-events:auto;
+}
 .booking-date-popover{
   position:absolute;
   top:calc(100% + 8px);
