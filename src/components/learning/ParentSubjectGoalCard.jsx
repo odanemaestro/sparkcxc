@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import Card from "../ui/Card";
 import Btn from "../ui/Btn";
 import Icon from "../ui/Icon";
+import BookingDatePicker from "../booking/BookingDatePicker";
 import { buildOverallGoalMetric } from "../../subjects/subjectProgress";
 
 function isPastDate(value) {
@@ -85,7 +86,7 @@ export default function ParentSubjectGoalCard({
         <p>You can suggest one overall target across the enrolled subjects where {child?.name || "your child"} has assessment evidence. Your child stays in control and chooses whether to accept it.</p>
       )}
 
-      {suggesting && <div className="spark-parent-goal-form"><label>Overall target<input type="number" min="1" max="100" value={target} onChange={event => setTarget(event.target.value)}/><span>%</span></label><label>Target date<input type="date" value={date} onChange={event => setDate(event.target.value)}/></label><label className="wide">Encouragement <small>(optional)</small><textarea rows="2" value={message} maxLength={240} onChange={event => setMessage(event.target.value)} placeholder="Keep going. You're making good progress."/></label><Btn disabled={saving} onClick={suggestGoal}>{saving ? "Sending…" : "Send suggestion"}</Btn></div>}
+      {suggesting && <div className="spark-parent-goal-form"><label>Overall target<input type="number" min="1" max="100" value={target} onChange={event => setTarget(event.target.value)}/><span>%</span></label><label>Target date<BookingDatePicker value={date} onChange={setDate} label="Suggested target date" placeholder="Choose a target date" clearable /></label><label className="wide">Encouragement <small>(optional)</small><textarea rows="2" value={message} maxLength={240} onChange={event => setMessage(event.target.value)} placeholder="Keep going. You're making good progress."/></label><Btn disabled={saving} onClick={suggestGoal}>{saving ? "Sending…" : "Send suggestion"}</Btn></div>}
     </Card>
   );
 }
