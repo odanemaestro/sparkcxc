@@ -3,6 +3,7 @@ import Modal from "../ui/Modal";
 import Btn from "../ui/Btn";
 import Icon from "../ui/Icon";
 import InsightText from "../learning/InsightText";
+import BookingDatePicker from "../booking/BookingDatePicker";
 import { buildProgressReport } from "../../insights/progressAnalytics";
 import { buildGenericSubjectProgressReport, buildAllSubjectsProgressReport } from "../../subjects/subjectProgress";
 import {
@@ -174,7 +175,10 @@ export default function ProgressReportModal({
             <button key={key} className={period === key ? "active" : ""} onClick={() => setPeriod(key)}>{label}</button>
           ))}
         </div>
-        {period === "custom" && <div className="spark-report-custom-dates"><label>From<input type="date" value={customStart} onChange={event => setCustomStart(event.target.value)}/></label><label>To<input type="date" value={customEnd} onChange={event => setCustomEnd(event.target.value)}/></label></div>}
+        {period === "custom" && <div className="spark-report-custom-dates">
+          <label><span>From</span><BookingDatePicker value={customStart} onChange={setCustomStart} minDate={null} label="Report start date" placeholder="Choose start date" clearable /></label>
+          <label><span>To</span><BookingDatePicker value={customEnd} onChange={setCustomEnd} minDate={null} label="Report end date" placeholder="Choose end date" clearable /></label>
+        </div>}
         {dateError && <div className="spark-report-date-error" role="alert">{dateError}</div>}
 
         <div className="spark-report-preview">
