@@ -259,7 +259,7 @@ export default function BookingDatePicker({ value, onChange, minDate, label = "B
                   top:desktopPosition.top,
                   left:desktopPosition.left,
                   width:desktopPosition.width,
-                } : undefined}
+                } : { visibility:"hidden" }}
               >
                 {calendar}
               </div>,
