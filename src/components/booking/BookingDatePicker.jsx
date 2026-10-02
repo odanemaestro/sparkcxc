@@ -60,6 +60,7 @@ export default function BookingDatePicker({
   const [open, setOpen] = useState(false);
   const [month, setMonth] = useState(() => monthStart(baseDate));
   const [mobileSheet, setMobileSheet] = useState(false);
+  const [desktopPosition, setDesktopPosition] = useState(null);
 
   useEffect(() => {
     const media = window.matchMedia?.("(max-width: 600px)");
@@ -79,6 +80,24 @@ export default function BookingDatePicker({
   useEffect(() => {
     if (!open) return undefined;
 
+    const syncDesktopPosition = () => {
+      if (mobileSheet || !triggerRef.current) {
+        setDesktopPosition(null);
+        return;
+      }
+      const rect = triggerRef.current.getBoundingClientRect();
+      const width = Math.min(360, Math.max(280, window.innerWidth - 24));
+      const left = Math.min(Math.max(12, rect.left), Math.max(12, window.innerWidth - width - 12));
+      const estimatedHeight = 430;
+      const belowTop = rect.bottom + 8;
+      const top = belowTop + estimatedHeight <= window.innerHeight - 12
+        ? belowTop
+        : Math.max(12, rect.top - estimatedHeight - 8);
+      setDesktopPosition({ top, left, width });
+    };
+
+    syncDesktopPosition();
+
     const onPointerDown = event => {
       if (rootRef.current?.contains(event.target) || popoverRef.current?.contains(event.target)) return;
       setOpen(false);
@@ -93,12 +112,16 @@ export default function BookingDatePicker({
 
     document.addEventListener("pointerdown", onPointerDown);
     window.addEventListener("keydown", onKeyDown, true);
+    window.addEventListener("resize", syncDesktopPosition);
+    window.addEventListener("scroll", syncDesktopPosition, true);
     const previousOverflow = document.body.style.overflow;
     if (mobileSheet) document.body.style.overflow = "hidden";
 
     return () => {
       document.removeEventListener("pointerdown", onPointerDown);
       window.removeEventListener("keydown", onKeyDown, true);
+      window.removeEventListener("resize", syncDesktopPosition);
+      window.removeEventListener("scroll", syncDesktopPosition, true);
       if (mobileSheet) document.body.style.overflow = previousOverflow;
     };
   }, [open, mobileSheet]);
@@ -232,15 +255,30 @@ export default function BookingDatePicker({
         </svg>
       </button>
 
-      {open && mobileSheet && typeof document !== "undefined"
-        ? createPortal(
-            <div className="booking-date-layer" role="presentation">
-              <button type="button" className="booking-date-scrim" aria-label="Close calendar" onClick={closeCalendar} />
-              {calendar}
-            </div>,
-            document.body
-          )
-        : open ? calendar : null}
+      {open && typeof document !== "undefined"
+        ? mobileSheet
+          ? createPortal(
+              <div className="booking-date-layer" role="presentation">
+                <button type="button" className="booking-date-scrim" aria-label="Close calendar" onClick={closeCalendar} />
+                {calendar}
+              </div>,
+              document.body
+            )
+          : createPortal(
+              <div
+                className="booking-date-desktop-layer"
+                role="presentation"
+                style={desktopPosition ? {
+                  top:desktopPosition.top,
+                  left:desktopPosition.left,
+                  width:desktopPosition.width,
+                } : { visibility:"hidden" }}
+              >
+                {calendar}
+              </div>,
+              document.body
+            )
+        : null}
     </div>
   );
 }
