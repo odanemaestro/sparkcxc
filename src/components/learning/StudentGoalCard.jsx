@@ -4,6 +4,7 @@ import Btn from "../ui/Btn";
 import ProgressBar from "../ui/ProgressBar";
 import Icon from "../ui/Icon";
 import { buildOverallGoalMetric } from "../../subjects/subjectProgress";
+import BookingDatePicker from "../booking/BookingDatePicker";
 
 function clampPercent(value) {
   const number = Number(value);
@@ -153,7 +154,10 @@ export default function StudentGoalCard({
       ) : editing ? (
         <div className="spark-goal-form">
           <label><span>Target overall performance</span><div className="spark-goal-target"><input type="range" min="1" max="100" step="1" value={target} onChange={event => setTarget(event.target.value)}/><strong>{target}%</strong></div></label>
-          <label><span>Target date <small>(optional)</small></span><input type="date" value={date} onChange={event => setDate(event.target.value)}/></label>
+          <label>
+            <span>Target date <small>(optional)</small></span>
+            <BookingDatePicker value={date} onChange={setDate} label="Target date" />
+          </label>
           <div className="spark-goal-actions"><Btn v="outline" onClick={() => setEditing(false)}>Cancel</Btn><Btn disabled={saving} onClick={save}>{saving ? "Saving…" : "Save goal"}</Btn></div>
         </div>
       ) : goal ? (
