@@ -144,9 +144,13 @@
 .booking-date-foot{
   display:flex;
   justify-content:flex-end;
+  gap:8px;
   margin-top:10px;
   padding-top:10px;
   border-top:1px solid var(--spark-border-soft,#e7edf4);
+}
+.booking-date-foot.has-clear{
+  justify-content:space-between;
 }
 .booking-date-foot button{
   border:0;
@@ -156,6 +160,14 @@
   padding:8px 11px;
   font-size:12px;
   font-weight:700;
+}
+.booking-date-foot .booking-date-clear{
+  background:transparent;
+  color:var(--spark-text-muted,#64748b);
+}
+.booking-date-foot .booking-date-clear:hover{
+  background:var(--spark-muted,#f4f7fa);
+  color:var(--spark-ink,#15324b);
 }
 
 html[data-theme="dark"] .booking-date-popover,
