@@ -16,6 +16,7 @@ describe("shared SPARK calendar parity", () => {
     expect(pickerCss).toContain(".booking-date-popover");
     expect(pickerCss).toContain(".booking-date-grid");
     expect(pickerCss).toContain(".booking-date-layer");
+    expect(pickerCss).toContain(".booking-date-desktop-layer");
     expect(pickerCss).toContain('html[data-glass="true"] .booking-date-trigger');
     expect(pickerCss).toContain('html[data-theme="dark"] .booking-date-popover');
   });
@@ -37,6 +38,8 @@ describe("shared SPARK calendar parity", () => {
     expect(report).toContain("minDate={null}");
     expect(report).not.toContain('<input type="date"');
     expect(picker).toContain('minDate === null ? ""');
+    expect(picker).toContain("desktopPosition");
+    expect(picker).toContain('className="booking-date-desktop-layer"');
   });
 
   test("the same report modal is used by both student and parent views", () => {
