@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./electricalAccidentFirstAidExplorer.css";
 
@@ -17,7 +18,7 @@ function SourceView(){
   const [mode,setMode]=useState("safe");
   return <div className="spark-electric-source-safety">
     <div className="spark-electric-source-toggle"><button type="button" className={mode==="safe"?"active":""} onClick={()=>setMode("safe")}>Power isolated</button><button type="button" className={mode==="unsafe"?"active":""} onClick={()=>setMode("unsafe")}>Power still live</button></div>
-    <svg viewBox="0 0 820 420" role="img" aria-label={mode==="safe"?"Safe scene after electrical power is isolated":"Unsafe scene with live electrical contact"}>
+    <ReviewedScienceDiagram site="ElectricalAccidentFirstAidExplorer.jsx:20"><svg viewBox="0 0 820 420" role="img" aria-label={mode==="safe"?"Safe scene after electrical power is isolated":"Unsafe scene with live electrical contact"}>
       <rect className="efa-appliance" x="105" y="125" width="160" height="170" rx="20"/>
       <path className="efa-flex" d="M265 210Q340 210 390 180"/>
       <circle className="efa-person-head" cx="540" cy="105" r="40"/>
@@ -27,7 +28,7 @@ function SourceView(){
       <text className="efa-switch-text" x="185" y="360" textAnchor="middle">{mode==="safe"?"POWER OFF":"POWER LIVE"}</text>
       {mode==="unsafe"&&<><path className="efa-bolt" d="M410 145L385 195H420L398 250L460 175H425L450 145Z"/><text className="efa-warning" x="570" y="395" textAnchor="middle">do not touch the casualty</text></>}
       {mode==="safe"&&<text className="efa-safe-text" x="570" y="395" textAnchor="middle">assessment can begin once electrical danger is removed</text>}
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>{mode==="safe"?"Once the source is safely disconnected, assess responsiveness and breathing and activate emergency help.":"Touching the casualty while the circuit is still live can make the rescuer part of the electrical path."}</p>
   </div>;
 }
@@ -52,7 +53,7 @@ function BurnView(){
 
 function RecoveryView(){
   return <div className="spark-recovery-position">
-    <svg viewBox="0 0 820 400" role="img" aria-label="Simplified side-lying recovery position">
+    <ReviewedScienceDiagram site="ElectricalAccidentFirstAidExplorer.jsx:55"><svg viewBox="0 0 820 400" role="img" aria-label="Simplified side-lying recovery position">
       <circle className="rp-head" cx="585" cy="125" r="42"/>
       <path className="rp-body" d="M545 165Q470 190 390 230Q320 265 235 255"/>
       <path className="rp-arm" d="M475 195Q540 225 585 170"/>
@@ -61,7 +62,7 @@ function RecoveryView(){
       <path className="rp-leg" d="M315 255Q255 310 190 330"/>
       <path className="rp-ground" d="M110 350H710"/>
       <text className="rp-label" x="410" y="85" textAnchor="middle">side-lying position helps keep the airway open</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-recovery-notes">
       <p>Use a recovery position for a person with reduced alertness who is breathing normally when major neck, back, hip or pelvic injury is not suspected.</p>
       <p>If breathing becomes absent or abnormal, place the person on their back and begin CPR.</p>

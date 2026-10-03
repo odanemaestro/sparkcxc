@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./nervousSystemExplorer.css";
 
@@ -27,7 +28,7 @@ const VIEWS = {
 function CNSScene() {
   const spinalPairs = [195,220,245,270,295,320,345,370,395,420,445];
   return (
-    <svg viewBox="0 0 980 720" role="img" aria-label="Human nervous system showing brain, spinal cord and branching peripheral nerves throughout the body">
+    <ReviewedScienceDiagram site="NervousSystemExplorer.jsx:30"><svg viewBox="0 0 980 720" role="img" aria-label="Human nervous system showing brain, spinal cord and branching peripheral nerves throughout the body">
       <g className="ns-body ns-full-body" transform="translate(20 12)">
         <path className="ns-silhouette" d="M285 24Q330 24 350 61Q365 93 349 129Q338 151 323 159L318 188Q369 205 402 244Q429 278 444 336L465 430Q472 467 454 492Q436 509 415 494Q400 480 403 455L388 365Q380 327 362 302L356 460Q365 512 354 558L338 682Q330 707 305 704Q287 698 287 676L294 548L281 472H269L256 548L263 676Q263 698 245 704Q220 707 212 682L196 558Q185 512 194 460L188 302Q170 327 162 365L147 455Q150 480 135 494Q114 509 96 492Q78 467 85 430L106 336Q121 278 148 244Q181 205 232 188L227 159Q212 151 201 129Q185 93 200 61Q220 24 265 24Z" />
 
@@ -106,13 +107,13 @@ function CNSScene() {
       <text className="ns-small" x="730" y="700" textAnchor="middle">
         Sensory input → CNS integration → motor output
       </text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function NeuroneScene() {
   return (
-    <svg viewBox="0 0 980 520" role="img" aria-label="Motor neurone showing dendrites, cell body, axon, myelin sheath and nerve endings">
+    <ReviewedScienceDiagram site="NervousSystemExplorer.jsx:115"><svg viewBox="0 0 980 520" role="img" aria-label="Motor neurone showing dendrites, cell body, axon, myelin sheath and nerve endings">
       <g transform="translate(60 65)">
         <circle className="ns-cell-body" cx="185" cy="200" r="70" />
         <circle className="ns-nucleus" cx="185" cy="200" r="23" />
@@ -132,7 +133,7 @@ function NeuroneScene() {
         <path className="ns-impulse" d="M285 150H770" />
         <text className="ns-small" x="525" y="135" textAnchor="middle">direction of nerve impulse</text>
       </g>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
@@ -145,7 +146,7 @@ function ReflexScene() {
     {x:865,label:"Effector",sub:"muscle contracts"},
   ];
   return (
-    <svg viewBox="0 0 980 500" role="img" aria-label="Reflex arc from receptor through sensory relay and motor neurones to an effector">
+    <ReviewedScienceDiagram site="NervousSystemExplorer.jsx:148"><svg viewBox="0 0 980 500" role="img" aria-label="Reflex arc from receptor through sensory relay and motor neurones to an effector">
       <path className="ns-hot-object" d="M35 385H160V455H35Z" />
       <path className="ns-heat" d="M60 365q18-30 36 0M105 365q18-30 36 0" />
       <path className="ns-hand" d="M115 320Q155 280 190 305Q210 330 195 365Q160 390 130 370Z" />
@@ -163,7 +164,7 @@ function ReflexScene() {
       <path className="ns-muscle" d="M700 355Q780 325 850 375Q810 440 720 420Q680 400 700 355Z" />
       <text className="ns-small" x="490" y="300" textAnchor="middle">rapid automatic pathway through the spinal cord</text>
       <text className="ns-small" x="490" y="335" textAnchor="middle">the brain is informed, but the protective response begins before conscious action</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

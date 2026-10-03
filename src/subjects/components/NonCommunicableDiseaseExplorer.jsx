@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./nonCommunicableDiseaseExplorer.css";
 
@@ -35,7 +36,7 @@ function GlucoseGraph() {
   const py=v=>420-(v/14)*350;
   const path=values=>values.map((v,i)=>(i?"L":"M")+px(GLUCOSE.time[i]).toFixed(1)+" "+py(v).toFixed(1)).join(" ");
   return (
-    <svg viewBox="0 0 960 520" role="img" aria-label="CSEC blood glucose curves for Person A and Person B after a glucose drink">
+    <ReviewedScienceDiagram site="NonCommunicableDiseaseExplorer.jsx:38"><svg viewBox="0 0 960 520" role="img" aria-label="CSEC blood glucose curves for Person A and Person B after a glucose drink">
       <line className="ncd-axis" x1="90" y1="70" x2="90" y2="420" />
       <line className="ncd-axis" x1="90" y1="420" x2="880" y2="420" />
       {[0,2,4,6,8,10,12,14].map(v=>(
@@ -58,7 +59,7 @@ function GlucoseGraph() {
       <text className="ncd-axis-label" x="25" y="245" textAnchor="middle" transform="rotate(-90 25 245)">Blood glucose / mmol per litre</text>
       <text className="ncd-label" x="725" y="300">Person A</text>
       <text className="ncd-label" x="725" y="130">Person B</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
@@ -77,7 +78,7 @@ function DiabetesScene() {
 
 function HypertensionScene() {
   return (
-    <svg viewBox="0 0 960 520" role="img" aria-label="How high sodium intake can contribute to raised blood pressure and organ damage">
+    <ReviewedScienceDiagram site="NonCommunicableDiseaseExplorer.jsx:80"><svg viewBox="0 0 960 520" role="img" aria-label="How high sodium intake can contribute to raised blood pressure and organ damage">
       <g transform="translate(60 75)">
         <rect className="ncd-step-card" x="0" y="80" width="190" height="150" rx="18" />
         <text className="ncd-card-title" x="95" y="120" textAnchor="middle">High sodium intake</text>
@@ -111,7 +112,7 @@ function HypertensionScene() {
       <g transform="translate(820 395)">
         <circle className="ncd-organ" cx="0" cy="0" r="38" /><text className="ncd-small" x="0" y="65" textAnchor="middle">eyes / vessels</text>
       </g>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
@@ -131,7 +132,7 @@ function ImmuneScene() {
         </article>
       </div>
 
-      <svg className="spark-asthma-airway-svg" viewBox="0 0 920 430" role="img" aria-label="Cross-sections comparing a healthy airway with an asthma airway showing narrowed lumen, swollen lining, tightened smooth muscle and excess mucus">
+      <ReviewedScienceDiagram site="NonCommunicableDiseaseExplorer.jsx:134"><svg className="spark-asthma-airway-svg" viewBox="0 0 920 430" role="img" aria-label="Cross-sections comparing a healthy airway with an asthma airway showing narrowed lumen, swollen lining, tightened smooth muscle and excess mucus">
         <g className="asthma-panel healthy" transform="translate(70 60)">
           <text className="asthma-title" x="180" y="0" textAnchor="middle">Healthy airway</text>
           <circle className="asthma-outer" cx="180" cy="165" r="120"/>
@@ -158,7 +159,7 @@ function ImmuneScene() {
         </g>
 
         <text className="asthma-caption" x="460" y="410" textAnchor="middle">Smoke, air pollution, allergens or infections can trigger or worsen symptoms in susceptible people.</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
     </div>
   );
 }

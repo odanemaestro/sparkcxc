@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./humanSkeletonExplorer.css";
 
@@ -37,7 +38,7 @@ function SkeletonDiagram({selected,onSelect}){
     <line x1={x} y1={y} x2={tx} y2={ty}/><circle cx={x} cy={y} r="6"/><text x={tx+(tx<x?-8:8)} y={ty+4} textAnchor={tx<x?"end":"start"}>{key==="vertebrae"?"vertebral column":key}</text>
   </g>;
 
-  return <svg viewBox="0 0 760 940" role="img" aria-label="Front view of the human skeleton with major bones labelled">
+  return <ReviewedScienceDiagram site="HumanSkeletonExplorer.jsx:40"><svg viewBox="0 0 760 940" role="img" aria-label="Front view of the human skeleton with major bones labelled">
     <g className="hs-bones hs-anatomical">
       <path className="hs-skull" d="M326 75Q330 25 380 18Q430 25 434 75Q436 110 415 128Q402 140 397 154H363Q358 140 345 128Q324 110 326 75Z"/>
       <path className="hs-frontal" d="M343 49Q380 28 417 49Q412 72 404 88H356Q348 72 343 49Z"/>
@@ -133,7 +134,7 @@ function SkeletonDiagram({selected,onSelect}){
     {label("femur",330,600,105,610)}
     {label("tibia",305,800,105,800)}
     {label("fibula",342,800,110,845)}
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 }
 
 function RegionsView(){
@@ -143,7 +144,7 @@ function RegionsView(){
     ...Array.from({length:5},(_,i)=>({y:560+i*28,region:"lumbar"})),
   ];
   return <div className="spark-skeleton-regions-view">
-    <svg className="spark-spinal-regions-svg" viewBox="0 0 760 820" role="img" aria-label="Human vertebral column showing seven cervical, twelve thoracic and five lumbar vertebrae followed by the sacrum and coccyx">
+    <ReviewedScienceDiagram site="HumanSkeletonExplorer.jsx:146"><svg className="spark-spinal-regions-svg" viewBox="0 0 760 820" role="img" aria-label="Human vertebral column showing seven cervical, twelve thoracic and five lumbar vertebrae followed by the sacrum and coccyx">
       <path className="sr-spinal-curve" d="M370 70Q342 155 370 250Q397 350 368 455Q344 545 376 655Q390 700 378 760"/>
       <g className="sr-vertebrae">
         {vertebrae.map(({y,region},i)=><g key={i} className={"sr-vertebra "+region}>
@@ -163,7 +164,7 @@ function RegionsView(){
 
       <text className="sr-title" x="380" y="42" textAnchor="middle">regions of the vertebral column</text>
       <text className="sr-small" x="380" y="805" textAnchor="middle">vertebrae surround and protect the spinal cord while supporting the trunk and head</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-skeleton-regions">
       <article><span>CERVICAL</span><h4>Neck</h4><p>Seven cervical vertebrae support the head and protect the upper spinal cord.</p></article>
       <article><span>THORACIC</span><h4>Chest</h4><p>Twelve thoracic vertebrae articulate with ribs and help form the thoracic cage.</p></article>

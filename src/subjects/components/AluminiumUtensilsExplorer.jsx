@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./aluminiumUtensilsExplorer.css";
 
@@ -15,7 +16,7 @@ function AcidView(){
   const acidic=food==="acid";
   return <div className="spark-aluminium-acid">
     <div className="spark-aluminium-toggle"><button type="button" className={!acidic?"active":""} onClick={()=>setFood("neutral")}>Neutral food</button><button type="button" className={acidic?"active":""} onClick={()=>setFood("acid")}>Acidic food</button></div>
-    <svg className="spark-aluminium-acid-svg" viewBox="0 0 900 520" role="img" aria-label={acidic?"Aluminium cookware cross-section showing acidic food attacking the protective oxide layer":"Aluminium cookware cross-section showing intact protective oxide layer under neutral food"}>
+    <ReviewedScienceDiagram site="AluminiumUtensilsExplorer.jsx:18"><svg className="spark-aluminium-acid-svg" viewBox="0 0 900 520" role="img" aria-label={acidic?"Aluminium cookware cross-section showing acidic food attacking the protective oxide layer":"Aluminium cookware cross-section showing intact protective oxide layer under neutral food"}>
       <defs>
         <marker id="al-acid-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
           <path className="alx-arrow-head" d="M0 0L10 5L0 10Z"/>
@@ -52,7 +53,7 @@ function AcidView(){
         <line className="alx-key-oxide" x1="20" y1="63" x2="75" y2="63"/><text x="88" y="69">protective oxide</text>
         <line className={acidic?"alx-key-food acid":"alx-key-food neutral"} x1="20" y1="92" x2="75" y2="92"/><text x="88" y="98">{acidic?"acidic food":"neutral food"}</text>
       </g>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>{acidic?"Acidic foods can attack the protective oxide surface and increase the amount of aluminium that transfers into the food. Long storage or prolonged cooking of acidic foods in uncoated aluminium should therefore be avoided.":"With non-acidic foods, the protective oxide layer helps limit reaction between the aluminium surface and the food."}</p>
   </div>;
 }

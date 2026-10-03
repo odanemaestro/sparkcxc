@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./universeComponentsExplorer.css";
 
@@ -29,7 +30,7 @@ function ObjectsView(){
 
 function MilkyWayView(){
   return <div className="spark-milky-way">
-    <svg viewBox="0 0 820 460" role="img" aria-label="Simplified spiral Milky Way galaxy with the Solar System marked in one spiral arm">
+    <ReviewedScienceDiagram site="UniverseComponentsExplorer.jsx:32"><svg viewBox="0 0 820 460" role="img" aria-label="Simplified spiral Milky Way galaxy with the Solar System marked in one spiral arm">
       <circle className="uw-core" cx="410" cy="230" r="52"/>
       {[0,1,2,3].map(a=><path key={a} className="uw-arm" d={
         a===0?"M410 230C500 150 640 155 710 235C620 180 520 205 470 265":
@@ -41,7 +42,7 @@ function MilkyWayView(){
       <line className="uw-callout" x1="555" y1="195" x2="675" y2="95"/>
       <text className="uw-label" x="685" y="90">Solar System</text>
       <text className="uw-note" x="410" y="445" textAnchor="middle">Milky Way, a spiral galaxy</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>Our Solar System lies inside the Milky Way. The Milky Way is one galaxy among an enormous number of galaxies in the universe.</p>
   </div>;
 }
@@ -51,14 +52,14 @@ function CometView(){
   const near=side==="near";
   return <div className="spark-comet-model">
     <div className="spark-universe-toggle"><button type="button" className={near?"active":""} onClick={()=>setSide("near")}>Near the Sun</button><button type="button" className={!near?"active":""} onClick={()=>setSide("far")}>Farther away</button></div>
-    <svg viewBox="0 0 820 380" role="img" aria-label={near?"Comet near the Sun with tail pointing away":"Comet farther from Sun with little visible tail"}>
+    <ReviewedScienceDiagram site="UniverseComponentsExplorer.jsx:54"><svg viewBox="0 0 820 380" role="img" aria-label={near?"Comet near the Sun with tail pointing away":"Comet farther from Sun with little visible tail"}>
       <circle className="uc-sun" cx="120" cy="190" r="58"/>
       <circle className="uc-nucleus" cx={near?410:650} cy="190" r="25"/>
       {near&&<><path className="uc-tail dust" d="M435 180Q575 130 760 115Q600 190 435 205Z"/><path className="uc-tail ion" d="M435 188Q610 200 780 250"/></>}
       <path className="uc-radiation" d={near?"M185 190H365":"M185 190H605"}/>
       <text className="uc-label" x="120" y="285" textAnchor="middle">Sun</text>
       <text className="uc-label" x={near?410:650} y="245" textAnchor="middle">comet nucleus</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>{near?"Solar radiation and solar wind drive comet material away from the Sun, so the tail points away from the Sun rather than simply behind the comet's motion.":"Far from the Sun, less ice vaporises, so the coma and tail become much less prominent."}</p>
   </div>;
 }

@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./drugEffectsExplorer.css";
 
@@ -50,7 +51,7 @@ function ClassesScene() {
 
 function DrivingScene() {
   return (
-    <svg viewBox="0 0 980 520" role="img" aria-label="Alcohol impairing reaction time judgement and coordination needed for driving">
+    <ReviewedScienceDiagram site="DrugEffectsExplorer.jsx:53"><svg viewBox="0 0 980 520" role="img" aria-label="Alcohol impairing reaction time judgement and coordination needed for driving">
       <g transform="translate(55 80)">
         <circle className="drug-brain" cx="125" cy="120" r="85" />
         <path className="drug-brain-fold" d="M80 95q35-30 65 0m-75 45q45-35 90 0m-50 45q35-25 70 0" />
@@ -72,7 +73,7 @@ function DrivingScene() {
         <text className="drug-label" x="110" y="385" textAnchor="middle">greater crash risk</text>
       </g>
       <text className="drug-small" x="490" y="475" textAnchor="middle">Coffee does not reverse alcohol-related impairment. The body needs time to metabolise alcohol.</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

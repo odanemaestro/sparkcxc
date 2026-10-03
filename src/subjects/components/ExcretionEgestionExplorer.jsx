@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useMemo, useState } from "react";
 import "./excretionEgestionExplorer.css";
 
@@ -42,7 +43,7 @@ const ITEMS = {
 function DecisionScene() {
   return (
     <div className="spark-excretion-decision">
-      <svg className="spark-excretion-decision-svg" viewBox="0 0 980 600" role="img" aria-label="Decision pathway distinguishing excretion from egestion by tracing whether material was produced by metabolism inside the body or remained undigested and unabsorbed in the alimentary canal">
+      <ReviewedScienceDiagram site="ExcretionEgestionExplorer.jsx:45"><svg className="spark-excretion-decision-svg" viewBox="0 0 980 600" role="img" aria-label="Decision pathway distinguishing excretion from egestion by tracing whether material was produced by metabolism inside the body or remained undigested and unabsorbed in the alimentary canal">
         <defs>
           <marker id="ee-decision-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
             <path d="M0 0L9 4.5L0 9Z" className="eed-arrow-head"/>
@@ -94,7 +95,7 @@ function DecisionScene() {
 
         <text className="eed-example" x="250" y="590" textAnchor="middle">CO₂, urea, excess salts and water</text>
         <text className="eed-example" x="730" y="590" textAnchor="middle">undigested fibre in faeces</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
     </div>
   );
 }
@@ -105,7 +106,7 @@ function RouteScene({itemKey}) {
   return (
     <div className="spark-excretion-route-layout">
       <div className="spark-excretion-route-stage">
-        <svg viewBox="0 0 880 440" role="img" aria-label={item.title + " removal pathway"}>
+        <ReviewedScienceDiagram site="ExcretionEgestionExplorer.jsx:108"><svg viewBox="0 0 880 440" role="img" aria-label={item.title + " removal pathway"}>
           <g transform="translate(115 205)">
             <circle className="ee-cell" cx="0" cy="0" r="72" />
             <circle className="ee-nucleus" cx="0" cy="0" r="25" />
@@ -146,7 +147,7 @@ function RouteScene({itemKey}) {
           <path className={isEgestion ? "ee-route egestion" : "ee-route excretion"} d="M590 205H760" />
           <text className="ee-exit-label" x="760" y="188" textAnchor="middle">outside</text>
           <path className="ee-exit-arrow" d="M720 205H800" />
-        </svg>
+        </svg></ReviewedScienceDiagram>
       </div>
       <aside>
         <span>{item.type === "excretion" ? "EXCRETORY PRODUCT" : "EGESTED MATERIAL"}</span>

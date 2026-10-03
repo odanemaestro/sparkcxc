@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./flowerReproductionProcess.css";
 
@@ -22,7 +23,7 @@ const STEPS = [
 
 function ProcessDiagram({ step }) {
   return (
-    <svg viewBox="0 0 900 520" role="img" aria-label={"Flower reproduction step " + (step + 1)}>
+    <ReviewedScienceDiagram site="FlowerReproductionProcess.jsx:25"><svg viewBox="0 0 900 520" role="img" aria-label={"Flower reproduction step " + (step + 1)}>
       <path className="frp-petal left" d="M470 320 C350 310 270 235 295 120 C390 140 455 205 490 295Z" />
       <path className="frp-petal right" d="M530 320 C650 310 730 235 705 120 C610 140 545 205 510 295Z" />
       <path className="frp-sepal left" d="M460 345 C380 355 335 335 310 295 C380 290 430 310 470 330Z" />
@@ -66,7 +67,7 @@ function ProcessDiagram({ step }) {
       <text className="frp-small" x="90" y="125">
         {step === 0 ? "pollen reaches stigma" : step === 1 ? "tube grows down style" : step === 2 ? "nuclei fuse in ovule" : "ovule to seed, ovary to fruit"}
       </text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
@@ -88,7 +89,7 @@ const POLLINATION = {
 function PollinationComparisonDiagram({agent}) {
   const insect=agent==="insect";
   return (
-    <svg className={"spark-pollination-structure-svg "+agent} viewBox="0 0 900 420" role="img" aria-label={insect?"Insect-pollinated flower showing large petals, enclosed anthers, sticky stigma and relatively few larger pollen grains":"Wind-pollinated flower showing small petals, exposed dangling anthers, feathery stigma and many small light pollen grains"}>
+    <ReviewedScienceDiagram site="FlowerReproductionProcess.jsx:91"><svg className={"spark-pollination-structure-svg "+agent} viewBox="0 0 900 420" role="img" aria-label={insect?"Insect-pollinated flower showing large petals, enclosed anthers, sticky stigma and relatively few larger pollen grains":"Wind-pollinated flower showing small petals, exposed dangling anthers, feathery stigma and many small light pollen grains"}>
       <g className="pc-flower" transform="translate(450 225)">
         {insect ? <>
           <path className="pc-petal large left" d="M-20 15Q-170 5-205-115Q-70-105-8-35Z"/>
@@ -146,7 +147,7 @@ function PollinationComparisonDiagram({agent}) {
           <text x="70" y="355">many small, light, smooth pollen grains</text>
         </>}
       </g>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

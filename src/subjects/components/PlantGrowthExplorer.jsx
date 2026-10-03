@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useMemo, useState } from "react";
 import "./plantGrowthExplorer.css";
 
@@ -22,7 +23,7 @@ const DRY_MASS = [
 function GerminationSetup() {
   const seeds=[0,1,2,3,4];
   return (
-    <svg className="spark-germination-requirements-svg" viewBox="0 0 980 620" role="img" aria-label="Seed germination requirements and a fair investigation of temperature using equal numbers of similar seeds on equal amounts of moist material">
+    <ReviewedScienceDiagram site="PlantGrowthExplorer.jsx:25"><svg className="spark-germination-requirements-svg" viewBox="0 0 980 620" role="img" aria-label="Seed germination requirements and a fair investigation of temperature using equal numbers of similar seeds on equal amounts of moist material">
       <defs>
         <marker id="pg-requirement-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
           <path d="M0 0L9 4.5L0 9Z" className="pg-arrow-head"/>
@@ -88,7 +89,7 @@ function GerminationSetup() {
       ))}
 
       <text className="pg-response-label" x="490" y="594" textAnchor="middle">Responding variable: number or percentage of seeds germinated after the same fixed time.</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
@@ -103,7 +104,7 @@ function LineChart({ data, xKey, yKey, xLabel, yLabel }) {
   const pathData = points.map((point,index) => (index ? "L" : "M") + point.x + " " + point.y).join(" ");
 
   return (
-    <svg viewBox="0 0 850 450" role="img" aria-label={yLabel + " against " + xLabel}>
+    <ReviewedScienceDiagram site="PlantGrowthExplorer.jsx:106"><svg viewBox="0 0 850 450" role="img" aria-label={yLabel + " against " + xLabel}>
       <line className="pg-axis" x1="95" y1="360" x2="765" y2="360" />
       <line className="pg-axis" x1="95" y1="360" x2="95" y2="65" />
       <path className="pg-line" d={pathData} />
@@ -115,7 +116,7 @@ function LineChart({ data, xKey, yKey, xLabel, yLabel }) {
       ))}
       <text className="pg-axis-label" x="430" y="420" textAnchor="middle">{xLabel}</text>
       <text className="pg-axis-label" x="28" y="215" transform="rotate(-90 28 215)" textAnchor="middle">{yLabel}</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

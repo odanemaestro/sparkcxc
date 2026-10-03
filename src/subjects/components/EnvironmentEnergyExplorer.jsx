@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./environmentEnergyExplorer.css";
 
@@ -31,7 +32,7 @@ const ECOLOGY_TERMS=[
 
 function FoodChainSvg({kind}){
   const marine=kind==="marine";
-  return <svg className="spark-env-foodchain-svg" viewBox="0 0 960 360" role="img" aria-label={marine?"Marine food chain from phytoplankton to zooplankton to small fish to shark":"Land food chain from grass to grasshopper to lizard to hawk"}>
+  return <ReviewedScienceDiagram site="EnvironmentEnergyExplorer.jsx:34"><svg className="spark-env-foodchain-svg" viewBox="0 0 960 360" role="img" aria-label={marine?"Marine food chain from phytoplankton to zooplankton to small fish to shark":"Land food chain from grass to grasshopper to lizard to hawk"}>
     <defs>
       <marker id={"env-arrow-"+kind} markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
         <path className="env-arrow-head" d="M0 0L10 5L0 10Z"/>
@@ -79,11 +80,11 @@ function FoodChainSvg({kind}){
       <text className="env-energy-label" x="100" y="188" textAnchor="middle">10</text>
     </g>
     <text className="env-caption" x="480" y="338" textAnchor="middle">arrows show the direction of energy transfer, from food to consumer</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 }
 
 function EnergyPyramidSvg(){
-  return <svg className="spark-env-pyramid-svg" viewBox="0 0 700 480" role="img" aria-label="Pyramid of energy with producer 10000, primary consumer 1000, secondary consumer 100 and tertiary consumer 10 relative energy units">
+  return <ReviewedScienceDiagram site="EnvironmentEnergyExplorer.jsx:86"><svg className="spark-env-pyramid-svg" viewBox="0 0 700 480" role="img" aria-label="Pyramid of energy with producer 10000, primary consumer 1000, secondary consumer 100 and tertiary consumer 10 relative energy units">
     <path className="env-pyramid-level producer" d="M60 370H640L575 455H125Z"/>
     <path className="env-pyramid-level primary" d="M125 285H575L520 365H180Z"/>
     <path className="env-pyramid-level secondary" d="M180 200H520L465 280H235Z"/>
@@ -94,7 +95,7 @@ function EnergyPyramidSvg(){
     <text className="env-pyramid-text" x="350" y="417" textAnchor="middle">Producer · 10 000</text>
     <path className="env-heat-arrow" d="M540 345Q620 305 645 260"/><text className="env-small" x="620" y="240" textAnchor="middle">energy to surroundings</text>
     <text className="env-caption" x="350" y="75" textAnchor="middle">energy available decreases at successive trophic levels</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 }
 
 function ChainView(){

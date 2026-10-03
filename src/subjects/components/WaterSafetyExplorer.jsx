@@ -1,8 +1,9 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./waterSafetyExplorer.css";
 
 function DeviceDiagram({device}){
-  if(device==="jacket") return <svg className="spark-water-device-svg" viewBox="0 0 760 360" role="img" aria-label="Life jacket fitted around a person showing buoyant foam, reflective strips and whistle">
+  if(device==="jacket") return <ReviewedScienceDiagram site="WaterSafetyExplorer.jsx:5"><svg className="spark-water-device-svg" viewBox="0 0 760 360" role="img" aria-label="Life jacket fitted around a person showing buoyant foam, reflective strips and whistle">
     <circle className="ws-head" cx="360" cy="70" r="36"/>
     <path className="ws-torso" d="M315 112Q360 92 405 112L425 285H295Z"/>
     <path className="ws-jacket" d="M305 120Q335 102 352 128L360 205L368 128Q385 102 415 120L405 238Q360 260 315 238Z"/>
@@ -15,9 +16,9 @@ function DeviceDiagram({device}){
     <path className="ws-callout" d="M410 198L590 185"/><text className="ws-label" x="605" y="190">whistle</text>
     <path className="ws-callout" d="M360 228L590 255"/><text className="ws-label" x="605" y="260">secure buckle</text>
     <text className="ws-caption" x="360" y="330" textAnchor="middle">correct size and secure fit keep flotation around the chest</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 
-  if(device==="buoy") return <svg className="spark-water-device-svg" viewBox="0 0 760 360" role="img" aria-label="Ring buoy with attached rescue line">
+  if(device==="buoy") return <ReviewedScienceDiagram site="WaterSafetyExplorer.jsx:20"><svg className="spark-water-device-svg" viewBox="0 0 760 360" role="img" aria-label="Ring buoy with attached rescue line">
     <circle className="ws-ring outer" cx="330" cy="175" r="112"/>
     <circle className="ws-ring hole" cx="330" cy="175" r="58"/>
     {[45,135,225,315].map(a=>{
@@ -30,9 +31,9 @@ function DeviceDiagram({device}){
     <path className="ws-callout" d="M420 112L560 70"/><text className="ws-label" x="575" y="74">buoyant ring</text>
     <path className="ws-callout" d="M560 244L650 285"/><text className="ws-label" x="655" y="292">attached rescue line</text>
     <text className="ws-caption" x="330" y="330" textAnchor="middle">throw flotation towards the person from a safe position</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 
-  if(device==="raft") return <svg className="spark-water-device-svg" viewBox="0 0 760 360" role="img" aria-label="Inflatable life raft showing buoyant chambers, canopy and occupants kept above the water">
+  if(device==="raft") return <ReviewedScienceDiagram site="WaterSafetyExplorer.jsx:35"><svg className="spark-water-device-svg" viewBox="0 0 760 360" role="img" aria-label="Inflatable life raft showing buoyant chambers, canopy and occupants kept above the water">
     <path className="ws-waterline" d="M35 275Q165 250 295 275T555 275T725 275"/>
     <ellipse className="ws-raft" cx="380" cy="238" rx="230" ry="75"/>
     <ellipse className="ws-raft-floor" cx="380" cy="225" rx="165" ry="48"/>
@@ -42,9 +43,9 @@ function DeviceDiagram({device}){
     <path className="ws-callout" d="M205 250L95 180"/><text className="ws-label" x="82" y="176" textAnchor="end">inflatable chamber</text>
     <path className="ws-callout" d="M380 105L575 70"/><text className="ws-label" x="590" y="74">protective canopy</text>
     <text className="ws-caption" x="380" y="340" textAnchor="middle">keeps occupants together and largely out of the water</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 
-  return <svg className="spark-water-device-svg" viewBox="0 0 760 360" role="img" aria-label="Inflatable arm bands on a learner in shallow supervised water">
+  return <ReviewedScienceDiagram site="WaterSafetyExplorer.jsx:47"><svg className="spark-water-device-svg" viewBox="0 0 760 360" role="img" aria-label="Inflatable arm bands on a learner in shallow supervised water">
     <path className="ws-water-fill" d="M30 225Q180 205 330 225T630 225T730 225V340H30Z"/>
     <circle className="ws-head" cx="360" cy="92" r="35"/>
     <path className="ws-torso" d="M320 135Q360 112 400 135L414 270H306Z"/>
@@ -53,7 +54,7 @@ function DeviceDiagram({device}){
     <ellipse className="ws-armband" cx="468" cy="195" rx="40" ry="31" transform="rotate(25 468 195)"/>
     <path className="ws-callout" d="M252 174L105 120"/><text className="ws-label" x="92" y="120" textAnchor="end">trapped air adds buoyancy</text>
     <text className="ws-caption" x="360" y="322" textAnchor="middle">training aid only, close adult supervision is still required</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 }
 
 function DeviceView(){
@@ -97,7 +98,7 @@ function BuoyancyView(){
   const [jacket,setJacket]=useState(true);
   return <div className="spark-water-safety-buoyancy">
     <div className="spark-water-safety-buttons"><button type="button" className={jacket?"active":""} onClick={()=>setJacket(true)}>With life jacket</button><button type="button" className={!jacket?"active":""} onClick={()=>setJacket(false)}>Without jacket</button></div>
-    <svg className="spark-water-buoyancy-svg" viewBox="0 0 860 520" role="img" aria-label={jacket?"Person wearing a life jacket floating higher because increased volume displaces more water":"Person without a life jacket floating lower in the water"}>
+    <ReviewedScienceDiagram site="WaterSafetyExplorer.jsx:100"><svg className="spark-water-buoyancy-svg" viewBox="0 0 860 520" role="img" aria-label={jacket?"Person wearing a life jacket floating higher because increased volume displaces more water":"Person without a life jacket floating lower in the water"}>
       <defs>
         <marker id="ws-force-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
           <path className="ws-force-head" d="M0 0L10 5L0 10Z"/>
@@ -136,7 +137,7 @@ function BuoyancyView(){
       </g>
 
       <text className="ws-buoy-caption" x="430" y="505" textAnchor="middle">{jacket?"life jacket increases volume with little added mass, lowering average density":"without a life jacket, flotation depends mainly on the person's own average density and swimming ability"}</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>{jacket?"The low-density material adds volume with little mass, lowering average density and allowing more water to be displaced. The resulting upthrust helps support the person higher in the water.":"Without added flotation, a person must rely on their own buoyancy and swimming ability. A life jacket does not make weight disappear; it helps enough water be displaced for upthrust to balance the person's weight at a safer position."}</p>
   </div>;
 }

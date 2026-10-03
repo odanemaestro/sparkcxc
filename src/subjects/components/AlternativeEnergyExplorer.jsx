@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./alternativeEnergyExplorer.css";
 
@@ -13,7 +14,7 @@ const SOURCES=[
 ];
 
 function EnergySourceDiagram({id}){
-  if(id==="solar-pv") return <svg className="spark-alt-source-svg" viewBox="0 0 620 360" role="img" aria-label="Solar photovoltaic system converting sunlight to electrical energy">
+  if(id==="solar-pv") return <ReviewedScienceDiagram site="AlternativeEnergyExplorer.jsx:16"><svg className="spark-alt-source-svg" viewBox="0 0 620 360" role="img" aria-label="Solar photovoltaic system converting sunlight to electrical energy">
     <circle className="aes-sun" cx="95" cy="75" r="42"/>
     <path className="aes-ray" d="M145 90L275 140M140 58L278 112M130 120L265 165"/>
     <polygon className="aes-panel" points="270,100 490,145 440,255 220,210"/>
@@ -21,9 +22,9 @@ function EnergySourceDiagram({id}){
     <rect className="aes-load" x="520" y="180" width="55" height="70" rx="8"/>
     <text className="aes-label" x="350" y="300" textAnchor="middle">photovoltaic panel</text>
     <text className="aes-caption" x="310" y="335" textAnchor="middle">light energy → electrical energy</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 
-  if(id==="solar-thermal") return <svg className="spark-alt-source-svg" viewBox="0 0 620 360" role="img" aria-label="Solar thermal collector heating water stored in an insulated tank">
+  if(id==="solar-thermal") return <ReviewedScienceDiagram site="AlternativeEnergyExplorer.jsx:26"><svg className="spark-alt-source-svg" viewBox="0 0 620 360" role="img" aria-label="Solar thermal collector heating water stored in an insulated tank">
     <circle className="aes-sun" cx="85" cy="70" r="40"/>
     <path className="aes-ray" d="M130 85L240 135M126 52L245 108"/>
     <rect className="aes-collector" x="225" y="105" width="180" height="105" rx="10"/>
@@ -33,9 +34,9 @@ function EnergySourceDiagram({id}){
     <path className="aes-water-level" d="M475 145H540"/>
     <text className="aes-label" x="315" y="245" textAnchor="middle">dark solar collector</text>
     <text className="aes-caption" x="310" y="325" textAnchor="middle">solar radiation → thermal energy in water</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 
-  if(id==="wind") return <svg className="spark-alt-source-svg" viewBox="0 0 620 360" role="img" aria-label="Wind turbine driving a generator to produce electrical energy">
+  if(id==="wind") return <ReviewedScienceDiagram site="AlternativeEnergyExplorer.jsx:38"><svg className="spark-alt-source-svg" viewBox="0 0 620 360" role="img" aria-label="Wind turbine driving a generator to produce electrical energy">
     <path className="aes-ground" d="M25 300Q310 275 595 300"/>
     <path className="aes-wind" d="M35 90H220M55 130H235M30 170H205"/>
     <path className="aes-tower" d="M350 115L325 300H375Z"/>
@@ -48,9 +49,9 @@ function EnergySourceDiagram({id}){
     <path className="aes-cable" d="M375 285Q445 300 520 275"/>
     <rect className="aes-load" x="515" y="245" width="55" height="55" rx="8"/>
     <text className="aes-label" x="350" y="335" textAnchor="middle">turbine blades turn a generator in the nacelle</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 
-  if(id==="hydro") return <svg className="spark-alt-source-svg" viewBox="0 0 620 360" role="img" aria-label="Hydroelectric dam with reservoir penstock turbine and generator">
+  if(id==="hydro") return <ReviewedScienceDiagram site="AlternativeEnergyExplorer.jsx:53"><svg className="spark-alt-source-svg" viewBox="0 0 620 360" role="img" aria-label="Hydroelectric dam with reservoir penstock turbine and generator">
     <path className="aes-hill" d="M0 135Q115 60 230 130V330H0Z"/>
     <path className="aes-reservoir" d="M0 145H250V235H0Z"/>
     <path className="aes-dam" d="M245 115L305 305H225Z"/>
@@ -62,9 +63,9 @@ function EnergySourceDiagram({id}){
     <text className="aes-label" x="115" y="125">reservoir</text>
     <text className="aes-label" x="335" y="220">penstock</text>
     <text className="aes-caption" x="390" y="345" textAnchor="middle">falling water → turbine → generator → electricity</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 
-  if(id==="geothermal") return <svg className="spark-alt-source-svg" viewBox="0 0 620 360" role="img" aria-label="Geothermal power system with injection well production well hot rock steam turbine and generator">
+  if(id==="geothermal") return <ReviewedScienceDiagram site="AlternativeEnergyExplorer.jsx:67"><svg className="spark-alt-source-svg" viewBox="0 0 620 360" role="img" aria-label="Geothermal power system with injection well production well hot rock steam turbine and generator">
     <path className="aes-ground" d="M0 105H620"/>
     <path className="aes-hot-rock" d="M0 245Q150 215 310 250T620 240V360H0Z"/>
     <path className="aes-injection-well" d="M120 95V270Q120 290 145 295"/>
@@ -77,9 +78,9 @@ function EnergySourceDiagram({id}){
     <text className="aes-label" x="100" y="325">injection well</text>
     <text className="aes-label" x="315" y="325">production well</text>
     <text className="aes-caption" x="310" y="350" textAnchor="middle">Earth's heat transfers energy to circulating water</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 
-  if(id==="biomass") return <svg className="spark-alt-source-svg" viewBox="0 0 620 360" role="img" aria-label="Biomass energy system using plant material in a boiler to produce steam and electricity">
+  if(id==="biomass") return <ReviewedScienceDiagram site="AlternativeEnergyExplorer.jsx:82"><svg className="spark-alt-source-svg" viewBox="0 0 620 360" role="img" aria-label="Biomass energy system using plant material in a boiler to produce steam and electricity">
     <g className="aes-cane">
       <path d="M70 270V90M105 270V75M140 270V100"/>
       <path d="M70 140Q35 120 25 145M105 125Q145 105 160 130M140 170Q175 150 190 175"/>
@@ -92,9 +93,9 @@ function EnergySourceDiagram({id}){
     <rect className="aes-generator" x="505" y="120" width="75" height="60" rx="10"/>
     <text className="aes-label" x="105" y="310" textAnchor="middle">bagasse / plant material</text>
     <text className="aes-caption" x="390" y="325" textAnchor="middle">chemical energy → heat → steam → electricity</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 
-  if(id==="biogas") return <svg className="spark-alt-source-svg" viewBox="0 0 620 360" role="img" aria-label="Anaerobic biogas digester converting organic waste to methane-rich gas">
+  if(id==="biogas") return <ReviewedScienceDiagram site="AlternativeEnergyExplorer.jsx:97"><svg className="spark-alt-source-svg" viewBox="0 0 620 360" role="img" aria-label="Anaerobic biogas digester converting organic waste to methane-rich gas">
     <path className="aes-feed" d="M45 110H170L205 170"/>
     <rect className="aes-digester" x="185" y="150" width="255" height="130" rx="50"/>
     <path className="aes-slurry" d="M205 225Q310 195 420 225V265H205Z"/>
@@ -106,9 +107,9 @@ function EnergySourceDiagram({id}){
     <text className="aes-label" x="110" y="92">organic waste + water</text>
     <text className="aes-label" x="310" y="315" textAnchor="middle">anaerobic digester</text>
     <text className="aes-caption" x="310" y="345" textAnchor="middle">microorganisms produce methane-rich biogas without oxygen</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 
-  return <svg className="spark-alt-source-svg" viewBox="0 0 620 360" role="img" aria-label="Wave energy device converting ocean motion to electrical energy">
+  return <ReviewedScienceDiagram site="AlternativeEnergyExplorer.jsx:111"><svg className="spark-alt-source-svg" viewBox="0 0 620 360" role="img" aria-label="Wave energy device converting ocean motion to electrical energy">
     <path className="aes-sea-wave" d="M0 190Q70 135 140 190T280 190T420 190T560 190T700 190V360H0Z"/>
     <path className="aes-wave-device" d="M310 90V255"/>
     <ellipse className="aes-wave-float" cx="310" cy="178" rx="55" ry="28"/>
@@ -117,7 +118,7 @@ function EnergySourceDiagram({id}){
     <path className="aes-cable" d="M365 178H445"/>
     <text className="aes-label" x="310" y="290" textAnchor="middle">moving float</text>
     <text className="aes-caption" x="310" y="330" textAnchor="middle">wave motion drives a mechanical or hydraulic generator system</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 }
 
 function SourceView(){
@@ -134,26 +135,26 @@ function SolarView(){
     <article>
       <span>PHOTOVOLTAIC CELL</span>
       <h4>Light → electrical energy</h4>
-      <svg viewBox="0 0 560 250" role="img" aria-label="Sunlight striking a photovoltaic panel and producing electrical energy">
+      <ReviewedScienceDiagram site="AlternativeEnergyExplorer.jsx:137"><svg viewBox="0 0 560 250" role="img" aria-label="Sunlight striking a photovoltaic panel and producing electrical energy">
         <circle className="ae-sun" cx="90" cy="70" r="38"/>
         <path className="ae-ray" d="M135 85L250 130M130 55L250 105M120 105L245 150"/>
         <polygon className="ae-panel" points="250,75 455,115 410,205 205,165"/>
         <path className="ae-wire" d="M410 205Q470 215 500 170"/>
         <text className="ae-label" x="405" y="235" textAnchor="middle">electric current</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
       <p>A photovoltaic cell produces electricity directly from light. It is different from a solar water heater.</p>
     </article>
     <article>
       <span>SOLAR WATER HEATER</span>
       <h4>Radiation → thermal energy in water</h4>
-      <svg viewBox="0 0 560 250" role="img" aria-label="Black solar collector warming water and an insulated hot-water storage tank">
+      <ReviewedScienceDiagram site="AlternativeEnergyExplorer.jsx:149"><svg viewBox="0 0 560 250" role="img" aria-label="Black solar collector warming water and an insulated hot-water storage tank">
         <circle className="ae-sun" cx="90" cy="65" r="38"/>
         <path className="ae-ray" d="M130 80L235 125M125 50L235 100"/>
         <rect className="ae-collector" x="220" y="95" width="165" height="95" rx="8"/>
         <rect className="ae-tank" x="430" y="75" width="75" height="130" rx="22"/>
         <path className="ae-pipe" d="M385 110Q420 110 430 105M385 175Q420 175 430 180"/>
         <text className="ae-label" x="302" y="220" textAnchor="middle">dark collector absorbs radiation</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
       <p>Dark surfaces absorb radiation well. The storage tank is insulated to reduce heat loss from hot water.</p>
     </article>
   </div>;
@@ -172,7 +173,7 @@ function CaribbeanView(){
 
 function SolarCookerView(){
   return <div className="spark-solar-cooker">
-    <svg viewBox="0 0 820 450" role="img" aria-label="Box solar cooker with reflector, glass cover, dark pot and insulated box">
+    <ReviewedScienceDiagram site="AlternativeEnergyExplorer.jsx:175"><svg viewBox="0 0 820 450" role="img" aria-label="Box solar cooker with reflector, glass cover, dark pot and insulated box">
       <path className="aec-box" d="M225 215H645V390H225Z"/>
       <path className="aec-reflector" d="M225 215L145 60L310 60L355 215Z"/>
       <rect className="aec-glass" x="250" y="225" width="365" height="18" rx="5"/>
@@ -181,7 +182,7 @@ function SolarCookerView(){
       <text className="aec-label" x="125" y="185">reflector redirects sunlight</text>
       <text className="aec-label" x="435" y="375" textAnchor="middle">dark pot absorbs radiation</text>
       <text className="aec-label" x="435" y="418" textAnchor="middle">insulated box reduces heat loss</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-solar-cooker-notes"><p>Solar cookers use free solar energy and produce no smoke during operation.</p><p>A transparent cover reduces convective heat loss, while reflective surfaces direct more radiation towards the dark cooking vessel.</p><p>They depend on suitable sunshine and cook more slowly than some fuel-fired methods.</p></div>
   </div>;
 }

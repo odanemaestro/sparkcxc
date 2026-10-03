@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./earFunctionExplorer.css";
 
@@ -26,7 +27,7 @@ const VIEWS = {
 
 function HearingScene() {
   return (
-    <svg viewBox="0 0 980 500" role="img" aria-label="Sound pathway through outer, middle and inner ear">
+    <ReviewedScienceDiagram site="EarFunctionExplorer.jsx:29"><svg viewBox="0 0 980 500" role="img" aria-label="Sound pathway through outer, middle and inner ear">
       <path className="earfx-wave" d="M20 120q30-32 60 0t60 0t60 0" />
       <path className="earfx-wave" d="M20 180q30-32 60 0t60 0t60 0" />
 
@@ -53,7 +54,7 @@ function HearingScene() {
       <text className="earfx-label" x="735" y="405" textAnchor="middle">4. cochlea</text>
       <text className="earfx-label" x="875" y="355" textAnchor="middle">5. auditory nerve</text>
       <text className="earfx-small" x="500" y="465" textAnchor="middle">Sound path: pinna → ear canal → ear drum → ossicles → cochlea → auditory nerve</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
@@ -68,7 +69,7 @@ function SoundScene() {
     return pts.join(" ");
   };
   return (
-    <svg viewBox="0 0 980 520" role="img" aria-label="Frequency controls pitch and amplitude controls loudness">
+    <ReviewedScienceDiagram site="EarFunctionExplorer.jsx:71"><svg viewBox="0 0 980 520" role="img" aria-label="Frequency controls pitch and amplitude controls loudness">
       <text className="earfx-heading" x="245" y="45" textAnchor="middle">Pitch depends on frequency</text>
       <path className="earfx-sound low" d={wave(150,35,2)} />
       <text className="earfx-small" x="245" y="210" textAnchor="middle">low frequency, lower pitch</text>
@@ -82,13 +83,13 @@ function SoundScene() {
       <text className="earfx-small" x="735" y="405" textAnchor="middle">large amplitude, louder</text>
 
       <text className="earfx-warning" x="735" y="470" textAnchor="middle">prolonged loud noise can damage cochlear hair cells</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function BalanceScene() {
   return (
-    <svg viewBox="0 0 980 500" role="img" aria-label="Semicircular canals showing fluid movement during rotation">
+    <ReviewedScienceDiagram site="EarFunctionExplorer.jsx:91"><svg viewBox="0 0 980 500" role="img" aria-label="Semicircular canals showing fluid movement during rotation">
       <g transform="translate(130 70)">
         <path className="earfx-semicircular" d="M180 250Q60 160 120 65Q200-15 285 75Q340 140 300 225" />
         <path className="earfx-semicircular" d="M205 245Q150 110 250 75Q355 40 375 150Q388 225 310 270" />
@@ -104,13 +105,13 @@ function BalanceScene() {
         <path className="earfx-spin" d="M5 45Q80-20 155 45" />
         <text className="earfx-small" x="80" y="400" textAnchor="middle">fluid may keep moving briefly after spinning stops</text>
       </g>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function PressureScene() {
   return (
-    <svg viewBox="0 0 980 500" role="img" aria-label="Eustachian tube equalising pressure across the ear drum">
+    <ReviewedScienceDiagram site="EarFunctionExplorer.jsx:113"><svg viewBox="0 0 980 500" role="img" aria-label="Eustachian tube equalising pressure across the ear drum">
       <g transform="translate(80 70)">
         <rect className="earfx-outer-air" x="0" y="60" width="250" height="280" rx="20" />
         <ellipse className="earfx-drum big" cx="290" cy="200" rx="18" ry="110" />
@@ -122,7 +123,7 @@ function PressureScene() {
         <text className="earfx-label" x="445" y="430">Eustachian tube opens to throat</text>
       </g>
       <text className="earfx-small" x="500" y="475" textAnchor="middle">equal pressure on both sides of the ear drum reduces discomfort and causes the 'pop'</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

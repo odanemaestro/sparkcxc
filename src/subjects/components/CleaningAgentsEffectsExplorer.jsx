@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./cleaningAgentsEffectsExplorer.css";
 
@@ -26,7 +27,7 @@ function AbrasionView(){
   const particles=Array.from({length:7},(_,i)=>i);
   return <div className="spark-abrasion-view">
     <div className="spark-cleaning-toggle"><button type="button" className={!abrasive?"active":""} onClick={()=>setAbrasive(false)}>Soft cleaner</button><button type="button" className={abrasive?"active":""} onClick={()=>setAbrasive(true)}>Scouring powder</button></div>
-    <svg className="spark-abrasion-svg" viewBox="0 0 820 390" role="img" aria-label={abrasive?"Cross-section of a non-stick pan showing abrasive particles scraping grooves through the coating":"Cross-section of a non-stick pan showing an intact coating under a non-abrasive cleaner"}>
+    <ReviewedScienceDiagram site="CleaningAgentsEffectsExplorer.jsx:29"><svg className="spark-abrasion-svg" viewBox="0 0 820 390" role="img" aria-label={abrasive?"Cross-section of a non-stick pan showing abrasive particles scraping grooves through the coating":"Cross-section of a non-stick pan showing an intact coating under a non-abrasive cleaner"}>
       <defs>
         <marker id="clean-abrasion-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" className="ca-arrow-head"/></marker>
       </defs>
@@ -59,7 +60,7 @@ function AbrasionView(){
         <text className="ca-small" x="410" y="378" textAnchor="middle">abrasive particles scrape the coating and can expose the base material</text>
       </React.Fragment>}
       {!abrasive&&<text className="ca-small" x="410" y="378" textAnchor="middle">non-abrasive cleaning leaves the protective coating continuous</text>}
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>{abrasive?"Abrasive particles remove stains by rubbing, but the same action can scratch polished silver or damage a non-stick coating. Once the coating is cut through, the base material becomes exposed.":"A non-abrasive cleaner can loosen suitable soils while preserving a delicate surface coating."}</p>
   </div>;
 }
@@ -68,7 +69,7 @@ function ScaleView(){
   const [treated,setTreated]=useState(false);
   return <div className="spark-scale-cleaning">
     <div className="spark-cleaning-toggle"><button type="button" className={!treated?"active":""} onClick={()=>setTreated(false)}>Before vinegar</button><button type="button" className={treated?"active":""} onClick={()=>setTreated(true)}>Weak acid added</button></div>
-    <svg className="spark-scale-reaction-svg" viewBox="0 0 860 400" role="img" aria-label={treated?"Kettle wall cross-section showing weak acid reacting with calcium carbonate scale, carbon dioxide bubbles and thinning scale":"Kettle wall cross-section showing calcium carbonate scale deposited on the metal surface"}>
+    <ReviewedScienceDiagram site="CleaningAgentsEffectsExplorer.jsx:71"><svg className="spark-scale-reaction-svg" viewBox="0 0 860 400" role="img" aria-label={treated?"Kettle wall cross-section showing weak acid reacting with calcium carbonate scale, carbon dioxide bubbles and thinning scale":"Kettle wall cross-section showing calcium carbonate scale deposited on the metal surface"}>
       <defs>
         <marker id="clean-scale-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" className="ca-arrow-head"/></marker>
       </defs>
@@ -87,7 +88,7 @@ function ScaleView(){
         <text className="ca-small" x="430" y="367" textAnchor="middle">acid reacts at the scale surface, so the calcium carbonate deposit becomes thinner</text>
       </React.Fragment>}
       {!treated&&<text className="ca-small" x="430" y="367" textAnchor="middle">hard-water heating leaves a calcium carbonate deposit on the metal surface</text>}
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-scale-equation"><span>acid</span><b>+</b><span>calcium carbonate</span><b>→</b><span>calcium salt + water + carbon dioxide</span></div>
     <p>Weak household acids can react with calcium carbonate scale. Carbon dioxide bubbles are released as the scale dissolves. The exact calcium salt formed depends on the acid used.</p>
   </div>;

@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useMemo, useState } from "react";
 import "./energyConversionExplorer.css";
 
@@ -17,7 +18,7 @@ const VEHICLE_ACTIONS=[
 ];
 
 function EnergyConversionDiagram({id}){
-  if(id==="fan") return <svg className="spark-energy-conversion-svg" viewBox="0 0 820 360" role="img" aria-label="Electric fan energy conversion from electrical energy to kinetic energy with heat and sound transfers">
+  if(id==="fan") return <ReviewedScienceDiagram site="EnergyConversionExplorer.jsx:20"><svg className="spark-energy-conversion-svg" viewBox="0 0 820 360" role="img" aria-label="Electric fan energy conversion from electrical energy to kinetic energy with heat and sound transfers">
     <path className="ec-wire" d="M80 180H245"/>
     <rect className="ec-plug" x="55" y="155" width="55" height="50" rx="8"/>
     <circle className="ec-motor" cx="345" cy="180" r="55"/>
@@ -29,9 +30,9 @@ function EnergyConversionDiagram({id}){
     <text className="ec-label" x="345" y="310" textAnchor="middle">motor turns fan blades</text>
     <text className="ec-label useful" x="690" y="105">kinetic energy</text>
     <text className="ec-small" x="690" y="275" textAnchor="middle">some heat + sound</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 
-  if(id==="torch") return <svg className="spark-energy-conversion-svg" viewBox="0 0 820 360" role="img" aria-label="Torch energy conversion from chemical energy in a battery to electrical energy and light">
+  if(id==="torch") return <ReviewedScienceDiagram site="EnergyConversionExplorer.jsx:34"><svg className="spark-energy-conversion-svg" viewBox="0 0 820 360" role="img" aria-label="Torch energy conversion from chemical energy in a battery to electrical energy and light">
     <rect className="ec-torch" x="130" y="125" width="330" height="110" rx="35"/>
     <rect className="ec-battery" x="160" y="148" width="95" height="64" rx="8"/>
     <line className="ec-battery-mark" x1="205" y1="155" x2="205" y2="205"/>
@@ -43,9 +44,9 @@ function EnergyConversionDiagram({id}){
     <text className="ec-label" x="315" y="250" textAnchor="middle">electrical transfer</text>
     <text className="ec-label useful" x="660" y="165" textAnchor="middle">light energy</text>
     <text className="ec-small" x="660" y="220" textAnchor="middle">some energy becomes heat</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 
-  if(id==="hydro") return <svg className="spark-energy-conversion-svg" viewBox="0 0 820 360" role="img" aria-label="Hydroelectric energy conversion from gravitational potential energy through moving water to electrical energy">
+  if(id==="hydro") return <ReviewedScienceDiagram site="EnergyConversionExplorer.jsx:48"><svg className="spark-energy-conversion-svg" viewBox="0 0 820 360" role="img" aria-label="Hydroelectric energy conversion from gravitational potential energy through moving water to electrical energy">
     <path className="ec-hill" d="M40 285L40 90H275L275 285Z"/>
     <path className="ec-reservoir" d="M45 105H260V175H45Z"/>
     <path className="ec-penstock" d="M245 165Q360 205 435 265"/>
@@ -57,9 +58,9 @@ function EnergyConversionDiagram({id}){
     <text className="ec-label" x="350" y="220" textAnchor="middle">kinetic energy of water</text>
     <text className="ec-label useful" x="650" y="225" textAnchor="middle">electrical energy</text>
     <text className="ec-small" x="455" y="335" textAnchor="middle">turbine + generator</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 
-  if(id==="brakes") return <svg className="spark-energy-conversion-svg" viewBox="0 0 820 360" role="img" aria-label="Car braking converting kinetic energy mainly to thermal energy through friction">
+  if(id==="brakes") return <ReviewedScienceDiagram site="EnergyConversionExplorer.jsx:62"><svg className="spark-energy-conversion-svg" viewBox="0 0 820 360" role="img" aria-label="Car braking converting kinetic energy mainly to thermal energy through friction">
     <path className="ec-car" d="M115 210L175 140H430L500 210H585V265H95V210Z"/>
     <circle className="ec-wheel" cx="205" cy="270" r="55"/><circle className="ec-wheel" cx="485" cy="270" r="55"/>
     <circle className="ec-disc" cx="485" cy="270" r="30"/>
@@ -70,9 +71,9 @@ function EnergyConversionDiagram({id}){
     <text className="ec-label" x="160" y="96" textAnchor="middle">kinetic energy</text>
     <text className="ec-label useful" x="650" y="145" textAnchor="middle">thermal energy</text>
     <text className="ec-small" x="485" y="340" textAnchor="middle">friction between brake components</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 
-  return <svg className="spark-energy-conversion-svg" viewBox="0 0 820 360" role="img" aria-label="Loudspeaker converting electrical energy to vibrations and sound energy">
+  return <ReviewedScienceDiagram site="EnergyConversionExplorer.jsx:75"><svg className="spark-energy-conversion-svg" viewBox="0 0 820 360" role="img" aria-label="Loudspeaker converting electrical energy to vibrations and sound energy">
     <path className="ec-wire" d="M70 180H210"/>
     <rect className="ec-coil" x="210" y="135" width="90" height="90" rx="12"/>
     <path className="ec-speaker-cone" d="M300 145L500 90V270L300 215Z"/>
@@ -84,7 +85,7 @@ function EnergyConversionDiagram({id}){
     <text className="ec-label" x="400" y="305" textAnchor="middle">cone vibrates</text>
     <text className="ec-label useful" x="680" y="180" textAnchor="middle">sound energy</text>
     <text className="ec-small" x="680" y="320" textAnchor="middle">some energy becomes heat</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 }
 
 function Chain({item}){

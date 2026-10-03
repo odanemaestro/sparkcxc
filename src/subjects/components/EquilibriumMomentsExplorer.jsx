@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./equilibriumMomentsExplorer.css";
 
@@ -39,7 +40,7 @@ function BalanceView(){
     </div>
     <strong>Balance distance on right = {rightDistance.toFixed(2)} m</strong>
 
-    <svg className="spark-moments-balance-svg" viewBox="0 0 860 480" role="img" aria-label="Balanced beam showing equal clockwise and anticlockwise moments about a pivot">
+    <ReviewedScienceDiagram site="EquilibriumMomentsExplorer.jsx:42"><svg className="spark-moments-balance-svg" viewBox="0 0 860 480" role="img" aria-label="Balanced beam showing equal clockwise and anticlockwise moments about a pivot">
       <rect className="em-ground" x="75" y="365" width="710" height="14" rx="7"/>
       <rect className="em-beam" x="110" y="240" width="640" height="20" rx="10"/>
 
@@ -80,7 +81,7 @@ function BalanceView(){
       <text className="em-moment-label clockwise" x="430" y="420" textAnchor="middle">clockwise moment = {moment.toFixed(1)} N m</text>
 
       <text className="em-balance-note" x="430" y="455" textAnchor="middle">clockwise moment = anticlockwise moment</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
 
     <div className="spark-moment-facts">
       <article><b>Moment</b><span>Force × perpendicular distance from the pivot.</span></article>

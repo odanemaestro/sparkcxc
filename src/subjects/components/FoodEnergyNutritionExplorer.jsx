@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./foodEnergyNutritionExplorer.css";
 
@@ -38,7 +39,7 @@ function DeficiencyView(){
 }
 
 function FoodTestDiagram({testId}){
-  if(testId==="starch") return <svg className="spark-food-test-svg" viewBox="0 0 760 360" role="img" aria-label="Iodine test for starch showing iodine added to a food sample and a blue-black positive result">
+  if(testId==="starch") return <ReviewedScienceDiagram site="FoodEnergyNutritionExplorer.jsx:41"><svg className="spark-food-test-svg" viewBox="0 0 760 360" role="img" aria-label="Iodine test for starch showing iodine added to a food sample and a blue-black positive result">
     <rect className="ft-tile" x="90" y="155" width="240" height="120" rx="18"/>
     <ellipse className="ft-sample starch" cx="210" cy="215" rx="62" ry="36"/>
     <path className="ft-dropper" d="M245 55L292 105L274 123L227 73Z"/>
@@ -49,9 +50,9 @@ function FoodTestDiagram({testId}){
     <text className="ft-title" x="210" y="315" textAnchor="middle">iodine added</text>
     <text className="ft-title positive" x="555" y="315" textAnchor="middle">blue-black, starch present</text>
     <text className="ft-label" x="305" y="62">iodine solution</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 
-  if(testId==="sugar") return <svg className="spark-food-test-svg" viewBox="0 0 760 400" role="img" aria-label="Benedict's test for reducing sugar showing a test tube heated in a hot-water bath and a brick-red precipitate">
+  if(testId==="sugar") return <ReviewedScienceDiagram site="FoodEnergyNutritionExplorer.jsx:54"><svg className="spark-food-test-svg" viewBox="0 0 760 400" role="img" aria-label="Benedict's test for reducing sugar showing a test tube heated in a hot-water bath and a brick-red precipitate">
     <path className="ft-beaker" d="M105 105V315Q105 340 130 340H390Q415 340 415 315V105"/>
     <line className="ft-rim" x1="90" y1="105" x2="430" y2="105"/>
     <path className="ft-water" d="M105 190H415V315Q415 340 390 340H130Q105 340 105 315Z"/>
@@ -69,9 +70,9 @@ function FoodTestDiagram({testId}){
     <text className="ft-small" x="616" y="250" textAnchor="middle">green → yellow → orange → brick-red</text>
     <text className="ft-small" x="616" y="276" textAnchor="middle">more reducing sugar gives a stronger result</text>
     <text className="ft-small" x="260" y="378" textAnchor="middle">heat in hot water, never directly in a flame</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 
-  if(testId==="protein") return <svg className="spark-food-test-svg" viewBox="0 0 760 360" role="img" aria-label="Biuret test for protein showing blue reagent becoming purple or lilac when protein is present">
+  if(testId==="protein") return <ReviewedScienceDiagram site="FoodEnergyNutritionExplorer.jsx:74"><svg className="spark-food-test-svg" viewBox="0 0 760 360" role="img" aria-label="Biuret test for protein showing blue reagent becoming purple or lilac when protein is present">
     <path className="ft-test-tube large" d="M125 70V275Q125 315 175 315Q225 315 225 275V70"/>
     <line className="ft-test-rim" x1="110" y1="70" x2="240" y2="70"/>
     <path className="ft-biuret blue" d="M125 180H225V275Q225 315 175 315Q125 315 125 275Z"/>
@@ -84,9 +85,9 @@ function FoodTestDiagram({testId}){
     <text className="ft-title" x="175" y="342" textAnchor="middle">Biuret reagent added</text>
     <text className="ft-title positive" x="495" y="342" textAnchor="middle">lilac / purple, protein present</text>
     <text className="ft-label" x="305" y="60">Biuret reagent</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 
-  return <svg className="spark-food-test-svg" viewBox="0 0 760 360" role="img" aria-label="Brown paper grease-spot test for fat showing a persistent translucent spot after drying">
+  return <ReviewedScienceDiagram site="FoodEnergyNutritionExplorer.jsx:89"><svg className="spark-food-test-svg" viewBox="0 0 760 360" role="img" aria-label="Brown paper grease-spot test for fat showing a persistent translucent spot after drying">
     <rect className="ft-paper" x="85" y="80" width="245" height="205" rx="10"/>
     <path className="ft-food-smear" d="M150 150Q205 110 267 153Q255 218 176 226Q126 204 150 150Z"/>
     <text className="ft-label" x="208" y="315" textAnchor="middle">rub food onto brown paper</text>
@@ -95,7 +96,7 @@ function FoodTestDiagram({testId}){
     <ellipse className="ft-grease-spot" cx="562" cy="184" rx="72" ry="55"/>
     <text className="ft-title positive" x="562" y="315" textAnchor="middle">persistent translucent spot, fat present</text>
     <text className="ft-small" x="390" y="115" textAnchor="middle">allow paper to dry</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 }
 
 function FoodTestView(){

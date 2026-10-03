@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./airPollutionExplorer.css";
 
@@ -21,7 +22,7 @@ function SourcesView(){
 
 function AcidRainView(){
   return <div className="spark-acid-rain">
-    <svg className="spark-acidrain-diagram" viewBox="0 0 920 470" role="img" aria-label="Acid rain formation showing sulfur dioxide and nitrogen oxides rising from combustion sources, atmospheric reactions in clouds and acidic deposition on land and water">
+    <ReviewedScienceDiagram site="AirPollutionExplorer.jsx:24"><svg className="spark-acidrain-diagram" viewBox="0 0 920 470" role="img" aria-label="Acid rain formation showing sulfur dioxide and nitrogen oxides rising from combustion sources, atmospheric reactions in clouds and acidic deposition on land and water">
       <defs>
         <marker id="air-acid-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" className="ap-arrow-head"/></marker>
       </defs>
@@ -51,7 +52,7 @@ function AcidRainView(){
       <text className="ap-small" x="536" y="434" textAnchor="middle">limestone structures</text>
       <text className="ap-small" x="770" y="421" textAnchor="middle">lakes and streams</text>
       <text className="ap-small" x="149" y="365" textAnchor="middle">combustion source</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-acidrain-flow">
       <article><span>1</span><b>SO₂ and NOₓ released</b><p>Combustion and industrial sources release sulfur dioxide and nitrogen oxides.</p></article><div>→</div>
       <article><span>2</span><b>Atmospheric reactions</b><p>The gases react with water and oxidants in the atmosphere to form acidic compounds.</p></article><div>→</div>
@@ -69,7 +70,7 @@ function PlantDustView(){
   const [dust,setDust]=useState(false);
   return <div className="spark-dust-leaf">
     <div className="spark-airpollution-toggle"><button type="button" className={!dust?"active":""} onClick={()=>setDust(false)}>Clean leaf</button><button type="button" className={dust?"active":""} onClick={()=>setDust(true)}>Dust-coated leaf</button></div>
-    <svg className={"spark-leaf-dust-svg "+(dust?"dusty":"clean")} viewBox="0 0 940 520" role="img" aria-label={dust?"Leaf cross-section with dust blocking light and partly covering stomata":"Clean leaf cross-section showing light reaching palisade cells and carbon dioxide entering through an open stoma"}>
+    <ReviewedScienceDiagram site="AirPollutionExplorer.jsx:72"><svg className={"spark-leaf-dust-svg "+(dust?"dusty":"clean")} viewBox="0 0 940 520" role="img" aria-label={dust?"Leaf cross-section with dust blocking light and partly covering stomata":"Clean leaf cross-section showing light reaching palisade cells and carbon dioxide entering through an open stoma"}>
       <defs>
         <marker id="leaf-light-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" className="ld-light-head"/></marker>
         <marker id="leaf-gas-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" className="ld-gas-head"/></marker>
@@ -110,7 +111,7 @@ function PlantDustView(){
         <text className="ld-warning" x="610" y="454">dust can partly cover stomata</text>
         <text className="ld-warning" x="465" y="92" textAnchor="middle">dust layer scatters and blocks some incoming light</text>
       </g>}
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>{dust?"Heavy dust deposits can reduce light reaching the leaf surface and interfere with stomatal gas exchange, lowering photosynthesis and growth.":"A clean leaf surface receives light and allows normal gas exchange through stomata."}</p>
   </div>;
 }

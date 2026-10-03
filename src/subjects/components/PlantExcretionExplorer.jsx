@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./plantExcretionExplorer.css";
 
@@ -25,7 +26,7 @@ function StomaScene() {
     [85,305,155,92],[250,315,145,88],[575,315,150,88]
   ];
   return (
-    <svg className="spark-stoma-excretion-svg" viewBox="0 0 1040 610" role="img" aria-label="Stomatal apparatus and leaf-section pathway showing guard cells with chloroplasts around a stomatal pore, surrounding epidermal cells, substomatal air space, spongy mesophyll and diffusion of oxygen carbon dioxide and water vapour">
+    <ReviewedScienceDiagram site="PlantExcretionExplorer.jsx:28"><svg className="spark-stoma-excretion-svg" viewBox="0 0 1040 610" role="img" aria-label="Stomatal apparatus and leaf-section pathway showing guard cells with chloroplasts around a stomatal pore, surrounding epidermal cells, substomatal air space, spongy mesophyll and diffusion of oxygen carbon dioxide and water vapour">
       <defs>
         <marker id="stoma-gas-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
           <path d="M0 0L9 4.5L0 9Z" className="pex-stoma-arrow-head"/>
@@ -84,13 +85,13 @@ function StomaScene() {
       </g>
 
       <text className="pex-stoma-caption" x="520" y="585" textAnchor="middle">Stomata provide a diffusion pathway between internal leaf air spaces and the atmosphere.</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function DayNightScene() {
   return (
-    <svg viewBox="0 0 920 500" role="img" aria-label="Comparison of plant gas release in bright light and at night">
+    <ReviewedScienceDiagram site="PlantExcretionExplorer.jsx:93"><svg viewBox="0 0 920 500" role="img" aria-label="Comparison of plant gas release in bright light and at night">
       <circle className="pex-sun" cx="210" cy="95" r="48" />
       <path className="pex-moon" d="M700 55Q760 80 735 145Q695 180 655 145Q710 140 700 55Z" />
       <path className="pex-plant" d="M235 390V190m0 80q-95-60-130 0q75 60 130 25m0-45q100-70 145-5q-85 65-145 30" />
@@ -103,13 +104,13 @@ function DayNightScene() {
       <text className="pex-small" x="235" y="470" textAnchor="middle">photosynthesis usually exceeds respiration</text>
       <text className="pex-heading" x="685" y="445" textAnchor="middle">Night</text>
       <text className="pex-small" x="685" y="470" textAnchor="middle">respiration continues, photosynthesis stops</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function StorageScene() {
   return (
-    <svg viewBox="0 0 920 500" role="img" aria-label="Plant wastes stored in old leaves and bark then removed by shedding">
+    <ReviewedScienceDiagram site="PlantExcretionExplorer.jsx:112"><svg viewBox="0 0 920 500" role="img" aria-label="Plant wastes stored in old leaves and bark then removed by shedding">
       <g transform="translate(80 55)">
         <rect className="pex-trunk" x="120" y="110" width="135" height="285" rx="28" />
         <path className="pex-bark-peel" d="M225 150Q290 190 255 310Q220 335 205 290Q235 240 225 150Z" />
@@ -126,7 +127,7 @@ function StorageScene() {
         <text className="pex-label" x="200" y="430" textAnchor="middle">old leaf falls</text>
       </g>
       <text className="pex-small" x="460" y="485" textAnchor="middle">stored wastes leave when bark peels or old leaves are shed</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

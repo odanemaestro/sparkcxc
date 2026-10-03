@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./pregnancyStagesExplorer.css";
 
@@ -21,7 +22,7 @@ const STAGES = {
 
 function EarlyDevelopmentScene() {
   return (
-    <svg viewBox="0 0 960 500" role="img" aria-label="Fertilisation, cell division and implantation during early pregnancy">
+    <ReviewedScienceDiagram site="PregnancyStagesExplorer.jsx:24"><svg viewBox="0 0 960 500" role="img" aria-label="Fertilisation, cell division and implantation during early pregnancy">
       <ellipse className="ps-ovary" cx="125" cy="175" rx="55" ry="38" />
       <path className="ps-oviduct" d="M175 175Q300 80 435 165Q500 210 560 220" />
       <path className="ps-uterus" d="M555 135Q700 80 830 155Q880 250 835 405Q755 455 650 410Q565 355 555 220Z" />
@@ -45,13 +46,13 @@ function EarlyDevelopmentScene() {
       <text className="ps-small" x="200" y="269">sperm nucleus + ovum nucleus</text>
       <text className="ps-label" x="375" y="90">zygote divides</text>
       <text className="ps-label" x="690" y="455">implantation in uterine lining</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function PlacentaScene() {
   return (
-    <svg viewBox="0 0 980 560" role="img" aria-label="Pregnant uterus showing foetus, amniotic sac, placenta, umbilical cord and placental exchange without direct mixing of maternal and foetal blood">
+    <ReviewedScienceDiagram site="PregnancyStagesExplorer.jsx:54"><svg viewBox="0 0 980 560" role="img" aria-label="Pregnant uterus showing foetus, amniotic sac, placenta, umbilical cord and placental exchange without direct mixing of maternal and foetal blood">
       <g className="ps-pregnant-uterus" transform="translate(18 20)">
         <path className="ps-uterus-outer" d="M165 65Q300 8 438 80Q500 150 492 268Q484 382 407 472Q325 534 233 490Q150 445 111 353Q76 270 95 185Q111 111 165 65Z" />
         <path className="ps-uterus-muscle" d="M183 88Q300 42 417 100Q468 157 461 261Q453 358 388 439Q321 490 245 455Q174 419 141 341Q111 271 127 197Q141 133 183 88Z" />
@@ -110,13 +111,13 @@ function PlacentaScene() {
         <text className="ps-small" x="226" y="342">foetal capillaries in villi</text>
         <text className="ps-warning" x="195" y="390" textAnchor="middle">maternal and foetal blood do not normally mix directly</text>
       </g>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function LabourScene() {
   return (
-    <svg viewBox="0 0 960 520" role="img" aria-label="Three stages of labour from cervical dilation to delivery and afterbirth">
+    <ReviewedScienceDiagram site="PregnancyStagesExplorer.jsx:119"><svg viewBox="0 0 960 520" role="img" aria-label="Three stages of labour from cervical dilation to delivery and afterbirth">
       {[160,480,800].map((x,index) => (
         <g key={x}>
           <circle className="ps-stage-number" cx={x} cy="70" r="30" />
@@ -148,7 +149,7 @@ function LabourScene() {
       </g>
       <text className="ps-label centre" x="800" y="445">Placenta is expelled</text>
       <text className="ps-small centre" x="800" y="468">afterbirth</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

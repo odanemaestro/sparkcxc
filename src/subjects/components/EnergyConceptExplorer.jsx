@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useMemo, useState } from "react";
 import "./energyConceptExplorer.css";
 
@@ -29,7 +30,7 @@ function EnergyScale(){
 
 function WorkMechanismDiagram(){
   return (
-    <svg className="spark-work-mechanism-svg" viewBox="0 0 980 430" role="img" aria-label="Mechanical work comparison showing a force moving a box through a distance and a force on a wall with zero displacement">
+    <ReviewedScienceDiagram site="EnergyConceptExplorer.jsx:32"><svg className="spark-work-mechanism-svg" viewBox="0 0 980 430" role="img" aria-label="Mechanical work comparison showing a force moving a box through a distance and a force on a wall with zero displacement">
       <defs>
         <marker id="work-force-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
           <path d="M0 0L9 4.5L0 9Z" className="ew-arrow-head"/>
@@ -68,7 +69,7 @@ function WorkMechanismDiagram(){
       </g>
 
       <text className="ew-caption" x="490" y="410" textAnchor="middle">For mechanical work, the force must cause displacement in the direction of the force.</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

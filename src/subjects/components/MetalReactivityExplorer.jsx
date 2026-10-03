@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./metalReactivityExplorer.css";
 
@@ -19,7 +20,7 @@ function AcidView(){
   return <div className="spark-acid-reactivity">
     <div className="spark-reactivity-buttons">{["zinc","iron","copper","silver"].map(k=><button type="button" key={k} className={metal===k?"active":""} onClick={()=>setMetal(k)}>{k[0].toUpperCase()+k.slice(1)}</button>)}</div>
     <div className="spark-acid-apparatus">
-      <svg className="spark-acid-svg" viewBox="0 0 620 360" role="img" aria-label={data.name+" reacting with dilute hydrochloric acid in a test tube"}>
+      <ReviewedScienceDiagram site="MetalReactivityExplorer.jsx:22"><svg className="spark-acid-svg" viewBox="0 0 620 360" role="img" aria-label={data.name+" reacting with dilute hydrochloric acid in a test tube"}>
         <defs>
           <clipPath id="mr-test-tube-clip"><path d="M170 52V252C170 301 250 301 250 252V52Z"/></clipPath>
         </defs>
@@ -40,7 +41,7 @@ function AcidView(){
         </>}
         <text className="mr-symbol" x="210" y="253" textAnchor="middle">{data.symbol}</text>
         <text className="mr-caption" x="210" y="328" textAnchor="middle">test tube</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
     </div>
     <strong>{data.equation}</strong><p>{data.reacts?"Hydrogen gas is released because the metal is above hydrogen in the reactivity series. Faster bubbling indicates a faster reaction under the same conditions.":"Copper and silver are below hydrogen in the simplified series used here, so they do not displace hydrogen from dilute hydrochloric acid."}</p>
   </div>;
@@ -52,7 +53,7 @@ function DisplacementView(){
   return <div className="spark-displacement-view">
     <div className="spark-reactivity-buttons"><button type="button" className={iron?"active":""} onClick={()=>setMetal("iron")}>Iron in copper(II) sulfate</button><button type="button" className={!iron?"active":""} onClick={()=>setMetal("copper")}>Copper in iron salt</button></div>
     <div className="spark-displacement-apparatus">
-      <svg className="spark-displacement-svg" viewBox="0 0 720 390" role="img" aria-label={iron?"Iron nail in copper two sulfate solution showing copper deposition":"Copper strip in iron salt solution showing no displacement"}>
+      <ReviewedScienceDiagram site="MetalReactivityExplorer.jsx:55"><svg className="spark-displacement-svg" viewBox="0 0 720 390" role="img" aria-label={iron?"Iron nail in copper two sulfate solution showing copper deposition":"Copper strip in iron salt solution showing no displacement"}>
         <path className="mr-beaker" d="M155 62V305Q155 326 176 326H394Q415 326 415 305V62"/>
         <line className="mr-beaker-rim" x1="140" y1="62" x2="430" y2="62"/>
         <path className={iron?"mr-solution copper-sulfate":"mr-solution iron-salt"} d="M155 145H415V305Q415 326 394 326H176Q155 326 155 305Z"/>
@@ -68,7 +69,7 @@ function DisplacementView(){
           <text className="mr-ion-note" x="284" y="348" textAnchor="middle">Fe atoms enter solution while Cu²⁺ ions gain electrons and form Cu</text>
         </>}
         {!iron&&<text className="mr-ion-note" x="284" y="348" textAnchor="middle">No displacement, copper is less reactive than iron</text>}
-      </svg>
+      </svg></ReviewedScienceDiagram>
     </div>
     <p>{iron?"Iron is more reactive than copper, so iron displaces copper ions from solution. Copper metal forms as a reddish-brown coating while iron enters the solution as ions.":"Copper is less reactive than iron, so it cannot displace iron ions from solution."}</p>
   </div>;

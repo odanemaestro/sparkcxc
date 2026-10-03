@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./divingEffectsExplorer.css";
 
@@ -27,7 +28,7 @@ function EarView(){
   return <div className="spark-diving-ear">
     <div className="spark-diving-toggle"><button type="button" className={!equalized?"active":""} onClick={()=>setEqualized(false)}>Pressure not equalised</button><button type="button" className={equalized?"active":""} onClick={()=>setEqualized(true)}>Pressure equalised</button></div>
 
-    <svg className="spark-diving-ear-svg" viewBox="0 0 920 500" role="img" aria-label={equalized
+    <ReviewedScienceDiagram site="DivingEffectsExplorer.jsx:30"><svg className="spark-diving-ear-svg" viewBox="0 0 920 500" role="img" aria-label={equalized
       ? "Ear cross-section with equal pressure on both sides of the eardrum and an open Eustachian tube"
       : "Ear cross-section with greater external water pressure bending the eardrum inward while middle-ear pressure is lower"}>
       <defs>
@@ -83,7 +84,7 @@ function EarView(){
         <text x="526" y="350" textAnchor="middle">middle ear</text>
         <text x="650" y="350">Eustachian tube</text>
       </g>
-    </svg>
+    </svg></ReviewedScienceDiagram>
 
     <div className="spark-diving-ear-facts">
       <article><b>Descent</b><span>External water pressure rises with depth. If middle-ear pressure does not increase, the eardrum is pushed inward.</span></article>

@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./separationTechniquesExplorer.css";
 
@@ -29,7 +30,7 @@ function SandSaltView(){
 
 function FiltrationView(){
  return <div className="spark-filtration-view">
-  <svg viewBox="0 0 760 450" role="img" aria-label="Filtration apparatus showing mixture poured into filter paper with residue retained and filtrate collected">
+  <ReviewedScienceDiagram site="SeparationTechniquesExplorer.jsx:32"><svg viewBox="0 0 760 450" role="img" aria-label="Filtration apparatus showing mixture poured into filter paper with residue retained and filtrate collected">
     <defs><marker id="sep-filter-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" className="sep-arrow-head"/></marker></defs>
     <path className="sep-pour-beaker" d="M80 82H235L215 215H100Z"/>
     <path className="sep-muddy" d="M96 148H220L211 205H104Z"/>
@@ -46,14 +47,14 @@ function FiltrationView(){
     <text className="sep-label" x="380" y="241" textAnchor="middle">residue</text>
     <text className="sep-label" x="380" y="438" textAnchor="middle">filtrate</text>
     <text className="sep-small" x="552" y="275">liquid passes through</text>
-  </svg>
+  </svg></ReviewedScienceDiagram>
   <p>Filter paper traps an insoluble solid as the residue. The liquid passing through the paper is the filtrate.</p>
  </div>;
 }
 
 function DistillView(){
  return <div className="spark-distill-view">
-  <svg viewBox="0 0 940 470" role="img" aria-label="Simple distillation apparatus with heated flask, thermometer, Liebig condenser, cooling water and receiver">
+  <ReviewedScienceDiagram site="SeparationTechniquesExplorer.jsx:56"><svg viewBox="0 0 940 470" role="img" aria-label="Simple distillation apparatus with heated flask, thermometer, Liebig condenser, cooling water and receiver">
     <defs><marker id="sep-distill-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" className="sep-arrow-head"/></marker></defs>
     <path className="sep-round-flask" d="M205 170V208Q126 238 126 326Q126 397 215 397Q304 397 304 326Q304 238 225 208V170Z"/>
     <path className="sep-liquid" d="M145 314Q215 345 285 314V350Q215 381 145 350Z"/>
@@ -86,7 +87,7 @@ function DistillView(){
     <text className="sep-label" x="215" y="294" textAnchor="middle">mixture</text>
     <text className="sep-label" x="550" y="58" textAnchor="middle">Liebig condenser</text>
     <text className="sep-small" x="518" y="167" textAnchor="middle">vapour cools and condenses</text>
-  </svg>
+  </svg></ReviewedScienceDiagram>
   <p>Distillation is useful when the solvent is required. For an alcohol-water mixture, the lower-boiling component becomes richer in the first vapour, although real beverage distillation produces mixtures rather than perfectly pure ethanol in one simple step.</p>
  </div>;
 }
@@ -110,20 +111,20 @@ function FunnelView(){
   const [drain,setDrain]=useState(false);
   return <div className="spark-funnel-view">
     <div className="spark-separation-toggle"><button type="button" className={!drain?"active":""} onClick={()=>setDrain(false)}>Two layers</button><button type="button" className={drain?"active":""} onClick={()=>setDrain(true)}>Drain lower layer</button></div>
-    <svg viewBox="0 0 500 420" role="img" aria-label="Separating funnel with oil and water layers">
+    <ReviewedScienceDiagram site="SeparationTechniquesExplorer.jsx:113"><svg viewBox="0 0 500 420" role="img" aria-label="Separating funnel with oil and water layers">
       <path className="sf-body" d="M145 55Q145 30 175 30H325Q355 30 355 55L390 230L285 325H215L110 230Z"/>
       {!drain&&<><path className="sf-oil" d="M133 155H367L390 230L285 325H215L110 230Z"/><path className="sf-water" d="M180 235H320L285 325H215Z"/></>}
       {drain&&<><path className="sf-oil" d="M133 155H367L390 230L285 325H215L110 230Z"/><path className="sf-drip" d="M250 325V390"/></>}
       <rect className="sf-tap" x="225" y="323" width="50" height="16"/>
       <text className="sf-label" x="250" y="125" textAnchor="middle">oil</text><text className="sf-label" x="250" y="285" textAnchor="middle">{drain?"lower layer draining":"water"}</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>Oil and water are immiscible, so they form separate layers. The denser lower layer can be released through the tap first.</p>
   </div>;
 }
 
 function CrystalsView(){
   return <div className="spark-crystals-view">
-    <svg className="spark-crystallisation-svg" viewBox="0 0 1040 520" role="img" aria-label="Crystallisation process showing gentle heating of a solution, cooling to form crystals, then filtration and drying">
+    <ReviewedScienceDiagram site="SeparationTechniquesExplorer.jsx:126"><svg className="spark-crystallisation-svg" viewBox="0 0 1040 520" role="img" aria-label="Crystallisation process showing gentle heating of a solution, cooling to form crystals, then filtration and drying">
       <defs>
         <marker id="sep-crystal-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
           <path className="sep-arrow-head" d="M0 0L10 5L0 10Z"/>
@@ -173,7 +174,7 @@ function CrystalsView(){
         <text className="sep-crystal-note" x="165" y="25" textAnchor="middle">do not boil to dryness when good crystals are required</text>
         <text className="sep-crystal-note" x="165" y="47" textAnchor="middle">slow cooling generally gives larger, better-formed crystals</text>
       </g>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-crystal-steps"><article><b>Heat gently</b><p>Evaporate some solvent until the solution becomes concentrated.</p></article><div>→</div><article><b>Cool slowly</b><p>Solubility decreases and crystals begin to form.</p></article><div>→</div><article><b>Filter and dry</b><p>Separate the crystals from remaining solution.</p></article></div>
     <aside><strong>Do not simply boil to dryness when good crystals are required.</strong><p>Slow cooling of a concentrated solution usually produces larger, better-formed crystals.</p></aside>
   </div>;

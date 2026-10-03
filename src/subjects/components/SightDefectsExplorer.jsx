@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./sightDefectsExplorer.css";
 
@@ -43,7 +44,7 @@ const CONDITIONS = {
 function RayDiagram({condition}) {
   const myopia = condition === "myopia";
   return (
-    <svg viewBox="0 0 980 500" role="img" aria-label={myopia ? "Short sight and concave lens correction" : "Long sight and convex lens correction"}>
+    <ReviewedScienceDiagram site="SightDefectsExplorer.jsx:46"><svg viewBox="0 0 980 500" role="img" aria-label={myopia ? "Short sight and concave lens correction" : "Long sight and convex lens correction"}>
       <text className="sd-heading" x="250" y="45" textAnchor="middle">Without correction</text>
       <text className="sd-heading" x="735" y="45" textAnchor="middle">With correction</text>
 
@@ -79,36 +80,36 @@ function RayDiagram({condition}) {
         <circle className="sd-focus good" cx="375" cy="185" r="8" />
         <text className="sd-small" x="260" y="350" textAnchor="middle">{myopia ? "concave lens moves focus onto retina" : "convex lens moves focus onto retina"}</text>
       </g>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function ConditionScene({condition}) {
   if (condition === "cataract") {
     return (
-      <svg viewBox="0 0 900 420" role="img" aria-label="Cataract showing a cloudy eye lens">
+      <ReviewedScienceDiagram site="SightDefectsExplorer.jsx:89"><svg viewBox="0 0 900 420" role="img" aria-label="Cataract showing a cloudy eye lens">
         <circle className="sd-eye large" cx="450" cy="210" r="155" />
         <ellipse className="sd-cloudy-lens" cx="390" cy="210" rx="70" ry="105" />
         <path className="sd-retina" d="M565 115Q610 165 610 210Q610 255 565 305" />
         <path className="sd-ray faint" d="M80 150H320M80 270H320" />
         <text className="sd-label" x="450" y="390" textAnchor="middle">cloudy lens reduces clear transmission of light</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
     );
   }
   if (condition === "glaucoma") {
     return (
-      <svg viewBox="0 0 900 420" role="img" aria-label="Glaucoma showing pressure-related optic nerve damage">
+      <ReviewedScienceDiagram site="SightDefectsExplorer.jsx:100"><svg viewBox="0 0 900 420" role="img" aria-label="Glaucoma showing pressure-related optic nerve damage">
         <circle className="sd-eye large" cx="400" cy="210" r="155" />
         <path className="sd-optic-nerve" d="M545 190Q665 185 790 225L775 285Q660 240 540 235Z" />
         <path className="sd-pressure" d="M260 145Q205 210 260 275M540 145Q595 210 540 275" />
         <path className="sd-damage" d="M625 205l45 50m0-50l-45 50" />
         <text className="sd-label" x="450" y="390" textAnchor="middle">optic nerve damage can cause permanent vision loss</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
     );
   }
   if (condition === "astigmatism") {
     return (
-      <svg viewBox="0 0 900 420" role="img" aria-label="Astigmatism showing uneven corneal curvature and multiple focal planes">
+      <ReviewedScienceDiagram site="SightDefectsExplorer.jsx:111"><svg viewBox="0 0 900 420" role="img" aria-label="Astigmatism showing uneven corneal curvature and multiple focal planes">
         <path className="sd-cornea-uneven" d="M300 75Q195 210 300 345Q350 300 335 210Q355 120 300 75Z" />
         <ellipse className="sd-eye-lens" cx="405" cy="210" rx="50" ry="85" />
         <path className="sd-retina" d="M605 115Q655 165 655 210Q655 255 605 305" />
@@ -116,11 +117,11 @@ function ConditionScene({condition}) {
         <circle className="sd-focus bad" cx="515" cy="190" r="7" />
         <circle className="sd-focus bad" cx="545" cy="230" r="7" />
         <text className="sd-label" x="450" y="390" textAnchor="middle">uneven curvature prevents one sharp focus</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
     );
   }
   return (
-    <svg viewBox="0 0 900 420" role="img" aria-label="Colour vision deficiency involving cone cells">
+    <ReviewedScienceDiagram site="SightDefectsExplorer.jsx:123"><svg viewBox="0 0 900 420" role="img" aria-label="Colour vision deficiency involving cone cells">
       <circle className="sd-retina-disc" cx="450" cy="200" r="145" />
       {[0,1,2,3,4,5,6,7,8,9,10,11].map(i=>{
         const angle=(i/12)*Math.PI*2;
@@ -129,7 +130,7 @@ function ConditionScene({condition}) {
         return <circle key={i} className={i%3===0 ? "sd-cone altered" : "sd-cone"} cx={x} cy={y} r="18" />;
       })}
       <text className="sd-label" x="450" y="390" textAnchor="middle">altered cone function changes colour discrimination</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

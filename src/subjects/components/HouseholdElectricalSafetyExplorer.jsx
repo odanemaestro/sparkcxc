@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./householdElectricalSafetyExplorer.css";
 
@@ -9,7 +10,7 @@ const HAZARDS=[
 ];
 
 function ThreePinPlugDiagram(){
-  return <svg className="spark-three-pin-plug-svg" viewBox="0 0 860 560" role="img" aria-label="Inside a three-pin plug showing earth, neutral and live wires, fuse, cable grip and three pins">
+  return <ReviewedScienceDiagram site="HouseholdElectricalSafetyExplorer.jsx:12"><svg className="spark-three-pin-plug-svg" viewBox="0 0 860 560" role="img" aria-label="Inside a three-pin plug showing earth, neutral and live wires, fuse, cable grip and three pins">
     <path className="ep-body" d="M170 95Q430 35 690 95L730 420Q630 505 430 510Q230 505 130 420Z"/>
     <rect className="ep-pin earth" x="398" y="18" width="64" height="145" rx="8"/>
     <rect className="ep-pin neutral" x="168" y="380" width="64" height="145" rx="8"/>
@@ -39,7 +40,7 @@ function ThreePinPlugDiagram(){
       <path d="M430 420L774 420"/><text x="788" y="424">cable grip</text>
     </g>
     <text className="ep-caption" x="430" y="545" textAnchor="middle">protective earth connects to the longest upper pin, live passes through the fuse</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 }
 
 function PlugView(){
@@ -76,7 +77,7 @@ function FuseView(){
 
 function ProtectionView(){
   return <div className="spark-safety-protection">
-    <svg className="spark-protection-device-svg" viewBox="0 0 1040 600" role="img" aria-label="Electrical safety fault path showing live fault to a metal appliance case earth wire fuse and circuit breaker protection">
+    <ReviewedScienceDiagram site="HouseholdElectricalSafetyExplorer.jsx:79"><svg className="spark-protection-device-svg" viewBox="0 0 1040 600" role="img" aria-label="Electrical safety fault path showing live fault to a metal appliance case earth wire fuse and circuit breaker protection">
       <defs>
         <marker id="es-fault-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
           <path className="es-arrow-head" d="M0 0L10 5L0 10Z"/>
@@ -142,7 +143,7 @@ function ProtectionView(){
         <text className="es-small" x="0" y="84">3. fuse melts or breaker trips</text>
         <text className="es-small" x="0" y="110">4. dangerous live supply is disconnected</text>
       </g>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <article><span>FUSE</span><h4>Melts when current exceeds its rating</h4><p>The fuse wire heats and melts, breaking the live connection. A blown fuse must be replaced with the correct rating.</p></article>
     <article><span>CIRCUIT BREAKER</span><h4>Trips and opens the circuit</h4><p>Many household circuits use breakers because they disconnect on excessive current and can be reset after the fault is corrected.</p></article>
     <article><span>EARTHING</span><h4>Protects exposed metal cases</h4><p>If a fault connects live wiring to the case, the earth conductor provides a low-resistance fault path so a protective device disconnects the circuit.</p></article>

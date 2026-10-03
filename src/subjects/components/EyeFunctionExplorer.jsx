@@ -1,10 +1,11 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./eyeFunctionExplorer.css";
 
 function AccommodationScene({mode}) {
   const near = mode === "near";
   return (
-    <svg viewBox="0 0 940 520" role="img" aria-label={near ? "Accommodation for a near object" : "Accommodation for a distant object"}>
+    <ReviewedScienceDiagram site="EyeFunctionExplorer.jsx:7"><svg viewBox="0 0 940 520" role="img" aria-label={near ? "Accommodation for a near object" : "Accommodation for a distant object"}>
       <text className="ef-heading" x="470" y="45" textAnchor="middle">{near ? "Near object" : "Distant object"}</text>
 
       <g className="ef-anatomical-eye" transform="translate(45 72)">
@@ -40,14 +41,14 @@ function AccommodationScene({mode}) {
       <text className="ef-label" x="470" y="455">{near ? "ligaments slacken" : "ligaments tighten"}</text>
       <text className="ef-label" x="720" y="455">{near ? "lens becomes more convex" : "lens becomes thinner"}</text>
       <text className="ef-small" x="470" y="495" textAnchor="middle">light is focused on the retina</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function PupilScene({light}) {
   const bright = light === "bright";
   return (
-    <svg viewBox="0 0 940 500" role="img" aria-label={bright ? "Pupil response in bright light" : "Pupil response in dim light"}>
+    <ReviewedScienceDiagram site="EyeFunctionExplorer.jsx:50"><svg viewBox="0 0 940 500" role="img" aria-label={bright ? "Pupil response in bright light" : "Pupil response in dim light"}>
       <circle className="ef-iris" cx="470" cy="245" r="155" />
       <circle className="ef-pupil" cx="470" cy="245" r={bright ? 42 : 92} />
       <g className="ef-light-rays">
@@ -56,7 +57,7 @@ function PupilScene({light}) {
       <text className="ef-heading" x="470" y="45" textAnchor="middle">{bright ? "Bright light" : "Dim light"}</text>
       <text className="ef-label" x="470" y="445" textAnchor="middle">{bright ? "circular iris muscles contract, pupil becomes smaller" : "radial iris muscles contract, pupil becomes larger"}</text>
       <text className="ef-small" x="470" y="475" textAnchor="middle">{bright ? "less light reaches the retina" : "more light enters the eye"}</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

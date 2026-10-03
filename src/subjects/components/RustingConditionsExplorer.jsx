@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./rustingConditionsExplorer.css";
 
@@ -28,14 +29,14 @@ function TestTubeView(){
   const t=TESTS.find(x=>x.id===id);
   return <div className="spark-rusting-tubes">
     <div className="spark-rust-buttons">{TESTS.map(x=><button type="button" key={x.id} className={id===x.id?"active":""} onClick={()=>setId(x.id)}>{x.name}</button>)}</div>
-    <svg className="spark-rusting-comparison" viewBox="0 0 820 430" role="img" aria-label="Four-test-tube rusting experiment comparing air and water, boiled water under oil, dry air and salt water with air">
+    <ReviewedScienceDiagram site="RustingConditionsExplorer.jsx:31"><svg className="spark-rusting-comparison" viewBox="0 0 820 430" role="img" aria-label="Four-test-tube rusting experiment comparing air and water, boiled water under oil, dry air and salt water with air">
       <text className="rt-title" x="410" y="35" textAnchor="middle">Controlled rusting experiment</text>
       <text className="rt-small" x="410" y="57" textAnchor="middle">same iron nails, different oxygen and water conditions</text>
       <RustTube x={45} id="airwater" label="Air + water" selected={id==="airwater"} onSelect={()=>setId("airwater")}/>
       <RustTube x={240} id="boiled" label="Boiled water + oil" selected={id==="boiled"} onSelect={()=>setId("boiled")}/>
       <RustTube x={435} id="dry" label="Dry air" selected={id==="dry"} onSelect={()=>setId("dry")}/>
       <RustTube x={630} id="salt" label="Salt water + air" selected={id==="salt"} onSelect={()=>setId("salt")}/>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-rust-result"><strong>{t.name}: {t.rust}</strong><p>{t.note}</p></div>
   </div>;
 }

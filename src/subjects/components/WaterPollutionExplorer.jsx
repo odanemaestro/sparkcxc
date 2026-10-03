@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./waterPollutionExplorer.css";
 
@@ -11,7 +12,7 @@ function EutrophicationView(){
     ["6","Aquatic life stressed","Fish and other animals may suffocate and die."]
   ];
   return <div className="spark-eutrophication-model">
-    <svg viewBox="0 0 1040 560" role="img" aria-label="Eutrophication in a water body showing nutrient runoff, algal bloom, sinking dead algae, decomposition, oxygen loss and fish death">
+    <ReviewedScienceDiagram site="WaterPollutionExplorer.jsx:14"><svg viewBox="0 0 1040 560" role="img" aria-label="Eutrophication in a water body showing nutrient runoff, algal bloom, sinking dead algae, decomposition, oxygen loss and fish death">
       <defs>
         <linearGradient id="wp-lake-water" x1="0" x2="0" y1="0" y2="1">
           <stop offset="0%" stopColor="#9fd2df" />
@@ -70,7 +71,7 @@ function EutrophicationView(){
       <g className="eu-step-key" transform="translate(35 535)">
         <text x="0" y="0">nutrients → bloom → death/sinking → decomposition → oxygen depletion → animal stress</text>
       </g>
-    </svg>
+    </svg></ReviewedScienceDiagram>
 
     <div className="spark-eutrophication-steps">
       {steps.map(([n,title,text])=><article key={n}><span>{n}</span><div><b>{title}</b><p>{text}</p></div></article>)}

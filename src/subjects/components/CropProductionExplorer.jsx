@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./cropProductionExplorer.css";
 
@@ -49,7 +50,7 @@ const METHODS = {
 function Scene({ method }) {
   if (method === "hydroponics") {
     return (
-      <svg viewBox="0 0 900 430" role="img" aria-label="Hydroponic crop system">
+      <ReviewedScienceDiagram site="CropProductionExplorer.jsx:52"><svg viewBox="0 0 900 430" role="img" aria-label="Hydroponic crop system">
         <rect className="cp-tank" x="170" y="275" width="560" height="95" rx="22" />
         <path className="cp-solution" d="M185 310H715V355H185Z" />
         {[250,450,650].map(x => (
@@ -62,13 +63,13 @@ function Scene({ method }) {
           </g>
         ))}
         <text className="cp-label" x="450" y="405" textAnchor="middle">nutrient solution supplies mineral ions to roots</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
     );
   }
 
   if (method === "greenhouse") {
     return (
-      <svg viewBox="0 0 900 430" role="img" aria-label="Greenhouse crop production">
+      <ReviewedScienceDiagram site="CropProductionExplorer.jsx:71"><svg viewBox="0 0 900 430" role="img" aria-label="Greenhouse crop production">
         <path className="cp-greenhouse" d="M120 360V160L260 65H640L780 160V360Z" />
         <path className="cp-greenhouse-line" d="M260 65V360M640 65V360M120 160H780" />
         {[250,380,520,650].map(x => (
@@ -80,13 +81,13 @@ function Scene({ method }) {
         ))}
         <circle className="cp-sun" cx="90" cy="70" r="36" />
         <text className="cp-label" x="450" y="405" textAnchor="middle">protected environment, controlled growing conditions</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
     );
   }
 
   if (method === "container") {
     return (
-      <svg viewBox="0 0 900 430" role="img" aria-label="Container gardening">
+      <ReviewedScienceDiagram site="CropProductionExplorer.jsx:89"><svg viewBox="0 0 900 430" role="img" aria-label="Container gardening">
         {[220,450,680].map((x,index) => (
           <g key={x}>
             <path className="cp-container" d={"M" + (x-70) + " 260H" + (x+70) + "L" + (x+50) + " 375H" + (x-50) + "Z"} />
@@ -97,13 +98,13 @@ function Scene({ method }) {
         ))}
         <path className="cp-floor" d="M100 380H800" />
         <text className="cp-label" x="450" y="415" textAnchor="middle">food production in limited urban space</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
     );
   }
 
   if (method === "rotation") {
     return (
-      <svg viewBox="0 0 900 430" role="img" aria-label="Crop rotation plan">
+      <ReviewedScienceDiagram site="CropProductionExplorer.jsx:106"><svg viewBox="0 0 900 430" role="img" aria-label="Crop rotation plan">
         {[
           ["Year 1","Corn",130],
           ["Year 2","Peas",340],
@@ -117,25 +118,25 @@ function Scene({ method }) {
         ))}
         <path className="cp-cycle-arrow" d="M310 210H330M520 210H540M730 315Q450 395 130 315" />
         <text className="cp-label" x="450" y="405" textAnchor="middle">changing crops helps break pest cycles and balance soil use</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
     );
   }
 
   if (method === "strip") {
     return (
-      <svg viewBox="0 0 900 430" role="img" aria-label="Strip planting across a field">
+      <ReviewedScienceDiagram site="CropProductionExplorer.jsx:126"><svg viewBox="0 0 900 430" role="img" aria-label="Strip planting across a field">
         <path className="cp-hillside" d="M70 340Q450 135 830 340V390H70Z" />
         {[0,1,2,3,4].map(i => (
           <path key={i} className={i%2 ? "cp-strip alt" : "cp-strip"} d={"M" + (120+i*135) + " 330Q" + (180+i*100) + " 230 " + (245+i*95) + " 175"} />
         ))}
         <text className="cp-label" x="450" y="415" textAnchor="middle">alternating crop strips across the field</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
     );
   }
 
   if (method === "tissueCulture") {
     return (
-      <svg viewBox="0 0 900 430" role="img" aria-label="Plant tissue culture production">
+      <ReviewedScienceDiagram site="CropProductionExplorer.jsx:138"><svg viewBox="0 0 900 430" role="img" aria-label="Plant tissue culture production">
         <rect className="cp-lab-bench" x="90" y="335" width="720" height="28" rx="8" />
         {[215,450,685].map((x,index) => (
           <g key={x}>
@@ -148,12 +149,12 @@ function Scene({ method }) {
           </g>
         ))}
         <text className="cp-label" x="450" y="402" textAnchor="middle">sterile nutrient medium supports many identical plantlets</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
     );
   }
 
   return (
-    <svg viewBox="0 0 900 430" role="img" aria-label="Organic farming system">
+    <ReviewedScienceDiagram site="CropProductionExplorer.jsx:156"><svg viewBox="0 0 900 430" role="img" aria-label="Organic farming system">
       <rect className="cp-compost" x="95" y="250" width="210" height="115" rx="16" />
       <text className="cp-compost-text" x="200" y="305" textAnchor="middle">COMPOST</text>
       <g className="cp-ladybird" transform="translate(700 125)">
@@ -169,7 +170,7 @@ function Scene({ method }) {
       ))}
       <path className="cp-floor" d="M340 350H760" />
       <text className="cp-label" x="450" y="405" textAnchor="middle">compost, manure and biological pest control</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

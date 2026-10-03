@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./foodMicroorganismExplorer.css";
 
@@ -77,7 +78,7 @@ function MouldStructureScene(){
   const spores=[[120,90],[185,70],[255,105],[720,75],[790,100],[850,68]];
   return(
     <div className="spark-mould-structure-scene">
-      <svg className="spark-mould-structure-svg" viewBox="0 0 980 520" role="img" aria-label="Bread mould structure showing spores, a germinating spore, branching thread-like hyphae and a mycelium spreading through bread">
+      <ReviewedScienceDiagram site="FoodMicroorganismExplorer.jsx:80"><svg className="spark-mould-structure-svg" viewBox="0 0 980 520" role="img" aria-label="Bread mould structure showing spores, a germinating spore, branching thread-like hyphae and a mycelium spreading through bread">
         <defs>
           <marker id="mould-callout-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
             <path d="M0 0L9 4.5L0 9Z" className="ms-arrow-head"/>
@@ -123,7 +124,7 @@ function MouldStructureScene(){
         </g>
 
         <text className="ms-bread-label" x="490" y="485" textAnchor="middle">bread provides nutrients while moisture and suitable temperature support growth</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
       <div className="spark-mould-structure-notes">
         <article><b>Hyphae</b><p>Mould grows as thread-like hyphae that spread through or over the food.</p></article>
         <article><b>Mycelium</b><p>A mass of branching hyphae forms the body of the mould called a mycelium.</p></article>
@@ -139,7 +140,7 @@ function MilkGraph(){
   const py=p=>410-((p-4)/3)*320;
   const pathFor=values=>values.map((p,i)=>(i?"L":"M")+px(MILK.hours[i]).toFixed(1)+" "+py(p).toFixed(1)).join(" ");
   return(
-    <svg viewBox="0 0 960 520" role="img" aria-label="Milk pH at 4 degrees Celsius and 30 degrees Celsius over 48 hours">
+    <ReviewedScienceDiagram site="FoodMicroorganismExplorer.jsx:142"><svg viewBox="0 0 960 520" role="img" aria-label="Milk pH at 4 degrees Celsius and 30 degrees Celsius over 48 hours">
       <line className="fm-axis" x1="90" y1="90" x2="90" y2="410"/>
       <line className="fm-axis" x1="90" y1="410" x2="870" y2="410"/>
       {[4,5,6,7].map(v=><g key={v}><line className="fm-grid" x1="90" y1={py(v)} x2="870" y2={py(v)}/><text className="fm-tick" x="74" y={py(v)+5} textAnchor="end">{v.toFixed(1)}</text></g>)}
@@ -152,7 +153,7 @@ function MilkGraph(){
       <text className="fm-legend warm" x="690" y="145">30 °C</text>
       <text className="fm-axis-label" x="480" y="485" textAnchor="middle">Time / hours</text>
       <text className="fm-axis-label" x="28" y="250" textAnchor="middle" transform="rotate(-90 28 250)">pH of milk</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

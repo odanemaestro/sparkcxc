@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./caribbeanWeatherExplorer.css";
 
@@ -39,7 +40,7 @@ function StructureView(){
     "M555 390Q455 450 355 402Q265 360 260 265Q255 190 315 145"
   ];
   return <div className="spark-hurricane-structure">
-    <svg className="spark-hurricane-structure-svg" viewBox="0 0 900 540" role="img" aria-label="Top view of a hurricane showing a relatively calm eye, surrounding eyewall, curved spiral rainbands and inward surface flow toward the low-pressure centre">
+    <ReviewedScienceDiagram site="CaribbeanWeatherExplorer.jsx:42"><svg className="spark-hurricane-structure-svg" viewBox="0 0 900 540" role="img" aria-label="Top view of a hurricane showing a relatively calm eye, surrounding eyewall, curved spiral rainbands and inward surface flow toward the low-pressure centre">
       <defs>
         <marker id="hw-structure-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
           <path d="M0 0L9 4.5L0 9Z" className="hw-structure-arrow-head"/>
@@ -71,7 +72,7 @@ function StructureView(){
       <text className="hw-label" x="92" y="475">curved spiral rainbands</text>
 
       <text className="hw-small-label" x="445" y="505" textAnchor="middle">surface air spirals inward toward lower pressure and rises strongly near the eyewall</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>A hurricane is a low-pressure tropical cyclone. Its cloud and rain bands curve around a central eye rather than forming simple circular rings. Surface air spirals inward toward lower pressure and rises strongly in the eyewall, where the most intense winds and rainfall occur.</p>
   </div>;
 }
@@ -81,7 +82,7 @@ function EnergyView(){
   const ocean=surface==="ocean";
   return <div className="spark-cyclone-energy">
     <div className="spark-weather-energy-toggle"><button type="button" className={ocean?"active":""} onClick={()=>setSurface("ocean")}>Over warm ocean</button><button type="button" className={!ocean?"active":""} onClick={()=>setSurface("land")}>Moves over land</button></div>
-    <svg className="spark-hurricane-energy-svg" viewBox="0 0 900 500" role="img" aria-label={ocean?"Tropical cyclone energy cycle over warm ocean showing evaporation, rising moist air, condensation, latent heat, surface inflow and upper outflow":"Tropical cyclone over land showing reduced moisture supply, friction and weakening convection"}>
+    <ReviewedScienceDiagram site="CaribbeanWeatherExplorer.jsx:84"><svg className="spark-hurricane-energy-svg" viewBox="0 0 900 500" role="img" aria-label={ocean?"Tropical cyclone energy cycle over warm ocean showing evaporation, rising moist air, condensation, latent heat, surface inflow and upper outflow":"Tropical cyclone over land showing reduced moisture supply, friction and weakening convection"}>
       <defs>
         <marker id="hw-energy-blue-head" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" className="hw-energy-blue-head"/></marker>
         <marker id="hw-energy-warm-head" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" className="hw-energy-warm-head"/></marker>
@@ -131,7 +132,7 @@ function EnergyView(){
         <text className="hw-energy-label danger" x="450" y="300" textAnchor="middle">less evaporation and moisture available</text>
         <text className="hw-energy-small" x="450" y="82" textAnchor="middle">convection and organised circulation weaken</text>
       </React.Fragment>}
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>{ocean?"Warm ocean water supplies moisture through evaporation. Rising moist air cools and condenses, releasing latent heat. This supports deep convection and lower surface pressure, drawing in more moist air while air flows outward aloft.":"Over land, the cyclone loses direct access to warm-ocean evaporation and moisture. Greater surface friction also disrupts circulation, so organised convection and wind usually weaken."}</p>
   </div>;
 }

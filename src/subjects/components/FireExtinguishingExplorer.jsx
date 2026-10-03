@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./fireExtinguishingExplorer.css";
 
@@ -10,13 +11,13 @@ function TriangleView(){
   };
   return <div className="spark-fire-triangle">
     <div className="spark-fire-triangle-graphic">
-      <svg viewBox="0 0 620 500" role="img" aria-label="Fire triangle showing heat fuel and oxygen">
+      <ReviewedScienceDiagram site="FireExtinguishingExplorer.jsx:13"><svg viewBox="0 0 620 500" role="img" aria-label="Fire triangle showing heat fuel and oxygen">
         <polygon className="ft-triangle" points="310,55 75,420 545,420"/>
         <circle className={"ft-node "+(removed==="heat"?"removed":"")} cx="310" cy="95" r="65"/><text className="ft-label" x="310" y="103" textAnchor="middle">HEAT</text>
         <circle className={"ft-node "+(removed==="fuel"?"removed":"")} cx="140" cy="380" r="65"/><text className="ft-label" x="140" y="388" textAnchor="middle">FUEL</text>
         <circle className={"ft-node "+(removed==="oxygen"?"removed":"")} cx="480" cy="380" r="65"/><text className="ft-label" x="480" y="388" textAnchor="middle">OXYGEN</text>
         <path className="ft-flame" d="M310 355Q245 290 285 220Q295 270 330 230Q390 290 350 355Q335 385 310 395Q285 385 270 355Q250 315 310 275Q290 320 310 355Z"/>
-      </svg>
+      </svg></ReviewedScienceDiagram>
     </div>
     <div className="spark-fire-triangle-controls">{Object.entries(info).map(([key,[title,text]])=><button type="button" key={key} className={removed===key?"active":""} onClick={()=>setRemoved(key)}><b>{title}</b><span>{text}</span></button>)}</div>
   </div>;
@@ -40,7 +41,7 @@ function SelectorView(){
 
 function PanView(){
   return <div className="spark-pan-fire">
-    <svg viewBox="0 0 820 420" role="img" aria-label="Small pan fire being smothered with a lid">
+    <ReviewedScienceDiagram site="FireExtinguishingExplorer.jsx:43"><svg viewBox="0 0 820 420" role="img" aria-label="Small pan fire being smothered with a lid">
       <rect className="pf-stove" x="150" y="285" width="520" height="55" rx="12"/>
       <path className="pf-pan" d="M270 255Q410 285 550 255L520 320H300Z"/>
       <path className="pf-handle" d="M535 280H700"/>
@@ -48,14 +49,14 @@ function PanView(){
       <rect className="pf-lid" x="250" y="80" width="320" height="32" rx="14" transform="rotate(12 410 96)"/>
       <path className="pf-arrow" d="M610 85Q560 115 525 155"/>
       <text className="pf-label" x="630" y="72">slide lid across pan</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-pan-fire-steps"><p>Turn off the burner if you can do so safely.</p><p>Slide a lid or suitable fire blanket over the pan to cut off oxygen.</p><p>Leave the lid in place until the pan has cooled.</p><p>Never use water on burning cooking oil.</p></div>
   </div>;
 }
 
 function FirebreakView(){
   return <div className="spark-firebreak">
-    <svg className="spark-firebreak-svg" viewBox="0 0 980 500" role="img" aria-label="Vegetation fire approaching a cleared firebreak, showing burning fuel on one side, a wide strip with vegetation removed, and unburned vegetation beyond the gap">
+    <ReviewedScienceDiagram site="FireExtinguishingExplorer.jsx:58"><svg className="spark-firebreak-svg" viewBox="0 0 980 500" role="img" aria-label="Vegetation fire approaching a cleared firebreak, showing burning fuel on one side, a wide strip with vegetation removed, and unburned vegetation beyond the gap">
       <defs>
         <marker id="fire-spread-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
           <path d="M0 0L9 4.5L0 9Z" className="fb-arrow-head"/>
@@ -93,7 +94,7 @@ function FirebreakView(){
       <text className="fb-small" x="485" y="462" textAnchor="middle">less combustible material is available for the fire to cross</text>
 
       <text className="fb-label" x="805" y="170" textAnchor="middle">unburned vegetation beyond the cleared gap</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>A firebreak removes vegetation from a strip ahead of a vegetation fire. By interrupting the continuous supply of fuel, it can slow or stop fire spread across that line, although real wildfire control depends on conditions and trained fire-management decisions.</p>
   </div>;
 }

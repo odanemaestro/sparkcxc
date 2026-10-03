@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./protectiveGearExplorer.css";
 
@@ -50,7 +51,7 @@ function PesticideView(){
 
 function WeldingView(){
   return <div className="spark-ppe-welding">
-    <svg viewBox="0 0 820 430" role="img" aria-label="Welder wearing helmet with filtered lens and safety eye protection">
+    <ReviewedScienceDiagram site="ProtectiveGearExplorer.jsx:53"><svg viewBox="0 0 820 430" role="img" aria-label="Welder wearing helmet with filtered lens and safety eye protection">
       <circle className="pw-head" cx="410" cy="130" r="75"/>
       <path className="pw-helmet" d="M320 70Q410 20 500 70V220Q410 270 320 220Z"/>
       <rect className="pw-filter" x="350" y="95" width="120" height="70" rx="8"/>
@@ -59,7 +60,7 @@ function WeldingView(){
       <circle className="pw-spark" cx="635" cy="225" r="7"/><circle className="pw-spark" cx="690" cy="270" r="6"/><circle className="pw-spark" cx="660" cy="350" r="6"/>
       <text className="pw-label" x="410" y="185" textAnchor="middle">filtered lens</text>
       <text className="pw-label" x="410" y="410" textAnchor="middle">helmet shields eyes and face from radiant energy and sparks</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>The filter shade must match the welding process and arc intensity. A welding helmet is not simply dark glass or sunglasses.</p>
   </div>;
 }

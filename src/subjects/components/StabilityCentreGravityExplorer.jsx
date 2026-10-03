@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./stabilityCentreGravityExplorer.css";
 
@@ -26,7 +27,7 @@ function StabilityView(){
       <strong>{angle}°</strong>
     </label>
 
-    <svg className="spark-stability-svg" viewBox="0 0 860 500" role="img" aria-label={stable
+    <ReviewedScienceDiagram site="StabilityCentreGravityExplorer.jsx:29"><svg className="spark-stability-svg" viewBox="0 0 860 500" role="img" aria-label={stable
       ? (low?"Low wide object with weight line still inside its base of support":"Tall narrow object with weight line still inside its base of support")
       : "Tall narrow object tilted until the vertical weight line has moved outside its base of support and toppling begins"}>
 
@@ -62,7 +63,7 @@ function StabilityView(){
       <text className="scg-caption" x="430" y="486" textAnchor="middle">
         Lower centre of gravity + wider base = greater angle needed before toppling
       </text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
 
     <div className="spark-stability-facts">
       <article><b>Stable</b><span>The vertical line through the centre of gravity falls inside the base of support.</span></article>
@@ -101,13 +102,13 @@ function RacingView(){
 
 function PlumbView(){
   return <div className="spark-plumb-line">
-    <svg viewBox="0 0 820 470" role="img" aria-label="Irregular lamina suspended from two points with plumb lines crossing at the centre of gravity">
+    <ReviewedScienceDiagram site="StabilityCentreGravityExplorer.jsx:104"><svg viewBox="0 0 820 470" role="img" aria-label="Irregular lamina suspended from two points with plumb lines crossing at the centre of gravity">
       <path className="pc-shape" d="M180 90Q330 40 500 100L650 215L560 390L300 420L130 300Z"/>
       <circle className="pc-hole" cx="250" cy="110" r="9"/><circle className="pc-hole" cx="570" cy="180" r="9"/>
       <line className="pc-plumb one" x1="250" y1="110" x2="250" y2="430"/><line className="pc-plumb two" x1="570" y1="180" x2="220" y2="430"/>
       <circle className="pc-cog" cx="376" cy="315" r="12"/>
       <text className="pc-label" x="390" y="305">centre of gravity</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>Suspend an irregular lamina from one point and draw the vertical plumb line. Repeat from another suspension point. The lines cross at the centre of gravity.</p>
   </div>;
 }

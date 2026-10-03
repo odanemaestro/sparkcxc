@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./volcanoEruptionsExplorer.css";
 
@@ -6,7 +7,7 @@ function EruptionStyleDiagram({explosive}){
     ? [[410,345,13],[438,330,11],[395,315,10],[430,298,13],[405,280,9],[439,260,11]]
     : [[410,345,12],[429,300,10],[416,250,9],[426,195,8],[420,145,7]];
 
-  return <svg viewBox="0 0 900 520" role="img" aria-label={explosive
+  return <ReviewedScienceDiagram site="VolcanoEruptionsExplorer.jsx:9"><svg viewBox="0 0 900 520" role="img" aria-label={explosive
     ? "High-viscosity volcano cross-section showing trapped gas, pressure build-up and explosive eruption"
     : "Low-viscosity volcano cross-section showing easy gas escape and a flowing lava eruption"}>
 
@@ -61,7 +62,7 @@ function EruptionStyleDiagram({explosive}){
       <text className="ve-prop-text" x="16" y="82">{explosive?"gas escapes slowly":"gas escapes more easily"}</text>
       <text className="ve-prop-text" x="16" y="107">{explosive?"explosive potential":"mainly effusive eruption"}</text>
     </g>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 }
 
 function StyleView(){
@@ -77,7 +78,7 @@ function StyleView(){
 function TypesView(){
   return <div className="spark-volcano-types">
     <article>
-      <svg className="spark-volcano-type-svg" viewBox="0 0 360 190" role="img" aria-label="Shield volcano with broad gentle slopes built by repeated fluid lava flows">
+      <ReviewedScienceDiagram site="VolcanoEruptionsExplorer.jsx:80"><svg className="spark-volcano-type-svg" viewBox="0 0 360 190" role="img" aria-label="Shield volcano with broad gentle slopes built by repeated fluid lava flows">
         <path className="vt-ground" d="M10 165H350"/>
         <path className="vt-shield-cone" d="M20 165Q90 135 145 105Q180 88 215 105Q270 135 340 165Z"/>
         <path className="vt-lava-layer" d="M55 152Q120 130 180 112Q242 130 305 152"/>
@@ -85,12 +86,12 @@ function TypesView(){
         <path className="vt-central-vent" d="M180 160V105"/>
         <text className="vt-svg-label" x="180" y="32" textAnchor="middle">broad, gentle slopes</text>
         <text className="vt-svg-small" x="180" y="182" textAnchor="middle">repeated low-viscosity lava flows</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
       <span>SHIELD</span><h4>Broad, gentle slopes</h4><p>Built mainly by fluid lava that spreads far from the vent.</p>
     </article>
 
     <article>
-      <svg className="spark-volcano-type-svg" viewBox="0 0 360 190" role="img" aria-label="Composite volcano with steep sides, central vent and alternating lava and ash layers">
+      <ReviewedScienceDiagram site="VolcanoEruptionsExplorer.jsx:93"><svg className="spark-volcano-type-svg" viewBox="0 0 360 190" role="img" aria-label="Composite volcano with steep sides, central vent and alternating lava and ash layers">
         <path className="vt-ground" d="M10 165H350"/>
         <path className="vt-composite-cone" d="M55 165L158 48Q180 25 202 48L305 165Z"/>
         <path className="vt-layer ash" d="M88 148L167 64Q180 52 193 64L272 148"/>
@@ -100,12 +101,12 @@ function TypesView(){
         <ellipse className="vt-crater" cx="180" cy="47" rx="24" ry="8"/>
         <text className="vt-svg-label" x="286" y="50">steep cone</text>
         <text className="vt-svg-small" x="180" y="182" textAnchor="middle">alternating lava and pyroclastic layers</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
       <span>COMPOSITE / STRATOVOLCANO</span><h4>Tall, steep and layered</h4><p>Alternating lava and pyroclastic deposits. Viscous magma can trap gases and produce explosive eruptions.</p>
     </article>
 
     <article>
-      <svg className="spark-volcano-type-svg" viewBox="0 0 360 190" role="img" aria-label="Ash and cinder cone with a crater and loose erupted fragments piled around a central vent">
+      <ReviewedScienceDiagram site="VolcanoEruptionsExplorer.jsx:108"><svg className="spark-volcano-type-svg" viewBox="0 0 360 190" role="img" aria-label="Ash and cinder cone with a crater and loose erupted fragments piled around a central vent">
         <path className="vt-ground" d="M10 165H350"/>
         <path className="vt-cinder-cone" d="M78 165L160 72Q180 54 200 72L282 165Z"/>
         <ellipse className="vt-crater" cx="180" cy="69" rx="30" ry="10"/>
@@ -115,12 +116,12 @@ function TypesView(){
         </g>
         <text className="vt-svg-label" x="180" y="30" textAnchor="middle">ash and cinders fall around vent</text>
         <text className="vt-svg-small" x="180" y="182" textAnchor="middle">small, steep-sided cone of fragments</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
       <span>ASH / CINDER CONE</span><h4>Small, steep cone</h4><p>Built mainly from cinders, ash and fragments of lava thrown into the air around a vent.</p>
     </article>
 
     <article>
-      <svg className="spark-volcano-type-svg" viewBox="0 0 360 190" role="img" aria-label="Submarine volcano erupting below sea level with a volcanic cone rising from the sea floor">
+      <ReviewedScienceDiagram site="VolcanoEruptionsExplorer.jsx:123"><svg className="spark-volcano-type-svg" viewBox="0 0 360 190" role="img" aria-label="Submarine volcano erupting below sea level with a volcanic cone rising from the sea floor">
         <rect className="vt-water" x="10" y="60" width="340" height="105"/>
         <line className="vt-waterline" x1="10" y1="60" x2="350" y2="60"/>
         <path className="vt-submarine-cone-svg" d="M62 165L154 92Q180 72 206 92L298 165Z"/>
@@ -130,7 +131,7 @@ function TypesView(){
         </g>
         <text className="vt-svg-label" x="72" y="42">sea level</text>
         <text className="vt-svg-small" x="180" y="182" textAnchor="middle">eruption occurs below the sea surface</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
       <span>SUBMARINE VOLCANO</span><h4>Erupts below sea level</h4><p>Kick-'em-Jenny north of Grenada is a regional example.</p>
     </article>
   </div>;
@@ -138,7 +139,7 @@ function TypesView(){
 
 function StructureView(){
   return <div className="spark-volcano-structure">
-    <svg className="spark-volcano-structure-svg" viewBox="0 0 980 620" role="img" aria-label="Cross-section of an erupting volcano showing crater, ash and gas plume, layered cone, main vent, secondary vent, magma chamber, magma below ground and lava flowing on the surface">
+    <ReviewedScienceDiagram site="VolcanoEruptionsExplorer.jsx:141"><svg className="spark-volcano-structure-svg" viewBox="0 0 980 620" role="img" aria-label="Cross-section of an erupting volcano showing crater, ash and gas plume, layered cone, main vent, secondary vent, magma chamber, magma below ground and lava flowing on the surface">
       <defs>
         <marker id="volcano-callout-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
           <path d="M0 0L9 4.5L0 9Z" className="vs-arrow-head"/>
@@ -186,7 +187,7 @@ function StructureView(){
       <text className="vs-magma-label" x="455" y="520" textAnchor="middle">MAGMA below the surface</text>
       <text className="vs-lava-label" x="742" y="392">LAVA at the surface</text>
       <text className="vs-caption" x="490" y="598" textAnchor="middle">When magma reaches Earth's surface it is called lava.</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>Molten rock below the surface is magma. It can collect in a magma chamber and rise through the main vent or a secondary vent. At the surface, magma is called lava. Repeated eruptions can build layers of lava and pyroclastic material around the vent, while explosive eruptions may send ash, gases and rock fragments above the crater.</p>
   </div>;
 }
@@ -202,13 +203,13 @@ function CaribbeanView(){
 
 function PlateView(){
   return <div className="spark-volcano-plates">
-    <svg viewBox="0 0 840 410" role="img" aria-label="Simplified convergent plate boundary producing magma and a volcano">
+    <ReviewedScienceDiagram site="VolcanoEruptionsExplorer.jsx:205"><svg viewBox="0 0 840 410" role="img" aria-label="Simplified convergent plate boundary producing magma and a volcano">
       <path className="vp-oceanic" d="M60 210H385L560 335"/>
       <path className="vp-continental" d="M390 210H785"/>
       <path className="vp-magma-rise" d="M525 315Q510 245 555 185"/>
       <path className="vp-volcano" d="M500 210L555 115L610 210Z"/>
       <text className="vp-label" x="185" y="185">oceanic plate</text><text className="vp-label" x="650" y="185">overriding plate</text><text className="vp-label" x="560" y="95" textAnchor="middle">volcano</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>Many Caribbean volcanoes lie near tectonic plate boundaries. Plate movement can generate earthquakes and create conditions that allow magma to form and rise through the crust.</p>
   </div>;
 }

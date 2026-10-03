@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./alloysExplorer.css";
 
@@ -16,7 +17,7 @@ function StructureView(){
   const substitutions=new Set(["1-2","2-5","3-1","4-4"]);
   return <div className="spark-alloy-structure">
     <div className="spark-alloy-toggle"><button type="button" className={!alloy?"active":""} onClick={()=>setAlloy(false)}>Pure metal</button><button type="button" className={alloy?"active":""} onClick={()=>setAlloy(true)}>Alloy</button></div>
-    <svg className="spark-alloy-lattice-svg" viewBox="0 0 920 500" role="img" aria-label={alloy?"Alloy lattice with different-sized atoms disrupting regular metal layers":"Pure metal lattice with regular layers of similar-sized atoms"}>
+    <ReviewedScienceDiagram site="AlloysExplorer.jsx:19"><svg className="spark-alloy-lattice-svg" viewBox="0 0 920 500" role="img" aria-label={alloy?"Alloy lattice with different-sized atoms disrupting regular metal layers":"Pure metal lattice with regular layers of similar-sized atoms"}>
       <defs>
         <marker id="alloy-slide-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
           <path className="al-arrow-head" d="M0 0L10 5L0 10Z"/>
@@ -52,7 +53,7 @@ function StructureView(){
         {alloy&&<><circle className="different" cx="230" cy="18" r="14"/><text className="al-key-text" x="255" y="23">different alloying atoms</text></>}
       </g>
       <text className="al-title" x="460" y="42" textAnchor="middle">{alloy?"alloy: distorted metallic lattice":"pure metal: regular metallic lattice"}</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>{alloy?"Different-sized atoms disturb the regular layers. This makes it harder for layers to slide over each other, so many alloys are harder than the pure metals from which they are made.":"In a pure metal, similar-sized atoms are arranged more regularly, so layers can often slide more easily when a force is applied."}</p>
   </div>;
 }

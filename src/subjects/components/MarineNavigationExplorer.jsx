@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./marineNavigationExplorer.css";
 
@@ -25,7 +26,7 @@ function SonarView(){
   const roundTrip=speed*t;
   const depth=roundTrip/2;
   return <div className="spark-sonar-calc">
-    <svg className="spark-sonar-depth-svg" viewBox="0 0 820 430" role="img" aria-label={"Boat sonar showing an outgoing sound pulse, returning echo, round-trip distance "+roundTrip.toFixed(0)+" metres and depth "+depth.toFixed(0)+" metres"}>
+    <ReviewedScienceDiagram site="MarineNavigationExplorer.jsx:28"><svg className="spark-sonar-depth-svg" viewBox="0 0 820 430" role="img" aria-label={"Boat sonar showing an outgoing sound pulse, returning echo, round-trip distance "+roundTrip.toFixed(0)+" metres and depth "+depth.toFixed(0)+" metres"}>
       <defs>
         <marker id="mn-down-head" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" className="mn-down-head"/></marker>
         <marker id="mn-up-head" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" className="mn-up-head"/></marker>
@@ -48,7 +49,7 @@ function SonarView(){
       <text className="mn-calc-label" x="85" y="388">sound speed ≈ 1500 m/s</text>
       <text className="mn-calc-label" x="410" y="388" textAnchor="middle">round trip = speed × time = {roundTrip.toFixed(0)} m</text>
       <text className="mn-calc-label" x="735" y="388" textAnchor="end">depth = round trip ÷ 2</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <label>Round-trip echo time, s<input type="number" min="0" step="0.1" value={time} onChange={e=>setTime(e.target.value)}/></label>
     <strong>Depth = 1500 × {t} ÷ 2 = {depth.toFixed(0)} m</strong>
     <p>The sound pulse travels to the seabed and then returns as an echo. The measured time covers both parts of the journey, so the total distance travelled by the sound must be divided by 2 to obtain depth.</p>

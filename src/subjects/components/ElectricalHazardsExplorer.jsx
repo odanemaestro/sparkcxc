@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./electricalHazardsExplorer.css";
 
@@ -10,7 +11,7 @@ const HAZARDS=[
 ];
 
 function HazardDiagram({id}){
-  if(id==="lines") return <svg className="spark-hazard-scene-svg" viewBox="0 0 640 360" role="img" aria-label="Overhead power line hazard showing a kite and ladder too close to live conductors">
+  if(id==="lines") return <ReviewedScienceDiagram site="ElectricalHazardsExplorer.jsx:13"><svg className="spark-hazard-scene-svg" viewBox="0 0 640 360" role="img" aria-label="Overhead power line hazard showing a kite and ladder too close to live conductors">
     <path className="ehz-ground" d="M20 315H620"/>
     <path className="ehz-pole" d="M475 55V315M430 95H535M445 135H520"/>
     <path className="ehz-line" d="M425 95H620M440 135H620"/>
@@ -21,9 +22,9 @@ function HazardDiagram({id}){
     <text className="ehz-label" x="160" y="60" textAnchor="middle">kite</text>
     <text className="ehz-label" x="390" y="325" textAnchor="middle">ladder</text>
     <text className="ehz-caption" x="520" y="335" textAnchor="middle">keep people and equipment well away from live lines</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 
-  if(id==="wet") return <svg className="spark-hazard-scene-svg" viewBox="0 0 640 360" role="img" aria-label="Electrical hazard showing wet hands near a mains appliance and sink">
+  if(id==="wet") return <ReviewedScienceDiagram site="ElectricalHazardsExplorer.jsx:26"><svg className="spark-hazard-scene-svg" viewBox="0 0 640 360" role="img" aria-label="Electrical hazard showing wet hands near a mains appliance and sink">
     <rect className="ehz-counter" x="40" y="230" width="560" height="70" rx="12"/>
     <path className="ehz-sink" d="M90 230Q180 260 270 230V285H90Z"/>
     <path className="ehz-tap" d="M145 125V180H220Q240 180 240 200"/>
@@ -34,9 +35,9 @@ function HazardDiagram({id}){
     <circle className="ehz-drop" cx="330" cy="120" r="8"/><circle className="ehz-drop" cx="365" cy="110" r="7"/>
     <path className="ehz-warning-bolt" d="M370 160L345 195H370L350 230"/>
     <text className="ehz-caption" x="320" y="335" textAnchor="middle">wet skin and dissolved ions make unintended current paths more dangerous</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 
-  if(id==="cords") return <svg className="spark-hazard-scene-svg" viewBox="0 0 640 360" role="img" aria-label="Damaged electrical cord showing broken insulation and exposed conductors">
+  if(id==="cords") return <ReviewedScienceDiagram site="ElectricalHazardsExplorer.jsx:39"><svg className="spark-hazard-scene-svg" viewBox="0 0 640 360" role="img" aria-label="Damaged electrical cord showing broken insulation and exposed conductors">
     <path className="ehz-cable-outer" d="M60 180H265M375 180H580"/>
     <path className="ehz-copper live" d="M250 165Q320 130 390 165"/>
     <path className="ehz-copper neutral" d="M250 195Q320 230 390 195"/>
@@ -44,9 +45,9 @@ function HazardDiagram({id}){
     <path className="ehz-warning-bolt" d="M315 95L285 140H315L292 180"/>
     <text className="ehz-label" x="320" y="65" textAnchor="middle">damaged insulation exposes live conductors</text>
     <text className="ehz-caption" x="320" y="300" textAnchor="middle">stop using a frayed cord and have it replaced or repaired correctly</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 
-  if(id==="overload") return <svg className="spark-hazard-scene-svg" viewBox="0 0 640 360" role="img" aria-label="Overloaded outlet with multiple high-power appliances and overheating conductors">
+  if(id==="overload") return <ReviewedScienceDiagram site="ElectricalHazardsExplorer.jsx:49"><svg className="spark-hazard-scene-svg" viewBox="0 0 640 360" role="img" aria-label="Overloaded outlet with multiple high-power appliances and overheating conductors">
     <rect className="ehz-outlet" x="250" y="80" width="140" height="110" rx="18"/>
     <circle cx="295" cy="130" r="11"/><circle cx="345" cy="130" r="11"/>
     <path className="ehz-extension" d="M320 190V235H140M320 235H500"/>
@@ -55,9 +56,9 @@ function HazardDiagram({id}){
     <path className="ehz-heat-wave" d="M260 55q15-25 30 0t30 0t30 0t30 0"/>
     <text className="ehz-label" x="320" y="35" textAnchor="middle">excess current heats wiring</text>
     <text className="ehz-caption" x="320" y="335" textAnchor="middle">overloading can overheat cables, plugs and insulation</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 
-  return <svg className="spark-hazard-scene-svg" viewBox="0 0 640 360" role="img" aria-label="Unsafe improvised electrical connection bypassing proper enclosure and protection">
+  return <ReviewedScienceDiagram site="ElectricalHazardsExplorer.jsx:60"><svg className="spark-hazard-scene-svg" viewBox="0 0 640 360" role="img" aria-label="Unsafe improvised electrical connection bypassing proper enclosure and protection">
     <path className="ehz-service-line" d="M55 85H585"/>
     <rect className="ehz-meter" x="80" y="120" width="130" height="120" rx="14"/>
     <circle className="ehz-meter-dial" cx="145" cy="170" r="32"/>
@@ -69,7 +70,7 @@ function HazardDiagram({id}){
     <text className="ehz-label" x="145" y="270" textAnchor="middle">meter</text>
     <text className="ehz-label" x="390" y="270" textAnchor="middle">breaker / protection</text>
     <text className="ehz-caption" x="320" y="330" textAnchor="middle">improvised connections can bypass insulation, metering and protective devices</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 }
 
 function HazardView(){
@@ -83,7 +84,7 @@ function HazardView(){
 
 function StoredChargeView(){
   return <div className="spark-stored-charge">
-    <svg viewBox="0 0 820 390" role="img" aria-label="Capacitor storing electric charge after a device is switched off">
+    <ReviewedScienceDiagram site="ElectricalHazardsExplorer.jsx:86"><svg viewBox="0 0 820 390" role="img" aria-label="Capacitor storing electric charge after a device is switched off">
       <rect className="eh-device" x="120" y="100" width="250" height="190" rx="18"/>
       <rect className="eh-screen" x="160" y="135" width="170" height="100" rx="10"/>
       <line className="eh-cap-plate" x1="520" y1="120" x2="520" y2="280"/>
@@ -92,7 +93,7 @@ function StoredChargeView(){
       <text className="eh-minus" x="610" y="185">−</text><text className="eh-minus" x="610" y="230">−</text>
       <path className="eh-wire" d="M370 195Q440 195 500 195M605 195Q670 195 705 235"/>
       <text className="eh-label" x="555" y="330" textAnchor="middle">capacitor can retain charge after power is removed</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-stored-charge-note"><strong>Switched off does not always mean electrically discharged</strong><p>Some electronic equipment contains capacitors that can retain dangerous charge after the device is unplugged. Untrained users should not remove covers or attempt internal repairs.</p></div>
   </div>;
 }
@@ -103,14 +104,14 @@ function MicrowaveView(){
   return <div className="spark-microwave-hazard">
     <div className="spark-microwave-buttons"><button type="button" className={safe?"active":""} onClick={()=>setItem("glass")}>Microwave-safe glass</button><button type="button" className={!safe?"active":""} onClick={()=>setItem("metal")}>Ordinary metal container</button></div>
     <div className="spark-microwave-scene">
-      <svg viewBox="0 0 760 380" role="img" aria-label={safe?"Glass container in microwave":"Metal container in microwave with arcing risk"}>
+      <ReviewedScienceDiagram site="ElectricalHazardsExplorer.jsx:106"><svg viewBox="0 0 760 380" role="img" aria-label={safe?"Glass container in microwave":"Metal container in microwave with arcing risk"}>
         <rect className="mh-oven" x="110" y="65" width="540" height="250" rx="20"/>
         <rect className="mh-window" x="160" y="105" width="330" height="170" rx="12"/>
         <rect className={safe?"mh-bowl safe":"mh-bowl metal"} x="255" y="195" width="145" height="48" rx="18"/>
         {!safe&&<path className="mh-arc" d="M405 175L435 195L420 220L455 238"/>}
         <circle className="mh-control" cx="555" cy="135" r="18"/><circle className="mh-control" cx="555" cy="195" r="18"/>
         <text className="mh-label" x="325" y="340" textAnchor="middle">{safe?"use containers approved for microwave cooking":"metal can reflect microwaves and cause arcing or damage"}</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
       <p>{safe?"Glass, ceramic and other containers marked microwave-safe are suitable choices.":"Do not place an ordinary metal pan or foil in a microwave unless the manufacturer specifically states that the item and use are permitted."}</p>
     </div>
   </div>;

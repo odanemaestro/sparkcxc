@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./ventilationExplorer.css";
 
@@ -6,20 +7,20 @@ function CrossView(){
   const cross=mode==="cross";
   return <div className="spark-ventilation-cross">
     <div className="spark-vent-toggle"><button type="button" className={cross?"active":""} onClick={()=>setMode("cross")}>Cross-ventilation</button><button type="button" className={!cross?"active":""} onClick={()=>setMode("sealed")}>Poor ventilation</button></div>
-    <svg viewBox="0 0 860 450" role="img" aria-label={cross?"Room with cross ventilation":"Poorly ventilated room"}>
+    <ReviewedScienceDiagram site="VentilationExplorer.jsx:9"><svg viewBox="0 0 860 450" role="img" aria-label={cross?"Room with cross ventilation":"Poorly ventilated room"}>
       <rect className="ve-room" x="140" y="80" width="580" height="280" rx="10"/>
       <rect className={"ve-window left "+(cross?"open":"closed")} x="125" y="175" width="35" height="105"/>
       <rect className={"ve-window right "+(cross?"open":"closed")} x="700" y="125" width="35" height="90"/>
       {cross?<><path className="ve-cool-arrow" d="M40 255H120"/><path className="ve-flow" d="M165 250Q390 310 690 175"/><path className="ve-warm-arrow" d="M735 165H820"/><text className="ve-label" x="45" y="235">cooler air enters</text><text className="ve-label" x="680" y="115">warm air leaves</text></>:<><circle className="ve-co2" cx="300" cy="210" r="30"/><circle className="ve-co2" cx="430" cy="230" r="30"/><circle className="ve-co2" cx="560" cy="205" r="30"/><text className="ve-label" x="430" y="315" textAnchor="middle">heat, humidity and CO₂ accumulate</text></>}
       <text className="ve-floor-label" x="430" y="410" textAnchor="middle">{cross?"openings on opposite sides promote air flow":"sealed room with little air exchange"}</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>{cross?"Air can enter one side and leave another. Openings on opposite walls improve natural cross-ventilation.":"Without enough air exchange, heat, moisture, odours and carbon dioxide from occupants can build up."}</p>
   </div>;
 }
 
 function NaturalView(){
   return <div className="spark-natural-ventilation">
-    <svg className="spark-natural-ventilation-svg" viewBox="0 0 980 560" role="img" aria-label="Caribbean building section showing louvre windows opposite openings high vents shading and natural convection airflow">
+    <ReviewedScienceDiagram site="VentilationExplorer.jsx:22"><svg className="spark-natural-ventilation-svg" viewBox="0 0 980 560" role="img" aria-label="Caribbean building section showing louvre windows opposite openings high vents shading and natural convection airflow">
       <defs>
         <marker id="vent-air-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
           <path className="vn-arrow-head" d="M0 0L10 5L0 10Z"/>
@@ -58,7 +59,7 @@ function NaturalView(){
       <text className="vn-label" x="635" y="105">warm air escapes through high vent</text>
       <text className="vn-label" x="720" y="455">opposite openings maintain cross-flow</text>
       <text className="vn-caption" x="490" y="535" textAnchor="middle">natural ventilation uses wind plus density differences, without a powered fan</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-natural-ventilation-notes">
       <article><span>LOUVRE WINDOWS</span><h4>Adjustable airflow</h4><p>Angled slats allow air to pass while helping to keep out rain, which is useful in Caribbean buildings.</p></article>
       <article><span>HIGH VENTS</span><h4>Warm air rises</h4><p>Warm air is less dense and rises. High vents provide an escape path and support convection-driven ventilation.</p></article>
@@ -70,7 +71,7 @@ function NaturalView(){
 
 function MechanicalView(){
   return <div className="spark-mechanical-ventilation">
-    <svg className="spark-mechanical-ventilation-svg" viewBox="0 0 980 560" role="img" aria-label="Mechanical ventilation comparison showing exhaust fan air conditioner and ceiling fan airflow">
+    <ReviewedScienceDiagram site="VentilationExplorer.jsx:73"><svg className="spark-mechanical-ventilation-svg" viewBox="0 0 980 560" role="img" aria-label="Mechanical ventilation comparison showing exhaust fan air conditioner and ceiling fan airflow">
       <defs>
         <marker id="vent-mech-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
           <path className="vm-arrow-head" d="M0 0L10 5L0 10Z"/>
@@ -114,7 +115,7 @@ function MechanicalView(){
       </g>
 
       <text className="vm-caption" x="490" y="535" textAnchor="middle">air movement, air replacement and cooling are related but are not the same process</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-mechanical-ventilation-notes">
       <article><span>EXHAUST FAN</span><h4>Removes air from a local source</h4><p>Kitchen and bathroom exhaust fans remove heat, steam, smoke and odours from where they are produced.</p></article>
       <article><span>AIR CONDITIONER</span><h4>Moves and conditions air</h4><p>Air-conditioning systems cool and often dehumidify indoor air. Some systems also introduce outdoor air, while others mainly recirculate indoor air.</p></article>

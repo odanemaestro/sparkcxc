@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./smokingGasExchangeExplorer.css";
 
@@ -16,24 +17,24 @@ function CiliaView(){
     <div className="spark-airway-panel healthy">
       <span>HEALTHY AIRWAY</span>
       <h4>Working cilia move mucus</h4>
-      <svg viewBox="0 0 620 250" role="img" aria-label="Healthy airway with cilia moving mucus toward the throat">
+      <ReviewedScienceDiagram site="SmokingGasExchangeExplorer.jsx:19"><svg viewBox="0 0 620 250" role="img" aria-label="Healthy airway with cilia moving mucus toward the throat">
         <rect className="sc-airway" x="50" y="70" width="520" height="110" rx="45"/>
         <path className="sc-mucus" d="M75 100Q150 80 225 100T375 100T545 100"/>
         {[95,130,165,200,235,270,305,340,375,410,445,480,515].map(x=><path key={x} className="sc-cilium" d={"M"+x+" 145Q"+(x-8)+" 125 "+(x-2)+" 108"}/>)}
         <path className="sc-clear-arrow" d="M500 45H155"/>
         <text className="sc-arrow-text" x="325" y="35" textAnchor="middle">mucus moved towards throat</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
       <p>Mucus traps particles and microorganisms. Coordinated cilia help move the mucus out of the lower airways.</p>
     </div>
     <div className="spark-airway-panel damaged">
       <span>SMOKE-DAMAGED AIRWAY</span>
       <h4>Impaired clearance allows mucus to build up</h4>
-      <svg viewBox="0 0 620 250" role="img" aria-label="Smoke-damaged airway with impaired cilia and accumulated mucus">
+      <ReviewedScienceDiagram site="SmokingGasExchangeExplorer.jsx:31"><svg viewBox="0 0 620 250" role="img" aria-label="Smoke-damaged airway with impaired cilia and accumulated mucus">
         <rect className="sc-airway" x="50" y="70" width="520" height="110" rx="45"/>
         <path className="sc-mucus thick" d="M75 105Q150 65 225 105T375 105T545 105"/>
         {[95,150,220,310,400,485].map((x,i)=><path key={x} className="sc-cilium damaged-cilium" d={"M"+x+" 145Q"+(x+(i%2?10:-12))+" 135 "+(x+(i%2?14:-8))+" 122"}/>)}
         <circle className="sc-particle" cx="170" cy="92" r="9"/><circle className="sc-particle" cx="320" cy="105" r="8"/><circle className="sc-particle" cx="455" cy="88" r="10"/>
-      </svg>
+      </svg></ReviewedScienceDiagram>
       <p>Smoke exposure damages airway defences and increases mucus and inflammation. Poor mucus clearance contributes to persistent cough and respiratory infections.</p>
     </div>
   </div>;
@@ -41,7 +42,7 @@ function CiliaView(){
 
 function EmphysemaView(){
   return <div className="spark-emphysema-view">
-    <svg viewBox="0 0 900 430" role="img" aria-label="Normal small alveoli compared with emphysema where alveolar walls are destroyed and surface area is reduced">
+    <ReviewedScienceDiagram site="SmokingGasExchangeExplorer.jsx:44"><svg viewBox="0 0 900 430" role="img" aria-label="Normal small alveoli compared with emphysema where alveolar walls are destroyed and surface area is reduced">
       <g transform="translate(70 70)">
         {[0,1,2,3,4,5,6].map(i=>{
           const xy=[[120,95],[190,75],[255,110],[140,160],[215,155],[275,175],[185,220]][i];
@@ -56,7 +57,7 @@ function EmphysemaView(){
         <text className="em-title" x="175" y="310" textAnchor="middle">alveolar walls destroyed</text>
         <text className="em-note" x="175" y="338" textAnchor="middle">fewer larger air spaces, less surface area</text>
       </g>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-emphysema-notes">
       <p>Emphysema is part of COPD. Destruction of walls between alveoli reduces the surface area available for gaseous exchange and also reduces elastic recoil.</p>
       <p>Less effective exchange makes it harder to obtain enough oxygen, especially during activity.</p>

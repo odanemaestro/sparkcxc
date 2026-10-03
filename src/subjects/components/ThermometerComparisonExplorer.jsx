@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./thermometerComparisonExplorer.css";
 
@@ -29,7 +30,7 @@ function CompareView(){
 function ClinicalView(){
   const [shaken,setShaken]=useState(false);
   return <div className="spark-clinical-thermometer">
-    <svg viewBox="0 0 900 300" role="img" aria-label="Traditional clinical thermometer with bulb, constriction and narrow range">
+    <ReviewedScienceDiagram site="ThermometerComparisonExplorer.jsx:32"><svg viewBox="0 0 900 300" role="img" aria-label="Traditional clinical thermometer with bulb, constriction and narrow range">
       <rect className="ct-glass" x="80" y="120" width="700" height="54" rx="27"/>
       <circle className="ct-bulb" cx="100" cy="147" r="31"/>
       <line className="ct-mercury" x1="105" y1="147" x2={shaken?"220":"610"} y2="147"/>
@@ -37,7 +38,7 @@ function ClinicalView(){
       {[35,36,37,38,39,40,41,42].map((t,i)=><g key={t}><line className="ct-tick" x1={300+i*60} y1="105" x2={300+i*60} y2="120"/><text className="ct-label" x={300+i*60} y="92" textAnchor="middle">{t}</text></g>)}
       <text className="ct-unit" x="770" y="100">°C</text>
       <line className="ct-callout" x1="255" y1="165" x2="210" y2="235"/><text className="ct-callout-text" x="200" y="250" textAnchor="end">constriction</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-clinical-controls"><button type="button" className={!shaken?"active":""} onClick={()=>setShaken(false)}>Previous reading held</button><button type="button" className={shaken?"active":""} onClick={()=>setShaken(true)}>Shaken down</button></div>
     <p>{shaken?"Shaking a traditional mercury clinical thermometer forces the liquid column back past the constriction towards the bulb before the next measurement.":"The constriction prevents the mercury column from returning immediately to the bulb, so the maximum reading remains visible after the thermometer is removed."}</p>
   </div>;
@@ -47,14 +48,14 @@ function ReadScaleView(){
   const [reading,setReading]=useState(37);
   const x=70+(reading/50)*360;
   return <div className="spark-read-thermometer">
-    <svg viewBox="0 0 500 130" role="img" aria-label={"Laboratory thermometer reading "+reading+" degrees Celsius"}>
+    <ReviewedScienceDiagram site="ThermometerComparisonExplorer.jsx:50"><svg viewBox="0 0 500 130" role="img" aria-label={"Laboratory thermometer reading "+reading+" degrees Celsius"}>
       <rect className="rt-glass" x="35" y="45" width="430" height="30" rx="15"/>
       <circle className="rt-bulb" cx="48" cy="60" r="12"/>
       {[0,10,20,30,40,50].map(t=><g key={t}><line className="rt-major" x1={70+t/50*360} y1="35" x2={70+t/50*360} y2="48"/><text className="rt-label" x={70+t/50*360} y="105" textAnchor="middle">{t}</text></g>)}
       {Array.from({length:51},(_,t)=>t).filter(t=>t%10!==0).map(t=><line key={t} className="rt-minor" x1={70+t/50*360} y1="40" x2={70+t/50*360} y2="47"/>)}
       <line className="rt-liquid" x1="50" y1="60" x2={x} y2="60"/>
       <text className="rt-unit" x="455" y="105">°C</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <label>Set reading<input type="range" min="0" max="50" value={reading} onChange={e=>setReading(Number(e.target.value))}/></label>
     <strong>{reading} °C</strong>
     <p>Read the end of the liquid column against the scale. In the bank diagram, the column ends at 37 °C.</p>

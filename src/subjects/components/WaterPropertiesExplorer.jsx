@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./waterPropertiesExplorer.css";
 
@@ -23,7 +24,7 @@ function DensityView(){
   const surfaceY=sea?210:194;
   return <div className="spark-water-density">
     <div className="spark-water-toggle"><button type="button" className={!sea?"active":""} onClick={()=>setSample("fresh")}>Fresh water</button><button type="button" className={sea?"active":""} onClick={()=>setSample("sea")}>Sea water</button></div>
-    <svg className="spark-water-density-svg" viewBox="0 0 820 400" role="img" aria-label={sea?"Ice floating higher in denser sea water with a smaller submerged volume":"Ice floating in fresh water because ice is less dense than liquid water"}>
+    <ReviewedScienceDiagram site="WaterPropertiesExplorer.jsx:26"><svg className="spark-water-density-svg" viewBox="0 0 820 400" role="img" aria-label={sea?"Ice floating higher in denser sea water with a smaller submerged volume":"Ice floating in fresh water because ice is less dense than liquid water"}>
       <defs>
         <marker id="wp-density-up-head" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" className="wp-up-head"/></marker>
         <marker id="wp-density-down-head" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" className="wp-down-head"/></marker>
@@ -46,7 +47,7 @@ function DensityView(){
       <line className="wp-submerged-guide" x1="600" y1={surfaceY} x2="600" y2="238"/>
       <text className="wp-density-small" x="612" y={(surfaceY+238)/2}>{sea?"smaller submerged":"submerged"} volume</text>
       <text className="wp-density-note" x="410" y="386" textAnchor="middle">{sea?"Dissolved salts increase water density, so the same ice block needs to displace less water.":"Ice floats when the upthrust from displaced water balances its weight."}</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>{sea?"Dissolved salts make sea water denser than fresh water. The same ice block floats slightly higher because a smaller displaced volume provides the required upthrust. Sea water also freezes below 0 °C and boils slightly above 100 °C.":"Ice floats because freezing produces a more open structure, making ice less dense than liquid water."}</p>
   </div>;
 }
@@ -75,7 +76,7 @@ function SurfaceView(){
   const bulkMolecules=[{x:175,y:265},{x:260,y:300},{x:350,y:275},{x:455,y:305},{x:555,y:270},{x:645,y:310}];
   return <div className="spark-water-surface">
     <div className="spark-water-toggle"><button type="button" className={!detergent?"active":""} onClick={()=>setDetergent(false)}>Clean water</button><button type="button" className={detergent?"active":""} onClick={()=>setDetergent(true)}>With detergent</button></div>
-    <svg className="spark-surface-tension-svg" viewBox="0 0 820 410" role="img" aria-label={detergent?"Surfactant molecules at the water surface reducing surface tension":"Water molecules at a clean surface held together by cohesive attraction and supporting an insect leg"}>
+    <ReviewedScienceDiagram site="WaterPropertiesExplorer.jsx:78"><svg className="spark-surface-tension-svg" viewBox="0 0 820 410" role="img" aria-label={detergent?"Surfactant molecules at the water surface reducing surface tension":"Water molecules at a clean surface held together by cohesive attraction and supporting an insect leg"}>
       <rect className="wp-surface-bg" x="0" y="0" width="820" height="410" rx="18"/>
       <rect className="wp-surface-water" x="60" y="192" width="700" height="178" rx="0 0 16 16"/>
       <path className={detergent?"wp-interface reduced":"wp-interface"} d={detergent?"M60 192Q145 199 230 190T400 194T570 190T760 195":"M60 192Q145 170 230 192T400 192T570 192T760 192"}/>
@@ -101,7 +102,7 @@ function SurfaceView(){
         <text className="wp-surface-label" x="410" y="120" textAnchor="middle">surface tension decreases</text>
         <text className="wp-surface-note" x="410" y="395" textAnchor="middle">surfactants disrupt the cohesive surface arrangement, so the surface is easier to deform</text>
       </React.Fragment>}
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>{detergent?"Detergents reduce surface tension because surfactant molecules collect at the interface and disrupt the cohesive arrangement of water molecules.":"Cohesive attraction between water molecules creates surface tension. Small insects can be supported if they do not break the surface."}</p>
   </div>;
 }
@@ -123,7 +124,7 @@ function OsmosisView(){
   const internalDots=freshwater?10:20;
   return <div className="spark-water-osmosis">
     <div className="spark-water-toggle"><button type="button" className={freshwater?"active":""} onClick={()=>setFish("fresh")}>Freshwater fish in sea water</button><button type="button" className={!freshwater?"active":""} onClick={()=>setFish("marine")}>Marine fish in fresh water</button></div>
-    <svg className="spark-water-osmosis-svg" viewBox="0 0 860 420" role="img" aria-label={freshwater?"Freshwater fish in concentrated sea water losing water by osmosis":"Marine fish in dilute fresh water gaining water by osmosis"}>
+    <ReviewedScienceDiagram site="WaterPropertiesExplorer.jsx:126"><svg className="spark-water-osmosis-svg" viewBox="0 0 860 420" role="img" aria-label={freshwater?"Freshwater fish in concentrated sea water losing water by osmosis":"Marine fish in dilute fresh water gaining water by osmosis"}>
       <defs>
         <marker id="wp-osmosis-head" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" className="wp-osmosis-head"/></marker>
       </defs>
@@ -149,7 +150,7 @@ function OsmosisView(){
         <line className="wp-osmosis-arrow" x1="700" y1="108" x2="586" y2="150" markerEnd="url(#wp-osmosis-head)"/>
         <text className="wp-osmosis-flow-label" x="430" y="390" textAnchor="middle">net water movement IN by osmosis</text>
       </React.Fragment>}
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>{freshwater?"Sea water is more concentrated than the body fluids of a freshwater fish, so water tends to leave its cells by osmosis.":"Fresh water is more dilute than the body fluids of a marine fish, so water tends to enter its cells by osmosis."}</p>
   </div>;
 }

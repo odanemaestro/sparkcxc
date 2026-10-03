@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./vegetativePropagationExplorer.css";
 
@@ -22,7 +23,7 @@ function Soil() {
 
 function Bulb() {
   return (
-    <svg viewBox="0 0 900 450" role="img" aria-label="Onion bulb">
+    <ReviewedScienceDiagram site="VegetativePropagationExplorer.jsx:25"><svg viewBox="0 0 900 450" role="img" aria-label="Onion bulb">
       <Soil />
       <g className="vp-plant">
         <path className="leaf" d="M450 310 C410 220 415 105 440 45 C470 150 478 235 460 310" />
@@ -38,13 +39,13 @@ function Bulb() {
       <text className="vp-label" x="115" y="105">fleshy storage leaves</text><path className="vp-leader" d="M300 105L395 285" />
       <text className="vp-label" x="650" y="250">short stem</text><path className="vp-leader" d="M635 248L495 323" />
       <text className="vp-example" x="450" y="430" textAnchor="middle">Bulb, onion</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function Corm() {
   return (
-    <svg viewBox="0 0 900 450" role="img" aria-label="Dasheen corm">
+    <ReviewedScienceDiagram site="VegetativePropagationExplorer.jsx:47"><svg viewBox="0 0 900 450" role="img" aria-label="Dasheen corm">
       <Soil />
       <g className="vp-plant">
         <path className="leaf" d="M450 295 C405 205 375 125 400 55 C445 140 462 215 460 300" />
@@ -60,13 +61,13 @@ function Corm() {
       <text className="vp-label" x="105" y="240">swollen solid stem</text><path className="vp-leader" d="M300 240L375 330" />
       <text className="vp-label" x="650" y="175">bud for new shoot</text><path className="vp-leader" d="M635 175L440 286" />
       <text className="vp-example" x="455" y="430" textAnchor="middle">Corm, dasheen / eddoe</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function Rhizome() {
   return (
-    <svg viewBox="0 0 900 450" role="img" aria-label="Ginger rhizome">
+    <ReviewedScienceDiagram site="VegetativePropagationExplorer.jsx:69"><svg viewBox="0 0 900 450" role="img" aria-label="Ginger rhizome">
       <Soil />
       <g className="vp-plant">
         <path className="rhizome" d="M205 335 C265 290 330 310 385 330 C440 285 520 300 555 335 C610 300 680 315 700 350 C650 385 585 375 535 355 C480 390 410 375 370 350 C305 382 245 372 205 335Z" />
@@ -81,13 +82,13 @@ function Rhizome() {
       <text className="vp-label" x="100" y="210">horizontal underground stem</text><path className="vp-leader" d="M325 210L350 335" />
       <text className="vp-label" x="640" y="90">new shoot from a bud</text><path className="vp-leader" d="M630 105L555 315" />
       <text className="vp-example" x="450" y="430" textAnchor="middle">Rhizome, ginger</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function Runner() {
   return (
-    <svg viewBox="0 0 900 450" role="img" aria-label="Runner connecting parent and daughter plants">
+    <ReviewedScienceDiagram site="VegetativePropagationExplorer.jsx:90"><svg viewBox="0 0 900 450" role="img" aria-label="Runner connecting parent and daughter plants">
       <Soil />
       <g className="vp-plant">
         <path className="stem" d="M210 315 C320 260 490 290 675 315" />
@@ -106,13 +107,13 @@ function Runner() {
       <text className="vp-label" x="360" y="175">runner grows across soil surface</text><path className="vp-leader" d="M495 185L450 285" />
       <text className="vp-label" x="665" y="110">new plant forms at a node</text><path className="vp-leader" d="M690 125L655 300" />
       <text className="vp-example" x="450" y="430" textAnchor="middle">Runner, strawberry / grass</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function Tuber() {
   return (
-    <svg viewBox="0 0 900 450" role="img" aria-label="Potato stem tuber">
+    <ReviewedScienceDiagram site="VegetativePropagationExplorer.jsx:115"><svg viewBox="0 0 900 450" role="img" aria-label="Potato stem tuber">
       <Soil />
       <g className="vp-plant">
         <path className="shoot" d="M450 305 C430 215 420 125 455 55 C475 155 475 235 458 310" />
@@ -124,7 +125,7 @@ function Tuber() {
       <text className="vp-label" x="650" y="165">eyes are buds</text><path className="vp-leader" d="M665 180L685 340" />
       <text className="vp-label" x="115" y="225">swollen food-storage stem</text><path className="vp-leader" d="M330 225L620 360" />
       <text className="vp-example" x="450" y="430" textAnchor="middle">Tuber, Irish potato</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
@@ -139,7 +140,7 @@ function NaturalDiagram({ id }) {
 function ArtificialDiagram({ id }) {
   if (id === "cutting") {
     return (
-      <svg viewBox="0 0 900 450" role="img" aria-label="Stem cutting propagation">
+      <ReviewedScienceDiagram site="VegetativePropagationExplorer.jsx:142"><svg viewBox="0 0 900 450" role="img" aria-label="Stem cutting propagation">
         <Soil />
         <path className="cutting-stem" d="M450 330L450 100" />
         <path className="leaf" d="M450 160Q360 120 330 180Q395 205 450 175" />
@@ -148,13 +149,13 @@ function ArtificialDiagram({ id }) {
         <text className="vp-label" x="95" y="100">piece of parent stem</text><path className="vp-leader" d="M300 105L445 140" />
         <text className="vp-label" x="650" y="350">new roots form</text><path className="vp-leader" d="M635 350L520 390" />
         <text className="vp-example" x="450" y="430" textAnchor="middle">Stem cutting, sugar cane</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
     );
   }
   if (id === "grafting" || id === "budding") {
     const budding = id === "budding";
     return (
-      <svg viewBox="0 0 900 450" role="img" aria-label={budding ? "Budding propagation" : "Grafting propagation"}>
+      <ReviewedScienceDiagram site="VegetativePropagationExplorer.jsx:157"><svg viewBox="0 0 900 450" role="img" aria-label={budding ? "Budding propagation" : "Grafting propagation"}>
         <Soil />
         <path className="rootstock" d="M470 330L470 120" />
         <g className="roots"><path d="M455 330Q400 380 390 430"/><path d="M485 330Q540 380 550 430"/></g>
@@ -174,11 +175,11 @@ function ArtificialDiagram({ id }) {
         <text className="vp-label" x="110" y="315">rootstock</text><path className="vp-leader" d="M250 310L455 290" />
         <text className="vp-label" x="650" y="260">join is tied and sealed</text><path className="vp-leader" d="M635 260L485 170" />
         <text className="vp-example" x="450" y="430" textAnchor="middle">{budding ? "Budding, citrus" : "Grafting, citrus / mango"}</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
     );
   }
   return (
-    <svg viewBox="0 0 900 450" role="img" aria-label="Tissue culture stages">
+    <ReviewedScienceDiagram site="VegetativePropagationExplorer.jsx:181"><svg viewBox="0 0 900 450" role="img" aria-label="Tissue culture stages">
       <g className="culture-stage">
         <circle cx="130" cy="210" r="75" /><text x="130" y="195" textAnchor="middle">small piece</text><text x="130" y="225" textAnchor="middle">of tissue</text>
         <circle cx="355" cy="210" r="75" /><text x="355" y="195" textAnchor="middle">sterile nutrient</text><text x="355" y="225" textAnchor="middle">medium</text>
@@ -188,7 +189,7 @@ function ArtificialDiagram({ id }) {
       <path className="vp-arrow" d="M210 210H270M435 210H495M660 210H720" />
       <path className="vp-example-line" d="M760 330Q805 275 850 330" />
       <text className="vp-example" x="450" y="395" textAnchor="middle">Tissue culture, banana</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

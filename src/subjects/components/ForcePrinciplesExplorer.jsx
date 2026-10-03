@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./forcePrinciplesExplorer.css";
 
@@ -37,7 +38,7 @@ function ResultantView(){
       <label>Left force, N<input type="number" min="0" value={left} onChange={e=>setLeft(e.target.value)}/></label>
       <label>Right force, N<input type="number" min="0" value={right} onChange={e=>setRight(e.target.value)}/></label>
     </div>
-    <svg className="spark-resultant-svg" viewBox="0 0 820 390" role="img" aria-label={"Free-body diagram with "+L+" newtons left, "+R+" newtons right and resultant "+Math.abs(result)+" newtons "+direction}>
+    <ReviewedScienceDiagram site="ForcePrinciplesExplorer.jsx:40"><svg className="spark-resultant-svg" viewBox="0 0 820 390" role="img" aria-label={"Free-body diagram with "+L+" newtons left, "+R+" newtons right and resultant "+Math.abs(result)+" newtons "+direction}>
       <defs>
         <marker id="fp-force-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" className="fp-force-head"/></marker>
         <marker id="fp-resultant-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" className="fp-resultant-head"/></marker>
@@ -54,7 +55,7 @@ function ResultantView(){
       {direction==="balanced"
         ?<g className="fp-balanced-result"><circle cx="410" cy="305" r="13"/><text x="410" y="346" textAnchor="middle">0 N, forces are balanced</text></g>
         :<g><path className={"fp-resultant-arrow "+direction} d={resultPath} markerEnd="url(#fp-resultant-arrow)"/><text className="fp-resultant-label" x="410" y="348" textAnchor="middle">{Math.abs(result)} N to the {direction}</text></g>}
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <strong>{direction==="balanced"?"Resultant = 0 N":"Resultant = "+Math.abs(result)+" N to the "+direction}</strong>
     <p>The resultant force is the vector sum of the forces. Opposite horizontal forces subtract, so 35 N right and 20 N left give a resultant of 15 N to the right.</p>
   </div>;
@@ -69,7 +70,7 @@ function ThirdLawView(){
   }[example];
   return <div className="spark-third-law">
     <div className="spark-force-toggle">{["rocket","jet","gun"].map(k=><button type="button" key={k} className={example===k?"active":""} onClick={()=>setExample(k)}>{k[0].toUpperCase()+k.slice(1)}</button>)}</div>
-    <svg className="spark-third-law-svg" viewBox="0 0 820 430" role="img" aria-label={data[0]+" Newton third-law force pair acting on different objects"}>
+    <ReviewedScienceDiagram site="ForcePrinciplesExplorer.jsx:72"><svg className="spark-third-law-svg" viewBox="0 0 820 430" role="img" aria-label={data[0]+" Newton third-law force pair acting on different objects"}>
       <defs>
         <marker id="fp-third-action-head" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" className="fp-third-action-head"/></marker>
         <marker id="fp-third-reaction-head" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" className="fp-third-reaction-head"/></marker>
@@ -110,7 +111,7 @@ function ThirdLawView(){
         <line className="fp-third-reaction" x1="585" y1="392" x2="635" y2="392" markerEnd="url(#fp-third-reaction-head)"/>
         <text x="650" y="397">force on object B</text>
       </g>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-third-law-pair">
       <article><span>FORCE ON ONE OBJECT</span><h4>{data[1]}</h4></article>
       <div>↔</div>
@@ -125,14 +126,14 @@ function LiftView(){
   const headwind=wind==="head";
   return <div className="spark-wing-lift">
     <div className="spark-force-toggle"><button type="button" className={!headwind?"active":""} onClick={()=>setWind("calm")}>Lower relative air speed</button><button type="button" className={headwind?"active":""} onClick={()=>setWind("head")}>Take-off into wind</button></div>
-    <svg viewBox="0 0 820 360" role="img" aria-label="Airflow around an aircraft wing producing lift">
+    <ReviewedScienceDiagram site="ForcePrinciplesExplorer.jsx:128"><svg viewBox="0 0 820 360" role="img" aria-label="Airflow around an aircraft wing producing lift">
       <path className="fp-wing" d="M260 190Q420 100 610 185Q455 215 260 190Z"/>
       <path className="fp-flow top" d={headwind?"M60 140Q330 90 690 140":"M90 145Q330 110 665 145"}/>
       <path className="fp-flow bottom" d={headwind?"M60 240Q340 255 690 220":"M90 235Q350 245 665 220"}/>
       <path className="fp-lift" d="M450 180V65"/>
       <text className="fp-label" x="470" y="75">lift</text>
       <text className="fp-label" x="90" y="120">airflow</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>{headwind?"Taking off into the wind increases the aircraft's speed relative to the surrounding air, so the wing can produce the required lift at a lower ground speed.":"A wing produces lift from the pressure distribution around it and by deflecting air downward. Faster airflow over parts of the wing is one part of this pressure pattern."}</p>
   </div>;
 }

@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./birthControlExplorer.css";
 
@@ -56,7 +57,7 @@ const METHODS = {
 function MethodVisual({method}) {
   if (method === "barrier") {
     return (
-      <svg viewBox="0 0 760 340" role="img" aria-label="Barrier contraception prevents sperm from reaching an ovum">
+      <ReviewedScienceDiagram site="BirthControlExplorer.jsx:59"><svg viewBox="0 0 760 340" role="img" aria-label="Barrier contraception prevents sperm from reaching an ovum">
         <circle className="bc-ovum" cx="590" cy="170" r="52" />
         {[0,1,2,3].map(i => (
           <g key={i} className="bc-sperm" transform={"translate("+(120+i*55)+" "+(115+i*30)+")"}>
@@ -66,36 +67,36 @@ function MethodVisual({method}) {
         <rect className="bc-barrier" x="375" y="45" width="35" height="250" rx="16" />
         <path className="bc-block" d="M300 170H365" />
         <text className="bc-label" x="392" y="325" textAnchor="middle">physical barrier</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
     );
   }
 
   if (method === "hormonal") {
     return (
-      <svg viewBox="0 0 760 340" role="img" aria-label="Hormonal contraception mainly prevents ovulation">
+      <ReviewedScienceDiagram site="BirthControlExplorer.jsx:75"><svg viewBox="0 0 760 340" role="img" aria-label="Hormonal contraception mainly prevents ovulation">
         <ellipse className="bc-ovary" cx="225" cy="170" rx="85" ry="58" />
         <circle className="bc-follicle" cx="230" cy="170" r="30" />
         <path className="bc-release blocked" d="M315 170H480" />
         <circle className="bc-ovum faint" cx="545" cy="170" r="42" />
         <path className="bc-stop" d="M385 110L470 230M470 110L385 230" />
         <text className="bc-label" x="380" y="300" textAnchor="middle">ovulation is suppressed</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
     );
   }
 
   if (method === "iud") {
     return (
-      <svg viewBox="0 0 760 340" role="img" aria-label="Intrauterine device placed inside the uterus">
+      <ReviewedScienceDiagram site="BirthControlExplorer.jsx:88"><svg viewBox="0 0 760 340" role="img" aria-label="Intrauterine device placed inside the uterus">
         <path className="bc-uterus" d="M250 70Q380 25 510 70Q550 150 520 245Q470 295 380 305Q290 295 240 245Q210 150 250 70Z" />
         <path className="bc-iud" d="M380 105V245M325 115H435M380 245q-18 35-12 62m12-62q18 35 12 62" />
         <text className="bc-label" x="380" y="325" textAnchor="middle">IUD sits inside the uterus</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
     );
   }
 
   if (method === "surgical") {
     return (
-      <svg viewBox="0 0 760 340" role="img" aria-label="Surgical contraception blocks reproductive tubes">
+      <ReviewedScienceDiagram site="BirthControlExplorer.jsx:98"><svg viewBox="0 0 760 340" role="img" aria-label="Surgical contraception blocks reproductive tubes">
         <g transform="translate(55 35)">
           <ellipse className="bc-testis" cx="110" cy="205" rx="50" ry="62" />
           <path className="bc-duct" d="M135 175Q175 110 235 95Q275 85 300 110" />
@@ -108,43 +109,43 @@ function MethodVisual({method}) {
           <path className="bc-cut" d="M38 86l30 30m0-30l-30 30M232 86l30 30m0-30l-30 30" />
           <text className="bc-small" x="150" y="300" textAnchor="middle">tubal ligation blocks oviducts</text>
         </g>
-      </svg>
+      </svg></ReviewedScienceDiagram>
     );
   }
 
   if (method === "awareness") {
     return (
-      <svg viewBox="0 0 760 340" role="img" aria-label="Fertility awareness tracks changes across the menstrual cycle">
+      <ReviewedScienceDiagram site="BirthControlExplorer.jsx:117"><svg viewBox="0 0 760 340" role="img" aria-label="Fertility awareness tracks changes across the menstrual cycle">
         <circle className="bc-cycle" cx="380" cy="165" r="110" />
         <path className="bc-cycle-window" d="M455 85A110 110 0 0 1 484 210" />
         <circle className="bc-cycle-dot" cx="485" cy="165" r="13" />
         <text className="bc-day" x="380" y="155" textAnchor="middle">fertile days</text>
         <text className="bc-small" x="380" y="182" textAnchor="middle">are estimated, not guaranteed</text>
         <text className="bc-label" x="380" y="315" textAnchor="middle">cycle timing and cervical mucus can be observed</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
     );
   }
 
   if (method === "withdrawal") {
     return (
-      <svg viewBox="0 0 760 340" role="img" aria-label="Withdrawal is a timing-dependent behavioural method">
+      <ReviewedScienceDiagram site="BirthControlExplorer.jsx:130"><svg viewBox="0 0 760 340" role="img" aria-label="Withdrawal is a timing-dependent behavioural method">
         <path className="bc-timing-arrow" d="M140 170H545" />
         <circle className="bc-clock" cx="350" cy="170" r="88" />
         <line className="bc-clock-hand" x1="350" y1="170" x2="350" y2="115" />
         <line className="bc-clock-hand" x1="350" y1="170" x2="400" y2="195" />
         <path className="bc-stop" d="M555 110L640 230M640 110L555 230" />
         <text className="bc-label" x="380" y="315" textAnchor="middle">depends on correct timing every time</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
     );
   }
 
   return (
-    <svg viewBox="0 0 760 340" role="img" aria-label="Abstinence prevents sperm and ovum from meeting">
+    <ReviewedScienceDiagram site="BirthControlExplorer.jsx:142"><svg viewBox="0 0 760 340" role="img" aria-label="Abstinence prevents sperm and ovum from meeting">
       <circle className="bc-ovum" cx="585" cy="170" r="52" />
       <g className="bc-sperm" transform="translate(165 170)"><circle cx="0" cy="0" r="11" /><path d="M-8 8q-45 18-70 60" /></g>
       <path className="bc-stop large" d="M320 85L445 255M445 85L320 255" />
       <text className="bc-label" x="380" y="315" textAnchor="middle">no sexual intercourse means the gametes cannot meet</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

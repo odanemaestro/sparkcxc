@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./airMassFrontsExplorer.css";
 
@@ -23,13 +24,13 @@ function FrontSymbol({type,label}){
   const triangleDown=x=>(x-14)+",55 "+(x+14)+",55 "+x+",80";
   const semi=x=>"M"+(x-14)+",55 A14,14 0 0 1 "+(x+14)+",55 Z";
   return <article className={"spark-front-card "+type}>
-    <svg viewBox="0 0 400 100" role="img" aria-label={label+" symbol"}>
+    <ReviewedScienceDiagram site="AirMassFrontsExplorer.jsx:26"><svg viewBox="0 0 400 100" role="img" aria-label={label+" symbol"}>
       <line className="fr-line" x1="25" y1="55" x2="375" y2="55"/>
       {type==="cold"&&xs.map(x=><polygon key={x} className="fr-mark" points={triangleUp(x)}/>)}
       {type==="warm"&&xs.map(x=><path key={x} className="fr-mark" d={semi(x)}/>)}
       {type==="occluded"&&xs.map((x,i)=>i%2===0?<polygon key={x} className="fr-mark" points={triangleUp(x)}/>:<path key={x} className="fr-mark" d={semi(x)}/>)}
       {type==="stationary"&&xs.map((x,i)=>i%2===0?<polygon key={x} className="fr-mark" points={triangleDown(x)}/>:<path key={x} className="fr-mark" d={semi(x)}/>)}
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <b>{label}</b>
   </article>;
 }
@@ -40,7 +41,7 @@ function SymbolsView(){
 
 function FrontCrossSection({type}){
   if(type==="cold"){
-    return <svg viewBox="0 0 860 430" role="img" aria-label="Cold front cross-section with dense cold air pushing under warm air, rapid uplift and heavy showers">
+    return <ReviewedScienceDiagram site="AirMassFrontsExplorer.jsx:43"><svg viewBox="0 0 860 430" role="img" aria-label="Cold front cross-section with dense cold air pushing under warm air, rapid uplift and heavy showers">
       <rect className="fr-sky" x="20" y="25" width="820" height="340" rx="18" />
       <path className="fr-ground" d="M20 345H840" />
       <path className="fr-air cold" d="M25 345V250Q160 238 300 292L410 345Z" />
@@ -59,11 +60,11 @@ function FrontCrossSection({type}){
       <text className="fr-air-label warm" x="690" y="145">warm air</text>
       <text className="fr-section-label" x="515" y="300">steep uplift</text>
       <text className="fr-weather-label" x="610" y="55">towering cloud + heavy showers</text>
-    </svg>;
+    </svg></ReviewedScienceDiagram>;
   }
 
   if(type==="warm"){
-    return <svg viewBox="0 0 860 430" role="img" aria-label="Warm front cross-section with warm air rising gradually over cold air and layered cloud producing steady rain">
+    return <ReviewedScienceDiagram site="AirMassFrontsExplorer.jsx:66"><svg viewBox="0 0 860 430" role="img" aria-label="Warm front cross-section with warm air rising gradually over cold air and layered cloud producing steady rain">
       <rect className="fr-sky" x="20" y="25" width="820" height="340" rx="18" />
       <path className="fr-ground" d="M20 345H840" />
       <path className="fr-air cold" d="M460 345Q620 300 840 285V345Z" />
@@ -80,11 +81,11 @@ function FrontCrossSection({type}){
       <text className="fr-air-label warm" x="170" y="215">warm air rises gradually</text>
       <text className="fr-air-label cold" x="690" y="322">cold air</text>
       <text className="fr-weather-label" x="460" y="75">layered cloud + longer steady rain</text>
-    </svg>;
+    </svg></ReviewedScienceDiagram>;
   }
 
   if(type==="occluded"){
-    return <svg viewBox="0 0 860 430" role="img" aria-label="Occluded front cross-section with warm air lifted above colder surface air">
+    return <ReviewedScienceDiagram site="AirMassFrontsExplorer.jsx:87"><svg viewBox="0 0 860 430" role="img" aria-label="Occluded front cross-section with warm air lifted above colder surface air">
       <rect className="fr-sky" x="20" y="25" width="820" height="340" rx="18" />
       <path className="fr-ground" d="M20 345H840" />
       <path className="fr-air cold strongest" d="M20 345V258Q210 240 392 326L420 345Z" />
@@ -100,10 +101,10 @@ function FrontCrossSection({type}){
       <text className="fr-air-label cold" x="135" y="320">colder air</text>
       <text className="fr-air-label cool" x="700" y="320">cool air</text>
       <text className="fr-weather-label" x="475" y="60">cloud and rain near the occlusion</text>
-    </svg>;
+    </svg></ReviewedScienceDiagram>;
   }
 
-  return <svg viewBox="0 0 860 430" role="img" aria-label="Stationary front cross-section where warm and cold air masses meet but neither advances strongly">
+  return <ReviewedScienceDiagram site="AirMassFrontsExplorer.jsx:106"><svg viewBox="0 0 860 430" role="img" aria-label="Stationary front cross-section where warm and cold air masses meet but neither advances strongly">
     <rect className="fr-sky" x="20" y="25" width="820" height="340" rx="18" />
     <path className="fr-ground" d="M20 345H840" />
     <path className="fr-air cold" d="M20 345V225Q210 230 410 315V345Z" />
@@ -117,7 +118,7 @@ function FrontCrossSection({type}){
     <text className="fr-air-label warm" x="690" y="255">warm air</text>
     <text className="fr-section-label" x="430" y="355" textAnchor="middle">boundary changes little</text>
     <text className="fr-weather-label" x="460" y="90">cloudy, unsettled weather may persist</text>
-  </svg>;
+  </svg></ReviewedScienceDiagram>;
 }
 
 function WeatherView(){
@@ -139,13 +140,13 @@ function WeatherView(){
 
 function TransportView(){
   return <div className="spark-atmospheric-transport">
-    <svg viewBox="0 0 880 390" role="img" aria-label="Airflow carrying Saharan dust westward across the Atlantic toward the Caribbean">
+    <ReviewedScienceDiagram site="AirMassFrontsExplorer.jsx:142"><svg viewBox="0 0 880 390" role="img" aria-label="Airflow carrying Saharan dust westward across the Atlantic toward the Caribbean">
       <path className="at-land sahara" d="M80 90Q180 60 260 110Q220 185 100 195Z"/>
       <path className="at-land caribbean" d="M690 180Q730 150 775 195Q745 240 695 225Z"/>
       <path className="at-wind" d="M260 135Q420 110 650 190"/>
       <circle className="at-dust" cx="300" cy="130" r="8"/><circle className="at-dust" cx="390" cy="135" r="7"/><circle className="at-dust" cx="480" cy="150" r="7"/><circle className="at-dust" cx="575" cy="170" r="6"/>
       <text className="at-label" x="160" y="235" textAnchor="middle">Sahara</text><text className="at-label" x="735" y="270" textAnchor="middle">Caribbean</text><text className="at-label" x="450" y="95" textAnchor="middle">winds transport dust westward</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-transport-cards">
       <article><b>Saharan dust</b><p>Fine mineral dust can travel across the Atlantic in large air masses. High dust concentrations can worsen asthma and allergies in sensitive people.</p></article>
       <article><b>Volcanic ash</b><p>Winds can carry ash from Caribbean eruptions, such as those in Montserrat, to other islands and marine areas.</p></article>

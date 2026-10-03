@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./pestControlExplorer.css";
 
@@ -32,7 +33,7 @@ function LifeCycleScene(){
     {x:830,y:250,label:"ADULT",sub:"flying stage"},
   ];
   return(
-    <svg viewBox="0 0 960 500" role="img" aria-label="Mosquito life cycle from egg to larva pupa and adult">
+    <ReviewedScienceDiagram site="PestControlExplorer.jsx:35"><svg viewBox="0 0 960 500" role="img" aria-label="Mosquito life cycle from egg to larva pupa and adult">
       <path className="pc-water" d="M35 325Q160 300 285 325T535 325T785 325T925 325V440H35Z"/>
       {stages.map((s,i)=>(
         <g key={s.label}>
@@ -43,7 +44,7 @@ function LifeCycleScene(){
         </g>
       ))}
       <text className="pc-small dark" x="480" y="465" textAnchor="middle">larvae and pupae depend on water, adults are controlled above the water stage</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

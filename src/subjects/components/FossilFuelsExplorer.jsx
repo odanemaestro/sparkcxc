@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./fossilFuelsExplorer.css";
 
@@ -16,7 +17,7 @@ function FormationView(){
     ["Extraction and use","Humans extract and burn these fuels far faster than natural processes replace them."],
   ];
   return <div className="spark-fossil-formation">
-    <svg className="spark-fossil-formation-svg" viewBox="0 0 980 560" role="img" aria-label="Geological cross-section showing burial of organic matter and formation of coal petroleum and natural gas deposits">
+    <ReviewedScienceDiagram site="FossilFuelsExplorer.jsx:19"><svg className="spark-fossil-formation-svg" viewBox="0 0 980 560" role="img" aria-label="Geological cross-section showing burial of organic matter and formation of coal petroleum and natural gas deposits">
       <defs>
         <marker id="ff-burial-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
           <path className="ff-arrow-head" d="M0 0L10 5L0 10Z"/>
@@ -66,14 +67,14 @@ function FormationView(){
       <text className="ff-label" x="855" y="310" textAnchor="end">heat + pressure</text>
 
       <text className="ff-caption" x="490" y="535" textAnchor="middle">fossil fuels form only where organic material, burial, time, heat and pressure occur under suitable geological conditions</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <div className="spark-fossil-formation-steps">{steps.map((item,i)=><React.Fragment key={item[0]}><article><span>{i+1}</span><div><b>{item[0]}</b><p>{item[1]}</p></div></article>{i<steps.length-1&&<div className="spark-fossil-down" aria-hidden="true">↓</div>}</React.Fragment>)}</div>
   </div>;
 }
 
 function PowerPlantView(){
   return <div className="spark-fossil-power">
-    <svg className="spark-fossil-power-svg" viewBox="0 0 1060 560" role="img" aria-label="Thermal power station showing fuel combustion boiler steam turbine generator condenser cooling water pump and electricity output">
+    <ReviewedScienceDiagram site="FossilFuelsExplorer.jsx:76"><svg className="spark-fossil-power-svg" viewBox="0 0 1060 560" role="img" aria-label="Thermal power station showing fuel combustion boiler steam turbine generator condenser cooling water pump and electricity output">
       <defs>
         <marker id="ff-flow-arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
           <path className="ff-arrow-head" d="M0 0L10 5L0 10Z"/>
@@ -140,7 +141,7 @@ function PowerPlantView(){
         <text className="ff-key-arrow" x="565" y="76">→</text>
         <text className="ff-key-text" x="610" y="76">electrical energy</text>
       </g>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>Combustion transfers chemical energy in the fuel to thermal energy in water. Steam turns the turbine, the turbine drives the generator, and the condenser returns steam to liquid water so the cycle can continue.</p>
   </div>;
 }

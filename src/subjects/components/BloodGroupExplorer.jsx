@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useMemo, useState } from "react";
 import "./bloodGroupExplorer.css";
 
@@ -70,7 +71,7 @@ function ABOScene({group}) {
   return (
     <div className="spark-blood-group-abo-layout">
       <div className="spark-blood-group-stage">
-        <svg viewBox="0 0 840 430" role="img" aria-label={"ABO blood group " + group + " antigens and antibodies"}>
+        <ReviewedScienceDiagram site="BloodGroupExplorer.jsx:73"><svg viewBox="0 0 840 430" role="img" aria-label={"ABO blood group " + group + " antigens and antibodies"}>
           <rect className="bg-plasma" x="35" y="40" width="770" height="330" rx="28" />
           <RedCell cx={300} cy={205} antigens={info.antigens} />
           {info.antibodies.map((antibody,index)=>(
@@ -79,7 +80,7 @@ function ABOScene({group}) {
           <text className="bg-heading" x="300" y="330" textAnchor="middle">red-cell antigens: {info.antigens.length ? info.antigens.join(" and ") : "none A or B"}</text>
           <text className="bg-heading" x="620" y="330" textAnchor="middle">plasma antibodies: {info.antibodies.length ? info.antibodies.join(" and ") : "none anti-A or anti-B"}</text>
           <text className="bg-note" x="420" y="405" textAnchor="middle">ABO compatibility shown here refers to red-cell transfusion and does not include the Rhesus factor.</text>
-        </svg>
+        </svg></ReviewedScienceDiagram>
       </div>
       <aside>
         <span>Blood group {group}</span>
@@ -95,7 +96,7 @@ function ClumpingWell({label,clumps}) {
   return (
     <div className={clumps ? "spark-blood-test-well clumps" : "spark-blood-test-well"}>
       <strong>{label}</strong>
-      <svg viewBox="0 0 180 135" role="img" aria-label={clumps ? label + " shows agglutination" : label + " shows no agglutination"}>
+      <ReviewedScienceDiagram site="BloodGroupExplorer.jsx:98"><svg viewBox="0 0 180 135" role="img" aria-label={clumps ? label + " shows agglutination" : label + " shows no agglutination"}>
         <ellipse className="bg-test-well" cx="90" cy="65" rx="70" ry="48" />
         {clumps ? (
           <>
@@ -106,7 +107,7 @@ function ClumpingWell({label,clumps}) {
         ) : (
           [[55,50],[85,45],[115,55],[65,78],[100,83],[128,75]].map(([x,y],i)=><circle key={i} className="bg-test-cell" cx={x} cy={y} r="9" />)
         )}
-      </svg>
+      </svg></ReviewedScienceDiagram>
       <span>{clumps ? "clumping" : "no clumping"}</span>
     </div>
   );
@@ -136,7 +137,7 @@ function RhScene() {
   return (
     <div className="spark-blood-rh">
       <div className="spark-blood-group-stage">
-        <svg viewBox="0 0 900 500" role="img" aria-label="Rhesus incompatibility and anti-D prevention">
+        <ReviewedScienceDiagram site="BloodGroupExplorer.jsx:139"><svg viewBox="0 0 900 500" role="img" aria-label="Rhesus incompatibility and anti-D prevention">
           <g transform="translate(170 170)">
             <circle className="bg-mother" cx="0" cy="0" r="72" />
             <text className="bg-person-label" x="0" y="7" textAnchor="middle">Rh−</text>
@@ -157,7 +158,7 @@ function RhScene() {
             <text className="bg-injection-text" x="-30" y="7" textAnchor="middle">anti-D</text>
           </g>
           <text className="bg-note" x="450" y="475" textAnchor="middle">anti-D immunoglobulin reduces sensitisation of an Rh-negative mother to Rh-positive red cells</text>
-        </svg>
+        </svg></ReviewedScienceDiagram>
       </div>
       <div className="spark-blood-rh-steps">
         <article><span>1</span><div><b>Possible exposure</b><p>Rh-positive foetal red cells can enter the circulation of an Rh-negative mother.</p></div></article>

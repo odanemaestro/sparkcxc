@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./immunisationExplorer.css";
 
@@ -31,7 +32,7 @@ const VIEWS = {
 
 function VaccineScene() {
   return (
-    <svg viewBox="0 0 980 520" role="img" aria-label="Vaccination causing antibody and memory cell formation">
+    <ReviewedScienceDiagram site="ImmunisationExplorer.jsx:34"><svg viewBox="0 0 980 520" role="img" aria-label="Vaccination causing antibody and memory cell formation">
       <g transform="translate(55 80)">
         <rect className="imm-vaccine-vial" x="25" y="45" width="130" height="180" rx="18" />
         <rect className="imm-vial-cap" x="55" y="10" width="70" height="45" rx="8" />
@@ -56,13 +57,13 @@ function VaccineScene() {
         <path className="imm-antibody free" d="M40 220V275m0-28L5 215m35 32l35-32M145 220V275m0-28l-35-32m35 32l35-32" />
         <text className="imm-label" x="95" y="330" textAnchor="middle">antibodies + memory</text>
       </g>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function ResponseScene() {
   return (
-    <svg viewBox="0 0 980 520" role="img" aria-label="Primary and secondary antibody responses after first and later antigen exposure">
+    <ReviewedScienceDiagram site="ImmunisationExplorer.jsx:65"><svg viewBox="0 0 980 520" role="img" aria-label="Primary and secondary antibody responses after first and later antigen exposure">
       <line className="imm-axis" x1="90" y1="410" x2="900" y2="410" />
       <line className="imm-axis" x1="90" y1="70" x2="90" y2="410" />
       <text className="imm-axis-label" x="500" y="470" textAnchor="middle">Time</text>
@@ -78,7 +79,7 @@ function ResponseScene() {
       <text className="imm-label" x="300" y="250">primary response</text>
       <text className="imm-label" x="700" y="165">secondary response</text>
       <text className="imm-small" x="700" y="195">faster and stronger because memory cells remain</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
@@ -105,7 +106,7 @@ function TypesScene() {
 
 function DefenceScene() {
   return (
-    <svg viewBox="0 0 980 520" role="img" aria-label="Phagocyte engulfing a pathogen and lymphocyte producing antibodies">
+    <ReviewedScienceDiagram site="ImmunisationExplorer.jsx:108"><svg viewBox="0 0 980 520" role="img" aria-label="Phagocyte engulfing a pathogen and lymphocyte producing antibodies">
       <g transform="translate(70 75)">
         <circle className="imm-phagocyte" cx="170" cy="180" r="110" />
         <path className="imm-phagocyte-mouth" d="M235 130Q300 175 235 230Q205 205 215 180Q205 150 235 130Z" />
@@ -120,7 +121,7 @@ function DefenceScene() {
         <path className="imm-antibody free" d="M295 120V175m0-28l-30-28m30 28l30-28M330 230V285m0-28l-30-28m30 28l30-28" />
         <text className="imm-label" x="165" y="340" textAnchor="middle">lymphocyte makes specific antibodies</text>
       </g>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
@@ -134,7 +135,7 @@ function CommunityScene() {
     }
   }
   return (
-    <svg viewBox="0 0 980 520" role="img" aria-label="Community immunity reducing paths for pathogen transmission">
+    <ReviewedScienceDiagram site="ImmunisationExplorer.jsx:137"><svg viewBox="0 0 980 520" role="img" aria-label="Community immunity reducing paths for pathogen transmission">
       {nodes.map(node=>(
         <g key={node.index}>
           <circle className={node.susceptible ? "imm-person susceptible" : "imm-person immune"} cx={node.x} cy={node.y} r="28" />
@@ -143,7 +144,7 @@ function CommunityScene() {
       ))}
       <path className="imm-pathogen-route" d="M65 105H80M840 105H900M65 295H80M840 390H900" />
       <text className="imm-label" x="490" y="480" textAnchor="middle">fewer susceptible hosts make sustained spread more difficult</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

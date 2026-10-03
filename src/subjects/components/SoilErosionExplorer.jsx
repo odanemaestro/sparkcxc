@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./soilErosionExplorer.css";
 
@@ -26,7 +27,7 @@ const CONTROL_METHODS = {
 
 function CausesScene() {
   return (
-    <svg viewBox="0 0 960 520" role="img" aria-label="Comparison of erosion on bare and vegetated hillsides">
+    <ReviewedScienceDiagram site="SoilErosionExplorer.jsx:29"><svg viewBox="0 0 960 520" role="img" aria-label="Comparison of erosion on bare and vegetated hillsides">
       <text className="se-title" x="240" y="40" textAnchor="middle">Bare hillside</text>
       <text className="se-title" x="720" y="40" textAnchor="middle">Vegetated hillside</text>
       <path className="se-hill bare" d="M35 425Q255 105 455 425Z" />
@@ -46,13 +47,13 @@ function CausesScene() {
       <path className="se-runoff slow" d="M680 230Q700 290 750 340" />
       <text className="se-note" x="240" y="470" textAnchor="middle">rapid run-off removes exposed topsoil</text>
       <text className="se-note" x="720" y="470" textAnchor="middle">leaves reduce rain impact, roots bind soil</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function FoodScene() {
   return (
-    <svg viewBox="0 0 960 520" role="img" aria-label="Effect of soil erosion on crop growth and food production">
+    <ReviewedScienceDiagram site="SoilErosionExplorer.jsx:55"><svg viewBox="0 0 960 520" role="img" aria-label="Effect of soil erosion on crop growth and food production">
       <text className="se-title" x="240" y="44" textAnchor="middle">Before severe erosion</text>
       <text className="se-title" x="720" y="44" textAnchor="middle">After severe erosion</text>
       <rect className="se-topsoil rich" x="70" y="325" width="340" height="90" rx="12" />
@@ -79,7 +80,7 @@ function FoodScene() {
       <text className="se-layer" x="720" y="375" textAnchor="middle">thin topsoil, fewer nutrients and poorer rooting</text>
       <text className="se-note" x="240" y="500" textAnchor="middle">better growth and higher yield</text>
       <text className="se-note warning" x="720" y="500" textAnchor="middle">lower yield, less food, higher production pressure</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
@@ -88,7 +89,7 @@ function ControlScene({ method }) {
   return (
     <div className="spark-erosion-control-layout">
       <div className="spark-erosion-control-stage">
-        <svg viewBox="0 0 960 520" role="img" aria-label={info.title + " soil erosion control"}>
+        <ReviewedScienceDiagram site="SoilErosionExplorer.jsx:91"><svg viewBox="0 0 960 520" role="img" aria-label={info.title + " soil erosion control"}>
           {method === "terracing" && <>
             <path className="se-hill covered" d="M70 440Q460 100 890 440Z" />
             {[170,245,320,395].map((y,index)=><path key={y} className="se-terrace" d={"M"+(220+index*45)+" "+y+"H"+(760-index*40)+"V"+(y+34)} />)}
@@ -127,7 +128,7 @@ function ControlScene({ method }) {
             {[0,1,2,3,4].map(index=><path key={index} className={index%2 ? "se-strip alt" : "se-strip"} d={"M"+(190+index*120)+" 405Q"+(250+index*85)+" 285 "+(330+index*70)+" 190"} />)}
             <text className="se-note" x="480" y="480" textAnchor="middle">alternating strips interrupt water flow and trap soil</text>
           </>}
-        </svg>
+        </svg></ReviewedScienceDiagram>
       </div>
       <aside>
         <strong>{info.title}</strong>
@@ -139,7 +140,7 @@ function ControlScene({ method }) {
 
 function DownstreamScene() {
   return (
-    <svg viewBox="0 0 960 540" role="img" aria-label="Sediment from eroded farmland entering rivers and coastal ecosystems">
+    <ReviewedScienceDiagram site="SoilErosionExplorer.jsx:142"><svg viewBox="0 0 960 540" role="img" aria-label="Sediment from eroded farmland entering rivers and coastal ecosystems">
       <path className="se-hill bare" d="M30 260Q190 70 360 260Z" />
       <path className="se-runoff" d="M195 130Q245 210 355 290" />
       <path className="se-river" d="M320 280Q460 230 555 330T930 360V520H300Z" />
@@ -152,7 +153,7 @@ function DownstreamScene() {
       <text className="se-title" x="190" y="305" textAnchor="middle">eroded farm soil</text>
       <text className="se-note" x="520" y="250" textAnchor="middle">muddy river carries sediment downstream</text>
       <text className="se-note warning" x="735" y="510" textAnchor="middle">sediment can smother reefs and harm fisheries</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

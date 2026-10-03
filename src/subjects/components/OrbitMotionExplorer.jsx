@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./orbitMotionExplorer.css";
 
@@ -5,7 +6,7 @@ function OrbitView(){
  const [gravity,setGravity]=useState(true);
  return <div className="spark-orbit-motion">
   <div className="spark-orbit-toggle"><button type="button" className={gravity?"active":""} onClick={()=>setGravity(true)}>Gravity on</button><button type="button" className={!gravity?"active":""} onClick={()=>setGravity(false)}>Gravity removed</button></div>
-  <svg viewBox="0 0 820 430" role="img" aria-label={gravity?"Satellite kept in orbit by gravity":"Satellite moving tangent when gravity is removed"}>
+  <ReviewedScienceDiagram site="OrbitMotionExplorer.jsx:8"><svg viewBox="0 0 820 430" role="img" aria-label={gravity?"Satellite kept in orbit by gravity":"Satellite moving tangent when gravity is removed"}>
    <circle className="om-earth" cx="390" cy="220" r="80"/>
    <ellipse className="om-orbit" cx="390" cy="220" rx="250" ry="145"/>
    <rect className="om-sat" x="595" y="100" width="34" height="24" rx="3"/>
@@ -14,14 +15,14 @@ function OrbitView(){
    <text className="om-label" x="390" y="225" textAnchor="middle">Earth</text>
    <text className="om-label" x="695" y="155">velocity</text>
    <text className="om-label" x={gravity?515:700} y={gravity?165:225}>{gravity?"gravity":"straight-line tangent"}</text>
-  </svg>
+  </svg></ReviewedScienceDiagram>
   <p>{gravity?"Gravity continually changes the satellite's direction, providing the centripetal force needed for orbit.":"Without gravity, the satellite would continue in a straight line tangent to the orbit because no centre-seeking force remains."}</p>
  </div>;
 }
 
 function GeoView(){
  return <div className="spark-geostationary">
-  <svg viewBox="0 0 820 430" role="img" aria-label="Geostationary satellite above the equator">
+  <ReviewedScienceDiagram site="OrbitMotionExplorer.jsx:24"><svg viewBox="0 0 820 430" role="img" aria-label="Geostationary satellite above the equator">
    <circle className="gs-earth" cx="410" cy="225" r="90"/>
    <ellipse className="gs-equator" cx="410" cy="225" rx="90" ry="32"/>
    <circle className="gs-orbit" cx="410" cy="225" r="190"/>
@@ -29,7 +30,7 @@ function GeoView(){
    <line className="gs-line" x1="410" y1="42" x2="410" y2="135"/>
    <text className="gs-label" x="440" y="70">same point above equator</text>
    <text className="gs-label" x="410" y="345" textAnchor="middle">orbital period = Earth's rotation period, about 24 h</text>
-  </svg>
+  </svg></ReviewedScienceDiagram>
   <p>A geostationary satellite orbits above the equator in the same direction as Earth's rotation and has an orbital period matching Earth's rotation, so it appears fixed above one point.</p>
  </div>;
 }

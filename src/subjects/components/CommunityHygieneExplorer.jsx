@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./communityHygieneExplorer.css";
 
@@ -16,7 +17,7 @@ function WasteTypesView(){
 
 function PestsView(){
   return <div className="spark-hygiene-pests-view">
-    <svg className="spark-pests-drains-svg" viewBox="0 0 980 560" role="img" aria-label="Community hygiene diagram showing litter blocking a drain, stagnant water supporting mosquito eggs larvae and pupae, and open garbage attracting flies and rats">
+    <ReviewedScienceDiagram site="CommunityHygieneExplorer.jsx:19"><svg className="spark-pests-drains-svg" viewBox="0 0 980 560" role="img" aria-label="Community hygiene diagram showing litter blocking a drain, stagnant water supporting mosquito eggs larvae and pupae, and open garbage attracting flies and rats">
       <defs>
         <marker id="pest-flow-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
           <path d="M0 0L9 4.5L0 9Z" className="pd-arrow-head"/>
@@ -69,7 +70,7 @@ function PestsView(){
         </g>
         <text className="pd-heading" x="75" y="168" textAnchor="middle">open garbage attracts flies and rats</text>
       </g>
-    </svg>
+    </svg></ReviewedScienceDiagram>
 
     <div className="spark-hygiene-pests">
       <article><span>OPEN GARBAGE</span><h4>Food and shelter for pests</h4><p>Uncovered garbage attracts rats and flies and can hold water in containers that breed mosquitoes.</p></article>
@@ -81,7 +82,7 @@ function PestsView(){
 
 function LandfillView(){
   return <div className="spark-hygiene-landfill">
-    <svg className="spark-landfill-cross-section" viewBox="0 0 980 520" role="img" aria-label="Managed landfill cross-section showing cover, compacted waste, rain infiltration, leachate drainage layer, collection pipe, impermeable liner, surrounding soil and groundwater">
+    <ReviewedScienceDiagram site="CommunityHygieneExplorer.jsx:84"><svg className="spark-landfill-cross-section" viewBox="0 0 980 520" role="img" aria-label="Managed landfill cross-section showing cover, compacted waste, rain infiltration, leachate drainage layer, collection pipe, impermeable liner, surrounding soil and groundwater">
       <defs>
         <marker id="landfill-flow-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9Z" className="lf-arrow-head"/></marker>
       </defs>
@@ -113,7 +114,7 @@ function LandfillView(){
       <text className="lf-small" x="884" y="252" textAnchor="middle">leachate collection</text>
       <text className="lf-small" x="884" y="379" textAnchor="middle">sent for treatment</text>
       <text className="ch-label" x="720" y="470" textAnchor="middle">groundwater below landfill</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>Rainwater passing through waste forms leachate. A managed landfill uses cover, a drainage layer, collection pipes and an impermeable liner to capture leachate before it reaches groundwater. Poor siting, damaged liners or inadequate leachate control increase contamination risk.</p>
   </div>;
 }
@@ -122,7 +123,7 @@ function SanitationView(){
   const [system,setSystem]=useState("septic");
   return <div className="spark-hygiene-sanitation">
     <div className="spark-hygiene-toggle"><button type="button" className={system==="septic"?"active":""} onClick={()=>setSystem("septic")}>Septic system</button><button type="button" className={system==="plant"?"active":""} onClick={()=>setSystem("plant")}>Sewage treatment plant</button></div>
-    {system==="septic"?<svg className="spark-sanitation-diagram" viewBox="0 0 940 470" role="img" aria-label="Septic system cross-section showing house sewer, septic tank, scum, wastewater, sludge, outlet and drain field">
+    {system==="septic"?<ReviewedScienceDiagram site="CommunityHygieneExplorer.jsx:125"><svg className="spark-sanitation-diagram" viewBox="0 0 940 470" role="img" aria-label="Septic system cross-section showing house sewer, septic tank, scum, wastewater, sludge, outlet and drain field">
       <defs><marker id="ch-flow-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" className="ch-arrow-head"/></marker></defs>
       <rect className="ch-sky" x="0" y="0" width="940" height="215"/>
       <path className="ch-ground" d="M0 215H940V470H0Z"/>
@@ -148,7 +149,7 @@ function SanitationView(){
       <path className="ch-soil-flow" d="M760 384V425M810 384V425M860 384V425"/>
       <text className="ch-label" x="809" y="256" textAnchor="middle">drain field</text>
       <text className="ch-small" x="809" y="451" textAnchor="middle">effluent filters through suitable soil</text>
-    </svg>:<svg className="spark-sanitation-diagram" viewBox="0 0 980 470" role="img" aria-label="Sewage treatment plant process showing screening, primary settling, aeration, secondary settling, disinfection and treated effluent">
+    </svg></ReviewedScienceDiagram>:<ReviewedScienceDiagram site="CommunityHygieneExplorer.jsx:151"><svg className="spark-sanitation-diagram" viewBox="0 0 980 470" role="img" aria-label="Sewage treatment plant process showing screening, primary settling, aeration, secondary settling, disinfection and treated effluent">
       <defs><marker id="ch-plant-arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" className="ch-arrow-head"/></marker></defs>
       <line className="ch-process-pipe" x1="50" y1="230" x2="925" y2="230"/>
       <line className="ch-process-arrow" x1="55" y1="230" x2="118" y2="230" markerEnd="url(#ch-plant-arrow)"/>
@@ -184,7 +185,7 @@ function SanitationView(){
 
       <path className="ch-process-arrow" d="M915 230H955" markerEnd="url(#ch-plant-arrow)"/>
       <text className="ch-small" x="908" y="389" textAnchor="end">treated effluent is released only after required treatment and checks</text>
-    </svg>}
+    </svg></ReviewedScienceDiagram>}
     <p>{system==="septic"?"Septic systems treat household sewage where there is no sewer connection. Solids settle, microorganisms break down some waste, and clarified effluent enters a suitable drain field. Good siting, maintenance and separation from wells protect groundwater.":"Treatment plants screen debris, settle solids, use microorganisms to reduce organic matter, settle biological solids and apply final treatment before effluent is released. Some plants also remove nutrients depending on design and discharge requirements."}</p>
   </div>;
 }

@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./microbeExplorer.css";
 
@@ -44,19 +45,19 @@ function CompareScene() {
     <div className="spark-microbe-cards">
       <article>
         <div className="spark-microbe-visual bacteria" aria-label="Simplified bacterium">
-          <svg viewBox="0 0 250 180">
+          <ReviewedScienceDiagram site="MicrobeExplorer.jsx:47"><svg viewBox="0 0 250 180">
             <rect x="45" y="45" width="145" height="85" rx="42" />
             <path d="M190 85q45-35 45 10q0 35-35 25" />
             {[75,110,145].map(x=><circle key={x} cx={x} cy="85" r="6" />)}
             <path className="microbe-dna" d="M75 105q35-35 70 0q20 18 38-2" />
-          </svg>
+          </svg></ReviewedScienceDiagram>
         </div>
         <b>Bacterium</b>
         <span>Single cell. Many are harmless or useful. Some cause disease.</span>
       </article>
       <article>
         <div className="spark-microbe-visual virus" aria-label="Simplified virus particle">
-          <svg viewBox="0 0 250 180">
+          <ReviewedScienceDiagram site="MicrobeExplorer.jsx:59"><svg viewBox="0 0 250 180">
             <circle cx="125" cy="90" r="52" />
             {[0,45,90,135,180,225,270,315].map(angle=>{
               const r=75,rad=angle*Math.PI/180;
@@ -65,21 +66,21 @@ function CompareScene() {
               return <g key={angle}><line x1={x1} y1={y1} x2={x2} y2={y2}/><circle cx={x2} cy={y2} r="7"/></g>;
             })}
             <path className="microbe-genetic" d="M90 88q18-30 36 0t36 0" />
-          </svg>
+          </svg></ReviewedScienceDiagram>
         </div>
         <b>Virus</b>
         <span>Not a cell. Reproduces only inside a living host cell.</span>
       </article>
       <article>
         <div className="spark-microbe-visual fungus" aria-label="Simplified mould fungus">
-          <svg viewBox="0 0 250 180">
+          <ReviewedScienceDiagram site="MicrobeExplorer.jsx:75"><svg viewBox="0 0 250 180">
             <path d="M40 140Q80 110 115 140T205 138" />
             <path d="M85 140V65M135 140V45M180 138V75" />
             <circle cx="85" cy="58" r="25" />
             <circle cx="135" cy="38" r="25" />
             <circle cx="180" cy="68" r="25" />
             {[70,82,94,120,135,150,165,180,195].map((x,i)=><circle className="microbe-spore" key={i} cx={x} cy={25+(i%3)*13} r="5"/>)}
-          </svg>
+          </svg></ReviewedScienceDiagram>
         </div>
         <b>Fungus</b>
         <span>Includes yeasts and moulds. Many decompose organic material.</span>
@@ -93,7 +94,7 @@ function BacterialCellScene() {
   const pili=[[[255,150],[205,115]],[[245,205],[185,190]],[[255,330],[195,360]],[[665,145],[725,105]],[[680,205],[750,190]],[[670,320],[735,355]]];
   return (
     <div className="spark-bacterial-cell-scene">
-      <svg className="spark-bacterial-cell-svg" viewBox="0 0 980 560" role="img" aria-label="Labelled bacterium showing capsule, cell wall, cell membrane, cytoplasm, ribosomes, chromosome, plasmid, storage granules, pili and flagellum">
+      <ReviewedScienceDiagram site="MicrobeExplorer.jsx:96"><svg className="spark-bacterial-cell-svg" viewBox="0 0 980 560" role="img" aria-label="Labelled bacterium showing capsule, cell wall, cell membrane, cytoplasm, ribosomes, chromosome, plasmid, storage granules, pili and flagellum">
         <defs>
           <clipPath id="bacteria-inner-clip"><rect x="265" y="125" width="390" height="300" rx="150"/></clipPath>
         </defs>
@@ -131,7 +132,7 @@ function BacterialCellScene() {
         </g>
 
         <text className="bac-caption" x="460" y="520" textAnchor="middle">prokaryotic cell, no membrane-bound nucleus</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
       <div className="spark-bacterial-cell-notes">
         <article><b>Cell envelope</b><p>The cell membrane controls movement of substances. The cell wall supports the cell. A capsule or slime layer can add protection and help attachment.</p></article>
         <article><b>Genetic material</b><p>The main circular chromosome occupies a nucleoid region in the cytoplasm. The nucleoid is not surrounded by a membrane. Small extra DNA rings called plasmids may also occur.</p></article>
@@ -145,7 +146,7 @@ function BacterialCellScene() {
 function FungalCellScene() {
   return (
     <div className="spark-fungal-cell-scene">
-      <svg className="spark-fungal-cell-svg" viewBox="0 0 980 580" role="img" aria-label="Labelled budding yeast fungal cell showing cell wall, cell membrane, cytoplasm, nucleus, nucleolus, vacuole, mitochondria and a developing bud">
+      <ReviewedScienceDiagram site="MicrobeExplorer.jsx:148"><svg className="spark-fungal-cell-svg" viewBox="0 0 980 580" role="img" aria-label="Labelled budding yeast fungal cell showing cell wall, cell membrane, cytoplasm, nucleus, nucleolus, vacuole, mitochondria and a developing bud">
         <defs>
           <marker id="fungal-callout-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
             <path d="M0 0L9 4.5L0 9Z" className="fc-arrow-head"/>
@@ -195,7 +196,7 @@ function FungalCellScene() {
         </g>
 
         <text className="fc-caption" x="480" y="542" textAnchor="middle">budding yeast example, a eukaryotic fungal cell</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
 
       <div className="spark-fungal-cell-notes">
         <article><b>Cell wall and membrane</b><p>The cell wall supports and protects the fungal cell. The cell membrane controls movement of substances into and out of the cytoplasm.</p></article>
@@ -219,7 +220,7 @@ function VirusStructureScene() {
 
   return (
     <div className="spark-virus-structure-scene">
-      <svg className="spark-virus-structure-svg" viewBox="0 0 980 590" role="img" aria-label="Labelled example of an enveloped virus showing surface proteins, lipid envelope, protein capsid and genetic material, with a note that not all viruses have envelopes">
+      <ReviewedScienceDiagram site="MicrobeExplorer.jsx:222"><svg className="spark-virus-structure-svg" viewBox="0 0 980 590" role="img" aria-label="Labelled example of an enveloped virus showing surface proteins, lipid envelope, protein capsid and genetic material, with a note that not all viruses have envelopes">
         <defs>
           <marker id="virus-callout-arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
             <path d="M0 0L9 4.5L0 9Z" className="vs-arrow-head"/>
@@ -255,7 +256,7 @@ function VirusStructureScene() {
         </g>
 
         <text className="vs-envelope-note" x="480" y="535" textAnchor="middle">example enveloped virus, some viruses lack a lipid envelope</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
 
       <div className="spark-virus-structure-notes">
         <article><b>Genetic material</b><p>A virus carries genetic information as DNA or RNA, depending on the virus.</p></article>
@@ -269,7 +270,7 @@ function VirusStructureScene() {
 
 function UsefulScene() {
   return (
-    <svg viewBox="0 0 980 520" role="img" aria-label="Useful roles of microbes in yoghurt production nitrogen fixation and decomposition">
+    <ReviewedScienceDiagram site="MicrobeExplorer.jsx:272"><svg viewBox="0 0 980 520" role="img" aria-label="Useful roles of microbes in yoghurt production nitrogen fixation and decomposition">
       <g transform="translate(60 80)">
         <rect className="microbe-food-cup" x="10" y="80" width="210" height="210" rx="25" />
         <path className="microbe-milk" d="M35 135Q115 115 195 135V260H35Z" />
@@ -292,7 +293,7 @@ function UsefulScene() {
         <rect className="microbe-soil" x="25" y="370" width="230" height="65" rx="12" />
         <text className="microbe-label" x="140" y="470" textAnchor="middle">decomposers recycle minerals</text>
       </g>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
@@ -309,7 +310,7 @@ function HarmfulScene() {
 
 function AntibioticScene() {
   return (
-    <svg viewBox="0 0 980 500" role="img" aria-label="Penicillium mould and comparison of antibiotic action on bacteria and viruses">
+    <ReviewedScienceDiagram site="MicrobeExplorer.jsx:312"><svg viewBox="0 0 980 500" role="img" aria-label="Penicillium mould and comparison of antibiotic action on bacteria and viruses">
       <g transform="translate(70 55)">
         <path className="microbe-mould-stem" d="M130 320V115M85 320V150M175 320V145" />
         <circle className="microbe-mould-head" cx="130" cy="100" r="38" />
@@ -335,7 +336,7 @@ function AntibioticScene() {
         <text className="microbe-card-title" x="100" y="40" textAnchor="middle">Viruses</text>
         <text className="microbe-small" x="100" y="280" textAnchor="middle">antibiotics do not work</text>
       </g>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

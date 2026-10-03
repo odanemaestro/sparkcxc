@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React,{useMemo,useState} from "react";
 import "./waterPurificationExplorer.css";
 
@@ -15,7 +16,7 @@ function TreatmentView(){
     <div className="spark-purification-buttons">{Object.entries(stages).map(([key,item])=><button key={key} type="button" aria-pressed={stage===key} className={stage===key?"active":""} onClick={()=>setStage(key)}>{item.title}</button>)}</div>
 
     <div className="spark-treatment-process">
-      <svg viewBox="0 0 1080 560" role="img" aria-label="Water treatment plant sequence from raw water through coagulation with alum, sedimentation, sand filtration and chlorination to treated water">
+      <ReviewedScienceDiagram site="WaterPurificationExplorer.jsx:18"><svg viewBox="0 0 1080 560" role="img" aria-label="Water treatment plant sequence from raw water through coagulation with alum, sedimentation, sand filtration and chlorination to treated water">
         <defs>
           <linearGradient id="wp-raw-water" x1="0" x2="0" y1="0" y2="1">
             <stop offset="0%" stopColor="#9dc9d8" />
@@ -102,7 +103,7 @@ function TreatmentView(){
         <text className="wp-raw-label" x="35" y="470">raw water</text>
         <path className="wp-intake-arrow" d="M35 445H120" />
         <text className="wp-treated-label" x="905" y="470">treated water ready for safe distribution</text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
     </div>
 
     <article><span>{data.title.toUpperCase()}</span><h4>{data.title}</h4><p>{data.text}</p></article>
@@ -112,7 +113,7 @@ function TreatmentView(){
 
 function DistillationView(){
   return <div className="spark-purification-distillation">
-    <svg viewBox="0 0 880 380" role="img" aria-label="Simple distillation apparatus producing fresh water from sea water">
+    <ReviewedScienceDiagram site="WaterPurificationExplorer.jsx:115"><svg viewBox="0 0 880 380" role="img" aria-label="Simple distillation apparatus producing fresh water from sea water">
       <rect className="wp-flask" x="80" y="150" width="180" height="145" rx="55"/>
       <path className="wp-water" d="M100 215H240V275Q170 310 100 275Z"/>
       <text className="wp-label" x="170" y="245" textAnchor="middle">sea water</text>
@@ -122,7 +123,7 @@ function DistillationView(){
       <rect className="wp-beaker" x="645" y="185" width="115" height="110" rx="8"/>
       <text className="wp-label" x="703" y="242" textAnchor="middle">fresh water</text>
       <text className="wp-label" x="170" y="330" textAnchor="middle">salt remains</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
     <p>Distillation boils water, leaves dissolved salts behind and condenses the vapour as fresh water. It can desalinate sea water but requires energy.</p>
   </div>;
 }
@@ -139,7 +140,7 @@ function ReverseOsmosisView(){
       <strong>{pressure}% model pressure</strong>
     </label>
 
-    <svg className="spark-ro-svg" viewBox="0 0 940 470" role="img" aria-label="Reverse osmosis showing applied pressure forcing water through a semi-permeable membrane while salt ions are rejected">
+    <ReviewedScienceDiagram site="WaterPurificationExplorer.jsx:142"><svg className="spark-ro-svg" viewBox="0 0 940 470" role="img" aria-label="Reverse osmosis showing applied pressure forcing water through a semi-permeable membrane while salt ions are rejected">
       <defs>
         <linearGradient id="ro-feed-water" x1="0" x2="1">
           <stop offset="0%" stopColor="#8fc8df"/>
@@ -199,7 +200,7 @@ function ReverseOsmosisView(){
         <path d="M350 215Q405 210 438 202"/>
         <text x="280" y="200">salt ions rejected</text>
       </g>
-    </svg>
+    </svg></ReviewedScienceDiagram>
 
     <div className="spark-ro-facts">
       <article><b>Pressure</b><span>Pressure greater than the natural osmotic tendency forces water through the membrane.</span></article>

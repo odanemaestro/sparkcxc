@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useMemo, useState } from "react";
 import "./transportSystemNeedExplorer.css";
 
@@ -41,7 +42,7 @@ function CubeScene({size,time}) {
 
   return (
     <div className="spark-transport-need-cube-layout">
-      <svg viewBox="0 0 760 410" role="img" aria-label={"Agar cube diffusion model for a " + selected.side + " centimetre cube"}>
+      <ReviewedScienceDiagram site="TransportSystemNeedExplorer.jsx:44"><svg viewBox="0 0 760 410" role="img" aria-label={"Agar cube diffusion model for a " + selected.side + " centimetre cube"}>
         <g className="tn-diffusion-legend" transform="translate(80 48)">
           <rect className="tn-penetrated-swatch" x="0" y="0" width="22" height="22" rx="4" />
           <text x="32" y="17">acid penetrated</text>
@@ -89,7 +90,7 @@ function CubeScene({size,time}) {
         <text className="tn-time-label" x="380" y="402" textAnchor="middle">
           Same diffusion time for all three cubes
         </text>
-      </svg>
+      </svg></ReviewedScienceDiagram>
 
       <aside>
         <span>Selected cube</span>
@@ -111,7 +112,7 @@ function CubeScene({size,time}) {
 
 function OrganismScene() {
   return (
-    <svg viewBox="0 0 900 500" role="img" aria-label="Comparison of diffusion in a single-celled organism and transport in a large multicellular organism">
+    <ReviewedScienceDiagram site="TransportSystemNeedExplorer.jsx:114"><svg viewBox="0 0 900 500" role="img" aria-label="Comparison of diffusion in a single-celled organism and transport in a large multicellular organism">
       <g transform="translate(170 235)">
         <ellipse className="tn-amoeba" cx="0" cy="0" rx="110" ry="90" />
         <circle className="tn-nucleus" cx="-12" cy="-8" r="28" />
@@ -137,13 +138,13 @@ function OrganismScene() {
       <text className="tn-process-label oxygen" x="500" y="125">oxygen</text>
       <text className="tn-process-label nutrients" x="755" y="285">digested nutrients</text>
       <text className="tn-process-label waste" x="755" y="355">urea and other wastes</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function PlantScene() {
   return (
-    <svg viewBox="0 0 900 520" role="img" aria-label="Water uptake, xylem transport and transpiration in a flowering plant">
+    <ReviewedScienceDiagram site="TransportSystemNeedExplorer.jsx:146"><svg viewBox="0 0 900 520" role="img" aria-label="Water uptake, xylem transport and transpiration in a flowering plant">
       <path className="tn-soil" d="M55 390H845V505H55Z" />
       <path className="tn-stem" d="M450 390V135" />
       <path className="tn-xylem" d="M435 390V145M465 390V145" />
@@ -166,7 +167,7 @@ function PlantScene() {
       <text className="tn-label" x="500" y="345">xylem carries water upward</text>
       <text className="tn-label" x="610" y="120">water vapour leaves mainly through stomata</text>
       <text className="tn-label" x="520" y="490">mineral ions travel with water from the roots</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
@@ -176,7 +177,7 @@ function PotometerScene({condition}) {
   return (
     <div className="spark-transport-need-potometer">
       <div className="spark-transport-need-potometer-stage">
-        <svg viewBox="0 0 900 440" role="img" aria-label={"Potometer model under " + config.label.toLowerCase()}>
+        <ReviewedScienceDiagram site="TransportSystemNeedExplorer.jsx:179"><svg viewBox="0 0 900 440" role="img" aria-label={"Potometer model under " + config.label.toLowerCase()}>
           <line className="tn-capillary" x1="170" y1="280" x2="780" y2="280" />
           <line className="tn-capillary" x1="170" y1="295" x2="780" y2="295" />
           <circle className="tn-bubble" cx={bubbleX} cy="287.5" r="10" />
@@ -199,7 +200,7 @@ function PotometerScene({condition}) {
 
           <path className={"tn-bubble-arrow " + config.speed} d={"M"+(bubbleX+25)+" 250H"+(bubbleX-55)} />
           <text className="tn-label" x="480" y="395" textAnchor="middle">{config.label}</text>
-        </svg>
+        </svg></ReviewedScienceDiagram>
       </div>
       <aside>
         <span>Prediction</span>

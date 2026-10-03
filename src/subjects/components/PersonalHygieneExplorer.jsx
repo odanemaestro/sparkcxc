@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./personalHygieneExplorer.css";
 
@@ -39,7 +40,7 @@ const VIEWS = {
 function HandwashingChart() {
   const max=90;
   return (
-    <svg viewBox="0 0 980 520" role="img" aria-label="Bacterial colonies after different hand washing methods">
+    <ReviewedScienceDiagram site="PersonalHygieneExplorer.jsx:42"><svg viewBox="0 0 980 520" role="img" aria-label="Bacterial colonies after different hand washing methods">
       <line className="hyg-axis" x1="95" y1="70" x2="95" y2="420"/>
       <line className="hyg-axis" x1="95" y1="420" x2="900" y2="420"/>
       {[0,20,40,60,80].map(v=>{
@@ -60,13 +61,13 @@ function HandwashingChart() {
       })}
       <text className="hyg-axis-label" x="28" y="250" textAnchor="middle" transform="rotate(-90 28 250)">Number of colonies</text>
       <text className="hyg-small" x="500" y="495" textAnchor="middle">CSEC practical dataset after fingertip contact with nutrient agar</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function BodyScene() {
   return (
-    <svg viewBox="0 0 980 500" role="img" aria-label="Sweat skin bacteria and body odour">
+    <ReviewedScienceDiagram site="PersonalHygieneExplorer.jsx:69"><svg viewBox="0 0 980 500" role="img" aria-label="Sweat skin bacteria and body odour">
       <g transform="translate(110 75)">
         <rect className="hyg-skin" x="0" y="95" width="300" height="180" rx="20"/>
         <path className="hyg-sweat-gland" d="M80 235q35-55 70 0t70 0q-35 50-70 0t-70 0Z"/>
@@ -82,7 +83,7 @@ function BodyScene() {
         <text className="hyg-label" x="150" y="325" textAnchor="middle">washing removes sweat and microbes</text>
       </g>
       <text className="hyg-small" x="490" y="455" textAnchor="middle">Fresh sweat has little odour. Bacterial breakdown of skin secretions contributes strongly to body odour.</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
@@ -112,7 +113,7 @@ function PersonalItemsScene() {
 
 function FoodHandlerScene() {
   return (
-    <svg viewBox="0 0 980 500" role="img" aria-label="Food handler hand hygiene preventing contamination">
+    <ReviewedScienceDiagram site="PersonalHygieneExplorer.jsx:115"><svg viewBox="0 0 980 500" role="img" aria-label="Food handler hand hygiene preventing contamination">
       <g transform="translate(65 75)">
         <path className="hyg-hand" d="M75 210V90q0-25 22-25t22 25v70V65q0-25 22-25t22 25v95V75q0-25 22-25t22 25v100V100q0-25 22-25t22 25v135q0 115-110 115Q75 350 75 210Z"/>
         {[105,145,190,225].map((x,i)=><circle className="hyg-bacteria" key={x} cx={x} cy={185+(i%2)*45} r="12"/>)}
@@ -126,7 +127,7 @@ function FoodHandlerScene() {
       </g>
       <path className="hyg-stop" d="M760 130L900 345M900 130L760 345"/>
       <text className="hyg-small" x="830" y="395" textAnchor="middle">hand washing breaks the transfer route</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 

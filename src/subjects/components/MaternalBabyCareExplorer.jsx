@@ -1,3 +1,4 @@
+import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import React, { useState } from "react";
 import "./maternalBabyCareExplorer.css";
 
@@ -46,7 +47,7 @@ const VIEWS = {
 
 function PrenatalScene() {
   return (
-    <svg viewBox="0 0 860 400" role="img" aria-label="Pre-natal care showing nutrition, clinic visits and ultrasound monitoring">
+    <ReviewedScienceDiagram site="MaternalBabyCareExplorer.jsx:49"><svg viewBox="0 0 860 400" role="img" aria-label="Pre-natal care showing nutrition, clinic visits and ultrasound monitoring">
       <circle className="mb-mother-head" cx="180" cy="95" r="42" />
       <path className="mb-mother-body" d="M130 150Q180 125 225 155Q275 210 250 320H115Q95 225 130 150Z" />
       <ellipse className="mb-pregnancy" cx="215" cy="235" rx="67" ry="78" />
@@ -60,13 +61,13 @@ function PrenatalScene() {
       <circle className="mb-food" cx="655" cy="250" r="28" />
       <text className="mb-label" x="180" y="365" textAnchor="middle">pregnancy</text>
       <text className="mb-label" x="610" y="355" textAnchor="middle">clinic checks + nutrition + monitoring</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function HazardScene() {
   return (
-    <svg viewBox="0 0 860 400" role="img" aria-label="Smoking and alcohol can reduce healthy foetal development">
+    <ReviewedScienceDiagram site="MaternalBabyCareExplorer.jsx:69"><svg viewBox="0 0 860 400" role="img" aria-label="Smoking and alcohol can reduce healthy foetal development">
       <g transform="translate(105 85)">
         <rect className="mb-cigarette" x="0" y="65" width="145" height="22" rx="9" />
         <path className="mb-smoke" d="M150 72q45-30 70 0t55-5" />
@@ -82,13 +83,13 @@ function HazardScene() {
         <path className="mb-foetus-body" d="M-30-10Q0 30 35 0Q55 60 10 100H-30Q-55 55-30-10Z" />
       </g>
       <text className="mb-warning-text" x="685" y="355" textAnchor="middle">harmful substances can cross the placenta</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function BreastfeedingScene() {
   return (
-    <svg viewBox="0 0 860 400" role="img" aria-label="Breastfeeding provides nutrients and antibodies to a baby">
+    <ReviewedScienceDiagram site="MaternalBabyCareExplorer.jsx:91"><svg viewBox="0 0 860 400" role="img" aria-label="Breastfeeding provides nutrients and antibodies to a baby">
       <circle className="mb-mother-head" cx="220" cy="95" r="42" />
       <path className="mb-mother-body" d="M155 160Q220 125 285 165Q310 230 295 330H145Q125 230 155 160Z" />
       <g transform="translate(350 210)">
@@ -101,13 +102,13 @@ function BreastfeedingScene() {
         <path className="mb-antibody" d="M-20 60V115m0-25l-30-25m30 25l30-25M35 55v60m0-30L5 60m30 25l30-25" />
       </g>
       <text className="mb-label" x="630" y="325" textAnchor="middle">nutrients + antibodies</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
 function PostnatalScene() {
   return (
-    <svg viewBox="0 0 860 400" role="img" aria-label="Post-natal care includes checks for mother and baby and childhood immunisation">
+    <ReviewedScienceDiagram site="MaternalBabyCareExplorer.jsx:110"><svg viewBox="0 0 860 400" role="img" aria-label="Post-natal care includes checks for mother and baby and childhood immunisation">
       <rect className="mb-clinic" x="70" y="65" width="720" height="270" rx="22" />
       <g transform="translate(170 130)">
         <circle className="mb-mother-head" cx="0" cy="0" r="35" />
@@ -126,7 +127,7 @@ function PostnatalScene() {
         <line className="mb-needle" x1="40" y1="0" x2="75" y2="0" />
       </g>
       <text className="mb-label" x="430" y="365" textAnchor="middle">recovery + feeding + growth + immunisation</text>
-    </svg>
+    </svg></ReviewedScienceDiagram>
   );
 }
 
