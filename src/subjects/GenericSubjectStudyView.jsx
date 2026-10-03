@@ -727,19 +727,27 @@ export default function GenericSubjectStudyView({
                         {section.topics.map(topic => {
                           const active = topic.id === activeTopicId;
                           const complete = completedTopicIds.has(topic.id);
+                          const locked = !isTopicUnlocked(structure, topic.id, completedTopicIds);
 
                           return (
                             <button
                               type="button"
                               key={topic.id}
-                              className={`${active ? "active" : ""} ${complete ? "complete" : ""}`}
+                              className={`${active ? "active" : ""} ${complete ? "complete" : ""} ${locked ? "locked" : ""}`}
                               onClick={() => openTopic(topic, section.id)}
                               aria-current={active ? "page" : undefined}
+                              disabled={locked}
+                              title={locked ? "Complete the earlier lessons to unlock this lesson." : undefined}
                             >
                               <span className="spark-generic-topic-state" aria-hidden="true">
                                 {complete ? (
                                   <svg viewBox="0 0 20 20" focusable="false">
                                     <path d="M5 10.5l3 3L15 7" />
+                                  </svg>
+                                ) : locked ? (
+                                  <svg viewBox="0 0 20 20" focusable="false">
+                                    <rect x="5.5" y="9" width="9" height="7" rx="1.5" />
+                                    <path d="M7.5 9V6.8a2.5 2.5 0 015 0V9" />
                                   </svg>
                                 ) : (
                                   <span className="spark-generic-topic-dot" />
@@ -771,25 +779,38 @@ export default function GenericSubjectStudyView({
                       </span>
                     </button>
                     <div className="spark-generic-outline-topics">
-                      {structure.unassignedTopics.map(topic => (
-                        <button
-                          type="button"
-                          key={topic.id}
-                          className={topic.id === activeTopicId ? "active" : ""}
-                          onClick={() => openTopic(topic, null)}
-                        >
-                          <span className="spark-generic-topic-state" aria-hidden="true">
-                            {completedTopicIds.has(topic.id) ? (
-                              <svg viewBox="0 0 20 20" focusable="false">
-                                <path d="M5 10.5l3 3L15 7" />
-                              </svg>
-                            ) : (
-                              <span className="spark-generic-topic-dot" />
-                            )}
-                          </span>
-                          <span>{topic.title}</span>
-                        </button>
-                      ))}
+                      {structure.unassignedTopics.map(topic => {
+                        const active = topic.id === activeTopicId;
+                        const complete = completedTopicIds.has(topic.id);
+                        const locked = !isTopicUnlocked(structure, topic.id, completedTopicIds);
+                        return (
+                          <button
+                            type="button"
+                            key={topic.id}
+                            className={`${active ? "active" : ""} ${complete ? "complete" : ""} ${locked ? "locked" : ""}`}
+                            onClick={() => openTopic(topic, null)}
+                            aria-current={active ? "page" : undefined}
+                            disabled={locked}
+                            title={locked ? "Complete the earlier lessons to unlock this lesson." : undefined}
+                          >
+                            <span className="spark-generic-topic-state" aria-hidden="true">
+                              {complete ? (
+                                <svg viewBox="0 0 20 20" focusable="false">
+                                  <path d="M5 10.5l3 3L15 7" />
+                                </svg>
+                              ) : locked ? (
+                                <svg viewBox="0 0 20 20" focusable="false">
+                                  <rect x="5.5" y="9" width="9" height="7" rx="1.5" />
+                                  <path d="M7.5 9V6.8a2.5 2.5 0 015 0V9" />
+                                </svg>
+                              ) : (
+                                <span className="spark-generic-topic-dot" />
+                              )}
+                            </span>
+                            <span>{topic.title}</span>
+                          </button>
+                        );
+                      })}
                     </div>
                   </section>
                 )}
