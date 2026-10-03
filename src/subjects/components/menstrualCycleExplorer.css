@@ -1,0 +1,45 @@
+.spark-menstrual-cycle{margin:28px 0;padding:20px;border:1px solid var(--spark-border,#d9e2ec);border-radius:16px;background:var(--spark-paper,#fff)}
+.spark-menstrual-cycle header>span{color:var(--spark-teal-dark,#087f73);font-size:11px;font-weight:900;letter-spacing:.05em}
+.spark-menstrual-cycle header h3{margin:4px 0 7px;color:var(--spark-ink,#102a43);font-size:20px}
+.spark-menstrual-cycle header p{margin:0;color:var(--spark-text-muted,#627d98);font-size:13px;line-height:1.6}
+.spark-menstrual-tabs{display:flex;gap:8px;margin:17px 0}
+.spark-menstrual-tabs button{min-height:42px;padding:0 14px;border:1px solid var(--spark-border,#d9e2ec);border-radius:9px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:11px;font-weight:850;cursor:pointer}
+.spark-menstrual-tabs button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}
+.spark-menstrual-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(250px,.75fr);gap:15px}
+.spark-menstrual-stage{overflow:hidden;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:14px;background:#f7f4f7}
+.spark-menstrual-stage svg{display:block;width:100%;height:auto}
+.spark-menstrual-stage .mc-ring-base{fill:none;stroke:#d9e1e7;stroke-width:34}
+.spark-menstrual-stage .mc-ring{fill:none;stroke-width:34;stroke-linecap:round}
+.spark-menstrual-stage .mc-ring.menstruation{stroke:#bd6b78}
+.spark-menstrual-stage .mc-ring.follicular{stroke:#d9aa65}
+.spark-menstrual-stage .mc-ring.luteal{stroke:#789d80}
+.spark-menstrual-stage .mc-ovulation-mark{fill:#f5cf5c;stroke:#9d7d21;stroke-width:4}
+.spark-menstrual-stage .mc-hand{stroke:#27465d;stroke-width:5;stroke-linecap:round}
+.spark-menstrual-stage .mc-day-marker{fill:#0d9488;stroke:#fff;stroke-width:5}
+.spark-menstrual-stage .mc-centre{fill:#fff;stroke:#cbd8e2;stroke-width:4}
+.spark-menstrual-stage .mc-centre-small{fill:#60778b;font-size:16px;font-weight:850}
+.spark-menstrual-stage .mc-centre-day{fill:#163b55;font-size:42px;font-weight:900}
+.spark-menstrual-stage .mc-label{fill:#29495f;font-size:15px;font-weight:900}
+.spark-menstrual-stage .mc-sub-label{fill:#597184;font-size:12px;font-weight:750}
+.spark-menstrual-grid aside{display:grid;align-content:start;gap:12px;padding:15px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:12px;background:var(--spark-bg,#f7fafc)}
+.spark-menstrual-grid aside label{display:grid;gap:7px}.spark-menstrual-grid aside label span{color:var(--spark-ink,#102a43);font-size:12px;font-weight:850}.spark-menstrual-grid aside input[type="range"]{width:100%}
+.spark-menstrual-day,.spark-menstrual-rule{display:grid;gap:5px;padding:12px;border-radius:10px;background:var(--spark-paper,#fff);border:1px solid var(--spark-border-soft,#edf2f7)}
+.spark-menstrual-day b,.spark-menstrual-rule b{color:var(--spark-teal-dark,#087f73);font-size:10px;text-transform:uppercase}.spark-menstrual-day strong{color:var(--spark-ink,#102a43);font-size:17px}.spark-menstrual-day p,.spark-menstrual-rule span{margin:0;color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.55}
+.spark-menstrual-stage .mc-axis{stroke:#536d80;stroke-width:3}.spark-menstrual-stage .mc-grid{stroke:#dbe3e8;stroke-width:2;stroke-dasharray:5 7}
+.spark-menstrual-stage .mc-axis-label,.spark-menstrual-stage .mc-axis-title{fill:#496579;font-size:13px;font-weight:800}
+.spark-menstrual-stage .mc-lining-area{fill:#e5a2ad;fill-opacity:.38}.spark-menstrual-stage .mc-lining-line{fill:none;stroke:#a85263;stroke-width:6}
+.spark-menstrual-stage .mc-oestrogen-line{fill:none;stroke:#c28a32;stroke-width:5}.spark-menstrual-stage .mc-progesterone-line{fill:none;stroke:#4c8961;stroke-width:5}
+.spark-menstrual-stage .mc-ovulation-line{stroke:#8c6c1c;stroke-width:3;stroke-dasharray:9 8}.spark-menstrual-stage .mc-ovulation-text{fill:#7a5d12;font-size:13px;font-weight:900}
+.spark-menstrual-stage .mc-legend-line{stroke-width:6}.spark-menstrual-stage .mc-legend-line.lining{stroke:#a85263}.spark-menstrual-stage .mc-legend-line.oestrogen{stroke:#c28a32}.spark-menstrual-stage .mc-legend-line.progesterone{stroke:#4c8961}.spark-menstrual-stage .mc-legend-text{fill:#38546a;font-size:12px;font-weight:800}
+.spark-menstrual-note-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
+.spark-menstrual-note-grid article{display:grid;gap:5px;padding:13px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:11px;background:var(--spark-bg,#f7fafc)}
+.spark-menstrual-note-grid b{color:var(--spark-teal-dark,#087f73);font-size:10px;text-transform:uppercase}.spark-menstrual-note-grid span{color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.55}
+html[data-theme="dark"] .spark-menstrual-cycle,body[data-theme="dark"] .spark-menstrual-cycle,.dark .spark-menstrual-cycle{background:#122b43;border-color:#2a4863}
+html[data-theme="dark"] .spark-menstrual-tabs button,body[data-theme="dark"] .spark-menstrual-tabs button,.dark .spark-menstrual-tabs button{background:#15314b;border-color:#39566e;color:#e7f2fb}
+html[data-theme="dark"] .spark-menstrual-tabs button.active,body[data-theme="dark"] .spark-menstrual-tabs button.active,.dark .spark-menstrual-tabs button.active{background:#164e4a;color:#d7fffa;border-color:#2dd4bf}
+html[data-theme="dark"] .spark-menstrual-stage,body[data-theme="dark"] .spark-menstrual-stage,.dark .spark-menstrual-stage{background:#f4f0f4;border-color:#39566e}
+html[data-theme="dark"] .spark-menstrual-grid aside,body[data-theme="dark"] .spark-menstrual-grid aside,.dark .spark-menstrual-grid aside,html[data-theme="dark"] .spark-menstrual-note-grid article,body[data-theme="dark"] .spark-menstrual-note-grid article,.dark .spark-menstrual-note-grid article{background:#0d2134;border-color:#29465f}
+html[data-theme="dark"] .spark-menstrual-day,body[data-theme="dark"] .spark-menstrual-day,.dark .spark-menstrual-day,html[data-theme="dark"] .spark-menstrual-rule,body[data-theme="dark"] .spark-menstrual-rule,.dark .spark-menstrual-rule{background:#15314b;border-color:#39566e}
+@media(max-width:850px){.spark-menstrual-grid{grid-template-columns:1fr}.spark-menstrual-note-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.spark-menstrual-cycle{padding:14px}.spark-menstrual-tabs{display:grid;grid-template-columns:1fr 1fr}.spark-menstrual-stage .mc-label{font-size:20px}.spark-menstrual-stage .mc-sub-label{font-size:17px}.spark-menstrual-stage .mc-axis-label,.spark-menstrual-stage .mc-axis-title,.spark-menstrual-stage .mc-legend-text,.spark-menstrual-stage .mc-ovulation-text{font-size:18px}}
+@media(max-width:390px){.spark-menstrual-tabs{grid-template-columns:1fr}}

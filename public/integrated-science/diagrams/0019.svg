@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" width="572.559" height="598.688" viewBox="0 0 572.559 598.688" overflow="visible" enable-background="new 0 0 572.559 598.688" xml:space="preserve">
+<rect x="-16.221" y="-105.156" fill="#FFFFFF" width="608" height="816"/>
+<ellipse fill="#FFC20E" stroke="#000000" stroke-width="2" cx="15.279" cy="246.765" rx="10.5" ry="11.422"/>
+<ellipse fill="#636466" stroke="#000000" stroke-width="2" cx="15.25" cy="188.015" rx="10.75" ry="11.328"/>
+<ellipse fill="#E4C3A8" stroke="#000000" stroke-width="2" cx="14.75" cy="323.516" rx="10.529" ry="11.672"/>
+<ellipse stroke="#BCBEC0" stroke-width="2" cx="15.39" cy="150.187" rx="11.89" ry="12.5"/>
+<ellipse fill="#8CC63F" stroke="#000000" stroke-width="2" cx="15.14" cy="93.015" rx="10.36" ry="10.672"/>
+<rect x="153" y="85.521" fill="none" stroke="#000000" stroke-width="5" width="395" height="496"/>
+<line fill="none" stroke="#393795" stroke-width="5" x1="312" y1="225.187" x2="311" y2="598.188"/>
+<line fill="none" stroke="#B21E3E" stroke-width="5" x1="350" y1="221.187" x2="350" y2="510.188"/>
+<g id="XMLID_1_">
+	<g>
+		<path fill="#EE9EA4" d="M363,136.187v91h-74v-91c0-13.82,17-25,38-25C346.9,111.187,363,122.367,363,136.187z"/>
+	</g>
+	<g>
+		<line fill="none" stroke="#000000" stroke-width="6" x1="363" y1="227.187" x2="363" y2="136.187"/>
+		<line fill="none" stroke="#000000" stroke-width="6" x1="289" y1="227.187" x2="363" y2="227.187"/>
+		<line fill="none" stroke="#000000" stroke-width="6" x1="289" y1="227.187" x2="289" y2="136.187"/>
+		<path fill="none" stroke="#000000" stroke-width="6" d="M289,136.187c0-13.82,17-25,38-25"/>
+		<path fill="none" stroke="#000000" stroke-width="6" d="M363,136.187c0-13.82-16.1-25-36-25"/>
+	</g>
+</g>
+<rect x="522" y="105.187" fill="none" width="48" height="450"/>
+<text transform="matrix(-1.346898e-010 1 -1 -1.346898e-010 557.1133 105.1875)" font-family="'ArialMT'" font-size="18">Second Floor</text>
+<text transform="matrix(-1.346898e-010 1 -1 -1.346898e-010 557.1133 212.2471)" fill="#FFFFFF" font-family="'ArialMT'" font-size="18">.............</text>
+<text transform="matrix(-1.346898e-010 1 -1 -1.346898e-010 557.1133 277.2588)" font-family="'ArialMT'" font-size="18">First Floor</text>
+<text transform="matrix(-1.346898e-010 1 -1 -1.346898e-010 557.1133 358.2588)" fill="#FFFFFF" font-family="'ArialMT'" font-size="18">...............</text>
+<text transform="matrix(-1.346898e-010 1 -1 -1.346898e-010 557.1133 433.2744)" font-family="'ArialMT'" font-size="18">Ground Floor</text>
+<rect x="11" y="87.187" fill="none" width="210.364" height="390.182"/>
+<text transform="matrix(1 0 0 1 11 98.6426)" fill="#ED1C24" font-family="'Arial-BoldMT'" font-size="16">1</text>
+<text transform="matrix(1 0 0 1 19.8979 98.6426)" font-family="'ArialMT'" font-size="16">  Solar Thermal </text>
+<text transform="matrix(1 0 0 1 11 117.8428)" font-family="'ArialMT'" font-size="16">Collector</text>
+<text transform="matrix(1 0 0 1 11 156.2432)" fill="#00ADEF" font-family="'Arial-BoldMT'" font-size="16">2</text>
+<text transform="matrix(1 0 0 1 19.8979 156.2432)" fill="#00ADEF" font-family="'Arial-ItalicMT'" font-size="16"> </text>
+<text transform="matrix(1 0 0 1 24.3442 156.2432)" font-family="'ArialMT'" font-size="16"> Primary Circuit</text>
+<text transform="matrix(1 0 0 1 11 194.6426)" fill="#FFF200" font-family="'Arial-BoldMT'" font-size="16">3</text>
+<text transform="matrix(1 0 0 1 19.8979 194.6426)" fill="#006E3A" font-family="'Arial-BoldMT'" font-size="16"> </text>
+<text transform="matrix(1 0 0 1 24.3442 194.6426)" font-family="'ArialMT'" font-size="16"> Water Storage </text>
+<text transform="matrix(1 0 0 1 11 213.8428)" font-family="'ArialMT'" font-size="16">Tank</text>
+<text transform="matrix(1 0 0 1 11 252.2432)" fill="#2E3192" font-family="'Arial-BoldMT'" font-size="16">4 </text>
+<text transform="matrix(1 0 0 1 24.3442 252.2432)" font-family="'ArialMT'" font-size="16"> Pump, actuator, </text>
+<text transform="matrix(1 0 0 1 11 271.4434)" font-family="'ArialMT'" font-size="16">controller and </text>
+<text transform="matrix(1 0 0 1 11 290.6426)" font-family="'ArialMT'" font-size="16">other parts.</text>
+<text transform="matrix(1 0 0 1 11 329.043)" fill="#971B1E" font-family="'Arial-BoldMT'" font-size="16">5 </text>
+<text transform="matrix(1 0 0 1 24.3442 329.043)" font-family="'ArialMT'" font-size="16"> Water Heater</text>
+<line fill="none" x1="229" y1="42.187" x2="229" y2="83.187"/>
+<line fill="none" stroke="#7A7A7B" stroke-width="3" x1="195" y1="23.187" x2="195" y2="71.187"/>
+<line fill="none" stroke="#666667" stroke-width="5" x1="195.75" y1="71.437" x2="211.5" y2="85.687"/>
+<line fill="none" stroke="#666667" stroke-width="5" x1="194.875" y1="71.375" x2="176.125" y2="86"/>
+<line fill="none" stroke="#4F504F" stroke-width="5" x1="144" y1="43.187" x2="218" y2="2.187"/>
+<line fill="none" stroke="#B21E3E" stroke-width="5" x1="147" y1="49.187" x2="222" y2="9.187"/>
+<rect x="161" y="156.187" width="17" height="34"/>
+<line fill="none" stroke="#B21E3E" stroke-width="5" x1="215" y1="14.187" x2="215" y2="177.187"/>
+<line fill="none" stroke="#B21E3E" stroke-width="5" x1="212" y1="177.187" x2="336" y2="177.187"/>
+<line fill="none" stroke="#AF1F81" stroke-width="5" x1="336" y1="177.187" x2="324" y2="188.187"/>
+<line fill="none" stroke="#963A96" stroke-width="5" x1="324" y1="188.187" x2="335" y2="194.187"/>
+<line fill="none" stroke="#6E3A96" stroke-width="5" x1="335" y1="194.187" x2="326" y2="202.187"/>
+<line fill="none" stroke="#623996" stroke-width="5" x1="326" y1="202.187" x2="336" y2="209.187"/>
+<line fill="none" stroke="#393795" stroke-width="5" x1="336" y1="209.187" x2="167" y2="209.187"/>
+<line fill="none" stroke="#393795" stroke-width="5" x1="169" y1="209.187" x2="169" y2="39.187"/>
+<line fill="none" stroke="#B21E3E" stroke-width="5" x1="347" y1="510.188" x2="429" y2="510.188"/>
+<line fill="#FFFFFF" stroke="#C0272D" stroke-width="5" x1="350" y1="386.188" x2="429" y2="386.188"/>
+<line fill="none" x1="153" y1="235.187" x2="546" y2="235.187"/>
+<circle fill="#808284" stroke="#000000" stroke-width="2" cx="369.5" cy="107.687" r="12.5"/>
+<line fill="none" stroke="#000000" stroke-width="5" x1="152" y1="410.188" x2="545" y2="410.188"/>
+<g id="XMLID_2_">
+	<g>
+		<path fill="#F9BABF" d="M511,381.188l0.92,0.199c-4.29,10.2-20.97,17.801-40.92,17.801c-25.72,0-47.37-8.029-53.95-19L511,381.188    z"/>
+	</g>
+	<g>
+		<path fill="none" stroke="#000000" stroke-width="5" d="M415,373.188c0,2.42,0.71,4.771,2.05,7c6.58,10.971,28.23,19,53.95,19"/>
+		<path fill="none" stroke="#000000" stroke-width="5" d="M513,376.188c0,1.789-0.37,3.529-1.08,5.199    c-4.29,10.2-20.97,17.801-40.92,17.801"/>
+		<polyline fill="none" stroke="#000000" points="511,381.188 417.05,380.188 417,380.188   "/>
+	</g>
+</g>
+<line fill="none" stroke="#000000" stroke-width="3" x1="431.5" y1="393.563" x2="416.5" y2="409.813"/>
+<line fill="none" stroke="#000000" stroke-width="3" x1="493" y1="396.188" x2="509" y2="410.188"/>
+<rect x="430" y="504.188" fill="#FFFFFF" stroke="#000000" stroke-width="4" width="60" height="76"/>
+<ellipse fill="#FFFFFF" stroke="#000000" stroke-width="4" cx="459.5" cy="535.688" rx="20.5" ry="21.5"/>
+<line fill="none" stroke="#000000" stroke-width="2" x1="469" y1="530.188" x2="469" y2="540.188"/>
+<line fill="none" stroke="#393795" stroke-width="5" x1="313" y1="596.188" x2="247" y2="596.188"/>
+<line fill="none" stroke="#E12D5D" stroke-width="5" x1="343" y1="135.187" x2="523" y2="134.187"/>
+<line fill="none" stroke="#E02356" stroke-width="5" x1="520.5" y1="132.187" x2="520.5" y2="198.187"/>
+<line fill="none" stroke="#DD2656" stroke-width="5" x1="342.188" y1="134.406" x2="352.813" y2="143.968"/>
+<line fill="none" stroke="#C92651" stroke-width="5" x1="353" y1="144.187" x2="344" y2="152.187"/>
+<line fill="none" stroke="#B21E3E" stroke-width="5" x1="343.25" y1="151.5" x2="351.75" y2="157.875"/>
+<line fill="none" stroke="#B21E3E" stroke-width="5" x1="352.75" y1="157.437" x2="344.25" y2="165.937"/>
+<line fill="none" stroke="#B21E3E" stroke-width="5" x1="344.25" y1="165.937" x2="484" y2="165.187"/>
+<line fill="none" stroke="#B21E3E" stroke-width="5" x1="484" y1="162.375" x2="484" y2="200.187"/>
+<line fill="none" stroke="#000000" stroke-width="5" x1="431" y1="185.187" x2="533" y2="185.187"/>
+<path fill="none" stroke="#F7931D" stroke-width="9" d="M450,222.187c1.603-0.061,2.989-0.371,4.5-1"/>
+<line fill="#ED1C24" stroke="#E02356" stroke-width="5" x1="449" y1="217.187" x2="449" y2="224.687"/>
+<line fill="none" stroke="#000000" stroke-width="5" x1="533" y1="182.187" x2="533" y2="228.187"/>
+<line fill="none" stroke="#000000" stroke-width="5" x1="434" y1="225.187" x2="434" y2="183.187"/>
+<path fill="none" stroke="#F7931D" stroke-width="9" d="M464,223.187c-0.931-0.344-1.908-0.931-2.5-1.5"/>
+<path fill="none" stroke="#F7931D" stroke-width="9" d="M455,208.187c0,3.545,1.535,11.014,0,13.5"/>
+<path fill="none" stroke="#F7931D" stroke-width="9" d="M453,222.187c0.916,0.197,1.784,0.04,2.5-0.5"/>
+<path fill="#ED1C24" stroke="#E02356" stroke-width="5" d="M460,195.187c0,6.08-2.236,11-5,11"/>
+<path fill="none" stroke="#F7931D" stroke-width="9" d="M462.5,221.187c-1.813-0.551-3.787-1.365-5.5-2"/>
+<path fill="none" stroke="#F7931D" stroke-width="9" d="M463,222.187c-0.517-0.333-1.081-0.885-1.5-1.5"/>
+<path fill="none" stroke="#F7931D" stroke-width="9" d="M457.5,206.687c0.448,0.731,0.903,2.284,1,3.5"/>
+<g id="XMLID_3_">
+	<g>
+		<path fill="none" stroke="#E02356" stroke-width="5" d="M460,195.187c0,16.58,4.92,30,11,30"/>
+		<polyline fill="none" stroke="#000000" stroke-width="5" points="533,225.187 471,225.187 431,225.187   "/>
+		<path fill="none" stroke="#E02356" stroke-width="5" d="M449,217.187c0-6.08,2.68-11,6-11"/>
+	</g>
+</g>
+<circle fill="#8CC63F" stroke="#000000" stroke-width="2" cx="147.5" cy="20.687" r="12.5"/>
+<circle stroke="#BCBEC0" stroke-width="2" cx="237.5" cy="31.687" r="12.5"/>
+<polygon fill="none" points="184,43.187 142,43.187 141,13.187 183,13.187 "/>
+<text transform="matrix(1 0 0 1 141.4297 26.0742)" fill="#ED1C24" font-family="'Arial-BoldMT'" font-size="18">1</text>
+<rect x="233" y="25.187" fill="none" width="45" height="30"/>
+<text transform="matrix(1 0 0 1 233 38.0742)" fill="#00ADEF" font-family="'Arial-BoldMT'" font-size="18">2</text>
+<circle fill="#E4C3A8" stroke="#000000" stroke-width="2" cx="499.5" cy="204.687" r="12.5"/>
+<ellipse fill="#FFC20E" stroke="#000000" stroke-width="2" cx="185.39" cy="143.594" rx="10.89" ry="11.25"/>
+<rect x="365" y="101.187" fill="none" width="42" height="24"/>
+<text transform="matrix(1 0 0 1 365 114.0742)" fill="#FFF200" font-family="'Arial-BoldMT'" font-size="18">3</text>
+<text transform="matrix(1 0 0 1 495 211.1875)" fill="#C0272D" font-family="'Arial-BoldMT'" font-size="18">5</text>
+<rect x="179" y="136.187" fill="none" width="37" height="48"/>
+<text transform="matrix(1 0 0 1 179.5 149.0742)" fill="#2E3192" font-family="'Arial-BoldMT'" font-size="18">4</text>
+<line fill="none" stroke="#000000" stroke-width="5" x1="153.667" y1="235.521" x2="546.667" y2="235.521"/>
+</svg>

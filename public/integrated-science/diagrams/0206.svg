@@ -1,0 +1,129 @@
+<svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" sodipodi:docname="what-happens-if-string-breaks.svg" inkscape:version="1.1 (c68e22c387, 2021-05-23)" id="svg8" version="1.1" viewBox="0 0 74.744789 62.555058" height="62.555058mm" width="74.744789mm">
+  <defs id="defs2">
+    <radialGradient gradientUnits="userSpaceOnUse" fy="5.9999995" fx="4.4999995" r="22.5" cy="5.9999995" cx="4.4999995" id="radialGradient218" xlink:href="#white_spot" inkscape:collect="always"/>
+    <radialGradient r="0.75" cy="0.69999999" cx="0.64999998" id="white_spot">
+      <stop id="stop6" stop-opacity="0.7" offset="0" stop-color="#ffffff"/>
+      <stop id="stop8" stop-opacity="0.5" offset="0.1" stop-color="#ffffff"/>
+      <stop id="stop10" stop-opacity="0" offset="0.6" stop-color="#ffffff"/>
+      <stop id="stop12" stop-opacity="0" offset="0.6" stop-color="#000000"/>
+      <stop id="stop14" stop-opacity="0.05" offset="0.75" stop-color="#000000"/>
+      <stop id="stop16" stop-opacity="0.15" offset="0.85" stop-color="#000000"/>
+      <stop id="stop18" stop-opacity="0.5" offset="1" stop-color="#000000"/>
+    </radialGradient>
+    <radialGradient r="22.5" fy="5.9999995" fx="4.4999995" cy="5.9999995" cx="4.4999995" gradientUnits="userSpaceOnUse" id="radialGradient1129" xlink:href="#white_spot" inkscape:collect="always"/>
+    <radialGradient r="22.5" fy="5.9999995" fx="4.4999995" cy="5.9999995" cx="4.4999995" gradientUnits="userSpaceOnUse" id="radialGradient1141" xlink:href="#white_spot" inkscape:collect="always"/>
+    <radialGradient r="22.5" fy="5.9999995" fx="4.4999995" cy="5.9999995" cx="4.4999995" gradientUnits="userSpaceOnUse" id="radialGradient1153" xlink:href="#white_spot" inkscape:collect="always"/>
+  </defs>
+  <sodipodi:namedview fit-margin-bottom="0" fit-margin-right="0" fit-margin-left="0" fit-margin-top="0" inkscape:window-maximized="1" inkscape:window-y="-12" inkscape:window-x="118" inkscape:window-height="2120" inkscape:window-width="3710" inkscape:snap-object-midpoints="true" showgrid="false" inkscape:document-rotation="0" inkscape:current-layer="layer1" inkscape:document-units="mm" inkscape:cy="169.20055" inkscape:cx="97.732259" inkscape:zoom="3.959798" inkscape:pageshadow="2" inkscape:pageopacity="0.0" borderopacity="1.0" bordercolor="#666666" pagecolor="#ffffff" id="base" inkscape:pagecheckerboard="0"/>
+  <metadata id="metadata5">
+    <rdf:rdf>
+      <cc:work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/"/>
+        <dc:date>2021-05-27</dc:date>
+        <dc:creator>
+          <cc:agent>
+            <dc:title>Michael A. Rundel</dc:title>
+          </cc:agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:agent>
+            <dc:title>CC BY-SA 4.0</dc:title>
+          </cc:agent>
+        </dc:rights>
+        <dc:subject>
+          <rdf:bag>
+            <rdf:li>physics circular motion</rdf:li>
+          </rdf:bag>
+        </dc:subject>
+        <dc:description>Which path traces a circular moving object when the string breaks.</dc:description>
+      </cc:work>
+      <cc:license rdf:about="http://creativecommons.org/licenses/by-sa/4.0/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:requires rdf:resource="http://creativecommons.org/ns#Notice"/>
+        <cc:requires rdf:resource="http://creativecommons.org/ns#Attribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+        <cc:requires rdf:resource="http://creativecommons.org/ns#ShareAlike"/>
+      </cc:license>
+    </rdf:rdf>
+  </metadata>
+  <g transform="translate(-14.12686,-11.008556)" id="layer1" inkscape:groupmode="layer" inkscape:label="Ebene 1">
+    <rect y="11.008556" x="14.12686" height="62.555058" width="74.744789" id="rect1176" style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.3;stroke-miterlimit:10;stroke-dasharray:0.6, 0.6;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000"/>
+    
+    <circle transform="rotate(26.679822)" r="18.284597" cy="20.857279" cx="51.40789" id="path863" style="opacity:1;fill:none;stroke:#000000;stroke-width:0.3;stroke-miterlimit:10;stroke-dasharray:0.6, 0.6;stroke-dashoffset:0;stop-color:#000000"/>
+    <g transform="matrix(0.20010385,0,0,0.20010385,-1.9729349,-17.103017)" style="fill:#ffffff" id="g298" clip-path="url(#clip21)">
+      <g style="fill:#ffffff" id="g296" stroke="#000000" stroke-opacity="1" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path style="fill:#ffffff" id="path290" d="m 276,340 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z"/>
+        <title id="title292">Punkt C</title>
+        <desc id="desc294">C = (1.12, -0.5)</desc>
+      </g>
+      <!-- drawing style -->
+    </g>
+    
+    <g transform="rotate(-149.12584,49.848265,61.436754)" id="g967">
+      <g clip-path="url(#clip12)" id="g955" style="fill:#f5c211;stroke:#f5c211" transform="matrix(0.20010385,0,0,0.20010385,-1.05534,3.65252)">
+        <g stroke-linejoin="round" stroke-width="4.5" stroke-linecap="round" fill="none" stroke-opacity="1" stroke="#0099cc" id="g953" style="fill:#f5c211;stroke:#f5c211">
+          <path d="M 271,340 V 463" id="path947" style="fill:#f5c211;stroke:#f5c211"/>
+          <title id="title949">Vektor a</title>
+          <desc id="desc951">Vektor a: Vektor(C, E)</desc>
+        </g>
+        <!-- drawing style -->
+      </g>
+      <g clip-path="url(#clip13)" id="g965" style="fill:#f4bf10;fill-opacity:1" transform="matrix(0.20010385,0,0,0.20010385,-1.05534,3.65252)">
+        <g fill-opacity="1" fill-rule="evenodd" stroke="none" fill="#0099cc" id="g963" style="fill:#f4bf10;fill-opacity:1">
+          <path d="m 271,490 -6.75,-27 h 13.5 z" id="path957" style="fill:#f4bf10;fill-opacity:1"/>
+          <title id="title959">Vektor a</title>
+          <desc id="desc961">Vektor a: Vektor(C, E)</desc>
+        </g>
+        <!-- drawing style -->
+      </g>
+    </g>
+    
+    
+    
+    <g inkscape:transform-center-y="5.5057075" inkscape:transform-center-x="-8.7281251" id="g1117">
+      <path sodipodi:nodetypes="cc" transform="scale(0.26458333)" d="m 171.22023,176.78349 c 5.14851,12.03788 20.41593,3.13838 26.45701,15.31417" style="fill:none;stroke:#000000;stroke-width:0.755906;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" id="path1111"/>
+      <path sodipodi:nodetypes="cc" transform="scale(0.26458333)" d="m 138.21428,157.67858 c 6.0354,9.23025 17.62664,2.81522 26.43996,15.94818" style="fill:none;stroke:#000000;stroke-width:0.755906;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" id="path1157"/>
+      <g transform="matrix(-0.12303402,0,0,-0.12303402,52.255208,50.932292)" id="charge2" style="stroke-width:1.62557;stroke-miterlimit:4;stroke-dasharray:none">
+        <circle id="circle201" r="14" cy="0" cx="0" style="fill:#800080;fill-opacity:1;stroke:none;stroke-width:1.62557;stroke-miterlimit:4;stroke-dasharray:none"/>
+        <circle id="circle203" style="fill:url(#radialGradient218);stroke:#000000;stroke-width:1.62557;stroke-miterlimit:4;stroke-dasharray:none" r="14" cy="0" cx="-6.9857936e-07"/>
+      </g>
+    </g>
+    <g style="opacity:0.800878" transform="rotate(30,36.545314,41.681239)" id="g1127" inkscape:transform-center-x="-5.3519276" inkscape:transform-center-y="8.8169102">
+      <path id="path1119" d="m 36.569194,41.719124 c 15.732908,9.106715 15.732908,9.106715 15.732908,9.106715" style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+      <g style="stroke-width:1.62557;stroke-miterlimit:4;stroke-dasharray:none" id="g1125" transform="matrix(-0.12303402,0,0,-0.12303402,52.255208,50.932292)">
+        <circle style="fill:#800080;fill-opacity:1;stroke:none;stroke-width:1.62557;stroke-miterlimit:4;stroke-dasharray:none" cx="0" cy="0" r="14" id="circle1121"/>
+        <circle cx="-6.9857936e-07" cy="0" r="14" style="fill:url(#radialGradient1129);stroke:#000000;stroke-width:1.62557;stroke-miterlimit:4;stroke-dasharray:none" id="circle1123"/>
+      </g>
+    </g>
+    <g style="opacity:0.387994" inkscape:transform-center-y="9.9963966" inkscape:transform-center-x="0.15669982" id="g1139" transform="rotate(60,36.502164,41.690039)">
+      <path style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="m 36.569194,41.719124 c 15.732908,9.106715 15.732908,9.106715 15.732908,9.106715" id="path1131"/>
+      <g transform="matrix(-0.12303402,0,0,-0.12303402,52.255208,50.932292)" id="g1137" style="stroke-width:1.62557;stroke-miterlimit:4;stroke-dasharray:none">
+        <circle id="circle1133" r="14" cy="0" cx="0" style="fill:#800080;fill-opacity:1;stroke:none;stroke-width:1.62557;stroke-miterlimit:4;stroke-dasharray:none"/>
+        <circle id="circle1135" style="fill:url(#radialGradient1141);stroke:#000000;stroke-width:1.62557;stroke-miterlimit:4;stroke-dasharray:none" r="14" cy="0" cx="-6.9857936e-07"/>
+      </g>
+    </g>
+    <g style="opacity:0.14202" transform="rotate(90,36.518089,41.711526)" id="g1151" inkscape:transform-center-x="5.5057073" inkscape:transform-center-y="8.7281248">
+      <path id="path1143" d="m 36.569194,41.719124 c 15.732908,9.106715 15.732908,9.106715 15.732908,9.106715" style="fill:none;stroke:#000000;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+      <g style="stroke-width:1.62557;stroke-miterlimit:4;stroke-dasharray:none" id="g1149" transform="matrix(-0.12303402,0,0,-0.12303402,52.255208,50.932292)">
+        <circle style="fill:#800080;fill-opacity:1;stroke:none;stroke-width:1.62557;stroke-miterlimit:4;stroke-dasharray:none" cx="0" cy="0" r="14" id="circle1145"/>
+        <circle cx="-6.9857936e-07" cy="0" r="14" style="fill:url(#radialGradient1153);stroke:#000000;stroke-width:1.62557;stroke-miterlimit:4;stroke-dasharray:none" id="circle1147"/>
+      </g>
+    </g>
+    <g clip-path="url(#clip21)" id="g887" style="fill:#ffffff;stroke-width:1.42964" transform="matrix(0.13996821,0,0,0.13996821,-1.3617125,-5.8695831)">
+      <g stroke-linejoin="round" stroke-linecap="round" fill="none" stroke-opacity="1" stroke="#000000" id="g885" style="fill:#ffffff;stroke-width:2.04386">
+        <path d="m 276,340 c 0,2.76 -2.24,5 -5,5 -2.76,0 -5,-2.24 -5,-5 0,-2.76 2.24,-5 5,-5 2.76,0 5,2.24 5,5 z" id="path879" style="fill:#ffffff;stroke-width:1.42964"/>
+        <title id="title881">Punkt C</title>
+        <desc id="desc883">C = (1.12, -0.5)</desc>
+      </g>
+      <!-- drawing style -->
+    </g>
+    
+    
+    
+    
+    
+  </g>
+</svg>

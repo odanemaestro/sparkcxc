@@ -1,0 +1,11 @@
+.spark-reference-label-activity .spark-label-diagram-mobile-targets{display:grid;grid-column:1/-1;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:10px}
+.spark-reference-label-activity .spark-label-diagram-mobile-targets button{display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px;text-align:left;padding:12px;background:#fff;color:#183747;border:1px solid #9eb9c4;border-radius:8px}
+.spark-reference-label-activity .spark-label-diagram-mobile-targets button>strong{grid-column:1/-1}
+.spark-reference-label-activity .spark-label-diagram-mobile-targets button small{font-size:14px;line-height:1.5}
+.spark-reference-label-activity .spark-label-diagram-mobile-key-title{grid-column:1/-1}
+.spark-reference-label-activity .spark-label-diagram-mobile-targets button.correct{border-color:#0d9488;background:#d9fbf4}
+.spark-reference-label-activity .spark-label-diagram-mobile-targets button.incorrect{border-color:#c2414d;background:#fff1f2}
+.spark-reference-label-activity .spark-label-diagram-mobile-targets button.hint{outline:3px solid #ddab33}
+.spark-science-controls{display:flex;flex-wrap:wrap;gap:8px;padding:12px}
+.spark-science-controls button{padding:10px;border:1px solid #8babb8;border-radius:6px;background:#f1f8fa;color:#183747;text-align:left;cursor:pointer}
+.spark-science-controls button[aria-pressed=true]{border-color:#087b83;background:#d9f6ef}

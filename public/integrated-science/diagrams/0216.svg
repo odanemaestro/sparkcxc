@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 744 556">
+ <defs>
+  <radialGradient id="b" cx="113.6" cy="127.7" r="51.5" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#ff4600" offset="0"/>
+   <stop stop-color="#ff8200" offset=".5"/>
+   <stop stop-color="#fff300" offset="1"/>
+  </radialGradient>
+  <linearGradient id="a" x1="201.5" x2="201.5" y2="607.3" gradientTransform="matrix(2.03 0 0 1 -34.95 -14.71)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#729fcf" offset="0"/>
+   <stop stop-color="#3465a4" offset="1"/>
+  </linearGradient>
+ </defs>
+ <path d="M-1e3-1e3h3e3V2e3H-1e3z" fill="url(#a)" fill-rule="evenodd" opacity=".8"/>
+ <rect x="202.5" y="351.7" width="268.7" height="4" ry="0" fill="#ffd13f"/>
+ <circle transform="matrix(1.22 0 0 1.22 -64.09 -90.81)" cx="113.6" cy="127.7" r="51.5" fill="url(#b)"/>
+ <ellipse cx="371.92" cy="724.63" rx="721.67" ry="313.71" fill="#decd87"/>
+ <path d="M41 129l130.5 334.6-35.3 14L218 501l36.7-65.6-27.5 8.4-9.2-23.2 8.8-3.2L376 133l12 5-9.5-22.7-23.3 6.4 14.5 7L222 407.4l-19.5-51.8 103.4-212 21 9.5-19-38-40.7 10.7 20.8 10L208.5 299 191 257h13.3l-15.5-40 40.5-81.2 20 7-16.4-30.3-32.7 10.6 19 8.3-30 60.7L145 76.4s-14 83-104 52.4z" fill="#fffc40" fill-rule="evenodd"/>
+ <g fill="#ffd13f">
+  <path d="M190.6 257h141.8v-10l15.2 15.2-15.3 15.2V267H195z" fill-rule="evenodd"/>
+  <path d="M305.2 257h229.3v10H305.2z"/>
+  <path d="m573.3 322.2-47.8-57 9-7.6 47.8 57z"/>
+ </g>
+ <path d="M398 464l32.5-63.2-10.7-5.5 18-6.2 10.4-22h19.3l2.7-5.5-3.6-9.8L508 267l-5-10 54.5-113-17.4-8.4 72-22.8 29 66.5-20-8.5-57.6 120.8-13.8 2.4L501 394l9.3 20.8-15-6.2-38 73.6h-29.5l44-83.6-14.6-7 23.2-6.5 6.7-15.3-7-4-5.2 9.8h-18.3l-8.7 16.7 7.5 19-13.5-6.2-30.4 59.6z" fill="#ea3939" fill-rule="evenodd"/>
+ <path d="M492.5 504H469l98.3-189h15.5l91-180.7-13.4-5.8 23-7 11.3 21.3-13.3-5z" fill="#ea3939" fill-rule="evenodd"/>
+ <path d="M437 495c0 .7-46 58-46.4 58.4s-14-92-13.6-93.7 60 35 60 35.4z" fill="#ffd13f"/>
+ <path d="m246.2 473.4s63 23 134 5l8.6 57.2s-76 22-154.4-5.7z" fill="#ffd13f" fill-rule="evenodd"/>
+ <path d="M468.5 438.2l81.8 17.6M503 188.4l48.7 21.3M405.7 397l27.3 12.5m171.4-130.7h25m-56 37.7l12.2 24.6" fill="none" stroke="#000"/>
+ <path d="M204.2 351.7h129v-4l15 6-15 6.2v-4.4H202.7z" fill="#ffd13f" fill-rule="evenodd"/>
+ <switch>
+  <g systemLanguage="de">
+   <text x="373.6" y="35.1" text-anchor="middle"><tspan x="373.6" y="35.1" font-size="30">ENERGIEBILANZ DER ERDE</tspan></text>
+   <g font-size="16">
+    <text x="115.7" y="153.8" text-anchor="middle"><tspan x="115.7" y="153.8">Empfangene</tspan>
+     <tspan x="115.7" y="173.8">Sonnen-</tspan>
+     <tspan x="115.7" y="193.8">strahlung</tspan>
+     <tspan x="115.7" y="213.8">100%</tspan></text>
+    <text x="251.2" y="64.9" text-anchor="end"><tspan x="251.2" y="64.9">Reflektiert an</tspan>
+     <tspan x="251.2" y="84.9">der Atmos-</tspan>
+     <tspan x="251.2" y="104.9">phäre 6%</tspan></text>
+    <text x="311.9" y="64.9" text-anchor="middle"><tspan x="311.9" y="64.9">Reflektiert</tspan>
+     <tspan x="311.9" y="84.9">an Wolken</tspan>
+     <tspan x="311.9" y="104.9">20%</tspan></text>
+   </g>
+   <text x="368.3" y="64.9" font-size="16"><tspan x="368.3" y="64.9">Reflektiert an</tspan>
+    <tspan x="368.3" y="84.9">der Oberfläche</tspan>
+    <tspan x="368.3" y="104.9">4%</tspan></text>
+   <text x="596.4" y="111.9"><tspan x="596.4" y="111.9" font-size="16">64%</tspan></text>
+   <text x="680.2" y="111.9"><tspan x="680.2" y="111.9" font-size="16">6%</tspan></text>
+   <g text-anchor="middle">
+    <text x="423.2" y="231.6" font-size="16"><tspan x="423.2" y="231.6">Von der Atmosphäre</tspan>
+     <tspan x="423.2" y="251.6">absorbiert 16%</tspan></text>
+    <text x="319.3" y="500.6" font-size="14.6"><tspan x="319.3" y="500.6">Von Ozeanen</tspan>
+     <tspan x="319.3" y="518.8">und Land absorbiert</tspan>
+     <tspan x="319.3" y="537">51%</tspan></text>
+    <text x="639.4" y="462.4" font-size="16"><tspan x="639.4" y="462.4">Durch latente Wärme</tspan>
+     <tspan x="639.4" y="482.4">in Wasserdampf an</tspan>
+     <tspan x="639.4" y="502.4">die Atmosphäre und</tspan>
+     <tspan x="639.4" y="522.4">an Wolken übertragen</tspan>
+     <tspan x="639.4" y="542.4">23%</tspan></text>
+    <text x="651.8" y="338.2" font-size="16"><tspan x="651.8" y="338.2">Von der Atmos-</tspan>
+     <tspan x="651.8" y="358.2">phäre absorbierte</tspan>
+     <tspan x="651.8" y="378.2">Wärmestrahlung</tspan>
+     <tspan x="651.8" y="398.2">15%</tspan></text>
+   </g>
+   <text transform="scale(.97 1.03)" x="649.9" y="237.9" font-size="14.9"><tspan x="649.9" y="237.9">Direkte Aus-</tspan>
+    <tspan x="649.9" y="256.5">strahlung der</tspan>
+    <tspan x="649.9" y="275.2">Oberfläche</tspan></text>
+   <g font-size="16">
+    <text x="403.4" y="151.9"><tspan x="403.4" y="151.9">Ausstrahlung von</tspan>
+     <tspan x="403.4" y="171.9">Wolken und der</tspan>
+     <tspan x="403.4" y="191.9">Atmosphäre</tspan></text>
+    <text x="334.7" y="383.2" text-anchor="middle"><tspan x="334.7" y="383.2">Wärme und auf-</tspan>
+     <tspan x="334.7" y="403.2">steigende Luft 7%</tspan></text>
+    <text x="373.4" y="325.7" text-anchor="middle"><tspan x="373.4" y="325.7">Von Wolken</tspan>
+     <tspan x="373.4" y="345.7">absorbiert 3%</tspan></text>
+   </g>
+  </g>
+  <g>
+   <text x="373.6" y="35.1" text-anchor="middle"><tspan x="373.6" y="35.1" font-size="30">EARTH'S ENERGY BUDGET</tspan></text>
+   <g font-size="16">
+    <text x="115.7" y="153.8" text-anchor="middle"><tspan x="115.7" y="153.8">Incoming</tspan>
+     <tspan x="115.7" y="173.8">solar</tspan>
+     <tspan x="115.7" y="193.8">energy</tspan>
+     <tspan x="115.7" y="213.8">100%</tspan></text>
+    <text x="251.2" y="64.9" text-anchor="end"><tspan x="251.2" y="64.9">Reflected by</tspan>
+     <tspan x="251.2" y="84.9">atmosphere</tspan>
+     <tspan x="251.2" y="104.9">6%</tspan></text>
+    <text x="311.9" y="64.9" text-anchor="middle"><tspan x="311.9" y="64.9">Reflected</tspan>
+     <tspan x="311.9" y="84.9">by clouds</tspan>
+     <tspan x="311.9" y="104.9">20%</tspan></text>
+   </g>
+   <text x="368.3" y="64.9" font-size="16"><tspan x="368.3" y="64.9">Reflected from</tspan>
+    <tspan x="368.3" y="84.9">earth's surface</tspan>
+    <tspan x="368.3" y="104.9">4%</tspan></text>
+   <text x="596.4" y="111.9"><tspan x="596.4" y="111.9" font-size="16">64%</tspan></text>
+   <text x="680.2" y="111.9"><tspan x="680.2" y="111.9" font-size="16">6%</tspan></text>
+   <g text-anchor="middle">
+    <text x="423.2" y="231.6" font-size="16"><tspan x="423.2" y="231.6">Absorbed by</tspan>
+     <tspan x="423.2" y="251.6">atmosphere 16%</tspan></text>
+    <text x="319.3" y="500.6" font-size="14.6"><tspan x="319.3" y="500.6">Absorbed by land</tspan>
+     <tspan x="319.3" y="518.8">and oceans</tspan>
+     <tspan x="319.3" y="537">51%</tspan></text>
+    <text x="639.4" y="462.4" font-size="16"><tspan x="639.4" y="462.4">Carried to clouds</tspan>
+     <tspan x="639.4" y="482.4">and atmosphere by</tspan>
+     <tspan x="639.4" y="502.4">latent heat in</tspan>
+     <tspan x="639.4" y="522.4">water vapor</tspan>
+     <tspan x="639.4" y="542.4">23%</tspan></text>
+    <text x="651.8" y="338.2" font-size="16"><tspan x="651.8" y="338.2">Radiation</tspan>
+     <tspan x="651.8" y="358.2">absorbed by</tspan>
+     <tspan x="651.8" y="378.2">atmosphere</tspan>
+     <tspan x="651.8" y="398.2">15%</tspan></text>
+   </g>
+   <text x="653.92212" y="235.87369" font-size="16px"><tspan x="653.92212" y="235.87369">Radiated</tspan>
+    <tspan x="653.92212" y="255.87369">directly</tspan>
+    <tspan x="653.92212" y="275.87369">to space</tspan>
+    <tspan x="653.92212" y="295.87369">from earth</tspan></text>
+   <g font-size="16">
+    <text x="403.4" y="151.9"><tspan x="403.4" y="151.9">Radiated to space</tspan>
+     <tspan x="403.4" y="171.9">from clouds and</tspan>
+     <tspan x="403.4" y="191.9">atmosphere</tspan></text>
+    <text x="334.7" y="383.2" text-anchor="middle"><tspan x="334.7" y="383.2">Conduction and</tspan>
+     <tspan x="334.7" y="403.2">rising air 7%</tspan></text>
+    <text x="373.4" y="325.7" text-anchor="middle"><tspan x="373.4" y="325.7">Absorbed</tspan>
+     <tspan x="373.4" y="345.7">by clouds 3%</tspan></text>
+   </g>
+  </g>
+ </switch>
+</svg>

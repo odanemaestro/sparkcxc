@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="280" height="193" id="svg2" sodipodi:version="0.32" inkscape:version="0.44.1" version="1.0" sodipodi:docbase="C:\work\wikigraphics" sodipodi:docname="wiredrawing.svg">
+  <defs id="defs4">
+    <linearGradient id="linearGradient2840">
+      <stop style="stop-color:black;stop-opacity:1;" offset="0" id="stop2842"/>
+      <stop style="stop-color:black;stop-opacity:0;" offset="1" id="stop2844"/>
+    </linearGradient>
+    <linearGradient id="linearGradient2824">
+      <stop style="stop-color:black;stop-opacity:1;" offset="0" id="stop2826"/>
+      <stop style="stop-color:white;stop-opacity:1;" offset="1" id="stop2828"/>
+    </linearGradient>
+    <linearGradient inkscape:collect="always" xlink:href="#linearGradient2824" id="linearGradient2830" x1="71.823517" y1="582.3302" x2="302.56699" y2="382.92273" gradientUnits="userSpaceOnUse" gradientTransform="translate(2,2)"/>
+    <linearGradient inkscape:collect="always" xlink:href="#linearGradient2824" id="linearGradient2846" x1="154.69501" y1="465.19064" x2="402.7619" y2="398.88519" gradientUnits="userSpaceOnUse" gradientTransform="translate(2,2)"/>
+  </defs>
+  <sodipodi:namedview id="base" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" gridtolerance="10000" guidetolerance="10" objecttolerance="10" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="4.9119171" inkscape:cx="140" inkscape:cy="96.5" inkscape:document-units="px" inkscape:current-layer="layer1" width="280px" height="193px" inkscape:window-width="1600" inkscape:window-height="1144" inkscape:window-x="-4" inkscape:window-y="-4"/>
+  <metadata id="metadata7">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g inkscape:label="Layer 1" inkscape:groupmode="layer" id="layer1" transform="translate(-59.05348,-363.9825)">
+    <path id="rect2805" style="fill:url(#linearGradient2830);fill-opacity:1;stroke:black;stroke-width:2.40499997;stroke-linecap:round;stroke-linejoin:miter;marker-start:none;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="M 214.37982,509.99934 L 152.93913,494.60515 L 62.255981,494.60515 L 62.255981,439.77606 L 152.93913,439.77606 L 214.37982,421.92609 L 334.30713,423.92609 L 334.30713,507.99934 L 214.37982,509.99934 z " sodipodi:nodetypes="ccccccccc"/>
+    <path style="fill:url(#linearGradient2846);fill-opacity:1.0;stroke:black;stroke-width:2;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1" d="M 234.31464,416.622 L 152.7835,438.622 L 152.7835,381.48473 L 234.31464,381.48473 L 234.31464,416.622 z M 152.7835,495.75927 L 234.31464,515.75927 L 234.31464,552.89653 L 152.7835,552.89653 L 152.7835,495.75927 z " id="rect1901" sodipodi:nodetypes="cccccccccc"/>
+    <text xml:space="preserve" style="font-size:12px;font-style:normal;font-weight:normal;fill:black;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans" x="160.64192" y="375.09967" id="text2848"><tspan sodipodi:role="line" id="tspan2850" x="160.64192" y="375.09967">Draw plate</tspan></text>
+    <text xml:space="preserve" style="font-size:12px;font-style:normal;font-weight:normal;fill:black;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans" x="242.13768" y="417.86526" id="text2852"><tspan sodipodi:role="line" id="tspan2854" x="242.13768" y="417.86526">Undrawn wire</tspan></text>
+    <text xml:space="preserve" style="font-size:12px;font-style:normal;font-weight:normal;fill:black;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Vera Sans" x="71.252357" y="431.58209" id="text2856"><tspan sodipodi:role="line" id="tspan2858" x="71.252357" y="431.58209">Drawn wire</tspan></text>
+    <path style="fill:#a0f600;fill-opacity:1;stroke:black;stroke-width:2.40499997;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1" d="M 172.92071,460.06891 L 235.29695,460.06891 L 235.29695,476.27691 L 172.92071,476.27691 L 171.92071,484.22491 L 146.92071,468.17291 L 171.92071,450.12091 L 172.92071,460.06891 z " id="rect2860" sodipodi:nodetypes="cccccccc"/>
+  </g>
+</svg>

@@ -1,0 +1,198 @@
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="1252.9688" height="1033.9688" id="svg7138" version="1.1" inkscape:version="0.91 r13725" sodipodi:docname="Tide_overview.svg">
+  <title id="title3401">Tides principle overview</title>
+  <defs id="defs7140">
+    <inkscape:path-effect effect="spiro" id="path-effect3277" is_visible="true"/>
+    <marker inkscape:stockid="Arrow2Lend" orient="auto" refY="0" refX="0" id="Arrow2Lend" style="overflow:visible">
+      <path id="path6535" style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round" d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z" transform="matrix(-1.1,0,0,-1.1,-1.1,0)" inkscape:connector-curvature="0"/>
+    </marker>
+    <marker inkscape:stockid="Arrow1Lend" orient="auto" refY="0" refX="0" id="Arrow1Lend" style="overflow:visible">
+      <path id="path6517" d="M 0,0 5,-5 -12.5,0 5,5 0,0 z" style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none" transform="matrix(-0.8,0,0,-0.8,-10,0)" inkscape:connector-curvature="0"/>
+    </marker>
+    <marker inkscape:stockid="Arrow1Lstart" orient="auto" refY="0" refX="0" id="Arrow1Lstart" style="overflow:visible">
+      <path id="path11781" d="M 0,0 5,-5 -12.5,0 5,5 0,0 z" style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none" transform="matrix(0.8,0,0,0.8,10,0)" inkscape:connector-curvature="0"/>
+    </marker>
+    <inkscape:perspective sodipodi:type="inkscape:persp3d" inkscape:vp_x="0 : 526.18109 : 1" inkscape:vp_y="0 : 1000 : 0" inkscape:vp_z="744.09448 : 526.18109 : 1" inkscape:persp3d-origin="372.04724 : 350.78739 : 1" id="perspective7146"/>
+    <inkscape:perspective id="perspective3692" inkscape:persp3d-origin="0.5 : 0.33333333 : 1" inkscape:vp_z="1 : 0.5 : 1" inkscape:vp_y="0 : 1000 : 0" inkscape:vp_x="0 : 0.5 : 1" sodipodi:type="inkscape:persp3d"/>
+  </defs>
+  <sodipodi:namedview id="base" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="0.88246219" inkscape:cx="605.10342" inkscape:cy="436.907" inkscape:document-units="px" inkscape:current-layer="svg7138" showgrid="false" inkscape:snap-nodes="false" inkscape:window-width="1366" inkscape:window-height="706" inkscape:window-x="-8" inkscape:window-y="-8" inkscape:window-maximized="1" showguides="true" inkscape:guide-bbox="true" fit-margin-top="0" fit-margin-left="0" fit-margin-right="0" fit-margin-bottom="0">
+    <sodipodi:guide orientation="1,0" position="58.5407,318.3867" id="guide8691"/>
+  </sodipodi:namedview>
+  <metadata id="metadata7143">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <dc:title>Tides principle overview</dc:title>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/3.0/"/>
+        <dc:date>22/04/2016</dc:date>
+        <dc:language>de en eo fr mk</dc:language>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/by-nc-sa/3.0/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:requires rdf:resource="http://creativecommons.org/ns#Notice"/>
+        <cc:requires rdf:resource="http://creativecommons.org/ns#Attribution"/>
+        <cc:prohibits rdf:resource="http://creativecommons.org/ns#CommercialUse"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+        <cc:requires rdf:resource="http://creativecommons.org/ns#ShareAlike"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <ellipse ry="257.85272" rx="207.73752" cy="766.55603" cx="636.70416" transform="matrix(0.99848113,-0.05509477,0.05022255,0.99873805,-65.8125,-5.6875)" id="path3728" style="fill:#0000ff;stroke:none" sodipodi:cx="636.70416" sodipodi:cy="766.55603" sodipodi:rx="207.73752" sodipodi:ry="257.85272"/>
+  <ellipse ry="189.19173" rx="203.68663" cy="728.88403" cx="676.69061" id="path7152" style="fill:#e6e6e6" sodipodi:cx="676.69061" sodipodi:cy="728.88403" sodipodi:rx="203.68663" sodipodi:ry="189.19173" transform="translate(-68.267622,-5.6875)"/>
+  <ellipse cy="117.88781" cx="667.28973" id="path7154" style="fill:#cccccc" rx="68.940094" ry="68.233078" sodipodi:cx="667.28973" sodipodi:cy="117.88781" sodipodi:rx="68.940094" sodipodi:ry="68.233078" transform="translate(-65.8125,-3.6875)"/>
+  <g id="g3444" transform="translate(-65.8125,-3.6875)">
+    <path sodipodi:nodetypes="cc" style="fill:none;stroke:#000000;stroke-width:3.29999995;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" d="m 343.35784,734.55858 110.50787,0" id="path3275" inkscape:path-effect="#path-effect3277" inkscape:original-d="m 343.35784,734.55858 110.50787,0" inkscape:connector-curvature="0"/>
+    <path inkscape:transform-center-y="-142.91338" inkscape:transform-center-x="102.08099" id="path3267-8" style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round" d="m 428.45908,720.6264 37.9096,12.79818 -40.69932,15.06618 c 7.10276,-8.40673 8.1933,-19.65968 2.78972,-27.86436 z" inkscape:connector-curvature="0"/>
+  </g>
+  <g id="g9655" transform="translate(248.85046,-9.252071)">
+    <path inkscape:connector-curvature="0" id="path5993" d="M 368.375,542.6875 366.46875,545 c 0,0 22.00892,18.1426 48.9375,36.3125 13.46429,9.08495 28.1522,18.18429 42,25.03125 13.8478,6.84696 26.81753,11.48893 37.09375,11.5 39.21489,0.0422 141.875,2 141.875,2 l 0.0625,-3 c 0,0 -102.62939,-1.95767 -141.9375,-2 -9.35452,-0.0101 -22.09243,-4.43459 -35.75,-11.1875 -13.65757,-6.75291 -28.29333,-15.77486 -41.6875,-24.8125 C 390.27416,560.76848 368.375,542.6875 368.375,542.6875 z" style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;color:#000000;fill:#000000;fill-opacity:1;stroke:none;stroke-width:3;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans"/>
+    <path inkscape:connector-curvature="0" id="path9661" style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round" d="m 383.68859,574.51817 -19.36759,-33.17643 36.24692,12.72558 c -9.42521,2.37047 -16.21692,10.65139 -16.87933,20.45085 z"/>
+  </g>
+  <g id="g9647" transform="matrix(0.97125868,0,0,1,259.50117,-9.252071)">
+    <path inkscape:connector-curvature="0" id="path6961" d="m 512.0625,857.0625 c -10.22916,-0.011 -23.84098,4.10927 -38.71875,10.21875 -14.87777,6.10948 -30.96062,14.22012 -45.8125,22.34375 -29.70376,16.24727 -54.46875,32.5 -54.46875,32.5 l 1.625,2.5 c 0,0 24.70004,-16.16352 54.28125,-32.34375 14.79061,-8.09012 30.81562,-16.17585 45.53125,-22.21875 14.71563,-6.0429 28.16091,-10.01013 37.5625,-10 39.26196,0.0423 134.5,0.125 134.5,0.125 l 0,-3 c 0,0 -95.23896,-0.0827 -134.5,-0.125 z" style="color:#000000;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:medium;line-height:normal;font-family:'Bitstream Vera Sans';-inkscape-font-specification:'Bitstream Vera Sans';text-indent:0;text-align:start;text-decoration:none;text-decoration-line:none;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;display:inline;overflow:visible;visibility:visible;fill:#000000;fill-opacity:1;stroke:none;stroke-width:3;marker:none;enable-background:accumulate"/>
+    <path inkscape:connector-curvature="0" id="path9653" style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round" d="m 407.99289,916.93111 -37.42163,8.68337 22.88118,-30.85823 c -0.52459,9.70456 5.37582,18.64244 14.54045,22.17486 z"/>
+  </g>
+  <g transform="matrix(-1.1417667,0.02740903,-0.03130648,-0.9996243,1033.403,982.09488)" id="g3263">
+    <path inkscape:connector-curvature="0" style="font-size:medium;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:normal;letter-spacing:normal;word-spacing:normal;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;color:#000000;fill:#000000;fill-opacity:1;stroke:none;stroke-width:3;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Bitstream Vera Sans;-inkscape-font-specification:Bitstream Vera Sans" d="M 368.375,542.6875 366.46875,545 c 0,0 22.00892,18.1426 48.9375,36.3125 13.46429,9.08495 28.1522,18.18429 42,25.03125 13.8478,6.84696 26.81753,11.48893 37.09375,11.5 39.21489,0.0422 141.875,2 141.875,2 l 0.0625,-3 c 0,0 -102.62939,-1.95767 -141.9375,-2 -9.35452,-0.0101 -22.09243,-4.43459 -35.75,-11.1875 -13.65757,-6.75291 -28.29333,-15.77486 -41.6875,-24.8125 C 390.27416,560.76848 368.375,542.6875 368.375,542.6875 z" id="path3265"/>
+    <path inkscape:connector-curvature="0" d="m 383.68859,574.51817 -19.36759,-33.17643 36.24692,12.72558 c -9.42521,2.37047 -16.21692,10.65139 -16.87933,20.45085 z" style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round" id="path3267"/>
+  </g>
+  <g id="g29" transform="translate(-65.8125,-3.6875)">
+     transform="translate(0,0)"&gt;
+    <switch id="Moon" xml:space="preserve" style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans" sodipodi:linespacing="125%" sodipodi:role="line">
+        <text x="617" y="125" systemLanguage="de" id="text230-1">Mond</text>
+
+
+
+        <text x="617" y="125" style="font-size:40px" systemLanguage="eo" id="text232-4">Luno</text>
+
+
+
+        <text x="617" y="125" style="font-size:40px" systemLanguage="en" id="text34">Moon</text>
+
+
+
+        <text x="617" y="125" style="font-size:40px" systemLanguage="fr" id="text234-2">Lune</text>
+
+
+
+        <text x="617" y="125" style="font-size:38px" systemLanguage="mk" id="text236-3">Месечина</text>
+
+
+
+      </switch></g>
+  <g id="g38" transform="translate(-65.8125,-3.6875)">
+    <switch id="Earth" xml:space="preserve" style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans" sodipodi:linespacing="125%" sodipodi:role="line">
+        <text x="620" y="740" style="font-size:42px" systemLanguage="de" id="text41">Erde</text>
+
+
+
+        <text x="620" y="740" style="font-size:42px" systemLanguage="eo" id="text43">Tero</text>
+
+
+
+        <text x="620" y="740" style="font-size:40px" systemLanguage="en" id="text45">Earth</text>
+
+
+
+        <text x="620" y="740" style="font-size:40px" systemLanguage="fr" id="text47">Terre</text>
+
+
+
+        <text x="620" y="740" systemLanguage="mk" style="font-size:42px" id="text49">Земја</text>
+
+
+
+      </switch>  </g>
+  <g id="g51" transform="translate(-65.8125,-3.6875)">
+    <switch id="Antipodal" xml:space="preserve" style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans" sodipodi:linespacing="125%" sodipodi:role="line">
+        <text x="970" y="860" style="font-size:40px" systemLanguage="de" id="text54">Antipoden</text>
+
+
+
+        <text x="970" y="860" style="font-size:40px" systemLanguage="eo" id="text56">Antipodo</text>
+
+
+
+        <text x="970" y="860" style="font-size:40px" systemLanguage="en" id="text58">Antipodal</text>
+
+
+
+        <text x="970" y="860" style="font-size:40px" systemLanguage="fr" id="text60">Antipode</text>
+
+
+
+        <text x="950" y="860" style="font-size:38px" systemLanguage="mk" id="text62">Спротимесечинска</text>
+
+
+
+      </switch>  </g>
+  <g id="g64" transform="translate(-65.8125,-3.6875)">
+    <switch id="Sublunar" xml:space="preserve" style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans" sodipodi:linespacing="125%" sodipodi:role="line">
+        <text x="970" y="629" systemLanguage="de" id="text67">Mondseite</text>
+
+
+
+        <text x="970" y="629" style="font-size:40px" systemLanguage="eo" id="text69">Subluno</text>
+
+
+
+        <text x="970" y="629" style="font-size:40px" systemLanguage="en" id="text71">Sublunar</text>
+
+
+
+        <text x="970" y="629" style="font-size:40px" systemLanguage="fr" id="text73">Coté Lune</text>
+
+
+
+        <text x="950" y="629" style="font-size:38px" systemLanguage="mk" id="text75">Подмесечинска</text>
+
+
+
+      </switch>  </g>
+  <g id="g77" transform="translate(-65.8125,-3.6875)">
+    <switch id="LowTide" xml:space="preserve" style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans" sodipodi:linespacing="125%" sodipodi:role="line">
+        <text x="175" y="740" systemLanguage="de" id="text80">Ebbe</text>
+
+
+
+        <text x="75" y="740" style="font-size:40px" systemLanguage="eo" id="text82">Malalta tadjo</text>
+
+
+
+        <text x="124" y="740" style="font-size:40px" systemLanguage="en" id="text84">Low tide</text>
+
+
+
+        <text x="75" y="740" style="font-size:40px" systemLanguage="fr" id="text86">Marée basse</text>
+
+
+
+        <text x="175" y="740" systemLanguage="mk" id="text88">Oсека</text>
+
+
+
+      </switch>  </g>
+  <g id="g90" transform="translate(-65.8125,-3.6875)">
+    <switch id="HighTide" xml:space="preserve" style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Vera Sans" sodipodi:linespacing="125%" sodipodi:role="line">
+        <text x="175" y="395" systemLanguage="de" id="text93">Flut</text>
+
+
+
+        <text x="120" y="395" style="font-size:40px" systemLanguage="eo" id="text95">Alta tadjo</text>
+
+
+
+        <text x="120" y="395" style="font-size:40px" systemLanguage="en" id="text97">High tide</text>
+
+
+        <text x="75" y="395" style="font-size:40px" systemLanguage="fr" id="text72">Marée haute</text>
+
+
+
+        <text x="175" y="395" style="font-size:38px" systemLanguage="mk" id="text101">Плима</text>
+
+
+
+      </switch>  </g>
+</svg>

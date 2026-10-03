@@ -1,0 +1,6 @@
+# Preserve the approved source images byte-for-byte across platforms.
+*.svg -text
+*.png -text
+*.jpg -text
+*.jpeg -text
+*.gif -text

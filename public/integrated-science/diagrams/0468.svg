@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" height="471" width="614" version="1.1" xml:lang="fr">
+
+<!-- 1 -->
+<path style="stroke-linejoin:miter;stroke:#3f3fff;stroke-linecap:butt;stroke-width:1px;fill:#3f3fff;" d="M0,46,240,46,140,96,0,96z"/>
+<path style="stroke-linejoin:miter;stroke:#0a0a0a;stroke-linecap:butt;stroke-width:1px;fill:#000000;" d="m0,96,120,0-25,25-95,0z"/>
+<path style="stroke-linejoin:miter;stroke:#0a0a0a;stroke-linecap:butt;stroke-width:1px;fill:#000000;" d="m95,121,25-25,20,0,120-60,25,0,0,85z"/>
+
+<!-- 2 -->
+<g transform="translate(330,0)">
+	<path d="m0,46h85.245069c7.980367,0,14.754931,15,23.941101,0,9.65736-15.76941,12.4139,0,18.62085,0h112.19298l-100,50h-20l-5,5h-115z" style="stroke:#3f3fff;fill:#3f3fff;"/>
+	<path d="m0,101,115,0-25,25-90,0z" style="stroke-linejoin:miter;stroke:#0a0a0a;stroke-linecap:butt;stroke-width:1px;fill:#000000;"/>
+	<path d="m95,121,25-25,20,0,120-60,25,0,0,85z" style="stroke-linejoin:miter;stroke:#0a0a0a;stroke-linecap:butt;stroke-width:1px;fill:#000000;"/>
+</g>
+	<!-- Fleches Arrows -->
+		<path style="stroke-linejoin:miter;stroke:#000000;stroke-linecap:butt;stroke-width:1px;fill:none;" d="M435,101,455,81"/>
+		<path style="stroke-linejoin:miter;stroke:#000000;stroke-linecap:butt;stroke-width:1px;fill:none;" d="m450,81,5,0,0,5"/>
+		<path style="stroke-linejoin:miter;stroke:#000000;stroke-linecap:butt;stroke-width:1px;fill:none;" d="m430,121-20,20"/>
+		<path style="stroke-linejoin:miter;stroke:#000000;stroke-linecap:butt;stroke-width:1px;fill:none;" d="m415,141-5,0,0-5"/>
+
+<!-- 3 -->
+<path style="stroke:#3f3fff;fill:#3f3fff;" d="m0,226h34.058899c7.980367,0,12.941101-11,23.941101,0,11.314684,11.31468,12.4139,0,18.62085,0h63.37915c6.33333,0,8.65536-14.10633,19,0,11,15,12,0,18,0h63l-100,50h-20l-5,5h-115z"/>
+<path style="stroke-linejoin:miter;stroke:#0a0a0a;stroke-linecap:butt;stroke-width:1px;fill:#000000;" d="m0,281,115,0-25,25-90,0z"/>
+<path style="stroke-linejoin:miter;stroke:#0a0a0a;stroke-linecap:butt;stroke-width:1px;fill:#000000;" d="m95,301,25-25,20,0,120-60,25,0,0,85z"/>
+	<!-- Fleches Arrows -->
+		<path style="stroke-linejoin:miter;stroke:#000000;stroke-linecap:butt;stroke-width:1px;fill:none;" d="m80,211-55,0"/>
+		<path style="stroke-linejoin:miter;stroke:#000000;stroke-linecap:butt;stroke-width:1px;fill:none;" d="m40,206-15,5,15,5"/>
+		<path style="stroke-linejoin:miter;stroke:#000000;stroke-linecap:butt;stroke-width:1px;fill:none;" d="m130,211,55,0"/>
+		<path style="stroke-linejoin:miter;stroke:#000000;stroke-linecap:butt;stroke-width:1px;fill:none;" d="m170,206,15,5-15,5"/>
+
+<!-- 4 -->
+<path style="stroke:#3f3fff;fill:#3f3fff;" d="m330,226,0-5l10,5c1.91405,4.19335,12.53194,1.68356,16.99509,0h161.06405c25.94086-23,14.76946-14.83818,28.94086,0,2.42238,2.53636,6.58869,8.34613,23,0l-100,50h-20l-5,5h-115z"/>
+<path style="stroke-linejoin:miter;stroke:#0a0a0a;stroke-linecap:butt;stroke-width:1px;fill:#000000;" d="m330,281,115,0-25,25-90,0z"/>
+<path style="stroke-linejoin:miter;stroke:#0a0a0a;stroke-linecap:butt;stroke-width:1px;fill:#000000;" d="m425,301,25-25,20,0,120-60,25,0,0,85z"/>
+	<!-- Fleches Arrows -->
+		<path style="stroke-linejoin:miter;stroke:#000000;stroke-linecap:butt;stroke-width:1px;fill:none;" d="m365,201-30,0"/>
+		<path style="stroke-linejoin:miter;stroke:#000000;stroke-linecap:butt;stroke-width:1px;fill:none;" d="m350,196-15,5,15,5"/>
+		<path style="stroke-linejoin:miter;stroke:#000000;stroke-linecap:butt;stroke-width:1px;fill:none;" d="m520,201,30,0"/>
+		<path style="stroke-linejoin:miter;stroke:#000000;stroke-linecap:butt;stroke-width:1px;fill:none;" d="m535,196,15,5-15,5"/>
+	<!-- Pointilles-->
+		<path style="stroke-linejoin:miter;stroke-dashoffset:0;stroke:#0000ff;stroke-linecap:butt;stroke-miterlimit:4;stroke-dasharray:3, 3;stroke-width:1;fill:none;" d="m515,226,60,0"/>
+	
+<!-- 5 -->
+<path style="stroke:#3f3fff;fill:#3f3fff;" d="m0,391,220,0c6,0,22-5,26-10s26-7,26,0h-12l-120,60h-20l-5,5h-115z"/>
+<path style="stroke-linejoin:miter;stroke:#0a0a0a;stroke-linecap:butt;stroke-width:1px;fill:#000000;" d="m0,446,115,0-25,25-90,0z"/>
+<path style="stroke-linejoin:miter;stroke:#0a0a0a;stroke-linecap:butt;stroke-width:1px;fill:#000000;" d="m95,466,25-25,20,0,120-60,25,0,0,85z"/>
+
+<!-- Texte -->
+	<text style="font-size:20px;font-family:Garamond;writing-mode:lr-tb;fill:#000000;letter-spacing:0px;text-anchor:start;line-height:125%;word-spacing:0px;font-stretch:normal;font-variant:normal;font-weight:normal;font-style:normal;text-align:start;" xml:space="preserve" y="26" x="15"><tspan x="15" y="26">1. Coast before the event</tspan></text>
+	<text style="font-size:20px;font-family:Garamond;writing-mode:lr-tb;fill:#000000;letter-spacing:0px;text-anchor:start;line-height:125%;word-spacing:0px;font-stretch:normal;font-variant:normal;font-weight:normal;font-style:normal;text-align:start;" xml:space="preserve" y="21.97138" x="350.6041"><tspan x="350.6041" y="21.97138">2. Earthquake</tspan></text>
+	<text style="font-size:20px;font-family:Garamond;writing-mode:lr-tb;fill:#000000;letter-spacing:0px;text-anchor:start;line-height:125%;word-spacing:0px;font-stretch:normal;font-variant:normal;font-weight:normal;font-style:normal;text-align:start;" xml:space="preserve" y="176.7905" x="12.236562"><tspan x="12.236562" y="176.7905">3. Tsunami waves spread</tspan></text>
+	<text style="font-size:20px;font-family:Garamond;writing-mode:lr-tb;fill:#000000;letter-spacing:0px;text-anchor:start;line-height:125%;word-spacing:0px;font-stretch:normal;font-variant:normal;font-weight:normal;font-style:normal;text-align:start;" xml:space="preserve" y="180.57507" x="346.10223"><tspan x="346.10223" y="180.57507">4. Sea draws back</tspan></text>
+	<text style="font-size:20px;font-family:Garamond;writing-mode:lr-tb;fill:#000000;letter-spacing:0px;text-anchor:start;line-height:125%;word-spacing:0px;font-stretch:normal;font-variant:normal;font-weight:normal;font-style:normal;text-align:start;" xml:space="preserve" y="355.13098" x="28.591055"><tspan x="28.591055" y="355.13098">5. Wave reaches the coast</tspan></text>
+</svg>

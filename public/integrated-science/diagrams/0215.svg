@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="500" height="360" version="1.0">
+<defs>
+<linearGradient id="linGrad" x1="-.08" y1=".3" x2="1.07" y2=".7">
+<stop stop-color="blue"/>
+<stop offset="1" stop-color="red"/>
+</linearGradient>
+</defs>
+<path d="M490 257l-8 8H18l-8-8V99.5h5.4c3.5 0 18 1.5 24.6 1.5s25.9-1.5 35-1.5 23.8 1.5 35 1.5 22.1-1.5 35-1.5 20.9 1.5 35 1.5 20.2-1.5 35-1.5 20 1.5 35 1.5 15.2-1.5 30-1.5 20.9 1.5 35 1.5 22.1-1.5 35-1.5 23.8 1.5 35 1.5 30.9-1.5 40-1.5 28.4 1.5 35 1.5 21.1-1.5 24.6-1.5H490" fill="#CAFFFF" stroke="#999"/>
+<path d="M490 55.3V255a10 10 0 0 1-10 10H20a10 10 0 0 1-10-10V55" fill="none" stroke="#4C4C4C" stroke-width="5" stroke-linecap="round"/>
+<g stroke="#000" stroke-linejoin="round">
+<path id="conv" d="M93 116v6a37 38 0 0 1 37 38v49a37 38 0 0 1-37 38V233a23 24 0 0 0 23-24V160a23 24 0 0 0-23-24v6L73 129ZM68 136a23 24 0 0 0-23 24v49a23 24 0 0 0 23 24v-6l20 13-20 13v-6a37 38 0 0 1-37-38V160a37 38 0 0 1 37-38Z" fill="url(#linGrad)"/>
+<use xlink:href="#conv" x="226.23"/>
+<use xlink:href="#conv" transform="matrix(-1,0,0,1,273.9,0)"/>
+<use xlink:href="#conv" transform="matrix(-1,0,0,1,499.86,0)"/>
+<path id="arrow" d="M52.4 281.1l15 24h-8v30h-14V305.3h-8Z" fill="#FF7487"/>
+<use xlink:href="#arrow" x="99"/>
+<use xlink:href="#arrow" x="198"/>
+<use xlink:href="#arrow" x="297"/>
+<use xlink:href="#arrow" x="396"/>
+<use xlink:href="#arrow" x="104" y="-266"/>
+<use xlink:href="#arrow" x="198" y="-266"/>
+<use xlink:href="#arrow" x="292" y="-266"/>
+<path id="diagArr" d="M93.8 68.6l-28.3 1 4-6.9-26-15 7-12.2L76.4 50.4l3.9-6.9Z" fill="#7FA1FF"/>
+<use xlink:href="#diagArr" transform="matrix(-1,0,0,1,500,0)"/>
+</g>
+</svg>

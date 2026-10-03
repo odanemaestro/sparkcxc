@@ -1,0 +1,28 @@
+.spark-maternal-baby-care{margin:28px 0;padding:20px;border:1px solid var(--spark-border,#d9e2ec);border-radius:16px;background:var(--spark-paper,#fff)}
+.spark-maternal-baby-care header>span{color:var(--spark-teal-dark,#087f73);font-size:11px;font-weight:900;letter-spacing:.05em}
+.spark-maternal-baby-care header h3{margin:4px 0 7px;color:var(--spark-ink,#102a43);font-size:20px}
+.spark-maternal-baby-care header p{margin:0;color:var(--spark-text-muted,#627d98);font-size:13px;line-height:1.6}
+.spark-maternal-care-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:17px 0}
+.spark-maternal-care-tabs button{min-height:42px;padding:0 12px;border:1px solid var(--spark-border,#d9e2ec);border-radius:9px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:11px;font-weight:850;cursor:pointer}
+.spark-maternal-care-tabs button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}
+.spark-maternal-care-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(270px,.65fr);gap:15px}
+.spark-maternal-care-stage{overflow:hidden;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:14px;background:#f5f7f9}
+.spark-maternal-care-stage svg{display:block;width:100%;height:auto}
+.spark-maternal-care-stage .mb-label{fill:#36546a;font-size:15px;font-weight:900}.spark-maternal-care-stage .mb-warning-text{fill:#9c4a3d;font-size:14px;font-weight:900}
+.spark-maternal-care-stage .mb-mother-head{fill:#d9a98a;stroke:#925f43;stroke-width:4}.spark-maternal-care-stage .mb-mother-body{fill:#6f91b6;stroke:#436482;stroke-width:5}.spark-maternal-care-stage .mb-pregnancy{fill:#e2b79b;stroke:#986850;stroke-width:4}
+.spark-maternal-care-stage .mb-arrow{fill:none;stroke:#0d9488;stroke-width:7;stroke-linecap:round}.spark-maternal-care-stage .mb-arrow.warning{stroke:#bd574d}
+.spark-maternal-care-stage .mb-clinic{fill:#e8f0f4;stroke:#6d8799;stroke-width:5}.spark-maternal-care-stage .mb-cross{fill:none;stroke:#d25454;stroke-width:12;stroke-linecap:round}.spark-maternal-care-stage .mb-ultrasound-screen{fill:#273d4d;stroke:#718797;stroke-width:5}.spark-maternal-care-stage .mb-foetal-outline{fill:none;stroke:#d7edf6;stroke-width:5}.spark-maternal-care-stage .mb-food{fill:#86b961;stroke:#4f7e3b;stroke-width:4}
+.spark-maternal-care-stage .mb-cigarette{fill:#ece4d7;stroke:#9a7753;stroke-width:4}.spark-maternal-care-stage .mb-smoke{fill:none;stroke:#89949d;stroke-width:8;stroke-linecap:round}.spark-maternal-care-stage .mb-stop{fill:none;stroke:#c6474d;stroke-width:12;stroke-linecap:round}.spark-maternal-care-stage .mb-bottle{fill:#8ca3b5;stroke:#506c7f;stroke-width:5}
+.spark-maternal-care-stage .mb-foetus-head,.spark-maternal-care-stage .mb-baby-head{fill:#e9bda1;stroke:#98674e;stroke-width:4}.spark-maternal-care-stage .mb-foetus-body,.spark-maternal-care-stage .mb-baby-body{fill:#e9bda1;stroke:#98674e;stroke-width:5}
+.spark-maternal-care-stage .mb-shield{fill:#dcefdc;stroke:#5b8c62;stroke-width:5}.spark-maternal-care-stage .mb-antibody{fill:none;stroke:#4e7f8e;stroke-width:7;stroke-linecap:round}
+.spark-maternal-care-stage .mb-chart{fill:#fff;stroke:#6d8799;stroke-width:5}.spark-maternal-care-stage .mb-chart-line{fill:none;stroke:#0d9488;stroke-width:6}.spark-maternal-care-stage .mb-syringe{fill:#e1e7ea;stroke:#647b8c;stroke-width:4}.spark-maternal-care-stage .mb-needle{stroke:#687b87;stroke-width:3}
+.spark-maternal-care-grid aside{padding:15px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:12px;background:var(--spark-bg,#f7fafc)}
+.spark-maternal-care-grid aside h4{margin:0 0 10px;color:var(--spark-ink,#102a43);font-size:17px}.spark-maternal-care-grid aside ul{display:grid;gap:9px;margin:0;padding-left:20px}.spark-maternal-care-grid aside li{color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.55}
+html[data-theme="dark"] .spark-maternal-baby-care,body[data-theme="dark"] .spark-maternal-baby-care,.dark .spark-maternal-baby-care{background:#122b43;border-color:#2a4863}
+html[data-theme="dark"] .spark-maternal-care-tabs button,body[data-theme="dark"] .spark-maternal-care-tabs button,.dark .spark-maternal-care-tabs button{background:#15314b;border-color:#39566e;color:#e7f2fb}
+html[data-theme="dark"] .spark-maternal-care-tabs button.active,body[data-theme="dark"] .spark-maternal-care-tabs button.active,.dark .spark-maternal-care-tabs button.active{background:#164e4a;color:#d7fffa;border-color:#2dd4bf}
+html[data-theme="dark"] .spark-maternal-care-stage,body[data-theme="dark"] .spark-maternal-care-stage,.dark .spark-maternal-care-stage{background:#f1f5f8;border-color:#39566e}
+html[data-theme="dark"] .spark-maternal-care-grid aside,body[data-theme="dark"] .spark-maternal-care-grid aside,.dark .spark-maternal-care-grid aside{background:#0d2134;border-color:#29465f}
+@media(max-width:850px){.spark-maternal-care-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.spark-maternal-baby-care{padding:14px}.spark-maternal-care-tabs{display:grid;grid-template-columns:1fr 1fr}.spark-maternal-care-stage .mb-label{font-size:20px}.spark-maternal-care-stage .mb-warning-text{font-size:18px}}
+@media(max-width:390px){.spark-maternal-care-tabs{grid-template-columns:1fr}}

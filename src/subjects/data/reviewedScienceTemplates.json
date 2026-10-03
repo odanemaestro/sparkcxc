@@ -1,0 +1,22 @@
+{
+  "PlantCellTemplate": "0259",
+  "AnimalCellTemplate": "0260",
+  "LightMicroscopeTemplate": "0261",
+  "FlowerLongitudinalTemplate": "0262",
+  "BeanSeedTemplate": "0263",
+  "FemaleReproductiveTemplate": "0264",
+  "MaleReproductiveTemplate": "0265",
+  "PregnancyUterusTemplate": "0266",
+  "HumanHeartTemplate": "0267",
+  "KidneyLongitudinalTemplate": "0268",
+  "NephronTemplate": "0269",
+  "SkinSectionTemplate": "0270",
+  "MammalianEyeTemplate": "0271",
+  "MammalianEarTemplate": "0272",
+  "HumanBrainTemplate": "0273",
+  "EndocrineSystemTemplate": "0274",
+  "HumanDigestiveTemplate": "0275",
+  "HumanToothTemplate": "0276",
+  "HumanRespiratoryTemplate": "0277",
+  "ThreePinPlugTemplate": "0278"
+}

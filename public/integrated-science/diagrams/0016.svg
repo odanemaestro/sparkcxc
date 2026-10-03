@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 99.428 89.053">
+ <path id="a" d="m8.7775 12.66c0.00166 1.3526-1.1934 2.5495-2.546 2.5495-1.351-0.0022-2.5452-1.1984-2.5435-2.5495 5.5e-4 -1.3511 1.1964-2.546 2.5475-2.546 1.3503 0.0011 2.5434 1.1957 2.544 2.546zm0 7.277c5.5e-4 1.3518-1.1942 2.5475-2.546 2.5475-1.3503-0.0022-2.544-1.1972-2.5435-2.5475 0-1.3495 1.193-2.5442 2.5425-2.547 1.3518-6e-4 2.547 1.1952 2.547 2.547zm0 7.276c0 1.3518-1.1952 2.5471-2.547 2.5465-1.351-6e-4 -2.5465-1.1954-2.5465-2.5465 0-1.3514 1.1961-2.547 2.5475-2.547 1.3526-0.0017 2.549 1.1944 2.549 2.547zm0 7.277c0 1.3514-1.1946 2.5465-2.546 2.5465-1.3499-0.0022-2.5435-1.1966-2.5435-2.5465-5.5e-4 -1.3518 1.1957-2.548 2.5475-2.548 1.351 0.0011 2.5446 1.1969 2.544 2.548zm2e-3 -29.105c0 1.3518-1.1967 2.647-2.5485 2.6465-1.351-5.5e-4 -2.547-1.2954-2.547-2.6465s1.1954-2.5464 2.5465-2.547c1.3526-0.00166 2.549 1.1944 2.549 2.547z" fill="#c80000" stroke="#000" stroke-width=".397"/>
+ <use id="b" transform="translate(36.38)" width="100%" height="100%" xlink:href="#a"/>
+ <use id="c" transform="translate(-7.276)" width="100%" height="100%" xlink:href="#b"/>
+ <use id="d" transform="translate(-7.2761)" width="100%" height="100%" xlink:href="#c"/>
+ <use id="e" transform="translate(-7.276)" width="100%" height="100%" xlink:href="#d"/>
+ <use transform="translate(-7.276)" width="100%" height="100%" xlink:href="#e"/>
+ <use id="f" transform="translate(0 46.04)" width="100%" height="100%" xlink:href="#a"/>
+ <use id="g" transform="translate(36.38)" width="100%" height="100%" xlink:href="#f"/>
+ <use id="h" transform="translate(-7.276)" width="100%" height="100%" xlink:href="#g"/>
+ <use id="i" transform="translate(-7.2761)" width="100%" height="100%" xlink:href="#h"/>
+ <use id="j" transform="translate(-7.276)" width="100%" height="100%" xlink:href="#i"/>
+ <use transform="translate(-7.276)" width="100%" height="100%" xlink:href="#j"/>
+ <ellipse id="k" cx="9.769" cy="55.093" rx="1.191" ry="1.191" fill="#00c80c" stroke="#000" stroke-width=".265"/>
+ <use id="l" transform="translate(29.104 14.552)" width="100%" height="100%" xlink:href="#k"/>
+ <use id="m" transform="translate(-3.1e-5 -7.276)" width="100%" height="100%" xlink:href="#l"/>
+ <use id="n" transform="translate(-14.552 14.552)" width="100%" height="100%" xlink:href="#m"/>
+ <use id="o" transform="translate(1.4e-5 -14.552)" width="100%" height="100%" xlink:href="#n"/>
+ <use id="p" transform="translate(-7.276 7.276)" width="100%" height="100%" xlink:href="#o"/>
+ <use id="q" transform="translate(14.552 -14.552)" width="100%" height="100%" xlink:href="#p"/>
+ <use transform="translate(-7.2758)" width="100%" height="100%" xlink:href="#q"/>
+ <use id="r" transform="translate(86.651)" width="100%" height="100%" xlink:href="#a"/>
+ <use id="s" transform="translate(-7.276)" width="100%" height="100%" xlink:href="#r"/>
+ <use id="t" transform="translate(-7.276)" width="100%" height="100%" xlink:href="#s"/>
+ <use id="u" transform="translate(-7.2761)" width="100%" height="100%" xlink:href="#t"/>
+ <use id="v" transform="translate(-7.276)" width="100%" height="100%" xlink:href="#u"/>
+ <use transform="translate(-7.2761)" width="100%" height="100%" xlink:href="#v"/>
+ <use id="w" transform="translate(86.651)" width="100%" height="100%" xlink:href="#f"/>
+ <use id="x" transform="translate(-7.276)" width="100%" height="100%" xlink:href="#w"/>
+ <use id="y" transform="translate(-7.276)" width="100%" height="100%" xlink:href="#x"/>
+ <use id="z" transform="translate(-7.2761)" width="100%" height="100%" xlink:href="#y"/>
+ <use id="A" transform="translate(-7.276)" width="100%" height="100%" xlink:href="#z"/>
+ <use transform="translate(-7.2761)" width="100%" height="100%" xlink:href="#A"/>
+ <ellipse transform="scale(-1)" cx="-89.144" cy="-76.921" rx="1.191" ry="1.191" fill="#00c80c" stroke="#000" stroke-width=".265"/>
+ <use transform="rotate(180 34.904 58.731)" width="100%" height="100%" xlink:href="#k"/>
+ <use transform="rotate(180 49.457 69.645)" width="100%" height="100%" xlink:href="#l"/>
+ <use transform="rotate(180 56.733 58.731)" width="100%" height="100%" xlink:href="#m"/>
+ <use transform="rotate(180 49.457 73.283)" width="100%" height="100%" xlink:href="#n"/>
+ <use transform="rotate(180 53.095 62.369)" width="100%" height="100%" xlink:href="#o"/>
+ <use transform="rotate(180 42.18 73.283)" width="100%" height="100%" xlink:href="#p"/>
+ <use transform="rotate(180 53.094 66.007)" width="100%" height="100%" xlink:href="#q"/>
+ <path id="B" d="m73.652 5.4255c0 1.4211-1.152 2.573-2.573 2.573-1.4212 0-2.572-1.152-2.572-2.573s1.152-2.572 2.572-2.572 2.573 1.152 2.573 2.572z" fill="#fff" stroke="#fff" stroke-width=".529"/>
+ <use id="C" transform="translate(21.828 29.088)" width="100%" height="100%" xlink:href="#B"/>
+ <use id="D" transform="translate(5e-5,-21.828)" width="100%" height="100%" xlink:href="#C"/>
+ <use id="E" transform="translate(-14.552,21.828)" width="100%" height="100%" xlink:href="#D"/>
+ <use id="F" transform="translate(0,-7.276)" width="100%" height="100%" xlink:href="#E"/>
+ <use id="G" transform="translate(-14.552,4.4135e-5)" width="100%" height="100%" xlink:href="#F"/>
+ <use id="H" transform="translate(7.276,-7.2761)" width="100%" height="100%" xlink:href="#G"/>
+ <use transform="translate(-14.552,-7.276)" width="100%" height="100%" xlink:href="#H"/>
+ <path id="I" d="m58.82 12.71c0 1.2723-1.0299 2.3023-2.3 2.3023-1.27 0-2.3-1.03-2.3-2.3 0-1.2701 1.0289-2.3 2.3-2.3 1.2712 0 2.3 1.0288 2.3 2.3z" fill="#000050" stroke="#000" stroke-width=".264"/>
+ <use id="J" transform="translate(14.58 7.276)" width="100%" height="100%" xlink:href="#I"/>
+ <use transform="translate(0,-14.617)" width="100%" height="100%" xlink:href="#J"/>
+ <use id="K" transform="translate(7.3041,14.552)" width="100%" height="100%" xlink:href="#I"/>
+ <use id="L" transform="translate(14.552 .00030191)" width="100%" height="100%" xlink:href="#K"/>
+ <use id="M" transform="translate(0,7.2757)" width="100%" height="100%" xlink:href="#L"/>
+ <use id="N" transform="translate(14.552)" width="100%" height="100%" xlink:href="#M"/>
+ <use transform="translate(0,-21.828)" width="100%" height="100%" xlink:href="#N"/>
+ <path d="m75.784 80.531c0-1.4053 1.1413-2.5469 2.5484-2.5469 1.407 0 2.5522 1.1405 2.5522 2.5469 0 1.4063-1.1433 2.5479-2.5522 2.5479-1.4091 0-2.5464-1.1416-2.5464-2.5479z" fill="#fff" stroke="#fff" stroke-width=".52926"/>
+ <use transform="rotate(180,63.78,28.431)" width="100%" height="100%" xlink:href="#B"/>
+ <use transform="rotate(180,74.695,53.87)" width="100%" height="100%" xlink:href="#C"/>
+ <use transform="rotate(180 81.97 32.061)" width="100%" height="100%" xlink:href="#D"/>
+ <use transform="rotate(180,74.695,46.595)" width="100%" height="100%" xlink:href="#E"/>
+ <use transform="rotate(180,81.97,42.956)" width="100%" height="100%" xlink:href="#F"/>
+ <use transform="rotate(180,71.055,46.595)" width="100%" height="100%" xlink:href="#G"/>
+ <use transform="rotate(180,81.97,46.595)" width="100%" height="100%" xlink:href="#H"/>
+ <path d="m90.581 73.203c0-1.2688 1.0292-2.2994 2.2981-2.2994 1.2688 0 2.3015 1.0298 2.3015 2.2994 0 1.2697-1.0309 2.3002-2.3015 2.3002s-2.2963-1.0305-2.2963-2.3002z" fill="#000050" stroke="#000" stroke-width=".26437"/>
+ <use transform="rotate(180 67.405 39.318)" width="100%" height="100%" xlink:href="#I"/>
+ <use transform="rotate(180 74.695 50.215)" width="100%" height="100%" xlink:href="#J"/>
+ <use transform="rotate(180 71.04 35.68)" width="100%" height="100%" xlink:href="#I"/>
+ <use transform="rotate(180,67.415,42.956)" width="100%" height="100%" xlink:href="#K"/>
+ <use transform="rotate(180 74.695 39.369)" width="100%" height="100%" xlink:href="#L"/>
+ <use transform="rotate(180 67.415 42.981)" width="100%" height="100%" xlink:href="#M"/>
+ <use transform="rotate(180 74.695 53.87)" width="100%" height="100%" xlink:href="#N"/>
+ <g font-family="'Liberation Sans'" letter-spacing="0" stroke-width=".265" word-spacing="0" transform="scale(0.1)">
+  <switch style="line-height:1.25"><text x="167.728" y="407.87" font-size="31px" style="line-height:1.25" id="trsvg5-cs" systemLanguage="cs">
+   <tspan x="167.728" y="407.87" font-family="'DejaVu Sans'" font-size="31px" id="trsvg1-cs">Čistý kov</tspan>
+  </text><text x="167.728" y="407.87" font-size="31px" style="line-height:1.25" id="trsvg5">
+   <tspan x="167.728" y="407.87" font-family="'DejaVu Sans'" font-size="31px" id="trsvg1">Pure metal</tspan>
+  </text></switch>
+  <switch style="line-height:1.25"><text x="600.955" y="407.87" font-size="31px" style="line-height:1.25" id="trsvg6-cs" systemLanguage="cs">
+   <tspan x="600.955" y="407.87" font-family="'DejaVu Sans'" font-size="31px" id="trsvg2-cs">Substituční slitina</tspan>
+  </text><text x="600.955" y="407.87" font-size="31px" style="line-height:1.25" id="trsvg6">
+   <tspan x="600.955" y="407.87" font-family="'DejaVu Sans'" font-size="31px" id="trsvg2">Substitutional alloy</tspan>
+  </text></switch>
+  <switch style="line-height:1.25"><text x="121.68" y="868.27" font-size="31px" style="line-height:1.25" id="trsvg7-cs" systemLanguage="cs">
+   <tspan x="121.68" y="868.27" font-family="'DejaVu Sans'" font-size="31px" id="trsvg3-cs">Intersticiální slitina</tspan>
+  </text><text x="121.68" y="868.27" font-size="31px" style="line-height:1.25" id="trsvg7">
+   <tspan x="121.68" y="868.27" font-family="'DejaVu Sans'" font-size="31px" id="trsvg3">Interstitial alloy</tspan>
+  </text></switch>
+  <switch style="line-height:1.25"><text x="504.935" y="868.27" font-size="31px" style="line-height:1.25" id="trsvg8-cs" systemLanguage="cs">
+   <tspan x="504.935" y="868.27" font-family="'DejaVu Sans'" word-spacing="-5px" id="trsvg4-cs">Substituční / intersticiální slitina</tspan>
+  </text><text x="504.935" y="868.27" font-size="31px" style="line-height:1.25" id="trsvg8">
+   <tspan x="504.935" y="868.27" font-family="'DejaVu Sans'" word-spacing="-5px" id="trsvg4">Substitutional / interstitial alloy</tspan>
+  </text></switch>
+ </g>
+ <path d="M49.433 0v89.053m49.995-44.526H0" fill="none" stroke="#000" stroke-width=".661"/>
+</svg>

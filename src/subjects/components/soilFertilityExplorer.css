@@ -1,0 +1,55 @@
+.spark-soil-explorer{margin:28px 0;padding:20px;border:1px solid var(--spark-border,#d9e2ec);border-radius:16px;background:var(--spark-paper,#fff)}
+.spark-soil-explorer header>span{color:var(--spark-teal-dark,#087f73);font-size:11px;font-weight:900;letter-spacing:.05em}
+.spark-soil-explorer header h3{margin:4px 0 7px;color:var(--spark-ink,#102a43);font-size:20px}
+.spark-soil-explorer header p{margin:0;color:var(--spark-text-muted,#627d98);font-size:13px;line-height:1.6}
+.spark-soil-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:17px 0}
+.spark-soil-tabs button{min-height:42px;padding:0 13px;border:1px solid var(--spark-border,#d9e2ec);border-radius:9px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:11px;font-weight:850;cursor:pointer}
+.spark-soil-tabs button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}
+.spark-soil-stage{overflow:hidden;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:14px;background:#f3f7ef}
+.spark-soil-stage svg{display:block;width:100%;height:auto}
+.spark-soil-stage .sf-title{fill:#1f4059;font-size:20px;font-weight:900}
+.spark-soil-stage .sf-note{fill:#46647a;font-size:15px;font-weight:800}
+.spark-soil-stage .sf-small{fill:#49657a;font-size:14px;font-weight:700}
+.spark-soil-stage .sf-small.strong{font-weight:900}
+.spark-soil-stage .sf-column{fill:#fbfcf8;stroke:#9caf91;stroke-width:3}
+.spark-soil-stage .sf-sand{fill:#d9b779;stroke:#9c7740;stroke-width:2}
+.spark-soil-stage .sf-silt{fill:#b98f62;stroke:#805c39;stroke-width:2}
+.spark-soil-stage .sf-clay{fill:#9f765d;stroke:#6e4c3b;stroke-width:1.5}
+.spark-soil-stage .sf-humus-fleck{fill:none;stroke:#4f6e38;stroke-width:7;stroke-linecap:round}
+.spark-soil-stage .sf-water-arrow{fill:none;stroke:#4ca7cf;stroke-width:9;stroke-linecap:round}
+.spark-soil-stage .sf-water-arrow.slow{stroke-dasharray:15 16}.spark-soil-stage .sf-water-arrow.medium{stroke-dasharray:26 12}
+.spark-soil-stage .sf-funnel{fill:#eef6f8;fill-opacity:.75;stroke:#6d8899;stroke-width:5}
+.spark-soil-stage .sf-soil-fill{fill:#8d6648;stroke:#694a33;stroke-width:3}
+.spark-soil-stage .sf-drop{fill:#4aa9d2}
+.spark-soil-stage .sf-cylinder{fill:#f6fbfd;stroke:#7892a2;stroke-width:4}
+.spark-soil-stage .sf-collected{fill:#a9ddf2;fill-opacity:.9}
+.spark-soil-stage .sf-sky{fill:#dff1fa}
+.spark-soil-stage .sf-grass{stroke:#5c963f;stroke-width:13}
+.spark-soil-stage .sf-topsoil{fill:#704c32}.spark-soil-stage .sf-subsoil{fill:#a66d45}.spark-soil-stage .sf-weathered{fill:#c9a673}.spark-soil-stage .sf-bedrock{fill:#7f8587}
+.spark-soil-stage .sf-root{fill:none;stroke:#d0a05a;stroke-width:7;stroke-linecap:round}
+.spark-soil-stage .sf-worm{fill:none;stroke:#e9a09d;stroke-width:12;stroke-linecap:round}
+.spark-soil-stage .sf-humus-dot{fill:#2f3f24}
+.spark-soil-stage .sf-layer-label{fill:#253d50;font-size:17px;font-weight:900}.spark-soil-stage .sf-layer-detail{fill:#314b5e;font-size:13px;font-weight:750}.spark-soil-stage .sf-layer-label.light,.spark-soil-stage .sf-layer-detail.light,.spark-soil-stage .sf-earthworm-label.light{fill:#fff}
+.spark-soil-stage .sf-earthworm-label{font-size:13px;font-weight:800}
+.spark-soil-stage .sf-atmosphere{fill:#dff1fa;stroke:#6b9fba;stroke-width:4}
+.spark-soil-stage .sf-plant-stem{fill:none;stroke:#4d8c4d;stroke-width:8;stroke-linecap:round}
+.spark-soil-stage .sf-plant-leaf{fill:#75bd67;stroke:#397f3d;stroke-width:3}
+.spark-soil-stage .sf-nodule{fill:#d99a63;stroke:#8a5d37;stroke-width:3}
+.spark-soil-stage .sf-soil-zone{fill:#9b6e4b;fill-opacity:.2;stroke:#8b664b;stroke-width:3}
+.spark-soil-stage .sf-dead-leaf{fill:#aa7d45;stroke:#73522e;stroke-width:3}
+.spark-soil-stage .sf-process-box{fill:#edf7f1;stroke:#639170;stroke-width:3}.spark-soil-stage .sf-process-box.warning{fill:#fff1e6;stroke:#c27b43}
+.spark-soil-stage .sf-process-title{fill:#26485f;font-size:15px;font-weight:900}
+.spark-soil-stage .sf-process-arrow{fill:none;stroke:#2d8a68;stroke-width:5;stroke-linecap:round}.spark-soil-stage .sf-process-arrow.warning{stroke:#c46a3b}
+.spark-soil-stage .sf-nitrate{fill:#1d6f58;font-size:24px;font-weight:900}
+.spark-soil-note-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
+.spark-soil-note-grid article,.spark-soil-formula{display:grid;gap:5px;padding:13px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:11px;background:var(--spark-bg,#f7fafc)}
+.spark-soil-note-grid b,.spark-soil-formula strong{color:var(--spark-teal-dark,#087f73);font-size:11px;text-transform:uppercase}
+.spark-soil-note-grid span,.spark-soil-formula span{color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.55}
+html[data-theme="dark"] .spark-soil-explorer,body[data-theme="dark"] .spark-soil-explorer,.dark .spark-soil-explorer{background:#122b43;border-color:#2a4863}
+html[data-theme="dark"] .spark-soil-tabs button,body[data-theme="dark"] .spark-soil-tabs button,.dark .spark-soil-tabs button{background:#15314b;border-color:#39566e;color:#e7f2fb}
+html[data-theme="dark"] .spark-soil-tabs button.active,body[data-theme="dark"] .spark-soil-tabs button.active,.dark .spark-soil-tabs button.active{background:#164e4a;color:#d7fffa;border-color:#2dd4bf}
+html[data-theme="dark"] .spark-soil-stage,body[data-theme="dark"] .spark-soil-stage,.dark .spark-soil-stage{background:#eef5eb;border-color:#39566e}
+html[data-theme="dark"] .spark-soil-note-grid article,body[data-theme="dark"] .spark-soil-note-grid article,.dark .spark-soil-note-grid article,html[data-theme="dark"] .spark-soil-formula,body[data-theme="dark"] .spark-soil-formula,.dark .spark-soil-formula{background:#0d2134;border-color:#29465f}
+@media(max-width:850px){.spark-soil-note-grid{grid-template-columns:1fr}.spark-soil-tabs{display:grid;grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.spark-soil-explorer{padding:14px}.spark-soil-stage .sf-title{font-size:25px}.spark-soil-stage .sf-small,.spark-soil-stage .sf-note{font-size:19px}.spark-soil-stage .sf-layer-label{font-size:21px}.spark-soil-stage .sf-layer-detail,.spark-soil-stage .sf-earthworm-label{font-size:17px}.spark-soil-stage .sf-process-title{font-size:20px}.spark-soil-stage .sf-nitrate{font-size:30px}}
+@media(max-width:390px){.spark-soil-tabs{grid-template-columns:1fr}}

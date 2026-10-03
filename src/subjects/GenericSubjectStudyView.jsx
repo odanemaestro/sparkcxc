@@ -3,6 +3,8 @@ import SparkLoader from "../components/ui/SparkLoader";
 import Card from "../components/ui/Card";
 import { recordSubjectActivity } from "./subjectProgress";
 import { loadGenericSubjectStructure } from "./genericSubjectCatalog";
+import IntegratedScienceModel from "./components/IntegratedScienceModel";
+import IntegratedScienceLabelDiagram from "./components/IntegratedScienceLabelDiagram";
 import InteractiveLabelDiagram from "./components/InteractiveLabelDiagram";
 import TransportProcessExplorer from "./components/TransportProcessExplorer";
 import {
@@ -68,10 +70,12 @@ function firstTopic(structure, completedIds = new Set()) {
 }
 
 function GenericLessonContent({
+  subjectId,
   topic,
   completedActivityKeys = new Set(),
   onActivityComplete,
 }) {
+  const DiagramActivity = subjectId === "integrated-science" ? IntegratedScienceLabelDiagram : InteractiveLabelDiagram;
   const lesson = lessonData(topic);
   const blocks = lessonSections(topic);
   const points = keyPoints(topic);
@@ -123,13 +127,15 @@ function GenericLessonContent({
       })}
 
       {models.map(model => (
-        model?.type === "membrane-transport"
+        subjectId === "integrated-science"
+          ? <div className="spark-integrated-science-model" key={model.id || model.type}><IntegratedScienceModel model={model} /></div>
+          : model?.type === "membrane-transport"
           ? <TransportProcessExplorer key={model.id || "membrane-transport"} />
           : null
       ))}
 
       {diagrams.map(diagram => (
-        <InteractiveLabelDiagram
+        <DiagramActivity
           key={diagram.id || diagram.title}
           activity={diagram}
           completed={completedActivityKeys.has(`diagram:${diagram.id}`)}
@@ -635,6 +641,7 @@ export default function GenericSubjectStudyView({
                   </div>
 
                   <GenericLessonContent
+                    subjectId={subjectId}
                     topic={activeTopic}
                     completedActivityKeys={completedActivityKeys}
                     onActivityComplete={recordInteractiveComplete}

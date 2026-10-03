@@ -1,0 +1,515 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="824" height="530">
+  <defs>
+    <linearGradient id="a"><stop offset="0" stop-color="#231f20"/><stop offset=".5" stop-color="#1d0708"/><stop offset="1" stop-color="#ea242a"/></linearGradient>
+    <radialGradient id="b" cx="194.903" cy="196.459" r="49.685" fx="194.903" fy="196.459" gradientTransform="matrix(.56689 -.53008 .58674 .62748 5.303 141.672)" gradientUnits="userSpaceOnUse" xlink:href="#a"/>
+  </defs>
+  <path fill="none" stroke="#000" stroke-width="2" d="M514.104 129.699l-7.642-7.972m-6.484 61.148l-9.963 4.764m49.146 26.963l-1.028 10.997m45.57-28.409l9.533 5.575m.178-52.196l9.768-5.154m-40.416 66.611l4.42 13.254m-52.249-21.391l-8.348 11.204m-8.515-55.508l-13.119-4.805m62.444-37.649l.098-13.972m46.682 74.213l13.215 4.532m-26.081-51.52l8.68-10.948"/>
+  <path fill="none" stroke="#000" stroke-width="2" d="M239.257 212.942l4.823 9.936m-39.521-12.489l-4.487 10.092m71.055-34.181l10.104 4.46m-102.348-10.969l-9.981 4.727m106.326-17.23l11.01.857m-27.723 34.726l7.148 8.419m-75.593-11.701l-7.256 8.326m39.646 7.169l-.344 11.04m48.468-82.276l9.576-5.504m-102.562 22.502l-10.996-1.037m17.352-17.314l-9.854-4.986m82.802-10.495l4.913-9.892m-23.937.784l1.968-10.868m-25.181 11.734l-2.714-10.706m-15.473 19.508l-7.07-8.485"/>
+  <circle id="e" cx="226.375" cy="166.047" r="49.5" fill="url(#b)"/>
+  <path fill="#007070" d="M566.755 223.339l9.904 4.592-4.592 9.904-9.903-4.592zm-58.855-9.703l1.894 10.751-10.75 1.895-1.895-10.75zm-21.17-58.004l-9.763 4.882-4.883-9.765 9.764-4.882zm60.576-50.512l-7.89-7.545 7.545-7.89 7.89 7.546zm58.314 75.979l9.662-5.083 5.083 9.662-9.663 5.083zm-16.966-60.261l-1.571-10.803 10.804-1.57 1.571 10.802z"/>
+  <path fill="none" stroke="#000" stroke-width="2" d="M377.216 214.096l-2.947 13.657m-33.394-42.181l-12.566 6.106m74.871 19.991l4.42 13.254m14.522-26.038l10.356 9.378m-77.341-4.517l-8.348 11.204m-8.515-55.507l-13.119-4.806m62.016-37.864l.098-13.972m47.157 51.944l13.431-3.847m-13.908 26.331l13.215 4.532m-26.293-51.52l8.679-10.948m-77.377 12.578l-8.718-10.918"/>
+  <path fill="#007070" d="M374.88 225.906l6.184 8.996-8.997 6.185-6.184-8.997zm-44.73-34.907l-3.265 10.416-10.416-3.265 3.265-10.416zm77.023 31.991l9.904 4.592-4.592 9.904-9.904-4.592zm24.004-16.189l10.883-.86.86 10.883-10.883.86zm-83.076 6.693l1.895 10.751-10.75 1.895-1.896-10.75zm-21.175-58.01l-9.764 4.882-4.882-9.765 9.764-4.882zm60.12-50.743l-7.892-7.545 7.545-7.89 7.892 7.545zm58.875 46.483l5.012-9.7 9.7 5.013-5.013 9.7zm-.552 29.707l9.66-5.084 5.083 9.66-9.66 5.084zm-17.164-60.235l-1.571-10.803 10.803-1.57 1.571 10.802zm-83.675 1.899l-10.88-.896.895-10.88 10.88.895z"/>
+  <path fill="none" stroke="#000" stroke-width="2" d="M702.903 120.98l-4.533-9.067m-11.928 20.921l-7.083-7.367m-2.714 22.457l-8.783-4.25m5.146 21.98l-9.368-.283m11.826 17.147l-9.258 1.927m16.149 11.59l-7.649 6.8m20.15 4.643l-5.26 8.673m18.19-2.999l-2.583 9.05m17.34-6.845l.283 9.477m16.997-13.122l2.573 9.628m7.914-15.616l4.533 7.366m5.95-17l6.581 4.716m.721-17.802l6.793 3.361m-3.658-17.621l7.861.566m-8.71-14.908l7.055-1.505m-11.902-11.377l6.357-4.167m-13.721-5.936l5.777-4.88m-14.771-2.131l4.552-6.25m-15.312.992l3.155-7.863m-19.595 5.189v-7.328"/>
+  <path id="c" fill="#007070" d="M266.881 307.096l-13.419-3.677.515-1.933 13.427 3.676zm-5.196 23.727l-13.821 1.591-.225-1.991 13.817-1.596zm-9.009-31.968l-1.961-.287 2.019-13.883 1.963.29zm-.177 4.772l-14.555 8.929-.737-1.22 14.555-8.929zm-2.139-3.687l-14.717 8.638-.713-1.232 14.717-8.649zm-4.128 30.491l-12.062-12.126 1-1.017 12.062 12.126zm-.635 17.957l-1.979-.008.073-14.035 1.987.011zm-2.347-14.923l-12.289-11.892.982-1.035 12.286 11.895zm-3.437-56.176l-9.904 9.856-1.395-1.425 9.9-9.858zm-9.889 27.971l-1.418.019-.326-17.17 1.423-.027zm-5.556-18.165l-10.881-8.75 1.24-1.562 10.876 8.74zm-.423.993h1.418v17.175h-1.418zm-7.098 48.959l-1.263-.653 7.734-15.308 1.264.654zm4.936 13.472l-1.81.827-5.753-12.772 1.813-.829zm-8.699-15.421l-1.279-.632 7.445-15.447 1.274.627zm5.952-25.568l-15.545-7.022.585-1.307 15.537 7.022zm-1.956 4.161l-15.407-7.325.606-1.291 15.404 7.32zm-5.371 23.38l-13.255 4.235-.603-1.912 13.254-4.236zm-8.338-36.549l-1.875.669-4.615-13.243 1.875-.664zm-2.413 5.033l-12.482 6.197-.88-1.799 12.482-6.194z"/>
+  <path id="d" fill="#bd1a8d" d="M410.866 303.023l-14.243 8.928-.72-1.221 14.242-8.926zm-2.093-3.687l-14.403 8.636-.698-1.232 14.404-8.647zm-20 5.318l-1.388.02-.317-17.172 1.39-.023zm-5.85-17.17h1.388v17.175h-1.388zm-19.953 12.86l15.243 6.946-.557 1.31-15.252-6.946zm-1.74 3.884l15.115 7.244-.586 1.299-15.115-7.25zM378.119 308.925l-15.217-7.021.573-1.307 15.208 7.022zm-24.887-20.139c4.652.32 9.406 5.98 9.089 10.631-.044.65-1.346 1.94-1.459 1.298-1.464-8.303-5.38-8.292-9.09-10.634-.55-.348.811-1.34 1.46-1.296zm22.97 24.301l-15.079-7.325.593-1.29 15.078 7.319zm-16.629-7.476c-3.509 3.07-10.874 2.449-13.948-1.058-.429-.49-.425-2.321.11-1.95 6.918 4.82 9.672 2.037 13.95 1.06.633-.146.377 1.52-.112 1.948zm29.285-1.195l-1.42.065-.354-16.754 1.426-.058zm-4.578.13l-1.424.035-.02-16.764 1.42-.032zm10.424-30.663c1.727 4.33-1.311 11.069-5.64 12.8-.605.24-2.331-.373-1.803-.753 6.848-4.919 5.141-8.443 5.643-12.801.075-.646 1.56.15 1.8.754zm-12.413 13.007c-4.288-1.83-6.921-8.737-5.094-13.026.255-.6 1.908-1.39 1.804-.747-1.343 8.323 2.359 9.599 5.094 13.03.406.508-1.206.999-1.804.743zm19.275 45.84l-11.718-11.97.992-1.02 11.726 11.972zm3.022-2.996l-11.49-12.202 1.013-1.001 11.49 12.207zm1.899 17.286c-4.223-1.975-6.62-8.967-4.649-13.192.275-.59 1.954-1.324 1.828-.685-1.624 8.273 2.032 9.674 4.65 13.194.388.523-1.24.958-1.829.683zm.146-17.979c4.379-1.601 11.026 1.631 12.63 6.01.224.61-.44 2.318-.804 1.779-4.718-6.988-8.29-5.384-12.632-6.012-.644-.093.195-1.554.806-1.777zm-10.004-18.734l14.046-9.141.8 1.18-14.041 9.133zm-2.502-3.839l14.23-8.863.776 1.19-14.225 8.864zm32.328-6.134c-2.767 3.752-10.094 4.726-13.849 1.962-.524-.386-.913-2.176-.312-1.928 7.792 3.221 9.885-.088 13.852-1.961.588-.278.695 1.403.31 1.926zm-17.599-3.681c-.708-4.609 3.77-10.49 8.378-11.2.643-.1 2.187.886 1.586 1.137-7.78 3.252-6.91 7.07-8.38 11.203-.218.612-1.485-.497-1.584-1.14zm-36.788 37.383l-1.299-.59 7.22-15.115 1.299.581zm3.835 1.829l-1.282-.61 7.515-14.98 1.288.608zm-16.866 7.109c.405-4.645 6.149-9.297 10.794-8.895.648.056 1.914 1.38 1.271 1.481-8.328 1.315-8.388 5.23-10.797 8.897-.357.544-1.325-.835-1.268-1.483zm16.936-6.036c3.007 3.564 2.253 10.917-1.308 13.926-.497.42-2.329.383-1.947-.144 4.943-6.83 2.21-9.635 1.31-13.928-.134-.637 1.526-.35 1.945.146z"/>
+  <use transform="translate(543.667 -.339)" xlink:href="#c"/>
+  <use transform="translate(297.835 -.604)" xlink:href="#d"/>
+  <g stroke="#000" transform="translate(34.456 -23.564)">
+    <path fill="none" stroke-width="2" d="M192.959 491.61l-.08-11.044"/>
+    <circle cx="193.047" cy="474.605" r="5.7" fill="#bd1a8d" transform="rotate(-140.612 193.032 474.582)"/>
+  </g>
+  <path fill="none" stroke="#000" stroke-width="2" d="M385.895 468.046l.39-13.965"/>
+  <path fill="#007070" d="M386.012 456.024l-7.73-7.708 7.706-7.73 7.73 7.706z"/>
+  <g stroke="#000" transform="translate(23.609 -25.406)">
+    <path fill="none" stroke-width="2" d="M515.063 493.262l-.079-11.045"/>
+    <circle cx="515.151" cy="476.256" r="5.7" fill="#bd1a8d" transform="rotate(-140.608 515.163 476.278)"/>
+  </g>
+  <path fill="none" stroke="#000" stroke-width="2" d="M556.659 468.046l.39-13.965"/>
+  <path fill="#007070" d="M556.773 456.028l-7.73-7.707 7.706-7.73 7.73 7.706z"/>
+  <path fill="none" stroke="#000" stroke-width="4" d="M147.995 527.837V2.017H822v525.82H2v-451h822M307 .004v527.833m-307-275h822M465 .004v527.833M632 .004v527.833m-632-124h822"/>
+  <g fill="#bd1a8d" stroke="#000">
+    <circle cx="241.114" cy="101.21" r="5.7"/>
+    <circle cx="210.692" cy="102.24" r="5.7"/>
+    <circle cx="185.754" cy="114.376" r="5.7"/>
+    <circle cx="168.877" cy="134.62" r="5.7"/>
+    <circle cx="160.687" cy="159.055" r="5.7"/>
+    <circle cx="163.433" cy="186.885" r="5.7"/>
+    <circle cx="178.749" cy="212.264" r="5.7"/>
+    <circle cx="197.455" cy="225.846" r="5.7"/>
+    <circle cx="221.711" cy="232.07" r="5.7"/>
+    <circle cx="246.501" cy="228.327" r="5.7"/>
+    <circle cx="269.366" cy="215.984" r="5.7"/>
+    <circle cx="286.604" cy="193.365" r="5.7"/>
+    <circle cx="292.169" cy="168.839" r="5.7"/>
+    <circle cx="285.434" cy="135.547" r="5.7"/>
+    <circle cx="264.658" cy="111.866" r="5.7"/>
+  </g>
+  <g fill="#bd1a8d" stroke="#000">
+    <circle cx="502.488" cy="117.264" r="5.7"/>
+    <circle cx="484.554" cy="190.03" r="5.7"/>
+    <circle cx="537.348" cy="231.516" r="5.7"/>
+    <circle cx="598.261" cy="205.942" r="5.7"/>
+    <circle cx="608.554" cy="142.816" r="5.7"/>
+  </g>
+  <use transform="translate(160.254 0)" xlink:href="#e"/>
+  <use transform="translate(320.061 0)" xlink:href="#e"/>
+  <use transform="translate(495.796 0)" xlink:href="#e"/>
+<g font-family="Liberation Sans">
+<g font-size="24" text-anchor="middle">
+<switch transform="translate(227.138 46.781)"><text id="trsvg556-pt-br" systemLanguage="pt-br"><tspan id="trsvg26-pt-br">Grupo A</tspan></text>
+  <text systemLanguage="ar" id="trsvg531"><tspan id="trsvg1">A المجموعة</tspan></text>
+  <text systemLanguage="as" font-family="Lohit Bengali" id="trsvg532"><tspan id="trsvg2">এ দল</tspan></text>
+  <text systemLanguage="bn" font-family="Lohit Bengali" id="trsvg533"><tspan id="trsvg3">গ্রুপ এ</tspan></text>
+  <text systemLanguage="ca" id="trsvg534"><tspan id="trsvg4">Grup A</tspan></text>
+  <text systemLanguage="da" id="trsvg535"><tspan id="trsvg5">Type A</tspan></text>
+  <text systemLanguage="de" id="trsvg536"><tspan id="trsvg6">Gruppe A</tspan></text>
+  <text systemLanguage="el" id="trsvg537"><tspan id="trsvg7">Ομάδα Α</tspan></text>
+  <text systemLanguage="en" id="trsvg538"><tspan id="trsvg8">Group A</tspan></text>
+  <text systemLanguage="es" id="trsvg539"><tspan id="trsvg9">Grupo A</tspan></text>
+  <text systemLanguage="fi" id="trsvg540"><tspan id="trsvg10">A-ryhmä</tspan></text>
+  <text systemLanguage="fr" id="trsvg541"><tspan id="trsvg11">Groupe A</tspan></text>
+  <text systemLanguage="gu" font-family="Lohit Gujarati" id="trsvg542"><tspan id="trsvg12">સમુહ A</tspan></text>
+  <text systemLanguage="hi" id="trsvg543"><tspan id="trsvg13">समूह A</tspan></text>
+  <text systemLanguage="hu" id="trsvg544"><tspan id="trsvg14">A csoport</tspan></text>
+  <text systemLanguage="it" id="trsvg545"><tspan id="trsvg15">Gruppo A</tspan></text>
+  <text systemLanguage="la" id="trsvg546"><tspan id="trsvg16">Genus A</tspan></text>
+  <text systemLanguage="ml" font-family="Lohit Malayalam" id="trsvg547"><tspan id="trsvg17">വിഭാഗം A</tspan></text>
+  <text systemLanguage="mr" id="trsvg548"><tspan id="trsvg18">गट ए</tspan></text>
+  <text systemLanguage="ms" id="trsvg549"><tspan id="trsvg19">Kumpulan A</tspan></text>
+  <text systemLanguage="pa" id="trsvg550"><tspan id="trsvg20">ਏ ਸਮੂਹ</tspan></text>
+  <text systemLanguage="ru" id="trsvg551"><tspan id="trsvg21">Группа A</tspan></text>
+  <text systemLanguage="sv" id="trsvg552"><tspan id="trsvg22">Grupp A</tspan></text>
+  <text systemLanguage="sw" id="trsvg553"><tspan id="trsvg23">Aina A</tspan></text>
+  <text systemLanguage="te" id="trsvg554"><tspan id="trsvg24">వర్గం A</tspan></text>
+  <text systemLanguage="zh" id="trsvg555"><tspan id="trsvg25">A 組</tspan></text>
+  
+<text id="trsvg556-th" systemLanguage="th"><tspan id="trsvg26-th">A</tspan></text><text id="trsvg556-lv" systemLanguage="lv"><tspan id="trsvg26-lv">A grupa</tspan></text><text id="trsvg556-yue" systemLanguage="yue"><tspan id="trsvg26-yue">谷 A</tspan></text><text id="trsvg556"><tspan id="trsvg26">Group A</tspan></text></switch>
+<switch transform="translate(385.866 46.781)"><text id="trsvg582-pt-br" systemLanguage="pt-br"><tspan id="trsvg52-pt-br">Grupo B</tspan></text>
+  <text systemLanguage="ar" id="trsvg557"><tspan id="trsvg27">B المجموعة</tspan></text>
+  <text systemLanguage="bn" font-family="Lohit Bengali" id="trsvg558"><tspan id="trsvg28">গ্রুপ বি</tspan></text>
+  <text systemLanguage="as" font-family="Lohit Bengali" id="trsvg559"><tspan id="trsvg29">বি দল</tspan></text>
+  <text systemLanguage="ca" id="trsvg560"><tspan id="trsvg30">Grup B</tspan></text>
+  <text systemLanguage="da" id="trsvg561"><tspan id="trsvg31">Type B</tspan></text>
+  <text systemLanguage="de" id="trsvg562"><tspan id="trsvg32">Gruppe B</tspan></text>
+  <text systemLanguage="el" id="trsvg563"><tspan id="trsvg33">Ομάδα Β</tspan></text>
+  <text systemLanguage="en" id="trsvg564"><tspan id="trsvg34">Group B</tspan></text>
+  <text systemLanguage="es" id="trsvg565"><tspan id="trsvg35">Grupo B</tspan></text>
+  <text systemLanguage="fi" id="trsvg566"><tspan id="trsvg36">B-ryhmä</tspan></text>
+  <text systemLanguage="fr" id="trsvg567"><tspan id="trsvg37">Groupe B</tspan></text>
+  <text systemLanguage="gu" font-family="Lohit Gujarati" id="trsvg568"><tspan id="trsvg38">સમુહ B</tspan></text>
+  <text systemLanguage="hi" id="trsvg569"><tspan id="trsvg39">समूह B</tspan></text>
+  <text systemLanguage="hu" id="trsvg570"><tspan id="trsvg40">B csoport</tspan></text>
+  <text systemLanguage="it" id="trsvg571"><tspan id="trsvg41">Gruppo B</tspan></text>
+  <text systemLanguage="la" id="trsvg572"><tspan id="trsvg42">Genus B</tspan></text>
+  <text systemLanguage="ml" font-family="Lohit Malayalam" id="trsvg573"><tspan id="trsvg43">വിഭാഗം B</tspan></text>
+  <text systemLanguage="mr" id="trsvg574"><tspan id="trsvg44">गट बी</tspan></text>
+  <text systemLanguage="ms" id="trsvg575"><tspan id="trsvg45">Kumpulan B</tspan></text>
+  <text systemLanguage="pa" id="trsvg576"><tspan id="trsvg46">ਬੀ ਸਮੂਹ</tspan></text>
+  <text systemLanguage="ru" id="trsvg577"><tspan id="trsvg47">Группа B</tspan></text>
+  <text systemLanguage="sv" id="trsvg578"><tspan id="trsvg48">Grupp B</tspan></text>
+  <text systemLanguage="sw" id="trsvg579"><tspan id="trsvg49">Aina B</tspan></text>
+  <text systemLanguage="te" id="trsvg580"><tspan id="trsvg50">వర్గం B</tspan></text>
+  <text systemLanguage="zh" id="trsvg581"><tspan id="trsvg51">B 組</tspan></text>
+  
+<text id="trsvg582-th" systemLanguage="th"><tspan id="trsvg52-th">B</tspan></text><text id="trsvg582-lv" systemLanguage="lv"><tspan id="trsvg52-lv">B grupa</tspan></text><text id="trsvg582-yue" systemLanguage="yue"><tspan id="trsvg52-yue">谷 B</tspan></text><text id="trsvg582"><tspan id="trsvg52">Group B</tspan></text></switch>
+<switch transform="translate(548.212 46.781)"><text id="trsvg608-pt-br" systemLanguage="pt-br"><tspan id="trsvg78-pt-br">Grupo AB</tspan></text>
+  <text systemLanguage="ar" id="trsvg583"><tspan id="trsvg53">AB المجموعة</tspan></text>
+  <text systemLanguage="bn" font-family="Lohit Bengali" id="trsvg584"><tspan id="trsvg54">গ্রুপ এবি</tspan></text>
+  <text systemLanguage="as" font-family="Lohit Bengali" id="trsvg585"><tspan id="trsvg55">এবি দল</tspan></text>
+  <text systemLanguage="ca" id="trsvg586"><tspan id="trsvg56">Grup AB</tspan></text>
+  <text systemLanguage="da" id="trsvg587"><tspan id="trsvg57">Type AB</tspan></text>
+  <text systemLanguage="de" id="trsvg588"><tspan id="trsvg58">Gruppe AB</tspan></text>
+  <text systemLanguage="el" id="trsvg589"><tspan id="trsvg59">Ομάδα ΑΒ</tspan></text>
+  <text systemLanguage="en" id="trsvg590"><tspan id="trsvg60">Group AB</tspan></text>
+  <text systemLanguage="es" id="trsvg591"><tspan id="trsvg61">Grupo AB</tspan></text>
+  <text systemLanguage="fi" id="trsvg592"><tspan id="trsvg62">AB-ryhmä</tspan></text>
+  <text systemLanguage="fr" id="trsvg593"><tspan id="trsvg63">Groupe AB</tspan></text>
+  <text systemLanguage="gu" font-family="Lohit Gujarati" id="trsvg594"><tspan id="trsvg64">સમુહ AB</tspan></text>
+  <text systemLanguage="hi" id="trsvg595"><tspan id="trsvg65">समूह AB</tspan></text>
+  <text systemLanguage="hu" id="trsvg596"><tspan id="trsvg66">AB csoport</tspan></text>
+  <text systemLanguage="it" id="trsvg597"><tspan id="trsvg67">Gruppo AB</tspan></text>
+  <text systemLanguage="la" id="trsvg598"><tspan id="trsvg68">Genus AB</tspan></text>
+  <text systemLanguage="ml" font-family="Lohit Malayalam" id="trsvg599"><tspan id="trsvg69">വിഭാഗം AB</tspan></text>
+  <text systemLanguage="mr" id="trsvg600"><tspan id="trsvg70">गट एबी</tspan></text>
+  <text systemLanguage="ms" id="trsvg601"><tspan id="trsvg71">Kumpulan AB</tspan></text>
+  <text systemLanguage="pa" id="trsvg602"><tspan id="trsvg72">ਏਬੀ ਸਮੂਹ</tspan></text>
+  <text systemLanguage="ru" id="trsvg603"><tspan id="trsvg73">Группа AB</tspan></text>
+  <text systemLanguage="sv" id="trsvg604"><tspan id="trsvg74">Grupp AB</tspan></text>
+  <text systemLanguage="sw" id="trsvg605"><tspan id="trsvg75">Aina AB</tspan></text>
+  <text systemLanguage="te" id="trsvg606"><tspan id="trsvg76">వర్గం AB</tspan></text>
+  <text systemLanguage="zh" id="trsvg607"><tspan id="trsvg77">AB 組</tspan></text>
+  
+<text id="trsvg608-th" systemLanguage="th"><tspan id="trsvg78-th">AB</tspan></text><text id="trsvg608-lv" systemLanguage="lv"><tspan id="trsvg78-lv">AB grupa</tspan></text><text id="trsvg608-yue" systemLanguage="yue"><tspan id="trsvg78-yue">谷 AB</tspan></text><text id="trsvg608"><tspan id="trsvg78">Group AB</tspan></text></switch>
+<switch transform="translate(726.335 46.781)"><text id="trsvg634-pt-br" systemLanguage="pt-br"><tspan id="trsvg104-pt-br">Grupo O</tspan></text>
+  <text systemLanguage="ar" id="trsvg609"><tspan id="trsvg79">O المجموعة</tspan></text>
+  <text systemLanguage="bn" font-family="Lohit Bengali" id="trsvg610"><tspan id="trsvg80">গ্রুপ ও</tspan></text>
+  <text systemLanguage="as" font-family="Lohit Bengali" id="trsvg611"><tspan id="trsvg81">অ’ দল</tspan></text>
+  <text systemLanguage="ca" id="trsvg612"><tspan id="trsvg82">Grup O</tspan></text>
+  <text systemLanguage="da" id="trsvg613"><tspan id="trsvg83">Type 0</tspan></text>
+  <text systemLanguage="de" id="trsvg614"><tspan id="trsvg84">Gruppe 0</tspan></text>
+  <text systemLanguage="el" id="trsvg615"><tspan id="trsvg85">Ομάδα Ο</tspan></text>
+  <text systemLanguage="en" id="trsvg616"><tspan id="trsvg86">Group O</tspan></text>
+  <text systemLanguage="es" id="trsvg617"><tspan id="trsvg87">Grupo O</tspan></text>
+  <text systemLanguage="fi" id="trsvg618"><tspan id="trsvg88">O-ryhmä</tspan></text>
+  <text systemLanguage="fr" id="trsvg619"><tspan id="trsvg89">Groupe O</tspan></text>
+  <text systemLanguage="gu" font-family="Lohit Gujarati" id="trsvg620"><tspan id="trsvg90">સમુહ O</tspan></text>
+  <text systemLanguage="hi" id="trsvg621"><tspan id="trsvg91">समूह O</tspan></text>
+  <text systemLanguage="hu" id="trsvg622"><tspan id="trsvg92">O csoport</tspan></text>
+  <text systemLanguage="it" id="trsvg623"><tspan id="trsvg93">Gruppo O</tspan></text>
+  <text systemLanguage="la" id="trsvg624"><tspan id="trsvg94">Genus O</tspan></text>
+  <text systemLanguage="ml" font-family="Lohit Malayalam" id="trsvg625"><tspan id="trsvg95">വിഭാഗം O</tspan></text>
+  <text systemLanguage="mr" id="trsvg626"><tspan id="trsvg96">गट ओ</tspan></text>
+  <text systemLanguage="ms" id="trsvg627"><tspan id="trsvg97">Kumpulan O</tspan></text>
+  <text systemLanguage="pa" id="trsvg628"><tspan id="trsvg98">ਓ ਸਮੂਹ</tspan></text>
+  <text systemLanguage="ru" id="trsvg629"><tspan id="trsvg99">Группа O</tspan></text>
+  <text systemLanguage="sv" id="trsvg630"><tspan id="trsvg100">Grupp 0</tspan></text>
+  <text systemLanguage="sw" id="trsvg631"><tspan id="trsvg101">Aina O</tspan></text>
+  <text systemLanguage="te" id="trsvg632"><tspan id="trsvg102">వర్గం O</tspan></text>
+  <text systemLanguage="zh" id="trsvg633"><tspan id="trsvg103">O 組</tspan></text>
+  
+<text id="trsvg634-th" systemLanguage="th"><tspan id="trsvg104-th">O</tspan></text><text id="trsvg634-lv" systemLanguage="lv"><tspan id="trsvg104-lv">0 gruoa</tspan></text><text id="trsvg634-yue" systemLanguage="yue"><tspan id="trsvg104-yue">谷 O</tspan></text><text id="trsvg634"><tspan id="trsvg104">Group O</tspan></text></switch>
+</g>
+<g font-size="24">
+<switch transform="translate(22.714 158.969)"><text id="trsvg659-pt-br" systemLanguage="pt-br"><tspan id="trsvg158-pt-br">Tipo de</tspan><tspan x="0" y="24" id="trsvg159-pt-br">hemácia</tspan></text>
+  <text systemLanguage="ar" x="-15" id="trsvg635"><tspan id="trsvg105">الدم الحمراء</tspan><tspan x="-15" y="24" id="trsvg106">نوع من الخلايا</tspan></text>
+  <text systemLanguage="bn" font-family="Lohit Bengali" x="-10" id="trsvg636"><tspan id="trsvg107">লোহিত রক্ত-</tspan><tspan x="-10" y="24" id="trsvg108">কণিকার ধরন</tspan></text>
+  <text systemLanguage="as" font-family="Lohit Bengali" x="-10" id="trsvg637"><tspan id="trsvg109">লোহিত ৰক্ত-</tspan><tspan x="-10" y="24" id="trsvg110">কণিকাৰ ধৰণ</tspan></text>
+  <text systemLanguage="ca" y="-12" id="trsvg638"><tspan id="trsvg111">Tipus de</tspan><tspan x="0" y="12" id="trsvg112">glòbul</tspan><tspan x="0" y="36" id="trsvg113">vermell</tspan></text>
+  <text systemLanguage="da" y="-12" id="trsvg639"><tspan id="trsvg114">Typer af</tspan><tspan x="0" y="12" id="trsvg115">Røde</tspan><tspan x="0" y="36" id="trsvg116">blodceller</tspan></text>
+  <text systemLanguage="de" y="12" id="trsvg640"><tspan id="trsvg117">Blutgruppen</tspan></text>
+  <text systemLanguage="el" x="-10" y="-12" id="trsvg641"><tspan id="trsvg118">Τύπος</tspan><tspan x="-10" y="12" id="trsvg119">Ερυθρού</tspan><tspan x="-10" y="36" id="trsvg120">Κυττάρου</tspan></text>
+  <text systemLanguage="en" id="trsvg642"><tspan id="trsvg121">Red blood</tspan><tspan x="0" y="24" id="trsvg122">cell type</tspan></text>
+  <text systemLanguage="es" x="-10" y="12" id="trsvg643"><tspan id="trsvg123">Eritrocito</tspan></text>
+  <text systemLanguage="fi" id="trsvg644"><tspan id="trsvg124">Punasolu-</tspan><tspan x="0" y="24" id="trsvg125">tyyppi</tspan></text>
+  <text systemLanguage="fr" id="trsvg645"><tspan id="trsvg126">Globule</tspan><tspan x="0" y="24" id="trsvg127">Rouge</tspan></text>
+  <text systemLanguage="gu" font-family="Lohit Gujarati" y="-18" id="trsvg646"><tspan id="trsvg128">લાલ</tspan><tspan x="0" y="12" id="trsvg129">રક્ત-કોષના</tspan><tspan x="0" y="42" id="trsvg130">પ્રકારો</tspan></text>
+  <text systemLanguage="hi" y="-12" id="trsvg647"><tspan id="trsvg131">लाल रक्त</tspan><tspan x="0" y="12" id="trsvg132">कोशिका</tspan><tspan x="0" y="36" id="trsvg133">प्रकार</tspan></text>
+  <text systemLanguage="hu" id="trsvg648"><tspan id="trsvg134">Vörösvér-</tspan><tspan x="0" y="24" id="trsvg135">test típusa</tspan></text>
+  <text systemLanguage="it" y="-12" id="trsvg649"><tspan id="trsvg136">Tipi di</tspan><tspan x="0" y="12" id="trsvg137">globuli</tspan><tspan x="0" y="36" id="trsvg138">rossi</tspan></text>
+  <text systemLanguage="ml" font-family="Lohit Malayalam" font-size="16" x="-10" id="trsvg650"><tspan id="trsvg139">ചുവന്ന</tspan><tspan x="-10" y="24" id="trsvg140">രക്താണുക്കൾ</tspan></text>
+  <text systemLanguage="mr" y="12" id="trsvg651"><tspan id="trsvg141">रक्तगट</tspan></text>
+  <text systemLanguage="ms" y="-12" id="trsvg652"><tspan id="trsvg142">Jenis sel</tspan><tspan x="0" y="12" id="trsvg143">darah</tspan><tspan x="0" y="36" id="trsvg144">merah</tspan></text>
+  <text systemLanguage="pa" x="-10" id="trsvg653"><tspan id="trsvg145">ਲਾਲ ਲਹੂ</tspan><tspan x="-10" y="24" id="trsvg146">ਕੋਸ਼ਾਣੂ ਕਿਸਮ</tspan></text>
+  <text systemLanguage="ru" id="trsvg654"><tspan id="trsvg147">Тип</tspan><tspan x="0" y="24" id="trsvg148">крови</tspan></text>
+  <text systemLanguage="sv" x="-10" id="trsvg655"><tspan id="trsvg149">Röd blodcell</tspan></text>
+  <text systemLanguage="sw" x="-10" y="-24" id="trsvg656"><tspan id="trsvg150">Aina ya</tspan><tspan x="-10" y="0" id="trsvg151">chembe-</tspan><tspan x="-10" y="24" id="trsvg152">chembe</tspan><tspan x="-10" y="48" id="trsvg153">nyekundu</tspan></text>
+  <text systemLanguage="te" id="trsvg657"><tspan id="trsvg154">ఎర్ర రక్త</tspan><tspan x="0" y="30" id="trsvg155">కణం రకం</tspan></text>
+  <text systemLanguage="zh" id="trsvg658"><tspan id="trsvg156">紅血球</tspan><tspan x="-10" y="24" id="trsvg157">細胞型態</tspan></text>
+  
+<text id="trsvg659-th" systemLanguage="th"><tspan id="trsvg158-th">ชนิดของเซลล์</tspan><tspan x="0" y="24" id="trsvg159-th">เม็ดเลือดแดง</tspan></text><text id="trsvg659-lv" systemLanguage="lv"><tspan id="trsvg158-lv">Eritrocītu </tspan><tspan x="0" y="24" id="trsvg159-lv">tips</tspan></text><text id="trsvg659-yue" systemLanguage="yue"><tspan id="trsvg158-yue">紅血球嘅</tspan><tspan x="0" y="24" id="trsvg159-yue">類型</tspan></text><text id="trsvg659"><tspan id="trsvg158">Red blood</tspan><tspan x="0" y="24" id="trsvg159">cell type</tspan></text></switch>
+<switch transform="translate(23.05 324.809)"><text id="trsvg685-pt-br" systemLanguage="pt-br"><tspan id="trsvg213-pt-br">Anticorpos</tspan><tspan x="0" y="24" id="trsvg214-pt-br">no plasma</tspan></text>
+  <text systemLanguage="ar" x="-15" y="-12" id="trsvg660"><tspan id="trsvg160">الأجسام</tspan><tspan x="-15" y="12" id="trsvg161">االمضادة</tspan><tspan x="-15" y="36" id="trsvg162">في البلازما</tspan></text>
+  <text systemLanguage="bn" font-family="Lohit Bengali" x="-10" id="trsvg661"><tspan id="trsvg163">রক্তরসে</tspan><tspan x="-10" y="24" id="trsvg164">অ্যান্টিবডি</tspan></text>
+  <text systemLanguage="as" font-family="Lohit Bengali" x="-10" id="trsvg662"><tspan id="trsvg165">ৰক্ত-প্ৰৰসত</tspan><tspan x="-10" y="24" id="trsvg166">থকা এণ্টিবডি</tspan></text>
+  <text systemLanguage="ca" id="trsvg663"><tspan id="trsvg167">Anticossos</tspan><tspan x="0" y="24" id="trsvg168">al plasma</tspan></text>
+  <text systemLanguage="da" id="trsvg664"><tspan id="trsvg169">Antistoffer</tspan><tspan x="0" y="24" id="trsvg170">i Plasma</tspan></text>
+  <text systemLanguage="de" y="12" id="trsvg665"><tspan id="trsvg171">Antikörper</tspan></text>
+  <text systemLanguage="el" x="-10" id="trsvg666"><tspan id="trsvg172">Αντισώματα</tspan><tspan x="-10" y="24" id="trsvg173">στο Πλάσμα</tspan></text>
+  <text systemLanguage="en" id="trsvg667"><tspan id="trsvg174">Antibodies</tspan><tspan x="0" y="24" id="trsvg175">in plasma</tspan></text>
+  <text systemLanguage="es" x="-10" y="-12" id="trsvg668"><tspan id="trsvg176">Anticuerpos</tspan><tspan x="-10" y="12" id="trsvg177">en plasma</tspan><tspan x="-10" y="36" id="trsvg178">sanguíneo</tspan></text>
+  <text systemLanguage="fi" y="-12" id="trsvg669"><tspan id="trsvg179">Plasman</tspan><tspan x="0" y="12" id="trsvg180">vasta-</tspan><tspan x="0" y="36" id="trsvg181">aineet</tspan></text>
+  <text systemLanguage="fr" y="12" id="trsvg670"><tspan id="trsvg182">Anticorps</tspan></text>
+  <text systemLanguage="gu" font-family="Lohit Gujarati" y="-18" id="trsvg671"><tspan id="trsvg183">જીવદ્રવ્યમાં</tspan><tspan x="0" y="12" id="trsvg184">પ્રતિપિંડની</tspan><tspan x="0" y="42" id="trsvg185">ઉપસ્થિતિ</tspan></text>
+  <text systemLanguage="hi" id="trsvg672"><tspan id="trsvg186">उपस्थित</tspan><tspan x="0" y="24" id="trsvg187">प्रतिपिंड</tspan></text>
+  <text systemLanguage="hu" id="trsvg673"><tspan id="trsvg188">Jelen lévő</tspan><tspan x="0" y="24" id="trsvg189">antitestek</tspan></text>
+  <text systemLanguage="it" id="trsvg674"><tspan id="trsvg190">Anticorpi</tspan><tspan x="0" y="24" id="trsvg191">presenti</tspan></text>
+  <text systemLanguage="la" x="-10" y="12" id="trsvg675"><tspan id="trsvg192">Anticorpora</tspan></text>
+  <text systemLanguage="ml" font-family="Lohit Malayalam" font-size="16" x="-10" y="-12" id="trsvg676"><tspan id="trsvg193">പ്ലാസ്മയിലെ</tspan><tspan x="-10" y="12" id="trsvg194">പ്രതിരോധ</tspan><tspan x="-10" y="36" id="trsvg195">വസ്‌തുക്കള്‍</tspan></text>
+  <text systemLanguage="mr" y="12" id="trsvg677"><tspan id="trsvg196">प्रतिपिंड</tspan></text>
+  <text systemLanguage="ms" id="trsvg678"><tspan id="trsvg197">Antibodi</tspan><tspan x="0" y="24" id="trsvg198">yang hadir</tspan></text>
+  <text systemLanguage="pa" x="-10" id="trsvg679"><tspan id="trsvg199">ਪਲਾਜ਼ਮਾ ਵਿੱਚ</tspan><tspan x="-10" y="24" id="trsvg200">ਐਂਟੀਬਾਡੀਆਂ</tspan></text>
+  <text systemLanguage="ru" id="trsvg680"><tspan id="trsvg201">Антитела</tspan><tspan x="0" y="24" id="trsvg202">в плазме</tspan></text>
+  <text systemLanguage="sv" x="-10" id="trsvg681"><tspan id="trsvg203">Antikroppar</tspan><tspan x="-10" y="24" id="trsvg204">i plasma</tspan></text>
+  <text systemLanguage="sw" x="-10" y="-12" id="trsvg682"><tspan id="trsvg205">Mazindiko</tspan><tspan x="-10" y="12" id="trsvg206">katika</tspan><tspan x="-10" y="36" id="trsvg207">plazma</tspan></text>
+  <text systemLanguage="te" y="-18" id="trsvg683"><tspan id="trsvg208">జీవద్రవ్యం</tspan><tspan x="0" y="12" id="trsvg209">లోని</tspan><tspan x="0" y="42" id="trsvg210">ప్రతిరోధకాలు</tspan></text>
+  <text systemLanguage="zh" id="trsvg684"><tspan id="trsvg211">抗體</tspan><tspan x="0" y="24" id="trsvg212">存在</tspan></text>
+  
+<text id="trsvg685-th" systemLanguage="th"><tspan id="trsvg213-th">พลาสมาใน</tspan><tspan x="0" y="24" id="trsvg214-th">แอนติบอดี</tspan></text><text id="trsvg685-lv" systemLanguage="lv"><tspan id="trsvg213-lv">Antivielas</tspan><tspan x="0" y="24" id="trsvg214-lv">plazmā</tspan></text><text id="trsvg685-yue" systemLanguage="yue"><tspan id="trsvg213-yue">喺血漿嘅</tspan><tspan x="0" y="24" id="trsvg214-yue">抗體</tspan></text><text id="trsvg685"><tspan id="trsvg213">Antibodies</tspan><tspan x="0" y="24" id="trsvg214">in plasma</tspan></text></switch>
+<switch transform="translate(23.05 450.309)"><text id="trsvg711-pt-br" systemLanguage="pt-br"><tspan id="trsvg276-pt-br">Antígenos</tspan><tspan x="0" y="24" id="trsvg277-pt-br">nas</tspan><tspan x="0" y="48" id="trsvg278-pt-br">hemácias</tspan></text>
+  <text systemLanguage="ar" x="-5" id="trsvg686"><tspan id="trsvg215">المستضدات</tspan><tspan x="-5" y="24" id="trsvg216">في الأحمر</tspan><tspan x="-5" y="48" id="trsvg217">خلية الدم</tspan></text>
+  <text systemLanguage="bn" font-family="Lohit Bengali" x="-10" id="trsvg687"><tspan id="trsvg218">লোহিত রক্ত-</tspan><tspan x="-10" y="24" id="trsvg219">কণিকায়</tspan><tspan x="-10" y="48" id="trsvg220">অ্যান্টিজেন</tspan></text>
+  <text systemLanguage="as" font-family="Lohit Bengali" x="-10" id="trsvg688"><tspan id="trsvg221">লোহিত ৰক্ত</tspan><tspan x="-10" y="24" id="trsvg222">কণিকাত থকা</tspan><tspan x="-10" y="48" id="trsvg223">এণ্টিজেন</tspan></text>
+  <text systemLanguage="ca" id="trsvg689"><tspan id="trsvg224">Antígens</tspan><tspan x="0" y="24" id="trsvg225">als glòbuls</tspan><tspan x="0" y="48" id="trsvg226">vermells</tspan></text>
+  <text systemLanguage="da" id="trsvg690"><tspan id="trsvg227">Antigener</tspan><tspan x="0" y="24" id="trsvg228">i Røde</tspan><tspan x="0" y="48" id="trsvg229">blodceller</tspan></text>
+  <text systemLanguage="de" y="12" id="trsvg691"><tspan id="trsvg230">Antigene</tspan></text>
+  <text systemLanguage="el" x="-10" id="trsvg692"><tspan id="trsvg231">Αντιγόνα</tspan><tspan x="-10" y="24" id="trsvg232">στο Ερυθρό</tspan><tspan x="-10" y="48" id="trsvg233">Κύτταρο</tspan></text>
+  <text systemLanguage="en" id="trsvg693"><tspan id="trsvg234">Antigens in</tspan><tspan x="0" y="24" id="trsvg235">red blood</tspan><tspan x="0" y="48" id="trsvg236">cell</tspan></text>
+  <text systemLanguage="es" x="-10" id="trsvg694"><tspan id="trsvg237">Antígenos</tspan><tspan x="-10" y="24" id="trsvg238">en los</tspan><tspan x="-10" y="48" id="trsvg239">eritrocitos</tspan></text>
+  <text systemLanguage="fi" y="12" id="trsvg695"><tspan id="trsvg240">Punasolun</tspan><tspan x="0" y="36" id="trsvg241">antigeenit</tspan></text>
+  <text systemLanguage="fr" y="24" id="trsvg696"><tspan id="trsvg242">Antigène</tspan></text>
+  <text systemLanguage="gu" font-family="Lohit Gujarati" y="-21" id="trsvg697"><tspan id="trsvg243">લાલ</tspan><tspan x="0" y="9" id="trsvg244">રક્ત-કોષમાં</tspan><tspan x="0" y="39" id="trsvg245">પ્રતિજનની</tspan><tspan x="0" y="69" id="trsvg246">ઉપસ્થિતિ</tspan></text>
+  <text systemLanguage="hi" id="trsvg698"><tspan id="trsvg247">जीवद्रव्य</tspan><tspan x="0" y="24" id="trsvg248">में प्रतिजन</tspan><tspan x="0" y="48" id="trsvg249">कोशिका</tspan></text>
+  <text systemLanguage="hu" y="12" id="trsvg699"><tspan id="trsvg250">Jelen lévő</tspan><tspan x="0" y="36" id="trsvg251">antigének</tspan></text>
+  <text systemLanguage="it" y="12" id="trsvg700"><tspan id="trsvg252">Antigeni</tspan><tspan x="0" y="36" id="trsvg253">presenti</tspan></text>
+  <text systemLanguage="la" y="24" id="trsvg701"><tspan id="trsvg254">Antigeni</tspan></text>
+  <text systemLanguage="ml" font-family="Lohit Malayalam" font-size="16" x="-10" y="-12" id="trsvg702"><tspan id="trsvg255">ചുവന്ന രക്താ-</tspan><tspan x="-10" y="12" id="trsvg256">ണുക്കളിലെ</tspan><tspan x="-10" y="36" id="trsvg257">പ്രതിരക്ഷോ-</tspan><tspan x="-10" y="60" id="trsvg258">ത്തേജകവസ്തു</tspan></text>
+  <text systemLanguage="mr" y="24" id="trsvg703"><tspan id="trsvg259">प्रतिजन</tspan></text>
+  <text systemLanguage="ms" id="trsvg704"><tspan id="trsvg260">Antigen</tspan><tspan x="0" y="36" id="trsvg261">yang hadir</tspan></text>
+  <text systemLanguage="pa" x="-10" id="trsvg705"><tspan id="trsvg262">ਲਾਲ ਲਹੂ</tspan><tspan x="-10" y="24" id="trsvg263">ਕੋਸ਼ਾਣੂ</tspan><tspan x="-10" y="48" id="trsvg264">ਵਿੱਚ ਐਂਟੀਜਨ</tspan></text>
+  <text systemLanguage="ru" y="24" id="trsvg706"><tspan id="trsvg265">Антигены</tspan></text>
+  <text systemLanguage="sv" x="-10" y="24" id="trsvg707"><tspan id="trsvg266">Antigener</tspan></text>
+  <text systemLanguage="sw" x="-10" y="-12" id="trsvg708"><tspan id="trsvg267">Anitjeni juu</tspan><tspan x="-10" y="12" id="trsvg268">ya chembe-</tspan><tspan x="-10" y="36" id="trsvg269">chembe</tspan><tspan x="-10" y="60" id="trsvg270">nyekundu</tspan></text>
+  <text systemLanguage="te" y="-6" id="trsvg709"><tspan id="trsvg271">ఎర్ర రక్త</tspan><tspan x="0" y="24" id="trsvg272">కణంలోని</tspan><tspan x="0" y="54" id="trsvg273">వ్యధీకరణాలు</tspan></text>
+  <text systemLanguage="zh" y="12" id="trsvg710"><tspan id="trsvg274">抗原</tspan><tspan x="0" y="36" id="trsvg275">存在</tspan></text>
+  
+<text id="trsvg711-th" systemLanguage="th"><tspan id="trsvg276-th">แอนติเจน</tspan><tspan x="0" y="24" id="trsvg277-th">ในเซลล์</tspan><tspan x="0" y="48" id="trsvg278-th">เม็ดเลือดแดง</tspan></text><text id="trsvg711-lv" systemLanguage="lv"><tspan id="trsvg276-lv">Antigēni</tspan><tspan x="0" y="24" id="trsvg277-lv">eritrocītos</tspan><tspan x="0" y="48" id="trsvg278-lv"> </tspan></text><text id="trsvg711-yue" systemLanguage="yue"><tspan id="trsvg276-yue">喺紅血球</tspan><tspan x="0" y="24" id="trsvg277-yue">嘅</tspan><tspan x="0" y="48" id="trsvg278-yue">抗原體</tspan></text><text id="trsvg711"><tspan id="trsvg276">Antigens in</tspan><tspan x="0" y="24" id="trsvg277">red blood</tspan><tspan x="0" y="48" id="trsvg278">cell</tspan></text></switch>
+</g>
+<g font-size="22" text-anchor="middle">
+<switch transform="translate(227.138 384.781)"><text id="trsvg737-pt-br" systemLanguage="pt-br"><tspan id="trsvg304-pt-br">Anti-B</tspan></text>
+  <text systemLanguage="ar" id="trsvg712"><tspan id="trsvg279">B مكافحة</tspan></text>
+  <text systemLanguage="as" font-family="Lohit Bengali" id="trsvg713"><tspan id="trsvg280">এণ্টি-বি</tspan></text>
+  <text systemLanguage="bn" font-family="Lohit Bengali" id="trsvg714"><tspan id="trsvg281">অ্যান্টি-বি</tspan></text>
+  <text systemLanguage="ca" id="trsvg715"><tspan id="trsvg282">Anti-B</tspan></text>
+  <text systemLanguage="da" id="trsvg716"><tspan id="trsvg283">Anti-B</tspan></text>
+  <text systemLanguage="de" id="trsvg717"><tspan id="trsvg284">Anti-B</tspan></text>
+  <text systemLanguage="el" id="trsvg718"><tspan id="trsvg285">Αντι-Β</tspan></text>
+  <text systemLanguage="en" id="trsvg719"><tspan id="trsvg286">Anti-B</tspan></text>
+  <text systemLanguage="es" id="trsvg720"><tspan id="trsvg287">Anti-B</tspan></text>
+  <text systemLanguage="fi" id="trsvg721"><tspan id="trsvg288">Anti-B</tspan></text>
+  <text systemLanguage="fr" id="trsvg722"><tspan id="trsvg289">Anti-B</tspan></text>
+  <text systemLanguage="gu" font-family="Lohit Gujarati" id="trsvg723"><tspan id="trsvg290">પ્રતિ-B</tspan></text>
+  <text systemLanguage="hi" id="trsvg724"><tspan id="trsvg291">प्रति-B</tspan></text>
+  <text systemLanguage="hu" id="trsvg725"><tspan id="trsvg292">Anti-B</tspan></text>
+  <text systemLanguage="it" id="trsvg726"><tspan id="trsvg293">Anti-B</tspan></text>
+  <text systemLanguage="la" id="trsvg727"><tspan id="trsvg294">Anti-B</tspan></text>
+  <text systemLanguage="ml" font-family="Lohit Malayalam" id="trsvg728"><tspan id="trsvg295">ആൻറ്റി-B</tspan></text>
+  <text systemLanguage="mr" id="trsvg729"><tspan id="trsvg296">प्रति बी</tspan></text>
+  <text systemLanguage="ms" id="trsvg730"><tspan id="trsvg297">Anti-B</tspan></text>
+  <text systemLanguage="pa" id="trsvg731"><tspan id="trsvg298">ਐਂਟੀ-ਬੀ</tspan></text>
+  <text systemLanguage="ru" id="trsvg732"><tspan id="trsvg299">Анти-B</tspan></text>
+  <text systemLanguage="sv" id="trsvg733"><tspan id="trsvg300">Anti-B</tspan></text>
+  <text systemLanguage="sw" id="trsvg734"><tspan id="trsvg301">Anti-B</tspan></text>
+  <text systemLanguage="te" id="trsvg735"><tspan id="trsvg302">ప్రతి B</tspan></text>
+  <text systemLanguage="zh" id="trsvg736"><tspan id="trsvg303">B 抗體</tspan></text>
+  
+<text id="trsvg737-th" systemLanguage="th"><tspan id="trsvg304-th">แอนติบอดี B</tspan></text><text id="trsvg737-lv" systemLanguage="lv"><tspan id="trsvg304-lv">Antivielas B</tspan></text><text id="trsvg737-yue" systemLanguage="yue"><tspan id="trsvg304-yue">預防-A</tspan></text><text id="trsvg737"><tspan id="trsvg304">Anti-B</tspan></text></switch>
+<switch transform="translate(385.866 384.781)"><text id="trsvg763-pt-br" systemLanguage="pt-br"><tspan id="trsvg330-pt-br">Anti-A</tspan></text>
+  <text systemLanguage="ar" id="trsvg738"><tspan id="trsvg305">A مكافحة</tspan></text>
+  <text systemLanguage="as" font-family="Lohit Bengali" id="trsvg739"><tspan id="trsvg306">এণ্টি-এ</tspan></text>
+  <text systemLanguage="bn" font-family="Lohit Bengali" id="trsvg740"><tspan id="trsvg307">অ্যান্টি-এ</tspan></text>
+  <text systemLanguage="ca" id="trsvg741"><tspan id="trsvg308">Anti-A</tspan></text>
+  <text systemLanguage="da" id="trsvg742"><tspan id="trsvg309">Anti-A</tspan></text>
+  <text systemLanguage="de" id="trsvg743"><tspan id="trsvg310">Anti-A</tspan></text>
+  <text systemLanguage="el" id="trsvg744"><tspan id="trsvg311">Αντι-Α</tspan></text>
+  <text systemLanguage="en" id="trsvg745"><tspan id="trsvg312">Anti-A</tspan></text>
+  <text systemLanguage="es" id="trsvg746"><tspan id="trsvg313">Anti-A</tspan></text>
+  <text systemLanguage="fi" id="trsvg747"><tspan id="trsvg314">Anti-A</tspan></text>
+  <text systemLanguage="fr" id="trsvg748"><tspan id="trsvg315">Anti-A</tspan></text>
+  <text systemLanguage="gu" font-family="Lohit Gujarati" id="trsvg749"><tspan id="trsvg316">પ્રતિ-A</tspan></text>
+  <text systemLanguage="hi" id="trsvg750"><tspan id="trsvg317">प्रति-A</tspan></text>
+  <text systemLanguage="hu" id="trsvg751"><tspan id="trsvg318">Anti-A</tspan></text>
+  <text systemLanguage="it" id="trsvg752"><tspan id="trsvg319">Anti-A</tspan></text>
+  <text systemLanguage="la" id="trsvg753"><tspan id="trsvg320">Anti-A</tspan></text>
+  <text systemLanguage="ml" font-family="Lohit Malayalam" id="trsvg754"><tspan id="trsvg321">ആൻറ്റി-A</tspan></text>
+  <text systemLanguage="mr" id="trsvg755"><tspan id="trsvg322">प्रति ए</tspan></text>
+  <text systemLanguage="ms" id="trsvg756"><tspan id="trsvg323">Anti-A</tspan></text>
+  <text systemLanguage="pa" id="trsvg757"><tspan id="trsvg324">ਐਂਟੀ-ਏ</tspan></text>
+  <text systemLanguage="ru" id="trsvg758"><tspan id="trsvg325">Анти-A</tspan></text>
+  <text systemLanguage="sv" id="trsvg759"><tspan id="trsvg326">Anti-A</tspan></text>
+  <text systemLanguage="sw" id="trsvg760"><tspan id="trsvg327">Anti-A</tspan></text>
+  <text systemLanguage="te" id="trsvg761"><tspan id="trsvg328">ప్రతి A</tspan></text>
+  <text systemLanguage="zh" id="trsvg762"><tspan id="trsvg329">A 抗體</tspan></text>
+  
+<text id="trsvg763-th" systemLanguage="th"><tspan id="trsvg330-th">แอนติบอดี A</tspan></text><text id="trsvg763-lv" systemLanguage="lv"><tspan id="trsvg330-lv">Antivielas A</tspan></text><text id="trsvg763-yue" systemLanguage="yue"><tspan id="trsvg330-yue">預防-B</tspan></text><text id="trsvg763"><tspan id="trsvg330">Anti-A</tspan></text></switch>
+<switch transform="translate(548.212 384.781)"><text id="trsvg789-pt-br" systemLanguage="pt-br"><tspan id="trsvg356-pt-br">Nenhum</tspan></text>
+  <text systemLanguage="ar" id="trsvg764"><tspan id="trsvg331">لا شيء</tspan></text>
+  <text systemLanguage="as" font-family="Lohit Bengali" id="trsvg765"><tspan id="trsvg332">নাই</tspan></text>
+  <text systemLanguage="bn" font-family="Lohit Bengali" id="trsvg766"><tspan id="trsvg333">নেই</tspan></text>
+  <text systemLanguage="ca" id="trsvg767"><tspan id="trsvg334">Cap</tspan></text>
+  <text systemLanguage="da" id="trsvg768"><tspan id="trsvg335">Ingen</tspan></text>
+  <text systemLanguage="de" id="trsvg769"><tspan id="trsvg336">Keiner</tspan></text>
+  <text systemLanguage="el" id="trsvg770"><tspan id="trsvg337">Κανένα</tspan></text>
+  <text systemLanguage="en" id="trsvg771"><tspan id="trsvg338">None</tspan></text>
+  <text systemLanguage="es" id="trsvg772"><tspan id="trsvg339">Ninguno</tspan></text>
+  <text systemLanguage="fi" id="trsvg773"><tspan id="trsvg340">Ei ole</tspan></text>
+  <text systemLanguage="fr" id="trsvg774"><tspan id="trsvg341">Aucun</tspan></text>
+  <text systemLanguage="gu" font-family="Lohit Gujarati" id="trsvg775"><tspan id="trsvg342">કોઈ નહિં</tspan></text>
+  <text systemLanguage="hi" id="trsvg776"><tspan id="trsvg343">कोई नहीं</tspan></text>
+  <text systemLanguage="hu" id="trsvg777"><tspan id="trsvg344">egyik sem</tspan></text>
+  <text systemLanguage="it" id="trsvg778"><tspan id="trsvg345">Nessuno</tspan></text>
+  <text systemLanguage="la" id="trsvg779"><tspan id="trsvg346">Nulla</tspan></text>
+  <text systemLanguage="ml" font-family="Lohit Malayalam" id="trsvg780"><tspan id="trsvg347">ഒന്നുമില്ല</tspan></text>
+  <text systemLanguage="mr" id="trsvg781"><tspan id="trsvg348">काहीही</tspan></text>
+  <text systemLanguage="ms" id="trsvg782"><tspan id="trsvg349">Tiada</tspan></text>
+  <text systemLanguage="pa" id="trsvg783"><tspan id="trsvg350">ਕੋਈ ਨਹੀਂ</tspan></text>
+  <text systemLanguage="ru" id="trsvg784"><tspan id="trsvg351">Никто</tspan></text>
+  <text systemLanguage="sv" id="trsvg785"><tspan id="trsvg352">Ingen</tspan></text>
+  <text systemLanguage="sw" id="trsvg786"><tspan id="trsvg353">Hakuna</tspan></text>
+  <text systemLanguage="te" id="trsvg787"><tspan id="trsvg354">ఏదియును కాదు</tspan></text>
+  <text systemLanguage="zh" id="trsvg788"><tspan id="trsvg355">無</tspan></text>
+  
+<text id="trsvg789-th" systemLanguage="th"><tspan id="trsvg356-th">ไม่มี</tspan></text><text id="trsvg789-lv" systemLanguage="lv"><tspan id="trsvg356-lv">nav</tspan></text><text id="trsvg789-yue" systemLanguage="yue"><tspan id="trsvg356-yue">冇</tspan></text><text id="trsvg789"><tspan id="trsvg356">None</tspan></text></switch>
+<switch transform="translate(726.335 384.781)"><text id="trsvg815-pt-br" systemLanguage="pt-br"><tspan id="trsvg385-pt-br">Anti-A e Anti-B</tspan></text>
+  <text systemLanguage="ar" id="trsvg790"><tspan id="trsvg357">مكافحة-A-B ومكافحة</tspan></text>
+  <text systemLanguage="as" font-family="Lohit Bengali" id="trsvg791"><tspan id="trsvg358">এণ্টি-এ আৰু এণ্টি-বি</tspan></text>
+  <text systemLanguage="bn" font-family="Lohit Bengali" y="-12" id="trsvg792"><tspan id="trsvg359">অ্যান্টি-এ এবং</tspan><tspan x="0" y="12" id="trsvg360">অ্যান্টি বি</tspan></text>
+  <text systemLanguage="ca" id="trsvg793"><tspan id="trsvg361">Anti-A i Anti-B</tspan></text>
+  <text systemLanguage="da" id="trsvg794"><tspan id="trsvg362">Anti-A og Anti-B</tspan></text>
+  <text systemLanguage="de" id="trsvg795"><tspan id="trsvg363">Anti-A und Anti-B</tspan></text>
+  <text systemLanguage="el" id="trsvg796"><tspan id="trsvg364">Αντι-Α και Αντι-Β</tspan></text>
+  <text systemLanguage="en" id="trsvg797"><tspan id="trsvg365">Anti-A and Anti-B</tspan></text>
+  <text systemLanguage="es" id="trsvg798"><tspan id="trsvg366">Anti-A y Anti-B</tspan></text>
+  <text systemLanguage="fi" id="trsvg799"><tspan id="trsvg367">Anti-A ja Anti-B</tspan></text>
+  <text systemLanguage="fr" id="trsvg800"><tspan id="trsvg368">Anti-A et Anti-B</tspan></text>
+  <text systemLanguage="gu" font-family="Lohit Gujarati" id="trsvg801"><tspan id="trsvg369">પ્રતિ-A અને પ્રતિ-B</tspan></text>
+  <text systemLanguage="hi" id="trsvg802"><tspan id="trsvg370">प्रति-A और प्रति-B</tspan></text>
+  <text systemLanguage="hu" id="trsvg803"><tspan id="trsvg371">Anti-A és Anti-B</tspan></text>
+  <text systemLanguage="it" id="trsvg804"><tspan id="trsvg372">Anti-A e Anti-B</tspan></text>
+  <text systemLanguage="la" id="trsvg805"><tspan id="trsvg373">Anti-A Anti-B</tspan></text>
+  <text systemLanguage="ml" font-family="Lohit Malayalam" font-size="16" y="-12" id="trsvg806"><tspan id="trsvg374">ആൻറ്റി-A</tspan><tspan x="0" y="10" id="trsvg375">യും ആൻറ്റി-B</tspan></text>
+  <text systemLanguage="mr" id="trsvg807"><tspan id="trsvg376">प्रति ए प्रति बी</tspan></text>
+  <text systemLanguage="ms" id="trsvg808"><tspan id="trsvg377">Anti-B dan Anti-A</tspan></text>
+  <text systemLanguage="pa" id="trsvg809"><tspan id="trsvg378">ਐਟੀ-ਏ ਅਤੇ ਐਂਟੀ-ਬੀ</tspan></text>
+  <text systemLanguage="ru" id="trsvg810"><tspan id="trsvg379">Анти-A и с Анти-A</tspan></text>
+  <text systemLanguage="sv" id="trsvg811"><tspan id="trsvg380">Anti-A och Anti-B</tspan></text>
+  <text systemLanguage="sw" id="trsvg812"><tspan id="trsvg381">Anti-A na Anti-B</tspan></text>
+  <text systemLanguage="te" y="-12" id="trsvg813"><tspan id="trsvg382">ప్రతి A</tspan><tspan x="0" y="12" id="trsvg383">మరియు ప్రతి B</tspan></text>
+  <text systemLanguage="zh" id="trsvg814"><tspan id="trsvg384">A 與 B 抗體</tspan></text>
+  
+<text id="trsvg815-th" systemLanguage="th"><tspan id="trsvg385-th">แอนติบอดี A และ B</tspan></text><text id="trsvg815-lv" systemLanguage="lv"><tspan id="trsvg385-lv">Antivielas A un B</tspan></text><text id="trsvg815-yue" systemLanguage="yue"><tspan id="trsvg385-yue">預防-A同埋預防-B</tspan></text><text id="trsvg815"><tspan id="trsvg385">Anti-A and Anti-B</tspan></text></switch>
+<switch transform="translate(227.138 494.781)"><text id="trsvg841-pt-br" systemLanguage="pt-br"><tspan id="trsvg411-pt-br">Antígeno A</tspan></text>
+  <text systemLanguage="ar" id="trsvg816"><tspan id="trsvg386">A مستضد</tspan></text>
+  <text systemLanguage="as" font-family="Lohit Bengali" id="trsvg817"><tspan id="trsvg387">এ এণ্টিজেন</tspan></text>
+  <text systemLanguage="bn" font-family="Lohit Bengali" id="trsvg818"><tspan id="trsvg388">এ অ্যান্টিজেন</tspan></text>
+  <text systemLanguage="ca" id="trsvg819"><tspan id="trsvg389">Antigen A</tspan></text>
+  <text systemLanguage="da" id="trsvg820"><tspan id="trsvg390">A antigen</tspan></text>
+  <text systemLanguage="de" id="trsvg821"><tspan id="trsvg391">A-antigen</tspan></text>
+  <text systemLanguage="el" id="trsvg822"><tspan id="trsvg392">Α αντιγόνο</tspan></text>
+  <text systemLanguage="en" id="trsvg823"><tspan id="trsvg393">A antigen</tspan></text>
+  <text systemLanguage="es" id="trsvg824"><tspan id="trsvg394">Antígeno A</tspan></text>
+  <text systemLanguage="fi" id="trsvg825"><tspan id="trsvg395">A-antigeeni</tspan></text>
+  <text systemLanguage="fr" id="trsvg826"><tspan id="trsvg396">Antigène A</tspan></text>
+  <text systemLanguage="gu" font-family="Lohit Gujarati" id="trsvg827"><tspan id="trsvg397">A પ્રતિજન</tspan></text>
+  <text systemLanguage="hi" id="trsvg828"><tspan id="trsvg398">A प्रतिजन</tspan></text>
+  <text systemLanguage="hu" id="trsvg829"><tspan id="trsvg399">A antigén</tspan></text>
+  <text systemLanguage="it" id="trsvg830"><tspan id="trsvg400">A antigene</tspan></text>
+  <text systemLanguage="la" id="trsvg831"><tspan id="trsvg401">A antigen</tspan></text>
+  <text systemLanguage="ml" font-family="Lohit Malayalam" id="trsvg832"><tspan id="trsvg402">A ആന്റിജൻ</tspan></text>
+  <text systemLanguage="mr" id="trsvg833"><tspan id="trsvg403">ए प्रतिजन</tspan></text>
+  <text systemLanguage="ms" id="trsvg834"><tspan id="trsvg404">Antigen A</tspan></text>
+  <text systemLanguage="pa" id="trsvg835"><tspan id="trsvg405">ਏ ਐਂਟੀਜਨ</tspan></text>
+  <text systemLanguage="ru" id="trsvg836"><tspan id="trsvg406">A-антиген</tspan></text>
+  <text systemLanguage="sv" id="trsvg837"><tspan id="trsvg407">A-antigener</tspan></text>
+  <text systemLanguage="sw" id="trsvg838"><tspan id="trsvg408">Antijeni A</tspan></text>
+  <text systemLanguage="te" id="trsvg839"><tspan id="trsvg409">A ప్రతి జనకం</tspan></text>
+  <text systemLanguage="zh" id="trsvg840"><tspan id="trsvg410">A 抗原</tspan></text>
+  
+<text id="trsvg841-th" systemLanguage="th"><tspan id="trsvg411-th">แอนติเจน A</tspan></text><text id="trsvg841-lv" systemLanguage="lv"><tspan id="trsvg411-lv">A antigēns</tspan></text><text id="trsvg841-yue" systemLanguage="yue"><tspan id="trsvg411-yue">A 抗原體</tspan></text><text id="trsvg841"><tspan id="trsvg411">A antigen</tspan></text></switch>
+<switch transform="translate(385.866 494.781)"><text id="trsvg867-pt-br" systemLanguage="pt-br"><tspan id="trsvg437-pt-br">Antígeno B</tspan></text>
+  <text systemLanguage="ar" id="trsvg842"><tspan id="trsvg412">B مستضد</tspan></text>
+  <text systemLanguage="as" font-family="Lohit Bengali" id="trsvg843"><tspan id="trsvg413">বি এণ্টিজেন</tspan></text>
+  <text systemLanguage="bn" font-family="Lohit Bengali" id="trsvg844"><tspan id="trsvg414">বি অ্যান্টিজেন</tspan></text>
+  <text systemLanguage="ca" id="trsvg845"><tspan id="trsvg415">Antigen B</tspan></text>
+  <text systemLanguage="da" id="trsvg846"><tspan id="trsvg416">A antigen</tspan></text>
+  <text systemLanguage="de" id="trsvg847"><tspan id="trsvg417">B-antigen</tspan></text>
+  <text systemLanguage="el" id="trsvg848"><tspan id="trsvg418">Β αντιγόνο</tspan></text>
+  <text systemLanguage="en" id="trsvg849"><tspan id="trsvg419">B antigen</tspan></text>
+  <text systemLanguage="es" id="trsvg850"><tspan id="trsvg420">Antígeno B</tspan></text>
+  <text systemLanguage="fi" id="trsvg851"><tspan id="trsvg421">B-antigeeni</tspan></text>
+  <text systemLanguage="fr" id="trsvg852"><tspan id="trsvg422">Antigène B</tspan></text>
+  <text systemLanguage="gu" font-family="Lohit Gujarati" id="trsvg853"><tspan id="trsvg423">B પ્રતિજન</tspan></text>
+  <text systemLanguage="hi" id="trsvg854"><tspan id="trsvg424">B प्रतिजन</tspan></text>
+  <text systemLanguage="hu" id="trsvg855"><tspan id="trsvg425">B antigén</tspan></text>
+  <text systemLanguage="it" id="trsvg856"><tspan id="trsvg426">B antigene</tspan></text>
+  <text systemLanguage="la" id="trsvg857"><tspan id="trsvg427">B antigen</tspan></text>
+  <text systemLanguage="ml" font-family="Lohit Malayalam" id="trsvg858"><tspan id="trsvg428">B ആന്റിജൻ</tspan></text>
+  <text systemLanguage="mr" id="trsvg859"><tspan id="trsvg429">बी प्रतिजन</tspan></text>
+  <text systemLanguage="ms" id="trsvg860"><tspan id="trsvg430">Antigen B</tspan></text>
+  <text systemLanguage="pa" id="trsvg861"><tspan id="trsvg431">ਬੀ ਐਂਟੀਜਨ</tspan></text>
+  <text systemLanguage="ru" id="trsvg862"><tspan id="trsvg432">B-антиген</tspan></text>
+  <text systemLanguage="sv" id="trsvg863"><tspan id="trsvg433">B-antigener</tspan></text>
+  <text systemLanguage="sw" id="trsvg864"><tspan id="trsvg434">Antijeni B</tspan></text>
+  <text systemLanguage="te" id="trsvg865"><tspan id="trsvg435">B ప్రతి జనకం</tspan></text>
+  <text systemLanguage="zh" id="trsvg866"><tspan id="trsvg436">B 抗原</tspan></text>
+  
+<text id="trsvg867-th" systemLanguage="th"><tspan id="trsvg437-th">แอนติเจน B</tspan></text><text id="trsvg867-lv" systemLanguage="lv"><tspan id="trsvg437-lv">B antigēns</tspan></text><text id="trsvg867-yue" systemLanguage="yue"><tspan id="trsvg437-yue">B 抗原體</tspan></text><text id="trsvg867"><tspan id="trsvg437">B antigen</tspan></text></switch>
+<switch transform="translate(548.212 488.781)"><text id="trsvg893-pt-br" systemLanguage="pt-br"><tspan id="trsvg482-pt-br">Antígenos</tspan><tspan x="0" y="24" id="trsvg483-pt-br">A e B</tspan></text>
+  <text systemLanguage="ar" x="-15" id="trsvg868"><tspan id="trsvg438">A و B</tspan><tspan x="-15" y="24" id="trsvg439">المستضدات</tspan></text>
+  <text systemLanguage="as" font-family="Lohit Bengali" id="trsvg869"><tspan id="trsvg440">এ আৰু বি</tspan><tspan x="0" y="24" id="trsvg441">এণ্টিজেন</tspan></text>
+  <text systemLanguage="bn" font-family="Lohit Bengali" id="trsvg870"><tspan id="trsvg442">এ এবং বি</tspan><tspan x="0" y="24" id="trsvg443">অ্যান্টিজেন</tspan></text>
+  <text systemLanguage="ca" id="trsvg871"><tspan id="trsvg444">Antigens</tspan><tspan x="0" y="24" id="trsvg445">A i B</tspan></text>
+  <text systemLanguage="da" id="trsvg872"><tspan id="trsvg446">A og B</tspan><tspan x="0" y="24" id="trsvg447">antigener</tspan></text>
+  <text systemLanguage="de" id="trsvg873"><tspan id="trsvg448">A und B</tspan><tspan x="0" y="24" id="trsvg449">Antigene</tspan></text>
+  <text systemLanguage="el" id="trsvg874"><tspan id="trsvg450">Α και Β</tspan><tspan x="0" y="24" id="trsvg451">αντιγόνα</tspan></text>
+  <text systemLanguage="en" id="trsvg875"><tspan id="trsvg452">A and B</tspan><tspan x="0" y="24" id="trsvg453">antigens</tspan></text>
+  <text systemLanguage="es" id="trsvg876"><tspan id="trsvg454">Antígenos</tspan><tspan x="0" y="24" id="trsvg455">A y B</tspan></text>
+  <text systemLanguage="fi" id="trsvg877"><tspan id="trsvg456">A ja B</tspan><tspan x="0" y="24" id="trsvg457">-antigeenit</tspan></text>
+  <text systemLanguage="fr" y="6" id="trsvg878"><tspan id="trsvg458">Antigène A et B</tspan></text>
+  <text systemLanguage="gu" font-family="Lohit Gujarati" id="trsvg879"><tspan id="trsvg459">A અને B</tspan><tspan x="0" y="24" id="trsvg460">પ્રતિજન</tspan></text>
+  <text systemLanguage="hi" id="trsvg880"><tspan id="trsvg461">A और B</tspan><tspan x="0" y="24" id="trsvg462">प्रतिजन</tspan></text>
+  <text systemLanguage="hu" id="trsvg881"><tspan id="trsvg463">A és B</tspan><tspan x="0" y="24" id="trsvg464">antigének</tspan></text>
+  <text systemLanguage="it" y="6" id="trsvg882"><tspan id="trsvg465">A e B</tspan></text>
+  <text systemLanguage="la" y="6" id="trsvg883"><tspan id="trsvg466">A et B</tspan></text>
+  <text systemLanguage="ml" font-family="Lohit Malayalam" id="trsvg884"><tspan id="trsvg467">A യും B</tspan><tspan x="0" y="24" id="trsvg468">ആന്റിജൻ</tspan></text>
+  <text systemLanguage="mr" y="6" id="trsvg885"><tspan id="trsvg469">ए आणि बी</tspan></text>
+  <text systemLanguage="ms" id="trsvg886"><tspan id="trsvg470">Antigen</tspan><tspan x="0" y="24" id="trsvg471">A dan B</tspan></text>
+  <text systemLanguage="pa" id="trsvg887"><tspan id="trsvg472">ਏ ਅਤੇ ਬੀ</tspan><tspan x="0" y="24" id="trsvg473">ਐਂਟੀਜਨ</tspan></text>
+  <text systemLanguage="ru" id="trsvg888"><tspan id="trsvg474">А и В</tspan><tspan x="0" y="24" id="trsvg475">антигены</tspan></text>
+  <text systemLanguage="sv" id="trsvg889"><tspan id="trsvg476">A- och B-</tspan><tspan x="0" y="24" id="trsvg477">antigener</tspan></text>
+  <text systemLanguage="sw" y="6" id="trsvg890"><tspan id="trsvg478">Antijeni A na B</tspan></text>
+  <text systemLanguage="te" id="trsvg891"><tspan id="trsvg479">A మరియు B</tspan><tspan x="0" y="24" id="trsvg480">ప్రతిజనకాలు</tspan></text>
+  <text systemLanguage="zh" y="6" id="trsvg892"><tspan id="trsvg481">A 與 B 抗原</tspan></text>
+  
+<text id="trsvg893-th" systemLanguage="th"><tspan id="trsvg482-th">แอนติเจน</tspan><tspan x="0" y="24" id="trsvg483-th">A และ B</tspan></text><text id="trsvg893-lv" systemLanguage="lv"><tspan id="trsvg482-lv">A un B</tspan><tspan x="0" y="24" id="trsvg483-lv">antigēni</tspan></text><text id="trsvg893-yue" systemLanguage="yue"><tspan id="trsvg482-yue">A同埋B</tspan><tspan x="0" y="24" id="trsvg483-yue">抗原體</tspan></text><text id="trsvg893"><tspan id="trsvg482">A and B</tspan><tspan x="0" y="24" id="trsvg483">antigens</tspan></text></switch>
+<switch transform="translate(726.335 496.926)"><text id="trsvg919-pt-br" systemLanguage="pt-br"><tspan id="trsvg509-pt-br">Nenhum</tspan></text>
+  <text systemLanguage="ar" id="trsvg894"><tspan id="trsvg484">لا شيء</tspan></text>
+  <text systemLanguage="as" font-family="Lohit Bengali" id="trsvg895"><tspan id="trsvg485">নাই</tspan></text>
+  <text systemLanguage="bn" font-family="Lohit Bengali" id="trsvg896"><tspan id="trsvg486">নেই</tspan></text>
+  <text systemLanguage="ca" id="trsvg897"><tspan id="trsvg487">Cap</tspan></text>
+  <text systemLanguage="da" id="trsvg898"><tspan id="trsvg488">Ingen</tspan></text>
+  <text systemLanguage="de" id="trsvg899"><tspan id="trsvg489">Ohne</tspan></text>
+  <text systemLanguage="el" id="trsvg900"><tspan id="trsvg490">Κανένα</tspan></text>
+  <text systemLanguage="en" id="trsvg901"><tspan id="trsvg491">None</tspan></text>
+  <text systemLanguage="es" id="trsvg902"><tspan id="trsvg492">Ninguno</tspan></text>
+  <text systemLanguage="fi" id="trsvg903"><tspan id="trsvg493">Ei ole</tspan></text>
+  <text systemLanguage="fr" id="trsvg904"><tspan id="trsvg494">Pas d'antigène</tspan></text>
+  <text systemLanguage="gu" font-family="Lohit Gujarati" id="trsvg905"><tspan id="trsvg495">કોઈ નહિં</tspan></text>
+  <text systemLanguage="hi" id="trsvg906"><tspan id="trsvg496">कोई नहीं</tspan></text>
+  <text systemLanguage="hu" id="trsvg907"><tspan id="trsvg497">egyik sem</tspan></text>
+  <text systemLanguage="it" id="trsvg908"><tspan id="trsvg498">Nessuno</tspan></text>
+  <text systemLanguage="la" id="trsvg909"><tspan id="trsvg499">Nulla</tspan></text>
+  <text systemLanguage="ml" font-family="Lohit Malayalam" id="trsvg910"><tspan id="trsvg500">ഒന്നുമില്ല</tspan></text>
+  <text systemLanguage="mr" id="trsvg911"><tspan id="trsvg501">काहीही</tspan></text>
+  <text systemLanguage="ms" id="trsvg912"><tspan id="trsvg502">Tiada</tspan></text>
+  <text systemLanguage="pa" id="trsvg913"><tspan id="trsvg503">ਕੋਈ ਨਹੀਂ</tspan></text>
+  <text systemLanguage="ru" id="trsvg914"><tspan id="trsvg504">Никто</tspan></text>
+  <text systemLanguage="sv" id="trsvg915"><tspan id="trsvg505">Ingen</tspan></text>
+  <text systemLanguage="sw" id="trsvg916"><tspan id="trsvg506">Hakuna</tspan></text>
+  <text systemLanguage="te" id="trsvg917"><tspan id="trsvg507">ఏదియను  కాదు</tspan></text>
+  <text systemLanguage="zh" id="trsvg918"><tspan id="trsvg508">無</tspan></text>
+  
+<text id="trsvg919-th" systemLanguage="th"><tspan id="trsvg509-th">ไม่มี</tspan></text><text id="trsvg919-lv" systemLanguage="lv"><tspan id="trsvg509-lv">nav</tspan></text><text id="trsvg919-yue" systemLanguage="yue"><tspan id="trsvg509-yue">冇</tspan></text><text id="trsvg919"><tspan id="trsvg509">None</tspan></text></switch>
+</g>
+<g fill="#fff" font-size="28" text-anchor="middle">
+<switch transform="translate(227.138 174.781)"><text id="trsvg924-pt-br" systemLanguage="pt-br"><tspan id="trsvg514-pt-br">A</tspan></text>
+  <text systemLanguage="as" font-family="Lohit Bengali" id="trsvg920"><tspan id="trsvg510">এ</tspan></text>
+  <text systemLanguage="bn" font-family="Lohit Bengali" id="trsvg921"><tspan id="trsvg511">এ</tspan></text>
+  <text systemLanguage="mr" id="trsvg922"><tspan id="trsvg512">ए</tspan></text>
+  <text systemLanguage="pa" id="trsvg923"><tspan id="trsvg513">ਏ</tspan></text>
+  
+<text id="trsvg924-th" systemLanguage="th"><tspan id="trsvg514-th">A</tspan></text><text id="trsvg924-lv" systemLanguage="lv"><tspan id="trsvg514-lv">A</tspan></text><text id="trsvg924-yue" systemLanguage="yue"><tspan id="trsvg514-yue">A</tspan></text><text id="trsvg924"><tspan id="trsvg514">A</tspan></text></switch>
+<switch transform="translate(385.866 174.781)"><text id="trsvg929-pt-br" systemLanguage="pt-br"><tspan id="trsvg519-pt-br">B</tspan></text>
+  <text systemLanguage="as" font-family="Lohit Bengali" id="trsvg925"><tspan id="trsvg515">বি</tspan></text>
+  <text systemLanguage="bn" font-family="Lohit Bengali" id="trsvg926"><tspan id="trsvg516">বি</tspan></text>
+  <text systemLanguage="mr" id="trsvg927"><tspan id="trsvg517">बी</tspan></text>
+  <text systemLanguage="pa" id="trsvg928"><tspan id="trsvg518">ਬੀ</tspan></text>
+  
+<text id="trsvg929-th" systemLanguage="th"><tspan id="trsvg519-th">B</tspan></text><text id="trsvg929-lv" systemLanguage="lv"><tspan id="trsvg519-lv">B</tspan></text><text id="trsvg929-yue" systemLanguage="yue"><tspan id="trsvg519-yue">B</tspan></text><text id="trsvg929"><tspan id="trsvg519">B</tspan></text></switch>
+<switch transform="translate(548.212 174.781)"><text id="trsvg934-pt-br" systemLanguage="pt-br"><tspan id="trsvg524-pt-br">AB</tspan></text>
+  <text systemLanguage="as" font-family="Lohit Bengali" id="trsvg930"><tspan id="trsvg520">এবি</tspan></text>
+  <text systemLanguage="bn" font-family="Lohit Bengali" id="trsvg931"><tspan id="trsvg521">এবি</tspan></text>
+  <text systemLanguage="mr" id="trsvg932"><tspan id="trsvg522">एबी</tspan></text>
+  <text systemLanguage="pa" id="trsvg933"><tspan id="trsvg523">ਏਬੀ</tspan></text>
+  
+<text id="trsvg934-th" systemLanguage="th"><tspan id="trsvg524-th">AB</tspan></text><text id="trsvg934-lv" systemLanguage="lv"><tspan id="trsvg524-lv">AB</tspan></text><text id="trsvg934-yue" systemLanguage="yue"><tspan id="trsvg524-yue">AB</tspan></text><text id="trsvg934"><tspan id="trsvg524">AB</tspan></text></switch>
+<switch transform="translate(726.335 174.781)"><text id="trsvg940-pt-br" systemLanguage="pt-br"><tspan id="trsvg530-pt-br">O</tspan></text>
+  <text systemLanguage="as" font-family="Lohit Bengali" id="trsvg935"><tspan id="trsvg525">অ’</tspan></text>
+  <text systemLanguage="bn" font-family="Lohit Bengali" id="trsvg936"><tspan id="trsvg526">ও</tspan></text>
+  
+  <text systemLanguage="mr" id="trsvg938"><tspan id="trsvg528">ओ</tspan></text>
+  <text systemLanguage="pa" id="trsvg939"><tspan id="trsvg529">ਓ</tspan></text>
+  
+<text systemLanguage="da" id="trsvg937"><tspan id="trsvg527">0</tspan></text><text systemLanguage="de" id="trsvg937"><tspan id="trsvg527">0</tspan></text><text systemLanguage="sv" id="trsvg937"><tspan id="trsvg527">0</tspan></text><text id="trsvg940-th" systemLanguage="th"><tspan id="trsvg530-th">O</tspan></text><text id="trsvg940-yue" systemLanguage="yue"><tspan id="trsvg530-yue">O</tspan></text><text id="trsvg940"><tspan id="trsvg530">O</tspan></text></switch>
+</g>
+</g>
+</svg>

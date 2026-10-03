@@ -1,0 +1,596 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 660" width="1080" height="660"><text x="540" y="45" text-anchor="middle" font-size="30" font-family="Arial, sans-serif" fill="#183b48">Planarian fragmentation and regeneration</text><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://web.resource.org/cc/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="280" height="220" id="svg5349" sodipodi:version="0.32" inkscape:version="0.44.1" version="1.0" sodipodi:docbase="/home/andreas" sodipodi:docname="Dugesia_schematic.svg" x="35" y="170" viewBox="0 0 70.866142 53.149605" overflow="hidden" preserveAspectRatio="xMidYMid meet">
+  <defs id="r0-defs5351">
+    <radialGradient inkscape:collect="always" xlink:href="#r0-linearGradient2912" id="r0-radialGradient5347" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-1.22673,0,0,-1.315684,841.3585,302.5095)" cx="649.9502" cy="187.74725" fx="649.9502" fy="187.74725" r="7.5114264"/>
+    <linearGradient id="r0-linearGradient2912">
+      <stop style="stop-color:#464600;stop-opacity:1;" offset="0" id="r0-stop2914"/>
+      <stop style="stop-color:gray;stop-opacity:0;" offset="1" id="r0-stop2916"/>
+    </linearGradient>
+    <radialGradient inkscape:collect="always" xlink:href="#r0-linearGradient2912" id="r0-radialGradient5345" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.386434,2.770007e-2,-2.974323e-2,1.488677,-856.1729,-236.7608)" cx="659.27985" cy="179.7002" fx="659.27985" fy="179.7002" r="8.1795616"/>
+    <linearGradient id="r0-linearGradient2896">
+      <stop style="stop-color:#464600;stop-opacity:0.23529412;" offset="0" id="r0-stop2898"/>
+      <stop id="r0-stop2908" offset="0.125" style="stop-color:#464600;stop-opacity:0.70588237;"/>
+      <stop id="r0-stop2904" offset="0.5" style="stop-color:#464600;stop-opacity:0.90196079;"/>
+      <stop style="stop-color:#464600;stop-opacity:0.70588237;" offset="0.75" id="r0-stop2910"/>
+      <stop style="stop-color:#464600;stop-opacity:0.23529412;" offset="1" id="r0-stop2900"/>
+    </linearGradient>
+    <linearGradient inkscape:collect="always" xlink:href="#r0-linearGradient2896" id="r0-linearGradient5343" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.14207,-0.159996,0.159996,1.14207,-727.8843,-28.06526)" x1="722.91882" y1="418.75809" x2="900.43817" y2="184.66513"/>
+  </defs>
+  <sodipodi:namedview id="r0-base" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="6.3813582" inkscape:cx="42.519684" inkscape:cy="31.889763" inkscape:document-units="px" inkscape:current-layer="layer1" width="20mm" height="15mm" units="mm" inkscape:window-width="1002" inkscape:window-height="622" inkscape:window-x="0" inkscape:window-y="107"/>
+  <metadata id="r0-metadata5354">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <dc:title>Dugesia gonocephala, schematic</dc:title>
+        <dc:date>2007-10-20</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:identifier>Dugesia_schematic</dc:identifier>
+        <dc:source>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:source>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>Dugesia</rdf:li>
+            <rdf:li>Planaria</rdf:li>
+            <rdf:li>Euplanaria</rdf:li>
+            <rdf:li>Strudelwurm</rdf:li>
+            <rdf:li>Plattwurm</rdf:li>
+            <rdf:li>Regeneration</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:description>Schematic drawing of Dugesia gonocephala, done with InkscapeP</dc:description>
+        <dc:contributor>
+          <cc:Agent>
+            <dc:title>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:title>
+          </cc:Agent>
+        </dc:contributor>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/by-sa/2.5/"/>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/by-sa/2.5/">
+        <cc:permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+        <cc:permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+        <cc:requires rdf:resource="http://web.resource.org/cc/Notice"/>
+        <cc:requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+        <cc:permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/>
+        <cc:requires rdf:resource="http://web.resource.org/cc/ShareAlike"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g inkscape:label="Ebene 1" inkscape:groupmode="layer" id="r0-layer1">
+    <g style="opacity:1;display:inline" id="r0-g5333" transform="matrix(0.117118,0,0,0.117118,4.724154,4.788079)">
+      <path id="r0-path5317" sodipodi:nodetypes="czzzzzzzzzzzszzzz" d="M 273.33692,135.27701 C 218.65517,110.02408 123.22355,78.565542 111.42673,71.241435 C 99.757589,63.996592 95.227419,58.328878 90.612002,52.076063 C 85.894511,45.684935 95.59329,39.03903 93.021974,36.951176 C 90.236829,34.689692 78.27723,36.044431 70.917596,36.708626 C 63.545858,37.373911 55.411889,39.428172 40.158993,40.822003 C 24.914188,42.215102 10.146331,42.637702 7.1531935,47.220489 C 4.2394935,51.681653 8.7628703,66.513781 10.377275,80.076185 C 11.991379,93.63597 12.296657,104.32444 12.991115,112.81397 C 13.684478,121.29012 15.148636,128.16313 18.713391,129.75396 C 22.187024,131.30415 26.12793,122.58782 34.717277,124.36622 C 43.2405,126.13095 52.979245,126.73034 72.711898,138.15616 C 92.444554,149.58199 173.17103,204.51877 221.42969,231.82368 C 272.80258,260.89061 314.35939,276.16248 353.73135,292.72044 C 393.72325,309.53912 510.85365,348.19578 517.80427,332.80262 C 525.02431,316.81255 434.72409,229.34301 393.94403,202.73382 C 353.59077,176.40313 328.01866,160.52992 273.33692,135.27701 z " style="fill:url(#r0-linearGradient5343);fill-opacity:1;stroke:black;stroke-width:2.30644488;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"/>
+      <g style="display:inline" id="r0-g5319" transform="matrix(1.14207,-0.159996,0.159996,1.14207,-14.76013,25.87619)">
+        <g id="r0-g5321">
+          <path d="M 62.85582,44.89806 C 62.58256,48.4795 59.1521,51.14136 55.19856,50.8397 C 51.24503,50.53805 48.25813,47.38654 48.5314,43.8051 C 48.80466,40.22366 52.23512,37.5618 56.18866,37.86346 C 60.14219,38.16511 63.12909,41.31662 62.85582,44.89806 z " id="r0-path5323" style="fill:url(#r0-radialGradient5345);fill-opacity:1;stroke:black;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+          <path d="M 57.18767,47.35144 C 57.49483,48.97377 57.17533,50.99053 55.19856,50.8397 C 53.2218,50.68887 51.48669,49.82559 50.27993,48.55232 C 49.07317,47.27906 48.14097,44.24223 49.039,42.45151 C 49.84407,40.84615 50.92297,42.27562 51.65672,42.04299 C 53.38108,41.4963 51.03382,45.94567 52.8047,45.05439 C 53.68167,44.61302 53.5556,46.55495 54.18073,47.3312 C 54.80587,48.10744 57.049,46.61901 57.18767,47.35144 z " sodipodi:nodetypes="csssssss" id="r0-path5325" style="fill:black;fill-opacity:1;stroke:black;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+        </g>
+        <g id="r0-g5327">
+          <path id="r0-path5329" d="M 41.79515,64.35873 C 38.21371,64.08547 35.55185,60.65501 35.85351,56.70147 C 36.15516,52.74794 39.30667,49.76104 42.88811,50.03431 C 46.46955,50.30757 49.13141,53.73803 48.82975,57.69157 C 48.5281,61.6451 45.37659,64.632 41.79515,64.35873 z " style="fill:url(#r0-radialGradient5347);fill-opacity:1;stroke:black;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+          <path d="M 45.41144,58.62007 C 47.03377,58.92723 49.05053,58.60773 48.8997,56.63096 C 48.74887,54.6542 47.88559,52.91909 46.61232,51.71233 C 45.33906,50.50557 42.30223,49.57337 40.51151,50.4714 C 38.90615,51.27647 40.33562,52.35537 40.10299,53.08912 C 39.5563,54.81348 44.00567,52.46622 43.11439,54.2371 C 42.67302,55.11407 44.61495,54.988 45.3912,55.61313 C 46.16744,56.23827 44.67901,58.4814 45.41144,58.62007 z " sodipodi:nodetypes="csssssss" id="r0-path5331" style="fill:black;fill-opacity:1;stroke:black;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg><text x="175" y="490" text-anchor="middle" font-size="23" font-family="Arial, sans-serif" fill="#183b48">Whole planarian</text><text x="175" y="535" text-anchor="middle" font-size="20" font-family="Arial, sans-serif" fill="#183b48">A flatworm with a head and tail.</text><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://web.resource.org/cc/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="120" height="105" id="svg5349" sodipodi:version="0.32" inkscape:version="0.44.1" version="1.0" sodipodi:docbase="/home/andreas" sodipodi:docname="Dugesia_schematic.svg" x="430" y="95" viewBox="0 0 23.62204733333333 53.149605" overflow="hidden" preserveAspectRatio="xMidYMid meet">
+  <defs id="r1-defs5351">
+    <radialGradient inkscape:collect="always" xlink:href="#r1-linearGradient2912" id="r1-radialGradient5347" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-1.22673,0,0,-1.315684,841.3585,302.5095)" cx="649.9502" cy="187.74725" fx="649.9502" fy="187.74725" r="7.5114264"/>
+    <linearGradient id="r1-linearGradient2912">
+      <stop style="stop-color:#464600;stop-opacity:1;" offset="0" id="r1-stop2914"/>
+      <stop style="stop-color:gray;stop-opacity:0;" offset="1" id="r1-stop2916"/>
+    </linearGradient>
+    <radialGradient inkscape:collect="always" xlink:href="#r1-linearGradient2912" id="r1-radialGradient5345" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.386434,2.770007e-2,-2.974323e-2,1.488677,-856.1729,-236.7608)" cx="659.27985" cy="179.7002" fx="659.27985" fy="179.7002" r="8.1795616"/>
+    <linearGradient id="r1-linearGradient2896">
+      <stop style="stop-color:#464600;stop-opacity:0.23529412;" offset="0" id="r1-stop2898"/>
+      <stop id="r1-stop2908" offset="0.125" style="stop-color:#464600;stop-opacity:0.70588237;"/>
+      <stop id="r1-stop2904" offset="0.5" style="stop-color:#464600;stop-opacity:0.90196079;"/>
+      <stop style="stop-color:#464600;stop-opacity:0.70588237;" offset="0.75" id="r1-stop2910"/>
+      <stop style="stop-color:#464600;stop-opacity:0.23529412;" offset="1" id="r1-stop2900"/>
+    </linearGradient>
+    <linearGradient inkscape:collect="always" xlink:href="#r1-linearGradient2896" id="r1-linearGradient5343" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.14207,-0.159996,0.159996,1.14207,-727.8843,-28.06526)" x1="722.91882" y1="418.75809" x2="900.43817" y2="184.66513"/>
+  </defs>
+  <sodipodi:namedview id="r1-base" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="6.3813582" inkscape:cx="42.519684" inkscape:cy="31.889763" inkscape:document-units="px" inkscape:current-layer="layer1" width="20mm" height="15mm" units="mm" inkscape:window-width="1002" inkscape:window-height="622" inkscape:window-x="0" inkscape:window-y="107"/>
+  <metadata id="r1-metadata5354">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <dc:title>Dugesia gonocephala, schematic</dc:title>
+        <dc:date>2007-10-20</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:identifier>Dugesia_schematic</dc:identifier>
+        <dc:source>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:source>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>Dugesia</rdf:li>
+            <rdf:li>Planaria</rdf:li>
+            <rdf:li>Euplanaria</rdf:li>
+            <rdf:li>Strudelwurm</rdf:li>
+            <rdf:li>Plattwurm</rdf:li>
+            <rdf:li>Regeneration</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:description>Schematic drawing of Dugesia gonocephala, done with InkscapeP</dc:description>
+        <dc:contributor>
+          <cc:Agent>
+            <dc:title>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:title>
+          </cc:Agent>
+        </dc:contributor>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/by-sa/2.5/"/>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/by-sa/2.5/">
+        <cc:permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+        <cc:permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+        <cc:requires rdf:resource="http://web.resource.org/cc/Notice"/>
+        <cc:requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+        <cc:permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/>
+        <cc:requires rdf:resource="http://web.resource.org/cc/ShareAlike"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g inkscape:label="Ebene 1" inkscape:groupmode="layer" id="r1-layer1" clip-path="url(#r1-fragment)">
+    <g style="opacity:1;display:inline" id="r1-g5333" transform="matrix(0.117118,0,0,0.117118,4.724154,4.788079)">
+      <path id="r1-path5317" sodipodi:nodetypes="czzzzzzzzzzzszzzz" d="M 273.33692,135.27701 C 218.65517,110.02408 123.22355,78.565542 111.42673,71.241435 C 99.757589,63.996592 95.227419,58.328878 90.612002,52.076063 C 85.894511,45.684935 95.59329,39.03903 93.021974,36.951176 C 90.236829,34.689692 78.27723,36.044431 70.917596,36.708626 C 63.545858,37.373911 55.411889,39.428172 40.158993,40.822003 C 24.914188,42.215102 10.146331,42.637702 7.1531935,47.220489 C 4.2394935,51.681653 8.7628703,66.513781 10.377275,80.076185 C 11.991379,93.63597 12.296657,104.32444 12.991115,112.81397 C 13.684478,121.29012 15.148636,128.16313 18.713391,129.75396 C 22.187024,131.30415 26.12793,122.58782 34.717277,124.36622 C 43.2405,126.13095 52.979245,126.73034 72.711898,138.15616 C 92.444554,149.58199 173.17103,204.51877 221.42969,231.82368 C 272.80258,260.89061 314.35939,276.16248 353.73135,292.72044 C 393.72325,309.53912 510.85365,348.19578 517.80427,332.80262 C 525.02431,316.81255 434.72409,229.34301 393.94403,202.73382 C 353.59077,176.40313 328.01866,160.52992 273.33692,135.27701 z " style="fill:url(#r1-linearGradient5343);fill-opacity:1;stroke:black;stroke-width:2.30644488;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"/>
+      <g style="display:inline" id="r1-g5319" transform="matrix(1.14207,-0.159996,0.159996,1.14207,-14.76013,25.87619)">
+        <g id="r1-g5321">
+          <path d="M 62.85582,44.89806 C 62.58256,48.4795 59.1521,51.14136 55.19856,50.8397 C 51.24503,50.53805 48.25813,47.38654 48.5314,43.8051 C 48.80466,40.22366 52.23512,37.5618 56.18866,37.86346 C 60.14219,38.16511 63.12909,41.31662 62.85582,44.89806 z " id="r1-path5323" style="fill:url(#r1-radialGradient5345);fill-opacity:1;stroke:black;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+          <path d="M 57.18767,47.35144 C 57.49483,48.97377 57.17533,50.99053 55.19856,50.8397 C 53.2218,50.68887 51.48669,49.82559 50.27993,48.55232 C 49.07317,47.27906 48.14097,44.24223 49.039,42.45151 C 49.84407,40.84615 50.92297,42.27562 51.65672,42.04299 C 53.38108,41.4963 51.03382,45.94567 52.8047,45.05439 C 53.68167,44.61302 53.5556,46.55495 54.18073,47.3312 C 54.80587,48.10744 57.049,46.61901 57.18767,47.35144 z " sodipodi:nodetypes="csssssss" id="r1-path5325" style="fill:black;fill-opacity:1;stroke:black;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+        </g>
+        <g id="r1-g5327">
+          <path id="r1-path5329" d="M 41.79515,64.35873 C 38.21371,64.08547 35.55185,60.65501 35.85351,56.70147 C 36.15516,52.74794 39.30667,49.76104 42.88811,50.03431 C 46.46955,50.30757 49.13141,53.73803 48.82975,57.69157 C 48.5281,61.6451 45.37659,64.632 41.79515,64.35873 z " style="fill:url(#r1-radialGradient5347);fill-opacity:1;stroke:black;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+          <path d="M 45.41144,58.62007 C 47.03377,58.92723 49.05053,58.60773 48.8997,56.63096 C 48.74887,54.6542 47.88559,52.91909 46.61232,51.71233 C 45.33906,50.50557 42.30223,49.57337 40.51151,50.4714 C 38.90615,51.27647 40.33562,52.35537 40.10299,53.08912 C 39.5563,54.81348 44.00567,52.46622 43.11439,54.2371 C 42.67302,55.11407 44.61495,54.988 45.3912,55.61313 C 46.16744,56.23827 44.67901,58.4814 45.41144,58.62007 z " sodipodi:nodetypes="csssssss" id="r1-path5331" style="fill:black;fill-opacity:1;stroke:black;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+        </g>
+      </g>
+    </g>
+  </g>
+<clipPath id="r1-fragment"><rect x="0" y="0" width="23.62204733333333" height="53.149605"/></clipPath></svg><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://web.resource.org/cc/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="250" height="125" id="svg5349" sodipodi:version="0.32" inkscape:version="0.44.1" version="1.0" sodipodi:docbase="/home/andreas" sodipodi:docname="Dugesia_schematic.svg" x="775" y="75" viewBox="0 0 70.866142 53.149605" overflow="hidden" preserveAspectRatio="xMidYMid meet">
+  <defs id="r2-defs5351">
+    <radialGradient inkscape:collect="always" xlink:href="#r2-linearGradient2912" id="r2-radialGradient5347" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-1.22673,0,0,-1.315684,841.3585,302.5095)" cx="649.9502" cy="187.74725" fx="649.9502" fy="187.74725" r="7.5114264"/>
+    <linearGradient id="r2-linearGradient2912">
+      <stop style="stop-color:#464600;stop-opacity:1;" offset="0" id="r2-stop2914"/>
+      <stop style="stop-color:gray;stop-opacity:0;" offset="1" id="r2-stop2916"/>
+    </linearGradient>
+    <radialGradient inkscape:collect="always" xlink:href="#r2-linearGradient2912" id="r2-radialGradient5345" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.386434,2.770007e-2,-2.974323e-2,1.488677,-856.1729,-236.7608)" cx="659.27985" cy="179.7002" fx="659.27985" fy="179.7002" r="8.1795616"/>
+    <linearGradient id="r2-linearGradient2896">
+      <stop style="stop-color:#464600;stop-opacity:0.23529412;" offset="0" id="r2-stop2898"/>
+      <stop id="r2-stop2908" offset="0.125" style="stop-color:#464600;stop-opacity:0.70588237;"/>
+      <stop id="r2-stop2904" offset="0.5" style="stop-color:#464600;stop-opacity:0.90196079;"/>
+      <stop style="stop-color:#464600;stop-opacity:0.70588237;" offset="0.75" id="r2-stop2910"/>
+      <stop style="stop-color:#464600;stop-opacity:0.23529412;" offset="1" id="r2-stop2900"/>
+    </linearGradient>
+    <linearGradient inkscape:collect="always" xlink:href="#r2-linearGradient2896" id="r2-linearGradient5343" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.14207,-0.159996,0.159996,1.14207,-727.8843,-28.06526)" x1="722.91882" y1="418.75809" x2="900.43817" y2="184.66513"/>
+  </defs>
+  <sodipodi:namedview id="r2-base" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="6.3813582" inkscape:cx="42.519684" inkscape:cy="31.889763" inkscape:document-units="px" inkscape:current-layer="layer1" width="20mm" height="15mm" units="mm" inkscape:window-width="1002" inkscape:window-height="622" inkscape:window-x="0" inkscape:window-y="107"/>
+  <metadata id="r2-metadata5354">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <dc:title>Dugesia gonocephala, schematic</dc:title>
+        <dc:date>2007-10-20</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:identifier>Dugesia_schematic</dc:identifier>
+        <dc:source>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:source>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>Dugesia</rdf:li>
+            <rdf:li>Planaria</rdf:li>
+            <rdf:li>Euplanaria</rdf:li>
+            <rdf:li>Strudelwurm</rdf:li>
+            <rdf:li>Plattwurm</rdf:li>
+            <rdf:li>Regeneration</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:description>Schematic drawing of Dugesia gonocephala, done with InkscapeP</dc:description>
+        <dc:contributor>
+          <cc:Agent>
+            <dc:title>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:title>
+          </cc:Agent>
+        </dc:contributor>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/by-sa/2.5/"/>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/by-sa/2.5/">
+        <cc:permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+        <cc:permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+        <cc:requires rdf:resource="http://web.resource.org/cc/Notice"/>
+        <cc:requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+        <cc:permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/>
+        <cc:requires rdf:resource="http://web.resource.org/cc/ShareAlike"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g inkscape:label="Ebene 1" inkscape:groupmode="layer" id="r2-layer1">
+    <g style="opacity:1;display:inline" id="r2-g5333" transform="matrix(0.117118,0,0,0.117118,4.724154,4.788079)">
+      <path id="r2-path5317" sodipodi:nodetypes="czzzzzzzzzzzszzzz" d="M 273.33692,135.27701 C 218.65517,110.02408 123.22355,78.565542 111.42673,71.241435 C 99.757589,63.996592 95.227419,58.328878 90.612002,52.076063 C 85.894511,45.684935 95.59329,39.03903 93.021974,36.951176 C 90.236829,34.689692 78.27723,36.044431 70.917596,36.708626 C 63.545858,37.373911 55.411889,39.428172 40.158993,40.822003 C 24.914188,42.215102 10.146331,42.637702 7.1531935,47.220489 C 4.2394935,51.681653 8.7628703,66.513781 10.377275,80.076185 C 11.991379,93.63597 12.296657,104.32444 12.991115,112.81397 C 13.684478,121.29012 15.148636,128.16313 18.713391,129.75396 C 22.187024,131.30415 26.12793,122.58782 34.717277,124.36622 C 43.2405,126.13095 52.979245,126.73034 72.711898,138.15616 C 92.444554,149.58199 173.17103,204.51877 221.42969,231.82368 C 272.80258,260.89061 314.35939,276.16248 353.73135,292.72044 C 393.72325,309.53912 510.85365,348.19578 517.80427,332.80262 C 525.02431,316.81255 434.72409,229.34301 393.94403,202.73382 C 353.59077,176.40313 328.01866,160.52992 273.33692,135.27701 z " style="fill:url(#r2-linearGradient5343);fill-opacity:1;stroke:black;stroke-width:2.30644488;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"/>
+      <g style="display:inline" id="r2-g5319" transform="matrix(1.14207,-0.159996,0.159996,1.14207,-14.76013,25.87619)">
+        <g id="r2-g5321">
+          <path d="M 62.85582,44.89806 C 62.58256,48.4795 59.1521,51.14136 55.19856,50.8397 C 51.24503,50.53805 48.25813,47.38654 48.5314,43.8051 C 48.80466,40.22366 52.23512,37.5618 56.18866,37.86346 C 60.14219,38.16511 63.12909,41.31662 62.85582,44.89806 z " id="r2-path5323" style="fill:url(#r2-radialGradient5345);fill-opacity:1;stroke:black;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+          <path d="M 57.18767,47.35144 C 57.49483,48.97377 57.17533,50.99053 55.19856,50.8397 C 53.2218,50.68887 51.48669,49.82559 50.27993,48.55232 C 49.07317,47.27906 48.14097,44.24223 49.039,42.45151 C 49.84407,40.84615 50.92297,42.27562 51.65672,42.04299 C 53.38108,41.4963 51.03382,45.94567 52.8047,45.05439 C 53.68167,44.61302 53.5556,46.55495 54.18073,47.3312 C 54.80587,48.10744 57.049,46.61901 57.18767,47.35144 z " sodipodi:nodetypes="csssssss" id="r2-path5325" style="fill:black;fill-opacity:1;stroke:black;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+        </g>
+        <g id="r2-g5327">
+          <path id="r2-path5329" d="M 41.79515,64.35873 C 38.21371,64.08547 35.55185,60.65501 35.85351,56.70147 C 36.15516,52.74794 39.30667,49.76104 42.88811,50.03431 C 46.46955,50.30757 49.13141,53.73803 48.82975,57.69157 C 48.5281,61.6451 45.37659,64.632 41.79515,64.35873 z " style="fill:url(#r2-radialGradient5347);fill-opacity:1;stroke:black;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+          <path d="M 45.41144,58.62007 C 47.03377,58.92723 49.05053,58.60773 48.8997,56.63096 C 48.74887,54.6542 47.88559,52.91909 46.61232,51.71233 C 45.33906,50.50557 42.30223,49.57337 40.51151,50.4714 C 38.90615,51.27647 40.33562,52.35537 40.10299,53.08912 C 39.5563,54.81348 44.00567,52.46622 43.11439,54.2371 C 42.67302,55.11407 44.61495,54.988 45.3912,55.61313 C 46.16744,56.23827 44.67901,58.4814 45.41144,58.62007 z " sodipodi:nodetypes="csssssss" id="r2-path5331" style="fill:black;fill-opacity:1;stroke:black;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://web.resource.org/cc/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="120" height="105" id="svg5349" sodipodi:version="0.32" inkscape:version="0.44.1" version="1.0" sodipodi:docbase="/home/andreas" sodipodi:docname="Dugesia_schematic.svg" x="430" y="215" viewBox="23.62204733333333 0 23.62204733333333 53.149605" overflow="hidden" preserveAspectRatio="xMidYMid meet">
+  <defs id="r3-defs5351">
+    <radialGradient inkscape:collect="always" xlink:href="#r3-linearGradient2912" id="r3-radialGradient5347" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-1.22673,0,0,-1.315684,841.3585,302.5095)" cx="649.9502" cy="187.74725" fx="649.9502" fy="187.74725" r="7.5114264"/>
+    <linearGradient id="r3-linearGradient2912">
+      <stop style="stop-color:#464600;stop-opacity:1;" offset="0" id="r3-stop2914"/>
+      <stop style="stop-color:gray;stop-opacity:0;" offset="1" id="r3-stop2916"/>
+    </linearGradient>
+    <radialGradient inkscape:collect="always" xlink:href="#r3-linearGradient2912" id="r3-radialGradient5345" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.386434,2.770007e-2,-2.974323e-2,1.488677,-856.1729,-236.7608)" cx="659.27985" cy="179.7002" fx="659.27985" fy="179.7002" r="8.1795616"/>
+    <linearGradient id="r3-linearGradient2896">
+      <stop style="stop-color:#464600;stop-opacity:0.23529412;" offset="0" id="r3-stop2898"/>
+      <stop id="r3-stop2908" offset="0.125" style="stop-color:#464600;stop-opacity:0.70588237;"/>
+      <stop id="r3-stop2904" offset="0.5" style="stop-color:#464600;stop-opacity:0.90196079;"/>
+      <stop style="stop-color:#464600;stop-opacity:0.70588237;" offset="0.75" id="r3-stop2910"/>
+      <stop style="stop-color:#464600;stop-opacity:0.23529412;" offset="1" id="r3-stop2900"/>
+    </linearGradient>
+    <linearGradient inkscape:collect="always" xlink:href="#r3-linearGradient2896" id="r3-linearGradient5343" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.14207,-0.159996,0.159996,1.14207,-727.8843,-28.06526)" x1="722.91882" y1="418.75809" x2="900.43817" y2="184.66513"/>
+  </defs>
+  <sodipodi:namedview id="r3-base" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="6.3813582" inkscape:cx="42.519684" inkscape:cy="31.889763" inkscape:document-units="px" inkscape:current-layer="layer1" width="20mm" height="15mm" units="mm" inkscape:window-width="1002" inkscape:window-height="622" inkscape:window-x="0" inkscape:window-y="107"/>
+  <metadata id="r3-metadata5354">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <dc:title>Dugesia gonocephala, schematic</dc:title>
+        <dc:date>2007-10-20</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:identifier>Dugesia_schematic</dc:identifier>
+        <dc:source>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:source>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>Dugesia</rdf:li>
+            <rdf:li>Planaria</rdf:li>
+            <rdf:li>Euplanaria</rdf:li>
+            <rdf:li>Strudelwurm</rdf:li>
+            <rdf:li>Plattwurm</rdf:li>
+            <rdf:li>Regeneration</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:description>Schematic drawing of Dugesia gonocephala, done with InkscapeP</dc:description>
+        <dc:contributor>
+          <cc:Agent>
+            <dc:title>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:title>
+          </cc:Agent>
+        </dc:contributor>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/by-sa/2.5/"/>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/by-sa/2.5/">
+        <cc:permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+        <cc:permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+        <cc:requires rdf:resource="http://web.resource.org/cc/Notice"/>
+        <cc:requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+        <cc:permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/>
+        <cc:requires rdf:resource="http://web.resource.org/cc/ShareAlike"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g inkscape:label="Ebene 1" inkscape:groupmode="layer" id="r3-layer1" clip-path="url(#r3-fragment)">
+    <g style="opacity:1;display:inline" id="r3-g5333" transform="matrix(0.117118,0,0,0.117118,4.724154,4.788079)">
+      <path id="r3-path5317" sodipodi:nodetypes="czzzzzzzzzzzszzzz" d="M 273.33692,135.27701 C 218.65517,110.02408 123.22355,78.565542 111.42673,71.241435 C 99.757589,63.996592 95.227419,58.328878 90.612002,52.076063 C 85.894511,45.684935 95.59329,39.03903 93.021974,36.951176 C 90.236829,34.689692 78.27723,36.044431 70.917596,36.708626 C 63.545858,37.373911 55.411889,39.428172 40.158993,40.822003 C 24.914188,42.215102 10.146331,42.637702 7.1531935,47.220489 C 4.2394935,51.681653 8.7628703,66.513781 10.377275,80.076185 C 11.991379,93.63597 12.296657,104.32444 12.991115,112.81397 C 13.684478,121.29012 15.148636,128.16313 18.713391,129.75396 C 22.187024,131.30415 26.12793,122.58782 34.717277,124.36622 C 43.2405,126.13095 52.979245,126.73034 72.711898,138.15616 C 92.444554,149.58199 173.17103,204.51877 221.42969,231.82368 C 272.80258,260.89061 314.35939,276.16248 353.73135,292.72044 C 393.72325,309.53912 510.85365,348.19578 517.80427,332.80262 C 525.02431,316.81255 434.72409,229.34301 393.94403,202.73382 C 353.59077,176.40313 328.01866,160.52992 273.33692,135.27701 z " style="fill:url(#r3-linearGradient5343);fill-opacity:1;stroke:black;stroke-width:2.30644488;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"/>
+      <g style="display:inline" id="r3-g5319" transform="matrix(1.14207,-0.159996,0.159996,1.14207,-14.76013,25.87619)">
+        <g id="r3-g5321">
+          <path d="M 62.85582,44.89806 C 62.58256,48.4795 59.1521,51.14136 55.19856,50.8397 C 51.24503,50.53805 48.25813,47.38654 48.5314,43.8051 C 48.80466,40.22366 52.23512,37.5618 56.18866,37.86346 C 60.14219,38.16511 63.12909,41.31662 62.85582,44.89806 z " id="r3-path5323" style="fill:url(#r3-radialGradient5345);fill-opacity:1;stroke:black;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+          <path d="M 57.18767,47.35144 C 57.49483,48.97377 57.17533,50.99053 55.19856,50.8397 C 53.2218,50.68887 51.48669,49.82559 50.27993,48.55232 C 49.07317,47.27906 48.14097,44.24223 49.039,42.45151 C 49.84407,40.84615 50.92297,42.27562 51.65672,42.04299 C 53.38108,41.4963 51.03382,45.94567 52.8047,45.05439 C 53.68167,44.61302 53.5556,46.55495 54.18073,47.3312 C 54.80587,48.10744 57.049,46.61901 57.18767,47.35144 z " sodipodi:nodetypes="csssssss" id="r3-path5325" style="fill:black;fill-opacity:1;stroke:black;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+        </g>
+        <g id="r3-g5327">
+          <path id="r3-path5329" d="M 41.79515,64.35873 C 38.21371,64.08547 35.55185,60.65501 35.85351,56.70147 C 36.15516,52.74794 39.30667,49.76104 42.88811,50.03431 C 46.46955,50.30757 49.13141,53.73803 48.82975,57.69157 C 48.5281,61.6451 45.37659,64.632 41.79515,64.35873 z " style="fill:url(#r3-radialGradient5347);fill-opacity:1;stroke:black;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+          <path d="M 45.41144,58.62007 C 47.03377,58.92723 49.05053,58.60773 48.8997,56.63096 C 48.74887,54.6542 47.88559,52.91909 46.61232,51.71233 C 45.33906,50.50557 42.30223,49.57337 40.51151,50.4714 C 38.90615,51.27647 40.33562,52.35537 40.10299,53.08912 C 39.5563,54.81348 44.00567,52.46622 43.11439,54.2371 C 42.67302,55.11407 44.61495,54.988 45.3912,55.61313 C 46.16744,56.23827 44.67901,58.4814 45.41144,58.62007 z " sodipodi:nodetypes="csssssss" id="r3-path5331" style="fill:black;fill-opacity:1;stroke:black;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+        </g>
+      </g>
+    </g>
+  </g>
+<clipPath id="r3-fragment"><rect x="23.62204733333333" y="0" width="23.62204733333333" height="53.149605"/></clipPath></svg><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://web.resource.org/cc/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="250" height="125" id="svg5349" sodipodi:version="0.32" inkscape:version="0.44.1" version="1.0" sodipodi:docbase="/home/andreas" sodipodi:docname="Dugesia_schematic.svg" x="775" y="210" viewBox="0 0 70.866142 53.149605" overflow="hidden" preserveAspectRatio="xMidYMid meet">
+  <defs id="r4-defs5351">
+    <radialGradient inkscape:collect="always" xlink:href="#r4-linearGradient2912" id="r4-radialGradient5347" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-1.22673,0,0,-1.315684,841.3585,302.5095)" cx="649.9502" cy="187.74725" fx="649.9502" fy="187.74725" r="7.5114264"/>
+    <linearGradient id="r4-linearGradient2912">
+      <stop style="stop-color:#464600;stop-opacity:1;" offset="0" id="r4-stop2914"/>
+      <stop style="stop-color:gray;stop-opacity:0;" offset="1" id="r4-stop2916"/>
+    </linearGradient>
+    <radialGradient inkscape:collect="always" xlink:href="#r4-linearGradient2912" id="r4-radialGradient5345" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.386434,2.770007e-2,-2.974323e-2,1.488677,-856.1729,-236.7608)" cx="659.27985" cy="179.7002" fx="659.27985" fy="179.7002" r="8.1795616"/>
+    <linearGradient id="r4-linearGradient2896">
+      <stop style="stop-color:#464600;stop-opacity:0.23529412;" offset="0" id="r4-stop2898"/>
+      <stop id="r4-stop2908" offset="0.125" style="stop-color:#464600;stop-opacity:0.70588237;"/>
+      <stop id="r4-stop2904" offset="0.5" style="stop-color:#464600;stop-opacity:0.90196079;"/>
+      <stop style="stop-color:#464600;stop-opacity:0.70588237;" offset="0.75" id="r4-stop2910"/>
+      <stop style="stop-color:#464600;stop-opacity:0.23529412;" offset="1" id="r4-stop2900"/>
+    </linearGradient>
+    <linearGradient inkscape:collect="always" xlink:href="#r4-linearGradient2896" id="r4-linearGradient5343" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.14207,-0.159996,0.159996,1.14207,-727.8843,-28.06526)" x1="722.91882" y1="418.75809" x2="900.43817" y2="184.66513"/>
+  </defs>
+  <sodipodi:namedview id="r4-base" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="6.3813582" inkscape:cx="42.519684" inkscape:cy="31.889763" inkscape:document-units="px" inkscape:current-layer="layer1" width="20mm" height="15mm" units="mm" inkscape:window-width="1002" inkscape:window-height="622" inkscape:window-x="0" inkscape:window-y="107"/>
+  <metadata id="r4-metadata5354">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <dc:title>Dugesia gonocephala, schematic</dc:title>
+        <dc:date>2007-10-20</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:identifier>Dugesia_schematic</dc:identifier>
+        <dc:source>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:source>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>Dugesia</rdf:li>
+            <rdf:li>Planaria</rdf:li>
+            <rdf:li>Euplanaria</rdf:li>
+            <rdf:li>Strudelwurm</rdf:li>
+            <rdf:li>Plattwurm</rdf:li>
+            <rdf:li>Regeneration</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:description>Schematic drawing of Dugesia gonocephala, done with InkscapeP</dc:description>
+        <dc:contributor>
+          <cc:Agent>
+            <dc:title>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:title>
+          </cc:Agent>
+        </dc:contributor>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/by-sa/2.5/"/>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/by-sa/2.5/">
+        <cc:permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+        <cc:permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+        <cc:requires rdf:resource="http://web.resource.org/cc/Notice"/>
+        <cc:requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+        <cc:permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/>
+        <cc:requires rdf:resource="http://web.resource.org/cc/ShareAlike"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g inkscape:label="Ebene 1" inkscape:groupmode="layer" id="r4-layer1">
+    <g style="opacity:1;display:inline" id="r4-g5333" transform="matrix(0.117118,0,0,0.117118,4.724154,4.788079)">
+      <path id="r4-path5317" sodipodi:nodetypes="czzzzzzzzzzzszzzz" d="M 273.33692,135.27701 C 218.65517,110.02408 123.22355,78.565542 111.42673,71.241435 C 99.757589,63.996592 95.227419,58.328878 90.612002,52.076063 C 85.894511,45.684935 95.59329,39.03903 93.021974,36.951176 C 90.236829,34.689692 78.27723,36.044431 70.917596,36.708626 C 63.545858,37.373911 55.411889,39.428172 40.158993,40.822003 C 24.914188,42.215102 10.146331,42.637702 7.1531935,47.220489 C 4.2394935,51.681653 8.7628703,66.513781 10.377275,80.076185 C 11.991379,93.63597 12.296657,104.32444 12.991115,112.81397 C 13.684478,121.29012 15.148636,128.16313 18.713391,129.75396 C 22.187024,131.30415 26.12793,122.58782 34.717277,124.36622 C 43.2405,126.13095 52.979245,126.73034 72.711898,138.15616 C 92.444554,149.58199 173.17103,204.51877 221.42969,231.82368 C 272.80258,260.89061 314.35939,276.16248 353.73135,292.72044 C 393.72325,309.53912 510.85365,348.19578 517.80427,332.80262 C 525.02431,316.81255 434.72409,229.34301 393.94403,202.73382 C 353.59077,176.40313 328.01866,160.52992 273.33692,135.27701 z " style="fill:url(#r4-linearGradient5343);fill-opacity:1;stroke:black;stroke-width:2.30644488;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"/>
+      <g style="display:inline" id="r4-g5319" transform="matrix(1.14207,-0.159996,0.159996,1.14207,-14.76013,25.87619)">
+        <g id="r4-g5321">
+          <path d="M 62.85582,44.89806 C 62.58256,48.4795 59.1521,51.14136 55.19856,50.8397 C 51.24503,50.53805 48.25813,47.38654 48.5314,43.8051 C 48.80466,40.22366 52.23512,37.5618 56.18866,37.86346 C 60.14219,38.16511 63.12909,41.31662 62.85582,44.89806 z " id="r4-path5323" style="fill:url(#r4-radialGradient5345);fill-opacity:1;stroke:black;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+          <path d="M 57.18767,47.35144 C 57.49483,48.97377 57.17533,50.99053 55.19856,50.8397 C 53.2218,50.68887 51.48669,49.82559 50.27993,48.55232 C 49.07317,47.27906 48.14097,44.24223 49.039,42.45151 C 49.84407,40.84615 50.92297,42.27562 51.65672,42.04299 C 53.38108,41.4963 51.03382,45.94567 52.8047,45.05439 C 53.68167,44.61302 53.5556,46.55495 54.18073,47.3312 C 54.80587,48.10744 57.049,46.61901 57.18767,47.35144 z " sodipodi:nodetypes="csssssss" id="r4-path5325" style="fill:black;fill-opacity:1;stroke:black;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+        </g>
+        <g id="r4-g5327">
+          <path id="r4-path5329" d="M 41.79515,64.35873 C 38.21371,64.08547 35.55185,60.65501 35.85351,56.70147 C 36.15516,52.74794 39.30667,49.76104 42.88811,50.03431 C 46.46955,50.30757 49.13141,53.73803 48.82975,57.69157 C 48.5281,61.6451 45.37659,64.632 41.79515,64.35873 z " style="fill:url(#r4-radialGradient5347);fill-opacity:1;stroke:black;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+          <path d="M 45.41144,58.62007 C 47.03377,58.92723 49.05053,58.60773 48.8997,56.63096 C 48.74887,54.6542 47.88559,52.91909 46.61232,51.71233 C 45.33906,50.50557 42.30223,49.57337 40.51151,50.4714 C 38.90615,51.27647 40.33562,52.35537 40.10299,53.08912 C 39.5563,54.81348 44.00567,52.46622 43.11439,54.2371 C 42.67302,55.11407 44.61495,54.988 45.3912,55.61313 C 46.16744,56.23827 44.67901,58.4814 45.41144,58.62007 z " sodipodi:nodetypes="csssssss" id="r4-path5331" style="fill:black;fill-opacity:1;stroke:black;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://web.resource.org/cc/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="120" height="105" id="svg5349" sodipodi:version="0.32" inkscape:version="0.44.1" version="1.0" sodipodi:docbase="/home/andreas" sodipodi:docname="Dugesia_schematic.svg" x="430" y="335" viewBox="47.24409466666666 0 23.62204733333333 53.149605" overflow="hidden" preserveAspectRatio="xMidYMid meet">
+  <defs id="r5-defs5351">
+    <radialGradient inkscape:collect="always" xlink:href="#r5-linearGradient2912" id="r5-radialGradient5347" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-1.22673,0,0,-1.315684,841.3585,302.5095)" cx="649.9502" cy="187.74725" fx="649.9502" fy="187.74725" r="7.5114264"/>
+    <linearGradient id="r5-linearGradient2912">
+      <stop style="stop-color:#464600;stop-opacity:1;" offset="0" id="r5-stop2914"/>
+      <stop style="stop-color:gray;stop-opacity:0;" offset="1" id="r5-stop2916"/>
+    </linearGradient>
+    <radialGradient inkscape:collect="always" xlink:href="#r5-linearGradient2912" id="r5-radialGradient5345" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.386434,2.770007e-2,-2.974323e-2,1.488677,-856.1729,-236.7608)" cx="659.27985" cy="179.7002" fx="659.27985" fy="179.7002" r="8.1795616"/>
+    <linearGradient id="r5-linearGradient2896">
+      <stop style="stop-color:#464600;stop-opacity:0.23529412;" offset="0" id="r5-stop2898"/>
+      <stop id="r5-stop2908" offset="0.125" style="stop-color:#464600;stop-opacity:0.70588237;"/>
+      <stop id="r5-stop2904" offset="0.5" style="stop-color:#464600;stop-opacity:0.90196079;"/>
+      <stop style="stop-color:#464600;stop-opacity:0.70588237;" offset="0.75" id="r5-stop2910"/>
+      <stop style="stop-color:#464600;stop-opacity:0.23529412;" offset="1" id="r5-stop2900"/>
+    </linearGradient>
+    <linearGradient inkscape:collect="always" xlink:href="#r5-linearGradient2896" id="r5-linearGradient5343" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.14207,-0.159996,0.159996,1.14207,-727.8843,-28.06526)" x1="722.91882" y1="418.75809" x2="900.43817" y2="184.66513"/>
+  </defs>
+  <sodipodi:namedview id="r5-base" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="6.3813582" inkscape:cx="42.519684" inkscape:cy="31.889763" inkscape:document-units="px" inkscape:current-layer="layer1" width="20mm" height="15mm" units="mm" inkscape:window-width="1002" inkscape:window-height="622" inkscape:window-x="0" inkscape:window-y="107"/>
+  <metadata id="r5-metadata5354">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <dc:title>Dugesia gonocephala, schematic</dc:title>
+        <dc:date>2007-10-20</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:identifier>Dugesia_schematic</dc:identifier>
+        <dc:source>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:source>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>Dugesia</rdf:li>
+            <rdf:li>Planaria</rdf:li>
+            <rdf:li>Euplanaria</rdf:li>
+            <rdf:li>Strudelwurm</rdf:li>
+            <rdf:li>Plattwurm</rdf:li>
+            <rdf:li>Regeneration</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:description>Schematic drawing of Dugesia gonocephala, done with InkscapeP</dc:description>
+        <dc:contributor>
+          <cc:Agent>
+            <dc:title>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:title>
+          </cc:Agent>
+        </dc:contributor>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/by-sa/2.5/"/>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/by-sa/2.5/">
+        <cc:permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+        <cc:permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+        <cc:requires rdf:resource="http://web.resource.org/cc/Notice"/>
+        <cc:requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+        <cc:permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/>
+        <cc:requires rdf:resource="http://web.resource.org/cc/ShareAlike"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g inkscape:label="Ebene 1" inkscape:groupmode="layer" id="r5-layer1" clip-path="url(#r5-fragment)">
+    <g style="opacity:1;display:inline" id="r5-g5333" transform="matrix(0.117118,0,0,0.117118,4.724154,4.788079)">
+      <path id="r5-path5317" sodipodi:nodetypes="czzzzzzzzzzzszzzz" d="M 273.33692,135.27701 C 218.65517,110.02408 123.22355,78.565542 111.42673,71.241435 C 99.757589,63.996592 95.227419,58.328878 90.612002,52.076063 C 85.894511,45.684935 95.59329,39.03903 93.021974,36.951176 C 90.236829,34.689692 78.27723,36.044431 70.917596,36.708626 C 63.545858,37.373911 55.411889,39.428172 40.158993,40.822003 C 24.914188,42.215102 10.146331,42.637702 7.1531935,47.220489 C 4.2394935,51.681653 8.7628703,66.513781 10.377275,80.076185 C 11.991379,93.63597 12.296657,104.32444 12.991115,112.81397 C 13.684478,121.29012 15.148636,128.16313 18.713391,129.75396 C 22.187024,131.30415 26.12793,122.58782 34.717277,124.36622 C 43.2405,126.13095 52.979245,126.73034 72.711898,138.15616 C 92.444554,149.58199 173.17103,204.51877 221.42969,231.82368 C 272.80258,260.89061 314.35939,276.16248 353.73135,292.72044 C 393.72325,309.53912 510.85365,348.19578 517.80427,332.80262 C 525.02431,316.81255 434.72409,229.34301 393.94403,202.73382 C 353.59077,176.40313 328.01866,160.52992 273.33692,135.27701 z " style="fill:url(#r5-linearGradient5343);fill-opacity:1;stroke:black;stroke-width:2.30644488;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"/>
+      <g style="display:inline" id="r5-g5319" transform="matrix(1.14207,-0.159996,0.159996,1.14207,-14.76013,25.87619)">
+        <g id="r5-g5321">
+          <path d="M 62.85582,44.89806 C 62.58256,48.4795 59.1521,51.14136 55.19856,50.8397 C 51.24503,50.53805 48.25813,47.38654 48.5314,43.8051 C 48.80466,40.22366 52.23512,37.5618 56.18866,37.86346 C 60.14219,38.16511 63.12909,41.31662 62.85582,44.89806 z " id="r5-path5323" style="fill:url(#r5-radialGradient5345);fill-opacity:1;stroke:black;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+          <path d="M 57.18767,47.35144 C 57.49483,48.97377 57.17533,50.99053 55.19856,50.8397 C 53.2218,50.68887 51.48669,49.82559 50.27993,48.55232 C 49.07317,47.27906 48.14097,44.24223 49.039,42.45151 C 49.84407,40.84615 50.92297,42.27562 51.65672,42.04299 C 53.38108,41.4963 51.03382,45.94567 52.8047,45.05439 C 53.68167,44.61302 53.5556,46.55495 54.18073,47.3312 C 54.80587,48.10744 57.049,46.61901 57.18767,47.35144 z " sodipodi:nodetypes="csssssss" id="r5-path5325" style="fill:black;fill-opacity:1;stroke:black;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+        </g>
+        <g id="r5-g5327">
+          <path id="r5-path5329" d="M 41.79515,64.35873 C 38.21371,64.08547 35.55185,60.65501 35.85351,56.70147 C 36.15516,52.74794 39.30667,49.76104 42.88811,50.03431 C 46.46955,50.30757 49.13141,53.73803 48.82975,57.69157 C 48.5281,61.6451 45.37659,64.632 41.79515,64.35873 z " style="fill:url(#r5-radialGradient5347);fill-opacity:1;stroke:black;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+          <path d="M 45.41144,58.62007 C 47.03377,58.92723 49.05053,58.60773 48.8997,56.63096 C 48.74887,54.6542 47.88559,52.91909 46.61232,51.71233 C 45.33906,50.50557 42.30223,49.57337 40.51151,50.4714 C 38.90615,51.27647 40.33562,52.35537 40.10299,53.08912 C 39.5563,54.81348 44.00567,52.46622 43.11439,54.2371 C 42.67302,55.11407 44.61495,54.988 45.3912,55.61313 C 46.16744,56.23827 44.67901,58.4814 45.41144,58.62007 z " sodipodi:nodetypes="csssssss" id="r5-path5331" style="fill:black;fill-opacity:1;stroke:black;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+        </g>
+      </g>
+    </g>
+  </g>
+<clipPath id="r5-fragment"><rect x="47.24409466666666" y="0" width="23.62204733333333" height="53.149605"/></clipPath></svg><svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://web.resource.org/cc/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" width="250" height="125" id="svg5349" sodipodi:version="0.32" inkscape:version="0.44.1" version="1.0" sodipodi:docbase="/home/andreas" sodipodi:docname="Dugesia_schematic.svg" x="775" y="345" viewBox="0 0 70.866142 53.149605" overflow="hidden" preserveAspectRatio="xMidYMid meet">
+  <defs id="r6-defs5351">
+    <radialGradient inkscape:collect="always" xlink:href="#r6-linearGradient2912" id="r6-radialGradient5347" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-1.22673,0,0,-1.315684,841.3585,302.5095)" cx="649.9502" cy="187.74725" fx="649.9502" fy="187.74725" r="7.5114264"/>
+    <linearGradient id="r6-linearGradient2912">
+      <stop style="stop-color:#464600;stop-opacity:1;" offset="0" id="r6-stop2914"/>
+      <stop style="stop-color:gray;stop-opacity:0;" offset="1" id="r6-stop2916"/>
+    </linearGradient>
+    <radialGradient inkscape:collect="always" xlink:href="#r6-linearGradient2912" id="r6-radialGradient5345" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.386434,2.770007e-2,-2.974323e-2,1.488677,-856.1729,-236.7608)" cx="659.27985" cy="179.7002" fx="659.27985" fy="179.7002" r="8.1795616"/>
+    <linearGradient id="r6-linearGradient2896">
+      <stop style="stop-color:#464600;stop-opacity:0.23529412;" offset="0" id="r6-stop2898"/>
+      <stop id="r6-stop2908" offset="0.125" style="stop-color:#464600;stop-opacity:0.70588237;"/>
+      <stop id="r6-stop2904" offset="0.5" style="stop-color:#464600;stop-opacity:0.90196079;"/>
+      <stop style="stop-color:#464600;stop-opacity:0.70588237;" offset="0.75" id="r6-stop2910"/>
+      <stop style="stop-color:#464600;stop-opacity:0.23529412;" offset="1" id="r6-stop2900"/>
+    </linearGradient>
+    <linearGradient inkscape:collect="always" xlink:href="#r6-linearGradient2896" id="r6-linearGradient5343" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.14207,-0.159996,0.159996,1.14207,-727.8843,-28.06526)" x1="722.91882" y1="418.75809" x2="900.43817" y2="184.66513"/>
+  </defs>
+  <sodipodi:namedview id="r6-base" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="6.3813582" inkscape:cx="42.519684" inkscape:cy="31.889763" inkscape:document-units="px" inkscape:current-layer="layer1" width="20mm" height="15mm" units="mm" inkscape:window-width="1002" inkscape:window-height="622" inkscape:window-x="0" inkscape:window-y="107"/>
+  <metadata id="r6-metadata5354">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <dc:title>Dugesia gonocephala, schematic</dc:title>
+        <dc:date>2007-10-20</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:publisher>
+          <cc:Agent>
+            <dc:title>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:identifier>Dugesia_schematic</dc:identifier>
+        <dc:source>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:source>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>Dugesia</rdf:li>
+            <rdf:li>Planaria</rdf:li>
+            <rdf:li>Euplanaria</rdf:li>
+            <rdf:li>Strudelwurm</rdf:li>
+            <rdf:li>Plattwurm</rdf:li>
+            <rdf:li>Regeneration</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:description>Schematic drawing of Dugesia gonocephala, done with InkscapeP</dc:description>
+        <dc:contributor>
+          <cc:Agent>
+            <dc:title>Andreas Neudecker &lt;zapyon@gmx.net&gt;</dc:title>
+          </cc:Agent>
+        </dc:contributor>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/by-sa/2.5/"/>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/by-sa/2.5/">
+        <cc:permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+        <cc:permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+        <cc:requires rdf:resource="http://web.resource.org/cc/Notice"/>
+        <cc:requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+        <cc:permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/>
+        <cc:requires rdf:resource="http://web.resource.org/cc/ShareAlike"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <g inkscape:label="Ebene 1" inkscape:groupmode="layer" id="r6-layer1">
+    <g style="opacity:1;display:inline" id="r6-g5333" transform="matrix(0.117118,0,0,0.117118,4.724154,4.788079)">
+      <path id="r6-path5317" sodipodi:nodetypes="czzzzzzzzzzzszzzz" d="M 273.33692,135.27701 C 218.65517,110.02408 123.22355,78.565542 111.42673,71.241435 C 99.757589,63.996592 95.227419,58.328878 90.612002,52.076063 C 85.894511,45.684935 95.59329,39.03903 93.021974,36.951176 C 90.236829,34.689692 78.27723,36.044431 70.917596,36.708626 C 63.545858,37.373911 55.411889,39.428172 40.158993,40.822003 C 24.914188,42.215102 10.146331,42.637702 7.1531935,47.220489 C 4.2394935,51.681653 8.7628703,66.513781 10.377275,80.076185 C 11.991379,93.63597 12.296657,104.32444 12.991115,112.81397 C 13.684478,121.29012 15.148636,128.16313 18.713391,129.75396 C 22.187024,131.30415 26.12793,122.58782 34.717277,124.36622 C 43.2405,126.13095 52.979245,126.73034 72.711898,138.15616 C 92.444554,149.58199 173.17103,204.51877 221.42969,231.82368 C 272.80258,260.89061 314.35939,276.16248 353.73135,292.72044 C 393.72325,309.53912 510.85365,348.19578 517.80427,332.80262 C 525.02431,316.81255 434.72409,229.34301 393.94403,202.73382 C 353.59077,176.40313 328.01866,160.52992 273.33692,135.27701 z " style="fill:url(#r6-linearGradient5343);fill-opacity:1;stroke:black;stroke-width:2.30644488;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"/>
+      <g style="display:inline" id="r6-g5319" transform="matrix(1.14207,-0.159996,0.159996,1.14207,-14.76013,25.87619)">
+        <g id="r6-g5321">
+          <path d="M 62.85582,44.89806 C 62.58256,48.4795 59.1521,51.14136 55.19856,50.8397 C 51.24503,50.53805 48.25813,47.38654 48.5314,43.8051 C 48.80466,40.22366 52.23512,37.5618 56.18866,37.86346 C 60.14219,38.16511 63.12909,41.31662 62.85582,44.89806 z " id="r6-path5323" style="fill:url(#r6-radialGradient5345);fill-opacity:1;stroke:black;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+          <path d="M 57.18767,47.35144 C 57.49483,48.97377 57.17533,50.99053 55.19856,50.8397 C 53.2218,50.68887 51.48669,49.82559 50.27993,48.55232 C 49.07317,47.27906 48.14097,44.24223 49.039,42.45151 C 49.84407,40.84615 50.92297,42.27562 51.65672,42.04299 C 53.38108,41.4963 51.03382,45.94567 52.8047,45.05439 C 53.68167,44.61302 53.5556,46.55495 54.18073,47.3312 C 54.80587,48.10744 57.049,46.61901 57.18767,47.35144 z " sodipodi:nodetypes="csssssss" id="r6-path5325" style="fill:black;fill-opacity:1;stroke:black;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+        </g>
+        <g id="r6-g5327">
+          <path id="r6-path5329" d="M 41.79515,64.35873 C 38.21371,64.08547 35.55185,60.65501 35.85351,56.70147 C 36.15516,52.74794 39.30667,49.76104 42.88811,50.03431 C 46.46955,50.30757 49.13141,53.73803 48.82975,57.69157 C 48.5281,61.6451 45.37659,64.632 41.79515,64.35873 z " style="fill:url(#r6-radialGradient5347);fill-opacity:1;stroke:black;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+          <path d="M 45.41144,58.62007 C 47.03377,58.92723 49.05053,58.60773 48.8997,56.63096 C 48.74887,54.6542 47.88559,52.91909 46.61232,51.71233 C 45.33906,50.50557 42.30223,49.57337 40.51151,50.4714 C 38.90615,51.27647 40.33562,52.35537 40.10299,53.08912 C 39.5563,54.81348 44.00567,52.46622 43.11439,54.2371 C 42.67302,55.11407 44.61495,54.988 45.3912,55.61313 C 46.16744,56.23827 44.67901,58.4814 45.41144,58.62007 z " sodipodi:nodetypes="csssssss" id="r6-path5331" style="fill:black;fill-opacity:1;stroke:black;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg><text x="540" y="490" text-anchor="middle" font-size="23" font-family="Arial, sans-serif" fill="#183b48">Separate body fragments</text><text x="540" y="535" text-anchor="middle" font-size="20" font-family="Arial, sans-serif" fill="#183b48">Head, middle and tail portions.</text><text x="900" y="490" text-anchor="middle" font-size="23" font-family="Arial, sans-serif" fill="#183b48">Regenerated planarians</text><text x="900" y="535" text-anchor="middle" font-size="20" font-family="Arial, sans-serif" fill="#183b48">Missing structures grow again.</text><text x="352" y="285" text-anchor="middle" font-size="40" font-family="Arial, sans-serif" fill="#183b48">→</text><text x="717" y="285" text-anchor="middle" font-size="40" font-family="Arial, sans-serif" fill="#183b48">→</text><text x="540" y="605" text-anchor="middle" font-size="19" font-family="Arial, sans-serif" fill="#183b48">Published flatworm artwork clipped and repeated to explain the stages; not to scale.</text></svg>

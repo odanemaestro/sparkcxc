@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 285.13 221.23">
+  <path fill="none" stroke="#06f" d="M160.84 27.64v132.88" stroke-dasharray="12 1"/>
+  <path fill="none" stroke="red" d="M42 150.7c73.5-24.75 91.38-123.22 119.7-123 62.04-.18 67.38 106.36 71.8 133.63"/>
+  <text transform="rotate(-90 -278.395 -57.2)" font-weight="bold" font-size="15.5" font-family="URW Gothic L" text-anchor="middle">
+    <tspan x="-425.66" y="250.3">rate of reaction</tspan>
+  </text>
+  <text font-weight="bold" font-size="15.5" font-family="URW Gothic L" text-anchor="middle" transform="translate(-221.195 -335.596)">
+    <tspan x="377.66" y="536.26">temperature / °C</tspan>
+  </text>
+  <path fill="none" stroke="#000" stroke-width="2" d="M42 18.7h220v142.52h-220z"/>
+  <text font-weight="bold" font-size="10.5" font-family="URW Gothic L" text-anchor="middle" transform="translate(-221.195 -335.596)">
+    <tspan x="263.1" y="518">0</tspan><tspan x="295.1" y="518">10</tspan><tspan x="327.1" y="518">20</tspan><tspan x="357.1" y="518">30</tspan><tspan x="389.1" y="518">40</tspan><tspan x="419.1" y="518">50</tspan><tspan x="451.1" y="518">60</tspan><tspan x="483.1" y="518">70</tspan>
+  </text>
+  <path fill="none" stroke="#000" stroke-width="2" d="M42 160.8v8.5M74 160.8v8.5M106 160.8v8.5M136 160.8v8.5M168 160.8v8.5M198 160.8v8.5M230 160.8v8.5M262.07 160.8v8.5"/>
+  <text fill="#06f" transform="rotate(-90 -278.395 -57.2)" font-weight="bold" font-family="URW Gothic L" text-anchor="start" font-size="7">
+    <tspan x="-493.66" y="379.65">optimal temperature</tspan>
+  </text>
+</svg>

@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="svg2" inkscape:output_extension="org.inkscape.output.svg.inkscape" inkscape:version="0.46+devel r21714" sodipodi:docname="Tide_schematic.svg" x="0px" y="0px" width="570px" height="319.046px" viewBox="75 0 570 319.046" enable-background="new 75 0 570 319.046" xml:space="preserve">
+<sodipodi:namedview id="namedview4588" borderopacity="1" gridtolerance="10" bordercolor="#666666" pagecolor="#ffffff" objecttolerance="10" guidetolerance="10" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-width="1440" inkscape:window-height="852" showgrid="false" inkscape:zoom="0.89904762" inkscape:cx="327.75424" inkscape:cy="329.23729" inkscape:window-x="0" inkscape:window-y="0" inkscape:current-layer="svg2" inkscape:window-maximized="1">
+	</sodipodi:namedview>
+<defs>
+	
+	
+		<inkscape:perspective id="perspective4592" sodipodi:type="inkscape:persp3d" inkscape:vp_x="0 : 262.5 : 1" inkscape:vp_y="0 : 1000 : 0" inkscape:vp_z="700 : 262.5 : 1" inkscape:persp3d-origin="350 : 175 : 1">
+		</inkscape:perspective>
+</defs>
+<radialGradient id="path2830_1_" cx="364.125" cy="280.8613" r="67.1692" gradientTransform="matrix(0 1 1 0 288.2773 -207.1016)" gradientUnits="userSpaceOnUse">
+	<stop offset="0" style="stop-color:#FFFF00"/>
+	<stop offset="1" style="stop-color:#EDCC00"/>
+</radialGradient>
+<path id="path2830" fill="url(#path2830_1_)" stroke="#000000" d="M569.137,223.694c-36.819,0.006-66.674-29.839-66.68-66.659  c-0.007-36.821,29.837-66.675,66.657-66.682c0.009,0,0.016,0,0.022,0c36.821-0.005,66.677,29.839,66.683,66.659  c0.007,36.822-29.837,66.676-66.659,66.682C569.153,223.694,569.146,223.694,569.137,223.694z"/>
+<g id="g3705" transform="translate(453.3299,74.8264)">
+	<path id="path2846" fill="#FFFFFF" stroke="#000000" d="M-304.056,100.169c-9.764,0-17.678-7.914-17.678-17.677   c0-9.764,7.914-17.679,17.678-17.679l0,0c9.763,0,17.678,7.915,17.678,17.679C-286.378,92.254-294.293,100.169-304.056,100.169   L-304.056,100.169z"/>
+	
+		<radialGradient id="path2895_1_" cx="-28.4324" cy="89.9646" r="18.1774" gradientTransform="matrix(0 1 1 0 -394.0211 110.9234)" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#CBCBCB"/>
+		<stop offset="1" style="stop-color:#7E7E7E"/>
+	</radialGradient>
+	<path id="path2895" opacity="0.25" fill="url(#path2895_1_)" stroke="#000000" enable-background="new    " d="M-304.056,100.169   c-9.764,0-17.678-7.914-17.678-17.677c0-9.764,7.914-17.679,17.678-17.679l0,0c9.763,0,17.678,7.915,17.678,17.679   C-286.378,92.254-294.293,100.169-304.056,100.169L-304.056,100.169z"/>
+	
+		<radialGradient id="path3677_1_" cx="-28.4324" cy="89.9646" r="18.1774" gradientTransform="matrix(0 1 1 0 -394.0211 110.9234)" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#CBCBCB"/>
+		<stop offset="1" style="stop-color:#7E7E7E"/>
+	</radialGradient>
+	<path id="path3677" opacity="0.25" fill="url(#path3677_1_)" stroke="#000000" enable-background="new    " d="M-304.056,100.169   c-9.764,0-17.678-7.914-17.678-17.677c0-9.764,7.914-17.679,17.678-17.679l0,0c9.763,0,17.678,7.915,17.678,17.679   C-286.378,92.254-294.293,100.169-304.056,100.169L-304.056,100.169z"/>
+</g>
+<g id="g3699" transform="translate(434.8989,36.1474)">
+	<g id="g2862" transform="translate(-239.406,-11.6168)">
+		<path id="path2844" fill="#FFFFFF" stroke="#000000" d="M92.969,12.839c0,9.764-7.915,17.679-17.677,17.679    c-9.764,0-17.679-7.915-17.679-17.677c0-0.001,0-0.001,0-0.001c0-9.764,7.913-17.677,17.678-17.68    C85.054-4.841,92.969,3.074,92.969,12.839C92.969,12.838,92.969,12.838,92.969,12.839z"/>
+		
+			<radialGradient id="path2858_1_" cx="126.6189" cy="149.068" r="18.1786" gradientTransform="matrix(1.5001 0 0 -1 -123.4887 161.9075)" gradientUnits="userSpaceOnUse">
+			<stop offset="0" style="stop-color:#1B1B1B"/>
+			<stop offset="1" style="stop-color:#000000"/>
+		</radialGradient>
+		<path id="path2858" fill="url(#path2858_1_)" stroke="#000000" d="M75.291,30.517c-9.765,0-17.678-7.915-17.678-17.679    c0-9.764,7.913-17.677,17.678-17.677v17.677V30.517z"/>
+	</g>
+	
+		<radialGradient id="path3683_1_" cx="-10.0005" cy="128.6441" r="18.1779" gradientTransform="matrix(1 0 0 -1 -154.1143 129.8654)" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#CBCBCB"/>
+		<stop offset="1" style="stop-color:#7E7E7E"/>
+	</radialGradient>
+	<path id="path3683" opacity="0.25" fill="url(#path3683_1_)" stroke="#000000" enable-background="new    " d="M-146.437,1.222   c0,9.764-7.915,17.679-17.677,17.679c-9.764,0-17.679-7.915-17.679-17.679l0,0c0-9.764,7.913-17.677,17.678-17.68   C-154.352-16.458-146.437-8.542-146.437,1.222C-146.437,1.221-146.437,1.221-146.437,1.222z"/>
+</g>
+<g id="g3710" transform="translate(537.7559,25.5404)">
+	<g id="g2887" transform="matrix(-1,0,0,1,-87.7614,-1.01015)">
+		<path id="path2889" fill="#FFFFFF" stroke="#000000" d="M161.531,255.217c0-9.765,7.916-17.68,17.679-17.68    s17.679,7.915,17.679,17.679c0,0,0,0,0,0.001c0.001,9.763-7.914,17.679-17.678,17.679S161.533,264.98,161.531,255.217    L161.531,255.217z"/>
+		
+			<radialGradient id="path2891_1_" cx="395.1635" cy="149.0708" r="18.1786" gradientTransform="matrix(1.5001 0 0 1 -404.7358 106.1445)" gradientUnits="userSpaceOnUse">
+			<stop offset="0" style="stop-color:#1B1B1B"/>
+			<stop offset="1" style="stop-color:#000000"/>
+		</radialGradient>
+		<path id="path2891" fill="url(#path2891_1_)" stroke="#000000" d="M179.209,237.537c9.765,0,17.679,7.915,17.679,17.68    c0,9.763-7.914,17.676-17.679,17.676v-17.676V237.537z"/>
+	</g>
+	
+		<radialGradient id="path3687_1_" cx="-112.8575" cy="139.2516" r="18.1782" gradientTransform="matrix(-1 0 0 1 -379.8282 114.9541)" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#CBCBCB"/>
+		<stop offset="1" style="stop-color:#7E7E7E"/>
+	</radialGradient>
+	<path id="path3687" opacity="0.25" fill="url(#path3687_1_)" stroke="#000000" enable-background="new    " d="M-284.649,254.206   c0-9.764,7.914-17.679,17.679-17.679c9.763,0,17.679,7.915,17.679,17.679l0,0c0,9.764-7.914,17.677-17.679,17.68   C-276.733,271.885-284.649,263.969-284.649,254.206C-284.649,254.207-284.649,254.207-284.649,254.206z"/>
+</g>
+<g id="g3695" transform="translate(456.3269,2.6833)">
+	
+		<radialGradient id="path2842_1_" cx="-58.7585" cy="170.9144" r="18.1792" gradientTransform="matrix(0 1 1 0 -236.6251 213.3917)" gradientUnits="userSpaceOnUse">
+		<stop offset="0" style="stop-color:#1B1B1B"/>
+		<stop offset="1" style="stop-color:#000000"/>
+	</radialGradient>
+	<path id="path2842" fill="url(#path2842_1_)" stroke="#000000" d="M-65.71,172.311c-9.764,0-17.68-7.914-17.68-17.676   c0-9.764,7.916-17.679,17.679-17.679c0.001,0,0.001,0,0.001,0c9.765,0,17.678,7.914,17.678,17.677   C-48.031,164.397-55.945,172.311-65.71,172.311L-65.71,172.311z"/>
+	<path id="path3691" fill="none" d="M-65.71,172.311c-9.764,0-17.676-7.914-17.68-17.676c0-9.764,7.916-17.679,17.679-17.679   c0.001,0,0.001,0,0.001,0c9.765,0,17.678,7.914,17.679,17.677c0,9.764-7.914,17.678-17.676,17.678   C-65.71,172.311-65.71,172.311-65.71,172.311z"/>
+</g>
+<path id="path3722" fill="#288DE0" stroke="#000000" stroke-width="1" d="M271.25,203.007  c-24.064-0.009-43.563-19.522-43.554-43.587c0.009-24.051,19.502-43.546,43.554-43.555c24.065-0.008,43.579,19.491,43.589,43.555  c0.008,24.065-19.492,43.579-43.555,43.587C271.272,203.007,271.261,203.007,271.25,203.007z"/>
+<path id="path3955" d="M378.438,199.565l11.564-17.475l2.511,20.802C389.081,198.854,383.392,197.527,378.438,199.565z"/>
+<path id="path3734" d="M486.113,165.227"/>
+<path id="path3955_1_" d="M318.774,52.545l-16.702-12.654l20.921-1.181C318.742,41.877,317.057,47.47,318.774,52.545z"/>
+<path id="path3736" d="M401.798,10.125"/>
+<path id="path3955_2_" d="M165.933,107.241l-12.987,16.447l-0.763-20.941C155.265,107.061,160.823,108.858,165.933,107.241z"/>
+<path id="path3738" d="M551.329-69.606"/>
+<path id="path3955_3_" d="M218.906,261.813l16.355,13.103l-20.944,0.616C218.651,272.48,220.488,266.934,218.906,261.813z"/>
+<path id="path3742" d="M633.719,86.819"/>
+<path id="path6314" fill="none" stroke="#800000" stroke-width="3" d="M232.68,67.139l-34.286-34.287"/>
+<path id="path6316" fill="none" stroke="#800000" stroke-width="3" d="M342.68,281.425l-34.286-34.286"/>
+<path id="path6318" fill="none" stroke="#008000" stroke-width="3" d="M185.536,209.995l-34.285,34.287"/>
+<path id="path6320" fill="none" stroke="#008000" stroke-width="3" d="M392.68,82.853l-34.285,34.287"/>
+<text transform="matrix(1 0 0 1 413.1299 154.0244)"><tspan x="0" y="0" font-family="'HelveticaNeue-CondensedBold'" font-size="18">New </tspan><tspan x="0" y="21.6" font-family="'HelveticaNeue-CondensedBold'" font-size="18">moon</tspan></text>
+<text transform="matrix(1 0 0 1 397 78.0479)" font-family="'HelveticaNeue-CondensedBold'" font-size="18">Spring tide</text>
+<text transform="matrix(1 0 0 1 101 268.6729)" font-family="'HelveticaNeue-CondensedBold'" font-size="18">Spring tide</text>
+<text transform="matrix(1 0 0 1 89.1299 157.0244)"><tspan x="0" y="0" font-family="'HelveticaNeue-CondensedBold'" font-size="18">Full</tspan><tspan x="0" y="21.6" font-family="'HelveticaNeue-CondensedBold'" font-size="18">moon</tspan></text>
+<text transform="matrix(1 0 0 1 224.3164 231.1387)"><tspan x="0" y="0" font-family="'HelveticaNeue-CondensedBold'" font-size="18">Third quarter</tspan><tspan x="26.829" y="21.6" font-family="'HelveticaNeue-CondensedBold'" font-size="18">moon</tspan></text>
+<text transform="matrix(1 0 0 1 252.9253 73.3594)"><tspan x="0" y="0" font-family="'HelveticaNeue-CondensedBold'" font-size="18">First </tspan><tspan x="-30.132" y="21.6" font-family="'HelveticaNeue-CondensedBold'" font-size="18">quarter moon</tspan></text>
+<text transform="matrix(1 0 0 1 246.1069 167.2266)" fill="#F9F9F9" font-family="'HelveticaNeue-CondensedBold'" font-size="24">Earth</text>
+<text transform="matrix(1 0 0 1 345.6797 299.4248)" font-family="'HelveticaNeue-CondensedBold'" font-size="18">Neap tide</text>
+<text transform="matrix(1 0 0 1 125.9785 32.8525)" font-family="'HelveticaNeue-CondensedBold'" font-size="18">Neap tide</text>
+<text transform="matrix(1 0 0 1 548.9102 165.2275)" fill="#FC8606" font-family="'HelveticaNeue-CondensedBold'" font-size="24">Sun</text>
+</svg>

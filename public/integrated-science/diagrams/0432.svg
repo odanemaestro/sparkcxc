@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg" id="svg3336" version="1.1" inkscape:version="0.91 r13725" width="640" height="420" viewBox="0 0 640 420" sodipodi:docname="kepler1.svg" inkscape:export-xdpi="90" inkscape:export-ydpi="90">
+  <metadata id="metadata3342">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <dc:title>First law of Kepler</dc:title>
+        <cc:license rdf:resource="http://creativecommons.org/licenses/by-sa/4.0/"/>
+        <dc:date>2018-10-11</dc:date>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Michael A. Rundel</dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>CC BY-SA 4.0</dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>physics astronomy astrodynamics kepler orbital mechanics</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:description>Diagram showing the first law of Kepler.</dc:description>
+      </cc:Work>
+      <cc:License rdf:about="http://creativecommons.org/licenses/by-sa/4.0/">
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <cc:requires rdf:resource="http://creativecommons.org/ns#Notice"/>
+        <cc:requires rdf:resource="http://creativecommons.org/ns#Attribution"/>
+        <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+        <cc:requires rdf:resource="http://creativecommons.org/ns#ShareAlike"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <defs id="defs3340">
+    <clipPath id="clip5-7">
+      <path inkscape:connector-curvature="0" id="path59-5" d="m 0,0 0,924 1585,0 0,-924 z"/>
+    </clipPath>
+    <clipPath id="clip6-1-7">
+      <path inkscape:connector-curvature="0" id="path70-8-3" d="m 0,0 0,940 1593,0 0,-940 z"/>
+    </clipPath>
+    <clipPath id="clip7-41-6">
+      <path inkscape:connector-curvature="0" id="path81-2-5" d="m 0,0 0,940 1593,0 0,-940 z"/>
+    </clipPath>
+    <clipPath id="clip10-1-7">
+      <path inkscape:connector-curvature="0" id="path114-0-5" d="m 0,0 0,940 1593,0 0,-940 z"/>
+    </clipPath>
+    <clipPath id="clip11-1-4">
+      <path inkscape:connector-curvature="0" id="path125-20-7" d="m 0,0 0,940 1593,0 0,-940 z"/>
+    </clipPath>
+    <clipPath id="clipPath4491">
+      <path inkscape:connector-curvature="0" id="path4493" d="m 0,0 0,940 1593,0 0,-940 z"/>
+    </clipPath>
+    <clipPath id="clipPath4499">
+      <path inkscape:connector-curvature="0" id="path4501" d="m 0,0 0,940 1593,0 0,-940 z"/>
+    </clipPath>
+  </defs>
+  <sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" objecttolerance="10" gridtolerance="10" guidetolerance="10" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-width="1858" inkscape:window-height="1057" id="namedview3338" showgrid="false" showguides="false" inkscape:zoom="1.4983929" inkscape:cx="190.59556" inkscape:cy="208.76846" inkscape:window-x="54" inkscape:window-y="-8" inkscape:window-maximized="1" inkscape:current-layer="layer2"/>
+  <g inkscape:groupmode="layer" id="layer3" inkscape:label="base">
+    <text xml:space="preserve" style="font-style:normal;font-weight:normal;font-size:18.75px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" x="167.93816" y="231.3307" id="text3404" sodipodi:linespacing="125%"><tspan sodipodi:role="line" id="tspan3406" x="167.93816" y="231.3307" style="font-size:18.75px">F<tspan style="font-size:64.99999762%;baseline-shift:sub" id="tspan3408">1</tspan></tspan></text>
+    <text sodipodi:linespacing="125%" id="text3410" y="231.33069" x="484.11002" style="font-style:normal;font-weight:normal;font-size:18.75px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" xml:space="preserve"><tspan style="font-size:18.75px" y="231.33069" x="484.11002" id="tspan3412" sodipodi:role="line">F<tspan id="tspan3414" style="font-size:64.99999762%;baseline-shift:sub">2</tspan></tspan></text>
+    <g transform="matrix(1.4815513,0,0,1.4815513,-273.28539,227.16228)" id="misc"/>
+    <g style="stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0" id="misc-4" transform="matrix(1.5662143,0,0,1.5662143,-263.85223,-222.20601)"/>
+    <g transform="matrix(1.5209814,0,0,1.5209814,-764.28235,-136.87682)" style="stroke-width:1;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0" id="misc-2"/>
+    <g id="g56" transform="matrix(2.8069047,0,0,2.8069047,-750.32997,-727.50617)" style="fill:#e0e000;fill-opacity:1">
+      <clipPath id="clipPath3792">
+        <path inkscape:connector-curvature="0" id="path3794" d="m 0,0 0,924 1585,0 0,-924 z"/>
+      </clipPath>
+      <g id="g61" clip-path="url(#clip5-7)" style="fill:#e0e000;fill-opacity:1">
+        <g style="fill:#e0e000;fill-opacity:1;stroke:#000000;stroke-width:0.49877006;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" id="g63">
+          <path inkscape:connector-curvature="0" id="path65" d="m 328,334 c 0,1.66 -1.34,3 -3,3 -1.66,0 -3,-1.34 -3,-3 0,-1.66 1.34,-3 3,-3 1.66,0 3,1.34 3,3 z" style="fill:#e0e000;fill-opacity:1;stroke-width:0.49877006;stroke-miterlimit:4;stroke-dasharray:none"/>
+        </g>
+        <!-- drawing style -->
+      </g>
+      <!-- clip5 -->
+    </g>
+    <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.39999998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="m 161.91406,207.74639 0,4.50722" id="path4847" inkscape:connector-curvature="0"/>
+    <path inkscape:connector-curvature="0" id="path4849" d="m 164.16767,210 -4.50722,0" style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.39999998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+    <path style="fill:none;stroke:#000000;stroke-width:1.43714488;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" inkscape:connector-curvature="0" id="path32" d="M 554.25462,210 C 554.25462,114.53047 449.37178,37.125845 320,37.125845 190.62821,37.125845 85.745379,114.53047 85.745379,210 c 0,95.46954 104.882831,172.87416 234.254621,172.87416 129.37178,0 234.25462,-77.40462 234.25462,-172.87416 z"/>
+    <path style="fill:#7d7dff;stroke:#000000;stroke-width:1.43714488;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;fill-opacity:1" inkscape:connector-curvature="0" id="path153" d="m 433.53444,57.662645 c 0,2.385661 -1.92577,4.311435 -4.31143,4.311435 -2.38566,0 -4.31143,-1.925774 -4.31143,-4.311435 0,-2.38566 1.92577,-4.311434 4.31143,-4.311434 2.38566,0 4.31143,1.925774 4.31143,4.311434 z"/>
+    <path inkscape:connector-curvature="0" id="path5087" d="m 478.08594,207.74639 0,4.50722" style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.39999998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"/>
+    <path style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.39999998;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="m 480.33955,210 -4.50722,0" id="path5089" inkscape:connector-curvature="0"/>
+  </g>
+  <g inkscape:groupmode="layer" id="layer2" inkscape:label="lang" style="display:inline">
+    <switch>
+      <text systemLanguage="de" y="195.89919" x="168.5424" font-size="12.000" font-weight="normal" font-style="normal" style="font-style:normal;font-weight:normal;font-size:18.75px;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none" id="text54">Sonne</text>
+         <text systemLanguage="en" y="195.89919" x="168.5424" font-size="12.000" font-weight="normal" font-style="normal" style="font-style:normal;font-weight:normal;font-size:18.75px;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none" id="text54">Sun</text>
+     </switch>
+    <switch>
+    <text systemLanguage="de" font-style="normal" font-weight="normal" font-size="12.000" x="435.13287" y="49.386246" style="font-style:normal;font-weight:normal;font-size:18.75px;font-family:sans-serif;fill:#7d7dff;fill-opacity:1;stroke:none" id="text56">Jupiter</text>
+       <text systemLanguage="en" font-style="normal" font-weight="normal" font-size="12.000" x="435.13287" y="49.386246" style="font-style:normal;font-weight:normal;font-size:18.75px;font-family:sans-serif;fill:#7d7dff;fill-opacity:1;stroke:none" id="text56">Jupiter</text>
+     </switch>
+  </g>
+</svg>

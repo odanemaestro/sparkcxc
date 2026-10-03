@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg" version="1.0" width="598.08295" height="450.54611" id="svg41" sodipodi:docname="Ecological_pyramid.svg" inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">
+  <metadata id="metadata45">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <dc:title>A generic ecological pyramid</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" objecttolerance="10" gridtolerance="10" guidetolerance="10" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-width="1417" inkscape:window-height="988" id="namedview43" showgrid="false" fit-margin-top="10" fit-margin-left="10" fit-margin-right="10" fit-margin-bottom="10" inkscape:zoom="1.514758" inkscape:cx="358.24098" inkscape:cy="230.62165" inkscape:window-x="110" inkscape:window-y="5" inkscape:window-maximized="0" inkscape:current-layer="svg41"/>
+  <title id="title2">A generic ecological pyramid</title>
+  <defs id="defs6">
+    <style type="text/css" id="style4"><![CDATA[
+        tspan
+           {font-family: "DejaVu Sans", sans-serif;
+            font-size: 16px;}
+    ]]></style>
+  </defs>
+  <rect id="rect14-0" style="fill:#cff89a;fill-opacity:1;stroke:#31ad38;stroke-width:1.41460645;stroke-linejoin:miter;stroke-miterlimit:0;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" y="156.4904" x="10.58265" height="283.47305" width="576.91766"/>
+  <text id="text38" y="301.73532" x="150.4243" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">
+    <tspan style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:32px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start" id="tspan36" y="301.73532" x="150.4243">Primary producers</tspan>
+  </text>
+  <rect id="rect14-0-5" style="fill:#cff89a;fill-opacity:1;stroke:#31ad38;stroke-width:1.33333337;stroke-linejoin:miter;stroke-miterlimit:0;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" y="85.967438" x="86.404106" height="60.553097" width="425.27475"/>
+  <text id="text34" y="123.25937" x="195.13002" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.33333397px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">
+    <tspan style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.33333397px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start" id="tspan32" y="123.25937" x="195.13002">Primary consumers</tspan>
+  </text>
+  <rect id="rect14-0-5-4" style="fill:#cff89a;fill-opacity:1;stroke:#31ad38;stroke-width:1.38745499;stroke-linejoin:miter;stroke-miterlimit:0;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" y="44.443356" x="219.60873" height="32.384281" width="159.55234"/>
+  <text id="text30" y="65.30481" x="236.47606" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">
+    <tspan style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.66666698px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start" id="tspan28" y="65.30481" x="236.47606">Secondary consumers</tspan>
+  </text>
+  <rect id="rect14-0-5-4-2" style="fill:#cff89a;fill-opacity:1;stroke:#31ad38;stroke-width:0.88409704;stroke-linejoin:miter;stroke-miterlimit:0;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" y="10.995235" x="281.42316" height="24.438641" width="35.236671"/>
+  <text id="text30-7" y="22.095936" x="288.923" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33333349px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start">
+    <tspan style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33333349px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start" id="tspan28-4" y="22.095936" x="288.923">Tertiary</tspan>
+  </text>
+  <text xml:space="preserve" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33333349px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none" x="284.52585" y="30.772167" id="text4661"><tspan sodipodi:role="line" id="tspan4659" style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.33333349px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start" x="284.52585" y="30.772167">consumers</tspan></text>
+</svg>

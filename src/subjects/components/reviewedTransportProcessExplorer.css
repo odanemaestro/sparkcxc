@@ -1,0 +1,83 @@
+.spark-integrated-science-model .spark-transport-explorer{margin:28px 0;padding:20px;border:1px solid var(--spark-border,#d9e2ec);border-radius:16px;background:var(--spark-paper,#fff)}
+.spark-integrated-science-model .spark-transport-head span{color:var(--spark-teal-dark,#087f73);font-size:11px;font-weight:900;letter-spacing:.05em}
+.spark-integrated-science-model .spark-transport-head h3{margin:4px 0 7px;color:var(--spark-ink,#102a43);font-size:20px}
+.spark-integrated-science-model .spark-transport-head p{margin:0;color:var(--spark-text-muted,#627d98);font-size:13px;line-height:1.6}
+.spark-integrated-science-model .spark-transport-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
+.spark-integrated-science-model .spark-transport-tabs button,.spark-integrated-science-model .spark-transport-notes button{min-height:40px;padding:0 13px;border:1px solid var(--spark-border,#d9e2ec);border-radius:9px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:12px;font-weight:850;cursor:pointer}
+.spark-integrated-science-model .spark-transport-tabs button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-light,#d9fbf4);color:var(--spark-teal-dark,#087f73)}
+.spark-integrated-science-model .spark-transport-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(220px,.55fr);gap:16px}
+.spark-integrated-science-model .spark-transport-stage{overflow:hidden;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:14px;background:#eff7fa}
+.spark-integrated-science-model .spark-transport-stage svg{display:block;width:100%;height:auto}
+.spark-integrated-science-model .spark-transport-stage .chamber{fill:#f8fbfd;stroke:#abc0cf;stroke-width:4}
+.spark-integrated-science-model .spark-transport-stage .centre-guide{stroke:#8ea4b4;stroke-width:3;stroke-dasharray:8 9}
+.spark-integrated-science-model .spark-transport-stage .zone-label,.spark-integrated-science-model .spark-transport-stage .membrane-label{fill:#37536b;font-size:17px;font-weight:800}
+.spark-integrated-science-model .spark-transport-stage .membrane{fill:#d5e4eb;stroke:#71899b;stroke-width:3}
+.spark-integrated-science-model .spark-transport-stage .membrane-head{fill:#88b7c9;stroke:#416a7c;stroke-width:2}
+.spark-integrated-science-model .spark-transport-stage .membrane-tail{stroke:#6f8f9d;stroke-width:3;stroke-linecap:round}
+.spark-integrated-science-model .spark-transport-stage .net-movement-label{fill:#087f73;font-size:15px;font-weight:900}
+.spark-integrated-science-model .spark-transport-stage .process-arrow.reverse,.spark-integrated-science-model .spark-transport-stage .process-arrow-head.reverse{stroke:#8aa3b3;stroke-width:4}
+
+.spark-integrated-science-model .spark-transport-particle.solute{fill:#7257b8;stroke:#4e3b84;stroke-width:2}
+.spark-integrated-science-model .spark-transport-particle.water{fill:#54b7de;stroke:#2d7897;stroke-width:2}
+.spark-integrated-science-model .spark-transport-stage .process-arrow,.spark-integrated-science-model .spark-transport-stage .process-arrow-head{fill:none;stroke:#0d9488;stroke-width:7;stroke-linecap:round;stroke-linejoin:round}
+.spark-integrated-science-model .spark-transport-stage .water-arrow{stroke:#2d91b8}
+.spark-integrated-science-model .spark-transport-stage .active-arrow{stroke:#b36b24}
+.spark-integrated-science-model .spark-transport-stage .carrier{fill:#ffe0b9;stroke:#b36b24;stroke-width:4}.spark-integrated-science-model .spark-transport-stage .carrier-site{fill:#fff8eb;stroke:#b36b24;stroke-width:3}
+.spark-integrated-science-model .spark-transport-stage .carrier.running{fill:#ffd28f}
+.spark-integrated-science-model .energy-badge rect{fill:#fff3da;stroke:#c37c24;stroke-width:2}.spark-integrated-science-model .energy-badge text{fill:#8a5416;font-size:14px;font-weight:900}.spark-integrated-science-model .energy-badge .energy-caption{font-size:11px;font-weight:800}.spark-integrated-science-model .energy-badge.on rect{fill:#fde68a}
+.spark-integrated-science-model .spark-transport-notes{padding:16px;border:1px solid var(--spark-border-soft,#edf2f7);border-radius:12px;background:var(--spark-bg,#f7fafc)}
+.spark-integrated-science-model .spark-transport-notes>strong{color:var(--spark-ink,#102a43);font-size:16px}
+.spark-integrated-science-model .spark-transport-notes p{margin:8px 0;color:var(--spark-ink-soft,#334e68);font-size:12px;line-height:1.6}
+.spark-integrated-science-model .spark-transport-notes dl{display:grid;gap:7px;margin:14px 0}
+.spark-integrated-science-model .spark-transport-notes dl div{padding:8px 0;border-top:1px solid var(--spark-border-soft,#edf2f7)}
+.spark-integrated-science-model .spark-transport-notes dt{color:var(--spark-text-muted,#627d98);font-size:10px;font-weight:900;text-transform:uppercase}
+.spark-integrated-science-model .spark-transport-notes dd{margin:2px 0 0;color:var(--spark-ink,#102a43);font-size:12px;font-weight:700}
+.spark-integrated-science-model .spark-transport-notes button{width:100%;border:0;background:var(--spark-teal,#0d9488);color:#fff}
+.spark-integrated-science-model .move-diffusion{animation:spark-diffusion-shift 1.7s ease-in-out forwards}
+.spark-integrated-science-model .move-diffusion-1{animation-delay:.08s}.spark-integrated-science-model .move-diffusion-2{animation-delay:.16s}.spark-integrated-science-model .move-diffusion-3{animation-delay:.24s}
+.spark-integrated-science-model .move-water{animation:spark-water-shift 1.5s ease-in-out forwards}.spark-integrated-science-model .move-water-1{animation-delay:.08s}.spark-integrated-science-model .move-water-2{animation-delay:.16s}.spark-integrated-science-model .move-water-3{animation-delay:.24s}
+.spark-integrated-science-model .move-active{animation:spark-active-shift 1.5s ease-in-out forwards}
+@keyframes spark-diffusion-shift{to{transform:translateX(300px)}}
+@keyframes spark-water-shift{to{transform:translateX(350px)}}
+@keyframes spark-active-shift{to{transform:translateX(425px)}}
+.spark-integrated-science-model html[data-theme="dark"] .spark-transport-explorer,.spark-integrated-science-model body[data-theme="dark"] .spark-transport-explorer,.spark-integrated-science-model .dark .spark-transport-explorer{background:#122b43;border-color:#2a4863}
+.spark-integrated-science-model html[data-theme="dark"] .spark-transport-notes,.spark-integrated-science-model body[data-theme="dark"] .spark-transport-notes,.spark-integrated-science-model .dark .spark-transport-notes{background:#0d2134;border-color:#29465f}
+.spark-integrated-science-model html[data-theme="dark"] .spark-transport-tabs button,.spark-integrated-science-model body[data-theme="dark"] .spark-transport-tabs button,.spark-integrated-science-model .dark .spark-transport-tabs button{background:#15314b;border-color:#39566e;color:#e7f2fb}
+.spark-integrated-science-model html[data-theme="dark"] .spark-transport-tabs button.active,.spark-integrated-science-model body[data-theme="dark"] .spark-transport-tabs button.active,.spark-integrated-science-model .dark .spark-transport-tabs button.active{background:#164e4a;color:#d7fffa;border-color:#2dd4bf}
+@media(max-width:850px){.spark-integrated-science-model .spark-transport-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.spark-integrated-science-model .spark-transport-explorer{padding:14px}.spark-integrated-science-model .spark-transport-tabs{display:grid;grid-template-columns:1fr}.spark-integrated-science-model .spark-transport-tabs button{width:100%}}
+@media(prefers-reduced-motion:reduce){.spark-integrated-science-model .move-diffusion,.spark-integrated-science-model .move-water,.spark-integrated-science-model .move-active{animation:none}}
+/* SPARK_TRANSPORT_MOBILE_READABILITY_V1
+   The SVG scales as a single illustration on phones. Increase the internal
+   teaching labels so concentration, membrane and energy cues stay readable. */
+@media(max-width:560px){
+  .spark-integrated-science-model .spark-transport-stage .zone-label{
+    font-size:23px;
+    font-weight:900;
+  }
+  .spark-integrated-science-model .spark-transport-stage .membrane-label{
+    font-size:20px;
+    font-weight:900;
+  }
+  .spark-integrated-science-model .spark-transport-stage .energy-badge text{
+    font-size:18px;
+  }
+  .spark-integrated-science-model .spark-transport-stage .process-arrow,
+  .spark-integrated-science-model .spark-transport-stage .process-arrow-head{
+    stroke-width:9;
+  }
+}
+
+/* SPARK_TRANSPORT_DARK_STAGE_V2 */
+.spark-integrated-science-model html[data-theme="dark"] .spark-transport-stage,
+.spark-integrated-science-model body[data-theme="dark"] .spark-transport-stage,
+.spark-integrated-science-model .dark .spark-transport-stage{
+  background:#eaf3f7;
+  border-color:#39566e;
+}
+.spark-integrated-science-model html[data-theme="dark"] .spark-transport-stage .chamber,
+.spark-integrated-science-model body[data-theme="dark"] .spark-transport-stage .chamber,
+.spark-integrated-science-model .dark .spark-transport-stage .chamber{
+  fill:#f8fbfd;
+  stroke:#7890a4;
+}
