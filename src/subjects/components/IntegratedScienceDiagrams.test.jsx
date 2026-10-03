@@ -103,3 +103,36 @@ test("eye and endocrine label labs use the published anatomy assets instead of t
   expect(endpointCircles.map(node => [node.getAttribute("cx"),node.getAttribute("cy")]))
     .toEqual(expect.arrayContaining([["513","146"],["499","270"],["379","373"]]));
 });
+
+
+test("endocrine lab renders one visible drop box per label in the six-target layout", () => {
+  const activity={
+    id:"endocrine-layout-test",
+    title:"Label the major endocrine glands",
+    template:"endocrine-system",
+    labels:[
+      {id:"pituitary",text:"Pituitary gland"},
+      {id:"thyroid",text:"Thyroid gland"},
+      {id:"adrenal",text:"Adrenal glands"},
+      {id:"pancreas",text:"Pancreas"},
+      {id:"ovaries",text:"Ovaries"},
+      {id:"testes",text:"Testes"},
+    ],
+    targets:[
+      {id:"p",labelId:"pituitary",boxX:1,boxY:1,anchorX:1,anchorY:1,side:"left"},
+      {id:"t",labelId:"thyroid",boxX:1,boxY:1,anchorX:1,anchorY:1,side:"left"},
+      {id:"a",labelId:"adrenal",boxX:1,boxY:1,anchorX:1,anchorY:1,side:"left"},
+      {id:"pa",labelId:"pancreas",boxX:1,boxY:1,anchorX:1,anchorY:1,side:"right"},
+      {id:"o",labelId:"ovaries",boxX:1,boxY:1,anchorX:1,anchorY:1,side:"right"},
+      {id:"te",labelId:"testes",boxX:1,boxY:1,anchorX:1,anchorY:1,side:"right"},
+    ],
+  };
+  const view=render(<IntegratedScienceLabelDiagram activity={activity}/>);
+  expect(view.container.querySelectorAll(".spark-label-target")).toHaveLength(6);
+  const boxes=[...view.container.querySelectorAll(".spark-label-target-fo")];
+  expect(boxes.map(node => [node.getAttribute("x"),node.getAttribute("y")]))
+    .toEqual(expect.arrayContaining([
+      ["20","72"],["20","168"],["20","264"],
+      ["790","168"],["790","264"],["790","360"],
+    ]));
+});
