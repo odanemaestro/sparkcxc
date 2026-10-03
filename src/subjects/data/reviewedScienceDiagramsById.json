@@ -4143,7 +4143,7 @@
   "0263": {
     "id": "0263",
     "title": "Bean seed: a dicot compared with a monocot",
-    "caption": "Published diagram compares a generalized dicot seed (1, left) with a monocot seed (2, right). A = seed coat; B = cotyledon; C = hilum; D = plumule (young shoot); E = radicle (young root); F = endosperm in the monocot. A mature bean has two food-storing cotyledons and corresponds to the dicot example. The right-hand example is not a bean. This comparison is schematic; the left image represents internal structure rather than the intact seed surface.",
+    "caption": "Published comparison of a generalized dicot seed and a monocot seed. The anatomical names are written directly on the diagram: seed coat, cotyledon, hilum, plumule, radicle and endosperm where applicable.",
     "sources": [
       {
         "title": "File:Monocot dicot seed.svg",
@@ -4151,15 +4151,15 @@
         "author": "Cbenson1919",
         "license": "CC BY-SA 3.0",
         "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-        "changes": "Published diagram artwork retained without redraw; English teaching caption supplied separately."
+        "changes": "Published diagram artwork retained; letter keys were replaced with the corresponding anatomical names for learner clarity."
       }
     ],
-    "path": "/integrated-science/diagrams/0263.svg"
+    "path": "/integrated-science/diagrams/bean-seed-labelled.svg"
   },
   "0264": {
     "id": "0264",
     "title": "Female reproductive system",
-    "caption": "The source shows the ovaries on either side, oviducts arching toward the uterus, the uterine lining, the cervix and the vagina below. Interactive label targets will be aligned to this artwork before integration.",
+    "caption": "Published female reproductive-system artwork used for the interactive lab. SPARK overlays connected label boxes and leader lines while preserving the underlying anatomy.",
     "sources": [
       {
         "title": "Female reproductive organs",
@@ -4175,7 +4175,7 @@
   "0265": {
     "id": "0265",
     "title": "Male reproductive system in sagittal section",
-    "caption": "The published source labels the testis, epididymis, sperm duct (vas deferens), glands, urethra and penis. Interactive label targets will be aligned to this artwork before integration.",
+    "caption": "Published labelled sagittal view of the male reproductive system retained as a study/reference diagram.",
     "sources": [
       {
         "title": "Human male reproductive system en.svg",
@@ -4191,7 +4191,7 @@
   "0266": {
     "id": "0266",
     "title": "Fetus inside the uterus",
-    "caption": "NIH illustration of a fetus in the uterus. The umbilical cord connects the fetus to the placenta. Maternal and fetal blood normally remain in separate circulations; substances are exchanged across the placental barrier.",
+    "caption": "NIH illustration of a fetus in the uterus used for the interactive lab. SPARK overlays connected label boxes and leader lines while preserving the original public-domain artwork.",
     "sources": [
       {
         "title": "Pregnant human and fetus in uterus",
@@ -4263,7 +4263,7 @@
   "0273": {
     "id": "0273",
     "title": "Brain in sagittal section",
-    "caption": "Servier anatomical view showing the cerebrum, cerebellum and brainstem. Interactive label targets will be aligned to this source before the activity is integrated.",
+    "caption": "Published sagittal brain artwork used for the interactive lab. SPARK overlays connected label boxes and leader lines while preserving the source anatomy.",
     "sources": [
       {
         "title": "brain 2",
@@ -4303,7 +4303,7 @@
   "0278": {
     "id": "0278",
     "title": "Inside a fused three-pin plug",
-    "caption": "Source key: 1 cable grip; 2 neutral terminal (blue); 3 earth terminal (green/yellow); 4 live terminal (brown); 5 fuse. The fuse is in the live conductor. This is the UK-style fused plug shown in the lesson.",
+    "caption": "Inside a fused three-pin plug. The cable grip, neutral terminal, earth terminal, live terminal and fuse are labelled directly on the diagram.",
     "sources": [
       {
         "title": "Three pin mains plug (UK).svg",
@@ -4311,10 +4311,10 @@
         "author": "Slashme",
         "license": "CC BY-SA 3.0",
         "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-        "changes": "Unmodified source artwork"
+        "changes": "Published source artwork retained; the numeric key was replaced with direct component labels."
       }
     ],
-    "path": "/integrated-science/diagrams/0278.svg"
+    "path": "/integrated-science/diagrams/three-pin-plug-labelled.svg"
   },
   "0279": {
     "id": "0279",
