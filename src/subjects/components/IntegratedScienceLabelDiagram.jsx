@@ -57,55 +57,36 @@ const publishedInteractiveTemplates = {
     path:"/integrated-science/diagrams/0266.svg",
     x:335,y:18,width:330,height:575,
     boxes:{
-      fetus:{boxX:20,boxY:76,side:"left"},
-      foetus:{boxX:20,boxY:76,side:"left"},
-      placenta:{boxX:20,boxY:178,side:"left"},
-      "umbilical cord":{boxX:20,boxY:280,side:"left"},
-      uterus:{boxX:790,boxY:100,side:"right"},
-      "uterus wall":{boxX:790,boxY:100,side:"right"},
-      cervix:{boxX:790,boxY:220,side:"right"},
-      "amniotic fluid":{boxX:790,boxY:340,side:"right"},
-      amnion:{boxX:790,boxY:340,side:"right"},
-      "amniotic sac":{boxX:790,boxY:340,side:"right"},
+      fetus:{boxX:20,boxY:110,side:"left"},
+      foetus:{boxX:20,boxY:110,side:"left"},
+      "umbilical cord":{boxX:20,boxY:250,side:"left"},
+      uterus:{boxX:790,boxY:180,side:"right"},
+      "uterus wall":{boxX:790,boxY:180,side:"right"},
     },
     anchors:{
       fetus:[555,390],foetus:[555,390],
-      placenta:[505,405],
       "umbilical cord":[545,365],
       uterus:[490,335],"uterus wall":[490,335],
-      cervix:[525,495],
-      "amniotic fluid":[575,305],amnion:[575,305],"amniotic sac":[575,305],
     },
   },
   "human-brain":{
     path:"/integrated-science/diagrams/0273.svg",
     x:285,y:72,width:430,height:438,
     boxes:{
-      cerebrum:{boxX:20,boxY:70,side:"left"},
-      "corpus callosum":{boxX:20,boxY:166,side:"left"},
-      thalamus:{boxX:20,boxY:262,side:"left"},
-      hypothalamus:{boxX:20,boxY:358,side:"left"},
-      cerebellum:{boxX:790,boxY:70,side:"right"},
-      pons:{boxX:790,boxY:166,side:"right"},
-      "medulla oblongata":{boxX:790,boxY:262,side:"right"},
-      medulla:{boxX:790,boxY:262,side:"right"},
-      "brain stem":{boxX:790,boxY:262,side:"right"},
-      brainstem:{boxX:790,boxY:262,side:"right"},
-      "spinal cord":{boxX:790,boxY:358,side:"right"},
-      "pituitary gland":{boxX:790,boxY:454,side:"right"},
-      pituitary:{boxX:790,boxY:454,side:"right"},
+      cerebrum:{boxX:20,boxY:90,side:"left"},
+      cerebellum:{boxX:790,boxY:90,side:"right"},
+      "medulla oblongata":{boxX:20,boxY:300,side:"left"},
+      medulla:{boxX:20,boxY:300,side:"left"},
+      "brain stem":{boxX:20,boxY:300,side:"left"},
+      brainstem:{boxX:20,boxY:300,side:"left"},
+      "spinal cord":{boxX:790,boxY:300,side:"right"},
     },
     anchors:{
       cerebrum:[500,185],
-      "corpus callosum":[500,235],
-      thalamus:[505,275],
-      hypothalamus:[505,310],
       cerebellum:[390,392],
-      pons:[512,382],
       "medulla oblongata":[505,418],medulla:[505,418],
       "brain stem":[510,405],brainstem:[510,405],
       "spinal cord":[500,485],
-      "pituitary gland":[520,342],pituitary:[520,342],
     },
   },
   "endocrine-system": {
@@ -951,10 +932,21 @@ export default function InteractiveLabelDiagram({
   completed = false,
   onComplete,
 }) {
-  const normalized = useMemo(
+  const normalizedBase = useMemo(
     () => normalizeInteractiveLabelActivity(activity),
     [activity]
   );
+  const normalized = useMemo(() => {
+    const lookup = new Map(normalizedBase.labels.map(label => [label.id,label]));
+    const targets = visiblePublishedTargets(normalizedBase.template,normalizedBase.targets,lookup);
+    if (targets.length === normalizedBase.targets.length) return normalizedBase;
+    const activeLabelIds = new Set(targets.map(target => target.labelId));
+    return {
+      ...normalizedBase,
+      targets,
+      labels:normalizedBase.labels.filter(label => activeLabelIds.has(label.id)),
+    };
+  },[normalizedBase]);
   const correctMap = useMemo(
     () => correctDiagramPlacements(normalized),
     [normalized]
