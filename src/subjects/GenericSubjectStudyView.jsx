@@ -410,6 +410,18 @@ export default function GenericSubjectStudyView({
     ? Math.round((completedCount / totalTopics) * 100)
     : 0;
 
+  const activeTopicIndex = useMemo(
+    () => (structure?.topics || []).findIndex(topic => topic.id === activeTopicId),
+    [activeTopicId, structure]
+  );
+  const previousTopic = activeTopicIndex > 0
+    ? structure?.topics?.[activeTopicIndex - 1] || null
+    : null;
+  const nextTopic = activeTopicIndex >= 0 && activeTopicIndex < (structure?.topics?.length || 0) - 1
+    ? structure?.topics?.[activeTopicIndex + 1] || null
+    : null;
+  const activeLessonComplete = Boolean(activeTopic && completedTopicIds.has(activeTopic.id));
+
   const openTopic = useCallback((topic, sectionId) => {
     if (!topic) return;
 
@@ -766,15 +778,36 @@ export default function GenericSubjectStudyView({
                   <div className="spark-generic-lesson-footer">
                     <button
                       type="button"
-                      className={completedTopicIds.has(activeTopic.id) ? "completed" : ""}
-                      disabled={saving || completedTopicIds.has(activeTopic.id)}
+                      className="spark-generic-lesson-nav spark-generic-lesson-nav-previous"
+                      disabled={!previousTopic}
+                      onClick={() => previousTopic && openTopic(previousTopic, previousTopic.sectionId || null)}
+                    >
+                      <span aria-hidden="true">←</span>
+                      <span>Previous</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      className={activeLessonComplete ? "completed spark-generic-complete-action" : "spark-generic-complete-action"}
+                      disabled={saving || activeLessonComplete}
                       onClick={markComplete}
                     >
                       {saving
                         ? "Saving..."
-                        : completedTopicIds.has(activeTopic.id)
+                        : activeLessonComplete
                           ? "Lesson completed"
                           : "Mark lesson complete"}
+                    </button>
+
+                    <button
+                      type="button"
+                      className="spark-generic-lesson-nav spark-generic-lesson-nav-next"
+                      disabled={!nextTopic || !activeLessonComplete}
+                      onClick={() => nextTopic && activeLessonComplete && openTopic(nextTopic, nextTopic.sectionId || null)}
+                      title={!activeLessonComplete && nextTopic ? "Complete this lesson to unlock the next lesson." : undefined}
+                    >
+                      <span>Next Lesson</span>
+                      <span aria-hidden="true">→</span>
                     </button>
                   </div>
                 </>
