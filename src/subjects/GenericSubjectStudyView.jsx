@@ -36,7 +36,15 @@ function lessonObjectives(topic = {}) {
 
 function interactiveDiagrams(topic = {}) {
   const lesson = lessonData(topic);
-  return Array.isArray(lesson.interactiveDiagrams) ? lesson.interactiveDiagrams.filter(Boolean) : [];
+  const diagrams = Array.isArray(lesson.interactiveDiagrams) ? lesson.interactiveDiagrams.filter(Boolean) : [];
+  const seen = new Set();
+  return diagrams.filter(diagram => {
+    const key = String(diagram?.id || "").trim();
+    if (!key) return true;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 }
 
 function interactiveModels(topic = {}) {
