@@ -14,7 +14,12 @@
 .spark-labelled-reference-toggle{margin-left:auto}
 .spark-labelled-reference-panel{margin:18px 0 0;padding:14px;border:1px solid var(--spark-border,#d9e2ec);border-radius:14px;background:var(--spark-paper,#fff)}
 .spark-labelled-reference-panel figcaption{margin-bottom:10px;color:var(--spark-ink,#102a43);font-size:13px;font-weight:900}
-.spark-labelled-reference-panel img{display:block;width:100%;height:auto;max-height:620px;object-fit:contain;border-radius:10px;background:#fff}
+.spark-labelled-reference-canvas{position:relative;width:100%;aspect-ratio:1000/620;overflow:hidden;border-radius:10px;background:#fff}
+.spark-labelled-reference-art{position:absolute;display:block;object-fit:contain;max-width:none;max-height:none;background:transparent}
+.spark-labelled-reference-overlay{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.spark-labelled-reference-overlay line{stroke:#40566b;stroke-width:3;stroke-linecap:round}
+.spark-labelled-reference-overlay circle{fill:#fff;stroke:#40566b;stroke-width:3}
+.spark-labelled-reference-overlay text{fill:#102a43;stroke:#fff;stroke-width:6;paint-order:stroke;stroke-linejoin:round;font:700 22px Arial,Helvetica,sans-serif}
 html[data-theme="dark"] .spark-labelled-reference-panel,body[data-theme="dark"] .spark-labelled-reference-panel,.dark .spark-labelled-reference-panel{background:#0d2134;border-color:#29465f}
 html[data-theme="dark"] .spark-labelled-reference-panel figcaption,body[data-theme="dark"] .spark-labelled-reference-panel figcaption,.dark .spark-labelled-reference-panel figcaption{color:#e7f0f7}
 @media(max-width:720px){.spark-labelled-reference-toggle{margin-left:0;width:100%}.spark-labelled-reference-panel{padding:10px}}
