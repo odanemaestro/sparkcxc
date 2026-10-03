@@ -99,4 +99,7 @@ test("eye and endocrine label labs use the published anatomy assets instead of t
   const endocrine=render(<IntegratedScienceLabelDiagram activity={endocrineActivity}/>);
   expect(endocrine.container.querySelector("image.spark-published-interactive-art"))
     .toHaveAttribute("href",expect.stringContaining("endocrine-system-interactive.svg"));
+  const endpointCircles=[...endocrine.container.querySelectorAll(".spark-label-target-group > circle")];
+  expect(endpointCircles.map(node => [node.getAttribute("cx"),node.getAttribute("cy")]))
+    .toEqual(expect.arrayContaining([["513","146"],["499","270"],["379","373"]]));
 });
