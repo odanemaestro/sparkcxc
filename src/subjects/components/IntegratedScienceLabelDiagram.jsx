@@ -10,10 +10,8 @@ import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
 import "./integratedScienceLabelDiagram.css";
 
 const replacementIds = {
-  "flower-longitudinal": "0262", "bean-seed": "0263",
-  "female-reproductive-system": "0264", "male-reproductive-system": "0265",
-  "pregnancy-uterus": "0266", "kidney-longitudinal": "0268",
-  nephron: "0269", "human-brain": "0273", "three-pin-plug": "0278",
+  "kidney-longitudinal":"0268",
+  nephron:"0269",
 };
 
 const publishedInteractiveTemplates = {
@@ -30,6 +28,77 @@ const publishedInteractiveTemplates = {
       fovea:[678,315],
       "optic nerve":[792,334],
       "suspensory ligaments":[365,390],
+    },
+  },
+  "female-reproductive-system":{
+    path:"/integrated-science/diagrams/0264.svg",
+    x:245,y:105,width:510,height:380,
+    boxes:{
+      ovary:{boxX:20,boxY:80,side:"left"},
+      ovaries:{boxX:20,boxY:80,side:"left"},
+      oviduct:{boxX:20,boxY:176,side:"left"},
+      "fallopian tube":{boxX:20,boxY:176,side:"left"},
+      uterus:{boxX:20,boxY:272,side:"left"},
+      cervix:{boxX:790,boxY:176,side:"right"},
+      vagina:{boxX:790,boxY:272,side:"right"},
+      endometrium:{boxX:790,boxY:368,side:"right"},
+      "uterine lining":{boxX:790,boxY:368,side:"right"},
+    },
+    anchors:{
+      ovary:[356,245],ovaries:[356,245],
+      oviduct:[395,202],"fallopian tube":[395,202],
+      uterus:[500,300],
+      cervix:[500,392],
+      vagina:[500,452],
+      endometrium:[500,323],"uterine lining":[500,323],
+    },
+  },
+  "pregnancy-uterus":{
+    path:"/integrated-science/diagrams/0266.svg",
+    x:335,y:18,width:330,height:575,
+    boxes:{
+      fetus:{boxX:20,boxY:72,side:"left"},
+      foetus:{boxX:20,boxY:72,side:"left"},
+      placenta:{boxX:20,boxY:168,side:"left"},
+      "umbilical cord":{boxX:20,boxY:264,side:"left"},
+      uterus:{boxX:790,boxY:120,side:"right"},
+      "uterus wall":{boxX:790,boxY:120,side:"right"},
+      cervix:{boxX:790,boxY:216,side:"right"},
+      "amniotic fluid":{boxX:790,boxY:312,side:"right"},
+      "amniotic sac":{boxX:790,boxY:312,side:"right"},
+    },
+    anchors:{
+      fetus:[515,300],foetus:[515,300],
+      placenta:[600,255],
+      "umbilical cord":[555,330],
+      uterus:[628,325],"uterus wall":[628,325],
+      cervix:[515,520],
+      "amniotic fluid":[545,215],"amniotic sac":[545,215],
+    },
+  },
+  "human-brain":{
+    path:"/integrated-science/diagrams/0273.svg",
+    x:285,y:72,width:430,height:438,
+    boxes:{
+      cerebrum:{boxX:20,boxY:92,side:"left"},
+      cerebellum:{boxX:790,boxY:140,side:"right"},
+      "medulla oblongata":{boxX:20,boxY:284,side:"left"},
+      medulla:{boxX:20,boxY:284,side:"left"},
+      "brain stem":{boxX:20,boxY:284,side:"left"},
+      brainstem:{boxX:20,boxY:284,side:"left"},
+      "spinal cord":{boxX:790,boxY:332,side:"right"},
+      hypothalamus:{boxX:20,boxY:188,side:"left"},
+      "pituitary gland":{boxX:790,boxY:236,side:"right"},
+      pituitary:{boxX:790,boxY:236,side:"right"},
+    },
+    anchors:{
+      cerebrum:[500,185],
+      cerebellum:[615,355],
+      "medulla oblongata":[505,365],medulla:[505,365],
+      "brain stem":[505,365],brainstem:[505,365],
+      "spinal cord":[505,470],
+      hypothalamus:[465,282],
+      "pituitary gland":[440,310],pituitary:[440,310],
     },
   },
   "endocrine-system": {
@@ -78,10 +147,13 @@ const endocrineVisibleLabels = new Set([
 ]);
 
 function visiblePublishedTargets(template,targets,labelById) {
-  if (template !== "endocrine-system") return targets;
+  const config=publishedInteractiveTemplates[template];
+  if (!config?.boxes) return targets;
   return targets.filter(target => {
-    const label = labelById.get(target.labelId);
-    return endocrineVisibleLabels.has(normalizedLabelName(label));
+    const label=labelById.get(target.labelId);
+    const key=normalizedLabelName(label);
+    if (template === "endocrine-system") return endocrineVisibleLabels.has(key);
+    return Boolean(config.boxes[key]);
   });
 }
 
