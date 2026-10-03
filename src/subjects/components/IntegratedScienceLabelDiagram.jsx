@@ -896,7 +896,7 @@ export default function InteractiveLabelDiagram({
         <div>
           <span>INTERACTIVE DIAGRAM</span>
           <h3>{normalized.title}</h3>
-          <p>{referenceId ? "Study the reference image, then match each label to its description below. Select a label and a numbered description, or drag the label onto it." : normalized.instructions}</p>
+          <p>{referenceId ? "Study the published diagram, then match each term to the numbered clue below. Select a term, then choose the clue that best matches it." : normalized.instructions}</p>
         </div>
         {completed && <strong className="spark-label-diagram-complete">Completed</strong>}
       </div>
@@ -926,7 +926,7 @@ export default function InteractiveLabelDiagram({
               );
             })}
           </div>
-          <small>Desktop: drag a label. Phone or tablet: tap a label, then tap its target.</small>
+          <small>{referenceId ? "Select a term above, then choose a numbered clue below. The published diagram stays unchanged." : "Desktop: drag a label. Phone or tablet: tap a label, then tap its target."}</small>
         </aside>
 
         <div className="spark-label-diagram-stage">
@@ -975,7 +975,7 @@ export default function InteractiveLabelDiagram({
                     <button
                       type="button"
                       className="spark-label-target"
-                      aria-label={`Target for ${label?.text || "a diagram label"}`}
+                      aria-label={referenceId ? `Clue ${index + 1}${label ? `, selected ${label.text}` : ""}` : `Target for ${label?.text || "a diagram label"}`}
                       onClick={() => handleTargetClick(target.id)}
                       onDragOver={event => {
                         if (!completed) event.preventDefault();
@@ -996,7 +996,7 @@ export default function InteractiveLabelDiagram({
 
         <div className="spark-label-diagram-mobile-targets" aria-label="Diagram targets">
           <strong className="spark-label-diagram-mobile-key-title">
-            {completed ? "Diagram label key" : "Place the labels"}
+            {referenceId ? (completed ? "Answer key" : "Match each term to a clue") : (completed ? "Diagram label key" : "Place the labels")}
           </strong>
           {normalized.targets.map((target,index) => {
             const placedId = placements[target.id];
@@ -1016,7 +1016,7 @@ export default function InteractiveLabelDiagram({
               >
                 <span>{index + 1}</span>
                 {referenceId && <small>{labelById.get(target.labelId)?.hint || labelById.get(target.labelId)?.explanation || `Structure ${index + 1}`}</small>}
-                <strong>{label?.text || "Tap to place selected label"}</strong>
+                <strong>{label ? (referenceId ? `Selected: ${label.text}` : label.text) : (referenceId ? "Choose a term above" : "Tap to place selected label")}</strong>
               </button>
             );
           })}
