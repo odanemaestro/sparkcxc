@@ -216,7 +216,9 @@ test("brain and fetus labs can reveal labelled references", () => {
   const brain=render(<IntegratedScienceLabelDiagram activity={brainActivity}/>);
   fireEvent.click(screen.getByRole("button",{name:"Show labelled diagram"}));
   expect(screen.getByRole("img",{name:/Labelled sagittal view of the human brain/i}))
-    .toHaveAttribute("src",expect.stringContaining("brain-labelled-reveal.svg"));
+    .toBeInTheDocument();
+  expect(brain.container.querySelector(".spark-labelled-reference-art"))
+    .toHaveAttribute("src",expect.stringContaining("0273.svg"));
   expect(screen.getByRole("button",{name:"Hide labelled diagram"})).toHaveAttribute("aria-expanded","true");
   brain.unmount();
 
@@ -237,9 +239,11 @@ test("brain and fetus labs can reveal labelled references", () => {
   const endpoints=[...fetus.container.querySelectorAll(".spark-label-target-group > circle")]
     .map(node=>[node.getAttribute("cx"),node.getAttribute("cy")]);
   expect(endpoints).toEqual(expect.arrayContaining([
-    ["565","350"],["521","331"],["474","333"],
+    ["570","410"],["544","380"],["620","390"],
   ]));
   fireEvent.click(screen.getByRole("button",{name:"Show labelled diagram"}));
   expect(screen.getByRole("img",{name:/Labelled fetus in the uterus/i}))
-    .toHaveAttribute("src",expect.stringContaining("fetus-labelled-reveal.svg"));
+    .toBeInTheDocument();
+  expect(fetus.container.querySelector(".spark-labelled-reference-art"))
+    .toHaveAttribute("src",expect.stringContaining("0266.svg"));
 });
