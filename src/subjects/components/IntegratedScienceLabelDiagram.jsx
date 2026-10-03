@@ -61,17 +61,6 @@ const publishedInteractiveTemplates = {
       testes:[635,509],
       testis:[635,509],
     },
-    targetBoxes:{
-      "pituitary gland":{boxX:20,boxY:92,side:"left"},
-      "thyroid gland":{boxX:20,boxY:192,side:"left"},
-      "adrenal glands":{boxX:20,boxY:322,side:"left"},
-      "adrenal gland":{boxX:20,boxY:322,side:"left"},
-      pancreas:{boxX:790,boxY:322,side:"right"},
-      ovaries:{boxX:20,boxY:452,side:"left"},
-      ovary:{boxX:20,boxY:452,side:"left"},
-      testes:{boxX:790,boxY:452,side:"right"},
-      testis:{boxX:790,boxY:452,side:"right"},
-    },
   },
 };
 
@@ -102,12 +91,12 @@ function publishedInteractiveTarget(template,target,labelById) {
   const label = labelById.get(target.labelId);
   const key = normalizedLabelName(label);
   const anchor = config.anchors[key];
-  const targetBox = config.targetBoxes?.[key] || null;
-  if (!anchor && !targetBox) return target;
+  const box = config.boxes?.[key] || null;
+  if (!anchor && !box) return target;
   return {
     ...target,
     ...(anchor ? {anchorX:anchor[0],anchorY:anchor[1]} : {}),
-    ...(targetBox || {}),
+    ...(box || {}),
   };
 }
 
