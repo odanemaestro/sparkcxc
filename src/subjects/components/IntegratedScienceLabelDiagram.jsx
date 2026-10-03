@@ -36,15 +36,15 @@ const publishedInteractiveTemplates = {
     path:"/integrated-science/diagrams/endocrine-system-interactive.svg",
     x:245, y:18, width:510, height:584,
     boxes:{
-      "pituitary gland":{boxX:20,boxY:60,side:"left"},
-      "thyroid gland":{boxX:20,boxY:160,side:"left"},
-      "adrenal glands":{boxX:20,boxY:260,side:"left"},
-      "adrenal gland":{boxX:20,boxY:260,side:"left"},
-      ovaries:{boxX:20,boxY:390,side:"left"},
-      ovary:{boxX:20,boxY:390,side:"left"},
-      pancreas:{boxX:790,boxY:285,side:"right"},
-      testes:{boxX:790,boxY:420,side:"right"},
-      testis:{boxX:790,boxY:420,side:"right"},
+      "pituitary gland":{boxX:20,boxY:72,side:"left"},
+      "thyroid gland":{boxX:20,boxY:168,side:"left"},
+      "adrenal glands":{boxX:20,boxY:264,side:"left"},
+      "adrenal gland":{boxX:20,boxY:264,side:"left"},
+      pancreas:{boxX:790,boxY:168,side:"right"},
+      ovaries:{boxX:790,boxY:264,side:"right"},
+      ovary:{boxX:790,boxY:264,side:"right"},
+      testes:{boxX:790,boxY:360,side:"right"},
+      testis:{boxX:790,boxY:360,side:"right"},
     },
     anchors:{
       "pineal gland":[476,103],
@@ -80,6 +80,20 @@ function normalizedLabelName(label = {}) {
     .toLowerCase()
     .replace(/\s+/g," ")
     .trim();
+}
+
+
+const endocrineVisibleLabels = new Set([
+  "pituitary gland","thyroid gland","adrenal glands","adrenal gland",
+  "pancreas","ovaries","ovary","testes","testis",
+]);
+
+function visiblePublishedTargets(template,targets,labelById) {
+  if (template !== "endocrine-system") return targets;
+  return targets.filter(target => {
+    const label = labelById.get(target.labelId);
+    return endocrineVisibleLabels.has(normalizedLabelName(label));
+  });
 }
 
 function publishedInteractiveTarget(template,target,labelById) {
@@ -1032,7 +1046,7 @@ export default function InteractiveLabelDiagram({
               <DiagramTemplate template={normalized.template} />
             )}
 
-            {normalized.targets.map((target,index) => {
+            {visiblePublishedTargets(normalized.template,normalized.targets,labelById).map((target,index) => {
               const displayTarget = publishedInteractiveTarget(normalized.template,target,labelById);
               const [startX,startY] = lineStart(displayTarget);
               const placedId = placements[target.id];
