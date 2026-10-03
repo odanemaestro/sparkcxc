@@ -16,6 +16,59 @@ const replacementIds = {
   nephron: "0269", "human-brain": "0273", "three-pin-plug": "0278",
 };
 
+const publishedInteractiveTemplates = {
+  "mammalian-eye": {
+    path:"/integrated-science/diagrams/0152.svg",
+    x:170, y:28, width:660, height:564,
+    anchors:{
+      cornea:[205,308],
+      iris:[285,310],
+      lens:[345,310],
+      sclera:[675,118],
+      retina:[690,255],
+      choroid:[705,218],
+      fovea:[678,315],
+      "optic nerve":[792,334],
+      "suspensory ligaments":[365,390],
+    },
+  },
+  "endocrine-system": {
+    path:"/integrated-science/diagrams/endocrine-system-interactive.svg",
+    x:245, y:18, width:510, height:584,
+    anchors:{
+      "pineal gland":[476,103],
+      hypothalamus:[500,119],
+      "pituitary gland":[513,134],
+      "thyroid gland":[499,278],
+      "parathyroid gland":[518,257],
+      thymus:[500,335],
+      pancreas:[500,423],
+      "adrenal glands":[382,399],
+      "adrenal gland":[382,399],
+      ovaries:[382,505],
+      ovary:[382,505],
+      testes:[626,557],
+      testis:[626,557],
+    },
+  },
+};
+
+function normalizedLabelName(label = {}) {
+  return String(label.text || label.id || "")
+    .toLowerCase()
+    .replace(/\s+/g," ")
+    .trim();
+}
+
+function publishedInteractiveTarget(template,target,labelById) {
+  const config = publishedInteractiveTemplates[template];
+  if (!config) return target;
+  const label = labelById.get(target.labelId);
+  const key = normalizedLabelName(label);
+  const anchor = config.anchors[key];
+  return anchor ? {...target,anchorX:anchor[0],anchorY:anchor[1]} : target;
+}
+
 function PlantCellTemplate() {
   return (
     <g className="spark-diagram-cell spark-diagram-plant-cell spark-reference-refined" aria-hidden="true">
@@ -797,6 +850,8 @@ export default function InteractiveLabelDiagram({
     [normalized]
   );
   const referenceId = replacementIds[normalized.template];
+  const publishedInteractive = publishedInteractiveTemplates[normalized.template] || null;
+  const publicBase = process.env.PUBLIC_URL || "";
 
   const [placements,setPlacements] = useState(() => completed ? correctMap : {});
   const [selectedLabelId,setSelectedLabelId] = useState(null);
@@ -935,10 +990,23 @@ export default function InteractiveLabelDiagram({
             role="img"
             aria-label={`${normalized.title} interactive diagram`}
           >
-            <DiagramTemplate template={normalized.template} />
+            {publishedInteractive ? (
+              <image
+                className="spark-published-interactive-art"
+                href={`${publicBase}${publishedInteractive.path}`}
+                x={publishedInteractive.x}
+                y={publishedInteractive.y}
+                width={publishedInteractive.width}
+                height={publishedInteractive.height}
+                preserveAspectRatio="xMidYMid meet"
+              />
+            ) : (
+              <DiagramTemplate template={normalized.template} />
+            )}
 
             {normalized.targets.map((target,index) => {
-              const [startX,startY] = lineStart(target);
+              const displayTarget = publishedInteractiveTarget(normalized.template,target,labelById);
+              const [startX,startY] = lineStart(displayTarget);
               const placedId = placements[target.id];
               const isCorrect = placedId === target.labelId;
               const stateClass = checked
@@ -948,18 +1016,18 @@ export default function InteractiveLabelDiagram({
 
               return (
                 <g key={target.id} className={`spark-label-target-group ${stateClass} ${hintTargetId === target.id ? "hint" : ""}`}>
-                  <line x1={startX} y1={startY} x2={target.anchorX} y2={target.anchorY} />
-                  <circle cx={target.anchorX} cy={target.anchorY} r="8" />
+                  <line x1={startX} y1={startY} x2={displayTarget.anchorX} y2={displayTarget.anchorY} />
+                  <circle cx={displayTarget.anchorX} cy={displayTarget.anchorY} r="8" />
                   <g className="spark-label-target-index" aria-hidden="true">
                     <circle
                       className="spark-label-target-index-circle"
-                      cx={target.anchorX + 28}
-                      cy={target.anchorY - 26}
+                      cx={displayTarget.anchorX + 28}
+                      cy={displayTarget.anchorY - 26}
                       r="25"
                     />
                     <text
-                      x={target.anchorX + 28}
-                      y={target.anchorY - 17}
+                      x={displayTarget.anchorX + 28}
+                      y={displayTarget.anchorY - 17}
                       textAnchor="middle"
                     >
                       {index + 1}
