@@ -136,3 +136,62 @@ test("endocrine lab renders one visible drop box per label in the six-target lay
       ["790","168"],["790","264"],["790","360"],
     ]));
 });
+
+
+test("brain and fetus labs only expose verified source targets with corrected geometry", () => {
+  const brainActivity={
+    id:"brain-source-test",
+    title:"Label the human brain",
+    template:"human-brain",
+    labels:[
+      {id:"cerebrum",text:"Cerebrum"},
+      {id:"cerebellum",text:"Cerebellum"},
+      {id:"medulla",text:"Medulla oblongata"},
+      {id:"cord",text:"Spinal cord"},
+      {id:"hypothalamus",text:"Hypothalamus"},
+    ],
+    targets:[
+      {id:"b1",labelId:"cerebrum",boxX:1,boxY:1,anchorX:1,anchorY:1,side:"left"},
+      {id:"b2",labelId:"cerebellum",boxX:1,boxY:1,anchorX:1,anchorY:1,side:"right"},
+      {id:"b3",labelId:"medulla",boxX:1,boxY:1,anchorX:1,anchorY:1,side:"left"},
+      {id:"b4",labelId:"cord",boxX:1,boxY:1,anchorX:1,anchorY:1,side:"right"},
+      {id:"b5",labelId:"hypothalamus",boxX:1,boxY:1,anchorX:1,anchorY:1,side:"left"},
+    ],
+  };
+  const brain=render(<IntegratedScienceLabelDiagram activity={brainActivity}/>);
+  expect(brain.container.querySelector("image.spark-published-interactive-art"))
+    .toHaveAttribute("href",expect.stringContaining("0273.svg"));
+  expect(within(screen.getByRole("complementary",{name:"Labels"})).queryByRole("button",{name:"Hypothalamus"}))
+    .not.toBeInTheDocument();
+  expect(brain.container.querySelectorAll(".spark-label-target")).toHaveLength(4);
+  const brainEndpoints=[...brain.container.querySelectorAll(".spark-label-target-group > circle")]
+    .map(node=>[node.getAttribute("cx"),node.getAttribute("cy")]);
+  expect(brainEndpoints).toEqual(expect.arrayContaining([
+    ["500","185"],["390","392"],["505","418"],["500","485"],
+  ]));
+  brain.unmount();
+
+  const fetusActivity={
+    id:"fetus-source-test",
+    title:"Label the fetus in the uterus",
+    template:"pregnancy-uterus",
+    labels:[
+      {id:"fetus",text:"Fetus"},
+      {id:"cord",text:"Umbilical cord"},
+      {id:"uterus",text:"Uterus"},
+      {id:"placenta",text:"Placenta"},
+    ],
+    targets:[
+      {id:"f1",labelId:"fetus",boxX:1,boxY:1,anchorX:1,anchorY:1,side:"left"},
+      {id:"f2",labelId:"cord",boxX:1,boxY:1,anchorX:1,anchorY:1,side:"left"},
+      {id:"f3",labelId:"uterus",boxX:1,boxY:1,anchorX:1,anchorY:1,side:"right"},
+      {id:"f4",labelId:"placenta",boxX:1,boxY:1,anchorX:1,anchorY:1,side:"left"},
+    ],
+  };
+  const fetus=render(<IntegratedScienceLabelDiagram activity={fetusActivity}/>);
+  expect(fetus.container.querySelector("image.spark-published-interactive-art"))
+    .toHaveAttribute("href",expect.stringContaining("0266.svg"));
+  expect(within(screen.getByRole("complementary",{name:"Labels"})).queryByRole("button",{name:"Placenta"}))
+    .not.toBeInTheDocument();
+  expect(fetus.container.querySelectorAll(".spark-label-target")).toHaveLength(3);
+});
