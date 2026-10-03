@@ -112,7 +112,7 @@ function firstTopic(structure, completedIds = new Set()) {
     || null;
 }
 
-function GenericLessonContent({
+export function GenericLessonContent({
   subjectId,
   topic,
   completedActivityKeys = new Set(),

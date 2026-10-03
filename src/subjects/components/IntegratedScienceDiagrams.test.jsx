@@ -5,6 +5,7 @@ import FlotationExplorer from "./FlotationExplorer";
 import HumanSkeletonExplorer from "./HumanSkeletonExplorer";
 import IntegratedScienceLabelDiagram from "./IntegratedScienceLabelDiagram";
 import ReviewedScienceDiagram from "./ReviewedScienceDiagram";
+import TeethFunctionExplorer from "./TeethFunctionExplorer";
 
 test("the fixed buoyancy reference stays separate from live calculations and rejects impossible readings", () => {
   render(<FlotationExplorer />);
@@ -218,8 +219,12 @@ test("brain and fetus labs can reveal labelled references", () => {
   expect(screen.getByRole("img",{name:/Labelled sagittal view of the human brain/i}))
     .toBeInTheDocument();
   expect(brain.container.querySelector(".spark-labelled-reference-art"))
-    .toHaveAttribute("src",expect.stringContaining("0273.svg"));
+    .toHaveAttribute("src",expect.stringContaining("brain-labelled-reference.jpg"));
   expect(screen.getByRole("button",{name:"Hide labelled diagram"})).toHaveAttribute("aria-expanded","true");
+  expect(brain.container.querySelector(".spark-labelled-reference-overlay")).toBeNull();
+  fireEvent.click(screen.getByRole("button",{name:"Hide labelled diagram"}));
+  expect(brain.container.querySelector(".spark-labelled-reference-art")).toBeNull();
+  expect(screen.getByRole("button",{name:"Show labelled diagram"})).toHaveAttribute("aria-expanded","false");
   brain.unmount();
 
   const fetusActivity={
@@ -239,11 +244,67 @@ test("brain and fetus labs can reveal labelled references", () => {
   const endpoints=[...fetus.container.querySelectorAll(".spark-label-target-group > circle")]
     .map(node=>[node.getAttribute("cx"),node.getAttribute("cy")]);
   expect(endpoints).toEqual(expect.arrayContaining([
-    ["570","410"],["544","380"],["620","390"],
+    ["595","344"],["588","377"],["602","404"],
   ]));
   fireEvent.click(screen.getByRole("button",{name:"Show labelled diagram"}));
   expect(screen.getByRole("img",{name:/Labelled fetus in the uterus/i}))
     .toBeInTheDocument();
   expect(fetus.container.querySelector(".spark-labelled-reference-art"))
-    .toHaveAttribute("src",expect.stringContaining("0266.svg"));
+    .toHaveAttribute("src",expect.stringContaining("fetus-labelled-reference.jpg"));
+});
+
+
+const femaleNames = ["Ovary","Oviduct","Uterus","Cervix","Vagina","Endometrium"];
+const femaleActivity = {
+  id:"female-source-test",title:"Female reproductive system",template:"female-reproductive-system",
+  labels:[...femaleNames,"Ovaries","Fallopian tube","Uterine lining","Old template label","No target"].map((text,i)=>({id:`l${i}`,text})),
+  targets:[...femaleNames,"Ovaries","Fallopian tube","Uterine lining","Old template label"].map((_,i)=>({id:`t${i}`,labelId:`l${i}`,anchorX:1,anchorY:1})),
+};
+
+test("female anatomy keeps six unique supported targets at the audited artwork points",()=>{
+  const view=render(<IntegratedScienceLabelDiagram activity={femaleActivity}/>);
+  const image=view.container.querySelector("image.spark-published-interactive-art");
+  expect(image).toHaveAttribute("href",expect.stringContaining("0264.svg"));
+  expect(["x","y","width","height"].map(attr=>image.getAttribute(attr))).toEqual(["220","90","565","422"]);
+  const targets=[...view.container.querySelectorAll(".spark-label-target-group")];
+  expect(targets).toHaveLength(6);
+  expect(targets.map(group=>{
+    const dot=group.querySelector(":scope > circle"),line=group.querySelector(":scope > line");
+    expect([line.getAttribute("x2"),line.getAttribute("y2")]).toEqual([dot.getAttribute("cx"),dot.getAttribute("cy")]);
+    return [dot.getAttribute("cx"),dot.getAttribute("cy")];
+  })).toEqual([["295","240"],["355","169"],["450","235"],["530","335"],["502","435"],["531","200"]]);
+  expect(within(screen.getByRole("complementary",{name:"Labels"})).getAllByRole("button").map(n=>n.textContent)).toEqual(femaleNames);
+  expect(view.container.querySelectorAll(".spark-label-diagram-mobile-targets button")).toHaveLength(6);
+});
+
+test.each(["desktop drop","mobile tap"])("female structures score correctly using %s",mode=>{
+  const onComplete=jest.fn();
+  const view=render(<IntegratedScienceLabelDiagram activity={femaleActivity} onComplete={onComplete}/>);
+  const bank=screen.getByRole("complementary",{name:"Labels"});
+  const targets=[...view.container.querySelectorAll(mode === "desktop drop" ? ".spark-label-target" : ".spark-label-diagram-mobile-targets button")];
+  const place=(targetIndex,labelIndex)=>{
+    if(mode === "desktop drop") fireEvent.drop(targets[targetIndex],{dataTransfer:{getData:()=>`l${labelIndex}`}});
+    else {fireEvent.click(within(bank).getByRole("button",{name:femaleNames[labelIndex],exact:true}));fireEvent.click(targets[targetIndex]);}
+  };
+  // Swapped ovary/tube labels must not receive completion credit.
+  place(0,1);place(1,0);
+  for(let i=2;i<6;i++)place(i,i);
+  fireEvent.click(screen.getByRole("button",{name:"Check answers"}));
+  expect(onComplete).not.toHaveBeenCalled();
+  fireEvent.click(screen.getByRole("button",{name:"Reset"}));
+  for(let i=0;i<6;i++)place(i,i);
+  fireEvent.click(screen.getByRole("button",{name:"Check answers"}));
+  expect(onComplete).toHaveBeenCalledTimes(1);
+  expect(view.container.querySelectorAll(".spark-label-target-group.correct")).toHaveLength(6);
+});
+
+
+test("tooth types use four compact thumbnail rows and the intended columns",()=>{
+  const view=render(<TeethFunctionExplorer/>);
+  const table=screen.getByRole("table");
+  expect(within(table).getAllByRole("columnheader").map(n=>n.textContent)).toEqual(["Tooth type","Shape","Main function","Adult count"]);
+  expect(within(table).getAllByRole("rowheader").map(n=>n.textContent)).toEqual(["Incisor","Canine","Premolar","Molar"]);
+  expect(table.querySelectorAll(".spark-tooth-shape svg")).toHaveLength(4);
+  expect(table.querySelector(".spark-reviewed-science-diagram")).toBeNull();
+  expect(view.container.querySelector(".spark-teeth-types-table-wrap")).toContainElement(table);
 });

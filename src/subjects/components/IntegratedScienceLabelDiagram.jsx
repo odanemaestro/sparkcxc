@@ -17,26 +17,13 @@ const replacementIds = {
 const labelledRevealReferences = {
   "human-brain":{
     title:"Labelled human brain",
-    alt:"Labelled sagittal view of the human brain showing the cerebrum, cerebellum, brain stem and spinal cord",
-    artPath:"/integrated-science/diagrams/0273.svg",
-    art:{left:28.5,top:11.6,width:43,height:70.6},
-    labels:[
-      {text:"Cerebrum",x:75,y:135,tx:500,ty:185},
-      {text:"Cerebellum",x:760,y:165,tx:390,ty:392},
-      {text:"Brain stem",x:75,y:430,tx:510,ty:405},
-      {text:"Spinal cord",x:760,y:455,tx:500,ty:485},
-    ],
+    alt:"Labelled sagittal view of the human brain showing the cerebrum, cerebellum and brain stem",
+    artPath:"/integrated-science/diagrams/brain-labelled-reference.jpg",
   },
   "pregnancy-uterus":{
     title:"Labelled fetus in the uterus",
-    alt:"Labelled fetus in the uterus showing the fetus, umbilical cord and uterus",
-    artPath:"/integrated-science/diagrams/0266.svg",
-    art:{left:33.5,top:2.9,width:33,height:92.7},
-    labels:[
-      {text:"Fetus",x:75,y:150,tx:570,ty:410},
-      {text:"Umbilical cord",x:75,y:310,tx:544,ty:380},
-      {text:"Uterus",x:760,y:270,tx:620,ty:390},
-    ],
+    alt:"Labelled fetus in the uterus showing the umbilical cord, placenta, womb and amniotic fluid",
+    artPath:"/integrated-science/diagrams/fetus-labelled-reference.jpg",
   },
 };
 
@@ -58,41 +45,50 @@ const publishedInteractiveTemplates = {
   },
   "female-reproductive-system":{
     path:"/integrated-science/diagrams/0264.svg",
-    x:245,y:105,width:510,height:380,
+    // Intrinsic 565 × 422 artwork at 1:1 scale: source points translate by (220,90).
+    // Audited on the published artwork, including the dark inner endometrial band.
+    x:220,y:90,width:565,height:422,
     boxes:{
-      ovary:{boxX:20,boxY:80,side:"left"},
-      ovaries:{boxX:20,boxY:80,side:"left"},
-      oviduct:{boxX:20,boxY:176,side:"left"},
-      "fallopian tube":{boxX:20,boxY:176,side:"left"},
-      uterus:{boxX:20,boxY:272,side:"left"},
-      cervix:{boxX:790,boxY:176,side:"right"},
-      vagina:{boxX:790,boxY:272,side:"right"},
-      endometrium:{boxX:790,boxY:368,side:"right"},
-      "uterine lining":{boxX:790,boxY:368,side:"right"},
+      ovary:{boxX:20,boxY:230,side:"left"},
+      ovaries:{boxX:20,boxY:230,side:"left"},
+      oviduct:{boxX:20,boxY:115,side:"left"},
+      "fallopian tube":{boxX:20,boxY:115,side:"left"},
+      uterus:{boxX:20,boxY:320,side:"left"},
+      cervix:{boxX:790,boxY:300,side:"right"},
+      vagina:{boxX:790,boxY:435,side:"right"},
+      endometrium:{boxX:790,boxY:150,side:"right"},
+      "uterine lining":{boxX:790,boxY:150,side:"right"},
     },
     anchors:{
-      ovary:[356,245],ovaries:[356,245],
-      oviduct:[395,202],"fallopian tube":[395,202],
-      uterus:[500,300],
-      cervix:[500,392],
-      vagina:[500,452],
-      endometrium:[500,323],"uterine lining":[500,323],
+      ovary:[295,240],ovaries:[295,240], // Source (75,150): left ovary.
+      oviduct:[355,169],"fallopian tube":[355,169], // (135,79): tube lumen.
+      uterus:[450,235], // (230,145): muscular body of uterus.
+      cervix:[530,335], // (310,245): narrow neck above the vaginal canal.
+      vagina:[502,435], // (282,345): vaginal canal below the cervix.
+      endometrium:[531,200],"uterine lining":[531,200], // (311,110): inner lining.
     },
   },
   "pregnancy-uterus":{
     path:"/integrated-science/diagrams/0266.svg",
-    x:335,y:18,width:330,height:575,
+    // Match the source viewBox exactly; no preserveAspectRatio letterboxing.
+    x:335,y:74,width:324.73,height:463.72,
     boxes:{
-      fetus:{boxX:20,boxY:110,side:"left"},
-      foetus:{boxX:20,boxY:110,side:"left"},
-      "umbilical cord":{boxX:20,boxY:250,side:"left"},
-      uterus:{boxX:790,boxY:180,side:"right"},
-      "uterus wall":{boxX:790,boxY:180,side:"right"},
+      fetus:{boxX:20,boxY:240,side:"left"},
+      foetus:{boxX:20,boxY:240,side:"left"},
+      "umbilical cord":{boxX:790,boxY:320,side:"right"},
+      uterus:{boxX:790,boxY:420,side:"right"},
+      "uterus wall":{boxX:790,boxY:420,side:"right"},
+      womb:{boxX:790,boxY:420,side:"right"},
     },
     anchors:{
-      fetus:[570,410],foetus:[570,410],
-      "umbilical cord":[544,380],
-      uterus:[620,390],"uterus wall":[620,390],
+      fetus:[595,344],foetus:[595,344], // Source (260,270): fetal torso.
+      "umbilical cord":[588,377], // (253,303): cord loop beside the fetal leg.
+      uterus:[602,404],"uterus wall":[602,404],womb:[602,404], // (267,330): uterine wall.
+    },
+    indexOffsets:{
+      fetus:[50,-39],foetus:[50,-39],
+      "umbilical cord":[-55,-2],
+      uterus:[53,41],"uterus wall":[53,41],womb:[53,41],
     },
   },
   "human-brain":{
@@ -100,12 +96,12 @@ const publishedInteractiveTemplates = {
     x:285,y:72,width:430,height:438,
     boxes:{
       cerebrum:{boxX:20,boxY:90,side:"left"},
-      cerebellum:{boxX:790,boxY:90,side:"right"},
-      "medulla oblongata":{boxX:20,boxY:300,side:"left"},
-      medulla:{boxX:20,boxY:300,side:"left"},
-      "brain stem":{boxX:20,boxY:300,side:"left"},
-      brainstem:{boxX:20,boxY:300,side:"left"},
-      "spinal cord":{boxX:790,boxY:300,side:"right"},
+      cerebellum:{boxX:20,boxY:320,side:"left"},
+      "medulla oblongata":{boxX:790,boxY:320,side:"right"},
+      medulla:{boxX:790,boxY:320,side:"right"},
+      "brain stem":{boxX:790,boxY:320,side:"right"},
+      brainstem:{boxX:790,boxY:320,side:"right"},
+      "spinal cord":{boxX:790,boxY:450,side:"right"},
     },
     anchors:{
       cerebrum:[500,185],
@@ -163,11 +159,15 @@ const endocrineVisibleLabels = new Set([
 function visiblePublishedTargets(template,targets,labelById) {
   const config=publishedInteractiveTemplates[template];
   if (!config?.boxes) return targets;
+  const seenAnchors = new Set();
   return targets.filter(target => {
     const label=labelById.get(target.labelId);
     const key=normalizedLabelName(label);
-    if (template === "endocrine-system") return endocrineVisibleLabels.has(key);
-    return Boolean(config.boxes[key]);
+    if (!config.boxes[key] || (template === "endocrine-system" && !endocrineVisibleLabels.has(key))) return false;
+    const anchorKey = config.anchors[key]?.join(",");
+    if (!anchorKey || seenAnchors.has(anchorKey)) return false;
+    seenAnchors.add(anchorKey);
+    return true;
   });
 }
 
@@ -182,6 +182,7 @@ function publishedInteractiveTarget(template,target,labelById) {
   return {
     ...target,
     ...(anchor ? {anchorX:anchor[0],anchorY:anchor[1]} : {}),
+    indexOffset:config.indexOffsets?.[key] || [28,-26],
     ...(box || {}),
   };
 }
@@ -965,7 +966,7 @@ export default function InteractiveLabelDiagram({
   const normalized = useMemo(() => {
     const lookup = new Map(normalizedBase.labels.map(label => [label.id,label]));
     const targets = visiblePublishedTargets(normalizedBase.template,normalizedBase.targets,lookup);
-    if (targets.length === normalizedBase.targets.length) return normalizedBase;
+    if (!publishedInteractiveTemplates[normalizedBase.template]?.boxes) return normalizedBase;
     const activeLabelIds = new Set(targets.map(target => target.labelId));
     return {
       ...normalizedBase,
@@ -1116,6 +1117,7 @@ export default function InteractiveLabelDiagram({
 
         <div className="spark-label-diagram-stage">
           {referenceId ? <ReviewedScienceDiagram diagramId={referenceId} /> : <svg
+            className={normalized.template === "female-reproductive-system" ? "spark-female-anatomy" : normalized.template === "pregnancy-uterus" ? "spark-pregnancy-anatomy" : undefined}
             viewBox="0 0 1000 620"
             role="img"
             aria-label={`${normalized.title} interactive diagram`}
@@ -1147,17 +1149,22 @@ export default function InteractiveLabelDiagram({
               return (
                 <g key={target.id} className={`spark-label-target-group ${stateClass} ${hintTargetId === target.id ? "hint" : ""}`}>
                   <line x1={startX} y1={startY} x2={displayTarget.anchorX} y2={displayTarget.anchorY} />
-                  <circle cx={displayTarget.anchorX} cy={displayTarget.anchorY} r="8" />
+                  <circle className={publishedInteractive ? "spark-published-endpoint" : undefined} cx={displayTarget.anchorX} cy={displayTarget.anchorY} r={publishedInteractive ? 4 : 8} />
                   <g className="spark-label-target-index" aria-hidden="true">
+                    <line
+                      x1={displayTarget.anchorX} y1={displayTarget.anchorY}
+                      x2={displayTarget.anchorX + (displayTarget.indexOffset?.[0] ?? 28)}
+                      y2={displayTarget.anchorY + (displayTarget.indexOffset?.[1] ?? -26)}
+                    />
                     <circle
                       className="spark-label-target-index-circle"
-                      cx={displayTarget.anchorX + 28}
-                      cy={displayTarget.anchorY - 26}
+                      cx={displayTarget.anchorX + (displayTarget.indexOffset?.[0] ?? 28)}
+                      cy={displayTarget.anchorY + (displayTarget.indexOffset?.[1] ?? -26)}
                       r="25"
                     />
                     <text
-                      x={displayTarget.anchorX + 28}
-                      y={displayTarget.anchorY - 17}
+                      x={displayTarget.anchorX + (displayTarget.indexOffset?.[0] ?? 28)}
+                      y={displayTarget.anchorY + (displayTarget.indexOffset?.[1] ?? -26) + 9}
                       textAnchor="middle"
                     >
                       {index + 1}
@@ -1246,31 +1253,11 @@ export default function InteractiveLabelDiagram({
       {labelledReference && showLabelledReference && (
         <figure className="spark-labelled-reference-panel">
           <figcaption>{labelledReference.title}</figcaption>
-          <div className="spark-labelled-reference-canvas" role="img" aria-label={labelledReference.alt}>
-            <img
-              className="spark-labelled-reference-art"
-              src={`${publicBase}${labelledReference.artPath}`}
-              alt=""
-              aria-hidden="true"
-              style={{
-                left:`${labelledReference.art.left}%`,
-                top:`${labelledReference.art.top}%`,
-                width:`${labelledReference.art.width}%`,
-                height:`${labelledReference.art.height}%`,
-              }}
-            />
-            <svg className="spark-labelled-reference-overlay" viewBox="0 0 1000 620" aria-hidden="true">
-              {labelledReference.labels.map(item => {
-                const fromRight = item.x > 500;
-                const lineX = fromRight ? item.x - 10 : item.x + Math.max(95,item.text.length * 12);
-                return <g key={item.text}>
-                  <line x1={lineX} y1={item.y - 7} x2={item.tx} y2={item.ty} />
-                  <circle cx={item.tx} cy={item.ty} r="7" />
-                  <text x={item.x} y={item.y}>{item.text}</text>
-                </g>;
-              })}
-            </svg>
-          </div>
+          <img
+            className="spark-labelled-reference-art"
+            src={`${publicBase}${labelledReference.artPath}`}
+            alt={labelledReference.alt}
+          />
         </figure>
       )}
 
