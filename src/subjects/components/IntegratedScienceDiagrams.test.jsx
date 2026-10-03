@@ -58,3 +58,45 @@ test("published raster images load through the same reference component", () => 
   expect(screen.getByRole("img")).toHaveAttribute("src",expect.stringContaining("0072.jpg"));
   expect(screen.getByRole("button",{name:/Enlarge/})).toBeEnabled();
 });
+
+
+test("eye and endocrine label labs use the published anatomy assets instead of the old drawn templates", () => {
+  const eyeActivity={
+    id:"eye-test",
+    title:"Label the mammalian eye",
+    template:"mammalian-eye",
+    labels:[
+      {id:"cornea",text:"Cornea"},
+      {id:"lens",text:"Lens"},
+      {id:"retina",text:"Retina"},
+    ],
+    targets:[
+      {id:"eye-cornea",labelId:"cornea",boxX:20,boxY:100,anchorX:1,anchorY:1,side:"left"},
+      {id:"eye-lens",labelId:"lens",boxX:20,boxY:190,anchorX:1,anchorY:1,side:"left"},
+      {id:"eye-retina",labelId:"retina",boxX:790,boxY:100,anchorX:1,anchorY:1,side:"right"},
+    ],
+  };
+  const eye=render(<IntegratedScienceLabelDiagram activity={eyeActivity}/>);
+  expect(eye.container.querySelector("image.spark-published-interactive-art"))
+    .toHaveAttribute("href",expect.stringContaining("0152.svg"));
+  eye.unmount();
+
+  const endocrineActivity={
+    id:"endocrine-test",
+    title:"Label the major endocrine glands",
+    template:"endocrine-system",
+    labels:[
+      {id:"pituitary",text:"Pituitary gland"},
+      {id:"thyroid",text:"Thyroid gland"},
+      {id:"adrenal",text:"Adrenal glands"},
+    ],
+    targets:[
+      {id:"endo-pituitary",labelId:"pituitary",boxX:20,boxY:100,anchorX:1,anchorY:1,side:"left"},
+      {id:"endo-thyroid",labelId:"thyroid",boxX:20,boxY:190,anchorX:1,anchorY:1,side:"left"},
+      {id:"endo-adrenal",labelId:"adrenal",boxX:790,boxY:100,anchorX:1,anchorY:1,side:"right"},
+    ],
+  };
+  const endocrine=render(<IntegratedScienceLabelDiagram activity={endocrineActivity}/>);
+  expect(endocrine.container.querySelector("image.spark-published-interactive-art"))
+    .toHaveAttribute("href",expect.stringContaining("endocrine-system-interactive.svg"));
+});
