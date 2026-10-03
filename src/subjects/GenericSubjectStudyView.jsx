@@ -776,15 +776,16 @@ export default function GenericSubjectStudyView({
                   />
 
                   <div className="spark-generic-lesson-footer">
-                    <button
-                      type="button"
-                      className="spark-generic-lesson-nav spark-generic-lesson-nav-previous"
-                      disabled={!previousTopic}
-                      onClick={() => previousTopic && openTopic(previousTopic, previousTopic.sectionId || null)}
-                    >
-                      <span aria-hidden="true">←</span>
-                      <span>Previous</span>
-                    </button>
+                    {previousTopic ? (
+                      <button
+                        type="button"
+                        className="spark-generic-lesson-nav spark-generic-lesson-nav-previous"
+                        onClick={() => openTopic(previousTopic, previousTopic.sectionId || null)}
+                      >
+                        <span aria-hidden="true">←</span>
+                        <span>Previous</span>
+                      </button>
+                    ) : <span className="spark-generic-lesson-nav-spacer" aria-hidden="true" />}
 
                     <button
                       type="button"
@@ -799,16 +800,18 @@ export default function GenericSubjectStudyView({
                           : "Mark lesson complete"}
                     </button>
 
-                    <button
-                      type="button"
-                      className="spark-generic-lesson-nav spark-generic-lesson-nav-next"
-                      disabled={!nextTopic || !activeLessonComplete}
-                      onClick={() => nextTopic && activeLessonComplete && openTopic(nextTopic, nextTopic.sectionId || null)}
-                      title={!activeLessonComplete && nextTopic ? "Complete this lesson to unlock the next lesson." : undefined}
-                    >
-                      <span>Next Lesson</span>
-                      <span aria-hidden="true">→</span>
-                    </button>
+                    {nextTopic ? (
+                      <button
+                        type="button"
+                        className="spark-generic-lesson-nav spark-generic-lesson-nav-next"
+                        disabled={!activeLessonComplete}
+                        onClick={() => activeLessonComplete && openTopic(nextTopic, nextTopic.sectionId || null)}
+                        title={!activeLessonComplete ? "Complete this lesson to unlock the next lesson." : undefined}
+                      >
+                        <span>Next Lesson</span>
+                        <span aria-hidden="true">→</span>
+                      </button>
+                    ) : <span className="spark-generic-lesson-nav-spacer" aria-hidden="true" />}
                   </div>
                 </>
               ) : (
