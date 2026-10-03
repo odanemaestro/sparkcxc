@@ -112,6 +112,14 @@ function firstTopic(structure, completedIds = new Set()) {
     || null;
 }
 
+function isTopicUnlocked(structure, topicId, completedIds = new Set()) {
+  const topics = structure?.topics || [];
+  const index = topics.findIndex(topic => topic.id === topicId);
+  if (index < 0) return false;
+  if (index === 0 || completedIds.has(topicId)) return true;
+  return topics.slice(0, index).every(topic => completedIds.has(topic.id));
+}
+
 export function GenericLessonContent({
   subjectId,
   topic,
@@ -268,7 +276,9 @@ export default function GenericSubjectStudyView({
     const safeCompleted = completed || new Set();
     const routed = routeSelection(studyPath, nextStructure);
 
-    if (routed.topicId) {
+    const fallbackTopic = firstTopic(nextStructure, safeCompleted);
+
+    if (routed.topicId && isTopicUnlocked(nextStructure, routed.topicId, safeCompleted)) {
       setActiveSectionId(routed.sectionId);
       setActiveTopicId(routed.topicId);
       return;
@@ -276,15 +286,23 @@ export default function GenericSubjectStudyView({
 
     if (routed.sectionId) {
       const section = nextStructure.sections.find(item => item.id === routed.sectionId);
-      const topic = section?.topics?.[0] || null;
-      setActiveSectionId(routed.sectionId);
-      setActiveTopicId(topic?.id || null);
-      return;
+      const topic = section?.topics?.find(item => isTopicUnlocked(nextStructure, item.id, safeCompleted)) || null;
+      if (topic) {
+        setActiveSectionId(routed.sectionId);
+        setActiveTopicId(topic.id);
+        return;
+      }
     }
 
-    const topic = firstTopic(nextStructure, safeCompleted);
-    setActiveSectionId(topic?.sectionId || nextStructure.sections?.[0]?.id || null);
-    setActiveTopicId(topic?.id || null);
+    setActiveSectionId(fallbackTopic?.sectionId || nextStructure.sections?.[0]?.id || null);
+    setActiveTopicId(fallbackTopic?.id || null);
+
+    if (fallbackTopic && (routed.topicId || routed.sectionId)) {
+      writeSparkNestedRoute(studyPath, {
+        section:fallbackTopic.sectionId || null,
+        topic:fallbackTopic.id,
+      });
+    }
   }, [studyPath]);
 
   useEffect(() => {
@@ -357,19 +375,41 @@ export default function GenericSubjectStudyView({
       if (route.path !== studyPath) return;
 
       const next = routeSelection(studyPath, structure);
-      if (next.topicId) {
+      if (next.topicId && isTopicUnlocked(structure, next.topicId, completedTopicIds)) {
         setActiveSectionId(next.sectionId);
         setActiveTopicId(next.topicId);
       } else if (next.sectionId) {
         const topic = structure.sections
           .find(section => section.id === next.sectionId)
-          ?.topics?.[0];
+          ?.topics?.find(item => isTopicUnlocked(structure, item.id, completedTopicIds));
 
-        setActiveSectionId(next.sectionId);
-        setActiveTopicId(topic?.id || null);
+        if (topic) {
+          setActiveSectionId(next.sectionId);
+          setActiveTopicId(topic.id);
+        } else {
+          const fallbackTopic = firstTopic(structure, completedTopicIds);
+          if (fallbackTopic) {
+            setActiveSectionId(fallbackTopic.sectionId || null);
+            setActiveTopicId(fallbackTopic.id);
+            writeSparkNestedRoute(studyPath, {
+              section:fallbackTopic.sectionId || null,
+              topic:fallbackTopic.id,
+            });
+          }
+        }
+      } else if (next.topicId) {
+        const fallbackTopic = firstTopic(structure, completedTopicIds);
+        if (fallbackTopic) {
+          setActiveSectionId(fallbackTopic.sectionId || null);
+          setActiveTopicId(fallbackTopic.id);
+          writeSparkNestedRoute(studyPath, {
+            section:fallbackTopic.sectionId || null,
+            topic:fallbackTopic.id,
+          });
+        }
       }
     });
-  }, [structure, studyPath, subjectId]);
+  }, [completedTopicIds, structure, studyPath, subjectId]);
 
   const activeTopic = useMemo(
     () => structure?.topics?.find(topic => topic.id === activeTopicId) || null,
@@ -424,6 +464,10 @@ export default function GenericSubjectStudyView({
 
   const openTopic = useCallback((topic, sectionId) => {
     if (!topic) return;
+    if (!isTopicUnlocked(structure, topic.id, completedTopicIds)) {
+      showToast?.("Complete the earlier lessons to unlock this lesson.", "info");
+      return;
+    }
 
     setActiveSectionId(sectionId || topic.sectionId || null);
     setActiveTopicId(topic.id);
@@ -435,7 +479,7 @@ export default function GenericSubjectStudyView({
 
     setOutlineOpen(false);
     if (typeof window !== "undefined") window.scrollTo?.(0, 0);
-  }, [studyPath]);
+  }, [completedTopicIds, showToast, structure, studyPath]);
 
   const recordInteractiveComplete = useCallback(async ({
     activityId,
