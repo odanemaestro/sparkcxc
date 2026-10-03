@@ -101,7 +101,7 @@ test("eye and endocrine label labs use the published anatomy assets instead of t
     .toHaveAttribute("href",expect.stringContaining("endocrine-system-interactive.svg"));
   const endpointCircles=[...endocrine.container.querySelectorAll(".spark-label-target-group > circle")];
   expect(endpointCircles.map(node => [node.getAttribute("cx"),node.getAttribute("cy")]))
-    .toEqual(expect.arrayContaining([["513","146"],["499","270"],["379","373"]]));
+    .toEqual(expect.arrayContaining([["513","134"],["499","278"],["340","372"]]));
 });
 
 
@@ -194,4 +194,52 @@ test("brain and fetus labs only expose verified source targets with corrected ge
   expect(within(screen.getByRole("complementary",{name:"Labels"})).queryByRole("button",{name:"Placenta"}))
     .not.toBeInTheDocument();
   expect(fetus.container.querySelectorAll(".spark-label-target")).toHaveLength(3);
+});
+
+
+test("brain and fetus labs can reveal labelled references", () => {
+  const brainActivity={
+    id:"brain-reveal-test",title:"Label the human brain",template:"human-brain",
+    labels:[
+      {id:"cerebrum",text:"Cerebrum"},
+      {id:"cerebellum",text:"Cerebellum"},
+      {id:"medulla",text:"Medulla oblongata"},
+      {id:"cord",text:"Spinal cord"},
+    ],
+    targets:[
+      {id:"b1",labelId:"cerebrum",boxX:1,boxY:1,anchorX:1,anchorY:1,side:"left"},
+      {id:"b2",labelId:"cerebellum",boxX:1,boxY:1,anchorX:1,anchorY:1,side:"right"},
+      {id:"b3",labelId:"medulla",boxX:1,boxY:1,anchorX:1,anchorY:1,side:"left"},
+      {id:"b4",labelId:"cord",boxX:1,boxY:1,anchorX:1,anchorY:1,side:"right"},
+    ],
+  };
+  const brain=render(<IntegratedScienceLabelDiagram activity={brainActivity}/>);
+  fireEvent.click(screen.getByRole("button",{name:"Show labelled diagram"}));
+  expect(screen.getByRole("img",{name:/Labelled sagittal view of the human brain/i}))
+    .toHaveAttribute("src",expect.stringContaining("brain-labelled-reveal.svg"));
+  expect(screen.getByRole("button",{name:"Hide labelled diagram"})).toHaveAttribute("aria-expanded","true");
+  brain.unmount();
+
+  const fetusActivity={
+    id:"fetus-reveal-test",title:"Label the fetus in the uterus",template:"pregnancy-uterus",
+    labels:[
+      {id:"fetus",text:"Fetus"},
+      {id:"cord",text:"Umbilical cord"},
+      {id:"uterus",text:"Uterus"},
+    ],
+    targets:[
+      {id:"f1",labelId:"fetus",boxX:1,boxY:1,anchorX:1,anchorY:1,side:"left"},
+      {id:"f2",labelId:"cord",boxX:1,boxY:1,anchorX:1,anchorY:1,side:"left"},
+      {id:"f3",labelId:"uterus",boxX:1,boxY:1,anchorX:1,anchorY:1,side:"right"},
+    ],
+  };
+  const fetus=render(<IntegratedScienceLabelDiagram activity={fetusActivity}/>);
+  const endpoints=[...fetus.container.querySelectorAll(".spark-label-target-group > circle")]
+    .map(node=>[node.getAttribute("cx"),node.getAttribute("cy")]);
+  expect(endpoints).toEqual(expect.arrayContaining([
+    ["565","350"],["521","331"],["474","333"],
+  ]));
+  fireEvent.click(screen.getByRole("button",{name:"Show labelled diagram"}));
+  expect(screen.getByRole("img",{name:/Labelled fetus in the uterus/i}))
+    .toHaveAttribute("src",expect.stringContaining("fetus-labelled-reveal.svg"));
 });
