@@ -16,14 +16,27 @@ const replacementIds = {
 
 const labelledRevealReferences = {
   "human-brain":{
-    path:"/integrated-science/diagrams/brain-labelled-reveal.svg",
     title:"Labelled human brain",
     alt:"Labelled sagittal view of the human brain showing the cerebrum, cerebellum, brain stem and spinal cord",
+    artPath:"/integrated-science/diagrams/0273.svg",
+    art:{left:28.5,top:11.6,width:43,height:70.6},
+    labels:[
+      {text:"Cerebrum",x:75,y:135,tx:500,ty:185},
+      {text:"Cerebellum",x:760,y:165,tx:390,ty:392},
+      {text:"Brain stem",x:75,y:430,tx:510,ty:405},
+      {text:"Spinal cord",x:760,y:455,tx:500,ty:485},
+    ],
   },
   "pregnancy-uterus":{
-    path:"/integrated-science/diagrams/fetus-labelled-reveal.svg",
     title:"Labelled fetus in the uterus",
     alt:"Labelled fetus in the uterus showing the fetus, umbilical cord and uterus",
+    artPath:"/integrated-science/diagrams/0266.svg",
+    art:{left:33.5,top:2.9,width:33,height:92.7},
+    labels:[
+      {text:"Fetus",x:75,y:150,tx:570,ty:410},
+      {text:"Umbilical cord",x:75,y:310,tx:544,ty:380},
+      {text:"Uterus",x:760,y:270,tx:620,ty:390},
+    ],
   },
 };
 
@@ -77,9 +90,9 @@ const publishedInteractiveTemplates = {
       "uterus wall":{boxX:790,boxY:180,side:"right"},
     },
     anchors:{
-      fetus:[565,350],foetus:[565,350],
-      "umbilical cord":[521,331],
-      uterus:[474,333],"uterus wall":[474,333],
+      fetus:[570,410],foetus:[570,410],
+      "umbilical cord":[544,380],
+      uterus:[620,390],"uterus wall":[620,390],
     },
   },
   "human-brain":{
@@ -1233,7 +1246,31 @@ export default function InteractiveLabelDiagram({
       {labelledReference && showLabelledReference && (
         <figure className="spark-labelled-reference-panel">
           <figcaption>{labelledReference.title}</figcaption>
-          <img src={`${publicBase}${labelledReference.path}`} alt={labelledReference.alt} />
+          <div className="spark-labelled-reference-canvas" role="img" aria-label={labelledReference.alt}>
+            <img
+              className="spark-labelled-reference-art"
+              src={`${publicBase}${labelledReference.artPath}`}
+              alt=""
+              aria-hidden="true"
+              style={{
+                left:`${labelledReference.art.left}%`,
+                top:`${labelledReference.art.top}%`,
+                width:`${labelledReference.art.width}%`,
+                height:`${labelledReference.art.height}%`,
+              }}
+            />
+            <svg className="spark-labelled-reference-overlay" viewBox="0 0 1000 620" aria-hidden="true">
+              {labelledReference.labels.map(item => {
+                const fromRight = item.x > 500;
+                const lineX = fromRight ? item.x - 10 : item.x + Math.max(95,item.text.length * 12);
+                return <g key={item.text}>
+                  <line x1={lineX} y1={item.y - 7} x2={item.tx} y2={item.ty} />
+                  <circle cx={item.tx} cy={item.ty} r="7" />
+                  <text x={item.x} y={item.y}>{item.text}</text>
+                </g>;
+              })}
+            </svg>
+          </div>
         </figure>
       )}
 
