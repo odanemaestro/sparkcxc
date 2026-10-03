@@ -39,6 +39,7 @@ function interactiveDiagrams(topic = {}) {
   const diagrams = Array.isArray(lesson.interactiveDiagrams) ? lesson.interactiveDiagrams.filter(Boolean) : [];
   const seen = new Set();
   return diagrams.filter(diagram => {
+    if (diagram?.template === "mammalian-ear") return false;
     const key = String(diagram?.id || "").trim();
     if (!key) return true;
     if (seen.has(key)) return false;
