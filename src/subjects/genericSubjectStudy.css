@@ -37,8 +37,15 @@
 .spark-generic-lesson-section{margin-top:24px}.spark-generic-lesson-section h3,.spark-generic-lesson-summary h3,.spark-generic-worked-example h3{margin:0 0 8px;color:var(--spark-ink,#102a43);font-size:18px}
 .spark-generic-key-points,.spark-generic-worked-example,.spark-generic-content-empty{margin-top:24px;padding:18px!important}.spark-generic-key-points>strong,.spark-generic-worked-example>span,.spark-generic-content-empty>strong{color:var(--spark-teal-dark,#087f73);font-size:12px;font-weight:900;text-transform:uppercase}
 .spark-generic-worked-example{border-left:4px solid var(--spark-teal,#0d9488)!important}.spark-generic-example-answer{margin-top:12px;padding:10px 12px;border-radius:9px;background:var(--spark-muted,#f2f6fa);color:var(--spark-ink,#102a43);font-size:13px;font-weight:700}
-.spark-generic-lesson-summary{margin-top:26px;padding-top:20px;border-top:1px solid var(--spark-border-soft,#edf2f7)}.spark-generic-lesson-footer{display:flex;justify-content:flex-end;margin-top:30px;padding-top:20px;border-top:1px solid var(--spark-border-soft,#edf2f7)}
-.spark-generic-lesson-footer button.completed,.spark-generic-lesson-footer button:disabled{background:var(--spark-muted,#edf2f7);color:var(--spark-text-muted,#627d98);cursor:default}
+.spark-generic-lesson-summary{margin-top:26px;padding-top:20px;border-top:1px solid var(--spark-border-soft,#edf2f7)}
+.spark-generic-lesson-footer{display:grid;grid-template-columns:auto minmax(150px,1fr) auto;align-items:center;gap:10px;margin-top:30px;padding-top:20px;border-top:1px solid var(--spark-border-soft,#edf2f7)}
+.spark-generic-lesson-footer button{min-height:44px}
+.spark-generic-complete-action{justify-self:center}
+.spark-generic-lesson-nav{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:126px;border:1px solid var(--spark-border,#d9e2ec)!important;background:var(--spark-paper,#fff)!important;color:var(--spark-ink,#102a43)!important}
+.spark-generic-lesson-nav:not(:disabled):hover{border-color:var(--spark-teal,#0d9488)!important;background:var(--spark-teal-light,#d9fbf4)!important;color:var(--spark-teal-dark,#087f73)!important}
+.spark-generic-lesson-nav-next:not(:disabled){border-color:var(--spark-teal,#0d9488)!important;background:var(--spark-teal,#0d9488)!important;color:#fff!important}
+.spark-generic-lesson-nav-next:not(:disabled):hover{background:var(--spark-teal-dark,#087f73)!important;color:#fff!important}
+.spark-generic-lesson-footer button.completed,.spark-generic-lesson-footer button:disabled{background:var(--spark-muted,#edf2f7)!important;color:var(--spark-text-muted,#627d98)!important;border-color:var(--spark-border-soft,#d9e2ec)!important;cursor:default;opacity:1}
 .spark-generic-empty-course,.spark-generic-unavailable{max-width:760px;margin:18px auto 0;padding:30px!important}.spark-generic-empty-course h2,.spark-generic-unavailable h1{margin:6px 0 8px;color:var(--spark-ink,#102a43);font-family:var(--font-display,Georgia,serif)}.spark-generic-empty-course p,.spark-generic-unavailable p{color:var(--spark-text-muted,#627d98);line-height:1.65}.spark-generic-empty-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
 html[data-theme="dark"] .spark-generic-study{background:var(--spark-bg,#0f172a)}html[data-theme="dark"] .spark-generic-outline-topics button:hover{background:rgba(255,255,255,.05)}
 html[data-theme="dark"] .spark-generic-study-hero-actions button{
@@ -93,7 +100,11 @@ html[data-theme="dark"] .spark-generic-lesson-footer button:disabled{
   .spark-generic-topic-state svg{width:11px;height:11px}
   .spark-generic-lesson{padding:20px 16px}
   .spark-generic-lesson-head{display:grid}
-  .spark-generic-lesson-footer button{width:100%}
+  .spark-generic-lesson-footer{grid-template-columns:1fr 1fr;gap:8px}
+  .spark-generic-complete-action{grid-column:1/-1;grid-row:1;width:100%}
+  .spark-generic-lesson-nav{width:100%;min-width:0}
+  .spark-generic-lesson-nav-previous{grid-column:1;grid-row:2}
+  .spark-generic-lesson-nav-next{grid-column:2;grid-row:2}
 }
 /* SPARK_GENERIC_CHANGE_SUBJECT_CONTRAST_V2 */
 .spark-generic-study-hero-actions button{
@@ -126,4 +137,19 @@ body[data-theme="dark"] .spark-generic-outline-toggle,
   border-color:#29465f;
   background:#122b43;
   color:#e7f0f7;
+}
+
+html[data-theme="dark"] .spark-generic-lesson-nav,
+body[data-theme="dark"] .spark-generic-lesson-nav,
+.dark .spark-generic-lesson-nav{
+  border-color:#29465f!important;
+  background:#122b43!important;
+  color:#e7f0f7!important;
+}
+html[data-theme="dark"] .spark-generic-lesson-nav-next:not(:disabled),
+body[data-theme="dark"] .spark-generic-lesson-nav-next:not(:disabled),
+.dark .spark-generic-lesson-nav-next:not(:disabled){
+  border-color:#14b8a6!important;
+  background:#0f766e!important;
+  color:#fff!important;
 }
