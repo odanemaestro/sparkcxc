@@ -42,13 +42,24 @@ const publishedInteractiveTemplates = {
       "thyroid gland":[499,278],
       "parathyroid gland":[518,257],
       thymus:[500,335],
-      pancreas:[500,423],
-      "adrenal glands":[382,399],
-      "adrenal gland":[382,399],
-      ovaries:[382,505],
-      ovary:[382,505],
-      testes:[626,557],
-      testis:[626,557],
+      "adrenal glands":[340,372],
+      "adrenal gland":[340,372],
+      pancreas:[658,394],
+      ovaries:[380,465],
+      ovary:[380,465],
+      testes:[635,509],
+      testis:[635,509],
+    },
+    targetBoxes:{
+      "pituitary gland":{boxX:20,boxY:92,side:"left"},
+      "thyroid gland":{boxX:20,boxY:192,side:"left"},
+      "adrenal glands":{boxX:20,boxY:322,side:"left"},
+      "adrenal gland":{boxX:20,boxY:322,side:"left"},
+      pancreas:{boxX:790,boxY:322,side:"right"},
+      ovaries:{boxX:20,boxY:452,side:"left"},
+      ovary:{boxX:20,boxY:452,side:"left"},
+      testes:{boxX:790,boxY:452,side:"right"},
+      testis:{boxX:790,boxY:452,side:"right"},
     },
   },
 };
@@ -66,7 +77,13 @@ function publishedInteractiveTarget(template,target,labelById) {
   const label = labelById.get(target.labelId);
   const key = normalizedLabelName(label);
   const anchor = config.anchors[key];
-  return anchor ? {...target,anchorX:anchor[0],anchorY:anchor[1]} : target;
+  const targetBox = config.targetBoxes?.[key] || null;
+  if (!anchor && !targetBox) return target;
+  return {
+    ...target,
+    ...(anchor ? {anchorX:anchor[0],anchorY:anchor[1]} : {}),
+    ...(targetBox || {}),
+  };
 }
 
 function PlantCellTemplate() {
