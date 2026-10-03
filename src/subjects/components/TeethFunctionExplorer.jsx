@@ -41,11 +41,32 @@ function ToothShape({type}){
 }
 
 function TypesView(){
-  return <div className="spark-teeth-types">{TYPES.map((item,i)=><article key={item.name}>
-    <span>{i+1}</span>
-    <div className="spark-tooth-shape"><ToothShape type={item.name}/></div>
-    <div><b>{item.name}</b><strong>{item.function}</strong><p>{item.shape}</p><small>{item.count}</small></div>
-  </article>)}</div>;
+  return <div className="spark-teeth-types-table-wrap">
+    <table className="spark-teeth-types-table">
+      <caption>Adult tooth types and their main functions</caption>
+      <thead>
+        <tr>
+          <th scope="col">Tooth type</th>
+          <th scope="col">Shape</th>
+          <th scope="col">Main function</th>
+          <th scope="col">Adult count</th>
+        </tr>
+      </thead>
+      <tbody>
+        {TYPES.map(item=><tr key={item.name}>
+          <th scope="row">
+            <div className="spark-teeth-type-name">
+              <div className="spark-tooth-shape"><ToothShape type={item.name}/></div>
+              <strong>{item.name}</strong>
+            </div>
+          </th>
+          <td>{item.shape}</td>
+          <td>{item.function}</td>
+          <td>{item.count}</td>
+        </tr>)}
+      </tbody>
+    </table>
+  </div>;
 }
 
 function StructureView(){
