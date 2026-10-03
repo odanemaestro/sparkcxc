@@ -256,6 +256,8 @@ export default function GenericSubjectStudyView({
   const [activeSectionId, setActiveSectionId] = useState(null);
   const [activeTopicId, setActiveTopicId] = useState(null);
   const [saving, setSaving] = useState(false);
+  const [outlineOpen, setOutlineOpen] = useState(false);
+  const [expandedOutlineSections, setExpandedOutlineSections] = useState(new Set());
 
   const subjectId = String(subject?.id || "").trim().toLowerCase();
   const studyPath = subject?.routes?.study || (subjectId ? `/study/${subjectId}` : "/study");
@@ -381,6 +383,24 @@ export default function GenericSubjectStudyView({
     [activeSectionId, activeTopic, structure]
   );
 
+  useEffect(() => {
+    const sectionId = activeTopic?.sectionId || activeSectionId;
+    if (!sectionId) return;
+    setExpandedOutlineSections(current => {
+      if (current.has(sectionId)) return current;
+      return new Set([...current, sectionId]);
+    });
+  }, [activeSectionId, activeTopic?.sectionId]);
+
+  const toggleOutlineSection = useCallback(sectionId => {
+    setExpandedOutlineSections(current => {
+      const next = new Set(current);
+      if (next.has(sectionId)) next.delete(sectionId);
+      else next.add(sectionId);
+      return next;
+    });
+  }, []);
+
   const completedCount = structure?.topics
     ?.filter(topic => completedTopicIds.has(topic.id))
     .length || 0;
@@ -401,6 +421,7 @@ export default function GenericSubjectStudyView({
       topic:topic.id,
     });
 
+    setOutlineOpen(false);
     if (typeof window !== "undefined") window.scrollTo?.(0, 0);
   }, [studyPath]);
 
@@ -605,32 +626,104 @@ export default function GenericSubjectStudyView({
               aria-label={`${subject.shortName || subject.name} course outline`}
             >
               <div className="spark-generic-outline-head">
-                <span>Course outline</span>
-                <strong>{totalTopics} topics</strong>
+                <div className="spark-generic-outline-heading-copy">
+                  <span>Course outline</span>
+                  <strong>{totalTopics} topics</strong>
+                </div>
+                <button
+                  type="button"
+                  className="spark-generic-outline-toggle"
+                  aria-expanded={outlineOpen}
+                  aria-controls="spark-generic-outline-content"
+                  onClick={() => setOutlineOpen(value => !value)}
+                >
+                  <span>{outlineOpen ? "Hide topics" : "Browse topics"}</span>
+                  <svg viewBox="0 0 20 20" aria-hidden="true">
+                    <path d="M6 8l4 4 4-4" />
+                  </svg>
+                </button>
               </div>
 
-              {structure.sections.map(section => (
-                <section key={section.id} className="spark-generic-outline-section">
-                  <div className="spark-generic-outline-section-title">
-                    <span>{section.title}</span>
-                    <small>{section.topics.length}</small>
-                  </div>
+              <div
+                id="spark-generic-outline-content"
+                className={`spark-generic-outline-content ${outlineOpen ? "open" : ""}`}
+              >
+                {structure.sections.map(section => {
+                  const expanded = expandedOutlineSections.has(section.id);
+                  return (
+                    <section key={section.id} className={`spark-generic-outline-section ${expanded ? "expanded" : ""}`}>
+                      <button
+                        type="button"
+                        className="spark-generic-outline-section-title"
+                        aria-expanded={expanded}
+                        onClick={() => toggleOutlineSection(section.id)}
+                      >
+                        <span>{section.title}</span>
+                        <span className="spark-generic-outline-section-meta">
+                          <small>{section.topics.length}</small>
+                          <svg viewBox="0 0 20 20" aria-hidden="true">
+                            <path d="M6 8l4 4 4-4" />
+                          </svg>
+                        </span>
+                      </button>
 
-                  <div className="spark-generic-outline-topics">
-                    {section.topics.map(topic => {
-                      const active = topic.id === activeTopicId;
-                      const complete = completedTopicIds.has(topic.id);
+                      <div className="spark-generic-outline-topics">
+                        {section.topics.map(topic => {
+                          const active = topic.id === activeTopicId;
+                          const complete = completedTopicIds.has(topic.id);
 
-                      return (
+                          return (
+                            <button
+                              type="button"
+                              key={topic.id}
+                              className={`${active ? "active" : ""} ${complete ? "complete" : ""}`}
+                              onClick={() => openTopic(topic, section.id)}
+                              aria-current={active ? "page" : undefined}
+                            >
+                              <span className="spark-generic-topic-state" aria-hidden="true">
+                                {complete ? (
+                                  <svg viewBox="0 0 20 20" focusable="false">
+                                    <path d="M5 10.5l3 3L15 7" />
+                                  </svg>
+                                ) : (
+                                  <span className="spark-generic-topic-dot" />
+                                )}
+                              </span>
+                              <span>{topic.title}</span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </section>
+                  );
+                })}
+
+                {structure.unassignedTopics.length > 0 && (
+                  <section className={`spark-generic-outline-section ${expandedOutlineSections.has("__more__") ? "expanded" : ""}`}>
+                    <button
+                      type="button"
+                      className="spark-generic-outline-section-title"
+                      aria-expanded={expandedOutlineSections.has("__more__")}
+                      onClick={() => toggleOutlineSection("__more__")}
+                    >
+                      <span>More topics</span>
+                      <span className="spark-generic-outline-section-meta">
+                        <small>{structure.unassignedTopics.length}</small>
+                        <svg viewBox="0 0 20 20" aria-hidden="true">
+                          <path d="M6 8l4 4 4-4" />
+                        </svg>
+                      </span>
+                    </button>
+                    <div className="spark-generic-outline-topics">
+                      {structure.unassignedTopics.map(topic => (
                         <button
                           type="button"
                           key={topic.id}
-                          className={`${active ? "active" : ""} ${complete ? "complete" : ""}`}
-                          onClick={() => openTopic(topic, section.id)}
-                          aria-current={active ? "page" : undefined}
+                          className={topic.id === activeTopicId ? "active" : ""}
+                          onClick={() => openTopic(topic, null)}
                         >
                           <span className="spark-generic-topic-state" aria-hidden="true">
-                            {complete ? (
+                            {completedTopicIds.has(topic.id) ? (
                               <svg viewBox="0 0 20 20" focusable="false">
                                 <path d="M5 10.5l3 3L15 7" />
                               </svg>
@@ -640,41 +733,11 @@ export default function GenericSubjectStudyView({
                           </span>
                           <span>{topic.title}</span>
                         </button>
-                      );
-                    })}
-                  </div>
-                </section>
-              ))}
-
-              {structure.unassignedTopics.length > 0 && (
-                <section className="spark-generic-outline-section">
-                  <div className="spark-generic-outline-section-title">
-                    <span>More topics</span>
-                    <small>{structure.unassignedTopics.length}</small>
-                  </div>
-                  <div className="spark-generic-outline-topics">
-                    {structure.unassignedTopics.map(topic => (
-                      <button
-                        type="button"
-                        key={topic.id}
-                        className={topic.id === activeTopicId ? "active" : ""}
-                        onClick={() => openTopic(topic, null)}
-                      >
-                        <span className="spark-generic-topic-state" aria-hidden="true">
-                          {completedTopicIds.has(topic.id) ? (
-                            <svg viewBox="0 0 20 20" focusable="false">
-                              <path d="M5 10.5l3 3L15 7" />
-                            </svg>
-                          ) : (
-                            <span className="spark-generic-topic-dot" />
-                          )}
-                        </span>
-                        <span>{topic.title}</span>
-                      </button>
-                    ))}
-                  </div>
-                </section>
-              )}
+                      ))}
+                    </div>
+                  </section>
+                )}
+              </div>
             </aside>
 
             <article className="spark-generic-lesson">
