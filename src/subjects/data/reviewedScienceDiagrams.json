@@ -2338,7 +2338,7 @@
           "author": "US National Cancer Institute; SVG adaptation by Thstehle",
           "license": "Public domain",
           "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
-          "changes": "User-supplied copy of the published SVG"
+          "changes": "User-supplied copy of the published diagram"
         }
       ],
       "path": "/integrated-science/diagrams/0146.svg"
@@ -2346,7 +2346,7 @@
     "40e3141b": {
       "id": "0147",
       "title": "Water and salts in sweat removal pathway",
-      "caption": "Sweat glands form a watery secretion containing dissolved salts. Sweat passes from the coiled gland through its duct to the skin surface. Water and some salts leave the body; evaporation of the water cools the skin. The published SVG shows the gland and duct.",
+      "caption": "Sweat glands form a watery secretion containing dissolved salts. Sweat passes from the coiled gland through its duct to the skin surface. Water and some salts leave the body; evaporation of the water cools the skin. The published diagram shows the gland and duct.",
       "sources": [
         {
           "title": "Sweat Gland Cross Section",
@@ -4492,7 +4492,7 @@
     "db93176e": {
       "id": "0263",
       "title": "Bean seed: a dicot compared with a monocot",
-      "caption": "Published SVG compares a generalized dicot seed (1, left) with a monocot seed (2, right). A = seed coat; B = cotyledon; C = hilum; D = plumule (young shoot); E = radicle (young root); F = endosperm in the monocot. A mature bean has two food-storing cotyledons and corresponds to the dicot example. The right-hand example is not a bean. This comparison is schematic; the left image represents internal structure rather than the intact seed surface.",
+      "caption": "Published diagram compares a generalized dicot seed (1, left) with a monocot seed (2, right). A = seed coat; B = cotyledon; C = hilum; D = plumule (young shoot); E = radicle (young root); F = endosperm in the monocot. A mature bean has two food-storing cotyledons and corresponds to the dicot example. The right-hand example is not a bean. This comparison is schematic; the left image represents internal structure rather than the intact seed surface.",
       "sources": [
         {
           "title": "File:Monocot dicot seed.svg",
@@ -4500,7 +4500,7 @@
           "author": "Cbenson1919",
           "license": "CC BY-SA 3.0",
           "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
-          "changes": "Published SVG artwork retained without redraw; English teaching caption supplied separately."
+          "changes": "Published diagram artwork retained without redraw; English teaching caption supplied separately."
         }
       ],
       "path": "/integrated-science/diagrams/0263.svg"
