@@ -1065,8 +1065,8 @@ export default function InteractiveLabelDiagram({
                     </text>
                   </g>
                   <foreignObject
-                    x={target.boxX}
-                    y={target.boxY}
+                    x={displayTarget.boxX}
+                    y={displayTarget.boxY}
                     width="190"
                     height="58"
                     className="spark-label-target-fo"
