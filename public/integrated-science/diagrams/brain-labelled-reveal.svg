@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" role="img" aria-labelledby="title desc">
+<title id="title">Labelled sagittal view of the human brain</title>
+<desc id="desc">Published brain artwork with direct labels for the cerebrum, cerebellum, brain stem and spinal cord.</desc>
+<rect width="1000" height="620" fill="#ffffff"/>
+<image href="0273.svg" x="285" y="72" width="430" height="438" preserveAspectRatio="xMidYMid meet"/>
+<g font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" fill="#102a43" stroke="#ffffff" stroke-width="6" paint-order="stroke" stroke-linejoin="round">
+  <text x="70" y="130">Cerebrum</text>
+  <text x="760" y="165">Cerebellum</text>
+  <text x="70" y="430">Brain stem</text>
+  <text x="760" y="455">Spinal cord</text>
+</g>
+<g fill="none" stroke="#40566b" stroke-width="3" stroke-linecap="round">
+  <path d="M190 124 L500 185"/>
+  <path d="M755 160 L390 392"/>
+  <path d="M190 424 L510 405"/>
+  <path d="M755 450 L500 485"/>
+</g>
+<g fill="#ffffff" stroke="#40566b" stroke-width="3">
+  <circle cx="500" cy="185" r="7"/>
+  <circle cx="390" cy="392" r="7"/>
+  <circle cx="510" cy="405" r="7"/>
+  <circle cx="500" cy="485" r="7"/>
+</g>
+</svg>
