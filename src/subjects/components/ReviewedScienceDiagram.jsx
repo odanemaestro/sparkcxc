@@ -5,7 +5,7 @@ import references from "../data/reviewedScienceReferences.json";
 import { scienceDiagramSignature } from "./reviewedScienceDiagramModel";
 import "./reviewedScienceDiagram.css";
 
-export default function ReviewedScienceDiagram({ site, diagramId, children }) {
+export default function ReviewedScienceDiagram({ site, diagramId, children, hideCaption = false }) {
   const originalRef = useRef(null);
   const [selection, setSelection] = useState(null);
   const dialogRef = useRef(null);
@@ -47,7 +47,7 @@ export default function ReviewedScienceDiagram({ site, diagramId, children }) {
           <img src={`${base}${selection.path}`} alt={selection.title} />
         </dialog>
       </>}
-      {selection.caption && <figcaption>{selection.caption}</figcaption>}
+      {selection.caption && !hideCaption && <figcaption>{selection.caption}</figcaption>}
       {controls.length > 0 && <div className="spark-science-controls" aria-label="Explore diagram details">
         {controls.map((control, index) => <button type="button" key={index} aria-pressed={control.pressed}
           onClick={() => control.node.dispatchEvent(new MouseEvent("click", { bubbles: true }))}>{control.label}</button>)}
