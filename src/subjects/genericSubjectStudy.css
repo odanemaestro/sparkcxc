@@ -41,8 +41,9 @@
 .spark-generic-lesson-footer{display:grid;grid-template-columns:auto minmax(150px,1fr) auto;align-items:center;gap:10px;margin-top:30px;padding-top:20px;border-top:1px solid var(--spark-border-soft,#edf2f7)}
 .spark-generic-lesson-footer button{min-height:44px}
 .spark-generic-complete-action{justify-self:center}
-.spark-generic-lesson-nav{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:126px;border:1px solid var(--spark-border,#d9e2ec)!important;background:var(--spark-paper,#fff)!important;color:var(--spark-ink,#102a43)!important}
-.spark-generic-lesson-nav:not(:disabled):hover{border-color:var(--spark-teal,#0d9488)!important;background:var(--spark-teal-light,#d9fbf4)!important;color:var(--spark-teal-dark,#087f73)!important}
+.spark-generic-lesson-nav{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:126px}
+.spark-generic-lesson-nav-previous:not(:disabled){border:1px solid var(--spark-btn-navy-border,#b9c9df)!important;background:var(--spark-btn-navy-soft,#eaf0f8)!important;color:var(--spark-btn-navy,#132b5e)!important}
+.spark-generic-lesson-nav-previous:not(:disabled):hover{border-color:var(--spark-btn-navy,#132b5e)!important;background:var(--spark-btn-navy-soft-hover,#dce7f4)!important;color:var(--spark-btn-navy,#132b5e)!important}
 .spark-generic-lesson-nav-next:not(:disabled){border-color:var(--spark-teal,#0d9488)!important;background:var(--spark-teal,#0d9488)!important;color:#fff!important}
 .spark-generic-lesson-nav-next:not(:disabled):hover{background:var(--spark-teal-dark,#087f73)!important;color:#fff!important}
 .spark-generic-lesson-footer button.completed,.spark-generic-lesson-footer button:disabled{background:var(--spark-muted,#edf2f7)!important;color:var(--spark-text-muted,#627d98)!important;border-color:var(--spark-border-soft,#d9e2ec)!important;cursor:default;opacity:1}
@@ -139,13 +140,6 @@ body[data-theme="dark"] .spark-generic-outline-toggle,
   color:#e7f0f7;
 }
 
-html[data-theme="dark"] .spark-generic-lesson-nav,
-body[data-theme="dark"] .spark-generic-lesson-nav,
-.dark .spark-generic-lesson-nav{
-  border-color:#29465f!important;
-  background:#122b43!important;
-  color:#e7f0f7!important;
-}
 html[data-theme="dark"] .spark-generic-lesson-nav-next:not(:disabled),
 body[data-theme="dark"] .spark-generic-lesson-nav-next:not(:disabled),
 .dark .spark-generic-lesson-nav-next:not(:disabled){
