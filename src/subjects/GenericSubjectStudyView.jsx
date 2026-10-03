@@ -5,6 +5,7 @@ import { recordSubjectActivity } from "./subjectProgress";
 import { loadGenericSubjectStructure } from "./genericSubjectCatalog";
 import IntegratedScienceModel from "./components/IntegratedScienceModel";
 import IntegratedScienceLabelDiagram from "./components/IntegratedScienceLabelDiagram";
+import ReviewedScienceDiagram from "./components/ReviewedScienceDiagram";
 import InteractiveLabelDiagram from "./components/InteractiveLabelDiagram";
 import TransportProcessExplorer from "./components/TransportProcessExplorer";
 import {
@@ -34,18 +35,51 @@ function lessonObjectives(topic = {}) {
   return Array.isArray(lesson.objectives) ? lesson.objectives.filter(Boolean) : [];
 }
 
-function interactiveDiagrams(topic = {}) {
+const removedIntegratedScienceDiagramTemplates = new Set([
+  "mammalian-ear",
+  "flower-longitudinal",
+  "human-digestive-system",
+  "human-tooth",
+  "human-respiratory-system",
+  "human-heart",
+]);
+
+const integratedScienceReferenceOnlyDiagrams = {
+  "bean-seed": { diagramId:"0263", hideCaption:true },
+  "male-reproductive-system": { diagramId:"0265", hideCaption:false },
+  "three-pin-plug": { diagramId:"0278", hideCaption:true },
+};
+
+function lessonDiagrams(topic = {}) {
   const lesson = lessonData(topic);
   const diagrams = Array.isArray(lesson.interactiveDiagrams) ? lesson.interactiveDiagrams.filter(Boolean) : [];
   const seen = new Set();
   return diagrams.filter(diagram => {
-    if (diagram?.template === "mammalian-ear") return false;
     const key = String(diagram?.id || "").trim();
     if (!key) return true;
     if (seen.has(key)) return false;
     seen.add(key);
     return true;
   });
+}
+
+function interactiveDiagrams(topic = {},subjectId = "") {
+  return lessonDiagrams(topic).filter(diagram => {
+    if (subjectId !== "integrated-science") return true;
+    if (removedIntegratedScienceDiagramTemplates.has(diagram?.template)) return false;
+    if (integratedScienceReferenceOnlyDiagrams[diagram?.template]) return false;
+    return true;
+  });
+}
+
+function referenceDiagrams(topic = {},subjectId = "") {
+  if (subjectId !== "integrated-science") return [];
+  return lessonDiagrams(topic)
+    .map(diagram => {
+      const reference = integratedScienceReferenceOnlyDiagrams[diagram?.template];
+      return reference ? {...reference,key:diagram.id || diagram.template,template:diagram.template} : null;
+    })
+    .filter(Boolean);
 }
 
 function interactiveModels(topic = {}) {
@@ -89,7 +123,8 @@ function GenericLessonContent({
   const blocks = lessonSections(topic);
   const points = keyPoints(topic);
   const objectives = lessonObjectives(topic);
-  const diagrams = interactiveDiagrams(topic);
+  const diagrams = interactiveDiagrams(topic,subjectId);
+  const references = referenceDiagrams(topic,subjectId);
   const models = interactiveModels(topic);
   const intro = String(lesson.introduction || topic?.description || "").trim();
   const summary = String(lesson.summary || "").trim();
@@ -154,6 +189,15 @@ function GenericLessonContent({
             sectionId:topic.sectionId,
           })}
         />
+      ))}
+
+      {references.map(reference => (
+        <div className="spark-integrated-science-reference-diagram" key={reference.key}>
+          <ReviewedScienceDiagram
+            diagramId={reference.diagramId}
+            hideCaption={reference.hideCaption}
+          />
+        </div>
       ))}
 
       {points.length > 0 && (
