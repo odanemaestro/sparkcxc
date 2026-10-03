@@ -35,6 +35,17 @@ const publishedInteractiveTemplates = {
   "endocrine-system": {
     path:"/integrated-science/diagrams/endocrine-system-interactive.svg",
     x:245, y:18, width:510, height:584,
+    boxes:{
+      "pituitary gland":{boxX:20,boxY:60,side:"left"},
+      "thyroid gland":{boxX:20,boxY:160,side:"left"},
+      "adrenal glands":{boxX:20,boxY:260,side:"left"},
+      "adrenal gland":{boxX:20,boxY:260,side:"left"},
+      ovaries:{boxX:20,boxY:390,side:"left"},
+      ovary:{boxX:20,boxY:390,side:"left"},
+      pancreas:{boxX:790,boxY:285,side:"right"},
+      testes:{boxX:790,boxY:420,side:"right"},
+      testis:{boxX:790,boxY:420,side:"right"},
+    },
     anchors:{
       "pineal gland":[476,103],
       hypothalamus:[500,119],
