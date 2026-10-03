@@ -14,6 +14,19 @@ const replacementIds = {
   nephron:"0269",
 };
 
+const labelledRevealReferences = {
+  "human-brain":{
+    path:"/integrated-science/diagrams/brain-labelled-reveal.svg",
+    title:"Labelled human brain",
+    alt:"Labelled sagittal view of the human brain showing the cerebrum, cerebellum, brain stem and spinal cord",
+  },
+  "pregnancy-uterus":{
+    path:"/integrated-science/diagrams/fetus-labelled-reveal.svg",
+    title:"Labelled fetus in the uterus",
+    alt:"Labelled fetus in the uterus showing the fetus, umbilical cord and uterus",
+  },
+};
+
 const publishedInteractiveTemplates = {
   "mammalian-eye": {
     path:"/integrated-science/diagrams/0152.svg",
@@ -64,9 +77,9 @@ const publishedInteractiveTemplates = {
       "uterus wall":{boxX:790,boxY:180,side:"right"},
     },
     anchors:{
-      fetus:[555,390],foetus:[555,390],
-      "umbilical cord":[545,365],
-      uterus:[490,335],"uterus wall":[490,335],
+      fetus:[565,350],foetus:[565,350],
+      "umbilical cord":[521,331],
+      uterus:[474,333],"uterus wall":[474,333],
     },
   },
   "human-brain":{
@@ -954,12 +967,14 @@ export default function InteractiveLabelDiagram({
   const referenceId = replacementIds[normalized.template];
   const publishedInteractive = publishedInteractiveTemplates[normalized.template] || null;
   const publicBase = process.env.PUBLIC_URL || "";
+  const labelledReference = labelledRevealReferences[normalized.template] || null;
 
   const [placements,setPlacements] = useState(() => completed ? correctMap : {});
   const [selectedLabelId,setSelectedLabelId] = useState(null);
   const [checked,setChecked] = useState(Boolean(completed));
   const [hintTargetId,setHintTargetId] = useState(null);
   const [message,setMessage] = useState(completed ? "Completed" : "");
+  const [showLabelledReference,setShowLabelledReference] = useState(false);
   const completionSent = useRef(false);
 
   useEffect(() => {
@@ -1203,7 +1218,24 @@ export default function InteractiveLabelDiagram({
         <button type="button" className="secondary" onClick={reset} disabled={completed}>
           Reset
         </button>
+        {labelledReference && (
+          <button
+            type="button"
+            className="secondary spark-labelled-reference-toggle"
+            aria-expanded={showLabelledReference}
+            onClick={() => setShowLabelledReference(value => !value)}
+          >
+            {showLabelledReference ? "Hide labelled diagram" : "Show labelled diagram"}
+          </button>
+        )}
       </div>
+
+      {labelledReference && showLabelledReference && (
+        <figure className="spark-labelled-reference-panel">
+          <figcaption>{labelledReference.title}</figcaption>
+          <img src={`${publicBase}${labelledReference.path}`} alt={labelledReference.alt} />
+        </figure>
+      )}
 
       {message && (
         <div className={`spark-label-diagram-feedback ${score.complete || completed ? "success" : ""}`} role="status">
