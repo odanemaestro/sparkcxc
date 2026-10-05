@@ -497,3 +497,9 @@
 @media(prefers-reduced-motion:reduce){
   .is-exam-root *{scroll-behavior:auto!important;transition:none!important;animation:none!important}
 }
+
+
+/* INTEGRATED_SCIENCE_RENDERING_V1 */
+.is-exam-root .is-science-text{unicode-bidi:plaintext}.is-exam-root .is-science-formula{white-space:nowrap}.is-exam-root .is-science-formula sub,.is-exam-root .is-science-formula sup{font-size:.72em;line-height:0;position:relative;vertical-align:baseline}.is-exam-root .is-science-formula sub{bottom:-.25em}.is-exam-root .is-science-formula sup{top:-.48em}
+.is-exam-root .is-bank-svg{max-width:100%;overflow:auto;margin:14px 0;padding:12px;border:1px solid var(--is-border);border-radius:12px;background:#fff;color:#102a43}.is-exam-root .is-bank-svg svg{display:block;max-width:100%;height:auto;margin:auto}.is-exam-root .is-option-svg{margin:0;padding:8px}.is-exam-root .is-option-svg svg{max-height:240px}
+.dark .is-exam-root .is-bank-svg,[data-theme="dark"] .is-exam-root .is-bank-svg{background:#fff;color:#102a43;border-color:#47657a;box-shadow:0 0 0 1px rgba(255,255,255,.05)}
