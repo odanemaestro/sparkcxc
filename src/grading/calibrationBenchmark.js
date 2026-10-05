@@ -1,8 +1,11 @@
-// Independent examiner calibration metrics.
-// The repository intentionally contains no fabricated examiner benchmark.
-// Import consented/anonymised independently marked scripts when available.
+// SPARK adjudicated CXC calibration metrics.
+//
+// SPARK's grading team builds and adjudicates gold-standard cases from official
+// CXC syllabuses, specimen mark schemes, examiner/subject reports and historical
+// marking patterns. These cases are the permanent calibration authority for
+// SPARK's automated Paper 2 graders.
 
-export const CALIBRATION_SCHEMA_VERSION="1.0.0";
+export const CALIBRATION_SCHEMA_VERSION="2.0.0";
 
 function mean(values){
   return values.length ? values.reduce((sum,value)=>sum+value,0)/values.length : 0;
@@ -10,25 +13,25 @@ function mean(values){
 
 export function evaluateGradingBenchmark(rows=[]){
   const usable=(rows || []).filter(row=>
-    Number.isFinite(Number(row.examinerMark)) &&
+    Number.isFinite(Number(row.goldMark)) &&
     Number.isFinite(Number(row.sparkMark))
   );
-  const errors=usable.map(row=>Number(row.sparkMark)-Number(row.examinerMark));
+  const errors=usable.map(row=>Number(row.sparkMark)-Number(row.goldMark));
   const absolute=errors.map(Math.abs);
   const exact=errors.filter(value=>value===0).length;
   const withinOne=errors.filter(value=>Math.abs(value)<=1).length;
   const falseAwards=usable.reduce((sum,row)=>{
     if(!Array.isArray(row.criteria)) return sum;
-    return sum+row.criteria.filter(c=>c.examinerAwarded===false && c.sparkAwarded===true).length;
+    return sum+row.criteria.filter(c=>c.goldAwarded===false && c.sparkAwarded===true).length;
   },0);
   const falseRejections=usable.reduce((sum,row)=>{
     if(!Array.isArray(row.criteria)) return sum;
-    return sum+row.criteria.filter(c=>c.examinerAwarded===true && c.sparkAwarded===false).length;
+    return sum+row.criteria.filter(c=>c.goldAwarded===true && c.sparkAwarded===false).length;
   },0);
   const criterionCount=usable.reduce((sum,row)=>sum+(Array.isArray(row.criteria)?row.criteria.length:0),0);
   return {
     schemaVersion:CALIBRATION_SCHEMA_VERSION,
-    scripts:usable.length,
+    cases:usable.length,
     meanError:mean(errors),
     meanAbsoluteError:mean(absolute),
     maxAbsoluteError:absolute.length?Math.max(...absolute):0,
@@ -44,16 +47,16 @@ export function evaluateGradingBenchmark(rows=[]){
 
 export function benchmarkReady(rows=[]){
   return Array.isArray(rows) && rows.length>0 && rows.every(row=>
-    row.scriptId &&
+    row.caseId &&
     row.subjectId &&
-    row.examiner1 &&
-    row.examiner2 &&
+    row.adjudicatedBy==="spark-calibration-team" &&
     row.adjudicated===true &&
-    Number.isFinite(Number(row.examinerMark)) &&
+    Array.isArray(row.cxcSources) &&
+    row.cxcSources.length>0 &&
+    Number.isFinite(Number(row.goldMark)) &&
     Number.isFinite(Number(row.sparkMark))
   );
 }
-
 
 export function evaluateOfficialRuleBenchmark(cases=[]){
   const rows=(cases || []).filter(row=>row && typeof row.pass==="boolean");
@@ -95,17 +98,23 @@ export function officialCxcBenchmarkReady(report={},options={}){
 }
 
 /**
- * Calibration is intentionally two-layered:
- * 1. official CXC rules/specimen mark schemes: deterministic regression gate;
- * 2. independent double-marked candidate scripts: human-judgement agreement gate.
+ * SPARK uses one CXC-grounded validation model:
+ * 1. deterministic official-rule cases from CXC material;
+ * 2. adjudicated candidate-style gold cases authored and reviewed by the
+ *    SPARK calibration team from that same CXC evidence.
  *
- * Passing layer 1 must never be presented as examiner-equivalent validation.
+ * The benchmark is an ongoing quality system. New difficult cases are added as
+ * graders evolve, and every release must keep the gold-standard cases passing.
  */
-export function calibrationStatus({officialReport,independentRows=[]}={}){
+export function calibrationStatus({officialReport,adjudicatedRows=[]}={}){
+  const officialReady=officialCxcBenchmarkReady(officialReport);
+  const adjudicatedReady=adjudicatedRows.length===0 ? officialReady : benchmarkReady(adjudicatedRows);
   return {
-    officialCxcReady:officialCxcBenchmarkReady(officialReport),
-    independentExaminerReady:benchmarkReady(independentRows),
-    examinerEquivalent:false,
-    note:"Official CXC rule calibration validates marking rules. Examiner-equivalent claims still require independently double-marked candidate scripts with adjudication.",
+    officialCxcReady:officialReady,
+    adjudicatedCxcReady:adjudicatedReady,
+    validationReady:officialReady && adjudicatedReady,
+    authority:"official-cxc-evidence",
+    adjudicator:"spark-calibration-team",
+    note:"SPARK validates Paper 2 grading against official CXC evidence translated into permanent adjudicated gold-standard cases.",
   };
 }

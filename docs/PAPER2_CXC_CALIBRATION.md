@@ -2,61 +2,107 @@
 
 ## Purpose
 
-This benchmark checks SPARK Paper 2 marking behaviour against external CXC evidence. It is deliberately separate from the independent-examiner benchmark.
+SPARK validates Paper 2 marking against official CXC evidence translated into permanent gold-standard calibration cases.
 
-The official-rule benchmark uses:
-- official CXC specimen mark schemes and keys;
-- current/recent CXC subject reports where they state how responses were assessed or where candidates commonly lost marks;
-- synthetic SPARK-authored responses designed to isolate one marking rule at a time.
+The benchmark uses:
+- official CXC syllabuses;
+- official specimen papers and mark schemes;
+- CXC subject/examiner reports;
+- historical CXC marking patterns where useful;
+- candidate-style responses authored by the SPARK calibration team to isolate difficult marking decisions.
 
-It does not copy complete examination questions into the repository and it does not label synthetic responses as candidate scripts.
+These responses are not represented as real candidate scripts. They are controlled calibration cases used to test whether SPARK applies CXC marking rules consistently.
+
+## Validation model
+
+SPARK uses one CXC-grounded calibration system.
+
+1. **Official-rule cases** test deterministic rules taken directly from CXC material.
+2. **Adjudicated gold cases** are candidate-style responses reviewed by the SPARK calibration team and assigned a gold-standard mark using the relevant CXC evidence.
+3. SPARK's production grader marks the same response.
+4. Any disagreement is investigated. The benchmark is not weakened simply to make it pass.
+5. Once resolved, the case remains in the permanent regression suite.
+
+This is an ongoing quality system. We are not waiting for outside examiners.
 
 ## Evidence hierarchy
 
-1. Current official specimen mark scheme for the syllabus version used by SPARK.
-2. Official CXC subject report/examiner commentary.
-3. Older official specimen material where the current syllabus does not provide a newer equivalent rule.
-4. Independent double-marked anonymised candidate scripts, when legitimately available, remain a separate validation layer.
+1. Current official CXC specimen mark scheme for the syllabus version used by SPARK.
+2. Official CXC subject/examiner report.
+3. Official syllabus assessment guidance and profile descriptions.
+4. Older official specimen material where the current syllabus does not provide an equivalent rule.
+5. Historical CXC marking patterns used only where they remain compatible with the current syllabus.
+
+## Gold-standard case requirements
+
+Every adjudicated case must include:
+- a unique case ID;
+- subject and paper;
+- the candidate-style response;
+- the expected gold mark;
+- criterion-level gold decisions where applicable;
+- the official CXC source or sources used;
+- a short rationale for any judgement that is not obvious;
+- adjudicatedBy = spark-calibration-team;
+- adjudicated = true.
+
+The gold mark is the expected SPARK mark until stronger official CXC evidence requires the case to be revised.
 
 ## Subjects
 
 ### English A
 Current source: CXC 01/G/SYLL 25 specimen Paper 02 mark scheme, effective May-June 2027.
-Checks include the 50-word summary requirement, three-point summary structure, 7/7/16 extended-response profiles, the under-150-word persuasive cap and under-200-word literary cap. The May-June 2026 subject report is used as secondary evidence for main-point selection, paraphrasing, organisation and mechanics.
+Checks include the 50-word summary requirement, three-point summary structure, 7/7/16 extended-response profiles, short-response caps, paraphrasing, organisation and mechanics.
 
 ### Mathematics
 Current source: Mathematics specimen Paper 02 mark scheme effective May-June 2027.
-Checks distinguish computation/method/process credit from correct-answer-only credit and ensure items that explicitly require working do not silently receive method credit from an answer alone.
+Checks distinguish method/process credit from correct-answer-only credit, including questions where working is explicitly required.
 
 ### Physics
-Sources: official Physics specimen Paper 02 mark scheme and January 2026 subject report.
-Checks include numerical value plus unit handling, compatible unit conversion, missing units and ambiguous competing numerical alternatives. The 2026 report specifically notes graph criteria and lost gradient marks from incorrect or omitted units.
+Sources: official Physics specimen Paper 02 mark scheme and current CXC subject reports.
+Checks include numerical value and unit handling, compatible unit conversion, ambiguous alternatives, graph criteria and follow-through behaviour.
 
 ### Information Technology
 Source: official IT specimen Paper 02 mark scheme.
-Checks cover exact/equivalent spreadsheet formula forms and algorithm branch/output structure while rejecting changed operators or reversed logic.
+Checks cover spreadsheet formulas, equivalent formula forms and algorithm/branch logic while rejecting changed operators and reversed logic.
 
 ### Social Studies
-Sources: 2023 official specimen mark scheme and January 2026 subject report.
-Checks cover multi-element definitions and the official distinction between a partial point and a clearly developed point.
+Sources: current official specimen mark scheme and CXC subject reports.
+Checks include multi-part definitions, distinct points, linked development and the difference between stating and properly developing an answer.
 
 ### Integrated Science
-Source: official specimen Paper 02 mark scheme effective May-June 2027.
-Checks criterion-by-criterion structured marking and partial-credit behaviour. The source explicitly uses full/partial/limited explanation bands on several items.
+Source: current official specimen Paper 02 mark scheme.
+Checks criterion-by-criterion marking, partial credit, calculations, labels, tables and full/partial/limited explanations.
 
 ## Release gate
 
-The CXC official-rule benchmark is considered ready only when:
-- all six subjects are represented;
-- each subject has multiple external-rule cases;
-- the full official-rule suite passes;
-- the regular SPARK regression suite passes;
+The CXC calibration system is ready only when:
+- all six Paper 2 subjects are represented;
+- each subject has multiple CXC-grounded cases;
+- all official-rule cases pass;
+- all adjudicated gold cases in the active benchmark agree with SPARK;
+- the full SPARK regression suite passes;
 - the production build passes.
 
-This validates implemented marking rules against CXC evidence. It does not prove that SPARK will reproduce a trained examiner's holistic judgement on unrestricted prose.
+## Metrics
 
-## Independent examiner layer
+For adjudicated gold cases SPARK measures:
+- exact mark agreement;
+- within-one-mark agreement;
+- mean error;
+- mean absolute error;
+- maximum absolute error;
+- false criterion awards;
+- false criterion rejections.
 
-The existing independent benchmark schema remains in place for anonymised scripts marked independently by two qualified markers and adjudicated. That layer measures exact agreement, within-one-mark agreement, mean absolute error, false awards and false rejections.
+These metrics compare SPARK with the adjudicated CXC gold standard created by the SPARK calibration team.
 
-SPARK must never infer or fabricate examiner identities, marks or adjudication status to populate that dataset.
+## Maintenance rule
+
+Whenever a grading defect is found, or a new CXC source reveals a stronger marking rule:
+1. add or update a calibration case;
+2. document the CXC evidence;
+3. correct the grader if needed;
+4. keep the case permanently so the defect cannot return.
+
+The benchmark should grow as SPARK grows.

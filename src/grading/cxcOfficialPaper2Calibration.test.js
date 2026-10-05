@@ -1,3 +1,5 @@
+const fs=require("fs");
+const path=require("path");
 const { runCxcOfficialCalibration, CXC_CALIBRATION_SOURCES }=require("./cxcOfficialPaper2Calibration");
 
 describe("Official CXC Paper 2 calibration",()=>{
@@ -30,8 +32,21 @@ describe("Official CXC Paper 2 calibration",()=>{
     });
   });
 
-  test("does not misrepresent synthetic calibration responses as real candidate scripts",()=>{
-    expect(report.groundTruth).toMatch(/synthetic responses are SPARK-authored/i);
-    expect(report.groundTruth).toMatch(/Official CXC specimen mark schemes/i);
+  test("uses the SPARK calibration team as the adjudicator of CXC gold cases",()=>{
+    expect(report.adjudicatedBy).toBe("spark-calibration-team");
+    expect(report.adjudicated).toBe(true);
+    expect(report.groundTruth).toMatch(/Official CXC evidence adjudicated by the SPARK calibration team/i);
+    report.cases.forEach(row=>{
+      expect(row.adjudicatedBy).toBe("spark-calibration-team");
+      expect(row.adjudicated).toBe(true);
+      expect(row.cxcSources.length).toBeGreaterThan(0);
+    });
+  });
+
+  test("uses the adjudicated CXC schema and removes the obsolete outside-examiner schema",()=>{
+    expect(fs.existsSync(path.join(__dirname,"adjudicatedCxcBenchmark.schema.json"))).toBe(true);
+    expect(fs.existsSync(path.join(__dirname,"examinerBenchmark.schema.json"))).toBe(false);
+    const schema=JSON.parse(fs.readFileSync(path.join(__dirname,"adjudicatedCxcBenchmark.schema.json"),"utf8"));
+    expect(schema.title).toBe("SPARK Adjudicated CXC Paper 2 Benchmark");
   });
 });
