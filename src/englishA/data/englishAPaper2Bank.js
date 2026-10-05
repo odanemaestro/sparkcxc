@@ -325,20 +325,57 @@ function revisedSummaryTask(task) {
 
 function revisedPaper2Task(task) {
   const summaryTask = revisedSummaryTask(task);
+
   if (summaryTask?.kind === "persuasive") {
     return Object.freeze({
       ...summaryTask,
       instructions:String(summaryTask.instructions || "").replace("approximately 300-350 words","approximately 250-300 words"),
       wordRange:[250,300],
+      rubric:Object.freeze({
+        marks:30,
+        criteria:Object.freeze([
+          "P3 Evaluating and Creating — 16 marks: clear position, relevant supporting details, awareness of audience, persuasive techniques, logical development and appropriate appeals.",
+          "P2 Analysing — 7 marks: at least five paragraphs, logical sequencing, cohesion, effective introduction and conclusion.",
+          "P1 Understanding — 7 marks: accurate Standard English, grammar, mechanics, paragraphing, register, tone and understanding of persuasive techniques.",
+          "A response under about 150 words is restricted to the low mark range in the specimen mark scheme.",
+        ]),
+      }),
     });
   }
+
   if (summaryTask?.kind === "exposition") {
     return Object.freeze({
       ...summaryTask,
       instructions:String(summaryTask.instructions || "").replace(" of approximately 250-300 words",""),
       wordRange:null,
+      rubric:Object.freeze({
+        marks:30,
+        criteria:Object.freeze([
+          "P1 Understanding — 7 marks: relevance and clarity (3), accuracy, completeness and appropriateness (4).",
+          "P2 Analysing — 7 marks: format and conventions (3), sense of audience (2), sequencing (2).",
+          "P3 Evaluating and Creating — 16 marks: conciseness (3), coherence (2), structure and language (8), spelling and punctuation mechanics (3).",
+          "Heavy lifting from the stimulus can reduce the language mark.",
+        ]),
+      }),
     });
   }
+
+  if (summaryTask?.kind === "literary") {
+    return Object.freeze({
+      ...summaryTask,
+      wordRange:[400,450],
+      rubric:Object.freeze({
+        marks:30,
+        criteria:Object.freeze([
+          "P3 Evaluating and Creating — 16 marks: effective use of stimulus, plot, conflict, setting, point of view, characterisation, functional dialogue, sensory detail and lively diction.",
+          "P2 Analysing — 7 marks: logical organisation, coherence and effective sequencing of events toward a suitable conclusion.",
+          "P1 Understanding — 7 marks: accurate language, grammar and mechanics plus control of narrative elements.",
+          "A response under about 200 words is restricted to the low mark range in the specimen mark scheme.",
+        ]),
+      }),
+    });
+  }
+
   return summaryTask;
 }
 
