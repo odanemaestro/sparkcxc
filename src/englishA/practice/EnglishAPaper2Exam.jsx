@@ -1,0 +1,276 @@
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { recordSubjectActivity } from "../../subjects/subjectProgress";
+import {
+  ENGLISH_A_PAPER2_DURATION_SECONDS,
+  ENGLISH_A_PAPER2_MODULES,
+  buildEnglishAPaper2,
+  englishAPaper2Sets,
+} from "../data/englishAPaper2Bank";
+import "../../integratedScience/practice/integratedScienceExam.css";
+import "./englishAExam.css";
+
+const storageKey = userId => `spark-english-a-paper2-${userId || "anonymous"}-v1`;
+
+function readState(userId) {
+  try { return JSON.parse(localStorage.getItem(storageKey(userId)) || "null"); }
+  catch { return null; }
+}
+
+function saveState(userId,state) {
+  if (!state) localStorage.removeItem(storageKey(userId));
+  else localStorage.setItem(storageKey(userId),JSON.stringify(state));
+}
+
+function countWords(value) {
+  return String(value || "").trim().split(/\s+/).filter(Boolean).length;
+}
+
+function formatTime(totalSeconds) {
+  const safe=Math.max(0,Math.floor(Number(totalSeconds)||0));
+  const h=Math.floor(safe/3600),m=Math.floor((safe%3600)/60),s=safe%60;
+  return `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+}
+
+function requiredTasks(paper,choiceId) {
+  return paper.tasks.filter(task => !task.choiceGroup || task.id === choiceId);
+}
+
+function Stimulus({ stimulus }) {
+  if (!stimulus) return null;
+  return (
+    <section className="ea-p2-stimulus">
+      {stimulus.title && <h3>{stimulus.title}</h3>}
+      {(stimulus.paragraphs || []).map((paragraph,index) => <p key={index}>{paragraph}</p>)}
+      {stimulus.situation && (
+        <ul>{stimulus.situation.map((item,index) => <li key={index}>{item}</li>)}</ul>
+      )}
+      {stimulus.role && <p><strong>Role:</strong> {stimulus.role}</p>}
+    </section>
+  );
+}
+
+export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
+  const initial=useMemo(() => readState(userId),[userId]);
+  const [phase,setPhase]=useState(initial?.phase || "library");
+  const [setId,setSetId]=useState(initial?.setId || englishAPaper2Sets[0].id);
+  const [answers,setAnswers]=useState(initial?.answers || {});
+  const [choiceId,setChoiceId]=useState(initial?.choiceId || "");
+  const [currentIndex,setCurrentIndex]=useState(initial?.currentIndex || 0);
+  const [endsAt,setEndsAt]=useState(initial?.endsAt || null);
+  const [remaining,setRemaining]=useState(() => initial?.endsAt ? Math.max(0,Math.round((initial.endsAt-Date.now())/1000)) : ENGLISH_A_PAPER2_DURATION_SECONDS);
+  const submitGuard=useRef(false);
+
+  const paper=useMemo(() => buildEnglishAPaper2(setId),[setId]);
+  const visibleTasks=useMemo(() => requiredTasks(paper,choiceId),[paper,choiceId]);
+  const task=visibleTasks[Math.min(currentIndex,Math.max(0,visibleTasks.length-1))] || null;
+
+  useEffect(() => {
+    if (phase === "library") return;
+    saveState(userId,{phase,setId,answers,choiceId,currentIndex,endsAt});
+  },[answers,choiceId,currentIndex,endsAt,phase,setId,userId]);
+
+  useEffect(() => {
+    if (phase !== "exam" || !endsAt) return undefined;
+    const tick=() => {
+      const seconds=Math.max(0,Math.round((endsAt-Date.now())/1000));
+      setRemaining(seconds);
+      if (seconds===0 && !submitGuard.current) submit(true);
+    };
+    tick();
+    const id=window.setInterval(tick,1000);
+    return () => window.clearInterval(id);
+  });
+
+  function prepare(id) {
+    setSetId(id);
+    setAnswers({});
+    setChoiceId("");
+    setCurrentIndex(0);
+    setEndsAt(null);
+    setRemaining(ENGLISH_A_PAPER2_DURATION_SECONDS);
+    setPhase("instructions");
+    saveState(userId,{phase:"instructions",setId:id,answers:{},choiceId:"",currentIndex:0,endsAt:null});
+    window.scrollTo?.(0,0);
+  }
+
+  function begin() {
+    const finish=Date.now()+ENGLISH_A_PAPER2_DURATION_SECONDS*1000;
+    setEndsAt(finish);
+    setRemaining(ENGLISH_A_PAPER2_DURATION_SECONDS);
+    setPhase("exam");
+    window.scrollTo?.(0,0);
+  }
+
+  async function submit(timedOut=false) {
+    if (submitGuard.current) return;
+    submitGuard.current=true;
+    setPhase("review");
+    const completedAt=new Date().toISOString();
+    const responses=requiredTasks(paper,choiceId);
+    try {
+      await recordSubjectActivity({
+        supabase,
+        activity:{
+          subjectId:"english-a",
+          activityKey:`exam:english-a-paper2:${paper.id}`,
+          activityType:"exam",
+          title:`English A Paper 02 - ${paper.title}`,
+          completed:true,
+          metadata:{
+            source:"english_a_paper2_simulator_v1",
+            syllabus:"CXC 01/G/SYLL 25",
+            paper:"02",
+            paper_id:paper.id,
+            timed_out:Boolean(timedOut),
+            submitted_at:completedAt,
+            response_word_counts:Object.fromEntries(responses.map(item => [item.id,countWords(answers[item.id])])),
+            selected_creative_prompt:choiceId || null,
+          },
+        },
+      });
+    } catch (error) {
+      console.warn("Could not save English A Paper 02 completion",error);
+    }
+    window.scrollTo?.(0,0);
+  }
+
+  function reset() {
+    saveState(userId,null);
+    submitGuard.current=false;
+    setPhase("library");
+    setAnswers({});
+    setChoiceId("");
+    setCurrentIndex(0);
+    setEndsAt(null);
+    setRemaining(ENGLISH_A_PAPER2_DURATION_SECONDS);
+  }
+
+  if (phase==="library") {
+    return (
+      <main className="ea-practice-shell">
+        <div className="ea-practice-home">
+          <header className="ea-practice-hero">
+            <div>
+              <span className="ea-practice-eyebrow">CSEC ENGLISH A PAPER 02</span>
+              <h1>Paper 2 Simulator</h1>
+              <p>Choose a full original SPARK paper built to the revised three-module structure. Each paper carries 120 marks and allows 2 hours 45 minutes.</p>
+            </div>
+            <button type="button" className="ea-practice-back" onClick={onBack}>← English A practice</button>
+          </header>
+          <div className="ea-p2-paper-grid">
+            {englishAPaper2Sets.map(set => (
+              <article className="ea-practice-card" key={set.id}>
+                <span className="ea-practice-eyebrow">FULL PRACTICE PAPER</span>
+                <h2>{set.title}</h2>
+                <p>{set.description}</p>
+                <div className="ea-practice-specs">
+                  <span>3 modules</span><span>120 marks</span><span>165 minutes</span><span>6 responses</span>
+                </div>
+                <button type="button" className="ea-practice-primary" onClick={() => prepare(set.id)}>Prepare {set.title}</button>
+              </article>
+            ))}
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  if (phase==="instructions") {
+    return (
+      <main className="is-exam-root"><div className="is-exam-shell">
+        <button type="button" className="is-exam-primary is-exam-page-back" onClick={() => setPhase("library")}>← Back to Paper 2 library</button>
+        <section className="is-exam-instructions-card">
+          <span className="is-exam-eyebrow">CSEC ENGLISH A · PAPER 02</span>
+          <h1>{paper.title}</h1>
+          <p className="is-exam-instructions-sub">Original SPARK practice mapped to CXC 01/G/SYLL 25.</p>
+          <div className="is-exam-instructions-meta">
+            <div><span>Time</span><strong>2 h 45 min</strong></div>
+            <div><span>Marks</span><strong>120</strong></div>
+            <div><span>Modules</span><strong>3</strong></div>
+            <div><span>Responses</span><strong>6</strong></div>
+          </div>
+          <div className="is-exam-instructions-sheet">
+            <h2>READ THE FOLLOWING INSTRUCTIONS CAREFULLY.</h2>
+            <ol>
+              <li>Complete two questions from each module.</li>
+              <li>Module 1 contains a 10-mark informative summary and a 30-mark exposition.</li>
+              <li>Module 2 contains a 10-mark literary summary and ONE 30-mark short-story question chosen from two prompts.</li>
+              <li>Module 3 contains a 10-mark persuasive summary and a 30-mark persuasive response.</li>
+              <li>Write in Standard English. Where a creative task permits dialogue, dialect may be used naturally.</li>
+              <li>Your responses are saved while you work. This simulator provides a detailed rubric after submission rather than pretending that extended writing can be marked reliably by simple keyword matching.</li>
+            </ol>
+          </div>
+          <div className="is-exam-instructions-actions"><button type="button" className="is-exam-primary" onClick={begin}>Start examination</button></div>
+        </section>
+      </div></main>
+    );
+  }
+
+  if (phase==="review") {
+    const completed=requiredTasks(paper,choiceId);
+    return (
+      <main className="ea-practice-shell"><div className="ea-practice-home">
+        <header className="ea-practice-hero"><div><span className="ea-practice-eyebrow">PAPER 02 REVIEW</span><h1>{paper.title}</h1><p>Use the official-style criteria below to review each response. Extended writing is not given a fake automatic mark.</p></div><button className="ea-practice-back" type="button" onClick={onBack}>← English A practice</button></header>
+        {completed.map(item => (
+          <section className="ea-p2-review-card" key={item.id}>
+            <div className="ea-p2-review-head"><div><span>Module {item.module}: {ENGLISH_A_PAPER2_MODULES[item.module]}</span><h2>{item.title}</h2></div><strong>{item.rubric?.marks || 0} marks</strong></div>
+            <p className="ea-p2-review-prompt">{item.instructions}</p>
+            <div className="ea-p2-review-response"><strong>Your response · {countWords(answers[item.id])} words</strong><p>{answers[item.id] || "No response submitted."}</p></div>
+            <div className="ea-p2-rubric"><strong>Review against these criteria</strong><ul>{(item.rubric?.criteria || []).map((criterion,index) => <li key={index}>{criterion}</li>)}</ul></div>
+          </section>
+        ))}
+        <div className="ea-p2-review-actions"><button className="ea-practice-primary" type="button" onClick={reset}>Start another Paper 2</button></div>
+      </div></main>
+    );
+  }
+
+  const moduleLabel=task ? `Module ${task.module}: ${ENGLISH_A_PAPER2_MODULES[task.module]}` : "";
+  const wordCount=countWords(answers[task?.id]);
+  const answeredCount=requiredTasks(paper,choiceId).filter(item => String(answers[item.id]||"").trim()).length;
+
+  return (
+    <main className="is-exam-root"><div className="is-exam-shell is-exam-paper-shell">
+      <header className="is-exam-head">
+        <div><button type="button" className="is-exam-primary is-exam-back" onClick={onBack}>Exit</button><span className="is-exam-eyebrow">CSEC ENGLISH A · PAPER 02</span><h1>{paper.title}</h1><p>{answeredCount}/6 required responses started</p></div>
+        <div className="is-exam-timer"><span>Time remaining</span><strong>{formatTime(remaining)}</strong></div>
+      </header>
+
+      {!choiceId && (
+        <section className="ea-p2-choice-banner">
+          <strong>Module 2 creative writing choice</strong>
+          <span>Choose ONE short-story prompt before you reach the creative-writing response.</span>
+          <div>
+            {paper.tasks.filter(item => item.choiceGroup==="M2-creative").map(item => (
+              <button type="button" key={item.id} onClick={() => setChoiceId(item.id)}>{item.title}</button>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {task && (
+        <article className="ea-p2-task-card">
+          <div className="ea-p2-task-head"><div><span className="ea-practice-eyebrow">{moduleLabel}</span><h2>{task.title}</h2></div><strong>{task.rubric?.marks || 0} marks</strong></div>
+          <p className="ea-p2-task-instructions">{task.instructions}</p>
+          <Stimulus stimulus={task.stimulus} />
+          <div className="ea-p2-response-head"><span>Your response</span><strong>{wordCount} words</strong></div>
+          <textarea
+            value={answers[task.id] || ""}
+            onChange={event => setAnswers(current => ({...current,[task.id]:event.target.value}))}
+            placeholder="Write your response here..."
+            aria-label={`Response for ${task.title}`}
+          />
+          {task.wordLimit && wordCount > task.wordLimit && <div className="ea-p2-word-warning">This response is over the {task.wordLimit}-word limit.</div>}
+          {task.wordRange && wordCount > 0 && (wordCount < task.wordRange[0] || wordCount > task.wordRange[1]) && <div className="ea-p2-word-note">Suggested length: {task.wordRange[0]}-{task.wordRange[1]} words.</div>}
+        </article>
+      )}
+
+      <footer className="ea-p2-nav">
+        <button type="button" className="ea-practice-back" disabled={currentIndex===0} onClick={() => {setCurrentIndex(i=>Math.max(0,i-1));window.scrollTo?.(0,0);}}>← Previous</button>
+        <span>Response {currentIndex+1} of {visibleTasks.length}</span>
+        {currentIndex < visibleTasks.length-1
+          ? <button type="button" className="ea-practice-primary" onClick={() => {setCurrentIndex(i=>Math.min(visibleTasks.length-1,i+1));window.scrollTo?.(0,0);}}>Next →</button>
+          : <button type="button" className="ea-practice-primary" disabled={!choiceId} onClick={() => submit(false)}>Submit Paper 2</button>}
+      </footer>
+    </div></main>
+  );
+}
