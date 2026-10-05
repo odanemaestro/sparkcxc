@@ -26,6 +26,69 @@ function displayValue(result, currency = false) {
   return String(result ?? "");
 }
 
+function SpreadsheetChart({ type, labels, values, formatValue }) {
+  const width=520,height=280,pad=42;
+  const max=Math.max(1,...values);
+  const total=Math.max(1,values.reduce((sum,value)=>sum+value,0));
+  const toY=value=>height-pad-(value/max)*(height-pad*2);
+  const points=values.map((value,index)=>({
+    x:pad+(values.length===1?0:(index/(values.length-1)))*(width-pad*2),
+    y:toY(value),
+    value,
+    label:labels[index],
+  }));
+
+  if(type==="Pie"){
+    let start=-Math.PI/2;
+    const cx=width/2,cy=height/2,r=92;
+    const slices=values.map((value,index)=>{
+      const angle=value/total*Math.PI*2;
+      const end=start+angle;
+      const x1=cx+r*Math.cos(start),y1=cy+r*Math.sin(start);
+      const x2=cx+r*Math.cos(end),y2=cy+r*Math.sin(end);
+      const large=angle>Math.PI?1:0;
+      const path=`M ${cx} ${cy} L ${x1} ${y1} A ${r} ${r} 0 ${large} 1 ${x2} ${y2} Z`;
+      const mid=start+angle/2;
+      const labelX=cx+(r+28)*Math.cos(mid),labelY=cy+(r+28)*Math.sin(mid);
+      const row={path,labelX,labelY,label:labels[index],value,index};
+      start=end;
+      return row;
+    });
+    return <svg className="itv2-chart-svg" viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Pie chart of worksheet totals">
+      {slices.map(slice=><g key={slice.index} className={`itv2-chart-series s${slice.index}`}><path d={slice.path}/><text x={slice.labelX} y={slice.labelY} textAnchor="middle">{slice.label}</text><title>{slice.label}: {formatValue(slice.value)}</title></g>)}
+    </svg>;
+  }
+
+  if(type==="Bar"){
+    const rowHeight=(height-pad*2)/values.length;
+    return <svg className="itv2-chart-svg" viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Bar chart of worksheet totals">
+      {values.map((value,index)=>{
+        const y=pad+index*rowHeight+7;
+        const barWidth=(value/max)*(width-pad*2-100);
+        return <g key={index} className={`itv2-chart-series s${index}`}><text x={pad} y={y+16}>{labels[index]}</text><rect x={pad+90} y={y} width={Math.max(2,barWidth)} height={Math.max(12,rowHeight-14)}/><title>{labels[index]}: {formatValue(value)}</title></g>;
+      })}
+    </svg>;
+  }
+
+  if(type==="Line"){
+    return <svg className="itv2-chart-svg" viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Line chart of worksheet totals">
+      <line x1={pad} y1={height-pad} x2={width-pad} y2={height-pad} className="axis"/><line x1={pad} y1={pad} x2={pad} y2={height-pad} className="axis"/>
+      <polyline points={points.map(point=>`${point.x},${point.y}`).join(" ")} className="line"/>
+      {points.map((point,index)=><g key={index} className={`itv2-chart-series s${index}`}><circle cx={point.x} cy={point.y} r="5"/><text x={point.x} y={height-pad+20} textAnchor="middle">{point.label}</text><title>{point.label}: {formatValue(point.value)}</title></g>)}
+    </svg>;
+  }
+
+  const band=(width-pad*2)/values.length;
+  return <svg className="itv2-chart-svg" viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Column chart of worksheet totals">
+    <line x1={pad} y1={height-pad} x2={width-pad} y2={height-pad} className="axis"/><line x1={pad} y1={pad} x2={pad} y2={height-pad} className="axis"/>
+    {values.map((value,index)=>{
+      const h=(value/max)*(height-pad*2);
+      const x=pad+index*band+band*.18;
+      return <g key={index} className={`itv2-chart-series s${index}`}><rect x={x} y={height-pad-h} width={band*.64} height={h}/><text x={x+band*.32} y={height-pad+20} textAnchor="middle">{labels[index]}</text><title>{labels[index]}: {formatValue(value)}</title></g>;
+    })}
+  </svg>;
+}
+
 export default function SpreadsheetLab({ lab, completed, onBack, onComplete }) {
   const [tab, setTab] = useState("Home");
   const [sheet, setSheet] = useState("Sales");
@@ -129,7 +192,7 @@ export default function SpreadsheetLab({ lab, completed, onBack, onComplete }) {
   }
 
   const chartValues = [2, 3, 4, 5].map(row => Number(values[`D${row}`].value) || 0);
-  const maxChart = Math.max(1, ...chartValues);
+  const chartLabels = [2, 3, 4, 5].map(row => String(workbook.Sales[`A${row}`] || `Item ${row - 1}`));
 
   return (
     <LabFrame lab={lab} tasks={tasks} completed={completed} onBack={onBack} onComplete={onComplete}
@@ -182,7 +245,7 @@ export default function SpreadsheetLab({ lab, completed, onBack, onComplete }) {
           </div>}
 
           {pivot && <aside className="itv2-pivot-panel" aria-label="Pivot-style parish summary"><strong>Parish summary</strong>{Object.entries(parishSummary).map(([name, total]) => <div key={name}><span>{name}</span><b>{displayValue(total, true)}</b></div>)}</aside>}
-          {chart && <aside className="itv2-chart-panel" aria-label={`${chart} chart`}><strong>{chart} chart</strong><div className="itv2-mini-chart">{chartValues.map((value, index) => <i key={index} style={{ height: `${Math.max(4, value / maxChart * 100)}%` }} title={`${workbook.Sales[`A${index + 2}`]}: ${displayValue(value, true)}`}/>)}</div></aside>}
+          {chart && <aside className="itv2-chart-panel" aria-label={`${chart} chart`}><strong>{chart} chart</strong><SpreadsheetChart type={chart} labels={chartLabels} values={chartValues} formatValue={value => displayValue(value,true)}/></aside>}
         </WorkspaceViewport>
 
         <div className="itv2-sheet-tabs" role="tablist" aria-label="Worksheets">
