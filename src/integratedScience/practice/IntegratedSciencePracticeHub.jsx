@@ -15,6 +15,7 @@ import {
 } from "./IntegratedScienceQuestionRenderer";
 import IntegratedSciencePaper1Exam from "./IntegratedSciencePaper1Exam";
 import IntegratedSciencePaper2Exam from "./IntegratedSciencePaper2Exam";
+import { gradeIntegratedSciencePaper2 } from "./integratedSciencePaper2Grader";
 import "./integratedSciencePractice.css";
 import "./integratedScienceExam.css";
 
@@ -35,6 +36,8 @@ function TopicBank({ supabase, userId, onBack }) {
   const [paper2Kind,setPaper2Kind] = useState("all");
   const [questionIndex,setQuestionIndex] = useState(0);
   const [answers,setAnswers] = useState({});
+  const [paper2Responses,setPaper2Responses] = useState({});
+  const [paper2Checked,setPaper2Checked] = useState({});
 
   useEffect(() => {
     let cancelled = false;
@@ -119,6 +122,50 @@ function TopicBank({ supabase, userId, onBack }) {
     }
   },[supabase,userId]);
 
+  const rows = paper === "paper1" ? paper1 : paper2;
+  const current = rows[questionIndex] || null;
+
+  const currentPaper2Result = useMemo(
+    () => current && paper === "paper2" ? gradeIntegratedSciencePaper2([current],paper2Responses) : null,
+    [current,paper,paper2Responses]
+  );
+
+  const savePaper2Attempt = useCallback(async (question,result) => {
+    if (!question || !result || !supabase || !userId) return;
+    try {
+      await recordSubjectActivity({
+        supabase,
+        activity:{
+          subjectId:"integrated-science",
+          activityKey:`practice:${question.id}:paper2`,
+          activityType:"practice",
+          sectionId:`module-${question.module}`,
+          topicId:question.objectives?.[0] || question.objective?.code || null,
+          title:`${question.id} Paper 02 practice`,
+          completed:true,
+          score:result.score,
+          maxScore:result.maxScore,
+          percent:result.percent,
+          metadata:{
+            source:"integrated_science_topic_paper2_auto_marking_v1",
+            paper:"02",
+            module:question.module,
+            topic:question.topics?.[0]?.topic ?? question.topic ?? null,
+            objective:question.objectives?.[0] || question.objective?.code || null,
+            objectives:question.objectives || [],
+            question_id:question.id,
+            provisional_grading:Boolean(result.provisional),
+            low_confidence_items:result.lowConfidence,
+            at:new Date().toISOString(),
+          },
+        },
+      });
+    } catch (saveError) {
+      console.warn("Could not save Integrated Science Paper 02 topic-practice attempt",saveError);
+    }
+  },[supabase,userId]);
+
+
   if (error) {
     return (
       <main className="is-practice-shell">
@@ -129,9 +176,6 @@ function TopicBank({ supabase, userId, onBack }) {
       </main>
     );
   }
-
-  const rows = paper === "paper1" ? paper1 : paper2;
-  const current = rows[questionIndex] || null;
 
   return (
     <main className="is-practice-shell">
@@ -229,7 +273,41 @@ function TopicBank({ supabase, userId, onBack }) {
               }}
             />
           ) : (
-            <IntegratedSciencePaper2Question question={current} />
+            <div>
+              <IntegratedSciencePaper2Question
+                question={current}
+                responses={paper2Responses}
+                onResponseChange={(key,value) => {
+                  if (paper2Checked[current.id]) return;
+                  setPaper2Responses(existing => ({...existing,[key]:value}));
+                }}
+                evaluation={currentPaper2Result?.questions?.[0] || null}
+                checked={Boolean(paper2Checked[current.id])}
+              />
+              <div className="is-p2-topic-check-actions">
+                {!paper2Checked[current.id] ? (
+                  <button
+                    type="button"
+                    className="is-exam-primary"
+                    onClick={() => {
+                      const result=gradeIntegratedSciencePaper2([current],paper2Responses);
+                      setPaper2Checked(existing => ({...existing,[current.id]:true}));
+                      savePaper2Attempt(current,result);
+                    }}
+                  >
+                    Check answer
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    className="is-exam-primary"
+                    onClick={() => setPaper2Checked(existing => ({...existing,[current.id]:false}))}
+                  >
+                    Edit response
+                  </button>
+                )}
+              </div>
+            </div>
           ) : (
             <div className="is-empty-bank">No questions match these filters.</div>
           )}

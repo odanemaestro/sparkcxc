@@ -350,9 +350,9 @@ describe("Social Studies SBA practice marking", () => {
         "Has social media reduced your study time?","What is your average homework completion rate?","What change would help you study more effectively?"
       ].join("\n"),
       presentations:[
-        {type:"table",title:"Daily social media use",labeled:true,accurate:true},
-        {type:"bar graph",title:"Hours spent studying",labeled:true,accurate:true},
-        {type:"pie chart",title:"Main social media platform",labeled:true,accurate:true},
+        {type:"table",title:"Daily social media use",labeled:true,accurate:true,rows:[{label:"Under 2 hours",value:11},{label:"Over 3 hours",value:19}]},
+        {type:"bar graph",title:"Hours spent studying",labeled:true,accurate:true,xLabel:"Study-time group",yLabel:"Students",rows:[{label:"1 hour or less",value:18},{label:"More than 1 hour",value:12}]},
+        {type:"pie chart",title:"Main social media platform",labeled:true,accurate:true,rows:[{label:"Platform A",value:16},{label:"Other platforms",value:14}]},
       ],
       analysis:"The data show that 63% of respondents used social media for more than three hours each day. Students in this group reported lower study time compared with students who used social media for less than two hours. For example, 18 students in the high-use group studied for one hour or less. This suggests a relationship between heavier social media use and reduced study time. In contrast, the smaller low-use group reported longer study periods. These results support the research question because the pattern indicates that frequent use may interrupt homework and revision.",
       sources:["School Guidance Department report","Caribbean youth media-use article"],
@@ -391,9 +391,9 @@ describe("Social Studies SBA practice marking", () => {
       samplingDescription:"Twenty households were selected randomly from the community list.",
       instrument:"Question 1?\nQuestion 2?\nQuestion 3?\nQuestion 4?\nQuestion 5?\nQuestion 6?\nQuestion 7?\nQuestion 8?",
       presentations:[
-        {type:"table",title:"Table",labeled:true,accurate:true},
-        {type:"bar graph",title:"Graph",labeled:true,accurate:true},
-        {type:"pie chart",title:"Chart",labeled:true,accurate:true},
+        {type:"table",title:"Table",labeled:true,accurate:true,rows:[{label:"Lower income",value:10},{label:"No change",value:5}]},
+        {type:"bar graph",title:"Graph",labeled:true,accurate:true,xLabel:"Household response",yLabel:"Households",rows:[{label:"Cut expenses",value:10},{label:"Borrowed",value:5}]},
+        {type:"pie chart",title:"Chart",labeled:true,accurate:true,rows:[{label:"Affected",value:15},{label:"Other",value:5}]},
       ],
       analysis:"50% of households reported lower income. This was higher than the 25% reporting no change. Therefore the data suggest unemployment affects spending. 10 households reported cutting expenses and 5 reported borrowing. This comparison supports the research question by showing a relationship between unemployment and household financial pressure.",
       sources:["Source one","Source two"],
