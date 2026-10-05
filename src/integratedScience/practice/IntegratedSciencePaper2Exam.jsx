@@ -54,13 +54,15 @@ function GraphPlotter({base,config,item,responses,onChange,disabled}){
   const yMin=graphNumber(responses[`${base}:yMin`],0);
   const yMax=graphNumber(responses[`${base}:yMax`],10);
   const validScale=xMax>xMin && yMax>yMin;
+  const xRange=validScale ? xMax-xMin : 1;
+  const yRange=validScale ? yMax-yMin : 1;
   const connection=responses[`${base}:connection`] || "straight";
   const multiSeries=/\bBOTH\b|\bkey\b/i.test(String(item?.prompt || ""));
   const activeSeries=responses[`${base}:activeSeries`] || "A";
   const width=600,height=320,left=64,right=24,top=26,bottom=54;
   const plotWidth=width-left-right,plotHeight=height-top-bottom;
-  const sx=x=>left+(x-xMin)/Math.max(1e-9,xMax-xMin)*plotWidth;
-  const sy=y=>top+(yMax-y)/Math.max(1e-9,yMax-yMin)*plotHeight;
+  const sx=x=>left+(x-xMin)/xRange*plotWidth;
+  const sy=y=>top+(yMax-y)/yRange*plotHeight;
   const format=value=>Math.abs(value)>=100 ? Number(value.toFixed(0)) : Number(value.toFixed(2));
   const serialize=next=>next.map(point=>`${point.series || "A"}: ${format(point.x)}, ${format(point.y)}`).join("\n");
   const pointFromEvent=event=>{
@@ -109,7 +111,7 @@ function GraphPlotter({base,config,item,responses,onChange,disabled}){
     return d;
   };
   const seriesLine=group=>{
-    if(group.points.length<2 || connection==="points" || connection==="bars") return null;
+    if(!validScale || group.points.length<2 || connection==="points" || connection==="bars") return null;
     const className=group.series==="B"?"is-p2-graph-line series-b":"is-p2-graph-line";
     if(connection==="best-fit"){
       const segment=bestFitSegment(group.points);
@@ -139,8 +141,8 @@ function GraphPlotter({base,config,item,responses,onChange,disabled}){
       <rect x={left} y={top} width={plotWidth} height={plotHeight} fill="none" stroke="currentColor"/>
       {tickValues(xMin,xMax).map((value,i)=>{const x=left+i*plotWidth/10;return <React.Fragment key={`x${i}`}><line x1={x} x2={x} y1={top} y2={height-bottom} stroke="currentColor" opacity=".14"/><text x={x} y={height-bottom+20} textAnchor="middle" className="is-p2-graph-tick">{format(value)}</text></React.Fragment>;})}
       {tickValues(yMin,yMax).map((value,i)=>{const y=height-bottom-i*plotHeight/10;return <React.Fragment key={`y${i}`}><line x1={left} x2={width-right} y1={y} y2={y} stroke="currentColor" opacity=".14"/><text x={left-9} y={y+4} textAnchor="end" className="is-p2-graph-tick">{format(value)}</text></React.Fragment>;})}
-      {connection==="bars" ? points.map((point,index)=>{const zeroY=sy(Math.max(yMin,Math.min(yMax,0)));const py=sy(point.y);return <rect key={index} x={sx(point.x)-barWidth/2} y={Math.min(py,zeroY)} width={barWidth} height={Math.max(2,Math.abs(zeroY-py))} className={point.series==="B"?"is-p2-graph-bar series-b":"is-p2-graph-bar"}/>;}) : groups.map(seriesLine)}
-      {connection!=="bars" && points.map((point,index)=><circle key={index} cx={sx(point.x)} cy={sy(point.y)} r="4.5" className={point.series==="B"?"is-p2-graph-point series-b":"is-p2-graph-point"}/>)}
+      {validScale && (connection==="bars" ? points.map((point,index)=>{const zeroY=sy(Math.max(yMin,Math.min(yMax,0)));const py=sy(point.y);return <rect key={index} x={sx(point.x)-barWidth/2} y={Math.min(py,zeroY)} width={barWidth} height={Math.max(2,Math.abs(zeroY-py))} className={point.series==="B"?"is-p2-graph-bar series-b":"is-p2-graph-bar"}/>;}) : groups.map(seriesLine))}
+      {validScale && connection!=="bars" && points.map((point,index)=><circle key={index} cx={sx(point.x)} cy={sy(point.y)} r="4.5" className={point.series==="B"?"is-p2-graph-point series-b":"is-p2-graph-point"}/>)}
       <text x={left+plotWidth/2} y={height-8} textAnchor="middle" className="is-p2-graph-axis-label">{responses[`${base}:xLabel`] || config.x || "x-axis"}</text>
       <text x="16" y={top+plotHeight/2} textAnchor="middle" transform={`rotate(-90 16 ${top+plotHeight/2})`} className="is-p2-graph-axis-label">{responses[`${base}:yLabel`] || config.y || "y-axis"}</text>
     </svg>
