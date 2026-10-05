@@ -15,6 +15,7 @@ import {
 } from "./IntegratedScienceQuestionRenderer";
 import IntegratedSciencePaper1Exam from "./IntegratedSciencePaper1Exam";
 import IntegratedSciencePaper2Exam from "./IntegratedSciencePaper2Exam";
+import IntegratedSciencePracticalLab from "./IntegratedSciencePracticalLab";
 import "./integratedSciencePractice.css";
 import "./integratedScienceExam.css";
 
@@ -255,6 +256,37 @@ export default function IntegratedSciencePracticeHub({ supabase, userId, onBack 
     return <IntegratedSciencePaper2Exam supabase={supabase} userId={userId} onBack={() => setMode("home")} />;
   }
 
+  if (mode === "labs") {
+    return <IntegratedSciencePracticalLab
+      onBack={() => setMode("home")}
+      onComplete={async result => {
+        try {
+          await recordSubjectActivity({
+            supabase,
+            activity:{
+              subjectId:"integrated-science",
+              activityKey:"lab:integrated-science-practical-skills-v1",
+              activityType:"lab",
+              title:"Integrated Science Practical Skills Lab",
+              completed:true,
+              score:result?.score ?? 4,
+              maxScore:result?.total ?? 4,
+              percent:result?.percent ?? 100,
+              metadata:{
+                source:"integrated_science_practical_skills_v1",
+                skills:["graphing","variables","measurement","evaluation"],
+                at:new Date().toISOString(),
+              },
+            },
+          });
+        } catch (saveError) {
+          console.warn("Could not save Integrated Science practical lab completion",saveError);
+        }
+        setMode("home");
+      }}
+    />;
+  }
+
   if (mode === "topic") {
     return <TopicBank supabase={supabase} userId={userId} onBack={() => setMode("home")} />;
   }
@@ -273,7 +305,7 @@ export default function IntegratedSciencePracticeHub({ supabase, userId, onBack 
           <div>
             <span>CSEC INTEGRATED SCIENCE PRACTICE</span>
             <h1>Choose a practice mode</h1>
-            <p>Sit full Paper 01 and Paper 02 simulations under the official examination timing, or practise individual syllabus objectives from the complete bank.</p>
+            <p>Sit full Paper 01 and Paper 02 simulations, practise individual syllabus objectives, or build the graphing and investigation skills used in practical questions.</p>
           </div>
         </header>
 
@@ -311,6 +343,24 @@ export default function IntegratedSciencePracticeHub({ supabase, userId, onBack 
                 <span>105 marks</span>
                 <span className="is-inline-separator" aria-hidden="true">&middot;</span>
                 <span>practical/investigative questions included</span>
+              </small>
+            </span>
+            <span className="is-practice-section-arrow" aria-hidden="true">{"\u2192"}</span>
+          </button>
+
+          <button type="button" className="is-practice-section-card" onClick={() => setMode("labs")}>
+            <span className="is-practice-section-code">LAB</span>
+            <span className="is-practice-section-copy">
+              <span>PRACTICAL SKILLS</span>
+              <strong>Integrated Science Practical Lab</strong>
+              <small>
+                <span>plot experimental graphs</span>
+                <span className="is-inline-separator" aria-hidden="true">&middot;</span>
+                <span>identify variables and fair-test controls</span>
+                <span className="is-inline-separator" aria-hidden="true">&middot;</span>
+                <span>process repeated measurements</span>
+                <span className="is-inline-separator" aria-hidden="true">&middot;</span>
+                <span>evaluate limitations and improvements</span>
               </small>
             </span>
             <span className="is-practice-section-arrow" aria-hidden="true">{"\u2192"}</span>
