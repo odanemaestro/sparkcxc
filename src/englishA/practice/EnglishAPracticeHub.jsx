@@ -1,16 +1,28 @@
 import React, { useEffect, useState } from "react";
+import { readSparkHashRoute, subscribeSparkRoute } from "../../routing/sparkRoutingV270";
 import EnglishAPaper1Exam from "./EnglishAPaper1Exam";
 import EnglishAPaper2Exam from "./EnglishAPaper2Exam";
 import { englishAPastPaperArchiveSummary } from "../data/englishAPastPaperArchive";
 import { englishAPaper2ArchiveSummary } from "../data/englishAPaper2Archive";
 import "./englishAExam.css";
 
+function englishAPracticeModeFromRoute() {
+  const requested=String(readSparkHashRoute().params.get("mode") || "").trim().toLowerCase();
+  return requested==="paper1" || requested==="paper2" ? requested : "home";
+}
+
 export default function EnglishAPracticeHub({ supabase, userId, onBack }) {
-  const [mode,setMode] = useState("home");
+  const [mode,setMode] = useState(() => englishAPracticeModeFromRoute());
 
   useEffect(() => {
     window.scrollTo?.({top:0,left:0,behavior:"auto"});
   }, [mode]);
+
+  useEffect(() => subscribeSparkRoute(route => {
+    if (route.path !== "/practice/english-a") return;
+    const requested=String(route.params.get("mode") || "").trim().toLowerCase();
+    setMode(requested==="paper1" || requested==="paper2" ? requested : "home");
+  }), []);
 
   if (mode === "paper1") {
     return (
