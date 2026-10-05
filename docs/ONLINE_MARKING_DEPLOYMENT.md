@@ -44,7 +44,10 @@ Expected initial values include:
 - `enabled = false`
 - `revision = online-v1`
 - `max_concurrency = 4`
-- `daily_user_limit = 30`
+- `daily_user_limit = 3`
+- `daily_global_limit = 20`
+- `daily_token_budget = 1000000`
+- `per_job_token_reservation = 50000`
 
 Do not enable it yet.
 
@@ -123,6 +126,31 @@ REACT_APP_SERVER_MARKING=true
 The Pages workflow reads this variable at build time. Re-run the deployment after changing it.
 
 Keep it `false` for production until staging is validated.
+
+## Cost guards
+
+The deeper marker is intentionally optional. When any cost guard is reached, `spark_enqueue_marking` returns no job and the frontend silently keeps the normal SPARK grade.
+
+Default guards:
+
+- Maximum 3 deeper checks per student in a rolling 24-hour period.
+- Maximum 20 deeper checks platform-wide per UTC day.
+- Maximum 1,000,000 reserved model tokens per UTC day.
+- Each accepted job reserves 50,000 tokens before any model call.
+- Repeated requests for the same attempt and rubric revision reuse the existing job and do not consume another allowance.
+
+The worker records the actual input, output and total token usage returned by the provider for completed checks. The reservation is deliberately conservative so queued work cannot bypass the daily budget.
+
+These values can be changed without a frontend deployment:
+
+```sql
+update public.spark_marking_config
+set daily_user_limit=3,
+    daily_global_limit=20,
+    daily_token_budget=1000000,
+    per_job_token_reservation=50000
+where singleton=true;
+```
 
 ## 9. Staging acceptance checks
 
