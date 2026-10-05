@@ -323,10 +323,29 @@ function revisedSummaryTask(task) {
   });
 }
 
+function revisedPaper2Task(task) {
+  const summaryTask = revisedSummaryTask(task);
+  if (summaryTask?.kind === "persuasive") {
+    return Object.freeze({
+      ...summaryTask,
+      instructions:String(summaryTask.instructions || "").replace("approximately 300-350 words","approximately 250-300 words"),
+      wordRange:[250,300],
+    });
+  }
+  if (summaryTask?.kind === "exposition") {
+    return Object.freeze({
+      ...summaryTask,
+      instructions:String(summaryTask.instructions || "").replace(" of approximately 250-300 words",""),
+      wordRange:null,
+    });
+  }
+  return summaryTask;
+}
+
 function revisedPaper2Set(set) {
   return Object.freeze({
     ...set,
-    tasks:Object.freeze(set.tasks.map(revisedSummaryTask)),
+    tasks:Object.freeze(set.tasks.map(revisedPaper2Task)),
   });
 }
 
