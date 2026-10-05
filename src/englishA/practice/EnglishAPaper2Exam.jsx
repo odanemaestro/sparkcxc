@@ -209,7 +209,24 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
               <li>Your responses are saved while you work. After submission, SPARK produces a detailed CXC-style practice estimate and explains the evidence behind each scoring dimension.</li>
             </ol>
           </div>
-          <div className="is-exam-instructions-actions"><button type="button" className="is-exam-primary" onClick={begin}>Start examination</button></div>
+          <section className="ea-p2-instruction-choice">
+            <strong>Choose your Module 2 short-story question</strong>
+            <p>You will answer ONE of the two creative-writing prompts. You may read both before choosing.</p>
+            <div>
+              {paper.tasks.filter(item => item.choiceGroup === "M2-creative").map(item => (
+                <button
+                  type="button"
+                  key={item.id}
+                  className={choiceId === item.id ? "selected" : ""}
+                  onClick={() => setChoiceId(item.id)}
+                >
+                  <span>{item.title}</span>
+                  <small>{item.instructions}</small>
+                </button>
+              ))}
+            </div>
+          </section>
+          <div className="is-exam-instructions-actions"><button type="button" className="is-exam-primary" disabled={!choiceId} onClick={begin}>Start examination</button></div>
         </section>
       </div></main>
     );
@@ -290,18 +307,6 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
         <div><button type="button" className="is-exam-primary is-exam-back" onClick={onBack}>Exit</button><span className="is-exam-eyebrow">CSEC ENGLISH A · PAPER 02</span><h1>{paper.title}</h1><p>{answeredCount}/6 required responses started</p></div>
         <div className="is-exam-timer"><span>Time remaining</span><strong>{formatTime(remaining)}</strong></div>
       </header>
-
-      {!choiceId && (
-        <section className="ea-p2-choice-banner">
-          <strong>Module 2 creative writing choice</strong>
-          <span>Choose ONE short-story prompt before you reach the creative-writing response.</span>
-          <div>
-            {paper.tasks.filter(item => item.choiceGroup==="M2-creative").map(item => (
-              <button type="button" key={item.id} onClick={() => setChoiceId(item.id)}>{item.title}</button>
-            ))}
-          </div>
-        </section>
-      )}
 
       {task && (
         <article className="ea-p2-task-card">
