@@ -1,4 +1,78 @@
-.spark-marking-review{margin:1rem 0;padding:1rem;border:1px solid color-mix(in srgb,currentColor 25%,transparent);border-radius:12px;color:inherit;background:transparent;overflow-wrap:anywhere}
-.spark-marking-review h2{font-size:1.1rem;margin:0 0 .5rem}.spark-marking-review p{line-height:1.6}
-.spark-marking-review button{font:inherit;padding:.65rem 1rem;border-radius:8px;cursor:pointer;color:inherit;background:transparent;border:1px solid currentColor}
-.spark-marking-review button:disabled{opacity:.6;cursor:default}.spark-marking-review details{padding:.6rem 0}.spark-marking-review summary{cursor:pointer}
+.spark-marking-review{
+  margin:1.25rem 0;
+  padding:1.25rem;
+  border:1px solid color-mix(in srgb,currentColor 18%,transparent);
+  border-radius:18px;
+  color:inherit;
+  background:color-mix(in srgb,currentColor 2.5%,transparent);
+  box-shadow:0 14px 36px color-mix(in srgb,currentColor 7%,transparent);
+  overflow-wrap:anywhere;
+}
+.spark-marking-review-head{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:.35rem}
+.spark-marking-eyebrow{display:inline-block;margin-bottom:.3rem;font-size:.72rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;opacity:.58}
+.spark-marking-review h2{font-size:1.18rem;line-height:1.25;margin:0}
+.spark-marking-intro{max-width:72rem;margin:.45rem 0 1.1rem;line-height:1.65;opacity:.86}
+.spark-marking-review p{line-height:1.65}
+.spark-marking-review button{font:inherit;font-weight:700;padding:.72rem 1rem;border-radius:10px;cursor:pointer;color:inherit;background:color-mix(in srgb,currentColor 5%,transparent);border:1px solid color-mix(in srgb,currentColor 28%,transparent)}
+.spark-marking-review button:hover{background:color-mix(in srgb,currentColor 9%,transparent)}
+.spark-marking-review button:disabled{opacity:.6;cursor:default}
+.spark-marking-score{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:.15rem .8rem;
+  align-items:center;
+  margin:1rem 0 1.15rem;
+  padding:.9rem 1rem;
+  border:1px solid color-mix(in srgb,currentColor 14%,transparent);
+  border-radius:14px;
+  background:color-mix(in srgb,currentColor 4%,transparent);
+}
+.spark-marking-score span{grid-column:1/-1;font-size:.75rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;opacity:.58}
+.spark-marking-score strong{font-size:1.22rem;line-height:1.2}
+.spark-marking-score small{align-self:end;opacity:.7}
+.spark-marking-criterion{
+  margin:.65rem 0;
+  padding:.1rem .9rem;
+  border:1px solid color-mix(in srgb,currentColor 13%,transparent);
+  border-radius:14px;
+  background:color-mix(in srgb,currentColor 2%,transparent);
+}
+.spark-marking-criterion[open]{padding-bottom:.85rem;background:color-mix(in srgb,currentColor 3.5%,transparent)}
+.spark-marking-criterion summary{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  padding:.85rem 0;
+  cursor:pointer;
+  font-weight:700;
+}
+.spark-marking-criterion summary::marker{font-size:.82em}
+.spark-marking-criterion-id{min-width:0;overflow-wrap:anywhere}
+.spark-marking-criterion summary strong{white-space:nowrap;font-size:.98rem}
+.spark-marking-criterion>p{margin:.25rem 0 .85rem}
+.spark-marking-pass{
+  margin:.75rem 0;
+  padding:.85rem 1rem;
+  border-left:3px solid color-mix(in srgb,currentColor 38%,transparent);
+  border-radius:0 10px 10px 0;
+  background:color-mix(in srgb,currentColor 3%,transparent);
+}
+.spark-marking-pass strong{display:block;margin-bottom:.2rem}
+.spark-marking-pass p{margin:.2rem 0 0}
+.spark-marking-review blockquote{
+  margin:.7rem 0 .7rem .2rem;
+  padding:.65rem .9rem;
+  border-left:3px solid color-mix(in srgb,currentColor 26%,transparent);
+  background:color-mix(in srgb,currentColor 2.5%,transparent);
+  border-radius:0 8px 8px 0;
+  font-style:normal;
+  opacity:.9;
+}
+@media (max-width:700px){
+  .spark-marking-review{padding:1rem;border-radius:15px}
+  .spark-marking-score{grid-template-columns:1fr}
+  .spark-marking-score span{grid-column:auto}
+  .spark-marking-score small{align-self:auto}
+  .spark-marking-criterion summary{align-items:flex-start}
+}
