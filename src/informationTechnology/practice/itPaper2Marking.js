@@ -112,6 +112,36 @@ function inferPseudocode(prompt) {
   return match ? { variables: [match[1], match[2], match[3]].map(x => x.trim()), threshold: Number(match[4]) } : { variables: [], threshold: null };
 }
 
+function pseudocodeSumIsEquivalent(text, vars = []) {
+  const assignment = String(text || "").match(/\bscore\s*(?:<-|:=|=)\s*([^\n;]+)/i);
+  if (!assignment || !vars.length) return false;
+  const expression = normaliseITAnswer(assignment[1]).replace(/\s+/g,"");
+  if (/[-*/]/.test(expression)) return false;
+  const terms = expression.split("+").map(term=>term.replace(/[^a-z0-9_]/g,"")).filter(Boolean);
+  const expected = vars.map(v=>normaliseITAnswer(v).replace(/[^a-z0-9_]/g,"")).sort();
+  return terms.length===expected.length && terms.sort().every((term,index)=>term===expected[index]);
+}
+
+function pseudocodeBranchEvidence(text) {
+  const compact=String(text || "").replace(/\r/g,"");
+  const conditionIndex=compact.search(/\b(?:if|when)\b/i);
+  if(conditionIndex<0) return {hasElse:false,trueAccept:false,falseReview:false};
+  const branchText=compact.slice(conditionIndex);
+  const elseMatch=/\b(?:else|otherwise)\b/i.exec(branchText);
+  if(!elseMatch) return {
+    hasElse:false,
+    trueAccept:/\b(display|print|output|write|show)\b[\s\S]*?\baccept\b/i.test(branchText),
+    falseReview:false,
+  };
+  const trueBranch=branchText.slice(0,elseMatch.index);
+  const falseBranch=branchText.slice(elseMatch.index+elseMatch[0].length);
+  return {
+    hasElse:true,
+    trueAccept:/\b(display|print|output|write|show)\b[\s\S]*?\baccept\b/i.test(trueBranch),
+    falseReview:/\b(display|print|output|write|show)\b[\s\S]*?\breview\b/i.test(falseBranch),
+  };
+}
+
 function gradePseudocode(part, response) {
   const text = informationTechnologyResponseText(response);
   const normal = normaliseITAnswer(text);
@@ -120,27 +150,25 @@ function gradePseudocode(part, response) {
   const threshold = Number(spec.threshold);
   const hasInputVerb = /\b(read|input|accept|get|enter)\b/i.test(text);
   const varsFound = vars.filter(v => normal.includes(normaliseITAnswer(v))).length;
-  const scoreLine = normal.split(/\n|;/).find(line => /\bscore\b/.test(line) && vars.every(v => line.includes(normaliseITAnswer(v))));
+  const validScoreCalculation = pseudocodeSumIsEquivalent(text,vars);
   const hasCondition = Number.isFinite(threshold)
     && /\b(if|when)\b/i.test(text)
-    && new RegExp(`(?:score\\s*(?:>=|=>|≥)\\s*${threshold}|${threshold}\\s*(?:<=|=<|≤)\\s*score)`, "i").test(text.replace(/\s+/g, " "));
-  const hasAccept = /\b(display|print|output|write|show)\b[\s\S]{0,30}\baccept\b/i.test(text);
-  const hasElse = /\belse\b|\botherwise\b/i.test(text);
-  const hasReview = /\b(display|print|output|write|show)\b[\s\S]{0,30}\breview\b/i.test(text);
+    && new RegExp(`(?:score\\s*(?:>=|=>|≥)\\s*${threshold}(?!\\d)|(?<!\\d)${threshold}\\s*(?:<=|=<|≤)\\s*score)`, "i").test(text.replace(/\s+/g, " "));
+  const branches=pseudocodeBranchEvidence(text);
 
   return [
     criterion("P1", 2, "Reads all three input values", hasInputVerb && varsFound === 3 ? 2 : varsFound >= 2 ? 1 : 0,
       hasInputVerb && varsFound === 3 ? "All required inputs are read." : "All three named inputs must be read."),
-    criterion("P2", 2, "Calculates SCORE using all three values", scoreLine ? 2 : 0,
-      scoreLine ? "SCORE calculation uses all three inputs." : "The SCORE calculation must use all three named inputs."),
+    criterion("P2", 2, "Calculates SCORE using all three values", validScoreCalculation ? 2 : 0,
+      validScoreCalculation ? "SCORE is calculated by adding the three required inputs." : "SCORE must be calculated as the sum of the three named inputs."),
     criterion("P3", 1, "Uses the correct threshold condition", hasCondition ? 1 : 0,
       hasCondition ? "Correct threshold condition found." : `The condition should compare SCORE with ${threshold}.`),
-    criterion("P4", 1, "Displays ACCEPT on the true branch", hasAccept ? 1 : 0,
-      hasAccept ? "ACCEPT output found." : "The true branch must display ACCEPT."),
-    criterion("P5", 1, "Includes ELSE or OTHERWISE", hasElse ? 1 : 0,
-      hasElse ? "Alternative branch found." : "An ELSE/OTHERWISE branch is required."),
-    criterion("P6", 1, "Displays REVIEW on the false branch", hasReview ? 1 : 0,
-      hasReview ? "REVIEW output found." : "The false branch must display REVIEW."),
+    criterion("P4", 1, "Displays ACCEPT on the true branch", branches.trueAccept ? 1 : 0,
+      branches.trueAccept ? "ACCEPT is on the true branch." : "The true branch must display ACCEPT."),
+    criterion("P5", 1, "Includes ELSE or OTHERWISE", branches.hasElse ? 1 : 0,
+      branches.hasElse ? "Alternative branch found." : "An ELSE/OTHERWISE branch is required."),
+    criterion("P6", 1, "Displays REVIEW on the false branch", branches.falseReview ? 1 : 0,
+      branches.falseReview ? "REVIEW is on the false branch." : "The false branch must display REVIEW."),
   ];
 }
 
