@@ -7,7 +7,105 @@ import {
 } from "../data/socialStudiesSbaRubric";
 import { gradeSocialStudiesSba } from "../marking/socialStudiesSbaGrader";
 
-const emptyPresentation=()=>({type:"",title:"",labeled:false,accurate:false});
+const emptyPresentation=()=>({
+  type:"",
+  title:"",
+  labeled:false,
+  accurate:false,
+  xLabel:"",
+  yLabel:"",
+  rows:[
+    {label:"Category A",value:""},
+    {label:"Category B",value:""},
+    {label:"Category C",value:""},
+  ],
+});
+
+
+function SbaPresentationBuilder({item,index,onChange}){
+  const graphTypes=new Set(["bar graph","pie chart","line graph","table"]);
+  if(!graphTypes.has(item.type)) return null;
+
+  const rows=Array.isArray(item.rows) ? item.rows : [];
+  const numericRows=rows.map(row=>({...row,n:Number(row.value)})).filter(row=>row.label && Number.isFinite(row.n) && row.n>=0);
+  const max=Math.max(1,...numericRows.map(row=>row.n));
+  const total=numericRows.reduce((sum,row)=>sum+row.n,0);
+  const updateRow=(rowIndex,patch)=>{
+    const next=rows.map((row,i)=>i===rowIndex ? {...row,...patch} : row);
+    onChange({rows:next});
+  };
+  const addRow=()=>onChange({rows:[...rows,{label:`Category ${String.fromCharCode(65+rows.length)}`,value:""}]});
+  const removeRow=rowIndex=>onChange({rows:rows.filter((_,i)=>i!==rowIndex)});
+  const width=560,height=260,pad=42;
+
+  return <div className="ss-sba-data-builder">
+    <div className="ss-sba-axis-labels">
+      <input value={item.xLabel || ""} onChange={e=>onChange({xLabel:e.target.value})} placeholder={item.type==="pie chart" ? "Category label" : "Horizontal axis label"}/>
+      <input value={item.yLabel || ""} onChange={e=>onChange({yLabel:e.target.value})} placeholder={item.type==="pie chart" ? "Value / frequency" : "Vertical axis label / unit"}/>
+    </div>
+    <div className="ss-sba-data-rows">
+      {rows.map((row,rowIndex)=><div key={rowIndex}>
+        <input value={row.label} onChange={e=>updateRow(rowIndex,{label:e.target.value})} aria-label={`Presentation ${index+1} category ${rowIndex+1}`} placeholder="Category"/>
+        <input type="number" min="0" step="any" value={row.value} onChange={e=>updateRow(rowIndex,{value:e.target.value})} aria-label={`Presentation ${index+1} value ${rowIndex+1}`} placeholder="Value"/>
+        <button type="button" onClick={()=>removeRow(rowIndex)} disabled={rows.length<=2} aria-label={`Remove row ${rowIndex+1}`}>Remove</button>
+      </div>)}
+      <button type="button" className="ss-secondary" onClick={addRow}>Add data row</button>
+    </div>
+
+    {item.type==="table" ? (
+      <div className="ss-sba-chart-preview" aria-label="Data table preview">
+        <table><thead><tr><th>{item.xLabel || "Category"}</th><th>{item.yLabel || "Value"}</th></tr></thead>
+          <tbody>{numericRows.map((row,rowIndex)=><tr key={rowIndex}><td>{row.label}</td><td>{row.n}</td></tr>)}</tbody>
+        </table>
+      </div>
+    ) : item.type==="pie chart" ? (
+      <div className="ss-sba-chart-preview ss-sba-pie-preview" aria-label="Pie chart preview">
+        <svg viewBox={`0 0 ${width} ${height}`} role="img">
+          {total>0 ? numericRows.reduce((acc,row,rowIndex)=>{
+            const start=acc.angle;
+            const angle=(row.n/total)*Math.PI*2;
+            const end=start+angle;
+            const cx=150,cy=130,r=92;
+            const x1=cx+r*Math.cos(start),y1=cy+r*Math.sin(start);
+            const x2=cx+r*Math.cos(end),y2=cy+r*Math.sin(end);
+            const large=angle>Math.PI ? 1 : 0;
+            acc.nodes.push(<path key={rowIndex} d={`M ${cx} ${cy} L ${x1} ${y1} A ${r} ${r} 0 ${large} 1 ${x2} ${y2} Z`} className={`ss-sba-pie-slice slice-${rowIndex%6}`}/>);
+            acc.angle=end;
+            return acc;
+          },{angle:-Math.PI/2,nodes:[]}).nodes : <text x="150" y="130" textAnchor="middle">Enter values to preview</text>}
+          {numericRows.map((row,rowIndex)=><g key={row.label} transform={`translate(300 ${48+rowIndex*30})`}><rect width="14" height="14" className={`ss-sba-pie-slice slice-${rowIndex%6}`}/><text x="22" y="12">{row.label} {total>0 ? `(${Math.round(row.n/total*100)}%)` : ""}</text></g>)}
+        </svg>
+      </div>
+    ) : (
+      <div className="ss-sba-chart-preview" aria-label={`${item.type} preview`}>
+        <svg viewBox={`0 0 ${width} ${height}`} role="img">
+          <line x1={pad} y1={height-pad} x2={width-pad} y2={height-pad} className="ss-sba-chart-axis"/>
+          <line x1={pad} y1={pad} x2={pad} y2={height-pad} className="ss-sba-chart-axis"/>
+          <text x={width/2} y={height-8} textAnchor="middle">{item.xLabel || "Category"}</text>
+          <text x="14" y={height/2} textAnchor="middle" transform={`rotate(-90 14 ${height/2})`}>{item.yLabel || "Value"}</text>
+          {item.type==="bar graph" && numericRows.map((row,rowIndex)=>{
+            const slot=(width-pad*2)/Math.max(1,numericRows.length);
+            const h=(row.n/max)*(height-pad*2);
+            return <g key={row.label}><rect x={pad+rowIndex*slot+slot*.18} y={height-pad-h} width={slot*.64} height={h} className="ss-sba-bar"/><text x={pad+rowIndex*slot+slot*.5} y={height-pad+16} textAnchor="middle">{row.label}</text><text x={pad+rowIndex*slot+slot*.5} y={height-pad-h-6} textAnchor="middle">{row.n}</text></g>;
+          })}
+          {item.type==="line graph" && numericRows.length>0 && <>
+            <polyline className="ss-sba-line" points={numericRows.map((row,rowIndex)=>{
+              const x=pad+(rowIndex/(Math.max(1,numericRows.length-1)))*(width-pad*2);
+              const y=height-pad-(row.n/max)*(height-pad*2);
+              return `${x},${y}`;
+            }).join(" ")}/>
+            {numericRows.map((row,rowIndex)=>{
+              const x=pad+(rowIndex/(Math.max(1,numericRows.length-1)))*(width-pad*2);
+              const y=height-pad-(row.n/max)*(height-pad*2);
+              return <g key={row.label}><circle cx={x} cy={y} r="5" className="ss-sba-line-point"/><text x={x} y={height-pad+16} textAnchor="middle">{row.label}</text><text x={x} y={y-8} textAnchor="middle">{row.n}</text></g>;
+            })}
+          </>}
+        </svg>
+      </div>
+    )}
+    <small>{numericRows.length} usable data row{numericRows.length===1?"":"s"} in this presentation.</small>
+  </div>;
+}
 
 export default function SocialStudiesSbaPractice({ onExit, onComplete }){
   const [project,setProject]=useState({
@@ -156,6 +254,7 @@ export default function SocialStudiesSbaPractice({ onExit, onComplete }){
               <input value={item.title} onChange={e=>setPresentation(index,{title:e.target.value})} placeholder="Title" />
               <label><input type="checkbox" checked={item.labeled} onChange={e=>setPresentation(index,{labeled:e.target.checked})}/> Properly labelled</label>
               <label><input type="checkbox" checked={item.accurate} onChange={e=>setPresentation(index,{accurate:e.target.checked})}/> Checked for accuracy</label>
+              <SbaPresentationBuilder item={item} index={index} onChange={patch=>setPresentation(index,patch)}/>
             </div>)}
           </div>
           {checked && <SbaCriterion result={grade.criteria.find(item=>item.id==="presentation")}/>}
