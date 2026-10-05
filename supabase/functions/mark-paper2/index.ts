@@ -23,11 +23,17 @@ const handler = {
         const pack=buildTrustedAssessment(attempt);
         const [first,second]=await Promise.all([1,2].map(pass=>requestSemanticPass({model,apiKey,items:pack.items,responses:pack.responses,pass})));
         const semantic=reconcileSemanticPasses(first,second,pack.items,pack.responses);
+        const usage={
+          inputTokens:Number(first._usage?.inputTokens || 0)+Number(second._usage?.inputTokens || 0),
+          outputTokens:Number(first._usage?.outputTokens || 0)+Number(second._usage?.outputTokens || 0),
+          totalTokens:Number(first._usage?.totalTokens || 0)+Number(second._usage?.totalTokens || 0),
+          modelCalls:2,
+        };
         const result={revision:SEMANTIC_MARKING_REVISION,model,authority:"automated-practice-estimate",
           maxMarks:pack.maxMarks,score:semantic.uncertain||pack.unassessedMarks?null:pack.deterministicScore+semantic.score,
           minScore:pack.deterministicScore+semantic.minScore,maxScore:Math.min(pack.maxMarks,pack.deterministicScore+semantic.maxScore+pack.unassessedMarks),
           baselineScore:pack.baselineScore,unassessedMarks:pack.unassessedMarks,uncertain:semantic.uncertain||pack.unassessedMarks>0,
-          criteria:semantic.criteria};
+          usage,criteria:semantic.criteria};
         const {data:accepted,error:finishError}=await db.rpc("spark_finish_marking",{p_job_id:job.id,p_claim_token:job.claim_token,p_result:result});
         if(finishError||!accepted)return "lease_lost";
         return "completed";
