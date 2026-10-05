@@ -3,6 +3,7 @@ import path from "path";
 import { getSparkSubjectRegistry } from "./subjects/subjectRegistry";
 import { ENGLISH_A_LESSON_EXAMPLES } from "./englishA/data/englishALessonExamples";
 import { INFORMATION_TECHNOLOGY_PRACTICAL_LABS } from "./informationTechnology/labs/labCatalog";
+import { SOCIAL_STUDIES_COURSE, socialStudiesStats } from "./socialStudies/data/socialStudiesCourse";
 
 const read=p=>fs.readFileSync(path.join(__dirname,p),"utf8");
 
@@ -75,6 +76,71 @@ describe("SPARK all-subject completeness audit V1",()=>{
       "solution-match","organisation-match","rate-calculator","population-pyramid","timeline","map-spotter",
       "family-tree","data-read"
     ].forEach(type=>expect(social).toContain(type));
+  });
+
+  test("Integrated Science graph questions are fully interactive in topic and full-paper modes",()=>{
+    const topic=read("integratedScience/practice/IntegratedScienceQuestionRenderer.jsx");
+    const paper2=read("integratedScience/practice/IntegratedSciencePaper2Exam.jsx");
+    const grader=read("integratedScience/practice/integratedSciencePaper2Grader.js");
+    expect(topic).toContain("PracticeGraphResponse");
+    expect(topic).toContain("Line / curve");
+    expect(topic).toContain("Bar chart");
+    expect(paper2).toContain("onPointerDown={plotPoint}");
+    expect(paper2).toContain("Series being plotted");
+    expect(paper2).toContain("Key / series labels");
+    expect(paper2).toContain("x-axis minimum");
+    expect(paper2).toContain("y-axis maximum");
+    expect(grader).toContain("hasKey");
+    expect(grader).toContain("chartType");
+  });
+
+  test("exam and question-bank depth remains substantial across every course",()=>{
+    const physicsPaper1Dir=path.join(__dirname,"physics","paper1","data");
+    const physicsPaper2Dir=path.join(__dirname,"physics","paper2","data");
+    expect(fs.readdirSync(physicsPaper1Dir).filter(name=>/^spark-phy-p01-practice-\d+\.json$/.test(name))).toHaveLength(15);
+    expect(fs.readdirSync(physicsPaper2Dir).filter(name=>/^spark-phy-p02-practice-\d+\.json$/.test(name))).toHaveLength(4);
+
+    const integratedIndex=JSON.parse(fs.readFileSync(path.join(__dirname,"..","public","integrated-science","bank","index.json"),"utf8"));
+    expect(integratedIndex.totals.paper01Items).toBeGreaterThanOrEqual(1500);
+    expect(integratedIndex.totals.paper02Questions).toBeGreaterThanOrEqual(80);
+
+    const itPaper1=JSON.parse(read("informationTechnology/practice/itPaper1Data.json"));
+    const itPaper2=JSON.parse(read("informationTechnology/practice/itPaper2Data.json"));
+    expect(itPaper1.format.questions).toBe(60);
+    expect(itPaper1.papers.length).toBeGreaterThanOrEqual(1);
+    expect(itPaper2.format.questions).toBe(4);
+    expect(itPaper2.papers.length).toBeGreaterThanOrEqual(1);
+
+    const social=socialStudiesStats();
+    expect(SOCIAL_STUDIES_COURSE.lessons.length).toBeGreaterThanOrEqual(39);
+    expect(social.practiceQuestions).toBeGreaterThanOrEqual(100);
+
+    const englishPaper2=read("englishA/data/englishAPaper2Bank.js");
+    const englishExpansion=read("englishA/data/englishAPaper2Expansion.js");
+    expect(englishPaper2).toContain("englishAPaper2ExpansionSets");
+    expect(englishExpansion.match(/id:"EA-P2-/g)?.length || 0).toBeGreaterThanOrEqual(3);
+
+    const mathBank=read("practice/paper2QuestionBank.js");
+    expect(mathBank).toContain("PAPER2_QUESTION_BANK_V2");
+    expect(mathBank).toContain("PAPER2_QUESTION_BANK_EJ");
+  });
+
+  test("Physics measurement and gradient tools are live, not static illustrations",()=>{
+    const mechanics=read("physics/mechanics/components/MechanicsInteractiveLab.jsx");
+    expect(mechanics).toContain("buildGradientToolModel");
+    expect(mechanics).toContain("setX1");
+    expect(mechanics).toContain("setY2");
+    expect(mechanics).toContain("readVernierCaliper");
+    expect(mechanics).toContain("readMicrometer");
+    expect(mechanics).toContain("thimbleAngle");
+    expect(mechanics).toContain("Vernier zero moves with the observed reading");
+  });
+
+  test("fully completed generic courses reopen from the beginning rather than a stale deep link",()=>{
+    const study=read("subjects/GenericSubjectStudyView.jsx");
+    expect(study).toContain("allTopicsComplete");
+    expect(study).toContain("A completed course should reopen from the beginning");
+    expect(study).toContain("setActiveTopicId(fallbackTopic.id)");
   });
 
   test("subject source has no known mojibake fallback marker",()=>{
