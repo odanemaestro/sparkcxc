@@ -85,8 +85,11 @@ describe("CSEC Integrated Science v1.2 question-bank integration", () => {
     );
     expect(renderer).toContain("dangerouslySetInnerHTML");
     expect(renderer).toContain("BankTable");
-    expect(renderer).toContain("Show mark scheme");
-    expect(renderer).toContain('type === "graph"');
-    expect(renderer).toContain('type === "drawing"');
+    expect(renderer).toContain("Check response");
+    expect(renderer).toContain("gradeIntegratedSciencePaper2Item");
+    expect(renderer).toContain("SPARK marking review");
+    expect(renderer).not.toContain("Show mark scheme");
+    expect(renderer).toMatch(/type\s*={2,3}\s*"graph"/);
+    expect(renderer).toMatch(/type\s*={2,3}\s*"drawing"/);
   });
 });

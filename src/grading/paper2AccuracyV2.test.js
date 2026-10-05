@@ -21,7 +21,11 @@ describe("Paper 2 accuracy V2",()=>{
     expect(exam).toContain("\`\${base}:points\`");
     expect(exam).toContain("\`\${base}:xLabel\`");
     expect(exam).toContain("\`\${base}:yLabel\`");
-    expect(exam).toContain("\`\${base}:scale\`");
+    expect(exam).toContain("\`\${base}:xMin\`");
+    expect(exam).toContain("\`\${base}:xMax\`");
+    expect(exam).toContain("\`\${base}:yMin\`");
+    expect(exam).toContain("\`\${base}:yMax\`");
+    expect(exam).toContain("\`\${base}:connection\`");
     expect(exam).toContain("\`\${base}:strokes\`");
     expect(exam).toContain("onPointerMove");
   });
@@ -89,7 +93,7 @@ describe("Paper 2 accuracy V2",()=>{
   test("responsive Integrated Science response tools remain mobile-safe and accessible",()=>{
     const exam=read("integratedScience","practice","IntegratedSciencePaper2Exam.jsx");
     const css=read("integratedScience","practice","integratedScienceExam.css");
-    expect(exam).toContain('aria-label="Student graph plot"');
+    expect(exam).toContain('aria-label="Interactive student graph plot"');
     expect(exam).toContain('aria-label="Student drawing canvas"');
     expect(css).toContain("@media(max-width:520px)");
     expect(css).toContain(".is-p2-graph-fields{grid-template-columns:1fr}");

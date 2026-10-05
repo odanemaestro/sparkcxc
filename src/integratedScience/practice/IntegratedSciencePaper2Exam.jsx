@@ -36,34 +36,122 @@ function Separator() {
 
 function parseGraphPoints(value){
   return String(value || "").split(/\n|;/).map(line=>{
-    const match=line.match(/(-?\d+(?:\.\d+)?)\s*[, ]\s*(-?\d+(?:\.\d+)?)/);
-    return match ? {x:Number(match[1]),y:Number(match[2])} : null;
+    const match=line.match(/^\s*([AB])?\s*:?\s*(-?\d+(?:\.\d+)?)\s*[, ]\s*(-?\d+(?:\.\d+)?)/i);
+    return match ? {series:(match[1] || "A").toUpperCase(),x:Number(match[2]),y:Number(match[3])} : null;
   }).filter(point=>point && Number.isFinite(point.x) && Number.isFinite(point.y));
 }
 
-function GraphPlotter({base,config,responses,onChange,disabled}){
+function graphNumber(value,fallback){
+  const number=Number(value);
+  return Number.isFinite(number) ? number : fallback;
+}
+
+function GraphPlotter({base,config,item,responses,onChange,disabled}){
   const pointsText=responses[`${base}:points`] || "";
   const points=parseGraphPoints(pointsText);
-  const xs=points.map(p=>p.x),ys=points.map(p=>p.y);
-  const minX=xs.length?Math.min(0,...xs):0,maxX=xs.length?Math.max(1,...xs):1;
-  const minY=ys.length?Math.min(0,...ys):0,maxY=ys.length?Math.max(1,...ys):1;
-  const sx=x=>50+(x-minX)/Math.max(1e-9,maxX-minX)*500;
-  const sy=y=>260-(y-minY)/Math.max(1e-9,maxY-minY)*210;
+  const xMin=graphNumber(responses[`${base}:xMin`],0);
+  const xMax=graphNumber(responses[`${base}:xMax`],10);
+  const yMin=graphNumber(responses[`${base}:yMin`],0);
+  const yMax=graphNumber(responses[`${base}:yMax`],10);
+  const validScale=xMax>xMin && yMax>yMin;
+  const xRange=validScale ? xMax-xMin : 1;
+  const yRange=validScale ? yMax-yMin : 1;
+  const connection=responses[`${base}:connection`] || "straight";
+  const multiSeries=/\bBOTH\b|\bkey\b/i.test(String(item?.prompt || ""));
+  const activeSeries=responses[`${base}:activeSeries`] || "A";
+  const width=600,height=320,left=64,right=24,top=26,bottom=54;
+  const plotWidth=width-left-right,plotHeight=height-top-bottom;
+  const sx=x=>left+(x-xMin)/xRange*plotWidth;
+  const sy=y=>top+(yMax-y)/yRange*plotHeight;
+  const format=value=>Math.abs(value)>=100 ? Number(value.toFixed(0)) : Number(value.toFixed(2));
+  const serialize=next=>next.map(point=>`${point.series || "A"}: ${format(point.x)}, ${format(point.y)}`).join("\n");
+  const pointFromEvent=event=>{
+    if(!validScale) return null;
+    const rect=event.currentTarget.getBoundingClientRect();
+    const localX=(event.clientX-rect.left)/Math.max(1,rect.width)*width;
+    const localY=(event.clientY-rect.top)/Math.max(1,rect.height)*height;
+    if(localX<left || localX>width-right || localY<top || localY>height-bottom) return null;
+    const rawX=xMin+(localX-left)/plotWidth*(xMax-xMin);
+    const rawY=yMax-(localY-top)/plotHeight*(yMax-yMin);
+    const stepX=(xMax-xMin)/50,stepY=(yMax-yMin)/50;
+    const snap=(value,step)=>step>0?Math.round(value/step)*step:value;
+    return {series:activeSeries,x:format(snap(rawX,stepX)),y:format(snap(rawY,stepY))};
+  };
+  const addPoint=event=>{
+    if(disabled) return;
+    const point=pointFromEvent(event);
+    if(point) onChange(`${base}:points`,serialize([...points,point]));
+  };
+  const groups=["A","B"].map(series=>({series,points:points.filter(point=>point.series===series)}));
+  const barWidth=Math.max(5,Math.min(34,plotWidth/Math.max(12,points.length*2)));
+  const tickValues=(min,max)=>Array.from({length:11},(_,i)=>min+(max-min)*i/10);
+  const bestFitSegment=seriesPoints=>{
+    if(seriesPoints.length<2) return null;
+    const n=seriesPoints.length;
+    const sumX=seriesPoints.reduce((sum,point)=>sum+point.x,0);
+    const sumY=seriesPoints.reduce((sum,point)=>sum+point.y,0);
+    const sumXX=seriesPoints.reduce((sum,point)=>sum+point.x*point.x,0);
+    const sumXY=seriesPoints.reduce((sum,point)=>sum+point.x*point.y,0);
+    const denominator=n*sumXX-sumX*sumX;
+    if(Math.abs(denominator)<1e-12) return null;
+    const slope=(n*sumXY-sumX*sumY)/denominator;
+    const intercept=(sumY-slope*sumX)/n;
+    return [{x:xMin,y:slope*xMin+intercept},{x:xMax,y:slope*xMax+intercept}];
+  };
+  const smoothPath=seriesPoints=>{
+    if(seriesPoints.length<2) return "";
+    const screen=seriesPoints.map(point=>({x:sx(point.x),y:sy(point.y)}));
+    let d=`M ${screen[0].x} ${screen[0].y}`;
+    for(let i=0;i<screen.length-1;i+=1){
+      const p0=screen[i-1] || screen[i],p1=screen[i],p2=screen[i+1],p3=screen[i+2] || p2;
+      const c1={x:p1.x+(p2.x-p0.x)/6,y:p1.y+(p2.y-p0.y)/6};
+      const c2={x:p2.x-(p3.x-p1.x)/6,y:p2.y-(p3.y-p1.y)/6};
+      d+=` C ${c1.x} ${c1.y}, ${c2.x} ${c2.y}, ${p2.x} ${p2.y}`;
+    }
+    return d;
+  };
+  const seriesLine=group=>{
+    if(!validScale || group.points.length<2 || connection==="points" || connection==="bars") return null;
+    const className=group.series==="B"?"is-p2-graph-line series-b":"is-p2-graph-line";
+    if(connection==="best-fit"){
+      const segment=bestFitSegment(group.points);
+      return segment ? <line key={group.series} x1={sx(segment[0].x)} y1={sy(segment[0].y)} x2={sx(segment[1].x)} y2={sy(segment[1].y)} className={className}/> : null;
+    }
+    if(connection==="smooth") return <path key={group.series} d={smoothPath(group.points)} className={className}/>;
+    return <polyline key={group.series} points={group.points.map(point=>`${sx(point.x)},${sy(point.y)}`).join(" ")} className={className}/>;
+  };
   return <div className="is-p2-graph-workspace">
     <div className="is-p2-graph-fields">
       <label><span>x-axis label</span><input disabled={disabled} value={responses[`${base}:xLabel`] || ""} onChange={e=>onChange(`${base}:xLabel`,e.target.value)} placeholder={config.x || "x-axis"}/></label>
       <label><span>y-axis label</span><input disabled={disabled} value={responses[`${base}:yLabel`] || ""} onChange={e=>onChange(`${base}:yLabel`,e.target.value)} placeholder={config.y || "y-axis"}/></label>
-      <label><span>Scale</span><input disabled={disabled} value={responses[`${base}:scale`] || ""} onChange={e=>onChange(`${base}:scale`,e.target.value)} placeholder="e.g. x: 1 square = 1 week; y: 1 square = 5 cm"/></label>
     </div>
-    <svg className="is-p2-graph-response" viewBox="0 0 600 300" role="img" aria-label="Student graph plot">
-      <rect x="50" y="30" width="500" height="230" fill="none" stroke="currentColor"/>
-      {Array.from({length:11},(_,i)=><line key={`v${i}`} x1={50+i*50} x2={50+i*50} y1="30" y2="260" stroke="currentColor" opacity=".16"/>)}
-      {Array.from({length:11},(_,i)=><line key={`h${i}`} x1="50" x2="550" y1={30+i*23} y2={30+i*23} stroke="currentColor" opacity=".16"/>)}
-      {points.map((point,index)=><circle key={index} cx={sx(point.x)} cy={sy(point.y)} r="4" fill="currentColor"/>)}
-      {points.length>1 && <polyline points={points.map(point=>`${sx(point.x)},${sy(point.y)}`).join(" ")} fill="none" stroke="currentColor" strokeWidth="2"/>}
+    <div className="is-p2-graph-scale-grid" aria-label="Graph scale controls">
+      <label><span>x minimum</span><input disabled={disabled} inputMode="decimal" value={responses[`${base}:xMin`] ?? "0"} onChange={e=>onChange(`${base}:xMin`,e.target.value)}/></label>
+      <label><span>x maximum</span><input disabled={disabled} inputMode="decimal" value={responses[`${base}:xMax`] ?? "10"} onChange={e=>onChange(`${base}:xMax`,e.target.value)}/></label>
+      <label><span>y minimum</span><input disabled={disabled} inputMode="decimal" value={responses[`${base}:yMin`] ?? "0"} onChange={e=>onChange(`${base}:yMin`,e.target.value)}/></label>
+      <label><span>y maximum</span><input disabled={disabled} inputMode="decimal" value={responses[`${base}:yMax`] ?? "10"} onChange={e=>onChange(`${base}:yMax`,e.target.value)}/></label>
+    </div>
+    <div className="is-p2-graph-toolbar">
+      <label><span>Graph style</span><select disabled={disabled} value={connection} onChange={e=>onChange(`${base}:connection`,e.target.value)}><option value="straight">Join with straight lines</option><option value="smooth">Join with smooth curve</option><option value="best-fit">Line of best fit</option><option value="bars">Bar chart</option><option value="points">Points only</option></select></label>
+      {multiSeries && <label><span>Plotting series</span><select disabled={disabled} value={activeSeries} onChange={e=>onChange(`${base}:activeSeries`,e.target.value)}><option value="A">Series A</option><option value="B">Series B</option></select></label>}
+      {multiSeries && <label className="is-p2-graph-key"><span>Key</span><input disabled={disabled} value={responses[`${base}:key`] || ""} onChange={e=>onChange(`${base}:key`,e.target.value)} placeholder="A = ...; B = ..."/></label>}
+    </div>
+    {!validScale && <div className="is-p2-graph-error" role="alert">Each maximum must be greater than its minimum before plotting.</div>}
+    <svg className="is-p2-graph-response" viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Interactive student graph plot" onClick={addPoint}>
+      <rect x={left} y={top} width={plotWidth} height={plotHeight} fill="none" stroke="currentColor"/>
+      {tickValues(xMin,xMax).map((value,i)=>{const x=left+i*plotWidth/10;return <React.Fragment key={`x${i}`}><line x1={x} x2={x} y1={top} y2={height-bottom} stroke="currentColor" opacity=".14"/><text x={x} y={height-bottom+20} textAnchor="middle" className="is-p2-graph-tick">{format(value)}</text></React.Fragment>;})}
+      {tickValues(yMin,yMax).map((value,i)=>{const y=height-bottom-i*plotHeight/10;return <React.Fragment key={`y${i}`}><line x1={left} x2={width-right} y1={y} y2={y} stroke="currentColor" opacity=".14"/><text x={left-9} y={y+4} textAnchor="end" className="is-p2-graph-tick">{format(value)}</text></React.Fragment>;})}
+      {validScale && (connection==="bars" ? points.map((point,index)=>{const zeroY=sy(Math.max(yMin,Math.min(yMax,0)));const py=sy(point.y);return <rect key={index} x={sx(point.x)-barWidth/2} y={Math.min(py,zeroY)} width={barWidth} height={Math.max(2,Math.abs(zeroY-py))} className={point.series==="B"?"is-p2-graph-bar series-b":"is-p2-graph-bar"}/>;}) : groups.map(seriesLine))}
+      {validScale && connection!=="bars" && points.map((point,index)=><circle key={index} cx={sx(point.x)} cy={sy(point.y)} r="4.5" className={point.series==="B"?"is-p2-graph-point series-b":"is-p2-graph-point"}/>)}
+      <text x={left+plotWidth/2} y={height-8} textAnchor="middle" className="is-p2-graph-axis-label">{responses[`${base}:xLabel`] || config.x || "x-axis"}</text>
+      <text x="16" y={top+plotHeight/2} textAnchor="middle" transform={`rotate(-90 16 ${top+plotHeight/2})`} className="is-p2-graph-axis-label">{responses[`${base}:yLabel`] || config.y || "y-axis"}</text>
     </svg>
-    <textarea disabled={disabled} rows={4} value={pointsText} onChange={e=>onChange(`${base}:points`,e.target.value)} placeholder={"Enter plotted coordinates, one per line, for example:\n1, 2\n2, 5\n3, 11"}/>
-    <textarea disabled={disabled} rows={2} value={responses[base] || ""} onChange={e=>onChange(base,e.target.value)} placeholder="Optional graph notes or working."/>
+    <div className="is-p2-graph-actions">
+      <span>{points.length} point{points.length===1?"":"s"} plotted. Click the grid to add a point.</span>
+      {!disabled && <button type="button" className="is-exam-secondary" onClick={()=>onChange(`${base}:points`,serialize(points.slice(0,-1)))} disabled={!points.length}>Undo point</button>}
+      {!disabled && <button type="button" className="is-exam-secondary" onClick={()=>onChange(`${base}:points`,"")} disabled={!points.length}>Clear graph</button>}
+    </div>
+    <textarea disabled={disabled} rows={2} value={responses[base] || ""} onChange={e=>onChange(base,e.target.value)} placeholder="Add any graph notes, category labels or working required by the question."/>
   </div>;
 }
 
@@ -103,7 +191,10 @@ function DrawingPad({base,responses,onChange,disabled}){
       <rect x="1" y="1" width="598" height="298" fill="none" stroke="currentColor" opacity=".35"/>
       {strokes.map((stroke,index)=><polyline key={index} points={stroke.map(point=>`${point.x},${point.y}`).join(" ")} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>)}
     </svg>
-    {!disabled && <button type="button" className="is-exam-primary" onClick={()=>updateStrokes([])}>Clear drawing</button>}
+    {!disabled && <div className="is-p2-drawing-actions">
+      <button type="button" className="is-exam-secondary" onClick={()=>updateStrokes(strokes.slice(0,-1))} disabled={!strokes.length}>Undo stroke</button>
+      <button type="button" className="is-exam-secondary" onClick={()=>updateStrokes([])} disabled={!strokes.length}>Clear drawing</button>
+    </div>}
     <textarea disabled={disabled} rows={3} value={responses[base] || ""} onChange={e=>onChange(base,e.target.value)} placeholder="Add the labels and brief notes that belong on your drawing."/>
   </div>;
 }
@@ -164,7 +255,7 @@ function BoundResponse({ questionId, partIndex, itemIndex, item, responses, onCh
   }
 
   if (type === "graph") {
-    return <GraphPlotter base={base} config={config} responses={responses} onChange={onChange} disabled={disabled}/>;
+    return <GraphPlotter base={base} config={config} item={item} responses={responses} onChange={onChange} disabled={disabled}/>;
   }
 
   if (type === "drawing") {
