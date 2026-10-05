@@ -24,7 +24,7 @@ export function expectedScienceGraphPoints(question,partIndex,item){
 
 export function gradeScienceGraph(question,partIndex,itemIndex,item,responses,axisMatches){
   const base=`${question.id}:${partIndex}:${itemIndex}`;
-  const structured=readScienceGraph(responses[`${base}:graph`]);
+  const structured=readScienceGraph(responses[`${base}:graph`]) || legacyGraph(base,responses,graphRubrics[base]);
   if(structured && graphRubrics[base]) return gradeConstructedGraph(base,item,responses,structured,graphRubrics[base],axisMatches);
   const expected=expectedScienceGraphPoints(question,partIndex,item);
   const submitted=parseScienceGraphPoints(responses[`${base}:points`]);
@@ -53,6 +53,23 @@ export function gradeScienceGraph(question,partIndex,itemIndex,item,responses,ax
     reason:"Coordinates and axis labels are checked automatically. Scale, construction and unsupported series remain unassessed by this graph editor."};
 }
 
+function legacyGraph(base,responses,rubric){
+  // Main's direct-plot editor stores A/B coordinates and bounds separately.
+  // Adapt saved line graphs without losing their key or construction choices.
+  if(!rubric || rubric.kind==="bar" || responses[`${base}:xMax`]===undefined) return null;
+  const rows=String(responses[`${base}:points`] || "").split(/\n|;/).filter(s=>s.trim());
+  const parsed=rows.map(row=>row.match(/^\s*([AB])?\s*:?\s*([+-]?\d+(?:\.\d+)?)\s*[, ]\s*([+-]?\d+(?:\.\d+)?)\s*$/i));
+  if(parsed.some(p=>!p)) return null;
+  const key=String(responses[`${base}:key`] || "");
+  const axis=name=>{const min=Number(responses[`${base}:${name}Min`] ?? 0),max=Number(responses[`${base}:${name}Max`] ?? 10);return {min,max,step:(max-min)/10};};
+  const style=responses[`${base}:connection`] || "straight";
+  return {version:1,kind:"line",x:axis("x"),y:axis("y"),connection:style==="straight"?"segments":style==="points"?"none":style,
+    series:(rubric.series.length>1?["A","B"]:["A"]).map(letter=>({
+      name:key.match(new RegExp(`${letter}\\s*=\\s*([^;\\n]+)`,"i"))?.[1] || "",
+      points:parsed.filter(p=>(p[1] || "A").toUpperCase()===letter).map(p=>`${p[2]},${p[3]}`).join("\n")
+    }))};
+}
+
 function seriesName(value){
   return graphText(value).split(" ").filter(t=>!["average","mass","temperature","ph","of","at","kg"].includes(t)).join(" ");
 }
@@ -72,7 +89,11 @@ function gradeConstructedGraph(base,item,responses,graph,rubric,axisMatches){
   let allCorrect=valid&&allAssigned&&correctKind;
   rubric.series.forEach((expected,index)=>{
     const got=assigned[index]?.parsed || [];
-    const hits=expected.points.filter(want=>got.some(p=>p && coordinateKey(p.x)===coordinateKey(want.x)&&Math.abs(p.y-want.y)<1e-7)).length;
+    const tolerance=(axis,values)=>Math.max(1e-7,Math.min(Number(axis?.step)/10 || 0,(Math.max(...values)-Math.min(...values))*.01));
+    const tx=graph.kind==="bar"?0:tolerance(graph.x,expected.points.map(p=>p.x));
+    const ty=tolerance(graph.y,expected.points.map(p=>p.y));
+    const used=new Set();
+    const hits=expected.points.filter(want=>{const index=got.findIndex((p,i)=>!used.has(i)&&p&&(graph.kind==="bar"?coordinateKey(p.x)===coordinateKey(want.x):Math.abs(p.x-want.x)<=tx)&&Math.abs(p.y-want.y)<=ty);if(index<0)return false;used.add(index);return true;}).length;
     const complete=valid&&allAssigned&&correctKind&&got.length===expected.points.length&&hits===expected.points.length;
     allCorrect=allCorrect&&complete;
     const cap=rubric.plotMarks[index];

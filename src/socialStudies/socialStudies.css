@@ -856,3 +856,15 @@ html[data-theme="dark"] .ss-sba-result.missing{border-left-color:#ef4444}
   .ss-sba-card{padding:12px}
   .ss-sba-actions{display:grid}
 }
+
+
+/* SOCIAL_STUDIES_SBA_DATA_BUILDER_V1 */
+.ss-sba-data-builder{grid-column:1/-1;display:grid;gap:10px;margin-top:4px;padding:12px;border:1px solid var(--spark-border-soft,#d9e2ec);border-radius:10px;background:var(--spark-paper,#fff)}
+.ss-sba-axis-labels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.ss-sba-data-rows{display:grid;gap:7px}.ss-sba-data-rows>div{display:grid;grid-template-columns:minmax(120px,1fr) minmax(90px,.5fr) auto;gap:7px}.ss-sba-data-rows button{padding:8px 10px;border:1px solid var(--spark-border,#d9e2ec);border-radius:8px;background:var(--spark-paper,#fff);color:var(--spark-ink,#102a43);font:inherit;font-size:10px;font-weight:800}
+.ss-sba-chart-preview{overflow:auto;padding:10px;border:1px solid var(--spark-border,#d9e2ec);border-radius:10px;background:#fff;color:#183747}.ss-sba-chart-preview svg{display:block;width:100%;min-width:520px;height:auto}.ss-sba-chart-preview table{width:100%;border-collapse:collapse}.ss-sba-chart-preview th,.ss-sba-chart-preview td{padding:8px;border:1px solid #cbd5e1;text-align:left;font-size:11px}
+.ss-sba-chart-axis{stroke:#183747;stroke-width:2}.ss-sba-bar{fill:#0d9488}.ss-sba-line{fill:none;stroke:#0d9488;stroke-width:2.5}.ss-sba-line-point{fill:#0d9488;stroke:#fff;stroke-width:2}.ss-sba-chart-preview text{fill:#183747;font-size:11px}
+.ss-sba-pie-slice{stroke:#fff;stroke-width:2}.ss-sba-pie-slice.slice-0{fill:#0d9488}.ss-sba-pie-slice.slice-1{fill:#2563eb}.ss-sba-pie-slice.slice-2{fill:#d97706}.ss-sba-pie-slice.slice-3{fill:#7c3aed}.ss-sba-pie-slice.slice-4{fill:#059669}.ss-sba-pie-slice.slice-5{fill:#be123c}
+html[data-theme="dark"] .ss-sba-data-builder,body[data-theme="dark"] .ss-sba-data-builder,.dark .ss-sba-data-builder{background:#10263a;border-color:#29465f}
+html[data-theme="dark"] .ss-sba-chart-preview,body[data-theme="dark"] .ss-sba-chart-preview,.dark .ss-sba-chart-preview{background:#fff;color:#183747;border-color:#42637a}
+@media(max-width:700px){.ss-sba-axis-labels{grid-template-columns:1fr}.ss-sba-data-rows>div{grid-template-columns:1fr 110px}.ss-sba-data-rows>div button{grid-column:1/-1}.ss-sba-chart-preview svg{min-width:460px}}

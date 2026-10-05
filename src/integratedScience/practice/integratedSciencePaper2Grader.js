@@ -157,36 +157,145 @@ function tableResult(questionId,partIndex,itemIndex,item,responses){
     criteria,confidence:"medium",provisional:true};
 }
 
-function visualResult(questionId,partIndex,itemIndex,item,responses){
-  const base=`${questionId}:${partIndex}:${itemIndex}`;
-  const type=item?.response?.type || "graph";
-  const notes=[
-    responses[base] || "",
-    responses[`${base}:xLabel`] || "",
-    responses[`${base}:yLabel`] || "",
-    responses[`${base}:scale`] || "",
-    responses[`${base}:points`] || "",
-  ].filter(Boolean).join(" ");
-  const result=lineResult(questionId,partIndex,itemIndex,{...item,response:{type:"lines"}},{[base]:notes});
-  if(type==="drawing"){
-    const strokes=String(responses[`${base}:strokes`] || "[]");
-    const hasDrawing=strokes!=="[]" && strokes.length>8;
-    return {
-      ...result,
-      score:hasDrawing?result.score:Math.min(result.score,Math.max(0,result.maxMarks-1)),
-      confidence:"low",provisional:true,visualEvidenceRequired:true,
-      visualEvidence:{hasDrawing,strokeBytes:strokes.length},
-    };
+function parseStoredGraphPoints(value){
+  return String(value || "").split(/\n|;/).map(line=>{
+    const match=line.match(/^\s*([AB])?\s*:?\s*(-?\d+(?:\.\d+)?)\s*[, ]\s*(-?\d+(?:\.\d+)?)/i);
+    return match ? {series:(match[1] || "A").toUpperCase(),x:Number(match[2]),y:Number(match[3])} : null;
+  }).filter(point=>point && Number.isFinite(point.x) && Number.isFinite(point.y));
+}
+
+function expectedGraphCoordinates(item){
+  const text=(item?.markScheme?.points || []).join(" ");
+  const out=[];
+  const matcher=/\((-?\d+(?:\.\d+)?)\s*,\s*([+-]?\d+(?:\.\d+)?)\)/g;
+  let match;
+  while((match=matcher.exec(text))){
+    const point={x:Number(match[1]),y:Number(match[2])};
+    if(Number.isFinite(point.x) && Number.isFinite(point.y) && !out.some(existing=>existing.x===point.x && existing.y===point.y)) out.push(point);
   }
-  const plotted=parseGraphPointCount(responses[`${base}:points`]);
+  return out;
+}
+
+function graphPointMatches(student,target,expected){
+  const xs=expected.map(point=>point.x),ys=expected.map(point=>point.y);
+  const xRange=Math.max(1,Math.max(...xs)-Math.min(...xs));
+  const yRange=Math.max(1,Math.max(...ys)-Math.min(...ys));
+  return Math.abs(student.x-target.x)<=Math.max(0.08,xRange*0.025)
+    && Math.abs(student.y-target.y)<=Math.max(0.08,yRange*0.025);
+}
+
+function labelMatches(value,expected){
+  if(!String(value || "").trim()) return false;
+  const expectedTokens=tokens(expected);
+  if(!expectedTokens.length) return true;
+  const hits=expectedTokens.filter(token=>tokenPresent(value,token)).length;
+  return hits>=Math.max(1,Math.ceil(expectedTokens.length*0.6));
+}
+
+function graphScaleAssessment(base,responses,expected){
+  const xMin=Number(responses[`${base}:xMin`] ?? 0),xMax=Number(responses[`${base}:xMax`] ?? 10);
+  const yMin=Number(responses[`${base}:yMin`] ?? 0),yMax=Number(responses[`${base}:yMax`] ?? 10);
+  const valid=[xMin,xMax,yMin,yMax].every(Number.isFinite) && xMax>xMin && yMax>yMin;
+  if(!valid) return {valid:false,suitable:false,xMin,xMax,yMin,yMax};
+  if(!expected.length) return {valid:true,suitable:true,xMin,xMax,yMin,yMax};
+  const xs=expected.map(point=>point.x),ys=expected.map(point=>point.y);
+  const allInside=Math.min(...xs)>=xMin && Math.max(...xs)<=xMax && Math.min(...ys)>=yMin && Math.max(...ys)<=yMax;
+  const xCoverage=(Math.max(...xs)-Math.min(...xs))/Math.max(1e-9,xMax-xMin);
+  const yCoverage=(Math.max(...ys)-Math.min(...ys))/Math.max(1e-9,yMax-yMin);
+  const usefulCoverage=Math.max(xCoverage,yCoverage)>=0.6 && Math.min(xCoverage,yCoverage)>=0.35;
+  return {valid:true,suitable:allInside&&usefulCoverage,xMin,xMax,yMin,yMax,xCoverage,yCoverage};
+}
+
+function graphResult(questionId,partIndex,itemIndex,item,responses){
+  const base=`${questionId}:${partIndex}:${itemIndex}`;
+  const maxMarks=Number(item.marks || 0);
+  const plotted=parseStoredGraphPoints(responses[`${base}:points`]);
+  const expected=expectedGraphCoordinates(item);
+  const scale=graphScaleAssessment(base,responses,expected);
+  const criteria=[];
+  let plottingMarks=0;
+  let matchedPoints=0;
+
+  if(expected.length){
+    const unmatched=[...plotted];
+    expected.forEach(target=>{
+      const index=unmatched.findIndex(student=>graphPointMatches(student,target,expected));
+      if(index>=0){matchedPoints+=1;unmatched.splice(index,1);}
+    });
+    plottingMarks=matchedPoints===expected.length ? Math.min(2,maxMarks) : matchedPoints>=Math.ceil(expected.length/2) ? 1 : 0;
+  }else if(plotted.length){
+    plottingMarks=1;
+  }
+  criteria.push({id:`${base}:plot`,label:expected.length?"Required data points plotted accurately":"Graph contains plotted data",marks:plottingMarks,maxMarks:Math.min(2,maxMarks),earned:expected.length?matchedPoints===expected.length:plotted.length>0,evidence:`${matchedPoints || plotted.length} plotted`});
+
+  if(criteria.reduce((sum,row)=>sum+row.maxMarks,0)<maxMarks){
+    const axesOk=labelMatches(responses[`${base}:xLabel`],item?.response?.x || "") && labelMatches(responses[`${base}:yLabel`],item?.response?.y || "");
+    criteria.push({id:`${base}:axes`,label:"Both axes labelled with the required quantities and units",marks:axesOk?1:0,maxMarks:1,earned:axesOk,evidence:`${responses[`${base}:xLabel`] || ""}; ${responses[`${base}:yLabel`] || ""}`});
+  }
+
+  if(criteria.reduce((sum,row)=>sum+row.maxMarks,0)<maxMarks){
+    criteria.push({id:`${base}:scale`,label:"Scale is valid and uses the plotting area sensibly",marks:scale.suitable?1:0,maxMarks:1,earned:scale.suitable,evidence:`x ${scale.xMin} to ${scale.xMax}; y ${scale.yMin} to ${scale.yMax}`});
+  }
+
+  const source=`${item?.prompt || ""} ${(item?.markScheme?.points || []).join(" ")}`.toLowerCase();
+  const selected=String(responses[`${base}:connection`] || "");
+  let wanted=null;
+  if(source.includes("bar chart") || source.includes("bars ")) wanted="bars";
+  else if(source.includes("best fit")) wanted="best-fit";
+  else if(source.includes("smooth")) wanted="smooth";
+  else if(source.includes("straight line") || source.includes("straight lines")) wanted="straight";
+  const remainingBeforeStyle=maxMarks-criteria.reduce((sum,row)=>sum+row.maxMarks,0);
+  if(remainingBeforeStyle>0){
+    const styleOk=wanted ? selected===wanted : Boolean(selected && selected!=="points");
+    criteria.push({id:`${base}:style`,label:wanted==="bars"?"Correct bar-chart form":wanted==="best-fit"?"Line of best fit selected":wanted==="smooth"?"Smooth curve selected":wanted==="straight"?"Straight-line joining selected":"Graph points are joined appropriately",marks:styleOk?1:0,maxMarks:1,earned:styleOk,evidence:selected});
+  }
+
+  const keyRequired=/\bboth\b|\bkey\b/i.test(String(item?.prompt || ""));
+  const remaining=maxMarks-criteria.reduce((sum,row)=>sum+row.maxMarks,0);
+  if(remaining>0 && keyRequired){
+    const keyOk=String(responses[`${base}:key`] || "").trim().length>=3;
+    criteria.push({id:`${base}:key`,label:"Key distinguishes the two data series",marks:keyOk?1:0,maxMarks:1,earned:keyOk,evidence:responses[`${base}:key`] || ""});
+  }
+
+  let score=Math.min(maxMarks,criteria.reduce((sum,row)=>sum+row.marks,0));
+  const remainingMarks=maxMarks-criteria.reduce((sum,row)=>sum+row.maxMarks,0);
+  let fallback=null;
+  if(remainingMarks>0){
+    const notes=[responses[base] || "",responses[`${base}:key`] || ""].filter(Boolean).join(" ");
+    fallback=lineResult(questionId,partIndex,itemIndex,{...item,marks:remainingMarks,response:{type:"lines"}},{[base]:notes});
+    score=Math.min(maxMarks,score+fallback.score);
+    criteria.push(...fallback.criteria.map(row=>({...row,id:`${row.id}:support`})));
+  }
+
+  const highConfidence=expected.length>0 && criteria.every(row=>row.maxMarks<=0 || row.id.includes(":plot") || row.id.includes(":axes") || row.id.includes(":scale") || row.id.includes(":style") || row.id.includes(":key"));
   return {
-    ...result,confidence:"low",provisional:true,visualEvidenceRequired:true,
-    visualEvidence:{plottedPoints:plotted,hasScale:Boolean(String(responses[`${base}:scale`] || "").trim())},
+    score,maxMarks,criteria,
+    confidence:highConfidence?"high":"medium",
+    provisional:!highConfidence,
+    visualEvidenceRequired:true,
+    visualEvidence:{plottedPoints:plotted.length,expectedPoints:expected.length,matchedPoints,scale,connection:selected,keyRequired},
   };
 }
 
-function parseGraphPointCount(value){
-  return String(value || "").split(/\n|;/).filter(line=>/-?\d+(?:\.\d+)?\s*[, ]\s*-?\d+(?:\.\d+)?/.test(line)).length;
+function drawingResult(questionId,partIndex,itemIndex,item,responses){
+  const base=`${questionId}:${partIndex}:${itemIndex}`;
+  const strokesRaw=String(responses[`${base}:strokes`] || "[]");
+  let strokes=[];
+  try{const parsed=JSON.parse(strokesRaw);if(Array.isArray(parsed))strokes=parsed;}catch{}
+  const detailedStrokes=strokes.filter(stroke=>Array.isArray(stroke)&&stroke.length>=2);
+  const written=lineResult(questionId,partIndex,itemIndex,{...item,response:{type:"lines"}},responses);
+  const hasDrawing=detailedStrokes.length>0;
+  const score=hasDrawing ? written.score : Math.min(written.score,Math.max(0,written.maxMarks-1));
+  return {
+    ...written,score,confidence:"medium",provisional:true,visualEvidenceRequired:true,
+    visualEvidence:{hasDrawing,strokeCount:detailedStrokes.length,pointCount:detailedStrokes.reduce((sum,stroke)=>sum+stroke.length,0)},
+  };
+}
+
+function visualResult(questionId,partIndex,itemIndex,item,responses){
+  return item?.response?.type==="drawing"
+    ? drawingResult(questionId,partIndex,itemIndex,item,responses)
+    : graphResult(questionId,partIndex,itemIndex,item,responses);
 }
 
 export function gradeIntegratedSciencePaper2Item(question,partIndex,itemIndex,item,responses={}){
