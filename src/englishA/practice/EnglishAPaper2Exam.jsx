@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { recordSubjectActivity } from "../../subjects/subjectProgress";
 import { buildAttemptProvenance } from "../../grading/attemptProvenance";
+import { readServerExamClock, startServerExamAttempt, submitServerExamAttempt } from "../../grading/serverExamAttempt";
 import {
   ENGLISH_A_PAPER2_DURATION_SECONDS,
   ENGLISH_A_PAPER2_MODULES,
@@ -88,6 +89,26 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
     return () => window.clearInterval(id);
   });
 
+  useEffect(() => {
+    const currentState=readState(userId);
+    if(phase!=="exam" || !currentState?.serverAttemptId) return undefined;
+    let cancelled=false;
+    const syncClock=async()=>{
+      const clock=await readServerExamClock({supabase,attemptId:currentState.serverAttemptId});
+      if(cancelled || !clock?.available) return;
+      const deadline=Date.parse(clock.deadline_at);
+      const serverNow=Date.parse(clock.server_now);
+      if(Number.isFinite(deadline)&&Number.isFinite(serverNow)){
+        const seconds=Math.max(0,Math.round((deadline-serverNow)/1000));
+        setRemaining(seconds);
+        if(clock.expired || seconds===0) submit(true);
+      }
+    };
+    syncClock();
+    const id=window.setInterval(syncClock,30000);
+    return ()=>{cancelled=true;window.clearInterval(id);};
+  },[phase,supabase,userId]);
+
   function prepare(id) {
     submitGuard.current=false;
     setSetId(id);
@@ -101,12 +122,21 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
     window.scrollTo?.(0,0);
   }
 
-  function begin() {
+  async function begin() {
     submitGuard.current=false;
-    const finish=Date.now()+ENGLISH_A_PAPER2_DURATION_SECONDS*1000;
+    const server=await startServerExamAttempt({
+      supabase,subjectId:"english-a",paper:"02",mode:"timed",durationSeconds:ENGLISH_A_PAPER2_DURATION_SECONDS,
+      bankVersion:"english-a-paper2-v1",rubricVersion:"CXC-01-G-SYLL-25",graderVersion:"english-a-rubric-v2",
+      metadata:{paper_id:paper.id,selected_creative_prompt:choiceId || null},
+    });
+    const serverDeadline=server?.available && server.deadline_at ? Date.parse(server.deadline_at) : null;
+    const finish=Number.isFinite(serverDeadline) ? serverDeadline : Date.now()+ENGLISH_A_PAPER2_DURATION_SECONDS*1000;
     setEndsAt(finish);
     setRemaining(ENGLISH_A_PAPER2_DURATION_SECONDS);
     setPhase("exam");
+    if(server?.available){
+      saveState(userId,{phase:"exam",setId,answers,choiceId,currentIndex:0,endsAt:finish,serverAttemptId:server.attempt_id,startedAt:server.started_at});
+    }
     window.scrollTo?.(0,0);
   }
 
@@ -125,7 +155,14 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
     setPhase("review");
     const completedAt=new Date().toISOString();
     const responses=requiredTasks(paper,choiceId);
+    const currentState=readState(userId);
     try {
+      if(currentState?.serverAttemptId){
+        await submitServerExamAttempt({
+          supabase,attemptId:currentState.serverAttemptId,responses:answers,score:result.score,maxScore:result.maxScore,
+          metadata:{subject:"english-a",paper:"02",client_timed_out:Boolean(timedOut)},
+        });
+      }
       await recordSubjectActivity({
         supabase,
         activity:{
