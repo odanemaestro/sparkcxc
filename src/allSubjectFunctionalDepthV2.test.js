@@ -82,6 +82,10 @@ describe("SPARK all-subject functional depth audit V2",()=>{
     const marking=readSrc("informationTechnology/practice/itPaper2Marking.js");
     expect(marking).toContain("export function markInformationTechnologyPaper2");
     expect(marking).toContain("modelResponsesForInformationTechnologyPaper2");
+    const paper2=readSrc("informationTechnology/practice/InformationTechnologyPaper2Exam.jsx");
+    expect(paper2).toContain("function goTop()");
+    expect(paper2).toContain("window.scrollTo");
+    expect(paper2).toContain("goTop();");
   });
 
   test("Integrated Science Paper 2 graph bank and exam workspace are fully interactive",()=>{
