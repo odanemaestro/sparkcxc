@@ -13,9 +13,9 @@ describe("SPARK English A Paper 02 V1", () => {
   test("matches the revised 2027 Paper 02 structure", () => {
     expect(ENGLISH_A_PAPER2_DURATION_SECONDS).toBe(165 * 60);
     expect(englishAPaper2BankSummary()).toEqual({
-      sets:3,
+      sets:6,
       tasksPerSet:6,
-      totalBankTasks:21,
+      totalBankTasks:42,
       marksPerSet:120,
       minutes:165,
       moduleMarks:{1:40,2:40,3:40},
