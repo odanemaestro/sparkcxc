@@ -139,11 +139,18 @@ export function IntegratedSciencePaper1Question({
 }
 
 
-function PracticeGraphResponse({ config }) {
+function parseStoredGraphPoints(value) {
+  return String(value || "").split(/\\n|;/).map(line => {
+    const match = line.match(/(-?\\d+(?:\\.\\d+)?)\\s*[, ]\\s*(-?\\d+(?:\\.\\d+)?)/);
+    return match ? {x:Number(match[1]),y:Number(match[2])} : null;
+  }).filter(point => point && Number.isFinite(point.x) && Number.isFinite(point.y));
+}
+
+function PracticeGraphResponse({ base, config, responses, onChange, disabled = false }) {
   const width=620, height=Math.max(280,Number(config.height || 320)), pad=46;
-  const [points,setPoints]=useState([]);
-  const [xLabel,setXLabel]=useState(config.x || "");
-  const [yLabel,setYLabel]=useState(config.y || "");
+  const points=parseStoredGraphPoints(responses[`${base}:points`]);
+  const xLabel=responses[`${base}:xLabel`] ?? config.x ?? "";
+  const yLabel=responses[`${base}:yLabel`] ?? config.y ?? "";
   const xMax=Number(config.xMax || 10);
   const yMax=Number(config.yMax || 10);
   const toValue=(event)=>{
@@ -157,13 +164,15 @@ function PracticeGraphResponse({ config }) {
     x:pad+(point.x/xMax)*(width-pad*2),
     y:height-pad-(point.y/yMax)*(height-pad*2),
   });
+  const writePoints=next=>onChange?.(`${base}:points`,next.map(point=>`${point.x}, ${point.y}`).join("\\n"));
   const grid=Array.from({length:11},(_,i)=>i);
   return <div className="is-practice-graph-workspace">
     <div className="is-practice-graph-fields">
-      <label>X-axis <input value={xLabel} onChange={e=>setXLabel(e.target.value)} placeholder="Quantity / unit"/></label>
-      <label>Y-axis <input value={yLabel} onChange={e=>setYLabel(e.target.value)} placeholder="Quantity / unit"/></label>
+      <label>X-axis <input disabled={disabled} value={xLabel} onChange={e=>onChange?.(`${base}:xLabel`,e.target.value)} placeholder="Quantity / unit"/></label>
+      <label>Y-axis <input disabled={disabled} value={yLabel} onChange={e=>onChange?.(`${base}:yLabel`,e.target.value)} placeholder="Quantity / unit"/></label>
+      <label>Scale <input disabled={disabled} value={responses[`${base}:scale`] || ""} onChange={e=>onChange?.(`${base}:scale`,e.target.value)} placeholder="e.g. x: 1 square = 1; y: 1 square = 5"/></label>
     </div>
-    <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Interactive graph plotting workspace" onClick={e=>setPoints(current=>[...current,toValue(e)])}>
+    <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Interactive graph plotting workspace" onClick={disabled?undefined:e=>writePoints([...points,toValue(e)])}>
       <rect x={pad} y={pad} width={width-pad*2} height={height-pad*2} className="is-practice-graph-paper"/>
       {grid.map(i=>{
         const x=pad+i*(width-pad*2)/10, y=pad+i*(height-pad*2)/10;
@@ -178,25 +187,34 @@ function PracticeGraphResponse({ config }) {
     </svg>
     <div className="is-practice-graph-actions">
       <span>{points.length} point{points.length===1?"":"s"} plotted</span>
-      <button type="button" onClick={()=>setPoints(current=>current.slice(0,-1))} disabled={!points.length}>Undo point</button>
-      <button type="button" onClick={()=>setPoints([])} disabled={!points.length}>Clear graph</button>
+      {!disabled && <><button type="button" onClick={()=>writePoints(points.slice(0,-1))} disabled={!points.length}>Undo point</button><button type="button" onClick={()=>writePoints([])} disabled={!points.length}>Clear graph</button></>}
     </div>
+    <textarea disabled={disabled} rows={2} value={responses[base] || ""} onChange={e=>onChange?.(base,e.target.value)} placeholder="Add any graph working or observations required by the question."/>
   </div>;
 }
 
-function PracticeDrawingResponse({ config }) {
+function parseStoredStrokes(value) {
+  try {
+    const parsed=JSON.parse(String(value || "[]"));
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function PracticeDrawingResponse({ base, config, responses, onChange, disabled = false }) {
   const width=620, height=Math.max(220,Number(config.height || 280));
-  const [strokes,setStrokes]=useState([]);
+  const strokes=parseStoredStrokes(responses[`${base}:strokes`]);
   const [active,setActive]=useState([]);
   const pointFromEvent=event=>{
     const svg=event.currentTarget;
     const rect=svg.getBoundingClientRect();
     return {x:((event.clientX-rect.left)/Math.max(1,rect.width))*width,y:((event.clientY-rect.top)/Math.max(1,rect.height))*height};
   };
-  const start=event=>{event.currentTarget.setPointerCapture?.(event.pointerId);setActive([pointFromEvent(event)]);};
-  const move=event=>{if(active.length)setActive(current=>[...current,pointFromEvent(event)]);};
-  const end=()=>{if(active.length>1)setStrokes(current=>[...current,active]);setActive([]);};
-  const path=stroke=>stroke.map((p,i)=>`${i?"L":"M"} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(" ");
+  const start=event=>{if(disabled)return;event.currentTarget.setPointerCapture?.(event.pointerId);setActive([pointFromEvent(event)]);};
+  const move=event=>{if(!disabled&&active.length)setActive(current=>[...current,pointFromEvent(event)]);};
+  const end=()=>{if(!disabled&&active.length>1)onChange?.(`${base}:strokes`,JSON.stringify([...strokes,active]));setActive([]);};
+  const path=stroke=>stroke.map((p,i)=>`${i?"L":"M"} ${Number(p.x).toFixed(1)} ${Number(p.y).toFixed(1)}`).join(" ");
   return <div className="is-practice-drawing-workspace">
     <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Interactive scientific drawing workspace" onPointerDown={start} onPointerMove={move} onPointerUp={end} onPointerCancel={end}>
       <rect width={width} height={height} className="is-practice-drawing-paper"/>
@@ -205,49 +223,51 @@ function PracticeDrawingResponse({ config }) {
     </svg>
     <div className="is-practice-graph-actions">
       <span>{strokes.length} stroke{strokes.length===1?"":"s"}</span>
-      <button type="button" onClick={()=>setStrokes(current=>current.slice(0,-1))} disabled={!strokes.length}>Undo stroke</button>
-      <button type="button" onClick={()=>setStrokes([])} disabled={!strokes.length}>Clear drawing</button>
+      {!disabled && <><button type="button" onClick={()=>onChange?.(`${base}:strokes`,JSON.stringify(strokes.slice(0,-1)))} disabled={!strokes.length}>Undo stroke</button><button type="button" onClick={()=>onChange?.(`${base}:strokes`,"[]")} disabled={!strokes.length}>Clear drawing</button></>}
     </div>
+    <textarea disabled={disabled} rows={3} value={responses[base] || ""} onChange={e=>onChange?.(base,e.target.value)} placeholder="Add labels and brief notes required by the question."/>
   </div>;
 }
 
-function ResponseArea({ response }) {
+function ResponseArea({ questionId, partIndex, itemIndex, response, responses = {}, onChange, disabled = false }) {
   const config = response || {};
   const type = config.type || "lines";
+  const base=`${questionId}:${partIndex}:${itemIndex}`;
 
   if (type === "labels") {
     return (
       <div className="is-p2-label-responses">
         {(config.keys || []).map(key => (
-          <label key={key}><span>{key}</span><input /></label>
+          <label key={key}><span>{key}</span><input disabled={disabled} value={responses[`${base}:${key}`] || ""} onChange={event=>onChange?.(`${base}:${key}`,event.target.value)}/></label>
         ))}
       </div>
     );
   }
 
-  if (type === "graph") return <PracticeGraphResponse config={config} />;
+  if (type === "graph") return <PracticeGraphResponse base={base} config={config} responses={responses} onChange={onChange} disabled={disabled} />;
 
-  if (type === "drawing") return <PracticeDrawingResponse config={config} />;
+  if (type === "drawing") return <PracticeDrawingResponse base={base} config={config} responses={responses} onChange={onChange} disabled={disabled} />;
 
   if (type === "table") {
-    return <BankTable table={config.table} editable />;
-  }
-
-  if (type === "calculation") {
-    return (
-      <textarea
-        className="is-p2-calculation-response"
-        style={{minHeight:config.height || 150}}
-        aria-label="Calculation and working"
-      />
-    );
+    const table=config.table || {};
+    return <div className="is-bank-table-wrap">
+      {table.title && <div className="is-bank-table-title">{table.title}</div>}
+      <table className="is-bank-table">
+        {Array.isArray(table.headers) && <thead><tr>{table.headers.map((cell,index)=><th key={index}>{cell}</th>)}</tr></thead>}
+        <tbody>{(table.rows || []).map((row,rowIndex)=><tr key={rowIndex}>{row.map((cell,cellIndex)=><td key={cellIndex}>{String(cell ?? "") === "" ? <input disabled={disabled} value={responses[`${base}:r${rowIndex}c${cellIndex}`] || ""} onChange={event=>onChange?.(`${base}:r${rowIndex}c${cellIndex}`,event.target.value)}/> : cell}</td>)}</tr>)}</tbody>
+      </table>
+    </div>;
   }
 
   return (
     <textarea
-      className="is-p2-lines-response"
-      rows={Math.max(2,Number(config.lines || 4))}
-      aria-label="Written response"
+      disabled={disabled}
+      className={type === "calculation" ? "is-p2-calculation-response" : "is-p2-lines-response"}
+      style={type === "calculation" ? {minHeight:config.height || 150} : undefined}
+      rows={type === "calculation" ? undefined : Math.max(2,Number(config.lines || 4))}
+      value={responses[base] || ""}
+      onChange={event=>onChange?.(base,event.target.value)}
+      aria-label={type === "calculation" ? "Calculation and working" : "Written response"}
     />
   );
 }
@@ -268,17 +288,17 @@ function MarkScheme({ scheme }) {
   );
 }
 
-export function IntegratedSciencePaper2Question({ question }) {
-  const [revealed,setRevealed] = useState({});
-return (
+export function IntegratedSciencePaper2Question({ question, responses = {}, onResponseChange, evaluation = null, checked = false }) {
+  const evaluationByItem=new Map();
+  (evaluation?.items || []).forEach(row=>evaluationByItem.set(`${row.partIndex}:${row.itemIndex}`,row));
+
+  return (
     <article className="is-p2-question">
       <header className="is-p2-question-head">
-        <div>
-          <h2>{question.title}</h2>
-        </div>
+        <div><h2>{question.title}</h2></div>
         <div className="is-p2-total">{question.totalMarks} marks</div>
       </header>
-{(question.parts || []).map((part,partIndex) => (
+      {(question.parts || []).map((part,partIndex) => (
         <section key={`${question.id}-${part.label}-${partIndex}`} className="is-p2-part">
           <h3>{part.label}</h3>
           {part.context && <p className="is-p2-context"><IntegratedScienceText>{part.context}</IntegratedScienceText></p>}
@@ -287,9 +307,9 @@ return (
           {part.table && <BankTable table={part.table} />}
 
           {(part.items || []).map((item,itemIndex) => {
-            const key = `${partIndex}-${itemIndex}`;
+            const itemEvaluation=evaluationByItem.get(`${partIndex}:${itemIndex}`);
             return (
-              <div className="is-p2-subquestion" key={key}>
+              <div className="is-p2-subquestion" key={`${partIndex}-${itemIndex}`}>
                 <div className="is-p2-subquestion-prompt">
                   <strong>{item.label}</strong>
                   <span><IntegratedScienceText>{item.prompt}</IntegratedScienceText></span>
@@ -297,20 +317,29 @@ return (
                 </div>
                 {item.svg && <TrustedBankSvg svg={item.svg} />}
                 {item.table && <BankTable table={item.table} />}
-                <ResponseArea response={item.response} />
-                <button
-                  type="button"
-                  className="is-mark-scheme-toggle"
-                  onClick={() => setRevealed(current => ({...current,[key]:!current[key]}))}
-                >
-                  {revealed[key] ? "Hide mark scheme" : "Show mark scheme"}
-                </button>
-                {revealed[key] && <MarkScheme scheme={item.markScheme} />}
+                <ResponseArea
+                  questionId={question.id}
+                  partIndex={partIndex}
+                  itemIndex={itemIndex}
+                  response={item.response}
+                  responses={responses}
+                  onChange={onResponseChange}
+                  disabled={checked}
+                />
+                {checked && itemEvaluation && (
+                  <div className="is-p2-mark-scheme">
+                    <strong>SPARK automatic marking</strong>
+                    <div className="is-p2-auto-score"><b>{itemEvaluation.score}/{itemEvaluation.maxMarks} marks</b><span>{itemEvaluation.confidence === "high" ? "High-confidence structured check" : "Estimated from the authored marking points"}</span></div>
+                    {itemEvaluation.criteria?.length > 0 && <ul className="is-p2-auto-criteria">{itemEvaluation.criteria.map(row=><li key={row.id}><b>{row.marks}/{row.maxMarks}</b> <IntegratedScienceText>{row.label}</IntegratedScienceText></li>)}</ul>}
+                    <MarkScheme scheme={item.markScheme} />
+                  </div>
+                )}
               </div>
             );
           })}
         </section>
       ))}
+      {checked && evaluation && <div className="is-p2-mark-scheme"><strong>Question result</strong><p><b>{evaluation.score}/{evaluation.maxMarks} marks</b></p></div>}
     </article>
   );
 }
