@@ -45,7 +45,7 @@ describe("SPARK all-subject functional depth audit V2",()=>{
     const source=readSrc("practice/Paper2ResponseInput.jsx");
     for(const token of [
       "function TableResponse","function GraphWorkspace","function ConstructionWorkspace",
-      "onClick={handleCanvas}","Undo","Clear","Join with smooth curve","Straightedge","Compass"
+      "onPointerDown={readOnly ? undefined : handleCanvas}","Undo","Clear","Join with smooth curve","Straightedge","Compass"
     ]) expect(source).toContain(token);
     expect(source).not.toMatch(/coming soon|not implemented/i);
   });
