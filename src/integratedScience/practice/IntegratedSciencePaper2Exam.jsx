@@ -2,11 +2,13 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import SparkLoader from "../../components/ui/SparkLoader";
 import { recordSubjectActivity } from "../../subjects/subjectProgress";
 import { buildAttemptProvenance } from "../../grading/attemptProvenance";
-import { readServerExamClock, startServerExamAttempt, submitServerExamAttempt } from "../../grading/serverExamAttempt";
+import { localExamDeadline, readServerExamClock, startServerExamAttempt, submitServerExamAttempt } from "../../grading/serverExamAttempt";
 import { loadIntegratedScienceModule } from "../data/integratedScienceBank";
 import { BankTable, TrustedBankSvg } from "./IntegratedScienceQuestionRenderer";
 import IntegratedScienceText from "../components/IntegratedScienceText";
 import { gradeIntegratedSciencePaper2, INTEGRATED_SCIENCE_P2_GRADER_VERSION } from "./integratedSciencePaper2Grader";
+import { parseScienceGraphPoints } from "./scienceGraphMarking";
+import ScienceGraphEditor from "./ScienceGraphEditor";
 import {
   buildIntegratedSciencePaper2,
   formatIntegratedScienceExamTime,
@@ -35,10 +37,7 @@ function Separator() {
 }
 
 function parseGraphPoints(value){
-  return String(value || "").split(/\n|;/).map(line=>{
-    const match=line.match(/(-?\d+(?:\.\d+)?)\s*[, ]\s*(-?\d+(?:\.\d+)?)/);
-    return match ? {x:Number(match[1]),y:Number(match[2])} : null;
-  }).filter(point=>point && Number.isFinite(point.x) && Number.isFinite(point.y));
+  return parseScienceGraphPoints(value).filter(Boolean);
 }
 
 function GraphPlotter({base,config,responses,onChange,disabled}){
@@ -164,7 +163,10 @@ function BoundResponse({ questionId, partIndex, itemIndex, item, responses, onCh
   }
 
   if (type === "graph") {
-    return <GraphPlotter base={base} config={config} responses={responses} onChange={onChange} disabled={disabled}/>;
+    // Preserve old saved responses; all new attempts use the assessed editor.
+    return disabled && !responses[`${base}:graph`] && responses[`${base}:points`]
+      ? <GraphPlotter base={base} config={config} responses={responses} onChange={onChange} disabled={disabled}/>
+      : <ScienceGraphEditor base={base} responses={responses} onChange={onChange} disabled={disabled}/>;
   }
 
   if (type === "drawing") {
@@ -190,7 +192,7 @@ function MarkScheme({ item, evaluation }) {
   return (
     <div className="is-p2-mark-scheme">
       <strong>SPARK marking review</strong>
-      {evaluation && <div className="is-p2-auto-score"><b>{evaluation.score}/{evaluation.maxMarks} marks</b><span>{evaluation.confidence === "high" ? "High-confidence structured check" : "Estimated from the authored marking points"}</span></div>}
+      {evaluation && <div className="is-p2-auto-score"><b>{evaluation.score}/{evaluation.maxMarks} marks</b><span>{evaluation.confidence === "high" ? "High-confidence structured check" : "Estimated from the authored marking points"}</span>{evaluation.unassessedMarks>0 && <span>{evaluation.unassessedMarks} marks remain unassessed. {evaluation.reason}</span>}</div>}
       {evaluation?.criteria?.length > 0 && <ul className="is-p2-auto-criteria">{evaluation.criteria.map(row => <li key={row.id}><b>{row.marks}/{row.maxMarks}</b> <IntegratedScienceText>{row.label}</IntegratedScienceText></li>)}</ul>}
       <ul>{(scheme.points || []).map((point,index) => <li key={index}><IntegratedScienceText>{point}</IntegratedScienceText></li>)}</ul>
       {scheme.guidance && <p><b>Guidance:</b> <IntegratedScienceText>{scheme.guidance}</IntegratedScienceText></p>}
@@ -220,6 +222,8 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
   const [confirmSubmit,setConfirmSubmit] = useState(false);
   const [showExitConfirm,setShowExitConfirm] = useState(false);
   const submitGuard = useRef(Boolean(initial?.submittedAt));
+  const latestSubmit=useRef(null);
+  const starting=useRef(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -307,6 +311,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
 
     goTop();
   },[active,currentIndex,paper,responses,result,supabase,userId]);
+  latestSubmit.current=submit;
 
   useEffect(() => {
     if (phase !== "exam" || !active?.endsAt) return undefined;
@@ -314,13 +319,13 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
     const tick = () => {
       const seconds = Math.max(0,Math.round((Number(active.endsAt) - Date.now()) / 1000));
       setRemaining(seconds);
-      if (seconds === 0) submit({timedOut:true});
+      if (seconds === 0) latestSubmit.current({timedOut:true});
     };
 
     tick();
     const interval = window.setInterval(tick,1000);
     return () => window.clearInterval(interval);
-  },[active?.endsAt,phase,submit]);
+  },[active?.endsAt,phase]);
 
   useEffect(() => {
     if (phase !== "exam" || !active?.serverAttemptId) return undefined;
@@ -328,18 +333,18 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
     const syncClock=async()=>{
       const clock=await readServerExamClock({supabase,attemptId:active.serverAttemptId});
       if(cancelled || !clock?.available) return;
-      const deadline=Date.parse(clock.deadline_at);
-      const serverNow=Date.parse(clock.server_now);
-      if(Number.isFinite(deadline)&&Number.isFinite(serverNow)){
-        const seconds=Math.max(0,Math.round((deadline-serverNow)/1000));
+      const deadline=localExamDeadline(clock);
+      if(deadline!==null){
+        const seconds=Math.max(0,Math.round((deadline-Date.now())/1000));
+        setActive(current=>current?.phase==="exam" ? {...current,endsAt:deadline} : current);
         setRemaining(seconds);
-        if(clock.expired || seconds===0) submit({timedOut:true});
+        if(clock.expired || seconds===0) latestSubmit.current({timedOut:true});
       }
     };
     syncClock();
     const interval=window.setInterval(syncClock,30000);
     return ()=>{cancelled=true;window.clearInterval(interval);};
-  },[active?.serverAttemptId,phase,submit,supabase]);
+  },[active?.serverAttemptId,phase,supabase]);
 
   if (loadError) {
     return (
@@ -379,6 +384,8 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
   }
 
   async function begin() {
+    if(starting.current) return;
+    starting.current=true;
     const now = Date.now();
     const server=await startServerExamAttempt({
       supabase,subjectId:"integrated-science",paper:"02",mode:"timed",
@@ -387,7 +394,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
       graderVersion:INTEGRATED_SCIENCE_P2_GRADER_VERSION,
       metadata:{question_ids:active?.questionIds || []},
     });
-    const serverDeadline=server?.available && server.deadline_at ? Date.parse(server.deadline_at) : null;
+    const serverDeadline=server?.available ? localExamDeadline(server) : null;
     const serverStarted=server?.available && server.started_at ? server.started_at : new Date(now).toISOString();
     const next = {
       ...active,
@@ -399,6 +406,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
 
     submitGuard.current = false;
     setActive(next);
+    starting.current=false;
     setRemaining(INTEGRATED_SCIENCE_PAPER2_DURATION_SECONDS);
     goTop();
   }
@@ -532,6 +540,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
           <section className="is-p2-review-note">
             <strong>SPARK has marked your paper.</strong>
             <p>Your estimated score is <b>{result.score}/{result.maxScore}</b> ({result.percent}%). Structured answers are checked directly against the authored scheme. Written, graph and drawing judgements are estimated where the available evidence is less precise. You do not need to mark your own work.</p>
+            {result.unassessedMarks>0 && <p><b>{result.unassessedMarks} marks are unassessed, not confirmed incorrect.</b> Depending on that evidence, your total could be between {result.score} and {result.maxPossibleScore} out of {result.maxScore}. See the item feedback below.</p>}
           </section>
         )}
 

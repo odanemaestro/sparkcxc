@@ -57,7 +57,7 @@ function formulaNormal(value) {
     .trim()
     .toUpperCase()
     .replace(/[−–—]/g, "-")
-    .replace(/[×X]/g, "*")
+    .replace(/×/g, "*")
     .replace(/\s+/g, "")
     .replace(/^=/, "=");
 }
@@ -73,7 +73,7 @@ function expandSimpleSumRange(formula) {
 
 function normaliseCommutativeFormula(formula) {
   const value=expandSimpleSumRange(formula);
-  const match=value.match(/^=([^+*]+)([+*])([^+*]+)$/);
+  const match=value.match(/^=([A-Z]+\d+|\d+(?:\.\d+)?)([+*])([A-Z]+\d+|\d+(?:\.\d+)?)$/);
   if(!match) return value;
   const terms=[match[1],match[3]].sort();
   return `=${terms[0]}${match[2]}${terms[1]}`;
@@ -139,47 +139,54 @@ function inferPseudocode(prompt) {
 }
 
 export function pseudocodeSumIsEquivalent(text, vars = []) {
-  const assignment = String(text || "").match(/\bscore\s*(?:<-|:=|=)\s*([^\n;]+)/i);
+  const assignment = String(text || "").match(/\bscore\s*(?:<-|←|:=|=)\s*([^\n;]+)/i);
   if (!assignment || !vars.length) return false;
   const expression = normaliseITAnswer(assignment[1]).replace(/\s+/g,"");
-  if (/[-*/]/.test(expression)) return false;
+  if (/[^a-z0-9_+()]/.test(expression)) return false;
   const terms = expression.split("+").map(term=>term.replace(/[^a-z0-9_]/g,"")).filter(Boolean);
   const expected = vars.map(v=>normaliseITAnswer(v).replace(/[^a-z0-9_]/g,"")).sort();
   return terms.length===expected.length && terms.sort().every((term,index)=>term===expected[index]);
 }
 
 export function pseudocodeBranchEvidence(text) {
-  const compact=String(text || "").replace(/\r/g,"");
-  const conditionIndex=compact.search(/\b(?:if|when)\b/i);
-  if(conditionIndex<0) return {hasElse:false,trueAccept:false,falseReview:false};
-  const branchText=compact.slice(conditionIndex);
-  const elseMatch=/\b(?:else|otherwise)\b/i.exec(branchText);
-  if(!elseMatch) return {
-    hasElse:false,
-    trueAccept:/\b(display|print|output|write|show)\b[\s\S]*?\baccept\b/i.test(branchText),
-    falseReview:false,
+  const source=String(text || "").replace(/\r/g,"");
+  const first=/\b(?:if|when)\b/i.exec(source);
+  if(!first) return {hasElse:false,trueAccept:false,falseReview:false};
+  const body=source.slice(first.index+first[0].length);
+  const keywords=/\b(?:end\s*if|endif|if|else|otherwise)\b/gi;
+  let depth=1,split=null,end=body.length,match;
+  while((match=keywords.exec(body))){
+    const word=match[0].toLowerCase().replace(/\s/g,"");
+    if(word==="if") depth+=1;
+    else if(word==="endif") { depth-=1; if(depth===0){end=match.index;break;} }
+    else if(depth===1 && split===null) split={index:match.index,length:match[0].length};
+  }
+  const output=(branch,wanted)=>{
+    const statements=[...branch.matchAll(/\b(?:display|print|output|write|show)\s+["']?(accept|review)["']?(?=\s*(?:$|\n|;))/gi)];
+    return statements.length>0 && statements.every(row=>row[1].toLowerCase()===wanted);
   };
-  const trueBranch=branchText.slice(0,elseMatch.index);
-  const falseBranch=branchText.slice(elseMatch.index+elseMatch[0].length);
-  return {
-    hasElse:true,
-    trueAccept:/\b(display|print|output|write|show)\b[\s\S]*?\baccept\b/i.test(trueBranch),
-    falseReview:/\b(display|print|output|write|show)\b[\s\S]*?\breview\b/i.test(falseBranch),
-  };
+  // Nested conditionals need control-flow interpretation, not lexical credit.
+  const trueBranch=body.slice(0,split?.index ?? end);
+  const falseBranch=split ? body.slice(split.index+split.length,end) : "";
+  return {hasElse:Boolean(split),
+    trueAccept:!(/\bif\b/i.test(trueBranch)) && output(trueBranch,"accept"),
+    falseReview:!(/\bif\b/i.test(falseBranch)) && output(falseBranch,"review")};
 }
 
 function gradePseudocode(part, response) {
   const text = informationTechnologyResponseText(response);
-  const normal = normaliseITAnswer(text);
   const spec = part.responseSpec?.variables?.length ? part.responseSpec : inferPseudocode(part.prompt);
   const vars = spec.variables || [];
   const threshold = Number(spec.threshold);
   const hasInputVerb = /\b(read|input|accept|get|enter)\b/i.test(text);
-  const varsFound = vars.filter(v => normal.includes(normaliseITAnswer(v))).length;
+  const inputLines=(text.match(/\b(?:read|input|accept|get|enter)\b[^\n;]*/gi)||[]).join(" ");
+  const inputNames=normaliseITAnswer(inputLines).split(/[^a-z0-9_]+/);
+  const varsFound = vars.filter(v => inputNames.includes(normaliseITAnswer(v))).length;
   const validScoreCalculation = pseudocodeSumIsEquivalent(text,vars);
+  const condition=(text.match(/\b(?:if|when)\s+([^\n]*?)(?:\bthen\b|\n|$)/i)?.[1] || "").trim();
+  const thresholdText=String(threshold).replace(/\./g,"\\.");
   const hasCondition = Number.isFinite(threshold)
-    && /\b(if|when)\b/i.test(text)
-    && new RegExp(`(?:score\\s*(?:>=|=>|≥)\\s*${threshold}(?!\\d)|(?<!\\d)${threshold}\\s*(?:<=|=<|≤)\\s*score)`, "i").test(text.replace(/\s+/g, " "));
+    && new RegExp(`^(?:score\\s*(?:>=|=>|≥)\\s*${thresholdText}|${thresholdText}\\s*(?:<=|=<|≤)\\s*score)$`, "i").test(condition);
   const branches=pseudocodeBranchEvidence(text);
 
   return [

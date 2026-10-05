@@ -1,15 +1,17 @@
+import { markScienceCalculation, SCIENCE_TABLES } from "./scienceStructuredMarking";
+import { gradeScienceGraph } from "./scienceGraphMarking";
 // SPARK Integrated Science Paper 02 automatic practice grader.
 // This is an evidence-based estimate, not an examiner certification.
 
-export const INTEGRATED_SCIENCE_P2_GRADER_VERSION = "2.0.0";
+export const INTEGRATED_SCIENCE_P2_GRADER_VERSION = "2.1.0";
 
 const STOPWORDS=new Set(("a an and are as at be been being but by can could did do does for from had has have in into is it its may more most of on or that the their them then there these they this those to too was were what when where which who will with would").split(" "));
 const SYNONYMS=Object.freeze({
-  oxygen:["air"],
+
   microorganisms:["microbes","germs","bacteria"],
   microorganism:["microbe","germ","bacterium"],
-  insect:["insects","bee","bees","animal","animals"],
-  insects:["insect","bee","bees","animal","animals"],
+  insect:["insects","bee","bees"],
+  insects:["insect","bee","bees"],
   chloroplast:["chloroplasts"],
   chloroplasts:["chloroplast"],
   nitrate:["nitrates","nitrogen compounds"],
@@ -24,6 +26,8 @@ const SYNONYMS=Object.freeze({
 function clean(value){
   return String(value ?? "").toLowerCase()
     .replace(/[–—−]/g,"-")
+    .replace(/(?<!\d)\.|\.(?!\d)/g," ")
+    .replace(/\//g," ")
     .replace(/[^a-z0-9.+/%°-]+/g," ")
     .replace(/\s+/g," ")
     .trim();
@@ -41,9 +45,9 @@ function tokenPresent(candidate, token){
   const c=clean(candidate);
   const t=clean(token);
   if(!t) return false;
-  if(c.includes(t)) return true;
+  if((" "+c+" ").includes(" "+t+" ")) return true;
   const variants=SYNONYMS[t] || [];
-  if(variants.some(item=>c.includes(clean(item)))) return true;
+  if(variants.some(item=>(" "+c+" ").includes(" "+clean(item)+" "))) return true;
   const wanted=stem(t);
   return tokens(c).some(item=>stem(item)===wanted);
 }
@@ -63,11 +67,15 @@ function pointAlternatives(point){
     .filter(Boolean);
 }
 
-function evidenceMatch(response, reference){
+function evidenceMatch(response, reference, strict=false){
+  // Never award a positive claim from its explicitly negated version.
+  const negated=/\b(?:not|no|never|cannot|without|doesnt|isnt|dont)\b/i;
+  if(negated.test(clean(response)) && !negated.test(clean(reference))) return false;
   const refTokens=tokens(reference).filter(token=>!/^(mark|marks|one|two|three|four|any)$/.test(token));
   if(!refTokens.length) return false;
   const hits=refTokens.filter(token=>tokenPresent(response,token)).length;
   const ratio=hits/refTokens.length;
+  if(strict) return ratio===1;
   if(refTokens.length<=2) return ratio===1;
   if(refTokens.length<=5) return ratio>=0.6;
   return ratio>=0.5;
@@ -83,7 +91,7 @@ function labelResult(questionId,partIndex,itemIndex,item,responses){
   const expected=(item.markScheme?.points || []).map(parseLabelPoint).filter(Boolean);
   const criteria=expected.map((entry,index)=>{
     const value=responses[`${base}:${entry.key}`] || "";
-    const earned=evidenceMatch(value,entry.answer);
+    const earned=evidenceMatch(value,entry.answer,true);
     return {id:`${base}:label:${entry.key}`,label:`${entry.key}: ${entry.answer}`,marks:earned?1:0,maxMarks:1,earned,evidence:value};
   });
   const cap=Number(item.marks || criteria.length);
@@ -91,31 +99,9 @@ function labelResult(questionId,partIndex,itemIndex,item,responses){
   return {score,maxMarks:cap,criteria,confidence:"high",provisional:false};
 }
 
-function numericCandidates(value){
-  return (clean(value).match(/[-+]?\d+(?:\.\d+)?/g) || []).map(Number).filter(Number.isFinite);
-}
-
-function referenceNumbers(item){
-  return (item.markScheme?.points || []).flatMap(point=>numericCandidates(point));
-}
-
 function calculationResult(questionId,partIndex,itemIndex,item,responses){
   const base=`${questionId}:${partIndex}:${itemIndex}`;
-  const response=responses[base] || "";
-  const got=numericCandidates(response);
-  const expected=referenceNumbers(item);
-  const unique=[...new Set(expected)];
-  let matched=0;
-  for(const want of unique){
-    const scale=Math.max(1,Math.abs(want));
-    if(got.some(value=>Math.abs(value-want)<=Math.max(1e-9,scale*0.02))) matched+=1;
-  }
-  const cap=Number(item.marks || 0);
-  const score=unique.length ? Math.min(cap,Math.round(cap*matched/unique.length)) : 0;
-  return {
-    score,maxMarks:cap,confidence:unique.length?"medium":"low",provisional:true,
-    criteria:[{id:`${base}:calculation`,label:"Calculation evidence matches the authored answer",marks:score,maxMarks:cap,earned:score===cap,evidence:response}],
-  };
+  return markScienceCalculation(base,item,responses[base] || "");
 }
 
 function lineResult(questionId,partIndex,itemIndex,item,responses){
@@ -147,7 +133,7 @@ function lineResult(questionId,partIndex,itemIndex,item,responses){
   score=Math.min(maxMarks,score);
 
   // Some schemes describe a multi-mark developed explanation as one long point.
-  if(rawPoints.length===1 && maxMarks>1 && response.trim()){
+  if(rawPoints.length===1 && maxMarks>1 && response.trim() && evidenceMatch(response,stripMarkingNoise(rawPoints[0]))){
     const coverage=tokens(rawPoints[0]).filter(token=>tokenPresent(response,token)).length / Math.max(1,tokens(rawPoints[0]).length);
     score=Math.max(score,Math.min(maxMarks,Math.floor(coverage*maxMarks+0.25)));
     criteria[0]={...criteria[0],marks:score,maxMarks,earned:score===maxMarks};
@@ -161,9 +147,14 @@ function tableResult(questionId,partIndex,itemIndex,item,responses){
   const table=item.response?.table || {};
   const blanks=[];
   (table.rows || []).forEach((row,r)=>row.forEach((cell,c)=>{if(String(cell ?? "")==="") blanks.push(`${base}:r${r}c${c}`);}));
-  const responseText=blanks.map(key=>responses[key] || "").join(" ");
-  const asLines={...item,response:{type:"lines"}};
-  return {...lineResult(questionId,partIndex,itemIndex,asLines,{[base]:responseText}),confidence:"low",provisional:true};
+  const expected=SCIENCE_TABLES[base] || [];
+  const criteria=blanks.map((key,index)=>{
+    const value=String(responses[key] || "");
+    const earned=(expected[index] || []).some(answer=>evidenceMatch(value,answer,true));
+    return {id:key,label:(expected[index] || []).join(" / "),marks:earned?1:0,maxMarks:1,earned,evidence:value};
+  });
+  return {score:Math.min(Number(item.marks),criteria.reduce((sum,c)=>sum+c.marks,0)),maxMarks:Number(item.marks),
+    criteria,confidence:"medium",provisional:true};
 }
 
 function visualResult(questionId,partIndex,itemIndex,item,responses){
@@ -203,7 +194,8 @@ export function gradeIntegratedSciencePaper2Item(question,partIndex,itemIndex,it
   if(type==="labels") return labelResult(question.id,partIndex,itemIndex,item,responses);
   if(type==="calculation") return calculationResult(question.id,partIndex,itemIndex,item,responses);
   if(type==="table") return tableResult(question.id,partIndex,itemIndex,item,responses);
-  if(type==="graph" || type==="drawing") return visualResult(question.id,partIndex,itemIndex,item,responses);
+  if(type==="graph") return gradeScienceGraph(question,partIndex,itemIndex,item,responses,(a,b)=>evidenceMatch(a,b,true));
+  if(type==="drawing") return visualResult(question.id,partIndex,itemIndex,item,responses);
   return lineResult(question.id,partIndex,itemIndex,item,responses);
 }
 
@@ -228,12 +220,15 @@ export function gradeIntegratedSciencePaper2(paper=[],responses={}){
   const maxScore=questions.reduce((sum,row)=>sum+row.maxMarks,0);
   const provisional=questions.some(q=>q.items.some(item=>item.provisional));
   const lowConfidence=questions.flatMap(q=>q.items).filter(item=>item.confidence==="low").length;
+  const unassessedMarks=questions.reduce((sum,q)=>sum+Math.min(q.maxMarks-q.score,q.items.reduce((n,item)=>n+(item.unassessedMarks || 0),0)),0);
   return {
     score,maxScore,
     percent:maxScore?Math.round(score/maxScore*100):0,
     questions,
     provisional,
     lowConfidence,
+    unassessedMarks,
+    maxPossibleScore:Math.min(maxScore,score+unassessedMarks),
     graderVersion:INTEGRATED_SCIENCE_P2_GRADER_VERSION,
     note:"SPARK automatically grades this practice paper against the authored item-level mark schemes. Written, graph and drawing judgements remain estimated where the available response evidence is limited.",
   };

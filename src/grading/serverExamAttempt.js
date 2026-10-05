@@ -1,5 +1,14 @@
 import { attemptSnapshotHash } from "./attemptProvenance";
 
+// Server timestamps must be translated to the client's clock, not compared
+// directly with Date.now(): a student's system clock may be hours out.
+export function localExamDeadline(clock, now=Date.now()) {
+  const deadline=Date.parse(clock?.deadline_at);
+  const serverNow=Date.parse(clock?.server_now);
+  return Number.isFinite(deadline) && Number.isFinite(serverNow)
+    ? now + Math.max(0,deadline-serverNow) : null;
+}
+
 export async function startServerExamAttempt({
   supabase,subjectId,paper,mode="timed",durationSeconds,
   bankVersion=null,rubricVersion=null,graderVersion=null,metadata={},

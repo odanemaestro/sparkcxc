@@ -1,0 +1,30 @@
+{
+  "schemaVersion": "1.0.0",
+  "provenance": "Synthetic responses authored during the SPARK audit; reference marks are engineering expectations against the local bank. No student data or independent examiner adjudication.",
+  "cases": [
+    {"id":"percent-complete","item":"IS-M1-P2-17:0:1","response":"(86-12)/86*100 = 86%","goldMark":2},
+    {"id":"percent-final-only","item":"IS-M1-P2-17:0:1","response":"86%","goldMark":1},
+    {"id":"mark-allocation-is-not-answer","item":"IS-M1-P2-17:0:1","response":"1","goldMark":0},
+    {"id":"copied-operands","item":"IS-M1-P2-17:0:1","response":"86 12 100","goldMark":0},
+    {"id":"mean-complete","item":"IS-M1-P2-19:0:0","response":"(18+15+14+12+11)/5 = 14 cm","goldMark":2},
+    {"id":"mean-wrong-unit","item":"IS-M1-P2-19:0:0","response":"(18+15+14+12+11)/5 = 14 kg","goldMark":1},
+    {"id":"mass-loss","item":"IS-M1-P2-21:0:1","response":"1.2/4*100 = 30%","goldMark":2},
+    {"id":"resistance","item":"IS-M2-P2-07:2:0","response":"6/0.5 = 12 Ω","goldMark":2},
+    {"id":"resistance-scientific-notation","item":"IS-M2-P2-07:2:0","response":"1.2e1 ohms","goldMark":1},
+    {"id":"resistance-competing-guesses","item":"IS-M2-P2-07:2:0","response":"12 or 24 ohms","goldMark":0},
+    {"id":"power","item":"IS-M2-P2-07:2:1","response":"12*0.5 = 6 W","goldMark":2},
+    {"id":"cost-stages","item":"IS-M2-P2-08:0:1","response":"4+0.5+0.6 = 5.1 kWh\n5.1*30 = 153 kWh\n153*0.60 = $91.80","goldMark":3},
+    {"id":"energy","item":"IS-M2-P2-11:0:1","response":"20*4.2*48 = 4 032 J","goldMark":2},
+    {"id":"energy-alternative-unit","item":"IS-M2-P2-11:0:1","response":"4.0 kJ","goldMark":1},
+    {"id":"moment-alternative-unit","item":"IS-M3-P2-03:0:0","response":"2*20 = 0.4 N m","goldMark":2},
+    {"id":"mechanical-advantage","item":"IS-M3-P2-03:1:1","response":"600/150 = 4","goldMark":2},
+    {"id":"mechanical-advantage-wrong-operation","item":"IS-M3-P2-03:1:1","response":"600*150 = 4","goldMark":1},
+    {"id":"density","item":"IS-M3-P2-07:0:1","response":"60/100 = 0.6 g/cm³","goldMark":2},
+    {"id":"momentum","item":"IS-M3-P2-08:1:0","response":"3000*10 = 30 000 kg m/s","goldMark":2},
+    {"id":"collision","item":"IS-M3-P2-08:1:1","response":"30000/(3000+1000) = 7.5 m/s","goldMark":2},
+    {"id":"efficiency","item":"IS-M3-P2-16:1:1","response":"1800/2400*100 = 75%","goldMark":2},
+    {"id":"acceleration","item":"IS-M3-P2-21:2:0","response":"600/1200 = 0.5 m/s²","goldMark":2},
+    {"id":"empty","item":"IS-M3-P2-21:2:0","response":"","goldMark":0},
+    {"id":"collision-final-only","item":"IS-M3-P2-28:0:1","response":"6 m/s","goldMark":1}
+  ]
+}

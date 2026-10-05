@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { recordSubjectActivity } from "../../subjects/subjectProgress";
 import { buildAttemptProvenance } from "../../grading/attemptProvenance";
-import { readServerExamClock, startServerExamAttempt, submitServerExamAttempt } from "../../grading/serverExamAttempt";
+import { localExamDeadline, readServerExamClock, startServerExamAttempt, submitServerExamAttempt } from "../../grading/serverExamAttempt";
 import {
   ENGLISH_A_PAPER2_DURATION_SECONDS,
   ENGLISH_A_PAPER2_MODULES,
@@ -64,6 +64,9 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
   const [startedAt,setStartedAt]=useState(initial?.startedAt || null);
   const [remaining,setRemaining]=useState(() => initial?.endsAt ? Math.max(0,Math.round((initial.endsAt-Date.now())/1000)) : ENGLISH_A_PAPER2_DURATION_SECONDS);
   const submitGuard=useRef(false);
+  const latestSubmit=useRef(null);
+  latestSubmit.current=submit;
+  const starting=useRef(false);
 
   const paper=useMemo(() => buildEnglishAPaper2(setId),[setId]);
   const visibleTasks=useMemo(() => requiredTasks(paper,choiceId),[paper,choiceId]);
@@ -84,12 +87,12 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
     const tick=() => {
       const seconds=Math.max(0,Math.round((endsAt-Date.now())/1000));
       setRemaining(seconds);
-      if (seconds===0 && !submitGuard.current) submit(true);
+      if (seconds===0 && !submitGuard.current) latestSubmit.current(true);
     };
     tick();
     const id=window.setInterval(tick,1000);
     return () => window.clearInterval(id);
-  });
+  },[phase,endsAt]);
 
   useEffect(() => {
     if(phase!=="exam" || !serverAttemptId) return undefined;
@@ -97,12 +100,12 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
     const syncClock=async()=>{
       const clock=await readServerExamClock({supabase,attemptId:serverAttemptId});
       if(cancelled || !clock?.available) return;
-      const deadline=Date.parse(clock.deadline_at);
-      const serverNow=Date.parse(clock.server_now);
-      if(Number.isFinite(deadline)&&Number.isFinite(serverNow)){
-        const seconds=Math.max(0,Math.round((deadline-serverNow)/1000));
+      const deadline=localExamDeadline(clock);
+      if(deadline!==null){
+        const seconds=Math.max(0,Math.round((deadline-Date.now())/1000));
+        setEndsAt(deadline);
         setRemaining(seconds);
-        if(clock.expired || seconds===0) submit(true);
+        if(clock.expired || seconds===0) latestSubmit.current(true);
       }
     };
     syncClock();
@@ -126,19 +129,22 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
   }
 
   async function begin() {
+    if(starting.current) return;
+    starting.current=true;
     submitGuard.current=false;
     const server=await startServerExamAttempt({
       supabase,subjectId:"english-a",paper:"02",mode:"timed",durationSeconds:ENGLISH_A_PAPER2_DURATION_SECONDS,
       bankVersion:"english-a-paper2-v1",rubricVersion:"CXC-01-G-SYLL-25",graderVersion:"english-a-rubric-v2",
       metadata:{paper_id:paper.id,selected_creative_prompt:choiceId || null},
     });
-    const serverDeadline=server?.available && server.deadline_at ? Date.parse(server.deadline_at) : null;
+    const serverDeadline=server?.available ? localExamDeadline(server) : null;
     const finish=Number.isFinite(serverDeadline) ? serverDeadline : Date.now()+ENGLISH_A_PAPER2_DURATION_SECONDS*1000;
     setEndsAt(finish);
     setRemaining(ENGLISH_A_PAPER2_DURATION_SECONDS);
     setServerAttemptId(server?.available ? server.attempt_id : null);
     setStartedAt(server?.available ? server.started_at : new Date(finish-ENGLISH_A_PAPER2_DURATION_SECONDS*1000).toISOString());
     setPhase("exam");
+    starting.current=false;
     window.scrollTo?.(0,0);
   }
 

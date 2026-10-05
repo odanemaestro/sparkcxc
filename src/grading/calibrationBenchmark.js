@@ -11,11 +11,16 @@ function mean(values){
   return values.length ? values.reduce((sum,value)=>sum+value,0)/values.length : 0;
 }
 
+function validMarks(row){
+  return row && typeof row.goldMark==="number" && typeof row.sparkMark==="number"
+    && Number.isFinite(row.goldMark) && Number.isFinite(row.sparkMark)
+    && row.goldMark>=0 && row.sparkMark>=0
+    && (row.maxMark===undefined || (Number.isFinite(row.maxMark) && row.maxMark>0
+      && row.goldMark<=row.maxMark && row.sparkMark<=row.maxMark));
+}
+
 export function evaluateGradingBenchmark(rows=[]){
-  const usable=(rows || []).filter(row=>
-    Number.isFinite(Number(row.goldMark)) &&
-    Number.isFinite(Number(row.sparkMark))
-  );
+  const usable=(rows || []).filter(validMarks);
   const errors=usable.map(row=>Number(row.sparkMark)-Number(row.goldMark));
   const absolute=errors.map(Math.abs);
   const exact=errors.filter(value=>value===0).length;
@@ -29,16 +34,21 @@ export function evaluateGradingBenchmark(rows=[]){
     return sum+row.criteria.filter(c=>c.goldAwarded===true && c.sparkAwarded===false).length;
   },0);
   const criterionCount=usable.reduce((sum,row)=>sum+(Array.isArray(row.criteria)?row.criteria.length:0),0);
+  const criteria=usable.flatMap(row=>Array.isArray(row.criteria)?row.criteria:[])
+    .filter(c=>typeof c.goldAwarded==="boolean" && typeof c.sparkAwarded==="boolean");
+  const negatives=criteria.filter(c=>!c.goldAwarded).length;
+  const positives=criteria.filter(c=>c.goldAwarded).length;
   return {
     schemaVersion:CALIBRATION_SCHEMA_VERSION,
     cases:usable.length,
+    invalidCases:rows.length-usable.length,
     meanError:mean(errors),
     meanAbsoluteError:mean(absolute),
     maxAbsoluteError:absolute.length?Math.max(...absolute):0,
     exactAgreement:usable.length?exact/usable.length:0,
     withinOneMark:usable.length?withinOne/usable.length:0,
-    criterionFalseAwardRate:criterionCount?falseAwards/criterionCount:0,
-    criterionFalseRejectionRate:criterionCount?falseRejections/criterionCount:0,
+    criterionFalseAwardRate:negatives?falseAwards/negatives:0,
+    criterionFalseRejectionRate:positives?falseRejections/positives:0,
     falseAwards,
     falseRejections,
     criterionCount,
@@ -46,7 +56,8 @@ export function evaluateGradingBenchmark(rows=[]){
 }
 
 export function benchmarkReady(rows=[]){
-  return Array.isArray(rows) && rows.length>0 && rows.every(row=>
+  return Array.isArray(rows) && rows.length>0 && new Set(rows.map(row=>row?.caseId)).size===rows.length && rows.every(row=>
+    validMarks(row) &&
     row.caseId &&
     row.subjectId &&
     row.adjudicatedBy==="spark-calibration-team" &&
@@ -89,6 +100,7 @@ export function officialCxcBenchmarkReady(report={},options={}){
   const minimumPassRate=Number(options.minimumPassRate ?? 1);
   if(!Array.isArray(report.cases) || !report.cases.length) return false;
   const metrics=evaluateOfficialRuleBenchmark(report.cases);
+  if(metrics.cases!==report.cases.length) return false;
   if(metrics.passRate<minimumPassRate) return false;
   return requiredSubjects.every(subjectId=>
     metrics.bySubject[subjectId]
@@ -108,7 +120,9 @@ export function officialCxcBenchmarkReady(report={},options={}){
  */
 export function calibrationStatus({officialReport,adjudicatedRows=[]}={}){
   const officialReady=officialCxcBenchmarkReady(officialReport);
-  const adjudicatedReady=adjudicatedRows.length===0 ? officialReady : benchmarkReady(adjudicatedRows);
+  const metrics=evaluateGradingBenchmark(adjudicatedRows);
+  const adjudicatedReady=adjudicatedRows.length===0 ? officialReady
+    : benchmarkReady(adjudicatedRows) && metrics.exactAgreement===1 && metrics.falseAwards===0 && metrics.falseRejections===0;
   return {
     officialCxcReady:officialReady,
     adjudicatedCxcReady:adjudicatedReady,

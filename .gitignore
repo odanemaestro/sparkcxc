@@ -29,3 +29,6 @@ yarn-error.log*
 supabase/.env.push.local
 
 supabase/.temp/
+
+# Local audit command output (not application assets)
+.audit-output/

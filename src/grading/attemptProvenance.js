@@ -3,6 +3,14 @@
 
 export const ATTEMPT_PROVENANCE_VERSION="1.0.0";
 
+function deepFreeze(value){
+  if(value && typeof value==="object"){
+    Object.values(value).forEach(deepFreeze);
+    Object.freeze(value);
+  }
+  return value;
+}
+
 function stable(value){
   if(Array.isArray(value)) return value.map(stable);
   if(value && typeof value==="object"){
@@ -37,7 +45,7 @@ export function buildAttemptProvenance({
   responses={},
 }={}){
   const snapshot=JSON.parse(stableAttemptJson(responses));
-  return Object.freeze({
+  return deepFreeze({
     provenance_version:ATTEMPT_PROVENANCE_VERSION,
     subject_id:subjectId || null,
     paper:paper || null,

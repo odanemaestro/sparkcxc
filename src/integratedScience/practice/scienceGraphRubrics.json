@@ -1,0 +1,1094 @@
+{
+  "IS-M1-P2-01:1:0": {
+    "kind": "line",
+    "series": [
+      {
+        "name": "",
+        "points": [
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 2,
+            "y": 5
+          },
+          {
+            "x": 3,
+            "y": 11
+          },
+          {
+            "x": 4,
+            "y": 18
+          },
+          {
+            "x": 5,
+            "y": 23
+          },
+          {
+            "x": 6,
+            "y": 25
+          }
+        ]
+      }
+    ],
+    "plotMarks": [
+      2
+    ],
+    "keyMarks": 0,
+    "axesMarks": 1,
+    "scaleMarks": 1,
+    "constructionMarks": 1,
+    "connection": "smooth",
+    "scaleIncludesConstruction": false
+  },
+  "IS-M1-P2-07:0:0": {
+    "kind": "line",
+    "series": [
+      {
+        "name": "",
+        "points": [
+          {
+            "x": 0,
+            "y": 140
+          },
+          {
+            "x": 1,
+            "y": 124
+          },
+          {
+            "x": 2,
+            "y": 108
+          },
+          {
+            "x": 3,
+            "y": 94
+          },
+          {
+            "x": 4,
+            "y": 84
+          },
+          {
+            "x": 5,
+            "y": 76
+          },
+          {
+            "x": 6,
+            "y": 72
+          }
+        ]
+      }
+    ],
+    "plotMarks": [
+      2
+    ],
+    "keyMarks": 0,
+    "axesMarks": 1,
+    "scaleMarks": 1,
+    "constructionMarks": 1,
+    "connection": "smooth",
+    "scaleIncludesConstruction": false
+  },
+  "IS-M1-P2-09:0:0": {
+    "kind": "bar",
+    "series": [
+      {
+        "name": "",
+        "points": [
+          {
+            "x": "A",
+            "y": 0
+          },
+          {
+            "x": "B",
+            "y": 65
+          },
+          {
+            "x": "C",
+            "y": 5
+          },
+          {
+            "x": "D",
+            "y": 10
+          }
+        ]
+      }
+    ],
+    "plotMarks": [
+      1
+    ],
+    "keyMarks": 0,
+    "axesMarks": 1,
+    "scaleMarks": 1,
+    "constructionMarks": 1,
+    "connection": "none",
+    "scaleIncludesConstruction": false
+  },
+  "IS-M1-P2-11:0:0": {
+    "kind": "line",
+    "series": [
+      {
+        "name": "Average mass of boys/kg",
+        "points": [
+          {
+            "x": 10,
+            "y": 32
+          },
+          {
+            "x": 11,
+            "y": 35
+          },
+          {
+            "x": 12,
+            "y": 39
+          },
+          {
+            "x": 13,
+            "y": 44
+          },
+          {
+            "x": 14,
+            "y": 50
+          },
+          {
+            "x": 15,
+            "y": 56
+          },
+          {
+            "x": 16,
+            "y": 60
+          }
+        ]
+      },
+      {
+        "name": "Average mass of girls/kg",
+        "points": [
+          {
+            "x": 10,
+            "y": 33
+          },
+          {
+            "x": 11,
+            "y": 37
+          },
+          {
+            "x": 12,
+            "y": 42
+          },
+          {
+            "x": 13,
+            "y": 46
+          },
+          {
+            "x": 14,
+            "y": 49
+          },
+          {
+            "x": 15,
+            "y": 51
+          },
+          {
+            "x": 16,
+            "y": 53
+          }
+        ]
+      }
+    ],
+    "plotMarks": [
+      2,
+      1
+    ],
+    "keyMarks": 1,
+    "axesMarks": 1,
+    "scaleMarks": 1,
+    "constructionMarks": 0,
+    "connection": "smooth",
+    "scaleIncludesConstruction": true
+  },
+  "IS-M1-P2-13:0:1": {
+    "kind": "line",
+    "series": [
+      {
+        "name": "",
+        "points": [
+          {
+            "x": 0,
+            "y": 6
+          },
+          {
+            "x": 0.2,
+            "y": 3
+          },
+          {
+            "x": 0.4,
+            "y": 0
+          },
+          {
+            "x": 0.6,
+            "y": -3
+          },
+          {
+            "x": 0.8,
+            "y": -5
+          }
+        ]
+      }
+    ],
+    "plotMarks": [
+      2
+    ],
+    "keyMarks": 0,
+    "axesMarks": 1,
+    "scaleMarks": 1,
+    "constructionMarks": 1,
+    "connection": "smooth",
+    "scaleIncludesConstruction": false
+  },
+  "IS-M1-P2-17:0:0": {
+    "kind": "bar",
+    "series": [
+      {
+        "name": "",
+        "points": [
+          {
+            "x": "No washing",
+            "y": 86
+          },
+          {
+            "x": "Water only",
+            "y": 54
+          },
+          {
+            "x": "Soap and water",
+            "y": 12
+          },
+          {
+            "x": "Hand sanitiser",
+            "y": 18
+          }
+        ]
+      }
+    ],
+    "plotMarks": [
+      1
+    ],
+    "keyMarks": 0,
+    "axesMarks": 1,
+    "scaleMarks": 1,
+    "constructionMarks": 1,
+    "connection": "none",
+    "scaleIncludesConstruction": false
+  },
+  "IS-M1-P2-23:0:0": {
+    "kind": "line",
+    "series": [
+      {
+        "name": "pH at 4 °C",
+        "points": [
+          {
+            "x": 0,
+            "y": 6.7
+          },
+          {
+            "x": 12,
+            "y": 6.7
+          },
+          {
+            "x": 24,
+            "y": 6.6
+          },
+          {
+            "x": 36,
+            "y": 6.5
+          },
+          {
+            "x": 48,
+            "y": 6.5
+          }
+        ]
+      },
+      {
+        "name": "pH at 30 °C",
+        "points": [
+          {
+            "x": 0,
+            "y": 6.7
+          },
+          {
+            "x": 12,
+            "y": 6.2
+          },
+          {
+            "x": 24,
+            "y": 5.4
+          },
+          {
+            "x": 36,
+            "y": 4.8
+          },
+          {
+            "x": 48,
+            "y": 4.5
+          }
+        ]
+      }
+    ],
+    "plotMarks": [
+      1,
+      1
+    ],
+    "keyMarks": 1,
+    "axesMarks": 1,
+    "scaleMarks": 1,
+    "constructionMarks": 1,
+    "connection": "smooth",
+    "scaleIncludesConstruction": false
+  },
+  "IS-M1-P2-25:0:0": {
+    "kind": "bar",
+    "series": [
+      {
+        "name": "Garden X",
+        "points": [
+          {
+            "x": "Gravel and coarse sand",
+            "y": 55
+          },
+          {
+            "x": "Fine sand and silt",
+            "y": 30
+          },
+          {
+            "x": "Clay",
+            "y": 10
+          },
+          {
+            "x": "Humus (floating)",
+            "y": 5
+          }
+        ]
+      },
+      {
+        "name": "Garden Y",
+        "points": [
+          {
+            "x": "Gravel and coarse sand",
+            "y": 10
+          },
+          {
+            "x": "Fine sand and silt",
+            "y": 25
+          },
+          {
+            "x": "Clay",
+            "y": 55
+          },
+          {
+            "x": "Humus (floating)",
+            "y": 10
+          }
+        ]
+      }
+    ],
+    "plotMarks": [
+      1,
+      1
+    ],
+    "keyMarks": 1,
+    "axesMarks": 1,
+    "scaleMarks": 1,
+    "constructionMarks": 0,
+    "connection": "none",
+    "scaleIncludesConstruction": true
+  },
+  "IS-M2-P2-03:0:1": {
+    "kind": "line",
+    "series": [
+      {
+        "name": "",
+        "points": [
+          {
+            "x": 10,
+            "y": 18
+          },
+          {
+            "x": 20,
+            "y": 10
+          },
+          {
+            "x": 30,
+            "y": 5
+          },
+          {
+            "x": 40,
+            "y": 3
+          },
+          {
+            "x": 50,
+            "y": 8
+          }
+        ]
+      }
+    ],
+    "plotMarks": [
+      2
+    ],
+    "keyMarks": 0,
+    "axesMarks": 1,
+    "scaleMarks": 1,
+    "constructionMarks": 1,
+    "connection": "smooth",
+    "scaleIncludesConstruction": false
+  },
+  "IS-M2-P2-09:0:1": {
+    "kind": "bar",
+    "series": [
+      {
+        "name": "",
+        "points": [
+          {
+            "x": "Black",
+            "y": 18
+          },
+          {
+            "x": "Dark green",
+            "y": 11
+          },
+          {
+            "x": "White",
+            "y": 4
+          },
+          {
+            "x": "Shiny silver",
+            "y": 2
+          }
+        ]
+      }
+    ],
+    "plotMarks": [
+      1
+    ],
+    "keyMarks": 0,
+    "axesMarks": 1,
+    "scaleMarks": 1,
+    "constructionMarks": 1,
+    "connection": "none",
+    "scaleIncludesConstruction": false
+  },
+  "IS-M2-P2-15:0:1": {
+    "kind": "line",
+    "series": [
+      {
+        "name": "",
+        "points": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0.4
+          },
+          {
+            "x": 4,
+            "y": 0.8
+          },
+          {
+            "x": 6,
+            "y": 1.2
+          },
+          {
+            "x": 8,
+            "y": 1.6
+          },
+          {
+            "x": 10,
+            "y": 2
+          }
+        ]
+      }
+    ],
+    "plotMarks": [
+      2
+    ],
+    "keyMarks": 0,
+    "axesMarks": 1,
+    "scaleMarks": 1,
+    "constructionMarks": 1,
+    "connection": "segments",
+    "scaleIncludesConstruction": false
+  },
+  "IS-M2-P2-17:0:0": {
+    "kind": "bar",
+    "series": [
+      {
+        "name": "",
+        "points": [
+          {
+            "x": "Copper",
+            "y": 45
+          },
+          {
+            "x": "Aluminium",
+            "y": 70
+          },
+          {
+            "x": "Iron",
+            "y": 150
+          }
+        ]
+      }
+    ],
+    "plotMarks": [
+      1
+    ],
+    "keyMarks": 0,
+    "axesMarks": 1,
+    "scaleMarks": 1,
+    "constructionMarks": 1,
+    "connection": "none",
+    "scaleIncludesConstruction": false
+  },
+  "IS-M2-P2-19:0:0": {
+    "kind": "line",
+    "series": [
+      {
+        "name": "",
+        "points": [
+          {
+            "x": 10,
+            "y": 2
+          },
+          {
+            "x": 20,
+            "y": 8
+          },
+          {
+            "x": 30,
+            "y": 18
+          },
+          {
+            "x": 40,
+            "y": 26
+          },
+          {
+            "x": 50,
+            "y": 12
+          },
+          {
+            "x": 60,
+            "y": 0
+          }
+        ]
+      }
+    ],
+    "plotMarks": [
+      2
+    ],
+    "keyMarks": 0,
+    "axesMarks": 1,
+    "scaleMarks": 1,
+    "constructionMarks": 1,
+    "connection": "smooth",
+    "scaleIncludesConstruction": false
+  },
+  "IS-M2-P2-21:0:0": {
+    "kind": "line",
+    "series": [
+      {
+        "name": "",
+        "points": [
+          {
+            "x": 10,
+            "y": 48
+          },
+          {
+            "x": 20,
+            "y": 30
+          },
+          {
+            "x": 30,
+            "y": 18
+          },
+          {
+            "x": 40,
+            "y": 10
+          },
+          {
+            "x": 50,
+            "y": 6
+          }
+        ]
+      }
+    ],
+    "plotMarks": [
+      2
+    ],
+    "keyMarks": 0,
+    "axesMarks": 1,
+    "scaleMarks": 1,
+    "constructionMarks": 1,
+    "connection": "smooth",
+    "scaleIncludesConstruction": false
+  },
+  "IS-M2-P2-27:0:0": {
+    "kind": "line",
+    "series": [
+      {
+        "name": "Temperature of X/°C",
+        "points": [
+          {
+            "x": 0,
+            "y": 80
+          },
+          {
+            "x": 2,
+            "y": 71
+          },
+          {
+            "x": 4,
+            "y": 64
+          },
+          {
+            "x": 6,
+            "y": 58
+          },
+          {
+            "x": 8,
+            "y": 53
+          },
+          {
+            "x": 10,
+            "y": 49
+          }
+        ]
+      },
+      {
+        "name": "Temperature of Y/°C",
+        "points": [
+          {
+            "x": 0,
+            "y": 80
+          },
+          {
+            "x": 2,
+            "y": 77
+          },
+          {
+            "x": 4,
+            "y": 74
+          },
+          {
+            "x": 6,
+            "y": 71
+          },
+          {
+            "x": 8,
+            "y": 69
+          },
+          {
+            "x": 10,
+            "y": 67
+          }
+        ]
+      }
+    ],
+    "plotMarks": [
+      1,
+      1
+    ],
+    "keyMarks": 1,
+    "axesMarks": 1,
+    "scaleMarks": 1,
+    "constructionMarks": 1,
+    "connection": "smooth",
+    "scaleIncludesConstruction": false
+  },
+  "IS-M3-P2-03:0:2": {
+    "kind": "line",
+    "series": [
+      {
+        "name": "",
+        "points": [
+          {
+            "x": 0.5,
+            "y": 80
+          },
+          {
+            "x": 1,
+            "y": 40
+          },
+          {
+            "x": 2,
+            "y": 20
+          },
+          {
+            "x": 4,
+            "y": 10
+          },
+          {
+            "x": 5,
+            "y": 8
+          }
+        ]
+      }
+    ],
+    "plotMarks": [
+      2
+    ],
+    "keyMarks": 0,
+    "axesMarks": 1,
+    "scaleMarks": 1,
+    "constructionMarks": 1,
+    "connection": "smooth",
+    "scaleIncludesConstruction": false
+  },
+  "IS-M3-P2-07:0:0": {
+    "kind": "line",
+    "series": [
+      {
+        "name": "",
+        "points": [
+          {
+            "x": 20,
+            "y": 12
+          },
+          {
+            "x": 40,
+            "y": 24
+          },
+          {
+            "x": 60,
+            "y": 36
+          },
+          {
+            "x": 80,
+            "y": 48
+          },
+          {
+            "x": 100,
+            "y": 60
+          }
+        ]
+      }
+    ],
+    "plotMarks": [
+      2
+    ],
+    "keyMarks": 0,
+    "axesMarks": 1,
+    "scaleMarks": 1,
+    "constructionMarks": 1,
+    "connection": "best-fit",
+    "scaleIncludesConstruction": false
+  },
+  "IS-M3-P2-09:0:0": {
+    "kind": "line",
+    "series": [
+      {
+        "name": "",
+        "points": [
+          {
+            "x": 0,
+            "y": -10
+          },
+          {
+            "x": 1,
+            "y": 0
+          },
+          {
+            "x": 2,
+            "y": 0
+          },
+          {
+            "x": 3,
+            "y": 0
+          },
+          {
+            "x": 4,
+            "y": 20
+          },
+          {
+            "x": 5,
+            "y": 40
+          },
+          {
+            "x": 6,
+            "y": 60
+          },
+          {
+            "x": 7,
+            "y": 80
+          },
+          {
+            "x": 8,
+            "y": 95
+          }
+        ]
+      }
+    ],
+    "plotMarks": [
+      2
+    ],
+    "keyMarks": 0,
+    "axesMarks": 1,
+    "scaleMarks": 1,
+    "constructionMarks": 1,
+    "connection": "segments",
+    "scaleIncludesConstruction": false
+  },
+  "IS-M3-P2-17:0:0": {
+    "kind": "bar",
+    "series": [
+      {
+        "name": "",
+        "points": [
+          {
+            "x": "Baking soda solution",
+            "y": 8
+          },
+          {
+            "x": "Toothpaste solution",
+            "y": 3
+          },
+          {
+            "x": "Ammonia cleaner",
+            "y": 21
+          },
+          {
+            "x": "Antacid solution",
+            "y": 10
+          }
+        ]
+      }
+    ],
+    "plotMarks": [
+      1
+    ],
+    "keyMarks": 0,
+    "axesMarks": 1,
+    "scaleMarks": 1,
+    "constructionMarks": 1,
+    "connection": "none",
+    "scaleIncludesConstruction": false
+  },
+  "IS-M3-P2-19:0:0": {
+    "kind": "line",
+    "series": [
+      {
+        "name": "",
+        "points": [
+          {
+            "x": 2,
+            "y": 52
+          },
+          {
+            "x": 4,
+            "y": 44
+          },
+          {
+            "x": 6,
+            "y": 37
+          },
+          {
+            "x": 8,
+            "y": 31
+          },
+          {
+            "x": 10,
+            "y": 26
+          }
+        ]
+      }
+    ],
+    "plotMarks": [
+      2
+    ],
+    "keyMarks": 0,
+    "axesMarks": 1,
+    "scaleMarks": 1,
+    "constructionMarks": 1,
+    "connection": "best-fit",
+    "scaleIncludesConstruction": false
+  },
+  "IS-M3-P2-21:0:1": {
+    "kind": "bar",
+    "series": [
+      {
+        "name": "",
+        "points": [
+          {
+            "x": "Carpet",
+            "y": 40
+          },
+          {
+            "x": "Sandpaper",
+            "y": 26
+          },
+          {
+            "x": "Wood",
+            "y": 122
+          },
+          {
+            "x": "Tiles",
+            "y": 150
+          }
+        ]
+      }
+    ],
+    "plotMarks": [
+      1
+    ],
+    "keyMarks": 0,
+    "axesMarks": 1,
+    "scaleMarks": 1,
+    "constructionMarks": 1,
+    "connection": "none",
+    "scaleIncludesConstruction": false
+  },
+  "IS-M3-P2-23:0:0": {
+    "kind": "line",
+    "series": [
+      {
+        "name": "",
+        "points": [
+          {
+            "x": 0,
+            "y": 100
+          },
+          {
+            "x": 5,
+            "y": 100.9
+          },
+          {
+            "x": 10,
+            "y": 101.8
+          },
+          {
+            "x": 15,
+            "y": 102.6
+          },
+          {
+            "x": 20,
+            "y": 103.5
+          },
+          {
+            "x": 25,
+            "y": 104.4
+          }
+        ]
+      }
+    ],
+    "plotMarks": [
+      2
+    ],
+    "keyMarks": 0,
+    "axesMarks": 1,
+    "scaleMarks": 1,
+    "constructionMarks": 1,
+    "connection": "best-fit",
+    "scaleIncludesConstruction": false
+  },
+  "IS-M3-P2-25:0:0": {
+    "kind": "line",
+    "series": [
+      {
+        "name": "",
+        "points": [
+          {
+            "x": 0,
+            "y": 80
+          },
+          {
+            "x": 1,
+            "y": 70
+          },
+          {
+            "x": 2,
+            "y": 62
+          },
+          {
+            "x": 3,
+            "y": 56
+          },
+          {
+            "x": 4,
+            "y": 56
+          },
+          {
+            "x": 5,
+            "y": 56
+          },
+          {
+            "x": 6,
+            "y": 56
+          },
+          {
+            "x": 7,
+            "y": 48
+          },
+          {
+            "x": 8,
+            "y": 40
+          }
+        ]
+      }
+    ],
+    "plotMarks": [
+      2
+    ],
+    "keyMarks": 0,
+    "axesMarks": 1,
+    "scaleMarks": 1,
+    "constructionMarks": 1,
+    "connection": "smooth",
+    "scaleIncludesConstruction": false
+  },
+  "IS-M3-P2-27:0:0": {
+    "kind": "line",
+    "series": [
+      {
+        "name": "",
+        "points": [
+          {
+            "x": 0,
+            "y": 0
+          },
+          {
+            "x": 1,
+            "y": 2
+          },
+          {
+            "x": 2,
+            "y": 4
+          },
+          {
+            "x": 3,
+            "y": 6
+          },
+          {
+            "x": 4,
+            "y": 8
+          },
+          {
+            "x": 5,
+            "y": 10.5
+          },
+          {
+            "x": 6,
+            "y": 14
+          }
+        ]
+      }
+    ],
+    "plotMarks": [
+      2
+    ],
+    "keyMarks": 0,
+    "axesMarks": 1,
+    "scaleMarks": 1,
+    "constructionMarks": 1,
+    "connection": "smooth",
+    "scaleIncludesConstruction": false
+  }
+}
