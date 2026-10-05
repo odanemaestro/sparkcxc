@@ -53,3 +53,59 @@ export function benchmarkReady(rows=[]){
     Number.isFinite(Number(row.sparkMark))
   );
 }
+
+
+export function evaluateOfficialRuleBenchmark(cases=[]){
+  const rows=(cases || []).filter(row=>row && typeof row.pass==="boolean");
+  const passed=rows.filter(row=>row.pass).length;
+  const bySubject={};
+  rows.forEach(row=>{
+    const subjectId=String(row.subjectId || "unknown");
+    if(!bySubject[subjectId]) bySubject[subjectId]={cases:0,passed:0,failed:0};
+    bySubject[subjectId].cases+=1;
+    if(row.pass) bySubject[subjectId].passed+=1;
+    else bySubject[subjectId].failed+=1;
+  });
+  Object.values(bySubject).forEach(row=>{
+    row.passRate=row.cases ? row.passed/row.cases : 0;
+  });
+  return {
+    cases:rows.length,
+    passed,
+    failed:rows.length-passed,
+    passRate:rows.length ? passed/rows.length : 0,
+    bySubject,
+  };
+}
+
+export function officialCxcBenchmarkReady(report={},options={}){
+  const requiredSubjects=options.requiredSubjects || [
+    "english-a","mathematics","physics","information-technology","social-studies","integrated-science"
+  ];
+  const minCasesPerSubject=Number(options.minCasesPerSubject || 2);
+  const minimumPassRate=Number(options.minimumPassRate ?? 1);
+  if(!Array.isArray(report.cases) || !report.cases.length) return false;
+  const metrics=evaluateOfficialRuleBenchmark(report.cases);
+  if(metrics.passRate<minimumPassRate) return false;
+  return requiredSubjects.every(subjectId=>
+    metrics.bySubject[subjectId]
+    && metrics.bySubject[subjectId].cases>=minCasesPerSubject
+    && metrics.bySubject[subjectId].passRate>=minimumPassRate
+  );
+}
+
+/**
+ * Calibration is intentionally two-layered:
+ * 1. official CXC rules/specimen mark schemes: deterministic regression gate;
+ * 2. independent double-marked candidate scripts: human-judgement agreement gate.
+ *
+ * Passing layer 1 must never be presented as examiner-equivalent validation.
+ */
+export function calibrationStatus({officialReport,independentRows=[]}={}){
+  return {
+    officialCxcReady:officialCxcBenchmarkReady(officialReport),
+    independentExaminerReady:benchmarkReady(independentRows),
+    examinerEquivalent:false,
+    note:"Official CXC rule calibration validates marking rules. Examiner-equivalent claims still require independently double-marked candidate scripts with adjudication.",
+  };
+}
