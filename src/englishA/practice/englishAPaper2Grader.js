@@ -348,7 +348,7 @@ function gradePersuasive(task,response){
   const introConclusion=(d.paragraphCount>=5?2:d.paragraphCount>=3?1:0);
   const sequencing=Math.min(3,connectors*.7);
   const logic=Math.min(2,examples>=2?2:examples?1:0);
-  const analysing=round(clamp(introConclusion+sequencing+logic,0,7));
+  let analysing=round(clamp(introConclusion+sequencing+logic,0,7));
 
   let understanding=round(clamp(lang.score,0,7));
   if(d.wordCount<150){
