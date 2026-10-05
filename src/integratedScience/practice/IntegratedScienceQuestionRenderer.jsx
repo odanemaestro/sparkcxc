@@ -159,6 +159,8 @@ function PracticeGraphResponse({ item, base, responses, onChange }) {
   const xMin=Number(responses[`${base}:xMin`] ?? 0),xMax=Number(responses[`${base}:xMax`] ?? 10);
   const yMin=Number(responses[`${base}:yMin`] ?? 0),yMax=Number(responses[`${base}:yMax`] ?? 10);
   const valid=[xMin,xMax,yMin,yMax].every(Number.isFinite)&&xMax>xMin&&yMax>yMin;
+  const xRange=valid ? xMax-xMin : 1;
+  const yRange=valid ? yMax-yMin : 1;
   const connection=responses[`${base}:connection`] || "straight";
   const multiSeries=/\bBOTH\b|\bkey\b/i.test(String(item?.prompt || ""));
   const activeSeries=responses[`${base}:activeSeries`] || "A";
@@ -175,7 +177,7 @@ function PracticeGraphResponse({ item, base, responses, onChange }) {
     const stepX=(xMax-xMin)/50,stepY=(yMax-yMin)/50;
     return {series:activeSeries,x:format(Math.round(rawX/stepX)*stepX),y:format(Math.round(rawY/stepY)*stepY)};
   };
-  const toScreen=point=>({x:pad+(point.x-xMin)/(xMax-xMin)*(width-pad*2),y:height-pad-(point.y-yMin)/(yMax-yMin)*(height-pad*2)});
+  const toScreen=point=>({x:pad+(point.x-xMin)/xRange*(width-pad*2),y:height-pad-(point.y-yMin)/yRange*(height-pad*2)});
   const addPoint=event=>{const point=toValue(event);if(point)onChange(`${base}:points`,serialize([...points,point]));};
   const groups=["A","B"].map(series=>({series,points:points.filter(point=>point.series===series)}));
   const smoothPath=seriesPoints=>{
@@ -197,7 +199,7 @@ function PracticeGraphResponse({ item, base, responses, onChange }) {
     return [{x:xMin,y:m*xMin+b},{x:xMax,y:m*xMax+b}];
   };
   const renderSeries=group=>{
-    if(group.points.length<2||connection==="points"||connection==="bars")return null;
+    if(!valid||group.points.length<2||connection==="points"||connection==="bars")return null;
     const className=group.series==="B"?"is-practice-graph-line series-b":"is-practice-graph-line";
     if(connection==="smooth")return <path key={group.series} d={smoothPath(group.points)} className={className}/>;
     if(connection==="best-fit"){const line=bestFit(group.points);return line?<line key={group.series} x1={toScreen(line[0]).x} y1={toScreen(line[0]).y} x2={toScreen(line[1]).x} y2={toScreen(line[1]).y} className={className}/>:null;}
@@ -225,8 +227,8 @@ function PracticeGraphResponse({ item, base, responses, onChange }) {
       <rect x={pad} y={pad} width={width-pad*2} height={height-pad*2} className="is-practice-graph-paper"/>
       {grid.map(i=>{const x=pad+i*(width-pad*2)/10,y=pad+i*(height-pad*2)/10;return <React.Fragment key={i}><line x1={x} y1={pad} x2={x} y2={height-pad} className="is-practice-graph-grid"/><line x1={pad} y1={y} x2={width-pad} y2={y} className="is-practice-graph-grid"/></React.Fragment>;})}
       <line x1={pad} y1={height-pad} x2={width-pad} y2={height-pad} className="is-practice-graph-axis"/><line x1={pad} y1={pad} x2={pad} y2={height-pad} className="is-practice-graph-axis"/>
-      {connection==="bars"?points.map((point,index)=>{const p=toScreen(point),zero=toScreen({x:point.x,y:Math.max(yMin,Math.min(yMax,0))});return <rect key={index} x={p.x-12} y={Math.min(p.y,zero.y)} width="24" height={Math.max(2,Math.abs(zero.y-p.y))} className={point.series==="B"?"is-practice-graph-bar series-b":"is-practice-graph-bar"}/>;}):groups.map(renderSeries)}
-      {connection!=="bars"&&points.map((point,index)=>{const p=toScreen(point);return <circle key={index} cx={p.x} cy={p.y} r="5" className={point.series==="B"?"is-practice-graph-point series-b":"is-practice-graph-point"}/>;})}
+      {valid&&(connection==="bars"?points.map((point,index)=>{const p=toScreen(point),zero=toScreen({x:point.x,y:Math.max(yMin,Math.min(yMax,0))});return <rect key={index} x={p.x-12} y={Math.min(p.y,zero.y)} width="24" height={Math.max(2,Math.abs(zero.y-p.y))} className={point.series==="B"?"is-practice-graph-bar series-b":"is-practice-graph-bar"}/>;}):groups.map(renderSeries))}
+      {valid&&connection!=="bars"&&points.map((point,index)=>{const p=toScreen(point);return <circle key={index} cx={p.x} cy={p.y} r="5" className={point.series==="B"?"is-practice-graph-point series-b":"is-practice-graph-point"}/>;})}
       <text x={width/2} y={height-8} textAnchor="middle" className="is-practice-graph-label">{responses[`${base}:xLabel`] || config.x || "x-axis"}</text>
       <text x="14" y={height/2} textAnchor="middle" transform={`rotate(-90 14 ${height/2})`} className="is-practice-graph-label">{responses[`${base}:yLabel`] || config.y || "y-axis"}</text>
     </svg>
