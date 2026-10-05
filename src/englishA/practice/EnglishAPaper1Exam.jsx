@@ -8,6 +8,8 @@ import {
   ENGLISH_A_PAPER1_DURATION_SECONDS,
   readEnglishAExamState,
   saveEnglishAExamState,
+  englishARecentAvoidance,
+  recordEnglishARecentAttempt,
 } from "./englishAExamModel";
 import { ENGLISH_A_MODULES } from "../data/englishAPaper1Bank";
 import "../../integratedScience/practice/integratedScienceExam.css";
@@ -36,8 +38,20 @@ export default function EnglishAPaper1Exam({ supabase, userId, onBack }) {
   const [confirmSubmit,setConfirmSubmit] = useState(false);
   const [showExitConfirm,setShowExitConfirm] = useState(false);
   const submitGuard = useRef(Boolean(initial?.submittedAt));
-
-  const paper = useMemo(() => buildEnglishAPaper1(), []);
+  const [paper,setPaper] = useState(() => {
+    if (initial?.questionIds?.length) {
+      try {
+        return buildEnglishAPaper1({questionIds:initial.questionIds});
+      } catch (error) {
+        console.warn("Could not restore saved English A Paper 01",error);
+      }
+    }
+    const avoidance=englishARecentAvoidance(userId);
+    return buildEnglishAPaper1({
+      avoidQuestionIds:avoidance.questionIds,
+      avoidStimulusIds:avoidance.stimulusIds,
+    });
+  });
   const result = useMemo(() => gradeEnglishAPaper1(paper,answers), [answers,paper]);
   const phase = active?.phase || null;
   const review = phase === "review";
@@ -63,6 +77,7 @@ export default function EnglishAPaper1Exam({ supabase, userId, onBack }) {
 
     setActive(next);
     saveEnglishAExamState(userId,{...next,currentIndex,answers,flags});
+    recordEnglishARecentAttempt(userId,paper);
 
     try {
       await recordSubjectActivity({
@@ -110,15 +125,21 @@ export default function EnglishAPaper1Exam({ supabase, userId, onBack }) {
 
   function createPaper() {
     const now = new Date().toISOString();
+    const avoidance=englishARecentAvoidance(userId);
+    const nextPaper=buildEnglishAPaper1({
+      avoidQuestionIds:avoidance.questionIds,
+      avoidStimulusIds:avoidance.stimulusIds,
+    });
     const next = {
       phase:"instructions",
-      questionIds:paper.map(question => question.id),
+      questionIds:nextPaper.map(question => question.id),
       currentIndex:0,
       answers:{},
       flags:{},
       createdAt:now,
     };
     submitGuard.current = false;
+    setPaper(nextPaper);
     setActive(next);
     setAnswers({});
     setFlags({});
@@ -143,7 +164,13 @@ export default function EnglishAPaper1Exam({ supabase, userId, onBack }) {
   }
 
   function startAnother() {
+    const avoidance=englishARecentAvoidance(userId);
+    const nextPaper=buildEnglishAPaper1({
+      avoidQuestionIds:avoidance.questionIds,
+      avoidStimulusIds:avoidance.stimulusIds,
+    });
     saveEnglishAExamState(userId,null);
+    setPaper(nextPaper);
     setActive(null);
     setAnswers({});
     setFlags({});

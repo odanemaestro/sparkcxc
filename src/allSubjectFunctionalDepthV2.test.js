@@ -8,6 +8,8 @@ import { ELECTRICITY_INTERACTIVES } from "./physics/electricity/interactives/dEl
 import { ATOMIC_INTERACTIVES } from "./physics/atomic/interactives/eAtomicInteractiveRegistry.mjs";
 import { INFORMATION_TECHNOLOGY_PRACTICAL_LABS } from "./informationTechnology/labs/labCatalog";
 import { englishAPaper2Sets } from "./englishA/data/englishAPaper2Bank";
+import { ENGLISH_A_ORIGINAL_PAPER1_POOL_SIZE } from "./englishA/data/englishAPaper1Pool";
+import { buildEnglishAPaper1 } from "./englishA/practice/englishAExamModel";
 
 const srcRoot=__dirname;
 const repoRoot=path.join(srcRoot,"..");
@@ -143,7 +145,19 @@ describe("SPARK all-subject functional depth audit V2",()=>{
     expect(readSrc("socialStudies/practice/SocialStudiesSbaPractice.jsx")).toContain("SbaPresentationBuilder");
   });
 
-  test("English A keeps six Paper 2 sets and the comprehensive automatic rubric engine",()=>{
+  test("English A Paper 1 has a deep rotating bank and Paper 2 keeps comprehensive automatic grading",()=>{
+    expect(ENGLISH_A_ORIGINAL_PAPER1_POOL_SIZE).toBeGreaterThanOrEqual(1500);
+    const first=buildEnglishAPaper1({random:()=>0.123456});
+    const second=buildEnglishAPaper1({
+      random:()=>0.654321,
+      avoidQuestionIds:first.map(question=>question.id),
+      avoidStimulusIds:[...new Set(first.map(question=>question.stimulusId).filter(Boolean))],
+    });
+    expect(first).toHaveLength(60);
+    expect(second).toHaveLength(60);
+    expect(second.some(question=>first.some(previous=>previous.id===question.id))).toBe(false);
+
+    expect(englishAPaper2Sets).toHaveLength(6);
     expect(englishAPaper2Sets).toHaveLength(6);
     englishAPaper2Sets.forEach(set=>expect(set.tasks.length).toBeGreaterThanOrEqual(7));
     const grader=readSrc("englishA/practice/englishAPaper2Grader.js");
