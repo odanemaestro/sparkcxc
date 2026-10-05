@@ -60,6 +60,8 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
   const [choiceId,setChoiceId]=useState(initial?.choiceId || "");
   const [currentIndex,setCurrentIndex]=useState(initial?.currentIndex || 0);
   const [endsAt,setEndsAt]=useState(initial?.endsAt || null);
+  const [serverAttemptId,setServerAttemptId]=useState(initial?.serverAttemptId || null);
+  const [startedAt,setStartedAt]=useState(initial?.startedAt || null);
   const [remaining,setRemaining]=useState(() => initial?.endsAt ? Math.max(0,Math.round((initial.endsAt-Date.now())/1000)) : ENGLISH_A_PAPER2_DURATION_SECONDS);
   const submitGuard=useRef(false);
 
@@ -74,8 +76,8 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
 
   useEffect(() => {
     if (phase === "library") return;
-    saveState(userId,{phase,setId,answers,choiceId,currentIndex,endsAt});
-  },[answers,choiceId,currentIndex,endsAt,phase,setId,userId]);
+    saveState(userId,{phase,setId,answers,choiceId,currentIndex,endsAt,serverAttemptId,startedAt});
+  },[answers,choiceId,currentIndex,endsAt,phase,setId,serverAttemptId,startedAt,userId]);
 
   useEffect(() => {
     if (phase !== "exam" || !endsAt) return undefined;
@@ -90,11 +92,10 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
   });
 
   useEffect(() => {
-    const currentState=readState(userId);
-    if(phase!=="exam" || !currentState?.serverAttemptId) return undefined;
+    if(phase!=="exam" || !serverAttemptId) return undefined;
     let cancelled=false;
     const syncClock=async()=>{
-      const clock=await readServerExamClock({supabase,attemptId:currentState.serverAttemptId});
+      const clock=await readServerExamClock({supabase,attemptId:serverAttemptId});
       if(cancelled || !clock?.available) return;
       const deadline=Date.parse(clock.deadline_at);
       const serverNow=Date.parse(clock.server_now);
@@ -107,7 +108,7 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
     syncClock();
     const id=window.setInterval(syncClock,30000);
     return ()=>{cancelled=true;window.clearInterval(id);};
-  },[phase,supabase,userId]);
+  },[phase,serverAttemptId,supabase]);
 
   function prepare(id) {
     submitGuard.current=false;
@@ -116,6 +117,8 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
     setChoiceId("");
     setCurrentIndex(0);
     setEndsAt(null);
+    setServerAttemptId(null);
+    setStartedAt(null);
     setRemaining(ENGLISH_A_PAPER2_DURATION_SECONDS);
     setPhase("instructions");
     saveState(userId,{phase:"instructions",setId:id,answers:{},choiceId:"",currentIndex:0,endsAt:null});
@@ -133,10 +136,9 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
     const finish=Number.isFinite(serverDeadline) ? serverDeadline : Date.now()+ENGLISH_A_PAPER2_DURATION_SECONDS*1000;
     setEndsAt(finish);
     setRemaining(ENGLISH_A_PAPER2_DURATION_SECONDS);
+    setServerAttemptId(server?.available ? server.attempt_id : null);
+    setStartedAt(server?.available ? server.started_at : new Date(finish-ENGLISH_A_PAPER2_DURATION_SECONDS*1000).toISOString());
     setPhase("exam");
-    if(server?.available){
-      saveState(userId,{phase:"exam",setId,answers,choiceId,currentIndex:0,endsAt:finish,serverAttemptId:server.attempt_id,startedAt:server.started_at});
-    }
     window.scrollTo?.(0,0);
   }
 
@@ -155,11 +157,10 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
     setPhase("review");
     const completedAt=new Date().toISOString();
     const responses=requiredTasks(paper,choiceId);
-    const currentState=readState(userId);
     try {
-      if(currentState?.serverAttemptId){
+      if(serverAttemptId){
         await submitServerExamAttempt({
-          supabase,attemptId:currentState.serverAttemptId,responses:answers,score:result.score,maxScore:result.maxScore,
+          supabase,attemptId:serverAttemptId,responses:answers,score:result.score,maxScore:result.maxScore,
           metadata:{subject:"english-a",paper:"02",client_timed_out:Boolean(timedOut)},
         });
       }
@@ -188,7 +189,7 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
             attempt_provenance:buildAttemptProvenance({
               subjectId:"english-a",paper:"02",mode:"timed",bankVersion:"english-a-paper2-v1",
               rubricVersion:"CXC-01-G-SYLL-25",graderVersion:"english-a-rubric-v2",
-              startedAt:endsAt ? new Date(Number(endsAt)-ENGLISH_A_PAPER2_DURATION_SECONDS*1000).toISOString() : null,
+              startedAt:startedAt || (endsAt ? new Date(Number(endsAt)-ENGLISH_A_PAPER2_DURATION_SECONDS*1000).toISOString() : null),
               submittedAt:completedAt,responses:answers,
             }),
           },
@@ -208,6 +209,8 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
     setChoiceId("");
     setCurrentIndex(0);
     setEndsAt(null);
+    setServerAttemptId(null);
+    setStartedAt(null);
     setRemaining(ENGLISH_A_PAPER2_DURATION_SECONDS);
     window.scrollTo?.({top:0,left:0,behavior:"auto"});
   }
