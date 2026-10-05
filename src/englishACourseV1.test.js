@@ -9,6 +9,8 @@ describe("SPARK English A course V1", () => {
   const registry = source("subjects","subjectRegistry.js");
   const app = source("App.js");
   const practiceHub = source("practice","PracticeHub.jsx");
+  const englishAPracticeHub = source("englishA","practice","EnglishAPracticeHub.jsx");
+  const nextBestAction = source("learning","nextBestActionV2.js");
   const migration = source(
     "..",
     "supabase",
@@ -34,6 +36,22 @@ describe("SPARK English A course V1", () => {
     expect(app).toContain('view === "practice-english-a"');
     expect(practiceHub).toContain('selectedSubject === "english-a"');
     expect(practiceHub).toContain("EnglishAPracticeHub");
+  });
+
+  test("Learning Intelligence deep-links English A to the exact recommended lesson", () => {
+    expect(nextBestAction).toContain('if (id === "english-a") return englishATarget(skill, actionType);');
+    expect(nextBestAction).toContain('params:{section:lesson.sectionId,topic:lesson.id}');
+    expect(nextBestAction).toContain('{ id:"2.7-connotation-form-purpose", sectionId:"module-2"');
+    expect(nextBestAction).toContain('{ id:"3.4-persuasive-devices", sectionId:"module-3"');
+    expect(nextBestAction).toContain('path:"/study/english-a"');
+  });
+
+  test("English A exam recommendations open the requested paper directly", () => {
+    expect(nextBestAction).toContain('params:{mode:"paper1"}');
+    expect(nextBestAction).toContain('view:"practice-english-a"');
+    expect(englishAPracticeHub).toContain('englishAPracticeModeFromRoute');
+    expect(englishAPracticeHub).toContain('readSparkHashRoute().params.get("mode")');
+    expect(englishAPracticeHub).toContain('subscribeSparkRoute');
   });
 
   test("migration publishes three syllabus modules and 29 syllabus-based lessons", () => {
