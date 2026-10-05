@@ -9,13 +9,7 @@ describe("Official CXC Paper 2 calibration",()=>{
     expect(Object.keys(report.bySubject).sort()).toEqual([
       "english-a","information-technology","integrated-science","mathematics","physics","social-studies"
     ]);
-    test("uses the adjudicated CXC schema and removes the obsolete outside-examiner schema",()=>{
-    expect(fs.existsSync(path.join(__dirname,"adjudicatedCxcBenchmark.schema.json"))).toBe(true);
-    expect(fs.existsSync(path.join(__dirname,"examinerBenchmark.schema.json"))).toBe(false);
-    const schema=JSON.parse(fs.readFileSync(path.join(__dirname,"adjudicatedCxcBenchmark.schema.json"),"utf8"));
-    expect(schema.title).toBe("SPARK Adjudicated CXC Paper 2 Benchmark");
   });
-});
 
   test("uses external CXC sources rather than self-generated answer keys only",()=>{
     expect(CXC_CALIBRATION_SOURCES.length).toBeGreaterThanOrEqual(8);
@@ -47,5 +41,12 @@ describe("Official CXC Paper 2 calibration",()=>{
       expect(row.adjudicated).toBe(true);
       expect(row.cxcSources.length).toBeGreaterThan(0);
     });
+  });
+
+  test("uses the adjudicated CXC schema and removes the obsolete outside-examiner schema",()=>{
+    expect(fs.existsSync(path.join(__dirname,"adjudicatedCxcBenchmark.schema.json"))).toBe(true);
+    expect(fs.existsSync(path.join(__dirname,"examinerBenchmark.schema.json"))).toBe(false);
+    const schema=JSON.parse(fs.readFileSync(path.join(__dirname,"adjudicatedCxcBenchmark.schema.json"),"utf8"));
+    expect(schema.title).toBe("SPARK Adjudicated CXC Paper 2 Benchmark");
   });
 });
