@@ -25,7 +25,7 @@ values (
   'study',
   '{"study":true,"practice":true,"flashcards":true,"progress":true,"paper1":true,"paper2":true,"adaptive":false,"structured":true,"labs":false,"sba":false}'::jsonb,
   '{"study":"/study/english-a","practice":"/practice/english-a","flashcards":"/dashboard/flashcards/english-a","progress":"/dashboard/progress"}'::jsonb,
-  '{"sections":3,"topics":29,"paper1Items":60,"paper2PracticeSets":3,"paper2HistoricalSources":30,"sourceFilesReviewed":54,"flashcards":145}'::jsonb,
+  '{"sections":3,"topics":29,"paper1Items":60,"paper2PracticeSets":6,"paper2HistoricalSources":30,"sourceFilesReviewed":54,"flashcards":145}'::jsonb,
   '{
     "syllabusCode":"CXC 01/G/SYLL 25",
     "effectiveFrom":"May-June 2027",
@@ -51,7 +51,7 @@ values (
       "module1":{"summaryMarks":10,"expositionMarks":30},
       "module2":{"summaryMarks":10,"creativeMarks":30,"creativeChoices":2},
       "module3":{"summaryMarks":10,"persuasiveMarks":30},
-      "originalPracticeSets":3,
+      "originalPracticeSets":6,
       "historicalSourcesIndexed":30
     },
     "content":{
