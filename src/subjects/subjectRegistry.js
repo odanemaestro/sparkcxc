@@ -162,10 +162,41 @@ const BASE_SUBJECTS = Object.freeze({
       sba: true,
     }),
   }),
+  integratedScience: Object.freeze({
+    id: "integrated-science",
+    name: "CSEC Integrated Science",
+    shortName: "Integrated Science",
+    qualification: "CSEC",
+    mark: "IS",
+    description: "Study the full CSEC Integrated Science syllabus with interactive diagrams, practical investigations, graphing skills and complete Paper 1 and Paper 2 practice.",
+    enabled: true,
+    status: "live",
+    sortOrder: 35,
+    implementation: "generic",
+    studyView: "study",
+    routes: Object.freeze({
+      study: "/study/integrated-science",
+      practice: "/practice/integrated-science",
+      flashcards: "/dashboard/flashcards/integrated-science",
+      progress: "/dashboard/progress",
+    }),
+    capabilities: Object.freeze({
+      study: true,
+      practice: true,
+      flashcards: true,
+      progress: true,
+      paper1: true,
+      paper2: true,
+      adaptive: false,
+      structured: true,
+      labs: true,
+      sba: false,
+    }),
+  }),
 
 });
 
-export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = {}, physics = {}, informationTechnology = {}, socialStudies = {}, englishA = {} } = {}) {
+export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = {}, physics = {}, informationTechnology = {}, integratedScience = {}, socialStudies = {}, englishA = {} } = {}) {
   const mathematicsSubject = {
     ...BASE_SUBJECTS.mathematics,
     stats: {
@@ -192,6 +223,18 @@ export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = 
       objectives: Number(informationTechnology.objectives || 63),
       mcq: Number(informationTechnology.mcq || 540),
       flashcards: Number(informationTechnology.flashcards || 115),
+    },
+  };
+  const integratedScienceSubject = {
+    ...BASE_SUBJECTS.integratedScience,
+    stats: {
+      sections: Number(integratedScience.sections || 3),
+      topics: Number(integratedScience.topics || 0),
+      objectives: Number(integratedScience.objectives || 0),
+      paper1Items: Number(integratedScience.paper1Items || 1561),
+      paper2Questions: Number(integratedScience.paper2Questions || 84),
+      practicalLabs: Number(integratedScience.practicalLabs || 4),
+      flashcards: Number(integratedScience.flashcards || 0),
     },
   };
   const englishASubject = {
@@ -222,7 +265,7 @@ export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = 
       flashcards: Number(socialStudies.flashcards || 342),
     },
   };
-  return Object.freeze([mathematicsSubject, physicsSubject, informationTechnologySubject, socialStudiesSubject, englishASubject]);
+  return Object.freeze([mathematicsSubject, physicsSubject, informationTechnologySubject, integratedScienceSubject, socialStudiesSubject, englishASubject]);
 }
 
 export function enabledSparkSubjects(subjects) {
@@ -254,7 +297,7 @@ export function subjectsForEnrollmentIds(subjects, subjectIds = [], options = {}
       name: label,
       shortName: label,
       qualification: "CSEC",
-      mark: label.slice(0, 1) || "â€¢",
+      mark: label.slice(0, 1) || "•",
       description: "Continue learning and track your progress in this subject.",
       enabled: true,
       status: "live",
