@@ -23,9 +23,9 @@ values (
   50,
   'generic',
   'study',
-  '{"study":true,"practice":true,"flashcards":true,"progress":true,"paper1":true,"paper2":false,"adaptive":false,"structured":false,"labs":false,"sba":false}'::jsonb,
+  '{"study":true,"practice":true,"flashcards":true,"progress":true,"paper1":true,"paper2":true,"adaptive":false,"structured":true,"labs":false,"sba":false}'::jsonb,
   '{"study":"/study/english-a","practice":"/practice/english-a","flashcards":"/dashboard/flashcards/english-a","progress":"/dashboard/progress"}'::jsonb,
-  '{"sections":3,"topics":29,"paper1Items":60,"sourceFilesReviewed":24,"flashcards":145}'::jsonb,
+  '{"sections":3,"topics":29,"paper1Items":60,"paper2PracticeSets":3,"paper2HistoricalSources":30,"sourceFilesReviewed":54,"flashcards":145}'::jsonb,
   '{
     "syllabusCode":"CXC 01/G/SYLL 25",
     "effectiveFrom":"May-June 2027",
@@ -42,6 +42,17 @@ values (
       "readingComprehensionItemsPerModule":15,
       "totalDiscreteItems":15,
       "totalReadingComprehensionItems":45
+    },
+    "paper02":{
+      "minutes":165,
+      "marks":120,
+      "moduleMarks":40,
+      "responses":6,
+      "module1":{"summaryMarks":10,"expositionMarks":30},
+      "module2":{"summaryMarks":10,"creativeMarks":30,"creativeChoices":2},
+      "module3":{"summaryMarks":10,"persuasiveMarks":30},
+      "originalPracticeSets":3,
+      "historicalSourcesIndexed":30
     },
     "content":{
       "teacherStyleNotes":true,
