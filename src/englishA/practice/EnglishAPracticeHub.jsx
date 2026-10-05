@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import EnglishAPaper1Exam from "./EnglishAPaper1Exam";
 import EnglishAPaper2Exam from "./EnglishAPaper2Exam";
 import { englishAPastPaperArchiveSummary } from "../data/englishAPastPaperArchive";
@@ -7,6 +7,10 @@ import "./englishAExam.css";
 
 export default function EnglishAPracticeHub({ supabase, userId, onBack }) {
   const [mode,setMode] = useState("home");
+
+  useEffect(() => {
+    window.scrollTo?.({top:0,left:0,behavior:"auto"});
+  }, [mode]);
 
   if (mode === "paper1") {
     return (
