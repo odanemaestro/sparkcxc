@@ -43,8 +43,8 @@ describe("Paper 2 accuracy V2",()=>{
   });
 
   test("IT pseudocode branch parser rejects reversed branches",()=>{
-    const correct=pseudocodeBranchEvidence("IF SCORE >= 50 THEN\\nDISPLAY ACCEPT\\nELSE\\nDISPLAY REVIEW");
-    const reversed=pseudocodeBranchEvidence("IF SCORE >= 50 THEN\\nDISPLAY REVIEW\\nELSE\\nDISPLAY ACCEPT");
+    const correct=pseudocodeBranchEvidence("IF SCORE >= 50 THEN\nDISPLAY ACCEPT\nELSE\nDISPLAY REVIEW");
+    const reversed=pseudocodeBranchEvidence("IF SCORE >= 50 THEN\nDISPLAY REVIEW\nELSE\nDISPLAY ACCEPT");
     expect(correct.trueAccept).toBe(true);
     expect(correct.falseReview).toBe(true);
     expect(reversed.trueAccept).toBe(false);
