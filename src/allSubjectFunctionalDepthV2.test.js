@@ -106,6 +106,8 @@ describe("SPARK all-subject functional depth audit V2",()=>{
     expect(exam).toContain("x minimum");
     expect(exam).toContain("y maximum");
     expect(exam).toContain("Plotting series");
+    expect(exam).toContain("bestFitSegment");
+    expect(exam).toContain("smoothPath");
     expect(exam).toContain("Undo point");
     expect(exam).toContain("Undo stroke");
     expect(exam).not.toContain("Enter plotted coordinates");
