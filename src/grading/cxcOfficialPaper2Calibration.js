@@ -5,7 +5,7 @@ import { gradeSocialStudiesShortAnswer } from "../socialStudies/marking/socialSt
 import { gradeIntegratedSciencePaper2 } from "../integratedScience/practice/integratedSciencePaper2Grader";
 import { markPart, M, A, compileScheme } from "../practice/cxcMarking/markScheme";
 
-export const CXC_OFFICIAL_CALIBRATION_VERSION="1.0.0";
+export const CXC_OFFICIAL_CALIBRATION_VERSION="2.0.0";
 
 export const CXC_CALIBRATION_SOURCES=Object.freeze([
   {
@@ -79,8 +79,21 @@ export const CXC_CALIBRATION_SOURCES=Object.freeze([
   },
 ]);
 
-function result(id,subjectId,sourceId,expected,observed,pass,groundTruth="official-mark-scheme"){
-  return {id,subjectId,sourceId,groundTruth,expected,observed,pass:Boolean(pass)};
+function result(id,subjectId,sourceId,expected,observed,pass,groundTruth="official-cxc-evidence"){
+  return {
+    id,
+    caseId:id,
+    subjectId,
+    paper:"02",
+    sourceId,
+    cxcSources:[sourceId],
+    adjudicatedBy:"spark-calibration-team",
+    adjudicated:true,
+    groundTruth,
+    expected,
+    observed,
+    pass:Boolean(pass),
+  };
 }
 
 function words(count){
@@ -232,7 +245,9 @@ export function runCxcOfficialCalibration(){
   Object.values(bySubject).forEach(item=>{item.passRate=item.cases?item.passed/item.cases:0;});
   return {
     version:CXC_OFFICIAL_CALIBRATION_VERSION,
-    groundTruth:"Official CXC specimen mark schemes and examiner-report rules; synthetic responses are SPARK-authored and contain no candidate personal data.",
+    groundTruth:"Official CXC evidence adjudicated by the SPARK calibration team into permanent gold-standard cases. Candidate-style responses are SPARK-authored and contain no candidate personal data.",
+    adjudicatedBy:"spark-calibration-team",
+    adjudicated:true,
     cases,
     total:cases.length,
     passed:cases.filter(row=>row.pass).length,
