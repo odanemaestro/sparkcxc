@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import SparkLoader from "../../components/ui/SparkLoader";
 import { recordSubjectActivity } from "../../subjects/subjectProgress";
 import { buildAttemptProvenance } from "../../grading/attemptProvenance";
+import { readServerExamClock, startServerExamAttempt, submitServerExamAttempt } from "../../grading/serverExamAttempt";
 import { loadIntegratedScienceModule } from "../data/integratedScienceBank";
 import { BankTable, TrustedBankSvg } from "./IntegratedScienceQuestionRenderer";
 import { gradeIntegratedSciencePaper2, INTEGRATED_SCIENCE_P2_GRADER_VERSION } from "./integratedSciencePaper2Grader";
@@ -216,6 +217,12 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
     });
 
     try {
+      if(active?.serverAttemptId){
+        await submitServerExamAttempt({
+          supabase,attemptId:active.serverAttemptId,responses,score:result.score,maxScore:result.maxScore,
+          metadata:{subject:"integrated-science",paper:"02",client_timed_out:Boolean(timedOut)},
+        });
+      }
       await recordSubjectActivity({
         supabase,
         activity:{
@@ -269,6 +276,25 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
     return () => window.clearInterval(interval);
   },[active?.endsAt,phase,submit]);
 
+  useEffect(() => {
+    if (phase !== "exam" || !active?.serverAttemptId) return undefined;
+    let cancelled=false;
+    const syncClock=async()=>{
+      const clock=await readServerExamClock({supabase,attemptId:active.serverAttemptId});
+      if(cancelled || !clock?.available) return;
+      const deadline=Date.parse(clock.deadline_at);
+      const serverNow=Date.parse(clock.server_now);
+      if(Number.isFinite(deadline)&&Number.isFinite(serverNow)){
+        const seconds=Math.max(0,Math.round((deadline-serverNow)/1000));
+        setRemaining(seconds);
+        if(clock.expired || seconds===0) submit({timedOut:true});
+      }
+    };
+    syncClock();
+    const interval=window.setInterval(syncClock,30000);
+    return ()=>{cancelled=true;window.clearInterval(interval);};
+  },[active?.serverAttemptId,phase,submit,supabase]);
+
   if (loadError) {
     return (
       <main className="is-exam-root">
@@ -306,13 +332,23 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
     goTop();
   }
 
-  function begin() {
+  async function begin() {
     const now = Date.now();
+    const server=await startServerExamAttempt({
+      supabase,subjectId:"integrated-science",paper:"02",mode:"timed",
+      durationSeconds:INTEGRATED_SCIENCE_PAPER2_DURATION_SECONDS,
+      bankVersion:"integrated-science-v1.2.0",rubricVersion:"item-mark-schemes-v1",
+      graderVersion:INTEGRATED_SCIENCE_P2_GRADER_VERSION,
+      metadata:{question_ids:active?.questionIds || []},
+    });
+    const serverDeadline=server?.available && server.deadline_at ? Date.parse(server.deadline_at) : null;
+    const serverStarted=server?.available && server.started_at ? server.started_at : new Date(now).toISOString();
     const next = {
       ...active,
       phase:"exam",
-      startedAt:new Date(now).toISOString(),
-      endsAt:now + INTEGRATED_SCIENCE_PAPER2_DURATION_SECONDS * 1000,
+      startedAt:serverStarted,
+      endsAt:Number.isFinite(serverDeadline) ? serverDeadline : now + INTEGRATED_SCIENCE_PAPER2_DURATION_SECONDS * 1000,
+      serverAttemptId:server?.available ? server.attempt_id : null,
     };
 
     submitGuard.current = false;
