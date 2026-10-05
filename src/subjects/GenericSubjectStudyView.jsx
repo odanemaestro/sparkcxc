@@ -107,14 +107,25 @@ function routeSelection(path, structure) {
   return { sectionId:section?.id || null, topicId:null };
 }
 
+function orderedTopics(structure) {
+  const sectionTopics = (structure?.sections || []).flatMap(section => section?.topics || []);
+  const assignedIds = new Set(sectionTopics.map(topic => topic.id));
+  const trailing = (structure?.topics || []).filter(topic => !assignedIds.has(topic.id));
+  return [...sectionTopics, ...trailing];
+}
+
 function firstTopic(structure, completedIds = new Set()) {
-  return (structure?.topics || []).find(topic => !completedIds.has(topic.id))
-    || structure?.topics?.[0]
-    || null;
+  const topics = orderedTopics(structure);
+  if (!topics.length) return null;
+
+  const allComplete = topics.every(topic => completedIds.has(topic.id));
+  if (allComplete) return topics[0];
+
+  return topics.find(topic => !completedIds.has(topic.id)) || topics[0];
 }
 
 function isTopicUnlocked(structure, topicId, completedIds = new Set()) {
-  const topics = structure?.topics || [];
+  const topics = orderedTopics(structure);
   const index = topics.findIndex(topic => topic.id === topicId);
   if (index < 0) return false;
   if (index === 0 || completedIds.has(topicId)) return true;
@@ -302,7 +313,11 @@ export default function GenericSubjectStudyView({
     setActiveSectionId(fallbackTopic?.sectionId || nextStructure.sections?.[0]?.id || null);
     setActiveTopicId(fallbackTopic?.id || null);
 
-    if (fallbackTopic && (routed.topicId || routed.sectionId)) {
+    const allTopics = orderedTopics(nextStructure);
+    const allComplete = allTopics.length > 0 && allTopics.every(topic => safeCompleted.has(topic.id));
+    const shouldNormalizeBareCompleteRoute = allComplete && !routed.topicId && !routed.sectionId;
+
+    if (fallbackTopic && (routed.topicId || routed.sectionId || shouldNormalizeBareCompleteRoute)) {
       writeSparkNestedRoute(studyPath, {
         section:fallbackTopic.sectionId || null,
         topic:fallbackTopic.id,
@@ -455,15 +470,16 @@ export default function GenericSubjectStudyView({
     ? Math.round((completedCount / totalTopics) * 100)
     : 0;
 
+  const navigationTopics = useMemo(() => orderedTopics(structure), [structure]);
   const activeTopicIndex = useMemo(
-    () => (structure?.topics || []).findIndex(topic => topic.id === activeTopicId),
-    [activeTopicId, structure]
+    () => navigationTopics.findIndex(topic => topic.id === activeTopicId),
+    [activeTopicId, navigationTopics]
   );
   const previousTopic = activeTopicIndex > 0
-    ? structure?.topics?.[activeTopicIndex - 1] || null
+    ? navigationTopics[activeTopicIndex - 1] || null
     : null;
-  const nextTopic = activeTopicIndex >= 0 && activeTopicIndex < (structure?.topics?.length || 0) - 1
-    ? structure?.topics?.[activeTopicIndex + 1] || null
+  const nextTopic = activeTopicIndex >= 0 && activeTopicIndex < navigationTopics.length - 1
+    ? navigationTopics[activeTopicIndex + 1] || null
     : null;
   const activeLessonComplete = Boolean(activeTopic && completedTopicIds.has(activeTopic.id));
 
