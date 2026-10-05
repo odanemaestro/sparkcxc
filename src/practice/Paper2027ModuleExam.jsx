@@ -12,6 +12,7 @@ import {
   legacyCsec2027Module1ActiveKey,
 } from "./csec2027Data";
 import { savePracticeExamAttempt } from "./persistence";
+import { buildAttemptProvenance } from "../grading/attemptProvenance";
 import "./practiceExam.css";
 
 const SYMBOLS = ["√", "π", "°", "×", "÷", "≤", "≥", "≠", "²", "³", "θ", "≈", "(", ")"];
@@ -405,6 +406,12 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false,
       totalParts: grade.totalParts,
       completedCount: completeIds.length,
       timedOut: wasTimedOut,
+      attemptProvenance:buildAttemptProvenance({
+        subjectId:"mathematics",paper:paper.scope==="full"?"02":"02-module",mode:"timed",
+        bankVersion:"math-2027-v1",rubricVersion:"mab-criteria-v2",graderVersion:"csec-2027-grader-v1",
+        startedAt:deadline ? new Date(Number(deadline)-durationSeconds*1000).toISOString() : null,
+        submittedAt:new Date().toISOString(),responses:answers,
+      }),
     };
     const results = readJson(CSEC_2027_RESULTS_KEY, []);
     writeJson(CSEC_2027_RESULTS_KEY, [record, ...results].slice(0, 60));
