@@ -62,16 +62,42 @@ function formulaNormal(value) {
     .replace(/^=/, "=");
 }
 
-function formulaMatches(answer, accepted) {
-  const got = formulaNormal(answer);
-  return accepted.some(item => got === formulaNormal(item));
+function expandSimpleSumRange(formula) {
+  const value=formulaNormal(formula);
+  const match=value.match(/^=SUM\(([A-Z]+)(\d+):([A-Z]+)(\d+)\)$/);
+  if(!match || match[1]!==match[3]) return value;
+  const start=Number(match[2]),end=Number(match[4]);
+  if(!Number.isInteger(start)||!Number.isInteger(end)||end<start||end-start>20) return value;
+  return "="+Array.from({length:end-start+1},(_,index)=>`${match[1]}${start+index}`).join("+");
+}
+
+function normaliseCommutativeFormula(formula) {
+  const value=expandSimpleSumRange(formula);
+  const match=value.match(/^=([^+*]+)([+*])([^+*]+)$/);
+  if(!match) return value;
+  const terms=[match[1],match[3]].sort();
+  return `=${terms[0]}${match[2]}${terms[1]}`;
+}
+
+export function formulaMatches(answer, accepted) {
+  const got=normaliseCommutativeFormula(answer);
+  return accepted.some(item => got===normaliseCommutativeFormula(item));
+}
+
+function normaliseQueryCondition(value) {
+  return normaliseITAnswer(value)
+    .replace(/[\[\]`]/g,"")
+    .replace(/[“”'"]/g,"")
+    .replace(/==/g,"=")
+    .replace(/\s+/g,"")
+    .trim();
 }
 
 function queryConditions(value) {
-  return normaliseITAnswer(value)
-    .replace(/[“”'"]/g, "")
+  return String(value ?? "")
+    .replace(/&&/g," AND ")
     .split(/\band\b/i)
-    .map(part => part.replace(/\s+/g, "").trim())
+    .map(normaliseQueryCondition)
     .filter(Boolean)
     .sort();
 }
@@ -112,7 +138,7 @@ function inferPseudocode(prompt) {
   return match ? { variables: [match[1], match[2], match[3]].map(x => x.trim()), threshold: Number(match[4]) } : { variables: [], threshold: null };
 }
 
-function pseudocodeSumIsEquivalent(text, vars = []) {
+export function pseudocodeSumIsEquivalent(text, vars = []) {
   const assignment = String(text || "").match(/\bscore\s*(?:<-|:=|=)\s*([^\n;]+)/i);
   if (!assignment || !vars.length) return false;
   const expression = normaliseITAnswer(assignment[1]).replace(/\s+/g,"");
@@ -122,7 +148,7 @@ function pseudocodeSumIsEquivalent(text, vars = []) {
   return terms.length===expected.length && terms.sort().every((term,index)=>term===expected[index]);
 }
 
-function pseudocodeBranchEvidence(text) {
+export function pseudocodeBranchEvidence(text) {
   const compact=String(text || "").replace(/\r/g,"");
   const conditionIndex=compact.search(/\b(?:if|when)\b/i);
   if(conditionIndex<0) return {hasElse:false,trueAccept:false,falseReview:false};
