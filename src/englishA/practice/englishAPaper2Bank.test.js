@@ -43,9 +43,18 @@ describe("SPARK English A Paper 02 V1", () => {
   test("keeps an audit manifest of the supplied historical Paper 2 archive", () => {
     expect(englishAPaper2Archive).toHaveLength(30);
     expect(englishAPaper2ArchiveSummary.suppliedFiles).toBe(30);
+    expect(englishAPaper2ArchiveSummary.verifiedFiles).toBe(30);
     expect(englishAPaper2ArchiveSummary.textFiles).toBe(19);
-    expect(englishAPaper2ArchiveSummary.scanFiles).toBe(11);
+    expect(englishAPaper2ArchiveSummary.visualFiles).toBe(11);
+    expect(englishAPaper2ArchiveSummary.mismatches).toBe(0);
+    expect(englishAPaper2ArchiveSummary.structureFailures).toBe(0);
     expect(englishAPaper2Archive[0].year).toBe(2002);
     expect(englishAPaper2Archive.at(-1).year).toBe(2026);
+    englishAPaper2Archive.forEach(item => {
+      expect(item.qaStatus).toBe("verified");
+      expect(item.identityVerified).toBe(true);
+      expect(item.structureVerified).toBe(true);
+      expect(item.usableForPatternReview).toBe(true);
+    });
   });
 });
