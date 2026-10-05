@@ -430,6 +430,107 @@ function itTarget(skill, actionType, sourceRows = []) {
   };
 }
 
+const ENGLISH_A_LESSONS = Object.freeze([
+  { id:"1.1-word-choice-grammar-meaning", sectionId:"module-1", title:"1.1 Word Choice, Grammar and Meaning" },
+  { id:"1.2-punctuation-paragraphing", sectionId:"module-1", title:"1.2 Punctuation, Paragraphing and Effective Language" },
+  { id:"1.3-facts-opinions-implications", sectionId:"module-1", title:"1.3 Facts, Opinions and Implied Information" },
+  { id:"1.4-sequence-specific-information", sectionId:"module-1", title:"1.4 Sequence and Extracting Specific Information" },
+  { id:"1.5-cause-effect-text-structures", sectionId:"module-1", title:"1.5 Cause and Effect and Text Structures" },
+  { id:"1.6-purpose-audience-informative", sectionId:"module-1", title:"1.6 Purpose, Audience and Informative Discourse" },
+  { id:"1.7-diction-grammar-editing", sectionId:"module-1", title:"1.7 Diction, Grammar and Editing for Clarity" },
+  { id:"1.8-conclusions-main-ideas-connotation", sectionId:"module-1", title:"1.8 Conclusions, Main Ideas and Connotation" },
+  { id:"1.9-visual-information-informative-writing", sectionId:"module-1", title:"1.9 Visual Information and Informative Writing" },
+  { id:"2.1-language-literary-meaning", sectionId:"module-2", title:"2.1 Language, Word Choice and Literary Meaning" },
+  { id:"2.2-explicit-implied-literature", sectionId:"module-2", title:"2.2 Explicit and Implied Meaning in Literature" },
+  { id:"2.3-point-of-view-sequence", sectionId:"module-2", title:"2.3 Narrative Point of View and Sequence" },
+  { id:"2.4-literary-devices-elements", sectionId:"module-2", title:"2.4 Literary Devices and Elements" },
+  { id:"2.5-attitudes-values-motivation", sectionId:"module-2", title:"2.5 Attitudes, Values and Character Motivation" },
+  { id:"2.6-diction-grammar-literary-response", sectionId:"module-2", title:"2.6 Diction, Grammar and Punctuation in Literary Responses" },
+  { id:"2.7-connotation-form-purpose", sectionId:"module-2", title:"2.7 Connotation, Form, Structure and Writer's Purpose" },
+  { id:"2.8-theme-tone-mood-register-style", sectionId:"module-2", title:"2.8 Theme, Tone, Mood, Register, Code and Style" },
+  { id:"2.9-writers-craft-context", sectionId:"module-2", title:"2.9 Evaluating Writer's Craft and Socio-historical Context" },
+  { id:"2.10-literary-response-creative-writing", sectionId:"module-2", title:"2.10 Literary Responses and Creative Writing" },
+  { id:"3.1-language-persuasive-meaning", sectionId:"module-3", title:"3.1 Word Choice, Grammar and Persuasive Meaning" },
+  { id:"3.2-fact-opinion-implication-sequence", sectionId:"module-3", title:"3.2 Facts, Opinions, Implication and Sequence" },
+  { id:"3.3-connotation-bias-perspective", sectionId:"module-3", title:"3.3 Connotation, Bias and Perspective" },
+  { id:"3.4-persuasive-devices", sectionId:"module-3", title:"3.4 Persuasive Devices and Techniques" },
+  { id:"3.5-persuasive-essay-evidence", sectionId:"module-3", title:"3.5 Persuasive Essay Structure and Evidence" },
+  { id:"3.6-diction-grammar-clear-argument", sectionId:"module-3", title:"3.6 Diction, Grammar, Punctuation and Clear Argument" },
+  { id:"3.7-reasoning-conclusions-main-ideas", sectionId:"module-3", title:"3.7 Reasoning, Conclusions and Main Ideas" },
+  { id:"3.8-visual-persuasion-media", sectionId:"module-3", title:"3.8 Visual Persuasion and Media Messages" },
+  { id:"3.9-evaluative-comments-logical-argument", sectionId:"module-3", title:"3.9 Reasoned Comments, Emotional Appeals and Logical Arguments" },
+  { id:"3.10-informed-opinion-evaluating-persuasion", sectionId:"module-3", title:"3.10 Informed Opinion, Comparison and Evaluating Persuasion" },
+]);
+
+function englishATopicForSkill(skill) {
+  const raw=String(skill || "").trim();
+  const direct=ENGLISH_A_LESSONS.find(item => lower(item.id)===lower(raw));
+  if(direct) return direct;
+
+  const numericPrefix=raw.match(/^(\d+\.\d+)/)?.[1];
+  if(numericPrefix) {
+    const byObjective=ENGLISH_A_LESSONS.find(item => item.id.startsWith(`${numericPrefix}-`));
+    if(byObjective) return byObjective;
+  }
+
+  const matched=bestMatch(raw, ENGLISH_A_LESSONS, item => `${item.id} ${item.title}`);
+  return matched?.item || null;
+}
+
+function englishATarget(skill, actionType) {
+  const lesson=englishATopicForSkill(skill);
+
+  if(actionType==="flashcards"){
+    return {
+      subjectId:"english-a",
+      special:"dashboard-flashcards",
+      view:"dashboard",
+      path:"/dashboard/flashcards/english-a",
+      params:lesson ? {topic:lesson.id} : {},
+      kind:"flashcard_review",
+      label:lesson ? `${lesson.title} flashcards` : "English A flashcards",
+      exact:Boolean(lesson),
+      outcomeScope:lesson ? {sectionId:lesson.sectionId,topicId:lesson.id} : {},
+    };
+  }
+
+  if(actionType==="assessment"){
+    return {
+      subjectId:"english-a",
+      view:"practice-english-a",
+      path:"/practice/english-a",
+      params:{mode:"paper1"},
+      kind:"exam",
+      label:"English A Paper 1 practice",
+      exact:true,
+      outcomeScope:{activityKeyPrefix:"paper1:"},
+    };
+  }
+
+  if(lesson){
+    return {
+      subjectId:"english-a",
+      view:"generic-study",
+      path:"/study/english-a",
+      params:{section:lesson.sectionId,topic:lesson.id},
+      kind:actionType==="targeted_practice" || actionType==="baseline" ? "practice" : "lesson",
+      label:lesson.title,
+      exact:true,
+      outcomeScope:{sectionId:lesson.sectionId,topicId:lesson.id},
+    };
+  }
+
+  return {
+    subjectId:"english-a",
+    view:"generic-study",
+    path:"/study/english-a",
+    params:{},
+    kind:"lesson",
+    label:"English A study",
+    exact:false,
+  };
+}
+
 function socialStudiesSectionForSkill(skill) {
   const raw=String(skill || "").trim();
   const directSection=(SOCIAL_STUDIES_COURSE.sections || []).find(section =>
@@ -559,6 +660,7 @@ export function exactTargetForAction(subjectId, skill, actionType, options = {})
   if (id === "physics") return physicsTarget(skill, actionType);
   if (id === "information-technology") return itTarget(skill, actionType, options.sourceRows || []);
   if (id === "social-studies") return socialStudiesTarget(skill, actionType);
+  if (id === "english-a") return englishATarget(skill, actionType);
 
   if (id && actionType === "flashcards") {
     return {
