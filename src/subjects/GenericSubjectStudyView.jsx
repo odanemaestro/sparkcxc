@@ -8,6 +8,7 @@ import IntegratedScienceLabelDiagram from "./components/IntegratedScienceLabelDi
 import ReviewedScienceDiagram from "./components/ReviewedScienceDiagram";
 import InteractiveLabelDiagram from "./components/InteractiveLabelDiagram";
 import TransportProcessExplorer from "./components/TransportProcessExplorer";
+import EnglishALessonExamples from "../englishA/components/EnglishALessonExamples";
 import {
   readSparkHashRoute,
   subscribeSparkRoute,
@@ -207,6 +208,10 @@ export function GenericLessonContent({
           />
         </div>
       ))}
+
+      {subjectId === "english-a" && (
+        <EnglishALessonExamples key={topic?.id} topicId={topic?.id} />
+      )}
 
       {points.length > 0 && (
         <Card className="spark-generic-key-points">
