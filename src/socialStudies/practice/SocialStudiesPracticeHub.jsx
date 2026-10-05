@@ -425,7 +425,7 @@ function Paper2Practice({ onExit, onComplete, userId }){
           <span>Paper 02 · General Proficiency · {selectedSet.label}</span>
           <strong>{completed ? `Result ${paperScore}/${paperMax}` : `Question ${current.number} of 6 · ${current.totalMarks} marks`}</strong>
         </div>
-        <b>{completed ? "SUBMITTED" : sessionMode==="timed" ? formatPaperTime(timeLeft) : current.type==="essay" ? "Essay" : "Structured"}</b>
+        <b>{completed ? "SUBMITTED" : sessionMode==="timed" ? formatTime(timeLeft) : current.type==="essay" ? "Essay" : "Structured"}</b>
       </header>
 
       {completed && <section className="ss-paper-summary">
