@@ -7001,23 +7001,25 @@ useEffect(() => () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [view]);
-  // SPARK_PHYSICS_IT_NESTED_SCROLL_RESET
-  // Main-view changes already reset scroll above. Physics and IT also use
-  // nested hash routes while staying inside the same main view, so reset
-  // scroll whenever one of those nested pages is entered, restored or
-  // reached with browser Back/Forward.
+  // SPARK_NESTED_SUBJECT_SCROLL_RESET
+  // Main-view changes already reset scroll above. Subject routes may also
+  // change inside the same mounted shell, so reset the document when a nested
+  // subject page is entered, restored or reached with browser Back/Forward.
   useLayoutEffect(() => {
-    const resetPhysicsAndItScroll = () => {
+    const resetNestedSubjectScroll = () => {
       const path = normalizedSparkPathFromBrowserHash();
-      const isPhysicsOrItRoute =
+      const isNestedSubjectRoute =
         path === "/physics" ||
         path === "/information-technology" ||
         path?.startsWith("/study/physics") ||
         path?.startsWith("/practice/physics") ||
         path?.startsWith("/study/information-technology") ||
-        path?.startsWith("/practice/information-technology");
+        path?.startsWith("/practice/information-technology") ||
+        path?.startsWith("/study/english-a") ||
+        path?.startsWith("/practice/english-a") ||
+        path?.startsWith("/dashboard/flashcards/english-a");
 
-      if (!isPhysicsOrItRoute) return;
+      if (!isNestedSubjectRoute) return;
 
       window.scrollTo({
         top: 0,
@@ -7027,18 +7029,18 @@ useEffect(() => () => {
     };
 
     // Covers direct entry and hard refresh.
-    resetPhysicsAndItScroll();
+    resetNestedSubjectScroll();
 
     // Covers browser navigation, direct hash changes and SPARK's pushState
     // nested routing.
-    window.addEventListener("popstate", resetPhysicsAndItScroll);
-    window.addEventListener("hashchange", resetPhysicsAndItScroll);
-    window.addEventListener("spark:routechange", resetPhysicsAndItScroll);
+    window.addEventListener("popstate", resetNestedSubjectScroll);
+    window.addEventListener("hashchange", resetNestedSubjectScroll);
+    window.addEventListener("spark:routechange", resetNestedSubjectScroll);
 
     return () => {
-      window.removeEventListener("popstate", resetPhysicsAndItScroll);
-      window.removeEventListener("hashchange", resetPhysicsAndItScroll);
-      window.removeEventListener("spark:routechange", resetPhysicsAndItScroll);
+      window.removeEventListener("popstate", resetNestedSubjectScroll);
+      window.removeEventListener("hashchange", resetNestedSubjectScroll);
+      window.removeEventListener("spark:routechange", resetNestedSubjectScroll);
     };
   }, []);
 
