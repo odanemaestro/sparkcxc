@@ -168,9 +168,34 @@ function tableResult(questionId,partIndex,itemIndex,item,responses){
 
 function visualResult(questionId,partIndex,itemIndex,item,responses){
   const base=`${questionId}:${partIndex}:${itemIndex}`;
-  const notes=responses[base] || "";
+  const type=item?.response?.type || "graph";
+  const notes=[
+    responses[base] || "",
+    responses[`${base}:xLabel`] || "",
+    responses[`${base}:yLabel`] || "",
+    responses[`${base}:scale`] || "",
+    responses[`${base}:points`] || "",
+  ].filter(Boolean).join(" ");
   const result=lineResult(questionId,partIndex,itemIndex,{...item,response:{type:"lines"}},{[base]:notes});
-  return {...result,confidence:"low",provisional:true,visualEvidenceRequired:true};
+  if(type==="drawing"){
+    const strokes=String(responses[`${base}:strokes`] || "[]");
+    const hasDrawing=strokes!=="[]" && strokes.length>8;
+    return {
+      ...result,
+      score:hasDrawing?result.score:Math.min(result.score,Math.max(0,result.maxMarks-1)),
+      confidence:"low",provisional:true,visualEvidenceRequired:true,
+      visualEvidence:{hasDrawing,strokeBytes:strokes.length},
+    };
+  }
+  const plotted=parseGraphPointCount(responses[`${base}:points`]);
+  return {
+    ...result,confidence:"low",provisional:true,visualEvidenceRequired:true,
+    visualEvidence:{plottedPoints:plotted,hasScale:Boolean(String(responses[`${base}:scale`] || "").trim())},
+  };
+}
+
+function parseGraphPointCount(value){
+  return String(value || "").split(/\n|;/).filter(line=>/-?\d+(?:\.\d+)?\s*[, ]\s*-?\d+(?:\.\d+)?/.test(line)).length;
 }
 
 export function gradeIntegratedSciencePaper2Item(question,partIndex,itemIndex,item,responses={}){
