@@ -72,16 +72,50 @@ function sourceCoverage(stimulus,response){
   return {terms,matched,ratio:terms.length?matched.length/terms.length:0};
 }
 
+const IDEA_EQUIVALENTS=Object.freeze({
+  quiet:["calm","peaceful"],
+  place:["space","area"],
+  places:["spaces","areas"],
+  reliable:["dependable","useful"],
+  books:["book","reading material","reading materials"],
+  service:["access","connection"],
+  helps:["supports","assists","enables"],
+  residents:["people","community","users"],
+  schoolwork:["homework","school work","studies"],
+  apply:["application","applications"],
+  jobs:["job","employment","work"],
+  bring:["connect","join","link"],
+  together:["connect","join","link"],
+  build:["strengthen","develop","improve"],
+  stronger:["better","improved","regular"],
+  habits:["habit","routine","routines"],
+  young:["youth","children","students"],
+  people:["persons","residents","community"],
+});
+
+function ideaTermPresent(candidateTokens,candidateText,term){
+  if(candidateTokens.has(term)) return true;
+  const equivalents=IDEA_EQUIVALENTS[term] || [];
+  return equivalents.some(value=>{
+    const normalized=stem(value);
+    return candidateTokens.has(normalized) || candidateText.includes(String(value).toLowerCase());
+  });
+}
+
 function sourceIdeaCoverage(stimulus,response){
   const rows=[
     ...(stimulus?.paragraphs || []),
     ...(stimulus?.situation || []),
   ].filter(Boolean);
+  const candidateText=clean(response).toLowerCase();
   const candidate=new Set(tokenise(response).map(stem));
   const ideas=rows.map((line,index)=>{
     const terms=[...new Set(tokenise(line).map(stem).filter(w=>w.length>=4&&!STOPWORDS.has(w)))];
-    const matched=terms.filter(term=>candidate.has(term));
-    const needed=Math.min(3,Math.max(1,Math.ceil(terms.length*.2)));
+    const matched=terms.filter(term=>ideaTermPresent(candidate,candidateText,term));
+    // CXC rewards a main idea expressed in the candidate's own words. Requiring
+    // three exact content words can punish legitimate paraphrase, so two
+    // independent semantic anchors are sufficient for a source idea.
+    const needed=Math.min(2,Math.max(1,Math.ceil(terms.length*.18)));
     return {index,line,matched:matched.slice(0,6),covered:matched.length>=needed};
   });
   return {ideas,covered:ideas.filter(row=>row.covered).length,total:ideas.length};
