@@ -41,16 +41,28 @@ function parseGraphPoints(value){
   }).filter(point=>point && Number.isFinite(point.x) && Number.isFinite(point.y));
 }
 
-function GraphPlotter({base,config,responses,onChange,disabled}){
+function parseGraphBars(value){
+  return String(value || "").split(/\n|;/).map(line=>{
+    const match=line.trim().match(/^(.+?)\s*[,=:]\s*(-?\d+(?:\.\d+)?)$/);
+    return match ? {label:match[1].trim(),value:Number(match[2])} : null;
+  }).filter(Boolean);
+}
+
+function GraphPlotter({base,config,prompt="",responses,onChange,disabled}){
   const pointsText=responses[`${base}:points`] || "";
+  const defaultType=/bar chart/i.test(prompt) ? "bar" : "line";
+  const chartType=responses[`${base}:chartType`] || defaultType;
   const points=parseGraphPoints(pointsText);
+  const bars=parseGraphBars(pointsText);
   const xs=points.map(p=>p.x),ys=points.map(p=>p.y);
   const minX=xs.length?Math.min(0,...xs):0,maxX=xs.length?Math.max(1,...xs):1;
   const minY=ys.length?Math.min(0,...ys):0,maxY=ys.length?Math.max(1,...ys):1;
   const sx=x=>50+(x-minX)/Math.max(1e-9,maxX-minX)*500;
   const sy=y=>260-(y-minY)/Math.max(1e-9,maxY-minY)*210;
+  const maxBar=Math.max(1,...bars.map(row=>row.value));
   return <div className="is-p2-graph-workspace">
     <div className="is-p2-graph-fields">
+      <label><span>Graph type</span><select disabled={disabled} value={chartType} onChange={e=>onChange(`${base}:chartType`,e.target.value)}><option value="line">Line / curve</option><option value="bar">Bar chart</option></select></label>
       <label><span>x-axis label</span><input disabled={disabled} value={responses[`${base}:xLabel`] || ""} onChange={e=>onChange(`${base}:xLabel`,e.target.value)} placeholder={config.x || "x-axis"}/></label>
       <label><span>y-axis label</span><input disabled={disabled} value={responses[`${base}:yLabel`] || ""} onChange={e=>onChange(`${base}:yLabel`,e.target.value)} placeholder={config.y || "y-axis"}/></label>
       <label><span>Scale</span><input disabled={disabled} value={responses[`${base}:scale`] || ""} onChange={e=>onChange(`${base}:scale`,e.target.value)} placeholder="e.g. x: 1 square = 1 week; y: 1 square = 5 cm"/></label>
@@ -59,10 +71,16 @@ function GraphPlotter({base,config,responses,onChange,disabled}){
       <rect x="50" y="30" width="500" height="230" fill="none" stroke="currentColor"/>
       {Array.from({length:11},(_,i)=><line key={`v${i}`} x1={50+i*50} x2={50+i*50} y1="30" y2="260" stroke="currentColor" opacity=".16"/>)}
       {Array.from({length:11},(_,i)=><line key={`h${i}`} x1="50" x2="550" y1={30+i*23} y2={30+i*23} stroke="currentColor" opacity=".16"/>)}
-      {points.map((point,index)=><circle key={index} cx={sx(point.x)} cy={sy(point.y)} r="4" fill="currentColor"/>)}
-      {points.length>1 && <polyline points={points.map(point=>`${sx(point.x)},${sy(point.y)}`).join(" ")} fill="none" stroke="currentColor" strokeWidth="2"/>}
+      {chartType==="bar" ? bars.map((row,index)=>{
+        const band=500/Math.max(1,bars.length);
+        const h=row.value/maxBar*210;
+        return <g key={`${row.label}-${index}`}><rect x={50+index*band+band*.18} y={260-h} width={band*.64} height={Math.max(1,h)} className="is-exam-graph-bar"/><text x={50+index*band+band*.5} y="278" textAnchor="middle" fontSize="10">{row.label}</text></g>;
+      }) : <>
+        {points.map((point,index)=><circle key={index} cx={sx(point.x)} cy={sy(point.y)} r="4" className="is-exam-graph-point"/>)}
+        {points.length>1 && <polyline points={points.map(point=>`${sx(point.x)},${sy(point.y)}`).join(" ")} fill="none" className="is-exam-graph-line"/>}
+      </>}
     </svg>
-    <textarea disabled={disabled} rows={4} value={pointsText} onChange={e=>onChange(`${base}:points`,e.target.value)} placeholder={"Enter plotted coordinates, one per line, for example:\n1, 2\n2, 5\n3, 11"}/>
+    <textarea disabled={disabled} rows={4} value={pointsText} onChange={e=>onChange(`${base}:points`,e.target.value)} placeholder={chartType==="bar" ? "Enter each category and value, one per line, for example:\nA, 12\nB, 25" : "Enter plotted coordinates, one per line, for example:\n1, 2\n2, 5\n3, 11"}/>
     <textarea disabled={disabled} rows={2} value={responses[base] || ""} onChange={e=>onChange(base,e.target.value)} placeholder="Optional graph notes or working."/>
   </div>;
 }
@@ -164,7 +182,7 @@ function BoundResponse({ questionId, partIndex, itemIndex, item, responses, onCh
   }
 
   if (type === "graph") {
-    return <GraphPlotter base={base} config={config} responses={responses} onChange={onChange} disabled={disabled}/>;
+    return <GraphPlotter base={base} config={config} prompt={item.prompt || ""} responses={responses} onChange={onChange} disabled={disabled}/>;
   }
 
   if (type === "drawing") {
