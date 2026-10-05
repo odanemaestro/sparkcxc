@@ -58,7 +58,14 @@ export function deriveIntegratedScienceGraphData(item={},sourceTable=null){
       }).filter(Boolean);
       return {kind,xLabel,yLabel,series:[{name:clean(headers[0]) || yLabel,points}],categories:points.map(point=>String(point.x)),xValues:points.map(point=>point.x)};
     }
-    let series=rows.map((row,index)=>{
+    const grouped=/both|compare|key/.test(prompt);
+    let selectedRows=rows;
+    if(!grouped && rows.length>1){
+      const scores=rows.map(row=>overlapScore(row[0],yLabel));
+      const best=Math.max(...scores);
+      if(best>0) selectedRows=rows.filter((row,index)=>scores[index]===best);
+    }
+    let series=selectedRows.map((row,index)=>{
       const points=headerX.map((x,i)=>{
         const y=numberValue(row[i+1]);
         return y===null ? null : {x,y,label:String(x)};
