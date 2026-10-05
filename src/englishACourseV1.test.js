@@ -66,7 +66,7 @@ describe("SPARK English A course V1", () => {
     expect(migration).toContain('"paper02"');
     expect(migration).toContain('"marks":120');
     expect(migration).toContain('"responses":6');
-    expect(migration).toContain('"originalPracticeSets":3');
+    expect(migration).toContain('"originalPracticeSets":6');
     expect(migration).toContain('"historicalSourcesIndexed":30');
   });
 });
