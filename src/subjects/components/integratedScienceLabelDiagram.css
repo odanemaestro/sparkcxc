@@ -27,3 +27,11 @@ html[data-theme="dark"] .spark-labelled-reference-panel figcaption,body[data-the
   .spark-integrated-science-label-scope .spark-label-diagram-stage svg.spark-female-anatomy{width:160%;max-width:none;margin-left:-30%}
   .spark-integrated-science-label-scope .spark-label-diagram-stage svg.spark-pregnancy-anatomy{width:250%;max-width:none;margin-left:-75%}
 }
+
+
+/* INTEGRATED_SCIENCE_LABEL_DARK_V1 */
+html[data-theme="dark"] .spark-reference-label-activity .spark-label-diagram-mobile-targets button,body[data-theme="dark"] .spark-reference-label-activity .spark-label-diagram-mobile-targets button,.dark .spark-reference-label-activity .spark-label-diagram-mobile-targets button{background:#122b43;color:#e7f0f7;border-color:#41647a}
+html[data-theme="dark"] .spark-reference-label-activity .spark-label-diagram-mobile-targets button.correct,body[data-theme="dark"] .spark-reference-label-activity .spark-label-diagram-mobile-targets button.correct,.dark .spark-reference-label-activity .spark-label-diagram-mobile-targets button.correct{background:#0b4f43;border-color:#34d399;color:#eafff8}
+html[data-theme="dark"] .spark-reference-label-activity .spark-label-diagram-mobile-targets button.incorrect,body[data-theme="dark"] .spark-reference-label-activity .spark-label-diagram-mobile-targets button.incorrect,.dark .spark-reference-label-activity .spark-label-diagram-mobile-targets button.incorrect{background:#5f2429;border-color:#f87171;color:#fff1f2}
+html[data-theme="dark"] .spark-science-controls button,body[data-theme="dark"] .spark-science-controls button,.dark .spark-science-controls button{background:#122b43;color:#e7f0f7;border-color:#41647a}
+html[data-theme="dark"] .spark-science-controls button[aria-pressed=true],body[data-theme="dark"] .spark-science-controls button[aria-pressed=true],.dark .spark-science-controls button[aria-pressed=true]{background:#0f4c47;color:#d8fff8;border-color:#2dd4bf}

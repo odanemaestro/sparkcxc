@@ -158,3 +158,9 @@ body[data-theme="dark"] .spark-generic-outline-topics button.locked,
   color:#718096;
   opacity:.72;
 }
+
+
+/* INTEGRATED_SCIENCE_TEXT_MEDIA_V1 */
+.spark-generic-study .is-science-text{unicode-bidi:plaintext}.spark-generic-study .is-science-formula{white-space:nowrap;font-variant-numeric:lining-nums tabular-nums}.spark-generic-study .is-science-formula sub,.spark-generic-study .is-science-formula sup{font-size:.72em;line-height:0;position:relative;vertical-align:baseline}.spark-generic-study .is-science-formula sub{bottom:-.25em}.spark-generic-study .is-science-formula sup{top:-.48em}
+.spark-integrated-science-reference-diagram,.spark-integrated-science-model{min-width:0;max-width:100%;overflow:hidden;margin-top:22px}
+.spark-integrated-science-reference-diagram img,.spark-integrated-science-model img{max-width:100%;height:auto;object-fit:contain}

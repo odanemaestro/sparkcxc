@@ -16,3 +16,14 @@
 .spark-science-process p{margin:0;padding:16px 20px;border:1px solid #b9d8dc;border-radius:8px;background:#edf8f7;max-width:240px;font-size:16px;line-height:1.5}
 .spark-science-process>span{font-size:22px;color:#227d85}
 @media(max-width:640px){.spark-reviewed-science-diagram figure{padding:8px}.spark-science-image-dialog{padding:10px}.spark-science-image-dialog header strong{font-size:14px}.spark-science-process{gap:8px;padding:12px}.spark-science-process p{font-size:14px}}
+
+
+/* INTEGRATED_SCIENCE_DARK_MEDIA_V1 */
+html[data-theme="dark"] .spark-reviewed-science-diagram figure,body[data-theme="dark"] .spark-reviewed-science-diagram figure,.dark .spark-reviewed-science-diagram figure{background:#10263a;border-color:#2b4961;color:#e7f0f7}
+html[data-theme="dark"] .spark-reviewed-science-diagram figcaption,body[data-theme="dark"] .spark-reviewed-science-diagram figcaption,.dark .spark-reviewed-science-diagram figcaption{color:#c8d7e3}
+html[data-theme="dark"] .spark-science-image-button,body[data-theme="dark"] .spark-science-image-button,.dark .spark-science-image-button{background:#fff;border-radius:9px;overflow:hidden}
+html[data-theme="dark"] .spark-science-image-dialog,body[data-theme="dark"] .spark-science-image-dialog,.dark .spark-science-image-dialog{background:#10263a;border-color:#36566e;color:#eef7fb}
+html[data-theme="dark"] .spark-science-image-dialog header button,body[data-theme="dark"] .spark-science-image-dialog header button,.dark .spark-science-image-dialog header button{background:#17344d;border-color:#4d7188;color:#eef7fb}
+html[data-theme="dark"] .spark-science-image-dialog>img,body[data-theme="dark"] .spark-science-image-dialog>img,.dark .spark-science-image-dialog>img{background:#fff;border-radius:9px}
+html[data-theme="dark"] .spark-science-image-credits,body[data-theme="dark"] .spark-science-image-credits,.dark .spark-science-image-credits{color:#b8cad7}
+html[data-theme="dark"] .spark-science-image-credits a,body[data-theme="dark"] .spark-science-image-credits a,.dark .spark-science-image-credits a{color:#67e8d7}

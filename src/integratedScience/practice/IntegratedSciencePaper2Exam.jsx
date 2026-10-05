@@ -5,6 +5,7 @@ import { buildAttemptProvenance } from "../../grading/attemptProvenance";
 import { readServerExamClock, startServerExamAttempt, submitServerExamAttempt } from "../../grading/serverExamAttempt";
 import { loadIntegratedScienceModule } from "../data/integratedScienceBank";
 import { BankTable, TrustedBankSvg } from "./IntegratedScienceQuestionRenderer";
+import IntegratedScienceText from "../components/IntegratedScienceText";
 import { gradeIntegratedSciencePaper2, INTEGRATED_SCIENCE_P2_GRADER_VERSION } from "./integratedSciencePaper2Grader";
 import {
   buildIntegratedSciencePaper2,
@@ -190,11 +191,11 @@ function MarkScheme({ item, evaluation }) {
     <div className="is-p2-mark-scheme">
       <strong>SPARK marking review</strong>
       {evaluation && <div className="is-p2-auto-score"><b>{evaluation.score}/{evaluation.maxMarks} marks</b><span>{evaluation.confidence === "high" ? "High-confidence structured check" : "Estimated from the authored marking points"}</span></div>}
-      {evaluation?.criteria?.length > 0 && <ul className="is-p2-auto-criteria">{evaluation.criteria.map(row => <li key={row.id}><b>{row.marks}/{row.maxMarks}</b> {row.label}</li>)}</ul>}
-      <ul>{(scheme.points || []).map((point,index) => <li key={index}>{point}</li>)}</ul>
-      {scheme.guidance && <p><b>Guidance:</b> {scheme.guidance}</p>}
+      {evaluation?.criteria?.length > 0 && <ul className="is-p2-auto-criteria">{evaluation.criteria.map(row => <li key={row.id}><b>{row.marks}/{row.maxMarks}</b> <IntegratedScienceText>{row.label}</IntegratedScienceText></li>)}</ul>}
+      <ul>{(scheme.points || []).map((point,index) => <li key={index}><IntegratedScienceText>{point}</IntegratedScienceText></li>)}</ul>
+      {scheme.guidance && <p><b>Guidance:</b> <IntegratedScienceText>{scheme.guidance}</IntegratedScienceText></p>}
       {Array.isArray(scheme.alternatives) && scheme.alternatives.length > 0 && (
-        <p><b>Accept also:</b> {scheme.alternatives.join("; ")}</p>
+        <p><b>Accept also:</b> <IntegratedScienceText>{scheme.alternatives.join("; ")}</IntegratedScienceText></p>
       )}
     </div>
   );
@@ -561,7 +562,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
           {(question.parts || []).map((part,partIndex) => (
             <section key={`${question.id}-${partIndex}`} className="is-p2-part">
               <h3>{part.label}</h3>
-              {part.context && <p className="is-p2-context">{part.context}</p>}
+              {part.context && <p className="is-p2-context"><IntegratedScienceText>{part.context}</IntegratedScienceText></p>}
               {part.svg && <TrustedBankSvg svg={part.svg} />}
               {part.table && <BankTable table={part.table} />}
 
@@ -569,7 +570,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
                 <div className="is-p2-subquestion" key={`${partIndex}-${itemIndex}`}>
                   <div className="is-p2-subquestion-prompt">
                     <strong>{item.label}</strong>
-                    <span>{item.prompt}</span>
+                    <span><IntegratedScienceText>{item.prompt}</IntegratedScienceText></span>
                     <b>{item.marks} mark{item.marks === 1 ? "" : "s"}</b>
                   </div>
 

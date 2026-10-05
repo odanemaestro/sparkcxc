@@ -9,6 +9,7 @@ import ReviewedScienceDiagram from "./components/ReviewedScienceDiagram";
 import InteractiveLabelDiagram from "./components/InteractiveLabelDiagram";
 import TransportProcessExplorer from "./components/TransportProcessExplorer";
 import EnglishALessonExamples from "../englishA/components/EnglishALessonExamples";
+import IntegratedScienceText from "../integratedScience/components/IntegratedScienceText";
 import {
   readSparkHashRoute,
   subscribeSparkRoute,
@@ -136,6 +137,9 @@ export function GenericLessonContent({
   const references = referenceDiagrams(topic,subjectId);
   const models = interactiveModels(topic);
   const intro = String(lesson.introduction || topic?.description || "").trim();
+  const renderLessonText = value => subjectId === "integrated-science"
+    ? <IntegratedScienceText>{String(value ?? "")}</IntegratedScienceText>
+    : String(value ?? "");
   const summary = String(lesson.summary || "").trim();
   const example = lesson.workedExample && typeof lesson.workedExample === "object"
     ? lesson.workedExample
@@ -143,13 +147,13 @@ export function GenericLessonContent({
 
   return (
     <div className="spark-generic-lesson-body">
-      {intro && <p className="spark-generic-lesson-intro">{intro}</p>}
+      {intro && <p className="spark-generic-lesson-intro">{renderLessonText(intro)}</p>}
 
       {objectives.length > 0 && (
         <Card className="spark-generic-objectives">
           <strong>What you should be able to do</strong>
           <ul>
-            {objectives.map((objective,index) => <li key={index}>{String(objective)}</li>)}
+            {objectives.map((objective,index) => <li key={index}>{renderLessonText(objective)}</li>)}
           </ul>
         </Card>
       )}
@@ -164,14 +168,14 @@ export function GenericLessonContent({
 
         return (
           <section key={`${block?.title || "section"}-${index}`} className="spark-generic-lesson-section">
-            {block?.title && <h3>{block.title}</h3>}
+            {block?.title && <h3>{renderLessonText(block.title)}</h3>}
             {paragraphs.filter(Boolean).map((paragraph, paragraphIndex) => (
-              <p key={paragraphIndex}>{String(paragraph)}</p>
+              <p key={paragraphIndex}>{renderLessonText(paragraph)}</p>
             ))}
             {bullets.length > 0 && (
               <ul>
                 {bullets.filter(Boolean).map((item, bulletIndex) => (
-                  <li key={bulletIndex}>{String(item)}</li>
+                  <li key={bulletIndex}>{renderLessonText(item)}</li>
                 ))}
               </ul>
             )}
@@ -217,7 +221,7 @@ export function GenericLessonContent({
         <Card className="spark-generic-key-points">
           <strong>Key points</strong>
           <ul>
-            {points.map((point, index) => <li key={index}>{String(point)}</li>)}
+            {points.map((point, index) => <li key={index}>{renderLessonText(point)}</li>)}
           </ul>
         </Card>
       )}
@@ -225,21 +229,21 @@ export function GenericLessonContent({
       {example && (
         <Card className="spark-generic-worked-example">
           <span>Worked example</span>
-          {example.title && <h3>{example.title}</h3>}
-          {example.prompt && <p>{example.prompt}</p>}
+          {example.title && <h3>{renderLessonText(example.title)}</h3>}
+          {example.prompt && <p>{renderLessonText(example.prompt)}</p>}
           {Array.isArray(example.steps) && example.steps.length > 0 && (
             <ol>
-              {example.steps.map((step, index) => <li key={index}>{String(step)}</li>)}
+              {example.steps.map((step, index) => <li key={index}>{renderLessonText(step)}</li>)}
             </ol>
           )}
-          {example.answer && <div className="spark-generic-example-answer">{example.answer}</div>}
+          {example.answer && <div className="spark-generic-example-answer">{renderLessonText(example.answer)}</div>}
         </Card>
       )}
 
       {summary && (
         <section className="spark-generic-lesson-summary">
           <h3>Lesson summary</h3>
-          <p>{summary}</p>
+          <p>{renderLessonText(summary)}</p>
         </section>
       )}
 
