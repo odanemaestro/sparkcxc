@@ -52,7 +52,16 @@ values (
       "module2":{"summaryMarks":10,"creativeMarks":30,"creativeChoices":2},
       "module3":{"summaryMarks":10,"persuasiveMarks":30},
       "originalPracticeSets":6,
-      "historicalSourcesIndexed":30
+      "historicalSourcesIndexed":30,
+      "grading":{
+        "version":"paper2-cxc-profile-v2",
+        "summaryProfiles":{"analysing":3,"understanding":3,"evaluatingCreating":4,"wordLimit":50},
+        "extendedProfiles":{"understanding":7,"analysing":7,"evaluatingCreating":16},
+        "creativeSuggestedWords":"400-450",
+        "persuasiveSuggestedWords":"250-300",
+        "persuasiveMinimumParagraphs":5,
+        "provisionalAutomatedEstimate":true
+      }
     },
     "content":{
       "teacherStyleNotes":true,
