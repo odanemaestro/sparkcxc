@@ -153,7 +153,13 @@ function quantityRangeMatch(fragment, range, expectedUnit, quantity) {
   return candidate.baseValue >= Math.min(low, high) && candidate.baseValue <= Math.max(low, high);
 }
 
+function hasCompetingNumericAlternatives(response) {
+  const text=normalizePhysicsNumericText(response);
+  return /\bor\b/i.test(text) && numericValuesInPhysicsResponse(text).length > 1;
+}
+
 export function physicsValueCheck(response, check, context = "") {
+  if (hasCompetingNumericAlternatives(response)) return false;
   const expected = Number(check?.value);
   if (!Number.isFinite(expected)) return false;
   const expectedUnit = check?.unit || "";
@@ -446,9 +452,15 @@ function normalizeCellValue(value) {
 function cellMatches(value, accepted = []) {
   const candidate = normalizeCellValue(value);
   if (!candidate) return false;
+  const numericCandidate = /^[-+]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(candidate);
   return accepted.some(item => {
     const expected = normalizeCellValue(item);
-    return candidate === expected || candidate.includes(expected) || expected.includes(candidate);
+    const numericExpected = /^[-+]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(expected);
+    if (numericCandidate || numericExpected) {
+      return numericCandidate && numericExpected && Number(candidate) === Number(expected);
+    }
+    if (candidate === expected) return true;
+    return candidate.split(/[^a-z0-9]+/).filter(Boolean).includes(expected);
   });
 }
 
@@ -687,14 +699,42 @@ const PAPER2_ECF_RULES = Object.freeze({
   "phy-p2-4-q3::d::A1": Object.freeze({ sources: ["c"], transform: values => values[0] + 273, unit: "K", tolerance: 0.02 }),
 });
 
+function sourceValueForEcf(question, sourcePartId, responses) {
+  const sourceResponse=responses[physicsPaper2PartKey(question.question_id, sourcePartId)] || {};
+  const answer=String(sourceResponse.answer || "").trim();
+  if (!answer || hasCompetingNumericAlternatives(answer)) return null;
+
+  const sourcePart=(question.parts || []).find(item=>String(item.id)===String(sourcePartId));
+  const checks=(sourcePart?.criteria || []).map(item=>item?.check).filter(item=>item?.type==="value");
+  if (checks.length !== 1) {
+    const numbers=numericValuesInPhysicsResponse(answer);
+    return numbers.length===1 ? numbers[0] : null;
+  }
+
+  const sourceUnit=checks[0].unit || "";
+  if (!sourceUnit) {
+    const numbers=numericValuesInPhysicsResponse(answer);
+    return numbers.length===1 ? numbers[0] : null;
+  }
+
+  const quantity=quantityForPaper2Unit(sourceUnit);
+  if (!quantity) return null;
+  const fragments=physicsResponseFragments(answer);
+  if (fragments.length !== 1) return null;
+  const parsed=parsePhysicsQuantity(fragments[0],quantity);
+  if (!parsed.ok) return null;
+
+  if (quantity==="temperature") {
+    return normalizeUnitText(sourceUnit)==="k" ? parsed.baseValue : parsed.baseValue-273.15;
+  }
+  const factor=convertQuantityValue(1,sourceUnit,quantity);
+  return Number.isFinite(factor) && factor!==0 ? parsed.baseValue/factor : null;
+}
+
 function ecfExpectedCheck(question, part, criterion, responses) {
   const rule = PAPER2_ECF_RULES[`${question.question_id}::${part.id}::${criterion.code}`];
   if (!rule) return null;
-  const values = rule.sources.map(sourcePart => {
-    const source = responses[physicsPaper2PartKey(question.question_id, sourcePart)] || {};
-    const numbers = numericValuesInPhysicsResponse(responseText(source));
-    return numbers.length ? numbers[0] : null;
-  });
+  const values = rule.sources.map(sourcePart => sourceValueForEcf(question,sourcePart,responses));
   if (values.some(value => !Number.isFinite(value))) return null;
   const value = Number(rule.transform(values));
   if (!Number.isFinite(value)) return null;
@@ -763,15 +803,20 @@ function automaticCriterionAward({ question, part, criterion, response, partAuto
 
 export function markPhysicsPaper2(paper, responses = {}, legacyManualAwards = {}) {
   const rows = physicsPaper2Criteria(paper);
-  const partAutoState = new Map();
+  const partAutoCounts = new Map();
   for (const { question, part, criterion } of rows) {
     if (!criterion.check || criterion.check.type !== "value") continue;
     const key = physicsPaper2PartKey(question.question_id, part.id);
     const response = responses[key] || {};
     const correct = physicsValueCheck(response.answer || "", criterion.check, `${criterion.description || ""} ${part.markerNote || ""}`);
-    if (correct) partAutoState.set(key, true);
-    else if (!partAutoState.has(key)) partAutoState.set(key, false);
+    const state=partAutoCounts.get(key) || {required:0,correct:0};
+    state.required += 1;
+    if (correct) state.correct += 1;
+    partAutoCounts.set(key,state);
   }
+  const partAutoState=new Map(
+    [...partAutoCounts.entries()].map(([key,state])=>[key,state.required>0 && state.correct===state.required])
+  );
 
   let automaticEarned = 0;
   let automaticPossible = 0;
