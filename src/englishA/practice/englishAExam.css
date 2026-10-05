@@ -174,3 +174,6 @@ body[data-theme="dark"] .ea-p2-feedback,
 .dark .ea-p2-feedback{background:#103b38}
 @media(max-width:900px){.ea-p2-score-summary{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:640px){.ea-p2-score-summary,.ea-p2-dimension-grid{grid-template-columns:1fr}}
+
+.ea-p2-part-prompt{margin:0 0 8px;color:var(--spark-ink-soft,#334e68);font-size:13px;font-weight:700;line-height:1.55}
+.ea-p2-task-card textarea.ea-p2-short-response{min-height:120px}
