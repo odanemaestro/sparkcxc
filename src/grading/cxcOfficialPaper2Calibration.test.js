@@ -30,8 +30,14 @@ describe("Official CXC Paper 2 calibration",()=>{
     });
   });
 
-  test("does not misrepresent synthetic calibration responses as real candidate scripts",()=>{
-    expect(report.groundTruth).toMatch(/synthetic responses are SPARK-authored/i);
-    expect(report.groundTruth).toMatch(/Official CXC specimen mark schemes/i);
+  test("uses the SPARK calibration team as the adjudicator of CXC gold cases",()=>{
+    expect(report.adjudicatedBy).toBe("spark-calibration-team");
+    expect(report.adjudicated).toBe(true);
+    expect(report.groundTruth).toMatch(/Official CXC evidence adjudicated by the SPARK calibration team/i);
+    report.cases.forEach(row=>{
+      expect(row.adjudicatedBy).toBe("spark-calibration-team");
+      expect(row.adjudicated).toBe(true);
+      expect(row.cxcSources.length).toBeGreaterThan(0);
+    });
   });
 });
