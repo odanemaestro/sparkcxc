@@ -69,6 +69,35 @@ export default function LearningEngineAdminPanel({ supabase, showToast }) {
 
   const champion = useMemo(() => rows.find(row => row.status === "champion") || null, [rows]);
   const candidates = useMemo(() => rows.filter(row => ["candidate","paused"].includes(row.status)), [rows]);
+  const activeCandidatePercent = useMemo(
+    () => candidates
+      .filter(row => row.status === "candidate")
+      .reduce((sum,row) => sum + Math.max(0,Number(row.rollout_percent || 0)),0),
+    [candidates]
+  );
+  const championEffectivePercent = Math.max(0,100-Math.min(100,activeCandidatePercent));
+
+  async function useChampionForEveryone() {
+    const active=candidates.filter(row => row.status === "candidate" && Number(row.rollout_percent || 0)>0);
+    if (!active.length || busyId) return;
+    setBusyId("champion-all");
+    try {
+      for (const row of active) {
+        const { error } = await supabase.rpc("spark_admin_set_learning_strategy_v3", {
+          p_strategy_id:row.strategy_id,
+          p_action:"pause",
+          p_rollout_percent:null,
+        });
+        if (error) throw error;
+      }
+      showToast?.("Balanced V2 is now being used for all students.");
+      await load();
+    } catch (error) {
+      showToast?.(error?.message || "Could not switch all students back to Balanced V2.");
+    } finally {
+      setBusyId("");
+    }
+  }
 
   async function updateStrategy(strategyId, action, rolloutPercent = null, { confirmed = false } = {}) {
     if (!strategyId || busyId) return;
@@ -135,7 +164,7 @@ export default function LearningEngineAdminPanel({ supabase, showToast }) {
                   </div>
                   <p>{strategyDescription(champion)}</p>
                 </div>
-                <strong className="spark-le-rollout">{Math.round(Number(champion.rollout_percent || 0))}% of students</strong>
+                <strong className="spark-le-rollout">{Math.round(championEffectivePercent)}% of students currently using this</strong>
               </div>
               <div className="spark-le-metrics">
                 <Metric label="Started" value={champion.started_count || 0}/>
@@ -143,6 +172,21 @@ export default function LearningEngineAdminPanel({ supabase, showToast }) {
                 <Metric label="Completion" value={`${Number(champion.completion_rate || 0).toFixed(1)}%`}/>
                 <Metric label="Result change" value={formatDelta(champion.adjusted_outcome_delta)}/>
                 <Metric label="Evidence" value={evidenceLabel(champion.confidence_band)}/>
+              </div>
+              <div className="spark-le-review-note">
+                {activeCandidatePercent > 0
+                  ? `${Math.round(activeCandidatePercent)}% of students are currently testing another strategy. The remaining ${Math.round(championEffectivePercent)}% use Balanced V2.`
+                  : "Balanced V2 is currently being used for all students."}
+              </div>
+              <div className="spark-le-actions">
+                <button
+                  type="button"
+                  className="promote"
+                  onClick={useChampionForEveryone}
+                  disabled={busyId === "champion-all" || activeCandidatePercent <= 0}
+                >
+                  Use V2 for everyone
+                </button>
               </div>
             </Card>
           )}

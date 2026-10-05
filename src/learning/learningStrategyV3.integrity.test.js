@@ -77,6 +77,10 @@ describe("SPARK Learning Loop V3 integration", () => {
     expect(admin).toContain("Test with {percent}%");
     expect(admin).toContain("Make main strategy");
     expect(admin).toContain("It will not become the main strategy automatically");
+    expect(admin).toContain("Use V2 for everyone");
+    expect(admin).toContain("championEffectivePercent");
+    expect(admin).toContain("activeCandidatePercent");
+    expect(admin).toContain("currently testing another strategy");
     expect(admin).not.toContain("Promote to champion");
     expect(admin).not.toContain("% traffic");
   });
