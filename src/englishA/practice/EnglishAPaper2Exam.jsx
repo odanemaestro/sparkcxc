@@ -9,7 +9,7 @@ import {
   buildEnglishAPaper2,
   englishAPaper2Sets,
 } from "../data/englishAPaper2Bank";
-import { gradeEnglishAPaper2 } from "./englishAPaper2Grader";
+import { countEnglishWords, gradeEnglishAPaper2 } from "./englishAPaper2Grader";
 import "../../integratedScience/practice/integratedScienceExam.css";
 import "./englishAExam.css";
 
@@ -23,10 +23,6 @@ function readState(userId) {
 function saveState(userId,state) {
   if (!state) localStorage.removeItem(storageKey(userId));
   else localStorage.setItem(storageKey(userId),JSON.stringify(state));
-}
-
-function countWords(value) {
-  return String(value || "").trim().split(/\s+/).filter(Boolean).length;
 }
 
 function formatTime(totalSeconds) {
@@ -189,7 +185,7 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
             paper_id:paper.id,
             timed_out:Boolean(timedOut),
             submitted_at:completedAt,
-            response_word_counts:Object.fromEntries(responses.map(item => [item.id,countWords(answers[item.id])])),
+            response_word_counts:Object.fromEntries(responses.map(item => [item.id,countEnglishWords(answers[item.id])])),
             selected_creative_prompt:choiceId || null,
             provisional_grading:true,
             module_scores:result.modules,
@@ -328,10 +324,10 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
               {item.kind === "summary" ? (
                 <>
                   <div className="ea-p2-review-response"><strong>Part (a) · 3 marks</strong><p>{answers[`${item.id}:analysis`] || "No response submitted."}</p></div>
-                  <div className="ea-p2-review-response"><strong>Part (b) summary · {countWords(answers[item.id])}/50 words</strong><p>{answers[item.id] || "No response submitted."}</p></div>
+                  <div className="ea-p2-review-response"><strong>Part (b) summary · {countEnglishWords(answers[item.id])}/50 words</strong><p>{answers[item.id] || "No response submitted."}</p></div>
                 </>
               ) : (
-                <div className="ea-p2-review-response"><strong>Your response · {countWords(answers[item.id])} words</strong><p>{answers[item.id] || "No response submitted."}</p></div>
+                <div className="ea-p2-review-response"><strong>Your response · {countEnglishWords(answers[item.id])} words</strong><p>{answers[item.id] || "No response submitted."}</p></div>
               )}
 
               {row?.dimensions?.length > 0 && (
@@ -365,7 +361,7 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
   }
 
   const moduleLabel=task ? `Module ${task.module}: ${ENGLISH_A_PAPER2_MODULES[task.module]}` : "";
-  const wordCount=countWords(answers[task?.id]);
+  const wordCount=countEnglishWords(answers[task?.id]);
   const answeredCount=requiredTasks(paper,choiceId).filter(item =>
     String(answers[item.id]||"").trim() ||
     (item.kind === "summary" && String(answers[`${item.id}:analysis`]||"").trim())
