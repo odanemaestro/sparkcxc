@@ -83,6 +83,41 @@ function GraphPlotter({base,config,item,responses,onChange,disabled}){
   const groups=["A","B"].map(series=>({series,points:points.filter(point=>point.series===series)}));
   const barWidth=Math.max(5,Math.min(34,plotWidth/Math.max(12,points.length*2)));
   const tickValues=(min,max)=>Array.from({length:11},(_,i)=>min+(max-min)*i/10);
+  const bestFitSegment=seriesPoints=>{
+    if(seriesPoints.length<2) return null;
+    const n=seriesPoints.length;
+    const sumX=seriesPoints.reduce((sum,point)=>sum+point.x,0);
+    const sumY=seriesPoints.reduce((sum,point)=>sum+point.y,0);
+    const sumXX=seriesPoints.reduce((sum,point)=>sum+point.x*point.x,0);
+    const sumXY=seriesPoints.reduce((sum,point)=>sum+point.x*point.y,0);
+    const denominator=n*sumXX-sumX*sumX;
+    if(Math.abs(denominator)<1e-12) return null;
+    const slope=(n*sumXY-sumX*sumY)/denominator;
+    const intercept=(sumY-slope*sumX)/n;
+    return [{x:xMin,y:slope*xMin+intercept},{x:xMax,y:slope*xMax+intercept}];
+  };
+  const smoothPath=seriesPoints=>{
+    if(seriesPoints.length<2) return "";
+    const screen=seriesPoints.map(point=>({x:sx(point.x),y:sy(point.y)}));
+    let d=`M ${screen[0].x} ${screen[0].y}`;
+    for(let i=0;i<screen.length-1;i+=1){
+      const p0=screen[i-1] || screen[i],p1=screen[i],p2=screen[i+1],p3=screen[i+2] || p2;
+      const c1={x:p1.x+(p2.x-p0.x)/6,y:p1.y+(p2.y-p0.y)/6};
+      const c2={x:p2.x-(p3.x-p1.x)/6,y:p2.y-(p3.y-p1.y)/6};
+      d+=` C ${c1.x} ${c1.y}, ${c2.x} ${c2.y}, ${p2.x} ${p2.y}`;
+    }
+    return d;
+  };
+  const seriesLine=group=>{
+    if(group.points.length<2 || connection==="points" || connection==="bars") return null;
+    const className=group.series==="B"?"is-p2-graph-line series-b":"is-p2-graph-line";
+    if(connection==="best-fit"){
+      const segment=bestFitSegment(group.points);
+      return segment ? <line key={group.series} x1={sx(segment[0].x)} y1={sy(segment[0].y)} x2={sx(segment[1].x)} y2={sy(segment[1].y)} className={className}/> : null;
+    }
+    if(connection==="smooth") return <path key={group.series} d={smoothPath(group.points)} className={className}/>;
+    return <polyline key={group.series} points={group.points.map(point=>`${sx(point.x)},${sy(point.y)}`).join(" ")} className={className}/>;
+  };
   return <div className="is-p2-graph-workspace">
     <div className="is-p2-graph-fields">
       <label><span>x-axis label</span><input disabled={disabled} value={responses[`${base}:xLabel`] || ""} onChange={e=>onChange(`${base}:xLabel`,e.target.value)} placeholder={config.x || "x-axis"}/></label>
@@ -104,7 +139,7 @@ function GraphPlotter({base,config,item,responses,onChange,disabled}){
       <rect x={left} y={top} width={plotWidth} height={plotHeight} fill="none" stroke="currentColor"/>
       {tickValues(xMin,xMax).map((value,i)=>{const x=left+i*plotWidth/10;return <React.Fragment key={`x${i}`}><line x1={x} x2={x} y1={top} y2={height-bottom} stroke="currentColor" opacity=".14"/><text x={x} y={height-bottom+20} textAnchor="middle" className="is-p2-graph-tick">{format(value)}</text></React.Fragment>;})}
       {tickValues(yMin,yMax).map((value,i)=>{const y=height-bottom-i*plotHeight/10;return <React.Fragment key={`y${i}`}><line x1={left} x2={width-right} y1={y} y2={y} stroke="currentColor" opacity=".14"/><text x={left-9} y={y+4} textAnchor="end" className="is-p2-graph-tick">{format(value)}</text></React.Fragment>;})}
-      {connection==="bars" ? points.map((point,index)=>{const zeroY=sy(Math.max(yMin,Math.min(yMax,0)));const py=sy(point.y);return <rect key={index} x={sx(point.x)-barWidth/2} y={Math.min(py,zeroY)} width={barWidth} height={Math.max(2,Math.abs(zeroY-py))} className={point.series==="B"?"is-p2-graph-bar series-b":"is-p2-graph-bar"}/>;}) : groups.map(group=>group.points.length>1 && connection!=="points" ? <polyline key={group.series} points={group.points.map(point=>`${sx(point.x)},${sy(point.y)}`).join(" ")} className={group.series==="B"?"is-p2-graph-line series-b":"is-p2-graph-line"} strokeDasharray={connection==="best-fit"?"7 5":undefined}/> : null)}
+      {connection==="bars" ? points.map((point,index)=>{const zeroY=sy(Math.max(yMin,Math.min(yMax,0)));const py=sy(point.y);return <rect key={index} x={sx(point.x)-barWidth/2} y={Math.min(py,zeroY)} width={barWidth} height={Math.max(2,Math.abs(zeroY-py))} className={point.series==="B"?"is-p2-graph-bar series-b":"is-p2-graph-bar"}/>;}) : groups.map(seriesLine)}
       {connection!=="bars" && points.map((point,index)=><circle key={index} cx={sx(point.x)} cy={sy(point.y)} r="4.5" className={point.series==="B"?"is-p2-graph-point series-b":"is-p2-graph-point"}/>)}
       <text x={left+plotWidth/2} y={height-8} textAnchor="middle" className="is-p2-graph-axis-label">{responses[`${base}:xLabel`] || config.x || "x-axis"}</text>
       <text x="16" y={top+plotHeight/2} textAnchor="middle" transform={`rotate(-90 16 ${top+plotHeight/2})`} className="is-p2-graph-axis-label">{responses[`${base}:yLabel`] || config.y || "y-axis"}</text>
