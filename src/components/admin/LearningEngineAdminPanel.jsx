@@ -14,7 +14,31 @@ function formatDelta(value) {
 }
 
 function StrategyStatus({ value }) {
-  return <span className={`spark-le-status ${String(value || "").toLowerCase()}`}>{value || "unknown"}</span>;
+  const labels={
+    champion:"Current strategy",
+    candidate:"Testing",
+    paused:"Paused",
+    retired:"Previous strategy",
+  };
+  const key=String(value || "").toLowerCase();
+  return <span className={`spark-le-status ${key}`}>{labels[key] || "Unknown"}</span>;
+}
+
+function strategyDescription(row) {
+  if (row?.status === "champion") {
+    return "This is the recommendation system SPARK currently uses. It mainly uses each student's own progress and performance to decide what they should do next.";
+  }
+  return "This strategy gives a little more attention to topics a student may be starting to forget, topics they have not practised for a while, and areas where SPARK does not yet have enough evidence.";
+}
+
+function evidenceLabel(value) {
+  const labels={
+    insufficient:"Not enough yet",
+    early:"Early evidence",
+    moderate:"Moderate evidence",
+    strong:"Strong evidence",
+  };
+  return labels[String(value || "").toLowerCase()] || value || "Not enough yet";
 }
 
 export default function LearningEngineAdminPanel({ supabase, showToast }) {
@@ -66,10 +90,10 @@ export default function LearningEngineAdminPanel({ supabase, showToast }) {
       } else {
         showToast?.(
           action === "promote"
-            ? "Learning strategy promoted to champion."
+            ? "This is now the main recommendation strategy."
             : action === "pause"
-              ? "Candidate rollout paused."
-              : "Candidate rollout updated."
+              ? "Testing has been paused."
+              : "Test group size updated."
         );
         if (action === "promote") setPromoteTarget(null);
         await load();
@@ -85,14 +109,14 @@ export default function LearningEngineAdminPanel({ supabase, showToast }) {
         <div>
           <span className="section-kicker">SPARK LEARNING LOOP V3</span>
           <h2>Learning Engine</h2>
-          <p>Compare recommendation strategies using aggregate outcomes. SPARK may test a candidate on a small stable cohort, but promotion always requires an administrator.</p>
+          <p>SPARK can test different ways of choosing what a student should do next. A new strategy may be tested with a small group first, but it will never become the main strategy unless an administrator approves it.</p>
         </div>
         <button type="button" className="spark-le-refresh" onClick={load} disabled={loading}>Refresh</button>
       </div>
 
       <Card className="spark-le-guardrail">
-        <strong>Guardrails</strong>
-        <p>Strategy tests can only make small recommendation-ranking changes. They cannot change canonical answers, marking schemes, awarded marks or learner evidence. Before-and-after outcome deltas are signals, not proof that a recommendation caused improvement.</p>
+        <strong>Safety Rules</strong>
+        <p>These tests can only make small changes to the order of recommendations. They cannot change correct answers, marking schemes, marks already awarded, student answers or learning records. Changes in results can help us judge a strategy, but they do not automatically prove that the strategy caused the improvement.</p>
       </Card>
 
       {loading ? (
@@ -109,16 +133,16 @@ export default function LearningEngineAdminPanel({ supabase, showToast }) {
                     <h3>{champion.label}</h3>
                     <StrategyStatus value={champion.status}/>
                   </div>
-                  <p>{champion.description}</p>
+                  <p>{strategyDescription(champion)}</p>
                 </div>
-                <strong className="spark-le-rollout">{Math.round(Number(champion.rollout_percent || 0))}% traffic</strong>
+                <strong className="spark-le-rollout">{Math.round(Number(champion.rollout_percent || 0))}% of students</strong>
               </div>
               <div className="spark-le-metrics">
                 <Metric label="Started" value={champion.started_count || 0}/>
                 <Metric label="Completed" value={champion.completed_count || 0}/>
                 <Metric label="Completion" value={`${Number(champion.completion_rate || 0).toFixed(1)}%`}/>
-                <Metric label="Adjusted outcome" value={formatDelta(champion.adjusted_outcome_delta)}/>
-                <Metric label="Evidence" value={champion.confidence_band || "insufficient"}/>
+                <Metric label="Result change" value={formatDelta(champion.adjusted_outcome_delta)}/>
+                <Metric label="Evidence" value={evidenceLabel(champion.confidence_band)}/>
               </div>
             </Card>
           )}
@@ -132,24 +156,24 @@ export default function LearningEngineAdminPanel({ supabase, showToast }) {
                     <StrategyStatus value={row.status}/>
                     {row.safety_flag && <span className="spark-le-safety">Safety flag: {row.safety_flag.replace(/_/g," ")}</span>}
                   </div>
-                  <p>{row.description}</p>
+                  <p>{strategyDescription(row)}</p>
                 </div>
-                <strong className="spark-le-rollout">{Math.round(Number(row.rollout_percent || 0))}% traffic</strong>
+                <strong className="spark-le-rollout">{Math.round(Number(row.rollout_percent || 0))}% of students</strong>
               </div>
 
               <div className="spark-le-metrics">
                 <Metric label="Started" value={row.started_count || 0}/>
                 <Metric label="Completed" value={row.completed_count || 0}/>
                 <Metric label="Completion" value={`${Number(row.completion_rate || 0).toFixed(1)}%`}/>
-                <Metric label="Raw outcome" value={formatDelta(row.average_outcome_delta)}/>
-                <Metric label="Adjusted outcome" value={formatDelta(row.adjusted_outcome_delta)}/>
-                <Metric label="Evidence" value={row.confidence_band || "insufficient"}/>
+                <Metric label="Result change" value={formatDelta(row.average_outcome_delta)}/>
+                <Metric label="Adjusted result" value={formatDelta(row.adjusted_outcome_delta)}/>
+                <Metric label="Evidence" value={evidenceLabel(row.confidence_band)}/>
               </div>
 
               <div className="spark-le-review-note">
                 {row.eligible_for_review
-                  ? "Minimum evidence gate reached. Promotion is still a manual decision and the server will compare this candidate with the current champion."
-                  : `Not ready for promotion. SPARK requires at least 30 completed outcomes, at least 7 days of observation and no active safety flag.`}
+                  ? "There is now enough information for an administrator to review this strategy. It will not become the main strategy automatically."
+                  : "There is not enough information to make this the main strategy yet. SPARK needs at least 30 completed results, at least 7 days of testing and no active safety concerns."}
               </div>
 
               <div className="spark-le-actions">
@@ -164,7 +188,7 @@ export default function LearningEngineAdminPanel({ supabase, showToast }) {
                         onClick={() => updateStrategy(row.strategy_id,"set_rollout",percent)}
                         disabled={busyId === row.strategy_id}
                       >
-                        {percent}% rollout
+                        Test with {percent}%
                       </button>
                     ))}
                     <button
@@ -173,11 +197,11 @@ export default function LearningEngineAdminPanel({ supabase, showToast }) {
                       onClick={() => updateStrategy(row.strategy_id,"promote")}
                       disabled={busyId === row.strategy_id || !row.eligible_for_review}
                     >
-                      Promote to champion
+                      Make main strategy
                     </button>
                   </>
                 ) : (
-                  <button type="button" onClick={() => updateStrategy(row.strategy_id,"resume",10)} disabled={busyId === row.strategy_id}>Resume at 10%</button>
+                  <button type="button" onClick={() => updateStrategy(row.strategy_id,"resume",10)} disabled={busyId === row.strategy_id}>Resume testing at 10%</button>
                 )}
               </div>
             </Card>
@@ -189,9 +213,9 @@ export default function LearningEngineAdminPanel({ supabase, showToast }) {
         open={Boolean(promoteTarget)}
         onClose={() => { if (!busyId) setPromoteTarget(null); }}
         onConfirm={() => updateStrategy(promoteTarget?.strategy_id, "promote", null, { confirmed: true })}
-        title="Promote to champion?"
-        message={`${promoteTarget?.label || "This candidate"} will become the champion strategy. Existing champion assignments move the next time SPARK resolves a strategy. Marking and answer keys do not change.`}
-        confirmLabel="Promote strategy"
+        title="Make this the main strategy?"
+        message={`${promoteTarget?.label || "This strategy"} will become the recommendation strategy SPARK uses by default. Students will move to it the next time SPARK chooses a strategy for them. Correct answers, marking schemes and marks will not change.`}
+        confirmLabel="Make main strategy"
         busy={Boolean(busyId)}
       />
     </section>
