@@ -294,10 +294,46 @@ const englishAPaper2CoreSets = Object.freeze([
   }),
 ]);
 
+function revisedSummaryTask(task) {
+  if (task?.kind !== "summary") return task;
+
+  const analysisPrompt = Number(task.module) === 2
+    ? "Describe the setting of the extract."
+    : "State the writer's purpose of the extract.";
+
+  const summaryPrompt = Number(task.module) === 2
+    ? "In no more than 50 words, use THREE points to summarize the experiences of the main character or narrator in the extract. You must use your own words as far as possible."
+    : "In no more than 50 words, use THREE points to summarize the writer's purpose. You must use your own words as far as possible.";
+
+  return Object.freeze({
+    ...task,
+    instructions:`(a) ${analysisPrompt} (3 marks)\n\n(b) ${summaryPrompt} (7 marks)`,
+    analysisPrompt,
+    summaryPrompt,
+    wordLimit:50,
+    rubric:Object.freeze({
+      marks:10,
+      criteria:Object.freeze([
+        "Part (a): analysing the extract accurately — 3 marks.",
+        "Part (b): THREE relevant summary points stated mainly in the candidate's own words — 3 marks.",
+        "Part (b): language, expression, connectives, grammar and mechanics — 4 marks.",
+        "The summary must not exceed 50 words.",
+      ]),
+    }),
+  });
+}
+
+function revisedPaper2Set(set) {
+  return Object.freeze({
+    ...set,
+    tasks:Object.freeze(set.tasks.map(revisedSummaryTask)),
+  });
+}
+
 export const englishAPaper2Sets = Object.freeze([
   ...englishAPaper2CoreSets,
   ...englishAPaper2ExpansionSets,
-]);
+].map(revisedPaper2Set));
 
 export function englishAPaper2BankSummary() {
   return {
