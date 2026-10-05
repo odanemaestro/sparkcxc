@@ -6,7 +6,7 @@ function read(...parts){
 }
 
 describe("English A notification parity",()=>{
-  const migration=read("..","supabase","migrations","20261005050000_english_a_progress_notifications.sql");
+  const migration=read("supabase","migrations","20261005050000_english_a_progress_notifications.sql");
   const paper1=read("englishA","practice","EnglishAPaper1Exam.jsx");
   const paper2=read("englishA","practice","EnglishAPaper2Exam.jsx");
   const study=read("subjects","GenericSubjectStudyView.jsx");
