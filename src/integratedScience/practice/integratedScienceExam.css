@@ -508,3 +508,8 @@
 .is-exam-graph-point{fill:var(--is-teal)}
 .is-exam-graph-line{stroke:var(--is-teal);stroke-width:2.4;stroke-linejoin:round;stroke-linecap:round}
 .is-exam-graph-bar{fill:var(--is-teal)}
+
+.is-exam-graph-series.series-1 .is-exam-graph-line{stroke-dasharray:8 5}
+.is-exam-graph-series.series-1 .is-exam-graph-point{fill:var(--is-card);stroke:var(--is-teal);stroke-width:2.2}
+.is-exam-graph-series.series-2 .is-exam-graph-line{stroke-dasharray:2 4}
+.is-exam-graph-series.series-2 .is-exam-graph-point{opacity:.7}
