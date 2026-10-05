@@ -645,7 +645,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
             <section className="is-exam-modal" role="dialog" aria-modal="true" onMouseDown={event => event.stopPropagation()}>
               <span className="is-exam-eyebrow">SUBMIT PAPER</span>
               <h2>Submit Integrated Science Paper 02?</h2>
-              <p>All six questions will be locked. The mark schemes will then open for review and scoring.</p>
+              <p>All six questions will be locked. SPARK will grade the paper automatically and open the mark schemes for review.</p>
               <div>
                 <button type="button" className="is-exam-secondary" onClick={() => setConfirmSubmit(false)}>Return to paper</button>
                 <button type="button" className="is-exam-primary" onClick={() => {setConfirmSubmit(false);submit({timedOut:false});}}>Submit paper</button>
