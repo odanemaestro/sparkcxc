@@ -263,3 +263,14 @@ body[data-theme="dark"] .itv2-back:focus-visible{
     border-radius:13px;
   }
 }
+
+
+/* IT_SPREADSHEET_CHART_COMPLETENESS_V1 */
+.itv2-chart-svg{display:block;width:100%;height:auto;margin-top:10px;overflow:visible;color:var(--it-ink,var(--itv2-ink))}
+.itv2-chart-svg text{fill:currentColor;font-size:9px}
+.itv2-chart-svg .axis{stroke:var(--it-muted,var(--itv2-muted));stroke-width:1.3}
+.itv2-chart-svg .line{fill:none;stroke:var(--itv2-green);stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+.itv2-chart-svg .itv2-chart-series rect,.itv2-chart-svg .itv2-chart-series circle,.itv2-chart-svg .itv2-chart-series path{fill:var(--itv2-green);stroke:var(--it-card,var(--itv2-card));stroke-width:1}
+.itv2-chart-svg .itv2-chart-series.s1 rect,.itv2-chart-svg .itv2-chart-series.s1 circle,.itv2-chart-svg .itv2-chart-series.s1 path{opacity:.84}
+.itv2-chart-svg .itv2-chart-series.s2 rect,.itv2-chart-svg .itv2-chart-series.s2 circle,.itv2-chart-svg .itv2-chart-series.s2 path{opacity:.68}
+.itv2-chart-svg .itv2-chart-series.s3 rect,.itv2-chart-svg .itv2-chart-series.s3 circle,.itv2-chart-svg .itv2-chart-series.s3 path{opacity:.52}

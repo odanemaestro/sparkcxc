@@ -138,6 +138,54 @@ export function IntegratedSciencePaper1Question({
   );
 }
 
+function PracticeGraphResponse({ config }) {
+  const [chartType,setChartType]=useState("line");
+  const [xLabel,setXLabel]=useState(config.x || "");
+  const [yLabel,setYLabel]=useState(config.y || "");
+  const [entries,setEntries]=useState("");
+  const lines=entries.split(/\n|;/).map(line=>line.trim()).filter(Boolean);
+  const numeric=lines.map(line=>{
+    const match=line.match(/^(-?\d+(?:\.\d+)?)\s*[, ]\s*(-?\d+(?:\.\d+)?)$/);
+    return match?{x:Number(match[1]),y:Number(match[2])}:null;
+  }).filter(Boolean);
+  const bars=lines.map(line=>{
+    const match=line.match(/^(.+?)\s*[,=:]\s*(-?\d+(?:\.\d+)?)$/);
+    return match?{label:match[1].trim(),value:Number(match[2])}:null;
+  }).filter(Boolean);
+  const width=600,height=300,pad=48;
+  const minX=numeric.length?Math.min(0,...numeric.map(p=>p.x)):0;
+  const maxX=numeric.length?Math.max(1,...numeric.map(p=>p.x)):1;
+  const minY=numeric.length?Math.min(0,...numeric.map(p=>p.y)):0;
+  const maxY=numeric.length?Math.max(1,...numeric.map(p=>p.y)):1;
+  const sx=x=>pad+(x-minX)/Math.max(1e-9,maxX-minX)*(width-pad*2);
+  const sy=y=>height-pad-(y-minY)/Math.max(1e-9,maxY-minY)*(height-pad*2);
+  const maxBar=Math.max(1,...bars.map(row=>row.value));
+
+  return <div className="is-p2-graph-workspace is-topic-graph-workspace">
+    <div className="is-p2-graph-fields">
+      <label><span>Graph type</span><select value={chartType} onChange={e=>setChartType(e.target.value)}><option value="line">Line / curve</option><option value="bar">Bar chart</option></select></label>
+      <label><span>x-axis label</span><input value={xLabel} onChange={e=>setXLabel(e.target.value)} placeholder={config.x || "x-axis"}/></label>
+      <label><span>y-axis label</span><input value={yLabel} onChange={e=>setYLabel(e.target.value)} placeholder={config.y || "y-axis"}/></label>
+    </div>
+    <svg className="is-p2-graph-response" viewBox="0 0 600 300" role="img" aria-label="Interactive graph practice workspace">
+      <rect x={pad} y={pad/2} width={width-pad*2} height={height-pad*1.5} fill="none" stroke="currentColor"/>
+      {Array.from({length:11},(_,i)=><line key={`v${i}`} x1={pad+i*(width-pad*2)/10} x2={pad+i*(width-pad*2)/10} y1={pad/2} y2={height-pad} stroke="currentColor" opacity=".13"/>)}
+      {Array.from({length:11},(_,i)=><line key={`h${i}`} x1={pad} x2={width-pad} y1={pad/2+i*(height-pad*1.5)/10} y2={pad/2+i*(height-pad*1.5)/10} stroke="currentColor" opacity=".13"/>)}
+      {chartType==="bar" ? bars.map((row,index)=>{
+        const band=(width-pad*2)/Math.max(1,bars.length),h=row.value/maxBar*(height-pad*1.8);
+        return <g key={`${row.label}-${index}`}><rect x={pad+index*band+band*.18} y={height-pad-h} width={band*.64} height={Math.max(1,h)} className="is-topic-graph-bar"/><text x={pad+index*band+band*.5} y={height-pad+18} textAnchor="middle">{row.label}</text></g>;
+      }) : <>
+        {numeric.map((point,index)=><circle key={index} cx={sx(point.x)} cy={sy(point.y)} r="4.5" className="is-topic-graph-point"/>)}
+        {numeric.length>1&&<polyline points={numeric.map(point=>`${sx(point.x)},${sy(point.y)}`).join(" ")} fill="none" className="is-topic-graph-line"/>}
+      </>}
+      {xLabel&&<text x={width/2} y={height-7} textAnchor="middle">{xLabel}</text>}
+      {yLabel&&<text transform={`translate(14 ${height/2}) rotate(-90)`} textAnchor="middle">{yLabel}</text>}
+    </svg>
+    <textarea rows={5} value={entries} onChange={e=>setEntries(e.target.value)} placeholder={chartType==="bar"?"Enter one category and value per line, for example:\nA, 12\nB, 25":"Enter one coordinate per line, for example:\n1, 2\n2, 5\n3, 11"}/>
+    <small className="is-graph-practice-note">Use the table in the question to enter every plotted value. The graph updates as you work.</small>
+  </div>;
+}
+
 function ResponseArea({ response }) {
   const config = response || {};
   const type = config.type || "lines";
@@ -153,12 +201,7 @@ function ResponseArea({ response }) {
   }
 
   if (type === "graph") {
-    return (
-      <div className="is-p2-graph-response" style={{minHeight:config.height || 300}}>
-        <span className="is-p2-y-label">{config.y || "y-axis"}</span>
-        <span className="is-p2-x-label">{config.x || "x-axis"}</span>
-      </div>
-    );
+    return <PracticeGraphResponse config={config} />;
   }
 
   if (type === "drawing") {

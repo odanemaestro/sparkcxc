@@ -174,6 +174,8 @@ function visualResult(questionId,partIndex,itemIndex,item,responses){
     responses[`${base}:xLabel`] || "",
     responses[`${base}:yLabel`] || "",
     responses[`${base}:scale`] || "",
+    responses[`${base}:key`] || "",
+    responses[`${base}:chartType`] || "",
     responses[`${base}:points`] || "",
   ].filter(Boolean).join(" ");
   const result=lineResult(questionId,partIndex,itemIndex,{...item,response:{type:"lines"}},{[base]:notes});
@@ -190,12 +192,21 @@ function visualResult(questionId,partIndex,itemIndex,item,responses){
   const plotted=parseGraphPointCount(responses[`${base}:points`]);
   return {
     ...result,confidence:"low",provisional:true,visualEvidenceRequired:true,
-    visualEvidence:{plottedPoints:plotted,hasScale:Boolean(String(responses[`${base}:scale`] || "").trim())},
+    visualEvidence:{
+      plottedPoints:plotted,
+      hasScale:Boolean(String(responses[`${base}:scale`] || "").trim()),
+      hasKey:Boolean(String(responses[`${base}:key`] || "").trim()),
+      chartType:String(responses[`${base}:chartType`] || "line"),
+    },
   };
 }
 
 function parseGraphPointCount(value){
-  return String(value || "").split(/\n|;/).filter(line=>/-?\d+(?:\.\d+)?\s*[, ]\s*-?\d+(?:\.\d+)?/.test(line)).length;
+  return String(value || "").split(/\n|;/).filter(line=>{
+    const row=String(line || "").trim();
+    return /-?\d+(?:\.\d+)?\s*[, ]\s*-?\d+(?:\.\d+)?/.test(row)
+      || /^.+?\s*[,=:]\s*-?\d+(?:\.\d+)?$/.test(row);
+  }).length;
 }
 
 export function gradeIntegratedSciencePaper2Item(question,partIndex,itemIndex,item,responses={}){

@@ -36,33 +36,78 @@ function Separator() {
 
 function parseGraphPoints(value){
   return String(value || "").split(/\n|;/).map(line=>{
-    const match=line.match(/(-?\d+(?:\.\d+)?)\s*[, ]\s*(-?\d+(?:\.\d+)?)/);
-    return match ? {x:Number(match[1]),y:Number(match[2])} : null;
+    const match=line.trim().match(/^(?:(.+?):\s*)?(-?\d+(?:\.\d+)?)\s*[, ]\s*(-?\d+(?:\.\d+)?)$/);
+    return match ? {series:String(match[1] || "Series A").trim(),x:Number(match[2]),y:Number(match[3])} : null;
   }).filter(point=>point && Number.isFinite(point.x) && Number.isFinite(point.y));
 }
 
-function GraphPlotter({base,config,responses,onChange,disabled}){
+function parseGraphBars(value){
+  return String(value || "").split(/\n|;/).map(line=>{
+    const match=line.trim().match(/^(.+?)\s*[,=:]\s*(-?\d+(?:\.\d+)?)$/);
+    return match ? {label:match[1].trim(),value:Number(match[2])} : null;
+  }).filter(Boolean);
+}
+
+function GraphPlotter({base,config,prompt="",responses,onChange,disabled}){
   const pointsText=responses[`${base}:points`] || "";
+  const defaultType=/bar chart/i.test(prompt) ? "bar" : "line";
+  const chartType=responses[`${base}:chartType`] || defaultType;
   const points=parseGraphPoints(pointsText);
+  const bars=parseGraphBars(pointsText);
   const xs=points.map(p=>p.x),ys=points.map(p=>p.y);
   const minX=xs.length?Math.min(0,...xs):0,maxX=xs.length?Math.max(1,...xs):1;
   const minY=ys.length?Math.min(0,...ys):0,maxY=ys.length?Math.max(1,...ys):1;
   const sx=x=>50+(x-minX)/Math.max(1e-9,maxX-minX)*500;
   const sy=y=>260-(y-minY)/Math.max(1e-9,maxY-minY)*210;
+  const maxBar=Math.max(1,...bars.map(row=>row.value));
+  const needsKey=/\bboth\b|include a key|use a key/i.test(prompt);
+  const activeSeries=String(responses[`${base}:series`] || "Series A");
+  const seriesNames=[...new Set(points.map(point=>point.series || "Series A"))];
+  const axisXMin=Number(responses[`${base}:xMin`] ?? minX);
+  const axisXMax=Number(responses[`${base}:xMax`] ?? maxX);
+  const axisYMin=Number(responses[`${base}:yMin`] ?? minY);
+  const axisYMax=Number(responses[`${base}:yMax`] ?? maxY);
+  const plotPoint=event=>{
+    if(disabled || chartType!=="line") return;
+    const rect=event.currentTarget.getBoundingClientRect();
+    const px=(event.clientX-rect.left)/rect.width*600;
+    const py=(event.clientY-rect.top)/rect.height*300;
+    if(px<50 || px>550 || py<30 || py>260) return;
+    const x=axisXMin+(px-50)/500*Math.max(1e-9,axisXMax-axisXMin);
+    const y=axisYMin+(260-py)/230*Math.max(1e-9,axisYMax-axisYMin);
+    const prefix=needsKey ? `${activeSeries}: ` : "";
+    const row=`${prefix}${Number(x.toFixed(2))}, ${Number(y.toFixed(2))}`;
+    onChange(`${base}:points`,pointsText.trim()?`${pointsText.trim()}\n${row}`:row);
+  };
   return <div className="is-p2-graph-workspace">
     <div className="is-p2-graph-fields">
+      <label><span>Graph type</span><select disabled={disabled} value={chartType} onChange={e=>onChange(`${base}:chartType`,e.target.value)}><option value="line">Line / curve</option><option value="bar">Bar chart</option></select></label>
       <label><span>x-axis label</span><input disabled={disabled} value={responses[`${base}:xLabel`] || ""} onChange={e=>onChange(`${base}:xLabel`,e.target.value)} placeholder={config.x || "x-axis"}/></label>
       <label><span>y-axis label</span><input disabled={disabled} value={responses[`${base}:yLabel`] || ""} onChange={e=>onChange(`${base}:yLabel`,e.target.value)} placeholder={config.y || "y-axis"}/></label>
       <label><span>Scale</span><input disabled={disabled} value={responses[`${base}:scale`] || ""} onChange={e=>onChange(`${base}:scale`,e.target.value)} placeholder="e.g. x: 1 square = 1 week; y: 1 square = 5 cm"/></label>
+      {chartType==="line" && <><label><span>x-axis minimum</span><input type="number" step="any" disabled={disabled} value={responses[`${base}:xMin`] ?? minX} onChange={e=>onChange(`${base}:xMin`,e.target.value)}/></label><label><span>x-axis maximum</span><input type="number" step="any" disabled={disabled} value={responses[`${base}:xMax`] ?? maxX} onChange={e=>onChange(`${base}:xMax`,e.target.value)}/></label><label><span>y-axis minimum</span><input type="number" step="any" disabled={disabled} value={responses[`${base}:yMin`] ?? minY} onChange={e=>onChange(`${base}:yMin`,e.target.value)}/></label><label><span>y-axis maximum</span><input type="number" step="any" disabled={disabled} value={responses[`${base}:yMax`] ?? maxY} onChange={e=>onChange(`${base}:yMax`,e.target.value)}/></label></>}
+      {needsKey && <><label><span>Series being plotted</span><input disabled={disabled} value={activeSeries} onChange={e=>onChange(`${base}:series`,e.target.value)} placeholder="e.g. Boys"/></label><label><span>Key / series labels</span><input disabled={disabled} value={responses[`${base}:key`] || ""} onChange={e=>onChange(`${base}:key`,e.target.value)} placeholder="e.g. Boys = circles; Girls = crosses"/></label></>}
     </div>
-    <svg className="is-p2-graph-response" viewBox="0 0 600 300" role="img" aria-label="Student graph plot">
+    <svg className="is-p2-graph-response" viewBox="0 0 600 300" role="img" aria-label="Student graph plot" onPointerDown={plotPoint}>
       <rect x="50" y="30" width="500" height="230" fill="none" stroke="currentColor"/>
       {Array.from({length:11},(_,i)=><line key={`v${i}`} x1={50+i*50} x2={50+i*50} y1="30" y2="260" stroke="currentColor" opacity=".16"/>)}
       {Array.from({length:11},(_,i)=><line key={`h${i}`} x1="50" x2="550" y1={30+i*23} y2={30+i*23} stroke="currentColor" opacity=".16"/>)}
-      {points.map((point,index)=><circle key={index} cx={sx(point.x)} cy={sy(point.y)} r="4" fill="currentColor"/>)}
-      {points.length>1 && <polyline points={points.map(point=>`${sx(point.x)},${sy(point.y)}`).join(" ")} fill="none" stroke="currentColor" strokeWidth="2"/>}
+      {chartType==="bar" ? bars.map((row,index)=>{
+        const band=500/Math.max(1,bars.length);
+        const h=row.value/maxBar*210;
+        return <g key={`${row.label}-${index}`}><rect x={50+index*band+band*.18} y={260-h} width={band*.64} height={Math.max(1,h)} className="is-exam-graph-bar"/><text x={50+index*band+band*.5} y="278" textAnchor="middle" fontSize="10">{row.label}</text></g>;
+      }) : <>
+        {seriesNames.map((seriesName,seriesIndex)=>{
+          const seriesPoints=points.filter(point=>point.series===seriesName);
+          return <g key={seriesName} className={`is-exam-graph-series series-${seriesIndex%3}`}>
+            {seriesPoints.map((point,index)=><circle key={index} cx={sx(point.x)} cy={sy(point.y)} r={seriesIndex%2===0?4.5:3.5} className="is-exam-graph-point"/>)}
+            {seriesPoints.length>1 && <polyline points={seriesPoints.map(point=>`${sx(point.x)},${sy(point.y)}`).join(" ")} fill="none" className="is-exam-graph-line"/>}
+          </g>;
+        })}
+      </>}
     </svg>
-    <textarea disabled={disabled} rows={4} value={pointsText} onChange={e=>onChange(`${base}:points`,e.target.value)} placeholder={"Enter plotted coordinates, one per line, for example:\n1, 2\n2, 5\n3, 11"}/>
+    <textarea disabled={disabled} rows={4} value={pointsText} onChange={e=>onChange(`${base}:points`,e.target.value)} placeholder={chartType==="bar" ? "Enter each category and value, one per line, for example:\nA, 12\nB, 25" : "Enter plotted coordinates, one per line, for example:\n1, 2\n2, 5\n3, 11"}/>
+    {!disabled && chartType==="line" && <small className="is-graph-practice-note">Set the axis range, then click the graph to add points. You can also type or correct coordinates below.</small>}
     <textarea disabled={disabled} rows={2} value={responses[base] || ""} onChange={e=>onChange(base,e.target.value)} placeholder="Optional graph notes or working."/>
   </div>;
 }
@@ -164,7 +209,7 @@ function BoundResponse({ questionId, partIndex, itemIndex, item, responses, onCh
   }
 
   if (type === "graph") {
-    return <GraphPlotter base={base} config={config} responses={responses} onChange={onChange} disabled={disabled}/>;
+    return <GraphPlotter base={base} config={config} prompt={item.prompt || ""} responses={responses} onChange={onChange} disabled={disabled}/>;
   }
 
   if (type === "drawing") {

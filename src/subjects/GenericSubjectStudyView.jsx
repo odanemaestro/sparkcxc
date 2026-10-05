@@ -284,8 +284,24 @@ export default function GenericSubjectStudyView({
 
     const safeCompleted = completed || new Set();
     const routed = routeSelection(studyPath, nextStructure);
+    const topics = nextStructure?.topics || [];
+    const allTopicsComplete = topics.length > 0 && topics.every(topic => safeCompleted.has(topic.id));
 
     const fallbackTopic = firstTopic(nextStructure, safeCompleted);
+
+    // A completed course should reopen from the beginning instead of reviving
+    // a stale topic query left in the URL from the learner's previous visit.
+    if (allTopicsComplete && fallbackTopic) {
+      setActiveSectionId(fallbackTopic.sectionId || nextStructure.sections?.[0]?.id || null);
+      setActiveTopicId(fallbackTopic.id);
+      if (routed.topicId || routed.sectionId) {
+        writeSparkNestedRoute(studyPath, {
+          section:fallbackTopic.sectionId || null,
+          topic:fallbackTopic.id,
+        });
+      }
+      return;
+    }
 
     if (routed.topicId && isTopicUnlocked(nextStructure, routed.topicId, safeCompleted)) {
       setActiveSectionId(routed.sectionId);

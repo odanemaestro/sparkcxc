@@ -274,7 +274,7 @@ export function useMathPracticeRoute(active = false) {
 
 // SPARK_INTEGRATED_SCIENCE_PRACTICE_ROUTING_V1
 const INTEGRATED_SCIENCE_PRACTICE_BASE = "/practice/integrated-science";
-const INTEGRATED_SCIENCE_PRACTICE_MODES = new Set(["home", "paper1", "paper2", "topic"]);
+const INTEGRATED_SCIENCE_PRACTICE_MODES = new Set(["home", "paper1", "paper2", "topic", "labs"]);
 
 function integratedSciencePracticeModeFromRoute(route) {
   if (route?.path !== INTEGRATED_SCIENCE_PRACTICE_BASE) return "home";
