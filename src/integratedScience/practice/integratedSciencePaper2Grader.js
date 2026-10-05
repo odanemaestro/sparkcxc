@@ -195,7 +195,11 @@ function visualResult(questionId,partIndex,itemIndex,item,responses){
 }
 
 function parseGraphPointCount(value){
-  return String(value || "").split(/\n|;/).filter(line=>/-?\d+(?:\.\d+)?\s*[, ]\s*-?\d+(?:\.\d+)?/.test(line)).length;
+  return String(value || "").split(/\n|;/).filter(line=>{
+    const row=String(line || "").trim();
+    return /-?\d+(?:\.\d+)?\s*[, ]\s*-?\d+(?:\.\d+)?/.test(row)
+      || /^.+?\s*[,=:]\s*-?\d+(?:\.\d+)?$/.test(row);
+  }).length;
 }
 
 export function gradeIntegratedSciencePaper2Item(question,partIndex,itemIndex,item,responses={}){
