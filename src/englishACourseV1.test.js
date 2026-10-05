@@ -1,0 +1,66 @@
+const fs = require("fs");
+const path = require("path");
+
+function source(...parts) {
+  return fs.readFileSync(path.join(__dirname, ...parts), "utf8");
+}
+
+describe("SPARK English A course V1", () => {
+  const registry = source("subjects","subjectRegistry.js");
+  const app = source("App.js");
+  const practiceHub = source("practice","PracticeHub.jsx");
+  const migration = source(
+    "..",
+    "supabase",
+    "migrations",
+    "20261005010000_english_a_course_v1.sql"
+  );
+
+  test("English A is registered with study, practice, flashcards and Paper 1", () => {
+    expect(registry).toContain('id: "english-a"');
+    expect(registry).toContain('study: "/study/english-a"');
+    expect(registry).toContain('practice: "/practice/english-a"');
+    expect(registry).toContain('flashcards: "/dashboard/flashcards/english-a"');
+    expect(registry).toContain("paper1: true");
+  });
+
+  test("App and PracticeHub route English A through the enrolled subject gates", () => {
+    expect(app).toContain('"practice-english-a": "/practice/english-a"');
+    expect(app).toContain('appStudentEnrolledSubjectIds.has("english-a")');
+    expect(app).toContain('view === "practice-english-a"');
+    expect(practiceHub).toContain('selectedSubject === "english-a"');
+    expect(practiceHub).toContain("EnglishAPracticeHub");
+  });
+
+  test("migration publishes three syllabus modules and 29 syllabus-based lessons", () => {
+    expect(migration).toContain("'module-1','Module 1: Informative Discourse'");
+    expect(migration).toContain("'module-2','Module 2: Literary Discourse'");
+    expect(migration).toContain("'module-3','Module 3: Persuasive Discourse'");
+
+    const match = migration.match(/\$json\$(\[[\s\S]*?\])\$json\$/);
+    expect(match).not.toBeNull();
+    const topics = JSON.parse(match[1]);
+    expect(topics).toHaveLength(29);
+    expect(topics.filter(topic => topic.section === "module-1")).toHaveLength(9);
+    expect(topics.filter(topic => topic.section === "module-2")).toHaveLength(10);
+    expect(topics.filter(topic => topic.section === "module-3")).toHaveLength(10);
+
+    topics.forEach(topic => {
+      expect(topic.objectives.length).toBeGreaterThan(0);
+      expect(topic.sections.length).toBeGreaterThanOrEqual(3);
+      expect(topic.keyPoints.length).toBeGreaterThanOrEqual(5);
+      expect(topic.cards).toHaveLength(5);
+      expect(topic.summary).toBeTruthy();
+    });
+
+    expect(topics.reduce((total,topic) => total + topic.cards.length,0)).toBe(145);
+  });
+
+  test("migration follows the revised Paper 01 structure", () => {
+    expect(migration).toContain('"items":60');
+    expect(migration).toContain('"minutes":90');
+    expect(migration).toContain('"itemsPerModule":20');
+    expect(migration).toContain('"discreteItemsPerModule":5');
+    expect(migration).toContain('"readingComprehensionItemsPerModule":15');
+  });
+});
