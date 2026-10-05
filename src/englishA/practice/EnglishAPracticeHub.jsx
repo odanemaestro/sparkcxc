@@ -40,9 +40,9 @@ export default function EnglishAPracticeHub({ supabase, userId, onBack }) {
             <span className="ea-practice-eyebrow">CSEC ENGLISH A PRACTICE</span>
             <h1>Choose a practice mode</h1>
             <p>
-              Practise the revised English A Paper 01 format with original SPARK
-              questions modelled on the structure, language and skill demands of
-              the supplied CSEC Paper 1 archive.
+              Practise the revised English A Paper 01 and Paper 02 formats with
+              original SPARK questions and writing tasks modelled on the structure,
+              language and skill demands of your supplied CSEC archives.
             </p>
           </div>
           <button type="button" className="ea-practice-back" onClick={onBack}>
