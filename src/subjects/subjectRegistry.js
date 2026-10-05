@@ -229,8 +229,8 @@ export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = 
     ...BASE_SUBJECTS.integratedScience,
     stats: {
       sections: Number(integratedScience.sections || 3),
-      topics: Number(integratedScience.topics || 0),
-      objectives: Number(integratedScience.objectives || 0),
+      topics: Number(integratedScience.topics || 19),
+      objectives: Number(integratedScience.objectives || 114),
       paper1Items: Number(integratedScience.paper1Items || 1561),
       paper2Questions: Number(integratedScience.paper2Questions || 84),
       practicalLabs: Number(integratedScience.practicalLabs || 4),
