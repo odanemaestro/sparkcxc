@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SPARK Independent Paper 2 Examiner Benchmark",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "scriptId","subjectId","paper","examiner1","examiner2","adjudicated",
+      "examinerMark","sparkMark","maxMark","criteria"
+    ],
+    "properties": {
+      "scriptId": {"type":"string","minLength":1},
+      "subjectId": {"type":"string","minLength":1},
+      "paper": {"type":"string","minLength":1},
+      "session": {"type":["string","null"]},
+      "consentOrApprovedUse": {"type":"boolean"},
+      "anonymised": {"const":true},
+      "examiner1": {"type":"string","minLength":1},
+      "examiner2": {"type":"string","minLength":1},
+      "adjudicated": {"const":true},
+      "examinerMark": {"type":"number","minimum":0},
+      "sparkMark": {"type":"number","minimum":0},
+      "maxMark": {"type":"number","exclusiveMinimum":0},
+      "response": {},
+      "criteria": {
+        "type":"array",
+        "items":{
+          "type":"object",
+          "required":["criterionId","examinerAwarded","sparkAwarded"],
+          "properties":{
+            "criterionId":{"type":"string","minLength":1},
+            "examinerAwarded":{"type":"boolean"},
+            "sparkAwarded":{"type":"boolean"},
+            "examinerMarks":{"type":["number","null"]},
+            "sparkMarks":{"type":["number","null"]},
+            "notes":{"type":["string","null"]}
+          }
+        }
+      }
+    }
+  }
+}

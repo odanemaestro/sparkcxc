@@ -288,7 +288,11 @@ export function markPart(response, part, earlier = {}) {
   // typed parts in the bank awarded nothing at all for a completely correct
   // answer, which is not how any examiner marks.
   // -------------------------------------------------------------------------
-  if (part.requireWorking !== true) {
+  const methodPolicy=part.markingPolicy || {
+    correctAnswerImpliesMethod:part.requireWorking !== true,
+    requiresWorking:part.requireWorking === true,
+  };
+  if (methodPolicy.correctAnswerImpliesMethod === true && methodPolicy.requiresWorking !== true) {
     const accuracy = lines.filter(l => l.kind === "A" || l.kind === "B");
     const answerIsRight = accuracy.length > 0 && accuracy.every(l => l.awarded);
     if (answerIsRight) {
@@ -514,5 +518,13 @@ export function compileScheme(part) {
   if (part.marks !== undefined && sum !== part.marks) {
     throw new Error(`part ${part.id}: criteria total ${sum} but part is worth ${part.marks}`);
   }
-  return { ...part, marks: part.marks ?? sum, criteria: withDeps };
+  const markingPolicy=Object.freeze({
+    correctAnswerImpliesMethod:part.markingPolicy?.correctAnswerImpliesMethod ?? part.requireWorking !== true,
+    requiresWorking:part.markingPolicy?.requiresWorking ?? part.requireWorking === true,
+    strictDependencies:withDeps.some(c=>c.strictDepends===true),
+    allowsFollowThrough:withDeps.some(c=>Boolean(c.ecf || c.followThroughUses?.length)),
+    rounding:part.markingPolicy?.rounding || part.rounding || null,
+    alternateMethods:Array.isArray(part.markingPolicy?.alternateMethods) ? part.markingPolicy.alternateMethods : [],
+  });
+  return { ...part, marks: part.marks ?? sum, criteria: withDeps, markingPolicy };
 }

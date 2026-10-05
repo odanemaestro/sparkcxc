@@ -6,6 +6,9 @@ const { gradeEnglishAPaper2 } = require("../englishA/practice/englishAPaper2Grad
 const { markPart } = require("../practice/cxcMarking/markScheme");
 const { gradeInformationTechnologyPart } = require("../informationTechnology/practice/itPaper2Marking");
 const { physicsValueCheck, markPhysicsPaper2 } = require("../physics/paper2/physicsPaper2Marking");
+const { gradeIntegratedSciencePaper2 } = require("../integratedScience/practice/integratedSciencePaper2Grader");
+const { evaluateGradingBenchmark, benchmarkReady } = require("./calibrationBenchmark");
+const { buildAttemptProvenance, attemptSnapshotHash } = require("./attemptProvenance");
 
 function source(...parts) {
   return fs.readFileSync(path.join(__dirname, "..", ...parts), "utf8");
@@ -88,11 +91,51 @@ describe("Paper 2 grading audit regressions", () => {
     expect(target.why).toMatch(/follow-through/i);
   });
 
-  test("Integrated Science requires complete integer self-marks", () => {
+  test("Integrated Science no longer asks students to self-mark Paper 2", () => {
     const exam = source("integratedScience","practice","IntegratedSciencePaper2Exam.jsx");
-    expect(exam).toContain("Number.isInteger(value)");
-    expect(exam).toContain("whole-number mark within the allowed range for every question");
-    expect(exam).toContain("selfMarkedScore:null");
+    expect(exam).toContain("gradeIntegratedSciencePaper2");
+    expect(exam).toContain("SPARK has marked your paper");
+    expect(exam).not.toContain("selfMarks");
+    expect(exam).not.toContain("saveSelfMarkedScore");
+  });
+
+  test("Integrated Science label marking uses explicit authored label answers", () => {
+    const paper=[{id:"Q1",totalMarks:2,parts:[{label:"(a)",items:[{
+      label:"(i)",prompt:"Identify A and B",marks:2,response:{type:"labels",keys:["A","B"]},
+      markScheme:{points:["A - nucleus","B - cell wall"],guidance:"1 mark each"}
+    }]}]}];
+    const result=gradeIntegratedSciencePaper2(paper,{
+      "Q1:0:0:A":"nucleus",
+      "Q1:0:0:B":"cell wall",
+    });
+    expect(result.score).toBe(2);
+    expect(result.questions[0].items[0].confidence).toBe("high");
+  });
+
+  test("attempt provenance preserves an immutable versioned response snapshot", () => {
+    const responses={q1:{answer:"42"}};
+    const provenance=buildAttemptProvenance({
+      subjectId:"mathematics",paper:"02",bankVersion:"bank-v1",rubricVersion:"rubric-v1",
+      graderVersion:"grader-v1",submittedAt:"2026-10-05T00:00:00.000Z",responses,
+    });
+    responses.q1.answer="99";
+    expect(provenance.response_snapshot.q1.answer).toBe("42");
+    expect(provenance.response_snapshot_hash).toBe(attemptSnapshotHash({q1:{answer:"42"}}));
+  });
+
+  test("examiner calibration reports total and criterion disagreement without inventing benchmark data", () => {
+    const rows=[
+      {scriptId:"a",subjectId:"physics",examiner1:"m1",examiner2:"m2",adjudicated:true,examinerMark:8,sparkMark:9,
+       criteria:[{examinerAwarded:true,sparkAwarded:true},{examinerAwarded:false,sparkAwarded:true}]},
+      {scriptId:"b",subjectId:"physics",examiner1:"m1",examiner2:"m2",adjudicated:true,examinerMark:5,sparkMark:5,
+       criteria:[{examinerAwarded:true,sparkAwarded:false}]},
+    ];
+    expect(benchmarkReady(rows)).toBe(true);
+    const metrics=evaluateGradingBenchmark(rows);
+    expect(metrics.scripts).toBe(2);
+    expect(metrics.meanAbsoluteError).toBe(0.5);
+    expect(metrics.falseAwards).toBe(1);
+    expect(metrics.falseRejections).toBe(1);
   });
 
   test("Social Studies Paper 2 has timed and guided modes with deadline locking", () => {

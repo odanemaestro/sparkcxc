@@ -1,8 +1,11 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import SparkLoader from "../../components/ui/SparkLoader";
 import { recordSubjectActivity } from "../../subjects/subjectProgress";
+import { buildAttemptProvenance } from "../../grading/attemptProvenance";
+import { readServerExamClock, startServerExamAttempt, submitServerExamAttempt } from "../../grading/serverExamAttempt";
 import { loadIntegratedScienceModule } from "../data/integratedScienceBank";
 import { BankTable, TrustedBankSvg } from "./IntegratedScienceQuestionRenderer";
+import { gradeIntegratedSciencePaper2, INTEGRATED_SCIENCE_P2_GRADER_VERSION } from "./integratedSciencePaper2Grader";
 import {
   buildIntegratedSciencePaper2,
   formatIntegratedScienceExamTime,
@@ -28,6 +31,80 @@ function responseKey(questionId,partIndex,itemIndex,suffix="") {
 
 function Separator() {
   return <span className="is-meta-separator" aria-hidden="true">&middot;</span>;
+}
+
+function parseGraphPoints(value){
+  return String(value || "").split(/\n|;/).map(line=>{
+    const match=line.match(/(-?\d+(?:\.\d+)?)\s*[, ]\s*(-?\d+(?:\.\d+)?)/);
+    return match ? {x:Number(match[1]),y:Number(match[2])} : null;
+  }).filter(point=>point && Number.isFinite(point.x) && Number.isFinite(point.y));
+}
+
+function GraphPlotter({base,config,responses,onChange,disabled}){
+  const pointsText=responses[`${base}:points`] || "";
+  const points=parseGraphPoints(pointsText);
+  const xs=points.map(p=>p.x),ys=points.map(p=>p.y);
+  const minX=xs.length?Math.min(0,...xs):0,maxX=xs.length?Math.max(1,...xs):1;
+  const minY=ys.length?Math.min(0,...ys):0,maxY=ys.length?Math.max(1,...ys):1;
+  const sx=x=>50+(x-minX)/Math.max(1e-9,maxX-minX)*500;
+  const sy=y=>260-(y-minY)/Math.max(1e-9,maxY-minY)*210;
+  return <div className="is-p2-graph-workspace">
+    <div className="is-p2-graph-fields">
+      <label><span>x-axis label</span><input disabled={disabled} value={responses[`${base}:xLabel`] || ""} onChange={e=>onChange(`${base}:xLabel`,e.target.value)} placeholder={config.x || "x-axis"}/></label>
+      <label><span>y-axis label</span><input disabled={disabled} value={responses[`${base}:yLabel`] || ""} onChange={e=>onChange(`${base}:yLabel`,e.target.value)} placeholder={config.y || "y-axis"}/></label>
+      <label><span>Scale</span><input disabled={disabled} value={responses[`${base}:scale`] || ""} onChange={e=>onChange(`${base}:scale`,e.target.value)} placeholder="e.g. x: 1 square = 1 week; y: 1 square = 5 cm"/></label>
+    </div>
+    <svg className="is-p2-graph-response" viewBox="0 0 600 300" role="img" aria-label="Student graph plot">
+      <rect x="50" y="30" width="500" height="230" fill="none" stroke="currentColor"/>
+      {Array.from({length:11},(_,i)=><line key={`v${i}`} x1={50+i*50} x2={50+i*50} y1="30" y2="260" stroke="currentColor" opacity=".16"/>)}
+      {Array.from({length:11},(_,i)=><line key={`h${i}`} x1="50" x2="550" y1={30+i*23} y2={30+i*23} stroke="currentColor" opacity=".16"/>)}
+      {points.map((point,index)=><circle key={index} cx={sx(point.x)} cy={sy(point.y)} r="4" fill="currentColor"/>)}
+      {points.length>1 && <polyline points={points.map(point=>`${sx(point.x)},${sy(point.y)}`).join(" ")} fill="none" stroke="currentColor" strokeWidth="2"/>}
+    </svg>
+    <textarea disabled={disabled} rows={4} value={pointsText} onChange={e=>onChange(`${base}:points`,e.target.value)} placeholder={"Enter plotted coordinates, one per line, for example:\n1, 2\n2, 5\n3, 11"}/>
+    <textarea disabled={disabled} rows={2} value={responses[base] || ""} onChange={e=>onChange(base,e.target.value)} placeholder="Optional graph notes or working."/>
+  </div>;
+}
+
+function readStrokes(value){
+  try{
+    const parsed=JSON.parse(String(value || "[]"));
+    return Array.isArray(parsed) ? parsed : [];
+  }catch{return [];}
+}
+
+function DrawingPad({base,responses,onChange,disabled}){
+  const svgRef=useRef(null);
+  const drawingRef=useRef(false);
+  const strokes=readStrokes(responses[`${base}:strokes`]);
+  const updateStrokes=next=>onChange(`${base}:strokes`,JSON.stringify(next));
+  const pointFromEvent=event=>{
+    const box=svgRef.current?.getBoundingClientRect();
+    if(!box) return null;
+    return {x:Math.max(0,Math.min(600,(event.clientX-box.left)/box.width*600)),y:Math.max(0,Math.min(300,(event.clientY-box.top)/box.height*300))};
+  };
+  const down=event=>{
+    if(disabled) return;
+    const point=pointFromEvent(event); if(!point) return;
+    drawingRef.current=true;
+    event.currentTarget.setPointerCapture?.(event.pointerId);
+    updateStrokes([...strokes,[point]]);
+  };
+  const move=event=>{
+    if(disabled || !drawingRef.current) return;
+    const point=pointFromEvent(event); if(!point) return;
+    const next=strokes.map((stroke,index)=>index===strokes.length-1?[...stroke,point]:stroke);
+    updateStrokes(next);
+  };
+  const up=()=>{drawingRef.current=false;};
+  return <div className="is-p2-drawing-workspace">
+    <svg ref={svgRef} className="is-p2-drawing-response" viewBox="0 0 600 300" onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up} role="img" aria-label="Student drawing canvas">
+      <rect x="1" y="1" width="598" height="298" fill="none" stroke="currentColor" opacity=".35"/>
+      {strokes.map((stroke,index)=><polyline key={index} points={stroke.map(point=>`${point.x},${point.y}`).join(" ")} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>)}
+    </svg>
+    {!disabled && <button type="button" className="is-exam-primary" onClick={()=>updateStrokes([])}>Clear drawing</button>}
+    <textarea disabled={disabled} rows={3} value={responses[base] || ""} onChange={e=>onChange(base,e.target.value)} placeholder="Add the labels and brief notes that belong on your drawing."/>
+  </div>;
 }
 
 function BoundResponse({ questionId, partIndex, itemIndex, item, responses, onChange, disabled }) {
@@ -86,40 +163,11 @@ function BoundResponse({ questionId, partIndex, itemIndex, item, responses, onCh
   }
 
   if (type === "graph") {
-    return (
-      <>
-        <div className="is-p2-graph-response" style={{minHeight:config.height || 300}}>
-          <span className="is-p2-y-label">{config.y || "y-axis"}</span>
-          <span className="is-p2-x-label">{config.x || "x-axis"}</span>
-        </div>
-        <textarea
-          disabled={disabled}
-          className="is-p2-lines-response"
-          rows={3}
-          value={responses[base] || ""}
-          onChange={event => onChange(base,event.target.value)}
-          placeholder="Record plotted values, scale notes or graph working here."
-        />
-      </>
-    );
+    return <GraphPlotter base={base} config={config} responses={responses} onChange={onChange} disabled={disabled}/>;
   }
 
   if (type === "drawing") {
-    return (
-      <>
-        <div className="is-p2-drawing-response" style={{minHeight:config.height || 220}}>
-          <span>Use this space as your drawing / diagram guide.</span>
-        </div>
-        <textarea
-          disabled={disabled}
-          className="is-p2-lines-response"
-          rows={3}
-          value={responses[base] || ""}
-          onChange={event => onChange(base,event.target.value)}
-          placeholder="Record labels or notes for your drawing here."
-        />
-      </>
-    );
+    return <DrawingPad base={base} responses={responses} onChange={onChange} disabled={disabled}/>;
   }
 
   return (
@@ -134,13 +182,15 @@ function BoundResponse({ questionId, partIndex, itemIndex, item, responses, onCh
   );
 }
 
-function MarkScheme({ item }) {
+function MarkScheme({ item, evaluation }) {
   const scheme = item.markScheme;
   if (!scheme) return null;
 
   return (
     <div className="is-p2-mark-scheme">
-      <strong>Mark scheme</strong>
+      <strong>SPARK marking review</strong>
+      {evaluation && <div className="is-p2-auto-score"><b>{evaluation.score}/{evaluation.maxMarks} marks</b><span>{evaluation.confidence === "high" ? "High-confidence structured check" : "Estimated from the authored marking points"}</span></div>}
+      {evaluation?.criteria?.length > 0 && <ul className="is-p2-auto-criteria">{evaluation.criteria.map(row => <li key={row.id}><b>{row.marks}/{row.maxMarks}</b> {row.label}</li>)}</ul>}
       <ul>{(scheme.points || []).map((point,index) => <li key={index}>{point}</li>)}</ul>
       {scheme.guidance && <p><b>Guidance:</b> {scheme.guidance}</p>}
       {Array.isArray(scheme.alternatives) && scheme.alternatives.length > 0 && (
@@ -161,7 +211,6 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
   const [active,setActive] = useState(initial);
   const [currentIndex,setCurrentIndex] = useState(initial?.currentIndex || 0);
   const [responses,setResponses] = useState(initial?.responses || {});
-  const [selfMarks,setSelfMarks] = useState(initial?.selfMarks || {});
   const [remaining,setRemaining] = useState(() =>
     initial?.endsAt
       ? Math.max(0,Math.round((Number(initial.endsAt) - Date.now()) / 1000))
@@ -169,7 +218,6 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
   );
   const [confirmSubmit,setConfirmSubmit] = useState(false);
   const [showExitConfirm,setShowExitConfirm] = useState(false);
-  const [selfMarkError,setSelfMarkError] = useState("");
   const submitGuard = useRef(Boolean(initial?.submittedAt));
 
   useEffect(() => {
@@ -187,13 +235,14 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
 
   const phase = active?.phase || null;
   const review = phase === "review";
+  const result = useMemo(() => gradeIntegratedSciencePaper2(paper,responses),[paper,responses]);
 
   useEffect(() => {
     if (!active?.questionIds?.length) return;
     saveIntegratedScienceExamState(userId,"paper2",{
-      ...active,currentIndex,responses,selfMarks,
+      ...active,currentIndex,responses,
     });
-  },[active,currentIndex,responses,selfMarks,userId]);
+  },[active,currentIndex,responses,userId]);
 
   const submit = useCallback(async ({timedOut=false}={}) => {
     if (!paper.length || submitGuard.current) return;
@@ -209,10 +258,16 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
 
     setActive(next);
     saveIntegratedScienceExamState(userId,"paper2",{
-      ...next,currentIndex,responses,selfMarks,
+      ...next,currentIndex,responses,result,
     });
 
     try {
+      if(active?.serverAttemptId){
+        await submitServerExamAttempt({
+          supabase,attemptId:active.serverAttemptId,responses,score:result.score,maxScore:result.maxScore,
+          metadata:{subject:"integrated-science",paper:"02",client_timed_out:Boolean(timedOut)},
+        });
+      }
       await recordSubjectActivity({
         supabase,
         activity:{
@@ -221,14 +276,26 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
           activityType:"exam",
           title:"Integrated Science Paper 02",
           completed:true,
-          maxScore:105,
+          score:result.score,
+          maxScore:result.maxScore,
+          percent:result.percent,
           metadata:{
             source:"integrated_science_exam_simulator",
             paper:"02",
             questions:paper.map(question => question.id),
             structure:"two questions per module; practical 20 + structured 15",
             timed_out:Boolean(timedOut),
-            self_mark_pending:true,
+            grading_mode:"spark_automatic_estimate",
+            grader_version:INTEGRATED_SCIENCE_P2_GRADER_VERSION,
+            bank_version:"integrated-science-v1.2.0",
+            provisional_grading:Boolean(result.provisional),
+            low_confidence_items:result.lowConfidence,
+            attempt_provenance:buildAttemptProvenance({
+              subjectId:"integrated-science",paper:"02",mode:"timed",
+              bankVersion:"integrated-science-v1.2.0",rubricVersion:"item-mark-schemes-v1",
+              graderVersion:INTEGRATED_SCIENCE_P2_GRADER_VERSION,
+              startedAt:active?.startedAt || null,submittedAt:completedAt,responses,
+            }),
             at:completedAt,
           },
         },
@@ -238,7 +305,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
     }
 
     goTop();
-  },[active,currentIndex,paper,responses,selfMarks,supabase,userId]);
+  },[active,currentIndex,paper,responses,result,supabase,userId]);
 
   useEffect(() => {
     if (phase !== "exam" || !active?.endsAt) return undefined;
@@ -253,6 +320,25 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
     const interval = window.setInterval(tick,1000);
     return () => window.clearInterval(interval);
   },[active?.endsAt,phase,submit]);
+
+  useEffect(() => {
+    if (phase !== "exam" || !active?.serverAttemptId) return undefined;
+    let cancelled=false;
+    const syncClock=async()=>{
+      const clock=await readServerExamClock({supabase,attemptId:active.serverAttemptId});
+      if(cancelled || !clock?.available) return;
+      const deadline=Date.parse(clock.deadline_at);
+      const serverNow=Date.parse(clock.server_now);
+      if(Number.isFinite(deadline)&&Number.isFinite(serverNow)){
+        const seconds=Math.max(0,Math.round((deadline-serverNow)/1000));
+        setRemaining(seconds);
+        if(clock.expired || seconds===0) submit({timedOut:true});
+      }
+    };
+    syncClock();
+    const interval=window.setInterval(syncClock,30000);
+    return ()=>{cancelled=true;window.clearInterval(interval);};
+  },[active?.serverAttemptId,phase,submit,supabase]);
 
   if (loadError) {
     return (
@@ -279,27 +365,35 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
       questionIds:generated.map(question => question.id),
       currentIndex:0,
       responses:{},
-      selfMarks:{},
       createdAt:new Date().toISOString(),
     };
 
     submitGuard.current = false;
     setActive(next);
     setResponses({});
-    setSelfMarks({});
     setCurrentIndex(0);
     setRemaining(INTEGRATED_SCIENCE_PAPER2_DURATION_SECONDS);
     saveIntegratedScienceExamState(userId,"paper2",next);
     goTop();
   }
 
-  function begin() {
+  async function begin() {
     const now = Date.now();
+    const server=await startServerExamAttempt({
+      supabase,subjectId:"integrated-science",paper:"02",mode:"timed",
+      durationSeconds:INTEGRATED_SCIENCE_PAPER2_DURATION_SECONDS,
+      bankVersion:"integrated-science-v1.2.0",rubricVersion:"item-mark-schemes-v1",
+      graderVersion:INTEGRATED_SCIENCE_P2_GRADER_VERSION,
+      metadata:{question_ids:active?.questionIds || []},
+    });
+    const serverDeadline=server?.available && server.deadline_at ? Date.parse(server.deadline_at) : null;
+    const serverStarted=server?.available && server.started_at ? server.started_at : new Date(now).toISOString();
     const next = {
       ...active,
       phase:"exam",
-      startedAt:new Date(now).toISOString(),
-      endsAt:now + INTEGRATED_SCIENCE_PAPER2_DURATION_SECONDS * 1000,
+      startedAt:serverStarted,
+      endsAt:Number.isFinite(serverDeadline) ? serverDeadline : now + INTEGRATED_SCIENCE_PAPER2_DURATION_SECONDS * 1000,
+      serverAttemptId:server?.available ? server.attempt_id : null,
     };
 
     submitGuard.current = false;
@@ -308,56 +402,11 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
     goTop();
   }
 
-  async function saveSelfMarkedScore() {
-    const invalid=paper.find(question=>{
-      const raw=selfMarks[question.id];
-      if(raw===undefined || raw===null || String(raw).trim()==="") return true;
-      const value=Number(raw);
-      return !Number.isInteger(value) || value<0 || value>Number(question.totalMarks || 0);
-    });
-    if(invalid){
-      setSelfMarkError("Enter a whole-number mark within the allowed range for every question before saving.");
-      return;
-    }
-    setSelfMarkError("");
-    const score = paper.reduce((sum,question) => sum + Number(selfMarks[question.id]),0);
-
-    const percent = Math.round((score / 105) * 100);
-
-    try {
-      await recordSubjectActivity({
-        supabase,
-        activity:{
-          subjectId:"integrated-science",
-          activityKey:"exam:integrated-science-paper2",
-          activityType:"exam",
-          title:"Integrated Science Paper 02",
-          completed:true,
-          score,
-          maxScore:105,
-          percent,
-          metadata:{
-            source:"integrated_science_exam_simulator",
-            paper:"02",
-            questions:paper.map(question => question.id),
-            self_marked:true,
-            self_marks:selfMarks,
-            at:new Date().toISOString(),
-          },
-        },
-      });
-
-      setActive(current => ({...current,selfMarkedScore:score,selfMarkedPercent:percent}));
-    } catch (error) {
-      console.warn("Could not save Integrated Science Paper 02 score",error);
-    }
-  }
 
   function startAnother() {
     saveIntegratedScienceExamState(userId,"paper2",null);
     setActive(null);
     setResponses({});
-    setSelfMarks({});
     setCurrentIndex(0);
     submitGuard.current = false;
     goTop();
@@ -386,7 +435,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
 
           <section className="is-exam-marking-note">
             <strong>How marking works</strong>
-            <p>After submission, SPARK opens the authored mark schemes. Review each response, award the marks earned for each question, and save the final Paper 2 score.</p>
+            <p>After submission, SPARK grades the paper automatically against the authored item-level marking schemes and opens a question-by-question review.</p>
           </section>
 
           <div className="is-exam-library-actions">
@@ -435,7 +484,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
 
             <div className="is-exam-instructions-note">
               <strong>After submission</strong>
-              <span>The authored mark schemes open for review. Use them to score each question and save the final Paper 2 result.</span>
+              <span>SPARK grades the paper automatically, then opens the authored mark schemes and its criterion-by-criterion estimate for review.</span>
             </div>
 
             <div className="is-exam-instructions-actions">
@@ -480,8 +529,8 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
 
         {review && (
           <section className="is-p2-review-note">
-            <strong>Mark your paper against the scheme.</strong>
-            <p>Paper 02 contains written, graphical and drawing responses. Review each question against its mark scheme, enter the marks earned for that question, then save the final score.</p>
+            <strong>SPARK has marked your paper.</strong>
+            <p>Your estimated score is <b>{result.score}/{result.maxScore}</b> ({result.percent}%). Structured answers are checked directly against the authored scheme. Written, graph and drawing judgements are estimated where the available evidence is less precise. You do not need to mark your own work.</p>
           </section>
         )}
 
@@ -494,7 +543,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
               onClick={() => goTo(index)}
             >
               <span>Q{index + 1}</span>
-              <small>Module {item.module} <Separator /> {item.totalMarks} marks</small>
+              <small>Module {item.module} <Separator /> {review ? `${result.questions[index]?.score ?? 0}/${item.totalMarks}` : `${item.totalMarks} marks`}</small>
             </button>
           ))}
         </nav>
@@ -539,29 +588,13 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
                     />
                   </div>
 
-                  {review && <MarkScheme item={item} />}
+                  {review && <MarkScheme item={item} evaluation={result.questions[currentIndex]?.items?.find(row => row.partIndex===partIndex && row.itemIndex===itemIndex)} />}
                 </div>
               ))}
             </section>
           ))}
         </article>
 
-        {review && (
-          <section className="is-p2-self-score">
-            <label>
-              <span>Marks earned for Question {currentIndex + 1}</span>
-              <input
-                type="number"
-                min="0"
-                max={question.totalMarks}
-                value={selfMarks[question.id] ?? ""}
-onChange={event => { setSelfMarks(current => ({...current,[question.id]:event.target.value})); setSelfMarkError(""); setActive(current => current ? ({...current,selfMarkedScore:null,selfMarkedPercent:null}) : current); }}
-              />
-              <b>/ {question.totalMarks}</b>
-            </label>
-            {selfMarkError && <p className="is-exam-error" role="alert">{selfMarkError}</p>}
-          </section>
-        )}
 
         <footer className="is-exam-footer">
           <button type="button" className="is-exam-primary" disabled={currentIndex === 0} onClick={() => goTo(currentIndex - 1)}>
@@ -579,7 +612,7 @@ onChange={event => { setSelfMarks(current => ({...current,[question.id]:event.ta
           ) : !review ? (
             <button type="button" className="is-exam-primary" onClick={() => setConfirmSubmit(true)}>Submit paper</button>
           ) : (
-            <button type="button" className="is-exam-primary" onClick={saveSelfMarkedScore}>Save Paper 2 score</button>
+            <button type="button" className="is-exam-primary" disabled>Score saved automatically</button>
           )}
         </footer>
 
@@ -612,7 +645,7 @@ onChange={event => { setSelfMarks(current => ({...current,[question.id]:event.ta
             <section className="is-exam-modal" role="dialog" aria-modal="true" onMouseDown={event => event.stopPropagation()}>
               <span className="is-exam-eyebrow">SUBMIT PAPER</span>
               <h2>Submit Integrated Science Paper 02?</h2>
-              <p>All six questions will be locked. The mark schemes will then open for review and scoring.</p>
+              <p>All six questions will be locked. SPARK will grade the paper automatically and open the mark schemes for review.</p>
               <div>
                 <button type="button" className="is-exam-secondary" onClick={() => setConfirmSubmit(false)}>Return to paper</button>
                 <button type="button" className="is-exam-primary" onClick={() => {setConfirmSubmit(false);submit({timedOut:false});}}>Submit paper</button>
