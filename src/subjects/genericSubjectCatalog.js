@@ -1,3 +1,4 @@
+import { integratedScienceStudyStructure } from "../integratedScience/data/integratedScienceStudyCourse";
 // ============================================================================
 // SPARK Generic Subject Learner Shell V2
 //
@@ -100,6 +101,36 @@ export function buildGenericSubjectStructure({
   };
 }
 
+function completeIntegratedScienceStructure(remoteStructure) {
+  const local=buildGenericSubjectStructure(integratedScienceStudyStructure());
+  if(!remoteStructure) return local;
+
+  const legacyTopicData=(remoteStructure.topics || []).filter(topic=>
+    /^m1-t1-/i.test(String(topic.id || ""))
+  );
+  if(!legacyTopicData.length) return local;
+
+  const legacyLessons=legacyTopicData
+    .map(topic=>topic?.metadata?.lesson)
+    .filter(lesson=>lesson && typeof lesson==="object");
+  const inheritedDiagrams=legacyLessons.flatMap(lesson=>Array.isArray(lesson.interactiveDiagrams)?lesson.interactiveDiagrams:[]);
+  const inheritedModels=legacyLessons.flatMap(lesson=>Array.isArray(lesson.interactiveModels)?lesson.interactiveModels:[]);
+
+  const topics=local.topics.map(topic=>{
+    if(topic.id!=="is-m1-t1-units-of-life") return topic;
+    const lesson={...(topic.metadata?.lesson || {})};
+    if(inheritedDiagrams.length) lesson.interactiveDiagrams=inheritedDiagrams;
+    if(inheritedModels.length) lesson.interactiveModels=inheritedModels;
+    return {...topic,metadata:{...topic.metadata,lesson}};
+  });
+
+  return buildGenericSubjectStructure({
+    sections:local.sections,
+    topics,
+    activities:remoteStructure.activities || [],
+  });
+}
+
 function structureFromRpc(data) {
   if (!data || typeof data !== "object") return null;
   return buildGenericSubjectStructure({
@@ -122,10 +153,11 @@ export async function loadGenericSubjectStructure({ supabase, subjectId } = {}) 
       });
 
       if (!rpc?.error) {
+        const remote=structureFromRpc(rpc?.data) || buildGenericSubjectStructure();
         return {
-          data:structureFromRpc(rpc?.data) || buildGenericSubjectStructure(),
+          data:id==="integrated-science" ? completeIntegratedScienceStructure(remote) : remote,
           error:null,
-          source:"rpc",
+          source:id==="integrated-science" ? "rpc+integrated-science-full-course" : "rpc",
           unavailable:rpc?.data == null,
         };
       }
@@ -163,14 +195,15 @@ export async function loadGenericSubjectStructure({ supabase, subjectId } = {}) 
     const error = sectionsResult.error || topicsResult.error || activitiesResult.error || null;
     if (error) return { data:null, error, source:"tables" };
 
+    const remote=buildGenericSubjectStructure({
+      sections:sectionsResult.data || [],
+      topics:topicsResult.data || [],
+      activities:activitiesResult.data || [],
+    });
     return {
-      data:buildGenericSubjectStructure({
-        sections:sectionsResult.data || [],
-        topics:topicsResult.data || [],
-        activities:activitiesResult.data || [],
-      }),
+      data:id==="integrated-science" ? completeIntegratedScienceStructure(remote) : remote,
       error:null,
-      source:"tables",
+      source:id==="integrated-science" ? "tables+integrated-science-full-course" : "tables",
     };
   } catch (error) {
     return { data:null, error, source:"tables" };
