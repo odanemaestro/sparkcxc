@@ -11,7 +11,7 @@ await db.exec(`create schema auth; create table auth.users(id uuid primary key);
   create function auth.uid() returns uuid language sql stable as $$select nullif(current_setting('test.user_id',true),'')::uuid$$;
   grant usage on schema auth,public to anon,authenticated,service_role;
   grant execute on function auth.uid() to anon,authenticated,service_role;`);
-for(const file of ["20261005043000_exam_attempt_integrity.sql","20261005120000_exam_attempt_write_protection.sql","20261005160000_automated_marking_queue.sql"])
+for(const file of ["20261005043000_exam_attempt_integrity.sql","20261005120000_exam_attempt_write_protection.sql","20261005160000_automated_marking_queue.sql","20261005193000_marking_budget_guards.sql"])
   await db.exec(fs.readFileSync(`supabase/migrations/${file}`,"utf8"));
 const owner=randomUUID(),other=randomUUID();
 await db.query("insert into auth.users(id) values($1),($2)",[owner,other]);
@@ -29,7 +29,7 @@ await submit(attempt);
 const first=(await db.query("select response_snapshot,submitted_at from public.spark_exam_attempts where id=$1",[attempt])).rows[0];
 await db.query("select * from public.spark_submit_exam_attempt($1,'{\"changed\":true}','different',100,105)",[attempt]);
 assert.deepEqual((await db.query("select response_snapshot,submitted_at from public.spark_exam_attempts where id=$1",[attempt])).rows[0],first);
-await assert.rejects(db.query("select public.spark_enqueue_marking($1)",[attempt]),/not enabled/);
+assert.equal((await db.query("select public.spark_enqueue_marking($1) as job",[attempt])).rows[0].job,null);
 await admin();await db.exec("update public.spark_marking_config set enabled=true");
 await asUser(other);
 assert.equal((await db.query("select * from public.spark_exam_attempts where id=$1",[attempt])).rows.length,0);
@@ -52,7 +52,24 @@ assert.equal((await finish(oldToken)).rows[0].accepted,false);
 assert.equal((await finish(claim.claim_token)).rows[0].accepted,true);
 assert.equal((await finish(claim.claim_token,{score:100})).rows[0].accepted,false);
 await asUser(other);assert.equal((await db.query("select * from public.spark_marking_jobs")).rows.length,0);
-await admin();await db.exec("update public.spark_marking_config set daily_user_limit=1000");
+
+// Budget guards silently decline deeper marking while the normal grade remains.
+await admin();await db.exec("update public.spark_marking_config set daily_user_limit=1,daily_global_limit=100,daily_token_budget=100000000,per_job_token_reservation=50000");
+await asUser(owner);
+const quotaAttempt=(await start()).rows[0].attempt_id;await submit(quotaAttempt);
+assert.equal((await db.query("select public.spark_enqueue_marking($1) as job",[quotaAttempt])).rows[0].job,null);
+
+await admin();await db.exec("update public.spark_marking_config set daily_user_limit=1000,daily_global_limit=1");
+await asUser(owner);
+const globalAttempt=(await start()).rows[0].attempt_id;await submit(globalAttempt);
+assert.equal((await db.query("select public.spark_enqueue_marking($1) as job",[globalAttempt])).rows[0].job,null);
+
+await admin();await db.exec("update public.spark_marking_config set daily_global_limit=1000,daily_token_budget=50000,per_job_token_reservation=50000");
+await asUser(owner);
+const tokenAttempt=(await start()).rows[0].attempt_id;await submit(tokenAttempt);
+assert.equal((await db.query("select public.spark_enqueue_marking($1) as job",[tokenAttempt])).rows[0].job,null);
+
+await admin();await db.exec("update public.spark_marking_config set daily_user_limit=1000,daily_global_limit=1000,daily_token_budget=100000000,per_job_token_reservation=50000");
 
 // A reproducible local burst exercises the actual RPCs. PGlite serializes its
 // connection, so this is NOT a production throughput/capacity certification.
@@ -78,5 +95,5 @@ await admin();await db.query("update public.spark_marking_jobs set status='proce
 await worker();await db.query("select * from public.spark_claim_marking(1)");
 assert.equal((await db.query("select status from public.spark_marking_jobs where id=$1",[retry.id])).rows[0].status,"failed");
 samples.sort((a,b)=>a-b);
-console.log(JSON.stringify({database:"in-memory PostgreSQL (PGlite)",checks:"ownership, write denial, payload validation, fixed duration, idempotency, leases, retries, capacity passed",burstAttempts:100,p50Milliseconds:samples[49],p95Milliseconds:samples[94],maxConcurrentClaims:4},null,2));
+console.log(JSON.stringify({database:"in-memory PostgreSQL (PGlite)",checks:"ownership, write denial, payload validation, fixed duration, idempotency, silent user/global/token budget guards, leases, retries, capacity passed",burstAttempts:100,p50Milliseconds:samples[49],p95Milliseconds:samples[94],maxConcurrentClaims:4},null,2));
 await db.close();
