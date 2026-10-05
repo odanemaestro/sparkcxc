@@ -7,6 +7,7 @@ import { loadIntegratedScienceModule } from "../data/integratedScienceBank";
 import { BankTable, TrustedBankSvg } from "./IntegratedScienceQuestionRenderer";
 import IntegratedScienceText from "../components/IntegratedScienceText";
 import { gradeIntegratedSciencePaper2, INTEGRATED_SCIENCE_P2_GRADER_VERSION } from "./integratedSciencePaper2Grader";
+import { deriveIntegratedScienceGraphData, integratedScienceGraphBounds, parseStoredBarValues } from "./integratedScienceGraphModel";
 import {
   buildIntegratedSciencePaper2,
   formatIntegratedScienceExamTime,
@@ -36,33 +37,92 @@ function Separator() {
 
 function parseGraphPoints(value){
   return String(value || "").split(/\n|;/).map(line=>{
-    const match=line.match(/(-?\d+(?:\.\d+)?)\s*[, ]\s*(-?\d+(?:\.\d+)?)/);
-    return match ? {x:Number(match[1]),y:Number(match[2])} : null;
+    const match=line.match(/^\s*(?:([^:]+):)?\s*(-?\d+(?:\.\d+)?)\s*[, ]\s*(-?\d+(?:\.\d+)?)\s*$/);
+    return match ? {series:String(match[1] || "").trim(),x:Number(match[2]),y:Number(match[3])} : null;
   }).filter(point=>point && Number.isFinite(point.x) && Number.isFinite(point.y));
 }
 
-function GraphPlotter({base,config,responses,onChange,disabled}){
+function GraphPlotter({base,config,item,sourceTable,responses,onChange,disabled}){
+  const model=deriveIntegratedScienceGraphData(item,sourceTable);
+  const bounds=integratedScienceGraphBounds(model);
   const pointsText=responses[`${base}:points`] || "";
   const points=parseGraphPoints(pointsText);
-  const xs=points.map(p=>p.x),ys=points.map(p=>p.y);
-  const minX=xs.length?Math.min(0,...xs):0,maxX=xs.length?Math.max(1,...xs):1;
-  const minY=ys.length?Math.min(0,...ys):0,maxY=ys.length?Math.max(1,...ys):1;
+  const [selectedSeries,setSelectedSeries]=useState(model.series?.[0]?.name || "");
+
+  if(model.kind==="bar"){
+    const bars=parseStoredBarValues(responses[`${base}:bars`]);
+    const updateBar=(seriesName,category,value)=>{
+      const next={...bars,[seriesName]:{...(bars[seriesName] || {}),[category]:value}};
+      onChange(`${base}:bars`,JSON.stringify(next));
+    };
+    const entered=(model.series || []).flatMap(series=>(model.categories || []).map(category=>Number(bars?.[series.name]?.[category])).filter(Number.isFinite));
+    const yMax=Math.max(1,...entered);
+    const width=600,height=300,pad=50,groups=Math.max(1,model.categories.length),seriesCount=Math.max(1,model.series.length);
+    const groupWidth=(width-pad*2)/groups,barWidth=Math.max(8,groupWidth*.72/seriesCount);
+    return <div className="is-p2-graph-workspace">
+      <div className="is-p2-graph-fields">
+        <label><span>x-axis label</span><input disabled={disabled} value={responses[`${base}:xLabel`] || ""} onChange={e=>onChange(`${base}:xLabel`,e.target.value)} placeholder={model.xLabel || config.x || "x-axis"}/></label>
+        <label><span>y-axis label</span><input disabled={disabled} value={responses[`${base}:yLabel`] || ""} onChange={e=>onChange(`${base}:yLabel`,e.target.value)} placeholder={model.yLabel || config.y || "y-axis"}/></label>
+        <label><span>Scale</span><input disabled={disabled} value={responses[`${base}:scale`] || ""} onChange={e=>onChange(`${base}:scale`,e.target.value)} placeholder="State the scale used"/></label>
+        {model.series.length>1 && <label><span>Key</span><input disabled={disabled} value={responses[`${base}:key`] || ""} onChange={e=>onChange(`${base}:key`,e.target.value)} placeholder="State how the series are distinguished"/></label>}
+      </div>
+      <div className="is-practice-bar-entry-grid">
+        {model.categories.map(category=><div key={category} className="is-practice-bar-entry-row"><strong>{category}</strong>{model.series.map(series=><label key={series.name}><span>{series.name}</span><input disabled={disabled} inputMode="decimal" value={bars?.[series.name]?.[category] ?? ""} onChange={e=>updateBar(series.name,category,e.target.value)} placeholder="Value"/></label>)}</div>)}
+      </div>
+      <svg className="is-p2-graph-response" viewBox="0 0 600 300" role="img" aria-label="Student bar chart">
+        <rect x="50" y="30" width="500" height="230" fill="none" stroke="currentColor"/>
+        {model.categories.map((category,categoryIndex)=><React.Fragment key={category}>
+          {model.series.map((series,seriesIndex)=>{
+            const value=Number(bars?.[series.name]?.[category]);
+            const safe=Number.isFinite(value)?Math.max(0,value):0;
+            const h=(safe/yMax)*230;
+            const x=pad+categoryIndex*groupWidth+(groupWidth-seriesCount*barWidth)/2+seriesIndex*barWidth;
+            return <rect key={series.name} x={x} y={260-h} width={barWidth*.82} height={h} className={`is-practice-bar is-series-${seriesIndex%3}`}/>;
+          })}
+          <text x={pad+categoryIndex*groupWidth+groupWidth/2} y="278" textAnchor="middle" className="is-practice-graph-tick">{category.length>14?`${category.slice(0,12)}…`:category}</text>
+        </React.Fragment>)}
+      </svg>
+      <textarea disabled={disabled} rows={2} value={responses[base] || ""} onChange={e=>onChange(base,e.target.value)} placeholder="Optional graph notes or working."/>
+    </div>;
+  }
+
+  const minX=Number(config.xMin ?? bounds.xMin),maxX=Number(config.xMax ?? bounds.xMax);
+  const minY=Number(config.yMin ?? bounds.yMin),maxY=Number(config.yMax ?? bounds.yMax);
   const sx=x=>50+(x-minX)/Math.max(1e-9,maxX-minX)*500;
   const sy=y=>260-(y-minY)/Math.max(1e-9,maxY-minY)*210;
+  const pointFromEvent=event=>{
+    const rect=event.currentTarget.getBoundingClientRect();
+    const x=minX+Math.max(0,Math.min(1,(event.clientX-rect.left-50)/Math.max(1,rect.width-100)))*(maxX-minX);
+    const y=minY+Math.max(0,Math.min(1,(rect.bottom-event.clientY-40)/Math.max(1,rect.height-90)))*(maxY-minY);
+    return {series:selectedSeries,x:Number(x.toFixed(2)),y:Number(y.toFixed(2))};
+  };
+  const writePoints=next=>onChange(`${base}:points`,next.map(point=>`${model.series.length>1&&point.series?`${point.series}: `:""}${point.x}, ${point.y}`).join("\n"));
+
   return <div className="is-p2-graph-workspace">
     <div className="is-p2-graph-fields">
-      <label><span>x-axis label</span><input disabled={disabled} value={responses[`${base}:xLabel`] || ""} onChange={e=>onChange(`${base}:xLabel`,e.target.value)} placeholder={config.x || "x-axis"}/></label>
-      <label><span>y-axis label</span><input disabled={disabled} value={responses[`${base}:yLabel`] || ""} onChange={e=>onChange(`${base}:yLabel`,e.target.value)} placeholder={config.y || "y-axis"}/></label>
-      <label><span>Scale</span><input disabled={disabled} value={responses[`${base}:scale`] || ""} onChange={e=>onChange(`${base}:scale`,e.target.value)} placeholder="e.g. x: 1 square = 1 week; y: 1 square = 5 cm"/></label>
+      <label><span>x-axis label</span><input disabled={disabled} value={responses[`${base}:xLabel`] || ""} onChange={e=>onChange(`${base}:xLabel`,e.target.value)} placeholder={model.xLabel || config.x || "x-axis"}/></label>
+      <label><span>y-axis label</span><input disabled={disabled} value={responses[`${base}:yLabel`] || ""} onChange={e=>onChange(`${base}:yLabel`,e.target.value)} placeholder={model.yLabel || config.y || "y-axis"}/></label>
+      <label><span>Scale</span><input disabled={disabled} value={responses[`${base}:scale`] || ""} onChange={e=>onChange(`${base}:scale`,e.target.value)} placeholder="State the scale used"/></label>
+      {model.series.length>1 && <label><span>Key</span><input disabled={disabled} value={responses[`${base}:key`] || ""} onChange={e=>onChange(`${base}:key`,e.target.value)} placeholder="State how the series are distinguished"/></label>}
     </div>
-    <svg className="is-p2-graph-response" viewBox="0 0 600 300" role="img" aria-label="Student graph plot">
+    {model.series.length>1 && <div className="is-practice-graph-series-tabs">{model.series.map(series=><button type="button" key={series.name} disabled={disabled} className={selectedSeries===series.name?"active":""} onClick={()=>setSelectedSeries(series.name)}>{series.name}</button>)}</div>}
+    <svg className="is-p2-graph-response" viewBox="0 0 600 300" role="img" aria-label="Student graph plot" onClick={disabled?undefined:event=>writePoints([...points,pointFromEvent(event)])}>
       <rect x="50" y="30" width="500" height="230" fill="none" stroke="currentColor"/>
       {Array.from({length:11},(_,i)=><line key={`v${i}`} x1={50+i*50} x2={50+i*50} y1="30" y2="260" stroke="currentColor" opacity=".16"/>)}
       {Array.from({length:11},(_,i)=><line key={`h${i}`} x1="50" x2="550" y1={30+i*23} y2={30+i*23} stroke="currentColor" opacity=".16"/>)}
-      {points.map((point,index)=><circle key={index} cx={sx(point.x)} cy={sy(point.y)} r="4" fill="currentColor"/>)}
-      {points.length>1 && <polyline points={points.map(point=>`${sx(point.x)},${sy(point.y)}`).join(" ")} fill="none" stroke="currentColor" strokeWidth="2"/>}
+      {(model.series.length?model.series:[{name:""}]).map((series,seriesIndex)=>{
+        const subset=points.filter(point=>model.series.length<=1 || point.series===series.name);
+        return <g key={series.name || "series"} className={`is-series-${seriesIndex%3}`}>
+          {subset.map((point,index)=><circle key={index} cx={sx(point.x)} cy={sy(point.y)} r="4" className="is-practice-graph-point"/>)}
+          {subset.length>1 && <polyline points={subset.map(point=>`${sx(point.x)},${sy(point.y)}`).join(" ")} className="is-practice-graph-line" style={{strokeDasharray:seriesIndex===1?"8 5":undefined}}/>}
+        </g>;
+      })}
     </svg>
-    <textarea disabled={disabled} rows={4} value={pointsText} onChange={e=>onChange(`${base}:points`,e.target.value)} placeholder={"Enter plotted coordinates, one per line, for example:\n1, 2\n2, 5\n3, 11"}/>
+    <div className="is-practice-graph-actions">
+      <span>{points.length} point{points.length===1?"":"s"} plotted</span>
+      {!disabled && <><button type="button" onClick={()=>writePoints(points.slice(0,-1))} disabled={!points.length}>Undo point</button><button type="button" onClick={()=>writePoints([])} disabled={!points.length}>Clear graph</button></>}
+    </div>
+    <textarea disabled={disabled} rows={4} value={pointsText} onChange={e=>onChange(`${base}:points`,e.target.value)} placeholder={model.series.length>1?"Enter coordinates as Series name: x, y, one per line.":"Enter plotted coordinates, one per line, for example: 1, 2"}/>
     <textarea disabled={disabled} rows={2} value={responses[base] || ""} onChange={e=>onChange(base,e.target.value)} placeholder="Optional graph notes or working."/>
   </div>;
 }
@@ -108,7 +168,7 @@ function DrawingPad({base,responses,onChange,disabled}){
   </div>;
 }
 
-function BoundResponse({ questionId, partIndex, itemIndex, item, responses, onChange, disabled }) {
+function BoundResponse({ questionId, partIndex, itemIndex, item, sourceTable, responses, onChange, disabled }) {
   const config = item.response || {};
   const type = config.type || "lines";
   const base = responseKey(questionId,partIndex,itemIndex);
@@ -164,7 +224,7 @@ function BoundResponse({ questionId, partIndex, itemIndex, item, responses, onCh
   }
 
   if (type === "graph") {
-    return <GraphPlotter base={base} config={config} responses={responses} onChange={onChange} disabled={disabled}/>;
+    return <GraphPlotter base={base} config={config} item={item} sourceTable={sourceTable} responses={responses} onChange={onChange} disabled={disabled}/>;
   }
 
   if (type === "drawing") {
@@ -583,6 +643,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
                       partIndex={partIndex}
                       itemIndex={itemIndex}
                       item={item}
+                      sourceTable={part.table}
                       responses={responses}
                       onChange={updateResponse}
                       disabled={review}
