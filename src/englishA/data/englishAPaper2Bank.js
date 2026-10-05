@@ -1,3 +1,5 @@
+import { englishAPaper2ExpansionSets } from "./englishAPaper2Expansion";
+
 // ============================================================================
 // SPARK CSEC English A Paper 02 bank V1
 //
@@ -60,7 +62,7 @@ function task(id,module,kind,title,instructions,stimulus,extra={}) {
   return Object.freeze({id,module,kind,title,instructions,stimulus,...extra});
 }
 
-export const englishAPaper2Sets = Object.freeze([
+const englishAPaper2CoreSets = Object.freeze([
   Object.freeze({
     id:"EA-P2-A",
     title:"Practice Paper A",
@@ -290,6 +292,11 @@ export const englishAPaper2Sets = Object.freeze([
       ),
     ]),
   }),
+]);
+
+export const englishAPaper2Sets = Object.freeze([
+  ...englishAPaper2CoreSets,
+  ...englishAPaper2ExpansionSets,
 ]);
 
 export function englishAPaper2BankSummary() {
