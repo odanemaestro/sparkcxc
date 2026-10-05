@@ -36,6 +36,12 @@ describe("SPARK English A Paper 02 V1", () => {
         expect(task.instructions).toBeTruthy();
         expect(task.rubric?.marks).toBeGreaterThan(0);
         expect(task.rubric?.criteria?.length).toBeGreaterThanOrEqual(4);
+        if (task.kind === "summary") {
+          expect(task.analysisPrompt).toBeTruthy();
+          expect(task.summaryPrompt).toContain("THREE points");
+          expect(task.wordLimit).toBe(50);
+          expect(task.rubric.marks).toBe(10);
+        }
       });
     });
   });
