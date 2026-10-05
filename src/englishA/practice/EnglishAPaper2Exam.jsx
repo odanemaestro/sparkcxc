@@ -10,7 +10,7 @@ import { gradeEnglishAPaper2 } from "./englishAPaper2Grader";
 import "../../integratedScience/practice/integratedScienceExam.css";
 import "./englishAExam.css";
 
-const storageKey = userId => `spark-english-a-paper2-${userId || "anonymous"}-v1`;
+const storageKey = userId => `spark-english-a-paper2-${userId || "anonymous"}-v2`;
 
 function readState(userId) {
   try { return JSON.parse(localStorage.getItem(storageKey(userId)) || "null"); }
