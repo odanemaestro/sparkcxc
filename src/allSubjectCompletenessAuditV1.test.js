@@ -54,9 +54,13 @@ describe("SPARK all-subject completeness audit V1",()=>{
     ].length;
     expect(total).toBe(73);
     const practicals=read("physics/labs/physicsPracticalBlueprints.mjs");
-    for(const heading of ["apparatus","method","variables","table","graph","errors","precautions","safety"]){
+    for(const heading of ["apparatus","method","variables","table","graph","errors","accuracy","safety"]){
       expect(practicals.toLowerCase()).toContain(heading);
     }
+    const notebook=read("physics/labs/PhysicsPracticalNotebook.jsx");
+    expect(notebook).toContain("<h5>Sources of error</h5>");
+    expect(notebook).toContain("<h5>Precautions</h5>");
+    expect(notebook).toContain("<h5>Safety</h5>");
   });
 
   test("Information Technology exposes all six hands-on lab studios",()=>{
