@@ -67,6 +67,10 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
   const task=visibleTasks[Math.min(currentIndex,Math.max(0,visibleTasks.length-1))] || null;
 
   useEffect(() => {
+    window.scrollTo?.({top:0,left:0,behavior:"auto"});
+  },[phase]);
+
+  useEffect(() => {
     if (phase === "library") return;
     saveState(userId,{phase,setId,answers,choiceId,currentIndex,endsAt});
   },[answers,choiceId,currentIndex,endsAt,phase,setId,userId]);
