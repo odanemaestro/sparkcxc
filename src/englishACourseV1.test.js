@@ -27,6 +27,9 @@ describe("SPARK English A course V1", () => {
 
   test("App and PracticeHub route English A through the enrolled subject gates", () => {
     expect(app).toContain('"practice-english-a": "/practice/english-a"');
+    expect(app).toContain('path?.startsWith("/study/english-a")');
+    expect(app).toContain('path?.startsWith("/practice/english-a")');
+    expect(app).toContain('path?.startsWith("/dashboard/flashcards/english-a")');
     expect(app).toContain('appStudentEnrolledSubjectIds.has("english-a")');
     expect(app).toContain('view === "practice-english-a"');
     expect(practiceHub).toContain('selectedSubject === "english-a"');
@@ -68,5 +71,8 @@ describe("SPARK English A course V1", () => {
     expect(migration).toContain('"responses":6');
     expect(migration).toContain('"originalPracticeSets":6');
     expect(migration).toContain('"historicalSourcesIndexed":30');
+    expect(migration).toContain('"paper2-cxc-profile-v2"');
+    expect(migration).toContain('"wordLimit":50');
+    expect(migration).toContain('"evaluatingCreating":16');
   });
 });
