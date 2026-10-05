@@ -41,6 +41,15 @@ describe("Integrated Science functional graph audit V2",()=>{
     expect(model.series[0].points.map(point=>point.y)).toEqual([0,65,5,10]);
   });
 
+  test("selects only the requested numeric row and fills authored missing graph points",()=>{
+    const {part,item}=graphItem("IS-M1-P2-13",0,1);
+    const model=deriveIntegratedScienceGraphData(item,part.table);
+    expect(model.series).toHaveLength(1);
+    expect(model.series[0].points.map(point=>[point.x,point.y])).toEqual([
+      [0,6],[0.2,3],[0.4,0],[0.6,-3],[0.8,-5]
+    ]);
+  });
+
   test("builds both series for a two-line graph",()=>{
     const {part,item}=graphItem("IS-M1-P2-11");
     const model=deriveIntegratedScienceGraphData(item,part.table);
