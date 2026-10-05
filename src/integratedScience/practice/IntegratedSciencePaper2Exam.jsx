@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import SparkLoader from "../../components/ui/SparkLoader";
 import { recordSubjectActivity } from "../../subjects/subjectProgress";
+import { buildAttemptProvenance } from "../../grading/attemptProvenance";
 import { loadIntegratedScienceModule } from "../data/integratedScienceBank";
 import { BankTable, TrustedBankSvg } from "./IntegratedScienceQuestionRenderer";
 import { gradeIntegratedSciencePaper2, INTEGRATED_SCIENCE_P2_GRADER_VERSION } from "./integratedSciencePaper2Grader";
@@ -237,9 +238,12 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
             bank_version:"integrated-science-v1.2.0",
             provisional_grading:Boolean(result.provisional),
             low_confidence_items:result.lowConfidence,
-            submitted_response_snapshot:responses,
-            started_at:active?.startedAt || null,
-            submitted_at:completedAt,
+            attempt_provenance:buildAttemptProvenance({
+              subjectId:"integrated-science",paper:"02",mode:"timed",
+              bankVersion:"integrated-science-v1.2.0",rubricVersion:"item-mark-schemes-v1",
+              graderVersion:INTEGRATED_SCIENCE_P2_GRADER_VERSION,
+              startedAt:active?.startedAt || null,submittedAt:completedAt,responses,
+            }),
             at:completedAt,
           },
         },
