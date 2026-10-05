@@ -33,6 +33,80 @@ function Separator() {
   return <span className="is-meta-separator" aria-hidden="true">&middot;</span>;
 }
 
+function parseGraphPoints(value){
+  return String(value || "").split(/\n|;/).map(line=>{
+    const match=line.match(/(-?\d+(?:\.\d+)?)\s*[, ]\s*(-?\d+(?:\.\d+)?)/);
+    return match ? {x:Number(match[1]),y:Number(match[2])} : null;
+  }).filter(point=>point && Number.isFinite(point.x) && Number.isFinite(point.y));
+}
+
+function GraphPlotter({base,config,responses,onChange,disabled}){
+  const pointsText=responses[`${base}:points`] || "";
+  const points=parseGraphPoints(pointsText);
+  const xs=points.map(p=>p.x),ys=points.map(p=>p.y);
+  const minX=xs.length?Math.min(0,...xs):0,maxX=xs.length?Math.max(1,...xs):1;
+  const minY=ys.length?Math.min(0,...ys):0,maxY=ys.length?Math.max(1,...ys):1;
+  const sx=x=>50+(x-minX)/Math.max(1e-9,maxX-minX)*500;
+  const sy=y=>260-(y-minY)/Math.max(1e-9,maxY-minY)*210;
+  return <div className="is-p2-graph-workspace">
+    <div className="is-p2-graph-fields">
+      <label><span>x-axis label</span><input disabled={disabled} value={responses[`${base}:xLabel`] || ""} onChange={e=>onChange(`${base}:xLabel`,e.target.value)} placeholder={config.x || "x-axis"}/></label>
+      <label><span>y-axis label</span><input disabled={disabled} value={responses[`${base}:yLabel`] || ""} onChange={e=>onChange(`${base}:yLabel`,e.target.value)} placeholder={config.y || "y-axis"}/></label>
+      <label><span>Scale</span><input disabled={disabled} value={responses[`${base}:scale`] || ""} onChange={e=>onChange(`${base}:scale`,e.target.value)} placeholder="e.g. x: 1 square = 1 week; y: 1 square = 5 cm"/></label>
+    </div>
+    <svg className="is-p2-graph-response" viewBox="0 0 600 300" role="img" aria-label="Student graph plot">
+      <rect x="50" y="30" width="500" height="230" fill="none" stroke="currentColor"/>
+      {Array.from({length:11},(_,i)=><line key={`v${i}`} x1={50+i*50} x2={50+i*50} y1="30" y2="260" stroke="currentColor" opacity=".16"/>)}
+      {Array.from({length:11},(_,i)=><line key={`h${i}`} x1="50" x2="550" y1={30+i*23} y2={30+i*23} stroke="currentColor" opacity=".16"/>)}
+      {points.map((point,index)=><circle key={index} cx={sx(point.x)} cy={sy(point.y)} r="4" fill="currentColor"/>)}
+      {points.length>1 && <polyline points={points.map(point=>`${sx(point.x)},${sy(point.y)}`).join(" ")} fill="none" stroke="currentColor" strokeWidth="2"/>}
+    </svg>
+    <textarea disabled={disabled} rows={4} value={pointsText} onChange={e=>onChange(`${base}:points`,e.target.value)} placeholder={"Enter plotted coordinates, one per line, for example:\n1, 2\n2, 5\n3, 11"}/>
+    <textarea disabled={disabled} rows={2} value={responses[base] || ""} onChange={e=>onChange(base,e.target.value)} placeholder="Optional graph notes or working."/>
+  </div>;
+}
+
+function readStrokes(value){
+  try{
+    const parsed=JSON.parse(String(value || "[]"));
+    return Array.isArray(parsed) ? parsed : [];
+  }catch{return [];}
+}
+
+function DrawingPad({base,responses,onChange,disabled}){
+  const svgRef=useRef(null);
+  const drawingRef=useRef(false);
+  const strokes=readStrokes(responses[`${base}:strokes`]);
+  const updateStrokes=next=>onChange(`${base}:strokes`,JSON.stringify(next));
+  const pointFromEvent=event=>{
+    const box=svgRef.current?.getBoundingClientRect();
+    if(!box) return null;
+    return {x:Math.max(0,Math.min(600,(event.clientX-box.left)/box.width*600)),y:Math.max(0,Math.min(300,(event.clientY-box.top)/box.height*300))};
+  };
+  const down=event=>{
+    if(disabled) return;
+    const point=pointFromEvent(event); if(!point) return;
+    drawingRef.current=true;
+    event.currentTarget.setPointerCapture?.(event.pointerId);
+    updateStrokes([...strokes,[point]]);
+  };
+  const move=event=>{
+    if(disabled || !drawingRef.current) return;
+    const point=pointFromEvent(event); if(!point) return;
+    const next=strokes.map((stroke,index)=>index===strokes.length-1?[...stroke,point]:stroke);
+    updateStrokes(next);
+  };
+  const up=()=>{drawingRef.current=false;};
+  return <div className="is-p2-drawing-workspace">
+    <svg ref={svgRef} className="is-p2-drawing-response" viewBox="0 0 600 300" onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up} role="img" aria-label="Student drawing canvas">
+      <rect x="1" y="1" width="598" height="298" fill="none" stroke="currentColor" opacity=".35"/>
+      {strokes.map((stroke,index)=><polyline key={index} points={stroke.map(point=>`${point.x},${point.y}`).join(" ")} fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>)}
+    </svg>
+    {!disabled && <button type="button" className="is-exam-primary" onClick={()=>updateStrokes([])}>Clear drawing</button>}
+    <textarea disabled={disabled} rows={3} value={responses[base] || ""} onChange={e=>onChange(base,e.target.value)} placeholder="Add the labels and brief notes that belong on your drawing."/>
+  </div>;
+}
+
 function BoundResponse({ questionId, partIndex, itemIndex, item, responses, onChange, disabled }) {
   const config = item.response || {};
   const type = config.type || "lines";
@@ -89,40 +163,11 @@ function BoundResponse({ questionId, partIndex, itemIndex, item, responses, onCh
   }
 
   if (type === "graph") {
-    return (
-      <>
-        <div className="is-p2-graph-response" style={{minHeight:config.height || 300}}>
-          <span className="is-p2-y-label">{config.y || "y-axis"}</span>
-          <span className="is-p2-x-label">{config.x || "x-axis"}</span>
-        </div>
-        <textarea
-          disabled={disabled}
-          className="is-p2-lines-response"
-          rows={3}
-          value={responses[base] || ""}
-          onChange={event => onChange(base,event.target.value)}
-          placeholder="Record plotted values, scale notes or graph working here."
-        />
-      </>
-    );
+    return <GraphPlotter base={base} config={config} responses={responses} onChange={onChange} disabled={disabled}/>;
   }
 
   if (type === "drawing") {
-    return (
-      <>
-        <div className="is-p2-drawing-response" style={{minHeight:config.height || 220}}>
-          <span>Use this space as your drawing / diagram guide.</span>
-        </div>
-        <textarea
-          disabled={disabled}
-          className="is-p2-lines-response"
-          rows={3}
-          value={responses[base] || ""}
-          onChange={event => onChange(base,event.target.value)}
-          placeholder="Record labels or notes for your drawing here."
-        />
-      </>
-    );
+    return <DrawingPad base={base} responses={responses} onChange={onChange} disabled={disabled}/>;
   }
 
   return (
