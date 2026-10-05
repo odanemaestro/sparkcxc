@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import EnglishAPaper1Exam from "./EnglishAPaper1Exam";
-import { englishAPastPaperSourceIndex } from "../data/englishAPaper1Bank";
+import { englishAPastPaperArchiveSummary } from "../data/englishAPastPaperArchive";
 import "./englishAExam.css";
 
 export default function EnglishAPracticeHub({ supabase, userId, onBack }) {
@@ -57,9 +57,11 @@ export default function EnglishAPracticeHub({ supabase, userId, onBack }) {
         <section className="ea-practice-source-note">
           <strong>Built from your English A Paper 1 archive</strong>
           <p>
-            SPARK has indexed {englishAPastPaperSourceIndex.length} supplied source files
-            for format and language-pattern review. The live simulator questions are
-            newly written so students get fresh practice without simply memorising past-paper answers.
+            SPARK has indexed {englishAPastPaperArchiveSummary.suppliedFiles} supplied source files
+            for format and language-pattern review. {englishAPastPaperArchiveSummary.confirmedPaper1Files} are
+            confirmed Paper 01 files; one supplied file has a filename/content mismatch and is held out of
+            Paper 01 extraction until it is corrected. The live simulator questions are newly written so
+            students get fresh practice without simply memorising past-paper answers.
           </p>
         </section>
       </div>
