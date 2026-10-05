@@ -195,7 +195,7 @@ function gradePersuasive(task,response){
 }
 
 function gradeLiterary(task,response){
-  const lang=languageScore(response,4);
+  const lang=languageScore(response,8);
   const low=text(response).toLowerCase();
   const paraCount=paragraphs(response).length;
   const dialogue=(String(response).match(/[“"][^”"]+[”"]/g)||[]).length;
@@ -209,7 +209,7 @@ function gradeLiterary(task,response){
   const craft=round(clamp(Math.min(2.5,sensory*.45)+Math.min(2.5,dialogue*.6),0,5));
   const organisation=round(clamp((paraCount>=5?3:paraCount>=3?2:1)+(narrative>=3?2:1),0,5));
   const mechanics=round(lengthScore(task,response,2));
-  const score=round(clamp(promptUse+plot+craft+organisation+lang.score+mechanics+4,0,30));
+  const score=round(clamp(promptUse+plot+craft+organisation+lang.score+mechanics,0,30));
   const feedback=[
     promptHits?"The response appears connected to the chosen prompt.":"Make the required prompt or situation unmistakably central to the story.",
     dialogue?`Dialogue is used ${dialogue} time(s).`:"Dialogue is optional, but purposeful dialogue can reveal character and conflict.",
@@ -222,7 +222,7 @@ function gradeLiterary(task,response){
     {id:"plot",label:"Plot, conflict and resolution",score:plot,max:5},
     {id:"craft",label:"Character, setting and narrative craft",score:craft,max:5},
     {id:"organisation",label:"Structure, pace and paragraphing",score:organisation,max:5},
-    {id:"language",label:"Style and language control",score:round(lang.score+4),max:8,evidence:lang.notes},
+    {id:"language",label:"Style and language control",score:lang.score,max:8,evidence:lang.notes},
     {id:"mechanics",label:"Length and task discipline",score:mechanics,max:2},
   ],feedback,diagnostics:lang.diagnostics};
 }
