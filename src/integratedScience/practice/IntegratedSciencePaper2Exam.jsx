@@ -3,6 +3,7 @@ import SparkLoader from "../../components/ui/SparkLoader";
 import { recordSubjectActivity } from "../../subjects/subjectProgress";
 import { loadIntegratedScienceModule } from "../data/integratedScienceBank";
 import { BankTable, TrustedBankSvg } from "./IntegratedScienceQuestionRenderer";
+import { gradeIntegratedSciencePaper2, INTEGRATED_SCIENCE_P2_GRADER_VERSION } from "./integratedSciencePaper2Grader";
 import {
   buildIntegratedSciencePaper2,
   formatIntegratedScienceExamTime,
@@ -134,13 +135,15 @@ function BoundResponse({ questionId, partIndex, itemIndex, item, responses, onCh
   );
 }
 
-function MarkScheme({ item }) {
+function MarkScheme({ item, evaluation }) {
   const scheme = item.markScheme;
   if (!scheme) return null;
 
   return (
     <div className="is-p2-mark-scheme">
-      <strong>Mark scheme</strong>
+      <strong>SPARK marking review</strong>
+      {evaluation && <div className="is-p2-auto-score"><b>{evaluation.score}/{evaluation.maxMarks} marks</b><span>{evaluation.confidence === "high" ? "High-confidence structured check" : "Estimated from the authored marking points"}</span></div>}
+      {evaluation?.criteria?.length > 0 && <ul className="is-p2-auto-criteria">{evaluation.criteria.map(row => <li key={row.id}><b>{row.marks}/{row.maxMarks}</b> {row.label}</li>)}</ul>}
       <ul>{(scheme.points || []).map((point,index) => <li key={index}>{point}</li>)}</ul>
       {scheme.guidance && <p><b>Guidance:</b> {scheme.guidance}</p>}
       {Array.isArray(scheme.alternatives) && scheme.alternatives.length > 0 && (
@@ -161,7 +164,6 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
   const [active,setActive] = useState(initial);
   const [currentIndex,setCurrentIndex] = useState(initial?.currentIndex || 0);
   const [responses,setResponses] = useState(initial?.responses || {});
-  const [selfMarks,setSelfMarks] = useState(initial?.selfMarks || {});
   const [remaining,setRemaining] = useState(() =>
     initial?.endsAt
       ? Math.max(0,Math.round((Number(initial.endsAt) - Date.now()) / 1000))
@@ -169,7 +171,6 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
   );
   const [confirmSubmit,setConfirmSubmit] = useState(false);
   const [showExitConfirm,setShowExitConfirm] = useState(false);
-  const [selfMarkError,setSelfMarkError] = useState("");
   const submitGuard = useRef(Boolean(initial?.submittedAt));
 
   useEffect(() => {
@@ -187,13 +188,14 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
 
   const phase = active?.phase || null;
   const review = phase === "review";
+  const result = useMemo(() => gradeIntegratedSciencePaper2(paper,responses),[paper,responses]);
 
   useEffect(() => {
     if (!active?.questionIds?.length) return;
     saveIntegratedScienceExamState(userId,"paper2",{
-      ...active,currentIndex,responses,selfMarks,
+      ...active,currentIndex,responses,
     });
-  },[active,currentIndex,responses,selfMarks,userId]);
+  },[active,currentIndex,responses,userId]);
 
   const submit = useCallback(async ({timedOut=false}={}) => {
     if (!paper.length || submitGuard.current) return;
@@ -209,7 +211,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
 
     setActive(next);
     saveIntegratedScienceExamState(userId,"paper2",{
-      ...next,currentIndex,responses,selfMarks,
+      ...next,currentIndex,responses,result,
     });
 
     try {
@@ -221,14 +223,23 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
           activityType:"exam",
           title:"Integrated Science Paper 02",
           completed:true,
-          maxScore:105,
+          score:result.score,
+          maxScore:result.maxScore,
+          percent:result.percent,
           metadata:{
             source:"integrated_science_exam_simulator",
             paper:"02",
             questions:paper.map(question => question.id),
             structure:"two questions per module; practical 20 + structured 15",
             timed_out:Boolean(timedOut),
-            self_mark_pending:true,
+            grading_mode:"spark_automatic_estimate",
+            grader_version:INTEGRATED_SCIENCE_P2_GRADER_VERSION,
+            bank_version:"integrated-science-v1.2.0",
+            provisional_grading:Boolean(result.provisional),
+            low_confidence_items:result.lowConfidence,
+            submitted_response_snapshot:responses,
+            started_at:active?.startedAt || null,
+            submitted_at:completedAt,
             at:completedAt,
           },
         },
@@ -238,7 +249,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
     }
 
     goTop();
-  },[active,currentIndex,paper,responses,selfMarks,supabase,userId]);
+  },[active,currentIndex,paper,responses,result,supabase,userId]);
 
   useEffect(() => {
     if (phase !== "exam" || !active?.endsAt) return undefined;
@@ -279,14 +290,12 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
       questionIds:generated.map(question => question.id),
       currentIndex:0,
       responses:{},
-      selfMarks:{},
       createdAt:new Date().toISOString(),
     };
 
     submitGuard.current = false;
     setActive(next);
     setResponses({});
-    setSelfMarks({});
     setCurrentIndex(0);
     setRemaining(INTEGRATED_SCIENCE_PAPER2_DURATION_SECONDS);
     saveIntegratedScienceExamState(userId,"paper2",next);
@@ -308,56 +317,11 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
     goTop();
   }
 
-  async function saveSelfMarkedScore() {
-    const invalid=paper.find(question=>{
-      const raw=selfMarks[question.id];
-      if(raw===undefined || raw===null || String(raw).trim()==="") return true;
-      const value=Number(raw);
-      return !Number.isInteger(value) || value<0 || value>Number(question.totalMarks || 0);
-    });
-    if(invalid){
-      setSelfMarkError("Enter a whole-number mark within the allowed range for every question before saving.");
-      return;
-    }
-    setSelfMarkError("");
-    const score = paper.reduce((sum,question) => sum + Number(selfMarks[question.id]),0);
-
-    const percent = Math.round((score / 105) * 100);
-
-    try {
-      await recordSubjectActivity({
-        supabase,
-        activity:{
-          subjectId:"integrated-science",
-          activityKey:"exam:integrated-science-paper2",
-          activityType:"exam",
-          title:"Integrated Science Paper 02",
-          completed:true,
-          score,
-          maxScore:105,
-          percent,
-          metadata:{
-            source:"integrated_science_exam_simulator",
-            paper:"02",
-            questions:paper.map(question => question.id),
-            self_marked:true,
-            self_marks:selfMarks,
-            at:new Date().toISOString(),
-          },
-        },
-      });
-
-      setActive(current => ({...current,selfMarkedScore:score,selfMarkedPercent:percent}));
-    } catch (error) {
-      console.warn("Could not save Integrated Science Paper 02 score",error);
-    }
-  }
 
   function startAnother() {
     saveIntegratedScienceExamState(userId,"paper2",null);
     setActive(null);
     setResponses({});
-    setSelfMarks({});
     setCurrentIndex(0);
     submitGuard.current = false;
     goTop();
@@ -386,7 +350,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
 
           <section className="is-exam-marking-note">
             <strong>How marking works</strong>
-            <p>After submission, SPARK opens the authored mark schemes. Review each response, award the marks earned for each question, and save the final Paper 2 score.</p>
+            <p>After submission, SPARK grades the paper automatically against the authored item-level marking schemes and opens a question-by-question review.</p>
           </section>
 
           <div className="is-exam-library-actions">
@@ -435,7 +399,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
 
             <div className="is-exam-instructions-note">
               <strong>After submission</strong>
-              <span>The authored mark schemes open for review. Use them to score each question and save the final Paper 2 result.</span>
+              <span>SPARK grades the paper automatically, then opens the authored mark schemes and its criterion-by-criterion estimate for review.</span>
             </div>
 
             <div className="is-exam-instructions-actions">
@@ -480,8 +444,8 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
 
         {review && (
           <section className="is-p2-review-note">
-            <strong>Mark your paper against the scheme.</strong>
-            <p>Paper 02 contains written, graphical and drawing responses. Review each question against its mark scheme, enter the marks earned for that question, then save the final score.</p>
+            <strong>SPARK has marked your paper.</strong>
+            <p>Your estimated score is <b>{result.score}/{result.maxScore}</b> ({result.percent}%). Structured answers are checked directly against the authored scheme. Written, graph and drawing judgements are estimated where the available evidence is less precise. You do not need to mark your own work.</p>
           </section>
         )}
 
@@ -494,7 +458,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
               onClick={() => goTo(index)}
             >
               <span>Q{index + 1}</span>
-              <small>Module {item.module} <Separator /> {item.totalMarks} marks</small>
+              <small>Module {item.module} <Separator /> {review ? `${result.questions[index]?.score ?? 0}/${item.totalMarks}` : `${item.totalMarks} marks`}</small>
             </button>
           ))}
         </nav>
@@ -539,29 +503,13 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
                     />
                   </div>
 
-                  {review && <MarkScheme item={item} />}
+                  {review && <MarkScheme item={item} evaluation={result.questions[currentIndex]?.items?.find(row => row.partIndex===partIndex && row.itemIndex===itemIndex)} />}
                 </div>
               ))}
             </section>
           ))}
         </article>
 
-        {review && (
-          <section className="is-p2-self-score">
-            <label>
-              <span>Marks earned for Question {currentIndex + 1}</span>
-              <input
-                type="number"
-                min="0"
-                max={question.totalMarks}
-                value={selfMarks[question.id] ?? ""}
-onChange={event => { setSelfMarks(current => ({...current,[question.id]:event.target.value})); setSelfMarkError(""); setActive(current => current ? ({...current,selfMarkedScore:null,selfMarkedPercent:null}) : current); }}
-              />
-              <b>/ {question.totalMarks}</b>
-            </label>
-            {selfMarkError && <p className="is-exam-error" role="alert">{selfMarkError}</p>}
-          </section>
-        )}
 
         <footer className="is-exam-footer">
           <button type="button" className="is-exam-primary" disabled={currentIndex === 0} onClick={() => goTo(currentIndex - 1)}>
@@ -579,7 +527,7 @@ onChange={event => { setSelfMarks(current => ({...current,[question.id]:event.ta
           ) : !review ? (
             <button type="button" className="is-exam-primary" onClick={() => setConfirmSubmit(true)}>Submit paper</button>
           ) : (
-            <button type="button" className="is-exam-primary" onClick={saveSelfMarkedScore}>Save Paper 2 score</button>
+            <button type="button" className="is-exam-primary" disabled>Score saved automatically</button>
           )}
         </footer>
 
