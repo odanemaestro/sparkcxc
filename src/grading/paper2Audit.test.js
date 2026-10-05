@@ -7,7 +7,7 @@ const { markPart } = require("../practice/cxcMarking/markScheme");
 const { gradeInformationTechnologyPart } = require("../informationTechnology/practice/itPaper2Marking");
 const { physicsValueCheck, markPhysicsPaper2 } = require("../physics/paper2/physicsPaper2Marking");
 const { gradeIntegratedSciencePaper2 } = require("../integratedScience/practice/integratedSciencePaper2Grader");
-const { evaluateGradingBenchmark, benchmarkReady } = require("./calibrationBenchmark");
+const { evaluateGradingBenchmark, benchmarkReady, calibrationStatus } = require("./calibrationBenchmark");
 const { buildAttemptProvenance, attemptSnapshotHash } = require("./attemptProvenance");
 
 function source(...parts) {
@@ -123,19 +123,42 @@ describe("Paper 2 grading audit regressions", () => {
     expect(provenance.response_snapshot_hash).toBe(attemptSnapshotHash({q1:{answer:"42"}}));
   });
 
-  test("examiner calibration reports total and criterion disagreement without inventing benchmark data", () => {
+  test("adjudicated CXC calibration reports gold-standard disagreement", () => {
     const rows=[
-      {scriptId:"a",subjectId:"physics",examiner1:"m1",examiner2:"m2",adjudicated:true,examinerMark:8,sparkMark:9,
-       criteria:[{examinerAwarded:true,sparkAwarded:true},{examinerAwarded:false,sparkAwarded:true}]},
-      {scriptId:"b",subjectId:"physics",examiner1:"m1",examiner2:"m2",adjudicated:true,examinerMark:5,sparkMark:5,
-       criteria:[{examinerAwarded:true,sparkAwarded:false}]},
+      {caseId:"a",subjectId:"physics",paper:"02",adjudicatedBy:"spark-calibration-team",adjudicated:true,
+       cxcSources:[{sourceId:"physics-specimen",sourceType:"specimen-mark-scheme"}],
+       goldMark:8,sparkMark:9,
+       criteria:[{goldAwarded:true,sparkAwarded:true},{goldAwarded:false,sparkAwarded:true}]},
+      {caseId:"b",subjectId:"physics",paper:"02",adjudicatedBy:"spark-calibration-team",adjudicated:true,
+       cxcSources:[{sourceId:"physics-report",sourceType:"subject-report"}],
+       goldMark:5,sparkMark:5,
+       criteria:[{goldAwarded:true,sparkAwarded:false}]},
     ];
     expect(benchmarkReady(rows)).toBe(true);
     const metrics=evaluateGradingBenchmark(rows);
-    expect(metrics.scripts).toBe(2);
+    expect(metrics.cases).toBe(2);
     expect(metrics.meanAbsoluteError).toBe(0.5);
     expect(metrics.falseAwards).toBe(1);
     expect(metrics.falseRejections).toBe(1);
+  });
+
+  test("calibration status uses the SPARK CXC gold standard rather than an outside-examiner gate", () => {
+    const officialReport={
+      cases:[
+        {subjectId:"english-a",pass:true},{subjectId:"english-a",pass:true},
+        {subjectId:"mathematics",pass:true},{subjectId:"mathematics",pass:true},
+        {subjectId:"physics",pass:true},{subjectId:"physics",pass:true},
+        {subjectId:"information-technology",pass:true},{subjectId:"information-technology",pass:true},
+        {subjectId:"social-studies",pass:true},{subjectId:"social-studies",pass:true},
+        {subjectId:"integrated-science",pass:true},{subjectId:"integrated-science",pass:true},
+      ],
+    };
+    const status=calibrationStatus({officialReport});
+    expect(status.validationReady).toBe(true);
+    expect(status.adjudicator).toBe("spark-calibration-team");
+    expect(status.authority).toBe("official-cxc-evidence");
+    expect(status).not.toHaveProperty("independentExaminerReady");
+    expect(status).not.toHaveProperty("examinerEquivalent");
   });
 
   test("Social Studies Paper 2 has timed and guided modes with deadline locking", () => {
