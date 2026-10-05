@@ -134,7 +134,10 @@ function followThroughMethodResult(c, text, earlier) {
     .map(Number);
   if (!own.length) return null;
 
-  const candidates = [...own];
+  // Quoting an earlier wrong value is not evidence of method. Award
+  // follow-through only when the response reaches a value derived from the
+  // candidate's earlier value by the scheme-defined operation.
+  const candidates = [];
   if (c.followThroughFormula) {
     const derived = carryForward({ uses: ids, variables: c.ecf?.variables,
                                    formula: c.followThroughFormula }, earlier);
@@ -144,6 +147,7 @@ function followThroughMethodResult(c, text, earlier) {
     const target = carryForward(c.ecf, earlier);
     if (target !== null) candidates.push(target);
   }
+  if (!candidates.length) return null;
 
   const result = check(text, { type: "reachesValue", values: candidates, relTolerance: 5e-3 });
   if (!result.ok) return null;
