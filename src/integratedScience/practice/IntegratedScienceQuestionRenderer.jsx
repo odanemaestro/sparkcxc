@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { resolveIntegratedScienceStimulus } from "../data/integratedScienceBank";
+import IntegratedScienceText from "../components/IntegratedScienceText";
 
 function TrustedBankSvg({ svg, className = "" }) {
   const safe = typeof svg === "string" && /^\s*<svg[\s>]/i.test(svg) ? svg : "";
@@ -19,11 +20,11 @@ function BankTable({ table, editable = false }) {
 
   return (
     <div className="is-bank-table-wrap">
-      {table.title && <div className="is-bank-table-title">{table.title}</div>}
+      {table.title && <div className="is-bank-table-title"><IntegratedScienceText>{table.title}</IntegratedScienceText></div>}
       <table className="is-bank-table">
         {headers.length > 0 && (
           <thead>
-            <tr>{headers.map((cell,index) => <th key={index}>{cell}</th>)}</tr>
+            <tr>{headers.map((cell,index) => <th key={index}><IntegratedScienceText>{cell}</IntegratedScienceText></th>)}</tr>
           </thead>
         )}
         <tbody>
@@ -33,14 +34,14 @@ function BankTable({ table, editable = false }) {
                 <td key={cellIndex}>
                   {editable && String(cell ?? "") === ""
                     ? <input aria-label={`Table response row ${rowIndex + 1} column ${cellIndex + 1}`} />
-                    : cell}
+                    : <IntegratedScienceText>{cell}</IntegratedScienceText>}
                 </td>
               ))}
             </tr>
           ))}
         </tbody>
       </table>
-      {table.source && <small className="is-bank-table-source">{table.source}</small>}
+      {table.source && <small className="is-bank-table-source"><IntegratedScienceText>{table.source}</IntegratedScienceText></small>}
     </div>
   );
 }
@@ -49,8 +50,8 @@ function Stimulus({ stimulus }) {
   if (!stimulus) return null;
   return (
     <section className="is-question-stimulus">
-      {stimulus.lead && <p className="is-stimulus-lead">Refer {stimulus.lead}</p>}
-      {stimulus.text && <p>{stimulus.text}</p>}
+      {stimulus.lead && <p className="is-stimulus-lead">Refer <IntegratedScienceText>{stimulus.lead}</IntegratedScienceText></p>}
+      {stimulus.text && <p><IntegratedScienceText>{stimulus.text}</IntegratedScienceText></p>}
       {stimulus.svg && <TrustedBankSvg svg={stimulus.svg} />}
       {stimulus.table && <BankTable table={stimulus.table} />}
     </section>
@@ -65,7 +66,7 @@ function Statements({ statements }) {
       {statements.map((statement,index) => (
         <div key={index}>
           <strong>{romans[index] || index + 1}.</strong>
-          <span>{statement}</span>
+          <span><IntegratedScienceText>{statement}</IntegratedScienceText></span>
         </div>
       ))}
     </div>
@@ -77,7 +78,7 @@ function OptionContent({ value, isSvg }) {
   if (Array.isArray(value)) {
     return <span className="is-option-cells">{value.map((cell,index) => <span key={index}>{cell}</span>)}</span>;
   }
-  return <span>{String(value ?? "")}</span>;
+  return <IntegratedScienceText>{String(value ?? "")}</IntegratedScienceText>;
 }
 
 export function IntegratedSciencePaper1Question({
@@ -97,13 +98,13 @@ export function IntegratedSciencePaper1Question({
     <article className="is-p1-question">
 <Stimulus stimulus={stimulus} />
 
-      <div className="is-question-stem">{question.stem}</div>
+      <div className="is-question-stem"><IntegratedScienceText>{question.stem}</IntegratedScienceText></div>
       <Statements statements={question.statements} />
-      {question.after && <p className="is-question-after">{question.after}</p>}
+      {question.after && <p className="is-question-after"><IntegratedScienceText>{question.after}</IntegratedScienceText></p>}
 
       {question.optionColumns?.length > 0 && (
         <div className="is-option-column-head">
-          {question.optionColumns.map((column,index) => <span key={index}>{column}</span>)}
+          {question.optionColumns.map((column,index) => <span key={index}><IntegratedScienceText>{column}</IntegratedScienceText></span>)}
         </div>
       )}
 
@@ -130,7 +131,7 @@ export function IntegratedSciencePaper1Question({
       {answered && revealFeedback && (
         <div className={`is-answer-feedback ${correct ? "correct" : "wrong"}`}>
           <strong>{correct ? "Correct" : `Correct answer: ${question.answer}`}</strong>
-          <p>{question.explanation}</p>
+          <p><IntegratedScienceText>{question.explanation}</IntegratedScienceText></p>
         </div>
       )}
     </article>
@@ -197,11 +198,11 @@ function MarkScheme({ scheme }) {
     <div className="is-p2-mark-scheme">
       <strong>Mark scheme</strong>
       <ul>
-        {(scheme.points || []).map((point,index) => <li key={index}>{point}</li>)}
+        {(scheme.points || []).map((point,index) => <li key={index}><IntegratedScienceText>{point}</IntegratedScienceText></li>)}
       </ul>
-      {scheme.guidance && <p><b>Guidance:</b> {scheme.guidance}</p>}
+      {scheme.guidance && <p><b>Guidance:</b> <IntegratedScienceText>{scheme.guidance}</IntegratedScienceText></p>}
       {Array.isArray(scheme.alternatives) && scheme.alternatives.length > 0 && (
-        <p><b>Accept also:</b> {scheme.alternatives.join("; ")}</p>
+        <p><b>Accept also:</b> <IntegratedScienceText>{scheme.alternatives.join("; ")}</IntegratedScienceText></p>
       )}
     </div>
   );
@@ -220,9 +221,9 @@ return (
 {(question.parts || []).map((part,partIndex) => (
         <section key={`${question.id}-${part.label}-${partIndex}`} className="is-p2-part">
           <h3>{part.label}</h3>
-          {part.context && <p className="is-p2-context">{part.context}</p>}
+          {part.context && <p className="is-p2-context"><IntegratedScienceText>{part.context}</IntegratedScienceText></p>}
           {part.svg && <TrustedBankSvg svg={part.svg} />}
-          {part.figure && <div className="is-p2-figure-caption">{part.figure}</div>}
+          {part.figure && <div className="is-p2-figure-caption"><IntegratedScienceText>{part.figure}</IntegratedScienceText></div>}
           {part.table && <BankTable table={part.table} />}
 
           {(part.items || []).map((item,itemIndex) => {
@@ -231,7 +232,7 @@ return (
               <div className="is-p2-subquestion" key={key}>
                 <div className="is-p2-subquestion-prompt">
                   <strong>{item.label}</strong>
-                  <span>{item.prompt}</span>
+                  <span><IntegratedScienceText>{item.prompt}</IntegratedScienceText></span>
                   <b>{item.marks} mark{item.marks === 1 ? "" : "s"}</b>
                 </div>
                 {item.svg && <TrustedBankSvg svg={item.svg} />}
