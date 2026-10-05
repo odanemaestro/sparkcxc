@@ -138,6 +138,79 @@ export function IntegratedSciencePaper1Question({
   );
 }
 
+
+function PracticeGraphResponse({ config }) {
+  const width=620, height=Math.max(280,Number(config.height || 320)), pad=46;
+  const [points,setPoints]=useState([]);
+  const [xLabel,setXLabel]=useState(config.x || "");
+  const [yLabel,setYLabel]=useState(config.y || "");
+  const xMax=Number(config.xMax || 10);
+  const yMax=Number(config.yMax || 10);
+  const toValue=(event)=>{
+    const svg=event.currentTarget;
+    const rect=svg.getBoundingClientRect();
+    const x=Math.max(0,Math.min(xMax,((event.clientX-rect.left-pad)/Math.max(1,rect.width-pad*2))*xMax));
+    const y=Math.max(0,Math.min(yMax,((rect.bottom-event.clientY-pad)/Math.max(1,rect.height-pad*2))*yMax));
+    return {x:Number(x.toFixed(2)),y:Number(y.toFixed(2))};
+  };
+  const toScreen=point=>({
+    x:pad+(point.x/xMax)*(width-pad*2),
+    y:height-pad-(point.y/yMax)*(height-pad*2),
+  });
+  const grid=Array.from({length:11},(_,i)=>i);
+  return <div className="is-practice-graph-workspace">
+    <div className="is-practice-graph-fields">
+      <label>X-axis <input value={xLabel} onChange={e=>setXLabel(e.target.value)} placeholder="Quantity / unit"/></label>
+      <label>Y-axis <input value={yLabel} onChange={e=>setYLabel(e.target.value)} placeholder="Quantity / unit"/></label>
+    </div>
+    <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Interactive graph plotting workspace" onClick={e=>setPoints(current=>[...current,toValue(e)])}>
+      <rect x={pad} y={pad} width={width-pad*2} height={height-pad*2} className="is-practice-graph-paper"/>
+      {grid.map(i=>{
+        const x=pad+i*(width-pad*2)/10, y=pad+i*(height-pad*2)/10;
+        return <React.Fragment key={i}><line x1={x} y1={pad} x2={x} y2={height-pad} className="is-practice-graph-grid"/><line x1={pad} y1={y} x2={width-pad} y2={y} className="is-practice-graph-grid"/></React.Fragment>;
+      })}
+      <line x1={pad} y1={height-pad} x2={width-pad} y2={height-pad} className="is-practice-graph-axis"/>
+      <line x1={pad} y1={pad} x2={pad} y2={height-pad} className="is-practice-graph-axis"/>
+      {points.map((point,index)=>{const p=toScreen(point);return <circle key={index} cx={p.x} cy={p.y} r="5" className="is-practice-graph-point"/>;})}
+      {points.length>1 && <polyline points={points.map(point=>{const p=toScreen(point);return `${p.x},${p.y}`;}).join(" ")} className="is-practice-graph-line"/>}
+      <text x={width/2} y={height-8} textAnchor="middle" className="is-practice-graph-label">{xLabel || "x-axis"}</text>
+      <text x="14" y={height/2} textAnchor="middle" transform={`rotate(-90 14 ${height/2})`} className="is-practice-graph-label">{yLabel || "y-axis"}</text>
+    </svg>
+    <div className="is-practice-graph-actions">
+      <span>{points.length} point{points.length===1?"":"s"} plotted</span>
+      <button type="button" onClick={()=>setPoints(current=>current.slice(0,-1))} disabled={!points.length}>Undo point</button>
+      <button type="button" onClick={()=>setPoints([])} disabled={!points.length}>Clear graph</button>
+    </div>
+  </div>;
+}
+
+function PracticeDrawingResponse({ config }) {
+  const width=620, height=Math.max(220,Number(config.height || 280));
+  const [strokes,setStrokes]=useState([]);
+  const [active,setActive]=useState([]);
+  const pointFromEvent=event=>{
+    const svg=event.currentTarget;
+    const rect=svg.getBoundingClientRect();
+    return {x:((event.clientX-rect.left)/Math.max(1,rect.width))*width,y:((event.clientY-rect.top)/Math.max(1,rect.height))*height};
+  };
+  const start=event=>{event.currentTarget.setPointerCapture?.(event.pointerId);setActive([pointFromEvent(event)]);};
+  const move=event=>{if(active.length)setActive(current=>[...current,pointFromEvent(event)]);};
+  const end=()=>{if(active.length>1)setStrokes(current=>[...current,active]);setActive([]);};
+  const path=stroke=>stroke.map((p,i)=>`${i?"L":"M"} ${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(" ");
+  return <div className="is-practice-drawing-workspace">
+    <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Interactive scientific drawing workspace" onPointerDown={start} onPointerMove={move} onPointerUp={end} onPointerCancel={end}>
+      <rect width={width} height={height} className="is-practice-drawing-paper"/>
+      {strokes.map((stroke,index)=><path key={index} d={path(stroke)} className="is-practice-drawing-stroke"/>)}
+      {active.length>1 && <path d={path(active)} className="is-practice-drawing-stroke"/>}
+    </svg>
+    <div className="is-practice-graph-actions">
+      <span>{strokes.length} stroke{strokes.length===1?"":"s"}</span>
+      <button type="button" onClick={()=>setStrokes(current=>current.slice(0,-1))} disabled={!strokes.length}>Undo stroke</button>
+      <button type="button" onClick={()=>setStrokes([])} disabled={!strokes.length}>Clear drawing</button>
+    </div>
+  </div>;
+}
+
 function ResponseArea({ response }) {
   const config = response || {};
   const type = config.type || "lines";
@@ -152,22 +225,9 @@ function ResponseArea({ response }) {
     );
   }
 
-  if (type === "graph") {
-    return (
-      <div className="is-p2-graph-response" style={{minHeight:config.height || 300}}>
-        <span className="is-p2-y-label">{config.y || "y-axis"}</span>
-        <span className="is-p2-x-label">{config.x || "x-axis"}</span>
-      </div>
-    );
-  }
+  if (type === "graph") return <PracticeGraphResponse config={config} />;
 
-  if (type === "drawing") {
-    return (
-      <div className="is-p2-drawing-response" style={{minHeight:config.height || 220}}>
-        <span>Drawing / diagram response area</span>
-      </div>
-    );
-  }
+  if (type === "drawing") return <PracticeDrawingResponse config={config} />;
 
   if (type === "table") {
     return <BankTable table={config.table} editable />;

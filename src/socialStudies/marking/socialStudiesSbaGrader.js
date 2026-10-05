@@ -107,21 +107,38 @@ function gradeInstrument(value){
   );
 }
 
+function presentationHasData(item={}){
+  const type=normalizeSocialStudiesText(item.type);
+  if(!["table","bar graph","pie chart","line graph"].includes(type)) return true;
+  const rows=(item.rows || []).filter(row=>
+    String(row?.label || "").trim()
+    && Number.isFinite(Number(row?.value))
+    && Number(row.value)>=0
+  );
+  return rows.length>=2;
+}
+
 function gradePresentation(forms=[]){
   const usable=(forms || []).filter(item=>String(item?.type || "").trim());
   const distinctTypes=new Set(usable.map(item=>normalizeSocialStudiesText(item.type))).size;
-  const titleLabelCount=usable.filter(item=>item.title && item.labeled).length;
-  const accurateCount=usable.filter(item=>item.accurate).length;
+  const titleLabelCount=usable.filter(item=>{
+    const type=normalizeSocialStudiesText(item.type);
+    const graphNeedsAxes=["bar graph","line graph"].includes(type);
+    const graphLabelsOk=!graphNeedsAxes || (String(item.xLabel || "").trim() && String(item.yLabel || "").trim());
+    return item.title && item.labeled && graphLabelsOk;
+  }).length;
+  const dataReadyCount=usable.filter(presentationHasData).length;
+  const accurateCount=usable.filter(item=>item.accurate && presentationHasData(item)).length;
   const varietyMarks=distinctTypes>=3 ? 2 : distinctTypes>=2 ? 1 : 0;
   const labelMarks=titleLabelCount>=3 ? 2 : titleLabelCount>=1 ? 1 : 0;
-  const accuracyMarks=accurateCount>=3 ? 2 : accurateCount>=1 ? 1 : 0;
+  const accuracyMarks=accurateCount>=3 && dataReadyCount>=3 ? 2 : accurateCount>=1 && dataReadyCount>=1 ? 1 : 0;
   const marks=varietyMarks+labelMarks+accuracyMarks;
   return criterion(
     "presentation",marks,6,
     marks===6
-      ? "Three different data forms are present, titled, labelled and checked for accuracy."
-      : "Use three different appropriate forms and check titles, labels and accuracy for each one.",
-    {distinctTypes,titleLabelCount,accurateCount,varietyMarks,labelMarks,accuracyMarks}
+      ? "Three different data forms are present with usable data, clear titles and labels, and an accuracy check."
+      : "Use three different appropriate forms. For tables and graphs, enter the actual data and add the needed titles and axis labels before checking accuracy.",
+    {distinctTypes,titleLabelCount,accurateCount,dataReadyCount,varietyMarks,labelMarks,accuracyMarks}
   );
 }
 
