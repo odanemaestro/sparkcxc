@@ -376,6 +376,11 @@ export default function Paper2Exam({ onExit, startFresh = false, supabase, userI
       ecfParts: grade.ecfParts || 0,
       ecfMarks: grade.ecfMarks || 0,
       timedOut: wasTimedOut,
+      attemptProvenance:buildAttemptProvenance({
+        subjectId:"mathematics",paper:"02",mode:"timed",bankVersion:"math-paper2-bank-v5",
+        rubricVersion:"mab-criteria-v2",graderVersion:"paper2-cxc-grader-v2",
+        startedAt:null,submittedAt:new Date().toISOString(),responses:answers,
+      }),
     };
     const previousUsed = readJson(USED_KEY, []);
     writeJson(USED_KEY, [...new Set([...previousUsed, ...record.questionIds])]);
