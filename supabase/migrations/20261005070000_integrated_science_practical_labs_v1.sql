@@ -16,6 +16,9 @@ set capabilities = coalesce(capabilities,'{}'::jsonb)
   }'::jsonb,
     stats = coalesce(stats,'{}'::jsonb)
       || '{
+        "sections":3,
+        "topics":19,
+        "objectives":114,
         "paper1Questions":1561,
         "paper2Questions":84,
         "practicalLabs":4
