@@ -154,6 +154,7 @@ const SPARK_SUBJECTS = getSparkSubjectRegistry({
   physics: { ...PHYSICS_SECTION_A_STATS, ...PHYSICS_FULL_COURSE_STATS },
   informationTechnology: { sections: 8, topics: 26, objectives: 63, mcq: 540 },
   socialStudies: { sections: 4, topics: 39, objectives: 84, mcq: 156 },
+  englishA: { sections: 3, topics: 29, paper1Items: 60, sourcePapers: 24, flashcards: 145 },
 });
 
 const VIEW_ROUTE_PATHS = Object.freeze({
@@ -174,6 +175,7 @@ const VIEW_ROUTE_PATHS = Object.freeze({
   "practice-information-technology": "/practice/information-technology",
   "practice-integrated-science": "/practice/integrated-science",
   "practice-social-studies": "/practice/social-studies",
+  "practice-english-a": "/practice/english-a",
   // SPARK_PHYSICS_SECTION_A_RC1_ROUTES
   physics: "/study/physics",
   "information-technology": "/study/information-technology",
@@ -204,6 +206,7 @@ const ROUTE_PATH_VIEWS = Object.freeze({
   "/practice/information-technology": "practice-information-technology",
   "/practice/integrated-science": "practice-integrated-science",
   "/practice/social-studies": "practice-social-studies",
+  "/practice/english-a": "practice-english-a",
   "/study/physics": PHYSICS_SECTION_A_ENABLED ? "physics" : "home",
   "/physics": PHYSICS_SECTION_A_ENABLED ? "physics" : "home",
   "/study/information-technology": "information-technology",
@@ -268,6 +271,7 @@ function viewFromBrowserHash() {
   if (normalizedPath === "/practice/information-technology" || normalizedPath.startsWith("/practice/information-technology/")) return "practice-information-technology";
   if (normalizedPath === "/practice/integrated-science" || normalizedPath.startsWith("/practice/integrated-science/")) return "practice-integrated-science";
   if (normalizedPath === "/practice/social-studies" || normalizedPath.startsWith("/practice/social-studies/")) return "practice-social-studies";
+  if (normalizedPath === "/practice/english-a" || normalizedPath.startsWith("/practice/english-a/")) return "practice-english-a";
   return ROUTE_PATH_VIEWS[normalizedPath] || "home";
 }
 
@@ -1604,7 +1608,7 @@ function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorAp
     <>
       <NavBtn onClick={() => navigate("dashboard")} active={view === "dashboard"}>Dashboard</NavBtn>
       {!isTutor && !isParent && <NavBtn onClick={() => navigate("study")} active={view === "study" || view === "lesson" || view === "physics" || view === "information-technology" || view === "social-studies" || view === "generic-study"}>Study</NavBtn>}
-      {!isTutor && !isParent && <NavBtn onClick={() => navigate("practice")} active={view === "practice" || view === "practice-math" || view === "practice-physics" || view === "practice-information-technology" || view === "practice-integrated-science" || view === "practice-social-studies"}>Practice</NavBtn>}
+      {!isTutor && !isParent && <NavBtn onClick={() => navigate("practice")} active={view === "practice" || view === "practice-math" || view === "practice-physics" || view === "practice-information-technology" || view === "practice-integrated-science" || view === "practice-social-studies" || view === "practice-english-a"}>Practice</NavBtn>}
       <NavBtn onClick={() => navigate("tutors")} active={view === "tutors"}>Tutors</NavBtn>
       {!isStudent && !isParent && !hasTutorApp && view !== "become-tutor" && (
         <NavBtn onClick={() => navigate("become-tutor")}>Become a tutor</NavBtn>
@@ -6997,23 +7001,25 @@ useEffect(() => () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [view]);
-  // SPARK_PHYSICS_IT_NESTED_SCROLL_RESET
-  // Main-view changes already reset scroll above. Physics and IT also use
-  // nested hash routes while staying inside the same main view, so reset
-  // scroll whenever one of those nested pages is entered, restored or
-  // reached with browser Back/Forward.
+  // SPARK_NESTED_SUBJECT_SCROLL_RESET
+  // Main-view changes already reset scroll above. Subject routes may also
+  // change inside the same mounted shell, so reset the document when a nested
+  // subject page is entered, restored or reached with browser Back/Forward.
   useLayoutEffect(() => {
-    const resetPhysicsAndItScroll = () => {
+    const resetNestedSubjectScroll = () => {
       const path = normalizedSparkPathFromBrowserHash();
-      const isPhysicsOrItRoute =
+      const isNestedSubjectRoute =
         path === "/physics" ||
         path === "/information-technology" ||
         path?.startsWith("/study/physics") ||
         path?.startsWith("/practice/physics") ||
         path?.startsWith("/study/information-technology") ||
-        path?.startsWith("/practice/information-technology");
+        path?.startsWith("/practice/information-technology") ||
+        path?.startsWith("/study/english-a") ||
+        path?.startsWith("/practice/english-a") ||
+        path?.startsWith("/dashboard/flashcards/english-a");
 
-      if (!isPhysicsOrItRoute) return;
+      if (!isNestedSubjectRoute) return;
 
       window.scrollTo({
         top: 0,
@@ -7023,18 +7029,18 @@ useEffect(() => () => {
     };
 
     // Covers direct entry and hard refresh.
-    resetPhysicsAndItScroll();
+    resetNestedSubjectScroll();
 
     // Covers browser navigation, direct hash changes and SPARK's pushState
     // nested routing.
-    window.addEventListener("popstate", resetPhysicsAndItScroll);
-    window.addEventListener("hashchange", resetPhysicsAndItScroll);
-    window.addEventListener("spark:routechange", resetPhysicsAndItScroll);
+    window.addEventListener("popstate", resetNestedSubjectScroll);
+    window.addEventListener("hashchange", resetNestedSubjectScroll);
+    window.addEventListener("spark:routechange", resetNestedSubjectScroll);
 
     return () => {
-      window.removeEventListener("popstate", resetPhysicsAndItScroll);
-      window.removeEventListener("hashchange", resetPhysicsAndItScroll);
-      window.removeEventListener("spark:routechange", resetPhysicsAndItScroll);
+      window.removeEventListener("popstate", resetNestedSubjectScroll);
+      window.removeEventListener("hashchange", resetNestedSubjectScroll);
+      window.removeEventListener("spark:routechange", resetNestedSubjectScroll);
     };
   }, []);
 
@@ -7437,6 +7443,7 @@ const handleLogout = async () => {
   const appHasInformationTechnology = appStudentEnrolledSubjectIds.has("information-technology");
   const appHasIntegratedScience = appStudentEnrolledSubjectIds.has("integrated-science");
   const appHasSocialStudies = appStudentEnrolledSubjectIds.has("social-studies");
+  const appHasEnglishA = appStudentEnrolledSubjectIds.has("english-a");
   const appGenericStudySubjectId = view === "generic-study"
     ? genericStudySubjectFromBrowserHash()
     : null;
@@ -7636,7 +7643,7 @@ if (loading || authenticatedRolePending) {
           CSEC Physics study is available from a student account.
         </div>
       )}
-      {(view === "practice" || view === "practice-math" || view === "practice-physics" || view === "practice-information-technology" || view === "practice-integrated-science" || view === "practice-social-studies") && session && profile?.role === "student" && (
+      {(view === "practice" || view === "practice-math" || view === "practice-physics" || view === "practice-information-technology" || view === "practice-integrated-science" || view === "practice-social-studies" || view === "practice-english-a") && session && profile?.role === "student" && (
         appSubjectAccessPending
           ? <SparkLoader variant="section" label="Loading your practice subjects" />
           : (view === "practice-math" && !appHasMathematics)
@@ -7649,6 +7656,8 @@ if (loading || authenticatedRolePending) {
                 ? <SubjectEnrollmentRequiredView subjectName="Integrated Science" onManageSubjects={openMySubjects} onBack={() => setView("practice")}/>
               : (view === "practice-social-studies" && !appHasSocialStudies)
                 ? <SubjectEnrollmentRequiredView subjectName="Social Studies" onManageSubjects={openMySubjects} onBack={() => setView("practice")}/>
+              : (view === "practice-english-a" && !appHasEnglishA)
+                ? <SubjectEnrollmentRequiredView subjectName="English A" onManageSubjects={openMySubjects} onBack={() => setView("practice")}/>
               : appStudentEnrolledSubjects.length === 0
                 ? <SubjectEnrollmentRequiredView onManageSubjects={openMySubjects} onBack={() => setView("dashboard")}/>
                 : (
@@ -7660,7 +7669,7 @@ if (loading || authenticatedRolePending) {
                       physicsEnabled={PHYSICS_SECTION_A_ENABLED}
                       enrolledSubjectIds={appSubjectEnrollmentIds}
                       subjects={runtimeSparkSubjects}
-                      initialSubject={view === "practice-math" ? "mathematics" : view === "practice-physics" ? "physics" : view === "practice-information-technology" ? "information-technology" : view === "practice-integrated-science" ? "integrated-science" : view === "practice-social-studies" ? "social-studies" : null}
+                      initialSubject={view === "practice-math" ? "mathematics" : view === "practice-physics" ? "physics" : view === "practice-information-technology" ? "information-technology" : view === "practice-integrated-science" ? "integrated-science" : view === "practice-social-studies" ? "social-studies" : view === "practice-english-a" ? "english-a" : null}
                       onSubjectActivity={event => {
                         recordSparkSubjectActivity({ supabase, event }).then(result => {
                           if (result?.error && !["PGRST202", "42P01", "42883"].includes(result.error.code)) {

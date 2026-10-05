@@ -4,6 +4,7 @@ export const SPARK_SUBJECT_IDS = Object.freeze({
   INFORMATION_TECHNOLOGY: "information-technology",
   INTEGRATED_SCIENCE: "integrated-science",
   SOCIAL_STUDIES: "social-studies",
+  ENGLISH_A: "english-a",
 });
 
 const BASE_SUBJECTS = Object.freeze({
@@ -66,6 +67,37 @@ const BASE_SUBJECTS = Object.freeze({
       adaptive: false,
       structured: true,
       labs: true,
+      sba: false,
+    }),
+  }),
+  englishA: Object.freeze({
+    id: "english-a",
+    name: "CSEC English A",
+    shortName: "English A",
+    qualification: "CSEC",
+    mark: "EA",
+    description: "Build the reading, language, literary and persuasive skills assessed in CSEC English A through syllabus-based lessons, interactive examples, flashcards and full Paper 01 and Paper 02 practice.",
+    enabled: true,
+    status: "live",
+    sortOrder: 50,
+    implementation: "generic",
+    studyView: "study",
+    routes: Object.freeze({
+      study: "/study/english-a",
+      practice: "/practice/english-a",
+      flashcards: "/dashboard/flashcards/english-a",
+      progress: "/dashboard/progress",
+    }),
+    capabilities: Object.freeze({
+      study: true,
+      practice: true,
+      flashcards: true,
+      progress: true,
+      paper1: true,
+      paper2: true,
+      adaptive: false,
+      structured: true,
+      labs: false,
       sba: false,
     }),
   }),
@@ -133,7 +165,7 @@ const BASE_SUBJECTS = Object.freeze({
 
 });
 
-export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = {}, physics = {}, informationTechnology = {}, socialStudies = {} } = {}) {
+export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = {}, physics = {}, informationTechnology = {}, socialStudies = {}, englishA = {} } = {}) {
   const mathematicsSubject = {
     ...BASE_SUBJECTS.mathematics,
     stats: {
@@ -162,6 +194,18 @@ export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = 
       flashcards: Number(informationTechnology.flashcards || 115),
     },
   };
+  const englishASubject = {
+    ...BASE_SUBJECTS.englishA,
+    stats: {
+      sections: Number(englishA.sections || 3),
+      topics: Number(englishA.topics || 29),
+      paper1Items: Number(englishA.paper1Items || 60),
+      paper2PracticeSets: Number(englishA.paper2PracticeSets || 6),
+      paper2HistoricalSources: Number(englishA.paper2HistoricalSources || 30),
+      sourcePapers: Number(englishA.sourcePapers || 54),
+      flashcards: Number(englishA.flashcards || 145),
+    },
+  };
   const socialStudiesSubject = {
     ...BASE_SUBJECTS.socialStudies,
     stats: {
@@ -178,7 +222,7 @@ export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = 
       flashcards: Number(socialStudies.flashcards || 342),
     },
   };
-  return Object.freeze([mathematicsSubject, physicsSubject, informationTechnologySubject, socialStudiesSubject]);
+  return Object.freeze([mathematicsSubject, physicsSubject, informationTechnologySubject, socialStudiesSubject, englishASubject]);
 }
 
 export function enabledSparkSubjects(subjects) {
