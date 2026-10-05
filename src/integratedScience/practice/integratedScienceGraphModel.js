@@ -44,13 +44,37 @@ export function deriveIntegratedScienceGraphData(item={},sourceTable=null){
   const wideNumericX=rectangular && headerX.length>0 && headerX.every(value=>value!==null);
 
   if(wideNumericX){
-    const series=rows.map((row,index)=>{
+    const headerMatchesX=overlapScore(headers[0],xLabel);
+    const headerMatchesY=overlapScore(headers[0],yLabel);
+    const firstRowLabel=rows[0]?.[0] || "";
+    const rowMatchesX=overlapScore(firstRowLabel,xLabel);
+    const rowMatchesY=overlapScore(firstRowLabel,yLabel);
+    const shouldSwap=rows.length===1 && headerMatchesY>headerMatchesX && rowMatchesX>=rowMatchesY;
+    if(shouldSwap){
+      const rowValues=rows[0].slice(1).map(numberValue);
+      const points=rowValues.map((x,i)=>{
+        const y=headerX[i];
+        return x===null || y===null ? null : {x,y,label:String(x)};
+      }).filter(Boolean);
+      return {kind,xLabel,yLabel,series:[{name:clean(headers[0]) || yLabel,points}],categories:points.map(point=>String(point.x)),xValues:points.map(point=>point.x)};
+    }
+    let series=rows.map((row,index)=>{
       const points=headerX.map((x,i)=>{
         const y=numberValue(row[i+1]);
         return y===null ? null : {x,y,label:String(x)};
       }).filter(Boolean);
       return {name:clean(row[0]) || `Series ${index+1}`,points};
     }).filter(series=>series.points.length);
+
+    const schemeText=(item.markScheme?.points || []).join(" ");
+    const explicit=[];
+    const pairPattern=/\((-?\d+(?:\.\d+)?),\s*([+-]?\d+(?:\.\d+)?)\)/g;
+    let pair;
+    while((pair=pairPattern.exec(schemeText))){
+      explicit.push({x:Number(pair[1]),y:Number(pair[2]),label:pair[1]});
+    }
+    if(series.length===1 && explicit.length>series[0].points.length) series=[{...series[0],points:explicit}];
+
     return {kind,xLabel,yLabel,series,categories:headerX.map(String),xValues:headerX};
   }
 
