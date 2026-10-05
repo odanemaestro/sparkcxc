@@ -4,6 +4,7 @@ import SocialStudiesShortAnswerPractice from "./SocialStudiesShortAnswerPractice
 import SocialStudiesSbaPractice from "./SocialStudiesSbaPractice";
 import ProgressBar from "../../components/ui/ProgressBar";
 import { recordSubjectActivity } from "../../subjects/subjectProgress";
+import { buildAttemptProvenance } from "../../grading/attemptProvenance";
 import { readSparkHashRoute, subscribeSparkRoute } from "../../routing/sparkRoutingV270";
 import {
   SOCIAL_STUDIES_COURSE,
@@ -356,7 +357,7 @@ function Paper2Practice({ onExit, onComplete, userId }){
     if(completed || submitGuard.current) return;
     submitGuard.current=true;
     setCompleted(true);
-    onComplete?.(paperScore,paperMax,{sessionMode,timedOut:Boolean(timedOut)});
+    onComplete?.(paperScore,paperMax,{sessionMode,timedOut:Boolean(timedOut),responses,startedAt:endsAt ? new Date(Number(endsAt)-SOCIAL_STUDIES_PAPER2_DURATION_SECONDS*1000).toISOString() : null});
     window.scrollTo?.(0,0);
   };
 
@@ -590,7 +591,7 @@ export default function SocialStudiesPracticeHub({ supabase, userId, onBack }){
     if(String(route.params.get("mode") || "").toLowerCase()==="sba") setMode("sba");
   }),[]);
 
-  const saveExamAttempt=async ({ paper, score=null, maxScore=null, sessionMode=null, timedOut=false })=>{
+  const saveExamAttempt=async ({ paper, score=null, maxScore=null, sessionMode=null, timedOut=false, responses=null, startedAt=null })=>{
     const label=String(paper || "Practice");
     const normalized=label.toLowerCase();
     const paperType=normalized==="paper 01" ? "paper1" : normalized==="paper 02" ? "paper2" : null;
@@ -623,6 +624,11 @@ export default function SocialStudiesPracticeHub({ supabase, userId, onBack }){
           event_type:eventType,
           session_mode:sessionMode,
           timed_out:Boolean(timedOut),
+          attempt_provenance:paperType==="paper2" ? buildAttemptProvenance({
+            subjectId:"social-studies",paper:"02",mode:sessionMode || "timed",bankVersion:"social-studies-paper2-v1",
+            rubricVersion:"social-studies-criteria-v1",graderVersion:"social-studies-grader-v2",
+            startedAt,submittedAt:new Date().toISOString(),responses:responses || {},
+          }) : null,
           at:new Date().toISOString(),
         },
       },
@@ -708,7 +714,7 @@ export default function SocialStudiesPracticeHub({ supabase, userId, onBack }){
   if(mode==="paper2") return <Paper2Practice
     userId={userId}
     onExit={()=>setMode("home")}
-    onComplete={(score,total,details={})=>saveExamAttempt({paper:"Paper 02",score,maxScore:total,sessionMode:details.sessionMode,timedOut:details.timedOut})}
+    onComplete={(score,total,details={})=>saveExamAttempt({paper:"Paper 02",score,maxScore:total,sessionMode:details.sessionMode,timedOut:details.timedOut,responses:details.responses,startedAt:details.startedAt})}
   />;
   if(mode==="quiz") return <QuizSession title={sessionTitle} questions={session} onExit={()=>setMode("home")} onFinish={finish}/>;
   if(mode==="results") return <Results title={sessionTitle} answers={answers} total={session.length} examPrompt={examPrompt} onAgain={()=>start(practiceKind,sectionId)} onHome={()=>setMode("home")}/>;
