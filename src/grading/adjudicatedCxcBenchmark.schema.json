@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SPARK Adjudicated CXC Paper 2 Benchmark",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "caseId","subjectId","paper","adjudicatedBy","adjudicated",
+      "cxcSources","goldMark","sparkMark","maxMark","criteria"
+    ],
+    "properties": {
+      "caseId": {"type":"string","minLength":1},
+      "subjectId": {"type":"string","minLength":1},
+      "paper": {"type":"string","minLength":1},
+      "session": {"type":["string","null"]},
+      "adjudicatedBy": {"const":"spark-calibration-team"},
+      "adjudicated": {"const":true},
+      "cxcSources": {
+        "type":"array",
+        "minItems":1,
+        "items":{
+          "type":"object",
+          "required":["sourceId","sourceType"],
+          "properties":{
+            "sourceId":{"type":"string","minLength":1},
+            "sourceType":{"type":"string","enum":["syllabus","specimen-mark-scheme","subject-report","historical-marking-pattern"]},
+            "url":{"type":["string","null"]},
+            "rule":{"type":["string","null"]}
+          }
+        }
+      },
+      "goldMark": {"type":"number","minimum":0},
+      "sparkMark": {"type":"number","minimum":0},
+      "maxMark": {"type":"number","exclusiveMinimum":0},
+      "candidateStyleResponse": {},
+      "rationale": {"type":["string","null"]},
+      "criteria": {
+        "type":"array",
+        "items":{
+          "type":"object",
+          "required":["criterionId","goldAwarded","sparkAwarded"],
+          "properties":{
+            "criterionId":{"type":"string","minLength":1},
+            "goldAwarded":{"type":"boolean"},
+            "sparkAwarded":{"type":"boolean"},
+            "goldMarks":{"type":["number","null"]},
+            "sparkMarks":{"type":["number","null"]},
+            "cxcRule":{"type":["string","null"]},
+            "notes":{"type":["string","null"]}
+          }
+        }
+      }
+    }
+  }
+}
