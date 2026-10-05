@@ -80,7 +80,7 @@ export default function EnglishAPracticeHub({ supabase, userId, onBack }) {
               <span>165 minutes</span>
               <span>120 marks</span>
               <span>40 marks per module</span>
-              <span>3 full practice sets</span>
+              <span>6 full practice sets</span>
             </div>
             <button type="button" className="ea-practice-primary" onClick={() => setMode("paper2")}>
               Open Paper 2 Simulator
