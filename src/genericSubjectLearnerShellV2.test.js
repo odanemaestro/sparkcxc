@@ -44,6 +44,14 @@ describe("SPARK Generic Subject Learner Shell V2.1", () => {
     expect(view).toContain("spark_subject_progress");
   });
 
+  test("completed courses reopen from the first lesson in visible course order", () => {
+    expect(view).toContain("function orderedTopics(structure)");
+    expect(view).toContain("const allComplete = topics.every");
+    expect(view).toContain("if (allComplete) return topics[0]");
+    expect(view).toContain("shouldNormalizeBareCompleteRoute");
+    expect(view).toContain("navigationTopics");
+  });
+
   test("draft and incomplete generic subjects remain protected", () => {
     expect(migration).toContain("s.status = 'live'");
     expect(migration).toContain("spark_guard_generic_subject_publish");
