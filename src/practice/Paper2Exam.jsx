@@ -21,6 +21,7 @@ import {
   validatePaper2Exam,
 } from "./paper2Engine";
 import { paper2ResultToAttempt, savePracticeExamAttempt } from "./persistence";
+import { buildAttemptProvenance } from "../grading/attemptProvenance";
 import "./practiceExam.css";
 
 const ACTIVE_KEY = "spark-paper2-active-v52";
