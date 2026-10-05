@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { resolveIntegratedScienceStimulus } from "../data/integratedScienceBank";
 import IntegratedScienceText from "../components/IntegratedScienceText";
+import { deriveIntegratedScienceGraphData, integratedScienceGraphBounds, parseStoredBarValues } from "./integratedScienceGraphModel";
 
 function TrustedBankSvg({ svg, className = "" }) {
   const safe = typeof svg === "string" && /^\s*<svg[\s>]/i.test(svg) ? svg : "";
@@ -140,38 +141,86 @@ export function IntegratedSciencePaper1Question({
 
 
 function parseStoredGraphPoints(value) {
-  return String(value || "").split(/\\n|;/).map(line => {
-    const match = line.match(/(-?\\d+(?:\\.\\d+)?)\\s*[, ]\\s*(-?\\d+(?:\\.\\d+)?)/);
-    return match ? {x:Number(match[1]),y:Number(match[2])} : null;
+  return String(value || "").split(/\n|;/).map(line => {
+    const match = line.match(/^\s*(?:([^:]+):)?\s*(-?\d+(?:\.\d+)?)\s*[, ]\s*(-?\d+(?:\.\d+)?)\s*$/);
+    return match ? {series:String(match[1] || "").trim(),x:Number(match[2]),y:Number(match[3])} : null;
   }).filter(point => point && Number.isFinite(point.x) && Number.isFinite(point.y));
 }
 
-function PracticeGraphResponse({ base, config, responses, onChange, disabled = false }) {
-  const width=620, height=Math.max(280,Number(config.height || 320)), pad=46;
-  const points=parseStoredGraphPoints(responses[`${base}:points`]);
+function PracticeGraphResponse({ base, config, item, sourceTable, responses, onChange, disabled = false }) {
+  const width=620, height=Math.max(280,Number(config.height || 320)), pad=52;
+  const model=deriveIntegratedScienceGraphData(item,sourceTable);
+  const bounds=integratedScienceGraphBounds(model);
+  const [selectedSeries,setSelectedSeries]=useState(model.series?.[0]?.name || "");
   const xLabel=responses[`${base}:xLabel`] ?? config.x ?? "";
   const yLabel=responses[`${base}:yLabel`] ?? config.y ?? "";
-  const xMax=Number(config.xMax || 10);
-  const yMax=Number(config.yMax || 10);
+  const scaleText=responses[`${base}:scale`] || "";
+  const keyText=responses[`${base}:key`] || "";
+
+  if(model.kind==="bar"){
+    const bars=parseStoredBarValues(responses[`${base}:bars`]);
+    const updateBar=(seriesName,category,value)=>{
+      const next={...bars,[seriesName]:{...(bars[seriesName] || {}),[category]:value}};
+      onChange?.(`${base}:bars`,JSON.stringify(next));
+    };
+    const entered=(model.series || []).flatMap(series=>(model.categories || []).map(category=>Number(bars?.[series.name]?.[category])).filter(Number.isFinite));
+    const yMax=Math.max(1,...entered);
+    const groups=Math.max(1,model.categories.length), seriesCount=Math.max(1,model.series.length);
+    const plotWidth=width-pad*2, groupWidth=plotWidth/groups, barWidth=Math.max(8,groupWidth*.72/seriesCount);
+    return <div className="is-practice-graph-workspace">
+      <div className="is-practice-graph-fields">
+        <label>X-axis <input disabled={disabled} value={xLabel} onChange={e=>onChange?.(`${base}:xLabel`,e.target.value)} placeholder={model.xLabel || "Quantity / unit"}/></label>
+        <label>Y-axis <input disabled={disabled} value={yLabel} onChange={e=>onChange?.(`${base}:yLabel`,e.target.value)} placeholder={model.yLabel || "Quantity / unit"}/></label>
+        <label>Scale <input disabled={disabled} value={scaleText} onChange={e=>onChange?.(`${base}:scale`,e.target.value)} placeholder="e.g. 1 square = 10 units"/></label>
+        {model.series.length>1 && <label>Key <input disabled={disabled} value={keyText} onChange={e=>onChange?.(`${base}:key`,e.target.value)} placeholder="State how the series are distinguished"/></label>}
+      </div>
+      <div className="is-practice-bar-entry-grid">
+        {(model.categories || []).map(category=><div key={category} className="is-practice-bar-entry-row"><strong>{category}</strong>{(model.series || []).map(series=><label key={series.name}><span>{series.name}</span><input disabled={disabled} inputMode="decimal" value={bars?.[series.name]?.[category] ?? ""} onChange={e=>updateBar(series.name,category,e.target.value)} placeholder="Value"/></label>)}</div>)}
+      </div>
+      <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Interactive bar chart workspace">
+        <rect x={pad} y={pad} width={width-pad*2} height={height-pad*2} className="is-practice-graph-paper"/>
+        <line x1={pad} y1={height-pad} x2={width-pad} y2={height-pad} className="is-practice-graph-axis"/>
+        <line x1={pad} y1={pad} x2={pad} y2={height-pad} className="is-practice-graph-axis"/>
+        {(model.categories || []).map((category,categoryIndex)=><React.Fragment key={category}>
+          {(model.series || []).map((series,seriesIndex)=>{
+            const value=Number(bars?.[series.name]?.[category]);
+            const safe=Number.isFinite(value)?Math.max(0,value):0;
+            const h=(safe/yMax)*(height-pad*2);
+            const x=pad+categoryIndex*groupWidth+(groupWidth-seriesCount*barWidth)/2+seriesIndex*barWidth;
+            return <rect key={series.name} x={x} y={height-pad-h} width={barWidth*.82} height={h} className={`is-practice-bar is-series-${seriesIndex%3}`}/>;
+          })}
+          <text x={pad+categoryIndex*groupWidth+groupWidth/2} y={height-pad+18} textAnchor="middle" className="is-practice-graph-tick">{category.length>14?`${category.slice(0,12)}…`:category}</text>
+        </React.Fragment>)}
+        <text x={width/2} y={height-6} textAnchor="middle" className="is-practice-graph-label">{xLabel || model.xLabel || "x-axis"}</text>
+        <text x="15" y={height/2} textAnchor="middle" transform={`rotate(-90 15 ${height/2})`} className="is-practice-graph-label">{yLabel || model.yLabel || "y-axis"}</text>
+      </svg>
+    </div>;
+  }
+
+  const points=parseStoredGraphPoints(responses[`${base}:points`]);
+  const xMin=Number(config.xMin ?? bounds.xMin), xMax=Number(config.xMax ?? bounds.xMax);
+  const yMin=Number(config.yMin ?? bounds.yMin), yMax=Number(config.yMax ?? bounds.yMax);
   const toValue=(event)=>{
     const svg=event.currentTarget;
     const rect=svg.getBoundingClientRect();
-    const x=Math.max(0,Math.min(xMax,((event.clientX-rect.left-pad)/Math.max(1,rect.width-pad*2))*xMax));
-    const y=Math.max(0,Math.min(yMax,((rect.bottom-event.clientY-pad)/Math.max(1,rect.height-pad*2))*yMax));
-    return {x:Number(x.toFixed(2)),y:Number(y.toFixed(2))};
+    const x=xMin+Math.max(0,Math.min(1,(event.clientX-rect.left-pad)/Math.max(1,rect.width-pad*2)))*(xMax-xMin);
+    const y=yMin+Math.max(0,Math.min(1,(rect.bottom-event.clientY-pad)/Math.max(1,rect.height-pad*2)))*(yMax-yMin);
+    return {series:selectedSeries,x:Number(x.toFixed(2)),y:Number(y.toFixed(2))};
   };
   const toScreen=point=>({
-    x:pad+(point.x/xMax)*(width-pad*2),
-    y:height-pad-(point.y/yMax)*(height-pad*2),
+    x:pad+((point.x-xMin)/Math.max(1e-9,xMax-xMin))*(width-pad*2),
+    y:height-pad-((point.y-yMin)/Math.max(1e-9,yMax-yMin))*(height-pad*2),
   });
-  const writePoints=next=>onChange?.(`${base}:points`,next.map(point=>`${point.x}, ${point.y}`).join("\\n"));
+  const writePoints=next=>onChange?.(`${base}:points`,next.map(point=>`${model.series.length>1 && point.series ? `${point.series}: ` : ""}${point.x}, ${point.y}`).join("\n"));
   const grid=Array.from({length:11},(_,i)=>i);
   return <div className="is-practice-graph-workspace">
     <div className="is-practice-graph-fields">
-      <label>X-axis <input disabled={disabled} value={xLabel} onChange={e=>onChange?.(`${base}:xLabel`,e.target.value)} placeholder="Quantity / unit"/></label>
-      <label>Y-axis <input disabled={disabled} value={yLabel} onChange={e=>onChange?.(`${base}:yLabel`,e.target.value)} placeholder="Quantity / unit"/></label>
-      <label>Scale <input disabled={disabled} value={responses[`${base}:scale`] || ""} onChange={e=>onChange?.(`${base}:scale`,e.target.value)} placeholder="e.g. x: 1 square = 1; y: 1 square = 5"/></label>
+      <label>X-axis <input disabled={disabled} value={xLabel} onChange={e=>onChange?.(`${base}:xLabel`,e.target.value)} placeholder={model.xLabel || "Quantity / unit"}/></label>
+      <label>Y-axis <input disabled={disabled} value={yLabel} onChange={e=>onChange?.(`${base}:yLabel`,e.target.value)} placeholder={model.yLabel || "Quantity / unit"}/></label>
+      <label>Scale <input disabled={disabled} value={scaleText} onChange={e=>onChange?.(`${base}:scale`,e.target.value)} placeholder="State the scale you used"/></label>
+      {model.series.length>1 && <label>Key <input disabled={disabled} value={keyText} onChange={e=>onChange?.(`${base}:key`,e.target.value)} placeholder="State how the series are distinguished"/></label>}
     </div>
+    {model.series.length>1 && <div className="is-practice-graph-series-tabs">{model.series.map(series=><button type="button" key={series.name} disabled={disabled} className={selectedSeries===series.name?"active":""} onClick={()=>setSelectedSeries(series.name)}>{series.name}</button>)}</div>}
     <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Interactive graph plotting workspace" onClick={disabled?undefined:e=>writePoints([...points,toValue(e)])}>
       <rect x={pad} y={pad} width={width-pad*2} height={height-pad*2} className="is-practice-graph-paper"/>
       {grid.map(i=>{
@@ -180,10 +229,15 @@ function PracticeGraphResponse({ base, config, responses, onChange, disabled = f
       })}
       <line x1={pad} y1={height-pad} x2={width-pad} y2={height-pad} className="is-practice-graph-axis"/>
       <line x1={pad} y1={pad} x2={pad} y2={height-pad} className="is-practice-graph-axis"/>
-      {points.map((point,index)=>{const p=toScreen(point);return <circle key={index} cx={p.x} cy={p.y} r="5" className="is-practice-graph-point"/>;})}
-      {points.length>1 && <polyline points={points.map(point=>{const p=toScreen(point);return `${p.x},${p.y}`;}).join(" ")} className="is-practice-graph-line"/>}
-      <text x={width/2} y={height-8} textAnchor="middle" className="is-practice-graph-label">{xLabel || "x-axis"}</text>
-      <text x="14" y={height/2} textAnchor="middle" transform={`rotate(-90 14 ${height/2})`} className="is-practice-graph-label">{yLabel || "y-axis"}</text>
+      {(model.series.length?model.series:[{name:""}]).map((series,seriesIndex)=>{
+        const seriesPoints=points.filter(point=>model.series.length<=1 || point.series===series.name);
+        return <g key={series.name || "series"} className={`is-series-${seriesIndex%3}`}>
+          {seriesPoints.map((point,index)=>{const p=toScreen(point);return <circle key={index} cx={p.x} cy={p.y} r="5" className="is-practice-graph-point"/>;})}
+          {seriesPoints.length>1 && <polyline points={seriesPoints.map(point=>{const p=toScreen(point);return `${p.x},${p.y}`;}).join(" ")} className="is-practice-graph-line" style={{strokeDasharray:seriesIndex===1?"8 5":seriesIndex===2?"2 4":undefined}}/>}
+        </g>;
+      })}
+      <text x={width/2} y={height-8} textAnchor="middle" className="is-practice-graph-label">{xLabel || model.xLabel || "x-axis"}</text>
+      <text x="14" y={height/2} textAnchor="middle" transform={`rotate(-90 14 ${height/2})`} className="is-practice-graph-label">{yLabel || model.yLabel || "y-axis"}</text>
     </svg>
     <div className="is-practice-graph-actions">
       <span>{points.length} point{points.length===1?"":"s"} plotted</span>
@@ -229,8 +283,8 @@ function PracticeDrawingResponse({ base, config, responses, onChange, disabled =
   </div>;
 }
 
-function ResponseArea({ questionId, partIndex, itemIndex, response, responses = {}, onChange, disabled = false }) {
-  const config = response || {};
+function ResponseArea({ questionId, partIndex, itemIndex, item, sourceTable, responses = {}, onChange, disabled = false }) {
+  const config = item?.response || {};
   const type = config.type || "lines";
   const base=`${questionId}:${partIndex}:${itemIndex}`;
 
@@ -244,7 +298,7 @@ function ResponseArea({ questionId, partIndex, itemIndex, response, responses = 
     );
   }
 
-  if (type === "graph") return <PracticeGraphResponse base={base} config={config} responses={responses} onChange={onChange} disabled={disabled} />;
+  if (type === "graph") return <PracticeGraphResponse base={base} config={config} item={item} sourceTable={sourceTable} responses={responses} onChange={onChange} disabled={disabled} />;
 
   if (type === "drawing") return <PracticeDrawingResponse base={base} config={config} responses={responses} onChange={onChange} disabled={disabled} />;
 
@@ -321,7 +375,8 @@ export function IntegratedSciencePaper2Question({ question, responses = {}, onRe
                   questionId={question.id}
                   partIndex={partIndex}
                   itemIndex={itemIndex}
-                  response={item.response}
+                  item={item}
+                  sourceTable={part.table}
                   responses={responses}
                   onChange={onResponseChange}
                   disabled={checked}
