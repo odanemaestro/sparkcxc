@@ -72,6 +72,28 @@ function sourceCoverage(stimulus,response){
   return {terms,matched,ratio:terms.length?matched.length/terms.length:0};
 }
 
+function sourceIdeaCoverage(stimulus,response){
+  const rows=[
+    ...(stimulus?.paragraphs || []),
+    ...(stimulus?.situation || []),
+  ].filter(Boolean);
+  const candidate=new Set(tokenise(response).map(stem));
+  const ideas=rows.map((line,index)=>{
+    const terms=[...new Set(tokenise(line).map(stem).filter(w=>w.length>=4&&!STOPWORDS.has(w)))];
+    const matched=terms.filter(term=>candidate.has(term));
+    const needed=Math.min(3,Math.max(1,Math.ceil(terms.length*.2)));
+    return {index,line,matched:matched.slice(0,6),covered:matched.length>=needed};
+  });
+  return {ideas,covered:ideas.filter(row=>row.covered).length,total:ideas.length};
+}
+
+function contradictorySourceSignals(stimulus,response){
+  const low=clean(response).toLowerCase();
+  const negations=(low.match(/\b(?:not|never|no longer|cannot|can't|shouldn't|mustn't)\b/g)||[]).length;
+  const coverage=sourceCoverage(stimulus,response);
+  return {count:negations && coverage.matched.length>=2 ? negations : 0};
+}
+
 function ngrams(value,n=5){
   const w=tokenise(value).map(stem);
   const set=new Set();
@@ -182,12 +204,17 @@ function gradeAnalysisPart(task,response){
 function gradeSummary(task,response,analysisResponse){
   const analysis=gradeAnalysisPart(task,analysisResponse);
   const coverage=sourceCoverage(task?.stimulus,response);
+  const ideas=sourceIdeaCoverage(task?.stimulus,response);
+  const contradictions=contradictorySourceSignals(task?.stimulus,response);
   const lang=languageBand(response,4);
   const copyRatio=copiedPhraseRatio(task?.stimulus,response);
   const length=wordRangePenalty(task,response);
 
-  let understanding=round(clamp(coverage.ratio*4.5,0,3));
+  let understanding=ideas.total
+    ? Math.min(3,ideas.covered)
+    : round(clamp(coverage.ratio*4.5,0,3));
   if(tokenise(response).length<15) understanding=Math.min(understanding,1.5);
+  if(contradictions.count>0) understanding=Math.min(understanding,2);
 
   let evaluating=lang.score;
   if(copyRatio>.35) evaluating=Math.min(evaluating,2);
@@ -197,21 +224,22 @@ function gradeSummary(task,response,analysisResponse){
   const score=round(clamp(analysis.score+understanding+evaluating,0,10));
   const feedback=[
     analysis.feedback,
-    `Part (b) covers ${coverage.matched.length} of ${coverage.terms.length} high-value source ideas detected by SPARK.`,
+    ideas.total ? `Part (b) clearly represents ${ideas.covered} of ${ideas.total} distinct source idea blocks.` : `Part (b) covers ${coverage.matched.length} of ${coverage.terms.length} high-value source terms detected by SPARK.`,
     `Summary word count: ${length.wordCount}/${task.wordLimit||50}.`,
   ];
   if(copyRatio>.20) feedback.push("Several phrases closely match the source. Paraphrase more of the summary in your own words.");
+  if(contradictions.count>0) feedback.push("SPARK detected negation around source ideas, so content credit was capped rather than assuming those ideas were stated correctly.");
   feedback.push(...lang.notes);
 
   return {
     score,maxMarks:10,confidence:"medium-high",
     dimensions:[
       {id:"analysing",label:"P2 Analysing: Part (a)",score:analysis.score,max:3,evidence:analysis.evidence},
-      {id:"understanding",label:"P1 Understanding: THREE summary points",score:understanding,max:3,evidence:coverage.matched.slice(0,6)},
+      {id:"understanding",label:"P1 Understanding: THREE distinct summary points",score:understanding,max:3,evidence:ideas.total?ideas.ideas.filter(row=>row.covered):coverage.matched.slice(0,6)},
       {id:"evaluating",label:"P3 Evaluating & Creating: language and mechanics",score:evaluating,max:4,evidence:lang.notes},
     ],
     feedback,
-    diagnostics:{...lang.diagnostics,copyRatio:round(copyRatio)},
+    diagnostics:{...lang.diagnostics,copyRatio:round(copyRatio),distinctSourceIdeas:ideas.covered,contradictionSignals:contradictions.count},
   };
 }
 
