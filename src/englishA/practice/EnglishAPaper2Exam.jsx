@@ -88,6 +88,7 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
   });
 
   function prepare(id) {
+    submitGuard.current=false;
     setSetId(id);
     setAnswers({});
     setChoiceId("");
@@ -100,11 +101,21 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
   }
 
   function begin() {
+    submitGuard.current=false;
     const finish=Date.now()+ENGLISH_A_PAPER2_DURATION_SECONDS*1000;
     setEndsAt(finish);
     setRemaining(ENGLISH_A_PAPER2_DURATION_SECONDS);
     setPhase("exam");
     window.scrollTo?.(0,0);
+  }
+
+  function updateAnswer(key,value) {
+    if (submitGuard.current || phase !== "exam") return;
+    if (endsAt && Date.now() >= Number(endsAt)) {
+      submit(true);
+      return;
+    }
+    setAnswers(current => ({...current,[key]:value}));
   }
 
   async function submit(timedOut=false) {
@@ -325,7 +336,7 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
               <textarea
                 className="ea-p2-short-response"
                 value={answers[`${task.id}:analysis`] || ""}
-                onChange={event => setAnswers(current => ({...current,[`${task.id}:analysis`]:event.target.value}))}
+                onChange={event => updateAnswer(`${task.id}:analysis`,event.target.value)}
                 placeholder="Write your Part (a) response here..."
                 aria-label={`Part a response for ${task.title}`}
               />
@@ -334,7 +345,7 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
               <p className="ea-p2-part-prompt">{task.summaryPrompt}</p>
               <textarea
                 value={answers[task.id] || ""}
-                onChange={event => setAnswers(current => ({...current,[task.id]:event.target.value}))}
+                onChange={event => updateAnswer(task.id,event.target.value)}
                 placeholder="Write your 50-word summary here..."
                 aria-label={`Summary response for ${task.title}`}
               />
@@ -345,7 +356,7 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
               <div className="ea-p2-response-head"><span>Your response</span><strong>{wordCount} words</strong></div>
               <textarea
                 value={answers[task.id] || ""}
-                onChange={event => setAnswers(current => ({...current,[task.id]:event.target.value}))}
+                onChange={event => updateAnswer(task.id,event.target.value)}
                 placeholder="Write your response here..."
                 aria-label={`Response for ${task.title}`}
               />

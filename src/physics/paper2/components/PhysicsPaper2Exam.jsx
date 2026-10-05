@@ -295,7 +295,7 @@ function PaperLibrary({ userId, active, onResume, onStart, onBack }) {
       const anotherActive = Boolean(active?.paperId && !isActive);
       return <article key={paper.paper_id} className={`phy-p2-paper-card ${isActive ? "is-active" : ""}`}><div className="phy-p2-paper-number">{physicsPaper2PaperLetter(paper)}</div><div><span className="phy-p2-eyebrow">PRACTICE PAPER</span><h2>{physicsPaper2PaperName(paper)}</h2><p>{physicsPaper2Topics(paper).join(" · ")}</p><div className="phy-p2-paper-meta"><span>6 questions</span><span>100 marks</span><span>{coverage.autoMarks} automatically marked points</span><span>Immediate final review</span></div></div><button type="button" className="phy-p2-primary" disabled={anotherActive} onClick={() => isActive ? onResume() : onStart(paper.paper_id)}>{isActive ? (active.phase === "review" ? "Continue review" : active.phase === "instructions" ? "View instructions" : "Resume paper") : anotherActive ? "Finish current paper first" : "View instructions"}</button></article>;
     })}</section>
-    <section className="phy-p2-marking-note"><strong>How marking works</strong><p>SPARK marks the complete paper when you submit it. Numerical answers use unit-aware checks, while written, table and graph responses are checked against the authored mark scheme. You then receive your score and a question-by-question final review, in the same flow as Mathematics.</p></section>
+    <section className="phy-p2-marking-note"><strong>How marking works</strong><p>SPARK marks the complete paper when you submit it. Numerical answers use unit-aware checks. Written and method evidence is checked against authored marking guidance and remains provisional where human judgement is involved. You then receive an estimated score and question-by-question review.</p></section>
     {results.length > 0 && <section className="phy-p2-recent"><div><span className="phy-p2-eyebrow">RECENT RESULTS</span><h2>Completed Paper 2 practice</h2></div><div className="phy-p2-result-list">{results.slice(0, 4).map(result => <div key={result.id}><span>{physicsPaper2PaperName(result.paperNumber)}</span><strong>{result.score}/100</strong><small>{result.percent}% · {new Date(result.completedAt).toLocaleDateString()}</small></div>)}</div></section>}
   </div></main>;
 }
@@ -321,6 +321,7 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
     try {
       const final = markPhysicsPaper2(paper, responses);
       const paperNumber = physicsPaper2PaperNumber(paper);
+      const hasProvisionalEvidence=final.criteria.some(row=>!row.criterion?.check);
       const stored = {
         id: `${paper.paper_id}:${completedAt}`,
         paperId: paper.paper_id,
@@ -334,6 +335,8 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
         manualEarned: 0,
         manualPossible: 0,
         timedOut: Boolean(timedOut),
+        provisionalGrading:hasProvisionalEvidence,
+        reviewRecommended:hasProvisionalEvidence,
         completedAt,
       };
       savePhysicsPaper2Result(userId, stored);
@@ -345,7 +348,7 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
         resultId: stored.id,
         resultSaved: true,
       } : previous);
-      onActivity?.({ type: "physics_paper2_exam", paperId: paper.paper_id, paperNumber, paperLabel: stored.paperLabel, score: stored.score, maxScore: stored.maxScore, percent: stored.percent, at: completedAt });
+      onActivity?.({ type: "physics_paper2_exam", paperId: paper.paper_id, paperNumber, paperLabel: stored.paperLabel, score: stored.score, maxScore: stored.maxScore, percent: stored.percent, provisionalGrading:stored.provisionalGrading, reviewRecommended:stored.reviewRecommended, at: completedAt });
       return stored;
     } catch (error) {
       submissionGuardRef.current = false;
@@ -411,6 +414,11 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
   const totalParts = paper.questions.reduce((sum, q) => sum + q.parts.length, 0);
 
   function setPartResponse(partId, value) {
+    if (phase !== "exam" || submissionGuardRef.current) return;
+    if (active?.endsAt && Date.now() >= Number(active.endsAt)) {
+      persistSubmission({ timedOut:true });
+      return;
+    }
     const key = physicsPaper2PartKey(question.question_id, partId);
     setResponses(previous => ({ ...previous, [key]: value }));
   }
@@ -431,8 +439,8 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
     {phase === "review" && <section className="phy-p2-review-summary">
       <div><span>Marks earned</span><strong>{result.marks}/{result.of}</strong></div>
       <div><span>Questions</span><strong>{paper.questions.length} submitted</strong></div>
-      <div><span>Final Paper 2 score</span><strong>{Math.round((result.marks / result.of) * 100)}%</strong></div>
-      <p>Your paper has been marked and the result is saved. Review each question below to compare your response with the model answer and see how each mark was awarded.</p>
+      <div><span>Estimated Paper 2 score</span><strong>{Math.round((result.marks / result.of) * 100)}%</strong></div>
+      <p>Your paper has been marked and the result is saved. Numerical and structured checks are automatic. Written and method evidence may require teacher or examiner review, so treat this as an estimated practice score.</p>
     </section>}
 
     <nav className="phy-p2-question-nav" aria-label="Paper 2 questions">{paper.questions.map((item, index) => {

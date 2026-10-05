@@ -363,10 +363,21 @@ export function gradeEnglishAPaper2Response(task,response,analysisResponse=""){
 }
 
 export function gradeEnglishAPaper2(paper,answers={},choiceId=""){
-  const tasks=(paper?.tasks||[]).filter(task=>!task.choiceGroup||task.id===choiceId);
+  const allTasks=paper?.tasks||[];
+  const normalTasks=allTasks.filter(task=>!task.choiceGroup);
+  const choiceGroups=[...new Set(allTasks.map(task=>task.choiceGroup).filter(Boolean))];
+  const choiceTasks=choiceGroups.map(group=>{
+    const options=allTasks.filter(task=>task.choiceGroup===group);
+    return options.find(task=>task.id===choiceId) || options[0];
+  }).filter(Boolean);
+  const tasks=[...normalTasks,...choiceTasks];
   const rows=tasks.map(task=>({
     task,
-    ...gradeEnglishAPaper2Response(task,answers[task.id]||"",answers[`${task.id}:analysis`]||""),
+    ...gradeEnglishAPaper2Response(
+      task,
+      task.choiceGroup && task.id!==choiceId ? "" : answers[task.id]||"",
+      task.choiceGroup && task.id!==choiceId ? "" : answers[`${task.id}:analysis`]||""
+    ),
   }));
   const score=round(rows.reduce((sum,row)=>sum+row.score,0));
   const maxScore=rows.reduce((sum,row)=>sum+row.maxMarks,0);

@@ -52,7 +52,7 @@ export default function EnglishAPracticeHub({ supabase, userId, onBack }) {
             <span className="ea-practice-eyebrow">CSEC ENGLISH A PRACTICE</span>
             <h1>Choose a practice mode</h1>
             <p>
-              Practise the revised English A Paper 01 and Paper 02 formats with
+              Practise the English A Paper 01 and Paper 02 formats effective for May-June 2027 with
               original SPARK questions and writing tasks modelled on the structure,
               language and skill demands of your supplied CSEC archives.
             </p>

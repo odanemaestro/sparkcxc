@@ -169,6 +169,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
   );
   const [confirmSubmit,setConfirmSubmit] = useState(false);
   const [showExitConfirm,setShowExitConfirm] = useState(false);
+  const [selfMarkError,setSelfMarkError] = useState("");
   const submitGuard = useRef(Boolean(initial?.submittedAt));
 
   useEffect(() => {
@@ -308,10 +309,18 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
   }
 
   async function saveSelfMarkedScore() {
-    const score = paper.reduce((sum,question) => {
-      const value = Number(selfMarks[question.id]);
-      return sum + (Number.isFinite(value) ? Math.max(0,Math.min(Number(question.totalMarks || 0),value)) : 0);
-    },0);
+    const invalid=paper.find(question=>{
+      const raw=selfMarks[question.id];
+      if(raw===undefined || raw===null || String(raw).trim()==="") return true;
+      const value=Number(raw);
+      return !Number.isInteger(value) || value<0 || value>Number(question.totalMarks || 0);
+    });
+    if(invalid){
+      setSelfMarkError("Enter a whole-number mark within the allowed range for every question before saving.");
+      return;
+    }
+    setSelfMarkError("");
+    const score = paper.reduce((sum,question) => sum + Number(selfMarks[question.id]),0);
 
     const percent = Math.round((score / 105) * 100);
 
@@ -366,7 +375,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
               </button>
               <span className="is-exam-eyebrow">CSEC INTEGRATED SCIENCE PAPER 02</span>
               <h1>Paper 2 Simulator</h1>
-              <p>A fresh six-question structured paper is generated with two compulsory questions from each syllabus module.</p>
+              <p>A fresh six-question structured paper is generated with two compulsory questions from each syllabus module. This simulator follows the format effective for May-June 2027 examinations.</p>
             </div>
             <div className="is-exam-hero-spec">
               <strong>6</strong><span>questions</span>
@@ -546,10 +555,11 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
                 min="0"
                 max={question.totalMarks}
                 value={selfMarks[question.id] ?? ""}
-                onChange={event => setSelfMarks(current => ({...current,[question.id]:event.target.value}))}
+onChange={event => { setSelfMarks(current => ({...current,[question.id]:event.target.value})); setSelfMarkError(""); setActive(current => current ? ({...current,selfMarkedScore:null,selfMarkedPercent:null}) : current); }}
               />
               <b>/ {question.totalMarks}</b>
             </label>
+            {selfMarkError && <p className="is-exam-error" role="alert">{selfMarkError}</p>}
           </section>
         )}
 
