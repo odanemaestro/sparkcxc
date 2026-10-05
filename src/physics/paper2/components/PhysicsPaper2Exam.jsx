@@ -440,7 +440,7 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
       <div><span>Marks earned</span><strong>{result.marks}/{result.of}</strong></div>
       <div><span>Questions</span><strong>{paper.questions.length} submitted</strong></div>
       <div><span>Estimated Paper 2 score</span><strong>{Math.round((result.marks / result.of) * 100)}%</strong></div>
-      <p>Your result is saved. Numerical and structured checks are automatic. Written and method evidence may require teacher or examiner review, so treat this as an estimated practice score.</p>
+      <p>Your paper has been marked and the result is saved. Numerical and structured checks are automatic. Written and method evidence may require teacher or examiner review, so treat this as an estimated practice score.</p>
     </section>}
 
     <nav className="phy-p2-question-nav" aria-label="Paper 2 questions">{paper.questions.map((item, index) => {
