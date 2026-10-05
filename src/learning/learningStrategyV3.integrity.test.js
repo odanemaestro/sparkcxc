@@ -66,11 +66,19 @@ describe("SPARK Learning Loop V3 integration", () => {
     expect(migration).toContain("Candidate adjusted outcome signal is too far below the champion");
   });
 
-  test("admin gets a visible learning-engine control surface", () => {
+  test("admin gets a clear learning-engine control surface", () => {
     expect(app).toContain("LearningEngineAdminPanel");
     expect(admin).toContain("SPARK LEARNING LOOP V3");
-    expect(admin).toContain("Promote to champion");
-    expect(admin).toContain("Promotion is still a manual decision");
+    expect(admin).toContain("Current strategy");
+    expect(admin).toContain("Testing");
+    expect(admin).toContain("Safety Rules");
+    expect(admin).toContain("Result change");
+    expect(admin).toContain("Adjusted result");
+    expect(admin).toContain("Test with {percent}%");
+    expect(admin).toContain("Make main strategy");
+    expect(admin).toContain("It will not become the main strategy automatically");
+    expect(admin).not.toContain("Promote to champion");
+    expect(admin).not.toContain("% traffic");
   });
 
   test("learning loop never becomes grading or answer-key mutation code", () => {
