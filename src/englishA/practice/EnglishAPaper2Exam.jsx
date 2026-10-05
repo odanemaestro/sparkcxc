@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { recordSubjectActivity } from "../../subjects/subjectProgress";
+import { buildAttemptProvenance } from "../../grading/attemptProvenance";
 import {
   ENGLISH_A_PAPER2_DURATION_SECONDS,
   ENGLISH_A_PAPER2_MODULES,
@@ -147,6 +148,12 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
             selected_creative_prompt:choiceId || null,
             provisional_grading:true,
             module_scores:result.modules,
+            attempt_provenance:buildAttemptProvenance({
+              subjectId:"english-a",paper:"02",mode:"timed",bankVersion:"english-a-paper2-v1",
+              rubricVersion:"CXC-01-G-SYLL-25",graderVersion:"english-a-rubric-v2",
+              startedAt:endsAt ? new Date(Number(endsAt)-ENGLISH_A_PAPER2_DURATION_SECONDS*1000).toISOString() : null,
+              submittedAt:completedAt,responses:answers,
+            }),
           },
         },
       });
