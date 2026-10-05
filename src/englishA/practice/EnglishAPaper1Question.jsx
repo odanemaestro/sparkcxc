@@ -1,5 +1,5 @@
 import React from "react";
-import { englishAStimuli } from "../data/englishAPaper1Bank";
+import { englishAStimuli } from "../data/englishAPaper1Pool";
 import "./englishAExam.css";
 
 function Stimulus({ stimulus }) {
