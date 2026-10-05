@@ -225,7 +225,15 @@ function PracticeGraphResponse({ base, config, item, sourceTable, responses, onC
       <rect x={pad} y={pad} width={width-pad*2} height={height-pad*2} className="is-practice-graph-paper"/>
       {grid.map(i=>{
         const x=pad+i*(width-pad*2)/10, y=pad+i*(height-pad*2)/10;
-        return <React.Fragment key={i}><line x1={x} y1={pad} x2={x} y2={height-pad} className="is-practice-graph-grid"/><line x1={pad} y1={y} x2={width-pad} y2={y} className="is-practice-graph-grid"/></React.Fragment>;
+        const xValue=xMin+(xMax-xMin)*i/10;
+        const yValue=yMax-(yMax-yMin)*i/10;
+        const formatTick=value=>Math.abs(value)>=100 ? Math.round(value) : Number(value.toFixed(2));
+        return <React.Fragment key={i}>
+          <line x1={x} y1={pad} x2={x} y2={height-pad} className="is-practice-graph-grid"/>
+          <line x1={pad} y1={y} x2={width-pad} y2={y} className="is-practice-graph-grid"/>
+          <text x={x} y={height-pad+16} textAnchor="middle" className="is-practice-graph-tick">{formatTick(xValue)}</text>
+          <text x={pad-7} y={y+3} textAnchor="end" className="is-practice-graph-tick">{formatTick(yValue)}</text>
+        </React.Fragment>;
       })}
       <line x1={pad} y1={height-pad} x2={width-pad} y2={height-pad} className="is-practice-graph-axis"/>
       <line x1={pad} y1={pad} x2={pad} y2={height-pad} className="is-practice-graph-axis"/>
