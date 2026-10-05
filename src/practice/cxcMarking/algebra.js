@@ -30,6 +30,7 @@ export function normalise(raw) {
   let s = String(raw ?? "").trim();
   if (!s) return "";
   s = s
+    .replace(/(?<![\w.])(\d+(?:\.\d*)?|\.\d+)[eE]([+-]?\d+)(?![\w.])/g,"($1*10^($2))")
     .replace(/[−–—]/g, "-")     // minus, en dash, em dash
     .replace(/[×∗]/g, "*")           // times
     .replace(/[÷]/g, "/")                 // divide
@@ -169,6 +170,7 @@ export function compile(raw) {
   } catch {
     fn = null;
   }
+  if(CACHE.size>=1024) CACHE.delete(CACHE.keys().next().value);
   CACHE.set(key, fn);
   return fn;
 }

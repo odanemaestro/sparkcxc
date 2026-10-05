@@ -119,7 +119,9 @@ function gradePairs(value,scheme){
     const valueOk=(pair.concepts || []).some(id=>mentionsSocialStudiesConcept(text,id))
       || (pair.values || []).some(item=>mentionsSocialStudiesPhrase(text,item));
     let together=false;
-    for(const window of candidateWindows(text)){
+    // Match each relationship within its own statement. Combining the entire
+    // answer lets two reversed relationships award each other credit.
+    for(const window of splitResponse(text)){
       const windowKey=(pair.keys || []).some(key=>mentionsSocialStudiesPhrase(window,key));
       const windowValue=(pair.concepts || []).some(id=>mentionsSocialStudiesConcept(window,id))
         || (pair.values || []).some(item=>mentionsSocialStudiesPhrase(window,item));

@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import SparkLoader from "../../components/ui/SparkLoader";
 import { recordSubjectActivity } from "../../subjects/subjectProgress";
 import { buildAttemptProvenance } from "../../grading/attemptProvenance";
+import ServerMarkingReview from "../../grading/ServerMarkingReview";
 import { localExamDeadline, readServerExamClock, startServerExamAttempt, submitServerExamAttempt } from "../../grading/serverExamAttempt";
 import { loadIntegratedScienceModule } from "../data/integratedScienceBank";
 import { BankTable, TrustedBankSvg } from "./IntegratedScienceQuestionRenderer";
@@ -638,6 +639,7 @@ export default function IntegratedSciencePaper2Exam({ supabase, userId, onBack }
           </section>
         )}
 
+        {review && <ServerMarkingReview supabase={supabase} attemptId={active?.serverAttemptId}/>}
         <nav className="is-p2-question-nav" aria-label="Paper 02 questions">
           {paper.map((item,index) => (
             <button

@@ -1,2 +1,5 @@
 [functions.send-push]
 verify_jwt = false
+
+[functions.mark-paper2]
+verify_jwt = false

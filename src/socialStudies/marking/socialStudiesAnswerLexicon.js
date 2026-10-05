@@ -94,21 +94,22 @@ function fuzzyPhraseMatch(text,wanted){
 }
 
 export function mentionsSocialStudiesPhrase(value,phrase){
-  const text=normalizeSocialStudiesText(value);
-  const wanted=normalizeSocialStudiesText(phrase);
+  const canonical=text=>normalizeSocialStudiesText(text).replace(/[.,;:()]/g," ").replace(/\s+/g," ").trim();
+  const text=canonical(value);
+  const wanted=canonical(phrase);
   if(!text || !wanted) return false;
-
-  const padded=" "+text+" ";
-  if(padded.includes(" "+wanted+" ") || text.includes(wanted)) return true;
-  if(wanted.includes(" ")) return fuzzyPhraseMatch(text,wanted);
-
-  const tolerance=wanted.length>=9?2:wanted.length>=6?1:0;
-  if(!tolerance) return false;
-
-  return text
-    .split(/\s+/)
-    .filter(Boolean)
-    .some(token=>editDistance(token,wanted,tolerance)<=tolerance);
+  const matches=clause=>{
+    if((" "+clause+" ").includes(" "+wanted+" "))return true;
+    if(wanted.includes(" "))return fuzzyPhraseMatch(clause,wanted);
+    const tolerance=wanted.length>=9?2:wanted.length>=6?1:0;
+    const directional=new Set(["immigration","emigration","imports","exports","increase","decrease"]);
+    return tolerance>0 && !directional.has(wanted) && clause.split(/\s+/).some(token=>
+      !["un","non","dis"].some(prefix=>token===prefix+wanted) && editDistance(token,wanted,tolerance)<=tolerance);
+  };
+  const clauses=String(value || "").split(/[.;\n]+|\b(?:so(?: that)?|because|therefore|which|but|however)\b/i).map(canonical).filter(matches);
+  const negated=clause=>/\b(?:not|never|cannot|isn't|doesn't|don't)\b/.test(clause);
+  if(!negated(wanted) && clauses.some(negated))return false;
+  return clauses.some(clause=>negated(wanted)||!negated(clause));
 }
 
 export function mentionsSocialStudiesConcept(value,conceptId){

@@ -5,29 +5,20 @@
   "homepage": "https://odanemaestro.github.io/sparkcxc",
   "dependencies": {
     "@supabase/supabase-js": "^2.108.2",
-    "@testing-library/dom": "^10.4.1",
-    "@testing-library/jest-dom": "^6.9.1",
-    "@testing-library/react": "^16.3.2",
-    "@testing-library/user-event": "^13.5.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "test": "jest",
     "audit:physics-paper1": "node tools/physics-paper1-audit/validate-current-bank.cjs",
     "audit:physics-upgrade": "node tools/physics-upgrade/validate-content.mjs",
-    "audit:physics-resources": "node tools/physics-resources/validate-content.mjs"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+    "audit:physics-resources": "node tools/physics-resources/validate-content.mjs",
+    "preview": "vite preview --host 127.0.0.1",
+    "build:marker": "node tools/build-server-marker.mjs",
+    "test:marking-db": "node tools/test-marking-database.mjs"
   },
   "browserslist": {
     "production": [
@@ -40,5 +31,20 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^13.5.0",
+    "vite": "^8.3.2",
+    "esbuild": "^0.28.2",
+    "jest": "^30.5.2",
+    "jest-environment-jsdom": "^30.5.2",
+    "babel-jest": "^30.5.2",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "@electric-sql/pglite": "^0.3.0"
   }
 }

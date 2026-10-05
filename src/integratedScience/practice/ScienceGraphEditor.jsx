@@ -1,3 +1,4 @@
+import "./scienceGraphEditor.css";
 import React, {useId,useState} from "react";
 import {newScienceGraph,readScienceGraph,graphPoints,graphAxis,graphPath} from "./scienceGraphModel";
 

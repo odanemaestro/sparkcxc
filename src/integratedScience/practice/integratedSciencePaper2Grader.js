@@ -3,7 +3,7 @@ import { gradeScienceGraph } from "./scienceGraphMarking";
 // SPARK Integrated Science Paper 02 automatic practice grader.
 // This is an evidence-based estimate, not an examiner certification.
 
-export const INTEGRATED_SCIENCE_P2_GRADER_VERSION = "2.1.0";
+export const INTEGRATED_SCIENCE_P2_GRADER_VERSION = "2.2.0";
 
 const STOPWORDS=new Set(("a an and are as at be been being but by can could did do does for from had has have in into is it its may more most of on or that the their them then there these they this those to too was were what when where which who will with would").split(" "));
 const SYNONYMS=Object.freeze({

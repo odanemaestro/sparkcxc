@@ -1,0 +1,9 @@
+module.exports={
+  roots:["<rootDir>/src"],
+  testEnvironment:"jsdom",
+  setupFiles:["<rootDir>/tools/test/setup.cjs"],
+  setupFilesAfterEnv:["<rootDir>/src/setupTests.js"],
+  testMatch:["<rootDir>/src/**/__tests__/**/*.[jt]s?(x)","<rootDir>/src/**/*.{spec,test}.[jt]s?(x)"],
+  transform:{"^.+\\.(?:[jt]sx?|mjs|cjs)$":"babel-jest","^.+\\.css$":"<rootDir>/tools/test/cssTransform.cjs","^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)":"<rootDir>/tools/test/fileTransform.cjs"},
+  resetMocks:true,
+};

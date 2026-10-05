@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { recordSubjectActivity } from "../../subjects/subjectProgress";
 import { buildAttemptProvenance } from "../../grading/attemptProvenance";
+import ServerMarkingReview from "../../grading/ServerMarkingReview";
 import { localExamDeadline, readServerExamClock, startServerExamAttempt, submitServerExamAttempt } from "../../grading/serverExamAttempt";
 import {
   ENGLISH_A_PAPER2_DURATION_SECONDS,
@@ -167,7 +168,7 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
       if(serverAttemptId){
         await submitServerExamAttempt({
           supabase,attemptId:serverAttemptId,responses:answers,score:result.score,maxScore:result.maxScore,
-          metadata:{subject:"english-a",paper:"02",client_timed_out:Boolean(timedOut)},
+            metadata:{subject:"english-a",paper:"02",paper_id:paper.id,selected_creative_prompt:choiceId || null,client_timed_out:Boolean(timedOut)},
         });
       }
       await recordSubjectActivity({
@@ -304,7 +305,7 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
     const completed=requiredTasks(paper,choiceId);
     return (
       <main className="ea-practice-shell"><div className="ea-practice-home">
-        <header className="ea-practice-hero"><div><span className="ea-practice-eyebrow">PAPER 02 REVIEW</span><h1>{paper.title}</h1><p>SPARK gives a detailed practice estimate using task fulfilment, stimulus coverage, organisation, register, language and mechanics. A teacher or trained examiner should still make the final judgement on extended writing.</p></div><button className="ea-practice-back" type="button" onClick={onBack}>← English A practice</button></header>
+        <header className="ea-practice-hero"><div><span className="ea-practice-eyebrow">PAPER 02 REVIEW</span><h1>{paper.title}</h1><p>SPARK gives a detailed practice estimate using task fulfilment, stimulus coverage, organisation, register, language and mechanics. Extended-writing marks are automated practice estimates and may differ from official examination marking.</p></div><button className="ea-practice-back" type="button" onClick={onBack}>← English A practice</button></header>
 
         <section className="ea-p2-score-summary">
           <div><span>Estimated score</span><strong>{result.score}/{result.maxScore}</strong></div>
@@ -316,6 +317,7 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
           <strong>How this mark was produced</strong>
           <p>{result.note}</p>
         </section>
+        <ServerMarkingReview supabase={supabase} attemptId={serverAttemptId}/>
 
         {completed.map(item => {
           const row=result.rows.find(entry => entry.task.id===item.id);

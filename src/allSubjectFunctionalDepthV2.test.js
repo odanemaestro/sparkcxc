@@ -123,7 +123,7 @@ describe("SPARK all-subject functional depth audit V2",()=>{
     expect(untimed).not.toContain("Show mark scheme");
 
     const grader=readSrc("integratedScience/practice/integratedSciencePaper2Grader.js");
-    expect(grader).toContain('INTEGRATED_SCIENCE_P2_GRADER_VERSION = "2.1.0"');
+    expect(grader).toContain('INTEGRATED_SCIENCE_P2_GRADER_VERSION = "2.2.0"');
     expect(grader).toContain("expectedGraphCoordinates");
     expect(grader).toContain("graphPointMatches");
     expect(grader).toContain("graphScaleAssessment");

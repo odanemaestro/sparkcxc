@@ -1,0 +1,3 @@
+.is-p2-graph-workspace fieldset{border:1px solid color-mix(in srgb,currentColor 25%,transparent);border-radius:8px;margin:.6rem 0;padding:.7rem;min-width:0}
+.is-p2-graph-workspace label{display:flex;flex-direction:column;gap:.3rem}.is-p2-graph-workspace select,.is-p2-graph-workspace input,.is-p2-graph-workspace textarea{box-sizing:border-box;max-width:100%;color:inherit;font:inherit;background:transparent;border:1px solid color-mix(in srgb,currentColor 35%,transparent);border-radius:5px;padding:.5rem}
+.is-p2-graph-workspace .is-p2-graph-response{touch-action:manipulation;cursor:crosshair}

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import fs from "fs";
 import path from "path";
 import {render,screen,fireEvent} from "@testing-library/react";
@@ -48,4 +48,16 @@ test("best-fit line and smooth curve are distinct constructions",()=>{
   expect(graphPath(points,"smooth")).toContain("C");
   expect(graphPath(points,"best-fit")).toContain("L");
   expect(graphPath(points,"none")).toBe("");
+});
+test("direct plotting changes the submitted points and undo removes that point",()=>{
+  const initial={version:1,kind:"line",connection:"none",barWidth:.6,x:{min:0,max:10,step:1},y:{min:0,max:10,step:1},series:[{name:"Trial",points:""}]};
+  let stored;
+  function Harness(){const [responses,setResponses]=useState({"q:graph":JSON.stringify(initial)});stored=responses;return <ScienceGraphEditor base="q" responses={responses} onChange={(key,value)=>setResponses(current=>({...current,[key]:value}))}/>;}
+  render(<Harness/>);
+  const grid=screen.getByRole("img",{name:"Student graph plot"});
+  grid.getBoundingClientRect=()=>({left:0,top:0,width:600,height:335});
+  fireEvent.click(grid,{clientX:150,clientY:218});
+  expect(JSON.parse(stored["q:graph"]).series[0].points).toBe("2,2");
+  fireEvent.click(screen.getByRole("button",{name:"Undo point"}));
+  expect(JSON.parse(stored["q:graph"]).series[0].points).toBe("");
 });

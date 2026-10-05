@@ -26,7 +26,7 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci --legacy-peer-deps
+        run: npm ci
 
       - name: Run regression tests
         run: npm test -- --watchAll=false --runInBand
@@ -36,6 +36,9 @@ jobs:
           REACT_APP_SUPABASE_ANON_KEY: ${{ secrets.REACT_APP_SUPABASE_ANON_KEY }}
           REACT_APP_VAPID_PUBLIC_KEY: ${{ secrets.REACT_APP_VAPID_PUBLIC_KEY }}
           REACT_APP_ENABLE_PHYSICS: "true"
+
+      - name: Verify marking database and build worker
+        run: npm run test:marking-db && npm run build:marker
 
       - name: Build SPARK
         run: npm run build

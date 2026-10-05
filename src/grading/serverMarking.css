@@ -1,0 +1,4 @@
+.spark-marking-review{margin:1rem 0;padding:1rem;border:1px solid color-mix(in srgb,currentColor 25%,transparent);border-radius:12px;color:inherit;background:transparent;overflow-wrap:anywhere}
+.spark-marking-review h2{font-size:1.1rem;margin:0 0 .5rem}.spark-marking-review p{line-height:1.6}
+.spark-marking-review button{font:inherit;padding:.65rem 1rem;border-radius:8px;cursor:pointer;color:inherit;background:transparent;border:1px solid currentColor}
+.spark-marking-review button:disabled{opacity:.6;cursor:default}.spark-marking-review details{padding:.6rem 0}.spark-marking-review summary{cursor:pointer}

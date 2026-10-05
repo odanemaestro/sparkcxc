@@ -32,3 +32,7 @@ supabase/.temp/
 
 # Local audit command output (not application assets)
 .audit-output/
+
+# Rebuilt from trusted source by npm run build:marker before edge deployment
+supabase/functions/_shared/server-marker.mjs
+supabase/functions/_shared/server-marker.sha256

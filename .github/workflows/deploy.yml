@@ -29,12 +29,15 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci --legacy-peer-deps
+        run: npm ci
 
       - name: Verify grading and platform regressions
         run: npm test -- --watchAll=false --runInBand
         env:
           CI: true
+
+      - name: Verify marking database and build worker
+        run: npm run test:marking-db && npm run build:marker
 
       - name: Build SPARK
         run: npm run build

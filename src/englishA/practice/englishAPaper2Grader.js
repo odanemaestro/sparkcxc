@@ -452,6 +452,6 @@ export function gradeEnglishAPaper2(paper,answers={},choiceId=""){
       const moduleRows=rows.filter(row=>row.task.module===module);
       return {module,score:round(moduleRows.reduce((sum,row)=>sum+row.score,0)),max:moduleRows.reduce((sum,row)=>sum+row.maxMarks,0)};
     }),
-    note:"SPARK practice estimate aligned to the profile structure in the CXC 01/G/SYLL 25 specimen mark scheme. It checks task fulfilment, stimulus use, organisation, language and mechanics and shows the evidence behind each mark. A trained examiner should still make the final judgement on extended writing.",
+    note:"SPARK practice estimate aligned to the profile structure in the CXC 01/G/SYLL 25 specimen mark scheme. It checks task fulfilment, stimulus use, organisation, language and mechanics and shows the evidence behind each mark. Extended-writing marks are automated practice estimates and may differ from official examination marking.",
   };
 }
