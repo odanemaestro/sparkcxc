@@ -200,9 +200,10 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
             <h2>READ THE FOLLOWING INSTRUCTIONS CAREFULLY.</h2>
             <ol>
               <li>Complete two questions from each module.</li>
-              <li>Module 1 contains a 10-mark informative summary and a 30-mark exposition.</li>
-              <li>Module 2 contains a 10-mark literary summary and ONE 30-mark short-story question chosen from two prompts.</li>
-              <li>Module 3 contains a 10-mark persuasive summary and a 30-mark persuasive response.</li>
+              <li>Each 10-mark summary question has TWO parts: a 3-mark analysis response and a 7-mark summary response. The summary is limited to 50 words and should use THREE points in your own words as far as possible.</li>
+              <li>Module 1 also contains a compulsory 30-mark informative exposition.</li>
+              <li>Module 2 also requires ONE 30-mark short story chosen from two prompts.</li>
+              <li>Module 3 also contains a compulsory 30-mark persuasive response.</li>
               <li>Write in Standard English. Where a creative task permits dialogue, dialect may be used naturally.</li>
               <li>Your responses are saved while you work. After submission, SPARK produces a detailed CXC-style practice estimate and explains the evidence behind each scoring dimension.</li>
             </ol>
@@ -236,7 +237,14 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
             <section className="ea-p2-review-card" key={item.id}>
               <div className="ea-p2-review-head"><div><span>Module {item.module}: {ENGLISH_A_PAPER2_MODULES[item.module]}</span><h2>{item.title}</h2></div><strong>{row?.score ?? 0}/{row?.maxMarks ?? item.rubric?.marks ?? 0}</strong></div>
               <p className="ea-p2-review-prompt">{item.instructions}</p>
-              <div className="ea-p2-review-response"><strong>Your response · {countWords(answers[item.id])} words</strong><p>{answers[item.id] || "No response submitted."}</p></div>
+              {item.kind === "summary" ? (
+                <>
+                  <div className="ea-p2-review-response"><strong>Part (a) · 3 marks</strong><p>{answers[`${item.id}:analysis`] || "No response submitted."}</p></div>
+                  <div className="ea-p2-review-response"><strong>Part (b) summary · {countWords(answers[item.id])}/50 words</strong><p>{answers[item.id] || "No response submitted."}</p></div>
+                </>
+              ) : (
+                <div className="ea-p2-review-response"><strong>Your response · {countWords(answers[item.id])} words</strong><p>{answers[item.id] || "No response submitted."}</p></div>
+              )}
 
               {row?.dimensions?.length > 0 && (
                 <div className="ea-p2-dimension-grid">
@@ -270,7 +278,10 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
 
   const moduleLabel=task ? `Module ${task.module}: ${ENGLISH_A_PAPER2_MODULES[task.module]}` : "";
   const wordCount=countWords(answers[task?.id]);
-  const answeredCount=requiredTasks(paper,choiceId).filter(item => String(answers[item.id]||"").trim()).length;
+  const answeredCount=requiredTasks(paper,choiceId).filter(item =>
+    String(answers[item.id]||"").trim() ||
+    (item.kind === "summary" && String(answers[`${item.id}:analysis`]||"").trim())
+  ).length;
 
   return (
     <main className="is-exam-root"><div className="is-exam-shell is-exam-paper-shell">
@@ -296,15 +307,40 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
           <div className="ea-p2-task-head"><div><span className="ea-practice-eyebrow">{moduleLabel}</span><h2>{task.title}</h2></div><strong>{task.rubric?.marks || 0} marks</strong></div>
           <p className="ea-p2-task-instructions">{task.instructions}</p>
           <Stimulus stimulus={task.stimulus} />
-          <div className="ea-p2-response-head"><span>Your response</span><strong>{wordCount} words</strong></div>
-          <textarea
-            value={answers[task.id] || ""}
-            onChange={event => setAnswers(current => ({...current,[task.id]:event.target.value}))}
-            placeholder="Write your response here..."
-            aria-label={`Response for ${task.title}`}
-          />
-          {task.wordLimit && wordCount > task.wordLimit && <div className="ea-p2-word-warning">This response is over the {task.wordLimit}-word limit.</div>}
-          {task.wordRange && wordCount > 0 && (wordCount < task.wordRange[0] || wordCount > task.wordRange[1]) && <div className="ea-p2-word-note">Suggested length: {task.wordRange[0]}-{task.wordRange[1]} words.</div>}
+          {task.kind === "summary" ? (
+            <>
+              <div className="ea-p2-response-head"><span>Part (a) · 3 marks</span><strong>Analysis</strong></div>
+              <p className="ea-p2-part-prompt">{task.analysisPrompt}</p>
+              <textarea
+                className="ea-p2-short-response"
+                value={answers[`${task.id}:analysis`] || ""}
+                onChange={event => setAnswers(current => ({...current,[`${task.id}:analysis`]:event.target.value}))}
+                placeholder="Write your Part (a) response here..."
+                aria-label={`Part a response for ${task.title}`}
+              />
+
+              <div className="ea-p2-response-head"><span>Part (b) · 7 marks</span><strong>{wordCount}/50 words</strong></div>
+              <p className="ea-p2-part-prompt">{task.summaryPrompt}</p>
+              <textarea
+                value={answers[task.id] || ""}
+                onChange={event => setAnswers(current => ({...current,[task.id]:event.target.value}))}
+                placeholder="Write your 50-word summary here..."
+                aria-label={`Summary response for ${task.title}`}
+              />
+              {wordCount > 50 && <div className="ea-p2-word-warning">This summary is {wordCount - 50} word{wordCount - 50 === 1 ? "" : "s"} over the 50-word limit.</div>}
+            </>
+          ) : (
+            <>
+              <div className="ea-p2-response-head"><span>Your response</span><strong>{wordCount} words</strong></div>
+              <textarea
+                value={answers[task.id] || ""}
+                onChange={event => setAnswers(current => ({...current,[task.id]:event.target.value}))}
+                placeholder="Write your response here..."
+                aria-label={`Response for ${task.title}`}
+              />
+              {task.wordRange && wordCount > 0 && (wordCount < task.wordRange[0] || wordCount > task.wordRange[1]) && <div className="ea-p2-word-note">Suggested length: {task.wordRange[0]}-{task.wordRange[1]} words.</div>}
+            </>
+          )}
         </article>
       )}
 
