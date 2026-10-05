@@ -345,8 +345,7 @@
 .is-exam-result-actions .is-exam-primary{display:inline-flex;align-items:center;gap:8px}
 
 /* Paper 2 follows the same in-exam card/palette/footer hierarchy used elsewhere. */
-.is-p2-review-note,
-.is-p2-self-score{
+.is-p2-review-note{
   margin:16px 0;
   padding:15px;
   border:1px solid var(--is-border);
@@ -409,6 +408,24 @@
 .is-p2-graph-fields label{display:grid;gap:5px;font-size:12px;font-weight:750;color:var(--is-muted)}
 .is-p2-graph-fields input{width:100%;box-sizing:border-box;padding:9px 10px;border:1px solid var(--is-border);border-radius:8px;background:var(--is-bg);color:var(--is-ink)}
 .is-p2-graph-workspace textarea,.is-p2-drawing-workspace textarea{width:100%;box-sizing:border-box;padding:10px 11px;border:1px solid var(--is-border);border-radius:10px;background:var(--is-bg);color:var(--is-ink);font:inherit;resize:vertical}
+.is-p2-graph-scale-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.is-p2-graph-scale-grid label,.is-p2-graph-toolbar label{display:grid;gap:5px;font-size:11px;font-weight:750;color:var(--is-muted)}
+.is-p2-graph-scale-grid input,.is-p2-graph-toolbar input,.is-p2-graph-toolbar select{width:100%;box-sizing:border-box;padding:9px 10px;border:1px solid var(--is-border);border-radius:8px;background:var(--is-bg);color:var(--is-ink);font:inherit}
+.is-p2-graph-toolbar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.is-p2-graph-key{grid-column:auto}
+.is-p2-graph-response{display:block;width:100%;height:auto;touch-action:none;cursor:crosshair}
+.is-p2-graph-response .is-p2-graph-tick{fill:var(--is-muted);font-size:9px}
+.is-p2-graph-response .is-p2-graph-axis-label{fill:var(--is-ink);font-size:11px;font-weight:800}
+.is-p2-graph-point{fill:var(--is-teal);stroke:var(--is-card);stroke-width:2}
+.is-p2-graph-point.series-b{fill:var(--is-card);stroke:var(--is-teal);stroke-width:3}
+.is-p2-graph-line{fill:none;stroke:var(--is-teal);stroke-width:2.3;stroke-linecap:round;stroke-linejoin:round}
+.is-p2-graph-line.series-b{stroke-width:3;opacity:.72}
+.is-p2-graph-bar{fill:var(--is-teal);opacity:.82}
+.is-p2-graph-bar.series-b{fill:transparent;stroke:var(--is-teal);stroke-width:3;opacity:1}
+.is-p2-graph-actions,.is-p2-drawing-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.is-p2-graph-actions span{margin-right:auto;color:var(--is-muted);font-size:11px;font-weight:750}
+.is-p2-graph-error{padding:10px 12px;border:1px solid var(--is-red);border-radius:9px;background:var(--is-red-soft);color:var(--is-red);font-size:12px;font-weight:750}
+
 .is-p2-auto-score{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
 .is-p2-auto-score span{font-size:12px;opacity:.82}
 .is-p2-auto-criteria{display:grid;gap:5px}
@@ -416,8 +433,6 @@
 .is-p2-mark-scheme{margin-top:10px;padding:14px;border-left:4px solid var(--is-green);background:var(--is-green-soft);color:var(--is-soft-ink);border-radius:6px}
 .is-p2-mark-scheme ul{margin:8px 0;padding-left:20px}
 .is-p2-mark-scheme p{margin:7px 0}
-.is-p2-self-score label{display:flex;align-items:center;gap:9px;justify-content:flex-end}
-.is-p2-self-score input{width:90px;padding:9px;border:1px solid var(--is-border);border-radius:8px;background:var(--is-bg);color:var(--is-ink)}
 
 /* Shared bank figures/tables inside exam cards. */
 .is-bank-svg{overflow:auto;text-align:center;margin:12px 0}
@@ -473,6 +488,8 @@
 
 @media(max-width:520px){
   .is-p2-graph-fields{grid-template-columns:1fr}
+  .is-p2-graph-scale-grid{grid-template-columns:1fr 1fr}
+  .is-p2-graph-toolbar{grid-template-columns:1fr}
   .is-p2-graph-fields label:last-child{grid-column:auto}
   .is-p2-auto-score{align-items:flex-start;flex-direction:column}
   .is-exam-shell{padding:12px 9px 48px}
@@ -490,7 +507,6 @@
   .is-exam-review-summary>div:last-of-type{grid-column:1/-1}
   .is-exam-module-breakdown{grid-template-columns:1fr}
   .is-p2-question-nav{grid-template-columns:repeat(2,1fr)}
-  .is-p2-self-score label{justify-content:flex-start;flex-wrap:wrap}
   .is-bank-table{min-width:460px}
 }
 
