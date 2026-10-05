@@ -55,6 +55,10 @@ function partKey(questionNumber, partId) {
   return `${questionNumber}-${partId}`;
 }
 
+function goTop() {
+  window.scrollTo?.({ top: 0, behavior: "smooth" });
+}
+
 function asResponse(value) {
   if (value && typeof value === "object" && !Array.isArray(value)) return value;
   return { answer: String(value ?? "") };
@@ -206,6 +210,7 @@ export default function InformationTechnologyPaper2Exam({ onExit, startFresh = f
     setRemaining(DURATION);
     submittedRef.current = false;
     setPhase("exam");
+    goTop();
   }
 
   function updateAnswer(key, value) {
@@ -217,6 +222,7 @@ export default function InformationTechnologyPaper2Exam({ onExit, startFresh = f
   function go(nextIndex) {
     setQuestionIndex(nextIndex);
     persist({ ...active, answers, flags, questionIndex: nextIndex, phase: "exam" });
+    goTop();
   }
 
   function toggleFlag() {
@@ -242,6 +248,7 @@ export default function InformationTechnologyPaper2Exam({ onExit, startFresh = f
     persist({ ...active, answers, flags, questionIndex: 0, phase: "review", timedOut });
     setQuestionIndex(0);
     setPhase("marking");
+    goTop();
   }
 
   function finishMarking() {
