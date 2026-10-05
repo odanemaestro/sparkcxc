@@ -4382,7 +4382,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     ? studentFlashcardSubjects.find(subject => subject.id === flashcardSubject) || null
     : null;
   const studentHasFlashcards = studentFlashcardSubjects.length > 0;
-  const studentHasMathematics = enrolledSubjectIdSet.has("mathematics");
+  const studentHasStudyCircles = studentEnrolledSubjects.length > 0;
   const navItems = isTutor ? [
     {k:"overview",icon:"overview",label:"Overview"},
     {k:"sessions",icon:"bookings",label:"My sessions"},
@@ -4395,7 +4395,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     {k:"subjects",icon:"subjects",label:"My subjects"},
     {k:"progress",icon:"progress",label:"Progress"},
     ...(studentHasFlashcards ? [{k:"flashcards",icon:"flashcards",label:"Flashcards"}] : []),
-    ...(studentHasMathematics ? [{k:"circles",icon:"circles",label:"Study Circles"}] : []),
+    ...(studentHasStudyCircles ? [{k:"circles",icon:"circles",label:"Study Circles"}] : []),
     {k:"bookings",icon:"bookings",label:"My bookings"},
   ];
   const dashboardAvatarPath = tutorRow?.avatar_path || profile?.avatar_path || "";
@@ -5066,7 +5066,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
           )
         )}
         {sec === "circles" && isStudent && (
-          <StudyCirclesPanel user={user} showToast={showToast} setView={setView}/>
+          <StudyCirclesPanel user={user} showToast={showToast} subjects={studentEnrolledSubjects}/>
         )}
         {sec === "bookings" && (
           <>
@@ -6204,7 +6204,7 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated, subje
       supabase.from("bookings").select("id,subject,session_date,start_time,duration_minutes,status,rate_jmd,confirmation_expired_at,tutors(name)").eq("student_id", selectedChild.id).order("session_date", {ascending:false}).limit(100),
       supabase.from("practice_exam_attempts").select("id,attempt_key,paper_type,score,max_score,percent,completed_at,duration_seconds,timed_out,answered_count,total_questions,correct_count,metadata").eq("user_id", selectedChild.id).order("completed_at", {ascending:false}).limit(100),
       supabase.from("learning_milestones").select("id,event_type,title,score,max_score,percent,skill,lesson_id,metadata,created_at").eq("user_id", selectedChild.id).order("created_at", {ascending:false}).limit(100),
-      supabase.rpc("spark_parent_study_circle_status", {p_student_id: selectedChild.id}),
+      supabase.rpc("spark_parent_study_circle_status_v10", {p_student_id: selectedChild.id}),
       supabase.from("spark_flashcard_progress").select("card_id,repetitions,interval_days,ease_factor,last_rating,last_reviewed_at,next_review_at,review_count,updated_at").eq("user_id", selectedChild.id),
       supabase.from("spark_flashcard_review_events").select("id,card_id,rating,reviewed_at").eq("user_id", selectedChild.id).order("reviewed_at", {ascending:false}).limit(1000),
       supabase.from("spark_student_goals").select("*").eq("student_id", selectedChild.id).eq("status", "active").order("created_at", {ascending:false}).limit(1),
@@ -6529,7 +6529,10 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated, subje
                 })}</div> : <div className="exam-results-empty"><strong>No full Mathematics exam attempts yet.</strong><span>Paper results will appear after the student submits an exam.</span></div>}
               </div>
 
-              {childData.studyCircle?.active && <div className="panel-white study-circle-parent-summary" data-notification-anchor="parent-study-circle"><div className="panel-title">Mathematics Study Circle</div><div className="study-circle-parent-row"><div><strong>Participating in a small peer study group</strong><span>Peer identities, exact scores and group messages stay private.</span></div><Badge c="teal">{childData.studyCircle.group_size || 0} students</Badge></div></div>}
+              {(() => {
+                const circle=(childData.studyCircle?.circles || []).find(item => item.subject_id === "mathematics");
+                return circle ? <div className="panel-white study-circle-parent-summary" data-notification-anchor="parent-study-circle"><div className="panel-title">Mathematics Study Circle</div><div className="study-circle-parent-row"><div><strong>Participating in a small peer study group</strong><span>Peer identities, exact scores and group messages stay private.</span></div><Badge c="teal">{circle.group_size || 0} students</Badge></div></div> : null;
+              })()}
 
               <div className="panel-white"><div className="panel-title">Mathematics skills needing attention</div>{childData.weakest.length ? childData.weakest.map(r=><div className="skill-row" key={r.id}><div><strong>{r.skill}</strong><span>{r.mastery_level}</span></div><div className="skill-score">{Math.round(Number(r.mastery_score))}%</div></div>) : <p className="muted-copy">No weak Mathematics skills recorded yet.</p>}</div>
             </div>
@@ -6541,6 +6544,11 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated, subje
                 intelligence={parentIntelligenceBySubject[parentProgressSubject]}
                 onOpenReport={subject => { setParentReportSubject(subject?.id || parentProgressSubject); setParentReportOpen(true); }}
               />
+              {(() => {
+                const circle=(childData.studyCircle?.circles || []).find(item => item.subject_id === parentProgressSubject);
+                if (!circle) return null;
+                return <div className="panel-white study-circle-parent-summary" data-notification-anchor="parent-study-circle" style={{marginTop:18}}><div className="panel-title">{circle.subject_name || "Subject"} Study Circle</div><div className="study-circle-parent-row"><div><strong>Participating in a small peer study group</strong><span>Peer identities, exact scores and group messages stay private.</span></div><Badge c="teal">{circle.group_size || 0} students</Badge></div></div>;
+              })()}
             </div>
           )}
 

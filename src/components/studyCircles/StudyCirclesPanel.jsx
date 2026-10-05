@@ -61,7 +61,25 @@ function safeError(error, fallback) {
   return fallback;
 }
 
-export default function StudyCirclesPanel({ user, showToast, setView }) {
+export default function StudyCirclesPanel({ user, showToast, subjects = [] }) {
+  const enrolledSubjects = useMemo(
+    () => (Array.isArray(subjects) ? subjects : []).filter(subject => subject?.id),
+    [subjects]
+  );
+  const [selectedSubjectId, setSelectedSubjectId] = useState(() => enrolledSubjects[0]?.id || "mathematics");
+  const activeSubject = useMemo(
+    () => enrolledSubjects.find(subject => subject.id === selectedSubjectId) || enrolledSubjects[0] || {
+      id:selectedSubjectId || "mathematics",
+      name:"CSEC Mathematics",
+      shortName:"Mathematics",
+      qualification:"CSEC",
+      routes:{ practice:"/practice/mathematics" },
+    },
+    [enrolledSubjects, selectedSubjectId]
+  );
+  const subjectId = activeSubject?.id || "mathematics";
+  const subjectName = activeSubject?.shortName || activeSubject?.name || "Subject";
+  const qualification = activeSubject?.qualification || "CSEC";
   const [home, setHome] = useState(null);
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState("");
@@ -78,10 +96,19 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
   const modalRef = useRef(null);
   const previousModalFocusRef = useRef(null);
 
+  useEffect(() => {
+    if (!enrolledSubjects.length) return;
+    if (!enrolledSubjects.some(subject => subject.id === selectedSubjectId)) {
+      setSelectedSubjectId(enrolledSubjects[0].id);
+    }
+  }, [enrolledSubjects, selectedSubjectId]);
+
   const load = useCallback(async ({ quiet = false } = {}) => {
-    if (!user?.id) return;
+    if (!user?.id || !subjectId) return;
     if (!quiet) setLoading(true);
-    const { data, error: loadError } = await supabase.rpc("spark_get_study_circle_home");
+    const { data, error: loadError } = await supabase.rpc("spark_get_study_circle_home_v10", {
+      p_subject_id:subjectId,
+    });
     if (loadError) {
       console.error("Study Circles load failed:", loadError);
       setError(safeError(loadError, "Couldn't load Study Circles. Please try again."));
@@ -91,8 +118,8 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
     let nextHome = data || {};
     if (nextHome?.status === "matched") {
       const [postsResult, membersResult] = await Promise.all([
-        supabase.rpc("spark_get_study_circle_posts"),
-        supabase.rpc("spark_get_study_circle_members_with_avatars"),
+        supabase.rpc("spark_get_study_circle_posts_v10", { p_subject_id:subjectId }),
+        supabase.rpc("spark_get_study_circle_members_v10", { p_subject_id:subjectId }),
       ]);
 
       const circleDataError = postsResult.error || membersResult.error;
@@ -114,7 +141,7 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
     setGuidelinesAccepted(Boolean(nextHome?.preference?.guidelines_accepted));
     setError("");
     if (!quiet) setLoading(false);
-  }, [user?.id]);
+  }, [user?.id, subjectId]);
 
   useEffect(() => { load(); }, [load]);
 
@@ -262,7 +289,8 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
 
   const setPreference = async (optedIn) => {
     setBusy(optedIn ? "join" : "pause");
-    const { error: prefError } = await supabase.rpc("spark_set_study_circle_preference", {
+    const { error: prefError } = await supabase.rpc("spark_set_study_circle_preference_v10", {
+      p_subject_id:subjectId,
       p_opted_in: optedIn,
       p_preferred_times: availability,
       p_accept_guidelines: optedIn ? guidelinesAccepted : false,
@@ -288,7 +316,9 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
       if (!saved) return;
     }
     setBusy("match");
-    const { data, error: matchError } = await supabase.rpc("spark_match_study_circle");
+    const { data, error: matchError } = await supabase.rpc("spark_match_study_circle_v10", {
+      p_subject_id:subjectId,
+    });
     if (matchError) {
       console.error("Study Circle matching failed:", matchError);
       showToast?.(safeError(matchError, "Couldn't search for a Study Circle right now."));
@@ -322,11 +352,12 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
     if (!body || busy) return;
     setBusy("post");
     const request = replyTarget
-      ? supabase.rpc("spark_create_study_circle_reply", {
+      ? supabase.rpc("spark_create_study_circle_reply_v10", {
+          p_subject_id:subjectId,
           p_body: body,
           p_reply_to_post_id: replyTarget.id,
         })
-      : supabase.rpc("spark_create_study_circle_post", { p_body: body });
+      : supabase.rpc("spark_create_study_circle_post_v10", { p_subject_id:subjectId, p_body: body });
     const { error: postError } = await request;
     if (postError) {
       console.error("Study Circle post failed:", postError);
@@ -343,7 +374,8 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
   const submitReport = async () => {
     if (!reportTarget || busy) return;
     setBusy("report");
-    const { error: reportError } = await supabase.rpc("spark_report_study_circle_post", {
+    const { error: reportError } = await supabase.rpc("spark_report_study_circle_post_v10", {
+      p_subject_id:subjectId,
       p_post_id: reportTarget.id,
       p_reason: reportReason,
       p_details: reportDetails.trim(),
@@ -363,7 +395,9 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
 
   const leaveCircle = async () => {
     setBusy("leave");
-    const { error: leaveError } = await supabase.rpc("spark_leave_study_circle");
+    const { error: leaveError } = await supabase.rpc("spark_leave_study_circle_v10", {
+      p_subject_id:subjectId,
+    });
     if (leaveError) {
       console.error("Study Circle leave failed:", leaveError);
       showToast?.("Couldn't leave the Study Circle. Please try again.");
@@ -376,16 +410,59 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
     showToast?.("You left the Study Circle. Matching is paused.");
   };
 
-  if (loading) return <SparkLoader variant="section" label="Preparing Study Circles" />;
+  const openSubjectPractice = () => {
+    const route=activeSubject?.routes?.practice;
+    if (route && typeof window !== "undefined") window.location.hash=route;
+  };
+
+  if (!enrolledSubjects.length) {
+    return (
+      <section className="study-circles-shell">
+        <div className="study-circle-setup-card">
+          <div className="study-circle-setup-icon">i</div>
+          <div>
+            <strong>Add a course first</strong>
+            <p>Study Circles are available for every course you are enrolled in.</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (loading) return <SparkLoader variant="section" label={`Preparing ${subjectName} Study Circles`} />;
+
+  const subjectSelector = enrolledSubjects.length > 1 ? (
+    <div className="study-circle-subject-switcher" aria-label="Choose Study Circle subject">
+      {enrolledSubjects.map(subject => (
+        <button
+          type="button"
+          key={subject.id}
+          className={subject.id === subjectId ? "selected" : ""}
+          aria-pressed={subject.id === subjectId}
+          onClick={() => {
+            setLoading(true);
+            setSelectedSubjectId(subject.id);
+            setHome(null);
+            setError("");
+            setReplyTarget(null);
+            setReportTarget(null);
+          }}
+        >
+          {subject.shortName || subject.name}
+        </button>
+      ))}
+    </div>
+  ) : null;
 
   if (error) {
     return (
       <section className="study-circles-shell">
+        {subjectSelector}
         <div className="study-circle-page-heading">
           <div>
-            <span className="study-circle-kicker">CSEC MATHEMATICS · PEER LEARNING</span>
-            <h1>Mathematics Study Circles</h1>
-            <p>Small CSEC Mathematics groups matched around complementary strengths and focus areas.</p>
+            <span className="study-circle-kicker">{qualification.toUpperCase()} {subjectName.toUpperCase()} · PEER LEARNING</span>
+            <h1>{subjectName} Study Circles</h1>
+            <p>Small {qualification} {subjectName} groups matched around complementary strengths and focus areas.</p>
           </div>
         </div>
         <div className="study-circle-setup-card">
@@ -402,11 +479,12 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
 
   return (
     <section className="study-circles-shell" data-notification-anchor="student-study-circles">
+      {subjectSelector}
       <div className="study-circle-page-heading">
         <div>
-          <span className="study-circle-kicker">CSEC MATHEMATICS · PEER LEARNING</span>
-          <h1>Mathematics Study Circles</h1>
-          <p>Learn Mathematics with students whose strengths complement the areas you want to improve.</p>
+          <span className="study-circle-kicker">{qualification.toUpperCase()} {subjectName.toUpperCase()} · PEER LEARNING</span>
+          <h1>{subjectName} Study Circles</h1>
+          <p>Learn {subjectName} with students whose strengths complement the areas you want to improve.</p>
         </div>
         {status === "matched" && (
           <button type="button" className="study-circle-button secondary compact" onClick={() => load()} disabled={Boolean(busy)}>
@@ -417,7 +495,7 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
 
       <div className="study-circle-profile-strip">
         <div className="study-circle-profile-copy">
-          <span className="study-circle-kicker">YOUR MATHEMATICS LEARNING PROFILE</span>
+          <span className="study-circle-kicker">YOUR {subjectName.toUpperCase()} LEARNING PROFILE</span>
           <strong>SPARK matches the pattern, not the score.</strong>
           <p>Your exact percentages are never shown to other students.</p>
         </div>
@@ -438,7 +516,7 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
               <span className="study-circle-kicker">RECIPROCAL MATCHING</span>
               <h2>Bring a strength. Build a strength.</h2>
               <p>
-                SPARK looks for a small CSEC Mathematics group where each person has something useful to contribute
+                SPARK looks for a small {qualification} {subjectName} group where each person has something useful to contribute
                 and something useful to learn. No one is labelled the “weak student”.
               </p>
               <div className="study-circle-principles">
@@ -466,15 +544,17 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
                   <span className="study-circle-kicker">BUILD YOUR MATCHING PROFILE</span>
                   <h2>Give SPARK enough evidence to make a useful match.</h2>
                   <p>
-                    Complete a little Adaptive Practice first. Once SPARK has evidence of at least one
+                    Complete some {subjectName} learning activities first. Once SPARK has evidence of at least one
                     strength or focus area, Study Circle matching becomes available.
                   </p>
                 </div>
               </div>
               <div className="study-circle-actions">
-                <button type="button" className="study-circle-button primary" onClick={() => setView?.("practice-math")}>
-                  Open Mathematics Practice
-                </button>
+                {activeSubject?.routes?.practice && (
+                  <button type="button" className="study-circle-button primary" onClick={openSubjectPractice}>
+                    Open {subjectName} Practice
+                  </button>
+                )}
               </div>
             </div>
           ) : (
@@ -555,7 +635,7 @@ export default function StudyCirclesPanel({ user, showToast, setView }) {
           <div className="study-circle-match-hero">
             <div>
               <span className="study-circle-kicker">YOUR STUDY CIRCLE</span>
-              <h2>{circle.title || "CSEC Mathematics Study Circle"}</h2>
+              <h2>{circle.title || `${subjectName} Study Circle`}</h2>
               <p>{members.length} students · matched from complementary learning profiles</p>
             </div>
             <div className="study-circle-match-pill">Matched by SPARK</div>
