@@ -154,6 +154,7 @@ const SPARK_SUBJECTS = getSparkSubjectRegistry({
   physics: { ...PHYSICS_SECTION_A_STATS, ...PHYSICS_FULL_COURSE_STATS },
   informationTechnology: { sections: 8, topics: 26, objectives: 63, mcq: 540 },
   socialStudies: { sections: 4, topics: 39, objectives: 84, mcq: 156 },
+  englishA: { sections: 3, topics: 29, objectives: 55, paper1Items: 60, sourcePapers: 24, flashcards: 145 },
 });
 
 const VIEW_ROUTE_PATHS = Object.freeze({
@@ -174,6 +175,7 @@ const VIEW_ROUTE_PATHS = Object.freeze({
   "practice-information-technology": "/practice/information-technology",
   "practice-integrated-science": "/practice/integrated-science",
   "practice-social-studies": "/practice/social-studies",
+  "practice-english-a": "/practice/english-a",
   // SPARK_PHYSICS_SECTION_A_RC1_ROUTES
   physics: "/study/physics",
   "information-technology": "/study/information-technology",
@@ -204,6 +206,7 @@ const ROUTE_PATH_VIEWS = Object.freeze({
   "/practice/information-technology": "practice-information-technology",
   "/practice/integrated-science": "practice-integrated-science",
   "/practice/social-studies": "practice-social-studies",
+  "/practice/english-a": "practice-english-a",
   "/study/physics": PHYSICS_SECTION_A_ENABLED ? "physics" : "home",
   "/physics": PHYSICS_SECTION_A_ENABLED ? "physics" : "home",
   "/study/information-technology": "information-technology",
@@ -268,6 +271,7 @@ function viewFromBrowserHash() {
   if (normalizedPath === "/practice/information-technology" || normalizedPath.startsWith("/practice/information-technology/")) return "practice-information-technology";
   if (normalizedPath === "/practice/integrated-science" || normalizedPath.startsWith("/practice/integrated-science/")) return "practice-integrated-science";
   if (normalizedPath === "/practice/social-studies" || normalizedPath.startsWith("/practice/social-studies/")) return "practice-social-studies";
+  if (normalizedPath === "/practice/english-a" || normalizedPath.startsWith("/practice/english-a/")) return "practice-english-a";
   return ROUTE_PATH_VIEWS[normalizedPath] || "home";
 }
 
@@ -7437,6 +7441,7 @@ const handleLogout = async () => {
   const appHasInformationTechnology = appStudentEnrolledSubjectIds.has("information-technology");
   const appHasIntegratedScience = appStudentEnrolledSubjectIds.has("integrated-science");
   const appHasSocialStudies = appStudentEnrolledSubjectIds.has("social-studies");
+  const appHasEnglishA = appStudentEnrolledSubjectIds.has("english-a");
   const appGenericStudySubjectId = view === "generic-study"
     ? genericStudySubjectFromBrowserHash()
     : null;
@@ -7636,7 +7641,7 @@ if (loading || authenticatedRolePending) {
           CSEC Physics study is available from a student account.
         </div>
       )}
-      {(view === "practice" || view === "practice-math" || view === "practice-physics" || view === "practice-information-technology" || view === "practice-integrated-science" || view === "practice-social-studies") && session && profile?.role === "student" && (
+      {(view === "practice" || view === "practice-math" || view === "practice-physics" || view === "practice-information-technology" || view === "practice-integrated-science" || view === "practice-social-studies" || view === "practice-english-a") && session && profile?.role === "student" && (
         appSubjectAccessPending
           ? <SparkLoader variant="section" label="Loading your practice subjects" />
           : (view === "practice-math" && !appHasMathematics)
@@ -7649,6 +7654,8 @@ if (loading || authenticatedRolePending) {
                 ? <SubjectEnrollmentRequiredView subjectName="Integrated Science" onManageSubjects={openMySubjects} onBack={() => setView("practice")}/>
               : (view === "practice-social-studies" && !appHasSocialStudies)
                 ? <SubjectEnrollmentRequiredView subjectName="Social Studies" onManageSubjects={openMySubjects} onBack={() => setView("practice")}/>
+              : (view === "practice-english-a" && !appHasEnglishA)
+                ? <SubjectEnrollmentRequiredView subjectName="English A" onManageSubjects={openMySubjects} onBack={() => setView("practice")}/>
               : appStudentEnrolledSubjects.length === 0
                 ? <SubjectEnrollmentRequiredView onManageSubjects={openMySubjects} onBack={() => setView("dashboard")}/>
                 : (
@@ -7660,7 +7667,7 @@ if (loading || authenticatedRolePending) {
                       physicsEnabled={PHYSICS_SECTION_A_ENABLED}
                       enrolledSubjectIds={appSubjectEnrollmentIds}
                       subjects={runtimeSparkSubjects}
-                      initialSubject={view === "practice-math" ? "mathematics" : view === "practice-physics" ? "physics" : view === "practice-information-technology" ? "information-technology" : view === "practice-integrated-science" ? "integrated-science" : view === "practice-social-studies" ? "social-studies" : null}
+                      initialSubject={view === "practice-math" ? "mathematics" : view === "practice-physics" ? "physics" : view === "practice-information-technology" ? "information-technology" : view === "practice-integrated-science" ? "integrated-science" : view === "practice-social-studies" ? "social-studies" : view === "practice-english-a" ? "english-a" : null}
                       onSubjectActivity={event => {
                         recordSparkSubjectActivity({ supabase, event }).then(result => {
                           if (result?.error && !["PGRST202", "42P01", "42883"].includes(result.error.code)) {
