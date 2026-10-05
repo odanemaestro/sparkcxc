@@ -960,9 +960,21 @@ $$;
 
 -- Compatibility wrappers keep old Mathematics-only callers safe while the
 -- application moves to V10 subject-scoped RPCs.
+create or replace function public.spark_set_study_circle_preference(
+  p_opted_in boolean,
+  p_preferred_times text[] default '{}'::text[],
+  p_accept_guidelines boolean default false
+)
+returns jsonb language sql security definer set search_path=public
+as $
+  select public.spark_set_study_circle_preference_v10(
+    'mathematics',p_opted_in,p_preferred_times,p_accept_guidelines
+  );
+$;
+
 create or replace function public.spark_get_study_circle_home()
 returns jsonb language sql security definer set search_path=public
-as $$ select public.spark_get_study_circle_home_v10('mathematics'); $$;
+as $ select public.spark_get_study_circle_home_v10('mathematics'); $;
 
 create or replace function public.spark_get_study_circle_posts()
 returns jsonb language sql security definer set search_path=public
