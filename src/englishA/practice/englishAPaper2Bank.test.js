@@ -42,6 +42,15 @@ describe("SPARK English A Paper 02 V1", () => {
           expect(task.wordLimit).toBe(50);
           expect(task.rubric.marks).toBe(10);
         }
+        if (task.kind === "persuasive") {
+          expect(task.wordRange).toEqual([250,300]);
+        }
+        if (task.kind === "literary") {
+          expect(task.wordRange).toEqual([400,450]);
+        }
+        if (task.kind === "exposition") {
+          expect(task.wordRange).toBeNull();
+        }
       });
     });
   });
