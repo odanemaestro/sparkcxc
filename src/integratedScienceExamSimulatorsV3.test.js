@@ -61,14 +61,17 @@ describe("Integrated Science CXC-format examination simulators", () => {
     expect(p1).toContain("Time remaining");
   });
 
-  test("Paper 02 simulator includes all six questions and post-submit mark-scheme review", () => {
+  test("Paper 02 simulator automatically grades all six questions after submission", () => {
     const p2 = fs.readFileSync(
       path.join(__dirname,"integratedScience","practice","IntegratedSciencePaper2Exam.jsx"),
       "utf8"
     );
     expect(p2).toContain("Question {currentIndex + 1} of 6");
-    expect(p2).toContain("Mark your paper against the scheme");
-    expect(p2).toContain("Save Paper 2 score");
+    expect(p2).toContain("SPARK has marked your paper");
+    expect(p2).toContain("Score saved automatically");
+    expect(p2).toContain("gradeIntegratedSciencePaper2");
+    expect(p2).not.toContain("selfMarks");
+    expect(p2).not.toContain("saveSelfMarkedScore");
   });
 
   test("Integrated Science source contains no known mojibake separators", () => {
