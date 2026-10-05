@@ -440,6 +440,7 @@ export default function StudyCirclesPanel({ user, showToast, subjects = [] }) {
           className={subject.id === subjectId ? "selected" : ""}
           aria-pressed={subject.id === subjectId}
           onClick={() => {
+            setLoading(true);
             setSelectedSubjectId(subject.id);
             setHome(null);
             setError("");
