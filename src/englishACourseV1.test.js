@@ -22,6 +22,7 @@ describe("SPARK English A course V1", () => {
     expect(registry).toContain('practice: "/practice/english-a"');
     expect(registry).toContain('flashcards: "/dashboard/flashcards/english-a"');
     expect(registry).toContain("paper1: true");
+    expect(registry).toContain("paper2: true");
   });
 
   test("App and PracticeHub route English A through the enrolled subject gates", () => {
@@ -56,11 +57,16 @@ describe("SPARK English A course V1", () => {
     expect(topics.reduce((total,topic) => total + topic.cards.length,0)).toBe(145);
   });
 
-  test("migration follows the revised Paper 01 structure", () => {
+  test("migration follows the revised Paper 01 and Paper 02 structures", () => {
     expect(migration).toContain('"items":60');
     expect(migration).toContain('"minutes":90');
     expect(migration).toContain('"itemsPerModule":20');
     expect(migration).toContain('"discreteItemsPerModule":5');
     expect(migration).toContain('"readingComprehensionItemsPerModule":15');
+    expect(migration).toContain('"paper02"');
+    expect(migration).toContain('"marks":120');
+    expect(migration).toContain('"responses":6');
+    expect(migration).toContain('"originalPracticeSets":3');
+    expect(migration).toContain('"historicalSourcesIndexed":30');
   });
 });
