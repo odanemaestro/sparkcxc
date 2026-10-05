@@ -122,6 +122,9 @@ function TopicBank({ supabase, userId, onBack }) {
     }
   },[supabase,userId]);
 
+  const rows = paper === "paper1" ? paper1 : paper2;
+  const current = rows[questionIndex] || null;
+
   const currentPaper2Result = useMemo(
     () => current && paper === "paper2" ? gradeIntegratedSciencePaper2([current],paper2Responses) : null,
     [current,paper,paper2Responses]
@@ -172,9 +175,6 @@ function TopicBank({ supabase, userId, onBack }) {
       </main>
     );
   }
-
-  const rows = paper === "paper1" ? paper1 : paper2;
-  const current = rows[questionIndex] || null;
 
   return (
     <main className="is-practice-shell">
