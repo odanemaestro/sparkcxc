@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import SocialStudiesShortAnswerPractice from "./SocialStudiesShortAnswerPractice";
 import SocialStudiesSbaPractice from "./SocialStudiesSbaPractice";
@@ -32,6 +32,28 @@ const RESEARCH_LESSONS=new Set([
   "b1-environment-data-action"
 ]);
 const SOCIAL_STUDIES_SECTION_IDS=new Set(["A1","A2","B1","B2"]);
+const SOCIAL_STUDIES_PAPER2_DURATION_SECONDS=160*60;
+
+function socialStudiesPaper2StorageKey(userId){
+  return `spark:social-studies:paper2:${userId || "anonymous"}`;
+}
+
+function readSocialStudiesPaper2State(userId){
+  if(typeof window==="undefined") return null;
+  try{
+    const raw=window.localStorage.getItem(socialStudiesPaper2StorageKey(userId));
+    return raw ? JSON.parse(raw) : null;
+  }catch{return null;}
+}
+
+function saveSocialStudiesPaper2State(userId,state){
+  if(typeof window==="undefined") return;
+  try{
+    if(state) window.localStorage.setItem(socialStudiesPaper2StorageKey(userId),JSON.stringify(state));
+    else window.localStorage.removeItem(socialStudiesPaper2StorageKey(userId));
+  }catch{}
+}
+
 
 function socialStudiesPracticeRoute(){
   const route=readSparkHashRoute();
@@ -272,12 +294,18 @@ function Paper1Exam({ onExit, onComplete }){
   </main>;
 }
 
-function Paper2Practice({ onExit, onComplete }){
-  const [paperSetId,setPaperSetId]=useState("A");
-  const [index,setIndex]=useState(0);
-  const [responses,setResponses]=useState({});
-  const [revealed,setRevealed]=useState({});
-  const [completed,setCompleted]=useState(false);
+function Paper2Practice({ onExit, onComplete, userId }){
+  const restored=useMemo(()=>readSocialStudiesPaper2State(userId),[userId]);
+  const [paperSetId,setPaperSetId]=useState(restored?.paperSetId || "A");
+  const [index,setIndex]=useState(restored?.index || 0);
+  const [responses,setResponses]=useState(restored?.responses || {});
+  const [revealed,setRevealed]=useState(restored?.revealed || {});
+  const [completed,setCompleted]=useState(Boolean(restored?.completed));
+  const [sessionMode,setSessionMode]=useState(restored?.sessionMode || "timed");
+  const [started,setStarted]=useState(Boolean(restored?.started));
+  const [endsAt,setEndsAt]=useState(restored?.endsAt || null);
+  const [timeLeft,setTimeLeft]=useState(()=>restored?.endsAt ? Math.max(0,Math.round((Number(restored.endsAt)-Date.now())/1000)) : SOCIAL_STUDIES_PAPER2_DURATION_SECONDS);
+  const submitGuard=useRef(Boolean(restored?.completed));
   const selectedSet=PAPER2_SETS.find(item=>item.id===paperSetId) || PAPER2_SETS[0];
   const questions=selectedSet.questions;
   const current=questions[index];
@@ -292,9 +320,17 @@ function Paper2Practice({ onExit, onComplete }){
   const paperScore=structuredGrade.score+essayGrade.score;
   const paperMax=structuredGrade.maxScore+essayGrade.maxScore;
 
-  const setResponse=(key,value)=>setResponses(previous=>({...previous,[key]:value}));
+  const setResponse=(key,value)=>{
+    if(completed || submitGuard.current || !started) return;
+    if(sessionMode==="timed" && endsAt && Date.now()>=Number(endsAt)){
+      finish(true);
+      return;
+    }
+    setResponses(previous=>({...previous,[key]:value}));
+  };
 
   const changePaperSet=event=>{
+    if(started) return;
     setPaperSetId(event.target.value);
     setIndex(0);
     setResponses({});
@@ -303,12 +339,83 @@ function Paper2Practice({ onExit, onComplete }){
     window.scrollTo?.(0,0);
   };
 
-  const finish=()=>{
-    if(completed) return;
-    setCompleted(true);
-    onComplete?.(paperScore,paperMax);
+  const beginPaper=()=>{
+    submitGuard.current=false;
+    const deadline=sessionMode==="timed" ? Date.now()+SOCIAL_STUDIES_PAPER2_DURATION_SECONDS*1000 : null;
+    setStarted(true);
+    setCompleted(false);
+    setEndsAt(deadline);
+    setTimeLeft(SOCIAL_STUDIES_PAPER2_DURATION_SECONDS);
+    setIndex(0);
+    setResponses({});
+    setRevealed({});
     window.scrollTo?.(0,0);
   };
+
+  const finish=(timedOut=false)=>{
+    if(completed || submitGuard.current) return;
+    submitGuard.current=true;
+    setCompleted(true);
+    onComplete?.(paperScore,paperMax,{sessionMode,timedOut:Boolean(timedOut)});
+    window.scrollTo?.(0,0);
+  };
+
+  useEffect(()=>{
+    if(!started || completed || sessionMode!=="timed" || !endsAt) return undefined;
+    const tick=()=>{
+      const seconds=Math.max(0,Math.round((Number(endsAt)-Date.now())/1000));
+      setTimeLeft(seconds);
+      if(seconds===0) finish(true);
+    };
+    tick();
+    const timer=window.setInterval(tick,1000);
+    return ()=>window.clearInterval(timer);
+  });
+
+  useEffect(()=>{
+    saveSocialStudiesPaper2State(userId,{
+      paperSetId,index,responses,revealed,completed,sessionMode,started,endsAt,
+    });
+  },[completed,endsAt,index,paperSetId,responses,revealed,sessionMode,started,userId]);
+
+  const startAnother=()=>{
+    saveSocialStudiesPaper2State(userId,null);
+    submitGuard.current=false;
+    setStarted(false);
+    setCompleted(false);
+    setResponses({});
+    setRevealed({});
+    setIndex(0);
+    setEndsAt(null);
+    setTimeLeft(SOCIAL_STUDIES_PAPER2_DURATION_SECONDS);
+    window.scrollTo?.(0,0);
+  };
+
+  if(!started){
+    return <main className="ss-practice-page"><div className="ss-practice-shell">
+      <header className="ss-practice-session-head ss-paper-head">
+        <button type="button" className="ss-back" onClick={onExit}><BackArrowIcon/><span>Exit Paper 02</span></button>
+        <div><span>Paper 02 · General Proficiency</span><strong>Choose how you want to practise</strong></div>
+      </header>
+      <section className="ss-paper-summary">
+        <span className="ss-eyebrow">CURRENT FORMAT</span>
+        <h1>Paper 02</h1>
+        <p>Questions 1–4 are structured and Questions 5–6 are essays. Timed simulation uses the full 2 hours 40 minutes. Guided practice leaves marking guides available while you work.</p>
+      </section>
+      <section className="ss-paper-set-picker">
+        <div><span>Paper set</span><strong>Choose one of three original current-format simulations</strong></div>
+        <select value={paperSetId} onChange={changePaperSet}>{PAPER2_SETS.map(set=><option key={set.id} value={set.id}>{set.label}</option>)}</select>
+      </section>
+      <section className="ss-paper-set-picker">
+        <div><span>Mode</span><strong>{sessionMode==="timed" ? "Timed examination" : "Guided practice"}</strong></div>
+        <select value={sessionMode} onChange={event=>setSessionMode(event.target.value)}>
+          <option value="timed">Timed examination · 2 h 40 min</option>
+          <option value="guided">Guided practice · marking guides available</option>
+        </select>
+      </section>
+      <div className="ss-paper-actions"><button type="button" className="ss-primary" onClick={beginPaper}>Start Paper 02</button></div>
+    </div></main>;
+  }
 
   return <main className="ss-practice-page">
     <div className="ss-practice-shell">
@@ -316,25 +423,15 @@ function Paper2Practice({ onExit, onComplete }){
         <button type="button" className="ss-back" onClick={onExit}><BackArrowIcon/><span>Exit Paper 02</span></button>
         <div>
           <span>Paper 02 · General Proficiency · {selectedSet.label}</span>
-          <strong>Question {current.number} of 6 · {current.totalMarks} marks</strong>
+          <strong>{completed ? `Result ${paperScore}/${paperMax}` : `Question ${current.number} of 6 · ${current.totalMarks} marks`}</strong>
         </div>
-        <b>{current.type==="essay" ? "Essay" : "Structured"}</b>
+        <b>{completed ? "SUBMITTED" : sessionMode==="timed" ? formatPaperTime(timeLeft) : current.type==="essay" ? "Essay" : "Structured"}</b>
       </header>
 
       {completed && <section className="ss-paper-summary">
         <span className="ss-eyebrow">Paper 02 marking</span>
         <h1>{paperScore}/{paperMax}</h1>
         <p>{Math.round(paperScore/paperMax*100)}% across the full 100-mark practice paper. Structured responses contribute {structuredGrade.score}/56. Essays contribute {essayGrade.score}/44 using content plus the CXC organisation and development band.</p>
-      </section>}
-
-      {!completed && <section className="ss-paper-set-picker">
-        <div>
-          <span>Paper set</span>
-          <strong>Choose one of three original current-format simulations</strong>
-        </div>
-        <select value={paperSetId} onChange={changePaperSet}>
-          {PAPER2_SETS.map(set=><option key={set.id} value={set.id}>{set.label}</option>)}
-        </select>
       </section>}
 
       <div className="ss-paper2-layout">
@@ -366,10 +463,11 @@ function Paper2Practice({ onExit, onComplete }){
                 <p>{item.prompt}</p>
                 <textarea
                   value={responses[key] || ""}
+                  disabled={completed}
                   onChange={event=>setResponse(key,event.target.value)}
                   placeholder="Write your response in complete sentences."
                 />
-                {!completed && <button type="button" className="ss-secondary" onClick={()=>setRevealed(previous=>({...previous,[key]:!previous[key]}))}>
+                {sessionMode==="guided" && !completed && <button type="button" className="ss-secondary" onClick={()=>setRevealed(previous=>({...previous,[key]:!previous[key]}))}>
                   {revealed[key] ? "Hide marking guide" : "Show marking guide"}
                 </button>}
                 {(revealed[key] || completed) && <div className="ss-paper2-guide">
@@ -399,7 +497,7 @@ function Paper2Practice({ onExit, onComplete }){
               onChange={event=>setResponse(current.id,event.target.value)}
               placeholder="Plan briefly, then write your essay in organised paragraphs."
             />
-            {!completed && <button type="button" className="ss-secondary" onClick={()=>setRevealed(previous=>({...previous,[current.id]:!previous[current.id]}))}>
+            {sessionMode==="guided" && !completed && <button type="button" className="ss-secondary" onClick={()=>setRevealed(previous=>({...previous,[current.id]:!previous[current.id]}))}>
               {revealed[current.id] ? "Hide essay guide" : "Show essay guide"}
             </button>}
             {(revealed[current.id] || completed) && <div className="ss-paper2-guide">
@@ -447,7 +545,7 @@ function Paper2Practice({ onExit, onComplete }){
           <div className="ss-paper-actions">
             <button type="button" className="ss-secondary" disabled={index===0} onClick={()=>{setIndex(value=>value-1);window.scrollTo?.(0,0);}}>Previous</button>
             {index===5
-              ? <button type="button" className="ss-primary" onClick={finish}>{completed ? "Paper 02 complete" : "Finish Paper 02 practice"}</button>
+              ? <button type="button" className="ss-primary" disabled={completed} onClick={()=>finish(false)}>{completed ? "Paper 02 complete" : sessionMode==="timed" ? "Submit Paper 02" : "Finish guided practice"}</button>
               : <button type="button" className="ss-primary" onClick={()=>{setIndex(value=>value+1);window.scrollTo?.(0,0);}}>Next question</button>}
           </div>
         </article>
@@ -468,9 +566,10 @@ function Paper2Practice({ onExit, onComplete }){
               <small>{item.type==="essay" ? "Essay" : "Structured"} · {item.totalMarks}</small>
             </button>)}
           </div>
-          <small>Recommended time: 2 hours 40 minutes. Questions 1–4 are structured. Questions 5–6 are essays.</small>
+          <small>{sessionMode==="timed" ? "Timed examination: 2 hours 40 minutes. Marking guides stay hidden until submission." : "Guided practice: marking guides are available while you work."} Questions 1–4 are structured. Questions 5–6 are essays.</small>
         </aside>
       </div>
+      {completed && <div className="ss-paper-actions"><button type="button" className="ss-primary" onClick={startAnother}>Start another Paper 02</button></div>}
     </div>
   </main>;
 }
@@ -491,7 +590,7 @@ export default function SocialStudiesPracticeHub({ supabase, userId, onBack }){
     if(String(route.params.get("mode") || "").toLowerCase()==="sba") setMode("sba");
   }),[]);
 
-  const saveExamAttempt=async ({ paper, score=null, maxScore=null })=>{
+  const saveExamAttempt=async ({ paper, score=null, maxScore=null, sessionMode=null, timedOut=false })=>{
     const label=String(paper || "Practice");
     const normalized=label.toLowerCase();
     const paperType=normalized==="paper 01" ? "paper1" : normalized==="paper 02" ? "paper2" : null;
@@ -522,6 +621,8 @@ export default function SocialStudiesPracticeHub({ supabase, userId, onBack }){
           paper:label,
           paper_type:paperType,
           event_type:eventType,
+          session_mode:sessionMode,
+          timed_out:Boolean(timedOut),
           at:new Date().toISOString(),
         },
       },
@@ -605,8 +706,9 @@ export default function SocialStudiesPracticeHub({ supabase, userId, onBack }){
     onComplete={(score,total)=>saveExamAttempt({paper:"Paper 01",score,maxScore:total})}
   />;
   if(mode==="paper2") return <Paper2Practice
+    userId={userId}
     onExit={()=>setMode("home")}
-    onComplete={(score,total)=>saveExamAttempt({paper:"Paper 02",score,maxScore:total})}
+    onComplete={(score,total,details={})=>saveExamAttempt({paper:"Paper 02",score,maxScore:total,sessionMode:details.sessionMode,timedOut:details.timedOut})}
   />;
   if(mode==="quiz") return <QuizSession title={sessionTitle} questions={session} onExit={()=>setMode("home")} onFinish={finish}/>;
   if(mode==="results") return <Results title={sessionTitle} answers={answers} total={session.length} examPrompt={examPrompt} onAgain={()=>start(practiceKind,sectionId)} onHome={()=>setMode("home")}/>;
