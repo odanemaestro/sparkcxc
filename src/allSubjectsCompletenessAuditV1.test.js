@@ -3,6 +3,7 @@ import path from "path";
 import { getSparkSubjectRegistry } from "./subjects/subjectRegistry";
 import { ENGLISH_A_LESSON_EXAMPLES } from "./englishA/data/englishALessonExamples";
 import { INFORMATION_TECHNOLOGY_PRACTICAL_LABS } from "./informationTechnology/labs/labCatalog";
+import { INTEGRATED_SCIENCE_STUDY_SECTIONS, INTEGRATED_SCIENCE_STUDY_TOPICS } from "./integratedScience/data/integratedScienceStudyCourse";
 import { SOCIAL_STUDIES_COURSE, socialStudiesStats } from "./socialStudies/data/socialStudiesCourse";
 
 const read=p=>fs.readFileSync(path.join(__dirname,p),"utf8");
@@ -76,6 +77,25 @@ describe("SPARK all-subject completeness audit V1",()=>{
       "solution-match","organisation-match","rate-calculator","population-pyramid","timeline","map-spotter",
       "family-tree","data-read"
     ].forEach(type=>expect(social).toContain(type));
+  });
+
+  test("Integrated Science Study covers the full three-module, 19-topic course",()=>{
+    expect(INTEGRATED_SCIENCE_STUDY_SECTIONS).toHaveLength(3);
+    expect(INTEGRATED_SCIENCE_STUDY_TOPICS).toHaveLength(19);
+    const objectiveCount=INTEGRATED_SCIENCE_STUDY_TOPICS.reduce(
+      (sum,row)=>sum+(row.metadata?.lesson?.objectives?.length || 0),0
+    );
+    expect(objectiveCount).toBeGreaterThanOrEqual(114);
+    INTEGRATED_SCIENCE_STUDY_TOPICS.forEach(row=>{
+      const lesson=row.metadata.lesson;
+      expect(lesson.introduction.length).toBeGreaterThan(40);
+      expect(lesson.sections.length).toBeGreaterThanOrEqual(3);
+      expect(lesson.keyPoints.length).toBeGreaterThanOrEqual(3);
+      expect(lesson.workedExample?.answer).toBeTruthy();
+    });
+    const loader=read("subjects/genericSubjectCatalog.js");
+    expect(loader).toContain("completeIntegratedScienceStructure");
+    expect(loader).toContain("integratedScienceStudyStructure");
   });
 
   test("Integrated Science graph questions are fully interactive in topic and full-paper modes",()=>{
