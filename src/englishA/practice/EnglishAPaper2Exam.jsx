@@ -150,6 +150,7 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
     setCurrentIndex(0);
     setEndsAt(null);
     setRemaining(ENGLISH_A_PAPER2_DURATION_SECONDS);
+    window.scrollTo?.({top:0,left:0,behavior:"auto"});
   }
 
   if (phase==="library") {
@@ -305,7 +306,8 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
       {task && (
         <article className="ea-p2-task-card">
           <div className="ea-p2-task-head"><div><span className="ea-practice-eyebrow">{moduleLabel}</span><h2>{task.title}</h2></div><strong>{task.rubric?.marks || 0} marks</strong></div>
-          <p className="ea-p2-task-instructions">{task.instructions}</p>
+          {task.kind !== "summary" && <p className="ea-p2-task-instructions">{task.instructions}</p>}
+          {task.kind === "summary" && <p className="ea-p2-task-instructions">Read the extract carefully, then answer BOTH parts.</p>}
           <Stimulus stimulus={task.stimulus} />
           {task.kind === "summary" ? (
             <>
