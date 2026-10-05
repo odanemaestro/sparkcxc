@@ -19,6 +19,7 @@ import {
   savePhysicsPaper2Result,
 } from "../physicsPaper2Bank";
 import { markPhysicsPaper2, modelResponsesForPhysicsPaper2 } from "../physicsPaper2Marking";
+import { buildAttemptProvenance } from "../../../grading/attemptProvenance";
 import "./physicsPaper2.css";
 
 function formatTime(totalSeconds) {
@@ -338,6 +339,11 @@ export default function PhysicsPaper2Exam({ userId, onBack, onActivity }) {
         provisionalGrading:hasProvisionalEvidence,
         reviewRecommended:hasProvisionalEvidence,
         completedAt,
+        attemptProvenance:buildAttemptProvenance({
+          subjectId:"physics",paper:"02",mode:"timed",bankVersion:"physics-paper2-v1",
+          rubricVersion:"physics-authored-criteria-v1",graderVersion:"physics-paper2-marker-v2",
+          startedAt:active?.startedAt || null,submittedAt:completedAt,responses,
+        }),
       };
       savePhysicsPaper2Result(userId, stored);
       setActive(previous => previous ? {
