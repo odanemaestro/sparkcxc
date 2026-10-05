@@ -92,10 +92,10 @@ export default function EnglishAPracticeHub({ supabase, userId, onBack }) {
           <strong>Built from your English A past-paper archives</strong>
           <p>
             Paper 1 uses {englishAPastPaperArchiveSummary.suppliedFiles} supplied source files for
-            format and language-pattern review. Paper 2 now also indexes {englishAPaper2ArchiveSummary.suppliedFiles}
-            historical files from {englishAPaper2ArchiveSummary.years[0]} to {englishAPaper2ArchiveSummary.years[1]}.
-            The original SPARK simulators use those historical task patterns while following the revised
-            CXC 01/G/SYLL 25 examination structure.
+            format and language-pattern review. Paper 2 has {englishAPaper2ArchiveSummary.verifiedFiles}
+            verified historical files from {englishAPaper2ArchiveSummary.years[0]} to {englishAPaper2ArchiveSummary.years[1]},
+            with no filename/content mismatches found in the Paper 2 archive. The original SPARK simulators
+            use those historical task patterns while following the revised CXC 01/G/SYLL 25 examination structure.
           </p>
         </section>
       </div>
