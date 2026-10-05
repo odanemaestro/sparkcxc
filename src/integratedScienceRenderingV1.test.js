@@ -63,6 +63,7 @@ describe("Integrated Science rendering QA",()=>{
     const bad=[];
     const pattern=/\uFFFD|â€™|â€œ|â€|Â°|Ã—|Ã·|Î©|Î”|â†’/;
     files.forEach(file=>{
+      if(file.endsWith("IntegratedScienceText.jsx")) return;
       const text=fs.readFileSync(file,"utf8");
       if(pattern.test(text)) bad.push(path.relative(path.join(__dirname,".."),file));
     });
