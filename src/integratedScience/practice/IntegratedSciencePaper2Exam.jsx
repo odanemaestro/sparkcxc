@@ -108,8 +108,16 @@ function GraphPlotter({base,config,item,sourceTable,responses,onChange,disabled}
     {model.series.length>1 && <div className="is-practice-graph-series-tabs">{model.series.map(series=><button type="button" key={series.name} disabled={disabled} className={selectedSeries===series.name?"active":""} onClick={()=>setSelectedSeries(series.name)}>{series.name}</button>)}</div>}
     <svg className="is-p2-graph-response" viewBox="0 0 600 300" role="img" aria-label="Student graph plot" onClick={disabled?undefined:event=>writePoints([...points,pointFromEvent(event)])}>
       <rect x="50" y="30" width="500" height="230" fill="none" stroke="currentColor"/>
-      {Array.from({length:11},(_,i)=><line key={`v${i}`} x1={50+i*50} x2={50+i*50} y1="30" y2="260" stroke="currentColor" opacity=".16"/>)}
-      {Array.from({length:11},(_,i)=><line key={`h${i}`} x1="50" x2="550" y1={30+i*23} y2={30+i*23} stroke="currentColor" opacity=".16"/>)}
+      {Array.from({length:11},(_,i)=>{
+        const x=50+i*50;
+        const value=minX+(maxX-minX)*i/10;
+        return <React.Fragment key={`v${i}`}><line x1={x} x2={x} y1="30" y2="260" stroke="currentColor" opacity=".16"/><text x={x} y="278" textAnchor="middle" className="is-practice-graph-tick">{Math.abs(value)>=100?Math.round(value):Number(value.toFixed(2))}</text></React.Fragment>;
+      })}
+      {Array.from({length:11},(_,i)=>{
+        const y=30+i*23;
+        const value=maxY-(maxY-minY)*i/10;
+        return <React.Fragment key={`h${i}`}><line x1="50" x2="550" y1={y} y2={y} stroke="currentColor" opacity=".16"/><text x="44" y={y+3} textAnchor="end" className="is-practice-graph-tick">{Math.abs(value)>=100?Math.round(value):Number(value.toFixed(2))}</text></React.Fragment>;
+      })}
       {(model.series.length?model.series:[{name:""}]).map((series,seriesIndex)=>{
         const subset=points.filter(point=>model.series.length<=1 || point.series===series.name);
         return <g key={series.name || "series"} className={`is-series-${seriesIndex%3}`}>
