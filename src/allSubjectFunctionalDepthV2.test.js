@@ -112,6 +112,12 @@ describe("SPARK all-subject functional depth audit V2",()=>{
     expect(exam).toContain("Undo stroke");
     expect(exam).not.toContain("Enter plotted coordinates");
 
+    const untimed=readSrc("integratedScience/practice/IntegratedScienceQuestionRenderer.jsx");
+    expect(untimed).toContain("gradeIntegratedSciencePaper2Item");
+    expect(untimed).toContain("Check response");
+    expect(untimed).toContain("SPARK marking review");
+    expect(untimed).not.toContain("Show mark scheme");
+
     const grader=readSrc("integratedScience/practice/integratedSciencePaper2Grader.js");
     expect(grader).toContain('INTEGRATED_SCIENCE_P2_GRADER_VERSION = "2.1.0"');
     expect(grader).toContain("expectedGraphCoordinates");
