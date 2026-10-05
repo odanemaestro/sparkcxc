@@ -52,6 +52,12 @@ describe("SPARK English A Paper 01 V2", () => {
     });
   });
 
+  test("does not inflate the pool with cloned discrete questions", () => {
+    const discrete=englishAPaper1Questions.filter(question=>question.kind==="discrete");
+    const fingerprints=discrete.map(question=>JSON.stringify([question.stem,question.options]));
+    expect(new Set(fingerprints).size).toBe(discrete.length);
+  });
+
   test("builds the correct 60-item blueprint from the large pool", () => {
     const paper=buildEnglishAPaper1({random:seededRandom(17)});
     expect(paper).toHaveLength(60);
