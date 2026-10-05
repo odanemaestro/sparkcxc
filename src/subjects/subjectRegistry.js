@@ -200,7 +200,7 @@ export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = 
       sections: Number(englishA.sections || 3),
       topics: Number(englishA.topics || 29),
       paper1Items: Number(englishA.paper1Items || 60),
-      paper2PracticeSets: Number(englishA.paper2PracticeSets || 3),
+      paper2PracticeSets: Number(englishA.paper2PracticeSets || 6),
       paper2HistoricalSources: Number(englishA.paper2HistoricalSources || 30),
       sourcePapers: Number(englishA.sourcePapers || 54),
       flashcards: Number(englishA.flashcards || 145),
