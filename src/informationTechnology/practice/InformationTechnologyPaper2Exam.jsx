@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { buildAttemptProvenance } from "../../grading/attemptProvenance";
 import bank from "./itPaper2Data.json";
 import InformationTechnologyQuestionVisual from "./InformationTechnologyQuestionVisual";
 import {
@@ -259,6 +260,11 @@ export default function InformationTechnologyPaper2Exam({ onExit, startFresh = f
       grading: result,
       timedOut: Boolean(active?.timedOut),
       durationSeconds: DURATION - remaining,
+      attemptProvenance:buildAttemptProvenance({
+        subjectId:"information-technology",paper:"02",mode:"timed",bankVersion:"it-paper2-v1",
+        rubricVersion:"it-authored-rules-v1",graderVersion:"it-paper2-marker-v2",
+        startedAt:active?.startedAt || null,submittedAt:new Date().toISOString(),responses:answers,
+      }),
     };
     const results = readJson(RESULTS_KEY, []);
     localStorage.setItem(RESULTS_KEY, JSON.stringify([record, ...results].slice(0, 20)));
