@@ -6,6 +6,7 @@ import {
   buildEnglishAPaper2,
   englishAPaper2Sets,
 } from "../data/englishAPaper2Bank";
+import { gradeEnglishAPaper2 } from "./englishAPaper2Grader";
 import "../../integratedScience/practice/integratedScienceExam.css";
 import "./englishAExam.css";
 
@@ -62,6 +63,7 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
 
   const paper=useMemo(() => buildEnglishAPaper2(setId),[setId]);
   const visibleTasks=useMemo(() => requiredTasks(paper,choiceId),[paper,choiceId]);
+  const result=useMemo(() => gradeEnglishAPaper2(paper,answers,choiceId),[answers,choiceId,paper]);
   const task=visibleTasks[Math.min(currentIndex,Math.max(0,visibleTasks.length-1))] || null;
 
   useEffect(() => {
@@ -116,6 +118,9 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
           activityType:"exam",
           title:`English A Paper 02 - ${paper.title}`,
           completed:true,
+          score:result.score,
+          maxScore:result.maxScore,
+          percent:result.percent,
           metadata:{
             source:"english_a_paper2_simulator_v1",
             syllabus:"CXC 01/G/SYLL 25",
@@ -125,6 +130,8 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
             submitted_at:completedAt,
             response_word_counts:Object.fromEntries(responses.map(item => [item.id,countWords(answers[item.id])])),
             selected_creative_prompt:choiceId || null,
+            provisional_grading:true,
+            module_scores:result.modules,
           },
         },
       });
@@ -197,7 +204,7 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
               <li>Module 2 contains a 10-mark literary summary and ONE 30-mark short-story question chosen from two prompts.</li>
               <li>Module 3 contains a 10-mark persuasive summary and a 30-mark persuasive response.</li>
               <li>Write in Standard English. Where a creative task permits dialogue, dialect may be used naturally.</li>
-              <li>Your responses are saved while you work. This simulator provides a detailed rubric after submission rather than pretending that extended writing can be marked reliably by simple keyword matching.</li>
+              <li>Your responses are saved while you work. After submission, SPARK produces a detailed CXC-style practice estimate and explains the evidence behind each scoring dimension.</li>
             </ol>
           </div>
           <div className="is-exam-instructions-actions"><button type="button" className="is-exam-primary" onClick={begin}>Start examination</button></div>
@@ -210,15 +217,52 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
     const completed=requiredTasks(paper,choiceId);
     return (
       <main className="ea-practice-shell"><div className="ea-practice-home">
-        <header className="ea-practice-hero"><div><span className="ea-practice-eyebrow">PAPER 02 REVIEW</span><h1>{paper.title}</h1><p>Use the official-style criteria below to review each response. Extended writing is not given a fake automatic mark.</p></div><button className="ea-practice-back" type="button" onClick={onBack}>← English A practice</button></header>
-        {completed.map(item => (
-          <section className="ea-p2-review-card" key={item.id}>
-            <div className="ea-p2-review-head"><div><span>Module {item.module}: {ENGLISH_A_PAPER2_MODULES[item.module]}</span><h2>{item.title}</h2></div><strong>{item.rubric?.marks || 0} marks</strong></div>
-            <p className="ea-p2-review-prompt">{item.instructions}</p>
-            <div className="ea-p2-review-response"><strong>Your response · {countWords(answers[item.id])} words</strong><p>{answers[item.id] || "No response submitted."}</p></div>
-            <div className="ea-p2-rubric"><strong>Review against these criteria</strong><ul>{(item.rubric?.criteria || []).map((criterion,index) => <li key={index}>{criterion}</li>)}</ul></div>
-          </section>
-        ))}
+        <header className="ea-practice-hero"><div><span className="ea-practice-eyebrow">PAPER 02 REVIEW</span><h1>{paper.title}</h1><p>SPARK gives a detailed practice estimate using task fulfilment, stimulus coverage, organisation, register, language and mechanics. A teacher or trained examiner should still make the final judgement on extended writing.</p></div><button className="ea-practice-back" type="button" onClick={onBack}>← English A practice</button></header>
+
+        <section className="ea-p2-score-summary">
+          <div><span>Estimated score</span><strong>{result.score}/{result.maxScore}</strong></div>
+          <div><span>Estimated percentage</span><strong>{result.percent}%</strong></div>
+          {result.modules.map(row => <div key={row.module}><span>Module {row.module}</span><strong>{row.score}/{row.max}</strong></div>)}
+        </section>
+
+        <section className="ea-p2-grading-note">
+          <strong>How this mark was produced</strong>
+          <p>{result.note}</p>
+        </section>
+
+        {completed.map(item => {
+          const row=result.rows.find(entry => entry.task.id===item.id);
+          return (
+            <section className="ea-p2-review-card" key={item.id}>
+              <div className="ea-p2-review-head"><div><span>Module {item.module}: {ENGLISH_A_PAPER2_MODULES[item.module]}</span><h2>{item.title}</h2></div><strong>{row?.score ?? 0}/{row?.maxMarks ?? item.rubric?.marks ?? 0}</strong></div>
+              <p className="ea-p2-review-prompt">{item.instructions}</p>
+              <div className="ea-p2-review-response"><strong>Your response · {countWords(answers[item.id])} words</strong><p>{answers[item.id] || "No response submitted."}</p></div>
+
+              {row?.dimensions?.length > 0 && (
+                <div className="ea-p2-dimension-grid">
+                  {row.dimensions.map(dimension => (
+                    <div key={dimension.id}>
+                      <span>{dimension.label}</span>
+                      <strong>{dimension.score}/{dimension.max}</strong>
+                      {Array.isArray(dimension.evidence) && dimension.evidence.length > 0 && (
+                        <small>{dimension.evidence.map(entry => typeof entry === "string" ? entry : entry?.covered ? entry.line : "").filter(Boolean).slice(0,3).join(" · ")}</small>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {row?.feedback?.length > 0 && (
+                <div className="ea-p2-feedback">
+                  <strong>Examiner-style feedback</strong>
+                  <ul>{row.feedback.map((note,index) => <li key={index}>{note}</li>)}</ul>
+                </div>
+              )}
+
+              <div className="ea-p2-rubric"><strong>Task rubric</strong><ul>{(item.rubric?.criteria || []).map((criterion,index) => <li key={index}>{criterion}</li>)}</ul></div>
+            </section>
+          );
+        })}
         <div className="ea-p2-review-actions"><button className="ea-practice-primary" type="button" onClick={reset}>Start another Paper 2</button></div>
       </div></main>
     );
