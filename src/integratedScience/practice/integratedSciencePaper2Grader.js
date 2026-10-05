@@ -1,6 +1,8 @@
 // SPARK Integrated Science Paper 02 automatic practice grader.
 // This is an evidence-based estimate, not an examiner certification.
 
+import { compareIntegratedScienceGraphResponse, deriveIntegratedScienceGraphData } from "./integratedScienceGraphModel";
+
 export const INTEGRATED_SCIENCE_P2_GRADER_VERSION = "2.0.0";
 
 const STOPWORDS=new Set(("a an and are as at be been being but by can could did do does for from had has have in into is it its may more most of on or that the their them then there these they this those to too was were what when where which who will with would").split(" "));
@@ -166,7 +168,8 @@ function tableResult(questionId,partIndex,itemIndex,item,responses){
   return {...lineResult(questionId,partIndex,itemIndex,asLines,{[base]:responseText}),confidence:"low",provisional:true};
 }
 
-function visualResult(questionId,partIndex,itemIndex,item,responses){
+function visualResult(question,partIndex,itemIndex,item,responses){
+  const questionId=question.id;
   const base=`${questionId}:${partIndex}:${itemIndex}`;
   const type=item?.response?.type || "graph";
   const notes=[
@@ -174,6 +177,7 @@ function visualResult(questionId,partIndex,itemIndex,item,responses){
     responses[`${base}:xLabel`] || "",
     responses[`${base}:yLabel`] || "",
     responses[`${base}:scale`] || "",
+    responses[`${base}:key`] || "",
     responses[`${base}:points`] || "",
   ].filter(Boolean).join(" ");
   const result=lineResult(questionId,partIndex,itemIndex,{...item,response:{type:"lines"}},{[base]:notes});
@@ -187,13 +191,57 @@ function visualResult(questionId,partIndex,itemIndex,item,responses){
       visualEvidence:{hasDrawing,strokeBytes:strokes.length},
     };
   }
+
+  const sourceTable=question.parts?.[partIndex]?.table || item.table || null;
+  const model=deriveIntegratedScienceGraphData(item,sourceTable);
+  const graph=compareIntegratedScienceGraphResponse(model,{
+    xLabel:responses[`${base}:xLabel`],
+    yLabel:responses[`${base}:yLabel`],
+    scale:responses[`${base}:scale`],
+    key:responses[`${base}:key`],
+    points:responses[`${base}:points`],
+    bars:responses[`${base}:bars`],
+  });
+
+  const criteria=[];
+  if(model.kind==="bar"){
+    const grouped=(model.series || []).length>1;
+    const valueMax=grouped ? 2 : 1;
+    const valueMarks=graph.pointMarks<=0 ? 0 : grouped ? Math.min(valueMax,graph.pointMarks*2) : Math.min(1,graph.pointMarks);
+    criteria.push({id:`${base}:values`,label:"Graph values plotted at the correct heights",marks:valueMarks,maxMarks:valueMax,earned:valueMarks===valueMax,evidence:`${graph.matched}/${graph.totalExpected} values matched`});
+    criteria.push({id:`${base}:axes`,label:"Both axes labelled with the required quantities and units",marks:graph.axisMarks,maxMarks:1,earned:graph.axisMarks===1,evidence:""});
+    if(grouped){
+      criteria.push({id:`${base}:key`,label:"Key distinguishes the data series",marks:graph.keyMarks,maxMarks:1,earned:graph.keyMarks===1,evidence:responses[`${base}:key`] || ""});
+      const presentation=graph.scaleMarks && graph.shapeMarks ? 1 : 0;
+      criteria.push({id:`${base}:presentation`,label:"Suitable scale and consistent grouped bars",marks:presentation,maxMarks:1,earned:presentation===1,evidence:responses[`${base}:scale`] || ""});
+    }else{
+      criteria.push({id:`${base}:bars`,label:"Bars are produced consistently from the entered values",marks:graph.shapeMarks,maxMarks:1,earned:graph.shapeMarks===1,evidence:""});
+      criteria.push({id:`${base}:scale`,label:"Suitable scale stated",marks:graph.scaleMarks,maxMarks:1,earned:graph.scaleMarks===1,evidence:responses[`${base}:scale`] || ""});
+    }
+  }else if((model.series || []).length){
+    const multi=(model.series || []).length>1;
+    criteria.push({id:`${base}:points`,label:"Required points plotted accurately",marks:graph.pointMarks,maxMarks:2,earned:graph.pointMarks===2,evidence:`${graph.matched}/${graph.totalExpected} points matched`});
+    if(multi) criteria.push({id:`${base}:key`,label:"Key distinguishes the data series",marks:graph.keyMarks,maxMarks:1,earned:graph.keyMarks===1,evidence:responses[`${base}:key`] || ""});
+    criteria.push({id:`${base}:axes`,label:"Both axes labelled with the required quantities and units",marks:graph.axisMarks,maxMarks:1,earned:graph.axisMarks===1,evidence:""});
+    criteria.push({id:`${base}:scale`,label:"Suitable scale stated",marks:graph.scaleMarks,maxMarks:1,earned:graph.scaleMarks===1,evidence:responses[`${base}:scale`] || ""});
+    criteria.push({id:`${base}:line`,label:"Plotted points are joined or fitted as required",marks:graph.shapeMarks,maxMarks:1,earned:graph.shapeMarks===1,evidence:""});
+  }
+
+  if(criteria.length){
+    const cap=Number(item.marks || 0);
+    const score=Math.min(cap,criteria.reduce((sum,row)=>sum+Number(row.marks || 0),0));
+    return {
+      score,maxMarks:cap,criteria,confidence:"medium",provisional:true,visualEvidenceRequired:true,
+      visualEvidence:{modelKind:model.kind,series:model.series?.length || 0,...graph},
+    };
+  }
+
   const plotted=parseGraphPointCount(responses[`${base}:points`]);
   return {
     ...result,confidence:"low",provisional:true,visualEvidenceRequired:true,
     visualEvidence:{plottedPoints:plotted,hasScale:Boolean(String(responses[`${base}:scale`] || "").trim())},
   };
 }
-
 function parseGraphPointCount(value){
   return String(value || "").split(/\n|;/).filter(line=>/-?\d+(?:\.\d+)?\s*[, ]\s*-?\d+(?:\.\d+)?/.test(line)).length;
 }
@@ -203,7 +251,7 @@ export function gradeIntegratedSciencePaper2Item(question,partIndex,itemIndex,it
   if(type==="labels") return labelResult(question.id,partIndex,itemIndex,item,responses);
   if(type==="calculation") return calculationResult(question.id,partIndex,itemIndex,item,responses);
   if(type==="table") return tableResult(question.id,partIndex,itemIndex,item,responses);
-  if(type==="graph" || type==="drawing") return visualResult(question.id,partIndex,itemIndex,item,responses);
+  if(type==="graph" || type==="drawing") return visualResult(question,partIndex,itemIndex,item,responses);
   return lineResult(question.id,partIndex,itemIndex,item,responses);
 }
 
