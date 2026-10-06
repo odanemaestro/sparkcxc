@@ -926,3 +926,30 @@ html[data-theme="dark"] .ssh-subject-actions .ssh-btn--secondary:hover:not(:disa
   border-color:#397ac4!important;
   background:#397ac4!important;
 }
+
+
+/* Parent/tutor weekly score explanation ----------------------------------- */
+.spark-weekly-leaders-modal .spark-rewards-breakdown.is-allocation-only{
+  gap:8px;
+}
+.spark-weekly-leaders-modal .spark-rewards-breakdown.is-allocation-only .spark-rewards-breakdown-row{
+  grid-template-columns:minmax(0,1fr) auto;
+  min-height:34px;
+  padding:7px 9px;
+  border:1px solid var(--wl-border);
+  border-radius:9px;
+  background:var(--wl-soft);
+}
+.spark-weekly-leaders-modal .spark-rewards-breakdown.is-allocation-only .spark-rewards-breakdown-row>span{
+  color:var(--wl-muted);
+}
+.spark-weekly-leaders-modal .spark-rewards-allocation{
+  min-width:52px;
+  padding:4px 7px;
+  border-radius:999px;
+  background:var(--wl-teal-soft);
+  color:var(--wl-teal-dark)!important;
+  font-size:10px!important;
+  text-align:center;
+  white-space:nowrap;
+}
