@@ -46,15 +46,8 @@
   box-shadow:var(--sd-shadow);
 }
 .spark-dashboard-v2-hero-copy{min-width:0}
-.spark-dashboard-v2-eyebrow{
-  margin:0 0 8px;
-  color:#526986;
-  font-size:12px;
-  font-weight:800;
-  letter-spacing:.015em;
-}
 .spark-dashboard-v2-hero h1{
-  max-width:760px;
+  max-width:780px;
   margin:0;
   color:var(--sd-navy);
   font-size:clamp(28px,3.2vw,43px);
@@ -106,9 +99,20 @@
 .spark-dashboard-v2-primary:active,
 .spark-dashboard-v2-secondary:active{transform:scale(.98)}
 .spark-dashboard-v2-primary:focus-visible,
-.spark-dashboard-v2-secondary:focus-visible{
-  outline:3px solid color-mix(in srgb,var(--sd-teal) 25%,transparent);
+.spark-dashboard-v2-secondary:focus-visible,
+.spark-dashboard-v2-shell .spark-dashboard-card-action:focus-visible,
+.spark-dashboard-v2-shell .spark-text-action:focus-visible{
+  outline:3px solid color-mix(in srgb,var(--sd-teal) 28%,transparent);
   outline-offset:2px;
+}
+.spark-dashboard-v2-forward-icon{
+  width:17px;
+  height:17px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
 }
 
 .spark-dashboard-v2-streak{
@@ -199,8 +203,12 @@
   background:#edf5ff;
   color:#1b68bf;
 }
-.spark-dashboard-v2-rail .spark-upcoming-card{
-  border-top:3px solid var(--sd-teal)!important;
+.spark-dashboard-v2-rail .spark-upcoming-card .spark-feature-icon.compact{
+  background:var(--sd-teal-soft);
+  color:var(--sd-teal-ink);
+}
+.spark-dashboard-v2-rail .spark-upcoming-card .spark-card-title-with-icon h3+span{
+  color:var(--sd-teal-ink);
 }
 .spark-dashboard-v2-rail .spark-upcoming-session{
   display:grid;
@@ -331,6 +339,10 @@ html[data-theme="dark"] .spark-dashboard-v2-main .spark-rewards-hero{
 html[data-theme="dark"] .spark-dashboard-v2-rail .spark-feature-icon.compact{
   background:#142d48;
   color:#75b9ff;
+}
+html[data-theme="dark"] .spark-dashboard-v2-rail .spark-upcoming-card .spark-feature-icon.compact{
+  background:var(--sd-teal-soft);
+  color:var(--sd-teal-ink);
 }
 html[data-theme="dark"] .spark-dashboard-v2-shell .spark-text-action:hover{
   background:#162941;
