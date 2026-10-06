@@ -60,7 +60,7 @@ export default function StudentDashboardSupportCards({
       <Card className="spark-flashcard-overview-card">
         <div className="spark-card-title-with-icon">
           <span className="spark-feature-icon compact"><Icon name="flashcards" size={19}/></span>
-          <div><h3>Flashcards</h3><span>Quick review</span></div>
+          <div><span className="section-kicker">FLASHCARDS</span><h3>Quick review</h3></div>
         </div>
         <p>{flashcardCopy}</p>
         <DashboardCardAction label="Open flashcards" onClick={onOpenFlashcards} />
@@ -69,7 +69,7 @@ export default function StudentDashboardSupportCards({
       <Card className="spark-upcoming-card">
         <div className="spark-card-title-with-icon">
           <span className="spark-feature-icon compact"><Icon name="calendar" size={19}/></span>
-          <div><h3>Upcoming</h3><span>What’s next</span></div>
+          <div><span className="section-kicker">UPCOMING</span><h3>What’s next</h3></div>
         </div>
         <div className="spark-upcoming-line"><span>Next tutor session</span><strong>{formatUpcoming(upcomingBookings)}</strong></div>
         <div className="spark-upcoming-line"><span>Recent momentum</span><strong>{weeklyCount} learning activit{weeklyCount === 1 ? "y" : "ies"} in the last 7 days</strong></div>
@@ -77,7 +77,7 @@ export default function StudentDashboardSupportCards({
 
       <Card className="spark-achievement-card">
         <div className="spark-card-heading-row">
-          <div><h3>Recent activity</h3><span>Your momentum</span></div>
+          <div><span className="section-kicker">RECENT ACHIEVEMENTS</span><h3>Momentum</h3></div>
           <DashboardCardAction label="View progress" onClick={onOpenProgress} />
         </div>
         {recentAchievements.length ? (
