@@ -207,4 +207,13 @@ test("Glass More menu covers iPad responsive navigation widths", () => {
   expect(css).toContain('html[data-glass="true"] .spark-nav .spark-menu-button.open');
   expect(css).toContain('html[data-glass="true"] .spark-glass-switch.is-on');
   expect(css).toContain("backdrop-filter:blur(28px) saturate(175%)");
+  test("redesigned dashboard glass surfaces cover phone, tablet and iPad widths", () => {
+    const css = read("mobileDashboardV18.css");
+    expect(css).toContain("@media(max-width:1100px)");
+    expect(css).toContain("@media(min-width:701px) and (max-width:1100px)");
+    expect(css).toContain('html[data-glass="true"] .spark-student-home .ssh-card');
+    expect(css).toContain('html[data-glass="true"] .spark-weekly-leaders-modal .spark-weekly-leaders-panel');
+    expect(css).toContain('html[data-theme="dark"][data-glass="true"] .spark-student-home .ssh-card');
+    expect(css).toContain("@media(prefers-reduced-transparency:reduce)");
+  });
 });
