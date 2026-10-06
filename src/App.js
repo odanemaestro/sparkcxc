@@ -4584,16 +4584,6 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 </div>
               </div>
               <div className="student-dashboard-hero-side">
-                <div className="student-dashboard-hero-photo">
-                  <ProfilePhotoEditor
-                    user={user}
-                    profile={dashboardProfile}
-                    isTutorProfile={false}
-                    showToast={showToast}
-                    onProfileUpdated={onProfileUpdated}
-                    size={86}
-                  />
-                </div>
                 <div className="student-dashboard-streak-card">
                   <span className="student-dashboard-streak-icon" aria-hidden="true"><Icon name="progress" size={20}/></span>
                   <span><strong>{streak > 0 ? streak : 0} day streak</strong><small>{streak > 0 ? "Keep it going." : "Start your streak today."}</small></span>
