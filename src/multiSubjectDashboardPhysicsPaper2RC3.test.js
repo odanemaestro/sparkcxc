@@ -38,7 +38,8 @@ describe("SPARK RC3 dashboard restoration and Physics Paper 2", () => {
 
   test("parent All subjects wording is learner-specific", () => {
     expect(overview).toContain('subjectInsight(summaries, learnerName)');
-    expect(overview).toContain('`${learner} has recorded learning activity');
+    expect(overview).toContain('"Based on lesson completion, "');
+    expect(overview).toContain('" currently has the most progress remaining."');
     expect(allSubjects).toContain('Across ${learnerName}’s subjects');
     expect(app).toContain('learnerName={selectedChild.name}');
     expect(app).toContain('Review learning activity across the subjects ${selectedChild.name} is enrolled in.');
