@@ -63,5 +63,10 @@ export async function requestSemanticPass({model,apiKey,items,responses,pass,fet
   const text=parts.filter(p=>p.type==="output_text").map(p=>p.text).join("");
   const parsed=JSON.parse(text);
   validateSemanticPass(parsed,items,responses);
-  return parsed;
+  const usage={
+    inputTokens:Number(body.usage?.input_tokens || 0),
+    outputTokens:Number(body.usage?.output_tokens || 0),
+    totalTokens:Number(body.usage?.total_tokens || 0),
+  };
+  return {...parsed,_usage:usage};
 }

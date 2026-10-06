@@ -4,9 +4,10 @@ import "./serverMarking.css";
 export default function ServerMarkingReview({supabase,attemptId}){
   const enabled=process.env.REACT_APP_SERVER_MARKING==="true";
   const [job,setJob]=useState(null),[busy,setBusy]=useState(false),[error,setError]=useState("");
+  const [fallbackOnly,setFallbackOnly]=useState(false);
   const [refresh,setRefresh]=useState(0);
   useEffect(()=>{
-    setJob(null);setError("");
+    setJob(null);setError("");setFallbackOnly(false);
     if(!enabled||!attemptId||!supabase?.from)return;
     let cancelled=false,timer;
     const poll=async()=>{
@@ -22,13 +23,20 @@ export default function ServerMarkingReview({supabase,attemptId}){
     poll();
     return ()=>{cancelled=true;clearTimeout(timer);};
   },[enabled,attemptId,supabase,refresh]);
-  if(!enabled)return null;
+  if(!enabled||fallbackOnly)return null;
   async function enqueue(){
     setBusy(true);setError("");
     try{
       const {data,error}=await supabase.rpc("spark_enqueue_marking",{p_attempt_id:attemptId});
       if(error)throw error;
-      setJob(Array.isArray(data)?data[0]:data);
+      const next=Array.isArray(data)?data[0]:data;
+      if(!next){
+        // Disabled, per-student or global budget reached. Keep the normal
+        // SPARK grade without exposing internal quota details to the student.
+        setFallbackOnly(true);
+        return;
+      }
+      setJob(next);
       setRefresh(value=>value+1);
     }catch{setError("A deeper check is not available right now. Your saved practice result is unchanged; try again later.");}
     finally{setBusy(false);}
