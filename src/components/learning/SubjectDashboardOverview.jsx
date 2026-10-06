@@ -66,7 +66,7 @@ export default function SubjectDashboardOverview({
       {insight && <Card className="spark-subject-insight-card">
         <div className="spark-insight-icon"><Icon name="insight" size={22}/></div>
         <div className="spark-subject-insight-copy">
-          <span className="section-kicker">SPARK INSIGHT</span>
+          <h3>Learning insight</h3>
           <p>{subjectInsight(summaries, learnerName)}</p>
         </div>
         {showAllProgressAction && onOpenProgress && <button type="button" className="spark-dashboard-card-action" onClick={() => onOpenProgress(null)}>
@@ -75,7 +75,7 @@ export default function SubjectDashboardOverview({
       </Card>}
 
       <div className="spark-subject-overview-heading">
-        <div><span className="section-kicker">{learnerName ? `${possessive(learnerName).toUpperCase()} SUBJECTS` : "YOUR SUBJECTS"}</span><h2>Progress by subject</h2></div>
+        <div><h2>{learnerName ? `${possessive(learnerName)} subjects` : "Your subjects"}</h2><p>Pick up where you left off or review progress by subject.</p></div>
         <span className="spark-subject-active-pill">{enrolledCount} enrolled</span>
       </div>
 
