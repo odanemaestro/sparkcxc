@@ -23,6 +23,20 @@ function chooseNextSubject(summaries = [], subjectInsights = {}) {
   })[0];
 }
 
+function greetingForHour(hour) {
+  if (hour < 12) return "Good morning";
+  if (hour < 17) return "Good afternoon";
+  return "Good evening";
+}
+
+function ForwardArrow() {
+  return (
+    <svg className="spark-dashboard-v2-forward-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+      <path d="M5 10h9M10.5 5.5 15 10l-4.5 4.5" />
+    </svg>
+  );
+}
+
 export default function StudentDashboardHero({
   learnerName = "",
   streak = 0,
@@ -40,11 +54,12 @@ export default function StudentDashboardHero({
   const streakCount = Math.max(0, Number(streak) || 0);
   const subjectLabel = recommendation?.shortName || recommendation?.name || "your subjects";
   const focusTitle = String(focus?.title || "").trim();
+  const greeting = greetingForHour(new Date().getHours());
   const headline = recommendation
     ? focusTitle
-      ? <>Pick up <span>{focusTitle}</span> in {subjectLabel}.</>
-      : <>Continue <span>{subjectLabel}</span> today.</>
-    : <>Choose your <span>first subject</span> to begin.</>;
+      ? <>{greeting}, {firstName}. Pick up <span>{focusTitle}</span> in {subjectLabel}.</>
+      : <>{greeting}, {firstName}. Continue <span>{subjectLabel}</span> today.</>
+    : <>{greeting}, {firstName}. Choose your <span>first subject</span> to begin.</>;
   const actionLabel = recommendation
     ? focusTitle ? "Continue: " + focusTitle : "Continue " + subjectLabel
     : "Choose my subjects";
@@ -57,7 +72,6 @@ export default function StudentDashboardHero({
   return (
     <section className="spark-dashboard-v2-hero" aria-labelledby="spark-dashboard-next-title">
       <div className="spark-dashboard-v2-hero-copy">
-        <p className="spark-dashboard-v2-eyebrow">Good {new Date().getHours()<12?"morning":new Date().getHours()<17?"afternoon":"evening"}, {firstName}.</p>
         <h1 id="spark-dashboard-next-title">{headline}</h1>
         <p className="spark-dashboard-v2-hero-detail">
           {focus?.detail || (recommendation
@@ -67,7 +81,7 @@ export default function StudentDashboardHero({
         <div className="spark-dashboard-v2-hero-actions">
           <button type="button" className="spark-dashboard-v2-primary" onClick={activate}>
             <Icon name="featureBook" size={18}/><span>{actionLabel}</span>
-            <span aria-hidden="true">→</span>
+            <ForwardArrow />
           </button>
           {recommendation && onManageSubjects && (
             <button type="button" className="spark-dashboard-v2-secondary" onClick={onManageSubjects}>
