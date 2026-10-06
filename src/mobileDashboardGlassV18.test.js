@@ -42,7 +42,7 @@ describe("SPARK mobile dashboard glass V18", () => {
   test("mobile dashboard includes quick actions and active-tab centering hooks", () => {
     const app = read("App.js");
     expect(app).toContain('className="student-mobile-quick-actions"');
-    expect(app).toContain('className="student-mobile-quick-label">Continue study</span>');
+    expect(app).toContain('className="student-mobile-quick-label">Continue studying</span>');
     expect(app).toContain('className="student-mobile-quick-label">Quick practice</span>');
     expect(app).toContain('className="student-mobile-quick-label">Flashcards</span>');
     expect(app).toContain('<Icon name="featureBook" size={19}/>');
