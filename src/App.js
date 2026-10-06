@@ -4605,6 +4605,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                   recentActivity={recentSubjectActivity}
                   onOpenFlashcards={studentHasFlashcards ? () => setDashboardSection("flashcards") : undefined}
                   onOpenProgress={() => { setProgressSubject("all"); setDashboardSection("progress"); }}
+                  onOpenBookings={() => setDashboardSection("bookings")}
                 />
               </aside>
             </div>
@@ -4612,7 +4613,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
             <div className="spark-dashboard-v2-family">
               {parentLinks.filter(l => l.status === "pending").length > 0 && (
                 <Card className="family-request-card notification-anchor-card" data-notification-anchor="family-request" style={{marginBottom:20}}>
-                  <div className="family-request-icon">👨‍👩‍👧</div>
+                  <div className="family-request-icon" aria-hidden="true"><Icon name="students" size={22}/></div>
                   <div style={{flex:1}}>
                     <div className="section-kicker">FAMILY CONNECTION</div>
                     <div style={{fontFamily:FD,fontSize:17,fontWeight:700,color:T.ink,margin:"3px 0 5px"}}>A parent wants to connect</div>
