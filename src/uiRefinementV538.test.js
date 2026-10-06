@@ -60,12 +60,10 @@ describe("SPARK V5.3.8 UI refinement", () => {
     expect(btn).toContain('1.5px solid rgba(255,255,255');
   });
 
-  test("student stat cards use the same neutral tile treatment as the dashboard", () => {
+  test("student dashboard removes the duplicate stat tile strip", () => {
     const app = read("App.js");
-    const start = app.indexOf('className="student-dashboard-stats-grid"');
-    const end = app.indexOf('className="student-overview-course-card"', start);
-    const studentStats = app.slice(start, end);
-    expect(studentStats).toContain('className="student-dashboard-stat-card"');
-    expect(studentStats).not.toContain('borderTop:`3px solid ${accent}`');
+    expect(app).toContain("studentHomeGlance");
+    expect(app).not.toContain('className="student-dashboard-stats-grid"');
+    expect(app).not.toContain('className="student-dashboard-stat-card"');
   });
 });
