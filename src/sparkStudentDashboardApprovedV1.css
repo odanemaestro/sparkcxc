@@ -11,6 +11,7 @@
   --sd-navy:#0f2557;
   --sd-navy-2:#163a73;
   --sd-teal:#0d9488;
+  --sd-teal-ink:#08766d;
   --sd-teal-soft:#e8f7f4;
   --sd-gold:#d99a1b;
   --sd-gold-soft:#fff7e3;
@@ -19,6 +20,11 @@
   --sd-border:#dfe6ef;
   --sd-shadow:0 8px 26px rgba(24,45,77,.055);
   --sd-radius:16px;
+  --spark-ink:var(--sd-navy);
+  --spark-text-muted:var(--sd-muted);
+  --spark-border:var(--sd-border);
+  --spark-paper:var(--sd-surface);
+  --spark-bg:var(--sd-bg);
   display:grid;
   gap:20px;
   color:var(--sd-text);
@@ -248,7 +254,7 @@
   padding:20px!important;
 }
 .spark-dashboard-v2-main .spark-goal-card .section-kicker{
-  color:var(--sd-teal)!important;
+  color:var(--sd-teal-ink)!important;
 }
 .spark-dashboard-v2-main .spark-rewards-hero{
   background:#f7fbfa!important;
@@ -258,7 +264,7 @@
   background:var(--sd-gold-soft)!important;
   color:var(--sd-gold)!important;
 }
-.spark-dashboard-v2-main .spark-rewards-eyebrow{color:var(--sd-teal)!important}
+.spark-dashboard-v2-main .spark-rewards-eyebrow{color:var(--sd-teal-ink)!important}
 
 /* Shared actions ---------------------------------------------------------- */
 .spark-dashboard-v2-shell .spark-dashboard-card-action{
@@ -302,6 +308,7 @@ html[data-theme="dark"] .spark-dashboard-v2-shell{
   --sd-navy:#f3f7ff;
   --sd-navy-2:#dce9ff;
   --sd-teal:#47c9bb;
+  --sd-teal-ink:#8ee0d6;
   --sd-teal-soft:#12332f;
   --sd-gold:#e7b449;
   --sd-gold-soft:#302814;
