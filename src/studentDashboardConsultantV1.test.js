@@ -16,7 +16,8 @@ describe("consultant student dashboard merged redesign", () => {
     expect(overview).toContain('variant="home"');
     expect(overview).toContain("<StudentDashboardSupportCards");
     expect(overview).toContain("<StudentGoalCard");
-    expect(overview).toContain('variant="details"');
+    expect(overview).not.toContain('variant="details"');
+    expect(overview).toContain("<SparkOfTheWeekSpotlight");
     expect(overview).toContain("ssh-family");
     expect(overview).not.toContain("student-dashboard-stats-grid");
     expect(overview).not.toContain("student-mobile-quick-actions");
@@ -28,7 +29,10 @@ describe("consultant student dashboard merged redesign", () => {
     const spotlight = read("components/rewards/SparkOfTheWeekSpotlight.jsx");
     expect(app).toContain("useSparkRewardsDashboard");
     expect(app).toContain("rewards={studentRewards}");
-    expect(spotlight).toContain("Leaderboard and badges");
+    expect(spotlight).toContain("Weekly leaders");
+    expect(spotlight).toContain("This week's badges");
+    expect(spotlight).toContain("lifetime points");
+    expect(spotlight).toContain("spark-weekly-leaders-modal");
     expect(rewards).toContain("<Modal");
     expect(rewards).toContain('className="spark-weekly-leaders-modal"');
     expect(rewards).not.toContain("scrollIntoView");
