@@ -16,6 +16,13 @@
   --spark-dash-line:#e6e8ec;
   --spark-dash-muted:#68758a;
   --spark-dash-shadow:0 12px 32px rgba(24,42,72,.07);
+  --spark-dash-radius-sm:10px;
+  --spark-dash-radius-md:14px;
+  --spark-dash-radius-lg:16px;
+  --spark-dash-space-1:8px;
+  --spark-dash-space-2:12px;
+  --spark-dash-space-3:18px;
+  --spark-dash-space-4:24px;
 }
 
 .dash-layout>.app-scroll-panel{
@@ -254,23 +261,28 @@ html[data-theme="dark"] .student-dashboard-hero .student-dashboard-primary-actio
 .student-dashboard-stats-grid{
   display:grid;
   grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:10px;
-  margin:0 0 24px;
+  gap:0;
+  margin:0 0 var(--spark-dash-space-4);
+  padding:4px 0;
+  border-top:1px solid color-mix(in srgb,var(--spark-dash-line) 72%,transparent);
+  border-bottom:1px solid color-mix(in srgb,var(--spark-dash-line) 72%,transparent);
 }
 
 .student-dashboard-stat-card.spark-card{
-  min-height:92px;
-  padding:16px 18px!important;
+  min-height:78px;
+  padding:15px 20px!important;
   display:flex;
   flex-direction:column;
   justify-content:center;
-  gap:4px;
+  gap:5px;
   border:0!important;
-  border-radius:14px!important;
-  background:var(--spark-paper,#fff)!important;
-  box-shadow:0 8px 24px rgba(24,42,72,.055)!important;
+  border-right:1px solid color-mix(in srgb,var(--spark-dash-line) 72%,transparent)!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
   transform:none!important;
 }
+.student-dashboard-stat-card.spark-card:last-child{border-right:0!important}
 
 .student-dashboard-stat-card strong{
   color:var(--spark-ink,#10295c);
@@ -342,7 +354,7 @@ html[data-theme="dark"] .student-dashboard-hero .student-dashboard-primary-actio
 }
 
 .spark-subject-overview-grid{
-  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)!important;
   gap:12px!important;
 }
 
@@ -455,6 +467,18 @@ html[data-theme="dark"] .student-dashboard-hero .student-dashboard-primary-actio
   color:var(--spark-dash-blue)!important;
 }
 
+.spark-dashboard-support-grid>.spark-achievement-card{grid-column:1/-1}
+.spark-dashboard-support-grid>.spark-achievement-card .spark-achievement-list{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+}
+.spark-dashboard-support-grid>.spark-achievement-card .spark-achievement-list>div{
+  min-width:0;
+  padding:10px 0;
+  border-top:1px solid color-mix(in srgb,var(--spark-dash-line) 62%,transparent);
+}
+
 .spark-dashboard-support-grid p{
   color:var(--spark-text-muted,#68758a)!important;
   font-size:12px!important;
@@ -463,10 +487,15 @@ html[data-theme="dark"] .student-dashboard-hero .student-dashboard-primary-actio
 
 .spark-dashboard-card-action{
   border-radius:10px!important;
+  transition:transform 140ms cubic-bezier(.23,1,.32,1),background-color 160ms ease,border-color 160ms ease!important;
+}
+.spark-dashboard-card-action:active,
+.student-dashboard-hero .student-mobile-quick-action:active,
+.dash-layout>.dash-sidebar .dash-nav-item:active{
+  transform:scale(.98)!important;
 }
 
 /* Dark cards -------------------------------------------------------------- */
-html[data-theme="dark"] .student-dashboard-stat-card.spark-card,
 html[data-theme="dark"] .spark-subject-overview-card.spark-card,
 html[data-theme="dark"] .spark-dashboard-support-grid>.spark-card,
 html[data-theme="dark"] .spark-rewards-card{
@@ -498,6 +527,8 @@ html[data-theme="dark"] .spark-subject-insight-copy p{color:#9ac9c1!important}
   .student-dashboard-hero-copy{padding-right:180px}
   .student-dashboard-stats-grid{grid-template-columns:1fr 1fr}
   .spark-dashboard-support-grid{grid-template-columns:1fr!important}
+  .spark-dashboard-support-grid>.spark-achievement-card{grid-column:auto}
+  .spark-dashboard-support-grid>.spark-achievement-card .spark-achievement-list{grid-template-columns:1fr}
 }
 
 @media(max-width:700px){
@@ -548,13 +579,18 @@ html[data-theme="dark"] .spark-subject-insight-copy p{color:#9ac9c1!important}
   }
 
   .student-dashboard-stats-grid{
-    gap:8px;
+    grid-template-columns:1fr 1fr;
+    gap:0;
     margin-bottom:18px;
   }
   .student-dashboard-stat-card.spark-card{
-    min-height:78px;
-    padding:14px!important;
+    min-height:72px;
+    padding:13px 14px!important;
+    border-right:1px solid color-mix(in srgb,var(--spark-dash-line) 72%,transparent)!important;
+    border-bottom:1px solid color-mix(in srgb,var(--spark-dash-line) 72%,transparent)!important;
   }
+  .student-dashboard-stat-card.spark-card:nth-child(2n){border-right:0!important}
+  .student-dashboard-stat-card.spark-card:nth-last-child(-n+2){border-bottom:0!important}
   .student-dashboard-stat-card strong{font-size:22px}
 
   .spark-subject-insight-card.spark-card{
