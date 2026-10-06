@@ -78,23 +78,8 @@ html[data-theme="dark"] .dash-layout>.dash-sidebar .dash-nav-item[aria-current="
   padding:34px 36px;
   overflow:hidden;
   border-radius:16px;
-  background:
-    radial-gradient(circle at 78% 24%,rgba(255,210,180,.7) 0 7%,transparent 7.5%),
-    linear-gradient(135deg,#fff8f2 0%,#ffe9e6 55%,#f3e9f6 100%);
+  background:#f5faff;
   box-shadow:var(--spark-dash-shadow);
-}
-
-.student-dashboard-hero::after{
-  content:"";
-  position:absolute;
-  right:-80px;
-  bottom:-120px;
-  width:390px;
-  height:260px;
-  border-radius:50%;
-  background:linear-gradient(135deg,rgba(25,104,232,.10),rgba(114,87,217,.14));
-  transform:rotate(-12deg);
-  pointer-events:none;
 }
 
 .student-dashboard-hero-copy{
@@ -123,7 +108,7 @@ html[data-theme="dark"] .dash-layout>.dash-sidebar .dash-nav-item[aria-current="
   text-wrap:balance;
 }
 
-.student-dashboard-hero h1 span{color:var(--spark-dash-coral)}
+.student-dashboard-hero h1 span{color:#0aa68f}
 
 .student-dashboard-hero-support{
   max-width:62ch;
@@ -137,27 +122,8 @@ html[data-theme="dark"] .dash-layout>.dash-sidebar .dash-nav-item[aria-current="
   position:relative;
   z-index:1;
   display:flex;
-  flex-direction:column;
-  align-items:flex-end;
-  justify-content:center;
-  gap:14px;
-}
-
-.student-dashboard-hero-photo{
-  display:grid;
-  place-items:center;
-  width:112px;
-  height:112px;
-  border-radius:50%;
-  background:rgba(255,255,255,.62);
-  box-shadow:0 14px 28px rgba(37,52,83,.12);
-}
-
-.student-dashboard-hero-photo .profile-photo-editor,
-.student-dashboard-hero-photo .profile-photo-shell,
-.student-dashboard-hero-photo img{
-  width:86px!important;
-  height:86px!important;
+  align-items:center;
+  justify-content:flex-end;
 }
 
 .student-dashboard-streak-card{
@@ -166,9 +132,10 @@ html[data-theme="dark"] .dash-layout>.dash-sidebar .dash-nav-item[aria-current="
   gap:10px;
   min-width:188px;
   padding:12px 14px;
+  border:1px solid rgba(19,82,145,.08);
   border-radius:14px;
-  background:rgba(255,255,255,.78);
-  box-shadow:0 10px 24px rgba(31,48,78,.09);
+  background:#ffffff;
+  box-shadow:0 8px 20px rgba(24,42,72,.06);
 }
 
 .student-dashboard-streak-icon{
@@ -177,8 +144,8 @@ html[data-theme="dark"] .dash-layout>.dash-sidebar .dash-nav-item[aria-current="
   display:grid;
   place-items:center;
   border-radius:11px;
-  background:#fff0e9;
-  color:var(--spark-dash-coral);
+  background:#e8fbf7;
+  color:#0aa68f;
 }
 
 .student-dashboard-streak-card>span:last-child{display:grid;gap:1px}
@@ -212,8 +179,8 @@ html[data-theme="dark"] .dash-layout>.dash-sidebar .dash-nav-item[aria-current="
 }
 
 .student-dashboard-hero .student-dashboard-primary-action{
-  background:var(--spark-dash-coral)!important;
-  border-color:var(--spark-dash-coral)!important;
+  background:#0aa68f!important;
+  border-color:#0aa68f!important;
   color:#fff!important;
 }
 
@@ -235,9 +202,7 @@ html[data-theme="dark"] .dash-layout>.dash-sidebar .dash-nav-item[aria-current="
 }
 
 html[data-theme="dark"] .student-dashboard-hero{
-  background:
-    radial-gradient(circle at 78% 24%,rgba(246,162,107,.14) 0 7%,transparent 7.5%),
-    linear-gradient(135deg,#15243b 0%,#2b2035 58%,#172847 100%);
+  background:#12233b;
 }
 
 html[data-theme="dark"] .student-dashboard-hero h1,
@@ -245,7 +210,6 @@ html[data-theme="dark"] .student-dashboard-hero-greeting,
 html[data-theme="dark"] .student-dashboard-streak-card strong{color:#f4f7ff}
 html[data-theme="dark"] .student-dashboard-hero-support,
 html[data-theme="dark"] .student-dashboard-streak-card small{color:#c1ccda}
-html[data-theme="dark"] .student-dashboard-hero-photo,
 html[data-theme="dark"] .student-dashboard-streak-card,
 html[data-theme="dark"] .student-dashboard-hero .student-mobile-quick-action{
   background:rgba(14,27,49,.78)!important;
@@ -253,8 +217,8 @@ html[data-theme="dark"] .student-dashboard-hero .student-mobile-quick-action{
   color:#f4f7ff!important;
 }
 html[data-theme="dark"] .student-dashboard-hero .student-dashboard-primary-action{
-  background:#e75a69!important;
-  border-color:#e75a69!important;
+  background:#0aa68f!important;
+  border-color:#0aa68f!important;
 }
 
 /* Stats ------------------------------------------------------------------ */
