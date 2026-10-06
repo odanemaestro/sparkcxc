@@ -11,12 +11,15 @@ describe("SPARK premium student dashboard V1",()=>{
     expect(app).toContain("Ready to keep your");
     expect(app).toContain("Continue studying");
     expect(app).toContain('className="student-dashboard-streak-card"');
+    expect(app).not.toContain('className="student-dashboard-hero-photo"');
     expect(app).toContain('import "./sparkStudentDashboardPremiumV1.css";');
   });
 
   test("premium dashboard keeps responsive light and dark treatments",()=>{
     const css=read("sparkStudentDashboardPremiumV1.css");
-    expect(css).toContain("--spark-dash-coral:#ee5365");
+    expect(css).toContain("--spark-dash-teal:#11aa98");
+    expect(css).toContain("background:#f5faff;");
+    expect(css).not.toContain(".student-dashboard-hero::after{");
     expect(css).toContain('html[data-theme="dark"] .student-dashboard-hero');
     expect(css).toContain("@media(max-width:700px)");
     expect(css).toContain(".spark-subject-overview-grid{grid-template-columns:1fr!important}");
