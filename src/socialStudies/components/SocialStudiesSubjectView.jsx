@@ -478,7 +478,14 @@ export default function SocialStudiesSubjectView({ supabase, userId, onBack, sho
                 >
                   <span className="ss-lesson-index">{String(index+1).padStart(2,"0")}</span>
                   <span><strong>{lesson.title}</strong><small>Objectives {lesson.objectiveCodes.join(", ")}</small></span>
-                  <em>{complete ? "✓" : locked ? "🔒" : "→"}</em>
+                  <em>
+                    {complete ? "✓" : locked ? (
+                      <svg className="ss-lock-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+                        <rect x="5.5" y="9" width="9" height="7" rx="1.5" />
+                        <path d="M7.5 9V6.8a2.5 2.5 0 015 0V9" />
+                      </svg>
+                    ) : "→"}
+                  </em>
                 </button>;
               })}
             </div>
