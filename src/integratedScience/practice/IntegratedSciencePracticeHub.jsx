@@ -265,7 +265,7 @@ export default function IntegratedSciencePracticeHub({ supabase, userId, onBack 
         <div className="is-practice-top-actions">
           <button type="button" className="is-back-button" onClick={onBack}>
             <span aria-hidden="true">{"\u2190"}</span>
-            Change subject
+            Back
           </button>
         </div>
 
