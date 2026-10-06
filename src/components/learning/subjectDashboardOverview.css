@@ -208,3 +208,15 @@
   }
   .spark-subject-overview-actions .spark-dashboard-card-action{width:100%}
 }
+
+
+/* One neutral progress language across subjects. */
+.spark-subject-overview-mastery .spark-progress-bar{
+  background:#e6ebf1!important;
+}
+.spark-subject-overview-mastery .spark-progress-bar__fill{
+  background:var(--sd-navy,var(--spark-navy,#0f2557))!important;
+}
+html[data-theme="dark"] .spark-subject-overview-mastery .spark-progress-bar{
+  background:#26364b!important;
+}
