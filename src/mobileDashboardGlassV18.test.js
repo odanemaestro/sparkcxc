@@ -39,13 +39,12 @@ describe("SPARK mobile dashboard glass V18", () => {
     expect(icons).toContain('fill="#86d72f"');
   });
 
-  test("mobile dashboard includes quick actions and active-tab centering hooks", () => {
+  test("mobile dashboard uses the redesigned next-step actions and active-tab centering hooks", () => {
     const app = read("App.js");
-    expect(app).toContain('className="student-mobile-quick-actions"');
-    expect(app).toContain('className="student-mobile-quick-label">Continue study</span>');
-    expect(app).toContain('className="student-mobile-quick-label">Quick practice</span>');
-    expect(app).toContain('className="student-mobile-quick-label">Flashcards</span>');
-    expect(app).toContain('<Icon name="featureBook" size={19}/>');
+    expect(app).toContain("<StudentNextStepCard");
+    expect(app).toContain("studentHomeSecondaryActions");
+    expect(app).toContain('label:"Quick practice"');
+    expect(app).toContain('label:"Flashcards"');
     expect(app).toContain('aria-current={sec===item.k ? "page" : undefined}');
     expect(app).toContain('scrollIntoView({ behavior:"smooth", block:"nearest", inline:"center" })');
     expect(app).toContain('spark-nav-menu-open');
@@ -103,7 +102,7 @@ describe("SPARK mobile dashboard glass V18", () => {
 test("subject overview clamps impossible lesson totals before display", () => {
   const subjectOverview = read("components/learning/SubjectDashboardOverview.jsx");
   expect(subjectOverview).toContain("const displayCompleted = total > 0 ? Math.min(Math.max(0, completed), total)");
-  expect(subjectOverview).toContain("const percent = Math.min(100, Math.max(0, rawPercent))");
+  expect(subjectOverview).toContain("return Math.min(100, Math.max(0, Math.round(raw || 0)))");
   expect(subjectOverview).toContain("{displayCompleted} of {total || 0} topic lessons complete");
 });
 
@@ -207,13 +206,14 @@ test("Glass More menu covers iPad responsive navigation widths", () => {
   expect(css).toContain('html[data-glass="true"] .spark-nav .spark-menu-button.open');
   expect(css).toContain('html[data-glass="true"] .spark-glass-switch.is-on');
   expect(css).toContain("backdrop-filter:blur(28px) saturate(175%)");
-  test("redesigned dashboard glass surfaces cover phone, tablet and iPad widths", () => {
-    const css = read("mobileDashboardV18.css");
-    expect(css).toContain("@media(max-width:1100px)");
-    expect(css).toContain("@media(min-width:701px) and (max-width:1100px)");
-    expect(css).toContain('html[data-glass="true"] .spark-student-home .ssh-card');
-    expect(css).toContain('html[data-glass="true"] .spark-weekly-leaders-modal .spark-weekly-leaders-panel');
-    expect(css).toContain('html[data-theme="dark"][data-glass="true"] .spark-student-home .ssh-card');
-    expect(css).toContain("@media(prefers-reduced-transparency:reduce)");
-  });
+});
+
+test("redesigned dashboard glass surfaces cover phone, tablet and iPad widths", () => {
+  const css = read("mobileDashboardV18.css");
+  expect(css).toContain("@media(max-width:1100px)");
+  expect(css).toContain("@media(min-width:701px) and (max-width:1100px)");
+  expect(css).toContain('html[data-glass="true"] .spark-student-home .ssh-card');
+  expect(css).toContain('html[data-glass="true"] .spark-weekly-leaders-modal .spark-weekly-leaders-panel');
+  expect(css).toContain('html[data-theme="dark"][data-glass="true"] .spark-student-home .ssh-card');
+  expect(css).toContain("@media(prefers-reduced-transparency:reduce)");
 });

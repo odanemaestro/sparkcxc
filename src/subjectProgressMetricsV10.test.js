@@ -34,8 +34,8 @@ describe("V10 subject-aware progress metrics", () => {
   test("Subject overview chooses subject-specific fourth metric", () => {
     const source = fs.readFileSync(path.join(__dirname, "components/learning/SubjectDashboardOverview.jsx"), "utf8");
     expect(source).toContain('subject?.capabilities?.labs');
-    expect(source).toContain('label: "skills tracked"');
-    expect(source).toContain('label: "labs explored"');
+    expect(source).toContain('label:"skills tracked"');
+    expect(source).toContain('label:"labs explored"');
     expect(source).not.toContain('<div><strong>{progress.labsCompleted || 0}</strong><span>labs explored</span></div>');
   });
 

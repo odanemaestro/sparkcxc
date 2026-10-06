@@ -42,7 +42,7 @@ describe("consultant student dashboard merged redesign", () => {
     const subject = read("components/learning/SubjectDashboardOverview.jsx");
     expect(subject).toContain("sortSubjectsForHome");
     expect(subject).toContain("subjectMilestone");
-    expect(subject).toContain("Needs attention");
+    expect(subject).toContain("status.label");
     expect(subject).toContain("practice average");
     expect(subject).toContain("Next milestone");
     expect(subject).toContain("Practise");

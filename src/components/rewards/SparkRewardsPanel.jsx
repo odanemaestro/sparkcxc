@@ -168,7 +168,7 @@ export default function SparkRewardsPanel({
               <h2 id={headingId}>SPARK Rewards</h2>
               <p>Your level, this week's badges and how weekly points are earned.</p>
             </div>
-            <button type="button" className="spark-rewards-leaders-button" onClick={() => setShowLeaders(true)} disabled={loading || !!error}>
+            <button type="button" className="spark-rewards-leaders-button" onClick={() => setShowLeaders(true)} disabled={loading || !!error} aria-expanded={showLeaders}>
               View weekly leaders
             </button>
           </div>
@@ -219,7 +219,7 @@ export default function SparkRewardsPanel({
               </>
             )}
           </div>
-          <button type="button" className="spark-rewards-leaders-button" onClick={() => setShowLeaders(true)} disabled={loading || !!error}>
+          <button type="button" className="spark-rewards-leaders-button" onClick={() => setShowLeaders(true)} disabled={loading || !!error} aria-expanded={showLeaders}>
             View weekly leaders
           </button>
         </div>

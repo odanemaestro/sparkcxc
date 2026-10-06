@@ -8,7 +8,8 @@ const sql = fs.readFileSync(path.join(root, "..", "supabase", "migrations", "202
 
 test("SPARK Rewards is mounted for student, tutor and parent dashboards", () => {
   expect(app).toContain('import SparkRewardsPanel from "./components/rewards/SparkRewardsPanel";');
-  expect((app.match(/<SparkRewardsPanel/g) || []).length).toBeGreaterThanOrEqual(3);
+  expect((app.match(/<SparkRewardsPanel/g) || []).length).toBeGreaterThanOrEqual(2);
+  expect(app).toContain("<SparkOfTheWeekSpotlight");
 });
 
 test("leaderboard privacy defaults to hidden and cannot affect academic correctness", () => {
@@ -19,6 +20,6 @@ test("leaderboard privacy defaults to hidden and cannot affect academic correctn
 });
 
 test("reward card explains that the weekly score is balanced", () => {
-  expect(panel).toContain("Balanced learning, not just highest marks");
+  expect(panel).toContain("Balanced learning across the week, not just the highest marks.");
   expect(panel).toContain("Every category has a cap");
 });
