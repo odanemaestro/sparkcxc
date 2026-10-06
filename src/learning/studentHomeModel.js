@@ -155,57 +155,93 @@ function specificActionTitle(recommendation = {}) {
   return "";
 }
 
-function fallbackReason(subject = {}) {
+function focusAreaFromIntelligence(intelligence = null) {
+  const candidates = [
+    intelligence?.focus,
+    ...(Array.isArray(intelligence?.prioritySkills) ? intelligence.prioritySkills : []),
+    ...(Array.isArray(intelligence?.states) ? intelligence.states : []),
+  ].filter(Boolean);
+
+  for (const item of candidates) {
+    const label = String(item?.displaySkill || item?.skill || "").trim();
+    if (!label || /^general$/i.test(label) || /^learning skill$/i.test(label)) continue;
+    return label;
+  }
+  return "";
+}
+
+function fallbackReason(subject = {}, area = "") {
   const progress = subject?.progress || {};
   const attempts = Number(progress.practiceAttempts || 0);
   const average = Number(progress.practiceAverage || 0);
+  const namedArea = String(area || "").trim();
 
   if (attempts > 0 && Number.isFinite(average)) {
-    if (average < 60) return "Your recent practice suggests this area needs more work.";
-    if (average < 75) return "A short review now will help strengthen your recent practice.";
-    return "Build on your recent work with one focused activity.";
+    if (average < 60) return namedArea
+      ? "Your recent practice suggests " + namedArea + " needs more work."
+      : "Your recent practice suggests this subject needs more work.";
+    if (average < 75) return namedArea
+      ? "A short review of " + namedArea + " will help strengthen your recent practice."
+      : "A short review will help strengthen your recent practice.";
+    return namedArea
+      ? "Build on your recent work with one focused activity in " + namedArea + "."
+      : "Build on your recent work with one focused activity.";
   }
 
-  if (progress.active) return "Complete one focused activity so SPARK can refine your next recommendation.";
+  if (progress.active) return namedArea
+    ? "Complete one focused activity in " + namedArea + " so SPARK can refine your next recommendation."
+    : "Complete one focused activity so SPARK can refine your next recommendation.";
   return "Complete one lesson or practice activity so SPARK can give you a more specific recommendation.";
 }
 
 export function recommendationDisplay({ subject = {}, intelligence = null, recommendation = null } = {}) {
   const rec = recommendation || intelligence?.recommendation || null;
+  const focusArea = focusAreaFromIntelligence(intelligence);
 
   if (rec) {
     const rawTitle = String(rec.title || "").trim();
+    const targetLabel = cleanTargetLabel(rec?.target?.label);
+    const fallbackTitle = targetLabel
+      ? specificActionTitle(rec)
+      : focusArea
+        ? "Practise " + focusArea
+        : specificActionTitle(rec);
+
     const title = isGenericRecommendationTitle(rawTitle)
-      ? (specificActionTitle(rec) || rawTitle || "Continue learning")
+      ? (fallbackTitle || rawTitle || "Continue learning")
       : rawTitle;
 
-    const targetLabel = cleanTargetLabel(rec?.target?.label);
     let detail = String(rec.detail || "").trim();
 
     if (!detail || /^build on your latest work\.?$/i.test(detail) || /^complete the recommended activity/i.test(detail)) {
-      detail = fallbackReason(subject);
+      detail = fallbackReason(subject, focusArea || targetLabel);
     }
 
     if (targetLabel && detail && !detail.toLowerCase().includes(targetLabel.toLowerCase())) {
       detail += " Next: " + targetLabel + ".";
+    } else if (focusArea && detail && !detail.toLowerCase().includes(focusArea.toLowerCase())) {
+      detail = fallbackReason(subject, focusArea);
     }
 
     return {
-      title:title || specificActionTitle(rec) || "Continue learning",
+      title:title || fallbackTitle || (focusArea ? "Practise " + focusArea : "Continue learning"),
       detail,
       summary:detail,
       targetLabel,
-      specific:!isGenericRecommendationTitle(title),
+      focusArea,
+      specific:Boolean(targetLabel || focusArea || !isGenericRecommendationTitle(title)),
     };
   }
 
-  return {
-    title:subject?.progress?.active ? "Continue " + subjectDisplayName(subject) : "Start " + subjectDisplayName(subject),
-    detail:fallbackReason(subject),
-    summary:fallbackReason(subject),
-    targetLabel:"",
-    specific:false,
-  };
+  if (focusArea) {
+    const title = subject?.progress?.active ? "Practise " + focusArea : "Start with " + focusArea;
+    const detail = fallbackReason(subject, focusArea);
+    return { title, detail, summary:detail, targetLabel:"", focusArea, specific:true };
+  }
+
+  const title = subject?.progress?.active ? "Continue " + subjectDisplayName(subject) : "Start " + subjectDisplayName(subject);
+  const detail = fallbackReason(subject);
+  return { title, detail, summary:detail, targetLabel:"", focusArea:"", specific:false };
 }
 
 export function nextStepActionLabel(recommendation = {}) {
@@ -237,8 +273,15 @@ export function buildStudentNextStep({ summaries = [], intelligenceBySubject = {
     .map((subject,index) => {
       const intelligence = intelligenceBySubject?.[subject.id];
       const recommendation = intelligence?.recommendation;
-      if (!intelligence?.hasEvidence || !recommendation?.title || !recommendation?.target) return null;
-      return { subject, intelligence, recommendation, index, score:safeNumber(recommendation.score,-Infinity) };
+      if (!intelligence?.hasEvidence) return null;
+      if (!recommendation?.title && !intelligence?.focus && !intelligence?.prioritySkills?.length) return null;
+      return {
+        subject,
+        intelligence,
+        recommendation:recommendation || {},
+        index,
+        score:safeNumber(recommendation?.score, intelligence?.focus?.priorityScore || 0),
+      };
     })
     .filter(Boolean)
     .sort((a,b) => (b.score - a.score) || (a.index - b.index))[0];
