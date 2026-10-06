@@ -1,0 +1,620 @@
+/* ==========================================================================
+   SPARK STUDENT DASHBOARD PREMIUM V1
+   Approved direction: warm canvas, deep navy, cobalt, teal and coral accents.
+   Student overview only. Tutor/parent dashboards keep their existing system.
+   ========================================================================== */
+
+.dash-layout{
+  --spark-dash-canvas:#f8f6f1;
+  --spark-dash-paper:#fffefb;
+  --spark-dash-navy:#10295c;
+  --spark-dash-blue:#1968e8;
+  --spark-dash-teal:#11aa98;
+  --spark-dash-coral:#ee5365;
+  --spark-dash-lavender:#7257d9;
+  --spark-dash-amber:#e7a72d;
+  --spark-dash-line:#e6e8ec;
+  --spark-dash-muted:#68758a;
+  --spark-dash-shadow:0 12px 32px rgba(24,42,72,.07);
+  --spark-dash-radius-sm:10px;
+  --spark-dash-radius-md:14px;
+  --spark-dash-radius-lg:16px;
+  --spark-dash-space-1:8px;
+  --spark-dash-space-2:12px;
+  --spark-dash-space-3:18px;
+  --spark-dash-space-4:24px;
+}
+
+.dash-layout>.app-scroll-panel{
+  background:var(--spark-dash-canvas)!important;
+}
+
+.dash-layout>.dash-sidebar{
+  background:color-mix(in srgb,var(--spark-paper,#fff) 97%,var(--spark-dash-canvas))!important;
+  border-right:1px solid color-mix(in srgb,var(--spark-border,#d7e2ee) 72%,transparent)!important;
+  padding:20px 14px!important;
+}
+
+.dash-layout>.dash-sidebar .dash-profile-card{
+  margin:0 4px 14px!important;
+  padding:8px 8px 18px!important;
+}
+
+.dash-layout>.dash-sidebar .dash-nav-item{
+  min-height:44px;
+  margin:2px 0;
+  border-radius:12px!important;
+  transition:background-color .16s ease,color .16s ease,transform .16s ease!important;
+}
+
+.dash-layout>.dash-sidebar .dash-nav-item[aria-current="page"]{
+  background:#edf4ff!important;
+  color:#1554ad!important;
+  box-shadow:inset 0 0 0 1px rgba(25,104,232,.08);
+}
+
+html[data-theme="dark"] .dash-layout{
+  --spark-dash-canvas:#091426;
+  --spark-dash-paper:#0e1b31;
+  --spark-dash-navy:#f2f6ff;
+  --spark-dash-line:#263750;
+  --spark-dash-muted:#9aacbf;
+  --spark-dash-shadow:0 16px 34px rgba(0,0,0,.24);
+}
+
+html[data-theme="dark"] .dash-layout>.dash-sidebar .dash-nav-item[aria-current="page"]{
+  background:rgba(39,115,222,.18)!important;
+  color:#9fc8ff!important;
+}
+
+/* Hero ------------------------------------------------------------------- */
+.student-dashboard-hero{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0,1.6fr) minmax(190px,.55fr);
+  gap:28px;
+  min-height:250px;
+  margin:0 0 22px;
+  padding:34px 36px;
+  overflow:hidden;
+  border-radius:16px;
+  background:
+    radial-gradient(circle at 78% 24%,rgba(255,210,180,.7) 0 7%,transparent 7.5%),
+    linear-gradient(135deg,#fff8f2 0%,#ffe9e6 55%,#f3e9f6 100%);
+  box-shadow:var(--spark-dash-shadow);
+}
+
+.student-dashboard-hero::after{
+  content:"";
+  position:absolute;
+  right:-80px;
+  bottom:-120px;
+  width:390px;
+  height:260px;
+  border-radius:50%;
+  background:linear-gradient(135deg,rgba(25,104,232,.10),rgba(114,87,217,.14));
+  transform:rotate(-12deg);
+  pointer-events:none;
+}
+
+.student-dashboard-hero-copy{
+  position:relative;
+  z-index:1;
+  align-self:center;
+  max-width:720px;
+}
+
+.student-dashboard-hero-greeting{
+  margin:0 0 8px;
+  color:#395070;
+  font-size:14px;
+  font-weight:700;
+}
+
+.student-dashboard-hero h1{
+  max-width:690px;
+  margin:0;
+  color:#10295c;
+  font-family:inherit;
+  font-size:clamp(34px,4vw,54px);
+  font-weight:850;
+  line-height:1.02;
+  letter-spacing:-.035em;
+  text-wrap:balance;
+}
+
+.student-dashboard-hero h1 span{color:var(--spark-dash-coral)}
+
+.student-dashboard-hero-support{
+  max-width:62ch;
+  margin:14px 0 0;
+  color:#4b5f77;
+  font-size:15px;
+  line-height:1.6;
+}
+
+.student-dashboard-hero-side{
+  position:relative;
+  z-index:1;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  justify-content:center;
+  gap:14px;
+}
+
+.student-dashboard-hero-photo{
+  display:grid;
+  place-items:center;
+  width:112px;
+  height:112px;
+  border-radius:50%;
+  background:rgba(255,255,255,.62);
+  box-shadow:0 14px 28px rgba(37,52,83,.12);
+}
+
+.student-dashboard-hero-photo .profile-photo-editor,
+.student-dashboard-hero-photo .profile-photo-shell,
+.student-dashboard-hero-photo img{
+  width:86px!important;
+  height:86px!important;
+}
+
+.student-dashboard-streak-card{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:188px;
+  padding:12px 14px;
+  border-radius:14px;
+  background:rgba(255,255,255,.78);
+  box-shadow:0 10px 24px rgba(31,48,78,.09);
+}
+
+.student-dashboard-streak-icon{
+  width:36px;
+  height:36px;
+  display:grid;
+  place-items:center;
+  border-radius:11px;
+  background:#fff0e9;
+  color:var(--spark-dash-coral);
+}
+
+.student-dashboard-streak-card>span:last-child{display:grid;gap:1px}
+.student-dashboard-streak-card strong{color:#10295c;font-size:13px}
+.student-dashboard-streak-card small{color:#65748a;font-size:11px}
+
+/* Hero actions ------------------------------------------------------------ */
+.student-dashboard-hero .student-mobile-quick-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin:22px 0 0;
+}
+
+.student-dashboard-hero .student-mobile-quick-action{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-height:44px;
+  padding:10px 15px;
+  border:1px solid rgba(16,41,92,.12)!important;
+  border-radius:12px!important;
+  background:rgba(255,255,255,.72)!important;
+  color:#10295c!important;
+  box-shadow:none!important;
+  font:inherit;
+  font-size:13px;
+  font-weight:760;
+  cursor:pointer;
+}
+
+.student-dashboard-hero .student-dashboard-primary-action{
+  background:var(--spark-dash-coral)!important;
+  border-color:var(--spark-dash-coral)!important;
+  color:#fff!important;
+}
+
+.student-dashboard-hero .student-mobile-quick-icon{
+  display:grid;
+  place-items:center;
+  color:inherit;
+}
+
+.student-dashboard-hero .student-mobile-quick-action:hover{
+  transform:translateY(-1px);
+  box-shadow:0 8px 18px rgba(31,48,78,.08)!important;
+}
+
+.student-dashboard-hero .student-mobile-quick-action:focus-visible,
+.dash-layout .spark-dashboard-card-action:focus-visible{
+  outline:3px solid color-mix(in srgb,var(--spark-dash-blue) 28%,transparent);
+  outline-offset:2px;
+}
+
+html[data-theme="dark"] .student-dashboard-hero{
+  background:
+    radial-gradient(circle at 78% 24%,rgba(246,162,107,.14) 0 7%,transparent 7.5%),
+    linear-gradient(135deg,#15243b 0%,#2b2035 58%,#172847 100%);
+}
+
+html[data-theme="dark"] .student-dashboard-hero h1,
+html[data-theme="dark"] .student-dashboard-hero-greeting,
+html[data-theme="dark"] .student-dashboard-streak-card strong{color:#f4f7ff}
+html[data-theme="dark"] .student-dashboard-hero-support,
+html[data-theme="dark"] .student-dashboard-streak-card small{color:#c1ccda}
+html[data-theme="dark"] .student-dashboard-hero-photo,
+html[data-theme="dark"] .student-dashboard-streak-card,
+html[data-theme="dark"] .student-dashboard-hero .student-mobile-quick-action{
+  background:rgba(14,27,49,.78)!important;
+  border-color:rgba(160,183,214,.16)!important;
+  color:#f4f7ff!important;
+}
+html[data-theme="dark"] .student-dashboard-hero .student-dashboard-primary-action{
+  background:#e75a69!important;
+  border-color:#e75a69!important;
+}
+
+/* Stats ------------------------------------------------------------------ */
+.student-dashboard-stats-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:0;
+  margin:0 0 var(--spark-dash-space-4);
+  padding:4px 0;
+  border-top:1px solid color-mix(in srgb,var(--spark-dash-line) 72%,transparent);
+  border-bottom:1px solid color-mix(in srgb,var(--spark-dash-line) 72%,transparent);
+}
+
+.student-dashboard-stat-card.spark-card{
+  min-height:78px;
+  padding:15px 20px!important;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:5px;
+  border:0!important;
+  border-right:1px solid color-mix(in srgb,var(--spark-dash-line) 72%,transparent)!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  transform:none!important;
+}
+.student-dashboard-stat-card.spark-card:last-child{border-right:0!important}
+
+.student-dashboard-stat-card strong{
+  color:var(--spark-ink,#10295c);
+  font-size:25px;
+  font-weight:820;
+  line-height:1;
+  font-variant-numeric:tabular-nums;
+}
+
+.student-dashboard-stat-card span{
+  color:var(--spark-text-muted,#68758a);
+  font-size:11px;
+  font-weight:680;
+}
+
+/* Subject overview -------------------------------------------------------- */
+.spark-subject-dashboard-overview{
+  gap:18px!important;
+  margin-bottom:24px!important;
+}
+
+.spark-subject-insight-card.spark-card{
+  display:grid!important;
+  grid-template-columns:auto minmax(0,1fr) auto;
+  align-items:center;
+  gap:14px;
+  padding:16px 18px!important;
+  border:0!important;
+  border-radius:14px!important;
+  background:#edf9f5!important;
+  box-shadow:none!important;
+}
+
+.spark-subject-insight-copy h3{
+  margin:0;
+  color:#173d3a;
+  font-size:14px;
+  font-weight:800;
+}
+
+.spark-subject-insight-copy p{
+  margin:3px 0 0!important;
+  color:#4d6d69!important;
+}
+
+.spark-subject-overview-heading{
+  align-items:center!important;
+  margin-top:2px;
+}
+
+.spark-subject-overview-heading h2{
+  margin:0!important;
+  color:var(--spark-ink,#10295c);
+  font-size:22px!important;
+  letter-spacing:-.02em;
+}
+
+.spark-subject-overview-heading p{
+  margin:4px 0 0;
+  color:var(--spark-text-muted,#68758a);
+  font-size:12.5px;
+}
+
+.spark-subject-active-pill{
+  padding:6px 10px!important;
+  border:0!important;
+  background:color-mix(in srgb,var(--spark-dash-blue) 8%,var(--spark-paper,#fff));
+  color:#31577d!important;
+}
+
+.spark-subject-overview-grid{
+  grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)!important;
+  gap:12px!important;
+}
+
+.spark-subject-overview-card.spark-card{
+  padding:18px!important;
+  border:0!important;
+  border-radius:14px!important;
+  box-shadow:0 8px 24px rgba(24,42,72,.055)!important;
+  transform:none!important;
+}
+
+.spark-subject-overview-title-row span{font-size:14px}
+.spark-subject-overview-title-row small{font-size:10.5px!important}
+
+.spark-subject-overview-mark{
+  border:0!important;
+  border-radius:11px!important;
+  background:#e8f3ff!important;
+  color:var(--spark-dash-blue)!important;
+}
+.spark-subject-overview-mark.physics{background:#eee9ff!important;color:var(--spark-dash-lavender)!important}
+.spark-subject-overview-mark.english-a{background:#ffe9ec!important;color:var(--spark-dash-coral)!important}
+.spark-subject-overview-mark.social-studies{background:#e5f8f2!important;color:var(--spark-dash-teal)!important}
+.spark-subject-overview-mark.integrated-science{background:#fff1cc!important;color:#b97700!important}
+.spark-subject-overview-mark.information-technology{background:#e8f3ff!important;color:#1554ad!important}
+
+.spark-subject-overview-progress-row{
+  font-size:11px!important;
+  align-items:center;
+}
+
+.spark-subject-overview-progress-row strong{
+  font-size:13px;
+  font-variant-numeric:tabular-nums;
+}
+
+.spark-subject-overview-metrics{
+  grid-template-columns:1fr 1fr!important;
+  gap:7px!important;
+}
+
+.spark-subject-overview-metrics>div{
+  padding:8px 9px!important;
+  border:0!important;
+  border-radius:10px!important;
+  background:color-mix(in srgb,var(--spark-bg,#f7fafc) 72%,var(--spark-paper,#fff))!important;
+}
+
+.spark-subject-overview-metrics strong{font-size:13px!important}
+.spark-subject-overview-metrics span{font-size:9.5px!important}
+
+.spark-subject-overview-focus{
+  border:0!important;
+  border-radius:10px!important;
+}
+
+.spark-subject-overview-actions .spark-dashboard-card-action{
+  min-height:40px;
+  border-radius:10px!important;
+  font-size:11.5px!important;
+}
+
+/* Rewards + support cards ------------------------------------------------- */
+.spark-rewards-card{
+  border:0!important;
+  border-radius:14px!important;
+  box-shadow:0 8px 24px rgba(24,42,72,.055)!important;
+}
+
+.spark-dashboard-support-grid{
+  display:grid!important;
+  grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:12px!important;
+  margin-top:20px;
+  margin-bottom:24px;
+}
+
+.spark-dashboard-support-grid>.spark-card{
+  padding:18px!important;
+  border:0!important;
+  border-radius:14px!important;
+  box-shadow:0 8px 24px rgba(24,42,72,.055)!important;
+  transform:none!important;
+}
+
+.spark-card-title-with-icon,
+.spark-card-heading-row{align-items:center!important}
+
+.spark-card-title-with-icon h3,
+.spark-card-heading-row h3{
+  margin:0;
+  color:var(--spark-ink,#10295c);
+  font-size:15px;
+}
+
+.spark-card-title-with-icon h3+span,
+.spark-card-heading-row h3+span{
+  display:block;
+  margin-top:2px;
+  color:var(--spark-text-muted,#68758a);
+  font-size:10.5px;
+}
+
+.spark-feature-icon.compact{
+  width:38px;
+  height:38px;
+  border:0!important;
+  border-radius:11px!important;
+  background:#edf4ff!important;
+  color:var(--spark-dash-blue)!important;
+}
+
+.spark-dashboard-support-grid>.spark-achievement-card{grid-column:1/-1}
+.spark-dashboard-support-grid>.spark-achievement-card .spark-achievement-list{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+}
+.spark-dashboard-support-grid>.spark-achievement-card .spark-achievement-list>div{
+  min-width:0;
+  padding:10px 0;
+  border-top:1px solid color-mix(in srgb,var(--spark-dash-line) 62%,transparent);
+}
+
+.spark-dashboard-support-grid p{
+  color:var(--spark-text-muted,#68758a)!important;
+  font-size:12px!important;
+  line-height:1.55!important;
+}
+
+.spark-dashboard-card-action{
+  border-radius:10px!important;
+  transition:transform 140ms cubic-bezier(.23,1,.32,1),background-color 160ms ease,border-color 160ms ease!important;
+}
+.spark-dashboard-card-action:active,
+.student-dashboard-hero .student-mobile-quick-action:active,
+.dash-layout>.dash-sidebar .dash-nav-item:active{
+  transform:scale(.98)!important;
+}
+
+/* Dark cards -------------------------------------------------------------- */
+html[data-theme="dark"] .spark-subject-overview-card.spark-card,
+html[data-theme="dark"] .spark-dashboard-support-grid>.spark-card,
+html[data-theme="dark"] .spark-rewards-card{
+  background:var(--spark-paper,#0e1b31)!important;
+  box-shadow:0 12px 28px rgba(0,0,0,.18)!important;
+}
+
+html[data-theme="dark"] .spark-subject-insight-card.spark-card{
+  background:#102d31!important;
+}
+html[data-theme="dark"] .spark-subject-insight-copy h3{color:#c9fff4}
+html[data-theme="dark"] .spark-subject-insight-copy p{color:#9ac9c1!important}
+
+/* Responsive -------------------------------------------------------------- */
+@media(max-width:1180px){
+  .student-dashboard-hero{grid-template-columns:minmax(0,1fr) 180px;padding:30px}
+  .spark-subject-overview-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+
+@media(max-width:900px){
+  .student-dashboard-hero{grid-template-columns:1fr;min-height:0;padding:28px}
+  .student-dashboard-hero-side{
+    position:absolute;
+    right:24px;
+    top:24px;
+  }
+  .student-dashboard-hero-photo{display:none}
+  .student-dashboard-streak-card{min-width:0}
+  .student-dashboard-hero-copy{padding-right:180px}
+  .student-dashboard-stats-grid{grid-template-columns:1fr 1fr}
+  .spark-dashboard-support-grid{grid-template-columns:1fr!important}
+  .spark-dashboard-support-grid>.spark-achievement-card{grid-column:auto}
+  .spark-dashboard-support-grid>.spark-achievement-card .spark-achievement-list{grid-template-columns:1fr}
+}
+
+@media(max-width:700px){
+  .dash-layout>.app-scroll-panel{
+    background:var(--spark-dash-canvas)!important;
+    padding:16px 14px 28px!important;
+  }
+
+  .student-dashboard-hero{
+    display:block;
+    margin-bottom:14px;
+    padding:22px 18px 18px;
+    border-radius:16px;
+  }
+
+  .student-dashboard-hero-copy{padding-right:0}
+  .student-dashboard-hero h1{
+    max-width:12ch;
+    font-size:32px;
+    line-height:1.03;
+  }
+  .student-dashboard-hero-support{font-size:13px;line-height:1.55}
+  .student-dashboard-hero-side{
+    position:static;
+    align-items:flex-start;
+    margin-top:14px;
+  }
+  .student-dashboard-hero-photo{display:none}
+  .student-dashboard-streak-card{
+    width:100%;
+    box-sizing:border-box;
+    background:rgba(255,255,255,.60);
+  }
+
+  .student-dashboard-hero .student-mobile-quick-actions{
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:8px!important;
+    margin:18px 0 0!important;
+  }
+  .student-dashboard-hero .student-mobile-quick-action{
+    width:100%!important;
+    min-height:48px!important;
+    padding:9px 10px!important;
+  }
+  .student-dashboard-hero .student-mobile-quick-action:last-child:nth-child(3){
+    grid-column:1/-1;
+  }
+
+  .student-dashboard-stats-grid{
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    margin-bottom:18px;
+  }
+  .student-dashboard-stat-card.spark-card{
+    min-height:72px;
+    padding:13px 14px!important;
+    border-right:1px solid color-mix(in srgb,var(--spark-dash-line) 72%,transparent)!important;
+    border-bottom:1px solid color-mix(in srgb,var(--spark-dash-line) 72%,transparent)!important;
+  }
+  .student-dashboard-stat-card.spark-card:nth-child(2n){border-right:0!important}
+  .student-dashboard-stat-card.spark-card:nth-last-child(-n+2){border-bottom:0!important}
+  .student-dashboard-stat-card strong{font-size:22px}
+
+  .spark-subject-insight-card.spark-card{
+    grid-template-columns:auto 1fr!important;
+  }
+  .spark-subject-insight-card .spark-dashboard-card-action{
+    grid-column:1/-1;
+    width:100%;
+  }
+  .spark-subject-overview-heading{align-items:flex-start!important}
+  .spark-subject-overview-heading p{max-width:28ch}
+  .spark-subject-overview-grid{grid-template-columns:1fr!important}
+  .spark-subject-overview-card.spark-card{padding:16px!important}
+  .spark-subject-overview-metrics{grid-template-columns:1fr 1fr!important}
+  .spark-dashboard-support-grid{margin-top:16px}
+}
+
+@media(max-width:380px){
+  .student-dashboard-hero .student-mobile-quick-actions{grid-template-columns:1fr!important}
+  .student-dashboard-hero .student-mobile-quick-action:last-child:nth-child(3){grid-column:auto}
+  .student-dashboard-stats-grid{grid-template-columns:1fr 1fr}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .student-dashboard-hero .student-mobile-quick-action,
+  .dash-layout>.dash-sidebar .dash-nav-item{transition:none!important}
+}

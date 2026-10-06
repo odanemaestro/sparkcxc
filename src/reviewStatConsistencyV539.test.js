@@ -7,7 +7,10 @@ describe("SPARK V5.3.9 review and dashboard consistency", () => {
   test("student stats use ordinary Card tiles without decorative top accent bars", () => {
     const app = read("App.js");
     expect(app).toContain('className="student-dashboard-stat-card"');
-    expect(app).toContain('<Card key={label} className="student-dashboard-stat-card" style={{padding:18}}>');
+    expect(app).toContain('<Card key={label} className="student-dashboard-stat-card">');
+    const css = read("sparkStudentDashboardPremiumV1.css");
+    expect(css).toContain("border-radius:0!important");
+    expect(css).toContain("box-shadow:none!important");
   });
 
   test("session review actions have an intentional aligned action grid", () => {
