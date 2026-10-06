@@ -1,19 +1,7 @@
 import React, { useMemo } from "react";
-import Card from "../ui/Card";
 import Icon from "../ui/Icon";
 import { dashboardAchievementMeta } from "./dashboardAchievementMeta";
-
-function DashboardCardAction({ label, onClick }) {
-  if (!onClick) return null;
-  return (
-    <button type="button" className="spark-dashboard-card-action" onClick={onClick}>
-      <span>{label}</span>
-      <span className="spark-dashboard-card-action-icon" aria-hidden="true">
-        <svg viewBox="0 0 20 20" focusable="false"><path d="M6 14L14 6M8 6h6v6" /></svg>
-      </span>
-    </button>
-  );
-}
+import { formatRelativeDay, listWithMore } from "../../learning/studentHomeModel";
 
 function bookingDate(booking) {
   if (!booking?.session_date) return null;
@@ -22,19 +10,23 @@ function bookingDate(booking) {
   return Number.isNaN(date.getTime()) ? null : date;
 }
 
-function nextUpcoming(bookings = []) {
-  return [...bookings]
+function sessionFromBookings(bookings = []) {
+  const next = [...bookings]
     .map(booking => ({ booking, date:bookingDate(booking) }))
     .filter(item => item.date && item.date.getTime() >= Date.now())
-    .sort((a, b) => a.date.getTime() - b.date.getTime())[0] || null;
-}
-
-function weekActivityCount(recentActivity = []) {
-  const threshold = Date.now() - (7 * 24 * 60 * 60 * 1000);
-  return recentActivity.filter(item => {
-    const date = new Date(item?.at || "");
-    return !Number.isNaN(date.getTime()) && date.getTime() >= threshold;
-  }).length;
+    .sort((a,b) => a.date.getTime() - b.date.getTime())[0];
+  if (!next) return null;
+  return {
+    id:next.booking.id,
+    subject:next.booking.subject || "Tutoring session",
+    tutorName:next.booking.tutors?.name || "",
+    month:next.date.toLocaleDateString([], {month:"short"}),
+    day:String(next.date.getDate()),
+    dateLabel:next.date.toLocaleDateString([], {weekday:"short",day:"numeric",month:"short"}),
+    timeLabel:next.date.toLocaleTimeString([], {hour:"numeric",minute:"2-digit"}),
+    statusKey:next.booking.status === "confirmed" ? "confirmed" : "pending",
+    statusLabel:next.booking.status === "confirmed" ? "Confirmed" : "Pending",
+  };
 }
 
 export default function StudentDashboardSupportCards({
@@ -43,65 +35,81 @@ export default function StudentDashboardSupportCards({
   recentActivity = [],
   onOpenFlashcards,
   onOpenProgress,
+  nextSession,
+  upcomingCount,
   onOpenBookings,
+  onFindTutor,
 }) {
-  const recentAchievements = useMemo(() => (recentActivity || []).slice(0, 4), [recentActivity]);
-  const weeklyCount = weekActivityCount(recentActivity);
-  const upcoming = useMemo(() => nextUpcoming(upcomingBookings), [upcomingBookings]);
+  const recentAchievements = useMemo(() => (recentActivity || []).slice(0, 3), [recentActivity]);
   const flashcardNames = flashcardSubjects.map(subject => subject.shortName || subject.name).filter(Boolean);
-  const flashcardCopy = flashcardNames.length > 1
-    ? "Review flashcards across " + flashcardNames.slice(0, -1).join(", ") + " and " + flashcardNames[flashcardNames.length - 1] + "."
-    : flashcardNames.length === 1
-      ? "Review " + flashcardNames[0] + " flashcards and keep key ideas fresh."
-      : "Flashcards will appear here when one of your enrolled subjects supports them.";
+  const flashcardCopy = flashcardNames.length
+    ? "Keep key ideas fresh in " + listWithMore(flashcardNames,3) + "."
+    : "Flashcards will appear here when one of your enrolled subjects supports them.";
+  const session = nextSession === undefined ? sessionFromBookings(upcomingBookings) : nextSession;
+  const sessionTotal = Number.isFinite(Number(upcomingCount)) ? Number(upcomingCount) : (upcomingBookings || []).length;
+  const moreSessions = session ? Math.max(0, sessionTotal - 1) : 0;
 
   return (
-    <div className="spark-dashboard-support-grid">
-      <Card className="spark-upcoming-card">
-        <div className="spark-card-title-with-icon">
-          <span className="spark-feature-icon compact"><Icon name="calendar" size={19}/></span>
-          <div><h3>Upcoming tutoring</h3><span>What is happening soon</span></div>
+    <section className="ssh-card ssh-support" aria-label="Tutoring, flashcards and recent achievements">
+      <div className="ssh-support-block" id="ssh-upcoming" tabIndex={-1} aria-labelledby="ssh-upcoming-title">
+        <div className="ssh-support-head">
+          <h2 id="ssh-upcoming-title" className="ssh-eyebrow">UPCOMING TUTORING</h2>
+          {onOpenBookings && <button type="button" className="ssh-text-btn" onClick={onOpenBookings}><span>My bookings</span><Icon name="chevronRight" size={15}/></button>}
         </div>
-        {upcoming ? (
-          <>
-            <div className="spark-upcoming-session">
-              <strong>{upcoming.booking?.subject || "Tutoring session"}</strong>
-              <span>{upcoming.date.toLocaleString([], {dateStyle:"medium",timeStyle:"short"})}</span>
-              {upcoming.booking?.profiles?.name && <span>with {upcoming.booking.profiles.name}</span>}
+        {session ? (
+          <div className="ssh-session">
+            <div className="ssh-date-tile" aria-hidden="true"><span>{session.month}</span><strong>{session.day}</strong></div>
+            <div className="ssh-session-copy">
+              <p className="ssh-session-title">{session.subject}</p>
+              {session.tutorName && <p className="ssh-session-tutor">with {session.tutorName}</p>}
+              <p className="ssh-session-time"><Icon name="clock" size={14}/><span>{session.dateLabel} · {session.timeLabel}</span></p>
+              <p className={"ssh-status is-" + (session.statusKey === "confirmed" ? "track" : "pending")}>
+                <span className="ssh-status-dot" aria-hidden="true" />
+                <span>{session.statusLabel}</span>
+              </p>
             </div>
-            <DashboardCardAction label="View booking" onClick={onOpenBookings} />
-          </>
-        ) : <p className="spark-muted">You have no upcoming tutor session.</p>}
-      </Card>
+          </div>
+        ) : (
+          <div className="ssh-support-empty">
+            <p>No tutoring sessions booked.</p>
+            {onFindTutor && <button type="button" className="ssh-btn ssh-btn--secondary ssh-btn--small" onClick={onFindTutor}><span>Find a tutor</span></button>}
+          </div>
+        )}
+        {moreSessions > 0 && <p className="ssh-support-more">{moreSessions} more session{moreSessions === 1 ? "" : "s"} booked</p>}
+      </div>
 
-      <Card className="spark-flashcard-overview-card">
-        <div className="spark-card-title-with-icon">
-          <span className="spark-feature-icon compact"><Icon name="flashcards" size={19}/></span>
-          <div><h3>Flashcards</h3><span>Quick review</span></div>
-        </div>
-        <p>{flashcardCopy}</p>
-        <DashboardCardAction label="Open flashcards" onClick={onOpenFlashcards} />
-      </Card>
+      <div className="ssh-support-block" aria-labelledby="ssh-flashcards-title">
+        <div className="ssh-support-head"><h2 id="ssh-flashcards-title" className="ssh-eyebrow">FLASHCARDS</h2></div>
+        <p className="ssh-support-copy">{flashcardCopy}</p>
+        {onOpenFlashcards && (
+          <button type="button" className="ssh-btn ssh-btn--secondary ssh-btn--small" onClick={onOpenFlashcards}>
+            <Icon name="flashcards" size={16}/><span>Review flashcards</span>
+          </button>
+        )}
+      </div>
 
-      <Card className="spark-achievement-card">
-        <div className="spark-card-heading-row">
-          <div><h3>Recent activity</h3><span>{weeklyCount} learning activit{weeklyCount === 1 ? "y" : "ies"} in the last 7 days</span></div>
-          <button type="button" className="spark-consultant-text-action" onClick={onOpenProgress}>View progress</button>
+      <div className="ssh-support-block" aria-labelledby="ssh-achievements-title">
+        <div className="ssh-support-head">
+          <h2 id="ssh-achievements-title" className="ssh-eyebrow">RECENT ACHIEVEMENTS</h2>
+          {onOpenProgress && <button type="button" className="ssh-text-btn" onClick={onOpenProgress} aria-label="View all progress"><span>View all</span><Icon name="chevronRight" size={15}/></button>}
         </div>
         {recentAchievements.length ? (
-          <div className="spark-achievement-list">
+          <ul className="ssh-activity">
             {recentAchievements.map(item => {
               const meta = dashboardAchievementMeta(item.title);
               return (
-                <div key={item.id || item.subjectId + ":" + item.title + ":" + item.at}>
-                  <span className="spark-achievement-svg"><Icon name={meta.icon} size={17}/></span>
-                  <span><strong>{item.subjectName}</strong> · {meta.title}{item.percent != null ? " · " + item.percent + "%" : ""}</span>
-                </div>
+                <li key={item.id || item.subjectId + ":" + item.title + ":" + item.at}>
+                  <span className="spark-achievement-svg ssh-activity-icon" aria-hidden="true"><Icon name={meta.icon} size={16}/></span>
+                  <span className="ssh-activity-copy">
+                    <span className="ssh-activity-title">{meta.title}{item.percent != null ? " · " + item.percent + "%" : ""}</span>
+                    <span className="ssh-activity-meta">{item.subjectName}{item.at ? " · " + formatRelativeDay(item.at) : ""}</span>
+                  </span>
+                </li>
               );
             })}
-          </div>
-        ) : <p className="spark-muted">Your completed lessons, practice results and milestones will appear here.</p>}
-      </Card>
-    </div>
+          </ul>
+        ) : <p className="ssh-support-copy">Your completed lessons, practice results and milestones will appear here.</p>}
+      </div>
+    </section>
   );
 }
