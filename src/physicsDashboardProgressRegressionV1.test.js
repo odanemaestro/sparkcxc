@@ -32,7 +32,9 @@ describe("Physics lesson completion dashboard regression", () => {
     expect(app).toMatch(/from\("spark_subject_progress"\)[\s\S]{0,450}\.eq\("user_id", user\.id\)/);
     expect(app).toMatch(/from\("lesson_progress"\)\.select\("id,lesson_id,completed,completed_at,lessons\(title\)"\)\.eq\("user_id", selectedChild\.id\)\.eq\("completed", true\)/);
     expect(app).toMatch(/from\("spark_subject_progress"\)[\s\S]{0,450}\.eq\("user_id", selectedChild\.id\)/);
-    expect(app).toContain('["Lessons completed", allSubjectsSummary.lessonsCompleted]');
+    expect(app).toContain('summaries={subjectDashboardSummaries}');
+    const overview = fs.readFileSync(path.join(__dirname, "components", "learning", "SubjectDashboardOverview.jsx"), "utf8");
+    expect(overview).toContain("acc.lessons += Number(p.lessonsCompleted || 0)");
     expect(app).toContain('{parentAllSubjectsSummary.lessonsCompleted}</strong><span>Lessons completed</span>');
   });
 

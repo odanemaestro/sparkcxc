@@ -1,0 +1,482 @@
+/* ==========================================================================
+   SPARK STUDENT DASHBOARD — APPROVED DESIGN V1
+   Light, intentional evolution of the existing SPARK navy/teal system.
+   No decorative gradients or duplicate progress surfaces.
+   ========================================================================== */
+
+.spark-dashboard-v2-shell{
+  --sd-bg:#f7f9fc;
+  --sd-surface:#ffffff;
+  --sd-surface-soft:#f3f7fb;
+  --sd-navy:#0f2557;
+  --sd-navy-2:#163a73;
+  --sd-teal:#0d9488;
+  --sd-teal-ink:#08766d;
+  --sd-teal-soft:#e8f7f4;
+  --sd-gold:#d99a1b;
+  --sd-gold-soft:#fff7e3;
+  --sd-text:#243a5a;
+  --sd-muted:#66768b;
+  --sd-border:#dfe6ef;
+  --sd-shadow:0 8px 26px rgba(24,45,77,.055);
+  --sd-radius:16px;
+  --spark-ink:var(--sd-navy);
+  --spark-text-muted:var(--sd-muted);
+  --spark-border:var(--sd-border);
+  --spark-paper:var(--sd-surface);
+  --spark-bg:var(--sd-bg);
+  display:grid;
+  gap:20px;
+  color:var(--sd-text);
+}
+
+.spark-dashboard-v2-shell,
+.spark-dashboard-v2-shell *{box-sizing:border-box}
+
+/* Next action hero -------------------------------------------------------- */
+.spark-dashboard-v2-hero{
+  display:grid;
+  grid-template-columns:minmax(0,1.45fr) minmax(250px,.55fr);
+  gap:30px;
+  align-items:center;
+  padding:30px 32px;
+  border:1px solid var(--sd-border);
+  border-radius:var(--sd-radius);
+  background:#fbfcfe;
+  box-shadow:var(--sd-shadow);
+}
+.spark-dashboard-v2-hero-copy{min-width:0}
+.spark-dashboard-v2-hero h1{
+  max-width:780px;
+  margin:0;
+  color:var(--sd-navy);
+  font-size:clamp(28px,3.2vw,43px);
+  font-weight:820;
+  line-height:1.07;
+  letter-spacing:-.035em;
+  text-wrap:balance;
+}
+.spark-dashboard-v2-hero h1 span{color:var(--sd-teal)}
+.spark-dashboard-v2-hero-detail{
+  max-width:70ch;
+  margin:12px 0 0;
+  color:var(--sd-muted);
+  font-size:14px;
+  line-height:1.58;
+}
+.spark-dashboard-v2-hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:20px;
+}
+.spark-dashboard-v2-primary,
+.spark-dashboard-v2-secondary{
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  padding:10px 16px;
+  border-radius:11px;
+  font:inherit;
+  font-size:12.5px;
+  font-weight:800;
+  cursor:pointer;
+  transition:transform 130ms ease,background-color 150ms ease,border-color 150ms ease;
+}
+.spark-dashboard-v2-primary{
+  border:1px solid var(--sd-navy);
+  background:var(--sd-navy);
+  color:#fff;
+}
+.spark-dashboard-v2-primary:hover{background:var(--sd-navy-2)}
+.spark-dashboard-v2-secondary{
+  border:1px solid var(--sd-border);
+  background:#fff;
+  color:var(--sd-navy);
+}
+.spark-dashboard-v2-primary:active,
+.spark-dashboard-v2-secondary:active{transform:scale(.98)}
+.spark-dashboard-v2-primary:focus-visible,
+.spark-dashboard-v2-secondary:focus-visible,
+.spark-dashboard-v2-shell .spark-dashboard-card-action:focus-visible,
+.spark-dashboard-v2-shell .spark-text-action:focus-visible{
+  outline:3px solid color-mix(in srgb,var(--sd-teal) 28%,transparent);
+  outline-offset:2px;
+}
+.spark-dashboard-v2-forward-icon{
+  width:17px;
+  height:17px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.spark-dashboard-v2-hero-aside{
+  min-width:0;
+  display:grid;
+  gap:10px;
+}
+.spark-dashboard-v2-weekly-slot:empty{display:none}
+.spark-dashboard-v2-weekly-slot .spark-rewards-hero{
+  display:grid;
+  grid-template-columns:42px minmax(0,1fr);
+  gap:4px 12px;
+  align-items:center;
+  padding:14px;
+  border:1px solid #f0dfb5;
+  border-radius:14px;
+  background:#fffaf0;
+}
+.spark-dashboard-v2-weekly-slot .spark-rewards-trophy{
+  grid-row:1/3;
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  background:#fff;
+  color:var(--sd-gold);
+}
+.spark-dashboard-v2-weekly-slot .spark-rewards-trophy svg{
+  width:22px;
+  height:22px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.7;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.spark-dashboard-v2-weekly-slot .spark-rewards-winner-copy{
+  min-width:0;
+  display:grid;
+  gap:2px;
+}
+.spark-dashboard-v2-weekly-slot .spark-rewards-eyebrow{
+  color:#805b00;
+  font-size:9.5px;
+  font-weight:850;
+  letter-spacing:.045em;
+}
+.spark-dashboard-v2-weekly-slot .spark-rewards-winner-copy>strong{
+  overflow:hidden;
+  color:var(--sd-navy);
+  font-size:14px;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.spark-dashboard-v2-weekly-slot .spark-rewards-winner-copy>span:last-child{
+  color:var(--sd-muted);
+  font-size:10.5px;
+  line-height:1.35;
+}
+.spark-dashboard-v2-weekly-slot .spark-rewards-leaders-button{
+  grid-column:2;
+  justify-self:start;
+  min-height:30px;
+  padding:3px 0;
+  border:0;
+  background:transparent;
+  color:#9a6a00;
+  font:inherit;
+  font-size:10.5px;
+  font-weight:800;
+  cursor:pointer;
+}
+.spark-dashboard-v2-weekly-slot .spark-rewards-leaders-button:hover{text-decoration:underline;text-underline-offset:3px}
+.spark-dashboard-v2-weekly-slot .spark-rewards-leaders-button:focus-visible{
+  outline:3px solid color-mix(in srgb,var(--sd-gold) 28%,transparent);
+  outline-offset:2px;
+  border-radius:6px;
+}
+
+.spark-dashboard-v2-streak{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0;
+  padding:14px;
+  border:1px solid var(--sd-border);
+  border-radius:14px;
+  background:var(--sd-surface);
+}
+.spark-dashboard-v2-streak-icon{
+  width:42px;
+  height:42px;
+  flex:0 0 42px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  background:var(--sd-gold-soft);
+  color:var(--sd-gold);
+}
+.spark-dashboard-v2-streak>div{display:grid;gap:3px;min-width:0}
+.spark-dashboard-v2-streak strong{
+  color:var(--sd-navy);
+  font-size:15px;
+  font-weight:850;
+}
+.spark-dashboard-v2-streak span:last-child{
+  color:var(--sd-muted);
+  font-size:11.5px;
+  line-height:1.4;
+}
+
+/* Main dashboard structure ------------------------------------------------ */
+.spark-dashboard-v2-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.85fr) minmax(280px,.72fr);
+  gap:20px;
+  align-items:start;
+}
+.spark-dashboard-v2-main{
+  min-width:0;
+  display:grid;
+  gap:20px;
+}
+.spark-dashboard-v2-rail{
+  min-width:0;
+}
+.spark-dashboard-v2-rail .spark-dashboard-support-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:14px;
+  margin:0;
+}
+.spark-dashboard-v2-rail .spark-dashboard-support-grid>.spark-card{
+  margin:0!important;
+  padding:18px!important;
+  border:1px solid var(--sd-border)!important;
+  border-radius:var(--sd-radius)!important;
+  background:var(--sd-surface)!important;
+  box-shadow:var(--sd-shadow)!important;
+  transform:none!important;
+}
+.spark-dashboard-v2-rail .spark-card-title-with-icon,
+.spark-dashboard-v2-rail .spark-card-heading-row{
+  align-items:center;
+  gap:11px;
+}
+.spark-dashboard-v2-rail .spark-card-title-with-icon h3,
+.spark-dashboard-v2-rail .spark-card-heading-row h3{
+  margin:0;
+  color:var(--sd-navy);
+  font-size:15px;
+}
+.spark-dashboard-v2-rail .spark-card-title-with-icon h3+span,
+.spark-dashboard-v2-rail .spark-card-heading-row h3+span{
+  display:block;
+  margin-top:2px;
+  color:var(--sd-muted);
+  font-size:10.5px;
+}
+.spark-dashboard-v2-rail .spark-feature-icon.compact{
+  width:38px;
+  height:38px;
+  border:0;
+  border-radius:11px;
+  background:#edf5ff;
+  color:#1b68bf;
+}
+.spark-dashboard-v2-rail .spark-upcoming-card .spark-feature-icon.compact{
+  background:var(--sd-teal-soft);
+  color:var(--sd-teal-ink);
+}
+.spark-dashboard-v2-rail .spark-upcoming-card .spark-card-title-with-icon h3+span{
+  color:var(--sd-teal-ink);
+}
+.spark-dashboard-v2-rail .spark-upcoming-session{
+  display:grid;
+  gap:3px;
+  margin-top:14px;
+  padding:12px;
+  border-radius:11px;
+  background:var(--sd-surface-soft);
+}
+.spark-dashboard-v2-rail .spark-upcoming-session strong{
+  color:var(--sd-navy);
+  font-size:12.5px;
+}
+.spark-dashboard-v2-rail .spark-upcoming-session span{
+  color:var(--sd-muted);
+  font-size:10.5px;
+  line-height:1.4;
+}
+.spark-dashboard-v2-rail .spark-dashboard-card-action{
+  width:100%;
+  justify-content:center;
+  margin-top:12px;
+}
+.spark-dashboard-v2-rail .spark-achievement-list{
+  display:grid;
+  gap:0;
+  margin-top:10px;
+}
+.spark-dashboard-v2-rail .spark-achievement-list>div{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:10px 0;
+  border-top:1px solid var(--sd-border);
+  color:var(--sd-muted);
+  font-size:11px;
+}
+.spark-dashboard-v2-rail .spark-achievement-list>div:first-child{border-top:0}
+.spark-dashboard-v2-rail .spark-achievement-list strong{color:var(--sd-navy)}
+
+/* Goal and rewards are useful secondary surfaces, not competing heroes. */
+.spark-dashboard-v2-main .spark-goal-card,
+.spark-dashboard-v2-main .spark-rewards-card{
+  margin:0!important;
+  border:1px solid var(--sd-border)!important;
+  border-radius:var(--sd-radius)!important;
+  background:var(--sd-surface)!important;
+  box-shadow:var(--sd-shadow)!important;
+}
+.spark-dashboard-v2-main .spark-goal-card{
+  padding:20px!important;
+}
+.spark-dashboard-v2-main .spark-goal-card .section-kicker{
+  color:var(--sd-teal-ink)!important;
+}
+.spark-dashboard-v2-main .spark-rewards-hero{
+  background:#f7fbfa!important;
+  border-bottom:1px solid var(--sd-border)!important;
+}
+.spark-dashboard-v2-main .spark-rewards-trophy{
+  background:var(--sd-gold-soft)!important;
+  color:var(--sd-gold)!important;
+}
+.spark-dashboard-v2-main .spark-rewards-eyebrow{color:var(--sd-teal-ink)!important}
+.spark-dashboard-v2-main .spark-rewards-card-with-top-highlight .spark-rewards-personal{
+  border-radius:var(--sd-radius);
+}
+
+/* Shared actions ---------------------------------------------------------- */
+.spark-dashboard-v2-shell .spark-dashboard-card-action{
+  min-height:40px;
+  border-radius:10px!important;
+  font-size:11.5px!important;
+  font-weight:800!important;
+  transition:transform 130ms ease,background-color 150ms ease,border-color 150ms ease!important;
+}
+.spark-dashboard-v2-shell .spark-dashboard-card-action:active{transform:scale(.98)}
+.spark-dashboard-v2-shell .spark-text-action{
+  min-height:34px;
+  padding:6px 9px;
+  border:0;
+  border-radius:8px;
+  background:transparent;
+  color:#1b62ad;
+  font:inherit;
+  font-size:11.5px;
+  font-weight:800;
+  cursor:pointer;
+}
+.spark-dashboard-v2-shell .spark-text-action:hover{background:#edf4fb}
+
+/* Family blocks stay full-width and lower priority. */
+.spark-dashboard-v2-family{
+  display:grid;
+  gap:0;
+}
+.spark-dashboard-v2-family>.spark-card{
+  border:1px solid var(--sd-border)!important;
+  border-radius:var(--sd-radius)!important;
+  box-shadow:none!important;
+}
+
+/* Dark mode --------------------------------------------------------------- */
+html[data-theme="dark"] .spark-dashboard-v2-shell{
+  --sd-bg:#0b1424;
+  --sd-surface:#101d31;
+  --sd-surface-soft:#14233a;
+  --sd-navy:#f3f7ff;
+  --sd-navy-2:#dce9ff;
+  --sd-teal:#47c9bb;
+  --sd-teal-ink:#8ee0d6;
+  --sd-teal-soft:#12332f;
+  --sd-gold:#e7b449;
+  --sd-gold-soft:#302814;
+  --sd-text:#dce5f1;
+  --sd-muted:#9fb0c4;
+  --sd-border:#263850;
+  --sd-shadow:0 10px 28px rgba(0,0,0,.18);
+}
+html[data-theme="dark"] .spark-dashboard-v2-hero{
+  background:#101d31;
+}
+html[data-theme="dark"] .spark-dashboard-v2-secondary{
+  background:#14233a;
+  color:var(--sd-navy);
+}
+html[data-theme="dark"] .spark-dashboard-v2-weekly-slot .spark-rewards-hero{
+  border-color:#4f431d;
+  background:#251f11;
+}
+html[data-theme="dark"] .spark-dashboard-v2-weekly-slot .spark-rewards-trophy,
+html[data-theme="dark"] .spark-dashboard-v2-streak-icon{
+  background:#302814;
+  color:var(--sd-gold);
+}
+html[data-theme="dark"] .spark-dashboard-v2-main .spark-rewards-hero{
+  background:#112620!important;
+}
+html[data-theme="dark"] .spark-dashboard-v2-rail .spark-feature-icon.compact{
+  background:#142d48;
+  color:#75b9ff;
+}
+html[data-theme="dark"] .spark-dashboard-v2-rail .spark-upcoming-card .spark-feature-icon.compact{
+  background:var(--sd-teal-soft);
+  color:var(--sd-teal-ink);
+}
+html[data-theme="dark"] .spark-dashboard-v2-shell .spark-text-action:hover{
+  background:#162941;
+}
+
+/* Responsive -------------------------------------------------------------- */
+@media(max-width:1180px){
+  .spark-dashboard-v2-grid{
+    grid-template-columns:minmax(0,1.55fr) minmax(260px,.72fr);
+  }
+}
+@media(max-width:960px){
+  .spark-dashboard-v2-grid{grid-template-columns:1fr}
+  .spark-dashboard-v2-rail .spark-dashboard-support-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+}
+@media(max-width:760px){
+  .spark-dashboard-v2-shell{gap:14px}
+  .spark-dashboard-v2-hero{
+    grid-template-columns:1fr;
+    gap:18px;
+    padding:22px 18px;
+    border-radius:14px;
+  }
+  .spark-dashboard-v2-hero h1{font-size:30px}
+  .spark-dashboard-v2-hero-aside{
+    grid-template-columns:1fr 1fr;
+    align-items:stretch;
+  }
+  .spark-dashboard-v2-weekly-slot,
+  .spark-dashboard-v2-streak{min-width:0}
+  .spark-dashboard-v2-rail .spark-dashboard-support-grid{grid-template-columns:1fr}
+}
+@media(max-width:620px){
+  .spark-dashboard-v2-hero-aside{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+  .spark-dashboard-v2-hero-actions{display:grid;grid-template-columns:1fr}
+  .spark-dashboard-v2-primary,
+  .spark-dashboard-v2-secondary{width:100%}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .spark-dashboard-v2-primary,
+  .spark-dashboard-v2-secondary,
+  .spark-dashboard-v2-shell .spark-dashboard-card-action{transition:none!important}
+}

@@ -1,4 +1,5 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { rewardLevelForPoints, weeklyAchievementBadges, weeklyScoreBreakdown } from "../../rewards/sparkRewards";
 import Icon from "../ui/Icon";
 
@@ -27,6 +28,8 @@ export default function SparkRewardsPanel({
   const [error, setError] = useState("");
   const [showLeaders, setShowLeaders] = useState(false);
   const [savingPreference, setSavingPreference] = useState(false);
+  const [weeklyHighlightTarget, setWeeklyHighlightTarget] = useState(null);
+  const rewardsRef = useRef(null);
 
   const load = useCallback(async () => {
     if (!supabase || !viewerUserId) return;
@@ -46,6 +49,13 @@ export default function SparkRewardsPanel({
   }, [supabase, viewerUserId, subjectUserId]);
 
   useEffect(() => { load(); }, [load]);
+
+  useLayoutEffect(() => {
+    if (typeof document === "undefined") return undefined;
+    const target = document.getElementById("spark-dashboard-weekly-highlight");
+    setWeeklyHighlightTarget(target || null);
+    return () => setWeeklyHighlightTarget(null);
+  }, []);
 
   const winner = data?.winner || null;
   const subject = data?.subject || null;
@@ -70,105 +80,120 @@ export default function SparkRewardsPanel({
     setSavingPreference(false);
   };
 
+  const toggleLeaders = () => {
+    const next = !showLeaders;
+    setShowLeaders(next);
+    if (weeklyHighlightTarget && next) {
+      window.requestAnimationFrame(() => rewardsRef.current?.scrollIntoView({ behavior:"smooth", block:"start" }));
+    }
+  };
+
   const subjectLabel = viewerRole === "parent" && subjectName ? `${subjectName}'s week` : "Your week";
 
-  return (
-    <section className="spark-rewards-card" aria-label="SPARK Rewards">
-      <div className="spark-rewards-hero">
-        <div className="spark-rewards-trophy"><TrophyIcon /></div>
-        <div className="spark-rewards-winner-copy">
-          <span className="spark-rewards-eyebrow">SPARK OF THE WEEK</span>
-          {loading ? (
-            <strong className="spark-rewards-loading">Loading this week's leader…</strong>
-          ) : winner ? (
-            <>
-              <strong>{winner.display_name || "Anonymous SPARK"}</strong>
-              <span>
-                {safeNumber(winner.study_days)} study day{safeNumber(winner.study_days) === 1 ? "" : "s"}
-                {safeNumber(winner.skills_improved) > 0 ? ` · ${safeNumber(winner.skills_improved)} skill${safeNumber(winner.skills_improved) === 1 ? "" : "s"} improved` : ""}
-                {` · ${safeNumber(winner.weekly_points)} weekly points`}
-              </span>
-            </>
-          ) : (
-            <>
-              <strong>No weekly leader yet</strong>
-              <span>Study activity this week will determine the first SPARK.</span>
-            </>
-          )}
-        </div>
-        <button type="button" className="spark-rewards-leaders-button" onClick={() => setShowLeaders(current => !current)} disabled={loading || !!error} aria-expanded={showLeaders}>
-          {showLeaders ? "Hide leaders" : "View weekly leaders"}
-        </button>
+  const weeklyHero = (
+    <div className="spark-rewards-hero">
+      <div className="spark-rewards-trophy"><TrophyIcon /></div>
+      <div className="spark-rewards-winner-copy">
+        <span className="spark-rewards-eyebrow">SPARK OF THE WEEK</span>
+        {loading ? (
+          <strong className="spark-rewards-loading">Loading this week's leader…</strong>
+        ) : winner ? (
+          <>
+            <strong>{winner.display_name || "Anonymous SPARK"}</strong>
+            <span>
+              {safeNumber(winner.study_days)} study day{safeNumber(winner.study_days) === 1 ? "" : "s"}
+              {safeNumber(winner.skills_improved) > 0 ? ` · ${safeNumber(winner.skills_improved)} skill${safeNumber(winner.skills_improved) === 1 ? "" : "s"} improved` : ""}
+              {` · ${safeNumber(winner.weekly_points)} weekly points`}
+            </span>
+          </>
+        ) : (
+          <>
+            <strong>No weekly leader yet</strong>
+            <span>Study activity this week will determine the first SPARK.</span>
+          </>
+        )}
       </div>
+      <button type="button" className="spark-rewards-leaders-button" onClick={toggleLeaders} disabled={loading || !!error} aria-expanded={showLeaders}>
+        {showLeaders ? "Hide leaders" : "View weekly leaders"}
+      </button>
+    </div>
+  );
 
-      {error && <div className="spark-rewards-setup-note">{error}</div>}
+  return (
+    <>
+      {weeklyHighlightTarget ? createPortal(weeklyHero, weeklyHighlightTarget) : null}
+      <section ref={rewardsRef} className={`spark-rewards-card${weeklyHighlightTarget ? " spark-rewards-card-with-top-highlight" : ""}`} aria-label="SPARK Rewards">
+        {!weeklyHighlightTarget && weeklyHero}
 
-      {!error && subject && (
-        <div className="spark-rewards-personal">
-          <div className="spark-rewards-personal-main">
-            <div>
-              <span className="spark-rewards-personal-label">{subjectLabel}</span>
-              <strong>{safeNumber(subject.weekly_points)} <small>/100</small></strong>
-              <span className="spark-rewards-personal-rank">
-                {safeNumber(subject.rank) > 0 ? `#${safeNumber(subject.rank)} of ${safeNumber(subject.total_participants)} active learners` : "Not ranked yet this week · Complete a learning activity to join"}
-              </span>
-            </div>
-            <div className="spark-rewards-level-block">
-              <span>Level {level.level}</span>
-              <strong>{level.name}</strong>
-              <div className="spark-rewards-level-track" aria-label={`${level.progressPercent}% progress to next level`}>
-                <i style={{width:`${level.progressPercent}%`}} />
+        {error && <div className="spark-rewards-setup-note">{error}</div>}
+
+        {!error && subject && (
+          <div className="spark-rewards-personal">
+            <div className="spark-rewards-personal-main">
+              <div>
+                <span className="spark-rewards-personal-label">{subjectLabel}</span>
+                <strong>{safeNumber(subject.weekly_points)} <small>/100</small></strong>
+                <span className="spark-rewards-personal-rank">
+                  {safeNumber(subject.rank) > 0 ? `#${safeNumber(subject.rank)} of ${safeNumber(subject.total_participants)} active learners` : "Not ranked yet this week · Complete a learning activity to join"}
+                </span>
               </div>
-              <small>{level.points} lifetime SPARK Points · {level.next ? `${level.pointsToNext} points to ${level.next.name}` : "Highest SPARK level reached"}</small>
-            </div>
-          </div>
-
-          {badges.length > 0 && (
-            <div className="spark-rewards-badges" aria-label="Weekly achievements">
-              {badges.map(badge => <span key={badge.key}><Icon name={badge.icon} size={18}/><b>{badge.label}</b></span>)}
-            </div>
-          )}
-
-          {canChangePrivacy && (
-            <button type="button" className="spark-rewards-privacy" onClick={updatePrivacy} disabled={savingPreference} aria-pressed={Boolean(data?.preferences?.leaderboard_visible)}>
-              <span className={`spark-rewards-switch ${data?.preferences?.leaderboard_visible ? "is-on" : ""}`} aria-hidden="true"><i /></span>
-              <span>
-                <strong>{data?.preferences?.leaderboard_visible ? "Name visible on leaderboard" : "Leaderboard name hidden"}</strong>
-                <small>{data?.preferences?.leaderboard_visible ? "Others see your first name and last initial." : "If you place, others see Anonymous SPARK."}</small>
-              </span>
-            </button>
-          )}
-        </div>
-      )}
-
-      {!error && showLeaders && (
-        <div className="spark-rewards-expanded">
-          <div className="spark-rewards-leaderboard">
-            <div className="spark-rewards-section-title"><strong>Weekly leaders</strong><span>Balanced learning, not just highest marks</span></div>
-            {leaders.length ? leaders.map((leader, index) => (
-              <div className={`spark-rewards-leader-row ${leader.is_subject ? "is-subject" : ""}`} key={`${leader.rank}-${leader.display_name}-${index}`}>
-                <b>#{leader.rank}</b>
-                <span className="spark-rewards-leader-name">{leader.is_subject ? (viewerRole === "student" ? "You" : viewerRole === "parent" ? (subjectName || "Your student") : leader.display_name) : leader.display_name}</span>
-                <span>{safeNumber(leader.study_days)}d</span>
-                <strong>{safeNumber(leader.weekly_points)} pts</strong>
-              </div>
-            )) : <p className="spark-rewards-empty">No students have earned weekly points yet.</p>}
-          </div>
-
-          {subject && (
-            <div className="spark-rewards-breakdown">
-              <div className="spark-rewards-section-title"><strong>How the weekly score works</strong><span>Every category has a cap so grinding one activity cannot dominate.</span></div>
-              {breakdown.map(([label, points, max]) => (
-                <div className="spark-rewards-breakdown-row" key={label}>
-                  <span>{label}</span>
-                  <div><i style={{width:`${Math.min(100, Math.round((points / max) * 100))}%`}} /></div>
-                  <b>{points}/{max}</b>
+              <div className="spark-rewards-level-block">
+                <span>Level {level.level}</span>
+                <strong>{level.name}</strong>
+                <div className="spark-rewards-level-track" aria-label={`${level.progressPercent}% progress to next level`}>
+                  <i style={{width:`${level.progressPercent}%`}} />
                 </div>
-              ))}
+                <small>{level.points} lifetime SPARK Points · {level.next ? `${level.pointsToNext} points to ${level.next.name}` : "Highest SPARK level reached"}</small>
+              </div>
             </div>
-          )}
-        </div>
-      )}
-    </section>
+
+            {badges.length > 0 && (
+              <div className="spark-rewards-badges" aria-label="Weekly achievements">
+                {badges.map(badge => <span key={badge.key}><Icon name={badge.icon} size={18}/><b>{badge.label}</b></span>)}
+              </div>
+            )}
+
+            {canChangePrivacy && (
+              <button type="button" className="spark-rewards-privacy" onClick={updatePrivacy} disabled={savingPreference} aria-pressed={Boolean(data?.preferences?.leaderboard_visible)}>
+                <span className={`spark-rewards-switch ${data?.preferences?.leaderboard_visible ? "is-on" : ""}`} aria-hidden="true"><i /></span>
+                <span>
+                  <strong>{data?.preferences?.leaderboard_visible ? "Name visible on leaderboard" : "Leaderboard name hidden"}</strong>
+                  <small>{data?.preferences?.leaderboard_visible ? "Others see your first name and last initial." : "If you place, others see Anonymous SPARK."}</small>
+                </span>
+              </button>
+            )}
+          </div>
+        )}
+
+        {!error && showLeaders && (
+          <div className="spark-rewards-expanded">
+            <div className="spark-rewards-leaderboard">
+              <div className="spark-rewards-section-title"><strong>Weekly leaders</strong><span>Balanced learning, not just highest marks</span></div>
+              {leaders.length ? leaders.map((leader, index) => (
+                <div className={`spark-rewards-leader-row ${leader.is_subject ? "is-subject" : ""}`} key={`${leader.rank}-${leader.display_name}-${index}`}>
+                  <b>#{leader.rank}</b>
+                  <span className="spark-rewards-leader-name">{leader.is_subject ? (viewerRole === "student" ? "You" : viewerRole === "parent" ? (subjectName || "Your student") : leader.display_name) : leader.display_name}</span>
+                  <span>{safeNumber(leader.study_days)}d</span>
+                  <strong>{safeNumber(leader.weekly_points)} pts</strong>
+                </div>
+              )) : <p className="spark-rewards-empty">No students have earned weekly points yet.</p>}
+            </div>
+
+            {subject && (
+              <div className="spark-rewards-breakdown">
+                <div className="spark-rewards-section-title"><strong>How the weekly score works</strong><span>Every category has a cap so grinding one activity cannot dominate.</span></div>
+                {breakdown.map(([label, points, max]) => (
+                  <div className="spark-rewards-breakdown-row" key={label}>
+                    <span>{label}</span>
+                    <div><i style={{width:`${Math.min(100, Math.round((points / max) * 100))}%`}} /></div>
+                    <b>{points}/{max}</b>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+      </section>
+    </>
   );
 }

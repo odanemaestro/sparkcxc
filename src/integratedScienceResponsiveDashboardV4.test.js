@@ -19,15 +19,16 @@ describe("SPARK growing-subject dashboard and Integrated Science portrait QA", (
     expect(source).toContain('`${displaySkillLabel(id)} study`');
   });
 
-  test("subject overview uses a readable responsive grid", () => {
+  test("subject overview uses a readable responsive list", () => {
     const css = fs.readFileSync(
       path.join(__dirname,"components","learning","subjectDashboardOverview.css"),
       "utf8"
     );
-    expect(css).toContain("SPARK_SUBJECT_GRID_SCALE_V1");
-    expect(css).toContain("grid-template-columns:repeat(2,minmax(0,1fr))");
-    expect(css).toContain("@media(min-width:1800px)");
-    expect(css).toContain("@media(max-width:840px)");
+    expect(css).toContain(".spark-subject-overview-list");
+    expect(css).toContain("grid-template-columns:minmax(190px,1.25fr)");
+    expect(css).toContain("@media(max-width:1180px)");
+    expect(css).toContain("@media(max-width:820px)");
+    expect(css).toContain("@media(max-width:520px)");
   });
 
   test("portrait diagrams use numbered structures with a readable label key", () => {

@@ -22,13 +22,11 @@ function bookingDate(booking) {
   return Number.isNaN(date.getTime()) ? null : date;
 }
 
-function formatUpcoming(bookings = []) {
-  const next = [...bookings]
+function nextUpcoming(bookings = []) {
+  return [...bookings]
     .map(booking => ({ booking, date: bookingDate(booking) }))
     .filter(item => item.date && item.date.getTime() >= Date.now())
-    .sort((a, b) => a.date.getTime() - b.date.getTime())[0];
-  if (!next) return "No upcoming tutor session";
-  return next.date.toLocaleString([], { dateStyle: "medium", timeStyle: "short" });
+    .sort((a, b) => a.date.getTime() - b.date.getTime())[0] || null;
 }
 
 function weekActivityCount(recentActivity = []) {
@@ -45,9 +43,11 @@ export default function StudentDashboardSupportCards({
   recentActivity = [],
   onOpenFlashcards,
   onOpenProgress,
+  onOpenBookings,
 }) {
   const recentAchievements = useMemo(() => (recentActivity || []).slice(0, 3), [recentActivity]);
   const weeklyCount = weekActivityCount(recentActivity);
+  const upcoming = useMemo(() => nextUpcoming(upcomingBookings), [upcomingBookings]);
   const flashcardNames = flashcardSubjects.map(subject => subject.shortName || subject.name).filter(Boolean);
   const flashcardCopy = flashcardNames.length > 1
     ? `Review flashcards across ${flashcardNames.slice(0, -1).join(", ")} and ${flashcardNames[flashcardNames.length - 1]}.`
@@ -57,27 +57,35 @@ export default function StudentDashboardSupportCards({
 
   return (
     <div className="spark-dashboard-support-grid">
+      <Card className="spark-upcoming-card">
+        <div className="spark-card-title-with-icon">
+          <span className="spark-feature-icon compact"><Icon name="calendar" size={19}/></span>
+          <div><h3>Next tutoring session</h3><span>Time-sensitive</span></div>
+        </div>
+        {upcoming ? (
+          <>
+            <div className="spark-upcoming-session">
+              <strong>{upcoming.booking?.subject || "Tutoring session"}</strong>
+              <span>{upcoming.date.toLocaleString([], { dateStyle:"medium", timeStyle:"short" })}</span>
+              {upcoming.booking?.profiles?.name && <span>with {upcoming.booking.profiles.name}</span>}
+            </div>
+            <DashboardCardAction label="View booking" onClick={onOpenBookings} />
+          </>
+        ) : <p className="spark-muted">You have no upcoming tutor session.</p>}
+      </Card>
+
       <Card className="spark-flashcard-overview-card">
         <div className="spark-card-title-with-icon">
           <span className="spark-feature-icon compact"><Icon name="flashcards" size={19}/></span>
-          <div><span className="section-kicker">FLASHCARDS</span><h3>Quick review</h3></div>
+          <div><h3>Flashcards</h3><span>Quick review</span></div>
         </div>
         <p>{flashcardCopy}</p>
         <DashboardCardAction label="Open flashcards" onClick={onOpenFlashcards} />
       </Card>
 
-      <Card className="spark-upcoming-card">
-        <div className="spark-card-title-with-icon">
-          <span className="spark-feature-icon compact"><Icon name="calendar" size={19}/></span>
-          <div><span className="section-kicker">UPCOMING</span><h3>What’s next</h3></div>
-        </div>
-        <div className="spark-upcoming-line"><span>Next tutor session</span><strong>{formatUpcoming(upcomingBookings)}</strong></div>
-        <div className="spark-upcoming-line"><span>Recent momentum</span><strong>{weeklyCount} learning activit{weeklyCount === 1 ? "y" : "ies"} in the last 7 days</strong></div>
-      </Card>
-
       <Card className="spark-achievement-card">
         <div className="spark-card-heading-row">
-          <div><span className="section-kicker">RECENT ACHIEVEMENTS</span><h3>Momentum</h3></div>
+          <div><h3>Recent activity</h3><span>{weeklyCount} learning activit{weeklyCount === 1 ? "y" : "ies"} in the last 7 days</span></div>
           <DashboardCardAction label="View progress" onClick={onOpenProgress} />
         </div>
         {recentAchievements.length ? (

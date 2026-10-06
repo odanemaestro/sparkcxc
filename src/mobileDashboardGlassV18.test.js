@@ -39,13 +39,14 @@ describe("SPARK mobile dashboard glass V18", () => {
     expect(icons).toContain('fill="#86d72f"');
   });
 
-  test("mobile dashboard includes quick actions and active-tab centering hooks", () => {
+  test("mobile dashboard keeps one intentional next action and active-tab centering hooks", () => {
     const app = read("App.js");
-    expect(app).toContain('className="student-mobile-quick-actions"');
-    expect(app).toContain('className="student-mobile-quick-label">Continue study</span>');
-    expect(app).toContain('className="student-mobile-quick-label">Quick practice</span>');
-    expect(app).toContain('className="student-mobile-quick-label">Flashcards</span>');
-    expect(app).toContain('<Icon name="featureBook" size={19}/>');
+    const hero = read("components/learning/StudentDashboardHero.jsx");
+    expect(app).toContain("<StudentDashboardHero");
+    expect(hero).toContain("spark-dashboard-v2-primary");
+    expect(hero).toContain("spark-dashboard-v2-streak");
+    expect(hero).toContain("View my subjects");
+    expect(app).not.toContain('className="student-mobile-quick-actions"');
     expect(app).toContain('aria-current={sec===item.k ? "page" : undefined}');
     expect(app).toContain('scrollIntoView({ behavior:"smooth", block:"nearest", inline:"center" })');
     expect(app).toContain('spark-nav-menu-open');
@@ -103,7 +104,7 @@ describe("SPARK mobile dashboard glass V18", () => {
 test("subject overview clamps impossible lesson totals before display", () => {
   const subjectOverview = read("components/learning/SubjectDashboardOverview.jsx");
   expect(subjectOverview).toContain("const displayCompleted = total > 0 ? Math.min(Math.max(0, completed), total)");
-  expect(subjectOverview).toContain("const percent = Math.min(100, Math.max(0, rawPercent))");
+  expect(subjectOverview).toContain("return Math.min(100, Math.max(0, Math.round(raw || 0)))");
   expect(subjectOverview).toContain("{displayCompleted} of {total || 0} topic lessons complete");
 });
 

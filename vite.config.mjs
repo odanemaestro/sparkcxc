@@ -16,7 +16,7 @@ export default defineConfig(({mode})=>{
         return transform(code,{loader:id.endsWith(".tsx")?"tsx":id.endsWith(".ts")?"ts":"jsx",jsx:"automatic",sourcemap:true,sourcefile:id});
       },
     }],
-    optimizeDeps:{noDiscovery:true,include:["react","react/jsx-runtime","react-dom/client","@supabase/supabase-js"]},
+    optimizeDeps:{noDiscovery:true,include:["react","react/jsx-runtime","react-dom","react-dom/client","@supabase/supabase-js"]},
     build:{outDir:"build",sourcemap:false,chunkSizeWarningLimit:1500},
     server:{port:3000,strictPort:true},
   };

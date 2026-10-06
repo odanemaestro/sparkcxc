@@ -38,8 +38,10 @@ describe("Information Technology routing and responsive integration", () => {
     expect(practice).toContain("useInformationTechnologyPracticeRoute(true)");
   });
 
-  test("dashboard uses the compact IT continue label", () => {
-    expect(dashboard).toContain('subject.id === "information-technology" ? "Continue IT"');
+  test("dashboard keeps a compact IT action and routes practice through the real subject route", () => {
+    expect(dashboard).toContain("<span>Practise</span>");
+    expect(dashboard).toContain("onOpenPractice(subject)");
+    expect(dashboard).toContain("subject.capabilities?.practice !== false");
   });
 
   test("IT labs include dedicated tablet, iPad and mobile hardening", () => {

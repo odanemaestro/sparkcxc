@@ -4,10 +4,13 @@ import path from "path";
 const read = relative => fs.readFileSync(path.join(__dirname, relative), "utf8");
 
 describe("SPARK V5.3.9 review and dashboard consistency", () => {
-  test("student stats use ordinary Card tiles without decorative top accent bars", () => {
+  test("student dashboard consolidates aggregate stats into the subject summary", () => {
     const app = read("App.js");
-    expect(app).toContain('className="student-dashboard-stat-card"');
-    expect(app).toContain('<Card key={label} className="student-dashboard-stat-card" style={{padding:18}}>');
+    const overview = read("components/learning/SubjectDashboardOverview.jsx");
+    expect(app).not.toContain('className="student-dashboard-stat-card"');
+    expect(overview).toContain('className="spark-subject-overview-summary"');
+    expect(overview).toContain("lessons completed");
+    expect(overview).toContain("practice results");
   });
 
   test("session review actions have an intentional aligned action grid", () => {
