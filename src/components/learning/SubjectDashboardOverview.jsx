@@ -21,10 +21,14 @@ function lessonPercent(subject) {
   return Math.min(100, Math.max(0, Math.round(raw || 0)));
 }
 
+function subjectMetricThird(progress) {
+  return { value:Number(progress?.assessments ?? progress?.checkpoints ?? 0), label:"assessments" };
+}
+
 function subjectMetricFourth(subject, progress) {
-  if (subject?.capabilities?.labs) return { value:Number(progress?.labsCompleted || 0), label:"labs" };
-  if (subject?.id === "mathematics") return { value:Number(progress?.skillsTracked || 0), label:"skills" };
-  return { value:Number(progress?.topicsPractised || 0), label:"topics" };
+  if (subject?.capabilities?.labs) return { value:Number(progress?.labsCompleted || 0), label:"labs explored" };
+  if (subject?.id === "mathematics") return { value:Number(progress?.skillsTracked || 0), label:"skills tracked" };
+  return { value:Number(progress?.topicsPractised || 0), label:"topics practised" };
 }
 
 function subjectInsight(summaries, learnerName = "") {
@@ -201,7 +205,6 @@ export default function SubjectDashboardOverview({
   onManageSubjects,
   learnerName = "",
   showAllProgressAction = true,
-  onOpenPractice,
   variant = "default",
 }) {
   if (variant === "home") {
