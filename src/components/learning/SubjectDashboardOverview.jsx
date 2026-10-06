@@ -31,25 +31,36 @@ function subjectMetricFourth(subject, progress) {
   return { value:Number(progress?.topicsPractised || 0), label:"topics practised" };
 }
 
-function subjectMilestone(subject) {
+function subjectMilestone(subject, learnerName = "") {
   const { total, completed, percent } = subjectLessonStats(subject);
+  const firstName = String(learnerName || "").trim().split(/\s+/)[0] || "";
+  const parentView = Boolean(firstName);
 
   if (total <= 0) {
-    return {
+    return parentView ? {
+      title:"No lesson progress available yet",
+      detail:firstName + " does not have published lesson progress for this subject yet.",
+    } : {
       title:"Start your first lesson",
       detail:"Complete one lesson and SPARK will begin tracking your course progress.",
     };
   }
 
   if (percent >= 100 || completed >= total) {
-    return {
+    return parentView ? {
+      title:"All course lessons completed",
+      detail:firstName + " has completed all " + total + " topic lessons. Practice and review can help maintain readiness.",
+    } : {
       title:"Course lessons complete",
       detail:"Keep your knowledge fresh with practice, flashcards or an exam-style activity.",
     };
   }
 
   if (completed === 0) {
-    return {
+    return parentView ? {
+      title:"No lessons completed yet",
+      detail:firstName + " has not completed a lesson in this subject yet.",
+    } : {
       title:"Complete your first lesson",
       detail:"One completed lesson will start your progress for this subject.",
     };
@@ -60,7 +71,10 @@ function subjectMilestone(subject) {
   const targetCompleted = Math.min(total, Math.ceil((nextPercent / 100) * total));
   const remaining = Math.max(1, targetCompleted - completed);
 
-  return {
+  return parentView ? {
+    title:firstName + " needs " + remaining + " more lesson" + (remaining === 1 ? "" : "s") + " to reach " + nextPercent + "%",
+    detail:firstName + " has completed " + completed + " of " + total + " topic lessons.",
+  } : {
     title:remaining + " more lesson" + (remaining === 1 ? "" : "s") + " to reach " + nextPercent + "%",
     detail:"You have completed " + completed + " of " + total + " topic lessons.",
   };
@@ -75,7 +89,7 @@ function subjectInsight(summaries, learnerName = "") {
   }
   const weakest = [...active].sort((a, b) => lessonPercent(a) - lessonPercent(b))[0];
   return learnerName
-    ? possessive(learnerName) + " next opportunity is " + (weakest?.shortName || weakest?.name || "the subject with the most learning left") + "."
+    ? "Based on lesson completion, " + (weakest?.shortName || weakest?.name || "one subject") + " currently has the most progress remaining."
     : "Focus on " + (weakest?.shortName || weakest?.name || "the subject with the most learning left") + " next.";
 }
 
@@ -294,7 +308,7 @@ export default function SubjectDashboardOverview({
             const completed = Number(progress.lessonsCompleted || 0);
             const displayCompleted = total > 0 ? Math.min(Math.max(0, completed), total) : Math.max(0, completed);
             const percent = lessonPercent(subject);
-            const milestone = subjectMilestone(subject);
+            const milestone = subjectMilestone(subject, learnerName);
             const fourth = subjectMetricFourth(subject, progress);
             const canStudy = onOpenSubject && (subject.capabilities?.study !== false || subject.routes?.study || subject.implementation === "generic");
             const canPractice = onOpenPractice && subject.capabilities?.practice !== false && Boolean(subject.routes?.practice);
@@ -309,7 +323,11 @@ export default function SubjectDashboardOverview({
                     <strong>{subject.name}</strong>
                     <span>{displayCompleted} of {total || 0} topic lessons complete</span>
                   </div>
-                  {index === 0 && summaries.length > 1 && <span className="spark-subject-focus-pill">Focus next</span>}
+                  {index === 0 && summaries.length > 1 && (
+                    <span className="spark-subject-focus-pill">
+                      {learnerName ? "Most progress remaining" : "Focus next"}
+                    </span>
+                  )}
                 </div>
 
                 <div className="spark-subject-card-progress">
@@ -325,7 +343,7 @@ export default function SubjectDashboardOverview({
                 </div>
 
                 <div className="spark-subject-card-focus">
-                  <span>Next milestone</span>
+                  <span>{learnerName ? "Learning milestone" : "Next milestone"}</span>
                   <strong>{milestone.title}</strong>
                   <small>{milestone.detail}</small>
                 </div>
