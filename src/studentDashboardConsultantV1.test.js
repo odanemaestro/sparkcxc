@@ -3,62 +3,62 @@ const path = require("path");
 
 const read = relative => fs.readFileSync(path.join(__dirname, relative), "utf8");
 
-describe("consultant student dashboard redesign V1", () => {
-  test("student overview uses the new hierarchy without the old stat grid", () => {
+describe("consultant student dashboard merged redesign", () => {
+  test("student overview uses consultant hierarchy while preserving all functional sections", () => {
     const app = read("App.js");
     const start = app.indexOf('{sec === "overview" && !isTutor && (');
     const end = app.indexOf('{sec === "sessions" && isTutor', start);
     const overview = app.slice(start, end);
 
-    expect(overview).toContain("spark-consultant-dashboard");
-    expect(overview).toContain("<StudentDashboardHero");
-    expect(overview).toContain("<SubjectDashboardOverview");
-    expect(overview).toContain("<StudentGoalCard");
-    expect(overview).toContain("<SparkRewardsPanel");
+    expect(overview).toContain("spark-student-home");
+    expect(overview).toContain("<StudentNextStepCard");
+    expect(overview).toContain("<SparkOfTheWeekSpotlight");
+    expect(overview).toContain('variant="home"');
     expect(overview).toContain("<StudentDashboardSupportCards");
-    expect(overview).toContain("spark-consultant-family");
+    expect(overview).toContain("<StudentGoalCard");
+    expect(overview).toContain('variant="details"');
+    expect(overview).toContain("ssh-family");
     expect(overview).not.toContain("student-dashboard-stats-grid");
     expect(overview).not.toContain("student-mobile-quick-actions");
-    expect(overview).not.toContain("<ProfilePhotoEditor");
   });
 
-  test("SPARK of the Week is lifted into the hero and weekly leaders open in a modal", () => {
-    const hero = read("components/learning/StudentDashboardHero.jsx");
+  test("weekly spotlight shares one rewards load and opens the preserved modal leaderboard", () => {
+    const app = read("App.js");
     const rewards = read("components/rewards/SparkRewardsPanel.jsx");
-    expect(hero).toContain('id="spark-dashboard-weekly-highlight"');
-    expect(rewards).toContain('document.getElementById("spark-dashboard-weekly-highlight")');
-    expect(rewards).toContain("createPortal(weeklyHero, weeklyHighlightTarget)");
+    const spotlight = read("components/rewards/SparkOfTheWeekSpotlight.jsx");
+    expect(app).toContain("useSparkRewardsDashboard");
+    expect(app).toContain("rewards={studentRewards}");
+    expect(spotlight).toContain("Leaderboard and badges");
     expect(rewards).toContain("<Modal");
     expect(rewards).toContain('className="spark-weekly-leaders-modal"');
     expect(rewards).not.toContain("scrollIntoView");
-    expect(rewards.match(/spark_get_rewards_dashboard/g)?.length).toBe(1);
   });
 
-  test("subjects stay detailed but use a scan-friendly card layout", () => {
+  test("subjects use attention-first status words and keep full actions", () => {
     const subject = read("components/learning/SubjectDashboardOverview.jsx");
-    const css = read("components/learning/subjectDashboardOverview.css");
-    expect(subject).toContain("Focus next");
-    expect(subject).toContain("Lesson completion");
-    expect(subject).toContain("practice");
-    expect(subject).toContain("average");
-    expect(subject).toContain("assessments");
-    expect(subject).toContain("Recommended next");
-    expect(subject).toContain("onOpenPractice");
-    expect(css).toContain("grid-template-columns:repeat(2,minmax(0,1fr))");
-    expect(css).toContain("@media(max-width:920px)");
+    expect(subject).toContain("sortSubjectsForHome");
+    expect(subject).toContain("Needs attention");
+    expect(subject).toContain("practice average");
+    expect(subject).toContain("Next focus");
+    expect(subject).toContain("Practise");
+    expect(subject).toContain("View progress");
   });
 
-  test("dashboard styling supports both themes and responsive layouts", () => {
-    const css = read("sparkStudentDashboardConsultantV1.css");
-    expect(css).toContain("--spark-consultant-navy:#123468");
-    expect(css).toContain("--spark-consultant-teal:#14b8a6");
-    expect(css).toContain("--spark-consultant-gold:#d99a1b");
-    expect(css).toContain('html[data-theme="dark"] .spark-consultant-dashboard');
-    expect(css).toContain("@media(max-width:1080px)");
-    expect(css).toContain(".spark-consultant-rail .spark-dashboard-support-grid{\n    grid-template-columns:1fr;");
-    expect(css).toContain(".spark-weekly-leaders-modal-grid");
+  test("support information stays grouped and stacked at narrow and tablet widths", () => {
+    const support = read("components/learning/StudentDashboardSupportCards.jsx");
+    const css = read("sparkStudentHomeV1.css");
+    expect(support).toContain("UPCOMING TUTORING");
+    expect(support).toContain("FLASHCARDS");
+    expect(support).toContain("RECENT ACHIEVEMENTS");
+    expect(css).toContain(".ssh-aside{grid-template-columns:1fr}");
+    expect(css).toContain("@media(max-width:1279px)");
+  });
+
+  test("merged design keeps responsive light and dark treatment", () => {
+    const css = read("sparkStudentHomeV1.css");
+    expect(css).toContain("html[data-theme=\"dark\"] .spark-student-home");
     expect(css).toContain("@media(max-width:820px)");
-    expect(css).toContain("@media(max-width:520px)");
+    expect(css).toContain("@media(max-width:700px)");
     expect(css).toContain("@media(prefers-reduced-motion:reduce)");
   });
 });
