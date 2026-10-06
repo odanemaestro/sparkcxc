@@ -69,6 +69,16 @@ describe("consultant student dashboard merged redesign", () => {
     expect(model).toContain('" needs more work."');
   });
 
+  test("shared subject dashboard dark mode works in student and parent wrappers", () => {
+    const css = read("components/learning/subjectDashboardOverview.css");
+    expect(css).toContain('html[data-theme="dark"] .spark-subject-dashboard-overview');
+    expect(css).toContain('html[data-theme="dark"] .spark-subject-overview-card');
+    expect(css).toContain('html[data-theme="dark"] .spark-subject-card-actions .spark-dashboard-card-action');
+    expect(css).toContain('html[data-theme="dark"] .ssh-subjects');
+    expect(css).toContain("--sdo-surface:#101d31");
+    expect(css).toContain("--sdo-ink:#f3f7ff");
+  });
+
   test("merged design keeps responsive light and dark treatment", () => {
     const css = read("sparkStudentHomeV1.css");
     expect(css).toContain("html[data-theme=\"dark\"] .spark-student-home");
