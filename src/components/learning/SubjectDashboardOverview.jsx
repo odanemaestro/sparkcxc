@@ -37,8 +37,8 @@ function subjectMetricThird(progress) {
 }
 
 function subjectMetricFourth(subject, progress) {
-  if (subject?.capabilities?.labs) return { value: Number(progress?.labsCompleted || 0), label: "labs" };
-  if (subject?.id === "mathematics") return { value: Number(progress?.skillsTracked || 0), label: "skills" };
+  if (subject?.capabilities?.labs) return { value: Number(progress?.labsCompleted || 0), label: "labs explored" };
+  if (subject?.id === "mathematics") return { value: Number(progress?.skillsTracked || 0), label: "skills tracked" };
   return { value: Number(progress?.topicsPractised || 0), label: "topics practised" };
 }
 
