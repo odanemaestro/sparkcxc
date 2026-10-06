@@ -125,8 +125,22 @@ export default function SparkRewardsPanel({
         </div>
       </div>
       <div className="spark-weekly-leaders-modal-grid">
-        {leaderboard}
-        {breakdownBlock}
+        <section className="spark-weekly-leaders-panel" aria-label="Leaderboard">
+          <div className="spark-weekly-leaders-panel-head">
+            <div>
+              <span className="spark-weekly-leaders-kicker">THIS WEEK</span>
+              <h3>Top learners</h3>
+            </div>
+            <span className="spark-weekly-leaders-count">{leaders.length} active</span>
+          </div>
+          <div className="spark-weekly-leaders-columns" aria-hidden="true">
+            <span>Rank</span><span>Learner</span><span>Days</span><span>Points</span>
+          </div>
+          {leaderboard}
+        </section>
+        <section className="spark-weekly-score-panel" aria-label="Weekly score breakdown">
+          {breakdownBlock}
+        </section>
       </div>
     </Modal>
   );
