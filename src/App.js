@@ -118,6 +118,7 @@ import "./learningIntelligence.css";
 import "./mobileDashboardV18.css";
 import "./glassModalSystemV18.css";
 import "./sparkFinalButtonConsistencyV2642.css";
+import "./sparkStudyPracticeDashboardPolishV1.css";
 import "./sparkSubjectLeaveModalV272.css";
 import "./sparkStudentDashboardConsultantV1.css";
 import "./sparkStudentHomeV1.css";
