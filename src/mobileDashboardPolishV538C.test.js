@@ -5,13 +5,11 @@ const src = path.join(__dirname);
 const read = (name) => fs.readFileSync(path.join(src, name), "utf8");
 
 describe("SPARK V5.3.8C mobile dashboard and dark-mode polish", () => {
-  test("student overview stat cards keep one neutral tile treatment", () => {
+  test("student overview uses the consolidated mobile dashboard instead of stat tiles", () => {
     const app = read("App.js");
-    const start = app.indexOf('className="student-dashboard-stats-grid"');
-    const end = app.indexOf('className="student-overview-course-card"', start);
-    const studentStats = app.slice(start, end);
-    expect(studentStats).toContain('className="student-dashboard-stat-card"');
-    expect(studentStats).not.toContain('borderTop:`3px solid ${accent}`');
+    expect(app).toContain("<StudentNextStepCard");
+    expect(app).toContain("studentHomeGlance");
+    expect(app).not.toContain('className="student-dashboard-stat-card"');
   });
 
   test("dashboard tab fade is driven by real remaining overflow", () => {
@@ -27,10 +25,9 @@ describe("SPARK V5.3.8C mobile dashboard and dark-mode polish", () => {
   test("phone overview remains compact and safe-area aware", () => {
     const app = read("App.js");
     const css = read("responsive.css");
-    expect(app).toContain('className="student-dashboard-stats-grid"');
-    expect(css).toContain("grid-template-columns:repeat(2,minmax(0,1fr))!important");
+    expect(app).toContain('className="spark-student-home"');
+    expect(css).toContain("@media(max-width:700px)");
     expect(css).toContain("env(safe-area-inset-bottom, 0px)");
-    expect(css).toContain(".student-overview-course-card button");
     expect(css).toContain(".family-code-actions");
   });
 
