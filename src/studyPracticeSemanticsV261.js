@@ -38,6 +38,7 @@ export function classifySparkStudyPracticeAction(value, className = "", contextT
   if (/^paper [12] library$/i.test(text)) return "nav";
   if (/^physics practice$/i.test(text)) return "nav";
   if (/^section [a-e] practice$/i.test(text)) return "nav";
+  if (/^(review answers|view results|view review|see results)$/i.test(text)) return "nav";
 
   // Forward learning.
   if (/\bopen mathematics\b/i.test(text)) return "forward";
@@ -47,9 +48,11 @@ export function classifySparkStudyPracticeAction(value, className = "", contextT
   if (/\bopen full section [a-e]\b.*\bstudy tools\b/i.test(text)) return "forward";
   if (/^start examination$/i.test(text)) return "forward";
   if (/^start new paper\b/i.test(text)) return "forward";
+  if (/^start (practice|quiz|paper|lesson)\b/i.test(text)) return "forward";
   if (/^start another\b/i.test(text)) return "forward";
-  if (/^resume\b/i.test(text)) return "forward";
-  if (/^continue\b/i.test(text)) return "forward";
+  if (/^(resume|continue|continue lesson|next lesson)\b/i.test(text)) return "forward";
+  if (/^(check answer|check my answer|mark complete)$/i.test(text)) return "forward";
+  if (/^(try again|review this topic)$/i.test(text)) return "forward-secondary";
   if (/^view instructions$/i.test(text)) return "forward";
 
   // PracticeHub uses "Open ..." for forward learning cards.

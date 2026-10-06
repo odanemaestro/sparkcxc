@@ -1,0 +1,23 @@
+.spark-google-auth-button{
+  background:var(--spark-teal)!important;
+  border-color:var(--spark-teal)!important;
+  color:#fff!important;
+  box-shadow:0 2px 8px rgba(13,148,136,.22)!important;
+}
+.spark-google-auth-button:hover:not(:disabled){
+  background:var(--spark-teal-dark)!important;
+  border-color:var(--spark-teal-dark)!important;
+  color:#fff!important;
+  box-shadow:0 6px 18px rgba(13,148,136,.32)!important;
+}
+.spark-google-auth-button:focus-visible{
+  outline:3px solid rgba(13,148,136,.28)!important;
+  outline-offset:2px!important;
+}
+.spark-google-auth-button:disabled{
+  background:color-mix(in srgb,var(--spark-teal) 48%,var(--spark-paper))!important;
+  border-color:color-mix(in srgb,var(--spark-teal) 48%,var(--spark-paper))!important;
+  color:#fff!important;
+  cursor:not-allowed!important;
+  box-shadow:none!important;
+}

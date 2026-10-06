@@ -84,6 +84,7 @@ import LearnerIntelligencePanel from "./components/learning/LearnerIntelligenceP
 import AllSubjectsProgress from "./components/learning/AllSubjectsProgress";
 import StudentGoalCard from "./components/learning/StudentGoalCard";
 import StudentDashboardSupportCards from "./components/learning/StudentDashboardSupportCards";
+import StudentNextStepCard from "./components/learning/StudentNextStepCard";
 import StudentSubjectEnrollment from "./components/learning/StudentSubjectEnrollment";
 import ParentSubjectGoalCard from "./components/learning/ParentSubjectGoalCard";
 import ParentOverviewIntelligence from "./components/learning/ParentOverviewIntelligence";
@@ -92,8 +93,11 @@ import LearningEngineAdminPanel from "./components/admin/LearningEngineAdminPane
 import AdminAccountsPanel from "./components/admin/AdminAccountsPanel";
 import SubjectManagementPanel from "./components/admin/SubjectManagementPanel";
 import SparkRewardsPanel from "./components/rewards/SparkRewardsPanel"; // SPARK_V570_REWARDS
+import SparkOfTheWeekSpotlight from "./components/rewards/SparkOfTheWeekSpotlight";
+import useSparkRewardsDashboard from "./rewards/useSparkRewardsDashboard";
 import { buildLearningSummary } from "./insights/progressAnalytics";
 import { buildLearnerModelProfile, learnerModelWeakSkills } from "./learning/learnerModel";
+import { attentionSubjects, buildStudentNextStep, firstNameFrom, greetingForHour, recommendationDisplay, subjectDisplayName } from "./learning/studentHomeModel";
 import { buildLearnerIntelligenceFromSkillStates, buildSubjectLearnerIntelligence } from "./learning/learnerIntelligenceV2";
 import { enhanceLearnerIntelligence, openNextBestActionTarget } from "./learning/nextBestActionV2";
 import {
@@ -114,7 +118,11 @@ import "./learningIntelligence.css";
 import "./mobileDashboardV18.css";
 import "./glassModalSystemV18.css";
 import "./sparkFinalButtonConsistencyV2642.css";
+import "./sparkStudyPracticeDashboardPolishV1.css";
+import "./sparkGoogleAuthButtonV1.css";
 import "./sparkSubjectLeaveModalV272.css";
+import "./sparkStudentDashboardConsultantV1.css";
+import "./sparkStudentHomeV1.css";
 import GOOGLE_ICON_B64 from "./assets/icons/google-icon.png";
 import GOOGLE_CALENDAR_ICON_B64 from "./assets/icons/google-calendar-icon.png";
 import OUTLOOK_ICON_B64 from "./assets/icons/outlook-icon.png";
@@ -3549,6 +3557,22 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     if (onOpenSubject) onOpenSubject(resolved);
     else setView(resolved?.studyView || "study");
   }, [onOpenSubject, resolveDashboardSubject, setView, showToast]);
+  const openSubjectPractice = useCallback(subject => {
+    const resolved = resolveDashboardSubject(subject);
+    if (!resolved || resolved.capabilities?.practice === false || !resolved.routes?.practice) {
+      showToast?.((resolved?.shortName || resolved?.name || "This subject") + " practice is not available yet.", "error");
+      return;
+    }
+    const practiceViews = {
+      mathematics:"practice-math",
+      physics:"practice-physics",
+      "information-technology":"practice-information-technology",
+      "integrated-science":"practice-integrated-science",
+      "social-studies":"practice-social-studies",
+      "english-a":"practice-english-a",
+    };
+    setView(practiceViews[resolved.id] || "practice");
+  }, [resolveDashboardSubject, setView, showToast]);
   // Student profiles can later become approved tutors without profile.role
   // changing. Wait for that tutor lookup before canonicalizing a nested
   // dashboard route, otherwise #/dashboard/sessions could briefly be mistaken
@@ -3620,6 +3644,12 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   const [tutorCancelTarget, setTutorCancelTarget] = useState(null);
   const dashSidebarRef = useRef(null);
   const [dashTabsHaveMore, setDashTabsHaveMore] = useState(false);
+  const studentRewards = useSparkRewardsDashboard({
+    supabase,
+    viewerUserId:user?.id,
+    subjectUserId:user?.id,
+    enabled:isStudent && !isTutor && sec === "overview",
+  });
   const totalTopics = SYLLABUS_SECTIONS.reduce((a, s) => a + s.topics.length, 0);
 
   const setDashboardSection = useCallback((section, options = {}) => {
@@ -4299,12 +4329,13 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   });
   const dashboardSubjectInsights = Object.fromEntries(subjectDashboardSummaries.map(subject => {
     const intelligence = studentIntelligenceBySubject[subject.id];
-    return [subject.id, intelligence?.hasEvidence && intelligence?.recommendation ? {
-      title:intelligence.recommendation.title,
-      detail:intelligence.recommendation.target?.label
-        ? `${intelligence.recommendation.detail} Next: ${intelligence.recommendation.target.label}.`
-        : intelligence.recommendation.detail,
-    } : null];
+    const display = recommendationDisplay({ subject, intelligence });
+    return [subject.id, {
+      title:display.title,
+      detail:display.detail,
+      summary:display.summary,
+      specific:display.specific,
+    }];
   }));
   const now = new Date();
   const upcomingSessions = bookings.filter(b => { const status = bookingDisplayStatus(b); return status === "pending" || status === "confirmed"; });
@@ -4402,6 +4433,134 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   const dashboardProfile = dashboardAvatarPath === (profile?.avatar_path || "")
     ? profile
     : { ...profile, avatar_path: dashboardAvatarPath };
+
+  const studentFirstName = firstNameFrom(profile?.name);
+  const studentGreeting = greetingForHour(new Date().getHours()) + (studentFirstName ? ", " + studentFirstName : "");
+  const studentNextStep = buildStudentNextStep({
+    summaries:subjectDashboardSummaries,
+    intelligenceBySubject:studentIntelligenceBySubject,
+    recentActivity:recentSubjectActivity,
+  });
+  const pendingParentLinks = parentLinks.filter(link => link.status === "pending");
+  const studentAttention = attentionSubjects(subjectDashboardSummaries);
+  const nextTutoringBooking = [...upcomingSessions]
+    .map(booking => {
+      const time = String(booking.start_time || "12:00").slice(0,5);
+      const at = new Date(String(booking.session_date || "") + "T" + time);
+      return { booking, at };
+    })
+    .filter(item => !Number.isNaN(item.at.getTime()))
+    .sort((a,b) => a.at.getTime() - b.at.getTime())[0]?.booking || null;
+  const nextTutoringSession = nextTutoringBooking ? (() => {
+    const day = parseCalendarDate(nextTutoringBooking.session_date);
+    const status = bookingDisplayStatus(nextTutoringBooking);
+    return {
+      id:nextTutoringBooking.id,
+      subject:nextTutoringBooking.subject || "Tutoring session",
+      tutorName:nextTutoringBooking.tutors?.name || nextTutoringBooking.profiles?.name || "",
+      month:day.toLocaleDateString("en-US",{month:"short"}),
+      day:String(day.getDate()),
+      dateLabel:day.toLocaleDateString("en-US",{weekday:"short",month:"short",day:"numeric"}),
+      timeLabel:nextTutoringBooking.start_time ? fmtSessionRange(nextTutoringBooking.start_time,nextTutoringBooking.duration_minutes) : "Time to be confirmed",
+      statusKey:status,
+      statusLabel:BOOKING_STATUS_BADGE[status]?.label || "Pending",
+    };
+  })() : null;
+
+  const openSubjectPracticeHome = subject => {
+    const practiceViews = {
+      mathematics:"practice-math",
+      physics:"practice-physics",
+      "information-technology":"practice-information-technology",
+      "integrated-science":"practice-integrated-science",
+      "social-studies":"practice-social-studies",
+      "english-a":"practice-english-a",
+    };
+    setView(practiceViews[String(subject?.id || "").toLowerCase()] || "practice");
+  };
+
+  const startStudentNextStep = () => {
+    if (!studentNextStep) return;
+    if (studentNextStep.kind === "choose") {
+      setDashboardSection("subjects");
+      return;
+    }
+    if (studentNextStep.kind === "recommendation" && studentNextStep.recommendation) {
+      openNextBestActionTarget(studentNextStep.recommendation,{setView,setDashboardSection,setFlashcardSubjectRoute});
+      return;
+    }
+    if (studentNextStep.subject) openSubject(studentNextStep.subject);
+  };
+
+  const nextStepIsFlashcards = studentNextStep?.recommendation?.target?.special === "dashboard-flashcards";
+  const studentHomeSecondaryActions = studentEnrolledSubjects.length ? [
+    { key:"practice", label:"Quick practice", icon:"goal", onClick:() => setView("practice") },
+    ...(studentHasFlashcards && !nextStepIsFlashcards
+      ? [{ key:"flashcards", label:"Flashcards", icon:"flashcards", onClick:() => setDashboardSection("flashcards") }]
+      : []),
+  ] : [];
+
+  const studentHasActivity = allSubjectsSummary.subjectsWithActivity > 0;
+  const studentHomeGlance = studentEnrolledSubjects.length ? [
+    {
+      key:"progress",
+      icon:"progress",
+      label:"Progress",
+      value:studentHasActivity
+        ? allSubjectsSummary.lessonsCompleted + " lesson" + (allSubjectsSummary.lessonsCompleted === 1 ? "" : "s") + " complete"
+        : "No activity yet",
+      detail:studentHasActivity
+        ? allSubjectsSummary.practiceAttempts + " practice result" + (allSubjectsSummary.practiceAttempts === 1 ? "" : "s")
+        : "Your first lesson starts it",
+      onClick:() => { setProgressSubject("all"); setDashboardSection("progress"); },
+    },
+    pendingParentLinks.length > 0 ? {
+      key:"attention",
+      icon:"family",
+      label:"Needs attention",
+      value:"Parent request",
+      detail:"Waiting for your approval",
+      tone:"attention",
+      onClick:() => document.querySelector("[data-notification-anchor='family-request']")?.scrollIntoView({ behavior:"smooth", block:"center" }),
+    } : studentAttention.length > 0 ? {
+      key:"attention",
+      icon:"alert",
+      label:"Needs attention",
+      value:subjectDisplayName(studentAttention[0].subject),
+      detail:[
+        studentAttention[0].status.detail,
+        studentAttention.length > 1
+          ? "Also " + new Intl.ListFormat("en",{ style:"long", type:"conjunction" }).format(
+              studentAttention.slice(1).map(item => subjectDisplayName(item.subject))
+            ) + " need attention."
+          : "",
+      ].filter(Boolean).join(" "),
+      tone:"attention",
+      onClick:() => document.getElementById("ssh-subject-" + studentAttention[0].subject.id)?.scrollIntoView({ behavior:"smooth", block:"center" }),
+    } : studentHasActivity ? {
+      key:"attention",
+      icon:"check",
+      label:"Subjects",
+      value:"All on track",
+      detail:"Nothing needs attention",
+      tone:"good",
+    } : null,
+    nextTutoringSession ? {
+      key:"soon",
+      icon:"calendar",
+      label:"Coming up",
+      value:nextTutoringSession.dateLabel,
+      detail:"Tutoring · " + nextTutoringSession.subject,
+      onClick:() => setDashboardSection("bookings"),
+    } : {
+      key:"soon",
+      icon:"calendar",
+      label:"Coming up",
+      value:"No tutoring booked",
+      detail:"Find a tutor",
+      onClick:() => setView("tutors"),
+    },
+  ].filter(Boolean) : [];
 
   return (
     <div style={{display:"grid",gridTemplateColumns:"228px 1fr",flex:1}} className="dash-layout">
@@ -4557,122 +4716,100 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
         )}
 
         {sec === "overview" && !isTutor && (
-          <>
-            <div className="student-dashboard-greeting-row">
-              <div className="student-mobile-greeting-photo">
-                <ProfilePhotoEditor
-                  user={user}
-                  profile={dashboardProfile}
-                  isTutorProfile={false}
+          <div className="spark-student-home">
+            <div className="ssh-top">
+              <StudentNextStepCard
+                greeting={studentGreeting}
+                photo={(
+                  <ProfilePhotoEditor
+                    user={user}
+                    profile={dashboardProfile}
+                    isTutorProfile={false}
+                    showToast={showToast}
+                    onProfileUpdated={onProfileUpdated}
+                    size={56}
+                  />
+                )}
+                streak={streak}
+                step={studentNextStep}
+                onPrimary={startStudentNextStep}
+                secondaryActions={studentHomeSecondaryActions}
+                glance={studentHomeGlance}
+              />
+              <SparkOfTheWeekSpotlight rewards={studentRewards} />
+            </div>
+
+            <div className="ssh-main">
+              <SubjectDashboardOverview
+                variant="home"
+                summaries={subjectDashboardSummaries}
+                onOpenSubject={subject => openSubject(subject)}
+                onOpenPractice={openSubjectPracticeHome}
+                onOpenProgress={subject => { setProgressSubject(subject?.id || "all"); setDashboardSection("progress"); }}
+                onOpenReport={() => { setStudentReportSubject("all"); setStudentReportOpen(true); }}
+                subjectInsights={dashboardSubjectInsights}
+                onManageSubjects={() => setDashboardSection("subjects")}
+              />
+
+              <div className="ssh-aside">
+                <StudentDashboardSupportCards
+                  flashcardSubjects={studentFlashcardSubjects}
+                  upcomingBookings={upcomingSessions}
+                  nextSession={nextTutoringSession}
+                  upcomingCount={upcomingSessions.length}
+                  recentActivity={recentSubjectActivity}
+                  onOpenFlashcards={studentHasFlashcards ? () => setDashboardSection("flashcards") : undefined}
+                  onOpenProgress={() => { setProgressSubject("all"); setDashboardSection("progress"); }}
+                  onOpenBookings={() => setDashboardSection("bookings")}
+                  onFindTutor={() => setView("tutors")}
+                />
+                <StudentGoalCard
+                  userId={user.id}
+                  supabase={supabase}
+                  subjects={subjectDashboardSummaries}
                   showToast={showToast}
-                  onProfileUpdated={onProfileUpdated}
-                  size={62}
+                  onGoalChange={setStudentGoal}
+                  onManageSubjects={() => setDashboardSection("subjects")}
                 />
               </div>
-              <div className="student-dashboard-greeting-copy">
-                <h1 style={{fontFamily:FD,fontSize:24,fontWeight:700,color:T.ink,margin:"0 0 4px"}}>
-                  Good {new Date().getHours()<12?"morning":new Date().getHours()<17?"afternoon":"evening"}, {profile?.name?.split(" ")[0]}.
-                </h1>
-                <p style={{color:T.textMuted,fontSize:14,marginBottom:24}}>Keep that momentum going.</p>
-              </div>
             </div>
-            <div className="student-mobile-quick-actions" aria-label="Quick learning actions">
-              <button type="button" className="student-mobile-quick-action" onClick={() => setView("study")}>
-                <span className="student-mobile-quick-icon" aria-hidden="true"><Icon name="featureBook" size={19}/></span>
-                <span className="student-mobile-quick-label">Continue study</span>
-              </button>
-              <button type="button" className="student-mobile-quick-action" onClick={() => setView("practice")}>
-                <span className="student-mobile-quick-icon" aria-hidden="true"><Icon name="goal" size={19}/></span>
-                <span className="student-mobile-quick-label">Quick practice</span>
-              </button>
-              {studentHasFlashcards && (
-                <button type="button" className="student-mobile-quick-action" onClick={() => setDashboardSection("flashcards")}>
-                  <span className="student-mobile-quick-icon" aria-hidden="true"><Icon name="flashcards" size={19}/></span>
-                  <span className="student-mobile-quick-label">Flashcards</span>
-                </button>
+
+
+            <div className="ssh-family">
+              {pendingParentLinks.length > 0 && (
+                <Card className="family-request-card notification-anchor-card" data-notification-anchor="family-request">
+                  <div className="family-request-icon" aria-hidden="true"><Icon name="family" size={21}/></div>
+                  <div style={{flex:1}}>
+                    <div className="section-kicker">FAMILY CONNECTION</div>
+                    <div style={{fontFamily:FD,fontSize:17,fontWeight:700,color:T.ink,margin:"3px 0 5px"}}>A parent wants to connect</div>
+                    <p style={{fontSize:13,color:T.textMuted,lineHeight:1.5,margin:"0 0 12px"}}>Approve this only if you recognize the parent or guardian.</p>
+                    {pendingParentLinks.map(link => (
+                      <div key={link.id} className="family-request-actions">
+                        <button className="cp-btn cp-btn-secondary" onClick={()=>respondToParentLink(link.id,"declined")}>Decline</button>
+                        <button className="cp-btn cp-btn-primary" onClick={()=>respondToParentLink(link.id,"approved")}>Approve parent</button>
+                      </div>
+                    ))}
+                  </div>
+                </Card>
+              )}
+              {familyCode && (
+                <Card className="family-code-card student-overview-family-card">
+                  <div>
+                    <div className="section-kicker">YOUR FAMILY CODE</div>
+                    <div style={{fontFamily:FD,fontSize:17,fontWeight:700,color:T.ink,margin:"3px 0 5px"}}>Share this with a parent or guardian</div>
+                    <p style={{fontSize:13,color:T.textMuted,lineHeight:1.5,margin:0}}>They can use it to request access to your learning progress. You stay in control and approve the connection.</p>
+                  </div>
+                  <div className="family-code-actions" style={{display:"flex",alignItems:"center",justifyContent:"flex-end",gap:10,flexWrap:"wrap"}}>
+                    <div className="family-code-value">{familyCode}</div>
+                    <Btn v="outline" style={{padding:"9px 14px",fontSize:12.5,whiteSpace:"nowrap"}} onClick={async () => {
+                      try { await navigator.clipboard.writeText(familyCode); showToast("Family code copied"); }
+                      catch { showToast("Couldn't copy the family code. Please copy it manually."); }
+                    }}>Copy code</Btn>
+                  </div>
+                </Card>
               )}
             </div>
-            <SparkRewardsPanel
-              supabase={supabase}
-              viewerUserId={user.id}
-              viewerRole="student"
-              subjectUserId={user.id}
-              subjectName={profile?.name || ""}
-            />
-            <div className="student-dashboard-stats-grid" style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(140px,1fr))",
-              gap:14,marginBottom:24}}>
-              {[
-                ["Enrolled subjects", allSubjectsSummary.activeSubjects],
-                ["Lessons completed", allSubjectsSummary.lessonsCompleted],
-                ["Practice results", allSubjectsSummary.practiceAttempts],
-                ["Day Study Streak", streak > 0 ? streak : "0"],
-              ].map(([label,val]) => (
-                <Card key={label} className="student-dashboard-stat-card" style={{padding:18}}>
-                  <div style={{fontFamily:FD,fontSize:26,fontWeight:700,color:T.ink}}>{val}</div>
-                  <div style={{fontSize:11,color:T.textMuted,textTransform:"uppercase",letterSpacing:"0.04em",marginTop:3}}>{label}</div>
-                </Card>
-              ))}
-            </div>
-            <SubjectDashboardOverview
-              summaries={subjectDashboardSummaries}
-              onOpenSubject={subject => openSubject(subject)}
-              onOpenProgress={subject => { setProgressSubject(subject?.id || "all"); setDashboardSection("progress"); }}
-              onOpenReport={() => { setStudentReportSubject("all"); setStudentReportOpen(true); }}
-              subjectInsights={dashboardSubjectInsights}
-              onManageSubjects={() => setDashboardSection("subjects")}
-            />
-            <StudentGoalCard
-              userId={user.id}
-              supabase={supabase}
-              subjects={subjectDashboardSummaries}
-              showToast={showToast}
-              onGoalChange={setStudentGoal}
-              onManageSubjects={() => setDashboardSection("subjects")}
-            />
-            <StudentDashboardSupportCards
-              flashcardSubjects={studentFlashcardSubjects}
-              upcomingBookings={upcomingSessions}
-              recentActivity={recentSubjectActivity}
-              onOpenFlashcards={studentHasFlashcards ? () => setDashboardSection("flashcards") : undefined}
-              onOpenProgress={() => { setProgressSubject("all"); setDashboardSection("progress"); }}
-            />
-            {parentLinks.filter(l => l.status === "pending").length > 0 && (
-              <Card className="family-request-card notification-anchor-card" data-notification-anchor="family-request" style={{marginBottom:20}}>
-                <div className="family-request-icon">👨‍👩‍👧</div>
-                <div style={{flex:1}}>
-                  <div className="section-kicker">FAMILY CONNECTION</div>
-                  <div style={{fontFamily:FD,fontSize:17,fontWeight:700,color:T.ink,margin:"3px 0 5px"}}>A parent wants to connect</div>
-                  <p style={{fontSize:13,color:T.textMuted,lineHeight:1.5,margin:"0 0 12px"}}>Approve this only if you recognize the parent or guardian.</p>
-                  {parentLinks.filter(l=>l.status==="pending").map(link => (
-                    <div key={link.id} className="family-request-actions">
-                      <button className="cp-btn cp-btn-secondary" onClick={()=>respondToParentLink(link.id,"declined")}>Decline</button>
-                      <button className="cp-btn cp-btn-primary" onClick={()=>respondToParentLink(link.id,"approved")}>Approve parent</button>
-                    </div>
-                  ))}
-                </div>
-              </Card>
-            )}
-            {familyCode && (
-              <Card className="family-code-card student-overview-family-card" style={{marginBottom:20}}>
-                <div>
-                  <div className="section-kicker">YOUR FAMILY CODE</div>
-                  <div style={{fontFamily:FD,fontSize:17,fontWeight:700,color:T.ink,margin:"3px 0 5px"}}>Share this with a parent or guardian</div>
-                  <p style={{fontSize:13,color:T.textMuted,lineHeight:1.5,margin:0}}>They can use it to request access to your learning progress. You stay in control and approve the connection.</p>
-                </div>
-                <div className="family-code-actions" style={{display:"flex",alignItems:"center",justifyContent:"flex-end",gap:10,flexWrap:"wrap"}}>
-                  <div className="family-code-value">{familyCode}</div>
-                  <Btn v="outline" style={{padding:"9px 14px",fontSize:12.5,whiteSpace:"nowrap"}} onClick={async () => {
-                    try {
-                      await navigator.clipboard.writeText(familyCode);
-                      showToast("Family code copied");
-                    } catch {
-                      showToast("Couldn't copy the family code. Please copy it manually.");
-                    }
-                  }}>Copy code</Btn>
-                </div>
-              </Card>
-            )}
-          </>
+          </div>
         )}
 
         {sec === "sessions" && isTutor && (

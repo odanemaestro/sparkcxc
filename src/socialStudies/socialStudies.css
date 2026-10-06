@@ -868,3 +868,131 @@ html[data-theme="dark"] .ss-sba-result.missing{border-left-color:#ef4444}
 html[data-theme="dark"] .ss-sba-data-builder,body[data-theme="dark"] .ss-sba-data-builder,.dark .ss-sba-data-builder{background:#10263a;border-color:#29465f}
 html[data-theme="dark"] .ss-sba-chart-preview,body[data-theme="dark"] .ss-sba-chart-preview,.dark .ss-sba-chart-preview{background:#fff;color:#183747;border-color:#42637a}
 @media(max-width:700px){.ss-sba-axis-labels{grid-template-columns:1fr}.ss-sba-data-rows>div{grid-template-columns:1fr 110px}.ss-sba-data-rows>div button{grid-column:1/-1}.ss-sba-chart-preview svg{min-width:460px}}
+
+
+/* Social Studies lesson progression parity with Integrated Science -------- */
+.ss-lesson-footer{
+  display:grid;
+  grid-template-columns:auto minmax(150px,1fr) auto;
+  align-items:center;
+  gap:10px;
+  margin-top:30px;
+  padding-top:20px;
+  border-top:1px solid var(--spark-border-soft,#edf2f7);
+}
+.ss-lesson-footer button{
+  min-height:44px;
+  padding:0 16px;
+  border-radius:10px;
+  font:inherit;
+  font-size:13px;
+  font-weight:800;
+  cursor:pointer;
+}
+.ss-complete-action{
+  justify-self:center;
+  border:0;
+  background:var(--spark-teal,#0d9488);
+  color:#fff;
+}
+.ss-complete-action:hover:not(:disabled){
+  background:var(--spark-teal-dark,#087f73);
+}
+.ss-lesson-nav{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  min-width:126px;
+}
+.ss-lesson-nav-previous{
+  border:1px solid var(--spark-btn-navy-border,#b9c9df);
+  background:var(--spark-btn-navy-soft,#eaf0f8);
+  color:var(--spark-btn-navy,#132b5e);
+}
+.ss-lesson-nav-previous:hover:not(:disabled){
+  border-color:var(--spark-btn-navy,#132b5e);
+  background:var(--spark-btn-navy-soft-hover,#dce7f4);
+  color:var(--spark-btn-navy,#132b5e);
+}
+.ss-lesson-nav-next:not(:disabled){
+  border:1px solid var(--spark-teal,#0d9488);
+  background:var(--spark-teal,#0d9488);
+  color:#fff;
+}
+.ss-lesson-nav-next:not(:disabled):hover{
+  background:var(--spark-teal-dark,#087f73);
+  color:#fff;
+}
+.ss-lesson-footer button.done,
+.ss-lesson-footer button:disabled{
+  border:1px solid var(--spark-border-soft,#d9e2ec);
+  background:var(--spark-muted,#edf2f7);
+  color:var(--spark-text-muted,#627d98);
+  cursor:default;
+  opacity:1;
+}
+.ss-lesson-nav-spacer{min-width:126px}
+
+.ss-lesson-list button.locked{
+  cursor:not-allowed;
+  opacity:.68;
+}
+.ss-lesson-list button.locked:hover{
+  border-color:var(--spark-border-soft,#edf2f7);
+  background:var(--spark-bg,#f7fafc);
+}
+.ss-lesson-list button.complete{
+  border-color:color-mix(in srgb,var(--spark-teal,#0d9488) 26%,var(--spark-border-soft,#edf2f7));
+}
+.ss-lock-icon{
+  width:15px;
+  height:15px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.7;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+html[data-theme="dark"] .ss-lesson-nav-previous{
+  border-color:#3b5572;
+  background:#15243a;
+  color:#dbe8ff;
+}
+html[data-theme="dark"] .ss-lesson-nav-previous:hover:not(:disabled){
+  border-color:#50749e;
+  background:#1b304b;
+}
+html[data-theme="dark"] .ss-lesson-nav-next:not(:disabled),
+html[data-theme="dark"] .ss-complete-action:not(:disabled){
+  border-color:#0f9a8a;
+  background:#0f9a8a;
+  color:#fff;
+}
+html[data-theme="dark"] .ss-lesson-nav-next:not(:disabled):hover,
+html[data-theme="dark"] .ss-complete-action:not(:disabled):hover{
+  background:#0b8174;
+}
+html[data-theme="dark"] .ss-lesson-footer button.done,
+html[data-theme="dark"] .ss-lesson-footer button:disabled{
+  border-color:rgba(148,163,184,.22);
+  background:rgba(30,41,59,.88);
+  color:#cbd5e1;
+}
+html[data-theme="dark"] .ss-lesson-list button.locked:hover{
+  background:var(--spark-bg,#0f172a);
+  border-color:var(--spark-border-soft,#1e293b);
+}
+
+@media(max-width:700px){
+  .ss-lesson-footer{
+    grid-template-columns:1fr;
+  }
+  .ss-lesson-nav,
+  .ss-complete-action{
+    width:100%;
+    justify-self:stretch;
+  }
+  .ss-lesson-nav-spacer{display:none}
+}

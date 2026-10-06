@@ -58,7 +58,7 @@ export default function EnglishAPracticeHub({ supabase, userId, onBack }) {
             </p>
           </div>
           <button type="button" className="ea-practice-back" onClick={onBack}>
-            <span aria-hidden="true">{"←"}</span> Change subject
+            <span aria-hidden="true">{"←"}</span> Back
           </button>
         </header>
 

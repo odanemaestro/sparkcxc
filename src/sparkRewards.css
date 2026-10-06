@@ -29,16 +29,50 @@
   box-shadow:var(--spark-shadow-md,0 10px 28px rgba(15,37,87,.06));
   overflow:hidden;
 }
-.spark-rewards-hero{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:16px;padding:20px 22px;background:linear-gradient(135deg,var(--rewards-teal-surface),var(--rewards-surface) 58%,var(--rewards-amber-soft))}
-.spark-rewards-trophy{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:var(--rewards-teal-soft);color:var(--rewards-teal-strong);border:1px solid color-mix(in srgb,var(--rewards-teal) 32%,transparent)}
+.spark-rewards-hero{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto;
+  align-items:center;
+  gap:16px;
+  padding:20px 22px;
+  background:#fffaf0;
+  border-color:#eedcad;
+}
+.spark-rewards-trophy{
+  width:48px;
+  height:48px;
+  border-radius:15px;
+  display:grid;
+  place-items:center;
+  background:#fff4d8;
+  color:#d99a1b;
+  border:1px solid #eedcad;
+}
 .spark-rewards-trophy svg{width:27px;height:27px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .spark-rewards-winner-copy{min-width:0;display:flex;flex-direction:column;gap:3px}
-.spark-rewards-eyebrow,.spark-rewards-personal-label{font-size:10.5px;font-weight:800;letter-spacing:.09em;color:var(--rewards-teal-strong)}
+.spark-rewards-eyebrow,.spark-rewards-personal-label{font-size:10.5px;font-weight:800;letter-spacing:.09em;color:#9a6500}
 .spark-rewards-winner-copy>strong{font-family:Georgia,'Times New Roman',serif;font-size:20px;color:var(--rewards-ink)}
 .spark-rewards-winner-copy>span:last-child{font-size:12.5px;color:var(--rewards-text-muted)}
 .spark-rewards-loading{color:var(--rewards-ink-soft)!important}
-.spark-rewards-leaders-button{border:1px solid color-mix(in srgb,var(--rewards-teal) 45%,var(--rewards-border));border-radius:10px;background:var(--rewards-surface);color:var(--rewards-teal-strong);padding:10px 13px;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;white-space:nowrap;transition:background .16s ease,border-color .16s ease,color .16s ease,transform .16s ease}
-.spark-rewards-leaders-button:hover:not(:disabled){background:var(--rewards-teal-surface);border-color:var(--rewards-teal);transform:translateY(-1px)}
+.spark-rewards-leaders-button{
+  border:1px solid #d8c07c;
+  border-radius:10px;
+  background:#fff;
+  color:#8a6100;
+  padding:10px 13px;
+  font-family:inherit;
+  font-weight:700;
+  font-size:12.5px;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:background .16s ease,border-color .16s ease,color .16s ease,transform .16s ease;
+}
+.spark-rewards-leaders-button:hover:not(:disabled){
+  background:#fff4d8;
+  border-color:#d99a1b;
+  color:#735000;
+  transform:translateY(-1px);
+}
 .spark-rewards-leaders-button:disabled{opacity:.55;cursor:default}
 .spark-rewards-setup-note{padding:13px 20px;border-top:1px solid var(--rewards-border);background:var(--rewards-muted);font-size:12.5px;color:var(--rewards-text-muted)}
 .spark-rewards-personal{padding:18px 22px;border-top:1px solid var(--rewards-border);background:var(--rewards-surface)}
@@ -83,10 +117,29 @@
 /* Explicit Dark-mode polish. System/device-dark resolves to data-theme="dark"
    through SPARK's appearance hook before this component paints. */
 html[data-theme="dark"] .spark-rewards-card{box-shadow:var(--spark-shadow-lg)}
-html[data-theme="dark"] .spark-rewards-hero{background:linear-gradient(135deg,var(--spark-teal-surface),var(--spark-paper) 58%,color-mix(in srgb,var(--spark-amber-light) 72%,var(--spark-paper)))}
-html[data-theme="dark"] .spark-rewards-trophy{background:var(--spark-teal-light);color:var(--spark-teal-dark);border-color:var(--spark-border-strong)}
-html[data-theme="dark"] .spark-rewards-leaders-button{background:var(--spark-paper-raised)}
-html[data-theme="dark"] .spark-rewards-leaders-button:hover:not(:disabled){background:var(--spark-teal-surface)}
+html[data-theme="dark"] .spark-rewards-hero{
+  background:#241f12;
+  border-color:#4f431d;
+}
+html[data-theme="dark"] .spark-rewards-trophy{
+  background:#302814;
+  color:#e7b449;
+  border-color:#4f431d;
+}
+html[data-theme="dark"] .spark-rewards-eyebrow,
+html[data-theme="dark"] .spark-rewards-personal-label{
+  color:#f2c15b;
+}
+html[data-theme="dark"] .spark-rewards-leaders-button{
+  background:#2a2416;
+  border-color:#6a5825;
+  color:#f2c15b;
+}
+html[data-theme="dark"] .spark-rewards-leaders-button:hover:not(:disabled){
+  background:#342b17;
+  border-color:#8b6f28;
+  color:#ffd878;
+}
 html[data-theme="dark"] .spark-rewards-switch:not(.is-on) i{background:var(--spark-ink-soft);border-color:var(--spark-border-strong)}
 
 @media (max-width:720px){.spark-rewards-hero{grid-template-columns:auto 1fr;padding:17px}.spark-rewards-leaders-button{grid-column:1/-1;width:100%}.spark-rewards-personal{padding:16px 17px}.spark-rewards-personal-main{grid-template-columns:1fr;gap:14px}.spark-rewards-expanded{grid-template-columns:1fr;padding:16px 17px}.spark-rewards-breakdown-row{grid-template-columns:98px 1fr 38px}.spark-rewards-winner-copy>strong{font-size:18px}}

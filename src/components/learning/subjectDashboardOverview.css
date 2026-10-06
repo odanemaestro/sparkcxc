@@ -1,33 +1,399 @@
-.spark-subject-dashboard-overview{display:grid;gap:20px;margin-bottom:22px}.spark-subject-insight-card{display:flex;align-items:center;gap:14px;padding:18px 20px}.spark-subject-insight-copy{flex:1;min-width:0}.spark-subject-insight-copy p{margin:5px 0 0;line-height:1.55;color:var(--spark-text-muted,#52677a);font-size:13px}.spark-subject-overview-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}.spark-subject-overview-heading h2{margin:3px 0 0;font-size:20px}.spark-subject-active-pill{border:1px solid var(--spark-border,#d7e2ee);border-radius:999px;padding:6px 10px;font-size:11px;font-weight:800;color:var(--spark-text-muted,#52677a)}.spark-subject-overview-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.spark-subject-overview-card{display:grid;gap:13px}.spark-subject-overview-title-row{display:flex;align-items:center;gap:11px}.spark-subject-overview-title-row>div:last-child{display:grid;gap:2px}.spark-subject-overview-title-row span{font-weight:800;color:var(--spark-ink,#0f2557)}.spark-subject-overview-title-row small{font-size:11px;color:var(--spark-text-muted,#6b7c93)}.spark-subject-overview-mark{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-weight:900;background:rgba(13,148,136,.11);color:#0d9488;border:1px solid rgba(13,148,136,.2)}.spark-subject-overview-mark.physics{background:rgba(14,165,233,.1);color:#0284c7;border-color:rgba(14,165,233,.2)}.spark-subject-overview-progress-row{display:flex;justify-content:space-between;gap:12px;font-size:12px;color:var(--spark-text-muted,#6b7c93)}.spark-subject-overview-progress-row strong{color:var(--spark-ink,#0f2557)}.spark-subject-overview-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.spark-subject-overview-metrics>div{padding:10px;border-radius:10px;background:var(--spark-bg,#f7fafc);border:1px solid var(--spark-border,#d7e2ee);display:grid;gap:2px}.spark-subject-overview-metrics strong{font-size:15px;color:var(--spark-ink,#0f2557)}.spark-subject-overview-metrics span{font-size:10px;color:var(--spark-text-muted,#6b7c93)}.spark-subject-report-cta{margin-top:0}@media(max-width:900px){.spark-subject-overview-metrics{grid-template-columns:1fr 1fr}}@media(max-width:720px){.spark-subject-insight-card{align-items:flex-start;flex-wrap:wrap}.spark-subject-insight-card .spark-dashboard-card-action{width:100%;justify-content:center}.spark-subject-overview-grid{grid-template-columns:1fr}.spark-subject-overview-metrics{grid-template-columns:1fr 1fr}}
-.spark-subject-overview-focus{display:grid;gap:3px;padding:10px 11px;border-radius:10px;background:color-mix(in srgb,var(--spark-teal-light,#e7faf6) 60%,var(--spark-paper,#fff));border:1px solid color-mix(in srgb,var(--spark-teal,#20c9b7) 24%,var(--spark-border,#d7e2ee))}.spark-subject-overview-focus>span{font-size:9.5px;font-weight:850;text-transform:uppercase;letter-spacing:.055em;color:var(--spark-teal-dark,#087f73)}.spark-subject-overview-focus>strong{font-size:12.5px;color:var(--spark-ink,#0f2557)}.spark-subject-overview-focus>small{font-size:10.5px;line-height:1.45;color:var(--spark-text-muted,#6b7c93)}.spark-subject-overview-actions{display:flex;gap:8px;flex-wrap:wrap}.spark-subject-overview-actions .spark-dashboard-card-action{flex:1;min-width:145px;justify-content:center}.spark-dashboard-card-action-secondary{background:var(--spark-paper,#fff)!important;color:var(--spark-ink,#0f2557)!important;border-color:var(--spark-border,#d7e2ee)!important}
-
-/* SPARK SUBJECT CTA TEXT FIT V1 */
-.spark-subject-overview-actions .spark-dashboard-card-action>span:first-child{
-  min-width:0;
+.spark-subject-dashboard-overview{
+  --sdo-surface:#ffffff;
+  --sdo-surface-soft:#f5f8fb;
+  --sdo-ink:#102a56;
+  --sdo-muted:#677892;
+  --sdo-border:#dfe6ee;
+  --sdo-navy:#123468;
+  --sdo-teal:#0a766d;
+  --sdo-teal-soft:#e7f7f3;
+  --sdo-gold-soft:#fff4d8;
+  --sdo-gold-ink:#805b00;
+  --sdo-link:#1463b7;
+  display:grid;
+  gap:18px;
+  margin:0;
+}
+html[data-theme="dark"] .spark-subject-dashboard-overview{
+  --sdo-surface:#101d31;
+  --sdo-surface-soft:#15243a;
+  --sdo-ink:#f3f7ff;
+  --sdo-muted:#9fb0c4;
+  --sdo-border:#263850;
+  --sdo-navy:#dbe8ff;
+  --sdo-teal:#8ee0d6;
+  --sdo-teal-soft:#12332f;
+  --sdo-gold-soft:#302814;
+  --sdo-gold-ink:#f2c15b;
+  --sdo-link:#78b8ff;
+}
+.spark-subject-overview-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  gap:20px;
+}
+.spark-subject-overview-heading h2{
+  margin:0;
+  color:var(--sdo-ink);
+  font-size:24px;
   line-height:1.2;
-  text-wrap:balance;
+  letter-spacing:-.025em;
+}
+.spark-subject-overview-heading p{
+  max-width:680px;
+  margin:6px 0 0;
+  color:var(--sdo-muted);
+  font-size:13px;
+  line-height:1.55;
+}
+.spark-subject-overview-heading-actions{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:6px;
+}
+.spark-subject-overview-summary{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px 16px;
+  margin-top:10px;
+  color:var(--sdo-muted);
+  font-size:11.5px;
+}
+.spark-subject-overview-summary strong{
+  color:var(--sdo-ink);
+  font-size:12px;
+}
+.spark-subject-overview-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+}
+.spark-subject-overview-card{
+  min-width:0;
+  display:grid;
+  gap:14px;
+  padding:18px;
+  border:1px solid var(--sdo-border);
+  border-radius:16px;
+  background:var(--sdo-surface);
+  box-shadow:0 7px 22px rgba(20,43,76,.045);
+}
+.spark-subject-overview-card.is-focus-next{
+  background:color-mix(in srgb,var(--sdo-teal-soft) 42%,var(--sdo-surface));
+}
+.spark-subject-card-head{
+  display:grid;
+  grid-template-columns:44px minmax(0,1fr) auto;
+  gap:11px;
+  align-items:center;
+}
+.spark-subject-overview-mark{
+  width:44px;
+  height:44px;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--sdo-border);
+  border-radius:13px;
+  background:var(--sdo-surface-soft);
+  color:var(--sdo-ink);
+  font-size:13px;
+  font-weight:850;
+  letter-spacing:-.02em;
+}
+.spark-subject-card-title{
+  min-width:0;
+  display:grid;
+  gap:3px;
+}
+.spark-subject-card-title strong{
+  color:var(--sdo-ink);
+  font-size:14px;
+  line-height:1.25;
+}
+.spark-subject-card-title span{
+  color:var(--sdo-muted);
+  font-size:10.5px;
+  line-height:1.35;
+}
+.spark-subject-focus-pill{
+  padding:4px 8px;
+  border-radius:999px;
+  background:var(--sdo-gold-soft);
+  color:var(--sdo-gold-ink);
+  font-size:9.5px;
+  font-weight:850;
+  white-space:nowrap;
+}
+.spark-subject-card-progress{
+  display:grid;
+  gap:7px;
+}
+.spark-subject-card-progress>div{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.spark-subject-card-progress span{
+  color:var(--sdo-muted);
+  font-size:10.5px;
+}
+.spark-subject-card-progress strong{
+  color:var(--sdo-ink);
+  font-size:13px;
+  font-variant-numeric:tabular-nums;
+}
+.spark-subject-card-progress .spark-progress-bar{
+  background:#e8edf3!important;
+}
+.spark-subject-card-progress .spark-progress-bar__fill{
+  background:var(--sdo-navy)!important;
+}
+.spark-subject-card-evidence{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px 12px;
+  color:var(--sdo-muted);
+  font-size:10.5px;
+}
+.spark-subject-card-evidence span{
+  white-space:nowrap;
+}
+.spark-subject-card-evidence strong{
+  color:var(--sdo-ink);
+  font-weight:800;
+}
+.spark-subject-card-focus{
+  min-width:0;
+  display:grid;
+  gap:3px;
+  padding-top:12px;
+  border-top:1px solid var(--sdo-border);
+}
+.spark-subject-card-focus>span{
+  color:var(--sdo-teal);
+  font-size:9.5px;
+  font-weight:800;
+}
+.spark-subject-card-focus strong{
+  overflow:hidden;
+  color:var(--sdo-ink);
+  font-size:12px;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.spark-subject-card-focus small{
+  display:-webkit-box;
+  overflow:hidden;
+  color:var(--sdo-muted);
+  font-size:10.5px;
+  line-height:1.45;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+}
+.spark-subject-card-actions{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+.spark-subject-card-actions .spark-dashboard-card-action{
+  min-width:104px;
+}
+.spark-subject-view-all{
+  justify-self:start;
+  min-height:36px;
+  padding:0;
+  border:0;
+  background:transparent;
+  color:var(--sdo-link);
+  font:inherit;
+  font-size:11.5px;
+  font-weight:800;
+  cursor:pointer;
+}
+.spark-subject-view-all:hover{text-decoration:underline;text-underline-offset:3px}
+.spark-subject-empty-card{padding:20px}
+.spark-subject-empty-card .spark-card-title-with-icon h3{margin:0}
+.spark-subject-empty-card .spark-card-title-with-icon p{margin:4px 0 0}
+
+html[data-theme="dark"] .spark-subject-card-progress .spark-progress-bar{
+  background:#26364b!important;
 }
 
-@media(max-width:720px){
-  .spark-subject-overview-actions{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    width:100%;
-  }
-  .spark-subject-overview-actions .spark-dashboard-card-action{
-    min-width:0;
-    width:100%;
-  }
-}
-
-@media(max-width:380px){
-  .spark-subject-overview-actions{grid-template-columns:1fr}
-}
-
-/* SPARK_SUBJECT_GRID_SCALE_V1 */
-@media(min-width:1800px){
-  .spark-subject-overview-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-}
-@media(max-width:840px){
+@media(max-width:920px){
   .spark-subject-overview-grid{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  .spark-subject-overview-heading{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .spark-subject-overview-heading-actions{justify-content:flex-start}
+}
+@media(max-width:520px){
+  .spark-subject-overview-card{padding:15px}
+  .spark-subject-card-head{grid-template-columns:40px minmax(0,1fr)}
+  .spark-subject-overview-mark{width:40px;height:40px}
+  .spark-subject-focus-pill{
+    grid-column:2;
+    justify-self:start;
+  }
+  .spark-subject-card-actions{
+    align-items:stretch;
+    flex-direction:column;
+  }
+  .spark-subject-card-actions .spark-dashboard-card-action,
+  .spark-subject-card-actions .spark-consultant-text-action{width:100%}
+}
+
+
+/* Shared student + parent dark-mode completion ---------------------------- */
+html[data-theme="dark"] .spark-subject-overview-card{
+  background:var(--sdo-surface);
+  border-color:var(--sdo-border);
+  box-shadow:0 8px 22px rgba(0,0,0,.16);
+}
+html[data-theme="dark"] .spark-subject-overview-card.is-focus-next{
+  background:color-mix(in srgb,var(--sdo-teal-soft) 72%,var(--sdo-surface));
+}
+html[data-theme="dark"] .spark-subject-overview-mark{
+  background:var(--sdo-surface-soft);
+  border-color:var(--sdo-border);
+  color:var(--sdo-ink);
+}
+html[data-theme="dark"] .spark-subject-card-focus{
+  border-top-color:var(--sdo-border);
+}
+html[data-theme="dark"] .spark-subject-card-progress .spark-progress-bar{
+  background:#26364b!important;
+}
+html[data-theme="dark"] .spark-subject-card-progress .spark-progress-bar__fill{
+  background:#7ea8e8!important;
+}
+html[data-theme="dark"] .spark-subject-focus-pill{
+  background:var(--sdo-gold-soft);
+  color:var(--sdo-gold-ink);
+}
+html[data-theme="dark"] .spark-subject-card-actions .spark-dashboard-card-action{
+  border-color:#3b5572!important;
+  background:#16304f!important;
+  color:#eef5ff!important;
+}
+html[data-theme="dark"] .spark-subject-card-actions .spark-dashboard-card-action:hover:not(:disabled){
+  border-color:#50749e!important;
+  background:#1b3a60!important;
+  color:#fff!important;
+}
+html[data-theme="dark"] .spark-subject-card-actions .spark-dashboard-card-action:disabled{
+  border-color:#2a3c53!important;
+  background:#172436!important;
+  color:#708197!important;
+}
+html[data-theme="dark"] .spark-subject-view-all,
+html[data-theme="dark"] .spark-subject-card-actions .spark-consultant-text-action{
+  color:var(--sdo-link)!important;
+}
+html[data-theme="dark"] .spark-subject-view-all:hover,
+html[data-theme="dark"] .spark-subject-card-actions .spark-consultant-text-action:hover{
+  background:#162941!important;
+}
+
+/* New home-list variant uses its own ssh tokens, but these selectors ensure
+   the same component is correct when rendered in parent/student wrappers. */
+html[data-theme="dark"] .ssh-subjects{
+  background:#101d31;
+  border-color:#263850;
+}
+html[data-theme="dark"] .ssh-subject{
+  border-top-color:#263850;
+}
+html[data-theme="dark"] .ssh-subject-mark{
+  background:#15243a;
+  border-color:#263850;
+  color:#f3f7ff;
+}
+html[data-theme="dark"] .ssh-subject-heading h3,
+html[data-theme="dark"] .ssh-subject-percent strong,
+html[data-theme="dark"] .ssh-focus-title,
+html[data-theme="dark"] .ssh-facts strong{
+  color:#f3f7ff;
+}
+html[data-theme="dark"] .ssh-subject-heading .ssh-status,
+html[data-theme="dark"] .ssh-subject-percent span,
+html[data-theme="dark"] .ssh-subject-caption,
+html[data-theme="dark"] .ssh-facts,
+html[data-theme="dark"] .ssh-focus-detail{
+  color:#9fb0c4;
+}
+html[data-theme="dark"] .ssh-focus{
+  border-color:#263850;
+}
+
+
+/* Subject action button cleanup ------------------------------------------- */
+/* Keep Continue/Practise as one clear control. The arrow is part of the
+   button, not a second circular action. */
+.spark-subject-card-actions .spark-dashboard-card-action{
+  min-width:112px!important;
+  min-height:38px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:8px!important;
+  padding:8px 13px!important;
+  border:1px solid #123468!important;
+  border-radius:10px!important;
+  background:#123468!important;
+  color:#fff!important;
+  box-shadow:none!important;
+}
+.spark-subject-card-actions .spark-dashboard-card-action:hover:not(:disabled){
+  border-color:#0e2a58!important;
+  background:#0e2a58!important;
+  color:#fff!important;
+  box-shadow:0 5px 14px rgba(15,37,87,.10)!important;
+}
+.spark-subject-card-actions .spark-dashboard-card-action>span:first-child{
+  color:inherit!important;
+}
+.spark-subject-card-actions .spark-dashboard-card-action-icon{
+  width:16px!important;
+  height:16px!important;
+  min-width:16px!important;
+  display:grid!important;
+  place-items:center!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  color:inherit!important;
+  box-shadow:none!important;
+}
+.spark-subject-card-actions .spark-dashboard-card-action-icon svg{
+  width:15px!important;
+  height:15px!important;
+  fill:none!important;
+  stroke:currentColor!important;
+  stroke-width:1.8!important;
+  stroke-linecap:round!important;
+  stroke-linejoin:round!important;
+}
+html[data-theme="dark"] .spark-subject-card-actions .spark-dashboard-card-action{
+  border-color:#2f6db4!important;
+  background:#2f6db4!important;
+  color:#fff!important;
+}
+html[data-theme="dark"] .spark-subject-card-actions .spark-dashboard-card-action:hover:not(:disabled){
+  border-color:#397ac4!important;
+  background:#397ac4!important;
+  color:#fff!important;
+}
+html[data-theme="dark"] .spark-subject-card-actions .spark-dashboard-card-action-icon{
+  border:0!important;
+  background:transparent!important;
+  color:#fff!important;
+  box-shadow:none!important;
 }

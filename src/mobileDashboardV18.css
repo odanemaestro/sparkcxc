@@ -1103,3 +1103,145 @@
     }
   }
 }
+
+
+/* ==========================================================================
+   STUDENT DASHBOARD REDESIGN GLASS PARITY
+   New dashboard surfaces introduced after Mobile Glass V18. Keep glass
+   optional, readable and consistent on phones, tablets and iPads.
+   ========================================================================== */
+
+@media(max-width:1100px){
+  html[data-glass="true"] .spark-student-home .ssh-card,
+  html[data-glass="true"] .spark-student-home .ssh-subjects,
+  html[data-glass="true"] .spark-student-home .ssh-support,
+  html[data-glass="true"] .spark-student-home .spark-goal-card,
+  html[data-glass="true"] .spark-student-home .family-request-card,
+  html[data-glass="true"] .spark-student-home .family-code-card,
+  html[data-glass="true"] .spark-subject-dashboard-overview .spark-subject-overview-card{
+    background:color-mix(in srgb,var(--spark-paper,#fff) 82%,transparent)!important;
+    border-color:color-mix(in srgb,var(--spark-border,#d7e2ee) 70%,transparent)!important;
+    -webkit-backdrop-filter:blur(22px) saturate(155%);
+    backdrop-filter:blur(22px) saturate(155%);
+    box-shadow:
+      0 12px 32px rgba(15,37,87,.09),
+      inset 0 1px 0 rgba(255,255,255,.20)!important;
+  }
+
+  html[data-glass="true"] .spark-student-home .ssh-spotlight,
+  html[data-glass="true"] .spark-rewards-card .spark-rewards-hero{
+    background:color-mix(in srgb,#fff4d8 76%,transparent)!important;
+    border-color:color-mix(in srgb,#d99a1b 36%,transparent)!important;
+    -webkit-backdrop-filter:blur(22px) saturate(155%);
+    backdrop-filter:blur(22px) saturate(155%);
+  }
+
+  html[data-glass="true"] .spark-student-home .ssh-subject-mark,
+  html[data-glass="true"] .spark-subject-dashboard-overview .spark-subject-overview-mark,
+  html[data-glass="true"] .spark-student-home .ssh-glance-button,
+  html[data-glass="true"] .spark-student-home .ssh-glance-static{
+    background:color-mix(in srgb,var(--spark-paper,#fff) 62%,transparent)!important;
+  }
+
+  html[data-theme="dark"][data-glass="true"] .spark-student-home .ssh-card,
+  html[data-theme="dark"][data-glass="true"] .spark-student-home .ssh-subjects,
+  html[data-theme="dark"][data-glass="true"] .spark-student-home .ssh-support,
+  html[data-theme="dark"][data-glass="true"] .spark-student-home .spark-goal-card,
+  html[data-theme="dark"][data-glass="true"] .spark-student-home .family-request-card,
+  html[data-theme="dark"][data-glass="true"] .spark-student-home .family-code-card,
+  html[data-theme="dark"][data-glass="true"] .spark-subject-dashboard-overview .spark-subject-overview-card{
+    background:rgba(13,28,49,.80)!important;
+    border-color:rgba(145,165,191,.18)!important;
+    box-shadow:
+      0 14px 34px rgba(0,0,0,.24),
+      inset 0 1px 0 rgba(255,255,255,.05)!important;
+  }
+
+  html[data-theme="dark"][data-glass="true"] .spark-student-home .ssh-spotlight,
+  html[data-theme="dark"][data-glass="true"] .spark-rewards-card .spark-rewards-hero{
+    background:rgba(48,40,20,.82)!important;
+    border-color:rgba(231,180,73,.24)!important;
+  }
+
+  html[data-theme="dark"][data-glass="true"] .spark-student-home .ssh-subject-mark,
+  html[data-theme="dark"][data-glass="true"] .spark-subject-dashboard-overview .spark-subject-overview-mark,
+  html[data-theme="dark"][data-glass="true"] .spark-student-home .ssh-glance-button,
+  html[data-theme="dark"][data-glass="true"] .spark-student-home .ssh-glance-static{
+    background:rgba(255,255,255,.045)!important;
+  }
+}
+
+/* iPad / tablet: stronger opacity than phones so large cards stay legible. */
+@media(min-width:701px) and (max-width:1100px){
+  html[data-glass="true"] .spark-student-home .ssh-card,
+  html[data-glass="true"] .spark-subject-dashboard-overview .spark-subject-overview-card{
+    background:color-mix(in srgb,var(--spark-paper,#fff) 86%,transparent)!important;
+    -webkit-backdrop-filter:blur(24px) saturate(150%);
+    backdrop-filter:blur(24px) saturate(150%);
+  }
+  html[data-theme="dark"][data-glass="true"] .spark-student-home .ssh-card,
+  html[data-theme="dark"][data-glass="true"] .spark-subject-dashboard-overview .spark-subject-overview-card{
+    background:rgba(13,28,49,.86)!important;
+  }
+
+  html[data-glass="true"] .spark-student-home .ssh-top,
+  html[data-glass="true"] .spark-student-home .ssh-main{
+    gap:18px!important;
+  }
+}
+
+/* Phone: preserve the glass look without letting text sit on busy backgrounds. */
+@media(max-width:700px){
+  html[data-glass="true"] .spark-student-home .ssh-card,
+  html[data-glass="true"] .spark-subject-dashboard-overview .spark-subject-overview-card{
+    background:color-mix(in srgb,var(--spark-paper,#fff) 80%,transparent)!important;
+    -webkit-backdrop-filter:blur(20px) saturate(150%);
+    backdrop-filter:blur(20px) saturate(150%);
+  }
+  html[data-theme="dark"][data-glass="true"] .spark-student-home .ssh-card,
+  html[data-theme="dark"][data-glass="true"] .spark-subject-dashboard-overview .spark-subject-overview-card{
+    background:rgba(13,28,49,.82)!important;
+  }
+
+  html[data-glass="true"] .spark-student-home .ssh-subject-actions .ssh-btn,
+  html[data-glass="true"] .spark-student-home .ssh-text-btn{
+    -webkit-backdrop-filter:none;
+    backdrop-filter:none;
+  }
+}
+
+/* New weekly leaders modal inherits the shared modal glass shell. Its inner
+   panels need transparent-aware surfaces too. */
+@media(max-width:1100px){
+  html[data-glass="true"] .spark-weekly-leaders-modal .spark-weekly-leaders-panel,
+  html[data-glass="true"] .spark-weekly-leaders-modal .spark-weekly-score-panel,
+  html[data-glass="true"] .spark-weekly-leaders-modal .spark-rewards-leader-row{
+    background:color-mix(in srgb,var(--spark-paper,#fff) 66%,transparent)!important;
+    border-color:color-mix(in srgb,var(--spark-border,#d7e2ee) 64%,transparent)!important;
+  }
+  html[data-theme="dark"][data-glass="true"] .spark-weekly-leaders-modal .spark-weekly-leaders-panel,
+  html[data-theme="dark"][data-glass="true"] .spark-weekly-leaders-modal .spark-weekly-score-panel,
+  html[data-theme="dark"][data-glass="true"] .spark-weekly-leaders-modal .spark-rewards-leader-row{
+    background:rgba(255,255,255,.045)!important;
+    border-color:rgba(145,165,191,.16)!important;
+  }
+}
+
+/* Accessibility: when reduced transparency is requested, return to solid
+   theme surfaces instead of leaving semi-transparent cards behind. */
+@media(prefers-reduced-transparency:reduce){
+  html[data-glass="true"] .spark-student-home .ssh-card,
+  html[data-glass="true"] .spark-student-home .ssh-subjects,
+  html[data-glass="true"] .spark-student-home .ssh-support,
+  html[data-glass="true"] .spark-student-home .spark-goal-card,
+  html[data-glass="true"] .spark-student-home .family-request-card,
+  html[data-glass="true"] .spark-student-home .family-code-card,
+  html[data-glass="true"] .spark-subject-dashboard-overview .spark-subject-overview-card,
+  html[data-glass="true"] .spark-weekly-leaders-modal .spark-weekly-leaders-panel,
+  html[data-glass="true"] .spark-weekly-leaders-modal .spark-weekly-score-panel,
+  html[data-glass="true"] .spark-weekly-leaders-modal .spark-rewards-leader-row{
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
+    background:var(--spark-paper,#fff)!important;
+  }
+}

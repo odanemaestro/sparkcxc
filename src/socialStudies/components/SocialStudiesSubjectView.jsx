@@ -18,6 +18,19 @@ import "../socialStudies.css";
 const SUBJECT_ID="social-studies";
 const STUDY_PATH="/study/social-studies";
 
+function isLessonUnlocked(lessonId, completedIds=new Set()){
+  const index=SOCIAL_STUDIES_LESSONS.findIndex(lesson=>lesson.id===lessonId);
+  if(index<0) return false;
+  if(index===0 || completedIds.has(lessonId)) return true;
+  return SOCIAL_STUDIES_LESSONS.slice(0,index).every(lesson=>completedIds.has(lesson.id));
+}
+
+function firstAvailableLesson(completedIds=new Set()){
+  return SOCIAL_STUDIES_LESSONS.find(lesson=>!completedIds.has(lesson.id))
+    || SOCIAL_STUDIES_LESSONS[0]
+    || null;
+}
+
 function parseRoute(){
   const route=readSparkHashRoute();
   if(route.path!==STUDY_PATH) return {sectionId:null,lessonId:null};
@@ -83,7 +96,17 @@ function PracticeCheck({ questions=[] , onComplete }){
   </div>;
 }
 
-function LessonView({ lesson, completed, onBack, onComplete, onActivity, saving }){
+function LessonView({
+  lesson,
+  completed,
+  previousLesson,
+  nextLesson,
+  onBack,
+  onComplete,
+  onOpenLesson,
+  onActivity,
+  saving,
+}){
   const [examOpen,setExamOpen]=useState(false);
   const [examAnswer,setExamAnswer]=useState("");
   useEffect(()=>{
@@ -181,11 +204,39 @@ function LessonView({ lesson, completed, onBack, onComplete, onActivity, saving 
         <div>{lesson.sources.map((source,index)=><a key={source.url+index} href={source.url} target="_blank" rel="noreferrer">{source.label}</a>)}</div>
       </section>
 
-      <div className="ss-complete-row">
-        <button type="button" className={completed ? "ss-primary done" : "ss-primary"} disabled={saving || completed} onClick={onComplete}>
-          {completed ? "✓ Lesson complete" : saving ? "Saving…" : "Mark lesson complete"}
+      <div className="ss-lesson-footer">
+        {previousLesson ? (
+          <button
+            type="button"
+            className="ss-lesson-nav ss-lesson-nav-previous"
+            onClick={()=>onOpenLesson?.(previousLesson)}
+          >
+            <span aria-hidden="true">←</span>
+            <span>Previous</span>
+          </button>
+        ) : <span className="ss-lesson-nav-spacer" aria-hidden="true" />}
+
+        <button
+          type="button"
+          className={completed ? "ss-primary done ss-complete-action" : "ss-primary ss-complete-action"}
+          disabled={saving || completed}
+          onClick={onComplete}
+        >
+          {saving ? "Saving..." : completed ? "Lesson completed" : "Mark lesson complete"}
         </button>
-        <span>{completed ? "This lesson is recorded in your Social Studies progress." : "Complete the lesson when you can explain the key ideas without the notes."}</span>
+
+        {nextLesson ? (
+          <button
+            type="button"
+            className="ss-lesson-nav ss-lesson-nav-next"
+            disabled={!completed}
+            onClick={()=>completed && onOpenLesson?.(nextLesson)}
+            title={!completed ? "Complete this lesson to unlock the next lesson." : undefined}
+          >
+            <span>Next Lesson</span>
+            <span aria-hidden="true">→</span>
+          </button>
+        ) : <span className="ss-lesson-nav-spacer" aria-hidden="true" />}
       </div>
     </div>
   </main>;
@@ -213,23 +264,56 @@ export default function SocialStudiesSubjectView({ supabase, userId, onBack, sho
           if(!["42P01","PGRST205"].includes(error.code)) console.warn("Could not load Social Studies progress",error);
           return;
         }
-        setCompletedIds(new Set((data || []).filter(row=>row.activity_type==="lesson").map(row=>String(row.topic_id || "").trim()).filter(Boolean)));
+        const completed=new Set((data || []).filter(row=>row.activity_type==="lesson").map(row=>String(row.topic_id || "").trim()).filter(Boolean));
+        setCompletedIds(completed);
+
+        const current=parseRoute();
+        if(current.lessonId && isLessonUnlocked(current.lessonId,completed)){
+          setActiveSectionId(current.sectionId);
+          setActiveLessonId(current.lessonId);
+        }else if(current.lessonId){
+          const fallback=firstAvailableLesson(completed);
+          setActiveSectionId(fallback?.sectionId || null);
+          setActiveLessonId(fallback?.id || null);
+          if(fallback){
+            writeSparkNestedRoute(STUDY_PATH,{section:fallback.sectionId,topic:fallback.id});
+          }
+        }
       });
     return ()=>{cancelled=true;};
   },[supabase,userId]);
 
   useEffect(()=>subscribeSparkRoute(()=>{
     const next=parseRoute();
-    setActiveSectionId(next.sectionId);
-    setActiveLessonId(next.lessonId);
-  }),[]);
+    if(!next.lessonId){
+      setActiveSectionId(next.sectionId);
+      setActiveLessonId(null);
+      return;
+    }
+    if(isLessonUnlocked(next.lessonId,completedIds)){
+      setActiveSectionId(next.sectionId);
+      setActiveLessonId(next.lessonId);
+      return;
+    }
+    const fallback=firstAvailableLesson(completedIds);
+    if(fallback){
+      setActiveSectionId(fallback.sectionId);
+      setActiveLessonId(fallback.id);
+      writeSparkNestedRoute(STUDY_PATH,{section:fallback.sectionId,topic:fallback.id});
+    }
+  }),[completedIds]);
 
   const openLesson=useCallback(lesson=>{
+    if(!lesson) return;
+    if(!isLessonUnlocked(lesson.id,completedIds)){
+      showToast?.("Complete the earlier lessons to unlock this lesson.","info");
+      return;
+    }
     setActiveSectionId(lesson.sectionId);
     setActiveLessonId(lesson.id);
     writeSparkNestedRoute(STUDY_PATH,{section:lesson.sectionId,topic:lesson.id});
     window.scrollTo?.(0,0);
-  },[]);
+  },[completedIds,showToast]);
 
   const goHome=useCallback(()=>{
     setActiveSectionId(null);
@@ -239,6 +323,13 @@ export default function SocialStudiesSubjectView({ supabase, userId, onBack, sho
   },[]);
 
   const activeLesson=activeLessonId ? SOCIAL_STUDIES_LESSON_BY_ID[activeLessonId] : null;
+  const activeLessonIndex=activeLesson
+    ? SOCIAL_STUDIES_LESSONS.findIndex(lesson=>lesson.id===activeLesson.id)
+    : -1;
+  const previousLesson=activeLessonIndex>0 ? SOCIAL_STUDIES_LESSONS[activeLessonIndex-1] : null;
+  const nextLesson=activeLessonIndex>=0 && activeLessonIndex<SOCIAL_STUDIES_LESSONS.length-1
+    ? SOCIAL_STUDIES_LESSONS[activeLessonIndex+1]
+    : null;
 
   const recordPractice=useCallback(async (lesson,{score=0,total=1,kind="interactive"}={})=>{
     if(!lesson) return;
@@ -324,8 +415,11 @@ export default function SocialStudiesSubjectView({ supabase, userId, onBack, sho
       lesson={activeLesson}
       completed={completedIds.has(activeLesson.id)}
       saving={saving}
+      previousLesson={previousLesson}
+      nextLesson={nextLesson}
       onBack={goHome}
       onComplete={()=>markComplete(activeLesson)}
+      onOpenLesson={openLesson}
       onActivity={result=>recordPractice(activeLesson,result)}
     />;
   }
@@ -371,11 +465,29 @@ export default function SocialStudiesSubjectView({ supabase, userId, onBack, sho
               <div className="ss-section-progress"><span>{done}/{lessons.length} complete</span><ProgressBar value={done} max={lessons.length}/></div>
             </div>
             <div className="ss-lesson-list">
-              {lessons.map((lesson,index)=><button type="button" key={lesson.id} onClick={()=>openLesson(lesson)}>
-                <span className="ss-lesson-index">{String(index+1).padStart(2,"0")}</span>
-                <span><strong>{lesson.title}</strong><small>Objectives {lesson.objectiveCodes.join(", ")}</small></span>
-                <em>{completedIds.has(lesson.id) ? "✓" : "→"}</em>
-              </button>)}
+              {lessons.map((lesson,index)=>{
+                const complete=completedIds.has(lesson.id);
+                const locked=!isLessonUnlocked(lesson.id,completedIds);
+                return <button
+                  type="button"
+                  key={lesson.id}
+                  className={complete ? "complete" : locked ? "locked" : ""}
+                  onClick={()=>openLesson(lesson)}
+                  disabled={locked}
+                  title={locked ? "Complete the earlier lessons to unlock this lesson." : undefined}
+                >
+                  <span className="ss-lesson-index">{String(index+1).padStart(2,"0")}</span>
+                  <span><strong>{lesson.title}</strong><small>Objectives {lesson.objectiveCodes.join(", ")}</small></span>
+                  <em>
+                    {complete ? "✓" : locked ? (
+                      <svg className="ss-lock-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+                        <rect x="5.5" y="9" width="9" height="7" rx="1.5" />
+                        <path d="M7.5 9V6.8a2.5 2.5 0 015 0V9" />
+                      </svg>
+                    ) : "→"}
+                  </em>
+                </button>;
+              })}
             </div>
           </article>;
         })}
