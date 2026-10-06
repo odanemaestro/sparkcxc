@@ -9,7 +9,8 @@ describe("SPARK V5.6.1.2 password visibility and study streak wiring", () => {
     expect(appSource).toContain("const streak = computeStudyStreak({");
     expect(appSource).toContain("questionAttempts: studentQuestionAttempts");
     expect(appSource).toContain("flashcardReviewEvents: studentFlashcardReviewEvents");
-    expect(appSource).toContain('"Day Study Streak"');
+    const heroSource = fs.readFileSync(path.join(__dirname, "components", "learning", "StudentDashboardHero.jsx"), "utf8");
+    expect(heroSource).toContain("{streakCount} day streak");
   });
 
   test("password fields use the accessible visibility control", () => {
