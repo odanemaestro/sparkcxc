@@ -22,12 +22,15 @@ describe("consultant student dashboard redesign V1", () => {
     expect(overview).not.toContain("<ProfilePhotoEditor");
   });
 
-  test("SPARK of the Week is lifted into the hero without creating another rewards query", () => {
+  test("SPARK of the Week is lifted into the hero and weekly leaders open in a modal", () => {
     const hero = read("components/learning/StudentDashboardHero.jsx");
     const rewards = read("components/rewards/SparkRewardsPanel.jsx");
     expect(hero).toContain('id="spark-dashboard-weekly-highlight"');
     expect(rewards).toContain('document.getElementById("spark-dashboard-weekly-highlight")');
     expect(rewards).toContain("createPortal(weeklyHero, weeklyHighlightTarget)");
+    expect(rewards).toContain("<Modal");
+    expect(rewards).toContain('className="spark-weekly-leaders-modal"');
+    expect(rewards).not.toContain("scrollIntoView");
     expect(rewards.match(/spark_get_rewards_dashboard/g)?.length).toBe(1);
   });
 
@@ -52,6 +55,8 @@ describe("consultant student dashboard redesign V1", () => {
     expect(css).toContain("--spark-consultant-gold:#d99a1b");
     expect(css).toContain('html[data-theme="dark"] .spark-consultant-dashboard');
     expect(css).toContain("@media(max-width:1080px)");
+    expect(css).toContain(".spark-consultant-rail .spark-dashboard-support-grid{\n    grid-template-columns:1fr;");
+    expect(css).toContain(".spark-weekly-leaders-modal-grid");
     expect(css).toContain("@media(max-width:820px)");
     expect(css).toContain("@media(max-width:520px)");
     expect(css).toContain("@media(prefers-reduced-motion:reduce)");
