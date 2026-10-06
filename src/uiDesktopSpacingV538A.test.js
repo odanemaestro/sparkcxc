@@ -17,9 +17,9 @@ describe("SPARK desktop dashboard spacing regression", () => {
     expect(app).toContain('family-code-card student-overview-family-card');
     expect(subjectOverview).toContain(".spark-subject-overview-grid");
     expect(subjectOverview).toContain("grid-template-columns:repeat(2,minmax(0,1fr))");
-    expect(subjectOverview).toContain("@media(min-width:1800px)");
-    expect(subjectOverview).toContain("grid-template-columns:repeat(3,minmax(0,1fr))");
-    expect(subjectOverview).toContain("@media(max-width:840px)");
+    expect(subjectOverview).toContain("@media(max-width:920px)");
+    expect(subjectOverview).toContain("grid-template-columns:1fr");
+    expect(subjectOverview).toContain("@media(max-width:700px)");
     expect(subjectOverview).toContain("grid-template-columns:1fr");
     expect(subjectOverview).toContain(".spark-subject-overview-card");
     expect(responsive).toContain('@media(min-width:821px)');
