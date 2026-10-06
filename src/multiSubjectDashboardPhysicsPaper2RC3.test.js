@@ -23,9 +23,9 @@ describe("SPARK RC3 dashboard restoration and Physics Paper 2", () => {
   test("student dashboard restores Flashcards, Upcoming and Recent Achievements", () => {
     expect(app).toContain('import StudentDashboardSupportCards from "./components/learning/StudentDashboardSupportCards";');
     expect(app).toContain("<StudentDashboardSupportCards");
-    expect(supportCards).toContain("FLASHCARDS");
-    expect(supportCards).toContain("UPCOMING");
-    expect(supportCards).toContain("RECENT ACHIEVEMENTS");
+    expect(supportCards).toContain("<h3>Flashcards</h3>");
+    expect(supportCards).toContain("<h3>Upcoming</h3>");
+    expect(supportCards).toContain("<h3>Recent activity</h3>");
     expect(supportCards).not.toContain("CSEC Mathematics recall");
   });
 
