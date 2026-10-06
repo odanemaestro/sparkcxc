@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import Card from "../ui/Card";
 import Icon from "../ui/Icon";
 import ProgressBar from "../ui/ProgressBar";
+import { sortSubjectsForHome, subjectLessonStats } from "../../learning/studentHomeModel";
 import "./subjectDashboardOverview.css";
 
 function possessive(name) {
@@ -43,6 +44,151 @@ function ActionArrow() {
   return <svg viewBox="0 0 20 20" focusable="false"><path d="M6 14L14 6M8 6h6v6" /></svg>;
 }
 
+
+const SINGULAR_METRIC_LABELS = Object.freeze({
+  assessments: "assessment",
+  "labs explored": "lab explored",
+  "skills tracked": "skill tracked",
+  "topics practised": "topic practised",
+  "practice results": "practice result",
+});
+
+function metricLabel(value, label) {
+  return Number(value) === 1 ? (SINGULAR_METRIC_LABELS[label] || label) : label;
+}
+
+function canStudySubject(subject) {
+  return subject?.capabilities?.study !== false || Boolean(subject?.routes?.study) || subject?.implementation === "generic";
+}
+
+function SubjectHomeRow({ subject, status, focus, onOpenSubject, onOpenPractice, onOpenProgress }) {
+  const progress = subject.progress || {};
+  const { total, completed, percent } = subjectLessonStats(subject);
+  const third = subjectMetricThird(progress);
+  const fourth = subjectMetricFourth(subject, progress);
+  const practiceResults = Number(progress.practiceAttempts || 0);
+  const name = subject.name || subject.shortName || "Subject";
+  const titleId = "ssh-subject-" + subject.id + "-title";
+  const showStudy = onOpenSubject && canStudySubject(subject);
+  const showPractice = onOpenPractice && subject.capabilities?.practice !== false && Boolean(subject.routes?.practice);
+
+  return (
+    <li className={"ssh-subject is-" + status.key} id={"ssh-subject-" + subject.id} aria-labelledby={titleId} tabIndex={-1}>
+      <div className="ssh-subject-mark" aria-hidden="true">{subject.mark || subject.shortName?.slice(0, 1) || "•"}</div>
+      <div className="ssh-subject-head">
+        <div className="ssh-subject-heading">
+          <h3 id={titleId}>{name}</h3>
+          <p className={"ssh-status is-" + status.key}>
+            <span className="ssh-status-dot" aria-hidden="true" />
+            <span>{status.label}</span>
+            {status.detail && <span className="ssh-status-detail">{status.detail}</span>}
+          </p>
+        </div>
+        <p className="ssh-subject-percent"><strong>{percent}%</strong><span>complete</span></p>
+      </div>
+
+      <div className="ssh-subject-body">
+        <div className="ssh-subject-progress">
+          <div className="ssh-meter" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={percent} aria-label={name + " lesson completion"}>
+            <i style={{ width: percent + "%" }} />
+          </div>
+          <p className="ssh-subject-caption">{completed} of {total || 0} topic lessons complete</p>
+          {progress.active && (
+            <ul className="ssh-facts" aria-label={name + " evidence"}>
+              <li><strong>{practiceResults}</strong> {metricLabel(practiceResults, "practice results")}</li>
+              <li>{practiceResults ? <><strong>{Math.round(Number(progress.practiceAverage || 0))}%</strong> practice average</> : "No practice average yet"}</li>
+              <li><strong>{third.value}</strong> {metricLabel(third.value, third.label)}</li>
+              <li><strong>{fourth.value}</strong> {metricLabel(fourth.value, fourth.label)}</li>
+            </ul>
+          )}
+        </div>
+        {focus && (
+          <div className="ssh-focus">
+            <p className="ssh-focus-label"><Icon name="focus" size={14} />Next focus</p>
+            <p className="ssh-focus-title">{focus.title}</p>
+            {(focus.summary || focus.detail) && <p className="ssh-focus-detail">{focus.summary || focus.detail}</p>}
+          </div>
+        )}
+      </div>
+
+      {(showStudy || showPractice || onOpenProgress) && (
+        <div className="ssh-subject-actions">
+          {showStudy && (
+            <button type="button" className="ssh-btn ssh-btn--tinted ssh-btn--small" onClick={() => onOpenSubject(subject)}>
+              <span>{progress.active ? "Continue" : "Start"}</span>
+            </button>
+          )}
+          {showPractice && (
+            <button type="button" className="ssh-btn ssh-btn--secondary ssh-btn--small" onClick={() => onOpenPractice(subject)}>
+              <span>Practise</span>
+            </button>
+          )}
+          {onOpenProgress && (
+            <button type="button" className="ssh-text-btn" onClick={() => onOpenProgress(subject)}>
+              <span>View progress</span><Icon name="chevronRight" size={15} />
+            </button>
+          )}
+        </div>
+      )}
+    </li>
+  );
+}
+
+function SubjectHomePanel({
+  summaries,
+  onOpenSubject,
+  onOpenPractice,
+  onOpenProgress,
+  onOpenReport,
+  onManageSubjects,
+  subjectInsights,
+  learnerName,
+}) {
+  const ordered = sortSubjectsForHome(summaries, { now:new Date() });
+  const attentionCount = ordered.filter(item => item.status.key === "attention").length;
+
+  return (
+    <section className="ssh-card ssh-subjects" aria-labelledby="ssh-subjects-title">
+      <header className="ssh-section-head">
+        <div>
+          <h2 id="ssh-subjects-title" className="ssh-section-title">Your subjects</h2>
+          {summaries.length > 0 && (
+            <p className="ssh-section-sub">
+              {summaries.length} enrolled{attentionCount ? " · " + attentionCount + " need" + (attentionCount === 1 ? "s" : "") + " attention" : ""}
+            </p>
+          )}
+        </div>
+        <div className="ssh-section-actions">
+          {summaries.length > 0 && onOpenReport && <button type="button" className="ssh-text-btn" onClick={onOpenReport}><Icon name="report" size={16}/><span>Progress report</span></button>}
+          {summaries.length > 0 && onOpenProgress && <button type="button" className="ssh-text-btn" onClick={() => onOpenProgress(null)}><Icon name="progress" size={16}/><span>All progress</span></button>}
+          {onManageSubjects && <button type="button" className="ssh-text-btn" onClick={onManageSubjects}><Icon name="subjects" size={16}/><span>Manage subjects</span></button>}
+        </div>
+      </header>
+
+      {summaries.length ? (
+        <ol className="ssh-subject-list">
+          {ordered.map(({subject,status}) => (
+            <SubjectHomeRow
+              key={subject.id}
+              subject={subject}
+              status={status}
+              focus={subjectInsights?.[subject.id] || null}
+              onOpenSubject={onOpenSubject}
+              onOpenPractice={onOpenPractice}
+              onOpenProgress={onOpenProgress}
+            />
+          ))}
+        </ol>
+      ) : (
+        <div className="ssh-empty">
+          <span className="ssh-empty-icon" aria-hidden="true"><Icon name="subjects" size={20}/></span>
+          <div><h3>No subjects yet</h3><p>Your subjects, progress and next steps will appear here once you enroll.</p></div>
+        </div>
+      )}
+    </section>
+  );
+}
+
 export default function SubjectDashboardOverview({
   summaries = [],
   onOpenSubject,
@@ -55,7 +201,23 @@ export default function SubjectDashboardOverview({
   onManageSubjects,
   learnerName = "",
   showAllProgressAction = true,
+  onOpenPractice,
+  variant = "default",
 }) {
+  if (variant === "home") {
+    return (
+      <SubjectHomePanel
+        summaries={summaries}
+        onOpenSubject={onOpenSubject}
+        onOpenPractice={onOpenPractice}
+        onOpenProgress={onOpenProgress}
+        onOpenReport={onOpenReport}
+        onManageSubjects={onManageSubjects}
+        subjectInsights={subjectInsights}
+        learnerName={learnerName}
+      />
+    );
+  }
   const sorted = useMemo(
     () => [...summaries].sort((a, b) => lessonPercent(a) - lessonPercent(b)),
     [summaries]
