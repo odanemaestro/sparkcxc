@@ -1,7 +1,31 @@
 .spark-subject-dashboard-overview{
+  --sdo-surface:#ffffff;
+  --sdo-surface-soft:#f5f8fb;
+  --sdo-ink:#102a56;
+  --sdo-muted:#677892;
+  --sdo-border:#dfe6ee;
+  --sdo-navy:#123468;
+  --sdo-teal:#0a766d;
+  --sdo-teal-soft:#e7f7f3;
+  --sdo-gold-soft:#fff4d8;
+  --sdo-gold-ink:#805b00;
+  --sdo-link:#1463b7;
   display:grid;
   gap:18px;
   margin:0;
+}
+html[data-theme="dark"] .spark-subject-dashboard-overview{
+  --sdo-surface:#101d31;
+  --sdo-surface-soft:#15243a;
+  --sdo-ink:#f3f7ff;
+  --sdo-muted:#9fb0c4;
+  --sdo-border:#263850;
+  --sdo-navy:#dbe8ff;
+  --sdo-teal:#8ee0d6;
+  --sdo-teal-soft:#12332f;
+  --sdo-gold-soft:#302814;
+  --sdo-gold-ink:#f2c15b;
+  --sdo-link:#78b8ff;
 }
 .spark-subject-overview-heading{
   display:flex;
@@ -11,7 +35,7 @@
 }
 .spark-subject-overview-heading h2{
   margin:0;
-  color:var(--spark-consultant-ink,#102a56);
+  color:var(--sdo-ink);
   font-size:24px;
   line-height:1.2;
   letter-spacing:-.025em;
@@ -19,7 +43,7 @@
 .spark-subject-overview-heading p{
   max-width:680px;
   margin:6px 0 0;
-  color:var(--spark-consultant-muted,#677892);
+  color:var(--sdo-muted);
   font-size:13px;
   line-height:1.55;
 }
@@ -34,11 +58,11 @@
   flex-wrap:wrap;
   gap:7px 16px;
   margin-top:10px;
-  color:var(--spark-consultant-muted,#677892);
+  color:var(--sdo-muted);
   font-size:11.5px;
 }
 .spark-subject-overview-summary strong{
-  color:var(--spark-consultant-ink,#102a56);
+  color:var(--sdo-ink);
   font-size:12px;
 }
 .spark-subject-overview-grid{
@@ -51,13 +75,13 @@
   display:grid;
   gap:14px;
   padding:18px;
-  border:1px solid var(--spark-consultant-border,#dfe6ee);
+  border:1px solid var(--sdo-border);
   border-radius:16px;
-  background:var(--spark-consultant-surface,#fff);
+  background:var(--sdo-surface);
   box-shadow:0 7px 22px rgba(20,43,76,.045);
 }
 .spark-subject-overview-card.is-focus-next{
-  background:color-mix(in srgb,var(--spark-consultant-teal-soft,#e7f7f3) 42%,var(--spark-consultant-surface,#fff));
+  background:color-mix(in srgb,var(--sdo-teal-soft) 42%,var(--sdo-surface));
 }
 .spark-subject-card-head{
   display:grid;
@@ -70,10 +94,10 @@
   height:44px;
   display:grid;
   place-items:center;
-  border:1px solid var(--spark-consultant-border,#dfe6ee);
+  border:1px solid var(--sdo-border);
   border-radius:13px;
-  background:var(--spark-consultant-soft,#f5f8fb);
-  color:var(--spark-consultant-ink,#102a56);
+  background:var(--sdo-surface-soft);
+  color:var(--sdo-ink);
   font-size:13px;
   font-weight:850;
   letter-spacing:-.02em;
@@ -84,20 +108,20 @@
   gap:3px;
 }
 .spark-subject-card-title strong{
-  color:var(--spark-consultant-ink,#102a56);
+  color:var(--sdo-ink);
   font-size:14px;
   line-height:1.25;
 }
 .spark-subject-card-title span{
-  color:var(--spark-consultant-muted,#677892);
+  color:var(--sdo-muted);
   font-size:10.5px;
   line-height:1.35;
 }
 .spark-subject-focus-pill{
   padding:4px 8px;
   border-radius:999px;
-  background:var(--spark-consultant-gold-soft,#fff4d8);
-  color:#805b00;
+  background:var(--sdo-gold-soft);
+  color:var(--sdo-gold-ink);
   font-size:9.5px;
   font-weight:850;
   white-space:nowrap;
@@ -113,11 +137,11 @@
   gap:10px;
 }
 .spark-subject-card-progress span{
-  color:var(--spark-consultant-muted,#677892);
+  color:var(--sdo-muted);
   font-size:10.5px;
 }
 .spark-subject-card-progress strong{
-  color:var(--spark-consultant-ink,#102a56);
+  color:var(--sdo-ink);
   font-size:13px;
   font-variant-numeric:tabular-nums;
 }
@@ -125,20 +149,20 @@
   background:#e8edf3!important;
 }
 .spark-subject-card-progress .spark-progress-bar__fill{
-  background:var(--spark-consultant-navy,#123468)!important;
+  background:var(--sdo-navy)!important;
 }
 .spark-subject-card-evidence{
   display:flex;
   flex-wrap:wrap;
   gap:7px 12px;
-  color:var(--spark-consultant-muted,#677892);
+  color:var(--sdo-muted);
   font-size:10.5px;
 }
 .spark-subject-card-evidence span{
   white-space:nowrap;
 }
 .spark-subject-card-evidence strong{
-  color:var(--spark-consultant-ink,#102a56);
+  color:var(--sdo-ink);
   font-weight:800;
 }
 .spark-subject-card-focus{
@@ -146,16 +170,16 @@
   display:grid;
   gap:3px;
   padding-top:12px;
-  border-top:1px solid var(--spark-consultant-border,#dfe6ee);
+  border-top:1px solid var(--sdo-border);
 }
 .spark-subject-card-focus>span{
-  color:var(--spark-consultant-teal-ink,#0a766d);
+  color:var(--sdo-teal);
   font-size:9.5px;
   font-weight:800;
 }
 .spark-subject-card-focus strong{
   overflow:hidden;
-  color:var(--spark-consultant-ink,#102a56);
+  color:var(--sdo-ink);
   font-size:12px;
   text-overflow:ellipsis;
   white-space:nowrap;
@@ -163,7 +187,7 @@
 .spark-subject-card-focus small{
   display:-webkit-box;
   overflow:hidden;
-  color:var(--spark-consultant-muted,#677892);
+  color:var(--sdo-muted);
   font-size:10.5px;
   line-height:1.45;
   -webkit-box-orient:vertical;
@@ -184,7 +208,7 @@
   padding:0;
   border:0;
   background:transparent;
-  color:#1463b7;
+  color:var(--sdo-link);
   font:inherit;
   font-size:11.5px;
   font-weight:800;
@@ -223,4 +247,87 @@ html[data-theme="dark"] .spark-subject-card-progress .spark-progress-bar{
   }
   .spark-subject-card-actions .spark-dashboard-card-action,
   .spark-subject-card-actions .spark-consultant-text-action{width:100%}
+}
+
+
+/* Shared student + parent dark-mode completion ---------------------------- */
+html[data-theme="dark"] .spark-subject-overview-card{
+  background:var(--sdo-surface);
+  border-color:var(--sdo-border);
+  box-shadow:0 8px 22px rgba(0,0,0,.16);
+}
+html[data-theme="dark"] .spark-subject-overview-card.is-focus-next{
+  background:color-mix(in srgb,var(--sdo-teal-soft) 72%,var(--sdo-surface));
+}
+html[data-theme="dark"] .spark-subject-overview-mark{
+  background:var(--sdo-surface-soft);
+  border-color:var(--sdo-border);
+  color:var(--sdo-ink);
+}
+html[data-theme="dark"] .spark-subject-card-focus{
+  border-top-color:var(--sdo-border);
+}
+html[data-theme="dark"] .spark-subject-card-progress .spark-progress-bar{
+  background:#26364b!important;
+}
+html[data-theme="dark"] .spark-subject-card-progress .spark-progress-bar__fill{
+  background:#7ea8e8!important;
+}
+html[data-theme="dark"] .spark-subject-focus-pill{
+  background:var(--sdo-gold-soft);
+  color:var(--sdo-gold-ink);
+}
+html[data-theme="dark"] .spark-subject-card-actions .spark-dashboard-card-action{
+  border-color:#3b5572!important;
+  background:#16304f!important;
+  color:#eef5ff!important;
+}
+html[data-theme="dark"] .spark-subject-card-actions .spark-dashboard-card-action:hover:not(:disabled){
+  border-color:#50749e!important;
+  background:#1b3a60!important;
+  color:#fff!important;
+}
+html[data-theme="dark"] .spark-subject-card-actions .spark-dashboard-card-action:disabled{
+  border-color:#2a3c53!important;
+  background:#172436!important;
+  color:#708197!important;
+}
+html[data-theme="dark"] .spark-subject-view-all,
+html[data-theme="dark"] .spark-subject-card-actions .spark-consultant-text-action{
+  color:var(--sdo-link)!important;
+}
+html[data-theme="dark"] .spark-subject-view-all:hover,
+html[data-theme="dark"] .spark-subject-card-actions .spark-consultant-text-action:hover{
+  background:#162941!important;
+}
+
+/* New home-list variant uses its own ssh tokens, but these selectors ensure
+   the same component is correct when rendered in parent/student wrappers. */
+html[data-theme="dark"] .ssh-subjects{
+  background:#101d31;
+  border-color:#263850;
+}
+html[data-theme="dark"] .ssh-subject{
+  border-top-color:#263850;
+}
+html[data-theme="dark"] .ssh-subject-mark{
+  background:#15243a;
+  border-color:#263850;
+  color:#f3f7ff;
+}
+html[data-theme="dark"] .ssh-subject-heading h3,
+html[data-theme="dark"] .ssh-subject-percent strong,
+html[data-theme="dark"] .ssh-focus-title,
+html[data-theme="dark"] .ssh-facts strong{
+  color:#f3f7ff;
+}
+html[data-theme="dark"] .ssh-subject-heading .ssh-status,
+html[data-theme="dark"] .ssh-subject-percent span,
+html[data-theme="dark"] .ssh-subject-caption,
+html[data-theme="dark"] .ssh-facts,
+html[data-theme="dark"] .ssh-focus-detail{
+  color:#9fb0c4;
+}
+html[data-theme="dark"] .ssh-focus{
+  border-color:#263850;
 }
