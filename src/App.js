@@ -4520,13 +4520,22 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       value:"Parent request",
       detail:"Waiting for your approval",
       tone:"attention",
+      onClick:() => document.querySelector("[data-notification-anchor='family-request']")?.scrollIntoView({ behavior:"smooth", block:"center" }),
     } : studentAttention.length > 0 ? {
       key:"attention",
       icon:"alert",
       label:"Needs attention",
       value:subjectDisplayName(studentAttention[0].subject),
-      detail:studentAttention[0].status.detail + (studentAttention.length > 1 ? " · " + (studentAttention.length - 1) + " more" : ""),
+      detail:[
+        studentAttention[0].status.detail,
+        studentAttention.length > 1
+          ? "Also " + new Intl.ListFormat("en",{ style:"long", type:"conjunction" }).format(
+              studentAttention.slice(1).map(item => subjectDisplayName(item.subject))
+            ) + " need attention."
+          : "",
+      ].filter(Boolean).join(" "),
       tone:"attention",
+      onClick:() => document.getElementById("ssh-subject-" + studentAttention[0].subject.id)?.scrollIntoView({ behavior:"smooth", block:"center" }),
     } : studentHasActivity ? {
       key:"attention",
       icon:"check",
