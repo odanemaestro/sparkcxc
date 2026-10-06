@@ -31,6 +31,41 @@ function subjectMetricFourth(subject, progress) {
   return { value:Number(progress?.topicsPractised || 0), label:"topics practised" };
 }
 
+function subjectMilestone(subject) {
+  const { total, completed, percent } = subjectLessonStats(subject);
+
+  if (total <= 0) {
+    return {
+      title:"Start your first lesson",
+      detail:"Complete one lesson and SPARK will begin tracking your course progress.",
+    };
+  }
+
+  if (percent >= 100 || completed >= total) {
+    return {
+      title:"Course lessons complete",
+      detail:"Keep your knowledge fresh with practice, flashcards or an exam-style activity.",
+    };
+  }
+
+  if (completed === 0) {
+    return {
+      title:"Complete your first lesson",
+      detail:"One completed lesson will start your progress for this subject.",
+    };
+  }
+
+  const milestones = [25, 50, 75, 100];
+  const nextPercent = milestones.find(value => value > percent) || 100;
+  const targetCompleted = Math.min(total, Math.ceil((nextPercent / 100) * total));
+  const remaining = Math.max(1, targetCompleted - completed);
+
+  return {
+    title:remaining + " more lesson" + (remaining === 1 ? "" : "s") + " to reach " + nextPercent + "%",
+    detail:"You have completed " + completed + " of " + total + " topic lessons.",
+  };
+}
+
 function subjectInsight(summaries, learnerName = "") {
   const active = (summaries || []).filter(item => item.progress?.active);
   if (!active.length) {
@@ -65,12 +100,13 @@ function canStudySubject(subject) {
   return subject?.capabilities?.study !== false || Boolean(subject?.routes?.study) || subject?.implementation === "generic";
 }
 
-function SubjectHomeRow({ subject, status, focus, onOpenSubject, onOpenPractice, onOpenProgress }) {
+function SubjectHomeRow({ subject, status, onOpenSubject, onOpenPractice, onOpenProgress }) {
   const progress = subject.progress || {};
   const { total, completed, percent } = subjectLessonStats(subject);
   const third = subjectMetricThird(progress);
   const fourth = subjectMetricFourth(subject, progress);
   const practiceResults = Number(progress.practiceAttempts || 0);
+  const milestone = subjectMilestone(subject);
   const name = subject.name || subject.shortName || "Subject";
   const titleId = "ssh-subject-" + subject.id + "-title";
   const showStudy = onOpenSubject && canStudySubject(subject);
@@ -106,13 +142,11 @@ function SubjectHomeRow({ subject, status, focus, onOpenSubject, onOpenPractice,
             </ul>
           )}
         </div>
-        {focus && (
-          <div className="ssh-focus">
-            <p className="ssh-focus-label"><Icon name="focus" size={14} />Next focus</p>
-            <p className="ssh-focus-title">{focus.title}</p>
-            {(focus.summary || focus.detail) && <p className="ssh-focus-detail">{focus.summary || focus.detail}</p>}
-          </div>
-        )}
+        <div className="ssh-focus ssh-milestone">
+          <p className="ssh-focus-label"><Icon name="flag" size={14} />Next milestone</p>
+          <p className="ssh-focus-title">{milestone.title}</p>
+          <p className="ssh-focus-detail">{milestone.detail}</p>
+        </div>
       </div>
 
       {(showStudy || showPractice || onOpenProgress) && (
@@ -176,7 +210,6 @@ function SubjectHomePanel({
               key={subject.id}
               subject={subject}
               status={status}
-              focus={subjectInsights?.[subject.id] || recommendationDisplay({ subject })}
               onOpenSubject={onOpenSubject}
               onOpenPractice={onOpenPractice}
               onOpenProgress={onOpenProgress}
@@ -261,7 +294,7 @@ export default function SubjectDashboardOverview({
             const completed = Number(progress.lessonsCompleted || 0);
             const displayCompleted = total > 0 ? Math.min(Math.max(0, completed), total) : Math.max(0, completed);
             const percent = lessonPercent(subject);
-            const focus = subjectInsights?.[subject.id] || recommendationDisplay({ subject });
+            const milestone = subjectMilestone(subject);
             const fourth = subjectMetricFourth(subject, progress);
             const canStudy = onOpenSubject && (subject.capabilities?.study !== false || subject.routes?.study || subject.implementation === "generic");
             const canPractice = onOpenPractice && subject.capabilities?.practice !== false && Boolean(subject.routes?.practice);
@@ -292,9 +325,9 @@ export default function SubjectDashboardOverview({
                 </div>
 
                 <div className="spark-subject-card-focus">
-                  <span>Recommended next</span>
-                  <strong>{focus.title}</strong>
-                  <small>{focus.detail}</small>
+                  <span>Next milestone</span>
+                  <strong>{milestone.title}</strong>
+                  <small>{milestone.detail}</small>
                 </div>
 
                 <div className="spark-subject-card-actions">
