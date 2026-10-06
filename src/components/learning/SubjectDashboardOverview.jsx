@@ -2,7 +2,7 @@ import React, { useMemo } from "react";
 import Card from "../ui/Card";
 import Icon from "../ui/Icon";
 import ProgressBar from "../ui/ProgressBar";
-import { sortSubjectsForHome, subjectLessonStats } from "../../learning/studentHomeModel";
+import { recommendationDisplay, sortSubjectsForHome, subjectLessonStats } from "../../learning/studentHomeModel";
 import "./subjectDashboardOverview.css";
 
 function possessive(name) {
@@ -176,7 +176,7 @@ function SubjectHomePanel({
               key={subject.id}
               subject={subject}
               status={status}
-              focus={subjectInsights?.[subject.id] || null}
+              focus={subjectInsights?.[subject.id] || recommendationDisplay({ subject })}
               onOpenSubject={onOpenSubject}
               onOpenPractice={onOpenPractice}
               onOpenProgress={onOpenProgress}
@@ -261,7 +261,7 @@ export default function SubjectDashboardOverview({
             const completed = Number(progress.lessonsCompleted || 0);
             const displayCompleted = total > 0 ? Math.min(Math.max(0, completed), total) : Math.max(0, completed);
             const percent = lessonPercent(subject);
-            const focus = subjectInsights?.[subject.id] || null;
+            const focus = subjectInsights?.[subject.id] || recommendationDisplay({ subject });
             const fourth = subjectMetricFourth(subject, progress);
             const canStudy = onOpenSubject && (subject.capabilities?.study !== false || subject.routes?.study || subject.implementation === "generic");
             const canPractice = onOpenPractice && subject.capabilities?.practice !== false && Boolean(subject.routes?.practice);
@@ -293,8 +293,8 @@ export default function SubjectDashboardOverview({
 
                 <div className="spark-subject-card-focus">
                   <span>Recommended next</span>
-                  <strong>{focus?.title || (progress.active ? "Continue learning" : "Start with a lesson")}</strong>
-                  <small>{focus?.detail || (progress.active ? "Build on your latest work." : "SPARK will refine recommendations as you learn.")}</small>
+                  <strong>{focus.title}</strong>
+                  <small>{focus.detail}</small>
                 </div>
 
                 <div className="spark-subject-card-actions">
