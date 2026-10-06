@@ -181,7 +181,7 @@ describe("Physics grading and mobile rendering audit v5.7.3", () => {
     expect(summaries.find(item => item.id === "physics").progress.lessonsCompleted).toBe(2);
     expect(overall.lessonsCompleted).toBe(5);
 
-    expect(app).toContain('["Lessons completed", allSubjectsSummary.lessonsCompleted]');
+    expect(app).toContain('allSubjectsSummary.lessonsCompleted + " lesson"');
     expect(app).toContain("{parentAllSubjectsSummary.lessonsCompleted}</strong><span>Lessons completed</span>");
     expect(app).toContain('supabase.from("lesson_progress")');
     expect(app).toContain('supabase.from("spark_subject_progress")');
