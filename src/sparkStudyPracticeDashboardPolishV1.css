@@ -1,0 +1,364 @@
+/* SPARK Study + Practice Dashboard Polish V1
+   Brings the redesigned student dashboard button language into Study and Practice
+   without changing course structure, exam states, correctness or content layouts. */
+
+:root{
+  --spdp-navy:#123468;
+  --spdp-navy-hover:#0e2a58;
+  --spdp-teal:#0d9488;
+  --spdp-teal-hover:#08766d;
+  --spdp-teal-soft:#e7f7f3;
+  --spdp-teal-border:#a9ddd6;
+  --spdp-surface:#ffffff;
+  --spdp-surface-hover:#f4f7fa;
+  --spdp-border:#d7e0ea;
+  --spdp-text:#102a56;
+  --spdp-muted:#677892;
+  --spdp-disabled-bg:#eef2f6;
+  --spdp-disabled-text:#94a3b8;
+  --spdp-disabled-border:#d8e0e9;
+  --spdp-focus:rgba(13,148,136,.28);
+  --spdp-shadow:0 5px 14px rgba(15,37,87,.09);
+}
+
+html[data-theme="dark"]{
+  --spdp-navy:#2f6db4;
+  --spdp-navy-hover:#397ac4;
+  --spdp-teal:#47c9bb;
+  --spdp-teal-hover:#8ee0d6;
+  --spdp-teal-soft:#12332f;
+  --spdp-teal-border:#285d57;
+  --spdp-surface:#101d31;
+  --spdp-surface-hover:#15243a;
+  --spdp-border:#31445d;
+  --spdp-text:#f3f7ff;
+  --spdp-muted:#9fb0c4;
+  --spdp-disabled-bg:#1e293b;
+  --spdp-disabled-text:#64748b;
+  --spdp-disabled-border:#334155;
+  --spdp-focus:rgba(71,201,187,.32);
+  --spdp-shadow:0 6px 16px rgba(0,0,0,.18);
+}
+
+/* Shared geometry --------------------------------------------------------- */
+[data-spark-action="forward"],
+[data-spark-action="forward-secondary"],
+[data-spark-action="exam"],
+[data-spark-action="nav"],
+.practice-primary,
+.practice-secondary,
+.practice-back,
+.paper-start-button,
+.paper-text-button,
+.paper-exit,
+.paper-next,
+.paper-submit-top,
+.paper-submit-side,
+.paper-drawer-submit,
+.paper2-back-control,
+.paper2-formula-control,
+.phy-p1-primary,
+.phy-p1-secondary,
+.phy-p1-back,
+.phy-p1-nav-toggle,
+.psv-back,
+.physics-resource-primary,
+.physics-resource-secondary,
+.physics-resource-back{
+  min-height:42px!important;
+  padding-left:16px!important;
+  padding-right:16px!important;
+  border-radius:11px!important;
+  font-weight:800!important;
+  letter-spacing:0!important;
+  box-shadow:none!important;
+  transition:
+    background-color .15s ease,
+    border-color .15s ease,
+    color .15s ease,
+    box-shadow .15s ease,
+    transform .12s ease!important;
+}
+
+/* Main forward and exam actions use the same confident navy as dashboard. */
+[data-spark-action="forward"],
+[data-spark-action="exam"],
+.practice-primary,
+.paper-start-button,
+.paper-next,
+.paper-submit-top,
+.paper-submit-side,
+.paper-drawer-submit,
+.phy-p1-primary,
+.physics-resource-primary{
+  border:1px solid var(--spdp-navy)!important;
+  background:var(--spdp-navy)!important;
+  color:#fff!important;
+  box-shadow:var(--spdp-shadow)!important;
+}
+
+[data-spark-action="forward"]:hover:not(:disabled),
+[data-spark-action="exam"]:hover:not(:disabled),
+.practice-primary:hover:not(:disabled),
+.paper-start-button:hover:not(:disabled),
+.paper-next:hover:not(:disabled),
+.paper-submit-top:hover:not(:disabled),
+.paper-submit-side:hover:not(:disabled),
+.paper-drawer-submit:hover:not(:disabled),
+.phy-p1-primary:hover:not(:disabled),
+.physics-resource-primary:hover:not(:disabled){
+  border-color:var(--spdp-navy-hover)!important;
+  background:var(--spdp-navy-hover)!important;
+  color:#fff!important;
+  box-shadow:0 7px 18px rgba(15,37,87,.13)!important;
+  transform:translateY(-1px);
+}
+
+/* Secondary forward actions use a restrained teal tint. */
+[data-spark-action="forward-secondary"]{
+  border:1px solid var(--spdp-teal-border)!important;
+  background:var(--spdp-teal-soft)!important;
+  color:var(--spdp-teal-hover)!important;
+  box-shadow:none!important;
+}
+[data-spark-action="forward-secondary"]:hover:not(:disabled){
+  border-color:var(--spdp-teal)!important;
+  background:color-mix(in srgb,var(--spdp-teal-soft) 78%,var(--spdp-teal) 22%)!important;
+  color:var(--spdp-teal-hover)!important;
+  transform:translateY(-1px);
+}
+
+/* Back, Previous, Exit and support actions are quiet outlined controls. */
+[data-spark-action="nav"],
+.practice-secondary,
+.practice-back,
+.paper-text-button,
+.paper-exit,
+.paper2-back-control,
+.paper2-formula-control,
+.phy-p1-secondary,
+.phy-p1-back,
+.phy-p1-nav-toggle,
+.psv-back,
+.physics-resource-secondary,
+.physics-resource-back,
+.physics-resource-section-head button{
+  border:1px solid var(--spdp-border)!important;
+  background:var(--spdp-surface)!important;
+  color:var(--spdp-text)!important;
+  box-shadow:none!important;
+}
+
+[data-spark-action="nav"]:hover:not(:disabled),
+.practice-secondary:hover:not(:disabled),
+.practice-back:hover:not(:disabled),
+.paper-text-button:hover:not(:disabled),
+.paper-exit:hover:not(:disabled),
+.paper2-back-control:hover:not(:disabled),
+.paper2-formula-control:hover:not(:disabled),
+.phy-p1-secondary:hover:not(:disabled),
+.phy-p1-back:hover:not(:disabled),
+.phy-p1-nav-toggle:hover:not(:disabled),
+.psv-back:hover:not(:disabled),
+.physics-resource-secondary:hover:not(:disabled),
+.physics-resource-back:hover:not(:disabled),
+.physics-resource-section-head button:hover:not(:disabled){
+  border-color:#b9c7d7!important;
+  background:var(--spdp-surface-hover)!important;
+  color:var(--spdp-text)!important;
+  box-shadow:0 4px 12px rgba(15,37,87,.055)!important;
+  transform:translateY(-1px);
+}
+
+/* Study selectors and workbook selectors --------------------------------- */
+.physics-mechanics .pm-topics .pm-topic-btn.active,
+.physics-mechanics .pm-topics .pm-topic-btn[aria-pressed="true"],
+.physics-mechanics .pm-modebar .pm-mode-btn.active,
+.physics-mechanics .pm-modebar .pm-mode-btn[aria-pressed="true"],
+.pcl-shell nav button.active,
+.pcl-shell nav button.on,
+.pcl-shell nav button[aria-pressed="true"],
+.physics-resource-tabs button.active,
+.physics-resource-tabs button.on,
+.physics-resource-tabs button[aria-pressed="true"],
+.physics-workbook-topic-list button.active,
+.physics-workbook-topic-list button.on,
+.physics-workbook-topic-list button[aria-pressed="true"]{
+  border-color:var(--spdp-teal-border)!important;
+  background:var(--spdp-teal-soft)!important;
+  color:var(--spdp-teal-hover)!important;
+  box-shadow:none!important;
+  transform:none!important;
+}
+
+.physics-mechanics .pm-topics .pm-topic-btn.active *,
+.physics-mechanics .pm-topics .pm-topic-btn[aria-pressed="true"] *,
+.physics-mechanics .pm-modebar .pm-mode-btn.active *,
+.physics-mechanics .pm-modebar .pm-mode-btn[aria-pressed="true"] *,
+.pcl-shell nav button.active *,
+.pcl-shell nav button.on *,
+.pcl-shell nav button[aria-pressed="true"] *,
+.physics-resource-tabs button.active *,
+.physics-resource-tabs button.on *,
+.physics-resource-tabs button[aria-pressed="true"] *,
+.physics-workbook-topic-list button.active *,
+.physics-workbook-topic-list button.on *,
+.physics-workbook-topic-list button[aria-pressed="true"] *{
+  color:inherit!important;
+}
+
+.physics-mechanics .pm-topics .pm-topic-btn:not(.active):not([aria-pressed="true"]),
+.physics-mechanics .pm-modebar .pm-mode-btn:not(.active):not([aria-pressed="true"]),
+.pcl-shell nav button:not(.active):not(.on):not([aria-pressed="true"]),
+.physics-resource-tabs button:not(.active):not(.on):not([aria-pressed="true"]),
+.physics-workbook-topic-list button:not(.active):not(.on):not([aria-pressed="true"]){
+  border-color:var(--spdp-border)!important;
+  background:var(--spdp-surface)!important;
+  color:var(--spdp-text)!important;
+  box-shadow:none!important;
+}
+
+.physics-mechanics .pm-topics .pm-topic-btn:not(.active):not([aria-pressed="true"]):hover:not(:disabled),
+.physics-mechanics .pm-modebar .pm-mode-btn:not(.active):not([aria-pressed="true"]):hover:not(:disabled),
+.pcl-shell nav button:not(.active):not(.on):not([aria-pressed="true"]):hover:not(:disabled),
+.physics-resource-tabs button:not(.active):not(.on):not([aria-pressed="true"]):hover:not(:disabled),
+.physics-workbook-topic-list button:not(.active):not(.on):not([aria-pressed="true"]):hover:not(:disabled){
+  border-color:#b9c7d7!important;
+  background:var(--spdp-surface-hover)!important;
+  color:var(--spdp-text)!important;
+  box-shadow:none!important;
+  transform:none!important;
+}
+
+/* Preserve semantic exam states ------------------------------------------ */
+/* Answered/correct/current palettes, flags and destructive buttons retain
+   their existing colours from the exam-specific styles. */
+
+[data-spark-action]:focus-visible,
+.practice-primary:focus-visible,
+.practice-secondary:focus-visible,
+.practice-back:focus-visible,
+.paper-start-button:focus-visible,
+.paper-text-button:focus-visible,
+.paper-exit:focus-visible,
+.paper-next:focus-visible,
+.paper-submit-top:focus-visible,
+.paper-submit-side:focus-visible,
+.paper-drawer-submit:focus-visible,
+.paper2-back-control:focus-visible,
+.paper2-formula-control:focus-visible,
+.phy-p1-primary:focus-visible,
+.phy-p1-secondary:focus-visible,
+.phy-p1-back:focus-visible,
+.phy-p1-nav-toggle:focus-visible,
+.psv-back:focus-visible,
+.physics-resource-primary:focus-visible,
+.physics-resource-secondary:focus-visible,
+.physics-resource-back:focus-visible,
+.physics-mechanics .pm-topic-btn:focus-visible,
+.physics-mechanics .pm-mode-btn:focus-visible,
+.pcl-shell nav button:focus-visible,
+.physics-resource-tabs button:focus-visible,
+.physics-workbook-topic-list button:focus-visible{
+  outline:3px solid var(--spdp-focus)!important;
+  outline-offset:2px!important;
+}
+
+/* Disabled stays quiet and clear. */
+[data-spark-action]:disabled,
+.practice-primary:disabled,
+.practice-secondary:disabled,
+.practice-back:disabled,
+.paper-start-button:disabled,
+.paper-text-button:disabled,
+.paper-exit:disabled,
+.paper-next:disabled,
+.paper-submit-top:disabled,
+.paper-submit-side:disabled,
+.paper-drawer-submit:disabled,
+.paper2-back-control:disabled,
+.paper2-formula-control:disabled,
+.phy-p1-primary:disabled,
+.phy-p1-secondary:disabled,
+.phy-p1-back:disabled,
+.phy-p1-nav-toggle:disabled,
+.psv-back:disabled,
+.physics-resource-primary:disabled,
+.physics-resource-secondary:disabled,
+.physics-resource-back:disabled{
+  border-color:var(--spdp-disabled-border)!important;
+  background:var(--spdp-disabled-bg)!important;
+  color:var(--spdp-disabled-text)!important;
+  box-shadow:none!important;
+  opacity:1!important;
+  cursor:not-allowed!important;
+  transform:none!important;
+}
+
+[data-spark-action]:active:not(:disabled),
+.practice-primary:active:not(:disabled),
+.practice-secondary:active:not(:disabled),
+.practice-back:active:not(:disabled),
+.paper-start-button:active:not(:disabled),
+.paper-text-button:active:not(:disabled),
+.paper-exit:active:not(:disabled),
+.paper-next:active:not(:disabled),
+.paper-submit-top:active:not(:disabled),
+.paper-submit-side:active:not(:disabled),
+.phy-p1-primary:active:not(:disabled),
+.phy-p1-secondary:active:not(:disabled){
+  transform:scale(.985)!important;
+  box-shadow:none!important;
+}
+
+@media(max-width:680px){
+  [data-spark-action="forward"],
+  [data-spark-action="forward-secondary"],
+  [data-spark-action="exam"],
+  [data-spark-action="nav"],
+  .practice-primary,
+  .practice-secondary,
+  .practice-back,
+  .paper-start-button,
+  .paper-text-button,
+  .paper-exit,
+  .paper-next,
+  .paper-submit-top,
+  .paper-submit-side,
+  .paper2-back-control,
+  .paper2-formula-control,
+  .phy-p1-primary,
+  .phy-p1-secondary,
+  .phy-p1-back,
+  .phy-p1-nav-toggle,
+  .psv-back,
+  .physics-resource-primary,
+  .physics-resource-secondary,
+  .physics-resource-back{
+    min-height:46px!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  [data-spark-action],
+  .practice-primary,
+  .practice-secondary,
+  .practice-back,
+  .paper-start-button,
+  .paper-text-button,
+  .paper-exit,
+  .paper-next,
+  .paper-submit-top,
+  .paper-submit-side,
+  .phy-p1-primary,
+  .phy-p1-secondary,
+  .phy-p1-back,
+  .phy-p1-nav-toggle,
+  .psv-back,
+  .physics-resource-primary,
+  .physics-resource-secondary,
+  .physics-resource-back{
+    transition:none!important;
+    transform:none!important;
+  }
+}
