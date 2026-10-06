@@ -107,11 +107,21 @@ export default function SparkOfTheWeekSpotlight({ rewards }) {
                 <span>Weekly leaders</span>
                 <Icon name="arrowRight" size={16} />
               </button>
-              <button type="button" className="ssh-spotlight-privacy" onClick={updatePrivacy} disabled={savingPreference} aria-pressed={Boolean(data?.preferences?.leaderboard_visible)}>
-                <span className={"spark-rewards-switch " + (data?.preferences?.leaderboard_visible ? "is-on" : "")} aria-hidden="true"><i /></span>
-                <span>{data?.preferences?.leaderboard_visible ? "Name visible" : "Name hidden"}</span>
-              </button>
             </div>
+
+            <button
+              type="button"
+              className="spark-rewards-privacy ssh-spotlight-privacy-full"
+              onClick={updatePrivacy}
+              disabled={savingPreference}
+              aria-pressed={Boolean(data?.preferences?.leaderboard_visible)}
+            >
+              <span className={"spark-rewards-switch " + (data?.preferences?.leaderboard_visible ? "is-on" : "")} aria-hidden="true"><i /></span>
+              <span>
+                <strong>{data?.preferences?.leaderboard_visible ? "Name visible on leaderboard" : "Leaderboard name hidden"}</strong>
+                <small>{data?.preferences?.leaderboard_visible ? "Others see your first name and last initial." : "If you place, others see Anonymous SPARK."}</small>
+              </span>
+            </button>
           </div>
         )}
       </section>
