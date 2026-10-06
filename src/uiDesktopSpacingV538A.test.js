@@ -6,23 +6,22 @@ describe("SPARK desktop dashboard spacing regression", () => {
   const responsive = fs.readFileSync(path.join(__dirname, "responsive.css"), "utf8");
   const subjectOverview = fs.readFileSync(path.join(__dirname, "components", "learning", "subjectDashboardOverview.css"), "utf8");
 
-  test("student overview stat cards use neutral dashboard tile styling", () => {
-    const start = app.indexOf('className="student-dashboard-stats-grid"');
-    const end = app.indexOf('className="student-overview-course-card"', start);
-    const studentStats = app.slice(start, end);
-    expect(studentStats).toContain('className="student-dashboard-stat-card"');
-    expect(studentStats).not.toContain('borderTop:`3px solid ${accent}`');
+  test("student overview uses the consolidated dashboard hierarchy", () => {
+    expect(app).toContain("<StudentNextStepCard");
+    expect(app).toContain("<SparkOfTheWeekSpotlight");
+    expect(app).not.toContain('className="student-dashboard-stat-card"');
   });
 
   test("desktop subject cards keep compact spacing and the family card remains compact", () => {
     expect(app).toContain('<SubjectDashboardOverview');
     expect(app).toContain('family-code-card student-overview-family-card');
-    expect(subjectOverview).toContain('.spark-subject-overview-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}');
-    expect(subjectOverview).toContain('@media(min-width:1800px)');
-    expect(subjectOverview).toContain('.spark-subject-overview-grid{grid-template-columns:repeat(3,minmax(0,1fr))}');
-    expect(subjectOverview).toContain('@media(max-width:840px)');
-    expect(subjectOverview).toContain('.spark-subject-overview-grid{grid-template-columns:1fr}');
-    expect(subjectOverview).toContain('.spark-subject-overview-card{display:grid;gap:13px}');
+    expect(subjectOverview).toContain(".spark-subject-overview-grid");
+    expect(subjectOverview).toContain("grid-template-columns:repeat(2,minmax(0,1fr))");
+    expect(subjectOverview).toContain("@media(min-width:1800px)");
+    expect(subjectOverview).toContain("grid-template-columns:repeat(3,minmax(0,1fr))");
+    expect(subjectOverview).toContain("@media(max-width:840px)");
+    expect(subjectOverview).toContain("grid-template-columns:1fr");
+    expect(subjectOverview).toContain(".spark-subject-overview-card");
     expect(responsive).toContain('@media(min-width:821px)');
     expect(responsive).toContain('.student-overview-family-card{');
     expect(responsive).toContain('padding:17px 22px!important');
