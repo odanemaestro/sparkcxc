@@ -115,7 +115,6 @@ import "./mobileDashboardV18.css";
 import "./glassModalSystemV18.css";
 import "./sparkFinalButtonConsistencyV2642.css";
 import "./sparkSubjectLeaveModalV272.css";
-import "./sparkStudentDashboardPremiumV1.css";
 import GOOGLE_ICON_B64 from "./assets/icons/google-icon.png";
 import GOOGLE_CALENDAR_ICON_B64 from "./assets/icons/google-calendar-icon.png";
 import OUTLOOK_ICON_B64 from "./assets/icons/outlook-icon.png";
@@ -4559,47 +4558,40 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
 
         {sec === "overview" && !isTutor && (
           <>
-            <section className="student-dashboard-hero" aria-label="Learning overview">
-              <div className="student-dashboard-hero-copy">
-                <p className="student-dashboard-hero-greeting">
+            <div className="student-dashboard-greeting-row">
+              <div className="student-mobile-greeting-photo">
+                <ProfilePhotoEditor
+                  user={user}
+                  profile={dashboardProfile}
+                  isTutorProfile={false}
+                  showToast={showToast}
+                  onProfileUpdated={onProfileUpdated}
+                  size={62}
+                />
+              </div>
+              <div className="student-dashboard-greeting-copy">
+                <h1 style={{fontFamily:FD,fontSize:24,fontWeight:700,color:T.ink,margin:"0 0 4px"}}>
                   Good {new Date().getHours()<12?"morning":new Date().getHours()<17?"afternoon":"evening"}, {profile?.name?.split(" ")[0]}.
-                </p>
-                <h1>Ready to keep your <span>streak</span> alive?</h1>
-                <p className="student-dashboard-hero-support">Small steps today lead to bigger results tomorrow. Keep learning, keep practising, keep growing.</p>
-                <div className="student-mobile-quick-actions" aria-label="Quick learning actions">
-                  <button type="button" className="student-mobile-quick-action student-dashboard-primary-action" onClick={() => setView("study")}>
-                    <span className="student-mobile-quick-icon" aria-hidden="true"><Icon name="featureBook" size={19}/></span>
-                    <span className="student-mobile-quick-label">Continue studying</span>
-                  </button>
-                  <button type="button" className="student-mobile-quick-action" onClick={() => setView("practice")}>
-                    <span className="student-mobile-quick-icon" aria-hidden="true"><Icon name="goal" size={19}/></span>
-                    <span className="student-mobile-quick-label">Quick practice</span>
-                  </button>
-                  {studentHasFlashcards && (
-                    <button type="button" className="student-mobile-quick-action" onClick={() => setDashboardSection("flashcards")}>
-                      <span className="student-mobile-quick-icon" aria-hidden="true"><Icon name="flashcards" size={19}/></span>
-                      <span className="student-mobile-quick-label">Flashcards</span>
-                    </button>
-                  )}
-                </div>
+                </h1>
+                <p style={{color:T.textMuted,fontSize:14,marginBottom:24}}>Keep that momentum going.</p>
               </div>
-              <div className="student-dashboard-hero-side">
-                <div className="student-dashboard-hero-photo">
-                  <ProfilePhotoEditor
-                    user={user}
-                    profile={dashboardProfile}
-                    isTutorProfile={false}
-                    showToast={showToast}
-                    onProfileUpdated={onProfileUpdated}
-                    size={86}
-                  />
-                </div>
-                <div className="student-dashboard-streak-card">
-                  <span className="student-dashboard-streak-icon" aria-hidden="true"><Icon name="progress" size={20}/></span>
-                  <span><strong>{streak > 0 ? streak : 0} day streak</strong><small>{streak > 0 ? "Keep it going." : "Start your streak today."}</small></span>
-                </div>
-              </div>
-            </section>
+            </div>
+            <div className="student-mobile-quick-actions" aria-label="Quick learning actions">
+              <button type="button" className="student-mobile-quick-action" onClick={() => setView("study")}>
+                <span className="student-mobile-quick-icon" aria-hidden="true"><Icon name="featureBook" size={19}/></span>
+                <span className="student-mobile-quick-label">Continue study</span>
+              </button>
+              <button type="button" className="student-mobile-quick-action" onClick={() => setView("practice")}>
+                <span className="student-mobile-quick-icon" aria-hidden="true"><Icon name="goal" size={19}/></span>
+                <span className="student-mobile-quick-label">Quick practice</span>
+              </button>
+              {studentHasFlashcards && (
+                <button type="button" className="student-mobile-quick-action" onClick={() => setDashboardSection("flashcards")}>
+                  <span className="student-mobile-quick-icon" aria-hidden="true"><Icon name="flashcards" size={19}/></span>
+                  <span className="student-mobile-quick-label">Flashcards</span>
+                </button>
+              )}
+            </div>
             <SparkRewardsPanel
               supabase={supabase}
               viewerUserId={user.id}
@@ -4607,19 +4599,20 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
               subjectUserId={user.id}
               subjectName={profile?.name || ""}
             />
-            <section className="student-dashboard-stats-grid" aria-label="Learning statistics">
+            <div className="student-dashboard-stats-grid" style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(140px,1fr))",
+              gap:14,marginBottom:24}}>
               {[
                 ["Enrolled subjects", allSubjectsSummary.activeSubjects],
                 ["Lessons completed", allSubjectsSummary.lessonsCompleted],
                 ["Practice results", allSubjectsSummary.practiceAttempts],
                 ["Day Study Streak", streak > 0 ? streak : "0"],
               ].map(([label,val]) => (
-                <Card key={label} className="student-dashboard-stat-card">
-                  <strong>{val}</strong>
-                  <span>{label}</span>
+                <Card key={label} className="student-dashboard-stat-card" style={{padding:18}}>
+                  <div style={{fontFamily:FD,fontSize:26,fontWeight:700,color:T.ink}}>{val}</div>
+                  <div style={{fontSize:11,color:T.textMuted,textTransform:"uppercase",letterSpacing:"0.04em",marginTop:3}}>{label}</div>
                 </Card>
               ))}
-            </section>
+            </div>
             <SubjectDashboardOverview
               summaries={subjectDashboardSummaries}
               onOpenSubject={subject => openSubject(subject)}
