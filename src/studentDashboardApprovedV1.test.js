@@ -26,10 +26,14 @@ describe("SPARK student dashboard approved design V1", () => {
 
   test("hero provides one specific next action and scalable streak copy", () => {
     const hero = read("components/learning/StudentDashboardHero.jsx");
-    expect(hero).toContain("Pick up <span>{focusTitle}</span> in {subjectLabel}");
+    expect(hero).toContain('Pick up <span>{focusTitle}</span> in {subjectLabel}');
     expect(hero).toContain("spark-dashboard-v2-primary");
     expect(hero).toContain("{streakCount} day streak");
     expect(hero).toContain("Study today to reach ");
+    expect(hero).toContain("greetingForHour");
+    expect(hero).toContain("spark-dashboard-v2-forward-icon");
+    expect(hero).not.toContain("spark-dashboard-v2-eyebrow");
+    expect(hero).not.toContain('aria-hidden="true">→');
     expect(hero).not.toContain("1 2 3 4 5 6 7 8");
   });
 
@@ -61,6 +65,8 @@ describe("SPARK student dashboard approved design V1", () => {
     expect(css).toContain("--sd-teal:#0d9488");
     expect(css).toContain("--sd-gold:#d99a1b");
     expect(css).toContain("background:#fbfcfe");
+    expect(css).toContain(".spark-upcoming-card .spark-feature-icon.compact");
+    expect(css).not.toContain(".spark-dashboard-v2-rail .spark-upcoming-card{\n  border-top:3px");
     expect(css).toContain('html[data-theme="dark"] .spark-dashboard-v2-shell');
     expect(css).toContain("@media(max-width:960px)");
     expect(css).toContain("@media(max-width:760px)");
