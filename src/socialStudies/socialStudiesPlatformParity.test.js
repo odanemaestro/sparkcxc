@@ -213,6 +213,26 @@ describe("Social Studies platform parity", () => {
     });
   });
 
+  test("Social Studies study navigation matches Integrated Science lesson progression rules", () => {
+    const study = read("components/SocialStudiesSubjectView.jsx");
+    const css = read("socialStudies.css");
+
+    expect(study).toContain("function isLessonUnlocked");
+    expect(study).toContain("Complete the earlier lessons to unlock this lesson.");
+    expect(study).toContain("previousLesson");
+    expect(study).toContain("nextLesson");
+    expect(study).toContain("Mark lesson complete");
+    expect(study).toContain("Lesson completed");
+    expect(study).toContain('disabled={!completed}');
+    expect(study).toContain("Next Lesson");
+    expect(study).toContain("Previous");
+    expect(study).toContain("ss-lock-icon");
+    expect(css).toContain(".ss-lesson-footer");
+    expect(css).toContain(".ss-lesson-nav-previous");
+    expect(css).toContain(".ss-lesson-nav-next:not(:disabled)");
+    expect(css).toContain(".ss-lesson-list button.locked");
+  });
+
   test("Social Studies practice and flashcards honour Intelligence route targets", () => {
     const practice = read("practice/SocialStudiesPracticeHub.jsx");
     const flashcards = read("components/SocialStudiesFlashcardsPanel.jsx");
