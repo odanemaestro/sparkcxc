@@ -799,3 +799,36 @@ html[data-theme="dark"] .spark-weekly-leaders-modal{
     flex-direction:column;
   }
 }
+
+.ssh-spotlight-privacy-full{
+  width:100%;
+  margin-top:10px;
+  padding:11px 0 0!important;
+  border:0!important;
+  border-top:1px solid #ead9ae!important;
+  border-radius:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  justify-content:flex-start!important;
+  text-align:left;
+}
+html[data-theme="dark"] .ssh-spotlight-privacy-full{
+  border-top-color:#4f431d!important;
+}
+.ssh-spotlight-privacy-full>span:last-child{
+  display:grid;
+  gap:1px;
+}
+.ssh-spotlight-privacy-full strong{
+  color:var(--ssh-ink)!important;
+  font-size:10.5px!important;
+  line-height:1.25!important;
+}
+.ssh-spotlight-privacy-full small{
+  color:var(--ssh-muted)!important;
+  font-size:9.5px!important;
+  line-height:1.3!important;
+}
+.ssh-spotlight-privacy-full:hover{
+  background:transparent!important;
+}
