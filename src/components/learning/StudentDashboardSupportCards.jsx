@@ -22,13 +22,11 @@ function bookingDate(booking) {
   return Number.isNaN(date.getTime()) ? null : date;
 }
 
-function formatUpcoming(bookings = []) {
-  const next = [...bookings]
+function nextUpcoming(bookings = []) {
+  return [...bookings]
     .map(booking => ({ booking, date: bookingDate(booking) }))
     .filter(item => item.date && item.date.getTime() >= Date.now())
-    .sort((a, b) => a.date.getTime() - b.date.getTime())[0];
-  if (!next) return "No upcoming tutor session";
-  return next.date.toLocaleString([], { dateStyle: "medium", timeStyle: "short" });
+    .sort((a, b) => a.date.getTime() - b.date.getTime())[0] || null;
 }
 
 function weekActivityCount(recentActivity = []) {
@@ -45,9 +43,11 @@ export default function StudentDashboardSupportCards({
   recentActivity = [],
   onOpenFlashcards,
   onOpenProgress,
+  onOpenBookings,
 }) {
   const recentAchievements = useMemo(() => (recentActivity || []).slice(0, 3), [recentActivity]);
   const weeklyCount = weekActivityCount(recentActivity);
+  const upcoming = useMemo(() => nextUpcoming(upcomingBookings), [upcomingBookings]);
   const flashcardNames = flashcardSubjects.map(subject => subject.shortName || subject.name).filter(Boolean);
   const flashcardCopy = flashcardNames.length > 1
     ? `Review flashcards across ${flashcardNames.slice(0, -1).join(", ")} and ${flashcardNames[flashcardNames.length - 1]}.`
@@ -62,7 +62,16 @@ export default function StudentDashboardSupportCards({
           <span className="spark-feature-icon compact"><Icon name="calendar" size={19}/></span>
           <div><h3>Next tutoring session</h3><span>Time-sensitive</span></div>
         </div>
-        <div className="spark-upcoming-line"><span>Next session</span><strong>{formatUpcoming(upcomingBookings)}</strong></div>
+        {upcoming ? (
+          <>
+            <div className="spark-upcoming-session">
+              <strong>{upcoming.booking?.subject || "Tutoring session"}</strong>
+              <span>{upcoming.date.toLocaleString([], { dateStyle:"medium", timeStyle:"short" })}</span>
+              {upcoming.booking?.profiles?.name && <span>with {upcoming.booking.profiles.name}</span>}
+            </div>
+            <DashboardCardAction label="View booking" onClick={onOpenBookings} />
+          </>
+        ) : <p className="spark-muted">You have no upcoming tutor session.</p>}
       </Card>
 
       <Card className="spark-flashcard-overview-card">
