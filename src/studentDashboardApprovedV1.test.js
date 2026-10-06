@@ -24,10 +24,12 @@ describe("SPARK student dashboard approved design V1", () => {
     expect(overview).not.toContain("<ProfilePhotoEditor");
   });
 
-  test("hero provides one specific next action and scalable streak copy", () => {
+  test("hero provides one specific next action, SPARK of the Week slot and scalable streak copy", () => {
     const hero = read("components/learning/StudentDashboardHero.jsx");
     expect(hero).toContain('Pick up <span>{focusTitle}</span> in {subjectLabel}');
     expect(hero).toContain("spark-dashboard-v2-primary");
+    expect(hero).toContain("spark-dashboard-weekly-highlight");
+    expect(hero).toContain("spark-dashboard-v2-hero-aside");
     expect(hero).toContain("{streakCount} day streak");
     expect(hero).toContain("Study today to reach ");
     expect(hero).toContain("greetingForHour");
@@ -35,6 +37,15 @@ describe("SPARK student dashboard approved design V1", () => {
     expect(hero).not.toContain("spark-dashboard-v2-eyebrow");
     expect(hero).not.toContain('aria-hidden="true">→');
     expect(hero).not.toContain("1 2 3 4 5 6 7 8");
+  });
+
+  test("SPARK of the Week uses the existing rewards data and moves to the top without duplication", () => {
+    const rewards = read("components/rewards/SparkRewardsPanel.jsx");
+    expect(rewards).toContain('document.getElementById("spark-dashboard-weekly-highlight")');
+    expect(rewards).toContain("createPortal(weeklyHero, weeklyHighlightTarget)");
+    expect(rewards).toContain("!weeklyHighlightTarget && weeklyHero");
+    expect(rewards).toContain("spark-rewards-card-with-top-highlight");
+    expect(rewards).toContain('scrollIntoView({ behavior:"smooth", block:"start" })');
   });
 
   test("subjects use one sorted list, neutral progress bars and a focus-next cue", () => {
@@ -65,11 +76,13 @@ describe("SPARK student dashboard approved design V1", () => {
     expect(css).toContain("--sd-teal:#0d9488");
     expect(css).toContain("--sd-gold:#d99a1b");
     expect(css).toContain("background:#fbfcfe");
+    expect(css).toContain(".spark-dashboard-v2-weekly-slot .spark-rewards-hero");
     expect(css).toContain(".spark-upcoming-card .spark-feature-icon.compact");
     expect(css).not.toContain(".spark-dashboard-v2-rail .spark-upcoming-card{\n  border-top:3px");
     expect(css).toContain('html[data-theme="dark"] .spark-dashboard-v2-shell');
     expect(css).toContain("@media(max-width:960px)");
     expect(css).toContain("@media(max-width:760px)");
+    expect(css).toContain("@media(max-width:620px)");
     expect(css).toContain("@media(max-width:520px)");
     expect(css).toContain("@media(prefers-reduced-motion:reduce)");
   });
