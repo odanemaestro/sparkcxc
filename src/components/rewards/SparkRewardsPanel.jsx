@@ -1,7 +1,8 @@
-import React, { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect, useLayoutEffect, useMemo, useState } from "react";
 import { createPortal } from "react-dom";
 import { rewardLevelForPoints, weeklyAchievementBadges, weeklyScoreBreakdown } from "../../rewards/sparkRewards";
 import Icon from "../ui/Icon";
+import Modal from "../ui/Modal";
 
 function safeNumber(value) {
   return Number.isFinite(Number(value)) ? Number(value) : 0;
@@ -29,7 +30,6 @@ export default function SparkRewardsPanel({
   const [showLeaders, setShowLeaders] = useState(false);
   const [savingPreference, setSavingPreference] = useState(false);
   const [weeklyHighlightTarget, setWeeklyHighlightTarget] = useState(null);
-  const rewardsRef = useRef(null);
 
   const load = useCallback(async () => {
     if (!supabase || !viewerUserId) return;
@@ -81,11 +81,7 @@ export default function SparkRewardsPanel({
   };
 
   const toggleLeaders = () => {
-    const next = !showLeaders;
-    setShowLeaders(next);
-    if (weeklyHighlightTarget && next) {
-      window.requestAnimationFrame(() => rewardsRef.current?.scrollIntoView({ behavior:"smooth", block:"start" }));
-    }
+    setShowLeaders(current => !current);
   };
 
   const subjectLabel = viewerRole === "parent" && subjectName ? `${subjectName}'s week` : "Your week";
@@ -122,7 +118,7 @@ export default function SparkRewardsPanel({
   return (
     <>
       {weeklyHighlightTarget ? createPortal(weeklyHero, weeklyHighlightTarget) : null}
-      <section ref={rewardsRef} className={`spark-rewards-card${weeklyHighlightTarget ? " spark-rewards-card-with-top-highlight" : ""}`} aria-label="SPARK Rewards">
+      <section className={`spark-rewards-card${weeklyHighlightTarget ? " spark-rewards-card-with-top-highlight" : ""}`} aria-label="SPARK Rewards">
         {!weeklyHighlightTarget && weeklyHero}
 
         {error && <div className="spark-rewards-setup-note">{error}</div>}
@@ -165,10 +161,27 @@ export default function SparkRewardsPanel({
           </div>
         )}
 
-        {!error && showLeaders && (
-          <div className="spark-rewards-expanded">
+
+      </section>
+
+      {!error && showLeaders && (
+        <Modal
+          onClose={() => setShowLeaders(false)}
+          maxWidth={760}
+          className="spark-weekly-leaders-modal"
+          showClose
+          closeLabel="Close weekly leaders"
+        >
+          <div className="spark-weekly-leaders-modal-head">
+            <div className="spark-weekly-leaders-modal-icon"><TrophyIcon /></div>
+            <div>
+              <h2>Weekly leaders</h2>
+              <p>Balanced learning across the week, not just the highest marks.</p>
+            </div>
+          </div>
+
+          <div className="spark-weekly-leaders-modal-grid">
             <div className="spark-rewards-leaderboard">
-              <div className="spark-rewards-section-title"><strong>Weekly leaders</strong><span>Balanced learning, not just highest marks</span></div>
               {leaders.length ? leaders.map((leader, index) => (
                 <div className={`spark-rewards-leader-row ${leader.is_subject ? "is-subject" : ""}`} key={`${leader.rank}-${leader.display_name}-${index}`}>
                   <b>#{leader.rank}</b>
@@ -181,7 +194,7 @@ export default function SparkRewardsPanel({
 
             {subject && (
               <div className="spark-rewards-breakdown">
-                <div className="spark-rewards-section-title"><strong>How the weekly score works</strong><span>Every category has a cap so grinding one activity cannot dominate.</span></div>
+                <div className="spark-rewards-section-title"><strong>How your weekly score works</strong><span>Each category has a cap so one activity cannot dominate.</span></div>
                 {breakdown.map(([label, points, max]) => (
                   <div className="spark-rewards-breakdown-row" key={label}>
                     <span>{label}</span>
@@ -192,8 +205,8 @@ export default function SparkRewardsPanel({
               </div>
             )}
           </div>
-        )}
-      </section>
+        </Modal>
+      )}
     </>
   );
 }
