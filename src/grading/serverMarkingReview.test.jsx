@@ -29,7 +29,8 @@ test("an uncertain result shows the criterion range and both check explanations 
   ]}]}});
   render(<ServerMarkingReview supabase={db} attemptId="a"/>);
   expect(await screen.findByText("7–9 / 10")).toBeInTheDocument();
-  expect(screen.getByText("q: 2–3/3")).toBeInTheDocument();
+  expect(screen.getByText("q")).toBeInTheDocument();
+  expect(screen.getByText("2–3/3")).toBeInTheDocument();
   expect(screen.getByText(/differed by only one mark/i)).toBeInTheDocument();
   expect(screen.getByText("Check 1: 2/3")).toBeInTheDocument();
   expect(screen.getByText("Check 2: 3/3")).toBeInTheDocument();

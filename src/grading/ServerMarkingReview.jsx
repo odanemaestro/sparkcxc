@@ -35,18 +35,20 @@ export default function ServerMarkingReview({supabase,attemptId}){
   }
   const result=job?.result;
   return <section className="spark-marking-review" aria-label="Deeper automated marking">
-    <h2>Deeper automated check</h2>
-    <p>Checks written answers against the question rubric and compares two automated assessments. Scores remain practice estimates.</p>
+    <div className="spark-marking-review-head">
+      <div><span className="spark-marking-eyebrow">AI-assisted practice feedback</span><h2>Deeper automated check</h2></div>
+    </div>
+    <p className="spark-marking-intro">Checks written answers against the question rubric and compares two automated assessments. Scores remain practice estimates.</p>
     {!attemptId&&<p>A saved online attempt is needed for this check. Your current feedback remains available.</p>}
     {attemptId&&!job&&<button type="button" disabled={busy} onClick={enqueue}>{busy?"Requesting check…":"Check written answers"}</button>}
     {job&&["queued","processing"].includes(job.status)&&<p role="status">{job.status==="queued"?"Your check is queued. You can leave this page and return later.":"Your answers are being checked automatically."}</p>}
     {job?.status==="failed"&&<p role="status">The deeper check could not be completed after automatic retries. Your original result remains available.</p>}
-    {result&&<><p><strong>{result.score===null?`${result.minScore}–${result.maxScore}`:result.score} / {result.maxMarks}</strong>{result.uncertain?" — some criteria have a narrow score range":" — automated practice estimate"}</p>
+    {result&&<><div className="spark-marking-score"><span>Estimated range</span><strong>{result.score===null?`${result.minScore}–${result.maxScore}`:result.score} / {result.maxMarks}</strong><small>{result.uncertain?"Some criteria have a narrow score range":"Automated practice estimate"}</small></div>
       {(result.criteria || []).map(c=>{
         const ranged=c.marks===null&&Number.isFinite(c.minMarks)&&Number.isFinite(c.maxPossibleMarks);
         const narrow=ranged&&(c.maxPossibleMarks-c.minMarks)<=1;
-        return <details key={c.id}>
-          <summary>{c.id}: {ranged?`${c.minMarks}–${c.maxPossibleMarks}/${c.maxMarks}`:c.marks===null?"Uncertain":`${c.marks}/${c.maxMarks}`}</summary>
+        return <details key={c.id} className={ranged?"spark-marking-criterion is-range":"spark-marking-criterion"}>
+          <summary><span className="spark-marking-criterion-id">{c.id}</span><strong>{ranged?`${c.minMarks}–${c.maxPossibleMarks}/${c.maxMarks}`:c.marks===null?"Uncertain":`${c.marks}/${c.maxMarks}`}</strong></summary>
           <p>{narrow?"Both automated checks rated this response very similarly and differed by only one mark.":c.feedback}</p>
           {c.marks===null&&(c.passes||[]).map((pass,index)=><div key={index} className="spark-marking-pass"><strong>Check {index+1}: {pass.marks}/{c.maxMarks}</strong><p>{pass.feedback}</p></div>)}
           {(c.evidence || []).map((e,i)=><blockquote key={i}>{e.quote}</blockquote>)}
