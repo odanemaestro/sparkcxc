@@ -881,3 +881,48 @@ html[data-theme="dark"] .ssh-spotlight-privacy-full .spark-rewards-switch.is-on{
   border-color:var(--ssh-accent)!important;
   background:var(--ssh-accent)!important;
 }
+
+
+/* Subject action hierarchy ------------------------------------------------ */
+.ssh-subject-actions .ssh-btn--tinted{
+  border:1px solid #0f9a8a!important;
+  background:#0f9a8a!important;
+  color:#fff!important;
+  box-shadow:0 5px 14px rgba(15,154,138,.13)!important;
+}
+.ssh-subject-actions .ssh-btn--tinted:hover:not(:disabled){
+  border-color:#0b8174!important;
+  background:#0b8174!important;
+  color:#fff!important;
+  box-shadow:0 7px 16px rgba(15,154,138,.18)!important;
+}
+.ssh-subject-actions .ssh-btn--secondary{
+  border:1px solid #123468!important;
+  background:#123468!important;
+  color:#fff!important;
+  box-shadow:0 5px 14px rgba(15,37,87,.11)!important;
+}
+.ssh-subject-actions .ssh-btn--secondary:hover:not(:disabled){
+  border-color:#0e2a58!important;
+  background:#0e2a58!important;
+  color:#fff!important;
+  box-shadow:0 7px 16px rgba(15,37,87,.15)!important;
+}
+html[data-theme="dark"] .ssh-subject-actions .ssh-btn--tinted{
+  border-color:#0f9a8a!important;
+  background:#0f9a8a!important;
+  color:#fff!important;
+}
+html[data-theme="dark"] .ssh-subject-actions .ssh-btn--tinted:hover:not(:disabled){
+  border-color:#16a596!important;
+  background:#16a596!important;
+}
+html[data-theme="dark"] .ssh-subject-actions .ssh-btn--secondary{
+  border-color:#2f6db4!important;
+  background:#2f6db4!important;
+  color:#fff!important;
+}
+html[data-theme="dark"] .ssh-subject-actions .ssh-btn--secondary:hover:not(:disabled){
+  border-color:#397ac4!important;
+  background:#397ac4!important;
+}
