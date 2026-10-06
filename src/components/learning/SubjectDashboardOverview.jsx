@@ -45,6 +45,7 @@ function subjectMetricFourth(subject, progress) {
 export default function SubjectDashboardOverview({
   summaries = [],
   onOpenSubject,
+  onOpenPractice,
   onOpenProgress,
   onOpenReport,
   subjectInsights = {},
@@ -97,6 +98,7 @@ export default function SubjectDashboardOverview({
           const fourth = subjectMetricFourth(subject, progress);
           const focus = subjectInsights?.[subject.id] || null;
           const canStudy = onOpenSubject && (subject.capabilities?.study !== false || subject.routes?.study || subject.implementation === "generic");
+          const canPractice = onOpenPractice && subject.capabilities?.practice !== false && Boolean(subject.routes?.practice);
           return (
             <div key={subject.id} className={`spark-subject-overview-row${index === 0 ? " is-focus-next" : ""}`}>
               <div className="spark-subject-overview-title-row">
@@ -125,8 +127,11 @@ export default function SubjectDashboardOverview({
               </div>
 
               <div className="spark-subject-overview-actions">
-                {canStudy && <button type="button" className={`spark-dashboard-card-action${index === 0 ? "" : " spark-dashboard-card-action-secondary"}`} onClick={() => onOpenSubject(subject)}>
-                  <span>{subject.id === "information-technology" ? "Continue IT" : "Practise"}</span>
+                {canPractice ? <button type="button" className={`spark-dashboard-card-action${index === 0 ? "" : " spark-dashboard-card-action-secondary"}`} onClick={() => onOpenPractice(subject)}>
+                  <span>Practise</span>
+                  <span className="spark-dashboard-card-action-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M6 14L14 6M8 6h6v6" /></svg></span>
+                </button> : canStudy && <button type="button" className={`spark-dashboard-card-action${index === 0 ? "" : " spark-dashboard-card-action-secondary"}`} onClick={() => onOpenSubject(subject)}>
+                  <span>Continue</span>
                   <span className="spark-dashboard-card-action-icon" aria-hidden="true"><svg viewBox="0 0 20 20" focusable="false"><path d="M6 14L14 6M8 6h6v6" /></svg></span>
                 </button>}
               </div>
