@@ -4725,10 +4725,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 secondaryActions={studentHomeSecondaryActions}
                 glance={studentHomeGlance}
               />
-              <SparkOfTheWeekSpotlight
-                rewards={studentRewards}
-                onOpenLeaderboard={() => studentRewards.setShowLeaders(true)}
-              />
+              <SparkOfTheWeekSpotlight rewards={studentRewards} />
             </div>
 
             <div className="ssh-main">
@@ -4766,17 +4763,6 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
               </div>
             </div>
 
-            <div className="ssh-rewards" id="spark-rewards-details">
-              <SparkRewardsPanel
-                supabase={supabase}
-                viewerUserId={user.id}
-                viewerRole="student"
-                subjectUserId={user.id}
-                subjectName={profile?.name || ""}
-                rewards={studentRewards}
-                variant="details"
-              />
-            </div>
 
             <div className="ssh-family">
               {pendingParentLinks.length > 0 && (
