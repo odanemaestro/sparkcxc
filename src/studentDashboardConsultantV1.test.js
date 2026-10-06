@@ -38,19 +38,16 @@ describe("consultant student dashboard merged redesign", () => {
     expect(rewards).not.toContain("scrollIntoView");
   });
 
-  test("subjects use attention-first status words, specific recommendations and keep full actions", () => {
+  test("subjects use attention-first status words, useful milestones and keep full actions", () => {
     const subject = read("components/learning/SubjectDashboardOverview.jsx");
-    const model = read("learning/studentHomeModel.js");
     expect(subject).toContain("sortSubjectsForHome");
-    expect(subject).toContain("recommendationDisplay");
+    expect(subject).toContain("subjectMilestone");
     expect(subject).toContain("Needs attention");
     expect(subject).toContain("practice average");
-    expect(subject).toContain("Next focus");
+    expect(subject).toContain("Next milestone");
     expect(subject).toContain("Practise");
     expect(subject).toContain("View progress");
-    expect(subject).not.toContain('"Build on your latest work."');
-    expect(model).toContain("specificActionTitle");
-    expect(model).toContain("recommendationDisplay");
+    expect(subject).not.toContain("Recommended next");
   });
 
   test("support information stays grouped and stacked at narrow and tablet widths", () => {
