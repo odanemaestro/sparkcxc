@@ -3551,6 +3551,22 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
     if (onOpenSubject) onOpenSubject(resolved);
     else setView(resolved?.studyView || "study");
   }, [onOpenSubject, resolveDashboardSubject, setView, showToast]);
+  const openSubjectPractice = useCallback(subject => {
+    const resolved = resolveDashboardSubject(subject);
+    if (!resolved || resolved.capabilities?.practice === false || !resolved.routes?.practice) {
+      showToast?.((resolved?.shortName || resolved?.name || "This subject") + " practice is not available yet.", "error");
+      return;
+    }
+    const practiceViews = {
+      mathematics:"practice-math",
+      physics:"practice-physics",
+      "information-technology":"practice-information-technology",
+      "integrated-science":"practice-integrated-science",
+      "social-studies":"practice-social-studies",
+      "english-a":"practice-english-a",
+    };
+    setView(practiceViews[resolved.id] || "practice");
+  }, [resolveDashboardSubject, setView, showToast]);
   // Student profiles can later become approved tutors without profile.role
   // changing. Wait for that tutor lookup before canonicalizing a nested
   // dashboard route, otherwise #/dashboard/sessions could briefly be mistaken
@@ -4574,6 +4590,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
                 <SubjectDashboardOverview
                   summaries={subjectDashboardSummaries}
                   onOpenSubject={subject => openSubject(subject)}
+                  onOpenPractice={subject => openSubjectPractice(subject)}
                   onOpenProgress={subject => { setProgressSubject(subject?.id || "all"); setDashboardSection("progress"); }}
                   onOpenReport={() => { setStudentReportSubject("all"); setStudentReportOpen(true); }}
                   subjectInsights={dashboardSubjectInsights}
