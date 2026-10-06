@@ -297,7 +297,110 @@ html[data-theme="dark"] .ssh-leader-stats li{border-color:#4f431d}
 .ssh-meter{height:6px;margin-top:7px;overflow:hidden;border-radius:999px;background:var(--ssh-track)}
 .ssh-meter i{display:block;height:100%;border-radius:inherit;background:var(--ssh-accent)}
 .ssh-week-rank{margin:5px 0 0;color:var(--ssh-muted);font-size:10.5px}
-.ssh-spotlight-link{margin-top:8px}
+.ssh-spotlight-link{margin-top:0}
+
+.ssh-spotlight-reward-summary{
+  display:grid;
+  grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);
+  gap:12px;
+  margin-top:13px;
+  padding-top:12px;
+  border-top:1px solid #ead9ae;
+}
+html[data-theme="dark"] .ssh-spotlight-reward-summary{border-color:#4f431d}
+.ssh-spotlight-level{
+  min-width:0;
+  display:grid;
+  gap:2px;
+}
+.ssh-spotlight-level>span{
+  color:var(--ssh-reward-ink);
+  font-size:9.5px;
+  font-weight:850;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+.ssh-spotlight-level>strong{
+  overflow:hidden;
+  color:var(--ssh-ink);
+  font-size:13px;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.ssh-spotlight-level>small{
+  color:var(--ssh-muted);
+  font-size:9.5px;
+}
+.ssh-spotlight-badges{
+  min-width:0;
+}
+.ssh-spotlight-reward-label{
+  display:block;
+  margin-bottom:5px;
+  color:var(--ssh-muted);
+  font-size:9px;
+  font-weight:850;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
+.ssh-spotlight-badges>div{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+}
+.ssh-spotlight-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  max-width:100%;
+  padding:4px 7px;
+  border:1px solid #ead9ae;
+  border-radius:999px;
+  background:rgba(255,255,255,.55);
+  color:var(--ssh-ink);
+  font-size:9.5px;
+}
+html[data-theme="dark"] .ssh-spotlight-badge{
+  border-color:#4f431d;
+  background:rgba(255,255,255,.04);
+}
+.ssh-spotlight-badge b{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.ssh-spotlight-badge.is-empty{
+  color:var(--ssh-muted);
+}
+.ssh-spotlight-actions{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  margin-top:10px;
+}
+.ssh-spotlight-privacy{
+  min-height:32px;
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:4px 7px;
+  border:0;
+  border-radius:8px;
+  background:transparent;
+  color:var(--ssh-muted);
+  font:inherit;
+  font-size:9.5px;
+  font-weight:800;
+  cursor:pointer;
+}
+.ssh-spotlight-privacy:hover{background:rgba(255,255,255,.35)}
+html[data-theme="dark"] .ssh-spotlight-privacy:hover{background:rgba(255,255,255,.05)}
+.ssh-spotlight-privacy .spark-rewards-switch{
+  transform:scale(.82);
+  transform-origin:left center;
+}
+
 
 /* Section headers */
 .ssh-section-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px 18px;flex-wrap:wrap}
@@ -686,5 +789,13 @@ html[data-theme="dark"] .spark-weekly-leaders-modal{
     grid-template-columns:minmax(92px,1fr) minmax(60px,1fr) 38px;
     gap:7px;
     font-size:10px;
+  }
+}
+
+@media(max-width:620px){
+  .ssh-spotlight-reward-summary{grid-template-columns:1fr}
+  .ssh-spotlight-actions{
+    align-items:flex-start;
+    flex-direction:column;
   }
 }
