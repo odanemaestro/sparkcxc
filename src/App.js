@@ -97,7 +97,7 @@ import SparkOfTheWeekSpotlight from "./components/rewards/SparkOfTheWeekSpotligh
 import useSparkRewardsDashboard from "./rewards/useSparkRewardsDashboard";
 import { buildLearningSummary } from "./insights/progressAnalytics";
 import { buildLearnerModelProfile, learnerModelWeakSkills } from "./learning/learnerModel";
-import { attentionSubjects, buildStudentNextStep, firstNameFrom, greetingForHour, subjectDisplayName } from "./learning/studentHomeModel";
+import { attentionSubjects, buildStudentNextStep, firstNameFrom, greetingForHour, recommendationDisplay, subjectDisplayName } from "./learning/studentHomeModel";
 import { buildLearnerIntelligenceFromSkillStates, buildSubjectLearnerIntelligence } from "./learning/learnerIntelligenceV2";
 import { enhanceLearnerIntelligence, openNextBestActionTarget } from "./learning/nextBestActionV2";
 import {
@@ -4327,13 +4327,13 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
   });
   const dashboardSubjectInsights = Object.fromEntries(subjectDashboardSummaries.map(subject => {
     const intelligence = studentIntelligenceBySubject[subject.id];
-    return [subject.id, intelligence?.hasEvidence && intelligence?.recommendation ? {
-      title:intelligence.recommendation.title,
-      detail:intelligence.recommendation.target?.label
-        ? `${intelligence.recommendation.detail} Next: ${intelligence.recommendation.target.label}.`
-        : intelligence.recommendation.detail,
-      summary:intelligence.recommendation.detail,
-    } : null];
+    const display = recommendationDisplay({ subject, intelligence });
+    return [subject.id, {
+      title:display.title,
+      detail:display.detail,
+      summary:display.summary,
+      specific:display.specific,
+    }];
   }));
   const now = new Date();
   const upcomingSessions = bookings.filter(b => { const status = bookingDisplayStatus(b); return status === "pending" || status === "confirmed"; });
