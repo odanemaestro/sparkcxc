@@ -96,14 +96,28 @@ export default function SparkRewardsPanel({
     </div>
   );
 
-  const breakdownBlock = subject && (
-    <div className="spark-rewards-breakdown">
-      <div className="spark-rewards-section-title"><strong>How the weekly score works</strong><span>Every category has a cap so one activity cannot dominate.</span></div>
+  const showPersonalScoreProgress = viewerRole === "student";
+  const breakdownBlock = (!showPersonalScoreProgress || subject) && (
+    <div className={"spark-rewards-breakdown" + (showPersonalScoreProgress ? "" : " is-allocation-only")}>
+      <div className="spark-rewards-section-title">
+        <strong>How the weekly score works</strong>
+        <span>
+          {showPersonalScoreProgress
+            ? "Your progress in each category. Every category has a cap so one activity cannot dominate."
+            : "Each category contributes a fixed number of points to the 100-point weekly score."}
+        </span>
+      </div>
       {breakdown.map(([label,points,max]) => (
         <div className="spark-rewards-breakdown-row" key={label}>
           <span>{label}</span>
-          <div aria-hidden="true"><i style={{width:Math.min(100,Math.round((points/max)*100)) + "%"}} /></div>
-          <b>{points}/{max}</b>
+          {showPersonalScoreProgress ? (
+            <>
+              <div aria-hidden="true"><i style={{width:Math.min(100,Math.round((points/max)*100)) + "%"}} /></div>
+              <b>{points}/{max}</b>
+            </>
+          ) : (
+            <b className="spark-rewards-allocation">{max} pts</b>
+          )}
         </div>
       ))}
     </div>
