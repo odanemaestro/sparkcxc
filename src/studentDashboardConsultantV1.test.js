@@ -63,6 +63,15 @@ describe("consultant student dashboard merged redesign", () => {
     expect(css).toContain("@media(max-width:1279px)");
   });
 
+  test("names weakest areas across every enrolled subject through one shared helper", () => {
+    const model = read("learning/studentHomeModel.js");
+    expect(model).toContain("focusAreaFromIntelligence");
+    expect(model).toContain("intelligence?.prioritySkills");
+    expect(model).toContain("intelligence?.states");
+    expect(model).toContain('"Practise " + focusArea');
+    expect(model).toContain('" needs more work."');
+  });
+
   test("merged design keeps responsive light and dark treatment", () => {
     const css = read("sparkStudentHomeV1.css");
     expect(css).toContain("html[data-theme=\"dark\"] .spark-student-home");
