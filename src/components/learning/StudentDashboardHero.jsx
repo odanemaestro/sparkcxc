@@ -91,11 +91,18 @@ export default function StudentDashboardHero({
         </div>
       </div>
 
-      <div className="spark-dashboard-v2-streak" aria-label={streakCount + " day study streak"}>
-        <span className="spark-dashboard-v2-streak-icon" aria-hidden="true"><Icon name="progress" size={22}/></span>
-        <div>
-          <strong>{streakCount} day streak</strong>
-          <span>{streakCount > 0 ? "Study today to reach " + (streakCount + 1) + " days." : "Start your streak with one learning activity today."}</span>
+      <div className="spark-dashboard-v2-hero-aside">
+        <div
+          id="spark-dashboard-weekly-highlight"
+          className="spark-dashboard-v2-weekly-slot"
+          aria-live="polite"
+        />
+        <div className="spark-dashboard-v2-streak" aria-label={streakCount + " day study streak"}>
+          <span className="spark-dashboard-v2-streak-icon" aria-hidden="true"><Icon name="progress" size={22}/></span>
+          <div>
+            <strong>{streakCount} day streak</strong>
+            <span>{streakCount > 0 ? "Study today to reach " + (streakCount + 1) + " days." : "Start your streak with one learning activity today."}</span>
+          </div>
         </div>
       </div>
     </section>
