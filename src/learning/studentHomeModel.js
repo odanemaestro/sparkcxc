@@ -108,6 +108,106 @@ export function attentionSubjects(summaries = [], options = {}) {
   return sortSubjectsForHome(summaries, options).filter(item => item.status.key === "attention");
 }
 
+
+const GENERIC_RECOMMENDATION_TITLES = [
+  /^continue learning$/i,
+  /^continue$/i,
+  /^keep learning$/i,
+  /^start learning$/i,
+  /^practise$/i,
+  /^practice$/i,
+  /^review$/i,
+];
+
+function isGenericRecommendationTitle(value = "") {
+  const title = String(value || "").trim();
+  if (!title) return true;
+  return GENERIC_RECOMMENDATION_TITLES.some(pattern => pattern.test(title));
+}
+
+function cleanTargetLabel(value = "") {
+  return String(value || "")
+    .replace(/\s*\|\s*(learn|practise it|practice|review)$/i, "")
+    .replace(/\s+targeted practice$/i, "")
+    .trim();
+}
+
+function specificActionTitle(recommendation = {}) {
+  const targetLabel = cleanTargetLabel(recommendation?.target?.label);
+  const skill = String(recommendation?.skill || "").trim();
+  const kind = String(recommendation?.target?.kind || recommendation?.targetActivityType || recommendation?.actionType || "").toLowerCase();
+
+  if (targetLabel) {
+    if (kind.includes("flashcard")) return "Review " + targetLabel.replace(/\s+flashcards$/i, "");
+    if (kind.includes("lab")) return "Complete " + targetLabel;
+    if (kind.includes("exam") || kind.includes("checkpoint") || kind.includes("quiz")) return "Practise " + targetLabel;
+    if (kind.includes("lesson") || kind.includes("study")) return "Review " + targetLabel;
+    return targetLabel;
+  }
+
+  if (skill) {
+    if (kind.includes("flashcard")) return "Review " + skill;
+    if (kind.includes("lab")) return "Apply " + skill + " in a lab";
+    if (kind.includes("exam") || kind.includes("checkpoint") || kind.includes("quiz") || kind.includes("practice")) return "Practise " + skill;
+    return "Review " + skill;
+  }
+
+  return "";
+}
+
+function fallbackReason(subject = {}) {
+  const progress = subject?.progress || {};
+  const attempts = Number(progress.practiceAttempts || 0);
+  const average = Number(progress.practiceAverage || 0);
+
+  if (attempts > 0 && Number.isFinite(average)) {
+    if (average < 60) return "Your recent practice suggests this area needs more work.";
+    if (average < 75) return "A short review now will help strengthen your recent practice.";
+    return "Build on your recent work with one focused activity.";
+  }
+
+  if (progress.active) return "Complete one focused activity so SPARK can refine your next recommendation.";
+  return "Complete one lesson or practice activity so SPARK can give you a more specific recommendation.";
+}
+
+export function recommendationDisplay({ subject = {}, intelligence = null, recommendation = null } = {}) {
+  const rec = recommendation || intelligence?.recommendation || null;
+
+  if (rec) {
+    const rawTitle = String(rec.title || "").trim();
+    const title = isGenericRecommendationTitle(rawTitle)
+      ? (specificActionTitle(rec) || rawTitle || "Continue learning")
+      : rawTitle;
+
+    const targetLabel = cleanTargetLabel(rec?.target?.label);
+    let detail = String(rec.detail || "").trim();
+
+    if (!detail || /^build on your latest work\.?$/i.test(detail) || /^complete the recommended activity/i.test(detail)) {
+      detail = fallbackReason(subject);
+    }
+
+    if (targetLabel && detail && !detail.toLowerCase().includes(targetLabel.toLowerCase())) {
+      detail += " Next: " + targetLabel + ".";
+    }
+
+    return {
+      title:title || specificActionTitle(rec) || "Continue learning",
+      detail,
+      summary:detail,
+      targetLabel,
+      specific:!isGenericRecommendationTitle(title),
+    };
+  }
+
+  return {
+    title:subject?.progress?.active ? "Continue " + subjectDisplayName(subject) : "Start " + subjectDisplayName(subject),
+    detail:fallbackReason(subject),
+    summary:fallbackReason(subject),
+    targetLabel:"",
+    specific:false,
+  };
+}
+
 export function nextStepActionLabel(recommendation = {}) {
   const kind = String(recommendation?.target?.kind || recommendation?.targetActivityType || recommendation?.actionType || "").toLowerCase();
   if (kind.includes("flashcard")) return "Review flashcards";
@@ -145,10 +245,11 @@ export function buildStudentNextStep({ summaries = [], intelligenceBySubject = {
 
   if (recommended) {
     const { subject, intelligence, recommendation } = recommended;
+    const display = recommendationDisplay({ subject, intelligence, recommendation });
     return {
       kind:"recommendation", subject, intelligence, recommendation,
       label:"Next up in " + subjectDisplayName(subject),
-      title:recommendation.title, detail:recommendation.detail || "",
+      title:display.title, detail:display.detail,
       meta:minutesLabel(recommendation.expectedMinutes),
       actionLabel:nextStepActionLabel(recommendation),
     };
