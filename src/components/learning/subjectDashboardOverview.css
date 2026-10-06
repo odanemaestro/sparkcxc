@@ -331,3 +331,69 @@ html[data-theme="dark"] .ssh-focus-detail{
 html[data-theme="dark"] .ssh-focus{
   border-color:#263850;
 }
+
+
+/* Subject action button cleanup ------------------------------------------- */
+/* Keep Continue/Practise as one clear control. The arrow is part of the
+   button, not a second circular action. */
+.spark-subject-card-actions .spark-dashboard-card-action{
+  min-width:112px!important;
+  min-height:38px!important;
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:8px!important;
+  padding:8px 13px!important;
+  border:1px solid #123468!important;
+  border-radius:10px!important;
+  background:#123468!important;
+  color:#fff!important;
+  box-shadow:none!important;
+}
+.spark-subject-card-actions .spark-dashboard-card-action:hover:not(:disabled){
+  border-color:#0e2a58!important;
+  background:#0e2a58!important;
+  color:#fff!important;
+  box-shadow:0 5px 14px rgba(15,37,87,.10)!important;
+}
+.spark-subject-card-actions .spark-dashboard-card-action>span:first-child{
+  color:inherit!important;
+}
+.spark-subject-card-actions .spark-dashboard-card-action-icon{
+  width:16px!important;
+  height:16px!important;
+  min-width:16px!important;
+  display:grid!important;
+  place-items:center!important;
+  padding:0!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  color:inherit!important;
+  box-shadow:none!important;
+}
+.spark-subject-card-actions .spark-dashboard-card-action-icon svg{
+  width:15px!important;
+  height:15px!important;
+  fill:none!important;
+  stroke:currentColor!important;
+  stroke-width:1.8!important;
+  stroke-linecap:round!important;
+  stroke-linejoin:round!important;
+}
+html[data-theme="dark"] .spark-subject-card-actions .spark-dashboard-card-action{
+  border-color:#2f6db4!important;
+  background:#2f6db4!important;
+  color:#fff!important;
+}
+html[data-theme="dark"] .spark-subject-card-actions .spark-dashboard-card-action:hover:not(:disabled){
+  border-color:#397ac4!important;
+  background:#397ac4!important;
+  color:#fff!important;
+}
+html[data-theme="dark"] .spark-subject-card-actions .spark-dashboard-card-action-icon{
+  border:0!important;
+  background:transparent!important;
+  color:#fff!important;
+  box-shadow:none!important;
+}
