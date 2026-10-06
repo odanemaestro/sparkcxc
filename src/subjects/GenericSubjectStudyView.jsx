@@ -653,7 +653,7 @@ export default function GenericSubjectStudyView({
 
           <div className="spark-generic-study-hero-actions">
             {onBack && (
-              <button type="button" onClick={onBack}>Change subject</button>
+              <button type="button" onClick={onBack}>Back</button>
             )}
           </div>
         </header>
