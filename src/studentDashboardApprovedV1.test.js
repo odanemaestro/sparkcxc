@@ -35,13 +35,13 @@ describe("SPARK student dashboard approved design V1", () => {
 
   test("subjects use one sorted list, neutral progress bars and a focus-next cue", () => {
     const overview = read("components/learning/SubjectDashboardOverview.jsx");
-    const css = read("sparkStudentDashboardApprovedV1.css");
+    const css = read("components/learning/subjectDashboardOverview.css");
     expect(overview).toContain("lessonPercent(a) - lessonPercent(b)");
     expect(overview).toContain("spark-subject-overview-list");
     expect(overview).toContain("Focus next");
     expect(overview).toContain("spark-subject-overview-summary");
     expect(css).toContain(".spark-subject-overview-mastery .spark-progress-bar__fill");
-    expect(css).toContain("background:var(--sd-navy)!important");
+    expect(css).toContain("background:var(--sd-navy,var(--spark-navy,#0f2557))!important");
   });
 
   test("right rail prioritizes tutoring before secondary review and activity", () => {
