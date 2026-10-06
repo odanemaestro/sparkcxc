@@ -26,8 +26,8 @@ describe("SPARK growing-subject dashboard and Integrated Science portrait QA", (
     );
     expect(css).toContain(".spark-subject-overview-grid");
     expect(css).toContain("grid-template-columns:repeat(2,minmax(0,1fr))");
-    expect(css).toContain("@media(min-width:1800px)");
-    expect(css).toContain("@media(max-width:840px)");
+    expect(css).toContain("@media(max-width:920px)");
+    expect(css).toContain("@media(max-width:700px)");
     expect(css).toContain('html[data-theme="dark"] .spark-subject-dashboard-overview');
   });
 
