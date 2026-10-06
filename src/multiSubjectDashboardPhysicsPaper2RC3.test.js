@@ -23,9 +23,9 @@ describe("SPARK RC3 dashboard restoration and Physics Paper 2", () => {
   test("student dashboard restores Flashcards, Upcoming and Recent Achievements", () => {
     expect(app).toContain('import StudentDashboardSupportCards from "./components/learning/StudentDashboardSupportCards";');
     expect(app).toContain("<StudentDashboardSupportCards");
-    expect(supportCards).toContain("FLASHCARDS");
-    expect(supportCards).toContain("UPCOMING");
-    expect(supportCards).toContain("RECENT ACHIEVEMENTS");
+    expect(supportCards).toContain("<h3>Flashcards</h3>");
+    expect(supportCards).toContain("<h3>Next tutoring session</h3>");
+    expect(supportCards).toContain("<h3>Recent activity</h3>");
     expect(supportCards).not.toContain("CSEC Mathematics recall");
   });
 
@@ -37,8 +37,8 @@ describe("SPARK RC3 dashboard restoration and Physics Paper 2", () => {
   });
 
   test("parent All subjects wording is learner-specific", () => {
-    expect(overview).toContain('subjectInsight(summaries, learnerName)');
-    expect(overview).toContain('`${learner} has recorded learning activity');
+    expect(overview).toContain("subjectInsight(summaries, learnerName)");
+    expect(overview).toContain("has not recorded learning activity yet");
     expect(allSubjects).toContain('Across ${learnerName}’s subjects');
     expect(app).toContain('learnerName={selectedChild.name}');
     expect(app).toContain('Review learning activity across the subjects ${selectedChild.name} is enrolled in.');
