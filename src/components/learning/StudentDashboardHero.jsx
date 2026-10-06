@@ -36,7 +36,7 @@ export default function StudentDashboardHero({
     [subjects, subjectInsights]
   );
   const focus = recommendation ? subjectInsights?.[recommendation.id] : null;
-  const firstName = String(learnerName || "").trim().split(/\\s+/)[0] || "there";
+  const firstName = String(learnerName || "").trim().split(/\s+/)[0] || "there";
   const streakCount = Math.max(0, Number(streak) || 0);
   const subjectLabel = recommendation?.shortName || recommendation?.name || "your subjects";
   const focusTitle = String(focus?.title || "").trim();
@@ -46,7 +46,7 @@ export default function StudentDashboardHero({
       : <>Continue <span>{subjectLabel}</span> today.</>
     : <>Choose your <span>first subject</span> to begin.</>;
   const actionLabel = recommendation
-    ? focusTitle ? "Continue " + focusTitle : "Continue " + subjectLabel
+    ? focusTitle ? "Continue: " + focusTitle : "Continue " + subjectLabel
     : "Choose my subjects";
 
   const activate = () => {
