@@ -348,8 +348,8 @@ function actionForState(subjectId, state, prerequisiteRisk = []) {
     return {
       actionType: "lesson",
       targetActivityType: "lesson",
-      title: "Build a baseline",
-      detail: "SPARK needs a little more evidence before it can personalise this subject.",
+      title: "Start with a lesson",
+      detail: "Complete one lesson and a short practice so SPARK can recommend what to work on next.",
       why: ["There is not enough scored evidence yet.", "Start with one lesson and a short practice set."],
     };
   }
@@ -384,8 +384,8 @@ function actionForState(subjectId, state, prerequisiteRisk = []) {
     return {
       actionType: "baseline",
       targetActivityType: "topic_quiz",
-      title: `Give SPARK a better baseline for ${state.skill}`,
-      detail: "A short scored activity will make the recommendation more reliable.",
+      title: `Try a short practice on ${skillLabel}`,
+      detail: "Complete a short scored practice so SPARK can see what you understand and what needs more work.",
       why: [
         `Model confidence is only ${state.modelConfidencePercent}%.`,
         `${state.evidenceCount} useful evidence item${state.evidenceCount === 1 ? "" : "s"} are currently available.`,
@@ -409,8 +409,8 @@ function actionForState(subjectId, state, prerequisiteRisk = []) {
     return {
       actionType: labFriendly ? "lesson_or_lab" : "lesson",
       targetActivityType: labFriendly ? "lab" : "lesson",
-      title: labFriendly ? `Rebuild ${skillLabel} with a lesson or practical` : `Review ${skillLabel} before harder questions`,
-      detail: "The current evidence suggests the foundation needs strengthening first.",
+      title: labFriendly ? `Review ${skillLabel} with a lesson or practical` : `Review ${skillLabel} in the lesson`,
+      detail: "Review the key ideas first, then try a few questions before moving to harder work.",
       why: [
         `Estimated mastery is ${state.masteryPercent}%.`,
         state.trendLabel === "Needs attention" ? "Recent evidence is moving in the wrong direction." : "A foundation activity is more useful than simply increasing difficulty.",
@@ -421,8 +421,8 @@ function actionForState(subjectId, state, prerequisiteRisk = []) {
     return {
       actionType: "targeted_practice",
       targetActivityType: "topic_quiz",
-      title: `Do a short targeted set on ${skillLabel}`,
-      detail: "The foundation is there. The next step is making the skill more reliable.",
+      title: `Practise ${skillLabel}`,
+      detail: "Try a short set of questions to make this skill more reliable.",
       why: [
         `Estimated mastery is ${state.masteryPercent}%.`,
         `Model confidence is ${state.modelConfidencePercent}%, so scored practice can sharpen the estimate.`,
@@ -432,8 +432,8 @@ function actionForState(subjectId, state, prerequisiteRisk = []) {
   return {
     actionType: "assessment",
     targetActivityType: "section_checkpoint",
-    title: `Test ${skillLabel} under exam-style conditions`,
-    detail: "The skill looks secure enough to verify with broader, harder evidence.",
+    title: `Try exam-style questions on ${skillLabel}`,
+    detail: "Your recent work suggests you are ready to test this skill with broader exam-style questions.",
     why: [
       `Estimated mastery is ${state.masteryPercent}%.`,
       `Retention is ${pct(state.retention)}%, so SPARK can now test transfer rather than repeat basic review.`,
