@@ -464,6 +464,12 @@ html[data-theme="dark"] .ssh-spotlight-privacy:hover{background:rgba(255,255,255
   width:108px!important;
   min-width:108px!important;
   max-width:108px!important;
+  height:42px!important;
+  min-height:42px!important;
+  max-height:42px!important;
+  padding:0 16px!important;
+  line-height:1!important;
+  border-width:1px!important;
 }
 .ssh-empty{display:flex;gap:10px;padding:18px 0;color:var(--ssh-muted)}
 .ssh-empty-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:11px;background:var(--ssh-surface-2);color:var(--ssh-ink)}
