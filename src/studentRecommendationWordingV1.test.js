@@ -20,6 +20,20 @@ describe("student recommendation wording", () => {
     expect(intelligence).not.toContain("Rebuild ${skillLabel}");
   });
 
+  test("keeps model confidence internal while student-facing recommendation copy stays clear", () => {
+    const next = read("learning/nextBestActionV2.js");
+    const intelligence = read("learning/learnerIntelligenceV2.js");
+    const panel = read("components/learning/LearnerIntelligencePanel.jsx");
+
+    expect(next).toContain("studentRecommendationReasons(state)");
+    expect(intelligence).toContain("SPARK needs more practice results to confirm this estimate.");
+    expect(intelligence).toContain("More practice will help confirm it.");
+    expect(intelligence).toContain("Your last tracked activity for this skill was about");
+    expect(panel).toContain("explanationForLearner");
+    expect(panel).toContain('label="Evidence strength"');
+    expect(panel).not.toContain('label="Model confidence"');
+  });
+
   test("parent dashboard presents recommendations as guidance about the learner", () => {
     const next = read("learning/nextBestActionV2.js");
     const parent = read("components/learning/ParentOverviewIntelligence.jsx");
