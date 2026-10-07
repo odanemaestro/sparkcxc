@@ -1191,6 +1191,53 @@ export function enhanceLearnerIntelligence(intelligence, options = {}) {
   };
 }
 
+
+export function recommendationForAudience(recommendation = null, {
+  audience = "student",
+  learnerName = "",
+} = {}) {
+  if (!recommendation) return null;
+  if (audience !== "parent") return recommendation;
+
+  const skill = String(
+    recommendation.skill ||
+    recommendation.target?.label ||
+    "this area"
+  ).trim();
+  const firstName = String(learnerName || "").trim().split(/\s+/)[0] || "The student";
+  const actionType = String(recommendation.actionType || recommendation.targetActivityType || "").toLowerCase();
+
+  let title = recommendation.title || "Recommended next step";
+  let detail = recommendation.detail || "";
+
+  if (actionType === "baseline") {
+    title = `Short practice recommended for ${skill}`;
+    detail = `${firstName} should complete a short scored practice so SPARK can see what is understood and what needs more work.`;
+  } else if (actionType === "lesson" || actionType === "prerequisite_review") {
+    title = `Lesson review recommended for ${skill}`;
+    detail = `${firstName} should review the key ideas, then try a few questions before moving to harder work.`;
+  } else if (actionType === "targeted_practice") {
+    title = `More practice recommended for ${skill}`;
+    detail = recommendation.commonError?.count >= 2
+      ? `${firstName} should focus on the repeated error pattern in this area.`
+      : `${firstName} should try a short set of questions to strengthen this skill.`;
+  } else if (actionType === "lab" || actionType === "lesson_or_lab") {
+    title = `Practical review recommended for ${skill}`;
+    detail = `${firstName} should use a practical activity to apply the idea and strengthen understanding.`;
+  } else if (actionType === "flashcards") {
+    title = `Flashcard review recommended for ${skill}`;
+    detail = `${firstName} should use a short flashcard review to keep this knowledge fresh.`;
+  } else if (actionType === "assessment") {
+    title = `Exam-style practice recommended for ${skill}`;
+    detail = `${firstName}'s recent work suggests this skill is ready to be checked with broader exam-style questions.`;
+  } else if (actionType === "sba_review") {
+    title = `SBA review recommended for ${skill}`;
+    detail = `${firstName} should review the SPARK example, then apply the same structure to the practice task.`;
+  }
+
+  return { ...recommendation, title, detail };
+}
+
 export function localRecommendationHistoryRow(intelligence, id = null, when = new Date()) {
   const recommendation = intelligence?.recommendation;
   if (!recommendation) return null;
