@@ -2,6 +2,7 @@ import React, { useMemo, useState } from "react";
 import Card from "../ui/Card";
 import { displaySkillLabel, explanationForIntelligence } from "../../learning/learnerIntelligenceV2";
 import { recordLearnerRecommendation } from "../../learning/learnerIntelligencePersistence";
+import { recommendationForAudience } from "../../learning/nextBestActionV2";
 import "./learnerIntelligencePanel.css";
 
 function Metric({ value, label, suffix = "%" }) {
@@ -51,14 +52,20 @@ export default function LearnerIntelligencePanel({
   onStartRecommendation,
   onRecommendationRecorded,
   readOnly = false,
+  viewerRole = "student",
+  learnerName = "",
 }) {
   const [startingKey, setStartingKey] = useState("");
   const [selectedAlternative, setSelectedAlternative] = useState(0);
   const focus = intelligence?.focus;
   const plan = intelligence?.nextBestActionPlan;
-  const primary = selectedAlternative > 0
+  const rawPrimary = selectedAlternative > 0
     ? plan?.alternatives?.[selectedAlternative - 1] || intelligence?.recommendation
     : intelligence?.recommendation;
+  const primary = recommendationForAudience(rawPrimary, {
+    audience:viewerRole === "parent" ? "parent" : "student",
+    learnerName,
+  });
   const explanation = useMemo(() => explanationForIntelligence(intelligence), [intelligence]);
 
   if (!intelligence?.hasEvidence) {
