@@ -6679,6 +6679,8 @@ function ParentView({ user, profile, setView, showToast, onProfileUpdated, subje
                 subject={parentSubjectDashboardSummaries.find(subject => subject.id === parentProgressSubject) || getSparkSubject(subjects, parentProgressSubject)}
                 rows={childData.subjectProgressRows || []}
                 intelligence={parentIntelligenceBySubject[parentProgressSubject]}
+                viewerRole="parent"
+                learnerName={selectedChild.name}
                 onOpenReport={subject => { setParentReportSubject(subject?.id || parentProgressSubject); setParentReportOpen(true); }}
               />
               {(() => {
