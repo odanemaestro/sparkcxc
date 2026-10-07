@@ -47,6 +47,8 @@ describe("consultant student dashboard merged redesign", () => {
     expect(subject).toContain("Next milestone");
     expect(subject).toContain("Practise");
     expect(subject).toContain("View progress");
+    const homeCss = read("sparkStudentHomeV1.css");
+    expect(homeCss).toContain(".ssh-subjects .ssh-btn{width:104px;min-width:104px}");
     expect(subject).not.toContain("Recommended next");
   });
 
