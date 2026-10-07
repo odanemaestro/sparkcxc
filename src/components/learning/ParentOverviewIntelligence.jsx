@@ -2,6 +2,7 @@ import React from "react";
 import Card from "../ui/Card";
 import Icon from "../ui/Icon";
 import InsightText from "./InsightText";
+import { recommendationForAudience } from "../../learning/nextBestActionV2";
 
 function DashboardCardAction({ label, onClick }) {
   return (
@@ -19,6 +20,10 @@ export default function ParentOverviewIntelligence({
   onOpenReport,
 }) {
   const priorities = learnerModel?.hasEvidence ? learnerModel.prioritySkills?.slice(0, 3) || [] : [];
+  const parentRecommendation = recommendationForAudience(learnerIntelligence?.recommendation, {
+    audience:"parent",
+    learnerName:child?.name || "",
+  });
 
   return (
     <div className="spark-parent-intelligence">
@@ -36,13 +41,13 @@ export default function ParentOverviewIntelligence({
         <div><strong>{summary?.weekly?.tutorSessions || 0}</strong><span>Tutor sessions</span></div>
       </div>
 
-      {learnerIntelligence?.recommendation && <Card className="spark-parent-learner-model-card">
+      {parentRecommendation && <Card className="spark-parent-learner-model-card">
         <div className="spark-card-heading-row">
           <div><span className="section-kicker">NEXT BEST ACTION</span><h3>What SPARK recommends next</h3></div>
           <span className="spark-model-explainer">{learnerIntelligence.metrics?.readinessPercent ?? 0}% exam readiness</span>
         </div>
-        <p className="spark-model-recommendation"><strong>{learnerIntelligence.recommendation.title}.</strong> {learnerIntelligence.recommendation.detail}</p>
-        {learnerIntelligence.recommendation.target?.label && <p className="spark-model-recommendation">Target activity: {learnerIntelligence.recommendation.target.label}{learnerIntelligence.recommendation.expectedMinutes ? ` | about ${learnerIntelligence.recommendation.expectedMinutes} minutes` : ""}.</p>}
+        <p className="spark-model-recommendation"><strong>{parentRecommendation.title}.</strong> {parentRecommendation.detail}</p>
+        {parentRecommendation.target?.label && <p className="spark-model-recommendation">Target activity: {parentRecommendation.target.label}{parentRecommendation.expectedMinutes ? ` | about ${parentRecommendation.expectedMinutes} minutes` : ""}.</p>}
       </Card>}
 
       {priorities.length > 0 && <Card className="spark-parent-learner-model-card">
