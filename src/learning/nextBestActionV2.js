@@ -829,30 +829,30 @@ function wordingForCandidate(subjectId, state, actionType, target) {
 
   if (actionType === "baseline") {
     return {
-      title:`Build a clearer baseline for ${skill}`,
-      detail:"A short scored activity will give SPARK stronger evidence before it makes a harder recommendation.",
+      title:`Try a short practice on ${skill}`,
+      detail:"Complete a short scored practice so SPARK can see what you understand and what needs more work.",
       expectedMinutes:10,
     };
   }
   if (actionType === "targeted_practice") {
     return {
-      title:`Practise ${skill} next`,
+      title:`Practise ${skill}`,
       detail:state.commonError?.count >= 2
         ? `Focus on ${state.commonError.label.toLowerCase()} instead of doing another general review.`
-        : "Use a short targeted set so SPARK can check whether the skill is becoming reliable.",
+        : "Try a short set of questions to strengthen this skill.",
       expectedMinutes:10,
     };
   }
   if (actionType === "lesson") {
     return {
-      title:`Rebuild ${skill} from the lesson`,
-      detail:"The current evidence suggests that strengthening the foundation will help more than immediately increasing difficulty.",
+      title:`Review ${skill} in the lesson`,
+      detail:"Go back through the lesson, then try a few questions before moving to harder work.",
       expectedMinutes:15,
     };
   }
   if (actionType === "lab") {
     return {
-      title:`Use a practical activity for ${skill}`,
+      title:`Practise ${skill} with a practical activity`,
       detail:subject === "physics"
         ? "Use the interactive Physics tools to connect the idea to what happens when the variables change."
         : "Use the practical workspace to apply the skill instead of only reading about it.",
@@ -861,15 +861,15 @@ function wordingForCandidate(subjectId, state, actionType, target) {
   }
   if (actionType === "flashcards") {
     return {
-      title:`Refresh ${skill}`,
+      title:`Review ${skill} with flashcards`,
       detail:"The skill has useful prior evidence, but recall is at risk of fading. A short review is more useful than relearning it from the beginning.",
       expectedMinutes:7,
     };
   }
   if (actionType === "assessment") {
     return {
-      title:`Verify ${skill} under exam-style conditions`,
-      detail:"The skill looks secure enough to test with broader evidence instead of repeating basic review.",
+      title:`Try exam-style questions on ${skill}`,
+      detail:"Your recent work suggests you are ready to test this skill with broader exam-style questions.",
       expectedMinutes:18,
     };
   }
@@ -1189,6 +1189,53 @@ export function enhanceLearnerIntelligence(intelligence, options = {}) {
     nextBestActionPlan:plan,
     learningStrategy:plan.strategy,
   };
+}
+
+
+export function recommendationForAudience(recommendation = null, {
+  audience = "student",
+  learnerName = "",
+} = {}) {
+  if (!recommendation) return null;
+  if (audience !== "parent") return recommendation;
+
+  const skill = String(
+    recommendation.skill ||
+    recommendation.target?.label ||
+    "this area"
+  ).trim();
+  const firstName = String(learnerName || "").trim().split(/\s+/)[0] || "The student";
+  const actionType = String(recommendation.actionType || recommendation.targetActivityType || "").toLowerCase();
+
+  let title = recommendation.title || "Recommended next step";
+  let detail = recommendation.detail || "";
+
+  if (actionType === "baseline") {
+    title = `Short practice recommended for ${skill}`;
+    detail = `${firstName} should complete a short scored practice so SPARK can see what is understood and what needs more work.`;
+  } else if (actionType === "lesson" || actionType === "prerequisite_review") {
+    title = `Lesson review recommended for ${skill}`;
+    detail = `${firstName} should review the key ideas, then try a few questions before moving to harder work.`;
+  } else if (actionType === "targeted_practice") {
+    title = `More practice recommended for ${skill}`;
+    detail = recommendation.commonError?.count >= 2
+      ? `${firstName} should focus on the repeated error pattern in this area.`
+      : `${firstName} should try a short set of questions to strengthen this skill.`;
+  } else if (actionType === "lab" || actionType === "lesson_or_lab") {
+    title = `Practical review recommended for ${skill}`;
+    detail = `${firstName} should use a practical activity to apply the idea and strengthen understanding.`;
+  } else if (actionType === "flashcards") {
+    title = `Flashcard review recommended for ${skill}`;
+    detail = `${firstName} should use a short flashcard review to keep this knowledge fresh.`;
+  } else if (actionType === "assessment") {
+    title = `Exam-style practice recommended for ${skill}`;
+    detail = `${firstName}'s recent work suggests this skill is ready to be checked with broader exam-style questions.`;
+  } else if (actionType === "sba_review") {
+    title = `SBA review recommended for ${skill}`;
+    detail = `${firstName} should review the SPARK example, then apply the same structure to the practice task.`;
+  }
+
+  return { ...recommendation, title, detail };
 }
 
 export function localRecommendationHistoryRow(intelligence, id = null, when = new Date()) {

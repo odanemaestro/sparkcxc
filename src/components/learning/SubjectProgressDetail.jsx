@@ -18,6 +18,8 @@ export default function SubjectProgressDetail({
   onOpenSubject,
   onOpenReport,
   onRecommendationRecorded,
+  viewerRole = "student",
+  learnerName = "",
 }) {
   const summary = useMemo(() => summarizeSubjectProgress(rows, { subjectId: subject?.id, totalTopics: subject?.stats?.topics || 0 }), [rows, subject]);
   const report = useMemo(() => buildGenericSubjectProgressReport({ subject, rows }, { period: "term" }), [rows, subject]);
@@ -82,6 +84,8 @@ export default function SubjectProgressDetail({
       readOnly={!supabase}
       onStartRecommendation={onOpenSubject ? recommendation => onOpenSubject(subject, recommendation) : undefined}
       onRecommendationRecorded={onRecommendationRecorded}
+      viewerRole={viewerRole}
+      learnerName={learnerName}
     />
 
     <div className="spark-subject-progress-two-col">
