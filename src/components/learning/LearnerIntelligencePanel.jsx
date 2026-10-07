@@ -1,12 +1,21 @@
 import React, { useMemo, useState } from "react";
 import Card from "../ui/Card";
-import { displaySkillLabel, explanationForIntelligence } from "../../learning/learnerIntelligenceV2";
+import {
+  displaySkillLabel,
+  explanationForIntelligence,
+  explanationForLearner,
+  learnerEvidenceStrength,
+} from "../../learning/learnerIntelligenceV2";
 import { recordLearnerRecommendation } from "../../learning/learnerIntelligencePersistence";
 import { recommendationForAudience } from "../../learning/nextBestActionV2";
 import "./learnerIntelligencePanel.css";
 
 function Metric({ value, label, suffix = "%" }) {
   return <div className="spark-li-metric"><strong>{value == null ? "N/A" : `${value}${suffix}`}</strong><span>{label}</span></div>;
+}
+
+function TextMetric({ value, label }) {
+  return <div className="spark-li-metric"><strong>{value || "N/A"}</strong><span>{label}</span></div>;
 }
 
 function FocusRow({ state }) {
@@ -66,7 +75,12 @@ export default function LearnerIntelligencePanel({
     audience:viewerRole === "parent" ? "parent" : "student",
     learnerName,
   });
-  const explanation = useMemo(() => explanationForIntelligence(intelligence), [intelligence]);
+  const explanation = useMemo(
+    () => viewerRole === "student"
+      ? explanationForLearner(intelligence)
+      : explanationForIntelligence(intelligence),
+    [intelligence, viewerRole]
+  );
 
   if (!intelligence?.hasEvidence) {
     return (
@@ -116,7 +130,7 @@ export default function LearnerIntelligencePanel({
       <div className="spark-li-metrics">
         <Metric value={intelligence.metrics?.masteryPercent} label="Estimated mastery" />
         <Metric value={intelligence.metrics?.retentionPercent} label="Estimated retention" />
-        <Metric value={intelligence.metrics?.modelConfidencePercent} label="Model confidence" />
+        <TextMetric value={learnerEvidenceStrength(intelligence.metrics?.modelConfidencePercent)} label="Evidence strength" />
         <Metric value={intelligence.metrics?.coveragePercent} label="Lesson coverage" />
       </div>
 

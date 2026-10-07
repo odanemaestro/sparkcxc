@@ -598,7 +598,7 @@ export function buildLearnerIntelligenceFromSkillStates({
     focus,
     prioritySkills:priorities.slice(0,5),
     strongSkills:[...states].filter(s=>s.masteryPercent>=80).sort((a,b)=>b.masteryPercent-a.masteryPercent).slice(0,3),
-    recommendation:{...recommendation,skill:focus?.skill||null,baselineMastery:focus?.masteryPercent??null,readinessPercent:pct(readiness),prerequisiteRisks:prereqs},
+    recommendation:{...recommendation,skill:focus?.skill||null,baselineMastery:focus?.masteryPercent??null,readinessPercent:pct(readiness),prerequisiteRisks:prereqs,studentWhy:studentRecommendationReasons(focus)},
     metrics:{
       masteryPercent:pct(avg("mastery")),
       retentionPercent:pct(avg("retention")),
@@ -609,6 +609,77 @@ export function buildLearnerIntelligenceFromSkillStates({
       breadthPercent:Math.round(Math.min(1,states.length/12)*100),
     },
   };
+}
+
+export function learnerEvidenceStrength(value) {
+  const confidence = Number(value);
+  if (!Number.isFinite(confidence)) return "Needs more data";
+  if (confidence < 40) return "Needs more data";
+  if (confidence < 70) return "Building";
+  return "Strong";
+}
+
+export function learnerConfidenceMessage(value) {
+  const confidence = Number(value);
+  if (!Number.isFinite(confidence)) return "";
+  if (confidence < 40) return "SPARK needs more practice results to confirm this estimate.";
+  if (confidence < 70) return "SPARK has some results for this estimate. More practice will help confirm it.";
+  return "SPARK has enough recent results to support this estimate.";
+}
+
+export function studentRecommendationReasons(state = {}) {
+  if (!state) return [];
+
+  const skillLabel = state.displaySkill || displaySkillLabel(state.skill);
+  const mastery = Number(state.masteryPercent);
+  const reasons = [];
+
+  if (skillLabel && Number.isFinite(mastery)) {
+    reasons.push(`Your current mastery of ${skillLabel} is about ${Math.round(mastery)}%.`);
+  }
+
+  const confidenceMessage = learnerConfidenceMessage(state.modelConfidencePercent);
+  if (confidenceMessage) reasons.push(confidenceMessage);
+
+  if (state.commonError?.count >= 2) {
+    reasons.push(`The same ${String(state.commonError.label || "error").toLowerCase()} pattern has appeared ${state.commonError.count} times in your recent work.`);
+  }
+
+  const days = Number(state.daysSincePractice);
+  if (Number.isFinite(days) && days >= 5 && days < 999) {
+    const roundedDays = Math.round(days);
+    reasons.push(`Your last tracked activity for this skill was about ${roundedDays} day${roundedDays === 1 ? "" : "s"} ago.`);
+  }
+
+  return reasons.slice(0, 3);
+}
+
+export function explanationForLearner(intelligence = {}) {
+  const focus = intelligence.focus;
+  if (!focus) return "SPARK needs a little more learning activity before it can make a strong recommendation.";
+
+  const focusLabel = focus.displaySkill || displaySkillLabel(focus.skill);
+  const mastery = Number(focus.masteryPercent);
+  const pieces = [
+    Number.isFinite(mastery)
+      ? `Focus on ${focusLabel}. Your current mastery is about ${Math.round(mastery)}%.`
+      : `Focus on ${focusLabel}.`,
+  ];
+
+  const confidenceMessage = learnerConfidenceMessage(focus.modelConfidencePercent);
+  if (confidenceMessage) pieces.push(confidenceMessage);
+
+  const days = Number(focus.daysSincePractice);
+  if (Number.isFinite(days) && days >= 5 && days < 999) {
+    const roundedDays = Math.round(days);
+    pieces.push(`Your last tracked activity for this skill was about ${roundedDays} day${roundedDays === 1 ? "" : "s"} ago.`);
+  }
+
+  if (focus.commonError?.count >= 2) {
+    pieces.push(`A repeated ${String(focus.commonError.label || "error").toLowerCase()} pattern is showing in your recent work.`);
+  }
+
+  return pieces.slice(0, 3).join(" ");
 }
 
 export function explanationForIntelligence(intelligence = {}) {

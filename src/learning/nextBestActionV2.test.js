@@ -4,6 +4,7 @@ import {
   enhanceLearnerIntelligence,
   exactTargetForAction,
   readinessLimiters,
+  recommendationForAudience,
   recommendationOutcomeSignal,
 } from "./nextBestActionV2";
 
@@ -176,6 +177,62 @@ describe("SPARK Next Best Action V2", () => {
     expect(enhanced.recommendation).toBeTruthy();
     expect(enhanced.nextBestActionPlan.primary.recommendationKey).toBe(enhanced.recommendation.recommendationKey);
     expect(enhanced.nextBestActionPlan.alternatives.length).toBeGreaterThan(0);
+  });
+
+  test("keeps raw confidence internally but gives Physics learners plain-language reasons", () => {
+    const physicsState = state({
+      skill:"E3",
+      masteryPercent:22,
+      modelConfidencePercent:67,
+      priorityScore:90,
+      daysSincePractice:17,
+    });
+    const plan = buildNextBestActionPlan({
+      intelligence:intelligence({
+        subjectId:"physics",
+        subjectName:"CSEC Physics",
+        focus:physicsState,
+        states:[physicsState],
+        prioritySkills:[physicsState],
+      }),
+    });
+
+    expect(plan.primary).toBeTruthy();
+    expect(plan.primary.why).toContain("SPARK is 67% confident in that estimate.");
+
+    const student = recommendationForAudience(plan.primary, { audience:"student" });
+    expect(student.why).toContain("Your current mastery of E3 is about 22%.");
+    expect(student.why).toContain("SPARK has some results for this estimate. More practice will help confirm it.");
+    expect(student.why).toContain("Your last tracked activity for this skill was about 17 days ago.");
+    expect(student.why.join(" ")).not.toMatch(/67% confident|meaningful evidence/i);
+  });
+
+  test("uses low-confidence learner wording for Integrated Science without changing the internal model value", () => {
+    const scienceState = state({
+      skill:"1.2.6",
+      masteryPercent:33,
+      modelConfidencePercent:34,
+      priorityScore:90,
+      daysSincePractice:17,
+    });
+    const plan = buildNextBestActionPlan({
+      intelligence:intelligence({
+        subjectId:"integrated-science",
+        subjectName:"CSEC Integrated Science",
+        focus:scienceState,
+        states:[scienceState],
+        prioritySkills:[scienceState],
+      }),
+    });
+
+    expect(plan.primary).toBeTruthy();
+    expect(plan.primary.why).toContain("SPARK is 34% confident in that estimate.");
+
+    const student = recommendationForAudience(plan.primary, { audience:"student" });
+    expect(student.why).toContain("Your current mastery of 1.2.6 is about 33%.");
+    expect(student.why).toContain("SPARK needs more practice results to confirm this estimate.");
+    expect(student.why).toContain("Your last tracked activity for this skill was about 17 days ago.");
+    expect(student.why.join(" ")).not.toMatch(/34% confident|meaningful evidence/i);
   });
 
   test("outcome attribution is labelled as a signal rather than a causal claim", () => {
