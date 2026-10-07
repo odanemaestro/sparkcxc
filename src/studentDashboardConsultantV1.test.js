@@ -50,6 +50,8 @@ describe("consultant student dashboard merged redesign", () => {
     const homeCss = read("sparkStudentHomeV1.css");
     expect(homeCss).toContain("flex:0 0 108px!important");
     expect(homeCss).toContain("max-width:108px!important");
+    expect(homeCss).toContain("height:42px!important");
+    expect(homeCss).toContain("max-height:42px!important");
     expect(subject).not.toContain("Recommended next");
   });
 
