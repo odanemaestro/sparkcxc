@@ -19,4 +19,21 @@ describe("student recommendation wording", () => {
     expect(intelligence).not.toContain("Give SPARK a better baseline");
     expect(intelligence).not.toContain("Rebuild ${skillLabel}");
   });
+
+  test("parent dashboard presents recommendations as guidance about the learner", () => {
+    const next = read("learning/nextBestActionV2.js");
+    const parent = read("components/learning/ParentOverviewIntelligence.jsx");
+    const panel = read("components/learning/LearnerIntelligencePanel.jsx");
+    const app = read("App.js");
+
+    expect(next).toContain("recommendationForAudience");
+    expect(next).toContain("Lesson review recommended for");
+    expect(next).toContain("Short practice recommended for");
+    expect(next).toContain("More practice recommended for");
+    expect(next).toContain("Exam-style practice recommended for");
+    expect(parent).toContain('audience:"parent"');
+    expect(panel).toContain('viewerRole === "parent" ? "parent" : "student"');
+    expect(app).toContain('viewerRole="parent"');
+    expect(app).toContain('learnerName={selectedChild.name}');
+  });
 });
