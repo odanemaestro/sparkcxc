@@ -19,7 +19,7 @@ import {
 } from "../socialStudies/data/socialStudiesCourse";
 import { recommendedDeckIdsForSkills } from "./flashcards";
 import { writeSparkNestedRoute } from "../routing/sparkRoutingV270";
-import { displaySkillLabel } from "./learnerIntelligenceV2";
+import { displaySkillLabel, studentRecommendationReasons } from "./learnerIntelligenceV2";
 import {
   LEARNING_LOOP_VERSION,
   championLearningStrategy,
@@ -902,6 +902,7 @@ function makeCandidate(subjectId, state, actionType, options = {}) {
     title:wording.title,
     detail:wording.detail,
     why:commonWhy(state),
+    studentWhy:studentRecommendationReasons(state),
     baselineMastery:state.masteryPercent,
     expectedMinutes:target.expectedMinutes ?? wording.expectedMinutes,
     target,
@@ -1197,7 +1198,15 @@ export function recommendationForAudience(recommendation = null, {
   learnerName = "",
 } = {}) {
   if (!recommendation) return null;
-  if (audience !== "parent") return recommendation;
+
+  if (audience !== "parent") {
+    const studentWhy = Array.isArray(recommendation.studentWhy)
+      ? recommendation.studentWhy.filter(Boolean)
+      : [];
+    return studentWhy.length
+      ? { ...recommendation, why:studentWhy }
+      : recommendation;
+  }
 
   const skill = String(
     recommendation.skill ||
