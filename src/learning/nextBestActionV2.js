@@ -829,30 +829,30 @@ function wordingForCandidate(subjectId, state, actionType, target) {
 
   if (actionType === "baseline") {
     return {
-      title:`Build a clearer baseline for ${skill}`,
-      detail:"A short scored activity will give SPARK stronger evidence before it makes a harder recommendation.",
+      title:`Try a short practice on ${skill}`,
+      detail:"Complete a short scored practice so SPARK can see what you understand and what needs more work.",
       expectedMinutes:10,
     };
   }
   if (actionType === "targeted_practice") {
     return {
-      title:`Practise ${skill} next`,
+      title:`Practise ${skill}`,
       detail:state.commonError?.count >= 2
         ? `Focus on ${state.commonError.label.toLowerCase()} instead of doing another general review.`
-        : "Use a short targeted set so SPARK can check whether the skill is becoming reliable.",
+        : "Try a short set of questions to strengthen this skill.",
       expectedMinutes:10,
     };
   }
   if (actionType === "lesson") {
     return {
-      title:`Rebuild ${skill} from the lesson`,
-      detail:"The current evidence suggests that strengthening the foundation will help more than immediately increasing difficulty.",
+      title:`Review ${skill} in the lesson`,
+      detail:"Go back through the lesson, then try a few questions before moving to harder work.",
       expectedMinutes:15,
     };
   }
   if (actionType === "lab") {
     return {
-      title:`Use a practical activity for ${skill}`,
+      title:`Practise ${skill} with a practical activity`,
       detail:subject === "physics"
         ? "Use the interactive Physics tools to connect the idea to what happens when the variables change."
         : "Use the practical workspace to apply the skill instead of only reading about it.",
@@ -861,15 +861,15 @@ function wordingForCandidate(subjectId, state, actionType, target) {
   }
   if (actionType === "flashcards") {
     return {
-      title:`Refresh ${skill}`,
+      title:`Review ${skill} with flashcards`,
       detail:"The skill has useful prior evidence, but recall is at risk of fading. A short review is more useful than relearning it from the beginning.",
       expectedMinutes:7,
     };
   }
   if (actionType === "assessment") {
     return {
-      title:`Verify ${skill} under exam-style conditions`,
-      detail:"The skill looks secure enough to test with broader evidence instead of repeating basic review.",
+      title:`Try exam-style questions on ${skill}`,
+      detail:"Your recent work suggests you are ready to test this skill with broader exam-style questions.",
       expectedMinutes:18,
     };
   }
