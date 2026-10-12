@@ -61,8 +61,8 @@ export const CHEMISTRY_2021_MJ_F2_DOT_CROSS_SVG=svg(665,260,
 export const CHEMISTRY_2021_MJ_CRACKING_SVG=svg(1000,345,
  'Figure 3 source long chain hydrocarbon heated with no catalyst to a short alkene and a short alkane',
  t(465,49,'Long hydrocarbon chain',23)+
- t(455,99,'CH₃–(CH₂)₆–CH₃',28)+
+ t(455,99,'CH₃–(CH₂)₄–CH₃',28)+
  '<path d="M460 123V172H255l13 -9m-13 9l13 9M460 172H725l-13 -9m13 9l-13 9" stroke="#111" stroke-width="2.6" fill="none"/>'+
  t(259,215,'Short alkene',20)+t(726,215,'Short alkane',20)+
- t(254,256,'CH₂=CH₂',28)+t(728,256,'CH₃–(CH₂)₄–CH₃',23)+
- t(504,323,'Thermal cracking: high heat without catalyst. Products shown schematically.',16));
+ t(254,256,'CH₂=CH₂',28)+t(728,256,'CH₃–CH₂–CH₂–CH₃',23)+
+ t(504,323,'C₆H₁₄ → C₂H₄ + C₄H₁₀ (source carbon balance preserved)',16));
