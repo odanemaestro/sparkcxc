@@ -376,7 +376,7 @@ describe("CSEC Chemistry course V1",()=>{
     expect(questions[2].parts[0].sourceFullyDisplayedSvgs).toHaveLength(2);
     const chlorineDrawing=questions[2].parts[0].items.find(i=>i.label==="(iii)(b)");
     expect(chlorineDrawing.modelAnswerSvgs).toHaveLength(2);
-    Object.values(CHEMISTRY_2012_Q3_VALENCE_AUDIT).forEach(row=>expect(row.valid).toBe(true);
+    Object.values(CHEMISTRY_2012_Q3_VALENCE_AUDIT).forEach(row=>expect(row.valid).toBe(true));
     expect(CHEMISTRY_2012_Q3_VALENCE_AUDIT.dichloropropane.formula).toBe("C3H6Cl2");
     expect(CHEMISTRY_2012_Q3_VALENCE_AUDIT.chlorobutane.formula).toBe("C4H9Cl");
     chlorineDrawing.modelAnswerSvgs.forEach(svg=>expect(svg).not.toMatch(/<image\b/i));
