@@ -39,6 +39,30 @@ export const CHEMISTRY_2021_JAN_THERMOMETRIC_GRID_SVG=wrap(900,760,
  t(451,675,'Volume of H₂SO₄ added (cm³)',19)+
  '<text x="25" y="340" transform="rotate(-90 25 340)" fill="#111" font-size="18" font-family="Times New Roman,serif" text-anchor="middle">Temperature (°C)</text>'+
  t(457,728,'Blank original source grid. Draw two separate rising/falling best-fit straight lines.',15));
+
+// Separately labelled provisional TEACHER ANSWER to the empty source graph.
+// Rising/falling regressions are drawn on their own branches and extended
+// to meet at their graph-derived endpoint. This is NOT an official mark key.
+export const CHEMISTRY_2021_JAN_THERMOMETRIC_MODEL_SVG=wrap(900,760,
+ 'Provisional model answer: two best-fit straight lines intersect near 16.9 cm3 sulfuric acid',
+ axes+
+ CHEMISTRY_2021_JAN_TITRATION_DATA.map(row=>
+  '<circle cx="'+px(row.volume).toFixed(1)+'" cy="'+py(row.temperature).toFixed(1)+'" r="6" fill="white" stroke="#111" stroke-width="2"/>'
+ ).join('')+
+ l(px(0),py(24.87),px(16.90),py(24.87+.564*16.90),3,'#202020')+
+ '<path d="M'+px(16.90).toFixed(2)+' '+py(45.3833333333-.65*16.90).toFixed(2)+
+ 'L'+px(30).toFixed(2)+' '+py(25.8833333333).toFixed(2)+
+ '" stroke="#222" stroke-width="3" stroke-dasharray="12 7" fill="none"/>'+
+ '<circle cx="'+px(16.8973)+'" cy="'+py(34.4001)+'" r="8" stroke="#111" stroke-width="2" fill="#ddd"/>'+
+ '<path d="M'+px(16.8973).toFixed(2)+' '+py(34.40).toFixed(2)+
+ 'V'+py(20).toFixed(2)+'" stroke="#555" stroke-width="1.8" stroke-dasharray="4 6" fill="none"/>'+
+ Array.from({length:16},(_,i)=>t(px(i*2),626,String(i*2),15)).join('')+
+ Array.from({length:21},(_,i)=>t(71,py(20+i)+5,String(20+i),15)).join('')+
+ t(452,675,'Volume H₂SO₄ added (cm³)',18)+
+ '<text x="25" y="338" transform="rotate(-90 25 338)" fill="#111" font-family="Times New Roman,serif" font-size="18" text-anchor="middle">Temperature (°C)</text>'+
+ t(487,59,'Solid rising / dashed falling best-fit lines',17)+
+ t(452,705,'Provisional endpoint ≈16.90 cm³',18)+
+ t(460,736,'Teacher-created model, not an examiner-approved official answer',15));
 export const CHEMISTRY_2021_JAN_TITRATION_AUDIT=Object.freeze({
  sourceTemperatureValues:[25,27.5,30.5,33.4,32.5,28.9,26],
  fittedRisingSlope:.564,fittedRisingIntercept:24.87,
