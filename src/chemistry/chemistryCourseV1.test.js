@@ -20,7 +20,7 @@ import {CHEMISTRY_HISTORICAL_DRAFT_ITEMS,CHEMISTRY_HISTORICAL_DRAFT_SUMMARY} fro
 import {CHEMISTRY_2025_MJ_Q1_GRAPH_SVG} from "./data/chemistryHistoricalGraphSvg";
 import {CHEMISTRY_2025_ORGANIC_DIAGRAM_AUDIT,CHEMISTRY_2025_OXYGEN_PREPARATION_SVG} from "./data/chemistryHistorical2025ModelSvgs";
 import {CHEMISTRY_SUPPLEMENTARY_CONTENT_AUDIT} from "./data/chemistrySupplementalLessons";
-import {CHEMISTRY_HISTORICAL_REVIEW_SUMMARY,auditChemistryHistoricalQuestion,publishedChemistryHistoricalQuestions} from "./data/chemistryHistoricalReleaseGate";
+import {CHEMISTRY_HISTORICAL_REVIEW_SUMMARY,CHEMISTRY_HISTORICAL_REVIEW_CHECKS,auditChemistryHistoricalQuestion,publishedChemistryHistoricalQuestions} from "./data/chemistryHistoricalReleaseGate";
 import {CHEMISTRY_JAN_2025_ESTER_VALENCE_AUDIT} from "./data/chemistryHistoricalJanuary2025EsterSvgs";
 import {CHEMISTRY_2025_JAN_Q5_ALKENE_AUDIT} from "./data/chemistryHistoricalJanuary2025PolymersSvg";
 import {CHEMISTRY_2014_Q3_VALENCE_AUDIT} from "./data/chemistryHistorical2014OrganicSvgs";
@@ -305,6 +305,20 @@ describe("CSEC Chemistry course V1",()=>{
     expect(papers.find(row=>row.sourceId==="CHEM-P2-2014-MJ")).toMatchObject({
       expectedQuestions:6,draftedQuestions:6,paperComplete:true,missingNumbers:[]
     });
+  });
+
+  test("historical criteria must allocate every mark explicitly before approval",()=>{
+    const reviews=Object.fromEntries(CHEMISTRY_HISTORICAL_REVIEW_CHECKS.map(check=>[
+      check,{approved:true,reviewer:"Fixture Reviewer",reviewedAt:"2026-10-12"}
+    ]));
+    const item={prompt:"Explain two changes",marks:2,explanation:"Two changes are required.",markScheme:{points:["one point only"]}};
+    const paper={id:"QA-TEST",sourceId:"QA-SOURCE",sourceFile:"QA-SOURCE.pdf",pdfPages:[1],
+      totalMarks:2,diagramStatus:"verified",sourceIssues:[],qaApprovals:reviews,
+      parts:[{label:"(a)",items:[item]}]};
+    expect(auditChemistryHistoricalQuestion(paper).missing).toContain("mark-scheme-allocation");
+    const weighted={...paper,parts:[{label:"(a)",items:[{...item,markScheme:{points:["two-mark explanation"],pointWeights:[2]}}]}]};
+    expect(auditChemistryHistoricalQuestion(weighted).missing).not.toContain("mark-scheme-allocation");
+    expect(auditChemistryHistoricalQuestion(weighted).ready).toBe(true);
   });
 
   test("historical questions cannot be published on source indexing alone",()=>{
