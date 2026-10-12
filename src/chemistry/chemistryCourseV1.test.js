@@ -15,7 +15,7 @@ import {
   CHEMISTRY_SVGS,
 } from "./data/chemistryPaper2Bank";
 import { CHEMISTRY_PAPER2_SOURCE_AUDIT, CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY } from "./data/chemistryPaper2SourceAudit";
-import { gradeChemistryPaper2 } from "./practice/chemistryPaper2Grader";
+import { gradeChemistryPaper2, gradeChemistryPaper2Item } from "./practice/chemistryPaper2Grader";
 import { getSparkSubjectRegistry } from "../subjects/subjectRegistry";
 import { exactTargetForAction } from "../learning/nextBestActionV2";
 
@@ -127,6 +127,26 @@ describe("CSEC Chemistry course V1",()=>{
     expect(result.score).toBeLessThanOrEqual(100);
     expect(result.questions).toHaveLength(6);
     expect(result.provisional).toBe(true);
+  });
+
+  test("table entries with no verified answer key never receive automatic marks",()=>{
+    const question={id:"CHEM-QA-Q1"};
+    const item={marks:2,response:{type:"table",table:{headers:["Reading"],rows:[[""],[""]]}}};
+    const responses={"CHEM-QA-Q1:0:0:r0c0":"25.0","CHEM-QA-Q1:0:0:r1c0":"30.0"};
+    const result=gradeChemistryPaper2Item(question,0,0,item,responses);
+    expect(result.score).toBe(0);
+    expect(result.provisional).toBe(true);
+    expect(result.unassessedMarks).toBe(2);
+    expect(result.confidence).toBe("low");
+  });
+
+  test("table cells are only awarded marks against an explicit answer key",()=>{
+    const question={id:"CHEM-QA-Q2"};
+    const item={marks:2,response:{type:"table",table:{headers:["Reading"],rows:[[""],[""]],answers:["25.0","30.0"]}}};
+    const responses={"CHEM-QA-Q2:0:0:r0c0":"25.0","CHEM-QA-Q2:0:0:r1c0":"31.0"};
+    const result=gradeChemistryPaper2Item(question,0,0,item,responses);
+    expect(result.score).toBe(1);
+    expect(result.provisional).toBe(false);
   });
 
   test("Chemistry is live in the subject registry and routes through generic study plus dedicated Paper 02 practice",()=>{
