@@ -1,7 +1,7 @@
 // Original CSEC Chemistry Paper 02 May/June 2019, Questions 4–6.
 // PDF source pages 14–22, 45 marks. The source figures and text were
 // inspected visually; grading guidance is SPARK-authored and provisional.
-import {CHEMISTRY_2019_MJ_Q4_PERIODIC_SVG,CHEMISTRY_2019_MJ_Q4_NACL_MODEL_SVG,
+import {CHEMISTRY_2019_MJ_Q4_PERIODIC_SVG,CHEMISTRY_2019_MJ_Q4_NACL_FCC_SVG,
  CHEMISTRY_2019_MJ_Q6_SOURCE_REACTIVITY} from "./chemistryHistorical2019Svgs";
 import {CHEMISTRY_2015_MJ_ORGANIC_SVGS} from "./chemistryHistorical2015ModelsSvgs";
 import {CHEMISTRY_2010_MJ_ORGANIC_MODELS} from "./chemistryHistorical2010OrganicModels";
@@ -28,7 +28,7 @@ export const CHEMISTRY_2019_MJ_QUESTIONS_4_TO_6=Object.freeze([
      item("(ii)","Sketch a unit cell of sodium chloride.",3,
       ["Show an ordered three-dimensional cube-like NaCl lattice arrangement (rock-salt structure).","Show an alternating arrangement of Na⁺ and Cl⁻ ion positions with unlike neighbours.","Correctly label Na⁺ and Cl⁻, and represent the 1:1 repeating stoichiometry/coordination (each ion has six nearest oppositely charged neighbours)."],
       "NaCl forms a face-centred cubic rock-salt lattice, with one ion type occupying fcc sites and the other all octahedral sites. A full unit-cell drawing needs more than a simple two-dimensional checkerboard.",
-      {type:"drawing",height:430},{modelAnswerSvgs:[CHEMISTRY_2019_MJ_Q4_NACL_MODEL_SVG]}),
+      {type:"drawing",height:430},{modelAnswerSvgs:[CHEMISTRY_2019_MJ_Q4_NACL_FCC_SVG]}),
      item("(iii)","State the bonding type in sodium chloride.",1,
       ["Ionic bonding."],
       "Na⁺ and Cl⁻ ions are attracted by strong electrostatic forces in a giant ionic lattice.")
@@ -56,10 +56,10 @@ export const CHEMISTRY_2019_MJ_QUESTIONS_4_TO_6=Object.freeze([
       "The pH of Sr(OH)₂(aq) is alkaline because dissolved hydroxide ions are present.")
     ]}
   ],[
-   "NaCl 'unit cell' answer requires an actual 3D rock-salt fcc/octahedral arrangement. Current SVG model is a simple ion array and MUST NOT be used as a final verified source unit-cell solution; redraw before release.",
+   "The NaCl unit-cell model now shows 8 Cl corners, 6 Cl face centres, 12 Na edge centres and one Na body centre for 4 Na/4 Cl per cell; projection overlap and source figure style still require a second visual review.",
    "SrO reacts with water rather than dissolving intact; specify Sr(OH)₂ and OH⁻ as the source of alkalinity.",
    "Source Group 2 figure puts X in the period after Ca, which identifies strontium; don't mistake X for barium."
-  ],"Periodic table source fragment rendered in SVG; NaCl lattice diagram is only a preliminary teaching model, not a fully correct 3D unit-cell diagram"),
+  ],"Periodic table source fragment rendered in SVG; The rock-salt face-centred cubic model needs independent source visual/geometry confirmation"),
  base(5,[17,18,19],[19,20,21],"Alkane homologous series, all C4H8 alkene isomers and but-1-ene hydrogenation",
   ["B1.1","B1.2","B2.1","B2.2","B3.1"],[
    {label:"(a)",context:"Methane is the first alkane.",
