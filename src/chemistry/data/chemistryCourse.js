@@ -1,6 +1,6 @@
 import { chemistryObjectiveGuideFor } from "./chemistryObjectiveGuide";
 // SPARK CSEC Chemistry course data
-// Source: CXC 21/G/SYLL 13, revised 2016/2017 for examinations from 2019.
+// Source: CXC 21/G/SYLL 13, labelled effective for examinations from May–June 2015.
 // The course is organised exactly around Sections A, B and C of the syllabus.
 
 const section = (id,title,description,sortOrder) => ({
