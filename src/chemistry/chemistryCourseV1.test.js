@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { CHEMISTRY_OBJECTIVE_GUIDE } from "./data/chemistryObjectiveGuide";
 import {
   CHEMISTRY_SECTIONS,
   CHEMISTRY_TOPICS,
@@ -25,6 +26,7 @@ describe("CSEC Chemistry course V1",()=>{
       "section-a-principles","section-b-organic","section-c-inorganic",
     ]);
     expect(Object.keys(CHEMISTRY_OBJECTIVE_TEXT)).toHaveLength(119);
+    expect(Object.keys(CHEMISTRY_OBJECTIVE_GUIDE)).toHaveLength(119);
     expect(CHEMISTRY_TOPICS).toHaveLength(21);
 
     const covered=new Set(CHEMISTRY_TOPICS.flatMap(topic=>topic.metadata?.syllabus?.objectives||[]));
@@ -36,6 +38,12 @@ describe("CSEC Chemistry course V1",()=>{
       expect(topic.title).toBeTruthy();
       expect(topic.description).toBeTruthy();
       expect(lesson?.introduction).toBeTruthy();
+      expect(lesson?.objectiveGuide).toHaveLength(topic.metadata?.syllabus?.objectives?.length || 0);
+      lesson?.objectiveGuide?.forEach(row=>{
+        expect(row.code).toBeTruthy();
+        expect(row.objective).toBeTruthy();
+        expect(row.explanation.length).toBeGreaterThan(80);
+      });
       expect(lesson?.sections?.length).toBeGreaterThan(0);
       expect(lesson?.keyPoints?.length).toBeGreaterThan(0);
       expect(lesson?.summary).toBeTruthy();
