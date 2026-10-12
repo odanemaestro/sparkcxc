@@ -2,7 +2,7 @@
 // Full paper source is scan-only; independently authored SPARK marking.
 // Two extrapolated best-fit lines intersect at ~17 cm3; all values provisional.
 import {CHEMISTRY_2021_JAN_TITRATION_DATA,CHEMISTRY_2021_JAN_THERMOMETERS_SVG,
- CHEMISTRY_2021_JAN_THERMOMETRIC_GRID_SVG,CHEMISTRY_2021_JAN_TITRATION_AUDIT} from "./chemistryHistorical2021JanuarySvgs";
+ CHEMISTRY_2021_JAN_THERMOMETRIC_GRID_SVG,CHEMISTRY_2021_JAN_THERMOMETRIC_MODEL_SVG,CHEMISTRY_2021_JAN_TITRATION_AUDIT} from "./chemistryHistorical2021JanuarySvgs";
 const item=(label,prompt,marks,points,explanation,response={type:"lines",lines:Math.max(marks+1,3)},extra={})=>({
  label,prompt,marks,response,markScheme:{points,guidance:"Original independent SPARK-authored guide, NOT official examiner marking. Temperature readings and two-line graph endpoint await independent source/graph comparison."},explanation,...extra
 });
@@ -45,11 +45,11 @@ export const CHEMISTRY_2021_JAN_Q1_DRAFT=Object.freeze({
     item("(ii)","Draw TWO lines of best fit: one through the increasing-temperature points and one through the decreasing-temperature points.",2,
      ["Draw a reasonable near-linear increasing trend through 0–15 cm³ acid points.","Draw a separate decreasing trend through 20–30 cm³ acid points and extrapolate to meet the rising line."],
      "This is a thermometric titration. Do not make a single smooth curve or simply join all points; the crossing of two straight-line trends determines the endpoint.",
-     {type:"drawing",height:460}),
+     {type:"drawing",height:460},{modelAnswerSvgs:[CHEMISTRY_2021_JAN_THERMOMETRIC_MODEL_SVG]}),
     item("(iii)","Show and read the end point of reaction from the intersection of your two best-fit lines.",2,
      ["Mark where the independently fitted increasing/decreasing straight-line trends cross.","Read the acid volume at this crossing, provisionally ~16.9 to 17.0 cm³ from the source values; accept appropriate student graph-derived values."],
      "The temperature maximum cannot be read directly from an unextrapolated table because the end point occurs between experimental 15 and 20 cm³ acid additions.",
-     {type:"calculation",lines:5})
+     {type:"calculation",lines:5},{modelAnswerSvgs:[CHEMISTRY_2021_JAN_THERMOMETRIC_MODEL_SVG]})
    ]},
   {label:"(c)",items:[item("","Distinguish between a strong acid and a weak acid.",2,
    ["A strong acid is essentially fully ionised in aqueous solution.","A weak acid ionises only partially in water, establishing an equilibrium (not necessarily a dilute solution)."],
