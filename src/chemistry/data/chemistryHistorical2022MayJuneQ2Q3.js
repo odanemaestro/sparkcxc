@@ -4,6 +4,7 @@
 import {CHEMISTRY_2022_MJ_Q3_SOURCE_SVG} from "./chemistryHistorical2022MayJuneSvgs";
 import {CHEMISTRY_2016_MJ_ORGANIC_SVGS} from "./chemistryHistorical2016OrganicModels";
 import {CHEMISTRY_2015_MJ_ORGANIC_SVGS} from "./chemistryHistorical2015ModelsSvgs";
+import {CHEMISTRY_2022_MJ_NEOPENTANE_SVG} from "./chemistryHistorical2022MayJuneOrganicModels";
 const item=(label,prompt,marks,points,explanation,response={type:"lines",lines:Math.max(3,marks+1)},extra={})=>({
  label,prompt,marks,response,markScheme:{points,guidance:"Original provisional SPARK examiner rubric, not CXC official marking. Give marks to equivalent scientifically valid explanations and full-display structures."},explanation,...extra
 });
@@ -102,7 +103,7 @@ export const CHEMISTRY_2022_MJ_Q3_DRAFT=q(3,[11,12,13],[13,14,15],
    item("(ii)","Draw FULLY DISPLAYED structures of TWO other isomers of pentane.",4,
     ["Isomer 1: 2-methylbutane, a 4-carbon backbone with a methyl branch at position 2.","Draw its five C/twelve H with each individual C–H/C–C bond and valid carbon valence 4.","Isomer 2: 2,2-dimethylpropane (neopentane), central quaternary carbon connected to four CH₃ groups.","Fully display all five C/twelve H and every bond with valence 4, not simply a condensed formula."],
     "The source already shows unbranched pentane, so the two OTHER C₅H₁₂ constitutional isomers must be 2-methylbutane and 2,2-dimethylpropane, not repeated pentane or stereoisomers.",
-    {type:"drawing",height:500},{modelAnswerSvgs:[CHEMISTRY_2016_MJ_ORGANIC_SVGS.methylbutane]}),
+    {type:"drawing",height:500},{modelAnswerSvgs:[CHEMISTRY_2016_MJ_ORGANIC_SVGS.methylbutane,CHEMISTRY_2022_MJ_NEOPENTANE_SVG]}),
    item("(iii)","Give names of the two structural isomers drawn.",2,
     ["2-Methylbutane.","2,2-Dimethylpropane (neopentane)."],
     "Both retain C₅H₁₂ but differ in carbon connectivity from pentane and from each other.")
@@ -110,5 +111,5 @@ export const CHEMISTRY_2022_MJ_Q3_DRAFT=q(3,[11,12,13],[13,14,15],
  ],[
  "Source calls reaction of monofunctional Compound A with unspecified alcohols 'condensation or addition polymerisation'. Simple butanoic acid + monohydric alcohol gives ester by CONDENSATION but cannot generate high molecular weight polymer unless reactants have multiple functional groups; do not teach one esterification as polymerisation.",
  "Pentane has exactly TWO additional constitutional C5H12 isomers: 2-methylbutane and 2,2-dimethylpropane. An answer using pentane again is wrong because it is already printed as Compound C.",
- "2,2-dimethylpropane fully displayed model still needs an exact atom-by-atom vector drawing; do not release the model answer with only 2-methylbutane diagram until completed."
+ "Both isomer models now include full C/H atom-by-atom drawings, and the new 2,2-dimethylpropane model passed an internal C5H12 carbon-valence check; independent source/display review still required."
  ]);
