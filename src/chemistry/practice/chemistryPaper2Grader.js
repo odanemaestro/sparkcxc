@@ -116,10 +116,32 @@ function tableResult(base,item,responses){
       earned,evidence:response,provisional:!isKeyed(index)
     };
   });
-  const score=Math.min(maxMarks,criteria.reduce((sum,row)=>sum+row.marks,0));
-  const unassessedMarks=blanks.reduce((sum,_,i)=>sum+(isKeyed(i)?0:marksPerCell),0);
+  const groups=Array.isArray(table.markGroups)?table.markGroups:[];
+  const orderedIndices=groups.flatMap(group=>Array.isArray(group)?group:[]);
+  const groupsValid=groups.length>0 &&
+    groups.every(group=>Array.isArray(group)&&group.length>0) &&
+    orderedIndices.length===blanks.length &&
+    new Set(orderedIndices).size===blanks.length &&
+    orderedIndices.every(index=>Number.isInteger(index)&&index>=0&&index<blanks.length);
+  const groupedCriteria=groupsValid?groups.map((group,index)=>{
+    const complete=group.every(cellIndex=>criteria[cellIndex].earned);
+    const keyed=group.every(cellIndex=>isKeyed(cellIndex));
+    const marksForGroup=maxMarks/groups.length;
+    return {
+      id:`${base}:group${index+1}`,
+      label:`Correct table entries ${group.map(cellIndex=>cellIndex+1).join(" and ")}`,
+      marks:complete?marksForGroup:0,maxMarks:marksForGroup,
+      earned:complete,evidence:group.map(cellIndex=>criteria[cellIndex].evidence).join(" | "),
+      provisional:!keyed
+    };
+  }):null;
+  const markedCriteria=groupedCriteria||criteria;
+  const score=Math.min(maxMarks,markedCriteria.reduce((sum,row)=>sum+row.marks,0));
+  const unassessedMarks=groupsValid
+    ?groups.reduce((sum,group)=>sum+(group.some(index=>!isKeyed(index))?maxMarks/groups.length:0),0)
+    :blanks.reduce((sum,_,i)=>sum+(isKeyed(i)?0:marksPerCell),0);
   return {
-    score,maxMarks,criteria,confidence:fullyKeyed?"high":"low",
+    score,maxMarks,criteria:markedCriteria,confidence:fullyKeyed?"high":"low",
     provisional:!fullyKeyed,unassessedMarks,
     ...(fullyKeyed?{}:{reason:"One or more table cells have no verified answer key and require review."})
   };
