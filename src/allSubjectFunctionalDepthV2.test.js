@@ -31,12 +31,12 @@ describe("SPARK all-subject functional depth audit V2",()=>{
   test("every production subject still exposes the complete learning surface",()=>{
     const subjects=getSparkSubjectRegistry({physicsEnabled:true});
     expect(subjects.map(subject=>subject.id)).toEqual([
-      "mathematics","physics","information-technology","integrated-science","social-studies","english-a"
+      "mathematics","physics","information-technology","integrated-science","chemistry","social-studies","english-a"
     ]);
     subjects.forEach(subject=>{
       expect(subject.capabilities.study).toBe(true);
       expect(subject.capabilities.practice).toBe(true);
-      expect(subject.capabilities.paper1).toBe(true);
+      if(subject.id !== "chemistry") expect(subject.capabilities.paper1).toBe(true);
       expect(subject.capabilities.paper2).toBe(true);
       expect(subject.routes.study).toBeTruthy();
       expect(subject.routes.practice).toBeTruthy();
@@ -134,6 +134,20 @@ describe("SPARK all-subject functional depth audit V2",()=>{
     expect(css).not.toContain("is-p2-self-score");
   });
 
+  test("Chemistry study and Paper 2 surface covers the full published structure",()=>{
+    const study=readSrc("chemistry/data/chemistryStudyContent.js");
+    const practice=readSrc("chemistry/data/chemistryPaper2PracticeBank.js");
+    const sources=readSrc("chemistry/data/chemistryPaper2Sources.js");
+    const grader=readSrc("chemistry/practice/chemistryPaper2Grader.js");
+    const exam=readSrc("chemistry/practice/ChemistryPaper2Exam.jsx");
+    expect(study).toContain("CHEMISTRY_STUDY_STRUCTURE");
+    expect(practice).toContain("CHEMISTRY_PAPER2_PRACTICE_PAPERS");
+    expect(sources).toContain("CHEMISTRY_PAPER2_SOURCE_COUNT");
+    expect(grader).toContain("gradeChemistryPaper2");
+    expect(exam).toContain("2 hours 30 minutes");
+    expect(exam).toContain("6 compulsory");
+  });
+
   test("Social Studies has automatic short-answer, essay and SBA marking",()=>{
     const shortAnswer=readSrc("socialStudies/marking/socialStudiesShortAnswerGrader.js");
     const essay=readSrc("socialStudies/marking/socialStudiesEssayGrader.js");
@@ -169,7 +183,7 @@ describe("SPARK all-subject functional depth audit V2",()=>{
 
   test("production learning code contains no unfinished implementation markers",()=>{
     const roots=[
-      "practice","physics","informationTechnology","integratedScience","socialStudies","englishA","subjects"
+      "practice","physics","informationTechnology","integratedScience","chemistry","socialStudies","englishA","subjects"
     ].map(dir=>path.join(srcRoot,dir));
     const bad=[];
     for(const root of roots){

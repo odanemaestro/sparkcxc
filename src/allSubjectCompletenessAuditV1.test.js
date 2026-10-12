@@ -21,6 +21,7 @@ describe("SPARK all-subject completeness audit V1",()=>{
       "physics",
       "information-technology",
       "integrated-science",
+      "chemistry",
       "social-studies",
       "english-a",
     ]);
@@ -29,7 +30,7 @@ describe("SPARK all-subject completeness audit V1",()=>{
       expect(subject.routes.practice).toBeTruthy();
       expect(subject.capabilities.study).toBe(true);
       expect(subject.capabilities.practice).toBe(true);
-      expect(subject.capabilities.paper1).toBe(true);
+      if(subject.id !== "chemistry") expect(subject.capabilities.paper1).toBe(true);
       expect(subject.capabilities.paper2).toBe(true);
     });
   });
@@ -86,6 +87,17 @@ describe("SPARK all-subject completeness audit V1",()=>{
     expect(renderer).not.toContain("Drawing / diagram response area");
   });
 
+  test("Chemistry includes all three syllabus sections and full Paper 02 practice",()=>{
+    const study=read("chemistry/data/chemistryStudyContent.js");
+    const bank=read("chemistry/data/chemistryPaper2PracticeBank.js");
+    const sources=read("chemistry/data/chemistryPaper2Sources.js");
+    expect(study).toContain("Principles of Chemistry");
+    expect(study).toContain("Organic Chemistry");
+    expect(study).toContain("Inorganic Chemistry");
+    expect(bank).toContain("CHEM-P2-SPARK-04");
+    expect(sources).toContain("CSEC_Chemistry_P2_2025_MJ.pdf");
+  });
+
   test("Social Studies SBA builds actual tables and graphs from entered data",()=>{
     const sba=read("socialStudies/practice/SocialStudiesSbaPractice.jsx");
     const grader=read("socialStudies/marking/socialStudiesSbaGrader.js");
@@ -117,6 +129,7 @@ describe("SPARK all-subject completeness audit V1",()=>{
       "englishA",
       "physics",
       "integratedScience",
+      "chemistry",
     ];
     const bad=[];
     const mojibake=/\uFFFD|â€™|â€œ|â€|Â°|Ã—|Ã·|Î©|Î”|â†’|â€¢/;
