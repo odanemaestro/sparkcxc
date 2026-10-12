@@ -38,6 +38,11 @@ function lessonObjectives(topic = {}) {
   return Array.isArray(lesson.objectives) ? lesson.objectives.filter(Boolean) : [];
 }
 
+function objectiveGuide(topic = {}) {
+  const lesson = lessonData(topic);
+  return Array.isArray(lesson.objectiveGuide) ? lesson.objectiveGuide.filter(row=>row?.explanation) : [];
+}
+
 const removedIntegratedScienceDiagramTemplates = new Set([
   "mammalian-ear",
   "flower-longitudinal",
@@ -134,6 +139,7 @@ export function GenericLessonContent({
   const blocks = lessonSections(topic);
   const points = keyPoints(topic);
   const objectives = lessonObjectives(topic);
+  const objectiveNotes = objectiveGuide(topic);
   const diagrams = interactiveDiagrams(topic,subjectId);
   const references = referenceDiagrams(topic,subjectId);
   const models = interactiveModels(topic);
@@ -157,6 +163,24 @@ export function GenericLessonContent({
             {objectives.map((objective,index) => <li key={index}>{renderLessonText(objective)}</li>)}
           </ul>
         </Card>
+      )}
+
+      {objectiveNotes.length > 0 && (
+        <section className="spark-generic-objective-guide" aria-label="Syllabus objective guide">
+          <div className="spark-generic-objective-guide-head">
+            <span>Syllabus guide</span>
+            <h3>Understand every objective</h3>
+            <p>Use these explanations as a checklist. You should be able to explain each idea in your own words and apply it to an exam question.</p>
+          </div>
+          <div className="spark-generic-objective-guide-list">
+            {objectiveNotes.map(row=>(
+              <article key={row.code} className="spark-generic-objective-guide-item">
+                <div><strong>{row.code}</strong><span>{renderLessonText(row.objective)}</span></div>
+                <p>{renderLessonText(row.explanation)}</p>
+              </article>
+            ))}
+          </div>
+        </section>
       )}
 
       {blocks.map((block, index) => {
