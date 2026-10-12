@@ -16,6 +16,8 @@ import {
 } from "./data/chemistryPaper2Bank";
 import { CHEMISTRY_PAPER2_SOURCE_AUDIT, CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY } from "./data/chemistryPaper2SourceAudit";
 import { gradeChemistryPaper2, gradeChemistryPaper2Item } from "./practice/chemistryPaper2Grader";
+import {CHEMISTRY_HISTORICAL_DRAFT_ITEMS,CHEMISTRY_HISTORICAL_DRAFT_SUMMARY} from "./data/chemistryHistoricalPaper2Drafts";
+import {CHEMISTRY_2025_MJ_Q1_GRAPH_SVG} from "./data/chemistryHistoricalGraphSvg";
 import { getSparkSubjectRegistry } from "../subjects/subjectRegistry";
 import { exactTargetForAction } from "../learning/nextBestActionV2";
 
@@ -127,6 +129,26 @@ describe("CSEC Chemistry course V1",()=>{
     expect(result.score).toBeLessThanOrEqual(100);
     expect(result.questions).toHaveLength(6);
     expect(result.provisional).toBe(true);
+  });
+
+  test("historical draft records stay quarantined until independent source QA",()=>{
+    expect(CHEMISTRY_HISTORICAL_DRAFT_SUMMARY.fullyVerifiedHistoricalQuestions).toBe(0);
+    expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS).toHaveLength(1);
+    const row=CHEMISTRY_HISTORICAL_DRAFT_ITEMS[0];
+    expect(row.sourceId).toBe("CHEM-P2-2025-MJ");
+    expect(row.pdfPages).toEqual([2,3,4,5,6]);
+    expect(row.learnerFacing).toBe(false);
+    expect(row.status).toMatch(/needs-second-source-review/);
+    const all=row.parts.flatMap(part=>part.items);
+    expect(all.reduce((sum,item)=>sum+item.marks,0)).toBe(25);
+    all.forEach(item=>{
+      expect(item.explanation.length).toBeGreaterThan(20);
+      expect(item.markScheme.points.length).toBeGreaterThan(0);
+    });
+    const experimental=all.find(item=>item.label==="(iii)");
+    expect(experimental.response.table.answers).toEqual(["11.85","0.07","11.89","0.11"]);
+    expect(CHEMISTRY_2025_MJ_Q1_GRAPH_SVG).toMatch(/^<svg/);
+    expect(CHEMISTRY_2025_MJ_Q1_GRAPH_SVG).not.toMatch(/<image\\b/i);
   });
 
   test("table entries with no verified answer key never receive automatic marks",()=>{
