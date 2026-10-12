@@ -178,13 +178,13 @@ const BASE_SUBJECTS = Object.freeze({
     routes: Object.freeze({
       study: "/study/chemistry",
       practice: "/practice/chemistry",
-      flashcards: "/dashboard/flashcards/chemistry",
+      flashcards: null,
       progress: "/dashboard/progress",
     }),
     capabilities: Object.freeze({
       study: true,
       practice: true,
-      flashcards: true,
+      flashcards: false,
       progress: true,
       paper1: false,
       paper2: true,
@@ -288,7 +288,7 @@ export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = 
       objectives: Number(chemistry.objectives || 119),
       paper2HistoricalPapers: Number(chemistry.paper2HistoricalPapers || 28),
       paper2PracticeSets: Number(chemistry.paper2PracticeSets || 6),
-      flashcards: Number(chemistry.flashcards || 180),
+      flashcards: Number(chemistry.flashcards || 0),
     },
   };
   const socialStudiesSubject = {
