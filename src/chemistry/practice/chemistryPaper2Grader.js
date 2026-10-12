@@ -88,16 +88,41 @@ function tableResult(base,item,responses){
   const table=item.response?.table||{};
   const answers=Array.isArray(table.answers)?table.answers:[];
   const blanks=[];
-  (table.rows||[]).forEach((row,r)=>row.forEach((cell,c)=>{if(String(cell??"")==="")blanks.push(`${base}:r${r}c${c}`);}));
+  (table.rows||[]).forEach((row,r)=>row.forEach((cell,c)=>{
+    if(String(cell??"")==="")blanks.push(`${base}:r${r}c${c}`);
+  }));
+  const maxMarks=Number(item.marks||0);
+  const marksPerCell=blanks.length ? maxMarks/blanks.length : 0;
+  const isKeyed=index=>index<answers.length &&
+    (Array.isArray(answers[index]) ? answers[index].length>0 : String(answers[index]??"").trim()!=="");
+  const fullyKeyed=blanks.length>0 && blanks.every((_,i)=>isKeyed(i));
   const criteria=blanks.map((key,index)=>{
-    const response=responses[key]||"";
-    const expected=Array.isArray(answers[index])?answers[index]:[answers[index]].filter(Boolean);
-    const earned=expected.length ? expected.some(v=>{ const numeric=String(v).trim()!=="" && Number.isFinite(Number(v)); return numeric ? numericMatch(response,[Number(v)]) : textMatch(response,String(v)); }) : false;
-    return {id:key,label:expected.join(" / ")||"completed cell",marks:earned?1:0,maxMarks:1,earned,evidence:response};
+    const response=String(responses[key]??"");
+    const expected=Array.isArray(answers[index])?answers[index]:isKeyed(index)?[answers[index]]:[];
+    const earned=expected.some(v=>{
+      const target=String(v).trim();
+      const numeric=target!==""&&Number.isFinite(Number(target));
+      if(!numeric)return textMatch(response,target);
+      // Half of the final shown decimal place is the permitted rounding error.
+      // Avoid the general numeric tolerance of 0.005 for small rates, e.g. 0.012.
+      const decimals=(target.split(".")[1]||"").length;
+      const tolerance=decimals ? 0.5*10**(-decimals)+1e-12 : 0.5+1e-12;
+      const given=numbers(response);
+      return given.some(value=>Math.abs(value-Number(target))<=tolerance);
+    });
+    return {
+      id:key,label:expected.join(" / ")||"Answer key needed",
+      marks:earned?marksPerCell:0,maxMarks:marksPerCell,
+      earned,evidence:response,provisional:!isKeyed(index)
+    };
   });
-  const score=Math.min(Number(item.marks||0),criteria.reduce((sum,row)=>sum+row.marks,0));
-  return {score,maxMarks:Number(item.marks||0),criteria,confidence:answers.length?"high":"low",provisional:!answers.length,
-    ...(answers.length?{}:{unassessedMarks:Math.max(0,Number(item.marks||0)-score),reason:"No verified answer key is available for these table cells. Answers require examiner review."})};
+  const score=Math.min(maxMarks,criteria.reduce((sum,row)=>sum+row.marks,0));
+  const unassessedMarks=blanks.reduce((sum,_,i)=>sum+(isKeyed(i)?0:marksPerCell),0);
+  return {
+    score,maxMarks,criteria,confidence:fullyKeyed?"high":"low",
+    provisional:!fullyKeyed,unassessedMarks,
+    ...(fullyKeyed?{}:{reason:"One or more table cells have no verified answer key and require review."})
+  };
 }
 
 function graphResult(base,item,responses){
