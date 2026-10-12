@@ -8,7 +8,7 @@ This document is a release gate, not a completion certificate. Keep `main` uncha
 - Syllabus: user-supplied `CSEC-Chemistry-Syllabus (1).pdf`, CXC 21/G/SYLL 13, labelled effective for examinations from May–June 2015.
 - Source paper inventory and page counts: `src/chemistry/data/chemistryPaper2SourceAudit.js`.
 - Historical source-index status: 28/28 inventoried. The OCR/search index is not authoritative for chemistry symbols or graphical measurements.
-- Draft learner transcriptions: 6 questions, covering the entire 2025 May/June Paper 02 (100 marks), with printed pages 5–21. All remain quarantined for second-pass verification.
+- Draft learner transcriptions: 7 questions, comprising all six questions of 2025 May/June (100 marks, printed pages 5-21) plus 2014 May/June Question 1 (25 marks, printed pages 2-6). All remain quarantined for second-pass verification.
 - Historical questions cleared for students: **0**. The draft bank is deliberately kept separate from learner-facing simulations.
 - Original SPARK simulations: six 6-question, 100-mark practice sets. These are *original SPARK content* and must not be labelled historical CXC papers.
 
@@ -39,8 +39,8 @@ For **every question of every supplied paper**, record:
 
 ## Still blocked for release
 
-- Source-by-source review for the remaining pages and historical questions in the 28 PDFs.
-- Second-pass review of all six drafted 2025 questions and pixel-level comparison of the draft Figure 1 SVG. The four model SVG chemical structures and one oxygen-preparation apparatus drawing also need visual checks.\n- Resolve examiner-interpretation/source-quality flags in the 2025 paper: Question 2 gives an implausible pH for 0.05 M phosphoric acid, Question 3 uses ambiguous wording about complete methane bromination, and Question 5 links a monohydric C4H10O compound to polyester formation.
+- Source-by-source review for every remaining historical question in the 28 PDFs, including all of the 2014 May/June paper apart from drafted Question 1.
+- Second-pass review of all seven drafted questions (2025 and 2014). The 2014 Figure 1 graph and Figures 2-3 apparatus need exact SVG redrawing and overlay checking.\n- Pixel-level comparison of the 2025 draft Figure 1 SVG. The four model SVG chemical structures and one oxygen-preparation apparatus drawing also need visual checks.\n- Resolve examiner-interpretation/source-quality flags in the 2025 paper: Question 2 gives an implausible pH for 0.05 M phosphoric acid, Question 3 uses ambiguous wording about complete methane bromination, and Question 5 links a monohydric C4H10O compound to polyester formation.
 - Independent scientific review of all 119 mapped syllabus objectives, all numerical answers and the practical models.
 - PR #49 supplementary study explanations are now reconciled into this branch for all 21 topics while retaining the 119-objective guide and original Chemistry labs. Scientifically review the expanded lessons, then retire the redundant PR #49 to avoid duplicate merges.
 - End-to-end checks for submissions, progress reports, parent/student notifications, saving, restored timers, navigation and permissions.
