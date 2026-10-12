@@ -20,6 +20,7 @@ import {CHEMISTRY_HISTORICAL_DRAFT_ITEMS,CHEMISTRY_HISTORICAL_DRAFT_SUMMARY} fro
 import {CHEMISTRY_2025_MJ_Q1_GRAPH_SVG} from "./data/chemistryHistoricalGraphSvg";
 import {CHEMISTRY_2025_ORGANIC_DIAGRAM_AUDIT,CHEMISTRY_2025_OXYGEN_PREPARATION_SVG} from "./data/chemistryHistorical2025ModelSvgs";
 import {CHEMISTRY_SUPPLEMENTARY_CONTENT_AUDIT} from "./data/chemistrySupplementalLessons";
+import {CHEMISTRY_HISTORICAL_REVIEW_SUMMARY,auditChemistryHistoricalQuestion,publishedChemistryHistoricalQuestions} from "./data/chemistryHistoricalReleaseGate";
 import { getSparkSubjectRegistry } from "../subjects/subjectRegistry";
 import { exactTargetForAction } from "../learning/nextBestActionV2";
 
@@ -214,6 +215,19 @@ describe("CSEC Chemistry course V1",()=>{
     expect(CHEMISTRY_2025_OXYGEN_PREPARATION_SVG).toMatch(/^<svg/);
     expect(CHEMISTRY_2025_MJ_Q1_GRAPH_SVG).toMatch(/^<svg/);
     expect(CHEMISTRY_2025_MJ_Q1_GRAPH_SVG).not.toMatch(/<image\\b/i);
+  });
+
+  test("historical questions cannot be published on source indexing alone",()=>{
+    expect(CHEMISTRY_HISTORICAL_REVIEW_SUMMARY.approvedQuestions).toBe(0);
+    expect(CHEMISTRY_HISTORICAL_REVIEW_SUMMARY.papersWithDrafts).toBe(2);
+    expect(publishedChemistryHistoricalQuestions()).toHaveLength(0);
+    const draft=CHEMISTRY_HISTORICAL_DRAFT_ITEMS[0];
+    expect(auditChemistryHistoricalQuestion(draft).ready).toBe(false);
+    const premature={...draft,status:"verified",learnerFacing:true};
+    expect(auditChemistryHistoricalQuestion(premature).missing).toEqual(
+      expect.arrayContaining(["qa:sourceTranscription","qa:chemicalAnswers","qa:markScheme","qa:figureSvg","qa:examInteraction"])
+    );
+    expect(publishedChemistryHistoricalQuestions([premature])).toHaveLength(0);
   });
 
   test("table entries with no verified answer key never receive automatic marks",()=>{
