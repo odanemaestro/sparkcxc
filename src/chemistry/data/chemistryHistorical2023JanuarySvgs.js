@@ -15,9 +15,10 @@ const burette=(x,topNumber,value)=>{
   const yy=top+j*h/10;
   return ln(x,yy,x+(j%5===0?23:15),yy,j%5===0?2:1);
  }).join('');
- return '<g>'+ln(x,top-20,x,top+h+25,2.2)+ln(x+width,top-20,x+width,top+h+25,2.2)+
- scale+'<path d="M'+x+' '+(level-10)+' Q'+(x+26)+' '+(level+11)+' '+(x+width)+' '+(level-10)+'" stroke="#111" stroke-width="2.5" fill="none"/>'+
+ return '<g>'+
  '<path d="M'+x+' '+(level-10)+' Q'+(x+26)+' '+(level+11)+' '+(x+width)+' '+(level-10)+' V'+(top+h+24)+'H'+x+'Z" stroke="none" fill="#ecf5fa"/>'+
+ ln(x,top-20,x,top+h+25,2.2)+ln(x+width,top-20,x+width,top+h+25,2.2)+scale+
+ '<path d="M'+x+' '+(level-10)+' Q'+(x+26)+' '+(level+11)+' '+(x+width)+' '+(level-10)+'" stroke="#111" stroke-width="2.5" fill="none"/>'+
  txt(x-17,top+7,topNumber,17)+txt(x-18,top+h+6,topNumber+1,17)+'</g>';
 };
 export const CHEMISTRY_2023_JAN_Q1_BURETTE_SVG=svg(1140,404,
