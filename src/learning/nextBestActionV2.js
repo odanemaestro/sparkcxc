@@ -17,6 +17,7 @@ import {
   SOCIAL_STUDIES_COURSE,
   SOCIAL_STUDIES_LESSONS,
 } from "../socialStudies/data/socialStudiesCourse";
+import { CHEMISTRY_TOPICS } from "../chemistry/data/chemistryCourse";
 import { recommendedDeckIdsForSkills } from "./flashcards";
 import { writeSparkNestedRoute } from "../routing/sparkRoutingV270";
 import { displaySkillLabel, studentRecommendationReasons } from "./learnerIntelligenceV2";
@@ -636,6 +637,77 @@ function socialStudiesTarget(skill, actionType) {
   };
 }
 
+function chemistryLessonForSkill(skill) {
+  const raw=String(skill || "").trim();
+  const direct=CHEMISTRY_TOPICS.find(item =>
+    lower(item.id)===lower(raw) ||
+    lower(item.title)===lower(raw) ||
+    (item.metadata?.syllabus?.objectives || []).some(code => lower(code)===lower(raw))
+  );
+  if(direct) return direct;
+
+  const objectivePrefix=raw.match(/^([ABC]\d+(?:\.\d+)?)/i)?.[1];
+  if(objectivePrefix){
+    const byObjective=CHEMISTRY_TOPICS.find(item =>
+      (item.metadata?.syllabus?.objectives || []).some(code =>
+        lower(code)===lower(objectivePrefix) ||
+        lower(code).startsWith(lower(objectivePrefix)+".")
+      )
+    );
+    if(byObjective) return byObjective;
+  }
+
+  const matched=bestMatch(
+    raw,
+    CHEMISTRY_TOPICS,
+    item => `${item.id} ${item.title} ${item.description || ""} ${(item.metadata?.syllabus?.objectives || []).join(" ")}`
+  );
+  return matched?.item || null;
+}
+
+function chemistryTarget(skill, actionType) {
+  const lesson=chemistryLessonForSkill(skill);
+
+  if(actionType==="assessment"){
+    return {
+      subjectId:"chemistry",
+      view:"practice-chemistry",
+      path:"/practice/chemistry",
+      params:{mode:"paper2"},
+      kind:"exam",
+      label:"Chemistry Paper 02 practice",
+      exact:true,
+      outcomeScope:{activityKeyPrefix:"exam:CHEM-P2-"},
+    };
+  }
+
+  if(lesson){
+    const hasLab=(lesson.metadata?.lesson?.interactiveModels || []).length>0;
+    return {
+      subjectId:"chemistry",
+      view:"generic-study",
+      path:"/study/chemistry",
+      params:{section:lesson.sectionId,topic:lesson.id},
+      kind:actionType==="lab"&&hasLab ? "lab" : "lesson",
+      label:actionType==="lab"&&hasLab
+        ? `${lesson.title} interactive lab`
+        : lesson.title,
+      exact:true,
+      outcomeScope:{sectionId:lesson.sectionId,topicId:lesson.id},
+    };
+  }
+
+  return {
+    subjectId:"chemistry",
+    view:"generic-study",
+    path:"/study/chemistry",
+    params:{},
+    kind:"lesson",
+    label:"Chemistry study",
+    exact:false,
+  };
+}
+
 export function exactTargetForAction(subjectId, skill, actionType, options = {}) {
   const id = lower(subjectId);
 
@@ -661,6 +733,7 @@ export function exactTargetForAction(subjectId, skill, actionType, options = {})
   if (id === "information-technology") return itTarget(skill, actionType, options.sourceRows || []);
   if (id === "social-studies") return socialStudiesTarget(skill, actionType);
   if (id === "english-a") return englishATarget(skill, actionType);
+  if (id === "chemistry") return chemistryTarget(skill, actionType);
 
   if (id && actionType === "flashcards") {
     return {
