@@ -42,7 +42,7 @@ import {CHEMISTRY_2019_JAN_Q1_BURETTES,CHEMISTRY_2019_JAN_Q1_NUMERIC_AUDIT,CHEMI
 import {CHEMISTRY_2019_JAN_Q1_PROVISIONAL_AUDIT} from "./data/chemistryHistorical2019JanuaryQ1";
 import {CHEMISTRY_2020_JAN_Q1_SOURCE_DATA,CHEMISTRY_2020_JAN_Q1_SYRINGES_SVG,CHEMISTRY_2020_JAN_Q1_GRAPH_SVG,CHEMISTRY_2020_JAN_Q1_NUMERIC_AUDIT} from "./data/chemistryHistorical2020JanuarySvgs";
 import {CHEMISTRY_2020_JAN_ORGANIC_VALENCE_AUDIT} from "./data/chemistryHistorical2020JanuaryOrganicModels";
-import {CHEMISTRY_2021_JAN_TITRATION_DATA,CHEMISTRY_2021_JAN_TITRATION_AUDIT,CHEMISTRY_2021_JAN_THERMOMETERS_SVG,CHEMISTRY_2021_JAN_THERMOMETRIC_GRID_SVG} from "./data/chemistryHistorical2021JanuarySvgs";
+import {CHEMISTRY_2021_JAN_TITRATION_DATA,CHEMISTRY_2021_JAN_TITRATION_AUDIT,CHEMISTRY_2021_JAN_THERMOMETERS_SVG,CHEMISTRY_2021_JAN_THERMOMETRIC_GRID_SVG,CHEMISTRY_2021_JAN_THERMOMETRIC_MODEL_SVG} from "./data/chemistryHistorical2021JanuarySvgs";
 import {CHEMISTRY_2021_JAN_ORGANIC_AUDIT} from "./data/chemistryHistorical2021JanuaryOrganicModels";
 import {CHEMISTRY_HISTORICAL_COVERAGE} from "./data/chemistryHistoricalCoverage";
 import { getSparkSubjectRegistry } from "../subjects/subjectRegistry";
@@ -366,6 +366,10 @@ describe("CSEC Chemistry course V1",()=>{
     expect(rows[0].parts[0].items[0].response.table.answers).toEqual(["27.5","33.4","28.9"]);
     expect(rows[0].parts[1].items[0].response.points).toHaveLength(7);
     expect(rows[0].parts[1].items[1].markScheme.points).toHaveLength(2);
+    expect(rows[0].parts[1].items[1].modelAnswerSvgs).toHaveLength(1);
+    expect(rows[0].parts[1].items[2].modelAnswerSvgs).toHaveLength(1);
+    expect(CHEMISTRY_2021_JAN_THERMOMETRIC_MODEL_SVG).toMatch(/^<svg/);
+    expect(CHEMISTRY_2021_JAN_THERMOMETRIC_MODEL_SVG).toContain("Provisional endpoint");
     expect(CHEMISTRY_2021_JAN_TITRATION_AUDIT.approximateEndPointCm3).toBeCloseTo(16.9,1);
     expect(CHEMISTRY_2021_JAN_TITRATION_AUDIT.calculatedNaOHGdm3).toBeCloseTo(5.41,1);
     expect(rows[0].sourceIssues.join(" ")).toMatch(/INTERSECTION/);
