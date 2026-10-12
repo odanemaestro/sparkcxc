@@ -1,3 +1,4 @@
+import { chemistryObjectiveGuideFor } from "./chemistryObjectiveGuide";
 // SPARK CSEC Chemistry course data
 // Source: CXC 21/G/SYLL 13, revised 2016/2017 for examinations from 2019.
 // The course is organised exactly around Sections A, B and C of the syllabus.
@@ -21,6 +22,10 @@ const topic = ({
     syllabus:{source:"CXC 21/G/SYLL 13",objectives},
     lesson:{
       objectives:objectives.map(code => CHEMISTRY_OBJECTIVE_TEXT[code]).filter(Boolean),
+      objectiveGuide:chemistryObjectiveGuideFor(objectives).map(row=>({
+        ...row,
+        objective:CHEMISTRY_OBJECTIVE_TEXT[row.code] || row.code,
+      })),
       introduction:intro,
       sections,
       keyPoints,
