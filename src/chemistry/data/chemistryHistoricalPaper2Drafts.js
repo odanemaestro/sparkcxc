@@ -1,3 +1,5 @@
+import {CHEMISTRY_2015_MJ_Q1_DRAFT} from "./chemistryHistorical2015Q1";
+import {CHEMISTRY_2015_MJ_QUESTIONS_2_TO_6} from "./chemistryHistorical2015Questions2To6";
 import {CHEMISTRY_2014_MJ_Q4_DRAFT} from "./chemistryHistorical2014Q4";
 import {CHEMISTRY_2014_MJ_Q5_DRAFT} from "./chemistryHistorical2014Q5";
 import {CHEMISTRY_2014_MJ_Q6_DRAFT} from "./chemistryHistorical2014Q6";
@@ -151,7 +153,9 @@ export const CHEMISTRY_HISTORICAL_DRAFT_ITEMS = Object.freeze([
   CHEMISTRY_2025_JAN_Q3_DRAFT,
   CHEMISTRY_2025_JAN_Q4_DRAFT,
   CHEMISTRY_2025_JAN_Q5_DRAFT,
-  CHEMISTRY_2025_JAN_Q6_DRAFT
+  CHEMISTRY_2025_JAN_Q6_DRAFT,
+  CHEMISTRY_2015_MJ_Q1_DRAFT,
+  ...CHEMISTRY_2015_MJ_QUESTIONS_2_TO_6
 ]);
 
 export const CHEMISTRY_HISTORICAL_DRAFT_SUMMARY = Object.freeze({
