@@ -14,7 +14,7 @@ export const CHEMISTRY_2020_JAN_Q1_DRAFT=Object.freeze({
  title:"Magnesium and sulfuric acid: gas syringe, reaction-rate graph and surface area",
  objectives:["A7.1","A10.1","A10.2","A10.3","A10.4","C6.1","C6.2"],
  status:"draft-needs-second-source-review",learnerFacing:false,
- answerSchemeSource:"Independently drafted SPARK points; original CXC scheme not supplied",
+ answerSchemeSource:"SPARK-authored provisional points; original CXC marking scheme not supplied",
  diagramStatus:"Figure 1 original gas syringes at .5/1/2/3/4 minutes and source graph with preplotted 0/5/6 minutes in SPARK native SVG; source-overlay approval pending",
  sourceIssues:[
   "Original gas syringe readings visually estimated at 0.5=6, 1=11, 2=16.5, 3=19 and 4=20 cm³. All five piston graduations need a second independent scan reading, especially the 2-minute half division.",
