@@ -1,10 +1,12 @@
 import React,{useMemo,useState} from "react";
 import ChemistryPaper2Exam from "./ChemistryPaper2Exam";
 import {CHEMISTRY_HISTORICAL_PAPERS,CHEMISTRY_PAPER2_PRACTICE_SETS,chemistryPaper2BankStats} from "../data/chemistryPaper2Bank";
+import {CHEMISTRY_PAPER2_SOURCE_AUDIT,CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY} from "../data/chemistryPaper2SourceAudit";
 import "./chemistryPractice.css";
 import "../../integratedScience/practice/integratedSciencePractice.css";
 
 function HistoricalArchive({onBack}){
+  const sourceById=useMemo(()=>Object.fromEntries(CHEMISTRY_PAPER2_SOURCE_AUDIT.map(row=>[row.id,row])),[]);
   const [query,setQuery]=useState("");
   const [session,setSession]=useState("all");
   const rows=useMemo(()=>CHEMISTRY_HISTORICAL_PAPERS.filter(paper=>{
@@ -14,9 +16,16 @@ function HistoricalArchive({onBack}){
   }),[query,session]);
   return <main className="is-practice-shell chem-practice-shell"><div className="is-practice-home-shell">
     <div className="is-practice-top-actions"><button type="button" className="is-back-button" onClick={onBack}><span aria-hidden="true">←</span>Back to practice modes</button></div>
-    <header className="is-practice-hero"><div><span>CSEC CHEMISTRY PAPER 02</span><h1>Historical source archive</h1><p>All 28 supplied Paper 02 scans are indexed here for question-bank QA, syllabus mapping and generated-paper calibration.</p></div></header>
+    <header className="is-practice-hero"><div><span>CSEC CHEMISTRY PAPER 02</span><h1>Historical source archive</h1><p>All {CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY.suppliedPapers} supplied Paper 02 scans, covering {CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY.suppliedPages} pages, are accounted for here. Historical questions are promoted to learner practice only after page-by-page wording, value, marking and SVG-figure QA.</p></div></header>
     <section className="chem-archive-filters"><label>Search<input value={query} onChange={e=>setQuery(e.target.value)} placeholder="year or topic"/></label><label>Session<select value={session} onChange={e=>setSession(e.target.value)}><option value="all">All sessions</option><option>January</option><option>May/June</option></select></label></section>
-    <section className="chem-archive-list">{rows.map(paper=><article key={paper.id} className="chem-archive-card"><div><span>{paper.session}</span><h2>{paper.year} Chemistry Paper 02</h2><p>{paper.questionCount} questions in the source paper</p></div><div className="chem-archive-tags">{paper.topics.map(topic=><span key={topic}>{topic.replaceAll("-"," ")}</span>)}</div><div className="chem-archive-status"><b>Imported</b><small>Source scan indexed for bank QA</small></div></article>)}</section>
+    <section className="chem-archive-list">{rows.map(paper=>{
+      const source=sourceById[paper.id];
+      return <article key={paper.id} className="chem-archive-card">
+        <div><span>{paper.session}</span><h2>{paper.year} Chemistry Paper 02</h2><p>{paper.questionCount} questions · {source?.pages || "?"} source pages</p></div>
+        <div className="chem-archive-tags">{paper.topics.map(topic=><span key={topic}>{topic.replaceAll("-"," ")}</span>)}</div>
+        <div className="chem-archive-status"><b>Source verified</b><small>Full historical transcription and diagram QA tracked separately before learner release</small></div>
+      </article>;
+    })}</section>
   </div></main>;
 }
 
