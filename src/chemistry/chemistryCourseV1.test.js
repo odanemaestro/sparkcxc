@@ -21,6 +21,7 @@ import {CHEMISTRY_2025_MJ_Q1_GRAPH_SVG} from "./data/chemistryHistoricalGraphSvg
 import {CHEMISTRY_2025_ORGANIC_DIAGRAM_AUDIT,CHEMISTRY_2025_OXYGEN_PREPARATION_SVG} from "./data/chemistryHistorical2025ModelSvgs";
 import {CHEMISTRY_SUPPLEMENTARY_CONTENT_AUDIT} from "./data/chemistrySupplementalLessons";
 import {CHEMISTRY_HISTORICAL_REVIEW_SUMMARY,auditChemistryHistoricalQuestion,publishedChemistryHistoricalQuestions} from "./data/chemistryHistoricalReleaseGate";
+import {CHEMISTRY_JAN_2025_ESTER_VALENCE_AUDIT} from "./data/chemistryHistoricalJanuary2025EsterSvgs";
 import { getSparkSubjectRegistry } from "../subjects/subjectRegistry";
 import { exactTargetForAction } from "../learning/nextBestActionV2";
 
@@ -171,8 +172,8 @@ describe("CSEC Chemistry course V1",()=>{
 
   test("historical draft records stay quarantined until independent source QA",()=>{
     expect(CHEMISTRY_HISTORICAL_DRAFT_SUMMARY.fullyVerifiedHistoricalQuestions).toBe(0);
-    expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS).toHaveLength(9);
-    expect(CHEMISTRY_HISTORICAL_DRAFT_SUMMARY.transcribedDraftQuestions).toBe(9);
+    expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS).toHaveLength(10);
+    expect(CHEMISTRY_HISTORICAL_DRAFT_SUMMARY.transcribedDraftQuestions).toBe(10);
     const row=CHEMISTRY_HISTORICAL_DRAFT_ITEMS[0];
     expect(row.sourceId).toBe("CHEM-P2-2025-MJ");
     expect(row.pdfPages).toEqual([2,3,4,5,6]);
@@ -192,8 +193,8 @@ describe("CSEC Chemistry course V1",()=>{
     expect(second.learnerFacing).toBe(false);
     expect(second.parts.flatMap(part=>part.items).reduce((sum,item)=>sum+item.marks,0)).toBe(15);
     expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.filter(item=>item.sourceId==="CHEM-P2-2025-MJ").map(item=>item.originalQuestionNumber)).toEqual([1,2,3,4,5,6]);
-    expect(new Set(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.map(item=>item.id)).size).toBe(9);
-    expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.reduce((sum,row)=>sum+row.totalMarks,0)).toBe(165);
+    expect(new Set(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.map(item=>item.id)).size).toBe(10);
+    expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.reduce((sum,row)=>sum+row.totalMarks,0)).toBe(180);
     expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.filter(item=>item.sourceId==="CHEM-P2-2025-MJ").reduce((sum,row)=>sum+row.totalMarks,0)).toBe(100);
     expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.find(item=>item.id==="CHEM-P2-2014-MJ-Q1")?.totalMarks).toBe(25);
     const jan=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.find(item=>item.id==="CHEM-P2-2025-JAN-Q2");
@@ -211,7 +212,17 @@ describe("CSEC Chemistry course V1",()=>{
     expect(sourcePlot.figureSvg).toMatch(/^<svg/);
     expect(sourcePlot.figureSvg).not.toMatch(/<image\\b/i);
     expect(janQ1.svg).toBeUndefined();
+
     expect(janQ1.learnerFacing).toBe(false);
+    const janQ3=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.find(item=>item.id==="CHEM-P2-2025-JAN-Q3");
+    expect(janQ3?.totalMarks).toBe(15);
+    expect(janQ3?.pdfPages).toEqual([9,10,11]);
+    expect(janQ3?.parts.flatMap(part=>part.items).reduce((sum,item)=>sum+item.marks,0)).toBe(15);
+    expect(janQ3?.parts[2].svg).toMatch(/^<svg/);
+    Object.values(CHEMISTRY_JAN_2025_ESTER_VALENCE_AUDIT).forEach(row=>expect(row.valid).toBe(true));
+    const products=janQ3.parts[2].items.find(item=>item.label==="(iv)");
+    expect(products.modelAnswerSvgs).toHaveLength(2);
+    products.modelAnswerSvgs.forEach(svg=>expect(svg).not.toMatch(/<image\\b/i));
     CHEMISTRY_HISTORICAL_DRAFT_ITEMS.forEach(question=>{
       expect(question.learnerFacing).toBe(false);
       expect(question.status).toMatch(/needs-second-source-review/);
