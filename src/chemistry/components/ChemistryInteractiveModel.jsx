@@ -272,7 +272,6 @@ function GasLab(){
     H2O:["Water","anhydrous copper(II) sulfate","white solid turns blue"],
   }[gas];
   return <Panel title="Gas preparation and testing lab">
-    <label className="chem-select-label">Gas<select value={gas} onChange={e=>setGas(e.target.value)}>{Object.keys(data?{}:{} )}</select></label>
     <div className="chem-choice-row">{Object.keys({H2:1,O2:1,CO2:1,NH3:1,H2O:1}).map(k=><button key={k} className={gas===k?"active":""} onClick={()=>setGas(k)}>{k}</button>)}</div>
     <div className="chem-result-grid"><div><span>Gas</span><strong>{data[0]}</strong></div><div><span>Test</span><strong>{data[1]}</strong></div><div><span>Positive result</span><strong>{data[2]}</strong></div></div>
   </Panel>;
