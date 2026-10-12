@@ -161,6 +161,7 @@ const SPARK_SUBJECTS = getSparkSubjectRegistry({
   },
   physics: { ...PHYSICS_SECTION_A_STATS, ...PHYSICS_FULL_COURSE_STATS },
   informationTechnology: { sections: 8, topics: 26, objectives: 63, mcq: 540 },
+  chemistry: { sections: 3, topics: 21, objectives: 119, paper2HistoricalSources: 28, paper2Sets: 4 },
   socialStudies: { sections: 4, topics: 39, objectives: 84, mcq: 156 },
   englishA: { sections: 3, topics: 29, paper1Items: 60, sourcePapers: 24, flashcards: 145 },
 });
@@ -182,6 +183,7 @@ const VIEW_ROUTE_PATHS = Object.freeze({
   "practice-physics": "/practice/physics",
   "practice-information-technology": "/practice/information-technology",
   "practice-integrated-science": "/practice/integrated-science",
+  "practice-chemistry": "/practice/chemistry",
   "practice-social-studies": "/practice/social-studies",
   "practice-english-a": "/practice/english-a",
   // SPARK_PHYSICS_SECTION_A_RC1_ROUTES
@@ -213,6 +215,7 @@ const ROUTE_PATH_VIEWS = Object.freeze({
   "/practice/physics": PHYSICS_SECTION_A_ENABLED ? "practice-physics" : "practice",
   "/practice/information-technology": "practice-information-technology",
   "/practice/integrated-science": "practice-integrated-science",
+  "/practice/chemistry": "practice-chemistry",
   "/practice/social-studies": "practice-social-studies",
   "/practice/english-a": "practice-english-a",
   "/study/physics": PHYSICS_SECTION_A_ENABLED ? "physics" : "home",
@@ -278,6 +281,7 @@ function viewFromBrowserHash() {
 
   if (normalizedPath === "/practice/information-technology" || normalizedPath.startsWith("/practice/information-technology/")) return "practice-information-technology";
   if (normalizedPath === "/practice/integrated-science" || normalizedPath.startsWith("/practice/integrated-science/")) return "practice-integrated-science";
+  if (normalizedPath === "/practice/chemistry" || normalizedPath.startsWith("/practice/chemistry/")) return "practice-chemistry";
   if (normalizedPath === "/practice/social-studies" || normalizedPath.startsWith("/practice/social-studies/")) return "practice-social-studies";
   if (normalizedPath === "/practice/english-a" || normalizedPath.startsWith("/practice/english-a/")) return "practice-english-a";
   return ROUTE_PATH_VIEWS[normalizedPath] || "home";
@@ -1616,7 +1620,7 @@ function Nav({ setView, user, profile, onLogout, liveStats, hasTutorApp, tutorAp
     <>
       <NavBtn onClick={() => navigate("dashboard")} active={view === "dashboard"}>Dashboard</NavBtn>
       {!isTutor && !isParent && <NavBtn onClick={() => navigate("study")} active={view === "study" || view === "lesson" || view === "physics" || view === "information-technology" || view === "social-studies" || view === "generic-study"}>Study</NavBtn>}
-      {!isTutor && !isParent && <NavBtn onClick={() => navigate("practice")} active={view === "practice" || view === "practice-math" || view === "practice-physics" || view === "practice-information-technology" || view === "practice-integrated-science" || view === "practice-social-studies" || view === "practice-english-a"}>Practice</NavBtn>}
+      {!isTutor && !isParent && <NavBtn onClick={() => navigate("practice")} active={view === "practice" || view === "practice-math" || view === "practice-physics" || view === "practice-information-technology" || view === "practice-integrated-science" || view === "practice-chemistry" || view === "practice-social-studies" || view === "practice-english-a"}>Practice</NavBtn>}
       <NavBtn onClick={() => navigate("tutors")} active={view === "tutors"}>Tutors</NavBtn>
       {!isStudent && !isParent && !hasTutorApp && view !== "become-tutor" && (
         <NavBtn onClick={() => navigate("become-tutor")}>Become a tutor</NavBtn>
@@ -3568,6 +3572,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       physics:"practice-physics",
       "information-technology":"practice-information-technology",
       "integrated-science":"practice-integrated-science",
+      chemistry:"practice-chemistry",
       "social-studies":"practice-social-studies",
       "english-a":"practice-english-a",
     };
@@ -4473,6 +4478,7 @@ function DashboardView({ user, profile, setView, showToast, hasTutorApp, tutorAp
       physics:"practice-physics",
       "information-technology":"practice-information-technology",
       "integrated-science":"practice-integrated-science",
+      chemistry:"practice-chemistry",
       "social-studies":"practice-social-studies",
       "english-a":"practice-english-a",
     };
@@ -7589,6 +7595,7 @@ const handleLogout = async () => {
   const appHasPhysics = appStudentEnrolledSubjectIds.has("physics");
   const appHasInformationTechnology = appStudentEnrolledSubjectIds.has("information-technology");
   const appHasIntegratedScience = appStudentEnrolledSubjectIds.has("integrated-science");
+  const appHasChemistry = appStudentEnrolledSubjectIds.has("chemistry");
   const appHasSocialStudies = appStudentEnrolledSubjectIds.has("social-studies");
   const appHasEnglishA = appStudentEnrolledSubjectIds.has("english-a");
   const appGenericStudySubjectId = view === "generic-study"
@@ -7790,7 +7797,7 @@ if (loading || authenticatedRolePending) {
           CSEC Physics study is available from a student account.
         </div>
       )}
-      {(view === "practice" || view === "practice-math" || view === "practice-physics" || view === "practice-information-technology" || view === "practice-integrated-science" || view === "practice-social-studies" || view === "practice-english-a") && session && profile?.role === "student" && (
+      {(view === "practice" || view === "practice-math" || view === "practice-physics" || view === "practice-information-technology" || view === "practice-integrated-science" || view === "practice-chemistry" || view === "practice-social-studies" || view === "practice-english-a") && session && profile?.role === "student" && (
         appSubjectAccessPending
           ? <SparkLoader variant="section" label="Loading your practice subjects" />
           : (view === "practice-math" && !appHasMathematics)
@@ -7801,6 +7808,8 @@ if (loading || authenticatedRolePending) {
                 ? <SubjectEnrollmentRequiredView subjectName="Information Technology" onManageSubjects={openMySubjects} onBack={() => setView("practice")}/>
               : (view === "practice-integrated-science" && !appHasIntegratedScience)
                 ? <SubjectEnrollmentRequiredView subjectName="Integrated Science" onManageSubjects={openMySubjects} onBack={() => setView("practice")}/>
+              : (view === "practice-chemistry" && !appHasChemistry)
+                ? <SubjectEnrollmentRequiredView subjectName="Chemistry" onManageSubjects={openMySubjects} onBack={() => setView("practice")}/>
               : (view === "practice-social-studies" && !appHasSocialStudies)
                 ? <SubjectEnrollmentRequiredView subjectName="Social Studies" onManageSubjects={openMySubjects} onBack={() => setView("practice")}/>
               : (view === "practice-english-a" && !appHasEnglishA)
@@ -7816,7 +7825,7 @@ if (loading || authenticatedRolePending) {
                       physicsEnabled={PHYSICS_SECTION_A_ENABLED}
                       enrolledSubjectIds={appSubjectEnrollmentIds}
                       subjects={runtimeSparkSubjects}
-                      initialSubject={view === "practice-math" ? "mathematics" : view === "practice-physics" ? "physics" : view === "practice-information-technology" ? "information-technology" : view === "practice-integrated-science" ? "integrated-science" : view === "practice-social-studies" ? "social-studies" : view === "practice-english-a" ? "english-a" : null}
+                      initialSubject={view === "practice-math" ? "mathematics" : view === "practice-physics" ? "physics" : view === "practice-information-technology" ? "information-technology" : view === "practice-integrated-science" ? "integrated-science" : view === "practice-chemistry" ? "chemistry" : view === "practice-social-studies" ? "social-studies" : view === "practice-english-a" ? "english-a" : null}
                       onSubjectActivity={event => {
                         recordSparkSubjectActivity({ supabase, event }).then(result => {
                           if (result?.error && !["PGRST202", "42P01", "42883"].includes(result.error.code)) {
