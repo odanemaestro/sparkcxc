@@ -103,10 +103,14 @@ describe("CSEC Chemistry course V1",()=>{
       ]);
       expect(paper.questions.reduce((sum,q)=>sum+q.totalMarks,0)).toBe(100);
       paper.questions.forEach(question=>{
+        const markedItems=question.parts.flatMap(part=>part.items||[]);
+        const markedTotal=markedItems.reduce((sum,item)=>sum+Number(item.marks||0),0);
+        expect(markedTotal).toBe(question.totalMarks);
         question.parts.forEach(part=>part.items.forEach(item=>{
           expect(item.marks).toBeGreaterThan(0);
           expect(item.objective).toBeTruthy();
           expect(item.markScheme?.points?.length).toBeGreaterThan(0);
+          expect(item.markScheme?.points?.every(point=>Boolean(String(point).trim()))).toBe(true);
           expect(item.explanation).toBeTruthy();
         }));
       });
