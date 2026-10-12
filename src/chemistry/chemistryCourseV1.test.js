@@ -245,7 +245,10 @@ describe("CSEC Chemistry course V1",()=>{
     });
     const result=gradeChemistryPaper2Item(question,0,2,item,responses);
     expect(result.maxMarks).toBe(3);
-    expect(result.score).toBeCloseTo(1.5,5);
+    expect(result.score).toBe(1);
+    expect(result.criteria).toHaveLength(3);
+    expect(result.criteria[0].marks).toBe(1);
+    expect(result.criteria[1].marks).toBe(0);
     expect(result.provisional).toBe(false);
   });
 
