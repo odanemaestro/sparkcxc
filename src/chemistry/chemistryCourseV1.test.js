@@ -15,7 +15,7 @@ import {
   CHEMISTRY_SVGS,
 } from "./data/chemistryPaper2Bank";
 import { CHEMISTRY_PAPER2_SOURCE_AUDIT, CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY } from "./data/chemistryPaper2SourceAudit";
-import { gradeChemistryPaper2, gradeChemistryPaper2Item } from "./practice/chemistryPaper2Grader";
+import { gradeChemistryPaper2, gradeChemistryPaper2Item, normalizeChemistryResponse } from "./practice/chemistryPaper2Grader";
 import {CHEMISTRY_HISTORICAL_DRAFT_ITEMS,CHEMISTRY_HISTORICAL_DRAFT_SUMMARY} from "./data/chemistryHistoricalPaper2Drafts";
 import {CHEMISTRY_2025_MJ_Q1_GRAPH_SVG} from "./data/chemistryHistoricalGraphSvg";
 import { getSparkSubjectRegistry } from "../subjects/subjectRegistry";
@@ -133,6 +133,13 @@ describe("CSEC Chemistry course V1",()=>{
     expect(result.score).toBeLessThanOrEqual(100);
     expect(result.questions).toHaveLength(6);
     expect(result.provisional).toBe(true);
+  });
+
+  test("normalizes printed and typed chemical formulae without losing charge signs",()=>{
+    expect(normalizeChemistryResponse("Cu²⁺")).toBe(normalizeChemistryResponse("Cu2+"));
+    expect(normalizeChemistryResponse("SO₄²⁻")).toBe(normalizeChemistryResponse("SO42-"));
+    expect(normalizeChemistryResponse("MgCl₂")).toBe(normalizeChemistryResponse("MgCl2"));
+    expect(normalizeChemistryResponse("H₂O")).toBe(normalizeChemistryResponse("H2O"));
   });
 
   test("historical draft records stay quarantined until independent source QA",()=>{
