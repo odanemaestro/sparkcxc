@@ -10,6 +10,7 @@ import InteractiveLabelDiagram from "./components/InteractiveLabelDiagram";
 import TransportProcessExplorer from "./components/TransportProcessExplorer";
 import EnglishALessonExamples from "../englishA/components/EnglishALessonExamples";
 import IntegratedScienceText from "../integratedScience/components/IntegratedScienceText";
+import ChemistryInteractiveLab from "../chemistry/components/ChemistryInteractiveLab";
 import {
   readSparkHashRoute,
   subscribeSparkRoute,
@@ -186,6 +187,17 @@ export function GenericLessonContent({
       {models.map(model => (
         subjectId === "integrated-science"
           ? <div className="spark-integrated-science-model" key={model.id || model.type}><IntegratedScienceModel model={model} /></div>
+          : subjectId === "chemistry"
+          ? <ChemistryInteractiveLab
+              key={model.id || model.type}
+              model={model}
+              onComplete={result => onActivityComplete?.({
+                ...result,
+                activityKey:`lab:${model.id}`,
+                topicId:topic.id,
+                sectionId:topic.sectionId,
+              })}
+            />
           : model?.type === "membrane-transport"
           ? <TransportProcessExplorer key={model.id || "membrane-transport"} />
           : null
