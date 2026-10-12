@@ -2,7 +2,7 @@ import { readScienceGraph, graphPoints } from "../../integratedScience/practice/
 // Chemistry Paper 02 deterministic practice grader.
 // Authored mark schemes remain the source of truth. Free-response scores are estimates.
 
-export const CHEMISTRY_P2_GRADER_VERSION="1.0.0";
+export const CHEMISTRY_P2_GRADER_VERSION="1.1.0";
 
 const STOP=new Set("a an and are as at be because been by for from has have in into is it of on or that the their then this to was were when which with".split(" "));
 const SYN={
@@ -18,11 +18,14 @@ const SYN={
 
 function clean(value){
   return String(value??"").toLowerCase()
-    .replace(/[–—−]/g,"-").replace(/[×∗]/g,"*").replace(/÷/g,"/")
-    .replace(/²/g,"2").replace(/³/g,"3")
+    .replace(/[–—−⁻₋]/g,"-").replace(/[×∗]/g,"*").replace(/÷/g,"/")
+    .replace(/[₀-₉]/g,ch=>String("₀₁₂₃₄₅₆₇₈₉".indexOf(ch)))
+    .replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]/g,ch=>String("⁰¹²³⁴⁵⁶⁷⁸⁹".indexOf(ch)))
+    .replace(/⁺/g,"+")
     .replace(/[^a-z0-9.+/%°=^*()\-]+/g," ")
     .replace(/\s+/g," ").trim();
 }
+export const normalizeChemistryResponse=clean;
 const stem=t=>t.replace(/(ing|ed|es|s)$/,"");
 function tokens(value){return clean(value).split(" ").filter(t=>t&&t.length>1&&!STOP.has(t));}
 function tokenPresent(text,token){
