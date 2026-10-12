@@ -24,6 +24,8 @@ import {CHEMISTRY_HISTORICAL_REVIEW_SUMMARY,CHEMISTRY_HISTORICAL_REVIEW_CHECKS,a
 import {CHEMISTRY_JAN_2025_ESTER_VALENCE_AUDIT} from "./data/chemistryHistoricalJanuary2025EsterSvgs";
 import {CHEMISTRY_2025_JAN_Q5_ALKENE_AUDIT} from "./data/chemistryHistoricalJanuary2025PolymersSvg";
 import {CHEMISTRY_2014_Q3_VALENCE_AUDIT} from "./data/chemistryHistorical2014OrganicSvgs";
+import {CHEMISTRY_2015_MJ_ORGANIC_AUDIT} from "./data/chemistryHistorical2015ModelsSvgs";
+import {CHEMISTRY_2015_MJ_Q1_DATA} from "./data/chemistryHistorical2015Q1";
 import {CHEMISTRY_HISTORICAL_COVERAGE} from "./data/chemistryHistoricalCoverage";
 import { getSparkSubjectRegistry } from "../subjects/subjectRegistry";
 import { exactTargetForAction } from "../learning/nextBestActionV2";
@@ -232,6 +234,16 @@ describe("CSEC Chemistry course V1",()=>{
     expect(sourceCalorimetry.svg).toMatch(/^<svg/);
     expect(sourceCalorimetry.svg).not.toMatch(/<image\\b/i);
     expect(yr15[4].parts[0].context).toMatch(/Figure 3/);
+    expect(yr15[4].parts[0].svg).toMatch(/^<svg/);
+    expect(yr15[2].parts[0].items[0].modelAnswerSvgs).toHaveLength(2);
+    expect(yr15[1].parts[1].items[0].modelAnswerSvgs).toHaveLength(1);
+    expect(yr15[1].parts[1].items[1].modelAnswerSvgs).toHaveLength(1);
+    expect(yr15[4].parts[1].items[1].modelAnswerSvgs).toHaveLength(1);
+    Object.values(CHEMISTRY_2015_MJ_ORGANIC_AUDIT).forEach(shape=>expect(shape.valid).toBe(true));
+    expect(CHEMISTRY_2015_MJ_Q1_DATA.waterMass).toBe(201);
+    expect(CHEMISTRY_2015_MJ_Q1_DATA.deltaTemperature).toBe(12);
+    expect(CHEMISTRY_2015_MJ_Q1_DATA.heatTotal).toBeCloseTo(11421.9,6);
+    expect(CHEMISTRY_2015_MJ_Q1_DATA.energyPerGram).toBeCloseTo(7614.6,6);
     const jan=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.find(item=>item.id==="CHEM-P2-2025-JAN-Q2");
     expect(jan?.totalMarks).toBe(15);
     expect(jan?.parts[2].items[0].response.table.answers).toEqual(["27","21","12"]);
