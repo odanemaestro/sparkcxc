@@ -72,16 +72,29 @@ export const CHEMISTRY_2021_JAN_TITRATION_AUDIT=Object.freeze({
  calculatedNaOHGdm3:2*.10*((45.3833333333-24.87)/(.564+.65))/25*40,
  independentTemperatureReadingsRequired:true
 });
-const dots=(points)=>points.map(([x,y])=>'<circle cx="'+x+'" cy="'+y+'" r="7" fill="#fff" stroke="#111" stroke-width="1.8"/>').join('');
-function graphiteLayer(y){const nodes=[];const lines=[];for(let row=0;row<2;row++)for(let col=0;col<6;col++){
- const x=140+col*72+(row?36:0),yy=y+row*54;
- nodes.push([x,yy]);if(col<5)lines.push(l(x,yy,x+72,yy,2.5));if(col<5 && row===0)lines.push(l(x,yy,x+108,yy+54,2.5));
-}return lines.join('')+dots(nodes);}
+// Actual hexagonal lattice connectivity: each carbon is a vertex of a
+// honeycomb ring and has three in-plane covalent neighbours in the extended
+// interior network. Sheet separation is shown with dotted weak attractions.
+function graphiteLayer(y){
+ const r=25,dx=Math.sqrt(3)*r,points=[];
+ for(let row=0;row<2;row++)for(let col=0;col<7;col++){
+  const cx=186+col*dx+row*dx/2,cy=y+row*1.5*r;
+  const verts=Array.from({length:6},(_,i)=>{
+   const a=-Math.PI/2+i*Math.PI/3;
+   return [(cx+Math.cos(a)*r).toFixed(1),(cy+Math.sin(a)*r).toFixed(1)];
+  });
+  points.push('<polygon points="'+verts.map(v=>v.join(',')).join(' ')+
+   '" stroke="#111" stroke-width="2.5" fill="none"/>');
+ }
+ return points.join('');
+}
 export const CHEMISTRY_2021_JAN_GRAPHITE_SVG=wrap(760,405,
- 'Graphite covalently connected carbon atom sheets with weak dotted interlayer attractions',
- graphiteLayer(92)+graphiteLayer(245)+
- Array.from({length:7},(_,i)=>l(155+i*65,170,155+i*65,231,1.8,'#777').replace('<line','<line stroke-dasharray="3 7"')).join('')+
- t(382,38,'Strong covalent bonds within sheets',18)+t(385,383,'Dotted lines: weak attractions between sheets',17));
+ 'Graphite: stacked hexagonal carbon honeycomb networks with dotted weak interlayer attractions',
+ graphiteLayer(97)+graphiteLayer(252)+
+ Array.from({length:7},(_,i)=>l(200+i*44,174,200+i*44,214,1.8,'#777')
+  .replace('<line','<line stroke-dasharray="3 7"')).join('')+
+ t(382,37,'Solid: strong hexagonal covalent bonds within carbon sheets',16)+
+ t(385,385,'Dotted: weak attractions between adjacent layers',17));
 export const CHEMISTRY_2021_JAN_SILICON29_SVG=wrap(670,495,
  'Source atom notation 29 over 14 has 14 protons 15 neutrons 14 electrons in shells 2 8 4',
  '<circle cx="331" cy="236" r="48" stroke="#111" stroke-width="2" fill="none"/>'+
@@ -100,4 +113,4 @@ export const CHEMISTRY_2021_JAN_ALKENE_REACTION_SVG=wrap(1020,560,
  '<path d="M500 211V92l-8 13m8 -13l8 13"/><path d="M644 254H681l-10 -8m10 8l-10 8"/>'+
  '<path d="M365 255H316l10 -8m-10 8l10 8"/><path d="M501 292V434l-8 -13m8 13l8 -13"/>'+
  '</g>'+t(538,145,'1',20)+t(665,231,'2',20)+t(337,229,'4',20)+t(528,363,'3',20)+
- t(502,545,'R=ethyl → A is but-1-ene (C₄H₈)',18));
+ t(502,545,'R is a variable group in the printed source scheme',18));
