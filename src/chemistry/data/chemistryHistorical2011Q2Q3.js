@@ -48,7 +48,7 @@ export const CHEMISTRY_2011_MJ_Q2_DRAFT=Object.freeze({
     ["Simple molecular.","Fragrance molecules are relatively volatile and can escape into the air.","Weak intermolecular attractions are overcome at room temperature, allowing aroma to diffuse; giant ionic/covalent lattices would not volatilise as readily."],
     "The fragrance can evaporate or sublime gradually, giving odour. The source classification is a simplified model for typical fragrance chemicals.")
   ]}
-]);
+]});
 export const CHEMISTRY_2011_MJ_Q3_DRAFT=Object.freeze({
  ...base(3),pdfPages:[11,12],printedPages:[11,12],
  title:"Anaerobic fermentation, soap hydrolysis, addition and condensation polymers",
