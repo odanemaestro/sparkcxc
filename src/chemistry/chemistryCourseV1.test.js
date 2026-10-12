@@ -19,6 +19,7 @@ import { gradeChemistryPaper2, gradeChemistryPaper2Item, normalizeChemistryRespo
 import {CHEMISTRY_HISTORICAL_DRAFT_ITEMS,CHEMISTRY_HISTORICAL_DRAFT_SUMMARY} from "./data/chemistryHistoricalPaper2Drafts";
 import {CHEMISTRY_2025_MJ_Q1_GRAPH_SVG} from "./data/chemistryHistoricalGraphSvg";
 import {CHEMISTRY_2025_ORGANIC_DIAGRAM_AUDIT,CHEMISTRY_2025_OXYGEN_PREPARATION_SVG} from "./data/chemistryHistorical2025ModelSvgs";
+import {CHEMISTRY_SUPPLEMENTARY_CONTENT_AUDIT} from "./data/chemistrySupplementalLessons";
 import { getSparkSubjectRegistry } from "../subjects/subjectRegistry";
 import { exactTargetForAction } from "../learning/nextBestActionV2";
 
@@ -57,6 +58,21 @@ describe("CSEC Chemistry course V1",()=>{
     expect(structure.sectionCount).toBe(3);
     expect(structure.topicCount).toBe(21);
     expect(structure.unassignedTopics).toEqual([]);
+  });
+
+  test("reconciles the complementary 21-topic course without replacing syllabus objectives",()=>{
+    expect(CHEMISTRY_SUPPLEMENTARY_CONTENT_AUDIT.sourceTopicCount).toBe(21);
+    expect(new Set(CHEMISTRY_SUPPLEMENTARY_CONTENT_AUDIT.sourceCodes).size).toBe(21);
+    expect(CHEMISTRY_TOPICS).toHaveLength(21);
+    CHEMISTRY_TOPICS.forEach(topic=>{
+      const lesson=topic.metadata.lesson;
+      expect(lesson.supplement?.origin).toMatch(/PR 49/);
+      expect(lesson.supplement?.syllabusCode).toMatch(/^[ABC]\\d+$/);
+      expect(lesson.sections).toHaveLength(expect.any(Number));
+      expect(lesson.sections.length).toBeGreaterThanOrEqual(3);
+      expect(lesson.objectiveGuide).toHaveLength(topic.metadata.syllabus.objectives.length);
+      expect(new Set(lesson.sections.map(row=>row.title.toLowerCase())).size).toBe(lesson.sections.length);
+    });
   });
 
   test("ships interactive Chemistry practicals as first-class learning activities",()=>{
