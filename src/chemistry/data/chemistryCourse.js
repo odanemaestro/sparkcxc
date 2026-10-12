@@ -1,3 +1,4 @@
+import {mergeChemistryTopicContent} from "./chemistrySupplementalLessons";
 import { chemistryObjectiveGuideFor } from "./chemistryObjectiveGuide";
 // SPARK CSEC Chemistry course data
 // Source: CXC 21/G/SYLL 13, labelled effective for examinations from May–June 2015.
@@ -166,7 +167,7 @@ export const CHEMISTRY_OBJECTIVE_TEXT = Object.freeze({
 
 const A = "section-a-principles", B = "section-b-organic", C = "section-c-inorganic";
 
-export const CHEMISTRY_TOPICS = [
+const CHEMISTRY_BASE_TOPICS = [
   topic({
     id:"a1-states-of-matter",sectionId:A,title:"A1. States of Matter",sortOrder:101,
     description:"Use particle ideas to explain solids, liquids, gases and changes of state.",
@@ -471,6 +472,10 @@ export const CHEMISTRY_TOPICS = [
     interactiveModels:[{id:"chem-qualitative-lab",type:"chemistry-qualitative-analysis",title:"Qualitative analysis lab"}]
   }),
 ];
+
+// Topic IDs, syllabus objective codes and labs remain those of PR #48.
+// PR #49 contributes additional unique lesson sections and explanations.
+export const CHEMISTRY_TOPICS = CHEMISTRY_BASE_TOPICS.map(mergeChemistryTopicContent);
 
 export const CHEMISTRY_ACTIVITIES = CHEMISTRY_TOPICS.flatMap(topicRow => {
   const models = topicRow.metadata?.lesson?.interactiveModels || [];
