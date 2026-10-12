@@ -6,7 +6,7 @@ const item=(label,prompt,marks,points,explanation,response={type:"lines",lines:M
 });
 const base=(n,pages,title,objectives,parts,sourceIssues=[])=>Object.freeze({
  id:"CHEM-P2-2020-JAN-Q"+n,sourceId:"CHEM-P2-2020-JAN",
- sourceFile:"CSEC_Chemistry_P2_2020_JAN.pdf",pdfPages:pages,printedPages:pages,
+ sourceFile:"CSEC_Chemistry_P2_2020_JAN.pdf",pdfPages:pages,printedPages:pages.map(page=>page+2),
  originalQuestionNumber:n,kind:"structured",totalMarks:15,title,objectives,parts,sourceIssues,
  learnerFacing:false,status:"draft-needs-second-source-review",
  answerSchemeSource:"SPARK-authored; official CXC scheme not supplied",
