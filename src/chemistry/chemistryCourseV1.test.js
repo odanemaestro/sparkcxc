@@ -67,7 +67,7 @@ describe("CSEC Chemistry course V1",()=>{
     CHEMISTRY_TOPICS.forEach(topic=>{
       const lesson=topic.metadata.lesson;
       expect(lesson.supplement?.origin).toMatch(/PR 49/);
-      expect(lesson.supplement?.syllabusCode).toMatch(/^[ABC]\\d+$/);
+      expect(lesson.supplement?.syllabusCode).toMatch(/^[ABC]\d+$/);
       expect(Array.isArray(lesson.sections)).toBe(true);
       expect(lesson.sections.length).toBeGreaterThanOrEqual(3);
       expect(lesson.objectiveGuide).toHaveLength(topic.metadata.syllabus.objectives.length);
