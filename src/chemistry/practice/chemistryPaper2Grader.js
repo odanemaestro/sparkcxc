@@ -130,7 +130,7 @@ export function chemistryGraphAxisLabelMatches(actual,expected){
   const target=String(expected||"").trim().toLowerCase();
   if(!entry)return false;
   if(!target)return true;
-  const terms=["concentration","temperature","solubility","pressure","volume","energy","current","length","mass","time","rate"];
+  const terms=["concentration","temperature","solubility","pressure","volume","energy","current","length","mass","rate","time"];
   const topic=terms.find(term=>new RegExp(`\\b${term}\\b`).test(target));
   if(topic&&!new RegExp(`\\b${topic}\\b`).test(entry))return false;
   const units=[
