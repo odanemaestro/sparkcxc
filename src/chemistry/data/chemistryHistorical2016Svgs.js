@@ -39,22 +39,26 @@ export const CHEMISTRY_2016_MJ_Q1_THERMOMETERS_SVG=svg(865,585,
  temps.slice(0,4).map(([t,v],i)=>thermometer(i,t,v)).join("")+
  '<g transform="translate(170 267)">'+thermometer(0,8,55)+thermometer(1,9,50)+'</g>'+
  txt(433,564,"Figure 2. Thermometer readings (source approximation)",20));
-const gl=102,gr=825,gt=35,gb=500;
-const gx=t=>gl+(t/10)*(gr-gl),gy=v=>gb-(v-40)/45*(gb-gt);
+// The ORIGINAL printed grid puts TEMPERATURE on the horizontal axis
+// (40–80 °C) and TIME running downward on the vertical axis (0–10 min).
+// Do NOT silently replace this unusual orientation with a conventional chart.
+const gl=105,gr=834,gt=76,gb=530;
+const gx=temperature=>gl+((temperature-40)/40)*(gr-gl);
+const gy=time=>gt+(time/10)*(gb-gt);
 const grids=[
- ...Array.from({length:51},(_,i)=>L(gx(i/5),gt,gx(i/5),gb,"#bbb",i%5===0?.9:.35)),
- ...Array.from({length:91},(_,i)=>L(gl,gy(40+i*.5),gr,gy(40+i*.5),"#bbb",i%10===0?.9:.35))
+ ...Array.from({length:81},(_,i)=>L(gx(40+i*.5),gt,gx(40+i*.5),gb,"#bbb",i%10===0?.9:.35)),
+ ...Array.from({length:51},(_,i)=>L(gl,gy(i/5),gr,gy(i/5),"#bbb",i%5===0?.9:.35))
 ];
 const plot=CHEMISTRY_2016_MJ_Q1_TEMPERATURE_TABLE;
 const pre=[0,3,4,6,10];
-export const CHEMISTRY_2016_MJ_Q1_COOLING_GRAPH_SVG=svg(900,630,
- "Figure 3. Blank grid with five preplotted cooling curve reference points",
+export const CHEMISTRY_2016_MJ_Q1_COOLING_GRAPH_SVG=svg(920,660,
+ "Figure 3. Source cooling grid: temperature horizontal and time vertical",
  grids.join("")+
- pre.map(i=>'<circle cx="'+gx(i)+'" cy="'+gy(plot[i])+'" r="5" fill="white" stroke="#111" stroke-width="2"/>').join("")+
- Array.from({length:11},(_,i)=>txt(gx(i),525,String(i),16)).join("")+
- [40,50,60,70,80].map(i=>txt(79,gy(i)+4,String(i),16)).join("")+
- txt(451,563,"Time (min)",19)+txt(450,610,"Figure 3. Cooling curve of unknown solid A",17)+
- '<text x="27" y="295" transform="rotate(-90 27 295)" font-size="18" text-anchor="middle" font-family="Times New Roman,serif">Temperature (°C)</text>');
+ pre.map(i=>'<circle cx="'+gx(plot[i])+'" cy="'+gy(i)+'" r="5" fill="white" stroke="#111" stroke-width="2"/>').join("")+
+ [40,45,50,55,60,65,70,75,80].map(v=>txt(gx(v),58,String(v),16)).join("")+
+ Array.from({length:11},(_,i)=>txt(87,gy(i)+5,String(i),16)).join("")+
+ txt(470,28,"Temperature (°C)",20)+txt(468,640,"Figure 3. Cooling curve of unknown solid A",17)+
+ '<text x="30" y="310" transform="rotate(-90 30 310)" font-size="18" text-anchor="middle" font-family="Times New Roman,serif">Time (min), increasing downward</text>');
 const rect=(x,y,w,h)=>'<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="none" stroke="#111" stroke-width="2"/>';
 export const CHEMISTRY_2016_MJ_Q1_PARTICLES_SOURCE_SVG=svg(705,310,
  "Figure 4 two blank source answer boxes for particle arrangements at zero and ten minutes",
