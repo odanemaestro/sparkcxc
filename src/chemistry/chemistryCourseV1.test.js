@@ -31,6 +31,7 @@ import {CHEMISTRY_2012_Q3_VALENCE_AUDIT} from "./data/chemistryHistorical2012Org
 import {CHEMISTRY_2011_Q2_SOLUBILITY_SVG} from "./data/chemistryHistorical2011Svgs";
 import {CHEMISTRY_2010_MJ_STRUCTURAL_AUDIT,CHEMISTRY_2010_MJ_SODIUM_OXIDE_DOT_CROSS_SVG} from "./data/chemistryHistorical2010OrganicModels";
 import {CHEMISTRY_2016_MJ_Q1_TEMPERATURE_TABLE,CHEMISTRY_2016_MJ_Q1_THERMOMETER_READINGS} from "./data/chemistryHistorical2016Svgs";
+import {CHEMISTRY_2016_MJ_ORGANIC_AUDIT} from "./data/chemistryHistorical2016OrganicModels";
 import {CHEMISTRY_HISTORICAL_COVERAGE} from "./data/chemistryHistoricalCoverage";
 import { getSparkSubjectRegistry } from "../subjects/subjectRegistry";
 import { exactTargetForAction } from "../learning/nextBestActionV2";
@@ -355,6 +356,15 @@ describe("CSEC Chemistry course V1",()=>{
     expect(rows[2].parts[3].svg).toMatch(/^<svg/);
     expect(rows[3].parts[0].items[0].modelAnswerSvgs).toHaveLength(1);
     expect(rows[5].parts[1].items[0].markScheme.points[0]).toMatch(/Magnalium/);
+    Object.values(CHEMISTRY_2016_MJ_ORGANIC_AUDIT).forEach(row=>expect(row.valid).toBe(true));
+    expect(CHEMISTRY_2016_MJ_ORGANIC_AUDIT.pent1ene.formula).toBe("C5H10");
+    expect(CHEMISTRY_2016_MJ_ORGANIC_AUDIT.methylbutane.formula).toBe("C5H12");
+    expect(CHEMISTRY_2016_MJ_ORGANIC_AUDIT.pentan2ol.formula).toBe("C5H12O");
+    expect(CHEMISTRY_2016_MJ_ORGANIC_AUDIT.butanoicAcid.formula).toBe("C4H8O2");
+    expect(rows[2].parts[1].items[3].modelAnswerSvgs).toHaveLength(2);
+    expect(rows[2].parts[2].items[0].modelAnswerSvgs).toHaveLength(1);
+    expect(rows[2].parts[3].modelAnswerSvgs).toHaveLength(1);
+    expect(rows[4].parts[2].items[0].modelAnswerSvgs).toHaveLength(2);
   });
 
   test("2010 Chemistry historical source and six original question mark totals",()=>{
