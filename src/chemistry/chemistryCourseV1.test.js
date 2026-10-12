@@ -182,6 +182,31 @@ describe("CSEC Chemistry course V1",()=>{
     expect(result.provisional).toBe(false);
   });
 
+  test("six keyed observations worth three marks are not over-awarded",()=>{
+    const paper=CHEMISTRY_PAPER2_PRACTICE_SETS[0];
+    const question=paper.questions[0];
+    const item=question.parts[0].items.find(row=>row.response?.type==="table");
+    expect(item.response.table.answers).toHaveLength(6);
+    const responses={};
+    item.response.table.answers.slice(0,3).forEach((answer,i)=>{
+      responses[`${question.id}:0:2:r${i}c2`]=answer;
+    });
+    const result=gradeChemistryPaper2Item(question,0,2,item,responses);
+    expect(result.maxMarks).toBe(3);
+    expect(result.score).toBeCloseTo(1.5,5);
+    expect(result.provisional).toBe(false);
+  });
+
+  test("a rate rounded to three decimal places does not accept a visibly different value",()=>{
+    const paper=CHEMISTRY_PAPER2_PRACTICE_SETS[0];
+    const question=paper.questions[0];
+    const item=question.parts[0].items[2];
+    const result=gradeChemistryPaper2Item(question,0,2,item,{
+      [`${question.id}:0:2:r0c2`]:"0.016"
+    });
+    expect(result.score).toBe(0);
+  });
+
   test("Chemistry is live in the subject registry and routes through generic study plus dedicated Paper 02 practice",()=>{
     const subjects=getSparkSubjectRegistry({chemistry:{sections:3,topics:21,objectives:119,paper2HistoricalPapers:28,paper2PracticeSets:6}});
     const chemistry=subjects.find(row=>row.id==="chemistry");
