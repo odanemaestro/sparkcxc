@@ -14,6 +14,7 @@ import {
   CHEMISTRY_PAPER2_FORMAT,
   CHEMISTRY_SVGS,
 } from "./data/chemistryPaper2Bank";
+import { CHEMISTRY_PAPER2_SOURCE_AUDIT, CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY } from "./data/chemistryPaper2SourceAudit";
 import { gradeChemistryPaper2 } from "./practice/chemistryPaper2Grader";
 import { getSparkSubjectRegistry } from "../subjects/subjectRegistry";
 import { exactTargetForAction } from "../learning/nextBestActionV2";
@@ -71,8 +72,12 @@ describe("CSEC Chemistry course V1",()=>{
     ]));
   });
 
-  test("indexes all supplied Paper 02 source papers",()=>{
+  test("accounts for every supplied Paper 02 scan and every source page",()=>{
     expect(CHEMISTRY_HISTORICAL_PAPERS).toHaveLength(28);
+    expect(CHEMISTRY_PAPER2_SOURCE_AUDIT).toHaveLength(28);
+    expect(CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY.suppliedPages).toBe(568);
+    expect(CHEMISTRY_PAPER2_SOURCE_AUDIT.every(row=>row.rawOcrStatus==="complete")).toBe(true);
+    expect(CHEMISTRY_PAPER2_SOURCE_AUDIT.every(row=>row.learnerFacing===false)).toBe(true);
     expect(CHEMISTRY_HISTORICAL_PAPERS[0]).toMatchObject({year:2005,session:"May/June"});
     expect(CHEMISTRY_HISTORICAL_PAPERS.at(-1)).toMatchObject({year:2025,session:"May/June"});
     expect(new Set(CHEMISTRY_HISTORICAL_PAPERS.map(row=>row.id)).size).toBe(28);
