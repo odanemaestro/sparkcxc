@@ -144,7 +144,7 @@ describe("CSEC Chemistry course V1",()=>{
 
   test("historical draft records stay quarantined until independent source QA",()=>{
     expect(CHEMISTRY_HISTORICAL_DRAFT_SUMMARY.fullyVerifiedHistoricalQuestions).toBe(0);
-    expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS).toHaveLength(1);
+    expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS).toHaveLength(2);
     const row=CHEMISTRY_HISTORICAL_DRAFT_ITEMS[0];
     expect(row.sourceId).toBe("CHEM-P2-2025-MJ");
     expect(row.pdfPages).toEqual([2,3,4,5,6]);
@@ -158,6 +158,11 @@ describe("CSEC Chemistry course V1",()=>{
     });
     const experimental=all.find(item=>item.label==="(iii)");
     expect(experimental.response.table.answers).toEqual(["11.85","0.07","11.89","0.11"]);
+    const second=CHEMISTRY_HISTORICAL_DRAFT_ITEMS[1];
+    expect(second.sourceId).toBe("CHEM-P2-2025-MJ");
+    expect(second.pdfPages).toEqual([7,8]);
+    expect(second.learnerFacing).toBe(false);
+    expect(second.parts.flatMap(part=>part.items).reduce((sum,item)=>sum+item.marks,0)).toBe(15);
     expect(CHEMISTRY_2025_MJ_Q1_GRAPH_SVG).toMatch(/^<svg/);
     expect(CHEMISTRY_2025_MJ_Q1_GRAPH_SVG).not.toMatch(/<image\\b/i);
   });
