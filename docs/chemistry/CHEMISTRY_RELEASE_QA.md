@@ -8,7 +8,7 @@ This document is a release gate, not a completion certificate. Keep `main` uncha
 - Syllabus: user-supplied `CSEC-Chemistry-Syllabus (1).pdf`, CXC 21/G/SYLL 13, labelled effective for examinations from May–June 2015.
 - Source paper inventory and page counts: `src/chemistry/data/chemistryPaper2SourceAudit.js`.
 - Historical source-index status: 28/28 inventoried. The OCR/search index is not authoritative for chemistry symbols or graphical measurements.
-- Draft learner transcriptions: 2 questions, both from 2025 May/June, printed pages 5–11, 40 marks.
+- Draft learner transcriptions: 6 questions, covering the entire 2025 May/June Paper 02 (100 marks), with printed pages 5–21. All remain quarantined for second-pass verification.
 - Historical questions cleared for students: **0**. The draft bank is deliberately kept separate from learner-facing simulations.
 - Original SPARK simulations: six 6-question, 100-mark practice sets. These are *original SPARK content* and must not be labelled historical CXC papers.
 
@@ -30,7 +30,7 @@ For **every question of every supplied paper**, record:
 
 - Historical drafts are explicitly `learnerFacing: false`. No source scan is shown as an independently verified question.
 - Original SPARK Paper 02 simulations retain 2 h 30 min, six compulsory questions and 100 marks.
-- Rate-of-reaction table now has six keyed answers. Three marks are distributed across six blanks rather than awarding three marks for any three cells.
+- Rate-of-reaction table now has six keyed answers. Three integer marks follow three explicit two-cell groups rather than awarding three marks for any three cells.
 - Tables without verified reference answers cannot award automatic marks.
 - Numerical table matching respects displayed precision. For example, `0.016` does not meet the `0.012` key.
 - Chemical formula Unicode subscript, superscript and ionic-charge variants are normalised.
@@ -40,9 +40,9 @@ For **every question of every supplied paper**, record:
 ## Still blocked for release
 
 - Source-by-source review for the remaining pages and historical questions in the 28 PDFs.
-- Second-pass review of the two drafted 2025 questions and pixel-level comparison of the draft Figure 1 SVG.
+- Second-pass review of all six drafted 2025 questions and pixel-level comparison of the draft Figure 1 SVG. The four model SVG chemical structures and one oxygen-preparation apparatus drawing also need visual checks.\n- Resolve examiner-interpretation/source-quality flags in the 2025 paper: Question 2 gives an implausible pH for 0.05 M phosphoric acid, Question 3 uses ambiguous wording about complete methane bromination, and Question 5 links a monohydric C4H10O compound to polyester formation.
 - Independent scientific review of all 119 mapped syllabus objectives, all numerical answers and the practical models.
-- Compare and reconcile complementary content in PR #49 with this branch, avoiding duplicate courses or conflicting migrations.
+- PR #49 supplementary study explanations are now reconciled into this branch for all 21 topics while retaining the 119-objective guide and original Chemistry labs. Scientifically review the expanded lessons, then retire the redundant PR #49 to avoid duplicate merges.
 - End-to-end checks for submissions, progress reports, parent/student notifications, saving, restored timers, navigation and permissions.
 - Full build, test, accessibility and mobile/tablet/desktop checks on the final commit.
 - Explicit user review and approval before a merge.
