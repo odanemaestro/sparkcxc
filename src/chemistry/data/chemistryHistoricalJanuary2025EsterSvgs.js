@@ -31,7 +31,7 @@ function formulaAndValence(shape){
  });
  const c=shape.atoms.filter(atom=>atom[0]==="C").length;
  const o=shape.atoms.filter(atom=>atom[0]==="O").length;
- const formula="C"+c+"H"+shape.hydrogens.length+"O"+o;
+ const formula="C"+c+"H"+shape.hydrogens.length+(o===0?"":o===1?"O":"O"+o);
  if(formula!==shape.formula)throw new Error("Incorrect formula "+formula);
  return {formula,valid:true,hydrogenCount:shape.hydrogens.length};
 }
