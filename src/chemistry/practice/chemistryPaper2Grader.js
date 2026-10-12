@@ -125,6 +125,23 @@ function tableResult(base,item,responses){
   };
 }
 
+export function chemistryGraphAxisLabelMatches(actual,expected){
+  const entry=String(actual||"").trim().toLowerCase();
+  const target=String(expected||"").trim().toLowerCase();
+  if(!entry)return false;
+  if(!target)return true;
+  const terms=["concentration","temperature","solubility","pressure","volume","energy","current","length","mass","time","rate"];
+  const topic=terms.find(term=>new RegExp(`\\b${term}\\b`).test(target));
+  if(topic&&!new RegExp(`\\b${topic}\\b`).test(entry))return false;
+  const units=[
+    {source:/°c|celsius/,provided:/°c|celsius|degrees?\\s*c/},
+    {source:/\\bminutes?\\b|\\bmin\\b/,provided:/\\bminutes?\\b|\\bmin\\b/},
+    {source:/s⁻¹|s\\^-?1|s-1/,provided:/s⁻¹|s\\^-?1|s-1|per second/},
+    {source:/\\bg\\b|\\bgrams?\\b/,provided:/\\bg\\b|\\bgrams?\\b/}
+  ];
+  return units.every(unit=>!unit.source.test(target)||unit.provided.test(entry));
+}
+
 function graphResult(base,item,responses){
   const expected=Array.isArray(item.response?.points)?item.response.points:[];
   const graph=readScienceGraph(responses[`${base}:graph`]) || null;
@@ -134,7 +151,8 @@ function graphResult(base,item,responses){
 
   const xLabel=String(responses[`${base}:xLabel`] || "").trim();
   const yLabel=String(responses[`${base}:yLabel`] || "").trim();
-  const labelsOk=Boolean(xLabel && yLabel);
+  const labelsOk=chemistryGraphAxisLabelMatches(xLabel,item.response?.x) &&
+    chemistryGraphAxisLabelMatches(yLabel,item.response?.y);
 
   const xValues=expected.map(point=>Number(point.x)).filter(Number.isFinite);
   const yValues=expected.map(point=>Number(point.y)).filter(Number.isFinite);
