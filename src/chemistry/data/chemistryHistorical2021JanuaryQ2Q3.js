@@ -98,7 +98,6 @@ export const CHEMISTRY_2021_JAN_Q3_DRAFT=base(3,[12,13],
      "The acid gives the ethanoate group and ethanol gives the ethyl group; the product is ETHYL ETHANOATE, not methyl propanoate.",
      {type:"drawing",height:425},{modelAnswerSvgs:[CHEMISTRY_2021_JAN_ORGANIC_SVGS.ethylEthanoate]})
    ]}
-  ]}
  ],[
  "The source names pentane as a constitutional isomer of 2-methylbutane and asks for one other isomer. Pentane is acceptable; 2,2-dimethylpropane is also structurally valid.",
  "The ester from ethanol and CH3COOH is ethyl ethanoate, NOT the methyl propanoate from 2020 January. Model valence and all displayed H bonds need review.",
