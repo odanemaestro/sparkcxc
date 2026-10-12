@@ -1,3 +1,4 @@
+import {CHEMISTRY_2016_MJ_ORGANIC_SVGS} from "./chemistryHistorical2016OrganicModels";
 // Source: 2016 May/June Chemistry Paper 02 pp.12–15 (PDF pp.10–13).
 // Transcription and explanatory schemes are provisional, never learnerFacing.
 // Read original PDF figures directly before approving exact structure SVGs.
@@ -88,20 +89,21 @@ export const CHEMISTRY_2016_MJ_Q3_DRAFT=Object.freeze({
     item("(iv)","Draw FULLY DISPLAYED structural formulae of P and ONE structural isomer.",4,
      ["P drawn as a five-carbon chain with the double bond between carbons 1 and 2.","All carbon and hydrogen atoms shown explicitly, giving C₅H₁₀.","A distinct five-carbon alkene connectivity is drawn, e.g. pent-2-ene or 2-methylbut-1-ene.","Isomer also includes all H atoms and bonds, correct C₅H₁₀ formula and valences."],
      "Pent-2-ene is a position isomer of pent-1-ene; two drawings should have the same molecular formula but different double-bond positions.",
-     {type:"drawing",height:420})
+     {type:"drawing",height:420},{modelAnswerSvgs:[CHEMISTRY_2016_MJ_ORGANIC_SVGS.pent1ene,CHEMISTRY_2016_MJ_ORGANIC_SVGS.pent2ene]})
    ]},
   {label:"(c)",context:"Compound P reacts with hydrogen gas in the presence of a catalyst to give Compound Q.",
    items:[
     item("(i)","Draw a FULLY DISPLAYED structure of ONE BRANCHED isomer of Q.",2,
      ["Q is pentane (C₅H₁₂) after H₂ adds across P's double bond; a correct branched isomer is 2-methylbutane.","Fully display the carbon skeleton, all hydrogen atoms and bonds to show correct C₅H₁₂ valence."],
      "Hydrogenation saturates the double bond. Pentane can isomerise in connectivity to 2-methylbutane while retaining C₅H₁₂.",
-     {type:"drawing",height:390}),
+     {type:"drawing",height:390},{modelAnswerSvgs:[CHEMISTRY_2016_MJ_ORGANIC_SVGS.methylbutane]}),
     item("(ii)","State ONE physical property of Compound Q.",1,
      ["Pentane is a colourless, volatile, flammable liquid near room temperature; poor solubility in water is also valid."],
      "Pentane is a small nonpolar alkane; describe physical behaviour rather than its substitution chemistry.")
    ]},
   {label:"(d)",context:"The source shows Compound R as CH₃–CH₂–CH₂–CH(OH)–CH₃.",
    svg:CHEMISTRY_2016_MJ_Q3_ALCOHOL_SOURCE_SVG,figure:"Compound R. Source alcohol structure (schematic)",
+   modelAnswerSvgs:[CHEMISTRY_2016_MJ_ORGANIC_SVGS.pentan2ol],
    items:[item("","State the name of Compound R.",1,
      ["Pentan-2-ol (2-pentanol)."],
      "Number the five-carbon chain from the nearest end to give the OH group its lowest number, 2.")
