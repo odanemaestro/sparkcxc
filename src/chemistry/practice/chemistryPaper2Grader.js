@@ -1,3 +1,4 @@
+import { readScienceGraph, graphPoints } from "../../integratedScience/practice/scienceGraphModel";
 // Chemistry Paper 02 deterministic practice grader.
 // Authored mark schemes remain the source of truth. Free-response scores are estimates.
 
@@ -97,30 +98,75 @@ function tableResult(base,item,responses){
 }
 
 function graphResult(base,item,responses){
-  const points=Array.isArray(item.response?.points)?item.response.points:[];
-  let stored=[];
-  try{stored=JSON.parse(responses[`${base}:graphPoints`]||"[]");}catch{}
-  if(!Array.isArray(stored)) stored=[];
-  const labelsOk=Boolean(String(responses[`${base}:xLabel`]||"").trim()&&String(responses[`${base}:yLabel`]||"").trim());
+  const expected=Array.isArray(item.response?.points)?item.response.points:[];
+  const graph=readScienceGraph(responses[`${base}:graph`]) || null;
+  const plotted=graph
+    ? (graph.series || []).flatMap(series => graphPoints(series.points,graph.kind).filter(Boolean))
+    : [];
+
+  const xLabel=String(responses[`${base}:xLabel`] || "").trim();
+  const yLabel=String(responses[`${base}:yLabel`] || "").trim();
+  const labelsOk=Boolean(xLabel && yLabel);
+
   let matched=0;
-  points.forEach(target=>{
-    if(stored.some(p=>Math.abs(Number(p.x)-Number(target.x))<=Math.max(.1,Math.abs(Number(target.x))*.02)
-      &&Math.abs(Number(p.y)-Number(target.y))<=Math.max(.01,Math.abs(Number(target.y))*.03))) matched+=1;
+  expected.forEach(target=>{
+    if(plotted.some(point =>
+      Math.abs(Number(point.x)-Number(target.x))<=Math.max(.1,Math.abs(Number(target.x))*0.02) &&
+      Math.abs(Number(point.y)-Number(target.y))<=Math.max(.01,Math.abs(Number(target.y))*0.03)
+    )) matched+=1;
   });
+
   const max=Number(item.marks||0);
   const criteria=[];
-  if(max>=1) criteria.push({id:`${base}:axes`,label:"Axes labelled with quantities and units",marks:labelsOk?1:0,maxMarks:1,earned:labelsOk,evidence:""});
+  if(max>=1){
+    criteria.push({
+      id:`${base}:axes`,
+      label:"Axes labelled with the required quantities and units",
+      marks:labelsOk?1:0,maxMarks:1,earned:labelsOk,
+      evidence:`${xLabel}; ${yLabel}`,
+    });
+  }
+
   if(max>=2){
-    const plotMarks=points.length&&matched===points.length?Math.min(2,max-1):points.length&&matched>=Math.ceil(points.length*.6)?1:0;
-    criteria.push({id:`${base}:points`,label:"Data points plotted accurately",marks:plotMarks,maxMarks:Math.min(2,max-1),earned:plotMarks===Math.min(2,max-1),evidence:`${matched}/${points.length}`});
+    const available=Math.min(2,Math.max(0,max-1));
+    const plotMarks=expected.length&&matched===expected.length
+      ? available
+      : expected.length&&matched>=Math.ceil(expected.length*0.6)
+        ? Math.min(1,available)
+        : 0;
+    criteria.push({
+      id:`${base}:points`,
+      label:"Required data points plotted accurately",
+      marks:plotMarks,maxMarks:available,earned:plotMarks===available,
+      evidence:`${matched}/${expected.length} matched`,
+    });
   }
-  const used=criteria.reduce((s,c)=>s+c.maxMarks,0);
+
+  const used=criteria.reduce((sum,row)=>sum+row.maxMarks,0);
   if(used<max){
-    const bestFit=Boolean(responses[`${base}:bestFit`]);
-    criteria.push({id:`${base}:fit`,label:"Suitable best-fit line or curve",marks:bestFit?1:0,maxMarks:1,earned:bestFit,evidence:""});
+    const source=`${item.prompt||""} ${(item.markScheme?.points||[]).join(" ")}`.toLowerCase();
+    const wanted=source.includes("line of best fit")||source.includes("best-fit")
+      ? "best-fit"
+      : source.includes("smooth")
+        ? "smooth"
+        : null;
+    const connection=String(graph?.connection || "");
+    const styleOk=wanted ? connection===wanted : Boolean(connection && connection!=="none");
+    criteria.push({
+      id:`${base}:fit`,
+      label:wanted==="best-fit"?"Line of best fit selected":wanted==="smooth"?"Smooth best-fit curve selected":"Suitable line or curve selected",
+      marks:styleOk?1:0,maxMarks:1,earned:styleOk,evidence:connection,
+    });
   }
-  const score=Math.min(max,criteria.reduce((s,c)=>s+c.marks,0));
-  return {score,maxMarks:max,criteria,confidence:"medium",provisional:true,visualEvidenceRequired:true};
+
+  const score=Math.min(max,criteria.reduce((sum,row)=>sum+row.marks,0));
+  const assessed=criteria.reduce((sum,row)=>sum+row.maxMarks,0);
+  return {
+    score,maxMarks:max,criteria,confidence:"medium",provisional:true,visualEvidenceRequired:true,
+    unassessedMarks:Math.max(0,max-assessed),
+    reason:max>assessed?"Remaining graph presentation marks need visual examiner judgement.":undefined,
+    visualEvidence:{plottedPoints:plotted.length,expectedPoints:expected.length,matchedPoints:matched,connection:graph?.connection||null},
+  };
 }
 
 function drawingResult(base,item,responses){
