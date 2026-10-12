@@ -349,6 +349,12 @@ describe("CSEC Chemistry course V1",()=>{
     expect(rows[0].parts[0].svg).toMatch(/^<svg/);
     expect(rows[0].parts[0].items[0].response.table.answers).toEqual(["73","68","65","60","55","50"]);
     expect(rows[0].parts[0].items[1].response.points).toHaveLength(11);
+    expect(rows[0].parts[0].items[1].response).toMatchObject({
+      x:"Temperature (°C)",y:"Time (min)"
+    });
+    expect(rows[0].parts[0].items[1].response.points[0]).toEqual({x:80,y:0});
+    expect(rows[0].parts[0].items[1].response.points[3]).toEqual({x:65,y:3});
+    expect(rows[0].sourceIssues.join(" ")).toMatch(/TIME increasing vertically/);
     expect(rows[0].parts[0].items[1].figureSvg).toMatch(/^<svg/);
     expect(rows[0].parts[0].items[7].modelAnswerSvgs).toHaveLength(1);
     expect(rows[0].parts[1].items.map(i=>i.marks)).toEqual([1,2,2,3]);
