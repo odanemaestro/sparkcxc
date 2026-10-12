@@ -51,7 +51,6 @@ export const CHEMISTRY_2021_MJ_QUESTIONS_4_TO_6=Object.freeze([
      ["Increasing reactivity: Mg < Ca < X; X is strontium (Sr) below Ca in Group II.","Explain reactivity increases down Group II as valence electrons experience more shielding / are lost more easily."],
      "Group II metallic reactivity generally rises down the group in cold-water reactions.")
    ]}
-  ]}
  ],[
   "IMPORTANT source nuclear notation problem: source prints ¹⁴₇C and ¹²₇C, physically chemically impossible as carbon because Z=7 defines nitrogen. Preserve source, select valid ¹²₆C/¹⁴₆C pair and do NOT teach ¹⁴₇C as a valid carbon isotope. Examiner transcription/marking review needed.",
   "Source Table 3 places X immediately below Ca in Group II, meaning Sr. Verify its visual placement before release; chemical trend Mg < Ca < Sr.",
@@ -122,7 +121,6 @@ export const CHEMISTRY_2021_MJ_QUESTIONS_4_TO_6=Object.freeze([
     ["Useful: iron is essential in haemoglobin and many electron-transfer enzymes.","Explain that iron in haemoglobin allows blood to carry oxygen for cellular respiration (or another properly justified biologically important metal role).","Harmful: lead is a toxic metal, especially dangerous for children, with no beneficial essential physiological role.","Explain lead exposure can impair nervous-system development, cognition, red-blood-cell formation or kidney function."],
     "Iron is a required biological trace element; lead is a cumulative toxicant and should not be confused with an essential dietary mineral.")
    ]}
-  ]}
  ],[
   "Two PbO2→Pb source exam reactions have multiple chemically balanced routes. Thermal PbO2→PbO can involve intermediate Pb3O4 at practical temperatures: mark the stated reaction sequence as a school-level idealisation, not universally exact industrial flowsheet.",
   "The electrochemical series alone gives useful broad extraction guidance but exact ores/slag/impurities matter; use chemistry-accurate high level comparison.",
