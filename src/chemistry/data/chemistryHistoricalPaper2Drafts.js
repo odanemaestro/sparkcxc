@@ -87,6 +87,7 @@ export const CHEMISTRY_HISTORICAL_DRAFT_ITEMS = Object.freeze([
     diagramStatus:"no figure in this source question",
     learnerFacing:false,kind:"structured",totalMarks:15,
     title:"Phosphoric acid, salts and neutralisation",
+    sourceIssues:["The source states 0.05 M phosphoric acid has pH 4. A simple first-dissociation calculation (Ka1 ≈ 7.1 × 10⁻³) predicts pH around 1.8, so this numeric premise needs chemistry review. Answer part (d) from the explicitly GIVEN pH values, without teaching pH 4 as a typical measured value."],
     objectives:["A7.1","A7.3","A7.5","A7.7","A7.9"],
     context:"Phosphoric acid, H₃PO₄, is a common additive in most soft drinks. It reacts with sodium hydroxide, an alkali, to form both normal and acid salts.",
     parts:[
