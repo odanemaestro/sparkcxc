@@ -30,7 +30,7 @@ function validValence(s){
  });
  const c=s.atoms.filter(a=>a[0]==="C").length;
  const cl=s.atoms.filter(a=>a[0]==="Cl").length;
- const computed="C"+c+"H"+s.H.length+(cl?"Cl"+cl:"");
+ const computed="C"+c+"H"+s.H.length+(cl?"Cl"+(cl===1?"":cl):"");
  if(computed!==s.formula)throw new Error(s.name+": expected "+s.formula+", got "+computed);
  return {valid:true,formula:computed,hydrogenCount:s.H.length};
 }
