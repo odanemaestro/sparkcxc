@@ -75,6 +75,55 @@ export const CHEMISTRY_HISTORICAL_DRAFT_ITEMS = Object.freeze([
         ]
       }
     ]
+  }),
+  Object.freeze({
+    id:"CHEM-P2-2025-MJ-Q2",
+    sourceId:"CHEM-P2-2025-MJ",
+    sourceFile:"CSEC_Chemistry_P2_2025_MJ.pdf",
+    pdfPages:[7,8],printedPages:[10,11],originalQuestionNumber:2,
+    status:"draft-needs-second-source-review",
+    answerSchemeSource:"SPARK-authored; official CXC mark scheme not supplied",
+    diagramStatus:"no figure in this source question",
+    learnerFacing:false,kind:"structured",totalMarks:15,
+    title:"Phosphoric acid, salts and neutralisation",
+    objectives:["A7.1","A7.3","A7.5","A7.7","A7.9"],
+    context:"Phosphoric acid, H₃PO₄, is a common additive in most soft drinks. It reacts with sodium hydroxide, an alkali, to form both normal and acid salts.",
+    parts:[
+      {label:"(a)",context:"Define EACH of the following terms.",items:[
+        item("(i) Acid","Define 'acid'.",1,["A substance that produces H⁺(aq) ions when dissolved in water."],
+          "Hydrogen ions are responsible for the characteristic reactions of aqueous acids."),
+        item("(ii) Alkali","Define 'alkali'.",1,["A water-soluble base that produces OH⁻(aq) ions in water."],
+          "All alkalis are bases, but not all bases dissolve in water."),
+        item("(iii) Normal salt","Define 'normal salt'.",2,
+          ["All replaceable hydrogen ions from the parent acid have been replaced by metal or ammonium ions","The resulting salt has no ionisable hydrogen from the parent acid; Na₃PO₄ is an example"],
+          "The distinction is how many acidic hydrogens have been replaced.")
+      ]},
+      {label:"(b)",items:[
+        item("(i)","Write a balanced equation, including state symbols, to show the formation of the normal salt formed from the reaction between phosphoric acid and sodium hydroxide.",3,
+          ["Correct reactant and normal-salt formulae H₃PO₄, NaOH, Na₃PO₄, H₂O","Correct coefficients 1 : 3 : 1 : 3","Appropriate states: H₃PO₄(aq) + 3NaOH(aq) → Na₃PO₄(aq) + 3H₂O(l)"],
+          "Three moles of alkali neutralise all three replaceable hydrogen ions in one mole of phosphoric acid.",{type:"calculation",lines:5})
+      ]},
+      {label:"(c)",items:[
+        item("(i)","State the molecular formula for an acid salt formed from the reaction between phosphoric acid and sodium hydroxide.",1,
+          ["NaH₂PO₄ or Na₂HPO₄"],"An acid salt retains one or more replaceable hydrogen ions."),
+        item("(ii)","Write a balanced equation to show the formation of the acid salt stated in (c)(i).",2,
+          ["For NaH₂PO₄: H₃PO₄ + NaOH → NaH₂PO₄ + H₂O","For Na₂HPO₄: H₃PO₄ + 2NaOH → Na₂HPO₄ + 2H₂O; the equation must agree with the chosen salt"],
+          "Partial neutralisation forms an acid salt. One or two moles of sodium hydroxide are needed depending on the salt named.")
+      ]},
+      {label:"(d)",context:"A solution of 0.05 M phosphoric acid has a pH of 4 while a solution of 0.05 M sulfuric acid has a pH of 1.",items:[
+        item("(i)","State which of the two acids is stronger.",1,["Sulfuric acid (the solution stated to have pH 1)."],
+          "At the same stated concentration, the solution with the lower pH has the higher hydrogen ion concentration. Use the pH values given in this question.")
+      ]},
+      {label:"(e)",context:"Jeffrey complains of pains due to excess stomach acid after consuming too much orange juice.",items:[
+        item("(i)","Name TWO acids present in orange juice.",2,
+          ["Citric acid","Ascorbic acid (vitamin C)"],"Citrus fruits contain citric acid and vitamin C, known chemically as ascorbic acid."),
+        item("(ii)","State the type of chemical reaction that takes place in the treatment of excess stomach acid.",1,
+          ["Neutralisation (acid-base reaction)."],"An antacid reacts with excess stomach acid."),
+        item("(iii)","State the chemical name or formula of ONE compound that can be used to treat excess stomach acid.",1,
+          ["Magnesium hydroxide, Mg(OH)₂; calcium carbonate, CaCO₃; or sodium hydrogen carbonate, NaHCO₃."],
+          "A suitable antacid reacts with hydrochloric acid in the stomach.")
+      ]}
+    ]
   })
 ]);
 
