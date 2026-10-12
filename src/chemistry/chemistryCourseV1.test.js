@@ -27,6 +27,7 @@ import {CHEMISTRY_2014_Q3_VALENCE_AUDIT} from "./data/chemistryHistorical2014Org
 import {CHEMISTRY_2015_MJ_ORGANIC_AUDIT} from "./data/chemistryHistorical2015ModelsSvgs";
 import {CHEMISTRY_2015_MJ_Q1_DATA} from "./data/chemistryHistorical2015Q1";
 import {CHEMISTRY_2012_Q1_GAS_DATA} from "./data/chemistryHistorical2012Svgs";
+import {CHEMISTRY_2012_Q3_VALENCE_AUDIT} from "./data/chemistryHistorical2012OrganicSvgs";
 import {CHEMISTRY_HISTORICAL_COVERAGE} from "./data/chemistryHistoricalCoverage";
 import { getSparkSubjectRegistry } from "../subjects/subjectRegistry";
 import { exactTargetForAction } from "../learning/nextBestActionV2";
@@ -348,6 +349,13 @@ describe("CSEC Chemistry course V1",()=>{
     expect(questions[0].parts[0].items[1].figureSvg).toMatch(/^<svg/);
     expect(questions[1].parts[0].svg).toMatch(/^<svg/);
     expect(questions[2].parts[1].svg).toMatch(/^<svg/);
+    expect(questions[2].parts[0].sourceFullyDisplayedSvgs).toHaveLength(2);
+    const chlorineDrawing=questions[2].parts[0].items.find(i=>i.label==="(iii)(b)");
+    expect(chlorineDrawing.modelAnswerSvgs).toHaveLength(2);
+    Object.values(CHEMISTRY_2012_Q3_VALENCE_AUDIT).forEach(row=>expect(row.valid).toBe(true);
+    expect(CHEMISTRY_2012_Q3_VALENCE_AUDIT.dichloropropane.formula).toBe("C3H6Cl2");
+    expect(CHEMISTRY_2012_Q3_VALENCE_AUDIT.chlorobutane.formula).toBe("C4H9Cl");
+    chlorineDrawing.modelAnswerSvgs.forEach(svg=>expect(svg).not.toMatch(/<image\b/i));
     const table=questions[0].parts[1];
     expect(table.items.reduce((sum,item)=>sum+item.marks,0)).toBe(8);
     expect(questions[1].parts[0].items.find(i=>i.label==="(f)")?.marks).toBe(4);
