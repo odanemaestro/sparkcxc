@@ -15,7 +15,7 @@ import {
   CHEMISTRY_SVGS,
 } from "./data/chemistryPaper2Bank";
 import { CHEMISTRY_PAPER2_SOURCE_AUDIT, CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY } from "./data/chemistryPaper2SourceAudit";
-import { gradeChemistryPaper2, gradeChemistryPaper2Item, normalizeChemistryResponse } from "./practice/chemistryPaper2Grader";
+import { gradeChemistryPaper2, gradeChemistryPaper2Item, normalizeChemistryResponse, chemistryGraphAxisLabelMatches } from "./practice/chemistryPaper2Grader";
 import {CHEMISTRY_HISTORICAL_DRAFT_ITEMS,CHEMISTRY_HISTORICAL_DRAFT_SUMMARY} from "./data/chemistryHistoricalPaper2Drafts";
 import {CHEMISTRY_2025_MJ_Q1_GRAPH_SVG} from "./data/chemistryHistoricalGraphSvg";
 import { getSparkSubjectRegistry } from "../subjects/subjectRegistry";
@@ -133,6 +133,15 @@ describe("CSEC Chemistry course V1",()=>{
     expect(result.score).toBeLessThanOrEqual(100);
     expect(result.questions).toHaveLength(6);
     expect(result.provisional).toBe(true);
+  });
+
+  test("graph axis marks require the right quantity and unit",()=>{
+    expect(chemistryGraphAxisLabelMatches("Time (minutes)","Time (minutes)")).toBe(true);
+    expect(chemistryGraphAxisLabelMatches("Bananas (min)","Time (minutes)")).toBe(false);
+    expect(chemistryGraphAxisLabelMatches("Time","Time (minutes)")).toBe(false);
+    expect(chemistryGraphAxisLabelMatches("Rate / s^-1","Rate, 1/time / s⁻¹")).toBe(true);
+    expect(chemistryGraphAxisLabelMatches("Temperature (°C)","Temperature / °C")).toBe(true);
+    expect(chemistryGraphAxisLabelMatches("Mass (g)","Actual mass of copper deposited (g)")).toBe(true);
   });
 
   test("normalizes printed and typed chemical formulae without losing charge signs",()=>{
