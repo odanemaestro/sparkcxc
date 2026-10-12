@@ -60,5 +60,5 @@ export const CHEMISTRY_2010_MJ_SODIUM_OXIDE_DOT_CROSS_SVG=
  '<g font-family="Arial,sans-serif" font-size="26" text-anchor="middle" fill="#111">'+
  '<text x="382" y="95">••</text><text x="382" y="251">••</text><text x="293" y="176">••</text>'+
  '<text x="467" y="176">××</text></g>'+ion(505,78,"2−")+
- ion(380,303,"O²⁻ has six original oxygen electrons (dots) plus two sodium electrons (crosses)")+
+ ion(380,303,"Na₂O: 2Na⁺ and O²⁻")+
  '</svg>';
