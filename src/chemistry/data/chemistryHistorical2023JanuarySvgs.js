@@ -43,8 +43,8 @@ export const CHEMISTRY_2023_JAN_Q1_AUDIT=Object.freeze({
 export const CHEMISTRY_2023_JAN_DIAMOND_SVG=svg(850,400,
  'Provisional 3D tetrahedral diamond covalent network carbon lattice schematic',
  '<g fill="none" stroke="#111" stroke-width="2.8">'+
- [[424,185,320,96],[424,185,531,96],[424,185,425,318],[320,96,215,198],[531,96,635,198],[425,318,315,357],[425,318,534,356],[215,198,315,357],[635,198,534,356]].map(([x,y,u,v])=>ln(x,y,u,v,2.6)).join('')+
- '</g>'+[[424,185],[320,96],[531,96],[425,318],[215,198],[635,198],[315,357],[534,356]].map(([x,y])=>
+ [[424,185,320,96],[424,185,531,96],[424,185,425,318],[424,185,430,65],[320,96,215,198],[531,96,635,198],[425,318,315,357],[425,318,534,356],[215,198,315,357],[635,198,534,356]].map(([x,y,u,v])=>ln(x,y,u,v,2.6)).join('')+
+ '</g>'+[[424,185],[430,65],[320,96],[531,96],[425,318],[215,198],[635,198],[315,357],[534,356]].map(([x,y])=>
  '<circle cx="'+x+'" cy="'+y+'" r="12" fill="white" stroke="#111" stroke-width="2"/>').join('')+
  txt(424,42,'Carbon atoms each form 4 covalent bonds in a 3D lattice',19));
 export const CHEMISTRY_2023_JAN_NACL_SVG=svg(800,380,
@@ -60,8 +60,8 @@ export const CHEMISTRY_2023_JAN_AMMONIA_APPARATUS_SVG=svg(1140,535,
  '<path d="M100 327L289 285L301 316L117 358Z"/>'+
  '<path d="M285 297L351 281L362 298L302 314"/>'+
  '<path d="M353 291V181H475V211"/>'+
- '<path d="M475 211H652V181H759"/>'+
- '<path d="M759 181V377H911V181"/>'+
+ '<path d="M475 211H670V417H798V251"/>'+
+ '<path d="M759 386V181H911V386"/>'+
  '<path d="M739 168H931"/>'+
  '<rect x="484" y="186" width="165" height="50" rx="17"/>'+
  '</g>'+
