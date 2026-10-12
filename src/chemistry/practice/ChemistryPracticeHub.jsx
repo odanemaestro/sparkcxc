@@ -2,16 +2,13 @@ import React,{useMemo,useState} from "react";
 import ChemistryPaper2Exam from "./ChemistryPaper2Exam";
 import {CHEMISTRY_HISTORICAL_PAPERS,CHEMISTRY_PAPER2_PRACTICE_SETS,chemistryPaper2BankStats} from "../data/chemistryPaper2Bank";
 import {CHEMISTRY_PAPER2_SOURCE_AUDIT,CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY} from "../data/chemistryPaper2SourceAudit";
-import {CHEMISTRY_HISTORICAL_DRAFT_SUMMARY,CHEMISTRY_HISTORICAL_DRAFT_ITEMS} from "../data/chemistryHistoricalPaper2Drafts";
+import {CHEMISTRY_HISTORICAL_COVERAGE} from "../data/chemistryHistoricalCoverage";
 import "./chemistryPractice.css";
 import "../../integratedScience/practice/integratedSciencePractice.css";
 
 function HistoricalArchive({onBack}){
   const sourceById=useMemo(()=>Object.fromEntries(CHEMISTRY_PAPER2_SOURCE_AUDIT.map(row=>[row.id,row])),[]);
-  const draftCounts=useMemo(()=>CHEMISTRY_HISTORICAL_DRAFT_ITEMS.reduce((counts,row)=>{
-    counts[row.sourceId]=(counts[row.sourceId]||0)+1;
-    return counts;
-  },{}),[]);
+  const coverageById=useMemo(()=>Object.fromEntries(CHEMISTRY_HISTORICAL_COVERAGE.papers.map(row=>[row.sourceId,row])),[]);
   const [query,setQuery]=useState("");
   const [session,setSession]=useState("all");
   const rows=useMemo(()=>CHEMISTRY_HISTORICAL_PAPERS.filter(paper=>{
@@ -21,12 +18,13 @@ function HistoricalArchive({onBack}){
   }),[query,session]);
   return <main className="is-practice-shell chem-practice-shell"><div className="is-practice-home-shell">
     <div className="is-practice-top-actions"><button type="button" className="is-back-button" onClick={onBack}><span aria-hidden="true">←</span>Back to practice modes</button></div>
-    <header className="is-practice-hero"><div><span>CSEC CHEMISTRY PAPER 02</span><h1>Historical source archive</h1><p>All {CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY.suppliedPapers} supplied Paper 02 scans, covering {CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY.suppliedPages} pages, are accounted for here. Historical questions are promoted to learner practice only after page-by-page wording, value, marking and SVG-figure QA. {CHEMISTRY_HISTORICAL_DRAFT_SUMMARY.transcribedDraftQuestions} questions are currently in draft and are not available for practice.</p></div></header>
+    <header className="is-practice-hero"><div><span>CSEC CHEMISTRY PAPER 02</span><h1>Historical source archive</h1><p>All {CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY.suppliedPapers} supplied Paper 02 scans, covering {CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY.suppliedPages} pages, are accounted for here. Historical questions are promoted to learner practice only after page-by-page wording, value, marking and SVG-figure QA. {CHEMISTRY_HISTORICAL_COVERAGE.totals.draftedQuestions} of {CHEMISTRY_HISTORICAL_COVERAGE.totals.expectedQuestions} historical questions are currently drafted, with {CHEMISTRY_HISTORICAL_COVERAGE.totals.approvedQuestions} approved for practice.</p></div></header>
     <section className="chem-archive-filters"><label>Search<input value={query} onChange={e=>setQuery(e.target.value)} placeholder="year or topic"/></label><label>Session<select value={session} onChange={e=>setSession(e.target.value)}><option value="all">All sessions</option><option>January</option><option>May/June</option></select></label></section>
     <section className="chem-archive-list">{rows.map(paper=>{
       const source=sourceById[paper.id];
+      const coverage=coverageById[paper.id];
       return <article key={paper.id} className="chem-archive-card">
-        <div><span>{paper.session}</span><h2>{paper.year} Chemistry Paper 02</h2><p>{paper.questionCount} questions · {source?.pages || "?"} source pages · {draftCounts[paper.id]||0} question drafts</p></div>
+        <div><span>{paper.session}</span><h2>{paper.year} Chemistry Paper 02</h2><p>{paper.questionCount} questions · {source?.pages || "?"} source pages · {coverage?.draftedQuestions||0}/{coverage?.expectedQuestions||paper.questionCount} questions drafted</p></div>
         <div className="chem-archive-tags">{paper.topics.map(topic=><span key={topic}>{topic.replaceAll("-"," ")}</span>)}</div>
         <div className="chem-archive-status"><b>Scan inventoried</b><small>Questions and diagrams are not yet cleared for student practice. The original marking scheme was not supplied.</small></div>
       </article>;
