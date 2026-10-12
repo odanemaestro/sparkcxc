@@ -283,6 +283,7 @@ function viewFromBrowserHash() {
   if (normalizedPath === "/practice/integrated-science" || normalizedPath.startsWith("/practice/integrated-science/")) return "practice-integrated-science";
   if (normalizedPath === "/practice/social-studies" || normalizedPath.startsWith("/practice/social-studies/")) return "practice-social-studies";
   if (normalizedPath === "/practice/english-a" || normalizedPath.startsWith("/practice/english-a/")) return "practice-english-a";
+  if (normalizedPath === "/practice/chemistry" || normalizedPath.startsWith("/practice/chemistry/")) return "practice-chemistry";
   return ROUTE_PATH_VIEWS[normalizedPath] || "home";
 }
 
