@@ -1,3 +1,4 @@
+import {CHEMISTRY_2012_Q3_FULLY_DISPLAYED} from "./chemistryHistorical2012OrganicSvgs";
 // Transcribed from supplied May/June 2012 Chemistry Paper 02 pp.7–10.
 // All solutions are SPARK-authored, not official CXC marking guidance.
 // Figures are schematic vectors requiring comparison against the source scan.
@@ -73,6 +74,7 @@ export const CHEMISTRY_2012_MJ_Q3_DRAFT=Object.freeze({
  parts:[
   {label:"(a)",context:"The printed fully displayed structures show compound A as propene, CH₃–CH=CH₂, and compound B as butane, CH₃–CH₂–CH₂–CH₃.",
    svg:CHEMISTRY_2012_Q3_HYDROCARBON_SVG,
+   sourceFullyDisplayedSvgs:[CHEMISTRY_2012_Q3_FULLY_DISPLAYED.propene,CHEMISTRY_2012_Q3_FULLY_DISPLAYED.butane],
    figure:"Source Figure: compounds A and B, redrawn schematically",
    items:[
     item("(i)","Name the homologous series for A and for B.",2,
@@ -87,7 +89,7 @@ export const CHEMISTRY_2012_MJ_Q3_DRAFT=Object.freeze({
     item("(iii)(b)","Draw fully displayed structures of the organic products of A and B when each reacts with chlorine.",4,
       ["A: the C=C in propene reacts by addition to make CH₃–CHCl–CH₂Cl.","A: all three carbon atoms, all hydrogens, the two chlorine atoms and their bonds are correctly fully displayed.","B: a butane hydrogen is substituted by chlorine to make a monochlorobutane, e.g. CH₃–CH₂–CH₂–CH₂Cl or CH₃–CHCl–CH₂–CH₃.","B: the fully displayed product has C₄H₉Cl with all single bonds and correct valences."],
       "Cl₂ adds across propene's double bond giving 1,2-dichloropropane, while UV chlorinates butane by substitution.",
-      {type:"drawing",height:420})
+      {type:"drawing",height:420},{modelAnswerSvgs:[CHEMISTRY_2012_Q3_FULLY_DISPLAYED.dichloropropane,CHEMISTRY_2012_Q3_FULLY_DISPLAYED.chlorobutane]})
    ]},
   {label:"(b)",context:"Reaction scheme: Alcohol D is oxidised by K₂Cr₂O₇ to compound E, displayed as CH₃COOH, then converted using G to compound J, displayed as CH₃COOCH₃.",
    svg:CHEMISTRY_2012_Q3_REACTION_SVG,figure:"Source reaction scheme for D, E and J",
