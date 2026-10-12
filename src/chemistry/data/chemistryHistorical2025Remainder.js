@@ -1,10 +1,11 @@
+import {chemistryFullyDisplayedStructureSvg,CHEMISTRY_2025_OXYGEN_PREPARATION_SVG} from "./chemistryHistorical2025ModelSvgs";
 // Historical 2025 May/June Chemistry Paper 02, Questions 3-6.
 // Manually read from CSEC_Chemistry_P2_2025_MJ.pdf, PDF pages 9-18.
 // The original paper contains blank student-drawing boxes, NOT model diagrams.
 // All questions below are DRAFTS until a second reviewer checks the source and answers.
 // The schemes are written by SPARK and are NOT official CXC mark schemes.
-const item=(label,prompt,marks,points,explanation,response={type:"lines",lines:Math.max(3,marks+1)})=>({
- label,prompt,marks,response,markScheme:{points,guidance:"Provisional SPARK answer guidance. Award equivalent correct responses after examiner checking."},explanation
+const item=(label,prompt,marks,points,explanation,response={type:"lines",lines:Math.max(3,marks+1)},extra={})=>({
+ label,prompt,marks,response,markScheme:{points,guidance:"Provisional SPARK answer guidance. Award equivalent correct responses after examiner checking."},explanation,...extra
 });
 const source=(number,pages,printed,totalMarks,kind,title,objectives,context,parts,issues=[])=>Object.freeze({
  id:`CHEM-P2-2025-MJ-Q${number}`,sourceId:"CHEM-P2-2025-MJ",sourceFile:"CSEC_Chemistry_P2_2025_MJ.pdf",
@@ -43,7 +44,7 @@ export const CHEMISTRY_HISTORICAL_2025_MJ_REMAINDER=Object.freeze([
   {label:"(e)",items:[item("","Pentene can exist as isomers. Draw the FULLY DISPLAYED structures of TWO isomers of pentene (C₅H₁₀).",4,
     ["One valid fully displayed five-carbon alkene with all carbon-hydrogen and carbon-carbon bonds","A second distinct valid five-carbon alkene with every atom and bond shown","Both have formula C₅H₁₀","Double bonds and hydrogen counts correct: examples are pent-1-ene and pent-2-ene"],
     "Pent-1-ene and pent-2-ene differ in the position of their double bond. Condensed formulae alone do not satisfy 'fully displayed'.",
-    {type:"drawing",height:400})]}
+    {type:"drawing",height:400},{modelAnswerSvgs:[chemistryFullyDisplayedStructureSvg("pent1"),chemistryFullyDisplayedStructureSvg("pent2")]})]}
  ],
  ["The wording 'complete reaction' for methane with bromine needs confirmation of intended substitution depth; do not automatically grade against one interpretation."]
  ),
@@ -91,7 +92,7 @@ export const CHEMISTRY_HISTORICAL_2025_MJ_REMAINDER=Object.freeze([
   {label:"(d)",items:[item("","From the list of compounds A, B, C and D, identify and draw the FULLY DISPLAYED structural formulae of the alkene and the acid.",6,
     ["Alkene correctly identified as Compound A (C₄H₈)","One valid, fully displayed C₄H₈ alkene, such as but-1-ene, with every atom and bond shown","Its carbon-carbon double bond and all hydrogen counts are correct","Carboxylic acid correctly identified as Compound C (C₄H₈O₂)","One valid fully displayed C₄H₈O₂ carboxylic acid, such as butanoic acid, with every atom and bond shown","The -C(=O)-OH group and all hydrogen counts are correct"],
     "A simple alkene is but-1-ene, CH₂=CH–CH₂–CH₃. A valid carboxylic acid is butanoic acid, CH₃–CH₂–CH₂–COOH. Each must be drawn fully displayed rather than as a condensed formula.",
-    {type:"drawing",height:420})]}
+    {type:"drawing",height:420},{modelAnswerSvgs:[chemistryFullyDisplayedStructureSvg("but1"),chemistryFullyDisplayedStructureSvg("butanoic")]})]}
  ],
  ["The question asserts a C₄H₁₀O compound is often used to form polyesters. A monofunctional alcohol of this formula does not by itself form a polyester: industrial polyesters require monomers bearing at least two reactive functional groups. Preserve the original examiner question but do not repeat its chemical premise as established fact."]
  ),
@@ -119,7 +120,7 @@ export const CHEMISTRY_HISTORICAL_2025_MJ_REMAINDER=Object.freeze([
     item("","Draw a labelled diagram of the apparatus that can be used for the laboratory preparation of oxygen. Ensure that the diagram clearly shows the location of the reagents to be used and the collection area of the oxygen gas.",6,
       ["Suitable generating vessel, such as a conical flask","Correctly labelled hydrogen peroxide solution and manganese(IV) oxide catalyst in the vessel","Sealed bung and properly connected delivery tube","Tube terminates beneath water in the trough","Inverted gas jar filled with water receives the oxygen by water displacement","Reagent locations, oxygen collection area and key apparatus clearly labelled"],
       "Manganese(IV) oxide catalyses hydrogen peroxide decomposition: 2H₂O₂(aq) → 2H₂O(l) + O₂(g). Oxygen is collected over water because its solubility is low.",
-      {type:"drawing",height:430})
+      {type:"drawing",height:430},{modelAnswerSvgs:[CHEMISTRY_2025_OXYGEN_PREPARATION_SVG]})
   ]}
  ],
  ["A labelled model answer requires a chemically correct SVG, but the source question contains only an empty drawing box."]
