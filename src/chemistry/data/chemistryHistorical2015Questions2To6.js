@@ -1,3 +1,5 @@
+import {CHEMISTRY_2015_MJ_SUGAR_FLOW_SVG} from "./chemistryHistorical2015SourceSvgs";
+import {CHEMISTRY_2015_MJ_ORGANIC_SVGS,CHEMISTRY_2015_MJ_NACL_MODEL_SVG,CHEMISTRY_2015_MJ_DIAMOND_MODEL_SVG,CHEMISTRY_2015_MJ_DISTILLATION_MODEL_SVG} from "./chemistryHistorical2015ModelsSvgs";
 // Source: user-supplied CSEC_Chemistry_P2_2015_MJ.pdf, pages 8–21.
 // This material is deliberately NOT learner-facing pending independent
 // text, science, marking and figure checks. Mark schemes are SPARK-authored.
@@ -21,8 +23,8 @@ paper(2,[8,9],"States of matter and bonding",["A1.1","A1.2","A1.3","A5.1","A5.5"
   item("(iv)","Describe how the energy of the iodine particles changes as iodine undergoes sublimation.",2,["The solid absorbs energy during sublimation.","The energy is used to overcome attractions and separate the particles; during a pure phase transition, temperature does not rise while the change is occurring."],"Energy separates the particles against their attractive forces, increasing potential energy.")
  ]},
  {label:"(b)",context:"Draw diagrams illustrating how the bonding in solid sodium chloride differs from bonding in diamond.",items:[
-  item("Sodium chloride","Illustrate bonding in solid sodium chloride.",2,["Show alternating Na⁺ and Cl⁻ ions arranged as a repeating ionic lattice.","Indicate attraction between oppositely charged ions rather than discrete covalent NaCl molecules."],"NaCl forms a giant ionic lattice in which electrostatic attractions extend through the structure.",{type:"drawing",height:320}),
-  item("Diamond","Illustrate bonding in diamond.",2,["Show a continuous covalent network of carbon atoms connected by bonds.","Each carbon is bonded to four others in a three-dimensional tetrahedral arrangement."],"Diamond is a giant covalent structure, not a collection of separate C₄ molecules.",{type:"drawing",height:320})
+  item("Sodium chloride","Illustrate bonding in solid sodium chloride.",2,["Show alternating Na⁺ and Cl⁻ ions arranged as a repeating ionic lattice.","Indicate attraction between oppositely charged ions rather than discrete covalent NaCl molecules."],"NaCl forms a giant ionic lattice in which electrostatic attractions extend through the structure.",{type:"drawing",height:320},{modelAnswerSvgs:[CHEMISTRY_2015_MJ_NACL_MODEL_SVG]}),
+  item("Diamond","Illustrate bonding in diamond.",2,["Show a continuous covalent network of carbon atoms connected by bonds.","Each carbon is bonded to four others in a three-dimensional tetrahedral arrangement."],"Diamond is a giant covalent structure, not a collection of separate C₄ molecules.",{type:"drawing",height:320},{modelAnswerSvgs:[CHEMISTRY_2015_MJ_DIAMOND_MODEL_SVG]})
  ]},
  {label:"(c)",items:[item("","Describe TWO laboratory tests for distinguishing an ionic solid from a molecular solid, giving the expected results.",4,
  ["Electrical-conductivity test on molten or suitably dissolved substance.","A mobile-ion ionic melt/aqueous solution normally conducts, while a typical simple molecular sample does not; exceptions such as acids must be considered.","Measure/compare melting points under controlled conditions.","Giant ionic solids generally have much higher melting points than simple molecular solids because strong ionic forces require more energy."],
@@ -30,12 +32,12 @@ paper(2,[8,9],"States of matter and bonding",["A1.1","A1.2","A1.3","A5.1","A5.5"
 ]),
 paper(3,[10,11],"Hydrocarbon isomers and polyethene",["B1.1","B1.2","B2.1","B2.2","B4.1"],[
  {label:"(a)",context:"Source figures show Compound A as 2-methylbutane (C₅H₁₂), and Compound B as but-2-ene (C₄H₈).",items:[
-  item("(i)","Name the homologous series to which Compounds A and B belong.",2,["Compound A: alkanes.","Compound B: alkenes."],"A has only C–C single bonds; B has a C=C double bond."),
+  item("(i)","Name the homologous series to which Compounds A and B belong.",2,["Compound A: alkanes.","Compound B: alkenes."],"A has only C–C single bonds; B has a C=C double bond.",{type:"lines",lines:4},{modelAnswerSvgs:[CHEMISTRY_2015_MJ_ORGANIC_SVGS.sourceA,CHEMISTRY_2015_MJ_ORGANIC_SVGS.sourceB]}),
   item("(ii)","State the name of EACH compound.",2,["Compound A: 2-methylbutane.","Compound B: but-2-ene."],"Choose the longest carbon chain and number the methyl branch or double bond appropriately.")
  ]},
  {label:"(b)",items:[
   item("(i)","Define structural isomerism.",2,["Two or more compounds have the same molecular formula.","Their atoms are connected differently, giving different structural formulae."],"Structural isomers differ in connectivity, not atom counts."),
-  item("(ii)","Draw the FULLY DISPLAYED structure of ONE structural isomer for EACH of Compounds A and B.",4,["A: draw a different valid C₅H₁₂ connectivity, for example n-pentane, with all five C atoms and twelve H atoms.","A: show all single bonds and each hydrogen explicitly.","B: draw a different C₄H₈ alkene, for example but-1-ene or 2-methylpropene.","B: show C=C and all hydrogen and carbon bonds explicitly."],"n-Pentane is a chain isomer of 2-methylbutane. But-1-ene is a position isomer of but-2-ene.",{type:"drawing",height:450})
+  item("(ii)","Draw the FULLY DISPLAYED structure of ONE structural isomer for EACH of Compounds A and B.",4,["A: draw a different valid C₅H₁₂ connectivity, for example n-pentane, with all five C atoms and twelve H atoms.","A: show all single bonds and each hydrogen explicitly.","B: draw a different C₄H₈ alkene, for example but-1-ene or 2-methylpropene.","B: show C=C and all hydrogen and carbon bonds explicitly."],"n-Pentane is a chain isomer of 2-methylbutane. But-1-ene is a position isomer of but-2-ene.",{type:"drawing",height:450},{modelAnswerSvgs:[CHEMISTRY_2015_MJ_ORGANIC_SVGS.pentane,CHEMISTRY_2015_MJ_ORGANIC_SVGS.but1ene]})
  ]},
  {label:"(c)",context:"Polyethene is manufactured in Trinidad and used across the Caribbean.",items:[
   item("(i)","Define the term polymer.",1,["A very large molecule made by joining many smaller repeating units (monomers)."],"Polymers contain repeated units joined by covalent bonds."),
@@ -60,7 +62,7 @@ paper(4,[12,13,14],"Epsom salts, calcium carbonate and permanent hard water",["A
  ]}
 ],["Magnesium sulfate is commonly a heptahydrate (MgSO₄·7H₂O), so hydrate state may matter in exact source responses."]),
 paper(5,[15,16,17,18],"Caribbean sugar processing, rum and fermentation",["A2.5","B3.1","B3.4","C4.1","C4.4"],[
- {label:"(a)",context:"Figure 3 traces sugar cane through a mill train, Process P, filtration, Process Q and centrifugation to sugar and Product X.",items:[
+ {label:"(a)",context:"Figure 3 traces sugar cane through a mill train, Process P, filtration, Process Q and centrifugation to sugar and Product X.",svg:CHEMISTRY_2015_MJ_SUGAR_FLOW_SVG,figure:"Figure 3. Industrial processing of sugar",items:[
   item("(i)","Identify Process P and Process Q.",2,["Process P: clarification / liming to remove impurities.","Process Q: evaporation followed by crystallisation / concentration of syrup to form sugar crystals."],"The juice is treated to remove impurities, concentrated and crystallised before crystals and mother liquor are separated."),
   item("(ii)","State the importance of centrifugation.",1,["Separates sucrose crystals from mother liquor / molasses by rapid spinning."],"Centrifugation separates solids from syrup."),
   item("(iii)","Identify Product X.",1,["Molasses."],"Molasses is the thick syrup remaining after sugar crystals have been separated."),
@@ -72,7 +74,7 @@ paper(5,[15,16,17,18],"Caribbean sugar processing, rum and fermentation",["A2.5"
   "Sucrose is hydrolysed to fermentable sugars. Yeast enzymes convert each hexose to ethanol and carbon dioxide."),
   item("(ii)","Draw labelled apparatus to obtain a concentrated ethanol sample from diluted rum.",3,
   ["Show distillation flask holding the dilute mixture and a controlled heat source.","Show a distillation head/thermometer and Liebig condenser with cooling water entering the lower port and leaving the upper port.","Show a receiving flask collecting ethanol-enriched distillate; indicate approximately 78 °C for ethanol-rich vapour and use a safer water bath/electric heater."],
-  "Simple or fractional distillation concentrates the more volatile ethanol; separating ethanol from water completely is limited by their azeotrope.",{type:"drawing",height:450})
+  "Simple or fractional distillation concentrates the more volatile ethanol; separating ethanol from water completely is limited by their azeotrope.",{type:"drawing",height:450},{modelAnswerSvgs:[CHEMISTRY_2015_MJ_DISTILLATION_MODEL_SVG]})
  ]},
  {label:"(c)",items:[item("","Wine left open has become sour. Suggest the reaction with magnesium oxide and write a balanced equation.",3,
  ["Neutralisation / acid-base reaction.","Sour wine often contains ethanoic acid and magnesium oxide is a basic oxide.","MgO(s) + 2CH₃COOH(aq) → Mg(CH₃COO)₂(aq) + H₂O(l), balanced."],
