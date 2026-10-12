@@ -1,3 +1,5 @@
+import {CHEMISTRY_2012_Q3_FULLY_DISPLAYED} from "./chemistryHistorical2012OrganicSvgs";
+import {CHEMISTRY_2018_MJ_Q3_PROPAN2OL_SVG} from "./chemistryHistorical2018OrganicModels";
 // 2018 May/June Chemistry Paper 02 Questions 2 and 3; original PDF
 // printed pp.9–12 (PDF pp.7–10). SPARK-author-created answer schemes,
 // provisional and learnerFacing:false pending independent examiner QA.
@@ -73,14 +75,14 @@ export const CHEMISTRY_2018_MJ_Q3_DRAFT=common(3,[9,10],[11,12],
     item("","Draw the FULLY DISPLAYED structural formulae of X and Y.",4,
      ["X: four-carbon single-bond chain C–C–C–C.","X: include all 10 hydrogen atoms and complete carbon valences.","Y: three-carbon chain with one C=C, CH₃–CH=CH₂.","Y: include all six hydrogens and correct covalent double bond / carbon valences."],
      "X is butane, while Y is propene. Fully displayed drawings show every atom and every bond, not only condensed molecular formulae.",
-     {type:"drawing",height:450})
+     {type:"drawing",height:450},{modelAnswerSvgs:[CHEMISTRY_2012_Q3_FULLY_DISPLAYED.butane,CHEMISTRY_2012_Q3_FULLY_DISPLAYED.propene]})
    ]},
   {label:"(d)",context:"Compound Y undergoes hydration to an alcohol.",
    items:[
     item("(i)","Draw the structure of the alcohol formed by hydration of propene.",2,
      ["Propan-2-ol, CH₃–CH(OH)–CH₃, with the OH on the middle carbon.","Correct three-carbon alcohol skeleton and valences. Propan-1-ol is not the principal acid-catalysed hydration product under standard conditions."],
      "Acid-catalysed addition of water across propene's double bond gives predominantly propan-2-ol (Markovnikov hydration).",
-     {type:"drawing",height:380}),
+     {type:"drawing",height:380},{modelAnswerSvgs:[CHEMISTRY_2018_MJ_Q3_PROPAN2OL_SVG]}),
     item("(ii)","State the reagents and conditions for conversion of propene to the alcohol.",2,
      ["Water/steam is the reagent added across the alkene double bond.","Use an acid catalyst such as phosphoric acid on silica at a suitable elevated temperature and pressure; exact industrial conditions depend on the process."],
      "Hydration of propene is an acid-catalysed addition reaction that yields an alcohol.")
