@@ -77,3 +77,49 @@ export const CHEMISTRY_2019_MJ_Q6_SOURCE_REACTIVITY=Object.freeze([
  ["ZnSO₄","×","×","×","×"],
  ["PbSO₄","×","✓","✓","×"]
 ]);
+
+// Face-centred cubic rock-salt unit cell. Chloride at all 8 corners and 6
+// face centres; sodium at all 12 edge midpoints and cube body centre.
+// Fractional counts: Cl = 8*(1/8)+6*(1/2)=4, Na = 12*(1/4)+1=4.
+const project=([u,v,w])=>[120+265*u+100*w,140+210*v-85*w];
+const cornerPoints=Array.from({length:8},(_,i)=>[(i&1)?1:0,(i&2)?1:0,(i&4)?1:0]);
+const faces=[
+ [.5,.5,0],[.5,.5,1],[.5,0,.5],[.5,1,.5],[0,.5,.5],[1,.5,.5]
+];
+const edges=[];
+for(let axis=0;axis<3;axis++){
+ for(let a=0;a<2;a++)for(let b=0;b<2;b++){
+  const c=[0,0,0];c[axis]=.5;
+  c[(axis+1)%3]=a;c[(axis+2)%3]=b;
+  edges.push(c);
+ }
+}
+const boxEdges=[];
+for(let i=0;i<cornerPoints.length;i++)for(let j=i+1;j<cornerPoints.length;j++){
+ const p=cornerPoints[i],q=cornerPoints[j];
+ if(p.reduce((sum,v,k)=>sum+Math.abs(v-q[k]),0)===1)boxEdges.push([p,q]);
+}
+const edgesSvg=boxEdges.map(([a,b])=>{
+ const [x,y]=project(a),[u,v]=project(b);
+ return ln(x,y,u,v,1.5,"#6d7881");
+}).join("");
+const ion=(point,symbol,color,radius=18)=>{
+ const [x,y]=project(point);
+ return '<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="'+radius+'" fill="'+color+'" stroke="#202a35" stroke-width="1.5"/>'+
+ label(x.toFixed(1),(y+5).toFixed(1),symbol,12);
+};
+export const CHEMISTRY_2019_MJ_Q4_NACL_UNIT_CELL_COUNTS=Object.freeze({
+ chlorideCorners:8,chlorideFaceCentres:6,sodiumEdgeCentres:12,sodiumBodyCentre:1,
+ chloridePerCell:8/8+6/2,sodiumPerCell:12/4+1
+});
+export const CHEMISTRY_2019_MJ_Q4_NACL_FCC_SVG=svg(720,525,
+ "Rock salt face-centred cubic sodium chloride unit cell with chloride fcc sites and sodium octahedral sites",
+ edgesSvg+
+ cornerPoints.map(p=>ion(p,"Cl⁻","#e5f2fc",18)).join("")+
+ faces.map(p=>ion(p,"Cl⁻","#e5f2fc",18)).join("")+
+ edges.map(p=>ion(p,"Na⁺","#fff1d7",16)).join("")+
+ ion([.5,.5,.5],"Na⁺","#fff1d7",19)+
+ label(356,423,"Cl⁻: corners + face centres",18)+
+ label(356,450,"Na⁺: edge centres + cube centre",18)+
+ label(356,481,"4 Na⁺ and 4 Cl⁻ per rock-salt unit cell (NaCl)",17)+
+ label(355,510,"3D projection: overlapping ions are expected in this view",14));
