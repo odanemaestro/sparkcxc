@@ -2,12 +2,16 @@ import React,{useMemo,useState} from "react";
 import ChemistryPaper2Exam from "./ChemistryPaper2Exam";
 import {CHEMISTRY_HISTORICAL_PAPERS,CHEMISTRY_PAPER2_PRACTICE_SETS,chemistryPaper2BankStats} from "../data/chemistryPaper2Bank";
 import {CHEMISTRY_PAPER2_SOURCE_AUDIT,CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY} from "../data/chemistryPaper2SourceAudit";
-import {CHEMISTRY_HISTORICAL_DRAFT_SUMMARY} from "../data/chemistryHistoricalPaper2Drafts";
+import {CHEMISTRY_HISTORICAL_DRAFT_SUMMARY,CHEMISTRY_HISTORICAL_DRAFT_ITEMS} from "../data/chemistryHistoricalPaper2Drafts";
 import "./chemistryPractice.css";
 import "../../integratedScience/practice/integratedSciencePractice.css";
 
 function HistoricalArchive({onBack}){
   const sourceById=useMemo(()=>Object.fromEntries(CHEMISTRY_PAPER2_SOURCE_AUDIT.map(row=>[row.id,row])),[]);
+  const draftCounts=useMemo(()=>CHEMISTRY_HISTORICAL_DRAFT_ITEMS.reduce((counts,row)=>{
+    counts[row.sourceId]=(counts[row.sourceId]||0)+1;
+    return counts;
+  },{}),[]);
   const [query,setQuery]=useState("");
   const [session,setSession]=useState("all");
   const rows=useMemo(()=>CHEMISTRY_HISTORICAL_PAPERS.filter(paper=>{
@@ -22,7 +26,7 @@ function HistoricalArchive({onBack}){
     <section className="chem-archive-list">{rows.map(paper=>{
       const source=sourceById[paper.id];
       return <article key={paper.id} className="chem-archive-card">
-        <div><span>{paper.session}</span><h2>{paper.year} Chemistry Paper 02</h2><p>{paper.questionCount} questions · {source?.pages || "?"} source pages</p></div>
+        <div><span>{paper.session}</span><h2>{paper.year} Chemistry Paper 02</h2><p>{paper.questionCount} questions · {source?.pages || "?"} source pages · {draftCounts[paper.id]||0} question drafts</p></div>
         <div className="chem-archive-tags">{paper.topics.map(topic=><span key={topic}>{topic.replaceAll("-"," ")}</span>)}</div>
         <div className="chem-archive-status"><b>Scan inventoried</b><small>Questions and diagrams are not yet cleared for student practice. The original marking scheme was not supplied.</small></div>
       </article>;
