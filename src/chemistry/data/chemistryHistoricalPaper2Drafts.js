@@ -1,3 +1,5 @@
+import { CHEMISTRY_2025_MJ_Q1_GRAPH_SVG } from "./chemistryHistoricalGraphSvg";
+
 // Draft transcription from the user-supplied 2025 May/June CSEC Chemistry Paper 02.
 // Source: CSEC_Chemistry_P2_2025_MJ.pdf, PDF pages 2-6 (printed pages 5-9).
 // This is an authored study/review record, NOT an official CXC marking scheme.
@@ -34,10 +36,10 @@ export const CHEMISTRY_HISTORICAL_DRAFT_ITEMS = Object.freeze([
             {type:"table",table:{title:"TABLE 1: EXPERIMENTAL RESULTS",headers:["Time (min)","Mass of Cathode (g)","Actual Mass of Copper Deposited (g)"],
               rows:[["0","11.80","—"],["5","11.83","0.03"],["10","","0.05"],["15","11.87",""],["20","","0.09"],["25","11.91",""]],
               answers:["11.85","0.07","11.89","0.11"]}}),
-          item("(iv)","Plot a graph of actual mass of copper deposited versus time, using the axes in Figure 1 on page 7. Draw a line of best fit through the points.",4,
+          {...item("(iv)","Plot a graph of actual mass of copper deposited versus time, using the axes in Figure 1 on page 7. Draw a line of best fit through the points.",4,
             ["Plot the six source data points correctly","Use the original labelled axes and scales","Draw an appropriate line of best fit","Show the increasing trend"],
             "The deposited mass increases approximately linearly with time at steady current. The supplied graph grid starts at 0 and uses an axis break before 0.03 g.",
-            {type:"graph",x:"Time (minutes)",y:"Actual mass of copper deposited (g)",points:[{x:0,y:0},{x:5,y:.03},{x:10,y:.05},{x:15,y:.07},{x:20,y:.09},{x:25,y:.11}]}),
+            {type:"graph",x:"Time (minutes)",y:"Actual mass of copper deposited (g)",points:[{x:0,y:0},{x:5,y:.03},{x:10,y:.05},{x:15,y:.07},{x:20,y:.09},{x:25,y:.11}]}),svg:CHEMISTRY_2025_MJ_Q1_GRAPH_SVG},
           item("(v)","Use the graph to predict the mass of copper that would be deposited after 28 minutes. [Use dotted lines on the graph to show how you obtained your answer.]",2,
             ["Approximately 0.12 g, according to the drawn line of best fit","Construction/dotted lines at 28 minutes shown on the graph"],
             "Extrapolate from 25 to 28 minutes, allowing reasonable differences from the candidate's best-fit line."),
