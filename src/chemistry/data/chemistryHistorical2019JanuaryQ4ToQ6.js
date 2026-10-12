@@ -42,7 +42,7 @@ export const CHEMISTRY_2019_JAN_QUESTIONS_4_TO_6=Object.freeze([
      "Electrical energy drives non-spontaneous reactions at the anode and cathode."),
     item("(ii)","Give the balanced ANODE and CATHODE half-equations with state symbols.",6,
      ["At the anode oxidation happens: chloride ions lose electrons.","Anode equation: 2Cl⁻(aq) → Cl₂(g) + 2e⁻.","Correct atom and charge balance, state symbols and chlorine gas as oxidised product under concentrated brine conditions.","At the cathode reduction happens: water gains electrons.","Cathode equation: 2H₂O(l) + 2e⁻ → H₂(g) + 2OH⁻(aq).","Correct water, H₂ and OH⁻ species with atom/charge balance. Sodium metal is NOT obtained from aqueous brine."],
-     "In concentrated brine with suitable inert electrodes and normal conditions, chlorine evolves at the anode and hydrogen at the cathode, leaving NaOH solution.",
+     "In concentrated brine with suitable inert electrodes, chloride gives chlorine at the anode while water is preferentially reduced to hydrogen at the cathode, leaving NaOH solution. Sodium metal is not obtained from aqueous brine because water is more readily reduced under ordinary conditions.",
      {type:"calculation",lines:8})
    ]}
  ],[
