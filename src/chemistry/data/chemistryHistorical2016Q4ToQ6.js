@@ -58,8 +58,7 @@ make(5,[17,18],[19,20],"Methane chlorination, C4 organic formulae and laboratory
   items:[item("","Identify and draw structural formulae of the alkene and carboxylic acid from the listed formulae.",4,
    ["Alkene has formula C₄H₈.","Draw a valid C₄H₈ alkene such as but-1-ene, CH₂=CH–CH₂–CH₃, with the C=C bond.","Carboxylic acid has formula C₄H₈O₂.","Draw an appropriate acid such as butanoic acid, CH₃–CH₂–CH₂–COOH, including the C(=O)–OH carboxyl group."],
    "Acyclic monoalkenes obey CₙH₂ₙ. Saturated monocarboxylic acids obey CₙH₂ₙO₂.",
-   {type:"drawing",height:410},{modelAnswerSvgs:[CHEMISTRY_2015_MJ_ORGANIC_SVGS.but1ene,CHEMISTRY_2016_MJ_ORGANIC_SVGS.butanoicAcid]})]}
- },
+   {type:"drawing",height:410},{modelAnswerSvgs:[CHEMISTRY_2015_MJ_ORGANIC_SVGS.but1ene,CHEMISTRY_2016_MJ_ORGANIC_SVGS.butanoicAcid]})]},
  {label:"(d)",items:[
    item("(i)","Describe a test and observations to distinguish an alkane from an alkene.",2,
     ["Add bromine water at room temperature without UV light to separate samples.","An alkene quickly decolourises orange bromine water; an alkane remains orange under the stated conditions."],
