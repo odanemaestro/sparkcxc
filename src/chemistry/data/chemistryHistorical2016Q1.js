@@ -23,6 +23,7 @@ export const CHEMISTRY_2016_MJ_Q1_DRAFT=Object.freeze({
  sourceIssues:[
   "The six thermometer readings were visually interpreted as 73, 68, 65, 60, 55, 50 °C at 1, 2, 5, 7, 8, 9 minutes. Verify every source graduation before using the key in student auto-marking.",
   "Cooling plateau is 65 °C at 3–5 min, with 64 °C recorded at 6 min; accept reasonable source reading tolerance and distinguish pure substance from experimental cooling lag.",
+  "Figure 3 prints TEMPERATURE horizontally along the top and TIME increasing vertically down the page. Candidate graph axes and source SVG must match this unusual orientation.",
   "The source Figure 4 deliberately contains blank candidate particle-drawing boxes; an explanatory SPARK SVG must not be labelled as preprinted source.",
   "The qualitative observations indicate Pb²⁺ from white hydroxide soluble in excess NaOH, insoluble with NH₃ and yellow PbI₂ with iodide, alongside nitrate inference from brown NO₂."
  ],
@@ -40,10 +41,10 @@ export const CHEMISTRY_2016_MJ_Q1_DRAFT=Object.freeze({
       answers:["73","68","65","60","55","50"],markGroups:[[0,1],[2,3],[4],[5]]}},
      {figureSvg:CHEMISTRY_2016_MJ_Q1_THERMOMETERS_SVG,figureRole:"source-thermometer-reference"}),
     item("(ii)","Using Table 1, plot temperature against time on Figure 3 on page 7. Five points have already been plotted. Draw a smooth curve through points to complete the cooling curve.",5,
-     ["Use correct time axis (0–10 min) and temperature axis in °C.","Accurately plot all six missing temperature readings, consistent with the original table.","Preserve the five pre-plotted printed source points rather than changing them.","Draw a smooth cooling curve with a flat region at about 65 °C.","Show the change from liquid cooling to the plateau and then to solid cooling."],
+     ["Use source-specific axes: temperature 40–80 °C horizontally and time 0–10 min increasing down the page.","Accurately plot all six missing temperature readings, consistent with the original table.","Preserve the five pre-plotted printed source points rather than changing them.","Draw a smooth cooling-curve shape with a constant-temperature 65 °C interval.","Show the change from liquid cooling to the plateau and then to solid cooling."],
      "The curve drops from 80 °C at t=0 to 65 °C at t=3, remains around 65 °C until about t=5, then decreases to 48 °C at t=10.",
-     {type:"graph",x:"Time (min)",y:"Temperature (°C)",
-      points:CHEMISTRY_2016_MJ_Q1_TEMPERATURE_TABLE.map((v,i)=>({x:i,y:v}))},
+     {type:"graph",x:"Temperature (°C)",y:"Time (min)",
+      points:CHEMISTRY_2016_MJ_Q1_TEMPERATURE_TABLE.map((v,i)=>({x:v,y:i}))},
      {figureSvg:CHEMISTRY_2016_MJ_Q1_COOLING_GRAPH_SVG,figureRole:"source-preplotted-five-points"}),
     item("(iii)","List the THREE states of matter.",1,
      ["Solid, liquid and gas (all three for the one mark)."],
