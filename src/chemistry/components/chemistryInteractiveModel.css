@@ -1,0 +1,76 @@
+.chem-model{
+  margin:20px 0;
+  overflow:hidden;
+  border:1px solid var(--spark-border,#d8e2ec);
+  border-radius:16px;
+  background:var(--spark-paper,#fff);
+  box-shadow:0 8px 22px rgba(15,37,87,.06);
+}
+.chem-model-head{padding:16px 18px 12px;border-bottom:1px solid var(--spark-border,#e4eaf1)}
+.chem-model-head>span{display:block;margin-bottom:4px;color:var(--spark-teal-dark,#087f73);font-size:10px;font-weight:850;letter-spacing:.08em;text-transform:uppercase}
+.chem-model-head h4{margin:0;color:var(--spark-ink,#102a56);font-size:17px}
+.chem-model-body{padding:18px;display:grid;gap:16px}
+.chem-slider{display:grid;gap:7px;color:var(--spark-muted,#667892);font-size:12px}
+.chem-slider>span{display:flex;justify-content:space-between;gap:12px}
+.chem-slider b{color:var(--spark-ink,#102a56)}
+.chem-slider input{width:100%;accent-color:var(--spark-teal,#0d9488)}
+.chem-grid-2,.chem-grid-3{display:grid;gap:14px}
+.chem-grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.chem-grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.chem-state-readout,.chem-explain,.chem-equation-box{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:13px 14px;
+  border:1px solid var(--spark-border,#d8e2ec);border-radius:12px;background:var(--spark-soft,#f6f9fc)
+}
+.chem-state-readout strong,.chem-explain strong,.chem-equation-box strong{color:var(--spark-ink,#102a56)}
+.chem-state-readout span,.chem-explain p,.chem-equation-box span{margin:0;color:var(--spark-muted,#667892);font-size:12px;line-height:1.45}
+.chem-sim-svg{width:100%;max-height:260px;background:var(--spark-soft,#f7f9fc);border-radius:14px}
+.chem-sim-svg rect{fill:transparent;stroke:var(--spark-border,#d8e2ec)}
+.chem-sim-svg circle{fill:var(--spark-teal,#0d9488);opacity:.78}
+.chem-energy-line{fill:none;stroke:var(--spark-teal,#0d9488);stroke-width:3}
+.chem-sim-svg line{stroke:var(--spark-ink,#102a56);stroke-width:1.2}
+.chem-sim-svg text{fill:var(--spark-ink,#102a56);font-size:11px}
+.chem-select-label{display:grid;gap:6px;color:var(--spark-muted,#667892);font-size:12px}
+.chem-select-label select{
+  min-height:42px;padding:0 12px;border:1px solid var(--spark-border,#d8e2ec);border-radius:10px;
+  background:var(--spark-paper,#fff);color:var(--spark-ink,#102a56);font:inherit
+}
+.chem-result-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.chem-result-grid>div{padding:12px;border:1px solid var(--spark-border,#d8e2ec);border-radius:11px;background:var(--spark-soft,#f7f9fc)}
+.chem-result-grid span{display:block;margin-bottom:4px;color:var(--spark-muted,#667892);font-size:10px;text-transform:uppercase;letter-spacing:.05em}
+.chem-result-grid strong{display:block;color:var(--spark-ink,#102a56);font-size:12.5px;line-height:1.4}
+.chem-choice-row{display:flex;flex-wrap:wrap;gap:8px}
+.chem-choice-row button,.chem-choice-row label{
+  min-height:38px;padding:0 12px;border:1px solid var(--spark-border,#d8e2ec);border-radius:10px;
+  background:var(--spark-paper,#fff);color:var(--spark-ink,#102a56);font:inherit;font-size:12px;font-weight:750;
+  display:inline-flex;align-items:center;gap:7px;cursor:pointer
+}
+.chem-choice-row button.active{border-color:var(--spark-teal,#0d9488);background:var(--spark-teal-surface,#e8f8f5);color:var(--spark-teal-dark,#087f73)}
+.chem-check{display:flex;align-items:center;gap:8px;color:var(--spark-ink,#102a56);font-size:12px}
+.chem-check input{accent-color:var(--spark-teal,#0d9488)}
+.chem-model-note{margin:0;color:var(--spark-muted,#667892);font-size:11.5px;line-height:1.5}
+.chem-ph-band{padding:15px;border-radius:12px;display:flex;justify-content:space-between;gap:12px}
+.chem-ph-band.acidic{background:#fff1f1;color:#9b2c2c}
+.chem-ph-band.neutral{background:#eef8f0;color:#236b3a}
+.chem-ph-band.alkaline{background:#eef4ff;color:#234a8a}
+html[data-theme="dark"] .chem-model{background:#101d31;border-color:#2a3d56}
+html[data-theme="dark"] .chem-model-head{border-color:#2a3d56}
+html[data-theme="dark"] .chem-model-head h4,
+html[data-theme="dark"] .chem-slider b,
+html[data-theme="dark"] .chem-state-readout strong,
+html[data-theme="dark"] .chem-explain strong,
+html[data-theme="dark"] .chem-equation-box strong,
+html[data-theme="dark"] .chem-result-grid strong,
+html[data-theme="dark"] .chem-check{color:#f3f7ff}
+html[data-theme="dark"] .chem-state-readout,
+html[data-theme="dark"] .chem-explain,
+html[data-theme="dark"] .chem-equation-box,
+html[data-theme="dark"] .chem-result-grid>div,
+html[data-theme="dark"] .chem-choice-row button,
+html[data-theme="dark"] .chem-choice-row label,
+html[data-theme="dark"] .chem-select-label select,
+html[data-theme="dark"] .chem-sim-svg{background:#15243a;border-color:#2a3d56;color:#f3f7ff}
+html[data-theme="dark"] .chem-choice-row button.active{background:#12332f;border-color:#47c9bb;color:#8ee0d6}
+@media(max-width:720px){
+  .chem-grid-2,.chem-grid-3,.chem-result-grid{grid-template-columns:1fr}
+  .chem-state-readout,.chem-explain,.chem-equation-box{flex-direction:column}
+}
