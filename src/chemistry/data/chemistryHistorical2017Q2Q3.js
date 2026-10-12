@@ -30,7 +30,7 @@ export const CHEMISTRY_2017_MJ_Q2_DRAFT=common(2,[8,9,10],[10,11,12],
      "Aspirin's printed molar mass is 180 g mol⁻¹."),
     item("(ii)","Calculate the mass required for 0.20 mol aspirin.",1,
      ["m = nM = 0.20×180 = 36 g."],
-     "Multiply moles by molar mass."),
+     "Use m = nM: 0.20 mol multiplied by 180 g mol⁻¹ gives 36.0 g of aspirin."),
     item("(iii)","Calculate the moles in Jared's 18.0 g aspirin.",1,
      ["n = m/M = 18.0/180 = 0.100 mol."],
      "Divide measured mass by the molar mass.")
