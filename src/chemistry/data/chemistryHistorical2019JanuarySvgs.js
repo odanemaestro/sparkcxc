@@ -21,7 +21,7 @@ export const CHEMISTRY_2019_JAN_Q1_NUMERIC_AUDIT=Object.freeze({
  sourceInconsistency:"The non-rough titres apparently differ by 2 mL; ordinary concordant titre averaging cannot justify using them for a validated answer. All results based on 19 mL are only formal arithmetic, not a scientifically validated determination."
 });
 function reading(x,y,number,initial){
- const lower=initial?1:Math.floor(number),upper=lower+1,
+ const lower=initial?1:(number>=21?21:19),upper=lower+1,
    frac=number-lower;
  const yy=103+(frac)*168;
  const markings=Array.from({length:11},(_,i)=>{
