@@ -2,6 +2,7 @@ import React,{useMemo,useState} from "react";
 import ChemistryPaper2Exam from "./ChemistryPaper2Exam";
 import {CHEMISTRY_HISTORICAL_PAPERS,CHEMISTRY_PAPER2_PRACTICE_SETS,chemistryPaper2BankStats} from "../data/chemistryPaper2Bank";
 import {CHEMISTRY_PAPER2_SOURCE_AUDIT,CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY} from "../data/chemistryPaper2SourceAudit";
+import {CHEMISTRY_HISTORICAL_DRAFT_SUMMARY} from "../data/chemistryHistoricalPaper2Drafts";
 import "./chemistryPractice.css";
 import "../../integratedScience/practice/integratedSciencePractice.css";
 
@@ -16,7 +17,7 @@ function HistoricalArchive({onBack}){
   }),[query,session]);
   return <main className="is-practice-shell chem-practice-shell"><div className="is-practice-home-shell">
     <div className="is-practice-top-actions"><button type="button" className="is-back-button" onClick={onBack}><span aria-hidden="true">←</span>Back to practice modes</button></div>
-    <header className="is-practice-hero"><div><span>CSEC CHEMISTRY PAPER 02</span><h1>Historical source archive</h1><p>All {CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY.suppliedPapers} supplied Paper 02 scans, covering {CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY.suppliedPages} pages, are accounted for here. Historical questions are promoted to learner practice only after page-by-page wording, value, marking and SVG-figure QA.</p></div></header>
+    <header className="is-practice-hero"><div><span>CSEC CHEMISTRY PAPER 02</span><h1>Historical source archive</h1><p>All {CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY.suppliedPapers} supplied Paper 02 scans, covering {CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY.suppliedPages} pages, are accounted for here. Historical questions are promoted to learner practice only after page-by-page wording, value, marking and SVG-figure QA. {CHEMISTRY_HISTORICAL_DRAFT_SUMMARY.transcribedDraftQuestions} questions are currently in draft and are not available for practice.</p></div></header>
     <section className="chem-archive-filters"><label>Search<input value={query} onChange={e=>setQuery(e.target.value)} placeholder="year or topic"/></label><label>Session<select value={session} onChange={e=>setSession(e.target.value)}><option value="all">All sessions</option><option>January</option><option>May/June</option></select></label></section>
     <section className="chem-archive-list">{rows.map(paper=>{
       const source=sourceById[paper.id];
