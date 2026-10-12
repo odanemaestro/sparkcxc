@@ -45,7 +45,6 @@ export const CHEMISTRY_2019_JAN_QUESTIONS_4_TO_6=Object.freeze([
      "In concentrated brine with suitable inert electrodes and normal conditions, chlorine evolves at the anode and hydrogen at the cathode, leaving NaOH solution.",
      {type:"calculation",lines:8})
    ]}
-  ]}
  ],[
   "In aqueous brine, water is reduced at the cathode. Sodium metal deposition is not the correct product; this differs from molten NaCl electrolysis.",
   "Chlorine is toxic. This is a theory question; any laboratory electrolysis is supervised and requires safe ventilation and controls."
@@ -90,7 +89,6 @@ export const CHEMISTRY_2019_JAN_QUESTIONS_4_TO_6=Object.freeze([
      ["Yes, sodium butanoate is water soluble.","Most sodium salts are soluble; ionic sodium carboxylates are hydrated in water, allowing ions to disperse."],
      "Short-chain sodium carboxylates dissolve because the charged COO⁻ Na⁺ head is strongly hydrated.")
    ]}
-  ]}
  ],[
   "Butanoic acid may have a characteristic rancid/buttery smell; do not suggest tasting acid to verify the question's 'bitter taste' description.",
   "Sodium metal reacts violently with water and acids. Equation is educational; no unsupervised synthesis or flame-test instructions should be used."
@@ -129,7 +127,6 @@ export const CHEMISTRY_2019_JAN_QUESTIONS_4_TO_6=Object.freeze([
      ["Carbonating soft drinks / carbonated bottled beverages."],
      "Dissolved pressurised CO₂ provides fizz and carbonation in sparkling drinks.")
    ]}
-  ]}
  ],[
   "CO is colourless and odourless; symptoms are nonspecific and can be severe. Do not treat smell as a reliable detection method.",
   "The source does not specify an acid; hydrochloric acid is a defensible example, while sulfuric acid may coat CaCO₃ in CaSO₄ and impede collection.",
