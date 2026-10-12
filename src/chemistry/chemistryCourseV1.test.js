@@ -46,6 +46,8 @@ import {CHEMISTRY_2021_JAN_TITRATION_DATA,CHEMISTRY_2021_JAN_TITRATION_AUDIT,CHE
 import {CHEMISTRY_2021_JAN_ORGANIC_AUDIT} from "./data/chemistryHistorical2021JanuaryOrganicModels";
 import {CHEMISTRY_2021_MJ_Q1_DATA,CHEMISTRY_2021_MJ_Q1_FARADAY_AUDIT,CHEMISTRY_2021_MJ_ELECTROLYSIS_APPARATUS_SVG,CHEMISTRY_2021_MJ_OXYGEN_GRAPH_SVG,CHEMISTRY_2021_MJ_CRACKING_SVG} from "./data/chemistryHistorical2021MayJuneSvgs";
 import {CHEMISTRY_2021_MJ_BROMOBUTANE_AUDIT} from "./data/chemistryHistorical2021MayJuneOrganicModels";
+import {CHEMISTRY_2022_MJ_Q1_READINGS,CHEMISTRY_2022_MJ_Q1_CALORIMETRY_AUDIT,CHEMISTRY_2022_MJ_Q1_THERMOMETER_SVG,CHEMISTRY_2022_MJ_Q1_GRAPH_SVG,CHEMISTRY_2022_MJ_Q4_CELL_SVG,CHEMISTRY_2022_MJ_Q5_FUNCTIONAL_SVG} from "./data/chemistryHistorical2022MayJuneSvgs";
+import {CHEMISTRY_2022_MJ_NEOPENTANE_AUDIT} from "./data/chemistryHistorical2022MayJuneOrganicModels";
 import {CHEMISTRY_HISTORICAL_COVERAGE} from "./data/chemistryHistoricalCoverage";
 import { getSparkSubjectRegistry } from "../subjects/subjectRegistry";
 import { exactTargetForAction } from "../learning/nextBestActionV2";
@@ -197,8 +199,8 @@ describe("CSEC Chemistry course V1",()=>{
 
   test("historical draft records stay quarantined until independent source QA",()=>{
     expect(CHEMISTRY_HISTORICAL_DRAFT_SUMMARY.fullyVerifiedHistoricalQuestions).toBe(0);
-    expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS).toHaveLength(96);
-    expect(CHEMISTRY_HISTORICAL_DRAFT_SUMMARY.transcribedDraftQuestions).toBe(96);
+    expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS).toHaveLength(102);
+    expect(CHEMISTRY_HISTORICAL_DRAFT_SUMMARY.transcribedDraftQuestions).toBe(102);
     const row=CHEMISTRY_HISTORICAL_DRAFT_ITEMS[0];
     expect(row.sourceId).toBe("CHEM-P2-2025-MJ");
     expect(row.pdfPages).toEqual([2,3,4,5,6]);
@@ -218,8 +220,8 @@ describe("CSEC Chemistry course V1",()=>{
     expect(second.learnerFacing).toBe(false);
     expect(second.parts.flatMap(part=>part.items).reduce((sum,item)=>sum+item.marks,0)).toBe(15);
     expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.filter(item=>item.sourceId==="CHEM-P2-2025-MJ").map(item=>item.originalQuestionNumber)).toEqual([1,2,3,4,5,6]);
-    expect(new Set(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.map(item=>item.id)).size).toBe(96);
-    expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.reduce((sum,row)=>sum+row.totalMarks,0)).toBe(1600);
+    expect(new Set(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.map(item=>item.id)).size).toBe(102);
+    expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.reduce((sum,row)=>sum+row.totalMarks,0)).toBe(1700);
     expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.filter(item=>item.sourceId==="CHEM-P2-2025-MJ").reduce((sum,row)=>sum+row.totalMarks,0)).toBe(100);
     expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.find(item=>item.id==="CHEM-P2-2014-MJ-Q1")?.totalMarks).toBe(25);
     const q2014=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.find(item=>item.id==="CHEM-P2-2014-MJ-Q2");
@@ -344,6 +346,50 @@ describe("CSEC Chemistry course V1",()=>{
     expect(CHEMISTRY_2025_OXYGEN_PREPARATION_SVG).toMatch(/^<svg/);
     expect(CHEMISTRY_2025_MJ_Q1_GRAPH_SVG).toMatch(/^<svg/);
     expect(CHEMISTRY_2025_MJ_Q1_GRAPH_SVG).not.toMatch(/<image\\b/i);
+  });
+
+  test("2022 May June source calorimetry, steel, organics, active copper and green chemistry fully gated",()=>{
+    const rows=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.filter(row=>row.sourceId==="CHEM-P2-2022-MJ");
+    expect(rows.map(row=>row.originalQuestionNumber)).toEqual([1,2,3,4,5,6]);
+    expect(rows.map(row=>row.totalMarks)).toEqual([25,15,15,15,15,15]);
+    expect(rows.reduce((sum,row)=>sum+row.totalMarks,0)).toBe(100);
+    rows.forEach(row=>{
+      expect(row.learnerFacing).toBe(false);
+      expect(row.status).toBe("draft-needs-second-source-review");
+      expect(row.answerSchemeSource).toMatch(/SPARK-authored/);
+      expect(row.sourceFile).toBe("CSEC_Chemistry_P2_2022_MJ.pdf");
+      const its=row.parts.flatMap(part=>part.items);
+      expect(its.reduce((sum,item)=>sum+item.marks,0)).toBe(row.totalMarks);
+      expect(its.every(item=>item.prompt&&item.explanation.length>20&&item.markScheme?.points?.length===item.marks)).toBe(true);
+      expect(auditChemistryHistoricalQuestion(row).ready).toBe(false);
+    });
+    expect(CHEMISTRY_2022_MJ_Q1_READINGS.map(v=>v.seconds)).toEqual([0,15,30,45,60,75,90,105,120]);
+    expect(CHEMISTRY_2022_MJ_Q1_READINGS.map(v=>v.celsius)).toEqual([25,33,39.5,43,44.5,46,45.5,45.5,45]);
+    expect(rows[0].parts[0].items[0].response.table.answers).toEqual(["33.0","39.5","43.0","44.5","46.0"]);
+    expect(rows[0].parts[0].items[1].response.points).toHaveLength(9);
+    expect(CHEMISTRY_2022_MJ_Q1_THERMOMETER_SVG).toMatch(/^<svg/);
+    expect(CHEMISTRY_2022_MJ_Q1_GRAPH_SVG).toMatch(/^<svg/);
+    expect(CHEMISTRY_2022_MJ_Q1_GRAPH_SVG).not.toMatch(/<image\b/i);
+    expect(CHEMISTRY_2022_MJ_Q1_CALORIMETRY_AUDIT.magnesiumMoles).toBeCloseTo(.02,6);
+    expect(CHEMISTRY_2022_MJ_Q1_CALORIMETRY_AUDIT.hclMoles).toBeCloseTo(.05,6);
+    expect(CHEMISTRY_2022_MJ_Q1_CALORIMETRY_AUDIT.stpGasVolumeCm3).toBe(448);
+    expect(CHEMISTRY_2022_MJ_Q1_CALORIMETRY_AUDIT.heatGainedBySolutionJ).toBe(8820);
+    expect(CHEMISTRY_2022_MJ_Q1_CALORIMETRY_AUDIT.exothermicEnergyPerMoleKJ).toBeCloseTo(-441,6);
+    expect(rows[0].sourceIssues.join(" ")).toMatch(/POSITIVE 8820 J/);
+    expect(rows[1].parts[1].items[1].markScheme.points[0]).toMatch(/2NaNO₃/);
+    expect(rows[1].parts[2].items[0].markScheme.points[0]).toMatch(/Fe²⁺/);
+    expect(rows[2].parts[2].items[1].modelAnswerSvgs).toHaveLength(2);
+    expect(CHEMISTRY_2022_MJ_NEOPENTANE_AUDIT).toMatchObject({valid:true,formula:"C5H12",carbonAtoms:5,hydrogenAtoms:12});
+    expect(CHEMISTRY_2022_MJ_NEOPENTANE_AUDIT.carbonValences).toEqual([4,4,4,4,4]);
+    expect(rows[2].sourceIssues.join(" ")).toMatch(/polymerisation/);
+    expect(CHEMISTRY_2022_MJ_Q4_CELL_SVG).toMatch(/^<svg/);
+    expect(rows[3].parts[1].items[1].markScheme.points[1]).toMatch(/Cu\(s\)→Cu²⁺/);
+    expect(rows[3].sourceIssues.join(" ")).toMatch(/ACTIVE COPPER/);
+    expect(CHEMISTRY_2022_MJ_Q5_FUNCTIONAL_SVG).toMatch(/^<svg/);
+    expect(rows[4].sourceIssues.join(" ")).toMatch(/five total covalent bond orders/);
+    expect(rows[4].parts[2].items[1].markScheme.points[0]).toMatch(/ethene/);
+    expect(rows[5].parts[1].items[2].markScheme.points).toHaveLength(6);
+    expect(rows[5].parts[0].items[1].markScheme.points[0]).toMatch(/Nitrate ions/);
   });
 
   test("2021 May June source six questions: polarity, electrolysis discrepancy, C6 cracking, isotope typo and valences",()=>{
@@ -749,10 +795,10 @@ describe("CSEC Chemistry course V1",()=>{
     expect(totals.sources).toBe(28);
     expect(totals.pages).toBe(568);
     expect(totals.expectedQuestions).toBe(167);
-    expect(totals.draftedQuestions).toBe(96);
-    expect(totals.draftMarks).toBe(1600);
-    expect(totals.missingQuestions).toBe(71);
-    expect(totals.fullyDraftedPapers).toBe(16);
+    expect(totals.draftedQuestions).toBe(102);
+    expect(totals.draftMarks).toBe(1700);
+    expect(totals.missingQuestions).toBe(65);
+    expect(totals.fullyDraftedPapers).toBe(17);
     expect(totals.approvedQuestions).toBe(0);
     expect(totals.readyPapers).toBe(0);
     expect(orphanDrafts).toEqual([]);
@@ -781,7 +827,7 @@ describe("CSEC Chemistry course V1",()=>{
 
   test("historical questions cannot be published on source indexing alone",()=>{
     expect(CHEMISTRY_HISTORICAL_REVIEW_SUMMARY.approvedQuestions).toBe(0);
-    expect(CHEMISTRY_HISTORICAL_REVIEW_SUMMARY.papersWithDrafts).toBe(16);
+    expect(CHEMISTRY_HISTORICAL_REVIEW_SUMMARY.papersWithDrafts).toBe(17);
     expect(publishedChemistryHistoricalQuestions()).toHaveLength(0);
     const draft=CHEMISTRY_HISTORICAL_DRAFT_ITEMS[0];
     expect(auditChemistryHistoricalQuestion(draft).ready).toBe(false);
