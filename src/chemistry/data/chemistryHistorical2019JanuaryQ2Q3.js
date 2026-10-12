@@ -95,7 +95,6 @@ export const CHEMISTRY_2019_JAN_Q3_DRAFT=base(3,[12,13,14,15],
      "Bromine adds to the adjacent carbons of pentene's C=C. Formulae are atom-balanced 1:1 in Br₂.",
      {type:"calculation",lines:5})
    ]}
-  ]}
  ],[
  "B must be the chosen C₅H₁₀ species which hydrogenates in one step to straight-chain pentane; cyclopentane has C₅H₁₀ but does not directly yield pentane by standard one-step alkene hydrogenation.",
  "When Compound B is an isomer of pentene, the structural bromination product must be consistent with that isomer, and the source equation can use the molecular formula C₅H₁₀Br₂."
