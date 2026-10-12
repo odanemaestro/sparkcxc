@@ -1,3 +1,4 @@
+import { CHEMISTRY_HISTORICAL_2025_MJ_REMAINDER } from "./chemistryHistorical2025Remainder";
 import { CHEMISTRY_2025_MJ_Q1_GRAPH_SVG } from "./chemistryHistoricalGraphSvg";
 
 // Draft transcription from the user-supplied 2025 May/June CSEC Chemistry Paper 02.
@@ -124,7 +125,8 @@ export const CHEMISTRY_HISTORICAL_DRAFT_ITEMS = Object.freeze([
           "A suitable antacid reacts with hydrochloric acid in the stomach.")
       ]}
     ]
-  })
+  }),
+  ...CHEMISTRY_HISTORICAL_2025_MJ_REMAINDER
 ]);
 
 export const CHEMISTRY_HISTORICAL_DRAFT_SUMMARY = Object.freeze({
