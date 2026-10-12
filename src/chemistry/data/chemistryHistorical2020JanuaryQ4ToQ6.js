@@ -10,7 +10,7 @@ const item=(label,prompt,marks,points,explanation,response={type:"lines",lines:M
 });
 const question=(n,pages,title,objectives,parts,sourceIssues=[])=>Object.freeze({
  id:"CHEM-P2-2020-JAN-Q"+n,sourceId:"CHEM-P2-2020-JAN",sourceFile:"CSEC_Chemistry_P2_2020_JAN.pdf",
- pdfPages:pages,printedPages:pages,originalQuestionNumber:n,kind:"extended",totalMarks:15,
+ pdfPages:pages,printedPages:pages.map(page=>page+2),originalQuestionNumber:n,kind:"extended",totalMarks:15,
  status:"draft-needs-second-source-review",learnerFacing:false,title,objectives,parts,sourceIssues,
  answerSchemeSource:"SPARK-authored; original CXC scheme not supplied",
  diagramStatus:"SPARK original native SVG source references and model answers awaiting independent visual and chemical QA"
