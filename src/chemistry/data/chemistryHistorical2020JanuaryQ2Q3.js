@@ -94,7 +94,6 @@ export const CHEMISTRY_2020_JAN_Q3_DRAFT=base(3,[11,12,13],
      ["First carboxylic acid: methanoic acid (HCOOH), also called formic acid.","First alcohol: methanol (CH₃OH)."],
      "The smallest carboxylic acid contains one carbon atom; the smallest alcohol is methanol.")
    ]}
-  ]}
  ],[
  "The source gives B as C3H6 and asks for its alkene homologous series; cyclopropane also shares the formula but does not belong to the intended alkene series.",
  "Fully displayed propane, propene and product candidates must show every H and C–H bond; condensed structures alone are not enough.",
