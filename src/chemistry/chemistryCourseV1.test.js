@@ -23,6 +23,7 @@ import {CHEMISTRY_SUPPLEMENTARY_CONTENT_AUDIT} from "./data/chemistrySupplementa
 import {CHEMISTRY_HISTORICAL_REVIEW_SUMMARY,auditChemistryHistoricalQuestion,publishedChemistryHistoricalQuestions} from "./data/chemistryHistoricalReleaseGate";
 import {CHEMISTRY_JAN_2025_ESTER_VALENCE_AUDIT} from "./data/chemistryHistoricalJanuary2025EsterSvgs";
 import {CHEMISTRY_2025_JAN_Q5_ALKENE_AUDIT} from "./data/chemistryHistoricalJanuary2025PolymersSvg";
+import {CHEMISTRY_HISTORICAL_COVERAGE} from "./data/chemistryHistoricalCoverage";
 import { getSparkSubjectRegistry } from "../subjects/subjectRegistry";
 import { exactTargetForAction } from "../learning/nextBestActionV2";
 
@@ -262,6 +263,28 @@ describe("CSEC Chemistry course V1",()=>{
     expect(CHEMISTRY_2025_OXYGEN_PREPARATION_SVG).toMatch(/^<svg/);
     expect(CHEMISTRY_2025_MJ_Q1_GRAPH_SVG).toMatch(/^<svg/);
     expect(CHEMISTRY_2025_MJ_Q1_GRAPH_SVG).not.toMatch(/<image\\b/i);
+  });
+
+  test("historical coverage tracks 28 papers without inventing verified questions",()=>{
+    const {totals,papers,orphanDrafts,duplicateQuestionNumbers}=CHEMISTRY_HISTORICAL_COVERAGE;
+    expect(papers).toHaveLength(28);
+    expect(totals.sources).toBe(28);
+    expect(totals.pages).toBe(568);
+    expect(totals.expectedQuestions).toBe(167);
+    expect(totals.draftedQuestions).toBe(13);
+    expect(totals.draftMarks).toBe(225);
+    expect(totals.missingQuestions).toBe(154);
+    expect(totals.fullyDraftedPapers).toBe(2);
+    expect(totals.approvedQuestions).toBe(0);
+    expect(totals.readyPapers).toBe(0);
+    expect(orphanDrafts).toEqual([]);
+    expect(duplicateQuestionNumbers).toEqual([]);
+    expect(papers.find(row=>row.sourceId==="CHEM-P2-2025-JAN")).toMatchObject({
+      expectedQuestions:6,draftedQuestions:6,paperComplete:true,publishedComplete:false
+    });
+    expect(papers.find(row=>row.sourceId==="CHEM-P2-2014-MJ")).toMatchObject({
+      expectedQuestions:6,draftedQuestions:1,paperComplete:false,missingNumbers:[2,3,4,5,6]
+    });
   });
 
   test("historical questions cannot be published on source indexing alone",()=>{
