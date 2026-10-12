@@ -81,8 +81,8 @@ const BASE_SUBJECTS = Object.freeze({
     enabled: true,
     status: "live",
     sortOrder: 50,
-    implementation: "generic",
-    studyView: "study",
+    implementation: "custom",
+    studyView: "generic-study",
     routes: Object.freeze({
       study: "/study/english-a",
       practice: "/practice/english-a",
