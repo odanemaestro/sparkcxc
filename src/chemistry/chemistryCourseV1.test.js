@@ -177,8 +177,8 @@ describe("CSEC Chemistry course V1",()=>{
 
   test("historical draft records stay quarantined until independent source QA",()=>{
     expect(CHEMISTRY_HISTORICAL_DRAFT_SUMMARY.fullyVerifiedHistoricalQuestions).toBe(0);
-    expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS).toHaveLength(24);
-    expect(CHEMISTRY_HISTORICAL_DRAFT_SUMMARY.transcribedDraftQuestions).toBe(24);
+    expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS).toHaveLength(30);
+    expect(CHEMISTRY_HISTORICAL_DRAFT_SUMMARY.transcribedDraftQuestions).toBe(30);
     const row=CHEMISTRY_HISTORICAL_DRAFT_ITEMS[0];
     expect(row.sourceId).toBe("CHEM-P2-2025-MJ");
     expect(row.pdfPages).toEqual([2,3,4,5,6]);
@@ -198,8 +198,8 @@ describe("CSEC Chemistry course V1",()=>{
     expect(second.learnerFacing).toBe(false);
     expect(second.parts.flatMap(part=>part.items).reduce((sum,item)=>sum+item.marks,0)).toBe(15);
     expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.filter(item=>item.sourceId==="CHEM-P2-2025-MJ").map(item=>item.originalQuestionNumber)).toEqual([1,2,3,4,5,6]);
-    expect(new Set(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.map(item=>item.id)).size).toBe(24);
-    expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.reduce((sum,row)=>sum+row.totalMarks,0)).toBe(400);
+    expect(new Set(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.map(item=>item.id)).size).toBe(30);
+    expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.reduce((sum,row)=>sum+row.totalMarks,0)).toBe(500);
     expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.filter(item=>item.sourceId==="CHEM-P2-2025-MJ").reduce((sum,row)=>sum+row.totalMarks,0)).toBe(100);
     expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.find(item=>item.id==="CHEM-P2-2014-MJ-Q1")?.totalMarks).toBe(25);
     const q2014=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.find(item=>item.id==="CHEM-P2-2014-MJ-Q2");
@@ -235,6 +235,22 @@ describe("CSEC Chemistry course V1",()=>{
     expect(sourceCalorimetry.svg).not.toMatch(/<image\\b/i);
     expect(yr15[4].parts[0].context).toMatch(/Figure 3/);
     expect(yr15[4].parts[0].svg).toMatch(/^<svg/);
+    const yr13=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.filter(row=>row.sourceId==="CHEM-P2-2013-MJ");
+    expect(yr13.map(row=>row.originalQuestionNumber)).toEqual([1,2,3,4,5,6]);
+    expect(yr13.reduce((sum,row)=>sum+row.totalMarks,0)).toBe(100);
+    yr13.forEach(row=>{
+      expect(row.learnerFacing).toBe(false);
+      expect(row.status).toMatch(/draft-needs-second-source-review/);
+      expect(row.parts.flatMap(part=>part.items).reduce((sum,item)=>sum+item.marks,0)).toBe(row.totalMarks);
+      expect(row.parts.flatMap(part=>part.items).every(item=>item.markScheme?.points?.length>0&&item.explanation.length>20)).toBe(true);
+    });
+    expect(yr13[0].parts[0].svg).toMatch(/^<svg/);
+    expect(yr13[0].parts[0].items[0].response.table.answers).toEqual(["162","196","230","264"]);
+    expect(yr13[0].sourceIssues.length).toBeGreaterThan(0);
+    expect(yr13[1].parts[0].svg).toMatch(/^<svg/);
+    expect(yr13[2].parts[2].svg).toMatch(/^<svg/);
+    expect(yr13[3].parts[1].svg).toMatch(/^<svg/);
+    expect(yr13[4].parts[0].svg).toMatch(/^<svg/);
     expect(yr15[2].parts[0].items[0].modelAnswerSvgs).toHaveLength(2);
     expect(yr15[1].parts[1].items[0].modelAnswerSvgs).toHaveLength(1);
     expect(yr15[1].parts[1].items[1].modelAnswerSvgs).toHaveLength(1);
@@ -316,10 +332,10 @@ describe("CSEC Chemistry course V1",()=>{
     expect(totals.sources).toBe(28);
     expect(totals.pages).toBe(568);
     expect(totals.expectedQuestions).toBe(167);
-    expect(totals.draftedQuestions).toBe(24);
-    expect(totals.draftMarks).toBe(400);
-    expect(totals.missingQuestions).toBe(143);
-    expect(totals.fullyDraftedPapers).toBe(4);
+    expect(totals.draftedQuestions).toBe(30);
+    expect(totals.draftMarks).toBe(500);
+    expect(totals.missingQuestions).toBe(137);
+    expect(totals.fullyDraftedPapers).toBe(5);
     expect(totals.approvedQuestions).toBe(0);
     expect(totals.readyPapers).toBe(0);
     expect(orphanDrafts).toEqual([]);
@@ -348,7 +364,7 @@ describe("CSEC Chemistry course V1",()=>{
 
   test("historical questions cannot be published on source indexing alone",()=>{
     expect(CHEMISTRY_HISTORICAL_REVIEW_SUMMARY.approvedQuestions).toBe(0);
-    expect(CHEMISTRY_HISTORICAL_REVIEW_SUMMARY.papersWithDrafts).toBe(4);
+    expect(CHEMISTRY_HISTORICAL_REVIEW_SUMMARY.papersWithDrafts).toBe(5);
     expect(publishedChemistryHistoricalQuestions()).toHaveLength(0);
     const draft=CHEMISTRY_HISTORICAL_DRAFT_ITEMS[0];
     expect(auditChemistryHistoricalQuestion(draft).ready).toBe(false);
