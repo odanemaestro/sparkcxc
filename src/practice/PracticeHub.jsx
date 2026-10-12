@@ -24,6 +24,9 @@ const SocialStudiesPracticeHub = lazy(() =>
 const EnglishAPracticeHub = lazy(() =>
   import("../englishA/practice/EnglishAPracticeHub")
 );
+const ChemistryPracticeHub = lazy(() =>
+  import("../chemistry/practice/ChemistryPracticeHub")
+);
 
 function PracticeLazyBoundary({ label, children }) {
   return (
@@ -104,7 +107,9 @@ export default function PracticeHub({ supabase, userId, setView, physicsEnabled 
                   ? "practice-social-studies"
                   : item.id === "english-a"
                     ? "practice-english-a"
-                    : "practice-math"
+                    : item.id === "chemistry"
+                      ? "practice-chemistry"
+                      : "practice-math"
         );
       }}
       onBack={() => setView?.("dashboard")}
@@ -165,6 +170,18 @@ export default function PracticeHub({ supabase, userId, setView, physicsEnabled 
     return (
       <PracticeLazyBoundary label="Loading English A practice">
         <EnglishAPracticeHub
+          supabase={supabase}
+          userId={userId}
+          onBack={() => { setMode("home"); setView?.("practice"); }}
+        />
+      </PracticeLazyBoundary>
+    );
+  }
+
+  if (selectedSubject === "chemistry") {
+    return (
+      <PracticeLazyBoundary label="Loading Chemistry practice">
+        <ChemistryPracticeHub
           supabase={supabase}
           userId={userId}
           onBack={() => { setMode("home"); setView?.("practice"); }}
