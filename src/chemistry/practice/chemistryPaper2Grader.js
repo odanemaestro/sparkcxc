@@ -136,11 +136,19 @@ function graphResult(base,item,responses){
   const yLabel=String(responses[`${base}:yLabel`] || "").trim();
   const labelsOk=Boolean(xLabel && yLabel);
 
+  const xValues=expected.map(point=>Number(point.x)).filter(Number.isFinite);
+  const yValues=expected.map(point=>Number(point.y)).filter(Number.isFinite);
+  const xRange=xValues.length?Math.max(...xValues)-Math.min(...xValues):0;
+  const yRange=yValues.length?Math.max(...yValues)-Math.min(...yValues):0;
+  // Use the scale of the actual dataset, not a fixed 0.01 tolerance that
+  // wrongly accepts substantially misplaced points on small-rate graphs.
+  const xTolerance=Math.max(1e-7,xRange*0.015);
+  const yTolerance=Math.max(1e-7,yRange*0.015);
   let matched=0;
   expected.forEach(target=>{
     if(plotted.some(point =>
-      Math.abs(Number(point.x)-Number(target.x))<=Math.max(.1,Math.abs(Number(target.x))*0.02) &&
-      Math.abs(Number(point.y)-Number(target.y))<=Math.max(.01,Math.abs(Number(target.y))*0.03)
+      Math.abs(Number(point.x)-Number(target.x))<=xTolerance &&
+      Math.abs(Number(point.y)-Number(target.y))<=yTolerance
     )) matched+=1;
   });
 
