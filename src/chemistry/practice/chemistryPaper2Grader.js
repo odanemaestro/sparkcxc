@@ -134,10 +134,10 @@ export function chemistryGraphAxisLabelMatches(actual,expected){
   const topic=terms.find(term=>new RegExp(`\\b${term}\\b`).test(target));
   if(topic&&!new RegExp(`\\b${topic}\\b`).test(entry))return false;
   const units=[
-    {source:/°c|celsius/,provided:/°c|celsius|degrees?\\s*c/},
-    {source:/\\bminutes?\\b|\\bmin\\b/,provided:/\\bminutes?\\b|\\bmin\\b/},
-    {source:/s⁻¹|s\\^-?1|s-1/,provided:/s⁻¹|s\\^-?1|s-1|per second/},
-    {source:/\\bg\\b|\\bgrams?\\b/,provided:/\\bg\\b|\\bgrams?\\b/}
+    {source:/°c|celsius/,provided:/°c|celsius|degrees?\s*c/},
+    {source:/\bminutes?\b|\bmin\b/,provided:/\bminutes?\b|\bmin\b/},
+    {source:/s⁻¹|s\^-?1|s-1/,provided:/s⁻¹|s\^-?1|s-1|per second/},
+    {source:/\bg\b|\bgrams?\b/,provided:/\bg\b|\bgrams?\b/}
   ];
   return units.every(unit=>!unit.source.test(target)||unit.provided.test(entry));
 }
