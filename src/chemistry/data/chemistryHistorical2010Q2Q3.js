@@ -1,3 +1,4 @@
+import {CHEMISTRY_2010_MJ_ORGANIC_MODELS,CHEMISTRY_2010_MJ_SODIUM_OXIDE_DOT_CROSS_SVG} from "./chemistryHistorical2010OrganicModels";
 // Source: CSEC_Chemistry_P2_2010_MJ.pdf pages 8–11.
 // Original printed questions are preserved as authoring prompts while
 // explanatory material is SPARK-authored. Still requires independent QA.
@@ -43,7 +44,7 @@ export const CHEMISTRY_2010_MJ_Q2_DRAFT=common(2,[8,9],
  {label:"(c)",items:[item("","Using a dot-and-cross diagram, show how Q bonds to oxygen (atomic number 8).",2,
    ["Show TWO Na atoms each losing one electron to form two Na⁺ ions; one O atom gains both electrons to form O²⁻.","Depict bracketed ions with correct 1+ and 2− charges and oxygen's full outer-shell octet, giving Na₂O."],
    "The sodium-24 isotope bonds like sodium-23: two sodium ions each donate one electron to oxygen in ionic sodium oxide.",
-   {type:"drawing",height:400})]}
+   {type:"drawing",height:400},{modelAnswerSvgs:[CHEMISTRY_2010_MJ_SODIUM_OXIDE_DOT_CROSS_SVG]})]}
 ],["The notebook's phrase 'oxidize an aqueous solution of zinc ions' is chemically misworded. Clarify magnesium reduces Zn²⁺ while magnesium itself oxidises.","Chemistry of ionic sodium oxide should use the standard 2Na⁺ and O²⁻ diagram, not an isolated covalent Na–O molecule."]);
 export const CHEMISTRY_2010_MJ_Q3_DRAFT=common(3,[10,11],
  "C4H8 structural isomers and ethanol conversion to an alkene, acid and ester",
@@ -60,7 +61,7 @@ export const CHEMISTRY_2010_MJ_Q3_DRAFT=common(3,[10,11],
    item("(iii)","Draw and name ONE OTHER structural isomer of C₄H₈.",3,
     ["Draw a branched skeleton, 2-methylpropene (CH₂=C(CH₃)₂), or an accepted cyclic structural isomer when consistent with the original marking context.","Ensure correct C₄H₈ molecular formula and carbon valence in the diagram.","Name the structure correctly: 2-methylpropene (or a valid named cycloalkane structural isomer)."],
     "2-methylpropene has four carbon atoms but a branched C=C skeleton; it has the same molecular formula as the straight-chain butenes.",
-    {type:"drawing",height:370}),
+    {type:"drawing",height:370},{modelAnswerSvgs:[CHEMISTRY_2010_MJ_ORGANIC_MODELS.methylpropene]}),
    item("(iv)","State ONE physical property of C₄H₈.",1,
     ["A small nonpolar C₄H₈ hydrocarbon is poorly soluble in water; butenes are gases at ordinary room temperature and pressure."],
     "Low molecular-mass nonpolar alkenes do not mix appreciably with water.")
@@ -77,7 +78,7 @@ export const CHEMISTRY_2010_MJ_Q3_DRAFT=common(3,[10,11],
      "Dehydration removes water from ethanol to form ethene."),
     item("(ii) Alkene structure","Draw the fully displayed alkene produced from ethanol.",1,
      ["Ethene, H₂C=CH₂, with both carbon atoms and all four hydrogen atoms and the C=C fully displayed."],
-     "Ethanol loses water to form ethene, the C₂H₄ alkene."),
+     "Ethanol loses water to form ethene, the C₂H₄ alkene.",{type:"drawing",height:290},{modelAnswerSvgs:[CHEMISTRY_2010_MJ_ORGANIC_MODELS.ethene]}),
     item("(ii) Acid reagent","State suitable reagents or conditions for converting ethanol to the displayed carboxylic acid.",1,
      ["Reflux ethanol with acidified potassium dichromate(VI) or acidified potassium manganate(VII), using sufficient oxidant."],
      "Strong oxidation of a primary alcohol under reflux produces its carboxylic acid, ethanoic acid."),
@@ -87,6 +88,6 @@ export const CHEMISTRY_2010_MJ_Q3_DRAFT=common(3,[10,11],
     item("(ii) Ester structure","Draw the fully displayed ester made from ethanol under the conditions stated.",2,
      ["Show ethyl ethanoate, CH₃–C(=O)–O–CH₂–CH₃, with the correct carbonyl and ester bridging oxygen.","Show all carbon, hydrogen and oxygen atoms explicitly with correct bonds and valence; a different chemically valid ester is acceptable if reagent matches."],
      "Ethyl ethanoate contains the –C(=O)–O– ester linkage. Its alcohol-derived portion is –O–CH₂–CH₃.",
-     {type:"drawing",height:420})
+     {type:"drawing",height:420},{modelAnswerSvgs:[CHEMISTRY_2010_MJ_ORGANIC_MODELS.ethylEthanoate]})
    ]}
 ],["The original table provides one displayed acid structure but intentionally leaves other products blank. Learner source and any model answers must be distinguished.","The ester may differ if the chosen carboxylic acid differs; judge consistency between chosen reagent and fully displayed product."]);
