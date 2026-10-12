@@ -122,7 +122,7 @@ export const CHEMISTRY_2021_MJ_QUESTIONS_4_TO_6=Object.freeze([
     "Iron is a required biological trace element; lead is a cumulative toxicant and should not be confused with an essential dietary mineral.")
    ]}
  ],[
-  "Two PbO2→Pb source exam reactions have multiple chemically balanced routes. Thermal PbO2→PbO can involve intermediate Pb3O4 at practical temperatures: mark the stated reaction sequence as a school-level idealisation, not universally exact industrial flowsheet.",
+  "Two PbO₂→Pb source exam reactions have multiple chemically balanced routes. Thermal PbO2→PbO can involve intermediate Pb3O4 at practical temperatures: mark the stated reaction sequence as a school-level idealisation, not universally exact industrial flowsheet.",
   "The electrochemical series alone gives useful broad extraction guidance but exact ores/slag/impurities matter; use chemistry-accurate high level comparison.",
   "Lead is toxic and not an essential nutrient. Do not suggest experiments heating lead oxides outside a fully controlled professional laboratory."
  ])
