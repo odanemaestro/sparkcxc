@@ -337,3 +337,34 @@ export const CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY = Object.freeze({
   lastYear:Math.max(...CHEMISTRY_PAPER2_SOURCE_AUDIT.map(row=>row.year)),
   principle:"A source scan is not promoted to the learner question bank until wording, values, marks and every required figure have been checked against the page image.",
 });
+
+
+export const CHEMISTRY_PAPER2_FORMAT_ERAS = Object.freeze([
+  Object.freeze({
+    id:"five-question-compulsory",
+    years:"2005-2007",
+    sourcePapers:3,
+    notes:[
+      "The supplied papers contain five compulsory questions and use the older shorter Paper 02 format.",
+      "Question language and chemistry content remain useful for the historical bank, but this structure is not copied into current SPARK simulations.",
+    ],
+  }),
+  Object.freeze({
+    id:"seven-question-choice",
+    years:"2008-2009",
+    sourcePapers:2,
+    notes:[
+      "The supplied papers contain seven questions in three sections with compulsory work and section choice.",
+      "SPARK keeps the question styles and source content while treating the retired choice structure as historical only.",
+    ],
+  }),
+  Object.freeze({
+    id:"six-question-modern",
+    years:"2010-2025",
+    sourcePapers:23,
+    notes:[
+      "The supplied papers use six-question Paper 02 structures, with all six questions compulsory in the later format.",
+      "Current SPARK simulations follow the syllabus requirement of one data-analysis question, two structured questions and three extended-response questions.",
+    ],
+  }),
+]);
