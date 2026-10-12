@@ -89,7 +89,6 @@ export const CHEMISTRY_2022_MJ_QUESTIONS_4_TO_6=Object.freeze([
      "Complete combustion of ethene yields carbon dioxide and water; one ethene molecule uses three oxygen molecules.",
      {type:"calculation",lines:6})
    ]}
-  ]}
  ],[
   "Critical printed SOURCE VALENCE ERROR: original Figure 6 carbonyl ester carbon has a DOUBLE O bond, single C–C bond, single C–O bond AND an extra single C–H bond, making five total covalent bond orders for carbon, impossible in an ordinary closed-shell ester. The teacher source SVG is deliberately CHEMICALLY CORRECTED; don't claim a perfect exact match. Examiner sign-off mandatory.",
   "Compound D has at least acid COOH, alkene C=C and ester COO functional groups; accept any two distinct properly circled functional regions.",
@@ -119,7 +118,6 @@ export const CHEMISTRY_2022_MJ_QUESTIONS_4_TO_6=Object.freeze([
     "A strong answer applies three DIFFERENT green-chemistry principles to this particular rural factory, with a clear action and its environmental/economic benefit for each.",
     {type:"lines",lines:12})
    ]}
-  ]}
  ],[
   "Algal blooms require nutrient enrichment: phosphate, nitrate and ammonium are plausible; plastics and many pesticides contribute OTHER harms but are not themselves necessarily algal nutrients.",
   "Three distinct named green-chemistry principles and three matching prevention mechanisms should be marked, not three paraphrases of one principle.",
