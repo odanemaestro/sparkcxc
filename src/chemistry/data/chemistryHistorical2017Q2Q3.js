@@ -60,7 +60,6 @@ export const CHEMISTRY_2017_MJ_Q2_DRAFT=common(2,[8,9,10],[10,11,12],
      ["Weak electrolyte.","Ethanoic acid is a weak acid that only partially ionises in water.","It has fewer mobile ions at a similar concentration than a strong acid and therefore generally conducts less strongly."],
      "Most dissolved CH₃COOH remains as neutral molecules at equilibrium, resulting in relatively low ionic conductivity.")
    ]}
-  ]}
  ],[
  "The original aspirin container label lists a 140 °C boiling point for aspirin, which is not a reliable physically measured normal boiling point (aspirin decomposes before straightforward boiling); retain it only as source data and do not teach it as a verified property.",
  "Figure 5 is a source skeletal structure of aspirin and salicylic acid; SVG currently shows chemically equivalent overall hydrolysis but not exact aromatic bond geometry. Source overlay must follow."
@@ -104,7 +103,6 @@ export const CHEMISTRY_2017_MJ_Q3_DRAFT=common(3,[11,12],[13,14],
      "Br₂ adds one bromine atom to each carbon of but-2-ene's former double bond, giving C₄H₈Br₂.",
      {type:"drawing",height:400},{modelAnswerSvgs:[CHEMISTRY_2017_MJ_Q3_BROMINE_SVGS.dibromobutane]})
    ]}
-  ]}
  ],[
  "Fully displayed pentane-isomer and 2,3-dibromobutane structures are native answer-model SVGs, not preprinted historical figures. Verify they satisfy the request for all hydrogen bonds and source layout.",
  "But-2-ene can give stereochemical bromination products; this school question tests connectivity, so do not insist on a single specific stereochemical drawing absent explicit source requirements."
