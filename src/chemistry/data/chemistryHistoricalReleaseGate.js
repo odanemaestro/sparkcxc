@@ -17,6 +17,21 @@ export function auditChemistryHistoricalQuestion(record){
     missing.push("mark-total");
   if(items.some(item=>!item.prompt||!item.markScheme?.points?.length||!item.explanation))
     missing.push("complete-answer-and-explanation");
+  // A complete source transcription still cannot be published when individual
+  // criteria do not account for the exact marks shown beside each answer.
+  const allocationValid=item=>{
+    const marks=Number(item?.marks||0);
+    const points=item?.markScheme?.points||[];
+    if(!Number.isInteger(marks)||marks<1||!Array.isArray(points)||!points.length)return false;
+    if(points.some(point=>!String(point||"").trim()))return false;
+    const weights=item?.markScheme?.pointWeights;
+    if(Array.isArray(weights))return weights.length===points.length &&
+      weights.every(weight=>Number.isFinite(Number(weight))&&Number(weight)>0) &&
+      Math.abs(weights.reduce((sum,weight)=>sum+Number(weight),0)-marks)<1e-9;
+    return points.length===marks;
+  };
+  if(items.some(item=>!allocationValid(item)))
+    missing.push("mark-scheme-allocation");
   const approvals=record?.qaApprovals||{};
   CHECKS.forEach(check=>{if(!approved(approvals[check]))missing.push(`qa:${check}`);});
   // A model answer illustration is not a substitute for the source image.
