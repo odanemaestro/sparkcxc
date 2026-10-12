@@ -89,12 +89,12 @@ function tableResult(base,item,responses){
   const criteria=blanks.map((key,index)=>{
     const response=responses[key]||"";
     const expected=Array.isArray(answers[index])?answers[index]:[answers[index]].filter(Boolean);
-    const earned=expected.length ? expected.some(v=>numericMatch(response,[Number(v)])||textMatch(response,String(v))) : Boolean(String(response).trim());
+    const earned=expected.length ? expected.some(v=>{ const numeric=String(v).trim()!=="" && Number.isFinite(Number(v)); return numeric ? numericMatch(response,[Number(v)]) : textMatch(response,String(v)); }) : false;
     return {id:key,label:expected.join(" / ")||"completed cell",marks:earned?1:0,maxMarks:1,earned,evidence:response};
   });
   const score=Math.min(Number(item.marks||0),criteria.reduce((sum,row)=>sum+row.marks,0));
   return {score,maxMarks:Number(item.marks||0),criteria,confidence:answers.length?"high":"low",provisional:!answers.length,
-    ...(answers.length?{}:{unassessedMarks:Math.max(0,Number(item.marks||0)-score),reason:"Table entries need manual comparison with the authored scheme."})};
+    ...(answers.length?{}:{unassessedMarks:Math.max(0,Number(item.marks||0)-score),reason:"No verified answer key is available for these table cells. Answers require examiner review."})};
 }
 
 function graphResult(base,item,responses){
