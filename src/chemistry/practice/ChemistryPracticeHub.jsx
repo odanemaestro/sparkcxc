@@ -23,7 +23,7 @@ function HistoricalArchive({onBack}){
       return <article key={paper.id} className="chem-archive-card">
         <div><span>{paper.session}</span><h2>{paper.year} Chemistry Paper 02</h2><p>{paper.questionCount} questions · {source?.pages || "?"} source pages</p></div>
         <div className="chem-archive-tags">{paper.topics.map(topic=><span key={topic}>{topic.replaceAll("-"," ")}</span>)}</div>
-        <div className="chem-archive-status"><b>Source verified</b><small>Full historical transcription and diagram QA tracked separately before learner release</small></div>
+        <div className="chem-archive-status"><b>Scan inventoried</b><small>Questions and diagrams are not yet cleared for student practice. The original marking scheme was not supplied.</small></div>
       </article>;
     })}</section>
   </div></main>;
@@ -39,7 +39,7 @@ export default function ChemistryPracticeHub({supabase,userId,onBack}){
 
   return <main className="is-practice-shell chem-practice-shell"><div className="is-practice-home-shell">
     <div className="is-practice-top-actions"><button type="button" className="is-back-button" onClick={onBack}><span aria-hidden="true">←</span>Back</button></div>
-    <header className="is-practice-hero"><div><span>CSEC CHEMISTRY PRACTICE</span><h1>Choose a practice mode</h1><p>Work through full current-format Paper 02 simulations or explore the supplied historical Paper 02 archive.</p></div></header>
+    <header className="is-practice-hero"><div><span>CSEC CHEMISTRY PRACTICE</span><h1>Choose a practice mode</h1><p>Work through full current-format Paper 02 simulations or check the list of supplied historical Paper 02 scans. Historical questions are not yet released for student practice.</p></div></header>
 
     <section className="is-practice-mode-list">
       <button type="button" className="is-practice-section-card" onClick={()=>{setPaperIndex(0);setMode("paper2");}}>
