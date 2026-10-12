@@ -6,11 +6,11 @@ const f = value => Number(value).toFixed(1);
 const svg=(inner,w,h,title,desc)=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" role="img" aria-label="${title}"><title>${title}</title><desc>${desc}</desc><rect x="0" y="0" width="${w}" height="${h}" fill="#fff"/>${inner}</svg>`;
 
 const syringe=(x,time,upper,reading)=>{
- const top=56,bottom=230,unit=17.0,datum=101;
+ const top=56,bottom=230,unit=10.0,datum=101;
  const left=x+13,right=x+79;
  const yval=value=>datum+(upper-value)*unit;
  const level=yval(reading);
- const tickLines=Array.from({length:18},(_,i)=>{
+ const tickLines=Array.from({length:25},(_,i)=>{
    const y=datum+i*unit/2;
    const length=i%2===0?14:8;
    return `<line x1="${left}" y1="${f(y)}" x2="${left+length}" y2="${f(y)}"/>`;
