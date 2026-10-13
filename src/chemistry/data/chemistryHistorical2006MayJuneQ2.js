@@ -1,3 +1,4 @@
+import {CHEMISTRY_2006_MJ_Q2_NACL_CUBE_SVG} from "./chemistryHistorical2006SourceFigures";
 // Original CSEC_Chemistry_P2_2006_MJ.pdf Q2, PDF pp6–7, original 16 marks.
 const item=(label,prompt,marks,points,explanation,response={type:"lines",lines:Math.max(3,marks+1)})=>({label,prompt,marks,response,markScheme:{points,guidance:"SPARK-authored provisional criteria; official CXC marking not supplied."},explanation});
 export const CHEMISTRY_2006_MJ_Q2_DRAFT=Object.freeze({
@@ -7,6 +8,7 @@ export const CHEMISTRY_2006_MJ_Q2_DRAFT=Object.freeze({
  learnerFacing:false,status:"draft-needs-second-source-review",answerSchemeSource:"SPARK-authored provisional",
  diagramStatus:"Figure 3 original outline sodium chloride crystal and sodium/chloride solid/hatch keys require a source-accurate SVG with alternating charges; drawing pending independent overlay.",
  sourceVerificationNote:"Assistant first-pass source comparison against printed 2006 PDF pages 6–7; source figures and all examiner rubrics remain unapproved.",
+ sourceFigures:[{page:6,figure:"Figure 3",svg:CHEMISTRY_2006_MJ_Q2_NACL_CUBE_SVG,sourceApproved:false}],
  sourceIssues:["Source page 7 prints TOTAL 16 marks: 2+3+2+3+3+3. Preserve this unusual total.","The chlorine isotope comparison asks 'differences, if any' in reactions: both have the same outer electron arrangement, although tiny kinetic isotope effects can occur; at school level they react chemically in essentially the same way."],
  parts:[
  {label:"(a)",items:[
