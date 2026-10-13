@@ -38,7 +38,7 @@ function HistoricalArchive({onBack,onStart}){
       return <article key={paper.id} className="chem-archive-card">
         <div className="chem-archive-paper-summary"><span className="chem-archive-year-badge"><small>{paper.session==="January"?"JAN":"MJ"}</small><strong>{paper.year}</strong></span><div><h2>{paper.year} Chemistry Paper 02</h2><p>{source?.pages || "?"} source pages · {paper.questionCount} questions · {coverage?.draftedQuestions||0}/{coverage?.expectedQuestions||paper.questionCount} drafted</p></div></div>
         <div className="chem-archive-tags">{paper.topics.map(topic=><span key={topic}>{topic.replaceAll("-"," ")}</span>)}</div>
-        <div className="chem-archive-status"><b>{attempt?.complete?"Transcribed paper":"Partial transcription"}</b><small>SPARK-authored answers awaiting independent review.</small></div>
+        <div className="chem-archive-status"><b>{attempt?.complete?"Transcribed paper":"Partial transcription"}</b></div>
          <div className="chem-archive-exam-controls">
            {optionRule&&<label htmlFor={`chem-section-c-${paper.id}`}>Choose one Section C question
              <select id={`chem-section-c-${paper.id}`} value={chosen} onChange={e=>setSectionC(previous=>({...previous,[paper.id]:Number(e.target.value)}))}>{optionRule.alternatives.map(n=><option key={n} value={n}>Question {n}</option>)}</select>
