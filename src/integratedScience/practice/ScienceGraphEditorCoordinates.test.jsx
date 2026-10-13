@@ -74,6 +74,22 @@ describe("Exact graph coordinate feedback in Chemistry and Integrated Science",(
     expect(screen.getByText("Plotted point: (Monday, 7)")).toBeInTheDocument();
   });
 
+  test("a second bar series can plot in the same category without replacing the first series",()=>{
+    const initial=initialGraph("Monday,7","bar");
+    initial.series.push({name:"Experiment B",points:""});
+    const notify=jest.fn();
+    render(<Harness initial={initial} notify={notify}/>);
+    fireEvent.change(screen.getByLabelText("Plotting series"),{target:{value:"1"}});
+    const plot=screen.getByRole("img",{name:"Student graph plot"});
+    graphBox(plot);
+    // Blank portion on the right of Monday's bar in the same category.
+    fireEvent.click(plot,{clientX:190,clientY:200});
+    expect(notify).toHaveBeenCalled();
+    const updated=JSON.parse(notify.mock.calls[notify.mock.calls.length-1][1]);
+    expect(updated.series[0].points).toBe("Monday,7");
+    expect(updated.series[1].points).toMatch(/^Monday,/);
+  });
+
   test("Mathematics graph workspace already has snapped pointer coordinates and a crosshair",()=>{
     // The Mathematics response workspace implements these independently.
     const source=require("fs").readFileSync(require("path").join(process.cwd(),"src/practice/Paper2ResponseInput.jsx"),"utf8");
