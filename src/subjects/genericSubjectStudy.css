@@ -253,3 +253,13 @@ html[data-theme="dark"] .spark-generic-objective-guide-item strong{
   .spark-generic-objective-guide-item>div{display:block}
   .spark-generic-objective-guide-item strong{display:block;margin-bottom:4px}
 }
+
+
+.spark-generic-study-hero-actions .spark-generic-chemistry-flashcards-link{
+  display:inline-flex;align-items:center;justify-content:center;min-height:44px;
+  padding:10px 15px;border-radius:10px;background:var(--spark-teal,#0d9488);
+  color:#fff;text-decoration:none;font:inherit;font-size:13px;font-weight:800;
+  border:1px solid var(--spark-teal,#0d9488);text-align:center;
+}
+.spark-generic-study-hero-actions .spark-generic-chemistry-flashcards-link:hover{filter:brightness(.93)}
+.spark-generic-study-hero-actions .spark-generic-chemistry-flashcards-link:focus-visible{outline:3px solid #36b7ee;outline-offset:3px}
