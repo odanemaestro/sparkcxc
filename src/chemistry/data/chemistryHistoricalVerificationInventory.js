@@ -1,7 +1,7 @@
 // Actionable source-verification inventory. This is an audit, not a reviewer sign-off.
 import {CHEMISTRY_HISTORICAL_DRAFT_ITEMS} from "./chemistryHistoricalPaper2Drafts";
 import {CHEMISTRY_PAPER2_SOURCE_AUDIT} from "./chemistryPaper2SourceAudit";
-import {auditChemistryHistoricalQuestion,CHEMISTRY_HISTORICAL_REVIEW_CHECKS} from "./chemistryHistoricalReleaseGate";
+import {auditChemistryHistoricalQuestion,publishedChemistryHistoricalQuestions,CHEMISTRY_HISTORICAL_REVIEW_CHECKS} from "./chemistryHistoricalReleaseGate";
 
 const hasFigure=item=>["drawing","graph"].includes(item?.response?.type);
 export function buildChemistryHistoricalVerificationInventory(
@@ -26,8 +26,7 @@ export function buildChemistryHistoricalVerificationInventory(
       sourcePageMismatch,markMismatch:computedMarks!==q.totalMarks,
       computedMarks,declaredMarks:q.totalMarks,
       figureItems,keyedTables,unresolvedIssues:issues.length,
-      missingApprovals,releaseReady:q.learnerFacing===true&&
-        q.status==="verified"&&gate.ready,
+      missingApprovals,releaseReady:publishedChemistryHistoricalQuestions([q]).length===1,
       gateBlockers:gate.missing
     };
   });
