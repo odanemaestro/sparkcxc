@@ -35,7 +35,10 @@ export function auditChemistryHistoricalQuestion(record){
   const approvals=record?.qaApprovals||{};
   CHECKS.forEach(check=>{if(!approved(approvals[check]))missing.push(`qa:${check}`);});
   // A model answer illustration is not a substitute for the source image.
-  if(record?.diagramStatus&&/requires|still|pending|need/i.test(record.diagramStatus))
+  // Missing figure evidence must fail closed, including on questions without a drawing.
+  // A reviewer must explicitly record "verified" or "not-applicable".
+  const figureStatus=String(record?.diagramStatus||"").trim();
+  if(!/^(verified|not-applicable)$/i.test(figureStatus))
     missing.push("unresolved-figure-verification");
   if(Array.isArray(record?.sourceIssues)&&record.sourceIssues.length)
     missing.push("unresolved-source-issues");
