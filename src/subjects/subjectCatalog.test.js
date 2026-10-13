@@ -25,6 +25,28 @@ describe("SPARK Dynamic Subject Catalog V1", () => {
     expect(result[0].routes.study).toBe("/study/physics");
   });
 
+  test("keeps Chemistry flashcards visible when a stale Supabase catalog says they are disabled", () => {
+    const builtin={
+      id:"chemistry",name:"CSEC Chemistry",enabled:true,status:"live",implementation:"generic",
+      capabilities:{study:true,practice:true,flashcards:true,paper1:true,paper2:true,progress:true},
+      routes:{study:"/study/chemistry",practice:"/practice/chemistry",
+        flashcards:"/dashboard/flashcards/chemistry",progress:"/dashboard/progress"},
+    };
+    const stale={
+      id:"chemistry",enabled:true,status:"live",
+      capabilities:{flashcards:false,paper1:false,study:true},
+      routes:{flashcards:null,paper1:"/practice/chemistry"},
+    };
+    const [merged]=runtimeSubjectCatalog([builtin],[stale],{catalogAvailable:true});
+    expect(merged.capabilities.flashcards).toBe(true);
+    expect(merged.capabilities.paper1).toBe(true);
+    expect(merged.routes.flashcards).toBe("/dashboard/flashcards/chemistry");
+    expect(merged.enabled).toBe(true);
+    // Other subjects' catalog permissions remain authoritative.
+    const [other]=mergeSubjectCatalog([{...builtin,id:"future",name:"Future",routes:{flashcards:"/future"},capabilities:{flashcards:true}}],[{id:"future",capabilities:{flashcards:false}}]);
+    expect(other.capabilities.flashcards).toBe(false);
+  });
+
   test("discovers a future database-only subject", () => {
     const result = mergeSubjectCatalog([], [{
       id:"chemistry",
