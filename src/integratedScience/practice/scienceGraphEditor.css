@@ -155,3 +155,63 @@
   border-radius:0;
   padding:12px;
 }
+
+/* Remove one plotted coordinate without deleting other series or points. */
+.is-p2-graph-workspace .is-p2-graph-point-chip {
+  position:relative;
+  display:inline-flex;
+  align-items:stretch;
+  max-width:100%;
+  margin:5px 5px 3px 0;
+}
+.is-p2-graph-workspace .is-p2-plotted-point-list .is-p2-graph-point-inspect {
+  padding-right:34px;
+  max-width:100%;
+  white-space:normal;
+  text-align:left;
+  overflow-wrap:anywhere;
+}
+.is-p2-graph-workspace .is-p2-plotted-point-list .is-p2-graph-point-remove {
+  position:absolute;
+  right:-6px;
+  top:-9px;
+  display:grid;
+  place-items:center;
+  box-sizing:border-box;
+  padding:0;
+  width:27px;
+  min-width:27px;
+  height:27px;
+  min-height:27px;
+  border:1px solid var(--chem-outline,var(--is-border,#758ea6));
+  border-radius:50%;
+  background:var(--chem-surface,var(--is-card,#fff));
+  color:var(--chem-ink,var(--is-ink,#14294b));
+  font:inherit;
+  font-size:19px;
+  font-weight:750;
+  line-height:1;
+  cursor:pointer;
+  z-index:1;
+}
+.is-p2-graph-workspace .is-p2-plotted-point-list .is-p2-graph-point-remove:hover,
+.is-p2-graph-workspace .is-p2-plotted-point-list .is-p2-graph-point-remove:focus-visible {
+  border-color:#a64039;
+  background:color-mix(in srgb,var(--chem-surface,var(--is-card,#fff)) 88%,#d6453b);
+  color:var(--chem-ink,var(--is-ink,#14294b));
+  outline:2px solid #a64039;
+  outline-offset:2px;
+}
+@media(max-width:600px){
+  .is-p2-graph-workspace .is-p2-plotted-point-list .is-p2-graph-point-remove {
+    width:32px;
+    min-width:32px;
+    height:32px;
+    min-height:32px;
+    top:-9px;
+    right:-7px;
+  }
+  .is-p2-graph-workspace .is-p2-plotted-point-list .is-p2-graph-point-inspect {
+    padding-right:39px;
+  }
+}
