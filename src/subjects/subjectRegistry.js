@@ -202,7 +202,7 @@ const BASE_SUBJECTS = Object.freeze({
     qualification:"CSEC",
     mark:"FH",
     description:"Learn all seven Food, Nutrition and Health syllabus sections with clear Caribbean examples, interactive food-science activities and practice.",
-    enabled:true,
+    enabled:false,
     status:"draft",
     sortOrder:47,
     implementation:"generic",
