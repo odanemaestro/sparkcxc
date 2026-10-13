@@ -376,3 +376,175 @@ body[data-theme="dark"] .chem-p2-root,
 .chem-p2-root .chem-p2-model-graph {margin:10px 0 14px;max-width:100%;min-width:0}
 .chem-p2-root .chem-p2-model-graph svg {display:block;width:100%;height:auto;max-height:340px;border:1px solid var(--chem-outline,#d8e3ef);border-radius:11px}
 .chem-p2-root .chem-p2-model-graph figcaption {margin:6px 0;font-size:12px;line-height:1.55;color:var(--chem-muted,#526781)}
+
+/* Chemistry Paper 1 follows the shared CSEC instruction sheet and timed exam pattern. */
+.chem-p1-intro {
+  --is-ink:var(--chem-ink,#14294b);
+  --is-muted:var(--chem-muted,#526781);
+  --is-card:var(--chem-surface,#fff);
+  --is-bg:var(--spark-bg,#f6f9fc);
+  --is-border:var(--chem-outline,#d7e2ee);
+  --is-soft:var(--spark-bg,#f6f9fc);
+}
+.chem-p1-intro .chem-p1-instructions {
+  width:100%;
+  min-width:0;
+  box-sizing:border-box;
+  margin-top:2px;
+  background:var(--chem-surface,#fff);
+  color:var(--chem-ink,#14294b);
+  border:1px solid var(--chem-outline,#d7e2ee);
+  border-radius:18px;
+  padding:clamp(20px,3vw,34px);
+}
+.chem-p1-intro .chem-p1-instructions h1,
+.chem-p1-intro .chem-p1-instructions h2,
+.chem-p1-intro .chem-p1-instructions li,
+.chem-p1-intro .chem-p1-instructions strong {
+  color:var(--chem-ink,#14294b);
+  opacity:1;
+}
+.chem-p1-intro .chem-p1-instructions .is-exam-instructions-sub,
+.chem-p1-intro .chem-p1-instructions .is-exam-instructions-meta span {
+  color:var(--chem-muted,#526781);
+  opacity:1;
+}
+.chem-p1-intro .chem-p1-instructions .is-exam-instructions-meta>div {
+  background:var(--is-bg,#f6f9fc);
+  color:var(--chem-ink,#14294b);
+}
+.chem-p1-intro .chem-p1-instructions .is-exam-instructions-sheet {
+  background:var(--is-bg,#f6f9fc);
+  color:var(--chem-ink,#14294b);
+}
+.chem-p1-intro .chem-p1-instructions .is-exam-instructions-note {
+  color:var(--chem-ink,#14294b);
+}
+.chem-p1-intro .chem-p1-partial-note {
+  border:1px solid var(--chem-outline,#d7e2ee);
+  border-left:4px solid #087c73;
+  border-radius:11px;
+  padding:13px 15px;
+  background:var(--is-bg,#f6f9fc);
+  color:var(--chem-ink,#14294b);
+  line-height:1.6;
+}
+.chem-p1-intro .is-exam-instructions-actions .is-exam-primary {
+  min-height:47px;
+  padding:12px 22px;
+  background:#087c73;
+  border-color:#087c73;
+  color:#fff;
+  font-weight:800;
+}
+.chem-p1-session .chem-p1-exam-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:18px;
+  min-width:0;
+  padding:clamp(18px,3vw,28px);
+  border:1px solid var(--chem-outline,#d7e2ee);
+  border-radius:18px;
+  background:var(--chem-surface,#fff);
+  color:var(--chem-ink,#14294b);
+}
+.chem-p1-session .chem-p1-exam-header>div:first-child {
+  display:grid;
+  gap:7px;
+  min-width:0;
+}
+.chem-p1-session .chem-p1-exam-header .is-back-button {justify-self:start;margin-bottom:10px}
+.chem-p1-session .chem-p1-exam-header span {
+  font-size:11px;
+  font-weight:800;
+  color:#087c73;
+  letter-spacing:.04em;
+}
+.chem-p1-session .chem-p1-exam-header h1 {
+  margin:0;
+  font-size:clamp(23px,3vw,32px);
+  line-height:1.2;
+  color:var(--chem-ink,#14294b);
+}
+.chem-p1-session .chem-p1-exam-header p {
+  margin:0;
+  font-size:14px;
+  color:var(--chem-muted,#526781);
+  opacity:1;
+}
+.chem-p1-session .chem-p1-exam-timer {
+  display:grid;
+  gap:5px;
+  min-width:142px;
+  border:1px solid var(--chem-outline,#d7e2ee);
+  border-radius:13px;
+  padding:12px 18px;
+  background:var(--spark-bg,#f6f9fc);
+  color:var(--chem-ink,#14294b);
+}
+.chem-p1-session .chem-p1-exam-timer span {
+  color:var(--chem-muted,#526781);
+  font-size:11px;
+  letter-spacing:0;
+}
+.chem-p1-session .chem-p1-exam-timer strong {
+  font-size:24px;
+  color:var(--chem-ink,#14294b);
+}
+.chem-p1-session .chem-p1-question-heading {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-bottom:12px;
+}
+.chem-p1-session .chem-p1-question-heading h2 {margin:0}
+.chem-p1-session .chem-p1-flag,
+.chem-p1-session .chem-p1-try-again {
+  border:1px solid var(--chem-outline,#d7e2ee);
+  border-radius:10px;
+  padding:10px 15px;
+  background:var(--chem-surface,#fff);
+  color:var(--chem-ink,#14294b);
+  font:inherit;
+  font-weight:750;
+  cursor:pointer;
+}
+.chem-p1-session .chem-p1-flag[aria-pressed="true"],
+.chem-p1-session .chem-p1-nav button.flagged {
+  border-color:#a36815;
+  background:color-mix(in srgb,var(--chem-surface,#fff) 83%,#e2a443);
+  color:var(--chem-ink,#14294b);
+}
+.chem-p1-session .chem-p1-nav button.answered:not(.flagged) {
+  border-color:#087c73;
+  background:color-mix(in srgb,var(--chem-surface,#fff) 85%,#087c73);
+}
+.chem-p1-session .chem-p1-try-again {
+  border-color:#087c73;
+  background:#087c73;
+  color:#fff;
+  margin:10px 0 16px;
+}
+.chem-p1-session .chem-p1-review-explanation {margin-top:14px;line-height:1.6}
+.chem-p1-session .chem-p1-review-explanation p {margin:5px 0;color:var(--chem-ink,#14294b)}
+html[data-theme="dark"] .chem-p1-intro,
+body[data-theme="dark"] .chem-p1-intro,
+.dark .chem-p1-intro {
+  --is-bg:#10243a;
+  --is-soft:#10243a;
+  --is-muted:#bacbdd;
+}
+html[data-theme="dark"] .chem-p1-session .chem-p1-exam-header span,
+body[data-theme="dark"] .chem-p1-session .chem-p1-exam-header span,
+.dark .chem-p1-session .chem-p1-exam-header span {
+  color:#88e6d6;
+}
+@media(max-width:650px){
+  .chem-p1-session .chem-p1-exam-header {align-items:stretch;flex-direction:column}
+  .chem-p1-session .chem-p1-exam-timer {width:100%;box-sizing:border-box}
+  .chem-p1-session .chem-p1-question-heading {align-items:flex-start}
+  .chem-p1-intro .chem-p1-instructions {padding:18px}
+}
