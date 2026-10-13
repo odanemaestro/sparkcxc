@@ -166,14 +166,15 @@ export default function ChemistryPaper2Exam({supabase,userId,onBack,paperIndex=0
   function update(key,value){if(!submitted)setResponses(prev=>({...prev,[key]:value}));}
 
   if(phase==="instructions")return <main className="is-exam-root chem-p2-root"><div className="is-exam-shell">
-    <button type="button" className="is-exam-primary is-exam-page-back" onClick={onBack}><span aria-hidden="true">←</span>Back to Chemistry practice</button>
+    <button type="button" className="is-exam-primary is-exam-page-back" onClick={onBack}><span aria-hidden="true">←</span>{paper.isHistorical?"Back to past papers":"Back to Chemistry practice"}</button>
     <section className="is-exam-instructions-card">
       <span className="is-exam-eyebrow">CSEC CHEMISTRY · PAPER 02</span>
       <h1>{paper.title}</h1>
-      <p className="is-exam-instructions-sub">A full current-format SPARK practice examination built from the syllabus and recurring structures in the supplied Chemistry Paper 02 archive.</p>
+      <p className="is-exam-instructions-sub">{paper.isHistorical?"Sit the transcribed questions in exam conditions, then compare your answers with the SPARK-authored answers.":"A full current-format SPARK practice examination built from the syllabus and recurring structures in the supplied Chemistry Paper 02 archive."}</p>
+      {paper.isHistorical&&<p className="chem-p2-source-notice" role="status">{paper.complete?"All expected questions are transcribed.":"Only the available questions are included."} This reconstruction and its answer keys are awaiting independent source checks. Your result is provisional.</p>}
       <div className="is-exam-instructions-rule"/>
-      <div className="is-exam-instructions-meta"><div><span>Time</span><strong>2 h 30 min</strong></div><div><span>Questions</span><strong>6 compulsory</strong></div><div><span>Marks</span><strong>100</strong></div><div><span>Calculator</span><strong>Non-programmable</strong></div></div>
-      <div className="is-exam-instructions-sheet"><h2>READ THE FOLLOWING INSTRUCTIONS CAREFULLY.</h2><ol><li>Answer ALL six questions.</li><li>Question 1 is a compulsory data-analysis/investigative question.</li><li>Questions 2 and 3 are structured questions. Questions 4, 5 and 6 are extended-response questions.</li><li>Show all working for calculations and include units where appropriate.</li><li>SPARK saves your responses while you work and opens the authored mark schemes after submission.</li></ol></div>
+      <div className="is-exam-instructions-meta"><div><span>Time</span><strong>{paper.durationMinutes||150} min</strong></div><div><span>Questions</span><strong>{paper.questions.length} {paper.isHistorical?"selected":"compulsory"}</strong></div><div><span>Marks</span><strong>{paper.totalMarks||result.maxScore}</strong></div><div><span>Calculator</span><strong>Non-programmable</strong></div></div>
+      <div className="is-exam-instructions-sheet"><h2>READ THE FOLLOWING INSTRUCTIONS CAREFULLY.</h2><ol><li>Answer all {paper.questions.length} questions shown in this attempt.</li>{!paper.isHistorical&&<><li>Question 1 is a compulsory data-analysis/investigative question.</li><li>Questions 2 and 3 are structured questions. Questions 4, 5 and 6 are extended-response questions.</li></>}{paper.isHistorical&&<li>Question numbers follow the original paper. Where applicable, you have selected one Section C option.</li>}<li>Show all working for calculations and include units where appropriate.</li><li>SPARK saves your responses while you work and shows your answers beside the correct answers after submission.</li></ol></div>
       <div className="is-exam-instructions-actions"><button type="button" className="is-exam-primary" onClick={begin}>Start examination</button></div>
     </section>
   </div></main>;
@@ -182,20 +183,21 @@ export default function ChemistryPaper2Exam({supabase,userId,onBack,paperIndex=0
   const qEval=result.questions[current];
   return <main className="is-exam-root chem-p2-root"><div className="is-exam-shell">
     <header className="is-exam-head">
-      <div><button type="button" className="is-exam-primary is-exam-back" onClick={onBack}>Exit</button><span className="is-exam-eyebrow">CSEC CHEMISTRY · PAPER 02</span><h1>{paper.title}</h1><p>{submitted?"Mark-scheme review":`Question ${current+1} of 6`} · {q.totalMarks} marks</p></div>
+      <div><button type="button" className="is-exam-primary is-exam-back" onClick={onBack}>Exit</button><span className="is-exam-eyebrow">CSEC CHEMISTRY · PAPER 02</span><h1>{paper.title}</h1><p>{submitted?"Answer review":`Question ${current+1} of ${paper.questions.length}`} · {q.totalMarks} marks</p></div>
       <div className={`is-exam-timer ${remaining<=900&&!submitted?"warning":""}`}><span>{submitted?"Submitted":"Time remaining"}</span><strong>{submitted?"REVIEW":timeText(remaining)}</strong></div>
     </header>
 
-    {submitted&&<section className="is-p2-review-note"><strong>SPARK has marked your Chemistry paper.</strong><p>Estimated score: <b>{result.score}/{result.maxScore}</b> ({result.percent}%). Authored mark schemes are shown below each item. Written, graph and drawing marks remain estimates where examiner judgement is needed.</p>{result.unassessedMarks>0&&<p><b>{result.unassessedMarks} marks still need visual or examiner judgement.</b> These are not automatically treated as incorrect.</p>}</section>}
+    {submitted&&<section className="is-p2-review-note"><strong>Your Chemistry answer review</strong><p>Estimated score: <b>{result.score}/{result.maxScore}</b> ({result.percent}%). Your response and the correct answer appear below each item. Written, graph and drawing marks remain estimates where examiner judgement is needed.</p>{result.unassessedMarks>0&&<p><b>{result.unassessedMarks} marks still need visual or examiner judgement.</b> These are not automatically treated as incorrect.</p>}</section>}
 
-    <nav className="is-p2-question-nav" aria-label="Chemistry Paper 02 questions">{paper.questions.map((row,i)=><button key={row.id} type="button" className={i===current?"active":""} onClick={()=>{setCurrent(i);goTop();}}><span>Q{i+1}</span><small>{submitted?`${result.questions[i]?.score||0}/${row.totalMarks}`:`${row.totalMarks} marks`}</small></button>)}</nav>
+    {paper.isHistorical&&<p className="chem-p2-source-notice" role="status">Historical source transcription and model answers are provisional. Check disputed diagrams, measurements and response values against the original paper.</p>}
+    <nav className="is-p2-question-nav" aria-label="Chemistry Paper 02 questions">{paper.questions.map((row,i)=><button key={row.id} type="button" className={i===current?"active":""} onClick={()=>{setCurrent(i);goTop();}}><span>Q{row.originalQuestionNumber||i+1}</span><small>{submitted?`${result.questions[i]?.score||0}/${row.totalMarks}`:`${row.totalMarks} marks`}</small></button>)}</nav>
 
     <PaperQuestion question={q} responses={responses} onChange={update} disabled={submitted} evaluation={qEval}/>
 
-    <div className="chem-p2-exam-footer"><div className="is-exam-bottom-nav"><button type="button" className="is-exam-secondary" disabled={current===0} onClick={()=>{setCurrent(v=>Math.max(0,v-1));goTop();}}>Previous</button><span>Question {current+1} of 6</span><button type="button" className="is-exam-secondary" disabled={current===5} onClick={()=>{setCurrent(v=>Math.min(5,v+1));goTop();}}>Next</button></div>
+    <div className="chem-p2-exam-footer"><div className="is-exam-bottom-nav"><button type="button" className="is-exam-secondary" disabled={current===0} onClick={()=>{setCurrent(v=>Math.max(0,v-1));goTop();}}>Previous</button><span>Question {current+1} of {paper.questions.length}</span><button type="button" className="is-exam-secondary" disabled={current===paper.questions.length-1} onClick={()=>{setCurrent(v=>Math.min(paper.questions.length-1,v+1));goTop();}}>Next</button></div>
 
     {!submitted&&<div className="chem-p2-submit-row"><button type="button" className="is-exam-primary" onClick={()=>setConfirmSubmit(true)}>Submit Paper 02</button></div>}
-    {submitted&&<div className="chem-p2-submit-row"><button type="button" className="is-exam-primary" onClick={restart}>Start another Paper 02</button><button type="button" className="is-exam-secondary" onClick={onBack}>Back to Chemistry practice</button></div>}
+    {submitted&&<div className="chem-p2-submit-row"><button type="button" className="is-exam-primary" onClick={restart}>{paper.isHistorical?"Try this paper again":"Start another Paper 02"}</button><button type="button" className="is-exam-secondary" onClick={onBack}>{paper.isHistorical?"Back to past papers":"Back to Chemistry practice"}</button></div>}
     </div>
 
     {confirmSubmit&&<div className="is-exam-confirm-layer" role="dialog" aria-modal="true" aria-label="Submit Chemistry Paper 02"><div className="is-exam-confirm-card"><h2>Submit your paper?</h2><p>You will move to the marking review and will no longer be able to edit your answers.</p><div><button type="button" className="is-exam-secondary" onClick={()=>setConfirmSubmit(false)}>Keep working</button><button type="button" className="is-exam-primary" onClick={()=>submit()}>Submit now</button></div></div></div>}
