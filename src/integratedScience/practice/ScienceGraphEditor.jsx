@@ -1,10 +1,9 @@
 import "./scienceGraphEditor.css";
 import React, {useId,useState} from "react";
+import {newScienceGraph,readScienceGraph,graphPoints,graphAxis,graphPath} from "./scienceGraphModel";
 
 const formatCoord=value=>Number(Number(value).toPrecision(10)).toString();
 const displayCoord=point=>`(${String(point.x)}, ${formatCoord(point.y)})`;
-
-import {newScienceGraph,readScienceGraph,graphPoints,graphAxis,graphPath} from "./scienceGraphModel";
 
 const COLORS=["#168f8a","#cf6a25","#8760c6"];
 export default function ScienceGraphEditor({base,responses,onChange,disabled}){
@@ -48,10 +47,18 @@ export default function ScienceGraphEditor({base,responses,onChange,disabled}){
   const closePoint=local=>{
     if(!x||!y||!local)return null;
     if(graph.kind==="bar"){
-      const categoryIndex=Math.min(categories.length-1,Math.max(0,Math.floor((local.x-50)/500*categories.length)));
-      const category=categories[categoryIndex];
-      // Point inspection on a bar uses its actual category and bar height.
-      return plotted.find(p=>p.x===category)||null;
+      // Inspect only the actual painted bar, not the entire category.
+      // Other series must still be able to plot the same category independently.
+      if(!validWidth||!categories.length)return null;
+      const group=500/categories.length;
+      const width=group*Number(graph.barWidth)/series.length;
+      return plotted.find(p=>{
+        const center=sx(categories.indexOf(p.x)+.5);
+        const left=center-group*Number(graph.barWidth)/2+p.seriesIndex*width;
+        const zero=sy(0),top=Math.min(sy(p.y),zero),bottom=Math.max(sy(p.y),zero);
+        return local.x>=left-2&&local.x<=left+width+2&&
+          local.y>=top-4&&local.y<=bottom+4;
+      })||null;
     }
     const found=plotted.reduce((nearest,p)=>{
       const distance=Math.hypot(sx(p.x)-local.x,sy(p.y)-local.y);
@@ -80,7 +87,7 @@ export default function ScienceGraphEditor({base,responses,onChange,disabled}){
     const old=series[chosen].parsed.filter(Boolean).filter(p=>graph.kind!=="bar"||p.x!==next.point.x);
     updateSeries(chosen,{points:[...old,{x:next.point.x,y:next.point.y}].map(p=>`${p.x},${p.y}`).join("\n")});
   };
-  const focusPoint=(point,index)=>setSelected({point:{...point,seriesIndex:index},existing:true});
+  const focusPoint=(point,index)=>{setHover(null);setSelected({point:{...point,seriesIndex:index},existing:true});};
   const displayed=hover||selected;
   const displayedPoint=displayed?.point;
   const pin=displayedPoint&&x&&y
