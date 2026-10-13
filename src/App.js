@@ -163,7 +163,7 @@ const SPARK_SUBJECTS = getSparkSubjectRegistry({
   informationTechnology: { sections: 8, topics: 26, objectives: 63, mcq: 540 },
   socialStudies: { sections: 4, topics: 39, objectives: 84, mcq: 156 },
   englishA: { sections: 3, topics: 29, paper1Items: 60, sourcePapers: 24, flashcards: 145 },
-  chemistry: { sections: 3, topics: 21, objectives: 119, paper2HistoricalPapers: 28, paper2PracticeSets: 6, flashcards: 0 },
+  chemistry: { sections: 3, topics: 21, objectives: 119, paper2HistoricalPapers: 28, paper2PracticeSets: 6, flashcards: 119 },
 });
 
 const VIEW_ROUTE_PATHS = Object.freeze({
