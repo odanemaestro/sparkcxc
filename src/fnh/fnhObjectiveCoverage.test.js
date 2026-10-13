@@ -50,7 +50,7 @@ describe("CSEC Food, Nutrition and Health syllabus integrity",()=>{
   });
   test("subject starts in draft state until examination banks are quality checked",()=>{
     const subject=getSparkSubjectRegistry().find(subject=>subject.id==="food-nutrition-and-health");
-    expect(subject).toMatchObject({status:"draft",name:"CSEC Food, Nutrition and Health"});
+    expect(subject).toMatchObject({enabled:false,status:"draft",name:"CSEC Food, Nutrition and Health"});
     expect(subject.capabilities).toMatchObject({study:true,flashcards:true,practice:false,paper1:false,paper2:false,sba:true});
     expect(subject.routes.study).toBe("/study/food-nutrition-and-health");
   });
