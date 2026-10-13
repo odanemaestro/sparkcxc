@@ -1,3 +1,4 @@
+import {CHEMISTRY_2008_MJ_Q2_PERIODIC_TABLE_SVG,CHEMISTRY_2008_MJ_Q2_CHLORINE_DISPLACEMENT_SVG} from "./chemistryHistorical2008SourceFigures";
 // Original May/June 2008 Chemistry Paper 02 Q2, source PDF pages 9–11.
 const item=(label,prompt,marks,points,explanation)=>({label,prompt,marks,response:{type:"lines",lines:Math.max(3,marks+1)},markScheme:{points,guidance:"SPARK-authored provisional scheme; official CXC marks not provided."},explanation});
 export const CHEMISTRY_2008_MJ_Q2_DRAFT=Object.freeze({
@@ -5,6 +6,7 @@ export const CHEMISTRY_2008_MJ_Q2_DRAFT=Object.freeze({
  pdfPages:[9,10,11],printedPages:[9,10,11],originalQuestionNumber:2,totalMarks:15,
  kind:"structured",title:"Halogen periodic group and displacement; metals X and Y reactivity",
  learnerFacing:false,status:"draft-needs-second-source-review",answerSchemeSource:"SPARK-authored provisional",
+ sourceFigures:[{page:9,figure:"Figure 2",svg:CHEMISTRY_2008_MJ_Q2_PERIODIC_TABLE_SVG,sourceApproved:false},{page:9,figure:"Figure 3",svg:CHEMISTRY_2008_MJ_Q2_CHLORINE_DISPLACEMENT_SVG,sourceApproved:false}],
  diagramStatus:"Source Figure 2 full periodic-table schematic, Figure 3 chlorine delivery into KBr(aq) and Table 3 need source-exact SVG/table transcription and QA.",
  sourceVerificationNote:"Assistant first-pass source comparison against original PDF pages 9–11: prompts and 15 marks visually compared. Source figures and table must still be reproduced exactly and independently reviewed.",
  sourceIssues:["Elements F,Cl,Br,I,At belong to old Group VII, modern Group 17, all have seven outer-shell electrons.","Table 3 gas given on acidification of solid X turns limewater milky (CO₂); magnesium cannot displace X but displaces Y with reddish-brown Cu. Plausible X sodium or potassium and Y copper; source does not identify X uniquely.","Copper(II) nitrate fits blue solution, thermal evolution of brown NO₂ with black CuO, and copper displacement by Mg. Source Table 3 may permit a copper salt other than nitrate unless thermal observations establish nitrate."],
