@@ -838,15 +838,27 @@ describe("CSEC Chemistry course V1",()=>{
     expect(questions[1].parts[0].items.find(i=>i.label==="(f)")?.marks).toBe(4);
   });
 
+  test("2023 May June Q1 uses the source's 25 marks and provisional stopwatch readings",()=>{
+    const q=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.find(row=>row.id==="CHEM-P2-2023-MJ-Q1");
+    expect(q).toBeDefined();
+    expect(q.learnerFacing).toBe(false);
+    expect(q.totalMarks).toBe(25);
+    expect(q.parts.flatMap(p=>p.items).reduce((sum,i)=>sum+i.marks,0)).toBe(25);
+    expect(q.parts[1].items[0].response.table.answers).toEqual(["59","42","31","25","20"]);
+    expect(q.parts[2].items[0].response.table.answers).toEqual(["0.017","0.024","0.032","0.040","0.050"]);
+    expect(q.sourceIssues.join(" ")).toMatch(/volume|mass concentration/i);
+    expect(auditChemistryHistoricalQuestion(q).ready).toBe(false);
+  });
+
   test("historical coverage tracks 28 papers without inventing verified questions",()=>{
     const {totals,papers,orphanDrafts,duplicateQuestionNumbers}=CHEMISTRY_HISTORICAL_COVERAGE;
     expect(papers).toHaveLength(28);
     expect(totals.sources).toBe(28);
     expect(totals.pages).toBe(568);
     expect(totals.expectedQuestions).toBe(167);
-    expect(totals.draftedQuestions).toBe(108);
+    expect(totals.draftedQuestions).toBe(109);
     expect(totals.draftMarks).toBe(1800);
-    expect(totals.missingQuestions).toBe(59);
+    expect(totals.missingQuestions).toBe(58);
     expect(totals.fullyDraftedPapers).toBe(18);
     expect(totals.approvedQuestions).toBe(0);
     expect(totals.readyPapers).toBe(0);
@@ -857,8 +869,8 @@ describe("CSEC Chemistry course V1",()=>{
       "CHEM-P2-2018-JAN","CHEM-P2-2023-MJ","CHEM-P2-2024-JAN",
       "CHEM-P2-2024-MJ"
     ]);
-    expect(outstanding.reduce((sum,row)=>sum+row.missingNumbers.length,0)).toBe(59);
-    expect(outstanding.every(row=>row.draftedQuestions===0)).toBe(true);
+    expect(outstanding.reduce((sum,row)=>sum+row.missingNumbers.length,0)).toBe(58);
+    expect(outstanding.find(row=>row.sourceId==="CHEM-P2-2023-MJ")).toMatchObject({draftedQuestions:1,missingNumbers:[2,3,4,5,6]});
     expect(orphanDrafts).toEqual([]);
     expect(duplicateQuestionNumbers).toEqual([]);
     expect(papers.find(row=>row.sourceId==="CHEM-P2-2025-JAN")).toMatchObject({
