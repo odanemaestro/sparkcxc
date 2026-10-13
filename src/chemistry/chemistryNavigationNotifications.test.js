@@ -30,6 +30,16 @@ describe("Chemistry page reset and notification parity",()=>{
     expect(sql).toContain("when (new.subject_id = 'chemistry' and new.completed = true)");
     expect(sql).toContain("end;\n$$;");
   });
+  test("Chemistry database migration seeds 21 topics before publishing the generic subject",()=>{
+    const sql=read("supabase/migrations/20261012010000_csec_chemistry_course_v1.sql");
+    expect(sql).toContain("enabled=false");
+    const insert=sql.indexOf("insert into public.spark_subject_topics(");
+    const publish=sql.lastIndexOf("set enabled=true,status='live'");
+    expect(insert).toBeGreaterThan(0);
+    expect(publish).toBeGreaterThan(insert);
+    const realTopics=(sql.match(/'chemistry','[abc][0-9]+-[^']+','section-[abc]-/g)||[]);
+    expect(realTopics).toHaveLength(21);
+  });
   test("Supabase catalog advertises the same Chemistry routes and capabilities",()=>{
     const sql=read("supabase/migrations/20261013071000_chemistry_subject_capabilities.sql");
     expect(sql).toContain('"/dashboard/flashcards/chemistry"');
