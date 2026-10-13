@@ -22,7 +22,7 @@ export default function ScienceGraphEditor({base,responses,onChange,disabled}){
     :graphPreviewAxis(graph.x);
   const y=yInfo.axis,x=xInfo.axis;
   const hasPlotArea=Boolean(x&&y&&graph.kind);
-  const validPoints=series.flatMap((s,index)=>s.parsed.filter(Boolean).map(p=>({...p,seriesIndex:index,name:s.name||`Series ${index+1}`})));
+  const validPoints=series.flatMap((s,index)=>s.parsed.map((p,pointIndex)=>p?({...p,seriesIndex:index,pointIndex,name:s.name||`Series ${index+1}`}):null).filter(Boolean));
   const outside=validPoints.filter(p=>hasPlotArea&&
     (p.y<y.min||p.y>y.max||(graph.kind!=="bar"&&(p.x<x.min||p.x>x.max))));
   const sx=v=>50+(v-x.min)/(x.max-x.min)*500;
@@ -120,6 +120,25 @@ export default function ScienceGraphEditor({base,responses,onChange,disabled}){
     updateSeries(chosen,{points:[...retained,`${next.point.x},${next.point.y}`].join("\n")});
   };
   const focusPoint=(point,index)=>{setHover(null);setSelected({point:{...point,seriesIndex:index},existing:true});};
+  const removePlottedPoint=point=>{
+    if(disabled)return;
+    const source=graph.series[point.seriesIndex];
+    if(!source)return;
+    // pointIndex refers to the original nonempty row, not the filtered
+    // visible-point order. Preserve malformed and out-of-range rows.
+    const rows=source.points.split(/\n|;/);
+    let nonemptyIndex=-1;
+    const rawIndex=rows.findIndex(row=>{
+      if(!row.trim())return false;
+      nonemptyIndex+=1;
+      return nonemptyIndex===point.pointIndex;
+    });
+    if(rawIndex<0||!graphPoints(rows[rawIndex],graph.kind)[0])return;
+    rows.splice(rawIndex,1);
+    updateSeries(point.seriesIndex,{points:rows.join("\n")});
+    setHover(null);
+    setSelected(null);
+  };
   const displayed=hover||selected;
   const displayedPoint=displayed?.point;
   const pin=displayedPoint&&hasPlotArea&&(
@@ -194,13 +213,19 @@ export default function ScienceGraphEditor({base,responses,onChange,disabled}){
     </svg>
     {plotted.length>0&&<div className="is-p2-plotted-point-list" aria-label="Plotted coordinates">
       <strong>Plotted coordinates</strong>
-      <div>{plotted.map((point,i)=><button key={`${point.seriesIndex}-${i}`} type="button"
-        onPointerEnter={()=>focusPoint(point,point.seriesIndex)}
-        onFocus={()=>focusPoint(point,point.seriesIndex)}
-        onClick={()=>focusPoint(point,point.seriesIndex)}
-        aria-label={`Inspect ${point.name} point ${displayCoord(point)}`}>
-        {point.name}: {displayCoord(point)}
-      </button>)}</div>
+      <div>{plotted.map(point=><div key={`${point.seriesIndex}-${point.pointIndex}`} className="is-p2-graph-point-chip">
+        <button type="button" className="is-p2-graph-point-inspect"
+          onPointerEnter={()=>focusPoint(point,point.seriesIndex)}
+          onFocus={()=>focusPoint(point,point.seriesIndex)}
+          onClick={()=>focusPoint(point,point.seriesIndex)}
+          aria-label={`Inspect ${point.name} point ${displayCoord(point)}`}>
+          {point.name}: {displayCoord(point)}
+        </button>
+        {!disabled&&<button type="button" className="is-p2-graph-point-remove"
+          aria-label={`Remove ${point.name} point ${displayCoord(point)}`}
+          title={`Remove ${displayCoord(point)}`}
+          onClick={()=>removePlottedPoint(point)}>×</button>}
+      </div>)}</div>
     </div>}
     <label>Optional graph notes<textarea disabled={disabled} value={responses[base] || ""} onChange={e=>onChange(base,e.target.value)}/></label>
   </div>;
