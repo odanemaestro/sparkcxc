@@ -20,6 +20,9 @@ export default function ChemistryPaper1Exam({onBack,supabase,userId}){
   const current=exam[active];
   const isPractice=source.startsWith("practice-");
   useEffect(()=>{
+    if(typeof window!=="undefined")window.scrollTo?.({top:0,left:0,behavior:"instant"});
+  },[source,active,submitted]);
+  useEffect(()=>{
     let cancelled=false;
     savedAttempt.current=null;
     setLoading(true);setError("");setPaper(null);setAnswers({});setSubmitted(false);setActive(0);setRemaining(4500);
