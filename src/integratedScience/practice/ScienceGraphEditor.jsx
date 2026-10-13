@@ -110,7 +110,7 @@ export default function ScienceGraphEditor({base,responses,onChange,disabled}){
     const next=candidate(localPosition(event));
     if(!next)return;
     setSelected(next);
-    if(disabled||next.existing)return;
+    if(disabled||(next.existing&&next.point.seriesIndex===chosen))return;
     // Preserve text the student has typed, including malformed lines that
     // still need correction, when adding a point by clicking the grid.
     const typedLines=series[chosen].points.split(/\n|;/).filter(line=>line.trim());
