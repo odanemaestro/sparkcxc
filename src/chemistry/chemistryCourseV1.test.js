@@ -888,6 +888,27 @@ describe("CSEC Chemistry course V1",()=>{
     expect(auditChemistryHistoricalQuestion({...base,diagramStatus:"verified"}).ready).toBe(true);
   });
 
+  test("historical release requires valid PDF page numbers and reviewed issue log",()=>{
+    const approvals=Object.fromEntries(CHEMISTRY_HISTORICAL_REVIEW_CHECKS.map(check=>[
+      check,{approved:true,reviewer:"QA Fixture",reviewedAt:"2026-10-12"}
+    ]));
+    const base={id:"QA-SOURCE",sourceId:"CHEM-P2-2023-MJ",sourceFile:"source.pdf",
+      pdfPages:[2],totalMarks:1,diagramStatus:"not-applicable",
+      qaApprovals:approvals,sourceIssues:[],parts:[{label:"(a)",items:[{
+        prompt:"Identify a substance.",marks:1,markScheme:{points:["Correct substance"]},
+        explanation:"Correct identification."
+      }]}]};
+    expect(auditChemistryHistoricalQuestion(base).ready).toBe(true);
+    for(const pdfPages of [[0],[-1],[2.5],["2"],[null]]){
+      expect(auditChemistryHistoricalQuestion({...base,pdfPages}).missing)
+        .toContain("source-identity");
+    }
+    for(const sourceIssues of [undefined,null,["Unresolved source figure"]]){
+      expect(auditChemistryHistoricalQuestion({...base,sourceIssues}).missing)
+        .toContain("unresolved-source-issues");
+    }
+  });
+
   test("historical criteria must allocate every mark explicitly before approval",()=>{
     const reviews=Object.fromEntries(CHEMISTRY_HISTORICAL_REVIEW_CHECKS.map(check=>[
       check,{approved:true,reviewer:"Fixture Reviewer",reviewedAt:"2026-10-12"}
