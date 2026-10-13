@@ -67,7 +67,7 @@ export function ChemistryModelGraph({response}){
   const yScale=y=>265-(y-minY)/Math.max(1,maxY-minY)*208;
   const activeIndex=hoverIndex??selectedIndex;
   const active=activeIndex===null?null:points[activeIndex]||null;
-  const format=value=>Number(value.toPrecision(10)).toString();
+  const format=value=>String(value);
   const activePin=active?{x:xScale(active.x),y:yScale(active.y)}:null;
   return <figure className="chem-p2-model-graph">
     <svg viewBox="0 0 570 330" role="img" aria-label="Model graph showing the expected plotted data points" onPointerLeave={()=>setHoverIndex(null)}>
