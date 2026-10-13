@@ -2,7 +2,7 @@ import { readScienceGraph, graphPoints } from "../../integratedScience/practice/
 // Chemistry Paper 02 deterministic practice grader.
 // Authored mark schemes remain the source of truth. Free-response scores are estimates.
 
-export const CHEMISTRY_P2_GRADER_VERSION="1.1.0";
+export const CHEMISTRY_P2_GRADER_VERSION="1.1.1";
 
 const STOP=new Set("a an and are as at be because been by for from has have in into is it of on or that the their then this to was were when which with".split(" "));
 const SYN={
@@ -227,7 +227,8 @@ function graphResult(base,item,responses){
         ? "smooth"
         : null;
     const connection=String(graph?.connection || "");
-    const styleOk=wanted ? connection===wanted : Boolean(connection && connection!=="none");
+    // Selecting a line style without plotting a graph is not evidence of a drawn fit.
+    const styleOk=plotted.length>=2 && (wanted ? connection===wanted : Boolean(connection && connection!=="none"));
     criteria.push({
       id:`${base}:fit`,
       label:wanted==="best-fit"?"Line of best fit selected":wanted==="smooth"?"Smooth best-fit curve selected":"Suitable line or curve selected",
