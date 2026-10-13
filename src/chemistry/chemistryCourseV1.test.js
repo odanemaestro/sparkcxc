@@ -1262,6 +1262,17 @@ describe("CSEC Chemistry course V1",()=>{
     });
   });
 
+  test("release gate rejects an attached source SVG without individual approval",()=>{
+    const template={id:"QA-SOURCE-SVG",sourceId:"QA",sourceFile:"qa.pdf",pdfPages:[1],
+      originalQuestionNumber:1,totalMarks:1,diagramStatus:"verified",sourceIssues:[],
+      parts:[{items:[{marks:1,prompt:"One answer",explanation:"Explanation",
+        markScheme:{points:["Correct answer"]}}]}]};
+    const unapproved={...template,sourceFigures:[{figure:"Figure 1",svg:"<svg></svg>",sourceApproved:false}]};
+    expect(auditChemistryHistoricalQuestion(unapproved).missing).toContain("unapproved-source-figures");
+    const approved={...template,sourceFigures:[{figure:"Figure 1",svg:"<svg></svg>",sourceApproved:true}]};
+    expect(auditChemistryHistoricalQuestion(approved).missing).not.toContain("unapproved-source-figures");
+  });
+
   test("2006 source SVG reconstructions remain explicitly unapproved",()=>{
     const rows=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.filter(q=>q.sourceId==="CHEM-P2-2006-MJ");
     for(const n of [2,4,5]){
