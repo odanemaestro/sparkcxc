@@ -57,7 +57,7 @@ function SeparationLab({onComplete}){
   return <LabFrame title="Separation method selector" onComplete={onComplete}>
     <p><b>Mixture:</b> {item.mix}</p>
     <div className="chem-choice-grid">{options.map(option=><button type="button" key={option} className={choice===option?"selected":""} onClick={()=>{setChoice(option);setChecked(false)}}>{option}</button>)}</div>
-    <div className="chem-lab-actions"><button type="button" onClick={()=>setChecked(true)} disabled={!choice}>Check</button><button type="button" onClick={()=>{setIndex((index+1)%separationCases.length);setChoice("");setChecked(false)}}>Next mixture</button></div>
+    <div className="chem-lab-actions"><button type="button" className="chem-lab-check-action" onClick={()=>setChecked(true)} disabled={!choice}>Check</button><button type="button" className="chem-lab-next-action" onClick={()=>{setIndex((index+1)%separationCases.length);setChoice("");setChecked(false)}}>Next mixture</button></div>
     {checked&&<p className={choice===item.answer?"chem-ok":"chem-no"}>{choice===item.answer?"Correct. ":"Not this time. "}{item.why}</p>}
   </LabFrame>;
 }
@@ -89,7 +89,7 @@ function BondingLab({onComplete}){
     <div className="chem-choice-grid">{Object.keys(data).map(item=><button type="button" key={item} className={type===item?"selected":""} onClick={()=>setType(item)}>{item}</button>)}</div>
     <ul>{data[type].map(line=><li key={line}>{line}</li>)}</ul>
     <svg viewBox="0 0 360 120" className="chem-bond-svg" role="img" aria-label={type+" bonding model"}>
-      {type==="ionic"&&<><circle cx="110" cy="60" r="30"/><circle cx="250" cy="60" r="30"/><text x="110" y="67" textAnchor="middle">Na⁺</text><text x="250" y="67" textAnchor="middle">Cl⁻</text><path d="M145 60h70"/><text x="180" y="47" textAnchor="middle">electrostatic attraction</text></>}
+      {type==="ionic"&&<><circle cx="110" cy="60" r="30"/><circle cx="250" cy="60" r="30"/><text x="110" y="67" textAnchor="middle">Na⁺</text><text x="250" y="67" textAnchor="middle">Cl⁻</text><path d="M145 60h70"/><path d="M180 53v-15" className="chem-bond-label-leader"/><text className="chem-bond-annotation" x="180" y="18" textAnchor="middle"><tspan x="180">electrostatic</tspan><tspan x="180" dy="13">attraction</tspan></text></>}
       {type==="covalent"&&<><circle cx="145" cy="60" r="34"/><circle cx="215" cy="60" r="34"/><circle cx="176" cy="54" r="4"/><circle cx="184" cy="66" r="4"/><text x="95" y="66">H</text><text x="250" y="66">H</text></>}
       {type==="metallic"&&Array.from({length:8},(_,i)=><g key={i}><circle cx={45+(i%4)*85} cy={35+Math.floor(i/4)*52} r="18"/><text x={45+(i%4)*85} y={41+Math.floor(i/4)*52} textAnchor="middle">M⁺</text></g>)}
     </svg>
