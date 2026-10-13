@@ -56,9 +56,15 @@ export function auditChemistryHistoricalQuestion(record){
     missing.push("unresolved-source-issues");
   return {id:record?.id||null,ready:missing.length===0,missing,awardedMarks:total};
 }
+// Publication requires five separate reviewers, not one repeated sign-off.
+// The audit above still reports individual checklist completeness separately.
+const independentReviewers=record=>{
+  const names=CHECKS.map(check=>String(record?.qaApprovals?.[check]?.reviewer||"").trim().toLocaleLowerCase());
+  return names.every(Boolean)&&new Set(names).size===CHECKS.length;
+};
 export function publishedChemistryHistoricalQuestions(rows=CHEMISTRY_HISTORICAL_DRAFT_ITEMS){
   return rows.filter(record=>record?.learnerFacing===true&&record?.status==="verified"
-    &&auditChemistryHistoricalQuestion(record).ready);
+    &&auditChemistryHistoricalQuestion(record).ready&&independentReviewers(record));
 }
 export const CHEMISTRY_HISTORICAL_REVIEW_SUMMARY=Object.freeze({
   indexedDraftQuestions:CHEMISTRY_HISTORICAL_DRAFT_ITEMS.length,
