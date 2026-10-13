@@ -1,5 +1,6 @@
+import {CHEMISTRY_MGF2_DOT_CROSS_SVG} from "./chemistryHistoricalIonicCovalentModels";
 // Source May/June 2007 Chemistry Paper 02 Q3, PDF pp8–9, total 15 marks.
-const item=(label,prompt,marks,points,explanation,response={type:"lines",lines:Math.max(3,marks+1)})=>({label,prompt,marks,response,markScheme:{points,guidance:"Provisional SPARK-authored marking; original CXC scheme not supplied."},explanation});
+const item=(label,prompt,marks,points,explanation,response={type:"lines",lines:Math.max(3,marks+1)},extra={})=>({label,prompt,marks,response,markScheme:{points,guidance:"Provisional SPARK-authored marking; original CXC scheme not supplied."},explanation,...extra});
 export const CHEMISTRY_2007_MJ_Q3_DRAFT=Object.freeze({
  id:"CHEM-P2-2007-MJ-Q3",sourceId:"CHEM-P2-2007-MJ",sourceFile:"CSEC_Chemistry_P2_2007_MJ.pdf",
  pdfPages:[8,9],originalQuestionNumber:3,totalMarks:15,
@@ -20,7 +21,7 @@ export const CHEMISTRY_2007_MJ_Q3_DRAFT=Object.freeze({
  item("(ii)","Explain the type of bonding.",2,["Mg forms Mg²⁺ by transferring two electrons.","Two F atoms each gain one electron to form F⁻; electrostatic attraction forms MgF₂."],"Oppositely charged ions attract in the ionic lattice."),
  item("(iii)","Draw dot-cross diagram of bonding in compound A with B.",2,
  ["Mg²⁺ cation and two F⁻ anions with electron transfer shown.","Each fluoride has a complete octet and proper ionic charges."],
- "MgF₂ contains one Mg²⁺ and two F⁻ ions.",{type:"drawing"})
+ "MgF₂ contains one Mg²⁺ and two F⁻ ions.",{type:"drawing"},{modelAnswerSvgs:[CHEMISTRY_MGF2_DOT_CROSS_SVG]})
  ]},
  {label:"(c)",items:[
  item("","Describe the bonding in elemental A (magnesium metal).",2,
