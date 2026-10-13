@@ -29,3 +29,58 @@ html[data-theme="dark"] .chem-lab .chem-lab-actions .chem-lab-next-action{
   .chem-lab .chem-lab-actions{gap:10px}
   .chem-lab .chem-lab-actions button{flex:1 1 130px}
 }
+
+/* Lab workbench controls inherit the existing SPARK navy and teal palette. */
+.chem-lab{box-shadow:none}
+.chem-lab header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.chem-lab h3{margin:0;text-wrap:balance}
+.chem-lab-reset{font:inherit;font-size:12px;font-weight:700;min-height:40px;padding:8px 12px;border:1px solid var(--spark-border,#d7e2ee);border-radius:10px;background:transparent;color:inherit;cursor:pointer;flex-shrink:0}
+.chem-lab footer{align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.chem-lab-hint{font-size:12px;color:var(--spark-ink,#102a56)}
+.chem-lab label{color:var(--spark-ink,#102a56)}
+.chem-lab button:focus-visible,.chem-lab input:focus-visible,.chem-lab select:focus-visible{outline:3px solid #0284c7;outline-offset:3px}
+.chem-lab button:hover:not(:disabled){filter:brightness(.95)}
+.chem-lab input[type=range],.chem-lab input[type=checkbox]{accent-color:#08766d}
+.chem-lab input[type=range]{min-height:36px;max-width:100%;width:100%}
+.chem-lab input[type=number],.chem-lab select{min-width:0;width:100%;box-sizing:border-box}
+.chem-lab button:disabled{cursor:not-allowed}
+.chem-lab ::selection{background:#b2e8df;color:#102a56}
+.chem-lab input{caret-color:#08766d}
+.chem-result{flex-wrap:wrap}
+.chem-result strong{overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.chem-table-wrap{overflow-x:auto;margin:18px 0;scrollbar-color:#0f9a8a transparent}
+.chem-lab table{border-collapse:collapse;width:100%;font-size:13px;font-variant-numeric:tabular-nums}
+.chem-lab caption{text-align:left;font-weight:750;padding-bottom:8px}
+.chem-lab th,.chem-lab td{text-align:left;padding:8px;border-bottom:1px solid var(--spark-border,#d7e2ee);white-space:nowrap}
+.chem-observation{padding:12px;background:var(--spark-paper,#f5f8fb);border:1px solid var(--spark-border,#d7e2ee);border-radius:10px}
+.chem-cell-svg,.chem-rate-graph,.chem-energy-svg,.chem-chain-svg{display:block;width:100%;max-width:500px;margin:18px auto;color:var(--spark-ink,#102a56)}
+.chem-cell-svg path,.chem-rate-graph path,.chem-energy-svg path,.chem-chain-svg path,.chem-test-tube>path:first-child{stroke:currentColor;stroke-width:2;fill:none}
+.chem-cell-svg text,.chem-rate-graph text,.chem-energy-svg text,.chem-chain-svg text{fill:currentColor;font:12px sans-serif}
+.chem-cell-liquid{fill:#c7e8f8}
+.chem-cell-electrode{fill:#718096}
+.chem-deposit{fill:#a96336}
+.chem-gas-bubble{fill:#fff;stroke:#316080;stroke-width:1.5}
+.chem-rate-graph polyline{fill:none;stroke-width:2.5}
+.chem-rate-graph .chem-graph-grid{stroke:#94a3b8;stroke-width:.5;opacity:.5}
+.chem-run-0{stroke:#08766d}.chem-run-1{stroke:#b45309;stroke-dasharray:8 4}.chem-run-2{stroke:#6d28d9;stroke-dasharray:2 4}.chem-run-3{stroke:#0369a1;stroke-dasharray:9 3 2 3}
+.chem-test-tube{display:block;width:90px;height:144px;margin:18px auto;color:var(--spark-ink,#102a56)}
+.chem-particle-box{overflow:hidden}
+.chem-particle-box circle{animation:chem-vibrate var(--duration,2s) ease-in-out infinite alternate;animation-delay:var(--delay)}
+.chem-state-liquid circle{animation-name:chem-drift}
+.chem-state-gas circle{animation-name:chem-flight}
+.chem-free-electron{fill:#08766d!important;animation:chem-vibrate 1.2s ease-in-out infinite alternate}
+.chem-bond-svg circle.chem-shared-electron{fill:#123468;stroke:none}
+@keyframes chem-vibrate{to{transform:translate(1px,-1px)}}
+@keyframes chem-drift{to{transform:translate(3px,-4px)}}
+@keyframes chem-flight{to{transform:translate(5px,6px)}}
+html[data-theme="dark"] .chem-lab label,html[data-theme="dark"] .chem-lab-hint,html[data-theme="dark"] .chem-lab-reset{color:#e1ebfa}
+html[data-theme="dark"] .chem-lab .chem-lab-actions button{background:#15243a;border-color:#42617d;color:#e1ebfa}
+html[data-theme="dark"] .chem-lab .chem-lab-actions .chem-lab-check-action{background:#426bb2;color:#fff}
+html[data-theme="dark"] .chem-lab .chem-lab-actions .chem-lab-next-action{background:#113f39;color:#a2ece0}
+html[data-theme="dark"] .chem-ok{color:#8ee0d6}
+html[data-theme="dark"] .chem-no{color:#f8c98a}
+html[data-theme="dark"] .chem-cell-svg,html[data-theme="dark"] .chem-rate-graph,html[data-theme="dark"] .chem-energy-svg,html[data-theme="dark"] .chem-chain-svg,html[data-theme="dark"] .chem-test-tube{color:#dbe8ff}
+html[data-theme="dark"] .chem-observation{background:#15243a;border-color:#31445d}
+html[data-theme="dark"] .chem-run-0{stroke:#8ee0d6}html[data-theme="dark"] .chem-run-1{stroke:#f8c98a}html[data-theme="dark"] .chem-run-2{stroke:#c4b5fd}html[data-theme="dark"] .chem-run-3{stroke:#7dd3fc}
+@media(max-width:480px){.chem-lab header{align-items:flex-start}.chem-lab-reset{max-width:90px}.chem-lab-body{padding:14px}.chem-lab footer{padding:12px 14px}.chem-lab-actions button{min-height:44px}.chem-chain-svg{min-width:0}}
+@media(prefers-reduced-motion:reduce){.chem-particle-box circle,.chem-free-electron{animation:none}.chem-meter span{transition:none}}

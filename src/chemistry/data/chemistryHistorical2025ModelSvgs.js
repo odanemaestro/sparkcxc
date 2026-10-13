@@ -81,17 +81,17 @@ export const CHEMISTRY_2025_OXYGEN_PREPARATION_SVG=`<svg xmlns="http://www.w3.or
 <g stroke="#151515" stroke-width="2.7" stroke-linejoin="round" stroke-linecap="round" fill="none">
 <path d="M95 235 L128 165 L128 122 L202 122 L202 165 L235 235 Q250 282 212 305 L119 305 Q80 284 95 235Z"/>
 <path d="M118 249 Q166 239 215 249 L228 274 Q212 290 195 292 L135 292 Q115 290 105 273Z" fill="#c9e4ea" stroke-width="1"/>
-<rect x="124" y="112" width="83" height="16" fill="#bfbfbf"/><path d="M165 112 V77 Q165 63 184 63 H405 Q424 63 424 84 V268"/>
+<rect x="124" y="112" width="83" height="16" fill="#bfbfbf"/><path d="M165 112 V77 Q165 63 184 63 H405 Q424 63 424 84 V315 Q424 330 440 330 H495 V289"/>
 <path d="M330 256 H650 V342 H330Z" fill="#e7f4f7"/>
 <path d="M334 267 Q490 258 646 267" stroke="#6094a8" stroke-width="1.4"/>
-<path d="M474 251 V110 H553 V251"/>
+<path d="M474 300 V110 H553 V300"/>
 <path d="M470 110 H557"/>
 <path d="M476 128 H550"/>
-<path d="M424 268 Q460 270 470 245"/>
-<circle cx="475" cy="238" r="7"/><circle cx="482" cy="209" r="5"/><circle cx="489" cy="185" r="7"/>
+<path d="M424 267V315 Q424 330 440 330 H495 V289"/>
+<circle cx="495" cy="277" r="5"/><circle cx="499" cy="249" r="5"/><circle cx="502" cy="220" r="7"/>
 <path d="M132 287 l7 -8 l7 8 l7 -8 l7 8 l7 -8 l7 8" stroke="#555" stroke-width="3"/>
 <path d="M520 170 l0 -45"/><path d="M515 135 l5 -10 l5 10"/>
-<line x1="220" y1="247" x2="295" y2="214"/><line x1="155" y1="291" x2="262" y2="345"/>
+<line x1="220" y1="247" x2="250" y2="223"/><line x1="155" y1="291" x2="262" y2="345"/>
 <line x1="424" y1="63" x2="470" y2="38"/><line x1="553" y1="120" x2="610" y2="82"/>
 </g>
 <g font-family="Arial,sans-serif" font-size="16" fill="#121212">

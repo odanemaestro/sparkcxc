@@ -40,6 +40,18 @@ const question=(id,kind,title,totalMarks,parts,objectives=[])=>({
 
 const svgFrame=inner=>`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 320" width="560" height="320" role="img" font-family="'Times New Roman',Times,serif" font-size="14"><rect width="560" height="320" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">${inner}</g></svg>`;
 
+const gasPreparationDiagram=ammonia=>svgFrame(`
+  <path d="M70 180V128h50v52l30 70H40Z"/><rect x="70" y="121" width="50" height="9" fill="#ddd"/>
+  <path d="M96 130V90h111v65M280 155V90h155v${ammonia?55:125}"/>
+  <rect x="188" y="150" width="110" height="40" rx="12"/>
+  <path d="M208 151v38M278 151v38" stroke-dasharray="3 3"/><path d="M215 168l12 -8 12 8 12 -8 12 8"/>
+  <path d="${ammonia?'M395 235V120h75v115':'M395 120V235h75V120'}"/>
+  <text x="30" y="280" fill="#000" stroke="none">reaction flask${ammonia?' (heated)':''}</text>
+  <text x="176" y="218" fill="#000" stroke="none">${ammonia?'CaO drying tube':'CaCl₂ drying tube'}</text>
+  <text x="376" y="270" fill="#000" stroke="none">${ammonia?'inverted dry gas jar':'upright gas jar'}</text>
+  <text x="280" y="306" fill="#000" stroke="none" text-anchor="middle">${ammonia?'NH₃: upward delivery displaces air downwards':'CO₂: downward delivery displaces air upwards'}</text>
+`);
+
 export const CHEMISTRY_SVGS = Object.freeze({
   titration:svgFrame(`
     <path d="M155 32h48v155h-48z"/><path d="M179 187v30"/><path d="M168 217h22l-5 12h-12z"/>
@@ -47,9 +59,9 @@ export const CHEMISTRY_SVGS = Object.freeze({
     <path d="M179 229v18"/><path d="M130 282h100"/><path d="M145 282l15-55h40l15 55z"/>
     <path d="M162 250h36" stroke-dasharray="3 3"/>
     <text x="228" y="55" fill="#000" stroke="none">burette containing acid</text>
-    <line x1="205" y1="52" x2="305" y2="52"/>
+    <line x1="203" y1="52" x2="219" y2="52"/>
     <text x="228" y="246" fill="#000" stroke="none">conical flask</text>
-    <line x1="208" y1="242" x2="310" y2="242"/>
+    <line x1="208" y1="242" x2="219" y2="242"/>
     <text x="228" y="267" fill="#000" stroke="none">alkali + indicator</text>
   `),
   electrolysis:svgFrame(`
@@ -60,8 +72,8 @@ export const CHEMISTRY_SVGS = Object.freeze({
     <rect x="274" y="24" width="32" height="24"/><text x="290" y="42" text-anchor="middle" fill="#000" stroke="none">dc</text>
     <text x="150" y="286" fill="#000" stroke="none">electrolyte</text>
     <line x1="190" y1="278" x2="250" y2="225"/>
-    <text x="115" y="62" fill="#000" stroke="none">copper electrode</text>
-    <text x="360" y="62" fill="#000" stroke="none">copper electrode</text>
+    <text x="115" y="62" fill="#000" stroke="none">inert electrode</text>
+    <text x="360" y="62" fill="#000" stroke="none">inert electrode</text>
     <text x="167" y="235" fill="#000" stroke="none">−</text><text x="369" y="235" fill="#000" stroke="none">+</text>
   `),
   energyProfile:svgFrame(`
@@ -82,18 +94,8 @@ export const CHEMISTRY_SVGS = Object.freeze({
     <text x="460" y="183" fill="#000" stroke="none" text-anchor="middle">Z</text>
     <text x="280" y="286" fill="#000" stroke="none" text-anchor="middle">Simplified positions in the periodic table</text>
   `),
-  gasPrep:svgFrame(`
-    <rect x="70" y="170" width="115" height="70" rx="8"/>
-    <path d="M85 170v-48h85v48"/><path d="M128 122V76"/>
-    <path d="M128 76h164v86"/>
-    <rect x="275" y="162" width="70" height="95"/>
-    <path d="M290 162v-50h40v50"/>
-    <path d="M345 257h130"/><path d="M475 257V130"/>
-    <rect x="385" y="125" width="55" height="115"/>
-    <text x="74" y="270" fill="#000" stroke="none">reaction flask</text>
-    <text x="285" y="284" fill="#000" stroke="none">drying tube</text>
-    <text x="385" y="284" fill="#000" stroke="none">gas jar</text>
-  `),
+  gasPrep:gasPreparationDiagram(false),
+  ammoniaGasPrep:gasPreparationDiagram(true),
   organic:svgFrame(`
     <text x="70" y="88" fill="#000" stroke="none">A</text>
     <text x="115" y="88" fill="#000" stroke="none">CH₃—CH₂—CH=CH₂</text>
@@ -196,7 +198,7 @@ function dataQuestion(seed){
         item("(v)","A current of 0.50 A flows for 20 minutes. Calculate the charge passed.",2,["Q = It (1)","= 0.50 × 1200 = 600 C (1)"],"Time must be converted to seconds because amperes are coulombs per second.",{objective:"A9.10",profile:{UK:2},response:{type:"calculation"}}),
         item("(vi)","Using F = 96 500 C mol⁻¹, calculate the theoretical mass of copper deposited. Ar(Cu)=63.5.",4,["moles e⁻ = 600/96500 = 0.00622 mol (1)","Cu²⁺ needs 2 mol e⁻ per mol Cu (1)","moles Cu = 0.00311 mol (1)","mass = 0.00311 × 63.5 = 0.197 g (1)"],"Charge gives moles of electrons. The half-equation supplies the electron-to-copper ratio.",{objective:"A9.10",profile:{UK:4},response:{type:"calculation"}}),
         item("(vii)","State TWO reasons why an experimental mass may differ from the theoretical mass.",4,["Cathode not dried completely / solution left on it (1)","copper lost during washing or handling (1)","current not constant / timing error (1)","side reactions / impure electrodes (1)"],"Experimental yield can be affected by measurement, handling and electrical losses.",{objective:"A9.8",profile:{XS:4}})
-      ],{table:{title:"TABLE 1: ELECTROLYSIS RESULTS",headers:["Time / min","Mass of Cu deposited / g"],rows},svg:CHEMISTRY_SVGS.electrolysis,figure:"Figure 1. Electrolysis using copper electrodes"})
+      ],{table:{title:"TABLE 1: ELECTROLYSIS RESULTS",headers:["Time / min","Mass of Cu deposited / g"],rows},svg:CHEMISTRY_SVGS.electrolysis.replaceAll("inert electrode","copper electrode"),figure:"Figure 1. Electrolysis using copper electrodes"})
     ],["A9.4","A9.8","A9.10"]);
   }
   if(mode===4){
@@ -307,7 +309,7 @@ function qQual(seed){
       item("(i)",`State a test and positive result for ${gas}.`,2,gas==="ammonia"?["Hold damp red litmus paper in the gas (1)","it turns blue (1)"]:["Bubble through limewater (1)","limewater turns milky/cloudy (1)"],"A gas test must name both the reagent/procedure and the positive observation.",{objective:"C6.3",profile:{KC:2}}),
       item("(ii)",`State ONE laboratory method for preparing ${gas}.`,2,gas==="ammonia"?["Warm an ammonium salt, for example NH₄Cl, with a strong alkali such as Ca(OH)₂/NaOH (2)"]:["React a carbonate, for example CaCO₃, with dilute acid such as HCl (2)"],"Choose a standard preparation that produces the gas cleanly.",{objective:"C5.2",profile:{KC:2}}),
       item("(iii)","Explain how a suitable collection method follows from the gas properties.",2,gas==="ammonia"?["Ammonia is very soluble in water so it cannot be collected over water (1)","it is less dense than air so use upward delivery / downward displacement of air (1)"]:["CO₂ is denser than air and fairly soluble in water (1)","collect by downward delivery / upward displacement of air (1)"],"Collection method depends mainly on water solubility and density relative to air.",{objective:"C5.2",profile:{UK:2}})
-    ],{svg:CHEMISTRY_SVGS.gasPrep,figure:"Figure 4. General gas-preparation arrangement"}),
+    ],{svg:gas==="ammonia"?CHEMISTRY_SVGS.ammoniaGasPrep:CHEMISTRY_SVGS.gasPrep,figure:`Figure 4. ${gas} preparation and collection`}),
     part("(c)","A community is concerned about chemical pollution entering a river.",[
       item("(i)","Explain how excess nitrate and phosphate fertilisers can lead to fish deaths.",4,["Nutrients cause rapid algal growth / eutrophication (1)","algae block light and plants/algae die (1)","decomposers respire while breaking down dead material and use dissolved oxygen (1)","low dissolved oxygen causes fish/other aerobic organisms to die (1)"],"The key chain is nutrient enrichment → algal bloom → decomposition → oxygen depletion.",{objective:"C5.5",profile:{UK:4}}),
       item("(ii)","State ONE Green Chemistry approach that could reduce the impact of a chemical process.",1,"Prevent waste / use safer chemicals / improve energy efficiency / use renewable feedstocks / design less hazardous products (any one).","Green Chemistry tries to prevent hazards at the design stage.",{objective:"C5.10",profile:{KC:1}}),

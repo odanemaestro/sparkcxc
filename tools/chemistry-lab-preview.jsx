@@ -1,0 +1,6 @@
+import React,{useState} from 'react';
+import {createRoot} from 'react-dom/client';
+import ChemistryInteractiveLab from '../src/chemistry/components/ChemistryInteractiveLab';
+const names=['particle-states','separation','periodic-trends','bonding','mole-calculator','titration','redox','electrolysis','rate','calorimetry','organic-builder','reactivity','qualitative-analysis'];
+function Preview(){const [lab,setLab]=useState('titration');const [phone,setPhone]=useState(false);const [dark,setDark]=useState(false);return <><nav aria-label="Lab preview controls"><label>Lab <select value={lab} onChange={e=>setLab(e.target.value)}>{names.map(n=><option key={n} value={n}>{n.split('-').map(word=>word[0].toUpperCase()+word.slice(1)).join(' ')}</option>)}</select></label><button aria-pressed={dark} onClick={()=>{setDark(!dark);document.documentElement.dataset.theme=dark?'light':'dark'}}>Toggle theme</button><button aria-pressed={phone} onClick={()=>setPhone(!phone)}>Toggle phone width</button></nav><div id="lab" className={phone?'review-phone':''} style={{maxWidth:phone?360:1000,margin:'auto'}}><ChemistryInteractiveLab model={{type:'chemistry-'+lab}}/></div></>};
+createRoot(document.getElementById('root')).render(<Preview/>);

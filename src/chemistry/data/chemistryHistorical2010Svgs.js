@@ -39,9 +39,10 @@ export const CHEMISTRY_2010_MJ_Q1_ENTHALPY_SVG=svg(790,405,"Figure 2. Catalysed 
 export const CHEMISTRY_2010_MJ_Q1_CATALYST_MODEL_SVG=svg(760,345,"Model oxygen-collection apparatus for comparing hydrogen peroxide catalysts",
  '<g stroke="#111" stroke-width="2.4" fill="none">'+
  '<path d="M115 124V215Q95 260 139 272H247Q290 261 269 215V124"/>'+
- '<path d="M132 122H251 M186 122V81H380V195H443"/>'+
- '<path d="M443 195H480V122H666V225H480Z" stroke="#111"/>'+
- '<rect x="496" y="147" width="138" height="46" fill="#c8e7eb" stroke="#689ead" stroke-width="1"/>'+
+ '<rect x="113" y="116" width="158" height="10" fill="#ddd"/><path d="M186 122V81H380V195H443"/>'+
+ '<path d="M443 195H480V122H666M480 195V225H666" stroke="#111"/>'+
+ '<path d="M632 124V223M632 172H722M722 155V190"/>'+
+ Array.from({length:8},(_,i)=>'<path d="M'+(492+i*17)+' 122v13" stroke-width="1"/>').join('')+
  '<path d="M145 232H248" stroke="#588ab5"/>'+
  '</g>'+txt(195,301,"H₂O₂ + catalyst",18)+txt(408,58,"Delivery tube",17)+
  txt(569,106,"Graduated gas syringe",17)+txt(377,327,"Model diagram, not printed source",16));

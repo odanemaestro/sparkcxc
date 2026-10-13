@@ -67,8 +67,10 @@ export const CHEMISTRY_2019_JAN_Q6_CO2_APPARATUS_SVG=svg(890,515,
  "Carbon dioxide from calcium carbonate and dilute hydrochloric acid, collected in a gas syringe",
  '<g fill="none" stroke="#111" stroke-width="2.6">'+
  '<path d="M119 138V312Q99 367 152 377H310Q362 367 343 312V138"/>'+
- '<path d="M114 139H349"/><path d="M196 139V79H458V187"/>'+
- '<path d="M457 187H531V111H769V236H531V187"/>'+
+ '<rect x="114" y="131" width="235" height="10" fill="#ddd"/><path d="M196 139V79H458V187"/>'+
+ '<path d="M457 187H531V111H769M531 187V236H769"/>'+
+ '<path d="M707 113V234M707 174H826M826 157V192"/>'+
+ Array.from({length:9},(_,i)=>line(550+i*16,111,550+i*16,125,1)).join('')+
  '<path d="M531 236H769"/>'+
  '<path d="M152 303H302" stroke="#b88966"/>'+
  '</g>'+text(213,405,"CaCO₃ + dilute HCl",18)+

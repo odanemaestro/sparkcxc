@@ -42,26 +42,23 @@ export const CHEMISTRY_2015_MJ_DIAMOND_MODEL_SVG=`<svg xmlns="http://www.w3.org/
 <path d="M96 70L190 24L285 70M105 239L190 291L285 237" stroke-dasharray="7 4" stroke-width="2"/>
 </g><g font-family="Arial,sans-serif" font-size="24" text-anchor="middle" fill="#111">
 ${[[190,150],[96,70],[285,70],[105,239],[285,237],[190,24],[190,291]].map(([x,y])=>`<text x="${x}" y="${y+8}">C</text>`).join("")}</g></svg>`;
-export const CHEMISTRY_2015_MJ_DISTILLATION_MODEL_SVG=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 870 410" role="img" aria-label="Distillation apparatus with heating flask, thermometer, Liebig condenser, cooling water connections and receiving vessel">
-<title>Model laboratory apparatus: concentration of ethanol by distillation</title><rect width="870" height="410" fill="white"/>
-<g stroke="#111" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round">
-<path d="M140 125V198Q76 255 117 316Q143 340 188 315Q223 261 164 198V125Z"/>
-<path d="M117 276Q151 258 191 277V298Q146 328 119 299Z" fill="#d8ecf0" stroke="#59909d" stroke-width="1"/>
-<path d="M150 124H225V92H282L338 135L624 275"/>
-<path d="M145 121V67H160V121"/>
-<path d="M160 94H226"/>
-<rect x="322" y="127" width="337" height="43" rx="16" transform="rotate(27 322 127)"/>
-<path d="M300 115L650 291"/>
-<path d="M625 276H677V332Q675 362 709 362Q747 360 747 329V296H721"/>
-<path d="M196 351H112" stroke-width="1.5"/><path d="M155 349V324" stroke-width="1.5"/>
-<path d="M145 343Q127 379 153 392Q175 371 158 343Z" fill="#f5b044" stroke="#b75c1a" stroke-width="1.5"/>
-<path d="M355 120V69H420" stroke-width="1.4"/>
-<path d="M608 188V79H665" stroke-width="1.4"/>
-<path d="M724 273L788 223" stroke-width="1.4"/>
-</g>
-<g font-family="Arial,sans-serif" font-size="17" fill="#111">
-<text x="31" y="42">Thermometer</text><text x="43" y="252">Dilute rum</text>
-<text x="414" y="65">Cooling water out</text><text x="655" y="65">Cooling water in</text>
-<text x="655" y="214">Liebig condenser</text><text x="748" y="212">Ethanol-rich</text><text x="748" y="231">distillate</text>
-<text x="39" y="386">Gentle heat</text>
+export const CHEMISTRY_2015_MJ_DISTILLATION_MODEL_SVG=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 350" role="img" aria-label="Simple distillation: thermometer bulb level with side arm, inner vapour tube inside a Liebig water jacket, water entering low and leaving high, open receiving flask">
+<title>Model: simple distillation of an ethanol-water mixture</title><rect width="600" height="350" fill="white"/>
+<g stroke="#111" stroke-width="2" fill="none" stroke-linejoin="round">
+<path d="M85 120V80h40v40Q180 190 125 215Q85 235 60 200Q38 164 85 120Z"/>
+<rect x="84" y="77" width="42" height="8" fill="#ddd"/>
+<path d="M105 45V92"/><circle cx="105" cy="95" r="4" fill="#111"/>
+<path d="M125 95H155L392 214M125 105H152L387 222"/>
+<path d="M184 94L370 185L355 215L170 123Z"/>
+<path d="M192 99L206 70M201 103L215 74M344 209L334 238M352 213L342 242"/>
+<path d="M381 225V239L357 279Q365 308 412 297L410 269L397 241V230"/>
+<path d="M60 172Q104 160 150 175" stroke="#59909d"/>
+<path d="M37 180V260h135v-80"/><path d="M39 200H60M149 200H170" stroke="#59909d"/>
+<rect x="34" y="268" width="141" height="19" rx="4"/>
+<path d="M105 47L145 34M257 163L305 136M345 237L300 255M209 74L252 58M405 281L447 281" stroke-width="1"/>
+</g><g font-family="Arial,sans-serif" font-size="14" fill="#111">
+<text x="149" y="35">Thermometer</text><text x="17" y="144">Dilute rum</text>
+<text x="255" y="57">Cooling water out (upper end)</text><text x="305" y="132">Liebig condenser</text>
+<text x="230" y="312">Cooling water in (lower end)</text><text x="444" y="276">Ethanol-rich</text><text x="444" y="295">distillate</text>
+<text x="22" y="312">Electrically heated water bath</text><text x="300" y="338" text-anchor="middle">Inner vapour tube is separate from the cooling-water jacket</text>
 </g></svg>`;
