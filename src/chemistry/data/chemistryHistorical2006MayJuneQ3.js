@@ -10,7 +10,7 @@ export const CHEMISTRY_2006_MJ_Q3_DRAFT=Object.freeze({
  sourceIssues:[
  "Compound A is methanol CH₃OH, B is propanoic acid CH₃CH₂COOH, C is a straight five-carbon alcohol pentan-1-ol, D is ethoxyethane (diethyl ether). A and C are the homologous alcohol pair.",
  "E is ethanol C₂H₅OH: prepared by hydration of ethene or fermentation of glucose; F in complete combustion is CO₂. Ethanol with compound B forms ethyl propanoate, not a methyl or pentyl ester.",
- "Original page 9 Reaction 1 hydration is steam and acid catalyst; source labels yeast for glucose fermentation route. Preserve these two distinct routes."
+ "CORRECTED FROM THE PRINTED ARROW: Figure 4 Reaction 1 points FROM compound E (ethanol) TO ethene, so the required conversion is ethanol DEHYDRATION, NOT the reverse industrial hydration. Accept concentrated H₂SO₄ and heat or hot alumina."
  ],
  parts:[
  {label:"(a)",items:[
@@ -25,9 +25,9 @@ export const CHEMISTRY_2006_MJ_Q3_DRAFT=Object.freeze({
  "Position or chain isomers retain the same molecular formula but differ in OH position or carbon skeleton.",{type:"drawing"})
  ]},
  {label:"(b)",items:[
- item("(i)","Identify reagents and conditions of Reaction 1 from ethene to ethanol.",2,
- ["Steam (water vapour) and acid catalyst such as phosphoric acid.","High temperature about 300°C and pressure about 60–70atm in industrial hydration."],
- "Ethene + steam ⇌ ethanol, with an H₃PO₄ catalyst."),
+ item("(i)","State the reagent(s) and condition(s) for Reaction 1, converting Compound E to ethene.",2,
+ ["Concentrated H₂SO₄ (or suitable dehydration catalyst such as heated Al₂O₃).","Heat gently with concentrated acid at about 170°C, or pass ethanol vapour over hot Al₂O₃ (~300–350°C)."],
+ "Reaction 1 is dehydration: CH₃CH₂OH → CH₂=CH₂ + H₂O. The scanned diagram arrow goes from ethanol to ethene, not from ethene to ethanol."),
  item("(ii)","Name yeast conversion of glucose to ethanol (Reaction 2).",1,
  ["Anaerobic fermentation."],
  "Yeast enzymes ferment sugar to ethanol and carbon dioxide."),
