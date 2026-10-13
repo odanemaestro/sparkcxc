@@ -155,6 +155,7 @@ export default function ChemistryPaper2Exam({supabase,userId,onBack,paperIndex=0
   const [endsAt,setEndsAt]=useState(initial?.endsAt||null);
   const [remaining,setRemaining]=useState(endsAt?Math.max(0,Math.round((endsAt-Date.now())/1000)):duration);
   const [confirmSubmit,setConfirmSubmit]=useState(false);
+  const [confirmExit,setConfirmExit]=useState(false);
   const result=useMemo(()=>gradeChemistryPaper2(paper,responses),[paper,responses]);
   const submitted=phase==="review";
 
@@ -193,7 +194,7 @@ export default function ChemistryPaper2Exam({supabase,userId,onBack,paperIndex=0
   function update(key,value){if(!submitted)setResponses(prev=>({...prev,[key]:value}));}
 
   if(phase==="instructions")return <main className="is-exam-root chem-p2-root"><div className="is-exam-shell">
-    <button type="button" className="is-exam-primary is-exam-page-back" onClick={onBack}><span aria-hidden="true">←</span>{paper.isHistorical?"Back to past papers":"Back to Chemistry practice"}</button>
+    <button type="button" className="is-exam-primary is-exam-page-back" onClick={onBack}><span aria-hidden="true">←</span>>Back to Paper 2 selection</button>
     <section className="is-exam-instructions-card">
       <span className="is-exam-eyebrow">CSEC CHEMISTRY · PAPER 02</span>
       <h1>{paper.title}</h1>
@@ -210,7 +211,7 @@ export default function ChemistryPaper2Exam({supabase,userId,onBack,paperIndex=0
   const qEval=result.questions[current];
   return <main className="is-exam-root chem-p2-root"><div className="is-exam-shell">
     <header className="is-exam-head">
-      <div><button type="button" className="is-exam-primary is-exam-back" onClick={onBack}>Exit</button><span className="is-exam-eyebrow">CSEC CHEMISTRY · PAPER 02</span><h1>{paper.title}</h1><p>{submitted?"Answer review":`Question ${current+1} of ${paper.questions.length}`} · {q.totalMarks} marks</p></div>
+      <div><button type="button" className="is-exam-primary is-exam-back" onClick={()=>submitted?onBack():setConfirmExit(true)}>Exit</button><span className="is-exam-eyebrow">CSEC CHEMISTRY · PAPER 02</span><h1>{paper.title}</h1><p>{submitted?"Answer review":`Question ${current+1} of ${paper.questions.length}`} · {q.totalMarks} marks</p></div>
       <div className={`is-exam-timer ${remaining<=900&&!submitted?"warning":""}`}><span>{submitted?"Submitted":"Time remaining"}</span><strong>{submitted?"REVIEW":timeText(remaining)}</strong></div>
     </header>
 
@@ -224,9 +225,20 @@ export default function ChemistryPaper2Exam({supabase,userId,onBack,paperIndex=0
     <div className="chem-p2-exam-footer"><div className="is-exam-bottom-nav"><button type="button" className="is-exam-secondary" disabled={current===0} onClick={()=>{setCurrent(v=>Math.max(0,v-1));goTop();}}>Previous</button><span>Question {current+1} of {paper.questions.length}</span><button type="button" className="is-exam-secondary" disabled={current===paper.questions.length-1} onClick={()=>{setCurrent(v=>Math.min(paper.questions.length-1,v+1));goTop();}}>Next</button></div>
 
     {!submitted&&<div className="chem-p2-submit-row"><button type="button" className="is-exam-primary" onClick={()=>setConfirmSubmit(true)}>Submit Paper 02</button></div>}
-    {submitted&&<div className="chem-p2-submit-row"><button type="button" className="is-exam-primary" onClick={restart}>{paper.isHistorical?"Try this paper again":"Start another Paper 02"}</button><button type="button" className="is-exam-secondary" onClick={onBack}>{paper.isHistorical?"Back to past papers":"Back to Chemistry practice"}</button></div>}
+    {submitted&&<div className="chem-p2-submit-row"><button type="button" className="is-exam-primary" onClick={restart}>Retake this paper</button><button type="button" className="is-exam-secondary" onClick={onBack}>Choose another paper</button></div>}
     </div>
 
+    {confirmExit&&<div className="chem-exam-modal-layer" role="presentation">
+      <section className="chem-exam-modal" role="dialog" aria-modal="true" aria-labelledby="chem-p2-exit-title">
+        <span className="chem-library-eyebrow">LEAVE EXAMINATION</span>
+        <h2 id="chem-p2-exit-title">Exit this paper?</h2>
+        <p>Your answers and remaining time are saved. You can resume from the paper library.</p>
+        <div className="chem-exam-modal-actions">
+          <button type="button" className="chem-exam-modal-secondary" onClick={()=>setConfirmExit(false)}>Keep working</button>
+          <button type="button" className="chem-exam-modal-primary" onClick={onBack}>Save and exit</button>
+        </div>
+      </section>
+    </div>}
     {confirmSubmit&&<div className="is-exam-confirm-layer" role="dialog" aria-modal="true" aria-label="Submit Chemistry Paper 02"><div className="is-exam-confirm-card"><h2>Submit your paper?</h2><p>You will move to the marking review and will no longer be able to edit your answers.</p><div><button type="button" className="is-exam-secondary" onClick={()=>setConfirmSubmit(false)}>Keep working</button><button type="button" className="is-exam-primary" onClick={()=>submit()}>Submit now</button></div></div></div>}
   </div></main>;
 }
