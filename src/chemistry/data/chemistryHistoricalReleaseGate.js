@@ -33,6 +33,19 @@ export function auditChemistryHistoricalQuestion(record){
   };
   if(items.some(item=>!allocationValid(item)))
     missing.push("mark-scheme-allocation");
+  // A table cannot be released merely because its written rubric is complete:
+  // every editable cell also needs a concrete answer key.
+  const missingTableKeys=items.some(item=>{
+    if(item.response?.type!=="table")return false;
+    const table=item.response.table||{};
+    const count=(table.rows||[]).flat().filter(cell=>String(cell??"")==="").length;
+    const answers=table.answers;
+    return count===0||!Array.isArray(answers)||answers.length!==count||
+      answers.some(answer=>Array.isArray(answer)
+        ?answer.length===0||answer.some(value=>!String(value??"").trim())
+        :!String(answer??"").trim());
+  });
+  if(missingTableKeys)missing.push("missing-table-answer-keys");
   // Table grouping must cover each editable cell exactly once when supplied.
   const invalidGroup=items.some(item=>{
     if(item.response?.type!=="table"||item.response.table?.markGroups===undefined)return false;
