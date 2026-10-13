@@ -27,6 +27,7 @@ const EnglishAPracticeHub = lazy(() =>
 const ChemistryPracticeHub = lazy(() =>
   import("../chemistry/practice/ChemistryPracticeHub")
 );
+const FnhPracticeHub=lazy(()=>import("../fnh/practice/FnhPracticeHub"));
 
 function PracticeLazyBoundary({ label, children }) {
   return (
@@ -109,6 +110,8 @@ export default function PracticeHub({ supabase, userId, setView, physicsEnabled 
                     ? "practice-english-a"
                     : item.id === "chemistry"
                       ? "practice-chemistry"
+                    : item.id === "food-nutrition-and-health"
+                      ? "practice-food-nutrition-and-health"
                       : "practice-math"
         );
       }}
@@ -176,6 +179,13 @@ export default function PracticeHub({ supabase, userId, setView, physicsEnabled 
         />
       </PracticeLazyBoundary>
     );
+  }
+
+  if (selectedSubject === "food-nutrition-and-health") {
+    return <PracticeLazyBoundary label="Loading Food, Nutrition and Health practice">
+      <FnhPracticeHub supabase={supabase} userId={userId}
+        onBack={()=>{setMode("home");setView?.("practice");}}/>
+    </PracticeLazyBoundary>;
   }
 
   if (selectedSubject === "chemistry") {
