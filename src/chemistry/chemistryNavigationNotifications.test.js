@@ -6,7 +6,7 @@ describe("Chemistry page reset and notification parity",()=>{
   test("practice hub resets the scroll position on route and Paper 2 set changes",()=>{
     const src=read("src/chemistry/practice/ChemistryPracticeHub.jsx");
     expect(src).toContain("window.scrollTo");
-    expect(src).toContain("[mode,paperIndex]");
+    expect(src).toContain("[mode,paper1Source,paperIndex,historicalPaper?.id]");
   });
   test("Paper 1 returns to the top on new papers, questions and review",()=>{
     const src=read("src/chemistry/practice/ChemistryPaper1Exam.jsx");
