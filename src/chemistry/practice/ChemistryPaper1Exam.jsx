@@ -2,7 +2,7 @@ import React,{useEffect,useMemo,useState} from "react";
 import "./chemistryPractice.css";
 
 const SOURCES=["2009-MJ","2010-MJ","2016-MJ","2017-MJ","2018-JAN","2018-MJ","2019-MJ","2020-JAN","2021-MJ","2023-MJ"];
-const root=`${import.meta.env.BASE_URL}chemistry-paper1/`;
+const root=`${typeof window!=="undefined" && window.location.pathname.startsWith("/sparkcxc")?"/sparkcxc/":"/"}chemistry-paper1/`;
 const getJSON=async path=>{
   const response=await fetch(root+path,{cache:"no-store"});
   if(!response.ok)throw new Error("This historical Paper 1 bank has not yet been imported into the deployed SPARK build.");
