@@ -143,6 +143,60 @@ describe("Exact graph coordinate feedback in Chemistry and Integrated Science",(
     expect(updated.series[1].points).toBe("2,2");
   });
 
+  test("remove X deletes only the chosen point in its series",()=>{
+    const initial=initialGraph("5,0.012\n10,0.012\n15,0.018");
+    initial.x={min:0,max:20,step:2};
+    initial.y={min:0,max:0.02,step:0.002};
+    const notify=jest.fn();
+    render(<Harness initial={initial} notify={notify}/>);
+    fireEvent.click(screen.getByRole("button",{name:"Remove Experiment A point (10, 0.012)"}));
+    const updated=JSON.parse(notify.mock.calls[notify.mock.calls.length-1][1]);
+    expect(updated.series[0].points).toBe("5,0.012\n15,0.018");
+    expect(screen.getByRole("button",{name:"Inspect Experiment A point (5, 0.012)"})).toBeInTheDocument();
+    expect(screen.queryByRole("button",{name:"Remove Experiment A point (10, 0.012)"})).not.toBeInTheDocument();
+  });
+
+  test("remove X uses original input row when an invalid row or duplicate coordinates exist",()=>{
+    const initial=initialGraph("2,4\nnot valid\n2,4\n6,7");
+    const notify=jest.fn();
+    render(<Harness initial={initial} notify={notify}/>);
+    fireEvent.click(screen.getAllByRole("button",{name:"Remove Experiment A point (2, 4)"})[1]);
+    const updated=JSON.parse(notify.mock.calls[notify.mock.calls.length-1][1]);
+    expect(updated.series[0].points).toBe("2,4\nnot valid\n6,7");
+    expect(screen.getAllByRole("button",{name:"Remove Experiment A point (2, 4)"})).toHaveLength(1);
+  });
+
+  test("remove X leaves other graph series untouched even for identical coordinates",()=>{
+    const initial=initialGraph("5,0.012\n10,0.012");
+    initial.x={min:0,max:20,step:2};
+    initial.y={min:0,max:0.02,step:0.002};
+    initial.series.push({name:"Experiment B",points:"5,0.012\n15,0.016"});
+    const notify=jest.fn();
+    render(<Harness initial={initial} notify={notify}/>);
+    fireEvent.click(screen.getByRole("button",{name:"Remove Experiment B point (5, 0.012)"}));
+    const updated=JSON.parse(notify.mock.calls[notify.mock.calls.length-1][1]);
+    expect(updated.series[0].points).toBe("5,0.012\n10,0.012");
+    expect(updated.series[1].points).toBe("15,0.016");
+  });
+
+  test("review mode exposes coordinate inspection but no delete X buttons",()=>{
+    const initial=initialGraph("5,0.012\n10,0.012");
+    initial.x={min:0,max:20,step:2};
+    initial.y={min:0,max:0.02,step:0.002};
+    render(<Harness initial={initial} disabled/>);
+    expect(screen.getByRole("button",{name:"Inspect Experiment A point (5, 0.012)"})).toBeInTheDocument();
+    expect(screen.queryByRole("button",{name:/Remove Experiment A point/})).not.toBeInTheDocument();
+  });
+
+  test("hovering the coordinate chip continues inspecting the exact point",()=>{
+    const initial=initialGraph("5,0.012\n10,0.012");
+    initial.x={min:0,max:20,step:2};
+    initial.y={min:0,max:0.02,step:0.002};
+    render(<Harness initial={initial}/>);
+    fireEvent.pointerEnter(screen.getByRole("button",{name:"Inspect Experiment A point (5, 0.012)"}));
+    expect(screen.getByText("Plotted point: (5, 0.012)")).toBeInTheDocument();
+  });
+
   test("Mathematics graph workspace already has snapped pointer coordinates and a crosshair",()=>{
     // The Mathematics response workspace implements these independently.
     const source=require("fs").readFileSync(require("path").join(process.cwd(),"src/practice/Paper2ResponseInput.jsx"),"utf8");
