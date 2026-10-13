@@ -97,7 +97,22 @@ export default function ChemistryPaper1Exam({onBack,supabase,userId}){
       {submitted?<section aria-label="Paper 1 results">
         <h2>Practice review: {scores}/{exam.length} ({exam.length?Math.round(scores/exam.length*100):0}%)</h2>
         <p>These are provisional, source-supplied answer keys. Review the explanation and any flagged ambiguity before relying on your result.</p>
-        {exam.map((q,i)=><article key={q.id} className="chem-p1-review"><h3>Question {i+1}: {answers[q.id]===q.answer?"Correct":"Review"}</h3><p>{q.stem}</p><p>Your answer: {answers[q.id]||"Not answered"} · Supplied key: {q.answer}</p><p>{q.explanation}</p>{q.flags?.length?<p>Source caveat: {q.flags.join(" ")}</p>:null}</article>)}
+        {exam.map((q,i)=>{
+          const selected=answers[q.id];
+          const correct=q.answer;
+          return <article key={q.id} className="chem-p1-review">
+            <h3>Question {i+1}: {selected===correct?"Correct":selected?"Incorrect":"Not answered"}</h3>
+            {q.stimulus&&stimuli[q.stimulus]?<div className="chem-p1-stimulus"><p>{stimuli[q.stimulus].text}</p>{(stimuli[q.stimulus].diagrams||[]).map(d=><React.Fragment key={d}>{renderFigure(d)}</React.Fragment>)}</div>:null}
+            <p>{q.stem}</p>{q.stem_after&&<p>{q.stem_after}</p>}
+            {(q.diagrams||[]).map(d=><React.Fragment key={d}>{renderFigure(d)}</React.Fragment>)}
+            <div className="chem-p1-review-answer-grid">
+              <div><strong>Your answer</strong><p>{selected?`${selected}. ${q.options?.[selected]||""}`:"Not answered"}</p>{selected&&q.option_diagrams?.[selected]?renderFigure(q.option_diagrams[selected]):null}</div>
+              <div><strong>Correct answer</strong><p>{correct&&q.options?.[correct]?`${correct}. ${q.options[correct]}`:"Answer key awaiting verification"}</p>{correct&&q.option_diagrams?.[correct]?renderFigure(q.option_diagrams[correct]):null}</div>
+            </div>
+            {q.explanation&&<div className="chem-p1-review-explanation"><strong>Explanation</strong><p>{q.explanation}</p></div>}
+            {q.flags?.length?<p>Source accuracy note: {q.flags.join(" ")}</p>:null}
+          </article>;
+        })}
       </section>:current?<section className="chem-p1-question">
         <h2>Question {active+1} of {exam.length}</h2>
         {current.stimulus&&stimuli[current.stimulus]?<div className="chem-p1-stimulus"><p>{stimuli[current.stimulus].text}</p>{(stimuli[current.stimulus].diagrams||[]).map(d=><React.Fragment key={d}>{renderFigure(d)}</React.Fragment>)}</div>:null}
