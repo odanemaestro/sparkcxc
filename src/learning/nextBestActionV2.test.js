@@ -58,6 +58,20 @@ describe("SPARK Next Best Action V2", () => {
     expect(target.exact).toBe(true);
   });
 
+  test("Chemistry flashcard suggestions open the shared Chemistry flashcard deck", () => {
+    const target = exactTargetForAction("chemistry","A6.1","flashcards");
+    expect(target.path).toBe("/dashboard/flashcards/chemistry");
+    expect(target.kind).toBe("flashcards");
+    expect(target.special).toBe("dashboard-flashcards");
+    expect(target.exact).toBe(true);
+  });
+
+  test("Chemistry assessment suggestions open Chemistry practice rather than another subject", () => {
+    const target = exactTargetForAction("chemistry","A6.1","assessment");
+    expect(target.path).toBe("/practice/chemistry");
+    expect(target.subjectId).toBe("chemistry");
+  });
+
   test("routes a Physics topic to its exact section and mode", () => {
     const target = exactTargetForAction("physics", "A4", "lab");
     expect(target.path).toBe("/study/physics/section/A");

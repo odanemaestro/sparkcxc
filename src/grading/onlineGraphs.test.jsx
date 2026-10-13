@@ -5,7 +5,7 @@ import {render,screen,fireEvent} from "@testing-library/react";
 import ScienceGraphEditor from "../integratedScience/practice/ScienceGraphEditor";
 import rubrics from "../integratedScience/practice/scienceGraphRubrics.json";
 import {gradeIntegratedSciencePaper2Item} from "../integratedScience/practice/integratedSciencePaper2Grader";
-import {graphAxis,graphPath} from "../integratedScience/practice/scienceGraphModel";
+import {graphAxis,graphPreviewAxis,graphPoints,graphPointIssues,graphPath} from "../integratedScience/practice/scienceGraphModel";
 const questions=[1,2,3].flatMap(m=>JSON.parse(fs.readFileSync(path.join(process.cwd(),`public/integrated-science/bank/is_module${m}.json`))).paper02);
 function fixture(key){
   const [id,p,i]=key.split(":"),q=questions.find(q=>q.id===id),item=q.parts[p].items[i],r=rubrics[key];
@@ -36,6 +36,26 @@ test("poor scale and wrong construction do not earn construction marks",()=>{
 });
 test("axis validation bounds rendering work and rejects empty/invalid values",()=>{
   for(const axis of [{min:"",max:10,step:1},{min:0,max:10,step:0},{min:0,max:10,step:.000001},{min:10,max:0,step:1}])expect(graphAxis(axis)).toBeNull();
+});
+test("invalid student step gets a visible graph preview but never an automatic scale mark",()=>{
+  const axis={min:"0",max:"0.2",step:"0"};
+  expect(graphAxis(axis)).toBeNull();
+  expect(graphPreviewAxis(axis)).toMatchObject({
+    valid:false,
+    suggestedStep:0.02,
+    axis:{min:0,max:0.2,step:0.02,intervals:10}
+  });
+  expect(graphPreviewAxis({min:0,max:10,step:2})).toMatchObject({valid:true,suggestedStep:null});
+  expect(graphPreviewAxis({min:2,max:2,step:1}).axis).toBeNull();
+});
+test("typed points accept decimals and scientific notation with meaningful row errors",()=>{
+  expect(graphPoints("0,0.02\n20, 0.08\n3e1,1.2e-1","line")).toEqual([
+    {x:0,y:0.02},{x:20,y:0.08},{x:30,y:0.12}
+  ]);
+  expect(graphPoints("0,0.02,20\n40,0.16","line")).toEqual([null,{x:40,y:0.16}]);
+  expect(graphPointIssues("0,0.02,20\n40,0.16","line")).toMatchObject([
+    {line:1,text:"0,0.02,20"}
+  ]);
 });
 test("editor persists deliberate scale and series choices",()=>{
   const changed=jest.fn();render(<ScienceGraphEditor base="q" responses={{}} onChange={changed}/>);

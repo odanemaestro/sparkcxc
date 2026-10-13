@@ -50,6 +50,8 @@ function graphNumber(value,fallback){
 }
 
 function GraphPlotter({base,config,item,responses,onChange,disabled}){
+  const [hover,setHover]=useState(null);
+  const [selected,setSelected]=useState(null);
   const pointsText=responses[`${base}:points`] || "";
   const points=parseGraphPoints(pointsText);
   const xMin=graphNumber(responses[`${base}:xMin`],0);
@@ -68,23 +70,59 @@ function GraphPlotter({base,config,item,responses,onChange,disabled}){
   const sy=y=>top+(yMax-y)/yRange*plotHeight;
   const format=value=>Math.abs(value)>=100 ? Number(value.toFixed(0)) : Number(value.toFixed(2));
   const serialize=next=>next.map(point=>`${point.series || "A"}: ${format(point.x)}, ${format(point.y)}`).join("\n");
+  const svgLocal=event=>{
+    const element=event.currentTarget;
+    const rect=element.getBoundingClientRect();
+    if(!rect.width||!rect.height)return null;
+    if(typeof element.createSVGPoint==="function"&&typeof element.getScreenCTM==="function"){
+      const matrix=element.getScreenCTM();
+      if(matrix&&typeof matrix.inverse==="function"){
+        const cursor=element.createSVGPoint();
+        cursor.x=event.clientX;cursor.y=event.clientY;
+        const transformed=cursor.matrixTransform(matrix.inverse());
+        return {x:transformed.x,y:transformed.y};
+      }
+    }
+    const scale=Math.min(rect.width/width,rect.height/height);
+    const originX=rect.left+(rect.width-width*scale)/2;
+    const originY=rect.top+(rect.height-height*scale)/2;
+    return {x:(event.clientX-originX)/scale,y:(event.clientY-originY)/scale};
+  };
+  const exactLabel=point=>`(${point.x}, ${point.y})`;
+  const nearestSaved=local=>{
+    if(!local)return null;
+    const within=points.filter(p=>p.x>=xMin&&p.x<=xMax&&p.y>=yMin&&p.y<=yMax);
+    if(connection==="bars"){
+      return within.find(p=>Math.abs(sx(p.x)-local.x)<barWidth/2+5 &&
+        local.y>=Math.min(sy(p.y),sy(Math.max(yMin,Math.min(yMax,0))))-5 &&
+        local.y<=Math.max(sy(p.y),sy(Math.max(yMin,Math.min(yMax,0))))+5)||null;
+    }
+    return within.reduce((winner,p)=>{
+      const d=Math.hypot(sx(p.x)-local.x,sy(p.y)-local.y);
+      return d<winner.distance?{distance:d,point:p}:winner;
+    },{distance:12,point:null}).point;
+  };
   const pointFromEvent=event=>{
-    if(!validScale) return null;
-    const rect=event.currentTarget.getBoundingClientRect();
-    const localX=(event.clientX-rect.left)/Math.max(1,rect.width)*width;
-    const localY=(event.clientY-rect.top)/Math.max(1,rect.height)*height;
-    if(localX<left || localX>width-right || localY<top || localY>height-bottom) return null;
-    const rawX=xMin+(localX-left)/plotWidth*(xMax-xMin);
-    const rawY=yMax-(localY-top)/plotHeight*(yMax-yMin);
+    if(!validScale)return null;
+    const local=svgLocal(event);
+    if(!local||local.x<left||local.x>width-right||local.y<top||local.y>height-bottom)return null;
+    const existing=nearestSaved(local);
+    if(existing)return {point:existing,existing:true};
+    const rawX=xMin+(local.x-left)/plotWidth*(xMax-xMin);
+    const rawY=yMax-(local.y-top)/plotHeight*(yMax-yMin);
     const stepX=(xMax-xMin)/50,stepY=(yMax-yMin)/50;
     const snap=(value,step)=>step>0?Math.round(value/step)*step:value;
-    return {series:activeSeries,x:format(snap(rawX,stepX)),y:format(snap(rawY,stepY))};
+    return {point:{series:activeSeries,x:format(snap(rawX,stepX)),y:format(snap(rawY,stepY))},existing:false};
   };
   const addPoint=event=>{
-    if(disabled) return;
-    const point=pointFromEvent(event);
-    if(point) onChange(`${base}:points`,serialize([...points,point]));
+    const next=pointFromEvent(event);
+    if(!next)return;
+    setSelected(next);
+    if(disabled||next.existing)return;
+    onChange(`${base}:points`,serialize([...points,next.point]));
   };
+  const shown=hover||selected;
+  const position=shown?.point&&validScale?{x:sx(shown.point.x),y:sy(shown.point.y)}:null;
   const groups=["A","B"].map(series=>({series,points:points.filter(point=>point.series===series)}));
   const barWidth=Math.max(5,Math.min(34,plotWidth/Math.max(12,points.length*2)));
   const tickValues=(min,max)=>Array.from({length:11},(_,i)=>min+(max-min)*i/10);
@@ -140,15 +178,37 @@ function GraphPlotter({base,config,item,responses,onChange,disabled}){
       {multiSeries && <label className="is-p2-graph-key"><span>Key</span><input disabled={disabled} value={responses[`${base}:key`] || ""} onChange={e=>onChange(`${base}:key`,e.target.value)} placeholder="A = ...; B = ..."/></label>}
     </div>
     {!validScale && <div className="is-p2-graph-error" role="alert">Each maximum must be greater than its minimum before plotting.</div>}
-    <svg className="is-p2-graph-response" viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Interactive student graph plot" onClick={addPoint}>
-      <rect x={left} y={top} width={plotWidth} height={plotHeight} fill="none" stroke="currentColor"/>
+    <div className="is-p2-graph-coordinate-status" role="status">
+      <strong>{shown?.point?`${shown.existing?"Plotted point":"Plot at"}: ${exactLabel(shown.point)}`:"Coordinates"}</strong>
+      <span>{shown?.point?(shown.existing?"Exact saved coordinates":disabled?"Graph review":"Click or tap to plot"):"Move over the grid or select an existing point to inspect its coordinates."}</span>
+    </div>
+    <svg className="is-p2-graph-response" viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Interactive student graph plot"
+      onPointerMove={event=>setHover(pointFromEvent(event))} onPointerLeave={()=>setHover(null)} onClick={addPoint}>
+      <rect x={left} y={top} width={plotWidth} height={plotHeight} fill="transparent" pointerEvents="all" stroke="currentColor"/>
       {tickValues(xMin,xMax).map((value,i)=>{const x=left+i*plotWidth/10;return <React.Fragment key={`x${i}`}><line x1={x} x2={x} y1={top} y2={height-bottom} stroke="currentColor" opacity=".14"/><text x={x} y={height-bottom+20} textAnchor="middle" className="is-p2-graph-tick">{format(value)}</text></React.Fragment>;})}
       {tickValues(yMin,yMax).map((value,i)=>{const y=height-bottom-i*plotHeight/10;return <React.Fragment key={`y${i}`}><line x1={left} x2={width-right} y1={y} y2={y} stroke="currentColor" opacity=".14"/><text x={left-9} y={y+4} textAnchor="end" className="is-p2-graph-tick">{format(value)}</text></React.Fragment>;})}
       {validScale && (connection==="bars" ? points.map((point,index)=>{const zeroY=sy(Math.max(yMin,Math.min(yMax,0)));const py=sy(point.y);return <rect key={index} x={sx(point.x)-barWidth/2} y={Math.min(py,zeroY)} width={barWidth} height={Math.max(2,Math.abs(zeroY-py))} className={point.series==="B"?"is-p2-graph-bar series-b":"is-p2-graph-bar"}/>;}) : groups.map(seriesLine))}
       {validScale && connection!=="bars" && points.map((point,index)=><circle key={index} cx={sx(point.x)} cy={sy(point.y)} r="4.5" className={point.series==="B"?"is-p2-graph-point series-b":"is-p2-graph-point"}/>)}
+      {position&&<g pointerEvents="none" className="is-p2-graph-crosshair">
+        <line x1={position.x} y1={top} x2={position.x} y2={height-bottom} stroke="currentColor" strokeDasharray="4 4"/>
+        <line x1={left} y1={position.y} x2={width-right} y2={position.y} stroke="currentColor" strokeDasharray="4 4"/>
+        <circle cx={position.x} cy={position.y} r="6" fill="#fff" stroke="#087c73" strokeWidth="2"/>
+        <g transform={`translate(${Math.max(left,Math.min(width-162,position.x+10))},${Math.max(48,Math.min(height-bottom,position.y-9))})`}>
+          <rect x="0" y="-21" width="150" height="26" rx="6" fill="#112c44"/>
+          <text x="75" y="-4" fill="#fff" fontSize="12" textAnchor="middle">{exactLabel(shown.point)}</text>
+        </g>
+      </g>}
       <text x={left+plotWidth/2} y={height-8} textAnchor="middle" className="is-p2-graph-axis-label">{responses[`${base}:xLabel`] || config.x || "x-axis"}</text>
       <text x="16" y={top+plotHeight/2} textAnchor="middle" transform={`rotate(-90 16 ${top+plotHeight/2})`} className="is-p2-graph-axis-label">{responses[`${base}:yLabel`] || config.y || "y-axis"}</text>
     </svg>
+    {points.length>0&&<div className="is-p2-plotted-point-list" aria-label="Plotted coordinates">
+      <strong>Plotted coordinates</strong>
+      <div>{points.map((point,index)=><button key={index} type="button"
+        aria-label={`Inspect series ${point.series} point ${exactLabel(point)}`}
+        onFocus={()=>setSelected({point,existing:true})}
+        onPointerEnter={()=>setSelected({point,existing:true})}
+        onClick={()=>setSelected({point,existing:true})}>Series {point.series}: {exactLabel(point)}</button>)}</div>
+    </div>}
     <div className="is-p2-graph-actions">
       <span>{points.length} point{points.length===1?"":"s"} plotted. Click the grid to add a point.</span>
       {!disabled && <button type="button" className="is-exam-secondary" onClick={()=>onChange(`${base}:points`,serialize(points.slice(0,-1)))} disabled={!points.length}>Undo point</button>}

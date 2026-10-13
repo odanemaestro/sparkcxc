@@ -1,3 +1,4 @@
+import { chemistryLocalStructure } from "../chemistry/data/chemistryCourse";
 // ============================================================================
 // SPARK Generic Subject Learner Shell V2
 //
@@ -111,6 +112,9 @@ function structureFromRpc(data) {
 
 export async function loadGenericSubjectStructure({ supabase, subjectId } = {}) {
   const id = cleanId(subjectId);
+  if (id === "chemistry") {
+    return { data:chemistryLocalStructure(), error:null, source:"local-chemistry" };
+  }
   if (!supabase || !id) {
     return { data:buildGenericSubjectStructure(), error:null, skipped:true };
   }

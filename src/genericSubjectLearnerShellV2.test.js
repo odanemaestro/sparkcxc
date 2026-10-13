@@ -51,6 +51,12 @@ describe("SPARK Generic Subject Learner Shell V2.1", () => {
     expect(migration).toContain("not currently available for enrollment");
   });
 
+  test("Chemistry study header has no duplicate flashcard button", () => {
+    expect(view).not.toContain("Review Chemistry flashcards");
+    expect(view).not.toContain("spark-generic-chemistry-flashcards-link");
+    expect(view).toContain("{onBack && (");
+  });
+
   test("responsive and dark-mode support exists", () => {
     expect(css).toContain("@media(max-width:900px)");
     expect(css).toContain("@media(max-width:640px)");

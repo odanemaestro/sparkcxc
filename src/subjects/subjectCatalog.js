@@ -139,18 +139,41 @@ export function mergeSubjectCatalog(baseSubjects = [], catalogRows = []) {
           ? row.learningConfig
           : {};
 
+    // Chemistry's shipped course provides flashcards even if the live catalog
+    // was populated by an older migration with flashcards:false.
+    if (rowId === "chemistry" && base?.capabilities?.flashcards === true) {
+      rowCapabilities.flashcards = true;
+      rowRoutes.flashcards = base.routes?.flashcards || "/dashboard/flashcards/chemistry";
+    }
+
+    // Chemistry study, flashcards and exam screens are shipped with SPARK.
+    // An older DB catalog row can still contain flashcards:false or paper1:false,
+    // which must not hide working bundled features from enrolled learners.
+    const bundledChemistry = rowId === "chemistry" && base?.implementation === "generic";
+    const mergedCapabilities = {
+      ...(base?.capabilities || DEFAULT_CAPABILITIES),
+      ...rowCapabilities,
+      ...(bundledChemistry ? {
+        study:true,practice:true,flashcards:true,progress:true,paper1:true,paper2:true,
+      } : {}),
+    };
+    const mergedRoutes = {
+      ...(base?.routes || DEFAULT_ROUTES),
+      ...rowRoutes,
+      ...(bundledChemistry ? {
+        flashcards:"/dashboard/flashcards/chemistry",
+        study:"/study/chemistry",
+        practice:"/practice/chemistry",
+        progress:"/dashboard/progress",
+      } : {}),
+    };
+
     const catalog = normalizeCatalogSubject({
       ...(base || {}),
       ...(row || {}),
       id:rowId,
-      capabilities:{
-        ...(base?.capabilities || DEFAULT_CAPABILITIES),
-        ...rowCapabilities,
-      },
-      routes:{
-        ...(base?.routes || DEFAULT_ROUTES),
-        ...rowRoutes,
-      },
+      capabilities:mergedCapabilities,
+      routes:mergedRoutes,
       stats:{
         ...(base?.stats || {}),
         ...rowStats,

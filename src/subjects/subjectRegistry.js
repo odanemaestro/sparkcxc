@@ -5,6 +5,7 @@ export const SPARK_SUBJECT_IDS = Object.freeze({
   INTEGRATED_SCIENCE: "integrated-science",
   SOCIAL_STUDIES: "social-studies",
   ENGLISH_A: "english-a",
+  CHEMISTRY: "chemistry",
 });
 
 const BASE_SUBJECTS = Object.freeze({
@@ -162,7 +163,38 @@ const BASE_SUBJECTS = Object.freeze({
       labs: false,
       sba: true,
     }),
-  }),  informationTechnology: Object.freeze({
+  }),  chemistry: Object.freeze({
+    id: "chemistry",
+    name: "CSEC Chemistry",
+    shortName: "Chemistry",
+    qualification: "CSEC",
+    mark: "CH",
+    description: "Study the full CSEC Chemistry syllabus with teacher-style notes, interactive chemistry labs and full Paper 02 practice built from historical CXC patterns.",
+    enabled: true,
+    status: "live",
+    sortOrder: 45,
+    implementation: "generic",
+    studyView: "study",
+    routes: Object.freeze({
+      study: "/study/chemistry",
+      practice: "/practice/chemistry",
+      flashcards: "/dashboard/flashcards/chemistry",
+      progress: "/dashboard/progress",
+    }),
+    capabilities: Object.freeze({
+      study: true,
+      practice: true,
+      flashcards: true,
+      progress: true,
+      paper1: true,
+      paper2: true,
+      adaptive: false,
+      structured: true,
+      labs: true,
+      sba: true,
+    }),
+  }),
+  informationTechnology: Object.freeze({
     id: "information-technology",
     name: "CSEC Information Technology",
     shortName: "Information Technology",
@@ -196,7 +228,7 @@ const BASE_SUBJECTS = Object.freeze({
 
 });
 
-export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = {}, physics = {}, informationTechnology = {}, integratedScience = {}, socialStudies = {}, englishA = {} } = {}) {
+export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = {}, physics = {}, informationTechnology = {}, integratedScience = {}, socialStudies = {}, englishA = {}, chemistry = {} } = {}) {
   const mathematicsSubject = {
     ...BASE_SUBJECTS.mathematics,
     stats: {
@@ -248,6 +280,17 @@ export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = 
       flashcards: Number(englishA.flashcards || 145),
     },
   };
+  const chemistrySubject = {
+    ...BASE_SUBJECTS.chemistry,
+    stats: {
+      sections: Number(chemistry.sections || 3),
+      topics: Number(chemistry.topics || 21),
+      objectives: Number(chemistry.objectives || 119),
+      paper2HistoricalPapers: Number(chemistry.paper2HistoricalPapers || 28),
+      paper2PracticeSets: Number(chemistry.paper2PracticeSets || 6),
+      flashcards: Number(chemistry.flashcards || 0),
+    },
+  };
   const socialStudiesSubject = {
     ...BASE_SUBJECTS.socialStudies,
     stats: {
@@ -264,7 +307,7 @@ export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = 
       flashcards: Number(socialStudies.flashcards || 342),
     },
   };
-  return Object.freeze([mathematicsSubject, physicsSubject, informationTechnologySubject, integratedScienceSubject, socialStudiesSubject, englishASubject]);
+  return Object.freeze([mathematicsSubject, physicsSubject, informationTechnologySubject, integratedScienceSubject, socialStudiesSubject, chemistrySubject, englishASubject]);
 }
 
 export function enabledSparkSubjects(subjects) {

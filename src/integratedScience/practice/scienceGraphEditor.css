@@ -1,3 +1,217 @@
 .is-p2-graph-workspace fieldset{border:1px solid color-mix(in srgb,currentColor 25%,transparent);border-radius:8px;margin:.6rem 0;padding:.7rem;min-width:0}
 .is-p2-graph-workspace label{display:flex;flex-direction:column;gap:.3rem}.is-p2-graph-workspace select,.is-p2-graph-workspace input,.is-p2-graph-workspace textarea{box-sizing:border-box;max-width:100%;color:inherit;font:inherit;background:transparent;border:1px solid color-mix(in srgb,currentColor 35%,transparent);border-radius:5px;padding:.5rem}
 .is-p2-graph-workspace .is-p2-graph-response{touch-action:manipulation;cursor:crosshair}
+
+/* Exact coordinate inspector shared by Integrated Science and Chemistry. */
+.is-p2-graph-workspace .is-p2-graph-coordinate-status {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px 14px;
+  margin:14px 0 8px;
+  padding:11px 13px;
+  border:1px solid var(--chem-outline,var(--is-border,#d7e2ee));
+  border-radius:11px;
+  background:var(--chem-surface,var(--is-card,#fff));
+  color:var(--chem-ink,var(--is-ink,#14294b));
+  font-size:13px;
+  line-height:1.55;
+}
+.is-p2-graph-workspace .is-p2-graph-coordinate-status strong {
+  font-size:14px;
+  color:inherit;
+}
+.is-p2-graph-workspace .is-p2-graph-coordinate-status span {
+  color:var(--chem-muted,var(--is-muted,#536982));
+}
+.is-p2-graph-workspace .is-p2-graph-crosshair {pointer-events:none}
+.is-p2-graph-workspace .is-p2-plotted-point-list {
+  display:grid;
+  gap:9px;
+  margin:12px 0;
+  color:var(--chem-ink,var(--is-ink,#14294b));
+}
+.is-p2-graph-workspace .is-p2-plotted-point-list>div {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.is-p2-graph-workspace .is-p2-plotted-point-list button {
+  min-height:39px;
+  padding:8px 11px;
+  border:1px solid var(--chem-outline,var(--is-border,#d7e2ee));
+  border-radius:9px;
+  background:var(--chem-surface,var(--is-card,#fff));
+  color:var(--chem-ink,var(--is-ink,#14294b));
+  font:inherit;
+  font-weight:650;
+  cursor:pointer;
+}
+.is-p2-graph-workspace .is-p2-plotted-point-list button:hover,
+.is-p2-graph-workspace .is-p2-plotted-point-list button:focus-visible {
+  border-color:#087c73;
+  outline-color:#087c73;
+  background:color-mix(in srgb,var(--chem-surface,var(--is-card,#fff)) 90%,#087c73);
+}
+.is-p2-graph-workspace .is-p2-graph-response {
+  display:block;
+  width:100%;
+  height:auto;
+  max-width:100%;
+  touch-action:manipulation;
+  cursor:crosshair;
+}
+@media (max-width:600px) {
+  .is-p2-graph-workspace .is-p2-graph-coordinate-status {align-items:flex-start;flex-direction:column}
+  .is-p2-graph-workspace .is-p2-plotted-point-list button {font-size:12px}
+}
+
+/* Graph validation must be readable in light, dark, tablet and phone layouts. */
+.is-p2-graph-workspace .is-p2-graph-scale-warning,
+.is-p2-graph-workspace .is-p2-graph-input-error {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:10px 14px;
+  margin:11px 0;
+  padding:12px 14px;
+  border:1px solid var(--is-border,var(--chem-outline,#9fb7c9));
+  border-left:4px solid #b7791f;
+  border-radius:10px;
+  background:var(--is-card,var(--chem-surface,transparent));
+  color:var(--is-ink,var(--chem-ink,inherit));
+  font-size:13px;
+  line-height:1.6;
+  opacity:1;
+}
+.is-p2-graph-workspace .is-p2-graph-scale-warning span {
+  flex:1 1 240px;
+  color:inherit;
+}
+.is-p2-graph-workspace .is-p2-graph-scale-warning button {
+  min-height:40px;
+  border:1px solid #0b8377;
+  border-radius:9px;
+  padding:9px 13px;
+  background:#087c73;
+  color:#fff;
+  font:inherit;
+  font-weight:750;
+  cursor:pointer;
+}
+.is-p2-graph-workspace .is-p2-graph-scale-warning button:focus-visible {
+  outline:3px solid #0b8377;
+  outline-offset:3px;
+}
+.is-p2-graph-workspace .is-p2-graph-input-error {
+  display:block;
+  border-left-color:#c84a39;
+}
+.is-p2-graph-workspace .is-p2-graph-input-error code {
+  font-size:12px;
+  background:color-mix(in srgb,currentColor 9%,transparent);
+  color:inherit;
+  padding:2px 5px;
+  border-radius:4px;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+.is-p2-graph-workspace fieldset .is-p2-graph-input-error {
+  margin:8px 0 0;
+}
+.is-p2-graph-workspace .is-p2-graph-response {
+  border:1px solid color-mix(in srgb,currentColor 26%,transparent);
+  border-radius:11px;
+  background:var(--is-card,var(--chem-surface,transparent));
+}
+@media(max-width:560px){
+  .is-p2-graph-workspace .is-p2-graph-scale-warning {
+    flex-direction:column;
+    align-items:stretch;
+  }
+  .is-p2-graph-workspace .is-p2-graph-scale-warning button{width:100%}
+}
+
+/* Keep unused extra series compact so the graph stays close to the inputs. */
+.is-p2-graph-workspace .is-p2-graph-series {
+  border:1px solid color-mix(in srgb,currentColor 25%,transparent);
+  border-radius:11px;
+  margin:10px 0;
+  padding:0;
+  overflow:hidden;
+}
+.is-p2-graph-workspace .is-p2-graph-series summary {
+  padding:12px 15px;
+  font-size:13px;
+  font-weight:800;
+  cursor:pointer;
+  color:inherit;
+  background:color-mix(in srgb,currentColor 5%,transparent);
+}
+.is-p2-graph-workspace .is-p2-graph-series>fieldset {
+  margin:0;
+  border:0;
+  border-top:1px solid color-mix(in srgb,currentColor 16%,transparent);
+  border-radius:0;
+  padding:12px;
+}
+
+/* Remove one plotted coordinate without deleting other series or points. */
+.is-p2-graph-workspace .is-p2-graph-point-chip {
+  position:relative;
+  display:inline-flex;
+  align-items:stretch;
+  max-width:100%;
+  margin:5px 5px 3px 0;
+}
+.is-p2-graph-workspace .is-p2-plotted-point-list .is-p2-graph-point-inspect {
+  padding-right:34px;
+  max-width:100%;
+  white-space:normal;
+  text-align:left;
+  overflow-wrap:anywhere;
+}
+.is-p2-graph-workspace .is-p2-plotted-point-list .is-p2-graph-point-remove {
+  position:absolute;
+  right:-6px;
+  top:-9px;
+  display:grid;
+  place-items:center;
+  box-sizing:border-box;
+  padding:0;
+  width:27px;
+  min-width:27px;
+  height:27px;
+  min-height:27px;
+  border:1px solid var(--chem-outline,var(--is-border,#758ea6));
+  border-radius:50%;
+  background:var(--chem-surface,var(--is-card,#fff));
+  color:var(--chem-ink,var(--is-ink,#14294b));
+  font:inherit;
+  font-size:19px;
+  font-weight:750;
+  line-height:1;
+  cursor:pointer;
+  z-index:1;
+}
+.is-p2-graph-workspace .is-p2-plotted-point-list .is-p2-graph-point-remove:hover,
+.is-p2-graph-workspace .is-p2-plotted-point-list .is-p2-graph-point-remove:focus-visible {
+  border-color:#a64039;
+  background:color-mix(in srgb,var(--chem-surface,var(--is-card,#fff)) 88%,#d6453b);
+  color:var(--chem-ink,var(--is-ink,#14294b));
+  outline:2px solid #a64039;
+  outline-offset:2px;
+}
+@media(max-width:600px){
+  .is-p2-graph-workspace .is-p2-plotted-point-list .is-p2-graph-point-remove {
+    width:32px;
+    min-width:32px;
+    height:32px;
+    min-height:32px;
+    top:-9px;
+    right:-7px;
+  }
+  .is-p2-graph-workspace .is-p2-plotted-point-list .is-p2-graph-point-inspect {
+    padding-right:39px;
+  }
+}
