@@ -1245,6 +1245,16 @@ describe("CSEC Chemistry course V1",()=>{
     expect(b.prompt).toContain("zinc oxide");
   });
 
+  test("2006 Figure 4 reaction arrow correctly grades ethanol dehydration, never ethene hydration",()=>{
+    const q=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.find(row=>row.id==="CHEM-P2-2006-MJ-Q3");
+    const item=q.parts.find(p=>p.label==="(b)").items[0];
+    expect(item.prompt).toContain("Compound E to ethene");
+    expect(item.markScheme.points.join(" ")).toContain("H₂SO₄");
+    expect(item.markScheme.points.join(" ")).not.toMatch(/steam.*phosphoric/i);
+    expect(item.explanation).toContain("dehydration");
+    expect(q.sourceIssues.join(" ")).toContain("FROM compound E");
+  });
+
   test("May June 2007 Q1 first-pass scan check keeps burette answers provisional",()=>{
     const q=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.find(row=>row.id==="CHEM-P2-2007-MJ-Q1");
     expect(q.totalMarks).toBe(30);
