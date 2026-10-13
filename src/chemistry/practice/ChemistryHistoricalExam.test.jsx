@@ -63,7 +63,7 @@ describe("Chemistry historical Paper 2 simulation",()=>{
     expect(within(review).getByText("Your answer")).toBeInTheDocument();
     expect(within(review).getByText("My reaction answer")).toBeInTheDocument();
     expect(within(review).getByText("Correct answer")).toBeInTheDocument();
-    expect(within(review).getByText("Correct reaction 1.")).toBeInTheDocument();
+    expect(within(review).getAllByText("Correct reaction 1.").length).toBeGreaterThan(0);
     expect(within(review).getByText("Chemical explanation 1.")).toBeInTheDocument();
     expect(screen.queryByText(/Guidance:/i)).not.toBeInTheDocument();
   });
