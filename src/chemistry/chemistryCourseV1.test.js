@@ -1122,6 +1122,9 @@ describe("CSEC Chemistry course V1",()=>{
       expect(auditChemistryHistoricalQuestion(q).ready).toBe(false);
     }
     expect(qs[0].sourceIssues.join(" ")).toMatch(/burette/i);
+    expect(qs[0].parts[0].svg).toMatch(/^<svg/);
+    expect(qs[0].parts[0].svg).toMatch(/Titration No\. 3/);
+    expect(qs[0].parts[0].svg).not.toMatch(/<image\b/i);
     expect(qs[3].sourceIssues.join(" ")).toMatch(/cycloalkane/i);
   });
 
