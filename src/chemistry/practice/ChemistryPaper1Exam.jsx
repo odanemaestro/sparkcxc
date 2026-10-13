@@ -1,6 +1,7 @@
 import React,{useEffect,useMemo,useRef,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
 import "./chemistryPractice.css";
+import "../../integratedScience/practice/integratedScienceExam.css";
 
 const SOURCES=["2009-MJ","2010-MJ","2016-MJ","2017-MJ","2018-JAN","2018-MJ","2019-MJ","2020-JAN","2021-MJ","2023-MJ"];
 const root=`${typeof window!=="undefined" && window.location.pathname.startsWith("/sparkcxc")?"/sparkcxc/":"/"}chemistry-paper1/`;
@@ -19,34 +20,86 @@ const getJSON=async path=>{
   }
 };
 const labels=["A","B","C","D"];
+const EXAM_SECONDS=75*60;
+const paperSessionKey=(userId,source)=>`spark:chemistry:paper1:${userId||"guest"}:${source}`;
+const scrollTop=()=>window.scrollTo?.({top:0,left:0,behavior:"instant"});
 function Minutes({seconds}){return <span role="timer" aria-live="off">{Math.floor(seconds/60)}:{String(seconds%60).padStart(2,"0")}</span>;}
 export default function ChemistryPaper1Exam({onBack,supabase,userId}){
   const [source,setSource]=useState("practice-01");
   const savedAttempt=useRef(null);
   const [paper,setPaper]=useState(null),[error,setError]=useState(""),[loading,setLoading]=useState(false);
-  const [answers,setAnswers]=useState({}),[active,setActive]=useState(0),[submitted,setSubmitted]=useState(false),[remaining,setRemaining]=useState(4500);
+  const [answers,setAnswers]=useState({});
+  const [active,setActive]=useState(0);
+  const [phase,setPhase]=useState("instructions");
+  const [flaggedItems,setFlaggedItems]=useState({});
+  const [endsAt,setEndsAt]=useState(null);
+  const [remaining,setRemaining]=useState(EXAM_SECONDS);
+  const submitted=phase==="review";
   const exam=paper?.questions||[];
   const current=exam[active];
   const isPractice=source.startsWith("practice-");
   useEffect(()=>{
     if(typeof window!=="undefined")window.scrollTo?.({top:0,left:0,behavior:"instant"});
-  },[source,active,submitted]);
+  },[source,active,phase]);
   useEffect(()=>{
     let cancelled=false;
     savedAttempt.current=null;
-    setLoading(true);setError("");setPaper(null);setAnswers({});setSubmitted(false);setActive(0);setRemaining(4500);
+    setLoading(true);setError("");setPaper(null);setAnswers({});setPhase("instructions");setFlaggedItems({});setActive(0);setEndsAt(null);setRemaining(EXAM_SECONDS);
     getJSON(isPractice?`practice-sets/${source}.json`:`papers/${source}.json`)
-      .then(result=>{if(!cancelled)setPaper(result);})
+      .then(result=>{
+        if(cancelled)return;
+        setPaper(result);
+        try{
+          const saved=JSON.parse(localStorage.getItem(paperSessionKey(userId,source))||"null");
+          if(saved&&saved.paperId===(result.paper_id||source)&&["exam","review"].includes(saved.phase)){
+            setAnswers(saved.answers||{});
+            setFlaggedItems(saved.flags||{});
+            setActive(Math.min(result.questions.length-1,Math.max(0,Number(saved.active)||0)));
+            setEndsAt(saved.endsAt||null);
+            setRemaining(saved.phase==="review"?0:Math.max(0,Math.ceil((Number(saved.endsAt)-Date.now())/1000)));
+            setPhase(saved.phase==="exam"&&(!saved.endsAt||saved.endsAt<=Date.now())?"review":saved.phase);
+          }
+        }catch{}
+      })
       .catch(err=>{if(!cancelled)setError(err.message);})
       .finally(()=>{if(!cancelled)setLoading(false);});
     return()=>{cancelled=true;};
-  },[source,isPractice]);
+  },[source,isPractice,userId]);
   useEffect(()=>{
-    if(!paper||submitted||!exam.length||(!isPractice&&source==="2010-MJ"))return;
-    const tick=setInterval(()=>setRemaining(t=>Math.max(0,t-1)),1000);
-    return()=>clearInterval(tick);
-  },[paper,submitted,exam.length,isPractice,source]);
-  useEffect(()=>{if(remaining===0&&paper&&!submitted)setSubmitted(true);},[remaining,paper,submitted]);
+    if(!paper||!exam.length||!endsAt||phase!=="exam")return undefined;
+    const tick=()=>{
+      const left=Math.max(0,Math.ceil((endsAt-Date.now())/1000));
+      setRemaining(left);
+      if(left===0){setPhase("review");scrollTop();}
+    };
+    tick();
+    const id=setInterval(tick,1000);
+    return()=>clearInterval(id);
+  },[paper,exam.length,endsAt,phase]);
+  useEffect(()=>{
+    if(!paper||!exam.length||loading)return;
+    try{
+      localStorage.setItem(paperSessionKey(userId,source),JSON.stringify({
+        paperId:paper.paper_id||source,phase,answers,flags:flaggedItems,active,endsAt
+      }));
+    }catch{}
+  },[paper,loading,userId,source,phase,answers,flaggedItems,active,endsAt,exam.length]);
+  function beginExam(){
+    const deadline=Date.now()+EXAM_SECONDS*1000;
+    setAnswers({});setFlaggedItems({});setActive(0);
+    setEndsAt(deadline);setRemaining(EXAM_SECONDS);
+    setPhase("exam");scrollTop();
+  }
+  function submitExam(){
+    if(phase!=="exam")return;
+    if(!window.confirm("Submit this paper? You will no longer be able to change your answers."))return;
+    setPhase("review");scrollTop();
+  }
+  function selectAnother(){
+    try{localStorage.removeItem(paperSessionKey(userId,source));}catch{}
+    setAnswers({});setFlaggedItems({});setEndsAt(null);
+    setActive(0);setRemaining(EXAM_SECONDS);setPhase("instructions");scrollTop();
+  }
   const scores=useMemo(()=>exam.reduce((n,q)=>n+Number(answers[q.id]===q.answer),0),[exam,answers]);
   // Use the same canonical subject progress and recommendation-outcome pipeline as Paper 02.
   useEffect(()=>{
@@ -72,31 +125,70 @@ export default function ChemistryPaper1Exam({onBack,supabase,userId}){
   const stimuli=Object.fromEntries((paper?.stimuli||[]).map(s=>[s.id,s]));
   const image=(key)=>{const row=diagrams[key];return row?.svg?root+row.svg:null;};
   const renderFigure=(key)=>{const src=image(key);return src?<img className="chem-p1-diagram" src={src} alt={diagrams[key]?.alt||"Chemistry examination diagram"}/>:null;};
-  return <main className="is-practice-shell chem-practice-shell"><div className="is-practice-home-shell">
-    <div className="is-practice-top-actions"><button type="button" className="is-back-button" onClick={onBack}>← Back to Chemistry practice</button></div>
-    <header className="is-practice-hero"><div><span>CSEC CHEMISTRY PAPER 01</span><h1>Multiple-choice practice</h1><p>Four choices per item, 75 minutes for a complete practice paper. Original source questions and marking should be reviewed before high-stakes use.</p></div></header>
-    <section className="chem-p1-picker-card" aria-label="Choose your Chemistry Paper 1">
-      <div className="chem-p1-picker-copy"><strong>Choose a paper</strong><p>Work through a full practice set or revise questions from a particular year.</p></div>
-      <div className="chem-p1-picker-controls">
-        <div className="chem-p1-mode-tabs" role="group" aria-label="Paper type">
-          <button type="button" className={isPractice?"active":""} aria-pressed={isPractice} onClick={()=>setSource("practice-01")}>Practice sets</button>
-          <button type="button" className={!isPractice?"active":""} aria-pressed={!isPractice} onClick={()=>setSource("2009-MJ")}>Past papers</button>
+  const isPartial=!isPractice&&exam.length!==60;
+  const paperLabel=isPractice?`Practice set ${Number(source.split("-").pop())}`:source.replace("-JAN"," January").replace("-MJ"," May/June");
+  if(phase==="instructions"||!paper)return <main className="is-practice-shell chem-practice-shell chem-p1-intro">
+    <div className="is-practice-home-shell">
+      <div className="is-practice-top-actions"><button type="button" className="is-back-button" onClick={onBack}>← Back to Chemistry practice</button></div>
+      <header className="is-practice-hero"><div><span>CSEC CHEMISTRY PAPER 01</span><h1>Choose your examination</h1><p>Select a practice paper or a historical paper, read the instructions and start when you are ready.</p></div></header>
+      <section className="chem-p1-picker-card" aria-label="Choose your Chemistry Paper 1">
+        <div className="chem-p1-picker-copy"><strong>Choose a paper</strong><p>Your timer starts only when you select Start examination.</p></div>
+        <div className="chem-p1-picker-controls">
+          <div className="chem-p1-mode-tabs" role="group" aria-label="Paper type">
+            <button type="button" className={isPractice?"active":""} aria-pressed={isPractice} onClick={()=>setSource("practice-01")}>Practice sets</button>
+            <button type="button" className={!isPractice?"active":""} aria-pressed={!isPractice} onClick={()=>setSource("2009-MJ")}>Past papers</button>
+          </div>
+          <label htmlFor="chem-p1-source">Paper</label>
+          <select id="chem-p1-source" aria-label="Choose Chemistry Paper 1 set" value={source} onChange={e=>setSource(e.target.value)}>
+            {isPractice?[1,2,3,4].map(n=><option key={n} value={`practice-0${n}`}>Practice set {n} · 60 questions</option>):SOURCES.map(id=><option key={id} value={id}>{id.replace("-"," ")}{id==="2010-MJ"?" · 55 questions only":""}</option>)}
+          </select>
         </div>
-        <label htmlFor="chem-p1-source">Paper</label>
-        <select id="chem-p1-source" aria-label="Choose Chemistry Paper 1 set" value={source} onChange={e=>setSource(e.target.value)}>
-          {isPractice?[1,2,3,4].map(n=><option key={n} value={`practice-0${n}`}>Practice set {n} · 60 questions</option>):SOURCES.map(id=><option key={id} value={id}>{id.replace("-"," ")}{id==="2010-MJ"?" · 55 questions only":""}</option>)}
-        </select>
+      </section>
+      {loading&&<p role="status">Loading Chemistry Paper 1 questions…</p>}
+      {error&&<div className="chem-p1-load-error" role="alert"><strong>Paper 1 bank unavailable</strong><p>{error}</p><button type="button" onClick={()=>setSource(current=>current==="practice-01"?"practice-02":"practice-01")}>Try another set</button></div>}
+      {paper&&<section className="is-exam-instructions-card chem-p1-instructions">
+        <span className="is-exam-eyebrow">CSEC CHEMISTRY · PAPER 01</span>
+        <h1>{paperLabel}</h1>
+        <p className="is-exam-instructions-sub">Multiple-choice examination. Read the instructions before you begin.</p>
+        <div className="is-exam-instructions-rule"/>
+        <div className="is-exam-instructions-meta">
+          <div><span>Time</span><strong>1 h 15 min</strong></div>
+          <div><span>Questions</span><strong>{exam.length}</strong></div>
+          <div><span>Marks</span><strong>{exam.length}</strong></div>
+          <div><span>Question type</span><strong>Multiple choice</strong></div>
+        </div>
+        {isPartial&&<p className="chem-p1-partial-note" role="status">Only {exam.length} questions are available from this historical paper. This is a timed revision session, not a complete 60-question examination.</p>}
+        <div className="is-exam-instructions-sheet">
+          <h2>READ THE FOLLOWING INSTRUCTIONS CAREFULLY.</h2>
+          <ol>
+            <li>This paper contains {exam.length} multiple-choice questions. You have 1 hour and 15 minutes to complete the paper.</li>
+            <li>Each question has four options labelled A, B, C and D. Choose the best answer.</li>
+            <li>Each correct response earns one mark. No marks are deducted for incorrect answers.</li>
+            <li>Use Next, Previous, or the question navigator to move between questions.</li>
+            <li>You may change an answer before submitting. You can flag questions to return to later.</li>
+            <li>Your responses are saved on this device while you work. Your paper submits automatically when time expires.</li>
+          </ol>
+        </div>
+        <div className="is-exam-instructions-note"><strong>After submission</strong><span>View your score, selected answers, correct answers and explanations for each question.</span></div>
+        <div className="is-exam-instructions-actions"><button type="button" className="is-exam-primary" onClick={beginExam}>Start examination</button></div>
+      </section>}
+    </div>
+  </main>;
+  return <main className="is-practice-shell chem-practice-shell chem-p1-session"><div className="is-practice-home-shell">
+    <header className="chem-p1-exam-header">
+      <div><button type="button" className="is-back-button" onClick={()=>{if(submitted||window.confirm("Exit this examination? Your current attempt will be cleared."))selectAnother();}}>← {submitted?"Choose another paper":"Exit examination"}</button>
+        <span>CSEC CHEMISTRY · PAPER 01</span><h1>{paperLabel}</h1><p>{submitted?"Answer review":`Question ${active+1} of ${exam.length}`}</p>
       </div>
-    </section>
-    {loading?<p>Loading Chemistry questions…</p>:null}
-    {error?<div className="chem-p1-load-error" role="alert"><strong>Paper 1 bank unavailable</strong><p>{error}</p><button type="button" onClick={()=>setSource(current=>current==="practice-01"?"practice-02":"practice-01")}>Try another set</button></div>:null}
+      <div className="chem-p1-exam-timer"><span>{submitted?"Submitted":"Time remaining"}</span><strong>{submitted?"REVIEW":<Minutes seconds={remaining}/>}</strong></div>
+    </header>
     {paper?<section className="chem-p1-exam">
-      <div className="chem-p1-exam-bar"><strong>{exam.length} questions</strong><strong><Minutes seconds={remaining}/></strong><span>Answered {Object.keys(answers).length}/{exam.length}</span></div>
-      {!isPractice&&source==="2010-MJ"?<p role="status">Only Questions 1–55 are available from the supplied 2010 paper. This is revision only, not a complete exam simulation.</p>:null}
+      <div className="chem-p1-exam-bar"><strong>{exam.length} questions</strong><span>Answered {Object.keys(answers).length}/{exam.length}</span><span>Flagged {Object.values(flaggedItems).filter(Boolean).length}</span></div>
+      {!isPractice&&source==="2010-MJ"?<p role="status">Only 55 questions are available from this historical paper. This is a partial-paper simulation.</p>:null}
       {flagged>0?<p role="status">{flagged} question(s) have recorded source/answer ambiguities; their keys are provisional.</p>:null}
       {submitted?<section aria-label="Paper 1 results">
         <h2>Practice review: {scores}/{exam.length} ({exam.length?Math.round(scores/exam.length*100):0}%)</h2>
-        <p>These are provisional, source-supplied answer keys. Review the explanation and any flagged ambiguity before relying on your result.</p>
+        <p>Compare your answers with the correct choices and explanations below.</p>
+        <button type="button" className="chem-p1-try-again" onClick={selectAnother}>Choose another paper or try again</button>
         {exam.map((q,i)=>{
           const selected=answers[q.id];
           const correct=q.answer;
@@ -114,15 +206,15 @@ export default function ChemistryPaper1Exam({onBack,supabase,userId}){
           </article>;
         })}
       </section>:current?<section className="chem-p1-question">
-        <h2>Question {active+1} of {exam.length}</h2>
+        <div className="chem-p1-question-heading"><h2>Question {active+1} of {exam.length}</h2><button type="button" className="chem-p1-flag" aria-pressed={Boolean(flaggedItems[current.id])} onClick={()=>setFlaggedItems(prev=>({...prev,[current.id]:!prev[current.id]}))}>{flaggedItems[current.id]?"Flagged":"Flag for review"}</button></div>
         {current.stimulus&&stimuli[current.stimulus]?<div className="chem-p1-stimulus"><p>{stimuli[current.stimulus].text}</p>{(stimuli[current.stimulus].diagrams||[]).map(d=><React.Fragment key={d}>{renderFigure(d)}</React.Fragment>)}</div>:null}
         <p>{current.stem}</p>
         {current.stem_after?<p>{current.stem_after}</p>:null}
         {current.statements?<div>{Array.isArray(current.statements)?current.statements.map((line,i)=><p key={i}>{typeof line==="string"?line:JSON.stringify(line)}</p>):String(current.statements)}</div>:null}
         {current.diagrams?.map?.(d=><React.Fragment key={d}>{renderFigure(d)}</React.Fragment>)}
         <fieldset><legend>Select one answer</legend>{labels.map(letter=><label key={letter} className="chem-p1-choice"><input type="radio" name={current.id} checked={answers[current.id]===letter} onChange={()=>setAnswers(a=>({...a,[current.id]:letter}))}/><strong>{letter}.</strong> {current.options[letter]}{current.option_table?.rows?.[letter]?<span className="chem-p1-tabular-answer">{(current.option_table.columns||[]).map((heading,i)=><span key={i}><strong>{heading}: </strong>{current.option_table.rows[letter][i]}</span>)}</span>:null}{current.option_diagrams?.[letter]?renderFigure(current.option_diagrams[letter]):null}</label>)}</fieldset>
-        <div className="chem-p1-actions"><button disabled={active===0} onClick={()=>setActive(v=>v-1)}>Previous</button><button disabled={active===exam.length-1} onClick={()=>setActive(v=>v+1)}>Next</button><button onClick={()=>{if(window.confirm("Submit and review your answers?"))setSubmitted(true);}}>Submit paper</button></div>
-        <nav className="chem-p1-nav" aria-label="Go to question">{exam.map((q,i)=><button type="button" key={q.id} aria-label={`Question ${i+1}${answers[q.id]?" answered":""}`} aria-current={active===i?"step":undefined} onClick={()=>setActive(i)}>{i+1}</button>)}</nav>
+        <div className="chem-p1-actions"><button disabled={active===0} onClick={()=>setActive(v=>v-1)}>Previous</button><button disabled={active===exam.length-1} onClick={()=>setActive(v=>v+1)}>Next</button><button onClick={submitExam}>Submit paper</button></div>
+        <nav className="chem-p1-nav" aria-label="Go to question">{exam.map((q,i)=><button type="button" key={q.id} aria-label={`Question ${i+1}${answers[q.id]?" answered":""}${flaggedItems[q.id]?" flagged":""}`} className={`${answers[q.id]?"answered":""} ${flaggedItems[q.id]?"flagged":""}`} aria-current={active===i?"step":undefined} onClick={()=>setActive(i)}>{i+1}</button>)}</nav>
       </section>:null}
     </section>:null}
   </div></main>;
