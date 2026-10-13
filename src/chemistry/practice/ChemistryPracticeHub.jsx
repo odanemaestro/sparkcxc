@@ -1,4 +1,4 @@
-import React,{useMemo,useState} from "react";
+import React,{useEffect,useMemo,useState} from "react";
 import ChemistryPaper2Exam from "./ChemistryPaper2Exam";
 import ChemistryPaper1Exam from "./ChemistryPaper1Exam";
 import {CHEMISTRY_HISTORICAL_PAPERS,CHEMISTRY_PAPER2_PRACTICE_SETS,chemistryPaper2BankStats} from "../data/chemistryPaper2Bank";
@@ -37,6 +37,10 @@ export default function ChemistryPracticeHub({supabase,userId,onBack}){
   const [mode,setMode]=useState("home");
   const [paperIndex,setPaperIndex]=useState(0);
   const stats=chemistryPaper2BankStats();
+  // Every Chemistry subpage opens at the top, including Back to practice.
+  useEffect(()=>{
+    if(typeof window!=="undefined")window.scrollTo?.({top:0,left:0,behavior:"instant"});
+  },[mode,paperIndex]);
 
   if(mode==="paper1")return <ChemistryPaper1Exam supabase={supabase} userId={userId} onBack={()=>setMode("home")}/>;
   if(mode==="paper2")return <ChemistryPaper2Exam supabase={supabase} userId={userId} paperIndex={paperIndex} onBack={()=>setMode("home")}/>;
