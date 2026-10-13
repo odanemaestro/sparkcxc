@@ -1555,7 +1555,7 @@ describe("CSEC Chemistry course V1",()=>{
     const chemistry=subjects.find(row=>row.id==="chemistry");
     expect(chemistry).toMatchObject({
       enabled:true,status:"live",implementation:"generic",
-      capabilities:{study:true,practice:true,paper2:true,labs:true,flashcards:false},
+      capabilities:{study:true,practice:true,paper1:true,paper2:true,labs:true,flashcards:true},
       routes:{study:"/study/chemistry",practice:"/practice/chemistry"},
     });
 
