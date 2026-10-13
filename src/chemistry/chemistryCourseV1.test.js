@@ -1262,6 +1262,19 @@ describe("CSEC Chemistry course V1",()=>{
     });
   });
 
+  test("2006 source SVG reconstructions remain explicitly unapproved",()=>{
+    const rows=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.filter(q=>q.sourceId==="CHEM-P2-2006-MJ");
+    for(const n of [2,4,5]){
+      const q=rows.find(row=>row.originalQuestionNumber===n);
+      expect(q.sourceFigures).toHaveLength(1);
+      expect(q.sourceFigures[0].svg).toContain("<svg");
+      expect(q.sourceFigures[0].sourceApproved).toBe(false);
+      expect(q.learnerFacing).toBe(false);
+    }
+    expect(rows.find(q=>q.originalQuestionNumber===5).sourceFigures[0].svg).toContain("Moist blue litmus");
+    expect(rows.find(q=>q.originalQuestionNumber===4).sourceFigures[0].svg).toContain("Be");
+  });
+
   test("2006 Figure 4 reaction arrow correctly grades ethanol dehydration, never ethene hydration",()=>{
     const q=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.find(row=>row.id==="CHEM-P2-2006-MJ-Q3");
     const item=q.parts.find(p=>p.label==="(b)").items[0];
