@@ -954,6 +954,22 @@ describe("CSEC Chemistry course V1",()=>{
     expect(publishedChemistryHistoricalQuestions([premature])).toHaveLength(0);
   });
 
+  test("graph line style without plotted points earns no fit mark",()=>{
+    const item={marks:4,prompt:"Plot a graph and draw a line of best fit.",
+      markScheme:{points:["Label axes","Plot all points","Line of best fit","Present graph"]},
+      response:{type:"graph",x:"Time (minutes)",y:"Mass (g)",points:[{x:0,y:0},{x:5,y:1}]}};
+    const base="GRAPH-Q:0:0";
+    const response={
+      [`${base}:xLabel`]:"Time (minutes)",
+      [`${base}:yLabel`]:"Mass (g)",
+      [`${base}:graph`]:JSON.stringify({version:1,kind:"line",connection:"best-fit",
+        x:{min:0,max:5,step:1},y:{min:0,max:2,step:1},series:[{name:"",points:""}]})
+    };
+    const result=gradeChemistryPaper2Item({id:"GRAPH-Q"},0,0,item,response);
+    expect(result.criteria.find(c=>c.id===`${base}:fit`).marks).toBe(0);
+    expect(result.visualEvidence.plottedPoints).toBe(0);
+  });
+
   test("table entries with no verified answer key never receive automatic marks",()=>{
     const question={id:"CHEM-QA-Q1"};
     const item={marks:2,response:{type:"table",table:{headers:["Reading"],rows:[[""],[""]]}}};
