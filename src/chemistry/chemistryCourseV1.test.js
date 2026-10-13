@@ -1211,6 +1211,30 @@ describe("CSEC Chemistry course V1",()=>{
     expect(example.totals.figureItems).toBe(1);
   });
 
+  test("May June 2007 atom-table transcription preserves printed givens and exactly eight blanks",()=>{
+    const q=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.find(row=>row.id==="CHEM-P2-2007-MJ-Q3");
+    const item=q.parts[0].items[0];
+    const table=item.response.table;
+    const blankCount=table.rows.flat().filter(v=>v==="").length;
+    expect(blankCount).toBe(8);
+    expect(table.answers).toEqual(["24","9","12","10","2,8,2","2,7","17","3"]);
+    expect(table.markGroups).toEqual([[0,1],[2,3],[4,5],[6,7]]);
+    expect(table.rows[0]).toEqual(["Mass number","","19"]);
+    expect(table.rows[3]).toEqual(["Electrons","12","9"]);
+    expect(item.marks).toBe(4);
+    expect(auditChemistryHistoricalQuestion(q).missing).not.toContain("missing-table-answer-keys");
+    expect(auditChemistryHistoricalQuestion(q).missing).not.toContain("invalid-table-mark-groups");
+  });
+
+  test("2007 zinc oxide comparison tests ZnO rather than a different acidic oxide",()=>{
+    const q=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.find(row=>row.id==="CHEM-P2-2007-MJ-Q5");
+    const b=q.parts.find(p=>p.label==="(b)").items[0];
+    expect(b.markScheme.points).toHaveLength(5);
+    expect(b.markScheme.points.join(" ")).toContain("ZnO");
+    expect(b.markScheme.points.join(" ")).toContain("NOT establish");
+    expect(b.prompt).toContain("zinc oxide");
+  });
+
   test("May June 2007 Q1 first-pass scan check keeps burette answers provisional",()=>{
     const q=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.find(row=>row.id==="CHEM-P2-2007-MJ-Q1");
     expect(q.totalMarks).toBe(30);
