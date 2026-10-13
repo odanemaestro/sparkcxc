@@ -131,3 +131,27 @@
   }
   .is-p2-graph-workspace .is-p2-graph-scale-warning button{width:100%}
 }
+
+/* Keep unused extra series compact so the graph stays close to the inputs. */
+.is-p2-graph-workspace .is-p2-graph-series {
+  border:1px solid color-mix(in srgb,currentColor 25%,transparent);
+  border-radius:11px;
+  margin:10px 0;
+  padding:0;
+  overflow:hidden;
+}
+.is-p2-graph-workspace .is-p2-graph-series summary {
+  padding:12px 15px;
+  font-size:13px;
+  font-weight:800;
+  cursor:pointer;
+  color:inherit;
+  background:color-mix(in srgb,currentColor 5%,transparent);
+}
+.is-p2-graph-workspace .is-p2-graph-series>fieldset {
+  margin:0;
+  border:0;
+  border-top:1px solid color-mix(in srgb,currentColor 16%,transparent);
+  border-radius:0;
+  padding:12px;
+}
