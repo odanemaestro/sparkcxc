@@ -1,4 +1,5 @@
 import { chemistryLocalStructure } from "../chemistry/data/chemistryCourse";
+import {fnhLocalStructure} from "../fnh/data/fnhCourse";
 // ============================================================================
 // SPARK Generic Subject Learner Shell V2
 //
@@ -114,6 +115,9 @@ export async function loadGenericSubjectStructure({ supabase, subjectId } = {}) 
   const id = cleanId(subjectId);
   if (id === "chemistry") {
     return { data:chemistryLocalStructure(), error:null, source:"local-chemistry" };
+  }
+  if (id === "food-nutrition-and-health") {
+    return {data:fnhLocalStructure(),error:null,source:"local-fnh"};
   }
   if (!supabase || !id) {
     return { data:buildGenericSubjectStructure(), error:null, skipped:true };
