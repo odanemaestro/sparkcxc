@@ -8,7 +8,8 @@ const approved=entry=>Boolean(entry&&entry.approved===true&&
   String(entry.reviewer||"").trim()&&String(entry.reviewedAt||"").trim());
 export function auditChemistryHistoricalQuestion(record){
   const missing=[];
-  if(!record?.sourceId||!record.sourceFile||!Array.isArray(record.pdfPages)||!record.pdfPages.length||\n    record.pdfPages.some(page=>!Number.isInteger(page)||page<1))
+  if(!record?.sourceId||!record.sourceFile||!Array.isArray(record.pdfPages)||!record.pdfPages.length||
+    record.pdfPages.some(page=>!Number.isInteger(page)||page<1))
     missing.push("source-identity");
   if(!record?.parts?.length)missing.push("question-parts");
   const items=(record?.parts||[]).flatMap(part=>part.items||[]);
