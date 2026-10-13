@@ -860,6 +860,25 @@ describe("CSEC Chemistry course V1",()=>{
     });
   });
 
+  test("historical release rejects missing or unresolved figure evidence",()=>{
+    const approvals=Object.fromEntries(CHEMISTRY_HISTORICAL_REVIEW_CHECKS.map(check=>[
+      check,{approved:true,reviewer:"QA Fixture",reviewedAt:"2026-10-12"}
+    ]));
+    const base={id:"QA-FIGURE",sourceId:"QA-SOURCE",sourceFile:"source.pdf",pdfPages:[1],
+      originalQuestionNumber:1,totalMarks:1,learnerFacing:true,status:"verified",
+      qaApprovals:approvals,sourceIssues:[],parts:[{label:"(a)",items:[{
+        prompt:"Give one example.",marks:1,
+        markScheme:{points:["A valid example"]},explanation:"An example is enough."
+      }]}]};
+    for(const diagramStatus of [undefined,"","pending","source graph still requires SVG overlay"]){
+      const result=auditChemistryHistoricalQuestion({...base,diagramStatus});
+      expect(result.ready).toBe(false);
+      expect(result.missing).toContain("unresolved-figure-verification");
+    }
+    expect(auditChemistryHistoricalQuestion({...base,diagramStatus:"not-applicable"}).ready).toBe(true);
+    expect(auditChemistryHistoricalQuestion({...base,diagramStatus:"verified"}).ready).toBe(true);
+  });
+
   test("historical criteria must allocate every mark explicitly before approval",()=>{
     const reviews=Object.fromEntries(CHEMISTRY_HISTORICAL_REVIEW_CHECKS.map(check=>[
       check,{approved:true,reviewer:"Fixture Reviewer",reviewedAt:"2026-10-12"}
