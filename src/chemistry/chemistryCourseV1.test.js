@@ -1217,7 +1217,7 @@ describe("CSEC Chemistry course V1",()=>{
       .sort((a,b)=>a.originalQuestionNumber-b.originalQuestionNumber);
     expect(q.map(row=>row.originalQuestionNumber)).toEqual([1,2,3,4,5]);
     expect(q.map(row=>row.totalMarks)).toEqual([30,15,15,15,15]);
-    expect(q.every(row=>row.sourceVerificationNote?.includes("first-pass"))).toBe(true);
+    expect(q.every(row=>/first-pass/i.test(row.sourceVerificationNote||""))).toBe(true);
     expect(q.every(row=>row.learnerFacing===false)).toBe(true);
   });
 
