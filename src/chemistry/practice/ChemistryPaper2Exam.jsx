@@ -55,7 +55,7 @@ function ResponseInput({questionId,partIndex,itemIndex,item,responses,onChange,d
   return <textarea disabled={disabled} className={type==="calculation"?"is-p2-calculation-response":"is-p2-lines-response"} rows={Math.max(3,Number(item.response?.lines||4))} value={responses[base]||""} onChange={e=>onChange(base,e.target.value)} aria-label={`${item.label||"Question"} response`}/>;
 }
 
-function ChemistryModelGraph({response}){
+export function ChemistryModelGraph({response}){
   const [hoverIndex,setHoverIndex]=useState(null);
   const [selectedIndex,setSelectedIndex]=useState(null);
   const points=(response?.points||[]).filter(point=>Number.isFinite(Number(point.x))&&Number.isFinite(Number(point.y)))
