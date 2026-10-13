@@ -1211,6 +1211,16 @@ describe("CSEC Chemistry course V1",()=>{
     expect(example.totals.figureItems).toBe(1);
   });
 
+  test("all five May June 2007 questions now carry first-pass source evidence",()=>{
+    const q=CHEMISTRY_HISTORICAL_DRAFT_ITEMS
+      .filter(row=>row.sourceId==="CHEM-P2-2007-MJ")
+      .sort((a,b)=>a.originalQuestionNumber-b.originalQuestionNumber);
+    expect(q.map(row=>row.originalQuestionNumber)).toEqual([1,2,3,4,5]);
+    expect(q.map(row=>row.totalMarks)).toEqual([30,15,15,15,15]);
+    expect(q.every(row=>row.sourceVerificationNote?.includes("first-pass"))).toBe(true);
+    expect(q.every(row=>row.learnerFacing===false)).toBe(true);
+  });
+
   test("May June 2007 atom-table transcription preserves printed givens and exactly eight blanks",()=>{
     const q=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.find(row=>row.id==="CHEM-P2-2007-MJ-Q3");
     const item=q.parts[0].items[0];
