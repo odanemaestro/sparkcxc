@@ -201,8 +201,8 @@ describe("CSEC Chemistry course V1",()=>{
 
   test("historical draft records stay quarantined until independent source QA",()=>{
     expect(CHEMISTRY_HISTORICAL_DRAFT_SUMMARY.fullyVerifiedHistoricalQuestions).toBe(0);
-    expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS).toHaveLength(132);
-    expect(CHEMISTRY_HISTORICAL_DRAFT_SUMMARY.transcribedDraftQuestions).toBe(132);
+    expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS).toHaveLength(138);
+    expect(CHEMISTRY_HISTORICAL_DRAFT_SUMMARY.transcribedDraftQuestions).toBe(138);
     const row=CHEMISTRY_HISTORICAL_DRAFT_ITEMS[0];
     expect(row.sourceId).toBe("CHEM-P2-2025-MJ");
     expect(row.pdfPages).toEqual([2,3,4,5,6]);
@@ -222,8 +222,8 @@ describe("CSEC Chemistry course V1",()=>{
     expect(second.learnerFacing).toBe(false);
     expect(second.parts.flatMap(part=>part.items).reduce((sum,item)=>sum+item.marks,0)).toBe(15);
     expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.filter(item=>item.sourceId==="CHEM-P2-2025-MJ").map(item=>item.originalQuestionNumber)).toEqual([1,2,3,4,5,6]);
-    expect(new Set(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.map(item=>item.id)).size).toBe(132);
-    expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.reduce((sum,row)=>sum+row.totalMarks,0)).toBe(2200);
+    expect(new Set(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.map(item=>item.id)).size).toBe(138);
+    expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.reduce((sum,row)=>sum+row.totalMarks,0)).toBe(2300);
     expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.filter(item=>item.sourceId==="CHEM-P2-2025-MJ").reduce((sum,row)=>sum+row.totalMarks,0)).toBe(100);
     expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.find(item=>item.id==="CHEM-P2-2014-MJ-Q1")?.totalMarks).toBe(25);
     const q2014=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.find(item=>item.id==="CHEM-P2-2014-MJ-Q2");
@@ -969,25 +969,37 @@ describe("CSEC Chemistry course V1",()=>{
     expect(rows[3].sourceIssues.join(" ")).toMatch(/MgF₂/);
   });
 
+  test("January 2018 Paper 02 has six source-traced drafts with 100 marks",()=>{
+    const rows=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.filter(q=>q.sourceId==="CHEM-P2-2018-JAN");
+    expect(rows.map(q=>q.originalQuestionNumber)).toEqual([1,2,3,4,5,6]);
+    expect(rows.map(q=>q.totalMarks)).toEqual([25,15,15,15,15,15]);
+    for(const q of rows){
+      expect(q.parts.flatMap(part=>part.items).reduce((s,i)=>s+i.marks,0)).toBe(q.totalMarks);
+      expect(q.learnerFacing).toBe(false);
+      expect(auditChemistryHistoricalQuestion(q).ready).toBe(false);
+    }
+    expect(rows[0].sourceIssues.join(" ")).toMatch(/meniscus|melts/i);
+    expect(rows[3].parts[1].items[2].explanation).toMatch(/enthalpy/i);
+  });
+
   test("historical coverage tracks 28 papers without inventing verified questions",()=>{
     const {totals,papers,orphanDrafts,duplicateQuestionNumbers}=CHEMISTRY_HISTORICAL_COVERAGE;
     expect(papers).toHaveLength(28);
     expect(totals.sources).toBe(28);
     expect(totals.pages).toBe(568);
     expect(totals.expectedQuestions).toBe(167);
-    expect(totals.draftedQuestions).toBe(132);
-    expect(totals.draftMarks).toBe(2200);
-    expect(totals.missingQuestions).toBe(35);
-    expect(totals.fullyDraftedPapers).toBe(22);
+    expect(totals.draftedQuestions).toBe(138);
+    expect(totals.draftMarks).toBe(2300);
+    expect(totals.missingQuestions).toBe(29);
+    expect(totals.fullyDraftedPapers).toBe(23);
     expect(totals.approvedQuestions).toBe(0);
     expect(totals.readyPapers).toBe(0);
     const outstanding=papers.filter(row=>!row.paperComplete);
     expect(outstanding.map(row=>row.sourceId)).toEqual([
       "CHEM-P2-2005-MJ","CHEM-P2-2006-MJ","CHEM-P2-2007-MJ",
       "CHEM-P2-2008-MJ","CHEM-P2-2009-MJ",
-      "CHEM-P2-2018-JAN"
     ]);
-    expect(outstanding.reduce((sum,row)=>sum+row.missingNumbers.length,0)).toBe(35);
+    expect(outstanding.reduce((sum,row)=>sum+row.missingNumbers.length,0)).toBe(29);
     expect(papers.find(row=>row.sourceId==="CHEM-P2-2023-MJ")).toMatchObject({draftedQuestions:6,missingNumbers:[],paperComplete:true});
     expect(orphanDrafts).toEqual([]);
     expect(duplicateQuestionNumbers).toEqual([]);
