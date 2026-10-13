@@ -13,6 +13,19 @@ function HistoricalArchive({onBack}){
   const [query,setQuery]=useState("");
   const [session,setSession]=useState("all");
   const [opened,setOpened]=useState(null);
+  const [pdfFiles,setPdfFiles]=useState({});
+  useEffect(()=>{
+    let cancelled=false;
+    const files=CHEMISTRY_PAPER2_SOURCE_AUDIT;
+    Promise.all(files.map(async entry=>{
+      const url=`${import.meta.env.BASE_URL}chemistry-paper2-scans/${encodeURIComponent(entry.file)}`;
+      try{
+        const response=await fetch(url,{method:"HEAD"});
+        return [entry.id,response.ok&&response.headers.get("content-type")?.includes("pdf")?url:null];
+      }catch{return [entry.id,null];}
+    })).then(entries=>{if(!cancelled)setPdfFiles(Object.fromEntries(entries));});
+    return()=>{cancelled=true;};
+  },[]);
   const rows=useMemo(()=>CHEMISTRY_HISTORICAL_PAPERS.filter(paper=>{
     const matchSession=session==="all"||paper.session===session;
     const hay=`${paper.year} ${paper.session} ${paper.topics.join(" ")}`.toLowerCase();
@@ -30,7 +43,7 @@ function HistoricalArchive({onBack}){
         <div className="chem-archive-tags">{paper.topics.map(topic=><span key={topic}>{topic.replaceAll("-"," ")}</span>)}</div>
         <div className="chem-archive-status"><b>Scan inventoried</b><small>Original marking scheme not supplied. Historical answers remain under review.</small></div>
         <button type="button" className="chem-archive-open" aria-expanded={opened===paper.id} onClick={()=>setOpened(previous=>previous===paper.id?null:paper.id)}>{opened===paper.id?"Hide details":"View paper details"} <span aria-hidden="true">{opened===paper.id?"−":"→"}</span></button>
-        {opened===paper.id&&<div className="chem-archive-detail"><h3>{paper.year} {paper.session} source details</h3><p><strong>Source file:</strong> {source?.file||"Not recorded"}</p><p><strong>Pages:</strong> {source?.pages||"Not recorded"} · <strong>Questions:</strong> {paper.questionCount} · <strong>Drafted:</strong> {coverage?.draftedQuestions||0}</p><p>The source PDF is catalogued for review but is not hosted in this browser build. No historical exam questions are available for student practice until their answers and diagrams are checked.</p></div>}
+        {opened===paper.id&&<div className="chem-archive-detail"><h3>{paper.year} {paper.session} source details</h3><p><strong>Source file:</strong> {source?.file||"Not recorded"}</p><p><strong>Pages:</strong> {source?.pages||"Not recorded"} · <strong>Questions:</strong> {paper.questionCount} · <strong>Drafted:</strong> {coverage?.draftedQuestions||0}</p><p>Historical questions remain unavailable for student practice until the source answers and diagrams are checked.</p>{pdfFiles[paper.id]?<a className="chem-archive-pdf-link" href={pdfFiles[paper.id]} target="_blank" rel="noopener noreferrer">Open original PDF ↗</a>:<p role="status">The scanned PDF is not installed on this computer yet. Import the source archive into <code>public/chemistry-paper2-scans/</code> to view it here.</p>}</div>}
       </article>;
     })}</section>
   </div></main>;
