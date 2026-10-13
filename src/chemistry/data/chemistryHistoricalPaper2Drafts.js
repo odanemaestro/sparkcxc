@@ -1,3 +1,8 @@
+import {CHEMISTRY_2006_MJ_Q1_DRAFT} from "./chemistryHistorical2006MayJuneQ1";
+import {CHEMISTRY_2006_MJ_Q2_DRAFT} from "./chemistryHistorical2006MayJuneQ2";
+import {CHEMISTRY_2006_MJ_Q3_DRAFT} from "./chemistryHistorical2006MayJuneQ3";
+import {CHEMISTRY_2006_MJ_Q4_DRAFT} from "./chemistryHistorical2006MayJuneQ4";
+import {CHEMISTRY_2006_MJ_Q5_DRAFT} from "./chemistryHistorical2006MayJuneQ5";
 import {CHEMISTRY_2005_MJ_Q1_DRAFT} from "./chemistryHistorical2005MayJuneQ1";
 import {CHEMISTRY_2005_MJ_Q2_DRAFT} from "./chemistryHistorical2005MayJuneQ2";
 import {CHEMISTRY_2005_MJ_Q3_DRAFT} from "./chemistryHistorical2005MayJuneQ3";
@@ -348,6 +353,11 @@ export const CHEMISTRY_HISTORICAL_DRAFT_ITEMS = Object.freeze([
   CHEMISTRY_2005_MJ_Q1_DRAFT,
   CHEMISTRY_2005_MJ_Q2_DRAFT,
   CHEMISTRY_2005_MJ_Q3_DRAFT,
+  CHEMISTRY_2006_MJ_Q1_DRAFT,
+  CHEMISTRY_2006_MJ_Q2_DRAFT,
+  CHEMISTRY_2006_MJ_Q3_DRAFT,
+  CHEMISTRY_2006_MJ_Q4_DRAFT,
+  CHEMISTRY_2006_MJ_Q5_DRAFT,
   CHEMISTRY_2023_JAN_Q1_DRAFT,
   CHEMISTRY_2023_JAN_Q2_DRAFT,
   CHEMISTRY_2023_JAN_Q3_DRAFT,
