@@ -17,7 +17,7 @@ export function readScienceGraph(value){
 }
 export function graphPoints(text,kind){
   return String(text || "").split(/\n|;/).filter(s=>s.trim()).slice(0,101).map(line=>{
-    const match=line.trim().match(/^\(?\s*(.+?)\s*,\s*([+-]?(?:\d+(?:\.\d*)?|\.\d+))\s*\)?$/);
+    const match=line.trim().match(/^\(?\s*(.+?)\s*,\s*([+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+)?)\s*\)?$/);
     if(!match) return null;
     const x=kind==="bar"?match[1].trim():Number(match[1]);
     return (kind==="bar"?Boolean(x):Number.isFinite(x)) ? {x,y:Number(match[2])} : null;
@@ -29,6 +29,32 @@ export function graphAxis(axis){
   const intervals=(max-min)/step;
   if(![min,max,step].every(Number.isFinite) || max<=min || step<=0 || intervals<1 || intervals>20 || Math.abs(intervals-Math.round(intervals))>1e-7) return null;
   return {min,max,step,intervals:Math.round(intervals)};
+}
+
+// Keep examination marking strict: an invalid user-selected interval does not
+// earn a scale mark. For display only, use a clearly labelled 10-division
+// fallback so already-entered coordinates never disappear from the plot.
+export function graphPreviewAxis(axis){
+  const valid=graphAxis(axis);
+  if(valid)return {axis:valid,valid:true,suggestedStep:null};
+  if(!axis||axis.min===""||axis.max===""||
+     axis.min==null||axis.max==null)return {axis:null,valid:false,suggestedStep:null};
+  const min=Number(axis.min),max=Number(axis.max);
+  if(!Number.isFinite(min)||!Number.isFinite(max)||max<=min)return {axis:null,valid:false,suggestedStep:null};
+  const step=Number(((max-min)/10).toPrecision(12));
+  return {axis:{min,max,step,intervals:10},valid:false,suggestedStep:step};
+}
+
+export function graphPointIssues(text,kind){
+  const lines=String(text||"").split(/\n|;/);
+  const used=lines.map((line,index)=>({line:line.trim(),number:index+1}))
+    .filter(row=>row.line);
+  const parsed=graphPoints(text,kind);
+  return used.map((row,index)=>parsed[index]?null:{
+    line:row.number,
+    text:row.line,
+    message:`Line ${row.number}: enter one ${kind==="bar"?"category, height":"x, y"} pair (two values separated by a comma).`
+  }).filter(Boolean);
 }
 
 // The same interpolation is used in the preview and assessed as an explicit
