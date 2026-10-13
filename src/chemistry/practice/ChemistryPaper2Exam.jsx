@@ -7,7 +7,6 @@ import {gradeChemistryPaper2,CHEMISTRY_P2_GRADER_VERSION} from "./chemistryPaper
 import "./chemistryPractice.css";
 import "../../integratedScience/practice/integratedScienceExam.css";
 
-const DURATION=CHEMISTRY_PAPER2_FORMAT.durationMinutes*60;
 const keyFor=(q,p,i)=>`${q}:${p}:${i}`;
 const storageKey=(userId,paperId)=>`spark:chemistry:paper2:${userId||"guest"}:${paperId}`;
 const goTop=()=>window.scrollTo?.({top:0,behavior:"smooth"});
@@ -56,6 +55,33 @@ function ResponseInput({questionId,partIndex,itemIndex,item,responses,onChange,d
   return <textarea disabled={disabled} className={type==="calculation"?"is-p2-calculation-response":"is-p2-lines-response"} rows={Math.max(3,Number(item.response?.lines||4))} value={responses[base]||""} onChange={e=>onChange(base,e.target.value)} aria-label={`${item.label||"Question"} response`}/>;
 }
 
+function ChemistryModelGraph({response}){
+  const points=(response?.points||[]).filter(point=>Number.isFinite(Number(point.x))&&Number.isFinite(Number(point.y)))
+    .map(point=>({x:Number(point.x),y:Number(point.y)})).sort((a,b)=>a.x-b.x);
+  if(!points.length)return null;
+  const minX=Math.min(...points.map(p=>p.x)),maxX=Math.max(...points.map(p=>p.x));
+  const minY=Math.min(...points.map(p=>p.y)),maxY=Math.max(...points.map(p=>p.y));
+  const xScale=x=>72+(x-minX)/Math.max(1,maxX-minX)*450;
+  const yScale=y=>265-(y-minY)/Math.max(1,maxY-minY)*208;
+  return <figure className="chem-p2-model-graph">
+    <svg viewBox="0 0 570 330" role="img" aria-label="Model graph showing the expected plotted data points">
+      <rect width="570" height="330" rx="8" fill="#fff"/>
+      <path d="M72 36V265H535" stroke="#263c56" strokeWidth="2" fill="none"/>
+      {[0,.25,.5,.75,1].map((fraction,i)=><g key={i}>
+        <line x1="72" x2="535" y1={265-fraction*208} y2={265-fraction*208} stroke="#d4e0eb"/>
+        <text x="64" y={269-fraction*208} textAnchor="end" fill="#263c56" fontSize="11">{(minY+fraction*(maxY-minY)).toFixed(1)}</text>
+        <line x1={72+fraction*450} x2={72+fraction*450} y1="36" y2="265" stroke="#d4e0eb"/>
+        <text x={72+fraction*450} y="282" textAnchor="middle" fill="#263c56" fontSize="11">{(minX+fraction*(maxX-minX)).toFixed(1)}</text>
+      </g>)}
+      <polyline points={points.map(point=>`${xScale(point.x)},${yScale(point.y)}`).join(" ")} fill="none" stroke="#087c73" strokeWidth="2.5"/>
+      {points.map((point,i)=><circle key={i} cx={xScale(point.x)} cy={yScale(point.y)} r="4" fill="#087c73"/>)}
+      <text x="300" y="315" textAnchor="middle" fill="#263c56" fontSize="13">{response.x||"Horizontal axis"}</text>
+      <text x="18" y="150" textAnchor="middle" transform="rotate(-90 18 150)" fill="#263c56" fontSize="13">{response.y||"Vertical axis"}</text>
+    </svg>
+    <figcaption>SPARK model graph from the authored data. Compare your axes, points and trend.</figcaption>
+  </figure>;
+}
+
 function ChemistryAnswerReview({item,evaluation,responses,base}){
   const type=item.response?.type||"lines";
   const table=item.response?.table;
@@ -79,6 +105,7 @@ function ChemistryAnswerReview({item,evaluation,responses,base}){
       <div className="chem-p2-review-column chem-p2-correct-answer">
         <h4>Correct answer</h4>
         {type==="table"&&modelRows.length?<div className="is-bank-table-wrap"><table className="is-bank-table"><thead><tr>{(table.headers||[]).map((head,i)=><th key={i}>{head}</th>)}</tr></thead><tbody>{modelRows.map((row,i)=><tr key={i}>{row.map((value,j)=><td key={j}>{value}</td>)}</tr>)}</tbody></table></div>:null}
+        {type==="graph"&&<ChemistryModelGraph response={item.response}/>}
         {type==="graph"&&Array.isArray(item.response?.points)&&item.response.points.length>0?<div className="chem-p2-expected-points"><strong>Expected graph points</strong><ul>{item.response.points.map((point,i)=><li key={i}>({point.x}, {point.y})</li>)}</ul></div>:null}
         {points.length?<ol>{points.map((point,i)=><li key={i}>{point}</li>)}</ol>:<p>Answer awaiting source verification.</p>}
       </div>
@@ -91,7 +118,7 @@ function ChemistryAnswerReview({item,evaluation,responses,base}){
 
 function PaperQuestion({question,responses,onChange,disabled,evaluation}){
   return <article className="chem-p2-question">
-    <header><span>{question.kind.replace("-"," ")}</span><h2>{question.title}</h2><b>{question.totalMarks} marks</b></header>
+    <header><span>{String(question.kind||"structured").replace("-"," ")}</span><h2>{question.title}</h2><b>{question.totalMarks} marks</b></header>
     {question.context&&<p className="chem-p2-question-context">{question.context}</p>}
     {(question.sourceFigures||[]).map((figure,i)=>figure?.svg?<figure className="chem-p2-source-figure" key={i}><TrustedBankSvg svg={figure.svg}/>{figure.figure&&<figcaption>{figure.figure}</figcaption>}</figure>:null)}
     {(question.parts||[]).map((part,partIndex)=><section className="chem-p2-part" key={partIndex}>
