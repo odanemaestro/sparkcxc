@@ -1187,6 +1187,25 @@ describe("CSEC Chemistry course V1",()=>{
     expect(auditChemistryHistoricalQuestion({...base,diagramStatus:"verified"}).ready).toBe(true);
   });
 
+  test("historical publication requires five distinct reviewer identities",()=>{
+    const approvals=Object.fromEntries(CHEMISTRY_HISTORICAL_REVIEW_CHECKS.map((check,index)=>[
+      check,{approved:true,reviewer:`Reviewer ${index+1}`,reviewedAt:"2026-10-12"}
+    ]));
+    const base={id:"QA-INDEPENDENT",sourceId:"QA-SOURCE",sourceFile:"source.pdf",pdfPages:[1],
+      originalQuestionNumber:1,totalMarks:1,learnerFacing:true,status:"verified",
+      diagramStatus:"not-applicable",sourceIssues:[],qaApprovals:approvals,
+      parts:[{label:"(a)",items:[{prompt:"Identify the element.",marks:1,
+        markScheme:{points:["Correct element"]},explanation:"The element is identified."}]}]};
+    expect(publishedChemistryHistoricalQuestions([base])).toHaveLength(1);
+    const shared=Object.fromEntries(CHEMISTRY_HISTORICAL_REVIEW_CHECKS.map(check=>[
+      check,{approved:true,reviewer:"Same Reviewer",reviewedAt:"2026-10-12"}
+    ]));
+    expect(auditChemistryHistoricalQuestion({...base,qaApprovals:shared}).ready).toBe(true);
+    expect(publishedChemistryHistoricalQuestions([{...base,qaApprovals:shared}])).toHaveLength(0);
+    const duplicate={...approvals,chemicalAnswers:{...approvals.chemicalAnswers,reviewer:" reviewer 1 "}};
+    expect(publishedChemistryHistoricalQuestions([{...base,qaApprovals:duplicate}])).toHaveLength(0);
+  });
+
   test("historical release requires valid PDF page numbers and reviewed issue log",()=>{
     const approvals=Object.fromEntries(CHEMISTRY_HISTORICAL_REVIEW_CHECKS.map(check=>[
       check,{approved:true,reviewer:"QA Fixture",reviewedAt:"2026-10-12"}
