@@ -72,7 +72,7 @@ describe("CSEC Chemistry Paper 1 simulated examination",()=>{
     const onBack=jest.fn();
     render(<ChemistryPaper1Exam userId="saving-student" onBack={onBack}/>);
     await startExam();
-    fireEvent.click(screen.getByLabelText(/B\\. Mg²⁺/));
+    fireEvent.click(screen.getByLabelText(/B\. Mg²⁺/));
     fireEvent.click(screen.getByRole("button",{name:/Exit examination/}));
     expect(screen.getByRole("dialog",{name:"Exit this paper?"})).toBeInTheDocument();
     expect(screen.getByText(/answers and remaining time are saved/)).toBeInTheDocument();
