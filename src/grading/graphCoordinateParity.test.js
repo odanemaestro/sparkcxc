@@ -25,7 +25,7 @@ describe("CSEC graph coordinate feedback parity",()=>{
     const chemistry=source("chemistry/practice/ChemistryPaper2Exam.jsx");
     expect(shared).toContain("onPointerMove={preview}");
     expect(shared).toContain('aria-label="Plotted coordinates"');
-    expect(shared).toContain('disabled||next.existing');
+    expect(shared).toContain('disabled||(next.existing&&next.point.seriesIndex===chosen)');
     expect(chemistry).toContain("ScienceGraphEditor");
     expect(chemistry).toContain("ChemistryModelGraph");
     expect(chemistry).toContain("onPointerEnter={()=>setHoverIndex(i)}");
