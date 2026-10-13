@@ -6,8 +6,17 @@ const SOURCES=["2009-MJ","2010-MJ","2016-MJ","2017-MJ","2018-JAN","2018-MJ","201
 const root=`${typeof window!=="undefined" && window.location.pathname.startsWith("/sparkcxc")?"/sparkcxc/":"/"}chemistry-paper1/`;
 const getJSON=async path=>{
   const response=await fetch(root+path,{cache:"no-store"});
-  if(!response.ok)throw new Error("This historical Paper 1 bank has not yet been imported into the deployed SPARK build.");
-  return response.json();
+  const mime=response.headers?.get?.("content-type") || "";
+  if(!response.ok || !mime.includes("json")){
+    throw new Error("Chemistry Paper 1 questions are not installed yet. Import the reviewed question-bank ZIP into SPARK's public/chemistry-paper1 folder using tools/import-chemistry-paper1.py, then reload this page.");
+  }
+  try{
+    const data=await response.json();
+    if(!Array.isArray(data?.questions) || !data.questions.length)throw new Error("Empty question set");
+    return data;
+  }catch{
+    throw new Error("Chemistry Paper 1 data could not be read. Reinstall the reviewed JSON question bank and reload the page.");
+  }
 };
 const labels=["A","B","C","D"];
 function Minutes({seconds}){return <span role="timer" aria-live="off">{Math.floor(seconds/60)}:{String(seconds%60).padStart(2,"0")}</span>;}
@@ -71,7 +80,7 @@ export default function ChemistryPaper1Exam({onBack,supabase,userId}){
       {SOURCES.map(id=><option key={id} value={id}>{id.replace("-"," ")}{id==="2010-MJ"?" — 55 items only":""}</option>)}
     </select></label>
     {loading?<p>Loading Chemistry questions…</p>:null}
-    {error?<p role="alert">{error}</p>:null}
+    {error?<div className="chem-p1-load-error" role="alert"><strong>Paper 1 bank unavailable</strong><p>{error}</p><button type="button" onClick={()=>setSource(current=>current==="practice-01"?"practice-02":"practice-01")}>Try another set</button></div>:null}
     {paper?<section className="chem-p1-exam">
       <div className="chem-p1-exam-bar"><strong>{exam.length} questions</strong><strong><Minutes seconds={remaining}/></strong><span>Answered {Object.keys(answers).length}/{exam.length}</span></div>
       {!isPractice&&source==="2010-MJ"?<p role="status">Only Questions 1–55 are available from the supplied 2010 paper. This is revision only, not a complete exam simulation.</p>:null}
