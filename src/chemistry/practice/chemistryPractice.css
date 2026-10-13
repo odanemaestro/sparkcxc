@@ -548,3 +548,371 @@ body[data-theme="dark"] .chem-p1-session .chem-p1-exam-header span,
   .chem-p1-session .chem-p1-question-heading {align-items:flex-start}
   .chem-p1-intro .chem-p1-instructions {padding:18px}
 }
+
+/* Chemistry exam library V2. Shared Paper 1 and Paper 2 paper-selection pattern. */
+.chem-practice-shell.chem-library,
+.chem-practice-shell.chem-practice-home {
+  --chem-ink:#14294b;
+  --chem-muted:#4a607a;
+  --chem-surface:#fff;
+  --chem-soft:#f5f8fc;
+  --chem-outline:#d8e3ed;
+  --chem-accent:#087c73;
+  color:var(--chem-ink);
+}
+.chem-library-container{display:grid;gap:20px;min-width:0}
+.chem-practice-shell .chem-library-back {
+  justify-self:start;
+  display:inline-flex;
+  align-items:center;
+  min-height:42px;
+  padding:9px 14px;
+  border-radius:11px;
+  border:1px solid var(--chem-outline);
+  color:var(--chem-ink);
+  background:var(--chem-surface);
+  font:inherit;
+  font-size:13px;
+  font-weight:750;
+  cursor:pointer;
+}
+.chem-practice-shell .chem-library-back:hover{border-color:var(--chem-accent)}
+.chem-practice-shell .chem-library-hero {
+  min-width:0;
+  padding:clamp(22px,3vw,34px);
+  border:1px solid var(--chem-outline);
+  border-radius:20px;
+  background:var(--chem-surface);
+  color:var(--chem-ink);
+}
+.chem-practice-shell .chem-library-eyebrow {
+  color:var(--chem-accent);
+  font-size:11px;
+  line-height:1.35;
+  letter-spacing:.075em;
+  font-weight:850;
+  text-transform:uppercase;
+}
+.chem-practice-shell .chem-library-hero h1 {
+  margin:9px 0 10px;
+  color:var(--chem-ink);
+  font-size:clamp(25px,3.4vw,37px);
+  line-height:1.16;
+  letter-spacing:-.035em;
+}
+.chem-practice-shell .chem-library-hero p,
+.chem-practice-shell .chem-library-section-heading p {
+  max-width:780px;
+  margin:0;
+  color:var(--chem-muted)!important;
+  font-size:14px;
+  line-height:1.7;
+  opacity:1!important;
+}
+.chem-practice-shell .chem-library-facts {
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:20px;
+}
+.chem-practice-shell .chem-library-facts>span {
+  padding:8px 12px;
+  color:var(--chem-ink);
+  background:var(--chem-soft);
+  border:1px solid var(--chem-outline);
+  border-radius:9px;
+  font-size:12px;
+  font-weight:700;
+}
+.chem-practice-shell .chem-library-entry-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:15px;
+}
+.chem-practice-shell .chem-library-entry {
+  width:100%;
+  min-width:0;
+  display:grid;
+  grid-template-columns:55px minmax(0,1fr) 24px;
+  gap:17px;
+  align-items:center;
+  padding:24px;
+  text-align:left;
+  border:1px solid var(--chem-outline);
+  border-radius:17px;
+  background:var(--chem-surface);
+  color:var(--chem-ink);
+  cursor:pointer;
+  font:inherit;
+  box-shadow:0 2px 9px rgba(12,34,61,.025);
+  transition:border-color .15s,transform .15s;
+}
+.chem-practice-shell .chem-library-entry:hover {
+  border-color:var(--chem-accent);
+  transform:translateY(-1px);
+}
+.chem-practice-shell .chem-library-entry-number {
+  width:55px;
+  height:55px;
+  display:grid;
+  place-items:center;
+  border-radius:15px;
+  background:#ddf6ef;
+  color:#075c55;
+  font-size:20px;
+  font-weight:850;
+}
+.chem-practice-shell .chem-library-entry-copy {display:grid;gap:6px;min-width:0}
+.chem-practice-shell .chem-library-entry-copy small {
+  color:var(--chem-accent);
+  font-weight:800;
+  font-size:11px;
+  letter-spacing:.045em;
+  text-transform:uppercase;
+}
+.chem-practice-shell .chem-library-entry-copy strong {
+  color:var(--chem-ink);
+  font-size:20px;
+  line-height:1.3;
+}
+.chem-practice-shell .chem-library-entry-copy>span {
+  color:var(--chem-muted)!important;
+  font-size:13px;
+  line-height:1.6;
+  opacity:1!important;
+}
+.chem-practice-shell .chem-library-entry-arrow {
+  color:var(--chem-accent);
+  font-size:22px;
+  text-align:right;
+}
+.chem-practice-shell .chem-library-tabs {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:6px;
+  padding:5px;
+  background:var(--chem-soft);
+  border:1px solid var(--chem-outline);
+  border-radius:14px;
+}
+.chem-practice-shell .chem-library-tabs button {
+  min-height:46px;
+  border:1px solid transparent;
+  border-radius:10px;
+  background:transparent;
+  color:var(--chem-muted);
+  font:inherit;
+  font-size:14px;
+  font-weight:800;
+  cursor:pointer;
+}
+.chem-practice-shell .chem-library-tabs button.active {
+  background:var(--chem-surface);
+  color:var(--chem-ink);
+  border-color:var(--chem-outline);
+  box-shadow:0 1px 4px rgba(14,35,58,.07);
+}
+.chem-practice-shell .chem-library-section-heading {display:grid;gap:7px;min-width:0}
+.chem-practice-shell .chem-library-section-heading h2 {
+  margin:0;
+  color:var(--chem-ink);
+  font-size:21px;
+  letter-spacing:-.02em;
+}
+.chem-practice-shell .chem-library-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  align-items:stretch;
+  gap:14px;
+}
+.chem-practice-shell .chem-library-paper {
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  gap:12px;
+  padding:20px;
+  border:1px solid var(--chem-outline);
+  border-radius:16px;
+  background:var(--chem-surface);
+  color:var(--chem-ink);
+}
+.chem-practice-shell .chem-library-card-head {
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:space-between;
+  min-height:21px;
+}
+.chem-practice-shell .chem-library-indicator {
+  padding:4px 8px;
+  border-radius:7px;
+  background:var(--chem-soft);
+  color:var(--chem-ink);
+  font-size:11px;
+  font-weight:700;
+}
+.chem-practice-shell .chem-library-paper h3 {
+  margin:0;
+  font-size:18px;
+  font-weight:800;
+  line-height:1.35;
+  color:var(--chem-ink);
+}
+.chem-practice-shell .chem-library-paper p {
+  margin:0;
+  color:var(--chem-muted)!important;
+  opacity:1!important;
+  font-size:13px;
+  line-height:1.6;
+}
+.chem-practice-shell .chem-library-open {
+  display:flex;
+  gap:10px;
+  justify-content:space-between;
+  align-items:center;
+  min-height:43px;
+  margin-top:auto;
+  width:100%;
+  padding:10px 14px;
+  border-radius:10px;
+  border:1px solid #087c73;
+  background:#087c73;
+  color:white;
+  font:inherit;
+  font-weight:750;
+  font-size:13px;
+  cursor:pointer;
+}
+.chem-practice-shell .chem-library-open:hover:not(:disabled) {background:#066c64}
+.chem-practice-shell .chem-library-open:disabled {opacity:.6;cursor:default}
+.chem-practice-shell .chem-library-filters {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 200px;
+  gap:12px;
+}
+.chem-practice-shell .chem-library-filters label,
+.chem-practice-shell .chem-library-option {
+  display:grid;
+  gap:7px;
+  color:var(--chem-ink);
+  font-weight:750;
+  font-size:12px;
+}
+.chem-practice-shell .chem-library-filters input,
+.chem-practice-shell .chem-library-filters select,
+.chem-practice-shell .chem-library-option select {
+  width:100%;
+  min-width:0;
+  min-height:44px;
+  padding:10px 12px;
+  box-sizing:border-box;
+  border-radius:10px;
+  border:1px solid var(--chem-outline);
+  background:var(--chem-surface);
+  color:var(--chem-ink);
+  font:inherit;
+  font-size:13px;
+}
+.chem-practice-shell .chem-library-filters input::placeholder {color:var(--chem-muted);opacity:1}
+.chem-practice-shell .chem-library-empty {
+  grid-column:1/-1;
+  color:var(--chem-muted);
+  text-align:center;
+  padding:25px 15px;
+}
+.chem-practice-shell .chem-library button:focus-visible,
+.chem-practice-shell .chem-library-open:focus-visible,
+.chem-practice-shell .chem-library-tabs button:focus-visible,
+.chem-practice-shell .chem-library-entry:focus-visible {
+  outline:3px solid #12a695;
+  outline-offset:3px;
+}
+.chem-practice-shell.chem-library .chem-library-entry-arrow,
+.chem-practice-shell.chem-practice-home .chem-library-entry-arrow {opacity:1}
+
+/* Modal confirmations replace the browser alert and preserve exam work. */
+.chem-exam-modal-layer {
+  position:fixed;
+  inset:0;
+  z-index:10000;
+  display:grid;
+  place-items:center;
+  padding:18px;
+  background:rgba(12,24,43,.58);
+}
+.chem-exam-modal {
+  width:min(100%,440px);
+  padding:clamp(22px,3vw,30px);
+  box-sizing:border-box;
+  border:1px solid var(--chem-outline,#d8e3ef);
+  border-radius:19px;
+  background:var(--chem-surface,#fff);
+  box-shadow:0 25px 70px rgba(7,19,35,.2);
+  color:var(--chem-ink,#14294b);
+}
+.chem-exam-modal h2 {color:inherit;font-size:22px;margin:12px 0}
+.chem-exam-modal p {
+  color:var(--chem-muted,#4a607a);
+  margin:0;
+  line-height:1.65;
+  font-size:14px;
+}
+.chem-exam-modal-actions {display:flex;justify-content:flex-end;flex-wrap:wrap;gap:10px;margin-top:25px}
+.chem-exam-modal-actions button {
+  min-height:43px;
+  border-radius:11px;
+  padding:10px 16px;
+  font:inherit;
+  font-weight:750;
+  font-size:13px;
+  cursor:pointer;
+}
+.chem-exam-modal-secondary {background:var(--chem-surface,#fff);color:var(--chem-ink,#14294b);border:1px solid var(--chem-outline,#d8e3ef)}
+.chem-exam-modal-primary {background:#087c73;color:#fff;border:1px solid #087c73}
+
+/* Explicit dark text and surface tokens for theme parity. */
+html[data-theme="dark"] .chem-practice-shell.chem-library,
+html[data-theme="dark"] .chem-practice-shell.chem-practice-home,
+body[data-theme="dark"] .chem-practice-shell.chem-library,
+body[data-theme="dark"] .chem-practice-shell.chem-practice-home,
+.dark .chem-practice-shell.chem-library,
+.dark .chem-practice-shell.chem-practice-home {
+  --chem-ink:#eaf2fc;
+  --chem-muted:#bfcede;
+  --chem-surface:#15263b;
+  --chem-soft:#1b3049;
+  --chem-outline:#344b66;
+  --chem-accent:#88e6d6;
+}
+html[data-theme="dark"] .chem-practice-shell .chem-library-entry-number,
+body[data-theme="dark"] .chem-practice-shell .chem-library-entry-number,
+.dark .chem-practice-shell .chem-library-entry-number {
+  background:#14483f;
+  color:#b9fff1;
+}
+html[data-theme="dark"] .chem-exam-modal,
+body[data-theme="dark"] .chem-exam-modal,
+.dark .chem-exam-modal {background:#15263b;color:#eaf2fc;border-color:#344b66}
+html[data-theme="dark"] .chem-exam-modal p,
+body[data-theme="dark"] .chem-exam-modal p,
+.dark .chem-exam-modal p {color:#bfcede}
+html[data-theme="dark"] .chem-exam-modal-secondary,
+body[data-theme="dark"] .chem-exam-modal-secondary,
+.dark .chem-exam-modal-secondary {background:#1b3049;color:#eaf2fc;border-color:#344b66}
+@media(max-width:900px) {
+  .chem-practice-shell .chem-library-grid {grid-template-columns:repeat(2,minmax(0,1fr))}
+  .chem-practice-shell .chem-library-entry-grid {grid-template-columns:1fr}
+}
+@media(max-width:600px) {
+  .chem-practice-shell .chem-library-grid,
+  .chem-practice-shell .chem-library-filters {grid-template-columns:minmax(0,1fr)}
+  .chem-practice-shell .chem-library-entry {padding:17px;grid-template-columns:47px minmax(0,1fr) 18px;gap:12px}
+  .chem-practice-shell .chem-library-entry-number {width:47px;height:47px;font-size:17px}
+  .chem-practice-shell .chem-library-entry-copy strong {font-size:17px}
+  .chem-practice-shell .chem-library-hero {padding:20px}
+  .chem-practice-shell .chem-library-paper {padding:18px}
+  .chem-exam-modal-actions {flex-direction:column-reverse}
+  .chem-exam-modal-actions button {width:100%}
+}
