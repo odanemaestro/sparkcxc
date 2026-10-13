@@ -344,6 +344,33 @@ export const FNH_SUPPLIED_ARCHIVE = Object.freeze([
     "verifiedQuestionCount": 0
   }
 ]);
+// Examination format varies across the uploaded archive. Never reformat older
+// General Proficiency Food and Nutrition Paper 02 sources as current FNH exams.
+export function fnhHistoricalPaperFormat(source){
+  const item=typeof source==="string"?FNH_SUPPLIED_ARCHIVE.find(row=>row.id===source):source;
+  if(!item)return null;
+  if(item.paper===1){
+    // Older Paper 01 scans often omit the cover. Do not assume their
+    // time allowance from the current syllabus until verified.
+    return item.year>=2017
+      ?{qualification:"Technical Proficiency",subject:"Food, Nutrition and Health",
+        questionsExpected:60,compulsory:60,durationMinutes:90,sourceTimeVerified:false}
+      :{qualification:"General Proficiency",subject:"Food and Nutrition",
+        questionsExpected:null,compulsory:null,durationMinutes:null,sourceTimeVerified:false};
+  }
+  if(item.year<2017)return {
+    qualification:"General Proficiency",subject:"Food and Nutrition",
+    sectionA:{compulsory:3,marksPerQuestion:16},
+    sectionB:{available:4,choose:2,marksPerQuestion:16},
+    questionsAnswered:5,totalMarks:80,durationMinutes:120,
+    readingMinutes:10,sourceTimeVerified:item.year===2005,
+  };
+  return {
+    qualification:"Technical Proficiency",subject:"Food, Nutrition and Health",
+    compulsory:6,questionsAnswered:6,marksPerQuestion:16,totalMarks:96,
+    durationMinutes:150,sourceTimeVerified:false,
+  };
+}
 export const FNH_ARCHIVE_SUMMARY = Object.freeze({paper1:16,paper2:18,unique:34,
   duplicatedSource:"CSEC_FNH_Paper_1_-_May_June_2026 (1).pdf",
   duplicationOf:"CSEC_FNH_Paper_1_-_May_June_2026.pdf",
