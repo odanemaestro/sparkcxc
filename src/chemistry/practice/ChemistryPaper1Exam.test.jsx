@@ -68,6 +68,22 @@ describe("CSEC Chemistry Paper 1 simulated examination",()=>{
     expect(JSON.parse(window.localStorage.getItem("spark:chemistry:paper1:returning-student:practice-01")).endsAt).toBe(stored.endsAt);
   });
 
+  test("exit uses the in-app confirmation and saves an unfinished exam",async()=>{
+    const onBack=jest.fn();
+    render(<ChemistryPaper1Exam userId="saving-student" onBack={onBack}/>);
+    await startExam();
+    fireEvent.click(screen.getByLabelText(/B\\. Mg²⁺/));
+    fireEvent.click(screen.getByRole("button",{name:/Exit examination/}));
+    expect(screen.getByRole("dialog",{name:"Exit this paper?"})).toBeInTheDocument();
+    expect(screen.getByText(/answers and remaining time are saved/)).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button",{name:"Save and exit"}));
+    expect(onBack).toHaveBeenCalledTimes(1);
+    const saved=JSON.parse(window.localStorage.getItem("spark:chemistry:paper1:saving-student:practice-01"));
+    expect(saved.phase).toBe("exam");
+    expect(saved.answers["TEST-01"]).toBe("B");
+    expect(saved.endsAt).toBeGreaterThan(Date.now());
+  });
+
   test("saves Chemistry Paper 1 scores for reports after submission",async()=>{
     window.confirm=jest.fn(()=>true);
     const supabase={rpc:jest.fn().mockResolvedValue({data:{},error:null})};
