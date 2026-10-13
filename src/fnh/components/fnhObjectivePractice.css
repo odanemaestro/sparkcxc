@@ -1,0 +1,23 @@
+.fnh-objective-practice{--fnh-lesson-ink:var(--spark-text,#142d52);--fnh-lesson-muted:var(--spark-text-muted,#506680);--fnh-lesson-bg:var(--spark-surface,#fff);--fnh-lesson-outline:var(--spark-border,#d7e3ee);border:1px solid var(--fnh-lesson-outline);border-radius:16px;padding:clamp(17px,3vw,26px);background:var(--fnh-lesson-bg);color:var(--fnh-lesson-ink);margin:22px 0}
+.fnh-objective-practice .fnh-objective-practice-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.fnh-objective-practice-head small{font-size:11px;font-weight:850;letter-spacing:.06em;color:#07877b}
+.fnh-objective-practice-head h3{margin:7px 0;color:var(--fnh-lesson-ink);font-size:20px}
+.fnh-objective-practice-head>span{white-space:nowrap;color:var(--fnh-lesson-muted);font-size:13px;font-weight:750}
+.fnh-objective-practice-code{color:var(--fnh-lesson-muted);font-size:12px;line-height:1.6}
+.fnh-objective-practice-question{font-size:17px;font-weight:700;color:var(--fnh-lesson-ink);line-height:1.55}
+.fnh-objective-practice label{display:grid;gap:8px;font-size:13px;font-weight:750;color:var(--fnh-lesson-ink)}
+.fnh-objective-practice textarea{box-sizing:border-box;resize:vertical;width:100%;min-height:100px;background:var(--fnh-lesson-bg);color:var(--fnh-lesson-ink);border:1px solid var(--fnh-lesson-outline);border-radius:10px;padding:12px;font:inherit;font-size:14px;line-height:1.6}
+.fnh-objective-practice textarea:focus-visible{outline:3px solid #07877b;outline-offset:2px}
+.fnh-objective-practice-answer{border:1px solid var(--fnh-lesson-outline);border-left:4px solid #07877b;border-radius:10px;padding:15px;margin-top:15px;background:color-mix(in srgb,var(--fnh-lesson-bg) 92%,#07877b)}
+.fnh-objective-practice-answer h4{margin:0 0 9px;color:var(--fnh-lesson-ink);font-size:15px}
+.fnh-objective-practice-answer p{color:var(--fnh-lesson-ink);font-size:13px;line-height:1.75}
+.fnh-objective-practice-answer small{font-size:12px;color:var(--fnh-lesson-muted);line-height:1.6}
+.fnh-objective-practice-controls{display:flex;gap:9px;flex-wrap:wrap;margin-top:17px}
+.fnh-objective-practice-controls button{min-height:43px;padding:10px 15px;border-radius:10px;font:inherit;font-size:13px;font-weight:800;cursor:pointer}
+.fnh-objective-practice-secondary{background:var(--fnh-lesson-bg);color:var(--fnh-lesson-ink);border:1px solid var(--fnh-lesson-outline)}
+.fnh-objective-practice-primary{background:#07877b;color:#fff;border:1px solid #07877b}
+.fnh-objective-practice button:disabled{opacity:.4;cursor:not-allowed}
+.fnh-objective-practice button:focus-visible{outline:3px solid #07877b;outline-offset:3px}
+html[data-theme="dark"] .fnh-objective-practice,body[data-theme="dark"] .fnh-objective-practice,.dark .fnh-objective-practice{--fnh-lesson-ink:#eef5ff;--fnh-lesson-muted:#bdd0e1;--fnh-lesson-bg:#172d44;--fnh-lesson-outline:#38536c}
+html[data-theme="dark"] .fnh-objective-practice-head small,body[data-theme="dark"] .fnh-objective-practice-head small,.dark .fnh-objective-practice-head small{color:#82e8d8}
+@media(max-width:600px){.fnh-objective-practice-controls{flex-direction:column}.fnh-objective-practice-controls button{width:100%}}
