@@ -1,3 +1,4 @@
+import {CHEMISTRY_2006_MJ_Q5_AMMONIA_APPARATUS_SVG} from "./chemistryHistorical2006SourceFigures";
 // Original 2006 May/June Chemistry Paper 02 Q5, PDF pages 12–13, total 15 marks.
 const item=(label,prompt,marks,points,explanation,response={type:"lines",lines:Math.max(3,marks+1)})=>({label,prompt,marks,response,markScheme:{points,guidance:"SPARK-authored provisional marking; original examiner scheme unavailable."},explanation});
 export const CHEMISTRY_2006_MJ_Q5_DRAFT=Object.freeze({
@@ -6,6 +7,7 @@ export const CHEMISTRY_2006_MJ_Q5_DRAFT=Object.freeze({
  answerSchemeSource:"SPARK-authored provisional",
  diagramStatus:"Original Figure 5 apparatus has liquid Y poured onto heated solid W and moist BLUE litmus at test-tube mouth; an exact SVG reproduction must retain this deliberately incorrect indicator colour.",
  sourceVerificationNote:"Assistant first-pass comparison to scanned source PDF printed pages 12–13. Figure/layout fidelity and official examiner mark schemes remain unapproved.",
+ sourceFigures:[{page:12,figure:"Figure 5",svg:CHEMISTRY_2006_MJ_Q5_AMMONIA_APPARATUS_SVG,sourceApproved:false}],
  sourceIssues:["The original proposed moist blue litmus is unsuitable because a base leaves blue litmus blue. A corrected test is damp RED litmus turning blue; alternative concentrated HCl rod gives white ammonium chloride fumes.","A suitable pair is aqueous NaOH (liquid Y) and NH₄Cl(s) (solid W), not sulfuric acid which would consume NH₃.","The original Haber diagram must be exothermic with reactants higher than NH₃ products; source uses about 200 atm and 400°C."],
  parts:[
  {label:"(a)",items:[
