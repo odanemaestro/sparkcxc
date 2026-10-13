@@ -5,28 +5,29 @@ export const CHEMISTRY_2006_MJ_Q5_DRAFT=Object.freeze({
  title:"Laboratory ammonia, identifying gases and Haber exothermic profile",kind:"structured",learnerFacing:false,status:"draft-needs-second-source-review",
  answerSchemeSource:"SPARK-authored provisional",
  diagramStatus:"Original Figure 5 apparatus has liquid Y poured onto heated solid W and moist BLUE litmus at test-tube mouth; an exact SVG reproduction must retain this deliberately incorrect indicator colour.",
+ sourceVerificationNote:"Assistant first-pass comparison to scanned source PDF printed pages 12–13. Figure/layout fidelity and official examiner mark schemes remain unapproved.",
  sourceIssues:["The original proposed moist blue litmus is unsuitable because a base leaves blue litmus blue. A corrected test is damp RED litmus turning blue; alternative concentrated HCl rod gives white ammonium chloride fumes.","A suitable pair is aqueous NaOH (liquid Y) and NH₄Cl(s) (solid W), not sulfuric acid which would consume NH₃.","The original Haber diagram must be exothermic with reactants higher than NH₃ products; source uses about 200 atm and 400°C."],
  parts:[
  {label:"(a)",items:[
- item("(i)","Identify suitable solid W and liquid Y for laboratory ammonia generation.",2,
+ item("(i)","Suggest ONE suitable reagent that can be used as Y and ONE as W for the experiment.",2,
  ["W: ammonium chloride solid, NH₄Cl(s).","Y: aqueous sodium hydroxide, NaOH(aq); gentle warming releases NH₃."],
  "NH₄Cl+NaOH→NH₃+NaCl+H₂O. A soluble strong alkali displaces ammonia."),
- item("(ii)","Name the process taking NH₃ from bottom to litmus paper at the top of test tube.",1,
+ item("(ii)","Identify the process by which the ammonia gas produced at the bottom of the test tube comes into contact with the litmus paper at the mouth of the test tube.",1,
  ["Diffusion of gas molecules."],
  "Gas molecules spread from higher to lower concentration through air."),
- item("(iii)","Explain why moist blue litmus is unsuitable to identify ammonia.",2,
+ item("(iii)","Comment on the suitability of using the moist blue litmus paper to identify ammonia gas.",2,
  ["Ammonia is alkaline and would leave blue litmus blue.","Use damp red litmus, which turns blue, to give a visible colour change."],
  "A test must produce a distinguishable observation rather than no change."),
- item("(iv)","Describe another chemical test for ammonia and give a balanced equation.",4,
+ item("(iv)","Instead of the litmus test used above, describe ONE OTHER chemical test that can be used to identify ammonia gas. Write a balanced equation to represent the test.",4,
  ["Hold a glass rod dipped in concentrated HCl near a small sample of NH₃ gas under appropriate laboratory precautions.","Dense white fumes appear.","White solid produced is ammonium chloride.","NH₃(g)+HCl(g)→NH₄Cl(s)."],
  "Ammonia and hydrogen chloride react to produce visible white ammonium chloride aerosol.")
  ]},
  {label:"(b)",items:[
- item("(i)","Name the industrial Haber catalyst.",1,["Finely divided iron."],"Iron accelerates formation of ammonia."),
- item("(ii)","Explain why Haber synthesis uses relatively high pressure.",2,
+ item("(i)","Name the catalyst used in the Haber process.",1,["Finely divided iron."],"Iron accelerates formation of ammonia."),
+ item("(ii)","Explain the importance of using relatively high pressure in this process.",2,
  ["The balanced equilibrium N₂(g)+3H₂(g)⇌2NH₃(g) has fewer gas moles on product side.","Higher pressure shifts equilibrium toward ammonia and increases yield, within economic/safety limits."],
  "Compressing gas favours the side with fewer molecules, which is NH₃."),
- item("(iii)","Draw a fully labelled exothermic energy profile for Haber ammonia formation.",3,
+ item("(iii)","Draw a fully labelled energy profile diagram of the reaction for the production of ammonia during the Haber process. Name the reactants and products on your diagram.",3,
  ["N₂+3H₂ reactants shown at higher energy than 2NH₃ products.","Reaction path climbs activation-energy peak, labelled Ea.","Downward ΔH arrow is negative for exothermic NH₃ production, with energy and progress axes named."],
  "The reaction releases heat and products lie below reactants on energy profile.",{type:"drawing"})
  ]}
