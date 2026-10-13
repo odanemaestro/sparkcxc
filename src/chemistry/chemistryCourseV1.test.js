@@ -1,3 +1,4 @@
+import {CHEMISTRY_HISTORICAL_VERIFICATION_INVENTORY,buildChemistryHistoricalVerificationInventory} from "./data/chemistryHistoricalVerificationInventory";
 import fs from "fs";
 import path from "path";
 import { CHEMISTRY_OBJECTIVE_GUIDE } from "./data/chemistryObjectiveGuide";
@@ -1140,6 +1141,25 @@ describe("CSEC Chemistry course V1",()=>{
     });
     expect(ionic.learnerFacing).toBe(false);
     expect(covalent.learnerFacing).toBe(false);
+  });
+
+  test("historical verification inventory covers all sources and exposes unapproved work",()=>{
+    const {rows,totals}=CHEMISTRY_HISTORICAL_VERIFICATION_INVENTORY;
+    expect(rows).toHaveLength(167);
+    expect(totals.questions).toBe(167);
+    expect(totals.sourcePageMismatches).toBe(0);
+    expect(totals.markMismatches).toBe(0);
+    expect(totals.approvalChecksOutstanding).toBe(167*5);
+    expect(totals.releaseReady).toBe(0);
+    expect(rows.every(q=>q.missingApprovals.length===5)).toBe(true);
+    const example=buildChemistryHistoricalVerificationInventory([{
+      id:"BAD",sourceId:"CHEM-P2-2023-MJ",sourceFile:"incorrect.pdf",
+      pdfPages:[999],totalMarks:2,parts:[{items:[{
+        prompt:"A",marks:1,response:{type:"drawing"}}]}]
+    }]);
+    expect(example.rows[0].sourcePageMismatch).toBe(true);
+    expect(example.rows[0].markMismatch).toBe(true);
+    expect(example.totals.figureItems).toBe(1);
   });
 
   test("historical coverage tracks 28 papers without inventing verified questions",()=>{
