@@ -1,6 +1,7 @@
 import {FNH_SECTIONS_ONE_TWO} from "./fnhSectionsOneTwo";
 import {FNH_SECTIONS_THREE_FOUR} from "./fnhSectionsThreeFour";
 import {FNH_SECTIONS_FIVE_SEVEN} from "./fnhSectionsFiveSeven";
+import {FNH_WORKED_EXAMPLES} from "./fnhWorkedExamples";
 
 // Source: supplied CXC 11/G/SYLL 15 Home Economics syllabus, July 2025 PDF.
 // Food, Nutrition and Health is one option of the Home Economics course.
@@ -46,11 +47,7 @@ export const FNH_TOPICS=GROUPS.map((group,index)=>{
         sections:lessonSections,
         keyPoints:entries.map(row=>row.explanation.split(/[.!?]\s/)[0]+ "."),
         summary:`This lesson covers ${entries.length} syllabus objectives. Explain the ideas using real food and household examples, then practise applying the knowledge.`,
-        workedExample:{title:"Apply your learning",prompt:entries[0]?.question||"",steps:[
-          "Identify what the question asks: define, explain, compare, assess or plan.",
-          entries[0]?.example||"Use a realistic Caribbean household example.",
-          "Give the reason for each point and link the evidence to the question.",
-        ]},
+        workedExample:FNH_WORKED_EXAMPLES[group.id],
         flashcards:entries.map(row=>({front:row.objective,back:row.explanation})),
         interactiveModels:group.model?[{id:group.id+"-explorer",type:group.model,title:"Explore and apply this lesson"}]:[],
       }
