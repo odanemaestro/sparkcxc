@@ -148,6 +148,9 @@ export default function ScienceGraphEditor({base,responses,onChange,disabled}){
       <span>The y-axis interval is invalid. The graph is using a preview interval of {yInfo.suggestedStep}. This preview does not count as your selected scale.</span>
       {!disabled&&<button type="button" onClick={()=>fixStep("y")}>Use y interval {yInfo.suggestedStep}</button>}
     </div>}
+    {graph.kind==="bar"&&categories.length===0&&<p className="is-p2-graph-input-error" role="alert">Add at least one category and its height to Series 1 before plotting bars. Enter one category, height pair per line.</p>}
+    {graph.kind==="bar"&&!validWidth&&<p className="is-p2-graph-input-error" role="alert">Bar group width must be greater than 0 and less than 1 to draw the bars.</p>}
+    {graph.kind==="bar"&&hasPlotArea&&y.min!==0&&<p className="is-p2-graph-input-error" role="alert">A standard bar chart should start at zero on the vertical axis. Set the y-axis minimum to 0.</p>}
     {outside.length>0&&<div className="is-p2-graph-input-error" role="alert">
       {outside.length} point{outside.length===1?" is":"s are"} outside the current axis bounds and {outside.length===1?"is":"are"} not visible: {outside.slice(0,6).map(displayCoord).join("; ")}. Adjust the minimum or maximum to include {outside.length===1?"this point":"these points"}.
     </div>}
