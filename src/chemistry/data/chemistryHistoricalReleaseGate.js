@@ -77,6 +77,10 @@ export function auditChemistryHistoricalQuestion(record){
   const figureStatus=String(record?.diagramStatus||"").trim();
   if(!/^(verified|not-applicable)$/i.test(figureStatus))
     missing.push("unresolved-figure-verification");
+  // Merely saying "verified" cannot override individual unapproved source SVGs.
+  if(Array.isArray(record?.sourceFigures)&&record.sourceFigures.some(figure=>
+    figure?.sourceApproved!==true||!String(figure?.svg||"").trim()
+  )) missing.push("unapproved-source-figures");
   // A missing issue log is not evidence that source ambiguities were reviewed.
   if(!Array.isArray(record?.sourceIssues)||record.sourceIssues.length)
     missing.push("unresolved-source-issues");
