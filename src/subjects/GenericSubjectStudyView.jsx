@@ -11,6 +11,10 @@ import TransportProcessExplorer from "./components/TransportProcessExplorer";
 import EnglishALessonExamples from "../englishA/components/EnglishALessonExamples";
 import IntegratedScienceText from "../integratedScience/components/IntegratedScienceText";
 import ChemistryInteractiveLab from "../chemistry/components/ChemistryInteractiveLab";
+import FoodEnergyNutritionExplorer from "./components/FoodEnergyNutritionExplorer";
+import FoodPreservationExplorer from "./components/FoodPreservationExplorer";
+import FoodContaminationExplorer from "./components/FoodContaminationExplorer";
+import FoodMicroorganismExplorer from "./components/FoodMicroorganismExplorer";
 import {
   readSparkHashRoute,
   subscribeSparkRoute,
@@ -222,6 +226,13 @@ export function GenericLessonContent({
                 sectionId:topic.sectionId,
               })}
             />
+          : subjectId === "food-nutrition-and-health"
+          ? <div className="spark-fnh-interactive-model" key={model.id || model.type}>
+              {model.type === "fnh-nutrition" ? <FoodEnergyNutritionExplorer /> :
+               model.type === "fnh-preservation" ? <FoodPreservationExplorer /> :
+               model.type === "fnh-contamination" ? <FoodContaminationExplorer /> :
+               model.type === "fnh-microorganisms" ? <FoodMicroorganismExplorer /> : null}
+            </div>
           : model?.type === "membrane-transport"
           ? <TransportProcessExplorer key={model.id || "membrane-transport"} />
           : null
