@@ -75,10 +75,19 @@ export default function ChemistryPaper1Exam({onBack,supabase,userId}){
   return <main className="is-practice-shell chem-practice-shell"><div className="is-practice-home-shell">
     <div className="is-practice-top-actions"><button type="button" className="is-back-button" onClick={onBack}>← Back to Chemistry practice</button></div>
     <header className="is-practice-hero"><div><span>CSEC CHEMISTRY PAPER 01</span><h1>Multiple-choice practice</h1><p>Four choices per item, 75 minutes for a complete practice paper. Original source questions and marking should be reviewed before high-stakes use.</p></div></header>
-    <label>Choose paper <select aria-label="Choose Chemistry Paper 1 set" value={source} onChange={e=>setSource(e.target.value)}>
-      {[1,2,3,4].map(n=><option key={n} value={`practice-0${n}`}>Practice set {n}</option>)}
-      {SOURCES.map(id=><option key={id} value={id}>{id.replace("-"," ")}{id==="2010-MJ"?" — 55 items only":""}</option>)}
-    </select></label>
+    <section className="chem-p1-picker-card" aria-label="Choose your Chemistry Paper 1">
+      <div className="chem-p1-picker-copy"><strong>Choose a paper</strong><p>Work through a full practice set or revise questions from a particular year.</p></div>
+      <div className="chem-p1-picker-controls">
+        <div className="chem-p1-mode-tabs" role="group" aria-label="Paper type">
+          <button type="button" className={isPractice?"active":""} aria-pressed={isPractice} onClick={()=>setSource("practice-01")}>Practice sets</button>
+          <button type="button" className={!isPractice?"active":""} aria-pressed={!isPractice} onClick={()=>setSource("2009-MJ")}>Past papers</button>
+        </div>
+        <label htmlFor="chem-p1-source">Paper</label>
+        <select id="chem-p1-source" aria-label="Choose Chemistry Paper 1 set" value={source} onChange={e=>setSource(e.target.value)}>
+          {isPractice?[1,2,3,4].map(n=><option key={n} value={`practice-0${n}`}>Practice set {n} · 60 questions</option>):SOURCES.map(id=><option key={id} value={id}>{id.replace("-"," ")}{id==="2010-MJ"?" · 55 questions only":""}</option>)}
+        </select>
+      </div>
+    </section>
     {loading?<p>Loading Chemistry questions…</p>:null}
     {error?<div className="chem-p1-load-error" role="alert"><strong>Paper 1 bank unavailable</strong><p>{error}</p><button type="button" onClick={()=>setSource(current=>current==="practice-01"?"practice-02":"practice-01")}>Try another set</button></div>:null}
     {paper?<section className="chem-p1-exam">
