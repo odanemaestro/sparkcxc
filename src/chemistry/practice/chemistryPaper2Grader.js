@@ -2,7 +2,7 @@ import { readScienceGraph, graphPoints } from "../../integratedScience/practice/
 // Chemistry Paper 02 deterministic practice grader.
 // Authored mark schemes remain the source of truth. Free-response scores are estimates.
 
-export const CHEMISTRY_P2_GRADER_VERSION="1.1.2";
+export const CHEMISTRY_P2_GRADER_VERSION="1.1.3";
 
 const STOP=new Set("a an and are as at be because been by for from has have in into is it of on or that the their then this to was were when which with".split(" "));
 const SYN={
@@ -184,12 +184,16 @@ function graphResult(base,item,responses){
   // wrongly accepts substantially misplaced points on small-rate graphs.
   const xTolerance=Math.max(1e-7,xRange*0.015);
   const yTolerance=Math.max(1e-7,yRange*0.015);
+  // Each student-plotted point can satisfy only one expected observation.
+  // Otherwise a single mark near repeated/close targets inflates graph credit.
+  const unused=new Set(plotted.map((_,index)=>index));
   let matched=0;
   expected.forEach(target=>{
-    if(plotted.some(point =>
-      Math.abs(Number(point.x)-Number(target.x))<=xTolerance &&
-      Math.abs(Number(point.y)-Number(target.y))<=yTolerance
-    )) matched+=1;
+    const index=[...unused].find(i=>
+      Math.abs(Number(plotted[i].x)-Number(target.x))<=xTolerance &&
+      Math.abs(Number(plotted[i].y)-Number(target.y))<=yTolerance
+    );
+    if(index!==undefined){unused.delete(index);matched+=1;}
   });
 
   const max=Number(item.marks||0);
