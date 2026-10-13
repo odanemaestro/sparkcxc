@@ -32,6 +32,7 @@ export default function ScienceGraphEditor({base,responses,onChange,disabled}){
   // Map pointer positions through the actual SVG viewBox, including the empty
   // margins caused by preserveAspectRatio on narrow phones and tablets.
   const localPosition=event=>{
+    if(!Number.isFinite(event.clientX)||!Number.isFinite(event.clientY))return null;
     const svg=event.currentTarget;
     const box=svg.getBoundingClientRect();
     if(!box.width||!box.height)return null;
