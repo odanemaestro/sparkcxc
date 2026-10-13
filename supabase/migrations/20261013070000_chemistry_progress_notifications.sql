@@ -235,7 +235,7 @@ begin
 
   return new;
 end;
-$;
+$$;
 
 revoke all on function public.spark_chemistry_subject_activity_notifications()
 from public, anon, authenticated;
