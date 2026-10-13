@@ -39,7 +39,7 @@ export function auditChemistryHistoricalQuestion(record){
     const entry=approvals[check];
     if(!approved(entry))return;
     const date=String(entry.reviewedAt);
-    const match=/^(\\d{4})-(\\d{2})-(\\d{2})$/.exec(date);
+    const match=/^(\d{4})-(\d{2})-(\d{2})$/.exec(date);
     const calendarDate=match&&new Date(`${date}T00:00:00.000Z`);
     if(!match||!Number.isFinite(calendarDate.getTime())||calendarDate.toISOString().slice(0,10)!==date)
       missing.push(`qa-date:${check}`);
