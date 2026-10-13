@@ -6,6 +6,7 @@ export const CHEMISTRY_2007_MJ_Q5_DRAFT=Object.freeze({
  title:"Amphoteric zinc oxide, acid anhydrides, acid rain and exhaust scrubbing",
  kind:"structured",learnerFacing:false,status:"draft-needs-second-source-review",answerSchemeSource:"SPARK-authored provisional",
  diagramStatus:"not-applicable",
+ sourceVerificationNote:"First-pass comparison against source PDF pp11–12; corrected part (b) to test ZnO itself, not unrelated SO₂ or CO₂. Mark schemes provisional until examiner review.",
  sourceIssues:[
   "Sulfur dioxide dissolves in water to yield an acidic equilibrium often described as H₂SO₃; molecular free H₂SO₃ is not an isolable abundant solution species. SO₂+H₂O⇌H₂SO₃ is accepted as a school-level simplified equation.",
   "Powdered calcium carbonate or calcium hydroxide efficiently captures acidic SO₂ but NO is not an acidic gas and is not effectively removed by simple dry alkali scrubbing without oxidation; differentiate nitrogen oxides."
@@ -20,8 +21,8 @@ export const CHEMISTRY_2007_MJ_Q5_DRAFT=Object.freeze({
     "An acid anhydride can be considered the oxide remaining when an acid has lost water.")
   ]},
   {label:"(b)",items:[
-   item("","Describe tests distinguishing amphoteric ZnO from an acid anhydride.",5,
-    ["Add ZnO to dilute HCl: it reacts/dissolves to give ZnCl₂ solution and water.","ZnO+2HCl→ZnCl₂+H₂O.","With hot strong NaOH it also dissolves to give zincate complex, e.g. ZnO+2OH⁻+H₂O→[Zn(OH)₄]²⁻.","Test an acidic oxide such as SO₂ or CO₂ in water: dissolved gas gives an acidic solution turning blue litmus red.","ZnO does not itself generate the corresponding acid simply upon mixing with water; both acid and alkali reactivity indicate amphoteric character."],
+   item("","Describe appropriate chemical tests and expected results to determine whether zinc oxide is amphoteric or whether zinc oxide is an acid anhydride.",5,
+    ["Treat separate samples of ZnO with dilute acid and hot concentrated alkali, observing reaction/dissolution with both.","Acid reaction: ZnO(s)+2HCl(aq)→ZnCl₂(aq)+H₂O(l).","Alkali reaction: ZnO(s)+2OH⁻(aq)+H₂O(l)→[Zn(OH)₄]²⁻(aq) (zincate complex).","For the acid-anhydride claim, add ZnO to water and test the mixture/filtrate with a suitable acid-base indicator.","ZnO is practically insoluble in water and does not produce an acidic solution: the result does NOT establish that ZnO is an acid anhydride."],
     "An amphoteric oxide reacts with both acids and bases. Acidic oxides react with water to form acidic solutions.")
   ]},
   {label:"(c)",items:[
