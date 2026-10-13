@@ -1245,6 +1245,23 @@ describe("CSEC Chemistry course V1",()=>{
     expect(b.prompt).toContain("zinc oxide");
   });
 
+  test("2005–2008 original five- and seven-question formats retain first-pass source evidence",()=>{
+    const expected={
+      "CHEM-P2-2005-MJ":[30,15,16,14,15],
+      "CHEM-P2-2006-MJ":[30,16,15,14,15],
+      "CHEM-P2-2007-MJ":[30,15,15,15,15],
+      "CHEM-P2-2008-MJ":[25,15,15,15,15,15,15],
+    };
+    Object.entries(expected).forEach(([sourceId,marks])=>{
+      const rows=CHEMISTRY_HISTORICAL_DRAFT_ITEMS
+        .filter(q=>q.sourceId===sourceId)
+        .sort((a,b)=>a.originalQuestionNumber-b.originalQuestionNumber);
+      expect(rows.map(q=>q.totalMarks)).toEqual(marks);
+      expect(rows.every(q=>/first-pass/i.test(q.sourceVerificationNote||""))).toBe(true);
+      expect(rows.every(q=>q.learnerFacing===false && q.status==="draft-needs-second-source-review")).toBe(true);
+    });
+  });
+
   test("2006 Figure 4 reaction arrow correctly grades ethanol dehydration, never ethene hydration",()=>{
     const q=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.find(row=>row.id==="CHEM-P2-2006-MJ-Q3");
     const item=q.parts.find(p=>p.label==="(b)").items[0];
