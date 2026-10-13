@@ -688,7 +688,6 @@ export default function GenericSubjectStudyView({
           </div>
 
           <div className="spark-generic-study-hero-actions">
-            {subjectId === "chemistry" && <a className="spark-generic-chemistry-flashcards-link" href="#/dashboard/flashcards/chemistry">Review Chemistry flashcards →</a>}
             {onBack && (
               <button type="button" onClick={onBack}>Back</button>
             )}
