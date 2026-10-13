@@ -139,6 +139,13 @@ export function mergeSubjectCatalog(baseSubjects = [], catalogRows = []) {
           ? row.learningConfig
           : {};
 
+    // Chemistry's shipped course provides flashcards even if the live catalog
+    // was populated by an older migration with flashcards:false.
+    if (rowId === "chemistry" && base?.capabilities?.flashcards === true) {
+      rowCapabilities.flashcards = true;
+      rowRoutes.flashcards = base.routes?.flashcards || "/dashboard/flashcards/chemistry";
+    }
+
     const catalog = normalizeCatalogSubject({
       ...(base || {}),
       ...(row || {}),
