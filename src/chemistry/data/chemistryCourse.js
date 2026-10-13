@@ -28,6 +28,12 @@ const topic = ({
         objective:CHEMISTRY_OBJECTIVE_TEXT[row.code] || row.code,
       })),
       introduction:intro,
+      // Use the syllabus objectives as real question-and-answer cards, with
+      // the teaching explanation already reviewed alongside the lesson.
+      flashcards:chemistryObjectiveGuideFor(objectives).map(row=>({
+        front:CHEMISTRY_OBJECTIVE_TEXT[row.code] || `Explain ${row.code}.`,
+        back:row.explanation,
+      })),
       sections,
       keyPoints,
       summary,
