@@ -43,31 +43,31 @@
 .chem-practice-shell .chem-p1-actions button{border-color:var(--chem-outline);background:var(--chem-surface);color:var(--chem-ink);font-weight:750}
 .chem-practice-shell .chem-p1-actions button:last-child{background:#0c746b;border-color:#0c746b;color:#fff}
 .chem-practice-shell .chem-p1-actions button:focus-visible,.chem-practice-shell button:focus-visible,.chem-practice-shell input:focus-visible,.chem-practice-shell select:focus-visible{outline:3px solid #23a8a1;outline-offset:3px}
-.chem-practice-shell .chem-p2-question{border-radius:18px;overflow:visible}
-.chem-practice-shell .chem-p2-item{padding:18px;border:1px solid var(--chem-outline);border-radius:15px;background:var(--chem-surface);margin:12px 0}
-.chem-practice-shell .chem-p2-item-prompt{color:var(--chem-ink);font-weight:650;line-height:1.6}
-.chem-practice-shell .chem-p2-item-prompt em{font-size:12px;font-weight:650;font-style:normal;color:var(--chem-muted);opacity:1}
-.chem-practice-shell .chem-p2-item textarea{min-height:100px;width:100%;resize:vertical;line-height:1.55;padding:13px 15px;border-radius:12px;border:1px solid var(--chem-outline);background:var(--chem-surface);color:var(--chem-ink)}
-.chem-practice-shell .chem-p2-submit-row{align-items:center;margin:20px 0 35px}
-.chem-practice-shell .is-exam-bottom-nav{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.chem-practice-shell .is-exam-bottom-nav>span{font-size:14px;color:var(--chem-muted)}
+.chem-p2-root .chem-p2-question{border-radius:18px;overflow:visible}
+.chem-p2-root .chem-p2-item{padding:18px;border:1px solid var(--chem-outline);border-radius:15px;background:var(--chem-surface);margin:12px 0}
+.chem-p2-root .chem-p2-item-prompt{color:var(--chem-ink);font-weight:650;line-height:1.6}
+.chem-p2-root .chem-p2-item-prompt em{font-size:12px;font-weight:650;font-style:normal;color:var(--chem-muted);opacity:1}
+.chem-p2-root .chem-p2-item textarea{min-height:100px;width:100%;resize:vertical;line-height:1.55;padding:13px 15px;border-radius:12px;border:1px solid var(--chem-outline);background:var(--chem-surface);color:var(--chem-ink)}
+.chem-p2-root .chem-p2-submit-row{align-items:center;margin:20px 0 35px}
+.chem-p2-root .is-exam-bottom-nav{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.chem-p2-root .is-exam-bottom-nav>span{font-size:14px;color:var(--chem-muted)}
 /* Shared science graph editor in Chemistry Paper 02: theme and spacing parity. */
-.chem-practice-shell .is-p2-graph-workspace{padding:clamp(16px,2.5vw,26px);border:1px solid var(--chem-outline);border-radius:16px;background:var(--chem-surface);color:var(--chem-ink)}
-.chem-practice-shell .is-p2-graph-workspace>p{color:var(--chem-muted);line-height:1.6}
-.chem-practice-shell .is-p2-graph-fields{gap:14px}
-.chem-practice-shell .is-p2-graph-workspace fieldset{min-width:0;margin:15px 0;padding:16px;border:1px solid var(--chem-outline);border-radius:13px;background:var(--chem-surface)}
-.chem-practice-shell .is-p2-graph-workspace legend{padding:0 8px;font-size:15px;font-weight:800;color:var(--chem-ink)}
-.chem-practice-shell .is-p2-graph-workspace label{min-width:0;color:var(--chem-ink);font-size:13px;font-weight:650}
-.chem-practice-shell .is-p2-graph-workspace input,.chem-practice-shell .is-p2-graph-workspace select,.chem-practice-shell .is-p2-graph-workspace textarea{width:100%;max-width:100%;box-sizing:border-box;border:1px solid var(--chem-outline);border-radius:10px;min-height:43px;padding:10px 12px;background:var(--chem-surface);color:var(--chem-ink);font:inherit}
-.chem-practice-shell .is-p2-graph-workspace textarea{min-height:105px;resize:vertical}
-.chem-practice-shell .is-p2-graph-workspace button{min-height:40px;border:1px solid #0e8175;border-radius:10px;background:#0e8175;color:#fff;padding:9px 15px;font-weight:750;cursor:pointer}
-.chem-practice-shell .is-p2-graph-workspace button:disabled{opacity:.5;cursor:not-allowed}
-.chem-practice-shell .is-p2-graph-response{max-width:100%;height:auto;border-radius:12px}
+.chem-p2-root .is-p2-graph-workspace{padding:clamp(16px,2.5vw,26px);border:1px solid var(--chem-outline);border-radius:16px;background:var(--chem-surface);color:var(--chem-ink)}
+.chem-p2-root .is-p2-graph-workspace>p{color:var(--chem-muted);line-height:1.6}
+.chem-p2-root .is-p2-graph-fields{gap:14px}
+.chem-p2-root .is-p2-graph-workspace fieldset{min-width:0;margin:15px 0;padding:16px;border:1px solid var(--chem-outline);border-radius:13px;background:var(--chem-surface)}
+.chem-p2-root .is-p2-graph-workspace legend{padding:0 8px;font-size:15px;font-weight:800;color:var(--chem-ink)}
+.chem-p2-root .is-p2-graph-workspace label{min-width:0;color:var(--chem-ink);font-size:13px;font-weight:650}
+.chem-p2-root .is-p2-graph-workspace input,.chem-p2-root .is-p2-graph-workspace select,.chem-p2-root .is-p2-graph-workspace textarea{width:100%;max-width:100%;box-sizing:border-box;border:1px solid var(--chem-outline);border-radius:10px;min-height:43px;padding:10px 12px;background:var(--chem-surface);color:var(--chem-ink);font:inherit}
+.chem-p2-root .is-p2-graph-workspace textarea{min-height:105px;resize:vertical}
+.chem-p2-root .is-p2-graph-workspace button{min-height:40px;border:1px solid #0e8175;border-radius:10px;background:#0e8175;color:#fff;padding:9px 15px;font-weight:750;cursor:pointer}
+.chem-p2-root .is-p2-graph-workspace button:disabled{opacity:.5;cursor:not-allowed}
+.chem-p2-root .is-p2-graph-response{max-width:100%;height:auto;border-radius:12px}
 html[data-theme="dark"] .chem-practice-shell{--chem-ink:#e8f1ff;--chem-muted:#b8c7dc;--chem-surface:#142238;--chem-outline:#344963}
 html[data-theme="dark"] .chem-practice-shell .chem-archive-tags span,html[data-theme="dark"] .chem-practice-shell .chem-archive-status b{background:#103d3a;color:#9de9de;border-color:#236f67}
 html[data-theme="dark"] .chem-practice-shell .chem-p1-choice:has(input:checked){background:#103d3a;color:#e8f1ff}
 @media(max-width:900px){.chem-practice-shell .chem-archive-card{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.chem-practice-shell .chem-archive-status{grid-column:1/-1;justify-items:start;text-align:left}.chem-practice-shell .chem-archive-status small{max-width:none}}
-@media(max-width:600px){.chem-practice-shell .chem-archive-card,.chem-practice-shell .chem-archive-filters{grid-template-columns:minmax(0,1fr)}.chem-practice-shell .chem-p2-item{padding:12px}.chem-practice-shell .is-p2-graph-workspace fieldset{padding:12px}.chem-practice-shell .chem-archive-status{grid-column:auto}}
+@media(max-width:600px){.chem-practice-shell .chem-archive-card,.chem-practice-shell .chem-archive-filters{grid-template-columns:minmax(0,1fr)}.chem-p2-root .chem-p2-item{padding:12px}.chem-p2-root .is-p2-graph-workspace fieldset{padding:12px}.chem-practice-shell .chem-archive-status{grid-column:auto}}
 
 
 /* Archive header and paper identity */
@@ -92,3 +92,31 @@ html[data-theme="dark"] .chem-p1-load-error{background:#382a16;color:#ffe0a4;bor
 html[data-theme="dark"] .chem-p1-load-error button{background:#43301b;color:#ffe0a4;border-color:#967442}
 @media(max-width:750px){.chem-practice-shell .chem-archive-hero{grid-template-columns:1fr;gap:18px}.chem-archive-stat-grid{grid-template-columns:repeat(3,minmax(0,1fr));border-left:0;border-top:1px solid var(--chem-outline);padding:16px 0 0}}
 @media(max-width:470px){.chem-archive-stat-grid{grid-template-columns:1fr 1fr}.chem-archive-year-badge{width:57px;min-height:59px}.chem-practice-shell .chem-archive-paper-summary{gap:11px}}
+
+/* Paper 02 uses its own exam root, not the Chemistry hub shell. */
+.chem-p2-root{
+  --chem-ink:var(--is-ink,#14294b);--chem-muted:var(--is-muted,#5b6d85);
+  --chem-surface:var(--is-card,#fff);--chem-outline:var(--is-border,#d7e2ee);
+}
+.chem-p2-root .chem-p2-question{background:var(--chem-surface);color:var(--chem-ink)}
+.chem-p2-root .chem-p2-item{background:var(--chem-surface);color:var(--chem-ink)}
+.chem-p2-root .chem-p2-item-prompt em{color:var(--chem-muted);opacity:1}
+.chem-p2-root .chem-p2-item textarea::placeholder{color:var(--chem-muted);opacity:1}
+.chem-p2-root .is-p2-graph-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:end}
+.chem-p2-root .is-p2-graph-workspace fieldset .is-p2-graph-fields{grid-template-columns:repeat(3,minmax(0,1fr))}
+.chem-p2-root .is-p2-graph-workspace>fieldset>label{display:grid;gap:6px}
+.chem-p2-root .is-p2-graph-workspace>fieldset>button{margin-top:12px}
+.chem-p2-root .is-p2-graph-toolbar{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.chem-p2-root .is-p2-graph-response{border:1px solid var(--chem-outline);background:var(--chem-surface);width:100%}
+.chem-p2-root .chem-p2-exam-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:18px 0 30px}
+.chem-p2-root .chem-p2-exam-footer .is-exam-bottom-nav{margin:0}
+.chem-p2-root .chem-p2-exam-footer .chem-p2-submit-row{margin:0}
+.chem-p2-root .chem-p2-exam-footer .is-exam-bottom-nav .is-exam-secondary:last-child{background:#17356b;color:#fff;border-color:#17356b}
+html[data-theme="dark"] .chem-p2-root .chem-p2-exam-footer .is-exam-bottom-nav .is-exam-secondary:last-child{background:#446bb1;border-color:#446bb1;color:#fff}
+@media(max-width:700px){
+  .chem-p2-root .is-p2-graph-fields,
+  .chem-p2-root .is-p2-graph-workspace fieldset .is-p2-graph-fields{grid-template-columns:1fr}
+  .chem-p2-root .chem-p2-exam-footer{align-items:stretch;flex-direction:column}
+  .chem-p2-root .chem-p2-exam-footer .chem-p2-submit-row{width:100%}
+  .chem-p2-root .chem-p2-exam-footer .chem-p2-submit-row button{flex:1}
+}
