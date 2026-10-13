@@ -4,7 +4,7 @@ import ChemistryPaper1Exam from "./ChemistryPaper1Exam";
 
 describe("CSEC Chemistry Paper 1 exam runner",()=>{
   beforeEach(()=>{
-    global.fetch=jest.fn().mockResolvedValue({ok:true,json:async()=>({
+    global.fetch=jest.fn().mockResolvedValue({ok:true,headers:{get:()=> "application/json"},json:async()=>({
       questions:[{id:"TEST-01",n:1,stem:"Which ion has a charge of +2?",
         options:{A:"Na⁺",B:"Mg²⁺",C:"Cl⁻",D:"O²⁻"},
         answer:"B",explanation:"Magnesium loses two electrons."}]
