@@ -111,8 +111,13 @@ export default function ScienceGraphEditor({base,responses,onChange,disabled}){
     if(!next)return;
     setSelected(next);
     if(disabled||next.existing)return;
-    const old=series[chosen].parsed.filter(Boolean).filter(p=>graph.kind!=="bar"||p.x!==next.point.x);
-    updateSeries(chosen,{points:[...old,{x:next.point.x,y:next.point.y}].map(p=>`${p.x},${p.y}`).join("\n")});
+    // Preserve text the student has typed, including malformed lines that
+    // still need correction, when adding a point by clicking the grid.
+    const typedLines=series[chosen].points.split(/\n|;/).filter(line=>line.trim());
+    const retained=graph.kind==="bar"
+      ?typedLines.filter(line=>graphPoints(line,"bar")[0]?.x!==next.point.x)
+      :typedLines;
+    updateSeries(chosen,{points:[...retained,`${next.point.x},${next.point.y}`].join("\n")});
   };
   const focusPoint=(point,index)=>{setHover(null);setSelected({point:{...point,seriesIndex:index},existing:true});};
   const displayed=hover||selected;
@@ -134,10 +139,6 @@ export default function ScienceGraphEditor({base,responses,onChange,disabled}){
       {graph.kind==="bar" && <label>Categories, one per line<textarea disabled={disabled} value={(graph.categories || []).join("\n")} onChange={e=>update({categories:e.target.value.split("\n").map(s=>s.trim()).filter(Boolean).slice(0,50)})}/></label>}
     </div>
     {(graph.kind==="bar"?["y"]:["x","y"]).map(axis=><fieldset key={axis} disabled={disabled}><legend>{axis}-axis scale</legend><div className="is-p2-graph-fields">{["min","max","step"].map(field=><label key={field}>{field==="step"?"Units per interval":field==="min"?"Minimum":"Maximum"}<input aria-label={`${axis} ${field}`} type="number" step="any" value={graph[axis][field]} onChange={e=>update({[axis]:{...graph[axis],[field]:e.target.value}})}/></label>)}</div></fieldset>)}
-    {series.map((s,index)=><fieldset disabled={disabled} key={index}><legend>Series {index+1}</legend><label>Key / series name<input aria-label={`Series ${index+1} name`} value={s.name} onChange={e=>updateSeries(index,{name:e.target.value})}/></label><label>{graph.kind==="bar"?"Category, height — one per line":"x, y — one point per line"}<textarea aria-label={`Series ${index+1} points`} rows={4} value={s.points} onChange={e=>updateSeries(index,{points:e.target.value})} placeholder={graph.kind==="bar"?"Category, 2":"1, 2"}/></label>
-      {s.issues.map(issue=><p key={issue.line} className="is-p2-graph-input-error" role="alert">{issue.message} You entered: <code>{issue.text}</code></p>)}
-      {s.points.split(/\n|;/).filter(line=>line.trim()).length>101&&<p role="alert">Only the first 101 points per series are included.</p>}{series.length>1 && <button type="button" onClick={()=>update({series:graph.series.filter((_,i)=>i!==index)})}>Remove series</button>}</fieldset>)}
-    {!disabled && series.length<3 && <button type="button" onClick={()=>update({series:[...graph.series,{name:"",points:""}]})}>Add series</button>}
     {(!x || !y)&&<p className="is-p2-graph-input-error" role="alert">Enter a minimum smaller than the maximum on each axis before plotting. The graph will appear when the bounds are valid.</p>}
     {hasPlotArea&&!xInfo.valid&&<div className="is-p2-graph-scale-warning" role="status">
       <span>The x-axis interval is invalid. The graph is using a preview interval of {xInfo.suggestedStep}. This preview does not count as your selected scale.</span>
@@ -150,6 +151,10 @@ export default function ScienceGraphEditor({base,responses,onChange,disabled}){
     {outside.length>0&&<div className="is-p2-graph-input-error" role="alert">
       {outside.length} point{outside.length===1?" is":"s are"} outside the current axis bounds and {outside.length===1?"is":"are"} not visible: {outside.slice(0,6).map(displayCoord).join("; ")}. Adjust the minimum or maximum to include {outside.length===1?"this point":"these points"}.
     </div>}
+    {series.map((s,index)=><fieldset disabled={disabled} key={index}><legend>Series {index+1}</legend><label>Key / series name<input aria-label={`Series ${index+1} name`} value={s.name} onChange={e=>updateSeries(index,{name:e.target.value})}/></label><label>{graph.kind==="bar"?"Category, height — one per line":"x, y — one point per line"}<textarea aria-label={`Series ${index+1} points`} rows={4} value={s.points} onChange={e=>updateSeries(index,{points:e.target.value})} placeholder={graph.kind==="bar"?"Category, 2":"1, 2"}/></label>
+      {s.issues.map(issue=><p key={issue.line} className="is-p2-graph-input-error" role="alert">{issue.message} You entered: <code>{issue.text}</code></p>)}
+      {s.points.split(/\n|;/).filter(line=>line.trim()).length>101&&<p role="alert">Only the first 101 points per series are included.</p>}{series.length>1 && <button type="button" onClick={()=>update({series:graph.series.filter((_,i)=>i!==index)})}>Remove series</button>}</fieldset>)}
+    {!disabled && series.length<3 && <button type="button" onClick={()=>update({series:[...graph.series,{name:"",points:""}]})}>Add series</button>}
     <div className="is-p2-graph-toolbar"><button type="button" disabled={disabled||!series[chosen].parsed.some(Boolean)} onClick={removeLastPoint}>Undo point</button><button type="button" disabled={disabled} onClick={()=>update({series:graph.series.map(s=>({...s,points:""}))})}>Clear graph</button></div>
     <div className="is-p2-graph-coordinate-status" role="status">
       <strong>{displayedPoint?`${displayed?.existing?"Plotted point":"Plot at"}: ${displayCoord(displayedPoint)}`:"Coordinates"}</strong>
