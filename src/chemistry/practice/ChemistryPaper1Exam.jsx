@@ -1,4 +1,5 @@
-import React,{useEffect,useMemo,useState} from "react";
+import React,{useEffect,useMemo,useRef,useState} from "react";
+import {recordSubjectActivity} from "../../subjects/subjectProgress";
 import "./chemistryPractice.css";
 
 const SOURCES=["2009-MJ","2010-MJ","2016-MJ","2017-MJ","2018-JAN","2018-MJ","2019-MJ","2020-JAN","2021-MJ","2023-MJ"];
@@ -10,8 +11,9 @@ const getJSON=async path=>{
 };
 const labels=["A","B","C","D"];
 function Minutes({seconds}){return <span role="timer" aria-live="off">{Math.floor(seconds/60)}:{String(seconds%60).padStart(2,"0")}</span>;}
-export default function ChemistryPaper1Exam({onBack}){
+export default function ChemistryPaper1Exam({onBack,supabase,userId}){
   const [source,setSource]=useState("practice-01");
+  const savedAttempt=useRef(null);
   const [paper,setPaper]=useState(null),[error,setError]=useState(""),[loading,setLoading]=useState(false);
   const [answers,setAnswers]=useState({}),[active,setActive]=useState(0),[submitted,setSubmitted]=useState(false),[remaining,setRemaining]=useState(4500);
   const exam=paper?.questions||[];
@@ -19,6 +21,7 @@ export default function ChemistryPaper1Exam({onBack}){
   const isPractice=source.startsWith("practice-");
   useEffect(()=>{
     let cancelled=false;
+    savedAttempt.current=null;
     setLoading(true);setError("");setPaper(null);setAnswers({});setSubmitted(false);setActive(0);setRemaining(4500);
     getJSON(isPractice?`practice-sets/${source}.json`:`papers/${source}.json`)
       .then(result=>{if(!cancelled)setPaper(result);})
@@ -33,6 +36,25 @@ export default function ChemistryPaper1Exam({onBack}){
   },[paper,submitted,exam.length,isPractice,source]);
   useEffect(()=>{if(remaining===0&&paper&&!submitted)setSubmitted(true);},[remaining,paper,submitted]);
   const scores=useMemo(()=>exam.reduce((n,q)=>n+Number(answers[q.id]===q.answer),0),[exam,answers]);
+  // Use the same canonical subject progress and recommendation-outcome pipeline as Paper 02.
+  useEffect(()=>{
+    if(!submitted||!paper||!exam.length||!userId||!supabase?.rpc)return;
+    const attemptKey=`${userId}:${source}:${paper.paper_id||source}`;
+    if(savedAttempt.current===attemptKey)return;
+    savedAttempt.current=attemptKey;
+    const isFullPaper=exam.length===60;
+    recordSubjectActivity({supabase,activity:{
+      subjectId:"chemistry",
+      activityKey:`${isFullPaper?"exam":"practice"}:chemistry-paper1:${source}`,
+      activityType:isFullPaper?"exam":"practice",
+      title:`Chemistry Paper 01 · ${source}`,
+      completed:true,
+      score:scores,maxScore:exam.length,percent:Math.round(100*scores/exam.length),
+      metadata:{source:"chemistry_paper1_v1",paper:"01",paper_id:source,
+        available_questions:exam.length,complete_historical_paper:isFullPaper,
+        provisional_key:true,at:new Date().toISOString()},
+    }}).catch(error=>console.warn("Could not save Chemistry Paper 01 result",error));
+  },[submitted,paper,exam.length,userId,supabase,source,scores]);
   const flagged=exam.filter(q=>q.flags?.length).length;
   const diagrams=paper?.diagrams||{};
   const stimuli=Object.fromEntries((paper?.stimuli||[]).map(s=>[s.id,s]));
