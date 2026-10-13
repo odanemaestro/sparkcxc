@@ -23,9 +23,9 @@ export const CHEMISTRY_2007_MJ_Q3_DRAFT=Object.freeze({
  "MgF₂ contains one Mg²⁺ and two F⁻ ions.",{type:"drawing"})
  ]},
  {label:"(c)",items:[
- item("","Describe the bonding in A's ionic fluoride product.",2,
- ["Positive Mg²⁺ and negative F⁻ ions arranged in a giant ionic lattice.","Strong electrostatic attraction acts between oppositely charged ions."],
- "This giant electrovalent structure differs from separate covalent molecules.")
+ item("","Describe the bonding in elemental A (magnesium metal).",2,
+ ["Mg metal consists of positive metal ions in a lattice surrounded by delocalised electrons.","Electrostatic attraction between positive ions and mobile electrons holds the metal together."],
+ "Element A is magnesium. Metallic bonding differs from the ionic MgF₂ bonding described in part (b).")
  ]},
  {label:"(d)",items:[
  item("(i)","Describe bonding and arrangement in graphite.",2,
