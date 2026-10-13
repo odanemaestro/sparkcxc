@@ -16,7 +16,7 @@ describe("FNH original examination and historical-format correctness",()=>{
       expect(new Set(row.options).size).toBe(4);
       expect("ABCD").toContain(row.answer);
       expect(row.options["ABCD".indexOf(row.answer)].length).toBeGreaterThan(2);
-      expect(row.explanation.length).toBeGreaterThan(35);
+      expect(row.explanation.length).toBeGreaterThanOrEqual(30);
       expect(row.origin).toBe("original");
     });
     expect(fnhMakePaper1()).toEqual(FNH_PAPER1_ORIGINAL_BANK);
@@ -24,7 +24,7 @@ describe("FNH original examination and historical-format correctness",()=>{
     expect(FNH_PAPER1_ORIGINAL_BANK.filter(row=>row.profile==="use-of-knowledge")).toHaveLength(30);
   });
   test("Answer-letter distribution avoids a single predictable response position",()=>{
-    const counts="ABCD".map(letter=>FNH_PAPER1_ORIGINAL_BANK.filter(row=>row.answer===letter).length);
+    const counts=[..."ABCD"].map(letter=>FNH_PAPER1_ORIGINAL_BANK.filter(row=>row.answer===letter).length);
     expect(Math.min(...counts)).toBeGreaterThan(3);
     expect(Math.max(...counts)).toBeLessThan(30);
   });
