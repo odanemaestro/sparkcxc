@@ -129,6 +129,20 @@ describe("Exact graph coordinate feedback in Chemistry and Integrated Science",(
     expect(screen.getByRole("button",{name:/Inspect Experiment A point \\(3, 4\\)/})).toBeInTheDocument();
   });
 
+  test("two line-series can share the same real coordinate without blocking each other",()=>{
+    const initial=initialGraph("2,2","line");
+    initial.series.push({name:"Experiment B",points:""});
+    const notify=jest.fn();
+    render(<Harness initial={initial} notify={notify}/>);
+    fireEvent.change(screen.getByLabelText("Plotting series"),{target:{value:"1"}});
+    const grid=screen.getByRole("img",{name:"Student graph plot"});
+    graphBox(grid);
+    fireEvent.click(grid,{clientX:150,clientY:218});
+    const updated=JSON.parse(notify.mock.calls[notify.mock.calls.length-1][1]);
+    expect(updated.series[0].points).toBe("2,2");
+    expect(updated.series[1].points).toBe("2,2");
+  });
+
   test("Mathematics graph workspace already has snapped pointer coordinates and a crosshair",()=>{
     // The Mathematics response workspace implements these independently.
     const source=require("fs").readFileSync(require("path").join(process.cwd(),"src/practice/Paper2ResponseInput.jsx"),"utf8");
