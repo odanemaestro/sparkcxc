@@ -6,32 +6,33 @@ export const CHEMISTRY_2005_MJ_Q2_DRAFT=Object.freeze({
  title:"Fluorine and aluminium isotopes, electron shells and aluminium fluoride",
  kind:"structured",learnerFacing:false,status:"draft-needs-second-source-review",
  answerSchemeSource:"SPARK-authored provisional",diagramStatus:"Source question 2(a) Bohr shell diagram answer region requires accurately labelled original SVG with 13p,14n and electron shells 2,8,3.",
+ sourceVerificationNote:"Assistant first-pass direct source comparison with scanned 2005 PDF pages 9–10. Original question marks and intended responses reviewed; official examiner approval and source-exact diagram overlays outstanding.",
  sourceIssues:["The original labels A as ¹⁹₉A (fluorine) and B as ²⁷₁₃B (aluminium); A and B are placeholders, not real element symbols. The requested compound is AlF₃.","Question (e) comparing ionic AlF₃ and molecular F₂ must distinguish solid from liquid electrical conduction: solid AlF₃ does not conduct but molten ionic compound may."],
  parts:[
   {label:"(a)",items:[
-   item("","Draw a labelled atomic diagram for element B, written with mass number 27 and atomic number 13.",3,
+   item("","Draw a labelled diagram to illustrate the number of protons, neutrons and electrons present in an atom of B.",3,
     ["Nucleus contains 13 protons.","Nucleus contains 27−13=14 neutrons.","Neutral atom has 13 electrons in shells 2,8,3."],
     "B is aluminium-27. An atom has 13 protons and 13 electrons; its neutron number is 14.",{type:"drawing"})
   ]},
   {label:"(b)",items:[
-   item("","Name the periodic group of A (mass 19, proton 9) and explain.",2,
+   item("","To which group of the periodic table does element A belong? Give a reason for your answer.",2,
     ["Group VII/17, the halogens.","A is fluorine, electron arrangement 2,7 with seven outer-shell electrons."],
     "Fluorine has atomic number 9 and seven valence electrons.")
   ]},
   {label:"(c)",items:[
-   item("","Identify bonding between A and B and explain.",3,
+   item("","What type of chemical bonding will be formed when A combines with B? Give a reason for your answer.",3,
     ["Ionic/electrovalent bonding.","Aluminium atoms lose three electrons to form Al³⁺.","Three fluorine atoms gain one electron each to form three F⁻ ions, held by electrostatic attraction."],
     "An aluminium atom transfers three electrons to three fluorine atoms.")
   ]},
   {label:"(d)",items:[
-   item("(i)","Give the formula when A and B combine.",1,["AlF₃."],"Al³⁺ balances three F⁻ ions."),
-   item("(ii)","Give the formula when atoms of A combine with themselves.",1,["F₂."],"Elemental fluorine occurs as diatomic molecules."),
-   item("(iii)","Calculate mass of AlF₃ formed when 54g of element B reacts completely with fluorine.",2,
+   item("(i)","Write the chemical formula of the compound expected to be formed when atoms of element A combine with those of element B.",1,["AlF₃."],"Al³⁺ balances three F⁻ ions."),
+   item("(ii)","Write the chemical formula of the compound expected to be formed when atoms of element A combine with each other.",1,["F₂."],"Elemental fluorine occurs as diatomic molecules."),
+   item("(iii)","Based on your answer in (d)(i), calculate the mass of compound that will be formed when 54 g of B reacts completely with A.",2,
     ["54g aluminium /27g mol⁻¹=2 mol Al, giving 2mol AlF₃.","M(AlF₃)=27+3(19)=84g mol⁻¹, so mass=2×84=168g."],
     "2Al+3F₂→2AlF₃; one mole aluminium produces one mole aluminium fluoride.")
   ]},
   {label:"(e)",items:[
-   item("","Give three likely property differences between ionic AlF₃ and molecular F₂.",3,
+   item("","State THREE likely differences in the properties of the compound formed in (d)(i) when compared to the compound formed in (d)(ii).",3,
     ["AlF₃ is a crystalline solid at room temperature whereas F₂ is a gas.","AlF₃ has a far higher melting/boiling point than molecular fluorine.","Molten ionic AlF₃ carries electrical current via mobile ions, unlike molecular F₂ (solid ionic AlF₃ itself does not conduct)."],
     "Strong ionic lattice attractions require more energy than weak intermolecular forces in molecular fluorine.")
   ]}
