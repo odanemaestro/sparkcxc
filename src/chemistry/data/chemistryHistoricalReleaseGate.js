@@ -33,6 +33,19 @@ export function auditChemistryHistoricalQuestion(record){
   };
   if(items.some(item=>!allocationValid(item)))
     missing.push("mark-scheme-allocation");
+  // Table grouping must cover each editable cell exactly once when supplied.
+  const invalidGroup=items.some(item=>{
+    if(item.response?.type!=="table"||item.response.table?.markGroups===undefined)return false;
+    const table=item.response.table;
+    const count=(table.rows||[]).flat().filter(cell=>String(cell??"")==="").length;
+    const groups=table.markGroups;
+    const indices=Array.isArray(groups)?groups.flatMap(group=>Array.isArray(group)?group:[]):[];
+    return !Array.isArray(groups)||!groups.length||
+      groups.some(group=>!Array.isArray(group)||!group.length)||
+      indices.length!==count||new Set(indices).size!==count||
+      indices.some(index=>!Number.isInteger(index)||index<0||index>=count);
+  });
+  if(invalidGroup)missing.push("invalid-table-mark-groups");
   const approvals=record?.qaApprovals||{};
   CHECKS.forEach(check=>{if(!approved(approvals[check]))missing.push(`qa:${check}`);});
   // An approval needs a real ISO calendar date, not arbitrary placeholder text.
