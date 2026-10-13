@@ -329,3 +329,8 @@ A table is no longer counted as keyed merely because it exists. Every editable b
 ## Table marking-group verification
 
 Historical table rubrics can group multiple editable cells into one mark, but when `markGroups` is supplied, each editable blank must belong to **exactly one** valid group. The verification inventory records malformed group mappings, and the learner publication gate blocks a question with repeated, omitted or out-of-range group indices. This does not constitute independent verification of the source readings or numerical answer values.
+
+
+## Direct scan-comparison batch: May/June 2008 Paper 02
+
+Assistant first-pass visual review against the user-supplied scanned source pages 2–17 now covers all seven original questions, including Section C Q6 OR Q7. Original prompt language was restored to each question record; source-scanned marks remain 25, 15, 15, 15, 15, 15, 15 (115 available, 100 answered). The electrolysis calculation in Q4 was independently recomputed mathematically within this review: 5A×120s=600C, n(Ba)=600/(2×96500), theoretical mass=0.42591g, about 0.426g. The C₄H₈ structural-isomer and Group I lithium nitrate caveats remain visible. First-pass SVG reconstructions of the periodic-table extract and chlorine-to-bromide apparatus on source page 9 are attached to Q2, clearly marked sourceApproved:false. **This is not an independent second reviewer sign-off.** Fine pH-meter hands on page 3, the original graph grid, exact cell/art geometry, fully displayed organic drawings, and all source-specific experimental rubrics still await individual image-overlay and subject-expert comparison. No question status, human QA approval or learnerFacing flag was changed.
