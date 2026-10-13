@@ -5,17 +5,20 @@ import {CHEMISTRY_HISTORICAL_PAPERS,CHEMISTRY_PAPER2_PRACTICE_SETS,chemistryPape
 import {CHEMISTRY_PAPER2_SOURCE_AUDIT,CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY} from "../data/chemistryPaper2SourceAudit";
 import {CHEMISTRY_HISTORICAL_COVERAGE} from "../data/chemistryHistoricalCoverage";
 import {CHEMISTRY_HISTORICAL_DRAFT_ITEMS} from "../data/chemistryHistoricalPaper2Drafts";
+import {buildChemistryHistoricalExam} from "../data/chemistryHistoricalExam";
+import {CHEMISTRY_HISTORICAL_OPTION_RULES} from "../data/chemistryHistoricalPaperSelection";
 import {TrustedBankSvg,BankTable} from "../../integratedScience/practice/IntegratedScienceQuestionRenderer";
 import "../../integratedScience/practice/integratedSciencePractice.css";
 import "./chemistryPractice.css";
 
-function HistoricalArchive({onBack}){
+function HistoricalArchive({onBack,onStart}){
   const sourceById=useMemo(()=>Object.fromEntries(CHEMISTRY_PAPER2_SOURCE_AUDIT.map(row=>[row.id,row])),[]);
   const coverageById=useMemo(()=>Object.fromEntries(CHEMISTRY_HISTORICAL_COVERAGE.papers.map(row=>[row.sourceId,row])),[]);
   const [query,setQuery]=useState("");
   const [session,setSession]=useState("all");
   const [opened,setOpened]=useState(null);
   const [openQuestion,setOpenQuestion]=useState(null);
+  const [sectionC,setSectionC]=useState({});
   const draftsBySource=useMemo(()=>Object.groupBy?Object.groupBy(CHEMISTRY_HISTORICAL_DRAFT_ITEMS,q=>q.sourceId):CHEMISTRY_HISTORICAL_DRAFT_ITEMS.reduce((map,q)=>{(map[q.sourceId]??=[]).push(q);return map;},{}),[]);
   const rows=useMemo(()=>CHEMISTRY_HISTORICAL_PAPERS.filter(paper=>{
     const matchSession=session==="all"||paper.session===session;
@@ -24,15 +27,25 @@ function HistoricalArchive({onBack}){
   }),[query,session]);
   return <main className="is-practice-shell chem-practice-shell"><div className="is-practice-home-shell">
     <div className="is-practice-top-actions"><button type="button" className="is-back-button" onClick={onBack}><span aria-hidden="true">←</span>Back to practice modes</button></div>
-    <header className="is-practice-hero chem-archive-hero"><div><span>CSEC CHEMISTRY PAPER 02</span><h1>Historical source archive</h1><p>Browse the supplied Paper 02 scans by year, session and topic. The historical question drafts are kept separate from the practice examinations until their source wording, diagrams and marking are checked.</p></div><div className="chem-archive-stat-grid" aria-label="Historical bank coverage"><div><strong>{CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY.suppliedPapers} papers</strong><span>{CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY.suppliedPages} source pages</span></div><div><strong>{CHEMISTRY_HISTORICAL_COVERAGE.totals.draftedQuestions} questions</strong><span>Historical drafts</span></div><div><strong>{CHEMISTRY_HISTORICAL_COVERAGE.totals.approvedQuestions} approved</strong><span>Available for student practice</span></div></div></header>
+    <header className="is-practice-hero chem-archive-hero"><div><span>CSEC CHEMISTRY PAPER 02</span><h1>Historical source archive</h1><p>Choose a historical year and sit its transcribed Paper 02 questions with a timer, answers and a review. Source wording, diagrams and marking are still awaiting independent checks.</p></div><div className="chem-archive-stat-grid" aria-label="Historical bank coverage"><div><strong>{CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY.suppliedPapers} papers</strong><span>{CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY.suppliedPages} source pages</span></div><div><strong>{CHEMISTRY_HISTORICAL_COVERAGE.totals.draftedQuestions} questions</strong><span>Historical drafts</span></div><div><strong>{CHEMISTRY_HISTORICAL_COVERAGE.totals.approvedQuestions} approved</strong><span>Available for student practice</span></div></div></header>
     <section className="chem-archive-filters"><label>Search<input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search by year, topic or keyword"/></label><label>Session<select value={session} onChange={e=>setSession(e.target.value)}><option value="all">All sessions</option><option>January</option><option>May/June</option></select></label></section>
     <section className="chem-archive-list">{rows.map(paper=>{
       const source=sourceById[paper.id];
       const coverage=coverageById[paper.id];
+       const optionRule=CHEMISTRY_HISTORICAL_OPTION_RULES[paper.id];
+       const chosen=sectionC[paper.id]||optionRule?.alternatives?.[0]||null;
+       const attempt=buildChemistryHistoricalExam(paper.id,chosen);
       return <article key={paper.id} className="chem-archive-card">
         <div className="chem-archive-paper-summary"><span className="chem-archive-year-badge"><small>{paper.session==="January"?"JAN":"MJ"}</small><strong>{paper.year}</strong></span><div><h2>{paper.year} Chemistry Paper 02</h2><p>{source?.pages || "?"} source pages · {paper.questionCount} questions · {coverage?.draftedQuestions||0}/{coverage?.expectedQuestions||paper.questionCount} drafted</p></div></div>
         <div className="chem-archive-tags">{paper.topics.map(topic=><span key={topic}>{topic.replaceAll("-"," ")}</span>)}</div>
-        <div className="chem-archive-status"><b>Scan inventoried</b><small>Original marking scheme not supplied. Historical answers remain under review.</small></div>
+        <div className="chem-archive-status"><b>{attempt?.complete?"Transcribed paper":"Partial transcription"}</b><small>SPARK-authored answers awaiting independent review.</small></div>
+         <div className="chem-archive-exam-controls">
+           {optionRule&&<label htmlFor={`chem-section-c-${paper.id}`}>Choose one Section C question
+             <select id={`chem-section-c-${paper.id}`} value={chosen} onChange={e=>setSectionC(previous=>({...previous,[paper.id]:Number(e.target.value)}))}>{optionRule.alternatives.map(n=><option key={n} value={n}>Question {n}</option>)}</select>
+           </label>}
+           <button type="button" className="chem-archive-start" disabled={!attempt} onClick={()=>attempt&&onStart(attempt)}>{attempt?.complete?"Start simulated exam":attempt?"Practice available questions":"No questions available"}</button>
+           {attempt&&<small>{attempt.questions.length} questions · {attempt.totalMarks} marks · 150 minutes · Provisional marking</small>}
+         </div>
         <button type="button" className="chem-archive-open" aria-expanded={opened===paper.id} onClick={()=>setOpened(previous=>previous===paper.id?null:paper.id)}>{opened===paper.id?"Hide details":"View paper details"} <span aria-hidden="true">{opened===paper.id?"−":"→"}</span></button>
         {opened===paper.id&&<div className="chem-archive-detail">
           <h3>{paper.year} {paper.session} · Historical question drafts</h3>
@@ -72,6 +85,7 @@ function HistoricalArchive({onBack}){
 export default function ChemistryPracticeHub({supabase,userId,onBack}){
   const [mode,setMode]=useState("home");
   const [paperIndex,setPaperIndex]=useState(0);
+  const [historicalPaper,setHistoricalPaper]=useState(null);
   const stats=chemistryPaper2BankStats();
   // Every Chemistry subpage opens at the top, including Back to practice.
   useEffect(()=>{
@@ -80,11 +94,12 @@ export default function ChemistryPracticeHub({supabase,userId,onBack}){
 
   if(mode==="paper1")return <ChemistryPaper1Exam supabase={supabase} userId={userId} onBack={()=>setMode("home")}/>;
   if(mode==="paper2")return <ChemistryPaper2Exam supabase={supabase} userId={userId} paperIndex={paperIndex} onBack={()=>setMode("home")}/>;
-  if(mode==="archive")return <HistoricalArchive onBack={()=>setMode("home")}/>;
+  if(mode==="archive")return <HistoricalArchive onBack={()=>setMode("home")} onStart={paper=>{setHistoricalPaper(paper);setMode("historical-exam");}}/>;
+  if(mode==="historical-exam"&&historicalPaper)return <ChemistryPaper2Exam key={historicalPaper.id} supabase={supabase} userId={userId} historicalPaper={historicalPaper} onBack={()=>setMode("archive")}/>;
 
   return <main className="is-practice-shell chem-practice-shell"><div className="is-practice-home-shell">
     <div className="is-practice-top-actions"><button type="button" className="is-back-button" onClick={onBack}><span aria-hidden="true">←</span>Back</button></div>
-    <header className="is-practice-hero"><div><span>CSEC CHEMISTRY PRACTICE</span><h1>Choose a practice mode</h1><p>Work through full current-format Paper 02 simulations or check the list of supplied historical Paper 02 scans. Historical questions are not yet released for student practice.</p></div></header>
+    <header className="is-practice-hero"><div><span>CSEC CHEMISTRY PRACTICE</span><h1>Choose a practice mode</h1><p>Work through current-format practice papers or sit transcribed historical papers in a timed simulation. Historical marking remains provisional until source checks are complete.</p></div></header>
 
     <section className="is-practice-mode-list">
       <button type="button" className="is-practice-section-card" onClick={()=>setMode("paper1")}>
@@ -100,7 +115,7 @@ export default function ChemistryPracticeHub({supabase,userId,onBack}){
 
       <button type="button" className="is-practice-section-card" onClick={()=>setMode("archive")}>
         <span className="is-practice-section-code">PP</span>
-        <span className="is-practice-section-copy"><span>HISTORICAL SOURCE BANK</span><strong>Past Paper 2 archive</strong><small><span>{stats.historicalPapers} supplied papers</span><span className="is-inline-separator">·</span><span>2005-2025</span><span className="is-inline-separator">·</span><span>January and May/June sessions</span></small></span>
+        <span className="is-practice-section-copy"><span>HISTORICAL EXAM SIMULATIONS</span><strong>Past Paper 2 archive</strong><small><span>{stats.historicalPapers} supplied papers</span><span className="is-inline-separator">·</span><span>2005-2025</span><span className="is-inline-separator">·</span><span>January and May/June sessions</span></small></span>
         <span className="is-practice-section-arrow" aria-hidden="true">→</span>
       </button>
     </section>
