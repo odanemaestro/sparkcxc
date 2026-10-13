@@ -90,6 +90,45 @@ describe("Exact graph coordinate feedback in Chemistry and Integrated Science",(
     expect(updated.series[1].points).toMatch(/^Monday,/);
   });
 
+  test("reproduces screenshot: zero y interval does not hide existing plotted points",()=>{
+    const notify=jest.fn();
+    const initial=initialGraph("20,0.08\n40,0.16");
+    initial.x={min:"0",max:"50",step:"5"};
+    initial.y={min:"0",max:"0.2",step:"0"};
+    render(<Harness initial={initial} notify={notify}/>);
+    const grid=screen.getByRole("img",{name:"Student graph plot"});
+    expect(grid.querySelectorAll("circle").length).toBe(2);
+    expect(screen.getByRole("button",{name:/Inspect Experiment A point \\(20, 0\\.08\\)/})).toBeInTheDocument();
+    expect(screen.getByRole("button",{name:"Use y interval 0.02"})).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button",{name:"Use y interval 0.02"}));
+    const graph=JSON.parse(notify.mock.calls[notify.mock.calls.length-1][1]);
+    expect(graph.y.step).toBe("0.02");
+    expect(graph.series[0].points).toBe("20,0.08\n40,0.16");
+    expect(screen.queryByRole("button",{name:"Use y interval 0.02"})).not.toBeInTheDocument();
+  });
+
+  test("shows line-specific errors but preserves and draws other valid coordinates",()=>{
+    const notify=jest.fn();
+    const initial=initialGraph("0,0.02,20\n2,4");
+    render(<Harness initial={initial} notify={notify}/>);
+    expect(screen.getByRole("alert")).toHaveTextContent(/Line 1: enter one x, y pair/);
+    expect(screen.getByRole("alert")).toHaveTextContent(/0,0\\.02,20/);
+    expect(screen.getByRole("button",{name:/Inspect Experiment A point \\(2, 4\\)/})).toBeInTheDocument();
+    const grid=screen.getByRole("img",{name:"Student graph plot"});
+    graphBox(grid);
+    fireEvent.click(grid,{clientX:250,clientY:155});
+    const graph=JSON.parse(notify.mock.calls[notify.mock.calls.length-1][1]);
+    expect(graph.series[0].points).toContain("0,0.02,20");
+    expect(graph.series[0].points).toContain("4,5");
+  });
+
+  test("reports valid points outside the chosen graph bounds instead of hiding them silently",()=>{
+    render(<Harness initial={initialGraph("3,4\n15,6")}/>);
+    expect(screen.getByRole("alert")).toHaveTextContent(/outside the current axis bounds/);
+    expect(screen.getByRole("alert")).toHaveTextContent(/15, 6/);
+    expect(screen.getByRole("button",{name:/Inspect Experiment A point \\(3, 4\\)/})).toBeInTheDocument();
+  });
+
   test("Mathematics graph workspace already has snapped pointer coordinates and a crosshair",()=>{
     // The Mathematics response workspace implements these independently.
     const source=require("fs").readFileSync(require("path").join(process.cwd(),"src/practice/Paper2ResponseInput.jsx"),"utf8");
