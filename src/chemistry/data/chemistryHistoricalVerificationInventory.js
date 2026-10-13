@@ -26,6 +26,17 @@ export function buildChemistryHistoricalVerificationInventory(
     };
     const keyedTables=tables.filter(tableKeyComplete).length;
     const unkeyedTables=tables.length-keyedTables;
+    const invalidTableGroups=tables.filter(item=>{
+      const table=item.response.table||{};
+      if(table.markGroups===undefined)return false;
+      const blanks=(table.rows||[]).flat().filter(cell=>String(cell??"")==="").length;
+      const groups=table.markGroups;
+      const indices=Array.isArray(groups)?groups.flatMap(group=>Array.isArray(group)?group:[]):[];
+      return !Array.isArray(groups)||groups.length===0||
+        groups.some(group=>!Array.isArray(group)||group.length===0)||
+        indices.length!==blanks||new Set(indices).size!==blanks||
+        indices.some(index=>!Number.isInteger(index)||index<0||index>=blanks);
+    }).length;
     const issues=Array.isArray(q.sourceIssues)?q.sourceIssues:[];
     const missingApprovals=CHEMISTRY_HISTORICAL_REVIEW_CHECKS
       .filter(check=>q.qaApprovals?.[check]?.approved!==true);
@@ -34,9 +45,9 @@ export function buildChemistryHistoricalVerificationInventory(
       id:q.id,sourceId:q.sourceId,questionNumber:q.originalQuestionNumber,
       sourcePageMismatch,markMismatch:computedMarks!==q.totalMarks,
       computedMarks,declaredMarks:q.totalMarks,
-      figureItems,keyedTables,unkeyedTables,unresolvedIssues:issues.length,
+      figureItems,keyedTables,unkeyedTables,invalidTableGroups,unresolvedIssues:issues.length,
       missingApprovals,releaseReady:!sourcePageMismatch&&computedMarks===q.totalMarks&&
-        unkeyedTables===0&&publishedChemistryHistoricalQuestions([q]).length===1,
+        unkeyedTables===0&&invalidTableGroups===0&&publishedChemistryHistoricalQuestions([q]).length===1,
       gateBlockers:gate.missing
     };
   });
@@ -46,11 +57,12 @@ export function buildChemistryHistoricalVerificationInventory(
     figureItems:a.figureItems+r.figureItems,
     keyedTables:a.keyedTables+r.keyedTables,
     unkeyedTables:a.unkeyedTables+r.unkeyedTables,
+    invalidTableGroups:a.invalidTableGroups+r.invalidTableGroups,
     unresolvedIssues:a.unresolvedIssues+r.unresolvedIssues,
     approvalChecksOutstanding:a.approvalChecksOutstanding+r.missingApprovals.length,
     releaseReady:a.releaseReady+Number(r.releaseReady)
   }),{questions:0,sourcePageMismatches:0,markMismatches:0,figureItems:0,
-    keyedTables:0,unkeyedTables:0,unresolvedIssues:0,approvalChecksOutstanding:0,releaseReady:0});
+    keyedTables:0,unkeyedTables:0,invalidTableGroups:0,unresolvedIssues:0,approvalChecksOutstanding:0,releaseReady:0});
   return {rows,totals};
 }
 export const CHEMISTRY_HISTORICAL_VERIFICATION_INVENTORY=buildChemistryHistoricalVerificationInventory();
