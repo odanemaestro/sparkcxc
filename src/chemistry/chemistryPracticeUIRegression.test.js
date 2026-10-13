@@ -10,13 +10,14 @@ describe("Chemistry practice archive readability and paper selection",()=>{
     expect(jsx).toContain("Past papers</button>");
     expect(jsx).toContain("55 questions only");
   });
-  test("archive details expand and only link PDFs present in local assets",()=>{
+  test("archive expands transcribed question text and answers without requiring PDF files",()=>{
     const jsx=read("src/chemistry/practice/ChemistryPracticeHub.jsx");
+    expect(jsx).toContain("CHEMISTRY_HISTORICAL_DRAFT_ITEMS");
     expect(jsx).toContain("View paper details");
-    expect(jsx).toContain("chem-archive-detail");
-    expect(jsx).toContain('method:"HEAD"');
-    expect(jsx).toContain("Open original PDF");
-    expect(jsx).toContain("public/chemistry-paper2-scans/");
+    expect(jsx).toContain("chem-archive-question-list");
+    expect(jsx).toContain("Show provisional answers and marking notes");
+    expect(jsx).toContain("Original PDF scans are optional");
+    expect(jsx).not.toContain('method:"HEAD"');
   });
   test("theme and text contrast explicitly override inherited faded styles",()=>{
     const css=read("src/chemistry/practice/chemistryPractice.css");
