@@ -1,5 +1,6 @@
+import {CHEMISTRY_O2_DOT_CROSS_SVG} from "./chemistryHistoricalIonicCovalentModels";
 // Source: scanned CSEC_Chemistry_P2_2024_MJ.pdf PDF pages 7-9 (printed pages 9-11).
-const part=(label,prompt,marks,points,explanation,response={type:"lines",lines:4})=>({label,prompt,marks,response,markScheme:{points,guidance:"SPARK-authored provisional mark scheme, not an official CXC key."},explanation});
+const part=(label,prompt,marks,points,explanation,response={type:"lines",lines:4},extra={})=>({label,prompt,marks,response,markScheme:{points,guidance:"SPARK-authored provisional mark scheme, not an official CXC key."},explanation,...extra});
 export const CHEMISTRY_2024_MJ_Q2_DRAFT=Object.freeze({
  id:"CHEM-P2-2024-MJ-Q2",sourceId:"CHEM-P2-2024-MJ",sourceFile:"CSEC_Chemistry_P2_2024_MJ.pdf",
  pdfPages:[7,8,9],printedPages:[9,10,11],originalQuestionNumber:2,totalMarks:15,
@@ -19,7 +20,7 @@ export const CHEMISTRY_2024_MJ_Q2_DRAFT=Object.freeze({
  part("","Use a dot-and-cross diagram to show the bonding in oxygen gas.",3,
  ["Two oxygen atoms each have six valence electrons.","They share two pairs of electrons to form an O=O double covalent bond.","Each atom retains two non-bonding lone pairs."],
  "Each oxygen atom achieves an octet by sharing two electron pairs with the other oxygen atom.",
- {type:"drawing"})
+ {type:"drawing"},{modelAnswerSvgs:[CHEMISTRY_O2_DOT_CROSS_SVG]})
  ]},
  {label:"(c)",items:[
  part("","List ANY THREE uses of radioactive isotopes.",3,
