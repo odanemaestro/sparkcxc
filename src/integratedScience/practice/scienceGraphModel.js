@@ -48,7 +48,7 @@ export function graphPreviewAxis(axis){
 export function graphPointIssues(text,kind){
   const lines=String(text||"").split(/\n|;/);
   const used=lines.map((line,index)=>({line:line.trim(),number:index+1}))
-    .filter(row=>row.line);
+    .filter(row=>row.line).slice(0,101);
   const parsed=graphPoints(text,kind);
   return used.map((row,index)=>parsed[index]?null:{
     line:row.number,
