@@ -1,11 +1,17 @@
 import "./scienceGraphEditor.css";
 import React, {useId,useState} from "react";
+
+const formatCoord=value=>Number(Number(value).toPrecision(10)).toString();
+const displayCoord=point=>`(${String(point.x)}, ${formatCoord(point.y)})`;
+
 import {newScienceGraph,readScienceGraph,graphPoints,graphAxis,graphPath} from "./scienceGraphModel";
 
 const COLORS=["#168f8a","#cf6a25","#8760c6"];
 export default function ScienceGraphEditor({base,responses,onChange,disabled}){
   const clipId=useId().replace(/:/g,"");
   const [activeSeries,setActiveSeries]=useState(0);
+  const [hover,setHover]=useState(null);
+  const [selected,setSelected]=useState(null);
   const graph=readScienceGraph(responses[`${base}:graph`]) || newScienceGraph();
   const update=patch=>onChange(`${base}:graph`,JSON.stringify({...graph,...patch}));
   const updateSeries=(index,patch)=>update({series:graph.series.map((s,i)=>i===index?{...s,...patch}:s)});
@@ -16,20 +22,73 @@ export default function ScienceGraphEditor({base,responses,onChange,disabled}){
   const sy=v=>260-(v-y.min)/(y.max-y.min)*210;
   const validWidth=Number.isFinite(Number(graph.barWidth)) && Number(graph.barWidth)>0 && Number(graph.barWidth)<1;
   const chosen=Math.min(activeSeries,series.length-1);
-  const addPoint=event=>{
-    if(disabled || !x || !y || !graph.kind) return;
-    const box=event.currentTarget.getBoundingClientRect();
-    const px=(event.clientX-box.left)/Math.max(1,box.width)*600,py=(event.clientY-box.top)/Math.max(1,box.height)*335;
-    if(px<50||px>550||py<50||py>260) return;
-    const snap=(v,step)=>Number((Math.round(v/step)*step).toPrecision(10));
-    const xv=graph.kind==="bar"?categories[Math.min(categories.length-1,Math.floor((px-50)/500*categories.length))]:snap(x.min+(px-50)/500*(x.max-x.min),x.step/5);
-    if(xv===undefined) return;
-    const yv=snap(y.max-(py-50)/210*(y.max-y.min),y.step/5);
-    const old=series[chosen].parsed.filter(Boolean).filter(p=>graph.kind!=="bar"||p.x!==xv);
-    updateSeries(chosen,{points:[...old,{x:xv,y:yv}].map(p=>`${p.x},${p.y}`).join("\n")});
+  // Map pointer positions through the actual SVG viewBox, including the empty
+  // margins caused by preserveAspectRatio on narrow phones and tablets.
+  const localPosition=event=>{
+    const svg=event.currentTarget;
+    const box=svg.getBoundingClientRect();
+    if(!box.width||!box.height)return null;
+    if(typeof svg.createSVGPoint==="function"&&typeof svg.getScreenCTM==="function"){
+      const matrix=svg.getScreenCTM();
+      if(matrix&&typeof matrix.inverse==="function"){
+        const pt=svg.createSVGPoint();
+        pt.x=event.clientX;pt.y=event.clientY;
+        const local=pt.matrixTransform(matrix.inverse());
+        return {x:local.x,y:local.y};
+      }
+    }
+    const scale=Math.min(box.width/600,box.height/335);
+    const left=box.left+(box.width-600*scale)/2;
+    const top=box.top+(box.height-335*scale)/2;
+    return {x:(event.clientX-left)/scale,y:(event.clientY-top)/scale};
   };
+  const plotted=series.flatMap((s,index)=>s.parsed.filter(Boolean)
+    .filter(p=>graph.kind==="bar"?categories.includes(p.x):x&&y&&p.x>=x.min&&p.x<=x.max&&p.y>=y.min&&p.y<=y.max)
+    .map(p=>({...p,seriesIndex:index,name:s.name||`Series ${index+1}`})));
+  const closePoint=local=>{
+    if(!x||!y||!local)return null;
+    if(graph.kind==="bar"){
+      const categoryIndex=Math.min(categories.length-1,Math.max(0,Math.floor((local.x-50)/500*categories.length)));
+      const category=categories[categoryIndex];
+      // Point inspection on a bar uses its actual category and bar height.
+      return plotted.find(p=>p.x===category)||null;
+    }
+    const found=plotted.reduce((nearest,p)=>{
+      const distance=Math.hypot(sx(p.x)-local.x,sy(p.y)-local.y);
+      return distance<nearest.distance?{point:p,distance}:nearest;
+    },{point:null,distance:12});
+    return found.point;
+  };
+  const candidate=local=>{
+    if(!x||!y||!graph.kind||!local||local.x<50||local.x>550||local.y<50||local.y>260)return null;
+    const match=closePoint(local);
+    if(match)return {point:match,existing:true};
+    const snap=(v,step)=>Number((Math.round(v/step)*step).toPrecision(10));
+    const xv=graph.kind==="bar"
+      ?categories[Math.min(categories.length-1,Math.max(0,Math.floor((local.x-50)/500*categories.length)))]
+      :snap(x.min+(local.x-50)/500*(x.max-x.min),x.step/5);
+    if(xv===undefined)return null;
+    const yv=snap(y.max-(local.y-50)/210*(y.max-y.min),y.step/5);
+    return {point:{x:xv,y:yv,seriesIndex:chosen,name:series[chosen]?.name||`Series ${chosen+1}`},existing:false};
+  };
+  const preview=event=>setHover(candidate(localPosition(event)));
+  const addPoint=event=>{
+    const next=candidate(localPosition(event));
+    if(!next)return;
+    setSelected(next);
+    if(disabled||next.existing)return;
+    const old=series[chosen].parsed.filter(Boolean).filter(p=>graph.kind!=="bar"||p.x!==next.point.x);
+    updateSeries(chosen,{points:[...old,{x:next.point.x,y:next.point.y}].map(p=>`${p.x},${p.y}`).join("\n")});
+  };
+  const focusPoint=(point,index)=>setSelected({point:{...point,seriesIndex:index},existing:true});
+  const displayed=hover||selected;
+  const displayedPoint=displayed?.point;
+  const pin=displayedPoint&&x&&y
+    ?{x:graph.kind==="bar"?sx(categories.indexOf(displayedPoint.x)+.5):sx(displayedPoint.x),y:sy(displayedPoint.y)}
+    :null;
+
   return <div className="is-p2-graph-workspace">
-    <p>Choose your graph type and scale, then click or tap the grid to plot. Your choices form part of your answer. Keyboard coordinate entry is also available.</p>
+    <p>Choose a graph type and scale. Move over the grid to preview exact coordinates, then click or tap to plot. Hover over any plotted point to inspect its exact values. Keyboard coordinate entry is also available.</p>
     <div className="is-p2-graph-fields">
       <label>Graph type<select disabled={disabled} value={graph.kind} onChange={e=>update({kind:e.target.value})}><option value="">Choose a type</option><option value="line">Line / scatter</option><option value="bar">Bar chart</option></select></label>
       {["x","y"].map(axis=><label key={axis}>{axis}-axis label<input aria-label={`${axis}-axis label`} disabled={disabled} value={responses[`${base}:${axis}Label`] || ""} onChange={e=>onChange(`${base}:${axis}Label`,e.target.value)}/></label>)}
@@ -43,7 +102,11 @@ export default function ScienceGraphEditor({base,responses,onChange,disabled}){
     {!disabled && series.length<3 && <button type="button" onClick={()=>update({series:[...graph.series,{name:"",points:""}]})}>Add series</button>}
     {(!x || !y) && <p role="status">Enter increasing axis bounds and a positive interval that divides the range into 1–20 equal intervals.</p>}
     <div className="is-p2-graph-toolbar"><button type="button" disabled={disabled||!series[chosen].parsed.length} onClick={()=>updateSeries(chosen,{points:series[chosen].parsed.filter(Boolean).slice(0,-1).map(p=>`${p.x},${p.y}`).join("\n")})}>Undo point</button><button type="button" disabled={disabled} onClick={()=>update({series:graph.series.map(s=>({...s,points:""}))})}>Clear graph</button></div>
-    <svg className="is-p2-graph-response" viewBox="0 0 600 335" role="img" aria-label="Student graph plot" onClick={addPoint}>
+    <div className="is-p2-graph-coordinate-status" role="status">
+      <strong>{displayedPoint?`${displayed?.existing?"Plotted point":"Plot at"}: ${displayCoord(displayedPoint)}`:"Coordinates"}</strong>
+      <span>{displayedPoint?(displayed.existing?"Exact coordinates of the selected point":disabled?"Graph review":"Click or tap to plot this point"):"Move over the graph or select a plotted point to see its exact coordinates."}</span>
+    </div>
+    <svg className="is-p2-graph-response" viewBox="0 0 600 335" role="img" aria-label="Student graph plot" onPointerMove={preview} onPointerLeave={()=>setHover(null)} onClick={addPoint}>
       <defs><clipPath id={clipId}><rect x="50" y="50" width="500" height="210"/></clipPath></defs>
       <rect x="50" y="50" width="500" height="210" fill="none" stroke="currentColor"/>
       {x&&y&&<>
@@ -56,11 +119,30 @@ export default function ScienceGraphEditor({base,responses,onChange,disabled}){
           const sorted=[...points].sort((a,b)=>a.x-b.x).map(p=>({x:sx(p.x),y:sy(p.y)}));
           return <g key={index} stroke={color} fill={color}><path d={graphPath(sorted,graph.connection)} fill="none" strokeWidth="2"/>{sorted.map((p,i)=><circle key={i} cx={p.x} cy={p.y} r="3"/>)}</g>;
         })}</g>
+        {pin&&displayedPoint&&<g pointerEvents="none" className="is-p2-graph-crosshair">
+          <line x1={pin.x} x2={pin.x} y1="50" y2="260" stroke="currentColor" strokeDasharray="4 4" strokeOpacity=".7"/>
+          <line x1="50" x2="550" y1={pin.y} y2={pin.y} stroke="currentColor" strokeDasharray="4 4" strokeOpacity=".7"/>
+          <circle cx={pin.x} cy={pin.y} r="6" stroke="#0a645d" strokeWidth="2" fill="white"/>
+          <g transform={`translate(${Math.min(423,Math.max(53,pin.x+12))},${Math.max(68,Math.min(251,pin.y-11))})`}>
+            <rect x="0" y="-18" width="120" height="25" rx="6" fill="#112c44"/>
+            <text x="60" y="-2" fontSize="12" fontWeight="700" fill="#fff" textAnchor="middle">{displayCoord(displayedPoint)}</text>
+          </g>
+        </g>}
       </>}
       <text x="300" y="302" textAnchor="middle" fontSize="12" fill="currentColor">{responses[`${base}:xLabel`] || ""}</text>
       <text transform="translate(12 160) rotate(-90)" textAnchor="middle" fontSize="11" fill="currentColor">{responses[`${base}:yLabel`] || ""}</text>
       {series.map((s,i)=><text key={i} x={50+i*170} y="324" fontSize="10" fill={COLORS[i]}>{s.name}</text>)}
     </svg>
+    {plotted.length>0&&<div className="is-p2-plotted-point-list" aria-label="Plotted coordinates">
+      <strong>Plotted coordinates</strong>
+      <div>{plotted.map((point,i)=><button key={`${point.seriesIndex}-${i}`} type="button"
+        onPointerEnter={()=>focusPoint(point,point.seriesIndex)}
+        onFocus={()=>focusPoint(point,point.seriesIndex)}
+        onClick={()=>focusPoint(point,point.seriesIndex)}
+        aria-label={`Inspect ${point.name} point ${displayCoord(point)}`}>
+        {point.name}: {displayCoord(point)}
+      </button>)}</div>
+    </div>}
     <label>Optional graph notes<textarea disabled={disabled} value={responses[base] || ""} onChange={e=>onChange(base,e.target.value)}/></label>
   </div>;
 }
