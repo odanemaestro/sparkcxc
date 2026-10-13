@@ -5,24 +5,25 @@ export const CHEMISTRY_2006_MJ_Q4_DRAFT=Object.freeze({
  title:"Partial periodic table, calcium acid reactions and covalent models",kind:"structured",
  learnerFacing:false,status:"draft-needs-second-source-review",
  answerSchemeSource:"SPARK-authored provisional",diagramStatus:"Original Table 3 periodic positions and cube-shaped ion-pair style must be independently replicated as SVG; dot-cross drawing of a valid covalent molecule also pending.",
+ sourceVerificationNote:"Assistant first-pass comparison to scanned source PDF printed pages 10–11. Figure/layout fidelity and official examiner mark schemes remain unapproved.",
  sourceIssues:["The original Table 3 contains Be,C,Al,Si,P,Cl,Ne,Ca,Br; Group 1/Period 4 blank is intended for hypothetical X of atomic number 19, potassium.","Ca reacts readily with dilute HCl, but CaSO₄ formed by dilute H₂SO₄ is sparingly soluble and can form a coating, causing a slower reaction. State acid concentration and coating conditions.","The original Q4 total is 14 marks."],
  parts:[
  {label:"(a)",items:[
- item("(i)","Identify the element from Table 3 reacting most readily with dilute HCl.",1,["Calcium, Ca."],"Ca is the most reactive listed metal toward dilute hydrochloric acid."),
- item("(ii)","Write balanced equation for the reaction.",2,["Ca(s)+2HCl(aq)→CaCl₂(aq)+H₂(g).","Correct formulae and balance."],"Calcium displaces hydrogen to form soluble calcium chloride and hydrogen gas."),
- item("(iii)","Compare reaction with dilute sulfuric acid and explain.",4,
+ item("(i)","Which element reacts most readily with dilute hydrochloric acid?",1,["Calcium, Ca."],"Ca is the most reactive listed metal toward dilute hydrochloric acid."),
+ item("(ii)","Write a balanced equation to illustrate the reaction occurring in (a)(i) above.",2,["Ca(s)+2HCl(aq)→CaCl₂(aq)+H₂(g).","Correct formulae and balance."],"Calcium displaces hydrogen to form soluble calcium chloride and hydrogen gas."),
+ item("(iii)","Describe any difference(s) that may be observed in the reaction indicated in (a)(i) if dilute sulphuric acid were to be used instead of dilute hydrochloric acid. Give a reason for your answer.",4,
  ["Ca initially reacts with H₂SO₄, producing H₂.","Ca(s)+H₂SO₄(aq)→CaSO₄(s)+H₂(g).","Calcium sulfate is sparingly soluble and may coat the metal surface.","The coating can slow or stop contact of fresh metal with the acid compared with soluble CaCl₂ from HCl."],
  "The product CaSO₄ often forms a surface layer that reduces further reaction.")
  ]},
  {label:"(b)",items:[
- item("(i)","Identify two distinct elements from Table 3 that can bond covalently.",1,["Carbon and chlorine, C and Cl (or other appropriate listed nonmetals)."],"Two nonmetals share electron pairs when they form covalent compounds."),
- item("(ii)","Draw a labelled dot-and-cross model for the chosen covalent compound.",3,
+ item("(i)","Identify TWO different elements in Table 3 which will combine by covalent bonding.",1,["Carbon and chlorine, C and Cl (or other appropriate listed nonmetals)."],"Two nonmetals share electron pairs when they form covalent compounds."),
+ item("(ii)","Draw dot-cross diagrams to illustrate the bonding in (b)(i) above.",3,
  ["Draw carbon tetrachloride CCl₄ with central carbon and four chlorine atoms.","Show one shared electron pair in each of four C–Cl single bonds.","Each Cl atom retains three lone pairs; carbon has octet, all valences correct."],
  "CCl₄ is a valid example from the source elements C and Cl.",{type:"drawing"})
  ]},
  {label:"(c)",items:[
- item("(i)","Position hypothetical element X, proton number 19, in Table 3.",1,["Group I (1), Period 4, the empty cell left of Ca."],"Atomic number 19 is potassium."),
- item("(ii)","Explain X's periodic-table position.",2,
+ item("(i)","An element X (not the actual symbol) has an atomic number of 19. Place element X in the correct position in Table 3.",1,["Group I (1), Period 4, the empty cell left of Ca."],"Atomic number 19 is potassium."),
+ item("(ii)","Give a reason for your answer in (c)(i).",2,
  ["Electronic arrangement 2,8,8,1 means one valence electron (Group I).","Four occupied shells give Period 4."],
  "K has atomic number 19 and one outer electron.")
  ]}
