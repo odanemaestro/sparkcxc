@@ -5,7 +5,7 @@ export const CHEMISTRY_2023_MJ_Q2_DRAFT=Object.freeze({
  sourceFile:"CSEC_Chemistry_P2_2023_MJ.pdf",pdfPages:[7,8,9],printedPages:[9,10,11],
  originalQuestionNumber:2,totalMarks:15,kind:"structured",title:"States of matter, ionic and covalent lattices, displacement",
  learnerFacing:false,status:"draft-needs-second-source-review",
- answerSchemeSource:"SPARK authored, not official CXC mark scheme",
+ answerSchemeSource:"SPARK-authored, not official CXC mark scheme",
  diagramStatus:"Two source answer boxes (NaCl and diamond) require separately validated original SVG model drawings; no source answer diagram was provided.",
  sourceIssues:["Part (a)(iii) asks for a single process when carbon dioxide changes between its two phases at ordinary atmospheric pressure; sublimation applies solid to gas, deposition is the reverse. Direction must be clarified.","The premise that metal A displaces Fe²⁺ in water does not identify A; extremely reactive monovalent metals may react with water instead. Treat the printed aqueous-metal premise as a hypothetical redox displacement and seek examiner review."],
  context:"At atmospheric pressure, water occurs as solid, liquid and gas; carbon dioxide usually occurs as solid and gas. Metals A and B form A⁺ and B²⁺ ions respectively. The source says A displaces iron from Fe²⁺ solution and B does not.",
