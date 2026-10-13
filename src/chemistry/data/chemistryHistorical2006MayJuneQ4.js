@@ -1,3 +1,4 @@
+import {CHEMISTRY_2006_MJ_Q4_PERIODIC_TABLE_SVG} from "./chemistryHistorical2006SourceFigures";
 // Original 2006 May/June Chemistry Paper 02 Q4, PDF pages 10–11, total 14 marks.
 const item=(label,prompt,marks,points,explanation,response={type:"lines",lines:Math.max(3,marks+1)})=>({label,prompt,marks,response,markScheme:{points,guidance:"SPARK-authored provisional marking; original examiner scheme unavailable."},explanation});
 export const CHEMISTRY_2006_MJ_Q4_DRAFT=Object.freeze({
@@ -6,6 +7,7 @@ export const CHEMISTRY_2006_MJ_Q4_DRAFT=Object.freeze({
  learnerFacing:false,status:"draft-needs-second-source-review",
  answerSchemeSource:"SPARK-authored provisional",diagramStatus:"Original Table 3 periodic positions and cube-shaped ion-pair style must be independently replicated as SVG; dot-cross drawing of a valid covalent molecule also pending.",
  sourceVerificationNote:"Assistant first-pass comparison to scanned source PDF printed pages 10–11. Figure/layout fidelity and official examiner mark schemes remain unapproved.",
+ sourceFigures:[{page:10,figure:"Table 3",svg:CHEMISTRY_2006_MJ_Q4_PERIODIC_TABLE_SVG,sourceApproved:false}],
  sourceIssues:["The original Table 3 contains Be,C,Al,Si,P,Cl,Ne,Ca,Br; Group 1/Period 4 blank is intended for hypothetical X of atomic number 19, potassium.","Ca reacts readily with dilute HCl, but CaSO₄ formed by dilute H₂SO₄ is sparingly soluble and can form a coating, causing a slower reaction. State acid concentration and coating conditions.","The original Q4 total is 14 marks."],
  parts:[
  {label:"(a)",items:[
