@@ -4,14 +4,15 @@ import ChemistryPaper1Exam from "./ChemistryPaper1Exam";
 import {CHEMISTRY_HISTORICAL_PAPERS,CHEMISTRY_PAPER2_PRACTICE_SETS,chemistryPaper2BankStats} from "../data/chemistryPaper2Bank";
 import {CHEMISTRY_PAPER2_SOURCE_AUDIT,CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY} from "../data/chemistryPaper2SourceAudit";
 import {CHEMISTRY_HISTORICAL_COVERAGE} from "../data/chemistryHistoricalCoverage";
-import "./chemistryPractice.css";
 import "../../integratedScience/practice/integratedSciencePractice.css";
+import "./chemistryPractice.css";
 
 function HistoricalArchive({onBack}){
   const sourceById=useMemo(()=>Object.fromEntries(CHEMISTRY_PAPER2_SOURCE_AUDIT.map(row=>[row.id,row])),[]);
   const coverageById=useMemo(()=>Object.fromEntries(CHEMISTRY_HISTORICAL_COVERAGE.papers.map(row=>[row.sourceId,row])),[]);
   const [query,setQuery]=useState("");
   const [session,setSession]=useState("all");
+  const [opened,setOpened]=useState(null);
   const rows=useMemo(()=>CHEMISTRY_HISTORICAL_PAPERS.filter(paper=>{
     const matchSession=session==="all"||paper.session===session;
     const hay=`${paper.year} ${paper.session} ${paper.topics.join(" ")}`.toLowerCase();
@@ -28,6 +29,8 @@ function HistoricalArchive({onBack}){
         <div className="chem-archive-paper-summary"><span className="chem-archive-year-badge"><small>{paper.session==="January"?"JAN":"MJ"}</small><strong>{paper.year}</strong></span><div><h2>{paper.year} Chemistry Paper 02</h2><p>{source?.pages || "?"} source pages · {paper.questionCount} questions · {coverage?.draftedQuestions||0}/{coverage?.expectedQuestions||paper.questionCount} drafted</p></div></div>
         <div className="chem-archive-tags">{paper.topics.map(topic=><span key={topic}>{topic.replaceAll("-"," ")}</span>)}</div>
         <div className="chem-archive-status"><b>Scan inventoried</b><small>Original marking scheme not supplied. Historical answers remain under review.</small></div>
+        <button type="button" className="chem-archive-open" aria-expanded={opened===paper.id} onClick={()=>setOpened(previous=>previous===paper.id?null:paper.id)}>{opened===paper.id?"Hide details":"View paper details"} <span aria-hidden="true">{opened===paper.id?"−":"→"}</span></button>
+        {opened===paper.id&&<div className="chem-archive-detail"><h3>{paper.year} {paper.session} source details</h3><p><strong>Source file:</strong> {source?.file||"Not recorded"}</p><p><strong>Pages:</strong> {source?.pages||"Not recorded"} · <strong>Questions:</strong> {paper.questionCount} · <strong>Drafted:</strong> {coverage?.draftedQuestions||0}</p><p>The source PDF is catalogued for review but is not hosted in this browser build. No historical exam questions are available for student practice until their answers and diagrams are checked.</p></div>}
       </article>;
     })}</section>
   </div></main>;
