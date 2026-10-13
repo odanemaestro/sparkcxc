@@ -9,7 +9,7 @@ import "../../integratedScience/practice/integratedScienceExam.css";
 
 const DURATION=CHEMISTRY_PAPER2_FORMAT.durationMinutes*60;
 const keyFor=(q,p,i)=>`${q}:${p}:${i}`;
-const storageKey=(userId,index)=>`spark:chemistry:paper2:${userId||"guest"}:${index}`;
+const storageKey=(userId,paperId)=>`spark:chemistry:paper2:${userId||"guest"}:${paperId}`;
 const goTop=()=>window.scrollTo?.({top:0,behavior:"smooth"});
 const timeText=s=>`${String(Math.floor(s/3600)).padStart(2,"0")}:${String(Math.floor((s%3600)/60)).padStart(2,"0")}:${String(s%60).padStart(2,"0")}`;
 
@@ -56,21 +56,44 @@ function ResponseInput({questionId,partIndex,itemIndex,item,responses,onChange,d
   return <textarea disabled={disabled} className={type==="calculation"?"is-p2-calculation-response":"is-p2-lines-response"} rows={Math.max(3,Number(item.response?.lines||4))} value={responses[base]||""} onChange={e=>onChange(base,e.target.value)} aria-label={`${item.label||"Question"} response`}/>;
 }
 
-function MarkScheme({item,evaluation}){
-  return <div className="is-p2-mark-scheme chem-p2-mark-scheme">
-    <strong>SPARK marking review</strong>
-    {evaluation&&<div className="is-p2-auto-score"><b>{evaluation.score}/{evaluation.maxMarks} marks</b><span>{evaluation.confidence==="high"?"High-confidence structured check":"Estimated from the authored Chemistry marking points"}</span>{evaluation.unassessedMarks>0&&<span>{evaluation.unassessedMarks} marks need visual or examiner judgement.</span>}</div>}
-    {evaluation?.criteria?.length>0&&<ul className="is-p2-auto-criteria">{evaluation.criteria.map(row=><li key={row.id}><b>{row.marks}/{row.maxMarks}</b> {row.label}</li>)}</ul>}
-    <h4>Mark scheme</h4>
-    <ul>{(item.markScheme?.points||[]).map((point,index)=><li key={index}>{point}</li>)}</ul>
-    {item.markScheme?.guidance&&<p><b>Guidance:</b> {item.markScheme.guidance}</p>}
-    {item.explanation&&<div className="chem-p2-explanation"><b>Why:</b> {item.explanation}</div>}
-  </div>;
+function ChemistryAnswerReview({item,evaluation,responses,base}){
+  const type=item.response?.type||"lines";
+  const table=item.response?.table;
+  const points=item.markScheme?.points||[];
+  const responseEntries=type==="table"?(table?.rows||[]).flatMap((row,r)=>row.map((cell,c)=>String(cell??"")===""?{key:`${base}:r${r}c${c}`,label:`Row ${r+1}, ${table?.headers?.[c]||`column ${c+1}`}`}:null).filter(Boolean)):[];
+  const written=String(responses[base]||"").trim();
+  let answerIndex=0;
+  const modelRows=type==="table"?(table?.rows||[]).map(row=>row.map(cell=>{
+    if(String(cell??"")!=="")return cell;
+    const value=table?.answers?.[answerIndex++];
+    return Array.isArray(value)?value.join(" / "):value??"Answer needs verification";
+  })):[];
+  return <section className="chem-p2-answer-review" aria-label="Answer review">
+    <div className="chem-p2-review-heading"><strong>Answer review</strong>{evaluation&&<span>Estimated: {evaluation.score}/{evaluation.maxMarks} marks</span>}</div>
+    <div className="chem-p2-review-grid">
+      <div className="chem-p2-review-column">
+        <h4>Your answer</h4>
+        {type==="table"?responseEntries.length?<ul>{responseEntries.map(row=><li key={row.key}><b>{row.label}:</b> {responses[row.key]||"Not answered"}</li>)}</ul>:<p>No editable cells.</p>:
+          <p>{written||((type==="graph"||type==="drawing")?"See your submitted work above.":"Not answered")}</p>}
+      </div>
+      <div className="chem-p2-review-column chem-p2-correct-answer">
+        <h4>Correct answer</h4>
+        {type==="table"&&modelRows.length?<div className="is-bank-table-wrap"><table className="is-bank-table"><thead><tr>{(table.headers||[]).map((head,i)=><th key={i}>{head}</th>)}</tr></thead><tbody>{modelRows.map((row,i)=><tr key={i}>{row.map((value,j)=><td key={j}>{value}</td>)}</tr>)}</tbody></table></div>:null}
+        {type==="graph"&&Array.isArray(item.response?.points)&&item.response.points.length>0?<div className="chem-p2-expected-points"><strong>Expected graph points</strong><ul>{item.response.points.map((point,i)=><li key={i}>({point.x}, {point.y})</li>)}</ul></div>:null}
+        {points.length?<ol>{points.map((point,i)=><li key={i}>{point}</li>)}</ol>:<p>Answer awaiting source verification.</p>}
+      </div>
+    </div>
+    {item.explanation&&<div className="chem-p2-review-explanation"><strong>Explanation</strong><p>{item.explanation}</p></div>}
+    {evaluation?.unassessedMarks>0&&<p className="chem-p2-review-caution">{evaluation.unassessedMarks} mark(s) need teacher or examiner review. They have not been counted as incorrect.</p>}
+    {evaluation?.criteria?.length>0&&<details className="chem-p2-review-criteria"><summary>Mark breakdown</summary><ul>{evaluation.criteria.map(row=><li key={row.id}><b>{row.marks}/{row.maxMarks}</b> {row.label}</li>)}</ul></details>}
+  </section>;
 }
 
 function PaperQuestion({question,responses,onChange,disabled,evaluation}){
   return <article className="chem-p2-question">
     <header><span>{question.kind.replace("-"," ")}</span><h2>{question.title}</h2><b>{question.totalMarks} marks</b></header>
+    {question.context&&<p className="chem-p2-question-context">{question.context}</p>}
+    {(question.sourceFigures||[]).map((figure,i)=>figure?.svg?<figure className="chem-p2-source-figure" key={i}><TrustedBankSvg svg={figure.svg}/>{figure.figure&&<figcaption>{figure.figure}</figcaption>}</figure>:null)}
     {(question.parts||[]).map((part,partIndex)=><section className="chem-p2-part" key={partIndex}>
       <div className="chem-p2-part-label">{part.label}</div>
       <div className="chem-p2-part-body">
@@ -84,7 +107,7 @@ function PaperQuestion({question,responses,onChange,disabled,evaluation}){
             {item.svg&&<TrustedBankSvg svg={item.svg}/>}
             {item.table&&<BankTable table={item.table}/>}
             <ResponseInput questionId={question.id} partIndex={partIndex} itemIndex={itemIndex} item={item} responses={responses} onChange={onChange} disabled={disabled}/>
-            {disabled&&<MarkScheme item={item} evaluation={evalItem}/>}
+            {disabled&&<ChemistryAnswerReview item={item} evaluation={evalItem} responses={responses} base={keyFor(question.id,partIndex,itemIndex)}/>}
           </div>;
         })}
       </div>
@@ -92,24 +115,25 @@ function PaperQuestion({question,responses,onChange,disabled,evaluation}){
   </article>;
 }
 
-export default function ChemistryPaper2Exam({supabase,userId,onBack,paperIndex=0}){
+export default function ChemistryPaper2Exam({supabase,userId,onBack,paperIndex=0,historicalPaper=null}){
   const index=((Number(paperIndex)||0)%CHEMISTRY_PAPER2_PRACTICE_SETS.length+CHEMISTRY_PAPER2_PRACTICE_SETS.length)%CHEMISTRY_PAPER2_PRACTICE_SETS.length;
-  const paper=CHEMISTRY_PAPER2_PRACTICE_SETS[index];
+  const paper=historicalPaper||CHEMISTRY_PAPER2_PRACTICE_SETS[index];
+  const duration=Number(paper.durationMinutes||CHEMISTRY_PAPER2_FORMAT.durationMinutes)*60;
   const initial=useMemo(()=>{
-    try{return JSON.parse(localStorage.getItem(storageKey(userId,index))||"null");}catch{return null;}
-  },[index,userId]);
+    try{const saved=JSON.parse(localStorage.getItem(storageKey(userId,paper.id))||"null");return saved?.paperId===paper.id?saved:null;}catch{return null;}
+  },[paper.id,userId]);
   const [phase,setPhase]=useState(initial?.phase||"instructions");
   const [responses,setResponses]=useState(initial?.responses||{});
   const [current,setCurrent]=useState(initial?.current||0);
   const [endsAt,setEndsAt]=useState(initial?.endsAt||null);
-  const [remaining,setRemaining]=useState(endsAt?Math.max(0,Math.round((endsAt-Date.now())/1000)):DURATION);
+  const [remaining,setRemaining]=useState(endsAt?Math.max(0,Math.round((endsAt-Date.now())/1000)):duration);
   const [confirmSubmit,setConfirmSubmit]=useState(false);
   const result=useMemo(()=>gradeChemistryPaper2(paper,responses),[paper,responses]);
   const submitted=phase==="review";
 
   useEffect(()=>{
-    localStorage.setItem(storageKey(userId,index),JSON.stringify({phase,responses,current,endsAt,paperId:paper.id}));
-  },[phase,responses,current,endsAt,index,paper.id,userId]);
+    localStorage.setItem(storageKey(userId,paper.id),JSON.stringify({phase,responses,current,endsAt,paperId:paper.id}));
+  },[phase,responses,current,endsAt,paper.id,userId]);
 
   const submit=useCallback(async({timedOut=false}={})=>{
     if(phase!=="exam")return;
@@ -118,7 +142,7 @@ export default function ChemistryPaper2Exam({supabase,userId,onBack,paperIndex=0
       await recordSubjectActivity({supabase,activity:{
         subjectId:"chemistry",activityKey:`exam:${paper.id}`,activityType:"exam",title:paper.title,completed:true,
         score:result.score,maxScore:result.maxScore,percent:result.percent,
-        metadata:{source:"chemistry_paper2_v1",paper:"02",paper_id:paper.id,timed_out:Boolean(timedOut),grader_version:CHEMISTRY_P2_GRADER_VERSION,provisional:Boolean(result.provisional),at:new Date().toISOString()},
+        metadata:{source:paper.isHistorical?"chemistry_paper2_historical_draft":"chemistry_paper2_v1",paper:"02",paper_id:paper.id,historical:Boolean(paper.isHistorical),source_id:paper.sourceId||null,complete_historical_paper:Boolean(paper.isHistorical&&paper.complete),source_verified:!paper.isHistorical,timed_out:Boolean(timedOut),grader_version:CHEMISTRY_P2_GRADER_VERSION,provisional:Boolean(result.provisional||paper.isHistorical),at:new Date().toISOString()},
       }});
     }catch(error){console.warn("Could not save Chemistry Paper 02 result",error);}
   },[paper,phase,result,supabase]);
@@ -133,11 +157,11 @@ export default function ChemistryPaper2Exam({supabase,userId,onBack,paperIndex=0
   },[endsAt,phase,submit]);
 
   function begin(){
-    const deadline=Date.now()+DURATION*1000;
-    setEndsAt(deadline);setRemaining(DURATION);setPhase("exam");goTop();
+    const deadline=Date.now()+duration*1000;
+    setEndsAt(deadline);setRemaining(duration);setPhase("exam");goTop();
   }
   function restart(){
-    localStorage.removeItem(storageKey(userId,index));setResponses({});setCurrent(0);setEndsAt(null);setRemaining(DURATION);setPhase("instructions");goTop();
+    localStorage.removeItem(storageKey(userId,paper.id));setResponses({});setCurrent(0);setEndsAt(null);setRemaining(duration);setPhase("instructions");goTop();
   }
   function update(key,value){if(!submitted)setResponses(prev=>({...prev,[key]:value}));}
 
