@@ -40,9 +40,19 @@ describe("CSEC Chemistry Paper 1 exam runner",()=>{
     expect(supabase.rpc.mock.calls.filter(([name])=>name==="spark_record_subject_progress")).toHaveLength(1);
   });
 
+  test("reports an actionable install message when Vite serves HTML instead of JSON",async()=>{
+    global.fetch=jest.fn().mockResolvedValue({
+      ok:true,
+      headers:{get:()=> "text/html"},
+      json:async()=>{throw new Error("Unexpected token <")}
+    });
+    render(<ChemistryPaper1Exam onBack={()=>{}}/>);
+    await waitFor(()=>expect(screen.getByRole("alert")).toHaveTextContent(/import the reviewed question-bank ZIP/i));
+    expect(screen.getByRole("alert")).not.toHaveTextContent(/unexpected token/i);
+  });
   test("reports a missing bank rather than silently inventing questions",async()=>{
     global.fetch=jest.fn().mockResolvedValue({ok:false});
     render(<ChemistryPaper1Exam onBack={()=>{}}/>);
-    await waitFor(()=>expect(screen.getByRole("alert")).toHaveTextContent(/not yet been imported/));
+    await waitFor(()=>expect(screen.getByRole("alert")).toHaveTextContent(/not installed yet/));
   });
 });
