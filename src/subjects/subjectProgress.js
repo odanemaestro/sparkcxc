@@ -1002,6 +1002,23 @@ export function buildGenericSubjectProgressReport({ subject, rows = [], events =
   if (weakestSkills[0]) recommendations.push(`Review ${weakestSkills[0].skill}, then complete another targeted topic test.`);
   if (summary.lessonsCompleted < summary.totalTopics) recommendations.push(`Continue the next incomplete ${subject?.shortName || "subject"} lesson.`);
   if (!summary.checkpoints) recommendations.push("Complete a section checkpoint to establish a broader assessment baseline.");
+  if (subjectId === "chemistry") {
+    // Chemistry currently offers lessons, interactive labs, Paper 1 and Paper 2.
+    // Avoid suggesting a section checkpoint or a targeted topic test that does not exist.
+    recommendations.length=0;
+    if (weakestSkills[0]) recommendations.push(
+      `Review ${weakestSkills[0].skill} in Chemistry study, then practise with Chemistry Paper 1.`
+    );
+    if (summary.lessonsCompleted < summary.totalTopics) recommendations.push(
+      "Continue your next Chemistry lesson and review its flashcards."
+    );
+    if (!summary.practiceAttempts) recommendations.push(
+      "Try a Chemistry Paper 1 practice set to build your assessment baseline."
+    );
+    else recommendations.push(
+      "Use a Chemistry Paper 2 simulation to practise written explanations, calculations and experiments."
+    );
+  }
   if (!recommendations.length) recommendations.push("Keep a balanced mix of lessons, topic practice and section checkpoints.");
   const assessments = periodRows
     .filter(row => ["topic_quiz", "section_checkpoint", "exam", "practice"].includes(row.activity_type) && row.percent != null)
@@ -1031,7 +1048,7 @@ export function buildGenericSubjectProgressReport({ subject, rows = [], events =
     activityLabels: {
       questionsAttempted: "Practice results",
       questionAccuracy: "Practice average",
-      examsCompleted: "Section checkpoints",
+      examsCompleted: subjectId === "chemistry" ? "Paper 1 and Paper 2 assessments" : "Section checkpoints",
       examAverage: "Assessment average",
     },
     summary: {

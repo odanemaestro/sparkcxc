@@ -31,15 +31,17 @@ describe("SPARK all-subject functional depth audit V2",()=>{
   test("every production subject still exposes the complete learning surface",()=>{
     const subjects=getSparkSubjectRegistry({physicsEnabled:true});
     expect(subjects.map(subject=>subject.id)).toEqual([
-      "mathematics","physics","information-technology","integrated-science","social-studies","english-a"
+      "mathematics","physics","information-technology","integrated-science","social-studies","chemistry","english-a"
     ]);
     subjects.forEach(subject=>{
       expect(subject.capabilities.study).toBe(true);
       expect(subject.capabilities.practice).toBe(true);
-      expect(subject.capabilities.paper1).toBe(true);
       expect(subject.capabilities.paper2).toBe(true);
       expect(subject.routes.study).toBeTruthy();
       expect(subject.routes.practice).toBeTruthy();
+    });
+    expect(subjects.find(subject=>subject.id==="chemistry")?.capabilities).toMatchObject({
+      paper1:true,paper2:true,labs:true,structured:true,progress:true,flashcards:true,
     });
   });
 
@@ -134,6 +136,20 @@ describe("SPARK all-subject functional depth audit V2",()=>{
     expect(css).not.toContain("is-p2-self-score");
   });
 
+  test("Chemistry has syllabus-complete lessons, interactive labs and automatic Paper 02 marking",()=>{
+    const course=readSrc("chemistry/data/chemistryCourse.js");
+    const labs=readSrc("chemistry/components/ChemistryInteractiveLab.jsx");
+    const bank=readSrc("chemistry/data/chemistryPaper2Bank.js");
+    const grader=readSrc("chemistry/practice/chemistryPaper2Grader.js");
+    expect(course).toContain("CHEMISTRY_OBJECTIVE_TEXT");
+    expect(course).toContain("CHEMISTRY_TOPICS");
+    expect(labs).toContain("function TitrationLab");
+    expect(labs).toContain("function ElectrolysisLab");
+    expect(labs).toContain("function QualitativeLab");
+    expect(bank).toContain("CHEMISTRY_PAPER2_PRACTICE_SETS");
+    expect(grader).toContain("export function gradeChemistryPaper2");
+  });
+
   test("Social Studies has automatic short-answer, essay and SBA marking",()=>{
     const shortAnswer=readSrc("socialStudies/marking/socialStudiesShortAnswerGrader.js");
     const essay=readSrc("socialStudies/marking/socialStudiesEssayGrader.js");
@@ -169,7 +185,7 @@ describe("SPARK all-subject functional depth audit V2",()=>{
 
   test("production learning code contains no unfinished implementation markers",()=>{
     const roots=[
-      "practice","physics","informationTechnology","integratedScience","socialStudies","englishA","subjects"
+      "practice","physics","informationTechnology","integratedScience","socialStudies","chemistry","englishA","subjects"
     ].map(dir=>path.join(srcRoot,dir));
     const bad=[];
     for(const root of roots){

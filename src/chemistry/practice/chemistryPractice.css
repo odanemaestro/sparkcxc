@@ -1,0 +1,181 @@
+.chem-practice-shell .is-practice-hero{margin-bottom:18px}.chem-practice-paper-picker{margin-top:18px;padding:20px;border:1px solid var(--spark-border,#dce5ee);border-radius:16px;background:var(--spark-paper,#fff);display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:20px}.chem-practice-paper-picker>div:first-child>span{font-size:10px;font-weight:850;letter-spacing:.08em;color:var(--spark-teal-dark,#08766d)}.chem-practice-paper-picker h2{margin:5px 0 6px;color:var(--spark-navy,#102a56)}.chem-practice-paper-picker p{margin:0;color:var(--spark-muted,#66758e);line-height:1.5}.chem-practice-set-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.chem-practice-set-grid button{display:grid;gap:4px;text-align:left;padding:14px;border:1px solid var(--spark-border,#dce5ee);border-radius:12px;background:var(--spark-paper,#fff);color:var(--spark-navy,#102a56);cursor:pointer}.chem-practice-set-grid button:hover{border-color:#0f9a8a;background:#f0fbf8}.chem-practice-set-grid span{font-weight:850}.chem-practice-set-grid small{color:var(--spark-muted,#66758e)}.chem-archive-filters{display:grid;grid-template-columns:1fr 220px;gap:12px;margin:16px 0}.chem-archive-filters label{display:grid;gap:5px;font-size:11px;font-weight:800;color:var(--spark-muted,#66758e)}.chem-archive-filters input,.chem-archive-filters select{min-height:42px;border:1px solid var(--spark-border,#dce5ee);border-radius:10px;padding:8px 10px;background:var(--spark-paper,#fff);color:var(--spark-navy,#102a56);font:inherit}.chem-archive-list{display:grid;gap:10px}.chem-archive-card{display:grid;grid-template-columns:minmax(220px,.65fr) minmax(0,1fr) auto;gap:16px;align-items:center;padding:16px 18px;border:1px solid var(--spark-border,#dce5ee);border-radius:14px;background:var(--spark-paper,#fff)}.chem-archive-card h2{margin:3px 0;font-size:16px;color:var(--spark-navy,#102a56)}.chem-archive-card p,.chem-archive-card>div>span{margin:0;color:var(--spark-muted,#66758e);font-size:11px}.chem-archive-tags{display:flex;flex-wrap:wrap;gap:6px}.chem-archive-tags span{padding:5px 8px;border-radius:999px;background:#eef7f5;color:#08766d;font-size:10px}.chem-archive-status{display:grid;text-align:right}.chem-archive-status b{color:#08766d}.chem-archive-status small{color:var(--spark-muted,#66758e)}.chem-p2-question{border:1px solid var(--spark-border,#dce5ee);border-radius:16px;background:var(--spark-paper,#fff);overflow:hidden}.chem-p2-question>header{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:18px 20px;border-bottom:1px solid var(--spark-border,#dce5ee)}.chem-p2-question>header>span{grid-column:1/-1;text-transform:uppercase;font-size:10px;font-weight:850;letter-spacing:.08em;color:#08766d}.chem-p2-question>header h2{margin:0;color:var(--spark-navy,#102a56)}.chem-p2-question>header b{align-self:center}.chem-p2-part{display:grid;grid-template-columns:42px minmax(0,1fr);padding:20px;border-bottom:1px solid var(--spark-border,#dce5ee)}.chem-p2-part:last-child{border-bottom:0}.chem-p2-part-label{font-weight:850;color:var(--spark-navy,#102a56)}.chem-p2-part-body>p{line-height:1.55}.chem-p2-item{margin-top:18px;padding-top:18px;border-top:1px dashed var(--spark-border,#dce5ee)}.chem-p2-item-prompt{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:8px;line-height:1.55}.chem-p2-item-prompt em{font-style:normal;color:var(--spark-muted,#66758e);font-size:11px}.chem-p2-item textarea{width:100%;box-sizing:border-box;margin-top:10px;border:1px solid var(--spark-border,#dce5ee);border-radius:10px;padding:11px;background:var(--spark-paper,#fff);color:var(--spark-navy,#102a56);font:inherit}.chem-p2-mark-scheme{margin-top:12px}.chem-p2-explanation{margin-top:10px;padding:10px 12px;border-radius:9px;background:#eef7f5;color:#0a5f58}.chem-p2-submit-row{display:flex;justify-content:flex-end;gap:10px;margin:18px 0 30px}.chem-p2-drawing-wrap{margin-top:12px}@media(max-width:800px){.chem-practice-paper-picker{grid-template-columns:1fr}.chem-practice-set-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.chem-archive-card{grid-template-columns:1fr}.chem-archive-status{text-align:left}.chem-archive-filters{grid-template-columns:1fr}.chem-p2-part{grid-template-columns:1fr}.chem-p2-item-prompt{grid-template-columns:auto 1fr}.chem-p2-item-prompt em{grid-column:2}}@media(max-width:520px){.chem-practice-set-grid{grid-template-columns:1fr}}html[data-theme="dark"] .chem-practice-paper-picker,html[data-theme="dark"] .chem-archive-card,html[data-theme="dark"] .chem-p2-question{background:#101d31;border-color:#263850}html[data-theme="dark"] .chem-practice-paper-picker h2,html[data-theme="dark"] .chem-archive-card h2,html[data-theme="dark"] .chem-p2-question>header h2,html[data-theme="dark"] .chem-p2-part-label{color:#f3f7ff}html[data-theme="dark"] .chem-practice-set-grid button,html[data-theme="dark"] .chem-archive-filters input,html[data-theme="dark"] .chem-archive-filters select,html[data-theme="dark"] .chem-p2-item textarea{background:#15243a;border-color:#31445d;color:#f3f7ff}html[data-theme="dark"] .chem-archive-tags span,html[data-theme="dark"] .chem-p2-explanation{background:#12332f;color:#8ee0d6}
+/* Chemistry Paper 1 responsive, theme-adaptive examination */
+.chem-p1-exam{min-width:0;max-width:960px;margin:1.3rem auto;color:var(--text-primary,inherit)}
+.chem-p1-exam-bar{display:flex;gap:1rem;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:1rem 0}
+.chem-p1-question,.chem-p1-review{padding:clamp(1rem,3vw,2rem);border:1px solid var(--border-color,rgba(128,128,128,.3));border-radius:18px;margin:1rem 0;background:var(--card-bg,transparent)}
+.chem-p1-question fieldset{border:0;padding:0;min-width:0}.chem-p1-question legend{font-weight:700;margin-bottom:1rem}
+.chem-p1-choice{display:block;cursor:pointer;border:1px solid var(--border-color,rgba(128,128,128,.3));border-radius:12px;padding:.75rem;margin:.5rem 0;min-width:0;overflow-wrap:anywhere}
+.chem-p1-choice:has(input:checked){outline:2px solid var(--primary-color,#3969a8);outline-offset:1px}
+.chem-p1-choice input{margin-right:.6rem}.chem-p1-diagram{max-width:100%;height:auto;display:block;margin:.6rem auto;background:white;border-radius:8px}
+.chem-p1-actions{display:flex;flex-wrap:wrap;gap:.65rem;margin:1rem 0}.chem-p1-actions button,.chem-p1-nav button{cursor:pointer;padding:.65rem .95rem;border-radius:10px;border:1px solid var(--border-color,rgba(128,128,128,.3));background:var(--surface-color,transparent);color:inherit}
+.chem-p1-actions button:disabled{opacity:.4;cursor:default}.chem-p1-nav{display:grid;grid-template-columns:repeat(auto-fill,minmax(44px,1fr));gap:.4rem;margin:1rem 0}
+.chem-p1-nav button[aria-current="step"]{font-weight:800;outline:2px solid var(--primary-color,#3969a8)}
+@media(max-width:600px){.chem-p1-exam-bar{justify-content:flex-start;gap:.75rem}.chem-p1-actions button{flex:1 1 90px}.chem-p1-question{padding:1rem}.chem-p1-nav{grid-template-columns:repeat(5,minmax(0,1fr))}}
+
+
+/* Chemistry practice polish: keep all colours scoped to this course. */
+.chem-practice-shell{--chem-ink:var(--spark-ink,#122d57);--chem-muted:var(--spark-muted,#526781);--chem-surface:var(--spark-paper,#fff);--chem-outline:var(--spark-border,#d8e3ef);--chem-teal:#087c73;color:var(--chem-ink)}
+.chem-practice-shell .is-practice-home-shell{max-width:1190px;margin-inline:auto}
+.chem-practice-shell .is-practice-hero{background:var(--chem-surface);border:1px solid var(--chem-outline);border-radius:19px;padding:clamp(20px,3vw,32px);margin-bottom:22px}
+.chem-practice-shell .is-practice-hero h1{line-height:1.14;letter-spacing:-.025em;color:var(--chem-ink)}
+.chem-practice-shell .is-practice-hero p{max-width:880px;color:var(--chem-muted);line-height:1.72}
+.chem-archive-filters{gap:16px;margin:20px 0 24px}
+.chem-practice-shell .chem-archive-filters label{font-size:13px;font-weight:750;color:var(--chem-ink);gap:7px}
+.chem-practice-shell .chem-archive-filters input,.chem-practice-shell .chem-archive-filters select{min-height:49px;border-radius:12px;padding:12px 14px;font-size:14px;font-weight:500;color:var(--chem-ink);background:var(--chem-surface)}
+.chem-practice-shell .chem-archive-filters input::placeholder{color:var(--chem-muted);opacity:1}
+.chem-archive-list{gap:12px}
+.chem-practice-shell .chem-archive-card{grid-template-columns:minmax(230px,.95fr) minmax(210px,1fr) minmax(190px,.85fr);gap:16px;min-width:0;padding:20px 22px;border-radius:16px;box-shadow:0 3px 14px rgba(18,45,87,.035)}
+.chem-practice-shell .chem-archive-card>div{min-width:0}
+.chem-practice-shell .chem-archive-card h2{font-size:17px;line-height:1.35;margin:5px 0 7px;color:var(--chem-ink)}
+.chem-practice-shell .chem-archive-card p,.chem-practice-shell .chem-archive-card>div>span{font-size:12px;line-height:1.6;color:var(--chem-muted);opacity:1}
+.chem-practice-shell .chem-archive-tags{align-content:center;gap:7px}
+.chem-practice-shell .chem-archive-tags span{font-size:12px;line-height:1.3;font-weight:650;padding:7px 11px;border-radius:999px;background:#e6f5f2;color:#096a63}
+.chem-practice-shell .chem-archive-status{justify-items:end;gap:7px;text-align:right}
+.chem-practice-shell .chem-archive-status b{color:#076e65;background:#e6f5f2;border:1px solid #b9e3da;padding:7px 11px;border-radius:999px;font-size:12px}
+.chem-practice-shell .chem-archive-status small{font-size:12px;line-height:1.55;color:var(--chem-muted);max-width:240px;opacity:1}
+.chem-practice-shell .chem-p1-exam{max-width:100%;margin:20px 0}
+.chem-practice-shell .chem-p1-question,.chem-practice-shell .chem-p1-review{background:var(--chem-surface);border:1px solid var(--chem-outline);border-radius:18px;box-shadow:0 3px 14px rgba(18,45,87,.035)}
+.chem-practice-shell .chem-p1-question h2{font-size:17px;color:var(--chem-ink)}
+.chem-practice-shell .chem-p1-choice{display:flex;align-items:center;gap:10px;line-height:1.45;padding:13px 15px;background:var(--chem-surface);color:var(--chem-ink);border-color:var(--chem-outline);transition:border-color .15s,background-color .15s}
+.chem-practice-shell .chem-p1-choice:has(input:checked){background:#eaf8f5;border-color:#169487;outline:2px solid #169487}
+.chem-practice-shell .chem-p1-exam-bar{color:var(--chem-ink);border-bottom:1px solid var(--chem-outline)}
+.chem-practice-shell .chem-p1-actions{justify-content:space-between;gap:12px}
+.chem-practice-shell .chem-p1-actions button{border-color:var(--chem-outline);background:var(--chem-surface);color:var(--chem-ink);font-weight:750}
+.chem-practice-shell .chem-p1-actions button:last-child{background:#0c746b;border-color:#0c746b;color:#fff}
+.chem-practice-shell .chem-p1-actions button:focus-visible,.chem-practice-shell button:focus-visible,.chem-practice-shell input:focus-visible,.chem-practice-shell select:focus-visible{outline:3px solid #23a8a1;outline-offset:3px}
+.chem-p2-root .chem-p2-question{border-radius:18px;overflow:visible}
+.chem-p2-root .chem-p2-item{padding:18px;border:1px solid var(--chem-outline);border-radius:15px;background:var(--chem-surface);margin:12px 0}
+.chem-p2-root .chem-p2-item-prompt{color:var(--chem-ink);font-weight:650;line-height:1.6}
+.chem-p2-root .chem-p2-item-prompt em{font-size:12px;font-weight:650;font-style:normal;color:var(--chem-muted);opacity:1}
+.chem-p2-root .chem-p2-item textarea{min-height:100px;width:100%;resize:vertical;line-height:1.55;padding:13px 15px;border-radius:12px;border:1px solid var(--chem-outline);background:var(--chem-surface);color:var(--chem-ink)}
+.chem-p2-root .chem-p2-submit-row{align-items:center;margin:20px 0 35px}
+.chem-p2-root .is-exam-bottom-nav{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.chem-p2-root .is-exam-bottom-nav>span{font-size:14px;color:var(--chem-muted)}
+/* Shared science graph editor in Chemistry Paper 02: theme and spacing parity. */
+.chem-p2-root .is-p2-graph-workspace{padding:clamp(16px,2.5vw,26px);border:1px solid var(--chem-outline);border-radius:16px;background:var(--chem-surface);color:var(--chem-ink)}
+.chem-p2-root .is-p2-graph-workspace>p{color:var(--chem-muted);line-height:1.6}
+.chem-p2-root .is-p2-graph-fields{gap:14px}
+.chem-p2-root .is-p2-graph-workspace fieldset{min-width:0;margin:15px 0;padding:16px;border:1px solid var(--chem-outline);border-radius:13px;background:var(--chem-surface)}
+.chem-p2-root .is-p2-graph-workspace legend{padding:0 8px;font-size:15px;font-weight:800;color:var(--chem-ink)}
+.chem-p2-root .is-p2-graph-workspace label{min-width:0;color:var(--chem-ink);font-size:13px;font-weight:650}
+.chem-p2-root .is-p2-graph-workspace input,.chem-p2-root .is-p2-graph-workspace select,.chem-p2-root .is-p2-graph-workspace textarea{width:100%;max-width:100%;box-sizing:border-box;border:1px solid var(--chem-outline);border-radius:10px;min-height:43px;padding:10px 12px;background:var(--chem-surface);color:var(--chem-ink);font:inherit}
+.chem-p2-root .is-p2-graph-workspace textarea{min-height:105px;resize:vertical}
+.chem-p2-root .is-p2-graph-workspace button{min-height:40px;border:1px solid #0e8175;border-radius:10px;background:#0e8175;color:#fff;padding:9px 15px;font-weight:750;cursor:pointer}
+.chem-p2-root .is-p2-graph-workspace button:disabled{opacity:.5;cursor:not-allowed}
+.chem-p2-root .is-p2-graph-response{max-width:100%;height:auto;border-radius:12px}
+html[data-theme="dark"] .chem-practice-shell{--chem-ink:#e8f1ff;--chem-muted:#b8c7dc;--chem-surface:#142238;--chem-outline:#344963}
+html[data-theme="dark"] .chem-practice-shell .chem-archive-tags span,html[data-theme="dark"] .chem-practice-shell .chem-archive-status b{background:#103d3a;color:#9de9de;border-color:#236f67}
+html[data-theme="dark"] .chem-practice-shell .chem-p1-choice:has(input:checked){background:#103d3a;color:#e8f1ff}
+@media(max-width:900px){.chem-practice-shell .chem-archive-card{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.chem-practice-shell .chem-archive-status{grid-column:1/-1;justify-items:start;text-align:left}.chem-practice-shell .chem-archive-status small{max-width:none}}
+@media(max-width:600px){.chem-practice-shell .chem-archive-card,.chem-practice-shell .chem-archive-filters{grid-template-columns:minmax(0,1fr)}.chem-p2-root .chem-p2-item{padding:12px}.chem-p2-root .is-p2-graph-workspace fieldset{padding:12px}.chem-practice-shell .chem-archive-status{grid-column:auto}}
+
+
+/* Archive header and paper identity */
+.chem-practice-shell .chem-archive-hero{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:26px;align-items:center}
+.chem-archive-stat-grid{display:grid;gap:12px;border-left:1px solid var(--chem-outline);padding-left:24px}
+.chem-archive-stat-grid>div{display:grid;gap:3px}
+.chem-archive-stat-grid strong{font-size:16px;color:var(--chem-ink)}
+.chem-archive-stat-grid span{font-size:12px;line-height:1.4;color:var(--chem-muted)}
+.chem-practice-shell .chem-archive-paper-summary{display:flex;align-items:center;gap:15px;min-width:0}
+.chem-practice-shell .chem-archive-paper-summary h2{margin:0 0 7px}
+.chem-archive-year-badge{display:grid;flex:none;align-content:center;text-align:center;width:65px;min-height:67px;border-radius:13px;background:#eaf3fc;color:#142f59}
+.chem-archive-year-badge small{font-size:11px;font-weight:800;line-height:1.3}
+.chem-archive-year-badge strong{font-size:21px;line-height:1.2}
+.chem-practice-shell .chem-archive-card .chem-archive-year-badge{color:#142f59}
+.chem-p1-load-error{margin:16px 0 22px;padding:18px 20px;border-radius:14px;border:1px solid #e2c9a4;background:#fff9eb;color:#714719;line-height:1.55}
+.chem-p1-load-error strong{font-size:16px}
+.chem-p1-load-error p{margin:8px 0 12px}
+.chem-p1-load-error button{border:1px solid #a77024;border-radius:10px;background:#fff;color:#714719;padding:9px 14px;font-weight:750;cursor:pointer}
+html[data-theme="dark"] .chem-archive-year-badge{background:#243954;color:#e8f1ff}
+html[data-theme="dark"] .chem-practice-shell .chem-archive-card .chem-archive-year-badge{color:#e8f1ff}
+html[data-theme="dark"] .chem-p1-load-error{background:#382a16;color:#ffe0a4;border-color:#785b30}
+html[data-theme="dark"] .chem-p1-load-error button{background:#43301b;color:#ffe0a4;border-color:#967442}
+@media(max-width:750px){.chem-practice-shell .chem-archive-hero{grid-template-columns:1fr;gap:18px}.chem-archive-stat-grid{grid-template-columns:repeat(3,minmax(0,1fr));border-left:0;border-top:1px solid var(--chem-outline);padding:16px 0 0}}
+@media(max-width:470px){.chem-archive-stat-grid{grid-template-columns:1fr 1fr}.chem-archive-year-badge{width:57px;min-height:59px}.chem-practice-shell .chem-archive-paper-summary{gap:11px}}
+
+/* Paper 02 uses its own exam root, not the Chemistry hub shell. */
+.chem-p2-root{
+  --chem-ink:var(--is-ink,#14294b);--chem-muted:var(--is-muted,#5b6d85);
+  --chem-surface:var(--is-card,#fff);--chem-outline:var(--is-border,#d7e2ee);
+}
+.chem-p2-root .chem-p2-question{background:var(--chem-surface);color:var(--chem-ink)}
+.chem-p2-root .chem-p2-item{background:var(--chem-surface);color:var(--chem-ink)}
+.chem-p2-root .chem-p2-item-prompt em{color:var(--chem-muted);opacity:1}
+.chem-p2-root .chem-p2-item textarea::placeholder{color:var(--chem-muted);opacity:1}
+.chem-p2-root .is-p2-graph-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:end}
+.chem-p2-root .is-p2-graph-workspace fieldset .is-p2-graph-fields{grid-template-columns:repeat(3,minmax(0,1fr))}
+.chem-p2-root .is-p2-graph-workspace>fieldset>label{display:grid;gap:6px}
+.chem-p2-root .is-p2-graph-workspace>fieldset>button{margin-top:12px}
+.chem-p2-root .is-p2-graph-toolbar{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.chem-p2-root .is-p2-graph-response{border:1px solid var(--chem-outline);background:var(--chem-surface);width:100%}
+.chem-p2-root .chem-p2-exam-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:18px 0 30px}
+.chem-p2-root .chem-p2-exam-footer .is-exam-bottom-nav{margin:0}
+.chem-p2-root .chem-p2-exam-footer .chem-p2-submit-row{margin:0}
+.chem-p2-root .chem-p2-exam-footer .is-exam-bottom-nav .is-exam-secondary:last-child{background:#17356b;color:#fff;border-color:#17356b}
+html[data-theme="dark"] .chem-p2-root .chem-p2-exam-footer .is-exam-bottom-nav .is-exam-secondary:last-child{background:#446bb1;border-color:#446bb1;color:#fff}
+@media(max-width:700px){
+  .chem-p2-root .is-p2-graph-fields,
+  .chem-p2-root .is-p2-graph-workspace fieldset .is-p2-graph-fields{grid-template-columns:1fr}
+  .chem-p2-root .chem-p2-exam-footer{align-items:stretch;flex-direction:column}
+  .chem-p2-root .chem-p2-exam-footer .chem-p2-submit-row{width:100%}
+  .chem-p2-root .chem-p2-exam-footer .chem-p2-submit-row button{flex:1}
+}
+
+
+/* Contrast repairs: integrated science global hero defaults must not wash out Chemistry. */
+.chem-practice-shell .is-practice-hero p,
+.chem-practice-shell .chem-archive-hero p,
+.chem-practice-shell .chem-archive-card p,
+.chem-practice-shell .chem-archive-status small,
+.chem-practice-shell .chem-archive-filters input::placeholder{
+  color:var(--chem-muted,#526781)!important;opacity:1!important;
+}
+.chem-practice-shell .chem-archive-tags span{color:#075f57!important;opacity:1!important}
+.chem-practice-shell .chem-archive-year-badge small,
+.chem-practice-shell .chem-archive-year-badge strong{color:#142f59!important;opacity:1!important}
+.chem-practice-shell .chem-archive-card{grid-template-columns:minmax(250px,1fr) minmax(200px,1fr) minmax(180px,.85fr)}
+.chem-archive-open{grid-column:1/-1;justify-self:start;display:inline-flex;gap:9px;align-items:center;border:1px solid var(--chem-outline);background:var(--chem-surface);color:var(--chem-ink);border-radius:10px;padding:9px 14px;font-weight:750;cursor:pointer}
+.chem-archive-open:hover{border-color:#0f9085;color:#096b62}
+.chem-archive-detail{grid-column:1/-1;background:var(--chem-surface);border-top:1px solid var(--chem-outline);padding:15px 0 2px;color:var(--chem-ink)}
+.chem-archive-detail h3{margin:0 0 10px;font-size:16px}
+.chem-practice-shell .chem-archive-detail p{color:var(--chem-muted)!important;line-height:1.6;margin:5px 0}
+.chem-p1-picker-card{display:grid;grid-template-columns:minmax(210px,.8fr) minmax(290px,1.2fr);gap:24px;align-items:center;border:1px solid var(--chem-outline);border-radius:17px;background:var(--chem-surface);padding:20px 22px;margin:16px 0 22px}
+.chem-p1-picker-copy strong{color:var(--chem-ink);font-size:18px}
+.chem-practice-shell .chem-p1-picker-copy p{color:var(--chem-muted)!important;line-height:1.55;margin:5px 0 0}
+.chem-p1-picker-controls{display:grid;gap:10px;min-width:0}
+.chem-p1-mode-tabs{display:flex;gap:5px;padding:4px;border:1px solid var(--chem-outline);border-radius:12px;background:var(--chem-surface)}
+.chem-p1-mode-tabs button{flex:1;min-height:39px;min-width:0;border:0;border-radius:9px;background:transparent;color:var(--chem-muted);font:inherit;font-weight:750;cursor:pointer}
+.chem-p1-mode-tabs button.active{background:#e0f5f0;color:#075d55;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.chem-p1-picker-controls>label{color:var(--chem-ink);font-size:13px;font-weight:750}
+.chem-p1-picker-controls>select{width:100%;min-width:0;min-height:47px;border:1px solid var(--chem-outline);border-radius:11px;background:var(--chem-surface);color:var(--chem-ink);font:inherit;padding:10px 12px}
+html[data-theme="dark"] .chem-practice-shell .chem-archive-year-badge small,
+html[data-theme="dark"] .chem-practice-shell .chem-archive-year-badge strong{color:#e8f1ff!important}
+html[data-theme="dark"] .chem-practice-shell .chem-archive-tags span{color:#a8f2e6!important}
+html[data-theme="dark"] .chem-p1-mode-tabs button.active{background:#155148;color:#c4fff0}
+@media(max-width:850px){.chem-practice-shell .chem-archive-card{grid-template-columns:1fr 1fr}.chem-p1-picker-card{grid-template-columns:1fr}.chem-archive-open,.chem-archive-detail{grid-column:1/-1}}
+@media(max-width:550px){.chem-practice-shell .chem-archive-card{grid-template-columns:1fr}.chem-archive-open,.chem-archive-detail{grid-column:1}.chem-p1-picker-card{padding:15px}.chem-p1-mode-tabs button{font-size:13px}}
+
+
+.chem-practice-shell .chem-archive-pdf-link{display:inline-flex;align-items:center;min-height:42px;padding:9px 15px;border-radius:10px;border:1px solid #087c73;background:#087c73;color:#fff!important;text-decoration:none;font-weight:750;margin-top:10px}
+.chem-practice-shell .chem-archive-pdf-link:hover{background:#075d57;border-color:#075d57}
+.chem-practice-shell .chem-archive-detail code{font-size:.85em;overflow-wrap:anywhere}
+
+
+/* Read-only source transcriptions from the existing historical Chemistry bank. */
+.chem-archive-question-list{display:grid;gap:10px;margin:16px 0}
+.chem-archive-question{border:1px solid var(--chem-outline);border-radius:12px;overflow:hidden;background:var(--chem-surface)}
+.chem-archive-question>button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;text-align:left;padding:14px 16px;border:0;background:var(--chem-surface);color:var(--chem-ink);font:inherit;font-weight:750;cursor:pointer}
+.chem-archive-question>button:hover{background:color-mix(in srgb,var(--chem-surface) 90%,#0f8f83)}
+.chem-archive-question>button small{white-space:nowrap;color:var(--chem-muted);font-size:12px}
+.chem-archive-transcript{padding:14px 18px;border-top:1px solid var(--chem-outline);color:var(--chem-ink);line-height:1.65;overflow-wrap:anywhere}
+.chem-archive-transcript h4{font-size:15px;margin:14px 0 8px;color:var(--chem-ink)}
+.chem-archive-answer{padding:12px 0;border-bottom:1px solid var(--chem-outline)}
+.chem-archive-answer:last-child{border-bottom:0}
+.chem-practice-shell .chem-archive-transcript p,.chem-practice-shell .chem-archive-transcript li{color:var(--chem-ink)!important;opacity:1!important}
+.chem-archive-answer p{margin:0 0 7px}
+.chem-archive-answer p span{color:var(--chem-muted)}
+.chem-archive-transcript details{padding:9px 12px;border-radius:9px;background:color-mix(in srgb,var(--chem-surface) 95%,#087c73)}
+.chem-archive-transcript summary{cursor:pointer;color:var(--chem-ink);font-weight:700}
+.chem-archive-transcript ul{padding-left:22px;margin:10px 0}
+.chem-practice-shell .chem-archive-review-notice{padding:10px 12px;border-left:3px solid #0e8175;border-radius:6px;background:color-mix(in srgb,var(--chem-surface) 92%,#0e8175);color:var(--chem-ink)!important}
+@media(max-width:560px){.chem-archive-question>button{align-items:flex-start;flex-direction:column;gap:5px}.chem-archive-transcript{padding:12px}}

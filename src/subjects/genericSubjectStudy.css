@@ -164,3 +164,102 @@ body[data-theme="dark"] .spark-generic-outline-topics button.locked,
 .spark-generic-study .is-science-text{unicode-bidi:plaintext}.spark-generic-study .is-science-formula{white-space:nowrap;font-variant-numeric:lining-nums tabular-nums}.spark-generic-study .is-science-formula sub,.spark-generic-study .is-science-formula sup{font-size:.72em;line-height:0;position:relative;vertical-align:baseline}.spark-generic-study .is-science-formula sub{bottom:-.25em}.spark-generic-study .is-science-formula sup{top:-.48em}
 .spark-integrated-science-reference-diagram,.spark-integrated-science-model{min-width:0;max-width:100%;overflow:hidden;margin-top:22px}
 .spark-integrated-science-reference-diagram img,.spark-integrated-science-model img{max-width:100%;height:auto;object-fit:contain}
+
+
+/* Objective-by-objective syllabus guide ---------------------------------- */
+.spark-generic-objective-guide{
+  margin:22px 0;
+  padding:20px;
+  border:1px solid var(--spark-border-soft,#dbe4ee);
+  border-radius:16px;
+  background:var(--spark-paper,#fff);
+}
+.spark-generic-objective-guide-head>span{
+  display:block;
+  margin-bottom:4px;
+  color:var(--spark-teal-dark,#087f73);
+  font-size:11px;
+  font-weight:850;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+.spark-generic-objective-guide-head h3{
+  margin:0;
+  color:var(--spark-navy,#102a56);
+  font-size:20px;
+}
+.spark-generic-objective-guide-head p{
+  max-width:760px;
+  margin:7px 0 0;
+  color:var(--spark-text-muted,#60728d);
+  font-size:13px;
+  line-height:1.55;
+}
+.spark-generic-objective-guide-list{
+  display:grid;
+  gap:10px;
+  margin-top:16px;
+}
+.spark-generic-objective-guide-item{
+  padding:14px 15px;
+  border:1px solid var(--spark-border-soft,#e4eaf1);
+  border-radius:12px;
+  background:var(--spark-paper-soft,#f8fafc);
+}
+.spark-generic-objective-guide-item>div{
+  display:flex;
+  align-items:flex-start;
+  gap:9px;
+}
+.spark-generic-objective-guide-item strong{
+  flex:0 0 auto;
+  color:var(--spark-teal-dark,#087f73);
+  font-size:12px;
+}
+.spark-generic-objective-guide-item span{
+  color:var(--spark-navy,#102a56);
+  font-size:13px;
+  font-weight:750;
+  line-height:1.45;
+}
+.spark-generic-objective-guide-item p{
+  margin:7px 0 0;
+  color:var(--spark-text,#344866);
+  font-size:13px;
+  line-height:1.6;
+}
+html[data-theme="dark"] .spark-generic-objective-guide{
+  background:#101d31;
+  border-color:#263850;
+}
+html[data-theme="dark"] .spark-generic-objective-guide-item{
+  background:#15243a;
+  border-color:#263850;
+}
+html[data-theme="dark"] .spark-generic-objective-guide-head h3,
+html[data-theme="dark"] .spark-generic-objective-guide-item span{
+  color:#f3f7ff;
+}
+html[data-theme="dark"] .spark-generic-objective-guide-head p,
+html[data-theme="dark"] .spark-generic-objective-guide-item p{
+  color:#a9b8cc;
+}
+html[data-theme="dark"] .spark-generic-objective-guide-head>span,
+html[data-theme="dark"] .spark-generic-objective-guide-item strong{
+  color:#8ee0d6;
+}
+@media(max-width:700px){
+  .spark-generic-objective-guide{padding:15px}
+  .spark-generic-objective-guide-item>div{display:block}
+  .spark-generic-objective-guide-item strong{display:block;margin-bottom:4px}
+}
+
+
+.spark-generic-study-hero-actions .spark-generic-chemistry-flashcards-link{
+  display:inline-flex;align-items:center;justify-content:center;min-height:44px;
+  padding:10px 15px;border-radius:10px;background:var(--spark-teal,#0d9488);
+  color:#fff;text-decoration:none;font:inherit;font-size:13px;font-weight:800;
+  border:1px solid var(--spark-teal,#0d9488);text-align:center;
+}
+.spark-generic-study-hero-actions .spark-generic-chemistry-flashcards-link:hover{filter:brightness(.93)}
+.spark-generic-study-hero-actions .spark-generic-chemistry-flashcards-link:focus-visible{outline:3px solid #36b7ee;outline-offset:3px}

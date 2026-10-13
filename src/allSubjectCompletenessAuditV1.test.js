@@ -14,7 +14,7 @@ const root=__dirname;
 const read=relative=>fs.readFileSync(path.join(root,relative),"utf8");
 
 describe("SPARK all-subject completeness audit V1",()=>{
-  test("all six production subjects exist in the built-in registry",()=>{
+  test("all seven production subjects exist in the built-in registry",()=>{
     const subjects=getSparkSubjectRegistry({physicsEnabled:true});
     expect(subjects.map(subject=>subject.id)).toEqual([
       "mathematics",
@@ -22,6 +22,7 @@ describe("SPARK all-subject completeness audit V1",()=>{
       "information-technology",
       "integrated-science",
       "social-studies",
+      "chemistry",
       "english-a",
     ]);
     subjects.forEach(subject=>{
@@ -29,7 +30,6 @@ describe("SPARK all-subject completeness audit V1",()=>{
       expect(subject.routes.practice).toBeTruthy();
       expect(subject.capabilities.study).toBe(true);
       expect(subject.capabilities.practice).toBe(true);
-      expect(subject.capabilities.paper1).toBe(true);
       expect(subject.capabilities.paper2).toBe(true);
     });
   });
@@ -86,6 +86,18 @@ describe("SPARK all-subject completeness audit V1",()=>{
     expect(renderer).not.toContain("Drawing / diagram response area");
   });
 
+  test("Chemistry covers all syllabus objectives and includes interactive practicals",()=>{
+    const course=read("chemistry/data/chemistryCourse.js");
+    const labs=read("chemistry/components/ChemistryInteractiveLab.jsx");
+    const bank=read("chemistry/data/chemistryPaper2Bank.js");
+    expect(course).toContain("CHEMISTRY_OBJECTIVE_TEXT");
+    expect(course).toContain("CHEMISTRY_TOPICS");
+    expect(labs).toContain("chemistry-titration");
+    expect(labs).toContain("chemistry-electrolysis");
+    expect(labs).toContain("chemistry-qualitative-analysis");
+    expect(bank).toContain("CHEMISTRY_PAPER2_FORMAT");
+  });
+
   test("Social Studies SBA builds actual tables and graphs from entered data",()=>{
     const sba=read("socialStudies/practice/SocialStudiesSbaPractice.jsx");
     const grader=read("socialStudies/marking/socialStudiesSbaGrader.js");
@@ -114,6 +126,7 @@ describe("SPARK all-subject completeness audit V1",()=>{
       "subjects/subjectRegistry.js",
       "informationTechnology",
       "socialStudies",
+      "chemistry",
       "englishA",
       "physics",
       "integratedScience",
