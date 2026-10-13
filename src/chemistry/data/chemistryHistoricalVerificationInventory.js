@@ -16,7 +16,16 @@ export function buildChemistryHistoricalVerificationInventory(
       !Array.isArray(q.pdfPages)||q.pdfPages.length===0||
       q.pdfPages.some(page=>!Number.isInteger(page)||page<1||page>source.pages);
     const figureItems=items.filter(hasFigure).length;
-    const keyedTables=items.filter(i=>i.response?.type==="table").length;
+    const tables=items.filter(i=>i.response?.type==="table");
+    const tableKeyComplete=item=>{
+      const table=item.response.table||{};
+      const blanks=(table.rows||[]).flat().filter(cell=>String(cell??"")==="").length;
+      const answers=table.answers;
+      return blanks>0&&Array.isArray(answers)&&answers.length===blanks&&
+        answers.every(answer=>Array.isArray(answer)?answer.length>0&&answer.every(v=>String(v??"").trim()):String(answer??"").trim());
+    };
+    const keyedTables=tables.filter(tableKeyComplete).length;
+    const unkeyedTables=tables.length-keyedTables;
     const issues=Array.isArray(q.sourceIssues)?q.sourceIssues:[];
     const missingApprovals=CHEMISTRY_HISTORICAL_REVIEW_CHECKS
       .filter(check=>q.qaApprovals?.[check]?.approved!==true);
@@ -25,7 +34,7 @@ export function buildChemistryHistoricalVerificationInventory(
       id:q.id,sourceId:q.sourceId,questionNumber:q.originalQuestionNumber,
       sourcePageMismatch,markMismatch:computedMarks!==q.totalMarks,
       computedMarks,declaredMarks:q.totalMarks,
-      figureItems,keyedTables,unresolvedIssues:issues.length,
+      figureItems,keyedTables,unkeyedTables,unresolvedIssues:issues.length,
       missingApprovals,releaseReady:publishedChemistryHistoricalQuestions([q]).length===1,
       gateBlockers:gate.missing
     };
@@ -35,11 +44,12 @@ export function buildChemistryHistoricalVerificationInventory(
     markMismatches:a.markMismatches+Number(r.markMismatch),
     figureItems:a.figureItems+r.figureItems,
     keyedTables:a.keyedTables+r.keyedTables,
+    unkeyedTables:a.unkeyedTables+r.unkeyedTables,
     unresolvedIssues:a.unresolvedIssues+r.unresolvedIssues,
     approvalChecksOutstanding:a.approvalChecksOutstanding+r.missingApprovals.length,
     releaseReady:a.releaseReady+Number(r.releaseReady)
   }),{questions:0,sourcePageMismatches:0,markMismatches:0,figureItems:0,
-    keyedTables:0,unresolvedIssues:0,approvalChecksOutstanding:0,releaseReady:0});
+    keyedTables:0,unkeyedTables:0,unresolvedIssues:0,approvalChecksOutstanding:0,releaseReady:0});
   return {rows,totals};
 }
 export const CHEMISTRY_HISTORICAL_VERIFICATION_INVENTORY=buildChemistryHistoricalVerificationInventory();
