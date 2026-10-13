@@ -36,6 +36,7 @@ describe("CSEC Chemistry Paper 1 simulated examination",()=>{
     const interval=jest.spyOn(global,"setInterval");
     render(<ChemistryPaper1Exam onBack={()=>{}}/>);
     await screen.findByRole("button",{name:"Start examination"});
+    interval.mockClear();
     expect(interval).not.toHaveBeenCalled();
     fireEvent.click(screen.getByRole("button",{name:"Start examination"}));
     expect(interval).toHaveBeenCalled();
@@ -49,7 +50,7 @@ describe("CSEC Chemistry Paper 1 simulated examination",()=>{
     fireEvent.click(screen.getByLabelText(/B\. Mg²⁺/));
     fireEvent.click(screen.getByText("Submit paper"));
     expect(await screen.findByText(/Practice review: 1\/1/)).toBeInTheDocument();
-    expect(screen.getByText("B. Mg²⁺")).toBeInTheDocument();
+    expect(screen.getAllByText("B. Mg²⁺")).toHaveLength(2);
     expect(screen.getByText("Magnesium loses two electrons.")).toBeInTheDocument();
   });
 
