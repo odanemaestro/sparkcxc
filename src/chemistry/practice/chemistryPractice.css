@@ -372,3 +372,7 @@ body[data-theme="dark"] .chem-p2-root,
   .chem-archive-exam-controls {align-items:stretch;flex-direction:column}
   .chem-archive-start {width:100%}
 }
+
+.chem-p2-root .chem-p2-model-graph {margin:10px 0 14px;max-width:100%;min-width:0}
+.chem-p2-root .chem-p2-model-graph svg {display:block;width:100%;height:auto;max-height:340px;border:1px solid var(--chem-outline,#d8e3ef);border-radius:11px}
+.chem-p2-root .chem-p2-model-graph figcaption {margin:6px 0;font-size:12px;line-height:1.55;color:var(--chem-muted,#526781)}
