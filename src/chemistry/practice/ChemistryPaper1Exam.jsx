@@ -23,7 +23,7 @@ const labels=["A","B","C","D"];
 const EXAM_SECONDS=75*60;
 const paperSessionKey=(userId,source)=>`spark:chemistry:paper1:${userId||"guest"}:${source}`;
 const scrollTop=()=>window.scrollTo?.({top:0,left:0,behavior:"instant"});
-function Minutes({seconds}){return <span role="timer" aria-live="off">{Math.floor(seconds/60)}:{String(seconds%60).padStart(2,"0")}</span>;}
+function Minutes({seconds}){const left=Math.max(0,Number(seconds)||0);return <span role="timer" aria-live="off">{[Math.floor(left/3600),Math.floor((left%3600)/60),left%60].map(n=>String(n).padStart(2,"0")).join(":")}</span>;}
 export default function ChemistryPaper1Exam({onBack,supabase,userId}){
   const [source,setSource]=useState("practice-01");
   const savedAttempt=useRef(null);
@@ -116,7 +116,7 @@ export default function ChemistryPaper1Exam({onBack,supabase,userId}){
       completed:true,
       score:scores,maxScore:exam.length,percent:Math.round(100*scores/exam.length),
       metadata:{source:"chemistry_paper1_v1",paper:"01",paper_id:source,
-        available_questions:exam.length,complete_historical_paper:isFullPaper,
+        available_questions:exam.length,complete_historical_paper:!isPractice&&isFullPaper,
         provisional_key:true,at:new Date().toISOString()},
     }}).catch(error=>console.warn("Could not save Chemistry Paper 01 result",error));
   },[submitted,paper,exam.length,userId,supabase,source,scores]);
