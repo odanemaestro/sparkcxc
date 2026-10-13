@@ -1211,6 +1211,17 @@ describe("CSEC Chemistry course V1",()=>{
     expect(example.totals.figureItems).toBe(1);
   });
 
+  test("May June 2007 Q1 first-pass scan check keeps burette answers provisional",()=>{
+    const q=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.find(row=>row.id==="CHEM-P2-2007-MJ-Q1");
+    expect(q.totalMarks).toBe(30);
+    expect(q.sourceVerificationNote).toMatch(/first-pass direct visual review/);
+    expect(q.learnerFacing).toBe(false);
+    expect(q.sourceIssues.join(" ")).toMatch(/menisci|meniscus/);
+    expect(q.parts[0].items[0].response.table.answers).toEqual([
+      "26.40","27.10","35.80","1.30","2.10","10.60","25.10","25.00","25.20"
+    ]);
+  });
+
   test("May June 2008 first-pass source comparison preserves all seven draft questions",()=>{
     const qs=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.filter(q=>q.sourceId==="CHEM-P2-2008-MJ").sort((a,b)=>a.originalQuestionNumber-b.originalQuestionNumber);
     expect(qs.map(q=>q.originalQuestionNumber)).toEqual([1,2,3,4,5,6,7]);
