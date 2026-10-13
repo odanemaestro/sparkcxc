@@ -116,3 +116,25 @@ html[data-theme="dark"] .fnh-exam,body[data-theme="dark"] .fnh-exam,.dark .fnh-e
 html[data-theme="dark"] .fnh-choice-number,body[data-theme="dark"] .fnh-choice-number,.dark .fnh-choice-number{background:#124c46;color:#b8f6e8}
 @media(max-width:880px){.fnh-library-choices{grid-template-columns:1fr}.fnh-library-archive-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:540px){.fnh-library-choices>button{grid-template-columns:48px minmax(0,1fr) 20px;padding:16px}.fnh-choice-number{width:47px;height:47px}.fnh-library-archive-grid{grid-template-columns:1fr}}
+
+/* FNH supervised practical workbook */
+.fnh-workbook .fnh-sba-guidance h2,.fnh-workbook .fnh-sba-detail h2,.fnh-workbook .fnh-sba-tasks h2{color:var(--fnh-ink);font-size:20px;margin:0 0 15px}
+.fnh-workbook .fnh-sba-guidance p,.fnh-workbook .fnh-sba-detail p{color:var(--fnh-muted);font-size:14px;line-height:1.7}
+.fnh-workbook .fnh-sba-checklist{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.fnh-workbook .fnh-sba-checklist p{margin:0;display:flex;gap:9px;align-items:flex-start}
+.fnh-workbook .fnh-sba-checklist p>span{color:var(--fnh-accent);font-weight:850}
+.fnh-workbook .fnh-sba-layout{display:grid;grid-template-columns:minmax(230px,300px) minmax(0,1fr);gap:16px;align-items:start}
+.fnh-workbook .fnh-sba-tasks{display:grid;gap:7px;max-height:74vh;overflow-y:auto;position:sticky;top:15px}
+.fnh-workbook .fnh-sba-tasks button{display:grid;gap:5px;text-align:left;border-radius:11px;border:1px solid var(--fnh-border);background:var(--fnh-card);color:var(--fnh-ink);padding:12px;font-size:13px}
+.fnh-workbook .fnh-sba-tasks button.active{border-color:var(--fnh-accent);background:color-mix(in srgb,var(--fnh-card) 90%,var(--fnh-accent))}
+.fnh-workbook .fnh-sba-tasks button small{color:var(--fnh-muted);font-size:11px}
+.fnh-workbook .fnh-sba-detail>small{color:var(--fnh-accent);font-size:11px;font-weight:850}
+.fnh-workbook .fnh-sba-evidence{margin:19px 0;padding:15px;border:1px solid var(--fnh-border);border-radius:11px;display:grid;gap:11px}
+.fnh-workbook .fnh-sba-evidence h3{color:var(--fnh-ink);margin:0 0 4px;font-size:16px}
+.fnh-workbook .fnh-sba-evidence label{display:flex;align-items:flex-start;gap:12px;color:var(--fnh-ink);font-size:13px;line-height:1.6}
+.fnh-workbook .fnh-sba-evidence input{width:17px;height:17px;flex-shrink:0;accent-color:var(--fnh-accent)}
+.fnh-workbook .fnh-sba-field{display:grid;gap:8px;margin:14px 0;color:var(--fnh-ink);font-weight:750;font-size:13px}
+.fnh-workbook .fnh-sba-field input,.fnh-workbook .fnh-sba-field textarea{border:1px solid var(--fnh-border);border-radius:10px;background:var(--fnh-card);color:var(--fnh-ink);padding:12px;font:inherit;line-height:1.6;width:100%;box-sizing:border-box;resize:vertical}
+.fnh-workbook input:focus-visible,.fnh-workbook textarea:focus-visible{outline:3px solid var(--fnh-accent);outline-offset:2px}
+@media(max-width:800px){.fnh-workbook .fnh-sba-layout{grid-template-columns:1fr}.fnh-workbook .fnh-sba-tasks{position:static;max-height:240px}}
+@media(max-width:550px){.fnh-workbook .fnh-sba-checklist{grid-template-columns:1fr}}
