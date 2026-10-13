@@ -324,3 +324,8 @@ Historical questions remain learnerFacing:false and unapproved. Publication now 
 ## Verification inventory: answer-key readiness
 
 A table is no longer counted as keyed merely because it exists. Every editable blank must have an explicit nonblank answer (including at least one acceptable variant where alternatives are supplied). The audit reports keyed and unkeyed tables separately, and it will not mark a historical question audit-ready if its source filename/page reference is inconsistent, its marks do not add up, or a response table lacks the required keys. These are automated consistency checks, not completed independent examiner validation. All historical questions remain gated pending source comparison, answer review, diagram fidelity and five distinct reviewer approvals.
+
+
+## Table marking-group verification
+
+Historical table rubrics can group multiple editable cells into one mark, but when `markGroups` is supplied, each editable blank must belong to **exactly one** valid group. The verification inventory records malformed group mappings, and the learner publication gate blocks a question with repeated, omitted or out-of-range group indices. This does not constitute independent verification of the source readings or numerical answer values.
