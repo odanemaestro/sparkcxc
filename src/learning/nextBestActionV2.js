@@ -668,6 +668,20 @@ function chemistryLessonForSkill(skill) {
 function chemistryTarget(skill, actionType) {
   const lesson=chemistryLessonForSkill(skill);
 
+  if(actionType==="flashcards"){
+    return {
+      subjectId:"chemistry",
+      view:"dashboard",
+      path:"/dashboard/flashcards/chemistry",
+      params:{},
+      special:"dashboard-flashcards",
+      kind:"flashcards",
+      label:lesson ? `${lesson.title} flashcards` : "Chemistry flashcards",
+      exact:true,
+      outcomeScope:lesson ? {sectionId:lesson.sectionId,topicId:lesson.id} : {},
+    };
+  }
+
   if(actionType==="assessment"){
     return {
       subjectId:"chemistry",
