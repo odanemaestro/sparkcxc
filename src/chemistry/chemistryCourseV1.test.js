@@ -1152,12 +1152,14 @@ describe("CSEC Chemistry course V1",()=>{
         response:{type:"table",table}}]}]};
     const invalid=buildChemistryHistoricalVerificationInventory([question]);
     expect(invalid.totals.invalidTableGroups).toBe(1);
+    expect(auditChemistryHistoricalQuestion(question).missing).toContain("invalid-table-mark-groups");
     expect(invalid.totals.keyedTables).toBe(1);
     const corrected=buildChemistryHistoricalVerificationInventory([{
       ...question,parts:[{items:[{...question.parts[0].items[0],
         response:{type:"table",table:{...table,markGroups:[[0],[1]]}}}]}]
     }]);
     expect(corrected.totals.invalidTableGroups).toBe(0);
+    expect(auditChemistryHistoricalQuestion({...question,parts:[{items:[{...question.parts[0].items[0],response:{type:"table",table:{...table,markGroups:[[0],[1]]}}}]}]}).missing).not.toContain("invalid-table-mark-groups");
   });
 
   test("verification inventory does not call unkeyed tables verified",()=>{
