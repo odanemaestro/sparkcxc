@@ -159,3 +159,23 @@ html[data-theme="dark"] .chem-p1-mode-tabs button.active{background:#155148;colo
 .chem-practice-shell .chem-archive-pdf-link{display:inline-flex;align-items:center;min-height:42px;padding:9px 15px;border-radius:10px;border:1px solid #087c73;background:#087c73;color:#fff!important;text-decoration:none;font-weight:750;margin-top:10px}
 .chem-practice-shell .chem-archive-pdf-link:hover{background:#075d57;border-color:#075d57}
 .chem-practice-shell .chem-archive-detail code{font-size:.85em;overflow-wrap:anywhere}
+
+
+/* Read-only source transcriptions from the existing historical Chemistry bank. */
+.chem-archive-question-list{display:grid;gap:10px;margin:16px 0}
+.chem-archive-question{border:1px solid var(--chem-outline);border-radius:12px;overflow:hidden;background:var(--chem-surface)}
+.chem-archive-question>button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;text-align:left;padding:14px 16px;border:0;background:var(--chem-surface);color:var(--chem-ink);font:inherit;font-weight:750;cursor:pointer}
+.chem-archive-question>button:hover{background:color-mix(in srgb,var(--chem-surface) 90%,#0f8f83)}
+.chem-archive-question>button small{white-space:nowrap;color:var(--chem-muted);font-size:12px}
+.chem-archive-transcript{padding:14px 18px;border-top:1px solid var(--chem-outline);color:var(--chem-ink);line-height:1.65;overflow-wrap:anywhere}
+.chem-archive-transcript h4{font-size:15px;margin:14px 0 8px;color:var(--chem-ink)}
+.chem-archive-answer{padding:12px 0;border-bottom:1px solid var(--chem-outline)}
+.chem-archive-answer:last-child{border-bottom:0}
+.chem-practice-shell .chem-archive-transcript p,.chem-practice-shell .chem-archive-transcript li{color:var(--chem-ink)!important;opacity:1!important}
+.chem-archive-answer p{margin:0 0 7px}
+.chem-archive-answer p span{color:var(--chem-muted)}
+.chem-archive-transcript details{padding:9px 12px;border-radius:9px;background:color-mix(in srgb,var(--chem-surface) 95%,#087c73)}
+.chem-archive-transcript summary{cursor:pointer;color:var(--chem-ink);font-weight:700}
+.chem-archive-transcript ul{padding-left:22px;margin:10px 0}
+.chem-practice-shell .chem-archive-review-notice{padding:10px 12px;border-left:3px solid #0e8175;border-radius:6px;background:color-mix(in srgb,var(--chem-surface) 92%,#0e8175);color:var(--chem-ink)!important}
+@media(max-width:560px){.chem-archive-question>button{align-items:flex-start;flex-direction:column;gap:5px}.chem-archive-transcript{padding:12px}}
