@@ -1,3 +1,4 @@
+import {CHEMISTRY_2007_MJ_Q1_BURETTE_SVG} from "./chemistryHistorical2007MayJuneSvgs";
 // Source scanned CSEC_Chemistry_P2_2007_MJ.pdf, pp2–5, original Q1 30 marks.
 const item=(label,prompt,marks,points,explanation,response={type:"lines",lines:Math.max(3,marks+1)})=>({label,prompt,marks,response,markScheme:{points,guidance:"SPARK-authored provisional marking, not official CXC examiner scheme. Independently check all burette menisci."},explanation});
 export const CHEMISTRY_2007_MJ_Q1_DRAFT=Object.freeze({
@@ -14,7 +15,7 @@ export const CHEMISTRY_2007_MJ_Q1_DRAFT=Object.freeze({
  ],
  context:"25.0cm³ of an NaOH preparation is titrated with 0.050mol dm⁻³ HCl. A solid Q shows nitrate thermal decomposition and lead(II) ion tests; a separate design asks how to recover sea salt from sand-contaminated seawater.",
  parts:[
-  {label:"(a)",items:[
+  {label:"(a)",svg:CHEMISTRY_2007_MJ_Q1_BURETTE_SVG,figure:"Figure 1. Burette readings (vector source approximation)",items:[
    item("(i)","Record initial, final and delivered volumes for three titrations and the mean acid volume.",4,
     ["Source Table 1 has all three final and initial burette entries; provisional finals 26.40,27.10,35.80 cm³.","Initial values provisionally 1.30,2.10,10.60 cm³.","Delivered volumes provisionally 25.10,25.00,25.20 cm³.","Mean of concordant readings approximately 25.10 cm³; allow independently verified source readings."],
     "Read the lower meniscus on a burette scale increasing downward and calculate final minus initial.",
