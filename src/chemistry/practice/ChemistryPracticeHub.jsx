@@ -38,7 +38,7 @@ export default function ChemistryPracticeHub({supabase,userId,onBack}){
   const [paperIndex,setPaperIndex]=useState(0);
   const stats=chemistryPaper2BankStats();
 
-  if(mode==="paper1")return <ChemistryPaper1Exam onBack={()=>setMode("home")}/>;
+  if(mode==="paper1")return <ChemistryPaper1Exam supabase={supabase} userId={userId} onBack={()=>setMode("home")}/>;
   if(mode==="paper2")return <ChemistryPaper2Exam supabase={supabase} userId={userId} paperIndex={paperIndex} onBack={()=>setMode("home")}/>;
   if(mode==="archive")return <HistoricalArchive onBack={()=>setMode("home")}/>;
 
