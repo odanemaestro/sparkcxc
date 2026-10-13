@@ -1212,7 +1212,7 @@ describe("CSEC Chemistry course V1",()=>{
   });
 
   test("May June 2008 first-pass source comparison preserves all seven draft questions",()=>{
-    const qs=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.filter(q=>q.sourceId==="CHEM-P2-2008-MJ");
+    const qs=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.filter(q=>q.sourceId==="CHEM-P2-2008-MJ").sort((a,b)=>a.originalQuestionNumber-b.originalQuestionNumber);
     expect(qs.map(q=>q.originalQuestionNumber)).toEqual([1,2,3,4,5,6,7]);
     expect(qs.map(q=>q.totalMarks)).toEqual([25,15,15,15,15,15,15]);
     expect(qs.every(q=>q.sourceVerificationNote?.includes("Assistant first-pass"))).toBe(true);
