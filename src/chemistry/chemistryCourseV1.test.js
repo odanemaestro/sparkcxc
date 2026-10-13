@@ -961,8 +961,7 @@ describe("CSEC Chemistry course V1",()=>{
     expect(outstanding.map(row=>row.sourceId)).toEqual([
       "CHEM-P2-2005-MJ","CHEM-P2-2006-MJ","CHEM-P2-2007-MJ",
       "CHEM-P2-2008-MJ","CHEM-P2-2009-MJ","CHEM-P2-2017-JAN",
-      "CHEM-P2-2018-JAN",
-      "CHEM-P2-2024-MJ"
+      "CHEM-P2-2018-JAN"
     ]);
     expect(outstanding.reduce((sum,row)=>sum+row.missingNumbers.length,0)).toBe(41);
     expect(papers.find(row=>row.sourceId==="CHEM-P2-2023-MJ")).toMatchObject({draftedQuestions:6,missingNumbers:[],paperComplete:true});
