@@ -18,22 +18,22 @@ export const CHEMISTRY_2007_MJ_Q3_DRAFT=Object.freeze({
  {type:"table",table:{headers:["Property","A","B"],rows:[["Mass number","","19"],["Atomic number","12",""],["Protons","","9"],["Electrons","12","9"],["Neutrons","12",""],["Electronic configuration","",""],["Group number","2",""],["Period number","","2"]],answers:["24","9","12","10","2,8,2","2,7","17","3"],markGroups:[[0,1],[2,3],[4,5],[6,7]]}})
  ]},
  {label:"(b)",items:[
- item("(i)","State type of bonding when elements A and B combine.",1,["Ionic/electrovalent bonding."],"Magnesium loses two electrons, and each fluorine gains one."),
- item("(ii)","Explain the type of bonding.",2,["Mg forms Mg²⁺ by transferring two electrons.","Two F atoms each gain one electron to form F⁻; electrostatic attraction forms MgF₂."],"Oppositely charged ions attract in the ionic lattice."),
- item("(iii)","Draw dot-cross diagram of bonding in compound A with B.",2,
+ item("(i)","What type of bonding would take place between A and B?",1,["Ionic/electrovalent bonding."],"Magnesium loses two electrons, and each fluorine gains one."),
+ item("(ii)","Give a reason for your answer in (b)(i) above.",2,["Mg forms Mg²⁺ by transferring two electrons.","Two F atoms each gain one electron to form F⁻; electrostatic attraction forms MgF₂."],"Oppositely charged ions attract in the ionic lattice."),
+ item("(iii)","Use dot cross diagrams to illustrate the bonding between A and B.",2,
  ["Mg²⁺ cation and two F⁻ anions with electron transfer shown.","Each fluoride has a complete octet and proper ionic charges."],
  "MgF₂ contains one Mg²⁺ and two F⁻ ions.",{type:"drawing"},{modelAnswerSvgs:[CHEMISTRY_MGF2_DOT_CROSS_SVG]})
  ]},
  {label:"(c)",items:[
- item("","Describe the bonding in elemental A (magnesium metal).",2,
+ item("","Describe the bonding expected in A.",2,
  ["Mg metal consists of positive metal ions in a lattice surrounded by delocalised electrons.","Electrostatic attraction between positive ions and mobile electrons holds the metal together."],
  "Element A is magnesium. Metallic bonding differs from the ionic MgF₂ bonding described in part (b).")
  ]},
  {label:"(d)",items:[
- item("(i)","Describe bonding and arrangement in graphite.",2,
+ item("(i)","Describe the bonding in graphite.",2,
  ["Each carbon atom forms three strong covalent bonds within a hexagonal sheet.","One electron per carbon is delocalised; layers are held by weak intermolecular forces."],
  "Graphite consists of hexagonal covalent sheets with mobile delocalised electrons."),
- item("(ii)","Explain how graphite acts as a lubricant.",2,
+ item("(ii)","Graphite is used as a lubricant. How does this use relate to its structure and bonding?",2,
  ["Weak forces between graphite layers allow layers to slide across one another.","The strong covalent bonds within each sheet keep sheets intact as they slip."],
  "Easy shearing between layers gives graphite its lubricating properties.")
  ]}
