@@ -184,7 +184,7 @@ function GraphPlotter({base,config,item,responses,onChange,disabled}){
     </div>
     <svg className="is-p2-graph-response" viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Interactive student graph plot"
       onPointerMove={event=>setHover(pointFromEvent(event))} onPointerLeave={()=>setHover(null)} onClick={addPoint}>
-      <rect x={left} y={top} width={plotWidth} height={plotHeight} fill="none" stroke="currentColor"/>
+      <rect x={left} y={top} width={plotWidth} height={plotHeight} fill="transparent" pointerEvents="all" stroke="currentColor"/>
       {tickValues(xMin,xMax).map((value,i)=>{const x=left+i*plotWidth/10;return <React.Fragment key={`x${i}`}><line x1={x} x2={x} y1={top} y2={height-bottom} stroke="currentColor" opacity=".14"/><text x={x} y={height-bottom+20} textAnchor="middle" className="is-p2-graph-tick">{format(value)}</text></React.Fragment>;})}
       {tickValues(yMin,yMax).map((value,i)=>{const y=height-bottom-i*plotHeight/10;return <React.Fragment key={`y${i}`}><line x1={left} x2={width-right} y1={y} y2={y} stroke="currentColor" opacity=".14"/><text x={left-9} y={y+4} textAnchor="end" className="is-p2-graph-tick">{format(value)}</text></React.Fragment>;})}
       {validScale && (connection==="bars" ? points.map((point,index)=>{const zeroY=sy(Math.max(yMin,Math.min(yMax,0)));const py=sy(point.y);return <rect key={index} x={sx(point.x)-barWidth/2} y={Math.min(py,zeroY)} width={barWidth} height={Math.max(2,Math.abs(zeroY-py))} className={point.series==="B"?"is-p2-graph-bar series-b":"is-p2-graph-bar"}/>;}) : groups.map(seriesLine))}
