@@ -56,6 +56,8 @@ function ResponseInput({questionId,partIndex,itemIndex,item,responses,onChange,d
 }
 
 function ChemistryModelGraph({response}){
+  const [hoverIndex,setHoverIndex]=useState(null);
+  const [selectedIndex,setSelectedIndex]=useState(null);
   const points=(response?.points||[]).filter(point=>Number.isFinite(Number(point.x))&&Number.isFinite(Number(point.y)))
     .map(point=>({x:Number(point.x),y:Number(point.y)})).sort((a,b)=>a.x-b.x);
   if(!points.length)return null;
@@ -63,8 +65,12 @@ function ChemistryModelGraph({response}){
   const minY=Math.min(...points.map(p=>p.y)),maxY=Math.max(...points.map(p=>p.y));
   const xScale=x=>72+(x-minX)/Math.max(1,maxX-minX)*450;
   const yScale=y=>265-(y-minY)/Math.max(1,maxY-minY)*208;
+  const activeIndex=hoverIndex??selectedIndex;
+  const active=activeIndex===null?null:points[activeIndex]||null;
+  const format=value=>Number(value.toPrecision(10)).toString();
+  const activePin=active?{x:xScale(active.x),y:yScale(active.y)}:null;
   return <figure className="chem-p2-model-graph">
-    <svg viewBox="0 0 570 330" role="img" aria-label="Model graph showing the expected plotted data points">
+    <svg viewBox="0 0 570 330" role="img" aria-label="Model graph showing the expected plotted data points" onPointerLeave={()=>setHoverIndex(null)}>
       <rect width="570" height="330" rx="8" fill="#fff"/>
       <path d="M72 36V265H535" stroke="#263c56" strokeWidth="2" fill="none"/>
       {[0,.25,.5,.75,1].map((fraction,i)=><g key={i}>
@@ -74,11 +80,26 @@ function ChemistryModelGraph({response}){
         <text x={72+fraction*450} y="282" textAnchor="middle" fill="#263c56" fontSize="11">{(minX+fraction*(maxX-minX)).toFixed(1)}</text>
       </g>)}
       <polyline points={points.map(point=>`${xScale(point.x)},${yScale(point.y)}`).join(" ")} fill="none" stroke="#087c73" strokeWidth="2.5"/>
-      {points.map((point,i)=><circle key={i} cx={xScale(point.x)} cy={yScale(point.y)} r="4" fill="#087c73"/>)}
+      {points.map((point,i)=><g key={i}>
+        <circle cx={xScale(point.x)} cy={yScale(point.y)} r="5" fill="#087c73" pointerEvents="none"/>
+        <circle cx={xScale(point.x)} cy={yScale(point.y)} r="13" fill="transparent" stroke="none"
+          tabIndex={0} role="button" aria-label={`Inspect point (${format(point.x)}, ${format(point.y)})`}
+          onPointerEnter={()=>setHoverIndex(i)} onFocus={()=>setHoverIndex(i)} onBlur={()=>setHoverIndex(null)}
+          onClick={()=>setSelectedIndex(i)}
+          onKeyDown={event=>{if(event.key==="Enter"||event.key===" "){event.preventDefault();setSelectedIndex(i);}}}/>
+      </g>)}
+      {activePin&&<g pointerEvents="none">
+        <line x1={activePin.x} x2={activePin.x} y1="36" y2="265" stroke="#0e8175" strokeDasharray="4 4"/>
+        <line x1="72" x2="535" y1={activePin.y} y2={activePin.y} stroke="#0e8175" strokeDasharray="4 4"/>
+        <g transform={`translate(${Math.min(412,Math.max(75,activePin.x+12))},${Math.max(50,Math.min(256,activePin.y-8))})`}>
+          <rect x="0" y="-20" width="132" height="26" rx="6" fill="#112c44"/>
+          <text x="66" y="-3" textAnchor="middle" fontSize="12" fill="#fff">({format(active.x)}, {format(active.y)})</text>
+        </g>
+      </g>}
       <text x="300" y="315" textAnchor="middle" fill="#263c56" fontSize="13">{response.x||"Horizontal axis"}</text>
       <text x="18" y="150" textAnchor="middle" transform="rotate(-90 18 150)" fill="#263c56" fontSize="13">{response.y||"Vertical axis"}</text>
     </svg>
-    <figcaption>SPARK model graph from the authored data. Compare your axes, points and trend.</figcaption>
+    <figcaption>Hover over a point, tap a point or use keyboard focus to see its exact coordinates. {active?`Selected: (${format(active.x)}, ${format(active.y)})`:"Compare your axes, points and trend."}</figcaption>
   </figure>;
 }
 
