@@ -18,6 +18,7 @@ export const CHEMISTRY_2017_JAN_Q1_DRAFT=Object.freeze({
  "Visual-read source final menisci are tentative 25.55, 26.30, 24.45cm³; initial readings are printed 1.00,2.05,0.15cm³. The second and third titre estimates ~24.25 and24.30cm³ agree; independent high-resolution reading must establish correct tenths before publication.",
  "A provisional nonrough mean 24.275cm³ gives Fe²⁺ 0.0121375mol in 250cm³, anhydrous FeSO₄ mass 1.8449g and approximately 6 waters per FeSO₄ unit after comparing with 3.16g hydrated mass; allow candidate follow-through.",
  "MnO₄⁻:Fe²⁺ molar ratio 1:5 is printed in source. Use acidic permanganate endpoint pale persistent pink, not an additional indicator.",
+ "Source calls the aqueous Fe²⁺ solution pale blue, although aqueous iron(II) is normally pale green; preserve the printed premise as a question while flagging it for science review.",
  "Table 3 Fe²⁺ with NaOH forms pale-green Fe(OH)₂ insoluble in excess, turning brown as oxidised Fe(III) hydroxide on exposure to air; Ba(NO₃)₂ tests SO₄²⁻ as white BaSO₄ precipitate insoluble in HNO₃."
  ],
  context:"A 3.16g sample of hydrated FeSO₄·nH₂O is dissolved in acid and made up to 250cm³. Three 25.0cm³ aliquots are titrated against 0.010mol dm⁻³ KMnO₄. Acidic redox equation: MnO₄⁻ + 5Fe²⁺ + 8H⁺ → Mn²⁺ + 5Fe³⁺ + 4H₂O.",
