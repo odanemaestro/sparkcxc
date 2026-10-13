@@ -1162,6 +1162,19 @@ describe("CSEC Chemistry course V1",()=>{
     expect(auditChemistryHistoricalQuestion({...question,parts:[{items:[{...question.parts[0].items[0],response:{type:"table",table:{...table,markGroups:[[0],[1]]}}}]}]}).missing).not.toContain("invalid-table-mark-groups");
   });
 
+  test("release gate blocks table answers without a complete key",()=>{
+    const base={id:"QA-KEY",sourceId:"QA",sourceFile:"source.pdf",pdfPages:[1],
+      totalMarks:2,diagramStatus:"not-applicable",sourceIssues:[],
+      parts:[{label:"(a)",items:[{prompt:"Fill in values",marks:2,
+        markScheme:{points:["First","Second"]},explanation:"Two readings",
+        response:{type:"table",table:{rows:[["",""]],answers:["10"]}}}]}]};
+    expect(auditChemistryHistoricalQuestion(base).missing).toContain("missing-table-answer-keys");
+    const valid={...base,parts:[{label:"(a)",items:[{
+      ...base.parts[0].items[0],response:{type:"table",table:{rows:[["",""]],answers:["10","20"]}}
+    }]}]};
+    expect(auditChemistryHistoricalQuestion(valid).missing).not.toContain("missing-table-answer-keys");
+  });
+
   test("verification inventory does not call unkeyed tables verified",()=>{
     const stub={id:"TABLE-AUDIT",sourceId:"CHEM-P2-2023-MJ",
       sourceFile:"CSEC_Chemistry_P2_2023_MJ.pdf",pdfPages:[1],
