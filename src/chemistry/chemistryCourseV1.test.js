@@ -1288,6 +1288,25 @@ describe("CSEC Chemistry course V1",()=>{
     expect(result.visualEvidence.plottedPoints).toBe(0);
   });
 
+  test("one plotted graph point cannot count as two expected observations",()=>{
+    const question={id:"CHEM-REPEAT"};
+    const item={marks:4,prompt:"Plot points and draw a line of best fit.",
+      response:{type:"graph",x:"Time (minutes)",y:"Mass (g)",
+        points:[{x:1,y:2},{x:1,y:2},{x:3,y:4}]},
+      markScheme:{points:["Axes","Plot points","Fit","Presentation"]}};
+    const base="CHEM-REPEAT:0:0";
+    const result=gradeChemistryPaper2Item(question,0,0,item,{
+      [`${base}:xLabel`]:"Time (minutes)",
+      [`${base}:yLabel`]:"Mass (g)",
+      [`${base}:graph`]:JSON.stringify({version:1,kind:"line",connection:"best-fit",
+        x:{min:0,max:4,step:1},y:{min:0,max:5,step:1},
+        series:[{name:"",points:"1,2"}]})
+    });
+    expect(result.visualEvidence.matchedPoints).toBe(1);
+    expect(result.criteria.find(row=>row.id===`${base}:points`).marks).toBe(0);
+    expect(result.criteria.find(row=>row.id===`${base}:fit`).marks).toBe(0);
+  });
+
   test("graph fit selection gets no credit for unrelated plotted coordinates",()=>{
     const item={marks:4,prompt:"Plot a graph and draw a line of best fit.",
       markScheme:{points:["Label axes","Plot points","Fit line","Presentation"]},
