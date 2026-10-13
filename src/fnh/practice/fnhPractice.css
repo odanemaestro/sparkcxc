@@ -80,3 +80,39 @@ html[data-theme="dark"] .fnh-exam,body[data-theme="dark"] .fnh-exam,.dark .fnh-e
 .fnh-p2 .fnh-p2-nav{grid-template-columns:repeat(3,minmax(0,1fr))}
 .fnh-p2 .fnh-question-head h2{line-height:1.5}
 @media(max-width:600px){.fnh-p2 .fnh-p2-prompt{flex-direction:column;gap:5px}.fnh-p2 .fnh-p2-context{padding:11px}.fnh-p2 .fnh-p2-nav{grid-template-columns:repeat(6,minmax(0,1fr))}}
+
+/* FNH Paper 1 and Paper 2 share the same selection structure. */
+.fnh-library-hero h1{color:var(--fnh-ink);font-size:clamp(26px,3.4vw,38px);margin:10px 0}
+.fnh-library-hero small,.fnh-library-eyebrow,.fnh-archive-card small{color:var(--fnh-accent);font-size:11px;letter-spacing:.055em;font-weight:850}
+.fnh-library-hero p,.fnh-library-paper p,.fnh-library-archive-intro p,.fnh-archive-card p{color:var(--fnh-muted);font-size:14px;line-height:1.7;opacity:1}
+.fnh-library-facts{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.fnh-library-facts span{padding:9px 13px;border:1px solid var(--fnh-border);border-radius:10px;font-size:12px;font-weight:750;color:var(--fnh-ink)}
+.fnh-library-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.fnh-library-choices>button{width:100%;display:grid;grid-template-columns:58px minmax(0,1fr) 25px;gap:15px;align-items:center;border-radius:17px;border:1px solid var(--fnh-border);background:var(--fnh-card);color:var(--fnh-ink);padding:25px;text-align:left}
+.fnh-library-choices>button:hover{border-color:var(--fnh-accent)}
+.fnh-library-choices>button>span:nth-child(2){display:grid;gap:7px}
+.fnh-library-choices>button strong{font-size:21px;color:var(--fnh-ink)}
+.fnh-library-choices>button small{font-size:11px;letter-spacing:.06em;color:var(--fnh-accent);font-weight:850}
+.fnh-library-choices>button>span:nth-child(2)>span{font-size:13px;line-height:1.6;color:var(--fnh-muted)}
+.fnh-choice-number{display:grid;place-items:center;width:56px;height:56px;border-radius:14px;background:#d7f7f0;color:#087268;font-size:21px;font-weight:850}
+.fnh-library-choices>button>b{font-size:25px;color:var(--fnh-accent)}
+.fnh-library-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;border:1px solid var(--fnh-border);background:var(--fnh-card);border-radius:12px;padding:5px}
+.fnh-library-tabs button{min-height:45px;border-radius:9px;border:1px solid transparent;background:transparent;color:var(--fnh-muted);font:inherit;font-size:13px;font-weight:800}
+.fnh-library-tabs button.active{background:color-mix(in srgb,var(--fnh-card) 90%,var(--fnh-accent));color:var(--fnh-ink);border-color:var(--fnh-border)}
+.fnh-library-paper{display:grid;gap:10px;justify-items:start;max-width:700px}
+.fnh-library-paper h2{color:var(--fnh-ink);margin:0;font-size:23px}
+.fnh-library-paper p{margin:0}
+.fnh-library-paper .fnh-primary{margin-top:10px}
+.fnh-library-archive-intro{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;align-items:end}
+.fnh-library-archive-intro h2{font-size:20px;margin:0;color:var(--fnh-ink)}
+.fnh-library-archive-intro p{max-width:720px;margin:7px 0 0}
+.fnh-library-archive-intro label{display:grid;gap:6px;color:var(--fnh-ink);font-weight:750;font-size:12px}
+.fnh-library-archive-intro select{min-width:160px;border:1px solid var(--fnh-border);background:var(--fnh-card);color:var(--fnh-ink);border-radius:10px;padding:11px;font:inherit}
+.fnh-library-archive-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.fnh-archive-card{padding:20px;display:grid;align-content:start;gap:10px}
+.fnh-archive-card h3{font-size:17px;color:var(--fnh-ink);margin:0}
+.fnh-archive-card p{font-size:12px;margin:0}
+.fnh-archive-status{display:inline-flex;justify-self:start;border-radius:8px;padding:7px 10px;border:1px solid var(--fnh-border);color:var(--fnh-muted);font-size:11px;font-weight:750}
+html[data-theme="dark"] .fnh-choice-number,body[data-theme="dark"] .fnh-choice-number,.dark .fnh-choice-number{background:#124c46;color:#b8f6e8}
+@media(max-width:880px){.fnh-library-choices{grid-template-columns:1fr}.fnh-library-archive-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:540px){.fnh-library-choices>button{grid-template-columns:48px minmax(0,1fr) 20px;padding:16px}.fnh-choice-number{width:47px;height:47px}.fnh-library-archive-grid{grid-template-columns:1fr}}
