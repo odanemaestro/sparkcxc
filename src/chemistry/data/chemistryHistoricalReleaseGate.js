@@ -34,6 +34,16 @@ export function auditChemistryHistoricalQuestion(record){
     missing.push("mark-scheme-allocation");
   const approvals=record?.qaApprovals||{};
   CHECKS.forEach(check=>{if(!approved(approvals[check]))missing.push(`qa:${check}`);});
+  // An approval needs a real ISO calendar date, not arbitrary placeholder text.
+  CHECKS.forEach(check=>{
+    const entry=approvals[check];
+    if(!approved(entry))return;
+    const date=String(entry.reviewedAt);
+    const match=/^(\\d{4})-(\\d{2})-(\\d{2})$/.exec(date);
+    const calendarDate=match&&new Date(`${date}T00:00:00.000Z`);
+    if(!match||!Number.isFinite(calendarDate.getTime())||calendarDate.toISOString().slice(0,10)!==date)
+      missing.push(`qa-date:${check}`);
+  });
   // A model answer illustration is not a substitute for the source image.
   // Missing figure evidence must fail closed, including on questions without a drawing.
   // A reviewer must explicitly record "verified" or "not-applicable".
