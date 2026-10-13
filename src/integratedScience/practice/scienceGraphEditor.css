@@ -65,3 +65,69 @@
   .is-p2-graph-workspace .is-p2-graph-coordinate-status {align-items:flex-start;flex-direction:column}
   .is-p2-graph-workspace .is-p2-plotted-point-list button {font-size:12px}
 }
+
+/* Graph validation must be readable in light, dark, tablet and phone layouts. */
+.is-p2-graph-workspace .is-p2-graph-scale-warning,
+.is-p2-graph-workspace .is-p2-graph-input-error {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:10px 14px;
+  margin:11px 0;
+  padding:12px 14px;
+  border:1px solid var(--is-border,var(--chem-outline,#9fb7c9));
+  border-left:4px solid #b7791f;
+  border-radius:10px;
+  background:var(--is-card,var(--chem-surface,transparent));
+  color:var(--is-ink,var(--chem-ink,inherit));
+  font-size:13px;
+  line-height:1.6;
+  opacity:1;
+}
+.is-p2-graph-workspace .is-p2-graph-scale-warning span {
+  flex:1 1 240px;
+  color:inherit;
+}
+.is-p2-graph-workspace .is-p2-graph-scale-warning button {
+  min-height:40px;
+  border:1px solid #0b8377;
+  border-radius:9px;
+  padding:9px 13px;
+  background:#087c73;
+  color:#fff;
+  font:inherit;
+  font-weight:750;
+  cursor:pointer;
+}
+.is-p2-graph-workspace .is-p2-graph-scale-warning button:focus-visible {
+  outline:3px solid #0b8377;
+  outline-offset:3px;
+}
+.is-p2-graph-workspace .is-p2-graph-input-error {
+  display:block;
+  border-left-color:#c84a39;
+}
+.is-p2-graph-workspace .is-p2-graph-input-error code {
+  font-size:12px;
+  background:color-mix(in srgb,currentColor 9%,transparent);
+  color:inherit;
+  padding:2px 5px;
+  border-radius:4px;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+.is-p2-graph-workspace fieldset .is-p2-graph-input-error {
+  margin:8px 0 0;
+}
+.is-p2-graph-workspace .is-p2-graph-response {
+  border:1px solid color-mix(in srgb,currentColor 26%,transparent);
+  border-radius:11px;
+  background:var(--is-card,var(--chem-surface,transparent));
+}
+@media(max-width:560px){
+  .is-p2-graph-workspace .is-p2-graph-scale-warning {
+    flex-direction:column;
+    align-items:stretch;
+  }
+  .is-p2-graph-workspace .is-p2-graph-scale-warning button{width:100%}
+}
