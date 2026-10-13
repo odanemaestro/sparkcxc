@@ -5,6 +5,7 @@ import {CHEMISTRY_HISTORICAL_PAPERS,CHEMISTRY_PAPER2_PRACTICE_SETS,chemistryPape
 import {CHEMISTRY_PAPER2_SOURCE_AUDIT,CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY} from "../data/chemistryPaper2SourceAudit";
 import {CHEMISTRY_HISTORICAL_COVERAGE} from "../data/chemistryHistoricalCoverage";
 import {CHEMISTRY_HISTORICAL_DRAFT_ITEMS} from "../data/chemistryHistoricalPaper2Drafts";
+import {TrustedBankSvg,BankTable} from "../../integratedScience/practice/IntegratedScienceQuestionRenderer";
 import "../../integratedScience/practice/integratedSciencePractice.css";
 import "./chemistryPractice.css";
 
@@ -44,11 +45,18 @@ function HistoricalArchive({onBack}){
                 <small>{q.totalMarks} marks {openQuestion===q.id?"−":"+"}</small>
               </button>
               {openQuestion===q.id&&<div className="chem-archive-transcript">
+                {q.context&&<p className="chem-archive-context">{q.context}</p>}
+                {(q.sourceFigures||[]).map((figure,i)=>figure?.svg?<figure className="chem-archive-source-figure" key={i}><TrustedBankSvg svg={figure.svg}/><figcaption>{figure.figure||"Source figure"} · {figure.sourceApproved?"Checked":"Reconstruction pending visual comparison"}</figcaption></figure>:null)}
                 {(q.parts||[]).map((part,partIndex)=><section key={partIndex}>
                   <h4>Part {part.label||partIndex+1}</h4>
+                  {part.context&&<p className="chem-archive-context">{part.context}</p>}
+                  {part.svg&&<figure className="chem-archive-source-figure"><TrustedBankSvg svg={part.svg}/>{part.figure&&<figcaption>{part.figure}</figcaption>}</figure>}
+                  {part.table&&<BankTable table={part.table}/>}
                   {(part.items||[]).map((item,itemIndex)=><div className="chem-archive-answer" key={itemIndex}>
                     <p><strong>{item.label||""} {item.prompt}</strong> <span>({item.marks} marks)</span></p>
-                    {item.markScheme?.points?.length>0&&<details><summary>Show provisional answers and marking notes</summary><ul>{item.markScheme.points.map((point,i)=><li key={i}>{point}</li>)}</ul>{item.explanation&&<p>{item.explanation}</p>}</details>}
+                    {item.response?.table&&<BankTable table={item.response.table}/>}
+                    {item.response?.svg&&<TrustedBankSvg svg={item.response.svg}/>}
+                    {item.markScheme?.points?.length>0&&<details><summary>Show provisional answers and explanations</summary><ul>{item.markScheme.points.map((point,i)=><li key={i}>{point}</li>)}</ul>{item.explanation&&<p>{item.explanation}</p>}</details>}
                   </div>)}
                 </section>)}
                 {q.sourceIssues?.length>0&&<details><summary>Source accuracy notes</summary><ul>{q.sourceIssues.map((issue,i)=><li key={i}>{issue}</li>)}</ul></details>}
