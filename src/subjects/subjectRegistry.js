@@ -178,15 +178,15 @@ const BASE_SUBJECTS = Object.freeze({
     routes: Object.freeze({
       study: "/study/chemistry",
       practice: "/practice/chemistry",
-      flashcards: null,
+      flashcards: "/dashboard/flashcards/chemistry",
       progress: "/dashboard/progress",
     }),
     capabilities: Object.freeze({
       study: true,
       practice: true,
-      flashcards: false,
+      flashcards: true,
       progress: true,
-      paper1: false,
+      paper1: true,
       paper2: true,
       adaptive: false,
       structured: true,
