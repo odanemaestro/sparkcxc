@@ -19,13 +19,15 @@ function graphBox(svg,width=600,height=335,left=0,top=0){
   svg.getBoundingClientRect=()=>({left,top,width,height,right:left+width,bottom:top+height});
 }
 
+const pointerMove=(element,{clientX,clientY})=>fireEvent(element,new MouseEvent("pointermove",{bubbles:true,clientX,clientY}));
+
 describe("Exact graph coordinate feedback in Chemistry and Integrated Science",()=>{
   test("shows the snapped coordinate before plotting without modifying the answer",()=>{
     const notify=jest.fn();
     render(<Harness initial={initialGraph()} notify={notify}/>);
     const plot=screen.getByRole("img",{name:"Student graph plot"});
     graphBox(plot);
-    fireEvent.pointerMove(plot,{clientX:150,clientY:218});
+    pointerMove(plot,{clientX:150,clientY:218});
     expect(screen.getByText("Plot at: (2, 2)")).toBeInTheDocument();
     expect(notify).not.toHaveBeenCalled();
     fireEvent.click(plot,{clientX:150,clientY:218});
@@ -38,7 +40,7 @@ describe("Exact graph coordinate feedback in Chemistry and Integrated Science",(
     render(<Harness initial={initialGraph("3.125,4.375")} notify={notify}/>);
     const plot=screen.getByRole("img",{name:"Student graph plot"});
     graphBox(plot);
-    fireEvent.pointerMove(plot,{clientX:206.25,clientY:168.125});
+    pointerMove(plot,{clientX:206.25,clientY:168.125});
     expect(screen.getByText("Plotted point: (3.125, 4.375)")).toBeInTheDocument();
     fireEvent.click(plot,{clientX:206.25,clientY:168.125});
     expect(notify).not.toHaveBeenCalled();
@@ -50,7 +52,7 @@ describe("Exact graph coordinate feedback in Chemistry and Integrated Science",(
     // 600x335 viewBox fits a 300x335 element at scale 0.5,
     // leaving 83.75 px of letterboxing above and below.
     graphBox(plot,300,335,10,20);
-    fireEvent.pointerMove(plot,{clientX:113.125,clientY:187.8125});
+    pointerMove(plot,{clientX:113.125,clientY:187.8125});
     expect(screen.getByText("Plotted point: (3.125, 4.375)")).toBeInTheDocument();
   });
 
@@ -70,7 +72,7 @@ describe("Exact graph coordinate feedback in Chemistry and Integrated Science",(
     render(<Harness initial={initialGraph("Monday,7", "bar")}/>);
     const plot=screen.getByRole("img",{name:"Student graph plot"});
     graphBox(plot);
-    fireEvent.pointerMove(plot,{clientX:175,clientY:150});
+    pointerMove(plot,{clientX:175,clientY:150});
     expect(screen.getByText("Plotted point: (Monday, 7)")).toBeInTheDocument();
   });
 
@@ -98,7 +100,7 @@ describe("Exact graph coordinate feedback in Chemistry and Integrated Science",(
     render(<Harness initial={initial} notify={notify}/>);
     const grid=screen.getByRole("img",{name:"Student graph plot"});
     expect(grid.querySelectorAll("circle").length).toBe(2);
-    expect(screen.getByRole("button",{name:/Inspect Experiment A point \\(20, 0\\.08\\)/})).toBeInTheDocument();
+    expect(screen.getByRole("button",{name:/Inspect Experiment A point \(20, 0\.08\)/})).toBeInTheDocument();
     expect(screen.getByRole("button",{name:"Use y interval 0.02"})).toBeInTheDocument();
     fireEvent.click(screen.getByRole("button",{name:"Use y interval 0.02"}));
     const graph=JSON.parse(notify.mock.calls[notify.mock.calls.length-1][1]);
@@ -112,8 +114,8 @@ describe("Exact graph coordinate feedback in Chemistry and Integrated Science",(
     const initial=initialGraph("0,0.02,20\n2,4");
     render(<Harness initial={initial} notify={notify}/>);
     expect(screen.getByRole("alert")).toHaveTextContent(/Line 1: enter one x, y pair/);
-    expect(screen.getByRole("alert")).toHaveTextContent(/0,0\\.02,20/);
-    expect(screen.getByRole("button",{name:/Inspect Experiment A point \\(2, 4\\)/})).toBeInTheDocument();
+    expect(screen.getByRole("alert")).toHaveTextContent(/0,0\.02,20/);
+    expect(screen.getByRole("button",{name:/Inspect Experiment A point \(2, 4\)/})).toBeInTheDocument();
     const grid=screen.getByRole("img",{name:"Student graph plot"});
     graphBox(grid);
     fireEvent.click(grid,{clientX:250,clientY:155});
@@ -126,7 +128,7 @@ describe("Exact graph coordinate feedback in Chemistry and Integrated Science",(
     render(<Harness initial={initialGraph("3,4\n15,6")}/>);
     expect(screen.getByRole("alert")).toHaveTextContent(/outside the current axis bounds/);
     expect(screen.getByRole("alert")).toHaveTextContent(/15, 6/);
-    expect(screen.getByRole("button",{name:/Inspect Experiment A point \\(3, 4\\)/})).toBeInTheDocument();
+    expect(screen.getByRole("button",{name:/Inspect Experiment A point \(3, 4\)/})).toBeInTheDocument();
   });
 
   test("two line-series can share the same real coordinate without blocking each other",()=>{
