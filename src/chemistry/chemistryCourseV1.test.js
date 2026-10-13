@@ -1143,6 +1143,23 @@ describe("CSEC Chemistry course V1",()=>{
     expect(covalent.learnerFacing).toBe(false);
   });
 
+  test("verification inventory does not call unkeyed tables verified",()=>{
+    const stub={id:"TABLE-AUDIT",sourceId:"CHEM-P2-2023-MJ",
+      sourceFile:"CSEC_Chemistry_P2_2023_MJ.pdf",pdfPages:[1],
+      totalMarks:1,parts:[{items:[{prompt:"Complete a table",marks:1,
+        response:{type:"table",table:{rows:[[""]],answers:[]}},
+        markScheme:{points:["Correct reading"]},explanation:"Read the source."}]}]};
+    const incomplete=buildChemistryHistoricalVerificationInventory([stub]);
+    expect(incomplete.totals.keyedTables).toBe(0);
+    expect(incomplete.totals.unkeyedTables).toBe(1);
+    const complete=buildChemistryHistoricalVerificationInventory([{
+      ...stub,parts:[{items:[{...stub.parts[0].items[0],
+        response:{type:"table",table:{rows:[[""]],answers:["25.0"]}}}]}]
+    }]);
+    expect(complete.totals.keyedTables).toBe(1);
+    expect(complete.totals.unkeyedTables).toBe(0);
+  });
+
   test("historical verification inventory covers all sources and exposes unapproved work",()=>{
     const {rows,totals}=CHEMISTRY_HISTORICAL_VERIFICATION_INVENTORY;
     expect(rows).toHaveLength(167);
