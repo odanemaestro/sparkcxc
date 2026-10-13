@@ -35,7 +35,8 @@ export function buildChemistryHistoricalVerificationInventory(
       sourcePageMismatch,markMismatch:computedMarks!==q.totalMarks,
       computedMarks,declaredMarks:q.totalMarks,
       figureItems,keyedTables,unkeyedTables,unresolvedIssues:issues.length,
-      missingApprovals,releaseReady:publishedChemistryHistoricalQuestions([q]).length===1,
+      missingApprovals,releaseReady:!sourcePageMismatch&&computedMarks===q.totalMarks&&
+        unkeyedTables===0&&publishedChemistryHistoricalQuestions([q]).length===1,
       gateBlockers:gate.missing
     };
   });
