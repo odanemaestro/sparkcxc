@@ -2,7 +2,7 @@ import "./scienceGraphEditor.css";
 import React, {useId,useState} from "react";
 import {newScienceGraph,readScienceGraph,graphPoints,graphAxis,graphPath} from "./scienceGraphModel";
 
-const formatCoord=value=>Number(Number(value).toPrecision(10)).toString();
+const formatCoord=value=>String(value);
 const displayCoord=point=>`(${String(point.x)}, ${formatCoord(point.y)})`;
 
 const COLORS=["#168f8a","#cf6a25","#8760c6"];
