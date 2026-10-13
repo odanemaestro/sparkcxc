@@ -909,6 +909,24 @@ describe("CSEC Chemistry course V1",()=>{
     }
   });
 
+  test("historical reviewer dates must be valid calendar dates",()=>{
+    const approvals=Object.fromEntries(CHEMISTRY_HISTORICAL_REVIEW_CHECKS.map(check=>[
+      check,{approved:true,reviewer:"Fixture Reviewer",reviewedAt:"2026-10-12"}
+    ]));
+    const base={id:"QA-DATES",sourceId:"QA-SOURCE",sourceFile:"source.pdf",
+      pdfPages:[1],totalMarks:1,diagramStatus:"not-applicable",sourceIssues:[],
+      qaApprovals:approvals,parts:[{label:"(a)",items:[{
+        prompt:"Give an answer.",marks:1,explanation:"Correct answer.",
+        markScheme:{points:["Correct answer"]}
+      }]}]};
+    expect(auditChemistryHistoricalQuestion(base).ready).toBe(true);
+    for(const invalidDate of ["2026-02-30","2026-13-01","yesterday","2026-1-2"]){
+      const modified={...approvals,sourceTranscription:{...approvals.sourceTranscription,reviewedAt:invalidDate}};
+      expect(auditChemistryHistoricalQuestion({...base,qaApprovals:modified}).missing)
+        .toContain("qa-date:sourceTranscription");
+    }
+  });
+
   test("historical criteria must allocate every mark explicitly before approval",()=>{
     const reviews=Object.fromEntries(CHEMISTRY_HISTORICAL_REVIEW_CHECKS.map(check=>[
       check,{approved:true,reviewer:"Fixture Reviewer",reviewedAt:"2026-10-12"}
