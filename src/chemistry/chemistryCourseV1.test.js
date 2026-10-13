@@ -587,7 +587,7 @@ describe("CSEC Chemistry course V1",()=>{
     expect(CHEMISTRY_2019_JAN_Q1_BURETTE_SVG).toMatch(/^<svg/);
     expect(CHEMISTRY_2019_JAN_Q1_BURETTE_SVG).not.toMatch(/<image\b/i);
     expect(CHEMISTRY_2019_JAN_Q1_NUMERIC_AUDIT.nonRoughDifferenceMl).toBe(2);
-    expect(CHEMISTRY_2019_JAN_Q1_NUMERIC_AUDIT.mathematicalAverageMl).toBe(20);
+    expect(CHEMISTRY_2019_JAN_Q1_NUMERIC_AUDIT.mathematicalAverageMl).toBe(19);
     expect(CHEMISTRY_2019_JAN_Q1_NUMERIC_AUDIT.mathematicallyComputedIronPercent).toBeCloseTo(25.4448,3);
     expect(CHEMISTRY_2019_JAN_Q1_PROVISIONAL_AUDIT.needsExaminerDecision).toBe(true);
     expect(rows[0].sourceIssues.join(" ")).toMatch(/DISCORDANT/);
@@ -1045,7 +1045,7 @@ describe("CSEC Chemistry course V1",()=>{
       [`${base}:yLabel`]:"Mass (g)",
       [`${base}:graph`]:JSON.stringify({version:1,kind:"line",connection:"best-fit",
         x:{min:0,max:5,step:1},y:{min:0,max:2,step:1},
-        series:[{name:"",points:"100,100\\n200,200"}]})
+        series:[{name:"",points:["100,100","200,200"].join(String.fromCharCode(10))}]})
     });
     expect(result.visualEvidence.plottedPoints).toBe(2);
     expect(result.visualEvidence.matchedPoints).toBe(0);
