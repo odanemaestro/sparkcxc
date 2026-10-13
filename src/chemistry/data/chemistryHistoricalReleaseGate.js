@@ -8,7 +8,7 @@ const approved=entry=>Boolean(entry&&entry.approved===true&&
   String(entry.reviewer||"").trim()&&String(entry.reviewedAt||"").trim());
 export function auditChemistryHistoricalQuestion(record){
   const missing=[];
-  if(!record?.sourceId||!record.sourceFile||!Array.isArray(record.pdfPages)||!record.pdfPages.length)
+  if(!record?.sourceId||!record.sourceFile||!Array.isArray(record.pdfPages)||!record.pdfPages.length||\n    record.pdfPages.some(page=>!Number.isInteger(page)||page<1))
     missing.push("source-identity");
   if(!record?.parts?.length)missing.push("question-parts");
   const items=(record?.parts||[]).flatMap(part=>part.items||[]);
@@ -40,7 +40,8 @@ export function auditChemistryHistoricalQuestion(record){
   const figureStatus=String(record?.diagramStatus||"").trim();
   if(!/^(verified|not-applicable)$/i.test(figureStatus))
     missing.push("unresolved-figure-verification");
-  if(Array.isArray(record?.sourceIssues)&&record.sourceIssues.length)
+  // A missing issue log is not evidence that source ambiguities were reviewed.
+  if(!Array.isArray(record?.sourceIssues)||record.sourceIssues.length)
     missing.push("unresolved-source-issues");
   return {id:record?.id||null,ready:missing.length===0,missing,awardedMarks:total};
 }
