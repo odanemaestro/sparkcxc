@@ -11,7 +11,7 @@ describe("Chemistry page reset and notification parity",()=>{
   test("Paper 1 returns to the top on new papers, questions and review",()=>{
     const src=read("src/chemistry/practice/ChemistryPaper1Exam.jsx");
     expect(src).toContain("window.scrollTo");
-    expect(src).toContain("[source,active,submitted]");
+    expect(src).toContain("[source,active,phase]");
   });
   test("Paper 2 retains page reset on answer navigation and submission",()=>{
     const src=read("src/chemistry/practice/ChemistryPaper2Exam.jsx");
