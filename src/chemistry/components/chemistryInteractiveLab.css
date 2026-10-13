@@ -69,6 +69,7 @@ html[data-theme="dark"] .chem-lab .chem-lab-actions .chem-lab-next-action{
 .chem-state-liquid circle{animation-name:chem-drift}
 .chem-state-gas circle{animation-name:chem-flight}
 .chem-free-electron{fill:#08766d!important;animation:chem-vibrate 1.2s ease-in-out infinite alternate}
+.chem-bond-svg circle.chem-shared-electron{fill:#123468;stroke:none}
 @keyframes chem-vibrate{to{transform:translate(1px,-1px)}}
 @keyframes chem-drift{to{transform:translate(3px,-4px)}}
 @keyframes chem-flight{to{transform:translate(5px,6px)}}

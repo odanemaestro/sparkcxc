@@ -66,7 +66,8 @@ export const CHEMISTRY_2018_MJ_Q5_FAT_SOURCE_SVG=wrap(800,280,
  "Source fat molecule: triglyceride with three R–CH₂–C(=O)–O arms on glycerol",
  '<g font-family="Times New Roman,serif" fill="#111" font-size="22" text-anchor="middle">'+
  [71,138,205].map((y,i)=>
-  '<text x="305" y="'+y+'">R–CH₂–C(=O)–O–'+(i===1?"CH":"CH₂")+'</text>').join("")+
+  '<text x="320" y="'+y+'" text-anchor="end">R–CH₂–C(=O)–O–</text><text x="348" y="'+y+'">'+(i===1?'CH':'CH₂')+'</text>').join("")+
+ '<path d="M348 80V115M348 147V182" stroke="#111" stroke-width="2" fill="none"/>'+
  '<text x="400" y="266" font-size="17">Figure. Triglyceride source structure (three identical fatty-acid R groups)</text></g>');
 export const CHEMISTRY_2018_MJ_Q5_SOAP_MODEL_SVG=wrap(700,145,
  "Sodium soap from the depicted triglyceride: R–CH₂–COO minus with sodium counterion",

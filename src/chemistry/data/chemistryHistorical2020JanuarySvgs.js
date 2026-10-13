@@ -65,7 +65,7 @@ export const CHEMISTRY_2020_JAN_Q5_HYDROLYSIS_SVG=svg(870,270,
 function tube(x,kind){
  const body='<path d="M'+(x-36)+' 87V364Q'+(x-36)+' 404 '+x+' 405Q'+(x+36)+' 404 '+(x+36)+' 364V87" stroke="#111" stroke-width="2.5" fill="none"/>'+
  '<path d="M'+(x-43)+' 88H'+(x+43)+'" stroke="#111" stroke-width="3"/>'+
- '<path d="M'+(x-41)+' 84l12 -20h60l12 20Z" fill="#dadada" stroke="#111" stroke-width="2"/>'+
+ (kind==='water'?'':'<path d="M'+(x-41)+' 84l12 -20h60l12 20Z" fill="#dadada" stroke="#111" stroke-width="2"/>')+
  '<path d="M'+(x-19)+' 230l18 130" stroke="#222" stroke-width="7"/>';
  const liquid=kind==='water'?'<path d="M'+(x-34)+' 261H'+(x+34)+'v111Q'+x+' 416 '+(x-34)+' 372Z" fill="#dfeef7" stroke="none"/>':
  kind==='boiled'?'<path d="M'+(x-34)+' 240H'+(x+34)+'v132Q'+x+' 416 '+(x-34)+' 372Z" fill="#dfeef7" stroke="none"/>'+

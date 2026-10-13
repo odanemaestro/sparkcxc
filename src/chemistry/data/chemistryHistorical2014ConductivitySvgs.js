@@ -18,18 +18,18 @@ export const CHEMISTRY_2014_Q4_SOURCE_CIRCUIT_SVG=`<svg xmlns="http://www.w3.org
 export const CHEMISTRY_2014_Q4_CORRECTED_CIRCUIT_SVG=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 690 385" role="img" aria-label="Corrected conductivity circuit with battery, switch, lamp and immersed inert electrodes in a beaker">
 <title>Model answer: conductivity testing circuit</title><rect width="690" height="385" fill="#fff"/>
 <g stroke="#111" stroke-width="2.6" fill="none" stroke-linejoin="round">
-<path d="M100 135 V70 H267 M286 70 H365"/>
+<path d="M100 135 V70 H267 M283 70 H378"/>
 <line x1="267" y1="51" x2="267" y2="89" stroke-width="2.4"/>
 <line x1="283" y1="60" x2="283" y2="80" stroke-width="2.4"/>
 <circle cx="410" cy="70" r="32"/>
 <path d="M391 51 L429 89 M429 51 L391 89"/>
 <path d="M442 70 H574 V253 H525 M100 165 V253 H170"/>
 <path d="M100 135 L100 165" />
-<path d="M170 230 V326" stroke-width="8"/>
-<path d="M525 230 V326" stroke-width="8"/>
 <path d="M148 222V336 Q347 375 548 336V222"/>
 <path d="M150 258 Q340 251 546 258" stroke="#5195a3" stroke-width="1.2"/>
 <path d="M149 258V335 Q348 363 546 335V258" fill="#e8f5f8" stroke="none"/>
+<path d="M170 230 V326" stroke-width="8"/>
+<path d="M525 230 V326" stroke-width="8"/>
 </g>
 <g font-family="Arial,sans-serif" font-size="17" fill="#111">
 <text x="220" y="39">Cell</text>

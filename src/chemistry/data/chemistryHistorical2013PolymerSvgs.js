@@ -28,16 +28,18 @@ export const CHEMISTRY_2013_Q3_MONOMERS_SVG=wrap(810,305,"Original monomers P Q 
 <g stroke="#b1b1b1" stroke-width="1.5" stroke-dasharray="5 5">
 <path d="M400 25V255M20 150H790"/>
 </g>`);
-export const CHEMISTRY_2013_Q3_STARCH_MODEL_SVG=wrap(790,165,"Three glucose residues linked through glycosidic bonds",
+export const CHEMISTRY_2013_Q3_STARCH_MODEL_SVG=wrap(790,190,"Schematic chain of three glucose residues linked by two alpha-1,4 glycosidic bonds, not a displayed molecular structure",
  `<g stroke="#111" stroke-width="2" fill="none">
-<path d="M55 60L145 40L195 103L100 124Z"/>
-<path d="M300 60L390 40L440 103L345 124Z"/>
-<path d="M545 60L635 40L685 103L590 124Z"/>
-<path d="M195 92H345M440 92H590"/>
+<rect x="45" y="48" width="155" height="70" rx="8"/>
+<rect x="295" y="48" width="155" height="70" rx="8"/>
+<rect x="545" y="48" width="155" height="70" rx="8"/>
+<path d="M200 83H237M257 83H295M450 83H487M507 83H545"/>
 </g>
 <g font-family="Arial,sans-serif" font-size="24" fill="#111" text-anchor="middle">
-<text x="270" y="98">O</text><text x="515" y="98">O</text>
-<text x="390" y="154" font-size="15">Three glucose units joined by two –O– glycosidic linkages</text>
+<text x="122" y="88" font-size="19">Glucose residue</text><text x="372" y="88" font-size="19">Glucose residue</text><text x="622" y="88" font-size="19">Glucose residue</text>
+<text x="247" y="90">O</text><text x="497" y="90">O</text>
+<text x="390" y="155" font-size="15">Two α(1→4) glycosidic linkages in a linear starch segment</text>
+<text x="390" y="178" font-size="15">Boxes represent residues, not four-membered glucose rings</text>
 </g>`);
 export const CHEMISTRY_2013_Q3_AMINO_ACID_MODEL_SVG=wrap(520,155,"Generic amino acid resulting from peptide hydrolysis",
- `<rect width="520" height="155" fill="#fff"/><text x="260" y="89" text-anchor="middle" font-family="Times New Roman,serif" font-size="32" fill="#111">H₂N–R–C(=O)–OH</text><text x="260" y="126" text-anchor="middle" font-family="Times New Roman,serif" font-size="16" fill="#111">Representative free amino-acid unit</text>`);
+ `<rect width="520" height="155" fill="#fff"/><text x="260" y="89" text-anchor="middle" font-family="Times New Roman,serif" font-size="29" fill="#111">H₂N–CH(R)–C(=O)–OH</text><text x="260" y="126" text-anchor="middle" font-family="Times New Roman,serif" font-size="16" fill="#111">Generic α-amino acid; R is the side chain</text>`);

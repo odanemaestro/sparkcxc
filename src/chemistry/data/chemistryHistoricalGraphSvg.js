@@ -24,7 +24,7 @@ for(let v=3;v<=13;v++){
   majors.push(`<line x1="${x0}" x2="${x1}" y1="${y.toFixed(3)}" y2="${y.toFixed(3)}" stroke="#555" stroke-width="0.95"/>`);
 }
 const labels=[3,4,5,6,7,8,9,10,11,12,13].map(v=>`<text x="77" y="${(yFor(v/100)+4).toFixed(2)}" text-anchor="end" font-size="13">${(v/100).toFixed(2)}</text>`).join("");
-const times=[0,10,20,30].map(v=>`<text x="${xFor(v).toFixed(2)}" y="812" font-size="14" text-anchor="middle">${v}</text>`).join("");
+const times=[0,10,20,30].map(v=>`<text x="${xFor(v).toFixed(2)}" y="828" font-size="14" text-anchor="middle">${v}</text>`).join("");
 export const CHEMISTRY_2025_MJ_Q1_GRAPH_SVG=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 895" role="img" aria-labelledby="chem25graphTitle chem25graphDesc">
 <title id="chem25graphTitle">Blank graph for the copper deposition investigation</title>
 <desc id="chem25graphDesc">Fine graph-paper grid with time in minutes along the horizontal axis and deposited copper mass in grams along the vertical axis. Includes a vertical axis break between zero and 0.03 grams.</desc>
