@@ -1,5 +1,6 @@
 import React,{useMemo,useState} from "react";
 import ChemistryPaper2Exam from "./ChemistryPaper2Exam";
+import ChemistryPaper1Exam from "./ChemistryPaper1Exam";
 import {CHEMISTRY_HISTORICAL_PAPERS,CHEMISTRY_PAPER2_PRACTICE_SETS,chemistryPaper2BankStats} from "../data/chemistryPaper2Bank";
 import {CHEMISTRY_PAPER2_SOURCE_AUDIT,CHEMISTRY_PAPER2_SOURCE_AUDIT_SUMMARY} from "../data/chemistryPaper2SourceAudit";
 import {CHEMISTRY_HISTORICAL_COVERAGE} from "../data/chemistryHistoricalCoverage";
@@ -37,6 +38,7 @@ export default function ChemistryPracticeHub({supabase,userId,onBack}){
   const [paperIndex,setPaperIndex]=useState(0);
   const stats=chemistryPaper2BankStats();
 
+  if(mode==="paper1")return <ChemistryPaper1Exam onBack={()=>setMode("home")}/>;
   if(mode==="paper2")return <ChemistryPaper2Exam supabase={supabase} userId={userId} paperIndex={paperIndex} onBack={()=>setMode("home")}/>;
   if(mode==="archive")return <HistoricalArchive onBack={()=>setMode("home")}/>;
 
@@ -45,6 +47,11 @@ export default function ChemistryPracticeHub({supabase,userId,onBack}){
     <header className="is-practice-hero"><div><span>CSEC CHEMISTRY PRACTICE</span><h1>Choose a practice mode</h1><p>Work through full current-format Paper 02 simulations or check the list of supplied historical Paper 02 scans. Historical questions are not yet released for student practice.</p></div></header>
 
     <section className="is-practice-mode-list">
+      <button type="button" className="is-practice-section-card" onClick={()=>setMode("paper1")}>
+        <span className="is-practice-section-code">01</span>
+        <span className="is-practice-section-copy"><span>MULTIPLE CHOICE</span><strong>Chemistry Paper 1</strong><small><span>Four 60-question practice sets</span><span className="is-inline-separator">·</span><span>75 minutes</span><span className="is-inline-separator">·</span><span>Historical Paper 1 question bank</span></small></span>
+        <span className="is-practice-section-arrow" aria-hidden="true">→</span>
+      </button>
       <button type="button" className="is-practice-section-card" onClick={()=>{setPaperIndex(0);setMode("paper2");}}>
         <span className="is-practice-section-code">02</span>
         <span className="is-practice-section-copy"><span>FULL EXAMINATION SIMULATOR</span><strong>Chemistry Paper 2</strong><small><span>6 compulsory questions</span><span className="is-inline-separator">·</span><span>2 hours 30 minutes</span><span className="is-inline-separator">·</span><span>100 marks</span><span className="is-inline-separator">·</span><span>automatic marking review</span></small></span>
