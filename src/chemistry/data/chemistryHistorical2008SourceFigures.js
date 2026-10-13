@@ -8,7 +8,7 @@ const groupMiddle=Array.from({length:3},(_,r)=>cell(182,70+r*25,220,25)).join(""
 const groupRight=Array.from({length:5},(_,r)=>Array.from({length:6},(_,c)=>cell(402+c*44,45+r*25)).join("")).join("");
 const halogens=[
  ["₉F",45],["₁₇Cl",70],["₃₅Br",95],["₅₃I",120],["₈₅At",145]
-].map(([label,y])=>t(621,y+18,label,13)).join("");
+].map(([label,y])=>t(600,y+18,label,13)).join("");
 export const CHEMISTRY_2008_MJ_Q2_PERIODIC_TABLE_SVG=svg(735,205,
  "Figure 2. Source partial periodic table showing halogen positions",
  groupLeft+groupMiddle+groupRight+cell(666,20)+t(116,39,"H",15)+t(688,39,"He",15)+halogens+
