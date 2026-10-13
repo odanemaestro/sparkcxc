@@ -41,7 +41,7 @@ describe("SPARK all-subject functional depth audit V2",()=>{
       expect(subject.routes.practice).toBeTruthy();
     });
     expect(subjects.find(subject=>subject.id==="chemistry")?.capabilities).toMatchObject({
-      paper1:false,paper2:true,labs:true,structured:true,progress:true,
+      paper1:true,paper2:true,labs:true,structured:true,progress:true,flashcards:true,
     });
   });
 
