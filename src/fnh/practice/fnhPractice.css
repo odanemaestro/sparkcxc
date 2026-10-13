@@ -59,3 +59,24 @@
 html[data-theme="dark"] .fnh-exam,body[data-theme="dark"] .fnh-exam,.dark .fnh-exam{--fnh-ink:#edf5ff;--fnh-muted:#b8cbe2;--fnh-card:#172b43;--fnh-background:#102137;--fnh-border:#37516b;--fnh-accent:#42bfb2}
 @media(max-width:820px){.fnh-exam-layout{grid-template-columns:1fr}.fnh-navigation{position:static}.fnh-exam-stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:590px){.fnh-exam{padding:15px 10px 40px}.fnh-session-heading{flex-direction:column;align-items:stretch}.fnh-timer{width:100%;box-sizing:border-box}.fnh-question-head{align-items:flex-start;flex-direction:column}.fnh-question-actions .fnh-primary{margin-left:0;width:100%}.fnh-exam-stats{gap:7px}.fnh-review-details{grid-template-columns:1fr}.fnh-review-details .fnh-review-explanation{grid-column:1}.fnh-modal>div{flex-direction:column-reverse}.fnh-modal>div button{width:100%}}
+
+/* Food, Nutrition and Health structured Paper 2 */
+.fnh-p2 .fnh-p2-marks{font-size:13px;color:var(--fnh-muted);font-weight:800;white-space:nowrap}
+.fnh-p2 .fnh-p2-context{border-left:4px solid var(--fnh-accent);padding:14px 17px;margin:18px 0 28px;background:var(--fnh-background);color:var(--fnh-ink);line-height:1.8;border-radius:8px}
+.fnh-p2 .fnh-p2-parts{display:grid;gap:22px}
+.fnh-p2 .fnh-p2-part{border:1px solid var(--fnh-border);border-radius:13px;padding:clamp(13px,2.5vw,20px);min-width:0}
+.fnh-p2 .fnh-p2-prompt{display:flex;justify-content:space-between;gap:14px;color:var(--fnh-ink);font-size:14px;line-height:1.7;margin-bottom:14px}
+.fnh-p2 .fnh-p2-prompt b{font-weight:750}
+.fnh-p2 .fnh-p2-prompt>span{font-weight:800;color:var(--fnh-muted);white-space:nowrap}
+.fnh-p2 .fnh-p2-answer-label{display:block;color:var(--fnh-muted);font-size:12px;font-weight:750;margin-bottom:8px}
+.fnh-p2 .fnh-p2-part textarea{width:100%;box-sizing:border-box;border:1px solid var(--fnh-border);background:var(--fnh-card);color:var(--fnh-ink);font:inherit;font-size:14px;line-height:1.7;border-radius:11px;resize:vertical;min-height:98px;padding:13px;display:block}
+.fnh-p2 .fnh-p2-part textarea:focus-visible{outline:3px solid var(--fnh-accent);outline-offset:2px}
+.fnh-p2 .fnh-p2-model-answer{margin-top:18px;padding:17px;border:1px solid color-mix(in srgb,var(--fnh-border) 70%,#07877b);background:color-mix(in srgb,var(--fnh-card) 95%,#07877b);border-radius:12px;color:var(--fnh-ink)}
+.fnh-p2 .fnh-p2-model-answer strong{font-size:15px}
+.fnh-p2 .fnh-p2-model-answer ol{padding-left:23px}
+.fnh-p2 .fnh-p2-model-answer li{margin:8px 0;font-size:14px;line-height:1.7}
+.fnh-p2 .fnh-p2-model-answer p{font-size:13px;line-height:1.6}
+.fnh-p2 .fnh-p2-model-answer small{display:block;border-top:1px solid var(--fnh-border);padding-top:10px;font-size:12px;color:var(--fnh-muted);line-height:1.5}
+.fnh-p2 .fnh-p2-nav{grid-template-columns:repeat(3,minmax(0,1fr))}
+.fnh-p2 .fnh-question-head h2{line-height:1.5}
+@media(max-width:600px){.fnh-p2 .fnh-p2-prompt{flex-direction:column;gap:5px}.fnh-p2 .fnh-p2-context{padding:11px}.fnh-p2 .fnh-p2-nav{grid-template-columns:repeat(6,minmax(0,1fr))}}
