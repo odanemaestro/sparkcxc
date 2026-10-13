@@ -1143,6 +1143,23 @@ describe("CSEC Chemistry course V1",()=>{
     expect(covalent.learnerFacing).toBe(false);
   });
 
+  test("verification inventory flags duplicated or omitted table mark-group indices",()=>{
+    const table={rows:[["",""]],answers:["10","20"],markGroups:[[0],[0]]};
+    const question={id:"GROUP-INVALID",sourceId:"CHEM-P2-2023-MJ",
+      sourceFile:"CSEC_Chemistry_P2_2023_MJ.pdf",pdfPages:[1],
+      totalMarks:2,parts:[{items:[{marks:2,prompt:"Complete table",
+        explanation:"Two source values",markScheme:{points:["10","20"]},
+        response:{type:"table",table}}]}]};
+    const invalid=buildChemistryHistoricalVerificationInventory([question]);
+    expect(invalid.totals.invalidTableGroups).toBe(1);
+    expect(invalid.totals.keyedTables).toBe(1);
+    const corrected=buildChemistryHistoricalVerificationInventory([{
+      ...question,parts:[{items:[{...question.parts[0].items[0],
+        response:{type:"table",table:{...table,markGroups:[[0],[1]]}}}]}]
+    }]);
+    expect(corrected.totals.invalidTableGroups).toBe(0);
+  });
+
   test("verification inventory does not call unkeyed tables verified",()=>{
     const stub={id:"TABLE-AUDIT",sourceId:"CHEM-P2-2023-MJ",
       sourceFile:"CSEC_Chemistry_P2_2023_MJ.pdf",pdfPages:[1],
