@@ -1,0 +1,354 @@
+// Archive supplied by the user in FNH.zip on 2026-10-13.
+// Source discovery is NOT question transcription or mark-scheme verification.
+// Do not expose these PDFs as exam-ready historical papers until source
+// wording, figures, answer keys and marking have been checked by a reviewer.
+export const FNH_SUPPLIED_ARCHIVE = Object.freeze([
+  {
+    "id": "FNH-P1-2003-MJ",
+    "paper": 1,
+    "year": 2003,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_1_-_May_June_2003.pdf",
+    "sourceFormat": "text-layer",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P1-2004-MJ",
+    "paper": 1,
+    "year": 2004,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_1_-_May_June_2004.pdf",
+    "sourceFormat": "text-layer",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P1-2005-MJ",
+    "paper": 1,
+    "year": 2005,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_1_-_May_June_2005.pdf",
+    "sourceFormat": "text-layer",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P1-2006-MJ",
+    "paper": 1,
+    "year": 2006,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_1_-_May_June_2006.pdf",
+    "sourceFormat": "text-layer",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P1-2007-MJ",
+    "paper": 1,
+    "year": 2007,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_1_-_May_June_2007.pdf",
+    "sourceFormat": "text-layer",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P1-2008-MJ",
+    "paper": 1,
+    "year": 2008,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_1_-_May_June_2008.pdf",
+    "sourceFormat": "text-layer",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P1-2009-MJ",
+    "paper": 1,
+    "year": 2009,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_1_-_May_June_2009.pdf",
+    "sourceFormat": "text-layer",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P1-2014-MJ",
+    "paper": 1,
+    "year": 2014,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_1_-_May_June_2014.pdf",
+    "sourceFormat": "scanned-image",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P1-2015-MJ",
+    "paper": 1,
+    "year": 2015,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_1_-_May_June_2015.pdf",
+    "sourceFormat": "scanned-image",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P1-2016-MJ",
+    "paper": 1,
+    "year": 2016,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_1_-_May_June_2016.pdf",
+    "sourceFormat": "scanned-image",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P1-2017-MJ",
+    "paper": 1,
+    "year": 2017,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_1_-_May_June_2017.pdf",
+    "sourceFormat": "scanned-image",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P1-2018-MJ",
+    "paper": 1,
+    "year": 2018,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_1_-_May_June_2018.pdf",
+    "sourceFormat": "scanned-image",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P1-2019-MJ",
+    "paper": 1,
+    "year": 2019,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_1_-_May_June_2019.pdf",
+    "sourceFormat": "scanned-image",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P1-2020-MJ",
+    "paper": 1,
+    "year": 2020,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_1_-_May_June_2020.pdf",
+    "sourceFormat": "scanned-image",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P1-2021-MJ",
+    "paper": 1,
+    "year": 2021,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_1_-_May_June_2021.pdf",
+    "sourceFormat": "scanned-image",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P1-2026-MJ",
+    "paper": 1,
+    "year": 2026,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_1_-_May_June_2026.pdf",
+    "sourceFormat": "scanned-image",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P2-2005-MJ",
+    "paper": 2,
+    "year": 2005,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_2_-_May_June_2005.pdf",
+    "sourceFormat": "text-layer",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P2-2006-MJ",
+    "paper": 2,
+    "year": 2006,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_2_-_May_June_2006.pdf",
+    "sourceFormat": "text-layer",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P2-2008-MJ",
+    "paper": 2,
+    "year": 2008,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_2_-_May_June_2008.pdf",
+    "sourceFormat": "text-layer",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P2-2009-MJ",
+    "paper": 2,
+    "year": 2009,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_2_-_May_June_2009.pdf",
+    "sourceFormat": "text-layer",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P2-2010-MJ",
+    "paper": 2,
+    "year": 2010,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_2_-_May_June_2010.pdf",
+    "sourceFormat": "text-layer",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P2-2011-MJ",
+    "paper": 2,
+    "year": 2011,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_2_-_May_June_2011.pdf",
+    "sourceFormat": "scanned-image",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P2-2012-MJ",
+    "paper": 2,
+    "year": 2012,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_2_-_May_June_2012.pdf",
+    "sourceFormat": "scanned-image",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P2-2013-MJ",
+    "paper": 2,
+    "year": 2013,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_2_-_May_June_2013.pdf",
+    "sourceFormat": "scanned-image",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P2-2014-MJ",
+    "paper": 2,
+    "year": 2014,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_2_-_May_June_2014.pdf",
+    "sourceFormat": "text-layer",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P2-2015-MJ",
+    "paper": 2,
+    "year": 2015,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_2_-_May_June_2015.pdf",
+    "sourceFormat": "text-layer",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P2-2016-MJ",
+    "paper": 2,
+    "year": 2016,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_2_-_May_June_2016.pdf",
+    "sourceFormat": "text-layer",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P2-2017-MJ",
+    "paper": 2,
+    "year": 2017,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_2_-_May_June_2017.pdf",
+    "sourceFormat": "text-layer",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P2-2018-MJ",
+    "paper": 2,
+    "year": 2018,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_2_-_May_June_2018.pdf",
+    "sourceFormat": "scanned-image",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P2-2019-MJ",
+    "paper": 2,
+    "year": 2019,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_2_-_May_June_2019.pdf",
+    "sourceFormat": "scanned-image",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P2-2021-MJ",
+    "paper": 2,
+    "year": 2021,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_2_-_May_June_2021.pdf",
+    "sourceFormat": "scanned-image",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P2-2022-MJ",
+    "paper": 2,
+    "year": 2022,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_2_-_May_June_2022.pdf",
+    "sourceFormat": "scanned-image",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P2-2024-MJ",
+    "paper": 2,
+    "year": 2024,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_2_-_May_June_2024.pdf",
+    "sourceFormat": "scanned-image",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  },
+  {
+    "id": "FNH-P2-2026-MJ",
+    "paper": 2,
+    "year": 2026,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_2_-_May_June_2026.pdf",
+    "sourceFormat": "scanned-image",
+    "reviewStatus": "requires-question-and-key-verification",
+    "verifiedQuestionCount": 0
+  }
+]);
+export const FNH_ARCHIVE_SUMMARY = Object.freeze({paper1:16,paper2:18,unique:34,
+  duplicatedSource:"CSEC_FNH_Paper_1_-_May_June_2026 (1).pdf",
+  duplicationOf:"CSEC_FNH_Paper_1_-_May_June_2026.pdf",
+  sourceNote:"The supplied July 2025 syllabus and question PDFs are reference material. Historical scans are not yet verified question banks.",
+});
+export function fnhVerifiedArchivePaper(id){
+  return FNH_SUPPLIED_ARCHIVE.find(row=>row.id===id&&row.verifiedQuestionCount>0&&row.reviewStatus==="approved")||null;
+}
