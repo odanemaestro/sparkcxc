@@ -850,6 +850,15 @@ describe("CSEC Chemistry course V1",()=>{
     expect(totals.fullyDraftedPapers).toBe(18);
     expect(totals.approvedQuestions).toBe(0);
     expect(totals.readyPapers).toBe(0);
+    const outstanding=papers.filter(row=>!row.paperComplete);
+    expect(outstanding.map(row=>row.sourceId)).toEqual([
+      "CHEM-P2-2005-MJ","CHEM-P2-2006-MJ","CHEM-P2-2007-MJ",
+      "CHEM-P2-2008-MJ","CHEM-P2-2009-MJ","CHEM-P2-2017-JAN",
+      "CHEM-P2-2018-JAN","CHEM-P2-2023-MJ","CHEM-P2-2024-JAN",
+      "CHEM-P2-2024-MJ"
+    ]);
+    expect(outstanding.reduce((sum,row)=>sum+row.missingNumbers.length,0)).toBe(59);
+    expect(outstanding.every(row=>row.draftedQuestions===0)).toBe(true);
     expect(orphanDrafts).toEqual([]);
     expect(duplicateQuestionNumbers).toEqual([]);
     expect(papers.find(row=>row.sourceId==="CHEM-P2-2025-JAN")).toMatchObject({
