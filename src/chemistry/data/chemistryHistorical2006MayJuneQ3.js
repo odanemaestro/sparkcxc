@@ -6,6 +6,7 @@ export const CHEMISTRY_2006_MJ_Q3_DRAFT=Object.freeze({
  title:"Methanol, pentanol, ethyl ether, propanoic acid and ethanol preparation",kind:"structured",
  learnerFacing:false,status:"draft-needs-second-source-review",answerSchemeSource:"SPARK-authored provisional",
  diagramStatus:"Source Figure 4 fully displayed ethene and reaction arrows, Figure 3 organic A-D, two pentan-1-ol isomer drawing boxes and ester drawing box require exact SVG source overlay and atom valence QA.",
+ sourceVerificationNote:"Assistant first-pass source comparison against printed 2006 PDF pages 8–9; source figures and all examiner rubrics remain unapproved.",
  sourceIssues:[
  "Compound A is methanol CH₃OH, B is propanoic acid CH₃CH₂COOH, C is a straight five-carbon alcohol pentan-1-ol, D is ethoxyethane (diethyl ether). A and C are the homologous alcohol pair.",
  "E is ethanol C₂H₅OH: prepared by hydration of ethene or fermentation of glucose; F in complete combustion is CO₂. Ethanol with compound B forms ethyl propanoate, not a methyl or pentyl ester.",
@@ -13,13 +14,13 @@ export const CHEMISTRY_2006_MJ_Q3_DRAFT=Object.freeze({
  ],
  parts:[
  {label:"(a)",items:[
- item("(i)","Identify two members of same homologous series from compounds A-D.",1,
+ item("(i)","Which compounds belong to the same homologous series?",1,
  ["Compounds A and C."],
  "Both methanol and pentan-1-ol are alcohols."),
- item("(ii)","Name their homologous series and reason.",2,
+ item("(ii)","State the homologous series to which the compounds you named belong, and give a reason for placing them in the same homologous series.",2,
  ["Alcohols (alkanols).","Both have a hydroxyl –OH functional group on saturated carbon chains."],
  "Alcohol members have –OH and general saturated acyclic formula CₙH₂ₙ₊₁OH."),
- item("(iii)","Draw and name two distinct structural isomers of five-carbon alcohol C.",4,
+ item("(iii)","Draw fully displayed structures of ANY TWO structural isomers of Compound C. Give the name of EACH isomer you have drawn.",4,
  ["One valid C₅H₁₂O alcohol isomer, e.g. pentan-2-ol, drawn fully with correct valences.","Correct name pentan-2-ol matching illustrated structure.","A second different C₅H₁₂O alcohol isomer, e.g. 2-methylbutan-1-ol, fully displayed.","Correct name 2-methylbutan-1-ol matching its structure."],
  "Position or chain isomers retain the same molecular formula but differ in OH position or carbon skeleton.",{type:"drawing"})
  ]},
