@@ -49,6 +49,7 @@ describe("CSEC Chemistry Paper 1 simulated examination",()=>{
     await startExam();
     fireEvent.click(screen.getByLabelText(/B\. Mg²⁺/));
     fireEvent.click(screen.getByText("Submit paper"));
+    fireEvent.click(screen.getByRole("button",{name:"Submit examination"}));
     expect(await screen.findByText(/Practice review: 1\/1/)).toBeInTheDocument();
     expect(screen.getAllByText("B. Mg²⁺")).toHaveLength(2);
     expect(screen.getByText("Magnesium loses two electrons.")).toBeInTheDocument();
@@ -74,6 +75,7 @@ describe("CSEC Chemistry Paper 1 simulated examination",()=>{
     await startExam();
     fireEvent.click(screen.getByLabelText(/B\. Mg²⁺/));
     fireEvent.click(screen.getByText("Submit paper"));
+    fireEvent.click(screen.getByRole("button",{name:"Submit examination"}));
     await waitFor(()=>expect(supabase.rpc).toHaveBeenCalledWith(
       "spark_record_subject_progress",
       expect.objectContaining({
