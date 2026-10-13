@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from "react";
 import FnhPaper1Exam from "./FnhPaper1Exam";
 import FnhPaper2Exam from "./FnhPaper2Exam";
+import FnhPracticalWorkbook from "./FnhPracticalWorkbook";
 import {FNH_SUPPLIED_ARCHIVE} from "../data/fnhPastPaperInventory";
 import "./fnhPractice.css";
 
@@ -49,6 +50,7 @@ export default function FnhPracticeHub({supabase,userId,onBack}){
     onBack={()=>setView("home")} onStart={()=>setView(view==="paper1"?"exam1":"exam2")}/>;
   if(view==="exam1")return <FnhPaper1Exam supabase={supabase} userId={userId} onBack={()=>setView("paper1")}/>;
   if(view==="exam2")return <FnhPaper2Exam supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
+  if(view==="workbook")return <FnhPracticalWorkbook userId={userId} onBack={()=>setView("home")}/>;
   return <main className="fnh-exam fnh-practice-home"><div className="fnh-exam-container">
     <div className="fnh-exam-top"><button className="fnh-outline" type="button" onClick={onBack}>← Back to practice</button></div>
     <header className="fnh-exam-card fnh-library-hero"><small>CSEC FOOD, NUTRITION AND HEALTH</small><h1>Choose an examination paper</h1><p>Practise Caribbean food and nutrition knowledge, food safety, meal planning and practical decision-making in a CSEC-style test.</p></header>
@@ -59,6 +61,10 @@ export default function FnhPracticeHub({supabase,userId,onBack}){
       <button type="button" onClick={()=>setView("paper2")}>
         <span className="fnh-choice-number">02</span><span><small>STRUCTURED RESPONSE</small><strong>Paper 2</strong><span>6 questions · 150 minutes · Model marking review</span></span><b aria-hidden="true">→</b>
       </button>
+    </section>
+    <section className="fnh-exam-card fnh-library-paper"><span className="fnh-library-eyebrow">PRACTICAL SKILLS</span>
+      <h2>SBA practical workbook</h2><p>Plan 16 practical food activities, record evidence and prepare for three moderated assignments. All competency marks require teacher assessment.</p>
+      <button type="button" className="fnh-primary" onClick={()=>setView("workbook")}>Open workbook →</button>
     </section>
   </div></main>;
 }
