@@ -100,7 +100,7 @@ export default function ChemistryPaper1Exam({onBack,supabase,userId}){
     setAnswers({});setFlaggedItems({});setEndsAt(null);
     setActive(0);setRemaining(EXAM_SECONDS);setPhase("instructions");scrollTop();
   }
-  const scores=useMemo(()=>exam.reduce((n,q)=>n+Number(answers[q.id]===q.answer),0),[exam,answers]);
+  const scores=useMemo(()=>exam.reduce((n,q)=>n+Number(Boolean(answers[q.id])&&answers[q.id]===q.answer),0),[exam,answers]);
   // Use the same canonical subject progress and recommendation-outcome pipeline as Paper 02.
   useEffect(()=>{
     if(!submitted||!paper||!exam.length||!userId||!supabase?.rpc)return;
@@ -193,7 +193,7 @@ export default function ChemistryPaper1Exam({onBack,supabase,userId}){
           const selected=answers[q.id];
           const correct=q.answer;
           return <article key={q.id} className="chem-p1-review">
-            <h3>Question {i+1}: {selected===correct?"Correct":selected?"Incorrect":"Not answered"}</h3>
+            <h3>Question {i+1}: {selected&&selected===correct?"Correct":selected?"Incorrect":"Not answered"}</h3>
             {q.stimulus&&stimuli[q.stimulus]?<div className="chem-p1-stimulus"><p>{stimuli[q.stimulus].text}</p>{(stimuli[q.stimulus].diagrams||[]).map(d=><React.Fragment key={d}>{renderFigure(d)}</React.Fragment>)}</div>:null}
             <p>{q.stem}</p>{q.stem_after&&<p>{q.stem_after}</p>}
             {(q.diagrams||[]).map(d=><React.Fragment key={d}>{renderFigure(d)}</React.Fragment>)}
