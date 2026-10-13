@@ -26,16 +26,16 @@ export const CHEMISTRY_2007_MJ_Q5_DRAFT=Object.freeze({
     "An amphoteric oxide reacts with both acids and bases. Acidic oxides react with water to form acidic solutions.")
   ]},
   {label:"(c)",items:[
-   item("(i)","Write chemical formula for sulfur(IV) oxide.",1,["SO₂."],"Sulfur is in oxidation state +4 and oxygen is −2."),
-   item("(ii)","Write equation for sulfur(IV) oxide reacting with water.",1,
+   item("(i)","Write the formula for sulphur (IV) oxide.",1,["SO₂."],"Sulfur is in oxidation state +4 and oxygen is −2."),
+   item("(ii)","Write an equation for the reaction between sulphur (IV) oxide and water.",1,
     ["SO₂(g)+H₂O(l)⇌H₂SO₃(aq), a simplified representation of dissolved sulfur dioxide acidity."],
     "Sulfur dioxide dissolves in rainwater forming an acidic system.")
   ]},
   {label:"(d)",items:[
-   item("(i)","Name an alkaline powder for removing acidic exhaust gases and give a reaction.",2,
+   item("(i)","Give the name of ONE reagent that could be used to remove acidic oxides from factory exhaust air. Support your answer by writing a chemical equation, using ONE of the named pollutants.",2,
     ["Powdered limestone/calcium carbonate (CaCO₃).","CaCO₃(s)+SO₂(g)→CaSO₃(s)+CO₂(g), or Ca(OH)₂+SO₂→CaSO₃+H₂O."],
     "Dry flue-gas sorbents react with sulfur dioxide, forming solid sulfites/sulfates."),
-   item("(ii)","Explain why the reagent should be powdered.",2,
+   item("(ii)","Suggest why the reagent you have named above should be used in the powdered form.",2,
     ["Small particles give a much greater contact surface area per unit mass.","More contact between gas and reagent increases reaction rate/acid gas removal efficiency."],
     "Fine powder exposes more reactive surface to flowing exhaust gas.")
   ]}
