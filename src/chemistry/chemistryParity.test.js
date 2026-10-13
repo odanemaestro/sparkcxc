@@ -26,6 +26,8 @@ describe("CSEC Chemistry shared learner experience parity",()=>{
     expect(structure.sections).toHaveLength(CHEMISTRY_SECTIONS.length);
     expect(structure.topics).toHaveLength(CHEMISTRY_TOPICS.length);
     expect(cards.length).toBeGreaterThan(CHEMISTRY_TOPICS.length);
+    expect(CHEMISTRY_TOPICS.every(topic=>topic.metadata.lesson.flashcards.length>0)).toBe(true);
+    expect(CHEMISTRY_TOPICS.flatMap(topic=>topic.metadata.lesson.flashcards).every(card=>card.front&&card.back)).toBe(true);
     expect(new Set(cards.map(card=>card.id)).size).toBe(cards.length);
     expect(cards.every(card=>card.front&&card.back&&card.topicId)).toBe(true);
     expect(cards.every(card=>CHEMISTRY_TOPICS.some(topic=>topic.id===card.topicId))).toBe(true);
