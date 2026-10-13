@@ -2,7 +2,8 @@ begin;
 
 -- SPARK Chemistry progress notification parity
 --
--- Chemistry records lessons, labs, flashcards, Paper 01 and Paper 02 results\n-- through the canonical spark_subject_activity_events model. This trigger gives Chemistry
+-- Chemistry records lessons, labs, flashcards, Paper 01 and Paper 02 results
+-- through the canonical spark_subject_activity_events model. This trigger gives Chemistry
 -- the same Notification Centre, Web Push and linked-parent behaviour used by
 -- Physics, Information Technology, Integrated Science and Social Studies.
 
@@ -159,7 +160,7 @@ begin
     v_parent_message := format(
       '%s completed %s.',
       v_student_name,
-      coalesce(nullif(trim(new.title), ''), 'an Chemistry lesson')
+      coalesce(nullif(trim(new.title), ''), 'a Chemistry lesson')
     );
     v_dedupe := 'chemistry:lesson:' || new.user_id::text || ':' ||
       md5(lower(coalesce(new.activity_key, new.id::text)));
@@ -181,7 +182,7 @@ begin
     v_parent_message := format(
       '%s completed %s%s.',
       v_student_name,
-      coalesce(nullif(trim(new.title), ''), 'an Chemistry topic practice set'),
+      coalesce(nullif(trim(new.title), ''), 'a Chemistry topic practice set'),
       case when v_percent is null then ''
         else ' and scored ' || trim(to_char(v_percent, 'FM999990.0')) || '%'
       end
@@ -206,7 +207,7 @@ begin
     v_parent_message := format(
       '%s completed %s%s.',
       v_student_name,
-      coalesce(nullif(trim(new.title), ''), 'an Chemistry module checkpoint'),
+      coalesce(nullif(trim(new.title), ''), 'a Chemistry module checkpoint'),
       case when v_percent is null then ''
         else ' and scored ' || trim(to_char(v_percent, 'FM999990.0')) || '%'
       end
