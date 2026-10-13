@@ -164,6 +164,7 @@ const SPARK_SUBJECTS = getSparkSubjectRegistry({
   socialStudies: { sections: 4, topics: 39, objectives: 84, mcq: 156 },
   englishA: { sections: 3, topics: 29, paper1Items: 60, sourcePapers: 24, flashcards: 145 },
   chemistry: { sections: 3, topics: 21, objectives: 119, paper2HistoricalPapers: 28, paper2PracticeSets: 6, flashcards: 119 },
+  foodNutritionAndHealth:{sections:7,topics:25,objectives:87,paper1Items:60,paper2PracticeSets:1,flashcards:87},
 });
 
 const VIEW_ROUTE_PATHS = Object.freeze({
@@ -186,6 +187,7 @@ const VIEW_ROUTE_PATHS = Object.freeze({
   "practice-social-studies": "/practice/social-studies",
   "practice-english-a": "/practice/english-a",
   "practice-chemistry": "/practice/chemistry",
+  "practice-food-nutrition-and-health":"/practice/food-nutrition-and-health",
   // SPARK_PHYSICS_SECTION_A_RC1_ROUTES
   physics: "/study/physics",
   "information-technology": "/study/information-technology",
@@ -218,6 +220,7 @@ const ROUTE_PATH_VIEWS = Object.freeze({
   "/practice/social-studies": "practice-social-studies",
   "/practice/english-a": "practice-english-a",
   "/practice/chemistry": "practice-chemistry",
+  "/practice/food-nutrition-and-health":"practice-food-nutrition-and-health",
   "/study/physics": PHYSICS_SECTION_A_ENABLED ? "physics" : "home",
   "/physics": PHYSICS_SECTION_A_ENABLED ? "physics" : "home",
   "/study/information-technology": "information-technology",
@@ -284,6 +287,7 @@ function viewFromBrowserHash() {
   if (normalizedPath === "/practice/social-studies" || normalizedPath.startsWith("/practice/social-studies/")) return "practice-social-studies";
   if (normalizedPath === "/practice/english-a" || normalizedPath.startsWith("/practice/english-a/")) return "practice-english-a";
   if (normalizedPath === "/practice/chemistry" || normalizedPath.startsWith("/practice/chemistry/")) return "practice-chemistry";
+  if (normalizedPath === "/practice/food-nutrition-and-health" || normalizedPath.startsWith("/practice/food-nutrition-and-health/")) return "practice-food-nutrition-and-health";
   return ROUTE_PATH_VIEWS[normalizedPath] || "home";
 }
 
@@ -7596,6 +7600,7 @@ const handleLogout = async () => {
   const appHasSocialStudies = appStudentEnrolledSubjectIds.has("social-studies");
   const appHasEnglishA = appStudentEnrolledSubjectIds.has("english-a");
   const appHasChemistry = appStudentEnrolledSubjectIds.has("chemistry");
+  const appHasFoodNutritionAndHealth=appStudentEnrolledSubjectIds.has("food-nutrition-and-health");
   const appGenericStudySubjectId = view === "generic-study"
     ? genericStudySubjectFromBrowserHash()
     : null;
@@ -7795,7 +7800,7 @@ if (loading || authenticatedRolePending) {
           CSEC Physics study is available from a student account.
         </div>
       )}
-      {(view === "practice" || view === "practice-math" || view === "practice-physics" || view === "practice-information-technology" || view === "practice-integrated-science" || view === "practice-social-studies" || view === "practice-english-a" || view === "practice-chemistry") && session && profile?.role === "student" && (
+      {(view === "practice" || view === "practice-math" || view === "practice-physics" || view === "practice-information-technology" || view === "practice-integrated-science" || view === "practice-social-studies" || view === "practice-english-a" || view === "practice-chemistry" || view === "practice-food-nutrition-and-health") && session && profile?.role === "student" && (
         appSubjectAccessPending
           ? <SparkLoader variant="section" label="Loading your practice subjects" />
           : (view === "practice-math" && !appHasMathematics)
@@ -7812,6 +7817,8 @@ if (loading || authenticatedRolePending) {
                 ? <SubjectEnrollmentRequiredView subjectName="English A" onManageSubjects={openMySubjects} onBack={() => setView("practice")}/>
               : (view === "practice-chemistry" && !appHasChemistry)
                 ? <SubjectEnrollmentRequiredView subjectName="Chemistry" onManageSubjects={openMySubjects} onBack={() => setView("practice")}/>
+              : (view === "practice-food-nutrition-and-health" && !appHasFoodNutritionAndHealth)
+                ? <SubjectEnrollmentRequiredView subjectName="Food, Nutrition and Health" onManageSubjects={openMySubjects} onBack={() => setView("practice")}/>
               : appStudentEnrolledSubjects.length === 0
                 ? <SubjectEnrollmentRequiredView onManageSubjects={openMySubjects} onBack={() => setView("dashboard")}/>
                 : (
@@ -7823,7 +7830,7 @@ if (loading || authenticatedRolePending) {
                       physicsEnabled={PHYSICS_SECTION_A_ENABLED}
                       enrolledSubjectIds={appSubjectEnrollmentIds}
                       subjects={runtimeSparkSubjects}
-                      initialSubject={view === "practice-math" ? "mathematics" : view === "practice-physics" ? "physics" : view === "practice-information-technology" ? "information-technology" : view === "practice-integrated-science" ? "integrated-science" : view === "practice-social-studies" ? "social-studies" : view === "practice-english-a" ? "english-a" : view === "practice-chemistry" ? "chemistry" : null}
+                      initialSubject={view === "practice-math" ? "mathematics" : view === "practice-physics" ? "physics" : view === "practice-information-technology" ? "information-technology" : view === "practice-integrated-science" ? "integrated-science" : view === "practice-social-studies" ? "social-studies" : view === "practice-english-a" ? "english-a" : view === "practice-chemistry" ? "chemistry" : view === "practice-food-nutrition-and-health" ? "food-nutrition-and-health" : null}
                       onSubjectActivity={event => {
                         recordSparkSubjectActivity({ supabase, event }).then(result => {
                           if (result?.error && !["PGRST202", "42P01", "42883"].includes(result.error.code)) {
