@@ -3,7 +3,7 @@ import {recordSubjectActivity} from "../../subjects/subjectProgress";
 import "./chemistryPractice.css";
 import "../../integratedScience/practice/integratedScienceExam.css";
 
-const SOURCES=["2009-MJ","2010-MJ","2016-MJ","2017-MJ","2018-JAN","2018-MJ","2019-MJ","2020-JAN","2021-MJ","2023-MJ"];
+export const CHEMISTRY_PAPER1_SOURCES=["2009-MJ","2010-MJ","2016-MJ","2017-MJ","2018-JAN","2018-MJ","2019-MJ","2020-JAN","2021-MJ","2023-MJ"];
 const root=`${typeof window!=="undefined" && window.location.pathname.startsWith("/sparkcxc")?"/sparkcxc/":"/"}chemistry-paper1/`;
 const getJSON=async path=>{
   const response=await fetch(root+path,{cache:"no-store"});
@@ -24,8 +24,9 @@ const EXAM_SECONDS=75*60;
 const paperSessionKey=(userId,source)=>`spark:chemistry:paper1:${userId||"guest"}:${source}`;
 const scrollTop=()=>window.scrollTo?.({top:0,left:0,behavior:"instant"});
 function Minutes({seconds}){const left=Math.max(0,Number(seconds)||0);return <span role="timer" aria-live="off">{[Math.floor(left/3600),Math.floor((left%3600)/60),left%60].map(n=>String(n).padStart(2,"0")).join(":")}</span>;}
-export default function ChemistryPaper1Exam({onBack,supabase,userId}){
-  const [source,setSource]=useState("practice-01");
+export default function ChemistryPaper1Exam({onBack,supabase,userId,sourceId=null,onChooseAnother=null}){
+  const [source,setSource]=useState(sourceId||"practice-01");
+  const controlled=Boolean(sourceId);
   const savedAttempt=useRef(null);
   const [paper,setPaper]=useState(null),[error,setError]=useState(""),[loading,setLoading]=useState(false);
   const [answers,setAnswers]=useState({});
@@ -34,6 +35,8 @@ export default function ChemistryPaper1Exam({onBack,supabase,userId}){
   const [flaggedItems,setFlaggedItems]=useState({});
   const [endsAt,setEndsAt]=useState(null);
   const [remaining,setRemaining]=useState(EXAM_SECONDS);
+  const [showExitConfirm,setShowExitConfirm]=useState(false);
+  const [showSubmitConfirm,setShowSubmitConfirm]=useState(false);
   const submitted=phase==="review";
   const exam=paper?.questions||[];
   const current=exam[active];
@@ -92,13 +95,19 @@ export default function ChemistryPaper1Exam({onBack,supabase,userId}){
   }
   function submitExam(){
     if(phase!=="exam")return;
-    if(!window.confirm("Submit this paper? You will no longer be able to change your answers."))return;
-    setPhase("review");scrollTop();
+    setShowSubmitConfirm(true);
   }
+  function finishSubmit(){setShowSubmitConfirm(false);setPhase("review");scrollTop();}
   function selectAnother(){
     try{localStorage.removeItem(paperSessionKey(userId,source));}catch{}
     setAnswers({});setFlaggedItems({});setEndsAt(null);
     setActive(0);setRemaining(EXAM_SECONDS);setPhase("instructions");scrollTop();
+    onChooseAnother?.();
+  }
+  function exitExam(){
+    setShowExitConfirm(false);
+    // Preserve the current attempt and deadline when leaving the exam.
+    onBack?.();
   }
   const scores=useMemo(()=>exam.reduce((n,q)=>n+Number(Boolean(answers[q.id])&&answers[q.id]===q.answer),0),[exam,answers]);
   // Use the same canonical subject progress and recommendation-outcome pipeline as Paper 02.
@@ -130,7 +139,7 @@ export default function ChemistryPaper1Exam({onBack,supabase,userId}){
   if(phase==="instructions"||!paper)return <main className="is-practice-shell chem-practice-shell chem-p1-intro">
     <div className="is-practice-home-shell">
       <div className="is-practice-top-actions"><button type="button" className="is-back-button" onClick={onBack}>← Back to Chemistry practice</button></div>
-      <header className="is-practice-hero"><div><span>CSEC CHEMISTRY PAPER 01</span><h1>Choose your examination</h1><p>Select a practice paper or a historical paper, read the instructions and start when you are ready.</p></div></header>
+      {!controlled&&<><header className="is-practice-hero"><div><span>CSEC CHEMISTRY PAPER 01</span><h1>Choose your examination</h1><p>Select a practice paper or a historical paper, read the instructions and start when you are ready.</p></div></header>
       <section className="chem-p1-picker-card" aria-label="Choose your Chemistry Paper 1">
         <div className="chem-p1-picker-copy"><strong>Choose a paper</strong><p>Your timer starts only when you select Start examination.</p></div>
         <div className="chem-p1-picker-controls">
@@ -140,10 +149,10 @@ export default function ChemistryPaper1Exam({onBack,supabase,userId}){
           </div>
           <label htmlFor="chem-p1-source">Paper</label>
           <select id="chem-p1-source" aria-label="Choose Chemistry Paper 1 set" value={source} onChange={e=>setSource(e.target.value)}>
-            {isPractice?[1,2,3,4].map(n=><option key={n} value={`practice-0${n}`}>Practice set {n} · 60 questions</option>):SOURCES.map(id=><option key={id} value={id}>{id.replace("-"," ")}{id==="2010-MJ"?" · 55 questions only":""}</option>)}
+            {isPractice?[1,2,3,4].map(n=><option key={n} value={`practice-0${n}`}>Practice set {n} · 60 questions</option>):CHEMISTRY_PAPER1_SOURCES.map(id=><option key={id} value={id}>{id.replace("-"," ")}{id==="2010-MJ"?" · 55 questions only":""}</option>)}
           </select>
         </div>
-      </section>
+      </section></>}
       {loading&&<p role="status">Loading Chemistry Paper 1 questions…</p>}
       {error&&<div className="chem-p1-load-error" role="alert"><strong>Paper 1 bank unavailable</strong><p>{error}</p><button type="button" onClick={()=>setSource(current=>current==="practice-01"?"practice-02":"practice-01")}>Try another set</button></div>}
       {paper&&<section className="is-exam-instructions-card chem-p1-instructions">
@@ -176,7 +185,7 @@ export default function ChemistryPaper1Exam({onBack,supabase,userId}){
   </main>;
   return <main className="is-practice-shell chem-practice-shell chem-p1-session"><div className="is-practice-home-shell">
     <header className="chem-p1-exam-header">
-      <div><button type="button" className="is-back-button" onClick={()=>{if(submitted||window.confirm("Exit this examination? Your current attempt will be cleared."))selectAnother();}}>← {submitted?"Choose another paper":"Exit examination"}</button>
+      <div><button type="button" className="is-back-button" onClick={()=>submitted?onBack?.():setShowExitConfirm(true)}>← {submitted?"Back to paper selection":"Exit examination"}</button>
         <span>CSEC CHEMISTRY · PAPER 01</span><h1>{paperLabel}</h1><p>{submitted?"Answer review":`Question ${active+1} of ${exam.length}`}</p>
       </div>
       <div className="chem-p1-exam-timer"><span>{submitted?"Submitted":"Time remaining"}</span><strong>{submitted?"REVIEW":<Minutes seconds={remaining}/>}</strong></div>
@@ -217,5 +226,27 @@ export default function ChemistryPaper1Exam({onBack,supabase,userId}){
         <nav className="chem-p1-nav" aria-label="Go to question">{exam.map((q,i)=><button type="button" key={q.id} aria-label={`Question ${i+1}${answers[q.id]?" answered":""}${flaggedItems[q.id]?" flagged":""}`} className={`${answers[q.id]?"answered":""} ${flaggedItems[q.id]?"flagged":""}`} aria-current={active===i?"step":undefined} onClick={()=>setActive(i)}>{i+1}</button>)}</nav>
       </section>:null}
     </section>:null}
+    {showExitConfirm&&<div className="chem-exam-modal-layer" role="presentation">
+      <section className="chem-exam-modal" role="dialog" aria-modal="true" aria-labelledby="chem-exit-title">
+        <span className="chem-library-eyebrow">LEAVE EXAMINATION</span>
+        <h2 id="chem-exit-title">Exit this paper?</h2>
+        <p>Your answers and remaining time are saved. You can resume this paper when you return.</p>
+        <div className="chem-exam-modal-actions">
+          <button type="button" className="chem-exam-modal-secondary" onClick={()=>setShowExitConfirm(false)}>Keep working</button>
+          <button type="button" className="chem-exam-modal-primary" onClick={exitExam}>Save and exit</button>
+        </div>
+      </section>
+    </div>}
+    {showSubmitConfirm&&<div className="chem-exam-modal-layer" role="presentation">
+      <section className="chem-exam-modal" role="dialog" aria-modal="true" aria-labelledby="chem-submit-title">
+        <span className="chem-library-eyebrow">SUBMIT EXAMINATION</span>
+        <h2 id="chem-submit-title">Submit your paper?</h2>
+        <p>Your answers will be marked. You will not be able to edit them after submission.</p>
+        <div className="chem-exam-modal-actions">
+          <button type="button" className="chem-exam-modal-secondary" onClick={()=>setShowSubmitConfirm(false)}>Continue examination</button>
+          <button type="button" className="chem-exam-modal-primary" onClick={finishSubmit}>Submit examination</button>
+        </div>
+      </section>
+    </div>}
   </div></main>;
 }
