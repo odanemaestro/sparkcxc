@@ -1107,7 +1107,7 @@ describe("CSEC Chemistry course V1",()=>{
       expect(auditChemistryHistoricalQuestion(q).ready).toBe(false);
     }
     expect(rows[0].sourceIssues.join(" ")).toMatch(/100g of SOLUTION/);
-    expect(rows[4].sourceIssues.join(" ")).toMatch(/BLUE litmus/);
+    expect(rows[4].sourceIssues.join(" ")).toMatch(/blue litmus/i);
   });
 
   test("all five May June 2007 source questions complete the 167 historical drafts",()=>{
@@ -1123,6 +1123,20 @@ describe("CSEC Chemistry course V1",()=>{
     }
     expect(qs[0].sourceIssues.join(" ")).toMatch(/burette/i);
     expect(qs[3].sourceIssues.join(" ")).toMatch(/cycloalkane/i);
+  });
+
+  test("MgF2 and oxygen historical drawing questions provide accessible native SVG models",()=>{
+    const ionic=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.find(q=>q.id==="CHEM-P2-2007-MJ-Q3");
+    const covalent=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.find(q=>q.id==="CHEM-P2-2024-MJ-Q2");
+    const models=[ionic.parts[1].items[2].modelAnswerSvgs[0],covalent.parts[1].items[0].modelAnswerSvgs[0]];
+    models.forEach(svg=>{
+      expect(svg).toMatch(/^<svg/);
+      expect(svg).toMatch(/role="img"/);
+      expect(svg).toMatch(/<title>/);
+      expect(svg).not.toMatch(/<image\b/i);
+    });
+    expect(ionic.learnerFacing).toBe(false);
+    expect(covalent.learnerFacing).toBe(false);
   });
 
   test("historical coverage tracks 28 papers without inventing verified questions",()=>{
