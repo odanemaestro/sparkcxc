@@ -20,6 +20,13 @@ describe("CSEC Chemistry shared learner experience parity",()=>{
       paper1:true,paper2:true,labs:true
     }));
   });
+  test("Chemistry study explicitly links to flashcards using the dashboard route",()=>{
+    const fs=require("fs"),path=require("path");
+    const view=fs.readFileSync(path.join(__dirname,"../subjects/GenericSubjectStudyView.jsx"),"utf8");
+    expect(view).toContain('subjectId === "chemistry"');
+    expect(view).toContain('href="#/dashboard/flashcards/chemistry"');
+  });
+
   test("Chemistry syllabus lessons generate working shared flashcards",()=>{
     const structure=chemistryLocalStructure();
     const cards=buildGenericSubjectFlashcards(structure);
