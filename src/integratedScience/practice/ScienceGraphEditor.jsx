@@ -115,7 +115,7 @@ export default function ScienceGraphEditor({base,responses,onChange,disabled}){
     </div>
     <svg className="is-p2-graph-response" viewBox="0 0 600 335" role="img" aria-label="Student graph plot" onPointerMove={preview} onPointerLeave={()=>setHover(null)} onClick={addPoint}>
       <defs><clipPath id={clipId}><rect x="50" y="50" width="500" height="210"/></clipPath></defs>
-      <rect x="50" y="50" width="500" height="210" fill="none" stroke="currentColor"/>
+      <rect x="50" y="50" width="500" height="210" fill="transparent" pointerEvents="all" stroke="currentColor"/>
       {x&&y&&<>
         {Array.from({length:y.intervals+1},(_,i)=>{const v=y.min+i*y.step;return <g key={`y${i}`}><line x1="50" x2="550" y1={sy(v)} y2={sy(v)} stroke="currentColor" opacity=".16"/><text x="45" y={sy(v)+3} textAnchor="end" fontSize="9" fill="currentColor">{Number(v.toPrecision(5))}</text></g>;})}
         {graph.kind!=="bar" && Array.from({length:x.intervals+1},(_,i)=>{const v=x.min+i*x.step;return <g key={`x${i}`}><line x1={sx(v)} x2={sx(v)} y1="50" y2="260" stroke="currentColor" opacity=".16"/><text x={sx(v)} y="277" textAnchor="middle" fontSize="9" fill="currentColor">{Number(v.toPrecision(5))}</text></g>;})}
