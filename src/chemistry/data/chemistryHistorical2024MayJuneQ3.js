@@ -3,7 +3,7 @@ const item=(label,prompt,marks,points,explanation,response={type:"lines",lines:5
 export const CHEMISTRY_2024_MJ_Q3_DRAFT=Object.freeze({
  id:"CHEM-P2-2024-MJ-Q3",sourceId:"CHEM-P2-2024-MJ",sourceFile:"CSEC_Chemistry_P2_2024_MJ.pdf",
  pdfPages:[10,11,12],printedPages:[12,13,14],originalQuestionNumber:3,totalMarks:15,
- kind:"structured",title:"Pentene and hexane structures, hydrocarbons and combustion",
+ kind:"structured",title:"Pentane and hexane structures, hydrocarbons and combustion",
  learnerFacing:false,status:"draft-needs-second-source-review",
  answerSchemeSource:"SPARK-authored provisional; official CXC key unavailable",
  diagramStatus:"Question 3(b) source has two blank fully-displayed structural drawing boxes. Require exact SVG source boxes and valence-checked model structures.",
