@@ -201,8 +201,8 @@ describe("CSEC Chemistry course V1",()=>{
 
   test("historical draft records stay quarantined until independent source QA",()=>{
     expect(CHEMISTRY_HISTORICAL_DRAFT_SUMMARY.fullyVerifiedHistoricalQuestions).toBe(0);
-    expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS).toHaveLength(116);
-    expect(CHEMISTRY_HISTORICAL_DRAFT_SUMMARY.transcribedDraftQuestions).toBe(116);
+    expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS).toHaveLength(120);
+    expect(CHEMISTRY_HISTORICAL_DRAFT_SUMMARY.transcribedDraftQuestions).toBe(120);
     const row=CHEMISTRY_HISTORICAL_DRAFT_ITEMS[0];
     expect(row.sourceId).toBe("CHEM-P2-2025-MJ");
     expect(row.pdfPages).toEqual([2,3,4,5,6]);
@@ -222,8 +222,8 @@ describe("CSEC Chemistry course V1",()=>{
     expect(second.learnerFacing).toBe(false);
     expect(second.parts.flatMap(part=>part.items).reduce((sum,item)=>sum+item.marks,0)).toBe(15);
     expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.filter(item=>item.sourceId==="CHEM-P2-2025-MJ").map(item=>item.originalQuestionNumber)).toEqual([1,2,3,4,5,6]);
-    expect(new Set(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.map(item=>item.id)).size).toBe(116);
-    expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.reduce((sum,row)=>sum+row.totalMarks,0)).toBe(1930);
+    expect(new Set(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.map(item=>item.id)).size).toBe(120);
+    expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.reduce((sum,row)=>sum+row.totalMarks,0)).toBe(2000);
     expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.filter(item=>item.sourceId==="CHEM-P2-2025-MJ").reduce((sum,row)=>sum+row.totalMarks,0)).toBe(100);
     expect(CHEMISTRY_HISTORICAL_DRAFT_ITEMS.find(item=>item.id==="CHEM-P2-2014-MJ-Q1")?.totalMarks).toBe(25);
     const q2014=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.find(item=>item.id==="CHEM-P2-2014-MJ-Q2");
@@ -587,7 +587,7 @@ describe("CSEC Chemistry course V1",()=>{
     expect(CHEMISTRY_2019_JAN_Q1_BURETTE_SVG).toMatch(/^<svg/);
     expect(CHEMISTRY_2019_JAN_Q1_BURETTE_SVG).not.toMatch(/<image\b/i);
     expect(CHEMISTRY_2019_JAN_Q1_NUMERIC_AUDIT.nonRoughDifferenceMl).toBe(2);
-    expect(CHEMISTRY_2019_JAN_Q1_NUMERIC_AUDIT.mathematicalAverageMl).toBe(19);
+    expect(CHEMISTRY_2019_JAN_Q1_NUMERIC_AUDIT.mathematicalAverageMl).toBe(20);
     expect(CHEMISTRY_2019_JAN_Q1_NUMERIC_AUDIT.mathematicallyComputedIronPercent).toBeCloseTo(25.4448,3);
     expect(CHEMISTRY_2019_JAN_Q1_PROVISIONAL_AUDIT.needsExaminerDecision).toBe(true);
     expect(rows[0].sourceIssues.join(" ")).toMatch(/DISCORDANT/);
@@ -888,26 +888,41 @@ describe("CSEC Chemistry course V1",()=>{
     expect(auditChemistryHistoricalQuestion(q).ready).toBe(false);
   });
 
+  test("2024 January source draft has six questions and 100 correctly allocated marks",()=>{
+    const rows=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.filter(row=>row.sourceId==="CHEM-P2-2024-JAN");
+    expect(rows.map(q=>q.originalQuestionNumber)).toEqual([1,2,3,4,5,6]);
+    expect(rows.map(q=>q.totalMarks)).toEqual([25,15,15,15,15,15]);
+    rows.forEach(q=>{
+      expect(q.parts.flatMap(p=>p.items).reduce((sum,i)=>sum+i.marks,0)).toBe(q.totalMarks);
+      expect(q.parts.flatMap(p=>p.items).every(i=>i.prompt&&i.explanation&&i.markScheme?.points.length)).toBe(true);
+      expect(q.learnerFacing).toBe(false);
+      expect(auditChemistryHistoricalQuestion(q).ready).toBe(false);
+    });
+    expect(rows[0].parts[1].items[0].response.table.answers).toEqual(["153","163","169","194","216"]);
+    expect(rows[0].sourceIssues.join(" ")).toMatch(/solution volume|final solution volume/i);
+    expect(rows[4].sourceIssues.join(" ")).toMatch(/polymer/i);
+  });
+
   test("historical coverage tracks 28 papers without inventing verified questions",()=>{
     const {totals,papers,orphanDrafts,duplicateQuestionNumbers}=CHEMISTRY_HISTORICAL_COVERAGE;
     expect(papers).toHaveLength(28);
     expect(totals.sources).toBe(28);
     expect(totals.pages).toBe(568);
     expect(totals.expectedQuestions).toBe(167);
-    expect(totals.draftedQuestions).toBe(116);
-    expect(totals.draftMarks).toBe(1930);
-    expect(totals.missingQuestions).toBe(51);
-    expect(totals.fullyDraftedPapers).toBe(19);
+    expect(totals.draftedQuestions).toBe(120);
+    expect(totals.draftMarks).toBe(2000);
+    expect(totals.missingQuestions).toBe(47);
+    expect(totals.fullyDraftedPapers).toBe(20);
     expect(totals.approvedQuestions).toBe(0);
     expect(totals.readyPapers).toBe(0);
     const outstanding=papers.filter(row=>!row.paperComplete);
     expect(outstanding.map(row=>row.sourceId)).toEqual([
       "CHEM-P2-2005-MJ","CHEM-P2-2006-MJ","CHEM-P2-2007-MJ",
       "CHEM-P2-2008-MJ","CHEM-P2-2009-MJ","CHEM-P2-2017-JAN",
-      "CHEM-P2-2018-JAN","CHEM-P2-2024-JAN",
+      "CHEM-P2-2018-JAN",
       "CHEM-P2-2024-MJ"
     ]);
-    expect(outstanding.reduce((sum,row)=>sum+row.missingNumbers.length,0)).toBe(51);
+    expect(outstanding.reduce((sum,row)=>sum+row.missingNumbers.length,0)).toBe(47);
     expect(papers.find(row=>row.sourceId==="CHEM-P2-2023-MJ")).toMatchObject({draftedQuestions:6,missingNumbers:[],paperComplete:true});
     expect(orphanDrafts).toEqual([]);
     expect(duplicateQuestionNumbers).toEqual([]);
@@ -993,7 +1008,7 @@ describe("CSEC Chemistry course V1",()=>{
 
   test("historical questions cannot be published on source indexing alone",()=>{
     expect(CHEMISTRY_HISTORICAL_REVIEW_SUMMARY.approvedQuestions).toBe(0);
-    expect(CHEMISTRY_HISTORICAL_REVIEW_SUMMARY.papersWithDrafts).toBe(19);
+    expect(CHEMISTRY_HISTORICAL_REVIEW_SUMMARY.papersWithDrafts).toBe(20);
     expect(publishedChemistryHistoricalQuestions()).toHaveLength(0);
     const draft=CHEMISTRY_HISTORICAL_DRAFT_ITEMS[0];
     expect(auditChemistryHistoricalQuestion(draft).ready).toBe(false);
