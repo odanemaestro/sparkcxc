@@ -154,3 +154,8 @@ html[data-theme="dark"] .chem-practice-shell .chem-archive-tags span{color:#a8f2
 html[data-theme="dark"] .chem-p1-mode-tabs button.active{background:#155148;color:#c4fff0}
 @media(max-width:850px){.chem-practice-shell .chem-archive-card{grid-template-columns:1fr 1fr}.chem-p1-picker-card{grid-template-columns:1fr}.chem-archive-open,.chem-archive-detail{grid-column:1/-1}}
 @media(max-width:550px){.chem-practice-shell .chem-archive-card{grid-template-columns:1fr}.chem-archive-open,.chem-archive-detail{grid-column:1}.chem-p1-picker-card{padding:15px}.chem-p1-mode-tabs button{font-size:13px}}
+
+
+.chem-practice-shell .chem-archive-pdf-link{display:inline-flex;align-items:center;min-height:42px;padding:9px 15px;border-radius:10px;border:1px solid #087c73;background:#087c73;color:#fff!important;text-decoration:none;font-weight:750;margin-top:10px}
+.chem-practice-shell .chem-archive-pdf-link:hover{background:#075d57;border-color:#075d57}
+.chem-practice-shell .chem-archive-detail code{font-size:.85em;overflow-wrap:anywhere}
