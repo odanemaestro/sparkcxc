@@ -15,7 +15,12 @@ describe("Chemistry practice archive readability and paper selection",()=>{
     expect(jsx).toContain("CHEMISTRY_HISTORICAL_DRAFT_ITEMS");
     expect(jsx).toContain("View paper details");
     expect(jsx).toContain("chem-archive-question-list");
-    expect(jsx).toContain("Show provisional answers and marking notes");
+    expect(jsx).toContain("q.context");
+    expect(jsx).toContain("part.context");
+    expect(jsx).toContain("item.prompt");
+    expect(jsx).toContain("BankTable");
+    expect(jsx).toContain("TrustedBankSvg");
+    expect(jsx).toContain("Show provisional answers and explanations");
     expect(jsx).toContain("Original PDF scans are optional");
     expect(jsx).not.toContain('method:"HEAD"');
   });
