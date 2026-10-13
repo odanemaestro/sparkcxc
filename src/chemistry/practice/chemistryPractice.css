@@ -14,7 +14,7 @@
 
 
 /* Chemistry practice polish: keep all colours scoped to this course. */
-.chem-practice-shell{--chem-ink:var(--spark-ink,#122d57);--chem-muted:var(--spark-muted,#526781);--chem-surface:var(--spark-paper,#fff);--chem-outline:var(--spark-border,#d8e3ef);--chem-teal:#087c73;color:var(--chem-ink)}
+.chem-practice-shell{--chem-ink:var(--spark-ink,#122d57);--chem-muted:var(--spark-text-muted,#526781);--chem-surface:var(--spark-paper,#fff);--chem-outline:var(--spark-border,#d8e3ef);--chem-teal:#087c73;color:var(--chem-ink)}
 .chem-practice-shell .is-practice-home-shell{max-width:1190px;margin-inline:auto}
 .chem-practice-shell .is-practice-hero{background:var(--chem-surface);border:1px solid var(--chem-outline);border-radius:19px;padding:clamp(20px,3vw,32px);margin-bottom:22px}
 .chem-practice-shell .is-practice-hero h1{line-height:1.14;letter-spacing:-.025em;color:var(--chem-ink)}
@@ -179,3 +179,196 @@ html[data-theme="dark"] .chem-p1-mode-tabs button.active{background:#155148;colo
 .chem-archive-transcript ul{padding-left:22px;margin:10px 0}
 .chem-practice-shell .chem-archive-review-notice{padding:10px 12px;border-left:3px solid #0e8175;border-radius:6px;background:color-mix(in srgb,var(--chem-surface) 92%,#0e8175);color:var(--chem-ink)!important}
 @media(max-width:560px){.chem-archive-question>button{align-items:flex-start;flex-direction:column;gap:5px}.chem-archive-transcript{padding:12px}}
+
+/* Chemistry practice contrast and exam review parity. Never use --spark-muted
+   for text: it is the pale muted surface token. */
+.chem-practice-shell .is-practice-hero p,
+.chem-practice-shell .chem-p1-picker-copy p,
+.chem-practice-shell .chem-archive-detail>p,
+.chem-practice-shell .chem-archive-card p,
+.chem-practice-shell .chem-archive-question small,
+.chem-practice-shell .chem-archive-status small {
+  color:var(--spark-text-muted,#526781)!important;
+  opacity:1!important;
+}
+.chem-practice-shell .chem-archive-question,
+.chem-practice-shell .chem-archive-transcript,
+.chem-practice-shell .chem-archive-answer,
+.chem-practice-shell .chem-archive-answer p,
+.chem-practice-shell .chem-archive-answer span,
+.chem-practice-shell .chem-archive-detail {
+  color:var(--chem-ink,#142d53);
+  opacity:1;
+}
+.chem-practice-shell .chem-archive-review-notice {
+  color:var(--chem-ink,#142d53)!important;
+  opacity:1!important;
+}
+.chem-archive-exam-controls {
+  grid-column:1/-1;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex-wrap:wrap;
+  border-top:1px solid var(--chem-outline,#d8e3ef);
+  padding-top:14px;
+}
+.chem-archive-exam-controls label {
+  display:grid;
+  gap:6px;
+  color:var(--chem-ink,#142d53);
+  font-size:13px;
+  font-weight:700;
+}
+.chem-archive-exam-controls select {
+  min-height:42px;
+  padding:8px 12px;
+  border:1px solid var(--chem-outline,#d8e3ef);
+  border-radius:10px;
+  background:var(--chem-surface,#fff);
+  color:var(--chem-ink,#142d53);
+  font:inherit;
+}
+.chem-archive-exam-controls small {font-size:12px;color:var(--chem-muted,#526781);opacity:1}
+.chem-archive-start {
+  min-height:43px;
+  border:1px solid #087c73;
+  border-radius:10px;
+  padding:10px 18px;
+  font:inherit;
+  font-size:13px;
+  font-weight:800;
+  background:#087c73;
+  color:#fff;
+  cursor:pointer;
+}
+.chem-archive-start:disabled {opacity:.6;cursor:not-allowed}
+.chem-archive-start:focus-visible {outline:3px solid #23a8a1;outline-offset:3px}
+.chem-p2-root .chem-p2-question-context {
+  color:var(--chem-ink,#14294b);
+  line-height:1.75;
+  margin:20px 24px 6px;
+}
+.chem-p2-root .chem-p2-source-figure {
+  margin:20px 24px;
+  overflow-x:auto;
+  text-align:center;
+  color:var(--chem-muted,#526781);
+}
+.chem-p2-root .chem-p2-source-figure svg {max-width:100%;height:auto}
+.chem-p2-root .chem-p2-source-figure figcaption {font-size:12px;margin-top:8px}
+.chem-p2-root .chem-p2-source-notice {
+  margin:14px 0;
+  padding:13px 16px;
+  border:1px solid #a7d5cd;
+  border-left:4px solid #087c73;
+  border-radius:10px;
+  background:color-mix(in srgb,var(--chem-surface,#fff) 93%,#087c73);
+  color:var(--chem-ink,#14294b);
+  line-height:1.6;
+  opacity:1;
+}
+.chem-p2-root .chem-p2-answer-review {
+  margin:18px 0 0;
+  padding:16px;
+  border:1px solid var(--chem-outline,#d8e3ef);
+  border-radius:14px;
+  background:var(--chem-surface,#fff);
+  color:var(--chem-ink,#14294b);
+}
+.chem-p2-root .chem-p2-review-heading {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  gap:9px;
+  margin-bottom:12px;
+  color:var(--chem-ink,#14294b);
+}
+.chem-p2-root .chem-p2-review-heading>strong {font-size:16px}
+.chem-p2-root .chem-p2-review-heading>span {
+  font-size:12px;
+  color:var(--chem-muted,#526781);
+  font-weight:750;
+}
+.chem-p2-root .chem-p2-review-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  align-items:stretch;
+  gap:12px;
+}
+.chem-p2-root .chem-p2-review-column {
+  min-width:0;
+  padding:15px;
+  border:1px solid var(--chem-outline,#d8e3ef);
+  border-radius:12px;
+  background:color-mix(in srgb,var(--chem-surface,#fff) 97%,#94a3b8);
+  overflow-wrap:anywhere;
+}
+.chem-p2-root .chem-p2-correct-answer {
+  background:color-mix(in srgb,var(--chem-surface,#fff) 94%,#0e8175);
+  border-color:color-mix(in srgb,var(--chem-outline,#d8e3ef) 72%,#0e8175);
+}
+.chem-p2-root .chem-p2-review-column h4 {
+  color:var(--chem-ink,#14294b);
+  margin:0 0 12px;
+  font-size:14px;
+}
+.chem-p2-root .chem-p2-review-column p,
+.chem-p2-root .chem-p2-review-column li {
+  margin:5px 0;
+  line-height:1.65;
+  color:var(--chem-ink,#14294b);
+  opacity:1;
+}
+.chem-p2-root .chem-p2-review-column ol,
+.chem-p2-root .chem-p2-review-column ul {padding-left:22px;margin:6px 0}
+.chem-p2-root .chem-p2-correct-answer .is-bank-table {min-width:100%;width:100%;font-size:12px}
+.chem-p2-root .chem-p2-correct-answer .is-bank-table th,
+.chem-p2-root .chem-p2-correct-answer .is-bank-table td {min-width:72px;padding:8px}
+.chem-p2-root .chem-p2-review-explanation {
+  border-top:1px solid var(--chem-outline,#d8e3ef);
+  padding-top:13px;
+  margin-top:13px;
+  color:var(--chem-ink,#14294b);
+  line-height:1.6;
+}
+.chem-p2-root .chem-p2-review-explanation p {margin:5px 0;color:inherit;opacity:1}
+.chem-p2-root .chem-p2-review-criteria {margin-top:12px;color:var(--chem-ink,#14294b)}
+.chem-p2-root .chem-p2-review-criteria summary {font-weight:750;cursor:pointer}
+.chem-p2-root .chem-p2-review-criteria ul {padding-left:22px}
+.chem-p2-root .chem-p2-review-caution {color:var(--chem-ink,#14294b);line-height:1.5}
+.chem-practice-shell .chem-p1-review-answer-grid {
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;
+}
+.chem-practice-shell .chem-p1-review-answer-grid>div {
+  min-width:0;
+  border:1px solid var(--chem-outline,#d8e3ef);
+  border-radius:11px;
+  padding:14px;
+  overflow-wrap:anywhere;
+}
+.chem-practice-shell .chem-p1-review-answer-grid>div:last-child {
+  background:color-mix(in srgb,var(--chem-surface,#fff) 93%,#087c73);
+}
+.chem-practice-shell .chem-p1-review-answer-grid strong {display:block;margin-bottom:6px}
+.chem-practice-shell .chem-p1-review-answer-grid p {margin:0;color:var(--chem-ink,#142d53)}
+html[data-theme="dark"] .chem-practice-shell,
+body[data-theme="dark"] .chem-practice-shell,
+.dark .chem-practice-shell {
+  --chem-muted:var(--spark-text-muted,#b5c5d8);
+}
+html[data-theme="dark"] .chem-p2-root,
+body[data-theme="dark"] .chem-p2-root,
+.dark .chem-p2-root {
+  --chem-ink:#e8f1ff;--chem-muted:#b5c5d8;--chem-outline:#38516d;
+  --chem-surface:#172c43;
+}
+@media(max-width:650px){
+  .chem-p2-root .chem-p2-review-grid,
+  .chem-practice-shell .chem-p1-review-answer-grid {grid-template-columns:1fr}
+  .chem-p2-root .chem-p2-answer-review {padding:12px}
+  .chem-p2-root .chem-p2-question-context {margin:16px 12px 6px}
+  .chem-archive-exam-controls {align-items:stretch;flex-direction:column}
+  .chem-archive-start {width:100%}
+}
