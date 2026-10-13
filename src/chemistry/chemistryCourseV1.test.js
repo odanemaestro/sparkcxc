@@ -1211,6 +1211,19 @@ describe("CSEC Chemistry course V1",()=>{
     expect(example.totals.figureItems).toBe(1);
   });
 
+  test("May June 2008 first-pass source comparison preserves all seven draft questions",()=>{
+    const qs=CHEMISTRY_HISTORICAL_DRAFT_ITEMS.filter(q=>q.sourceId==="CHEM-P2-2008-MJ");
+    expect(qs.map(q=>q.originalQuestionNumber)).toEqual([1,2,3,4,5,6,7]);
+    expect(qs.map(q=>q.totalMarks)).toEqual([25,15,15,15,15,15,15]);
+    expect(qs.every(q=>q.sourceVerificationNote?.includes("Assistant first-pass"))).toBe(true);
+    expect(qs.every(q=>q.learnerFacing===false)).toBe(true);
+    const tableAndApparatus=qs.find(q=>q.originalQuestionNumber===2).sourceFigures;
+    expect(tableAndApparatus).toHaveLength(2);
+    expect(tableAndApparatus.every(fig=>!fig.sourceApproved && fig.svg.startsWith("<svg"))).toBe(true);
+    expect(tableAndApparatus[0].svg).toContain("₉F");
+    expect(tableAndApparatus[1].svg).toContain("Chlorine gas");
+  });
+
   test("historical coverage tracks 28 papers without inventing verified questions",()=>{
     const {totals,papers,orphanDrafts,duplicateQuestionNumbers}=CHEMISTRY_HISTORICAL_COVERAGE;
     expect(papers).toHaveLength(28);
