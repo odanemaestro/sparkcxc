@@ -168,10 +168,11 @@ export default function ChemistryPaper2Exam({supabase,userId,onBack,paperIndex=0
 
     <PaperQuestion question={q} responses={responses} onChange={update} disabled={submitted} evaluation={qEval}/>
 
-    <div className="is-exam-bottom-nav"><button type="button" className="is-exam-secondary" disabled={current===0} onClick={()=>{setCurrent(v=>Math.max(0,v-1));goTop();}}>Previous</button><span>Question {current+1} of 6</span><button type="button" className="is-exam-secondary" disabled={current===5} onClick={()=>{setCurrent(v=>Math.min(5,v+1));goTop();}}>Next</button></div>
+    <div className="chem-p2-exam-footer"><div className="is-exam-bottom-nav"><button type="button" className="is-exam-secondary" disabled={current===0} onClick={()=>{setCurrent(v=>Math.max(0,v-1));goTop();}}>Previous</button><span>Question {current+1} of 6</span><button type="button" className="is-exam-secondary" disabled={current===5} onClick={()=>{setCurrent(v=>Math.min(5,v+1));goTop();}}>Next</button></div>
 
     {!submitted&&<div className="chem-p2-submit-row"><button type="button" className="is-exam-primary" onClick={()=>setConfirmSubmit(true)}>Submit Paper 02</button></div>}
     {submitted&&<div className="chem-p2-submit-row"><button type="button" className="is-exam-primary" onClick={restart}>Start another Paper 02</button><button type="button" className="is-exam-secondary" onClick={onBack}>Back to Chemistry practice</button></div>}
+    </div>
 
     {confirmSubmit&&<div className="is-exam-confirm-layer" role="dialog" aria-modal="true" aria-label="Submit Chemistry Paper 02"><div className="is-exam-confirm-card"><h2>Submit your paper?</h2><p>You will move to the marking review and will no longer be able to edit your answers.</p><div><button type="button" className="is-exam-secondary" onClick={()=>setConfirmSubmit(false)}>Keep working</button><button type="button" className="is-exam-primary" onClick={()=>submit()}>Submit now</button></div></div></div>}
   </div></main>;
