@@ -49,11 +49,11 @@ test("invalid student step gets a visible graph preview but never an automatic s
   expect(graphPreviewAxis({min:2,max:2,step:1}).axis).toBeNull();
 });
 test("typed points accept decimals and scientific notation with meaningful row errors",()=>{
-  expect(graphPoints("0,0.02\\n20, 0.08\\n3e1,1.2e-1","line")).toEqual([
+  expect(graphPoints("0,0.02\n20, 0.08\n3e1,1.2e-1","line")).toEqual([
     {x:0,y:0.02},{x:20,y:0.08},{x:30,y:0.12}
   ]);
-  expect(graphPoints("0,0.02,20\\n40,0.16","line")).toEqual([null,{x:40,y:0.16}]);
-  expect(graphPointIssues("0,0.02,20\\n40,0.16","line")).toMatchObject([
+  expect(graphPoints("0,0.02,20\n40,0.16","line")).toEqual([null,{x:40,y:0.16}]);
+  expect(graphPointIssues("0,0.02,20\n40,0.16","line")).toMatchObject([
     {line:1,text:"0,0.02,20"}
   ]);
 });
