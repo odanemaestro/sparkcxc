@@ -6,6 +6,7 @@ export const SPARK_SUBJECT_IDS = Object.freeze({
   SOCIAL_STUDIES: "social-studies",
   ENGLISH_A: "english-a",
   CHEMISTRY: "chemistry",
+  FOOD_NUTRITION_AND_HEALTH: "food-nutrition-and-health",
 });
 
 const BASE_SUBJECTS = Object.freeze({
@@ -194,6 +195,29 @@ const BASE_SUBJECTS = Object.freeze({
       sba: true,
     }),
   }),
+  foodNutritionAndHealth: Object.freeze({
+    id:"food-nutrition-and-health",
+    name:"CSEC Food, Nutrition and Health",
+    shortName:"Food, Nutrition and Health",
+    qualification:"CSEC",
+    mark:"FH",
+    description:"Learn all seven Food, Nutrition and Health syllabus sections with clear Caribbean examples, interactive food-science activities and practice.",
+    enabled:true,
+    status:"draft",
+    sortOrder:47,
+    implementation:"generic",
+    studyView:"study",
+    routes:Object.freeze({
+      study:"/study/food-nutrition-and-health",
+      practice:"/practice/food-nutrition-and-health",
+      flashcards:"/dashboard/flashcards/food-nutrition-and-health",
+      progress:"/dashboard/progress",
+    }),
+    capabilities:Object.freeze({
+      study:true,practice:false,flashcards:true,progress:true,
+      paper1:false,paper2:false,adaptive:false,structured:false,labs:true,sba:true,
+    }),
+  }),
   informationTechnology: Object.freeze({
     id: "information-technology",
     name: "CSEC Information Technology",
@@ -228,7 +252,7 @@ const BASE_SUBJECTS = Object.freeze({
 
 });
 
-export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = {}, physics = {}, informationTechnology = {}, integratedScience = {}, socialStudies = {}, englishA = {}, chemistry = {} } = {}) {
+export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = {}, physics = {}, informationTechnology = {}, integratedScience = {}, socialStudies = {}, englishA = {}, chemistry = {}, foodNutritionAndHealth = {} } = {}) {
   const mathematicsSubject = {
     ...BASE_SUBJECTS.mathematics,
     stats: {
@@ -307,7 +331,16 @@ export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = 
       flashcards: Number(socialStudies.flashcards || 342),
     },
   };
-  return Object.freeze([mathematicsSubject, physicsSubject, informationTechnologySubject, integratedScienceSubject, socialStudiesSubject, chemistrySubject, englishASubject]);
+  const foodNutritionAndHealthSubject={
+    ...BASE_SUBJECTS.foodNutritionAndHealth,
+    stats:{
+      sections:Number(foodNutritionAndHealth.sections||7),
+      topics:Number(foodNutritionAndHealth.topics||25),
+      objectives:Number(foodNutritionAndHealth.objectives||87),
+      flashcards:Number(foodNutritionAndHealth.flashcards||87),
+    },
+  };
+  return Object.freeze([mathematicsSubject, physicsSubject, informationTechnologySubject, integratedScienceSubject, socialStudiesSubject, chemistrySubject, foodNutritionAndHealthSubject, englishASubject]);
 }
 
 export function enabledSparkSubjects(subjects) {
