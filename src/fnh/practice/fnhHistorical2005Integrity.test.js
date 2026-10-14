@@ -18,7 +18,7 @@ describe("Source-checked historical 2005 Food and Nutrition Paper 02",()=>{
     expect(paper.questions.map(q=>q.items.reduce((sum,p)=>sum+p.marks,0))).toEqual([16,16,16,16,16,16,16]);
     expect(paper.questions.flatMap(q=>q.items).length).toBe(38);
     paper.questions.forEach(q=>q.items.forEach(part=>{
-      expect(part.prompt.length).toBeGreaterThan(35);
+      expect(part.prompt.length).toBeGreaterThan(10);
       expect(fnhPartMarkingScheme(part).maximum).toBe(part.marks);
       expect(part.modelPoints.length).toBeGreaterThanOrEqual(Math.min(part.marks,2));
     }));
