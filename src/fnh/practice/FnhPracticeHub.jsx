@@ -60,11 +60,16 @@ function FnhPaperLibrary({paper,onBack,onStart,onStartHistorical}){
       </div>
       <div className="fnh-library-archive-grid">{years.map(source=><article key={source.id} className="fnh-exam-card fnh-archive-card">
         <small>HISTORICAL SOURCE · MAY/JUNE</small><h3>{source.year} Paper {paper}</h3>
+        {source.sourceIdentityVerified===false?<>
+          <p>Incorrect source: {source.actualSourceSession} {source.actualSourceSubject} {source.actualSourcePaper}</p>
+          <span className="fnh-archive-status">The supplied file is not a Food, Nutrition and Health paper. Please replace the PDF.</span>
+        </>:<>
         <p>{fnhHistoricalPaperFormat(source)?.subject} · {source.sourceFormat==="scanned-image"?"Scanned pages":"Text-layer source"}</p>
         {fnhHistoricalSimulatorReady(source.id)?<>
           <span className="fnh-archive-status">Original questions transcribed and checked</span>
           <button type="button" className="fnh-primary" onClick={()=>onStartHistorical(source.id)}>Start examination →</button>
         </>:<><span className="fnh-archive-status">Question and marking checks pending</span>{source.paper===1&&FNH_HISTORICAL_PAPER1_TRANSCRIPTION_PROGRESS.find(row=>row.id===source.id)?.reportedTranscribed>0&&<small className="fnh-archive-progress">{FNH_HISTORICAL_PAPER1_TRANSCRIPTION_PROGRESS.find(row=>row.id===source.id)?.reportedTranscribed} source questions transcribed · answer keys require checking</small>}</>}
+        </>}
       </article>)}</div>
     </>}
   </div></main>;
