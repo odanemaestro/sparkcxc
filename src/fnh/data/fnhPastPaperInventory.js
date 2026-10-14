@@ -30,7 +30,9 @@ export const FNH_SUPPLIED_ARCHIVE = Object.freeze([
     "sourceSha256": "189725467d2d77e5a5004d84ff0714405a4a5478a8035ea3fae69d058d002a67",
     "sourceReuploadChecked": true,
     "missingSourceOptionQuestionNumbers": [46,47],
-    "sourceQualityNote": "Original and 2026-10-14 reupload are byte-for-byte identical. Questions 46 and 47 refer to four shared options, but none are printed in the supplied scanned page. The two questions stay excluded from review until an authoritative source is available.",
+    "crossSourceCandidateOptionsFoundFor": [46,47],
+    "crossSourceCandidateOptionsVerifiedFor2004": false,
+    "sourceQualityNote": "Original and 2026-10-14 reupload are byte-for-byte identical. The 2004 Q46-47 answer choices are absent. The same question pair in the supplied 2005 Paper 1 Q52-53 and a separately posted 2015 paper contains four shared choices; these are only a cross-year reconstruction, not authenticated 2004 original choices. Questions 46-47 remain withheld from student source review and grading pending direct 2004 source verification.",
     "answerKeyStatus": "missing-two-source-options-and-independent-review-required"
   },
   {
@@ -47,7 +49,11 @@ export const FNH_SUPPLIED_ARCHIVE = Object.freeze([
     "sourceSha256": "3b7bbb9d96d759717571e408ebf876af22a259d88853ffe9d018a1a6e59edc0e",
     "sourceReuploadChecked": true,
     "sourceLastVisibleQuestion": 53,
-    "sourceQualityNote": "Original and 2026-10-14 reupload are byte-for-byte identical. The supplied seventh page ends at Question 53 and explicitly instructs GO ON TO THE NEXT PAGE; the final page containing Questions 54 to 60 was not supplied.",
+    "sourceQuestionsExpected": 60,
+    "officialExaminerReportUrl": "https://www.cxc.org/SiteAssets/2005SchoolReports/CSEC_2005_FoodandNutrition.pdf",
+    "officialExaminerReportConfirmsItemCount": true,
+    "officialExaminerReportIncludesPaper1QuestionsOrKeys": false,
+    "sourceQualityNote": "Original and 2026-10-14 reupload are byte-for-byte identical. The supplied seventh page ends at Question 53 and explicitly instructs GO ON TO THE NEXT PAGE; Questions 54-60 remain missing. The official CXC May/June 2005 subject examiner report independently confirms Paper 01 contained 60 questions but does not supply the seven original questions or marking keys.",
     "transcribedQuestionCount": 53,
     "missingSourceQuestionNumbers": [54,55,56,57,58,59,60],
     "sourceCompleteness": "missing-final-seven-items",
