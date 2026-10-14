@@ -16,6 +16,7 @@ import FoodPreservationExplorer from "./components/FoodPreservationExplorer";
 import FoodContaminationExplorer from "./components/FoodContaminationExplorer";
 import FoodMicroorganismExplorer from "./components/FoodMicroorganismExplorer";
 import FnhObjectivePractice from "../fnh/components/FnhObjectivePractice";
+import FnhDecisionLab from "../fnh/components/FnhDecisionLab";
 import {
   readSparkHashRoute,
   subscribeSparkRoute,
@@ -229,7 +230,8 @@ export function GenericLessonContent({
             />
           : subjectId === "food-nutrition-and-health"
           ? <div className="spark-fnh-interactive-model" key={model.id || model.type}>
-              {model.type === "fnh-nutrition" ? <FoodEnergyNutritionExplorer /> :
+              {["fnh-meal-builder","fnh-label-calculator","fnh-budget-planner"].includes(model.type) ? <FnhDecisionLab type={model.type}/> :
+               model.type === "fnh-nutrition" ? <FoodEnergyNutritionExplorer /> :
                model.type === "fnh-preservation" ? <FoodPreservationExplorer /> :
                model.type === "fnh-contamination" ? <FoodContaminationExplorer /> :
                model.type === "fnh-microorganisms" ? <FoodMicroorganismExplorer /> : null}
