@@ -23,6 +23,7 @@ import FnhHistorical2026Paper2Exam from "./FnhHistorical2026Paper2Exam";
 import {FNH_SUPPLIED_ARCHIVE,fnhHistoricalPaperFormat,fnhHistoricalSimulatorReady} from "../data/fnhPastPaperInventory";
 import {FNH_PAPER1_PRACTICE_SETS} from "../data/fnhPaper1Bank";
 import {FNH_PAPER2_PRACTICE_SETS} from "../data/fnhPaper2Bank";
+import {FNH_HISTORICAL_PAPER1_TRANSCRIPTION_PROGRESS} from "../data/fnhHistoricalPaper1ReleaseGate";
 import "./fnhPractice.css";
 
 const scrollTop=()=>{try{window.scrollTo?.({top:0,left:0,behavior:"instant"});}catch{}};
@@ -63,7 +64,7 @@ function FnhPaperLibrary({paper,onBack,onStart,onStartHistorical}){
         {fnhHistoricalSimulatorReady(source.id)?<>
           <span className="fnh-archive-status">Original questions transcribed and checked</span>
           <button type="button" className="fnh-primary" onClick={()=>onStartHistorical(source.id)}>Start examination →</button>
-        </>:<span className="fnh-archive-status">Question and marking checks pending</span>}
+        </>:<><span className="fnh-archive-status">Question and marking checks pending</span>{source.paper===1&&FNH_HISTORICAL_PAPER1_TRANSCRIPTION_PROGRESS.find(row=>row.id===source.id)?.reportedTranscribed>0&&<small className="fnh-archive-progress">{FNH_HISTORICAL_PAPER1_TRANSCRIPTION_PROGRESS.find(row=>row.id===source.id)?.reportedTranscribed} source questions transcribed · answer keys require checking</small>}</>}
       </article>)}</div>
     </>}
   </div></main>;
