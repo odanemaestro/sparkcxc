@@ -1,5 +1,5 @@
 // Working transcription from the user-supplied 2003 May/June Paper 01 PDF.
-// These initial candidate items are NOT released for examination simulation.
+// These seven items were visually checked against source page 1 but are NOT released for examination simulation.
 // OCR text from this source contains column-order errors. Every question
 // and its options must be visually checked against the page scan and an
 // authentic answer key before publishing. proposedAnswer is explanatory
@@ -18,7 +18,7 @@ export const FNH_P1_2003_TRANSCRIPTION_DRAFT=Object.freeze([
     "proposedAnswer": "B",
     "explanation": "Enzymatic browning is caused when enzymes act on compounds exposed by cutting or peeling.",
     "source": "CSEC_FNH_Paper_1_-_May_June_2003.pdf",
-    "sourceChecked": false,
+    "sourceChecked": true,
     "officialKeyVerified": false
   },
   {
@@ -34,7 +34,7 @@ export const FNH_P1_2003_TRANSCRIPTION_DRAFT=Object.freeze([
     "proposedAnswer": "D",
     "explanation": "Excess sugar or sugar crystals can cause crystallisation in jam.",
     "source": "CSEC_FNH_Paper_1_-_May_June_2003.pdf",
-    "sourceChecked": false,
+    "sourceChecked": true,
     "officialKeyVerified": false
   },
   {
@@ -50,7 +50,7 @@ export const FNH_P1_2003_TRANSCRIPTION_DRAFT=Object.freeze([
     "proposedAnswer": "D",
     "explanation": "Safe storage, appropriate cooking, waste disposal and personal hygiene all help prevent foodborne illness.",
     "source": "CSEC_FNH_Paper_1_-_May_June_2003.pdf",
-    "sourceChecked": false,
+    "sourceChecked": true,
     "officialKeyVerified": false
   },
   {
@@ -66,7 +66,7 @@ export const FNH_P1_2003_TRANSCRIPTION_DRAFT=Object.freeze([
     "proposedAnswer": "C",
     "explanation": "Salmonella infection can be linked to undercooked meat. Symptoms alone do not identify the organism conclusively.",
     "source": "CSEC_FNH_Paper_1_-_May_June_2003.pdf",
-    "sourceChecked": false,
+    "sourceChecked": true,
     "officialKeyVerified": false
   },
   {
@@ -82,7 +82,7 @@ export const FNH_P1_2003_TRANSCRIPTION_DRAFT=Object.freeze([
     "proposedAnswer": "A",
     "explanation": "Safe preservation reduces deterioration and food waste while extending usable storage life.",
     "source": "CSEC_FNH_Paper_1_-_May_June_2003.pdf",
-    "sourceChecked": false,
+    "sourceChecked": true,
     "officialKeyVerified": false
   },
   {
@@ -98,7 +98,7 @@ export const FNH_P1_2003_TRANSCRIPTION_DRAFT=Object.freeze([
     "proposedAnswer": "D",
     "explanation": "Freezing slows microbial activity but does not reliably kill all pathogens.",
     "source": "CSEC_FNH_Paper_1_-_May_June_2003.pdf",
-    "sourceChecked": false,
+    "sourceChecked": true,
     "officialKeyVerified": false
   },
   {
@@ -114,13 +114,13 @@ export const FNH_P1_2003_TRANSCRIPTION_DRAFT=Object.freeze([
     "proposedAnswer": "A",
     "explanation": "Adequate sugar and sufficient pectin are needed for a reliable jam gel. Acidity must also be suitable.",
     "source": "CSEC_FNH_Paper_1_-_May_June_2003.pdf",
-    "sourceChecked": false,
+    "sourceChecked": true,
     "officialKeyVerified": false
   }
 ]);
 export const FNH_P1_2003_QA=Object.freeze({
  expectedQuestions:60,transcribedCandidateQuestions:7,
- sourceVerifiedQuestions:0,officialKeyVerifiedQuestions:0,
+ sourceVerifiedQuestions:7,officialKeyVerifiedQuestions:0,
  simulatorReady:false,
  blockers:["Complete original sixty-question source transcription","Verify each stem and four options against page scans","Review all graphics and data tables","Independently validate answer keys and explanations"]
 });
