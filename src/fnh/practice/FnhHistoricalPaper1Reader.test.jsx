@@ -15,7 +15,7 @@ describe("FNH historical Paper 01 unscored review safeguards",()=>{
   expect(fnhHistoricalPaper1Reader("FNH-P1-2021-MJ")).toBeNull();
   expect(fnhHistoricalPaper1Reader("FNH-P2-2018-MJ")).toBeNull();
   expect(fnhHistoricalPaper1Reader("FNH-P1-2099-MJ")).toBeNull();
-  for(const year of [2018,2019,2020,2026]){
+  for(const year of [2014,2018,2019,2020,2026]){
    const source=fnhHistoricalPaper1Reader("FNH-P1-"+year+"-MJ");
    expect(source?.questions).toHaveLength(60);
    expect(source.scored).toBe(false);
@@ -27,8 +27,10 @@ describe("FNH historical Paper 01 unscored review safeguards",()=>{
   expect(missing.questions).toHaveLength(58);
   const partial=fnhHistoricalPaper1Reader("FNH-P1-2005-MJ");
   expect(partial.missingSourceQuestions).toEqual([54,55,56,57,58,59,60]);
-  expect(partial.questions.length).toBeLessThan(53);
-  expect(partial.questions.length).toBeGreaterThan(0);
+  expect(partial.questions).toHaveLength(53);
+  expect(partial.excludedNumbers).toEqual([]);
+  expect(partial.scored).toBe(false);
+  expect(partial.verifiedKeys).toBe(false);
  });
  test("all browser-visible records omit provisional answers and marking data",()=>{
   for(const source of FNH_SUPPLIED_ARCHIVE.filter(x=>x.paper===1)){
