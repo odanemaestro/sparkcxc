@@ -170,8 +170,10 @@ export const FNH_SUPPLIED_ARCHIVE = Object.freeze([
     "session": "May/June",
     "sourceFilename": "CSEC_FNH_Paper_2_-_May_June_2005.pdf",
     "sourceFormat": "text-layer",
-    "reviewStatus": "requires-question-and-key-verification",
-    "verifiedQuestionCount": 0
+    "reviewStatus": "source-question-text-checked",
+    "verifiedQuestionCount": 7,
+    "simulatorReady": true,
+    "referenceMarkingSource": "SPARK-authored explanatory points; official source marking key not supplied"
   },
   {
     "id": "FNH-P2-2006-MJ",
@@ -378,4 +380,8 @@ export const FNH_ARCHIVE_SUMMARY = Object.freeze({paper1:16,paper2:18,unique:34,
 });
 export function fnhVerifiedArchivePaper(id){
   return FNH_SUPPLIED_ARCHIVE.find(row=>row.id===id&&row.verifiedQuestionCount>0&&row.reviewStatus==="approved")||null;
+}
+
+export function fnhHistoricalSimulatorReady(id){
+  return FNH_SUPPLIED_ARCHIVE.find(row=>row.id===id&&row.simulatorReady===true&&row.reviewStatus==="source-question-text-checked")||null;
 }
