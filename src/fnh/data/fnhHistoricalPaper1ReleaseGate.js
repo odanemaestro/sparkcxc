@@ -129,7 +129,7 @@ export const FNH_P1_RENDERABLE_DIAGRAM_IDS=Object.freeze([
  "place-setting-2004","kitchen-u-shaped-2004","refrigerator-table-2004",
  "lunch-table-2005","menu-comparison-2005","food-safety-chart-2005",
  "lunch-table-2014","two-menus-2014","food-safety-2014","preschool-lunch-2014",
- "kitchen-layout-2006","local-dishes-table-2006",
+ "kitchen-layout-2006","caribbean-dishes-table-2006","local-dishes-table-2006",
  "kitchen-layout-2007","place-setting-2007",
  "place-setting-2008","knife-collection-2008","local-dishes-table-2008",
  "two-menus-2009","kitchen-layout-2009","local-dishes-table-2009","luncheon-menu-2009",
