@@ -2,8 +2,8 @@ import {FNH_P1_2003_TRANSCRIPTION_DRAFT,FNH_P1_2003_QA} from "./fnhHistorical200
 import {FNH_SUPPLIED_ARCHIVE} from "./fnhPastPaperInventory";
 describe("Historical FNH Paper 1 release safeguard",()=>{
   test("a partial source transcription stays unavailable as a simulated exam",()=>{
-    expect(FNH_P1_2003_QA).toMatchObject({expectedQuestions:60,simulatorReady:false,sourceVerifiedQuestions:7,officialKeyVerifiedQuestions:0});
-    expect(FNH_P1_2003_TRANSCRIPTION_DRAFT).toHaveLength(7);
+    expect(FNH_P1_2003_QA).toMatchObject({expectedQuestions:60,simulatorReady:false,sourceVerifiedQuestions:16,officialKeyVerifiedQuestions:0});
+    expect(FNH_P1_2003_TRANSCRIPTION_DRAFT).toHaveLength(16);
     expect(FNH_SUPPLIED_ARCHIVE.find(item=>item.id==="FNH-P1-2003-MJ")?.simulatorReady).not.toBe(true);
   });
   test("draft question choices have separate source/answer-key verification flags",()=>{
