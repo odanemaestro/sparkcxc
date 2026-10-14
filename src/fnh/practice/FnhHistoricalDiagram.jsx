@@ -19,6 +19,44 @@ function ean13Bars(code){
  * Keep the original missing-quantity and missing-directions clues intact.
  */
 export default function FnhHistoricalDiagram({type}){
+  if(type==="kitchen-layout-2006")return <figure className="fnh-historical-figure">
+    <svg viewBox="0 0 720 430" width="100%" role="img" aria-label="2006 Question 34 source U-shaped kitchen layout with cooker on left, sink at rear and refrigerator on right">
+      <title>2006 Paper 1, Question 34: Kitchen floor plan</title>
+      <g stroke="currentColor" strokeWidth="3" fill="none">
+        <path d="M150 60 H567 V355 H486 V147 H231 V355 H150 Z"/>
+        <rect x="298" y="69" width="118" height="59" rx="6"/>
+        <rect x="318" y="80" width="77" height="29" rx="3"/>
+        <path d="M323 85 H389 M323 92 H389 M323 99 H389"/>
+        <circle cx="338" cy="65" r="5"/><circle cx="377" cy="65" r="5"/>
+        <rect x="160" y="216" width="60" height="84" rx="3"/>
+        {[176,201].flatMap(x=>[231,278].map(y=><circle cx={x} cy={y} r="9" key={`${x}-${y}`}/>))}
+        <rect x="490" y="215" width="73" height="76"/>
+        <path d="M490 253 H563"/>
+      </g>
+      <g fill="currentColor" fontFamily="Arial,sans-serif" fontWeight="700" fontSize="19" textAnchor="middle">
+        <text x="191" y="264">1</text><text x="355" y="104">6</text><text x="526" y="265">REF.</text>
+      </g>
+    </svg>
+    <figcaption>2006 Paper 1, Question 34. Original U-shaped kitchen diagram with the numbered cooker and sink and the labelled refrigerator.</figcaption>
+  </figure>;
+  if(type==="caribbean-dishes-table-2006")return <figure className="fnh-historical-figure">
+    <svg viewBox="0 0 940 410" width="100%" role="img" aria-label="2006 Question 43 table listing the ingredients for split-peas soup, pelau and chicken roti">
+      <title>2006 Paper 1 Question 43: Three local dishes and their ingredients</title>
+      <rect x="30" y="26" width="880" height="350" fill="none" stroke="currentColor" strokeWidth="2.5"/>
+      <g stroke="currentColor" strokeWidth="2" fill="none">
+        <path d="M322 26 V376 M616 26 V376 M30 86 H910"/>
+      </g>
+      <g fill="currentColor" fontFamily="Arial,sans-serif" textAnchor="middle" fontSize="21">
+        <text x="176" y="61" fontWeight="700">Split-peas Soup</text>
+        <text x="468" y="61" fontWeight="700">Pelau</text>
+        <text x="762" y="61" fontWeight="700">Chicken Roti</text>
+        {["Green split-peas","Fresh beef","Dumplings","Green plantains","Seasonings or herbs"].map((t,i)=><text key={t} x="176" y={121+i*50}>{t}</text>)}
+        {["Chicken","Rice","Dried pigeon-peas","","Seasonings or herbs"].map((t,i)=>t?<text key={t} x="468" y={121+i*50}>{t}</text>:null)}
+        {["Chicken","Roti (shells/skins)","Potatoes","Curry","Seasonings"].map((t,i)=><text key={t} x="762" y={121+i*50}>{t}</text>)}
+      </g>
+    </svg>
+    <figcaption>2006 Paper 1, Question 43. Ingredient lists from the original Caribbean-dishes table.</figcaption>
+  </figure>;
   if(type==="table-setting-four-2005")return <figure className="fnh-historical-figure">
     <svg viewBox="0 0 850 570" width="100%" role="img" aria-label="Four-person lunch table with plate settings and serving items arranged around a central rectangular table">
       <title>2005 Paper 1, Item 23: Lunch table laid for four</title>
