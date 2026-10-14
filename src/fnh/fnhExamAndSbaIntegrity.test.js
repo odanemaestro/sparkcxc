@@ -1,4 +1,4 @@
-import {FNH_PAPER1_ORIGINAL_BANK,FNH_PAPER1_FORMAT,fnhMakePaper1} from "./data/fnhPaper1Bank";
+import {FNH_PAPER1_ORIGINAL_BANK,FNH_PAPER1_FORMAT,fnhMakePaper1,FNH_PAPER1_PRACTICE_SETS,fnhGetPaper1Set} from "./data/fnhPaper1Bank";
 import {FNH_PAPER2_ORIGINAL_SET_ONE,FNH_PAPER2_FORMAT} from "./data/fnhPaper2Bank";
 import {FNH_OBJECTIVES} from "./data/fnhCourse";
 import {FNH_SUPPLIED_ARCHIVE,fnhHistoricalPaperFormat,fnhVerifiedArchivePaper} from "./data/fnhPastPaperInventory";
@@ -22,6 +22,28 @@ describe("FNH original examination and historical-format correctness",()=>{
     expect(fnhMakePaper1()).toEqual(FNH_PAPER1_ORIGINAL_BANK);
     expect(FNH_PAPER1_ORIGINAL_BANK.filter(row=>row.profile==="knowledge")).toHaveLength(30);
     expect(FNH_PAPER1_ORIGINAL_BANK.filter(row=>row.profile==="use-of-knowledge")).toHaveLength(30);
+  });
+  test("both 60-question original Paper 1 sets contain different exam stems and unique IDs",()=>{
+    expect(FNH_PAPER1_PRACTICE_SETS).toHaveLength(2);
+    const objectiveSet=new Set(FNH_OBJECTIVES.map(o=>o.code));
+    const across=FNH_PAPER1_PRACTICE_SETS.flatMap(set=>set.questions);
+    expect(across).toHaveLength(120);
+    expect(new Set(across.map(q=>q.id)).size).toBe(120);
+    expect(new Set(across.map(q=>q.stem.trim().toLowerCase())).size).toBe(120);
+    FNH_PAPER1_PRACTICE_SETS.forEach((set,index)=>{
+      expect(set.number).toBe(index+1);
+      expect(set.questions).toHaveLength(60);
+      expect(set.questions.every(q=>q.options.length===4&&new Set(q.options).size===4)).toBe(true);
+      expect(set.questions.every(q=>objectiveSet.has(q.objectiveCode))).toBe(true);
+      expect(set.questions.every(q=>q.explanation.length>=30)).toBe(true);
+      expect(set.questions.filter(q=>q.profile==="knowledge")).toHaveLength(30);
+      expect(set.questions.filter(q=>q.profile==="use-of-knowledge")).toHaveLength(30);
+      const positions="ABCD".split("").map(letter=>set.questions.filter(q=>q.answer===letter).length);
+      expect(Math.min(...positions)).toBeGreaterThan(3);
+      expect(Math.max(...positions)).toBeLessThan(30);
+    });
+    expect(fnhGetPaper1Set(2)).toBe(FNH_PAPER1_PRACTICE_SETS[1]);
+    expect(fnhGetPaper1Set(999)).toBe(FNH_PAPER1_PRACTICE_SETS[0]);
   });
   test("Answer-letter distribution avoids a single predictable response position",()=>{
     const counts=[..."ABCD"].map(letter=>FNH_PAPER1_ORIGINAL_BANK.filter(row=>row.answer===letter).length);
