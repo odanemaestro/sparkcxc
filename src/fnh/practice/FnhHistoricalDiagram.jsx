@@ -524,6 +524,52 @@ export default function FnhHistoricalDiagram({type}){
     </svg>
     <figcaption>2007 Paper 1, Question 49. Recreated dining cover with two forks, layered plates, two spoons and a knife.</figcaption>
   </figure>;
+  if(type==="place-setting-2017")return <figure className="fnh-historical-figure">
+    <svg viewBox="0 0 720 410" width="100%" role="img" aria-label="2017 Paper 1 item 25 place-setting drawing. Triangular napkin on left; knife A left of plate; fork B and spoon C right of plate; dessert spoon D and small dessert fork E above plate.">
+      <title>2017 Paper 1 Question 25: labelled place setting A to E</title>
+      <rect x="62" y="42" width="596" height="305" fill="none" stroke="currentColor" strokeWidth="2"/>
+      <circle cx="360" cy="195" r="106" fill="none" stroke="currentColor" strokeWidth="3"/>
+      <path d="M170 179 L238 112 L238 246 Z" fill="none" stroke="currentColor" strokeWidth="2"/>
+      <g stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round">
+        {/* A: knife placed to the left. */}
+        <path d="M263 111 L263 270 L275 270 L275 110 Q267 109 263 111 Z M263 110 Q255 142 261 181"/>
+        {/* B: fork on right. */}
+        <path d="M482 161 L482 267 M470 112 V162 M478 112 V162 M486 112 V162 M494 112 V162 M470 162 Q482 174 494 162"/>
+        {/* C: spoon on right. */}
+        <ellipse cx="542" cy="137" rx="17" ry="29"/>
+        <path d="M542 167 V268"/>
+        {/* D: dessert spoon above plate. */}
+        <ellipse cx="298" cy="76" rx="24" ry="12"/>
+        <path d="M320 76 H405"/>
+        {/* E: dessert fork above plate, opposing direction. */}
+        <path d="M315 101 H420 M315 94 V108 M321 94 V108 M328 94 V108 M335 94 V108 M315 108 Q326 113 335 108"/>
+      </g>
+      <g fill="currentColor" fontFamily="Georgia,serif" fontWeight="700" fontSize="21">
+        <text x="266" y="296" textAnchor="middle">A</text><text x="480" y="296" textAnchor="middle">B</text>
+        <text x="540" y="296" textAnchor="middle">C</text>
+        <text x="270" y="72">D</text><text x="280" y="106">E</text>
+      </g>
+      <text x="360" y="389" fontSize="18" fontFamily="Georgia,serif" fill="currentColor" textAnchor="middle">Source figure: A–E cutlery positions</text>
+    </svg>
+    <figcaption>2017 Paper 1, Item 25. SVG reconstruction of the five labelled cutlery positions and napkin in the supplied paper.</figcaption>
+  </figure>;
+  if(type==="kitchen-u-layout-2017")return <figure className="fnh-historical-figure">
+    <svg viewBox="0 0 690 450" width="100%" role="img" aria-label="2017 Paper 1 item 52 kitchen diagram with continuous left, upper and right countertops forming a U-shaped layout, cooker on left, sink on top, refrigerator on right.">
+      <title>2017 Paper 1 Question 52: Kitchen layout</title>
+      <g fill="none" stroke="currentColor" strokeWidth="3" strokeLinejoin="round">
+        <path d="M105 67 H585 V360 H505 V150 H185 V360 H105 Z"/>
+        <rect x="112" y="204" width="66" height="92" rx="4"/>
+        {[134,158].flatMap(x=>[228,267].map(y=><circle key={x+"-"+y} cx={x} cy={y} r="11" strokeWidth="2"/>))}
+        <rect x="310" y="91" width="160" height="44" rx="7"/>
+        <rect x="337" y="104" width="104" height="20" rx="2"/>
+        <circle cx="354" cy="81" r="4"/><circle cx="428" cy="81" r="4"/>
+        <path d="M505 238 H584 M505 291 H584"/>
+      </g>
+      <text x="545" y="281" fontFamily="Georgia,serif" fontSize="19" fontWeight="700" fill="currentColor" textAnchor="middle">REF</text>
+      <text x="345" y="410" fontFamily="Georgia,serif" fontWeight="700" fontSize="20" fill="currentColor" textAnchor="middle">Three-sided kitchen working layout</text>
+    </svg>
+    <figcaption>2017 Paper 1, Item 52. SVG redraw of the original U-shaped kitchen with cooker, sink and refrigerator.</figcaption>
+  </figure>;
   if(type==="green-bean-cells-2013")return <figure className="fnh-historical-figure">
     <svg viewBox="0 0 850 430" width="100%" role="img" aria-label="2013 green bean cell wall illustration: I normal intact cell, II cell ruptured by sharp ice crystals during freezing, III irregular collapsed cell wall on thawing">
       <title>2013 Paper 2 Question 2: Normal, ruptured and thawed green bean cells</title>
