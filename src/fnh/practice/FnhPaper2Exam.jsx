@@ -40,7 +40,7 @@ export default function FnhPaper2Exam({onBack,supabase,userId,setNumber=1}){
   const question=paper[index];
   const review=attempt.phase==="review",exam=attempt.phase==="exam";
   const evidence=useMemo(()=>fnhPaper2EvidenceSummary(paper,attempt.answers),[paper,attempt.answers]);
-  const selfScore=useMemo(()=>fnhSelfAssessmentTotal(paper,attempt.selfReview||{}),[paper,attempt.selfReview]);
+  const selfScore=useMemo(()=>fnhSelfAssessmentTotal(paper,attempt.selfReview||{},attempt.answers),[paper,attempt.selfReview,attempt.answers]);
   const answered=paper.reduce((sum,q)=>sum+q.items.filter(item=>String(attempt.answers[`${q.id}:${item.id}`]||"").trim()).length,0);
   const update=patch=>setAttempt(old=>({...old,...patch}));
   const togglePoint=(key,id)=>setAttempt(old=>{const review=old.selfReview||{};const chosen=review[key]||[];
@@ -107,12 +107,12 @@ export default function FnhPaper2Exam({onBack,supabase,userId,setNumber=1}){
                 <strong>Correct answer and marking scheme ({part.marks} marks)</strong>
                 <p>{fnhPartMarkingScheme(part).rule}</p>
                 <div className="fnh-p2-marking-points">{fnhPartMarkingScheme(part).points.map(point=><label key={point.id}>
-                  <input type="checkbox" checked={Boolean((attempt.selfReview?.[key]||[]).includes(point.id))}
+                  <input type="checkbox" disabled={!String(text).trim()} checked={Boolean((attempt.selfReview?.[key]||[]).includes(point.id))}
                     onChange={()=>togglePoint(key,point.id)} aria-label={`My response includes marking point ${Number(point.id)+1} for question ${question.number} part ${part.id}`}/>
                   <span>{point.text}</span>
                 </label>)}</div>
                 <p><b>Explanation:</b> {part.explanation}</p>
-                <p><b>Self-check:</b> {Math.min(part.marks,(attempt.selfReview?.[key]||[]).length)} / {part.marks} marks.</p>
+                <p><b>Self-check:</b> {String(text).trim()?Math.min(part.marks,(attempt.selfReview?.[key]||[]).length):0} / {part.marks} marks.</p>
                 <small>{fnhPartMarkingScheme(part).note} Your self-check is practice feedback, not an official examination mark.</small>
               </div>}
             </div>;
