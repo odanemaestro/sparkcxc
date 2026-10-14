@@ -5,6 +5,42 @@ import React from "react";
  * Keep the original missing-quantity and missing-directions clues intact.
  */
 export default function FnhHistoricalDiagram({type}){
+  if(type==="kitchen-tools-2010")return <figure className="fnh-historical-figure">
+    <svg viewBox="0 0 760 470" width="100%" role="img" aria-label="Four food preparation utensils, numbered 1 kitchen knife, 2 blender, 3 muffin tray and 4 pastry brush">
+      <title>2010 Paper 2, Question 5: Four kitchen tools</title>
+      <g fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
+        {/* Kitchen knife, with tapered blade and riveted handle. */}
+        <path d="M61 147 C99 117 161 120 236 125 L237 162 C155 162 99 163 61 147 Z"/>
+        <path d="M235 125 L364 125 Q386 145 364 163 L235 163 Z"/>
+        <path d="M243 131 L350 131 Q365 144 350 157 L243 157 Z"/>
+        {[268,302,333].map(x=><circle key={x} cx={x} cy="144" r="4" fill="currentColor"/>)}
+        {/* Blender jar, lid, base and buttons. */}
+        <path d="M515 44 L591 44 L584 148 L529 148 Z"/>
+        <ellipse cx="553" cy="43" rx="38" ry="6"/>
+        <path d="M585 74 C618 71 614 125 584 129 M582 83 C600 87 600 112 583 118"/>
+        <path d="M531 151 L583 151 L598 205 Q600 218 556 220 Q512 222 511 207 L531 151 Z"/>
+        <path d="M537 155 Q553 178 578 155 M523 199 Q553 208 587 197"/>
+        {[543,557,572].map(x=><circle key={x} cx={x} cy="200" r="4" />)}
+        {/* Muffin tin, two-dimensional perspective and 3 x 4 cavities. */}
+        <path d="M88 306 L263 284 L321 330 L139 375 Z"/>
+        {Array.from({length:12},(_,i)=>{
+          const row=Math.floor(i/4),col=i%4;
+          const x=132+col*39+row*12,y=308+row*18+col*1;
+          return <ellipse key={i} cx={x} cy={y} rx="16" ry="8"/>;
+        })}
+        {/* Pastry brush, neck and bristles. */}
+        <path d="M491 342 L536 337 L539 369 L494 377 Z"/>
+        <path d="M539 344 L666 320 Q691 314 695 322 Q700 329 671 334 L539 357"/>
+        <path d="M539 357 L670 335 M510 346 L514 374 M523 342 L527 371"/>
+        <circle cx="677" cy="323" r="3"/>
+      </g>
+      <g fill="currentColor" fontFamily="Georgia,serif" fontWeight="bold" fontSize="23">
+        <text x="24" y="159">1.</text><text x="475" y="165">2.</text>
+        <text x="46" y="364">3.</text><text x="455" y="379">4.</text>
+      </g>
+    </svg>
+    <figcaption>2010 Paper 2, Question 5. Four original source items recreated as SVG: knife, blender, muffin tray and pastry brush.</figcaption>
+  </figure>;
   if(type!=="flour-mix-2008")return null;
   return <figure className="fnh-historical-figure">
     <svg viewBox="0 0 760 485" width="100%" role="img"
