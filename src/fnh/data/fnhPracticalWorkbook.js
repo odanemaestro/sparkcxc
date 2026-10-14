@@ -1,4 +1,4 @@
-// Official SBA guidelines: CXC 11/G/SYLL 15 pp.192-200.
+// Official SBA guidelines: CXC 11/O/SYLL 15 pp.192-200.
 // Sixteen practice activities are SPARK-original teaching tasks.
 // The sandwich and egg assignments reflect CXC exemplar work activities.
 // Moderation tasks must be approved by the teacher; the second moderation
@@ -278,7 +278,7 @@ export const FNH_PRACTICAL_WORKBOOK=[
   }
 ];
 export const FNH_SBA_GUIDELINES={
-  "syllabus": "CXC 11/G/SYLL 15",
+  "syllabus": "CXC 11/O/SYLL 15",
   "minimumPracticalTasks": 16,
   "moderationAssignments": 3,
   "moderationSuggestedSchedule": [
