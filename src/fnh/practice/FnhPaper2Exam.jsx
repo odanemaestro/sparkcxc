@@ -2,6 +2,7 @@ import React,{useEffect,useMemo,useRef,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
 import {FNH_PAPER2_FORMAT,fnhGetPaper2Set} from "../data/fnhPaper2Bank";
 import {fnhPartMarkingScheme,fnhSelfAssessmentTotal} from "./fnhPaper2Marking";
+import FnhHistoricalDiagram from "./FnhHistoricalDiagram";
 import "./fnhPractice.css";
 
 
@@ -102,6 +103,7 @@ export default function FnhPaper2Exam({onBack,supabase,userId,setNumber=1,histor
         <section className="fnh-exam-card fnh-question">
           <div className="fnh-question-head"><h2>Question {question.number}: {question.title}</h2><span className="fnh-p2-marks">16 marks</span></div>
           <p className="fnh-p2-context">{question.context}</p>
+          {question.diagramId&&<FnhHistoricalDiagram type={question.diagramId}/>}
           <div className="fnh-p2-parts">{question.items.map(part=>{
             const key=`${question.id}:${part.id}`,text=attempt.answers[key]||"";
             return <div className="fnh-p2-part" key={part.id}>
