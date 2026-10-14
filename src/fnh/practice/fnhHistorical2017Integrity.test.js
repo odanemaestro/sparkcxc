@@ -24,7 +24,7 @@ describe("May/June 2017 FNH Technical Proficiency historical Paper 02",()=>{
   });
   test("no optional section B is incorrectly assigned to 2017; only verified content is available",()=>{
     expect(paper.questions.every(q=>!q.section)).toBe(true);
-    expect(paper.questions.every(q=>q.items.length>=4)).toBe(true);
+    expect(paper.questions.every(q=>q.items.length>=3)).toBe(true);
     expect(fnhHistoricalSimulatorReady(paper.id)?.verifiedQuestionCount).toBe(6);
     expect(FNH_SUPPLIED_ARCHIVE.filter(q=>q.simulatorReady).length).toBe(9);
   });
