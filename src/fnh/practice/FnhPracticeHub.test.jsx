@@ -1,6 +1,7 @@
 import React from "react";
 import {render,screen,fireEvent,within} from "@testing-library/react";
 import FnhPracticeHub from "./FnhPracticeHub";
+import {FNH_SUPPLIED_ARCHIVE} from "../data/fnhPastPaperInventory";
 
 describe("FNH student examination navigation",()=>{
   beforeEach(()=>{
@@ -38,8 +39,10 @@ describe("FNH student examination navigation",()=>{
     fireEvent.click(screen.getByRole("button",{name:/Paper 2/i}));
     fireEvent.click(screen.getByRole("button",{name:"Past papers"}));
     expect(screen.getByText("Historical Paper 2 sources")).toBeInTheDocument();
-    expect(screen.getAllByText("Question and marking checks pending").length).toBe(8);
-    expect(screen.getAllByRole("button",{name:/Start examination/i})).toHaveLength(10);
+    const ready=FNH_SUPPLIED_ARCHIVE.filter(row=>row.paper===2&&row.simulatorReady).length;
+    const pending=FNH_SUPPLIED_ARCHIVE.filter(row=>row.paper===2&&!row.simulatorReady).length;
+    expect(screen.getAllByText("Question and marking checks pending").length).toBe(pending);
+    expect(screen.getAllByRole("button",{name:/Start examination/i})).toHaveLength(ready);
     expect(screen.getAllByText("Original questions transcribed and checked")).toHaveLength(10);
   });
 });
