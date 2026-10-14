@@ -19,6 +19,63 @@ function ean13Bars(code){
  * Keep the original missing-quantity and missing-directions clues intact.
  */
 export default function FnhHistoricalDiagram({type}){
+  if(type==="table-setting-four-2005")return <figure className="fnh-historical-figure">
+    <svg viewBox="0 0 850 570" width="100%" role="img" aria-label="Four-person lunch table with plate settings and serving items arranged around a central rectangular table">
+      <title>2005 Paper 1, Item 23: Lunch table laid for four</title>
+      <rect x="48" y="40" width="752" height="475" fill="none" stroke="currentColor" strokeWidth="2"/>
+      <g fill="none" stroke="currentColor" strokeWidth="2.6">
+        {/* Four individually laid plates and drinking vessels. */}
+        {[[425,118],[424,429],[144,278],[699,279]].map(([cx,cy],i)=><g key={i}>
+          <circle cx={cx} cy={cy} r="48"/><circle cx={cx} cy={cy} r="33"/>
+        </g>)}
+        {/* Napkins and folded linen. */}
+        <path d="M86 142 L177 190 L165 200 L86 163 Z M680 405 L765 430 L739 450 L675 420 Z"/>
+        {/* Fork and spoon settings around each place. */}
+        <path d="M337 93 V146 M332 92 V105 M341 92 V105 M352 92 V105 M352 92 V146 M496 93 V147"/>
+        <ellipse cx="511" cy="95" rx="7" ry="14"/><path d="M511 109 V149"/>
+        <path d="M338 406 V453 M338 405 H348 M348 405 V453 M499 405 V453"/>
+        <ellipse cx="518" cy="414" rx="7" ry="13"/><path d="M518 427 V458"/>
+        <path d="M73 247 H111 M73 262 H111 M190 247 H231 M190 264 H230 M614 246 H657 M614 264 H657 M751 245 H789 M751 264 H789"/>
+        {/* Four centre service platters. */}
+        {[[313,255],[379,255],[475,255],[540,255]].map(([x,y],i)=><circle key={i} cx={x} cy={y} r="20"/>)}
+        {/* Sauce jug and side dishes. */}
+        <path d="M398 299 C410 280 440 283 447 301 L438 327 H403 Z M448 300 Q470 293 459 319"/>
+      </g>
+      <g fill="currentColor" fontFamily="Arial,sans-serif" textAnchor="middle" fontSize="19" fontWeight="700">
+        <text x="425" y="553">Figure: Four lunch place settings</text>
+      </g>
+    </svg>
+    <figcaption>2005 Paper 1, Question 23. SVG reconstruction of a shared lunch table with four place settings, adapted from the supplied line illustration.</figcaption>
+  </figure>;
+  if(type==="food-safety-four-2005")return <figure className="fnh-historical-figure">
+    <svg viewBox="0 0 800 515" width="100%" role="img" aria-label="Four food safety controls clean hands and surfaces, separate raw and ready-to-eat foods, chill in a refrigerator, cook to an appropriate temperature">
+      <title>2005 Paper 1, Questions 48 and 49: Food safety methods</title>
+      <g stroke="currentColor" strokeWidth="2.6" fill="none">
+        <rect x="70" y="30" width="660" height="410"/>
+        <path d="M400 30 V440 M70 235 H730"/>
+        {/* Handwashing faucet and water droplets. */}
+        <path d="M117 87 H275 V105 H253 V116 H274 M245 116 L245 135"/>
+        {[250,264,278].map(x=><path key={x} d={`M${x} 142 l-4 10 l4 5 l4 -5 Z`}/>)}
+        {/* Raw food and cooked food in separate trays. */}
+        <path d="M454 131 H615 L602 172 H469 Z M456 191 H612 L600 221 H467 Z"/>
+        <path d="M480 121 C502 101 524 102 543 123 M488 186 C502 174 527 174 544 186"/>
+        {/* Refrigerator icon. */}
+        <rect x="200" y="275" width="123" height="140" rx="8"/>
+        <path d="M200 335 H323 M307 301 V317 M307 359 V390"/>
+        {/* Stove flame. */}
+        <path d="M499 410 C455 373 493 348 498 321 C513 341 543 356 534 384 C543 375 551 361 548 354 C570 388 555 410 499 410 Z"/>
+      </g>
+      <g fontFamily="Arial,sans-serif" fill="currentColor">
+        <text x="90" y="63" fontSize="22" fontWeight="700">CLEAN</text><text x="420" y="63" fontSize="22" fontWeight="700">SEPARATE</text>
+        <text x="91" y="266" fontSize="22" fontWeight="700">CHILL</text><text x="420" y="266" fontSize="22" fontWeight="700">COOK</text>
+        <text x="91" y="199" fontSize="15">Wash hands and surfaces</text>
+        <text x="420" y="199" fontSize="15">Prevent cross-contamination</text>
+        <text x="91" y="457" fontSize="15">Refrigerate perishable food</text>
+        <text x="420" y="457" fontSize="15">Cook thoroughly</text>
+      </g>
+    </svg>
+    <figcaption>2005 Paper 1, Questions 48–49. Four food-safety actions reproduced as a readable, theme-aware SVG.</figcaption>
+  </figure>;
   if(type==="place-setting-2004")return <figure className="fnh-historical-figure">
     <svg viewBox="0 0 810 400" width="100%" role="img" aria-label="2004 Paper 1 Question 25 source place setting, knife on left marked A, fork right marked B, spoon right marked C, two utensils horizontally above the plate marked D and E">
       <title>2004 Paper 1 Item 25: Labelled dinner place setting</title>
