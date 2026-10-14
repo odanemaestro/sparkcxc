@@ -24,12 +24,15 @@ export function fnhHistoricalPaper1ReleaseCheck(items=[],{expectedQuestions=60,v
    &&Array.isArray(x.options)&&x.options.length===4
    &&new Set(x.options).size===4&&String(x.stem||"").trim());
  const keysComplete=sourceComplete&&records.every(x=>x.officialKeyVerified===true
-   &&"ABCD".includes(String(x.proposedAnswer||"")));
- const ready=Boolean(sourceComplete&&keysComplete&&verifiedKeyEvidence);
+   &&/^[ABCD]$/.test(String(x.proposedAnswer||"")));
+ const evidenceComplete=keysComplete&&records.every(x=>x.officialKeyEvidence
+   &&typeof x.officialKeyEvidence==="string"
+   &&x.officialKeyEvidence.trim().length>=8);
+ const ready=Boolean(sourceComplete&&keysComplete&&evidenceComplete&&verifiedKeyEvidence);
  return {ready,questions:records.length,numbered:complete,sourceComplete,
-   keysComplete,verifiedKeyEvidence:Boolean(verifiedKeyEvidence),
+   keysComplete,evidenceComplete,verifiedKeyEvidence:Boolean(verifiedKeyEvidence),
    pendingSourceNumbers:records.filter(x=>!x.sourceChecked||!Array.isArray(x.options)||x.options.length!==4).map(x=>x.number),
-   pendingKeyNumbers:records.filter(x=>!x.officialKeyVerified).map(x=>x.number)};
+   pendingKeyNumbers:records.filter(x=>!x.officialKeyVerified||!/^[ABCD]$/.test(String(x.proposedAnswer||""))||!String(x.officialKeyEvidence||"").trim()).map(x=>x.number)};
 }
 // This report is informational and never grants a historical exam release.
 const transcriptionRecords=Object.freeze({
