@@ -374,7 +374,7 @@ export function fnhHistoricalPaperFormat(source){
 export const FNH_ARCHIVE_SUMMARY = Object.freeze({paper1:16,paper2:18,unique:34,
   duplicatedSource:"CSEC_FNH_Paper_1_-_May_June_2026 (1).pdf",
   duplicationOf:"CSEC_FNH_Paper_1_-_May_June_2026.pdf",
-  sourceNote:"The supplied July 2025 syllabus and question PDFs are reference material. Historical scans are not yet verified question banks.",
+  sourceNote:"The supplied 2015 syllabus effective May/June 2017 and question PDFs are reference material. Historical scans are not yet verified question banks.",
 });
 export function fnhVerifiedArchivePaper(id){
   return FNH_SUPPLIED_ARCHIVE.find(row=>row.id===id&&row.verifiedQuestionCount>0&&row.reviewStatus==="approved")||null;
