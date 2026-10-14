@@ -138,7 +138,7 @@ export const FNH_P1_RENDERABLE_DIAGRAM_IDS=Object.freeze([
 const diagramReady=new Set(FNH_P1_RENDERABLE_DIAGRAM_IDS);
 export function fnhHistoricalPaper1Reader(sourceId){
  const source=FNH_SUPPLIED_ARCHIVE.find(x=>x.id===sourceId&&x.paper===1);
- if(!source||source.sourceIdentityVerified===false)return null;
+ if(!source||source.sourceIdentityVerified===false||source.sourceYearVerified===false)return null;
  const original=transcriptionRecords[source.year]||[];
  const excluded=[];
  const questions=[];
