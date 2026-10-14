@@ -127,6 +127,8 @@ export function fnhPaper1ArchiveReadiness(){
 // returned to the UI. Publication permission is handled separately above.
 export const FNH_P1_RENDERABLE_DIAGRAM_IDS=Object.freeze([
  "place-setting-2004","kitchen-u-shaped-2004","refrigerator-table-2004",
+ "lunch-table-2005","menu-comparison-2005","food-safety-chart-2005",
+ "lunch-table-2014","two-menus-2014","food-safety-2014","preschool-lunch-2014",
  "place-setting-2018","luncheon-menu-2018","kitchen-u-shaped-2018",
  "refrigerator-positions-2018","luncheon-presentation-2018","meal-comparison-2018",
  "meal-comparison-2019","kitchen-u-shaped-2019","luncheon-presentation-2019",
