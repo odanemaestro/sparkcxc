@@ -23,7 +23,7 @@ export function fnhFoodLabelCompleteness(values){
 export function parseFnhFoodLabel(value=""){
  const names={Product:"name","Serving size":"serving","Energy per serving":"energy","Protein per serving":"protein",Ingredients:"ingredients","Net quantity":"netQuantity"};
  const fields={name:"",serving:"",energy:"",protein:"",ingredients:"",netQuantity:""};
- for(const line of String(value).split("\\n")){
+ for(const line of String(value).split("\n")){
    const index=line.indexOf(":");if(index<0)continue;
    const field=names[line.slice(0,index).trim()];
    if(field)fields[field]=line.slice(index+1).trim();
