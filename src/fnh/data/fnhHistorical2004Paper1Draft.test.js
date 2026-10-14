@@ -16,6 +16,12 @@ describe("2004 FNH historical Paper1 original-scan integrity",()=>{
    expect(x.officialKeyVerified).toBe(false);
   });
  });
+ test("same 2004 PDF was resubmitted with source question choices still missing",()=>{
+  const row=FNH_SUPPLIED_ARCHIVE.find(x=>x.id==="FNH-P1-2004-MJ");
+  expect(row).toMatchObject({sourcePagesSupplied:8,sourceReuploadChecked:true,
+   missingSourceOptionQuestionNumbers:[46,47],sourceSha256:"189725467d2d77e5a5004d84ff0714405a4a5478a8035ea3fae69d058d002a67"});
+  expect(items.slice(45,47).every(x=>x.options===null&&x.sourceChecked===false)).toBe(true);
+ });
  test("historical diagram tasks carry source figure references and stay gated",()=>{
   expect(items.find(x=>x.number===25)?.diagramId).toBe("place-setting-2004");
   expect(items.find(x=>x.number===52)?.diagramId).toBe("kitchen-u-shaped-2004");
