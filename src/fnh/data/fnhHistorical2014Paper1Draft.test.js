@@ -23,7 +23,15 @@ describe("2014 scanned historical Paper1 source integrity and unreliable handwri
     expect(fnhHistoricalPaper1ReleaseCheck(paper).ready).toBe(false);
     expect(fnhHistoricalSimulatorReady("FNH-P1-2014-MJ")).toBeNull();
     expect(FNH_SUPPLIED_ARCHIVE.find(x=>x.id==="FNH-P1-2014-MJ"))
-      .toMatchObject({transcribedQuestionCount:60,verifiedQuestionCount:0});
+      .toMatchObject({transcribedQuestionCount:60,verifiedQuestionCount:0,
+       sourceYearVerified:true,sourceYearVerificationMethod:"user-confirmed-2026-10-14",
+       reviewStatus:"requires-question-and-key-verification"});
+  });
+  test("the confirmed 2014 year changes provenance, never paper grading",()=>{
+    const source=FNH_SUPPLIED_ARCHIVE.find(x=>x.id==="FNH-P1-2014-MJ");
+    expect(source.sourceQualityNote).toMatch(/User confirmed/);
+    expect(paper.every(x=>x.officialKeyVerified===false)).toBe(true);
+    expect(fnhHistoricalPaper1ReleaseCheck(paper).ready).toBe(false);
   });
   test("historical source diagrams retain their question numbers",()=>{
     expect(paper[22].diagramId).toBe("lunch-table-2014");
