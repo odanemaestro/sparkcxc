@@ -20,8 +20,18 @@ export function fnhFoodLabelCompleteness(values){
     hasServingSize:Boolean(values.serving.trim()),
   };
 }
+export function parseFnhFoodLabel(value=""){
+ const names={Product:"name","Serving size":"serving","Energy per serving":"energy","Protein per serving":"protein",Ingredients:"ingredients","Net quantity":"netQuantity"};
+ const fields={name:"",serving:"",energy:"",protein:"",ingredients:"",netQuantity:""};
+ for(const line of String(value).split("\\n")){
+   const index=line.indexOf(":");if(index<0)continue;
+   const field=names[line.slice(0,index).trim()];
+   if(field)fields[field]=line.slice(index+1).trim();
+ }
+ return fields;
+}
 export default function FnhFoodLabelDesigner({value,onChange,disabled=false}){
- const [fields,setFields]=useState(()=>({name:"",serving:"",energy:"",protein:"",ingredients:"",netQuantity:""}));
+ const [fields,setFields]=useState(()=>parseFnhFoodLabel(value));
  const status=useMemo(()=>fnhFoodLabelCompleteness(fields),[fields]);
  const update=(field,next)=>{
    const record={...fields,[field]:next};setFields(record);onChange(makeFnhFoodLabel(record));
