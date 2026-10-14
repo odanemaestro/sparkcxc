@@ -34,6 +34,19 @@ describe("FNH student examination navigation",()=>{
     expect(screen.getByText(/Question 1: Nutrition through the life cycle/)).toBeInTheDocument();
     expect(screen.getByText(/A health centre in St Elizabeth/)).toBeInTheDocument();
   });
+  test("2004 and 2005 Paper 1 cards disclose missing source material without enabling timed historical grading",()=>{
+    render(<FnhPracticeHub userId="fnh-historical-audit" onBack={jest.fn()}/>);
+    fireEvent.click(screen.getByRole("button",{name:/Paper 1/i}));
+    fireEvent.click(screen.getByRole("button",{name:"Past papers"}));
+    const y2004=screen.getByRole("heading",{name:"2004 Paper 1"}).closest("article");
+    const y2005=screen.getByRole("heading",{name:"2005 Paper 1"}).closest("article");
+    expect(within(y2004).getByText(/Questions 46–47: possible choices found in other examination years/)).toBeInTheDocument();
+    expect(within(y2005).getByText(/supplied scan ends at Question 53/)).toBeInTheDocument();
+    expect(within(y2004).queryByRole("button",{name:/Start examination/})).not.toBeInTheDocument();
+    expect(within(y2005).queryByRole("button",{name:/Start examination/})).not.toBeInTheDocument();
+    expect(within(y2004).getByRole("button",{name:/Review source questions \(unscored\)/})).toBeInTheDocument();
+    expect(within(y2005).getByRole("button",{name:/Review source questions \(unscored\)/})).toBeInTheDocument();
+  });
   test("historical archive enables individually source-checked Paper 2 archives",()=>{
     render(<FnhPracticeHub userId="fnh-test-student" onBack={jest.fn()}/>);
     fireEvent.click(screen.getByRole("button",{name:/Paper 2/i}));
