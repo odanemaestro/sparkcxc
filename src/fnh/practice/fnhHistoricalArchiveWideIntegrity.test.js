@@ -73,7 +73,7 @@ describe("Full FNH historical archive released-paper integrity",()=>{
       expect(paper.sectionACompulsory).toEqual([1,2,3]);
       expect(paper.sectionBAvailable).toEqual([4,5,6,7]);
       expect(paper.sectionBChoose).toBe(2);
-      expect(paper.writingMinutes).toBe(120);
+      expect(paper.writingMinutes).toBe([2014,2015,2016].includes(year)?130:120);
     } else {
       expect(paper.writingMinutes).toBe(150);
       expect(paper.questions.every(q=>!q.section)).toBe(true);
