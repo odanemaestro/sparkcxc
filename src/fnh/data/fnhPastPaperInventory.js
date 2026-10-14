@@ -133,7 +133,10 @@ export const FNH_SUPPLIED_ARCHIVE = Object.freeze([
     "sourceQuestionsExpected": 60,
     "durationMinutes": 75,
     "qualification": "General Proficiency",
-    "sourceCoverChecked": true
+    "sourceCoverChecked": true,
+    "transcribedQuestionCount": 60,
+    "answerKeyStatus": "eight-unresolved-and-independent-review-required",
+    "sourceQualityNote": "Page 5 footer reads 2014 despite the 2016 cover and adjacent 2016 footers; verify page provenance before releasing."
   },
   {
     "id": "FNH-P1-2017-MJ",
