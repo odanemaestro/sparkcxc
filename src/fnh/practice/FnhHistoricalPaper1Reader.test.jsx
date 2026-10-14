@@ -34,6 +34,7 @@ describe("FNH historical Paper 01 unscored review safeguards",()=>{
   for(const source of FNH_SUPPLIED_ARCHIVE.filter(x=>x.paper===1)){
    const data=fnhHistoricalPaper1Reader(source.id);
    if(!data)continue;
+   expect(data.questions.every((q,i)=>i===0||q.number>data.questions[i-1].number)).toBe(true);
    for(const q of data.questions){
     expect(q).not.toHaveProperty("proposedAnswer");
     expect(q).not.toHaveProperty("answer");
@@ -48,6 +49,11 @@ describe("FNH historical Paper 01 unscored review safeguards",()=>{
   for(const id of FNH_P1_RENDERABLE_DIAGRAM_IDS){
    expect(FnhPaper1HistoricalDiagram({type:id})).not.toBeNull();
   }
+ });
+ test("2003 records appear in their original numerical order even if draft data is shuffled",()=>{
+  const paper=fnhHistoricalPaper1Reader("FNH-P1-2003-MJ");
+  expect(paper.questions).toHaveLength(60);
+  expect(paper.questions.map(q=>q.number)).toEqual(Array.from({length:60},(_,i)=>i+1));
  });
  test("unscored choices persist locally and never show answers or grades",()=>{
   const onBack=jest.fn();
