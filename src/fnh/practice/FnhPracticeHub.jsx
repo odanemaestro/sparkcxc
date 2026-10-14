@@ -1,5 +1,6 @@
 import React,{useEffect,useState} from "react";
 import FnhPaper1Exam from "./FnhPaper1Exam";
+import FnhHistoricalPaper1Reader from "./FnhHistoricalPaper1Reader";
 import FnhPaper2Exam from "./FnhPaper2Exam";
 import FnhPracticalWorkbook from "./FnhPracticalWorkbook";
 import FnhHistorical2005Paper2Exam from "./FnhHistorical2005Paper2Exam";
@@ -23,13 +24,12 @@ import FnhHistorical2026Paper2Exam from "./FnhHistorical2026Paper2Exam";
 import {FNH_SUPPLIED_ARCHIVE,fnhHistoricalPaperFormat,fnhHistoricalSimulatorReady} from "../data/fnhPastPaperInventory";
 import {FNH_PAPER1_PRACTICE_SETS} from "../data/fnhPaper1Bank";
 import {FNH_PAPER2_PRACTICE_SETS} from "../data/fnhPaper2Bank";
-import {FNH_HISTORICAL_PAPER1_TRANSCRIPTION_PROGRESS} from "../data/fnhHistoricalPaper1ReleaseGate";
+import {FNH_HISTORICAL_PAPER1_TRANSCRIPTION_PROGRESS,fnhHistoricalPaper1Reader} from "../data/fnhHistoricalPaper1ReleaseGate";
 import "./fnhPractice.css";
 
 const scrollTop=()=>{try{window.scrollTo?.({top:0,left:0,behavior:"instant"});}catch{}};
 
-function FnhPaperLibrary({paper,onBack,onStart,onStartHistorical}){
-  const [tab,setTab]=useState("practice");
+function FnhPaperLibrary({paper,onBack,onStart,onStartHistorical,onReviewHistorical,tab,onTabChange}){
   const [year,setYear]=useState("all");
   const isPaper1=paper===1;
   const years=FNH_SUPPLIED_ARCHIVE.filter(p=>p.paper===paper).filter(p=>year==="all"||String(p.year)===year)
@@ -42,8 +42,8 @@ function FnhPaperLibrary({paper,onBack,onStart,onStartHistorical}){
       <div className="fnh-library-facts"><span>{isPaper1?"60 questions":"6 compulsory questions"}</span><span>{isPaper1?"90 minutes":"150 minutes"}</span><span>{isPaper1?"60 marks":"96 marks"}</span></div>
     </header>
     <div className="fnh-library-tabs" role="group" aria-label="Choose practice or past papers">
-      <button type="button" className={tab==="practice"?"active":""} aria-pressed={tab==="practice"} onClick={()=>setTab("practice")}>Practice sets</button>
-      <button type="button" className={tab==="past"?"active":""} aria-pressed={tab==="past"} onClick={()=>setTab("past")}>Past papers</button>
+      <button type="button" className={tab==="practice"?"active":""} aria-pressed={tab==="practice"} onClick={()=>onTabChange("practice")}>Practice sets</button>
+      <button type="button" className={tab==="past"?"active":""} aria-pressed={tab==="past"} onClick={()=>onTabChange("past")}>Past papers</button>
     </div>
     {tab==="practice"?<div className="fnh-original-sets">
       {(isPaper1?FNH_PAPER1_PRACTICE_SETS:FNH_PAPER2_PRACTICE_SETS).map(set=>
@@ -68,7 +68,7 @@ function FnhPaperLibrary({paper,onBack,onStart,onStartHistorical}){
         {fnhHistoricalSimulatorReady(source.id)?<>
           <span className="fnh-archive-status">Original questions transcribed and checked</span>
           <button type="button" className="fnh-primary" onClick={()=>onStartHistorical(source.id)}>Start examination →</button>
-        </>:<><span className="fnh-archive-status">Question and marking checks pending</span>{source.paper===1&&FNH_HISTORICAL_PAPER1_TRANSCRIPTION_PROGRESS.find(row=>row.id===source.id)?.reportedTranscribed>0&&<small className="fnh-archive-progress">{FNH_HISTORICAL_PAPER1_TRANSCRIPTION_PROGRESS.find(row=>row.id===source.id)?.reportedTranscribed} source questions transcribed · answer keys require checking</small>}</>}
+        </>:<><span className="fnh-archive-status">Question and marking checks pending</span>{source.paper===1&&FNH_HISTORICAL_PAPER1_TRANSCRIPTION_PROGRESS.find(row=>row.id===source.id)?.reportedTranscribed>0&&<small className="fnh-archive-progress">{FNH_HISTORICAL_PAPER1_TRANSCRIPTION_PROGRESS.find(row=>row.id===source.id)?.reportedTranscribed} source questions transcribed · answer keys require checking</small>}{source.paper===1&&fnhHistoricalPaper1Reader(source.id)?.questions.length>0&&<button type="button" className="fnh-outline" onClick={()=>onReviewHistorical(source.id)}>Review source questions (unscored) →</button>}</>}
         </>}
       </article>)}</div>
     </>}
@@ -79,8 +79,12 @@ export default function FnhPracticeHub({supabase,userId,onBack}){
   const [view,setView]=useState("home");
   const [selectedPaper1Set,setSelectedPaper1Set]=useState(1);
   const [selectedPaper2Set,setSelectedPaper2Set]=useState(1);
+  const [selectedHistoricalP1,setSelectedHistoricalP1]=useState(null);
+  const [paperLibraryTabs,setPaperLibraryTabs]=useState({1:"practice",2:"practice"});
   useEffect(()=>{scrollTop();},[view]);
   if(view==="paper1"||view==="paper2")return <FnhPaperLibrary paper={view==="paper1"?1:2}
+    tab={paperLibraryTabs[view==="paper1"?1:2]} onTabChange={next=>setPaperLibraryTabs(old=>({...old,[view==="paper1"?1:2]:next}))}
+    onReviewHistorical={id=>{setSelectedHistoricalP1(id);setView("review-p1");}}
     onBack={()=>setView("home")} onStart={number=>{if(view==="paper1")setSelectedPaper1Set(number);else setSelectedPaper2Set(number);setView(view==="paper1"?"exam1":"exam2");}} onStartHistorical={id=>{if(id==="FNH-P2-2005-MJ")setView("historical-2005-p2");
     if(id==="FNH-P2-2006-MJ")setView("historical-2006-p2");
     if(id==="FNH-P2-2008-MJ")setView("historical-2008-p2");
@@ -99,6 +103,8 @@ export default function FnhPracticeHub({supabase,userId,onBack}){
     if(id==="FNH-P2-2022-MJ")setView("historical-2022-p2");
     if(id==="FNH-P2-2024-MJ")setView("historical-2024-p2");
     if(id==="FNH-P2-2026-MJ")setView("historical-2026-p2");}}/>;
+  if(view==="review-p1")return <FnhHistoricalPaper1Reader key={selectedHistoricalP1}
+    sourceId={selectedHistoricalP1} userId={userId} onBack={()=>setView("paper1")}/>;
   if(view==="exam1")return <FnhPaper1Exam key={selectedPaper1Set} setNumber={selectedPaper1Set} supabase={supabase} userId={userId} onBack={()=>setView("paper1")}/>;
   if(view==="exam2")return <FnhPaper2Exam key={selectedPaper2Set} setNumber={selectedPaper2Set} supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
   if(view==="historical-2005-p2")return <FnhHistorical2005Paper2Exam supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
