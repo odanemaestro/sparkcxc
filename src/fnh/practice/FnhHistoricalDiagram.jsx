@@ -19,6 +19,35 @@ function ean13Bars(code){
  * Keep the original missing-quantity and missing-directions clues intact.
  */
 export default function FnhHistoricalDiagram({type}){
+  if(type==="green-bean-cells-2013")return <figure className="fnh-historical-figure">
+    <svg viewBox="0 0 850 430" width="100%" role="img" aria-label="2013 green bean cell wall illustration: I normal intact cell, II cell ruptured by sharp ice crystals during freezing, III irregular collapsed cell wall on thawing">
+      <title>2013 Paper 2 Question 2: Normal, ruptured and thawed green bean cells</title>
+      <g fill="none" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round">
+        {/* I. Normal cell, double-layer rounded rectangular plant cell wall. */}
+        <path d="M135 123 C104 122 95 149 95 176 L95 268 C95 306 123 319 169 317 C204 315 218 299 218 273 L215 172 C214 141 193 122 166 121 Z"/>
+        <path d="M143 133 C121 128 107 146 105 175 L105 264 C103 285 122 305 151 304 L181 305 C199 299 206 286 205 263 L203 173 C202 143 184 134 166 133 Z" strokeWidth="2"/>
+        {/* II. Ice crystal fringe ruptures the cell membrane. */}
+        <path d={Array.from({length:46},(_,i)=>{
+          const a=2*Math.PI*i/46,rad=i%2?69:100;
+          return (i?"L":"M")+(421+Math.cos(a)*rad).toFixed(1)+" "+(216+Math.sin(a)*rad).toFixed(1);
+        }).join(" ")+" Z"} strokeWidth="2.3"/>
+        <path d="M389 160 C405 151 434 153 447 165 C461 178 469 228 453 254 C442 277 412 286 391 266 C375 243 377 191 389 160 Z" strokeWidth="1.8"/>
+        {/* III. Collapsed distorted membranes after thawing. */}
+        <path d="M673 130 C694 119 710 131 711 147 C709 164 720 172 731 175 C734 195 717 213 734 227 C742 237 755 237 761 257 C776 272 775 302 754 304 C730 308 712 296 684 301 C660 302 641 284 650 264 C658 242 668 235 655 212 C644 193 645 171 656 155 C661 146 663 137 673 130 Z"/>
+        <path d="M681 140 C696 137 701 149 703 165 C697 181 709 194 724 199 C720 217 712 225 728 245 C738 263 759 264 754 286 C738 287 713 282 692 289 C666 284 659 276 670 255 C678 233 679 226 663 203 C653 185 663 153 681 140 Z" strokeWidth="1.6"/>
+        <path d="M468 220 H539" strokeWidth="2"/>
+        <path d="M536 216 L544 220 L536 225" strokeWidth="2"/>
+      </g>
+      <g fill="currentColor" fontFamily="Georgia,serif" textAnchor="middle" fontWeight="600">
+        <text x="156" y="364" fontSize="19">I. Normal cell</text>
+        <text x="423" y="364" fontSize="19">II. Cell ruptured</text>
+        <text x="703" y="364" fontSize="19">III. Cell on thawing</text>
+        <text x="569" y="211" fontSize="16" textAnchor="start">Ice crystal</text>
+        <text x="425" y="410" fontSize="20">Figure 1. A normal green bean cell wall during and after freezing</text>
+      </g>
+    </svg>
+    <figcaption>2013 Paper 2, Question 2. Original three-stage cell diagram recreated as SVG to show ice-crystal damage and collapse after thawing.</figcaption>
+  </figure>;
   if(type==="product-comparison-2012")return <figure className="fnh-historical-figure">
     <svg viewBox="0 0 850 690" width="100%" role="img" aria-label="2012 Paper 2 Question 6: barcode 5011415000726, box A carrot cake mix with ingredients flour fat sugar carrot, and box B carrot cake mix with ingredients flour carrot extract sugar salt">
       <title>Figures 1, 2 and 3: Barcode and comparison of carrot cake mixes</title>
