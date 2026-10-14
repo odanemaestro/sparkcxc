@@ -102,7 +102,9 @@ export const FNH_SUPPLIED_ARCHIVE = Object.freeze([
     "session": "May/June",
     "sourceFilename": "CSEC_FNH_Paper_1_-_May_June_2014.pdf",
     "sourceFormat": "scanned-image",
-    "reviewStatus": "requires-question-and-key-verification",
+    "reviewStatus": "requires-year-provenance-review",
+    "sourceYearVerified": false,
+    "sourceQualityNote": "The supplied first page is labelled 2014 by hand and has no authenticated year printed on an examination cover. 45 question stems match the same numbered questions in the supplied 2005 Paper 1. This is not proof the year is wrong, but independent year verification is required before publication.",
     "verifiedQuestionCount": 0,
     "transcribedQuestionCount": 60,
     "sourceQuestionCount": 60,
@@ -493,6 +495,7 @@ export function fnhHistoricalPaperFormat(source){
 }
 export const FNH_ARCHIVE_SUMMARY = Object.freeze({paper1:16,paper2:18,unique:34,
   verifiedSubjectPaper1Sources:15,invalidSubjectPaper1Sources:1,validSubjectDocuments:33,
+  unverifiedPaper1YearSources:1,
   duplicatedSource:"CSEC_FNH_Paper_1_-_May_June_2026 (1).pdf",
   duplicationOf:"CSEC_FNH_Paper_1_-_May_June_2026.pdf",
   sourceNote:"The supplied 2015 syllabus effective May/June 2017 and question PDFs are reference material. Historical scans are not yet verified question banks.",
