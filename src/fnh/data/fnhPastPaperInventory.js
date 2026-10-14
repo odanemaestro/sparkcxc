@@ -190,7 +190,14 @@ export const FNH_SUPPLIED_ARCHIVE = Object.freeze([
     "sourceFilename": "CSEC_FNH_Paper_1_-_May_June_2020.pdf",
     "sourceFormat": "scanned-image",
     "reviewStatus": "requires-question-and-key-verification",
-    "verifiedQuestionCount": 0
+    "verifiedQuestionCount": 0,
+    "sourcePageCount": 9,
+    "sourceCoverChecked": false,
+    "sourceQuestionCount": 60,
+    "transcribedQuestionCount": 60,
+    "sourceCompleteness": "60-question-pages-present-but-cover-missing",
+    "answerKeyStatus": "11-unresolved-and-independent-review-required",
+    "sourceQualityNote": "Supplied PDF begins on printed page 2 at Question 1 and ends on page 10 at Question 60. Cover missing. Sixty question texts transcribed; no authenticated CXC keys."
   },
   {
     "id": "FNH-P1-2021-MJ",
