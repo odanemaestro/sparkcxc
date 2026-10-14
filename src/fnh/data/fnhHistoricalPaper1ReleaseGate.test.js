@@ -64,11 +64,11 @@ describe("Historical FNH Paper1 release gate",()=>{
  });
  test("missing figures, blank option text and duplicate choice text block release",()=>{
   const rows=FNH_P1_2003_TRANSCRIPTION_DRAFT;
-  const duplicate=rows.map((x,i)=>i===5?{...x,options:[x.options[0],x.options[0],x.options[2],x.options[3]]}:x);
+  const duplicate=rows.map(x=>x.number===6?{...x,options:[x.options[0],x.options[0],x.options[2],x.options[3]]}:x);
   expect(fnhHistoricalPaper1ReleaseCheck(duplicate).pendingSourceNumbers).toContain(6);
-  const blanks=rows.map((x,i)=>i===5?{...x,options:["","B","C","D"]}:x);
+  const blanks=rows.map(x=>x.number===6?{...x,options:["","B","C","D"]}:x);
   expect(fnhHistoricalPaper1ReleaseCheck(blanks).pendingSourceNumbers).toContain(6);
-  const unverifiedFigure=rows.map((x,i)=>i===5?{...x,diagramId:"figure-6"}:x);
+  const unverifiedFigure=rows.map(x=>x.number===6?{...x,diagramId:"figure-6"}:x);
   expect(fnhHistoricalPaper1ReleaseCheck(unverifiedFigure)).toMatchObject({
    sourceComplete:true,figureComplete:false,pendingFigureNumbers:[6],ready:false
   });
