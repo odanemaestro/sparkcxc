@@ -58,6 +58,7 @@ export default function FnhHistoricalPaper1Reader({sourceId,userId,onBack}){
    <p>This is an unscored review of transcribed source questions, not a timed CXC examination.
     Your choices are saved on this device. Answer keys are being checked, so no answers, marks,
     results or report notifications are given.</p>
+   <p className="fnh-source-reader-figure-note">Illustrations and tables are source-style SVG redraws for easier reading. Final visual comparison against each scanned examination is still pending.</p>
    <div className="fnh-source-reader-statline">
     <span>{questions.length} questions available to review</span>
     <span>{answered} selections saved</span>
