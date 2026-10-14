@@ -1,13 +1,14 @@
 import React,{useEffect,useMemo,useRef,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
 import {FNH_PAPER2_FORMAT,FNH_PAPER2_ORIGINAL_SET_ONE} from "../data/fnhPaper2Bank";
+import {fnhPartMarkingScheme,fnhSelfAssessmentTotal} from "./fnhPaper2Marking";
 import "./fnhPractice.css";
 
 const KEY="FNH-SPARK-P2-ORIGINAL-01";
 const SECONDS=FNH_PAPER2_FORMAT.minutes*60;
 const saveKey=user=>`spark:fnh:paper2:${user||"guest"}:${KEY}`;
 const make=()=>({id:KEY,attemptId:`${Date.now()}-${Math.random().toString(36).slice(2)}`,
-  phase:"instructions",index:0,answers:{},deadline:null,submittedAt:null});
+  phase:"instructions",index:0,answers:{},selfReview:{},deadline:null,submittedAt:null});
 const clock=s=>[Math.floor(s/3600),Math.floor((s%3600)/60),s%60].map(x=>String(Math.max(0,x)).padStart(2,"0")).join(":");
 const top=()=>{try{window.scrollTo?.({top:0,left:0,behavior:"instant"});}catch{}};
 
@@ -36,8 +37,12 @@ export default function FnhPaper2Exam({onBack,supabase,userId}){
   const question=paper[index];
   const review=attempt.phase==="review",exam=attempt.phase==="exam";
   const evidence=useMemo(()=>fnhPaper2EvidenceSummary(paper,attempt.answers),[paper,attempt.answers]);
+  const selfScore=useMemo(()=>fnhSelfAssessmentTotal(paper,attempt.selfReview||{}),[paper,attempt.selfReview]);
   const answered=paper.reduce((sum,q)=>sum+q.items.filter(item=>String(attempt.answers[`${q.id}:${item.id}`]||"").trim()).length,0);
   const update=patch=>setAttempt(old=>({...old,...patch}));
+  const togglePoint=(key,id)=>setAttempt(old=>{const review=old.selfReview||{};const chosen=review[key]||[];
+    return {...old,selfReview:{...review,[key]:chosen.includes(id)?chosen.filter(point=>point!==id):[...chosen,id]}};
+  });
   useEffect(()=>{try{localStorage.setItem(saveKey(userId),JSON.stringify(attempt));}catch{}},[attempt,userId]);
   useEffect(()=>{
     if(!exam)return undefined;
@@ -83,7 +88,7 @@ export default function FnhPaper2Exam({onBack,supabase,userId}){
       <p className="fnh-exam-note">Extended responses require a teacher or examiner to award marks. SPARK will not invent an automatic mark where evidence needs judgement.</p>
       <button type="button" className="fnh-primary" onClick={start}>Start examination</button>
     </section>:<div className="fnh-session">
-      <header className="fnh-exam-card fnh-session-heading"><div><small>{review?"ANSWER REVIEW · OPEN RESPONSE":"PAPER 02 · LIVE PRACTICE"}</small><h1>Food, Nutrition and Health</h1><p>{review?"Your answers are ready for marking-scheme review.":`Question ${index+1} of 6 · ${answered}/24 parts answered`}</p></div><div className="fnh-timer"><span>{review?"Marking":"Time remaining"}</span><strong>{review?"Review":clock(remaining)}</strong></div></header>
+      <header className="fnh-exam-card fnh-session-heading"><div><small>{review?"ANSWER REVIEW · OPEN RESPONSE":"PAPER 02 · LIVE PRACTICE"}</small><h1>Food, Nutrition and Health</h1><p>{review?"Compare each answer with the correct marking points. Tick only points your response supports.":`Question ${index+1} of 6 · ${answered}/24 parts answered`}</p></div><div className="fnh-timer"><span>{review?"Self-checked points":"Time remaining"}</span><strong>{review?`${selfScore.checked}/${selfScore.maximum}`:clock(remaining)}</strong></div></header>
       <div className="fnh-exam-layout">
         <section className="fnh-exam-card fnh-question">
           <div className="fnh-question-head"><h2>Question {question.number}: {question.title}</h2><span className="fnh-p2-marks">16 marks</span></div>
@@ -95,12 +100,23 @@ export default function FnhPaper2Exam({onBack,supabase,userId}){
               <label><span className="fnh-p2-answer-label">Your response</span><textarea aria-label={`Question ${question.number} part ${part.id} answer`} rows={part.marks>=6?7:part.marks>=4?5:3}
                 value={text} disabled={review}
                 onChange={event=>update({answers:{...attempt.answers,[key]:event.target.value}})} placeholder="Write your answer here…"/></label>
-              {review&&<div className="fnh-p2-model-answer"><strong>Correct answer: marking points</strong><ol>{part.modelPoints.map((point,i)=><li key={i}>{point}</li>)}</ol><p><b>Explanation:</b> {part.explanation}</p><small>Full marks require the number of relevant points, correct application and clear reasoning. A teacher must assess the response.</small></div>}
+              {review&&<div className="fnh-p2-model-answer">
+                <strong>Correct answer and marking scheme ({part.marks} marks)</strong>
+                <p>{fnhPartMarkingScheme(part).rule}</p>
+                <div className="fnh-p2-marking-points">{fnhPartMarkingScheme(part).points.map(point=><label key={point.id}>
+                  <input type="checkbox" checked={Boolean((attempt.selfReview?.[key]||[]).includes(point.id))}
+                    onChange={()=>togglePoint(key,point.id)} aria-label={`My response includes marking point ${Number(point.id)+1} for question ${question.number} part ${part.id}`}/>
+                  <span>{point.text}</span>
+                </label>)}</div>
+                <p><b>Explanation:</b> {part.explanation}</p>
+                <p><b>Self-check:</b> {Math.min(part.marks,(attempt.selfReview?.[key]||[]).length)} / {part.marks} marks.</p>
+                <small>{fnhPartMarkingScheme(part).note} Your self-check is practice feedback, not an official examination mark.</small>
+              </div>}
             </div>;
           })}</div>
           <div className="fnh-question-actions"><button type="button" className="fnh-outline" disabled={index===0} onClick={()=>update({index:index-1})}>Previous</button><button type="button" className="fnh-outline" disabled={index===5} onClick={()=>update({index:index+1})}>Next</button>{exam&&<button type="button" className="fnh-primary" onClick={()=>setModal("submit")}>Submit Paper 2</button>}{review&&<button type="button" className="fnh-primary" onClick={()=>setModal("restart")}>Start new attempt</button>}</div>
         </section>
-        <aside className="fnh-exam-card fnh-navigation"><h2>Question navigator</h2><p>{answered} of 24 parts answered</p><div className="fnh-nav-grid fnh-p2-nav">{evidence.map((row,i)=><button type="button" className={`${index===i?"active":""} ${row.answers.every(v=>v.answered)?"answered":""}`} key={row.id} aria-label={`Question ${i+1}`} onClick={()=>update({index:i})}>Q{i+1}</button>)}</div><p>Six questions. Each carries 6 knowledge and 10 application marks.</p></aside>
+        <aside className="fnh-exam-card fnh-navigation"><h2>Question navigator</h2><p>{answered} of 24 parts answered</p><div className="fnh-nav-grid fnh-p2-nav">{evidence.map((row,i)=><button type="button" className={`${index===i?"active":""} ${row.answers.every(v=>v.answered)?"answered":""}`} key={row.id} aria-label={`Question ${i+1}`} onClick={()=>update({index:i})}>Q{i+1}</button>)}</div><p>Six questions. Each carries 6 knowledge and 10 application marks.</p>{review&&<div className="fnh-self-review-summary"><strong>{selfScore.checked} / {selfScore.maximum} self-checked marks</strong><p>{selfScore.reviewedParts} of {selfScore.totalParts} parts checked against the model answers.</p><small>Practice estimate only. Teacher marking is required for an assessed score.</small></div>}</aside>
       </div>
     </div>}
     {modal&&<div className="fnh-modal-layer"><section className="fnh-modal" role="dialog" aria-modal="true" aria-label={modal==="submit"?"Submit examination":modal==="exit"?"Exit examination":"Restart examination"}><h2>{modal==="exit"?"Save and exit?":modal==="submit"?"Submit your six answers?":"Start another attempt?"}</h2><p>{modal==="exit"?"Your answers and timer deadline will be preserved.":modal==="submit"?"Your written answers will be locked and the marking points shown.":"The new attempt replaces the current responses."}</p><div><button type="button" className="fnh-outline" onClick={()=>setModal("")}>Cancel</button><button type="button" className="fnh-primary" onClick={()=>modal==="exit"?onBack?.():modal==="submit"?submit():start()}>{modal==="exit"?"Save and exit":modal==="submit"?"Submit now":"Start again"}</button></div></section></div>}
