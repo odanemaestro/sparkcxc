@@ -36,7 +36,12 @@ export const FNH_SUPPLIED_ARCHIVE = Object.freeze([
     "sourceFilename": "CSEC_FNH_Paper_1_-_May_June_2005.pdf",
     "sourceFormat": "text-layer",
     "reviewStatus": "requires-question-and-key-verification",
-    "verifiedQuestionCount": 0
+    "verifiedQuestionCount": 0,
+    "sourceQuestionCount": 53,
+    "transcribedQuestionCount": 53,
+    "missingSourceQuestionNumbers": [54,55,56,57,58,59,60],
+    "sourceCompleteness": "missing-final-seven-items",
+    "answerKeyStatus": "independent-review-required"
   },
   {
     "id": "FNH-P1-2006-MJ",
