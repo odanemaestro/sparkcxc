@@ -163,4 +163,10 @@ export const FNH_P1_2005_TRANSCRIPTION_DRAFT=Object.freeze([
     "officialKeyVerified": false
   }
 ]);
-export const FNH_P1_2005_QA=Object.freeze({expectedQuestions:60,sourceVerifiedQuestions:10,officialKeyVerifiedQuestions:0,simulatorReady:false,sourceDuplicateQuestionPair:[3,4]});
+export const FNH_P1_2005_QA=Object.freeze({
+ expectedQuestions:60,sourceVerifiedQuestions:10,officialKeyVerifiedQuestions:0,
+ simulatorReady:false,sourceDuplicateQuestionPair:[3,4],
+ providedPdfPages:7,lastVisibleQuestion:53,sourceContinuesAfterLastPage:true,
+ missingSourceQuestionNumbers:[54,55,56,57,58,59,60],
+ sourceGap:"The seventh and final supplied PDF page ends at Question 53 with GO ON TO THE NEXT PAGE, so the source is incomplete."
+});
