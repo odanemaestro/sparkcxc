@@ -199,8 +199,16 @@ export const FNH_SUPPLIED_ARCHIVE = Object.freeze([
     "session": "May/June",
     "sourceFilename": "CSEC_FNH_Paper_1_-_May_June_2021.pdf",
     "sourceFormat": "scanned-image",
-    "reviewStatus": "requires-question-and-key-verification",
-    "verifiedQuestionCount": 0
+    "sourceIdentityVerified": false,
+    "reviewStatus": "incorrect-subject-and-year",
+    "verifiedQuestionCount": 0,
+    "transcribedQuestionCount": 0,
+    "sourcePageCount": 4,
+    "actualSourceSubject": "Spanish",
+    "actualSourcePaper": "Paper 03 Oral, General Proficiency",
+    "actualSourceSession": "January 2023",
+    "answerKeyStatus": "not-applicable-wrong-source",
+    "sourceQualityNote": "The four-page PDF is a January 2023 CSEC Spanish Paper 03 Oral reading-passage booklet. It is not the May/June 2021 FNH Paper 01. Obtain the correct source."
   },
   {
     "id": "FNH-P1-2026-MJ",
@@ -459,6 +467,7 @@ export function fnhHistoricalPaperFormat(source){
   };
 }
 export const FNH_ARCHIVE_SUMMARY = Object.freeze({paper1:16,paper2:18,unique:34,
+  verifiedSubjectPaper1Sources:15,invalidSubjectPaper1Sources:1,validSubjectDocuments:33,
   duplicatedSource:"CSEC_FNH_Paper_1_-_May_June_2026 (1).pdf",
   duplicationOf:"CSEC_FNH_Paper_1_-_May_June_2026.pdf",
   sourceNote:"The supplied 2015 syllabus effective May/June 2017 and question PDFs are reference material. Historical scans are not yet verified question banks.",
