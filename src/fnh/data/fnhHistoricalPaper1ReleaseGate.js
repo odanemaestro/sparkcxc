@@ -134,7 +134,7 @@ export function fnhHistoricalPaper1Reader(sourceId){
   paperTitle:source.year>=2017?"Food, Nutrition and Health":"Food and Nutrition",
   missingSourceQuestions:Object.freeze([...(source.missingSourceQuestionNumbers||[])]),
   excludedNumbers:Object.freeze(excluded.sort((a,b)=>a-b)),
-  sourceQuestionCount:source.sourceQuestionCount??original.length,
+  sourceQuestionCount:source.sourceQuestionsExpected||60,
   questions:Object.freeze(questions),
   scored:false,verifiedKeys:false
  });
