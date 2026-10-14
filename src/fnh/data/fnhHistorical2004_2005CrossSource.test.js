@@ -25,11 +25,16 @@ describe("2004 and 2005 FNH Paper 01 original-source and cross-year evidence",()
    expect(q.crossSourceCandidateProvenance.sources).toHaveLength(2);
   }
   expect(FNH_P1_2004_QA).toMatchObject({sourceVerifiedQuestions:58,simulatorReady:false});
+  expect(FNH_SUPPLIED_ARCHIVE.find(x=>x.id==="FNH-P1-2004-MJ").officialExaminerReportUrl)
+    .toBe("https://www.cxc.org/SiteAssets/2004SchoolReports/CSEC_2004_FoodandNutrition.pdf");
   const source=FNH_SUPPLIED_ARCHIVE.find(x=>x.id==="FNH-P1-2004-MJ");
   expect(source).toMatchObject({
    missingSourceOptionQuestionNumbers:missing2004,
    crossSourceCandidateOptionsFoundFor:missing2004,
    crossSourceCandidateOptionsVerifiedFor2004:false,
+   officialExaminerReportConfirmsItemCount:true,
+   officialExaminerReportIncludesPaper1QuestionsOrKeys:false,
+   sourceQuestionsExpected:60,
    verifiedQuestionCount:0
   });
  });
