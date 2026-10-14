@@ -3,6 +3,7 @@ import {recordSubjectActivity} from "../../subjects/subjectProgress";
 import {FNH_PAPER2_FORMAT,fnhGetPaper2Set} from "../data/fnhPaper2Bank";
 import {fnhPartMarkingScheme,fnhSelfAssessmentTotal} from "./fnhPaper2Marking";
 import FnhHistoricalDiagram from "./FnhHistoricalDiagram";
+import FnhFoodLabelDesigner from "./FnhFoodLabelDesigner";
 import "./fnhPractice.css";
 
 
@@ -108,9 +109,12 @@ export default function FnhPaper2Exam({onBack,supabase,userId,setNumber=1,histor
             const key=`${question.id}:${part.id}`,text=attempt.answers[key]||"";
             return <div className="fnh-p2-part" key={part.id}>
               <div className="fnh-p2-prompt"><b>({part.id}) {part.prompt}</b><span>{part.marks} marks</span></div>
-              <label><span className="fnh-p2-answer-label">Your response</span><textarea aria-label={`Question ${question.number} part ${part.id} answer`} rows={part.marks>=6?7:part.marks>=4?5:3}
+              {historicalPaper?.year===2018&&question.number===6&&part.id==="d-i"
+                ?<FnhFoodLabelDesigner key={key} value={text} disabled={review}
+                  onChange={next=>update({answers:{...attempt.answers,[key]:next}})}/>
+                :<label><span className="fnh-p2-answer-label">Your response</span><textarea aria-label={`Question ${question.number} part ${part.id} answer`} rows={part.marks>=6?7:part.marks>=4?5:3}
                 value={text} disabled={review}
-                onChange={event=>update({answers:{...attempt.answers,[key]:event.target.value}})} placeholder="Write your answer here…"/></label>
+                onChange={event=>update({answers:{...attempt.answers,[key]:event.target.value}})} placeholder="Write your answer here…"/></label>}
               {review&&<div className="fnh-p2-model-answer">
                 <strong>Correct answer and marking scheme ({part.marks} marks)</strong>
                 <p>{fnhPartMarkingScheme(part).rule}</p>
