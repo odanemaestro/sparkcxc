@@ -58,8 +58,8 @@ describe("CSEC Food, Nutrition and Health syllabus integrity",()=>{
     expect(FNH_ARCHIVE_SUMMARY).toMatchObject({paper1:16,paper2:18,unique:34});
     expect(FNH_SUPPLIED_ARCHIVE).toHaveLength(34);
     expect(new Set(FNH_SUPPLIED_ARCHIVE.map(row=>row.id)).size).toBe(34);
-    expect(FNH_SUPPLIED_ARCHIVE.filter(row=>!["FNH-P2-2005-MJ","FNH-P2-2006-MJ"].includes(row.id)).every(row=>row.reviewStatus==="requires-question-and-key-verification")).toBe(true);
-    expect(FNH_SUPPLIED_ARCHIVE.filter(row=>!["FNH-P2-2005-MJ","FNH-P2-2006-MJ"].includes(row.id)).every(row=>row.verifiedQuestionCount===0)).toBe(true);
+    expect(FNH_SUPPLIED_ARCHIVE.filter(row=>!["FNH-P2-2005-MJ","FNH-P2-2006-MJ","FNH-P2-2008-MJ"].includes(row.id)).every(row=>row.reviewStatus==="requires-question-and-key-verification")).toBe(true);
+    expect(FNH_SUPPLIED_ARCHIVE.filter(row=>!["FNH-P2-2005-MJ","FNH-P2-2006-MJ","FNH-P2-2008-MJ"].includes(row.id)).every(row=>row.verifiedQuestionCount===0)).toBe(true);
     expect(fnhVerifiedArchivePaper("FNH-P1-2026-MJ")).toBeNull();
   });
 });
