@@ -19,6 +19,66 @@ function ean13Bars(code){
  * Keep the original missing-quantity and missing-directions clues intact.
  */
 export default function FnhHistoricalDiagram({type}){
+  if(type==="place-setting-2004")return <figure className="fnh-historical-figure">
+    <svg viewBox="0 0 810 400" width="100%" role="img" aria-label="2004 Paper 1 Question 25 source place setting, knife on left marked A, fork right marked B, spoon right marked C, two utensils horizontally above the plate marked D and E">
+      <title>2004 Paper 1 Item 25: Labelled dinner place setting</title>
+      <rect x="72" y="50" width="663" height="277" rx="3" fill="none" stroke="currentColor" strokeWidth="2"/>
+      <g fill="none" stroke="currentColor" strokeWidth="3">
+        <circle cx="402" cy="209" r="103"/>
+        {/* Folded napkin at far left. */}
+        <path d="M170 225 L250 149 L250 301 Z"/>
+        {/* Incorrectly placed knife on the left. */}
+        <path d="M274 122 Q282 132 280 181 L281 264 Q277 281 273 263 Z"/>
+        {/* Fork shown on right as in supplied diagram. */}
+        <path d="M535 132 V166 M543 132 V166 M551 132 V166 M559 132 V166 M531 131 L531 179 Q544 196 559 179 L559 131 M545 189 V272 Q539 282 535 270"/>
+        {/* Right spoon. */}
+        <ellipse cx="615" cy="152" rx="12" ry="30"/><path d="M615 182 V269 Q615 286 610 269"/>
+        {/* Two pieces placed above plate, source labels D and E. */}
+        <ellipse cx="365" cy="75" rx="36" ry="11"/><path d="M399 75 H477 Q489 75 479 80 H399"/>
+        <path d="M330 105 H484 Q496 105 487 110 H330 Z"/>
+      </g>
+      <g fontFamily="Arial,sans-serif" fill="currentColor" fontSize="24" fontWeight="700" textAnchor="middle">
+        <text x="276" y="312">A</text><text x="545" y="312">B</text><text x="615" y="312">C</text><text x="331" y="72">D</text><text x="331" y="112">E</text>
+      </g>
+    </svg>
+    <figcaption>2004 Paper 1, Question 25. Source positions A–E preserved for identifying correctly placed cutlery.</figcaption>
+  </figure>;
+  if(type==="kitchen-layout-2004")return <figure className="fnh-historical-figure">
+    <svg viewBox="0 0 760 450" width="100%" role="img" aria-label="U-shaped kitchen plan, sink along the rear counter, cooker on the left, fridge on the right">
+      <title>2004 Paper 1 Item 52: Kitchen layout</title>
+      <g fill="none" stroke="currentColor" strokeWidth="3">
+        <path d="M147 75 H609 V354 H515 V169 H240 V354 H147 Z"/>
+        <rect x="316" y="88" width="121" height="50" rx="4"/>
+        <rect x="335" y="96" width="84" height="29" rx="2"/>
+        <circle cx="349" cy="82" r="4"/><circle cx="399" cy="82" r="4"/>
+        <rect x="157" y="210" width="72" height="84" rx="5"/>
+        {[175,213].flatMap(cx=>[228,274].map(cy=><circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="11"/>))}
+        <path d="M520 245 H606 M520 288 H606"/>
+      </g>
+      <text x="562" y="272" fontFamily="Arial,sans-serif" fontSize="23" fontWeight="700" textAnchor="middle" fill="currentColor">REF</text>
+      <text x="380" y="407" fontFamily="Arial,sans-serif" fontSize="22" textAnchor="middle" fill="currentColor">Three-sided kitchen counters form a U-shape</text>
+    </svg>
+    <figcaption>2004 Paper 1, Question 52. U-shaped kitchen plan redrawn from the supplied scan.</figcaption>
+  </figure>;
+  if(type==="refrigerator-storage-table-2004")return <figure className="fnh-historical-figure">
+    <svg viewBox="0 0 790 420" width="100%" role="img" aria-label="2004 source refrigerator table of four rows, with food placements in door, crisper and freezing compartment">
+      <title>2004 Paper 1 Item 58: Refrigerator storage locations</title>
+      <g fill="none" stroke="currentColor" strokeWidth="2">
+        <rect x="40" y="45" width="710" height="325"/>
+        {[105,170,235,300].map(y=><line key={y} x1="40" y1={y} x2="750" y2={y}/>)}
+        {[125,310,510].map(x=><line key={x} x1={x} y1="45" x2={x} y2="370"/>)}
+      </g>
+      <g fill="currentColor" fontFamily="Arial,sans-serif" fontSize="21" textAnchor="middle">
+        <text x="218" y="83" fontWeight="700">Door</text><text x="410" y="83" fontWeight="700">Crisper</text>
+        <text x="630" y="70" fontWeight="700">Freezing</text><text x="630" y="96" fontWeight="700">Compartment</text>
+        {["I","II","III","IV"].map((x,i)=><text key={x} x="82" y={147+i*65} fontWeight="700">{x}</text>)}
+        {["lettuce","lettuce","eggs","eggs"].map((x,i)=><text key={i} x="218" y={147+i*65}>{x}</text>)}
+        {["eggs","beef","lettuce","beef"].map((x,i)=><text key={i} x="410" y={147+i*65}>{x}</text>)}
+        {["beef","eggs","beef","beef"].map((x,i)=><text key={i} x="630" y={147+i*65}>{x}</text>)}
+      </g>
+    </svg>
+    <figcaption>2004 Paper 1, Question 58. Source table reproduced with all four options. Current storage guidance differs from some historical placements.</figcaption>
+  </figure>;
   if(type==="disease-table-2026")return <figure className="fnh-historical-figure">
     <svg viewBox="0 0 820 370" width="100%" role="img" aria-label="2026 Table 1 compares Disease A symptoms frequent urination, unusual thirst, extreme hunger, unusual weight loss and extreme fatigue with Disease B symptoms severe headaches, vision problems, fatigue, irregular heartbeat and chest pain">
       <title>2026 Table 1: Symptoms of Diseases A and B</title>
