@@ -103,7 +103,10 @@ export const FNH_SUPPLIED_ARCHIVE = Object.freeze([
     "sourceFilename": "CSEC_FNH_Paper_1_-_May_June_2014.pdf",
     "sourceFormat": "scanned-image",
     "reviewStatus": "requires-question-and-key-verification",
-    "verifiedQuestionCount": 0
+    "verifiedQuestionCount": 0,
+    "transcribedQuestionCount": 60,
+    "sourceQuestionCount": 60,
+    "answerKeyStatus": "8-unresolved-and-independent-key-review-required"
   },
   {
     "id": "FNH-P1-2015-MJ",
