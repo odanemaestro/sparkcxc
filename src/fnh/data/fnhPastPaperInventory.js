@@ -26,6 +26,11 @@ export const FNH_SUPPLIED_ARCHIVE = Object.freeze([
     "verifiedQuestionCount": 0,
     "transcribedQuestionCount": 58,
     "sourceQuestionCount": 60,
+    "sourcePagesSupplied": 8,
+    "sourceSha256": "189725467d2d77e5a5004d84ff0714405a4a5478a8035ea3fae69d058d002a67",
+    "sourceReuploadChecked": true,
+    "missingSourceOptionQuestionNumbers": [46,47],
+    "sourceQualityNote": "Original and 2026-10-14 reupload are byte-for-byte identical. Questions 46 and 47 refer to four shared options, but none are printed in the supplied scanned page. The two questions stay excluded from review until an authoritative source is available.",
     "answerKeyStatus": "missing-two-source-options-and-independent-review-required"
   },
   {
@@ -38,6 +43,11 @@ export const FNH_SUPPLIED_ARCHIVE = Object.freeze([
     "reviewStatus": "requires-question-and-key-verification",
     "verifiedQuestionCount": 0,
     "sourceQuestionCount": 53,
+    "sourcePagesSupplied": 7,
+    "sourceSha256": "3b7bbb9d96d759717571e408ebf876af22a259d88853ffe9d018a1a6e59edc0e",
+    "sourceReuploadChecked": true,
+    "sourceLastVisibleQuestion": 53,
+    "sourceQualityNote": "Original and 2026-10-14 reupload are byte-for-byte identical. The supplied seventh page ends at Question 53 and explicitly instructs GO ON TO THE NEXT PAGE; the final page containing Questions 54 to 60 was not supplied.",
     "transcribedQuestionCount": 53,
     "missingSourceQuestionNumbers": [54,55,56,57,58,59,60],
     "sourceCompleteness": "missing-final-seven-items",
