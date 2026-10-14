@@ -19,6 +19,51 @@ function ean13Bars(code){
  * Keep the original missing-quantity and missing-directions clues intact.
  */
 export default function FnhHistoricalDiagram({type}){
+  if(type==="disease-table-2026")return <figure className="fnh-historical-figure">
+    <svg viewBox="0 0 820 370" width="100%" role="img" aria-label="2026 Table 1 compares Disease A symptoms frequent urination, unusual thirst, extreme hunger, unusual weight loss and extreme fatigue with Disease B symptoms severe headaches, vision problems, fatigue, irregular heartbeat and chest pain">
+      <title>2026 Table 1: Symptoms of Diseases A and B</title>
+      <g stroke="currentColor" fill="none" strokeWidth="1.7">
+        <rect x="68" y="68" width="684" height="264"/>
+        <line x1="410" y1="68" x2="410" y2="332"/>
+        {[112,156,200,244,288].map(y=><line key={y} x1="68" y1={y} x2="752" y2={y}/>)}
+      </g>
+      <g fill="currentColor" fontFamily="Arial,sans-serif">
+        <text x="410" y="32" textAnchor="middle" fontWeight="700" fontSize="20">TABLE 1: SYMPTOMS OF DISEASES A AND B</text>
+        <text x="239" y="98" textAnchor="middle" fontWeight="700" fontSize="19">Disease A</text>
+        <text x="581" y="98" textAnchor="middle" fontWeight="700" fontSize="19">Disease B</text>
+        {["Frequent urination","Unusual thirst","Extreme hunger","Unusual weight loss","Extreme fatigue (weak and tired)"].map((x,i)=><text key={i} x="84" y={140+i*44} fontSize="17">{x}</text>)}
+        {["Severe headaches","Vision problems","Fatigue","Irregular heartbeat","Chest pain"].map((x,i)=><text key={i} x="426" y={140+i*44} fontSize="17">{x}</text>)}
+      </g>
+    </svg>
+    <figcaption>2026 Paper 2, Question 1. The two source symptom lists are preserved, without displaying the diagnostic answer.</figcaption>
+  </figure>;
+  if(type==="household-accidents-2026")return <figure className="fnh-historical-figure">
+    <svg viewBox="0 0 840 380" width="100%" role="img" aria-label="Three 2026 home accident illustrations: child pulling the cord of a hot iron on an ironing board, person in danger of falling from a ladder, person using scissors near a damaged live electrical cord">
+      <title>2026 Paper 2 Question 5: Three household accidents</title>
+      <g fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+        {[17,293,569].map(x=><rect key={x} x={x} y="28" width="255" height="278" strokeWidth="2.2"/>)}
+        {/* Figure 1: iron, board, trailing flex and child. */}
+        <path d="M54 134 H228 L213 148 H65 Z M84 148 L187 270 M187 148 L84 270 M73 270 H94 M176 270 H197"/>
+        <path d="M149 130 L171 112 L181 132 Z M161 116 V93 Q161 79 174 83 L179 101 L171 112"/>
+        <path d="M172 83 Q220 84 223 145 Q225 175 210 185"/>
+        <circle cx="215" cy="204" r="19"/><path d="M212 223 L212 265 M212 238 L189 254 M212 241 L236 257 M212 265 L195 290 M212 265 L232 290"/>
+        {/* Figure 2: angled stepladder and precarious person. */}
+        <path d="M337 287 L419 80 L489 286 M368 216 L474 216 M383 181 H458 M399 139 H447 M346 272 H483 M423 80 H456 L474 287"/>
+        <circle cx="447" cy="125" r="17"/><path d="M445 143 L434 194 M434 159 L394 174 M434 160 L465 188 M434 194 L407 242 M434 194 L466 238"/>
+        <path d="M515 220 V148 H545 V286 H506"/>
+        {/* Figure 3: table, lead, person, scissors and plug. */}
+        <path d="M614 256 H796 M649 255 V303 M777 255 V303"/>
+        <circle cx="676" cy="109" r="29"/><path d="M657 135 Q656 168 675 184 L712 198 M686 134 L711 164 M711 164 L747 195"/>
+        <path d="M744 196 L758 185 M744 196 L758 207 M753 180 L764 187 M753 211 L764 203"/>
+        <path d="M761 196 Q785 191 794 214 L795 228"/>
+        <rect x="786" y="225" width="24" height="18" rx="3"/>
+      </g>
+      <g fill="currentColor" fontFamily="Arial,sans-serif" fontWeight="700" fontSize="21" textAnchor="middle">
+        <text x="144" y="338">Figure 1</text><text x="420" y="338">Figure 2</text><text x="696" y="338">Figure 3</text>
+      </g>
+    </svg>
+    <figcaption>2026 Paper 2, Question 5. SVG redraws of the hot-iron cord, unstable ladder and electrical hazard shown in the supplied paper.</figcaption>
+  </figure>;
   if(type==="nutrients-table-2024")return <figure className="fnh-historical-figure">
     <svg viewBox="0 0 760 370" width="100%" role="img" aria-label="2024 Table 1 Nutrients and health-related conditions: missing nutrient for heart disease, protein with missing condition, missing nutrient for scurvy, water with missing condition">
       <title>2024 Paper2 Question2: Nutrients and health-related conditions</title>
