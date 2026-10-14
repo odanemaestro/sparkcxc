@@ -2,7 +2,8 @@ import React,{useEffect,useState} from "react";
 import FnhPaper1Exam from "./FnhPaper1Exam";
 import FnhPaper2Exam from "./FnhPaper2Exam";
 import FnhPracticalWorkbook from "./FnhPracticalWorkbook";
-import {FNH_SUPPLIED_ARCHIVE} from "../data/fnhPastPaperInventory";
+import {FNH_SUPPLIED_ARCHIVE,fnhHistoricalPaperFormat} from "../data/fnhPastPaperInventory";
+import {FNH_PAPER1_PRACTICE_SETS} from "../data/fnhPaper1Bank";
 import "./fnhPractice.css";
 
 const scrollTop=()=>{try{window.scrollTo?.({top:0,left:0,behavior:"instant"});}catch{}};
@@ -24,19 +25,22 @@ function FnhPaperLibrary({paper,onBack,onStart}){
       <button type="button" className={tab==="practice"?"active":""} aria-pressed={tab==="practice"} onClick={()=>setTab("practice")}>Practice sets</button>
       <button type="button" className={tab==="past"?"active":""} aria-pressed={tab==="past"} onClick={()=>setTab("past")}>Past papers</button>
     </div>
-    {tab==="practice"?<section className="fnh-exam-card fnh-library-paper">
-      <span className="fnh-library-eyebrow">SPARK ORIGINAL PRACTICE</span>
-      <h2>Practice set 1</h2>
-      <p>{isPaper1?"60 original syllabus-mapped multiple-choice questions with explanations.":"Six original compulsory questions with detailed marking points and explanatory review."}</p>
-      <p>{isPaper1?"1 hour 30 minutes · 60 marks":"2 hours 30 minutes · 96 marks"}</p>
-      <button className="fnh-primary" type="button" onClick={onStart}>Select practice paper <span aria-hidden="true">→</span></button>
-    </section>:<>
+    {tab==="practice"?<div className="fnh-original-sets">
+      {(isPaper1?FNH_PAPER1_PRACTICE_SETS:[{number:1,label:"Practice set 1"}]).map(set=>
+        <section className="fnh-exam-card fnh-library-paper" key={set.number}>
+          <span className="fnh-library-eyebrow">SPARK ORIGINAL PRACTICE</span>
+          <h2>{set.label}</h2>
+          <p>{isPaper1?"60 different syllabus-based multiple-choice questions, four choices each, with correct answers and explanations.":"Six compulsory structured questions with question-specific marking points and answer review."}</p>
+          <p>{isPaper1?"1 hour 30 minutes · 60 marks":"2 hours 30 minutes · 96 marks"}</p>
+          <button className="fnh-primary" type="button" onClick={()=>onStart(set.number)}>Select practice paper <span aria-hidden="true">→</span></button>
+        </section>)}
+    </div>:<>
       <div className="fnh-library-archive-intro"><div><h2>Historical Paper {paper} sources</h2><p>The supplied scans are recorded by year. Original wording, diagrams and answer keys are checked before a past paper is released for exam simulation.</p></div>
         <label>Year <select value={year} onChange={e=>setYear(e.target.value)}><option value="all">All years</option>{FNH_SUPPLIED_ARCHIVE.filter(p=>p.paper===paper).map(p=><option key={p.id} value={p.year}>{p.year}</option>)}</select></label>
       </div>
       <div className="fnh-library-archive-grid">{years.map(source=><article key={source.id} className="fnh-exam-card fnh-archive-card">
         <small>HISTORICAL SOURCE · MAY/JUNE</small><h3>{source.year} Paper {paper}</h3>
-        <p>{source.sourceFormat==="scanned-image"?"Scanned pages":"Text-layer source"} · Source inventory</p>
+        <p>{fnhHistoricalPaperFormat(source)?.subject} · {source.sourceFormat==="scanned-image"?"Scanned pages":"Text-layer source"}</p>
         <span className="fnh-archive-status">Question and marking checks pending</span>
       </article>)}</div>
     </>}
@@ -45,10 +49,11 @@ function FnhPaperLibrary({paper,onBack,onStart}){
 
 export default function FnhPracticeHub({supabase,userId,onBack}){
   const [view,setView]=useState("home");
+  const [selectedPaper1Set,setSelectedPaper1Set]=useState(1);
   useEffect(()=>{scrollTop();},[view]);
   if(view==="paper1"||view==="paper2")return <FnhPaperLibrary paper={view==="paper1"?1:2}
-    onBack={()=>setView("home")} onStart={()=>setView(view==="paper1"?"exam1":"exam2")}/>;
-  if(view==="exam1")return <FnhPaper1Exam supabase={supabase} userId={userId} onBack={()=>setView("paper1")}/>;
+    onBack={()=>setView("home")} onStart={number=>{if(view==="paper1")setSelectedPaper1Set(number);setView(view==="paper1"?"exam1":"exam2");}}/>;
+  if(view==="exam1")return <FnhPaper1Exam key={selectedPaper1Set} setNumber={selectedPaper1Set} supabase={supabase} userId={userId} onBack={()=>setView("paper1")}/>;
   if(view==="exam2")return <FnhPaper2Exam supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
   if(view==="workbook")return <FnhPracticalWorkbook userId={userId} onBack={()=>setView("home")}/>;
   return <main className="fnh-exam fnh-practice-home"><div className="fnh-exam-container">
