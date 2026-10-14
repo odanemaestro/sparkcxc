@@ -39,7 +39,7 @@ function FnhPaperLibrary({paper,onBack,onStart,onStartHistorical,onReviewHistori
     <header className="fnh-exam-card fnh-library-hero"><small>CSEC FOOD, NUTRITION AND HEALTH · PAPER {isPaper1?"01":"02"}</small>
       <h1>{isPaper1?"Paper 1: Multiple choice":"Paper 2: Structured questions"}</h1>
       <p>Choose a practice set or browse the supplied historical examination sources. Each ready paper starts with instructions and an examination timer.</p>
-      <div className="fnh-library-facts"><span>{isPaper1?"60 questions":"6 compulsory questions"}</span><span>{isPaper1?"90 minutes":"150 minutes"}</span><span>{isPaper1?"60 marks":"96 marks"}</span></div>
+      <div className="fnh-library-facts"><span>{isPaper1?"SPARK practice: 60 questions":"SPARK practice: 6 questions"}</span><span>{isPaper1?"90-minute original sets":"150-minute original sets"}</span><span>Historical formats vary by year</span></div>
     </header>
     <div className="fnh-library-tabs" role="group" aria-label="Choose practice or past papers">
       <button type="button" className={tab==="practice"?"active":""} aria-pressed={tab==="practice"} onClick={()=>onTabChange("practice")}>Practice sets</button>
