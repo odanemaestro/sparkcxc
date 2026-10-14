@@ -483,6 +483,7 @@ export default function FnhPaper1HistoricalDiagram({type}){
  </figure>;
  if(type==="kitchen-layout-2007")return <FnhPaper1HistoricalDiagram type="kitchen-layout-2006"/>;
  if(type==="place-setting-2008")return <FnhPaper1HistoricalDiagram type="place-setting-2007"/>;
+ if(type==="caribbean-dishes-table-2006")return <FnhPaper1HistoricalDiagram type="local-dishes-table-2006"/>;
  if(type==="local-dishes-table-2008")return <FnhPaper1HistoricalDiagram type="local-dishes-table-2006"/>;
  if(type==="two-menus-2009")return <FnhPaper1HistoricalDiagram type="two-menus-2014"/>;
  if(type==="local-dishes-table-2009")return <FnhPaper1HistoricalDiagram type="local-dishes-table-2006"/>;
