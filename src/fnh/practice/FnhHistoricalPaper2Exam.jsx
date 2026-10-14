@@ -97,12 +97,12 @@ export default function FnhHistoricalPaper2Exam({paper:PAPER,onBack,supabase,use
         <small>{PAPER.year} MAY/JUNE · {PAPER.subjectAtExamination.toUpperCase()} · GENERAL PROFICIENCY</small>
         <h1>Paper 2 examination instructions</h1>
         <p>This historical examination uses the {PAPER.year} General Proficiency format, not the current Food, Nutrition and Health examination structure.</p>
-        <div className="fnh-exam-stats"><div><strong>5</strong><span>Questions to answer</span></div><div><strong>2 hours</strong><span>Writing time</span></div><div><strong>10 min</strong><span>Additional reading time</span></div><div><strong>80 marks</strong><span>Total</span></div></div>
+        <div className="fnh-exam-stats"><div><strong>5</strong><span>Questions to answer</span></div><div><strong>{PAPER.writingMinutes} min</strong><span>Writing time</span></div><div><strong>{PAPER.readingMinutes?`${PAPER.readingMinutes} min`:"Included"}</strong><span>{PAPER.readingMinutes?"Additional reading time":"Reading and planning"}</span></div><div><strong>80 marks</strong><span>Total</span></div></div>
         <h2>Original directions</h2><ol>
           <li>Part A has three compulsory questions. Answer all three.</li>
           <li>Part B has four questions. Select and answer two.</li>
           <li>Answer five questions altogether. Each carries 16 marks.</li>
-          <li>Ten minutes are allowed in addition to the two hours for reading. Writing may begin during reading time.</li>
+          {PAPER.readingMinutes>0?<li>{PAPER.readingMinutes} minutes are allowed in addition to {PAPER.writingMinutes} minutes for writing. Writing may begin during reading time.</li>:<li>Time for reading and planning answers is included within the {PAPER.writingMinutes}-minute examination period.</li>}
           <li>Your timer starts when you select Start examination. Answers are saved in this browser.</li>
           <li>After submission, compare your responses with the model answers and marking points.</li>
         </ol>
