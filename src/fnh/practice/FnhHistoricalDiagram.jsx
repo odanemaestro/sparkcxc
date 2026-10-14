@@ -104,6 +104,27 @@ export default function FnhHistoricalDiagram({type}){
     </svg>
     <figcaption>2014 Paper 2, Figure 2. Basic lunch place setting, including labels A, B, C and D.</figcaption>
   </figure>;
+  if(type==="egg-parts-2015")return <figure className="fnh-historical-figure">
+    <svg viewBox="0 0 650 470" width="100%" role="img" aria-label="Cross-section of a hen egg, A points to central egg yolk and B points to albumen (egg white) surrounding yolk">
+      <title>2015 Paper 2, Figure 1: Egg anatomy labels A and B</title>
+      <g stroke="currentColor" strokeWidth="2.6" fill="none" strokeLinejoin="round">
+        <path d="M323 29 C236 29 175 174 176 306 C175 390 237 438 323 438 C410 438 473 390 470 306 C468 174 408 29 323 29 Z"/>
+        <path d="M323 48 C249 48 193 181 195 307 C195 382 246 415 323 421 C399 416 453 383 452 307 C451 180 397 48 323 48 Z"/>
+        <ellipse cx="325" cy="253" rx="111" ry="104"/>
+        {/* Twisted chalaza near upper and lower ends of yolk. */}
+        <path d="M319 151 L311 133 L321 118 L312 101 L322 83 L313 70 L323 48
+                 M330 151 L341 131 L330 118 L340 103 L331 84 L342 71 L335 48
+                 M317 357 L307 373 L316 385 L307 400 L322 418
+                 M335 356 L345 375 L332 389 L345 404 L325 419"/>
+        <path d="M412 249 L535 249"/>
+        <path d="M346 408 L468 462"/>
+      </g>
+      <g fill="currentColor" fontFamily="Georgia,serif" fontSize="24" fontWeight="bold">
+        <text x="545" y="257">A</text><text x="480" y="468">B</text>
+      </g>
+    </svg>
+    <figcaption>2015 Paper 2, Figure 1. Egg cross-section, A yolk and B albumen.</figcaption>
+  </figure>;
   if(type!=="flour-mix-2008")return null;
   return <figure className="fnh-historical-figure">
     <svg viewBox="0 0 760 485" width="100%" role="img"
