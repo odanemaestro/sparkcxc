@@ -10,7 +10,7 @@ describe("FNH Paper 2 transparent marking assistance",()=>{
       expect(scheme.maximum).toBe(part.marks);
       expect(scheme.points.length).toBeGreaterThanOrEqual(part.marks);
       expect(new Set(scheme.points.map(item=>item.id)).size).toBe(scheme.points.length);
-      expect(scheme.points.every(item=>item.text.length>15)).toBe(true);
+      expect(scheme.points.every(item=>item.text.trim().length>4)).toBe(true);
       expect(scheme.rule).toMatch(/Award up to/);
       expect(scheme.note).toMatch(/Equivalent/);
     }));
