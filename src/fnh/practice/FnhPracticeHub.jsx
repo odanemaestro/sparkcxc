@@ -2,14 +2,15 @@ import React,{useEffect,useState} from "react";
 import FnhPaper1Exam from "./FnhPaper1Exam";
 import FnhPaper2Exam from "./FnhPaper2Exam";
 import FnhPracticalWorkbook from "./FnhPracticalWorkbook";
-import {FNH_SUPPLIED_ARCHIVE,fnhHistoricalPaperFormat} from "../data/fnhPastPaperInventory";
+import FnhHistorical2005Paper2Exam from "./FnhHistorical2005Paper2Exam";
+import {FNH_SUPPLIED_ARCHIVE,fnhHistoricalPaperFormat,fnhHistoricalSimulatorReady} from "../data/fnhPastPaperInventory";
 import {FNH_PAPER1_PRACTICE_SETS} from "../data/fnhPaper1Bank";
 import {FNH_PAPER2_PRACTICE_SETS} from "../data/fnhPaper2Bank";
 import "./fnhPractice.css";
 
 const scrollTop=()=>{try{window.scrollTo?.({top:0,left:0,behavior:"instant"});}catch{}};
 
-function FnhPaperLibrary({paper,onBack,onStart}){
+function FnhPaperLibrary({paper,onBack,onStart,onStartHistorical}){
   const [tab,setTab]=useState("practice");
   const [year,setYear]=useState("all");
   const isPaper1=paper===1;
@@ -42,7 +43,10 @@ function FnhPaperLibrary({paper,onBack,onStart}){
       <div className="fnh-library-archive-grid">{years.map(source=><article key={source.id} className="fnh-exam-card fnh-archive-card">
         <small>HISTORICAL SOURCE · MAY/JUNE</small><h3>{source.year} Paper {paper}</h3>
         <p>{fnhHistoricalPaperFormat(source)?.subject} · {source.sourceFormat==="scanned-image"?"Scanned pages":"Text-layer source"}</p>
-        <span className="fnh-archive-status">Question and marking checks pending</span>
+        {fnhHistoricalSimulatorReady(source.id)?<>
+          <span className="fnh-archive-status">Original questions transcribed and checked</span>
+          <button type="button" className="fnh-primary" onClick={()=>onStartHistorical(source.id)}>Start examination →</button>
+        </>:<span className="fnh-archive-status">Question and marking checks pending</span>}
       </article>)}</div>
     </>}
   </div></main>;
@@ -54,9 +58,10 @@ export default function FnhPracticeHub({supabase,userId,onBack}){
   const [selectedPaper2Set,setSelectedPaper2Set]=useState(1);
   useEffect(()=>{scrollTop();},[view]);
   if(view==="paper1"||view==="paper2")return <FnhPaperLibrary paper={view==="paper1"?1:2}
-    onBack={()=>setView("home")} onStart={number=>{if(view==="paper1")setSelectedPaper1Set(number);else setSelectedPaper2Set(number);setView(view==="paper1"?"exam1":"exam2");}}/>;
+    onBack={()=>setView("home")} onStart={number=>{if(view==="paper1")setSelectedPaper1Set(number);else setSelectedPaper2Set(number);setView(view==="paper1"?"exam1":"exam2");}} onStartHistorical={id=>{if(id==="FNH-P2-2005-MJ")setView("historical-2005-p2");}}/>;
   if(view==="exam1")return <FnhPaper1Exam key={selectedPaper1Set} setNumber={selectedPaper1Set} supabase={supabase} userId={userId} onBack={()=>setView("paper1")}/>;
   if(view==="exam2")return <FnhPaper2Exam key={selectedPaper2Set} setNumber={selectedPaper2Set} supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
+  if(view==="historical-2005-p2")return <FnhHistorical2005Paper2Exam supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
   if(view==="workbook")return <FnhPracticalWorkbook userId={userId} onBack={()=>setView("home")}/>;
   return <main className="fnh-exam fnh-practice-home"><div className="fnh-exam-container">
     <div className="fnh-exam-top"><button className="fnh-outline" type="button" onClick={onBack}>← Back to practice</button></div>
