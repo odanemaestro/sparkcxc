@@ -46,8 +46,17 @@ describe("historical FNH Paper 01 SVG source and reader coverage",()=>{
    for(const q of exam.questions){
     if(!q.diagramId)continue;
     expect(FNH_P1_RENDERABLE_DIAGRAM_IDS).toContain(q.diagramId);
-    const el=FnhPaper1HistoricalDiagram({type:q.diagramId});
+    // Some historical figures reuse a second year's SVG component. Follow
+    // that reference before asserting that the final element is a figure.
+    let diagramId=q.diagramId;
+    let el=null;
+    for(let depth=0;depth<5;depth++){
+     el=FnhPaper1HistoricalDiagram({type:diagramId});
+     if(!el||el.type!==FnhPaper1HistoricalDiagram)break;
+     diagramId=el.props.type;
+    }
     expect(el).not.toBeNull();
+    expect(el?.type).toBe("figure");
     expect(el?.props?.children).toBeDefined();
    }
   }
