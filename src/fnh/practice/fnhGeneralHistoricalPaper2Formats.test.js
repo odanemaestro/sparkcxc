@@ -3,11 +3,14 @@ import {FNH_HISTORICAL_P2_2006} from "../data/fnhHistorical2006Paper2";
 import {FNH_HISTORICAL_P2_2008} from "../data/fnhHistorical2008Paper2";
 import {FNH_HISTORICAL_P2_2009} from "../data/fnhHistorical2009Paper2";
 import {FNH_HISTORICAL_P2_2010} from "../data/fnhHistorical2010Paper2";
+import {FNH_HISTORICAL_P2_2014} from "../data/fnhHistorical2014Paper2";
+import {FNH_HISTORICAL_P2_2015} from "../data/fnhHistorical2015Paper2";
+import {FNH_HISTORICAL_P2_2016} from "../data/fnhHistorical2016Paper2";
 import {fnhHistoricalExamStructure} from "./FnhHistoricalPaper2Exam";
 import {fnhHistoricalSimulatorReady,FNH_SUPPLIED_ARCHIVE} from "../data/fnhPastPaperInventory";
 import {fnhPartMarkingScheme} from "./fnhPaper2Marking";
 
-const historical=[FNH_HISTORICAL_P2_2005,FNH_HISTORICAL_P2_2006,FNH_HISTORICAL_P2_2008,FNH_HISTORICAL_P2_2009,FNH_HISTORICAL_P2_2010];
+const historical=[FNH_HISTORICAL_P2_2005,FNH_HISTORICAL_P2_2006,FNH_HISTORICAL_P2_2008,FNH_HISTORICAL_P2_2009,FNH_HISTORICAL_P2_2010,FNH_HISTORICAL_P2_2014,FNH_HISTORICAL_P2_2015,FNH_HISTORICAL_P2_2016];
 describe("Archived FNH General Proficiency Paper 2 format and marking",()=>{
   test.each(historical.map(p=>[p.year,p]))("%s: source question count and marks remain faithful",(_year,paper)=>{
     expect(paper.questions).toHaveLength(7);
@@ -39,8 +42,8 @@ describe("Archived FNH General Proficiency Paper 2 format and marking",()=>{
   });
   test("only explicitly source-checked archive papers are playable",()=>{
     const playable=FNH_SUPPLIED_ARCHIVE.filter(p=>Boolean(fnhHistoricalSimulatorReady(p.id)));
-    expect(playable.map(p=>p.year)).toEqual([2005,2006,2008,2009,2010]);
+    expect(playable.map(p=>p.year)).toEqual([2005,2006,2008,2009,2010,2014,2015,2016]);
     expect(playable.every(p=>p.paper===2&&p.verifiedQuestionCount===7)).toBe(true);
-    expect(FNH_SUPPLIED_ARCHIVE.filter(p=>!p.simulatorReady).length).toBe(29);
+    expect(FNH_SUPPLIED_ARCHIVE.filter(p=>!p.simulatorReady).length).toBe(26);
   });
 });
