@@ -1,27 +1,30 @@
 import React,{useEffect,useMemo,useRef,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
-import {FNH_PAPER1_ORIGINAL_BANK,FNH_PAPER1_FORMAT} from "../data/fnhPaper1Bank";
+import {FNH_PAPER1_FORMAT,fnhGetPaper1Set} from "../data/fnhPaper1Bank";
 import "./fnhPractice.css";
 
-const PAPER_ID="FNH-SPARK-P1-ORIGINAL-01";
+
 const SECONDS=FNH_PAPER1_FORMAT.minutes*60;
-const storeKey=userId=>`spark:fnh:paper1:${userId||"guest"}:${PAPER_ID}`;
+const storeKey=(userId,paperId)=>`spark:fnh:paper1:${userId||"guest"}:${paperId}`;
 const time=s=>[Math.floor(s/3600),Math.floor((s%3600)/60),s%60].map(v=>String(Math.max(0,v)).padStart(2,"0")).join(":");
 const goTop=()=>{try{window.scrollTo?.({top:0,left:0,behavior:"instant"});}catch{}};
-const makeNew=()=>({paperId:PAPER_ID,attemptId:`${Date.now()}-${Math.random().toString(36).slice(2)}`,
+const makeNew=paperId=>({paperId,attemptId:`${Date.now()}-${Math.random().toString(36).slice(2)}`,
   phase:"instructions",answers:{},flags:{},index:0,deadline:null,submittedAt:null});
 
-export default function FnhPaper1Exam({supabase,userId,onBack}){
+export default function FnhPaper1Exam({supabase,userId,onBack,setNumber=1}){
+  const selected=fnhGetPaper1Set(setNumber);
+  const paperId=`FNH-SPARK-P1-ORIGINAL-0${selected.number}`;
+  const questions=selected.questions;
   const [attempt,setAttempt]=useState(()=>{
     try{
-      const saved=JSON.parse(localStorage.getItem(storeKey(userId))||"null");
-      return saved?.paperId===PAPER_ID&&["exam","review"].includes(saved.phase)?saved:makeNew();
-    }catch{return makeNew();}
+      const saved=JSON.parse(localStorage.getItem(storeKey(userId,paperId))||"null");
+      return saved?.paperId===paperId&&["exam","review"].includes(saved.phase)?saved:makeNew(paperId);
+    }catch{return makeNew(paperId);}
   });
   const [clock,setClock]=useState(SECONDS);
   const [modal,setModal]=useState("");
   const reported=useRef(new Set());
-  const questions=FNH_PAPER1_ORIGINAL_BANK;
+
   const index=Math.min(questions.length-1,Math.max(0,Number(attempt.index)||0));
   const current=questions[index];
   const review=attempt.phase==="review";
@@ -31,8 +34,8 @@ export default function FnhPaper1Exam({supabase,userId,onBack}){
   const flagged=questions.filter(q=>Boolean(attempt.flags[q.id])).length;
   const change=patch=>setAttempt(old=>({...old,...patch}));
   useEffect(()=>{
-    try{localStorage.setItem(storeKey(userId),JSON.stringify(attempt));}catch{}
-  },[attempt,userId]);
+    try{localStorage.setItem(storeKey(userId,paperId),JSON.stringify(attempt));}catch{}
+  },[attempt,userId,paperId]);
   useEffect(()=>{
     if(!exam)return undefined;
     const tick=()=>{
@@ -49,18 +52,18 @@ export default function FnhPaper1Exam({supabase,userId,onBack}){
     if(!review||!userId||!supabase?.rpc||reported.current.has(attempt.attemptId))return;
     reported.current.add(attempt.attemptId);
     recordSubjectActivity({supabase,activity:{
-      subjectId:"food-nutrition-and-health",activityKey:`exam:fnh-paper1:${PAPER_ID}:${attempt.attemptId}`,
-      activityType:"exam",title:"Food, Nutrition and Health Paper 01 · Original Practice Set 1",
+      subjectId:"food-nutrition-and-health",activityKey:`exam:fnh-paper1:${paperId}:${attempt.attemptId}`,
+      activityType:"exam",title:`Food, Nutrition and Health Paper 01 · ${selected.label}`,
       completed:true,score,maxScore:questions.length,percent:Math.round(100*score/questions.length),
-      metadata:{source:"fnh_paper1_original_v1",paper:"01",paper_id:PAPER_ID,
+      metadata:{source:"fnh_paper1_original_v1",paper:"01",paper_id:paperId,
         question_count:60,duration_minutes:90,source_verified:true,historical:false,
         profile_knowledge:30,profile_use_of_knowledge:30,at:new Date().toISOString()},
     }}).catch(error=>console.warn("FNH Paper 1 progress could not be saved",error));
-  },[review,attempt.attemptId,questions.length,score,supabase,userId]);
+  },[review,attempt.attemptId,questions.length,score,supabase,userId,paperId,selected.label]);
   const begin=()=>{
     setModal("");
     setClock(SECONDS);
-    setAttempt({...makeNew(),phase:"exam",deadline:Date.now()+SECONDS*1000});
+    setAttempt({...makeNew(paperId),phase:"exam",deadline:Date.now()+SECONDS*1000});
   };
   const submit=()=>{change({phase:"review",submittedAt:Date.now()});setModal("");};
   const selected=q=>attempt.answers[q.id];
@@ -72,7 +75,7 @@ export default function FnhPaper1Exam({supabase,userId,onBack}){
         <span>CSEC FOOD, NUTRITION AND HEALTH · PAPER 01</span>
       </div>
       {attempt.phase==="instructions"?<section className="fnh-exam-card fnh-instructions">
-        <small>ORIGINAL PRACTICE SET 1</small>
+        <small>ORIGINAL PRACTICE SET {selected.number}</small>
         <h1>Paper 1 examination instructions</h1>
         <p>Read the instructions carefully. Your time starts when you select <strong>Start examination</strong>.</p>
         <div className="fnh-exam-stats"><div><strong>60</strong><span>Questions</span></div><div><strong>90 minutes</strong><span>Duration</span></div><div><strong>60 marks</strong><span>Total marks</span></div><div><strong>4 choices</strong><span>Per question</span></div></div>
