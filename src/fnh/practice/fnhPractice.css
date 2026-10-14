@@ -151,3 +151,16 @@ html[data-theme="dark"] .fnh-choice-number,body[data-theme="dark"] .fnh-choice-n
 .fnh-original-sets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 .fnh-original-sets .fnh-library-paper{width:100%;max-width:none;box-sizing:border-box}
 @media(max-width:720px){.fnh-original-sets{grid-template-columns:1fr}}
+
+/* Preserve the historical 2005 Part A compulsory and Part B choose-two format. */
+.fnh-historical-part-b{border:1px solid var(--fnh-border);background:var(--fnh-background);border-radius:13px;padding:17px;margin-bottom:24px;color:var(--fnh-ink)}
+.fnh-historical-part-b h3{font-size:17px;color:var(--fnh-ink);margin:0 0 8px}
+.fnh-historical-part-b p{font-size:12px;color:var(--fnh-muted);line-height:1.6;margin:8px 0 15px}
+.fnh-historical-part-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.fnh-historical-part-options label{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--fnh-border);border-radius:10px;padding:12px;background:var(--fnh-card);color:var(--fnh-ink);cursor:pointer}
+.fnh-historical-part-options label:has(input:checked){border-color:var(--fnh-accent);background:color-mix(in srgb,var(--fnh-card) 90%,var(--fnh-accent))}
+.fnh-historical-part-options label input{accent-color:var(--fnh-accent);flex-shrink:0;width:17px;height:17px}
+.fnh-historical-part-options label span{display:grid;gap:4px;color:var(--fnh-muted);font-size:12px;line-height:1.6}
+.fnh-historical-part-options label b{color:var(--fnh-ink)}
+.fnh-historical-exam .fnh-archive-card button{justify-self:start}
+@media(max-width:600px){.fnh-historical-part-options{grid-template-columns:1fr}}
