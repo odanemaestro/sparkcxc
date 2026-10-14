@@ -1,5 +1,6 @@
 import {FNH_P1_2003_TRANSCRIPTION_DRAFT,FNH_P1_2003_QA} from "./fnhHistorical2003Paper1Draft";
 import {FNH_P1_2004_TRANSCRIPTION_DRAFT,FNH_P1_2004_QA} from "./fnhHistorical2004Paper1Draft";
+import {FNH_P1_2005_TRANSCRIPTION_DRAFT} from "./fnhHistorical2005Paper1Draft";
 
 // Publishing rule for original historical Paper 01 transcriptions.
 // A candidate list and suggested keys are not sufficient to publish an
@@ -24,4 +25,5 @@ export function fnhHistoricalPaper1ReleaseCheck(items=[],{expectedQuestions=60,v
 export const FNH_HISTORICAL_PAPER1_TRANSCRIPTION_PROGRESS=Object.freeze([
  {year:2003,source:"CSEC_FNH_Paper_1_-_May_June_2003.pdf",...fnhHistoricalPaper1ReleaseCheck(FNH_P1_2003_TRANSCRIPTION_DRAFT)},
  {year:2004,source:"CSEC_FNH_Paper_1_-_May_June_2004.pdf",...fnhHistoricalPaper1ReleaseCheck(FNH_P1_2004_TRANSCRIPTION_DRAFT)},
+ {year:2005,source:"CSEC_FNH_Paper_1_-_May_June_2005.pdf",...fnhHistoricalPaper1ReleaseCheck(FNH_P1_2005_TRANSCRIPTION_DRAFT)},
 ]);
