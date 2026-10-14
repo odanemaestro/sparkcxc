@@ -1,5 +1,5 @@
 import {FNH_PAPER1_ORIGINAL_BANK,FNH_PAPER1_FORMAT,fnhMakePaper1,FNH_PAPER1_PRACTICE_SETS,fnhGetPaper1Set} from "./data/fnhPaper1Bank";
-import {FNH_PAPER2_ORIGINAL_SET_ONE,FNH_PAPER2_FORMAT} from "./data/fnhPaper2Bank";
+import {FNH_PAPER2_ORIGINAL_SET_ONE,FNH_PAPER2_FORMAT,FNH_PAPER2_PRACTICE_SETS,fnhGetPaper2Set} from "./data/fnhPaper2Bank";
 import {FNH_OBJECTIVES} from "./data/fnhCourse";
 import {FNH_SUPPLIED_ARCHIVE,fnhHistoricalPaperFormat,fnhVerifiedArchivePaper} from "./data/fnhPastPaperInventory";
 import {FNH_PRACTICAL_WORKBOOK,FNH_SBA_GUIDELINES,fnhWorkbookCoverage} from "./data/fnhPracticalWorkbook";
@@ -64,6 +64,26 @@ describe("FNH original examination and historical-format correctness",()=>{
       expect(new Set(question.items.map(x=>x.id)).size).toBe(question.items.length);
       expect(question.items.every(x=>x.prompt&&x.modelPoints.length>=2&&x.explanation.length>35)).toBe(true);
     });
+  });
+  test("both Paper 2 practice sets contain distinct scenarios, stable unique IDs and detailed answer points",()=>{
+    expect(FNH_PAPER2_PRACTICE_SETS).toHaveLength(2);
+    const papers=FNH_PAPER2_PRACTICE_SETS.flatMap(set=>set.questions);
+    expect(papers).toHaveLength(12);
+    expect(new Set(papers.map(q=>q.id)).size).toBe(12);
+    expect(new Set(papers.map(q=>q.context)).size).toBe(12);
+    FNH_PAPER2_PRACTICE_SETS.forEach((set,index)=>{
+      expect(set.number).toBe(index+1);
+      expect(set.questions).toHaveLength(6);
+      expect(set.questions.flatMap(q=>q.items)).toHaveLength(24);
+      set.questions.forEach(q=>{
+        expect(q.marks).toBe(16);
+        expect(q.items.reduce((a,p)=>a+p.marks,0)).toBe(16);
+        expect(q.items.filter(p=>p.profile==="knowledge").reduce((a,p)=>a+p.marks,0)).toBe(6);
+        expect(q.items.filter(p=>p.profile==="use-of-knowledge").reduce((a,p)=>a+p.marks,0)).toBe(10);
+        expect(q.items.every(p=>p.modelPoints.length>=p.marks&&p.explanation.length>35)).toBe(true);
+      });
+    });
+    expect(fnhGetPaper2Set(2).questions).toBe(FNH_PAPER2_PRACTICE_SETS[1].questions);
   });
   test("Historically correct 2005 format cannot be confused with six-question modern FNH Paper 2",()=>{
     const old=fnhHistoricalPaperFormat("FNH-P2-2005-MJ");
