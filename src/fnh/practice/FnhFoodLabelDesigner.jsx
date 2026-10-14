@@ -1,4 +1,4 @@
-import React,{useMemo,useState} from "react";
+import React,{useMemo} from "react";
 import "./fnhFoodLabelDesigner.css";
 
 // A student-created answer to the source's empty food-label frame.
@@ -31,10 +31,10 @@ export function parseFnhFoodLabel(value=""){
  return fields;
 }
 export default function FnhFoodLabelDesigner({value,onChange,disabled=false}){
- const [fields,setFields]=useState(()=>parseFnhFoodLabel(value));
+ const fields=useMemo(()=>parseFnhFoodLabel(value),[value]);
  const status=useMemo(()=>fnhFoodLabelCompleteness(fields),[fields]);
  const update=(field,next)=>{
-   const record={...fields,[field]:next};setFields(record);onChange(makeFnhFoodLabel(record));
+   const record={...fields,[field]:next};onChange(makeFnhFoodLabel(record));
  };
  const entries=[
   ["name","Food product name","e.g. Caribbean Oat Cereal"],
