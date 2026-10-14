@@ -18,25 +18,57 @@ import {FNH_SUPPLIED_ARCHIVE} from "./fnhPastPaperInventory";
 // Publishing rule for original historical Paper 01 transcriptions.
 // A candidate list and suggested keys are not sufficient to publish an
 // examination that presents its marks as correct and final.
+// An answer key is not "official" because someone entered a plausible letter
+// or typed an unsourced string. A reviewer must inspect a separate source and
+// record a keyed, page-specific citation that matches the candidate item.
+function fnhAuthenticKeyEvidence(row){
+ const evidence=row?.officialKeyEvidence;
+ if(!evidence||typeof evidence!=="object"||Array.isArray(evidence))return false;
+ const reviews=evidence.reviewers;
+ return evidence.sourceType==="CXC-official-answer-key"
+   &&typeof evidence.documentId==="string"&&evidence.documentId.trim().length>=8
+   &&typeof evidence.documentSha256==="string"&&/^[a-f0-9]{64}$/i.test(evidence.documentSha256)
+   &&Number.isInteger(evidence.page)&&evidence.page>0
+   &&evidence.questionNumber===row.number
+   &&evidence.answer===row.proposedAnswer
+   &&Array.isArray(reviews)&&reviews.length>=2
+   &&reviews.every(r=>r&&typeof r.reviewerId==="string"&&r.reviewerId.trim().length>=3
+     &&typeof r.verifiedAt==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(r.verifiedAt))
+   &&new Set(reviews.map(r=>r.reviewerId.trim())).size>=2;
+}
 export function fnhHistoricalPaper1ReleaseCheck(items=[],{expectedQuestions=60,verifiedKeyEvidence=false}={}){
  const records=Array.isArray(items)?items:[];
- const numbered=new Set(records.map(x=>x.number));
- const complete=records.length===expectedQuestions
-   &&numbered.size===expectedQuestions
-   &&Array.from({length:expectedQuestions},(_,i)=>i+1).every(n=>numbered.has(n));
- const sourceComplete=complete&&records.every(x=>x.sourceChecked===true
+ const numbers=records.map(x=>x?.number);
+ const numbered=new Set(numbers);
+ const expected=Array.from({length:expectedQuestions},(_,i)=>i+1);
+ const missingNumbers=expected.filter(n=>!numbered.has(n));
+ const duplicateNumbers=[...new Set(numbers.filter((n,i)=>numbers.indexOf(n)!==i))];
+ const complete=Number.isInteger(expectedQuestions)&&expectedQuestions>0
+   &&records.length===expectedQuestions&&numbered.size===expectedQuestions
+   &&missingNumbers.length===0&&duplicateNumbers.length===0;
+ const validSource=x=>x&&Number.isInteger(x.number)&&x.number>=1&&x.number<=expectedQuestions
+   &&x.sourceChecked===true
+   &&typeof x.stem==="string"&&x.stem.trim().length>0
    &&Array.isArray(x.options)&&x.options.length===4
-   &&new Set(x.options).size===4&&String(x.stem||"").trim());
+   &&x.options.every(o=>typeof o==="string"&&o.trim().length>0)
+   &&new Set(x.options).size===4;
+ const sourceComplete=complete&&records.every(validSource);
+ const figureComplete=sourceComplete&&records.every(x=>!x.diagramId||(
+   x.sourceFigureVerified===true
+   &&typeof x.sourceFigureEvidence==="string"&&x.sourceFigureEvidence.trim().length>=8));
  const keysComplete=sourceComplete&&records.every(x=>x.officialKeyVerified===true
    &&/^[ABCD]$/.test(String(x.proposedAnswer||"")));
- const evidenceComplete=keysComplete&&records.every(x=>x.officialKeyEvidence
-   &&typeof x.officialKeyEvidence==="string"
-   &&x.officialKeyEvidence.trim().length>=8);
- const ready=Boolean(sourceComplete&&keysComplete&&evidenceComplete&&verifiedKeyEvidence);
- return {ready,questions:records.length,numbered:complete,sourceComplete,
+ const evidenceComplete=keysComplete&&records.every(fnhAuthenticKeyEvidence);
+ const ready=Boolean(sourceComplete&&figureComplete&&keysComplete&&evidenceComplete&&verifiedKeyEvidence);
+ return {ready,questions:records.length,numbered:complete,sourceComplete,figureComplete,
    keysComplete,evidenceComplete,verifiedKeyEvidence:Boolean(verifiedKeyEvidence),
-   pendingSourceNumbers:records.filter(x=>!x.sourceChecked||!Array.isArray(x.options)||x.options.length!==4).map(x=>x.number),
-   pendingKeyNumbers:records.filter(x=>!x.officialKeyVerified||!/^[ABCD]$/.test(String(x.proposedAnswer||""))||!String(x.officialKeyEvidence||"").trim()).map(x=>x.number)};
+   missingNumbers,duplicateNumbers,
+   pendingSourceNumbers:records.filter(x=>!validSource(x)).map(x=>x?.number),
+   pendingFigureNumbers:records.filter(x=>x?.diagramId&&
+     !(x.sourceFigureVerified===true&&typeof x.sourceFigureEvidence==="string"
+       &&x.sourceFigureEvidence.trim().length>=8)).map(x=>x.number),
+   pendingKeyNumbers:records.filter(x=>!x||x.officialKeyVerified!==true
+     ||!/^[ABCD]$/.test(String(x.proposedAnswer||""))||!fnhAuthenticKeyEvidence(x)).map(x=>x?.number)};
 }
 // This report is informational and never grants a historical exam release.
 const transcriptionRecords=Object.freeze({
