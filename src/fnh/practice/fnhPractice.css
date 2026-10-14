@@ -147,3 +147,7 @@ html[data-theme="dark"] .fnh-choice-number,body[data-theme="dark"] .fnh-choice-n
 .fnh-p2 .fnh-self-review-summary{margin-top:18px;padding:14px;border-top:1px solid var(--fnh-border);display:grid;gap:7px}
 .fnh-p2 .fnh-self-review-summary strong{font-size:15px;color:var(--fnh-ink)}
 .fnh-p2 .fnh-self-review-summary p,.fnh-p2 .fnh-self-review-summary small{color:var(--fnh-muted);font-size:12px;line-height:1.6;margin:0}
+
+.fnh-original-sets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.fnh-original-sets .fnh-library-paper{width:100%;max-width:none;box-sizing:border-box}
+@media(max-width:720px){.fnh-original-sets{grid-template-columns:1fr}}
