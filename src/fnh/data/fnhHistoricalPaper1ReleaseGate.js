@@ -142,6 +142,7 @@ export function fnhHistoricalPaper1Reader(sourceId){
  const original=transcriptionRecords[source.year]||[];
  const excluded=[];
  const questions=[];
+ const seenNumbers=new Set();
  for(const row of original){
   const options=row.options;
   const complete=Number.isInteger(row.number)&&row.number>=1&&row.number<=60
@@ -149,10 +150,11 @@ export function fnhHistoricalPaper1Reader(sourceId){
     &&Array.isArray(options)&&options.length===4
     &&options.every(choice=>typeof choice==="string"&&choice.trim())
     &&new Set(options).size===4;
-  if(!complete||(row.diagramId&&!diagramReady.has(row.diagramId))){
+  if(!complete||seenNumbers.has(row.number)||(row.diagramId&&!diagramReady.has(row.diagramId))){
    excluded.push(row.number);
    continue;
   }
+  seenNumbers.add(row.number);
   questions.push(Object.freeze({
    number:row.number,stem:row.stem,sourcePage:row.sourcePage||null,
    options:Object.freeze([...options]),
@@ -161,6 +163,7 @@ export function fnhHistoricalPaper1Reader(sourceId){
   }));
  }
  if(!questions.length)return null;
+ questions.sort((a,b)=>a.number-b.number);
  return Object.freeze({
   id:source.id,year:source.year,qualification:source.year>=2017?"Technical Proficiency":"General Proficiency",
   paperTitle:source.year>=2017?"Food, Nutrition and Health":"Food and Nutrition",
