@@ -311,6 +311,43 @@ export default function FnhHistoricalDiagram({type}){
       <figcaption>2021 Paper 2, Question 6: SVG recreation of both original nutrition labels with the serving size, carbohydrate, fibre and sugar values used in the question.</figcaption>
     </figure>;
   }
+  if(type==="kitchen-layout-2007")return <figure className="fnh-historical-figure">
+    <svg viewBox="0 0 650 390" width="100%" role="img" aria-label="2007 Paper 1 Question 43 U shaped kitchen layout with cooker on left, sink on top, refrigerator on right, counters along three sides">
+      <title>2007 Paper 1 Question 43: U-shaped kitchen</title>
+      <g fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M120 48 H530 V310 H460 V136 H190 V310 H120 Z"/>
+        <rect x="244" y="52" width="160" height="57"/>
+        <path d="M259 60 H389 M259 68 H389 M259 76 H286 M368 76 H389"/>
+        <rect x="298" y="76" width="50" height="25"/>
+        <circle cx="275" cy="60" r="3"/><circle cx="371" cy="60" r="3"/>
+        <rect x="125" y="164" width="65" height="65"/>
+        {[ [143,181],[169,181],[143,211],[169,211] ].map(([x,y],i)=><circle key={i} cx={x} cy={y} r="6" strokeWidth="1.8"/>)}
+        <rect x="462" y="200" width="68" height="81"/>
+        <path d="M462 249 H530 M499 224 V241"/>
+      </g>
+      <g fill="currentColor" fontFamily="Arial,sans-serif" fontSize="20" textAnchor="middle" fontWeight="700">
+        <text x="497" y="250">REF</text>
+      </g>
+    </svg>
+    <figcaption>2007 Paper 1, Question 43. Source U-shaped kitchen showing cooker, sink and refrigerator around three sides.</figcaption>
+  </figure>;
+  if(type==="place-setting-2007")return <figure className="fnh-historical-figure">
+    <svg viewBox="0 0 750 385" width="100%" role="img" aria-label="2007 Paper 1 Question 49 dining cover: napkin at left, two forks, a dinner plate with smaller bowl or plate, one spoon, fish knife and another spoon to the right">
+      <title>2007 Paper 1 Question 49: Dining table place setting</title>
+      <g stroke="currentColor" strokeWidth="3.1" fill="none" strokeLinecap="round" strokeLinejoin="round">
+        <rect x="47" y="30" width="650" height="315" strokeWidth="2"/>
+        <rect x="100" y="160" width="35" height="85" strokeWidth="2"/>
+        { [170,219].map(x=><g key={x}><path d={`M${x} 149 V275 M${x-9} 149 V190 H${x+9} V149 M${x-3} 149 V190 M${x+3} 149 V190`}/></g>)}
+        <circle cx="365" cy="212" r="87"/>
+        <circle cx="365" cy="212" r="56"/>
+        <path d="M342 205 Q321 184 323 215 Q331 234 341 225 M389 205 Q408 185 411 217 Q402 231 389 225" strokeWidth="2"/>
+        <path d="M504 180 C487 180 488 209 503 215 L503 274 M503 214 C520 207 520 180 504 180"/>
+        <path d="M563 148 L552 212 V274 M563 148 C578 153 579 188 563 203 Z" strokeWidth="2"/>
+        <path d="M627 179 C612 179 610 210 627 217 L627 274 M627 217 C646 210 646 178 627 179"/>
+      </g>
+    </svg>
+    <figcaption>2007 Paper 1, Question 49. Recreated dining cover with two forks, layered plates, two spoons and a knife.</figcaption>
+  </figure>;
   if(type==="green-bean-cells-2013")return <figure className="fnh-historical-figure">
     <svg viewBox="0 0 850 430" width="100%" role="img" aria-label="2013 green bean cell wall illustration: I normal intact cell, II cell ruptured by sharp ice crystals during freezing, III irregular collapsed cell wall on thawing">
       <title>2013 Paper 2 Question 2: Normal, ruptured and thawed green bean cells</title>
