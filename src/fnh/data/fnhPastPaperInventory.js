@@ -485,11 +485,15 @@ export function fnhHistoricalPaperFormat(source){
   if(item.paper===1){
     // Older Paper 01 scans often omit the cover. Do not assume their
     // time allowance from the current syllabus until verified.
+    const verifiedDuration=Boolean(item.sourceCoverChecked===true
+      &&Number.isInteger(item.durationMinutes)&&item.durationMinutes>0);
     return item.year>=2017
-      ?{qualification:"Technical Proficiency",subject:"Food, Nutrition and Health",
-        questionsExpected:60,compulsory:60,durationMinutes:90,sourceTimeVerified:false}
-      :{qualification:"General Proficiency",subject:"Food and Nutrition",
-        questionsExpected:null,compulsory:null,durationMinutes:null,sourceTimeVerified:false};
+      ?{qualification:item.qualification||"Technical Proficiency",subject:"Food, Nutrition and Health",
+        questionsExpected:60,compulsory:60,durationMinutes:item.durationMinutes||90,
+        sourceTimeVerified:verifiedDuration}
+      :{qualification:item.qualification||"General Proficiency",subject:"Food and Nutrition",
+        questionsExpected:60,compulsory:60,durationMinutes:verifiedDuration?item.durationMinutes:null,
+        sourceTimeVerified:verifiedDuration};
   }
   if(item.year<2017)return {
     qualification:"General Proficiency",subject:"Food and Nutrition",
@@ -506,7 +510,7 @@ export function fnhHistoricalPaperFormat(source){
 }
 export const FNH_ARCHIVE_SUMMARY = Object.freeze({paper1:16,paper2:18,unique:34,
   verifiedSubjectPaper1Sources:15,invalidSubjectPaper1Sources:1,validSubjectDocuments:33,
-  unverifiedPaper1YearSources:1,
+  unverifiedPaper1YearSources:0,
   duplicatedSource:"CSEC_FNH_Paper_1_-_May_June_2026 (1).pdf",
   duplicationOf:"CSEC_FNH_Paper_1_-_May_June_2026.pdf",
   sourceNote:"The supplied 2015 syllabus effective May/June 2017 and question PDFs are reference material. Historical scans are not yet verified question banks.",
