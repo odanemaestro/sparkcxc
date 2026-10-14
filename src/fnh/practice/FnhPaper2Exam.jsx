@@ -22,17 +22,22 @@ export function fnhPaper2EvidenceSummary(questions,answers){
   }));
 }
 
-export default function FnhPaper2Exam({onBack,supabase,userId,setNumber=1}){
+export default function FnhPaper2Exam({onBack,supabase,userId,setNumber=1,historicalPaper=null}){
   const selected=fnhGetPaper2Set(setNumber);
-  const paperId=`FNH-SPARK-P2-ORIGINAL-0${selected.number}`;
-  const paper=selected.questions;
+  const paperId=historicalPaper?.id||`FNH-SPARK-P2-ORIGINAL-0${selected.number}`;
+  const paper=historicalPaper?.questions||selected.questions;
+  const historical=Boolean(historicalPaper);
+  const examMinutes=historical?historicalPaper.writingMinutes:FNH_PAPER2_FORMAT.minutes;
+  const durationSeconds=examMinutes*60;
+  const examLabel=historical?`May/June ${historicalPaper.year} historical Paper 2`:selected.label;
+  const totalParts=paper.reduce((total,q)=>total+q.items.length,0);
   const [attempt,setAttempt]=useState(()=>{
     try{
       const value=JSON.parse(localStorage.getItem(saveKey(userId,paperId))||"null");
       return value?.id===paperId&&["exam","review"].includes(value.phase)?value:make(paperId);
     }catch{return make(paperId);}
   });
-  const [remaining,setRemaining]=useState(SECONDS);
+  const [remaining,setRemaining]=useState(durationSeconds);
   const [modal,setModal]=useState("");
   const recorded=useRef(new Set());
 
@@ -64,34 +69,35 @@ export default function FnhPaper2Exam({onBack,supabase,userId,setNumber=1}){
     recordSubjectActivity({supabase,activity:{
       subjectId:"food-nutrition-and-health",
       activityKey:`practice:fnh-paper2:${paperId}:${attempt.attemptId}`,
-      activityType:"practice",title:`Food, Nutrition and Health Paper 02 · ${selected.label}`,
+      activityType:"practice",title:`Food, Nutrition and Health Paper 02 · ${examLabel}`,
       completed:true,score:null,maxScore:96,percent:null,
-      metadata:{source:"fnh_paper2_original_v1",paper:"02",paper_id:paperId,
+      metadata:{source:historical?"historical_user_supplied_pdf":"fnh_paper2_original_v1",paper:"02",paper_id:paperId,
+        historical,year:historicalPaper?.year||null,marking_scheme:historical?"spark_reference_explanations":"spark_original",
         provisional:true,pending_teacher_review:true,question_count:6,total_marks:96,
-        duration_minutes:150,answered_parts:answered,at:new Date().toISOString()},
+        duration_minutes:examMinutes,answered_parts:answered,at:new Date().toISOString()},
     }}).catch(e=>console.warn("FNH Paper 2 completion could not be saved",e));
-  },[review,userId,supabase,attempt.attemptId,answered,paperId,selected.label]);
-  const start=()=>{setAttempt({...make(paperId),phase:"exam",deadline:Date.now()+SECONDS*1000});setRemaining(SECONDS);setModal("");};
+  },[review,userId,supabase,attempt.attemptId,answered,paperId,examLabel,examMinutes,historical,historicalPaper?.year]);
+  const start=()=>{setAttempt({...make(paperId),phase:"exam",deadline:Date.now()+durationSeconds*1000});setRemaining(durationSeconds);setModal("");};
   const submit=()=>{update({phase:"review",submittedAt:Date.now()});setModal("");};
   return <main className="fnh-exam fnh-p2"><div className="fnh-exam-container">
-    <div className="fnh-exam-top"><button type="button" className="fnh-outline" onClick={()=>exam?setModal("exit"):onBack?.()}>← {exam?"Exit examination":"Back to paper selection"}</button><span>CSEC FOOD, NUTRITION AND HEALTH · PAPER 02</span></div>
+    <div className="fnh-exam-top"><button type="button" className="fnh-outline" onClick={()=>exam?setModal("exit"):onBack?.()}>← {exam?"Exit examination":"Back to paper selection"}</button><span>CSEC FOOD, NUTRITION AND HEALTH · PAPER 02{historical?` · ${historicalPaper.year} MAY/JUNE`:""}</span></div>
     {attempt.phase==="instructions"?<section className="fnh-exam-card fnh-instructions">
-      <small>ORIGINAL PRACTICE SET {selected.number}</small><h1>Paper 2 examination instructions</h1>
+      <small>{historical?`${historicalPaper.year} MAY/JUNE · TECHNICAL PROFICIENCY`:`ORIGINAL PRACTICE SET ${selected.number}`}</small><h1>Paper 2 examination instructions</h1>
       <p>Read the instructions. The timer begins only when you select Start examination.</p>
-      <div className="fnh-exam-stats"><div><strong>6</strong><span>Compulsory questions</span></div><div><strong>150 minutes</strong><span>Duration</span></div><div><strong>96 marks</strong><span>Maximum score</span></div><div><strong>16</strong><span>Marks per question</span></div></div>
+      <div className="fnh-exam-stats"><div><strong>6</strong><span>Compulsory questions</span></div><div><strong>{examMinutes} minutes</strong><span>Duration</span></div><div><strong>96 marks</strong><span>Maximum score</span></div><div><strong>16</strong><span>Marks per question</span></div></div>
       <h2>Instructions to candidates</h2><ol>
         <li>Answer all six questions. Each question carries 16 marks.</li>
         <li>Read the situation before answering the parts of each question.</li>
         <li>Use examples, explanations and calculations wherever a question asks.</li>
-        <li>Questions test knowledge (6 marks each) and use of knowledge (10 marks each).</li>
+        {historical?<li>Answer every part according to the marks shown in the original paper.</li>:<li>Questions test knowledge (6 marks each) and use of knowledge (10 marks each).</li>}
         <li>Your responses and original deadline are saved if you leave and return.</li>
         <li>The examination submits automatically when the time expires.</li>
         <li>After submission, your answer appears beside model marking points and explanations.</li>
       </ol>
-      <p className="fnh-exam-note">Extended responses require a teacher or examiner to award marks. SPARK will not invent an automatic mark where evidence needs judgement.</p>
+      <p className="fnh-exam-note">{historical?"Original questions have been transcribed from the supplied examination scan. The correct-answer explanations were written by SPARK and are not an official CXC marking scheme.":"Extended responses require a teacher or examiner to award marks. SPARK does not assign a final official grade to open responses."}</p>
       <button type="button" className="fnh-primary" onClick={start}>Start examination</button>
     </section>:<div className="fnh-session">
-      <header className="fnh-exam-card fnh-session-heading"><div><small>{review?"ANSWER REVIEW · OPEN RESPONSE":"PAPER 02 · LIVE PRACTICE"}</small><h1>Food, Nutrition and Health</h1><p>{review?"Compare each answer with the correct marking points. Tick only points your response supports.":`Question ${index+1} of 6 · ${answered}/24 parts answered`}</p></div><div className="fnh-timer"><span>{review?"Self-checked points":"Time remaining"}</span><strong>{review?`${selfScore.checked}/${selfScore.maximum}`:clock(remaining)}</strong></div></header>
+      <header className="fnh-exam-card fnh-session-heading"><div><small>{review?"ANSWER REVIEW · OPEN RESPONSE":"PAPER 02 · LIVE PRACTICE"}</small><h1>Food, Nutrition and Health</h1><p>{review?"Compare each answer with the marking points. Tick only points your response supports.":`Question ${index+1} of 6 · ${answered}/${totalParts} parts answered`}</p></div><div className="fnh-timer"><span>{review?"Self-checked points":"Time remaining"}</span><strong>{review?`${selfScore.checked}/${selfScore.maximum}`:clock(remaining)}</strong></div></header>
       <div className="fnh-exam-layout">
         <section className="fnh-exam-card fnh-question">
           <div className="fnh-question-head"><h2>Question {question.number}: {question.title}</h2><span className="fnh-p2-marks">16 marks</span></div>
@@ -119,7 +125,7 @@ export default function FnhPaper2Exam({onBack,supabase,userId,setNumber=1}){
           })}</div>
           <div className="fnh-question-actions"><button type="button" className="fnh-outline" disabled={index===0} onClick={()=>update({index:index-1})}>Previous</button><button type="button" className="fnh-outline" disabled={index===5} onClick={()=>update({index:index+1})}>Next</button>{exam&&<button type="button" className="fnh-primary" onClick={()=>setModal("submit")}>Submit Paper 2</button>}{review&&<button type="button" className="fnh-primary" onClick={()=>setModal("restart")}>Start new attempt</button>}</div>
         </section>
-        <aside className="fnh-exam-card fnh-navigation"><h2>Question navigator</h2><p>{answered} of 24 parts answered</p><div className="fnh-nav-grid fnh-p2-nav">{evidence.map((row,i)=><button type="button" className={`${index===i?"active":""} ${row.answers.every(v=>v.answered)?"answered":""}`} key={row.id} aria-label={`Question ${i+1}`} onClick={()=>update({index:i})}>Q{i+1}</button>)}</div><p>Six questions. Each carries 6 knowledge and 10 application marks.</p>{review&&<div className="fnh-self-review-summary"><strong>{selfScore.checked} / {selfScore.maximum} self-checked marks</strong><p>{selfScore.reviewedParts} of {selfScore.totalParts} parts checked against the model answers.</p><small>Practice estimate only. Teacher marking is required for an assessed score.</small></div>}</aside>
+        <aside className="fnh-exam-card fnh-navigation"><h2>Question navigator</h2><p>{answered} of {totalParts} parts answered</p><div className="fnh-nav-grid fnh-p2-nav">{evidence.map((row,i)=><button type="button" className={`${index===i?"active":""} ${row.answers.every(v=>v.answered)?"answered":""}`} key={row.id} aria-label={`Question ${i+1}`} onClick={()=>update({index:i})}>Q{i+1}</button>)}</div><p>{historical?`Six compulsory historical questions, 16 marks each.`:"Six questions. Each carries 6 knowledge and 10 application marks."}</p>{review&&<div className="fnh-self-review-summary"><strong>{selfScore.checked} / {selfScore.maximum} self-checked marks</strong><p>{selfScore.reviewedParts} of {selfScore.totalParts} parts checked against the model answers.</p><small>Practice estimate only. Teacher marking is required for an assessed score.</small></div>}</aside>
       </div>
     </div>}
     {modal&&<div className="fnh-modal-layer"><section className="fnh-modal" role="dialog" aria-modal="true" aria-label={modal==="submit"?"Submit examination":modal==="exit"?"Exit examination":"Restart examination"}><h2>{modal==="exit"?"Save and exit?":modal==="submit"?"Submit your six answers?":"Start another attempt?"}</h2><p>{modal==="exit"?"Your answers and timer deadline will be preserved.":modal==="submit"?"Your written answers will be locked and the marking points shown.":"The new attempt replaces the current responses."}</p><div><button type="button" className="fnh-outline" onClick={()=>setModal("")}>Cancel</button><button type="button" className="fnh-primary" onClick={()=>modal==="exit"?onBack?.():modal==="submit"?submit():start()}>{modal==="exit"?"Save and exit":modal==="submit"?"Submit now":"Start again"}</button></div></section></div>}
