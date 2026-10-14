@@ -33,12 +33,12 @@ describe("FNH student examination navigation",()=>{
     expect(screen.getByText(/Question 1: Nutrition through the life cycle/)).toBeInTheDocument();
     expect(screen.getByText(/A health centre in St Elizabeth/)).toBeInTheDocument();
   });
-  test("historical source list does not open unverified scanned questions as exams",()=>{
+  test("historical archive enables only the source-checked 2005 Paper 2",()=>{
     render(<FnhPracticeHub userId="fnh-test-student" onBack={jest.fn()}/>);
     fireEvent.click(screen.getByRole("button",{name:/Paper 2/i}));
     fireEvent.click(screen.getByRole("button",{name:"Past papers"}));
     expect(screen.getByText("Historical Paper 2 sources")).toBeInTheDocument();
     expect(screen.getAllByText("Question and marking checks pending").length).toBeGreaterThan(10);
-    expect(screen.queryByRole("button",{name:"Start examination"})).not.toBeInTheDocument();
+    expect(screen.getAllByRole("button",{name:/Start examination/i})).toHaveLength(1);\n    expect(screen.getByText("Original questions transcribed and checked")).toBeInTheDocument();
   });
 });
