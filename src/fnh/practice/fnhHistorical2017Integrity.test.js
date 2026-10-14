@@ -26,6 +26,6 @@ describe("May/June 2017 FNH Technical Proficiency historical Paper 02",()=>{
     expect(paper.questions.every(q=>!q.section)).toBe(true);
     expect(paper.questions.every(q=>q.items.length>=3)).toBe(true);
     expect(fnhHistoricalSimulatorReady(paper.id)?.verifiedQuestionCount).toBe(6);
-    expect(FNH_SUPPLIED_ARCHIVE.filter(q=>q.simulatorReady).length).toBe(9);
+    expect(FNH_SUPPLIED_ARCHIVE.filter(q=>q.simulatorReady).length).toBe(10);
   });
 });
