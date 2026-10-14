@@ -146,5 +146,81 @@ export default function FnhPaper1HistoricalDiagram({type}){
    </g>
   </svg><figcaption>Question 60. Two meals transcribed from the source for dietary suitability comparison.</figcaption>
  </figure>;
+
+ // Source-style SVG redraws from the nine-page May/June 2020 Paper 01 scan.
+ // This source lacks a cover and the historical answer keys remain unverified.
+ if(type==="place-setting-2020")return <figure className="fnh-paper1-source-figure">
+  <svg viewBox="0 0 680 390" role="img" aria-label="2020 Question 10 place setting, knife V and folded napkin to the left of a circular plate, horizontal spoons III and IV above, fork I and spoon II to the right">
+   <title>2020 Paper 01 Question 10, original labelled place setting</title>
+   <g fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="46" y="34" width="588" height="304"/>
+    <circle cx="347" cy="199" r="115"/>
+    <path d="M94 240 L181 154 V286 Z"/>
+    <path d="M211 128 Q203 126 203 145 V291 Q211 312 219 290 V146 Q219 131 211 128 Z"/>
+    <path d="M300 68 C269 65 270 46 297 45 C312 45 320 55 324 62 L426 59 Q445 59 444 67 Q445 73 426 73 L324 71 C320 78 309 80 300 68 Z"/>
+    <path d="M287 102 Q278 92 286 89 L435 89 Q451 95 441 101 Q428 108 424 101 Z"/>
+    <path d="M483 120 V275 Q488 296 495 275 V120 M482 148 V112 M487 148 V112 M493 148 V112 M498 148 V112"/>
+    <ellipse cx="554" cy="154" rx="17" ry="28"/><path d="M554 182 V279 Q560 298 567 278 V183"/>
+   </g>
+   <g fontSize="23" fontWeight="700" fill="currentColor" fontFamily="Georgia,serif">
+    <text x="190" y="326">V</text><text x="261" y="72">III</text><text x="259" y="106">IV</text>
+    <text x="482" y="313">I</text><text x="549" y="313">II</text>
+   </g>
+  </svg><figcaption>Question 10. Five cutlery labels follow the scanned place setting.</figcaption>
+ </figure>;
+ if(type==="kitchen-u-shaped-2020")return <figure className="fnh-paper1-source-figure">
+  <svg viewBox="0 0 630 470" role="img" aria-label="2020 Question 21 U-shaped kitchen floor plan with left cooker, upper sink, and right refrigerator">
+   <title>2020 Paper 01 Question 21, source kitchen layout</title>
+   <g fill="none" stroke="currentColor" strokeWidth="3" strokeLinejoin="round">
+    <path d="M122 60 H520 V400 H443 V149 H203 V400 H122 Z"/>
+    <rect x="257" y="80" width="158" height="49" rx="2"/>
+    <path d="M275 93 H399 M275 112 H399 M300 81 V128 M371 81 V128"/>
+    <circle cx="301" cy="69" r="6"/><circle cx="366" cy="69" r="6"/>
+    <rect x="132" y="240" width="59" height="82"/>
+    <circle cx="145" cy="261" r="10"/><circle cx="177" cy="261" r="10"/>
+    <circle cx="145" cy="295" r="10"/><circle cx="177" cy="295" r="10"/>
+    <rect x="446" y="280" width="72" height="117"/><path d="M446 326 H518"/>
+   </g>
+   <text x="482" y="311" fontSize="21" fontWeight="700" textAnchor="middle" fill="currentColor">REF</text>
+  </svg><figcaption>Question 21. U-shaped kitchen with three surrounding work surfaces.</figcaption>
+ </figure>;
+ if(type==="caribbean-dishes-2020")return <figure className="fnh-paper1-source-figure">
+  <svg viewBox="0 0 900 335" role="img" aria-label="2020 Question 35 ingredient table: Split-pea Soup: green split-peas, fresh beef, dumplings, green plantains, seasonings and herbs. Pelau: chicken, rice, dried pigeon peas, seasonings and herbs. Chicken Roti: chicken, roti shells or skins, potatoes, curry, seasonings.">
+   <title>2020 Paper 01 Question 35, three local-dishes ingredients table</title>
+   <g fill="none" stroke="currentColor" strokeWidth="2"><rect x="16" y="21" width="868" height="288"/><path d="M311 21 V309 M583 21 V309 M16 77 H884"/></g>
+   <g fontFamily="Georgia,serif" fill="currentColor" fontSize="23">
+    <text x="29" y="56" fontWeight="700">Split-pea Soup</text>
+    <text x="326" y="56" fontWeight="700">Pelau</text>
+    <text x="599" y="56" fontWeight="700">Chicken Roti</text>
+    {["Green split-peas","Fresh beef","Dumplings","Green plantains","Seasonings/herbs"].map((t,i)=><text key={t} x="29" y={110+i*41}>{t}</text>)}
+    {["Chicken","Rice","Dried pigeon peas","Seasonings/herbs"].map((t,i)=><text key={t} x="326" y={110+i*41}>{t}</text>)}
+    {["Chicken","Roti (shells/skins)","Potatoes","Curry","Seasonings"].map((t,i)=><text key={t} x="599" y={110+i*41}>{t}</text>)}
+   </g>
+  </svg><figcaption>Question 35. Ingredients of three local dishes, with their original column order.</figcaption>
+ </figure>;
+ if(type==="refrigerator-storage-2020")return <figure className="fnh-paper1-source-figure">
+  <svg viewBox="0 0 760 340" role="img" aria-label="2020 Question 38 refrigerator table. Door Crisper Freezing Compartment; row I lettuce eggs beef; row II lettuce beef eggs; row III eggs lettuce beef; row IV eggs beef beef.">
+   <title>2020 Paper 01 Question 38, refrigerator food positions</title>
+   <g fill="none" stroke="currentColor" strokeWidth="2"><rect x="18" y="18" width="726" height="298"/><path d="M117 18 V316 M300 18 V316 M523 18 V316"/><path d="M18 97 H744 M18 152 H744 M18 207 H744 M18 262 H744"/></g>
+   <g fontFamily="Georgia,serif" fontSize="22" fill="currentColor" textAnchor="middle">
+    <text x="208" y="68" fontWeight="700">Door</text><text x="412" y="68" fontWeight="700">Crisper</text>
+    <text x="634" y="53" fontWeight="700">Freezing</text><text x="634" y="80" fontWeight="700">Compartment</text>
+    {["I.","II.","III.","IV."].map((t,i)=><text key={t} x="67" y={132+i*55}>{t}</text>)}
+    {[["Lettuce","Eggs","Beef"],["Lettuce","Beef","Eggs"],["Eggs","Lettuce","Beef"],["Eggs","Beef","Beef"]].map((r,i)=>r.map((txt,j)=><text key={i+"-"+j} x={[208,412,634][j]} y={132+i*55}>{txt}</text>))}
+   </g>
+  </svg><figcaption>Question 38. All four original rows are retained, including two entries for beef in Row IV.</figcaption>
+ </figure>;
+ if(type==="luncheon-presentation-2020")return <figure className="fnh-paper1-source-figure">
+  <svg viewBox="0 0 710 290" role="img" aria-label="2020 Question 60 menu containing baked fish with tomato sauce, vegetable rice, garden salad and golden apple pie">
+   <title>2020 Paper 01 Question 60, luncheon menu stimulus</title>
+   <rect x="71" y="24" width="568" height="242" fill="none" stroke="currentColor" strokeWidth="2.3"/>
+   <g fill="currentColor" fontFamily="Georgia,serif" fontSize="27" textAnchor="middle">
+    <text x="355" y="79">Baked Fish/Tomato Sauce</text>
+    <text x="355" y="137">Vegetable Rice</text>
+    <text x="355" y="195">Garden Salad</text>
+    <text x="355" y="252">Golden Apple Pie</text>
+   </g>
+  </svg><figcaption>Question 60. Source menu and sequence retained for garnish selection.</figcaption>
+ </figure>;
  return null;
 }
