@@ -19,6 +19,30 @@ function ean13Bars(code){
  * Keep the original missing-quantity and missing-directions clues intact.
  */
 export default function FnhHistoricalDiagram({type}){
+  if(type==="nutrients-table-2024")return <figure className="fnh-historical-figure">
+    <svg viewBox="0 0 760 370" width="100%" role="img" aria-label="2024 Table 1 Nutrients and health-related conditions: missing nutrient for heart disease, protein with missing condition, missing nutrient for scurvy, water with missing condition">
+      <title>2024 Paper2 Question2: Nutrients and health-related conditions</title>
+      <g fill="none" stroke="currentColor" strokeWidth="2">
+        <rect x="32" y="50" width="695" height="270"/>
+        <path d="M32 104 H727 M32 158 H727 M32 212 H727 M32 266 H727"/>
+        <path d="M347 50 V320"/>
+      </g>
+      <g fill="currentColor" fontFamily="Arial,sans-serif" fontSize="21">
+        <text x="179" y="85" textAnchor="middle" fontWeight="700">Nutrient</text>
+        <text x="536" y="85" textAnchor="middle" fontWeight="700">Health-related condition</text>
+        <text x="53" y="140">(i) __________________</text>
+        <text x="373" y="140">Heart disease</text>
+        <text x="53" y="194">(ii) Protein</text>
+        <text x="373" y="194">__________________</text>
+        <text x="53" y="248">(iii) __________________</text>
+        <text x="373" y="248">Scurvy</text>
+        <text x="53" y="302">(iv) Water</text>
+        <text x="373" y="302">__________________</text>
+      </g>
+      <text x="380" y="27" textAnchor="middle" fontFamily="Georgia,serif" fontSize="21" fontWeight="700" fill="currentColor">Table 1: Nutrients and health-related conditions</text>
+    </svg>
+    <figcaption>2024 Paper 2, Question 2. Fill the four missing entries in the original source table.</figcaption>
+  </figure>;
   if(type==="kitchen-layouts-2021")return <figure className="fnh-historical-figure">
     <svg viewBox="0 0 900 440" width="100%" role="img" aria-label="2021 kitchen comparison: A a single wall kitchen with tall cupboards, cooker, sink and refrigerator; B an L-shaped kitchen with refrigerator at one end, two counter runs, sink and overhead cupboards">
       <title>2021 Paper 2 Question 5, kitchen layouts A and B</title>
