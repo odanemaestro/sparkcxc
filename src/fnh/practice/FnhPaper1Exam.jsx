@@ -12,9 +12,9 @@ const makeNew=paperId=>({paperId,attemptId:`${Date.now()}-${Math.random().toStri
   phase:"instructions",answers:{},flags:{},index:0,deadline:null,submittedAt:null});
 
 export default function FnhPaper1Exam({supabase,userId,onBack,setNumber=1}){
-  const selected=fnhGetPaper1Set(setNumber);
-  const paperId=`FNH-SPARK-P1-ORIGINAL-0${selected.number}`;
-  const questions=selected.questions;
+  const chosenSet=fnhGetPaper1Set(setNumber);
+  const paperId=`FNH-SPARK-P1-ORIGINAL-0${chosenSet.number}`;
+  const questions=chosenSet.questions;
   const [attempt,setAttempt]=useState(()=>{
     try{
       const saved=JSON.parse(localStorage.getItem(storeKey(userId,paperId))||"null");
@@ -53,13 +53,13 @@ export default function FnhPaper1Exam({supabase,userId,onBack,setNumber=1}){
     reported.current.add(attempt.attemptId);
     recordSubjectActivity({supabase,activity:{
       subjectId:"food-nutrition-and-health",activityKey:`exam:fnh-paper1:${paperId}:${attempt.attemptId}`,
-      activityType:"exam",title:`Food, Nutrition and Health Paper 01 · ${selected.label}`,
+      activityType:"exam",title:`Food, Nutrition and Health Paper 01 · ${chosenSet.label}`,
       completed:true,score,maxScore:questions.length,percent:Math.round(100*score/questions.length),
       metadata:{source:"fnh_paper1_original_v1",paper:"01",paper_id:paperId,
         question_count:60,duration_minutes:90,source_verified:true,historical:false,
         profile_knowledge:30,profile_use_of_knowledge:30,at:new Date().toISOString()},
     }}).catch(error=>console.warn("FNH Paper 1 progress could not be saved",error));
-  },[review,attempt.attemptId,questions.length,score,supabase,userId,paperId,selected.label]);
+  },[review,attempt.attemptId,questions.length,score,supabase,userId,paperId,chosenSet.label]);
   const begin=()=>{
     setModal("");
     setClock(SECONDS);
@@ -75,7 +75,7 @@ export default function FnhPaper1Exam({supabase,userId,onBack,setNumber=1}){
         <span>CSEC FOOD, NUTRITION AND HEALTH · PAPER 01</span>
       </div>
       {attempt.phase==="instructions"?<section className="fnh-exam-card fnh-instructions">
-        <small>ORIGINAL PRACTICE SET {selected.number}</small>
+        <small>ORIGINAL PRACTICE SET {chosenSet.number}</small>
         <h1>Paper 1 examination instructions</h1>
         <p>Read the instructions carefully. Your time starts when you select <strong>Start examination</strong>.</p>
         <div className="fnh-exam-stats"><div><strong>60</strong><span>Questions</span></div><div><strong>90 minutes</strong><span>Duration</span></div><div><strong>60 marks</strong><span>Total marks</span></div><div><strong>4 choices</strong><span>Per question</span></div></div>
