@@ -227,5 +227,65 @@ export default function FnhPaper1HistoricalDiagram({type}){
  if(type==="meal-comparison-2019")return <FnhPaper1HistoricalDiagram type="meal-comparison-2018"/>;
  if(type==="kitchen-u-shaped-2019")return <FnhPaper1HistoricalDiagram type="kitchen-u-shaped-2020"/>;
  if(type==="luncheon-presentation-2019")return <FnhPaper1HistoricalDiagram type="luncheon-presentation-2020"/>;
+
+ // Technical Proficiency 2026: original label/food figures.
+ if(type==="guava-jam-label-2026")return <figure className="fnh-paper1-source-figure">
+  <svg viewBox="0 0 760 380" role="img" aria-label="2026 question 11, ILL'S GUAVA JAM label, ingredients guava pulp sugar pectin, net weight 4 without unit, manufacture date and use by date">
+   <title>2026 Paper 01 Question 11, source guava-jam label</title>
+   <rect x="72" y="38" width="622" height="298" fill="none" stroke="currentColor" strokeWidth="3"/>
+   <g fill="currentColor" fontFamily="Georgia,serif" fontSize="29">
+    <text x="382" y="91" textAnchor="middle" fontWeight="700">ILL’S GUAVA JAM</text>
+    <text x="107" y="154">Ingredients: Guava pulp, sugar, pectin</text>
+    <text x="107" y="199">Net Weight: 4</text>
+    <text x="107" y="244">Manufacture Date: 2018-11-08</text>
+    <text x="107" y="291">Use by Date: 2020-05-08</text>
+   </g>
+  </svg><figcaption>Question 11. The source prints “Net Weight: 4” without a measurement unit.</figcaption>
+ </figure>;
+ if(type==="nutrient-types-2026")return <figure className="fnh-paper1-source-figure">
+  <svg viewBox="0 0 660 225" role="img" aria-label="2026 Question 37, two-column table: sodium protein; carbohydrate calcium; potassium magnesium">
+   <title>2026 Paper 01 Question 37, nutrient types</title>
+   <g fill="none" stroke="currentColor" strokeWidth="2.4"><rect x="22" y="26" width="616" height="176"/><path d="M330 26 V202 M22 84 H638 M22 143 H638"/></g>
+   <g fill="currentColor" fontSize="30" fontFamily="Georgia,serif">
+    {["Sodium","Carbohydrate","Potassium"].map((t,i)=><text key={t} x="42" y={68+i*58}>{t}</text>)}
+    {["Protein","Calcium","Magnesium"].map((t,i)=><text key={t} x="353" y={68+i*58}>{t}</text>)}
+   </g>
+  </svg><figcaption>Question 37. Six nutrients in the original table order.</figcaption>
+ </figure>;
+ if(type==="nutrition-label-2026")return <figure className="fnh-paper1-source-figure">
+  <svg viewBox="0 0 790 730" role="img" aria-label="2026 Question 56 nutrition label includes sodium 850 g 37%, as printed in source">
+   <title>2026 Paper 01 Question 56, snack nutrition label</title>
+   <rect x="65" y="26" width="650" height="663" stroke="currentColor" strokeWidth="3" fill="none"/>
+   <g fill="currentColor" fontFamily="Arial,sans-serif" fontSize="23">
+    <text x="690" y="65" textAnchor="end" fontSize="18" fontWeight="700">% Daily Value*</text>
+    {[
+      ["Total Fat 9 g","12%",true],
+      ["Saturated Fat 4.5 g","23%",false],
+      ["Trans Fat 0 g","",false],
+      ["Cholesterol 35 mg","12%",true],
+      ["Sodium 850 g","37%",true],
+      ["Total Carbohydrate 34 g","12%",true],
+      ["Dietary Fibre 4 g","14%",false],
+      ["Total Sugars 6 g","",false],
+      ["Includes 0 g Added Sugars","0%",false],
+      ["Protein 15 g","",true],
+      ["Vitamin D 0 mcg","0%",false],
+      ["Calcium 320 mg","25%",false],
+      ["Iron 1.6 mg","8%",false],
+      ["Potassium 510 mg","10%",false],
+    ].map(([name,pct,strong],i)=>{
+      const y=103+i*41;
+      return <g key={name}>
+        <text x={i===1||i===2||i===6||i===7||i===8?105:82} y={y} fontWeight={strong?"700":"400"}>{name}</text>
+        {pct&&<text x="687" y={y} fontWeight="700" textAnchor="end">{pct}</text>}
+        <path d={"M80 "+(y+9)+" H700"} stroke="currentColor" strokeWidth={i===2||i===8||i===9?4:1.3}/>
+      </g>;
+    })}
+   </g>
+  </svg><figcaption>Question 56. The source prints “Sodium 850 g, 37%”. The unit is inconsistent and requires verification.</figcaption>
+ </figure>;
+ if(type==="kitchen-u-shaped-2026")return <FnhPaper1HistoricalDiagram type="kitchen-u-shaped-2020"/>;
+ if(type==="meal-comparison-2026")return <FnhPaper1HistoricalDiagram type="meal-comparison-2018"/>;
+ if(type==="luncheon-presentation-2026")return <FnhPaper1HistoricalDiagram type="luncheon-presentation-2020"/>;
  return null;
 }
