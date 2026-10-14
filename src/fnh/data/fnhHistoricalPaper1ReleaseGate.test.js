@@ -6,7 +6,7 @@ describe("Historical FNH Paper1 release gate",()=>{
   const state=fnhHistoricalPaper1ReleaseCheck(FNH_P1_2003_TRANSCRIPTION_DRAFT);
   expect(state).toMatchObject({ready:false,questions:60,numbered:true,sourceComplete:true,keysComplete:false});
   expect(state.pendingKeyNumbers).toHaveLength(60);
-  expect(FNH_HISTORICAL_PAPER1_TRANSCRIPTION_PROGRESS.map(x=>x.year)).toEqual([2003,2004]);
+  expect(FNH_HISTORICAL_PAPER1_TRANSCRIPTION_PROGRESS.map(x=>x.year)).toEqual([2003,2004,2005]);
  });
  test("a scan missing answer options cannot be released",()=>{
   const state=fnhHistoricalPaper1ReleaseCheck(FNH_P1_2004_TRANSCRIPTION_DRAFT);
