@@ -234,7 +234,16 @@ export const FNH_SUPPLIED_ARCHIVE = Object.freeze([
     "sourceFilename": "CSEC_FNH_Paper_1_-_May_June_2026.pdf",
     "sourceFormat": "scanned-image",
     "reviewStatus": "requires-question-and-key-verification",
-    "verifiedQuestionCount": 0
+    "verifiedQuestionCount": 0,
+    "sourceCoverChecked": true,
+    "sourcePageCount": 10,
+    "sourceQuestionCount": 60,
+    "transcribedQuestionCount": 60,
+    "durationMinutes": 90,
+    "qualification": "Technical Proficiency",
+    "sourceCompleteness": "complete-60-source-questions-key-review-pending",
+    "answerKeyStatus": "11-unresolved-and-independent-review-required",
+    "sourceQualityNote": "Full source with cover dated 04 June 2026 and items 1-60. Q11 label net weight 4 lacks a unit; Q56 sodium label prints 850 g, a suspected unit error. Correct printed wording preserved; official keys unavailable."
   },
   {
     "id": "FNH-P2-2005-MJ",
