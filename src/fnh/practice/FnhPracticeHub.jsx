@@ -4,6 +4,7 @@ import FnhPaper2Exam from "./FnhPaper2Exam";
 import FnhPracticalWorkbook from "./FnhPracticalWorkbook";
 import {FNH_SUPPLIED_ARCHIVE,fnhHistoricalPaperFormat} from "../data/fnhPastPaperInventory";
 import {FNH_PAPER1_PRACTICE_SETS} from "../data/fnhPaper1Bank";
+import {FNH_PAPER2_PRACTICE_SETS} from "../data/fnhPaper2Bank";
 import "./fnhPractice.css";
 
 const scrollTop=()=>{try{window.scrollTo?.({top:0,left:0,behavior:"instant"});}catch{}};
@@ -26,7 +27,7 @@ function FnhPaperLibrary({paper,onBack,onStart}){
       <button type="button" className={tab==="past"?"active":""} aria-pressed={tab==="past"} onClick={()=>setTab("past")}>Past papers</button>
     </div>
     {tab==="practice"?<div className="fnh-original-sets">
-      {(isPaper1?FNH_PAPER1_PRACTICE_SETS:[{number:1,label:"Practice set 1"}]).map(set=>
+      {(isPaper1?FNH_PAPER1_PRACTICE_SETS:FNH_PAPER2_PRACTICE_SETS).map(set=>
         <section className="fnh-exam-card fnh-library-paper" key={set.number}>
           <span className="fnh-library-eyebrow">SPARK ORIGINAL PRACTICE</span>
           <h2>{set.label}</h2>
@@ -50,11 +51,12 @@ function FnhPaperLibrary({paper,onBack,onStart}){
 export default function FnhPracticeHub({supabase,userId,onBack}){
   const [view,setView]=useState("home");
   const [selectedPaper1Set,setSelectedPaper1Set]=useState(1);
+  const [selectedPaper2Set,setSelectedPaper2Set]=useState(1);
   useEffect(()=>{scrollTop();},[view]);
   if(view==="paper1"||view==="paper2")return <FnhPaperLibrary paper={view==="paper1"?1:2}
-    onBack={()=>setView("home")} onStart={number=>{if(view==="paper1")setSelectedPaper1Set(number);setView(view==="paper1"?"exam1":"exam2");}}/>;
+    onBack={()=>setView("home")} onStart={number=>{if(view==="paper1")setSelectedPaper1Set(number);else setSelectedPaper2Set(number);setView(view==="paper1"?"exam1":"exam2");}}/>;
   if(view==="exam1")return <FnhPaper1Exam key={selectedPaper1Set} setNumber={selectedPaper1Set} supabase={supabase} userId={userId} onBack={()=>setView("paper1")}/>;
-  if(view==="exam2")return <FnhPaper2Exam supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
+  if(view==="exam2")return <FnhPaper2Exam key={selectedPaper2Set} setNumber={selectedPaper2Set} supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
   if(view==="workbook")return <FnhPracticalWorkbook userId={userId} onBack={()=>setView("home")}/>;
   return <main className="fnh-exam fnh-practice-home"><div className="fnh-exam-container">
     <div className="fnh-exam-top"><button className="fnh-outline" type="button" onClick={onBack}>← Back to practice</button></div>
