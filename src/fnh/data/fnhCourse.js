@@ -3,9 +3,9 @@ import {FNH_SECTIONS_THREE_FOUR} from "./fnhSectionsThreeFour";
 import {FNH_SECTIONS_FIVE_SEVEN} from "./fnhSectionsFiveSeven";
 import {FNH_WORKED_EXAMPLES} from "./fnhWorkedExamples";
 
-// Source: supplied CXC 11/O/SYLL 15 Home Economics syllabus, July 2025 PDF.
+// Source: supplied CXC 11/G/SYLL 15 Home Economics syllabus, July 2025 PDF.
 // Food, Nutrition and Health is one option of the Home Economics course.
-export const FNH_SYLLABUS_CODE = "CXC 11/O/SYLL 15";
+export const FNH_SYLLABUS_CODE = "CXC 11/G/SYLL 15";
 export const FNH_SYLLABUS_SECTIONS = Object.freeze([
   ...FNH_SECTIONS_ONE_TWO,...FNH_SECTIONS_THREE_FOUR,...FNH_SECTIONS_FIVE_SEVEN,
 ]);
