@@ -40,6 +40,6 @@ describe("FNH student examination navigation",()=>{
     expect(screen.getByText("Historical Paper 2 sources")).toBeInTheDocument();
     expect(screen.getAllByText("Question and marking checks pending").length).toBe(9);
     expect(screen.getAllByRole("button",{name:/Start examination/i})).toHaveLength(9);
-    expect(screen.getAllByText("Original questions transcribed and checked")).toBeInTheDocument();
+    expect(screen.getAllByText("Original questions transcribed and checked")).toHaveLength(9);
   });
 });
