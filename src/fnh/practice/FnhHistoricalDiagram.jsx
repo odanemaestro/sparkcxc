@@ -5,6 +5,55 @@ import React from "react";
  * Keep the original missing-quantity and missing-directions clues intact.
  */
 export default function FnhHistoricalDiagram({type}){
+  if(type==="kitchen-layout-2011")return <figure className="fnh-historical-figure">
+    <svg viewBox="0 0 760 530" width="100%" role="img" aria-label="2011 Food and Nutrition kitchen floor plan. Food cupboard and refrigerator along the upper wall near the back door, sink beneath right-side window, cooker along lower wall, two work surfaces, and a door to the hall on the left.">
+      <title>2011 Paper 2, Question 7: A well-organised kitchen</title>
+      <g stroke="currentColor" strokeWidth="3.2" fill="none" strokeLinecap="square">
+        {/* Outer room boundary, interrupted for the rear and hall doors. */}
+        <path d="M180 105 H265 M325 105 H565 V385 H180 V318 M180 258 V105"/>
+        {/* Back door leaf, hinge at 265 and swing. */}
+        <path d="M265 105 L265 154"/>
+        <path d="M265 154 A49 49 0 0 0 314 105" strokeWidth="1.7"/>
+        {/* Hall door leaf and inward swing, hinge at 180,318. */}
+        <path d="M180 318 L228 318"/>
+        <path d="M228 318 A48 48 0 0 0 180 270" strokeWidth="1.7"/>
+        {/* Cabinet/refrigerator banks along back wall. */}
+        <path d="M340 105 V171 H474 V105 M389 105 V171 M428 105 V171"/>
+        {/* L-shaped counters, at right and lower edges. */}
+        <path d="M474 171 H522 V331 H338 V385 M522 171 H565 M338 331 V385"/>
+        {/* Right-side sink basin. */}
+        <rect x="531" y="220" width="27" height="64" rx="2" strokeWidth="2.1"/>
+        <path d="M541 220 V213 H552" strokeWidth="1.5"/>
+        {/* Window along right wall. */}
+        <path d="M563 192 V292 M568 192 V292" strokeWidth="1.7"/>
+        {/* Cooker on lower right. */}
+        <rect x="459" y="344" width="45" height="41" rx="2" strokeWidth="2"/>
+        <circle cx="472" cy="354" r="5" strokeWidth="1.7"/>
+        <circle cx="492" cy="354" r="5" strokeWidth="1.7"/>
+        <circle cx="472" cy="374" r="5" strokeWidth="1.7"/>
+        <circle cx="492" cy="374" r="5" strokeWidth="1.7"/>
+        {/* Source figure marks additional cupboards above the work surface. */}
+        <path d="M338 331 H448 M448 331 V338 M338 339 H448" strokeWidth="1.5" strokeDasharray="4 4"/>
+      </g>
+      <g fill="currentColor" fontFamily="Georgia,serif" fontSize="18" fontWeight="600">
+        <text x="235" y="92">back door</text>
+        <text x="206" y="273" textAnchor="end">door to hall</text>
+        <text x="300" y="58">food cupboard</text>
+        <text x="460" y="58">refrigerator</text>
+        <text x="582" y="253">window</text>
+        <text x="476" y="309">sink</text>
+        <text x="477" y="440">cooker</text>
+        <text x="373" y="440" textAnchor="middle">work surfaces with</text>
+        <text x="373" y="461" textAnchor="middle">cupboards above</text>
+      </g>
+      <g stroke="currentColor" strokeWidth="1.4" fill="none" strokeLinecap="round">
+        <path d="M338 60 L348 102 M476 61 L452 102"/>
+        <path d="M508 303 L535 255 M480 414 L481 388 M378 416 L378 387"/>
+      </g>
+      <text x="380" y="509" fontFamily="Georgia,serif" fontSize="19" fontWeight="600" textAnchor="middle" fill="currentColor">Figure 1: A well-organised kitchen</text>
+    </svg>
+    <figcaption>2011 Paper 2, Question 7. SVG redraw of the source kitchen floor plan with cupboard, refrigerator, sink, window, cooker, work surfaces and door positions.</figcaption>
+  </figure>;
   if(type==="kitchen-tools-2010")return <figure className="fnh-historical-figure">
     <svg viewBox="0 0 760 470" width="100%" role="img" aria-label="Four food preparation utensils, numbered 1 kitchen knife, 2 blender, 3 muffin tray and 4 pastry brush">
       <title>2010 Paper 2, Question 5: Four kitchen tools</title>
