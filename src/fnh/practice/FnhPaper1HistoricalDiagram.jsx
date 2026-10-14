@@ -487,5 +487,45 @@ export default function FnhPaper1HistoricalDiagram({type}){
  if(type==="two-menus-2009")return <FnhPaper1HistoricalDiagram type="two-menus-2014"/>;
  if(type==="local-dishes-table-2009")return <FnhPaper1HistoricalDiagram type="local-dishes-table-2006"/>;
 
+ // Sources 2015 (herbs and three-menu table) and 2017 (repeated classic
+ // labelled cutlery and U-shaped kitchen) from the supplied PDFs.
+ if(type==="herbs-2015")return <figure className="fnh-paper1-source-figure">
+  <svg viewBox="0 0 940 415" role="img" aria-label="Four herb drawings A B C D. A is a branched leafy thyme-style sprig, B slender stems with a round flower head, C clustered parsley-style leaves and D a tall stem with fine needle-like leaves">
+   <title>2015 Paper 01 Question 55, original four herb illustrations A–D</title>
+   <g stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinecap="round">
+    <path d="M130 328 Q160 245 136 129 M155 262 Q93 227 81 168 M142 209 Q191 181 191 123"/>
+    {[ [134,143],[146,163],[152,188],[142,209],[149,230],[137,260],[117,229],[102,210],[94,190],[157,190],[172,165],[175,145] ].map(([x,y],i)=><ellipse key={i} cx={x} cy={y} rx="12" ry="5" transform={"rotate("+((i%3-1)*42)+" "+x+" "+y+")"}/>)}
+    <path d="M356 332 Q348 208 357 128 M357 332 Q391 227 390 151 M357 330 Q333 220 320 182"/>
+    <circle cx="355" cy="121" r="15"/><circle cx="390" cy="141" r="12"/><circle cx="319" cy="171" r="9"/>
+    {[ [352,119],[348,111],[356,102],[365,116],[392,137],[398,144] ].map(([x,y],i)=><path key={i} d={"M"+x+" "+y+" l6 -6 l4 8 z"}/>)}
+    <path d="M595 331 Q591 267 610 208 M590 300 L550 265 M599 259 L645 229"/>
+    {[ [548,268],[560,247],[586,234],[610,209],[623,227],[645,235],[578,273],[609,269],[637,263],[593,291] ].map(([x,y],i)=>
+      <path key={i} d={"M"+x+" "+y+" q-18 -13 -6 -20 q20 -2 6 20 M"+x+" "+y+" q16 -15 21 -4 q-7 17 -21 4"}/>)}
+    <path d="M811 343 V88 M811 116 L792 102 M811 142 L830 125 M811 175 L786 155 M811 202 L835 181 M811 230 L789 213 M811 265 L837 251 M811 287 L790 272"/>
+    {[105,130,160,189,220,253,283].map((y,i)=><g key={i}>
+      <path d={"M811 "+y+" l-17 -14 M811 "+(y+5)+" l18 -13"}/>
+      <path d={"M810 "+y+" l-9 -20 M812 "+y+" l12 -23"}/>
+    </g>)}
+   </g>
+   <g fontFamily="Georgia,serif" fontSize="29" fill="currentColor" textAnchor="middle">
+    {["A","B","C","D"].map((t,i)=><text key={t} x={[145,355,596,813][i]} y="386">({t})</text>)}
+   </g>
+  </svg><figcaption>Question 55. Four different herbs redrawn from the printed stems and leaves, labelled A to D.</figcaption>
+ </figure>;
+ if(type==="luncheon-menus-2015")return <figure className="fnh-paper1-source-figure">
+  <svg viewBox="0 0 980 346" role="img" aria-label="Three luncheon menus: stewed beef dumplings stewed lentils; baked chicken boiled rice stewed pigeon peas; curried chicken roti shells or skins curried potato or channa or chickpeas">
+   <title>2015 Paper 01 Question 56, three typical luncheon menus</title>
+   <g fill="none" stroke="currentColor" strokeWidth="2.4"><rect x="15" y="22" width="950" height="302"/><path d="M334 22 V324 M647 22 V324"/></g>
+   <g fill="currentColor" fontFamily="Georgia,serif" fontSize="27" textAnchor="middle">
+    {["Stewed Beef","Dumplings","Stewed Lentils"].map((t,i)=><text key={i} x="175" y={100+i*83}>{t}</text>)}
+    {["Baked Chicken","Boiled Rice","Stewed Pigeon Peas"].map((t,i)=><text key={i} x="493" y={100+i*83}>{t}</text>)}
+    {["Curried Chicken","Roti (Shells/Skins)","Curried Potato or","Channa or Chickpeas"].map((t,i)=><text key={i} x="804" y={92+i*66}>{t}</text>)}
+   </g>
+  </svg><figcaption>Question 56. The original three lunch menus retain their source ingredients and columns.</figcaption>
+ </figure>;
+ if(type==="place-setting-2015"||type==="place-setting-2017")return <FnhPaper1HistoricalDiagram type="place-setting-2004"/>;
+ if(type==="kitchen-layout-2015"||type==="kitchen-u-layout-2017")return <FnhPaper1HistoricalDiagram type="kitchen-layout-2006"/>;
+ if(type==="luncheon-menu-2015")return <FnhPaper1HistoricalDiagram type="luncheon-presentation-2020"/>;
+
  return null;
 }
