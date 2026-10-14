@@ -311,6 +311,71 @@ export default function FnhHistoricalDiagram({type}){
       <figcaption>2021 Paper 2, Question 6: SVG recreation of both original nutrition labels with the serving size, carbohydrate, fibre and sugar values used in the question.</figcaption>
     </figure>;
   }
+  if(type==="local-dishes-table-2009")return <FnhHistoricalDiagram type="local-dishes-table-2008"/>;
+  if(type==="two-menus-2009")return <figure className="fnh-historical-figure">
+    <svg viewBox="0 0 910 335" width="100%" role="img" aria-label="2009 Paper1 menus: Meal I steamed fish, creamed yams, tomato slices, stewed fruit with chocolate sauce, orange juice. Meal II fried fish, peas and rice, tomato slices, jam tarts, lemonade">
+      <title>2009 Paper 1: Meal I and Meal II</title>
+      <g stroke="currentColor" fill="none" strokeWidth="2.4">
+        <rect x="26" y="32" width="858" height="260"/>
+        <path d="M455 32 V292 M26 93 H884"/>
+      </g>
+      <g fill="currentColor" fontFamily="Georgia,serif" fontSize="21" textAnchor="middle">
+        <text x="235" y="69" fontSize="24" fontWeight="700">Meal I</text>
+        <text x="670" y="69" fontSize="24" fontWeight="700">Meal II</text>
+        {["Steamed fish","Creamed yams","Tomato slices","Stewed fruit with chocolate sauce","Orange juice"].map((t,i)=><text key={i} x="235" y={120+i*36} fontSize={i===3?17:21}>{t}</text>)}
+        {["Fried fish","Peas and rice","Tomato slices","Jam tarts","Lemonade"].map((t,i)=><text key={i} x="670" y={120+i*36}>{t}</text>)}
+      </g>
+    </svg>
+    <figcaption>2009 Paper1, Questions 9–10: two complete source menus.</figcaption>
+  </figure>;
+  if(type==="luncheon-menu-2009")return <figure className="fnh-historical-figure">
+    <svg viewBox="0 0 720 275" width="100%" role="img" aria-label="Luncheon menu from Paper1 2009 Question52: baked fish in tomato sauce, vegetable rice, garden salad, golden apple pie">
+      <title>2009 Paper1 Question52: Luncheon menu</title>
+      <rect x="85" y="20" width="550" height="228" stroke="currentColor" strokeWidth="2.5" fill="none"/>
+      <g fill="currentColor" fontFamily="Georgia,serif" fontSize="23" textAnchor="middle">
+        <text x="360" y="74">Baked fish in tomato sauce</text>
+        <text x="360" y="117">Vegetable rice</text>
+        <text x="360" y="160">Garden salad</text>
+        <text x="360" y="203">Golden apple pie</text>
+      </g>
+    </svg>
+    <figcaption>2009 Paper1, Question 52. Original four-item menu from the supplied paper.</figcaption>
+  </figure>;
+  if(type==="kitchen-layout-2009")return <figure className="fnh-historical-figure">
+    <svg viewBox="0 0 910 470" width="100%" role="img" aria-label="2009 Paper1 source kitchen drawing with labelled position circles 1 to 5, sink along rear wall, cooker on the left, refrigerator to the right and cupboards forming a U shape">
+      <title>2009 Paper1 Questions 43–45: U-shaped kitchen, five numbered features</title>
+      <g fill="none" stroke="currentColor" strokeWidth="2.7" strokeLinejoin="round">
+        <path d="M88 90 L370 145 L654 135 L814 55 L814 382 L670 435 L380 435 L90 393 Z"/>
+        <path d="M88 90 L174 35 L813 55 M654 135 L814 55"/>
+        <path d="M88 248 L378 299 L657 284 L815 239"/>
+        <path d="M89 303 L379 354 L654 340 L815 293"/>
+        <path d="M379 299 L379 437 M654 284 L654 437"/>
+        {/* Cooker on left. */}
+        <path d="M88 248 L235 273 L235 347 L88 316 Z"/>
+        <path d="M115 263 L199 277 L199 286 L115 273 Z"/>
+        <rect x="136" y="279" width="58" height="51" rx="2"/>
+        {/* Sink beneath rear window. */}
+        <path d="M379 298 L447 290 L513 291 L464 315 Z"/>
+        <path d="M434 291 V269 Q442 255 451 272 V290"/>
+        <path d="M421 355 V427 M471 349 V432 M520 349 V432"/>
+        {/* Right refrigerator and cupboard. */}
+        <path d="M685 167 L789 123 V362 L685 409 Z"/>
+        <path d="M685 263 L789 218 M692 282 L706 278"/>
+        <path d="M579 298 L654 285 V419 L579 435 Z"/>
+        {/* Window above sink. */}
+        <path d="M402 159 L560 157 V242 L402 244 Z"/>
+        <path d="M481 159 V243 M402 202 H560"/>
+        {/* cupboards left */}
+        <path d="M89 316 L235 349 L235 423 L89 392 Z"/>
+        <path d="M160 333 V410"/>
+      </g>
+      {[[1,460,389],[2,650,272],[3,213,254],[4,389,258],[5,110,246]].map(([n,x,y])=><g key={n}>
+        <circle cx={x} cy={y} r="22" fill="var(--fnh-card,#fff)" stroke="currentColor" strokeWidth="2.2"/>
+        <text x={x} y={y+7} textAnchor="middle" fill="currentColor" fontFamily="Arial,sans-serif" fontSize="24" fontWeight="700">{n}</text>
+      </g>)}
+    </svg>
+    <figcaption>2009 Paper1, Questions 43–45. U-shaped kitchen diagram with the five numbered positions used in the original questions.</figcaption>
+  </figure>;
   if(type==="place-setting-2008")return <FnhHistoricalDiagram type="place-setting-2007"/>;
   if(type==="knife-collection-2008")return <figure className="fnh-historical-figure">
     <svg viewBox="0 0 690 370" width="100%" role="img" aria-label="2008 Paper1 Question43 four knives numbered I curved chef's knife, II serrated long knife, III small pointed paring knife, IV broad cleaver">
