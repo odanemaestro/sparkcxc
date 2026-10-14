@@ -218,8 +218,10 @@ export const FNH_SUPPLIED_ARCHIVE = Object.freeze([
     "session": "May/June",
     "sourceFilename": "CSEC_FNH_Paper_2_-_May_June_2010.pdf",
     "sourceFormat": "text-layer",
-    "reviewStatus": "requires-question-and-key-verification",
-    "verifiedQuestionCount": 0
+    "reviewStatus": "source-question-text-checked",
+    "verifiedQuestionCount": 7,
+    "simulatorReady": true,
+    "referenceMarkingSource": "SPARK-authored explanatory points; source contains no official marking guide"
   },
   {
     "id": "FNH-P2-2011-MJ",
