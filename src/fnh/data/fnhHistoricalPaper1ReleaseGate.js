@@ -45,6 +45,7 @@ const transcriptionRecords=Object.freeze({
   2005:FNH_P1_2005_TRANSCRIPTION_DRAFT,
   2006:FNH_HISTORICAL_P1_2006.map(row=>({
     number:row.number,stem:row.stem,options:row.options,sourceChecked:row.questionTextChecked,
+    id:row.id,sourcePage:row.sourcePage,diagramId:row.diagramId,sourceContext:row.sourceContext,
     proposedAnswer:row.answer,officialKeyVerified:row.keyReviewStatus==="approved"
   })),
   2007:FNH_P1_2007_TRANSCRIPTION_DRAFT,
@@ -84,4 +85,57 @@ export function fnhPaper1ArchiveReadiness(){
     pending:rows.filter(row=>!row.ready).length,
     rows
   };
+}
+
+
+// Reader mode is an unscored source transcription browser, NOT a release gate.
+// A large portion of older PDF figure redraws is still under review. Withhold
+// every incomplete choice set or unavailable diagram rather than invent a figure.
+// Crucially, no proposedAnswer, official key flag, explanation or score is
+// returned to the UI. Publication permission is handled separately above.
+export const FNH_P1_RENDERABLE_DIAGRAM_IDS=Object.freeze([
+ "place-setting-2004","kitchen-u-shaped-2004","refrigerator-table-2004",
+ "place-setting-2018","luncheon-menu-2018","kitchen-u-shaped-2018",
+ "refrigerator-positions-2018","luncheon-presentation-2018","meal-comparison-2018",
+ "meal-comparison-2019","kitchen-u-shaped-2019","luncheon-presentation-2019",
+ "place-setting-2020","kitchen-u-shaped-2020","caribbean-dishes-2020",
+ "refrigerator-storage-2020","luncheon-presentation-2020",
+ "guava-jam-label-2026","kitchen-u-shaped-2026","nutrient-types-2026",
+ "meal-comparison-2026","luncheon-presentation-2026","nutrition-label-2026"
+]);
+const diagramReady=new Set(FNH_P1_RENDERABLE_DIAGRAM_IDS);
+export function fnhHistoricalPaper1Reader(sourceId){
+ const source=FNH_SUPPLIED_ARCHIVE.find(x=>x.id===sourceId&&x.paper===1);
+ if(!source||source.sourceIdentityVerified===false)return null;
+ const original=transcriptionRecords[source.year]||[];
+ const excluded=[];
+ const questions=[];
+ for(const row of original){
+  const options=row.options;
+  const complete=Number.isInteger(row.number)&&row.number>=1&&row.number<=60
+    &&row.sourceChecked===true&&typeof row.stem==="string"&&row.stem.trim()
+    &&Array.isArray(options)&&options.length===4
+    &&options.every(choice=>typeof choice==="string"&&choice.trim())
+    &&new Set(options).size===4;
+  if(!complete||(row.diagramId&&!diagramReady.has(row.diagramId))){
+   excluded.push(row.number);
+   continue;
+  }
+  questions.push(Object.freeze({
+   number:row.number,stem:row.stem,sourcePage:row.sourcePage||null,
+   options:Object.freeze([...options]),
+   ...(row.diagramId?{diagramId:row.diagramId}:{}),
+   ...(row.sourceContext?{sourceContext:row.sourceContext}:{})
+  }));
+ }
+ if(!questions.length)return null;
+ return Object.freeze({
+  id:source.id,year:source.year,qualification:source.year>=2017?"Technical Proficiency":"General Proficiency",
+  paperTitle:source.year>=2017?"Food, Nutrition and Health":"Food and Nutrition",
+  missingSourceQuestions:Object.freeze([...(source.missingSourceQuestionNumbers||[])]),
+  excludedNumbers:Object.freeze(excluded.sort((a,b)=>a-b)),
+  sourceQuestionCount:source.sourceQuestionCount??original.length,
+  questions:Object.freeze(questions),
+  scored:false,verifiedKeys:false
+ });
 }
