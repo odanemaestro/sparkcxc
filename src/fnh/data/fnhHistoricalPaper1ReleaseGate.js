@@ -9,6 +9,7 @@ import {FNH_P1_2014_TRANSCRIPTION_DRAFT} from "./fnhHistorical2014Paper1Draft";
 import {FNH_P1_2015_TRANSCRIPTION_DRAFT} from "./fnhHistorical2015Paper1Draft";
 import {FNH_P1_2016_TRANSCRIPTION_DRAFT} from "./fnhHistorical2016Paper1Draft";
 import {FNH_P1_2017_TRANSCRIPTION_DRAFT} from "./fnhHistorical2017Paper1Draft";
+import {FNH_P1_2018_TRANSCRIPTION_DRAFT} from "./fnhHistorical2018Paper1Draft";
 import {FNH_SUPPLIED_ARCHIVE} from "./fnhPastPaperInventory";
 
 // Publishing rule for original historical Paper 01 transcriptions.
@@ -49,7 +50,8 @@ const transcriptionRecords=Object.freeze({
   2014:FNH_P1_2014_TRANSCRIPTION_DRAFT,
   2015:FNH_P1_2015_TRANSCRIPTION_DRAFT,
   2016:FNH_P1_2016_TRANSCRIPTION_DRAFT,
-  2017:FNH_P1_2017_TRANSCRIPTION_DRAFT
+  2017:FNH_P1_2017_TRANSCRIPTION_DRAFT,
+  2018:FNH_P1_2018_TRANSCRIPTION_DRAFT
 });
 export const FNH_HISTORICAL_PAPER1_TRANSCRIPTION_PROGRESS=Object.freeze(
   FNH_SUPPLIED_ARCHIVE.filter(p=>p.paper===1).map(row=>{
