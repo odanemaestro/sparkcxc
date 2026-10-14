@@ -1,10 +1,74 @@
 import React from "react";
+// EAN-13 source digits on 2012 Paper 02, page 5: 5 011415 000726.
+const eanL=["0001101","0011001","0010011","0111101","0100011","0110001","0101111","0111011","0110111","0001011"];
+const eanG=["0100111","0110011","0011011","0100001","0011101","0111001","0000101","0010001","0001001","0010111"];
+const eanR=["1110010","1100110","1101100","1000010","1011100","1001110","1010000","1000100","1001000","1110100"];
+const eanParity=["LLLLLL","LLGLGG","LLGGLG","LLGGGL","LGLLGG","LGGLLG","LGGGLL","LGLGLG","LGLGGL","LGGLGL"];
+function ean13Bars(code){
+  const text=String(code||"");
+  if(!/^\d{13}$/.test(text))return [];
+  const parity=eanParity[Number(text[0])];
+  const left=text.slice(1,7).split("").map((digit,i)=>(parity[i]==="L"?eanL:eanG)[Number(digit)]).join("");
+  const right=text.slice(7).split("").map(digit=>eanR[Number(digit)]).join("");
+  return ("101"+left+"01010"+right+"101").split("").map((bit,i)=>({i,bit}));
+}
+
 
 /** Reconstructed from the user's 2008 Paper 02, page 5.
  * Diagram represents Ria's Super Flour Mix carton and its front/side labels.
  * Keep the original missing-quantity and missing-directions clues intact.
  */
 export default function FnhHistoricalDiagram({type}){
+  if(type==="product-comparison-2012")return <figure className="fnh-historical-figure">
+    <svg viewBox="0 0 850 690" width="100%" role="img" aria-label="2012 Paper 2 Question 6: barcode 5011415000726, box A carrot cake mix with ingredients flour fat sugar carrot, and box B carrot cake mix with ingredients flour carrot extract sugar salt">
+      <title>Figures 1, 2 and 3: Barcode and comparison of carrot cake mixes</title>
+      <g fill="currentColor" fontFamily="Georgia,serif" fontWeight="600">
+        <text x="425" y="32" textAnchor="middle" fontSize="18">Figure 1: Bar Code</text>
+      </g>
+      <g fill="currentColor">{ean13Bars("5011415000726").filter(b=>b.bit==="1").map(b=>
+        <rect key={b.i} x={281+b.i*3} y="48" width="3" height={b.i<3||b.i>=92||b.i>=45&&b.i<50?93:82}/>)}</g>
+      <text x="425" y="168" textAnchor="middle" fontSize="18" fontFamily="Georgia,serif" fill="currentColor">5 011415 000726</text>
+      <g stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinejoin="round">
+        {/* Box A: perspective panel and side wall. */}
+        <path d="M123 253 L170 215 H320 V429 L278 467 H123 Z"/>
+        <path d="M123 253 H278 V467 M278 253 L320 215 M278 253 V467"/>
+        <path d="M123 253 L170 215 H320" strokeWidth="1.7"/>
+        {/* Box B: separate carton. */}
+        <path d="M479 253 L525 215 H674 V429 L632 467 H479 Z"/>
+        <path d="M479 253 H632 V467 M632 253 L674 215 M632 253 V467"/>
+        <path d="M479 253 L525 215 H674" strokeWidth="1.7"/>
+        {/* Small stylised slice of cake and celebratory cake illustrations. */}
+        <path d="M165 344 L213 329 L249 346 L207 364 Z M165 344 V383 L207 403 L207 364 M207 403 L249 384 V346" strokeWidth="1.6"/>
+        <circle cx="208" cy="321" r="6" fill="currentColor"/>
+        <path d="M520 374 C535 354 551 354 559 374 C567 352 583 351 596 374 V396 H520 Z" fill="currentColor"/>
+        <circle cx="533" cy="346" r="5" fill="currentColor"/>
+        <circle cx="559" cy="339" r="5" fill="currentColor"/>
+        <circle cx="585" cy="346" r="5" fill="currentColor"/>
+      </g>
+      <g fill="currentColor" fontFamily="Arial,sans-serif" textAnchor="middle">
+        <text x="202" y="277" fontSize="19" fontWeight="700">Carrot Cake</text>
+        <text x="202" y="302" fontSize="19" fontWeight="700">Mix</text>
+        <text x="556" y="277" fontSize="19" fontWeight="700">Carrot</text>
+        <text x="556" y="302" fontSize="19" fontWeight="700">Cake Mix</text>
+      </g>
+      <g fill="currentColor" opacity=".72">
+        <rect x="124" y="401" width="153" height="66"/>
+        <rect x="479" y="393" width="152" height="74"/>
+      </g>
+      <g fill="white" fontFamily="Arial,sans-serif" fontSize="17" textAnchor="middle">
+        <text x="201" y="422">Flour, Fat</text>
+        <text x="201" y="443">Sugar, Carrot</text>
+        <text x="555" y="415">Flour,</text>
+        <text x="555" y="436">Carrot Extract</text>
+        <text x="555" y="456">Sugar, Salt</text>
+      </g>
+      <g fill="currentColor" fontFamily="Georgia,serif" fontWeight="600" fontSize="21" textAnchor="middle">
+        <text x="201" y="515">Figure 2: Box A</text>
+        <text x="555" y="515">Figure 3: Box B</text>
+      </g>
+    </svg>
+    <figcaption>2012 Paper 2, Question 6. Recreated source figures, including a standard EAN-13 bar code representing the exact printed digits and both original ingredient lists.</figcaption>
+  </figure>;
   if(type==="kitchen-layout-2011")return <figure className="fnh-historical-figure">
     <svg viewBox="0 0 760 530" width="100%" role="img" aria-label="2011 Food and Nutrition kitchen floor plan. Food cupboard and refrigerator along the upper wall near the back door, sink beneath right-side window, cooker along lower wall, two work surfaces, and a door to the hall on the left.">
       <title>2011 Paper 2, Question 7: A well-organised kitchen</title>
