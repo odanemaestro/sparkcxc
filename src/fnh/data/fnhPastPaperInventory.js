@@ -64,7 +64,10 @@ export const FNH_SUPPLIED_ARCHIVE = Object.freeze([
     "sourceFilename": "CSEC_FNH_Paper_1_-_May_June_2007.pdf",
     "sourceFormat": "text-layer",
     "reviewStatus": "requires-question-and-key-verification",
-    "verifiedQuestionCount": 0
+    "verifiedQuestionCount": 0,
+    "transcribedQuestionCount": 16,
+    "sourceQuestionCount": 60,
+    "answerKeyStatus": "partial-source-transcription-and-independent-key-review-required"
   },
   {
     "id": "FNH-P1-2008-MJ",
