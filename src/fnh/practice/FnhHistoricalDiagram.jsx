@@ -311,6 +311,74 @@ export default function FnhHistoricalDiagram({type}){
       <figcaption>2021 Paper 2, Question 6: SVG recreation of both original nutrition labels with the serving size, carbohydrate, fibre and sugar values used in the question.</figcaption>
     </figure>;
   }
+  if(type==="two-menus-2014")return <FnhHistoricalDiagram type="two-menus-2009"/>;
+  if(type==="preschool-lunch-2014")return <figure className="fnh-historical-figure">
+    <svg viewBox="0 0 750 210" width="100%" role="img" aria-label="2014 Paper 1 question 57 and 58: preschool lunch containing cookies, chicken sandwich, peanut punch and chocolate cup cake">
+      <title>2014 Paper 1: Preschool lunch list</title>
+      <rect x="44" y="24" width="662" height="155" rx="4" fill="none" stroke="currentColor" strokeWidth="2"/>
+      <g fill="currentColor" fontFamily="Georgia,serif" fontSize="23" textAnchor="middle">
+        <text x="375" y="72">Cookies, chicken sandwich, peanut punch,</text>
+        <text x="375" y="116">chocolate cup cake</text>
+      </g>
+    </svg>
+    <figcaption>2014 Paper1, Questions 57–58. Exact foods listed in the source preschool lunch.</figcaption>
+  </figure>;
+  if(type==="food-safety-2014")return <figure className="fnh-historical-figure">
+    <svg viewBox="0 0 750 575" width="100%" role="img" aria-label="2014 source food safety chart four actions CLEAN wash hands and surfaces often, SEPARATE do not cross-contaminate, CHILL refrigerate foods, COOK to appropriate temperature">
+      <title>2014 Paper 1 Questions 48–49: Food safety panel</title>
+      <g fill="none" stroke="currentColor" strokeWidth="3">
+        <rect x="64" y="40" width="620" height="475" strokeWidth="4"/>
+        <path d="M374 40 V515 M64 275 H684"/>
+        {/* faucet and water drops */}
+        <path d="M90 112 H242 V99 Q242 85 231 85 H190 V75 H229 Q260 75 260 100 V127 H232"/>
+        <path d="M235 130 L224 153 M248 131 L244 156 M261 131 L273 159"/>
+        <path d="M223 179 Q221 162 231 157 Q245 176 231 185 Q219 187 223 179Z"/>
+        {/* raw poultry and utensils on cutting board */}
+        <path d="M418 153 Q453 104 488 130 Q499 146 484 161 L449 176 Z"/>
+        <path d="M504 169 L640 169 M560 146 V209 M575 143 V208" strokeWidth="2"/>
+        {/* fridge */}
+        <rect x="195" y="325" width="92" height="147" rx="6"/>
+        <path d="M195 382 H287 M274 346 V365 M274 402 V446"/>
+        {/* cooking pan and steam */}
+        <path d="M427 420 H626 V445 H427 Z M626 430 H658 M451 419 Q451 389 441 377 M504 419 Q504 391 493 378 M555 419 Q553 385 545 375"/>
+        <circle cx="375" cy="275" r="91" strokeWidth="8" fill="var(--fnh-card,#fff)"/>
+        <path d="M310 213 L440 339" strokeWidth="15" strokeLinecap="round"/>
+        <path d="M335 289 Q351 248 376 244 Q394 251 400 279 M326 291 Q355 307 373 286 Q403 312 427 290" strokeWidth="2.8"/>
+      </g>
+      <g fill="currentColor" fontFamily="Arial,sans-serif">
+        <text x="89" y="240" fontSize="31" fontWeight="800">CLEAN</text>
+        <text x="89" y="264" fontSize="18">Wash hands and surfaces</text>
+        <text x="401" y="86" fontSize="31" fontWeight="800">SEPARATE</text>
+        <text x="401" y="113" fontSize="17">Don't cross-contaminate</text>
+        <text x="100" y="314" fontSize="31" fontWeight="800">CHILL</text>
+        <text x="403" y="311" fontSize="31" fontWeight="800">COOK</text>
+        <text x="403" y="342" fontSize="18">Cook to appropriate</text>
+        <text x="403" y="367" fontSize="18">temperature</text>
+      </g>
+    </svg>
+    <figcaption>2014 Paper1, Questions 48–49. The four original safe-food handling actions, with source panel structure reconstructed in SVG.</figcaption>
+  </figure>;
+  if(type==="lunch-table-2014")return <figure className="fnh-historical-figure">
+    <svg viewBox="0 0 860 470" width="100%" role="img" aria-label="2014 Paper1 Question23 lunch table laid for four people with four dinner plates, side plates, pairs of utensils, glasses and a serving dish at the centre">
+      <title>2014 Paper1 Question23: Table for four</title>
+      <g stroke="currentColor" strokeWidth="2.7" fill="none">
+        <rect x="45" y="44" width="770" height="383"/>
+        {[ [245,139],[630,139],[245,337],[630,337] ].map(([x,y],i)=><g key={i}>
+          <circle cx={x} cy={y} r="60"/>
+          <circle cx={x} cy={y} r="42"/>
+          <path d={`M${x-91} ${y-47} V${y+50} M${x-101} ${y-47} V${y-10} M${x-81} ${y-47} V${y-10} M${x+86} ${y-47} V${y+50}`}/>
+        </g>)}
+        <rect x="370" y="193" width="121" height="85" rx="20"/>
+        <circle cx="435" cy="235" r="29"/>
+        <circle cx="438" cy="146" r="39"/>
+        <circle cx="438" cy="338" r="31"/>
+        <rect x="67" y="199" width="75" height="66" rx="4"/>
+        <rect x="706" y="199" width="75" height="66" rx="4"/>
+        <path d="M395 106 H475 M395 113 H475 M395 359 H475 M395 366 H475" strokeWidth="2"/>
+      </g>
+    </svg>
+    <figcaption>2014 Paper1, Question23. Four individual lunch covers and centre serving dishes from the source table illustration.</figcaption>
+  </figure>;
   if(type==="local-dishes-table-2009")return <FnhHistoricalDiagram type="local-dishes-table-2008"/>;
   if(type==="two-menus-2009")return <figure className="fnh-historical-figure">
     <svg viewBox="0 0 910 335" width="100%" role="img" aria-label="2009 Paper1 menus: Meal I steamed fish, creamed yams, tomato slices, stewed fruit with chocolate sauce, orange juice. Meal II fried fish, peas and rice, tomato slices, jam tarts, lemonade">
