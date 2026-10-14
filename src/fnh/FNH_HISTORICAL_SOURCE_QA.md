@@ -31,6 +31,8 @@ A separate publicly reproduced **2015** exam also contains this exact paired wor
 
 The 2004 draft now stores these in `crossSourceCandidateOptions` with `crossSourceCandidateProvenance.verifiedFor2004:false`. Its actual `options` remain `null`, `sourceChecked:false`, and `officialKeyVerified:false` for both questions. The 2004 question browser therefore remains at 58 of 60 items; scored examinations stay blocked. Do not use handwriting or unverified uploads as official key evidence.
 
+The [CXC June 2004 Food and Nutrition examiner report](https://www.cxc.org/SiteAssets/2004SchoolReports/CSEC_2004_FoodandNutrition.pdf) confirms the original General Proficiency Paper 01 had **60 multiple-choice items**, carrying 60 marks, but gives neither the choices for these two questions nor any original answer key. The record's official-report fields therefore confirm only the intended item count, **not** their transcription accuracy.
+
 ## Official 2005 Paper 01 item-count evidence
 
 The [CXC May/June 2005 examiner report](https://www.cxc.org/SiteAssets/2005SchoolReports/CSEC_2005_FoodandNutrition.pdf) confirms the 2005 Food and Nutrition General Proficiency Paper 01 was worth **60 marks and had 60 multiple-choice questions**. It does not present the original question statements, source diagrams, or key. Hence the original scan's last printed question Q53 gives **53 transcribed / 60 expected**, not a 53-question exam. The absent seven are unresolved, and the reader should explicitly show that limitation.
