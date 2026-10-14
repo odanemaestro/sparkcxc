@@ -2,6 +2,7 @@ import React,{useEffect,useMemo,useRef,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
 
 import {fnhPartMarkingScheme,fnhSelfAssessmentMark,fnhSelfAssessmentTotal} from "./fnhPaper2Marking";
+import FnhHistoricalDiagram from "./FnhHistoricalDiagram";
 import "./fnhPractice.css";
 
 
@@ -121,6 +122,7 @@ export default function FnhHistoricalPaper2Exam({paper:PAPER,onBack,supabase,use
         {partBChoices}
         <div className="fnh-question-head"><h2>Question {question.number}: {question.title}</h2><span className="fnh-p2-marks">16 marks · Part {question.section}</span></div>
         <p className="fnh-p2-context">{question.context}</p>
+        {question.diagramId&&<FnhHistoricalDiagram type={question.diagramId}/> }
         <div className="fnh-p2-parts">{question.items.map(part=>{
           const partKey=`${question.id}:${part.id}`,answer=attempt.answers[partKey]||"",scheme=fnhPartMarkingScheme(part);
           return <section className="fnh-p2-part" key={part.id}>
