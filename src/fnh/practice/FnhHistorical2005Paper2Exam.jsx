@@ -18,7 +18,7 @@ export function fnhHistorical2005ExamStructure(selected=[]){
     requiredPartB:2,
     selectedPartB:PAPER.sectionBAvailable.filter(n=>selectedSet.has(n)),
     paperQuestions:PAPER.questions.filter(q=>q.section==="A"||(q.section==="B"&&selectedSet.has(q.number))),
-    totalPotentialMarks:(3+Math.min(2,selectedSet.size))*16,
+    totalPotentialMarks:(3+PAPER.sectionBAvailable.filter(n=>selectedSet.has(n)).length)*16,
   };
 }
 export default function FnhHistorical2005Paper2Exam({onBack,supabase,userId}){
