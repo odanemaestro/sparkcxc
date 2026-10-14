@@ -7,6 +7,7 @@ import FnhHistorical2006Paper2Exam from "./FnhHistorical2006Paper2Exam";
 import FnhHistorical2008Paper2Exam from "./FnhHistorical2008Paper2Exam";
 import FnhHistorical2009Paper2Exam from "./FnhHistorical2009Paper2Exam";
 import FnhHistorical2010Paper2Exam from "./FnhHistorical2010Paper2Exam";
+import FnhHistorical2014Paper2Exam from "./FnhHistorical2014Paper2Exam";
 import {FNH_SUPPLIED_ARCHIVE,fnhHistoricalPaperFormat,fnhHistoricalSimulatorReady} from "../data/fnhPastPaperInventory";
 import {FNH_PAPER1_PRACTICE_SETS} from "../data/fnhPaper1Bank";
 import {FNH_PAPER2_PRACTICE_SETS} from "../data/fnhPaper2Bank";
@@ -66,7 +67,8 @@ export default function FnhPracticeHub({supabase,userId,onBack}){
     if(id==="FNH-P2-2006-MJ")setView("historical-2006-p2");
     if(id==="FNH-P2-2008-MJ")setView("historical-2008-p2");
     if(id==="FNH-P2-2009-MJ")setView("historical-2009-p2");
-    if(id==="FNH-P2-2010-MJ")setView("historical-2010-p2");}}/>;
+    if(id==="FNH-P2-2010-MJ")setView("historical-2010-p2");
+    if(id==="FNH-P2-2014-MJ")setView("historical-2014-p2");}}/>;
   if(view==="exam1")return <FnhPaper1Exam key={selectedPaper1Set} setNumber={selectedPaper1Set} supabase={supabase} userId={userId} onBack={()=>setView("paper1")}/>;
   if(view==="exam2")return <FnhPaper2Exam key={selectedPaper2Set} setNumber={selectedPaper2Set} supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
   if(view==="historical-2005-p2")return <FnhHistorical2005Paper2Exam supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
@@ -74,6 +76,7 @@ export default function FnhPracticeHub({supabase,userId,onBack}){
   if(view==="historical-2008-p2")return <FnhHistorical2008Paper2Exam supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
   if(view==="historical-2009-p2")return <FnhHistorical2009Paper2Exam supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
   if(view==="historical-2010-p2")return <FnhHistorical2010Paper2Exam supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
+  if(view==="historical-2014-p2")return <FnhHistorical2014Paper2Exam supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
   if(view==="workbook")return <FnhPracticalWorkbook userId={userId} onBack={()=>setView("home")}/>;
   return <main className="fnh-exam fnh-practice-home"><div className="fnh-exam-container">
     <div className="fnh-exam-top"><button className="fnh-outline" type="button" onClick={onBack}>← Back to practice</button></div>
