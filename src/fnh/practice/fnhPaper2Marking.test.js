@@ -33,6 +33,18 @@ describe("FNH Paper 2 transparent marking assistance",()=>{
     expect(report.questions.map(q=>q.maximum)).toEqual([16,16,16,16,16,16]);
     expect(report.questions.map(q=>q.checked)).toEqual([16,16,16,16,16,16]);
   });
+  test("blank submissions cannot receive self-assessed marks even if all boxes are ticked",()=>{
+    const full={};
+    paper.forEach(q=>q.items.forEach(p=>{
+      full[`${q.id}:${p.id}`]=p.modelPoints.map((_,index)=>String(index));
+    }));
+    const emptyResponses=fnhSelfAssessmentTotal(paper,full,{});
+    expect(emptyResponses.checked).toBe(0);
+    const first=`${paper[0].id}:${paper[0].items[0].id}`;
+    const someResponses=fnhSelfAssessmentTotal(paper,full,{[first]:"A diet includes regular food and drink."});
+    expect(someResponses.checked).toBe(2);
+    expect(fnhSelfAssessmentMark(paper[0].items[0],["0","1"],"   ")).toBe(0);
+  });
   test("missing answer evidence does not earn any marks by default",()=>{
     const report=fnhSelfAssessmentTotal(paper,{});
     expect(report.checked).toBe(0);
