@@ -15,18 +15,19 @@ export function fnhPartMarkingScheme(part){
     note:"Award marks only when the response demonstrates the point clearly. Equivalent scientifically accurate or context-appropriate answers also receive credit. Do not award duplicate points twice.",
   };
 }
-export function fnhSelfAssessmentMark(part,selected=[]){
+export function fnhSelfAssessmentMark(part,selected=[],responseText=null){
+  if(responseText!=null&&!String(responseText).trim())return 0;
   const scheme=fnhPartMarkingScheme(part);
   const allowed=new Set(scheme.points.map(point=>point.id));
   const unique=[...new Set((selected||[]).map(String))].filter(id=>allowed.has(id));
   return Math.min(scheme.maximum,unique.length);
 }
-export function fnhSelfAssessmentTotal(paper=[],selfReview={}){
+export function fnhSelfAssessmentTotal(paper=[],selfReview={},answers=null){
   const perQuestion=(paper||[]).map(question=>{
     const parts=(question.items||[]).map(part=>{
       const key=`${question.id}:${part.id}`;
       return {key,maximum:Number(part.marks)||0,
-        checked:fnhSelfAssessmentMark(part,selfReview[key]||[])};
+        checked:fnhSelfAssessmentMark(part,selfReview[key]||[],answers?.[key]??(answers? "":null))};
     });
     return {id:question.id,maximum:parts.reduce((a,b)=>a+b.maximum,0),
       checked:parts.reduce((a,b)=>a+b.checked,0),parts};
