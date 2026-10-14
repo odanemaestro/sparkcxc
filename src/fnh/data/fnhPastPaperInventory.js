@@ -162,7 +162,12 @@ export const FNH_SUPPLIED_ARCHIVE = Object.freeze([
     "sourceFilename": "CSEC_FNH_Paper_1_-_May_June_2018.pdf",
     "sourceFormat": "scanned-image",
     "reviewStatus": "requires-question-and-key-verification",
-    "verifiedQuestionCount": 0
+    "verifiedQuestionCount": 0,
+    "sourceQuestionsExpected": 60,
+    "qualification": "Technical Proficiency",
+    "sourceCoverChecked": false,
+    "sourceCompleteness": "60-question-pages-present-but-cover-missing",
+    "sourceQualityNote": "The supplied PDF begins at printed page 2 with Question 1 and ends at printed page 10 with Question 60; the examination cover is missing."
   },
   {
     "id": "FNH-P1-2019-MJ",
