@@ -15,6 +15,7 @@ import {FNH_HISTORICAL_P2_2019} from "../data/fnhHistorical2019Paper2";
 import {FNH_HISTORICAL_P2_2021} from "../data/fnhHistorical2021Paper2";
 import {FNH_HISTORICAL_P2_2022} from "../data/fnhHistorical2022Paper2";
 import {FNH_HISTORICAL_P2_2024} from "../data/fnhHistorical2024Paper2";
+import {FNH_HISTORICAL_P2_2026} from "../data/fnhHistorical2026Paper2";
 import {FNH_SUPPLIED_ARCHIVE,fnhHistoricalSimulatorReady} from "../data/fnhPastPaperInventory";
 import {fnhPartMarkingScheme} from "./fnhPaper2Marking";
 
@@ -36,6 +37,7 @@ const known=new Map([
   [2021,FNH_HISTORICAL_P2_2021],
   [2022,FNH_HISTORICAL_P2_2022],
   [2024,FNH_HISTORICAL_P2_2024],
+  [2026,FNH_HISTORICAL_P2_2026],
 ]);
 describe("Full FNH historical archive released-paper integrity",()=>{
   test("every released Paper 2 has a matching actual transcribed examination bank",()=>{
