@@ -138,3 +138,12 @@ html[data-theme="dark"] .fnh-choice-number,body[data-theme="dark"] .fnh-choice-n
 .fnh-workbook input:focus-visible,.fnh-workbook textarea:focus-visible{outline:3px solid var(--fnh-accent);outline-offset:2px}
 @media(max-width:800px){.fnh-workbook .fnh-sba-layout{grid-template-columns:1fr}.fnh-workbook .fnh-sba-tasks{position:static;max-height:240px}}
 @media(max-width:550px){.fnh-workbook .fnh-sba-checklist{grid-template-columns:1fr}}
+
+/* Evidence-based Paper 2 self-check. Marking is not an official grade. */
+.fnh-p2 .fnh-p2-marking-points{display:grid;gap:9px;margin:13px 0}
+.fnh-p2 .fnh-p2-marking-points label{display:flex;align-items:flex-start;gap:11px;padding:11px 12px;border-radius:10px;border:1px solid var(--fnh-border);background:var(--fnh-card);color:var(--fnh-ink);font-size:13px;line-height:1.6;cursor:pointer}
+.fnh-p2 .fnh-p2-marking-points input{accent-color:var(--fnh-accent);width:18px;height:18px;flex-shrink:0;margin:2px 0 0}
+.fnh-p2 .fnh-p2-marking-points label:has(input:checked){border-color:var(--fnh-accent);background:color-mix(in srgb,var(--fnh-card) 89%,var(--fnh-accent))}
+.fnh-p2 .fnh-self-review-summary{margin-top:18px;padding:14px;border-top:1px solid var(--fnh-border);display:grid;gap:7px}
+.fnh-p2 .fnh-self-review-summary strong{font-size:15px;color:var(--fnh-ink)}
+.fnh-p2 .fnh-self-review-summary p,.fnh-p2 .fnh-self-review-summary small{color:var(--fnh-muted);font-size:12px;line-height:1.6;margin:0}
