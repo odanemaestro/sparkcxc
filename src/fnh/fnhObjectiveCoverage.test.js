@@ -7,7 +7,7 @@ describe("CSEC Food, Nutrition and Health syllabus integrity",()=>{
   test("all seven sections contain all 87 specific syllabus objectives",()=>{
     expect(FNH_SYLLABUS_SECTIONS.map(s=>s.rows.length)).toEqual(perSection);
     expect(FNH_OBJECTIVES).toHaveLength(87);
-    expect(FNH_COVERAGE).toMatchObject({sections:7,objectives:87,topics:25,syllabus:"CXC 11/G/SYLL 15"});
+    expect(FNH_COVERAGE).toMatchObject({sections:7,objectives:87,topics:25,syllabus:"CXC 11/O/SYLL 15"});
     expect(FNH_SECTIONS).toHaveLength(7);
     expect(new Set(FNH_OBJECTIVES.map(o=>o.code)).size).toBe(87);
   });
@@ -18,7 +18,7 @@ describe("CSEC Food, Nutrition and Health syllabus integrity",()=>{
       expect(item.explanation.length).toBeGreaterThan(110);
       expect(item.example.length).toBeGreaterThan(45);
       expect(item.question.length).toBeGreaterThan(18);
-      expect(item.source).toBe("CXC 11/G/SYLL 15");
+      expect(item.source).toBe("CXC 11/O/SYLL 15");
     });
   });
   test("all syllabus objectives appear exactly once in the 25 topic lessons",()=>{
