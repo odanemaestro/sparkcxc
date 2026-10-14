@@ -150,7 +150,9 @@ export const FNH_SUPPLIED_ARCHIVE = Object.freeze([
     "sourceQuestionsExpected": 60,
     "durationMinutes": 90,
     "qualification": "Technical Proficiency",
-    "sourceCoverChecked": true
+    "sourceCoverChecked": true,
+    "transcribedQuestionCount": 60,
+    "answerKeyStatus": "eight-ambiguous-keys-and-independent-review-required"
   },
   {
     "id": "FNH-P1-2018-MJ",
