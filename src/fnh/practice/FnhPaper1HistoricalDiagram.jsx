@@ -381,5 +381,111 @@ export default function FnhPaper1HistoricalDiagram({type}){
  if(type==="menu-comparison-2005")return <FnhPaper1HistoricalDiagram type="two-menus-2014"/>;
  if(type==="food-safety-chart-2005")return <FnhPaper1HistoricalDiagram type="food-safety-2014"/>;
 
+ // Previously withheld original source diagrams; SVG layout is source-style and
+ // still needs pixel-fidelity manual QA before a scored paper could be released.
+ if(type==="kitchen-layout-2006")return <figure className="fnh-paper1-source-figure">
+  <svg viewBox="0 0 680 470" role="img" aria-label="U-shaped kitchen plan with cooker to the left, sink on the back counter and refrigerator marked REF on the right">
+   <title>Historical Paper 01, U-shaped kitchen source diagram</title>
+   <g stroke="currentColor" fill="none" strokeWidth="3" strokeLinejoin="round">
+    <rect x="115" y="40" width="438" height="365"/>
+    <path d="M115 405 V174 H203 V319 H465 V166 H553 V405 M203 174 V127 H465 V166"/>
+    <rect x="275" y="55" width="151" height="51" rx="2"/>
+    <path d="M296 75 H407 M296 93 H407"/>
+    <circle cx="327" cy="65" r="6"/><circle cx="384" cy="65" r="6"/>
+    <rect x="126" y="221" width="68" height="95"/>
+    {[ [146,242],[176,242],[146,293],[176,293] ].map(([x,y],i)=><circle key={i} cx={x} cy={y} r="10"/>)}
+    <path d="M467 302 H552 M467 359 H552"/>
+   </g>
+   <text x="507" y="343" textAnchor="middle" fontFamily="Georgia,serif" fill="currentColor" fontSize="23" fontWeight="700">REF</text>
+  </svg><figcaption>Kitchen layout. Source-style U-shaped cooker, sink and refrigerator positions.</figcaption>
+ </figure>;
+ if(type==="place-setting-2007")return <figure className="fnh-paper1-source-figure">
+  <svg viewBox="0 0 790 330" role="img" aria-label="Place setting: a napkin on far left, two forks, a dinner plate in the middle, knives and a spoon on the right">
+   <title>Historical Paper 01, unlabelled dining cover</title>
+   <g fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="32" y="26" width="726" height="276"/>
+    <rect x="70" y="122" width="55" height="106"/>
+    {[[177,125],[222,125]].map(([x,y],i)=><g key={i}>
+      <path d={"M"+(x-11)+" "+(y-18)+" v50 M"+(x-5)+" "+(y-18)+" v50 M"+(x+1)+" "+(y-18)+" v50 M"+(x+7)+" "+(y-18)+" v50 M"+x+" "+(y+40)+" V244 Q"+x+" 255 "+(x+6)+" 244 V165" />
+     </g>)}
+    <circle cx="392" cy="167" r="84"/><circle cx="392" cy="167" r="59"/>
+    <path d="M536 93 Q529 94 529 111 V246 Q537 259 543 246 V112 Q543 98 536 93 Z"/>
+    <path d="M590 98 V243 Q599 260 605 243 V100 Q604 92 600 94 Z"/>
+    <ellipse cx="660" cy="119" rx="22" ry="31"/><path d="M660 150 V246 Q668 262 675 246 V151"/>
+   </g>
+  </svg><figcaption>Dining cover. Original source uses two forks on the left and the knife and spoon on the right.</figcaption>
+ </figure>;
+ if(type==="knife-collection-2008")return <figure className="fnh-paper1-source-figure">
+  <svg viewBox="0 0 830 360" role="img" aria-label="Four knives labelled I to IV: long curved knife, serrated bread knife, slim pointed knife and broad rectangular cleaver">
+   <title>2008 Paper 01 Question 43, knife shapes I, II, III and IV</title>
+   <g fill="none" stroke="currentColor" strokeWidth="3" strokeLinejoin="round">
+    <path d="M104 225 V128 Q115 90 127 69 L142 58 Q146 105 135 140 L135 225 Z"/>
+    <path d="M286 225 V95 H310 L318 111 L311 121 L317 131 L310 141 L317 151 L311 161 L314 225 Z"/>
+    <path d="M487 225 V112 Q503 74 515 61 Q525 126 521 163 V225 Z"/>
+    <path d="M662 225 V66 H750 V220 H692 V225 Z"/>
+    {[ [102,134],[284,316],[485,521],[693,722] ].map(([x1,x2],i)=><g key={i}>
+      <path d={"M"+x1+" 224 V294 Q"+((x1+x2)/2)+" 306 "+x2+" 294 V224"}/>
+      <circle cx={(x1+x2)/2} cy="270" r="4" fill="currentColor"/>
+    </g>)}
+   </g>
+   <g fill="currentColor" fontSize="29" fontFamily="Georgia,serif" textAnchor="middle">
+    {["I","II","III","IV"].map((t,i)=><text key={t} x={[120,300,503,709][i]} y="338">{t}</text>)}
+   </g>
+  </svg><figcaption>Question 43. Knife silhouettes I–IV are redrawn from the scanned example.</figcaption>
+ </figure>;
+ if(type==="local-dishes-table-2006")return <figure className="fnh-paper1-source-figure">
+  <svg viewBox="0 0 955 350" role="img" aria-label="Three local dishes table: split-pea soup green split peas fresh beef dumplings green plantains seasonings or herbs; pelau chicken rice dried pigeon peas seasonings or herbs; chicken roti chicken roti shells or skins potatoes curry seasonings">
+   <title>Food and Nutrition source, ingredients of three Caribbean dishes</title>
+   <g fill="none" stroke="currentColor" strokeWidth="2"><rect x="15" y="22" width="925" height="306"/><path d="M331 22 V328 M610 22 V328 M15 80 H940"/></g>
+   <g fontFamily="Georgia,serif" fontSize="24" fill="currentColor">
+    <text x="32" y="60" fontWeight="700">Split-pea Soup</text><text x="347" y="60" fontWeight="700">Pelau</text>
+    <text x="624" y="60" fontWeight="700">Chicken Roti</text>
+    {["Green split-peas","Fresh beef","Dumplings","Green plantains","Seasonings or herbs"].map((s,i)=><text key={s} x="32" y={116+i*42}>{s}</text>)}
+    {["Chicken","Rice","Dried pigeon peas","Seasonings or herbs"].map((s,i)=><text key={s} x="347" y={116+i*42}>{s}</text>)}
+    {["Chicken","Roti (shells/skins)","Potatoes","Curry","Seasonings"].map((s,i)=><text key={s} x="624" y={116+i*42}>{s}</text>)}
+   </g>
+  </svg><figcaption>Source ingredients table for split-pea soup, pelau and chicken roti.</figcaption>
+ </figure>;
+ if(type==="kitchen-layout-2009")return <figure className="fnh-paper1-source-figure">
+  <svg viewBox="0 0 880 600" role="img" aria-label="Perspective kitchen layout with five numbered areas: 1 under the sink, 2 counter near refrigerator, 3 worktop by stove, 4 rear left worktop, 5 cooker surface">
+   <title>2009 Paper 01 Questions 43–45, perspective kitchen numbered 1–5</title>
+   <g stroke="currentColor" strokeWidth="3" fill="none" strokeLinejoin="round" strokeLinecap="round">
+    <rect x="45" y="43" width="788" height="496"/>
+    <path d="M45 43 L273 135 H619 L833 43 M273 135 L273 432 L45 539 M619 135 V435 L833 539"/>
+    <path d="M45 308 L273 278 H619 L833 310 M45 333 L273 308 H619 L833 330"/>
+    <path d="M45 333 L45 539 M273 308 L273 432 M619 309 L619 434 M833 330 V539"/>
+    <path d="M275 314 V459 H618 V316 M389 326 V461 M502 326 V461 M275 358 H618"/>
+    <path d="M390 323 V277 Q394 255 408 259 Q426 268 414 286 H406"/>
+    <rect x="112" y="326" width="129" height="213"/><path d="M124 390 H233 M149 393 V526"/>
+    {[ [112,316],[169,311],[226,306] ].map(([x,y],i)=><ellipse key={i} cx={x} cy={y} rx="22" ry="7"/>)}
+    <path d="M666 212 L788 200 V446 L666 456 Z M666 333 L788 326"/>
+    <path d="M273 306 L153 356 M619 308 L691 335 M274 317 L153 366"/>
+    <rect x="687" y="186" width="101" height="152"/>
+   </g>
+   <g stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round">
+    {[[434,500,434,435],[622,228,600,311],[236,203,243,294],[305,220,311,300],[105,225,118,297]].map(([x1,y1,x2,y2],i)=><g key={i}>
+      <circle cx={x1} cy={y1} r="20" fill="none"/><path d={"M"+x1+" "+(y1+20)+" L"+x2+" "+y2}/>
+    </g>)}
+   </g>
+   <g fill="currentColor" fontFamily="Georgia,serif" fontSize="26" textAnchor="middle">
+    {[[434,500],[622,228],[236,203],[305,220],[105,225]].map(([x,y],i)=><text key={i} x={x} y={y+9}>{i+1}</text>)}
+   </g>
+  </svg><figcaption>Questions 43–45. Perspective kitchen labels 1–5 preserve the original numbered working areas. Redraw pending final visual comparison.</figcaption>
+ </figure>;
+ if(type==="luncheon-menu-2009")return <figure className="fnh-paper1-source-figure">
+  <svg viewBox="0 0 790 310" role="img" aria-label="Menu: Baked fish in tomato sauce, Vegetable rice, Garden salad, Golden apple pie">
+   <title>2009 Paper 01 Question 52, luncheon menu</title>
+   <rect x="88" y="24" width="616" height="264" fill="none" stroke="currentColor" strokeWidth="2"/>
+   <g fill="currentColor" fontFamily="Georgia,serif" fontSize="28" textAnchor="middle">
+    {["Baked fish in tomato sauce","Vegetable rice","Garden salad","Golden apple pie"].map((t,i)=><text key={i} x="396" y={79+i*63}>{t}</text>)}
+   </g>
+  </svg><figcaption>Question 52. Original four-course luncheon menu.</figcaption>
+ </figure>;
+ if(type==="kitchen-layout-2007")return <FnhPaper1HistoricalDiagram type="kitchen-layout-2006"/>;
+ if(type==="place-setting-2008")return <FnhPaper1HistoricalDiagram type="place-setting-2007"/>;
+ if(type==="local-dishes-table-2008")return <FnhPaper1HistoricalDiagram type="local-dishes-table-2006"/>;
+ if(type==="two-menus-2009")return <FnhPaper1HistoricalDiagram type="two-menus-2014"/>;
+ if(type==="local-dishes-table-2009")return <FnhPaper1HistoricalDiagram type="local-dishes-table-2006"/>;
+
  return null;
 }
