@@ -9,6 +9,7 @@ import FnhHistorical2009Paper2Exam from "./FnhHistorical2009Paper2Exam";
 import FnhHistorical2010Paper2Exam from "./FnhHistorical2010Paper2Exam";
 import FnhHistorical2011Paper2Exam from "./FnhHistorical2011Paper2Exam";
 import FnhHistorical2012Paper2Exam from "./FnhHistorical2012Paper2Exam";
+import FnhHistorical2013Paper2Exam from "./FnhHistorical2013Paper2Exam";
 import FnhHistorical2014Paper2Exam from "./FnhHistorical2014Paper2Exam";
 import FnhHistorical2015Paper2Exam from "./FnhHistorical2015Paper2Exam";
 import FnhHistorical2016Paper2Exam from "./FnhHistorical2016Paper2Exam";
@@ -75,6 +76,7 @@ export default function FnhPracticeHub({supabase,userId,onBack}){
     if(id==="FNH-P2-2010-MJ")setView("historical-2010-p2");
     if(id==="FNH-P2-2011-MJ")setView("historical-2011-p2");
     if(id==="FNH-P2-2012-MJ")setView("historical-2012-p2");
+    if(id==="FNH-P2-2013-MJ")setView("historical-2013-p2");
     if(id==="FNH-P2-2014-MJ")setView("historical-2014-p2");
     if(id==="FNH-P2-2015-MJ")setView("historical-2015-p2");
     if(id==="FNH-P2-2016-MJ")setView("historical-2016-p2");
@@ -88,6 +90,7 @@ export default function FnhPracticeHub({supabase,userId,onBack}){
   if(view==="historical-2010-p2")return <FnhHistorical2010Paper2Exam supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
   if(view==="historical-2011-p2")return <FnhHistorical2011Paper2Exam supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
   if(view==="historical-2012-p2")return <FnhHistorical2012Paper2Exam supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
+  if(view==="historical-2013-p2")return <FnhHistorical2013Paper2Exam supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
   if(view==="historical-2014-p2")return <FnhHistorical2014Paper2Exam supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
   if(view==="historical-2015-p2")return <FnhHistorical2015Paper2Exam supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
   if(view==="historical-2016-p2")return <FnhHistorical2016Paper2Exam supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
