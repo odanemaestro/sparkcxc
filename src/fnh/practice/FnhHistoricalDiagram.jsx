@@ -311,6 +311,49 @@ export default function FnhHistoricalDiagram({type}){
       <figcaption>2021 Paper 2, Question 6: SVG recreation of both original nutrition labels with the serving size, carbohydrate, fibre and sugar values used in the question.</figcaption>
     </figure>;
   }
+  if(type==="place-setting-2008")return <FnhHistoricalDiagram type="place-setting-2007"/>;
+  if(type==="knife-collection-2008")return <figure className="fnh-historical-figure">
+    <svg viewBox="0 0 690 370" width="100%" role="img" aria-label="2008 Paper1 Question43 four knives numbered I curved chef's knife, II serrated long knife, III small pointed paring knife, IV broad cleaver">
+      <title>Four kitchen knives from 2008 Paper 1</title>
+      <g stroke="currentColor" strokeWidth="2.4" fill="none" strokeLinejoin="round">
+        <path d="M88 50 Q55 82 61 128 L75 216 L110 216 L115 122 L111 40 Z"/>
+        <path d="M76 216 V289 H109 V216 Z"/>
+        <circle cx="92" cy="247" r="3"/><circle cx="92" cy="269" r="3"/>
+        <path d="M210 58 L241 45 L241 214 H210 Z"/>
+        <path d="M210 58 L212 207" strokeDasharray="2 4"/>
+        <path d="M208 214 V290 H245 V214 Z"/>
+        <circle cx="226" cy="247" r="3"/><circle cx="226" cy="269" r="3"/>
+        <path d="M354 91 Q345 120 340 173 L340 215 H373 V75 Z"/>
+        <path d="M340 215 V288 H375 V215 Z"/>
+        <circle cx="357" cy="248" r="3"/><circle cx="357" cy="269" r="3"/>
+        <path d="M492 68 H572 V216 H492 Z"/>
+        <path d="M531 216 V287 H561 V216 Z"/>
+        <circle cx="546" cy="249" r="3"/><circle cx="546" cy="270" r="3"/>
+      </g>
+      <g fill="currentColor" fontFamily="Georgia,serif" fontSize="22" fontWeight="600" textAnchor="middle">
+        <text x="90" y="324">I</text><text x="227" y="324">II</text><text x="357" y="324">III</text><text x="545" y="324">IV</text>
+      </g>
+    </svg>
+    <figcaption>2008 Paper 1, Question 43. Four source utensils, numbered I–IV.</figcaption>
+  </figure>;
+  if(type==="local-dishes-table-2008")return <figure className="fnh-historical-figure">
+    <svg viewBox="0 0 950 385" width="100%" role="img" aria-label="2008 Paper1 Questions50-51 ingredients table: Split peas soup has green split peas, fresh beef, dumplings, green plantains, herbs; pelau has chicken, rice, dried pigeon peas, herbs; chicken roti has chicken, roti shells or skins, potatoes, curry and seasonings">
+      <title>2008 Paper1 Questions 50 and 51: Three local dishes</title>
+      <g fill="none" stroke="currentColor" strokeWidth="2.5">
+        <rect x="22" y="35" width="906" height="300"/>
+        <path d="M324 35 V335 M626 35 V335 M22 93 H928"/>
+      </g>
+      <g fill="currentColor" fontFamily="Georgia,serif" textAnchor="middle">
+        <text x="173" y="72" fontSize="22" fontWeight="700">Split-peas Soup</text>
+        <text x="475" y="72" fontSize="22" fontWeight="700">Pelau</text>
+        <text x="777" y="72" fontSize="22" fontWeight="700">Chicken Roti</text>
+        {["Green split-peas","Fresh beef","Dumplings","Green plantains","Seasonings or herbs"].map((t,i)=><text key={t} x="173" y={129+i*39} fontSize="20">{t}</text>)}
+        {["Chicken","Rice","Dried pigeon peas","Seasonings or herbs"].map((t,i)=><text key={t} x="475" y={129+i*51} fontSize="20">{t}</text>)}
+        {["Chicken","Roti (shells or skins)","Potatoes","Curry","Seasonings"].map((t,i)=><text key={t} x="777" y={129+i*39} fontSize="20">{t}</text>)}
+      </g>
+    </svg>
+    <figcaption>2008 Paper1, Questions 50–51. Ingredient lists from the supplied local-food table.</figcaption>
+  </figure>;
   if(type==="kitchen-layout-2007")return <figure className="fnh-historical-figure">
     <svg viewBox="0 0 650 390" width="100%" role="img" aria-label="2007 Paper 1 Question 43 U shaped kitchen layout with cooker on left, sink on top, refrigerator on right, counters along three sides">
       <title>2007 Paper 1 Question 43: U-shaped kitchen</title>
