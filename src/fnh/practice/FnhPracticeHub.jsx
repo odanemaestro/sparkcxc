@@ -60,7 +60,10 @@ function FnhPaperLibrary({paper,onBack,onStart,onStartHistorical,onReviewHistori
       </div>
       <div className="fnh-library-archive-grid">{years.map(source=><article key={source.id} className="fnh-exam-card fnh-archive-card">
         <small>HISTORICAL SOURCE · MAY/JUNE</small><h3>{source.year} Paper {paper}</h3>
-        {source.sourceIdentityVerified===false?<>
+        {source.sourceYearVerified===false?<>
+          <p>Source year requires independent verification.</p>
+          <span className="fnh-archive-status">The source has substantial matching content with the 2005 paper and no authenticated 2014 cover. Question review is withheld pending year verification.</span>
+        </>:source.sourceIdentityVerified===false?<>
           <p>Incorrect source: {source.actualSourceSession} {source.actualSourceSubject} {source.actualSourcePaper}</p>
           <span className="fnh-archive-status">The supplied file is not a Food, Nutrition and Health paper. Please replace the PDF.</span>
         </>:<>
