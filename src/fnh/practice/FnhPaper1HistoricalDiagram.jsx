@@ -222,5 +222,10 @@ export default function FnhPaper1HistoricalDiagram({type}){
    </g>
   </svg><figcaption>Question 60. Source menu and sequence retained for garnish selection.</figcaption>
  </figure>;
+ // Source-checked visual stimuli reused across 2018–2020 examinations.
+ // Preserve each year's question and option order in its own data bank.
+ if(type==="meal-comparison-2019")return <FnhPaper1HistoricalDiagram type="meal-comparison-2018"/>;
+ if(type==="kitchen-u-shaped-2019")return <FnhPaper1HistoricalDiagram type="kitchen-u-shaped-2020"/>;
+ if(type==="luncheon-presentation-2019")return <FnhPaper1HistoricalDiagram type="luncheon-presentation-2020"/>;
  return null;
 }
