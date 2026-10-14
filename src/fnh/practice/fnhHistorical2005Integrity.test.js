@@ -32,9 +32,9 @@ describe("Source-checked historical 2005 Food and Nutrition Paper 02",()=>{
     expect(fnhHistorical2005ExamStructure([100]).totalPotentialMarks).toBe(48);
     expect(fnhHistorical2005ExamStructure([5]).totalPotentialMarks).toBe(64);
   });
-  test("only individually checked 2005, 2006 and 2008 sources are released for Paper 2 simulation",()=>{
+  test("the 2005 source is released and 2017 uses its own separate paper format",()=>{
     expect(fnhHistoricalSimulatorReady(paper.id)?.verifiedQuestionCount).toBe(7);
-    expect(fnhHistoricalSimulatorReady("FNH-P2-2017-MJ")).toBeNull();
+    expect(fnhHistoricalSimulatorReady("FNH-P2-2017-MJ")?.verifiedQuestionCount).toBe(6);
     expect(fnhHistoricalSimulatorReady("FNH-P1-2005-MJ")).toBeNull();
   });
 });
