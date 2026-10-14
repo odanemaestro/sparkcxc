@@ -5,6 +5,7 @@ import {FNH_HISTORICAL_P1_2006} from "./fnhHistorical2006Paper1";
 import {FNH_P1_2007_TRANSCRIPTION_DRAFT} from "./fnhHistorical2007Paper1Draft";
 import {FNH_P1_2008_TRANSCRIPTION_DRAFT} from "./fnhHistorical2008Paper1Draft";
 import {FNH_P1_2009_TRANSCRIPTION_DRAFT} from "./fnhHistorical2009Paper1Draft";
+import {FNH_P1_2014_TRANSCRIPTION_DRAFT} from "./fnhHistorical2014Paper1Draft";
 import {FNH_SUPPLIED_ARCHIVE} from "./fnhPastPaperInventory";
 
 // Publishing rule for original historical Paper 01 transcriptions.
@@ -38,7 +39,8 @@ const transcriptionRecords=Object.freeze({
   })),
   2007:FNH_P1_2007_TRANSCRIPTION_DRAFT,
   2008:FNH_P1_2008_TRANSCRIPTION_DRAFT,
-  2009:FNH_P1_2009_TRANSCRIPTION_DRAFT
+  2009:FNH_P1_2009_TRANSCRIPTION_DRAFT,
+  2014:FNH_P1_2014_TRANSCRIPTION_DRAFT
 });
 export const FNH_HISTORICAL_PAPER1_TRANSCRIPTION_PROGRESS=Object.freeze(
   FNH_SUPPLIED_ARCHIVE.filter(p=>p.paper===1).map(row=>{
