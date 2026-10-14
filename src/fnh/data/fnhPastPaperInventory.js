@@ -166,8 +166,11 @@ export const FNH_SUPPLIED_ARCHIVE = Object.freeze([
     "sourceQuestionsExpected": 60,
     "qualification": "Technical Proficiency",
     "sourceCoverChecked": false,
-    "sourceCompleteness": "60-question-pages-present-but-cover-missing",
-    "sourceQualityNote": "The supplied PDF begins at printed page 2 with Question 1 and ends at printed page 10 with Question 60; the examination cover is missing."
+    "sourceQuestionCount": 60,
+    "transcribedQuestionCount": 60,
+    "sourceCompleteness": "60-source-questions-transcribed-cover-missing",
+    "answerKeyStatus": "14-unresolved-and-independent-review-required",
+    "sourceQualityNote": "All 60 questions are transcribed from printed pages 2 to 10; original cover is missing. Fourteen candidate keys require particular review, and no official keys are authenticated."
   },
   {
     "id": "FNH-P1-2019-MJ",
@@ -465,5 +468,9 @@ export function fnhVerifiedArchivePaper(id){
 }
 
 export function fnhHistoricalSimulatorReady(id){
-  return FNH_SUPPLIED_ARCHIVE.find(row=>row.id===id&&row.simulatorReady===true&&row.reviewStatus==="source-question-text-checked")||null;
+  // Historical Paper 01 has no released exam component or authenticated answer
+  // keys. A stray inventory flag must never expose an unverified scored exam.
+  // Paper 01 release requires a dedicated simulator and evidence-based gate.
+  return FNH_SUPPLIED_ARCHIVE.find(row=>row.id===id&&row.paper===2
+    &&row.simulatorReady===true&&row.reviewStatus==="source-question-text-checked")||null;
 }
