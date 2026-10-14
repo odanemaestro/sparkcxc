@@ -43,6 +43,6 @@ describe("FNH student examination navigation",()=>{
     const pending=FNH_SUPPLIED_ARCHIVE.filter(row=>row.paper===2&&!row.simulatorReady).length;
     expect(screen.getAllByText("Question and marking checks pending").length).toBe(pending);
     expect(screen.getAllByRole("button",{name:/Start examination/i})).toHaveLength(ready);
-    expect(screen.getAllByText("Original questions transcribed and checked")).toHaveLength(10);
+    expect(screen.getAllByText("Original questions transcribed and checked")).toHaveLength(ready);
   });
 });
