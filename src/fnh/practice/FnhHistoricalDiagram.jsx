@@ -19,6 +19,74 @@ function ean13Bars(code){
  * Keep the original missing-quantity and missing-directions clues intact.
  */
 export default function FnhHistoricalDiagram({type}){
+  if(type==="kitchen-layouts-2021")return <figure className="fnh-historical-figure">
+    <svg viewBox="0 0 900 440" width="100%" role="img" aria-label="2021 kitchen comparison: A a single wall kitchen with tall cupboards, cooker, sink and refrigerator; B an L-shaped kitchen with refrigerator at one end, two counter runs, sink and overhead cupboards">
+      <title>2021 Paper 2 Question 5, kitchen layouts A and B</title>
+      <g stroke="currentColor" strokeWidth="2.1" fill="none" strokeLinejoin="round">
+        <rect x="18" y="50" width="422" height="270" rx="3"/><rect x="461" y="50" width="422" height="270" rx="3"/>
+        {/* Source A: straight kitchen wall and full-height storage. */}
+        <rect x="34" y="88" width="63" height="205"/><rect x="104" y="89" width="65" height="55"/>
+        <rect x="172" y="89" width="65" height="55"/><rect x="241" y="89" width="65" height="55"/>
+        <rect x="308" y="89" width="66" height="55"/><rect x="380" y="90" width="45" height="204"/>
+        <path d="M101 185 H377 V206 H101 M101 206 V293 M171 206 V293 M237 206 V293 M309 206 V293 M378 206 V293"/>
+        <rect x="189" y="222" width="65" height="66"/><rect x="197" y="235" width="49" height="39"/>
+        <path d="M181 184 V169 H191 M244 184 V169 H252"/>
+        <circle cx="200" cy="213" r="4"/><circle cx="238" cy="213" r="4"/>
+        <path d="M336 185 V168 H349"/><path d="M330 191 Q346 202 360 191"/>
+        <path d="M113 210 V280 M164 210 V280 M302 210 V280"/>
+        {/* Source B: L-shaped set of two counter runs. */}
+        <rect x="482" y="133" width="89" height="157"/><path d="M482 169 H571"/>
+        <path d="M575 235 L715 186 L861 214 L718 266 Z"/>
+        <path d="M575 235 V291 L713 312 V265 M713 312 L860 285 V215"/>
+        <path d="M626 223 V300 M674 206 V309 M758 257 V300 M811 237 V295"/>
+        <path d="M756 115 L858 126 V178 L756 168 Z M807 121 V174"/>
+        <path d="M714 189 L714 264 M854 215 V280"/>
+        <ellipse cx="780" cy="248" rx="22" ry="9"/>
+        <path d="M782 238 V220 H793"/>
+        <path d="M612 248 V234 H620 M644 251 V236 H652"/>
+      </g>
+      <g fill="currentColor" fontFamily="Georgia,serif" textAnchor="middle" fontWeight="700">
+        <text x="229" y="354" fontSize="24">A</text>
+        <text x="672" y="354" fontSize="24">B</text>
+        <text x="229" y="387" fontSize="16">Single-wall kitchen</text>
+        <text x="672" y="387" fontSize="16">L-shaped kitchen</text>
+      </g>
+    </svg>
+    <figcaption>2021 Paper 2, Question 5: the two source kitchen layouts recreated as SVG for comparison. A uses one wall; B has two connected work surfaces.</figcaption>
+  </figure>;
+  if(type==="nutrition-labels-2021"){
+    const labels=[
+      {name:"A",servings:"8",size:"2/3 cup (55 g)",cal:"230",rows:[["Total Fat","8 g","10%"],["Saturated Fat","1 g","5%"],["Trans Fat","0 g",""],["Cholesterol","0 mg","0%"],["Sodium","160 mg","7%"],["Total Carbohydrate","37 g","13%"],["Dietary Fibre","4 g","14%"],["Total Sugars","12 g",""],["Added Sugars","10 g","20%"],["Protein","3 g",""],["Vitamin D","2 mcg","10%"],["Calcium","260 mg","20%"],["Iron","8 mg","45%"],["Potassium","240 mg","6%"]]},
+      {name:"B",servings:"2",size:"1 cup (255 g)",cal:"220",rows:[["Total Fat","5 g","6%"],["Saturated Fat","2 g","10%"],["Trans Fat","0 g",""],["Cholesterol","15 mg","5%"],["Sodium","240 mg","10%"],["Total Carbohydrate","35 g","13%"],["Dietary Fibre","6 g","21%"],["Total Sugars","7 g",""],["Added Sugars","4 g","8%"],["Protein","9 g",""],["Vitamin D","5 mcg","25%"],["Calcium","200 mg","15%"],["Iron","1 mg","6%"],["Potassium","470 mg","10%"]]}
+    ];
+    return <figure className="fnh-historical-figure">
+      <svg viewBox="0 0 900 820" width="100%" role="img" aria-label="2021 nutrition facts source labels A and B. A serving 55g, 230 calories, 37g carbohydrate, 12g sugars, 10g added sugar. B serving 255g, 220 calories, 35g carbohydrate, 7g sugars, 4g added sugar">
+        <title>2021 Paper 2 Question 6, nutrition facts for Product A and Product B</title>
+        {labels.map((item,index)=>{
+          const x=index?460:22;
+          return <g key={item.name} transform={`translate(${x} 18)`} fill="currentColor" fontFamily="Arial,sans-serif">
+            <rect x="0" y="0" width="410" height="738" stroke="currentColor" strokeWidth="3" fill="none"/>
+            <text x="16" y="56" fontSize="39" fontWeight="900">Nutrition Facts</text>
+            <text x="16" y="89" fontSize="17">{item.servings} servings per container</text>
+            <text x="16" y="113" fontSize="17" fontWeight="700">Serving size {item.size}</text>
+            <rect x="12" y="125" width="385" height="12"/>
+            <text x="16" y="169" fontSize="16">Amount per serving</text>
+            <text x="16" y="211" fontSize="35" fontWeight="850">Calories</text>
+            <text x="388" y="211" fontSize="39" fontWeight="900" textAnchor="end">{item.cal}</text>
+            <rect x="12" y="230" width="385" height="10"/>
+            <text x="388" y="262" textAnchor="end" fontSize="14" fontWeight="700">% Daily Value</text>
+            {item.rows.map(([name,value,pct],i)=><g key={name} transform={`translate(0 ${275+i*30})`}>
+              <line x1="12" x2="397" y1="-15" y2="-15" stroke="currentColor" opacity=".45" strokeWidth="1"/>
+              <text x="16" y="8" fontSize="16" fontWeight={["Total Fat","Total Carbohydrate","Protein"].includes(name)?800:400}>{name} {value}</text>
+              <text x="388" y="8" textAnchor="end" fontSize="15" fontWeight="600">{pct}</text>
+            </g>)}
+            <text x="205" y="796" textAnchor="middle" fontSize="24" fontWeight="850">{item.name}</text>
+          </g>;
+        })}
+      </svg>
+      <figcaption>2021 Paper 2, Question 6: SVG recreation of both original nutrition labels with the serving size, carbohydrate, fibre and sugar values used in the question.</figcaption>
+    </figure>;
+  }
   if(type==="green-bean-cells-2013")return <figure className="fnh-historical-figure">
     <svg viewBox="0 0 850 430" width="100%" role="img" aria-label="2013 green bean cell wall illustration: I normal intact cell, II cell ruptured by sharp ice crystals during freezing, III irregular collapsed cell wall on thawing">
       <title>2013 Paper 2 Question 2: Normal, ruptured and thawed green bean cells</title>
