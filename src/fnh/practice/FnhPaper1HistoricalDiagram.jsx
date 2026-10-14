@@ -287,5 +287,99 @@ export default function FnhPaper1HistoricalDiagram({type}){
  if(type==="kitchen-u-shaped-2026")return <FnhPaper1HistoricalDiagram type="kitchen-u-shaped-2020"/>;
  if(type==="meal-comparison-2026")return <FnhPaper1HistoricalDiagram type="meal-comparison-2018"/>;
  if(type==="luncheon-presentation-2026")return <FnhPaper1HistoricalDiagram type="luncheon-presentation-2020"/>;
+ // Source-style redraw from the supplied 2014 Question 23 and 2005 Question 23
+ // scanned table illustration. It retains the four full place settings, side
+ // dishes, shared condiments, centre numbers and service layout.
+ if(type==="lunch-table-2014")return <figure className="fnh-paper1-source-figure">
+  <svg viewBox="0 0 920 590" role="img" aria-label="Rectangular dining table with four complete settings around its edges. A central collection of shared serving dishes, condiments marked 1 2 3 4 5 6 8, utensils and food appears between the settings.">
+   <title>2014 Paper 1 Question 23, four-place table setting with centre dishes</title>
+   <g stroke="currentColor" fill="none" strokeWidth="3" strokeLinejoin="round" strokeLinecap="round">
+    <rect x="22" y="26" width="876" height="538" strokeWidth="3.6"/>
+    {[[332,107],[135,305],[332,480],[775,310]].map(([x,y],i)=><g key={i}>
+     <circle cx={x} cy={y} r="53"/><circle cx={x} cy={y} r="34"/>
+    </g>)}
+    <ellipse cx="102" cy="120" rx="65" ry="54"/><path d="M40 119 H164 M77 71 Q100 129 78 170 M126 72 Q100 126 124 166"/>
+    <ellipse cx="803" cy="118" rx="57" ry="64"/><path d="M747 119 H860 M780 60 Q805 118 779 178 M830 59 Q803 114 831 177"/>
+    <ellipse cx="200" cy="473" rx="52" ry="60"/><path d="M153 472 H247 M177 420 Q200 476 178 524 M224 420 Q200 475 225 526"/>
+    <ellipse cx="836" cy="466" rx="56" ry="53"/><path d="M786 469 H889 M813 424 Q835 467 812 513 M857 422 Q838 469 857 515"/>
+    {[ [179,98],[218,98],[252,98],[388,93],[389,468],[427,469],[459,469],[690,420],[718,420],
+      [152,418],[149,448],[149,478],[679,178],[679,209],[679,242],[825,251],[825,284],[825,317] ].map(([x,y],i)=>
+     <path key={i} d={"M"+x+" "+y+" v66"} strokeWidth="5"/>)}
+    <circle cx="628" cy="132" r="25"/><circle cx="628" cy="132" r="13"/>
+    <circle cx="556" cy="268" r="40"/><circle cx="556" cy="268" r="24"/>
+    {[ [609,236],[687,252],[620,302],[696,317] ].map(([x,y],i)=><g key={i}>
+      <circle cx={x} cy={y} r="31"/><path d={"M"+(x-14)+" "+(y+6)+" q-10 -27 6 -24 q15 -10 18 11"} />
+    </g>)}
+    <circle cx="474" cy="224" r="32"/><circle cx="399" cy="328" r="26"/>
+    {[ [352,250],[369,272],[349,281] ].map(([x,y],i)=><g key={i}><circle cx={x} cy={y} r="10"/>
+       {[[-3,-3],[4,-1],[-1,5]].map(([dx,dy],j)=><circle key={j} cx={x+dx} cy={y+dy} r="1.5" fill="currentColor" stroke="none"/>)}
+    </g>)}
+    <ellipse cx="753" cy="102" rx="13" ry="7"/>
+    <ellipse cx="734" cy="94" rx="9" ry="6"/>
+   </g>
+   <g fill="currentColor" fontFamily="Georgia,serif" fontSize="22" textAnchor="middle">
+    <text x="628" y="140">2</text><text x="651" y="91">1</text><text x="651" y="117">3</text>
+    <text x="474" y="232">5</text><text x="399" y="335">4</text>
+    <text x="373" y="305">6</text><text x="556" y="275">8</text>
+   </g>
+  </svg><figcaption>Question 23. The original scan has four place settings with shared dishes, cutlery and numbered items.</figcaption>
+ </figure>;
+ if(type==="two-menus-2014")return <figure className="fnh-paper1-source-figure">
+  <svg viewBox="0 0 840 402" role="img" aria-label="Meal comparison table. Meal I steamed fish, creamed yams, tomato slices, stewed fruit with chocolate sauce, orange juice. Meal II fried fish, peas and rice, tomato slices, jam tarts, lemonade.">
+   <title>2014 Paper 1 Questions 39 and 40, Meal I and Meal II table</title>
+   <g fill="none" stroke="currentColor" strokeWidth="2.5"><rect x="40" y="34" width="760" height="336"/><path d="M420 34 V370"/></g>
+   <g fill="currentColor" fontFamily="Georgia,serif" textAnchor="middle">
+    <text x="228" y="81" fontWeight="700" fontSize="31">Meal I</text>
+    <text x="610" y="81" fontWeight="700" fontSize="31">Meal II</text>
+    {["Steamed fish","Creamed yams","Tomato slices","Stewed fruit with","chocolate sauce","Orange juice"].map((t,i)=><text key={i} x="229" y={134+42*i} fontSize="25">{t}</text>)}
+    {["Fried fish","Peas and rice","Tomato slices","Jam tarts","Lemonade"].map((t,i)=><text key={i} x="610" y={134+48*i} fontSize="25">{t}</text>)}
+   </g>
+  </svg><figcaption>Questions 39–40. The original two-meal comparison and its food choices are retained.</figcaption>
+ </figure>;
+ if(type==="food-safety-2014")return <figure className="fnh-paper1-source-figure">
+  <svg viewBox="0 0 840 510" role="img" aria-label="Food safety poster with four sections: CLEAN, wash hands and surfaces often; SEPARATE, don't cross-contaminate; CHILL, refrigerator; COOK, cook to appropriate temperature. Central circle has crossed-out bacteria.">
+   <title>2014 Paper 1 Questions 48 and 49, Clean Separate Chill Cook poster</title>
+   <g stroke="currentColor" fill="none" strokeWidth="3">
+    <rect x="26" y="24" width="788" height="458" strokeWidth="4"/>
+    <path d="M420 24 V482 M26 250 H814"/>
+    <path d="M63 82 H310 V100 H287 V120 Q287 125 293 125 H311 M272 116 V151" strokeLinecap="round" strokeLinejoin="round" strokeWidth="9"/>
+    {[[-26,0],[-10,12],[6,14],[24,1]].map(([dx,dy],i)=><circle key={i} cx={291+dx} cy={180+dy} r="4" fill="currentColor"/> )}
+    <path d="M567 169 q-42 -35 0 -62 q40 -24 75 12 q17 30 -16 49 z" />
+    <path d="M543 160 L657 198 M552 187 L684 148"/>
+    <rect x="103" y="340" width="112" height="119" rx="7"/><path d="M103 394 H215"/>
+    {[0,1,2].map((i)=><path key={i} d={"M"+(526+i*55)+" 422 q-22 -35 0 -59 q24 18 0 59z"}/>)}
+    <circle cx="418" cy="256" r="103" fill="none" strokeWidth="9"/>
+    <circle cx="418" cy="256" r="60" strokeWidth="3"/>
+    {[ [390,240],[453,239],[419,285],[449,291],[379,283] ].map(([x,y],i)=><circle key={i} cx={x} cy={y} r="13"/> )}
+    <path d="M346 184 L489 328" strokeWidth="18"/>
+   </g>
+   <g fill="currentColor" fontFamily="Georgia,serif">
+    <text x="52" y="291" fontSize="30" fontWeight="700">CLEAN</text>
+    <text x="52" y="324" fontSize="22">Wash hands and</text><text x="52" y="350" fontSize="22">surfaces often</text>
+    <text x="451" y="64" fontSize="30" fontWeight="700">SEPARATE</text>
+    <text x="451" y="97" fontSize="21">Don't cross-contaminate</text>
+    <text x="49" y="462" fontSize="30" fontWeight="700">CHILL</text>
+    <text x="447" y="290" fontSize="30" fontWeight="700">COOK</text>
+    <text x="447" y="320" fontSize="21">Cook to appropriate</text><text x="447" y="344" fontSize="21">temperature</text>
+   </g>
+  </svg><figcaption>Questions 48–49. The source uses four food-safety actions: clean, separate, chill and cook.</figcaption>
+ </figure>;
+ if(type==="preschool-lunch-2014")return <figure className="fnh-paper1-source-figure">
+  <svg viewBox="0 0 800 280" role="img" aria-label="Preschool lunch list, cookies, chicken sandwich, chocolate cupcake and peanut punch.">
+   <title>2014 Paper 1 Questions 57–58, preschool lunch list</title>
+   <rect x="24" y="23" width="752" height="233" stroke="currentColor" fill="none" strokeWidth="2.4"/>
+   <g fontFamily="Georgia,serif" fontSize="29" fill="currentColor" textAnchor="middle">
+    <text x="400" y="76" fontWeight="700">A preschooler's school lunch</text>
+    <text x="400" y="136">Cookies, chicken sandwich</text>
+    <text x="400" y="191">Chocolate cupcake, peanut punch</text>
+   </g>
+  </svg><figcaption>Questions 57–58. Original lunch items are reproduced as printed in the source.</figcaption>
+ </figure>;
+ // The 2005 and user-confirmed 2014 scans use the same pictured layouts.
+ // Reuse SVG artwork, not option sequences, since their question numbers differ.
+ if(type==="lunch-table-2005")return <FnhPaper1HistoricalDiagram type="lunch-table-2014"/>;
+ if(type==="menu-comparison-2005")return <FnhPaper1HistoricalDiagram type="two-menus-2014"/>;
+ if(type==="food-safety-chart-2005")return <FnhPaper1HistoricalDiagram type="food-safety-2014"/>;
+
  return null;
 }
