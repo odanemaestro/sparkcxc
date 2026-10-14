@@ -16,9 +16,12 @@ describe("Historical FNH Paper1 release gate",()=>{
   expect(state.pendingSourceNumbers).toEqual([46,47]);
  });
  test("all 60 keys, all four options and separate evidence required together",()=>{
-  const clean=FNH_P1_2003_TRANSCRIPTION_DRAFT.map(x=>({...x,officialKeyVerified:true,proposedAnswer:x.proposedAnswer||"A"}));
+  const clean=FNH_P1_2003_TRANSCRIPTION_DRAFT.map(x=>({...x,officialKeyVerified:true,proposedAnswer:x.proposedAnswer||"A",officialKeyEvidence:"Official CXC key source page 1"}));
   expect(fnhHistoricalPaper1ReleaseCheck(clean).ready).toBe(false);
   expect(fnhHistoricalPaper1ReleaseCheck(clean,{verifiedKeyEvidence:true}).ready).toBe(true);
+  expect(fnhHistoricalPaper1ReleaseCheck(clean.map((x,i)=>i===7?{...x,proposedAnswer:""}:x),{verifiedKeyEvidence:true}).ready).toBe(false);
+  expect(fnhHistoricalPaper1ReleaseCheck(clean.map((x,i)=>i===7?{...x,proposedAnswer:"AB"}:x),{verifiedKeyEvidence:true}).ready).toBe(false);
+  expect(fnhHistoricalPaper1ReleaseCheck(clean.map((x,i)=>i===7?{...x,officialKeyEvidence:null}:x),{verifiedKeyEvidence:true}).ready).toBe(false);
   expect(fnhHistoricalPaper1ReleaseCheck(clean.slice(1),{verifiedKeyEvidence:true}).ready).toBe(false);
   expect(fnhHistoricalPaper1ReleaseCheck([...clean,clean[0]],{verifiedKeyEvidence:true}).ready).toBe(false);
  });
