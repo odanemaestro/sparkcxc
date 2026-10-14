@@ -180,7 +180,16 @@ export const FNH_SUPPLIED_ARCHIVE = Object.freeze([
     "sourceFilename": "CSEC_FNH_Paper_1_-_May_June_2019.pdf",
     "sourceFormat": "scanned-image",
     "reviewStatus": "requires-question-and-key-verification",
-    "verifiedQuestionCount": 0
+    "verifiedQuestionCount": 0,
+    "sourceCoverChecked": true,
+    "sourcePageCount": 9,
+    "sourceQuestionCount": 60,
+    "transcribedQuestionCount": 60,
+    "durationMinutes": 90,
+    "qualification": "Technical Proficiency",
+    "sourceCompleteness": "complete-60-source-questions-key-review-pending",
+    "answerKeyStatus": "12-unresolved-and-independent-review-required",
+    "sourceQualityNote": "Original cover confirms 31 May 2019, Technical Proficiency, 60 questions, 90 minutes. Every question is transcribed; source illustrations and official keys still require separate approval."
   },
   {
     "id": "FNH-P1-2020-MJ",
