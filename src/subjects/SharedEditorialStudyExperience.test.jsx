@@ -70,7 +70,7 @@ describe("Shared editorial study design for established CSEC subjects",()=>{
    expect(document.getElementById("spark-lesson-summary")).not.toBeNull();
    fireEvent.click(focus);
    expect(main).toHaveClass("spark-fnh-focus-reading");
-   expect(screen.getByText("A Caribbean classroom lesson")).toBeInTheDocument();
+   expect(screen.getByRole("heading",{level:2,name:"A Caribbean classroom lesson"})).toBeInTheDocument();
    fireEvent.click(screen.getByRole("button",{name:"Show course outline"}));
    expect(main).not.toHaveClass("spark-fnh-focus-reading");
   }
