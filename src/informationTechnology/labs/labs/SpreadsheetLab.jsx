@@ -3,6 +3,7 @@ import {readLabWorkspace,writeLabWorkspace} from "../models/workspacePersistence
 import { LabFrame, RibbonTabs, WindowBar } from "../components/LabFrame";
 import { ReducedMotionNotice, StatusMessage, ToolGroup, WorkspaceViewport, useTaskEvidence, useWorkspaceHistory } from "../components/ProductivityKit";
 import { evaluateCell, explainFormula, formulaDependencies, translateFormula } from "../models/workbookModel.mjs";
+import { auditWorkbook } from "../models/workbookAudit.mjs";
 
 const STARTING_SALES = {
   A1: "Item", B1: "Qty", C1: "Unit Price", D1: "Total Cost", E1: "Band", F1: "Taxed Total", H1: 0.15,
@@ -37,6 +38,7 @@ export default function SpreadsheetLab({ lab, userId, completed, onBack, onCompl
   const [filter, setFilter] = useState("All");
   const [sort, setSort] = useState("Item");
   const [chart, setChart] = useState("");
+  const [auditOpen, setAuditOpen] = useState(false);
   const [pivot, setPivot] = useState(false);
   const [linked, setLinked] = useState(false);
   const [formatCurrency, setFormatCurrency] = useState(false);
@@ -44,12 +46,16 @@ export default function SpreadsheetLab({ lab, userId, completed, onBack, onCompl
   const { evidence, record } = useTaskEvidence();
   const calculationChecks = useRef(new Map());
 
+  const workbookAudit = useMemo(() => auditWorkbook(workbook), [workbook]);
   const selectedRaw = workbook[sheet]?.[selected] ?? "";
   const selectedResult = evaluateCell(workbook, sheet, selected);
   const values = useMemo(() => Object.fromEntries(COLUMNS.flatMap(column => ROWS.map(row => {
     const address = `${column}${row}`;
     return [address, evaluateCell(workbook, "Sales", address)];
   }))), [workbook]);
+
+  const chartValues = [2, 3, 4, 5].map(row => Number(values[`D${row}`].value) || 0);
+  const maxChart = Math.max(1, ...chartValues);
 
   const visibleRows = useMemo(() => [2, 3, 4, 5]
     .filter(row => filter === "All" || values[`G${row}`].value === filter)
@@ -93,6 +99,10 @@ export default function SpreadsheetLab({ lab, userId, completed, onBack, onCompl
     { id: "linked", label: "Link the Summary worksheet to a calculated Sales total", done: linked && !salesTotal.error && salesTotal.formula && linkedResult.value === salesTotal.value },
   ];
 
+  function selectCellForSheet(targetSheet, address) {
+    setSelected(address); setFormulaBar(String(workbook[targetSheet]?.[address] ?? ""));
+  }
+
   function selectCell(address) {
     setSelected(address); setFormulaBar(String(workbook[sheet]?.[address] ?? ""));
   }
@@ -130,8 +140,6 @@ export default function SpreadsheetLab({ lab, userId, completed, onBack, onCompl
     setLinked(true); setMessage("Summary!B2 now links to Sales!D6 and recalculates with it.");
   }
 
-  const chartValues = [2, 3, 4, 5].map(row => Number(values[`D${row}`].value) || 0);
-  const maxChart = Math.max(1, ...chartValues);
 
   return (
     <LabFrame lab={lab} tasks={tasks} completed={completed} onBack={onBack} onComplete={onComplete}
@@ -145,6 +153,7 @@ export default function SpreadsheetLab({ lab, userId, completed, onBack, onCompl
             <ToolGroup label="Number"><button type="button" aria-pressed={formatCurrency} className={formatCurrency ? "active" : ""} onClick={() => setFormatCurrency(value => !value)}>J$ Currency</button></ToolGroup>
             <ToolGroup label="Fill"><button type="button" onClick={fillDown}>Fill selected down</button></ToolGroup>
           </>}
+          {tab === "Formulas" && <ToolGroup label="Audit"><button type="button" aria-expanded={auditOpen} onClick={() => setAuditOpen(value => !value)}>{auditOpen ? "Hide formula audit" : "Audit formulas"}</button></ToolGroup>}
           {tab === "Formulas" && <ToolGroup label="Function library">{FORMULA_NAMES.map(name => <button type="button" key={name} onClick={() => setFormulaBar(FORMULA_EXAMPLES[name])}>{name}</button>)}</ToolGroup>}
           {tab === "Data" && <>
             <ToolGroup label="Filter"><label htmlFor="sheet-filter">Parish</label><select id="sheet-filter" value={filter} onChange={event => setFilter(event.target.value)}><option>All</option><option>Kingston</option><option>Clarendon</option><option>St. Catherine</option></select></ToolGroup>
@@ -160,6 +169,10 @@ export default function SpreadsheetLab({ lab, userId, completed, onBack, onCompl
           <button type="button" onClick={commitFormula} aria-label="Enter formula">✓</button>
         </div>
 
+        {auditOpen && <section className="itv2-formula-audit" aria-label="Workbook formula audit">
+          <div className="itv2-formula-audit-heading"><strong>Formula audit</strong><span>{workbookAudit.formulaCount} formulas · {workbookAudit.issues.length} issues</span></div>
+          {workbookAudit.issues.length === 0 ? <p>No formula errors found in the current workbook.</p> : <ul>{workbookAudit.issues.map(issue => <li key={issue.cell}><button type="button" onClick={() => { setSheet(issue.sheet); selectCellForSheet(issue.sheet, issue.address); }}>{issue.cell}</button><span>{issue.code}: {issue.message}</span></li>)}</ul>}
+        </section>}
         <StatusMessage tone={selectedResult.error ? "error" : "neutral"}>
           <strong>{selectedResult.error ? selectedResult.error : explainFormula(selectedRaw)}</strong>
           <span>{selectedResult.error ? "Correct the formula or its references." : ` Result: ${displayValue(selectedResult.value, formatCurrency && /[DF]\d+/.test(selected))}`}</span>
