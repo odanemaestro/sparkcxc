@@ -70,7 +70,7 @@ export default function FnhHistoricalPaper2Exam({paper:PAPER,onBack,supabase,use
       completed:true,score:null,maxScore:80,percent:null,
       metadata:{paper:"02",source:"historical_user_supplied_pdf",year:PAPER.year,session:"May/June",
         paper_id:PAPER.id,selected_part_b:attempt.partB,marking_scheme:"spark_explanatory",
-        teacher_mark_required:true,at:new Date().toISOString()},
+        spark_scoring_status:"self_review_only",at:new Date().toISOString()},
     }}).catch(error=>console.warn("Historical FNH result could not be saved",error));
   },[review,attempt.attemptId,attempt.partB,supabase,userId]);
   const selectPartB=number=>setAttempt(old=>{
@@ -150,7 +150,7 @@ export default function FnhHistoricalPaper2Exam({paper:PAPER,onBack,supabase,use
                   onChange={()=>togglePoint(partKey,point.id)}/><span>{point.text}</span>
               </label>)}</div>
               <p><b>Explanation:</b> {part.explanation}</p><p><b>Self-check:</b> {fnhSelfAssessmentMark(part,attempt.selfReview?.[partKey]||[],answer)} / {part.marks}</p>
-              <small>{scheme.note} A teacher must judge written explanations for an assessed score.</small>
+              <small>{scheme.note} SPARK's self-check is practice feedback; it does not yet evaluate the written response automatically.</small>
             </div>}
           </section>;
         })}</div>
@@ -166,7 +166,7 @@ export default function FnhHistoricalPaper2Exam({paper:PAPER,onBack,supabase,use
         <div className="fnh-nav-grid fnh-p2-nav">{visible.map(q=><button key={q.id} type="button" className={q.number===question.number?"active":""}
           aria-current={q.number===question.number?"step":undefined} onClick={()=>update({active:q.number})}>Q{q.number}</button>)}</div>
         {review&&<div className="fnh-self-review-summary"><strong>{selfScore.checked} / 80 self-checked marks</strong>
-          <p>Teacher assessment is required for final marks. Only your selected five questions count.</p></div>}
+          <p>These are your self-selected marking points, not an automatically graded score. Only your selected five questions count.</p></div>}
       </aside>
     </div>
     {modal&&<div className="fnh-modal-layer"><section className="fnh-modal" role="dialog" aria-modal="true" aria-label="Examination action">
