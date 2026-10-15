@@ -187,7 +187,7 @@ export default function WordLab({ lab, userId, completed, onBack, onComplete }) 
         <WindowBar title="Technology Club Newsletter.docx" subtitle="SPARK Word Processing Studio"/>
         <RibbonTabs tabs={["Home", "Insert", "Layout", "Review", "Mailings", "File"]} active={tab} onChange={setTab}/>
         <div className="itv2-ribbon" aria-label={`${tab} tools`}>
-          {tab === "File" && <ToolGroup label="Export"><button type="button" onClick={exportDocx}>Export DOCX</button><label>Import DOCX<input type="file" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" onChange={importDocx}/></label><button type="button" onClick={exportHtml}>Export HTML</button><button type="button" onClick={() => window.print()}>Print</button></ToolGroup>}
+          {tab === "File" && <ToolGroup label="Export"><button type="button" onClick={exportDocx}>Export DOCX</button><label className="itv2-file-field">Import DOCX<input type="file" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" onChange={importDocx}/></label><button type="button" onClick={exportHtml}>Export HTML</button><button type="button" onClick={() => window.print()}>Print</button></ToolGroup>}
           {tab === "Home" && <>
             <ToolGroup label="Font">
               <label htmlFor="word-font">Typeface</label><select id="word-font" value={font} onChange={event => { const value = event.target.value; setFont(value); formatSelection("fontName", value, "font", value); }}><option>Aptos</option><option>Arial</option><option>Georgia</option></select>
