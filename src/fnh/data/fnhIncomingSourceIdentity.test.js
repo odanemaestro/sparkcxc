@@ -30,7 +30,7 @@ describe("FNH incoming source identity and misnamed 2023 upload",()=>{
   expect(FNH_SUPPLIED_ARCHIVE.some(s=>s.year===2023&&s.paper===1)).toBe(false);
   expect(fnhHistoricalSimulatorReady(suspect.id)).toBeNull();
   expect(fnhHistoricalPaper1Reader(suspect.id)).toBeNull();
-  expect(FNH_ARCHIVE_SUMMARY).toMatchObject({paper1:16,paper2:18,unique:34});
+  expect(FNH_ARCHIVE_SUMMARY).toMatchObject({paper1:15,paper2:18,unique:33});
  });
  test("identity matching alone never authenticates a marking key",()=>{
   const src={...FNH_QUARANTINED_INCOMING_SOURCES[0],
