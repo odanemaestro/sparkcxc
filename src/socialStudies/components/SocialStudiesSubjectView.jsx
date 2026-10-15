@@ -265,6 +265,7 @@ export default function SocialStudiesSubjectView({ supabase, userId, onBack, sho
   const [completedIds,setCompletedIds]=useState(new Set());
   const [saving,setSaving]=useState(false);
   const [toolkitOpen,setToolkitOpen]=useState(false);
+  const [expandedUnitId,setExpandedUnitId]=useState(routed.sectionId);
 
   useEffect(()=>{
     let cancelled=false;
@@ -443,71 +444,90 @@ export default function SocialStudiesSubjectView({ supabase, userId, onBack, sho
   const completedCount=SOCIAL_STUDIES_LESSONS.filter(lesson=>completedIds.has(lesson.id)).length;
   const percent=Math.round(completedCount/SOCIAL_STUDIES_LESSONS.length*100);
 
-  return <main className="ss-course">
+  const nextStudyLesson=firstAvailableLesson(completedIds);
+  const allLessonsComplete=completedCount===SOCIAL_STUDIES_LESSONS.length;
+  const selectedUnitId=expandedUnitId===null ? (nextStudyLesson?.sectionId||SOCIAL_STUDIES_COURSE.sections[0]?.id) : expandedUnitId;
+
+  return <main className="ss-course ss-home-page">
     <div className="ss-shell">
       <button type="button" className="ss-back" onClick={onBack}><BackArrowIcon/><span>Back to Study</span></button>
 
       <header className="ss-course-hero">
-        <div className="ss-eyebrow">CSEC Social Studies · CXC 14/G/SYLL 22</div>
-        <h1>Know your society. Read the evidence. Explain it clearly.</h1>
-        <p>{SOCIAL_STUDIES_COURSE.description}</p>
-        <div className="ss-course-meta">
-          <span><strong>{SOCIAL_STUDIES_LESSONS.length}</strong> lessons</span>
-          <span><strong>4</strong> syllabus units</span>
-          <span><strong>Paper 01 + 02</strong> exam preparation</span>
-          <span><strong>SBA</strong> research skills throughout</span>
+        <div className="ss-course-hero-main">
+          <div className="ss-eyebrow">CSEC Social Studies</div>
+          <h1>Understand your world.</h1>
+          <p>Explore Caribbean life, study the evidence and practise answering CSEC questions. One lesson at a time.</p>
+          <div className="ss-course-progress">
+            <div><strong>{completedCount} of {SOCIAL_STUDIES_LESSONS.length}</strong><span>lessons complete</span></div>
+            <b>{percent}%</b>
+            <ProgressBar value={completedCount} max={SOCIAL_STUDIES_LESSONS.length}/>
+          </div>
         </div>
-        <div className="ss-course-hero-actions">
-          <button type="button" className="ss-primary" onClick={()=>{setToolkitOpen(true);window.scrollTo?.(0,0);}}>Open Research & SBA toolkit</button>
-        </div>
+        {nextStudyLesson&&<div className="ss-continue-card">
+          <div className="ss-continue-kicker">{allLessonsComplete?"Review a lesson":"Pick up where you left off"}</div>
+          <span className="ss-continue-position">{nextStudyLesson.sectionId}</span>
+          <h2>{nextStudyLesson.title}</h2>
+          <button type="button" className="ss-primary" onClick={()=>openLesson(nextStudyLesson)}>
+            {allLessonsComplete?"Review lesson":"Continue learning"} <span aria-hidden="true">→</span>
+          </button>
+        </div>}
       </header>
 
-      <section className="ss-progress-card">
-        <div><span>Course progress</span><strong>{completedCount} of {SOCIAL_STUDIES_LESSONS.length} lessons</strong></div>
-        <b>{percent}%</b>
-        <ProgressBar value={completedCount} max={SOCIAL_STUDIES_LESSONS.length}/>
+      <section className="ss-unit-index" aria-labelledby="ss-unit-heading">
+        <div className="ss-unit-index-heading">
+          <div><h2 id="ss-unit-heading">Your course</h2><p>Choose a unit to see its lessons. Only the unit you need is expanded.</p></div>
+          <span>{SOCIAL_STUDIES_COURSE.sections.length} units</span>
+        </div>
+        <div className="ss-unit-list">
+          {SOCIAL_STUDIES_COURSE.sections.map((section,index)=>{
+            const lessons=socialStudiesLessonsForSection(section.id);
+            const done=lessons.filter(lesson=>completedIds.has(lesson.id)).length;
+            const expanded=selectedUnitId===section.id;
+            return <article className={"ss-unit-card"+(expanded?" expanded":"")} key={section.id}>
+              <h3 className="ss-unit-heading"><button type="button" className="ss-unit-trigger"
+                aria-expanded={expanded} aria-controls={"ss-unit-lessons-"+section.id}
+                onClick={()=>setExpandedUnitId(expanded?"":section.id)}>
+                <span className="ss-unit-number">{String(index+1).padStart(2,"0")}</span>
+                <span className="ss-unit-title">
+                  <strong>{section.title}</strong>
+                  <small>{section.subtitle}</small>
+                </span>
+                <span className="ss-unit-count">{done}/{lessons.length} complete</span>
+                <svg className="ss-unit-chevron" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="m5 7 5 5 5-5"/></svg>
+              </button></h3>
+              <div className="ss-unit-lesson-panel" id={"ss-unit-lessons-"+section.id} hidden={!expanded}>
+                <p className="ss-unit-description">{section.description}</p>
+                <div className="ss-unit-progress"><ProgressBar value={done} max={lessons.length}/></div>
+                <div className="ss-lesson-list">
+                  {lessons.map((lesson,lessonIndex)=>{
+                    const complete=completedIds.has(lesson.id);
+                    const locked=!isLessonUnlocked(lesson.id,completedIds);
+                    return <button type="button" key={lesson.id}
+                      className={complete?"complete":locked?"locked":""}
+                      onClick={()=>openLesson(lesson)}
+                      disabled={locked}
+                      title={locked?"Complete the earlier lessons to unlock this lesson.":undefined}>
+                      <span className="ss-lesson-index">{String(lessonIndex+1).padStart(2,"0")}</span>
+                      <span><strong>{lesson.title}</strong><small>Objectives {lesson.objectiveCodes.join(", ")}</small></span>
+                      <em>{complete?"✓":locked?(
+                        <svg className="ss-lock-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+                          <rect x="5.5" y="9" width="9" height="7" rx="1.5"/>
+                          <path d="M7.5 9V6.8a2.5 2.5 0 015 0V9"/>
+                        </svg>
+                      ):"→"}</em>
+                    </button>;
+                  })}
+                </div>
+              </div>
+            </article>;
+          })}
+        </div>
       </section>
 
-      <section className="ss-section-grid">
-        {SOCIAL_STUDIES_COURSE.sections.map(section=>{
-          const lessons=socialStudiesLessonsForSection(section.id);
-          const done=lessons.filter(lesson=>completedIds.has(lesson.id)).length;
-          return <article className="ss-section-card" key={section.id}>
-            <div className="ss-section-number">{section.id}</div>
-            <div className="ss-section-copy">
-              <span>{section.subtitle}</span>
-              <h2>{section.title}</h2>
-              <p>{section.description}</p>
-              <div className="ss-section-progress"><span>{done}/{lessons.length} complete</span><ProgressBar value={done} max={lessons.length}/></div>
-            </div>
-            <div className="ss-lesson-list">
-              {lessons.map((lesson,index)=>{
-                const complete=completedIds.has(lesson.id);
-                const locked=!isLessonUnlocked(lesson.id,completedIds);
-                return <button
-                  type="button"
-                  key={lesson.id}
-                  className={complete ? "complete" : locked ? "locked" : ""}
-                  onClick={()=>openLesson(lesson)}
-                  disabled={locked}
-                  title={locked ? "Complete the earlier lessons to unlock this lesson." : undefined}
-                >
-                  <span className="ss-lesson-index">{String(index+1).padStart(2,"0")}</span>
-                  <span><strong>{lesson.title}</strong><small>Objectives {lesson.objectiveCodes.join(", ")}</small></span>
-                  <em>
-                    {complete ? "✓" : locked ? (
-                      <svg className="ss-lock-icon" viewBox="0 0 20 20" aria-hidden="true" focusable="false">
-                        <rect x="5.5" y="9" width="9" height="7" rx="1.5" />
-                        <path d="M7.5 9V6.8a2.5 2.5 0 015 0V9" />
-                      </svg>
-                    ) : "→"}
-                  </em>
-                </button>;
-              })}
-            </div>
-          </article>;
-        })}
-      </section>
+      <aside className="ss-toolkit-callout">
+        <div><span className="ss-panel-label">Independent research</span><h2>Working on your SBA?</h2><p>Use the guided research toolkit when you need it.</p></div>
+        <button type="button" className="ss-secondary" onClick={()=>{setToolkitOpen(true);window.scrollTo?.(0,0);}}>Open research toolkit <span aria-hidden="true">↗</span></button>
+      </aside>
 
       <section className="ss-source-list ss-course-source">
         <strong>Primary syllabus source</strong>
