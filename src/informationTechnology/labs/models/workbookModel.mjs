@@ -72,6 +72,26 @@ function checkedCell(workbook, sheetName, address, trail) {
   return result.value;
 }
 
+function findTopLevelComparison(source) {
+  let depth=0, quote='';
+  const operators=['>=','<=','<>','=','>','<'];
+  for(let i=0;i<source.length;i++){
+    const c=source[i];
+    if(quote){if(c===quote)quote='';continue;}
+    if(c==='"'||c==="'"){quote=c;continue;}
+    if(c==='('){depth++;continue;}
+    if(c===')'){depth--;continue;}
+    if(depth!==0)continue;
+    for(const operator of operators){
+      if(source.startsWith(operator,i)){
+        const left=source.slice(0,i).trim(),right=source.slice(i+operator.length).trim();
+        if(left&&right)return {left,right,operator};
+      }
+    }
+  }
+  return null;
+}
+
 function findTopLevelOperation(source, operators) {
   let depth = 0, quote = '';
   for (let i = source.length - 1; i >= 0; i -= 1) {
@@ -160,7 +180,7 @@ function evaluateExpression(source, workbook, sheetName, trail) {
     }
     if (wraps && depth === 0) return evaluateExpression(expression.slice(1, -1), workbook, sheetName, trail);
   }
-  const comparison = findTopLevelOperation(expression, ['>=', '<=', '<>', '=', '>', '<']);
+  const comparison = findTopLevelComparison(expression);
   if (comparison) return criterionMatch(
     evaluateExpression(comparison.left, workbook, sheetName, trail),
     comparison.operator + evaluateExpression(comparison.right, workbook, sheetName, trail)
