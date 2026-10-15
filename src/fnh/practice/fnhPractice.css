@@ -169,3 +169,12 @@ html[data-theme="dark"] .fnh-choice-number,body[data-theme="dark"] .fnh-choice-n
 .fnh-exam{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
 .fnh-instructions h1,.fnh-session-heading h1{font-family:inherit;font-weight:760;letter-spacing:-.032em;line-height:1.18}
 .fnh-exam :is(.fnh-exam-card,.fnh-outline,.fnh-primary,.fnh-option,.fnh-navigation){font-family:inherit}
+
+/* Unified thin navigation arrows, without coloured icon chips. */
+.fnh-exam .fnh-nav-arrow{
+  width:18px;height:18px;display:inline-block;vertical-align:middle;
+  flex:0 0 auto;fill:none;stroke:currentColor;
+}
+.fnh-exam :is(.fnh-outline,.fnh-primary){
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+}
