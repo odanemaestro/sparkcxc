@@ -226,7 +226,7 @@ export default function SpreadsheetLab({ lab, userId, completed, onBack, onCompl
         <RibbonTabs tabs={["Home", "Formulas", "Data", "Insert"]} active={tab} onChange={setTab}/>
         <div className="itv2-ribbon" aria-label={`${tab} tools`}>
           {tab === "Home" && <>
-            <ToolGroup label="History"><button type="button" onClick={undo} disabled={!canUndo}>Undo</button><button type="button" onClick={redo} disabled={!canRedo}>Redo</button></ToolGroup><ToolGroup label="Export"><button type="button" onClick={exportXlsx}>Export XLSX</button><label>Import XLSX<input type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" onChange={importXlsx}/></label></ToolGroup>
+            <ToolGroup label="History"><button type="button" onClick={undo} disabled={!canUndo}>Undo</button><button type="button" onClick={redo} disabled={!canRedo}>Redo</button></ToolGroup><ToolGroup label="Export"><button type="button" onClick={exportXlsx}>Export XLSX</button><label className="itv2-file-field">Import XLSX<input type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" onChange={importXlsx}/></label></ToolGroup>
             <ToolGroup label="Number"><button type="button" aria-pressed={formatCurrency} className={formatCurrency ? "active" : ""} onClick={() => setFormatCurrency(value => !value)}>J$ Currency</button></ToolGroup>
             <ToolGroup label="Fill"><button type="button" onClick={fillDown}>Fill selected down</button></ToolGroup>
           </>}
