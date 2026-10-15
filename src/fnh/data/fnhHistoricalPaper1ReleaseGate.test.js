@@ -1,12 +1,22 @@
 import {fnhHistoricalPaper1ReleaseCheck,FNH_HISTORICAL_PAPER1_TRANSCRIPTION_PROGRESS} from "./fnhHistoricalPaper1ReleaseGate";
 import {FNH_P1_2003_TRANSCRIPTION_DRAFT} from "./fnhHistorical2003Paper1Draft";
 import {FNH_P1_2004_TRANSCRIPTION_DRAFT} from "./fnhHistorical2004Paper1Draft";
+import {FNH_P1_2026_TRANSCRIPTION_DRAFT} from "./fnhHistorical2026Paper1Draft";
 describe("Historical FNH Paper1 release gate",()=>{
+ test("2026 candidate letters are not verified keys or approved explanations",()=>{
+  expect(FNH_P1_2026_TRANSCRIPTION_DRAFT).toHaveLength(60);
+  expect(FNH_P1_2026_TRANSCRIPTION_DRAFT.every(q=>/^[ABCD]$/.test(q.proposedAnswer))).toBe(true);
+  expect(FNH_P1_2026_TRANSCRIPTION_DRAFT.every(q=>q.officialKeyVerified===false)).toBe(true);
+  expect(FNH_P1_2026_TRANSCRIPTION_DRAFT.every(q=>q.explanation.includes("provisional key"))).toBe(true);
+  const audit=fnhHistoricalPaper1ReleaseCheck(FNH_P1_2026_TRANSCRIPTION_DRAFT);
+  expect(audit.ready).toBe(false);
+  expect(audit.pendingKeyNumbers).toHaveLength(60);
+ });
  test("complete original wording without independently verified keys is never treated as an examination",()=>{
   const state=fnhHistoricalPaper1ReleaseCheck(FNH_P1_2003_TRANSCRIPTION_DRAFT);
   expect(state).toMatchObject({ready:false,questions:60,numbered:true,sourceComplete:true,keysComplete:false});
   expect(state.pendingKeyNumbers).toHaveLength(60);
-  expect(FNH_HISTORICAL_PAPER1_TRANSCRIPTION_PROGRESS.map(x=>x.year)).toHaveLength(16);
+  expect(FNH_HISTORICAL_PAPER1_TRANSCRIPTION_PROGRESS.map(x=>x.year)).toHaveLength(15);
   expect(FNH_HISTORICAL_PAPER1_TRANSCRIPTION_PROGRESS.filter(x=>x.reportedTranscribed>0).length).toBeGreaterThanOrEqual(4);
   expect(FNH_HISTORICAL_PAPER1_TRANSCRIPTION_PROGRESS.every(x=>!x.ready)).toBe(true);
  });
