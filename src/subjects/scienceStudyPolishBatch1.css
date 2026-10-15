@@ -334,3 +334,34 @@
  box-shadow:none;background:#fff;color:#111;
  }
 }
+
+
+/* Science dark media shell correction.
+   A light science image plate is allowed only directly behind source artwork,
+   never as an empty container below captions or image credits. */
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-editorial-study :is(.spark-integrated-science-reference-diagram,.spark-reviewed-science-diagram){
+  background:transparent !important;
+  color:var(--fnh-ui-ink);
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-editorial-study .spark-reviewed-science-diagram figure{
+  background:var(--fnh-ui-paper) !important;
+  border-color:var(--fnh-ui-line) !important;
+  color:var(--fnh-ui-ink);
+  overflow:hidden;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-editorial-study .spark-reviewed-science-diagram
+ :is(figcaption,.spark-science-image-credits){
+  background:var(--fnh-ui-paper) !important;
+  color:var(--fnh-ui-muted);
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-editorial-study .spark-reviewed-science-diagram .spark-science-image-button{
+  background:var(--fnh-ui-paper) !important;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-editorial-study .spark-reviewed-science-diagram .spark-science-image-button:not(.spark-science-image-themed) img{
+  background:#e6eef0;
+}
