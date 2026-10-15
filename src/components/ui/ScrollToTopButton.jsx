@@ -15,13 +15,12 @@
 // lifts itself just clear of it instead of covering it up.
 // ============================================================================
 import { useState, useEffect } from "react";
-import { T } from "../../theme";
+import "./ScrollToTopButton.css";
 
 function ScrollToTopButton({ raised = false }) {
   const [visible, setVisible] = useState(false);
-  const [hover, setHover] = useState(false);
   const [avoidBottom, setAvoidBottom] = useState(0);
-  const BUTTON_SIZE = 46;
+  const BUTTON_SIZE = 52; // collision detection covers the larger mobile glass control
   const CLEAR_GAP = 14; // breathing room between the button and whatever it's dodging
 
   useEffect(() => {
@@ -78,26 +77,17 @@ function ScrollToTopButton({ raised = false }) {
 
   return (
     <button
-      className="spark-scroll-top"
+      type="button"
+      className={`spark-scroll-top${visible ? " is-visible" : ""}`}
       onClick={handleClick}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
       aria-label="Back to top"
       title="Back to top"
-      style={{
-        position:"fixed", right:22, bottom, width:BUTTON_SIZE, height:BUTTON_SIZE,
-        borderRadius:"50%", border:"1px solid rgba(255,255,255,.18)",
-        background:hover ? T.navyMid : T.navyDeep, color:"#fff",
-        display:"flex", alignItems:"center", justifyContent:"center", padding:0,
-        cursor:"pointer", boxShadow:hover ? T.shadowLg : T.shadowMd,
-        opacity:visible ? 1 : 0, transform:visible ? "translateY(0)" : "translateY(14px)",
-        pointerEvents:visible ? "auto" : "none", transition:`bottom .2s ${T.ease}, opacity .25s ${T.ease}, transform .25s ${T.ease}, background .2s ${T.ease}, box-shadow .2s ${T.ease}`,
-        zIndex:60,
-      }}>
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-        strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-        <line x1="12" y1="19" x2="12" y2="5"/>
-        <polyline points="5 12 12 5 19 12"/>
+      aria-hidden={!visible}
+      tabIndex={visible ? 0 : -1}
+      style={{ bottom:`calc(${bottom}px + env(safe-area-inset-bottom, 0px))` }}
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M12 19V6m0 0-5 5m5-5 5 5" />
       </svg>
     </button>
   );
