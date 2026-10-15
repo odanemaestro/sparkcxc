@@ -20,6 +20,8 @@ import FoodMicroorganismExplorer from "./components/FoodMicroorganismExplorer";
 import FnhObjectivePractice from "../fnh/components/FnhObjectivePractice";
 import FnhStudyPractice from "../fnh/components/FnhStudyPractice";
 import FnhDecisionLab from "../fnh/components/FnhDecisionLab";
+import SocialStudiesReferenceMedia from "../socialStudies/components/SocialStudiesReferenceMedia";
+import { socialStudiesMediaForTopic } from "../socialStudies/data/socialStudiesReferenceMedia";
 import FnhBackToTop from "../fnh/components/FnhBackToTop";
 import {
   readSparkHashRoute,
@@ -165,6 +167,7 @@ export function GenericLessonContent({
     ? lesson.workedExample
     : null;
   const isFnh = subjectId === "food-nutrition-and-health";
+  const socialVisuals = subjectId === "social-studies" && socialStudiesMediaForTopic(topic?.id).length > 0;
   const isEditorial = editorial && !isFnh;
   const hasExplore = Boolean(models.length || diagrams.length || references.length || subjectId==="english-a");
   const jumpTo = anchor => {
@@ -201,6 +204,7 @@ export function GenericLessonContent({
         <span className="spark-fnh-reading-nav-label">In this lesson</span>
         <div className="spark-fnh-reading-nav-links">
           {blocks.length>0&&<button type="button" onClick={()=>jumpTo("spark-lesson-notes")}>Read notes</button>}
+          {socialVisuals&&<button type="button" onClick={()=>jumpTo("spark-social-visuals")}>See visuals</button>}
           {hasExplore&&<button type="button" onClick={()=>jumpTo("spark-lesson-explore")}>Explore</button>}
           {points.length>0&&<button type="button" onClick={()=>jumpTo("spark-lesson-key-points")}>Key points</button>}
           {example&&<button type="button" onClick={()=>jumpTo("spark-lesson-worked-example")}>Worked example</button>}
@@ -264,6 +268,7 @@ export function GenericLessonContent({
         );
       })}
 
+      {socialVisuals && <SocialStudiesReferenceMedia topicId={topic.id}/>}
       {isEditorial&&hasExplore&&<div id="spark-lesson-explore" className="spark-editorial-scroll-anchor" aria-hidden="true"/>}
       {models.map(model => (
         subjectId === "integrated-science"

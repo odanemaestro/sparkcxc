@@ -1,0 +1,33 @@
+/* Social Studies: curated, attributed visual references.
+   SPARK's study theme remains authoritative; scientific/cartographic media stays neutral. */
+.ss-reference-section{min-width:0;margin:26px 0;scroll-margin-top:90px;color:var(--fnh-ui-ink,var(--spark-ink,#142e4d))}
+.ss-reference-heading{margin-bottom:16px}
+.ss-reference-heading>span,.ss-reference-eyebrow{font-size:.73rem;letter-spacing:.05em;text-transform:uppercase;font-weight:750;color:var(--fnh-ui-teal-ink,#08776f)}
+.ss-reference-heading h3{margin:5px 0 7px;color:inherit;font-size:clamp(1.16rem,2.5vw,1.46rem);line-height:1.3;letter-spacing:-.025em}
+.ss-reference-heading p{max-width:72ch;margin:0;color:var(--fnh-ui-muted,#60748a);font-size:.88rem;line-height:1.65}
+.ss-reference-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:16px;align-items:stretch}
+.ss-reference-card{display:flex;flex-direction:column;min-width:0;overflow:hidden;margin:0;border:1px solid var(--fnh-ui-line,#d7e1ea);border-radius:16px;background:var(--fnh-ui-paper,#fff);box-shadow:0 4px 18px rgba(16,34,56,.04)}
+.ss-reference-stage{min-width:0;min-height:160px;display:grid;place-items:center;background:#fff;color:#193652;padding:clamp(13px,2vw,22px);border-bottom:1px solid #e0e7ed}
+.ss-reference-image-link{display:grid;width:100%;min-width:0;gap:10px;align-items:center;justify-items:center;text-decoration:none;color:#1c5374;font-size:.78rem;font-weight:750}
+.ss-reference-image-link img{display:block;max-width:100%;max-height:360px;width:auto;height:auto;object-fit:contain;background:#fff}
+.ss-reference-image-link span{justify-self:end}
+.ss-reference-image-link:hover span{text-decoration:underline}
+.ss-reference-stage video{display:block;width:100%;max-height:330px;aspect-ratio:16/9;border-radius:10px;background:#10243a}
+.ss-reference-video-prompt{display:grid;justify-items:center;gap:11px;padding:22px 12px;max-width:290px;text-align:center}
+.ss-reference-video-prompt>span{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#e3f7f2;color:#0b665f;font-size:19px}
+.ss-reference-video-prompt strong{font-size:.95rem}
+.ss-reference-video-prompt p,.ss-reference-fallback p{margin:0;color:#536c83;font-size:.82rem;line-height:1.55}
+.ss-reference-video-prompt button{min-height:44px;padding:9px 18px;border:0;border-radius:11px;background:#0e5065;color:#fff;cursor:pointer;font-family:inherit;font-size:.85rem;font-weight:700;line-height:1.35}
+.ss-reference-video-prompt button:hover{background:#146980}
+.ss-reference-card figcaption{display:flex;flex:1;flex-direction:column;gap:10px;padding:16px 18px 18px;min-width:0}
+.ss-reference-card figcaption>strong{font-size:1rem;line-height:1.4;color:var(--fnh-ui-ink,#193652)}
+.ss-reference-card figcaption>p{margin:0;font-size:.85rem;color:var(--fnh-ui-muted,#526b85);line-height:1.6}
+.ss-reference-card figcaption>.ss-reference-note{padding:9px 12px;border-left:3px solid var(--fnh-ui-teal-ink,#128278);background:var(--fnh-ui-paper-alt,#f2f7f7);color:var(--fnh-ui-ink,#193652);border-radius:0 8px 8px 0;font-size:.8rem}
+.ss-reference-credits{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;padding-top:11px;margin-top:auto;border-top:1px solid var(--fnh-ui-line,#d7e1ea);color:var(--fnh-ui-muted,#526b85);font-size:.73rem;line-height:1.55;overflow-wrap:anywhere}
+.ss-reference-credits a{color:var(--fnh-ui-teal-ink,#0a7069);text-underline-offset:3px}
+.ss-reference-fallback{display:grid;gap:11px;justify-items:center;padding:15px 8px;max-width:300px;text-align:center}
+.ss-reference-fallback strong{font-size:.9rem}
+.ss-reference-fallback a{color:#1c5374;font-size:.83rem}
+.ss-reference-section :is(a,button):focus-visible{outline:3px solid var(--fnh-ui-teal-ink,#128278);outline-offset:3px;border-radius:6px}
+@media(max-width:640px){.ss-reference-section{margin:20px 0}.ss-reference-grid{grid-template-columns:minmax(0,1fr);gap:14px}.ss-reference-stage{min-height:130px}.ss-reference-image-link img{max-height:310px}.ss-reference-card figcaption{padding:15px}}
+@media(prefers-reduced-motion:reduce){.ss-reference-section *{scroll-behavior:auto!important}}
