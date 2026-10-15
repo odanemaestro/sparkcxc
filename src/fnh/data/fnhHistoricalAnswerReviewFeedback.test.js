@@ -17,7 +17,7 @@ describe("FNH historical answer sanity checks", () => {
     const documentKey="BDDCCCCADADCCDDCBBDCDDDCACDBABCDDADCABBBACCBDAACAAACBDAAACDC".split("");
     expect(documentKey).toHaveLength(60);
     for(let n=1;n<=60;n++){
-      if([4,5,6,33,41,46,59].includes(n))continue;
+      if([4,33,41,59].includes(n))continue;
       expect(actual[n]).toBe(documentKey[n-1]);
     }
     expect(selectedText(FNH_P1_2003_TRANSCRIPTION_DRAFT[58])).toMatch(/hypertension/i);
