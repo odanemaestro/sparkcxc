@@ -10,6 +10,7 @@ import PhysicsWorkbook from '../../resources/PhysicsWorkbook';
 import PhysicsFormulaList from '../../resources/PhysicsFormulaList.jsx';
 import { physicsFullCourseStats } from '../fullCourseIndex.mjs';
 import './physicsSubjectView.css';
+import '../../../subjects/sparkSpecializedStudyPolish.css';
 
 const SectionArrowIcon = () => (
   <svg className="psv-section-arrow-icon" viewBox="0 0 20 20" focusable="false" aria-hidden="true">
