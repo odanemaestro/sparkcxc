@@ -416,9 +416,9 @@ export const FNH_STUDY_PRACTICE_PART_TWO=Object.freeze({
       "type": "order",
       "prompt": "Arrange a safe work sequence for preparing an uncooked salad near a raw-fish cooking area.",
       "options": [
-        "Set up clean salad utensils and a separate work area",
-        "Wash and prepare ready-to-eat vegetables safely",
-        "Keep raw fish and its tools apart throughout the work",
+        "Set up clean utensils and a separate work area for salad",
+        "Move the raw fish and its tools away from the salad preparation area",
+        "Wash and prepare the ready-to-eat vegetables with clean hands",
         "Refrigerate the completed salad suitably until service"
       ],
       "answer": [
