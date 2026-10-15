@@ -73,13 +73,13 @@ describe("CSEC Food, Nutrition and Health syllabus integrity",()=>{
   test("subject starts in draft state until examination banks are quality checked",()=>{
     const subject=getSparkSubjectRegistry().find(subject=>subject.id==="food-nutrition-and-health");
     expect(subject).toMatchObject({enabled:false,status:"draft",name:"CSEC Food, Nutrition and Health"});
-    expect(subject.capabilities).toMatchObject({study:true,flashcards:true,practice:false,paper1:false,paper2:false,sba:true});
+    expect(subject.capabilities).toMatchObject({study:true,flashcards:true,practice:true,paper1:true,paper2:true,sba:true});
     expect(subject.routes.study).toBe("/study/food-nutrition-and-health");
   });
   test("the supplied historical archive is inventoried but not released as verified exams",()=>{
-    expect(FNH_ARCHIVE_SUMMARY).toMatchObject({paper1:16,paper2:18,unique:34});
-    expect(FNH_SUPPLIED_ARCHIVE).toHaveLength(34);
-    expect(new Set(FNH_SUPPLIED_ARCHIVE.map(row=>row.id)).size).toBe(34);
+    expect(FNH_ARCHIVE_SUMMARY).toMatchObject({paper1:15,paper2:18,unique:33});
+    expect(FNH_SUPPLIED_ARCHIVE).toHaveLength(33);
+    expect(new Set(FNH_SUPPLIED_ARCHIVE.map(row=>row.id)).size).toBe(33);
     const pending=FNH_SUPPLIED_ARCHIVE.filter(row=>row.reviewStatus==="requires-question-and-key-verification");
     expect(pending.every(row=>row.verifiedQuestionCount===0&&!row.simulatorReady)).toBe(true);
     expect(FNH_SUPPLIED_ARCHIVE.filter(row=>row.simulatorReady).every(row=>row.reviewStatus==="source-question-text-checked"&&row.verifiedQuestionCount>0)).toBe(true);
