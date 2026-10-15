@@ -3,6 +3,7 @@ import {FNH_P1_2004_TRANSCRIPTION_DRAFT} from "./fnhHistorical2004Paper1Draft";
 import {FNH_P1_2005_TRANSCRIPTION_DRAFT} from "./fnhHistorical2005Paper1Draft";
 import {FNH_P1_2016_TRANSCRIPTION_DRAFT} from "./fnhHistorical2016Paper1Draft";
 import {FNH_P1_2017_TRANSCRIPTION_DRAFT} from "./fnhHistorical2017Paper1Draft";
+import {FNH_P1_2018_TRANSCRIPTION_DRAFT} from "./fnhHistorical2018Paper1Draft";
 import {FNH_P1_2020_TRANSCRIPTION_DRAFT} from "./fnhHistorical2020Paper1Draft";
 import {FNH_P1_2026_TRANSCRIPTION_DRAFT} from "./fnhHistorical2026Paper1Draft";
 
@@ -11,6 +12,12 @@ function selectedText(row) {
   return row.options["ABCD".indexOf(row.proposedAnswer)];
 }
 describe("FNH historical answer sanity checks", () => {
+  test("2018 Q33 distinguishes deficient diets from powdered milk", () => {
+    const row=FNH_P1_2018_TRANSCRIPTION_DRAFT.find(q=>q.number===33);
+    expect(row.proposedAnswer).toBe("A");
+    expect(selectedText(row)).toMatch(/I and II only/i);
+    expect(row.officialKeyVerified).not.toBe(true);
+  });
   test("2004 incomplete source choices and 2005 missing final page stay unavailable", () => {
     for (const number of [46,47]) {
       const q=FNH_P1_2004_TRANSCRIPTION_DRAFT.find(item=>item.number===number);
