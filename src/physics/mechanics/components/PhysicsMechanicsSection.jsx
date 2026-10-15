@@ -4,6 +4,7 @@ import MathText from '../../../practice/MathText';
 import PhysicsFlashcardVisual from '../../components/PhysicsFlashcardVisual';
 import { physicsFlashcardQuestion } from '../../course/physicsFlashcardLanguage.mjs';
 import PhysicsStudyToolkit from '../../components/PhysicsStudyToolkit';
+import CuratedStudyMedia from '../../../components/study/CuratedStudyMedia';
 import PhysicsPracticalNotebook from '../../labs/PhysicsPracticalNotebook';
 import MechanicsInteractiveLab from './MechanicsInteractiveLab';
 import { hasSimulation } from '../../simulations/simulationRegistry.jsx';
@@ -28,6 +29,7 @@ function StudyView({topic,progress,setCompleted}){
         {paragraphsForSection(section).map((p,j)=><MathText as="p" prose key={j}>{p}</MathText>)}
         {examplesForSection(section).map((ex,j)=><div className="pm-worked" key={j}><MathText as="strong" prose>{ex.prompt||ex.question||'Worked example'}</MathText>{Array.isArray(ex.steps)?<ol>{ex.steps.map((s,k)=><li key={k}><MathText prose>{s}</MathText></li>)}</ol>:<MathText as="p" prose>{ex.solution||''}</MathText>}</div>)}
       </section>)}
+      <CuratedStudyMedia subject="physics" topicId={topic.id}/>
       <PhysicsStudyToolkit topicId={topic.id}/>
       <div className="pm-completion"><button type="button" className={progress[`lesson:${topic.id}`]?'done':''} onClick={()=>setCompleted(`lesson:${topic.id}`,!progress[`lesson:${topic.id}`])}>{progress[`lesson:${topic.id}`]?'✓ Lesson marked complete':'Mark lesson complete'}</button><span className="pm-feedback">Completion is study progress only. It is not treated as Physics mastery.</span></div>
     </div>
