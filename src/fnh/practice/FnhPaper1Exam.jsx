@@ -2,6 +2,8 @@ import React,{useEffect,useMemo,useRef,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
 import {FNH_PAPER1_FORMAT,fnhGetPaper1Set} from "../data/fnhPaper1Bank";
 import "./fnhPractice.css";
+import {fnhHistoricalPaper1Reader} from "../data/fnhHistoricalPaper1ReleaseGate";
+import FnhPaper1HistoricalDiagram from "./FnhPaper1HistoricalDiagram";
 
 
 const SECONDS=FNH_PAPER1_FORMAT.minutes*60;
@@ -11,10 +13,13 @@ const goTop=()=>{try{window.scrollTo?.({top:0,left:0,behavior:"instant"});}catch
 const makeNew=paperId=>({paperId,attemptId:`${Date.now()}-${Math.random().toString(36).slice(2)}`,
   phase:"instructions",answers:{},flags:{},index:0,deadline:null,submittedAt:null});
 
-export default function FnhPaper1Exam({supabase,userId,onBack,setNumber=1}){
+export default function FnhPaper1Exam({supabase,userId,onBack,setNumber=1,historicalSourceId=null}){
   const chosenSet=fnhGetPaper1Set(setNumber);
-  const paperId=`FNH-SPARK-P1-ORIGINAL-0${chosenSet.number}`;
-  const questions=chosenSet.questions;
+  const historical=historicalSourceId?fnhHistoricalPaper1Reader(historicalSourceId):null;
+  const paperId=historicalSourceId||`FNH-SPARK-P1-ORIGINAL-0${chosenSet.number}`;
+  const questions=historical?historical.questions.map(q=>({...q,id:`${historicalSourceId}:${q.number}`})):chosenSet.questions;
+  const scored=!historicalSourceId;
+  const total=questions.length;
   const [attempt,setAttempt]=useState(()=>{
     try{
       const saved=JSON.parse(localStorage.getItem(storeKey(userId,paperId))||"null");
@@ -29,7 +34,7 @@ export default function FnhPaper1Exam({supabase,userId,onBack,setNumber=1}){
   const current=questions[index];
   const review=attempt.phase==="review";
   const exam=attempt.phase==="exam";
-  const score=useMemo(()=>questions.reduce((n,q)=>n+Number(Boolean(attempt.answers[q.id])&&attempt.answers[q.id]===q.answer),0),[questions,attempt.answers]);
+  const score=useMemo(()=>scored?questions.reduce((n,q)=>n+Number(Boolean(attempt.answers[q.id])&&attempt.answers[q.id]===q.answer),0):null,[scored,questions,attempt.answers]);
   const answered=questions.filter(q=>Boolean(attempt.answers[q.id])).length;
   const flagged=questions.filter(q=>Boolean(attempt.flags[q.id])).length;
   const change=patch=>setAttempt(old=>({...old,...patch}));
@@ -49,7 +54,7 @@ export default function FnhPaper1Exam({supabase,userId,onBack,setNumber=1}){
   },[exam,attempt.deadline]);
   useEffect(()=>{goTop();},[index,attempt.phase]);
   useEffect(()=>{
-    if(!review||!userId||!supabase?.rpc||reported.current.has(attempt.attemptId))return;
+    if(!scored||!review||!userId||!supabase?.rpc||reported.current.has(attempt.attemptId))return;
     reported.current.add(attempt.attemptId);
     recordSubjectActivity({supabase,activity:{
       subjectId:"food-nutrition-and-health",activityKey:`exam:fnh-paper1:${paperId}:${attempt.attemptId}`,
@@ -59,7 +64,7 @@ export default function FnhPaper1Exam({supabase,userId,onBack,setNumber=1}){
         question_count:60,duration_minutes:90,source_verified:true,historical:false,
         profile_knowledge:30,profile_use_of_knowledge:30,at:new Date().toISOString()},
     }}).catch(error=>console.warn("FNH Paper 1 progress could not be saved",error));
-  },[review,attempt.attemptId,questions.length,score,supabase,userId,paperId,chosenSet.label]);
+  },[scored,review,attempt.attemptId,questions.length,score,supabase,userId,paperId,chosenSet.label]);
   const begin=()=>{
     setModal("");
     setClock(SECONDS);
@@ -68,6 +73,7 @@ export default function FnhPaper1Exam({supabase,userId,onBack,setNumber=1}){
   const submit=()=>{change({phase:"review",submittedAt:Date.now()});setModal("");};
   const selected=q=>attempt.answers[q.id];
   const answer=q=>q.options["ABCD".indexOf(q.answer)]||"";
+  if(!questions.length)return <main className="fnh-exam"><div className="fnh-exam-container"><p>This paper is not available yet.</p><button className="fnh-outline" onClick={onBack}>← Back to past papers</button></div></main>;
   return <main className="fnh-exam">
     <div className="fnh-exam-container">
       <div className="fnh-exam-top">
@@ -75,45 +81,47 @@ export default function FnhPaper1Exam({supabase,userId,onBack,setNumber=1}){
         <span>CSEC FOOD, NUTRITION AND HEALTH · PAPER 01</span>
       </div>
       {attempt.phase==="instructions"?<section className="fnh-exam-card fnh-instructions">
-        <small>ORIGINAL PRACTICE SET {chosenSet.number}</small>
+        <small>{historical?`${historical.year} MAY/JUNE PAST PAPER`:`ORIGINAL PRACTICE SET ${chosenSet.number}`}</small>
         <h1>Paper 1 examination instructions</h1>
         <p>Read the instructions carefully. Your time starts when you select <strong>Start examination</strong>.</p>
-        <div className="fnh-exam-stats"><div><strong>60</strong><span>Questions</span></div><div><strong>90 minutes</strong><span>Duration</span></div><div><strong>60 marks</strong><span>Total marks</span></div><div><strong>4 choices</strong><span>Per question</span></div></div>
+        <div className="fnh-exam-stats"><div><strong>{total}</strong><span>Questions</span></div><div><strong>90 minutes</strong><span>Duration</span></div><div><strong>{scored?`${total} marks`:"Practice only"}</strong><span>{scored?"Total marks":"Result"}</span></div><div><strong>4 choices</strong><span>Per question</span></div></div>
         <h2>Instructions to candidates</h2>
         <ol>
-          <li>Answer all 60 multiple-choice questions. Choose one best answer for each item.</li>
-          <li>Each correct response earns one mark. There is no negative marking.</li>
+          <li>Answer all available multiple-choice questions. Choose one best answer for each item.</li>
+          <li>Choose the best answer for each question. There is no negative marking.</li>
           <li>Use the question navigator and Flag for review to revisit questions.</li>
           <li>Use the space and time wisely. Read all four options before answering.</li>
           <li>Your answers and deadline are saved on this device while the examination is running.</li>
           <li>The examination submits automatically when the 90-minute period ends.</li>
-          <li>After submission, review your chosen answer, the correct choice and the explanation.</li>
+          <li>After submission, review your selections.</li>
         </ol>
-        <p className="fnh-exam-note">This is an original SPARK practice examination, not an official CXC past paper.</p>
+        <p className="fnh-exam-note">{historical?"You can complete this past paper in exam mode. Scored results are not available for this paper.":"This is an original SPARK practice examination, not an official CXC past paper."}</p>
         <button type="button" className="fnh-primary" onClick={begin}>Start examination</button>
       </section>:<div className="fnh-session">
         <header className="fnh-exam-card fnh-session-heading">
-          <div><small>{review?"SUBMITTED · ANSWER REVIEW":"PAPER 01 · LIVE PRACTICE"}</small><h1>Food, Nutrition and Health</h1><p>{review?`Your result: ${score} / 60`:`Question ${index+1} of 60 · Answered ${answered}/60 · Flagged ${flagged}`}</p></div>
-          <div className="fnh-timer" role="timer" aria-live="off"><span>{review?"Completed":"Time remaining"}</span><strong>{review?`${Math.round(score/60*100)}%`:time(clock)}</strong></div>
+          <div><small>{review?"SUBMITTED · ANSWER REVIEW":"PAPER 01 · LIVE PRACTICE"}</small><h1>Food, Nutrition and Health</h1><p>{review?(scored?`Your result: ${score} / ${total}`:`Completed · ${answered} of ${total} answered`):`Question ${index+1} of ${total} · Answered ${answered}/${total} · Flagged ${flagged}`}</p></div>
+          <div className="fnh-timer" role="timer" aria-live="off"><span>{review?"Completed":"Time remaining"}</span><strong>{review?(scored?`${Math.round(score/total*100)}%`:"Finished"):time(clock)}</strong></div>
         </header>
         <div className="fnh-exam-layout">
           <section className="fnh-exam-card fnh-question" aria-label="Question">
-            <div className="fnh-question-head"><h2>Question {index+1} of 60</h2>{exam&&<button type="button" className="fnh-outline" aria-pressed={Boolean(attempt.flags[current.id])} onClick={()=>change({flags:{...attempt.flags,[current.id]:!attempt.flags[current.id]}})}>{attempt.flags[current.id]?"Flagged":"Flag for review"}</button>}</div>
+            <div className="fnh-question-head"><h2>Question {index+1} of {total}</h2>{exam&&<button type="button" className="fnh-outline" aria-pressed={Boolean(attempt.flags[current.id])} onClick={()=>change({flags:{...attempt.flags,[current.id]:!attempt.flags[current.id]}})}>{attempt.flags[current.id]?"Flagged":"Flag for review"}</button>}</div>
             <p className="fnh-question-stem">{current.stem}</p>
+            {current.diagramId&&<FnhPaper1HistoricalDiagram type={current.diagramId}/>} 
+            {current.sourceContext&&<p>{current.sourceContext}</p>}
             <fieldset disabled={review} className="fnh-answer-options"><legend>Select one answer</legend>{current.options.map((option,i)=>{
               const letter="ABCD"[i],chosen=selected(current)===letter;
-              return <label key={letter} className={`fnh-option ${review&&current.answer===letter?"correct":""} ${review&&chosen&&letter!==current.answer?"incorrect":""}`}>
+              return <label key={letter} className={`fnh-option ${review&&scored&&current.answer===letter?"correct":""} ${review&&scored&&chosen&&letter!==current.answer?"incorrect":""}`}>
                 <input type="radio" name={current.id} value={letter} checked={chosen} onChange={()=>change({answers:{...attempt.answers,[current.id]:letter}})}/><b>{letter}.</b> <span>{option}</span>
               </label>;
             })}</fieldset>
-            {review&&<section className="fnh-review-details" aria-label="Answer review">
+            {review&&scored&&<section className="fnh-review-details" aria-label="Answer review">
               <div><strong>Your answer</strong><p>{selected(current)?`${selected(current)}. ${current.options["ABCD".indexOf(selected(current))]}`:"Not answered"}</p></div>
               <div><strong>Correct answer</strong><p>{current.answer}. {answer(current)}</p></div>
               <div className="fnh-review-explanation"><strong>Explanation</strong><p>{current.explanation}</p><small>Syllabus objective: {current.objectiveCode}</small></div>
             </section>}
             <div className="fnh-question-actions">
               <button type="button" className="fnh-outline" disabled={index===0} onClick={()=>change({index:index-1})}>Previous</button>
-              <button type="button" className="fnh-outline" disabled={index===59} onClick={()=>change({index:index+1})}>Next</button>
+              <button type="button" className="fnh-outline" disabled={index===total-1} onClick={()=>change({index:index+1})}>Next</button>
               {exam&&<button type="button" className="fnh-primary" onClick={()=>setModal("submit")}>Submit Paper 1</button>}
               {review&&<button type="button" className="fnh-primary" onClick={()=>setModal("restart")}>Start new attempt</button>}
             </div>
