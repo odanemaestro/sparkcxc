@@ -1,5 +1,6 @@
 import React, { useEffect, useLayoutEffect, useMemo, useState } from "react";
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
+import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import {
   IT_SBA_COMPONENTS,
   IT_SBA_CURRENT_LIMITS,
@@ -317,7 +318,7 @@ function ComponentGuide({ project, componentId, userId, onActivity, openProject,
     <section className="it-sba-question-intro"><div className="it-practice-label">Question-by-question guide</div><h2>Know the exact question before you start clicking.</h2><p>Each card below repeats the practice-SBA question, tells you exactly how to approach it, then shows what the completed SPARK result contains. Keep the full SBA PDF open beside you while you work.</p><a className="it-practice-secondary" href={projectPdf(project.id)} target="_blank" rel="noreferrer"><SbaIcon type="pdf" size={18}/><span>View full SBA</span></a></section>
     <section className="it-sba-download-card it-sba-lab-launch">
       <div><div className="it-practice-label">WORK IN SPARK STUDIO</div><h2>Practise this SBA section in the interactive lab</h2><p>Open the matching tool to build and test your own work. The studio is a learning workspace; completing a guided lab does not automatically submit or grade your SBA project.</p></div>
-      <a className="it-practice-primary" href={`#/study/information-technology/labs/${({database:"database",spreadsheet:"spreadsheet",word:"word-processing",web:"web-design",programming:"programming"})[componentId]||"programming"}`}>Open {meta.title} lab ↗</a>
+      <a className="it-practice-primary" href={`#/study/information-technology/labs/${({database:"database",spreadsheet:"spreadsheet",word:"word-processing",web:"web-design",programming:"programming"})[componentId]||"programming"}`}>Open {meta.title} lab <ForwardArrowIcon/></a>
     </section>
     <section className="it-sba-question-list">{questions.map((task,index)=><QuestionCard key={task.id} task={task} index={index}/>)}</section>
     <section className="it-sba-section-pdf"><div><div className="it-practice-label">Completed {meta.title} SBA</div><h2>Read the completed section exactly as a reference submission.</h2><p>The PDF answers every question above and includes the completed structures, formulas, layouts, trace data or code needed for this fictional project. The watermark is repeated on every page.</p><PdfActions project={project} componentId={componentId}/></div><object className="it-sba-pdf-viewer section" data={pdf} type="application/pdf" aria-label={`${project.title} ${meta.title} completed PDF`}><p>Your browser does not display PDFs inside the page. <a href={pdf} target="_blank" rel="noreferrer">Open the completed section PDF</a>.</p></object></section>
