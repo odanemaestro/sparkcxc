@@ -31,7 +31,7 @@ export default function PresentationLab({ lab, userId, completed, onBack, onComp
   const [showMode, setShowMode] = useState(false);
   const [showIndex, setShowIndex] = useState(0);
   const [message, setMessage] = useState("Create and edit slides, then run the slide show to verify your presentation.");
-  const { evidence, record } = useTaskEvidence();
+  const { evidence, record } = useTaskEvidence(userId, lab.id);
   const slide = slides.find(item => item.id === selected) ?? slides[0];
   const proof = useMemo(() => presentationProof(slides, theme, footer), [slides, theme, footer]);
   const showSlide = slides[showIndex] ?? slides[0];
