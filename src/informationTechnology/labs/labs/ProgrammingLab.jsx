@@ -2,6 +2,7 @@ import React, { useMemo, useState } from "react";
 import { LabFrame, RibbonTabs, WindowBar } from "../components/LabFrame";
 import { ReducedMotionNotice, StatusMessage, useTaskEvidence } from "../components/ProductivityKit";
 import { PlayIcon } from "../components/Icons";
+import { createDebugSession, debugStep, debugContinue, debugVariables, toggleBreakpoint } from "../models/debugSession.mjs";
 import {
   PROGRAMMING_TEMPLATES,
   assessSelectionProgram,
@@ -50,6 +51,7 @@ export default function ProgrammingLab({ lab, completed, onBack, onComplete }) {
   const [selectionTests, setSelectionTests] = useState([]);
   const [debugTests, setDebugTests] = useState([]);
   const [runCount, setRunCount] = useState(0);
+  const [debugSession,setDebugSession] = useState(() => createDebugSession(null));
   const { evidence, record } = useTaskEvidence();
   const code = sources[exercise];
   const template = PROGRAMMING_TEMPLATES[language];
@@ -72,6 +74,7 @@ export default function ProgrammingLab({ lab, completed, onBack, onComplete }) {
   function updateCode(value) {
     setSources(current => ({ ...current, [exercise]: value }));
     setLastRun(emptyRun("Source changed. Run again to verify the result."));
+    setDebugSession(createDebugSession(null));
   }
 
   function changeLanguage(value) {
@@ -81,6 +84,7 @@ export default function ProgrammingLab({ lab, completed, onBack, onComplete }) {
     setSelectionTests([]);
     setDebugTests([]);
     setLastRun(emptyRun());
+    setDebugSession(createDebugSession(null));
   }
 
   function changeExercise(value) {
@@ -94,6 +98,7 @@ export default function ProgrammingLab({ lab, completed, onBack, onComplete }) {
     else if (exercise === "loop") run = runLoopProgram({ language, code });
     else run = runTaxProgram({ language, code, input: debugInput });
     setRunCount(count => count + 1);
+    setDebugSession(createDebugSession(run));
     setLastRun({ ...run, message: run.ok ? "Program completed successfully." : "The program did not run. Correct the reported issue and try again." });
     if (!run.ok) return;
     if (commentPresent) record("comment-run");
@@ -115,6 +120,7 @@ export default function ProgrammingLab({ lab, completed, onBack, onComplete }) {
     setRunCount(count => count + assessment.runs.length);
     setDebugTests(assessment.runs.map(item => ({ input: item.input, expected: item.expected, output: item.run.output, ok: item.run.ok && item.run.output === item.expected })));
     const displayedRun = runTaxProgram({ language, code: sources.debug, input: debugInput });
+    setDebugSession(createDebugSession(displayedRun));
     setLastRun({ ...displayedRun, message: assessment.passed ? "All three debug tests passed. The logic error is corrected." : "Debug tests failed. The tax must be 15% for every test value." });
     if (assessment.passed) {
       record("debug-pass");
@@ -159,7 +165,25 @@ export default function ProgrammingLab({ lab, completed, onBack, onComplete }) {
 
         {tab === "Variable Trace" && <div className="itv2-debug-layout"><div className="itv2-trace-heading"><strong>Execution trace</strong><span>Values shown are from the most recent successful run.</span></div><TraceTable trace={lastRun.ok ? lastRun.trace : []}/></div>}
 
-        {tab === "Debug" && <div className="itv2-debug-layout"><h3>Debug by testing</h3><p>The faulty program calculates 50% tax instead of 15%. Correct the source, then run all three tests. Choosing an error type alone does not complete this task.</p><button type="button" className="itv2-debug-run" onClick={() => { setExercise("debug"); setTab("Code"); }}>Open faulty program</button><button type="button" className="itv2-debug-run" onClick={() => { setExercise("debug"); runDebugSuite(); }}>Run all debug tests</button>{debugTests.length > 0 && <div className={`itv2-debug-verdict ${debugTests.every(test => test.ok) ? "pass" : "fail"}`} role="status">{debugTests.every(test => test.ok) ? "All debug tests passed." : `${debugTests.filter(test => !test.ok).length} debug test(s) still failing.`}</div>}</div>}
+        {tab === "Debug" && <div className="itv2-debug-layout">
+          <h3>Step-through debugger</h3>
+          <p>Run your code to build a validated execution trace. Set a breakpoint beside a source line, then step or continue through the simulated program. This teaching debugger supports SPARK's three exercises, not arbitrary source compilation.</p>
+          <div className="itv2-debug-controls">
+            <button type="button" onClick={execute}>Restart trace</button>
+            <button type="button" onClick={()=>setDebugSession(debugStep)} disabled={!debugSession.trace.length||debugSession.phase==="complete"}>Step over</button>
+            <button type="button" onClick={()=>setDebugSession(debugContinue)} disabled={!debugSession.trace.length||debugSession.phase==="complete"}>Continue</button>
+            <button type="button" onClick={()=>setDebugSession(createDebugSession(lastRun,debugSession.breakpoints))} disabled={!lastRun.ok}>Reset cursor</button>
+          </div>
+          <div className="itv2-debug-inspector">
+            <div><strong>Source lines and breakpoints</strong><div className="itv2-breakpoints" role="group" aria-label="Toggle source breakpoints">
+              {code.split("\\n").map((line,index)=><button key={index} type="button" className={debugSession.breakpoints.includes(index+1)?"is-active":""} aria-pressed={debugSession.breakpoints.includes(index+1)} onClick={()=>setDebugSession(old=>toggleBreakpoint(old,index+1,code.split("\\n").length))}><span aria-hidden="true">{debugSession.breakpoints.includes(index+1)?"●":"○"}</span> {index+1} <code>{line||" "}</code></button>)}
+            </div></div>
+            <div><strong>Debugger state</strong><p role="status">{debugSession.phase==="unavailable"?"Run a valid exercise first.":debugSession.phase==="complete"?"Execution complete":debugSession.cursor<0?"Paused before first step":`Paused at trace step ${debugSession.cursor+1} of ${debugSession.trace.length}`}</p>
+              <dl>{Object.entries(debugVariables(debugSession)).map(([name,value])=><React.Fragment key={name}><dt>{name}</dt><dd>{String(value)}</dd></React.Fragment>)}</dl>
+              {debugSession.cursor>=0&&<p>Line {debugSession.trace[debugSession.cursor]?.line??"—"}: {debugSession.trace[debugSession.cursor]?.detail}</p>}
+            </div>
+          </div>
+          <h3>Debug by testing</h3><p>The faulty program calculates 50% tax instead of 15%. Correct the source, then run all three tests. Choosing an error type alone does not complete this task.</p><button type="button" className="itv2-debug-run" onClick={() => { setExercise("debug"); setTab("Code"); }}>Open faulty program</button><button type="button" className="itv2-debug-run" onClick={() => { setExercise("debug"); runDebugSuite(); }}>Run all debug tests</button>{debugTests.length > 0 && <div className={`itv2-debug-verdict ${debugTests.every(test => test.ok) ? "pass" : "fail"}`} role="status">{debugTests.every(test => test.ok) ? "All debug tests passed." : `${debugTests.filter(test => !test.ok).length} debug test(s) still failing.`}</div>}</div>}
       </div>
     </LabFrame>
   );
