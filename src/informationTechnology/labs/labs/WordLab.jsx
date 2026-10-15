@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { makeDocx } from "../models/officeExports.mjs";
 import { readLabWorkspace, writeLabWorkspace } from "../models/workspacePersistence.mjs";
 import { buildDocumentHtml } from "../models/documentExport.mjs";
 import { mergeLetter, parseMergeRecipients } from "../models/mailMerge.mjs";
@@ -55,6 +56,14 @@ export default function WordLab({ lab, userId, completed, onBack, onComplete }) 
   useEffect(() => {
     writeLabWorkspace(userId, "word", { bodyText, bodyHtml, heading, font, size, align, bullets, columns, orientation, table, header, footer, trackChanges, comment, mergeField, recipientsCsv, formControl });
   }, [userId, bodyText, bodyHtml, heading, font, size, align, bullets, columns, orientation, table, header, footer, trackChanges, comment, mergeField, recipientsCsv, formControl]);
+
+  function exportDocx() {
+    const data = makeDocx({ title: "SPARK Technology Club Newsletter", body: editorRef.current?.innerText ?? bodyText, header, footer, orientation });
+    const url = URL.createObjectURL(new Blob([data], { type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document" }));
+    const anchor = document.createElement("a"); anchor.href = url; anchor.download = "SPARK-Technology-Club.docx";
+    document.body.appendChild(anchor); anchor.click(); anchor.remove(); URL.revokeObjectURL(url);
+    setMessage("Basic DOCX exported. Check advanced formatting in Word before submitting any document.");
+  }
 
   function exportHtml() {
     const html = buildDocumentHtml({ title: "SPARK Technology Club Newsletter", body: editorRef.current?.innerText ?? bodyText, bodyHtml: sanitizeDocumentMarkup(editorRef.current?.innerHTML ?? bodyHtml), header, footer, orientation, columns, table, bullets, mergeField });
@@ -165,7 +174,7 @@ export default function WordLab({ lab, userId, completed, onBack, onComplete }) 
         <WindowBar title="Technology Club Newsletter.docx" subtitle="SPARK Word Processing Studio"/>
         <RibbonTabs tabs={["Home", "Insert", "Layout", "Review", "Mailings", "File"]} active={tab} onChange={setTab}/>
         <div className="itv2-ribbon" aria-label={`${tab} tools`}>
-          {tab === "File" && <ToolGroup label="Export"><button type="button" onClick={exportHtml}>Export HTML</button><button type="button" onClick={() => window.print()}>Print</button></ToolGroup>}
+          {tab === "File" && <ToolGroup label="Export"><button type="button" onClick={exportDocx}>Export DOCX</button><button type="button" onClick={exportHtml}>Export HTML</button><button type="button" onClick={() => window.print()}>Print</button></ToolGroup>}
           {tab === "Home" && <>
             <ToolGroup label="Font">
               <label htmlFor="word-font">Typeface</label><select id="word-font" value={font} onChange={event => { const value = event.target.value; setFont(value); formatSelection("fontName", value, "font", value); }}><option>Aptos</option><option>Arial</option><option>Georgia</option></select>
