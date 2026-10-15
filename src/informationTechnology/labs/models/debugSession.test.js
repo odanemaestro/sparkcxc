@@ -1,4 +1,4 @@
-import {createDebugSession,debugStep,debugContinue,debugVariables,toggleBreakpoint} from "./debugSession.mjs";
+import {createDebugSession,debugStep,debugContinue,debugVariables,toggleBreakpoint,setBreakpointCondition,breakpointMatches} from "./debugSession.mjs";
 const run={ok:true,trace:[
  {line:1,statement:"READ",variables:{mark:49},detail:"49"},
  {line:3,statement:"IF",variables:{mark:49},detail:"FALSE"},
@@ -28,4 +28,15 @@ describe("SPARK IT learning debugger",()=>{
    expect(session.breakpoints).toEqual([]);
    expect(debugContinue(session)).toMatchObject({cursor:2,phase:"complete"});
  });
+});
+
+test("conditional breakpoints evaluate recorded variables without running arbitrary code",()=>{
+ expect(breakpointMatches("mark >= 50",{mark:49})).toBe(false);
+ expect(breakpointMatches("mark < 50",{mark:49})).toBe(true);
+ expect(breakpointMatches("process.exit(1)",{mark:49})).toBe(false);
+ let state=toggleBreakpoint(createDebugSession(run),3,7);
+ state=setBreakpointCondition(state,3,"mark >= 50");
+ expect(debugContinue(state)).toMatchObject({cursor:2,phase:"complete"});
+ state=createDebugSession(run,[3],{3:"mark < 50"});
+ expect(debugContinue(state)).toMatchObject({cursor:1,phase:"paused"});
 });
