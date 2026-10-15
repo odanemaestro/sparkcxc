@@ -60,11 +60,11 @@ export const PHYSICS_REFERENCE_MEDIA=Object.freeze({
       "Ideal transformer model. Real transformers have losses."),
   ],
   E3:[
-    ref("Half Life.gif","How repeated half-lives reduce a quantity",
-      "Graph showing the amount of a radioactive sample decreasing by half over successive half-life intervals.",
-      "At each half-life interval, half of the remaining undecayed nuclei would be expected to remain. This graph is a statistical model.",
-      "KieranMaher",PD,"image",
-      "This is an illustrative decay model; individual radioactive decays are random."),
+    ref("Activity decay.svg","Radioactive decay and half-life",
+      "Graph of radioactive activity decreasing exponentially over time, with a marked half-life.",
+      "After each half-life, the expected activity and number of undecayed nuclei are halved. Read the axes and marked intervals.",
+      "Pieter Kuiper, derived from Ktims",PD,"image",
+      "The curve is statistical. Individual radioactive decays occur unpredictably."),
   ],
 });
 export const IT_REFERENCE_MEDIA=Object.freeze({
