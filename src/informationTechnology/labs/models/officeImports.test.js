@@ -1,4 +1,7 @@
 /** @jest-environment jsdom */
+import { TextEncoder, TextDecoder } from "util";
+globalThis.TextEncoder = TextEncoder;
+globalThis.TextDecoder = TextDecoder;
 import {createOfficePackage} from "./officePackage.mjs";
 import {readOfficeEntries,importBasicDocx,importBasicXlsx} from "./officeImports.mjs";
 import {makeDocx,makeXlsx} from "./officeExports.mjs";
