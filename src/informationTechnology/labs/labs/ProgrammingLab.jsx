@@ -188,7 +188,7 @@ export default function ProgrammingLab({ lab, userId, completed, onBack, onCompl
           </div>
           <div className="itv2-debug-inspector">
             <div><strong>Source lines and breakpoints</strong><div className="itv2-breakpoints" role="group" aria-label="Toggle source breakpoints">
-              {code.split("\\n").map((line,index)=><button key={index} type="button" className={debugSession.breakpoints.includes(index+1)?"is-active":""} aria-pressed={debugSession.breakpoints.includes(index+1)} onClick={()=>setDebugSession(old=>toggleBreakpoint(old,index+1,code.split("\\n").length))}><span aria-hidden="true">{debugSession.breakpoints.includes(index+1)?"●":"○"}</span> {index+1} <code>{line||" "}</code></button>)}
+              {code.split("\n").map((line,index)=><button key={index} type="button" className={debugSession.breakpoints.includes(index+1)?"is-active":""} aria-pressed={debugSession.breakpoints.includes(index+1)} onClick={()=>setDebugSession(old=>toggleBreakpoint(old,index+1,code.split("\n").length))}><span aria-hidden="true">{debugSession.breakpoints.includes(index+1)?"●":"○"}</span> {index+1} <code>{line||" "}</code></button>)}
             </div></div>
             <div><strong>Debugger state</strong><p role="status">{debugSession.phase==="unavailable"?"Run a valid exercise first.":debugSession.phase==="complete"?"Execution complete":debugSession.cursor<0?"Paused before first step":`Paused at trace step ${debugSession.cursor+1} of ${debugSession.trace.length}`}</p>
               <dl>{Object.entries(debugVariables(debugSession)).map(([name,value])=><React.Fragment key={name}><dt>{name}</dt><dd>{String(value)}</dd></React.Fragment>)}</dl>
