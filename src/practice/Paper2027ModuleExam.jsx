@@ -1,3 +1,4 @@
+import BackArrowIcon from "../components/ui/BackArrowIcon";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import MathText from "./MathText";
 import Paper2ResponseInput from "./Paper2ResponseInput";
@@ -483,7 +484,7 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false,
     const moduleInfo = paper.moduleInfo;
     return (
       <main className="paper-start-shell paper2-start-shell paper2027-start-shell">
-        <button className="paper-text-button" type="button" onClick={onExit}>← 2027 Syllabus Practice</button>
+        <button className="paper-text-button" type="button" onClick={onExit}><BackArrowIcon/> 2027 Syllabus Practice</button>
         <section className="paper-start-card paper2-start-card paper2027-start-card">
           <div className="paper2027-badge">2027 syllabus</div>
           <div className="paper-start-kicker">CSEC Mathematics · {modeTitle(paper)}</div>
@@ -602,7 +603,7 @@ export default function Paper2027ModuleExam({ paper, onExit, startFresh = false,
     <main className="paper-exam-shell paper2-exam-shell paper2027-exam-shell">
       <header className="paper-exam-header paper2-exam-header">
         <div className="paper2-brand-wrap">
-          <button type="button" className="paper2-back-control" onClick={onExit}>← Practice</button>
+          <button type="button" className="paper2-back-control" onClick={onExit}><BackArrowIcon/> Practice</button>
           <div className="paper-exam-brand"><strong>SPARK</strong><div><span>CSEC Mathematics · 2027</span><b>{modeTitle(paper)} · Paper {paper.letter}</b></div></div>
         </div>
         <div className={`paper-timer ${remaining <= 300 ? "is-low" : ""}`}><span>Time remaining</span><strong>{formatClock(remaining)}</strong></div>
