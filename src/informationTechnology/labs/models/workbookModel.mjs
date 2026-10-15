@@ -87,26 +87,44 @@ function evaluateExpression(source, workbook, sheetName, trail) {
     return rangeAddresses(range[3], range[4]).map(address => checkedCell(workbook, targetSheet, address, trail));
   };
   if (fn) {
-    const name = fn[1].toUpperCase(); const args = splitArguments(fn[2]); const values = args.flatMap(arg => valuesFor(arg || ''));
-    const numbers = values.map(Number).filter(Number.isFinite);
+    const name = fn[1].toUpperCase(); const args = splitArguments(fn[2]);
+    // Branching and criteria functions must not eagerly evaluate all arguments.
+    if (name === 'IF') {
+      if (args.length !== 3) fail('#VALUE!', 'IF needs a condition and two results');
+      return evaluateExpression(evaluateCondition(args[0], workbook, sheetName, trail) ? args[1] : args[2], workbook, sheetName, trail);
+    }
+    if (name === 'COUNTIF') {
+      if (args.length !== 2) fail('#VALUE!', 'COUNTIF needs a range and a criterion');
+      const tested = valuesFor(args[0]);
+      const criterion = evaluateExpression(args[1], workbook, sheetName, trail);
+      return tested.filter(value => criterionMatch(value, criterion)).length;
+    }
+    if (name === 'VLOOKUP') {
+      if (args.length < 3 || args.length > 4) fail('#VALUE!', 'VLOOKUP needs a lookup value, range and column number');
+      const wanted = evaluateExpression(args[0], workbook, sheetName, trail);
+      const range = /^(?:'([^']+)'!|([A-Za-z][\\w ]*)!)?(\\$?[A-Z]+\\$?\\d+):(\\$?[A-Z]+\\$?\\d+)$/i.exec(args[1] || '');
+      if (!range) fail('#REF!', 'VLOOKUP needs a table range');
+      const targetSheet = range[1] || range[2] || sheetName;
+      const addresses = rangeAddresses(range[3], range[4]);
+      const columns = Math.abs(columnNumber(range[4].match(/[A-Z]+/i)[0]) - columnNumber(range[3].match(/[A-Z]+/i)[0])) + 1;
+      const resultColumn = Number(evaluateExpression(args[2], workbook, sheetName, trail));
+      if (!Number.isInteger(resultColumn) || resultColumn < 1 || resultColumn > columns) fail('#REF!', 'VLOOKUP result column is outside the table range');
+      if (args[3] && evaluateExpression(args[3], workbook, sheetName, trail) !== false) fail('#N/A', 'Approximate lookup is not supported. Use FALSE for exact lookup.');
+      for (let i = 0; i < addresses.length; i += columns) {
+        if (checkedCell(workbook, targetSheet, addresses[i], trail) === wanted) return checkedCell(workbook, targetSheet, addresses[i + resultColumn - 1], trail);
+      }
+      fail('#N/A', 'Lookup value was not found');
+    }
+    const values = args.flatMap(arg => valuesFor(arg || ''));
+    const numbers = values.filter(value => value !== '' && value !== null).map(Number).filter(Number.isFinite);
     if (name === 'SUM') return numbers.reduce((a, b) => a + b, 0);
     if (name === 'AVERAGE') return numbers.length ? numbers.reduce((a, b) => a + b, 0) / numbers.length : 0;
     if (name === 'MAX') return numbers.length ? Math.max(...numbers) : 0;
     if (name === 'MIN') return numbers.length ? Math.min(...numbers) : 0;
     if (name === 'COUNT') return numbers.length;
     if (name === 'COUNTA') return values.filter(value => value !== '').length;
-    if (name === 'COUNTIF') return values.filter(value => criterionMatch(value, scalar(args[1]))).length;
     if (name === 'DATE') { const [y, m, d] = args.map(arg => Number(evaluateExpression(arg, workbook, sheetName, trail))); return new Date(Date.UTC(y, m - 1, d)).toISOString().slice(0, 10); }
-    if (name === 'PMT') { const rate = Number(evaluateExpression(args[0], workbook, sheetName, trail)); const periods = Number(evaluateExpression(args[1], workbook, sheetName, trail)); const present = Number(evaluateExpression(args[2], workbook, sheetName, trail)); return rate === 0 ? -(present / periods) : -(rate * present * (1 + rate) ** periods) / ((1 + rate) ** periods - 1); }
-    if (name === 'IF') { const condition = evaluateCondition(args[0], workbook, sheetName, trail); return evaluateExpression(condition ? args[1] : args[2], workbook, sheetName, trail); }
-    if (name === 'VLOOKUP') {
-      const wanted = evaluateExpression(args[0], workbook, sheetName, trail); const range = /^(\$?[A-Z]+\$?\d+):(\$?[A-Z]+\$?\d+)$/i.exec(args[1] || '');
-      if (!range) fail('#REF!', 'VLOOKUP needs a table range');
-      const addresses = rangeAddresses(range[1], range[2]); const columns = columnNumber(range[2].match(/[A-Z]+/i)[0]) - columnNumber(range[1].match(/[A-Z]+/i)[0]) + 1; const resultColumn = Number(evaluateExpression(args[2], workbook, sheetName, trail));
-      if (resultColumn < 1 || resultColumn > columns) fail('#REF!', 'VLOOKUP result column is outside the table range');
-      for (let i = 0; i < addresses.length; i += columns) if (checkedCell(workbook, sheetName, addresses[i], trail) === wanted) return checkedCell(workbook, sheetName, addresses[i + resultColumn - 1], trail);
-      fail('#N/A', 'Lookup value was not found');
-    }
+    if (name === 'PMT') { const rate = Number(evaluateExpression(args[0], workbook, sheetName, trail)); const periods = Number(evaluateExpression(args[1], workbook, sheetName, trail)); const present = Number(evaluateExpression(args[2], workbook, sheetName, trail)); if (!Number.isFinite(periods) || periods <= 0) fail('#NUM!', 'Periods must be greater than zero'); return rate === 0 ? -(present / periods) : -(rate * present * (1 + rate) ** periods) / ((1 + rate) ** periods - 1); }
     fail('#NAME?', `Unknown function ${name}`);
   }
   const comparison = /^(.*?)(>=|<=|<>|=|>|<)(.*)$/.exec(expression);
