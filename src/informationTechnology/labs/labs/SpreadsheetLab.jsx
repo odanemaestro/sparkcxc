@@ -29,6 +29,37 @@ function displayValue(result, currency = false) {
   return String(result ?? "");
 }
 
+function WorksheetChart({ type, labels, values }) {
+  const safe = values.map(value => Number.isFinite(Number(value)) ? Math.max(0, Number(value)) : 0);
+  const max = Math.max(1, ...safe);
+  const total = safe.reduce((sum, value) => sum + value, 0);
+  const colors = ["#527DCA", "#27A89A", "#DCA34C", "#9B73C5"];
+  const points = safe.map((value, index) => `${50 + index * 90},${170 - value / max * 130}`).join(" ");
+  const slices = safe.reduce((state, value, index) => {
+    if (!total || value <= 0) return state;
+    const start = state.angle; const end = start + value / total * Math.PI * 2;
+    const point = angle => [180 + 75 * Math.cos(angle), 105 + 75 * Math.sin(angle)];
+    const [x1, y1] = point(start); const [x2, y2] = point(end);
+    const path = `M 180 105 L ${x1} ${y1} A 75 75 0 ${end - start > Math.PI ? 1 : 0} 1 ${x2} ${y2} Z`;
+    return { angle: end, items: [...state.items, { path, color: colors[index], label: labels[index], value }] };
+  }, { angle: -Math.PI / 2, items: [] }).items;
+  return <div className="itv2-chart-visual">
+    <svg viewBox="0 0 400 215" role="img" aria-label={`${type} chart of item totals`} style={{ width: "100%", maxWidth: 490, height: "auto" }}>
+      {type === "Pie" ? (slices.length === 1
+        ? <circle cx="180" cy="105" r="75" fill={slices[0].color}/>
+        : slices.map((slice, index) => <path key={index} d={slice.path} fill={slice.color}><title>{slice.label}: {slice.value}</title></path>))
+        : <>
+          <line x1="25" y1="175" x2="385" y2="175" stroke="currentColor" opacity="0.45"/>
+          {type === "Line" ? <><polyline points={points} fill="none" stroke={colors[0]} strokeWidth="3"/>{safe.map((value,index) => <circle key={index} cx={50+index*90} cy={170-value/max*130} r="5" fill={colors[index]}><title>{labels[index]}: {value}</title></circle>)}</>
+            : safe.map((value,index) => type === "Bar"
+              ? <rect key={index} x="30" y={20+index*40} width={value/max*310} height="24" rx="3" fill={colors[index]}><title>{labels[index]}: {value}</title></rect>
+              : <rect key={index} x={34+index*90} y={170-value/max*130} width="40" height={value/max*130} fill={colors[index]}><title>{labels[index]}: {value}</title></rect>)}
+        </>}
+    </svg>
+    <div className="itv2-chart-legend">{labels.map((label, index) => <span key={index}><span aria-hidden="true" style={{ color: colors[index] }}>● </span>{label}: {safe[index].toLocaleString()}</span>)}</div>
+  </div>;
+}
+
 export default function SpreadsheetLab({ lab, userId, completed, onBack, onComplete }) {
   const [tab, setTab] = useState("Home");
   const [sheet, setSheet] = useState("Sales");
@@ -61,7 +92,6 @@ export default function SpreadsheetLab({ lab, userId, completed, onBack, onCompl
   }))), [workbook]);
 
   const chartValues = [2, 3, 4, 5].map(row => Number(values[`D${row}`].value) || 0);
-  const maxChart = Math.max(1, ...chartValues);
 
   const visibleRows = useMemo(() => [2, 3, 4, 5]
     .filter(row => filter === "All" || values[`G${row}`].value === filter)
@@ -215,7 +245,7 @@ export default function SpreadsheetLab({ lab, userId, completed, onBack, onCompl
           </div>}
 
           {pivot && <aside className="itv2-pivot-panel" aria-label="Pivot-style parish summary"><strong>Parish summary</strong>{Object.entries(parishSummary).map(([name, total]) => <div key={name}><span>{name}</span><b>{displayValue(total, true)}</b></div>)}</aside>}
-          {chart && <aside className="itv2-chart-panel" aria-label={`${chart} chart`}><strong>{chart} chart</strong><div className="itv2-mini-chart">{chartValues.map((value, index) => <i key={index} style={{ height: `${Math.max(4, value / maxChart * 100)}%` }} title={`${workbook.Sales[`A${index + 2}`]}: ${displayValue(value, true)}`}/>)}</div></aside>}
+          {chart && <aside className="itv2-chart-panel" aria-label={`${chart} chart`}><strong>{chart} chart</strong><WorksheetChart type={chart} labels={[2,3,4,5].map(row => String(values[`A${row}`].value))} values={chartValues}/></aside>}
         </WorkspaceViewport>
 
         <div className="itv2-sheet-tabs" role="tablist" aria-label="Worksheets">
