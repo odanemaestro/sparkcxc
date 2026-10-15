@@ -1,3 +1,4 @@
+import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import React,{useEffect,useMemo,useRef,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
 
@@ -101,7 +102,7 @@ export default function FnhHistoricalPaper2Exam({paper:PAPER,onBack,supabase,use
   </div>;
   if(attempt.phase==="instructions")return <main className="fnh-exam fnh-historical-exam">
     <div className="fnh-exam-container">
-      <div className="fnh-exam-top"><button type="button" className="fnh-outline" onClick={onBack}>← Back to Paper 2 archive</button></div>
+      <div className="fnh-exam-top"><button type="button" className="fnh-outline" onClick={onBack}><BackArrowIcon/> Back to Paper 2 archive</button></div>
       <section className="fnh-exam-card fnh-instructions">
         <small>{PAPER.year} MAY/JUNE · {PAPER.subjectAtExamination.toUpperCase()} · GENERAL PROFICIENCY</small>
         <h1>Paper 2 examination instructions</h1>
@@ -121,7 +122,7 @@ export default function FnhHistoricalPaper2Exam({paper:PAPER,onBack,supabase,use
     </div>
   </main>;
   return <main className="fnh-exam fnh-p2 fnh-historical-exam"><div className="fnh-exam-container">
-    <div className="fnh-exam-top"><button type="button" className="fnh-outline" onClick={()=>exam?setModal("exit"):onBack?.()}>← {exam?"Exit examination":"Back to Paper 2 archive"}</button><span>{PAPER.year} MAY/JUNE · HISTORICAL PAPER 02</span></div>
+    <div className="fnh-exam-top"><button type="button" className="fnh-outline" onClick={()=>exam?setModal("exit"):onBack?.()}><BackArrowIcon/> {exam?"Exit examination":"Back to Paper 2 archive"}</button><span>{PAPER.year} MAY/JUNE · HISTORICAL PAPER 02</span></div>
     <header className="fnh-exam-card fnh-session-heading"><div><small>{review?"HISTORICAL PAPER · ANSWER REVIEW":`${PAPER.year} GENERAL PROFICIENCY · EXAMINATION`}</small>
       <h1>{PAPER.subjectAtExamination}</h1><p>{review?"Review all compulsory and selected optional questions.":`Question ${question.number} · ${answered}/${totalParts} parts answered`}</p></div>
       <div className="fnh-timer"><span>{review?"Self-checked marks":"Time remaining"}</span><strong>{review?`${selfScore.checked}/80`:clock(remaining)}</strong></div>
