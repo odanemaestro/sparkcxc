@@ -1,3 +1,5 @@
+import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
+import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import React,{useEffect,useMemo,useState} from "react";
 import {fnhHistoricalPaper1Reader} from "../data/fnhHistoricalPaper1ReleaseGate";
 import FnhPaper1HistoricalDiagram from "./FnhPaper1HistoricalDiagram";
@@ -43,13 +45,13 @@ export default function FnhHistoricalPaper1Reader({sourceId,userId,onBack}){
  };
  if(!source)return <main className="fnh-exam fnh-source-reader">
   <div className="fnh-exam-container">
-   <button type="button" className="fnh-outline" onClick={onBack}>← Back to historical papers</button>
+   <button type="button" className="fnh-outline" onClick={onBack}><BackArrowIcon/> Back to historical papers</button>
    <section className="fnh-exam-card"><h1>Source not available for review</h1>
     <p>The supplied file has not passed the source identity and question-content checks.</p></section>
   </div>
  </main>;
  return <main className="fnh-exam fnh-source-reader"><div className="fnh-exam-container">
-  <div className="fnh-exam-top"><button type="button" className="fnh-outline" onClick={onBack}>← Back to Paper 1 sources</button>
+  <div className="fnh-exam-top"><button type="button" className="fnh-outline" onClick={onBack}><BackArrowIcon/> Back to Paper 1 sources</button>
    <span>{source.year} · Historical question review</span>
   </div>
   <header className="fnh-exam-card fnh-source-reader-header">
@@ -91,12 +93,12 @@ export default function FnhHistoricalPaper1Reader({sourceId,userId,onBack}){
     </fieldset>
     <div className="fnh-source-reader-navigation">
      <button type="button" className="fnh-outline" disabled={position===0}
-      onClick={()=>setPosition(n=>Math.max(0,n-1))}>← Previous</button>
+      onClick={()=>setPosition(n=>Math.max(0,n-1))}><BackArrowIcon/> Previous</button>
      <button type="button" className="fnh-outline" disabled={!selected[question.number]} onClick={clear}>
       Clear choice
      </button>
      <button type="button" className="fnh-primary" disabled={position>=questions.length-1}
-      onClick={()=>setPosition(n=>Math.min(questions.length-1,n+1))}>Next question →</button>
+      onClick={()=>setPosition(n=>Math.min(questions.length-1,n+1))}>Next question <ForwardArrowIcon/></button>
     </div>
     <p className="fnh-source-reader-footnote">
      This paper is for question practice only. Selections do not affect your scores or progress report.
