@@ -15,6 +15,7 @@ import SocialStudiesInteractiveActivity from "./SocialStudiesInteractiveActivity
 import SocialStudiesSbaToolkit from "./SocialStudiesSbaToolkit";
 import "../socialStudies.css";
 import "../../subjects/sparkSpecializedStudyPolish.css";
+import "../socialStudiesEditorialV2.css";
 
 const SUBJECT_ID="social-studies";
 const STUDY_PATH="/study/social-studies";
@@ -98,146 +99,160 @@ function PracticeCheck({ questions=[] , onComplete }){
 }
 
 function LessonView({
-  lesson,
-  completed,
-  previousLesson,
-  nextLesson,
-  onBack,
-  onComplete,
-  onOpenLesson,
-  onActivity,
-  saving,
+  lesson,completed,previousLesson,nextLesson,onBack,onComplete,onOpenLesson,onActivity,saving,
 }){
+  const [stage,setStage]=useState("learn");
   const [examOpen,setExamOpen]=useState(false);
   const [examAnswer,setExamAnswer]=useState("");
+  const lessonNumber=SOCIAL_STUDIES_LESSONS.findIndex(item=>item.id===lesson.id)+1;
   useEffect(()=>{
+    setStage("learn");
     setExamOpen(false);
     setExamAnswer("");
     window.scrollTo?.(0,0);
   },[lesson.id]);
+  const goToStage=next=>{
+    setStage(next);
+    document.getElementById("ss-lesson-flow")?.scrollIntoView?.({block:"start",behavior:"auto"});
+  };
+  const phases=[
+    {id:"learn",name:"Learn",description:"Read the notes"},
+    {id:"explore",name:"Explore",description:"See it in real life"},
+    {id:"practice",name:"Practise",description:"Check what you know"},
+  ];
 
-  return <main className="ss-course">
+  return <main className="ss-course ss-lesson-page">
     <div className="ss-shell">
       <button type="button" className="ss-back" onClick={onBack}><BackArrowIcon/><span>Back to course</span></button>
       <header className="ss-lesson-hero">
-        <div className="ss-eyebrow">{lesson.sectionId} · Objectives {lesson.objectiveCodes.join(", ")}</div>
+        <div className="ss-eyebrow">Lesson {lessonNumber} of {SOCIAL_STUDIES_LESSONS.length} · {lesson.sectionId}</div>
         <h1>{lesson.title}</h1>
         <p>{lesson.introduction}</p>
       </header>
 
-      <section className="ss-panel ss-objectives-panel">
-        <div className="ss-panel-label">What CXC expects</div>
-        <h2>Lesson goals</h2>
-        <ul>{lesson.objectives.map(item=><li key={item}>{item}</li>)}</ul>
-      </section>
+      <nav className="ss-lesson-steps" aria-label="Lesson learning steps">
+        {phases.map((phase,index)=><button type="button" key={phase.id}
+          className={stage===phase.id?"active":""}
+          aria-current={stage===phase.id?"step":undefined}
+          aria-controls={"ss-step-"+phase.id}
+          onClick={()=>goToStage(phase.id)}>
+          <span className="ss-step-number">{index+1}</span>
+          <span className="ss-step-label"><strong>{phase.name}</strong><small>{phase.description}</small></span>
+        </button>)}
+      </nav>
 
-      <section className="ss-panel">
-        <div className="ss-panel-label">Learn it</div>
-        <h2>Teacher notes</h2>
-        <div className="ss-note-stack">
-          {lesson.noteSections.map((section,index)=><article key={section.title || index}>
-            <h3>{section.title}</h3>
-            {(section.paragraphs || []).map((paragraph,i)=><p key={i}>{paragraph}</p>)}
-            {section.bullets?.length>0 && <ul>{section.bullets.map(point=><li key={point}>{point}</li>)}</ul>}
-          </article>)}
+      <div id="ss-lesson-flow" className="ss-lesson-flow">
+        <div id="ss-step-learn" className="ss-stage-content" hidden={stage!=="learn"}>
+          <div className="ss-stage-intro">
+            <span>Start here</span><h2>Understand the topic</h2>
+            <p>Read the notes and explain the ideas in your own words.</p>
+          </div>
+          <details className="ss-lesson-goals">
+            <summary><span>Lesson goals <small>{lesson.objectives.length} syllabus objectives</small></span><span className="ss-disclosure-chevron" aria-hidden="true">⌄</span></summary>
+            <div className="ss-disclosure-body"><ul>{lesson.objectives.map(item=><li key={item}>{item}</li>)}</ul></div>
+          </details>
+          <section className="ss-panel ss-notes-panel">
+            <div className="ss-panel-label">Teacher notes</div>
+            <div className="ss-note-stack">
+              {lesson.noteSections.map((section,index)=><article key={section.title || index}>
+                <h3>{section.title}</h3>
+                {(section.paragraphs || []).map((paragraph,i)=><p key={i}>{paragraph}</p>)}
+                {section.bullets?.length>0 && <ul>{section.bullets.map(point=><li key={point}>{point}</li>)}</ul>}
+              </article>)}
+            </div>
+          </section>
+          <div className="ss-stage-actions">
+            <button type="button" className="ss-primary" onClick={()=>goToStage("explore")}>Explore examples <span aria-hidden="true">→</span></button>
+          </div>
         </div>
-      </section>
 
-      <section className="ss-panel">
-        <div className="ss-panel-label">Caribbean context</div>
-        <h2>See it in real life</h2>
-        <div className="ss-example-grid">{lesson.examples.map((example,index)=><article key={index}><span>{index+1}</span><p>{example}</p></article>)}</div>
-      </section>
+        <div id="ss-step-explore" className="ss-stage-content" hidden={stage!=="explore"}>
+          <div className="ss-stage-intro">
+            <span>Apply the ideas</span><h2>Social Studies in real life</h2>
+            <p>Use Caribbean examples and interactive activities to connect what you learned.</p>
+          </div>
+          <section className="ss-panel ss-examples-panel">
+            <h3>Caribbean examples</h3>
+            <div className="ss-example-grid">{lesson.examples.map((example,index)=><article key={index}><span>{index+1}</span><p>{example}</p></article>)}</div>
+          </section>
 
-      {lesson.visual && lesson.interactive?.type!=="map-spotter" && lesson.interactive?.type!=="family-tree" && <figure className="ss-source-visual ss-panel">
-        <img src={lesson.visual.imageUrl} alt={lesson.visual.title}/>
-        <figcaption>{lesson.visual.attribution} <a href={lesson.visual.sourceUrl} target="_blank" rel="noreferrer">Source and licence</a></figcaption>
-      </figure>}
+          {lesson.visual && lesson.interactive?.type!=="map-spotter" && lesson.interactive?.type!=="family-tree" && <figure className="ss-source-visual ss-panel">
+            <img src={lesson.visual.imageUrl} alt={lesson.visual.title}/>
+            <figcaption>{lesson.visual.attribution} <a href={lesson.visual.sourceUrl} target="_blank" rel="noreferrer">Source and licence</a></figcaption>
+          </figure>}
 
-      <SocialStudiesInteractiveActivity
-        activity={lesson.interactive}
-        visual={lesson.visual}
-        onComplete={({score,total})=>onActivity?.({score,total})}
-      />
-
-      <section className="ss-panel">
-        <div className="ss-panel-label">Know the language</div>
-        <h2>Key terms</h2>
-        <div className="ss-term-grid">
-          {lesson.vocabulary.map(item=><article key={item.term}><strong>{item.term}</strong><p>{item.definition}</p>{item.example && <small>{item.example}</small>}</article>)}
+          <SocialStudiesInteractiveActivity
+            activity={lesson.interactive}
+            visual={lesson.visual}
+            onComplete={({score,total})=>onActivity?.({score,total})}
+          />
+          <details className="ss-lesson-vocabulary">
+            <summary><span>Key terms <small>{lesson.vocabulary.length} definitions and examples</small></span><span className="ss-disclosure-chevron" aria-hidden="true">⌄</span></summary>
+            <div className="ss-disclosure-body"><div className="ss-term-grid">
+              {lesson.vocabulary.map(item=><article key={item.term}><strong>{item.term}</strong><p>{item.definition}</p>{item.example && <small>{item.example}</small>}</article>)}
+            </div></div>
+          </details>
+          <div className="ss-stage-actions ss-stage-actions-split">
+            <button type="button" className="ss-secondary" onClick={()=>goToStage("learn")}>← Back to notes</button>
+            <button type="button" className="ss-primary" onClick={()=>goToStage("practice")}>Try practice <span aria-hidden="true">→</span></button>
+          </div>
         </div>
-      </section>
 
-      <section className="ss-panel">
-        <div className="ss-panel-label">Practise it</div>
-        <h2>Immediate check</h2>
-        <PracticeCheck questions={lesson.practice} onComplete={({score,total})=>onActivity?.({score,total,kind:"lesson-check"})}/>
-      </section>
-
-      <section className="ss-panel ss-exam-panel">
-        <div className="ss-exam-head">
-          <div className="ss-panel-label">Exam practice</div>
-          <span>{lesson.exam.marks} marks</span>
+        <div id="ss-step-practice" className="ss-stage-content" hidden={stage!=="practice"}>
+          <div className="ss-stage-intro">
+            <span>Make it stick</span><h2>Check your understanding</h2>
+            <p>Try the questions, then practise writing a response in CSEC style.</p>
+          </div>
+          <section className="ss-panel ss-check-panel">
+            <h3>Quick questions</h3>
+            <PracticeCheck questions={lesson.practice} onComplete={({score,total})=>onActivity?.({score,total,kind:"lesson-check"})}/>
+          </section>
+          <section className="ss-panel ss-exam-panel">
+            <div className="ss-exam-head"><h3>Write like a candidate</h3><span>{lesson.exam.marks} marks</span></div>
+            <p className="ss-exam-prompt">{lesson.exam.prompt}</p>
+            <label className="ss-exam-answer-label" htmlFor="ss-exam-answer">Your response</label>
+            <textarea id="ss-exam-answer"
+              value={examAnswer}
+              onChange={event=>setExamAnswer(event.target.value)}
+              placeholder="Plan and write your answer here before opening the guide."
+            />
+            <button type="button" className="ss-secondary" aria-expanded={examOpen} onClick={()=>setExamOpen(value=>!value)}>
+              {examOpen ? "Hide marking guide" : "Show marking guide"}
+            </button>
+            {examOpen && <div className="ss-marking-guide">
+              <strong>A strong answer should:</strong>
+              <ol>{lesson.exam.guide.map(point=><li key={point}>{point}</li>)}</ol>
+            </div>}
+          </section>
+          <Card className="ss-key-points">
+            <h3>Before you finish</h3>
+            <ul>{lesson.keyPoints.map(point=><li key={point}>{point}</li>)}</ul>
+          </Card>
+          <div className="ss-stage-actions">
+            <button type="button" className="ss-secondary" onClick={()=>goToStage("explore")}>← Back to activities</button>
+          </div>
         </div>
-        <p className="ss-exam-prompt">{lesson.exam.prompt}</p>
-        <textarea
-          value={examAnswer}
-          onChange={event=>setExamAnswer(event.target.value)}
-          placeholder="Plan and write your answer here before opening the guide."
-        />
-        <button type="button" className="ss-secondary" onClick={()=>setExamOpen(value=>!value)}>
-          {examOpen ? "Hide marking guide" : "Show marking guide"}
-        </button>
-        {examOpen && <div className="ss-marking-guide">
-          <strong>A strong answer should:</strong>
-          <ol>{lesson.exam.guide.map(point=><li key={point}>{point}</li>)}</ol>
-        </div>}
-      </section>
+      </div>
 
-      <Card className="ss-key-points">
-        <div className="ss-panel-label">Before you leave</div>
-        <h2>Remember these</h2>
-        <ul>{lesson.keyPoints.map(point=><li key={point}>{point}</li>)}</ul>
-      </Card>
-
-      <section className="ss-source-list">
-        <strong>Lesson sources and further reading</strong>
+      <details className="ss-source-list ss-lesson-sources">
+        <summary>Lesson sources and further reading</summary>
         <div>{lesson.sources.map((source,index)=><a key={source.url+index} href={source.url} target="_blank" rel="noreferrer">{source.label}</a>)}</div>
-      </section>
+      </details>
 
       <div className="ss-lesson-footer">
-        {previousLesson ? (
-          <button
-            type="button"
-            className="ss-lesson-nav ss-lesson-nav-previous"
-            onClick={()=>onOpenLesson?.(previousLesson)}
-          >
-            <span aria-hidden="true">←</span>
-            <span>Previous</span>
-          </button>
-        ) : <span className="ss-lesson-nav-spacer" aria-hidden="true" />}
-
-        <button
-          type="button"
-          className={completed ? "ss-primary done ss-complete-action" : "ss-primary ss-complete-action"}
-          disabled={saving || completed}
-          onClick={onComplete}
-        >
-          {saving ? "Saving..." : completed ? "Lesson completed" : "Mark lesson complete"}
+        {previousLesson ? <button type="button" className="ss-lesson-nav ss-lesson-nav-previous" onClick={()=>onOpenLesson?.(previousLesson)}>
+          <span aria-hidden="true">←</span><span>Previous</span>
+        </button> : <span className="ss-lesson-nav-spacer" aria-hidden="true" />}
+        <button type="button"
+          className={completed?"ss-primary done ss-complete-action":"ss-primary ss-complete-action"}
+          disabled={saving||completed} onClick={onComplete}>
+          {saving?"Saving...":completed?"Lesson completed":"Mark lesson complete"}
         </button>
-
-        {nextLesson ? (
-          <button
-            type="button"
-            className="ss-lesson-nav ss-lesson-nav-next"
-            disabled={!completed}
-            onClick={()=>completed && onOpenLesson?.(nextLesson)}
-            title={!completed ? "Complete this lesson to unlock the next lesson." : undefined}
-          >
-            <span>Next Lesson</span>
-            <span aria-hidden="true">→</span>
-          </button>
-        ) : <span className="ss-lesson-nav-spacer" aria-hidden="true" />}
+        {nextLesson ? <button type="button" className="ss-lesson-nav ss-lesson-nav-next"
+          disabled={!completed} onClick={()=>completed&&onOpenLesson?.(nextLesson)}
+          title={!completed?"Complete this lesson to unlock the next lesson.":undefined}>
+          <span>Next lesson</span><span aria-hidden="true">→</span>
+        </button> : <span className="ss-lesson-nav-spacer" aria-hidden="true" />}
       </div>
     </div>
   </main>;
