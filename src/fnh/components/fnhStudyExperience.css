@@ -599,3 +599,28 @@ html[data-theme="dark"] :is(.spark-fnh-study,.spark-editorial-study) .spark-gene
     gap:12px;
   }
 }
+
+
+/* Typography parity with the approved Physics and IT study views.
+   Keep scientific labels, code samples and mathematical notation intact. */
+:is(.spark-fnh-study,.spark-editorial-study){
+  --spark-study-font:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  font-family:var(--spark-study-font);
+}
+:is(.spark-fnh-study,.spark-editorial-study)
+ :is(.spark-generic-study-hero-copy h1,.spark-generic-lesson-head h2,
+ .spark-generic-lesson-section h3,.spark-generic-outline-heading-copy,
+ .spark-generic-objectives,.spark-generic-lesson-summary,
+ .spark-generic-hero-actions,.spark-generic-lesson-footer){
+  font-family:var(--spark-study-font);
+}
+:is(.spark-fnh-study,.spark-editorial-study)
+ :is(.spark-generic-study-hero-copy h1,.spark-generic-lesson-head h2){
+  font-weight:760;
+  letter-spacing:-.032em;
+}
+:is(.spark-fnh-study,.spark-editorial-study)
+ :is(.spark-generic-outline button,.spark-generic-lesson-footer button,
+ .spark-generic-study-hero-actions button){
+  font-family:var(--spark-study-font);
+}
