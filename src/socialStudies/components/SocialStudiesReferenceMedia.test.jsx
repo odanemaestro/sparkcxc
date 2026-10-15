@@ -40,7 +40,7 @@ describe("Social Studies online learning references",()=>{
 
   test("links every diagram to creator and reuse licence",()=>{
     render(<SocialStudiesReferenceMedia topicId="a2-government-structure"/>);
-    expect(screen.getByText("Judkessler")).toBeInTheDocument();
+    expect(screen.getByText("Credit: Judkessler")).toBeInTheDocument();
     expect(screen.getByRole("link",{name:"CC0 1.0"})).toHaveAttribute("href",expect.stringContaining("creativecommons.org"));
     expect(screen.getByRole("link",{name:"Source"})).toHaveAttribute("href",expect.stringContaining("commons.wikimedia.org"));
     expect(screen.getByText(/parliamentary systems/)).toBeInTheDocument();
