@@ -1,5 +1,8 @@
 # FNH historical answer-key screenshots · focused review
 
+> **CORRECTION (2026-10-15, later review):** Original 2003 Q59 has **C = hypotension; D = hypertension**. An earlier SPARK transcription reversed those labels. The data was corrected to **D**, agreeing with the worked key. 2003 Q4 now provisionally selects **C (pawpaw)**, but fruit-shrinkage wording remains ambiguous. Earlier statements below asserting 2003 Q59=C or calling D erroneous are superseded.
+
+
 Evidence: eight user-provided screenshots dated 2026-10-15 from caribbeans.ai, showing generated answer-key tables. Some screenshots also display original scan pages alongside the key. **These are not authenticated CXC-issued keys.** Their letters must be compared with the actual option text, not accepted on authority.
 
 | Paper | Q | Screenshot letter | Current SPARK decision | Rationale |
