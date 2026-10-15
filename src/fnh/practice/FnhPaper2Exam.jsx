@@ -3,6 +3,7 @@ import React,{useEffect,useMemo,useRef,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
 import {FNH_PAPER2_FORMAT,fnhGetPaper2Set} from "../data/fnhPaper2Bank";
 import {fnhPartMarkingScheme,fnhSelfAssessmentMark,fnhSelfAssessmentTotal} from "./fnhPaper2Marking";
+import {fnhPaper2UploadedWorkedQuestion} from "../data/fnhPaper2UploadedWorkedReference";
 import {fnhWorkedSupplement} from "../data/fnhPaper2WorkedAnswerSupplements";
 import FnhHistoricalDiagram from "./FnhHistoricalDiagram";
 import FnhFoodLabelDesigner from "./FnhFoodLabelDesigner";
@@ -132,6 +133,7 @@ export default function FnhPaper2Exam({onBack,supabase,userId,setNumber=1,histor
               </div>}
             </div>;
           })}</div>
+        {review&&historical&&fnhPaper2UploadedWorkedQuestion(historicalPaper?.year,question.number)&&<details className="fnh-p2-worked-reference"><summary>Full worked answers and accepted examples for Question {question.number}</summary><p className="fnh-p2-worked-preformatted">{fnhPaper2UploadedWorkedQuestion(historicalPaper?.year,question.number)}</p><small>Supplementary worked examples provided for practice. Use the existing mark-by-mark rubric to award credit. Other valid answers may earn marks; this reference does not automatically grade writing.</small></details>}
           <div className="fnh-question-actions"><button type="button" className="fnh-outline" disabled={index===0} onClick={()=>update({index:index-1})}>Previous</button><button type="button" className="fnh-outline" disabled={index===5} onClick={()=>update({index:index+1})}>Next</button>{exam&&<button type="button" className="fnh-primary" onClick={()=>setModal("submit")}>Submit Paper 2</button>}{review&&<button type="button" className="fnh-primary" onClick={()=>setModal("restart")}>Start new attempt</button>}</div>
         </section>
         <aside className="fnh-exam-card fnh-navigation"><h2>Question navigator</h2><p>{answered} of {totalParts} parts answered</p><div className="fnh-nav-grid fnh-p2-nav">{evidence.map((row,i)=><button type="button" className={`${index===i?"active":""} ${row.answers.every(v=>v.answered)?"answered":""}`} key={row.id} aria-label={`Question ${i+1}`} onClick={()=>update({index:i})}>Q{i+1}</button>)}</div><p>{historical?`Six compulsory historical questions, 16 marks each.`:"Six questions. Each carries 6 knowledge and 10 application marks."}</p>{review&&<div className="fnh-self-review-summary"><strong>{selfScore.checked} / {selfScore.maximum} points you selected yourself</strong><p>{selfScore.reviewedParts} of {selfScore.totalParts} parts checked against the model answers.</p><small>Not a grade, percentage or verified CXC mark. A teacher must assess the actual written responses for a final result.</small></div>}</aside>
