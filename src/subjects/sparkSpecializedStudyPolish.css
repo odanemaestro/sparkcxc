@@ -304,3 +304,24 @@
 @media(prefers-reduced-motion:reduce){
   .it-subject-view :is(.it-section-card,.it-topic-card){transition:none;transform:none}
 }
+
+
+/* Simple arrow language: no filled icon tile for course navigation. */
+.it-subject-view :is(.it-section-card,.it-topic-card) .it-open-arrow{
+  width:26px;
+  height:26px;
+  flex:0 0 26px;
+  background:transparent;
+  border:0;
+  border-radius:0;
+  color:var(--study-editorial-ink);
+}
+.it-subject-view .it-open-arrow-icon{
+  width:20px;
+  height:20px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.5;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
