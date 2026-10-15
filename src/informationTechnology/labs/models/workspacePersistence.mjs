@@ -1,6 +1,6 @@
 const VERSION=1;
 const MAX_BYTES=250000;
-const VALID_LABS=new Set(["programming","spreadsheet","spreadsheet-validation","database","presentation","word"]);
+const VALID_LABS=new Set(["programming","spreadsheet","spreadsheet-validation","database","presentation","word","web"]);
 export function workspaceStorageKey(userId,labId) {
   if(!VALID_LABS.has(labId))return null;
   // Avoid long, malformed storage keys for unauthenticated or third-party IDs.
