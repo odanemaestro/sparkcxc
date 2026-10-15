@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { importBasicDocx } from "../models/officeImports.mjs";
 import { makeDocx } from "../models/officeExports.mjs";
 import { readLabWorkspace, writeLabWorkspace } from "../models/workspacePersistence.mjs";
 import { buildDocumentHtml } from "../models/documentExport.mjs";
@@ -58,6 +59,17 @@ export default function WordLab({ lab, userId, completed, onBack, onComplete }) 
     writeLabWorkspace(userId, "word", { bodyText, bodyHtml, heading, font, size, align, bullets, columns, orientation, table, tableRows, header, footer, trackChanges, comment, mergeField, recipientsCsv, formControl });
   }, [userId, bodyText, bodyHtml, heading, font, size, align, bullets, columns, orientation, table, tableRows, header, footer, trackChanges, comment, mergeField, recipientsCsv, formControl]);
 
+  async function importDocx(event) {
+    const file=event.target.files?.[0];
+    if(!file)return;
+    try {
+      const content=await importBasicDocx(await file.arrayBuffer());
+      setBodyText(content);setBodyHtml("");savedRange.current=null;
+      if(editorRef.current)editorRef.current.textContent=content;
+      setMessage("DOCX text imported. Check formatting because this basic importer does not preserve all Word styles.");
+    }catch(error){setMessage(error.message||"Could not read the DOCX file.");}
+    event.target.value="";
+  }
   function exportDocx() {
     const data = makeDocx({ title: "SPARK Technology Club Newsletter", body: editorRef.current?.innerText ?? bodyText, header, footer, orientation, tableRows:table?tableRows:[] });
     const url = URL.createObjectURL(new Blob([data], { type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document" }));
@@ -175,7 +187,7 @@ export default function WordLab({ lab, userId, completed, onBack, onComplete }) 
         <WindowBar title="Technology Club Newsletter.docx" subtitle="SPARK Word Processing Studio"/>
         <RibbonTabs tabs={["Home", "Insert", "Layout", "Review", "Mailings", "File"]} active={tab} onChange={setTab}/>
         <div className="itv2-ribbon" aria-label={`${tab} tools`}>
-          {tab === "File" && <ToolGroup label="Export"><button type="button" onClick={exportDocx}>Export DOCX</button><button type="button" onClick={exportHtml}>Export HTML</button><button type="button" onClick={() => window.print()}>Print</button></ToolGroup>}
+          {tab === "File" && <ToolGroup label="Export"><button type="button" onClick={exportDocx}>Export DOCX</button><label>Import DOCX<input type="file" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" onChange={importDocx}/></label><button type="button" onClick={exportHtml}>Export HTML</button><button type="button" onClick={() => window.print()}>Print</button></ToolGroup>}
           {tab === "Home" && <>
             <ToolGroup label="Font">
               <label htmlFor="word-font">Typeface</label><select id="word-font" value={font} onChange={event => { const value = event.target.value; setFont(value); formatSelection("fontName", value, "font", value); }}><option>Aptos</option><option>Arial</option><option>Georgia</option></select>
