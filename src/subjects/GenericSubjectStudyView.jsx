@@ -13,6 +13,8 @@ import TransportProcessExplorer from "./components/TransportProcessExplorer";
 import EnglishALessonExamples from "../englishA/components/EnglishALessonExamples";
 import IntegratedScienceText from "../integratedScience/components/IntegratedScienceText";
 import ChemistryInteractiveLab from "../chemistry/components/ChemistryInteractiveLab";
+import ChemistryReferenceDiagrams from "../chemistry/components/ChemistryReferenceDiagrams";
+import { chemistryReferencesFor } from "../chemistry/data/chemistryReferenceDiagrams";
 import FoodEnergyNutritionExplorer from "./components/FoodEnergyNutritionExplorer";
 import FoodPreservationExplorer from "./components/FoodPreservationExplorer";
 import FoodContaminationExplorer from "./components/FoodContaminationExplorer";
@@ -22,6 +24,8 @@ import FnhStudyPractice from "../fnh/components/FnhStudyPractice";
 import FnhDecisionLab from "../fnh/components/FnhDecisionLab";
 import FnhReferenceMedia from "../fnh/components/FnhReferenceMedia";
 import { fnhMediaForTopic } from "../fnh/data/fnhReferenceMedia";
+import SocialStudiesReferenceMedia from "../socialStudies/components/SocialStudiesReferenceMedia";
+import { socialStudiesMediaForTopic } from "../socialStudies/data/socialStudiesReferenceMedia";
 import {
   readSparkHashRoute,
   subscribeSparkRoute,
@@ -167,8 +171,10 @@ export function GenericLessonContent({
     : null;
   const isFnh = subjectId === "food-nutrition-and-health";
   const hasFnhMedia = isFnh && fnhMediaForTopic(topic?.id).length > 0;
+  const socialVisuals = subjectId === "social-studies" && socialStudiesMediaForTopic(topic?.id).length > 0;
   const isEditorial = editorial && !isFnh;
-  const hasExplore = Boolean(models.length || diagrams.length || references.length || subjectId==="english-a");
+  const hasChemistryVisuals = subjectId === "chemistry" && chemistryReferencesFor(topic?.id).length > 0;
+  const hasExplore = Boolean(models.length || diagrams.length || references.length || hasChemistryVisuals || subjectId==="english-a");
   const jumpTo = anchor => {
     if (typeof document === "undefined") return;
     const target = document.getElementById(anchor);
@@ -203,6 +209,7 @@ export function GenericLessonContent({
         <span className="spark-fnh-reading-nav-label">In this lesson</span>
         <div className="spark-fnh-reading-nav-links">
           {blocks.length>0&&<button type="button" onClick={()=>jumpTo("spark-lesson-notes")}>Read notes</button>}
+          {socialVisuals&&<button type="button" onClick={()=>jumpTo("spark-social-visuals")}>See visuals</button>}
           {hasExplore&&<button type="button" onClick={()=>jumpTo("spark-lesson-explore")}>Explore</button>}
           {points.length>0&&<button type="button" onClick={()=>jumpTo("spark-lesson-key-points")}>Key points</button>}
           {example&&<button type="button" onClick={()=>jumpTo("spark-lesson-worked-example")}>Worked example</button>}
@@ -215,7 +222,7 @@ export function GenericLessonContent({
         <span className="spark-fnh-reading-nav-label">In this lesson</span>
         <div className="spark-fnh-reading-nav-links">
           <button type="button" onClick={()=>jumpTo("fnh-lesson-notes")}>Read notes <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>
-          {hasFnhMedia&&<button type="button" onClick={()=>jumpTo("fnh-lesson-visuals")}>See visuals <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>}
+          {hasFnhMedia&&<button type="button" onClick={()=>jumpTo("fnh-lesson-visuals")}>See visuals <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>
           {models.length>0&&<button type="button" onClick={()=>jumpTo("fnh-lesson-explore")}>Explore <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>}
           <button type="button" onClick={()=>jumpTo("fnh-lesson-practice")}>Quick practice <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>
           <button type="button" onClick={()=>jumpTo("fnh-lesson-reflect")}>Written response <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>
@@ -267,8 +274,10 @@ export function GenericLessonContent({
         );
       })}
 
+      {socialVisuals && <SocialStudiesReferenceMedia topicId={topic.id}/>}
       {hasFnhMedia && <FnhReferenceMedia topicId={topic.id}/>}
       {isEditorial&&hasExplore&&<div id="spark-lesson-explore" className="spark-editorial-scroll-anchor" aria-hidden="true"/>}
+      {hasChemistryVisuals && <ChemistryReferenceDiagrams topicId={topic.id}/>}
       {models.map(model => (
         subjectId === "integrated-science"
           ? <div className="spark-integrated-science-model" key={model.id || model.type}><IntegratedScienceModel model={model} /></div>
