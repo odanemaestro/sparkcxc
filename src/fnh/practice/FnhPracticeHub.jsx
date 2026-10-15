@@ -1,3 +1,4 @@
+import FnhNavArrow from "./FnhNavArrow";
 import React,{useEffect,useState} from "react";
 import FnhPaper1Exam from "./FnhPaper1Exam";
 import FnhPaper2Exam from "./FnhPaper2Exam";
@@ -33,7 +34,7 @@ function FnhPaperLibrary({paper,onBack,onStart,onStartHistorical,onReviewHistori
   const years=FNH_SUPPLIED_ARCHIVE.filter(p=>p.paper===paper&&p.year!==2021).filter(p=>year==="all"||String(p.year)===year)
     .sort((a,b)=>b.year-a.year);
   return <main className="fnh-exam fnh-practice-library"><div className="fnh-exam-container">
-    <div className="fnh-exam-top"><button className="fnh-outline" type="button" onClick={onBack}>← Back to Food, Nutrition and Health practice</button></div>
+    <div className="fnh-exam-top"><button className="fnh-outline" type="button" onClick={onBack}><FnhNavArrow direction="left"/> Back to Food, Nutrition and Health practice</button></div>
     <header className="fnh-exam-card fnh-library-hero"><small>CSEC FOOD, NUTRITION AND HEALTH · PAPER {isPaper1?"01":"02"}</small>
       <h1>{isPaper1?"Paper 1: Multiple choice":"Paper 2: Structured questions"}</h1>
       <p>Choose a practice set or browse the supplied historical examination sources. Each ready paper starts with instructions and an examination timer.</p>
@@ -50,7 +51,7 @@ function FnhPaperLibrary({paper,onBack,onStart,onStartHistorical,onReviewHistori
           <h2>{set.label}</h2>
           <p>{isPaper1?"60 different syllabus-based multiple-choice questions, four choices each, with correct answers and explanations.":"Six compulsory structured questions with question-specific marking points and answer review."}</p>
           <p>{isPaper1?"1 hour 30 minutes · 60 marks":"2 hours 30 minutes · 96 marks"}</p>
-          <button className="fnh-primary" type="button" onClick={()=>onStart(set.number)}>Select practice paper <span aria-hidden="true">→</span></button>
+          <button className="fnh-primary" type="button" onClick={()=>onStart(set.number)}>Select practice paper <FnhNavArrow/></button>
         </section>)}
     </div>:<>
       <div className="fnh-library-archive-intro"><div><h2>Past Paper {paper}</h2><p>Browse past papers by year. Papers with verified marking are available as timed examinations.</p></div>
@@ -60,10 +61,10 @@ function FnhPaperLibrary({paper,onBack,onStart,onStartHistorical,onReviewHistori
         <small>HISTORICAL SOURCE · MAY/JUNE</small><h3>{source.year} Paper {paper}</h3>
         <p>{fnhHistoricalPaperFormat(source)?.subject || "Food, Nutrition and Health"} · May/June</p>
         {fnhHistoricalSimulatorReady(source.id)?<>
-          <button type="button" className="fnh-primary" onClick={()=>onStartHistorical(source.id)}>Start past paper <span aria-hidden="true">→</span></button>
+          <button type="button" className="fnh-primary" onClick={()=>onStartHistorical(source.id)}>Start past paper <FnhNavArrow/></button>
         </>:source.paper===1&&fnhHistoricalPaper1Reader(source.id)?.questions.length>0?<>
           <p>Read and practise the questions from this paper. Results are not scored for this paper.</p>
-          <button type="button" className="fnh-outline" onClick={()=>onReviewHistorical(source.id)}>Start past paper <span aria-hidden="true">→</span></button>
+          <button type="button" className="fnh-outline" onClick={()=>onReviewHistorical(source.id)}>Start past paper <FnhNavArrow/></button>
         </>:<p>This paper is not available as an interactive test yet.</p>}
       </article>)}</div>
     </>}
@@ -131,19 +132,19 @@ export default function FnhPracticeHub({supabase,userId,onBack}){
   if(view==="historical-2026-p2")return <FnhHistorical2026Paper2Exam supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
   if(view==="workbook")return <FnhPracticalWorkbook userId={userId} onBack={()=>setView("home")}/>;
   return <main className="fnh-exam fnh-practice-home"><div className="fnh-exam-container">
-    <div className="fnh-exam-top"><button className="fnh-outline" type="button" onClick={onBack}>← Back to practice</button></div>
+    <div className="fnh-exam-top"><button className="fnh-outline" type="button" onClick={onBack}><FnhNavArrow direction="left"/> Back to practice</button></div>
     <header className="fnh-exam-card fnh-library-hero"><small>CSEC FOOD, NUTRITION AND HEALTH</small><h1>Choose an examination paper</h1><p>Practise Caribbean food and nutrition knowledge, food safety, meal planning and practical decision-making in a CSEC-style test.</p></header>
     <section className="fnh-library-choices" aria-label="Choose Food Nutrition and Health examination">
       <button type="button" onClick={()=>setView("paper1")}>
-        <span className="fnh-choice-number">01</span><span><small>MULTIPLE CHOICE</small><strong>Paper 1</strong><span>60 questions · 90 minutes · Practice sets and historical sources</span></span><b aria-hidden="true">→</b>
+        <span className="fnh-choice-number">01</span><span><small>MULTIPLE CHOICE</small><strong>Paper 1</strong><span>60 questions · 90 minutes · Practice sets and historical sources</span></span><FnhNavArrow/>
       </button>
       <button type="button" onClick={()=>setView("paper2")}>
-        <span className="fnh-choice-number">02</span><span><small>STRUCTURED RESPONSE</small><strong>Paper 2</strong><span>6 questions · 150 minutes · Model marking review</span></span><b aria-hidden="true">→</b>
+        <span className="fnh-choice-number">02</span><span><small>STRUCTURED RESPONSE</small><strong>Paper 2</strong><span>6 questions · 150 minutes · Model marking review</span></span><FnhNavArrow/>
       </button>
     </section>
     <section className="fnh-exam-card fnh-library-paper"><span className="fnh-library-eyebrow">PRACTICAL SKILLS</span>
       <h2>SBA practical workbook</h2><p>Plan 16 practical food activities, record evidence and prepare for three moderated assignments. All competency marks require teacher assessment.</p>
-      <button type="button" className="fnh-primary" onClick={()=>setView("workbook")}>Open workbook →</button>
+      <button type="button" className="fnh-primary" onClick={()=>setView("workbook")}>Open workbook <FnhNavArrow/></button>
     </section>
   </div></main>;
 }
