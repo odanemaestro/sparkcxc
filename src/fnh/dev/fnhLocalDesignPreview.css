@@ -1,0 +1,19 @@
+/* Preview chrome only. The study content uses the real FNH production
+   components, which are maintained separately from this local harness. */
+html:has(.fnh-local-preview-page){min-height:100%;background:#f4f7f6}
+html:has(.fnh-local-preview-page) body{margin:0;min-height:100vh}
+.fnh-local-preview-page{min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif}
+.fnh-local-preview-toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:13px max(20px,calc((100vw - 1320px)/2));background:#e5f3ee;color:#183b36;border-bottom:1px solid #bfd5d0}
+.fnh-local-preview-toolbar-copy{display:grid;gap:4px;min-width:0}
+.fnh-local-preview-toolbar-copy strong{font-size:14px;font-weight:740;letter-spacing:-.01em}
+.fnh-local-preview-toolbar-copy span{font-size:12px;line-height:1.5;color:#365d55}
+.fnh-local-preview-theme{display:inline-flex;padding:4px;border:1px solid #b8d1c9;border-radius:11px;gap:3px;flex:none}
+.fnh-local-preview-theme button{min-width:57px;min-height:39px;padding:7px 12px;color:#244a44;background:transparent;border:0;border-radius:8px;cursor:pointer;font:inherit;font-size:13px;font-weight:680}
+.fnh-local-preview-theme button[aria-pressed="true"]{background:white;color:#145b51;box-shadow:0 1px 4px rgba(30,65,59,.09)}
+.fnh-local-preview-theme button:focus-visible{outline:3px solid #0a726b;outline-offset:2px}
+html[data-theme="dark"] .fnh-local-preview-toolbar{background:#192e32;color:#f1faf7;border-bottom-color:#345258}
+html[data-theme="dark"] .fnh-local-preview-toolbar-copy span{color:#c6d9d5}
+html[data-theme="dark"] .fnh-local-preview-theme{border-color:#446367}
+html[data-theme="dark"] .fnh-local-preview-theme button{color:#d4e5e0}
+html[data-theme="dark"] .fnh-local-preview-theme button[aria-pressed="true"]{background:#36585a;color:#fff}
+@media(max-width:640px){.fnh-local-preview-toolbar{padding:12px 15px}.fnh-local-preview-toolbar-copy span{max-width:50ch}}
