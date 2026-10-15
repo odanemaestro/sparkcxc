@@ -4,6 +4,7 @@ import MathText from '../../../practice/MathText';
 import PhysicsFlashcardVisual from '../../components/PhysicsFlashcardVisual';
 import { physicsFlashcardQuestion } from '../../course/physicsFlashcardLanguage.mjs';
 import PhysicsStudyToolkit from '../../components/PhysicsStudyToolkit';
+import CuratedStudyMedia from '../../../components/study/CuratedStudyMedia';
 import PhysicsPracticalNotebook from '../../labs/PhysicsPracticalNotebook';
 import { PhysicsTopicQuiz } from '../../mechanics/components/PhysicsMechanicsSection';
 import { SECTION_E_TOPICS, buildSectionECheckpoint, sectionEStats } from '../sectionEAtomic.mjs';
@@ -28,6 +29,7 @@ function StudyView({ topic, userId, courseProgress, setCourseProgress, onActivit
         <h3>Practical activities</h3>
         <ul>{lesson.practicals.map((item, index) => <li key={index}><MathText prose>{item}</MathText></li>)}</ul>
       </section>}
+      <CuratedStudyMedia subject="physics" topicId={topic.id}/>
       <PhysicsStudyToolkit topicId={topic.id}/>
       <div className="pm-completion">
         <button type="button" className={complete ? 'done' : ''} onClick={() => {
