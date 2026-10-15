@@ -72,3 +72,36 @@ html[data-theme="dark"] .spark-science-image-credits a,body[data-theme="dark"] .
 @media(prefers-reduced-motion:reduce){
  .spark-editorial-study .spark-science-image-button{transition:none}
 }
+
+
+/* Science media dark-mode shell: keep approved artwork unchanged while
+   removing bright empty panels surrounding the diagram and its caption. */
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-reviewed-science-diagram figure{
+  background:#142133;
+  border-color:#33495f;
+  color:#f1f5fa;
+  overflow:hidden;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-reviewed-science-diagram figcaption,
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-reviewed-science-diagram .spark-science-image-credits{
+  background:#142133;
+  color:#becbd8;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-reviewed-science-diagram .spark-science-image-button{
+  background:#142133;
+  border-radius:10px;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-reviewed-science-diagram .spark-science-image-button:not(.spark-science-image-themed) img{
+  background:#e6eef0;
+  border-radius:10px;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-reviewed-science-diagram .spark-science-image-dialog{
+  background:#142133;
+  border-color:#33495f;
+}
