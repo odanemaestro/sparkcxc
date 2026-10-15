@@ -3,7 +3,7 @@ import {readLabWorkspace,writeLabWorkspace} from "../models/workspacePersistence
 import { LabFrame, RibbonTabs, WindowBar } from "../components/LabFrame";
 import { ReducedMotionNotice, StatusMessage, useTaskEvidence } from "../components/ProductivityKit";
 import { PlayIcon } from "../components/Icons";
-import { createDebugSession, debugStep, debugContinue, debugVariables, toggleBreakpoint } from "../models/debugSession.mjs";
+import { createDebugSession, debugStep, debugContinue, debugVariables, toggleBreakpoint, setBreakpointCondition } from "../models/debugSession.mjs";
 import { analyzeTeachingProgram } from "../models/programDiagnostics.mjs";
 import {
   PROGRAMMING_TEMPLATES,
@@ -103,7 +103,7 @@ export default function ProgrammingLab({ lab, userId, completed, onBack, onCompl
     else if (exercise === "loop") run = runLoopProgram({ language, code });
     else run = runTaxProgram({ language, code, input: debugInput });
     setRunCount(count => count + 1);
-    setDebugSession(createDebugSession(run));
+    setDebugSession(previous => createDebugSession(run, previous.breakpoints, previous.conditions));
     setLastRun({ ...run, message: run.ok ? "Program completed successfully." : "The program did not run. Correct the reported issue and try again." });
     if (!run.ok) return;
     if (commentPresent) record("comment-run");
@@ -125,7 +125,7 @@ export default function ProgrammingLab({ lab, userId, completed, onBack, onCompl
     setRunCount(count => count + assessment.runs.length);
     setDebugTests(assessment.runs.map(item => ({ input: item.input, expected: item.expected, output: item.run.output, ok: item.run.ok && item.run.output === item.expected })));
     const displayedRun = runTaxProgram({ language, code: sources.debug, input: debugInput });
-    setDebugSession(createDebugSession(displayedRun));
+    setDebugSession(previous => createDebugSession(displayedRun, previous.breakpoints, previous.conditions));
     setLastRun({ ...displayedRun, message: assessment.passed ? "All three debug tests passed. The logic error is corrected." : "Debug tests failed. The tax must be 15% for every test value." });
     if (assessment.passed) {
       record("debug-pass");
@@ -184,11 +184,11 @@ export default function ProgrammingLab({ lab, userId, completed, onBack, onCompl
             <button type="button" onClick={execute}>Restart trace</button>
             <button type="button" onClick={()=>setDebugSession(debugStep)} disabled={!debugSession.trace.length||debugSession.phase==="complete"}>Step over</button>
             <button type="button" onClick={()=>setDebugSession(debugContinue)} disabled={!debugSession.trace.length||debugSession.phase==="complete"}>Continue</button>
-            <button type="button" onClick={()=>setDebugSession(createDebugSession(lastRun,debugSession.breakpoints))} disabled={!lastRun.ok}>Reset cursor</button>
+            <button type="button" onClick={()=>setDebugSession(createDebugSession(lastRun,debugSession.breakpoints,debugSession.conditions))} disabled={!lastRun.ok}>Reset cursor</button>
           </div>
           <div className="itv2-debug-inspector">
             <div><strong>Source lines and breakpoints</strong><div className="itv2-breakpoints" role="group" aria-label="Toggle source breakpoints">
-              {code.split("\n").map((line,index)=><button key={index} type="button" className={debugSession.breakpoints.includes(index+1)?"is-active":""} aria-pressed={debugSession.breakpoints.includes(index+1)} onClick={()=>setDebugSession(old=>toggleBreakpoint(old,index+1,code.split("\n").length))}><span aria-hidden="true">{debugSession.breakpoints.includes(index+1)?"●":"○"}</span> {index+1} <code>{line||" "}</code></button>)}
+              {code.split("\n").map((line,index)=><React.Fragment key={index}><button type="button" className={debugSession.breakpoints.includes(index+1)?"is-active":""} aria-pressed={debugSession.breakpoints.includes(index+1)} onClick={()=>setDebugSession(old=>toggleBreakpoint(old,index+1,code.split("\n").length))}><span aria-hidden="true">{debugSession.breakpoints.includes(index+1)?"●":"○"}</span> {index+1} <code>{line||" "}</code></button>{debugSession.breakpoints.includes(index+1)&&<input aria-label={`Condition for breakpoint at line ${index+1}`} placeholder="mark >= 50 (optional)" value={debugSession.conditions?.[index+1]||""} onChange={event=>setDebugSession(current=>setBreakpointCondition(current,index+1,event.target.value))}/>}</React.Fragment>)}
             </div></div>
             <div><strong>Debugger state</strong><p role="status">{debugSession.phase==="unavailable"?"Run a valid exercise first.":debugSession.phase==="complete"?"Execution complete":debugSession.cursor<0?"Paused before first step":`Paused at trace step ${debugSession.cursor+1} of ${debugSession.trace.length}`}</p>
               <dl>{Object.entries(debugVariables(debugSession)).map(([name,value])=><React.Fragment key={name}><dt>{name}</dt><dd>{String(value)}</dd></React.Fragment>)}</dl>
