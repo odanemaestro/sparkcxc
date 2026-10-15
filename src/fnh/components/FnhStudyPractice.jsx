@@ -44,7 +44,7 @@ export default function FnhStudyPractice({topicId}){
  };
  const changeQuestion=next=>setIndex(Math.max(0,Math.min(questions.length-1,next)));
  const resetAll=()=>{setResponses({});setChecks({});setHintVisible({});setIndex(0);};
- return <section className="fnh-study-practice" aria-label="Interactive FNH lesson questions">
+ return <section id="fnh-lesson-practice" className="fnh-study-practice" aria-label="Interactive FNH lesson questions">
   <header className="fnh-study-practice-heading">
     <div><small>INTERACTIVE EXAM PRACTICE</small><h3>Try it like a CSEC candidate</h3>
       <p>Original SPARK questions inspired by past-paper topics and wording. Practise, check the reason, and try again.</p></div>
