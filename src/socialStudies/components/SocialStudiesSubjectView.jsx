@@ -251,7 +251,7 @@ function LessonView({
         {nextLesson ? <button type="button" className="ss-lesson-nav ss-lesson-nav-next"
           disabled={!completed} onClick={()=>completed&&onOpenLesson?.(nextLesson)}
           title={!completed?"Complete this lesson to unlock the next lesson.":undefined}>
-          <span>Next lesson</span><span aria-hidden="true">→</span>
+          <span>Next Lesson</span><span aria-hidden="true">→</span>
         </button> : <span className="ss-lesson-nav-spacer" aria-hidden="true" />}
       </div>
     </div>
@@ -526,7 +526,7 @@ export default function SocialStudiesSubjectView({ supabase, userId, onBack, sho
 
       <aside className="ss-toolkit-callout">
         <div><span className="ss-panel-label">Independent research</span><h2>Working on your SBA?</h2><p>Use the guided research toolkit when you need it.</p></div>
-        <button type="button" className="ss-secondary" onClick={()=>{setToolkitOpen(true);window.scrollTo?.(0,0);}}>Open research toolkit <span aria-hidden="true">↗</span></button>
+        <button type="button" className="ss-secondary" onClick={()=>{setToolkitOpen(true);window.scrollTo?.(0,0);}}>Open Research & SBA toolkit <span aria-hidden="true">↗</span></button>
       </aside>
 
       <section className="ss-source-list ss-course-source">
