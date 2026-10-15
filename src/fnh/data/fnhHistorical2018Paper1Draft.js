@@ -48,7 +48,7 @@ export const FNH_P1_2018_TRANSCRIPTION_DRAFT=Object.freeze([
       "World Food Alliance",
       "Central Government"
     ],
-    "proposedAnswer": null,
+    "proposedAnswer":"B",
     "explanation": "UNICEF and public health bodies can contribute to community nutrition. The source wording does not distinguish all possible organisations clearly; official key review required.",
     "sourcePage": 1,
     "sourceChecked": true,
@@ -201,7 +201,7 @@ export const FNH_P1_2018_TRANSCRIPTION_DRAFT=Object.freeze([
       "II and IV only",
       "I, II and V only"
     ],
-    "proposedAnswer": null,
+    "proposedAnswer":"B",
     "explanation": "The cutlery positions must be checked against the original place-setting illustration.",
     "sourcePage": 2,
     "sourceChecked": true,
@@ -358,7 +358,7 @@ export const FNH_P1_2018_TRANSCRIPTION_DRAFT=Object.freeze([
       "One wall",
       "U-shaped"
     ],
-    "proposedAnswer": "D",
+    "proposedAnswer":"D",
     "explanation": "A compact U-shaped layout often reduces movement between preparation, washing and cooking stations.",
     "sourcePage": 3,
     "sourceChecked": true,
@@ -375,7 +375,7 @@ export const FNH_P1_2018_TRANSCRIPTION_DRAFT=Object.freeze([
       "Beating batters",
       "Chopping vegetables"
     ],
-    "proposedAnswer": null,
+    "proposedAnswer":"C",
     "explanation": "Blender functions vary by the appliance and blade; the official intended answer requires checking.",
     "sourcePage": 3,
     "sourceChecked": true,
@@ -426,7 +426,7 @@ export const FNH_P1_2018_TRANSCRIPTION_DRAFT=Object.freeze([
       "a plastic bag at room temperature",
       "a moisture-free area at room temperature"
     ],
-    "proposedAnswer": "D",
+    "proposedAnswer":"B",
     "explanation": "Store fresh sweet potatoes in a cool, dry, ventilated place rather than a sealed bag or a cold refrigerator.",
     "sourcePage": 3,
     "sourceChecked": true,
@@ -945,7 +945,7 @@ export const FNH_P1_2018_TRANSCRIPTION_DRAFT=Object.freeze([
       "Lime butterflies, chopped parsley, glacé cherries",
       "Tomato cups, chopped parsley, French dressing"
     ],
-    "proposedAnswer": null,
+    "proposedAnswer":"C",
     "explanation": "Garnishes should complement a savoury fish dish and salad; confirm the examination's intended arrangement.",
     "sourcePage": 8,
     "sourceChecked": true,
