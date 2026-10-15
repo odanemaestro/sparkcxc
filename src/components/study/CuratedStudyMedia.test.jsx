@@ -1,8 +1,8 @@
 /** @jest-environment jsdom */
 import React from "react";
 import {fireEvent,render,screen} from "@testing-library/react";
-import CuratedStudyMedia from "./CuratedStudyMedia";
-import {PHYSICS_REFERENCE_MEDIA,IT_REFERENCE_MEDIA,referencesFor} from "./curatedStudyMedia";
+import CuratedStudyMedia from "./CuratedStudyMedia.jsx";
+import {PHYSICS_REFERENCE_MEDIA,IT_REFERENCE_MEDIA,referencesFor} from "./courseVisualReferenceCatalog.js";
 import physicsTopics from "../../physics/course/physicsTopicsReference.json";
 import itCourse from "../../informationTechnology/course/itCourseData.json";
 
