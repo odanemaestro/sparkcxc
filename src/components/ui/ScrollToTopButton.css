@@ -1,0 +1,104 @@
+/* One global back-to-top action, shared by every SPARK view.
+   Matches the smaller rounded-square FNH action; preserves global scroll logic. */
+.spark-scroll-top{
+  box-sizing:border-box;
+  position:fixed;
+  z-index:60;
+  right:calc(22px + env(safe-area-inset-right, 0px));
+  display:grid;
+  place-items:center;
+  width:48px;
+  height:48px;
+  padding:0;
+  border:1px solid var(--spark-border,#dce6e3);
+  border-radius:16px;
+  background:var(--spark-paper,#fff);
+  color:var(--spark-teal-dark,#0a7268);
+  box-shadow:0 12px 30px rgba(10,31,50,.14),inset 0 1px 0 rgba(255,255,255,.55);
+  font-family:inherit;
+  cursor:pointer;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  pointer-events:none;
+  transition:bottom .2s ease,opacity .2s ease,transform .2s ease,
+    visibility .2s ease,background-color .2s ease,box-shadow .2s ease;
+}
+.spark-scroll-top.is-visible{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+  pointer-events:auto;
+}
+.spark-scroll-top svg{
+  display:block;
+  width:22px;
+  height:22px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.spark-scroll-top:hover{
+  background:var(--spark-teal-surface,#f0fdf9);
+  box-shadow:0 15px 34px rgba(10,31,50,.18),inset 0 1px 0 rgba(255,255,255,.65);
+  transform:translateY(-2px);
+}
+.spark-scroll-top:active{transform:translateY(0) scale(.98)}
+.spark-scroll-top:focus-visible{
+  outline:3px solid var(--spark-teal,#0d9488);
+  outline-offset:3px;
+}
+html[data-theme="dark"] .spark-scroll-top{
+  background:var(--spark-paper-raised,#142a45);
+  color:var(--spark-teal-dark,#5eead4);
+  border-color:var(--spark-border-strong,#3b5575);
+  box-shadow:0 12px 30px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.05);
+}
+html[data-theme="dark"] .spark-scroll-top:hover{
+  background:var(--spark-muted,#172a43);
+  box-shadow:0 15px 32px rgba(0,0,0,.43),inset 0 1px 0 rgba(255,255,255,.06);
+}
+@media(max-width:700px){
+  .spark-scroll-top{
+    right:calc(14px + env(safe-area-inset-right, 0px));
+    width:48px;
+    height:48px;
+    border-radius:16px;
+  }
+  /* Glass is a user preference, not automatically applied to every mobile view. */
+  html[data-glass="true"] .spark-scroll-top{
+    width:52px;
+    height:52px;
+    border-radius:18px;
+    color:#075c56;
+    border-color:rgba(255,255,255,.7);
+    background:rgba(255,255,255,.78);
+    -webkit-backdrop-filter:blur(17px) saturate(145%);
+    backdrop-filter:blur(17px) saturate(145%);
+    box-shadow:0 10px 28px rgba(7,27,52,.17),inset 0 1px 0 rgba(255,255,255,.85);
+  }
+  html[data-glass="true"] .spark-scroll-top:hover{
+    background:rgba(255,255,255,.92);
+  }
+  html[data-theme="dark"][data-glass="true"] .spark-scroll-top{
+    background:rgba(17,32,51,.80);
+    color:#a7f2e8;
+    border-color:rgba(178,212,235,.25);
+    box-shadow:0 12px 30px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.12);
+  }
+  html[data-theme="dark"][data-glass="true"] .spark-scroll-top:hover{
+    background:rgba(27,44,66,.92);
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .spark-scroll-top,.spark-scroll-top:hover,.spark-scroll-top:active{
+    transition:none;
+    transform:none;
+  }
+}
+@media print{.spark-scroll-top{display:none!important}}
+@media(forced-colors:active){
+  .spark-scroll-top{forced-color-adjust:auto;border:2px solid ButtonText;background:ButtonFace;color:ButtonText}
+}
