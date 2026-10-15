@@ -3,6 +3,7 @@ import React,{useEffect,useMemo,useRef,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
 import {FNH_PAPER2_FORMAT,fnhGetPaper2Set} from "../data/fnhPaper2Bank";
 import {fnhPartMarkingScheme,fnhSelfAssessmentMark,fnhSelfAssessmentTotal} from "./fnhPaper2Marking";
+import {fnhWorkedSupplement} from "../data/fnhPaper2WorkedAnswerSupplements";
 import FnhHistoricalDiagram from "./FnhHistoricalDiagram";
 import FnhFoodLabelDesigner from "./FnhFoodLabelDesigner";
 import "./fnhPractice.css";
@@ -124,6 +125,7 @@ export default function FnhPaper2Exam({onBack,supabase,userId,setNumber=1,histor
                     onChange={()=>togglePoint(key,point.id)} aria-label={`My response includes marking point ${Number(point.id)+1} for question ${question.number} part ${part.id}`}/>
                   <span>{point.text}</span>
                 </label>)}</div>
+                {historical&&fnhWorkedSupplement(historicalPaper.year,question.number,part.id)&&<details className="fnh-p2-worked-reference"><summary>Additional worked-answer guidance</summary><p>{fnhWorkedSupplement(historicalPaper.year,question.number,part.id)}</p><small>Course reference only. Equivalent correct answers can earn credit; these examples do not add automatic marks.</small></details>}
                 <p><b>Explanation:</b> {part.explanation}</p>
                 <p><b>Your own check:</b> {fnhSelfAssessmentMark(part,attempt.selfReview?.[key]||[],text)} / {part.marks} possible points. This is not a marked result.</p>
                 <small>{fnhPartMarkingScheme(part).note} Your self-check is practice feedback, not an official examination mark.</small>
