@@ -14,6 +14,7 @@ import {
 import SocialStudiesInteractiveActivity from "./SocialStudiesInteractiveActivity";
 import SocialStudiesSbaToolkit from "./SocialStudiesSbaToolkit";
 import "../socialStudies.css";
+import "../../subjects/sparkSpecializedStudyPolish.css";
 
 const SUBJECT_ID="social-studies";
 const STUDY_PATH="/study/social-studies";
