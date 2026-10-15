@@ -3,10 +3,10 @@
  * Supports stored and deflate-raw members in browsers with DecompressionStream.
  * Rejects oversized or malformed archives before reading XML.
  */
-const decoder = new TextDecoder();
 function U16(a,i){return a[i]|(a[i+1]<<8);}
 function U32(a,i){return (a[i]|(a[i+1]<<8)|(a[i+2]<<16)|(a[i+3]<<24))>>>0;}
 export async function readOfficeEntries(buffer) {
+  const decoder = new TextDecoder();
   const a=new Uint8Array(buffer);
   if(a.length>10000000)throw new Error("Office file must be smaller than 10 MB.");
   let eocd=-1;
