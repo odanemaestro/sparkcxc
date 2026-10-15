@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import {readLabWorkspace,writeLabWorkspace} from "../models/workspacePersistence.mjs";
 import { LabFrame, RibbonTabs, WindowBar } from "../components/LabFrame";
 import { ReducedMotionNotice, StatusMessage, ToolGroup, useTaskEvidence } from "../components/ProductivityKit";
 import { ArrowLeftIcon, ArrowRightIcon, ChevronDownIcon, ChevronUpIcon, PlayIcon } from "../components/Icons";
@@ -16,9 +17,10 @@ function SlideCanvas({ slide, theme, footer, heading = false }) {
   </article>;
 }
 
-export default function PresentationLab({ lab, completed, onBack, onComplete }) {
+export default function PresentationLab({ lab, userId, completed, onBack, onComplete }) {
   const [tab, setTab] = useState("Home");
-  const [slides, setSlides] = useState([FIRST_SLIDE]);
+  const [slides, setSlides] = useState(() => readLabWorkspace(userId,"presentation",{slides:[FIRST_SLIDE]}).slides || [FIRST_SLIDE]);
+  useEffect(()=>{writeLabWorkspace(userId,"presentation",{slides});},[userId,slides]);
   const [selected, setSelected] = useState(1);
   const [theme, setTheme] = useState("");
   const [footer, setFooter] = useState("");
