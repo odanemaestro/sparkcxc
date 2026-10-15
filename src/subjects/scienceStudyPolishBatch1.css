@@ -1,0 +1,336 @@
+/*
+ * SPARK SCIENCE STUDY · BATCH 01
+ * Scope: Chemistry interactive workbenches and Integrated Science transport
+ * and plant-growth explorers. The FNH-approved reading palette is inherited
+ * from .spark-editorial-study; no changes to grades, notes or shared routing.
+ * Scientific drawings retain their original colours and coordinates.
+ */
+
+/* Compact, thoughtful reading surfaces instead of deep nested card shadows. */
+.spark-editorial-study :is(.chem-lab,.spark-transport-explorer,.spark-plant-growth-explorer){
+ --spark-bg:var(--fnh-ui-paper-alt);
+ --spark-paper:var(--fnh-ui-paper);
+ --spark-muted:var(--fnh-ui-paper-alt);
+ --spark-ink:var(--fnh-ui-ink);
+ --spark-ink-soft:var(--fnh-ui-muted);
+ --spark-text-muted:var(--fnh-ui-muted);
+ --spark-border:var(--fnh-ui-line);
+ --spark-border-soft:var(--fnh-ui-line);
+ --spark-teal:var(--fnh-ui-teal);
+ --spark-teal-dark:var(--fnh-ui-teal-ink);
+ --spark-teal-light:var(--fnh-ui-teal-soft);
+ min-width:0;
+ background:var(--fnh-ui-paper);
+ border:1px solid var(--fnh-ui-line);
+ border-radius:15px;
+ color:var(--fnh-ui-ink);
+ box-shadow:none;
+}
+.spark-editorial-study :is(.chem-lab,.spark-transport-explorer,.spark-plant-growth-explorer)
+ :is(h3,p,dt,dd,label,strong){overflow-wrap:break-word}
+.spark-editorial-study :is(.chem-lab,.spark-transport-explorer,.spark-plant-growth-explorer)
+ :is(button,input,select,textarea):focus-visible{
+ outline:3px solid var(--fnh-ui-focus);
+ outline-offset:3px;
+}
+.spark-editorial-study :is(.spark-transport-head,.spark-plant-growth-explorer>header){
+ margin:0 0 8px;
+}
+.spark-editorial-study :is(.spark-transport-head,.spark-plant-growth-explorer>header) span{
+ color:var(--fnh-ui-teal-ink);
+ font-size:.76rem;font-weight:740;letter-spacing:.05em;
+}
+.spark-editorial-study :is(.spark-transport-head,.spark-plant-growth-explorer>header) h3{
+ color:var(--fnh-ui-ink);
+ font-size:clamp(1.125rem,2.2vw,1.34rem);
+ font-weight:750;letter-spacing:-.018em;
+ line-height:1.4;margin:8px 0 10px;
+}
+.spark-editorial-study :is(.spark-transport-head,.spark-plant-growth-explorer>header) p{
+ color:var(--fnh-ui-muted);
+ font-size:.91rem;line-height:1.72;
+ max-width:74ch;
+}
+.spark-editorial-study :is(.spark-transport-tabs,.spark-plant-growth-tabs){
+ gap:9px;margin:20px 0 18px;
+}
+.spark-editorial-study :is(.spark-transport-tabs,.spark-plant-growth-tabs) button{
+ display:inline-flex;align-items:center;justify-content:center;
+ min-height:44px;min-width:0;
+ border-radius:10px;
+ border:1px solid var(--fnh-ui-line);
+ padding:10px 15px;
+ background:var(--fnh-ui-paper-alt);
+ color:var(--fnh-ui-ink);
+ font-size:.84rem;line-height:1.35;font-weight:680;
+ transition:background .16s ease,border-color .16s ease;
+}
+.spark-editorial-study :is(.spark-transport-tabs,.spark-plant-growth-tabs) button:hover{
+ border-color:var(--fnh-ui-teal);
+}
+.spark-editorial-study :is(.spark-transport-tabs,.spark-plant-growth-tabs) button.active{
+ background:var(--fnh-ui-teal-soft);
+ color:var(--fnh-ui-teal-ink);
+ border-color:var(--fnh-ui-teal);
+}
+.spark-editorial-study :is(.spark-transport-grid,.spark-plant-growth-grid){
+ gap:15px;align-items:stretch;
+}
+.spark-editorial-study :is(.spark-transport-notes,.spark-plant-growth-grid aside){
+ padding:clamp(17px,2.2vw,24px);
+ border:1px solid var(--fnh-ui-line);
+ border-radius:13px;
+ background:var(--fnh-ui-paper-alt);
+ color:var(--fnh-ui-ink);
+ min-width:0;
+}
+.spark-editorial-study :is(.spark-transport-notes,.spark-plant-growth-grid aside)>strong{
+ font-size:1.02rem;font-weight:745;
+ letter-spacing:-.015em;line-height:1.4;color:var(--fnh-ui-ink);
+}
+.spark-editorial-study :is(.spark-transport-notes,.spark-plant-growth-grid aside) p,
+.spark-editorial-study :is(.spark-transport-notes,.spark-plant-growth-grid aside) dd{
+ font-size:.9rem;line-height:1.69;color:var(--fnh-ui-muted);
+}
+.spark-editorial-study :is(.spark-transport-notes,.spark-plant-growth-grid aside) dt{
+ color:var(--fnh-ui-teal-ink);font-size:.76rem;font-weight:720;letter-spacing:.025em;
+}
+.spark-editorial-study :is(.spark-transport-notes,.spark-plant-growth-grid aside) dl div{
+ border-color:var(--fnh-ui-line);
+}
+.spark-editorial-study .spark-transport-notes button{
+ min-height:44px;border-radius:10px;
+ background:var(--fnh-ui-teal);
+ color:#fff;border:1px solid var(--fnh-ui-teal);
+ font-size:.85rem;font-weight:720;
+}
+.spark-editorial-study .spark-transport-stage,
+.spark-editorial-study .spark-plant-growth-stage{
+ min-width:0;overflow:hidden;border:1px solid var(--fnh-ui-line);
+ border-radius:13px;background:#edf4f5;
+}
+.spark-editorial-study :is(.spark-transport-stage,.spark-plant-growth-stage)>svg{
+ width:100%;height:auto;display:block;max-width:100%;
+}
+
+/* Chemistry uses the identical study paper, with consistent controls and
+   a single quiet accent. All actual science observations remain unchanged. */
+.spark-editorial-study .chem-lab{margin:27px 0;overflow:hidden}
+.spark-editorial-study .chem-lab>header{
+ display:flex;justify-content:space-between;align-items:center;
+ flex-wrap:wrap;gap:12px;padding:clamp(17px,2.7vw,24px);
+ border-bottom:1px solid var(--fnh-ui-line);
+ background:var(--fnh-ui-paper-alt);
+}
+.spark-editorial-study .chem-lab>header h3{
+ font-family:inherit;font-size:clamp(1.07rem,2.1vw,1.3rem);
+ color:var(--fnh-ui-ink);line-height:1.4;letter-spacing:-.015em;
+ font-weight:750;margin:0;
+}
+.spark-editorial-study .chem-lab-kicker{
+ font-size:.75rem;letter-spacing:.05em;color:var(--fnh-ui-teal-ink);
+}
+.spark-editorial-study .chem-lab-reset{
+ min-height:44px;padding:10px 13px;
+ background:var(--fnh-ui-paper);
+ color:var(--fnh-ui-ink);
+ border:1px solid var(--fnh-ui-line);border-radius:10px;
+ font-size:.81rem;font-weight:680;
+}
+.spark-editorial-study .chem-lab-reset:hover{border-color:var(--fnh-ui-teal)}
+.spark-editorial-study .chem-lab-body{
+ padding:clamp(18px,3vw,28px);
+ color:var(--fnh-ui-ink);
+ font-size:.93rem;
+ line-height:1.73;min-width:0;
+}
+.spark-editorial-study .chem-lab-body :is(p,small){line-height:1.7}
+.spark-editorial-study .chem-lab label{
+ font-size:.84rem;font-weight:640;line-height:1.48;color:var(--fnh-ui-ink);
+ gap:9px;
+}
+.spark-editorial-study .chem-lab :is(input[type=number],select){
+ box-sizing:border-box;min-height:46px;min-width:0;width:100%;
+ background:var(--fnh-ui-paper-alt);
+ color:var(--fnh-ui-ink);
+ border:1px solid var(--fnh-ui-line);
+ border-radius:10px;padding:10px 12px;
+ font-size:1rem;
+}
+.spark-editorial-study .chem-lab :is(input[type=range],input[type=checkbox]){
+ accent-color:var(--fnh-ui-teal);
+}
+.spark-editorial-study .chem-lab :is(.chem-lab-row,.chem-lab-grid,.chem-electrodes){
+ gap:15px;
+}
+.spark-editorial-study .chem-lab .chem-choice-grid,
+.spark-editorial-study .chem-lab .chem-lab-actions{gap:10px;align-items:center;flex-wrap:wrap}
+.spark-editorial-study .chem-lab :is(.chem-lab-actions,.chem-choice-grid) button{
+ min-height:44px;padding:10px 15px;border-radius:10px;
+ border:1px solid var(--fnh-ui-line);
+ background:var(--fnh-ui-paper-alt);
+ color:var(--fnh-ui-ink);
+ font-size:.84rem;font-weight:690;line-height:1.4;
+}
+.spark-editorial-study .chem-lab :is(.chem-lab-actions,.chem-choice-grid) button:hover:not(:disabled){
+ border-color:var(--fnh-ui-teal);
+ filter:none;
+}
+.spark-editorial-study .chem-lab .chem-choice-grid button.selected,
+.spark-editorial-study .chem-lab .chem-lab-actions .chem-lab-next-action{
+ border-color:var(--fnh-ui-teal);
+ background:var(--fnh-ui-teal-soft);
+ color:var(--fnh-ui-teal-ink);
+}
+.spark-editorial-study .chem-lab .chem-lab-actions .chem-lab-check-action,
+.spark-editorial-study .chem-lab .chem-lab-record:not(:disabled){
+ border-color:var(--fnh-ui-teal);
+ background:var(--fnh-ui-teal);color:white;
+}
+.spark-editorial-study .chem-lab>footer{
+ display:flex;align-items:center;justify-content:space-between;
+ flex-wrap:wrap;gap:16px;padding:16px clamp(18px,3vw,28px);
+ border-top:1px solid var(--fnh-ui-line);
+ background:var(--fnh-ui-paper-alt);
+}
+.spark-editorial-study .chem-lab-hint{
+ color:var(--fnh-ui-muted);font-size:.81rem;line-height:1.55;flex:1;
+}
+.spark-editorial-study .chem-lab .chem-lab-record{
+ min-height:44px;padding:11px 16px;border-radius:10px;
+ font-size:.85rem;font-weight:730;line-height:1.35;
+}
+.spark-editorial-study .chem-lab .chem-lab-record:disabled{
+ color:var(--fnh-ui-muted);background:var(--fnh-ui-paper-alt);
+ border:1px solid var(--fnh-ui-line);opacity:.75;
+}
+.spark-editorial-study .chem-result,
+.spark-editorial-study .chem-observation{
+ padding:15px 18px;margin:18px 0;
+ border:1px solid var(--fnh-ui-line);border-radius:11px;
+ background:var(--fnh-ui-paper-alt);color:var(--fnh-ui-ink);
+ gap:8px;
+}
+.spark-editorial-study .chem-result strong{color:var(--fnh-ui-ink)}
+.spark-editorial-study .chem-result span{color:var(--fnh-ui-muted)}
+.spark-editorial-study .chem-lab .chem-meter{background:var(--fnh-ui-line)}
+.spark-editorial-study .chem-lab .chem-meter>span{background:var(--fnh-ui-teal)}
+.spark-editorial-study .chem-lab :is(.chem-electrodes>div,.chem-observation){
+ border-color:var(--fnh-ui-line);background:var(--fnh-ui-paper-alt);
+}
+.spark-editorial-study .chem-lab :is(th,td){border-bottom-color:var(--fnh-ui-line)}
+.spark-editorial-study .chem-lab :is(.chem-ok,.chem-no){
+ font-size:.88rem;line-height:1.65;
+}
+.spark-editorial-study .chem-lab :is(.chem-particle-box,.chem-bond-svg){
+ background:#edf4f5;border-color:var(--fnh-ui-line);
+}
+/* Fixed-colour labels are kept on a light scientific plate rather than
+   inverted: geometry and observation colours remain scientifically faithful. */
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-editorial-study :is(.chem-lab,.spark-transport-explorer,.spark-plant-growth-explorer){
+ background:var(--fnh-ui-paper);
+ border-color:var(--fnh-ui-line);
+ color:var(--fnh-ui-ink);
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-editorial-study :is(.chem-lab,.spark-transport-explorer,.spark-plant-growth-explorer)
+ :is(.chem-lab-reset,.chem-lab-body,.chem-lab-hint,.chem-lab label,.chem-lab h3,
+ .spark-transport-head h3,.spark-plant-growth-explorer>header h3){
+ color:var(--fnh-ui-ink);
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-editorial-study :is(.chem-lab,.spark-transport-explorer,.spark-plant-growth-explorer)
+ :is(.chem-lab>header,.chem-lab>footer,.chem-result,.chem-observation,
+ .spark-transport-notes,.spark-plant-growth-grid aside){
+ background:var(--fnh-ui-paper-alt);border-color:var(--fnh-ui-line);
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-editorial-study .chem-lab :is(.chem-lab-actions,.chem-choice-grid) button{
+ background:var(--fnh-ui-paper-alt);border-color:var(--fnh-ui-line);
+ color:var(--fnh-ui-ink);
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-editorial-study .chem-lab .chem-choice-grid button.selected,
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-editorial-study .chem-lab .chem-lab-actions .chem-lab-next-action{
+ background:var(--fnh-ui-teal-soft);color:var(--fnh-ui-teal-ink);
+ border-color:var(--fnh-ui-teal);
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-editorial-study .chem-lab .chem-lab-actions .chem-lab-check-action,
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-editorial-study .chem-lab .chem-lab-record:not(:disabled){
+ background:#70cabd;border-color:#70cabd;color:#0a2929;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-editorial-study .chem-lab :is(input[type=number],select){
+ background:var(--fnh-ui-paper);color:var(--fnh-ui-ink);border-color:var(--fnh-ui-line);
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-editorial-study .chem-lab .chem-result strong{color:var(--fnh-ui-ink)}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-editorial-study .spark-transport-stage,
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-editorial-study .spark-plant-growth-stage{
+ background:#edf4f5;border-color:var(--fnh-ui-line);
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-editorial-study .spark-germination-requirements-svg{
+ background:#edf4f5;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-editorial-study .spark-plant-growth-stage
+ :is(.pg-section-title,.pg-section-subtitle,.pg-response-label){
+ fill:#294d64;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-editorial-study .spark-transport-notes button{
+ background:#70cabd;border-color:#70cabd;color:#0a2929;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-editorial-study :is(.spark-transport-tabs,.spark-plant-growth-tabs) button{
+ background:var(--fnh-ui-paper-alt);color:var(--fnh-ui-ink);
+ border-color:var(--fnh-ui-line);
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-editorial-study :is(.spark-transport-tabs,.spark-plant-growth-tabs) button.active{
+ background:var(--fnh-ui-teal-soft);color:var(--fnh-ui-teal-ink);
+ border-color:var(--fnh-ui-teal);
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-editorial-study .chem-lab :is(.chem-particle-box,.chem-bond-svg){
+ background:#edf4f5;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+ .spark-editorial-study .chem-lab .chem-bond-svg :is(text,.chem-bond-annotation){
+ fill:#123468;
+}
+@media(max-width:850px){
+ .spark-editorial-study :is(.spark-transport-grid,.spark-plant-growth-grid){grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:640px){
+ .spark-editorial-study :is(.spark-transport-explorer,.spark-plant-growth-explorer){padding:16px}
+ .spark-editorial-study :is(.spark-transport-tabs,.spark-plant-growth-tabs){display:flex;flex-wrap:wrap;gap:7px}
+ .spark-editorial-study :is(.spark-transport-tabs,.spark-plant-growth-tabs) button{flex:1 1 135px;min-height:46px;padding:10px 11px}
+ .spark-editorial-study .chem-lab>header,.spark-editorial-study .chem-lab-body{padding:16px}
+ .spark-editorial-study .chem-lab>footer{padding:15px 16px}
+ .spark-editorial-study .chem-lab .chem-lab-actions button{flex:1 1 145px}
+ .spark-editorial-study .chem-lab .chem-lab-reset{max-width:none}
+}
+@media(max-width:400px){
+ .spark-editorial-study .chem-lab>header{align-items:stretch}
+ .spark-editorial-study .chem-lab>header h3{flex:1}
+ .spark-editorial-study .chem-lab .chem-lab-reset{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+ .spark-editorial-study :is(.spark-transport-tabs,.spark-plant-growth-tabs) button,
+ .spark-editorial-study .chem-lab button,
+ .spark-editorial-study .chem-lab .chem-meter>span{transition:none!important}
+}
+@media print{
+ .spark-editorial-study .chem-lab,
+ .spark-editorial-study :is(.spark-transport-explorer,.spark-plant-growth-explorer){
+ box-shadow:none;background:#fff;color:#111;
+ }
+}
