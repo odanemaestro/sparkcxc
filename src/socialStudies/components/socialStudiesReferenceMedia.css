@@ -17,7 +17,7 @@
 .ss-reference-video-prompt>span{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:#e3f7f2;color:#0b665f;font-size:19px}
 .ss-reference-video-prompt strong{font-size:.95rem}
 .ss-reference-video-prompt p,.ss-reference-fallback p{margin:0;color:#536c83;font-size:.82rem;line-height:1.55}
-.ss-reference-video-prompt button{min-height:44px;padding:9px 18px;border:0;border-radius:11px;background:#0e5065;color:#fff;cursor:pointer;font:700 .85rem/1.35 inherit;font-family:inherit}
+.ss-reference-video-prompt button{min-height:44px;padding:9px 18px;border:0;border-radius:11px;background:#0e5065;color:#fff;cursor:pointer;font-family:inherit;font-size:.85rem;font-weight:700;line-height:1.35}
 .ss-reference-video-prompt button:hover{background:#146980}
 .ss-reference-card figcaption{display:flex;flex:1;flex-direction:column;gap:10px;padding:16px 18px 18px;min-width:0}
 .ss-reference-card figcaption>strong{font-size:1rem;line-height:1.4;color:var(--fnh-ui-ink,#193652)}
