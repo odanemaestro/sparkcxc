@@ -1,5 +1,8 @@
 # FNH Paper 1: Updated worked-key disagreements, October 15 2026
 
+> **CORRECTION (2026-10-15, later review):** Original 2003 Q59 has **C = hypotension; D = hypertension**. An earlier SPARK transcription reversed those labels. The data was corrected to **D**, agreeing with the worked key. 2003 Q4 now provisionally selects **C (pawpaw)**, but fruit-shrinkage wording remains ambiguous. Earlier statements below asserting 2003 Q59=C or calling D erroneous are superseded.
+
+
 Comparison source: user-uploaded `FNH_Paper1_Answer_Key_2.docx`. The author states that it is **not the official CXC answer key**. Answers are compared by *printed question number* and the choices in the *same year's source*, never by array position or borrowed option letters.
 
 ## Current disagreements after prior corrections
