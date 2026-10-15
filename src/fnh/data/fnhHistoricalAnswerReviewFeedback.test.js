@@ -14,8 +14,7 @@ describe("FNH historical answer sanity checks", () => {
       .toEqual(Array.from({length:60},(_,i)=>i+1));
     const actual=Object.fromEntries(FNH_P1_2003_TRANSCRIPTION_DRAFT.map(q=>[q.number,q.proposedAnswer]));
     // Independently compare by question number rather than by array index.
-    const documentKey="BDDC C C C A D A D C C D D C B B D C D D D C A C D B A B C D D A D C A B B B A C C B D A A A C A A A C B D A A A C D C"
-      .replace(/\\s/g,"").split("");
+    const documentKey="BDDCCCCADADCCDDCBBDCDDDCACDBABCDDADCABBBACCBDAACAAACBDAAACDC".split("");
     expect(documentKey).toHaveLength(60);
     for(let n=1;n<=60;n++){
       if([4,5,6,33,41,46,59].includes(n))continue;
