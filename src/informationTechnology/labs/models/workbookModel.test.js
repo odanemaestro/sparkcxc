@@ -43,6 +43,14 @@ describe("workbook model", () => {
     expect(evaluateCell(book, "Summary", "A1").value).toBe(200);
   });
 
+  it("respects arithmetic precedence and grouped absolute-reference expressions", () => {
+    const book={Sales:{H1:0.15,B2:4,C2:500,D2:"=B2*C2",F2:"=D2*(1+$H$1)",A1:"=2+3*4",A2:"=(2+3)*4",A3:"=7-2-1"}};
+    expect(evaluateCell(book,"Sales","F2").value).toBeCloseTo(2300);
+    expect(evaluateCell(book,"Sales","A1").value).toBe(14);
+    expect(evaluateCell(book,"Sales","A2").value).toBe(20);
+    expect(evaluateCell(book,"Sales","A3").value).toBe(4);
+  });
+
   it("preserves absolute and mixed references while filling", () => {
     expect(translateFormula("=D2*$H$1", 3, 0)).toBe("=D5*$H$1");
     expect(translateFormula("=$D2*H$1", 2, 1)).toBe("=$D4*I$1");
