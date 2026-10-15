@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { readLabWorkspace, writeLabWorkspace } from "../models/workspacePersistence.mjs";
 import { buildDocumentHtml } from "../models/documentExport.mjs";
 import { mergeLetter, parseMergeRecipients } from "../models/mailMerge.mjs";
+import { sanitizeDocumentMarkup } from "../models/documentMarkup.mjs";
 import { LabFrame, RibbonTabs, WindowBar } from "../components/LabFrame";
 import { ReducedMotionNotice, StatusMessage, ToolGroup, WorkspaceViewport, useTaskEvidence } from "../components/ProductivityKit";
 import { countTextMatches, replaceTextMatches } from "../models/documentModel.mjs";
@@ -34,6 +35,13 @@ export default function WordLab({ lab, userId, completed, onBack, onComplete }) 
   const [findText, setFindText] = useState("club");
   const [replaceText, setReplaceText] = useState("technology club");
   const [bodyText, setBodyText] = useState(saved.bodyText ?? STARTING_BODY);
+  const [bodyHtml, setBodyHtml] = useState(saved.bodyHtml ?? "");
+  useEffect(() => {
+    if (editorRef.current && saved.bodyHtml) {
+      editorRef.current.innerHTML = sanitizeDocumentMarkup(saved.bodyHtml);
+      setBodyText(editorRef.current.innerText || "");
+    }
+  }, [saved]);
   const [selectionText, setSelectionText] = useState("");
   const [lastReplacement, setLastReplacement] = useState(0);
   const [mergeField, setMergeField] = useState(saved.mergeField ?? false);
@@ -45,8 +53,8 @@ export default function WordLab({ lab, userId, completed, onBack, onComplete }) 
   const { evidence, record } = useTaskEvidence();
 
   useEffect(() => {
-    writeLabWorkspace(userId, "word", { bodyText, heading, font, size, align, bullets, columns, orientation, table, header, footer, trackChanges, comment, mergeField, recipientsCsv, formControl });
-  }, [userId, bodyText, heading, font, size, align, bullets, columns, orientation, table, header, footer, trackChanges, comment, mergeField, recipientsCsv, formControl]);
+    writeLabWorkspace(userId, "word", { bodyText, bodyHtml, heading, font, size, align, bullets, columns, orientation, table, header, footer, trackChanges, comment, mergeField, recipientsCsv, formControl });
+  }, [userId, bodyText, bodyHtml, heading, font, size, align, bullets, columns, orientation, table, header, footer, trackChanges, comment, mergeField, recipientsCsv, formControl]);
 
   function exportHtml() {
     const html = buildDocumentHtml({ title: "SPARK Technology Club Newsletter", body: editorRef.current?.innerText ?? bodyText, header, footer, orientation, columns, table, bullets, mergeField });
@@ -92,6 +100,7 @@ export default function WordLab({ lab, userId, completed, onBack, onComplete }) 
   function syncDocument() {
     const text = editorRef.current?.innerText || "";
     setBodyText(text);
+    setBodyHtml(sanitizeDocumentMarkup(editorRef.current?.innerHTML || ""));
     setSelectionText("");
   }
 
@@ -142,6 +151,7 @@ export default function WordLab({ lab, userId, completed, onBack, onComplete }) 
     if (total > 0) {
       record("replace");
       setBodyText(editor.innerText || "");
+      setBodyHtml(sanitizeDocumentMarkup(editor.innerHTML));
       setMessage(`${total} ${total === 1 ? "match was" : "matches were"} replaced.`);
     } else {
       setMessage("No matching text was found.");
