@@ -1,4 +1,4 @@
-.spark-subject-selection{width:100%;min-height:calc(100vh - 74px);background:var(--spark-bg);color:var(--spark-ink);padding:46px 24px 72px}.spark-subject-selection.embedded{min-height:0;padding:0;background:transparent}.spark-subject-selection-inner{max-width:1120px;margin:0 auto}.spark-subject-selection.embedded .spark-subject-selection-inner{max-width:none}.spark-subject-selection-header{display:flex;align-items:flex-end;justify-content:space-between;gap:22px;margin-bottom:24px}.spark-subject-selection-eyebrow{font-size:12px;line-height:1.2;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--spark-teal)}.spark-subject-selection-header h1{font-family:'Crimson Pro',Georgia,serif;font-size:clamp(34px,5vw,52px);line-height:1.04;margin:7px 0 8px;color:var(--spark-ink)}.spark-subject-selection.embedded .spark-subject-selection-header h1{font-size:28px}.spark-subject-selection-header p{margin:0;max-width:720px;color:var(--spark-text-muted);font-size:15px;line-height:1.6}.spark-subject-selection-back{min-height:42px;border:1px solid var(--spark-border);background:var(--spark-paper);color:var(--spark-ink);border-radius:10px;padding:0 14px;font-weight:750;cursor:pointer}.spark-subject-selection-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.spark-subject-selection-card{border-color:var(--spark-border)!important}.spark-subject-selection-card-button{width:100%;min-height:250px;border:0;background:transparent;color:inherit;padding:28px;text-align:left;display:flex;gap:20px;align-items:flex-start;cursor:pointer;font:inherit}.spark-subject-selection-card-button:hover{background:var(--spark-muted)}.spark-subject-selection-card-button:focus-visible{outline:3px solid color-mix(in srgb,var(--spark-teal) 35%,transparent);outline-offset:-3px}.spark-subject-selection-mark{width:58px;height:58px;flex:0 0 58px;border-radius:17px;display:grid;place-items:center;background:var(--spark-navy-mid);color:#fff;font-family:'Crimson Pro',Georgia,serif;font-size:28px;font-weight:800}.spark-subject-selection-mark.physics{background:var(--spark-teal)}.spark-subject-selection-copy{display:flex;min-width:0;flex:1;flex-direction:column;align-items:flex-start}.spark-subject-selection-status{display:inline-flex;border-radius:999px;background:var(--spark-teal-light);color:var(--spark-teal-dark);font-size:10px;line-height:1;font-weight:850;letter-spacing:.06em;text-transform:uppercase;padding:7px 9px}.spark-subject-selection-copy h2{font-family:'Crimson Pro',Georgia,serif;font-size:27px;line-height:1.1;margin:13px 0 8px;color:var(--spark-ink)}.spark-subject-selection-copy p{margin:0;color:var(--spark-text-muted);font-size:14px;line-height:1.55}.spark-subject-selection-action{margin-top:auto;padding-top:26px;display:flex;align-items:center;gap:8px;color:var(--spark-teal);font-size:13px;font-weight:800}.spark-subject-selection-action-icon{display:grid;place-items:center;width:31px;height:31px;flex:0 0 31px;border:1px solid color-mix(in srgb,var(--spark-teal) 45%,var(--spark-border));border-radius:50%;background:transparent;color:var(--spark-teal)}.spark-subject-selection-action-icon svg{width:16px;height:16px;display:block;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}@media(max-width:720px){.spark-subject-selection{padding:28px 14px 52px}.spark-subject-selection-header{align-items:flex-start;flex-direction:column}.spark-subject-selection-grid{grid-template-columns:1fr}.spark-subject-selection-card-button{min-height:210px;padding:22px}.spark-subject-selection-mark{width:50px;height:50px;flex-basis:50px;border-radius:14px;font-size:24px}}@media(max-width:430px){.spark-subject-selection-card-button{gap:14px;padding:18px}.spark-subject-selection-copy h2{font-size:23px}.spark-subject-selection-action{padding-top:20px}}@media(prefers-reduced-motion:reduce){.spark-subject-selection *{transition:none!important}}
+.spark-subject-selection{width:100%;min-height:calc(100vh - 74px);background:var(--spark-bg);color:var(--spark-ink);padding:46px 24px 72px}.spark-subject-selection.embedded{min-height:0;padding:0;background:transparent}.spark-subject-selection-inner{max-width:1120px;margin:0 auto}.spark-subject-selection.embedded .spark-subject-selection-inner{max-width:none}.spark-subject-selection-header{display:flex;align-items:flex-end;justify-content:space-between;gap:22px;margin-bottom:24px}.spark-subject-selection-eyebrow{font-size:12px;line-height:1.2;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--spark-teal)}.spark-subject-selection-header h1{font-family:'Crimson Pro',Georgia,serif;font-size:clamp(34px,5vw,52px);line-height:1.04;margin:7px 0 8px;color:var(--spark-ink)}.spark-subject-selection.embedded .spark-subject-selection-header h1{font-size:28px}.spark-subject-selection-header p{margin:0;max-width:720px;color:var(--spark-text-muted);font-size:15px;line-height:1.6}.spark-subject-selection-back{min-height:42px;border:1px solid var(--spark-border);background:var(--spark-paper);color:var(--spark-ink);border-radius:10px;padding:0 14px;font-weight:750;cursor:pointer}.spark-subject-selection-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.spark-subject-selection-card{border-color:var(--spark-border)!important}.spark-subject-selection-card-button{width:100%;min-height:250px;border:0;background:transparent;color:inherit;padding:28px;text-align:left;display:flex;gap:20px;align-items:flex-start;cursor:pointer;font:inherit}.spark-subject-selection-card-button:hover{background:var(--spark-muted)}.spark-subject-selection-card-button:focus-visible{outline:3px solid color-mix(in srgb,var(--spark-teal) 35%,transparent);outline-offset:-3px}.spark-subject-selection-mark{width:58px;height:58px;flex:0 0 58px;border-radius:17px;display:grid;place-items:center;background:var(--spark-navy-mid);color:#fff;font-family:'Crimson Pro',Georgia,serif;font-size:28px;font-weight:800}.spark-subject-selection-mark.physics{background:var(--spark-navy-mid)}.spark-subject-selection-copy{display:flex;min-width:0;flex:1;flex-direction:column;align-items:flex-start}.spark-subject-selection-status{display:inline-flex;border-radius:999px;background:var(--spark-teal-light);color:var(--spark-teal-dark);font-size:10px;line-height:1;font-weight:850;letter-spacing:.06em;text-transform:uppercase;padding:7px 9px}.spark-subject-selection-copy h2{font-family:'Crimson Pro',Georgia,serif;font-size:27px;line-height:1.1;margin:13px 0 8px;color:var(--spark-ink)}.spark-subject-selection-copy p{margin:0;color:var(--spark-text-muted);font-size:14px;line-height:1.55}.spark-subject-selection-action{margin-top:auto;padding-top:26px;display:flex;align-items:center;gap:8px;color:var(--spark-teal);font-size:13px;font-weight:800}.spark-subject-selection-action-icon{display:grid;place-items:center;width:31px;height:31px;flex:0 0 31px;border:1px solid color-mix(in srgb,var(--spark-teal) 45%,var(--spark-border));border-radius:50%;background:transparent;color:var(--spark-teal)}.spark-subject-selection-action-icon svg{width:16px;height:16px;display:block;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}@media(max-width:720px){.spark-subject-selection{padding:28px 14px 52px}.spark-subject-selection-header{align-items:flex-start;flex-direction:column}.spark-subject-selection-grid{grid-template-columns:1fr}.spark-subject-selection-card-button{min-height:210px;padding:22px}.spark-subject-selection-mark{width:50px;height:50px;flex-basis:50px;border-radius:14px;font-size:24px}}@media(max-width:430px){.spark-subject-selection-card-button{gap:14px;padding:18px}.spark-subject-selection-copy h2{font-size:23px}.spark-subject-selection-action{padding-top:20px}}@media(prefers-reduced-motion:reduce){.spark-subject-selection *{transition:none!important}}
 
 
 /* V11: subject chooser uses the exact dashboard/My Subjects arrow component. */
@@ -15,3 +15,137 @@
   .spark-subject-selection-copy p{max-width:100%;overflow-wrap:anywhere}
   .spark-subject-selection-action{max-width:100%;flex-wrap:wrap}
 }
+
+
+/* SPARK subject chooser · refined Apple-inspired treatment.
+   Shared by Practice, Study, and other subject selection experiences. */
+.spark-subject-selection:not(.embedded){
+  --subject-surface:var(--spark-paper);
+  --subject-line:var(--spark-border);
+  --subject-secondary:var(--spark-text-muted);
+  padding-block:clamp(32px,4.4vw,64px) 80px;
+}
+.spark-subject-selection-inner{max-width:1160px}
+.spark-subject-selection-header{align-items:end;margin-bottom:32px;gap:32px}
+.spark-subject-selection-header h1{
+  font-size:clamp(38px,4.1vw,58px);
+  letter-spacing:-.035em;line-height:1.08;
+  margin:10px 0 13px;
+}
+.spark-subject-selection-header p{font-size:15px;line-height:1.7;max-width:680px}
+.spark-subject-selection-eyebrow{letter-spacing:.14em;font-size:11px}
+.spark-subject-selection-back{
+  padding:0 20px;min-height:44px;
+  border-radius:14px;
+  font-weight:650;
+  box-shadow:0 1px 2px rgba(12,29,60,.035);
+  transition:background .18s ease,border-color .18s ease,transform .18s ease;
+}
+.spark-subject-selection-back:hover{
+  background:var(--spark-muted);
+  border-color:color-mix(in srgb,var(--spark-ink) 22%,var(--spark-border));
+}
+.spark-subject-selection-grid{gap:16px}
+.spark-subject-selection-card{
+  min-width:0;
+  border:1px solid var(--subject-line)!important;
+  border-radius:21px!important;
+  background:var(--subject-surface)!important;
+  box-shadow:0 2px 7px rgba(18,37,67,.025),0 9px 30px rgba(18,37,67,.025)!important;
+  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;
+}
+.spark-subject-selection-card:has(.spark-subject-selection-card-button:hover){
+  transform:translateY(-3px);
+  border-color:color-mix(in srgb,var(--spark-teal) 38%,var(--subject-line))!important;
+  box-shadow:0 8px 20px rgba(18,37,67,.05),0 16px 34px rgba(18,37,67,.055)!important;
+}
+.spark-subject-selection-card-button{
+  min-height:205px;
+  padding:29px;
+  gap:19px;
+  border-radius:inherit;
+  transition:background .2s ease;
+}
+.spark-subject-selection-card-button:hover{background:color-mix(in srgb,var(--spark-teal) 3%,transparent)}
+.spark-subject-selection-card-button:focus-visible{
+  outline:3px solid var(--spark-teal);
+  outline-offset:-4px;
+}
+.spark-subject-selection-mark{
+  width:56px;height:56px;flex-basis:56px;
+  border-radius:16px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.15);
+}
+.spark-subject-selection-copy{align-self:stretch}
+.spark-subject-selection-status{
+  background:color-mix(in srgb,var(--spark-teal) 10%,var(--subject-surface));
+  color:var(--spark-teal);
+  font-size:10px;letter-spacing:.075em;
+  padding:7px 10px;
+}
+.spark-subject-selection-copy h2{
+  font-size:clamp(23px,2vw,27px);
+  letter-spacing:-.015em;
+  line-height:1.18;
+  margin:12px 0 8px;
+}
+.spark-subject-selection-copy p{
+  color:var(--subject-secondary);
+  font-size:14px;
+  line-height:1.58;
+  max-width:47ch;
+}
+.spark-subject-selection-action{
+  padding-top:22px;
+  gap:10px;
+  color:var(--spark-teal);
+  font-size:13px;
+  transition:gap .2s ease;
+}
+.spark-subject-selection-card-button:hover .spark-subject-selection-action{gap:14px}
+.spark-subject-selection-action .spark-dashboard-card-action-icon{
+  width:34px;height:34px;flex-basis:34px;
+  border-radius:50%;
+  background:color-mix(in srgb,var(--spark-teal) 4%,var(--subject-surface));
+  transition:background .2s ease,transform .2s ease;
+}
+.spark-subject-selection-card-button:hover .spark-dashboard-card-action-icon{
+  background:color-mix(in srgb,var(--spark-teal) 12%,var(--subject-surface));
+  transform:translate(2px,-2px);
+}
+@media(max-width:900px){
+  .spark-subject-selection-card-button{padding:23px;gap:15px}
+  .spark-subject-selection-mark{width:50px;height:50px;flex-basis:50px}
+  .spark-subject-selection-copy h2{font-size:23px}
+}
+@media(max-width:720px){
+  .spark-subject-selection:not(.embedded){padding:28px 16px 55px}
+  .spark-subject-selection-header{gap:18px;margin-bottom:24px}
+  .spark-subject-selection-grid{gap:13px}
+  .spark-subject-selection-card-button{min-height:176px;padding:22px}
+  .spark-subject-selection-header h1{font-size:40px}
+}
+@media(max-width:430px){
+  .spark-subject-selection-card-button{padding:20px 16px;gap:14px}
+  .spark-subject-selection-mark{width:46px;height:46px;flex-basis:46px;border-radius:13px;font-size:23px}
+  .spark-subject-selection-copy h2{font-size:21px}
+}
+@media(prefers-reduced-motion:reduce){
+  .spark-subject-selection-card,
+  .spark-subject-selection-card-button,
+  .spark-subject-selection-back,
+  .spark-subject-selection-action,
+  .spark-subject-selection-action .spark-dashboard-card-action-icon{transition:none!important}
+  .spark-subject-selection-card:has(.spark-subject-selection-card-button:hover),
+  .spark-subject-selection-card-button:hover .spark-dashboard-card-action-icon{transform:none}
+}
+
+/* Unified SPARK back navigation: decorative thin-line SVG beside the label. */
+.spark-subject-selection-back{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  white-space:nowrap;
+}
+.spark-subject-selection-back svg{flex-shrink:0}

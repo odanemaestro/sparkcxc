@@ -1,0 +1,61 @@
+import React from "react";
+import {render,screen,fireEvent,within} from "@testing-library/react";
+import FnhPracticeHub from "./FnhPracticeHub";
+import {FNH_SUPPLIED_ARCHIVE} from "../data/fnhPastPaperInventory";
+
+describe("FNH student examination navigation",()=>{
+  beforeEach(()=>{
+    localStorage.clear();
+    Object.defineProperty(window,"scrollTo",{configurable:true,value:jest.fn()});
+  });
+  test("the Paper 1 flow selects the second of two different 60-question examinations",()=>{
+    render(<FnhPracticeHub userId="fnh-test-student" onBack={jest.fn()}/>);
+    fireEvent.click(screen.getByRole("button",{name:/Paper 1/i}));
+    expect(screen.getByText("Paper 1: Multiple choice")).toBeInTheDocument();
+    expect(screen.getByText("Practice set 1")).toBeInTheDocument();
+    expect(screen.getByText("Practice set 2")).toBeInTheDocument();
+    const second=screen.getByText("Practice set 2").closest("section");
+    fireEvent.click(within(second).getByRole("button",{name:/Select practice paper/i}));
+    expect(screen.getByText("Paper 1 examination instructions")).toBeInTheDocument();
+    expect(screen.getByText("ORIGINAL PRACTICE SET 2")).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button",{name:"Start examination"}));
+    expect(screen.getByText("Question 1 of 60",{exact:true})).toBeInTheDocument();
+    expect(screen.getByText(/A person says, 'My diet consists only/)).toBeInTheDocument();
+  });
+  test("the Paper 2 flow selects the second 96-mark exam and presents the instructions",()=>{
+    render(<FnhPracticeHub userId="fnh-test-student" onBack={jest.fn()}/>);
+    fireEvent.click(screen.getByRole("button",{name:/Paper 2/i}));
+    expect(screen.getByText("Paper 2: Structured questions")).toBeInTheDocument();
+    const second=screen.getByText("Practice set 2").closest("section");
+    fireEvent.click(within(second).getByRole("button",{name:/Select practice paper/i}));
+    expect(screen.getByText("Paper 2 examination instructions")).toBeInTheDocument();
+    expect(screen.getByText("ORIGINAL PRACTICE SET 2")).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button",{name:"Start examination"}));
+    expect(screen.getByText(/Question 1: Nutrition through the life cycle/)).toBeInTheDocument();
+    expect(screen.getByText(/A health centre in St Elizabeth/)).toBeInTheDocument();
+  });
+  test("2004 and 2005 Paper 1 cards disclose missing source material without enabling timed historical grading",()=>{
+    render(<FnhPracticeHub userId="fnh-historical-audit" onBack={jest.fn()}/>);
+    fireEvent.click(screen.getByRole("button",{name:/Paper 1/i}));
+    fireEvent.click(screen.getByRole("button",{name:"Past papers"}));
+    const y2004=screen.getByRole("heading",{name:"2004 Paper 1"}).closest("article");
+    const y2005=screen.getByRole("heading",{name:"2005 Paper 1"}).closest("article");
+    expect(within(y2004).getByText(/Questions 46–47: possible choices found in other examination years/)).toBeInTheDocument();
+    expect(within(y2005).getByText(/supplied scan ends at Question 53/)).toBeInTheDocument();
+    expect(within(y2004).queryByRole("button",{name:/Start examination/})).not.toBeInTheDocument();
+    expect(within(y2005).queryByRole("button",{name:/Start examination/})).not.toBeInTheDocument();
+    expect(within(y2004).getByRole("button",{name:/Review source questions \(unscored\)/})).toBeInTheDocument();
+    expect(within(y2005).getByRole("button",{name:/Review source questions \(unscored\)/})).toBeInTheDocument();
+  });
+  test("historical archive enables individually source-checked Paper 2 archives",()=>{
+    render(<FnhPracticeHub userId="fnh-test-student" onBack={jest.fn()}/>);
+    fireEvent.click(screen.getByRole("button",{name:/Paper 2/i}));
+    fireEvent.click(screen.getByRole("button",{name:"Past papers"}));
+    expect(screen.getByText("Historical Paper 2 sources")).toBeInTheDocument();
+    const ready=FNH_SUPPLIED_ARCHIVE.filter(row=>row.paper===2&&row.simulatorReady).length;
+    const pending=FNH_SUPPLIED_ARCHIVE.filter(row=>row.paper===2&&!row.simulatorReady).length;
+    expect(screen.queryAllByText("Question and marking checks pending").length).toBe(pending);
+    expect(screen.getAllByRole("button",{name:/Start examination/i})).toHaveLength(ready);
+    expect(screen.getAllByText("Original questions transcribed and checked")).toHaveLength(ready);
+  });
+});

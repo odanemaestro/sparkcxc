@@ -1,3 +1,4 @@
+import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import React, { useEffect, useState } from "react";
 import { readSparkHashRoute, subscribeSparkRoute } from "../../routing/sparkRoutingV270";
 import EnglishAPaper1Exam from "./EnglishAPaper1Exam";
@@ -58,7 +59,7 @@ export default function EnglishAPracticeHub({ supabase, userId, onBack }) {
             </p>
           </div>
           <button type="button" className="ea-practice-back" onClick={onBack}>
-            <span aria-hidden="true">{"←"}</span> Back
+            <BackArrowIcon/> Back
           </button>
         </header>
 

@@ -150,9 +150,9 @@ export default function PlantGrowthExplorer() {
       </header>
 
       <div className="spark-plant-growth-tabs">
-        <button type="button" className={mode === "conditions" ? "active" : ""} onClick={() => setMode("conditions")}>Germination conditions</button>
-        <button type="button" className={mode === "growth" ? "active" : ""} onClick={() => setMode("growth")}>Height against time</button>
-        <button type="button" className={mode === "mass" ? "active" : ""} onClick={() => setMode("mass")}>Dry mass</button>
+        <button type="button" className={mode === "conditions" ? "active" : ""} aria-pressed={mode === "conditions"} onClick={() => setMode("conditions")}>Germination conditions</button>
+        <button type="button" className={mode === "growth" ? "active" : ""} aria-pressed={mode === "growth"} onClick={() => setMode("growth")}>Height against time</button>
+        <button type="button" className={mode === "mass" ? "active" : ""} aria-pressed={mode === "mass"} onClick={() => setMode("mass")}>Dry mass</button>
       </div>
 
       <div className="spark-plant-growth-grid">

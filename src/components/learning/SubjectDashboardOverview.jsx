@@ -1,3 +1,4 @@
+import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import React, { useMemo } from "react";
 import Card from "../ui/Card";
 import Icon from "../ui/Icon";
@@ -380,7 +381,7 @@ export default function SubjectDashboardOverview({
 
       {showAllProgressAction && onOpenProgress && summaries.length > 0 && (
         <button type="button" className="spark-subject-view-all" onClick={() => onOpenProgress(null)}>
-          View all progress <span aria-hidden="true">→</span>
+          View all progress <ForwardArrowIcon/>
         </button>
       )}
     </section>

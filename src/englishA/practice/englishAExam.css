@@ -193,3 +193,33 @@ html[data-theme="dark"] .ea-p2-instruction-choice button,
 body[data-theme="dark"] .ea-p2-instruction-choice button,
 .dark .ea-p2-instruction-choice button{background:#122b43;border-color:#29465f}
 @media(max-width:640px){.ea-p2-instruction-choice>div{grid-template-columns:1fr}}
+
+/* Consistent minimalist navigation icon spacing across English A practice. */
+.ea-practice-back,.ea-practice-primary,.is-exam-page-back{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+}
+.ea-practice-back svg,.ea-practice-primary svg,.is-exam-page-back svg{
+  flex:0 0 18px;width:18px;height:18px;stroke:currentColor;
+  stroke-width:1.5;fill:none;
+}
+
+/* Same quiet outlined navigation control across English A paper screens. */
+.ea-practice-back,.ea-practice-back.is-exam-page-back{
+  background:var(--spark-surface,#fff);
+  color:var(--spark-text,#132c53);
+  border:1px solid var(--spark-border,#d8e3f0);
+  box-shadow:none;
+  min-height:44px;
+  font-weight:700;
+  gap:8px;
+}
+.ea-practice-back:hover:not(:disabled){background:var(--spark-bg,#f5f8fc)}
+
+/* Paper 01 uses the same understated outlined back navigation as Paper 02. */
+.is-exam-root :is(.is-exam-back,.is-exam-page-back){
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+}
+.is-exam-root :is(.is-exam-back,.is-exam-page-back) svg{
+  width:18px;height:18px;flex:0 0 18px;
+  fill:none;stroke:currentColor;stroke-width:1.5;
+}

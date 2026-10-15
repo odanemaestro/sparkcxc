@@ -1,3 +1,5 @@
+import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
+import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Card from "../ui/Card";
 import Btn from "../ui/Btn";
@@ -346,10 +348,10 @@ export default function FlashcardsPanel({ userId, supabase, showToast, onProgres
 
               <div className="spark-flashcard-nav">
                 <button disabled={index === 0} onClick={() => { setIndex(value => Math.max(0, value - 1)); setRevealed(false); }}>
-                  <span className="spark-nav-arrow" aria-hidden="true">←</span><span>Previous</span>
+                  <BackArrowIcon className="spark-nav-arrow"/><span>Previous</span>
                 </button>
                 <button disabled={index >= visibleCards.length - 1} onClick={() => { setIndex(value => Math.min(visibleCards.length - 1, value + 1)); setRevealed(false); }}>
-                  <span>Next</span><span className="spark-nav-arrow" aria-hidden="true">→</span>
+                  <span>Next</span><ForwardArrowIcon className="spark-nav-arrow"/>
                 </button>
               </div>
             </>

@@ -11,12 +11,12 @@ export default function BackArrowIcon({ size = 18, className = "" }) {
       aria-hidden="true"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.8"
+      strokeWidth="1.5"
       strokeLinecap="round"
       strokeLinejoin="round"
       style={{ flex: "0 0 auto" }}
     >
-      <path d="M12.5 5.5 8 10l4.5 4.5M8 10h8" />
+      <path d="M15 10H5m0 0 4-4m-4 4 4 4" />
     </svg>
   );
 }

@@ -1,3 +1,5 @@
+import ForwardArrowIcon from "../components/ui/ForwardArrowIcon";
+import BackArrowIcon from "../components/ui/BackArrowIcon";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import SparkLoader from "../components/ui/SparkLoader";
 import Card from "../components/ui/Card";
@@ -11,12 +13,22 @@ import TransportProcessExplorer from "./components/TransportProcessExplorer";
 import EnglishALessonExamples from "../englishA/components/EnglishALessonExamples";
 import IntegratedScienceText from "../integratedScience/components/IntegratedScienceText";
 import ChemistryInteractiveLab from "../chemistry/components/ChemistryInteractiveLab";
+import FoodEnergyNutritionExplorer from "./components/FoodEnergyNutritionExplorer";
+import FoodPreservationExplorer from "./components/FoodPreservationExplorer";
+import FoodContaminationExplorer from "./components/FoodContaminationExplorer";
+import FoodMicroorganismExplorer from "./components/FoodMicroorganismExplorer";
+import FnhObjectivePractice from "../fnh/components/FnhObjectivePractice";
+import FnhStudyPractice from "../fnh/components/FnhStudyPractice";
+import FnhDecisionLab from "../fnh/components/FnhDecisionLab";
+import FnhBackToTop from "../fnh/components/FnhBackToTop";
 import {
   readSparkHashRoute,
   subscribeSparkRoute,
   writeSparkNestedRoute,
 } from "../routing/sparkRoutingV270";
 import "./genericSubjectStudy.css";
+import "../fnh/components/fnhStudyExperience.css";
+import "./scienceStudyPolishBatch1.css";
 
 function lessonData(topic = {}) {
   const lesson = topic?.metadata?.lesson;
@@ -131,6 +143,7 @@ function isTopicUnlocked(structure, topicId, completedIds = new Set()) {
 export function GenericLessonContent({
   subjectId,
   topic,
+  editorial=false,
   completedActivityKeys = new Set(),
   onActivityComplete,
 }) {
@@ -151,10 +164,50 @@ export function GenericLessonContent({
   const example = lesson.workedExample && typeof lesson.workedExample === "object"
     ? lesson.workedExample
     : null;
+  const isFnh = subjectId === "food-nutrition-and-health";
+  const isEditorial = editorial && !isFnh;
+  const hasExplore = Boolean(models.length || diagrams.length || references.length || subjectId==="english-a");
+  const jumpTo = anchor => {
+    if (typeof document === "undefined") return;
+    const target = document.getElementById(anchor);
+    if (!target) return;
+    const reduceMotion = typeof window !== "undefined"
+      && typeof window.matchMedia === "function"
+      && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    target.scrollIntoView?.({behavior:reduceMotion?"auto":"smooth",block:"start"});
+  };
+  const objectiveGuideBlock = objectiveNotes.length > 0 ? (
+    <section className="spark-generic-objective-guide" aria-label="Syllabus objective guide">
+      <div className="spark-generic-objective-guide-head">
+        <span>Syllabus guide</span>
+        <h3>Understand every objective</h3>
+        <p>Use these explanations as a checklist. You should be able to explain each idea in your own words and apply it to an exam question.</p>
+      </div>
+      <div className="spark-generic-objective-guide-list">
+        {objectiveNotes.map(row=>(
+          <article key={row.code} className="spark-generic-objective-guide-item">
+            <div><strong>{row.code}</strong><span>{renderLessonText(row.objective)}</span></div>
+            <p>{renderLessonText(row.explanation)}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  ) : null;
 
   return (
     <div className="spark-generic-lesson-body">
       {intro && <p className="spark-generic-lesson-intro">{renderLessonText(intro)}</p>}
+      {isFnh && <nav className="spark-fnh-reading-nav" aria-label="Jump to a part of this lesson">
+        <span className="spark-fnh-reading-nav-label">In this lesson</span>
+        <div className="spark-fnh-reading-nav-links">
+          <button type="button" onClick={()=>jumpTo("fnh-lesson-notes")}>Read notes <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>
+          {models.length>0&&<button type="button" onClick={()=>jumpTo("fnh-lesson-explore")}>Explore <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>}
+          <button type="button" onClick={()=>jumpTo("fnh-lesson-practice")}>Quick practice <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>
+          <button type="button" onClick={()=>jumpTo("fnh-lesson-reflect")}>Written response <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>
+        </div>
+      </nav>}
+
+      
 
       {objectives.length > 0 && (
         <Card className="spark-generic-objectives">
@@ -165,23 +218,14 @@ export function GenericLessonContent({
         </Card>
       )}
 
-      {objectiveNotes.length > 0 && (
-        <section className="spark-generic-objective-guide" aria-label="Syllabus objective guide">
-          <div className="spark-generic-objective-guide-head">
-            <span>Syllabus guide</span>
-            <h3>Understand every objective</h3>
-            <p>Use these explanations as a checklist. You should be able to explain each idea in your own words and apply it to an exam question.</p>
-          </div>
-          <div className="spark-generic-objective-guide-list">
-            {objectiveNotes.map(row=>(
-              <article key={row.code} className="spark-generic-objective-guide-item">
-                <div><strong>{row.code}</strong><span>{renderLessonText(row.objective)}</span></div>
-                <p>{renderLessonText(row.explanation)}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-      )}
+      {objectiveGuideBlock && ((isFnh||isEditorial) ? (
+        <details className="spark-fnh-syllabus-details">
+          <summary><span><strong>Official syllabus guide</strong><small>{objectiveNotes.length} objectives, with explanations</small></span>
+            <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="m5 8 5 5 5-5"/></svg>
+          </summary>
+          {objectiveGuideBlock}
+        </details>
+      ) : objectiveGuideBlock)}
 
       {blocks.map((block, index) => {
         const paragraphs = Array.isArray(block?.paragraphs)
@@ -192,7 +236,7 @@ export function GenericLessonContent({
         const bullets = Array.isArray(block?.bullets) ? block.bullets : [];
 
         return (
-          <section key={`${block?.title || "section"}-${index}`} className="spark-generic-lesson-section">
+          <section key={`${block?.title || "section"}-${index}`} id={index===0?(isFnh?"fnh-lesson-notes":isEditorial?"spark-lesson-notes":undefined):undefined} className="spark-generic-lesson-section">
             {block?.title && <h3>{renderLessonText(block.title)}</h3>}
             {paragraphs.filter(Boolean).map((paragraph, paragraphIndex) => (
               <p key={paragraphIndex}>{renderLessonText(paragraph)}</p>
@@ -208,6 +252,7 @@ export function GenericLessonContent({
         );
       })}
 
+      {isEditorial&&hasExplore&&<div id="spark-lesson-explore" className="spark-editorial-scroll-anchor" aria-hidden="true"/>}
       {models.map(model => (
         subjectId === "integrated-science"
           ? <div className="spark-integrated-science-model" key={model.id || model.type}><IntegratedScienceModel model={model} /></div>
@@ -222,6 +267,14 @@ export function GenericLessonContent({
                 sectionId:topic.sectionId,
               })}
             />
+          : subjectId === "food-nutrition-and-health"
+          ? <div id={model===models[0]?"fnh-lesson-explore":undefined} className="spark-fnh-interactive-model" key={model.id || model.type}>
+              {["fnh-meal-builder","fnh-label-calculator","fnh-budget-planner"].includes(model.type) ? <FnhDecisionLab type={model.type}/> :
+               model.type === "fnh-nutrition" ? <FoodEnergyNutritionExplorer /> :
+               model.type === "fnh-preservation" ? <FoodPreservationExplorer /> :
+               model.type === "fnh-contamination" ? <FoodContaminationExplorer /> :
+               model.type === "fnh-microorganisms" ? <FoodMicroorganismExplorer /> : null}
+            </div>
           : model?.type === "membrane-transport"
           ? <TransportProcessExplorer key={model.id || "membrane-transport"} />
           : null
@@ -254,7 +307,7 @@ export function GenericLessonContent({
       )}
 
       {points.length > 0 && (
-        <Card className="spark-generic-key-points">
+        <Card id={isEditorial?"spark-lesson-key-points":undefined} className="spark-generic-key-points">
           <strong>Key points</strong>
           <ul>
             {points.map((point, index) => <li key={index}>{renderLessonText(point)}</li>)}
@@ -263,7 +316,7 @@ export function GenericLessonContent({
       )}
 
       {example && (
-        <Card className="spark-generic-worked-example">
+        <Card id={isEditorial?"spark-lesson-worked-example":undefined} className="spark-generic-worked-example">
           <span>Worked example</span>
           {example.title && <h3>{renderLessonText(example.title)}</h3>}
           {example.prompt && <p>{renderLessonText(example.prompt)}</p>}
@@ -276,8 +329,12 @@ export function GenericLessonContent({
         </Card>
       )}
 
+      {subjectId==="food-nutrition-and-health"&&<FnhStudyPractice key={`fnh-interactive-${topic?.id}`} topicId={topic?.id}/>}
+
+      {subjectId==="food-nutrition-and-health"&&<FnhObjectivePractice key={`fnh-open-response-${topic?.id}`} topic={topic}/>}
+
       {summary && (
-        <section className="spark-generic-lesson-summary">
+        <section id={isFnh?"fnh-lesson-summary":isEditorial?"spark-lesson-summary":undefined} className="spark-generic-lesson-summary">
           <h3>Lesson summary</h3>
           <p>{renderLessonText(summary)}</p>
         </section>
@@ -300,6 +357,8 @@ export default function GenericSubjectStudyView({
   onBack,
   onManageSubjects,
   showToast,
+  LessonExtras,
+  courseActions,
 }) {
   const [structure, setStructure] = useState(null);
   const [loading, setLoading] = useState(Boolean(subject?.id));
@@ -310,6 +369,7 @@ export default function GenericSubjectStudyView({
   const [activeTopicId, setActiveTopicId] = useState(null);
   const [saving, setSaving] = useState(false);
   const [outlineOpen, setOutlineOpen] = useState(false);
+  const [focusReading, setFocusReading] = useState(false);
   const [expandedOutlineSections, setExpandedOutlineSections] = useState(new Set());
 
   const subjectId = String(subject?.id || "").trim().toLowerCase();
@@ -596,11 +656,9 @@ export default function GenericSubjectStudyView({
           topicId:activeTopic.id,
           title:activeTopic.title,
           completed:true,
-          metadata:{
-            source:"generic_subject_study",
-            adapter:"generic-subject-v1",
-            at:new Date().toISOString(),
-          },
+          metadata:subjectId==="social-studies"
+            ? {source:"social_studies_course_v1",objective_codes:activeTopic?.metadata?.objectiveCodes||[],at:new Date().toISOString()}
+            : {source:"generic_subject_study",adapter:"generic-subject-v1",at:new Date().toISOString()},
         },
       });
 
@@ -674,7 +732,7 @@ export default function GenericSubjectStudyView({
   }
 
   return (
-    <main className="spark-generic-study">
+    <main className={`spark-generic-study ${subjectId==="food-nutrition-and-health"?"spark-fnh-study":subjectId?"spark-editorial-study":""} ${focusReading?"spark-fnh-focus-reading":""}`}>
       <div className="spark-generic-study-shell">
         <header className="spark-generic-study-hero">
           <div className="spark-generic-study-mark" aria-hidden="true">
@@ -688,6 +746,7 @@ export default function GenericSubjectStudyView({
           </div>
 
           <div className="spark-generic-study-hero-actions">
+            {courseActions}
             {onBack && (
               <button type="button" onClick={onBack}>Back</button>
             )}
@@ -867,23 +926,37 @@ export default function GenericSubjectStudyView({
                 <>
                   <div className="spark-generic-lesson-head">
                     <div>
+                      {subjectId&&<p className="spark-fnh-lesson-index">Lesson {activeTopicIndex+1} of {totalTopics}{subjectId==="food-nutrition-and-health"?` · ${activeTopic?.metadata?.syllabus?.objectiveCodes?.length||0} syllabus objectives`:""}</p>}
                       <span className="section-kicker">
                         {activeSection?.title || "COURSE TOPIC"}
                       </span>
                       <h2>{activeTopic.title}</h2>
                     </div>
 
-                    {completedTopicIds.has(activeTopic.id) && (
+                    {subjectId ? (
+                      <div className="spark-fnh-lesson-head-actions">
+                        <button type="button" className="spark-fnh-focus-button"
+                          aria-pressed={focusReading} onClick={()=>setFocusReading(value=>!value)}>
+                          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 4H5a1 1 0 0 0-1 1v3m12-4h3a1 1 0 0 1 1 1v3M4 16v3a1 1 0 0 0 1 1h3m12-4v3a1 1 0 0 1-1 1h-3"/></svg>
+                          {focusReading?"Show course outline":"Focus on reading"}
+                        </button>
+                        {completedTopicIds.has(activeTopic.id) && (
+                          <span className="spark-generic-complete-chip">Completed</span>
+                        )}
+                      </div>
+                    ) : completedTopicIds.has(activeTopic.id) ? (
                       <span className="spark-generic-complete-chip">Completed</span>
-                    )}
+                    ) : null}
                   </div>
 
                   <GenericLessonContent
                     subjectId={subjectId}
                     topic={activeTopic}
                     completedActivityKeys={completedActivityKeys}
+                    editorial={subjectId!=="food-nutrition-and-health"}
                     onActivityComplete={recordInteractiveComplete}
                   />
+                  {LessonExtras && <LessonExtras key={activeTopic.id} topic={activeTopic} supabase={supabase} showToast={showToast}/> }
 
                   <div className="spark-generic-lesson-footer">
                     {previousTopic ? (
@@ -892,7 +965,7 @@ export default function GenericSubjectStudyView({
                         className="spark-generic-lesson-nav spark-generic-lesson-nav-previous"
                         onClick={() => openTopic(previousTopic, previousTopic.sectionId || null)}
                       >
-                        <span aria-hidden="true">←</span>
+                        <BackArrowIcon/>
                         <span>Previous</span>
                       </button>
                     ) : <span className="spark-generic-lesson-nav-spacer" aria-hidden="true" />}
@@ -919,7 +992,7 @@ export default function GenericSubjectStudyView({
                         title={!activeLessonComplete ? "Complete this lesson to unlock the next lesson." : undefined}
                       >
                         <span>Next Lesson</span>
-                        <span aria-hidden="true">→</span>
+                        <ForwardArrowIcon/>
                       </button>
                     ) : <span className="spark-generic-lesson-nav-spacer" aria-hidden="true" />}
                   </div>
@@ -934,6 +1007,7 @@ export default function GenericSubjectStudyView({
           </div>
         )}
       </div>
+      {subjectId&&<FnhBackToTop/>}
     </main>
   );
 }

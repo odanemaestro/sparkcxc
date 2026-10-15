@@ -1,3 +1,5 @@
+import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
+import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { recordSubjectActivity } from "../../subjects/subjectProgress";
 import { buildAttemptProvenance } from "../../grading/attemptProvenance";
@@ -228,7 +230,7 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
               <h1>Paper 2 Simulator</h1>
               <p>Choose a full original SPARK paper built to the revised three-module structure. Each paper carries 120 marks and allows 2 hours 45 minutes.</p>
             </div>
-            <button type="button" className="ea-practice-back" onClick={onBack}>← English A practice</button>
+            <button type="button" className="ea-practice-back" onClick={onBack}><BackArrowIcon/> English A practice</button>
           </header>
           <div className="ea-p2-paper-grid">
             {englishAPaper2Sets.map(set => (
@@ -251,7 +253,7 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
   if (phase==="instructions") {
     return (
       <main className="is-exam-root"><div className="is-exam-shell">
-        <button type="button" className="is-exam-primary is-exam-page-back" onClick={() => setPhase("library")}>← Back to Paper 2 library</button>
+        <button type="button" className="ea-practice-back is-exam-page-back" onClick={() => setPhase("library")}><BackArrowIcon/> Back to Paper 2 library</button>
         <section className="is-exam-instructions-card">
           <span className="is-exam-eyebrow">CSEC ENGLISH A · PAPER 02</span>
           <h1>{paper.title}</h1>
@@ -301,7 +303,7 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
     const completed=requiredTasks(paper,choiceId);
     return (
       <main className="ea-practice-shell"><div className="ea-practice-home">
-        <header className="ea-practice-hero"><div><span className="ea-practice-eyebrow">PAPER 02 REVIEW</span><h1>{paper.title}</h1><p>SPARK gives a detailed practice estimate using task fulfilment, stimulus coverage, organisation, register, language and mechanics. Extended-writing marks are automated practice estimates and may differ from official examination marking.</p></div><button className="ea-practice-back" type="button" onClick={onBack}>← English A practice</button></header>
+        <header className="ea-practice-hero"><div><span className="ea-practice-eyebrow">PAPER 02 REVIEW</span><h1>{paper.title}</h1><p>SPARK gives a detailed practice estimate using task fulfilment, stimulus coverage, organisation, register, language and mechanics. Extended-writing marks are automated practice estimates and may differ from official examination marking.</p></div><button className="ea-practice-back" type="button" onClick={onBack}><BackArrowIcon/> English A practice</button></header>
 
         <section className="ea-p2-score-summary">
           <div><span>Estimated score</span><strong>{result.score}/{result.maxScore}</strong></div>
@@ -418,10 +420,10 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
       )}
 
       <footer className="ea-p2-nav">
-        <button type="button" className="ea-practice-back" disabled={currentIndex===0} onClick={() => {setCurrentIndex(i=>Math.max(0,i-1));window.scrollTo?.(0,0);}}>← Previous</button>
+        <button type="button" className="ea-practice-back" disabled={currentIndex===0} onClick={() => {setCurrentIndex(i=>Math.max(0,i-1));window.scrollTo?.(0,0);}}><BackArrowIcon/> Previous</button>
         <span>Response {currentIndex+1} of {visibleTasks.length}</span>
         {currentIndex < visibleTasks.length-1
-          ? <button type="button" className="ea-practice-primary" onClick={() => {setCurrentIndex(i=>Math.min(visibleTasks.length-1,i+1));window.scrollTo?.(0,0);}}>Next →</button>
+          ? <button type="button" className="ea-practice-primary" onClick={() => {setCurrentIndex(i=>Math.min(visibleTasks.length-1,i+1));window.scrollTo?.(0,0);}}>Next <ForwardArrowIcon/></button>
           : <button type="button" className="ea-practice-primary" disabled={!choiceId} onClick={() => submit(false)}>Submit Paper 2</button>}
       </footer>
     </div></main>

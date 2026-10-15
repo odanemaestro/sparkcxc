@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "../components/ui/Card";
+import BackArrowIcon from "../components/ui/BackArrowIcon";
 import { T, FD, FB } from "../theme";
 import "./subjectSelection.css";
 
@@ -51,7 +52,7 @@ export default function SubjectSelectionView({
           </div>
           {onBack && (
             <button type="button" className="spark-subject-selection-back" onClick={onBack}>
-              Back
+              <BackArrowIcon size={18}/> Back
             </button>
           )}
         </header>
@@ -115,9 +116,12 @@ export function SubjectChangeButton({ onClick, children = "Change subject" }) {
         fontFamily: FB,
         fontWeight: 700,
         cursor: "pointer",
+        display: "inline-flex",
+        alignItems: "center",
+        gap: 8,
       }}
     >
-      ← {children}
+      <BackArrowIcon size={18}/> {children}
     </button>
   );
 }

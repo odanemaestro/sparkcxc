@@ -1,3 +1,4 @@
+import BackArrowIcon from "../components/ui/BackArrowIcon";
 import React, { useEffect, useMemo, useState } from "react";
 import Paper2027ModuleExam from "./Paper2027ModuleExam";
 import { useCsec2027Route } from "../routing/sparkRoutingV270";
@@ -63,7 +64,7 @@ export default function Syllabus2027Hub({ onExit, supabase, userId }) {
           <h1>2027 Syllabus Practice</h1>
           <p>Prepare for the revised modular CSEC Mathematics examination with complete Module 1, Module 2, Module 3 and full Paper 2 practice.</p>
         </div>
-        <button className="practice-back" type="button" onClick={onExit}>← Back to Practice</button>
+        <button className="practice-back" type="button" onClick={onExit}><BackArrowIcon/> Back to Practice</button>
       </section>
 
       <section className="paper2027-format-card">

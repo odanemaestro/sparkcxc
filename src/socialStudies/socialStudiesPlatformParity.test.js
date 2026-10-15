@@ -120,6 +120,8 @@ describe("Social Studies platform parity", () => {
   test("Social Studies activity is classified for shared progress, reports and intelligence", () => {
     const practice = read("practice/SocialStudiesPracticeHub.jsx");
     const study = read("components/SocialStudiesSubjectView.jsx");
+    const studyReader = read("../subjects/GenericSubjectStudyView.jsx");
+    const lessonExtras = read("components/SocialStudiesLessonExtras.jsx");
     const flashcards = read("components/SocialStudiesFlashcardsPanel.jsx");
 
     expect(practice).toContain('activityType=paperType ? "exam"');
@@ -127,8 +129,10 @@ describe("Social Studies platform parity", () => {
     expect(practice).toContain('activityType:unitPractice ? "topic_quiz" : "practice"');
     expect(practice).toContain('paper_type:paperType');
     expect(practice).toContain('social_studies_${paperType}_exam');
-    expect(study).toContain('activityType:"lesson"');
-    expect(study).toContain('activityType:"practice"');
+    expect(study).toContain("GenericSubjectStudyView");
+    expect(studyReader).toContain('activityType:"lesson"');
+    expect(lessonExtras).toContain('activityType:"practice"');
+    expect(study).toContain('activityKey:"tool:sba-research-lab"');
     expect(flashcards).toContain('activityType:"flashcard_review"');
   });
 
@@ -213,24 +217,28 @@ describe("Social Studies platform parity", () => {
     });
   });
 
-  test("Social Studies study navigation matches Integrated Science lesson progression rules", () => {
+  test("Social Studies uses the actual shared study reader and retains lesson progression rules", () => {
     const study = read("components/SocialStudiesSubjectView.jsx");
-    const css = read("socialStudies.css");
+    const reader = read("../subjects/GenericSubjectStudyView.jsx");
+    const extras = read("components/SocialStudiesLessonExtras.jsx");
+    const adapter = read("../subjects/genericSubjectCatalog.js");
 
-    expect(study).toContain("function isLessonUnlocked");
-    expect(study).toContain("Complete the earlier lessons to unlock this lesson.");
-    expect(study).toContain("previousLesson");
-    expect(study).toContain("nextLesson");
-    expect(study).toContain("Mark lesson complete");
-    expect(study).toContain("Lesson completed");
-    expect(study).toContain('disabled={!completed}');
-    expect(study).toContain("Next Lesson");
-    expect(study).toContain("Previous");
-    expect(study).toContain("ss-lock-icon");
-    expect(css).toContain(".ss-lesson-footer");
-    expect(css).toContain(".ss-lesson-nav-previous");
-    expect(css).toContain(".ss-lesson-nav-next:not(:disabled)");
-    expect(css).toContain(".ss-lesson-list button.locked");
+    expect(study).toContain("<GenericSubjectStudyView");
+    expect(study).toContain("SocialStudiesSbaToolkit");
+    expect(study).toContain("SocialStudiesLessonExtras");
+    expect(study).toContain("Open Research &");
+    expect(adapter).toContain("socialStudiesLocalStructure");
+    expect(reader).toContain("function isTopicUnlocked");
+    expect(reader).toContain("Complete the earlier lessons to unlock this lesson.");
+    expect(reader).toContain("previousTopic");
+    expect(reader).toContain("nextTopic");
+    expect(reader).toContain("Mark lesson complete");
+    expect(reader).toContain("Lesson completed");
+    expect(reader).toContain("Next Lesson");
+    expect(reader).toContain("Previous");
+    expect(reader).toContain("spark-generic-outline");
+    expect(extras).toContain("SocialStudiesInteractiveActivity");
+    expect(extras).toContain('kind:"lesson-check"');
   });
 
   test("Social Studies practice and flashcards honour Intelligence route targets", () => {

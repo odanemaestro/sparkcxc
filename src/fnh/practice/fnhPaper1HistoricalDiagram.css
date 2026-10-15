@@ -1,0 +1,13 @@
+.fnh-paper1-source-figure{max-width:780px;margin:18px auto;color:var(--spark-text,#193350);padding:16px;background:var(--spark-surface,#fff);border:1px solid var(--spark-border,#d6e2ee);border-radius:13px}
+.fnh-paper1-source-figure svg{display:block;width:100%;height:auto;max-height:430px;overflow:visible}
+.fnh-paper1-source-figure figcaption{margin-top:12px;color:var(--spark-text-muted,#50657d);font-size:12px;line-height:1.6}
+html[data-theme="dark"] .fnh-paper1-source-figure,body[data-theme="dark"] .fnh-paper1-source-figure,.dark .fnh-paper1-source-figure{color:#eef6ff;background:#172b43;border-color:#3b5673}
+html[data-theme="dark"] .fnh-paper1-source-figure figcaption,body[data-theme="dark"] .fnh-paper1-source-figure figcaption,.dark .fnh-paper1-source-figure figcaption{color:#c1d3e7}
+
+/* Preserve readable source-table labels on narrow screens. Scroll the figure
+   horizontally rather than shrinking exam print below legible type size. */
+@media (max-width:640px){
+ .fnh-paper1-source-figure{max-width:100%;min-width:0;overflow-x:auto;padding:12px}
+ .fnh-paper1-source-figure svg{min-width:580px;max-height:none}
+ .fnh-paper1-source-figure figcaption{line-height:1.5}
+}

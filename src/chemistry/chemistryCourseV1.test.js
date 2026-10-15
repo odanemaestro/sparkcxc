@@ -1576,7 +1576,7 @@ describe("CSEC Chemistry course V1",()=>{
     expect(app).toContain('"practice-chemistry": "/practice/chemistry"');
     expect(app).toContain('appHasChemistry');
     expect(app).toContain('view === "practice-chemistry"');
-    expect(app).toContain('"chemistry" : null');
+    expect(app).toContain('view === "practice-chemistry" ? "chemistry"');
     expect(hub).toContain("ChemistryPracticeHub");
     expect(hub).toContain('selectedSubject === "chemistry"');
     expect(hub).toContain('"practice-chemistry"');

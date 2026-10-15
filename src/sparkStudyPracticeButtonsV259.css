@@ -404,3 +404,36 @@
     transition: none !important;
   }
 }
+
+
+/* Shared navigation icon alignment, all themes and viewport sizes.
+   Keep navigation icons decorative and aligned with accessible button labels. */
+:is(.spark-subject-selection-back,.is-back-button,.is-exam-page-back,
+    .chem-library-back,.fnh-outline,.paper-text-button,.paper2-back-control,
+    .pcl-btn.secondary):has(> svg){
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+:is(.spark-subject-selection-back,.is-back-button,.is-exam-page-back,
+    .chem-library-back,.fnh-outline,.paper-text-button,.paper2-back-control,
+    .pcl-btn.secondary) > svg{
+  flex:0 0 auto;
+  width:18px;
+  height:18px;
+}
+
+/* Continued app-wide thin-arrow alignment for flashcards and paper readers. */
+:is(.spark-nav-arrow,.fnh-nav-arrow){width:18px;height:18px;flex:0 0 auto}
+:is(.spark-subject-selection,.fnh-exam,.is-practice-root,.ss-flashcard-panel,
+    .spark-generic-flashcards,.it-flashcards,.spark-flashcards) button:has(> svg){
+  align-items:center;
+}
+:is(.fnh-exam,.spark-generic-flashcards,.ss-flashcard-panel,.it-flashcards) button > svg{
+  flex-shrink:0;
+  vertical-align:middle;
+}
+@media(prefers-reduced-motion:reduce){
+  :is(.spark-nav-arrow,.fnh-nav-arrow){transition:none}
+}

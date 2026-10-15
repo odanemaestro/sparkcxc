@@ -1,3 +1,4 @@
+import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import React, {useCallback,useEffect,useMemo,useRef,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
 import {BankTable,TrustedBankSvg} from "../../integratedScience/practice/IntegratedScienceQuestionRenderer";
@@ -215,7 +216,7 @@ export default function ChemistryPaper2Exam({supabase,userId,onBack,paperIndex=0
   function update(key,value){if(!submitted)setResponses(prev=>({...prev,[key]:value}));}
 
   if(phase==="instructions")return <main className="is-exam-root chem-p2-root"><div className="is-exam-shell">
-    <button type="button" className="is-exam-primary is-exam-page-back" onClick={onBack}><span aria-hidden="true">←</span>Back to Paper 2 selection</button>
+    <button type="button" className="is-exam-primary is-exam-page-back" onClick={onBack}><BackArrowIcon/> Back to Paper 2 selection</button>
     <section className="is-exam-instructions-card">
       <span className="is-exam-eyebrow">CSEC CHEMISTRY · PAPER 02</span>
       <h1>{paper.title}</h1>

@@ -916,3 +916,10 @@ body[data-theme="dark"] .chem-exam-modal-secondary,
   .chem-exam-modal-actions {flex-direction:column-reverse}
   .chem-exam-modal-actions button {width:100%}
 }
+
+
+/* Match the shared SPARK thin-line navigation controls. */
+.chem-practice-shell .chem-library-back{gap:8px;min-height:44px;border-radius:13px}
+.chem-practice-shell .chem-library-back svg{flex-shrink:0}
+.chem-practice-shell .chem-library-entry-arrow{display:inline-grid;place-items:center;font-size:inherit}
+.chem-practice-shell .chem-library-back:focus-visible{outline:3px solid var(--chem-accent);outline-offset:2px}
