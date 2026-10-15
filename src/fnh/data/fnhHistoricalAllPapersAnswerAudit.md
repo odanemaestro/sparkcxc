@@ -21,7 +21,7 @@ This audit inventories the existing question-bank files. Candidate answers are n
 | 2019 | 60 | 48 | 12 | 0 |
 | 2020 | 60 | 49 | 11 | 0 |
 | 2026 | 60 | 49 | 11 | 0 |
-| **Total** | **893** | **753** | **140** | **0** |
+| **Total** | **893** | **755** | **138** | **0** |
 
 ## Critical blockers
 
