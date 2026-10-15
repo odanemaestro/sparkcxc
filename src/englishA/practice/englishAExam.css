@@ -214,3 +214,12 @@ body[data-theme="dark"] .ea-p2-instruction-choice button,
   gap:8px;
 }
 .ea-practice-back:hover:not(:disabled){background:var(--spark-bg,#f5f8fc)}
+
+/* Paper 01 uses the same understated outlined back navigation as Paper 02. */
+.is-exam-root :is(.is-exam-back,.is-exam-page-back){
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+}
+.is-exam-root :is(.is-exam-back,.is-exam-page-back) svg{
+  width:18px;height:18px;flex:0 0 18px;
+  fill:none;stroke:currentColor;stroke-width:1.5;
+}
