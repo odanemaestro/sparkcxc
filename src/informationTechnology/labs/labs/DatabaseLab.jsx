@@ -50,7 +50,7 @@ export default function DatabaseLab({ lab, userId, completed, onBack, onComplete
   const [message, setMessage] = useState("Choose field properties, then run a query against the current records.");
   const [sql, setSql] = useState("SELECT CustomerID, Name, Parish, AmountOwed FROM Customers WHERE Parish = 'Kingston' ORDER BY AmountOwed DESC");
   const sqlResult = useMemo(() => runTeachingSql(sql, database), [sql, database]);
-  const { evidence, record } = useTaskEvidence();
+  const { evidence, record } = useTaskEvidence(userId, lab.id);
 
   const schemaResult = useMemo(() => validateSchema(database.schema), [database.schema]);
   const criteria = useMemo(() => [
