@@ -85,3 +85,24 @@ export async function importBasicXlsx(buffer) {
   if(!Object.keys(out).length)throw new Error("No worksheets were found.");
   return out;
 }
+
+
+export async function importBasicPptx(buffer) {
+  const entries=await readOfficeEntries(buffer);
+  const keys=Object.keys(entries).filter(name=>/^ppt\/slides\/slide\d+\.xml$/.test(name))
+    .sort((a,b)=>Number(a.match(/slide(\d+)/)[1])-Number(b.match(/slide(\d+)/)[1]));
+  if(!keys.length)throw new Error("No presentation slides were found.");
+  return keys.slice(0,80).map((name,index)=>{
+    const doc=xml(entries[name]);
+    const shapes=[...doc.getElementsByTagName("*")].filter(node=>node.localName==="sp");
+    let title="",body="";
+    for(const shape of shapes){
+      const meta=[...shape.getElementsByTagName("*")].find(node=>node.localName==="cNvPr");
+      const paragraphs=[...shape.getElementsByTagName("*")].filter(node=>node.localName==="p" && node.namespaceURI==="http://schemas.openxmlformats.org/drawingml/2006/main");
+      const value=paragraphs.map(p=>text(p,"t")).join("\n");
+      if(/title/i.test(meta?.getAttribute("name")||""))title=value;
+      else if(/content/i.test(meta?.getAttribute("name")||""))body=value;
+    }
+    return {id:index+1,title:title||"Slide "+(index+1),body,layout:"Title and Content",bullets:false,graphic:false,transition:"",notes:""};
+  });
+}
