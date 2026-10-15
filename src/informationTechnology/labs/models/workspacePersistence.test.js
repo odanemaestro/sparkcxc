@@ -9,6 +9,16 @@ describe("SPARK IT draft storage",()=>{
   expect(readLabWorkspace("student-a","database",null,store)).toBeNull();
   expect(workspaceStorageKey("student-a","unknown")).toBeNull();
  });
+ test("persists Word Studio drafts and spreadsheet validation by account",()=>{
+  const store=fakeStore();
+  const word={bodyText:"Club letter",header:"School"};
+  const rules={"Sales!B2":{type:"whole",min:0}};
+  expect(writeLabWorkspace("student-a","word",word,store)).toBe(true);
+  expect(writeLabWorkspace("student-a","spreadsheet-validation",rules,store)).toBe(true);
+  expect(readLabWorkspace("student-a","word",{},store)).toEqual(word);
+  expect(readLabWorkspace("student-a","spreadsheet-validation",{},store)).toEqual(rules);
+  expect(readLabWorkspace("student-b","word",{},store)).toEqual({});
+ });
  test("fails safely on missing, malformed and oversized drafts",()=>{
   const store=fakeStore();
   const key=workspaceStorageKey("a","programming");
