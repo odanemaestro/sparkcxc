@@ -70,3 +70,48 @@ export function makeXlsx(workbook = {}) {
   entries["xl/workbook.xml"]='<?xml version="1.0" encoding="UTF-8"?><workbook xmlns="'+SS_NS+'" xmlns:r="'+REL_NS+'"><sheets>'+xmlSheets.join("")+'</sheets><calcPr calcId="191029" fullCalcOnLoad="1"/></workbook>';
   return createOfficePackage(entries);
 }
+
+
+export function makePptx(slides, theme = "", footer = "") {
+  const items = Array.isArray(slides) ? slides.slice(0,80) : [];
+  if (!items.length) throw new Error("Add a slide before exporting.");
+  const P="http://schemas.openxmlformats.org/presentationml/2006/main";
+  const A="http://schemas.openxmlformats.org/drawingml/2006/main";
+  const PR="http://schemas.openxmlformats.org/package/2006/relationships";
+  const CT="http://schemas.openxmlformats.org/package/2006/content-types";
+  const name="SPARK Presentation";
+  const dark=theme==="Ocean"||theme==="Slate";
+  const bg=theme==="Ocean"?"12345C":theme==="Slate"?"25354B":"FFFFFF";
+  const fg=dark?"FFFFFF":"14243C";
+  const types=['<?xml version="1.0" encoding="UTF-8"?><Types xmlns="'+CT+'"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/ppt/presentation.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.presentation.main+xml"/>'];
+  const slideIds=[],rels=[];
+  const entries={ "_rels/.rels":ROOT_RELS+"ppt/presentation.xml"+END_RELS };
+  const base='<p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr/>';
+  function shape(id,shapeName,value,x,y,w,h,fontSize) {
+    const paragraphs=String(value||"").split(/\r?\n/).map(line=>
+      '<a:p><a:r><a:rPr lang="en-US" sz="'+fontSize+'"><a:solidFill><a:srgbClr val="'+fg+'"/></a:solidFill></a:rPr><a:t>'+xmlEscape(line)+'</a:t></a:r><a:endParaRPr lang="en-US"/></a:p>'
+    ).join("");
+    return '<p:sp><p:nvSpPr><p:cNvPr id="'+id+'" name="'+xmlEscape(shapeName)+'"/><p:cNvSpPr/><p:nvPr/></p:nvSpPr>'+
+      '<p:spPr><a:xfrm><a:off x="'+x+'" y="'+y+'"/><a:ext cx="'+w+'" cy="'+h+'"/></a:xfrm></p:spPr>'+
+      '<p:txBody><a:bodyPr wrap="square"/><a:lstStyle/>'+paragraphs+'</p:txBody></p:sp>';
+  }
+  items.forEach((slide,i)=>{
+    const n=i+1;
+    types.push('<Override PartName="/ppt/slides/slide'+n+'.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slide+xml"/>');
+    rels.push('<Relationship Id="rId'+n+'" Type="'+REL_NS+'/slide" Target="slides/slide'+n+'.xml"/>');
+    slideIds.push('<p:sldId id="'+(255+n)+'" r:id="rId'+n+'"/>');
+    let inner=base;
+    if(slide.layout!=="Blank"){
+      inner+=shape(2,"Slide Title",slide.title,600000,500000,11000000,1200000,3000);
+      if(slide.layout!=="Title Only")inner+=shape(3,"Slide Content",slide.body,900000,2050000,10200000,3400000,2000);
+      if(footer)inner+=shape(4,"Footer",footer,800000,6050000,10500000,400000,1050);
+    }
+    const body='<?xml version="1.0" encoding="UTF-8"?><p:sld xmlns:a="'+A+'" xmlns:p="'+P+'" xmlns:r="'+REL_NS+'"><p:cSld><p:bg><p:bgPr><a:solidFill><a:srgbClr val="'+bg+'"/></a:solidFill><a:effectLst/></p:bgPr></p:bg><p:spTree>'+inner+'</p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:sld>';
+    entries["ppt/slides/slide"+n+".xml"]=body;
+  });
+  types.push("</Types>");
+  entries["[Content_Types].xml"]=types.join("");
+  entries["ppt/_rels/presentation.xml.rels"]='<?xml version="1.0" encoding="UTF-8"?><Relationships xmlns="'+PR+'">'+rels.join("")+'</Relationships>';
+  entries["ppt/presentation.xml"]='<?xml version="1.0" encoding="UTF-8"?><p:presentation xmlns:a="'+A+'" xmlns:r="'+REL_NS+'" xmlns:p="'+P+'"><p:sldIdLst>'+slideIds.join("")+'</p:sldIdLst><p:sldSz cx="12192000" cy="6858000" type="screen16x9"/><p:notesSz cx="6858000" cy="9144000"/></p:presentation>';
+  return createOfficePackage(entries);
+}
