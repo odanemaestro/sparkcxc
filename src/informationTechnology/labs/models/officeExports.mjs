@@ -11,7 +11,9 @@ export function makeDocx(documentData = {}) {
   const title=String(documentData.title || "SPARK Document");
   const lines=[title,...(documentData.header ? [documentData.header] : []),...String(documentData.body||"").split(/\r?\n/),...(documentData.footer ? [documentData.footer] : [])];
   const paragraph=(line,heading=false) => '<w:p><w:pPr>'+(heading?'<w:pStyle w:val="Heading1"/>':'')+'</w:pPr><w:r><w:t xml:space="preserve">'+xmlEscape(line)+'</w:t></w:r></w:p>';
-  const body=lines.map((line,i)=>paragraph(line,i===0)).join("");
+  const rows=Array.isArray(documentData.tableRows)?documentData.tableRows.slice(0,100):[];
+  const tableXml=rows.length ? '<w:tbl>'+[['Activity','Day','Time'],...rows].map(row=>'<w:tr>'+row.map(value=>'<w:tc>'+paragraph(value)+'</w:tc>').join('')+'</w:tr>').join('')+'</w:tbl>' : '';
+  const body=lines.map((line,i)=>paragraph(line,i===0)).join("")+tableXml;
   const landscape=documentData.orientation==="landscape";
   const size=landscape?' w:w="16838" w:h="11906" w:orient="landscape"':' w:w="11906" w:h="16838"';
   const word='<?xml version="1.0" encoding="UTF-8"?><w:document xmlns:w="'+DOC_NS+'"><w:body>'+body+'<w:sectPr><w:pgSz'+size+'/></w:sectPr></w:body></w:document>';
