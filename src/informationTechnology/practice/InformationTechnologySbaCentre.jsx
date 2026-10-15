@@ -10,6 +10,7 @@ import {
   findItSbaProject,
 } from "./itSbaProjects";
 import { getItSbaProjectTasks } from "./itSbaProjectTasks";
+import { captureSbaEvidence, readSbaEvidence, exportSbaEvidence } from "./itSbaPortfolio.mjs";
 import { useInformationTechnologySbaRoute } from "../../routing/sparkRoutingV270";
 import "./informationTechnologySba.css";
 
@@ -301,6 +302,20 @@ function ComponentGuide({ project, componentId, userId, onActivity, openProject,
   const meta=IT_SBA_COMPONENTS[componentIndex];
   const questions=getItSbaProjectTasks(project.id,componentId);
   const [progress,setProgress]=useState(()=>readProgress(userId,project.id));
+  const [snapshots,setSnapshots]=useState(()=>readSbaEvidence(userId,project.id,componentId));
+  const [snapshotMessage,setSnapshotMessage]=useState("");
+  useEffect(()=>{setSnapshots(readSbaEvidence(userId,project.id,componentId));setSnapshotMessage("");},[userId,project.id,componentId]);
+  function captureWork(){
+    const result=captureSbaEvidence(userId,project.id,componentId);
+    if(result.ok){setSnapshots(result.versions);setSnapshotMessage("Studio work saved as a project practice snapshot.");}
+    else setSnapshotMessage(result.error);
+  }
+  function downloadWork(){
+    const content=exportSbaEvidence(userId,project.id,componentId);
+    const url=URL.createObjectURL(new Blob([content],{type:"application/json;charset=utf-8"}));
+    const anchor=document.createElement("a");anchor.href=url;anchor.download=`SPARK-SBA-${project.id}-${componentId}-practice.json`;
+    document.body.appendChild(anchor);anchor.click();anchor.remove();URL.revokeObjectURL(url);
+  }
   const done=Boolean(progress[componentId]);
   const nextMeta=IT_SBA_COMPONENTS[componentIndex+1]||null;
   if(!component||!meta)return null;
@@ -319,6 +334,15 @@ function ComponentGuide({ project, componentId, userId, onActivity, openProject,
     <section className="it-sba-download-card it-sba-lab-launch">
       <div><div className="it-practice-label">WORK IN SPARK STUDIO</div><h2>Practise this SBA section in the interactive lab</h2><p>Open the matching tool to build and test your own work. The studio is a learning workspace; completing a guided lab does not automatically submit or grade your SBA project.</p></div>
       <a className="it-practice-primary" href={`#/study/information-technology/labs/${({database:"database",spreadsheet:"spreadsheet",word:"word-processing",web:"web-design",programming:"programming"})[componentId]||"programming"}`}>Open {meta.title} lab <ForwardArrowIcon/></a>
+    </section>
+    <section className="it-sba-download-card" aria-label="My SBA practice evidence">
+      <div><div className="it-practice-label">MY PROJECT WORK</div><h2>Save evidence from your SPARK Studio</h2>
+        <p>After practising in the linked Studio, capture a version of your saved work here. Each fictional SBA project has its own local evidence history. These snapshots do not submit or grade an SBA.</p>
+        <p role="status" aria-live="polite">{snapshotMessage || (snapshots.length ? snapshots.length + " saved versions on this device." : "No snapshots saved yet.")}</p>
+        {snapshots.length > 0 && <ul>{snapshots.map(item=><li key={item.version}>Version {item.version} · {item.recordedAt}</li>)}</ul>}
+      </div>
+      <div className="it-sba-card-actions"><button type="button" className="it-practice-primary" onClick={captureWork}>Capture Studio work</button>
+      <button type="button" className="it-practice-secondary" onClick={downloadWork} disabled={!snapshots.length}>Download practice evidence (JSON)</button></div>
     </section>
     <section className="it-sba-question-list">{questions.map((task,index)=><QuestionCard key={task.id} task={task} index={index}/>)}</section>
     <section className="it-sba-section-pdf"><div><div className="it-practice-label">Completed {meta.title} SBA</div><h2>Read the completed section exactly as a reference submission.</h2><p>The PDF answers every question above and includes the completed structures, formulas, layouts, trace data or code needed for this fictional project. The watermark is repeated on every page.</p><PdfActions project={project} componentId={componentId}/></div><object className="it-sba-pdf-viewer section" data={pdf} type="application/pdf" aria-label={`${project.title} ${meta.title} completed PDF`}><p>Your browser does not display PDFs inside the page. <a href={pdf} target="_blank" rel="noreferrer">Open the completed section PDF</a>.</p></object></section>
