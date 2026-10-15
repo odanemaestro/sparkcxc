@@ -2,7 +2,6 @@ import React,{useEffect,useMemo,useRef,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
 
 import {fnhPartMarkingScheme,fnhSelfAssessmentMark,fnhSelfAssessmentTotal} from "./fnhPaper2Marking";
-import {fnhPaper2UploadedWorkedQuestion} from "../data/fnhPaper2UploadedWorkedReference";
 import FnhHistoricalDiagram from "./FnhHistoricalDiagram";
 import "./fnhPractice.css";
 
@@ -34,6 +33,15 @@ export default function FnhHistoricalPaper2Exam({paper:PAPER,onBack,supabase,use
   const [modal,setModal]=useState("");
   const recorded=useRef(new Set());
   const exam=attempt.phase==="exam",review=attempt.phase==="review";
+  const [workedByQuestion,setWorkedByQuestion]=useState({});
+  useEffect(()=>{
+    if(!review)return undefined;
+    let live=true;
+    import("../data/fnhPaper2UploadedWorkedReference").then(module=>{
+      if(live)setWorkedByQuestion(module.FNH_P2_UPLOADED_WORKED_REFERENCE[String(PAPER.year)]||{});
+    }).catch(()=>{if(live)setWorkedByQuestion({});});
+    return()=>{live=false;};
+  },[review,PAPER.year]);
   const structure=useMemo(()=>fnhHistoricalExamStructure(PAPER,attempt.partB),[attempt.partB]);
   const question=PAPER.questions.find(q=>q.number===attempt.active)||PAPER.questions[0];
   const visible=structure.paperQuestions;
@@ -146,7 +154,7 @@ export default function FnhHistoricalPaper2Exam({paper:PAPER,onBack,supabase,use
             </div>}
           </section>;
         })}</div>
-        {review&&fnhPaper2UploadedWorkedQuestion(PAPER.year,question.number)&&<details className="fnh-p2-worked-reference"><summary>Full worked answers and accepted examples for Question {question.number}</summary><p className="fnh-p2-worked-preformatted">{fnhPaper2UploadedWorkedQuestion(PAPER.year,question.number)}</p><small>Supplementary worked examples provided for practice. Use the existing mark-by-mark rubric to award credit. Other valid answers may earn marks; this reference does not automatically grade writing.</small></details>}
+        {review&&workedByQuestion[String(question.number)]&&<details className="fnh-p2-worked-reference"><summary>Full worked answers and accepted examples for Question {question.number}</summary><p className="fnh-p2-worked-preformatted">{workedByQuestion[String(question.number)]}</p><small>Supplementary worked examples provided for practice. Use the existing mark-by-mark rubric to award credit. Other valid answers may earn marks; this reference does not automatically grade writing.</small></details>}
         <div className="fnh-question-actions"><button type="button" className="fnh-outline" disabled={visible[0]?.number===question.number} onClick={()=>nextQuestion(-1)}>Previous</button>
           <button type="button" className="fnh-outline" disabled={visible[visible.length-1]?.number===question.number} onClick={()=>nextQuestion(1)}>Next</button>
           {exam&&<button type="button" className="fnh-primary" onClick={()=>setModal((attempt.partB||[]).length===2?"submit":"select")}>Submit Paper 2</button>}
