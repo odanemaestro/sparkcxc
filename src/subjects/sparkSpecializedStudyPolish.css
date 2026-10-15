@@ -1,0 +1,207 @@
+/* SPARK study-only refinement. Uses FNH's calm surfaces and legible hierarchy
+   without changing existing teaching tools, page routes, progress or marking.
+   Never applied to exam simulators, tutor booking or admin views. */
+.ss-course,.it-subject-view,.physics-subject-view{
+  --study-editorial-surface:#fff;
+  --study-editorial-bg:#f4f7f6;
+  --study-editorial-ink:#1b3038;
+  --study-editorial-muted:#546b72;
+  --study-editorial-line:#dce6e3;
+  --study-editorial-soft:#f5f8f7;
+  --study-editorial-accent:#006b61;
+  --study-editorial-accent-soft:#e9f4ef;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  background:var(--study-editorial-bg);
+  color:var(--study-editorial-ink);
+  min-width:0;
+}
+/* Dedicated Social Studies retains independent navigation, SBA, and marking */
+.ss-course .ss-shell{width:min(1190px,calc(100% - 36px));padding-top:34px;padding-bottom:80px}
+.ss-course :is(.ss-course-hero,.ss-lesson-hero){
+  background:transparent;border:0;box-shadow:none;padding:22px 0 30px;
+  border-radius:0;color:var(--study-editorial-ink);
+}
+.ss-course :is(.ss-course-hero,.ss-lesson-hero) h1{
+  color:var(--study-editorial-ink);
+  font-family:inherit;
+  font-weight:760;letter-spacing:-.03em;
+  font-size:clamp(1.9rem,4vw,2.75rem);line-height:1.18;
+  max-width:29ch;text-wrap:balance;
+}
+.ss-course :is(.ss-course-hero,.ss-lesson-hero)>p{
+  color:var(--study-editorial-muted);font-size:.97rem;line-height:1.76;max-width:72ch;
+}
+.ss-course .ss-back{
+  min-height:44px;background:var(--study-editorial-surface);
+  color:var(--study-editorial-ink);border:1px solid var(--study-editorial-line);
+  border-radius:11px;padding:10px 15px;font-size:.84rem;
+}
+.ss-course .ss-progress-card{
+  background:var(--study-editorial-surface);border-color:var(--study-editorial-line);
+  border-radius:14px;box-shadow:none;
+}
+.ss-course :is(.ss-panel,.ss-key-points){
+  background:var(--study-editorial-surface);border:1px solid var(--study-editorial-line);
+  border-radius:14px;box-shadow:none;margin:22px 0;padding:clamp(19px,3vw,30px);
+}
+.ss-course :is(.ss-panel,.ss-key-points) h2{
+  color:var(--study-editorial-ink);font-family:inherit;
+  font-weight:760;letter-spacing:-.025em;font-size:clamp(1.2rem,2.5vw,1.45rem);
+}
+.ss-course :is(.ss-panel,.ss-key-points) :is(p,li){font-size:.96rem;line-height:1.77;overflow-wrap:break-word}
+.ss-course .ss-note-stack article{padding:0 0 24px;background:none;border:0;box-shadow:none}
+.ss-course .ss-note-stack article+article{padding-top:25px;border-top:1px solid var(--study-editorial-line)}
+.ss-course .ss-note-stack h3{color:var(--study-editorial-ink);font-weight:720;font-size:1.075rem;letter-spacing:-.015em}
+.ss-course .ss-example-grid article,.ss-course .ss-term-grid article{
+  border-radius:12px;box-shadow:none;background:var(--study-editorial-soft);
+  border:1px solid var(--study-editorial-line);
+}
+.ss-course .ss-lesson-list button{min-height:50px;border-radius:10px}
+.ss-course .ss-section-card{background:var(--study-editorial-surface);border-color:var(--study-editorial-line);box-shadow:none}
+.ss-course :is(.ss-lesson-nav,.ss-complete-action,.ss-primary,.ss-secondary){min-height:44px;border-radius:10px}
+.ss-course :is(button,select,input,textarea,a):focus-visible{outline:3px solid var(--study-editorial-accent);outline-offset:3px}
+
+/* IT's existing six-step study flow remains interactive, but reads like one
+   deliberate lesson instead of a stack of unrelated UI cards. */
+.it-subject-view{
+  --it-page:var(--study-editorial-bg);
+  --it-card:var(--study-editorial-surface);
+  --it-ink:var(--study-editorial-ink);
+  --it-muted:var(--study-editorial-muted);
+  --it-line:var(--study-editorial-line);
+}
+.it-subject-view .it-shell{width:min(1140px,100%);padding-top:12px;padding-bottom:78px}
+.it-subject-view :is(.it-hero,.it-topic-hero,.it-section-hero){
+  color:var(--study-editorial-ink);margin-bottom:26px;
+}
+.it-subject-view :is(.it-hero,.it-topic-hero,.it-section-hero) h1{
+  font-family:inherit;font-size:clamp(1.85rem,4vw,2.75rem);
+  line-height:1.2;letter-spacing:-.032em;font-weight:760;
+  color:var(--study-editorial-ink);text-wrap:balance;
+}
+.it-subject-view :is(.it-hero,.it-topic-hero,.it-section-hero) p{
+  color:var(--study-editorial-muted);font-size:.975rem;line-height:1.75;
+  max-width:72ch;
+}
+.it-subject-view :is(.it-panel,.it-objective-coverage,.it-practical-labs-launch,.it-explore-note){
+  border-color:var(--study-editorial-line);background:var(--study-editorial-surface);
+  border-radius:14px;box-shadow:none;
+}
+.it-subject-view .it-panel{padding:clamp(20px,3vw,31px);margin-top:22px;scroll-margin-top:90px}
+.it-subject-view .it-panel h2,.it-subject-view .it-objective-coverage h2{
+  font-size:clamp(1.2rem,2.4vw,1.45rem);letter-spacing:-.025em;line-height:1.35;
+  color:var(--study-editorial-ink);
+}
+.it-subject-view :is(.it-panel,.it-objective-coverage) :is(p,li){line-height:1.78;overflow-wrap:break-word}
+.it-subject-view .it-core-notes{max-width:80ch}
+.it-subject-view :is(.it-section-card,.it-topic-card,.it-objective-card,.it-example-card){
+  border-radius:12px;border-color:var(--study-editorial-line);box-shadow:none;
+}
+.it-subject-view .it-learning-flow button{min-height:44px;border-radius:9px}
+.it-subject-view .it-learning-flow button.active{
+  color:var(--study-editorial-accent);background:var(--study-editorial-accent-soft);
+}
+.it-subject-view :is(.it-primary,.it-back,.it-answer-toggle,.it-learning-flow button):focus-visible{
+  outline:3px solid var(--study-editorial-accent);outline-offset:3px;
+}
+
+/* Physics has its own workbook and experiment shells. Start at the course
+   index; preserve those specialist structures for a separate device QA pass. */
+.physics-subject-view{
+  --psv-bg:var(--study-editorial-bg);
+  --psv-card:var(--study-editorial-surface);
+  --psv-ink:var(--study-editorial-ink);
+  --psv-muted:var(--study-editorial-muted);
+  --psv-line:var(--study-editorial-line);
+  --psv-primary:var(--study-editorial-accent);
+  --psv-soft:var(--study-editorial-accent-soft);
+}
+.physics-subject-view .psv-shell{max-width:1190px;padding-top:33px;padding-bottom:80px}
+.physics-subject-view .psv-hero{
+  padding:8px 0 28px;background:transparent;box-shadow:none;
+  border:0;border-radius:0;gap:28px;
+}
+.physics-subject-view .psv-hero h1{
+  font-size:clamp(1.85rem,4vw,2.65rem);letter-spacing:-.032em;
+  line-height:1.18;font-family:inherit;font-weight:750;
+  color:var(--study-editorial-ink);
+}
+.physics-subject-view .psv-hero p{max-width:68ch;font-size:.98rem;line-height:1.75;color:var(--study-editorial-muted)}
+.physics-subject-view .psv-stats div,.physics-subject-view .psv-section-card{
+  box-shadow:none;border-color:var(--study-editorial-line);background:var(--study-editorial-surface);
+  border-radius:14px;
+}
+.physics-subject-view .psv-section-card{min-height:132px}
+.physics-subject-view .psv-section-copy strong{letter-spacing:-.014em;line-height:1.35}
+.physics-subject-view .psv-note{border-radius:13px}
+.physics-subject-view :is(button,a):focus-visible{outline:3px solid var(--study-editorial-accent);outline-offset:3px}
+
+/* Keep the mathematics sidebar, quiz, working and topic unlocks unchanged.
+   Only refine the reading panel and textual flow via existing classes. */
+.lesson-layout .app-scroll-panel{background:var(--spark-bg,#f5f8f7)}
+.lesson-layout .lesson-section{max-width:940px}
+.lesson-layout .lesson-section-header{
+  min-height:52px;border-radius:12px;
+}
+.lesson-layout .lesson-section-body{
+  max-width:78ch;
+  line-height:1.78;
+}
+.lesson-layout .lesson-math-copy{line-height:1.83!important;overflow-wrap:break-word}
+.lesson-layout .example-box{border-radius:12px}
+.lesson-layout :is(button,select):focus-visible{outline:3px solid #0d9488;outline-offset:3px}
+
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.ss-course,.it-subject-view,.physics-subject-view){
+  --study-editorial-bg:#101b22;
+  --study-editorial-surface:#192831;
+  --study-editorial-ink:#f0f6f5;
+  --study-editorial-muted:#c1d1d1;
+  --study-editorial-line:#354b50;
+  --study-editorial-soft:#21323b;
+  --study-editorial-accent:#82dcd0;
+  --study-editorial-accent-soft:#284844;
+  background:var(--study-editorial-bg);
+  color:var(--study-editorial-ink);
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .physics-subject-view .psv-section-card{
+  color:var(--study-editorial-ink);
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .ss-course .ss-note-stack h3{
+  color:var(--study-editorial-ink);
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .ss-course .ss-example-grid article,
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .ss-course .ss-term-grid article{
+  background:var(--study-editorial-soft);border-color:var(--study-editorial-line);
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .it-subject-view .it-learning-flow button.active{
+  color:#e7fff9;background:#295149;border-color:#82dcd0;
+}
+@media(max-width:920px){
+ .physics-subject-view .psv-hero{display:block}
+ .physics-subject-view .psv-stats{margin-top:16px}
+ .it-subject-view .it-shell{width:100%}
+ .ss-course .ss-shell{width:calc(100% - 28px)}
+}
+@media(max-width:640px){
+ .ss-course .ss-shell{width:calc(100% - 20px);padding-top:18px}
+ .ss-course :is(.ss-lesson-hero,.ss-course-hero){padding:12px 0 23px}
+ .ss-course :is(.ss-panel,.ss-key-points){padding:18px;margin:15px 0}
+ .ss-course :is(.ss-course-hero,.ss-lesson-hero) h1{font-size:1.8rem}
+ .it-subject-view{padding:19px 12px 60px}
+ .it-subject-view .it-panel{padding:18px;margin-top:15px}
+ .it-subject-view .it-learning-flow button{min-height:44px}
+ .physics-subject-view .psv-shell{padding:18px 12px 64px}
+ .physics-subject-view .psv-section-card{min-height:120px}
+ .lesson-layout .app-scroll-panel{padding-inline:16px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .ss-course :is(button,a),.it-subject-view :is(button,a),.physics-subject-view :is(button,a){
+  transition:none!important;
+ }
+}
+@media print{
+ .ss-course,.it-subject-view,.physics-subject-view{background:#fff;color:#111}
+ .ss-course :is(.ss-back,.ss-lesson-footer),
+ .it-subject-view :is(.it-learning-flow,.it-back),.physics-subject-view .psv-back{display:none!important}
+}
