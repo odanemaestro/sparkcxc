@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { makeXlsx } from "../models/officeExports.mjs";
 import {readLabWorkspace,writeLabWorkspace} from "../models/workspacePersistence.mjs";
 import { LabFrame, RibbonTabs, WindowBar } from "../components/LabFrame";
 import { ReducedMotionNotice, StatusMessage, ToolGroup, WorkspaceViewport, useTaskEvidence, useWorkspaceHistory } from "../components/ProductivityKit";
@@ -135,6 +136,14 @@ export default function SpreadsheetLab({ lab, userId, completed, onBack, onCompl
     { id: "linked", label: "Link the Summary worksheet to a calculated Sales total", done: linked && !salesTotal.error && salesTotal.formula && linkedResult.value === salesTotal.value },
   ];
 
+  function exportXlsx() {
+    const data = makeXlsx(workbook);
+    const url = URL.createObjectURL(new Blob([data], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }));
+    const anchor = document.createElement("a"); anchor.href = url; anchor.download = "SPARK-School-Supplies.xlsx";
+    document.body.appendChild(anchor); anchor.click(); anchor.remove(); URL.revokeObjectURL(url);
+    setMessage("Workbook exported as XLSX. Check formula results in spreadsheet software.");
+  }
+
   function selectCellForSheet(targetSheet, address) {
     setSelected(address); setFormulaBar(String(workbook[targetSheet]?.[address] ?? ""));
   }
@@ -195,7 +204,7 @@ export default function SpreadsheetLab({ lab, userId, completed, onBack, onCompl
         <RibbonTabs tabs={["Home", "Formulas", "Data", "Insert"]} active={tab} onChange={setTab}/>
         <div className="itv2-ribbon" aria-label={`${tab} tools`}>
           {tab === "Home" && <>
-            <ToolGroup label="History"><button type="button" onClick={undo} disabled={!canUndo}>Undo</button><button type="button" onClick={redo} disabled={!canRedo}>Redo</button></ToolGroup>
+            <ToolGroup label="History"><button type="button" onClick={undo} disabled={!canUndo}>Undo</button><button type="button" onClick={redo} disabled={!canRedo}>Redo</button></ToolGroup><ToolGroup label="Export"><button type="button" onClick={exportXlsx}>Export XLSX</button></ToolGroup>
             <ToolGroup label="Number"><button type="button" aria-pressed={formatCurrency} className={formatCurrency ? "active" : ""} onClick={() => setFormatCurrency(value => !value)}>J$ Currency</button></ToolGroup>
             <ToolGroup label="Fill"><button type="button" onClick={fillDown}>Fill selected down</button></ToolGroup>
           </>}
