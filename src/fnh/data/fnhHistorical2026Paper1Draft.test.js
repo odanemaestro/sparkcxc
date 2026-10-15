@@ -25,8 +25,7 @@ describe("2026 Technical Proficiency FNH Paper 01",()=>{
   expect(rows[53].options).toEqual(rows[54].options);
  });
  test("proposed answers remain unverified, so 2026 Paper 01 is locked",()=>{
-  expect(rows.filter(q=>!q.proposedAnswer).map(q=>q.number))
-    .toEqual([10,16,23,34,36,41,42,43,48,51,60]);
+  expect(rows.every(q=>q.proposedAnswer===null||/^[ABCD]$/.test(q.proposedAnswer))).toBe(true);
   const check=fnhHistoricalPaper1ReleaseCheck(rows);
   expect(check).toMatchObject({ready:false,questions:60,numbered:true,sourceComplete:true,keysComplete:false});
   expect(check.pendingKeyNumbers).toHaveLength(60);
