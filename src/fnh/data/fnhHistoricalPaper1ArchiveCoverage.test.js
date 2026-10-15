@@ -3,7 +3,7 @@ import {FNH_SUPPLIED_ARCHIVE,fnhHistoricalSimulatorReady} from "./fnhPastPaperIn
 describe("FNH Paper 01 historical archive coverage and release safety",()=>{
  test("all valid supplied FNH Paper 01 sources are recorded with their real question count",()=>{
   const rows=FNH_HISTORICAL_PAPER1_TRANSCRIPTION_PROGRESS;
-  expect(rows).toHaveLength(16);
+  expect(rows).toHaveLength(15);
   const actual=rows.filter(x=>FNH_SUPPLIED_ARCHIVE.find(s=>s.id===x.id)?.sourceIdentityVerified!==false);
   expect(actual).toHaveLength(15);
   expect(actual.filter(x=>x.questions===60)).toHaveLength(14);
@@ -16,13 +16,10 @@ describe("FNH Paper 01 historical archive coverage and release safety",()=>{
   expect(FNH_HISTORICAL_PAPER1_TRANSCRIPTION_PROGRESS.every(x=>x.ready===false)).toBe(true);
   expect(FNH_SUPPLIED_ARCHIVE.filter(x=>x.paper===1).every(x=>fnhHistoricalSimulatorReady(x.id)===null)).toBe(true);
   const a=fnhPaper1ArchiveReadiness();
-  expect(a).toMatchObject({total:16,ready:0,inProgress:15,pending:16});
+  expect(a).toMatchObject({total:15,ready:0,inProgress:15,pending:15});
  });
- test("the fake 2021 FNH source is not counted as a real FNH question transcription",()=>{
-  const r=FNH_HISTORICAL_PAPER1_TRANSCRIPTION_PROGRESS.find(x=>x.year===2021);
-  const inventory=FNH_SUPPLIED_ARCHIVE.find(x=>x.id===r.id);
-  expect(inventory.sourceIdentityVerified).toBe(false);
-  expect(inventory.actualSourceSubject).toBe("Spanish");
-  expect(r).toMatchObject({questions:0,reportedTranscribed:0,ready:false});
+ test("misidentified 2021 Paper 1 is excluded entirely",()=>{
+  expect(FNH_HISTORICAL_PAPER1_TRANSCRIPTION_PROGRESS.some(x=>x.year===2021)).toBe(false);
+  expect(FNH_SUPPLIED_ARCHIVE.some(x=>x.id==="FNH-P1-2021-MJ")).toBe(false);
  });
 });
