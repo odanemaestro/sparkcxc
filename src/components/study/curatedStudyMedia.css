@@ -1,11 +1,11 @@
 /* Reference images support existing interactive labs, not replace them. */
 .spark-csm{margin:24px 0;min-width:0;color:var(--pcl-ink,var(--pm-ink,var(--it-ink,var(--spark-ink,#19324c))))}
 .spark-csm-heading{margin:0 0 15px}
-.spark-csm-heading>span,.spark-csm-type{display:block;font-size:.72rem;letter-spacing:.065em;text-transform:uppercase;font-weight:760;color:var(--spark-teal-dark,#08796f)}
+.spark-csm-heading>span,.spark-csm-type{display:block;font-size:.72rem;letter-spacing:.065em;text-transform:uppercase;font-weight:760;color:var(--pm-primary,var(--spark-teal-dark,#08796f))}
 .spark-csm-heading h3{margin:5px 0 7px;color:inherit;font-size:clamp(1.08rem,2.5vw,1.4rem);line-height:1.3}
 .spark-csm-heading p{max-width:70ch;margin:0;color:var(--pcl-muted,var(--pm-muted,var(--it-muted,#64748b)));font-size:.88rem;line-height:1.6}
 .spark-csm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px;align-items:stretch}
-.spark-csm-card{min-width:0;margin:0;display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--pcl-line,var(--pm-line,var(--spark-border,#d7e2e9)));border-radius:16px;background:var(--pcl-card,var(--pm-paper,var(--spark-paper,#fff)));box-shadow:0 3px 14px rgba(15,38,60,.06)}
+.spark-csm-card{min-width:0;margin:0;display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--pcl-line,var(--pm-line,var(--it-line,var(--spark-border,#d7e2e9))));border-radius:16px;background:var(--pcl-card,var(--pm-card,var(--it-card,var(--spark-paper,#fff))));box-shadow:0 3px 14px rgba(15,38,60,.06)}
 .spark-csm-media{display:grid;place-items:center;min-height:150px;max-width:100%;padding:clamp(12px,2vw,20px);background:#fff;color:#16354b;border-bottom:1px solid #e1e7eb}
 .spark-csm-image{display:grid;justify-items:center;gap:8px;min-width:0;width:100%;font-size:.77rem;color:#176e71;font-weight:730;text-decoration:none}
 .spark-csm-image img{display:block;width:auto;height:auto;max-width:100%;max-height:350px;object-fit:contain;background:#fff}
@@ -19,13 +19,22 @@
 .spark-csm-prompt button:hover{background:#176a85}
 .spark-csm-card figcaption{min-width:0;flex:1;display:flex;flex-direction:column;gap:9px;padding:15px 17px 18px}
 .spark-csm-card figcaption>strong{color:inherit;font-size:.98rem;line-height:1.4}
-.spark-csm-card figcaption>p{margin:0;color:var(--pcl-muted,var(--pm-muted,var(--spark-ink-soft,#64748b)));font-size:.84rem;line-height:1.6}
+.spark-csm-card figcaption>p{margin:0;color:var(--pcl-muted,var(--pm-muted,var(--it-muted,var(--spark-ink-soft,#64748b))));font-size:.84rem;line-height:1.6}
 .spark-csm-card figcaption .spark-csm-note{border-left:3px solid var(--spark-teal-dark,#0b8981);padding:8px 11px;background:var(--pcl-card2,var(--spark-muted,#f2f7f8));color:inherit;border-radius:0 8px 8px 0;font-size:.78rem}
-.spark-csm-credit{display:flex;flex-wrap:wrap;gap:5px 8px;align-items:center;padding-top:10px;margin-top:auto;border-top:1px solid var(--pcl-line,var(--pm-line,var(--spark-border,#d7e2e9)));font-size:.72rem;line-height:1.5;color:var(--pcl-muted,var(--pm-muted,var(--spark-ink-soft,#64748b)));overflow-wrap:anywhere}
-.spark-csm-credit a{color:var(--spark-teal-dark,#08796f);text-underline-offset:3px}
+.spark-csm-credit{display:flex;flex-wrap:wrap;gap:5px 8px;align-items:center;padding-top:10px;margin-top:auto;border-top:1px solid var(--pcl-line,var(--pm-line,var(--it-line,var(--spark-border,#d7e2e9))));font-size:.72rem;line-height:1.5;color:var(--pcl-muted,var(--pm-muted,var(--it-muted,var(--spark-ink-soft,#64748b))));overflow-wrap:anywhere}
+.spark-csm-credit a{color:var(--pm-primary,var(--spark-teal-dark,#08796f));text-underline-offset:3px}
 .spark-csm-fallback{display:grid;justify-items:center;gap:8px;padding:18px;text-align:center}
 .spark-csm-fallback p{font-size:.82rem;line-height:1.55;margin:0}
 .spark-csm-fallback a{color:#146c78;font-size:.8rem}
 .spark-csm :is(a,button):focus-visible{outline:3px solid var(--spark-teal,#0d9488);outline-offset:3px;border-radius:7px}
 @media(max-width:620px){.spark-csm{margin:18px 0}.spark-csm-grid{grid-template-columns:minmax(0,1fr);gap:12px}.spark-csm-media{min-height:110px}.spark-csm-image img{max-height:290px}.spark-csm-card figcaption{padding:15px}}
 @media(prefers-reduced-motion:reduce){.spark-csm *{scroll-behavior:auto!important}}
+
+/* Explicitly use the parent page palette in each theme.
+   Reference artwork itself stays white so scientific colours are not inverted. */
+.physics-mechanics .spark-csm-card{background:var(--pm-card);border-color:var(--pm-line);color:var(--pm-ink)}
+.physics-mechanics .spark-csm-card figcaption>p,.physics-mechanics .spark-csm-credit{color:var(--pm-muted)}
+.it-subject-view .spark-csm-card{background:var(--it-card,var(--spark-paper,#fff));border-color:var(--it-line,var(--spark-border,#d7e2e9));color:var(--it-ink)}
+.it-subject-view .spark-csm-card figcaption>p,.it-subject-view .spark-csm-credit{color:var(--it-muted,var(--spark-ink-soft,#64748b))}
+[data-theme="dark"] .spark-csm .spark-csm-type,
+[data-theme="dark"] .spark-csm .spark-csm-credit a{color:#79dccc}
