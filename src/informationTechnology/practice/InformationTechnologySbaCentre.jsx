@@ -355,7 +355,7 @@ export default function InformationTechnologySbaCentre({ userId, onActivity, onB
   const { page,projectId,componentId,openHome,openProject,openComponent }=useInformationTechnologySbaRoute(true);
   const project=findItSbaProject(projectId);
   useLayoutEffect(()=>{window.scrollTo({top:0,left:0,behavior:"auto"});},[page,projectId,componentId]);
-  if(page==="project"&&project)return <ProjectOverview project={project} userId={userId} onActivity={onActivity} openHome={openHome} openComponent={openComponent}/>;
-  if(page==="component"&&project&&findItSbaComponent(project,componentId))return <ComponentGuide project={project} componentId={componentId} userId={userId} onActivity={onActivity} openProject={openProject} openComponent={openComponent}/>;
+  if(page==="project"&&project)return <ProjectOverview key={`${userId||"guest"}:${project.id}`} project={project} userId={userId} onActivity={onActivity} openHome={openHome} openComponent={openComponent}/>;
+  if(page==="component"&&project&&findItSbaComponent(project,componentId))return <ComponentGuide key={`${userId||"guest"}:${project.id}:${componentId}`} project={project} componentId={componentId} userId={userId} onActivity={onActivity} openProject={openProject} openComponent={openComponent}/>;
   return <CentreHome openProject={openProject} onBack={onBack}/>;
 }
