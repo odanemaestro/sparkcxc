@@ -5,6 +5,7 @@ import { ReducedMotionNotice, StatusMessage, ToolGroup, useTaskEvidence, useWork
 import { addRecord, groupRecords, runQuery, validateSchema } from "../models/databaseModel.mjs";
 import { addRelatedOrder, customerOrderSummary, validateForeignKeys } from "../models/databaseRelationships.mjs";
 import { runTeachingSql } from "../models/databaseSql.mjs";
+import { parseCustomerCsv, exportCustomerCsv } from "../models/databaseCsv.mjs";
 
 const STARTING_RECORDS = [
   { CustomerID: 1, Name: "Alicia Brown", Parish: "Kingston", AmountOwed: 7800 },
@@ -78,6 +79,22 @@ export default function DatabaseLab({ lab, userId, completed, onBack, onComplete
     if (queryProof) { record("query-result"); setMessage(`Query verified: ${queryRows.length} matching current records returned.`); }
     else setMessage(`Query recalculated: ${queryRows.length} records returned. Adjust the criteria to match the task.`);
   }
+  function exportCsv() {
+    const csv=exportCustomerCsv(database.records);
+    const url=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));
+    const anchor=document.createElement("a");anchor.href=url;anchor.download="SPARK-Customers.csv";
+    document.body.appendChild(anchor);anchor.click();anchor.remove();URL.revokeObjectURL(url);
+    setMessage("Customer records exported as CSV.");
+  }
+  async function importCsv(event) {
+    const file=event.target.files?.[0];if(!file)return;
+    try{
+      const parsed=parseCustomerCsv(await file.text(),database.records);
+      if(parsed.added>0)setDatabase(previous=>({...previous,records:parsed.records}));
+      setMessage(parsed.added+" records imported. "+(parsed.errors.length?parsed.errors.join(" "):"All imported records were valid."));
+    }catch(error){setMessage(error.message||"Could not read CSV.");}
+    event.target.value="";
+  }
   function saveOrder() {
     const result = addRelatedOrder(database.records, orders, orderDraft);
     if (result.errors.length) { setMessage(result.errors.join(" ")); return; }
@@ -98,7 +115,7 @@ export default function DatabaseLab({ lab, userId, completed, onBack, onComplete
     <div className="itv2-office-window database">
       <WindowBar title="Customer Database.accdb" subtitle="SPARK Database Studio" status="Results update automatically"/>
       <RibbonTabs tabs={["Tables", "Relationships", "Queries", "Forms", "Reports"]} active={tab} onChange={setTab}/>
-      <div className="itv2-ribbon" aria-label={`${tab} tools`}><ToolGroup label="History"><button type="button" onClick={undo} disabled={!canUndo}>Undo</button><button type="button" onClick={redo} disabled={!canRedo}>Redo</button></ToolGroup><ReducedMotionNotice/></div>
+      <div className="itv2-ribbon" aria-label={`${tab} tools`}><ToolGroup label="History"><button type="button" onClick={undo} disabled={!canUndo}>Undo</button><button type="button" onClick={redo} disabled={!canRedo}>Redo</button></ToolGroup>{tab==="Tables"&&<ToolGroup label="Data exchange"><button type="button" onClick={exportCsv}>Export Customers CSV</button><label>Import Customers CSV<input type="file" accept=".csv,text/csv" onChange={importCsv}/></label></ToolGroup>}<ReducedMotionNotice/></div>
       <StatusMessage tone={message.includes("verified") || message.includes("saved") ? "success" : "neutral"}>{message}</StatusMessage>
       <div className="itv2-db-layout">
         <nav className="itv2-db-nav" aria-label="Database objects"><strong>All Objects</strong>{["Tables", "Queries", "Forms", "Reports"].map(name => <button type="button" key={name} className={tab === name ? "active" : ""} onClick={() => setTab(name)}>{name}</button>)}</nav>
