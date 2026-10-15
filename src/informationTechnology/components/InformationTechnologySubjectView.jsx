@@ -2,6 +2,7 @@ import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from "re
 import course from "../course/itCourseData.json";
 import InformationTechnologyTools from "./InformationTechnologyTools";
 import InformationTechnologyVisuals from "./InformationTechnologyVisuals";
+import CuratedStudyMedia from "../../components/study/CuratedStudyMedia";
 import InformationTechnologyPracticalLabs from "../labs/InformationTechnologyPracticalLabs";
 import { readSparkHashRoute, useInformationTechnologyStudyRoute } from "../../routing/sparkRoutingV270";
 import objectiveCoverage from "../course/itObjectiveCoverage.json";
@@ -369,6 +370,7 @@ function TopicLesson({ topic, onBack, completed = false, onToggleComplete, onAct
           <div className="it-panel-label">See it</div>
           <h2>Visual guide and worked examples</h2>
           <InformationTechnologyVisuals topicId={topic.id}/>
+          <CuratedStudyMedia subject="information-technology" topicId={topic.id}/>
           <div className="it-example-grid it-example-grid-spaced">
             {(topic.worked || []).map((example, index) => (
               <article className="it-example-card" key={index}>
