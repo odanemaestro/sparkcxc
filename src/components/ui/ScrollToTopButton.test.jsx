@@ -44,7 +44,7 @@ describe("one shared back-to-top action across SPARK", () => {
   test("moves above marked bottom actions and raised toasts", () => {
     const obstruction=document.createElement("div");
     obstruction.setAttribute("data-avoid-scrolltop","");
-    obstruction.getBoundingClientRect=jest.fn().mockReturnValue({top:710,bottom:780,width:280,height:70});
+    obstruction.getBoundingClientRect=jest.fn().mockReturnValue({top:580,bottom:780,width:280,height:70});
     document.body.appendChild(obstruction);
     window.scrollY=520;
     render(<ScrollToTopButton raised/>);
