@@ -277,3 +277,197 @@ html[data-theme="dark"] .spark-fnh-study .spark-generic-example-answer,body[data
  .spark-fnh-study .spark-generic-lesson{box-shadow:none}
  .spark-fnh-study .spark-generic-lesson-section{break-inside:avoid}
 }
+
+
+/* FNH explorer contrast and dark surfaces, audited from learner screenshots.
+   Explorer components historically use --spark-* colours, whose defaults
+   remained dark even in the dark theme. Scope the bridge to FNH only. */
+.spark-fnh-study :is(.spark-food-energy-nutrition,.spark-food-preservation,.spark-food-contamination,.spark-food-microorganisms){
+  --spark-ink:var(--fnh-ui-ink);
+  --spark-ink-soft:var(--fnh-ui-muted);
+  --spark-text:var(--fnh-ui-ink);
+  --spark-text-muted:var(--fnh-ui-muted);
+  --spark-border:var(--fnh-ui-line);
+  --spark-border-soft:var(--fnh-ui-line);
+  --spark-teal:var(--fnh-ui-teal);
+  --spark-teal-dark:var(--fnh-ui-teal-ink);
+  --spark-teal-light:var(--fnh-ui-teal-soft);
+  --spark-paper:var(--fnh-ui-paper);
+  --spark-bg:var(--fnh-ui-paper-alt);
+  color:var(--fnh-ui-ink);
+  background:var(--fnh-ui-paper-alt);
+  border:1px solid var(--fnh-ui-line);
+  border-radius:15px;
+  min-width:0;
+}
+.spark-fnh-study :is(.spark-food-energy-nutrition,.spark-food-preservation,.spark-food-contamination,.spark-food-microorganisms) header h3{
+  color:var(--fnh-ui-ink);
+  font-size:clamp(1.06rem,2vw,1.3rem);
+  letter-spacing:-.018em;
+  line-height:1.4;
+}
+.spark-fnh-study :is(.spark-food-energy-nutrition,.spark-food-preservation,.spark-food-contamination,.spark-food-microorganisms) header p{
+  color:var(--fnh-ui-muted);
+  line-height:1.65;
+}
+.spark-fnh-study :is(.spark-food-energy-tabs,.spark-food-test-buttons,.spark-preservation-tabs,.spark-food-contam-tabs,.spark-food-microbe-tabs) button{
+  min-height:44px;
+  font-size:.79rem;
+  font-weight:680;
+  border-radius:10px;
+  color:var(--fnh-ui-ink);
+  background:var(--fnh-ui-paper);
+  border:1px solid var(--fnh-ui-line);
+}
+.spark-fnh-study :is(.spark-food-energy-tabs,.spark-food-test-buttons,.spark-preservation-tabs,.spark-food-contam-tabs,.spark-food-microbe-tabs) button.active{
+  background:var(--fnh-ui-teal-soft);
+  color:var(--fnh-ui-teal-ink);
+  border-color:var(--fnh-ui-teal);
+}
+.spark-fnh-study :is(.spark-food-energy-nutrients,.spark-caribbean-food-groups,.spark-food-deficiencies,.spark-preservation-methods,.spark-preservation-safety,.spark-preservation-temperature,.spark-food-contam-types,.spark-food-toxin-grid,.spark-food-handler-grid,.spark-food-microbe-factors,.spark-useful-microbes,.spark-mould-structure-notes) article{
+  background:var(--fnh-ui-paper);
+  border:1px solid var(--fnh-ui-line);
+  border-radius:12px;
+  min-width:0;
+}
+.spark-fnh-study :is(.spark-food-energy-nutrients,.spark-caribbean-food-groups,.spark-food-deficiencies,.spark-preservation-methods,.spark-preservation-safety,.spark-preservation-temperature,.spark-food-contam-types,.spark-food-toxin-grid,.spark-food-handler-grid,.spark-food-microbe-factors,.spark-useful-microbes,.spark-mould-structure-notes) :is(b,h4,p){
+  color:var(--fnh-ui-ink);
+}
+.spark-fnh-study :is(.spark-food-energy-nutrients,.spark-caribbean-food-groups,.spark-food-deficiencies,.spark-preservation-methods,.spark-preservation-safety,.spark-preservation-temperature,.spark-food-contam-types,.spark-food-toxin-grid,.spark-food-handler-grid,.spark-food-microbe-factors,.spark-useful-microbes,.spark-mould-structure-notes) small{
+  color:var(--fnh-ui-muted);
+  line-height:1.5;
+}
+.spark-fnh-study :is(.spark-food-energy-nutrients,.spark-preservation-methods,.spark-preservation-safety,.spark-food-microbe-factors,.spark-food-handler-grid) article>span{
+  flex:none;
+  color:var(--fnh-ui-teal-ink);
+  background:var(--fnh-ui-teal-soft);
+}
+.spark-fnh-study :is(.spark-food-energy-nutrients,.spark-preservation-methods,.spark-preservation-safety,.spark-food-microbe-factors,.spark-food-handler-grid) article strong{
+  color:var(--fnh-ui-teal-ink);
+}
+.spark-fnh-study :is(.spark-food-energy-nutrients,.spark-caribbean-food-groups,.spark-food-deficiencies,.spark-preservation-methods,.spark-preservation-safety,.spark-food-contam-types,.spark-food-microbe-factors,.spark-useful-microbes) :is(p,small){
+  overflow-wrap:break-word;
+}
+
+/* The original nutrient panel had a pale gray stage around navy cards.
+   Keep all cards and the stage on the same dark colour family. */
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study
+  :is(.spark-food-energy-nutrition,.spark-food-preservation,.spark-food-contamination,.spark-food-microorganisms){
+  background:#1a2c35;
+  border-color:#3b5156;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study
+  :is(.spark-food-energy-stage,.spark-preservation-stage,.spark-food-contam-stage,.spark-food-microbe-stage){
+  background:#142831;
+  border-color:#3b5156;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study
+  :is(.spark-food-energy-nutrients,.spark-caribbean-food-groups,.spark-food-deficiencies,.spark-preservation-methods,.spark-preservation-safety,.spark-preservation-temperature,.spark-food-contam-types,.spark-food-toxin-grid,.spark-food-handler-grid,.spark-food-microbe-factors,.spark-useful-microbes,.spark-mould-structure-notes) article{
+  background:#203640;
+  border-color:#3f5960;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study
+  :is(.spark-food-energy-tabs,.spark-food-test-buttons,.spark-preservation-tabs,.spark-food-contam-tabs,.spark-food-microbe-tabs) button{
+  background:#203640;
+  border-color:#466068;
+  color:#f0f6f5;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study
+  :is(.spark-food-energy-tabs,.spark-food-test-buttons,.spark-preservation-tabs,.spark-food-contam-tabs,.spark-food-microbe-tabs) button.active{
+  background:#295149;
+  border-color:#84ded1;
+  color:#eafff9;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-food-energy-nutrients :is(b,small),
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-caribbean-food-groups :is(b,small),
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-food-deficiencies :is(h4,p){
+  color:#edf7f6;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-food-energy-nutrients :is(strong,article>span),
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-caribbean-food-groups article>span{
+  color:#a9f0e2;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study
+  :is(.spark-food-label,.spark-food-needs-card,.spark-food-tests>article,.spark-food-energy-summary,.spark-preservation-summary,.spark-food-contam-summary,.spark-food-microbe-summary){
+  background:#203640;
+  border-color:#3f5960;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study
+  :is(.spark-food-label input,.spark-bread-interpretation,.spark-bread-track,.spark-food-contam-types article div b){
+  background:#2b424b;
+  border-color:#47636a;
+  color:#edf7f6;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study
+  :is(.spark-food-tests article>div,.spark-food-label,.spark-food-energy-summary,.spark-preservation-summary,.spark-food-contam-summary,.spark-food-microbe-summary) :is(b,strong,span,p,h4){
+  color:#edf7f6;
+}
+/* Keep scientific colour diagrams accurate while making labels visible. */
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study
+  :is(.spark-preservation-stage .fp-label,.spark-preservation-stage .fp-small,.spark-food-contam-stage .fc-label,.spark-food-contam-stage .fc-small,.spark-food-microbe-stage .fm-tick,.spark-food-microbe-stage .fm-axis-label){
+  fill:#edf7f6;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-preservation-stage .fp-water-text{fill:#9ee8f2}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-food-microbe-stage .fm-axis{stroke:#b2cccd}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-food-microbe-stage .fm-grid{stroke:#496066}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-food-contam-types article>span{color:#c4d7db}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-food-contam-types article.t1>span{color:#ffca96}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-food-contam-types article.t2>span{color:#f7b3b9}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-preservation-temperature .cold>span{color:#9edcf6}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-preservation-temperature .heat>span{color:#fac5ad}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-food-microbe-stage .fm-legend.cold{fill:#9edcf6}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-food-microbe-stage .fm-legend.warm{fill:#ffaca7}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-bread-name span{color:#c2d2d6}
+
+/* A compact always-available return action once a lesson is scrolled. */
+.spark-fnh-back-to-top{
+  position:fixed;
+  z-index:25;
+  inset:auto max(22px,env(safe-area-inset-right,0px)) max(22px,env(safe-area-inset-bottom,0px)) auto;
+  display:grid;
+  place-items:center;
+  width:48px;
+  height:48px;
+  padding:0;
+  border:1px solid var(--fnh-ui-line);
+  border-radius:16px;
+  background:var(--fnh-ui-paper);
+  color:var(--fnh-ui-teal-ink);
+  box-shadow:0 12px 32px rgba(10,31,37,.15);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(8px);
+  pointer-events:none;
+  cursor:pointer;
+  transition:opacity .18s ease,transform .18s ease,visibility .18s ease,background .18s ease;
+}
+.spark-fnh-back-to-top.is-visible{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
+  pointer-events:auto;
+}
+.spark-fnh-back-to-top svg{
+  display:block;
+  width:22px;
+  height:22px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.spark-fnh-back-to-top:hover{background:var(--fnh-ui-teal-soft)}
+.spark-fnh-back-to-top:focus-visible{outline:3px solid var(--fnh-ui-focus);outline-offset:3px}
+@media(max-width:640px){
+  .spark-fnh-back-to-top{
+    inset:auto max(14px,env(safe-area-inset-right,0px)) max(18px,env(safe-area-inset-bottom,0px)) auto;
+    width:46px;height:46px;border-radius:15px;
+  }
+  .spark-fnh-study :is(.spark-food-energy-nutrients,.spark-caribbean-food-groups,.spark-food-deficiencies) article{padding:13px;gap:10px}
+  .spark-fnh-study :is(.spark-food-energy-tabs,.spark-food-test-buttons,.spark-preservation-tabs,.spark-food-contam-tabs,.spark-food-microbe-tabs) button{font-size:.8rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .spark-fnh-back-to-top{transition:none;transform:none}
+}
+@media print{.spark-fnh-back-to-top{display:none!important}}
