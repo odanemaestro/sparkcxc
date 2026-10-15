@@ -53,7 +53,7 @@ export default function WordLab({ lab, userId, completed, onBack, onComplete }) 
   const recipients = useMemo(() => parseMergeRecipients(recipientsCsv), [recipientsCsv]);
   const [formControl, setFormControl] = useState(saved.formControl ?? false);
   const [message, setMessage] = useState("Select text in the document, then choose a formatting command.");
-  const { evidence, record } = useTaskEvidence();
+  const { evidence, record } = useTaskEvidence(userId, lab.id);
 
   useEffect(() => {
     writeLabWorkspace(userId, "word", { bodyText, bodyHtml, heading, font, size, align, bullets, columns, orientation, table, tableRows, header, footer, trackChanges, comment, mergeField, recipientsCsv, formControl });
