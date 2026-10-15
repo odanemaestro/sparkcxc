@@ -18,6 +18,7 @@ import FoodMicroorganismExplorer from "./components/FoodMicroorganismExplorer";
 import FnhObjectivePractice from "../fnh/components/FnhObjectivePractice";
 import FnhStudyPractice from "../fnh/components/FnhStudyPractice";
 import FnhDecisionLab from "../fnh/components/FnhDecisionLab";
+import FnhBackToTop from "../fnh/components/FnhBackToTop";
 import {
   readSparkHashRoute,
   subscribeSparkRoute,
@@ -994,6 +995,7 @@ export default function GenericSubjectStudyView({
           </div>
         )}
       </div>
+      {subjectId==="food-nutrition-and-health"&&<FnhBackToTop/>}
     </main>
   );
 }
