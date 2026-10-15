@@ -363,6 +363,8 @@ export default function GenericSubjectStudyView({
   onBack,
   onManageSubjects,
   showToast,
+  LessonExtras,
+  courseActions,
 }) {
   const [structure, setStructure] = useState(null);
   const [loading, setLoading] = useState(Boolean(subject?.id));
@@ -660,11 +662,9 @@ export default function GenericSubjectStudyView({
           topicId:activeTopic.id,
           title:activeTopic.title,
           completed:true,
-          metadata:{
-            source:"generic_subject_study",
-            adapter:"generic-subject-v1",
-            at:new Date().toISOString(),
-          },
+          metadata:subjectId==="social-studies"
+            ? {source:"social_studies_course_v1",objective_codes:activeTopic?.metadata?.objectiveCodes||[],at:new Date().toISOString()}
+            : {source:"generic_subject_study",adapter:"generic-subject-v1",at:new Date().toISOString()},
         },
       });
 
@@ -752,6 +752,7 @@ export default function GenericSubjectStudyView({
           </div>
 
           <div className="spark-generic-study-hero-actions">
+            {courseActions}
             {onBack && (
               <button type="button" onClick={onBack}>Back</button>
             )}
@@ -961,6 +962,7 @@ export default function GenericSubjectStudyView({
                     editorial={subjectId!=="food-nutrition-and-health"}
                     onActivityComplete={recordInteractiveComplete}
                   />
+                  {LessonExtras && <LessonExtras key={activeTopic.id} topic={activeTopic} supabase={supabase} showToast={showToast}/> }
 
                   <div className="spark-generic-lesson-footer">
                     {previousTopic ? (
