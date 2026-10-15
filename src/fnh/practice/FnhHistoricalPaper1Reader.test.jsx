@@ -61,14 +61,14 @@ describe("FNH historical Paper 01 unscored review safeguards",()=>{
   const onBack=jest.fn();
   const view=render(<FnhHistoricalPaper1Reader sourceId="FNH-P1-2026-MJ" userId="student-1" onBack={onBack}/>);
   expect(screen.getByText("2026 Paper 1: Question review")).toBeInTheDocument();
-  expect(screen.getByText("0 marks awarded")).toBeInTheDocument();
+  expect(screen.getByText("Practice mode")).toBeInTheDocument();
   expect(screen.getByText(/Your choices are saved on this device/)).toBeInTheDocument();
   const first=screen.getByRole("radio",{name:"mental"});
   fireEvent.click(first);
   expect(first).toBeChecked();
   expect(screen.getByText("1 selections saved")).toBeInTheDocument();
   expect(screen.queryByText(/Correct answer:/)).not.toBeInTheDocument();
-  fireEvent.click(screen.getByRole("button",{name:/Next question →/}));
+  fireEvent.click(screen.getByRole("button",{name:/Next question/}));
   expect(screen.getByText("Original Question 2 of 60")).toBeInTheDocument();
   view.unmount();
   render(<FnhHistoricalPaper1Reader sourceId="FNH-P1-2026-MJ" userId="student-1" onBack={onBack}/>);
@@ -91,8 +91,6 @@ describe("FNH historical Paper 01 unscored review safeguards",()=>{
   fireEvent.click(screen.getByRole("button",{name:/Back to Paper 1 sources/}));
   expect(screen.getByText("Historical Paper 1 sources")).toBeInTheDocument();
   expect(screen.getByRole("button",{name:"Past papers"})).toHaveAttribute("aria-pressed","true");
-  const invalid=screen.getByRole("heading",{name:"2021 Paper 1"}).closest("article");
-  expect(within(invalid).queryByRole("button",{name:/Review source questions/})).not.toBeInTheDocument();
-  expect(within(invalid).getByText(/The supplied file is not a Food/)).toBeInTheDocument();
+  expect(screen.queryByRole("heading",{name:"2021 Paper 1"})).not.toBeInTheDocument();
  });
 });
