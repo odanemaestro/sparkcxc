@@ -263,3 +263,20 @@ body[data-theme="dark"] .itv2-back:focus-visible{
     border-radius:13px;
   }
 }
+
+
+/* SPARK Programming Studio: source-aware debugger, theme adaptive */
+.itv2-debug-controls{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0 18px}
+.itv2-debug-controls button{min-height:40px;border:1px solid var(--itv2-line,rgba(133,153,181,.35));border-radius:11px;background:transparent;color:inherit;padding:8px 14px;cursor:pointer}
+.itv2-debug-controls button:disabled{opacity:.4;cursor:not-allowed}
+.itv2-debug-inspector{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(220px,.65fr);gap:14px;margin-bottom:20px}
+.itv2-debug-inspector>div{min-width:0;border:1px solid var(--itv2-line,rgba(133,153,181,.35));border-radius:14px;padding:14px;background:transparent}
+.itv2-breakpoints{max-height:340px;overflow:auto;display:flex;flex-direction:column;gap:3px;margin-top:10px}
+.itv2-breakpoints button{min-height:30px;text-align:left;display:flex;align-items:center;gap:8px;border:0;border-radius:7px;background:transparent;color:inherit;cursor:pointer;font:inherit}
+.itv2-breakpoints button:hover,.itv2-breakpoints button.is-active{background:rgba(42,170,167,.13)}
+.itv2-breakpoints button.is-active>span{color:var(--spark-teal,#22b3aa)}
+.itv2-breakpoints code{display:block;overflow:hidden;text-overflow:ellipsis;white-space:pre;font-size:12px}
+.itv2-debug-inspector dl{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.itv2-debug-inspector dd{margin:0;font-family:ui-monospace,Consolas,monospace;text-align:right}
+.itv2-debug-inspector button:focus-visible,.itv2-debug-controls button:focus-visible{outline:2px solid var(--spark-teal,#20aaa6);outline-offset:2px}
+@media(max-width:760px){.itv2-debug-inspector{grid-template-columns:minmax(0,1fr)}}
