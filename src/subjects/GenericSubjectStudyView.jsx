@@ -222,7 +222,7 @@ export function GenericLessonContent({
         <span className="spark-fnh-reading-nav-label">In this lesson</span>
         <div className="spark-fnh-reading-nav-links">
           <button type="button" onClick={()=>jumpTo("fnh-lesson-notes")}>Read notes <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>
-          {hasFnhMedia&&<button type="button" onClick={()=>jumpTo("fnh-lesson-visuals")}>See visuals <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>
+          {hasFnhMedia&&<button type="button" onClick={()=>jumpTo("fnh-lesson-visuals")}>See visuals <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>}
           {models.length>0&&<button type="button" onClick={()=>jumpTo("fnh-lesson-explore")}>Explore <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>}
           <button type="button" onClick={()=>jumpTo("fnh-lesson-practice")}>Quick practice <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>
           <button type="button" onClick={()=>jumpTo("fnh-lesson-reflect")}>Written response <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>
