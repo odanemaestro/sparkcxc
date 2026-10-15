@@ -168,7 +168,7 @@ export const FNH_P1_2020_TRANSCRIPTION_DRAFT=Object.freeze([
       "III and IV only",
       "I, IV and V only"
     ],
-    "proposedAnswer": null,
+    "proposedAnswer":"C",
     "explanation": "SPARK preliminary answer pending independent marking-key review.",
     "sourcePage": 2,
     "sourceChecked": true,
@@ -409,7 +409,7 @@ export const FNH_P1_2020_TRANSCRIPTION_DRAFT=Object.freeze([
       "a plastic bag at room temperature",
       "a moisture-free area at room temperature"
     ],
-    "proposedAnswer": "D",
+    "proposedAnswer":"B",
     "explanation": "Store fresh sweet potatoes in a dry, ventilated, relatively cool place.",
     "sourcePage": 4,
     "sourceChecked": true,
@@ -964,7 +964,7 @@ export const FNH_P1_2020_TRANSCRIPTION_DRAFT=Object.freeze([
       "Pressure cooker",
       "Saucepan steamer"
     ],
-    "proposedAnswer": "B",
+    "proposedAnswer":"C",
     "explanation": "A tiered steamer cooks several items together with one heat source.",
     "sourcePage": 8,
     "sourceChecked": true,
@@ -1032,7 +1032,7 @@ export const FNH_P1_2020_TRANSCRIPTION_DRAFT=Object.freeze([
       "Lime butterflies, chopped parsley, glacé cherries",
       "Tomato cups, chopped parsley, French dressing"
     ],
-    "proposedAnswer": null,
+    "proposedAnswer":"C",
     "explanation": "Garnishes should complement colour, flavour and presentation; verify the intended CXC combination.",
     "sourcePage": 9,
     "sourceChecked": true,
