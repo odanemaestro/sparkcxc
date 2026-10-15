@@ -86,6 +86,9 @@ export default function SpreadsheetLab({ lab, userId, completed, onBack, onCompl
   const calculationChecks = useRef(new Map());
 
   const workbookAudit = useMemo(() => auditWorkbook(workbook), [workbook]);
+  const workbookSheets = useMemo(() => Object.keys(workbook).filter(name => workbook[name] && typeof workbook[name] === "object" && !Array.isArray(workbook[name])), [workbook]);
+  const salesCells = workbook.Sales || {};
+  const currentCells = workbook[sheet] || {};
   const selectedRaw = workbook[sheet]?.[selected] ?? "";
   const selectedResult = evaluateCell(workbook, sheet, selected);
   const values = useMemo(() => Object.fromEntries(COLUMNS.flatMap(column => ROWS.map(row => {
@@ -109,17 +112,17 @@ export default function SpreadsheetLab({ lab, userId, completed, onBack, onCompl
     return summary;
   }, {}), [values]);
 
-  const successfulFunctions = useMemo(() => FORMULA_NAMES.filter(name => Object.keys(workbook.Sales).some(address => {
-    const raw = workbook.Sales[address];
+  const successfulFunctions = useMemo(() => FORMULA_NAMES.filter(name => Object.keys(salesCells).some(address => {
+    const raw = salesCells[address];
     const result = evaluateCell(workbook, "Sales", address);
     const dependencies = formulaDependencies(workbook, "Sales", address);
     const referencesWorksheetData = name === "DATE" || name === "PMT" || dependencies.size > 0;
     return typeof raw === "string" && raw.toUpperCase().startsWith(`=${name}(`) && !result.error && referencesWorksheetData;
   })), [workbook]);
 
-  const totalFormulaValid = [2, 3, 4, 5].every(row => workbook.Sales[`D${row}`] === `=B${row}*C${row}` && values[`D${row}`].value === Number(values[`B${row}`].value) * Number(values[`C${row}`].value));
+  const totalFormulaValid = [2, 3, 4, 5].every(row => salesCells[`D${row}`] === `=B${row}*C${row}` && values[`D${row}`].value === Number(values[`B${row}`].value) * Number(values[`C${row}`].value));
   const absoluteFormulaValid = [2, 3, 4, 5].every(row => {
-    const formula = workbook.Sales[`F${row}`];
+    const formula = salesCells[`F${row}`];
     return typeof formula === "string" && /\$H\$1/.test(formula) && values[`F${row}`].value === Number(values[`D${row}`].value) * (1 + Number(values.H1.value));
   });
   const dataResultValid = filter === "Kingston" && sort === "Price" && visibleRows.length === 2 && visibleRows[0] === 2 && visibleRows[1] === 4;
@@ -143,8 +146,16 @@ export default function SpreadsheetLab({ lab, userId, completed, onBack, onCompl
     try{
       const imported=await importBasicXlsx(await file.arrayBuffer());
       const first=Object.keys(imported)[0];
-      setWorkbook(imported);setSheet(first);setSelected("A1");setFormulaBar(String(imported[first]?.A1??""));
-      setMessage("XLSX workbook imported. Review unsupported formulas and formatting.");
+      const guided = {
+        Sales: imported.Sales || STARTING_SALES,
+        Summary: imported.Summary || { A1: "Annual Summary" },
+        ...imported
+      };
+      setWorkbook(guided);setSheet(first);setSelected("A1");setFormulaBar(String(imported[first]?.A1??""));
+      setFilter("All");setSort("Item");setPivot(false);setChart("");
+      setValidationRules({});
+      setLinked(Boolean(guided.Summary?.B2));
+      setMessage("XLSX imported with its worksheet names. SPARK keeps Sales and Summary for guided activities. Review formulas and unsupported formatting.");
     }catch(error){setMessage(error.message||"Could not read the XLSX file.");}
     event.target.value="";
   }
@@ -169,7 +180,7 @@ export default function SpreadsheetLab({ lab, userId, completed, onBack, onCompl
     const checked = validateCellInput(value, validationRules[`${sheet}!${selected}`]);
     if (!checked.valid) { setMessage(`${selected}: ${checked.message} Value not saved.`); return; }
     const nextWorkbook = { ...workbook, [sheet]: { ...workbook[sheet], [selected]: value } };
-    const dependentCells = Object.keys(workbook.Sales).filter(address => formulaDependencies(workbook, "Sales", address).has(`${sheet}!${selected}`));
+    const dependentCells = Object.keys(salesCells).filter(address => formulaDependencies(workbook, "Sales", address).has(`${sheet}!${selected}`));
     const before = new Map(dependentCells.map(address => [address, evaluateCell(workbook, "Sales", address).value]));
     setWorkbook(nextWorkbook);
     const recalculated = dependentCells.some(address => evaluateCell(nextWorkbook, "Sales", address).value !== before.get(address));
@@ -191,8 +202,8 @@ export default function SpreadsheetLab({ lab, userId, completed, onBack, onCompl
 
   function fillDown() {
     const match = /^([A-H])(\d+)$/.exec(selected);
-    const raw = workbook.Sales[selected];
-    if (!match || Number(match[2]) >= 5 || typeof raw !== "string" || !raw.startsWith("=")) { setMessage("Select a formula cell above row 5 before filling down."); return; }
+    const raw = salesCells[selected];
+    if (sheet !== "Sales" || !match || Number(match[2]) >= 5 || typeof raw !== "string" || !raw.startsWith("=")) { setMessage("Select a formula cell above row 5 before filling down."); return; }
     const startRow = Number(match[2]); const column = match[1];
     const filled = {};
     for (let row = startRow + 1; row <= 5; row += 1) filled[`${column}${row}`] = translateFormula(raw, row - startRow, 0);
@@ -260,6 +271,16 @@ export default function SpreadsheetLab({ lab, userId, completed, onBack, onCompl
             })}</tr>)}</tbody>
           </table>}
 
+          {sheet !== "Sales" && <div className="itv2-generic-sheet-scroll"><table className="itv2-sheet-grid" aria-label={`${sheet} editable worksheet`}>
+            <thead><tr><th scope="col" aria-label="Row and column headings"/>{COLUMNS.map(column => <th scope="col" key={column}>{column}</th>)}</tr></thead>
+            <tbody>{ROWS.map(row => <tr key={row}><th scope="row">{row}</th>{COLUMNS.map(column => {
+              const address=`${column}${row}`;
+              const result=evaluateCell(workbook,sheet,address);
+              return <td key={address} className={`${selected===address?"selected":""} ${result.error?"error":""}`}>
+                <button type="button" className="itv2-cell-button" aria-label={`${sheet} ${address}, ${displayValue(result.value)||"blank"}`} onClick={() => selectCell(address)}>{displayValue(result.value)}</button>
+              </td>;
+            })}</tr>)}</tbody>
+          </table></div>}
           {sheet === "Summary" && <div className="itv2-summary-sheet">
             <h3>Annual Summary</h3><button type="button" className={linked ? "active" : ""} onClick={linkSummary}>Link total from Sales worksheet</button>
             <div className="itv2-summary-cell">Annual Total: {linked ? displayValue(evaluateCell(workbook, "Summary", "B2").value, true) : "Not linked"}</div>
@@ -270,7 +291,7 @@ export default function SpreadsheetLab({ lab, userId, completed, onBack, onCompl
         </WorkspaceViewport>
 
         <div className="itv2-sheet-tabs" role="tablist" aria-label="Worksheets">
-          {["Sales", "Summary"].map(name => <button type="button" role="tab" aria-selected={sheet === name} key={name} className={sheet === name ? "active" : ""} onClick={() => { setSheet(name); setSelected("A1"); setFormulaBar(String(workbook[name].A1 || "")); }}>{name}</button>)}
+          {workbookSheets.map(name => <button type="button" role="tab" aria-selected={sheet === name} key={name} className={sheet === name ? "active" : ""} onClick={() => { setSheet(name); setSelected("A1"); setFormulaBar(String(workbook[name]?.A1 ?? "")); }}>{name}</button>)}
           <ReducedMotionNotice/>
         </div>
       </div>
