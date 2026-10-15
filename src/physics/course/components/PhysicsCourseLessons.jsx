@@ -2,7 +2,7 @@ import BackArrowIcon from "../../../components/ui/BackArrowIcon";
 import React, { useEffect, useMemo, useState } from 'react';
 import MathText from '../../../practice/MathText';
 import PhysicsStudyToolkit from '../../components/PhysicsStudyToolkit';
-import CuratedStudyMedia, { CuratedStudyJump } from '../../../components/study/CuratedStudyMedia';
+import CuratedStudyMedia, { CuratedStudyJump } from '../../../components/study/CuratedStudyMedia.jsx';
 import { PHYSICS_SECTIONS_B_TO_E, physicsLessonsBToEStats } from '../index.mjs';
 import { readPhysicsCourseProgress, setPhysicsCourseLessonCompletion } from '../physicsCourseProgress.mjs';
 import './physicsCourseLessons.css';
