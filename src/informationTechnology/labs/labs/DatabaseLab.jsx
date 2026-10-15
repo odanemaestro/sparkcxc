@@ -1,4 +1,5 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import {readLabWorkspace,writeLabWorkspace} from "../models/workspacePersistence.mjs";
 import { LabFrame, RibbonTabs, WindowBar } from "../components/LabFrame";
 import { ReducedMotionNotice, StatusMessage, ToolGroup, useTaskEvidence, useWorkspaceHistory } from "../components/ProductivityKit";
 import { addRecord, groupRecords, runQuery, validateSchema } from "../models/databaseModel.mjs";
@@ -25,9 +26,10 @@ function RelationshipConnector() {
   );
 }
 
-export default function DatabaseLab({ lab, completed, onBack, onComplete }) {
+export default function DatabaseLab({ lab, userId, completed, onBack, onComplete }) {
   const [tab, setTab] = useState("Tables");
-  const { state: database, setState: setDatabase, undo, redo, canUndo, canRedo } = useWorkspaceHistory({ schema: EMPTY_SCHEMA, records: STARTING_RECORDS });
+  const { state: database, setState: setDatabase, undo, redo, canUndo, canRedo } = useWorkspaceHistory(() => readLabWorkspace(userId,"database",{ schema: EMPTY_SCHEMA, records: STARTING_RECORDS }));
+  useEffect(()=>{writeLabWorkspace(userId,"database",database);},[userId,database]);
   const [relationship, setRelationship] = useState("");
   const [parish, setParish] = useState("All");
   const [operator, setOperator] = useState(">");
