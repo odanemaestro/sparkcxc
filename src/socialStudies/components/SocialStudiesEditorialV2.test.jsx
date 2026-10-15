@@ -39,7 +39,8 @@ describe("Social Studies uses the same study interface as the other subjects",()
   fireEvent.click(within(lessonLinks).getByRole("button",{name:"Caribbean activities"}));
   expect(HTMLElement.prototype.scrollIntoView).toHaveBeenCalled();
 
-  expect(screen.getByTitle("Back to top")).toBeInTheDocument();
+  // Back to top is rendered once by App, not independently inside the study view.
+  expect(screen.queryByTitle("Back to top")).not.toBeInTheDocument();
   expect(page.querySelector(".ss-unit-card")).not.toBeInTheDocument();
   expect(page.querySelector(".ss-lesson-steps")).not.toBeInTheDocument();
  });
