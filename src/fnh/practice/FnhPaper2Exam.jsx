@@ -1,3 +1,4 @@
+import FnhNavArrow from "./FnhNavArrow";
 import React,{useEffect,useMemo,useRef,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
 import {FNH_PAPER2_FORMAT,fnhGetPaper2Set} from "../data/fnhPaper2Bank";
@@ -82,7 +83,7 @@ export default function FnhPaper2Exam({onBack,supabase,userId,setNumber=1,histor
   const start=()=>{setAttempt({...make(paperId),phase:"exam",deadline:Date.now()+durationSeconds*1000});setRemaining(durationSeconds);setModal("");};
   const submit=()=>{update({phase:"review",submittedAt:Date.now()});setModal("");};
   return <main className="fnh-exam fnh-p2"><div className="fnh-exam-container">
-    <div className="fnh-exam-top"><button type="button" className="fnh-outline" onClick={()=>exam?setModal("exit"):onBack?.()}>← {exam?"Exit examination":"Back to paper selection"}</button><span>CSEC FOOD, NUTRITION AND HEALTH · PAPER 02{historical?` · ${historicalPaper.year} MAY/JUNE`:""}</span></div>
+    <div className="fnh-exam-top"><button type="button" className="fnh-outline" onClick={()=>exam?setModal("exit"):onBack?.()}><FnhNavArrow direction="left"/> {exam?"Exit examination":"Back to paper selection"}</button><span>CSEC FOOD, NUTRITION AND HEALTH · PAPER 02{historical?` · ${historicalPaper.year} MAY/JUNE`:""}</span></div>
     {attempt.phase==="instructions"?<section className="fnh-exam-card fnh-instructions">
       <small>{historical?`${historicalPaper.year} MAY/JUNE · TECHNICAL PROFICIENCY`:`ORIGINAL PRACTICE SET ${selected.number}`}</small><h1>Paper 2 examination instructions</h1>
       <p>Read the instructions. The timer begins only when you select Start examination.</p>
