@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { readLabWorkspace, writeLabWorkspace } from "../models/workspacePersistence.mjs";
 import { exportSitePage } from "../models/siteExport.mjs";
 import { DEFAULT_WEB_FILES, buildSandboxPreview } from "../models/webSourceWorkspace.mjs";
+import { buildSourceProjectArchive } from "../models/webProjectArchive.mjs";
 import { inspectWebSource } from "../models/webSourceDiagnostics.mjs";
 import { LabFrame, RibbonTabs, WindowBar } from "../components/LabFrame";
 import { ReducedMotionNotice, StatusMessage, ToolGroup, WorkspaceViewport, useTaskEvidence } from "../components/ProductivityKit";
@@ -23,8 +24,44 @@ export default function WebDesignLab({ lab, userId, completed, onBack, onComplet
   const [tab, setTab] = useState("Design");
   const [sourceFiles, setSourceFiles] = useState(saved.sourceFiles || { ...DEFAULT_WEB_FILES });
   const [sourceFile, setSourceFile] = useState("index.html");
-  const sourcePreview = useMemo(() => buildSandboxPreview(sourceFiles), [sourceFiles]);
+  const [newSourceName, setNewSourceName] = useState("");
+  const [sourceNotice, setSourceNotice] = useState("");
+  const sourcePreview = useMemo(() => buildSandboxPreview(sourceFiles, sourceFile.endsWith(".html") ? sourceFile : "index.html"), [sourceFiles, sourceFile]);
   const sourceIssues = useMemo(() => inspectWebSource(sourceFiles), [sourceFiles]);
+  function addSourceFile() {
+    const name = newSourceName.trim();
+    if (!/^[a-zA-Z0-9_-]+\\.(html|css)$/.test(name)) {
+      setSourceNotice("Use a filename such as activities.html or theme.css.");
+      return;
+    }
+    if (Object.prototype.hasOwnProperty.call(sourceFiles, name)) {
+      setSourceNotice("A file with that name already exists."); return;
+    }
+    if (Object.keys(sourceFiles).length >= 10) {
+      setSourceNotice("This workspace supports up to ten source files."); return;
+    }
+    setSourceFiles(previous => ({
+      ...previous,
+      [name]: name.endsWith(".html") ? '<!doctype html><html lang="en"><head><title>New page</title></head><body><h1>New page</h1></body></html>' : "/* Add your CSS here */"
+    }));
+    setSourceFile(name);setNewSourceName("");
+    setSourceNotice(name + " was added.");
+  }
+  function removeSourceFile() {
+    if (sourceFile === "index.html" || sourceFile === "styles.css") return;
+    setSourceFiles(previous => { const updated={...previous};delete updated[sourceFile];return updated; });
+    setSourceNotice(sourceFile + " was deleted.");
+    setSourceFile("index.html");
+  }
+  function exportSourceProject() {
+    const result = buildSourceProjectArchive(sourceFiles);
+    if (result.errors.length) { setSourceNotice(result.errors.join(" "));return; }
+    const url = URL.createObjectURL(new Blob([result.data], { type: "application/zip" }));
+    const anchor = document.createElement("a");
+    anchor.href = url;anchor.download = "SPARK-Web-Studio-Project.zip";
+    document.body.appendChild(anchor);anchor.click();anchor.remove();URL.revokeObjectURL(url);
+    setSourceNotice("Web Studio source project exported as ZIP.");
+  }
   function exportSourceFile(name) {
     if (sourcePreview.errors.length || sourceIssues.some(issue => issue.severity === "error")) return;
     const type = name.endsWith(".css") ? "text/css;charset=utf-8" : "text/html;charset=utf-8";
@@ -132,13 +169,13 @@ export default function WebDesignLab({ lab, userId, completed, onBack, onComplet
             <ToolGroup label="External link"><label>Text<input aria-label="External link text" value={links.externalLabel} onChange={event => updateLinks({ externalLabel: event.target.value }, "external-edit")}/></label><label>Address<input aria-label="External link address" value={links.externalHref} onChange={event => updateLinks({ externalHref: event.target.value }, "external-edit")}/></label></ToolGroup>
           </>}
           {tab === "Preview" && <ToolGroup label="Responsive preview">{Object.entries(PREVIEWS).map(([key, item]) => <button type="button" key={key} className={preview === key ? "active" : ""} aria-pressed={preview === key} onClick={() => resizePreview(key)}>{item.label}</button>)}<ReducedMotionNotice/></ToolGroup>}
-          {tab === "Source" && <ToolGroup label="Code files">{Object.keys(sourceFiles).map(name => <button type="button" key={name} aria-pressed={sourceFile === name} onClick={() => setSourceFile(name)}>{name}</button>)}<button type="button" disabled={sourcePreview.errors.length > 0 || sourceIssues.some(issue => issue.severity === "error")} onClick={() => exportSourceFile(sourceFile)}>Export {sourceFile}</button></ToolGroup>}
+          {tab === "Source" && <><ToolGroup label="Code files">{Object.keys(sourceFiles).map(name => <button type="button" key={name} aria-pressed={sourceFile === name} onClick={() => setSourceFile(name)}>{name}</button>)}</ToolGroup><ToolGroup label="Project files"><label htmlFor="new-source-name">Add file<input id="new-source-name" value={newSourceName} onChange={event => setNewSourceName(event.target.value)} placeholder="activities.html"/></label><button type="button" onClick={addSourceFile}>Add file</button><button type="button" disabled={["index.html","styles.css"].includes(sourceFile)} onClick={removeSourceFile}>Remove file</button><button type="button" disabled={sourcePreview.errors.length > 0 || sourceIssues.some(issue => issue.severity === "error")} onClick={() => exportSourceFile(sourceFile)}>Export {sourceFile}</button><button type="button" onClick={exportSourceProject}>Export source ZIP</button></ToolGroup></>}
           {tab === "Publish" && <ToolGroup label="Site checks"><button type="button" onClick={runChecker}>Run link checker</button><button type="button" disabled={!checksPassed || !uniqueValidPages} onClick={exportSite}>Export site HTML</button></ToolGroup>}
         </div>
 
         {report && <StatusMessage tone={report.result.valid ? "success" : "error"}><strong>{report.result.valid ? "All links passed" : `${report.result.issues.length} link-checker errors`}</strong><span>{report.result.valid ? `${report.result.checked} navigation and hyperlink checks completed.` : "Select an error below to correct its page or link."}</span></StatusMessage>}
 
-        {tab === "Source" && <section className="itv2-web-source" aria-label="HTML and CSS code editor" style={{display:"grid",gap:"12px",padding:"16px"}}><label htmlFor="web-source-text">Editing {sourceFile}</label><textarea id="web-source-text" aria-label={`${sourceFile} code`} spellCheck={false} rows={14} style={{width:"100%",fontFamily:"monospace"}} value={sourceFiles[sourceFile] || ""} onChange={event => setSourceFiles(previous => ({...previous,[sourceFile]:event.target.value}))}/><strong>Code diagnostics: {sourceIssues.length} findings</strong>{sourceIssues.length > 0 && <ul>{sourceIssues.map((issue, index) => <li key={`${issue.file}-${index}`}><strong>{issue.severity}</strong> {issue.file}: {issue.message}</li>)}</ul>}<strong>Isolated preview</strong>{sourcePreview.errors.length ? <StatusMessage tone="error">{sourcePreview.errors.join(" ")}</StatusMessage> : <iframe title="Web Studio code preview" sandbox="" srcDoc={sourcePreview.html} style={{width:"100%",height:340,border:"1px solid #888",borderRadius:8}}/>}</section>}
+        {tab === "Source" && <section className="itv2-web-source" aria-label="HTML and CSS code editor" style={{display:"grid",gap:"12px",padding:"16px"}}><label htmlFor="web-source-text">Editing {sourceFile}</label>{sourceNotice && <StatusMessage>{sourceNotice}</StatusMessage>}<textarea id="web-source-text" aria-label={`${sourceFile} code`} spellCheck={false} rows={14} style={{width:"100%",fontFamily:"monospace"}} value={sourceFiles[sourceFile] || ""} onChange={event => setSourceFiles(previous => ({...previous,[sourceFile]:event.target.value}))}/><strong>Code diagnostics: {sourceIssues.length} findings</strong>{sourceIssues.length > 0 && <ul>{sourceIssues.map((issue, index) => <li key={`${issue.file}-${index}`}><strong>{issue.severity}</strong> {issue.file}: {issue.message}</li>)}</ul>}<strong>Isolated preview</strong>{sourcePreview.errors.length ? <StatusMessage tone="error">{sourcePreview.errors.join(" ")}</StatusMessage> : <iframe title="Web Studio code preview" sandbox="" srcDoc={sourcePreview.html} style={{width:"100%",height:340,border:"1px solid #888",borderRadius:8}}/>}</section>}
         <div className="itv2-web-layout">
           <aside className="itv2-site-tree" aria-label="Site pages">
             <strong>Site pages</strong>
