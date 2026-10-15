@@ -3,6 +3,13 @@
  * Chemistry and Integrated Science. These rules only style its unique
  * activities and SBA entry, using the already-approved FNH reader palette.
  */
+/* Keep the course toolkit and Back as distinct actions at every width. */
+.spark-editorial-study .spark-generic-study-hero-actions{
+ display:flex;
+ flex-wrap:wrap;
+ align-items:center;
+ gap:12px;
+}
 .spark-editorial-study .ss-shared-toolkit-link{
  display:inline-flex;align-items:center;justify-content:center;min-height:44px;
  border:1px solid var(--fnh-ui-line);border-radius:11px;
