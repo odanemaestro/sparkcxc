@@ -13,6 +13,8 @@ import TransportProcessExplorer from "./components/TransportProcessExplorer";
 import EnglishALessonExamples from "../englishA/components/EnglishALessonExamples";
 import IntegratedScienceText from "../integratedScience/components/IntegratedScienceText";
 import ChemistryInteractiveLab from "../chemistry/components/ChemistryInteractiveLab";
+import ChemistryReferenceDiagrams from "../chemistry/components/ChemistryReferenceDiagrams";
+import { chemistryReferencesFor } from "../chemistry/data/chemistryReferenceDiagrams";
 import FoodEnergyNutritionExplorer from "./components/FoodEnergyNutritionExplorer";
 import FoodPreservationExplorer from "./components/FoodPreservationExplorer";
 import FoodContaminationExplorer from "./components/FoodContaminationExplorer";
@@ -169,7 +171,8 @@ export function GenericLessonContent({
   const isFnh = subjectId === "food-nutrition-and-health";
   const socialVisuals = subjectId === "social-studies" && socialStudiesMediaForTopic(topic?.id).length > 0;
   const isEditorial = editorial && !isFnh;
-  const hasExplore = Boolean(models.length || diagrams.length || references.length || subjectId==="english-a");
+  const hasChemistryVisuals = subjectId === "chemistry" && chemistryReferencesFor(topic?.id).length > 0;
+  const hasExplore = Boolean(models.length || diagrams.length || references.length || hasChemistryVisuals || subjectId==="english-a");
   const jumpTo = anchor => {
     if (typeof document === "undefined") return;
     const target = document.getElementById(anchor);
@@ -270,6 +273,7 @@ export function GenericLessonContent({
 
       {socialVisuals && <SocialStudiesReferenceMedia topicId={topic.id}/>}
       {isEditorial&&hasExplore&&<div id="spark-lesson-explore" className="spark-editorial-scroll-anchor" aria-hidden="true"/>}
+      {hasChemistryVisuals && <ChemistryReferenceDiagrams topicId={topic.id}/>}
       {models.map(model => (
         subjectId === "integrated-science"
           ? <div className="spark-integrated-science-model" key={model.id || model.type}><IntegratedScienceModel model={model} /></div>
