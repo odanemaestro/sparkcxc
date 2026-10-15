@@ -11,7 +11,7 @@ export default function FnhObjectivePractice({topic}){
   const current=prompts[Math.min(index,prompts.length-1)];
   const select=next=>{setIndex(next);setResponse("");setShow(false);};
   if(!current)return null;
-  return <section className="fnh-objective-practice" aria-label="Check your FNH understanding">
+  return <section id="fnh-lesson-reflect" className="fnh-objective-practice" aria-label="Check your FNH understanding">
     <div className="fnh-objective-practice-head">
       <div><small>PRACTISE WITH YOUR TEACHER</small><h3>Can you explain this objective?</h3></div>
       <span>{index+1} / {prompts.length}</span>
