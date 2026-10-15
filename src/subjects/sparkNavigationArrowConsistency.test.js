@@ -35,4 +35,19 @@ describe("SPARK shared thin-line navigation arrows",()=>{
     }
   });
 
+  test("flashcard panels and FNH reader no longer use Unicode navigation arrows",()=>{
+    for(const filepath of [
+      "components/learning/FlashcardsPanel.jsx",
+      "components/learning/SubjectDashboardOverview.jsx",
+      "fnh/practice/FnhHistoricalPaper1Reader.jsx",
+      "informationTechnology/components/InformationTechnologyFlashcardsPanel.jsx",
+      "practice/Syllabus2027Hub.jsx",
+      "socialStudies/components/SocialStudiesFlashcardsPanel.jsx",
+      "subjects/GenericSubjectFlashcardsPanel.jsx",
+    ]){
+      const source=read(filepath);
+      expect(source).not.toMatch(/[←→➜➔]/);
+      expect(source).toMatch(/<(?:BackArrowIcon|ForwardArrowIcon)\b/);
+    }
+  });
 });
