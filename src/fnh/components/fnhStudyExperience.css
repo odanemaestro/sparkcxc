@@ -419,58 +419,11 @@ html[data-theme="dark"] :is(.spark-fnh-study,.spark-editorial-study) .spark-gene
 :is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study) .spark-food-microbe-stage .fm-legend.warm{fill:#ffaca7}
 :is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study) .spark-bread-name span{color:#c2d2d6}
 
-/* A compact always-available return action once a lesson is scrolled. */
-.spark-fnh-back-to-top{
-  position:fixed;
-  z-index:25;
-  inset:auto max(22px,env(safe-area-inset-right,0px)) max(22px,env(safe-area-inset-bottom,0px)) auto;
-  display:grid;
-  place-items:center;
-  width:48px;
-  height:48px;
-  padding:0;
-  border:1px solid var(--fnh-ui-line);
-  border-radius:16px;
-  background:var(--fnh-ui-paper);
-  color:var(--fnh-ui-teal-ink);
-  box-shadow:0 12px 32px rgba(10,31,37,.15);
-  opacity:0;
-  visibility:hidden;
-  transform:translateY(8px);
-  pointer-events:none;
-  cursor:pointer;
-  transition:opacity .18s ease,transform .18s ease,visibility .18s ease,background .18s ease;
-}
-.spark-fnh-back-to-top.is-visible{
-  opacity:1;
-  visibility:visible;
-  transform:translateY(0);
-  pointer-events:auto;
-}
-.spark-fnh-back-to-top svg{
-  display:block;
-  width:22px;
-  height:22px;
-  fill:none;
-  stroke:currentColor;
-  stroke-width:2;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-}
-.spark-fnh-back-to-top:hover{background:var(--fnh-ui-teal-soft)}
-.spark-fnh-back-to-top:focus-visible{outline:3px solid var(--fnh-ui-focus);outline-offset:3px}
+/* Shared global back-to-top styling lives in components/ui/ScrollToTopButton.css. */
 @media(max-width:640px){
-  .spark-fnh-back-to-top{
-    inset:auto max(14px,env(safe-area-inset-right,0px)) max(18px,env(safe-area-inset-bottom,0px)) auto;
-    width:46px;height:46px;border-radius:15px;
-  }
   :is(.spark-fnh-study,.spark-editorial-study) :is(.spark-food-energy-nutrients,.spark-caribbean-food-groups,.spark-food-deficiencies) article{padding:13px;gap:10px}
   :is(.spark-fnh-study,.spark-editorial-study) :is(.spark-food-energy-tabs,.spark-food-test-buttons,.spark-preservation-tabs,.spark-food-contam-tabs,.spark-food-microbe-tabs) button{font-size:.8rem}
 }
-@media(prefers-reduced-motion:reduce){
-  .spark-fnh-back-to-top{transition:none;transform:none}
-}
-@media print{.spark-fnh-back-to-top{display:none!important}}
 
 /* Scroll destinations shared by English A, Science, Social Studies and
    Chemistry. Kept outside the model nodes to avoid changing their behaviour. */
