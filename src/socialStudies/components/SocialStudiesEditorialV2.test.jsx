@@ -33,6 +33,12 @@ describe("Social Studies uses the same study interface as the other subjects",()
   expect(screen.getByRole("button",{name:"Mark lesson complete"})).toBeInTheDocument();
   expect(screen.getByText("Lesson 1 of 39")).toBeInTheDocument();
   expect(screen.getByRole("button",{name:"Open Research & SBA toolkit"})).toBeInTheDocument();
+  const lessonLinks=screen.getByRole("navigation",{name:"Jump to a part of this lesson"});
+  expect(within(lessonLinks).getByRole("button",{name:"Caribbean activities"})).toBeInTheDocument();
+  expect(within(lessonLinks).getByRole("button",{name:"Practise"})).toBeInTheDocument();
+  fireEvent.click(within(lessonLinks).getByRole("button",{name:"Caribbean activities"}));
+  expect(HTMLElement.prototype.scrollIntoView).toHaveBeenCalled();
+
   expect(screen.getByTitle("Back to top")).toBeInTheDocument();
   expect(page.querySelector(".ss-unit-card")).not.toBeInTheDocument();
   expect(page.querySelector(".ss-lesson-steps")).not.toBeInTheDocument();
