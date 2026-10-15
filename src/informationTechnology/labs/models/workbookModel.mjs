@@ -102,7 +102,7 @@ function evaluateExpression(source, workbook, sheetName, trail) {
     if (name === 'VLOOKUP') {
       if (args.length < 3 || args.length > 4) fail('#VALUE!', 'VLOOKUP needs a lookup value, range and column number');
       const wanted = evaluateExpression(args[0], workbook, sheetName, trail);
-      const range = /^(?:'([^']+)'!|([A-Za-z][\\w ]*)!)?(\\$?[A-Z]+\\$?\\d+):(\\$?[A-Z]+\\$?\\d+)$/i.exec(args[1] || '');
+      const range = /^(?:'([^']+)'!|([A-Za-z][\w ]*)!)?(\$?[A-Z]+\$?\d+):(\$?[A-Z]+\$?\d+)$/i.exec(args[1] || '');
       if (!range) fail('#REF!', 'VLOOKUP needs a table range');
       const targetSheet = range[1] || range[2] || sheetName;
       const addresses = rangeAddresses(range[3], range[4]);
@@ -127,6 +127,8 @@ function evaluateExpression(source, workbook, sheetName, trail) {
     if (name === 'PMT') { const rate = Number(evaluateExpression(args[0], workbook, sheetName, trail)); const periods = Number(evaluateExpression(args[1], workbook, sheetName, trail)); const present = Number(evaluateExpression(args[2], workbook, sheetName, trail)); if (!Number.isFinite(periods) || periods <= 0) fail('#NUM!', 'Periods must be greater than zero'); return rate === 0 ? -(present / periods) : -(rate * present * (1 + rate) ** periods) / ((1 + rate) ** periods - 1); }
     fail('#NAME?', `Unknown function ${name}`);
   }
+  // Check literal values first: quoted criteria can contain comparison operators.
+  if (/^"(?:[^"]|"")*"$/.test(expression) || /^'(?:[^']|'')*'$/.test(expression)) return scalar(expression);
   const comparison = /^(.*?)(>=|<=|<>|=|>|<)(.*)$/.exec(expression);
   if (comparison) return criterionMatch(evaluateExpression(comparison[1], workbook, sheetName, trail), `${comparison[2]}${evaluateExpression(comparison[3], workbook, sheetName, trail)}`);
   const binary = /^(.*?)\s*([+*\-/])\s*(.*?)$/.exec(expression);
