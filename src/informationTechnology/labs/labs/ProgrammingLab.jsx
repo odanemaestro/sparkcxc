@@ -56,7 +56,7 @@ export default function ProgrammingLab({ lab, userId, completed, onBack, onCompl
   const [runCount, setRunCount] = useState(0);
   const [debugSession,setDebugSession] = useState(() => createDebugSession(null));
   const [diagnosticsOpen,setDiagnosticsOpen] = useState(false);
-  const { evidence, record } = useTaskEvidence();
+  const { evidence, record } = useTaskEvidence(userId, lab.id);
   const code = sources[exercise];
   const diagnostics=useMemo(()=>analyzeTeachingProgram({language,exercise,code,input:exercise==="debug"?debugInput:selectionInput}),[language,exercise,code,debugInput,selectionInput]);
   const template = PROGRAMMING_TEMPLATES[language];
