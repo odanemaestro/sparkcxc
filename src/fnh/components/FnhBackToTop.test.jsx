@@ -11,7 +11,7 @@ describe("FNH floating back-to-top navigation",()=>{
  });
  test("stays visually and keyboard hidden near the top of the lesson",()=>{
   render(<FnhBackToTop/>);
-  const button=screen.getByRole("button",{name:"Back to top",hidden:true});
+  const button=screen.getByTitle("Back to top");
   expect(button).toHaveAttribute("aria-hidden","true");
   expect(button).toHaveAttribute("tabindex","-1");
   expect(button).not.toHaveClass("is-visible");
