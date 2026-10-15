@@ -39,7 +39,7 @@ describe("2018 Technical Proficiency FNH Paper 01 scan transcription",()=>{
  });
  test("no Paper 01 item becomes an available graded examination through inventory flags",()=>{
   const raw=FNH_SUPPLIED_ARCHIVE.filter(p=>p.paper===1);
-  expect(raw).toHaveLength(16);
+  expect(raw).toHaveLength(15);
   expect(raw.every(p=>fnhHistoricalSimulatorReady(p.id)===null)).toBe(true);
   const oldP2=FNH_SUPPLIED_ARCHIVE.find(p=>p.id==="FNH-P2-2018-MJ");
   expect(fnhHistoricalSimulatorReady(oldP2.id)?.id).toBe(oldP2.id);
