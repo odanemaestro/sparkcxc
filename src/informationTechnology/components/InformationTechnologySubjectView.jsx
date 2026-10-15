@@ -9,14 +9,14 @@ import "./informationTechnology.css";
 import "../../subjects/sparkSpecializedStudyPolish.css";
 
 function BackIcon() {
-  return <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.5 5.5 8 10l4.5 4.5M8 10h8"/></svg>;
+  return <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M15 10H5m0 0 4-4m-4 4 4 4"/></svg>;
 }
 
 
 function OpenArrowIcon() {
   return (
     <svg className="it-open-arrow-icon" viewBox="0 0 20 20" focusable="false" aria-hidden="true">
-      <path d="M6 14L14 6M8 6h6v6"/>
+      <path d="M4 10h12m0 0-4-4m4 4-4 4"/>
     </svg>
   );
 }
