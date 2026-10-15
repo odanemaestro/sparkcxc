@@ -153,14 +153,14 @@
 .lesson-layout :is(button,select):focus-visible{outline:3px solid #0d9488;outline-offset:3px}
 
 :is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.ss-course,.it-subject-view,.physics-subject-view){
-  --study-editorial-bg:#101b22;
-  --study-editorial-surface:#192831;
-  --study-editorial-ink:#f0f6f5;
-  --study-editorial-muted:#c1d1d1;
-  --study-editorial-line:#354b50;
-  --study-editorial-soft:#21323b;
-  --study-editorial-accent:#82dcd0;
-  --study-editorial-accent-soft:#284844;
+  --study-editorial-bg:#0e1720;
+  --study-editorial-surface:#142133;
+  --study-editorial-ink:#f1f5fa;
+  --study-editorial-muted:#becbd8;
+  --study-editorial-line:#33495f;
+  --study-editorial-soft:#1b2b3e;
+  --study-editorial-accent:#71e6d0;
+  --study-editorial-accent-soft:#163a3e;
   color-scheme:dark;
   background:var(--study-editorial-bg);
   color:var(--study-editorial-ink);
@@ -187,7 +187,7 @@
   background:var(--study-editorial-soft);border-color:var(--study-editorial-line);
 }
 :is(html[data-theme="dark"],body[data-theme="dark"],.dark) .it-subject-view .it-learning-flow button.active{
-  color:#e7fff9;background:#295149;border-color:#82dcd0;
+  color:var(--study-editorial-ink);background:var(--study-editorial-accent-soft);border-color:var(--study-editorial-accent);
 }
 @media(max-width:920px){
  .physics-subject-view .psv-hero{display:block}
