@@ -17,7 +17,22 @@ Source: the user's `FNH_Paper1_Answer_Key.docx` worked solution document (not an
 - **1** mismatch, **Q59**: document says **D**, but the actual source choices are C = hypertension, D = hypotension. High dietary sodium is associated with **hypertension**, so **SPARK's C is the correct option text** and the worked document's letter is erroneous.
 - The examples Q12, Q22, Q25, Q29 and Q37 have the correct source-specific choices in SPARK.
 
-## Remaining reviews
+
+## Follow-up source review (2026-10-15)
+
+Original source: `CSEC_FNH_Paper_1_-_May_June_2003.pdf` from the supplied FNH archive.
+
+- **Q5** source page 1: option C is **gastroenteritis, cholera, nausea**. Added **C** as a provisional academically reviewed response. Other options mix organisms/symptoms; this is not an authenticated CXC key.
+- **Q6** source page 1: option C is **multiply rapidly**. Added **C** as the best candidate within the available choices; strictly speaking contamination and subsequent microbial proliferation are different processes. Confirm intended textbook usage.
+- **Q46** source page 5: option A is **I and II only** (advertising and peer pressure). Added **A** as the intended examination-style candidate; income can also affect adolescent food choices, so a subject reviewer should validate the scope of "greatly influence".
+- **Q4** source page 1: candidate C (pawpaw) requires comparison of water content and shrinkage, not merely the fruit name. Unresolved.
+- **Q33** source page 4: candidate D (groundnut oil) competes with C (corn oil), depending on smoke point and processing. Unresolved.
+- **Q41** source page 5: candidate A (one cup) is a rough historical measurement, but actual mass per cup varies by flour and measuring method. Unresolved.
+- **Q59** source page 6: correctly remains C (hypertension), regardless of the worked document's D.
+  
+**Present state: three further proposed answers recorded, three blanks remain, and no claim of official key verification.** Full 60-item source and explanation QA remains necessary before scored release.
+
+## Earlier review list (historical)
 
 | Number | Why still under review |
 |---|---|
