@@ -1,4 +1,6 @@
 import {FNH_P1_2003_TRANSCRIPTION_DRAFT} from "./fnhHistorical2003Paper1Draft";
+import {FNH_P1_2004_TRANSCRIPTION_DRAFT} from "./fnhHistorical2004Paper1Draft";
+import {FNH_P1_2005_TRANSCRIPTION_DRAFT} from "./fnhHistorical2005Paper1Draft";
 import {FNH_P1_2016_TRANSCRIPTION_DRAFT} from "./fnhHistorical2016Paper1Draft";
 import {FNH_P1_2017_TRANSCRIPTION_DRAFT} from "./fnhHistorical2017Paper1Draft";
 import {FNH_P1_2020_TRANSCRIPTION_DRAFT} from "./fnhHistorical2020Paper1Draft";
@@ -9,6 +11,23 @@ function selectedText(row) {
   return row.options["ABCD".indexOf(row.proposedAnswer)];
 }
 describe("FNH historical answer sanity checks", () => {
+  test("2004 incomplete source choices and 2005 missing final page stay unavailable", () => {
+    for (const number of [46,47]) {
+      const q=FNH_P1_2004_TRANSCRIPTION_DRAFT.find(item=>item.number===number);
+      expect(q.options).toBeNull();
+      expect(q.proposedAnswer).toBeNull();
+      expect(q.officialKeyVerified).not.toBe(true);
+    }
+    expect(FNH_P1_2005_TRANSCRIPTION_DRAFT).toHaveLength(53);
+    expect(FNH_P1_2005_TRANSCRIPTION_DRAFT.some(q=>q.number>53)).toBe(false);
+  });
+  test("2005 Q45 matches its own scanned option B, not an imported letter", () => {
+    const q=FNH_P1_2005_TRANSCRIPTION_DRAFT.find(item=>item.number===45);
+    expect(q.proposedAnswer).toBe("B");
+    expect(selectedText(q)).toMatch(/main tap, light the match and set the control knob/i);
+    expect(q.officialKeyVerified).not.toBe(true);
+  });
+
   test("2003 stays in 1–60 source-number order, regardless of insertion order", () => {
     expect(FNH_P1_2003_TRANSCRIPTION_DRAFT.map(q=>q.number))
       .toEqual(Array.from({length:60},(_,i)=>i+1));
