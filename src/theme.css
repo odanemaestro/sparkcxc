@@ -73,7 +73,7 @@ html[data-theme="dark"]{
   --spark-shadow-lg:0 14px 36px rgba(0,0,0,.36);
   --spark-shadow-xl:0 24px 70px rgba(0,0,0,.44);
   --spark-overlay:rgba(1,7,16,.72);
-  --spark-nav:rgba(5,13,27,.91);
+  --spark-nav:#142C50;
 
   /* Paper 1/2 variables already used throughout practiceExam.css. */
   --paper-navy:#EAF2FF;
@@ -102,8 +102,8 @@ body{
 }
 
 /* Navigation, menus and modal chrome. */
-html[data-theme="dark"] .glass-nav{background:var(--spark-nav)!important}
-html[data-theme="dark"] .spark-mobile-menu{background:var(--spark-navy-deep)!important}
+html[data-theme="dark"] .glass-nav{background:var(--spark-nav)!important;border-bottom:1px solid rgba(149,178,219,.13)!important;box-shadow:0 2px 18px rgba(5,15,32,.10)!important}
+html[data-theme="dark"] .spark-mobile-menu{background:var(--spark-nav)!important}
 html[data-theme="dark"] .spark-modal-backdrop{background:var(--spark-overlay)!important}
 html[data-theme="dark"] .spark-modal-card{
   background:var(--spark-paper)!important;
