@@ -399,7 +399,7 @@ export const FNH_STUDY_PRACTICE_PART_ONE=Object.freeze({
       "answer": 1130,
       "unit": "JMD",
       "tolerance": 0.001,
-      "explanation": "J$350 + J$480 + J$300 = J$1,130.",
+      "explanation": "Add the listed prices once: J$350 + J$480 + J$300 = J$1,130. Check the total before comparing it with the family budget.",
       "hint": "Add the three ingredient prices."
     },
     {
