@@ -16,7 +16,7 @@ describe("2008 Paper1 source transcription versus official answer-key release",(
   expect(paper[49].stem).toMatch(/deficient/);
  });
  test("historical source questions cannot be graded without independent key confirmation",()=>{
-  expect(paper.filter(row=>!row.proposedAnswer).length).toBeGreaterThanOrEqual(0);
+  expect(paper.some(row=>!row.proposedAnswer)).toBe(true);
   expect(paper.every(row=>row.officialKeyVerified===false)).toBe(true);
   expect(fnhHistoricalPaper1ReleaseCheck(paper).ready).toBe(false);
   expect(FNH_SUPPLIED_ARCHIVE.find(row=>row.id==="FNH-P1-2008-MJ")).toMatchObject({transcribedQuestionCount:60,verifiedQuestionCount:0});
