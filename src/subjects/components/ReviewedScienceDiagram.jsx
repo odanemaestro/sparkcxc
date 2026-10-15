@@ -39,11 +39,11 @@ export default function ReviewedScienceDiagram({ site, diagramId, children, hide
           {index > 0 && <span aria-hidden="true">→</span>}<p>{step}</p>
         </React.Fragment>)}
       </div> : <>
-        <button type="button" className="spark-science-image-button" onClick={() => dialogRef.current?.showModal()} aria-label={`Enlarge: ${selection.title}`}>
+        <button type="button" className={`spark-science-image-button${darkImagePath?" spark-science-image-themed":""}`} onClick={() => dialogRef.current?.showModal()} aria-label={`Enlarge: ${selection.title}`}>
           <img className="spark-science-art-default" src={`${base}${selection.path}`} alt={selection.title} loading="lazy" />
           {darkImagePath && <img className="spark-science-art-dark" src={`${base}${darkImagePath}`} alt={selection.title} loading="lazy" />}
         </button>
-        <dialog ref={dialogRef} className="spark-science-image-dialog">
+        <dialog ref={dialogRef} className={`spark-science-image-dialog${darkImagePath?" spark-science-image-themed":""}`}>
           <header><strong>{selection.title}</strong><button type="button" onClick={() => dialogRef.current?.close()}>Close</button></header>
           <img className="spark-science-art-default" src={`${base}${selection.path}`} alt={selection.title} />
           {darkImagePath && <img className="spark-science-art-dark" src={`${base}${darkImagePath}`} alt={selection.title} />}
