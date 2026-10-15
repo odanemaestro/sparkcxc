@@ -1,4 +1,6 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { readLabWorkspace, writeLabWorkspace } from "../models/workspacePersistence.mjs";
+import { buildDocumentHtml } from "../models/documentExport.mjs";
 import { LabFrame, RibbonTabs, WindowBar } from "../components/LabFrame";
 import { ReducedMotionNotice, StatusMessage, ToolGroup, WorkspaceViewport, useTaskEvidence } from "../components/ProductivityKit";
 import { countTextMatches, replaceTextMatches } from "../models/documentModel.mjs";
@@ -11,31 +13,46 @@ function selectionInside(editor, selection) {
   return editor.contains(range.commonAncestorContainer);
 }
 
-export default function WordLab({ lab, completed, onBack, onComplete }) {
+export default function WordLab({ lab, userId, completed, onBack, onComplete }) {
+  const saved = useRef(readLabWorkspace(userId, "word", {})).current;
   const editorRef = useRef(null);
   const savedRange = useRef(null);
   const [tab, setTab] = useState("Home");
-  const [heading, setHeading] = useState(false);
-  const [font, setFont] = useState("Aptos");
-  const [size, setSize] = useState(11);
-  const [align, setAlign] = useState("left");
-  const [bullets, setBullets] = useState(false);
-  const [columns, setColumns] = useState(1);
-  const [orientation, setOrientation] = useState("portrait");
-  const [table, setTable] = useState(false);
-  const [header, setHeader] = useState("");
-  const [footer, setFooter] = useState("");
-  const [trackChanges, setTrackChanges] = useState(false);
-  const [comment, setComment] = useState("");
+  const [heading, setHeading] = useState(saved.heading ?? false);
+  const [font, setFont] = useState(saved.font ?? "Aptos");
+  const [size, setSize] = useState(saved.size ?? 11);
+  const [align, setAlign] = useState(saved.align ?? "left");
+  const [bullets, setBullets] = useState(saved.bullets ?? false);
+  const [columns, setColumns] = useState(saved.columns ?? 1);
+  const [orientation, setOrientation] = useState(saved.orientation ?? "portrait");
+  const [table, setTable] = useState(saved.table ?? false);
+  const [header, setHeader] = useState(saved.header ?? "");
+  const [footer, setFooter] = useState(saved.footer ?? "");
+  const [trackChanges, setTrackChanges] = useState(saved.trackChanges ?? false);
+  const [comment, setComment] = useState(saved.comment ?? "");
   const [findText, setFindText] = useState("club");
   const [replaceText, setReplaceText] = useState("technology club");
-  const [bodyText, setBodyText] = useState(STARTING_BODY);
+  const [bodyText, setBodyText] = useState(saved.bodyText ?? STARTING_BODY);
   const [selectionText, setSelectionText] = useState("");
   const [lastReplacement, setLastReplacement] = useState(0);
-  const [mergeField, setMergeField] = useState(false);
-  const [formControl, setFormControl] = useState(false);
+  const [mergeField, setMergeField] = useState(saved.mergeField ?? false);
+  const [formControl, setFormControl] = useState(saved.formControl ?? false);
   const [message, setMessage] = useState("Select text in the document, then choose a formatting command.");
   const { evidence, record } = useTaskEvidence();
+
+  useEffect(() => {
+    writeLabWorkspace(userId, "word", { bodyText, heading, font, size, align, bullets, columns, orientation, table, header, footer, trackChanges, comment, mergeField, formControl });
+  }, [userId, bodyText, heading, font, size, align, bullets, columns, orientation, table, header, footer, trackChanges, comment, mergeField, formControl]);
+
+  function exportHtml() {
+    const html = buildDocumentHtml({ title: "SPARK Technology Club Newsletter", body: editorRef.current?.innerText ?? bodyText, header, footer, orientation, columns, table, bullets, mergeField });
+    const url = URL.createObjectURL(new Blob([html], { type: "text/html;charset=utf-8" }));
+    const anchor = document.createElement("a");
+    anchor.href = url; anchor.download = "SPARK-Technology-Club.html";
+    document.body.appendChild(anchor); anchor.click(); anchor.remove();
+    URL.revokeObjectURL(url);
+    setMessage("HTML document exported. Open it in a browser or print it.");
+  }
 
   const words = useMemo(() => bodyText.trim() ? bodyText.trim().split(/\s+/).length : 0, [bodyText]);
   const matchCount = useMemo(() => countTextMatches(bodyText, findText), [bodyText, findText]);
@@ -132,8 +149,9 @@ export default function WordLab({ lab, completed, onBack, onComplete }) {
       footer={<span>Page 1 of 1 · {words} words · English (Caribbean)</span>}>
       <div className="itv2-office-window word">
         <WindowBar title="Technology Club Newsletter.docx" subtitle="SPARK Word Processing Studio"/>
-        <RibbonTabs tabs={["Home", "Insert", "Layout", "Review", "Mailings"]} active={tab} onChange={setTab}/>
+        <RibbonTabs tabs={["Home", "Insert", "Layout", "Review", "Mailings", "File"]} active={tab} onChange={setTab}/>
         <div className="itv2-ribbon" aria-label={`${tab} tools`}>
+          {tab === "File" && <ToolGroup label="Export"><button type="button" onClick={exportHtml}>Export HTML</button><button type="button" onClick={() => window.print()}>Print</button></ToolGroup>}
           {tab === "Home" && <>
             <ToolGroup label="Font">
               <label htmlFor="word-font">Typeface</label><select id="word-font" value={font} onChange={event => { const value = event.target.value; setFont(value); formatSelection("fontName", value, "font", value); }}><option>Aptos</option><option>Arial</option><option>Georgia</option></select>
@@ -172,7 +190,7 @@ export default function WordLab({ lab, completed, onBack, onComplete }) {
             {header && <header>{header}</header>}
             <h2 className={heading ? "heading-style" : ""}>SPARK Technology Club Newsletter</h2>
             {mergeField && <p className="merge-line">Dear «ParentName»,</p>}
-            <div ref={editorRef} className="itv2-word-body" contentEditable suppressContentEditableWarning role="textbox" aria-label="Document body" aria-multiline="true" onInput={syncDocument} onKeyUp={captureSelection} onMouseUp={captureSelection} onTouchEnd={captureSelection}>{STARTING_BODY}</div>
+            <div ref={editorRef} className="itv2-word-body" contentEditable suppressContentEditableWarning role="textbox" aria-label="Document body" aria-multiline="true" onInput={syncDocument} onKeyUp={captureSelection} onMouseUp={captureSelection} onTouchEnd={captureSelection}>{saved.bodyText ?? STARTING_BODY}</div>
             {bullets && <ul><li>Coding club</li><li>Robotics club</li><li>Digital design club</li></ul>}
             {table && <table><thead><tr><th>Activity</th><th>Day</th><th>Time</th></tr></thead><tbody><tr><td>Coding</td><td>Tuesday</td><td>3:30 pm</td></tr><tr><td>Robotics</td><td>Thursday</td><td>3:30 pm</td></tr></tbody></table>}
             {formControl && <label className="itv2-doc-checkbox"><input type="checkbox"/> I will attend the technology showcase</label>}
