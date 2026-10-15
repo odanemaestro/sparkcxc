@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
+import { importBasicXlsx } from "../models/officeImports.mjs";
 import { makeXlsx } from "../models/officeExports.mjs";
 import {readLabWorkspace,writeLabWorkspace} from "../models/workspacePersistence.mjs";
 import { LabFrame, RibbonTabs, WindowBar } from "../components/LabFrame";
@@ -136,6 +137,17 @@ export default function SpreadsheetLab({ lab, userId, completed, onBack, onCompl
     { id: "linked", label: "Link the Summary worksheet to a calculated Sales total", done: linked && !salesTotal.error && salesTotal.formula && linkedResult.value === salesTotal.value },
   ];
 
+  async function importXlsx(event) {
+    const file=event.target.files?.[0];
+    if(!file)return;
+    try{
+      const imported=await importBasicXlsx(await file.arrayBuffer());
+      const first=Object.keys(imported)[0];
+      setWorkbook(imported);setSheet(first);setSelected("A1");setFormulaBar(String(imported[first]?.A1??""));
+      setMessage("XLSX workbook imported. Review unsupported formulas and formatting.");
+    }catch(error){setMessage(error.message||"Could not read the XLSX file.");}
+    event.target.value="";
+  }
   function exportXlsx() {
     const data = makeXlsx(workbook);
     const url = URL.createObjectURL(new Blob([data], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }));
@@ -204,7 +216,7 @@ export default function SpreadsheetLab({ lab, userId, completed, onBack, onCompl
         <RibbonTabs tabs={["Home", "Formulas", "Data", "Insert"]} active={tab} onChange={setTab}/>
         <div className="itv2-ribbon" aria-label={`${tab} tools`}>
           {tab === "Home" && <>
-            <ToolGroup label="History"><button type="button" onClick={undo} disabled={!canUndo}>Undo</button><button type="button" onClick={redo} disabled={!canRedo}>Redo</button></ToolGroup><ToolGroup label="Export"><button type="button" onClick={exportXlsx}>Export XLSX</button></ToolGroup>
+            <ToolGroup label="History"><button type="button" onClick={undo} disabled={!canUndo}>Undo</button><button type="button" onClick={redo} disabled={!canRedo}>Redo</button></ToolGroup><ToolGroup label="Export"><button type="button" onClick={exportXlsx}>Export XLSX</button><label>Import XLSX<input type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" onChange={importXlsx}/></label></ToolGroup>
             <ToolGroup label="Number"><button type="button" aria-pressed={formatCurrency} className={formatCurrency ? "active" : ""} onClick={() => setFormatCurrency(value => !value)}>J$ Currency</button></ToolGroup>
             <ToolGroup label="Fill"><button type="button" onClick={fillDown}>Fill selected down</button></ToolGroup>
           </>}
