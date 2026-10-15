@@ -26,7 +26,7 @@ function VisualCard({item}){
 export default function CuratedStudyMedia({subject,topicId}){
   const resources=referencesFor(subject,topicId);
   if(!resources.length)return null;
-  return <section className="spark-csm" aria-label={subject==="physics"?"Physics visual references":"Information Technology visual references"}>
+  return <section id={`spark-${subject}-visuals`} className="spark-csm" aria-label={subject==="physics"?"Physics visual references":"Information Technology visual references"}>
     <header className="spark-csm-heading">
       <span>Look closely</span>
       <h3>Examples and visual guides</h3>
@@ -34,4 +34,25 @@ export default function CuratedStudyMedia({subject,topicId}){
     </header>
     <div className="spark-csm-grid">{resources.map(item=><VisualCard item={item} key={item.file}/>)}</div>
   </section>;
+}
+
+/**
+ * An explicit learning-navigation action for supported topics.
+ * It intentionally does not render on lessons that lack vetted media.
+ */
+export function CuratedStudyJump({subject,topicId,onActivate}){
+  const resources=referencesFor(subject,topicId);
+  if(!resources.length)return null;
+  const open=()=>{
+    if(typeof onActivate==="function"){onActivate();return;}
+    const target=document.getElementById(`spark-${subject}-visuals`);
+    if(!target)return;
+    const reduced=typeof window.matchMedia==="function"&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    target.scrollIntoView?.({behavior:reduced?"auto":"smooth",block:"start"});
+  };
+  return <button className="spark-csm-jump" type="button" onClick={open}>
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5" width="17" height="14" rx="3"/><circle cx="9" cy="10" r="1.5"/><path d="m5 17 4.6-4.3 3.3 2.5 3.1-3.2 3 3"/></svg>
+    <span>See visual guides</span>
+    <span className="spark-csm-jump-count">({resources.length})</span>
+  </button>;
 }
