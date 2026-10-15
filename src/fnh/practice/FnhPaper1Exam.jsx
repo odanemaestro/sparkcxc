@@ -1,3 +1,4 @@
+import FnhNavArrow from "./FnhNavArrow";
 import React,{useEffect,useMemo,useRef,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
 import {FNH_PAPER1_FORMAT,fnhGetPaper1Set} from "../data/fnhPaper1Bank";
@@ -73,11 +74,11 @@ export default function FnhPaper1Exam({supabase,userId,onBack,setNumber=1,histor
   const submit=()=>{change({phase:"review",submittedAt:Date.now()});setModal("");};
   const selected=q=>attempt.answers[q.id];
   const answer=q=>q.options["ABCD".indexOf(q.answer)]||"";
-  if(!questions.length)return <main className="fnh-exam"><div className="fnh-exam-container"><p>This paper is not available yet.</p><button className="fnh-outline" onClick={onBack}>← Back to past papers</button></div></main>;
+  if(!questions.length)return <main className="fnh-exam"><div className="fnh-exam-container"><p>This paper is not available yet.</p><button className="fnh-outline" onClick={onBack}><FnhNavArrow direction="left"/> Back to past papers</button></div></main>;
   return <main className="fnh-exam">
     <div className="fnh-exam-container">
       <div className="fnh-exam-top">
-        <button type="button" className="fnh-outline" onClick={()=>exam?setModal("exit"):onBack?.()}>← {exam?"Exit examination":"Back to paper selection"}</button>
+        <button type="button" className="fnh-outline" onClick={()=>exam?setModal("exit"):onBack?.()}><FnhNavArrow direction="left"/> {exam?"Exit examination":"Back to paper selection"}</button>
         <span>CSEC FOOD, NUTRITION AND HEALTH · PAPER 01</span>
       </div>
       {attempt.phase==="instructions"?<section className="fnh-exam-card fnh-instructions">
