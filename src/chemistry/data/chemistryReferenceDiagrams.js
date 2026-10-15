@@ -27,11 +27,11 @@ export const CHEMISTRY_REFERENCE_DIAGRAMS = Object.freeze({
       "MikeRun","CC BY-SA 4.0",BYSA4),
   ],
   "a2-mixtures-separations": [
-    image("Paper chromatography.png",
+    image("Chromatography tank.png",
       "Paper chromatography",
       "A paper chromatography arrangement showing how a solvent separates substances carried up the paper.",
       "Identify the solvent level, the starting spot and the separated spots. The start line should be above the solvent.",
-      "Theresa Knott; adapted by Shakiestone","CC BY-SA 3.0",BYSA3),
+      "Theresa Knott","CC BY-SA 3.0",BYSA3),
     image("Simple distillation apparatus labelled.svg",
       "Simple distillation apparatus",
       "A labelled distillation setup showing the heated flask, thermometer, condenser and collecting vessel.",
@@ -46,11 +46,11 @@ export const CHEMISTRY_REFERENCE_DIAGRAMS = Object.freeze({
       "granpa","Public domain",CC0),
   ],
   "a4-periodic-table": [
-    image("Periodic table simple no bw.svg",
+    image("Periodic Table of the Elements.svg",
       "Periodic table of the elements",
       "A periodic table arranged in rows and columns showing element positions.",
       "Trace the horizontal periods and vertical groups. Compare Groups II and VII and the elements across Period 3.",
-      "László Németh","CC0 1.0",CC0),
+      "Wittiko","CC BY 4.0","https://creativecommons.org/licenses/by/4.0/"),
   ],
   "a7-acids-bases-salts": [
     image("PH scale.svg",
