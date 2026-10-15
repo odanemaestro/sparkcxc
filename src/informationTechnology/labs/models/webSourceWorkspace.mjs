@@ -22,5 +22,12 @@ export function buildSandboxPreview(files) {
   const blocked = /<\s*(script|iframe|object|embed|base|form|meta\s+http-equiv)\b|\bon\w+\s*=|javascript\s*:/i;
   if (blocked.test(html) || blocked.test(css)) return { html: "", errors: ["Active content is blocked in teaching previews."] };
   const encodedCss = css.replace(/<\//g, "<\\/");
-  return { html: `<!doctype html><html><head><meta charset="utf-8"><style>${encodedCss}</style></head><body>${html}</body></html>`, errors: [] };
+  // The sandbox attribute blocks script execution. CSP also blocks network
+  // resources, requests, navigation and external styles from student markup.
+  const policy = '<meta http-equiv="Content-Security-Policy" content="default-src \'none\'; style-src \'unsafe-inline\'; img-src data:; font-src data:; connect-src \'none\'; form-action \'none\'; base-uri \'none\'">';
+  const head = `<meta charset="utf-8">${policy}<style>${encodedCss}</style>`;
+  const documentHtml = /<head\b[^>]*>/i.test(html)
+    ? html.replace(/<head\b[^>]*>/i, match => match + head)
+    : `<!doctype html><html lang="en"><head>${head}</head><body>${html}</body></html>`;
+  return { html: documentHtml, errors: [] };
 }
