@@ -32,7 +32,7 @@ describe("Physics and IT source-verified examples",()=>{
   test("shows the exact source and author under each diagram",()=>{
     render(<CuratedStudyMedia subject="information-technology" topicId={8}/>);
     expect(screen.getByRole("region",{name:"Information Technology visual references"})).toBeInTheDocument();
-    expect(screen.getByRole("img")).toHaveAttribute("alt",expect.stringContaining("topology"));
+    expect(screen.getByRole("img")).toHaveAttribute("alt",expect.stringContaining("network connection patterns"));
     expect(screen.getByRole("heading",{name:"Examples and visual guides"})).toBeInTheDocument();
     expect(screen.getByText("Credit: Maksim; SVG by Malyszkz")).toBeInTheDocument();
     expect(screen.getByRole("link",{name:"Original source"})).toHaveAttribute("href",expect.stringContaining("commons.wikimedia.org"));
