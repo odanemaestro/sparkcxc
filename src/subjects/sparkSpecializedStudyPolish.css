@@ -153,14 +153,15 @@
 .lesson-layout :is(button,select):focus-visible{outline:3px solid #0d9488;outline-offset:3px}
 
 :is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.ss-course,.it-subject-view,.physics-subject-view){
-  --study-editorial-bg:#101b22;
-  --study-editorial-surface:#192831;
-  --study-editorial-ink:#f0f6f5;
-  --study-editorial-muted:#c1d1d1;
-  --study-editorial-line:#354b50;
-  --study-editorial-soft:#21323b;
-  --study-editorial-accent:#82dcd0;
-  --study-editorial-accent-soft:#284844;
+  --study-editorial-bg:#0d1b2d;
+  --study-editorial-surface:#142840;
+  --study-editorial-ink:#f0f7ff;
+  --study-editorial-muted:#c2d4e5;
+  --study-editorial-line:#34516d;
+  --study-editorial-soft:#1b3550;
+  --study-editorial-accent:#83e9d7;
+  --study-editorial-accent-soft:#184944;
+  color-scheme:dark;
   background:var(--study-editorial-bg);
   color:var(--study-editorial-ink);
 }
