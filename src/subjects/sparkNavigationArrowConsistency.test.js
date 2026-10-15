@@ -19,4 +19,20 @@ describe("SPARK shared thin-line navigation arrows",()=>{
     expect(source).toContain("<ForwardArrowIcon/>");
     expect(source).not.toMatch(/[←→➜➔]/);
   });
+  test("major paper and lesson navigation components use SVG icons",()=>{
+    for(const filepath of [
+      "chemistry/practice/ChemistryPaper1Exam.jsx",
+      "chemistry/practice/ChemistryPaper2Exam.jsx",
+      "chemistry/practice/ChemistryPracticeHub.jsx",
+      "fnh/practice/FnhHistoricalPaper2Exam.jsx",
+      "physics/course/components/PhysicsCourseLessons.jsx",
+      "practice/Paper2027ModuleExam.jsx",
+      "subjects/GenericSubjectStudyView.jsx",
+    ]){
+      const source=read(filepath);
+      expect(source).not.toMatch(/[←→➜➔]/);
+      expect(source).toMatch(/<(?:BackArrowIcon|ForwardArrowIcon)\b/);
+    }
+  });
+
 });
