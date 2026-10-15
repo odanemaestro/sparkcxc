@@ -30,7 +30,7 @@ describe("2014 FNH Paper 01 year-provenance source audit",()=>{
   expect(old.sourceIdentityVerified).not.toBe(false);
   expect(old.sourceYearVerified).toBe(true);
   expect(old.sourceYearVerificationMethod).toBe("user-confirmed-2026-10-14");
-  expect(incorrect.sourceIdentityVerified).toBe(false);
-  expect(incorrect.actualSourceSubject).toBe("Spanish");
+  expect(incorrect).toBeUndefined();
+  expect(FNH_SUPPLIED_ARCHIVE.some(row=>row.year===2021&&row.paper===1)).toBe(false);
  });
 });
