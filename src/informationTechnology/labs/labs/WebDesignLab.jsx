@@ -1,4 +1,6 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { readLabWorkspace, writeLabWorkspace } from "../models/workspacePersistence.mjs";
+import { exportSitePage } from "../models/siteExport.mjs";
 import { LabFrame, RibbonTabs, WindowBar } from "../components/LabFrame";
 import { ReducedMotionNotice, StatusMessage, ToolGroup, WorkspaceViewport, useTaskEvidence } from "../components/ProductivityKit";
 import { checkSiteLinks, normalizePagePath, pageForPath } from "../models/siteModel.mjs";
@@ -14,18 +16,27 @@ const NEW_PAGES = [
   { id: "contact", title: "Contact", path: "/contact", heading: "Contact the Club", body: "Get in touch with the school technology club." },
 ];
 
-export default function WebDesignLab({ lab, completed, onBack, onComplete }) {
+export default function WebDesignLab({ lab, userId, completed, onBack, onComplete }) {
+  const [saved] = useState(() => readLabWorkspace(userId, "web", {}));
   const [tab, setTab] = useState("Design");
-  const [pages, setPages] = useState([{ id: "home", title: "Home", path: "/", heading: "Technology Club", body: "Welcome to our technology club website." }]);
+  const [pages, setPages] = useState(saved.pages || [{ id: "home", title: "Home", path: "/", heading: "Technology Club", body: "Welcome to our technology club website." }]);
   const [selected, setSelected] = useState("home");
   const [visited, setVisited] = useState("home");
-  const [purpose, setPurpose] = useState("");
-  const [audience, setAudience] = useState("");
-  const [image, setImage] = useState(false);
-  const [links, setLinks] = useState({ pageId: "home", emailLabel: "Email us", emailHref: "mailto:club@example.com", externalLabel: "School website", externalHref: "https://example.com" });
+  const [purpose, setPurpose] = useState(saved.purpose ?? "");
+  const [audience, setAudience] = useState(saved.audience ?? "");
+  const [image, setImage] = useState(saved.image ?? false);
+  const [links, setLinks] = useState(saved.links || { pageId: "home", emailLabel: "Email us", emailHref: "mailto:club@example.com", externalLabel: "School website", externalHref: "https://example.com" });
   const [preview, setPreview] = useState("desktop");
   const [report, setReport] = useState(null);
   const revision = useRef(0);
+  useEffect(() => { writeLabWorkspace(userId, "web", { pages, purpose, audience, image, links }); }, [userId, pages, purpose, audience, image, links]);
+  function exportSite() {
+    const html = exportSitePage(pages[0], pages, links, image);
+    const url = URL.createObjectURL(new Blob([html], { type: "text/html;charset=utf-8" }));
+    const anchor = document.createElement("a");
+    anchor.href = url; anchor.download = "SPARK-Technology-Club-Site.html";
+    document.body.appendChild(anchor); anchor.click(); anchor.remove(); URL.revokeObjectURL(url);
+  }
   const { evidence, record } = useTaskEvidence();
 
   const page = pages.find(item => item.id === selected) ?? pages[0];
@@ -108,7 +119,7 @@ export default function WebDesignLab({ lab, completed, onBack, onComplete }) {
             <ToolGroup label="External link"><label>Text<input aria-label="External link text" value={links.externalLabel} onChange={event => updateLinks({ externalLabel: event.target.value }, "external-edit")}/></label><label>Address<input aria-label="External link address" value={links.externalHref} onChange={event => updateLinks({ externalHref: event.target.value }, "external-edit")}/></label></ToolGroup>
           </>}
           {tab === "Preview" && <ToolGroup label="Responsive preview">{Object.entries(PREVIEWS).map(([key, item]) => <button type="button" key={key} className={preview === key ? "active" : ""} aria-pressed={preview === key} onClick={() => resizePreview(key)}>{item.label}</button>)}<ReducedMotionNotice/></ToolGroup>}
-          {tab === "Publish" && <ToolGroup label="Site checks"><button type="button" onClick={runChecker}>Run link checker</button><button type="button" disabled={!checksPassed || !uniqueValidPages}>Publish site</button></ToolGroup>}
+          {tab === "Publish" && <ToolGroup label="Site checks"><button type="button" onClick={runChecker}>Run link checker</button><button type="button" disabled={!checksPassed || !uniqueValidPages} onClick={exportSite}>Export site HTML</button></ToolGroup>}
         </div>
 
         {report && <StatusMessage tone={report.result.valid ? "success" : "error"}><strong>{report.result.valid ? "All links passed" : `${report.result.issues.length} link-checker errors`}</strong><span>{report.result.valid ? `${report.result.checked} navigation and hyperlink checks completed.` : "Select an error below to correct its page or link."}</span></StatusMessage>}
