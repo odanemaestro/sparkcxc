@@ -43,10 +43,13 @@ describe("FNH historical answer sanity checks", () => {
     const documentKey="BDDCCCCADADCCDDCBBDCDDDCACDBABCDDADCABBBACCBDAACAAACBDAAACDC".split("");
     expect(documentKey).toHaveLength(60);
     for(let n=1;n<=60;n++){
-      if([4,33,41,59].includes(n))continue;
+      if([33,41].includes(n))continue;
       expect(actual[n]).toBe(documentKey[n-1]);
     }
     expect(selectedText(FNH_P1_2003_TRANSCRIPTION_DRAFT[58])).toMatch(/hypertension/i);
+    expect(FNH_P1_2003_TRANSCRIPTION_DRAFT[58].proposedAnswer).toBe("D");
+    expect(FNH_P1_2003_TRANSCRIPTION_DRAFT[58].options[2]).toMatch(/hypotension/i);
+    expect(FNH_P1_2003_TRANSCRIPTION_DRAFT[3].proposedAnswer).toBe("C");
   });
 
   test("2003 numbering maps to the intended concepts and choice text", () => {
