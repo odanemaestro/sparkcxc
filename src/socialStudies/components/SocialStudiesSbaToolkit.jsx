@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import "../socialStudies.css";
+import "../socialStudiesToolkitTheme.css";
 
 const QUESTION_CHECKS = Object.freeze([
   {
@@ -53,6 +54,8 @@ function StationNav({active,onSelect,done}){
       type="button"
       key={id}
       className={active===id ? "active" : ""}
+      aria-current={active===id ? "step" : undefined}
+      aria-label={`${label}${done.has(id) ? ", completed" : ""}`}
       onClick={()=>onSelect(id)}
     >
       <span>{done.has(id) ? "✓" : n}</span>
@@ -230,7 +233,7 @@ export default function SocialStudiesSbaToolkit({onBack,onComplete}){
   else if(active==="findings")body=<FindingsStation onDone={()=>finish("findings")}/>;
   else if(active==="write")body=<WriteStation onDone={()=>finish("write")}/>;
 
-  return <main className="ss-course">
+  return <main className="ss-course ss-sba-toolkit">
     <div className="ss-shell">
       <button type="button" className="ss-back" onClick={onBack}><BackArrowIcon/><span>Back to Social Studies</span></button>
       <header className="ss-lesson-hero ss-sba-hero">
@@ -238,6 +241,7 @@ export default function SocialStudiesSbaToolkit({onBack,onComplete}){
         <h1>Investigate a social issue like a researcher.</h1>
         <p>Practise the enquiry skills used across CSEC Social Studies: planning, questionnaire design, sampling, source evaluation, data interpretation and evidence-based writing.</p>
         <div className="ss-course-meta"><span><strong>{done.size}/6</strong> stations complete</span><span><strong>{percent}%</strong> toolkit progress</span></div>
+        <div className="ss-sba-progress-track" role="progressbar" aria-label="Toolkit completion" aria-valuemin={0} aria-valuemax={6} aria-valuenow={done.size}><span style={{width:`${percent}%`}}/></div>
       </header>
       <StationNav active={active} onSelect={setActive} done={done}/>
       {body}

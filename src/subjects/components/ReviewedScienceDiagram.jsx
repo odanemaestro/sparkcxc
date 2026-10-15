@@ -5,7 +5,7 @@ import references from "../data/reviewedScienceReferences.json";
 import { scienceDiagramSignature } from "./reviewedScienceDiagramModel";
 import "./reviewedScienceDiagram.css";
 
-export default function ReviewedScienceDiagram({ site, diagramId, children, hideCaption = false }) {
+export default function ReviewedScienceDiagram({ site, diagramId, children, hideCaption = false, darkImagePath = null }) {
   const originalRef = useRef(null);
   const [selection, setSelection] = useState(null);
   const dialogRef = useRef(null);
@@ -39,12 +39,14 @@ export default function ReviewedScienceDiagram({ site, diagramId, children, hide
           {index > 0 && <span aria-hidden="true">→</span>}<p>{step}</p>
         </React.Fragment>)}
       </div> : <>
-        <button type="button" className="spark-science-image-button" onClick={() => dialogRef.current?.showModal()} aria-label={`Enlarge: ${selection.title}`}>
-          <img src={`${base}${selection.path}`} alt={selection.title} loading="lazy" />
+        <button type="button" className={`spark-science-image-button${darkImagePath?" spark-science-image-themed":""}`} onClick={() => dialogRef.current?.showModal()} aria-label={`Enlarge: ${selection.title}`}>
+          <img className="spark-science-art-default" src={`${base}${selection.path}`} alt={selection.title} loading="lazy" />
+          {darkImagePath && <img className="spark-science-art-dark" src={`${base}${darkImagePath}`} alt={selection.title} loading="lazy" />}
         </button>
-        <dialog ref={dialogRef} className="spark-science-image-dialog">
+        <dialog ref={dialogRef} className={`spark-science-image-dialog${darkImagePath?" spark-science-image-themed":""}`}>
           <header><strong>{selection.title}</strong><button type="button" onClick={() => dialogRef.current?.close()}>Close</button></header>
-          <img src={`${base}${selection.path}`} alt={selection.title} />
+          <img className="spark-science-art-default" src={`${base}${selection.path}`} alt={selection.title} />
+          {darkImagePath && <img className="spark-science-art-dark" src={`${base}${darkImagePath}`} alt={selection.title} />}
         </dialog>
       </>}
       {selection.caption && !hideCaption && <figcaption>{selection.caption}</figcaption>}

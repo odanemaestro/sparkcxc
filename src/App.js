@@ -123,6 +123,7 @@ import "./sparkGoogleAuthButtonV1.css";
 import "./sparkSubjectLeaveModalV272.css";
 import "./sparkStudentDashboardConsultantV1.css";
 import "./sparkStudentHomeV1.css";
+import "./subjects/sparkSpecializedStudyPolish.css";
 import GOOGLE_ICON_B64 from "./assets/icons/google-icon.png";
 import GOOGLE_CALENDAR_ICON_B64 from "./assets/icons/google-calendar-icon.png";
 import OUTLOOK_ICON_B64 from "./assets/icons/outlook-icon.png";

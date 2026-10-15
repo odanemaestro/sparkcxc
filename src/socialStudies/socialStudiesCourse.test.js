@@ -175,7 +175,8 @@ test("Research and SBA toolkit covers the complete enquiry cycle", () => {
   expect(toolkit).toContain("Write-up");
   expect(toolkit).toContain("evidence → finding → conclusion → recommendation");
   expect(subjectView).toContain("tool:sba-research-lab");
-  expect(subjectView).toContain("Open Research & SBA toolkit");
+  expect(subjectView).toContain("Open Research &amp; SBA toolkit");
+  expect(subjectView).toContain("GenericSubjectStudyView");
 });
 
 
@@ -308,14 +309,17 @@ test("Social Studies practice hub exposes Paper 01 and Paper 02 without restorin
   expect(practiceHub).not.toContain("Communication option");
 });
 
-test("lesson exam questions stay available without the Write like a CXC candidate heading", () => {
+test("lesson exam questions remain inside shared study layout without retired candidate heading", () => {
   const subjectView = read("socialStudies/components/SocialStudiesSubjectView.jsx");
-  expect(subjectView).toContain('className="ss-panel ss-exam-panel"');
-  expect(subjectView).toContain('{lesson.exam.prompt}');
-  expect(subjectView).toContain('{lesson.exam.marks} marks');
-  expect(subjectView).toContain("Show marking guide");
-  expect(subjectView).not.toContain("Write like a CXC candidate");
-  expect(subjectView).not.toContain("ss-objective-chips");
+  const extras = read("socialStudies/components/SocialStudiesLessonExtras.jsx");
+  expect(subjectView).toContain("LessonExtras={SocialStudiesLessonExtras}");
+  expect(extras).toContain('className="ss-shared-essay"');
+  expect(extras).toContain("{lesson.exam.prompt}");
+  expect(extras).toContain("{lesson.exam.marks} marks");
+  expect(extras).toContain("Show marking guide");
+  expect(extras).toContain('aria-label="Suggested marking guide"');
+  expect(extras).not.toContain("Write like a CXC candidate");
+  expect(extras).not.toContain("ss-objective-chips");
 });
 
 test("all Social Studies reveal and timeline controls use SPARK styling instead of browser defaults", () => {

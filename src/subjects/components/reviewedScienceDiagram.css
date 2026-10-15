@@ -27,3 +27,48 @@ html[data-theme="dark"] .spark-science-image-dialog header button,body[data-them
 html[data-theme="dark"] .spark-science-image-dialog>img,body[data-theme="dark"] .spark-science-image-dialog>img,.dark .spark-science-image-dialog>img{background:#fff;border-radius:9px}
 html[data-theme="dark"] .spark-science-image-credits,body[data-theme="dark"] .spark-science-image-credits,.dark .spark-science-image-credits{color:#b8cad7}
 html[data-theme="dark"] .spark-science-image-credits a,body[data-theme="dark"] .spark-science-image-credits a,.dark .spark-science-image-credits a{color:#67e8d7}
+
+
+/* Approved source artwork is preserved exactly. When a reviewed diagram has
+   an audited dark palette, select that companion SVG without touching geometry,
+   captions, enlargement or accessibility text. */
+.spark-science-image-themed .spark-science-art-dark{display:none}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+  .spark-science-image-themed .spark-science-art-default{display:none}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+  .spark-science-image-themed .spark-science-art-dark{display:block}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+  .spark-editorial-study .spark-reviewed-science-diagram figure{
+  background:#15283e;border-color:#36516a;color:#edf5ff;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+  .spark-editorial-study .spark-science-image-themed,
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+  .spark-editorial-study .spark-science-image-themed>img{
+  background:#11273c;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+  .spark-editorial-study .spark-science-image-button:not(.spark-science-image-themed),
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+  .spark-editorial-study .spark-science-image-dialog:not(.spark-science-image-themed)>img{
+  background:#e6eef0;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+  .spark-editorial-study .spark-science-image-button:not(.spark-science-image-themed)>img{
+  filter:brightness(.94);
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+  .spark-editorial-study .spark-science-image-dialog{
+  background:#12263b;border-color:#406078;color:#edf5ff;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark)
+  .spark-editorial-study .spark-science-image-dialog .spark-science-art-dark{
+  object-fit:contain;
+}
+.spark-editorial-study .spark-science-image-button:focus-visible,
+.spark-editorial-study .spark-science-image-dialog button:focus-visible{
+  outline:3px solid #80e3d5;outline-offset:3px;
+}
+@media(prefers-reduced-motion:reduce){
+ .spark-editorial-study .spark-science-image-button{transition:none}
+}

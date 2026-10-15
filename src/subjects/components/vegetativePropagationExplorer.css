@@ -32,3 +32,49 @@ html[data-theme="dark"] .spark-vp-group-tabs button.active,html[data-theme="dark
 html[data-theme="dark"] .spark-vp-stage,body[data-theme="dark"] .spark-vp-stage,.dark .spark-vp-stage{background:#edf5ec;border-color:#39566e}
 @media(max-width:700px){.spark-vp-explorer{padding:14px}.spark-vp-group-tabs{display:grid;grid-template-columns:1fr 1fr}.spark-vp-method-tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}.spark-vp-method-tabs button{min-width:0}.spark-vp-label{font-size:22px}.spark-vp-example{font-size:21px}.spark-vp-stage .culture-stage text{font-size:20px}}
 @media(max-width:430px){.spark-vp-group-tabs,.spark-vp-method-tabs{grid-template-columns:1fr}.spark-vp-caption{display:grid}}
+
+
+/* Navy nighttime classroom: bright copy, restrained teal selection, scientific
+   source imagery given an intentional plate instead of a glaring white stage. */
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-vp-explorer{
+ background:#142a43;border-color:#355471;color:#eaf4ff;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-vp-explorer header>span{
+ color:#78e9d7;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-vp-explorer header h3{
+ color:#f1f7ff;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-vp-explorer header p{
+ color:#cad8ea;font-size:clamp(.91rem,1.4vw,1rem);line-height:1.7;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-vp-group-tabs button,
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-vp-method-tabs button{
+ border-color:#3b5876;background:#1b3652;color:#f1f7ff;min-height:44px;
+ transition:background .16s ease,border-color .16s ease;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-vp-group-tabs button.active,
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-vp-method-tabs button.active{
+ background:#155653;color:#eafffc;border-color:#69e8d2;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-vp-method-tabs span{
+ color:#bacde2;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-vp-method-tabs button.active span{
+ color:#d6f8f1;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-vp-stage{
+ background:#102438;border-color:#405c79;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-vp-caption{
+ color:#f0f7ff;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-vp-caption span{
+ color:#c8d9eb;
+}
+.spark-vp-explorer button:focus-visible{
+ outline:3px solid #75ddca;outline-offset:3px;
+}
+@media(prefers-reduced-motion:reduce){
+ .spark-vp-explorer button{transition:none!important}
+}
