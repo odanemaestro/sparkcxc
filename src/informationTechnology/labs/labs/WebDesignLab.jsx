@@ -30,7 +30,7 @@ export default function WebDesignLab({ lab, userId, completed, onBack, onComplet
   const sourceIssues = useMemo(() => inspectWebSource(sourceFiles), [sourceFiles]);
   function addSourceFile() {
     const name = newSourceName.trim();
-    if (!/^[a-zA-Z0-9_-]+\\.(html|css)$/.test(name)) {
+    if (!/^[a-zA-Z0-9_-]+\.(html|css)$/.test(name)) {
       setSourceNotice("Use a filename such as activities.html or theme.css.");
       return;
     }
