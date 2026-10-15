@@ -471,3 +471,22 @@ html[data-theme="dark"] :is(.spark-fnh-study,.spark-editorial-study) .spark-gene
   .spark-fnh-back-to-top{transition:none;transform:none}
 }
 @media print{.spark-fnh-back-to-top{display:none!important}}
+
+/* Scroll destinations shared by English A, Science, Social Studies and
+   Chemistry. Kept outside the model nodes to avoid changing their behaviour. */
+.spark-editorial-study .spark-editorial-scroll-anchor{
+  display:block;
+  height:1px;
+  margin:0;
+  padding:0;
+  scroll-margin-top:88px;
+}
+.spark-editorial-study .spark-generic-lesson-section[id],
+.spark-editorial-study .spark-generic-key-points[id],
+.spark-editorial-study .spark-generic-worked-example[id],
+.spark-editorial-study .spark-generic-lesson-summary[id]{
+  scroll-margin-top:88px;
+}
+.spark-editorial-study :is(.spark-generic-lesson,.spark-generic-outline,.spark-generic-lesson-body){min-width:0}
+.spark-editorial-study .spark-fnh-reading-nav-links button svg{width:16px;height:16px;flex:none;stroke:var(--fnh-ui-teal);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+@media print{.spark-editorial-study .spark-editorial-scroll-anchor{display:none}}
