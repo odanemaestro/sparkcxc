@@ -601,7 +601,7 @@ export const FNH_STUDY_PRACTICE_PART_ONE=Object.freeze({
     {
       "id": "heat2",
       "type": "multi",
-      "prompt": "Select THREE accurately matched food changes.",
+      "prompt": "Which THREE food changes are correctly matched with the process causing each change?",
       "options": [
         "Heated starch in water: gelatinisation",
         "Heated egg proteins: coagulation",
