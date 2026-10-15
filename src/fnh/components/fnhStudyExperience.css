@@ -529,3 +529,20 @@ html[data-theme="dark"] :is(.spark-fnh-study,.spark-editorial-study) .spark-gene
   :is(.spark-generic-lesson-section,.spark-generic-lesson-body) img{
  max-width:100%;height:auto;
 }
+
+
+/* Shared study subjects: cool pearl paper and ink-navy, one quiet teal.
+   FNH's already approved design uses its separate class and remains untouched. */
+.spark-editorial-study{
+ --fnh-ui-bg:#f5f7fb;
+ --fnh-ui-paper:#ffffff;
+ --fnh-ui-paper-alt:#f0f4fa;
+ --fnh-ui-ink:#17324f;
+ --fnh-ui-muted:#586e86;
+ --fnh-ui-line:#dbe5ef;
+ --fnh-ui-teal:#087d77;
+ --fnh-ui-teal-soft:#e3f5f0;
+ --fnh-ui-teal-ink:#085c59;
+ --fnh-ui-highlight:#f1f5f9;
+ --fnh-ui-focus:#087d77;
+}
