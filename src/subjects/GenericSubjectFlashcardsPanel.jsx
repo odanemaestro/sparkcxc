@@ -1,3 +1,5 @@
+import ForwardArrowIcon from "../components/ui/ForwardArrowIcon";
+import BackArrowIcon from "../components/ui/BackArrowIcon";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Card from "../components/ui/Card";
 import SparkLoader from "../components/ui/SparkLoader";
@@ -441,8 +443,8 @@ export default function GenericSubjectFlashcardsPanel({
               </button>
 
               <div className="spark-generic-flashcard-nav">
-                <button type="button" disabled={index === 0} onClick={() => moveCard("previous")}>← Previous</button>
-                <button type="button" disabled={index >= cards.length - 1} onClick={() => moveCard("next")}>Next →</button>
+                <button type="button" disabled={index === 0} onClick={() => moveCard("previous")}><BackArrowIcon/> Previous</button>
+                <button type="button" disabled={index >= cards.length - 1} onClick={() => moveCard("next")}>Next <ForwardArrowIcon/></button>
               </div>
             </div>
           )}
