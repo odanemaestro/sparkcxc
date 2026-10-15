@@ -24,15 +24,27 @@ export function TaskList({ tasks }) {
 }
 
 export function RibbonTabs({ tabs, active, onChange }) {
+  function handleKey(event, index) {
+    const direction = event.key === "ArrowRight" ? 1 : event.key === "ArrowLeft" ? -1 : 0;
+    if (!direction && event.key !== "Home" && event.key !== "End") return;
+    if (!tabs.length) return;
+    event.preventDefault();
+    const next = event.key === "Home" ? 0 : event.key === "End" ? tabs.length - 1 : (index + direction + tabs.length) % tabs.length;
+    onChange(tabs[next]);
+    const buttons = event.currentTarget.parentElement?.querySelectorAll('[role="tab"]');
+    buttons?.[next]?.focus();
+  }
   return (
-    <div className="itv2-ribbon-tabs" role="tablist" aria-label="Lab ribbon tabs">
-      {tabs.map(tab => (
+    <div className="itv2-ribbon-tabs" role="tablist" aria-label="Lab ribbon tabs" aria-orientation="horizontal">
+      {tabs.map((tab, index) => (
         <button
           type="button"
           role="tab"
           aria-selected={active === tab}
+          tabIndex={active === tab ? 0 : -1}
           className={active === tab ? "active" : ""}
           key={tab}
+          onKeyDown={event => handleKey(event, index)}
           onClick={() => onChange(tab)}
         >
           {tab}
