@@ -1,3 +1,4 @@
+import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import React,{useEffect,useMemo,useRef,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
 import "./chemistryPractice.css";
@@ -138,7 +139,7 @@ export default function ChemistryPaper1Exam({onBack,supabase,userId,sourceId=nul
   const paperLabel=isPractice?`Practice set ${Number(source.split("-").pop())}`:source.replace("-JAN"," January").replace("-MJ"," May/June");
   if(phase==="instructions"||!paper)return <main className="is-practice-shell chem-practice-shell chem-p1-intro">
     <div className="is-practice-home-shell">
-      <div className="is-practice-top-actions"><button type="button" className="is-back-button" onClick={onBack}>← Back to Chemistry practice</button></div>
+      <div className="is-practice-top-actions"><button type="button" className="is-back-button" onClick={onBack}><BackArrowIcon/> Back to Chemistry practice</button></div>
       {!controlled&&<><header className="is-practice-hero"><div><span>CSEC CHEMISTRY PAPER 01</span><h1>Choose your examination</h1><p>Select a practice paper or a historical paper, read the instructions and start when you are ready.</p></div></header>
       <section className="chem-p1-picker-card" aria-label="Choose your Chemistry Paper 1">
         <div className="chem-p1-picker-copy"><strong>Choose a paper</strong><p>Your timer starts only when you select Start examination.</p></div>
@@ -185,7 +186,7 @@ export default function ChemistryPaper1Exam({onBack,supabase,userId,sourceId=nul
   </main>;
   return <main className="is-practice-shell chem-practice-shell chem-p1-session"><div className="is-practice-home-shell">
     <header className="chem-p1-exam-header">
-      <div><button type="button" className="is-back-button" onClick={()=>submitted?onBack?.():setShowExitConfirm(true)}>← {submitted?"Back to paper selection":"Exit examination"}</button>
+      <div><button type="button" className="is-back-button" onClick={()=>submitted?onBack?.():setShowExitConfirm(true)}><BackArrowIcon/> {submitted?"Back to paper selection":"Exit examination"}</button>
         <span>CSEC CHEMISTRY · PAPER 01</span><h1>{paperLabel}</h1><p>{submitted?"Answer review":`Question ${active+1} of ${exam.length}`}</p>
       </div>
       <div className="chem-p1-exam-timer"><span>{submitted?"Submitted":"Time remaining"}</span><strong>{submitted?"REVIEW":<Minutes seconds={remaining}/>}</strong></div>
