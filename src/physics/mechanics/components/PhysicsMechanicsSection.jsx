@@ -4,7 +4,7 @@ import MathText from '../../../practice/MathText';
 import PhysicsFlashcardVisual from '../../components/PhysicsFlashcardVisual';
 import { physicsFlashcardQuestion } from '../../course/physicsFlashcardLanguage.mjs';
 import PhysicsStudyToolkit from '../../components/PhysicsStudyToolkit';
-import CuratedStudyMedia from '../../../components/study/CuratedStudyMedia';
+import CuratedStudyMedia, { CuratedStudyJump } from '../../../components/study/CuratedStudyMedia';
 import PhysicsPracticalNotebook from '../../labs/PhysicsPracticalNotebook';
 import MechanicsInteractiveLab from './MechanicsInteractiveLab';
 import { hasSimulation } from '../../simulations/simulationRegistry.jsx';
@@ -24,12 +24,13 @@ function StudyView({topic,progress,setCompleted}){
   const lesson=topic.lesson, formulas=(lesson.formulas||lesson.formulae||[]).map(normalizeFormula), objectives=lessonObjectives(topic), objectiveCards=lesson.objectiveCards||{};
   return <div className="pm-study-grid">
     <div className="pm-panel">
+      <CuratedStudyMedia subject="physics" topicId={topic.id}/>
       {lesson.sections.map((section,i)=><section className="pm-section-card" key={section.id||i}>
         <h3>{section.heading}</h3>
         {paragraphsForSection(section).map((p,j)=><MathText as="p" prose key={j}>{p}</MathText>)}
         {examplesForSection(section).map((ex,j)=><div className="pm-worked" key={j}><MathText as="strong" prose>{ex.prompt||ex.question||'Worked example'}</MathText>{Array.isArray(ex.steps)?<ol>{ex.steps.map((s,k)=><li key={k}><MathText prose>{s}</MathText></li>)}</ol>:<MathText as="p" prose>{ex.solution||''}</MathText>}</div>)}
       </section>)}
-      <CuratedStudyMedia subject="physics" topicId={topic.id}/>
+      
       <PhysicsStudyToolkit topicId={topic.id}/>
       <div className="pm-completion"><button type="button" className={progress[`lesson:${topic.id}`]?'done':''} onClick={()=>setCompleted(`lesson:${topic.id}`,!progress[`lesson:${topic.id}`])}>{progress[`lesson:${topic.id}`]?'✓ Lesson marked complete':'Mark lesson complete'}</button><span className="pm-feedback">Completion is study progress only. It is not treated as Physics mastery.</span></div>
     </div>
@@ -87,7 +88,7 @@ export default function PhysicsMechanicsSection({userId,onBack,onActivity,onEvid
   const topicLabs=MECHANICS_INTERACTIVES.filter(i=>i.topic===topic.id);const completedCount=(progress[`lesson:${topic.id}`]?1:0)+topicLabs.filter(l=>progress[`lab:${l.id}`]).length;const totalCount=1+topicLabs.length;const pct=Math.round(completedCount/totalCount*100);
   return <main className={`physics-mechanics ${mode === "labs" ? "pm-lab-mode" : ""}`}><div className="pm-shell"><header className="pm-hero"><div>{onBack&&<button type="button" className="pm-btn secondary" onClick={onBack} style={{marginBottom:12}}>← Back to Physics</button>}<div className="pm-eyebrow">CSEC Physics · Section A</div><h1>Mechanics</h1><p>Study all 52 Mechanics objectives through audited lessons, interactive labs, flashcards and objective-linked practice.</p></div><div className="pm-hero-stats"><div className="pm-stat"><strong>{stats.objectives}</strong><span>objectives</span></div><div className="pm-stat"><strong>{stats.mcq}</strong><span>MCQs</span></div><div className="pm-stat"><strong>{stats.flashcards}</strong><span>flashcards</span></div><div className="pm-stat"><strong>{MECHANICS_INTERACTIVES.length}</strong><span>interactive labs</span></div></div></header>
     <nav className="pm-topics" aria-label="Mechanics topics">{SECTION_A_TOPICS.map(t=><button key={t.id} type="button" aria-pressed={topic.id===t.id} className={`pm-topic-btn ${topic.id===t.id?'active':''}`} onClick={()=>{setTopicId(t.id);setMode('study')}}>{t.id} · {t.title}</button>)}</nav>
-    <div className="pm-topic-head"><div><h2>{topic.id}. {topic.title}</h2><MathText as="p" prose>{topicSummary(topic)}</MathText></div><div className="pm-topic-progress"><strong>{pct}% explored</strong><div className="pm-progress-track"><i style={{width:`${pct}%`}}></i></div><span>{completedCount}/{totalCount} study activities marked complete</span></div></div>
+    <div className="pm-topic-head"><div><h2>{topic.id}. {topic.title}</h2><MathText as="p" prose>{topicSummary(topic)}</MathText>{mode==='study'&&<CuratedStudyJump subject="physics" topicId={topic.id}/>}</div><div className="pm-topic-progress"><strong>{pct}% explored</strong><div className="pm-progress-track"><i style={{width:`${pct}%`}}></i></div><span>{completedCount}/{totalCount} study activities marked complete</span></div></div>
     <nav className="pm-modebar" aria-label="Physics learning mode"><button type="button" aria-pressed={mode==='study'} className={`pm-mode-btn ${mode==='study'?'active':''}`} onClick={()=>setMode('study')}>Study</button><button type="button" aria-pressed={mode==='labs'} className={`pm-mode-btn ${mode==='labs'?'active':''}`} onClick={()=>setMode('labs')}>Labs & practicals</button><button type="button" aria-pressed={mode==='flashcards'} className={`pm-mode-btn ${mode==='flashcards'?'active':''}`} onClick={()=>setMode('flashcards')}>Flashcards</button><button type="button" aria-pressed={mode==='quiz'} className={`pm-mode-btn ${mode==='quiz'?'active':''}`} onClick={()=>setMode('quiz')}>Topic test</button><button type="button" aria-pressed={mode==='checkpoint'} className={`pm-mode-btn ${mode==='checkpoint'?'active':''}`} onClick={()=>setMode('checkpoint')}>Mechanics checkpoint</button></nav>
     {mode==='study'&&<StudyView topic={topic} progress={progress} setCompleted={setCompleted}/>}
     {mode==='labs'&&<LabsView topic={topic} progress={progress} setCompleted={setCompleted} onEvidence={onEvidence} userId={userId}/>}
