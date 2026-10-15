@@ -217,3 +217,90 @@
  .ss-course :is(.ss-back,.ss-lesson-footer),
  .it-subject-view :is(.it-learning-flow,.it-back),.physics-subject-view .psv-back{display:none!important}
 }
+
+
+/* IT section and topic selection: use the same visual language as the
+   Practical Labs tiles. Styling only. All existing click handlers stay put. */
+.it-subject-view{
+  --it-study-tile-mark:#17375e;
+  --it-study-tile-mark-ink:#fff;
+  --it-study-arrow-surface:rgba(13,128,105,.09);
+  --it-study-arrow-ink:#0d8069;
+}
+.it-subject-view :is(.it-section-card,.it-topic-card){
+  min-height:116px;
+  padding:19px;
+  gap:16px;
+  border-radius:18px;
+  background:var(--it-card,var(--study-editorial-surface));
+  border:1px solid var(--it-line,var(--study-editorial-line));
+  box-shadow:none;
+  color:var(--it-ink,var(--study-editorial-ink));
+  font-family:inherit;
+}
+.it-subject-view :is(.it-section-code,.it-topic-number){
+  flex:0 0 52px;
+  width:52px;
+  height:52px;
+  border-radius:14px;
+  background:var(--it-study-tile-mark);
+  color:var(--it-study-tile-mark-ink);
+  font-weight:800;
+  font-variant-numeric:tabular-nums;
+}
+.it-subject-view :is(.it-section-copy,.it-topic-copy){gap:6px}
+.it-subject-view :is(.it-section-copy,.it-topic-copy) small{
+  color:var(--study-editorial-accent);
+  font-size:.75rem;
+  font-weight:750;
+  letter-spacing:.045em;
+}
+.it-subject-view :is(.it-section-copy,.it-topic-copy) strong{
+  color:var(--study-editorial-ink);
+  font-family:inherit;
+  font-size:clamp(1rem,1.35vw,1.125rem);
+  font-weight:750;
+  line-height:1.35;
+  letter-spacing:-.018em;
+}
+.it-subject-view :is(.it-section-copy,.it-topic-copy) span{
+  color:var(--study-editorial-muted);
+  font-size:.875rem;
+  line-height:1.55;
+}
+.it-subject-view :is(.it-section-card,.it-topic-card) .it-open-arrow{
+  display:grid;
+  place-items:center;
+  flex:0 0 38px;
+  width:38px;
+  height:38px;
+  border-radius:11px;
+  background:var(--it-study-arrow-surface);
+  color:var(--it-study-arrow-ink);
+}
+.it-subject-view .it-open-arrow-icon{
+  width:18px;height:18px;fill:none;stroke:currentColor;
+  stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;
+}
+.it-subject-view :is(.it-section-card,.it-topic-card):hover{
+  border-color:var(--study-editorial-accent);
+  box-shadow:0 6px 20px rgba(3,13,26,.09);
+}
+.it-subject-view :is(.it-section-card,.it-topic-card):focus-visible{
+  outline:3px solid var(--study-editorial-accent);
+  outline-offset:3px;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .it-subject-view{
+  --it-study-tile-mark:#1b3b65;
+  --it-study-tile-mark-ink:#f1f5fa;
+  --it-study-arrow-surface:#102e3b;
+  --it-study-arrow-ink:#71e6d0;
+}
+@media(max-width:640px){
+  .it-subject-view :is(.it-section-card,.it-topic-card){padding:16px;gap:12px}
+  .it-subject-view :is(.it-section-code,.it-topic-number){flex-basis:46px;width:46px;height:46px}
+  .it-subject-view :is(.it-section-card,.it-topic-card) .it-open-arrow{width:34px;height:34px;flex-basis:34px}
+}
+@media(prefers-reduced-motion:reduce){
+  .it-subject-view :is(.it-section-card,.it-topic-card){transition:none;transform:none}
+}
