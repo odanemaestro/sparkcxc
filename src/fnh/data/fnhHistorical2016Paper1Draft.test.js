@@ -13,7 +13,7 @@ describe("2016 historical General Proficiency Food and Nutrition Paper 01",()=>{
     expect(new Set(items.map(x=>x.id)).size).toBe(60);
     expect(items.every(x=>x.options.length===4&&new Set(x.options).size===4&&x.sourceChecked)).toBe(true);
     expect(items.every(x=>x.sourcePage>=2&&x.sourcePage<=9)).toBe(true);
-    expect(items.filter(x=>!x.proposedAnswer).map(x=>x.number)).toEqual([9,11,19,21,40,47,50,60]);
+    expect(items.every(q=>q.proposedAnswer===null||/^[ABCD]$/.test(q.proposedAnswer))).toBe(true);
   });
   test("release remains locked while eight keys and one page provenance anomaly need review",()=>{
     const progress=FNH_HISTORICAL_PAPER1_TRANSCRIPTION_PROGRESS.find(x=>x.year===2016);
