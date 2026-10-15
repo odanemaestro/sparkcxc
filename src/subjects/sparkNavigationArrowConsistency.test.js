@@ -1,0 +1,22 @@
+import fs from "fs";
+import path from "path";
+const read=file=>fs.readFileSync(path.join(__dirname,"..",file),"utf8");
+describe("SPARK shared thin-line navigation arrows",()=>{
+  test("subject chooser uses a real back SVG, not a Unicode arrow",()=>{
+    const source=fs.readFileSync(path.join(__dirname,"SubjectSelectionView.jsx"),"utf8");
+    expect(source).toContain('import BackArrowIcon from "../components/ui/BackArrowIcon"');
+    expect(source).toContain("<BackArrowIcon size={18}/>");
+    expect(source).not.toContain("← {children}");
+  });
+  test("FNH uses shared back and forward icons",()=>{
+    const source=read("fnh/practice/FnhNavArrow.jsx");
+    expect(source).toMatch(/BackArrowIcon/);
+    expect(source).toMatch(/ForwardArrowIcon/);
+  });
+  test("Chemistry practice routes do not use text arrow glyphs",()=>{
+    const source=read("chemistry/practice/ChemistryPracticeHub.jsx");
+    expect(source).toContain("<BackArrowIcon/>");
+    expect(source).toContain("<ForwardArrowIcon/>");
+    expect(source).not.toMatch(/[←→➜➔]/);
+  });
+});
