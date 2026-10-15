@@ -430,3 +430,37 @@
  .ss-lesson-page .ss-stage-content[hidden]{display:block!important}
  .ss-lesson-page .ss-stage-content{break-inside:auto;box-shadow:none}
 }
+
+
+/* The optional SPARK glass skin must not turn teaching paper translucent.
+   Reading surfaces stay opaque so small labels and long paragraphs retain AA
+   contrast against the same navy palette on every device. */
+html[data-glass="true"] .ss-course.ss-home-page .ss-course-hero,
+html[data-glass="true"] .ss-course.ss-lesson-page .ss-lesson-hero{
+ background:var(--ss-paper)!important;
+ border-color:var(--ss-line)!important;
+ -webkit-backdrop-filter:none!important;backdrop-filter:none!important;
+}
+html[data-glass="true"] .ss-course.ss-lesson-page .ss-lesson-hero{
+ background:transparent!important;border-color:transparent!important;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .ss-course.ss-lesson-page
+ :is(.ss-interactive-feedback.correct,.ss-question-feedback.correct){
+ background:var(--ss-good-soft);color:var(--ss-good);
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .ss-course.ss-lesson-page
+ :is(.ss-interactive-feedback.wrong,.ss-question-feedback.wrong){
+ background:var(--ss-warn-soft);color:var(--ss-warn);
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .ss-course.ss-lesson-page
+ :is(.ss-calculator-result,.ss-pyramid-reading,.ss-activity-complete,.ss-map-question>p){
+ background:var(--ss-teal-soft);color:var(--ss-teal-ink);
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .ss-course.ss-lesson-page
+ :is(.ss-reveal-button,.ss-timeline-controls button){
+ background:var(--ss-paper);color:var(--ss-ink);border-color:var(--ss-line);
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .ss-course.ss-lesson-page
+ :is(.ss-reveal-button,.ss-timeline-controls button):hover:not(:disabled){
+ background:var(--ss-teal-soft);color:var(--ss-teal-ink);
+}
