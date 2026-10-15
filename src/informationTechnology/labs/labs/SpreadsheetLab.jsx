@@ -40,7 +40,8 @@ export default function SpreadsheetLab({ lab, userId, completed, onBack, onCompl
   const [sort, setSort] = useState("Item");
   const [chart, setChart] = useState("");
   const [auditOpen, setAuditOpen] = useState(false);
-  const [validationRules, setValidationRules] = useState({});
+  const [validationRules, setValidationRules] = useState(() => readLabWorkspace(userId, "spreadsheet-validation", {}));
+  useEffect(() => { writeLabWorkspace(userId, "spreadsheet-validation", validationRules); }, [userId, validationRules]);
   const [validationType, setValidationType] = useState("whole");
   const [validationMin, setValidationMin] = useState("0");
   const [validationMax, setValidationMax] = useState("");
