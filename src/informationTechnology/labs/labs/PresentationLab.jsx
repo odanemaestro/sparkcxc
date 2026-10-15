@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { importBasicPptx } from "../models/officeImports.mjs";
 import { makePptx } from "../models/officeExports.mjs";
 import {readLabWorkspace,writeLabWorkspace} from "../models/workspacePersistence.mjs";
 import { buildPresentationHtml } from "../models/presentationExport.mjs";
@@ -48,6 +49,16 @@ export default function PresentationLab({ lab, userId, completed, onBack, onComp
     { id: "show", label: "Run the slide show and navigate between slides", done: evidence.has("show-started") && evidence.has("show-navigation") },
   ];
 
+  async function importPptx(event) {
+    const file=event.target.files?.[0];
+    if(!file)return;
+    try{
+      const imported=await importBasicPptx(await file.arrayBuffer());
+      setSlides(imported);setSelected(imported[0].id);
+      setMessage("Basic PPTX text imported. Recheck layouts, notes, and graphics.");
+    }catch(error){setMessage(error.message||"Could not read the PPTX file.");}
+    event.target.value="";
+  }
   function exportPptx() {
     const bytes=makePptx(slides,theme,footer);
     const url=URL.createObjectURL(new Blob([bytes],{type:"application/vnd.openxmlformats-officedocument.presentationml.presentation"}));
@@ -117,7 +128,7 @@ export default function PresentationLab({ lab, userId, completed, onBack, onComp
         {tab === "Insert" && <ToolGroup label="Illustrations"><button type="button" className={slide.graphic ? "active" : ""} aria-pressed={slide.graphic} onClick={() => { patchSlide({ graphic: !slide.graphic }); record("graphic"); }}>Picture / Graphic</button></ToolGroup>}
         {tab === "Design" && <ToolGroup label="Themes">{PRESENTATION_THEMES.map(name => <button type="button" key={name} className={theme === name ? "active" : ""} aria-pressed={theme === name} onClick={() => { setTheme(name); record("theme"); }}>{name}</button>)}</ToolGroup>}
         {tab === "Transitions" && <ToolGroup label="Transition"><label>Effect<select aria-label="Slide transition" value={slide.transition} onChange={event => { patchSlide({ transition: event.target.value }); if (event.target.value) record("transition"); }}><option value="">None</option>{PRESENTATION_TRANSITIONS.map(item => <option key={item}>{item}</option>)}</select></label></ToolGroup>}
-        {tab === "Slide Show" && <ToolGroup label="Start slide show"><button type="button" onClick={exportPptx}>Export PPTX</button><button type="button" onClick={exportPresentation}>Export HTML</button><button type="button" onClick={startShow}><PlayIcon/> <span>From Current Slide</span></button><ReducedMotionNotice/></ToolGroup>}
+        {tab === "Slide Show" && <ToolGroup label="Start slide show"><button type="button" onClick={exportPptx}>Export PPTX</button><label>Import PPTX<input type="file" accept=".pptx,application/vnd.openxmlformats-officedocument.presentationml.presentation" onChange={importPptx}/></label><button type="button" onClick={exportPresentation}>Export HTML</button><button type="button" onClick={startShow}><PlayIcon/> <span>From Current Slide</span></button><ReducedMotionNotice/></ToolGroup>}
       </div>
       <StatusMessage tone={proof.threeEditedSlides ? "success" : "neutral"}>{message}</StatusMessage>
       <div className="itv2-ppt-layout">
