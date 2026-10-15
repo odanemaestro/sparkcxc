@@ -31,7 +31,7 @@ const lessonTopic={
 const secondTopic={...lessonTopic,id:"next-lesson",title:"Another topic"};
 const structure={
  sections:[{id:"unit-1",title:"Unit 1",sortOrder:1,topics:[lessonTopic,secondTopic]}],
- topics:[lessonTopic,secondTopic],activities:[],sectionCount:1,topicCount:2
+ topics:[lessonTopic,secondTopic],activities:[],unassignedTopics:[],sectionCount:1,topicCount:2
 };
 const subject=id=>({
  id,name:"CSEC "+id,shortName:id,qualification:"CSEC",mark:"SS",
