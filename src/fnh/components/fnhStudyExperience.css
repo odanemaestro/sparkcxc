@@ -1,7 +1,7 @@
 /* FNH editorial study world: quiet surfaces, calm hierarchy, useful motion.
    Scoped to the draft Food, Nutrition and Health course only. Existing subject
    routes and other SPARK study pages keep their original presentation. */
-.spark-fnh-study{
+:is(.spark-fnh-study,.spark-editorial-study){
   --fnh-ui-bg:#f4f7f6;
   --fnh-ui-paper:#ffffff;
   --fnh-ui-paper-alt:#f5f8f7;
@@ -19,270 +19,270 @@
   -webkit-font-smoothing:antialiased;
   min-width:0;
 }
-.spark-fnh-study .spark-generic-study-shell{width:min(1320px,calc(100% - 48px));padding:34px 0 80px}
-.spark-fnh-study .spark-generic-study-hero{display:grid;grid-template-columns:60px minmax(0,1fr) auto;align-items:center;gap:20px;padding:12px 4px 29px;background:transparent;border:0;border-radius:0;box-shadow:none}
-.spark-fnh-study .spark-generic-study-mark{width:58px;height:58px;border-radius:16px;background:var(--fnh-ui-teal-soft);color:var(--fnh-ui-teal-ink);font-family:inherit;font-size:20px;font-weight:750;letter-spacing:-.025em}
-.spark-fnh-study .spark-generic-study-hero-copy .section-kicker{display:none}
-.spark-fnh-study .spark-generic-study-hero-copy h1{font-family:inherit;font-size:clamp(1.65rem,2.4vw,2.25rem);font-weight:750;line-height:1.16;letter-spacing:-.035em;color:var(--fnh-ui-ink);margin:0 0 8px;text-wrap:balance}
-.spark-fnh-study .spark-generic-study-hero-copy p{color:var(--fnh-ui-muted);font-size:.9375rem;line-height:1.65;max-width:67ch}
-.spark-fnh-study .spark-generic-study-hero-actions button{min-height:44px;border-radius:12px;background:var(--fnh-ui-paper);color:var(--fnh-ui-ink);border:1px solid var(--fnh-ui-line);padding:0 20px;font-weight:650;font-size:.875rem;transition:background .18s ease,border-color .18s ease}
-.spark-fnh-study .spark-generic-study-hero-actions button:hover{background:var(--fnh-ui-paper-alt);border-color:var(--fnh-ui-teal)}
-.spark-fnh-study .spark-generic-progress-card{grid-template-columns:auto minmax(100px,1fr) auto;gap:20px;padding:16px 22px;margin:0 0 28px;border:1px solid var(--fnh-ui-line);border-radius:15px;background:var(--fnh-ui-paper);box-shadow:none}
-.spark-fnh-study .spark-generic-progress-card>div:first-child{display:flex;align-items:baseline;gap:10px}
-.spark-fnh-study .spark-generic-progress-card strong{font-size:1.125rem;letter-spacing:-.02em;color:var(--fnh-ui-ink);font-weight:750;font-variant-numeric:tabular-nums}
-.spark-fnh-study .spark-generic-progress-card span{font-size:.775rem;line-height:1.35;color:var(--fnh-ui-muted);font-weight:550}
-.spark-fnh-study .spark-generic-progress-card>b{color:var(--fnh-ui-teal-ink);font-size:.875rem;font-weight:700;font-variant-numeric:tabular-nums}
-.spark-fnh-study .spark-generic-progress-track{height:6px;background:var(--fnh-ui-paper-alt);border:1px solid var(--fnh-ui-line);border-radius:999px}
-.spark-fnh-study .spark-generic-progress-track>span{height:100%;background:var(--fnh-ui-teal);border:0;border-radius:999px;transition:width .22s cubic-bezier(.2,.8,.2,1)}
-.spark-fnh-study .spark-generic-learning-layout{grid-template-columns:268px minmax(0,1fr);gap:22px;align-items:start;max-width:100%}
-.spark-fnh-study .spark-generic-outline{top:92px;max-height:calc(100dvh - 110px);padding:15px;background:var(--fnh-ui-paper-alt);border:1px solid var(--fnh-ui-line);border-radius:15px;box-shadow:none;scrollbar-width:thin;scrollbar-color:var(--fnh-ui-line) transparent}
-.spark-fnh-study .spark-generic-outline-head{padding:7px 8px 18px;border-bottom:1px solid var(--fnh-ui-line)}
-.spark-fnh-study .spark-generic-outline-heading-copy{display:flex;align-items:baseline;gap:8px}
-.spark-fnh-study .spark-generic-outline-heading-copy>span{font-size:.875rem;letter-spacing:-.01em;font-weight:740;color:var(--fnh-ui-ink)}
-.spark-fnh-study .spark-generic-outline-heading-copy strong{font-size:.75rem;font-weight:550;color:var(--fnh-ui-muted)}
-.spark-fnh-study .spark-generic-outline-section{padding:15px 0 5px}
-.spark-fnh-study .spark-generic-outline-section-title{min-height:40px;padding:6px 9px;cursor:pointer;text-align:left;border-radius:9px;transition:background .15s ease}
-.spark-fnh-study .spark-generic-outline-section-title:hover{background:var(--fnh-ui-paper)}
-.spark-fnh-study .spark-generic-outline-section-title>span:first-child{font-size:.78rem;line-height:1.45;letter-spacing:.002em;font-weight:730;color:var(--fnh-ui-ink)}
-.spark-fnh-study .spark-generic-outline-section-title small{font-size:.72rem;font-variant-numeric:tabular-nums;font-weight:650;color:var(--fnh-ui-muted)}
-.spark-fnh-study .spark-generic-outline-topics{gap:3px}
-.spark-fnh-study .spark-generic-outline-topics button{min-height:46px;padding:9px 11px;gap:10px;font-size:.775rem;line-height:1.45;font-weight:540;border-radius:10px;color:var(--fnh-ui-muted);transition:background .15s ease,color .15s ease}
-.spark-fnh-study .spark-generic-outline-topics button>span:last-child{min-width:0;overflow-wrap:anywhere}
-.spark-fnh-study .spark-generic-outline-topics button:hover:not(:disabled){background:var(--fnh-ui-paper);color:var(--fnh-ui-ink)}
-.spark-fnh-study .spark-generic-outline-topics button.active{background:var(--fnh-ui-teal-soft);border-color:transparent;color:var(--fnh-ui-teal-ink);font-weight:720}
-.spark-fnh-study .spark-generic-topic-state{width:20px;height:20px;flex-shrink:0;border-radius:7px;background:var(--fnh-ui-paper);color:var(--fnh-ui-muted);border:1px solid var(--fnh-ui-line)}
-.spark-fnh-study .spark-generic-topic-state svg{width:14px;height:14px}
-.spark-fnh-study .spark-generic-outline-topics button.active .spark-generic-topic-state{background:var(--fnh-ui-teal);border-color:var(--fnh-ui-teal);color:#fff}
-.spark-fnh-study .spark-generic-outline-topics button.complete:not(.active){color:var(--fnh-ui-teal-ink)}
-.spark-fnh-study .spark-generic-lesson{min-width:0;border:0;border-radius:18px;padding:0 clamp(22px,4.2vw,57px) 28px;background:var(--fnh-ui-paper);box-shadow:0 18px 45px rgba(23,58,54,.055)}
-.spark-fnh-study .spark-generic-lesson-head{align-items:flex-start;gap:20px;flex-wrap:wrap;padding:42px 0 28px;border-bottom:1px solid var(--fnh-ui-line)}
-.spark-fnh-study .spark-fnh-lesson-index{margin:0 0 9px;color:var(--fnh-ui-teal-ink);font-size:.78rem;line-height:1.35;font-weight:680;letter-spacing:.015em;font-variant-numeric:tabular-nums}
-.spark-fnh-study .spark-generic-lesson-head .section-kicker{display:block;margin:0 0 7px;font-size:.75rem;letter-spacing:0;text-transform:none;font-weight:600;color:var(--fnh-ui-muted)}
-.spark-fnh-study .spark-generic-lesson-head h2{font-family:inherit;font-size:clamp(1.625rem,2.25vw,2.125rem);font-weight:760;line-height:1.19;letter-spacing:-.035em;text-wrap:balance;max-width:23ch;color:var(--fnh-ui-ink);margin:0}
-.spark-fnh-study .spark-fnh-lesson-head-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-left:auto}
-.spark-fnh-study .spark-fnh-focus-button{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:10px 13px;border:1px solid var(--fnh-ui-line);border-radius:11px;background:var(--fnh-ui-paper);color:var(--fnh-ui-muted);font-size:.78rem;line-height:1.2;font-weight:650;cursor:pointer;transition:border-color .17s ease,background .17s ease,color .17s ease}
-.spark-fnh-study .spark-fnh-focus-button:hover,.spark-fnh-study .spark-fnh-focus-button[aria-pressed="true"]{border-color:var(--fnh-ui-teal);background:var(--fnh-ui-teal-soft);color:var(--fnh-ui-teal-ink)}
-.spark-fnh-study .spark-fnh-focus-button svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.spark-fnh-study .spark-generic-complete-chip{min-height:28px;background:var(--fnh-ui-teal-soft);color:var(--fnh-ui-teal-ink);text-transform:none;font-size:.78rem;letter-spacing:0;font-weight:680}
-.spark-fnh-study .spark-generic-lesson-body{padding-top:26px}
-.spark-fnh-study .spark-generic-lesson-intro{max-width:67ch!important;color:var(--fnh-ui-muted)!important;font-size:1rem!important;line-height:1.8!important;margin:0 0 28px}
-.spark-fnh-study .spark-generic-lesson-body>p,.spark-fnh-study .spark-generic-lesson-body p,.spark-fnh-study .spark-generic-lesson-body li{color:var(--fnh-ui-ink);font-size:1rem;line-height:1.75}
-.spark-fnh-study .spark-generic-lesson-body p{max-width:70ch;overflow-wrap:break-word}
-.spark-fnh-study .spark-generic-lesson-body li{max-width:70ch;padding-left:3px}
-.spark-fnh-study .spark-fnh-reading-nav{display:flex;align-items:center;gap:15px;flex-wrap:wrap;background:var(--fnh-ui-paper-alt);padding:12px 15px;border-radius:12px;margin:0 0 30px}
-.spark-fnh-study .spark-fnh-reading-nav-label{font-size:.78rem;color:var(--fnh-ui-muted);font-weight:680;white-space:nowrap}
-.spark-fnh-study .spark-fnh-reading-nav-links{display:flex;gap:5px;flex-wrap:wrap;align-items:center;min-width:0}
-.spark-fnh-study .spark-fnh-reading-nav-links button{display:inline-flex;align-items:center;gap:5px;border:0;border-radius:9px;background:transparent;color:var(--fnh-ui-ink);padding:10px 12px;min-height:44px;font-family:inherit;font-size:.82rem;font-weight:690;cursor:pointer;transition:background .15s ease,color .15s ease}
-.spark-fnh-study .spark-fnh-reading-nav-links button svg{width:16px;height:16px;flex:none;fill:none;stroke:var(--fnh-ui-teal);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.spark-fnh-study .spark-fnh-reading-nav-links button:hover{background:var(--fnh-ui-paper);color:var(--fnh-ui-teal-ink)}
-.spark-fnh-study .spark-generic-objectives{margin:0 0 17px!important;padding:0!important;border:0!important;border-radius:0;background:none!important;box-shadow:none!important}
-.spark-fnh-study .spark-generic-objectives>strong{display:block;margin:0 0 15px;color:var(--fnh-ui-ink);font-size:1.125rem;font-weight:740;letter-spacing:-.016em;text-transform:none}
-.spark-fnh-study .spark-generic-objectives ul{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 14px;margin:0;padding:0}
-.spark-fnh-study .spark-generic-objectives li{position:relative;max-width:none;font-size:.89rem;line-height:1.58;padding:13px 14px 13px 35px;border-radius:11px;background:var(--fnh-ui-paper-alt);color:var(--fnh-ui-ink)}
-.spark-fnh-study .spark-generic-objectives li::before{content:"";position:absolute;left:16px;top:23px;width:7px;height:7px;border-radius:50%;background:var(--fnh-ui-teal)}
-.spark-fnh-study .spark-fnh-syllabus-details{margin:0 0 36px;border:1px solid var(--fnh-ui-line);border-radius:11px;overflow:clip}
-.spark-fnh-study .spark-fnh-syllabus-details summary{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:15px 17px;list-style:none;cursor:pointer;color:var(--fnh-ui-ink);min-height:58px;background:var(--fnh-ui-paper)}
-.spark-fnh-study .spark-fnh-syllabus-details summary::-webkit-details-marker{display:none}
-.spark-fnh-study .spark-fnh-syllabus-details summary>span{display:grid;gap:4px;min-width:0}
-.spark-fnh-study .spark-fnh-syllabus-details summary strong{font-size:.875rem;font-weight:700}
-.spark-fnh-study .spark-fnh-syllabus-details summary small{font-size:.75rem;color:var(--fnh-ui-muted)}
-.spark-fnh-study .spark-fnh-syllabus-details summary svg{width:18px;height:18px;flex:none;fill:none;stroke:var(--fnh-ui-teal);stroke-width:2;transition:transform .18s ease}
-.spark-fnh-study .spark-fnh-syllabus-details[open] summary svg{transform:rotate(180deg)}
-.spark-fnh-study .spark-fnh-syllabus-details[open] summary{border-bottom:1px solid var(--fnh-ui-line)}
-.spark-fnh-study .spark-fnh-syllabus-details .spark-generic-objective-guide{border:0;background:var(--fnh-ui-paper-alt);margin:0;border-radius:0;padding:24px 18px;box-shadow:none}
-.spark-fnh-study .spark-generic-objective-guide-head>span{display:none}
-.spark-fnh-study .spark-generic-objective-guide-head h3{color:var(--fnh-ui-ink);font-size:1.125rem;font-weight:740}
-.spark-fnh-study .spark-generic-objective-guide-head p{font-size:.875rem;line-height:1.6;color:var(--fnh-ui-muted);margin:7px 0 18px}
-.spark-fnh-study .spark-generic-objective-guide-list{gap:0;border-top:1px solid var(--fnh-ui-line)}
-.spark-fnh-study .spark-generic-objective-guide-item{border:0;border-bottom:1px solid var(--fnh-ui-line);border-radius:0;padding:15px 0;background:transparent}
-.spark-fnh-study .spark-generic-objective-guide-item>div{gap:10px;align-items:baseline}
-.spark-fnh-study .spark-generic-objective-guide-item strong{color:var(--fnh-ui-teal-ink);font-size:.78rem}
-.spark-fnh-study .spark-generic-objective-guide-item span{color:var(--fnh-ui-ink);font-size:.9rem;font-weight:700;line-height:1.55}
-.spark-fnh-study .spark-generic-objective-guide-item p{font-size:.875rem;line-height:1.7;color:var(--fnh-ui-muted);padding-left:43px;margin:5px 0 0}
-.spark-fnh-study .spark-generic-lesson-section{margin:0;padding:27px 0 30px;border-bottom:1px solid var(--fnh-ui-line);scroll-margin-top:84px}
-.spark-fnh-study .spark-generic-lesson-section:first-of-type{padding-top:8px}
-.spark-fnh-study .spark-generic-lesson-section:last-of-type{border-bottom:0}
-.spark-fnh-study .spark-generic-lesson-section h3{font-size:1.17rem;line-height:1.4;letter-spacing:-.022em;font-weight:750;color:var(--fnh-ui-ink);max-width:63ch;margin:0 0 15px}
-.spark-fnh-study .spark-generic-lesson-section p{margin:0 0 14px;color:var(--fnh-ui-muted);font-size:.98rem;line-height:1.85}
-.spark-fnh-study .spark-generic-lesson-section p:last-of-type{margin-bottom:0}
-.spark-fnh-study .spark-generic-lesson-section ul{margin:17px 0 0;padding-left:20px}
-.spark-fnh-study .spark-generic-lesson-section li{color:var(--fnh-ui-ink);padding:3px 0 3px 5px}
-.spark-fnh-study .spark-generic-lesson-section li::marker{color:var(--fnh-ui-teal)}
-.spark-fnh-study .spark-fnh-interactive-model{scroll-margin-top:84px;margin:35px 0}
-.spark-fnh-study .spark-generic-key-points{border:0!important;border-radius:13px;background:var(--fnh-ui-paper-alt)!important;box-shadow:none!important;margin:30px 0;padding:22px!important}
-.spark-fnh-study .spark-generic-key-points>strong{display:block;margin-bottom:10px;text-transform:none;color:var(--fnh-ui-ink);font-size:1rem;font-weight:750}
-.spark-fnh-study .spark-generic-key-points ul{margin:0;padding-left:20px}
-.spark-fnh-study .spark-generic-key-points li{font-size:.9rem;line-height:1.75;color:var(--fnh-ui-muted)}
-.spark-fnh-study .spark-generic-worked-example{margin:35px 0;background:var(--fnh-ui-highlight)!important;border:0!important;border-radius:14px;box-shadow:none!important;padding:24px!important}
-.spark-fnh-study .spark-generic-worked-example>span{font-size:.88rem;text-transform:none;letter-spacing:0;font-weight:750;color:var(--fnh-ui-teal-ink)}
-.spark-fnh-study .spark-generic-worked-example h3{font-size:1.075rem;font-weight:750;color:var(--fnh-ui-ink);margin:10px 0}
-.spark-fnh-study .spark-generic-worked-example p,.spark-fnh-study .spark-generic-worked-example li{color:var(--fnh-ui-ink);font-size:.94rem;line-height:1.78}
-.spark-fnh-study .spark-generic-example-answer{border-radius:9px;background:rgba(255,255,255,.65);padding:14px;font-size:.91rem;line-height:1.65;color:var(--fnh-ui-ink);font-weight:650}
-.spark-fnh-study .spark-generic-lesson-summary{scroll-margin-top:84px;margin:40px 0 10px;padding:25px 0 0;border-top:1px solid var(--fnh-ui-line)}
-.spark-fnh-study .spark-generic-lesson-summary h3{font-size:1.125rem;font-weight:740;color:var(--fnh-ui-ink)}
-.spark-fnh-study .spark-generic-lesson-summary p{color:var(--fnh-ui-muted);font-size:.94rem;line-height:1.75}
-.spark-fnh-study .spark-generic-lesson-footer{margin-top:33px;padding:24px 0 0;gap:12px;border-top:1px solid var(--fnh-ui-line)}
-.spark-fnh-study .spark-generic-lesson-footer button{border-radius:11px;min-height:46px;font-size:.8125rem;font-weight:700;padding:10px 16px;transition:background .17s ease,opacity .17s ease}
-.spark-fnh-study .spark-generic-lesson-nav-previous:not(:disabled){background:var(--fnh-ui-paper-alt)!important;color:var(--fnh-ui-ink)!important;border:1px solid var(--fnh-ui-line)!important}
-.spark-fnh-study .spark-generic-lesson-nav-next:not(:disabled),.spark-fnh-study .spark-generic-complete-action:not(.completed):not(:disabled){background:var(--fnh-ui-teal)!important;color:#fff!important;border:1px solid var(--fnh-ui-teal)!important}
-.spark-fnh-study .spark-generic-lesson-nav-next:not(:disabled):hover,.spark-fnh-study .spark-generic-complete-action:not(:disabled):hover{filter:brightness(.92)}
-.spark-fnh-study .spark-generic-lesson-footer button:disabled,.spark-fnh-study .spark-generic-lesson-footer button.completed{opacity:1;background:var(--fnh-ui-paper-alt)!important;border:1px solid var(--fnh-ui-line)!important;color:var(--fnh-ui-muted)!important}
-.spark-fnh-study.spark-fnh-focus-reading .spark-generic-learning-layout{grid-template-columns:minmax(0,880px);justify-content:center}
-.spark-fnh-study.spark-fnh-focus-reading .spark-generic-outline{display:none}
-.spark-fnh-study.spark-fnh-focus-reading .spark-generic-lesson{width:100%}
-.spark-fnh-study button:focus-visible,.spark-fnh-study summary:focus-visible,.spark-fnh-study a:focus-visible{outline:3px solid var(--fnh-ui-focus);outline-offset:3px}
-.spark-fnh-study ::selection{background:#c2ede0;color:#173630}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-study-shell{width:min(1320px,calc(100% - 48px));padding:34px 0 80px}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-study-hero{display:grid;grid-template-columns:60px minmax(0,1fr) auto;align-items:center;gap:20px;padding:12px 4px 29px;background:transparent;border:0;border-radius:0;box-shadow:none}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-study-mark{width:58px;height:58px;border-radius:16px;background:var(--fnh-ui-teal-soft);color:var(--fnh-ui-teal-ink);font-family:inherit;font-size:20px;font-weight:750;letter-spacing:-.025em}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-study-hero-copy .section-kicker{display:none}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-study-hero-copy h1{font-family:inherit;font-size:clamp(1.65rem,2.4vw,2.25rem);font-weight:750;line-height:1.16;letter-spacing:-.035em;color:var(--fnh-ui-ink);margin:0 0 8px;text-wrap:balance}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-study-hero-copy p{color:var(--fnh-ui-muted);font-size:.9375rem;line-height:1.65;max-width:67ch}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-study-hero-actions button{min-height:44px;border-radius:12px;background:var(--fnh-ui-paper);color:var(--fnh-ui-ink);border:1px solid var(--fnh-ui-line);padding:0 20px;font-weight:650;font-size:.875rem;transition:background .18s ease,border-color .18s ease}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-study-hero-actions button:hover{background:var(--fnh-ui-paper-alt);border-color:var(--fnh-ui-teal)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-progress-card{grid-template-columns:auto minmax(100px,1fr) auto;gap:20px;padding:16px 22px;margin:0 0 28px;border:1px solid var(--fnh-ui-line);border-radius:15px;background:var(--fnh-ui-paper);box-shadow:none}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-progress-card>div:first-child{display:flex;align-items:baseline;gap:10px}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-progress-card strong{font-size:1.125rem;letter-spacing:-.02em;color:var(--fnh-ui-ink);font-weight:750;font-variant-numeric:tabular-nums}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-progress-card span{font-size:.775rem;line-height:1.35;color:var(--fnh-ui-muted);font-weight:550}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-progress-card>b{color:var(--fnh-ui-teal-ink);font-size:.875rem;font-weight:700;font-variant-numeric:tabular-nums}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-progress-track{height:6px;background:var(--fnh-ui-paper-alt);border:1px solid var(--fnh-ui-line);border-radius:999px}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-progress-track>span{height:100%;background:var(--fnh-ui-teal);border:0;border-radius:999px;transition:width .22s cubic-bezier(.2,.8,.2,1)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-learning-layout{grid-template-columns:268px minmax(0,1fr);gap:22px;align-items:start;max-width:100%}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-outline{top:92px;max-height:calc(100dvh - 110px);padding:15px;background:var(--fnh-ui-paper-alt);border:1px solid var(--fnh-ui-line);border-radius:15px;box-shadow:none;scrollbar-width:thin;scrollbar-color:var(--fnh-ui-line) transparent}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-outline-head{padding:7px 8px 18px;border-bottom:1px solid var(--fnh-ui-line)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-outline-heading-copy{display:flex;align-items:baseline;gap:8px}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-outline-heading-copy>span{font-size:.875rem;letter-spacing:-.01em;font-weight:740;color:var(--fnh-ui-ink)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-outline-heading-copy strong{font-size:.75rem;font-weight:550;color:var(--fnh-ui-muted)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-outline-section{padding:15px 0 5px}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-outline-section-title{min-height:40px;padding:6px 9px;cursor:pointer;text-align:left;border-radius:9px;transition:background .15s ease}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-outline-section-title:hover{background:var(--fnh-ui-paper)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-outline-section-title>span:first-child{font-size:.78rem;line-height:1.45;letter-spacing:.002em;font-weight:730;color:var(--fnh-ui-ink)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-outline-section-title small{font-size:.72rem;font-variant-numeric:tabular-nums;font-weight:650;color:var(--fnh-ui-muted)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-outline-topics{gap:3px}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-outline-topics button{min-height:46px;padding:9px 11px;gap:10px;font-size:.775rem;line-height:1.45;font-weight:540;border-radius:10px;color:var(--fnh-ui-muted);transition:background .15s ease,color .15s ease}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-outline-topics button>span:last-child{min-width:0;overflow-wrap:anywhere}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-outline-topics button:hover:not(:disabled){background:var(--fnh-ui-paper);color:var(--fnh-ui-ink)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-outline-topics button.active{background:var(--fnh-ui-teal-soft);border-color:transparent;color:var(--fnh-ui-teal-ink);font-weight:720}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-topic-state{width:20px;height:20px;flex-shrink:0;border-radius:7px;background:var(--fnh-ui-paper);color:var(--fnh-ui-muted);border:1px solid var(--fnh-ui-line)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-topic-state svg{width:14px;height:14px}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-outline-topics button.active .spark-generic-topic-state{background:var(--fnh-ui-teal);border-color:var(--fnh-ui-teal);color:#fff}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-outline-topics button.complete:not(.active){color:var(--fnh-ui-teal-ink)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson{min-width:0;border:0;border-radius:18px;padding:0 clamp(22px,4.2vw,57px) 28px;background:var(--fnh-ui-paper);box-shadow:0 18px 45px rgba(23,58,54,.055)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-head{align-items:flex-start;gap:20px;flex-wrap:wrap;padding:42px 0 28px;border-bottom:1px solid var(--fnh-ui-line)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-lesson-index{margin:0 0 9px;color:var(--fnh-ui-teal-ink);font-size:.78rem;line-height:1.35;font-weight:680;letter-spacing:.015em;font-variant-numeric:tabular-nums}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-head .section-kicker{display:block;margin:0 0 7px;font-size:.75rem;letter-spacing:0;text-transform:none;font-weight:600;color:var(--fnh-ui-muted)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-head h2{font-family:inherit;font-size:clamp(1.625rem,2.25vw,2.125rem);font-weight:760;line-height:1.19;letter-spacing:-.035em;text-wrap:balance;max-width:23ch;color:var(--fnh-ui-ink);margin:0}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-lesson-head-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-left:auto}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-focus-button{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:10px 13px;border:1px solid var(--fnh-ui-line);border-radius:11px;background:var(--fnh-ui-paper);color:var(--fnh-ui-muted);font-size:.78rem;line-height:1.2;font-weight:650;cursor:pointer;transition:border-color .17s ease,background .17s ease,color .17s ease}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-focus-button:hover,:is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-focus-button[aria-pressed="true"]{border-color:var(--fnh-ui-teal);background:var(--fnh-ui-teal-soft);color:var(--fnh-ui-teal-ink)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-focus-button svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-complete-chip{min-height:28px;background:var(--fnh-ui-teal-soft);color:var(--fnh-ui-teal-ink);text-transform:none;font-size:.78rem;letter-spacing:0;font-weight:680}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-body{padding-top:26px}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-intro{max-width:67ch!important;color:var(--fnh-ui-muted)!important;font-size:1rem!important;line-height:1.8!important;margin:0 0 28px}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-body>p,:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-body p,:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-body li{color:var(--fnh-ui-ink);font-size:1rem;line-height:1.75}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-body p{max-width:70ch;overflow-wrap:break-word}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-body li{max-width:70ch;padding-left:3px}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-reading-nav{display:flex;align-items:center;gap:15px;flex-wrap:wrap;background:var(--fnh-ui-paper-alt);padding:12px 15px;border-radius:12px;margin:0 0 30px}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-reading-nav-label{font-size:.78rem;color:var(--fnh-ui-muted);font-weight:680;white-space:nowrap}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-reading-nav-links{display:flex;gap:5px;flex-wrap:wrap;align-items:center;min-width:0}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-reading-nav-links button{display:inline-flex;align-items:center;gap:5px;border:0;border-radius:9px;background:transparent;color:var(--fnh-ui-ink);padding:10px 12px;min-height:44px;font-family:inherit;font-size:.82rem;font-weight:690;cursor:pointer;transition:background .15s ease,color .15s ease}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-reading-nav-links button svg{width:16px;height:16px;flex:none;fill:none;stroke:var(--fnh-ui-teal);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-reading-nav-links button:hover{background:var(--fnh-ui-paper);color:var(--fnh-ui-teal-ink)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-objectives{margin:0 0 17px!important;padding:0!important;border:0!important;border-radius:0;background:none!important;box-shadow:none!important}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-objectives>strong{display:block;margin:0 0 15px;color:var(--fnh-ui-ink);font-size:1.125rem;font-weight:740;letter-spacing:-.016em;text-transform:none}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-objectives ul{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 14px;margin:0;padding:0}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-objectives li{position:relative;max-width:none;font-size:.89rem;line-height:1.58;padding:13px 14px 13px 35px;border-radius:11px;background:var(--fnh-ui-paper-alt);color:var(--fnh-ui-ink)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-objectives li::before{content:"";position:absolute;left:16px;top:23px;width:7px;height:7px;border-radius:50%;background:var(--fnh-ui-teal)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-syllabus-details{margin:0 0 36px;border:1px solid var(--fnh-ui-line);border-radius:11px;overflow:clip}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-syllabus-details summary{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:15px 17px;list-style:none;cursor:pointer;color:var(--fnh-ui-ink);min-height:58px;background:var(--fnh-ui-paper)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-syllabus-details summary::-webkit-details-marker{display:none}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-syllabus-details summary>span{display:grid;gap:4px;min-width:0}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-syllabus-details summary strong{font-size:.875rem;font-weight:700}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-syllabus-details summary small{font-size:.75rem;color:var(--fnh-ui-muted)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-syllabus-details summary svg{width:18px;height:18px;flex:none;fill:none;stroke:var(--fnh-ui-teal);stroke-width:2;transition:transform .18s ease}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-syllabus-details[open] summary svg{transform:rotate(180deg)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-syllabus-details[open] summary{border-bottom:1px solid var(--fnh-ui-line)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-syllabus-details .spark-generic-objective-guide{border:0;background:var(--fnh-ui-paper-alt);margin:0;border-radius:0;padding:24px 18px;box-shadow:none}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-objective-guide-head>span{display:none}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-objective-guide-head h3{color:var(--fnh-ui-ink);font-size:1.125rem;font-weight:740}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-objective-guide-head p{font-size:.875rem;line-height:1.6;color:var(--fnh-ui-muted);margin:7px 0 18px}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-objective-guide-list{gap:0;border-top:1px solid var(--fnh-ui-line)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-objective-guide-item{border:0;border-bottom:1px solid var(--fnh-ui-line);border-radius:0;padding:15px 0;background:transparent}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-objective-guide-item>div{gap:10px;align-items:baseline}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-objective-guide-item strong{color:var(--fnh-ui-teal-ink);font-size:.78rem}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-objective-guide-item span{color:var(--fnh-ui-ink);font-size:.9rem;font-weight:700;line-height:1.55}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-objective-guide-item p{font-size:.875rem;line-height:1.7;color:var(--fnh-ui-muted);padding-left:43px;margin:5px 0 0}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-section{margin:0;padding:27px 0 30px;border-bottom:1px solid var(--fnh-ui-line);scroll-margin-top:84px}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-section:first-of-type{padding-top:8px}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-section:last-of-type{border-bottom:0}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-section h3{font-size:1.17rem;line-height:1.4;letter-spacing:-.022em;font-weight:750;color:var(--fnh-ui-ink);max-width:63ch;margin:0 0 15px}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-section p{margin:0 0 14px;color:var(--fnh-ui-muted);font-size:.98rem;line-height:1.85}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-section p:last-of-type{margin-bottom:0}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-section ul{margin:17px 0 0;padding-left:20px}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-section li{color:var(--fnh-ui-ink);padding:3px 0 3px 5px}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-section li::marker{color:var(--fnh-ui-teal)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-interactive-model{scroll-margin-top:84px;margin:35px 0}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-key-points{border:0!important;border-radius:13px;background:var(--fnh-ui-paper-alt)!important;box-shadow:none!important;margin:30px 0;padding:22px!important}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-key-points>strong{display:block;margin-bottom:10px;text-transform:none;color:var(--fnh-ui-ink);font-size:1rem;font-weight:750}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-key-points ul{margin:0;padding-left:20px}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-key-points li{font-size:.9rem;line-height:1.75;color:var(--fnh-ui-muted)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-worked-example{margin:35px 0;background:var(--fnh-ui-highlight)!important;border:0!important;border-radius:14px;box-shadow:none!important;padding:24px!important}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-worked-example>span{font-size:.88rem;text-transform:none;letter-spacing:0;font-weight:750;color:var(--fnh-ui-teal-ink)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-worked-example h3{font-size:1.075rem;font-weight:750;color:var(--fnh-ui-ink);margin:10px 0}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-worked-example p,:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-worked-example li{color:var(--fnh-ui-ink);font-size:.94rem;line-height:1.78}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-example-answer{border-radius:9px;background:rgba(255,255,255,.65);padding:14px;font-size:.91rem;line-height:1.65;color:var(--fnh-ui-ink);font-weight:650}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-summary{scroll-margin-top:84px;margin:40px 0 10px;padding:25px 0 0;border-top:1px solid var(--fnh-ui-line)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-summary h3{font-size:1.125rem;font-weight:740;color:var(--fnh-ui-ink)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-summary p{color:var(--fnh-ui-muted);font-size:.94rem;line-height:1.75}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-footer{margin-top:33px;padding:24px 0 0;gap:12px;border-top:1px solid var(--fnh-ui-line)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-footer button{border-radius:11px;min-height:46px;font-size:.8125rem;font-weight:700;padding:10px 16px;transition:background .17s ease,opacity .17s ease}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-nav-previous:not(:disabled){background:var(--fnh-ui-paper-alt)!important;color:var(--fnh-ui-ink)!important;border:1px solid var(--fnh-ui-line)!important}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-nav-next:not(:disabled),:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-complete-action:not(.completed):not(:disabled){background:var(--fnh-ui-teal)!important;color:#fff!important;border:1px solid var(--fnh-ui-teal)!important}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-nav-next:not(:disabled):hover,:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-complete-action:not(:disabled):hover{filter:brightness(.92)}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-footer button:disabled,:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-footer button.completed{opacity:1;background:var(--fnh-ui-paper-alt)!important;border:1px solid var(--fnh-ui-line)!important;color:var(--fnh-ui-muted)!important}
+:is(.spark-fnh-study,.spark-editorial-study).spark-fnh-focus-reading .spark-generic-learning-layout{grid-template-columns:minmax(0,880px);justify-content:center}
+:is(.spark-fnh-study,.spark-editorial-study).spark-fnh-focus-reading .spark-generic-outline{display:none}
+:is(.spark-fnh-study,.spark-editorial-study).spark-fnh-focus-reading .spark-generic-lesson{width:100%}
+:is(.spark-fnh-study,.spark-editorial-study) button:focus-visible,:is(.spark-fnh-study,.spark-editorial-study) summary:focus-visible,:is(.spark-fnh-study,.spark-editorial-study) a:focus-visible{outline:3px solid var(--fnh-ui-focus);outline-offset:3px}
+:is(.spark-fnh-study,.spark-editorial-study) ::selection{background:#c2ede0;color:#173630}
 
 /* Unified interaction language: practice, open response and exploratory labs */
-.spark-fnh-study .fnh-study-practice,.spark-fnh-study .fnh-objective-practice,.spark-fnh-study .fnh-decision-lab{--fnh-quiz-ink:var(--fnh-ui-ink);--fnh-quiz-muted:var(--fnh-ui-muted);--fnh-quiz-bg:var(--fnh-ui-paper);--fnh-quiz-border:var(--fnh-ui-line);--fnh-quiz-soft:var(--fnh-ui-paper-alt);--fnh-quiz-accent:var(--fnh-ui-teal);--fnh-lesson-ink:var(--fnh-ui-ink);--fnh-lesson-muted:var(--fnh-ui-muted);--fnh-lesson-bg:var(--fnh-ui-paper);--fnh-lesson-outline:var(--fnh-ui-line);--fnh-ink:var(--fnh-ui-ink);--fnh-muted:var(--fnh-ui-muted);--fnh-card:var(--fnh-ui-paper);--fnh-line:var(--fnh-ui-line);--fnh-accent:var(--fnh-ui-teal)}
-.spark-fnh-study .fnh-study-practice,.spark-fnh-study .fnh-objective-practice{scroll-margin-top:84px;padding:26px 0;margin:42px 0 0;background:transparent;border:0;border-top:1px solid var(--fnh-ui-line);border-radius:0;color:var(--fnh-ui-ink)}
-.spark-fnh-study .fnh-study-practice-heading{align-items:center;gap:15px}
-.spark-fnh-study .fnh-study-practice-heading small,.spark-fnh-study .fnh-objective-practice-head small{display:none}
-.spark-fnh-study .fnh-study-practice-heading h3,.spark-fnh-study .fnh-objective-practice-head h3{font-size:1.25rem;font-weight:760;letter-spacing:-.025em;line-height:1.35;color:var(--fnh-ui-ink);margin:0 0 8px}
-.spark-fnh-study .fnh-study-practice-heading p{font-size:.88rem;line-height:1.65;color:var(--fnh-ui-muted)}
-.spark-fnh-study .fnh-study-practice-position{background:var(--fnh-ui-paper-alt);font-size:.75rem;border:0;font-variant-numeric:tabular-nums;color:var(--fnh-ui-muted)}
-.spark-fnh-study .fnh-study-practice-progress{border-bottom:0;padding:0;margin:19px 0 25px;gap:7px}
-.spark-fnh-study .fnh-study-practice-progress button{width:39px;height:39px;border-radius:10px;font-variant-numeric:tabular-nums}
-.spark-fnh-study .fnh-study-practice-progress button.current{background:var(--fnh-ui-teal);border-color:var(--fnh-ui-teal);color:#fff}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice,:is(.spark-fnh-study,.spark-editorial-study) .fnh-objective-practice,:is(.spark-fnh-study,.spark-editorial-study) .fnh-decision-lab{--fnh-quiz-ink:var(--fnh-ui-ink);--fnh-quiz-muted:var(--fnh-ui-muted);--fnh-quiz-bg:var(--fnh-ui-paper);--fnh-quiz-border:var(--fnh-ui-line);--fnh-quiz-soft:var(--fnh-ui-paper-alt);--fnh-quiz-accent:var(--fnh-ui-teal);--fnh-lesson-ink:var(--fnh-ui-ink);--fnh-lesson-muted:var(--fnh-ui-muted);--fnh-lesson-bg:var(--fnh-ui-paper);--fnh-lesson-outline:var(--fnh-ui-line);--fnh-ink:var(--fnh-ui-ink);--fnh-muted:var(--fnh-ui-muted);--fnh-card:var(--fnh-ui-paper);--fnh-line:var(--fnh-ui-line);--fnh-accent:var(--fnh-ui-teal)}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice,:is(.spark-fnh-study,.spark-editorial-study) .fnh-objective-practice{scroll-margin-top:84px;padding:26px 0;margin:42px 0 0;background:transparent;border:0;border-top:1px solid var(--fnh-ui-line);border-radius:0;color:var(--fnh-ui-ink)}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-heading{align-items:center;gap:15px}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-heading small,:is(.spark-fnh-study,.spark-editorial-study) .fnh-objective-practice-head small{display:none}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-heading h3,:is(.spark-fnh-study,.spark-editorial-study) .fnh-objective-practice-head h3{font-size:1.25rem;font-weight:760;letter-spacing:-.025em;line-height:1.35;color:var(--fnh-ui-ink);margin:0 0 8px}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-heading p{font-size:.88rem;line-height:1.65;color:var(--fnh-ui-muted)}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-position{background:var(--fnh-ui-paper-alt);font-size:.75rem;border:0;font-variant-numeric:tabular-nums;color:var(--fnh-ui-muted)}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-progress{border-bottom:0;padding:0;margin:19px 0 25px;gap:7px}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-progress button{width:39px;height:39px;border-radius:10px;font-variant-numeric:tabular-nums}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-progress button.current{background:var(--fnh-ui-teal);border-color:var(--fnh-ui-teal);color:#fff}
 
-.spark-fnh-study .fnh-study-practice-progress>span{font-size:.8rem}
-.spark-fnh-study .fnh-study-practice-meta{letter-spacing:0;font-weight:650;color:var(--fnh-ui-muted);font-size:.75rem}
-.spark-fnh-study .fnh-study-practice-meta span:first-child{color:var(--fnh-ui-teal-ink)}
-.spark-fnh-study .fnh-study-practice-question h4{font-size:1.065rem;font-weight:730;line-height:1.58;max-width:65ch;letter-spacing:-.008em;margin:14px 0 20px}
-.spark-fnh-study .fnh-study-practice-options{gap:9px}
-.spark-fnh-study .fnh-study-practice-options label{min-height:56px;border-radius:11px;padding:14px 15px;background:var(--fnh-ui-paper);color:var(--fnh-ui-ink);font-size:.9rem;line-height:1.5;border:1px solid var(--fnh-ui-line)}
-.spark-fnh-study .fnh-study-practice-options label:hover{border-color:var(--fnh-ui-teal)}
-.spark-fnh-study .fnh-study-practice-options label.selected{background:var(--fnh-ui-teal-soft);border-color:var(--fnh-ui-teal)}
-.spark-fnh-study .fnh-study-practice-options b{font-size:.85rem;color:var(--fnh-ui-muted);min-width:22px}
-.spark-fnh-study .fnh-study-practice-order li{min-height:56px;border-radius:11px;border:1px solid var(--fnh-ui-line);background:var(--fnh-ui-paper)}
-.spark-fnh-study .fnh-study-practice-order li button{min-width:44px;height:44px;color:var(--fnh-ui-teal-ink);border-radius:9px}
-.spark-fnh-study .fnh-study-practice-check,.spark-fnh-study .fnh-objective-practice-primary{background:var(--fnh-ui-teal);border:1px solid var(--fnh-ui-teal);color:#fff;border-radius:11px}
-.spark-fnh-study .fnh-study-practice-hint,.spark-fnh-study .fnh-study-practice-secondary,.spark-fnh-study .fnh-objective-practice-secondary{background:var(--fnh-ui-paper);border:1px solid var(--fnh-ui-line);border-radius:11px;color:var(--fnh-ui-ink)}
-.spark-fnh-study .fnh-study-practice-feedback{background:var(--fnh-ui-teal-soft);border:0;border-radius:12px;padding:18px}
-.spark-fnh-study .fnh-study-practice-feedback.needs-review{background:var(--fnh-ui-highlight);border:0}
-.spark-fnh-study .fnh-study-practice-feedback strong{font-size:.95rem;color:var(--fnh-ui-ink)}
-.spark-fnh-study .fnh-study-practice-feedback p,.spark-fnh-study .fnh-study-practice-feedback small{font-size:.88rem;color:var(--fnh-ui-ink);line-height:1.65}
-.spark-fnh-study .fnh-study-practice-footer{margin-top:25px;border-color:var(--fnh-ui-line);padding-top:21px}
-.spark-fnh-study .fnh-objective-practice-head>span{background:var(--fnh-ui-paper-alt);border-radius:9px;padding:8px 12px;color:var(--fnh-ui-muted);font-variant-numeric:tabular-nums}
-.spark-fnh-study .fnh-objective-practice-question{font-size:1.05rem;line-height:1.65;color:var(--fnh-ui-ink)}
-.spark-fnh-study .fnh-objective-practice-code{font-size:.775rem;line-height:1.6;color:var(--fnh-ui-muted)}
-.spark-fnh-study .fnh-objective-practice textarea{min-height:140px;border-radius:12px;background:var(--fnh-ui-paper-alt);padding:16px;font-size:1rem;line-height:1.65;resize:vertical}
-.spark-fnh-study .fnh-objective-practice-answer{border:0;border-radius:12px;padding:22px;background:var(--fnh-ui-teal-soft)}
-.spark-fnh-study .fnh-objective-practice-answer h4{font-size:1rem;color:var(--fnh-ui-ink)}
-.spark-fnh-study .fnh-objective-practice-answer p{font-size:.925rem;color:var(--fnh-ui-ink)}
-.spark-fnh-study .fnh-decision-lab{border:0;border-radius:14px;padding:23px;background:var(--fnh-ui-paper-alt);box-shadow:none}
-.spark-fnh-study .fnh-decision-head span{display:none}
-.spark-fnh-study .fnh-decision-head h3{font-size:1.18rem;font-weight:750;letter-spacing:-.019em;line-height:1.4;color:var(--fnh-ui-ink)}
-.spark-fnh-study .fnh-decision-head p{font-size:.9rem;line-height:1.7;color:var(--fnh-ui-muted)}
-.spark-fnh-study .fnh-decision-food-grid button{border-radius:11px;background:var(--fnh-ui-paper);border-color:var(--fnh-ui-line);min-height:110px;text-align:left}
-.spark-fnh-study .fnh-decision-food-grid button.selected{background:var(--fnh-ui-teal-soft);border-color:var(--fnh-ui-teal)}
-.spark-fnh-study .fnh-decision-food-grid button strong{font-size:.93rem;line-height:1.45;color:var(--fnh-ui-ink)}
-.spark-fnh-study .fnh-decision-food-grid button small{font-size:.78rem;line-height:1.4;color:var(--fnh-ui-muted)}
-.spark-fnh-study .fnh-decision-food-grid button span{color:var(--fnh-ui-teal-ink)}
-.spark-fnh-study .fnh-decision-feedback{border:0!important;border-radius:12px;background:var(--fnh-ui-paper);padding:19px}
-.spark-fnh-study .fnh-decision-feedback strong{color:var(--fnh-ui-ink);font-size:1.025rem;font-weight:750}
-.spark-fnh-study .fnh-decision-feedback p{font-size:.88rem;line-height:1.7;color:var(--fnh-ui-muted)}
-.spark-fnh-study .fnh-decision-lab input,.spark-fnh-study .fnh-decision-lab select{min-height:44px;border-radius:10px;border:1px solid var(--fnh-ui-line);background:var(--fnh-ui-paper);color:var(--fnh-ui-ink);font-size:1rem}
-.spark-fnh-study .fnh-decision-reset{min-height:44px;border-radius:10px;background:var(--fnh-ui-paper);border-color:var(--fnh-ui-line);color:var(--fnh-ui-ink)}
-.spark-fnh-study :is(.fnh-study-practice,.fnh-objective-practice,.fnh-decision-lab) :is(button,input,textarea,select):focus-visible{outline:3px solid var(--fnh-ui-focus);outline-offset:3px}
-.spark-fnh-study :is(.fnh-study-practice,.fnh-objective-practice,.fnh-decision-lab) button{transition:background .17s ease,border-color .17s ease}
-.spark-fnh-study :is(.fnh-study-practice,.fnh-objective-practice,.fnh-decision-lab) button:active:not(:disabled){transform:scale(.99)}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-progress>span{font-size:.8rem}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-meta{letter-spacing:0;font-weight:650;color:var(--fnh-ui-muted);font-size:.75rem}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-meta span:first-child{color:var(--fnh-ui-teal-ink)}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-question h4{font-size:1.065rem;font-weight:730;line-height:1.58;max-width:65ch;letter-spacing:-.008em;margin:14px 0 20px}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-options{gap:9px}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-options label{min-height:56px;border-radius:11px;padding:14px 15px;background:var(--fnh-ui-paper);color:var(--fnh-ui-ink);font-size:.9rem;line-height:1.5;border:1px solid var(--fnh-ui-line)}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-options label:hover{border-color:var(--fnh-ui-teal)}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-options label.selected{background:var(--fnh-ui-teal-soft);border-color:var(--fnh-ui-teal)}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-options b{font-size:.85rem;color:var(--fnh-ui-muted);min-width:22px}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-order li{min-height:56px;border-radius:11px;border:1px solid var(--fnh-ui-line);background:var(--fnh-ui-paper)}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-order li button{min-width:44px;height:44px;color:var(--fnh-ui-teal-ink);border-radius:9px}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-check,:is(.spark-fnh-study,.spark-editorial-study) .fnh-objective-practice-primary{background:var(--fnh-ui-teal);border:1px solid var(--fnh-ui-teal);color:#fff;border-radius:11px}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-hint,:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-secondary,:is(.spark-fnh-study,.spark-editorial-study) .fnh-objective-practice-secondary{background:var(--fnh-ui-paper);border:1px solid var(--fnh-ui-line);border-radius:11px;color:var(--fnh-ui-ink)}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-feedback{background:var(--fnh-ui-teal-soft);border:0;border-radius:12px;padding:18px}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-feedback.needs-review{background:var(--fnh-ui-highlight);border:0}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-feedback strong{font-size:.95rem;color:var(--fnh-ui-ink)}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-feedback p,:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-feedback small{font-size:.88rem;color:var(--fnh-ui-ink);line-height:1.65}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-footer{margin-top:25px;border-color:var(--fnh-ui-line);padding-top:21px}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-objective-practice-head>span{background:var(--fnh-ui-paper-alt);border-radius:9px;padding:8px 12px;color:var(--fnh-ui-muted);font-variant-numeric:tabular-nums}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-objective-practice-question{font-size:1.05rem;line-height:1.65;color:var(--fnh-ui-ink)}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-objective-practice-code{font-size:.775rem;line-height:1.6;color:var(--fnh-ui-muted)}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-objective-practice textarea{min-height:140px;border-radius:12px;background:var(--fnh-ui-paper-alt);padding:16px;font-size:1rem;line-height:1.65;resize:vertical}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-objective-practice-answer{border:0;border-radius:12px;padding:22px;background:var(--fnh-ui-teal-soft)}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-objective-practice-answer h4{font-size:1rem;color:var(--fnh-ui-ink)}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-objective-practice-answer p{font-size:.925rem;color:var(--fnh-ui-ink)}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-decision-lab{border:0;border-radius:14px;padding:23px;background:var(--fnh-ui-paper-alt);box-shadow:none}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-decision-head span{display:none}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-decision-head h3{font-size:1.18rem;font-weight:750;letter-spacing:-.019em;line-height:1.4;color:var(--fnh-ui-ink)}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-decision-head p{font-size:.9rem;line-height:1.7;color:var(--fnh-ui-muted)}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-decision-food-grid button{border-radius:11px;background:var(--fnh-ui-paper);border-color:var(--fnh-ui-line);min-height:110px;text-align:left}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-decision-food-grid button.selected{background:var(--fnh-ui-teal-soft);border-color:var(--fnh-ui-teal)}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-decision-food-grid button strong{font-size:.93rem;line-height:1.45;color:var(--fnh-ui-ink)}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-decision-food-grid button small{font-size:.78rem;line-height:1.4;color:var(--fnh-ui-muted)}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-decision-food-grid button span{color:var(--fnh-ui-teal-ink)}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-decision-feedback{border:0!important;border-radius:12px;background:var(--fnh-ui-paper);padding:19px}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-decision-feedback strong{color:var(--fnh-ui-ink);font-size:1.025rem;font-weight:750}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-decision-feedback p{font-size:.88rem;line-height:1.7;color:var(--fnh-ui-muted)}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-decision-lab input,:is(.spark-fnh-study,.spark-editorial-study) .fnh-decision-lab select{min-height:44px;border-radius:10px;border:1px solid var(--fnh-ui-line);background:var(--fnh-ui-paper);color:var(--fnh-ui-ink);font-size:1rem}
+:is(.spark-fnh-study,.spark-editorial-study) .fnh-decision-reset{min-height:44px;border-radius:10px;background:var(--fnh-ui-paper);border-color:var(--fnh-ui-line);color:var(--fnh-ui-ink)}
+:is(.spark-fnh-study,.spark-editorial-study) :is(.fnh-study-practice,.fnh-objective-practice,.fnh-decision-lab) :is(button,input,textarea,select):focus-visible{outline:3px solid var(--fnh-ui-focus);outline-offset:3px}
+:is(.spark-fnh-study,.spark-editorial-study) :is(.fnh-study-practice,.fnh-objective-practice,.fnh-decision-lab) button{transition:background .17s ease,border-color .17s ease}
+:is(.spark-fnh-study,.spark-editorial-study) :is(.fnh-study-practice,.fnh-objective-practice,.fnh-decision-lab) button:active:not(:disabled){transform:scale(.99)}
 /* High-contrast neutral night reading. No translucent glass layers in text areas. */
-html[data-theme="dark"] .spark-fnh-study,body[data-theme="dark"] .spark-fnh-study,.dark .spark-fnh-study{
+html[data-theme="dark"] :is(.spark-fnh-study,.spark-editorial-study),body[data-theme="dark"] :is(.spark-fnh-study,.spark-editorial-study),.dark :is(.spark-fnh-study,.spark-editorial-study){
   --fnh-ui-bg:#101b22;--fnh-ui-paper:#192831;--fnh-ui-paper-alt:#21323b;
   --fnh-ui-ink:#f0f6f5;--fnh-ui-muted:#c1d1d1;--fnh-ui-line:#354b50;
   --fnh-ui-teal:#82dcd0;--fnh-ui-teal-soft:#284844;--fnh-ui-teal-ink:#adebe1;
   --fnh-ui-highlight:#43392d;--fnh-ui-focus:#adebe1;
 }
-html[data-theme="dark"] .spark-fnh-study .spark-generic-study-hero-actions button,body[data-theme="dark"] .spark-fnh-study .spark-generic-study-hero-actions button,.dark .spark-fnh-study .spark-generic-study-hero-actions button{background:var(--fnh-ui-paper);color:var(--fnh-ui-ink);border:1px solid var(--fnh-ui-line)}
-html[data-theme="dark"] .spark-fnh-study .spark-generic-lesson-footer button:disabled,body[data-theme="dark"] .spark-fnh-study .spark-generic-lesson-footer button:disabled,.dark .spark-fnh-study .spark-generic-lesson-footer button:disabled{background:var(--fnh-ui-paper-alt)!important;color:var(--fnh-ui-muted)!important;border-color:var(--fnh-ui-line)!important}
-html[data-theme="dark"] .spark-fnh-study .spark-generic-lesson-nav-next:not(:disabled),body[data-theme="dark"] .spark-fnh-study .spark-generic-lesson-nav-next:not(:disabled),.dark .spark-fnh-study .spark-generic-lesson-nav-next:not(:disabled),
-html[data-theme="dark"] .spark-fnh-study .spark-generic-complete-action:not(:disabled):not(.completed),body[data-theme="dark"] .spark-fnh-study .spark-generic-complete-action:not(:disabled):not(.completed),.dark .spark-fnh-study .spark-generic-complete-action:not(:disabled):not(.completed){background:#70cabd!important;color:#0a2929!important;border-color:#70cabd!important}
-html[data-theme="dark"] .spark-fnh-study .fnh-study-practice-progress button.current,body[data-theme="dark"] .spark-fnh-study .fnh-study-practice-progress button.current,.dark .spark-fnh-study .fnh-study-practice-progress button.current{color:#0a2929}
-html[data-theme="dark"] .spark-fnh-study .fnh-study-practice-check,body[data-theme="dark"] .spark-fnh-study .fnh-study-practice-check,.dark .spark-fnh-study .fnh-study-practice-check,
-html[data-theme="dark"] .spark-fnh-study .fnh-objective-practice-primary,body[data-theme="dark"] .spark-fnh-study .fnh-objective-practice-primary,.dark .spark-fnh-study .fnh-objective-practice-primary{background:#70cabd;color:#0a2929;border-color:#70cabd}
-html[data-theme="dark"] .spark-fnh-study .spark-generic-example-answer,body[data-theme="dark"] .spark-fnh-study .spark-generic-example-answer,.dark .spark-fnh-study .spark-generic-example-answer{background:#28372e;color:var(--fnh-ui-ink)}
+html[data-theme="dark"] :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-study-hero-actions button,body[data-theme="dark"] :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-study-hero-actions button,.dark :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-study-hero-actions button{background:var(--fnh-ui-paper);color:var(--fnh-ui-ink);border:1px solid var(--fnh-ui-line)}
+html[data-theme="dark"] :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-footer button:disabled,body[data-theme="dark"] :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-footer button:disabled,.dark :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-footer button:disabled{background:var(--fnh-ui-paper-alt)!important;color:var(--fnh-ui-muted)!important;border-color:var(--fnh-ui-line)!important}
+html[data-theme="dark"] :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-nav-next:not(:disabled),body[data-theme="dark"] :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-nav-next:not(:disabled),.dark :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-nav-next:not(:disabled),
+html[data-theme="dark"] :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-complete-action:not(:disabled):not(.completed),body[data-theme="dark"] :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-complete-action:not(:disabled):not(.completed),.dark :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-complete-action:not(:disabled):not(.completed){background:#70cabd!important;color:#0a2929!important;border-color:#70cabd!important}
+html[data-theme="dark"] :is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-progress button.current,body[data-theme="dark"] :is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-progress button.current,.dark :is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-progress button.current{color:#0a2929}
+html[data-theme="dark"] :is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-check,body[data-theme="dark"] :is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-check,.dark :is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-check,
+html[data-theme="dark"] :is(.spark-fnh-study,.spark-editorial-study) .fnh-objective-practice-primary,body[data-theme="dark"] :is(.spark-fnh-study,.spark-editorial-study) .fnh-objective-practice-primary,.dark :is(.spark-fnh-study,.spark-editorial-study) .fnh-objective-practice-primary{background:#70cabd;color:#0a2929;border-color:#70cabd}
+html[data-theme="dark"] :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-example-answer,body[data-theme="dark"] :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-example-answer,.dark :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-example-answer{background:#28372e;color:var(--fnh-ui-ink)}
 @media(max-width:1040px){
- .spark-fnh-study .spark-generic-study-shell{width:min(100% - 32px,1320px)}
- .spark-fnh-study .spark-generic-learning-layout{grid-template-columns:244px minmax(0,1fr);gap:16px}
- .spark-fnh-study .spark-generic-lesson{padding:0 30px 24px}
- .spark-fnh-study .spark-generic-lesson-head{padding-top:34px}
- .spark-fnh-study .spark-generic-objectives ul{grid-template-columns:1fr}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-study-shell{width:min(100% - 32px,1320px)}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-learning-layout{grid-template-columns:244px minmax(0,1fr);gap:16px}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson{padding:0 30px 24px}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-head{padding-top:34px}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-objectives ul{grid-template-columns:1fr}
 }
 @media(max-width:900px){
- .spark-fnh-study .spark-generic-learning-layout{grid-template-columns:minmax(0,1fr)}
- .spark-fnh-study .spark-generic-outline{position:static;max-height:none;padding:12px}
- .spark-fnh-study .spark-generic-outline-head{padding:5px 5px 9px}
- .spark-fnh-study .spark-generic-outline-toggle{display:inline-flex;min-height:44px;font-size:.8125rem}
- .spark-fnh-study .spark-generic-outline-topics{grid-template-columns:repeat(2,minmax(0,1fr))}
- .spark-fnh-study .spark-generic-lesson{padding:0 34px 26px}
- .spark-fnh-study .spark-generic-outline-section-title{min-height:44px}
- .spark-fnh-study .spark-generic-study-hero{grid-template-columns:55px minmax(0,1fr) auto}
- .spark-fnh-study.spark-fnh-focus-reading .spark-generic-learning-layout{grid-template-columns:1fr}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-learning-layout{grid-template-columns:minmax(0,1fr)}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-outline{position:static;max-height:none;padding:12px}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-outline-head{padding:5px 5px 9px}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-outline-toggle{display:inline-flex;min-height:44px;font-size:.8125rem}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-outline-topics{grid-template-columns:repeat(2,minmax(0,1fr))}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson{padding:0 34px 26px}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-outline-section-title{min-height:44px}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-study-hero{grid-template-columns:55px minmax(0,1fr) auto}
+ :is(.spark-fnh-study,.spark-editorial-study).spark-fnh-focus-reading .spark-generic-learning-layout{grid-template-columns:1fr}
 }
 @media(max-width:640px){
- .spark-fnh-study .spark-generic-study-shell{width:min(100% - 22px,1320px);padding:17px 0 76px}
- .spark-fnh-study .spark-generic-study-hero{grid-template-columns:47px minmax(0,1fr);gap:13px;padding:11px 3px 24px}
- .spark-fnh-study .spark-generic-study-mark{width:47px;height:47px;border-radius:13px;font-size:17px}
- .spark-fnh-study .spark-generic-study-hero-copy h1{font-size:1.375rem;letter-spacing:-.023em}
- .spark-fnh-study .spark-generic-study-hero-copy p{font-size:.83rem;line-height:1.55}
- .spark-fnh-study .spark-generic-study-hero-actions{grid-column:1/-1}
- .spark-fnh-study .spark-generic-progress-card{grid-template-columns:minmax(0,1fr) auto;gap:11px;padding:13px 15px;margin-bottom:16px}
- .spark-fnh-study .spark-generic-progress-card>div:first-child{gap:6px}
- .spark-fnh-study .spark-generic-progress-track{grid-column:1/-1;grid-row:2}
- .spark-fnh-study .spark-generic-outline-topics{grid-template-columns:1fr}
- .spark-fnh-study .spark-generic-outline-topics button{min-height:44px}
- .spark-fnh-study .spark-generic-lesson{border-radius:14px;padding:0 18px 24px;box-shadow:0 7px 24px rgba(20,46,50,.04)}
- .spark-fnh-study .spark-generic-lesson-head{gap:12px;padding:27px 0 21px}
- .spark-fnh-study .spark-generic-lesson-head h2{font-size:1.625rem}
- .spark-fnh-study .spark-fnh-lesson-head-actions{width:100%;margin:4px 0 0;justify-content:space-between}
- .spark-fnh-study .spark-generic-lesson-body{padding-top:20px}
- .spark-fnh-study .spark-generic-lesson-body p,.spark-fnh-study .spark-generic-lesson-body li{font-size:.98rem;line-height:1.76}
- .spark-fnh-study .spark-generic-lesson-intro{font-size:.94rem!important}
- .spark-fnh-study .spark-fnh-reading-nav{display:block;padding:12px;margin-bottom:25px}
- .spark-fnh-study .spark-fnh-reading-nav-label{display:block;margin:0 0 4px}
- .spark-fnh-study .spark-fnh-reading-nav-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px}
- .spark-fnh-study .spark-fnh-reading-nav-links button{justify-content:space-between;min-width:0;font-size:.79rem;padding:10px 9px}
- .spark-fnh-study .spark-generic-objectives li{font-size:.88rem;padding:12px 12px 12px 30px}
- .spark-fnh-study .spark-generic-objectives li::before{left:13px}
- .spark-fnh-study .spark-generic-lesson-section{padding:24px 0}
- .spark-fnh-study .spark-generic-lesson-section h3{font-size:1.05rem}
- .spark-fnh-study .spark-generic-worked-example{padding:18px!important}
- .spark-fnh-study .spark-generic-lesson-footer{grid-template-columns:1fr 1fr;gap:10px}
- .spark-fnh-study .spark-generic-complete-action{grid-column:1/-1;grid-row:1;justify-self:stretch}
- .spark-fnh-study .spark-generic-lesson-nav{min-width:0}
- .spark-fnh-study .spark-generic-objective-guide-item p{padding-left:0}
- .spark-fnh-study .fnh-study-practice,.spark-fnh-study .fnh-objective-practice{padding-top:24px}
- .spark-fnh-study .fnh-decision-lab{padding:15px}
- .spark-fnh-study .fnh-decision-food-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
- .spark-fnh-study .fnh-study-practice-order li button{min-width:40px}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-study-shell{width:min(100% - 22px,1320px);padding:17px 0 76px}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-study-hero{grid-template-columns:47px minmax(0,1fr);gap:13px;padding:11px 3px 24px}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-study-mark{width:47px;height:47px;border-radius:13px;font-size:17px}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-study-hero-copy h1{font-size:1.375rem;letter-spacing:-.023em}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-study-hero-copy p{font-size:.83rem;line-height:1.55}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-study-hero-actions{grid-column:1/-1}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-progress-card{grid-template-columns:minmax(0,1fr) auto;gap:11px;padding:13px 15px;margin-bottom:16px}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-progress-card>div:first-child{gap:6px}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-progress-track{grid-column:1/-1;grid-row:2}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-outline-topics{grid-template-columns:1fr}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-outline-topics button{min-height:44px}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson{border-radius:14px;padding:0 18px 24px;box-shadow:0 7px 24px rgba(20,46,50,.04)}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-head{gap:12px;padding:27px 0 21px}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-head h2{font-size:1.625rem}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-lesson-head-actions{width:100%;margin:4px 0 0;justify-content:space-between}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-body{padding-top:20px}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-body p,:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-body li{font-size:.98rem;line-height:1.76}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-intro{font-size:.94rem!important}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-reading-nav{display:block;padding:12px;margin-bottom:25px}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-reading-nav-label{display:block;margin:0 0 4px}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-reading-nav-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-reading-nav-links button{justify-content:space-between;min-width:0;font-size:.79rem;padding:10px 9px}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-objectives li{font-size:.88rem;padding:12px 12px 12px 30px}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-objectives li::before{left:13px}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-section{padding:24px 0}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-section h3{font-size:1.05rem}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-worked-example{padding:18px!important}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-footer{grid-template-columns:1fr 1fr;gap:10px}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-complete-action{grid-column:1/-1;grid-row:1;justify-self:stretch}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-nav{min-width:0}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-objective-guide-item p{padding-left:0}
+ :is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice,:is(.spark-fnh-study,.spark-editorial-study) .fnh-objective-practice{padding-top:24px}
+ :is(.spark-fnh-study,.spark-editorial-study) .fnh-decision-lab{padding:15px}
+ :is(.spark-fnh-study,.spark-editorial-study) .fnh-decision-food-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ :is(.spark-fnh-study,.spark-editorial-study) .fnh-study-practice-order li button{min-width:40px}
 }
 @media(max-width:380px){
- .spark-fnh-study .spark-generic-study-shell{width:calc(100% - 16px)}
- .spark-fnh-study .spark-generic-lesson{padding:0 14px 21px}
- .spark-fnh-study .spark-fnh-reading-nav-links{grid-template-columns:1fr}
- .spark-fnh-study .spark-fnh-lesson-head-actions{align-items:stretch}
- .spark-fnh-study .spark-fnh-focus-button{flex:1;justify-content:center}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-study-shell{width:calc(100% - 16px)}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson{padding:0 14px 21px}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-reading-nav-links{grid-template-columns:1fr}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-lesson-head-actions{align-items:stretch}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-focus-button{flex:1;justify-content:center}
 }
 @media(prefers-reduced-motion:reduce){
- .spark-fnh-study .spark-generic-progress-track>span,
- .spark-fnh-study .spark-fnh-syllabus-details summary svg,
- .spark-fnh-study :is(button,.spark-generic-outline-topics button){transition:none!important}
- .spark-fnh-study :is(.fnh-study-practice,.fnh-objective-practice,.fnh-decision-lab) button:active{transform:none}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-progress-track>span,
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-syllabus-details summary svg,
+ :is(.spark-fnh-study,.spark-editorial-study) :is(button,.spark-generic-outline-topics button){transition:none!important}
+ :is(.spark-fnh-study,.spark-editorial-study) :is(.fnh-study-practice,.fnh-objective-practice,.fnh-decision-lab) button:active{transform:none}
 }
 @media print{
- .spark-fnh-study{background:#fff;color:#111}
- .spark-fnh-study .spark-generic-outline,.spark-fnh-study .spark-fnh-reading-nav,.spark-fnh-study .spark-fnh-focus-button,.spark-fnh-study .spark-generic-study-hero-actions,.spark-fnh-study .spark-generic-lesson-footer{display:none!important}
- .spark-fnh-study .spark-generic-learning-layout{display:block}
- .spark-fnh-study .spark-generic-lesson{box-shadow:none}
- .spark-fnh-study .spark-generic-lesson-section{break-inside:avoid}
+ :is(.spark-fnh-study,.spark-editorial-study){background:#fff;color:#111}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-outline,:is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-reading-nav,:is(.spark-fnh-study,.spark-editorial-study) .spark-fnh-focus-button,:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-study-hero-actions,:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-footer{display:none!important}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-learning-layout{display:block}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson{box-shadow:none}
+ :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-section{break-inside:avoid}
 }
 
 
 /* FNH explorer contrast and dark surfaces, audited from learner screenshots.
    Explorer components historically use --spark-* colours, whose defaults
    remained dark even in the dark theme. Scope the bridge to FNH only. */
-.spark-fnh-study :is(.spark-food-energy-nutrition,.spark-food-preservation,.spark-food-contamination,.spark-food-microorganisms){
+:is(.spark-fnh-study,.spark-editorial-study) :is(.spark-food-energy-nutrition,.spark-food-preservation,.spark-food-contamination,.spark-food-microorganisms){
   --spark-ink:var(--fnh-ui-ink);
   --spark-ink-soft:var(--fnh-ui-muted);
   --spark-text:var(--fnh-ui-ink);
@@ -300,17 +300,17 @@ html[data-theme="dark"] .spark-fnh-study .spark-generic-example-answer,body[data
   border-radius:15px;
   min-width:0;
 }
-.spark-fnh-study :is(.spark-food-energy-nutrition,.spark-food-preservation,.spark-food-contamination,.spark-food-microorganisms) header h3{
+:is(.spark-fnh-study,.spark-editorial-study) :is(.spark-food-energy-nutrition,.spark-food-preservation,.spark-food-contamination,.spark-food-microorganisms) header h3{
   color:var(--fnh-ui-ink);
   font-size:clamp(1.06rem,2vw,1.3rem);
   letter-spacing:-.018em;
   line-height:1.4;
 }
-.spark-fnh-study :is(.spark-food-energy-nutrition,.spark-food-preservation,.spark-food-contamination,.spark-food-microorganisms) header p{
+:is(.spark-fnh-study,.spark-editorial-study) :is(.spark-food-energy-nutrition,.spark-food-preservation,.spark-food-contamination,.spark-food-microorganisms) header p{
   color:var(--fnh-ui-muted);
   line-height:1.65;
 }
-.spark-fnh-study :is(.spark-food-energy-tabs,.spark-food-test-buttons,.spark-preservation-tabs,.spark-food-contam-tabs,.spark-food-microbe-tabs) button{
+:is(.spark-fnh-study,.spark-editorial-study) :is(.spark-food-energy-tabs,.spark-food-test-buttons,.spark-preservation-tabs,.spark-food-contam-tabs,.spark-food-microbe-tabs) button{
   min-height:44px;
   font-size:.79rem;
   font-weight:680;
@@ -319,105 +319,105 @@ html[data-theme="dark"] .spark-fnh-study .spark-generic-example-answer,body[data
   background:var(--fnh-ui-paper);
   border:1px solid var(--fnh-ui-line);
 }
-.spark-fnh-study :is(.spark-food-energy-tabs,.spark-food-test-buttons,.spark-preservation-tabs,.spark-food-contam-tabs,.spark-food-microbe-tabs) button.active{
+:is(.spark-fnh-study,.spark-editorial-study) :is(.spark-food-energy-tabs,.spark-food-test-buttons,.spark-preservation-tabs,.spark-food-contam-tabs,.spark-food-microbe-tabs) button.active{
   background:var(--fnh-ui-teal-soft);
   color:var(--fnh-ui-teal-ink);
   border-color:var(--fnh-ui-teal);
 }
-.spark-fnh-study :is(.spark-food-energy-nutrients,.spark-caribbean-food-groups,.spark-food-deficiencies,.spark-preservation-methods,.spark-preservation-safety,.spark-preservation-temperature,.spark-food-contam-types,.spark-food-toxin-grid,.spark-food-handler-grid,.spark-food-microbe-factors,.spark-useful-microbes,.spark-mould-structure-notes) article{
+:is(.spark-fnh-study,.spark-editorial-study) :is(.spark-food-energy-nutrients,.spark-caribbean-food-groups,.spark-food-deficiencies,.spark-preservation-methods,.spark-preservation-safety,.spark-preservation-temperature,.spark-food-contam-types,.spark-food-toxin-grid,.spark-food-handler-grid,.spark-food-microbe-factors,.spark-useful-microbes,.spark-mould-structure-notes) article{
   background:var(--fnh-ui-paper);
   border:1px solid var(--fnh-ui-line);
   border-radius:12px;
   min-width:0;
 }
-.spark-fnh-study :is(.spark-food-energy-nutrients,.spark-caribbean-food-groups,.spark-food-deficiencies,.spark-preservation-methods,.spark-preservation-safety,.spark-preservation-temperature,.spark-food-contam-types,.spark-food-toxin-grid,.spark-food-handler-grid,.spark-food-microbe-factors,.spark-useful-microbes,.spark-mould-structure-notes) :is(b,h4,p){
+:is(.spark-fnh-study,.spark-editorial-study) :is(.spark-food-energy-nutrients,.spark-caribbean-food-groups,.spark-food-deficiencies,.spark-preservation-methods,.spark-preservation-safety,.spark-preservation-temperature,.spark-food-contam-types,.spark-food-toxin-grid,.spark-food-handler-grid,.spark-food-microbe-factors,.spark-useful-microbes,.spark-mould-structure-notes) :is(b,h4,p){
   color:var(--fnh-ui-ink);
 }
-.spark-fnh-study :is(.spark-food-energy-nutrients,.spark-caribbean-food-groups,.spark-food-deficiencies,.spark-preservation-methods,.spark-preservation-safety,.spark-preservation-temperature,.spark-food-contam-types,.spark-food-toxin-grid,.spark-food-handler-grid,.spark-food-microbe-factors,.spark-useful-microbes,.spark-mould-structure-notes) small{
+:is(.spark-fnh-study,.spark-editorial-study) :is(.spark-food-energy-nutrients,.spark-caribbean-food-groups,.spark-food-deficiencies,.spark-preservation-methods,.spark-preservation-safety,.spark-preservation-temperature,.spark-food-contam-types,.spark-food-toxin-grid,.spark-food-handler-grid,.spark-food-microbe-factors,.spark-useful-microbes,.spark-mould-structure-notes) small{
   color:var(--fnh-ui-muted);
   line-height:1.5;
 }
-.spark-fnh-study :is(.spark-food-energy-nutrients,.spark-preservation-methods,.spark-preservation-safety,.spark-food-microbe-factors,.spark-food-handler-grid) article>span{
+:is(.spark-fnh-study,.spark-editorial-study) :is(.spark-food-energy-nutrients,.spark-preservation-methods,.spark-preservation-safety,.spark-food-microbe-factors,.spark-food-handler-grid) article>span{
   flex:none;
   color:var(--fnh-ui-teal-ink);
   background:var(--fnh-ui-teal-soft);
 }
-.spark-fnh-study :is(.spark-food-energy-nutrients,.spark-preservation-methods,.spark-preservation-safety,.spark-food-microbe-factors,.spark-food-handler-grid) article strong{
+:is(.spark-fnh-study,.spark-editorial-study) :is(.spark-food-energy-nutrients,.spark-preservation-methods,.spark-preservation-safety,.spark-food-microbe-factors,.spark-food-handler-grid) article strong{
   color:var(--fnh-ui-teal-ink);
 }
-.spark-fnh-study :is(.spark-food-energy-nutrients,.spark-caribbean-food-groups,.spark-food-deficiencies,.spark-preservation-methods,.spark-preservation-safety,.spark-food-contam-types,.spark-food-microbe-factors,.spark-useful-microbes) :is(p,small){
+:is(.spark-fnh-study,.spark-editorial-study) :is(.spark-food-energy-nutrients,.spark-caribbean-food-groups,.spark-food-deficiencies,.spark-preservation-methods,.spark-preservation-safety,.spark-food-contam-types,.spark-food-microbe-factors,.spark-useful-microbes) :is(p,small){
   overflow-wrap:break-word;
 }
 
 /* The original nutrient panel had a pale gray stage around navy cards.
    Keep all cards and the stage on the same dark colour family. */
-:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study)
   :is(.spark-food-energy-nutrition,.spark-food-preservation,.spark-food-contamination,.spark-food-microorganisms){
   background:#1a2c35;
   border-color:#3b5156;
 }
-:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study)
   :is(.spark-food-energy-stage,.spark-preservation-stage,.spark-food-contam-stage,.spark-food-microbe-stage){
   background:#142831;
   border-color:#3b5156;
 }
-:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study)
   :is(.spark-food-energy-nutrients,.spark-caribbean-food-groups,.spark-food-deficiencies,.spark-preservation-methods,.spark-preservation-safety,.spark-preservation-temperature,.spark-food-contam-types,.spark-food-toxin-grid,.spark-food-handler-grid,.spark-food-microbe-factors,.spark-useful-microbes,.spark-mould-structure-notes) article{
   background:#203640;
   border-color:#3f5960;
 }
-:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study)
   :is(.spark-food-energy-tabs,.spark-food-test-buttons,.spark-preservation-tabs,.spark-food-contam-tabs,.spark-food-microbe-tabs) button{
   background:#203640;
   border-color:#466068;
   color:#f0f6f5;
 }
-:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study)
   :is(.spark-food-energy-tabs,.spark-food-test-buttons,.spark-preservation-tabs,.spark-food-contam-tabs,.spark-food-microbe-tabs) button.active{
   background:#295149;
   border-color:#84ded1;
   color:#eafff9;
 }
-:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-food-energy-nutrients :is(b,small),
-:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-caribbean-food-groups :is(b,small),
-:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-food-deficiencies :is(h4,p){
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study) .spark-food-energy-nutrients :is(b,small),
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study) .spark-caribbean-food-groups :is(b,small),
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study) .spark-food-deficiencies :is(h4,p){
   color:#edf7f6;
 }
-:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-food-energy-nutrients :is(strong,article>span),
-:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-caribbean-food-groups article>span{
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study) .spark-food-energy-nutrients :is(strong,article>span),
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study) .spark-caribbean-food-groups article>span{
   color:#a9f0e2;
 }
-:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study)
   :is(.spark-food-label,.spark-food-needs-card,.spark-food-tests>article,.spark-food-energy-summary,.spark-preservation-summary,.spark-food-contam-summary,.spark-food-microbe-summary){
   background:#203640;
   border-color:#3f5960;
 }
-:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study)
   :is(.spark-food-label input,.spark-bread-interpretation,.spark-bread-track,.spark-food-contam-types article div b){
   background:#2b424b;
   border-color:#47636a;
   color:#edf7f6;
 }
-:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study)
   :is(.spark-food-tests article>div,.spark-food-label,.spark-food-energy-summary,.spark-preservation-summary,.spark-food-contam-summary,.spark-food-microbe-summary) :is(b,strong,span,p,h4){
   color:#edf7f6;
 }
 /* Keep scientific colour diagrams accurate while making labels visible. */
-:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study)
   :is(.spark-preservation-stage .fp-label,.spark-preservation-stage .fp-small,.spark-food-contam-stage .fc-label,.spark-food-contam-stage .fc-small,.spark-food-microbe-stage .fm-tick,.spark-food-microbe-stage .fm-axis-label){
   fill:#edf7f6;
 }
-:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-preservation-stage .fp-water-text{fill:#9ee8f2}
-:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-food-microbe-stage .fm-axis{stroke:#b2cccd}
-:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-food-microbe-stage .fm-grid{stroke:#496066}
-:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-food-contam-types article>span{color:#c4d7db}
-:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-food-contam-types article.t1>span{color:#ffca96}
-:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-food-contam-types article.t2>span{color:#f7b3b9}
-:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-preservation-temperature .cold>span{color:#9edcf6}
-:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-preservation-temperature .heat>span{color:#fac5ad}
-:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-food-microbe-stage .fm-legend.cold{fill:#9edcf6}
-:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-food-microbe-stage .fm-legend.warm{fill:#ffaca7}
-:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .spark-fnh-study .spark-bread-name span{color:#c2d2d6}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study) .spark-preservation-stage .fp-water-text{fill:#9ee8f2}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study) .spark-food-microbe-stage .fm-axis{stroke:#b2cccd}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study) .spark-food-microbe-stage .fm-grid{stroke:#496066}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study) .spark-food-contam-types article>span{color:#c4d7db}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study) .spark-food-contam-types article.t1>span{color:#ffca96}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study) .spark-food-contam-types article.t2>span{color:#f7b3b9}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study) .spark-preservation-temperature .cold>span{color:#9edcf6}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study) .spark-preservation-temperature .heat>span{color:#fac5ad}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study) .spark-food-microbe-stage .fm-legend.cold{fill:#9edcf6}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study) .spark-food-microbe-stage .fm-legend.warm{fill:#ffaca7}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study) .spark-bread-name span{color:#c2d2d6}
 
 /* A compact always-available return action once a lesson is scrolled. */
 .spark-fnh-back-to-top{
@@ -464,8 +464,8 @@ html[data-theme="dark"] .spark-fnh-study .spark-generic-example-answer,body[data
     inset:auto max(14px,env(safe-area-inset-right,0px)) max(18px,env(safe-area-inset-bottom,0px)) auto;
     width:46px;height:46px;border-radius:15px;
   }
-  .spark-fnh-study :is(.spark-food-energy-nutrients,.spark-caribbean-food-groups,.spark-food-deficiencies) article{padding:13px;gap:10px}
-  .spark-fnh-study :is(.spark-food-energy-tabs,.spark-food-test-buttons,.spark-preservation-tabs,.spark-food-contam-tabs,.spark-food-microbe-tabs) button{font-size:.8rem}
+  :is(.spark-fnh-study,.spark-editorial-study) :is(.spark-food-energy-nutrients,.spark-caribbean-food-groups,.spark-food-deficiencies) article{padding:13px;gap:10px}
+  :is(.spark-fnh-study,.spark-editorial-study) :is(.spark-food-energy-tabs,.spark-food-test-buttons,.spark-preservation-tabs,.spark-food-contam-tabs,.spark-food-microbe-tabs) button{font-size:.8rem}
 }
 @media(prefers-reduced-motion:reduce){
   .spark-fnh-back-to-top{transition:none;transform:none}
