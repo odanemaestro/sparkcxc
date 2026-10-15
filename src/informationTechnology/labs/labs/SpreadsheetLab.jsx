@@ -4,6 +4,7 @@ import { LabFrame, RibbonTabs, WindowBar } from "../components/LabFrame";
 import { ReducedMotionNotice, StatusMessage, ToolGroup, WorkspaceViewport, useTaskEvidence, useWorkspaceHistory } from "../components/ProductivityKit";
 import { evaluateCell, explainFormula, formulaDependencies, translateFormula } from "../models/workbookModel.mjs";
 import { auditWorkbook } from "../models/workbookAudit.mjs";
+import { ruleDescription, validateCellInput } from "../models/spreadsheetValidation.mjs";
 
 const STARTING_SALES = {
   A1: "Item", B1: "Qty", C1: "Unit Price", D1: "Total Cost", E1: "Band", F1: "Taxed Total", H1: 0.15,
@@ -39,6 +40,10 @@ export default function SpreadsheetLab({ lab, userId, completed, onBack, onCompl
   const [sort, setSort] = useState("Item");
   const [chart, setChart] = useState("");
   const [auditOpen, setAuditOpen] = useState(false);
+  const [validationRules, setValidationRules] = useState({});
+  const [validationType, setValidationType] = useState("whole");
+  const [validationMin, setValidationMin] = useState("0");
+  const [validationMax, setValidationMax] = useState("");
   const [pivot, setPivot] = useState(false);
   const [linked, setLinked] = useState(false);
   const [formatCurrency, setFormatCurrency] = useState(false);
@@ -109,6 +114,8 @@ export default function SpreadsheetLab({ lab, userId, completed, onBack, onCompl
 
   function commitFormula() {
     const value = formulaBar.trim();
+    const checked = validateCellInput(value, validationRules[`${sheet}!${selected}`]);
+    if (!checked.valid) { setMessage(`${selected}: ${checked.message} Value not saved.`); return; }
     const nextWorkbook = { ...workbook, [sheet]: { ...workbook[sheet], [selected]: value } };
     const dependentCells = Object.keys(workbook.Sales).filter(address => formulaDependencies(workbook, "Sales", address).has(`${sheet}!${selected}`));
     const before = new Map(dependentCells.map(address => [address, evaluateCell(workbook, "Sales", address).value]));
@@ -120,6 +127,14 @@ export default function SpreadsheetLab({ lab, userId, completed, onBack, onCompl
     }
     const preview = evaluateCell(nextWorkbook, sheet, selected);
     setMessage(preview.error ? `${preview.value}: ${preview.error}` : `${selected} recalculated successfully.`);
+  }
+
+  function setSelectedValidation() {
+    const min = validationMin.trim(); const max = validationMax.trim();
+    if ((min !== "" && !Number.isFinite(Number(min))) || (max !== "" && !Number.isFinite(Number(max))) || (min !== "" && max !== "" && Number(min) > Number(max))) { setMessage("Enter valid minimum and maximum values."); return; }
+    const rule = { type: validationType, ...(min === "" ? {} : { min: Number(min) }), ...(max === "" ? {} : { max: Number(max) }) };
+    setValidationRules(previous => ({ ...previous, [`${sheet}!${selected}`]: rule }));
+    setMessage(`Validation applied to ${sheet}!${selected}.`);
   }
 
   function fillDown() {
@@ -156,6 +171,7 @@ export default function SpreadsheetLab({ lab, userId, completed, onBack, onCompl
           {tab === "Formulas" && <ToolGroup label="Audit"><button type="button" aria-expanded={auditOpen} onClick={() => setAuditOpen(value => !value)}>{auditOpen ? "Hide formula audit" : "Audit formulas"}</button></ToolGroup>}
           {tab === "Formulas" && <ToolGroup label="Function library">{FORMULA_NAMES.map(name => <button type="button" key={name} onClick={() => setFormulaBar(FORMULA_EXAMPLES[name])}>{name}</button>)}</ToolGroup>}
           {tab === "Data" && <>
+            <ToolGroup label="Cell validation"><label htmlFor="validation-type">Type</label><select id="validation-type" value={validationType} onChange={event => setValidationType(event.target.value)}><option value="whole">Whole number</option><option value="decimal">Decimal number</option></select><label htmlFor="validation-min">Min</label><input id="validation-min" type="number" value={validationMin} onChange={event => setValidationMin(event.target.value)} /><label htmlFor="validation-max">Max</label><input id="validation-max" type="number" value={validationMax} onChange={event => setValidationMax(event.target.value)} /><button type="button" onClick={setSelectedValidation}>Apply to {selected}</button><button type="button" onClick={() => { setValidationRules(previous => { const next = { ...previous }; delete next[`${sheet}!${selected}`]; return next; }); setMessage(`Validation cleared for ${sheet}!${selected}.`); }}>Clear rule</button></ToolGroup>
             <ToolGroup label="Filter"><label htmlFor="sheet-filter">Parish</label><select id="sheet-filter" value={filter} onChange={event => setFilter(event.target.value)}><option>All</option><option>Kingston</option><option>Clarendon</option><option>St. Catherine</option></select></ToolGroup>
             <ToolGroup label="Sort"><label htmlFor="sheet-sort">Field</label><select id="sheet-sort" value={sort} onChange={event => setSort(event.target.value)}><option>Item</option><option>Qty</option><option>Price</option></select></ToolGroup>
             <ToolGroup label="Summarise"><button type="button" aria-pressed={pivot} className={pivot ? "active" : ""} onClick={() => setPivot(value => !value)}>Pivot summary</button></ToolGroup>
@@ -173,6 +189,7 @@ export default function SpreadsheetLab({ lab, userId, completed, onBack, onCompl
           <div className="itv2-formula-audit-heading"><strong>Formula audit</strong><span>{workbookAudit.formulaCount} formulas · {workbookAudit.issues.length} issues</span></div>
           {workbookAudit.issues.length === 0 ? <p>No formula errors found in the current workbook.</p> : <ul>{workbookAudit.issues.map(issue => <li key={issue.cell}><button type="button" onClick={() => { setSheet(issue.sheet); selectCellForSheet(issue.sheet, issue.address); }}>{issue.cell}</button><span>{issue.code}: {issue.message}</span></li>)}</ul>}
         </section>}
+        {validationRules[`${sheet}!${selected}`] && <StatusMessage tone="neutral">Input rule for {selected}: {ruleDescription(validationRules[`${sheet}!${selected}`])}</StatusMessage>}
         <StatusMessage tone={selectedResult.error ? "error" : "neutral"}>
           <strong>{selectedResult.error ? selectedResult.error : explainFormula(selectedRaw)}</strong>
           <span>{selectedResult.error ? "Correct the formula or its references." : ` Result: ${displayValue(selectedResult.value, formatCurrency && /[DF]\d+/.test(selected))}`}</span>
