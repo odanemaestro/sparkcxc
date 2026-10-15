@@ -55,8 +55,8 @@ function FnhPaperLibrary({paper,onBack,onStart,onStartHistorical,onReviewHistori
           <button className="fnh-primary" type="button" onClick={()=>onStart(set.number)}>Select practice paper <FnhNavArrow/></button>
         </section>)}
     </div>:<>
-      <div className="fnh-library-archive-intro"><div><h2>Past Paper {paper}</h2><p>Browse past papers by year. Papers with verified marking are available as timed examinations.</p></div>
-        <label>Year <select value={year} onChange={e=>setYear(e.target.value)}><option value="all">All years</option>{FNH_SUPPLIED_ARCHIVE.filter(p=>p.paper===paper&&p.year!==2021).map(p=><option key={p.id} value={p.year}>{p.year}</option>)}</select></label>
+      <div className="fnh-library-archive-intro"><div><h2>Historical Paper {paper} sources</h2><p>Browse past papers by year. Papers with verified marking are available as timed examinations.</p></div>
+        <label>Year <select value={year} onChange={e=>setYear(e.target.value)}><option value="all">All years</option>{FNH_SUPPLIED_ARCHIVE.filter(p=>p.paper===paper&&!(paper===1&&p.year===2021)).map(p=><option key={p.id} value={p.year}>{p.year}</option>)}</select></label>
       </div>
       <div className="fnh-library-archive-grid">{years.map(source=><article key={source.id} className="fnh-exam-card fnh-archive-card">
         <small>HISTORICAL SOURCE · MAY/JUNE</small><h3>{source.year} Paper {paper}</h3>
@@ -64,8 +64,10 @@ function FnhPaperLibrary({paper,onBack,onStart,onStartHistorical,onReviewHistori
         {fnhHistoricalSimulatorReady(source.id)?<>
           <button type="button" className="fnh-primary" onClick={()=>onStartHistorical(source.id)}>Start past paper <FnhNavArrow/></button>
         </>:source.paper===1&&fnhHistoricalPaper1Reader(source.id)?.questions.length>0?<>
-          <p>Read and practise the questions from this paper. Results are not scored for this paper.</p>
-          <button type="button" className="fnh-outline" onClick={()=>onReviewHistorical(source.id)}>Start past paper <FnhNavArrow/></button>
+          <p>Read and practise the original questions from this source. No marks are awarded until the answer-key review is complete.</p>
+          {source.id==="FNH-P1-2004-MJ"&&<p>Questions 46–47: possible choices found in other examination years, but the original scan does not show their options.</p>}
+          {source.id==="FNH-P1-2005-MJ"&&<p>The supplied scan ends at Question 53; Questions 54–60 are missing.</p>}
+          <button type="button" className="fnh-outline" onClick={()=>onReviewHistorical(source.id)}>Review source questions (unscored) <FnhNavArrow/></button>
         </>:<p>This paper is not available as an interactive test yet.</p>}
       </article>)}</div>
     </>}
