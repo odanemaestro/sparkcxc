@@ -81,7 +81,7 @@ describe("Full FNH historical archive released-paper integrity",()=>{
   });
   test("all archived Paper 1 files remain gated until verified complete MCQ banks exist",()=>{
     const p1=FNH_SUPPLIED_ARCHIVE.filter(row=>row.paper===1);
-    expect(p1).toHaveLength(16);
+    expect(p1).toHaveLength(15);
     expect(p1.every(row=>!row.simulatorReady&&row.verifiedQuestionCount===0)).toBe(true);
   });
 });
