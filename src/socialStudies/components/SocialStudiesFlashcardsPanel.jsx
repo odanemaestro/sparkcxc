@@ -1,3 +1,5 @@
+import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
+import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Card from "../../components/ui/Card";
 import ProgressBar from "../../components/ui/ProgressBar";
@@ -228,8 +230,8 @@ export default function SocialStudiesFlashcardsPanel({ supabase, userId, onChang
         <span className="spark-generic-flashcard-hint">{revealed ? "Answer" : "Tap to reveal the answer"}</span>
       </button>
       <div className="spark-generic-flashcard-nav">
-        <button type="button" disabled={index===0} onClick={()=>move("previous")}>← Previous</button>
-        <button type="button" disabled={index>=cards.length-1} onClick={()=>move("next")}>Next →</button>
+        <button type="button" disabled={index===0} onClick={()=>move("previous")}><BackArrowIcon/> Previous</button>
+        <button type="button" disabled={index>=cards.length-1} onClick={()=>move("next")}>Next <ForwardArrowIcon/></button>
       </div>
     </div>}
   </section>;
