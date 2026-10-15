@@ -15,3 +15,127 @@
   .spark-subject-selection-copy p{max-width:100%;overflow-wrap:anywhere}
   .spark-subject-selection-action{max-width:100%;flex-wrap:wrap}
 }
+
+
+/* SPARK subject chooser · refined Apple-inspired treatment.
+   Shared by Practice, Study, and other subject selection experiences. */
+.spark-subject-selection:not(.embedded){
+  --subject-surface:var(--spark-paper);
+  --subject-line:var(--spark-border);
+  --subject-secondary:var(--spark-text-muted);
+  padding-block:clamp(32px,4.4vw,64px) 80px;
+}
+.spark-subject-selection-inner{max-width:1160px}
+.spark-subject-selection-header{align-items:end;margin-bottom:32px;gap:32px}
+.spark-subject-selection-header h1{
+  font-size:clamp(38px,4.1vw,58px);
+  letter-spacing:-.035em;line-height:1.08;
+  margin:10px 0 13px;
+}
+.spark-subject-selection-header p{font-size:15px;line-height:1.7;max-width:680px}
+.spark-subject-selection-eyebrow{letter-spacing:.14em;font-size:11px}
+.spark-subject-selection-back{
+  padding:0 20px;min-height:44px;
+  border-radius:14px;
+  font-weight:650;
+  box-shadow:0 1px 2px rgba(12,29,60,.035);
+  transition:background .18s ease,border-color .18s ease,transform .18s ease;
+}
+.spark-subject-selection-back:hover{
+  background:var(--spark-muted);
+  border-color:color-mix(in srgb,var(--spark-ink) 22%,var(--spark-border));
+}
+.spark-subject-selection-grid{gap:16px}
+.spark-subject-selection-card{
+  min-width:0;
+  border:1px solid var(--subject-line)!important;
+  border-radius:21px!important;
+  background:var(--subject-surface)!important;
+  box-shadow:0 2px 7px rgba(18,37,67,.025),0 9px 30px rgba(18,37,67,.025)!important;
+  transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;
+}
+.spark-subject-selection-card:has(.spark-subject-selection-card-button:hover){
+  transform:translateY(-3px);
+  border-color:color-mix(in srgb,var(--spark-teal) 38%,var(--subject-line))!important;
+  box-shadow:0 8px 20px rgba(18,37,67,.05),0 16px 34px rgba(18,37,67,.055)!important;
+}
+.spark-subject-selection-card-button{
+  min-height:205px;
+  padding:29px;
+  gap:19px;
+  border-radius:inherit;
+  transition:background .2s ease;
+}
+.spark-subject-selection-card-button:hover{background:color-mix(in srgb,var(--spark-teal) 3%,transparent)}
+.spark-subject-selection-card-button:focus-visible{
+  outline:3px solid var(--spark-teal);
+  outline-offset:-4px;
+}
+.spark-subject-selection-mark{
+  width:56px;height:56px;flex-basis:56px;
+  border-radius:16px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.15);
+}
+.spark-subject-selection-copy{align-self:stretch}
+.spark-subject-selection-status{
+  background:color-mix(in srgb,var(--spark-teal) 10%,var(--subject-surface));
+  color:var(--spark-teal);
+  font-size:10px;letter-spacing:.075em;
+  padding:7px 10px;
+}
+.spark-subject-selection-copy h2{
+  font-size:clamp(23px,2vw,27px);
+  letter-spacing:-.015em;
+  line-height:1.18;
+  margin:12px 0 8px;
+}
+.spark-subject-selection-copy p{
+  color:var(--subject-secondary);
+  font-size:14px;
+  line-height:1.58;
+  max-width:47ch;
+}
+.spark-subject-selection-action{
+  padding-top:22px;
+  gap:10px;
+  color:var(--spark-teal);
+  font-size:13px;
+  transition:gap .2s ease;
+}
+.spark-subject-selection-card-button:hover .spark-subject-selection-action{gap:14px}
+.spark-subject-selection-action .spark-dashboard-card-action-icon{
+  width:34px;height:34px;flex-basis:34px;
+  border-radius:50%;
+  background:color-mix(in srgb,var(--spark-teal) 4%,var(--subject-surface));
+  transition:background .2s ease,transform .2s ease;
+}
+.spark-subject-selection-card-button:hover .spark-dashboard-card-action-icon{
+  background:color-mix(in srgb,var(--spark-teal) 12%,var(--subject-surface));
+  transform:translate(2px,-2px);
+}
+@media(max-width:900px){
+  .spark-subject-selection-card-button{padding:23px;gap:15px}
+  .spark-subject-selection-mark{width:50px;height:50px;flex-basis:50px}
+  .spark-subject-selection-copy h2{font-size:23px}
+}
+@media(max-width:720px){
+  .spark-subject-selection:not(.embedded){padding:28px 16px 55px}
+  .spark-subject-selection-header{gap:18px;margin-bottom:24px}
+  .spark-subject-selection-grid{gap:13px}
+  .spark-subject-selection-card-button{min-height:176px;padding:22px}
+  .spark-subject-selection-header h1{font-size:40px}
+}
+@media(max-width:430px){
+  .spark-subject-selection-card-button{padding:20px 16px;gap:14px}
+  .spark-subject-selection-mark{width:46px;height:46px;flex-basis:46px;border-radius:13px;font-size:23px}
+  .spark-subject-selection-copy h2{font-size:21px}
+}
+@media(prefers-reduced-motion:reduce){
+  .spark-subject-selection-card,
+  .spark-subject-selection-card-button,
+  .spark-subject-selection-back,
+  .spark-subject-selection-action,
+  .spark-subject-selection-action .spark-dashboard-card-action-icon{transition:none!important}
+  .spark-subject-selection-card:has(.spark-subject-selection-card-button:hover),
+  .spark-subject-selection-card-button:hover .spark-dashboard-card-action-icon{transform:none}
+}
