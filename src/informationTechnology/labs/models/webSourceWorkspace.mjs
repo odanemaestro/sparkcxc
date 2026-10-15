@@ -14,10 +14,10 @@ export function validateWebFiles(files) {
   }
   return errors;
 }
-export function buildSandboxPreview(files) {
+export function buildSandboxPreview(files, selectedHtml = "index.html") {
   const errors = validateWebFiles(files);
   if (errors.length) return { html: "", errors };
-  const html = files["index.html"];
+  const html = /^(?:[A-Za-z0-9_-]+)\.html$/.test(selectedHtml) && typeof files[selectedHtml] === "string" ? files[selectedHtml] : files["index.html"];
   const css = files["styles.css"];
   const blocked = /<\s*(script|iframe|object|embed|base|form|meta\s+http-equiv)\b|\bon\w+\s*=|javascript\s*:/i;
   if (blocked.test(html) || blocked.test(css)) return { html: "", errors: ["Active content is blocked in teaching previews."] };
