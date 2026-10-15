@@ -419,6 +419,18 @@ export const FNH_SUPPLIED_ARCHIVE = Object.freeze([
     "referenceMarkingSource": "SPARK explanatory answer points, not original CXC marking scheme"
   },
   {
+    "id": "FNH-P2-2021-MJ",
+    "paper": 2,
+    "year": 2021,
+    "session": "May/June",
+    "sourceFilename": "CSEC_FNH_Paper_2_-_May_June_2021.pdf",
+    "sourceFormat": "scanned-image",
+    "reviewStatus": "source-question-text-checked",
+    "verifiedQuestionCount": 6,
+    "simulatorReady": true,
+    "referenceMarkingSource": "SPARK-authored explanatory answers, not official CXC marking scheme"
+  },
+  {
     "id": "FNH-P2-2022-MJ",
     "paper": 2,
     "year": 2022,
@@ -488,8 +500,8 @@ export function fnhHistoricalPaperFormat(source){
     durationMinutes:150,sourceTimeVerified:false,
   };
 }
-export const FNH_ARCHIVE_SUMMARY = Object.freeze({paper1:15,paper2:17,unique:32,
-  verifiedSubjectPaper1Sources:15,invalidSubjectPaper1Sources:0,validSubjectDocuments:32,
+export const FNH_ARCHIVE_SUMMARY = Object.freeze({paper1:15,paper2:18,unique:33,
+  verifiedSubjectPaper1Sources:15,invalidSubjectPaper1Sources:0,validSubjectDocuments:33,
   unverifiedPaper1YearSources:0,
   duplicatedSource:"CSEC_FNH_Paper_1_-_May_June_2026 (1).pdf",
   duplicationOf:"CSEC_FNH_Paper_1_-_May_June_2026.pdf",
