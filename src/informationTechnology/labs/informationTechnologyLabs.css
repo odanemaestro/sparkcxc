@@ -280,3 +280,9 @@ body[data-theme="dark"] .itv2-back:focus-visible{
 .itv2-debug-inspector dd{margin:0;font-family:ui-monospace,Consolas,monospace;text-align:right}
 .itv2-debug-inspector button:focus-visible,.itv2-debug-controls button:focus-visible{outline:2px solid var(--spark-teal,#20aaa6);outline-offset:2px}
 @media(max-width:760px){.itv2-debug-inspector{grid-template-columns:minmax(0,1fr)}}
+
+.itv2-diagnostics{margin:14px 0;padding:16px;border:1px solid var(--itv2-line,rgba(133,153,181,.35));border-radius:14px;background:transparent}
+.itv2-diagnostics p{line-height:1.6}
+.itv2-diagnostics ul{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:9px}
+.itv2-diagnostics li{padding:11px 12px;border-radius:9px;background:rgba(178,130,55,.09);line-height:1.55}
+.itv2-diagnostics li strong{display:inline-block;margin-right:8px;font-size:12px;letter-spacing:.03em}
