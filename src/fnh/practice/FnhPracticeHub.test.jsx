@@ -6,6 +6,7 @@ import {FNH_SUPPLIED_ARCHIVE} from "../data/fnhPastPaperInventory";
 describe("FNH student examination navigation",()=>{
   beforeEach(()=>{
     localStorage.clear();
+    sessionStorage.clear();
     Object.defineProperty(window,"scrollTo",{configurable:true,value:jest.fn()});
   });
   test("the Paper 1 flow selects the second of two different 60-question examinations",()=>{
