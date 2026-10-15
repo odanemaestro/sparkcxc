@@ -29,7 +29,7 @@ describe("Physics and IT reference integration keeps existing practical tools",(
     expect(content).toContain("<InformationTechnologyTools topicId={topic.id}/>");
   });
   test("media is separate from assessment and source data is not embedded in question banks",()=>{
-    const registry=source("components/study/curatedStudyMedia.js");
+    const registry=source("components/study/courseVisualReferenceCatalog.js");
     expect(registry).not.toMatch(/score|markCorrect|assessmentGrade/);
     expect(registry).toContain("commons.wikimedia.org");
     const css=source("components/study/curatedStudyMedia.css");
