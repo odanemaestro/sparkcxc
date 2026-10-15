@@ -1,3 +1,4 @@
+import BackArrowIcon from "../../../components/ui/BackArrowIcon";
 import React, { useEffect, useMemo, useState } from 'react';
 import MathText from '../../../practice/MathText';
 import PhysicsStudyToolkit from '../../components/PhysicsStudyToolkit';
@@ -46,7 +47,7 @@ export default function PhysicsCourseLessons({ userId, initialSection='B', initi
       <div className="pcl-shell">
         <header className="pcl-hero">
           <div>
-            {onBack && <button type="button" className="pcl-btn secondary" onClick={onBack}>← Back to Physics</button>}
+            {onBack && <button type="button" className="pcl-btn secondary" onClick={onBack}><BackArrowIcon/> Back to Physics</button>}
             <div className="pcl-eyebrow">CSEC Physics · Section {section}</div>
             <h1>{SECTION_META[section].title}</h1>
             <p>Study the syllabus objective by objective, with definitions, equations, worked reasoning, practical guidance and common examination mistakes.</p>
