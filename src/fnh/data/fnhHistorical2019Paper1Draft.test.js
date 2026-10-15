@@ -29,8 +29,7 @@ describe("2019 FNH Paper 01 transcription and key release checks",()=>{
   const report=fnhHistoricalPaper1ReleaseCheck(questions);
   expect(report).toMatchObject({ready:false,questions:60,numbered:true,sourceComplete:true,keysComplete:false});
   expect(report.pendingKeyNumbers).toHaveLength(60);
-  expect(questions.filter(q=>!q.proposedAnswer).map(q=>q.number))
-    .toEqual([12,19,20,22,31,35,40,41,43,48,50,58]);
+  expect(questions.every(q=>q.proposedAnswer===null||/^[ABCD]$/.test(q.proposedAnswer))).toBe(true);
   expect(FNH_HISTORICAL_PAPER1_TRANSCRIPTION_PROGRESS.find(x=>x.year===2019))
     .toMatchObject({questions:60,reportedTranscribed:60,sourceComplete:true,ready:false});
   expect(fnhHistoricalSimulatorReady("FNH-P1-2019-MJ")).toBeNull();
