@@ -44,7 +44,8 @@ describe("Approved science diagram nighttime presentation",()=>{
   expect(natural).toHaveAttribute("aria-pressed","false");
   const cutting=screen.getByRole("button",{name:/Stem cutting/});
   expect(cutting).toHaveAttribute("aria-pressed","true");
-  fireEvent.click(screen.getByRole("button",{name:/Grafting/}));
-  expect(screen.getByRole("button",{name:/Grafting/})).toHaveAttribute("aria-pressed","true");
+  const grafting=within(document.querySelector(".spark-vp-method-tabs")).getByRole("button",{name:/Grafting/});
+  fireEvent.click(grafting);
+  expect(grafting).toHaveAttribute("aria-pressed","true");
  });
 });
