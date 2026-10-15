@@ -10,7 +10,7 @@ describe("FNH Paper 02 source-aware self-review and marking safety",()=>{
  test("students see only self-selected practice points, not a SPARK-generated final result",()=>{
   render(<FnhPaper2Exam setNumber={1}/>);
   expect(screen.getByText("Paper 2 examination instructions")).toBeInTheDocument();
-  expect(screen.getByText(/teacher or examiner to award marks/)).toBeInTheDocument();
+  expect(screen.getByText(/written answers are not automatically graded yet/)).toBeInTheDocument();
   fireEvent.click(screen.getByRole("button",{name:"Start examination"}));
   fireEvent.change(screen.getByRole("textbox",{name:/Question 1 part a answer/}),{
    target:{value:"A diet is the foods and drinks regularly consumed by a person."}
@@ -21,7 +21,7 @@ describe("FNH Paper 02 source-aware self-review and marking safety",()=>{
   expect(screen.getByText(/self-check practice, not a grade/)).toBeInTheDocument();
   expect(screen.getAllByText(/SPARK example answer points/).length).toBeGreaterThan(0);
   expect(screen.queryByText(/Correct answer and marking scheme/)).not.toBeInTheDocument();
-  expect(screen.getByText(/A teacher must assess the actual written responses for a final result/)).toBeInTheDocument();
+  expect(screen.getByText(/SPARK has not automatically assessed your written responses/)).toBeInTheDocument();
   const checkbox=screen.getByRole("checkbox",{
    name:"My response includes marking point 1 for question 1 part a"
   });
