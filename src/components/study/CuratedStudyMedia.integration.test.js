@@ -14,7 +14,7 @@ describe("Physics and IT reference integration keeps existing practical tools",(
   ];
   test.each(physics)("%s uses optional references in the original study panel",file=>{
     const content=source(file);
-    expect(content).toContain('import CuratedStudyMedia from');
+    expect(content).toMatch(/import CuratedStudyMedia(?:,\s*\{\s*CuratedStudyJump\s*\})? from/);
     expect(content).toContain('<CuratedStudyMedia subject="physics" topicId={topic.id}/>');
     expect(content).toContain('<PhysicsStudyToolkit topicId={topic.id}/>');
     expect(content.indexOf('<CuratedStudyMedia subject="physics" topicId={topic.id}/>'))
@@ -24,8 +24,8 @@ describe("Physics and IT reference integration keeps existing practical tools",(
     const content=source("informationTechnology/components/InformationTechnologySubjectView.jsx");
     expect(content).toContain('<InformationTechnologyVisuals topicId={topic.id}/>');
     expect(content).toContain('<CuratedStudyMedia subject="information-technology" topicId={topic.id}/>');
-    expect(content.indexOf('<InformationTechnologyVisuals topicId={topic.id}/>'))
-      .toBeLessThan(content.indexOf('<CuratedStudyMedia subject="information-technology" topicId={topic.id}/>'));
+    expect(content).toContain('<CuratedStudyJump subject="information-technology" topicId={topic.id}');
+    // Both the existing simulator and the supplementary gallery stay inside See it.
     expect(content).toContain("<InformationTechnologyTools topicId={topic.id}/>");
   });
   test("media is separate from assessment and source data is not embedded in question banks",()=>{
