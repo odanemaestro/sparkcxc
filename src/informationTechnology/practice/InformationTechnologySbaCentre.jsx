@@ -10,7 +10,7 @@ import {
   findItSbaProject,
 } from "./itSbaProjects";
 import { getItSbaProjectTasks } from "./itSbaProjectTasks";
-import { captureSbaEvidence, readSbaEvidence, exportSbaEvidence } from "./itSbaPortfolio.mjs";
+import { captureSbaEvidence, readSbaEvidence, exportSbaEvidence, exportSbaProjectPortfolio } from "./itSbaPortfolio.mjs";
 import { useInformationTechnologySbaRoute } from "../../routing/sparkRoutingV270";
 import "./informationTechnologySba.css";
 
@@ -270,6 +270,12 @@ function CentreHome({ openProject, onBack }) {
 }
 
 function ProjectOverview({ project, userId, onActivity, openHome, openComponent }) {
+  function downloadPortfolio(){
+    const content=exportSbaProjectPortfolio(userId,project.id);
+    const url=URL.createObjectURL(new Blob([content],{type:"application/json;charset=utf-8"}));
+    const anchor=document.createElement("a");anchor.href=url;anchor.download=`SPARK-${project.id}-IT-SBA-practice.json`;
+    document.body.appendChild(anchor);anchor.click();anchor.remove();URL.revokeObjectURL(url);
+  }
   const [progress,setProgress]=useState(()=>readProgress(userId,project.id));
   const completeCount=IT_SBA_COMPONENTS.filter(item=>progress[item.id]).length;
   useEffect(()=>setProgress(readProgress(userId,project.id)),[userId,project.id]);
@@ -284,8 +290,8 @@ function ProjectOverview({ project, userId, onActivity, openHome, openComponent 
     <button type="button" className="it-practice-back it-sba-back" data-spark-action="nav" onClick={openHome}><BackArrowIcon/><span>All SBA projects</span></button>
     <header className="it-sba-project-hero"><div><div className="it-practice-eyebrow">{project.code} - {project.sector}</div><h1>{project.title}</h1><p>{project.scenario}</p></div><div className="it-sba-progress-ring" aria-label={`${completeCount} of 5 sections reviewed`}><strong>{completeCount}/5</strong><span>sections reviewed</span></div></header>
     <section className="it-sba-pdf-feature"><div><div className="it-practice-label">Start here</div><h2>Read the full SBA question paper.</h2><p>This PDF contains the scenario and all questions in the order a student would receive them. Read it before opening the step-by-step guides.</p><PdfActions project={project}/></div><object className="it-sba-pdf-viewer" data={projectPdf(project.id)} type="application/pdf" aria-label={`${project.title} full SBA PDF`}><p>Your browser does not display PDFs inside the page. <a href={projectPdf(project.id)} target="_blank" rel="noreferrer">Open the full SBA PDF</a>.</p></object></section>
-    <section className="it-sba-project-purpose"><div className="it-practice-label">Description of Project</div><h2>What you are building</h2><p>{project.purpose}</p></section>
-    <section className="it-sba-component-grid">{IT_SBA_COMPONENTS.map((item,index)=>{const component=project.components[item.id];const done=Boolean(progress[item.id]);const count=getItSbaProjectTasks(project.id,item.id).length;return <article key={item.id} className={`it-sba-component-card ${done?"done":""}`}><div className="it-sba-component-head"><div className="it-sba-component-icon"><SbaIcon type={item.id}/></div><span>Section {index+1}</span><strong>{count} questions</strong></div><h2>{item.title}</h2><p>{component.produce}</p><div className="it-sba-card-actions"><button type="button" className={done?"it-practice-secondary":"it-practice-primary"} onClick={()=>openComponent(project.id,item.id)}>{done?"Review questions":"Start questions"}</button><a className="it-sba-text-link" href={completedPdf(project.id,item.id)} target="_blank" rel="noreferrer">View completed PDF</a></div></article>;})}</section>
+    <section className="it-sba-project-purpose"><div className="it-practice-label">Description of Project</div><h2>What you are building</h2><p>{project.purpose}</p><button type="button" className="it-practice-secondary" onClick={downloadPortfolio}>Download my project practice portfolio (JSON)</button><p>Includes the latest saved practice snapshots for all five components on this device. This is not an SBA submission.</p></section>
+    <section className="it-sba-component-grid">{IT_SBA_COMPONENTS.map((item,index)=>{const component=project.components[item.id];const done=Boolean(progress[item.id]);const count=getItSbaProjectTasks(project.id,item.id).length;return <article key={item.id} className={`it-sba-component-card ${done?"done":""}`}><div className="it-sba-component-head"><div className="it-sba-component-icon"><SbaIcon type={item.id}/></div><span>Section {index+1}</span><strong>{count} questions</strong></div><h2>{item.title}</h2><p>{component.produce}</p><small>{readSbaEvidence(userId,project.id,item.id).length} saved Studio evidence versions</small><div className="it-sba-card-actions"><button type="button" className={done?"it-practice-secondary":"it-practice-primary"} onClick={()=>openComponent(project.id,item.id)}>{done?"Review questions":"Start questions"}</button><a className="it-sba-text-link" href={completedPdf(project.id,item.id)} target="_blank" rel="noreferrer">View completed PDF</a></div></article>;})}</section>
     <section className="it-sba-download-card"><div><div className="it-practice-label">Completed SBA downloads</div><h2>Download the completed SPARK reference for each section.</h2><p>These are full section PDFs, not short answer sheets. Each one shows the exact questions being answered, the method used and the completed result. The SPARK watermark is placed throughout the document.</p></div><div className="it-sba-download-grid"><a href={projectPdf(project.id)} download><SbaIcon type="pdf"/><span><strong>Full SBA question paper</strong><small>PDF</small></span></a>{IT_SBA_COMPONENTS.map(item=><a key={item.id} href={completedPdf(project.id,item.id)} download><SbaIcon type={item.id}/><span><strong>Completed {item.title}</strong><small>Watermarked PDF</small></span></a>)}</div></section>
     <NativeFileDownloads project={project}/>
     <section className="it-sba-progress-actions"><span>Your review progress is saved to your SPARK progress and kept separately for your account on this device.</span>{completeCount>0&&<button type="button" className="it-practice-secondary" onClick={resetProgress}>Reset review progress</button>}</section>
