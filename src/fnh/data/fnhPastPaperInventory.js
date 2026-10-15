@@ -232,24 +232,6 @@ export const FNH_SUPPLIED_ARCHIVE = Object.freeze([
     "sourceQualityNote": "Supplied PDF begins on printed page 2 at Question 1 and ends on page 10 at Question 60. Cover missing. Sixty question texts transcribed; no authenticated CXC keys."
   },
   {
-    "id": "FNH-P1-2021-MJ",
-    "paper": 1,
-    "year": 2021,
-    "session": "May/June",
-    "sourceFilename": "CSEC_FNH_Paper_1_-_May_June_2021.pdf",
-    "sourceFormat": "scanned-image",
-    "sourceIdentityVerified": false,
-    "reviewStatus": "incorrect-subject-and-year",
-    "verifiedQuestionCount": 0,
-    "transcribedQuestionCount": 0,
-    "sourcePageCount": 4,
-    "actualSourceSubject": "Spanish",
-    "actualSourcePaper": "Paper 03 Oral, General Proficiency",
-    "actualSourceSession": "January 2023",
-    "answerKeyStatus": "not-applicable-wrong-source",
-    "sourceQualityNote": "The four-page PDF is a January 2023 CSEC Spanish Paper 03 Oral reading-passage booklet. It is not the May/June 2021 FNH Paper 01. Obtain the correct source."
-  },
-  {
     "id": "FNH-P1-2026-MJ",
     "paper": 1,
     "year": 2026,
@@ -437,18 +419,6 @@ export const FNH_SUPPLIED_ARCHIVE = Object.freeze([
     "referenceMarkingSource": "SPARK explanatory answer points, not original CXC marking scheme"
   },
   {
-    "id": "FNH-P2-2021-MJ",
-    "paper": 2,
-    "year": 2021,
-    "session": "May/June",
-    "sourceFilename": "CSEC_FNH_Paper_2_-_May_June_2021.pdf",
-    "sourceFormat": "scanned-image",
-    "reviewStatus": "source-question-text-checked",
-    "verifiedQuestionCount": 6,
-    "simulatorReady": true,
-    "referenceMarkingSource": "SPARK-authored explanations, not an official CXC marking scheme"
-  },
-  {
     "id": "FNH-P2-2022-MJ",
     "paper": 2,
     "year": 2022,
@@ -518,8 +488,8 @@ export function fnhHistoricalPaperFormat(source){
     durationMinutes:150,sourceTimeVerified:false,
   };
 }
-export const FNH_ARCHIVE_SUMMARY = Object.freeze({paper1:16,paper2:18,unique:34,
-  verifiedSubjectPaper1Sources:15,invalidSubjectPaper1Sources:1,validSubjectDocuments:33,
+export const FNH_ARCHIVE_SUMMARY = Object.freeze({paper1:15,paper2:17,unique:32,
+  verifiedSubjectPaper1Sources:15,invalidSubjectPaper1Sources:0,validSubjectDocuments:32,
   unverifiedPaper1YearSources:0,
   duplicatedSource:"CSEC_FNH_Paper_1_-_May_June_2026 (1).pdf",
   duplicationOf:"CSEC_FNH_Paper_1_-_May_June_2026.pdf",
