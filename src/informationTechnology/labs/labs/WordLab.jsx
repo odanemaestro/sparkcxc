@@ -29,6 +29,7 @@ export default function WordLab({ lab, userId, completed, onBack, onComplete }) 
   const [columns, setColumns] = useState(saved.columns ?? 1);
   const [orientation, setOrientation] = useState(saved.orientation ?? "portrait");
   const [table, setTable] = useState(saved.table ?? false);
+  const [tableRows, setTableRows] = useState(saved.tableRows ?? [["Coding","Tuesday","3:30 pm"],["Robotics","Thursday","3:30 pm"]]);
   const [header, setHeader] = useState(saved.header ?? "");
   const [footer, setFooter] = useState(saved.footer ?? "");
   const [trackChanges, setTrackChanges] = useState(saved.trackChanges ?? false);
@@ -54,11 +55,11 @@ export default function WordLab({ lab, userId, completed, onBack, onComplete }) 
   const { evidence, record } = useTaskEvidence();
 
   useEffect(() => {
-    writeLabWorkspace(userId, "word", { bodyText, bodyHtml, heading, font, size, align, bullets, columns, orientation, table, header, footer, trackChanges, comment, mergeField, recipientsCsv, formControl });
-  }, [userId, bodyText, bodyHtml, heading, font, size, align, bullets, columns, orientation, table, header, footer, trackChanges, comment, mergeField, recipientsCsv, formControl]);
+    writeLabWorkspace(userId, "word", { bodyText, bodyHtml, heading, font, size, align, bullets, columns, orientation, table, tableRows, header, footer, trackChanges, comment, mergeField, recipientsCsv, formControl });
+  }, [userId, bodyText, bodyHtml, heading, font, size, align, bullets, columns, orientation, table, tableRows, header, footer, trackChanges, comment, mergeField, recipientsCsv, formControl]);
 
   function exportDocx() {
-    const data = makeDocx({ title: "SPARK Technology Club Newsletter", body: editorRef.current?.innerText ?? bodyText, header, footer, orientation });
+    const data = makeDocx({ title: "SPARK Technology Club Newsletter", body: editorRef.current?.innerText ?? bodyText, header, footer, orientation, tableRows:table?tableRows:[] });
     const url = URL.createObjectURL(new Blob([data], { type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document" }));
     const anchor = document.createElement("a"); anchor.href = url; anchor.download = "SPARK-Technology-Club.docx";
     document.body.appendChild(anchor); anchor.click(); anchor.remove(); URL.revokeObjectURL(url);
@@ -66,7 +67,7 @@ export default function WordLab({ lab, userId, completed, onBack, onComplete }) 
   }
 
   function exportHtml() {
-    const html = buildDocumentHtml({ title: "SPARK Technology Club Newsletter", body: editorRef.current?.innerText ?? bodyText, bodyHtml: sanitizeDocumentMarkup(editorRef.current?.innerHTML ?? bodyHtml), header, footer, orientation, columns, table, bullets, mergeField });
+    const html = buildDocumentHtml({ title: "SPARK Technology Club Newsletter", body: editorRef.current?.innerText ?? bodyText, bodyHtml: sanitizeDocumentMarkup(editorRef.current?.innerHTML ?? bodyHtml), header, footer, orientation, columns, table, tableRows, bullets, mergeField });
     const url = URL.createObjectURL(new Blob([html], { type: "text/html;charset=utf-8" }));
     const anchor = document.createElement("a");
     anchor.href = url; anchor.download = "SPARK-Technology-Club.html";
@@ -190,7 +191,7 @@ export default function WordLab({ lab, userId, completed, onBack, onComplete }) 
             </ToolGroup>
           </>}
           {tab === "Insert" && <ToolGroup label="Document elements">
-            <button type="button" className={table ? "active" : ""} aria-pressed={table} onClick={() => setTable(value => !value)}>Table</button>
+            <button type="button" className={table ? "active" : ""} aria-pressed={table} onClick={() => setTable(value => !value)}>Table</button>{table && <button type="button" onClick={() => setTableRows(rows => [...rows, ["","",""]])}>Add table row</button>}
             <label htmlFor="word-header">Header</label><input id="word-header" value={header} onChange={event => setHeader(event.target.value)} placeholder="Technology Club"/>
             <label htmlFor="word-footer">Footer</label><input id="word-footer" value={footer} onChange={event => setFooter(event.target.value)} placeholder="Page 1"/>
             <button type="button" className={formControl ? "active" : ""} aria-pressed={formControl} onClick={() => setFormControl(value => !value)}>Check box</button>
@@ -221,7 +222,7 @@ export default function WordLab({ lab, userId, completed, onBack, onComplete }) 
             {mergeField && <p className="merge-line">{recipients.length ? mergeLetter("Dear «ParentName»,",recipients[Math.min(previewIndex,recipients.length-1)]) : "Dear «ParentName»,"}</p>}
             <div ref={editorRef} className="itv2-word-body" contentEditable suppressContentEditableWarning role="textbox" aria-label="Document body" aria-multiline="true" onInput={syncDocument} onKeyUp={captureSelection} onMouseUp={captureSelection} onTouchEnd={captureSelection}>{saved.bodyText ?? STARTING_BODY}</div>
             {bullets && <ul><li>Coding club</li><li>Robotics club</li><li>Digital design club</li></ul>}
-            {table && <table><thead><tr><th>Activity</th><th>Day</th><th>Time</th></tr></thead><tbody><tr><td>Coding</td><td>Tuesday</td><td>3:30 pm</td></tr><tr><td>Robotics</td><td>Thursday</td><td>3:30 pm</td></tr></tbody></table>}
+            {table && <table><thead><tr><th>Activity</th><th>Day</th><th>Time</th><th>Action</th></tr></thead><tbody>{tableRows.map((row,rowIndex) => <tr key={rowIndex}>{row.map((cell,columnIndex) => <td key={columnIndex}><input style={{width:"100%",minWidth:64}} aria-label={`Table row ${rowIndex+1} column ${columnIndex+1}`} value={cell} onChange={event => setTableRows(rows => rows.map((current,index) => index===rowIndex?current.map((value,col) => col===columnIndex?event.target.value:value):current))}/></td>)}<td><button type="button" aria-label={`Remove table row ${rowIndex+1}`} disabled={tableRows.length===1} onClick={() => setTableRows(rows => rows.filter((_,index)=>index!==rowIndex))}>Remove</button></td></tr>)}</tbody></table>}
             {formControl && <label className="itv2-doc-checkbox"><input type="checkbox"/> I will attend the technology showcase</label>}
             {footer && <footer>{footer}</footer>}
             {trackChanges && <aside className="itv2-review-mark">TRACK CHANGES ON{comment && <small>{comment}</small>}</aside>}
