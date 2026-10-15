@@ -1,4 +1,5 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import {readLabWorkspace,writeLabWorkspace} from "../models/workspacePersistence.mjs";
 import { LabFrame, RibbonTabs, WindowBar } from "../components/LabFrame";
 import { ReducedMotionNotice, StatusMessage, useTaskEvidence } from "../components/ProductivityKit";
 import { PlayIcon } from "../components/Icons";
@@ -37,15 +38,16 @@ function TraceTable({ trace }) {
   );
 }
 
-export default function ProgrammingLab({ lab, completed, onBack, onComplete }) {
+export default function ProgrammingLab({ lab, userId, completed, onBack, onComplete }) {
+  const savedDraft=useMemo(()=>readLabWorkspace(userId,"programming",{}),[userId]);
   const [tab, setTab] = useState("Code");
-  const [language, setLanguage] = useState("Visual Basic");
+  const [language, setLanguage] = useState(()=>PROGRAMMING_TEMPLATES[savedDraft.language]?savedDraft.language:"Visual Basic");
   const [exercise, setExercise] = useState("selection");
-  const [sources, setSources] = useState(() => ({
-    selection: PROGRAMMING_TEMPLATES["Visual Basic"].selection,
-    loop: PROGRAMMING_TEMPLATES["Visual Basic"].loop,
-    debug: PROGRAMMING_TEMPLATES["Visual Basic"].debug,
-  }));
+  const [sources, setSources] = useState(() => {
+    const defaults=PROGRAMMING_TEMPLATES[PROGRAMMING_TEMPLATES[savedDraft.language]?savedDraft.language:"Visual Basic"];
+    return Object.fromEntries(["selection","loop","debug"].map(key=>[key,typeof savedDraft?.sources?.[key]==="string"&&savedDraft.sources[key].length<=30000?savedDraft.sources[key]:defaults[key]]));
+  });
+  useEffect(()=>{writeLabWorkspace(userId,"programming",{language,sources});},[userId,language,sources]);
   const [selectionInput, setSelectionInput] = useState("72");
   const [debugInput, setDebugInput] = useState("100");
   const [lastRun, setLastRun] = useState(() => emptyRun());
