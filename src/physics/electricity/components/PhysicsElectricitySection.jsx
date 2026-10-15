@@ -4,7 +4,7 @@ import MathText from '../../../practice/MathText';
 import PhysicsFlashcardVisual from '../../components/PhysicsFlashcardVisual';
 import { physicsFlashcardQuestion } from '../../course/physicsFlashcardLanguage.mjs';
 import PhysicsStudyToolkit from '../../components/PhysicsStudyToolkit';
-import CuratedStudyMedia, { CuratedStudyJump } from '../../../components/study/CuratedStudyMedia';
+import CuratedStudyMedia, { CuratedStudyJump } from '../../../components/study/CuratedStudyMedia.jsx';
 import PhysicsPracticalNotebook from '../../labs/PhysicsPracticalNotebook';
 import { PhysicsTopicQuiz } from '../../mechanics/components/PhysicsMechanicsSection';
 import { SECTION_D_TOPICS, buildSectionDCheckpoint, sectionDStats } from '../sectionDElectricity.mjs';
