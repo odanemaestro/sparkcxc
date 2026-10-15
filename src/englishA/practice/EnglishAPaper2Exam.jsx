@@ -253,7 +253,7 @@ export default function EnglishAPaper2Exam({ supabase, userId, onBack }) {
   if (phase==="instructions") {
     return (
       <main className="is-exam-root"><div className="is-exam-shell">
-        <button type="button" className="is-exam-primary is-exam-page-back" onClick={() => setPhase("library")}><BackArrowIcon/> Back to Paper 2 library</button>
+        <button type="button" className="ea-practice-back is-exam-page-back" onClick={() => setPhase("library")}><BackArrowIcon/> Back to Paper 2 library</button>
         <section className="is-exam-instructions-card">
           <span className="is-exam-eyebrow">CSEC ENGLISH A · PAPER 02</span>
           <h1>{paper.title}</h1>
