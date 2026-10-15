@@ -19,11 +19,12 @@ function SlideCanvas({ slide, theme, footer, heading = false }) {
 
 export default function PresentationLab({ lab, userId, completed, onBack, onComplete }) {
   const [tab, setTab] = useState("Home");
-  const [slides, setSlides] = useState(() => readLabWorkspace(userId,"presentation",{slides:[FIRST_SLIDE]}).slides || [FIRST_SLIDE]);
-  useEffect(()=>{writeLabWorkspace(userId,"presentation",{slides});},[userId,slides]);
+  const [initialPresentation] = useState(() => readLabWorkspace(userId, "presentation", { slides: [FIRST_SLIDE], theme: "", footer: "" }));
+  const [slides, setSlides] = useState(initialPresentation.slides || [FIRST_SLIDE]);
   const [selected, setSelected] = useState(1);
-  const [theme, setTheme] = useState("");
-  const [footer, setFooter] = useState("");
+  const [theme, setTheme] = useState(initialPresentation.theme || "");
+  const [footer, setFooter] = useState(initialPresentation.footer || "");
+  useEffect(() => { writeLabWorkspace(userId, "presentation", { slides, theme, footer }); }, [userId, slides, theme, footer]);
   const [showMode, setShowMode] = useState(false);
   const [showIndex, setShowIndex] = useState(0);
   const [message, setMessage] = useState("Create and edit slides, then run the slide show to verify your presentation.");
