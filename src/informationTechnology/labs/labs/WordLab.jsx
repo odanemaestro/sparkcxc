@@ -57,7 +57,7 @@ export default function WordLab({ lab, userId, completed, onBack, onComplete }) 
   }, [userId, bodyText, bodyHtml, heading, font, size, align, bullets, columns, orientation, table, header, footer, trackChanges, comment, mergeField, recipientsCsv, formControl]);
 
   function exportHtml() {
-    const html = buildDocumentHtml({ title: "SPARK Technology Club Newsletter", body: editorRef.current?.innerText ?? bodyText, header, footer, orientation, columns, table, bullets, mergeField });
+    const html = buildDocumentHtml({ title: "SPARK Technology Club Newsletter", body: editorRef.current?.innerText ?? bodyText, bodyHtml: sanitizeDocumentMarkup(editorRef.current?.innerHTML ?? bodyHtml), header, footer, orientation, columns, table, bullets, mergeField });
     const url = URL.createObjectURL(new Blob([html], { type: "text/html;charset=utf-8" }));
     const anchor = document.createElement("a");
     anchor.href = url; anchor.download = "SPARK-Technology-Club.html";
