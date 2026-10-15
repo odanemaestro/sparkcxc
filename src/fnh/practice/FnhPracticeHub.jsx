@@ -17,6 +17,7 @@ import FnhHistorical2016Paper2Exam from "./FnhHistorical2016Paper2Exam";
 import FnhHistorical2017Paper2Exam from "./FnhHistorical2017Paper2Exam";
 import FnhHistorical2018Paper2Exam from "./FnhHistorical2018Paper2Exam";
 import FnhHistorical2019Paper2Exam from "./FnhHistorical2019Paper2Exam";
+import FnhHistorical2021Paper2Exam from "./FnhHistorical2021Paper2Exam";
 import FnhHistorical2022Paper2Exam from "./FnhHistorical2022Paper2Exam";
 import FnhHistorical2024Paper2Exam from "./FnhHistorical2024Paper2Exam";
 import FnhHistorical2026Paper2Exam from "./FnhHistorical2026Paper2Exam";
@@ -31,7 +32,7 @@ const scrollTop=()=>{try{window.scrollTo?.({top:0,left:0,behavior:"instant"});}c
 function FnhPaperLibrary({paper,onBack,onStart,onStartHistorical,onReviewHistorical,tab,onTabChange}){
   const [year,setYear]=useState("all");
   const isPaper1=paper===1;
-  const years=FNH_SUPPLIED_ARCHIVE.filter(p=>p.paper===paper&&p.year!==2021).filter(p=>year==="all"||String(p.year)===year)
+  const years=FNH_SUPPLIED_ARCHIVE.filter(p=>p.paper===paper&&!(paper===1&&p.year===2021)).filter(p=>year==="all"||String(p.year)===year)
     .sort((a,b)=>b.year-a.year);
   return <main className="fnh-exam fnh-practice-library"><div className="fnh-exam-container">
     <div className="fnh-exam-top"><button className="fnh-outline" type="button" onClick={onBack}><FnhNavArrow direction="left"/> Back to Food, Nutrition and Health practice</button></div>
@@ -79,7 +80,7 @@ export default function FnhPracticeHub({supabase,userId,onBack}){
     try{return JSON.parse(sessionStorage.getItem(sessionKey)||"null")||{};}catch{return {};}
   })();
   const allowedViews=new Set(["home","paper1","paper2","exam1","exam2","review-p1","workbook",
-    ...[2005,2006,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2022,2024,2026].map(year=>`historical-${year}-p2`)]);
+    ...[2005,2006,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2021,2022,2024,2026].map(year=>`historical-${year}-p2`)]);
   const [view,setView]=useState(()=>allowedViews.has(savedNavigation.view)?savedNavigation.view:"home");
   const [selectedPaper1Set,setSelectedPaper1Set]=useState(()=>Number(savedNavigation.selectedPaper1Set)||1);
   const [selectedPaper2Set,setSelectedPaper2Set]=useState(()=>Number(savedNavigation.selectedPaper2Set)||1);
@@ -106,6 +107,7 @@ export default function FnhPracticeHub({supabase,userId,onBack}){
     if(id==="FNH-P2-2017-MJ")setView("historical-2017-p2");
     if(id==="FNH-P2-2018-MJ")setView("historical-2018-p2");
     if(id==="FNH-P2-2019-MJ")setView("historical-2019-p2");
+    if(id==="FNH-P2-2021-MJ")setView("historical-2021-p2");
     if(id==="FNH-P2-2022-MJ")setView("historical-2022-p2");
     if(id==="FNH-P2-2024-MJ")setView("historical-2024-p2");
     if(id==="FNH-P2-2026-MJ")setView("historical-2026-p2");}}/>;
@@ -127,6 +129,7 @@ export default function FnhPracticeHub({supabase,userId,onBack}){
   if(view==="historical-2017-p2")return <FnhHistorical2017Paper2Exam supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
   if(view==="historical-2018-p2")return <FnhHistorical2018Paper2Exam supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
   if(view==="historical-2019-p2")return <FnhHistorical2019Paper2Exam supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
+  if(view==="historical-2021-p2")return <FnhHistorical2021Paper2Exam supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
   if(view==="historical-2022-p2")return <FnhHistorical2022Paper2Exam supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
   if(view==="historical-2024-p2")return <FnhHistorical2024Paper2Exam supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
   if(view==="historical-2026-p2")return <FnhHistorical2026Paper2Exam supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
