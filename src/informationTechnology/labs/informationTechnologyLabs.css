@@ -374,3 +374,316 @@ body[data-theme="dark"] .itv2-back:focus-visible{
   .itv2-formula-audit-heading{display:grid;gap:3px}
   .itv2-debug-inspector dl{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
 }
+
+
+/* SPARK IT Labs form system: one control language across six Studios.
+   Purposefully scoped to the IT lab page, not global SPARK forms. */
+.itv2-lab-page{
+  --itv2-control-bg:var(--it-card,#fff);
+  --itv2-control-text:var(--it-ink,#172337);
+  --itv2-control-border:var(--it-line,#cbd5e1);
+  --itv2-control-placeholder:var(--it-muted,#64748b);
+  --itv2-control-chevron:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23445c79' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+}
+.itv2-lab-page select{
+  -webkit-appearance:none;
+  appearance:none;
+  box-sizing:border-box;
+  min-width:0;
+  min-height:44px;
+  max-width:100%;
+  padding:10px 40px 10px 13px;
+  border:1px solid var(--itv2-control-border);
+  border-radius:11px;
+  color:var(--itv2-control-text);
+  background-color:var(--itv2-control-bg);
+  background-image:var(--itv2-control-chevron);
+  background-repeat:no-repeat;
+  background-position:right 12px center;
+  background-size:17px 17px;
+  color-scheme:light;
+  font:500 13px/1.35 inherit;
+  font-family:inherit;
+  font-size:13px;
+  line-height:1.35;
+  cursor:pointer;
+  transition:border-color .16s ease,box-shadow .16s ease,background-color .16s ease;
+}
+.itv2-lab-page select:hover:not(:disabled){
+  border-color:#6b8cac;
+}
+.itv2-lab-page select:focus-visible{
+  border-color:var(--itv2-green);
+  outline:3px solid color-mix(in srgb,var(--itv2-green) 24%,transparent);
+  outline-offset:2px;
+}
+.itv2-lab-page select:disabled{
+  cursor:not-allowed;
+  opacity:.55;
+  background-color:var(--it-soft,#f4f7fa);
+}
+.itv2-lab-page select option,
+.itv2-lab-page select optgroup{
+  color:var(--itv2-control-text);
+  background:var(--itv2-control-bg);
+  font:inherit;
+}
+.itv2-ribbon select,.itv2-code-toolbar select{
+  flex:0 0 auto;
+  width:auto;
+  min-width:116px;
+  max-width:230px;
+}
+.itv2-ribbon label select,.itv2-code-toolbar label select{
+  width:100%;
+}
+.itv2-lab-page :is(.itv2-db-stage,.itv2-web-editor,.itv2-form-preview,.itv2-form-designer,.itv2-report-controls,.itv2-query-design,.itv2-query-result-bar) select{
+  width:100%;
+}
+.itv2-lab-page :is(.itv2-db-stage,.itv2-form-designer,.itv2-form-preview,.itv2-web-editor,.itv2-report-controls) input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.itv2-db-stage textarea,
+.itv2-db-order-fields input{
+  box-sizing:border-box;
+  width:100%;
+  min-width:0;
+  max-width:100%;
+  min-height:44px;
+  padding:10px 13px;
+  border:1px solid var(--itv2-control-border);
+  border-radius:11px;
+  background:var(--itv2-control-bg);
+  color:var(--itv2-control-text);
+  font:500 13px/1.4 inherit;
+  font-family:inherit;
+  font-size:13px;
+  line-height:1.4;
+}
+.itv2-lab-page :is(.itv2-db-stage,.itv2-form-designer,.itv2-form-preview,.itv2-web-editor,.itv2-report-controls) input:focus-visible,
+.itv2-db-stage textarea:focus-visible{
+  border-color:var(--itv2-green);
+  outline:3px solid color-mix(in srgb,var(--itv2-green) 24%,transparent);
+  outline-offset:2px;
+}
+.itv2-db-stage :is(input,textarea)::placeholder{
+  color:var(--itv2-control-placeholder);
+  opacity:1;
+}
+.itv2-db-stage :is(input,select,textarea):disabled{
+  background:var(--it-soft,#f4f7fa);
+  opacity:.6;
+  cursor:not-allowed;
+}
+/* File pickers keep native keyboard/OS file choosing while styling the button. */
+.itv2-ribbon .itv2-file-field{
+  display:grid;
+  align-content:center;
+  align-self:stretch;
+  gap:7px;
+  min-width:190px;
+  max-width:280px;
+  color:var(--itv2-control-text);
+  font-size:12px;
+  font-weight:700;
+  line-height:1.4;
+}
+.itv2-ribbon input[type="file"]{
+  display:block;
+  box-sizing:border-box;
+  width:100%;
+  min-width:0;
+  min-height:44px;
+  padding:6px 8px;
+  border:1px solid var(--itv2-control-border);
+  border-radius:11px;
+  background:var(--itv2-control-bg);
+  color:var(--itv2-control-text);
+  font:500 12px/1.4 inherit;
+  font-family:inherit;
+  font-size:12px;
+  cursor:pointer;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.itv2-ribbon input[type="file"]::file-selector-button{
+  min-height:30px;
+  padding:6px 11px;
+  margin-right:9px;
+  border:1px solid var(--itv2-control-border);
+  border-radius:8px;
+  background:var(--it-soft,#f4f7fa);
+  color:var(--itv2-control-text);
+  font:700 12px/1.2 inherit;
+  font-family:inherit;
+  font-size:12px;
+  cursor:pointer;
+}
+.itv2-ribbon input[type="file"]:hover::file-selector-button{
+  border-color:var(--itv2-green);
+  color:var(--itv2-green);
+}
+.itv2-ribbon input[type="file"]:focus-visible{
+  border-color:var(--itv2-green);
+  outline:3px solid color-mix(in srgb,var(--itv2-green) 24%,transparent);
+  outline-offset:2px;
+}
+/* Relationship diagram: the select belongs to a compact field, not a full-width line. */
+.itv2-relationship-canvas>.itv2-db-relationship-field{
+  grid-column:1/-1;
+  display:grid;
+  gap:8px;
+  width:100%;
+  max-width:360px;
+  min-width:0;
+  margin:8px 0 0;
+  color:var(--itv2-control-text);
+  font-size:13px;
+  font-weight:700;
+  line-height:1.4;
+}
+.itv2-relationship-canvas>.itv2-db-relationship-field select{
+  width:100%;
+}
+.itv2-db-order-editor{
+  margin:20px 0 8px;
+  padding:20px;
+  border:1px solid var(--itv2-control-border);
+  border-radius:15px;
+  background:var(--it-soft,#f4f7fa);
+}
+.itv2-db-order-editor h3{
+  margin:0 0 6px;
+  font-size:17px;
+  color:var(--itv2-control-text);
+}
+.itv2-db-order-editor>p{
+  max-width:70ch;
+  margin:0 0 20px;
+  color:var(--it-muted,#64748b);
+  font-size:13px;
+  line-height:1.55;
+}
+.itv2-db-order-fields{
+  display:grid;
+  grid-template-columns:minmax(115px,.8fr) minmax(160px,1.5fr) minmax(120px,1fr) auto;
+  align-items:end;
+  gap:14px;
+  min-width:0;
+}
+.itv2-db-order-fields label,
+.itv2-db-relationship-field{
+  min-width:0;
+}
+.itv2-db-order-fields label{
+  display:grid;
+  gap:8px;
+  color:var(--itv2-control-text);
+  font-size:13px;
+  font-weight:700;
+  line-height:1.4;
+}
+.itv2-db-order-fields :is(select,input){
+  width:100%;
+}
+.itv2-db-order-fields>.itv2-db-save-order{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  margin:0;
+  padding:10px 20px;
+  border:1px solid var(--itv2-navy);
+  border-radius:11px;
+  background:var(--itv2-navy);
+  color:#fff;
+  font:700 13px/1.3 inherit;
+  font-family:inherit;
+  font-size:13px;
+  white-space:nowrap;
+  cursor:pointer;
+  transition:background-color .16s ease,transform .16s ease;
+}
+.itv2-db-order-fields>.itv2-db-save-order:hover{
+  background:#264d78;
+}
+.itv2-db-order-fields>.itv2-db-save-order:focus-visible{
+  outline:3px solid color-mix(in srgb,var(--itv2-green) 40%,transparent);
+  outline-offset:3px;
+}
+.itv2-db-order-results{
+  margin:20px 0 12px;
+  max-width:100%;
+  overflow-x:auto;
+}
+.itv2-db-order-results table{
+  min-width:340px;
+}
+.itv2-db-order-editor .itv2-status-message{
+  border:0;
+  border-radius:10px;
+}
+/* Labels and related controls should stack consistently across query and report panels. */
+.itv2-db-stage :is(.itv2-query-design,.itv2-report-controls,.itv2-form-preview) label{
+  display:grid;
+  gap:7px;
+  min-width:0;
+  color:var(--itv2-control-text);
+  font-size:13px;
+  font-weight:700;
+  line-height:1.4;
+}
+.itv2-query-criterion{
+  grid-template-columns:minmax(90px,.65fr) minmax(0,1.35fr);
+  gap:9px;
+}
+.itv2-query-result-bar label{
+  display:grid;
+  gap:6px;
+  min-width:150px;
+  margin-left:auto;
+}
+.itv2-report-controls{
+  gap:14px;
+}
+.itv2-form-designer>label{
+  display:grid;
+  gap:8px;
+  font-size:13px;
+  font-weight:700;
+  line-height:1.45;
+}
+html[data-theme="dark"] .itv2-lab-page,
+body[data-theme="dark"] .itv2-lab-page{
+  --itv2-control-chevron:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23c5d7ed' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+}
+html[data-theme="dark"] .itv2-lab-page select,
+body[data-theme="dark"] .itv2-lab-page select{
+  color-scheme:dark;
+}
+html[data-theme="dark"] .itv2-db-order-fields>.itv2-db-save-order,
+body[data-theme="dark"] .itv2-db-order-fields>.itv2-db-save-order{
+  background:#2b5680;
+  border-color:#496d93;
+}
+html[data-theme="dark"] .itv2-db-order-fields>.itv2-db-save-order:hover,
+body[data-theme="dark"] .itv2-db-order-fields>.itv2-db-save-order:hover{
+  background:#356799;
+}
+@media(max-width:1100px){
+  .itv2-db-order-fields{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+@media(max-width:620px){
+  .itv2-db-order-editor{padding:15px}
+  .itv2-db-order-fields{grid-template-columns:minmax(0,1fr);gap:14px}
+  .itv2-db-order-fields>.itv2-db-save-order{width:100%}
+  .itv2-relationship-canvas>.itv2-db-relationship-field{max-width:none}
+  .itv2-ribbon .itv2-file-field{min-width:min(240px,78vw)}
+  .itv2-db-stage :is(.itv2-query-design,.itv2-report-controls) {grid-template-columns:minmax(0,1fr)}
+  .itv2-query-result-bar{flex-wrap:wrap}
+  .itv2-query-result-bar label{width:100%;margin-left:0}
+}
+@media(prefers-reduced-motion:reduce){
+  .itv2-lab-page select,
+  .itv2-db-order-fields>.itv2-db-save-order{transition:none}
+}
