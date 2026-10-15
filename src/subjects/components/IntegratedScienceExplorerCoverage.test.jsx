@@ -9,7 +9,7 @@ test.each(types)("%s renders its approved reference when selecting each lesson t
   expect(container.textContent.length).toBeGreaterThan(0);
   const check=()=>{for(const wrapper of container.querySelectorAll('.spark-reviewed-science-diagram')){
     expect(wrapper.firstElementChild).toHaveAttribute('hidden');
-    for(const image of wrapper.querySelectorAll('img'))expect(image.getAttribute('src')).toMatch(/integrated-science\/diagrams\/\d{4}\.(svg|png|jpg|jpeg|gif)$/);
+    for(const image of wrapper.querySelectorAll('img'))expect(image.getAttribute('src')).toMatch(/integrated-science\/diagrams\/\d{4}(?:-dark)?\.(svg|png|jpg|jpeg|gif)$/);
   }};
   check();
   const buttons=[...container.querySelectorAll('button')].filter(b=>!b.closest('.spark-reviewed-science-diagram'));
