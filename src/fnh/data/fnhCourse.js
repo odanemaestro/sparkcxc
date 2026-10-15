@@ -33,7 +33,7 @@ export const FNH_TOPICS=GROUPS.map((group,index)=>{
     code:row.code,objective:row.objective,explanation:row.explanation,
   }));
   const lessonSections=entries.map(row=>({
-    title:`${row.code} — ${row.objective.replace(/[;.]+$/,"")}`,
+    title:`${row.code}: ${row.objective.replace(/[;.]+$/,"")}`,
     paragraphs:[row.explanation,`Caribbean example: ${row.example}`],
     bullets:[`Check your understanding: ${row.question}`],
   }));

@@ -1,0 +1,212 @@
+/* FNH Study · verified visual references. Uses approved SPARK reading surfaces. */
+.spark-fnh-reference-media{
+  margin:clamp(20px,3vw,32px) 0;
+  min-width:0;
+  color:var(--fnh-ui-ink,#193149);
+  scroll-margin-top:90px;
+}
+.spark-fnh-reference-media>header{margin:0 0 16px}
+.spark-fnh-reference-media>header>span{
+  display:block;
+  font-size:.72rem;
+  font-weight:780;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--fnh-ui-teal-ink,#087b75);
+}
+.spark-fnh-reference-media>header h3{
+  margin:6px 0 7px;
+  color:inherit;
+  font-size:clamp(1.15rem,2.4vw,1.48rem);
+  font-weight:800;
+  letter-spacing:-.025em;
+  line-height:1.35;
+}
+.spark-fnh-reference-media>header p{
+  max-width:72ch;
+  margin:0;
+  color:var(--fnh-ui-muted,#59708a);
+  font-size:.9rem;
+  line-height:1.65;
+}
+.spark-fnh-ref-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));
+  gap:16px;
+  align-items:stretch;
+}
+.spark-fnh-ref-card{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  margin:0;
+  border:1px solid var(--fnh-ui-line,#d9e2eb);
+  border-radius:16px;
+  background:var(--fnh-ui-paper,#fff);
+  box-shadow:0 3px 14px rgba(11,35,61,.035);
+}
+.spark-fnh-ref-stage{
+  display:grid;
+  place-items:center;
+  min-height:160px;
+  min-width:0;
+  background:#fff;
+  color:#183551;
+  border-bottom:1px solid #e0e6ec;
+  padding:clamp(13px,2vw,21px);
+}
+.spark-fnh-ref-image-link{
+  width:100%;
+  min-width:0;
+  display:grid;
+  justify-items:center;
+  align-items:center;
+  gap:10px;
+  color:#21517e;
+  font-size:.77rem;
+  font-weight:730;
+  text-decoration:none;
+}
+.spark-fnh-ref-image-link img{
+  display:block;
+  max-width:100%;
+  width:auto;
+  height:auto;
+  max-height:350px;
+  object-fit:contain;
+  background:white;
+}
+.spark-fnh-ref-image-link>span{justify-self:end}
+.spark-fnh-ref-image-link:hover>span{text-decoration:underline}
+.spark-fnh-ref-image-link:focus-visible,
+.spark-fnh-ref-video-prompt button:focus-visible,
+.spark-fnh-ref-credit a:focus-visible{
+  outline:3px solid var(--fnh-ui-focus,#0da49c);
+  outline-offset:4px;
+  border-radius:4px;
+}
+.spark-fnh-ref-stage video{
+  width:100%;
+  max-width:100%;
+  max-height:360px;
+  aspect-ratio:16/9;
+  background:#101e32;
+  border-radius:9px;
+}
+.spark-fnh-ref-video-prompt{
+  display:grid;
+  justify-items:center;
+  gap:9px;
+  text-align:center;
+  max-width:290px;
+  padding:18px 10px;
+}
+.spark-fnh-ref-play-icon{
+  display:grid;
+  place-items:center;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:#e4f5f1;
+  color:#0c756f;
+  font-size:19px;
+}
+.spark-fnh-ref-video-prompt strong{font-size:1rem}
+.spark-fnh-ref-video-prompt p{
+  margin:0;
+  color:#566b83;
+  font-size:.83rem;
+  line-height:1.55;
+}
+.spark-fnh-ref-video-prompt button{
+  margin-top:5px;
+  min-height:44px;
+  padding:10px 17px;
+  border:1px solid #1d6475;
+  border-radius:10px;
+  background:#174e65;
+  color:#fff;
+  font:inherit;
+  font-size:.87rem;
+  font-weight:700;
+  cursor:pointer;
+}
+.spark-fnh-ref-video-prompt button:hover{background:#216b82}
+.spark-fnh-ref-card figcaption{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  padding:17px 17px 18px;
+  flex:1;
+  min-width:0;
+}
+.spark-fnh-ref-caption-top{
+  display:grid;
+  gap:6px;
+}
+.spark-fnh-ref-type{
+  font-size:.67rem;
+  font-weight:750;
+  color:var(--fnh-ui-teal-ink,#087b75);
+  letter-spacing:.045em;
+  text-transform:uppercase;
+}
+.spark-fnh-ref-caption-top strong{
+  font-size:.98rem;
+  font-weight:760;
+  line-height:1.4;
+  color:var(--fnh-ui-ink,#193149);
+}
+.spark-fnh-ref-card figcaption>p{
+  margin:0;
+  font-size:.87rem;
+  line-height:1.65;
+  color:var(--fnh-ui-muted,#59708a);
+}
+.spark-fnh-ref-card figcaption>.spark-fnh-ref-context{
+  border-left:3px solid var(--fnh-ui-teal,#0b8d82);
+  padding:9px 11px;
+  border-radius:0 7px 7px 0;
+  background:var(--fnh-ui-paper-alt,#f2f7f8);
+  color:var(--fnh-ui-ink,#193149);
+  font-size:.79rem;
+}
+.spark-fnh-ref-credit{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px 8px;
+  align-items:center;
+  padding-top:11px;
+  margin-top:auto;
+  border-top:1px solid var(--fnh-ui-line,#d9e2eb);
+  color:var(--fnh-ui-muted,#59708a);
+  font-size:.73rem;
+  line-height:1.55;
+  overflow-wrap:anywhere;
+}
+.spark-fnh-ref-credit a{
+  color:var(--fnh-ui-teal-ink,#087b75);
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+.spark-fnh-ref-fallback{
+  display:grid;
+  gap:10px;
+  justify-items:center;
+  text-align:center;
+  max-width:300px;
+  padding:12px;
+}
+.spark-fnh-ref-fallback strong{font-size:.92rem}
+.spark-fnh-ref-fallback p{font-size:.82rem;line-height:1.6;margin:0}
+.spark-fnh-ref-fallback a{font-size:.82rem;color:#21517e}
+@media(max-width:640px){
+  .spark-fnh-ref-grid{grid-template-columns:minmax(0,1fr);gap:14px}
+  .spark-fnh-ref-stage{min-height:120px}
+  .spark-fnh-ref-image-link img{max-height:310px}
+  .spark-fnh-ref-card figcaption{padding:16px}
+}
+@media(prefers-reduced-motion:reduce){
+  .spark-fnh-reference-media *{scroll-behavior:auto!important}
+}

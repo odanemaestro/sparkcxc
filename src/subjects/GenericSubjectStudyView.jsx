@@ -22,9 +22,10 @@ import FoodMicroorganismExplorer from "./components/FoodMicroorganismExplorer";
 import FnhObjectivePractice from "../fnh/components/FnhObjectivePractice";
 import FnhStudyPractice from "../fnh/components/FnhStudyPractice";
 import FnhDecisionLab from "../fnh/components/FnhDecisionLab";
+import FnhReferenceMedia from "../fnh/components/FnhReferenceMedia";
+import { fnhMediaForTopic } from "../fnh/data/fnhReferenceMedia";
 import SocialStudiesReferenceMedia from "../socialStudies/components/SocialStudiesReferenceMedia";
 import { socialStudiesMediaForTopic } from "../socialStudies/data/socialStudiesReferenceMedia";
-import FnhBackToTop from "../fnh/components/FnhBackToTop";
 import {
   readSparkHashRoute,
   subscribeSparkRoute,
@@ -169,6 +170,7 @@ export function GenericLessonContent({
     ? lesson.workedExample
     : null;
   const isFnh = subjectId === "food-nutrition-and-health";
+  const hasFnhMedia = isFnh && fnhMediaForTopic(topic?.id).length > 0;
   const socialVisuals = subjectId === "social-studies" && socialStudiesMediaForTopic(topic?.id).length > 0;
   const isEditorial = editorial && !isFnh;
   const hasChemistryVisuals = subjectId === "chemistry" && chemistryReferencesFor(topic?.id).length > 0;
@@ -220,6 +222,7 @@ export function GenericLessonContent({
         <span className="spark-fnh-reading-nav-label">In this lesson</span>
         <div className="spark-fnh-reading-nav-links">
           <button type="button" onClick={()=>jumpTo("fnh-lesson-notes")}>Read notes <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>
+          {hasFnhMedia&&<button type="button" onClick={()=>jumpTo("fnh-lesson-visuals")}>See visuals <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>}
           {models.length>0&&<button type="button" onClick={()=>jumpTo("fnh-lesson-explore")}>Explore <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>}
           <button type="button" onClick={()=>jumpTo("fnh-lesson-practice")}>Quick practice <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>
           <button type="button" onClick={()=>jumpTo("fnh-lesson-reflect")}>Written response <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>
@@ -272,6 +275,7 @@ export function GenericLessonContent({
       })}
 
       {socialVisuals && <SocialStudiesReferenceMedia topicId={topic.id}/>}
+      {hasFnhMedia && <FnhReferenceMedia topicId={topic.id}/>}
       {isEditorial&&hasExplore&&<div id="spark-lesson-explore" className="spark-editorial-scroll-anchor" aria-hidden="true"/>}
       {hasChemistryVisuals && <ChemistryReferenceDiagrams topicId={topic.id}/>}
       {models.map(model => (
@@ -1028,7 +1032,6 @@ export default function GenericSubjectStudyView({
           </div>
         )}
       </div>
-      {subjectId&&<FnhBackToTop/>}
     </main>
   );
 }
