@@ -528,3 +528,74 @@ html[data-theme="dark"] :is(.spark-fnh-study,.spark-editorial-study) .spark-gene
   outline:2px solid var(--fnh-ui-focus);
   outline-offset:3px;
 }
+
+
+/* Study-theme batch 03: match Physics / IT typography, navy tiles and
+   compact navigation. Keeps the existing lesson content and behaviours. */
+:is(.spark-fnh-study,.spark-editorial-study){
+  --spark-study-tile:#17375e;
+  --spark-study-tile-text:#fff;
+  --spark-study-arrow-bg:rgba(13,128,105,.09);
+}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-study-hero-copy h1{
+  font-family:inherit;
+  font-weight:760;
+  font-size:clamp(1.85rem,4vw,2.75rem);
+  letter-spacing:-.032em;
+  line-height:1.18;
+}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-study-hero-copy p{
+  font-size:.975rem;
+  line-height:1.75;
+  max-width:72ch;
+}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-study-mark{
+  background:var(--spark-study-tile);
+  color:var(--spark-study-tile-text);
+  border-radius:14px;
+}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-head h2{
+  font-size:clamp(1.625rem,2.6vw,2.25rem);
+  font-weight:760;
+  letter-spacing:-.032em;
+  line-height:1.2;
+}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-outline{
+  background:var(--fnh-ui-paper);
+  border-color:var(--fnh-ui-line);
+  border-radius:18px;
+}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson{
+  border:1px solid var(--fnh-ui-line);
+  border-radius:18px;
+  box-shadow:none;
+}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-footer{
+  column-gap:12px;
+  row-gap:12px;
+}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-footer button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:9px;
+  font-family:inherit;
+  letter-spacing:-.01em;
+}
+:is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-nav :is(svg){
+  width:17px;height:17px;fill:none;stroke:currentColor;
+  stroke-width:1.85;stroke-linecap:round;stroke-linejoin:round;
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study){
+  --spark-study-tile:#1b3b65;
+  --spark-study-tile-text:#f1f5fa;
+  --spark-study-arrow-bg:#102e3b;
+}
+@media(max-width:640px){
+  :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-study-hero-copy h1{
+    font-size:clamp(1.7rem,7vw,2.15rem);
+  }
+  :is(.spark-fnh-study,.spark-editorial-study) .spark-generic-lesson-footer{
+    gap:12px;
+  }
+}
