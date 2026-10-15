@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { readLabWorkspace, writeLabWorkspace } from "../models/workspacePersistence.mjs";
 import { buildDocumentHtml } from "../models/documentExport.mjs";
+import { mergeLetter, parseMergeRecipients } from "../models/mailMerge.mjs";
 import { LabFrame, RibbonTabs, WindowBar } from "../components/LabFrame";
 import { ReducedMotionNotice, StatusMessage, ToolGroup, WorkspaceViewport, useTaskEvidence } from "../components/ProductivityKit";
 import { countTextMatches, replaceTextMatches } from "../models/documentModel.mjs";
@@ -36,13 +37,16 @@ export default function WordLab({ lab, userId, completed, onBack, onComplete }) 
   const [selectionText, setSelectionText] = useState("");
   const [lastReplacement, setLastReplacement] = useState(0);
   const [mergeField, setMergeField] = useState(saved.mergeField ?? false);
+  const [recipientsCsv, setRecipientsCsv] = useState(saved.recipientsCsv ?? "ParentName,Parish\nAlicia Brown,Kingston\nDario Lewis,Clarendon");
+  const [previewIndex, setPreviewIndex] = useState(0);
+  const recipients = useMemo(() => parseMergeRecipients(recipientsCsv), [recipientsCsv]);
   const [formControl, setFormControl] = useState(saved.formControl ?? false);
   const [message, setMessage] = useState("Select text in the document, then choose a formatting command.");
   const { evidence, record } = useTaskEvidence();
 
   useEffect(() => {
-    writeLabWorkspace(userId, "word", { bodyText, heading, font, size, align, bullets, columns, orientation, table, header, footer, trackChanges, comment, mergeField, formControl });
-  }, [userId, bodyText, heading, font, size, align, bullets, columns, orientation, table, header, footer, trackChanges, comment, mergeField, formControl]);
+    writeLabWorkspace(userId, "word", { bodyText, heading, font, size, align, bullets, columns, orientation, table, header, footer, trackChanges, comment, mergeField, recipientsCsv, formControl });
+  }, [userId, bodyText, heading, font, size, align, bullets, columns, orientation, table, header, footer, trackChanges, comment, mergeField, recipientsCsv, formControl]);
 
   function exportHtml() {
     const html = buildDocumentHtml({ title: "SPARK Technology Club Newsletter", body: editorRef.current?.innerText ?? bodyText, header, footer, orientation, columns, table, bullets, mergeField });
@@ -180,7 +184,13 @@ export default function WordLab({ lab, userId, completed, onBack, onComplete }) 
             <ToolGroup label="Review"><button type="button" className={trackChanges ? "active" : ""} aria-pressed={trackChanges} onClick={() => setTrackChanges(value => !value)}>Track Changes</button><label htmlFor="word-comment">Comment</label><input id="word-comment" value={comment} onChange={event => setComment(event.target.value)} placeholder="Add a review comment"/></ToolGroup>
             <ToolGroup label="Find and Replace"><label htmlFor="word-find">Find</label><input id="word-find" value={findText} onChange={event => { setFindText(event.target.value); setLastReplacement(0); }}/><label htmlFor="word-replace">Replace</label><input id="word-replace" value={replaceText} onChange={event => setReplaceText(event.target.value)}/><button type="button" onClick={() => replaceInTextNodes(false)}>Replace</button><button type="button" onClick={() => replaceInTextNodes(true)}>Replace All</button></ToolGroup>
           </>}
-          {tab === "Mailings" && <ToolGroup label="Mail merge"><button type="button" className={mergeField ? "active" : ""} aria-pressed={mergeField} onClick={() => setMergeField(value => !value)}>Insert «ParentName»</button></ToolGroup>}
+          {tab === "Mailings" && <ToolGroup label="Mail merge">
+            <button type="button" className={mergeField ? "active" : ""} aria-pressed={mergeField} onClick={() => setMergeField(value => !value)}>Insert «ParentName»</button>
+            <label htmlFor="word-merge-csv">Recipients (CSV)</label>
+            <textarea id="word-merge-csv" rows="3" value={recipientsCsv} onChange={event => { setRecipientsCsv(event.target.value); setPreviewIndex(0); }}/>
+            <span>{recipients.length} valid recipients</span>
+            <button type="button" disabled={!recipients.length} onClick={() => setPreviewIndex(i => (i + 1) % recipients.length)}>Next recipient</button>
+          </ToolGroup>}
           <ReducedMotionNotice/>
         </div>
         <StatusMessage tone={selectionText ? "success" : "neutral"}><strong>{selectionText ? `${selectionText.length} characters selected` : "No text selected"}</strong><span>{message}</span></StatusMessage>
@@ -189,7 +199,7 @@ export default function WordLab({ lab, userId, completed, onBack, onComplete }) 
           <article className={`itv2-word-page ${orientation} columns-${columns}`}>
             {header && <header>{header}</header>}
             <h2 className={heading ? "heading-style" : ""}>SPARK Technology Club Newsletter</h2>
-            {mergeField && <p className="merge-line">Dear «ParentName»,</p>}
+            {mergeField && <p className="merge-line">{recipients.length ? mergeLetter("Dear «ParentName»,",recipients[Math.min(previewIndex,recipients.length-1)]) : "Dear «ParentName»,"}</p>}
             <div ref={editorRef} className="itv2-word-body" contentEditable suppressContentEditableWarning role="textbox" aria-label="Document body" aria-multiline="true" onInput={syncDocument} onKeyUp={captureSelection} onMouseUp={captureSelection} onTouchEnd={captureSelection}>{saved.bodyText ?? STARTING_BODY}</div>
             {bullets && <ul><li>Coding club</li><li>Robotics club</li><li>Digital design club</li></ul>}
             {table && <table><thead><tr><th>Activity</th><th>Day</th><th>Time</th></tr></thead><tbody><tr><td>Coding</td><td>Tuesday</td><td>3:30 pm</td></tr><tr><td>Robotics</td><td>Thursday</td><td>3:30 pm</td></tr></tbody></table>}
