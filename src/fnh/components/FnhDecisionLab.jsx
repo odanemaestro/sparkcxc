@@ -25,9 +25,15 @@ export function fnhMealGroupSummary(selectedIds,foods=FNH_MEAL_FOODS){
       :`You have ${groups.length} food group${groups.length===1?"":"s"}. Select foods from ${4-groups.length} more group${4-groups.length===1?"":"s"} to make a four-mix.`};
 }
 export function fnhNutritionLabelTotal(perReference,referenceAmount,actualAmount){
+  // An empty input is not zero. Otherwise clearing a field silently creates a
+  // plausible-looking 0 g label result instead of prompting the learner.
+  if([perReference,referenceAmount,actualAmount].some(value=>
+    value==null||(typeof value==="string"&&!value.trim())))return null;
   const a=Number(perReference),b=Number(referenceAmount),c=Number(actualAmount);
-  if(!Number.isFinite(a)||!Number.isFinite(b)||!Number.isFinite(c)||a<0||b<=0||c<=0)return null;
-  return (a*c)/b;
+  if(!Number.isFinite(a)||!Number.isFinite(b)||!Number.isFinite(c)
+    ||a<0||b<=0||c<=0)return null;
+  const result=a*c/b;
+  return Number.isFinite(result)?result:null;
 }
 const money=n=>new Intl.NumberFormat("en-JM",{style:"currency",currency:"JMD",maximumFractionDigits:0}).format(n);
 export const FNH_BUDGET_ITEMS=Object.freeze([
@@ -39,9 +45,14 @@ export const FNH_BUDGET_ITEMS=Object.freeze([
   {id:"packaging",label:"Food-safe containers",price:210},
 ]);
 export function fnhBudgetSummary(items,selected,budget){
-  const rows=items.map(item=>({...item,quantity:Math.max(0,Math.min(99,Number(selected[item.id])||0))}));
+  const rows=items.map(item=>{
+    const amount=Number(selected?.[item.id]);
+    const quantity=Number.isFinite(amount)?Math.max(0,Math.min(99,Math.floor(amount))):0;
+    return {...item,quantity};
+  });
   const total=rows.reduce((sum,row)=>sum+row.price*row.quantity,0);
-  const limit=Math.max(0,Number(budget)||0);
+  const rawBudget=Number(budget);
+  const limit=Number.isFinite(rawBudget)?Math.max(0,rawBudget):0;
   return {rows,total,limit,left:limit-total,withinBudget:total<=limit};
 }
 function MealBuilder(){
@@ -56,7 +67,7 @@ function MealBuilder(){
       <strong>{food.name}</strong><small>{food.group}</small><span>{selected.includes(food.id)?"✓ Selected":"Select food"}</span>
     </button>)}</div>
     <div className="fnh-decision-feedback" role="status">
-      <strong>{result.count} of 4 food groups</strong><div className="fnh-decision-meter"><span style={{width:`${Math.min(100,result.count/4*100)}%`}}/></div>
+      <strong>{result.count} different food group${result.count===1?"":"s"}${result.fourMix?" · four-mix achieved":" · aim for four"}</strong><div className="fnh-decision-meter"><span style={{width:`${Math.min(100,result.count/4*100)}%`}}/></div>
       <p>{result.feedback}</p><p><b>Groups:</b> {result.groups.join(", ")||"None yet"}</p>
       {result.chosen.map(food=><p key={food.id}><b>{food.name}:</b> {food.nutrient}</p>)}
     </div>
@@ -75,7 +86,7 @@ function LabelCalculator(){
     <div className="fnh-decision-head"><span>LABEL READING LAB</span><h3>What is really in the full serving?</h3>
       <p>Enter the nutrition information from a food or drink label. Use the same units for both amounts, such as mL or g.</p></div>
     <div className="fnh-decision-fields">
-      <label>Nutrient<select value={name} onChange={event=>{setName(event.target.value);setUnit(event.target.value==="Sodium"?"mg":"g");}}>
+      <label>Nutrient<select value={name} onChange={event=>{const next=event.target.value;setName(next);setUnit(next==="Sodium"?"mg":"g");setNutrient(next==="Sodium"?"200":"6");}}> 
         <option>Sugar</option><option>Protein</option><option>Fat</option><option>Sodium</option>
       </select></label>
       <label>{name} per label reference ({unit})<input type="number" min="0" step="any" value={nutrient} onChange={e=>setNutrient(e.target.value)}/></label>
