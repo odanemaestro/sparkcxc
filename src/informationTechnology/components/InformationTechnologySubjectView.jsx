@@ -6,6 +6,7 @@ import InformationTechnologyPracticalLabs from "../labs/InformationTechnologyPra
 import { readSparkHashRoute, useInformationTechnologyStudyRoute } from "../../routing/sparkRoutingV270";
 import objectiveCoverage from "../course/itObjectiveCoverage.json";
 import "./informationTechnology.css";
+import "../../subjects/sparkSpecializedStudyPolish.css";
 
 function BackIcon() {
   return <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.5 5.5 8 10l4.5 4.5M8 10h8"/></svg>;
