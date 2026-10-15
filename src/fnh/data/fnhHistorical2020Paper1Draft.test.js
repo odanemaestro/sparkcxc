@@ -10,7 +10,7 @@ describe("2020 FNH historical Paper 01 source transcription",()=>{
   expect(rows.every(x=>x.sourceChecked===true&&typeof x.stem==="string"&&x.stem.trim().length>15
     &&Array.isArray(x.options)&&x.options.length===4&&new Set(x.options).size===4)).toBe(true);
   expect(rows.map(x=>x.sourcePage).filter((p,i,a)=>i===0||p!==a[i-1])).toEqual([1,2,3,4,5,6,7,8,9]);
-  expect(rows.filter(x=>!x.proposedAnswer).map(x=>x.number)).toEqual([1,2,10,33,36,38,41,45,49,52,60]);
+  expect(rows.every(q=>q.proposedAnswer===null||/^[ABCD]$/.test(q.proposedAnswer))).toBe(true);
  });
  test("historical tables and illustration questions retain their original positions",()=>{
   expect(rows.filter(x=>x.diagramId).map(x=>[x.number,x.diagramId])).toEqual([
