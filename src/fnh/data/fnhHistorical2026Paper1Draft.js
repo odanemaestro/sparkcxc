@@ -393,7 +393,7 @@ export const FNH_P1_2026_TRANSCRIPTION_DRAFT=Object.freeze([
       "Last date the manufacturer wants the product to be sold",
       "Last date stores are to display the product for sale"
     ],
-    "proposedAnswer": null,
+    "proposedAnswer":"A",
     "explanation": "Several options instead describe quality dates or sell-by dates; the original multiple-choice prompt may not have a unique answer.",
     "sourcePage": 5,
     "sourceChecked": true,
@@ -581,7 +581,7 @@ export const FNH_P1_2026_TRANSCRIPTION_DRAFT=Object.freeze([
       "An increase in the birth rate of a population",
       "An increase in hurricane activity during the hurricane season"
     ],
-    "proposedAnswer": null,
+    "proposedAnswer":"B",
     "explanation": "Food security is affected by production, access and demand. The intended population-effect contrast needs historical key verification.",
     "sourcePage": 6,
     "sourceChecked": true,
@@ -632,7 +632,7 @@ export const FNH_P1_2026_TRANSCRIPTION_DRAFT=Object.freeze([
       "Nutrients needed in large quantities",
       "Nutrients required in small quantities"
     ],
-    "proposedAnswer": "B",
+    "proposedAnswer":"C",
     "explanation": "Table lists essential macronutrients and minerals, not one uniform quantity class.",
     "sourcePage": 6,
     "sourceChecked": true,
@@ -824,7 +824,7 @@ export const FNH_P1_2026_TRANSCRIPTION_DRAFT=Object.freeze([
       "Lime wedges, chopped onions, sliced tomatoes",
       "Tomato cups, chopped parsley, French dressing"
     ],
-    "proposedAnswer": null,
+    "proposedAnswer":"B",
     "explanation": "Garnish arrangements must be reviewed against the intended examiner standard.",
     "sourcePage": 8,
     "sourceChecked": true,
@@ -911,7 +911,7 @@ export const FNH_P1_2026_TRANSCRIPTION_DRAFT=Object.freeze([
       "Pressure cooker",
       "Saucepan steamer"
     ],
-    "proposedAnswer": "B",
+    "proposedAnswer":"C",
     "explanation": "SPARK provisional key requires independent verification against an authenticated marking source.",
     "sourcePage": 9,
     "sourceChecked": true,
