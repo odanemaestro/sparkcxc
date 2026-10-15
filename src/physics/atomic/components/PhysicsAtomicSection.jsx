@@ -4,7 +4,7 @@ import MathText from '../../../practice/MathText';
 import PhysicsFlashcardVisual from '../../components/PhysicsFlashcardVisual';
 import { physicsFlashcardQuestion } from '../../course/physicsFlashcardLanguage.mjs';
 import PhysicsStudyToolkit from '../../components/PhysicsStudyToolkit';
-import CuratedStudyMedia from '../../../components/study/CuratedStudyMedia';
+import CuratedStudyMedia, { CuratedStudyJump } from '../../../components/study/CuratedStudyMedia';
 import PhysicsPracticalNotebook from '../../labs/PhysicsPracticalNotebook';
 import { PhysicsTopicQuiz } from '../../mechanics/components/PhysicsMechanicsSection';
 import { SECTION_E_TOPICS, buildSectionECheckpoint, sectionEStats } from '../sectionEAtomic.mjs';
@@ -21,6 +21,7 @@ function StudyView({ topic, userId, courseProgress, setCourseProgress, onActivit
   const complete = Boolean(courseProgress[`lesson:${topic.id}`]);
   return <div className="pm-study-grid">
     <div className="pm-panel">
+      <CuratedStudyMedia subject="physics" topicId={topic.id}/>
       {(lesson.sections || []).map((section, index) => <section className="pm-section-card" key={section.id || index}>
         <h3>{section.heading}</h3>
         {(section.paragraphs || []).map((paragraph, pIndex) => <MathText key={pIndex} as="p" prose>{paragraph}</MathText>)}
@@ -29,7 +30,7 @@ function StudyView({ topic, userId, courseProgress, setCourseProgress, onActivit
         <h3>Practical activities</h3>
         <ul>{lesson.practicals.map((item, index) => <li key={index}><MathText prose>{item}</MathText></li>)}</ul>
       </section>}
-      <CuratedStudyMedia subject="physics" topicId={topic.id}/>
+      
       <PhysicsStudyToolkit topicId={topic.id}/>
       <div className="pm-completion">
         <button type="button" className={complete ? 'done' : ''} onClick={() => {
@@ -137,7 +138,7 @@ export default function PhysicsAtomicSection({ userId, onBack, onActivity }) {
   return <main className={`physics-mechanics physics-atomic ${mode === "labs" ? "pm-lab-mode" : ""}`}><div className="pm-shell">
     <header className="pm-hero"><div>{onBack && <button type="button" className="pm-btn secondary" onClick={onBack} style={{ marginBottom:12 }}>← Back to Physics</button>}<div className="pm-eyebrow">CSEC Physics · Section E</div><h1>The Physics of the Atom</h1><p>Study all 21 Section E objectives through audited lessons, interactive models, flashcards, topic practice and cumulative assessment.</p></div><div className="pm-hero-stats"><div className="pm-stat"><strong>{stats.objectives}</strong><span>objectives</span></div><div className="pm-stat"><strong>{stats.mcq}</strong><span>MCQs</span></div><div className="pm-stat"><strong>{stats.flashcards}</strong><span>flashcards</span></div><div className="pm-stat"><strong>{ATOMIC_INTERACTIVES.length}</strong><span>interactive labs</span></div></div></header>
     <nav className="pm-topics" aria-label="The Physics of the Atom topics">{SECTION_E_TOPICS.map(item => <button key={item.id} type="button" aria-pressed={topic.id === item.id} className={`pm-topic-btn ${topic.id === item.id ? 'active' : ''}`} onClick={() => { setTopicId(item.id); setMode('study'); }}>{item.id} · {item.title}</button>)}</nav>
-    <div className="pm-topic-head"><div><h2>{topic.id}. {topic.title}</h2><MathText as="p" prose>{topic.lesson.summary}</MathText></div><div className="pm-topic-progress"><strong>{percent}% explored</strong><div className="pm-progress-track"><i style={{ width:`${percent}%` }} /></div><span>{completed}/{total} study activities marked complete</span></div></div>
+    <div className="pm-topic-head"><div><h2>{topic.id}. {topic.title}</h2><MathText as="p" prose>{topic.lesson.summary}</MathText>{mode==='study'&&<CuratedStudyJump subject="physics" topicId={topic.id}/>}</div><div className="pm-topic-progress"><strong>{percent}% explored</strong><div className="pm-progress-track"><i style={{ width:`${percent}%` }} /></div><span>{completed}/{total} study activities marked complete</span></div></div>
     <nav className="pm-modebar" aria-label="The Physics of the Atom learning mode"><button type="button" className={`pm-mode-btn ${mode === 'study' ? 'active' : ''}`} aria-pressed={mode === 'study'} onClick={() => setMode('study')}>Study</button><button type="button" className={`pm-mode-btn ${mode === 'labs' ? 'active' : ''}`} aria-pressed={mode === 'labs'} onClick={() => setMode('labs')}>Labs & practicals</button><button type="button" className={`pm-mode-btn ${mode === 'flashcards' ? 'active' : ''}`} aria-pressed={mode === 'flashcards'} onClick={() => setMode('flashcards')}>Flashcards</button><button type="button" className={`pm-mode-btn ${mode === 'quiz' ? 'active' : ''}`} aria-pressed={mode === 'quiz'} onClick={() => setMode('quiz')}>Topic test</button><button type="button" className={`pm-mode-btn ${mode === 'checkpoint' ? 'active' : ''}`} aria-pressed={mode === 'checkpoint'} onClick={() => setMode('checkpoint')}>Section E checkpoint</button></nav>
     {mode === 'study' && <StudyView topic={topic} userId={userId} courseProgress={courseProgress} setCourseProgress={setCourseProgress} onActivity={onActivity} />}
     {mode === 'labs' && <LabsView topic={topic} progress={atomicProgress} setProgress={setAtomicProgress} onActivity={onActivity} userId={userId} />}
