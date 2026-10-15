@@ -67,7 +67,7 @@ function MealBuilder(){
       <strong>{food.name}</strong><small>{food.group}</small><span>{selected.includes(food.id)?"✓ Selected":"Select food"}</span>
     </button>)}</div>
     <div className="fnh-decision-feedback" role="status">
-      <strong>{result.count} different food group${result.count===1?"":"s"}${result.fourMix?" · four-mix achieved":" · aim for four"}</strong><div className="fnh-decision-meter"><span style={{width:`${Math.min(100,result.count/4*100)}%`}}/></div>
+      <strong>{result.count} different food group{result.count===1?"":"s"}{result.fourMix?" · four-mix achieved":" · aim for four"}</strong><div className="fnh-decision-meter"><span style={{width:`${Math.min(100,result.count/4*100)}%`}}/></div>
       <p>{result.feedback}</p><p><b>Groups:</b> {result.groups.join(", ")||"None yet"}</p>
       {result.chosen.map(food=><p key={food.id}><b>{food.name}:</b> {food.nutrient}</p>)}
     </div>
