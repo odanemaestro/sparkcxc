@@ -3,13 +3,13 @@
    Never applied to exam simulators, tutor booking or admin views. */
 .ss-course,.it-subject-view,.physics-subject-view{
   --study-editorial-surface:#fff;
-  --study-editorial-bg:#f5f7fb;
-  --study-editorial-ink:#17324f;
-  --study-editorial-muted:#586e86;
-  --study-editorial-line:#dbe5ef;
-  --study-editorial-soft:#f0f4fa;
-  --study-editorial-accent:#087d77;
-  --study-editorial-accent-soft:#e3f5f0;
+  --study-editorial-bg:#f4f7f6;
+  --study-editorial-ink:#1b3038;
+  --study-editorial-muted:#546b72;
+  --study-editorial-line:#dce6e3;
+  --study-editorial-soft:#f5f8f7;
+  --study-editorial-accent:#006b61;
+  --study-editorial-accent-soft:#e9f4ef;
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
   -webkit-font-smoothing:antialiased;
   background:var(--study-editorial-bg);
@@ -153,14 +153,14 @@
 .lesson-layout :is(button,select):focus-visible{outline:3px solid #0d9488;outline-offset:3px}
 
 :is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.ss-course,.it-subject-view,.physics-subject-view){
-  --study-editorial-bg:#0d1b2d;
-  --study-editorial-surface:#142840;
-  --study-editorial-ink:#f0f7ff;
-  --study-editorial-muted:#c2d4e5;
-  --study-editorial-line:#34516d;
-  --study-editorial-soft:#1b3550;
-  --study-editorial-accent:#83e9d7;
-  --study-editorial-accent-soft:#184944;
+  --study-editorial-bg:#101b22;
+  --study-editorial-surface:#192831;
+  --study-editorial-ink:#f0f6f5;
+  --study-editorial-muted:#c1d1d1;
+  --study-editorial-line:#354b50;
+  --study-editorial-soft:#21323b;
+  --study-editorial-accent:#82dcd0;
+  --study-editorial-accent-soft:#284844;
   color-scheme:dark;
   background:var(--study-editorial-bg);
   color:var(--study-editorial-ink);
