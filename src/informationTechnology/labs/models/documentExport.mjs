@@ -4,7 +4,7 @@ export function escapeDocumentHtml(input) {
 }
 
 export function buildDocumentHtml(documentData) {
-  const { title = "SPARK Document", body = "", bodyHtml = "", header = "", footer = "", orientation = "portrait", columns = 1, table = false, bullets = false, mergeField = false } = documentData || {};
+  const { title = "SPARK Document", body = "", bodyHtml = "", header = "", footer = "", orientation = "portrait", columns = 1, table = false, tableRows = [], bullets = false, mergeField = false } = documentData || {};
   const safeColumns = columns === 2 ? 2 : 1;
   const safeOrientation = orientation === "landscape" ? "landscape" : "portrait";
   const paragraphs = bodyHtml ? sanitizeDocumentMarkup(bodyHtml) : String(body).split(/\n+/).filter(Boolean).map(value => `<p>${escapeDocumentHtml(value)}</p>`).join("\n");
@@ -15,6 +15,6 @@ export function buildDocumentHtml(documentData) {
 ${mergeField ? "<p>Dear &laquo;ParentName&raquo;,</p>" : ""}
 <main>${paragraphs || "<p></p>"}</main>
 ${bullets ? "<ul><li>Coding club</li><li>Robotics club</li><li>Digital design club</li></ul>" : ""}
-${table ? "<table><thead><tr><th>Activity</th><th>Day</th><th>Time</th></tr></thead><tbody><tr><td>Coding</td><td>Tuesday</td><td>3:30 pm</td></tr><tr><td>Robotics</td><td>Thursday</td><td>3:30 pm</td></tr></tbody></table>" : ""}
+${table ? `<table><thead><tr><th>Activity</th><th>Day</th><th>Time</th></tr></thead><tbody>${tableRows.map(row => `<tr>${row.map(cell => `<td>${escapeDocumentHtml(cell)}</td>`).join("")}</tr>`).join("")}</tbody></table>` : ""}
 <footer>${escapeDocumentHtml(footer)}</footer></body></html>`;
 }
