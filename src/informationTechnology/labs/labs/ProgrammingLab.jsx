@@ -3,6 +3,7 @@ import { LabFrame, RibbonTabs, WindowBar } from "../components/LabFrame";
 import { ReducedMotionNotice, StatusMessage, useTaskEvidence } from "../components/ProductivityKit";
 import { PlayIcon } from "../components/Icons";
 import { createDebugSession, debugStep, debugContinue, debugVariables, toggleBreakpoint } from "../models/debugSession.mjs";
+import { analyzeTeachingProgram } from "../models/programDiagnostics.mjs";
 import {
   PROGRAMMING_TEMPLATES,
   assessSelectionProgram,
@@ -52,8 +53,10 @@ export default function ProgrammingLab({ lab, completed, onBack, onComplete }) {
   const [debugTests, setDebugTests] = useState([]);
   const [runCount, setRunCount] = useState(0);
   const [debugSession,setDebugSession] = useState(() => createDebugSession(null));
+  const [diagnosticsOpen,setDiagnosticsOpen] = useState(false);
   const { evidence, record } = useTaskEvidence();
   const code = sources[exercise];
+  const diagnostics=useMemo(()=>analyzeTeachingProgram({language,exercise,code,input:exercise==="debug"?debugInput:selectionInput}),[language,exercise,code,debugInput,selectionInput]);
   const template = PROGRAMMING_TEMPLATES[language];
 
   const sourceAssessment = useMemo(() => assessSelectionProgram(language, sources.selection), [language, sources.selection]);
@@ -144,12 +147,19 @@ export default function ProgrammingLab({ lab, completed, onBack, onComplete }) {
           <label>Language<select aria-label="Programming language" value={language} onChange={event => changeLanguage(event.target.value)}><option>Visual Basic</option><option>Pascal</option><option>C</option></select></label>
           <div className="itv2-exercise-switch" role="group" aria-label="Programming exercise">{Object.entries(EXERCISES).map(([id, item]) => <button type="button" className={exercise === id ? "active" : ""} aria-pressed={exercise === id} key={id} onClick={() => changeExercise(id)}>{item.label}</button>)}</div>
           <button type="button" className="itv2-run-button" onClick={execute}><PlayIcon/> <span>Run</span></button>
+          <button type="button" aria-pressed={diagnosticsOpen} onClick={()=>setDiagnosticsOpen(value=>!value)}>Problems ({diagnostics.errors.length+diagnostics.warnings.length})</button>
           {exercise === "debug" && <button type="button" onClick={runDebugSuite}>Run all debug tests</button>}
           <ReducedMotionNotice/>
         </div>
 
         <div className="itv2-program-brief"><strong>{EXERCISES[exercise].title}</strong><span>{EXERCISES[exercise].prompt}</span></div>
         <StatusMessage tone={lastRun.ok === false ? "error" : lastRun.ok ? "success" : "neutral"}><strong>{lastRun.ok === false ? "Run stopped" : lastRun.ok ? "Run complete" : "Ready"}</strong><span>{lastRun.message}</span></StatusMessage>
+
+        {diagnosticsOpen&&<section className="itv2-diagnostics" aria-label="Source diagnostics">
+          <strong>Source diagnostics</strong>
+          <p>Checks SPARK's supported teaching patterns, not full language compilation. A passing check does not prove the program works for every input.</p>
+          {diagnostics.errors.length===0&&diagnostics.warnings.length===0?<p role="status">No problems detected for the selected exercise.</p>:<ul>{[...diagnostics.errors,...diagnostics.warnings].map((issue,index)=><li key={index}><strong>{issue.severity.toUpperCase()} · Line {issue.line}</strong> {issue.message}</li>)}</ul>}
+        </section>}
 
         {tab === "Code" && <div className="itv2-ide-layout">
           <aside className="itv2-project-tree"><strong>Project</strong><span>▾ CSEC_Practice</span>{Object.entries(EXERCISES).map(([id, item]) => <button type="button" className={exercise === id ? "active" : ""} key={id} onClick={() => changeExercise(id)}>▤ {item.label}.{template.extension}</button>)}</aside>
