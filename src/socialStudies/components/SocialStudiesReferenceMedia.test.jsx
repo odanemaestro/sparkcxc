@@ -9,8 +9,8 @@ describe("Social Studies online learning references",()=>{
   test("uses traceable credited assets across the CSEC course",()=>{
     const media=Object.values(SOCIAL_STUDIES_MEDIA).flat();
     const ids=new Set(SOCIAL_STUDIES_LESSONS.map(lesson=>lesson.id));
-    expect(SOCIAL_STUDIES_MEDIA_TOPIC_IDS.length).toBeGreaterThanOrEqual(15);
-    expect(media.length).toBeGreaterThanOrEqual(18);
+    expect(SOCIAL_STUDIES_MEDIA_TOPIC_IDS.length).toBeGreaterThanOrEqual(18);
+    expect(media.length).toBeGreaterThanOrEqual(20);
     expect(media.filter(item=>item.kind==="video")).toHaveLength(1);
     for(const id of SOCIAL_STUDIES_MEDIA_TOPIC_IDS) {
       expect(ids.has(id)).toBe(true);
