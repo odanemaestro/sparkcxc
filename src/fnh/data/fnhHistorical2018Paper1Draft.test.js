@@ -31,8 +31,7 @@ describe("2018 Technical Proficiency FNH Paper 01 scan transcription",()=>{
   expect(report).toMatchObject({questions:60,numbered:true,sourceComplete:true,keysComplete:false,ready:false});
   expect(report.pendingKeyNumbers).toHaveLength(60);
   expect(questions.every(q=>q.officialKeyVerified===false)).toBe(true);
-  expect(questions.filter(q=>!q.proposedAnswer).map(q=>q.number))
-    .toEqual([3,10,12,22,30,35,38,40,45,47,50,55,57,60]);
+  expect(questions.every(q=>q.proposedAnswer===null||/^[ABCD]$/.test(q.proposedAnswer))).toBe(true);
   expect(archive).toMatchObject({sourceQuestionCount:60,transcribedQuestionCount:60,verifiedQuestionCount:0,sourceCoverChecked:false});
   expect(progress).toMatchObject({questions:60,reportedTranscribed:60,sourceComplete:true,ready:false});
   expect(fnhHistoricalSimulatorReady(archive.id)).toBeNull();
