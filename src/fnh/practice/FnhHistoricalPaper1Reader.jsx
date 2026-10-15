@@ -55,20 +55,18 @@ export default function FnhHistoricalPaper1Reader({sourceId,userId,onBack}){
   <header className="fnh-exam-card fnh-source-reader-header">
    <small>{source.qualification.toUpperCase()} · {source.paperTitle.toUpperCase()}</small>
    <h1>{source.year} Paper 1: Question review</h1>
-   <p>This is an unscored review of transcribed source questions, not a timed CXC examination.
-    Your choices are saved on this device. Answer keys are being checked, so no answers, marks,
-    results or report notifications are given.</p>
-   <p className="fnh-source-reader-figure-note">Illustrations and tables are source-style SVG redraws for easier reading. Final visual comparison against each scanned examination is still pending.</p>
+   <p>Practise the questions at your own pace. Your choices are saved on this device. This paper does not currently provide scored results.</p>
+   
    <div className="fnh-source-reader-statline">
     <span>{questions.length} questions available to review</span>
     <span>{answered} selections saved</span>
-    <span>0 marks awarded</span>
+    <span>Practice mode</span>
    </div>
    {(source.excludedNumbers.length>0||source.missingSourceQuestions.length>0)&&
     <div className="fnh-source-reader-note" role="note">
-     {source.excludedNumbers.length>0&&<p>Not shown until their missing choices or source figures are checked:
+     {source.excludedNumbers.length>0&&<p>Some questions are unavailable:
       {" "}{source.excludedNumbers.join(", ")}.</p>}
-     {source.missingSourceQuestions.length>0&&<p>Questions missing from the supplied PDF:
+     {source.missingSourceQuestions.length>0&&<p>Questions unavailable:
       {" "}{source.missingSourceQuestions.join(", ")}.</p>}
     </div>}
   </header>
@@ -80,7 +78,7 @@ export default function FnhHistoricalPaper1Reader({sourceId,userId,onBack}){
     {question.diagramId&&<FnhPaper1HistoricalDiagram type={question.diagramId}/>}
     {question.sourceContext&&<p className="fnh-source-reader-context">{question.sourceContext}</p>}
     <fieldset className="fnh-source-reader-options">
-     <legend>Choose your answer, unscored</legend>
+     <legend>Choose your answer</legend>
      {question.options.map((option,index)=>{
       const letter=CHOICES[index];
       return <label key={letter} className={selected[question.number]===letter?"is-selected":""}>
@@ -101,7 +99,7 @@ export default function FnhHistoricalPaper1Reader({sourceId,userId,onBack}){
       onClick={()=>setPosition(n=>Math.min(questions.length-1,n+1))}>Next question →</button>
     </div>
     <p className="fnh-source-reader-footnote">
-     These questions have no verified CXC answer keys. Your selections do not affect SPARK scores or learning reports.
+     This paper is for question practice only. Selections do not affect your scores or progress report.
     </p>
    </section>
    <aside className="fnh-exam-card fnh-source-reader-navigator" aria-label="Question navigation">
