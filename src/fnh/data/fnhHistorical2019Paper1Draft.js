@@ -338,7 +338,7 @@ export const FNH_P1_2019_TRANSCRIPTION_DRAFT=Object.freeze([
       "Beating batters",
       "Chopping vegetables"
     ],
-    "proposedAnswer": null,
+    "proposedAnswer":"C",
     "explanation": "Capabilities vary by blender model and accessories. Confirm the intended CXC answer.",
     "sourcePage": 4,
     "sourceChecked": true,
@@ -389,7 +389,7 @@ export const FNH_P1_2019_TRANSCRIPTION_DRAFT=Object.freeze([
       "a plastic bag at room temperature",
       "a moisture-free area at room temperature"
     ],
-    "proposedAnswer": "D",
+    "proposedAnswer":"B",
     "explanation": "SPARK suggested response awaiting independent CXC key evidence.",
     "sourcePage": 4,
     "sourceChecked": true,
@@ -992,7 +992,7 @@ export const FNH_P1_2019_TRANSCRIPTION_DRAFT=Object.freeze([
       "Tomato cups, chopped parsley, French dressing",
       "Lime butterflies, chopped parsley, glacé cherries"
     ],
-    "proposedAnswer": null,
+    "proposedAnswer":"D",
     "explanation": "Garnish choices need independent review of source standards.",
     "sourcePage": 9,
     "sourceChecked": true,
