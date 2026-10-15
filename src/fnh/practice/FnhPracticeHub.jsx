@@ -1,6 +1,7 @@
 import FnhNavArrow from "./FnhNavArrow";
 import React,{useEffect,useState} from "react";
 import FnhPaper1Exam from "./FnhPaper1Exam";
+import FnhHistoricalPaper1Reader from "./FnhHistoricalPaper1Reader";
 import FnhPaper2Exam from "./FnhPaper2Exam";
 import FnhPracticalWorkbook from "./FnhPracticalWorkbook";
 import FnhHistorical2005Paper2Exam from "./FnhHistorical2005Paper2Exam";
@@ -62,13 +63,14 @@ function FnhPaperLibrary({paper,onBack,onStart,onStartHistorical,onReviewHistori
         <small>HISTORICAL SOURCE · MAY/JUNE</small><h3>{source.year} Paper {paper}</h3>
         <p>{fnhHistoricalPaperFormat(source)?.subject || "Food, Nutrition and Health"} · May/June</p>
         {fnhHistoricalSimulatorReady(source.id)?<>
-          <button type="button" className="fnh-primary" onClick={()=>onStartHistorical(source.id)}>Start past paper <FnhNavArrow/></button>
+          <p>Original questions transcribed and checked</p>
+          <button type="button" className="fnh-primary" onClick={()=>onStartHistorical(source.id)}>Start examination <FnhNavArrow/></button>
         </>:source.paper===1&&fnhHistoricalPaper1Reader(source.id)?.questions.length>0?<>
           <p>Read and practise the original questions from this source. No marks are awarded until the answer-key review is complete.</p>
           {source.id==="FNH-P1-2004-MJ"&&<p>Questions 46–47: possible choices found in other examination years, but the original scan does not show their options.</p>}
           {source.id==="FNH-P1-2005-MJ"&&<p>The supplied scan ends at Question 53; Questions 54–60 are missing.</p>}
           <button type="button" className="fnh-outline" onClick={()=>onReviewHistorical(source.id)}>Review source questions (unscored) <FnhNavArrow/></button>
-        </>:<p>This paper is not available as an interactive test yet.</p>}
+        </>:<p>Question and marking checks pending</p>}
       </article>)}</div>
     </>}
   </div></main>;
@@ -113,8 +115,8 @@ export default function FnhPracticeHub({supabase,userId,onBack}){
     if(id==="FNH-P2-2022-MJ")setView("historical-2022-p2");
     if(id==="FNH-P2-2024-MJ")setView("historical-2024-p2");
     if(id==="FNH-P2-2026-MJ")setView("historical-2026-p2");}}/>;
-  if(view==="review-p1")return <FnhPaper1Exam key={selectedHistoricalP1}
-    historicalSourceId={selectedHistoricalP1} supabase={supabase} userId={userId} onBack={()=>setView("paper1")}/>;
+  if(view==="review-p1")return <FnhHistoricalPaper1Reader key={selectedHistoricalP1}
+    sourceId={selectedHistoricalP1} userId={userId} onBack={()=>setView("paper1")}/>;
   if(view==="exam1")return <FnhPaper1Exam key={selectedPaper1Set} setNumber={selectedPaper1Set} supabase={supabase} userId={userId} onBack={()=>setView("paper1")}/>;
   if(view==="exam2")return <FnhPaper2Exam key={selectedPaper2Set} setNumber={selectedPaper2Set} supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
   if(view==="historical-2005-p2")return <FnhHistorical2005Paper2Exam supabase={supabase} userId={userId} onBack={()=>setView("paper2")}/>;
