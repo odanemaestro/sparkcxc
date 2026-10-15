@@ -143,6 +143,8 @@
 .spark-fnh-study .fnh-study-practice-position{background:var(--fnh-ui-paper-alt);font-size:.75rem;border:0;font-variant-numeric:tabular-nums;color:var(--fnh-ui-muted)}
 .spark-fnh-study .fnh-study-practice-progress{border-bottom:0;padding:0;margin:19px 0 25px;gap:7px}
 .spark-fnh-study .fnh-study-practice-progress button{width:39px;height:39px;border-radius:10px;font-variant-numeric:tabular-nums}
+.spark-fnh-study .fnh-study-practice-progress button.current{background:var(--fnh-ui-teal);border-color:var(--fnh-ui-teal);color:#fff}
+
 .spark-fnh-study .fnh-study-practice-progress>span{font-size:.8rem}
 .spark-fnh-study .fnh-study-practice-meta{letter-spacing:0;font-weight:650;color:var(--fnh-ui-muted);font-size:.75rem}
 .spark-fnh-study .fnh-study-practice-meta span:first-child{color:var(--fnh-ui-teal-ink)}
@@ -196,6 +198,7 @@ html[data-theme="dark"] .spark-fnh-study .spark-generic-study-hero-actions butto
 html[data-theme="dark"] .spark-fnh-study .spark-generic-lesson-footer button:disabled,body[data-theme="dark"] .spark-fnh-study .spark-generic-lesson-footer button:disabled,.dark .spark-fnh-study .spark-generic-lesson-footer button:disabled{background:var(--fnh-ui-paper-alt)!important;color:var(--fnh-ui-muted)!important;border-color:var(--fnh-ui-line)!important}
 html[data-theme="dark"] .spark-fnh-study .spark-generic-lesson-nav-next:not(:disabled),body[data-theme="dark"] .spark-fnh-study .spark-generic-lesson-nav-next:not(:disabled),.dark .spark-fnh-study .spark-generic-lesson-nav-next:not(:disabled),
 html[data-theme="dark"] .spark-fnh-study .spark-generic-complete-action:not(:disabled):not(.completed),body[data-theme="dark"] .spark-fnh-study .spark-generic-complete-action:not(:disabled):not(.completed),.dark .spark-fnh-study .spark-generic-complete-action:not(:disabled):not(.completed){background:#70cabd!important;color:#0a2929!important;border-color:#70cabd!important}
+html[data-theme="dark"] .spark-fnh-study .fnh-study-practice-progress button.current,body[data-theme="dark"] .spark-fnh-study .fnh-study-practice-progress button.current,.dark .spark-fnh-study .fnh-study-practice-progress button.current{color:#0a2929}
 html[data-theme="dark"] .spark-fnh-study .fnh-study-practice-check,body[data-theme="dark"] .spark-fnh-study .fnh-study-practice-check,.dark .spark-fnh-study .fnh-study-practice-check,
 html[data-theme="dark"] .spark-fnh-study .fnh-objective-practice-primary,body[data-theme="dark"] .spark-fnh-study .fnh-objective-practice-primary,.dark .spark-fnh-study .fnh-objective-practice-primary{background:#70cabd;color:#0a2929;border-color:#70cabd}
 html[data-theme="dark"] .spark-fnh-study .spark-generic-example-answer,body[data-theme="dark"] .spark-fnh-study .spark-generic-example-answer,.dark .spark-fnh-study .spark-generic-example-answer{background:#28372e;color:var(--fnh-ui-ink)}
