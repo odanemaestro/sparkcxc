@@ -66,7 +66,7 @@ describe("FNH historical answer sanity checks", () => {
     }
     expect(new Set(FNH_P1_2003_TRANSCRIPTION_DRAFT.map(q=>q.number)).size).toBe(60);
   });
-  test("tiered steamer is chosen when several foods use one heat source", () => {
+  test("SPARK-approved provisional pressure-cooker choice is consistent across repeating items", () => {
     for(const [bank,number] of [
       [FNH_P1_2016_TRANSCRIPTION_DRAFT,50],
       [FNH_P1_2017_TRANSCRIPTION_DRAFT,55],
@@ -74,7 +74,7 @@ describe("FNH historical answer sanity checks", () => {
       [FNH_P1_2026_TRANSCRIPTION_DRAFT,53],
     ]) {
       const row=bank.find(q=>q.number===number);
-      expect(selectedText(row)).toMatch(/tiered steamer/i);
+      expect(selectedText(row)).toMatch(/pressure cooker/i);
       expect(row.officialKeyVerified).not.toBe(true);
     }
   });
