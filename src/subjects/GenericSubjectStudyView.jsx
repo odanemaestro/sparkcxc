@@ -22,7 +22,6 @@ import FnhStudyPractice from "../fnh/components/FnhStudyPractice";
 import FnhDecisionLab from "../fnh/components/FnhDecisionLab";
 import FnhReferenceMedia from "../fnh/components/FnhReferenceMedia";
 import { fnhMediaForTopic } from "../fnh/data/fnhReferenceMedia";
-import FnhBackToTop from "../fnh/components/FnhBackToTop";
 import {
   readSparkHashRoute,
   subscribeSparkRoute,
@@ -1024,7 +1023,6 @@ export default function GenericSubjectStudyView({
           </div>
         )}
       </div>
-      {subjectId&&<FnhBackToTop/>}
     </main>
   );
 }
