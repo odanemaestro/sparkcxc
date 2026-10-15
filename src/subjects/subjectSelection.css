@@ -139,3 +139,13 @@
   .spark-subject-selection-card:has(.spark-subject-selection-card-button:hover),
   .spark-subject-selection-card-button:hover .spark-dashboard-card-action-icon{transform:none}
 }
+
+/* Unified SPARK back navigation: decorative thin-line SVG beside the label. */
+.spark-subject-selection-back{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  white-space:nowrap;
+}
+.spark-subject-selection-back svg{flex-shrink:0}
