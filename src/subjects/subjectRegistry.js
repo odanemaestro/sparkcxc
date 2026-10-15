@@ -214,8 +214,8 @@ const BASE_SUBJECTS = Object.freeze({
       progress:"/dashboard/progress",
     }),
     capabilities:Object.freeze({
-      study:true,practice:false,flashcards:true,progress:true,
-      paper1:false,paper2:false,adaptive:false,structured:false,labs:true,sba:true,
+      study:true,practice:true,flashcards:true,progress:true,
+      paper1:true,paper2:true,adaptive:false,structured:true,labs:true,sba:true,
     }),
   }),
   informationTechnology: Object.freeze({
