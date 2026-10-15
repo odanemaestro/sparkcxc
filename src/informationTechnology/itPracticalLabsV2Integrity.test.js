@@ -55,7 +55,7 @@ describe("Information Technology Practical Labs V2", () => {
   });
 
   test("Web studio includes site tree, responsive preview, hyperlinks and publishing check", () => {
-    for (const feature of ["Site pages","Desktop","Mobile","Email link","External link","Run link checker","Publish site"]) {
+    for (const feature of ["Site pages","Desktop","Mobile","Email link","External link","Run link checker","Export site HTML"]) {
       expect(web).toContain(feature);
     }
   });

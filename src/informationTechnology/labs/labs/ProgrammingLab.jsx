@@ -1,7 +1,10 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
+import {readLabWorkspace,writeLabWorkspace} from "../models/workspacePersistence.mjs";
 import { LabFrame, RibbonTabs, WindowBar } from "../components/LabFrame";
 import { ReducedMotionNotice, StatusMessage, useTaskEvidence } from "../components/ProductivityKit";
 import { PlayIcon } from "../components/Icons";
+import { createDebugSession, debugStep, debugContinue, debugVariables, toggleBreakpoint, setBreakpointCondition } from "../models/debugSession.mjs";
+import { analyzeTeachingProgram } from "../models/programDiagnostics.mjs";
 import {
   PROGRAMMING_TEMPLATES,
   assessSelectionProgram,
@@ -35,23 +38,27 @@ function TraceTable({ trace }) {
   );
 }
 
-export default function ProgrammingLab({ lab, completed, onBack, onComplete }) {
+export default function ProgrammingLab({ lab, userId, completed, onBack, onComplete }) {
+  const savedDraft=useMemo(()=>readLabWorkspace(userId,"programming",{}),[userId]);
   const [tab, setTab] = useState("Code");
-  const [language, setLanguage] = useState("Visual Basic");
+  const [language, setLanguage] = useState(()=>PROGRAMMING_TEMPLATES[savedDraft.language]?savedDraft.language:"Visual Basic");
   const [exercise, setExercise] = useState("selection");
-  const [sources, setSources] = useState(() => ({
-    selection: PROGRAMMING_TEMPLATES["Visual Basic"].selection,
-    loop: PROGRAMMING_TEMPLATES["Visual Basic"].loop,
-    debug: PROGRAMMING_TEMPLATES["Visual Basic"].debug,
-  }));
+  const [sources, setSources] = useState(() => {
+    const defaults=PROGRAMMING_TEMPLATES[PROGRAMMING_TEMPLATES[savedDraft.language]?savedDraft.language:"Visual Basic"];
+    return Object.fromEntries(["selection","loop","debug"].map(key=>[key,typeof savedDraft?.sources?.[key]==="string"&&savedDraft.sources[key].length<=30000?savedDraft.sources[key]:defaults[key]]));
+  });
+  useEffect(()=>{writeLabWorkspace(userId,"programming",{language,sources});},[userId,language,sources]);
   const [selectionInput, setSelectionInput] = useState("72");
   const [debugInput, setDebugInput] = useState("100");
   const [lastRun, setLastRun] = useState(() => emptyRun());
   const [selectionTests, setSelectionTests] = useState([]);
   const [debugTests, setDebugTests] = useState([]);
   const [runCount, setRunCount] = useState(0);
-  const { evidence, record } = useTaskEvidence();
+  const [debugSession,setDebugSession] = useState(() => createDebugSession(null));
+  const [diagnosticsOpen,setDiagnosticsOpen] = useState(false);
+  const { evidence, record } = useTaskEvidence(userId, lab.id);
   const code = sources[exercise];
+  const diagnostics=useMemo(()=>analyzeTeachingProgram({language,exercise,code,input:exercise==="debug"?debugInput:selectionInput}),[language,exercise,code,debugInput,selectionInput]);
   const template = PROGRAMMING_TEMPLATES[language];
 
   const sourceAssessment = useMemo(() => assessSelectionProgram(language, sources.selection), [language, sources.selection]);
@@ -72,6 +79,7 @@ export default function ProgrammingLab({ lab, completed, onBack, onComplete }) {
   function updateCode(value) {
     setSources(current => ({ ...current, [exercise]: value }));
     setLastRun(emptyRun("Source changed. Run again to verify the result."));
+    setDebugSession(createDebugSession(null));
   }
 
   function changeLanguage(value) {
@@ -81,6 +89,7 @@ export default function ProgrammingLab({ lab, completed, onBack, onComplete }) {
     setSelectionTests([]);
     setDebugTests([]);
     setLastRun(emptyRun());
+    setDebugSession(createDebugSession(null));
   }
 
   function changeExercise(value) {
@@ -94,6 +103,7 @@ export default function ProgrammingLab({ lab, completed, onBack, onComplete }) {
     else if (exercise === "loop") run = runLoopProgram({ language, code });
     else run = runTaxProgram({ language, code, input: debugInput });
     setRunCount(count => count + 1);
+    setDebugSession(previous => createDebugSession(run, previous.breakpoints, previous.conditions));
     setLastRun({ ...run, message: run.ok ? "Program completed successfully." : "The program did not run. Correct the reported issue and try again." });
     if (!run.ok) return;
     if (commentPresent) record("comment-run");
@@ -115,6 +125,7 @@ export default function ProgrammingLab({ lab, completed, onBack, onComplete }) {
     setRunCount(count => count + assessment.runs.length);
     setDebugTests(assessment.runs.map(item => ({ input: item.input, expected: item.expected, output: item.run.output, ok: item.run.ok && item.run.output === item.expected })));
     const displayedRun = runTaxProgram({ language, code: sources.debug, input: debugInput });
+    setDebugSession(previous => createDebugSession(displayedRun, previous.breakpoints, previous.conditions));
     setLastRun({ ...displayedRun, message: assessment.passed ? "All three debug tests passed. The logic error is corrected." : "Debug tests failed. The tax must be 15% for every test value." });
     if (assessment.passed) {
       record("debug-pass");
@@ -138,12 +149,19 @@ export default function ProgrammingLab({ lab, completed, onBack, onComplete }) {
           <label>Language<select aria-label="Programming language" value={language} onChange={event => changeLanguage(event.target.value)}><option>Visual Basic</option><option>Pascal</option><option>C</option></select></label>
           <div className="itv2-exercise-switch" role="group" aria-label="Programming exercise">{Object.entries(EXERCISES).map(([id, item]) => <button type="button" className={exercise === id ? "active" : ""} aria-pressed={exercise === id} key={id} onClick={() => changeExercise(id)}>{item.label}</button>)}</div>
           <button type="button" className="itv2-run-button" onClick={execute}><PlayIcon/> <span>Run</span></button>
+          <button type="button" aria-pressed={diagnosticsOpen} onClick={()=>setDiagnosticsOpen(value=>!value)}>Problems ({diagnostics.errors.length+diagnostics.warnings.length})</button>
           {exercise === "debug" && <button type="button" onClick={runDebugSuite}>Run all debug tests</button>}
           <ReducedMotionNotice/>
         </div>
 
         <div className="itv2-program-brief"><strong>{EXERCISES[exercise].title}</strong><span>{EXERCISES[exercise].prompt}</span></div>
         <StatusMessage tone={lastRun.ok === false ? "error" : lastRun.ok ? "success" : "neutral"}><strong>{lastRun.ok === false ? "Run stopped" : lastRun.ok ? "Run complete" : "Ready"}</strong><span>{lastRun.message}</span></StatusMessage>
+
+        {diagnosticsOpen&&<section className="itv2-diagnostics" aria-label="Source diagnostics">
+          <strong>Source diagnostics</strong>
+          <p>Checks SPARK's supported teaching patterns, not full language compilation. A passing check does not prove the program works for every input.</p>
+          {diagnostics.errors.length===0&&diagnostics.warnings.length===0?<p role="status">No problems detected for the selected exercise.</p>:<ul>{[...diagnostics.errors,...diagnostics.warnings].map((issue,index)=><li key={index}><strong>{issue.severity.toUpperCase()} · Line {issue.line}</strong> {issue.message}</li>)}</ul>}
+        </section>}
 
         {tab === "Code" && <div className="itv2-ide-layout">
           <aside className="itv2-project-tree"><strong>Project</strong><span>▾ CSEC_Practice</span>{Object.entries(EXERCISES).map(([id, item]) => <button type="button" className={exercise === id ? "active" : ""} key={id} onClick={() => changeExercise(id)}>▤ {item.label}.{template.extension}</button>)}</aside>
@@ -159,7 +177,25 @@ export default function ProgrammingLab({ lab, completed, onBack, onComplete }) {
 
         {tab === "Variable Trace" && <div className="itv2-debug-layout"><div className="itv2-trace-heading"><strong>Execution trace</strong><span>Values shown are from the most recent successful run.</span></div><TraceTable trace={lastRun.ok ? lastRun.trace : []}/></div>}
 
-        {tab === "Debug" && <div className="itv2-debug-layout"><h3>Debug by testing</h3><p>The faulty program calculates 50% tax instead of 15%. Correct the source, then run all three tests. Choosing an error type alone does not complete this task.</p><button type="button" className="itv2-debug-run" onClick={() => { setExercise("debug"); setTab("Code"); }}>Open faulty program</button><button type="button" className="itv2-debug-run" onClick={() => { setExercise("debug"); runDebugSuite(); }}>Run all debug tests</button>{debugTests.length > 0 && <div className={`itv2-debug-verdict ${debugTests.every(test => test.ok) ? "pass" : "fail"}`} role="status">{debugTests.every(test => test.ok) ? "All debug tests passed." : `${debugTests.filter(test => !test.ok).length} debug test(s) still failing.`}</div>}</div>}
+        {tab === "Debug" && <div className="itv2-debug-layout">
+          <h3>Step-through debugger</h3>
+          <p>Run your code to build a validated execution trace. Set a breakpoint beside a source line, then step or continue through the simulated program. This teaching debugger supports SPARK's three exercises, not arbitrary source compilation.</p>
+          <div className="itv2-debug-controls">
+            <button type="button" onClick={execute}>Restart trace</button>
+            <button type="button" onClick={()=>setDebugSession(debugStep)} disabled={!debugSession.trace.length||debugSession.phase==="complete"}>Step over</button>
+            <button type="button" onClick={()=>setDebugSession(debugContinue)} disabled={!debugSession.trace.length||debugSession.phase==="complete"}>Continue</button>
+            <button type="button" onClick={()=>setDebugSession(createDebugSession(lastRun,debugSession.breakpoints,debugSession.conditions))} disabled={!lastRun.ok}>Reset cursor</button>
+          </div>
+          <div className="itv2-debug-inspector">
+            <div><strong>Source lines and breakpoints</strong><div className="itv2-breakpoints" role="group" aria-label="Toggle source breakpoints">
+              {code.split("\n").map((line,index)=><React.Fragment key={index}><button type="button" className={debugSession.breakpoints.includes(index+1)?"is-active":""} aria-pressed={debugSession.breakpoints.includes(index+1)} onClick={()=>setDebugSession(old=>toggleBreakpoint(old,index+1,code.split("\n").length))}><span aria-hidden="true">{debugSession.breakpoints.includes(index+1)?"●":"○"}</span> {index+1} <code>{line||" "}</code></button>{debugSession.breakpoints.includes(index+1)&&<input aria-label={`Condition for breakpoint at line ${index+1}`} placeholder="mark >= 50 (optional)" value={debugSession.conditions?.[index+1]||""} onChange={event=>setDebugSession(current=>setBreakpointCondition(current,index+1,event.target.value))}/>}</React.Fragment>)}
+            </div></div>
+            <div><strong>Debugger state</strong><p role="status">{debugSession.phase==="unavailable"?"Run a valid exercise first.":debugSession.phase==="complete"?"Execution complete":debugSession.cursor<0?"Paused before first step":`Paused at trace step ${debugSession.cursor+1} of ${debugSession.trace.length}`}</p>
+              <dl>{Object.entries(debugVariables(debugSession)).map(([name,value])=><React.Fragment key={name}><dt>{name}</dt><dd>{String(value)}</dd></React.Fragment>)}</dl>
+              {debugSession.cursor>=0&&<p>Line {debugSession.trace[debugSession.cursor]?.line??"—"}: {debugSession.trace[debugSession.cursor]?.detail}</p>}
+            </div>
+          </div>
+          <h3>Debug by testing</h3><p>The faulty program calculates 50% tax instead of 15%. Correct the source, then run all three tests. Choosing an error type alone does not complete this task.</p><button type="button" className="itv2-debug-run" onClick={() => { setExercise("debug"); setTab("Code"); }}>Open faulty program</button><button type="button" className="itv2-debug-run" onClick={() => { setExercise("debug"); runDebugSuite(); }}>Run all debug tests</button>{debugTests.length > 0 && <div className={`itv2-debug-verdict ${debugTests.every(test => test.ok) ? "pass" : "fail"}`} role="status">{debugTests.every(test => test.ok) ? "All debug tests passed." : `${debugTests.filter(test => !test.ok).length} debug test(s) still failing.`}</div>}</div>}
       </div>
     </LabFrame>
   );

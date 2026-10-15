@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
+import { readLabEvidence, writeLabEvidence } from "../models/labEvidence.mjs";
 
 export function ToolGroup({ label, children }) {
   return <fieldset className="itv2-tool-group"><legend>{label}</legend>{children}</fieldset>;
@@ -38,8 +39,11 @@ export function useWorkspaceHistory(initialState, limit = 30) {
   return { state, setState, undo, redo, canUndo: history.current.past.length > 0, canRedo: history.current.future.length > 0 };
 }
 
-export function useTaskEvidence() {
-  const [evidence, setEvidence] = useState(() => new Set());
+export function useTaskEvidence(userId, labId) {
+  const [evidence, setEvidence] = useState(() => new Set(readLabEvidence(userId, labId)));
+  useEffect(() => {
+    writeLabEvidence(userId, labId, evidence);
+  }, [userId, labId, evidence]);
   const record = useCallback(id => setEvidence(previous => previous.has(id) ? previous : new Set(previous).add(id)), []);
   return { evidence, record };
 }

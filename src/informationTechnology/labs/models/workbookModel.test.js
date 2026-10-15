@@ -26,6 +26,31 @@ describe("workbook model", () => {
     expect(evaluateCell({ Sales: cells }, "Sales", "E6").value).toBeLessThan(0);
   });
 
+  it("COUNTIF only counts cells in the requested range", () => {
+    const book = { Sales: { A1: 1, A2: 3, A3: 5, B1: '=COUNTIF(A1:A3,">=3")', B2: '=COUNTIF(A1:A3,">=9")' } };
+    expect(evaluateCell(book, "Sales", "B1").value).toBe(2);
+    expect(evaluateCell(book, "Sales", "B2").value).toBe(0);
+  });
+
+  it("IF only evaluates the chosen branch", () => {
+    const book = { Sales: { A1: '=IF(TRUE,42,1/0)', A2: '=IF(FALSE,1/0,7)' } };
+    expect(evaluateCell(book, "Sales", "A1").value).toBe(42);
+    expect(evaluateCell(book, "Sales", "A2").value).toBe(7);
+  });
+
+  it("exact VLOOKUP supports references on another worksheet", () => {
+    const book = { Data: { A1: "Mouse", B1: 150, A2: "Keyboard", B2: 200 }, Summary: { A1: '=VLOOKUP("Keyboard",Data!A1:B2,2,FALSE)' } };
+    expect(evaluateCell(book, "Summary", "A1").value).toBe(200);
+  });
+
+  it("respects arithmetic precedence and grouped absolute-reference expressions", () => {
+    const book={Sales:{H1:0.15,B2:4,C2:500,D2:"=B2*C2",F2:"=D2*(1+$H$1)",A1:"=2+3*4",A2:"=(2+3)*4",A3:"=7-2-1"}};
+    expect(evaluateCell(book,"Sales","F2").value).toBeCloseTo(2300);
+    expect(evaluateCell(book,"Sales","A1").value).toBe(14);
+    expect(evaluateCell(book,"Sales","A2").value).toBe(20);
+    expect(evaluateCell(book,"Sales","A3").value).toBe(4);
+  });
+
   it("preserves absolute and mixed references while filling", () => {
     expect(translateFormula("=D2*$H$1", 3, 0)).toBe("=D5*$H$1");
     expect(translateFormula("=$D2*H$1", 2, 1)).toBe("=$D4*I$1");

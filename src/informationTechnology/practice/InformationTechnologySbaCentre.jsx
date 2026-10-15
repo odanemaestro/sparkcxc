@@ -1,5 +1,6 @@
 import React, { useEffect, useLayoutEffect, useMemo, useState } from "react";
 import BackArrowIcon from "../../components/ui/BackArrowIcon";
+import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import {
   IT_SBA_COMPONENTS,
   IT_SBA_CURRENT_LIMITS,
@@ -9,6 +10,7 @@ import {
   findItSbaProject,
 } from "./itSbaProjects";
 import { getItSbaProjectTasks } from "./itSbaProjectTasks";
+import { captureSbaEvidence, readSbaEvidence, exportSbaEvidence, exportSbaProjectPortfolio } from "./itSbaPortfolio.mjs";
 import { useInformationTechnologySbaRoute } from "../../routing/sparkRoutingV270";
 import "./informationTechnologySba.css";
 
@@ -268,6 +270,12 @@ function CentreHome({ openProject, onBack }) {
 }
 
 function ProjectOverview({ project, userId, onActivity, openHome, openComponent }) {
+  function downloadPortfolio(){
+    const content=exportSbaProjectPortfolio(userId,project.id);
+    const url=URL.createObjectURL(new Blob([content],{type:"application/json;charset=utf-8"}));
+    const anchor=document.createElement("a");anchor.href=url;anchor.download=`SPARK-${project.id}-IT-SBA-practice.json`;
+    document.body.appendChild(anchor);anchor.click();anchor.remove();URL.revokeObjectURL(url);
+  }
   const [progress,setProgress]=useState(()=>readProgress(userId,project.id));
   const completeCount=IT_SBA_COMPONENTS.filter(item=>progress[item.id]).length;
   useEffect(()=>setProgress(readProgress(userId,project.id)),[userId,project.id]);
@@ -282,8 +290,8 @@ function ProjectOverview({ project, userId, onActivity, openHome, openComponent 
     <button type="button" className="it-practice-back it-sba-back" data-spark-action="nav" onClick={openHome}><BackArrowIcon/><span>All SBA projects</span></button>
     <header className="it-sba-project-hero"><div><div className="it-practice-eyebrow">{project.code} - {project.sector}</div><h1>{project.title}</h1><p>{project.scenario}</p></div><div className="it-sba-progress-ring" aria-label={`${completeCount} of 5 sections reviewed`}><strong>{completeCount}/5</strong><span>sections reviewed</span></div></header>
     <section className="it-sba-pdf-feature"><div><div className="it-practice-label">Start here</div><h2>Read the full SBA question paper.</h2><p>This PDF contains the scenario and all questions in the order a student would receive them. Read it before opening the step-by-step guides.</p><PdfActions project={project}/></div><object className="it-sba-pdf-viewer" data={projectPdf(project.id)} type="application/pdf" aria-label={`${project.title} full SBA PDF`}><p>Your browser does not display PDFs inside the page. <a href={projectPdf(project.id)} target="_blank" rel="noreferrer">Open the full SBA PDF</a>.</p></object></section>
-    <section className="it-sba-project-purpose"><div className="it-practice-label">Description of Project</div><h2>What you are building</h2><p>{project.purpose}</p></section>
-    <section className="it-sba-component-grid">{IT_SBA_COMPONENTS.map((item,index)=>{const component=project.components[item.id];const done=Boolean(progress[item.id]);const count=getItSbaProjectTasks(project.id,item.id).length;return <article key={item.id} className={`it-sba-component-card ${done?"done":""}`}><div className="it-sba-component-head"><div className="it-sba-component-icon"><SbaIcon type={item.id}/></div><span>Section {index+1}</span><strong>{count} questions</strong></div><h2>{item.title}</h2><p>{component.produce}</p><div className="it-sba-card-actions"><button type="button" className={done?"it-practice-secondary":"it-practice-primary"} onClick={()=>openComponent(project.id,item.id)}>{done?"Review questions":"Start questions"}</button><a className="it-sba-text-link" href={completedPdf(project.id,item.id)} target="_blank" rel="noreferrer">View completed PDF</a></div></article>;})}</section>
+    <section className="it-sba-project-purpose"><div className="it-practice-label">Description of Project</div><h2>What you are building</h2><p>{project.purpose}</p><button type="button" className="it-practice-secondary" onClick={downloadPortfolio}>Download my project practice portfolio (JSON)</button><p>Includes the latest saved practice snapshots for all five components on this device. This is not an SBA submission.</p></section>
+    <section className="it-sba-component-grid">{IT_SBA_COMPONENTS.map((item,index)=>{const component=project.components[item.id];const done=Boolean(progress[item.id]);const count=getItSbaProjectTasks(project.id,item.id).length;return <article key={item.id} className={`it-sba-component-card ${done?"done":""}`}><div className="it-sba-component-head"><div className="it-sba-component-icon"><SbaIcon type={item.id}/></div><span>Section {index+1}</span><strong>{count} questions</strong></div><h2>{item.title}</h2><p>{component.produce}</p><small>{readSbaEvidence(userId,project.id,item.id).length} saved Studio evidence versions</small><div className="it-sba-card-actions"><button type="button" className={done?"it-practice-secondary":"it-practice-primary"} onClick={()=>openComponent(project.id,item.id)}>{done?"Review questions":"Start questions"}</button><a className="it-sba-text-link" href={completedPdf(project.id,item.id)} target="_blank" rel="noreferrer">View completed PDF</a></div></article>;})}</section>
     <section className="it-sba-download-card"><div><div className="it-practice-label">Completed SBA downloads</div><h2>Download the completed SPARK reference for each section.</h2><p>These are full section PDFs, not short answer sheets. Each one shows the exact questions being answered, the method used and the completed result. The SPARK watermark is placed throughout the document.</p></div><div className="it-sba-download-grid"><a href={projectPdf(project.id)} download><SbaIcon type="pdf"/><span><strong>Full SBA question paper</strong><small>PDF</small></span></a>{IT_SBA_COMPONENTS.map(item=><a key={item.id} href={completedPdf(project.id,item.id)} download><SbaIcon type={item.id}/><span><strong>Completed {item.title}</strong><small>Watermarked PDF</small></span></a>)}</div></section>
     <NativeFileDownloads project={project}/>
     <section className="it-sba-progress-actions"><span>Your review progress is saved to your SPARK progress and kept separately for your account on this device.</span>{completeCount>0&&<button type="button" className="it-practice-secondary" onClick={resetProgress}>Reset review progress</button>}</section>
@@ -300,6 +308,20 @@ function ComponentGuide({ project, componentId, userId, onActivity, openProject,
   const meta=IT_SBA_COMPONENTS[componentIndex];
   const questions=getItSbaProjectTasks(project.id,componentId);
   const [progress,setProgress]=useState(()=>readProgress(userId,project.id));
+  const [snapshots,setSnapshots]=useState(()=>readSbaEvidence(userId,project.id,componentId));
+  const [snapshotMessage,setSnapshotMessage]=useState("");
+  useEffect(()=>{setSnapshots(readSbaEvidence(userId,project.id,componentId));setSnapshotMessage("");},[userId,project.id,componentId]);
+  function captureWork(){
+    const result=captureSbaEvidence(userId,project.id,componentId);
+    if(result.ok){setSnapshots(result.versions);setSnapshotMessage("Studio work saved as a project practice snapshot.");}
+    else setSnapshotMessage(result.error);
+  }
+  function downloadWork(){
+    const content=exportSbaEvidence(userId,project.id,componentId);
+    const url=URL.createObjectURL(new Blob([content],{type:"application/json;charset=utf-8"}));
+    const anchor=document.createElement("a");anchor.href=url;anchor.download=`SPARK-SBA-${project.id}-${componentId}-practice.json`;
+    document.body.appendChild(anchor);anchor.click();anchor.remove();URL.revokeObjectURL(url);
+  }
   const done=Boolean(progress[componentId]);
   const nextMeta=IT_SBA_COMPONENTS[componentIndex+1]||null;
   if(!component||!meta)return null;
@@ -315,6 +337,19 @@ function ComponentGuide({ project, componentId, userId, onActivity, openProject,
     <button type="button" className="it-practice-back it-sba-back" data-spark-action="nav" onClick={()=>openProject(project.id)}><BackArrowIcon/><span>{project.title}</span></button>
     <header className="it-sba-component-hero"><div className="it-sba-component-icon large"><SbaIcon type={componentId} size={32}/></div><div><div className="it-practice-eyebrow">{project.code} - {questions.length} guided questions</div><h1>{meta.title}</h1><p>{component.produce}</p></div></header>
     <section className="it-sba-question-intro"><div className="it-practice-label">Question-by-question guide</div><h2>Know the exact question before you start clicking.</h2><p>Each card below repeats the practice-SBA question, tells you exactly how to approach it, then shows what the completed SPARK result contains. Keep the full SBA PDF open beside you while you work.</p><a className="it-practice-secondary" href={projectPdf(project.id)} target="_blank" rel="noreferrer"><SbaIcon type="pdf" size={18}/><span>View full SBA</span></a></section>
+    <section className="it-sba-download-card it-sba-lab-launch">
+      <div><div className="it-practice-label">WORK IN SPARK STUDIO</div><h2>Practise this SBA section in the interactive lab</h2><p>Open the matching tool to build and test your own work. The studio is a learning workspace; completing a guided lab does not automatically submit or grade your SBA project.</p></div>
+      <a className="it-practice-primary" href={`#/study/information-technology/labs/${({database:"database",spreadsheet:"spreadsheet",word:"word-processing",web:"web-design",programming:"programming"})[componentId]||"programming"}`}>Open {meta.title} lab <ForwardArrowIcon/></a>
+    </section>
+    <section className="it-sba-download-card" aria-label="My SBA practice evidence">
+      <div><div className="it-practice-label">MY PROJECT WORK</div><h2>Save evidence from your SPARK Studio</h2>
+        <p>After practising in the linked Studio, capture a version of your saved work here. Each fictional SBA project has its own local evidence history. These snapshots do not submit or grade an SBA.</p>
+        <p role="status" aria-live="polite">{snapshotMessage || (snapshots.length ? snapshots.length + " saved versions on this device." : "No snapshots saved yet.")}</p>
+        {snapshots.length > 0 && <ul>{snapshots.map(item=><li key={item.version}>Version {item.version} · {item.recordedAt}</li>)}</ul>}
+      </div>
+      <div className="it-sba-card-actions"><button type="button" className="it-practice-primary" onClick={captureWork}>Capture Studio work</button>
+      <button type="button" className="it-practice-secondary" onClick={downloadWork} disabled={!snapshots.length}>Download practice evidence (JSON)</button></div>
+    </section>
     <section className="it-sba-question-list">{questions.map((task,index)=><QuestionCard key={task.id} task={task} index={index}/>)}</section>
     <section className="it-sba-section-pdf"><div><div className="it-practice-label">Completed {meta.title} SBA</div><h2>Read the completed section exactly as a reference submission.</h2><p>The PDF answers every question above and includes the completed structures, formulas, layouts, trace data or code needed for this fictional project. The watermark is repeated on every page.</p><PdfActions project={project} componentId={componentId}/></div><object className="it-sba-pdf-viewer section" data={pdf} type="application/pdf" aria-label={`${project.title} ${meta.title} completed PDF`}><p>Your browser does not display PDFs inside the page. <a href={pdf} target="_blank" rel="noreferrer">Open the completed section PDF</a>.</p></object></section>
     <NativeFileDownloads project={project} componentId={componentId} compact/>
@@ -326,7 +361,7 @@ export default function InformationTechnologySbaCentre({ userId, onActivity, onB
   const { page,projectId,componentId,openHome,openProject,openComponent }=useInformationTechnologySbaRoute(true);
   const project=findItSbaProject(projectId);
   useLayoutEffect(()=>{window.scrollTo({top:0,left:0,behavior:"auto"});},[page,projectId,componentId]);
-  if(page==="project"&&project)return <ProjectOverview project={project} userId={userId} onActivity={onActivity} openHome={openHome} openComponent={openComponent}/>;
-  if(page==="component"&&project&&findItSbaComponent(project,componentId))return <ComponentGuide project={project} componentId={componentId} userId={userId} onActivity={onActivity} openProject={openProject} openComponent={openComponent}/>;
+  if(page==="project"&&project)return <ProjectOverview key={`${userId||"guest"}:${project.id}`} project={project} userId={userId} onActivity={onActivity} openHome={openHome} openComponent={openComponent}/>;
+  if(page==="component"&&project&&findItSbaComponent(project,componentId))return <ComponentGuide key={`${userId||"guest"}:${project.id}:${componentId}`} project={project} componentId={componentId} userId={userId} onActivity={onActivity} openProject={openProject} openComponent={openComponent}/>;
   return <CentreHome openProject={openProject} onBack={onBack}/>;
 }

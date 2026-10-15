@@ -1,4 +1,8 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { importBasicPptx } from "../models/officeImports.mjs";
+import { makePptx } from "../models/officeExports.mjs";
+import {readLabWorkspace,writeLabWorkspace} from "../models/workspacePersistence.mjs";
+import { buildPresentationHtml } from "../models/presentationExport.mjs";
 import { LabFrame, RibbonTabs, WindowBar } from "../components/LabFrame";
 import { ReducedMotionNotice, StatusMessage, ToolGroup, useTaskEvidence } from "../components/ProductivityKit";
 import { ArrowLeftIcon, ArrowRightIcon, ChevronDownIcon, ChevronUpIcon, PlayIcon } from "../components/Icons";
@@ -16,16 +20,18 @@ function SlideCanvas({ slide, theme, footer, heading = false }) {
   </article>;
 }
 
-export default function PresentationLab({ lab, completed, onBack, onComplete }) {
+export default function PresentationLab({ lab, userId, completed, onBack, onComplete }) {
   const [tab, setTab] = useState("Home");
-  const [slides, setSlides] = useState([FIRST_SLIDE]);
+  const [initialPresentation] = useState(() => readLabWorkspace(userId, "presentation", { slides: [FIRST_SLIDE], theme: "", footer: "" }));
+  const [slides, setSlides] = useState(initialPresentation.slides || [FIRST_SLIDE]);
   const [selected, setSelected] = useState(1);
-  const [theme, setTheme] = useState("");
-  const [footer, setFooter] = useState("");
+  const [theme, setTheme] = useState(initialPresentation.theme || "");
+  const [footer, setFooter] = useState(initialPresentation.footer || "");
+  useEffect(() => { writeLabWorkspace(userId, "presentation", { slides, theme, footer }); }, [userId, slides, theme, footer]);
   const [showMode, setShowMode] = useState(false);
   const [showIndex, setShowIndex] = useState(0);
   const [message, setMessage] = useState("Create and edit slides, then run the slide show to verify your presentation.");
-  const { evidence, record } = useTaskEvidence();
+  const { evidence, record } = useTaskEvidence(userId, lab.id);
   const slide = slides.find(item => item.id === selected) ?? slides[0];
   const proof = useMemo(() => presentationProof(slides, theme, footer), [slides, theme, footer]);
   const showSlide = slides[showIndex] ?? slides[0];
@@ -43,6 +49,35 @@ export default function PresentationLab({ lab, completed, onBack, onComplete }) 
     { id: "show", label: "Run the slide show and navigate between slides", done: evidence.has("show-started") && evidence.has("show-navigation") },
   ];
 
+  async function importPptx(event) {
+    const file=event.target.files?.[0];
+    if(!file)return;
+    try{
+      const imported=await importBasicPptx(await file.arrayBuffer());
+      setSlides(imported);setSelected(imported[0].id);
+      setMessage("Basic PPTX text imported. Recheck layouts, notes, and graphics.");
+    }catch(error){setMessage(error.message||"Could not read the PPTX file.");}
+    event.target.value="";
+  }
+  function exportPptx() {
+    const bytes=makePptx(slides,theme,footer);
+    const url=URL.createObjectURL(new Blob([bytes],{type:"application/vnd.openxmlformats-officedocument.presentationml.presentation"}));
+    const anchor=document.createElement("a");anchor.href=url;anchor.download="SPARK-Technology-Project.pptx";
+    document.body.appendChild(anchor);anchor.click();anchor.remove();URL.revokeObjectURL(url);
+    setMessage("Basic PPTX exported. Check slide layout and text in PowerPoint.");
+  }
+  function exportPresentation() {
+    const html = buildPresentationHtml(slides, theme, footer);
+    const url = URL.createObjectURL(new Blob([html], { type: "text/html;charset=utf-8" }));
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = "SPARK-Presentation.html";
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    URL.revokeObjectURL(url);
+    setMessage("Presentation exported as HTML.");
+  }
   function patchSlide(patch) {
     setSlides(current => updateSlide(current, selected, patch));
   }
@@ -93,7 +128,7 @@ export default function PresentationLab({ lab, completed, onBack, onComplete }) 
         {tab === "Insert" && <ToolGroup label="Illustrations"><button type="button" className={slide.graphic ? "active" : ""} aria-pressed={slide.graphic} onClick={() => { patchSlide({ graphic: !slide.graphic }); record("graphic"); }}>Picture / Graphic</button></ToolGroup>}
         {tab === "Design" && <ToolGroup label="Themes">{PRESENTATION_THEMES.map(name => <button type="button" key={name} className={theme === name ? "active" : ""} aria-pressed={theme === name} onClick={() => { setTheme(name); record("theme"); }}>{name}</button>)}</ToolGroup>}
         {tab === "Transitions" && <ToolGroup label="Transition"><label>Effect<select aria-label="Slide transition" value={slide.transition} onChange={event => { patchSlide({ transition: event.target.value }); if (event.target.value) record("transition"); }}><option value="">None</option>{PRESENTATION_TRANSITIONS.map(item => <option key={item}>{item}</option>)}</select></label></ToolGroup>}
-        {tab === "Slide Show" && <ToolGroup label="Start slide show"><button type="button" onClick={startShow}><PlayIcon/> <span>From Current Slide</span></button><ReducedMotionNotice/></ToolGroup>}
+        {tab === "Slide Show" && <ToolGroup label="Start slide show"><button type="button" onClick={exportPptx}>Export PPTX</button><label className="itv2-file-field">Import PPTX<input type="file" accept=".pptx,application/vnd.openxmlformats-officedocument.presentationml.presentation" onChange={importPptx}/></label><button type="button" onClick={exportPresentation}>Export HTML</button><button type="button" onClick={startShow}><PlayIcon/> <span>From Current Slide</span></button><ReducedMotionNotice/></ToolGroup>}
       </div>
       <StatusMessage tone={proof.threeEditedSlides ? "success" : "neutral"}>{message}</StatusMessage>
       <div className="itv2-ppt-layout">

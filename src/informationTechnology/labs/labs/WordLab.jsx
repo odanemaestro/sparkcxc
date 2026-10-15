@@ -1,4 +1,10 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { importBasicDocx } from "../models/officeImports.mjs";
+import { makeDocx } from "../models/officeExports.mjs";
+import { readLabWorkspace, writeLabWorkspace } from "../models/workspacePersistence.mjs";
+import { buildDocumentHtml } from "../models/documentExport.mjs";
+import { mergeLetter, parseMergeRecipients } from "../models/mailMerge.mjs";
+import { sanitizeDocumentMarkup } from "../models/documentMarkup.mjs";
 import { LabFrame, RibbonTabs, WindowBar } from "../components/LabFrame";
 import { ReducedMotionNotice, StatusMessage, ToolGroup, WorkspaceViewport, useTaskEvidence } from "../components/ProductivityKit";
 import { countTextMatches, replaceTextMatches } from "../models/documentModel.mjs";
@@ -11,31 +17,76 @@ function selectionInside(editor, selection) {
   return editor.contains(range.commonAncestorContainer);
 }
 
-export default function WordLab({ lab, completed, onBack, onComplete }) {
+export default function WordLab({ lab, userId, completed, onBack, onComplete }) {
+  const saved = useRef(readLabWorkspace(userId, "word", {})).current;
   const editorRef = useRef(null);
   const savedRange = useRef(null);
   const [tab, setTab] = useState("Home");
-  const [heading, setHeading] = useState(false);
-  const [font, setFont] = useState("Aptos");
-  const [size, setSize] = useState(11);
-  const [align, setAlign] = useState("left");
-  const [bullets, setBullets] = useState(false);
-  const [columns, setColumns] = useState(1);
-  const [orientation, setOrientation] = useState("portrait");
-  const [table, setTable] = useState(false);
-  const [header, setHeader] = useState("");
-  const [footer, setFooter] = useState("");
-  const [trackChanges, setTrackChanges] = useState(false);
-  const [comment, setComment] = useState("");
+  const [heading, setHeading] = useState(saved.heading ?? false);
+  const [font, setFont] = useState(saved.font ?? "Aptos");
+  const [size, setSize] = useState(saved.size ?? 11);
+  const [align, setAlign] = useState(saved.align ?? "left");
+  const [bullets, setBullets] = useState(saved.bullets ?? false);
+  const [columns, setColumns] = useState(saved.columns ?? 1);
+  const [orientation, setOrientation] = useState(saved.orientation ?? "portrait");
+  const [table, setTable] = useState(saved.table ?? false);
+  const [tableRows, setTableRows] = useState(saved.tableRows ?? [["Coding","Tuesday","3:30 pm"],["Robotics","Thursday","3:30 pm"]]);
+  const [header, setHeader] = useState(saved.header ?? "");
+  const [footer, setFooter] = useState(saved.footer ?? "");
+  const [trackChanges, setTrackChanges] = useState(saved.trackChanges ?? false);
+  const [comment, setComment] = useState(saved.comment ?? "");
   const [findText, setFindText] = useState("club");
   const [replaceText, setReplaceText] = useState("technology club");
-  const [bodyText, setBodyText] = useState(STARTING_BODY);
+  const [bodyText, setBodyText] = useState(saved.bodyText ?? STARTING_BODY);
+  const [bodyHtml, setBodyHtml] = useState(saved.bodyHtml ?? "");
+  useEffect(() => {
+    if (editorRef.current && saved.bodyHtml) {
+      editorRef.current.innerHTML = sanitizeDocumentMarkup(saved.bodyHtml);
+      setBodyText(editorRef.current.innerText || "");
+    }
+  }, [saved]);
   const [selectionText, setSelectionText] = useState("");
   const [lastReplacement, setLastReplacement] = useState(0);
-  const [mergeField, setMergeField] = useState(false);
-  const [formControl, setFormControl] = useState(false);
+  const [mergeField, setMergeField] = useState(saved.mergeField ?? false);
+  const [recipientsCsv, setRecipientsCsv] = useState(saved.recipientsCsv ?? "ParentName,Parish\nAlicia Brown,Kingston\nDario Lewis,Clarendon");
+  const [previewIndex, setPreviewIndex] = useState(0);
+  const recipients = useMemo(() => parseMergeRecipients(recipientsCsv), [recipientsCsv]);
+  const [formControl, setFormControl] = useState(saved.formControl ?? false);
   const [message, setMessage] = useState("Select text in the document, then choose a formatting command.");
-  const { evidence, record } = useTaskEvidence();
+  const { evidence, record } = useTaskEvidence(userId, lab.id);
+
+  useEffect(() => {
+    writeLabWorkspace(userId, "word", { bodyText, bodyHtml, heading, font, size, align, bullets, columns, orientation, table, tableRows, header, footer, trackChanges, comment, mergeField, recipientsCsv, formControl });
+  }, [userId, bodyText, bodyHtml, heading, font, size, align, bullets, columns, orientation, table, tableRows, header, footer, trackChanges, comment, mergeField, recipientsCsv, formControl]);
+
+  async function importDocx(event) {
+    const file=event.target.files?.[0];
+    if(!file)return;
+    try {
+      const content=await importBasicDocx(await file.arrayBuffer());
+      setBodyText(content);setBodyHtml("");savedRange.current=null;
+      if(editorRef.current)editorRef.current.textContent=content;
+      setMessage("DOCX text imported. Check formatting because this basic importer does not preserve all Word styles.");
+    }catch(error){setMessage(error.message||"Could not read the DOCX file.");}
+    event.target.value="";
+  }
+  function exportDocx() {
+    const data = makeDocx({ title: "SPARK Technology Club Newsletter", body: editorRef.current?.innerText ?? bodyText, header, footer, orientation, tableRows:table?tableRows:[] });
+    const url = URL.createObjectURL(new Blob([data], { type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document" }));
+    const anchor = document.createElement("a"); anchor.href = url; anchor.download = "SPARK-Technology-Club.docx";
+    document.body.appendChild(anchor); anchor.click(); anchor.remove(); URL.revokeObjectURL(url);
+    setMessage("Basic DOCX exported. Check advanced formatting in Word before submitting any document.");
+  }
+
+  function exportHtml() {
+    const html = buildDocumentHtml({ title: "SPARK Technology Club Newsletter", body: editorRef.current?.innerText ?? bodyText, bodyHtml: sanitizeDocumentMarkup(editorRef.current?.innerHTML ?? bodyHtml), header, footer, orientation, columns, table, tableRows, bullets, mergeField });
+    const url = URL.createObjectURL(new Blob([html], { type: "text/html;charset=utf-8" }));
+    const anchor = document.createElement("a");
+    anchor.href = url; anchor.download = "SPARK-Technology-Club.html";
+    document.body.appendChild(anchor); anchor.click(); anchor.remove();
+    URL.revokeObjectURL(url);
+    setMessage("HTML document exported. Open it in a browser or print it.");
+  }
 
   const words = useMemo(() => bodyText.trim() ? bodyText.trim().split(/\s+/).length : 0, [bodyText]);
   const matchCount = useMemo(() => countTextMatches(bodyText, findText), [bodyText, findText]);
@@ -71,6 +122,7 @@ export default function WordLab({ lab, completed, onBack, onComplete }) {
   function syncDocument() {
     const text = editorRef.current?.innerText || "";
     setBodyText(text);
+    setBodyHtml(sanitizeDocumentMarkup(editorRef.current?.innerHTML || ""));
     setSelectionText("");
   }
 
@@ -121,6 +173,7 @@ export default function WordLab({ lab, completed, onBack, onComplete }) {
     if (total > 0) {
       record("replace");
       setBodyText(editor.innerText || "");
+      setBodyHtml(sanitizeDocumentMarkup(editor.innerHTML));
       setMessage(`${total} ${total === 1 ? "match was" : "matches were"} replaced.`);
     } else {
       setMessage("No matching text was found.");
@@ -132,8 +185,9 @@ export default function WordLab({ lab, completed, onBack, onComplete }) {
       footer={<span>Page 1 of 1 · {words} words · English (Caribbean)</span>}>
       <div className="itv2-office-window word">
         <WindowBar title="Technology Club Newsletter.docx" subtitle="SPARK Word Processing Studio"/>
-        <RibbonTabs tabs={["Home", "Insert", "Layout", "Review", "Mailings"]} active={tab} onChange={setTab}/>
+        <RibbonTabs tabs={["Home", "Insert", "Layout", "Review", "Mailings", "File"]} active={tab} onChange={setTab}/>
         <div className="itv2-ribbon" aria-label={`${tab} tools`}>
+          {tab === "File" && <ToolGroup label="Export"><button type="button" onClick={exportDocx}>Export DOCX</button><label className="itv2-file-field">Import DOCX<input type="file" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" onChange={importDocx}/></label><button type="button" onClick={exportHtml}>Export HTML</button><button type="button" onClick={() => window.print()}>Print</button></ToolGroup>}
           {tab === "Home" && <>
             <ToolGroup label="Font">
               <label htmlFor="word-font">Typeface</label><select id="word-font" value={font} onChange={event => { const value = event.target.value; setFont(value); formatSelection("fontName", value, "font", value); }}><option>Aptos</option><option>Arial</option><option>Georgia</option></select>
@@ -149,7 +203,7 @@ export default function WordLab({ lab, completed, onBack, onComplete }) {
             </ToolGroup>
           </>}
           {tab === "Insert" && <ToolGroup label="Document elements">
-            <button type="button" className={table ? "active" : ""} aria-pressed={table} onClick={() => setTable(value => !value)}>Table</button>
+            <button type="button" className={table ? "active" : ""} aria-pressed={table} onClick={() => setTable(value => !value)}>Table</button>{table && <button type="button" onClick={() => setTableRows(rows => [...rows, ["","",""]])}>Add table row</button>}
             <label htmlFor="word-header">Header</label><input id="word-header" value={header} onChange={event => setHeader(event.target.value)} placeholder="Technology Club"/>
             <label htmlFor="word-footer">Footer</label><input id="word-footer" value={footer} onChange={event => setFooter(event.target.value)} placeholder="Page 1"/>
             <button type="button" className={formControl ? "active" : ""} aria-pressed={formControl} onClick={() => setFormControl(value => !value)}>Check box</button>
@@ -162,7 +216,13 @@ export default function WordLab({ lab, completed, onBack, onComplete }) {
             <ToolGroup label="Review"><button type="button" className={trackChanges ? "active" : ""} aria-pressed={trackChanges} onClick={() => setTrackChanges(value => !value)}>Track Changes</button><label htmlFor="word-comment">Comment</label><input id="word-comment" value={comment} onChange={event => setComment(event.target.value)} placeholder="Add a review comment"/></ToolGroup>
             <ToolGroup label="Find and Replace"><label htmlFor="word-find">Find</label><input id="word-find" value={findText} onChange={event => { setFindText(event.target.value); setLastReplacement(0); }}/><label htmlFor="word-replace">Replace</label><input id="word-replace" value={replaceText} onChange={event => setReplaceText(event.target.value)}/><button type="button" onClick={() => replaceInTextNodes(false)}>Replace</button><button type="button" onClick={() => replaceInTextNodes(true)}>Replace All</button></ToolGroup>
           </>}
-          {tab === "Mailings" && <ToolGroup label="Mail merge"><button type="button" className={mergeField ? "active" : ""} aria-pressed={mergeField} onClick={() => setMergeField(value => !value)}>Insert «ParentName»</button></ToolGroup>}
+          {tab === "Mailings" && <ToolGroup label="Mail merge">
+            <button type="button" className={mergeField ? "active" : ""} aria-pressed={mergeField} onClick={() => setMergeField(value => !value)}>Insert «ParentName»</button>
+            <label htmlFor="word-merge-csv">Recipients (CSV)</label>
+            <textarea id="word-merge-csv" rows="3" value={recipientsCsv} onChange={event => { setRecipientsCsv(event.target.value); setPreviewIndex(0); }}/>
+            <span>{recipients.length} valid recipients</span>
+            <button type="button" disabled={!recipients.length} onClick={() => setPreviewIndex(i => (i + 1) % recipients.length)}>Next recipient</button>
+          </ToolGroup>}
           <ReducedMotionNotice/>
         </div>
         <StatusMessage tone={selectionText ? "success" : "neutral"}><strong>{selectionText ? `${selectionText.length} characters selected` : "No text selected"}</strong><span>{message}</span></StatusMessage>
@@ -171,10 +231,10 @@ export default function WordLab({ lab, completed, onBack, onComplete }) {
           <article className={`itv2-word-page ${orientation} columns-${columns}`}>
             {header && <header>{header}</header>}
             <h2 className={heading ? "heading-style" : ""}>SPARK Technology Club Newsletter</h2>
-            {mergeField && <p className="merge-line">Dear «ParentName»,</p>}
-            <div ref={editorRef} className="itv2-word-body" contentEditable suppressContentEditableWarning role="textbox" aria-label="Document body" aria-multiline="true" onInput={syncDocument} onKeyUp={captureSelection} onMouseUp={captureSelection} onTouchEnd={captureSelection}>{STARTING_BODY}</div>
+            {mergeField && <p className="merge-line">{recipients.length ? mergeLetter("Dear «ParentName»,",recipients[Math.min(previewIndex,recipients.length-1)]) : "Dear «ParentName»,"}</p>}
+            <div ref={editorRef} className="itv2-word-body" contentEditable suppressContentEditableWarning role="textbox" aria-label="Document body" aria-multiline="true" onInput={syncDocument} onKeyUp={captureSelection} onMouseUp={captureSelection} onTouchEnd={captureSelection}>{saved.bodyText ?? STARTING_BODY}</div>
             {bullets && <ul><li>Coding club</li><li>Robotics club</li><li>Digital design club</li></ul>}
-            {table && <table><thead><tr><th>Activity</th><th>Day</th><th>Time</th></tr></thead><tbody><tr><td>Coding</td><td>Tuesday</td><td>3:30 pm</td></tr><tr><td>Robotics</td><td>Thursday</td><td>3:30 pm</td></tr></tbody></table>}
+            {table && <table><thead><tr><th>Activity</th><th>Day</th><th>Time</th><th>Action</th></tr></thead><tbody>{tableRows.map((row,rowIndex) => <tr key={rowIndex}>{row.map((cell,columnIndex) => <td key={columnIndex}><input style={{width:"100%",minWidth:64}} aria-label={`Table row ${rowIndex+1} column ${columnIndex+1}`} value={cell} onChange={event => setTableRows(rows => rows.map((current,index) => index===rowIndex?current.map((value,col) => col===columnIndex?event.target.value:value):current))}/></td>)}<td><button type="button" aria-label={`Remove table row ${rowIndex+1}`} disabled={tableRows.length===1} onClick={() => setTableRows(rows => rows.filter((_,index)=>index!==rowIndex))}>Remove</button></td></tr>)}</tbody></table>}
             {formControl && <label className="itv2-doc-checkbox"><input type="checkbox"/> I will attend the technology showcase</label>}
             {footer && <footer>{footer}</footer>}
             {trackChanges && <aside className="itv2-review-mark">TRACK CHANGES ON{comment && <small>{comment}</small>}</aside>}

@@ -59,6 +59,7 @@ export default function InformationTechnologyPracticalLabs({ userId, onBack, onA
     return (
       <Suspense fallback={<Loader/>}>
         <Component
+          key={`${userId || "guest"}:${activeId}`}
           lab={lab}
           userId={userId}
           completed={Boolean(completion[activeId]?.completed)}

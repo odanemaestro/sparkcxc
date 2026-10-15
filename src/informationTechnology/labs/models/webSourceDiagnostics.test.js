@@ -1,0 +1,3 @@
+import {inspectWebSource} from "./webSourceDiagnostics.mjs";
+test("reports accessibility and document structure hints",()=>{ const result=inspectWebSource({"index.html":"<html><img src='x'></html>","styles.css":"h1 { color: navy; }"});expect(result.some(item=>item.message.includes("alt text"))).toBe(true);expect(result.some(item=>item.message.includes("doctype"))).toBe(true);});
+test("detects blocked active content and malformed CSS braces",()=>{const result=inspectWebSource({"index.html":"<script>x</script>","styles.css":"h1 { color:red"});expect(result.filter(item=>item.severity==="error")).toHaveLength(2);});

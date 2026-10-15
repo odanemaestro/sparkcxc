@@ -1,7 +1,12 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import { importBasicXlsx } from "../models/officeImports.mjs";
+import { makeXlsx } from "../models/officeExports.mjs";
+import {readLabWorkspace,writeLabWorkspace} from "../models/workspacePersistence.mjs";
 import { LabFrame, RibbonTabs, WindowBar } from "../components/LabFrame";
 import { ReducedMotionNotice, StatusMessage, ToolGroup, WorkspaceViewport, useTaskEvidence, useWorkspaceHistory } from "../components/ProductivityKit";
 import { evaluateCell, explainFormula, formulaDependencies, translateFormula } from "../models/workbookModel.mjs";
+import { auditWorkbook } from "../models/workbookAudit.mjs";
+import { ruleDescription, validateCellInput } from "../models/spreadsheetValidation.mjs";
 
 const STARTING_SALES = {
   A1: "Item", B1: "Qty", C1: "Unit Price", D1: "Total Cost", E1: "Band", F1: "Taxed Total", H1: 0.15,
@@ -26,28 +31,71 @@ function displayValue(result, currency = false) {
   return String(result ?? "");
 }
 
-export default function SpreadsheetLab({ lab, completed, onBack, onComplete }) {
+function WorksheetChart({ type, labels, values }) {
+  const safe = values.map(value => Number.isFinite(Number(value)) ? Math.max(0, Number(value)) : 0);
+  const max = Math.max(1, ...safe);
+  const total = safe.reduce((sum, value) => sum + value, 0);
+  const colors = ["#527DCA", "#27A89A", "#DCA34C", "#9B73C5"];
+  const points = safe.map((value, index) => `${50 + index * 90},${170 - value / max * 130}`).join(" ");
+  const slices = safe.reduce((state, value, index) => {
+    if (!total || value <= 0) return state;
+    const start = state.angle; const end = start + value / total * Math.PI * 2;
+    const point = angle => [180 + 75 * Math.cos(angle), 105 + 75 * Math.sin(angle)];
+    const [x1, y1] = point(start); const [x2, y2] = point(end);
+    const path = `M 180 105 L ${x1} ${y1} A 75 75 0 ${end - start > Math.PI ? 1 : 0} 1 ${x2} ${y2} Z`;
+    return { angle: end, items: [...state.items, { path, color: colors[index], label: labels[index], value }] };
+  }, { angle: -Math.PI / 2, items: [] }).items;
+  return <div className="itv2-chart-visual">
+    <svg viewBox="0 0 400 215" role="img" aria-label={`${type} chart of item totals`} style={{ width: "100%", maxWidth: 490, height: "auto" }}>
+      {type === "Pie" ? (slices.length === 1
+        ? <circle cx="180" cy="105" r="75" fill={slices[0].color}/>
+        : slices.map((slice, index) => <path key={index} d={slice.path} fill={slice.color}><title>{slice.label}: {slice.value}</title></path>))
+        : <>
+          <line x1="25" y1="175" x2="385" y2="175" stroke="currentColor" opacity="0.45"/>
+          {type === "Line" ? <><polyline points={points} fill="none" stroke={colors[0]} strokeWidth="3"/>{safe.map((value,index) => <circle key={index} cx={50+index*90} cy={170-value/max*130} r="5" fill={colors[index]}><title>{labels[index]}: {value}</title></circle>)}</>
+            : safe.map((value,index) => type === "Bar"
+              ? <rect key={index} x="30" y={20+index*40} width={value/max*310} height="24" rx="3" fill={colors[index]}><title>{labels[index]}: {value}</title></rect>
+              : <rect key={index} x={34+index*90} y={170-value/max*130} width="40" height={value/max*130} fill={colors[index]}><title>{labels[index]}: {value}</title></rect>)}
+        </>}
+    </svg>
+    <div className="itv2-chart-legend">{labels.map((label, index) => <span key={index}><span aria-hidden="true" style={{ color: colors[index] }}>● </span>{label}: {safe[index].toLocaleString()}</span>)}</div>
+  </div>;
+}
+
+export default function SpreadsheetLab({ lab, userId, completed, onBack, onComplete }) {
   const [tab, setTab] = useState("Home");
   const [sheet, setSheet] = useState("Sales");
   const [selected, setSelected] = useState("D2");
   const [formulaBar, setFormulaBar] = useState("=B2*C2");
-  const { state: workbook, setState: setWorkbook, undo, redo, canUndo, canRedo } = useWorkspaceHistory({ Sales: STARTING_SALES, Summary: { A1: "Annual Summary" } });
+  const { state: workbook, setState: setWorkbook, undo, redo, canUndo, canRedo } = useWorkspaceHistory(() => readLabWorkspace(userId,"spreadsheet",{ Sales: STARTING_SALES, Summary: { A1: "Annual Summary" } }));
+  useEffect(()=>{writeLabWorkspace(userId,"spreadsheet",workbook);},[userId,workbook]);
   const [filter, setFilter] = useState("All");
   const [sort, setSort] = useState("Item");
   const [chart, setChart] = useState("");
+  const [auditOpen, setAuditOpen] = useState(false);
+  const [validationRules, setValidationRules] = useState(() => readLabWorkspace(userId, "spreadsheet-validation", {}));
+  useEffect(() => { writeLabWorkspace(userId, "spreadsheet-validation", validationRules); }, [userId, validationRules]);
+  const [validationType, setValidationType] = useState("whole");
+  const [validationMin, setValidationMin] = useState("0");
+  const [validationMax, setValidationMax] = useState("");
   const [pivot, setPivot] = useState(false);
   const [linked, setLinked] = useState(false);
   const [formatCurrency, setFormatCurrency] = useState(false);
   const [message, setMessage] = useState("Select a cell, enter a value or formula, then press Enter.");
-  const { evidence, record } = useTaskEvidence();
+  const { evidence, record } = useTaskEvidence(userId, lab.id);
   const calculationChecks = useRef(new Map());
 
+  const workbookAudit = useMemo(() => auditWorkbook(workbook), [workbook]);
+  const workbookSheets = useMemo(() => Object.keys(workbook).filter(name => workbook[name] && typeof workbook[name] === "object" && !Array.isArray(workbook[name])), [workbook]);
+  const salesCells = workbook.Sales || {};
   const selectedRaw = workbook[sheet]?.[selected] ?? "";
   const selectedResult = evaluateCell(workbook, sheet, selected);
   const values = useMemo(() => Object.fromEntries(COLUMNS.flatMap(column => ROWS.map(row => {
     const address = `${column}${row}`;
     return [address, evaluateCell(workbook, "Sales", address)];
   }))), [workbook]);
+
+  const chartValues = [2, 3, 4, 5].map(row => Number(values[`D${row}`].value) || 0);
 
   const visibleRows = useMemo(() => [2, 3, 4, 5]
     .filter(row => filter === "All" || values[`G${row}`].value === filter)
@@ -63,17 +111,17 @@ export default function SpreadsheetLab({ lab, completed, onBack, onComplete }) {
     return summary;
   }, {}), [values]);
 
-  const successfulFunctions = useMemo(() => FORMULA_NAMES.filter(name => Object.keys(workbook.Sales).some(address => {
-    const raw = workbook.Sales[address];
+  const successfulFunctions = useMemo(() => FORMULA_NAMES.filter(name => Object.keys(salesCells).some(address => {
+    const raw = salesCells[address];
     const result = evaluateCell(workbook, "Sales", address);
     const dependencies = formulaDependencies(workbook, "Sales", address);
     const referencesWorksheetData = name === "DATE" || name === "PMT" || dependencies.size > 0;
     return typeof raw === "string" && raw.toUpperCase().startsWith(`=${name}(`) && !result.error && referencesWorksheetData;
   })), [workbook]);
 
-  const totalFormulaValid = [2, 3, 4, 5].every(row => workbook.Sales[`D${row}`] === `=B${row}*C${row}` && values[`D${row}`].value === Number(values[`B${row}`].value) * Number(values[`C${row}`].value));
+  const totalFormulaValid = [2, 3, 4, 5].every(row => salesCells[`D${row}`] === `=B${row}*C${row}` && values[`D${row}`].value === Number(values[`B${row}`].value) * Number(values[`C${row}`].value));
   const absoluteFormulaValid = [2, 3, 4, 5].every(row => {
-    const formula = workbook.Sales[`F${row}`];
+    const formula = salesCells[`F${row}`];
     return typeof formula === "string" && /\$H\$1/.test(formula) && values[`F${row}`].value === Number(values[`D${row}`].value) * (1 + Number(values.H1.value));
   });
   const dataResultValid = filter === "Kingston" && sort === "Price" && visibleRows.length === 2 && visibleRows[0] === 2 && visibleRows[1] === 4;
@@ -91,14 +139,47 @@ export default function SpreadsheetLab({ lab, completed, onBack, onComplete }) {
     { id: "linked", label: "Link the Summary worksheet to a calculated Sales total", done: linked && !salesTotal.error && salesTotal.formula && linkedResult.value === salesTotal.value },
   ];
 
+  async function importXlsx(event) {
+    const file=event.target.files?.[0];
+    if(!file)return;
+    try{
+      const imported=await importBasicXlsx(await file.arrayBuffer());
+      const first=Object.keys(imported)[0];
+      const guided = {
+        Sales: imported.Sales || STARTING_SALES,
+        Summary: imported.Summary || { A1: "Annual Summary" },
+        ...imported
+      };
+      setWorkbook(guided);setSheet(first);setSelected("A1");setFormulaBar(String(imported[first]?.A1??""));
+      setFilter("All");setSort("Item");setPivot(false);setChart("");
+      setValidationRules({});
+      setLinked(Boolean(guided.Summary?.B2));
+      setMessage("XLSX imported with its worksheet names. SPARK keeps Sales and Summary for guided activities. Review formulas and unsupported formatting.");
+    }catch(error){setMessage(error.message||"Could not read the XLSX file.");}
+    event.target.value="";
+  }
+  function exportXlsx() {
+    const data = makeXlsx(workbook);
+    const url = URL.createObjectURL(new Blob([data], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }));
+    const anchor = document.createElement("a"); anchor.href = url; anchor.download = "SPARK-School-Supplies.xlsx";
+    document.body.appendChild(anchor); anchor.click(); anchor.remove(); URL.revokeObjectURL(url);
+    setMessage("Workbook exported as XLSX. Check formula results in spreadsheet software.");
+  }
+
+  function selectCellForSheet(targetSheet, address) {
+    setSelected(address); setFormulaBar(String(workbook[targetSheet]?.[address] ?? ""));
+  }
+
   function selectCell(address) {
     setSelected(address); setFormulaBar(String(workbook[sheet]?.[address] ?? ""));
   }
 
   function commitFormula() {
     const value = formulaBar.trim();
+    const checked = validateCellInput(value, validationRules[`${sheet}!${selected}`]);
+    if (!checked.valid) { setMessage(`${selected}: ${checked.message} Value not saved.`); return; }
     const nextWorkbook = { ...workbook, [sheet]: { ...workbook[sheet], [selected]: value } };
-    const dependentCells = Object.keys(workbook.Sales).filter(address => formulaDependencies(workbook, "Sales", address).has(`${sheet}!${selected}`));
+    const dependentCells = Object.keys(salesCells).filter(address => formulaDependencies(workbook, "Sales", address).has(`${sheet}!${selected}`));
     const before = new Map(dependentCells.map(address => [address, evaluateCell(workbook, "Sales", address).value]));
     setWorkbook(nextWorkbook);
     const recalculated = dependentCells.some(address => evaluateCell(nextWorkbook, "Sales", address).value !== before.get(address));
@@ -110,10 +191,18 @@ export default function SpreadsheetLab({ lab, completed, onBack, onComplete }) {
     setMessage(preview.error ? `${preview.value}: ${preview.error}` : `${selected} recalculated successfully.`);
   }
 
+  function setSelectedValidation() {
+    const min = validationMin.trim(); const max = validationMax.trim();
+    if ((min !== "" && !Number.isFinite(Number(min))) || (max !== "" && !Number.isFinite(Number(max))) || (min !== "" && max !== "" && Number(min) > Number(max))) { setMessage("Enter valid minimum and maximum values."); return; }
+    const rule = { type: validationType, ...(min === "" ? {} : { min: Number(min) }), ...(max === "" ? {} : { max: Number(max) }) };
+    setValidationRules(previous => ({ ...previous, [`${sheet}!${selected}`]: rule }));
+    setMessage(`Validation applied to ${sheet}!${selected}.`);
+  }
+
   function fillDown() {
     const match = /^([A-H])(\d+)$/.exec(selected);
-    const raw = workbook.Sales[selected];
-    if (!match || Number(match[2]) >= 5 || typeof raw !== "string" || !raw.startsWith("=")) { setMessage("Select a formula cell above row 5 before filling down."); return; }
+    const raw = salesCells[selected];
+    if (sheet !== "Sales" || !match || Number(match[2]) >= 5 || typeof raw !== "string" || !raw.startsWith("=")) { setMessage("Select a formula cell above row 5 before filling down."); return; }
     const startRow = Number(match[2]); const column = match[1];
     const filled = {};
     for (let row = startRow + 1; row <= 5; row += 1) filled[`${column}${row}`] = translateFormula(raw, row - startRow, 0);
@@ -128,8 +217,6 @@ export default function SpreadsheetLab({ lab, completed, onBack, onComplete }) {
     setLinked(true); setMessage("Summary!B2 now links to Sales!D6 and recalculates with it.");
   }
 
-  const chartValues = [2, 3, 4, 5].map(row => Number(values[`D${row}`].value) || 0);
-  const maxChart = Math.max(1, ...chartValues);
 
   return (
     <LabFrame lab={lab} tasks={tasks} completed={completed} onBack={onBack} onComplete={onComplete}
@@ -139,12 +226,14 @@ export default function SpreadsheetLab({ lab, completed, onBack, onComplete }) {
         <RibbonTabs tabs={["Home", "Formulas", "Data", "Insert"]} active={tab} onChange={setTab}/>
         <div className="itv2-ribbon" aria-label={`${tab} tools`}>
           {tab === "Home" && <>
-            <ToolGroup label="History"><button type="button" onClick={undo} disabled={!canUndo}>Undo</button><button type="button" onClick={redo} disabled={!canRedo}>Redo</button></ToolGroup>
+            <ToolGroup label="History"><button type="button" onClick={undo} disabled={!canUndo}>Undo</button><button type="button" onClick={redo} disabled={!canRedo}>Redo</button></ToolGroup><ToolGroup label="Export"><button type="button" onClick={exportXlsx}>Export XLSX</button><label className="itv2-file-field">Import XLSX<input type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" onChange={importXlsx}/></label></ToolGroup>
             <ToolGroup label="Number"><button type="button" aria-pressed={formatCurrency} className={formatCurrency ? "active" : ""} onClick={() => setFormatCurrency(value => !value)}>J$ Currency</button></ToolGroup>
             <ToolGroup label="Fill"><button type="button" onClick={fillDown}>Fill selected down</button></ToolGroup>
           </>}
+          {tab === "Formulas" && <ToolGroup label="Audit"><button type="button" aria-expanded={auditOpen} onClick={() => setAuditOpen(value => !value)}>{auditOpen ? "Hide formula audit" : "Audit formulas"}</button></ToolGroup>}
           {tab === "Formulas" && <ToolGroup label="Function library">{FORMULA_NAMES.map(name => <button type="button" key={name} onClick={() => setFormulaBar(FORMULA_EXAMPLES[name])}>{name}</button>)}</ToolGroup>}
           {tab === "Data" && <>
+            <ToolGroup label="Cell validation"><label htmlFor="validation-type">Type</label><select id="validation-type" value={validationType} onChange={event => setValidationType(event.target.value)}><option value="whole">Whole number</option><option value="decimal">Decimal number</option></select><label htmlFor="validation-min">Min</label><input id="validation-min" type="number" value={validationMin} onChange={event => setValidationMin(event.target.value)} /><label htmlFor="validation-max">Max</label><input id="validation-max" type="number" value={validationMax} onChange={event => setValidationMax(event.target.value)} /><button type="button" onClick={setSelectedValidation}>Apply to {selected}</button><button type="button" onClick={() => { setValidationRules(previous => { const next = { ...previous }; delete next[`${sheet}!${selected}`]; return next; }); setMessage(`Validation cleared for ${sheet}!${selected}.`); }}>Clear rule</button></ToolGroup>
             <ToolGroup label="Filter"><label htmlFor="sheet-filter">Parish</label><select id="sheet-filter" value={filter} onChange={event => setFilter(event.target.value)}><option>All</option><option>Kingston</option><option>Clarendon</option><option>St. Catherine</option></select></ToolGroup>
             <ToolGroup label="Sort"><label htmlFor="sheet-sort">Field</label><select id="sheet-sort" value={sort} onChange={event => setSort(event.target.value)}><option>Item</option><option>Qty</option><option>Price</option></select></ToolGroup>
             <ToolGroup label="Summarise"><button type="button" aria-pressed={pivot} className={pivot ? "active" : ""} onClick={() => setPivot(value => !value)}>Pivot summary</button></ToolGroup>
@@ -158,6 +247,11 @@ export default function SpreadsheetLab({ lab, completed, onBack, onComplete }) {
           <button type="button" onClick={commitFormula} aria-label="Enter formula">✓</button>
         </div>
 
+        {auditOpen && <section className="itv2-formula-audit" aria-label="Workbook formula audit">
+          <div className="itv2-formula-audit-heading"><strong>Formula audit</strong><span>{workbookAudit.formulaCount} formulas · {workbookAudit.issues.length} issues</span></div>
+          {workbookAudit.issues.length === 0 ? <p>No formula errors found in the current workbook.</p> : <ul>{workbookAudit.issues.map(issue => <li key={issue.cell}><button type="button" onClick={() => { setSheet(issue.sheet); selectCellForSheet(issue.sheet, issue.address); }}>{issue.cell}</button><span>{issue.code}: {issue.message}</span></li>)}</ul>}
+        </section>}
+        {validationRules[`${sheet}!${selected}`] && <StatusMessage tone="neutral">Input rule for {selected}: {ruleDescription(validationRules[`${sheet}!${selected}`])}</StatusMessage>}
         <StatusMessage tone={selectedResult.error ? "error" : "neutral"}>
           <strong>{selectedResult.error ? selectedResult.error : explainFormula(selectedRaw)}</strong>
           <span>{selectedResult.error ? "Correct the formula or its references." : ` Result: ${displayValue(selectedResult.value, formatCurrency && /[DF]\d+/.test(selected))}`}</span>
@@ -176,17 +270,27 @@ export default function SpreadsheetLab({ lab, completed, onBack, onComplete }) {
             })}</tr>)}</tbody>
           </table>}
 
+          {sheet !== "Sales" && <div className="itv2-generic-sheet-scroll"><table className="itv2-sheet-grid" aria-label={`${sheet} editable worksheet`}>
+            <thead><tr><th scope="col" aria-label="Row and column headings"/>{COLUMNS.map(column => <th scope="col" key={column}>{column}</th>)}</tr></thead>
+            <tbody>{ROWS.map(row => <tr key={row}><th scope="row">{row}</th>{COLUMNS.map(column => {
+              const address=`${column}${row}`;
+              const result=evaluateCell(workbook,sheet,address);
+              return <td key={address} className={`${selected===address?"selected":""} ${result.error?"error":""}`}>
+                <button type="button" className="itv2-cell-button" aria-label={`${sheet} ${address}, ${displayValue(result.value)||"blank"}`} onClick={() => selectCell(address)}>{displayValue(result.value)}</button>
+              </td>;
+            })}</tr>)}</tbody>
+          </table></div>}
           {sheet === "Summary" && <div className="itv2-summary-sheet">
             <h3>Annual Summary</h3><button type="button" className={linked ? "active" : ""} onClick={linkSummary}>Link total from Sales worksheet</button>
             <div className="itv2-summary-cell">Annual Total: {linked ? displayValue(evaluateCell(workbook, "Summary", "B2").value, true) : "Not linked"}</div>
           </div>}
 
           {pivot && <aside className="itv2-pivot-panel" aria-label="Pivot-style parish summary"><strong>Parish summary</strong>{Object.entries(parishSummary).map(([name, total]) => <div key={name}><span>{name}</span><b>{displayValue(total, true)}</b></div>)}</aside>}
-          {chart && <aside className="itv2-chart-panel" aria-label={`${chart} chart`}><strong>{chart} chart</strong><div className="itv2-mini-chart">{chartValues.map((value, index) => <i key={index} style={{ height: `${Math.max(4, value / maxChart * 100)}%` }} title={`${workbook.Sales[`A${index + 2}`]}: ${displayValue(value, true)}`}/>)}</div></aside>}
+          {chart && <aside className="itv2-chart-panel" aria-label={`${chart} chart`}><strong>{chart} chart</strong><WorksheetChart type={chart} labels={[2,3,4,5].map(row => String(values[`A${row}`].value))} values={chartValues}/></aside>}
         </WorkspaceViewport>
 
         <div className="itv2-sheet-tabs" role="tablist" aria-label="Worksheets">
-          {["Sales", "Summary"].map(name => <button type="button" role="tab" aria-selected={sheet === name} key={name} className={sheet === name ? "active" : ""} onClick={() => { setSheet(name); setSelected("A1"); setFormulaBar(String(workbook[name].A1 || "")); }}>{name}</button>)}
+          {workbookSheets.map(name => <button type="button" role="tab" aria-selected={sheet === name} key={name} className={sheet === name ? "active" : ""} onClick={() => { setSheet(name); setSelected("A1"); setFormulaBar(String(workbook[name]?.A1 ?? "")); }}>{name}</button>)}
           <ReducedMotionNotice/>
         </div>
       </div>
