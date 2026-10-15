@@ -2,7 +2,7 @@ import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from "re
 import course from "../course/itCourseData.json";
 import InformationTechnologyTools from "./InformationTechnologyTools";
 import InformationTechnologyVisuals from "./InformationTechnologyVisuals";
-import CuratedStudyMedia, { CuratedStudyJump } from "../../components/study/CuratedStudyMedia";
+import CuratedStudyMedia, { CuratedStudyJump } from "../../components/study/CuratedStudyMedia.jsx";
 import InformationTechnologyPracticalLabs from "../labs/InformationTechnologyPracticalLabs";
 import { readSparkHashRoute, useInformationTechnologyStudyRoute } from "../../routing/sparkRoutingV270";
 import objectiveCoverage from "../course/itObjectiveCoverage.json";
