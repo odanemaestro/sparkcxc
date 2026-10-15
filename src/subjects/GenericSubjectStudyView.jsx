@@ -291,9 +291,9 @@ export function GenericLessonContent({
         </Card>
       )}
 
-      {subjectId==="food-nutrition-and-health"&&<FnhStudyPractice key={topic?.id} topicId={topic?.id}/>}
+      {subjectId==="food-nutrition-and-health"&&<FnhStudyPractice key={`fnh-interactive-${topic?.id}`} topicId={topic?.id}/>}
 
-      {subjectId==="food-nutrition-and-health"&&<FnhObjectivePractice key={topic?.id} topic={topic}/>}
+      {subjectId==="food-nutrition-and-health"&&<FnhObjectivePractice key={`fnh-open-response-${topic?.id}`} topic={topic}/>}
 
       {summary && (
         <section className="spark-generic-lesson-summary">
