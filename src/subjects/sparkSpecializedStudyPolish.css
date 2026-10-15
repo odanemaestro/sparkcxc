@@ -164,6 +164,17 @@
   background:var(--study-editorial-bg);
   color:var(--study-editorial-ink);
 }
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .it-subject-view{
+ --it-page:var(--study-editorial-bg);--it-card:var(--study-editorial-surface);
+ --it-ink:var(--study-editorial-ink);--it-muted:var(--study-editorial-muted);
+ --it-line:var(--study-editorial-line);
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) .physics-subject-view{
+ --psv-bg:var(--study-editorial-bg);--psv-card:var(--study-editorial-surface);
+ --psv-ink:var(--study-editorial-ink);--psv-muted:var(--study-editorial-muted);
+ --psv-line:var(--study-editorial-line);--psv-primary:var(--study-editorial-accent);
+ --psv-soft:var(--study-editorial-accent-soft);
+}
 :is(html[data-theme="dark"],body[data-theme="dark"],.dark) .physics-subject-view .psv-section-card{
   color:var(--study-editorial-ink);
 }
