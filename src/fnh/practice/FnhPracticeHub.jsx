@@ -79,11 +79,22 @@ function FnhPaperLibrary({paper,onBack,onStart,onStartHistorical,onReviewHistori
 }
 
 export default function FnhPracticeHub({supabase,userId,onBack}){
-  const [view,setView]=useState("home");
-  const [selectedPaper1Set,setSelectedPaper1Set]=useState(1);
-  const [selectedPaper2Set,setSelectedPaper2Set]=useState(1);
-  const [selectedHistoricalP1,setSelectedHistoricalP1]=useState(null);
-  const [paperLibraryTabs,setPaperLibraryTabs]=useState({1:"practice",2:"practice"});
+  // Keep the chosen FNH paper on refresh within this browser session.
+  // Exam answers and deadlines remain managed by the individual exam screens.
+  const sessionKey=`spark:fnh:practice-navigation:${userId||"guest"}`;
+  const savedNavigation=(()=>{
+    try{return JSON.parse(sessionStorage.getItem(sessionKey)||"null")||{};}catch{return {};}
+  })();
+  const allowedViews=new Set(["home","paper1","paper2","exam1","exam2","review-p1","workbook",
+    ...[2005,2006,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2021,2022,2024,2026].map(year=>`historical-${year}-p2`)]);
+  const [view,setView]=useState(()=>allowedViews.has(savedNavigation.view)?savedNavigation.view:"home");
+  const [selectedPaper1Set,setSelectedPaper1Set]=useState(()=>Number(savedNavigation.selectedPaper1Set)||1);
+  const [selectedPaper2Set,setSelectedPaper2Set]=useState(()=>Number(savedNavigation.selectedPaper2Set)||1);
+  const [selectedHistoricalP1,setSelectedHistoricalP1]=useState(()=>savedNavigation.selectedHistoricalP1||null);
+  const [paperLibraryTabs,setPaperLibraryTabs]=useState(()=>savedNavigation.paperLibraryTabs||{1:"practice",2:"practice"});
+  useEffect(()=>{
+    try{sessionStorage.setItem(sessionKey,JSON.stringify({view,selectedPaper1Set,selectedPaper2Set,selectedHistoricalP1,paperLibraryTabs}));}catch{}
+  },[sessionKey,view,selectedPaper1Set,selectedPaper2Set,selectedHistoricalP1,paperLibraryTabs]);
   useEffect(()=>{scrollTop();},[view]);
   if(view==="paper1"||view==="paper2")return <FnhPaperLibrary paper={view==="paper1"?1:2}
     tab={paperLibraryTabs[view==="paper1"?1:2]} onTabChange={next=>setPaperLibraryTabs(old=>({...old,[view==="paper1"?1:2]:next}))}
