@@ -1,3 +1,5 @@
+import ForwardArrowIcon from "../components/ui/ForwardArrowIcon";
+import BackArrowIcon from "../components/ui/BackArrowIcon";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import SparkLoader from "../components/ui/SparkLoader";
 import Card from "../components/ui/Card";
@@ -963,7 +965,7 @@ export default function GenericSubjectStudyView({
                         className="spark-generic-lesson-nav spark-generic-lesson-nav-previous"
                         onClick={() => openTopic(previousTopic, previousTopic.sectionId || null)}
                       >
-                        <span aria-hidden="true">←</span>
+                        <BackArrowIcon/>
                         <span>Previous</span>
                       </button>
                     ) : <span className="spark-generic-lesson-nav-spacer" aria-hidden="true" />}
@@ -990,7 +992,7 @@ export default function GenericSubjectStudyView({
                         title={!activeLessonComplete ? "Complete this lesson to unlock the next lesson." : undefined}
                       >
                         <span>Next Lesson</span>
-                        <span aria-hidden="true">→</span>
+                        <ForwardArrowIcon/>
                       </button>
                     ) : <span className="spark-generic-lesson-nav-spacer" aria-hidden="true" />}
                   </div>
