@@ -273,7 +273,7 @@
  .spark-editorial-study .spark-transport-stage,
 :is(html[data-theme="dark"],body[data-theme="dark"],.dark)
  .spark-editorial-study .spark-plant-growth-stage{
- background:#edf4f5;border-color:var(--fnh-ui-line);
+ background:var(--fnh-ui-paper);border-color:var(--fnh-ui-line);
 }
 :is(html[data-theme="dark"],body[data-theme="dark"],.dark)
  .spark-editorial-study .spark-germination-requirements-svg{
