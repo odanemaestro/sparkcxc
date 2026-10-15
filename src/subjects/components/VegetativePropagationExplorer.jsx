@@ -210,8 +210,8 @@ export default function VegetativePropagationExplorer() {
       </header>
 
       <div className="spark-vp-group-tabs">
-        <button type="button" className={group === "natural" ? "active" : ""} onClick={() => setGroup("natural")}>Natural methods</button>
-        <button type="button" className={group === "artificial" ? "active" : ""} onClick={() => setGroup("artificial")}>Artificial methods</button>
+        <button type="button" className={group === "natural" ? "active" : ""} aria-pressed={group === "natural"} onClick={() => setGroup("natural")}>Natural methods</button>
+        <button type="button" className={group === "artificial" ? "active" : ""} aria-pressed={group === "artificial"} onClick={() => setGroup("artificial")}>Artificial methods</button>
       </div>
 
       <div className="spark-vp-method-tabs">
@@ -220,6 +220,7 @@ export default function VegetativePropagationExplorer() {
             type="button"
             key={item.id}
             className={item.id === id ? "active" : ""}
+            aria-pressed={item.id === id}
             onClick={() => group === "natural" ? setNaturalId(item.id) : setArtificialId(item.id)}
           >
             <strong>{item.title}</strong>
