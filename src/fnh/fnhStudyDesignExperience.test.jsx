@@ -74,7 +74,7 @@ describe("FNH calm study reader, syllabus guide and navigation",()=>{
   const focus=await screen.findByRole("button",{name:"Focus on reading"});
   const main=screen.getByRole("main");
   expect(main).toHaveClass("spark-fnh-study");
-  expect(screen.getByRole("button",{name:"Back to top",hidden:true})).toBeInTheDocument();
+  expect(screen.getByTitle("Back to top")).toHaveAttribute("aria-hidden","true");
   expect(main).not.toHaveClass("spark-fnh-focus-reading");
   expect(screen.getByText("Lesson 1 of 25 · 4 syllabus objectives")).toBeInTheDocument();
   expect(screen.getByRole("complementary",{name:/course outline/})).toBeInTheDocument();
