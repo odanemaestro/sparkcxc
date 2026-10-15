@@ -82,7 +82,7 @@ export default function SpreadsheetLab({ lab, userId, completed, onBack, onCompl
   const [linked, setLinked] = useState(false);
   const [formatCurrency, setFormatCurrency] = useState(false);
   const [message, setMessage] = useState("Select a cell, enter a value or formula, then press Enter.");
-  const { evidence, record } = useTaskEvidence();
+  const { evidence, record } = useTaskEvidence(userId, lab.id);
   const calculationChecks = useRef(new Map());
 
   const workbookAudit = useMemo(() => auditWorkbook(workbook), [workbook]);
