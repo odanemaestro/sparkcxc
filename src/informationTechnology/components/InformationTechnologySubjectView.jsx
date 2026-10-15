@@ -2,6 +2,7 @@ import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from "re
 import course from "../course/itCourseData.json";
 import InformationTechnologyTools from "./InformationTechnologyTools";
 import InformationTechnologyVisuals from "./InformationTechnologyVisuals";
+import CuratedStudyMedia, { CuratedStudyJump } from "../../components/study/CuratedStudyMedia.jsx";
 import InformationTechnologyPracticalLabs from "../labs/InformationTechnologyPracticalLabs";
 import { readSparkHashRoute, useInformationTechnologyStudyRoute } from "../../routing/sparkRoutingV270";
 import objectiveCoverage from "../course/itObjectiveCoverage.json";
@@ -323,6 +324,7 @@ function TopicLesson({ topic, onBack, completed = false, onToggleComplete, onAct
           <h1>{topic.title}</h1>
           <p>{topic.purpose}</p>
           <div className="it-objective-pill">Specific objectives {topic.objectives}</div>
+          <CuratedStudyJump subject="information-technology" topicId={topic.id} onActivate={()=>moveTo("see")}/>
         </header>
 
         <section className="it-objective-coverage" aria-label="Syllabus objective coverage">
@@ -368,7 +370,9 @@ function TopicLesson({ topic, onBack, completed = false, onToggleComplete, onAct
         <section ref={setSectionRef("see")} data-lesson-step="see" tabIndex="-1" className="it-panel it-scroll-target">
           <div className="it-panel-label">See it</div>
           <h2>Visual guide and worked examples</h2>
+          <CuratedStudyMedia subject="information-technology" topicId={topic.id}/>
           <InformationTechnologyVisuals topicId={topic.id}/>
+          
           <div className="it-example-grid it-example-grid-spaced">
             {(topic.worked || []).map((example, index) => (
               <article className="it-example-card" key={index}>
