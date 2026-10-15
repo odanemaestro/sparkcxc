@@ -1,5 +1,8 @@
 # FNH historical Paper 1: Independent worked-key comparison
 
+> **CORRECTION (2026-10-15):** The old 2003 count of 28 disagreements below was invalid. It compared answer letters by physical array order, not by printed question number. The current numbered comparison finds **53 agreements, 6 missing candidate answers, and 1 disagreement (Q59)**. See [2003 reconstruction audit](./fnhHistorical2003ReconstructionAudit.md). Do **not** use the 2003 row or old overall totals below as grading evidence. Other year totals remain preliminary until rechecked by question number.
+
+
 Source: user-provided `FNH_Paper1_Answer_Key.docx` (2026-10-15). **It explicitly states that its answers are syllabus-based, not official CXC marking keys.** Do not set `officialKeyVerified` or enable grading from this comparison alone.
 
 Compared against candidate letters on branch `feat/study-theme-only-batch2-v1`. The file includes worked explanations and marks some entries with * when uncertain.
