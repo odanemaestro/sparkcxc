@@ -72,6 +72,26 @@ function checkedCell(workbook, sheetName, address, trail) {
   return result.value;
 }
 
+function findTopLevelOperation(source, operators) {
+  let depth = 0, quote = '';
+  for (let i = source.length - 1; i >= 0; i -= 1) {
+    const c = source[i];
+    if (quote) { if (c === quote) quote = ''; continue; }
+    if (c === '"' || c === "'") { quote = c; continue; }
+    if (c === ')') { depth++; continue; }
+    if (c === '(') { depth--; continue; }
+    if (depth !== 0) continue;
+    for (const candidate of operators) {
+      const start = i - candidate.length + 1;
+      if (start < 1 || !source.startsWith(candidate, start)) continue;
+      if ((candidate === '+' || candidate === '-') && /[+*\\/^(=<>-]/.test(source[start - 1])) continue;
+      const left = source.slice(0, start).trim(), right = source.slice(i + 1).trim();
+      if (left && right) return { left, operator: candidate, right };
+    }
+  }
+  return null;
+}
+
 function evaluateExpression(source, workbook, sheetName, trail) {
   const expression = source.trim();
   const fn = /^([A-Z]+)\((.*)\)$/is.exec(expression);
@@ -129,10 +149,34 @@ function evaluateExpression(source, workbook, sheetName, trail) {
   }
   // Check literal values first: quoted criteria can contain comparison operators.
   if (/^"(?:[^"]|"")*"$/.test(expression) || /^'(?:[^']|'')*'$/.test(expression)) return scalar(expression);
-  const comparison = /^(.*?)(>=|<=|<>|=|>|<)(.*)$/.exec(expression);
-  if (comparison) return criterionMatch(evaluateExpression(comparison[1], workbook, sheetName, trail), `${comparison[2]}${evaluateExpression(comparison[3], workbook, sheetName, trail)}`);
-  const binary = /^(.*?)\s*([+*\-/])\s*(.*?)$/.exec(expression);
-  if (binary) { const a = Number(evaluateExpression(binary[1], workbook, sheetName, trail)); const b = Number(evaluateExpression(binary[3], workbook, sheetName, trail)); if (!Number.isFinite(a) || !Number.isFinite(b)) fail('#VALUE!', 'Arithmetic needs numeric values'); if (binary[2] === '/' && b === 0) fail('#DIV/0!', 'A formula cannot divide by zero'); return ({ '+': a + b, '-': a - b, '*': a * b, '/': a / b })[binary[2]]; }
+  // Expressions use spreadsheet precedence; quoted strings and parenthesised
+  // function arguments must not be split as arithmetic.
+  if (expression.startsWith('(') && expression.endsWith(')')) {
+    let depth = 0, wraps = true;
+    for (let i = 0; i < expression.length; i++) {
+      if (expression[i] === '(') depth += 1;
+      if (expression[i] === ')') depth -= 1;
+      if (depth === 0 && i < expression.length - 1) { wraps = false; break; }
+    }
+    if (wraps && depth === 0) return evaluateExpression(expression.slice(1, -1), workbook, sheetName, trail);
+  }
+  const comparison = findTopLevelOperation(expression, ['>=', '<=', '<>', '=', '>', '<']);
+  if (comparison) return criterionMatch(
+    evaluateExpression(comparison.left, workbook, sheetName, trail),
+    comparison.operator + evaluateExpression(comparison.right, workbook, sheetName, trail)
+  );
+  const binary = findTopLevelOperation(expression, ['+', '-']) || findTopLevelOperation(expression, ['*', '/']);
+  if (binary) {
+    const a = Number(evaluateExpression(binary.left, workbook, sheetName, trail));
+    const b = Number(evaluateExpression(binary.right, workbook, sheetName, trail));
+    if (!Number.isFinite(a) || !Number.isFinite(b)) fail('#VALUE!', 'Arithmetic needs numeric values');
+    if (binary.operator === '/' && b === 0) fail('#DIV/0!', 'A formula cannot divide by zero');
+    return { '+': a+b, '-': a-b, '*': a*b, '/': a/b }[binary.operator];
+  }
+  if (/^[-+]/.test(expression) && expression.length > 1) {
+    const n = Number(evaluateExpression(expression.slice(1), workbook, sheetName, trail));
+    return expression[0] === '-' ? -n : n;
+  }
   if (CELL_RE.test(expression)) return getRef(expression);
   return scalar(expression);
 }
