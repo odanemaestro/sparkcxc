@@ -33,6 +33,13 @@ export const SOCIAL_STUDIES_MEDIA = Object.freeze({
       "How can monuments, public spaces and shared traditions help a society remember its history and transmit values to younger people?",
       "WhisperToMe",PD),
   ],
+  "a1-caribbean-culture-world": [
+    reference("Reggae singer Ernie Smith.jpg","Jamaican reggae as cultural expression",
+      "A photographed Jamaican reggae musician, Ernie Smith, illustrating one strand of Caribbean musical culture.",
+      "Explain how reggae and other Caribbean art forms communicate history and identity, and how music from the region circulates internationally.",
+      "Igbochild",BY30,"image",
+      "Reggae is one example among many Caribbean creative traditions."),
+  ],
   "a2-government-structure": [
     reference("Separation of powers (EN).png","Legislature, executive and judiciary",
       "English diagram showing the three arms of government: legislature, executive and judiciary.",
@@ -74,6 +81,14 @@ export const SOCIAL_STUDIES_MEDIA = Object.freeze({
       "Choose an age band, compare the two sides and explain what additional data you would need before making a claim about population change.",
       "Central Intelligence Agency, World Factbook",PD,"image",
       "Historical 2013 reference. SPARK's interactive population-pyramid builder remains the practice activity."),
+  ],
+  "b1-migration": [
+    reference("Windrush Generation Arrived from 1948 - City of Westminster Green Plaque at Paddington Station.jpg",
+      "The Windrush generation and Caribbean migration",
+      "A commemorative plaque at London's Paddington Station marking the arrival of Caribbean people from 1948.",
+      "How did opportunities, recruitment and family ties encourage migration? Discuss both the contributions of Caribbean migrants and the challenges they faced.",
+      "Spudgun67",BYSA40,"image",
+      "The plaque was photographed in 2023. It commemorates migration from 1948 and does not tell the entire history."),
   ],
   "b1-natural-resources": [
     reference("Coral Reef.jpg","What a coral reef resource looks like",
