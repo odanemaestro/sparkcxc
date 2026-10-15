@@ -159,10 +159,46 @@ export function GenericLessonContent({
   const example = lesson.workedExample && typeof lesson.workedExample === "object"
     ? lesson.workedExample
     : null;
+  const isFnh = subjectId === "food-nutrition-and-health";
+  const jumpTo = anchor => {
+    if (typeof document === "undefined") return;
+    const target = document.getElementById(anchor);
+    if (!target) return;
+    const reduceMotion = typeof window !== "undefined"
+      && typeof window.matchMedia === "function"
+      && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    target.scrollIntoView?.({behavior:reduceMotion?"auto":"smooth",block:"start"});
+  };
+  const objectiveGuideBlock = objectiveNotes.length > 0 ? (
+    <section className="spark-generic-objective-guide" aria-label="Syllabus objective guide">
+      <div className="spark-generic-objective-guide-head">
+        <span>Syllabus guide</span>
+        <h3>Understand every objective</h3>
+        <p>Use these explanations as a checklist. You should be able to explain each idea in your own words and apply it to an exam question.</p>
+      </div>
+      <div className="spark-generic-objective-guide-list">
+        {objectiveNotes.map(row=>(
+          <article key={row.code} className="spark-generic-objective-guide-item">
+            <div><strong>{row.code}</strong><span>{renderLessonText(row.objective)}</span></div>
+            <p>{renderLessonText(row.explanation)}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  ) : null;
 
   return (
     <div className="spark-generic-lesson-body">
       {intro && <p className="spark-generic-lesson-intro">{renderLessonText(intro)}</p>}
+      {isFnh && <nav className="spark-fnh-reading-nav" aria-label="Jump to a part of this lesson">
+        <span className="spark-fnh-reading-nav-label">In this lesson</span>
+        <div className="spark-fnh-reading-nav-links">
+          <button type="button" onClick={()=>jumpTo("fnh-lesson-notes")}>Read notes <span aria-hidden="true">↗</span></button>
+          {models.length>0&&<button type="button" onClick={()=>jumpTo("fnh-lesson-explore")}>Explore <span aria-hidden="true">↗</span></button>}
+          <button type="button" onClick={()=>jumpTo("fnh-lesson-practice")}>Quick practice <span aria-hidden="true">↗</span></button>
+          <button type="button" onClick={()=>jumpTo("fnh-lesson-reflect")}>Written response <span aria-hidden="true">↗</span></button>
+        </div>
+      </nav>}
 
       {objectives.length > 0 && (
         <Card className="spark-generic-objectives">
@@ -173,23 +209,14 @@ export function GenericLessonContent({
         </Card>
       )}
 
-      {objectiveNotes.length > 0 && (
-        <section className="spark-generic-objective-guide" aria-label="Syllabus objective guide">
-          <div className="spark-generic-objective-guide-head">
-            <span>Syllabus guide</span>
-            <h3>Understand every objective</h3>
-            <p>Use these explanations as a checklist. You should be able to explain each idea in your own words and apply it to an exam question.</p>
-          </div>
-          <div className="spark-generic-objective-guide-list">
-            {objectiveNotes.map(row=>(
-              <article key={row.code} className="spark-generic-objective-guide-item">
-                <div><strong>{row.code}</strong><span>{renderLessonText(row.objective)}</span></div>
-                <p>{renderLessonText(row.explanation)}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-      )}
+      {objectiveGuideBlock && (isFnh ? (
+        <details className="spark-fnh-syllabus-details">
+          <summary><span><strong>Official syllabus guide</strong><small>{objectiveNotes.length} objectives, with explanations</small></span>
+            <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="m5 8 5 5 5-5"/></svg>
+          </summary>
+          {objectiveGuideBlock}
+        </details>
+      ) : objectiveGuideBlock)}
 
       {blocks.map((block, index) => {
         const paragraphs = Array.isArray(block?.paragraphs)
@@ -200,7 +227,7 @@ export function GenericLessonContent({
         const bullets = Array.isArray(block?.bullets) ? block.bullets : [];
 
         return (
-          <section key={`${block?.title || "section"}-${index}`} className="spark-generic-lesson-section">
+          <section key={`${block?.title || "section"}-${index}`} id={isFnh&&index===0?"fnh-lesson-notes":undefined} className="spark-generic-lesson-section">
             {block?.title && <h3>{renderLessonText(block.title)}</h3>}
             {paragraphs.filter(Boolean).map((paragraph, paragraphIndex) => (
               <p key={paragraphIndex}>{renderLessonText(paragraph)}</p>
@@ -231,7 +258,7 @@ export function GenericLessonContent({
               })}
             />
           : subjectId === "food-nutrition-and-health"
-          ? <div className="spark-fnh-interactive-model" key={model.id || model.type}>
+          ? <div id={model===models[0]?"fnh-lesson-explore":undefined} className="spark-fnh-interactive-model" key={model.id || model.type}>
               {["fnh-meal-builder","fnh-label-calculator","fnh-budget-planner"].includes(model.type) ? <FnhDecisionLab type={model.type}/> :
                model.type === "fnh-nutrition" ? <FoodEnergyNutritionExplorer /> :
                model.type === "fnh-preservation" ? <FoodPreservationExplorer /> :
@@ -297,7 +324,7 @@ export function GenericLessonContent({
       {subjectId==="food-nutrition-and-health"&&<FnhObjectivePractice key={`fnh-open-response-${topic?.id}`} topic={topic}/>}
 
       {summary && (
-        <section className="spark-generic-lesson-summary">
+        <section id={isFnh?"fnh-lesson-summary":undefined} className="spark-generic-lesson-summary">
           <h3>Lesson summary</h3>
           <p>{renderLessonText(summary)}</p>
         </section>
