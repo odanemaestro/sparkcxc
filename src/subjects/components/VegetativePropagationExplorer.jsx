@@ -23,7 +23,7 @@ function Soil() {
 
 function Bulb() {
   return (
-    <ReviewedScienceDiagram site="VegetativePropagationExplorer.jsx:25"><svg viewBox="0 0 900 450" role="img" aria-label="Onion bulb">
+    <ReviewedScienceDiagram site="VegetativePropagationExplorer.jsx:25" darkImagePath="/integrated-science/diagrams/0517-dark.svg"><svg viewBox="0 0 900 450" role="img" aria-label="Onion bulb">
       <Soil />
       <g className="vp-plant">
         <path className="leaf" d="M450 310 C410 220 415 105 440 45 C470 150 478 235 460 310" />
