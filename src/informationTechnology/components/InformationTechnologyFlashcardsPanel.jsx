@@ -1,3 +1,5 @@
+import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
+import BackArrowIcon from "../../components/ui/BackArrowIcon";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import course from "../course/itCourseData.json";
 import {
@@ -234,7 +236,7 @@ export default function InformationTechnologyFlashcardsPanel({ userId, onChangeS
           </div>
           {onChangeSubject && (
             <button type="button" className="it-flashcards-change" onClick={onChangeSubject}>
-              <span aria-hidden="true">←</span>
+              <BackArrowIcon/>
               <span>Change subject</span>
             </button>
           )}
@@ -373,8 +375,8 @@ export default function InformationTechnologyFlashcardsPanel({ userId, onChangeS
                 </div>
 
                 <div className="it-flashcards-nav">
-                  <button type="button" disabled={index === 0} onClick={() => { setIndex(value => Math.max(0, value - 1)); setRevealed(false); }}>← Previous</button>
-                  <button type="button" disabled={index >= activeCards.length - 1} onClick={() => { setIndex(value => Math.min(activeCards.length - 1, value + 1)); setRevealed(false); }}>Next card →</button>
+                  <button type="button" disabled={index === 0} onClick={() => { setIndex(value => Math.max(0, value - 1)); setRevealed(false); }}><BackArrowIcon/> Previous</button>
+                  <button type="button" disabled={index >= activeCards.length - 1} onClick={() => { setIndex(value => Math.min(activeCards.length - 1, value + 1)); setRevealed(false); }}>Next card <ForwardArrowIcon/></button>
                 </div>
               </>
             )}
