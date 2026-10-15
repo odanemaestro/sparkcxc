@@ -87,7 +87,7 @@ export default function WebDesignLab({ lab, userId, completed, onBack, onComplet
     anchor.href = url; anchor.download = "SPARK-Technology-Club-Site.html";
     document.body.appendChild(anchor); anchor.click(); anchor.remove(); URL.revokeObjectURL(url);
   }
-  const { evidence, record } = useTaskEvidence();
+  const { evidence, record } = useTaskEvidence(userId, lab.id);
 
   const page = pages.find(item => item.id === selected) ?? pages[0];
   const livePage = pages.find(item => item.id === visited) ?? pages[0];
