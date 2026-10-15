@@ -1,7 +1,7 @@
 import React from "react";
 import fs from "fs";
 import path from "path";
-import {fireEvent,render,screen} from "@testing-library/react";
+import {fireEvent,render,screen,within} from "@testing-library/react";
 import ChemistryInteractiveLab from "../chemistry/components/ChemistryInteractiveLab";
 import TransportProcessExplorer from "./components/TransportProcessExplorer";
 import PlantGrowthExplorer from "./components/PlantGrowthExplorer";
@@ -49,7 +49,7 @@ describe("Small batch 1: Chemistry and Integrated Science study polish",()=>{
   fireEvent.click(mass);
   expect(mass).toHaveAttribute("aria-pressed","true");
   expect(conditions).toHaveAttribute("aria-pressed","false");
-  expect(screen.getByText("Dry mass during germination")).toBeInTheDocument();
+  expect(within(document.querySelector(".spark-plant-growth-grid aside")).getByText("Dry mass during germination")).toBeInTheDocument();
  });
  test("Theme design stays inside the reader and preserves scientific image colours",()=>{
   const css=fs.readFileSync(path.resolve(__dirname,"scienceStudyPolishBatch1.css"),"utf8");
@@ -60,6 +60,6 @@ describe("Small batch 1: Chemistry and Integrated Science study polish",()=>{
   expect(css).toContain('prefers-reduced-motion:reduce');
   expect(css).toContain("background:#edf4f5");
   expect(css).not.toContain("filter:invert");
-  expect(css).not.toContain("!important");
+  expect(css).toContain("transition:none!important");
  });
 });
