@@ -490,3 +490,41 @@ html[data-theme="dark"] :is(.spark-fnh-study,.spark-editorial-study) .spark-gene
 .spark-editorial-study :is(.spark-generic-lesson,.spark-generic-outline,.spark-generic-lesson-body){min-width:0}
 .spark-editorial-study .spark-fnh-reading-nav-links button svg{width:16px;height:16px;flex:none;stroke:var(--fnh-ui-teal);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
 @media print{.spark-editorial-study .spark-editorial-scroll-anchor{display:none}}
+
+
+/* Shared navy study palette. Visual-only: preserve each subject's lesson
+   structure, experiments, completion state, links, and navigation. */
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study){
+  --fnh-ui-bg:#0e1720;
+  --fnh-ui-paper:#142133;
+  --fnh-ui-paper-alt:#1b2b3e;
+  --fnh-ui-ink:#f1f5fa;
+  --fnh-ui-muted:#becbd8;
+  --fnh-ui-line:#33495f;
+  --fnh-ui-teal:#33c4aa;
+  --fnh-ui-teal-soft:#163a3e;
+  --fnh-ui-teal-ink:#71e6d0;
+  --fnh-ui-highlight:#273849;
+  --fnh-ui-focus:#71e6d0;
+  color-scheme:dark;
+  --spark-bg:var(--fnh-ui-bg);
+  --spark-paper:var(--fnh-ui-paper);
+  --spark-muted:var(--fnh-ui-paper-alt);
+  --spark-ink:var(--fnh-ui-ink);
+  --spark-text-muted:var(--fnh-ui-muted);
+  --spark-border:var(--fnh-ui-line);
+  --spark-teal:var(--fnh-ui-teal);
+  --spark-teal-dark:var(--fnh-ui-teal-ink);
+  --spark-teal-light:var(--fnh-ui-teal-soft);
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study)
+ :is(.spark-generic-example-answer,.spark-generic-objective-guide-item){
+  background:var(--fnh-ui-paper-alt);
+  color:var(--fnh-ui-ink);
+  border-color:var(--fnh-ui-line);
+}
+:is(html[data-theme="dark"],body[data-theme="dark"],.dark) :is(.spark-fnh-study,.spark-editorial-study)
+ :is(button,a,input,textarea,select):focus-visible{
+  outline:2px solid var(--fnh-ui-focus);
+  outline-offset:3px;
+}
