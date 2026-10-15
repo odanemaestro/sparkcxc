@@ -88,7 +88,6 @@ export default function SpreadsheetLab({ lab, userId, completed, onBack, onCompl
   const workbookAudit = useMemo(() => auditWorkbook(workbook), [workbook]);
   const workbookSheets = useMemo(() => Object.keys(workbook).filter(name => workbook[name] && typeof workbook[name] === "object" && !Array.isArray(workbook[name])), [workbook]);
   const salesCells = workbook.Sales || {};
-  const currentCells = workbook[sheet] || {};
   const selectedRaw = workbook[sheet]?.[selected] ?? "";
   const selectedResult = evaluateCell(workbook, sheet, selected);
   const values = useMemo(() => Object.fromEntries(COLUMNS.flatMap(column => ROWS.map(row => {
