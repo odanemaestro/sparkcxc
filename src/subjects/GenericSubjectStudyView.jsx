@@ -197,6 +197,18 @@ export function GenericLessonContent({
   return (
     <div className="spark-generic-lesson-body">
       {intro && <p className="spark-generic-lesson-intro">{renderLessonText(intro)}</p>}
+      {isEditorial && <nav className="spark-fnh-reading-nav spark-editorial-reading-nav" aria-label="Jump to a part of this lesson">
+        <span className="spark-fnh-reading-nav-label">In this lesson</span>
+        <div className="spark-fnh-reading-nav-links">
+          {blocks.length>0&&<button type="button" onClick={()=>jumpTo("spark-lesson-notes")}>Read notes</button>}
+          {hasExplore&&<button type="button" onClick={()=>jumpTo("spark-lesson-explore")}>Explore</button>}
+          {points.length>0&&<button type="button" onClick={()=>jumpTo("spark-lesson-key-points")}>Key points</button>}
+          {example&&<button type="button" onClick={()=>jumpTo("spark-lesson-worked-example")}>Worked example</button>}
+          {summary&&<button type="button" onClick={()=>jumpTo("spark-lesson-summary")}>Summary</button>}
+          {subjectId==="social-studies"&&<button type="button" onClick={()=>jumpTo("spark-lesson-activities")}>Caribbean activities</button>}
+          {subjectId==="social-studies"&&<button type="button" onClick={()=>jumpTo("spark-lesson-practice")}>Practise</button>}
+        </div>
+      </nav>}
       {isFnh && <nav className="spark-fnh-reading-nav" aria-label="Jump to a part of this lesson">
         <span className="spark-fnh-reading-nav-label">In this lesson</span>
         <div className="spark-fnh-reading-nav-links">
@@ -956,7 +968,7 @@ export default function GenericSubjectStudyView({
                     editorial={subjectId!=="food-nutrition-and-health"}
                     onActivityComplete={recordInteractiveComplete}
                   />
-                  {LessonExtras && <LessonExtras key={activeTopic.id} topic={activeTopic} supabase={supabase} showToast={showToast}/> }
+                  {LessonExtras && <div id="spark-lesson-activities"><LessonExtras key={activeTopic.id} topic={activeTopic} supabase={supabase} showToast={showToast}/><span id="spark-lesson-practice" className="spark-editorial-scroll-anchor" aria-hidden="true" /></div> }
 
                   <div className="spark-generic-lesson-footer">
                     {previousTopic ? (
