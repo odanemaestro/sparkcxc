@@ -22,6 +22,13 @@ describe("FNH interactive food planning and label calculations",()=>{
     expect(fnhNutritionLabelTotal(-5,100,250)).toBeNull();
     expect(fnhNutritionLabelTotal(6,100,-250)).toBeNull();
     expect(fnhNutritionLabelTotal("invalid",100,250)).toBeNull();
+    expect(fnhNutritionLabelTotal("",100,250)).toBeNull();
+    expect(fnhNutritionLabelTotal(" ",100,250)).toBeNull();
+    expect(fnhNutritionLabelTotal(0,"",250)).toBeNull();
+    expect(fnhNutritionLabelTotal(0,100,"")).toBeNull();
+    expect(fnhNutritionLabelTotal(6,100,Number.POSITIVE_INFINITY)).toBeNull();
+    expect(fnhNutritionLabelTotal(6,100,1e308)).toBeNull();
+    expect(fnhNutritionLabelTotal(0,100,250)).toBe(0);
   });
   test("budget planner totals example prices and detects overspending",()=>{
     const selected=Object.fromEntries(FNH_BUDGET_ITEMS.map(row=>[row.id,1]));
@@ -29,6 +36,12 @@ describe("FNH interactive food planning and label calculations",()=>{
     expect(planned).toMatchObject({total:1950,limit:2500,left:550,withinBudget:true});
     const tight=fnhBudgetSummary(FNH_BUDGET_ITEMS,selected,1800);
     expect(tight).toMatchObject({total:1950,left:-150,withinBudget:false});
+    const overflow=fnhBudgetSummary(FNH_BUDGET_ITEMS,{rice:1000,peas:-20,cabbage:1.9},2500);
+    expect(overflow.rows.find(row=>row.id==="rice").quantity).toBe(99);
+    expect(overflow.rows.find(row=>row.id==="peas").quantity).toBe(0);
+    expect(overflow.rows.find(row=>row.id==="cabbage").quantity).toBe(1);
+    const bad=fnhBudgetSummary(FNH_BUDGET_ITEMS,{rice:Number.POSITIVE_INFINITY},"not-a-number");
+    expect(bad).toMatchObject({total:0,limit:0,withinBudget:true});
   });
   test("interactive labs appear on the correct syllabus topic lessons",()=>{
     const modelFor=id=>FNH_TOPICS.find(topic=>topic.id===id)?.metadata?.lesson?.interactiveModels?.[0]?.type;
