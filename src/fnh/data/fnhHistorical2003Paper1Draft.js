@@ -170,7 +170,7 @@ export const FNH_P1_2003_TRANSCRIPTION_DRAFT=Object.freeze([
   {"id":"FNH-HIST-P1-2003-Q58","number":58,"stem":"Which of the following group of herbs and spices is MOST suitable for making a bouquet garni?","options":["Cloves, ginger, thyme, celery","Cinnamon, nutmeg, cloves, mace","Bay leaves, thyme, celery, parsley","Chive, black pepper, parsley, paprika"],"proposedAnswer":"C","explanation":"A bouquet garni is a tied bundle of herbs commonly including bay leaf, thyme and parsley.","source":"CSEC_FNH_Paper_1_-_May_June_2003.pdf","sourceChecked":true,"officialKeyVerified":false},
   {"id":"FNH-HIST-P1-2003-Q59","number":59,"stem":"Excessive amounts of sodium salts in the diet can increase a person's risk of","options":["dry skin","sore gums","hypertension","hypotension"],"proposedAnswer":"C","explanation":"Excess sodium intake can contribute to high blood pressure in salt-sensitive people.","source":"CSEC_FNH_Paper_1_-_May_June_2003.pdf","sourceChecked":true,"officialKeyVerified":false},
   {"id":"FNH-HIST-P1-2003-Q60","number":60,"stem":"What is the BEST definition of the term la carte?","options":["Meal at a fixed price","List of dishes served at a meal","Choice of individually-priced dishes on a menu","Meal at which guests serve themselves"],"proposedAnswer":"C","explanation":"À la carte service presents individually priced menu items, unlike a fixed-price set menu.","source":"CSEC_FNH_Paper_1_-_May_June_2003.pdf","sourceChecked":true,"officialKeyVerified":false}
-]);
+].sort((a,b)=>a.number-b.number));
 export const FNH_P1_2003_QA=Object.freeze({
  expectedQuestions:60,transcribedCandidateQuestions:60,
  sourceVerifiedQuestions:60,officialKeyVerifiedQuestions:0,
