@@ -404,3 +404,22 @@
     transition: none !important;
   }
 }
+
+
+/* Shared navigation icon alignment, all themes and viewport sizes.
+   Keep navigation icons decorative and aligned with accessible button labels. */
+:is(.spark-subject-selection-back,.is-back-button,.is-exam-page-back,
+    .chem-library-back,.fnh-outline,.paper-text-button,.paper2-back-control,
+    .pcl-btn.secondary):has(> svg){
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+:is(.spark-subject-selection-back,.is-back-button,.is-exam-page-back,
+    .chem-library-back,.fnh-outline,.paper-text-button,.paper2-back-control,
+    .pcl-btn.secondary) > svg{
+  flex:0 0 auto;
+  width:18px;
+  height:18px;
+}
