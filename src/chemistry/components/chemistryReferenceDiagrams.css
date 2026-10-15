@@ -1,0 +1,146 @@
+/* Chemistry online reference diagrams: separate from markable activities.
+   Keep the illustrations on white even when the surrounding SPARK reader is navy. */
+.spark-chem-reference-section{
+  margin:26px 0;
+  min-width:0;
+  color:var(--fnh-ui-ink,var(--spark-ink,#17304d));
+}
+.spark-chem-reference-heading{
+  margin-bottom:16px;
+}
+.spark-chem-reference-heading>span{
+  display:block;
+  color:var(--fnh-ui-teal-ink,#107d76);
+  font-size:.76rem;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  font-weight:750;
+}
+.spark-chem-reference-heading h3{
+  margin:5px 0 6px;
+  font-size:clamp(1.1rem,2.5vw,1.45rem);
+  letter-spacing:-.02em;
+  color:inherit;
+}
+.spark-chem-reference-heading p{
+  margin:0;
+  color:var(--fnh-ui-muted,#53677e);
+  font-size:.9rem;
+  line-height:1.65;
+  max-width:68ch;
+}
+.spark-chem-reference-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,285px),1fr));
+  align-items:stretch;
+  gap:16px;
+}
+.spark-chem-reference-figure{
+  min-width:0;
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  border:1px solid var(--fnh-ui-line,#d7e0e8);
+  border-radius:15px;
+  background:var(--fnh-ui-paper,#fff);
+  box-shadow:0 3px 14px rgba(16,39,66,.04);
+}
+.spark-chem-reference-visual{
+  display:grid;
+  place-items:center;
+  min-height:190px;
+  padding:clamp(14px,2vw,22px);
+  background:#fff;
+  border-bottom:1px solid #e1e6ec;
+  color:#17304d;
+}
+.spark-chem-reference-image-link{
+  display:grid;
+  justify-items:center;
+  align-items:center;
+  gap:10px;
+  width:100%;
+  text-decoration:none;
+  color:#1f456c;
+  font-size:.78rem;
+  font-weight:700;
+}
+.spark-chem-reference-image-link img{
+  display:block;
+  width:auto;
+  max-width:100%;
+  height:auto;
+  max-height:380px;
+  object-fit:contain;
+  background:#fff;
+}
+.spark-chem-reference-image-link span{
+  justify-self:end;
+  line-height:1.4;
+}
+.spark-chem-reference-image-link:hover span{text-decoration:underline}
+.spark-chem-reference-image-link:focus-visible{
+  outline:3px solid #10847e;
+  outline-offset:5px;
+  border-radius:6px;
+}
+.spark-chem-reference-figure figcaption{
+  display:grid;
+  align-content:start;
+  gap:9px;
+  padding:16px 17px 18px;
+  flex:1;
+}
+.spark-chem-reference-figure figcaption>strong{
+  color:var(--fnh-ui-ink,#17304d);
+  font-size:.96rem;
+  font-weight:760;
+  line-height:1.4;
+}
+.spark-chem-reference-figure figcaption>p{
+  margin:0;
+  color:var(--fnh-ui-muted,#53677e);
+  font-size:.86rem;
+  line-height:1.65;
+}
+.spark-chem-reference-credit{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:4px 7px;
+  padding-top:10px;
+  border-top:1px solid var(--fnh-ui-line,#d7e0e8);
+  color:var(--fnh-ui-muted,#53677e);
+  font-size:.73rem;
+  line-height:1.5;
+  margin-top:auto;
+  overflow-wrap:anywhere;
+}
+.spark-chem-reference-credit a{
+  color:var(--fnh-ui-teal-ink,#107d76);
+  text-underline-offset:3px;
+}
+.spark-chem-reference-credit a:focus-visible{
+  outline:2px solid currentColor;
+  outline-offset:3px;
+}
+.spark-chem-reference-fallback{
+  padding:22px 12px;
+  text-align:center;
+}
+.spark-chem-reference-fallback p{
+  font-size:.85rem;
+  line-height:1.6;
+}
+.spark-chem-reference-fallback a{color:#1f456c}
+@media(max-width:620px){
+  .spark-chem-reference-section{margin:22px 0}
+  .spark-chem-reference-grid{grid-template-columns:minmax(0,1fr);gap:13px}
+  .spark-chem-reference-visual{min-height:130px}
+  .spark-chem-reference-image-link img{max-height:320px}
+  .spark-chem-reference-figure figcaption{padding:15px}
+}
+@media(prefers-reduced-motion:reduce){
+  .spark-chem-reference-section *{scroll-behavior:auto}
+}
