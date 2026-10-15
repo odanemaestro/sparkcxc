@@ -193,3 +193,12 @@ html[data-theme="dark"] .ea-p2-instruction-choice button,
 body[data-theme="dark"] .ea-p2-instruction-choice button,
 .dark .ea-p2-instruction-choice button{background:#122b43;border-color:#29465f}
 @media(max-width:640px){.ea-p2-instruction-choice>div{grid-template-columns:1fr}}
+
+/* Consistent minimalist navigation icon spacing across English A practice. */
+.ea-practice-back,.ea-practice-primary,.is-exam-page-back{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+}
+.ea-practice-back svg,.ea-practice-primary svg,.is-exam-page-back svg{
+  flex:0 0 18px;width:18px;height:18px;stroke:currentColor;
+  stroke-width:1.5;fill:none;
+}
