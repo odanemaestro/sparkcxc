@@ -1,3 +1,5 @@
+import BackArrowIcon from "../../components/ui/BackArrowIcon";
+import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { recordSubjectActivity } from "../../subjects/subjectProgress";
 import EnglishAPaper1Question from "./EnglishAPaper1Question";
@@ -185,8 +187,8 @@ export default function EnglishAPaper1Exam({ supabase, userId, onBack }) {
         <div className="is-exam-shell">
           <header className="is-exam-library-hero">
             <div>
-              <button type="button" className="is-exam-primary is-exam-back" onClick={onBack}>
-                <span aria-hidden="true">{"←"}</span>
+              <button type="button" className="is-exam-secondary is-exam-back" onClick={onBack}>
+                <BackArrowIcon/>
                 English A practice
               </button>
               <span className="is-exam-eyebrow">CSEC ENGLISH A PAPER 01</span>
@@ -217,8 +219,8 @@ export default function EnglishAPaper1Exam({ supabase, userId, onBack }) {
     return (
       <main className="is-exam-root">
         <div className="is-exam-shell">
-          <button type="button" className="is-exam-primary is-exam-page-back" onClick={onBack}>
-            <span aria-hidden="true">{"←"}</span>
+          <button type="button" className="is-exam-secondary is-exam-page-back" onClick={onBack}>
+            <BackArrowIcon/>
             Back to English A practice
           </button>
 
@@ -347,12 +349,12 @@ export default function EnglishAPaper1Exam({ supabase, userId, onBack }) {
 
             <footer className="is-exam-footer">
               <button type="button" className="is-exam-primary" disabled={currentIndex === 0} onClick={() => goTo(currentIndex - 1)}>
-                <span aria-hidden="true">{"←"}</span> Previous
+                <BackArrowIcon/> Previous
               </button>
               <span>Question {currentIndex + 1} of 60</span>
               {currentIndex < 59 ? (
                 <button type="button" className="is-exam-primary" onClick={() => goTo(currentIndex + 1)}>
-                  Next question <span aria-hidden="true">{"→"}</span>
+                  Next question <ForwardArrowIcon/>
                 </button>
               ) : !review ? (
                 <button type="button" className="is-exam-primary" onClick={() => setConfirmSubmit(true)}>Submit paper</button>
@@ -373,7 +375,7 @@ export default function EnglishAPaper1Exam({ supabase, userId, onBack }) {
 
             {review && (
               <div className="is-exam-result-actions">
-                <button type="button" className="is-exam-primary" onClick={onBack}><span aria-hidden="true">{"←"}</span> Back to English A practice</button>
+                <button type="button" className="is-exam-secondary" onClick={onBack}><BackArrowIcon/> Back to English A practice</button>
                 <button type="button" className="is-exam-primary" onClick={startAnother}>Start another Paper 1</button>
               </div>
             )}
