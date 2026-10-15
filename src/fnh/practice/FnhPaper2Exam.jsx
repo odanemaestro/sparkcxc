@@ -71,7 +71,7 @@ export default function FnhPaper2Exam({onBack,supabase,userId,setNumber=1,histor
     recordSubjectActivity({supabase,activity:{
       subjectId:"food-nutrition-and-health",
       activityKey:`practice:fnh-paper2:${paperId}:${attempt.attemptId}`,
-      activityType:"practice",title:`Food, Nutrition and Health Paper 02 · ${examLabel}`,
+      activityType:"exam",title:`Food, Nutrition and Health Paper 02 · ${examLabel}`,
       completed:true,score:null,maxScore:96,percent:null,
       metadata:{source:historical?"historical_user_supplied_pdf":"fnh_paper2_original_v1",paper:"02",paper_id:paperId,
         historical,year:historicalPaper?.year||null,marking_scheme:historical?"spark_reference_explanations":"spark_original",
