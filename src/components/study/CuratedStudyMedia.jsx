@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import {referencesFor} from "./curatedStudyMedia";
+import {referencesFor} from "./courseVisualReferenceCatalog.js";
 import "./curatedStudyMedia.css";
 
 function VisualCard({item}){
