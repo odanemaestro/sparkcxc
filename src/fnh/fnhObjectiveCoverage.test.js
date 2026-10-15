@@ -1,6 +1,7 @@
 import {FNH_SYLLABUS_SECTIONS,FNH_OBJECTIVES,FNH_SECTIONS,FNH_TOPICS,FNH_COVERAGE,fnhLocalStructure} from "./data/fnhCourse";
 import {FNH_SUPPLIED_ARCHIVE,FNH_ARCHIVE_SUMMARY,fnhVerifiedArchivePaper} from "./data/fnhPastPaperInventory";
 import {getSparkSubjectRegistry} from "../subjects/subjectRegistry";
+import {FNH_LESSON_DEEP_DIVES} from "./data/fnhLessonDeepDives";
 
 describe("CSEC Food, Nutrition and Health syllabus integrity",()=>{
   const perSection=[11,15,12,13,11,14,11];
@@ -34,10 +35,31 @@ describe("CSEC Food, Nutrition and Health syllabus integrity",()=>{
       expect(lesson.objectives).toHaveLength(codes.length);
       expect(lesson.objectiveGuide).toHaveLength(codes.length);
       expect(lesson.flashcards).toHaveLength(codes.length);
-      expect(lesson.sections).toHaveLength(codes.length);
+      expect(lesson.sections).toHaveLength(codes.length+1);
+      const extended=lesson.sections[lesson.sections.length-1];
+      expect(extended.title).toBe(FNH_LESSON_DEEP_DIVES[topic.id]?.title);
+      expect(extended.paragraphs).toHaveLength(2);
+      expect(extended.bullets).toHaveLength(3);
+      expect(extended.paragraphs.every(text=>text.length>=120)).toBe(true);
       expect(lesson.flashcards.every(card=>card.front&&card.back)).toBe(true);
       expect(lesson.sections.every(block=>block.title&&block.paragraphs.length>=2&&block.bullets.length)).toBe(true);
     });
+  });
+  test("all 25 topic deep dives deepen study rather than replacing official objectives",()=>{
+    expect(Object.keys(FNH_LESSON_DEEP_DIVES)).toHaveLength(25);
+    expect(new Set(Object.keys(FNH_LESSON_DEEP_DIVES)).size).toBe(25);
+    expect(Object.keys(FNH_LESSON_DEEP_DIVES).sort()).toEqual(FNH_TOPICS.map(t=>t.id).sort());
+    const deepDiveCount=FNH_TOPICS.reduce((n,topic)=>n+topic.metadata.lesson.sections.length
+      -topic.metadata.syllabus.objectiveCodes.length,0);
+    expect(deepDiveCount).toBe(25);
+    expect(FNH_TOPICS.flatMap(t=>t.metadata.lesson.sections)).toHaveLength(112);
+    for(const [id,lesson] of Object.entries(FNH_LESSON_DEEP_DIVES)){
+      expect(lesson.title.length).toBeGreaterThan(12);
+      expect(lesson.paragraphs.every(text=>text.length>=120)).toBe(true);
+      expect(lesson.bullets.every(text=>text.length>=28)).toBe(true);
+      expect(FNH_TOPICS.find(t=>t.id===id).metadata.lesson.sections.slice(-1)[0].title)
+        .toBe(lesson.title);
+    }
   });
   test("all topic and section IDs remain stable for routing and progress",()=>{
     const structure=fnhLocalStructure();
