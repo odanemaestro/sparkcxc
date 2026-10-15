@@ -14,7 +14,7 @@ describe("FNH formative study-note practice interactions",()=>{
   fireEvent.click(screen.getByRole("button",{name:"Check my answer"}));
   expect(screen.getByText("Review this one, then try again.")).toBeInTheDocument();
   expect(screen.getByText("1 of 3 checked")).toBeInTheDocument();
-  expect(screen.getByText(/Answer:/)).toHaveTextContent("B");
+  expect(screen.getByText("Answer:").parentElement).toHaveTextContent("Answer: B");
   fireEvent.click(screen.getByRole("button",{name:"Try this question again"}));
   expect(screen.getByText("0 of 3 checked")).toBeInTheDocument();
   fireEvent.click(screen.getByRole("radio",{name:/Include a vegetable or fruit/}));
