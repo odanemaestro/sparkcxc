@@ -1,5 +1,8 @@
 # 2003 FNH Paper 1: Numbered-source reconstruction audit
 
+> **CORRECTION (2026-10-15, later review):** Original 2003 Q59 has **C = hypotension; D = hypertension**. An earlier SPARK transcription reversed those labels. The data was corrected to **D**, agreeing with the worked key. 2003 Q4 now provisionally selects **C (pawpaw)**, but fruit-shrinkage wording remains ambiguous. Earlier statements below asserting 2003 Q59=C or calling D erroneous are superseded.
+
+
 Status: **Question order corrected; academic source verification is still incomplete.**
 
 ## Root cause
