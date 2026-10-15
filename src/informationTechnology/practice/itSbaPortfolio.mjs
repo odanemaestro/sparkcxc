@@ -41,3 +41,13 @@ export function exportSbaEvidence(userId, projectId, componentId, storage = glob
     versions
   }, null, 2);
 }
+
+export function exportSbaProjectPortfolio(userId, projectId, storage = globalThis.localStorage) {
+  const components = {};
+  for (const id of Object.keys(LAB_BY_COMPONENT)) components[id] = readSbaEvidence(userId, projectId, id, storage);
+  return JSON.stringify({
+    format: "spark-it-sba-portfolio-v1", projectId,
+    notice: "Local practice evidence only. No external submission, automatic marks or teacher assessment.",
+    components
+  }, null, 2);
+}
