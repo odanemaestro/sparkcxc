@@ -853,7 +853,7 @@ export const FNH_P1_2004_TRANSCRIPTION_DRAFT=Object.freeze([
       "Margarine",
       "Groundnut oil"
     ],
-    "proposedAnswer": null,
+    "proposedAnswer":"B",
     "explanation": "An appropriately refined frying oil with a suitable smoke point is needed; more than one listed vegetable oil may qualify. Verify original key.",
     "sourcePage": 6,
     "sourceChecked": true,
