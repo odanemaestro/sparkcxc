@@ -1,4 +1,5 @@
-import React, { useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import {readLabWorkspace,writeLabWorkspace} from "../models/workspacePersistence.mjs";
 import { LabFrame, RibbonTabs, WindowBar } from "../components/LabFrame";
 import { ReducedMotionNotice, StatusMessage, ToolGroup, WorkspaceViewport, useTaskEvidence, useWorkspaceHistory } from "../components/ProductivityKit";
 import { evaluateCell, explainFormula, formulaDependencies, translateFormula } from "../models/workbookModel.mjs";
@@ -26,12 +27,13 @@ function displayValue(result, currency = false) {
   return String(result ?? "");
 }
 
-export default function SpreadsheetLab({ lab, completed, onBack, onComplete }) {
+export default function SpreadsheetLab({ lab, userId, completed, onBack, onComplete }) {
   const [tab, setTab] = useState("Home");
   const [sheet, setSheet] = useState("Sales");
   const [selected, setSelected] = useState("D2");
   const [formulaBar, setFormulaBar] = useState("=B2*C2");
-  const { state: workbook, setState: setWorkbook, undo, redo, canUndo, canRedo } = useWorkspaceHistory({ Sales: STARTING_SALES, Summary: { A1: "Annual Summary" } });
+  const { state: workbook, setState: setWorkbook, undo, redo, canUndo, canRedo } = useWorkspaceHistory(() => readLabWorkspace(userId,"spreadsheet",{ Sales: STARTING_SALES, Summary: { A1: "Annual Summary" } }));
+  useEffect(()=>{writeLabWorkspace(userId,"spreadsheet",workbook);},[userId,workbook]);
   const [filter, setFilter] = useState("All");
   const [sort, setSort] = useState("Item");
   const [chart, setChart] = useState("");
