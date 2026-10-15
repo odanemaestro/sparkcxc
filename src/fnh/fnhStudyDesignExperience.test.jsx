@@ -74,7 +74,8 @@ describe("FNH calm study reader, syllabus guide and navigation",()=>{
   const focus=await screen.findByRole("button",{name:"Focus on reading"});
   const main=screen.getByRole("main");
   expect(main).toHaveClass("spark-fnh-study");
-  expect(screen.getByTitle("Back to top")).toHaveAttribute("aria-hidden","true");
+  // Back to top is rendered once by App, not independently inside the study view.
+  expect(screen.queryByTitle("Back to top")).not.toBeInTheDocument();
   expect(main).not.toHaveClass("spark-fnh-focus-reading");
   expect(screen.getByText("Lesson 1 of 25 · 4 syllabus objectives")).toBeInTheDocument();
   expect(screen.getByRole("complementary",{name:/course outline/})).toBeInTheDocument();
