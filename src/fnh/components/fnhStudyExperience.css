@@ -73,7 +73,7 @@
 .spark-fnh-study .spark-fnh-reading-nav-label{font-size:.78rem;color:var(--fnh-ui-muted);font-weight:680;white-space:nowrap}
 .spark-fnh-study .spark-fnh-reading-nav-links{display:flex;gap:5px;flex-wrap:wrap;align-items:center;min-width:0}
 .spark-fnh-study .spark-fnh-reading-nav-links button{display:inline-flex;align-items:center;gap:5px;border:0;border-radius:9px;background:transparent;color:var(--fnh-ui-ink);padding:10px 12px;min-height:44px;font-family:inherit;font-size:.82rem;font-weight:690;cursor:pointer;transition:background .15s ease,color .15s ease}
-.spark-fnh-study .spark-fnh-reading-nav-links button span{font-size:.9rem;color:var(--fnh-ui-teal)}
+.spark-fnh-study .spark-fnh-reading-nav-links button svg{width:16px;height:16px;flex:none;fill:none;stroke:var(--fnh-ui-teal);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .spark-fnh-study .spark-fnh-reading-nav-links button:hover{background:var(--fnh-ui-paper);color:var(--fnh-ui-teal-ink)}
 .spark-fnh-study .spark-generic-objectives{margin:0 0 17px!important;padding:0!important;border:0!important;border-radius:0;background:none!important;box-shadow:none!important}
 .spark-fnh-study .spark-generic-objectives>strong{display:block;margin:0 0 15px;color:var(--fnh-ui-ink);font-size:1.125rem;font-weight:740;letter-spacing:-.016em;text-transform:none}
