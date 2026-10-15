@@ -16,6 +16,7 @@ import FoodPreservationExplorer from "./components/FoodPreservationExplorer";
 import FoodContaminationExplorer from "./components/FoodContaminationExplorer";
 import FoodMicroorganismExplorer from "./components/FoodMicroorganismExplorer";
 import FnhObjectivePractice from "../fnh/components/FnhObjectivePractice";
+import FnhStudyPractice from "../fnh/components/FnhStudyPractice";
 import FnhDecisionLab from "../fnh/components/FnhDecisionLab";
 import {
   readSparkHashRoute,
@@ -289,6 +290,8 @@ export function GenericLessonContent({
           {example.answer && <div className="spark-generic-example-answer">{renderLessonText(example.answer)}</div>}
         </Card>
       )}
+
+      {subjectId==="food-nutrition-and-health"&&<FnhStudyPractice key={topic?.id} topicId={topic?.id}/>}
 
       {subjectId==="food-nutrition-and-health"&&<FnhObjectivePractice key={topic?.id} topic={topic}/>}
 
