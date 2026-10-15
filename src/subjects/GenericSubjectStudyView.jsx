@@ -26,6 +26,7 @@ import {
 } from "../routing/sparkRoutingV270";
 import "./genericSubjectStudy.css";
 import "../fnh/components/fnhStudyExperience.css";
+import "./scienceStudyPolishBatch1.css";
 
 function lessonData(topic = {}) {
   const lesson = topic?.metadata?.lesson;
