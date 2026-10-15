@@ -2,6 +2,7 @@ import {FNH_SECTIONS_ONE_TWO} from "./fnhSectionsOneTwo";
 import {FNH_SECTIONS_THREE_FOUR} from "./fnhSectionsThreeFour";
 import {FNH_SECTIONS_FIVE_SEVEN} from "./fnhSectionsFiveSeven";
 import {FNH_WORKED_EXAMPLES} from "./fnhWorkedExamples";
+import {FNH_LESSON_DEEP_DIVES} from "./fnhLessonDeepDives";
 
 // Source: supplied CXC 11/G/SYLL 15 Home Economics syllabus, July 2025 PDF.
 // Food, Nutrition and Health is one option of the Home Economics course.
@@ -36,6 +37,10 @@ export const FNH_TOPICS=GROUPS.map((group,index)=>{
     paragraphs:[row.explanation,`Caribbean example: ${row.example}`],
     bullets:[`Check your understanding: ${row.question}`],
   }));
+  const deepDive=FNH_LESSON_DEEP_DIVES[group.id];
+  const extendedLessonSections=deepDive?[...lessonSections,{
+    title:deepDive.title,paragraphs:deepDive.paragraphs,bullets:deepDive.bullets
+  }]:lessonSections;
   return {
     id:group.id,subjectId:sourceId,sectionId:sectionId(group.n),
     title:group.title,description:group.desc,sortOrder:group.n*100+(index+1),enabled:true,
@@ -44,7 +49,7 @@ export const FNH_TOPICS=GROUPS.map((group,index)=>{
       lesson:{
         objectives:entries.map(row=>row.objective),objectiveGuide,
         introduction:group.desc+" Work through each example before answering the check questions.",
-        sections:lessonSections,
+        sections:extendedLessonSections,
         keyPoints:entries.map(row=>row.explanation.split(/[.!?]\s/)[0]+ "."),
         summary:`This lesson covers ${entries.length} syllabus objectives. Explain the ideas using real food and household examples, then practise applying the knowledge.`,
         workedExample:FNH_WORKED_EXAMPLES[group.id],
