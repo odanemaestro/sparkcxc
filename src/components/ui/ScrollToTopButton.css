@@ -60,7 +60,7 @@ html[data-theme="dark"] .spark-scroll-top:hover{
   background:var(--spark-muted,#172a43);
   box-shadow:0 15px 32px rgba(0,0,0,.43),inset 0 1px 0 rgba(255,255,255,.06);
 }
-@media(max-width:700px){
+@media(max-width:980px){
   .spark-scroll-top{
     right:calc(14px + env(safe-area-inset-right, 0px));
     width:48px;
@@ -90,6 +90,16 @@ html[data-theme="dark"] .spark-scroll-top:hover{
   }
   html[data-theme="dark"][data-glass="true"] .spark-scroll-top:hover{
     background:rgba(27,44,66,.92);
+  }
+}
+@media(prefers-reduced-transparency:reduce){
+  html[data-glass="true"] .spark-scroll-top{
+    -webkit-backdrop-filter:none;
+    backdrop-filter:none;
+    background:var(--spark-paper,#fff);
+  }
+  html[data-theme="dark"][data-glass="true"] .spark-scroll-top{
+    background:var(--spark-paper-raised,#142a45);
   }
 }
 @media(prefers-reduced-motion:reduce){
