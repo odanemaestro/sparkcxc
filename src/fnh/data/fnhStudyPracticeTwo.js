@@ -137,7 +137,7 @@ export const FNH_STUDY_PRACTICE_PART_TWO=Object.freeze({
       "answer": 6,
       "unit": "L",
       "tolerance": 0.001,
-      "explanation": "Four equal batches use 1.5 × 4 = 6 litres.",
+      "explanation": "Each batch uses 1.5 litres, so four equal batches require 1.5 × 4 = 6 litres of water in total.",
       "hint": "Combine equal quantities."
     }
   ],
