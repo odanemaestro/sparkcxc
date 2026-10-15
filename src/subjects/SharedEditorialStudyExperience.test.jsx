@@ -58,7 +58,8 @@ describe("Shared editorial study design for established CSEC subjects",()=>{
    expect(screen.getByText("Lesson 1 of 2")).toBeInTheDocument();
    expect(screen.getByText("0/2")).toBeInTheDocument();
    expect(screen.getByRole("button",{name:"Mark lesson complete"})).toBeInTheDocument();
-   expect(screen.getByTitle("Back to top")).toBeInTheDocument();
+   // Back to top is rendered once by App, not independently inside the study view.
+  expect(screen.queryByTitle("Back to top")).not.toBeInTheDocument();
    const nav=screen.getByRole("navigation",{name:"Jump to a part of this lesson"});
    expect(within(nav).getByRole("button",{name:"Read notes"})).toBeInTheDocument();
    expect(within(nav).getByRole("button",{name:"Key points"})).toBeInTheDocument();
