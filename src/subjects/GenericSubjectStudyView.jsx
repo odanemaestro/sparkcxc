@@ -18,6 +18,7 @@ import FoodMicroorganismExplorer from "./components/FoodMicroorganismExplorer";
 import FnhObjectivePractice from "../fnh/components/FnhObjectivePractice";
 import FnhStudyPractice from "../fnh/components/FnhStudyPractice";
 import FnhDecisionLab from "../fnh/components/FnhDecisionLab";
+import "../fnh/components/fnhStudyExperience.css";
 import {
   readSparkHashRoute,
   subscribeSparkRoute,
@@ -329,6 +330,7 @@ export default function GenericSubjectStudyView({
   const [activeTopicId, setActiveTopicId] = useState(null);
   const [saving, setSaving] = useState(false);
   const [outlineOpen, setOutlineOpen] = useState(false);
+  const [focusReading, setFocusReading] = useState(false);
   const [expandedOutlineSections, setExpandedOutlineSections] = useState(new Set());
 
   const subjectId = String(subject?.id || "").trim().toLowerCase();
@@ -693,7 +695,7 @@ export default function GenericSubjectStudyView({
   }
 
   return (
-    <main className="spark-generic-study">
+    <main className={`spark-generic-study ${subjectId==="food-nutrition-and-health"?"spark-fnh-study":""} ${focusReading?"spark-fnh-focus-reading":""}`}>
       <div className="spark-generic-study-shell">
         <header className="spark-generic-study-hero">
           <div className="spark-generic-study-mark" aria-hidden="true">
@@ -886,15 +888,23 @@ export default function GenericSubjectStudyView({
                 <>
                   <div className="spark-generic-lesson-head">
                     <div>
+                      {subjectId==="food-nutrition-and-health"&&<p className="spark-fnh-lesson-index">Lesson {activeTopicIndex+1} of {totalTopics} · {activeTopic?.metadata?.syllabus?.objectiveCodes?.length||0} syllabus objectives</p>}
                       <span className="section-kicker">
                         {activeSection?.title || "COURSE TOPIC"}
                       </span>
                       <h2>{activeTopic.title}</h2>
                     </div>
 
-                    {completedTopicIds.has(activeTopic.id) && (
-                      <span className="spark-generic-complete-chip">Completed</span>
-                    )}
+                    <div className="spark-fnh-lesson-head-actions">
+                      {subjectId==="food-nutrition-and-health"&&<button type="button" className="spark-fnh-focus-button"
+                        aria-pressed={focusReading} onClick={()=>setFocusReading(value=>!value)}>
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 4H5a1 1 0 0 0-1 1v3m12-4h3a1 1 0 0 1 1 1v3M4 16v3a1 1 0 0 0 1 1h3m12-4v3a1 1 0 0 1-1 1h-3"/></svg>
+                        {focusReading?"Show course outline":"Focus on reading"}
+                      </button>}
+                      {completedTopicIds.has(activeTopic.id) && (
+                        <span className="spark-generic-complete-chip">Completed</span>
+                      )}
+                    </div>
                   </div>
 
                   <GenericLessonContent
