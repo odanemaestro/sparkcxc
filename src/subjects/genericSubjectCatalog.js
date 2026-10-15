@@ -1,5 +1,6 @@
 import { chemistryLocalStructure } from "../chemistry/data/chemistryCourse";
 import {fnhLocalStructure} from "../fnh/data/fnhCourse";
+import {SOCIAL_STUDIES_COURSE} from "../socialStudies/data/socialStudiesCourse";
 // ============================================================================
 // SPARK Generic Subject Learner Shell V2
 //
@@ -102,6 +103,30 @@ export function buildGenericSubjectStructure({
   };
 }
 
+// Reuse the published Social Studies syllabus and the shared study outline.
+// IDs, section order and lesson metadata match existing progress records.
+export function socialStudiesLocalStructure(){
+  return buildGenericSubjectStructure({
+    sections:SOCIAL_STUDIES_COURSE.sections.map((section,index)=>({
+      id:section.id,title:section.title,description:section.description,sortOrder:index
+    })),
+    topics:SOCIAL_STUDIES_COURSE.lessons.map((lesson,index)=>({
+      id:lesson.id,sectionId:lesson.sectionId,title:lesson.title,
+      description:lesson.introduction,sortOrder:index,
+      metadata:{
+        objectiveCodes:lesson.objectiveCodes,
+        lesson:{
+          introduction:lesson.introduction,
+          objectives:lesson.objectives,
+          sections:lesson.noteSections,
+          keyPoints:lesson.keyPoints,
+          summary:"Use the Caribbean examples, interactive activity and practice below to apply this lesson."
+        }
+      }
+    }))
+  });
+}
+
 function structureFromRpc(data) {
   if (!data || typeof data !== "object") return null;
   return buildGenericSubjectStructure({
@@ -113,6 +138,9 @@ function structureFromRpc(data) {
 
 export async function loadGenericSubjectStructure({ supabase, subjectId } = {}) {
   const id = cleanId(subjectId);
+  if (id === "social-studies") {
+    return {data:socialStudiesLocalStructure(),error:null,source:"local-social-studies"};
+  }
   if (id === "chemistry") {
     return { data:chemistryLocalStructure(), error:null, source:"local-chemistry" };
   }
