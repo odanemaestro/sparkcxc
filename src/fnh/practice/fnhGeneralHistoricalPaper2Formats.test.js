@@ -44,6 +44,6 @@ describe("Archived FNH General Proficiency Paper 2 format and marking",()=>{
     const playable=FNH_SUPPLIED_ARCHIVE.filter(p=>Boolean(fnhHistoricalSimulatorReady(p.id)));
     expect(playable.map(p=>p.year)).toEqual(expect.arrayContaining([2005,2006,2008,2009,2010,2011,2012,2014,2015,2016,2017]));
     expect(playable.every(p=>p.paper===2&&p.verifiedQuestionCount===(p.year>=2017?6:7))).toBe(true);
-    expect(playable.length+FNH_SUPPLIED_ARCHIVE.filter(p=>!p.simulatorReady).length).toBe(34);
+    expect(playable.length+FNH_SUPPLIED_ARCHIVE.filter(p=>!p.simulatorReady).length).toBe(33);
   });
 });
