@@ -60,7 +60,7 @@ export default function FnhReferenceMedia({ topicId }) {
   return <section className="spark-fnh-reference-media" aria-label="Food Nutrition and Health visual references" id="fnh-lesson-visuals">
     <header>
       <span>Learn by seeing</span>
-      <h3>Real examples and visual guides</h3>
+      <h3>Examples and visual guides</h3>
       <p>Study each illustration, photo or video alongside your lesson notes. The questions and practical activities below remain part of the lesson.</p>
     </header>
     <div className="spark-fnh-ref-grid">
