@@ -1,4 +1,6 @@
 import React,{useEffect,useMemo,useState} from "react";
+import BackArrowIcon from "../../components/ui/BackArrowIcon";
+import ForwardArrowIcon from "../../components/ui/ForwardArrowIcon";
 import ChemistryPaper1Exam,{CHEMISTRY_PAPER1_SOURCES} from "./ChemistryPaper1Exam";
 import ChemistryPaper2Exam from "./ChemistryPaper2Exam";
 import {CHEMISTRY_HISTORICAL_PAPERS,CHEMISTRY_PAPER2_PRACTICE_SETS} from "../data/chemistryPaper2Bank";
@@ -22,7 +24,7 @@ function PaperCard({eyebrow,title,details,onClick,disabled=false,footer=null,ind
     <p>{details}</p>
     {footer}
     <button type="button" className="chem-library-open" onClick={onClick} disabled={disabled}>
-      {disabled?"Unavailable":"Select paper"} <span aria-hidden="true">→</span>
+      {disabled?"Unavailable":"Select paper"} <ForwardArrowIcon/>
     </button>
   </article>;
 }
@@ -45,7 +47,7 @@ function ChemistryPaperLibrary({paperType,onBack,onStartPaper1,onStartPaper2,onS
   });
   return <main className="is-practice-shell chem-practice-shell chem-library">
     <div className="chem-library-container">
-      <button type="button" className="chem-library-back" onClick={onBack}>← Back to Chemistry practice</button>
+      <button type="button" className="chem-library-back" onClick={onBack}><BackArrowIcon/> Back to Chemistry practice</button>
       <header className="chem-library-hero">
         <span className="chem-library-eyebrow">CSEC CHEMISTRY · {isPaper1?"PAPER 01":"PAPER 02"}</span>
         <h1>{titleLabel(paperType)}</h1>
@@ -152,7 +154,7 @@ export default function ChemistryPracticeHub({supabase,userId,onBack}){
 
   return <main className="is-practice-shell chem-practice-shell chem-practice-home">
     <div className="chem-library-container">
-      <button type="button" className="chem-library-back" onClick={onBack}>← Back to practice</button>
+      <button type="button" className="chem-library-back" onClick={onBack}><BackArrowIcon/> Back to practice</button>
       <header className="chem-library-hero">
         <span className="chem-library-eyebrow">CSEC CHEMISTRY</span>
         <h1>Chemistry practice exams</h1>
@@ -166,7 +168,7 @@ export default function ChemistryPracticeHub({supabase,userId,onBack}){
             <strong>Chemistry Paper 1</strong>
             <span>4 practice sets · Historical papers · 75 minutes</span>
           </span>
-          <span className="chem-library-entry-arrow" aria-hidden="true">→</span>
+          <span className="chem-library-entry-arrow" aria-hidden="true"><ForwardArrowIcon/></span>
         </button>
         <button type="button" className="chem-library-entry" onClick={()=>setMode("library-paper2")}>
           <span className="chem-library-entry-number">02</span>
@@ -175,7 +177,7 @@ export default function ChemistryPracticeHub({supabase,userId,onBack}){
             <strong>Chemistry Paper 2</strong>
             <span>6 practice sets · Historical papers · 150 minutes</span>
           </span>
-          <span className="chem-library-entry-arrow" aria-hidden="true">→</span>
+          <span className="chem-library-entry-arrow" aria-hidden="true"><ForwardArrowIcon/></span>
         </button>
       </section>
     </div>
