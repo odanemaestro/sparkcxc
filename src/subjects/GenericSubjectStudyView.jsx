@@ -209,6 +209,8 @@ export function GenericLessonContent({
         <div className="spark-fnh-reading-nav-links">
           {blocks.length>0&&<button type="button" onClick={()=>jumpTo("spark-lesson-notes")}>Read notes <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>}
           {hasExplore&&<button type="button" onClick={()=>jumpTo("spark-lesson-explore")}>Explore <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>}
+          {subjectId==="social-studies"&&<button type="button" onClick={()=>jumpTo("social-studies-explore")}>Caribbean activities <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>}
+          {subjectId==="social-studies"&&<button type="button" onClick={()=>jumpTo("social-studies-practice")}>Practise <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>}
           {points.length>0&&<button type="button" onClick={()=>jumpTo("spark-lesson-key-points")}>Key points <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>}
           {example&&<button type="button" onClick={()=>jumpTo("spark-lesson-worked-example")}>Worked example <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>}
           {summary&&<button type="button" onClick={()=>jumpTo("spark-lesson-summary")}>Summary <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 15 15 5M7 5h8v8"/></svg></button>}
