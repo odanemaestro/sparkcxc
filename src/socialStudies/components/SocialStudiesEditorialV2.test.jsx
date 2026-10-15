@@ -29,7 +29,7 @@ describe("Social Studies simpler course and learning journey",()=>{
   const units=document.querySelectorAll(".ss-unit-card");
   expect(units).toHaveLength(SOCIAL_STUDIES_COURSE.sections.length);
   expect([...units].filter(unit=>!unit.querySelector(".ss-unit-lesson-panel").hidden)).toHaveLength(1);
-  expect(screen.getByRole("button",{name:/Open research toolkit/})).toBeInTheDocument();
+  expect(screen.getByRole("button",{name:/Open Research & SBA toolkit/})).toBeInTheDocument();
   expect(screen.getByRole("heading",{level:2,name:"Your course"})).toBeInTheDocument();
  });
  test("unit accordion reveals one lesson list at a time and retains lock states",()=>{
