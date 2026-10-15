@@ -19,7 +19,7 @@ describe("Visually transcribed May/June 2007 Paper 01 source and marking safety"
   });
   test("unresolved answers and absent original CXC key prohibit graded historical release",()=>{
     const unresolved=paper.filter(q=>!q.proposedAnswer);
-    expect(unresolved.length).toBeGreaterThanOrEqual(0);
+    expect(paper.every(q=>q.proposedAnswer===null||/^[ABCD]$/.test(q.proposedAnswer))).toBe(true);
     expect(paper.every(q=>q.officialKeyVerified===false)).toBe(true);
     expect(fnhHistoricalPaper1ReleaseCheck(paper).ready).toBe(false);
     expect(fnhHistoricalSimulatorReady("FNH-P1-2007-MJ")).toBeNull();
