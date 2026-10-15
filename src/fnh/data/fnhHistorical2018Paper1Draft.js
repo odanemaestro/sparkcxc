@@ -562,8 +562,8 @@ export const FNH_P1_2018_TRANSCRIPTION_DRAFT=Object.freeze([
       "II and III only",
       "I, II and III"
     ],
-    "proposedAnswer": "D",
-    "explanation": "Poor iron supply, too little dietary energy and unsuitable feeding practices are risks for preschool nutrition.",
+    "proposedAnswer": "A",
+    "explanation": "Iron deficiency and insufficient dietary energy (I and II) can cause poor nutritional status. Using powdered milk (III) is not inherently harmful when it is prepared safely and appropriately; source wording should still be independently checked.",
     "sourcePage": 4,
     "sourceChecked": true,
     "officialKeyVerified": false,
