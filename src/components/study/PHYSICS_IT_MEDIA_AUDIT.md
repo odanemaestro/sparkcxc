@@ -14,7 +14,7 @@ The purpose of external media is to add educational examples **only when SPARK's
 | C5 Lenses | Convex lens diagram.svg (CC0) | Identify the optical axis and convex lens before the existing ray-tracing simulator |
 | D4 Circuits and Components | Series and parallel circuits.svg (CC BY-SA 3.0) | Compare current path and potential difference in series and parallel |
 | D7 Electromagnetism | Ideal transformer.svg (CC0) | Examine primary and secondary circuit and idealised transformer behaviour |
-| E3 Radioactivity | Half Life.gif (public domain) | Read a graphical model of radioactive decay; individual decays are random |
+| E3 Radioactivity | Activity decay.svg (public domain) | Read a graphical model of radioactive decay; individual decays are random |
 
 ## IT: four topics, four resources
 | Topic | Image | Reason |
