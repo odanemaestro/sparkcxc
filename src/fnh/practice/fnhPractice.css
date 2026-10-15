@@ -178,3 +178,31 @@ html[data-theme="dark"] .fnh-choice-number,body[data-theme="dark"] .fnh-choice-n
 .fnh-exam :is(.fnh-outline,.fnh-primary){
   display:inline-flex;align-items:center;justify-content:center;gap:8px;
 }
+
+
+/* Full source-worked solutions are shown only after the historical exam is submitted. */
+.fnh-p2-worked-reference {
+  margin-block: 1rem;
+  border: 1px solid var(--fnh-border, rgba(110, 125, 145, .28));
+  border-radius: 14px;
+  padding: .85rem 1rem;
+  color: inherit;
+  background: transparent;
+}
+.fnh-p2-worked-reference > summary {
+  cursor: pointer;
+  font-weight: 650;
+  line-height: 1.5;
+}
+.fnh-p2-worked-preformatted {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.7;
+  max-width: 75ch;
+}
+.fnh-p2-worked-reference small {
+  display: block;
+  margin-top: .8rem;
+  line-height: 1.5;
+  opacity: .8;
+}
