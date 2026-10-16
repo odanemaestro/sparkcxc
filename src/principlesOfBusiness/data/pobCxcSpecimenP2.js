@@ -23,7 +23,7 @@ export const POB_CXC_SPECIMEN_P2_2019=Object.freeze({
     "sections": [
       3
     ],
-    "context": "",
+    "context": "Janice retired after working for 15 years as a loan officer at a commercial bank. She then decided to become an entrepreneur.",
     "items": [
       {
         "id": "a-i",
