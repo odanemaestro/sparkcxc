@@ -203,6 +203,7 @@ export function PobPaper2Exam({onBack,userId,supabase}){
          {inspectPobExtendedResponse(id,attempt.answers[id]).guidance&&<p>{inspectPobExtendedResponse(id,attempt.answers[id]).guidance}</p>}
          <small>Hints only. Equivalent responses may use different language. No marks are awarded.</small>
        </div>}
+       {review&&rubricReview.questions.flatMap(q=>q.parts).find(part=>part.id===id)?.status==="graded-listing"&&<div className="pob-p2-calculation" role="status"><strong>Automatically checked listing question</strong><p>{rubricReview.questions.flatMap(q=>q.parts).find(part=>part.id===id)?.assessedMarks} of {item.marks} marks based on distinct valid terms. Only listing questions use this automatic rule.</p></div>}
        {review&&<details className="pob-p2-criteria"><summary>View SPARK marking guidance</summary>
          <p>{item.modelAnswer}</p>
          <ul>{item.criteria.map((criterion,i)=><li key={i}><strong>{criterion.marks} mark{criterion.marks===1?"":"s"}</strong>: {criterion.rule} {assessPobPartEvidence(id,attempt.answers[id])?.signals[i]?.matched?"(Possible supporting concept found; not graded)":""}</li>)}</ul>
