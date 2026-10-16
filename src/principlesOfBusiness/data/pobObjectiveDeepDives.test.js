@@ -76,3 +76,15 @@ test("Production has detailed teaching guidance for all 13 objectives",()=>{
   expect(detail.activity.length).toBeGreaterThan(50);
  });
 });
+
+test("Marketing has detailed teaching guidance for all 12 objectives",()=>{
+ const marketing=POB_OBJECTIVES.filter(o=>o.section===6);
+ expect(marketing).toHaveLength(12);
+ marketing.forEach(objective=>{
+  const detail=POB_OBJECTIVE_DEEP_DIVES[objective.code];
+  expect(detail).toBeDefined();
+  expect(detail.walkthrough.length).toBeGreaterThan(80);
+  expect(detail.mistake.length).toBeGreaterThan(40);
+  expect(detail.activity.length).toBeGreaterThan(50);
+ });
+});
