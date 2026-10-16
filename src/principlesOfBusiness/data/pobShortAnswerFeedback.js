@@ -30,7 +30,10 @@ function phrasePresent(answer,phrase){
   const before=at===0||!/[a-z0-9]/.test(source[at-1]);
   const end=at+term.length;
   const after=end===source.length||!/[a-z0-9]/.test(source[end]);
-  if(before&&after&&!negated(source,at))return true;
+  // Tentative wording is not affirmative evidence of a concept.
+  const clause=source.slice(Math.max(0,source.lastIndexOf(".",at)+1),at);
+  const tentative=/(?:\bmaybe|\bperhaps|\bpossibly|\bunsure|\bguessing)\s*$/.test(clause);
+  if(before&&after&&!negated(source,at)&&!tentative)return true;
   at=source.indexOf(term,at+1);
  }
  return false;
