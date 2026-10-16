@@ -6,6 +6,7 @@ import {POB_OBJECTIVE_DEEP_DIVES} from "./pobObjectiveDeepDives";
 import {POB_PAPER1_ORIGINAL_ITEMS,validatePobPaper1Items,buildPobPaper1} from "./pobPaper1Original";
 import {POB_PAPER2_ORIGINAL_01,validatePobPaper2} from "./pobPaper2Original";
 import {POB_SUPPLIED_ARCHIVE} from "./pobHistoricalInventory";
+import {reviewPobPaper2} from "./pobRubricReview";
 
 export function auditPobRelease({
  objectives=POB_OBJECTIVES,topics=POB_TOPICS,flashcards=POB_FLASHCARDS,
@@ -41,6 +42,9 @@ export function auditPobRelease({
    const selected=buildPobPaper1({items:paper1Items});
    requireCheck(selected.questions.length===60,"Paper 1 must contain exactly 60 selected items.");
  }
+ const rubricReview=reviewPobPaper2({},paper2);
+ requireCheck(rubricReview.totalParts===25&&rubricReview.availableMarks===100,
+   "Paper 2 must account for 25 assessed parts and 100 available rubric marks.");
  const p2=validatePobPaper2(paper2);
  requireCheck(p2.valid,"Paper 2 rubrics failed validation: "+p2.issues.join(" "));
  requireCheck(paper2.origin==="spark-original"&&
