@@ -6,6 +6,7 @@ import {checkPobCalculation,inspectPobCalculationEvidence} from "../data/pobCalc
 import {restorePobAttempt,pobRemainingSeconds} from "../data/pobAttemptRecovery";
 import {pobPaper2Completion,nextIncompletePobQuestion} from "../data/pobPaper2Progress";
 import {getPobP2FeedbackGuide} from "../data/pobPaper2FeedbackGuides";
+import {inspectPobShortAnswer} from "../data/pobShortAnswerFeedback";
 import PobSbaWorkspace from "./PobSbaWorkspace";
 import "./pobPractice.css";
 
@@ -184,6 +185,13 @@ export function PobPaper2Exam({onBack,userId,supabase}){
          <p>{inspectPobCalculationEvidence(id,attempt.answers[id]).methodGuidance}</p>
        </div>}
        <small>These are diagnostic checks, not marks. Your explanations, units and full rubric still require assessment.</small></div>}
+       {review&&inspectPobShortAnswer(id,attempt.answers[id])&&<div className="pob-p2-calculation">
+         <strong>Written-answer concept check</strong>
+         <p>{inspectPobShortAnswer(id,attempt.answers[id]).message}</p>
+         {inspectPobShortAnswer(id,attempt.answers[id]).observed.length>0&&<p>Possible concepts identified: {inspectPobShortAnswer(id,attempt.answers[id]).observed.join("; ")}.</p>}
+         {inspectPobShortAnswer(id,attempt.answers[id]).notIdentified.length>0&&<p>Check whether your response addresses: {inspectPobShortAnswer(id,attempt.answers[id]).notIdentified.join("; ")}.</p>}
+         <small>Unrecognised wording may still be correct. No marks are assigned by this check.</small>
+       </div>}
        {review&&<details className="pob-p2-criteria"><summary>View SPARK marking guidance</summary>
          <p>{item.modelAnswer}</p>
          <ul>{item.criteria.map((criterion,i)=><li key={i}><strong>{criterion.marks} mark{criterion.marks===1?"":"s"}</strong>: {criterion.rule}</li>)}</ul>
