@@ -1,6 +1,6 @@
 import React,{useEffect,useMemo,useRef,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
-import {POB_PAPER1_ORIGINAL_ITEMS,buildPobPaper1} from "../data/pobPaper1Original";
+import {buildPobPaper1} from "../data/pobPaper1Original";
 import {POB_PAPER2_ORIGINAL_01} from "../data/pobPaper2Original";
 import PobSbaWorkspace from "./PobSbaWorkspace";
 import "./pobPractice.css";
