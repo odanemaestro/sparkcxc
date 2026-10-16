@@ -18,8 +18,14 @@ describe("calibrated exact-listing partial marks",()=>{
  test("does not credit directly negated terms",()=>{
   expect(gradePobListingPart(Q+"2:a","Not planning, but leading").marks).toBe(1);
  });
- test("limits scoring to three explicit listing parts",()=>{
-  expect(POB_DETERMINISTIC_LISTING_KEYS).toHaveLength(3);
+ test("state three distinct start-up investigation areas, with criterion-matched partial credit",()=>{
+  const q=Q+"1:b";
+  expect(gradePobListingPart(q,"I would check customer demand, startup costs and food safety regulations")).toMatchObject({marks:3,criterionMarks:[1,1,1]});
+  expect(gradePobListingPart(q,"I would check suppliers and health requirements")).toMatchObject({marks:1,criterionMarks:[0,0,1]});
+  expect(gradePobListingPart(q,"Not market demand. Instead, assess capital and licensing.")).toMatchObject({marks:2,criterionMarks:[0,1,1]});
+ });
+ test("limits scoring to four explicitly bounded listing parts",()=>{
+  expect(POB_DETERMINISTIC_LISTING_KEYS).toHaveLength(4);
   expect(gradePobListingPart(Q+"1:e","A limited company suits the business")).toBeNull();
  });
  test("ungraded narratives prevent publication of a made-up overall score",()=>{
