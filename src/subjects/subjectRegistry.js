@@ -7,6 +7,7 @@ export const SPARK_SUBJECT_IDS = Object.freeze({
   ENGLISH_A: "english-a",
   CHEMISTRY: "chemistry",
   FOOD_NUTRITION_AND_HEALTH: "food-nutrition-and-health",
+  PRINCIPLES_OF_BUSINESS: "principles-of-business",
 });
 
 const BASE_SUBJECTS = Object.freeze({
@@ -218,6 +219,20 @@ const BASE_SUBJECTS = Object.freeze({
       paper1:true,paper2:true,adaptive:false,structured:true,labs:true,sba:true,
     }),
   }),
+  principlesOfBusiness: Object.freeze({
+    id:"principles-of-business",name:"CSEC Principles of Business",shortName:"Principles of Business",
+    qualification:"CSEC",mark:"PB",
+    description:"Learn the CSEC Principles of Business syllabus through Caribbean business examples, cases, revision and examination practice.",
+    enabled:false,status:"draft",sortOrder:48,implementation:"generic",studyView:"study",
+    routes:Object.freeze({
+      study:"/study/principles-of-business",practice:"/practice/principles-of-business",
+      flashcards:"/dashboard/flashcards/principles-of-business",progress:"/dashboard/progress"
+    }),
+    capabilities:Object.freeze({
+      study:true,practice:true,flashcards:true,progress:true,paper1:true,paper2:true,
+      adaptive:false,structured:true,labs:true,sba:true
+    }),
+  }),
   informationTechnology: Object.freeze({
     id: "information-technology",
     name: "CSEC Information Technology",
@@ -252,7 +267,7 @@ const BASE_SUBJECTS = Object.freeze({
 
 });
 
-export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = {}, physics = {}, informationTechnology = {}, integratedScience = {}, socialStudies = {}, englishA = {}, chemistry = {}, foodNutritionAndHealth = {} } = {}) {
+export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = {}, physics = {}, informationTechnology = {}, integratedScience = {}, socialStudies = {}, englishA = {}, chemistry = {}, foodNutritionAndHealth = {}, principlesOfBusiness = {} } = {}) {
   const mathematicsSubject = {
     ...BASE_SUBJECTS.mathematics,
     stats: {
@@ -340,7 +355,16 @@ export function getSparkSubjectRegistry({ physicsEnabled = false, mathematics = 
       flashcards:Number(foodNutritionAndHealth.flashcards||87),
     },
   };
-  return Object.freeze([mathematicsSubject, physicsSubject, informationTechnologySubject, integratedScienceSubject, socialStudiesSubject, chemistrySubject, foodNutritionAndHealthSubject, englishASubject]);
+  const pobSubject={
+    ...BASE_SUBJECTS.principlesOfBusiness,
+    stats:{
+      sections:Number(principlesOfBusiness.sections||10),
+      topics:Number(principlesOfBusiness.topics||42),
+      objectives:Number(principlesOfBusiness.objectives||119),
+      flashcards:Number(principlesOfBusiness.flashcards||119)
+    }
+  };
+  return Object.freeze([mathematicsSubject, physicsSubject, informationTechnologySubject, integratedScienceSubject, socialStudiesSubject, chemistrySubject, foodNutritionAndHealthSubject, pobSubject, englishASubject]);
 }
 
 export function enabledSparkSubjects(subjects) {
