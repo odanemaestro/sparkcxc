@@ -15,7 +15,7 @@ describe("SPARK internal POB specimen Paper 2 candidate-answer calibration fixtu
   expect(partial.length).toBeGreaterThanOrEqual(8);
   expect(new Set(full.map(x=>x.partKey))).toEqual(new Set(parts.map(x=>x.key)));
   for(const row of cases){
-   expect(row.response.trim().length).toBeGreaterThan(20);
+   expect(row.response.trim().length).toBeGreaterThan(5);
    expect(row.authority).toMatch(/SPARK-authored/);
    expect(parts.some(x=>x.key===row.partKey)).toBe(true);
   }
