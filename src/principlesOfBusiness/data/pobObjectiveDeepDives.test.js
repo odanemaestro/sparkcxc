@@ -124,3 +124,22 @@ test("Role of Government in an Economy has detailed guidance for all 6 objective
   expect(detail.activity.length).toBeGreaterThan(50);
  });
 });
+
+test("Technology and Global Business Environment has detailed teaching for all 15 objectives",()=>{
+ const technology=POB_OBJECTIVES.filter(o=>o.section===10);
+ expect(technology).toHaveLength(15);
+ technology.forEach(objective=>{
+  const detail=POB_OBJECTIVE_DEEP_DIVES[objective.code];
+  expect(detail).toBeDefined();
+  expect(detail.walkthrough.length).toBeGreaterThan(80);
+  expect(detail.mistake.length).toBeGreaterThan(40);
+  expect(detail.activity.length).toBeGreaterThan(50);
+ });
+});
+test("every one of the 119 syllabus objectives now has a distinct deep dive",()=>{
+ expect(POB_OBJECTIVES).toHaveLength(119);
+ expect(Object.keys(POB_OBJECTIVE_DEEP_DIVES)).toHaveLength(119);
+ for(const objective of POB_OBJECTIVES){
+  expect(POB_OBJECTIVE_DEEP_DIVES[objective.code]).toBeDefined();
+ }
+});
