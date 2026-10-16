@@ -85,3 +85,13 @@ test("POB Paper 2 navigator shows per-question answered-part progress",()=>{
  expect(screen.getByRole("button",{name:"Question 2: 0 of 5 parts answered"})).toHaveAttribute("aria-current","step");
  expect(screen.getByRole("button",{name:"Question 1: 1 of 5 parts answered"})).not.toHaveAttribute("aria-current");
 });
+
+test("POB Paper 2 review summarises answered parts without assigning marks",()=>{
+ render(<PobPaper2Exam userId="test-student" onBack={jest.fn()}/>);
+ fireEvent.click(screen.getByRole("button",{name:"Start Paper 2"}));
+ fireEvent.change(screen.getAllByRole("textbox")[0],{target:{value:"An entrepreneur organises resources and accepts risks."}});
+ fireEvent.click(screen.getByRole("button",{name:"Submit Paper 2"}));
+ fireEvent.click(screen.getByRole("button",{name:"Submit responses"}));
+ expect(screen.getByText(/Question 1: 1 of 5 parts answered/)).toBeInTheDocument();
+ expect(screen.getByText(/No score has been invented/)).toBeInTheDocument();
+});
