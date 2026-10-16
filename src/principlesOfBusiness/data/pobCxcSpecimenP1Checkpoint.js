@@ -221,6 +221,6 @@ export function verifyPobSpecimenCheckpoint(paper=POB_CXC_2019_SPECIMEN_P1_CHECK
  if(paper.questions.map(q=>q.number).join(",")!=="1,2,3,4,5,6,7,8,9,10")errors.push("Wrong specimen item order.");
  if(paper.questions.some(q=>q.options.length!==4||new Set(q.options.map(x=>x.toLowerCase().trim())).size!==4||!["A","B","C","D"].includes(q.answer)))errors.push("Malformed options or key.");
  if(paper.questions.map(q=>q.answer).join("")!=="AABBCACBDC")errors.push("Disagrees with CXC's printed specimen key.");
- if(paper.questions.some(q=>!q.questionWordingVerified||!q.answerChoicesVerified||!q.answerSourceVerified||![78,79].includes(q.sourcePage)))errors.push("Incomplete source evidence.");
+ if(paper.questions.some(q=>!q.questionWordingVerified||!q.answerChoicesVerified||!q.answerSourceVerified||![2,3].includes(q.sourcePage)))errors.push("Incomplete source evidence.");
  return {valid:errors.length===0,issues:errors};
 }
