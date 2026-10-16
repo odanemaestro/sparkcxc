@@ -73,7 +73,7 @@ export function inspectPobCalculationEvidence(partKey,response){
  // Matching operands in a paragraph without an operation is not proof of method.
  const operation=signal.operation==="/"?String.raw`(?:/|÷)`:String.raw`(?:-|−)`;
  const expr=new RegExp("("+numberPattern+")\\s*"+operation+"\\s*("+numberPattern+")(?![\\w])","g");
- const workingShown=[...answer.matchAll(expr)].some(match=>
+ const workingShown=[...answer.replace(/(?:J\$|\$)\s*(?=\d)/gi,"").matchAll(expr)].some(match=>
    rawToNumber(match[1])===signal.operands[0]&&rawToNumber(match[2])===signal.operands[1]);
  const finalCorrect=result.status==="result-found";
  return {
