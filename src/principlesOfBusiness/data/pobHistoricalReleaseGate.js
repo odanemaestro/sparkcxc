@@ -4,6 +4,10 @@ export function validatePobHistoricalCandidate(candidate){
  const issues=[];
  if(!candidate||typeof candidate!=="object")return {ready:false,issues:["Missing paper record."]};
  if(!candidate.sourceFilename)issues.push("Missing source filename.");
+ const coverPaper=candidate.paperPrintedOnCover??candidate.coverPaperNumber??candidate.observedPaperOnCover;
+ if(candidate.sourcePaperMismatch||candidate.paperTypeMismatch||
+    (Number.isInteger(coverPaper)&&Number.isInteger(candidate.paper)&&coverPaper!==candidate.paper))
+   issues.push("Source paper number conflicts with the supplied PDF cover; do not publish under an incorrect paper.");
  if(!candidate.sourceAuthenticityVerified)issues.push("Source identity has not been authenticated.");
  if(!candidate.visualPageVerified)issues.push("Source pages and diagrams have not been visually compared.");
  if(!candidate.questionTranscriptionVerified)issues.push("Question wording has not been verified.");
