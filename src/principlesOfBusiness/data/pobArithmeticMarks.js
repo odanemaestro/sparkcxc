@@ -14,7 +14,8 @@ const normalize=value=>String(value||"").toLowerCase().replace(/[‘’]/g,"'").
 const has=(s,re)=>re.test(s);
 const numberSource=(s,n)=>{
  const num=n.toLocaleString("en-US"),raw=String(n);
- return s.includes(num)||new RegExp("(^|[^0-9])"+raw+"(?![0-9])").test(s);
+ const form=raw===num?raw:raw+"|"+num.replace(/,/g,"[,]");
+ return new RegExp("(?:^|[^0-9])(?:"+form+")(?![0-9])").test(s);
 };
 const labelled=(text,labels,value)=>{
  // Numerical attribution must be close to the named quantity, not merely
