@@ -33,7 +33,7 @@ export const POB_HISTORICAL_P2_2024_JAN_DRAFT=Object.freeze({
         {
           "id": "a.iii",
           "marks": 2,
-          "prompt": "Outline ONE role of ONE of the stakeholders identified in (a)(ii)."
+          "prompt": "Outline ONE role of ONE of the stakeholders identified in (a)(ii) above."
         },
         {
           "id": "b",
@@ -48,7 +48,7 @@ export const POB_HISTORICAL_P2_2024_JAN_DRAFT=Object.freeze({
         {
           "id": "d",
           "marks": 6,
-          "prompt": "Explain the likely consequences of failing to comply with any TWO of the ethical principles listed in (c)."
+          "prompt": "Explain the likely consequences of failing to comply with any TWO of the ethical principles listed in (c) above."
         }
       ]
     },
@@ -122,12 +122,12 @@ export const POB_HISTORICAL_P2_2024_JAN_DRAFT=Object.freeze({
         {
           "id": "d.i",
           "marks": 3,
-          "prompt": "Leon has created a unique line of natural skin care products including soaps and lotions and is preparing for a small business expo. Explain the importance of obtaining a trademark."
+          "prompt": "Leon has created a unique line of natural skin care products which includes soaps and lotions. He is preparing to launch his product line at a small business expo. Explain to Leon the importance of obtaining a trademark for his new line of products."
         },
         {
           "id": "d.ii",
           "marks": 3,
-          "prompt": "Vashti wrote a children's novel and is about to have it published. Explain the importance of obtaining copyright for her novel."
+          "prompt": "Vashti wrote a children's novel and is about to have it published. Explain to Vashti the importance of obtaining the copyright for her novel."
         }
       ]
     },
@@ -159,7 +159,7 @@ export const POB_HISTORICAL_P2_2024_JAN_DRAFT=Object.freeze({
         {
           "id": "d",
           "marks": 6,
-          "prompt": "Tropical Grove Ltd is launching a new soft drink and wants a competitive advantage. Explain TWO benefits of outsourcing some of its operations."
+          "prompt": "The directors of Tropical Grove Ltd are extremely excited to introduce a new soft drink to the market. They are optimistic that they will have a competitive advantage over similar producers. Explain TWO benefits that Tropical Grove Ltd could gain by outsourcing some of its operations to gain a competitive advantage."
         }
       ]
     },
@@ -171,22 +171,22 @@ export const POB_HISTORICAL_P2_2024_JAN_DRAFT=Object.freeze({
         {
           "id": "a",
           "marks": 4,
-          "prompt": "Identify TWO direct taxes and TWO indirect taxes charged by a government."
+          "prompt": "Identify TWO direct taxes and TWO indirect taxes charged by the government of a country."
         },
         {
           "id": "b",
           "marks": 6,
-          "prompt": "Outline THREE measures regional governments could take to encourage environmental protection."
+          "prompt": "Outline THREE measures that could be taken by regional governments to influence their citizens to protect the natural environment."
         },
         {
           "id": "c",
           "marks": 4,
-          "prompt": "State FOUR responsibilities Caribbean governments have to citizens other than environmental protection."
+          "prompt": "State FOUR responsibilities of Caribbean governments to their citizens, other than the protection of the environment."
         },
         {
           "id": "d",
           "marks": 6,
-          "prompt": "Identify TWO challenges in providing quality healthcare services in the Caribbean and advise your government how EACH could be resolved."
+          "prompt": "Caribbean governments have experienced ongoing challenges in the provision of quality healthcare services within their countries. Identify TWO of these healthcare challenges and advise the government of your country on how EACH challenge could be resolved."
         }
       ]
     }
