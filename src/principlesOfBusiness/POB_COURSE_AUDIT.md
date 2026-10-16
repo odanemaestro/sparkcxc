@@ -57,3 +57,23 @@ Original images, their author and licence links are preserved in \`pobReferenceM
 6. **QA**: React tests, full CI, production build, browser test of all routes/modes on Windows and mobile, manual review of imported references; user reviews before merge.
 
 **Release gate:** Never mark this new course complete because 119 objectives are linked, one original exam set exists, or an automated build succeeds. A complete course must meet the full 15-part user specification. Do not merge without explicit approval.
+
+
+## Optional local review without publishing
+
+POB deliberately remains \`enabled:false,status:"draft"\` in normal SPARK releases. To review it **locally only** on the feature branch, start SPARK in development mode with the explicit flag:
+
+\`\`\`powershell
+git fetch origin
+git switch --track origin/feat/principles-of-business-course-v1
+$env:REACT_APP_POB_PREVIEW="true"
+npm start
+\`\`\`
+
+If the branch already exists locally, switch to it and run \`git pull --ff-only origin feat/principles-of-business-course-v1\` instead.
+
+Sign in to a test student account, then visit:
+- \`http://127.0.0.1:3000/sparkcxc/#/study/principles-of-business\`
+- \`http://127.0.0.1:3000/sparkcxc/#/practice/principles-of-business\`
+
+The flag only operates when \`process.env.NODE_ENV === "development"\`. It does not bypass enrolment gates in production and does not publish POB to a database catalogue. Close the dev server and unset the environment variable after review if desired.
