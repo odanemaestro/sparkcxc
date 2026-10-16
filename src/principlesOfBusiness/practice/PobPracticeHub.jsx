@@ -4,6 +4,7 @@ import {buildPobPaper1} from "../data/pobPaper1Original";
 import {POB_PAPER2_ORIGINAL_01} from "../data/pobPaper2Original";
 import {checkPobCalculation} from "../data/pobCalculationFeedback";
 import {restorePobAttempt,pobRemainingSeconds} from "../data/pobAttemptRecovery";
+import {pobPaper2Completion,nextIncompletePobQuestion} from "../data/pobPaper2Progress";
 import {getPobP2FeedbackGuide} from "../data/pobPaper2FeedbackGuides";
 import PobSbaWorkspace from "./PobSbaWorkspace";
 import "./pobPractice.css";
@@ -131,7 +132,9 @@ export function PobPaper2Exam({onBack,userId,supabase}){
  const recorded=useRef(new Set());
  const exam=attempt.phase==="exam",review=attempt.phase==="review";
  const question=paper.questions[Math.max(0,Math.min(4,attempt.index||0))];
- const answered=paper.questions.reduce((n,q)=>n+q.items.filter(part=>String(attempt.answers[q.id+":"+part.id]||"").trim()).length,0);
+ const completion=pobPaper2Completion(paper.questions,attempt.answers);
+ const answered=completion.reduce((sum,row)=>sum+row.answered,0);
+ const nextIncomplete=nextIncompletePobQuestion(paper.questions,attempt.answers,attempt.index||0);
  const update=patch=>setAttempt(old=>({...old,...patch}));
  useEffect(()=>safeWrite(key,attempt),[key,attempt]);
  useEffect(()=>{
@@ -162,6 +165,7 @@ export function PobPaper2Exam({onBack,userId,supabase}){
    <p>SPARK will save your written responses on this device and show the marking scheme after submission. This initial build does not award an unreliable automated mark to extended answers.</p>
    <button type="button" className="pob-primary" onClick={start}>Start Paper 2</button></section>:<>
    <header className="pob-exam-card pob-exam-status"><div><strong>{review?"Paper 2 submitted":"Paper 2 in progress"}</strong><span>{answered} of 25 parts answered</span></div><span className="pob-timer" role="timer">{review?"Review":clock(remaining)}</span></header>
+   {!review&&nextIncomplete!==null&&<button type="button" className="secondary" onClick={()=>update({index:nextIncomplete})}>Go to next incomplete question</button>}
    <nav className="pob-exam-card pob-paper2-nav" aria-label="Paper 2 question navigator">{paper.questions.map((q,i)=>{const completed=q.items.filter(part=>String(attempt.answers[q.id+":"+part.id]||"").trim()).length;return <button key={q.id} className={q.id===question.id?"active":""} type="button" aria-current={q.id===question.id?"step":undefined} aria-label={"Question "+(i+1)+": "+completed+" of "+q.items.length+" parts answered"} onClick={()=>update({index:i})}>Question {i+1} <span className="pob-p2-count">{completed}/{q.items.length}</span></button>})}</nav>
    <section className="pob-exam-card pob-p2-question"><div className="pob-question-head"><span>Question {question.number}</span><span>20 marks</span></div><h1>{question.title}</h1><p>{question.context}</p>
    {question.items.map(item=>{
