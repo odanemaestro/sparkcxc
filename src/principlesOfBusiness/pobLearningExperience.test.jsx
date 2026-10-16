@@ -54,7 +54,7 @@ test("POB Paper 2 is five compulsory 20-mark scenarios with written response ent
   fireEvent.click(screen.getByRole("button",{name:"Start Paper 2"}));
   expect(screen.getByText("20 marks")).toBeInTheDocument();
   expect(screen.getAllByRole("textbox")).toHaveLength(5);
-  expect(screen.getByRole("button",{name:"Question 5"})).toBeInTheDocument();
+  expect(screen.getByRole("button",{name:"Question 5: 0 of 5 parts answered"})).toBeInTheDocument();
 });
 
 test("POB SBA draft warns against invented evidence and does not claim official marks",()=>{
@@ -72,4 +72,16 @@ test("POB practice hub offers all three modes and no fake historical examination
   expect(screen.getByRole("button",{name:"Open Paper 2"})).toBeInTheDocument();
   expect(screen.getByRole("button",{name:"Open research workspace"})).toBeInTheDocument();
   expect(screen.getByText(/historical source papers remain unavailable until verified/)).toBeInTheDocument();
+});
+
+test("POB Paper 2 navigator shows per-question answered-part progress",()=>{
+ render(<PobPaper2Exam userId="test-student" onBack={jest.fn()}/>);
+ fireEvent.click(screen.getByRole("button",{name:"Start Paper 2"}));
+ expect(screen.getByRole("button",{name:"Question 1: 0 of 5 parts answered"})).toHaveAttribute("aria-current","step");
+ const response=screen.getAllByRole("textbox")[0];
+ fireEvent.change(response,{target:{value:"An entrepreneur organises business resources and takes risks."}});
+ expect(screen.getByRole("button",{name:"Question 1: 1 of 5 parts answered"})).toBeInTheDocument();
+ fireEvent.click(screen.getByRole("button",{name:"Question 2: 0 of 5 parts answered"}));
+ expect(screen.getByRole("button",{name:"Question 2: 0 of 5 parts answered"})).toHaveAttribute("aria-current","step");
+ expect(screen.getByRole("button",{name:"Question 1: 1 of 5 parts answered"})).not.toHaveAttribute("aria-current");
 });
