@@ -1,6 +1,7 @@
 import React,{useEffect,useMemo,useRef,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
 import {buildPobPaper1} from "../data/pobPaper1Original";
+import {POB_CXC_2019_SPECIMEN_P1_CHECKPOINT,verifyPobSpecimenCheckpoint} from "../data/pobCxcSpecimenP1Checkpoint";
 import {POB_PAPER2_ORIGINAL_01} from "../data/pobPaper2Original";
 import {checkPobCalculation,inspectPobCalculationEvidence} from "../data/pobCalculationFeedback";
 import {restorePobAttempt,pobRemainingSeconds} from "../data/pobAttemptRecovery";
@@ -26,15 +27,18 @@ const startState=paperId=>({paperId,attemptId:String(Date.now())+"-"+Math.random
 const storage=(user,paper)=>"spark:pob:"+String(user||"guest")+":"+paper;
 const toTop=()=>{try{window.scrollTo?.({top:0,behavior:"instant"})}catch{}};
 
-export function PobPaper1Exam({userId,supabase,onBack}){
- const paper=useMemo(()=>buildPobPaper1(),[]);
+export function PobPaper1Exam({userId,supabase,onBack,paperOverride=null}){
+ const paper=useMemo(()=>paperOverride||buildPobPaper1(),[paperOverride]);
+ const isSpecimen=Boolean(paperOverride);
  const questions=paper.questions;
+ const maxScore=questions.length;
+ const durationMinutes=paper.timeLimitMinutes||75;
  const key=storage(userId,paper.id);
  const [attempt,setAttempt]=useState(()=>{
    const saved=safeRead(key);
    return restorePobAttempt(saved,paper.id,questions.length)||startState(paper.id);
  });
- const [remaining,setRemaining]=useState(()=>pobRemainingSeconds(attempt,paper.timeLimitMinutes*60));
+ const [remaining,setRemaining]=useState(()=>pobRemainingSeconds(attempt,durationMinutes*60));
  const [confirm,setConfirm]=useState(false);
  const recorded=useRef(new Set());
  const exam=attempt.phase==="exam",review=attempt.phase==="review";
@@ -60,24 +64,25 @@ export function PobPaper1Exam({userId,supabase,onBack}){
    recorded.current.add(attempt.attemptId);
    recordSubjectActivity({supabase,activity:{
      subjectId:SUBJECT,activityKey:"exam:pob-paper1:"+paper.id+":"+attempt.attemptId,
-     activityType:"exam",title:"Principles of Business: Original Paper 01",completed:true,
-     score,maxScore:60,percent:Math.round(100*score/60),
-     metadata:{source:"spark-original",historical:false,paper:"01",duration_minutes:75,
-       question_count:questions.length,section_distribution:[5,6,5,4,7,7,6,7,7,6],
+     activityType:"exam",title:isSpecimen?"Principles of Business: CXC 2019 Specimen Checkpoint":"Principles of Business: Original Paper 01",completed:true,
+     score,maxScore,percent:Math.round(100*score/maxScore),
+     metadata:{source:isSpecimen?"cxc-official-specimen":"spark-original",historical:false,paper:"01",duration_minutes:durationMinutes,
+       question_count:questions.length,section_distribution:isSpecimen?null:[5,6,5,4,7,7,6,7,7,6],
        completed_at:new Date().toISOString()}
    }}).catch(()=>{recorded.current.delete(attempt.attemptId)});
- },[review,attempt.attemptId,score,userId,supabase,paper.id,questions.length]);
- const start=()=>{setRemaining(75*60);setAttempt({...startState(paper.id),phase:"exam",deadline:Date.now()+75*60*1000})};
+ },[review,attempt.attemptId,score,userId,supabase,paper.id,questions.length,isSpecimen,maxScore,durationMinutes]);
+ const start=()=>{if(isSpecimen&&!verifyPobSpecimenCheckpoint(paper).valid)return;
+   setRemaining(durationMinutes*60);setAttempt({...startState(paper.id),phase:"exam",deadline:Date.now()+durationMinutes*60*1000})};
  const finish=()=>{update({phase:"review",submittedAt:Date.now(),reason:"student"});setConfirm(false)};
  const restart=()=>{setAttempt(startState(paper.id));setConfirm(false)};
  return <main className="pob-exam"><div className="pob-exam-shell">
    <div className="pob-exam-nav"><button type="button" onClick={onBack}>← Practice home</button><span>CSEC PRINCIPLES OF BUSINESS · PAPER 01</span></div>
    {attempt.phase==="instructions"?<section className="pob-exam-card pob-exam-intro">
-     <span className="pob-exam-kicker">SPARK ORIGINAL PRACTICE</span>
-     <h1>Paper 1: Multiple-choice examination</h1>
-     <p>60 questions, 75 minutes, one mark each. The questions follow the official syllabus distribution: 20 from organisational principles, 20 from promotion and logistics and 20 from finance, government and technology.</p>
-     <p>This is an original SPARK practice paper, not a historical CXC examination.</p>
-     <div className="pob-exam-facts"><span>60 questions</span><span>1 hour 15 minutes</span><span>60 marks</span></div>
+     <span className="pob-exam-kicker">{isSpecimen?"CXC OFFICIAL SPECIMEN · TEN-QUESTION CHECKPOINT":"SPARK ORIGINAL PRACTICE"}</span>
+     <h1>{isSpecimen?"2019 CXC specimen: questions 1–10":"Paper 1: Multiple-choice examination"}</h1>
+     <p>{isSpecimen?"Ten CXC specimen questions checked against the printed CXC answer key. This is a 13-minute checkpoint, not the full 60-question paper.":"60 questions, 75 minutes, one mark each. The questions follow the official syllabus distribution: 20 from organisational principles, 20 from promotion and logistics and 20 from finance, government and technology."}</p>
+     <p>{isSpecimen?"Source: CXC Principles of Business syllabus, 2019 specimen Paper 01, PDF pages 78–79; CXC key, PDF page 86. Practice scores are not official examination grades.":"This is an original SPARK practice paper, not a historical CXC examination."}</p>
+     <div className="pob-exam-facts"><span>{maxScore} questions</span><span>{durationMinutes} minutes</span><span>{maxScore} marks</span></div>
      <button type="button" className="pob-primary" onClick={start}>Start examination</button>
    </section>:<>
      <header className="pob-exam-card pob-exam-status">
@@ -85,12 +90,12 @@ export function PobPaper1Exam({userId,supabase,onBack}){
        <div className="pob-timer" role="timer" aria-label="Time remaining">{review?"Submitted":clock(remaining)}</div>
      </header>
      {review&&<section className="pob-exam-card pob-exam-result" role="status">
-       <span>Your result</span><strong>{score} / 60</strong><p>{Math.round(100*score/60)}% correct. Review every explanation, especially questions you missed.</p>
+       <span>Your result</span><strong>{score} / {maxScore}</strong><p>{Math.round(100*score/maxScore)}% correct. Review every explanation, especially questions you missed.</p>
        <button type="button" onClick={restart}>Start a fresh attempt</button>
      </section>}
      <div className="pob-exam-layout">
        <article className="pob-exam-card pob-exam-question">
-         <div className="pob-question-head"><span>Question {index+1} of 60</span><span>Section {current.section}</span></div>
+         <div className="pob-question-head"><span>Question {index+1} of {maxScore}</span><span>{isSpecimen?"CXC specimen Q"+current.number+" · Section "+current.section:"Section "+current.section}</span></div>
          <h1>{current.stem}</h1>
          <fieldset disabled={review}><legend className="pob-visually-hidden">Choose one answer</legend>
            {current.options.map((option,i)=>{
@@ -108,7 +113,7 @@ export function PobPaper1Exam({userId,supabase,onBack}){
          <div className="pob-exam-controls">
            <button type="button" className="secondary" disabled={index===0} onClick={()=>update({index:index-1})}>Previous</button>
            {!review&&<button type="button" className="secondary" aria-pressed={!!attempt.flags[current.id]} onClick={()=>update({flags:{...attempt.flags,[current.id]:!attempt.flags[current.id]}})}>{attempt.flags[current.id]?"Unflag":"Flag for review"}</button>}
-           <button type="button" className="pob-primary" disabled={index===59} onClick={()=>update({index:index+1})}>Next question</button>
+           <button type="button" className="pob-primary" disabled={index===questions.length-1} onClick={()=>update({index:index+1})}>Next question</button>
          </div>
        </article>
        <aside className="pob-exam-card pob-exam-navigator">
@@ -122,7 +127,7 @@ export function PobPaper1Exam({userId,supabase,onBack}){
        </aside>
      </div>
      {confirm&&!review&&<div className="pob-confirm-overlay" role="presentation"><div className="pob-exam-card pob-confirm" role="dialog" aria-modal="true" aria-label="Confirm examination submission">
-       <h2>Submit your paper?</h2><p>You answered {answered} of 60 questions. Unanswered questions earn zero marks. You can review every explanation after submission.</p>
+       <h2>Submit your paper?</h2><p>You answered {answered} of {maxScore} questions. Unanswered questions earn zero marks. You can review every explanation after submission.</p>
        <div className="pob-exam-controls"><button type="button" className="secondary" onClick={()=>setConfirm(false)}>Keep working</button><button type="button" className="pob-primary" onClick={finish}>Submit and review</button></div>
      </div></div>}
    </>}
@@ -255,6 +260,7 @@ export function PobPaper2Exam({onBack,userId,supabase}){
 export default function PobPracticeHub({userId,supabase,onBack}){
  const [mode,setMode]=useState("home");
  if(mode==="paper1")return <PobPaper1Exam userId={userId} supabase={supabase} onBack={()=>setMode("home")}/>;
+ if(mode==="specimen")return <PobPaper1Exam paperOverride={POB_CXC_2019_SPECIMEN_P1_CHECKPOINT} userId={userId} supabase={supabase} onBack={()=>setMode("home")}/>;
  if(mode==="paper2")return <PobPaper2Exam userId={userId} supabase={supabase} onBack={()=>setMode("home")}/>;
  if(mode==="sba")return <PobSbaWorkspace onBack={()=>setMode("home")}/>;
  return <main className="pob-exam"><div className="pob-exam-shell">
@@ -263,6 +269,7 @@ export default function PobPracticeHub({userId,supabase,onBack}){
      <h1>Practise business thinking</h1><p>Take a full timed practice paper, work through business scenarios or plan your SBA research. Original questions are clearly labelled, and historical source papers remain unavailable until verified.</p></header>
    <div className="pob-practice-options">
     <article className="pob-exam-card"><small>60 questions · 75 minutes</small><h2>Paper 1</h2><p>Original multiple-choice practice across all ten syllabus sections with instant explanations after submission.</p><button type="button" className="pob-primary" onClick={()=>setMode("paper1")}>Open Paper 1</button></article>
+    <article className="pob-exam-card"><small>10 CXC specimen questions · 13 minutes</small><h2>2019 specimen checkpoint</h2><p>Practise the first ten CXC specimen Paper 1 questions. Correct answers use the published CXC key, with teaching feedback after submission.</p><button type="button" className="pob-primary" onClick={()=>setMode("specimen")}>Open scored specimen checkpoint</button></article>
     <article className="pob-exam-card"><small>5 compulsory questions · 120 minutes</small><h2>Paper 2</h2><p>Original business scenarios, written-response space and detailed marking criteria. Where secure online marking is enabled, extended responses receive rubric-based automated practice assessment.</p><button type="button" className="pob-primary" onClick={()=>setMode("paper2")}>Open Paper 2</button></article>
     <article className="pob-exam-card"><small>Research project · 40 marks</small><h2>Business research SBA</h2><p>Plan your research, draft report sections and review the official 40-mark criteria without inventing grades.</p><button type="button" className="pob-primary" onClick={()=>setMode("sba")}>Open research workspace</button></article>
    </div>
