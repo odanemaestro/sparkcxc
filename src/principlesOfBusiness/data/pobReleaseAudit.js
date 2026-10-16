@@ -9,6 +9,7 @@ import {POB_SUPPLIED_ARCHIVE} from "./pobHistoricalInventory";
 import {POB_HISTORICAL_P2_BATCH01,POB_HISTORICAL_P2_BATCH01_SUMMARY} from "./pobHistoricalP2Batch01";
 import {verifyPobSpecimenCheckpoint,POB_CXC_2019_SPECIMEN_P1_CHECKPOINT} from "./pobCxcSpecimenP1Checkpoint";
 import {verifyPobSpecimenCheckpoint11to20,POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_11_20} from "./pobCxcSpecimenP1Checkpoint11to20";
+import {verifyPobSpecimenCheckpoint21to30,POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_21_30} from "./pobCxcSpecimenP1Checkpoint21to30";
 import {reviewPobPaper2} from "./pobRubricReview";
 
 export function auditPobRelease({
@@ -61,10 +62,13 @@ export function auditPobRelease({
    "The ten historical Paper 2 drafts must preserve source inventory and remain unreleased.");
  requireCheck(verifyPobSpecimenCheckpoint().valid,
    "Source-key-verified first CXC specimen checkpoint (Q1–10) must remain intact.");
- requireCheck(verifyPobSpecimenCheckpoint11to20().valid&&
+ requireCheck(verifyPobSpecimenCheckpoint11to20().valid,
+   "Second CXC specimen checkpoint (Q11–20) and source/answer proof required.");
+ requireCheck(verifyPobSpecimenCheckpoint21to30().valid&&
    new Set([...POB_CXC_2019_SPECIMEN_P1_CHECKPOINT.questions,
-     ...POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_11_20.questions].map(q=>q.id)).size===20,
-   "Second CXC specimen checkpoint (Q11–20) and non-overlapping source/answer proof required.");
+     ...POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_11_20.questions,
+     ...POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_21_30.questions].map(q=>q.id)).size===30,
+   "Third CXC specimen checkpoint (Q21–30) and 30 non-overlapping source-verified questions required.");
  requireCheck(historical.some(p=>p.id==="POB-P2-2019-MJ-ALT"&&p.paper===2&&p.reclassifiedFromPaper1)&&
    !historical.some(p=>p.id==="POB-P1-2019-MJ"),
    "The mislabeled May/June 2019 source must be classified under Paper 02.");
@@ -81,7 +85,8 @@ export function auditPobRelease({
      paper2Parts:paper2.questions.flatMap(q=>q.items).length,
      unverifiedHistorical:historical.length,
      scoredSpecimenCheckpointItems:POB_CXC_2019_SPECIMEN_P1_CHECKPOINT.questions.length+
-       POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_11_20.questions.length,
+       POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_11_20.questions.length+
+       POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_21_30.questions.length,
      historicalP2Batch01Drafts:POB_HISTORICAL_P2_BATCH01.length},
    releaseApproved:false,
    blockers:[
