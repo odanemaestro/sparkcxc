@@ -26,7 +26,7 @@ def draft_paper(archive, filename):
     if sum(map(len,pages))<1000:
         raise ValueError("Insufficient PDF text. Visual transcription required; no OCR guess.")
     text="\n".join(pages)
-    matches=list(re.finditer(r"(?im)^\s*Question\s+(\d+)\s*$",text))
+    matches=list(re.finditer(r"(?im)(?:^|(?<=\\n)|(?<=\\]))[ \\t]*Question[ \\t]+(\\d+)\\b",text))
     questions=[]
     for idx,match in enumerate(matches):
         end=matches[idx+1].start() if idx+1<len(matches) else len(text)
