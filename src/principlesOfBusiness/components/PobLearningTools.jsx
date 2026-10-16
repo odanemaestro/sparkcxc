@@ -1,5 +1,6 @@
 import React,{useState} from "react";
 import {POB_PAPER1_ORIGINAL_ITEMS} from "../data/pobPaper1Original";
+import PobDecisionLabs from "./PobDecisionLabs";
 import "./pobLearningTools.css";
 
 const clampNumber = (value,min=0,max=1e9) => Math.max(min,Math.min(max,Number.isFinite(Number(value))?Number(value):0));
@@ -90,6 +91,7 @@ export default function PobLearningTools({topic,onActivityComplete}){
   const sectionNumber=Number(topic?.metadata?.syllabus?.section)||0;
   return <div className="pob-learning-tools">
     {[5,6,8].includes(sectionNumber)&&<BusinessCalculator key={topic?.id} sectionNumber={sectionNumber}/>}
+    <PobDecisionLabs key={"decision-"+topic?.id} sectionNumber={sectionNumber}/>
     <PobTopicPractice key={topic?.id} topic={topic} onActivityComplete={onActivityComplete}/>
   </div>;
 }
