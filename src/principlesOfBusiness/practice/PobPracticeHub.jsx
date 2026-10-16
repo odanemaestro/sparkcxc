@@ -3,6 +3,7 @@ import {recordSubjectActivity} from "../../subjects/subjectProgress";
 import {buildPobPaper1} from "../data/pobPaper1Original";
 import {POB_PAPER2_ORIGINAL_01} from "../data/pobPaper2Original";
 import {checkPobCalculation} from "../data/pobCalculationFeedback";
+import {getPobP2FeedbackGuide} from "../data/pobPaper2FeedbackGuides";
 import PobSbaWorkspace from "./PobSbaWorkspace";
 import "./pobPractice.css";
 
@@ -174,6 +175,7 @@ export function PobPaper2Exam({onBack,userId,supabase}){
        {review&&<details className="pob-p2-criteria"><summary>View SPARK marking guidance</summary>
          <p>{item.modelAnswer}</p>
          <ul>{item.criteria.map((criterion,i)=><li key={i}><strong>{criterion.marks} mark{criterion.marks===1?"":"s"}</strong>: {criterion.rule}</li>)}</ul>
+         {getPobP2FeedbackGuide(id)&&<div className="pob-p2-guide"><strong>How to strengthen your response</strong><p>{getPobP2FeedbackGuide(id).guidance}</p><strong>Common mistakes</strong><ul>{getPobP2FeedbackGuide(id).pitfalls.map((point,i)=><li key={i}>{point}</li>)}</ul><strong>Acceptable approaches</strong><ul>{getPobP2FeedbackGuide(id).alternatives.map((point,i)=><li key={i}>{point}</li>)}</ul></div>}
          <small>Other equivalent correct explanations may also deserve credit. This is marking guidance, not a final automatically assigned grade.</small>
        </details>}
      </div>;
