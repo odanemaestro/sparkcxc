@@ -40,3 +40,15 @@ test("Internal Organisational Environment has enriched guidance for all 13 objec
   expect(detail.activity.length).toBeGreaterThan(50);
  });
 });
+
+test("Establishing a Business has enriched guidance for all 15 objectives",()=>{
+ const sectionThree=POB_OBJECTIVES.filter(o=>o.section===3);
+ expect(sectionThree).toHaveLength(15);
+ sectionThree.forEach(objective=>{
+  const detail=POB_OBJECTIVE_DEEP_DIVES[objective.code];
+  expect(detail).toBeDefined();
+  expect(detail.walkthrough.length).toBeGreaterThan(80);
+  expect(detail.mistake.length).toBeGreaterThan(40);
+  expect(detail.activity.length).toBeGreaterThan(50);
+ });
+});
