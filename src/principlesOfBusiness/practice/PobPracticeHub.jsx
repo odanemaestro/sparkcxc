@@ -9,6 +9,7 @@ import {getPobP2FeedbackGuide} from "../data/pobPaper2FeedbackGuides";
 import {inspectPobShortAnswer} from "../data/pobShortAnswerFeedback";
 import {inspectPobExtendedResponse} from "../data/pobExtendedResponseFeedback";
 import {reviewPobPaper2} from "../data/pobRubricReview";
+import {assessPobPartEvidence} from "../data/pobAssessmentEvidence";
 import PobSbaWorkspace from "./PobSbaWorkspace";
 import "./pobPractice.css";
 
@@ -204,7 +205,7 @@ export function PobPaper2Exam({onBack,userId,supabase}){
        </div>}
        {review&&<details className="pob-p2-criteria"><summary>View SPARK marking guidance</summary>
          <p>{item.modelAnswer}</p>
-         <ul>{item.criteria.map((criterion,i)=><li key={i}><strong>{criterion.marks} mark{criterion.marks===1?"":"s"}</strong>: {criterion.rule}</li>)}</ul>
+         <ul>{item.criteria.map((criterion,i)=><li key={i}><strong>{criterion.marks} mark{criterion.marks===1?"":"s"}</strong>: {criterion.rule} {assessPobPartEvidence(id,attempt.answers[id])?.signals[i]?.matched?"(Possible supporting concept found; not graded)":""}</li>)}</ul>
          {getPobP2FeedbackGuide(id)&&<div className="pob-p2-guide"><strong>How to strengthen your response</strong><p>{getPobP2FeedbackGuide(id).guidance}</p><strong>Common mistakes</strong><ul>{getPobP2FeedbackGuide(id).pitfalls.map((point,i)=><li key={i}>{point}</li>)}</ul><strong>Acceptable approaches</strong><ul>{getPobP2FeedbackGuide(id).alternatives.map((point,i)=><li key={i}>{point}</li>)}</ul></div>}
          <small>Other equivalent correct explanations may also deserve credit. This is marking guidance, not a final automatically assigned grade.</small>
        </details>}
