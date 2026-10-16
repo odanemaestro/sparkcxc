@@ -227,8 +227,19 @@ export const POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_41_50=Object.freeze({
 ])
 });
 
+// Fixed-source wording fingerprint: catches accidental changes to any original
+// question, A–D option, answer, objective reference or PDF page before release.
+const sourceItemFingerprint=questions=>{
+ let hash=2166136261;
+ const data=JSON.stringify(questions.map(q=>[q.number,q.stem,q.options,q.answer,q.syllabusRef,q.sourcePdfPage]));
+ for(let i=0;i<data.length;i++)hash=Math.imul(hash^data.charCodeAt(i),16777619)>>>0;
+ return hash;
+};
+
 export function verifyPobSpecimenCheckpoint41to50(paper=POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_41_50){
  const issues=[];
+ if(paper?.questions&&Array.isArray(paper.questions)&&sourceItemFingerprint(paper.questions)!==2228823988)
+   issues.push("Original CXC question text, options, answers or source references changed without source review.");
  if(!paper||!Array.isArray(paper.questions)||paper.questions.length!==10)
    return {valid:false,issues:["Exactly ten complete questions required."]};
  if(paper.id!=="POB-CXC-2019-SPECIMEN-P1-Q41-50"||paper.timeLimitMinutes!==13||paper.maxScore!==10)
