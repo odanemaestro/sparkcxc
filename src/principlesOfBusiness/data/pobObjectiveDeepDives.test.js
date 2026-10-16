@@ -28,3 +28,15 @@ test("Nature of Business lessons include detailed guidance for all 14 objectives
   expect(detail.activity.length).toBeGreaterThan(50);
  }
 });
+
+test("Internal Organisational Environment has enriched guidance for all 13 objectives",()=>{
+ const sectionTwo=POB_OBJECTIVES.filter(o=>o.section===2);
+ expect(sectionTwo).toHaveLength(13);
+ sectionTwo.forEach(objective=>{
+  const detail=POB_OBJECTIVE_DEEP_DIVES[objective.code];
+  expect(detail).toBeDefined();
+  expect(detail.walkthrough.length).toBeGreaterThan(80);
+  expect(detail.mistake.length).toBeGreaterThan(40);
+  expect(detail.activity.length).toBeGreaterThan(50);
+ });
+});
