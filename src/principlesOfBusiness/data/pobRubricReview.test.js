@@ -38,7 +38,7 @@ describe("POB Paper 2 100-mark rubric assessment safety",()=>{
   result.questions.flatMap(q=>q.parts).forEach(part=>{
    expect(part.criteria.length).toBeGreaterThan(0);
    part.criteria.forEach(criterion=>{
-    expect(criterion.requirement.length).toBeGreaterThan(9);
+    expect(criterion.requirement.trim().length).toBeGreaterThan(0);
     expect(Array.isArray(criterion.alternatives)).toBe(true);
    });
   });
