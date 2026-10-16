@@ -24,3 +24,7 @@ The archive also contains one 138-page syllabus PDF with a substantial text laye
 Run `python tools/audit-pob-archive.py /path/to/POB.zip --out pob-source-manifest.json` to record file hashes and text-layer status. Run `python tools/draft-pob-paper2-transcription.py /path/to/POB.zip CSEC_Principles_of_Business_P2_2024_JAN.pdf --out draft-p2-2024-jan.json` to prepare unverified question text. Both outputs must be checked against rendered original pages, including diagrams and mark allocations. Verify provenance, question text, official marking guidance, expected answers, and syllabus-era mapping before changing `simulatorReady`.
 
 **Release decision:** blocked. Do not generate or label answers as official when the archive contains no verified marking key.
+
+## January 2024 Paper 2: visual verification checkpoint
+
+Both pages of the supplied two-page PDF were rendered and visually inspected. The structured draft matches the five numbered questions, their part structure, and the printed mark allocations (20 marks per question, 100 marks overall). This **verifies the draft against the supplied copy**, not against an authenticated official CXC original. The draft normalises some wording and punctuation rather than promising an exact facsimile. Its `visualPageVerified` flag is now true, while `answerKeyVerified`, `markingSchemeVerified`, and `simulatorReady` remain false. Official authentication and answer-key validation are still required before scored playback.
