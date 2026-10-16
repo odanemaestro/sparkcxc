@@ -7,6 +7,7 @@ import {restorePobAttempt,pobRemainingSeconds} from "../data/pobAttemptRecovery"
 import {pobPaper2Completion,nextIncompletePobQuestion} from "../data/pobPaper2Progress";
 import {getPobP2FeedbackGuide} from "../data/pobPaper2FeedbackGuides";
 import {inspectPobShortAnswer} from "../data/pobShortAnswerFeedback";
+import {inspectPobExtendedResponse} from "../data/pobExtendedResponseFeedback";
 import PobSbaWorkspace from "./PobSbaWorkspace";
 import "./pobPractice.css";
 
@@ -191,6 +192,13 @@ export function PobPaper2Exam({onBack,userId,supabase}){
          {inspectPobShortAnswer(id,attempt.answers[id]).observed.length>0&&<p>Possible concepts identified: {inspectPobShortAnswer(id,attempt.answers[id]).observed.join("; ")}.</p>}
          {inspectPobShortAnswer(id,attempt.answers[id]).notIdentified.length>0&&<p>Check whether your response addresses: {inspectPobShortAnswer(id,attempt.answers[id]).notIdentified.join("; ")}.</p>}
          <small>Unrecognised wording may still be correct. No marks are assigned by this check.</small>
+       </div>}
+       {review&&inspectPobExtendedResponse(id,attempt.answers[id])&&<div className="pob-p2-calculation">
+         <strong>Extended-answer writing review</strong>
+         <p>{inspectPobExtendedResponse(id,attempt.answers[id]).message}</p>
+         <ul>{inspectPobExtendedResponse(id,attempt.answers[id]).checks.map((check,i)=><li key={i}>{check.label}: {check.seen?"Possible evidence identified":"Review whether your answer addresses this"}</li>)}</ul>
+         {inspectPobExtendedResponse(id,attempt.answers[id]).guidance&&<p>{inspectPobExtendedResponse(id,attempt.answers[id]).guidance}</p>}
+         <small>Hints only. Equivalent responses may use different language. No marks are awarded.</small>
        </div>}
        {review&&<details className="pob-p2-criteria"><summary>View SPARK marking guidance</summary>
          <p>{item.modelAnswer}</p>
