@@ -24,7 +24,7 @@ function found(text,term){
  const pattern=new RegExp("(^|[^a-z0-9])"+escaped+"(?=$|[^a-z0-9])","gi");
  let match;
  while((match=pattern.exec(text))){
-  const preceding=text.slice(Math.max(0,match.index-40),match.index);
+  const preceding=text.slice(Math.max(0,match.index+match[1].length-40),match.index+match[1].length);
   if(!/(?:\bnot|\bno|\bnever|\bwithout)\s+(?:\w+\s+){0,2}$/.test(preceding))return true;
  }
  return false;
