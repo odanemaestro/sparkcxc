@@ -34,6 +34,8 @@ describe("CXC 2019 specimen questions 41–50, source-to-scored-practice",()=>{
  test("changing published answer, choice, objective or source flag prevents certification",()=>{
   const changes=[
    items=>items.map((q,i)=>i===0?{...q,answer:"A"}:q),
+   items=>items.map((q,i)=>i===0?{...q,stem:q.stem+" Changed without source review"}:q),
+   items=>items.map((q,i)=>i===0?{...q,options:[...q.options.slice(0,3),"Invented distractor"]}:q),
    items=>items.map((q,i)=>i===9?{...q,syllabusRef:"9.4 (b)"}:q),
    items=>items.map((q,i)=>i===8?{...q,sourcePdfPage:83}:q),
    items=>items.map((q,i)=>i===5?{...q,options:[q.options[0],q.options[0],q.options[2],q.options[3]]}:q),
