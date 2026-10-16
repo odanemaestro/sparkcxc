@@ -61,3 +61,16 @@ The original 25-part, 100-mark paper now has explicit concept-evidence mappings 
 The original user-supplied `POB.zip` was located in the ChatGPT file library and directly inspected: **21 historical Paper 1 PDFs (193 pages), 25 historical Paper 2 PDFs (275 pages), and one 138-page syllabus PDF**. Source inspection identified 17 historical exam PDFs without a substantial text layer. Details are in `POB_HISTORICAL_SOURCE_QA_20261016.md`.
 
 The feature branch now includes `tools/audit-pob-archive.py` for SHA-256 provenance and PDF text-layer audit, and `tools/draft-pob-paper2-transcription.py` for gated candidate transcription. January 2024 Paper 2 has also been entered as a five-question, 100-mark draft in `data/pobHistoricalP22024JanDraft.js`, with release-safety tests. **Its wording has not yet passed visual-page comparison and its marks have not been checked against an authoritative scheme; it must remain outside the scored simulator.** None of the 46 historical papers can be marked as verified or simulator-ready on this evidence alone.
+
+## Historical transcription batch policy: exactly ten PDFs at a time
+
+Batch 01 is now staged from **ten source-backed Paper 2 PDFs** covering **136 PDF pages** and **60 available question bodies**: 2012–2018 May/June, January 2022, May/June 2022 and January 2023. All ten have SHA-256 identities and page-attributed full-text review drafts. The branch includes a reproducible parser, a ten-paper QA index, and regression tests. See `POB_HISTORICAL_P2_BATCH01_QA.md`.
+
+- Historical Paper 2: **10/25** PDFs staged for transcription review; **0/25** verified for scored simulation.
+- Historical Paper 1: **0/21** PDFs transcribed into exam-ready questions.
+- All 46 source PDFs are inventoried; the untouched source ZIP is not committed.
+- Historical answer keys and full marking schemes remain **unverified** and therefore disabled.
+- Preserve older examination choice rules: the seven-question 2012–2016 papers require Q1–Q3 and either option from each of two question pairs. From the selected 2017-onwards sources, five questions are compulsory.
+- One text-layer mark anomaly (2017 P2 Q2) was visually checked and annotated; the extracted raw text is preserved. A 20-mark token sum alone is not a full question-and-diagram verification.
+
+Continue in batches of exactly ten source PDFs, tracking separately **source staged**, **visually verified**, **answers verified**, and **simulator released**. Do not collapse these statuses or mark historical sources complete because a machine-text extractor found question numbers.
