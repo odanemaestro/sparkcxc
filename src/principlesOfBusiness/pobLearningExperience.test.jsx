@@ -32,7 +32,7 @@ test("POB topic practice can be answered, checked and retried",()=>{
   }
   fireEvent.click(screen.getByRole("button",{name:"Check answers"}));
   expect(callback).toHaveBeenCalledWith(expect.objectContaining({
-    subjectId:"principles-of-business",topicId:topic.id,activityKey:"pob-practice:"+topic.id,total:3
+    subjectId:"principles-of-business",topicId:topic.id,activityKey:expect.stringMatching(/^pob-practice:pob-s1-lesson-01:\\d+$/),total:3
   }));
   expect(screen.getAllByText(/Correct answer:|Correct/).length).toBeGreaterThan(0);
   fireEvent.click(screen.getByRole("button",{name:"Try again"}));
