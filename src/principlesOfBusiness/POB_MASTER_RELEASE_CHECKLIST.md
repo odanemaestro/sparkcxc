@@ -124,3 +124,11 @@ The second checkpoint contains **CXC 2019 specimen Paper 01 questions 11–20**,
 Files: `data/pobCxcSpecimenP1Checkpoint11to20.js`, `data/pobCxcSpecimenP1Checkpoint11to20.test.jsx`, and `POB_CXC_SPECIMEN_SCORED_CHECKPOINT_Q11_20.md`. The Paper 1 practice area offers two independently saved ten-item CXC specimen checkpoints, each with a 13-minute timer and keyed automatic scoring.
 
 **Specimen scored-practice coverage is 20/60 (33.3%), not the complete CXC specimen paper.** The 60-item SPARK original remains separate. The 46 supplied historical sitting source PDFs remain unapproved for graded playback, and the POB course remains a disabled unpublished draft. Next checkpoint: specimen questions 21–30.
+
+## CXC specimen Paper 01: third scored ten-item checkpoint (Q21–30)
+
+Questions **21–30** have been checked against the rendered **CXC 2019 specimen Paper 01** in the supplied syllabus PDF, printed pages **4–5 / PDF pages 80–81**, and CXC's own published key on PDF page **86**. Question sequence, four A–D choices, syllabus references `5.1, 5.6, 5.7, 5.2, 5.1, 5.10, 5.8, 6.2, 6.8, 6.1` and correct answer letters `D C B B C B D B D A` are recorded in `data/pobCxcSpecimenP1Checkpoint21to30.js` and documented in `POB_CXC_SPECIMEN_SCORED_CHECKPOINT_Q21_30.md`.
+
+A third **13-minute, score-out-of-10** CXC specimen checkpoint is integrated in the native Paper 1 practice UI. It has a distinct paper ID and saved-attempt state, maintains original source question numbering, retains after-submission answer review and explanation, and is covered by tests that exercise real UI scoring. The release audit now demands **30 unique source-verified CXC specimen questions**.
+
+**Scored CXC specimen checkpoint coverage: 30/60 (50%)** on this feature branch. The full specimen, all historical sitting papers, and the entire POB course remain unpublished, and `main` is unchanged. Next ten-question batch: CXC specimen **Q31–40**.
