@@ -7,6 +7,7 @@ import {POB_PAPER1_ORIGINAL_ITEMS,validatePobPaper1Items,buildPobPaper1} from ".
 import {POB_PAPER2_ORIGINAL_01,validatePobPaper2} from "./pobPaper2Original";
 import {POB_SUPPLIED_ARCHIVE} from "./pobHistoricalInventory";
 import {POB_HISTORICAL_P2_BATCH01,POB_HISTORICAL_P2_BATCH01_SUMMARY} from "./pobHistoricalP2Batch01";
+import {verifyPobSpecimenCheckpoint,POB_CXC_2019_SPECIMEN_P1_CHECKPOINT} from "./pobCxcSpecimenP1Checkpoint";
 import {reviewPobPaper2} from "./pobRubricReview";
 
 export function auditPobRelease({
@@ -57,6 +58,11 @@ export function auditPobRelease({
      historical.some(h=>h.id===p.id&&h.filename===p.filename&&h.pages===p.sourcePages)&&
      !p.simulatorReady&&!p.answerKeyVerified&&!p.markingSchemeVerified),
    "The ten historical Paper 2 drafts must preserve source inventory and remain unreleased.");
+ requireCheck(verifyPobSpecimenCheckpoint().valid,
+   "Source-key-verified ten-item CXC specimen checkpoint must remain intact.");
+ requireCheck(historical.some(p=>p.id==="POB-P2-2019-MJ-ALT"&&p.paper===2&&p.reclassifiedFromPaper1)&&
+   !historical.some(p=>p.id==="POB-P1-2019-MJ"),
+   "The mislabeled May/June 2019 source must be classified under Paper 02.");
  requireCheck(historical.every(p=>!p.simulatorReady&&p.answerKeyStatus==="not-verified"),
    "Unverified historical papers must not be released as simulator-ready.");
  requireCheck(subject.enabled===false&&subject.status==="draft",
@@ -69,6 +75,7 @@ export function auditPobRelease({
      flashcards:flashcards.length,paper1Items:paper1Items.length,
      paper2Parts:paper2.questions.flatMap(q=>q.items).length,
      unverifiedHistorical:historical.length,
+     scoredSpecimenCheckpointItems:POB_CXC_2019_SPECIMEN_P1_CHECKPOINT.questions.length,
      historicalP2Batch01Drafts:POB_HISTORICAL_P2_BATCH01.length},
    releaseApproved:false,
    blockers:[
