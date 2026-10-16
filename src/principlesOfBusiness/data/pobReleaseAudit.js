@@ -12,6 +12,7 @@ import {verifyPobSpecimenCheckpoint11to20,POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_11
 import {verifyPobSpecimenCheckpoint21to30,POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_21_30} from "./pobCxcSpecimenP1Checkpoint21to30";
 import {verifyPobSpecimenCheckpoint31to40,POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_31_40} from "./pobCxcSpecimenP1Checkpoint31to40";
 import {verifyPobSpecimenCheckpoint41to50,POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_41_50} from "./pobCxcSpecimenP1Checkpoint41to50";
+import {verifyPobSpecimenCheckpoint51to60,POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_51_60} from "./pobCxcSpecimenP1Checkpoint51to60";
 import {reviewPobPaper2} from "./pobRubricReview";
 
 export function auditPobRelease({
@@ -70,13 +71,22 @@ export function auditPobRelease({
    "Third CXC specimen checkpoint (Q21–30) source/answer proof required.");
  requireCheck(verifyPobSpecimenCheckpoint31to40().valid,
    "Fourth CXC specimen checkpoint (Q31–40) with academic Q38 caution required.");
- requireCheck(verifyPobSpecimenCheckpoint41to50().valid&&
-   new Set([...POB_CXC_2019_SPECIMEN_P1_CHECKPOINT.questions,
-     ...POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_11_20.questions,
-     ...POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_21_30.questions,
-     ...POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_31_40.questions,
-     ...POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_41_50.questions].map(q=>q.id)).size===50,
-   "Fifth source-key-verified CXC specimen checkpoint (Q41–50) and 50 unique question IDs required.");
+ requireCheck(verifyPobSpecimenCheckpoint41to50().valid,
+   "Fifth source-key-verified CXC specimen checkpoint (Q41–50) required.");
+ const specimenAll=[
+   ...POB_CXC_2019_SPECIMEN_P1_CHECKPOINT.questions,
+   ...POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_11_20.questions,
+   ...POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_21_30.questions,
+   ...POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_31_40.questions,
+   ...POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_41_50.questions,
+   ...POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_51_60.questions
+ ];
+ requireCheck(verifyPobSpecimenCheckpoint51to60().valid&&
+   specimenAll.length===60&&new Set(specimenAll.map(q=>q.id)).size===60&&
+   specimenAll.every((q,index)=>q.number===index+1),
+   "Final CXC specimen checkpoint (Q51–60) requires all 60 unique ordered verified question IDs.");
+ requireCheck([38,51,53].every(number=>specimenAll[number-1].sourceKeyAcademicReview===true),
+   "Published CXC source-key academic concerns at Q38, Q51 and Q53 must remain flagged.");
  requireCheck(historical.some(p=>p.id==="POB-P2-2019-MJ-ALT"&&p.paper===2&&p.reclassifiedFromPaper1)&&
    !historical.some(p=>p.id==="POB-P1-2019-MJ"),
    "The mislabeled May/June 2019 source must be classified under Paper 02.");
@@ -96,7 +106,8 @@ export function auditPobRelease({
        POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_11_20.questions.length+
        POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_21_30.questions.length+
        POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_31_40.questions.length+
-       POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_41_50.questions.length,
+       POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_41_50.questions.length+
+       POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_51_60.questions.length,
      historicalP2Batch01Drafts:POB_HISTORICAL_P2_BATCH01.length},
    releaseApproved:false,
    blockers:[
