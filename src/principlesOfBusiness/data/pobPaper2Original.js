@@ -57,16 +57,38 @@ export const POB_PAPER2_ORIGINAL_01 = Object.freeze({
   ]
 });
 export function validatePobPaper2(paper=POB_PAPER2_ORIGINAL_01){
-  const issues=[];
-  if(paper.questions.length!==5)issues.push("Five compulsory questions are required.");
-  for(const question of paper.questions){
-    if(question.marks!==20)issues.push(question.id+" must total 20 marks.");
-    const sum=question.items.reduce((n,p)=>n+p.marks,0);
-    if(sum!==20)issues.push(question.id+" items must total 20 marks.");
-    for(const item of question.items){
-      if(item.criteria.reduce((n,c)=>n+c.marks,0)!==item.marks)
-        issues.push(question.id+"-"+item.id+" rubric does not total its marks.");
-    }
-  }
-  return {valid:issues.length===0,issues};
+ const issues=[];
+ if(!paper||!Array.isArray(paper.questions))return {valid:false,issues:["Missing Paper 2 question list."]};
+ if(paper.questions.length!==5)issues.push("Five compulsory questions are required.");
+ if(paper.marks!==100)issues.push("Paper 2 must total 100 marks.");
+ if(paper.timeLimitMinutes!==120)issues.push("Paper 2 must have a 120-minute time limit.");
+ const ids=new Set();
+ for(const [index,question] of paper.questions.entries()){
+   if(!question||!Array.isArray(question.items)){issues.push("Question "+(index+1)+" has no valid parts.");continue;}
+   if(!question.id||ids.has(question.id))issues.push("Question "+(index+1)+" has a missing or duplicate ID.");
+   ids.add(question.id);
+   if(question.number!==index+1)issues.push("Question numbering is not sequential at "+(index+1)+".");
+   if(question.marks!==20)issues.push(question.id+" must total 20 marks.");
+   const sum=question.items.reduce((n,p)=>n+(Number(p?.marks)||0),0);
+   if(sum!==20)issues.push(question.id+" items must total 20 marks.");
+   if(!String(question.context||"").trim())issues.push(question.id+" requires a business scenario.");
+   const partIds=new Set();
+   for(const item of question.items){
+     if(!item){issues.push(question.id+" has a missing part.");continue;}
+     if(!item.id||partIds.has(item.id))issues.push(question.id+" has a duplicate or missing part ID.");
+     partIds.add(item.id);
+     if(!String(item.prompt||"").trim()||!String(item.modelAnswer||"").trim())
+       issues.push(question.id+"-"+item.id+" needs both question wording and a model answer.");
+     if(!Number.isInteger(item.marks)||item.marks<=0)
+       issues.push(question.id+"-"+item.id+" has invalid available marks.");
+     if(!Array.isArray(item.criteria)||!item.criteria.length){
+       issues.push(question.id+"-"+item.id+" needs marking criteria.");continue;
+     }
+     if(item.criteria.some(c=>!Number.isInteger(c?.marks)||c.marks<=0||!String(c.rule||"").trim()))
+       issues.push(question.id+"-"+item.id+" has a malformed marking criterion.");
+     if(item.criteria.reduce((n,c)=>n+(Number(c?.marks)||0),0)!==item.marks)
+       issues.push(question.id+"-"+item.id+" rubric does not total its marks.");
+   }
+ }
+ return {valid:issues.length===0,issues};
 }
