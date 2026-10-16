@@ -1,5 +1,6 @@
 import { chemistryLocalStructure } from "../chemistry/data/chemistryCourse";
 import {fnhLocalStructure} from "../fnh/data/fnhCourse";
+import {pobLocalStructure} from "../principlesOfBusiness/data/pobCourse";
 import {SOCIAL_STUDIES_COURSE} from "../socialStudies/data/socialStudiesCourse";
 // ============================================================================
 // SPARK Generic Subject Learner Shell V2
@@ -146,6 +147,9 @@ export async function loadGenericSubjectStructure({ supabase, subjectId } = {}) 
   }
   if (id === "food-nutrition-and-health") {
     return {data:fnhLocalStructure(),error:null,source:"local-fnh"};
+  }
+  if (id === "principles-of-business") {
+    return {data:pobLocalStructure(),error:null,source:"local-pob"};
   }
   if (!supabase || !id) {
     return { data:buildGenericSubjectStructure(), error:null, skipped:true };
