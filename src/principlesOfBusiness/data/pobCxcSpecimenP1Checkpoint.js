@@ -8,6 +8,7 @@ export const POB_CXC_2019_SPECIMEN_P1_CHECKPOINT=Object.freeze({
  title:"2019 CXC specimen: questions 1–10",timeLimitMinutes:13,maxScore:10,
  originalSpecimenQuestionCount:60,officialKeySourcePdfPage:86,
  sourceFilename:"CSEC-Principles-of-Business-Syllabus-.pdf",
+ sourcePdfSha256:"08b3bf375a720abf8098d53fb9f6394597d8b576f7b863afd7408ecba913d0e6",
  sourcePages:[78,79],format:"ten-question-checkpoint",
  gradeAuthority:"CXC specimen key (practice score, not an exam result)",
  questions:Object.freeze([
