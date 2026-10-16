@@ -3,7 +3,7 @@ import {recordSubjectActivity} from "../../subjects/subjectProgress";
 import {buildPobPaper1} from "../data/pobPaper1Original";
 import {POB_PAPER2_ORIGINAL_01} from "../data/pobPaper2Original";
 import {checkPobCalculation} from "../data/pobCalculationFeedback";
-import {restorePobAttempt} from "../data/pobAttemptRecovery";
+import {restorePobAttempt,pobRemainingSeconds} from "../data/pobAttemptRecovery";
 import {getPobP2FeedbackGuide} from "../data/pobPaper2FeedbackGuides";
 import PobSbaWorkspace from "./PobSbaWorkspace";
 import "./pobPractice.css";
@@ -27,7 +27,7 @@ export function PobPaper1Exam({userId,supabase,onBack}){
    const saved=safeRead(key);
    return restorePobAttempt(saved,paper.id,questions.length)||startState(paper.id);
  });
- const [remaining,setRemaining]=useState(paper.timeLimitMinutes*60);
+ const [remaining,setRemaining]=useState(()=>pobRemainingSeconds(attempt,paper.timeLimitMinutes*60));
  const [confirm,setConfirm]=useState(false);
  const recorded=useRef(new Set());
  const exam=attempt.phase==="exam",review=attempt.phase==="review";
@@ -126,7 +126,7 @@ export function PobPaper2Exam({onBack,userId,supabase}){
  const paper=POB_PAPER2_ORIGINAL_01;
  const key=storage(userId,paper.id);
  const [attempt,setAttempt]=useState(()=>{const saved=safeRead(key);return restorePobAttempt(saved,paper.id,paper.questions.length)||startState(paper.id)});
- const [remaining,setRemaining]=useState(120*60);
+ const [remaining,setRemaining]=useState(()=>pobRemainingSeconds(attempt,120*60));
  const [confirm,setConfirm]=useState(false);
  const recorded=useRef(new Set());
  const exam=attempt.phase==="exam",review=attempt.phase==="review";
