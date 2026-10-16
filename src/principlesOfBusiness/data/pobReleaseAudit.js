@@ -11,6 +11,7 @@ import {verifyPobSpecimenCheckpoint,POB_CXC_2019_SPECIMEN_P1_CHECKPOINT} from ".
 import {verifyPobSpecimenCheckpoint11to20,POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_11_20} from "./pobCxcSpecimenP1Checkpoint11to20";
 import {verifyPobSpecimenCheckpoint21to30,POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_21_30} from "./pobCxcSpecimenP1Checkpoint21to30";
 import {verifyPobSpecimenCheckpoint31to40,POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_31_40} from "./pobCxcSpecimenP1Checkpoint31to40";
+import {verifyPobSpecimenCheckpoint41to50,POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_41_50} from "./pobCxcSpecimenP1Checkpoint41to50";
 import {reviewPobPaper2} from "./pobRubricReview";
 
 export function auditPobRelease({
@@ -67,12 +68,15 @@ export function auditPobRelease({
    "Second CXC specimen checkpoint (Q11–20) and source/answer proof required.");
  requireCheck(verifyPobSpecimenCheckpoint21to30().valid,
    "Third CXC specimen checkpoint (Q21–30) source/answer proof required.");
- requireCheck(verifyPobSpecimenCheckpoint31to40().valid&&
+ requireCheck(verifyPobSpecimenCheckpoint31to40().valid,
+   "Fourth CXC specimen checkpoint (Q31–40) with academic Q38 caution required.");
+ requireCheck(verifyPobSpecimenCheckpoint41to50().valid&&
    new Set([...POB_CXC_2019_SPECIMEN_P1_CHECKPOINT.questions,
      ...POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_11_20.questions,
      ...POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_21_30.questions,
-     ...POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_31_40.questions].map(q=>q.id)).size===40,
-   "Fourth CXC specimen checkpoint (Q31–40), its Q38 key caution, and 40 unique source-verified items required.");
+     ...POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_31_40.questions,
+     ...POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_41_50.questions].map(q=>q.id)).size===50,
+   "Fifth source-key-verified CXC specimen checkpoint (Q41–50) and 50 unique question IDs required.");
  requireCheck(historical.some(p=>p.id==="POB-P2-2019-MJ-ALT"&&p.paper===2&&p.reclassifiedFromPaper1)&&
    !historical.some(p=>p.id==="POB-P1-2019-MJ"),
    "The mislabeled May/June 2019 source must be classified under Paper 02.");
@@ -91,7 +95,8 @@ export function auditPobRelease({
      scoredSpecimenCheckpointItems:POB_CXC_2019_SPECIMEN_P1_CHECKPOINT.questions.length+
        POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_11_20.questions.length+
        POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_21_30.questions.length+
-       POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_31_40.questions.length,
+       POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_31_40.questions.length+
+       POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_41_50.questions.length,
      historicalP2Batch01Drafts:POB_HISTORICAL_P2_BATCH01.length},
    releaseApproved:false,
    blockers:[
