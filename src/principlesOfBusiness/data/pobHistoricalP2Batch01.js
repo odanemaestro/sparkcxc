@@ -14,7 +14,7 @@ const entries=[
   ["2022","MJ",13,5,"2c2e6223ffe0f1473f068485db00ad2a240df9e4407e4235bb4ecf9e58a71982",[20,20,20,20,20]],
   ["2023","JAN",24,5,"c9803bd124e97f4208f5317de9494f04412727c6dfdb6c0bf4447a42deaa4ace",[20,20,20,20,20]]
 ];
-export const POB_HISTORICAL_P2_BATCH01=Object.freeze(entries.map(([year,sitting,sourcePages,questionCount,sourceSha256,markTokens],index)=>{
+export const POB_HISTORICAL_P2_BATCH01=Object.freeze(entries.map(([year,sitting,sourcePages,questionCount,sourceSha256,markTokens])=>{
  const earlier=Number(year)<=2016;
  return Object.freeze({
   id:`POB-P2-${year}-${sitting}`,
@@ -29,6 +29,8 @@ export const POB_HISTORICAL_P2_BATCH01=Object.freeze(entries.map(([year,sitting,
   }),
   markTokensFromText:Object.freeze(markTokens),
   textExtractionIssue:markTokens.some(value=>value!==20),
+  visualMarkRecovery:year==="2017"?Object.freeze({question:2,sourcePage:5,additionalMarks:4,
+    note:"Rendered source shows a second 4-mark allocation; extracted text obscures it."}):null,
   sourceAuthenticated:false,visualReviewComplete:false,
   questionTranscriptionVerified:false,answerKeyVerified:false,
   markingSchemeVerified:false,simulatorReady:false,
