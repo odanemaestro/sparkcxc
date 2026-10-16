@@ -112,3 +112,15 @@ test("Business Finance has detailed teaching guidance for all 9 objectives",()=>
   expect(detail.activity.length).toBeGreaterThan(50);
  });
 });
+
+test("Role of Government in an Economy has detailed guidance for all 6 objectives",()=>{
+ const government=POB_OBJECTIVES.filter(o=>o.section===9);
+ expect(government).toHaveLength(6);
+ government.forEach(objective=>{
+  const detail=POB_OBJECTIVE_DEEP_DIVES[objective.code];
+  expect(detail).toBeDefined();
+  expect(detail.walkthrough.length).toBeGreaterThan(80);
+  expect(detail.mistake.length).toBeGreaterThan(40);
+  expect(detail.activity.length).toBeGreaterThan(50);
+ });
+});
