@@ -51,8 +51,9 @@ describe("Mark-by-mark arithmetic scoring in SPARK original POB Paper 2",()=>{
   const marker=buildTrustedAssessment(attempt(answers));
   const review=reviewPobPaper2(answers);
   expect(marker.deterministicScore).toBe(3);
-  expect(marker.items).toHaveLength(1);
-  expect(marker.items[0].id).toBe(K("1:e"));
+  expect(marker.items).toHaveLength(4);
+  expect(marker.items.map(item=>item.id)).toEqual([1,2,3,4].map(i=>K("1:e")+":criterion-"+i));
+  expect(marker.items.reduce((n,item)=>n+item.maxMarks,0)).toBe(7);
   expect(review.confirmedMarks).toBe(3);
   expect(review.unresolvedParts).toBe(1);
   expect(review.assessedMarks).toBeNull();
