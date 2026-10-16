@@ -17,16 +17,25 @@ export function checkPobCalculation(partKey,response){
   const answer=String(response||"").trim();
   if(!answer)return {status:"unanswered",message:"No calculation entered.",working:target.working};
   const numbers=[...answer.matchAll(NUMERIC_TOKEN)].map(match=>Number(match[0].replace(/,/g,"")));
-  const matches=numbers.filter(number=>Number.isFinite(number)&&Math.abs(number-target.value)<1e-8);
-  // A number appearing in working does not prove it is the final answer.
-  // Distinct numerical results make the response ambiguous and require review.
-  const explicitFinal=answer.match(/(?:final answer|answer|therefore|thus|=)\s*(?:is\s*)?(?:J\$|\$)?\s*([\d,]+(?:\.\d+)?)/i);
-  const finalValue=explicitFinal?Number(explicitFinal[1].replace(/,/g,"")):null;
-  if(finalValue!==null&&Number.isFinite(finalValue)&&Math.abs(finalValue-target.value)>1e-8){
+  const equals=(a,b)=>Number.isFinite(a)&&Math.abs(a-b)<1e-8;
+  // An explicitly labelled final answer takes priority over earlier working.
+  const labelled=[...answer.matchAll(/(?:final answer|answer is|answer:|therefore|thus)\s*(?:is\s*)?(?:J\$|\$)?\s*([\d,]+(?:\.\d+)?)/gi)];
+  const labelledValue=labelled.length?Number(labelled[labelled.length-1][1].replace(/,/g,"")):null;
+  // Equations frequently contain earlier arithmetic; use only the last
+  // equals-sign result, and only when the number follows the equals sign.
+  const equations=[...answer.matchAll(/=\s*(?:J\$|\$)?\s*([\d,]+(?:\.\d+)?)/g)];
+  const equationValue=equations.length?Number(equations[equations.length-1][1].replace(/,/g,"")):null;
+  const stated=labelledValue!==null?labelledValue:equationValue;
+  if(stated!==null&&!equals(stated,target.value)){
     return {status:"review-needed",message:"Your stated result does not match the expected answer. Check your working and final answer.",working:target.working};
   }
-  if(matches.length>0){
+  if(stated!==null&&equals(stated,target.value)){
     return {status:"result-found",message:"Expected numerical result found. Your method, explanation and units still require assessment.",working:target.working};
   }
-  return {status:"review-needed",message:"The expected numerical result was not found. Check your working and final answer.",working:target.working};
+  if(numbers.length===1&&equals(numbers[0],target.value)){
+    return {status:"result-found",message:"Expected numerical result found. Your method, explanation and units still require assessment.",working:target.working};
+  }
+  // More than one unlabelled number is ambiguous. Never assume that an
+  // intermediate operand is the intended final answer.
+  return {status:"review-needed",message:"A clear matching final result was not identified. Label your final answer and check the working.",working:target.working};
 }
