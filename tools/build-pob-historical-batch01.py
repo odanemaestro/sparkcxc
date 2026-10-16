@@ -85,6 +85,11 @@ def build(archive,out_dir):
                     "markTokensExtracted":tokens,
                     "markTokensTotal":sum(tokens),
                     "printedMarksExpected":20,
+                    "requiresDiagramReview":bool(re.search(r"\\b(?:figure|diagram|table|graph|chart)\\b",draft,re.I)),
+                    "markTokenDiscrepancy":sum(tokens)!=20,
+                    "visualMarkRecovery":({"page":5,"additionalMarks":4,
+                        "reason":"PDF text layer corrupts one 4-mark token; visually confirmed on source page 5."}
+                        if year==2017 and sitting=="MJ" and index==1 else None),
                     "textVisuallyVerified":False,
                     "diagramVisuallyVerified":False,
                     "markSchemeVerified":False,
