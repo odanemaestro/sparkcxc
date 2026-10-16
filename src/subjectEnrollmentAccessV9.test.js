@@ -25,7 +25,10 @@ describe("SPARK V9 enrollment-gated study and practice access", () => {
     expect(practiceHub).toContain('enrolledSubjectIds = null');
     expect(practiceHub).toContain('const enrolled = new Set(enrolledSubjectIds.map');
     expect(practiceHub).toContain('return supported.filter(item => enrolled.has');
-    expect(app).toContain('enrolledSubjectIds={appSubjectEnrollmentIds}');
+    expect(app).toContain('enrolledSubjectIds={POB_DEV_PREVIEW ? [...appSubjectEnrollmentIds,"principles-of-business"] : appSubjectEnrollmentIds}');
+    expect(app).toContain('const POB_DEV_PREVIEW = process.env.NODE_ENV === "development" && process.env.REACT_APP_POB_PREVIEW === "true"');
+    // Production still uses the original database-backed enrollment IDs.
+    expect(app).toContain(': appSubjectEnrollmentIds}');
   });
 
   test("Direct Mathematics and Physics study routes are enrollment-gated", () => {

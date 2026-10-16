@@ -1,10 +1,11 @@
-import React,{useEffect,useState} from "react";
+import React,{useEffect,useRef,useState} from "react";
 import "./serverMarking.css";
 
-export default function ServerMarkingReview({supabase,attemptId}){
+export default function ServerMarkingReview({supabase,attemptId,autoStart=false}){
   const enabled=process.env.REACT_APP_SERVER_MARKING==="true";
   const [job,setJob]=useState(null),[busy,setBusy]=useState(false),[error,setError]=useState("");
   const [refresh,setRefresh]=useState(0);
+  const autoRequested=useRef(new Set());
   useEffect(()=>{
     setJob(null);setError("");
     if(!enabled||!attemptId||!supabase?.from)return;
@@ -22,6 +23,18 @@ export default function ServerMarkingReview({supabase,attemptId}){
     poll();
     return ()=>{cancelled=true;clearTimeout(timer);};
   },[enabled,attemptId,supabase,refresh]);
+  useEffect(()=>{
+    if(!enabled||!autoStart||!attemptId||!supabase?.rpc||autoRequested.current.has(attemptId))return;
+    autoRequested.current.add(attemptId);
+    let cancelled=false;
+    supabase.rpc("spark_enqueue_marking",{p_attempt_id:attemptId}).then(({data,error})=>{
+      if(error)throw error;
+      if(!cancelled){setJob(Array.isArray(data)?data[0]:data);setRefresh(v=>v+1);}
+    }).catch(()=>{
+      if(!cancelled)setError("Automated marking is not available yet. Your saved responses remain available.");
+    });
+    return()=>{cancelled=true;};
+  },[enabled,autoStart,attemptId,supabase]);
   if(!enabled)return null;
   async function enqueue(){
     setBusy(true);setError("");

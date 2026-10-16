@@ -28,6 +28,7 @@ const ChemistryPracticeHub = lazy(() =>
   import("../chemistry/practice/ChemistryPracticeHub")
 );
 const FnhPracticeHub=lazy(()=>import("../fnh/practice/FnhPracticeHub"));
+const PobPracticeHub=lazy(()=>import("../principlesOfBusiness/practice/PobPracticeHub.jsx"));
 
 function PracticeLazyBoundary({ label, children }) {
   return (
@@ -112,6 +113,8 @@ export default function PracticeHub({ supabase, userId, setView, physicsEnabled 
                       ? "practice-chemistry"
                     : item.id === "food-nutrition-and-health"
                       ? "practice-food-nutrition-and-health"
+                    : item.id === "principles-of-business"
+                      ? "practice-principles-of-business"
                       : "practice-math"
         );
       }}
@@ -179,6 +182,13 @@ export default function PracticeHub({ supabase, userId, setView, physicsEnabled 
         />
       </PracticeLazyBoundary>
     );
+  }
+
+  if (selectedSubject === "principles-of-business") {
+    return <PracticeLazyBoundary label="Loading Principles of Business practice">
+      <PobPracticeHub userId={userId} supabase={supabase}
+        onBack={()=>{setMode("home");setView?.("practice")}}/>
+    </PracticeLazyBoundary>;
   }
 
   if (selectedSubject === "food-nutrition-and-health") {

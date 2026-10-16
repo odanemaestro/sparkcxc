@@ -4,6 +4,8 @@ import science3 from "../../public/integrated-science/bank/is_module3.json";
 import {englishAPaper2Sets,buildEnglishAPaper2} from "../englishA/data/englishAPaper2Bank";
 import {gradeEnglishAPaper2} from "../englishA/practice/englishAPaper2Grader";
 import {gradeIntegratedSciencePaper2} from "../integratedScience/practice/integratedSciencePaper2Grader";
+import {POB_PAPER2_ORIGINAL_01} from "../principlesOfBusiness/data/pobPaper2Original";
+import {gradePobListingPart} from "../principlesOfBusiness/data/pobDeterministicMarks";
 export {requestSemanticPass,reconcileSemanticPasses,SEMANTIC_MARKING_REVISION} from "./semanticMarking";
 
 export function buildTrustedAssessment(attempt){
@@ -50,6 +52,27 @@ export function buildTrustedAssessment(attempt){
         constraints:{kind:task.kind,wordLimit:task.wordLimit,wordRange:task.wordRange,shortResponseCap:short?10:null}});
       replaceScore+=row.score;
     }
+  }else if(attempt.subject_id==="principles-of-business"){
+    if(attempt.bank_version!=="pob-original-paper2-01")throw new Error("unsupported_bank_version");
+    if(attempt.metadata?.paper_id!==POB_PAPER2_ORIGINAL_01.id)throw new Error("unknown_paper");
+    let determined=0;
+    for(const question of POB_PAPER2_ORIGINAL_01.questions){
+      for(const part of question.items){
+        const id=question.id+":"+part.id;
+        const value=String(responses[id]||"").trim();
+        if(!value)continue;
+        const listing=gradePobListingPart(id,value);
+        if(listing){
+          determined+=listing.marks;
+          continue;
+        }
+        items.push({id,maxMarks:part.marks,responseKeys:[id],
+          prompt:part.prompt,context:question.context,
+          rubric:part.criteria.map(c=>({marks:c.marks,rule:c.rule,alternatives:c.alternatives||[]})),
+          constraints:{subject:"principles-of-business",profile:part.profile}});
+      }
+    }
+    baseline={score:determined,maxScore:100,unassessedMarks:0};
   }else throw new Error("unsupported_subject");
   const allowed=new Set(items.flatMap(item=>item.responseKeys));
   const semanticResponses=Object.fromEntries([...allowed].map(key=>[key,String(responses[key] || "")]));

@@ -1,0 +1,108 @@
+import { POB_OFFICIAL_PAPER1_ALLOCATION } from "./pobCourse";
+
+// These are ORIGINAL SPARK practice questions. No historical question is represented as verified.
+// Each item has four plausible options, exactly one supported answer and a teaching explanation.
+const q=(section,objective,stem,options,answer,explanation)=>({
+  section,objectiveCode:"S"+section+"."+objective,stem,options,answer,explanation,origin:"spark-original"
+});
+export const POB_PAPER1_ORIGINAL_ITEMS=Object.freeze([
+q(1,1,"Why did barter become difficult as trade increased?",["It required both parties to want each other's goods","It eliminated the need to agree on value","It could be used only by large businesses","It made all products equal in value"],"A","Barter requires a double coincidence of wants, which may be hard to find."),
+q(1,2,"Which function of money allows prices to be compared?",["Store of value","Unit of account","Specialisation","Production"],"B","Money is a unit of account when it measures the price of different goods."),
+q(1,3,"A debit-card purchase normally does which of the following?",["Creates a fixed interest-bearing loan","Uses available money in a linked account","Requires a written cheque","Avoids recording a payment"],"B","Debit cards normally draw on available funds rather than extending credit."),
+q(1,6,"Which business form is normally a separate legal person from its owners?",["A registered company","An individual sole trader","An informal neighbourhood stall","A single worker providing labour"],"A","Incorporated companies have legal personality distinct from shareholders."),
+q(1,11,"A shop falsely advertises imported goods as locally produced. What is the main concern?",["Improved labour productivity","Honest market information","Misleading and unethical promotion","Increased capital formation"],"C","False claims mislead customers and can break applicable consumer laws."),
+q(2,1,"A manager compares actual monthly sales with the sales target. Which function is illustrated?",["Controlling","Recruitment","Branding","Transport"],"A","Controlling includes measuring actual performance against planned standards."),
+q(2,3,"Which diagram shows formal reporting relationships in a business?",["Organisation chart","Population pyramid","Demand schedule","Production possibility curve"],"A","Organisation charts describe jobs, reporting lines and authority."),
+q(2,6,"Which leadership style usually involves workers in decisions?",["Autocratic","Democratic","Laissez-faire without consultation","Coercive"],"B","Democratic leadership invites participation before a decision."),
+q(2,7,"Two employees receive contradictory instructions. This is most directly an example of",["strong working capital","poor communication","product differentiation","intermodal transport"],"B","Unclear or inconsistent instructions can create workplace conflict."),
+q(2,9,"What should usually happen first when resolving a workplace disagreement?",["Identify the facts and hear each side","Dismiss all workers involved","Ignore the disagreement","Publish accusations online"],"A","Fair conflict resolution begins by understanding the actual problem."),
+q(2,11,"Which policy is most likely to support employee motivation?",["Ignoring strong performance","Offering fair recognition and training","Delaying wages without explanation","Removing all feedback"],"B","Recognition and development can support a worker's sense of value and ability."),
+q(3,1,"An entrepreneur differs from a salaried employee mainly because the entrepreneur",["never hires other workers","organises resources and accepts business risk","must own a large factory","cannot work in services"],"B","Entrepreneurs bring resources together and accept uncertainty."),
+q(3,7,"Which action should occur before major spending on a new business?",["Conduct market research and estimate costs","Purchase large stocks without testing demand","Promise unrealistic profit to investors","Ignore registration rules"],"A","Demand research and cost estimates reduce avoidable start-up risk."),
+q(3,8,"A business plan is particularly useful because it",["guarantees that profits will be earned","explains goals, operations, finance and risks","eliminates all business competitors","replaces all legal requirements"],"B","A plan helps entrepreneurs evaluate decisions and communicate a viable proposal."),
+q(3,11,"A feasibility study primarily asks whether a proposed venture is",["politically popular","technically and financially workable","larger than its competitors","already operating in every market"],"B","Feasibility analysis checks whether realistic demand, costs and resources support the idea."),
+q(3,15,"Collateral is best described as",["a customer's verbal complaint","an asset pledged to secure a loan","a payment owed to a supplier","a business advertising method"],"B","Lenders may require a pledge of property or another asset to reduce their risk."),
+q(4,3,"Which element is generally required for a valid simple contract?",["Consideration","A company seal on every transaction","A government minister's signature","A television advertisement"],"A","Consideration is among the recognised requirements of many simple contracts."),
+q(4,5,"A buyer offers J$8,000 for a desk. The seller replies J$9,000. The reply is a",["completed acceptance","counteroffer","receipt","breach of contract"],"B","Changing a proposed price normally constitutes a counteroffer, not acceptance."),
+q(4,8,"Which document most directly records that money was received for a sale?",["Receipt","Production schedule","Staff rota","Advertising brief"],"A","A receipt records the payment received and often the associated transaction."),
+q(4,10,"Which principle generally prevents an insured person from profiting unfairly from a covered loss?",["Indemnity","Mass production","Product promotion","Division of labour"],"A","Indemnity aims to compensate an insured loss rather than create a windfall."),
+q(5,1,"Which factor of production refers to people applying their physical or mental effort?",["Land","Labour","Capital","Natural resources"],"B","Labour is human effort used to produce goods and services."),
+q(5,1,"Who combines resources and accepts the risk of a new business?",["Entrepreneur","Consumer","Wholesaler","Tax collector"],"A","Enterprise organises production and carries business risk."),
+q(5,2,"Turning sugar cane into packaged sugar is mainly a",["primary activity","secondary activity","government transfer payment","retail promotion"],"B","Processing raw materials into finished or intermediate goods is secondary production."),
+q(5,3,"Factory X makes 240 items in 8 hours. What is output per hour?",["20","24","30","32"],"C","Labour productivity is 240 divided by 8, or 30 items per hour."),
+q(5,6,"A machine expected to serve a business for several years is an example of",["fixed capital","daily cash sales","sales revenue","a customer's deposit"],"A","Long-lived production equipment is fixed capital."),
+q(5,11,"Opening another company-owned branch is an example of",["internal growth","external growth by acquisition","liquidation","barter"],"A","A firm's own expansion is generally internal growth."),
+q(5,12,"A hotel buying produce from nearby farmers demonstrates",["backward linkages","import quotas","illegal pricing","lack of specialisation"],"A","Purchasing local inputs builds backward supply linkages."),
+q(6,1,"Which statement best defines marketing?",["Only putting products on a shelf","Identifying and satisfying customer needs through coordinated activities","Only making posters for products","Counting stock without speaking to customers"],"B","Marketing connects research, product, price, promotion and availability."),
+q(6,3,"Which combination correctly names the traditional four Ps?",["People, payment, profit, paperwork","Product, price, place, promotion","Production, population, policy, pressure","Price, property, patent, profit"],"B","The four Ps form the basic marketing mix."),
+q(6,4,"A customer's choice changes after receiving a wage increase. Which factor is involved?",["Income","Interest on capital","Production output","Contract termination"],"A","Income influences purchasing power and consumer behaviour."),
+q(6,5,"What is a key reason for using tamper-resistant packaging on food?",["To eliminate the need for labels","To help protect product safety and quality","To guarantee unlimited shelf life","To replace every form of advertising"],"B","Appropriate packaging protects the item and helps communicate useful information."),
+q(6,6,"Giving shoppers small samples of a newly launched product is",["sales promotion","capital depreciation","intermodal shipment","liquidation"],"A","Sampling encourages product trial."),
+q(6,10,"A business that resolves a legitimate complaint promptly is likely to improve",["customer trust","raw material extraction","tax avoidance","the amount of land available"],"A","Responsive service builds trust and may improve repeat purchases."),
+q(6,12,"Which legal protection is commonly used for a distinctive business brand name or logo?",["Trademark","Insurance premium","Bank draft","Stock turnover"],"A","Trademark protection distinguishes goods and services from those of competitors."),
+q(7,1,"Supply chain management connects",["only cashiers and customers","suppliers, producers, distribution channels and customers","only regulators and courts","only accountants and auditors"],"B","Supply chains coordinate the flows of inputs, products and information."),
+q(7,2,"Which channel normally has a wholesaler between producer and retailer?",["Producer to wholesaler to retailer to consumer","Producer directly to consumer","Retailer to producer to wholesaler","Consumer to wholesaler to supplier"],"A","Wholesalers may purchase goods in bulk for resale to retailers."),
+q(7,3,"A standard shipping container moves by ship and then truck. This is an example of",["a multimode journey","bartering only","a fixed-capital asset sale","industrial relations"],"A","Multiple modes of transport are involved; contractual arrangements determine more precise classification."),
+q(7,4,"A document identifying cargo and parties on an ocean shipment is a",["bill of lading","wage slip","income statement","price tag"],"A","A bill of lading is a major maritime transport document."),
+q(7,8,"Which event can interrupt the distribution of fresh produce?",["A washed-out bridge","A correctly completed order","Accurate stock forecasts","Sufficient refrigeration"],"A","Damaged roads can delay transport and cause spoilage."),
+q(7,10,"Which tool helps distributors monitor where vehicles are operating?",["GPS tracking","A statement of profit","A trademark","A receipt book only"],"A","GPS systems provide location data that can support routing and oversight."),
+q(8,1,"Which organisation mainly pools members' savings and offers member financial services?",["Credit union","Freight forwarder","Advertising agency","Court registry"],"A","Credit unions are member-oriented financial institutions."),
+q(8,3,"A financial regulator's role includes",["monitoring compliance and financial soundness","selling all goods produced","operating every retail outlet","setting every private wage"],"A","Regulators supervise financial activities according to their statutory powers."),
+q(8,5,"A household budget should primarily compare",["income with spending, saving and obligations","workers with managers","exports with imports only","brands with advertisements"],"A","Budgeting helps plan how available income will be used."),
+q(8,6,"How is an investment generally different from keeping accessible savings?",["Investments may involve a greater range of risk and return","Investments must always earn a profit","Savings may never be withdrawn","Investments never involve money"],"A","Investment returns and values can vary, while savings often prioritise liquidity."),
+q(8,7,"A five-year loan to buy equipment is usually classed as",["long-term finance","short-term trade discount","cash sales revenue","a delivery note"],"A","Equipment borrowing over several years is a longer-term financing arrangement."),
+q(8,9,"A trader records sales of J$100,000 and total expenses of J$76,000. The simplified profit is",["J$24,000","J$76,000","J$176,000","J$100,000"],"A","Profit equals revenue minus relevant expenses, or J$24,000 in this simplified case."),
+q(8,9,"Which document is most useful for recording money received and paid daily?",["Cash book","Organisational chart","Production timetable","Customer survey only"],"A","A cash book helps track cash receipts and payments."),
+q(9,1,"Which is a major economic responsibility of government?",["Providing a legal and infrastructure framework","Guaranteeing all private profits","Deciding every purchase by consumers","Eliminating competition"],"A","Public infrastructure and legal institutions support economic activity."),
+q(9,2,"A rule limiting harmful factory waste is an example of",["environmental regulation","product packaging only","trade credit","patent protection"],"A","Environmental regulation can reduce harm from business activities."),
+q(9,3,"A major purpose of taxation is to",["raise government revenue for public needs","guarantee higher exports","remove every production cost","replace all financial records"],"A","Tax revenue funds public programmes and services."),
+q(9,4,"Which tax is usually classified as a direct tax?",["Income tax","General consumption tax","Sales tax","Excise on purchases"],"A","Income tax is generally assessed on income rather than a specific purchase."),
+q(9,4,"Jamaica's GCT on a taxable purchase is generally a form of",["indirect taxation","direct personal income taxation","business insurance","capital investment"],"A","GCT is a consumption-based indirect tax."),
+q(9,5,"Government-funded business training is an example of",["support for enterprise development","barter","contract frustration","market segmentation"],"A","Training can strengthen business skills and productivity."),
+q(9,6,"Which is a public social service?",["Public healthcare","Shareholder dividend","Private advertising","Inventory depreciation"],"A","Healthcare provision is a major social service of government."),
+q(10,1,"Using software to record inventory illustrates",["business technology","barter","marine insurance","a specialty contract"],"A","Business technology includes information systems that improve operations."),
+q(10,2,"Which benefit can secure video conferencing offer a regional business?",["Faster communication with overseas partners","Guaranteed profits","Complete elimination of cyber risk","Automatic exemption from taxes"],"A","ICT can lower the practical barriers to communication across locations."),
+q(10,4,"Which is an example of e-commerce?",["A customer pays for goods through an online store","A worker cleans a showroom","A truck moves goods between depots","A baker checks a recipe on paper"],"A","E-commerce involves electronic buying or selling."),
+q(10,6,"A firm sells customer contact details without permission. This mainly raises",["privacy and data-protection concerns","capital productivity","the chain of command","barter advantages"],"A","Businesses must handle personal information lawfully and responsibly."),
+q(10,8,"GDP principally measures the value of production",["within the country's economic territory","by citizens abroad only","from all imports regardless of production","from one company's sales alone"],"A","GDP measures economic production within an economy over a period."),
+q(10,10,"Why do small Caribbean territories often participate in international trade?",["To obtain goods or resources not efficiently available locally","To eliminate every import","To end specialisation","To guarantee all investments earn profits"],"A","Trade provides access to goods, resources and markets across borders.")
+].map((item,index)=>Object.freeze({id:"POB-ORIGINAL-2026-"+String(index+1).padStart(3,"0"),...item})));
+export function validatePobPaper1Items(items=POB_PAPER1_ORIGINAL_ITEMS){
+ const issues=[];
+ if(!Array.isArray(items))return {valid:false,issues:["Question bank must be an array."]};
+ const ids=new Set(),stems=new Set();
+ POB_OFFICIAL_PAPER1_ALLOCATION.forEach((count,index)=>{
+   if(items.filter(q=>q?.section===index+1).length<count)
+     issues.push("Section "+(index+1)+" requires at least "+count+" questions.");
+ });
+ items.forEach((item,index)=>{
+   const tag="Question "+(index+1);
+   if(!item||typeof item!=="object"){issues.push(tag+" is missing.");return;}
+   if(!item.id||ids.has(item.id))issues.push(tag+" has a missing or duplicate ID.");
+   ids.add(item.id);
+   const stem=String(item.stem||"").trim().replace(/\s+/g," ").toLowerCase();
+   if(!stem||stems.has(stem))issues.push(tag+" has a missing or duplicate question stem.");
+   stems.add(stem);
+   if(!Array.isArray(item.options)||item.options.length!==4||
+      item.options.some(option=>!String(option||"").trim())||
+      new Set(item.options.map(option=>String(option).trim().toLowerCase())).size!==4)
+      issues.push(tag+" must contain four distinct non-empty choices.");
+   if(!"ABCD".includes(item.answer)||String(item.answer).length!==1)
+      issues.push(tag+" has an invalid answer key.");
+   if(!String(item.explanation||"").trim())issues.push(tag+" lacks an explanation.");
+   if(!Number.isInteger(item.section)||item.section<1||item.section>10)
+      issues.push(tag+" has an invalid syllabus section.");
+   if(!new RegExp("^S"+item.section+"\\.\\d+$").test(item.objectiveCode||""))
+      issues.push(tag+" has an objective code outside its section.");
+ });
+ return {valid:issues.length===0,issues};
+}
+export function buildPobPaper1({items=POB_PAPER1_ORIGINAL_ITEMS}={}){
+ const checked=validatePobPaper1Items(items);
+ if(!checked.valid)throw new Error("Invalid POB Paper 1 question bank: "+checked.issues.join(" "));
+ const selected=POB_OFFICIAL_PAPER1_ALLOCATION.flatMap((count,index)=>
+   items.filter(q=>q.section===index+1).slice(0,count)
+ );
+ return {id:"pob-original-paper1-v1",title:"SPARK Original POB Practice Paper 1",origin:"spark-original",
+   questions:selected,timeLimitMinutes:75,totalMarks:60,expectedDistribution:POB_OFFICIAL_PAPER1_ALLOCATION};
+}
