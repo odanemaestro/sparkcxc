@@ -74,3 +74,9 @@ Batch 01 is now staged from **ten source-backed Paper 2 PDFs** covering **136 PD
 - One text-layer mark anomaly (2017 P2 Q2) was visually checked and annotated; the extracted raw text is preserved. A 20-mark token sum alone is not a full question-and-diagram verification.
 
 Continue in batches of exactly ten source PDFs, tracking separately **source staged**, **visually verified**, **answers verified**, and **simulator released**. Do not collapse these statuses or mark historical sources complete because a machine-text extractor found question numbers.
+
+## Historical Paper 2 batch 02 (ten source PDFs)
+
+Batch 02 source PDFs have been audited and page-linked: 2005–2011 May/June, January 2019, May/June 2019 and May/June 2021 (**10 PDFs, 78 pages**). Three text-readable papers (2009, 2010, 2011) yielded **21 complete numbered question bodies** with extracted 20-mark totals. The other seven require visual transcription; a partial text layer is not sufficient to invent missing questions or answer keys.
+
+Files: `tools/build-pob-historical-batch02.py`, `data/pobHistoricalP2Batch02.js`, `data/pobHistoricalP2Batch02.test.js`, `POB_HISTORICAL_P2_BATCH02_QA.md`. With Batch 01, **20 of 25 historical Paper 2 source PDFs have been processed**, **81 question bodies provisionally segmented**, and **zero have been approved for scored release**. Full source/answer/marking-scheme comparison remains a release blocker; continue using batches of exactly ten sources where possible.
