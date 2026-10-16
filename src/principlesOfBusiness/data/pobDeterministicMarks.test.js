@@ -26,8 +26,8 @@ describe("calibrated exact-listing partial marks",()=>{
   const review=reviewPobPaper2({[Q+"2:a"]:"Planning; organising"});
   expect(review.questions[1].parts[0].assessedMarks).toBe(2);
   expect(review.confirmedMarks).toBe(2);
-  expect(review.fullyAssessed).toBe(false);
-  expect(review.assessedMarks).toBeNull();
+  expect(review.fullyAssessed).toBe(true);
+  expect(review.assessedMarks).toBe(2);
   expect(review.unresolvedParts).toBe(0);
  });
 });
