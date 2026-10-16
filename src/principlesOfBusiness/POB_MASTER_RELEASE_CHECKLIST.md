@@ -132,3 +132,13 @@ Questions **21–30** have been checked against the rendered **CXC 2019 specimen
 A third **13-minute, score-out-of-10** CXC specimen checkpoint is integrated in the native Paper 1 practice UI. It has a distinct paper ID and saved-attempt state, maintains original source question numbering, retains after-submission answer review and explanation, and is covered by tests that exercise real UI scoring. The release audit now demands **30 unique source-verified CXC specimen questions**.
 
 **Scored CXC specimen checkpoint coverage: 30/60 (50%)** on this feature branch. The full specimen, all historical sitting papers, and the entire POB course remain unpublished, and `main` is unchanged. Next ten-question batch: CXC specimen **Q31–40**.
+
+## CXC specimen Paper 01: fourth scored ten-item checkpoint (Q31–40)
+
+CXC specimen Paper 1 **questions 31–40** have been transcribed and visually compared with printed specimen pages **5–7** (supplied syllabus PDF pp. **81–83**). Correct choices and reference codes were checked against CXC's published key on PDF p. **86**: `B D A A D A D A D B`; syllabus codes `6.6, 6.9, 6.11, 6.9, 7.6, 7.1, 7.8, 7.2, 7.7, 7.4`.
+
+The native Practice page now offers a fourth distinct ten-question, 13-minute, score-out-of-10 CXC specimen checkpoint with independently saved attempt and after-submission explanations. Academic verification notes are preserved: **Q38** has printed CXC answer **A (retailer)**, while breaking bulk is commonly associated with **wholesaling** (option C). The published CXC answer is preserved but a prominent source-key dispute flag accompanies the student's review. Q36 retains the original wording “reserve flow” from the source, despite possible source typographical error.
+
+Files: `data/pobCxcSpecimenP1Checkpoint31to40.js`, `data/pobCxcSpecimenP1Checkpoint31to40.test.jsx`, `POB_CXC_SPECIMEN_SCORED_CHECKPOINT_Q31_40.md`. The release audit now demands **40 unique verified specimen question identifiers**.
+
+**Specimen checkpoint coverage 40/60 (66.7%) on the unpublished feature branch, not a full 60-question mock examination.** Academic Q38 review, remaining 20 specimen items, all historical sitting-answer key and marking-scheme QA, and the rest of the release checklist remain outstanding. No promotion to `main` or production release.
