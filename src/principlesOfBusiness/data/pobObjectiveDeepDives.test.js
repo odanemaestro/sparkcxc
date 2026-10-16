@@ -17,3 +17,14 @@ test("objective-specific guidance reaches study topic sections",()=>{
   expect(section.bullets.some(s=>s.startsWith("Try it yourself:"))).toBe(true);
  });
 });
+
+test("Nature of Business lessons include detailed guidance for all 14 objectives",()=>{
+ const sectionOne=POB_OBJECTIVES.filter(o=>o.section===1);
+ expect(sectionOne).toHaveLength(14);
+ for(const objective of sectionOne){
+  const detail=POB_OBJECTIVE_DEEP_DIVES[objective.code];
+  expect(detail).toBeDefined();
+  expect(detail.walkthrough.length).toBeGreaterThan(80);
+  expect(detail.activity.length).toBeGreaterThan(50);
+ }
+});
