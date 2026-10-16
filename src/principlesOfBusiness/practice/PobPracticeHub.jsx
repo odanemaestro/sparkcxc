@@ -7,6 +7,7 @@ import {POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_21_30,verifyPobSpecimenCheckpoint21t
 import {POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_31_40,verifyPobSpecimenCheckpoint31to40} from "../data/pobCxcSpecimenP1Checkpoint31to40";
 import {POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_41_50,verifyPobSpecimenCheckpoint41to50} from "../data/pobCxcSpecimenP1Checkpoint41to50";
 import {POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_51_60,verifyPobSpecimenCheckpoint51to60} from "../data/pobCxcSpecimenP1Checkpoint51to60";
+import {POB_CXC_2019_SPECIMEN_P1_FULL,verifyPobFullSpecimen} from "../data/pobCxcSpecimenP1Full";
 import {POB_PAPER2_ORIGINAL_01} from "../data/pobPaper2Original";
 import {checkPobCalculation,inspectPobCalculationEvidence} from "../data/pobCalculationFeedback";
 import {restorePobAttempt,pobRemainingSeconds} from "../data/pobAttemptRecovery";
@@ -91,6 +92,8 @@ export function PobPaper1Exam({userId,supabase,onBack,paperOverride=null}){
        ?verifyPobSpecimenCheckpoint41to50(paper)
        :paper.id===POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_51_60.id
        ?verifyPobSpecimenCheckpoint51to60(paper)
+       :paper.id===POB_CXC_2019_SPECIMEN_P1_FULL.id
+       ?verifyPobFullSpecimen(paper)
        :{valid:false};
      if(!verification.valid)return;
    }
@@ -102,9 +105,9 @@ export function PobPaper1Exam({userId,supabase,onBack,paperOverride=null}){
  return <main className="pob-exam"><div className="pob-exam-shell">
    <div className="pob-exam-nav"><button type="button" onClick={onBack}>← Practice home</button><span>CSEC PRINCIPLES OF BUSINESS · PAPER 01</span></div>
    {attempt.phase==="instructions"?<section className="pob-exam-card pob-exam-intro">
-     <span className="pob-exam-kicker">{isSpecimen?"CXC OFFICIAL SPECIMEN · TEN-QUESTION CHECKPOINT":"SPARK ORIGINAL PRACTICE"}</span>
+     <span className="pob-exam-kicker">{isSpecimen?(maxScore===60?"CXC OFFICIAL SPECIMEN · FULL 60-QUESTION PRACTICE":"CXC OFFICIAL SPECIMEN · TEN-QUESTION CHECKPOINT"):"SPARK ORIGINAL PRACTICE"}</span>
      <h1>{isSpecimen?paper.title:"Paper 1: Multiple-choice examination"}</h1>
-     <p>{isSpecimen?"Ten CXC specimen questions checked against the printed CXC answer key. This is a 13-minute checkpoint, not the full 60-question paper.":"60 questions, 75 minutes, one mark each. The questions follow the official syllabus distribution: 20 from organisational principles, 20 from promotion and logistics and 20 from finance, government and technology."}</p>
+     <p>{isSpecimen?(maxScore===60?"The complete CXC 2019 specimen Paper 1 contains 60 questions over 75 minutes. This is a source-key-checked practice simulation, not an official examination or certified grade.":"Ten CXC specimen questions checked against the printed CXC answer key. This is a 13-minute checkpoint, not the full 60-question paper."):"60 questions, 75 minutes, one mark each. The questions follow the official syllabus distribution: 20 from organisational principles, 20 from promotion and logistics and 20 from finance, government and technology."}</p>
      <p>{isSpecimen?"Source: CXC Principles of Business syllabus, 2019 specimen Paper 01, PDF pages "+paper.sourcePages[0]+"–"+paper.sourcePages[paper.sourcePages.length-1]+"; CXC key, PDF page 86. Practice scores are not official examination grades.":"This is an original SPARK practice paper, not a historical CXC examination."}</p>
      {isSpecimen&&questions.some(q=>q.sourceKeyAcademicReview)&&<p role="note"><strong>Academic review notice:</strong> Some answers in CXC’s printed specimen key are disputed. This checkpoint scores against that published key, and the affected questions are explained and flagged during review.</p>}
      <div className="pob-exam-facts"><span>{maxScore} questions</span><span>{durationMinutes} minutes</span><span>{maxScore} marks</span></div>
@@ -292,6 +295,7 @@ export default function PobPracticeHub({userId,supabase,onBack}){
  if(mode==="specimen31to40")return <PobPaper1Exam paperOverride={POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_31_40} userId={userId} supabase={supabase} onBack={()=>setMode("home")}/>;
  if(mode==="specimen41to50")return <PobPaper1Exam paperOverride={POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_41_50} userId={userId} supabase={supabase} onBack={()=>setMode("home")}/>;
  if(mode==="specimen51to60")return <PobPaper1Exam paperOverride={POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_51_60} userId={userId} supabase={supabase} onBack={()=>setMode("home")}/>;
+ if(mode==="specimenFull")return <PobPaper1Exam paperOverride={POB_CXC_2019_SPECIMEN_P1_FULL} userId={userId} supabase={supabase} onBack={()=>setMode("home")}/>;
  if(mode==="paper2")return <PobPaper2Exam userId={userId} supabase={supabase} onBack={()=>setMode("home")}/>;
  if(mode==="sba")return <PobSbaWorkspace onBack={()=>setMode("home")}/>;
  return <main className="pob-exam"><div className="pob-exam-shell">
@@ -300,7 +304,7 @@ export default function PobPracticeHub({userId,supabase,onBack}){
      <h1>Practise business thinking</h1><p>Take a full timed practice paper, work through business scenarios or plan your SBA research. Original questions are clearly labelled, and historical source papers remain unavailable until verified.</p></header>
    <div className="pob-practice-options">
     <article className="pob-exam-card"><small>60 questions · 75 minutes</small><h2>Paper 1</h2><p>Original multiple-choice practice across all ten syllabus sections with instant explanations after submission.</p><button type="button" className="pob-primary" onClick={()=>setMode("paper1")}>Open Paper 1</button></article>
-    <article className="pob-exam-card"><small>6 checkpoints · 10 questions each · 13 minutes each</small><h2>2019 CXC specimen checkpoints</h2><p>Practise original CXC specimen Paper 1 questions in verified ten-question batches. Each checkpoint has a separate score, saved attempt and answer review.</p><div className="pob-exam-controls"><button type="button" className="pob-primary" onClick={()=>setMode("specimen")}>Questions 1–10</button><button type="button" className="pob-primary" onClick={()=>setMode("specimen11to20")}>Questions 11–20</button><button type="button" className="pob-primary" onClick={()=>setMode("specimen21to30")}>Questions 21–30</button><button type="button" className="pob-primary" onClick={()=>setMode("specimen31to40")}>Questions 31–40</button><button type="button" className="pob-primary" onClick={()=>setMode("specimen41to50")}>Questions 41–50</button><button type="button" className="pob-primary" onClick={()=>setMode("specimen51to60")}>Questions 51–60</button></div></article>
+    <article className="pob-exam-card"><small>Full 60-question paper · 75 minutes · six ten-question checkpoints</small><h2>2019 CXC specimen Paper 1</h2><p>Take the complete 75-minute specimen or practise in ten-question batches. Scores follow the printed CXC specimen key; three academically disputed answers are flagged. Every mode has its own saved attempt and review.</p><div className="pob-exam-controls"><button type="button" className="pob-primary" onClick={()=>setMode("specimenFull")}>Full 60-question specimen</button></div><div className="pob-exam-controls"><button type="button" className="pob-primary" onClick={()=>setMode("specimen")}>Questions 1–10</button><button type="button" className="pob-primary" onClick={()=>setMode("specimen11to20")}>Questions 11–20</button><button type="button" className="pob-primary" onClick={()=>setMode("specimen21to30")}>Questions 21–30</button><button type="button" className="pob-primary" onClick={()=>setMode("specimen31to40")}>Questions 31–40</button><button type="button" className="pob-primary" onClick={()=>setMode("specimen41to50")}>Questions 41–50</button><button type="button" className="pob-primary" onClick={()=>setMode("specimen51to60")}>Questions 51–60</button></div></article>
     <article className="pob-exam-card"><small>5 compulsory questions · 120 minutes</small><h2>Paper 2</h2><p>Original business scenarios, written-response space and detailed marking criteria. Where secure online marking is enabled, extended responses receive rubric-based automated practice assessment.</p><button type="button" className="pob-primary" onClick={()=>setMode("paper2")}>Open Paper 2</button></article>
     <article className="pob-exam-card"><small>Research project · 40 marks</small><h2>Business research SBA</h2><p>Plan your research, draft report sections and review the official 40-mark criteria without inventing grades.</p><button type="button" className="pob-primary" onClick={()=>setMode("sba")}>Open research workspace</button></article>
    </div>
