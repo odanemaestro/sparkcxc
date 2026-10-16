@@ -5,6 +5,9 @@ import {POB_OBJECTIVES,POB_TOPICS,POB_FLASHCARDS,POB_SECTIONS} from "./pobCourse
 import {POB_OBJECTIVE_DEEP_DIVES} from "./pobObjectiveDeepDives";
 import {POB_PAPER1_ORIGINAL_ITEMS,validatePobPaper1Items,buildPobPaper1} from "./pobPaper1Original";
 import {POB_PAPER2_ORIGINAL_01,validatePobPaper2} from "./pobPaper2Original";
+import {POB_CXC_SPECIMEN_P2_2019,validatePobCxcSpecimenP2} from "./pobCxcSpecimenP2";
+import {POB_DETERMINISTIC_LISTING_KEYS,gradePobListingPart} from "./pobDeterministicMarks";
+import {POB_DETERMINISTIC_ARITHMETIC_KEYS,gradePobArithmeticPart} from "./pobArithmeticMarks";
 import {POB_SUPPLIED_ARCHIVE} from "./pobHistoricalInventory";
 import {POB_HISTORICAL_P2_BATCH01,POB_HISTORICAL_P2_BATCH01_SUMMARY} from "./pobHistoricalP2Batch01";
 import {verifyPobSpecimenCheckpoint,POB_CXC_2019_SPECIMEN_P1_CHECKPOINT} from "./pobCxcSpecimenP1Checkpoint";
@@ -55,6 +58,18 @@ export function auditPobRelease({
    "Paper 2 must account for 25 assessed parts and 100 available rubric marks.");
  const p2=validatePobPaper2(paper2);
  requireCheck(p2.valid,"Paper 2 rubrics failed validation: "+p2.issues.join(" "));
+ const originalDeterministicKeys=[...POB_DETERMINISTIC_LISTING_KEYS,...POB_DETERMINISTIC_ARITHMETIC_KEYS];
+ const exactMarkCapacity=originalDeterministicKeys.reduce((total,key)=>{
+   const rule=gradePobListingPart(key,"")||gradePobArithmeticPart(key,"");
+   return total+(rule?.maxMarks||0);
+ },0);
+ requireCheck(new Set(originalDeterministicKeys).size===8&&exactMarkCapacity===23,
+   "Original Paper 2 must preserve 23 explicitly evidenced deterministic rubric marks across 8 unique parts.");
+ const officialSpecimen2=validatePobCxcSpecimenP2();
+ requireCheck(officialSpecimen2.valid&&POB_CXC_SPECIMEN_P2_2019.questions.length===5&&
+   POB_CXC_SPECIMEN_P2_2019.questions.flatMap(q=>q.items).length===25&&
+   POB_CXC_SPECIMEN_P2_2019.questions.reduce((n,q)=>n+q.marks,0)===100,
+   "Official 2019 CXC specimen Paper 2 must retain 5 questions and 100 source-scheme marks.");
  requireCheck(paper2.origin==="spark-original"&&
    paper2.questions.every(q=>q.origin==="spark-original"),
    "The original Paper 2 must be clearly labelled SPARK-authored.");
@@ -106,6 +121,9 @@ export function auditPobRelease({
      detailedObjectives:objectiveCodes.filter(code=>Boolean(deepDives[code])).length,
      flashcards:flashcards.length,paper1Items:paper1Items.length,
      paper2Parts:paper2.questions.flatMap(q=>q.items).length,
+     originalP2DeterministicMarks:exactMarkCapacity,
+     cxcSpecimenPaper2Parts:POB_CXC_SPECIMEN_P2_2019.questions.flatMap(q=>q.items).length,
+     cxcSpecimenPaper2Marks:POB_CXC_SPECIMEN_P2_2019.marks,
      unverifiedHistorical:historical.length,
      fullCxcSpecimenQuestions:POB_CXC_2019_SPECIMEN_P1_FULL.questions.length,
      scoredSpecimenCheckpointItems:POB_CXC_2019_SPECIMEN_P1_CHECKPOINT.questions.length+
@@ -119,7 +137,7 @@ export function auditPobRelease({
    blockers:[
      "Verify authoritative syllabus wording and all lesson answers.",
      "Transcribe and independently validate historical papers and answer keys before enabling them.",
-     "Implement calibrated, fair subject-aware grading of Paper 2 narratives and partial credit.",
+     "Calibrate and deploy the secure two-pass Paper 2 semantic marker and the new specimen bank migrations before awarding complete narrative grades.",
      "Complete SBA, integrations, accessibility, responsive browsers and device QA.",
      "Obtain explicit release approval before enabling or merging."
    ]

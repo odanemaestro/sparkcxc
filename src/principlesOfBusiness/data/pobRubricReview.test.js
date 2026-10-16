@@ -25,13 +25,16 @@ describe("POB Paper 2 100-mark rubric assessment safety",()=>{
   expect(response.questions[0].parts[0].criteria[0].assessedMarks).toBeNull();
   expect(response.questions[0].parts[1].assessedMarks).toBe(0);
  });
- test("diagnostics are linked to the specific question and do not count as evidence of a mark",()=>{
+ test("numeric working now earns only the two explicitly evidenced method/unit marks",()=>{
   const key="POB-SPARK-P2-ORIGINAL-01-Q3:a";
   const result=reviewPobPaper2({[key]:"300 / 10 = 30 bottles per labour hour"});
   const part=result.questions[2].parts[0];
   expect(part.diagnostics.calculationEvidence.expectedOperationShown).toBe(true);
-  expect(part.assessedMarks).toBeNull();
-  expect(part.criteria.every(criterion=>criterion.assessedMarks===null)).toBe(true);
+  expect(part.status).toBe("graded-arithmetic");
+  expect(part.assessedMarks).toBe(2);
+  expect(part.criteria.map(criterion=>criterion.assessedMarks)).toEqual([0,1,1]);
+  expect(result.confirmedMarks).toBe(2);
+  expect(result.unresolvedParts).toBe(0);
  });
  test("all original parts have human readable criteria and alternatives array",()=>{
   const result=reviewPobPaper2({});

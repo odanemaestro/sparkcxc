@@ -5,7 +5,9 @@ import {englishAPaper2Sets,buildEnglishAPaper2} from "../englishA/data/englishAP
 import {gradeEnglishAPaper2} from "../englishA/practice/englishAPaper2Grader";
 import {gradeIntegratedSciencePaper2} from "../integratedScience/practice/integratedSciencePaper2Grader";
 import {POB_PAPER2_ORIGINAL_01} from "../principlesOfBusiness/data/pobPaper2Original";
+import {POB_CXC_SPECIMEN_P2_2019,validatePobCxcSpecimenP2} from "../principlesOfBusiness/data/pobCxcSpecimenP2";
 import {gradePobListingPart} from "../principlesOfBusiness/data/pobDeterministicMarks";
+import {gradePobArithmeticPart} from "../principlesOfBusiness/data/pobArithmeticMarks";
 export {requestSemanticPass,reconcileSemanticPasses,SEMANTIC_MARKING_REVISION} from "./semanticMarking";
 
 export function buildTrustedAssessment(attempt){
@@ -53,23 +55,34 @@ export function buildTrustedAssessment(attempt){
       replaceScore+=row.score;
     }
   }else if(attempt.subject_id==="principles-of-business"){
-    if(attempt.bank_version!=="pob-original-paper2-01")throw new Error("unsupported_bank_version");
-    if(attempt.metadata?.paper_id!==POB_PAPER2_ORIGINAL_01.id)throw new Error("unknown_paper");
+    const isSpecimen=attempt.bank_version===POB_CXC_SPECIMEN_P2_2019.id;
+    const trustedPaper=isSpecimen?POB_CXC_SPECIMEN_P2_2019:POB_PAPER2_ORIGINAL_01;
+    if(attempt.bank_version!==trustedPaper.id)throw new Error("unsupported_bank_version");
+    if(attempt.metadata?.paper_id!==trustedPaper.id)throw new Error("unknown_paper");
+    if(isSpecimen&&!validatePobCxcSpecimenP2(trustedPaper).valid)throw new Error("specimen_rubric_invalid");
     let determined=0;
-    for(const question of POB_PAPER2_ORIGINAL_01.questions){
+    for(const question of trustedPaper.questions){
       for(const part of question.items){
         const id=question.id+":"+part.id;
         const value=String(responses[id]||"").trim();
         if(!value)continue;
-        const listing=gradePobListingPart(id,value);
-        if(listing){
-          determined+=listing.marks;
+        const deterministic=isSpecimen?null:(gradePobListingPart(id,value)||gradePobArithmeticPart(id,value));
+        if(deterministic){
+          determined+=deterministic.marks;
           continue;
         }
-        items.push({id,maxMarks:part.marks,responseKeys:[id],
-          prompt:part.prompt,context:question.context,
-          rubric:part.criteria.map(c=>({marks:c.marks,rule:c.rule,alternatives:c.alternatives||[]})),
-          constraints:{subject:"principles-of-business",profile:part.profile}});
+        // Grade every rubric criterion separately, preserving the exact
+        // 1–3 mark caps for developed explanations and partial credit.
+        // The model cannot transfer credit from one criterion to another.
+        part.criteria.forEach((criterion,index)=>{
+          items.push({id:id+":criterion-"+(index+1),maxMarks:criterion.marks,
+            responseKeys:[id],prompt:part.prompt,context:question.context,
+            rubric:[{marks:criterion.marks,rule:criterion.rule,alternatives:criterion.alternatives||[]}],
+            constraints:{subject:"principles-of-business",profile:part.profile,
+              partId:id,criterionIndex:index+1,totalPartMarks:part.marks,
+              officialSpecimen:isSpecimen,sourcePdfPage:part.sourcePdfPage||null,
+              schemePdfPages:part.schemePdfPages||[]}});
+        });
       }
     }
     baseline={score:determined,maxScore:100,unassessedMarks:0};
