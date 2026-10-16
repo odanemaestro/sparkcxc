@@ -7,9 +7,9 @@ beforeEach(()=>window.localStorage.clear());
 
 test("updates totals and retains entries after remount",()=>{
  const view=render(<PobBusinessDocuments/>);
- expect(screen.getByText("J$2,910.00")).toBeInTheDocument();
+ expect(screen.getAllByText("J$2,910.00").length).toBeGreaterThan(0);
  fireEvent.change(screen.getByLabelText("Item 1 quantity"),{target:{value:"20"}});
- expect(screen.getByText("J$3,600.00")).toBeInTheDocument();
+ expect(screen.getAllByText("J$3,600.00").length).toBeGreaterThan(0);
  expect(window.localStorage.getItem(KEY)).toContain('"quantity":"20"');
  view.unmount();
  render(<PobBusinessDocuments/>);
