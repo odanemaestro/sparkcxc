@@ -36,6 +36,7 @@ describe("Final six historical POB Paper 1 sources and whole-archive reconciliat
   const p=POB_HISTORICAL_BATCH05.find(p=>p.id==="POB-P1-2023-JAN");
   expect(p.textLayerQuestionCues).toBe(60);
   expect(p.answerKeyVerified).toBe(false);
+  expect(p.visuallyLocatedOptionLabels).toEqual({56:8,57:8,58:9});
   expect(p.answerChoicesVerified).toBe(false);
  });
  test("no wrong-paper source or missing Paper 1 gets hidden by source counts",()=>{
