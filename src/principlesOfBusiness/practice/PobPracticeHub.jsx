@@ -106,6 +106,7 @@ export function PobPaper1Exam({userId,supabase,onBack,paperOverride=null}){
      <h1>{isSpecimen?paper.title:"Paper 1: Multiple-choice examination"}</h1>
      <p>{isSpecimen?"Ten CXC specimen questions checked against the printed CXC answer key. This is a 13-minute checkpoint, not the full 60-question paper.":"60 questions, 75 minutes, one mark each. The questions follow the official syllabus distribution: 20 from organisational principles, 20 from promotion and logistics and 20 from finance, government and technology."}</p>
      <p>{isSpecimen?"Source: CXC Principles of Business syllabus, 2019 specimen Paper 01, PDF pages "+paper.sourcePages[0]+"–"+paper.sourcePages[paper.sourcePages.length-1]+"; CXC key, PDF page 86. Practice scores are not official examination grades.":"This is an original SPARK practice paper, not a historical CXC examination."}</p>
+     {isSpecimen&&questions.some(q=>q.sourceKeyAcademicReview)&&<p role="note"><strong>Academic review notice:</strong> Some answers in CXC’s printed specimen key are disputed. This checkpoint scores against that published key, and the affected questions are explained and flagged during review.</p>}
      <div className="pob-exam-facts"><span>{maxScore} questions</span><span>{durationMinutes} minutes</span><span>{maxScore} marks</span></div>
      <button type="button" className="pob-primary" onClick={start}>Start examination</button>
    </section>:<>
