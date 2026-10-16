@@ -40,11 +40,11 @@ describe("Final six historical POB Paper 1 sources and whole-archive reconciliat
   expect(p.answerChoicesVerified).toBe(false);
  });
  test("no wrong-paper source or missing Paper 1 gets hidden by source counts",()=>{
-  const mislabelled=all.filter(p=>p.sourcePaperMismatch);
-  expect(mislabelled.map(p=>p.id)).toEqual(["POB-P1-2019-MJ"]);
+  const mislabelled=all.filter(p=>p.reclassifiedFromPaper1);
+  expect(mislabelled.map(p=>p.id)).toEqual(["POB-P2-2019-MJ-ALT"]);
   expect(POB_SOURCE_INVENTORY.mislabeledPaper1Sources).toBe(1);
-  expect(all.filter(p=>p.paper===1).length).toBe(21);
-  expect(all.filter(p=>p.paper===1&&!p.sourcePaperMismatch).length).toBe(20);
+  expect(all.filter(p=>p.paper===1).length).toBe(20);
+  expect(all.filter(p=>p.paper===2).length).toBe(26);
  });
  test("all 46 original filenames are accounted for exactly once: 468 pages",()=>{
   const ids=all.map(p=>p.id);
