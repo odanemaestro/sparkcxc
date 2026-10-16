@@ -2,6 +2,7 @@ import React,{useEffect,useMemo,useRef,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
 import {buildPobPaper1} from "../data/pobPaper1Original";
 import {POB_PAPER2_ORIGINAL_01} from "../data/pobPaper2Original";
+import {checkPobCalculation} from "../data/pobCalculationFeedback";
 import PobSbaWorkspace from "./PobSbaWorkspace";
 import "./pobPractice.css";
 
@@ -169,6 +170,7 @@ export function PobPaper2Exam({onBack,userId,supabase}){
          disabled={review} value={attempt.answers[id]||""}
          onChange={e=>update({answers:{...attempt.answers,[id]:e.target.value}})}
          placeholder="Write your reasoning, examples or calculations in complete sentences."/>
+       {review&&checkPobCalculation(id,attempt.answers[id])&&<div className="pob-p2-calculation" role="status"><strong>Calculation check</strong><p>{checkPobCalculation(id,attempt.answers[id]).message}</p><p>Expected calculation: {checkPobCalculation(id,attempt.answers[id]).working}</p><small>Numerical feedback only. No marks are awarded by this check.</small></div>}
        {review&&<details className="pob-p2-criteria"><summary>View SPARK marking guidance</summary>
          <p>{item.modelAnswer}</p>
          <ul>{item.criteria.map((criterion,i)=><li key={i}><strong>{criterion.marks} mark{criterion.marks===1?"":"s"}</strong>: {criterion.rule}</li>)}</ul>
