@@ -18,7 +18,7 @@ Rule: an implemented first pass is not proof of completion. Keep `enabled:false`
 | 10. Navigation and page behaviour | Exam instructions, timer, navigator, back and scroll-to-top basics | IN PROGRESS: use shared icons and Back, Next/Previous lesson rules, saved tab, no extra floating button |
 | 11. Design, CSS and UX | Initial POB styles | IN PROGRESS: SPARK Apple-inspired design, navy dark theme, contrast, all supported devices and modes |
 | 12. SBA support | Initial 40-mark research workspace | IN PROGRESS: source-version eligibility, evidence and charts, secure saving, accurate rubric feedback |
-| 13. QA and accuracy | Unit and component tests, prior CI success | IN PROGRESS: full suite, new CI, production build, browser/device tests, calculation QA, diagrams and content |
+| 13. QA and accuracy | Unit and component tests; repeatable structural audit in `data/pobReleaseAudit.js` covering all 119 objectives, 42 lessons, exam-bank links, historical-release flags and draft state | IN PROGRESS: full suite, new CI, production build, browser/device tests, calculation QA, diagrams and content |
 | 14. GitHub delivery | Open PR #67, feature branch and scoped commits | IN PROGRESS: inspect latest main, resolve drift, ensure CI, document setup, preserve main |
 | 15. Final course completion audit | No release certification yet | NOT COMPLETE: all 14 preceding sections must pass before approval |
 
@@ -43,3 +43,9 @@ Rule: an implemented first pass is not proof of completion. Keep `enabled:false`
 ## Current evidence limits
 
 GitHub Actions reported a successful workflow for commit `e8dea3b706168fd1317de7872ad84f5122de3b3c`. Later commits must have their own checks confirmed. Browser, tablet, touch and keyboard QA have not been demonstrated in this document.
+
+## Repeatable pre-release structural gate
+
+Run `pobReleaseAudit.test.js` with the project's normal test command. The audit checks objective-to-lesson links, first-pass enriched teaching, 119 flashcards, Paper 1 item structure and objective references, Paper 2 rubric totals, historical verification flags and draft-only status. Its negative tests deliberately corrupt these inputs to confirm failures are detected.
+
+A clean result means **structural checks passed**, not that POB is ready for publication. Real historical past-paper transcription, reliable automated Paper 2 marking, human-readable academic review, accessibility and multi-device browser QA still remain release blockers. Never automatically publish from this audit alone.
