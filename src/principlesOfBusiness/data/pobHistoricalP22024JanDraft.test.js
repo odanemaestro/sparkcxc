@@ -9,7 +9,9 @@ describe("January 2024 historical POB Paper 2 transcription gate",()=>{
  });
  test("unverified answer keys, visual layout and grading cannot be bypassed",()=>{
   expect(draft.status).toBe("transcription-draft");
-  expect(draft.visualPageVerified).toBe(false);
+  expect(draft.visualPageVerified).toBe(true);
+  expect(draft.sourcePageCount).toBe(2);
+  expect(draft.sourceAuthenticity).toBe("user-supplied-copy-not-officially-authenticated");
   expect(draft.answerKeyVerified).toBe(false);
   expect(draft.markingSchemeVerified).toBe(false);
   expect(draft.simulatorReady).toBe(false);
