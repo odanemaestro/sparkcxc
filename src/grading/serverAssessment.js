@@ -6,6 +6,7 @@ import {gradeEnglishAPaper2} from "../englishA/practice/englishAPaper2Grader";
 import {gradeIntegratedSciencePaper2} from "../integratedScience/practice/integratedSciencePaper2Grader";
 import {POB_PAPER2_ORIGINAL_01} from "../principlesOfBusiness/data/pobPaper2Original";
 import {gradePobListingPart} from "../principlesOfBusiness/data/pobDeterministicMarks";
+import {gradePobArithmeticPart} from "../principlesOfBusiness/data/pobArithmeticMarks";
 export {requestSemanticPass,reconcileSemanticPasses,SEMANTIC_MARKING_REVISION} from "./semanticMarking";
 
 export function buildTrustedAssessment(attempt){
@@ -61,9 +62,9 @@ export function buildTrustedAssessment(attempt){
         const id=question.id+":"+part.id;
         const value=String(responses[id]||"").trim();
         if(!value)continue;
-        const listing=gradePobListingPart(id,value);
-        if(listing){
-          determined+=listing.marks;
+        const deterministic=gradePobListingPart(id,value)||gradePobArithmeticPart(id,value);
+        if(deterministic){
+          determined+=deterministic.marks;
           continue;
         }
         items.push({id,maxMarks:part.marks,responseKeys:[id],
