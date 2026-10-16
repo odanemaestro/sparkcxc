@@ -37,9 +37,9 @@ export const POB_OBJECTIVE_DEEP_DIVES=Object.freeze({
   activity:"A printer offers 100 flyers for J$5,000. The customer responds 'I will pay J$4,000.' Explain why this is not an acceptance of the original offer."
  },
  "S5.1":{
-  walkthrough:"Labour productivity is output divided by the labour input used. Bakery A makes 180 rolls in 6 hours, or 30 rolls per labour hour. Bakery B makes 210 rolls in 10 hours, or 21 rolls per labour hour. Bakery A produces fewer rolls overall but more per labour hour.",
-  mistake:"Higher total output does not necessarily mean higher productivity. Compare output per unit of input.",
-  activity:"Team C produces 240 buns in 8 labour hours. Team D produces 270 buns in 12 labour hours. Calculate each team's labour productivity and identify the more productive team."
+  walkthrough:"A bakery combines land (the premises and natural ingredients), labour (the bakers), capital (ovens and mixers) and enterprise (the person arranging production and accepting risk). All four are needed to turn inputs into saleable bread.",
+  mistake:"Money used to buy an oven is finance. In this topic, capital refers to produced resources such as equipment used to make other goods and services.",
+  activity:"List the land, labour, capital and enterprise needed for a small Jamaican poultry farm. Explain how losing one input could affect production."
  },
  "S6.1":{
   walkthrough:"A small soap maker first identifies customers who want gentle, affordable soap. The business then designs the product, calculates an affordable price, chooses convenient selling places and communicates truthful benefits. These decisions work together as the marketing mix.",
@@ -47,8 +47,8 @@ export const POB_OBJECTIVE_DEEP_DIVES=Object.freeze({
   activity:"Choose a school-friendly snack and propose one decision for each of the four Ps. Explain which decision most strongly matches the customers' needs."
  },
  "S8.1":{
-  walkthrough:"A trader's sales revenue is J$185,000. Cost of sales is J$112,000, so gross profit is J$73,000. Other operating expenses are J$49,000, leaving simplified net profit of J$24,000 before any other adjustments or tax.",
-  mistake:"Profit is not necessarily cash in the till. Credit sales, outstanding bills and loan payments can affect available cash.",
-  activity:"A store earns J$220,000 in sales, incurs J$140,000 in cost of sales and J$55,000 in operating expenses. Calculate gross and simplified net profit."
+  walkthrough:"A commercial bank may provide current accounts, transfers and business loans. A credit union is a member-owned financial co-operative that may offer savings and loans to eligible members. The two institutions can differ in ownership, eligibility, fees and services.",
+  mistake:"A credit union is not simply another name for a commercial bank. Customers should compare the actual product terms, regulation and risks rather than assuming all institutions offer the same services.",
+  activity:"A new entrepreneur wants a business transaction account and a small equipment loan. Compare two types of financial institution and name three terms the entrepreneur should check before borrowing."
  }
 });
