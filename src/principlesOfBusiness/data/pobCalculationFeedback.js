@@ -10,7 +10,7 @@ export const POB_CALCULATION_TARGETS = Object.freeze({
 
 // Match complete numbers with optional thousands separators and decimals.
 // Do not accidentally match 120 within 120000, or 30 within 300.
-const NUMERIC_TOKEN=/(?<![\w.])(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?![\w.])/g;
+const NUMERIC_TOKEN=/(?<![\w.])(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?![\w])/g;
 export function checkPobCalculation(partKey,response){
   const target=POB_CALCULATION_TARGETS[partKey];
   if(!target)return null;
