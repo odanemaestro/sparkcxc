@@ -80,3 +80,11 @@ Continue in batches of exactly ten source PDFs, tracking separately **source sta
 Batch 02 source PDFs have been audited and page-linked: 2005–2011 May/June, January 2019, May/June 2019 and May/June 2021 (**10 PDFs, 78 pages**). Three text-readable papers (2009, 2010, 2011) yielded **21 complete numbered question bodies** with extracted 20-mark totals. The other seven require visual transcription; a partial text layer is not sufficient to invent missing questions or answer keys.
 
 Files: `tools/build-pob-historical-batch02.py`, `data/pobHistoricalP2Batch02.js`, `data/pobHistoricalP2Batch02.test.js`, `POB_HISTORICAL_P2_BATCH02_QA.md`. With Batch 01, **20 of 25 historical Paper 2 source PDFs have been processed**, **81 question bodies provisionally segmented**, and **zero have been approved for scored release**. Full source/answer/marking-scheme comparison remains a release blocker; continue using batches of exactly ten sources where possible.
+
+## Historical source batch 03: five Paper 2 + five Paper 1
+
+The remaining **five historical Paper 2 PDFs** (2023 MJ, 2024 JAN/MJ, 2025 JAN, 2026 JAN) and the earliest **five Paper 1 PDFs** (2002–2006 MJ) have been inventoried and extracted into page-attributed review drafts from the supplied archive. Total **10 sources / 104 pages**. Four Paper 2 sources are image-only; January 2024 Paper 2 retains the previously checked compiled draft. January 2026 Paper 2 visibly states **Hybrid** and requires format-specific QA. Paper 1 requires two-column reading order and question/distractor recovery: candidate heading numbers are not verified questions.
+
+Files: `tools/build-pob-historical-batch03.py`, `data/pobHistoricalBatch03.js`, `data/pobHistoricalBatch03.test.js`, and `POB_HISTORICAL_BATCH03_QA.md`.
+
+**Combined source progress:** 30 of 46 historical exam PDFs inventoried through three source-backed batches (all 25 Paper 2 plus five Paper 1), 318 of 468 historical exam pages. Sixteen Paper 1 PDFs (150 pages) remain for source processing. Official answer-key and marking-scheme verification and historical scored simulator publication remain incomplete for all 46. Do not release drafts as verified papers.
