@@ -1,4 +1,4 @@
-import React,{useMemo,useState} from "react";
+import React,{useState} from "react";
 import {POB_PAPER1_ORIGINAL_ITEMS} from "../data/pobPaper1Original";
 import "./pobLearningTools.css";
 
@@ -46,12 +46,10 @@ function BusinessCalculator({sectionNumber}){
 export function PobTopicPractice({topic,onActivityComplete}){
   const codes=topic?.metadata?.syllabus?.objectiveCodes||[];
   const sectionNumber=Number(topic?.metadata?.syllabus?.section)||1;
-  const questions=useMemo(()=>{
-    const inSection=POB_PAPER1_ORIGINAL_ITEMS.filter(q=>q.section===sectionNumber);
-    const mapped=inSection.filter(q=>codes.includes(q.objectiveCode));
-    const rest=inSection.filter(q=>!codes.includes(q.objectiveCode));
-    return [...mapped,...rest].slice(0,3);
-  },[topic?.id,sectionNumber,codes.join(",")]);
+  const inSection=POB_PAPER1_ORIGINAL_ITEMS.filter(q=>q.section===sectionNumber);
+  const mapped=inSection.filter(q=>codes.includes(q.objectiveCode));
+  const rest=inSection.filter(q=>!codes.includes(q.objectiveCode));
+  const questions=[...mapped,...rest].slice(0,3);
   const [selected,setSelected]=useState({});
   const [checked,setChecked]=useState(false);
   const score=questions.filter(q=>selected[q.id]===q.answer).length;
