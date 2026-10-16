@@ -49,7 +49,7 @@ describe("Complete CXC 2019 specimen Paper 1 simulation",()=>{
  test("full specimen opens with 60 questions, 75-minute timer and a visible academic caution",()=>{
   const {container}=render(<PobPaper1Exam paperOverride={full} userId="whole-spec" onBack={jest.fn()}/>);
   expect(screen.getByRole("heading",{name:"2019 CXC specimen: full 60-question Paper 1"})).toBeInTheDocument();
-  expect(screen.getByText(/75 minutes/)).toBeInTheDocument();
+  expect(screen.getAllByText(/75 minutes/).length).toBeGreaterThan(0);
   expect(screen.getByText(/PDF pages 78–85/)).toBeInTheDocument();
   expect(screen.getByText(/Academic review notice/)).toBeInTheDocument();
   fireEvent.click(screen.getByRole("button",{name:"Start examination"}));
