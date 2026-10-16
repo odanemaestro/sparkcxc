@@ -32,3 +32,13 @@ describe("POB cautious written-answer feedback",()=>{
   expect(inspectPobShortAnswer(id," ").marks).toBeNull();
  });
 });
+
+describe("uncertain wording",()=>{
+ test("does not count tentative isolated concept mentions as affirmative evidence",()=>{
+  expect(inspectPobShortAnswer("POB-SPARK-P2-ORIGINAL-01-Q2:a","Maybe planning.").observed).not.toContain("planning");
+  expect(inspectPobShortAnswer("POB-SPARK-P2-ORIGINAL-01-Q2:a","Perhaps organising.").observed).not.toContain("organising");
+ });
+ test("continues to recognise a definite claim following a tentative phrase",()=>{
+  expect(inspectPobShortAnswer("POB-SPARK-P2-ORIGINAL-01-Q2:a","Maybe planning. The manager uses leading.").observed).toContain("leading");
+ });
+});
