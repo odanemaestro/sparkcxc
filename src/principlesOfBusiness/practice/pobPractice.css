@@ -34,7 +34,7 @@
 .pob-exam-controls{display:flex;gap:9px;align-items:center;flex-wrap:wrap;justify-content:space-between;margin-top:18px}
 .pob-exam-navigator>p{font-size:.79rem;margin:6px 0 15px}
 .pob-exam-number-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
-.pob-exam-number-grid button{min-height:37px;cursor:pointer;font:inherit;font-size:.75rem;font-weight:760;border:1px solid var(--spark-border,#d7e3ea);border-radius:8px;background:var(--spark-muted,#f3f7f9);color:inherit}
+.pob-exam-number-grid button{min-height:44px;cursor:pointer;font:inherit;font-size:.75rem;font-weight:760;border:1px solid var(--spark-border,#d7e3ea);border-radius:8px;background:var(--spark-muted,#f3f7f9);color:inherit}
 .pob-exam-number-grid button.answered{background:rgba(41,155,137,.15)}
 .pob-exam-number-grid button.flagged{box-shadow:inset 0 -3px 0 #b77b33}
 .pob-exam-number-grid button.active{border-color:#0f7e75;outline:2px solid #218f83;outline-offset:0}
@@ -62,5 +62,14 @@
 .pob-practice-options small{font-size:.72rem;font-weight:800;color:var(--spark-teal-dark,#0a7771)}
 .pob-practice-options p{flex:1}
 @media(max-width:850px){.pob-exam-layout{grid-template-columns:minmax(0,1fr)}.pob-exam-navigator{order:-1}.pob-exam-number-grid{grid-template-columns:repeat(10,minmax(0,1fr))}.pob-practice-options{grid-template-columns:minmax(0,1fr)}}
-@media(max-width:530px){.pob-exam{padding:14px 10px 44px}.pob-exam-status{align-items:start}.pob-exam-number-grid{grid-template-columns:repeat(6,minmax(0,1fr))}.pob-exam-controls>*{flex:1}.pob-p2-part label{flex-direction:column;gap:4px}}
+@media(max-width:530px){.pob-exam{padding:14px 10px 44px}.pob-exam-status{align-items:start}.pob-exam-number-grid{grid-template-columns:repeat(5,minmax(0,1fr))}.pob-exam-controls>*{flex:1}.pob-p2-part label{flex-direction:column;gap:4px}}
 @media(prefers-reduced-motion:reduce){.pob-exam *{scroll-behavior:auto!important;transition:none!important}}
+
+/* Responsive POB navigator: 44px touch targets, readable answer review and
+   a bounded navigation region on narrow screens without horizontal scrolling. */
+@media(max-width:530px){
+ .pob-exam-navigator .pob-exam-number-grid{max-height:256px;overflow-y:auto;overscroll-behavior:contain;padding:3px}
+ .pob-exam-nav{flex-wrap:wrap;gap:10px}
+ .pob-exam-option{overflow-wrap:anywhere}
+ .pob-exam-result p[role="note"]{text-align:left;overflow-wrap:anywhere}
+}
