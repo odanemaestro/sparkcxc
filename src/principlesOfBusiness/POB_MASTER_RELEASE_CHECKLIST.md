@@ -96,3 +96,13 @@ Batch 04 reviewed the ten labelled Paper 1 sources for 2007, 2008, 2011, 2012 an
 See `tools/build-pob-historical-batch04.py`, `data/pobHistoricalBatch04.js`, `data/pobHistoricalBatch04.test.js` and `POB_HISTORICAL_BATCH04_QA.md`. The **282** numeric line cues are unverified extraction hints, not 282 completed questions. The 2014 source has 180-degree page rotation; 2016 and 2018 lack text layers; 2017 has a third-party watermark. Continue with visual confirmation of all 60 items and four answer options before key verification.
 
 **Cumulative:** 40 of 46 labelled historical source PDFs processed, 411 of 468 PDF pages. Six remaining labelled Paper 1 source PDFs occupy 57 pages. All historically sourced scored papers remain blocked by academic/answer-key verification; do not merge or publish until the master release gate passes.
+
+## Historical Paper 1 final source batch 05 (six remaining supplied PDFs)
+
+Batch 05 has now processed **all six remaining labelled Paper 1 PDFs**: January and May/June 2020, May/June 2021, January 2022, January 2023, and May/June 2024. It covers **57 PDF pages**, all rendered for source review. Of the six, **2020 January and 2023 January** have substantial question-bearing text; the other four are image-backed or have scanner/watermark-only text. January 2020 has 58 text heading numbers, with Questions **22 (page 4)** and **41 (page 6)** visually located. January 2023 has all 60 number cues in sequence but not a verified complete four-option set or answer key.
+
+Files: `tools/build-pob-historical-batch05.py`, `data/pobHistoricalBatch05.js`, `data/pobHistoricalBatch05.test.js`, `data/pobHistoricalMcqReleaseGate.js`, `data/pobHistoricalMcqReleaseGate.test.js`, and `POB_HISTORICAL_BATCH05_QA.md`.
+
+**Source inventory complete: 46 of 46 labelled exam PDFs, 468 of 468 original exam pages, across five batches (10+10+10+10+6).** This is only source processing: **no historical question booklet has a verified correct-answer bank**, so zero historical papers are simulator-ready. The archive's `P1_2019_MJ.pdf` is **actually Paper 02** according to its cover; the **genuine May/June 2019 Paper 1 is missing**. Thus the archive contains 20 cover-confirmed P1 copies and 26 P2 copies, not 21 actual P1 plus 25 actual P2.
+
+**Next phase is substantive academic construction and QA**, not further filename batches: verify exact questions and diagrams page-by-page, find the missing genuine 2019 P1, obtain evidence-based keys and historical P2 marking schemes, verify all syllabus-era selection formats, calibrate the marking engines, and then test on desktop, mobile and tablet. Do not promote, auto-grade or publish any historical draft until every academic release gate passes.
