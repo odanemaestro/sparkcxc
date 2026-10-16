@@ -54,6 +54,7 @@ describe("POB rubric-linked calculation diagnostics",()=>{
  });
  test("does not accept reversed operands as the shown method",()=>{
    expect(inspectPobCalculationEvidence(key,"130 - 250 = -120").expectedOperationShown).toBe(false);
+   expect(inspectPobCalculationEvidence(key,"250 ÷ 130 = 120").expectedOperationShown).toBe(false);
  });
  test("does not equate a correct intermediate calculation with an incorrect stated result",()=>{
    const check=inspectPobCalculationEvidence(key,"250 - 130 = 120; final answer: 100");
