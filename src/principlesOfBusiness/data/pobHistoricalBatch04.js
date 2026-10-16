@@ -14,17 +14,20 @@ const rows=[
  [2019,15,"5b95df8eaf522bad7684b01bad41b367f8652967715b3983f8c836c5ec93b4bc",0,0,[0]]
 ];
 export const POB_HISTORICAL_BATCH04=Object.freeze(rows.map(([year,sourcePages,sourceSha256,sourceTextChars,distinctHeadingCandidates,sourceRotations])=>{
- const id=`POB-P1-${year}-MJ`;
+ const id=year===2019?`POB-P2-2019-MJ-ALT`:`POB-P1-${year}-MJ`;
  const isWrongPaper=year===2019;
  return Object.freeze({
-  id,paper:1,year,sitting:"MJ",
+  id,paper:year===2019?2:1,year,sitting:"MJ",
+  sourceArchivePaperLabel:1,
+  reclassifiedFromPaper1:year===2019,
   filename:`CSEC_Principles_of_Business_P1_${year}_MJ.pdf`,
   sourcePages,sourceSha256,sourceTextChars,distinctHeadingCandidates,
   sourceRotations:Object.freeze(sourceRotations),
   paperPrintedOnCover:isWrongPaper?2:1,
-  paperIdentityVisuallyChecked:true,sourcePaperMismatch:isWrongPaper,
+  paperIdentityVisuallyChecked:true,sourcePaperMismatch:false,
+  filenamePaperMismatch:isWrongPaper,
   printedTestCode:isWrongPaper?"01240020":null,
-  sourceStatus:isWrongPaper?"wrong-paper-in-labelled-file":
+  sourceStatus:isWrongPaper?"reclassified-as-alternate-paper02":
     sourceTextChars>0?"text-layer-page-column-draft":"visual-transcription-required",
   transcriptionDraftPath:`drafts/${id}.json`,
   sourceAuthenticated:false,visualReviewComplete:false,
@@ -36,11 +39,11 @@ export const POB_HISTORICAL_BATCH04=Object.freeze(rows.map(([year,sourcePages,so
 export const POB_HISTORICAL_BATCH04_SUMMARY=Object.freeze({
  fileCount:POB_HISTORICAL_BATCH04.length,
  genuinePaper1Sources:POB_HISTORICAL_BATCH04.filter(p=>p.paperPrintedOnCover===1).length,
- mislabelledPaper2Sources:POB_HISTORICAL_BATCH04.filter(p=>p.sourcePaperMismatch).length,
+ mislabelledPaper2Sources:POB_HISTORICAL_BATCH04.filter(p=>p.reclassifiedFromPaper1).length,
  sourcePages:POB_HISTORICAL_BATCH04.reduce((n,p)=>n+p.sourcePages,0),
- genuinePaper1Pages:POB_HISTORICAL_BATCH04.filter(p=>!p.sourcePaperMismatch)
+ genuinePaper1Pages:POB_HISTORICAL_BATCH04.filter(p=>p.paper===1)
    .reduce((n,p)=>n+p.sourcePages,0),
- textReadablePaper1Sources:POB_HISTORICAL_BATCH04.filter(p=>!p.sourcePaperMismatch&&p.sourceTextChars>=1000).length,
+ textReadablePaper1Sources:POB_HISTORICAL_BATCH04.filter(p=>p.paper===1&&p.sourceTextChars>=1000).length,
  unverifiedNumberHints:POB_HISTORICAL_BATCH04.reduce((n,p)=>n+p.distinctHeadingCandidates,0),
  readyForSimulator:0
 });
