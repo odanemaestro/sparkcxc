@@ -11,20 +11,24 @@ const p2=[[2005,"MJ",5],[2006,"MJ",6],[2007,"MJ",6],[2008,"MJ",4],[2009,"MJ",4],
   [2022,"MJ",13],[2023,"JAN",24],[2023,"MJ",17],
   [2024,"JAN",2],[2024,"MJ",16],[2025,"JAN",20],[2026,"JAN",6]];
 const item=(paper,[year,sitting,pages])=>{
- const sourcePaperMismatch=paper===1&&year===2019&&sitting==="MJ";
+ const reclassified=paper===1&&year===2019&&sitting==="MJ";
+ const actualPaper=reclassified?2:paper;
  return Object.freeze({
-  id:"POB-P"+paper+"-"+year+"-"+sitting,
-  paper,year,sitting,pages,
+  id:"POB-P"+actualPaper+"-"+year+"-"+sitting+(reclassified?"-ALT":""),
+  paper:actualPaper,year,sitting,pages,
+  sourceArchivePaperLabel:paper,
+  reclassifiedFromPaper1:reclassified,
   filename:"CSEC_Principles_of_Business_P"+paper+"_"+year+"_"+sitting+".pdf",
   historical:true,origin:"user-supplied",
-  sourcePaperMismatch,
-  coverPaperNumber:sourcePaperMismatch?2:null,
-  coverTestCode:sourcePaperMismatch?"01240020":null,
+  sourcePaperMismatch:false,
+  filenamePaperMismatch:reclassified,
+  coverPaperNumber:reclassified?2:null,
+  coverTestCode:reclassified?"01240020":null,
   transcriptionStatus:"not-verified",answerKeyStatus:"not-verified",
   simulatorReady:false,
   syllabusEra:year>=2019?"2019-syllabus-era":"historical-earlier-format",
-  note:sourcePaperMismatch
-    ?"MISLABELLED: file is named P1 2019 MJ, but rendered PDF cover is Paper 02 (test code 01240020). Not a Paper 1 source."
+  note:reclassified
+    ?"RECLASSIFIED as Paper 02: filename says P1 2019 MJ but source cover says Paper 02, test code 01240020. Alternate source copy, distinct from the other 2019 MJ Paper 02 PDF."
     :"Source PDF supplied in POB.zip. Questions and answers are not published until accurately transcribed and independently cross-checked against authoritative keys."
  });
 };
@@ -34,8 +38,9 @@ export const POB_SUPPLIED_ARCHIVE=Object.freeze([
 export const POB_SOURCE_INVENTORY=Object.freeze({
   paper1:p1.length,paper2:p2.length,total:POB_SUPPLIED_ARCHIVE.length,
   mislabeledPaper1Sources:1,
-  pagesPaper1:p1.reduce((sum,x)=>sum+x[2],0),
-  pagesPaper2:p2.reduce((sum,x)=>sum+x[2],0),
+  genuinePaper1SourceCount:20,actualPaper2SourceCount:26,
+  pagesPaper1:p1.reduce((sum,x)=>sum+x[2],0)-15,
+  pagesPaper2:p2.reduce((sum,x)=>sum+x[2],0)+15,
   syllabusFilename:"CSEC-Principles-of-Business-Syllabus-.pdf",
   origin:"POB.zip"
 });
