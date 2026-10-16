@@ -51,6 +51,8 @@ test("2019 wrong-labelled paper is reclassified as an additional Paper 2 copy",(
  expect(x.filename).not.toBe(y.filename);
  expect(POB_SOURCE_INVENTORY.genuinePaper1SourceCount).toBe(20);
  expect(POB_SOURCE_INVENTORY.actualPaper2SourceCount).toBe(26);
+ expect(POB_SOURCE_INVENTORY.actualPagesPaper1).toBe(178);
+ expect(POB_SOURCE_INVENTORY.actualPagesPaper2).toBe(290);
  expect(POB_HISTORICAL_BATCH04.find(p=>p.id===x.id).paper).toBe(2);
  expect(POB_HISTORICAL_BATCH05).toHaveLength(6);
  expect(validatePobHistoricalCandidate(x).ready).toBe(false);
