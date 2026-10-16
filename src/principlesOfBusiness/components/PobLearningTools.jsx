@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import {POB_PAPER1_ORIGINAL_ITEMS} from "../data/pobPaper1Original";
+import {selectPobTopicQuestions} from "../data/pobTopicQuestionSelection";
 import PobDecisionLabs from "./PobDecisionLabs";
 import PobBusinessDocuments from "./PobBusinessDocuments";
 import "./pobLearningTools.css";
@@ -46,18 +46,13 @@ function BusinessCalculator({sectionNumber}){
 }
 
 export function PobTopicPractice({topic,onActivityComplete}){
-  const codes=topic?.metadata?.syllabus?.objectiveCodes||[];
-  const sectionNumber=Number(topic?.metadata?.syllabus?.section)||1;
-  const inSection=POB_PAPER1_ORIGINAL_ITEMS.filter(q=>q.section===sectionNumber);
-  const mapped=inSection.filter(q=>codes.includes(q.objectiveCode));
-  const rest=inSection.filter(q=>!codes.includes(q.objectiveCode));
-  const questions=[...mapped,...rest].slice(0,3);
+  const questions=selectPobTopicQuestions(topic);
   const [selected,setSelected]=useState({});
   const [checked,setChecked]=useState(false);
   const score=questions.filter(q=>selected[q.id]===q.answer).length;
   if(!questions.length)return null;
   return <section className="pob-tool-card" aria-label="Principles of Business quick practice">
-    <header><span>Try it yourself</span><h3>Business knowledge check</h3><p>Three original CSEC-style questions from this syllabus section. Choose the best answer before checking.</p></header>
+    <header><span>Try it yourself</span><h3>Business knowledge check</h3><p>{questions.length} original CSEC-style questions. Questions linked to this lesson come first; any remaining questions provide broader section revision.</p></header>
     <div className="pob-mcq-items">
       {questions.map((q,i)=><fieldset key={q.id} className="pob-mcq">
         <legend><span>Question {i+1}</span> {q.stem}</legend>
@@ -80,7 +75,7 @@ export function PobTopicPractice({topic,onActivityComplete}){
       {!checked?<button type="button" disabled={questions.some(q=>!selected[q.id])} onClick={()=>{
         setChecked(true);
         onActivityComplete?.({type:"pob_topic_practice",subjectId:"principles-of-business",topicId:topic.id,
-          sectionId:topic.sectionId,activityKey:"pob-practice:"+topic.id,correct:score,total:questions.length});
+          sectionId:topic.sectionId,activityKey:"pob-practice:"+topic.id+":"+Date.now(),correct:score,total:questions.length});
       }}>Check answers</button>:
       <button type="button" className="secondary" onClick={()=>{setSelected({});setChecked(false)}}>Try again</button>}
       {checked&&<strong role="status">{score} of {questions.length} correct</strong>}
