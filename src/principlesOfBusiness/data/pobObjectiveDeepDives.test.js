@@ -64,3 +64,15 @@ test("Legal Aspects of Business has enriched guidance for all 12 objectives",()=
   expect(detail.activity.length).toBeGreaterThan(50);
  });
 });
+
+test("Production has detailed teaching guidance for all 13 objectives",()=>{
+ const production=POB_OBJECTIVES.filter(o=>o.section===5);
+ expect(production).toHaveLength(13);
+ production.forEach(objective=>{
+  const detail=POB_OBJECTIVE_DEEP_DIVES[objective.code];
+  expect(detail).toBeDefined();
+  expect(detail.walkthrough.length).toBeGreaterThan(80);
+  expect(detail.mistake.length).toBeGreaterThan(40);
+  expect(detail.activity.length).toBeGreaterThan(50);
+ });
+});
