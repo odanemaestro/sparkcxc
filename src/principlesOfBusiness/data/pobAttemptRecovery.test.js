@@ -1,4 +1,4 @@
-import {restorePobAttempt} from "./pobAttemptRecovery";
+import {restorePobAttempt,pobRemainingSeconds} from "./pobAttemptRecovery";
 const base={paperId:"pob-original-paper1-v1",attemptId:"test-1",phase:"exam",index:3,answers:{a:"B"},flags:{a:true},deadline:2000};
 test("restores an active attempt without extending its deadline",()=>{
  expect(restorePobAttempt(base,base.paperId,60,1000)).toMatchObject({phase:"exam",deadline:2000,index:3});
@@ -20,4 +20,10 @@ test("preserves review answers without restarting a finished examination",()=>{
  const result=restorePobAttempt({...base,phase:"review",deadline:2000},base.paperId,60,5000);
  expect(result.phase).toBe("review");
  expect(result.answers.a).toBe("B");
+});
+
+test("resumed countdown uses saved deadline before the first timer tick",()=>{
+ expect(pobRemainingSeconds(base,75*60,1500)).toBe(1);
+ expect(pobRemainingSeconds(base,75*60,2000)).toBe(0);
+ expect(pobRemainingSeconds({...base,phase:"review"},75*60,1500)).toBe(4500);
 });
