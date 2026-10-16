@@ -100,3 +100,15 @@ test("Logistics and Supply Chain has detailed teaching guidance for all 10 objec
   expect(detail.activity.length).toBeGreaterThan(50);
  });
 });
+
+test("Business Finance has detailed teaching guidance for all 9 objectives",()=>{
+ const finance=POB_OBJECTIVES.filter(o=>o.section===8);
+ expect(finance).toHaveLength(9);
+ finance.forEach(objective=>{
+  const detail=POB_OBJECTIVE_DEEP_DIVES[objective.code];
+  expect(detail).toBeDefined();
+  expect(detail.walkthrough.length).toBeGreaterThan(80);
+  expect(detail.mistake.length).toBeGreaterThan(40);
+  expect(detail.activity.length).toBeGreaterThan(50);
+ });
+});
