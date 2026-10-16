@@ -1,6 +1,7 @@
 import { POB_OBJECTIVES_ONE_TO_FIVE } from "./pobObjectivesOneToFive";
 import { POB_OBJECTIVES_SIX_TO_TEN } from "./pobObjectivesSixToTen";
 import { POB_BUSINESS_CASES } from "./pobWorkedCases";
+import { POB_OBJECTIVE_DEEP_DIVES } from "./pobObjectiveDeepDives";
 
 export const POB_SYLLABUS_CODE = "CXC 08/G/SYLL 17";
 export const POB_SYLLABUS_URL = "https://www.cxc.org/wp-content/uploads/2018/11/CSEC-Principles-of-Business-Syllabus-.pdf";
@@ -52,7 +53,9 @@ const topics=POB_SYLLABUS_SECTIONS.flatMap(section=>{
     const sentences=rows.map(row=>({
       title:row.code+": "+row.title,
       paragraphs:[row.explanation,"Caribbean example: "+row.example],
-      bullets:["Think about it: How would you apply this idea to a real business, household or community?"]
+      bullets:POB_OBJECTIVE_DEEP_DIVES[row.code]
+        ?["Worked explanation: "+POB_OBJECTIVE_DEEP_DIVES[row.code].walkthrough,"Common mistake: "+POB_OBJECTIVE_DEEP_DIVES[row.code].mistake,"Try it yourself: "+POB_OBJECTIVE_DEEP_DIVES[row.code].activity]
+        :["Think about it: How would you apply this idea to a real business, household or community?"]
     }));
     const caseStudy=POB_BUSINESS_CASES[section.n];
     return Object.freeze({
