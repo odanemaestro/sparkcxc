@@ -23,6 +23,8 @@ import FnhObjectivePractice from "../fnh/components/FnhObjectivePractice";
 import FnhStudyPractice from "../fnh/components/FnhStudyPractice";
 import FnhDecisionLab from "../fnh/components/FnhDecisionLab";
 import PobLearningTools from "../principlesOfBusiness/components/PobLearningTools.jsx";
+import PobReferenceMedia from "../principlesOfBusiness/components/PobReferenceMedia.jsx";
+import {pobMediaForTopic} from "../principlesOfBusiness/data/pobReferenceMedia";
 import FnhReferenceMedia from "../fnh/components/FnhReferenceMedia";
 import { fnhMediaForTopic } from "../fnh/data/fnhReferenceMedia";
 import SocialStudiesReferenceMedia from "../socialStudies/components/SocialStudiesReferenceMedia";
@@ -172,6 +174,7 @@ export function GenericLessonContent({
     : null;
   const isFnh = subjectId === "food-nutrition-and-health";
   const isPob = subjectId === "principles-of-business";
+  const pobHasVisuals=isPob&&pobMediaForTopic(topic).length>0;
   const hasFnhMedia = isFnh && fnhMediaForTopic(topic?.id).length > 0;
   const socialVisuals = subjectId === "social-studies" && socialStudiesMediaForTopic(topic?.id).length > 0;
   const isEditorial = editorial && !isFnh;
@@ -213,6 +216,7 @@ export function GenericLessonContent({
           {blocks.length>0&&<button type="button" onClick={()=>jumpTo("spark-lesson-notes")}>Read notes</button>}
           {socialVisuals&&<button type="button" onClick={()=>jumpTo("spark-social-visuals")}>See visuals</button>}
           {hasExplore&&<button type="button" onClick={()=>jumpTo("spark-lesson-explore")}>Explore</button>}
+          {pobHasVisuals&&<button type="button" onClick={()=>jumpTo("pob-lesson-visuals")}>See visuals</button>}
           {isPob&&<button type="button" onClick={()=>jumpTo("pob-lesson-tools")}>Business tools and practice</button>}
           {points.length>0&&<button type="button" onClick={()=>jumpTo("spark-lesson-key-points")}>Key points</button>}
           {example&&<button type="button" onClick={()=>jumpTo("spark-lesson-worked-example")}>Worked example</button>}
@@ -281,6 +285,7 @@ export function GenericLessonContent({
       {hasFnhMedia && <FnhReferenceMedia topicId={topic.id}/>}
       {isEditorial&&hasExplore&&<div id="spark-lesson-explore" className="spark-editorial-scroll-anchor" aria-hidden="true"/>}
       {hasChemistryVisuals && <ChemistryReferenceDiagrams topicId={topic.id}/>}
+      {pobHasVisuals&&<PobReferenceMedia topic={topic}/>}
       {isPob&&<div id="pob-lesson-tools"><PobLearningTools topic={topic} onActivityComplete={onActivityComplete}/></div>}
       {models.map(model => (
         subjectId === "integrated-science"
