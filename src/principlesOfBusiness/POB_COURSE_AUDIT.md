@@ -47,6 +47,17 @@ The following four visual assets come from their Wikimedia Commons description p
 
 Original images, their author and licence links are preserved in \`pobReferenceMedia.js\`. Students see useful instructional prompts, enlarge links, alt text and graceful fallback. Real asset loading must be visually checked before final release.
 
+## CXC 2026 announcement on future assessment changes
+
+CXC announced on **16 July 2026** that traditional SBAs in non-practical CSEC subjects, including **Principles of Business**, will be phased out under its revised SBA framework, scheduled to take effect in the **2027 academic year**. Official announcement: https://www.cxc.org/holding-to-the-standard/ .
+
+**Version safety requirement:**
+- The supplied official **2017 syllabus** governs the *historical* Paper 01, Paper 02, Paper 031 and Paper 032 specifications recorded above.
+- Treat the future reform as a policy announcement, **not** confirmation that a particular exam sitting uses a replacement paper or marking format. Confirm implementation details and current specimen examination papers with CXC before publishing a future-sitting exam configuration.
+- Keep SBA research support as an **optional learning/planning workspace**, separate from any representation that an SBA must be submitted for a future sitting after requirements change.
+- Gate exam instructions, published Paper 03 availability and assessment-weight calculations by the **explicitly verified syllabus/examination-year version**, not today's calendar date.
+- Do not automatically convert 2019 Paper 031 or Paper 032 specifications into 2027 assessments without source evidence.
+
 ## Non-negotiable next batches
 
 1. **Historical P1 transcription and answer-key QA**: process the PDFs in dated batches, cross-check layout, all options and diagrams against original scans; hold back uncertain or incomplete keys.
