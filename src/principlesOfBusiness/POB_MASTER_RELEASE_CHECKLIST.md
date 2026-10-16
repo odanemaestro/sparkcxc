@@ -49,3 +49,9 @@ GitHub Actions reported a successful workflow for commit `e8dea3b706168fd1317de7
 Run `pobReleaseAudit.test.js` with the project's normal test command. The audit checks objective-to-lesson links, first-pass enriched teaching, 119 flashcards, Paper 1 item structure and objective references, Paper 2 rubric totals, historical verification flags and draft-only status. Its negative tests deliberately corrupt these inputs to confirm failures are detected.
 
 A clean result means **structural checks passed**, not that POB is ready for publication. Real historical past-paper transcription, reliable automated Paper 2 marking, human-readable academic review, accessibility and multi-device browser QA still remain release blockers. Never automatically publish from this audit alone.
+
+## Consolidated Paper 2 assessment batch
+
+The original 25-part, 100-mark paper now has explicit concept-evidence mappings in `data/pobAssessmentEvidence.js`, integrated with `data/pobRubricReview.js` and the candidate review interface. Diagnostic evidence is associated with each criterion, with regression tests for all 25 parts, calculations, alternative expressions, negations and keyword stuffing.
+
+**This is not an automatic examiner.** Concept matches cannot determine whether a student's argument, causal explanation, contract analysis or recommendation is correct. As a result, `assessedMarks` remains null for submitted nonblank work, and no score is written to progress. To finish the requested examiner, SPARK needs a secure semantic-evaluation service with calibrated per-criterion marking, verified alternative-answer sets, adversarial and blinded calibration scripts, failure handling and score persistence. Releasing guessed grades is prohibited.
