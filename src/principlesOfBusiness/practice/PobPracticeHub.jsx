@@ -191,7 +191,7 @@ export function PobPaper2Exam({onBack,userId,supabase}){
   {attempt.phase==="instructions"?<section className="pob-exam-card pob-exam-intro">
    <span className="pob-exam-kicker">SPARK ORIGINAL STRUCTURED PRACTICE</span><h1>Paper 2: Business decisions</h1>
    <p>Five compulsory 20-mark questions, 100 marks, 2 hours. Read each business scenario carefully and use complete sentences, calculations and relevant Caribbean examples.</p>
-   <p>SPARK will save your written responses on this device and show the marking scheme after submission. This initial build does not award an unreliable automated mark to extended answers.</p>
+   <p>SPARK saves your responses on this device and shows the marking scheme after submission. Where online marking is enabled, SPARK also checks written answers against the rubric using two independent automated passes. Uncertain results are shown as ranges rather than guessed grades.</p>
    <button type="button" className="pob-primary" onClick={start}>Start Paper 2</button></section>:<>
    <header className="pob-exam-card pob-exam-status"><div><strong>{review?"Paper 2 submitted":"Paper 2 in progress"}</strong><span>{answered} of 25 parts answered</span></div><span className="pob-timer" role="timer">{review?"Review":clock(remaining)}</span></header>
    {!review&&nextIncomplete!==null&&<button type="button" className="secondary" onClick={()=>update({index:nextIncomplete})}>Go to next incomplete question</button>}
@@ -263,7 +263,7 @@ export default function PobPracticeHub({userId,supabase,onBack}){
      <h1>Practise business thinking</h1><p>Take a full timed practice paper, work through business scenarios or plan your SBA research. Original questions are clearly labelled, and historical source papers remain unavailable until verified.</p></header>
    <div className="pob-practice-options">
     <article className="pob-exam-card"><small>60 questions · 75 minutes</small><h2>Paper 1</h2><p>Original multiple-choice practice across all ten syllabus sections with instant explanations after submission.</p><button type="button" className="pob-primary" onClick={()=>setMode("paper1")}>Open Paper 1</button></article>
-    <article className="pob-exam-card"><small>5 compulsory questions · 120 minutes</small><h2>Paper 2</h2><p>Original business scenarios, written-response space and detailed marking criteria. Extended responses are not yet automatically scored.</p><button type="button" className="pob-primary" onClick={()=>setMode("paper2")}>Open Paper 2</button></article>
+    <article className="pob-exam-card"><small>5 compulsory questions · 120 minutes</small><h2>Paper 2</h2><p>Original business scenarios, written-response space and detailed marking criteria. Where secure online marking is enabled, extended responses receive rubric-based automated practice assessment.</p><button type="button" className="pob-primary" onClick={()=>setMode("paper2")}>Open Paper 2</button></article>
     <article className="pob-exam-card"><small>Research project · 40 marks</small><h2>Business research SBA</h2><p>Plan your research, draft report sections and review the official 40-mark criteria without inventing grades.</p><button type="button" className="pob-primary" onClick={()=>setMode("sba")}>Open research workspace</button></article>
    </div>
  </div></main>;
