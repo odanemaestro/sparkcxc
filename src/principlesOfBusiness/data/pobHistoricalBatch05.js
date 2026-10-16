@@ -16,6 +16,7 @@ export const POB_HISTORICAL_BATCH05=Object.freeze(rows.map(([year,sitting,source
   filename:`CSEC_Principles_of_Business_P1_${year}_${sitting}.pdf`,
   sourceTextChars:textChars,textLayerQuestionCues:headingNumbers,
   visuallyRecoveredHeadingPages:Object.freeze({...recovered}),
+  visuallyLocatedOptionLabels:Object.freeze(year===2023&&sitting==="JAN"?{56:8,57:8,58:9}:{}),
   sourceStatus:headingNumbers?"column-question-candidates-unverified":"visual-transcription-required",
   sourceCoverPaper01VisuallyChecked:true,
   transcriptionDraftPath:`drafts/${id}.json`,
