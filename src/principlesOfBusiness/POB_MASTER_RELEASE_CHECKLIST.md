@@ -88,3 +88,11 @@ The remaining **five historical Paper 2 PDFs** (2023 MJ, 2024 JAN/MJ, 2025 JAN, 
 Files: `tools/build-pob-historical-batch03.py`, `data/pobHistoricalBatch03.js`, `data/pobHistoricalBatch03.test.js`, and `POB_HISTORICAL_BATCH03_QA.md`.
 
 **Combined source progress:** 30 of 46 historical exam PDFs inventoried through three source-backed batches (all 25 Paper 2 plus five Paper 1), 318 of 468 historical exam pages. Sixteen Paper 1 PDFs (150 pages) remain for source processing. Official answer-key and marking-scheme verification and historical scored simulator publication remain incomplete for all 46. Do not release drafts as verified papers.
+
+## Historical source batch 04: next ten Paper 1-labelled PDFs
+
+Batch 04 reviewed the ten labelled Paper 1 sources for 2007, 2008, 2011, 2012 and 2014–2019: **93 source pages**, seven PDFs with extractable text and three without. A significant **source metadata error** was found: `CSEC_Principles_of_Business_P1_2019_MJ.pdf` actually contains **May/June 2019 Paper 02** (cover test code **01240020**, two-hour, five compulsory questions), **not Paper 01**. The base archive metadata and historical release gate now flag/reject this record rather than allowing false Paper 1 publication. Thus Batch 04 is ten files but only nine source-confirmed Paper 1 copies, comprising 78 pages. The real 2019 Paper 1 still needs sourcing.
+
+See `tools/build-pob-historical-batch04.py`, `data/pobHistoricalBatch04.js`, `data/pobHistoricalBatch04.test.js` and `POB_HISTORICAL_BATCH04_QA.md`. The **282** numeric line cues are unverified extraction hints, not 282 completed questions. The 2014 source has 180-degree page rotation; 2016 and 2018 lack text layers; 2017 has a third-party watermark. Continue with visual confirmation of all 60 items and four answer options before key verification.
+
+**Cumulative:** 40 of 46 labelled historical source PDFs processed, 411 of 468 PDF pages. Six remaining labelled Paper 1 source PDFs occupy 57 pages. All historically sourced scored papers remain blocked by academic/answer-key verification; do not merge or publish until the master release gate passes.
