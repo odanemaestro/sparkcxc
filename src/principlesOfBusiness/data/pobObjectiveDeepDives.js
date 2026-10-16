@@ -76,6 +76,7 @@ export const POB_OBJECTIVE_DEEP_DIVES=Object.freeze({
   mistake:"Controlling means comparing results with agreed standards and correcting problems. It is not the same as intimidating employees.",
   activity:"A shop planned 100 deliveries but completed 82. Identify the management function involved in comparing these figures and describe one sensible next action."
  },
+ "S2.2":{walkthrough:"A factory manager introduces a new packaging machine. The manager must budget for training, arrange safe operating procedures, assign competent workers, explain the production target and monitor early results. Responsibility includes employee welfare as well as productivity and cost control.",mistake:"A manager cannot assume a profitable decision is automatically a responsible decision. Safety, fairness, legal duties and quality must also be considered.",activity:"A bakery installs a new oven while workers are still learning how to use it. Describe four management responsibilities before and after it begins operating."},
  "S2.3":{
   walkthrough:"Place the owner or managing director at the top of an organisation chart. Below are the operations and sales managers. Place their respective employees underneath them. A vertical line indicates a direct reporting relationship.",
   mistake:"An organisation chart describes formal roles and authority. It does not automatically describe every informal friendship or communication path.",
