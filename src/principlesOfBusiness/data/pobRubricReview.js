@@ -6,6 +6,7 @@ import {checkPobCalculation,inspectPobCalculationEvidence} from "./pobCalculatio
 import {inspectPobShortAnswer} from "./pobShortAnswerFeedback";
 import {inspectPobExtendedResponse} from "./pobExtendedResponseFeedback";
 import {getPobP2FeedbackGuide} from "./pobPaper2FeedbackGuides";
+import {assessPobPartEvidence} from "./pobAssessmentEvidence";
 
 export const POB_P2_RUBRIC_VERSION="pob-original-p2-rubric-v1";
 const asText=value=>String(value??"").trim();
@@ -21,6 +22,7 @@ export function reviewPobPaper2(answers={},paper=POB_PAPER2_ORIGINAL_01){
    const shortAnswer=inspectPobShortAnswer(key,response);
    const extended=inspectPobExtendedResponse(key,response);
    const guide=getPobP2FeedbackGuide(key);
+   const evidence=assessPobPartEvidence(key,response);
    return {
     id:key,prompt:item.prompt,answered,availableMarks:item.marks,
     // Zero is definite for blank answers; non-blank answers need genuine rubric assessment.
@@ -31,7 +33,7 @@ export function reviewPobPaper2(answers={},paper=POB_PAPER2_ORIGINAL_01){
      requirement:criterion.rule,alternatives:criterion.alternatives||[],
      assessedMarks:answered?null:0,status:answered?"requires-assessment":"unanswered"
     })),
-    diagnostics:{calculation,calculationEvidence,shortAnswer,extended},
+    diagnostics:{calculation,calculationEvidence,shortAnswer,extended,evidence},
     feedback:guide?.guidance||item.modelAnswer,
     modelAnswer:item.modelAnswer
    };
