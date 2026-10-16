@@ -26,16 +26,19 @@ describe("POB historical Paper 1 batch 04 source QA",()=>{
  test("2019 P1 filename contains Paper 02, so the archive must quarantine it",()=>{
   const p=POB_HISTORICAL_BATCH04.find(row=>row.year===2019);
   expect(p.filename).toBe("CSEC_Principles_of_Business_P1_2019_MJ.pdf");
-  expect(p.paper).toBe(1);
+  expect(p.paper).toBe(2);
   expect(p.paperPrintedOnCover).toBe(2);
   expect(p.printedTestCode).toBe("01240020");
-  expect(p.sourcePaperMismatch).toBe(true);
-  expect(p.sourceStatus).toBe("wrong-paper-in-labelled-file");
+  expect(p.sourcePaperMismatch).toBe(false);
+  expect(p.reclassifiedFromPaper1).toBe(true);
+  expect(p.sourceStatus).toBe("reclassified-as-alternate-paper02");
   const archive=POB_SUPPLIED_ARCHIVE.find(row=>row.id===p.id);
-  expect(archive.sourcePaperMismatch).toBe(true);
+  expect(archive.reclassifiedFromPaper1).toBe(true);
+  expect(archive.paper).toBe(2);
   expect(archive.coverPaperNumber).toBe(2);
   expect(POB_SOURCE_INVENTORY.mislabeledPaper1Sources).toBe(1);
   expect(validatePobHistoricalCandidate({...p,sourceFilename:p.filename}).ready).toBe(false);
+  expect(p.id).toBe("POB-P2-2019-MJ-ALT");
  });
  test("2014 rotation and genuinely scanned sources remain incomplete",()=>{
   const year=y=>POB_HISTORICAL_BATCH04.find(p=>p.year===y);
