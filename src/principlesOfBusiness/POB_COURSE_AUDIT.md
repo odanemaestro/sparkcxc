@@ -58,6 +58,19 @@ CXC announced on **16 July 2026** that traditional SBAs in non-practical CSEC su
 - Gate exam instructions, published Paper 03 availability and assessment-weight calculations by the **explicitly verified syllabus/examination-year version**, not today's calendar date.
 - Do not automatically convert 2019 Paper 031 or Paper 032 specifications into 2027 assessments without source evidence.
 
+## Phase 2: interactive business decisions
+
+Implemented four subject-specific, editable-input activities in `PobDecisionLabs.jsx`, integrated within the original POB lesson reader:
+
+1. **Establishing a Business (Section 3)**: snack-vendor feasibility, estimated monthly revenue, total costs, contribution and break-even sales; explain why sales below variable cost cannot become profitable solely by increasing output.
+2. **Marketing (Section 6)**: price change as a percentage of the initial selling price, fixed-quantity revenue comparison and explicit real-world demand caveat.
+3. **Logistics and Supply Chain (Section 7)**: reorder point from daily demand, lead time and safety stock; how delivery delays increase the need to replenish.
+4. **Business Finance (Section 8)**: principal, annual percentage, loan term and simple-interest cost with warnings that real lenders may charge fees or use reducing-balance methods.
+
+The calculation logic is kept in pure functions (`pobDecisionModels.js`) with edge-case tests. Component tests verify each dynamic output and ensure exercises appear only in relevant sections. Students use illustrative Jamaican-dollar figures; **these are not market quotes or lending advice**. Labs are not graded or substitutes for evidence-based SBA research.
+
+**Still outstanding:** interactive business formation checklist, multi-stage supply-chain builder, market research datasets, survey generation, realistic business documents, robust Paper 02 semantic scoring and full historical source QA.
+
 ## Non-negotiable next batches
 
 1. **Historical P1 transcription and answer-key QA**: process the PDFs in dated batches, cross-check layout, all options and diagrams against original scans; hold back uncertain or incomplete keys.
