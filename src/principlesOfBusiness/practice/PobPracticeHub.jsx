@@ -2,7 +2,7 @@ import React,{useEffect,useMemo,useRef,useState} from "react";
 import {recordSubjectActivity} from "../../subjects/subjectProgress";
 import {buildPobPaper1} from "../data/pobPaper1Original";
 import {POB_PAPER2_ORIGINAL_01} from "../data/pobPaper2Original";
-import {checkPobCalculation} from "../data/pobCalculationFeedback";
+import {checkPobCalculation,inspectPobCalculationEvidence} from "../data/pobCalculationFeedback";
 import {restorePobAttempt,pobRemainingSeconds} from "../data/pobAttemptRecovery";
 import {pobPaper2Completion,nextIncompletePobQuestion} from "../data/pobPaper2Progress";
 import {getPobP2FeedbackGuide} from "../data/pobPaper2FeedbackGuides";
@@ -176,7 +176,14 @@ export function PobPaper2Exam({onBack,userId,supabase}){
          disabled={review} value={attempt.answers[id]||""}
          onChange={e=>update({answers:{...attempt.answers,[id]:e.target.value}})}
          placeholder="Write your reasoning, examples or calculations in complete sentences."/>
-       {review&&checkPobCalculation(id,attempt.answers[id])&&<div className="pob-p2-calculation" role="status"><strong>Calculation check</strong><p>{checkPobCalculation(id,attempt.answers[id]).message}</p><p>Expected calculation: {checkPobCalculation(id,attempt.answers[id]).working}</p><small>Numerical feedback only. No marks are awarded by this check.</small></div>}
+       {review&&checkPobCalculation(id,attempt.answers[id])&&<div className="pob-p2-calculation" role="status"><strong>Calculation check</strong><p>{checkPobCalculation(id,attempt.answers[id]).message}</p><p>Expected calculation: {checkPobCalculation(id,attempt.answers[id]).working}</p>{inspectPobCalculationEvidence(id,attempt.answers[id])&&<div className="pob-p2-method-check">
+         <strong>Method evidence</strong>
+         <p>{inspectPobCalculationEvidence(id,attempt.answers[id]).expectedOperationShown
+           ?"Your written working includes the expected operation and numbers."
+           :"The expected calculation method was not clearly identified in your response."}</p>
+         <p>{inspectPobCalculationEvidence(id,attempt.answers[id]).methodGuidance}</p>
+       </div>}
+       <small>These are diagnostic checks, not marks. Your explanations, units and full rubric still require assessment.</small></div>}
        {review&&<details className="pob-p2-criteria"><summary>View SPARK marking guidance</summary>
          <p>{item.modelAnswer}</p>
          <ul>{item.criteria.map((criterion,i)=><li key={i}><strong>{criterion.marks} mark{criterion.marks===1?"":"s"}</strong>: {criterion.rule}</li>)}</ul>
