@@ -28,10 +28,10 @@ test("rejects unauthorized POB bank versions and paper selections",()=>{
  expect(()=>buildTrustedAssessment({...attempt({}),bank_version:"pob-custom-bank"})).toThrow();
  expect(()=>buildTrustedAssessment(attempt({},{paper_id:"pob-other"}))).toThrow();
 });
-test("all narrative parts use semantic rubric checks, while listing awards stay deterministic",()=>{
+test("all narrative parts use semantic rubric checks, while listing and arithmetic awards stay deterministic",()=>{
  const answers=Object.fromEntries(POB_PAPER2_ORIGINAL_01.questions.flatMap(q=>q.items.map(i=>[q.id+":"+i.id,"A meaningful answer."])));
  const pack=buildTrustedAssessment(attempt(answers));
- expect(pack.items).toHaveLength(22);
+ expect(pack.items).toHaveLength(17);
  expect(pack.maxMarks).toBe(100);
  expect(pack.items.every(i=>i.rubric.reduce((n,c)=>n+c.marks,0)===i.maxMarks)).toBe(true);
 });
