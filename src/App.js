@@ -154,6 +154,7 @@ const PHYSICS_SECTION_A_ENABLED = physicsSectionAEnabled({
 });
 const PHYSICS_SECTION_A_STATS = getPhysicsSectionAStats();
 const PHYSICS_FULL_COURSE_STATS = physicsFullCourseStats();
+const POB_DEV_PREVIEW = process.env.NODE_ENV === "development" && process.env.REACT_APP_POB_PREVIEW === "true";
 const SPARK_SUBJECTS = getSparkSubjectRegistry({
   physicsEnabled: PHYSICS_SECTION_A_ENABLED,
   mathematics: {
@@ -7605,15 +7606,18 @@ const handleLogout = async () => {
   const appHasEnglishA = appStudentEnrolledSubjectIds.has("english-a");
   const appHasChemistry = appStudentEnrolledSubjectIds.has("chemistry");
   const appHasFoodNutritionAndHealth=appStudentEnrolledSubjectIds.has("food-nutrition-and-health");
-  const appHasPrinciplesOfBusiness=appStudentEnrolledSubjectIds.has("principles-of-business");
+  const appHasPrinciplesOfBusiness=appStudentEnrolledSubjectIds.has("principles-of-business") || POB_DEV_PREVIEW;
   const appGenericStudySubjectId = view === "generic-study"
     ? genericStudySubjectFromBrowserHash()
     : null;
   const appGenericStudySubject = appGenericStudySubjectId
     ? getSparkSubject(runtimeSparkSubjects, appGenericStudySubjectId)
+      || (POB_DEV_PREVIEW && appGenericStudySubjectId==="principles-of-business"
+        ? getSparkSubject(SPARK_SUBJECTS,"principles-of-business") : null)
     : null;
   const appHasGenericStudySubject = Boolean(
-    appGenericStudySubjectId && appStudentEnrolledSubjectIds.has(appGenericStudySubjectId)
+    appGenericStudySubjectId && (appStudentEnrolledSubjectIds.has(appGenericStudySubjectId)
+      || (POB_DEV_PREVIEW && appGenericStudySubjectId==="principles-of-business"))
   );
   if (googleOAuthError && session) {
     return (
@@ -7835,8 +7839,8 @@ if (loading || authenticatedRolePending) {
                       userId={session.user.id}
                       setView={setView}
                       physicsEnabled={PHYSICS_SECTION_A_ENABLED}
-                      enrolledSubjectIds={appSubjectEnrollmentIds}
-                      subjects={runtimeSparkSubjects}
+                      enrolledSubjectIds={POB_DEV_PREVIEW ? [...appSubjectEnrollmentIds,"principles-of-business"] : appSubjectEnrollmentIds}
+                      subjects={POB_DEV_PREVIEW ? [...runtimeSparkSubjects,{...getSparkSubject(SPARK_SUBJECTS,"principles-of-business"),enabled:true,status:"live"}] : runtimeSparkSubjects}
                       initialSubject={view === "practice-math" ? "mathematics" : view === "practice-physics" ? "physics" : view === "practice-information-technology" ? "information-technology" : view === "practice-integrated-science" ? "integrated-science" : view === "practice-social-studies" ? "social-studies" : view === "practice-english-a" ? "english-a" : view === "practice-chemistry" ? "chemistry" : view === "practice-food-nutrition-and-health" ? "food-nutrition-and-health" : view === "practice-principles-of-business" ? "principles-of-business" : null}
                       onSubjectActivity={event => {
                         recordSparkSubjectActivity({ supabase, event }).then(result => {
