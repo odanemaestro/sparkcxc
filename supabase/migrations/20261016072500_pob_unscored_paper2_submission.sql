@@ -37,7 +37,8 @@ begin
     return;
   end if;
 
-  if (p_score is null and not (v_row.subject_id='principles-of-business' and v_row.paper='02' and v_row.bank_version='pob-original-paper2-01' and p_max_score=100)) or p_max_score is null
+  if (v_row.subject_id='principles-of-business' and v_row.paper='02' and p_score is not null)
+     or (p_score is null and not (v_row.subject_id='principles-of-business' and v_row.paper='02' and v_row.bank_version='pob-original-paper2-01' and p_max_score=100)) or p_max_score is null
      or coalesce(p_score::text,'') in ('NaN','Infinity','-Infinity')
      or p_max_score::text in ('NaN','Infinity','-Infinity')
      or p_score < 0 or p_max_score <= 0 or p_score > p_max_score or p_max_score > 10000 then
