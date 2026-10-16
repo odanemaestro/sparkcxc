@@ -13,6 +13,7 @@ import {verifyPobSpecimenCheckpoint21to30,POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_21
 import {verifyPobSpecimenCheckpoint31to40,POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_31_40} from "./pobCxcSpecimenP1Checkpoint31to40";
 import {verifyPobSpecimenCheckpoint41to50,POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_41_50} from "./pobCxcSpecimenP1Checkpoint41to50";
 import {verifyPobSpecimenCheckpoint51to60,POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_51_60} from "./pobCxcSpecimenP1Checkpoint51to60";
+import {verifyPobFullSpecimen,POB_CXC_2019_SPECIMEN_P1_FULL} from "./pobCxcSpecimenP1Full";
 import {reviewPobPaper2} from "./pobRubricReview";
 
 export function auditPobRelease({
@@ -87,6 +88,10 @@ export function auditPobRelease({
    "Final CXC specimen checkpoint (Q51–60) requires all 60 unique ordered verified question IDs.");
  requireCheck([38,51,53].every(number=>specimenAll[number-1].sourceKeyAcademicReview===true),
    "Published CXC source-key academic concerns at Q38, Q51 and Q53 must remain flagged.");
+ requireCheck(verifyPobFullSpecimen().valid&&POB_CXC_2019_SPECIMEN_P1_FULL.questions.length===60&&
+   POB_CXC_2019_SPECIMEN_P1_FULL.timeLimitMinutes===75&&
+   POB_CXC_2019_SPECIMEN_P1_FULL.maxScore===60,
+   "Complete 60-question 75-minute specimen exam must match CXC's source and printed key.");
  requireCheck(historical.some(p=>p.id==="POB-P2-2019-MJ-ALT"&&p.paper===2&&p.reclassifiedFromPaper1)&&
    !historical.some(p=>p.id==="POB-P1-2019-MJ"),
    "The mislabeled May/June 2019 source must be classified under Paper 02.");
@@ -102,6 +107,7 @@ export function auditPobRelease({
      flashcards:flashcards.length,paper1Items:paper1Items.length,
      paper2Parts:paper2.questions.flatMap(q=>q.items).length,
      unverifiedHistorical:historical.length,
+     fullCxcSpecimenQuestions:POB_CXC_2019_SPECIMEN_P1_FULL.questions.length,
      scoredSpecimenCheckpointItems:POB_CXC_2019_SPECIMEN_P1_CHECKPOINT.questions.length+
        POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_11_20.questions.length+
        POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_21_30.questions.length+
