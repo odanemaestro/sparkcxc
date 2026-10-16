@@ -6,7 +6,7 @@ const rules=Object.freeze({
  [PREFIX+"1:b"]:{limit:3,criterionAligned:true,choices:[
   {id:"market-demand",terms:["demand","customer demand","competition","market research","market size"]},
   {id:"costs-and-finance",terms:["startup cost","start-up cost","costs","expenses","finance","funding","capital","budget"]},
-  {id:"compliance-and-supply",terms:["health regulation","food safety","license","licence","registration","permit","supplier","raw materials","legal requirement","regulation"]}]},
+  {id:"compliance-and-supply",terms:["health regulation","health requirements","food safety","license","licence","licensing","registration","permit","supplier","suppliers","raw materials","legal requirement","regulation"]}]},
  [PREFIX+"2:a"]:{limit:2,choices:[
   {id:"planning",terms:["planning","plan"]},
   {id:"organising",terms:["organising","organizing"]},
