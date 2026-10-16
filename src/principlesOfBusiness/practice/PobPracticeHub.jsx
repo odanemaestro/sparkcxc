@@ -9,6 +9,8 @@ import {getPobP2FeedbackGuide} from "../data/pobPaper2FeedbackGuides";
 import {inspectPobShortAnswer} from "../data/pobShortAnswerFeedback";
 import {inspectPobExtendedResponse} from "../data/pobExtendedResponseFeedback";
 import {reviewPobPaper2} from "../data/pobRubricReview";
+import {startServerExamAttempt,submitServerExamAttempt} from "../../grading/serverExamAttempt";
+import ServerMarkingReview from "../../grading/ServerMarkingReview";
 import {assessPobPartEvidence} from "../data/pobAssessmentEvidence";
 import PobSbaWorkspace from "./PobSbaWorkspace";
 import "./pobPractice.css";
@@ -134,6 +136,8 @@ export function PobPaper2Exam({onBack,userId,supabase}){
  const [remaining,setRemaining]=useState(()=>pobRemainingSeconds(attempt,120*60));
  const [confirm,setConfirm]=useState(false);
  const recorded=useRef(new Set());
+ const submittedToServer=useRef(new Set());
+ const [savedServerId,setSavedServerId]=useState(null);
  const exam=attempt.phase==="exam",review=attempt.phase==="review";
  const question=paper.questions[Math.max(0,Math.min(4,attempt.index||0))];
  const rubricReview=useMemo(()=>reviewPobPaper2(attempt.answers,paper),[attempt.answers,paper]);
@@ -150,6 +154,17 @@ export function PobPaper2Exam({onBack,userId,supabase}){
  },[exam,attempt.deadline]);
  useEffect(toTop,[attempt.phase,attempt.index]);
  useEffect(()=>{
+   const id=attempt.serverAttemptId;
+   if(!review||!id||!supabase?.rpc||submittedToServer.current.has(id))return;
+   submittedToServer.current.add(id);
+   let active=true;
+   submitServerExamAttempt({supabase,attemptId:id,responses:attempt.answers,
+     score:null,maxScore:100,metadata:{paper_id:paper.id,source:"spark-original",grading_status:"server-pending"}})
+     .then(result=>{if(active&&result.available)setSavedServerId(id);if(!result.available)submittedToServer.current.delete(id);})
+     .catch(()=>{submittedToServer.current.delete(id);});
+   return()=>{active=false;};
+ },[review,attempt.serverAttemptId,attempt.answers,supabase,paper.id]);
+ useEffect(()=>{
    if(!review||!userId||!supabase?.rpc||recorded.current.has(attempt.attemptId))return;
    recorded.current.add(attempt.attemptId);
    recordSubjectActivity({supabase,activity:{
@@ -160,7 +175,16 @@ export function PobPaper2Exam({onBack,userId,supabase}){
        duration_minutes:120,marking_status:"not-automatically-graded"}
    }}).catch(()=>recorded.current.delete(attempt.attemptId));
  },[review,userId,supabase,attempt.attemptId,answered,paper.id]);
- const start=()=>{setRemaining(120*60);setAttempt({...startState(paper.id),phase:"exam",deadline:Date.now()+120*60*1000})};
+ const start=async()=>{
+   setSavedServerId(null);
+   setRemaining(120*60);
+   const active={...startState(paper.id),phase:"exam",deadline:Date.now()+120*60*1000};
+   setAttempt(active);
+   const saved=await startServerExamAttempt({supabase,subjectId:SUBJECT,paper:"02",
+     durationSeconds:7200,bankVersion:paper.id,rubricVersion:"pob-original-p2-rubric-v1",
+     graderVersion:"online-v1",metadata:{paper_id:paper.id,source:"spark-original"}});
+   if(saved.available)setAttempt(old=>old.attemptId===active.attemptId?{...old,serverAttemptId:saved.attempt_id}:old);
+ };
  const finish=()=>{update({phase:"review",submittedAt:Date.now()});setConfirm(false)};
  return <main className="pob-exam"><div className="pob-exam-shell">
   <div className="pob-exam-nav"><button type="button" onClick={onBack}>← Practice home</button><span>CSEC PRINCIPLES OF BUSINESS · PAPER 02</span></div>
@@ -217,6 +241,7 @@ export function PobPaper2Exam({onBack,userId,supabase}){
    {!review&&<button type="button" className="pob-primary pob-exam-submit" onClick={()=>setConfirm(true)}>Submit Paper 2</button>}
    {review&&<button type="button" className="secondary" onClick={()=>setAttempt(startState(paper.id))}>Start another attempt</button>}
    </section>
+   {review&&savedServerId&&<ServerMarkingReview supabase={supabase} attemptId={savedServerId} autoStart/>}
    {review&&<section className="pob-exam-card pob-review-note"><h2>Response review</h2><p><strong>Rubric coverage:</strong> {rubricReview.answeredParts} of {rubricReview.totalParts} responses submitted. {rubricReview.availableMarks} marks available. {rubricReview.markStatus==="unanswered"?"No written responses were supplied.":"Written responses require reliable assessment before any score can be reported."}</p><p>Question overview: select an incomplete or answered question above to review your work and the marking criteria.</p><ol>{paper.questions.map(q=>{const completed=q.items.filter(part=>String(attempt.answers[q.id+":"+part.id]||"").trim()).length;return <li key={q.id}>Question {q.number}: {completed} of {q.items.length} parts answered, {q.marks} marks available</li>})}</ol><p>Your answers have been preserved in this browser. The mark-by-mark criteria show what a complete answer should demonstrate. No score has been invented for free-text responses.</p></section>}
    {confirm&&!review&&<div className="pob-confirm-overlay"><div className="pob-exam-card pob-confirm" role="dialog" aria-modal="true" aria-label="Confirm Paper 2 submission">
     <h2>Finish Paper 2?</h2><p>{answered} of 25 parts have responses. You can view the model answers and criteria after submitting.</p>
