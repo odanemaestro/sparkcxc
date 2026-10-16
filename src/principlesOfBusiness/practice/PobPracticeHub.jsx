@@ -8,6 +8,7 @@ import {pobPaper2Completion,nextIncompletePobQuestion} from "../data/pobPaper2Pr
 import {getPobP2FeedbackGuide} from "../data/pobPaper2FeedbackGuides";
 import {inspectPobShortAnswer} from "../data/pobShortAnswerFeedback";
 import {inspectPobExtendedResponse} from "../data/pobExtendedResponseFeedback";
+import {reviewPobPaper2} from "../data/pobRubricReview";
 import PobSbaWorkspace from "./PobSbaWorkspace";
 import "./pobPractice.css";
 
@@ -134,6 +135,7 @@ export function PobPaper2Exam({onBack,userId,supabase}){
  const recorded=useRef(new Set());
  const exam=attempt.phase==="exam",review=attempt.phase==="review";
  const question=paper.questions[Math.max(0,Math.min(4,attempt.index||0))];
+ const rubricReview=useMemo(()=>reviewPobPaper2(attempt.answers,paper),[attempt.answers,paper]);
  const completion=pobPaper2Completion(paper.questions,attempt.answers);
  const answered=completion.reduce((sum,row)=>sum+row.answered,0);
  const nextIncomplete=nextIncompletePobQuestion(paper.questions,attempt.answers,attempt.index||0);
@@ -213,7 +215,7 @@ export function PobPaper2Exam({onBack,userId,supabase}){
    {!review&&<button type="button" className="pob-primary pob-exam-submit" onClick={()=>setConfirm(true)}>Submit Paper 2</button>}
    {review&&<button type="button" className="secondary" onClick={()=>setAttempt(startState(paper.id))}>Start another attempt</button>}
    </section>
-   {review&&<section className="pob-exam-card pob-review-note"><h2>Response review</h2><p>Question overview: select an incomplete or answered question above to review your work and the marking criteria.</p><ol>{paper.questions.map(q=>{const completed=q.items.filter(part=>String(attempt.answers[q.id+":"+part.id]||"").trim()).length;return <li key={q.id}>Question {q.number}: {completed} of {q.items.length} parts answered, {q.marks} marks available</li>})}</ol><p>Your answers have been preserved in this browser. The mark-by-mark criteria show what a complete answer should demonstrate. No score has been invented for free-text responses.</p></section>}
+   {review&&<section className="pob-exam-card pob-review-note"><h2>Response review</h2><p><strong>Rubric coverage:</strong> {rubricReview.answeredParts} of {rubricReview.totalParts} responses submitted. {rubricReview.availableMarks} marks available. {rubricReview.markStatus==="unanswered"?"No written responses were supplied.":"Written responses require reliable assessment before any score can be reported."}</p><p>Question overview: select an incomplete or answered question above to review your work and the marking criteria.</p><ol>{paper.questions.map(q=>{const completed=q.items.filter(part=>String(attempt.answers[q.id+":"+part.id]||"").trim()).length;return <li key={q.id}>Question {q.number}: {completed} of {q.items.length} parts answered, {q.marks} marks available</li>})}</ol><p>Your answers have been preserved in this browser. The mark-by-mark criteria show what a complete answer should demonstrate. No score has been invented for free-text responses.</p></section>}
    {confirm&&!review&&<div className="pob-confirm-overlay"><div className="pob-exam-card pob-confirm" role="dialog" aria-modal="true" aria-label="Confirm Paper 2 submission">
     <h2>Finish Paper 2?</h2><p>{answered} of 25 parts have responses. You can view the model answers and criteria after submitting.</p>
     <div className="pob-exam-controls"><button type="button" className="secondary" onClick={()=>setConfirm(false)}>Keep working</button>
