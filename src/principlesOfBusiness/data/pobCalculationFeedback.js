@@ -71,7 +71,7 @@ export function inspectPobCalculationEvidence(partKey,response){
  const result=checkPobCalculation(partKey,answer);
  // Only a complete arithmetical expression counts as visible method evidence.
  // Matching operands in a paragraph without an operation is not proof of method.
- const operation=signal.operation==="/"?String.raw`[\\/÷]`:String.raw`[\\-−]`;
+ const operation=signal.operation==="/"?String.raw`(?:/|÷)`:String.raw`(?:-|−)`;
  const expr=new RegExp("("+numberPattern+")\\s*"+operation+"\\s*("+numberPattern+")(?![\\w])","g");
  const workingShown=[...answer.matchAll(expr)].some(match=>
    rawToNumber(match[1])===signal.operands[0]&&rawToNumber(match[2])===signal.operands[1]);
