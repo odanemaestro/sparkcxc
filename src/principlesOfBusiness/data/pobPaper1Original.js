@@ -67,12 +67,42 @@ q(10,6,"A firm sells customer contact details without permission. This mainly ra
 q(10,8,"GDP principally measures the value of production",["within the country's economic territory","by citizens abroad only","from all imports regardless of production","from one company's sales alone"],"A","GDP measures economic production within an economy over a period."),
 q(10,10,"Why do small Caribbean territories often participate in international trade?",["To obtain goods or resources not efficiently available locally","To eliminate every import","To end specialisation","To guarantee all investments earn profits"],"A","Trade provides access to goods, resources and markets across borders.")
 ].map((item,index)=>Object.freeze({id:"POB-ORIGINAL-2026-"+String(index+1).padStart(3,"0"),...item})));
+export function validatePobPaper1Items(items=POB_PAPER1_ORIGINAL_ITEMS){
+ const issues=[];
+ if(!Array.isArray(items))return {valid:false,issues:["Question bank must be an array."]};
+ const ids=new Set(),stems=new Set();
+ POB_OFFICIAL_PAPER1_ALLOCATION.forEach((count,index)=>{
+   if(items.filter(q=>q?.section===index+1).length<count)
+     issues.push("Section "+(index+1)+" requires at least "+count+" questions.");
+ });
+ items.forEach((item,index)=>{
+   const tag="Question "+(index+1);
+   if(!item||typeof item!=="object"){issues.push(tag+" is missing.");return;}
+   if(!item.id||ids.has(item.id))issues.push(tag+" has a missing or duplicate ID.");
+   ids.add(item.id);
+   const stem=String(item.stem||"").trim().replace(/\s+/g," ").toLowerCase();
+   if(!stem||stems.has(stem))issues.push(tag+" has a missing or duplicate question stem.");
+   stems.add(stem);
+   if(!Array.isArray(item.options)||item.options.length!==4||
+      item.options.some(option=>!String(option||"").trim())||
+      new Set(item.options.map(option=>String(option).trim().toLowerCase())).size!==4)
+      issues.push(tag+" must contain four distinct non-empty choices.");
+   if(!"ABCD".includes(item.answer)||String(item.answer).length!==1)
+      issues.push(tag+" has an invalid answer key.");
+   if(!String(item.explanation||"").trim())issues.push(tag+" lacks an explanation.");
+   if(!Number.isInteger(item.section)||item.section<1||item.section>10)
+      issues.push(tag+" has an invalid syllabus section.");
+   if(!new RegExp("^S"+item.section+"\\.\\d+$").test(item.objectiveCode||""))
+      issues.push(tag+" has an objective code outside its section.");
+ });
+ return {valid:issues.length===0,issues};
+}
 export function buildPobPaper1({items=POB_PAPER1_ORIGINAL_ITEMS}={}){
-  const selected=POB_OFFICIAL_PAPER1_ALLOCATION.flatMap((count,index)=>{
-    const section=index+1;
-    const candidates=items.filter(q=>q.section===section);
-    return candidates.slice(0,count);
-  });
-  return {id:"pob-original-paper1-v1",title:"SPARK Original POB Practice Paper 1",origin:"spark-original",
-    questions:selected,timeLimitMinutes:75,totalMarks:60,expectedDistribution:POB_OFFICIAL_PAPER1_ALLOCATION};
+ const checked=validatePobPaper1Items(items);
+ if(!checked.valid)throw new Error("Invalid POB Paper 1 question bank: "+checked.issues.join(" "));
+ const selected=POB_OFFICIAL_PAPER1_ALLOCATION.flatMap((count,index)=>
+   items.filter(q=>q.section===index+1).slice(0,count)
+ );
+ return {id:"pob-original-paper1-v1",title:"SPARK Original POB Practice Paper 1",origin:"spark-original",
+   questions:selected,timeLimitMinutes:75,totalMarks:60,expectedDistribution:POB_OFFICIAL_PAPER1_ALLOCATION};
 }
