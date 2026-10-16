@@ -16,6 +16,61 @@ export const POB_OBJECTIVE_DEEP_DIVES=Object.freeze({
   mistake:"Do not assume that every partnership offers limited liability or that incorporation guarantees business success.",
   activity:"Two friends wish to open a bakery and later invite investors. Recommend two possible ownership forms, discussing finance, control, continuity and liability."
  },
+ "S1.3":{
+  walkthrough:"A Kingston wholesaler may accept cash, debit-card payments or bank transfers. Cash changes hands immediately, a debit card normally draws on a linked account, and a transfer sends funds through a payment system. The seller should check fees, access and confirmation before releasing goods.",
+  mistake:"A credit-card purchase is not the same as spending only money already available in a current account.",
+  activity:"A stall owner has customers who use cash and cards. Explain two advantages and one limitation of accepting each method."
+ },
+ "S1.4":{
+  walkthrough:"Before a wholesaler dispatches a J$45,000 order, the accounts clerk compares the invoice, customer name, payment reference and amount shown on the bank record. A screenshot alone is not proof that the transfer settled. The clerk confirms receipt through a trusted account channel.",
+  mistake:"A payment instruction, cheque or transfer screenshot does not by itself prove the seller has received cleared funds.",
+  activity:"A customer emails a payment screenshot but the supplier cannot see the funds in its account. Explain three checks the supplier should complete before releasing stock."
+ },
+ "S1.5":{
+  walkthrough:"A privately owned bus company earns sales revenue and is owned by private investors. A publicly controlled water utility provides an essential service under government ownership or control. Both organisations hire workers, use resources and need sound management, even though their ownership and objectives can differ.",
+  mistake:"Public-sector organisations do not always provide services free of charge, and private-sector firms can also serve important community needs.",
+  activity:"Compare a privately owned pharmacy and a publicly owned hospital, describing ownership, funding and two services each may provide."
+ },
+ "S1.7":{
+  walkthrough:"In a market economy, consumer demand and business supply strongly influence what is produced and sold. In a planned economy, the state makes more major production decisions. A mixed economy combines private choices with government regulation and public services. Jamaica uses a mixed system.",
+  mistake:"A mixed economy is not an economy in which every business is half privately and half publicly owned.",
+  activity:"A Jamaican farmer sells produce at market prices while government provides roads and public education. Identify the economic system and explain both roles."
+ },
+ "S1.8":{
+  walkthrough:"A juice business depends on production to prepare safe drinks, finance to track costs and cash, marketing to identify buyers, and human resources to arrange staffing. If marketing promises delivery before production has enough stock, customers may be disappointed. Departments must share timely information.",
+  mistake:"Marketing does not replace production, and accounting for sales is not the same as physically manufacturing the product.",
+  activity:"A bakery's online promotion attracts 100 orders but the kitchen can bake only 60 loaves. Explain how three functional areas should respond together."
+ },
+ "S1.9":{
+  walkthrough:"Owners may want higher profits, workers may expect fair wages, customers want safe products and nearby residents want less noise or waste. These are stakeholders: people or groups who can affect or are affected by decisions. Responsible managers listen and consider legitimate competing interests.",
+  mistake:"A stakeholder is not always a shareholder. Workers, customers and communities can have a stake without owning shares.",
+  activity:"A factory wants to extend opening hours. Identify four stakeholder groups, explain one concern for each and suggest a fair way to assess the competing interests."
+ },
+ "S1.10":{
+  walkthrough:"A grocery shop's owners invest resources and set goals, staff serve customers and manage stock, suppliers deliver fresh produce, customers provide revenue and feedback, and regulators enforce applicable safety and tax rules. Weak performance by one group can disrupt the entire business.",
+  mistake:"Stakeholders have different responsibilities: a customer does not have the same legal or managerial duties as an owner.",
+  activity:"For a neighbourhood supermarket, match owner, employee, supplier and customer to one practical contribution each. Explain how a delivery failure affects two groups."
+ },
+ "S1.11":{
+  walkthrough:"An online seller may technically comply with a minimum rule but still behave unfairly by hiding major restrictions in unclear advertising. Legal conduct means meeting applicable laws; ethical conduct also asks whether behaviour is honest, fair and responsible. A good business evaluates both duties.",
+  mistake:"An action is not necessarily ethical just because a worker cannot name a law that forbids it.",
+  activity:"A store advertises a low price but reveals compulsory charges only at checkout. Explain one possible consumer-law concern and one ethical concern without assuming that a violation is proven."
+ },
+ "S1.12":{
+  walkthrough:"A small clinic supplying health products can put ethical principles into daily procedures: show accurate prices, protect customer records, resolve complaints consistently and train staff to avoid discrimination. A written code works only when leaders model it and investigate problems fairly.",
+  mistake:"Posting an ethics policy does not guarantee ethical behaviour. Employees also need training, reporting channels and consistent decisions.",
+  activity:"Draft four practical rules for a small business code of ethics, and explain how the manager could check whether staff follow two of them."
+ },
+ "S1.13":{
+  walkthrough:"A food company makes a false claim about its ingredients. When customers discover the mistake, the firm may face refunds, complaints, possible regulatory action and lost trust. The cost can persist even after the advertisement is removed, so prevention and a prompt transparent response matter.",
+  mistake:"A damaged reputation cannot always be repaired simply by paying a fine; possible penalties depend on the facts and applicable law.",
+  activity:"A vendor incorrectly labels imported pepper sauce as locally made. Describe three likely consequences and propose two corrective steps."
+ },
+ "S1.14":{
+  walkthrough:"A business analyst studies information and improves decisions, a bookkeeper records transactions, a customs broker assists with import or export procedures, and a marketer researches customers. Students can compare qualifications, daily tasks and opportunities for experience before choosing a route.",
+  mistake:"Business careers are not limited to being a manager or owning a shop. Digital and specialist roles can also support enterprises.",
+  activity:"Compare a bookkeeper and a digital marketer: state two tasks, two useful skills and one possible training path for each."
+ },
  "S2.1":{
   walkthrough:"A restaurant plans to sell 200 lunches. The manager organises ingredients and shifts, leads the team during service, then compares actual sales with the target. When only 160 lunches sell, the manager investigates demand and adjusts the next plan.",
   mistake:"Controlling means comparing results with agreed standards and correcting problems. It is not the same as intimidating employees.",
