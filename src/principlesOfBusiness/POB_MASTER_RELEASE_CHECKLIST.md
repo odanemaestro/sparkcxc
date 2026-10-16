@@ -116,3 +116,11 @@ A separate ten-item, 13-minute **CXC specimen checkpoint** now uses the same nat
 The wrongly named `CSEC_Principles_of_Business_P1_2019_MJ.pdf` is now **reclassified under Paper 02** as `POB-P2-2019-MJ-ALT`. The original filename is preserved for evidence; it is separate from the original `POB-P2-2019-MJ` source. After correcting source identities, the **46 PDF archive entries comprise 20 actual Paper 1 source copies and 26 Paper 2 copies**. The true 2019 MJ Paper 1 remains missing. All 46 historical sources are still unverified for live scored practice.
 
 **Release decisions remain separate:** only this ten-question CXC **specimen** checkpoint has a verified published answer key and can be tested as scored practice on the feature branch. The wider course, historical sitting papers and full specimen 60-question paper remain unpublished/unapproved until their remaining criteria are met.
+
+## CXC specimen Paper 01, ten-item Batch 02: questions 11–20
+
+The second checkpoint contains **CXC 2019 specimen Paper 01 questions 11–20**, source-verified against PDF pages **79–80** and the CXC published key on page **86** of `CSEC-Principles-of-Business-Syllabus-.pdf` (source SHA-256 recorded in data). Official keys: `B D C A D C D D C D`; objective codes: `2.9, 3.3, 3.7, 3.14, 3.10, 3.13, 4.3, 4.9, 4.5, 4.6`. Original three-statement question layouts preserved and original question numbers displayed.
+
+Files: `data/pobCxcSpecimenP1Checkpoint11to20.js`, `data/pobCxcSpecimenP1Checkpoint11to20.test.jsx`, and `POB_CXC_SPECIMEN_SCORED_CHECKPOINT_Q11_20.md`. The Paper 1 practice area offers two independently saved ten-item CXC specimen checkpoints, each with a 13-minute timer and keyed automatic scoring.
+
+**Specimen scored-practice coverage is 20/60 (33.3%), not the complete CXC specimen paper.** The 60-item SPARK original remains separate. The 46 supplied historical sitting source PDFs remain unapproved for graded playback, and the POB course remains a disabled unpublished draft. Next checkpoint: specimen questions 21–30.
