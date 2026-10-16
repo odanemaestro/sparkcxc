@@ -39,8 +39,10 @@ export const POB_SOURCE_INVENTORY=Object.freeze({
   paper1:p1.length,paper2:p2.length,total:POB_SUPPLIED_ARCHIVE.length,
   mislabeledPaper1Sources:1,
   genuinePaper1SourceCount:20,actualPaper2SourceCount:26,
-  pagesPaper1:p1.reduce((sum,x)=>sum+x[2],0)-15,
-  pagesPaper2:p2.reduce((sum,x)=>sum+x[2],0)+15,
+  pagesPaper1:p1.reduce((sum,x)=>sum+x[2],0),
+  pagesPaper2:p2.reduce((sum,x)=>sum+x[2],0),
+  actualPagesPaper1:p1.reduce((sum,x)=>sum+x[2],0)-15,
+  actualPagesPaper2:p2.reduce((sum,x)=>sum+x[2],0)+15,
   syllabusFilename:"CSEC-Principles-of-Business-Syllabus-.pdf",
   origin:"POB.zip"
 });
