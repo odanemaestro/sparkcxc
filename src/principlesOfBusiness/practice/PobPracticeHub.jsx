@@ -8,6 +8,7 @@ import {POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_31_40,verifyPobSpecimenCheckpoint31t
 import {POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_41_50,verifyPobSpecimenCheckpoint41to50} from "../data/pobCxcSpecimenP1Checkpoint41to50";
 import {POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_51_60,verifyPobSpecimenCheckpoint51to60} from "../data/pobCxcSpecimenP1Checkpoint51to60";
 import {POB_CXC_2019_SPECIMEN_P1_FULL,verifyPobFullSpecimen} from "../data/pobCxcSpecimenP1Full";
+import {scorePobSpecimen} from "../data/pobSpecimenScoring";
 import {POB_PAPER2_ORIGINAL_01} from "../data/pobPaper2Original";
 import {checkPobCalculation,inspectPobCalculationEvidence} from "../data/pobCalculationFeedback";
 import {restorePobAttempt,pobRemainingSeconds} from "../data/pobAttemptRecovery";
@@ -51,6 +52,8 @@ export function PobPaper1Exam({userId,supabase,onBack,paperOverride=null}){
  const index=Math.max(0,Math.min(questions.length-1,attempt.index||0));
  const current=questions[index];
  const score=useMemo(()=>questions.filter(q=>attempt.answers[q.id]===q.answer).length,[questions,attempt.answers]);
+ const specimenScores=useMemo(()=>isSpecimen?scorePobSpecimen(questions,attempt.answers):null,[isSpecimen,questions,attempt.answers]);
+ const disputedCount=specimenScores?.disputedQuestionNumbers.length||0;
  const answered=questions.filter(q=>Boolean(attempt.answers[q.id])).length;
  const flagged=questions.filter(q=>attempt.flags[q.id]).length;
  const update=patch=>setAttempt(old=>({...old,...patch}));
@@ -75,9 +78,14 @@ export function PobPaper1Exam({userId,supabase,onBack,paperOverride=null}){
      metadata:{source:isSpecimen?"cxc-official-specimen":"spark-original",historical:false,paper:"01",duration_minutes:durationMinutes,
        question_count:questions.length,specimen_question_numbers:isSpecimen?questions.map(q=>q.number):null,
        section_distribution:isSpecimen?null:[5,6,5,4,7,7,6,7,7,6],
+       cxc_published_key_score:isSpecimen?score:null,
+       cxc_published_key_max:isSpecimen?maxScore:null,
+       uncontested_score:isSpecimen?specimenScores.uncontestedScore:null,
+       uncontested_max:isSpecimen?specimenScores.uncontestedMax:null,
+       disputed_specimen_questions:isSpecimen?specimenScores.disputedQuestionNumbers:[],
        completed_at:new Date().toISOString()}
    }}).catch(()=>{recorded.current.delete(attempt.attemptId)});
- },[review,attempt.attemptId,score,userId,supabase,paper.id,questions.length,isSpecimen,maxScore,durationMinutes]);
+ },[review,attempt.attemptId,score,userId,supabase,paper.id,questions.length,isSpecimen,maxScore,durationMinutes,specimenScores]);
  const start=()=>{
    if(isSpecimen){
      const verification=paper.id===POB_CXC_2019_SPECIMEN_P1_CHECKPOINT.id
@@ -109,7 +117,7 @@ export function PobPaper1Exam({userId,supabase,onBack,paperOverride=null}){
      <h1>{isSpecimen?paper.title:"Paper 1: Multiple-choice examination"}</h1>
      <p>{isSpecimen?(maxScore===60?"The complete CXC 2019 specimen Paper 1 contains 60 questions over 75 minutes. This is a source-key-checked practice simulation, not an official examination or certified grade.":"Ten CXC specimen questions checked against the printed CXC answer key. This is a 13-minute checkpoint, not the full 60-question paper."):"60 questions, 75 minutes, one mark each. The questions follow the official syllabus distribution: 20 from organisational principles, 20 from promotion and logistics and 20 from finance, government and technology."}</p>
      <p>{isSpecimen?"Source: CXC Principles of Business syllabus, 2019 specimen Paper 01, PDF pages "+paper.sourcePages[0]+"–"+paper.sourcePages[paper.sourcePages.length-1]+"; CXC key, PDF page 86. Practice scores are not official examination grades.":"This is an original SPARK practice paper, not a historical CXC examination."}</p>
-     {isSpecimen&&questions.some(q=>q.sourceKeyAcademicReview)&&<p role="note"><strong>Academic review notice:</strong> Some answers in CXC’s printed specimen key are disputed. This checkpoint scores against that published key, and the affected questions are explained and flagged during review.</p>}
+     {isSpecimen&&questions.some(q=>q.sourceKeyAcademicReview)&&<p role="note"><strong>Academic review notice:</strong> Some answers in CXC’s printed specimen key are disputed. This practice shows the published CXC key comparison and a separate learning score that excludes disputed items. Affected questions are explained and flagged during review.</p>}
      <div className="pob-exam-facts"><span>{maxScore} questions</span><span>{durationMinutes} minutes</span><span>{maxScore} marks</span></div>
      <button type="button" className="pob-primary" onClick={start}>Start examination</button>
    </section>:<>
@@ -118,7 +126,8 @@ export function PobPaper1Exam({userId,supabase,onBack,paperOverride=null}){
        <div className="pob-timer" role="timer" aria-label="Time remaining">{review?"Submitted":clock(remaining)}</div>
      </header>
      {review&&<section className="pob-exam-card pob-exam-result" role="status">
-       <span>Your result</span><strong>{score} / {maxScore}</strong><p>{Math.round(100*score/maxScore)}% correct. Review every explanation, especially questions you missed.</p>
+       <span>{disputedCount?"Published CXC specimen key comparison":"Your result"}</span><strong>{score} / {maxScore}</strong><p>{Math.round(100*score/maxScore)}% correct. Review every explanation, especially questions you missed.</p>
+       {disputedCount>0&&<p role="note"><strong>Uncontested learning score: {specimenScores.uncontestedScore} / {specimenScores.uncontestedMax} ({specimenScores.uncontestedPercent}%).</strong> Questions {specimenScores.disputedQuestionNumbers.join(", ")} are excluded from this learning score because their printed CXC answers need academic clarification. The published-key comparison above is preserved for source accuracy, not presented as an undisputed grade.</p>}
        <button type="button" onClick={restart}>Start a fresh attempt</button>
      </section>}
      <div className="pob-exam-layout">
