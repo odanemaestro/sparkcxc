@@ -39,3 +39,52 @@ export function checkPobCalculation(partKey,response){
   // intermediate operand is the intended final answer.
   return {status:"review-needed",message:"A clear matching final result was not identified. Label your final answer and check the working.",working:target.working};
 }
+
+
+// Rubric-linked diagnostic signals, NOT automatically awarded examination marks.
+// Each mathematical checkpoint is assessed separately so that an examiner-quality
+// feedback engine can distinguish a correct final result from demonstrated method.
+export const POB_CALCULATION_RUBRIC_SIGNALS=Object.freeze({
+ "POB-SPARK-P2-ORIGINAL-01-Q3:a":Object.freeze({
+   operands:[300,10],operation:"/",result:30,
+   resultGuidance:"30 bottles per labour hour",methodGuidance:"Show 300 ÷ 10 and define output per labour hour."
+ }),
+ "POB-SPARK-P2-ORIGINAL-01-Q3:c":Object.freeze({
+   operands:[250,130],operation:"-",result:120,
+   resultGuidance:"J$120 per bottle",methodGuidance:"State selling price and variable cost, then subtract; contribution covers fixed costs before profit."
+ }),
+ "POB-SPARK-P2-ORIGINAL-01-Q5:a":Object.freeze({
+   operands:[850000,470000],operation:"-",result:380000,
+   resultGuidance:"J$380,000 gross profit",methodGuidance:"Identify sales revenue and cost of sales and subtract the latter."
+ }),
+ "POB-SPARK-P2-ORIGINAL-01-Q5:b":Object.freeze({
+   operands:[380000,260000],operation:"-",result:120000,
+   resultGuidance:"J$120,000 simplified net profit",methodGuidance:"Deduct operating expenses from gross profit."
+ })
+});
+const numberPattern="(?:\\d{1,3}(?:,\\d{3})+|\\d+)(?:\\.\\d+)?";
+const rawToNumber=value=>Number(String(value).replace(/,/g,""));
+export function inspectPobCalculationEvidence(partKey,response){
+ const signal=POB_CALCULATION_RUBRIC_SIGNALS[partKey];
+ if(!signal)return null;
+ const answer=String(response||"").trim();
+ const result=checkPobCalculation(partKey,answer);
+ // Only a complete arithmetical expression counts as visible method evidence.
+ // Matching operands in a paragraph without an operation is not proof of method.
+ const operation=signal.operation==="/"?String.raw`[\\/÷]`:String.raw`[\\-−]`;
+ const expr=new RegExp("("+numberPattern+")\\s*"+operation+"\\s*("+numberPattern+")(?![\\w])","g");
+ const workingShown=[...answer.matchAll(expr)].some(match=>
+   rawToNumber(match[1])===signal.operands[0]&&rawToNumber(match[2])===signal.operands[1]);
+ const finalCorrect=result.status==="result-found";
+ return {
+   status:result.status,
+   finalResultRecognised:finalCorrect,
+   expectedOperationShown:workingShown,
+   resultGuidance:signal.resultGuidance,
+   methodGuidance:signal.methodGuidance,
+   // A correct result and method together are evidence, not an automatic mark.
+   requiresFullRubricReview:true,
+   provisionalMarks:null,
+   message:result.message
+ };
+}
