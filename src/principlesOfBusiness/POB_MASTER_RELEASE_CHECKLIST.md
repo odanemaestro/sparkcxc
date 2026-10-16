@@ -142,3 +142,11 @@ The native Practice page now offers a fourth distinct ten-question, 13-minute, s
 Files: `data/pobCxcSpecimenP1Checkpoint31to40.js`, `data/pobCxcSpecimenP1Checkpoint31to40.test.jsx`, `POB_CXC_SPECIMEN_SCORED_CHECKPOINT_Q31_40.md`. The release audit now demands **40 unique verified specimen question identifiers**.
 
 **Specimen checkpoint coverage 40/60 (66.7%) on the unpublished feature branch, not a full 60-question mock examination.** Academic Q38 review, remaining 20 specimen items, all historical sitting-answer key and marking-scheme QA, and the rest of the release checklist remain outstanding. No promotion to `main` or production release.
+
+## CXC specimen Paper 01: fifth scored checkpoint, questions 41–50
+
+The fifth ten-question batch is backed by the user-supplied **2019 CXC specimen Paper 01**, printed pages **7–8** (PDF pages **83–84**) and CXC's answer-key table on PDF page **86**. The official key is `B A C A D D C A D A`; syllabus references `8.2, 8.2, 8.3, 8.1, 8.2, 8.5, 8.3, 9.1, 9.2, 9.4 (a)`. Full source QA notes and caveats, including the original unusual wording of **Q42** and CXC's broader social-insurance answer to **Q47**, are in `POB_CXC_SPECIMEN_SCORED_CHECKPOINT_Q41_50.md`.
+
+The native POB practice hub now offers **five** separate ten-item CXC specimen practice checkpoints, each with 13-minute timing, scored review, original CXC question numbering, independent saved attempts and regression tests. The release audit requires **50 unique source-key-verified specimen items**. The Q38 wholesaling ambiguity from Batch 4 remains flagged.
+
+**Source-key-checked specimen coverage: 50 of 60 questions (83.3%), on the unpublished PR #67 branch.** Still outstanding: CXC specimen Q51–60, a separately verified 60-item 75-minute full-specimen flow, complete historic sitting paper keys/mark schemes, academic grading calibration and full cross-device/course release QA. `main` is unchanged.
