@@ -21,6 +21,7 @@ This final archive batch includes **six source PDFs, 57 PDF pages, 57 rendered J
 - The six cover pages identify **Paper 01**. This confirms the supplied covers' paper numbers, **not** that the documents are authenticated original CXC copies.
 - January 2020: Questions 22 and 41 are visible on pages 4 and 6 respectively, notwithstanding absent regex matches. Preserve exact original source pages, not guessed answer keys.
 - January 2023: 60 sequential number cues make this a promising transcription candidate, but line wrapping, missing option-label cues, diagrams and answer-key evidence prevent graded publication.
+- Follow-up visual check: all four (A)–(D) labels for **Q56 and Q57** are present on source page 8; all four labels for **Q58** appear on source page 9. Text extraction, not the paper, omitted these cues. Answers and exact wordings have not been verified.
 - Watermarked, scan-derived and written-on copies need additional source provenance review; the extracted text is never substituted for a verified scan or answer key.
 - **No answer-key or marking-scheme PDF is present in the supplied ZIP.** No official grades can be inferred from the question booklets.
 
