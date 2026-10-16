@@ -5,6 +5,7 @@ import {POB_CXC_2019_SPECIMEN_P1_CHECKPOINT,verifyPobSpecimenCheckpoint} from ".
 import {POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_11_20,verifyPobSpecimenCheckpoint11to20} from "../data/pobCxcSpecimenP1Checkpoint11to20";
 import {POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_21_30,verifyPobSpecimenCheckpoint21to30} from "../data/pobCxcSpecimenP1Checkpoint21to30";
 import {POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_31_40,verifyPobSpecimenCheckpoint31to40} from "../data/pobCxcSpecimenP1Checkpoint31to40";
+import {POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_41_50,verifyPobSpecimenCheckpoint41to50} from "../data/pobCxcSpecimenP1Checkpoint41to50";
 import {POB_PAPER2_ORIGINAL_01} from "../data/pobPaper2Original";
 import {checkPobCalculation,inspectPobCalculationEvidence} from "../data/pobCalculationFeedback";
 import {restorePobAttempt,pobRemainingSeconds} from "../data/pobAttemptRecovery";
@@ -85,6 +86,8 @@ export function PobPaper1Exam({userId,supabase,onBack,paperOverride=null}){
        ?verifyPobSpecimenCheckpoint21to30(paper)
        :paper.id===POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_31_40.id
        ?verifyPobSpecimenCheckpoint31to40(paper)
+       :paper.id===POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_41_50.id
+       ?verifyPobSpecimenCheckpoint41to50(paper)
        :{valid:false};
      if(!verification.valid)return;
    }
@@ -283,6 +286,7 @@ export default function PobPracticeHub({userId,supabase,onBack}){
  if(mode==="specimen11to20")return <PobPaper1Exam paperOverride={POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_11_20} userId={userId} supabase={supabase} onBack={()=>setMode("home")}/>;
  if(mode==="specimen21to30")return <PobPaper1Exam paperOverride={POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_21_30} userId={userId} supabase={supabase} onBack={()=>setMode("home")}/>;
  if(mode==="specimen31to40")return <PobPaper1Exam paperOverride={POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_31_40} userId={userId} supabase={supabase} onBack={()=>setMode("home")}/>;
+ if(mode==="specimen41to50")return <PobPaper1Exam paperOverride={POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_41_50} userId={userId} supabase={supabase} onBack={()=>setMode("home")}/>;
  if(mode==="paper2")return <PobPaper2Exam userId={userId} supabase={supabase} onBack={()=>setMode("home")}/>;
  if(mode==="sba")return <PobSbaWorkspace onBack={()=>setMode("home")}/>;
  return <main className="pob-exam"><div className="pob-exam-shell">
@@ -291,7 +295,7 @@ export default function PobPracticeHub({userId,supabase,onBack}){
      <h1>Practise business thinking</h1><p>Take a full timed practice paper, work through business scenarios or plan your SBA research. Original questions are clearly labelled, and historical source papers remain unavailable until verified.</p></header>
    <div className="pob-practice-options">
     <article className="pob-exam-card"><small>60 questions · 75 minutes</small><h2>Paper 1</h2><p>Original multiple-choice practice across all ten syllabus sections with instant explanations after submission.</p><button type="button" className="pob-primary" onClick={()=>setMode("paper1")}>Open Paper 1</button></article>
-    <article className="pob-exam-card"><small>4 checkpoints · 10 questions each · 13 minutes each</small><h2>2019 CXC specimen checkpoints</h2><p>Practise original CXC specimen Paper 1 questions in verified ten-question batches. Each checkpoint has a separate score, saved attempt and answer review.</p><div className="pob-exam-controls"><button type="button" className="pob-primary" onClick={()=>setMode("specimen")}>Questions 1–10</button><button type="button" className="pob-primary" onClick={()=>setMode("specimen11to20")}>Questions 11–20</button><button type="button" className="pob-primary" onClick={()=>setMode("specimen21to30")}>Questions 21–30</button><button type="button" className="pob-primary" onClick={()=>setMode("specimen31to40")}>Questions 31–40</button></div></article>
+    <article className="pob-exam-card"><small>5 checkpoints · 10 questions each · 13 minutes each</small><h2>2019 CXC specimen checkpoints</h2><p>Practise original CXC specimen Paper 1 questions in verified ten-question batches. Each checkpoint has a separate score, saved attempt and answer review.</p><div className="pob-exam-controls"><button type="button" className="pob-primary" onClick={()=>setMode("specimen")}>Questions 1–10</button><button type="button" className="pob-primary" onClick={()=>setMode("specimen11to20")}>Questions 11–20</button><button type="button" className="pob-primary" onClick={()=>setMode("specimen21to30")}>Questions 21–30</button><button type="button" className="pob-primary" onClick={()=>setMode("specimen31to40")}>Questions 31–40</button><button type="button" className="pob-primary" onClick={()=>setMode("specimen41to50")}>Questions 41–50</button></div></article>
     <article className="pob-exam-card"><small>5 compulsory questions · 120 minutes</small><h2>Paper 2</h2><p>Original business scenarios, written-response space and detailed marking criteria. Where secure online marking is enabled, extended responses receive rubric-based automated practice assessment.</p><button type="button" className="pob-primary" onClick={()=>setMode("paper2")}>Open Paper 2</button></article>
     <article className="pob-exam-card"><small>Research project · 40 marks</small><h2>Business research SBA</h2><p>Plan your research, draft report sections and review the official 40-mark criteria without inventing grades.</p><button type="button" className="pob-primary" onClick={()=>setMode("sba")}>Open research workspace</button></article>
    </div>
