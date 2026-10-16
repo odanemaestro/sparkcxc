@@ -52,3 +52,15 @@ test("Establishing a Business has enriched guidance for all 15 objectives",()=>{
   expect(detail.activity.length).toBeGreaterThan(50);
  });
 });
+
+test("Legal Aspects of Business has enriched guidance for all 12 objectives",()=>{
+ const sectionFour=POB_OBJECTIVES.filter(o=>o.section===4);
+ expect(sectionFour).toHaveLength(12);
+ sectionFour.forEach(objective=>{
+  const detail=POB_OBJECTIVE_DEEP_DIVES[objective.code];
+  expect(detail).toBeDefined();
+  expect(detail.walkthrough.length).toBeGreaterThan(80);
+  expect(detail.mistake.length).toBeGreaterThan(40);
+  expect(detail.activity.length).toBeGreaterThan(50);
+ });
+});
