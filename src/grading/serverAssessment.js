@@ -71,12 +71,18 @@ export function buildTrustedAssessment(attempt){
           determined+=deterministic.marks;
           continue;
         }
-        items.push({id,maxMarks:part.marks,responseKeys:[id],
-          prompt:part.prompt,context:question.context,
-          rubric:part.criteria.map(c=>({marks:c.marks,rule:c.rule,alternatives:c.alternatives||[]})),
-          constraints:{subject:"principles-of-business",profile:part.profile,
-            officialSpecimen:isSpecimen,sourcePdfPage:part.sourcePdfPage||null,
-            schemePdfPages:part.schemePdfPages||[]}});
+        // Grade every rubric criterion separately, preserving the exact
+        // 1–3 mark caps for developed explanations and partial credit.
+        // The model cannot transfer credit from one criterion to another.
+        part.criteria.forEach((criterion,index)=>{
+          items.push({id:id+":criterion-"+(index+1),maxMarks:criterion.marks,
+            responseKeys:[id],prompt:part.prompt,context:question.context,
+            rubric:[{marks:criterion.marks,rule:criterion.rule,alternatives:criterion.alternatives||[]}],
+            constraints:{subject:"principles-of-business",profile:part.profile,
+              partId:id,criterionIndex:index+1,totalPartMarks:part.marks,
+              officialSpecimen:isSpecimen,sourcePdfPage:part.sourcePdfPage||null,
+              schemePdfPages:part.schemePdfPages||[]}});
+        });
       }
     }
     baseline={score:determined,maxScore:100,unassessedMarks:0};
