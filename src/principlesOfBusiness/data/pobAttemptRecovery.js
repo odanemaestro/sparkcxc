@@ -12,3 +12,9 @@ export function restorePobAttempt(saved,paperId,questionCount,now=Date.now()){
  }
  return {...saved,index,answers,flags};
 }
+
+// Compute the displayed countdown from the saved deadline, not a fresh full duration.
+export function pobRemainingSeconds(attempt,durationSeconds,now=Date.now()){
+ if(attempt?.phase!=="exam"||!Number.isFinite(attempt.deadline))return durationSeconds;
+ return Math.max(0,Math.ceil((attempt.deadline-now)/1000));
+}
