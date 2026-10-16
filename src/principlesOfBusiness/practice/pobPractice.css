@@ -56,7 +56,7 @@
 .pob-p2-criteria summary{cursor:pointer;font-weight:800}
 .pob-p2-criteria ul{padding-left:22px;line-height:1.6}
 .pob-p2-criteria small{line-height:1.5;color:var(--spark-ink-soft,#5d7589)}
-.pob-practice-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.pob-practice-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
 .pob-practice-options article{display:flex;flex-direction:column;align-items:flex-start}
 .pob-practice-options small{font-size:.72rem;font-weight:800;color:var(--spark-teal-dark,#0a7771)}
 .pob-practice-options p{flex:1}
