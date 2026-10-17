@@ -12,6 +12,7 @@ import {POB_2011_MJ_P1_AUTHORED_KEY,verifyPob2011MjP1AuthoredKey} from "./pobHis
 import {POB_2012_MJ_P1_AUTHORED_KEY,auditPob2012MjP1AuthorKey} from "./pobHistorical2012MjP1AuthoredKey";
 import {POB_2014_MJ_P1_AUTHORED_KEY,validatePob2014MjP1AuthoredKey} from "./pobHistorical2014MjP1AuthoredKey";
 import {POB_2015_MJ_P1_AUTHORED_KEY,verifyPob2015MjP1AuthoredKey} from "./pobHistorical2015MjP1AuthoredKey";
+import {POB_2016_MJ_P1_AUTHORED_KEY,verifyPob2016MjP1AuthoredKey} from "./pobHistorical2016MjP1AuthoredKey";
 import {POB_2017_MJ_P1_AUTHORED_KEY,verifyPob2017MjP1AuthoredKey} from "./pobHistorical2017MjP1AuthoredKey";
 import {POB_SUPPLIED_ARCHIVE,pobReleasedHistoricalPapers} from "./pobHistoricalInventory";
 
@@ -36,9 +37,9 @@ describe("Historical POB answer authorship, 15-file second batch",()=>{
   expect(audit.valid).toBe(true);
   expect(audit.issues).toEqual([]);
   expect(audit.totalBatchSources).toBe(15);
-  expect(audit.authoredPaper1SourceCount).toBe(12);
-  expect(audit.authoredQuestions).toBe(720);
-  expect(audit.remainingBatchSources).toBe(3);
+  expect(audit.authoredPaper1SourceCount).toBe(13);
+  expect(audit.authoredQuestions).toBe(780);
+  expect(audit.remainingBatchSources).toBe(2);
   expect(audit.historicalLiveScoringEnabled).toBe(0);
   for(const summary of audit.status){
    expect(summary.internallyAuthoredCount).toBe(60);
@@ -105,6 +106,7 @@ describe("Historical POB answer authorship, 15-file second batch",()=>{
   expect(auditPob2012MjP1AuthorKey().disputes).toEqual([16,27,41,45,55]);
   expect(validatePob2014MjP1AuthoredKey().disputedNumbers).toEqual([51,53,56,57,60]);
   expect(verifyPob2015MjP1AuthoredKey().disputes).toEqual([52,56,59]);
+  expect(verifyPob2016MjP1AuthoredKey().disputes).toEqual([15,26,31,41,47,57]);
   expect(verifyPob2017MjP1AuthoredKey().disputes).toEqual([47,56]);
  });
  test("2008 source has 60 explained responses and 13 preserved academic disputes",()=>{
@@ -128,6 +130,20 @@ describe("Historical POB answer authorship, 15-file second batch",()=>{
       number:58,proposedOption:null,dispute:"no-valid-employment-remedy"
    });
    expect(POB_2007_MJ_P1_AUTHORED_KEY.liveScoringApproved).toBe(false);
+ });
+ test("2016 scanned source Q47 cannot falsely award an incorrect merchandise balance",()=>{
+  const paper=POB_2016_MJ_P1_AUTHORED_KEY;
+  expect(paper.scannedPagesReviewed).toEqual([1,2,3,4,5,6,7,8]);
+  expect(paper.entries).toHaveLength(60);
+  const q47=paper.entries[46];
+  expect(q47).toMatchObject({
+   number:47,pdfPage:7,proposedOption:null,status:"academic-dispute",
+   sourceVisualChecked:true
+  });
+  expect(q47.explanation).toContain("$40m");
+  expect(q47.explanation).toContain("$200m");
+  expect(paper.entries[39]).toMatchObject({number:40,pdfPage:6,proposedOption:"C"});
+  expect(paper.liveScoringApproved).toBe(false);
  });
  test("source manipulation, removed disputes or fake live switches cannot pass",()=>{
   let clone=JSON.parse(JSON.stringify(POB_2002_MJ_P1_AUTHORED_KEY));
