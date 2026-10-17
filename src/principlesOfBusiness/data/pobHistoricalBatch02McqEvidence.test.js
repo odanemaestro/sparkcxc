@@ -25,5 +25,12 @@ describe("second batch POB original-paper answer dispute evidence",()=>{
   }
   const disputed=report.reports.filter(r=>r.academicallyDisputedNumbers.length);
   expect(disputed.length).toBeGreaterThan(0);
+  const old2002=report.reports.find(r=>r.paperId==="POB-P1-2002-MJ");
+  expect(old2002.academicallyDisputedNumbers).toEqual([9,14,18,51,56]);
+  const missing2018=report.reports.find(r=>r.paperId==="POB-P1-2018-MJ");
+  expect(missing2018.noProposedAnswerNumbers).not.toEqual(
+    expect.arrayContaining([53,54,55,56,57])
+  );
+  expect(missing2018.missingOriginalQuestionNumbers).toEqual([53,54,55,56,57]);
  });
 });
