@@ -36,8 +36,7 @@ const OTHER_BATCHES=Object.freeze([
  Object.freeze(["POB-P1-2020-JAN","POB-P1-2020-MJ","POB-P1-2021-MJ","POB-P1-2022-JAN",
   "POB-P1-2024-MJ","POB-P2-2005-MJ","POB-P2-2006-MJ","POB-P2-2007-MJ",
   "POB-P2-2008-MJ","POB-P2-2019-JAN","POB-P2-2019-MJ","POB-P2-2021-MJ",
-  "POB-P2-2023-MJ","POB-P2-2024-MJ","POB-P2-2025-JAN",
-  "POB-P2-2026-JAN"]),
+  "POB-P2-2023-MJ","POB-P2-2024-MJ","POB-P2-2025-JAN"]),
  Object.freeze(["POB-P2-2026-JAN"])
 ]);
 
@@ -89,7 +88,8 @@ export function validatePobHistoricalP2Selection(id,selectedNumbers){
  // grading. Never accept a mere client-supplied paper or boolean.
  const laterCompulsory=new Set([
   "POB-P2-2019-JAN","POB-P2-2019-MJ","POB-P2-2021-MJ",
-  "POB-P2-2023-MJ","POB-P2-2024-MJ","POB-P2-2025-JAN"
+  "POB-P2-2023-MJ","POB-P2-2024-MJ","POB-P2-2025-JAN",
+  "POB-P2-2026-JAN"
  ]);
  const reviewedLater=[...POB_HISTORICAL_SCORING_BATCHES[2],
   ...POB_HISTORICAL_SCORING_BATCHES[3]].find(
