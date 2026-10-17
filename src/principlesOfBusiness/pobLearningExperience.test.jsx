@@ -112,9 +112,10 @@ test("2019 specimen is one uninterrupted 60-item sitting, never six user-facing 
  fireEvent.click(next);
  expect(screen.getByText("Question 2 of 60")).toBeInTheDocument();
 });
-test("Paper 2 next incomplete action has intentional button styling",()=>{
- const {container}=render(<PobPaper2Exam userId="question-skip-test" onBack={jest.fn()}/>);
+test("Paper 2 uses its existing question navigator, without a redundant next-incomplete button",()=>{
+ render(<PobPaper2Exam userId="question-skip-test" onBack={jest.fn()}/>);
  fireEvent.click(screen.getByRole("button",{name:"Start Paper 2"}));
- expect(container.querySelector(".pob-exam-skip")).toBeInTheDocument();
- expect(screen.getByRole("button",{name:/Go to next incomplete question/})).toHaveClass("secondary","pob-exam-skip");
+ expect(screen.queryByRole("button",{name:/Go to next incomplete question/})).not.toBeInTheDocument();
+ expect(screen.getByRole("button",{name:"Question 1: 0 of 5 parts answered"})).toBeInTheDocument();
+ expect(screen.getByRole("button",{name:"Next question"})).toBeInTheDocument();
 });
