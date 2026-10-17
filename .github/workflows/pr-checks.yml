@@ -42,6 +42,9 @@ jobs:
           REACT_APP_VAPID_PUBLIC_KEY: ${{ secrets.REACT_APP_VAPID_PUBLIC_KEY }}
           REACT_APP_ENABLE_PHYSICS: "true"
 
+      - name: Verify historical POB canary controls in isolated PostgreSQL
+        run: node tools/test-pob-historical-queue.mjs
+
       - name: Verify marking database and build worker
         run: npm run test:marking-db && npm run build:marker
 
