@@ -10,6 +10,7 @@ import {POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_51_60,verifyPobSpecimenCheckpoint51t
 import {POB_CXC_2019_SPECIMEN_P1_FULL,verifyPobFullSpecimen} from "../data/pobCxcSpecimenP1Full";
 import {scorePobSpecimen} from "../data/pobSpecimenScoring";
 import {POB_PAPER2_ORIGINAL_01} from "../data/pobPaper2Original";
+import {buildPob2026JanHistoricalPaper,verifyPob2026JanHistoricalPaper} from "../data/pobHistorical2026JanP2RealPaper";
 import {checkPobCalculation,inspectPobCalculationEvidence} from "../data/pobCalculationFeedback";
 import {restorePobAttempt,pobRemainingSeconds} from "../data/pobAttemptRecovery";
 import {pobPaper2Completion,nextIncompletePobQuestion} from "../data/pobPaper2Progress";
@@ -172,11 +173,12 @@ export function PobPaper1Exam({userId,supabase,onBack,paperOverride=null}){
  </div></main>;
 }
 
-export function PobPaper2Exam({onBack,userId,supabase}){
- const paper=POB_PAPER2_ORIGINAL_01;
+export function PobPaper2Exam({onBack,userId,supabase,paperOverride=null}){
+ const paper=useMemo(()=>paperOverride||POB_PAPER2_ORIGINAL_01,[paperOverride]);
+ const historical=Boolean(paperOverride);
  const key=storage(userId,paper.id);
  const [attempt,setAttempt]=useState(()=>{const saved=safeRead(key);return restorePobAttempt(saved,paper.id,paper.questions.length)||startState(paper.id)});
- const [remaining,setRemaining]=useState(()=>pobRemainingSeconds(attempt,120*60));
+ const [remaining,setRemaining]=useState(()=>pobRemainingSeconds(attempt,(paper.timeLimitMinutes||120)*60));
  const [confirm,setConfirm]=useState(false);
  const recorded=useRef(new Set());
  const submittedToServer=useRef(new Set());
@@ -198,7 +200,7 @@ export function PobPaper2Exam({onBack,userId,supabase}){
  useEffect(toTop,[attempt.phase,attempt.index]);
  useEffect(()=>{
    const id=attempt.serverAttemptId;
-   if(!review||!id||!supabase?.rpc||submittedToServer.current.has(id))return;
+   if(historical||!review||!id||!supabase?.rpc||submittedToServer.current.has(id))return;
    submittedToServer.current.add(id);
    let active=true;
    submitServerExamAttempt({supabase,attemptId:id,responses:attempt.answers,
@@ -206,9 +208,9 @@ export function PobPaper2Exam({onBack,userId,supabase}){
      .then(result=>{if(active&&result.available)setSavedServerId(id);if(!result.available)submittedToServer.current.delete(id);})
      .catch(()=>{submittedToServer.current.delete(id);});
    return()=>{active=false;};
- },[review,attempt.serverAttemptId,attempt.answers,supabase,paper.id]);
+ },[historical,review,attempt.serverAttemptId,attempt.answers,supabase,paper.id]);
  useEffect(()=>{
-   if(!review||!userId||!supabase?.rpc||recorded.current.has(attempt.attemptId))return;
+   if(historical||!review||!userId||!supabase?.rpc||recorded.current.has(attempt.attemptId))return;
    recorded.current.add(attempt.attemptId);
    recordSubjectActivity({supabase,activity:{
      subjectId:SUBJECT,activityKey:"practice:pob-paper2:"+paper.id+":"+attempt.attemptId,
@@ -217,12 +219,13 @@ export function PobPaper2Exam({onBack,userId,supabase}){
      metadata:{source:"spark-original",historical:false,paper:"02",answered_parts:answered,
        duration_minutes:120,marking_status:"not-automatically-graded"}
    }}).catch(()=>recorded.current.delete(attempt.attemptId));
- },[review,userId,supabase,attempt.attemptId,answered,paper.id]);
+ },[historical,review,userId,supabase,attempt.attemptId,answered,paper.id]);
  const start=async()=>{
    setSavedServerId(null);
    setRemaining(120*60);
-   const active={...startState(paper.id),phase:"exam",deadline:Date.now()+120*60*1000};
+   const active={...startState(paper.id),phase:"exam",deadline:Date.now()+(paper.timeLimitMinutes||120)*60*1000};
    setAttempt(active);
+   if(historical)return; // Historical PDF: offline exam preview only, NO numeric scores or server marking jobs.
    const saved=await startServerExamAttempt({supabase,subjectId:SUBJECT,paper:"02",
      durationSeconds:7200,bankVersion:paper.id,rubricVersion:"pob-original-p2-rubric-v1",
      graderVersion:"online-v1",metadata:{paper_id:paper.id,source:"spark-original"}});
@@ -232,11 +235,11 @@ export function PobPaper2Exam({onBack,userId,supabase}){
  return <main className="pob-exam"><div className="pob-exam-shell">
   <div className="pob-exam-nav"><button type="button" onClick={onBack}>← Practice home</button><span>CSEC PRINCIPLES OF BUSINESS · PAPER 02</span></div>
   {attempt.phase==="instructions"?<section className="pob-exam-card pob-exam-intro">
-   <span className="pob-exam-kicker">SPARK ORIGINAL STRUCTURED PRACTICE</span><h1>Paper 2: Business decisions</h1>
+   <span className="pob-exam-kicker">{historical?"HISTORICAL CXC SOURCE · UNSCORED PREVIEW":"SPARK ORIGINAL STRUCTURED PRACTICE"}</span><h1>{historical?paper.title:"Paper 2: Business decisions"}</h1>
    <p>Five compulsory 20-mark questions, 100 marks, 2 hours. Read each business scenario carefully and use complete sentences, calculations and relevant Caribbean examples.</p>
-   <p>SPARK saves your responses on this device and shows the marking scheme after submission. Where online marking is enabled, SPARK also checks written answers against the rubric using two independent automated passes. Uncertain results are shown as ranges rather than guessed grades.</p>
+   <p>{historical?"This is a transcription-based preview of an original historical paper. SPARK saves your responses locally and displays its internally proposed answer guidance. No numerical score, official CXC mark or live grading job is created until this sitting passes calibration.":"SPARK saves your responses on this device and shows the marking scheme after submission. Where online marking is enabled, SPARK also checks written answers against the rubric using two independent automated passes. Uncertain results are shown as ranges rather than guessed grades."}</p>
    <button type="button" className="pob-primary" onClick={start}>Start Paper 2</button></section>:<>
-   <header className="pob-exam-card pob-exam-status"><div><strong>{review?"Paper 2 submitted":"Paper 2 in progress"}</strong><span>{answered} of 25 parts answered</span></div><span className="pob-timer" role="timer">{review?"Review":clock(remaining)}</span></header>
+   <header className="pob-exam-card pob-exam-status"><div><strong>{review?"Paper 2 submitted":"Paper 2 in progress"}</strong><span>{answered} of {paper.questions.reduce((n,q)=>n+q.items.length,0)} parts answered</span></div><span className="pob-timer" role="timer">{review?"Review":clock(remaining)}</span></header>
    {!review&&nextIncomplete!==null&&<button type="button" className="secondary" onClick={()=>update({index:nextIncomplete})}>Go to next incomplete question</button>}
    <nav className="pob-exam-card pob-paper2-nav" aria-label="Paper 2 question navigator">{paper.questions.map((q,i)=>{const completed=q.items.filter(part=>String(attempt.answers[q.id+":"+part.id]||"").trim()).length;return <button key={q.id} className={q.id===question.id?"active":""} type="button" aria-current={q.id===question.id?"step":undefined} aria-label={"Question "+(i+1)+": "+completed+" of "+q.items.length+" parts answered"} onClick={()=>update({index:i})}>Question {i+1} <span className="pob-p2-count">{completed}/{q.items.length}</span></button>})}</nav>
    <section className="pob-exam-card pob-p2-question"><div className="pob-question-head"><span>Question {question.number}</span><span>20 marks</span></div><h1>{question.title}</h1><p>{question.context}</p>
@@ -272,11 +275,11 @@ export function PobPaper2Exam({onBack,userId,supabase}){
        </div>}
        {review&&rubricReview.questions.flatMap(q=>q.parts).find(part=>part.id===id)?.status==="graded-listing"&&<div className="pob-p2-calculation" role="status"><strong>Automatically checked listing question</strong><p>{rubricReview.questions.flatMap(q=>q.parts).find(part=>part.id===id)?.assessedMarks} of {item.marks} marks based on distinct valid terms. Only listing questions use this automatic rule.</p></div>}
        {review&&rubricReview.questions.flatMap(q=>q.parts).find(part=>part.id===id)?.status==="partially-graded-calculation"&&<div className="pob-p2-calculation" role="status"><strong>Verified calculation result: 1 mark</strong><p>Your working, final result and unit/context match the numerical-result criterion. Other method, explanation and interpretation marks are still pending assessment. This is not a final part or paper score.</p></div>}
-       {review&&<details className="pob-p2-criteria"><summary>View SPARK marking guidance</summary>
+       {review&&<details className="pob-p2-criteria"><summary>{historical?"View provisional SPARK answer guidance (not graded)":"View SPARK marking guidance"}</summary>
          <p>{item.modelAnswer}</p>
          <ul>{item.criteria.map((criterion,i)=><li key={i}><strong>{criterion.marks} mark{criterion.marks===1?"":"s"}</strong>: {criterion.rule} {assessPobPartEvidence(id,attempt.answers[id])?.signals[i]?.matched?"(Possible supporting concept found; not graded)":""}</li>)}</ul>
          {getPobP2FeedbackGuide(id)&&<div className="pob-p2-guide"><strong>How to strengthen your response</strong><p>{getPobP2FeedbackGuide(id).guidance}</p><strong>Common mistakes</strong><ul>{getPobP2FeedbackGuide(id).pitfalls.map((point,i)=><li key={i}>{point}</li>)}</ul><strong>Acceptable approaches</strong><ul>{getPobP2FeedbackGuide(id).alternatives.map((point,i)=><li key={i}>{point}</li>)}</ul></div>}
-         <small>Other equivalent correct explanations may also deserve credit. This is marking guidance, not a final automatically assigned grade.</small>
+         <small>Other equivalent correct explanations may also deserve credit. {historical?"This is an internally authored draft, not an official CXC scheme or a grade.":"This is marking guidance, not a final automatically assigned grade."}</small>
        </details>}
      </div>;
    })}
@@ -288,13 +291,16 @@ export function PobPaper2Exam({onBack,userId,supabase}){
    {review&&savedServerId&&<ServerMarkingReview supabase={supabase} attemptId={savedServerId} autoStart/>}
    {review&&<section className="pob-exam-card pob-review-note"><h2>Response review</h2><p><strong>Rubric coverage:</strong> {rubricReview.answeredParts} of {rubricReview.totalParts} responses submitted. {rubricReview.availableMarks} marks available. {rubricReview.markStatus==="unanswered"?"No written responses were supplied.":rubricReview.confirmedMarks+" marks have been verified on strict listing or calculation-result criteria. Remaining written criteria require reliable subject-aware assessment; no final Paper 2 grade has been assigned."}</p><p>Question overview: select an incomplete or answered question above to review your work and the marking criteria.</p><ol>{paper.questions.map(q=>{const completed=q.items.filter(part=>String(attempt.answers[q.id+":"+part.id]||"").trim()).length;return <li key={q.id}>Question {q.number}: {completed} of {q.items.length} parts answered, {q.marks} marks available</li>})}</ol><p>Your answers have been preserved in this browser. The mark-by-mark criteria show what a complete answer should demonstrate. No score has been invented for free-text responses.</p></section>}
    {confirm&&!review&&<div className="pob-confirm-overlay"><div className="pob-exam-card pob-confirm" role="dialog" aria-modal="true" aria-label="Confirm Paper 2 submission">
-    <h2>Finish Paper 2?</h2><p>{answered} of 25 parts have responses. You can view the model answers and criteria after submitting.</p>
+    <h2>Finish Paper 2?</h2><p>{answered} of {paper.questions.reduce((n,q)=>n+q.items.length,0)} parts have responses. You can view the model answers and criteria after submitting.</p>
     <div className="pob-exam-controls"><button type="button" className="secondary" onClick={()=>setConfirm(false)}>Keep working</button>
     <button type="button" className="pob-primary" onClick={finish}>Submit responses</button></div>
    </div></div>}
   </>}
  </div></main>;
 }
+
+const POB_2026_HISTORICAL_PREVIEW=buildPob2026JanHistoricalPaper();
+const POB_2026_HISTORICAL_PREVIEW_VALID=verifyPob2026JanHistoricalPaper(POB_2026_HISTORICAL_PREVIEW).valid;
 
 export default function PobPracticeHub({userId,supabase,onBack}){
  const [mode,setMode]=useState("home");
@@ -307,15 +313,17 @@ export default function PobPracticeHub({userId,supabase,onBack}){
  if(mode==="specimen51to60")return <PobPaper1Exam paperOverride={POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_51_60} userId={userId} supabase={supabase} onBack={()=>setMode("home")}/>;
  if(mode==="specimenFull")return <PobPaper1Exam paperOverride={POB_CXC_2019_SPECIMEN_P1_FULL} userId={userId} supabase={supabase} onBack={()=>setMode("home")}/>;
  if(mode==="paper2")return <PobPaper2Exam userId={userId} supabase={supabase} onBack={()=>setMode("home")}/>;
+ if(mode==="historical2026janp2"&&POB_2026_HISTORICAL_PREVIEW_VALID)return <PobPaper2Exam paperOverride={POB_2026_HISTORICAL_PREVIEW} userId={userId} supabase={supabase} onBack={()=>setMode("home")}/>;
  if(mode==="sba")return <PobSbaWorkspace onBack={()=>setMode("home")}/>;
  return <main className="pob-exam"><div className="pob-exam-shell">
    {onBack&&<div className="pob-exam-nav"><button type="button" onClick={onBack}>← Choose another subject</button></div>}
    <header className="pob-exam-card pob-exam-intro"><span className="pob-exam-kicker">SPARK CSEC PRINCIPLES OF BUSINESS</span>
-     <h1>Practise business thinking</h1><p>Take a full timed practice paper, work through business scenarios or plan your SBA research. Original questions are clearly labelled, and historical source papers remain unavailable until verified.</p></header>
+     <h1>Practise business thinking</h1><p>Take a full timed practice paper, work through business scenarios or plan your SBA research. Original questions are clearly labelled. Historical previews remain unscored until source and grading calibration are verified.</p></header>
    <div className="pob-practice-options">
     <article className="pob-exam-card"><small>60 questions · 75 minutes</small><h2>Paper 1</h2><p>Original multiple-choice practice across all ten syllabus sections with instant explanations after submission.</p><button type="button" className="pob-primary" onClick={()=>setMode("paper1")}>Open Paper 1</button></article>
     <article className="pob-exam-card"><small>Full 60-question paper · 75 minutes · six ten-question checkpoints</small><h2>2019 CXC specimen Paper 1</h2><p>Take the complete 75-minute specimen or practise in ten-question batches. Scores follow the printed CXC specimen key; three academically disputed answers are flagged. Every mode has its own saved attempt and review.</p><div className="pob-exam-controls"><button type="button" className="pob-primary" onClick={()=>setMode("specimenFull")}>Full 60-question specimen</button></div><div className="pob-exam-controls"><button type="button" className="pob-primary" onClick={()=>setMode("specimen")}>Questions 1–10</button><button type="button" className="pob-primary" onClick={()=>setMode("specimen11to20")}>Questions 11–20</button><button type="button" className="pob-primary" onClick={()=>setMode("specimen21to30")}>Questions 21–30</button><button type="button" className="pob-primary" onClick={()=>setMode("specimen31to40")}>Questions 31–40</button><button type="button" className="pob-primary" onClick={()=>setMode("specimen41to50")}>Questions 41–50</button><button type="button" className="pob-primary" onClick={()=>setMode("specimen51to60")}>Questions 51–60</button></div></article>
     <article className="pob-exam-card"><small>5 compulsory questions · 120 minutes</small><h2>Paper 2</h2><p>Original business scenarios, written-response space and detailed marking criteria. Where secure online marking is enabled, extended responses receive rubric-based automated practice assessment.</p><button type="button" className="pob-primary" onClick={()=>setMode("paper2")}>Open Paper 2</button></article>
+    {POB_2026_HISTORICAL_PREVIEW_VALID&&<article className="pob-exam-card"><small>January 2026 · 5 original questions · 32 parts · 120 minutes</small><h2>Historical Paper 2 · January 2026</h2><p>Practise the original 2026 questions and case studies in a timed examination. Answers are stored locally. SPARK shows provisional guidance after submission, but does not calculate grades until the historical marking benchmark is approved.</p><button type="button" className="pob-primary" onClick={()=>setMode("historical2026janp2")}>Preview historical Paper 2</button></article>}
     <article className="pob-exam-card"><small>Research project · 40 marks</small><h2>Business research SBA</h2><p>Plan your research, draft report sections and review the official 40-mark criteria without inventing grades.</p><button type="button" className="pob-primary" onClick={()=>setMode("sba")}>Open research workspace</button></article>
    </div>
  </div></main>;

@@ -66,12 +66,13 @@ test("POB SBA draft warns against invented evidence and does not claim official 
   expect(screen.getByText(/1 of 10 sections started/)).toBeInTheDocument();
 });
 
-test("POB practice hub offers all three modes and no fake historical examination",()=>{
+test("POB practice hub offers historical source preview but no fabricated historical grades",()=>{
   render(<PobPracticeHub userId="test-student" onBack={jest.fn()}/>);
   expect(screen.getByRole("button",{name:"Open Paper 1"})).toBeInTheDocument();
   expect(screen.getByRole("button",{name:"Open Paper 2"})).toBeInTheDocument();
   expect(screen.getByRole("button",{name:"Open research workspace"})).toBeInTheDocument();
-  expect(screen.getByText(/historical source papers remain unavailable until verified/)).toBeInTheDocument();
+  expect(screen.getByText(/Historical previews remain unscored until source and grading calibration are verified/)).toBeInTheDocument();
+  expect(screen.getByRole("button",{name:"Preview historical Paper 2"})).toBeInTheDocument();
 });
 
 test("POB Paper 2 navigator shows per-question answered-part progress",()=>{
