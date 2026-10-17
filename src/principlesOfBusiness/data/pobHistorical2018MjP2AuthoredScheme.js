@@ -1,0 +1,45 @@
+// SPARK original academic answers to May/June 2018 historical POB Paper 02.
+// This is NOT an officially published CXC marking scheme.
+// Source pp. 1-14. Five compulsory 20-mark questions = 100 marks.
+import {buildPobFiveQuestionAuthoredRubric,verifyPobFiveQuestionAuthoredRubric} from "./pobHistoricalFiveQuestionRubric";
+const POINTS=Object.freeze([
+ [1,"a.i","An organisational chart is a diagram showing employee positions, levels of authority and reporting relationships within an enterprise.",["1:Identifies graphical representation of organisational positions","1:Explains authority or reporting relationships"]],
+ [1,"a.ii","Rules include placing the most senior role at the top and using clear, consistent lines to show reporting relationships without crossing unnecessarily.",["1:First appropriate chart construction rule","1:Second distinct rule"]],
+ [1,"b","A correct simple line chart puts a managing director at the top, an operations manager on the second level and a supervisor reporting on the third level, with clear straight reporting lines.",["1:Top level contains a clearly named senior manager","1:Second level contains an appropriate named middle manager","1:Third level contains one valid lower supervisory position","1:Reporting lines follow an unambiguous top-down line chain"]],
+ [1,"c","Human resource managers recruit employees, organise training and handle employee relations or grievances.",["1:First recognised HR duty","1:Second different duty","1:Third different duty"]],
+ [1,"d.i","Organisational conflict may arise from inadequate communication, unequal workloads and unfair promotions.",["1:First plausible source of conflict","1:Second different source","1:Third different source"]],
+ [1,"d.ii","Mediation lets a neutral party facilitate discussion and agreement. An established grievance process lets employees lodge complaints and receive a fair management response.",["3:First distinct conflict-resolution approach, how it works and positive consequence","3:Second distinct approach and explained process"]],
+ [2,"a","Entrepreneurs need initiative, creativity, perseverance and willingness to take calculated risks.",["1:First genuine entrepreneurial trait","1:Second different trait","1:Third distinct trait","1:Fourth distinct trait"]],
+ [2,"b.i","Accessing funds involves assessing start-up needs and raising capital through savings, approved credit or investors to finance the venture.",["1:Explains identifying or obtaining business funding","1:Shows resource or operating use"]],
+ [2,"b.ii","Organising resources means identifying and combining labour, equipment, premises and materials so the enterprise can operate efficiently.",["1:Explains acquiring or coordinating resources","1:Connects to productive venture needs"]],
+ [2,"c","The four steps are idea generation, estimating or organising resources, conducting market research and preparing a business plan for investors.",["1:Correctly identifies idea generation","1:Correctly identifies resource assessment","1:Correctly identifies primary market research or feasibility research","1:Correctly identifies drafting a business plan"]],
+ [2,"d","The marketing department studies customer demand, sets promotional strategies and decides how products reach target buyers.",["1:Names one valid functional business area","1:Describes genuine duties of the same area"]],
+ [2,"e","Planning helps managers budget staffing and inputs before production, avoiding expensive shortages. It also sets goals and deadlines so performance can be checked and problems corrected.",["3:First distinct planning benefit, process and operational impact","3:Second different benefit developed"]],
+ [3,"a.i","Production means creating goods or providing services by transforming inputs into output for use or sale.",["1:Identifies creation of goods or services","1:Connects to resources, processes or outputs"]],
+ [3,"a.ii","Productivity is the amount of output per unit of input, such as products made per labour hour.",["1:Connects output to an input","1:Gives efficiency or explicit per-input ratio"]],
+ [3,"b","Available labour depends partly on the local working-age population and wage or working conditions offered by employers.",["1:First factor that influences labour supply","1:Second different relevant factor"]],
+ [3,"c","Education and skills training make workers more accurate and efficient. Reliable modern equipment also enables employees to complete more output each hour.",["2:First factor and how it changes productivity","2:Second distinct factor with productivity mechanism"]],
+ [3,"d","Subsistence production mainly meets the producers' own needs, whereas domestic production occurs within a country and may supply commercial or noncommercial markets.",["2:Correct subsistence output concept and users","2:Correct domestic geographical production concept, distinguished from subsistence"]],
+ [3,"e","Technology can raise output per worker by automating repetitive steps and improving accuracy. An adverse effect is costly equipment or job displacement that strains finances or workforce relations.",["3:Positive business impact and explanation","3:Distinct negative business impact explained"]],
+ [4,"a","Marketing activities include market research, pricing, advertising or promotion and product distribution.",["1:First legitimate marketing activity","1:Second distinct activity","1:Third distinct activity","1:Fourth distinct activity"]],
+ [4,"b","Product decisions concern features and quality that satisfy customers, while price decisions set the selling charge to account for costs, value and competitive conditions.",["2:First traditional marketing-mix element explained, not merely named","2:Second distinct element outlined"]],
+ [4,"c.i","Public relations uses planned communication, media events and community engagement to build a favourable reputation and relationships with the public.",["1:Explains communicating image or reputation","1:Gives valid public-relations activity or aim"]],
+ [4,"c.ii","Sales promotion is a short-term incentive such as a coupon, sample or time-limited discount to stimulate purchase.",["1:Explains time-limited extra inducement","1:Example or credible purchase stimulus"]],
+ [4,"d.i","Retailing means selling goods or services directly to final consumers for personal or household use.",["1:Identifies selling to end consumer","1:Explains final use rather than resale"]],
+ [4,"d.ii","They can start a specialty mobile-phone shop for phones and repairs, run an online storefront shipping accessories or operate a market kiosk with low overhead and face-to-face sales.",["2:First appropriate outlet type explained for phone accessories","2:Second DISTINCT suitable type described","2:Third different type described"]],
+ [5,"a.i","CARICOM promotes cooperation and greater regional integration, including improving trade among participating Caribbean states.",["1:States real CARICOM function"]],
+ [5,"a.ii","The WTO helps establish international trade rules and settle disputes or negotiations between members.",["1:States genuine WTO role"]],
+ [5,"b.i","Governments can reduce unemployment by funding apprenticeships or vocational skills so workers qualify for available jobs.",["1:Actionable appropriate unemployment policy","1:Explains expected employment effect"]],
+ [5,"b.ii","Governments can manage overpopulation pressures through voluntary family-planning education and reproductive-health services, allowing informed decisions.",["1:Credible rights-respecting population policy","1:Explains its effect"]],
+ [5,"b.iii","Governments can reduce unwanted skilled emigration by expanding local skilled jobs and competitive career opportunities, encouraging people to remain.",["1:Credible migration-related intervention","1:Explains expected effect"]],
+ [5,"c","Economic dualism is coexistence of modern high-productivity and traditional low-productivity sectors, often with unequal income and access to technology.",["1:Contrasts modern and traditional economic activities","1:Identifies productivity, income or technical divide"]],
+ [5,"d","FDI brings funds for factories or services and transfers management skills or technology to local workers.",["2:First FDI host-country benefit outlined with economic effect","2:Second different benefit developed"]],
+ [5,"e","A government can develop reliable roads, electricity and transport to reduce manufacturing costs and improve deliveries. It can also support technical training and affordable enterprise credit to improve output and investment.",["3:First distinct manufacturing support policy and causal explanation","3:Second different support policy explained"]],
+]);
+export const POB_2018_MJ_P2_AUTHORED_SCHEME=buildPobFiveQuestionAuthoredRubric({
+ year:2018,sitting:"MJ",sourcePages:14,
+ sourceSha256:"d93ccbf4102186426f7326f789db4e8d3ca1b9a3a73aed63e5a360d0546f956f",
+ parts:POINTS
+});
+export const verifyPob2018MjP2AuthoredScheme=(paper=POB_2018_MJ_P2_AUTHORED_SCHEME)=>
+ verifyPobFiveQuestionAuthoredRubric(paper);
