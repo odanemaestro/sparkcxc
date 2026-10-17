@@ -19,21 +19,21 @@ test("all 46 historical sources load: 20 Paper 1 and 26 Paper 2, one unique sour
  }
  expect(getPobHistoricalReviewBank("POB-P2-2019-MJ-ALT").source.reclassifiedFromPaper1).toBe(true);
 });
-test("source-backed 2023 Paper 1 shows original question and four complete answer choices, not blank bubbles",()=>{
+test("January 2023 P1 is a real timed 60-item original source exam, not an answer sheet",()=>{
  const {container}=render(<PobHistoricalArchive onBack={jest.fn()} onOpenJanuary2026={jest.fn()}/>);
  expect(screen.getByText(/46 source papers shown/)).toBeInTheDocument();
  fireEvent.change(screen.getByLabelText("Paper type"),{target:{value:"1"}});
  expect(screen.getByText(/20 source papers shown/)).toBeInTheDocument();
  fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2023"}});
  fireEvent.click(screen.getByRole("button",{name:/2023 January.*Answer-sheet and explanations/}));
- expect(screen.getByText(/January 2023 Paper 1 · Source question preview/)).toBeInTheDocument();
- expect(screen.getByText(/remaining 50 questions have not passed transcription checks/)).toBeInTheDocument();
- fireEvent.click(screen.getByRole("button",{name:"Practise original Questions 1–10"}));
+ expect(screen.getByText(/January 2023 · Paper 1 examination/)).toBeInTheDocument();
+ expect(screen.getByText(/complete 60-question Paper 1 is available/)).toBeInTheDocument();
+ fireEvent.click(screen.getByRole("button",{name:"Start 60-question Paper 1"}));
  expect(screen.getByText(/type of business environment MOST typical/)).toBeInTheDocument();
  expect(screen.getByText("mixed economy")).toBeInTheDocument();
- expect(container.querySelectorAll(".pob-exam-number-grid button")).toHaveLength(10);
+ expect(container.querySelectorAll(".pob-exam-number-grid button")).toHaveLength(60);
  fireEvent.click(screen.getByRole("button",{name:"Next question"}));
- expect(screen.getByText("Question 2 of 10")).toBeInTheDocument();
+ expect(screen.getByText("Question 2 of 60")).toBeInTheDocument();
  fireEvent.click(screen.getByRole("button",{name:"Submit and review"}));
  expect(screen.getByText(/Provisional answer comparison/)).toBeInTheDocument();
 });
