@@ -3,6 +3,7 @@
 // For most older papers the full CXC stems are NOT yet digitised. Results
 // must be labelled provisional practice estimates, never official CXC marks.
 import {POB_HISTORICAL_REVIEW_BANKS,getPobHistoricalReviewBank} from "../principlesOfBusiness/data/pobHistoricalArchiveRegistry";
+import {POB_2009_MJ_P2_SOURCE,verifyPob2009SourcePrompts} from "../principlesOfBusiness/data/pobHistorical2009MjP2SourceQuestions";
 import {requestSemanticPass,reconcileSemanticPasses} from "./semanticMarking";
 
 export const POB_ARCHIVE_RUBRIC_VERSION="pob-historical-archive-rubric-v1";
@@ -37,6 +38,7 @@ export function buildPobArchiveExaminerPack({paperId,selectedQuestions,responses
  const record=getPobHistoricalReviewBank(paperId);
  if(!record||record.paper!==2||record.id==="POB-P2-2026-JAN")throw new Error("unsupported_bank_version");
  const paper=record.bank;
+ const fullSource=paperId==="POB-P2-2009-MJ"&&verifyPob2009SourcePrompts(paper).valid;
  if(paper.sourceSha256!==record.source.sourceSha256)throw new Error("historical_source_not_verified");
  if(!validatePobArchiveSelection(paper,selectedQuestions))throw new Error("invalid_historical_question_selection");
  if(!responses||typeof responses!=="object"||Array.isArray(responses))throw new Error("invalid_snapshot");
@@ -53,7 +55,7 @@ export function buildPobArchiveExaminerPack({paperId,selectedQuestions,responses
    const sum=part.criteria.reduce((n,c)=>n+Number(c.marks||0),0);
    if(sum!==part.marks||sum<=0)throw new Error("historical_criterion_marks_mismatch");
    questionMarks+=sum;
-   const prompt=part.prompt||part.sourcePromptSummary||
+   const prompt=(fullSource&&POB_2009_MJ_P2_SOURCE.prompts[q.number+":"+part.id])||part.prompt||part.sourcePromptSummary||
       "Historical Paper 2, question "+q.number+"("+part.id+"). Use the original source booklet for exact question wording.";
    parts.push({id,question:q.number,part:part.id,maxMarks:sum,
       modelAnswer:part.modelAnswer,prompt,
@@ -68,7 +70,7 @@ export function buildPobArchiveExaminerPack({paperId,selectedQuestions,responses
          alternatives:part.acceptedIllustrations||criterion.alternatives||[]}],
        constraints:{historicalExaminerMarking:true,primaryResponseKey:id,
          questionNumber:q.number,criterionNumber:i+1,
-         criterionCount:part.criteria.length,sourceStemFullyVerified:false}
+         criterionCount:part.criteria.length,sourceStemFullyVerified:fullSource}
      });
    }
   }
@@ -87,7 +89,7 @@ export function buildPobArchiveExaminerPack({paperId,selectedQuestions,responses
    sourceSha256:record.source.sourceSha256,
    bankVersion:pobArchiveBankVersion(paperId),
    rubricVersion:POB_ARCHIVE_RUBRIC_VERSION,
-   calibrationVerified:false,sourceQuestionsDigitised:false
+   calibrationVerified:false,sourceQuestionsDigitised:fullSource
  };
 }
 export async function gradePobArchiveExaminerPaper({

@@ -53,3 +53,14 @@
 .pob-archive-scoring .spark-marking-review{margin:1rem 0}
 .pob-archive-scoring>p{font-size:.86rem}
 @media(max-width:530px){.pob-archive-optional{flex-direction:column;align-items:stretch}.pob-archive-optional label{width:100%}.pob-archive-optional select{width:100%}}
+
+/* Source-backed question previews use the same restrained exam typography,
+   navigator and answer styling as the full 2019 specimen. */
+.pob-archive-reference{margin:1rem 0;border:1px solid color-mix(in srgb,currentColor 17%,transparent);border-radius:13px;padding:.85rem}
+.pob-archive-reference>summary{font-weight:730;cursor:pointer;padding:.2rem}
+.pob-source-paper .pob-source-status{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:.5rem 0}
+.pob-source-paper .pob-source-status span{font-size:.85rem;opacity:.75}
+.pob-source-paper .pob-exam-result strong{font-size:1.5rem}
+.pob-source-paper .pob-exam-question h1{font-size:clamp(1.03rem,1.3vw + .8rem,1.4rem);line-height:1.55;white-space:pre-line}
+.pob-source-paper .pob-exam-layout{margin:1rem 0}
+.pob-archive .pob-archive-source{overflow-wrap:anywhere}
