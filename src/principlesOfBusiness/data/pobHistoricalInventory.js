@@ -1,5 +1,7 @@
 // Inventory of the user's POB.zip historical sources, not question transcriptions.
 // A file listed here is NOT available for playback or grading in the web app.
+import {pobSourceSha256,POB_HISTORICAL_SCORING_OWNER_APPROVAL} from "./pobHistoricalScoringApproval";
+
 const p1=[[2002,"MJ",9],[2003,"MJ",8],[2004,"MJ",8],[2005,"MJ",10],[2006,"MJ",8],
   [2007,"MJ",8],[2008,"MJ",8],[2011,"MJ",8],[2012,"MJ",9],[2014,"MJ",9],
   [2015,"MJ",9],[2016,"MJ",8],[2017,"MJ",10],[2018,"MJ",9],[2019,"MJ",15],
@@ -13,13 +15,17 @@ const p2=[[2005,"MJ",5],[2006,"MJ",6],[2007,"MJ",6],[2008,"MJ",4],[2009,"MJ",4],
 const item=(paper,[year,sitting,pages])=>{
  const reclassified=paper===1&&year===2019&&sitting==="MJ";
  const actualPaper=reclassified?2:paper;
+ const filename="CSEC_Principles_of_Business_P"+paper+"_"+year+"_"+sitting+".pdf";
  return Object.freeze({
   id:"POB-P"+actualPaper+"-"+year+"-"+sitting+(reclassified?"-ALT":""),
   paper:actualPaper,year,sitting,pages,
   sourceArchivePaperLabel:paper,
   reclassifiedFromPaper1:reclassified,
-  filename:"CSEC_Principles_of_Business_P"+paper+"_"+year+"_"+sitting+".pdf",
+  filename,sourceSha256:pobSourceSha256(filename),
   historical:true,origin:"user-supplied",
+  // Permission to develop automated scoring, not answer verification or publication.
+  ownerAutoScoringAuthorized:true,
+  ownerScoringApprovalDate:POB_HISTORICAL_SCORING_OWNER_APPROVAL.authorizedOn,
   sourcePaperMismatch:false,
   filenamePaperMismatch:reclassified,
   coverPaperNumber:reclassified?2:null,
@@ -43,6 +49,7 @@ export const POB_SOURCE_INVENTORY=Object.freeze({
   pagesPaper2:p2.reduce((sum,x)=>sum+x[2],0),
   actualPagesPaper1:p1.reduce((sum,x)=>sum+x[2],0)-15,
   actualPagesPaper2:p2.reduce((sum,x)=>sum+x[2],0)+15,
+  ownerApprovedForFutureAutoScoring:POB_HISTORICAL_SCORING_OWNER_APPROVAL.sourcePdfCount,
   syllabusFilename:"CSEC-Principles-of-Business-Syllabus-.pdf",
   origin:"POB.zip"
 });
