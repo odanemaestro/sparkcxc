@@ -7,6 +7,9 @@ import {
 import {POB_SUPPLIED_ARCHIVE,pobReleasedHistoricalPapers} from "./pobHistoricalInventory";
 import {assessPobHistoricalAutoScoring} from "./pobHistoricalAutoScoringGate";
 import {POB_2008_MJ_P2_AUTHORED_SCHEME,verifyPob2008MjP2AuthoredScheme,validatePob2008MjP2Choices} from "./pobHistorical2008MjP2AuthoredScheme";
+import {POB_2005_MJ_P2_AUTHORED_SCHEME,verifyPob2005MjP2AuthoredScheme} from "./pobHistorical2005MjP2AuthoredScheme";
+import {POB_2006_MJ_P2_AUTHORED_SCHEME,verifyPob2006MjP2AuthoredScheme} from "./pobHistorical2006MjP2AuthoredScheme";
+import {POB_2007_MJ_P2_AUTHORED_SCHEME,verifyPob2007MjP2AuthoredScheme} from "./pobHistorical2007MjP2AuthoredScheme";
 
 describe("third historical POB scoring intake, 15 original source PDFs",()=>{
  test("all 15 PDF page counts and SHA-256 fingerprints match the approved inventory",()=>{
@@ -91,6 +94,33 @@ describe("third historical POB scoring intake, 15 original source PDFs",()=>{
   expect(paper.entries.find(x=>x.number===49).proposedOption).toBe("B");
   expect(paper.entries.find(x=>x.number===55).proposedOption).toBeNull();
   expect(paper.liveScoringApproved).toBe(false);
+ });
+ test("2005, 2006 and 2007 Paper 2 contain full SPARK-authored 160 offered marks",()=>{
+  const cases=[
+   [POB_2005_MJ_P2_AUTHORED_SCHEME,verifyPob2005MjP2AuthoredScheme,45],
+   [POB_2006_MJ_P2_AUTHORED_SCHEME,verifyPob2006MjP2AuthoredScheme,43],
+   [POB_2007_MJ_P2_AUTHORED_SCHEME,verifyPob2007MjP2AuthoredScheme,50]
+  ];
+  for(const [paper,verify,parts] of cases){
+   const result=verify();
+   expect(result.valid).toBe(true);
+   expect(result.issues).toEqual([]);
+   expect(result.offeredMarks).toBe(160);
+   expect(result.parts).toBe(parts);
+   expect(paper.questions.map(q=>q.parts.reduce((sum,p)=>sum+p.marks,0)))
+    .toEqual([10,10,20,20,20,20,20,20,20]);
+   expect(paper.sourceSha256).toBe(POB_SUPPLIED_ARCHIVE.find(x=>x.id===paper.id).sourceSha256);
+   expect(paper.liveScoringApproved).toBe(false);
+   const bad={...paper,sourceSha256:"0".repeat(64)};
+   expect(verify(bad).valid).toBe(false);
+  }
+  const question=POB_2005_MJ_P2_AUTHORED_SCHEME.questions[8];
+  expect(question.parts.find(p=>p.id==="a.ii").modelAnswer).toContain("2,000");
+  expect(question.parts.find(p=>p.id==="b").modelAnswer).toContain("3,000");
+  const q4=POB_2006_MJ_P2_AUTHORED_SCHEME.questions[3];
+  expect(q4.parts.find(p=>p.id==="c.ii").modelAnswer).toMatch(/two/i);
+  const q1=POB_2007_MJ_P2_AUTHORED_SCHEME.questions[0];
+  expect(q1.parts.find(p=>p.id==="d").modelAnswer).toMatch(/^No,/);
  });
  test("May/June 2008 Paper 2 has seven 20-mark questions, five to attempt",()=>{
   const source=POB_2008_MJ_P2_AUTHORED_SCHEME;
