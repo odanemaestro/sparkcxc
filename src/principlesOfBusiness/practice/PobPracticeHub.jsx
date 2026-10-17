@@ -319,7 +319,7 @@ export default function PobPracticeHub({userId,supabase,onBack}){
  if(mode==="specimen"||mode==="specimenFull")return <PobPaper1Exam paperOverride={POB_CXC_2019_SPECIMEN_P1_FULL} userId={userId} supabase={supabase} onBack={()=>setMode("home")}/>;
  if(mode==="paper2")return <PobPaper2Exam userId={userId} supabase={supabase} onBack={()=>setMode("home")}/>;
  if(mode==="historical2026janp2"&&POB_2026_HISTORICAL_PREVIEW_VALID)return <PobPaper2Exam paperOverride={POB_2026_HISTORICAL_PREVIEW} userId={userId} supabase={supabase} onBack={()=>setMode("home")}/>;
- if(mode==="archive")return <PobHistoricalArchive onBack={()=>setMode("home")} onOpenJanuary2026={()=>setMode("historical2026janp2")}/>;
+ if(mode==="archive")return <PobHistoricalArchive userId={userId} supabase={supabase} onBack={()=>setMode("home")} onOpenJanuary2026={()=>setMode("historical2026janp2")}/>;
  if(mode==="sba")return <PobSbaWorkspace onBack={()=>setMode("home")}/>;
  return <main className="pob-exam"><div className="pob-exam-shell">
    {onBack&&<div className="pob-exam-nav"><button type="button" onClick={onBack}>← Choose another subject</button></div>}
