@@ -191,7 +191,7 @@ export default function PobHistoricalArchive({onBack,onOpenJanuary2026,supabase,
   <div className="pob-exam-nav"><button type="button" onClick={record?()=>setSelected(null):onBack}>← {record?"All historical papers":"Practice home"}</button><span>PRINCIPLES OF BUSINESS · HISTORICAL ARCHIVE</span></div>
   <header className="pob-exam-card pob-exam-intro"><span className="pob-exam-kicker">CSEC PRINCIPLES OF BUSINESS</span>
    <h1>{record?record.label:"Historical past papers"}</h1>
-   <p>{record?"Original source identity preserved. SPARK-produced answer guidance is provided for practice.":"Browse all 46 supplied historical source papers. Source-backed question previews, optional Paper 1 answer sheets and Paper 2 marking guides are available, with each sitting clearly labelled according to its digital readiness."}</p>
+   <p>{record?"Original source identity preserved. SPARK-produced answer guidance is provided for practice.":"Browse all 46 supplied historical source papers. Completed source-backed examinations are marked clearly; incomplete papers show reference material rather than misleading empty simulations."}</p>
   </header>
   {record?<><div className="pob-archive-source"><strong>{record.source.filename}</strong><span>{record.source.pages} source pages · {record.source.year}</span>
    {record.source.reclassifiedFromPaper1&&<p>This original is Paper 2 although the supplied filename says Paper 1.</p>}
@@ -210,7 +210,7 @@ export default function PobHistoricalArchive({onBack,onOpenJanuary2026,supabase,
     </label></div>
     <p className="pob-archive-small">{filtered.length} source papers shown. Select any sitting to view its practice answers and marking guidance.</p>
     <div className="pob-archive-list">{filtered.map(record=><button key={record.id} className="pob-archive-tile" type="button" onClick={()=>setSelected(record.id)}>
-      <span><strong>{record.label}</strong><small>{record.source.pages} pages · {record.paper===1?"Answer-sheet and explanations":"Written answers and mark schemes"}</small></span>
+      <span><strong>{record.label}</strong><small>{record.source.pages} pages · {record.id==="POB-P1-2023-JAN"?"Full 60-question source paper":record.paper===1?"Answer-key reference · source text incomplete":"Written answers and mark schemes"}</small></span>
       <span className="pob-archive-arrow" aria-hidden="true">→</span>
     </button>)}</div>
   </>}
