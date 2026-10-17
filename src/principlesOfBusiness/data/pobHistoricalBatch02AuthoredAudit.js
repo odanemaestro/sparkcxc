@@ -8,6 +8,8 @@ import {POB_2005_MJ_P1_AUTHORED_KEY,verifyPob2005MjP1AuthoredKey} from "./pobHis
 import {POB_2008_MJ_P1_AUTHORED_KEY,verifyPob2008MjP1AuthoredKey} from "./pobHistorical2008MjP1AuthoredKey";
 import {POB_2006_MJ_P1_AUTHORED_KEY,verifyPob2006MjP1AuthoredKey} from "./pobHistorical2006MjP1AuthoredKey";
 import {POB_2007_MJ_P1_AUTHORED_KEY,verifyPob2007MjP1AuthoredKey} from "./pobHistorical2007MjP1AuthoredKey";
+import {POB_2007_MJ_P1_AUTHORED_KEY,verifyPob2007MjP1AuthoredKey} from "./pobHistorical2007MjP1AuthoredKey";
+import {POB_2008_MJ_P1_AUTHORED_KEY,verifyPob2008MjP1AuthoredKey} from "./pobHistorical2008MjP1AuthoredKey";
 import {POB_2011_MJ_P1_AUTHORED_KEY,verifyPob2011MjP1AuthoredKey} from "./pobHistorical2011MjP1AuthoredKey";
 import {POB_2012_MJ_P1_AUTHORED_KEY,auditPob2012MjP1AuthorKey} from "./pobHistorical2012MjP1AuthoredKey";
 import {POB_2014_MJ_P1_AUTHORED_KEY,validatePob2014MjP1AuthoredKey} from "./pobHistorical2014MjP1AuthoredKey";
@@ -20,6 +22,8 @@ const AUTHORED=Object.freeze([
  [POB_2004_MJ_P1_AUTHORED_KEY,verifyPob2004MjP1AuthoredKey],
  [POB_2005_MJ_P1_AUTHORED_KEY,verifyPob2005MjP1AuthoredKey],
  [POB_2006_MJ_P1_AUTHORED_KEY,verifyPob2006MjP1AuthoredKey],
+ [POB_2007_MJ_P1_AUTHORED_KEY,verifyPob2007MjP1AuthoredKey],
+ [POB_2008_MJ_P1_AUTHORED_KEY,verifyPob2008MjP1AuthoredKey],
  [POB_2007_MJ_P1_AUTHORED_KEY,verifyPob2007MjP1AuthoredKey],
  [POB_2008_MJ_P1_AUTHORED_KEY,verifyPob2008MjP1AuthoredKey],
  [POB_2011_MJ_P1_AUTHORED_KEY,verifyPob2011MjP1AuthoredKey],
