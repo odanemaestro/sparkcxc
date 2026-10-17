@@ -43,7 +43,7 @@ const ROWS=Object.freeze([
 ]);
 export const POB_2026_JAN_P2_AUTHORED_SCHEME=Object.freeze({
  id:"POB-P2-2026-JAN",paper:2,year:2026,sitting:"JAN",
- originalPrintedExamDate:"2026-01-08",printedTestCode:"01240020",
+ originalPrintedExamDate:"2026-01-08",printedTestCode:null,printedTestCodeVisuallyPresent:false,
  sourceFilename:"CSEC_Principles_of_Business_P2_2026_JAN.pdf",
  sourceSha256:"0183bfa029cf71f60882ad8ad99295725006f00b429dc52ac57cb3e40e3d2581",
  sourcePages:6,originalPdfPagesReviewed:Object.freeze([1,2,3,4,5,6]),
