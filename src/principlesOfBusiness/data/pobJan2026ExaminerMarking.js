@@ -58,22 +58,22 @@ export function summarizePobJan2026Marks(marking,pack){
  if(graded.size!==marking.criteria.length)throw new Error("duplicate_marked_criterion");
  const parts=pack.parts.map(part=>{
   const criteria=part.criteria.map(c=>graded.get(c.id)||null);
-  const hasResponse=criteria.some(Boolean);
+  const blank=!String(pack.responses[part.id]||"").trim();
   const incomplete=criteria.some(c=>c===null);
-  const score=incomplete||criteria.some(c=>c.marks===null)?null:
+  const score=blank?0:incomplete||criteria.some(c=>c.marks===null)?null:
    criteria.reduce((n,c)=>n+c.marks,0);
   const minMarks=criteria.reduce((n,c)=>n+(c?.minMarks||0),0);
-  const maxPossibleMarks=criteria.reduce((n,c,i)=>n+(c?c.maxPossibleMarks:part.criteria[i].marks),0);
+  const maxPossibleMarks=blank?0:criteria.reduce((n,c,i)=>n+(c?c.maxPossibleMarks:part.criteria[i].marks),0);
   return {id:part.id,question:part.question,prompt:part.prompt,modelAnswer:part.modelAnswer,
    maxMarks:part.maxMarks,marks:score,minMarks,maxPossibleMarks,
-   status:score!==null?"agreed":incomplete&&!hasResponse?"blank":incomplete?"incomplete":"uncertain",
+   status:blank?"blank":score!==null?"agreed":incomplete?"incomplete":"uncertain",
    criteria:part.criteria.map((source,index)=>{
     const awarded=criteria[index];
     return {id:source.id,rule:source.rule,maxMarks:source.marks,
-     marks:awarded?.marks??(awarded?null:0),
-     minMarks:awarded?.minMarks??0,maxPossibleMarks:awarded?.maxPossibleMarks??source.marks,
-     status:awarded?.status||(awarded?"uncertain":"blank"),
-     feedback:awarded?.feedback||"No response was supplied for this marking criterion.",
+     marks:blank?0:awarded?.marks??(awarded?null:0),
+     minMarks:blank?0:awarded?.minMarks??0,maxPossibleMarks:blank?0:awarded?.maxPossibleMarks??source.marks,
+     status:blank?"blank":awarded?.status||(awarded?"uncertain":"incomplete"),
+     feedback:blank?"No answer submitted. No mark awarded.":awarded?.feedback||"This marking criterion has not been evaluated.",
      evidence:awarded?.evidence||[]};
    })}
  });
