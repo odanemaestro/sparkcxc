@@ -73,3 +73,42 @@
  .pob-exam-option{overflow-wrap:anywhere}
  .pob-exam-result p[role="note"]{text-align:left;overflow-wrap:anywhere}
 }
+
+/* Examination typography: long numbered statements should read like a
+   printed CSEC question, never like a page hero. Scales gently on mobile. */
+.pob-exam .pob-exam-question h1{
+  font-size:clamp(1.08rem,1.2vw + .75rem,1.42rem);
+  font-weight:720;
+  line-height:1.5;
+  letter-spacing:-.013em;
+  overflow-wrap:anywhere;
+  white-space:pre-line;
+  max-width:72ch;
+  margin:14px 0 20px;
+}
+.pob-exam .pob-p2-question h1{
+  font-size:clamp(1.1rem,1vw + .85rem,1.45rem);
+  line-height:1.45;
+}
+.pob-exam .pob-exam-option{font-size:.94rem;line-height:1.6}
+.pob-exam .secondary{
+  display:inline-flex;align-items:center;justify-content:center;
+  gap:.55rem;min-height:44px;padding:.65rem 1rem;
+  border:1px solid var(--spark-border,#d1dee8);border-radius:11px;
+  background:var(--spark-paper,#fff);color:var(--spark-ink,#173550);
+  font:inherit;font-size:.87rem;font-weight:670;cursor:pointer;
+  transition:background .16s,border-color .16s;
+}
+.pob-exam .secondary:hover:not(:disabled){
+  background:var(--spark-muted,#f3f7f9);border-color:var(--spark-ink-soft,#7d91a2);
+}
+.pob-exam .secondary:disabled{opacity:.45;cursor:not-allowed}
+.pob-exam .pob-exam-skip{
+  justify-self:start;align-self:start;width:auto;max-width:100%;
+  text-align:left;box-shadow:none;
+}
+.pob-exam .pob-exam-skip span{font-size:1.08rem;line-height:1}
+@media(max-width:530px){
+ .pob-exam .pob-exam-question h1{font-size:1.125rem;line-height:1.52}
+ .pob-exam .pob-exam-skip{justify-content:space-between;width:100%}
+}

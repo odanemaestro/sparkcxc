@@ -31,10 +31,10 @@ test("specimen is independently scored and never substituted into full original 
  expect(checkpoint.questions.filter(q=>correct[q.id]===q.answer)).toHaveLength(10);
  expect(checkpoint.questions.filter(q=>q.answer==="X")).toHaveLength(0);
 });
-test("practice hub opens checkpoint with isolated state, timer and denominator",()=>{
+test("practice hub offers the full 60-item specimen with one navigator",()=>{
  const view=fs.readFileSync(path.join(__dirname,"..","practice","PobPracticeHub.jsx"),"utf8");
- expect(view).toContain('if(mode==="specimen")');
- expect(view).toContain("paperOverride={POB_CXC_2019_SPECIMEN_P1_CHECKPOINT}");
+ expect(view).toContain('mode==="specimen"||mode==="specimenFull"');
+ expect(view).toContain("paperOverride={POB_CXC_2019_SPECIMEN_P1_FULL}");
  expect(view).toContain("score,maxScore,percent:Math.round(100*score/maxScore)");
  expect(view).toContain("className=\"pob-primary\" disabled={index===questions.length-1}");
  expect(view).toContain('source:isSpecimen?"cxc-official-specimen":"spark-original"');

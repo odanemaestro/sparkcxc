@@ -97,3 +97,24 @@ test("POB Paper 2 review summarises answered parts without assigning marks",()=>
  expect(screen.getByText(/Question 1: 1 of 5 parts answered/)).toBeInTheDocument();
  expect(screen.getByText(/No score has been invented/)).toBeInTheDocument();
 });
+
+test("2019 specimen is one uninterrupted 60-item sitting, never six user-facing checkpoints",()=>{
+ const {container}=render(<PobPracticeHub userId="specimen-flow-test" onBack={jest.fn()}/>);
+ expect(screen.getByRole("button",{name:"Start 2019 specimen Paper 1"})).toBeInTheDocument();
+ expect(screen.queryByRole("button",{name:"Questions 1–10"})).not.toBeInTheDocument();
+ expect(screen.queryByRole("button",{name:"Questions 51–60"})).not.toBeInTheDocument();
+ fireEvent.click(screen.getByRole("button",{name:"Start 2019 specimen Paper 1"}));
+ expect(screen.getByText(/60 questions over 75 minutes/)).toBeInTheDocument();
+ fireEvent.click(screen.getByRole("button",{name:"Start examination"}));
+ expect(container.querySelectorAll(".pob-exam-number-grid button")).toHaveLength(60);
+ expect(screen.getByText("Question 1 of 60")).toBeInTheDocument();
+ const next=screen.getByRole("button",{name:"Next question"});
+ fireEvent.click(next);
+ expect(screen.getByText("Question 2 of 60")).toBeInTheDocument();
+});
+test("Paper 2 next incomplete action has intentional button styling",()=>{
+ const {container}=render(<PobPaper2Exam userId="question-skip-test" onBack={jest.fn()}/>);
+ fireEvent.click(screen.getByRole("button",{name:"Start Paper 2"}));
+ expect(container.querySelector(".pob-exam-skip")).toBeInTheDocument();
+ expect(screen.getByRole("button",{name:/Go to next incomplete question/})).toHaveClass("secondary","pob-exam-skip");
+});

@@ -74,12 +74,13 @@ describe("CXC specimen Q51–60: official key, source accuracy and SPARK automat
   expect(screen.getByText(/source-key review/i)).toBeInTheDocument();
   expect(window.localStorage.getItem("spark:pob:final-specimen:"+sixth.id)).toContain("review");
  });
- test("all six checkpoint selectors exist and Q51–60 opens on its own ID",()=>{
-  render(<PobPracticeHub userId="final-specimen-menu" onBack={jest.fn()}/>);
-  for(const group of ["1–10","11–20","21–30","31–40","41–50","51–60"]){
-    expect(screen.getByRole("button",{name:"Questions "+group})).toBeInTheDocument();
-  }
-  fireEvent.click(screen.getByRole("button",{name:"Questions 51–60"}));
-  expect(screen.getByRole("heading",{name:"2019 CXC specimen: questions 51–60"})).toBeInTheDocument();
- });
+ test("home presents a single 60-question CXC specimen, with source checkpoints internal only",()=>{
+  const {container}=render(<PobPracticeHub userId="specimen-main-menu" onBack={jest.fn()}/>);
+  expect(screen.getByRole("button",{name:"Start 2019 specimen Paper 1"})).toBeInTheDocument();
+  expect(screen.queryByRole("button",{name:"Questions 1–10"})).not.toBeInTheDocument();
+  fireEvent.click(screen.getByRole("button",{name:"Start 2019 specimen Paper 1"}));
+  expect(screen.getByRole("heading",{name:"2019 CXC specimen: full 60-question Paper 1"})).toBeInTheDocument();
+  fireEvent.click(screen.getByRole("button",{name:"Start examination"}));
+  expect(container.querySelectorAll(".pob-exam-number-grid button")).toHaveLength(60);
+ });;
 });

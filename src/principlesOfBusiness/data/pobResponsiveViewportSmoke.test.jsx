@@ -21,9 +21,9 @@ describe.each([
  afterEach(()=>cleanup());
  test("all exam modes are reachable and full exam starts with 60 accessible question buttons",()=>{
   const {container}=render(<PobPracticeHub userId={"qa-"+width} onBack={jest.fn()}/>);
-  expect(screen.getByRole("button",{name:"Full 60-question specimen"})).toBeInTheDocument();
-  expect(screen.getByRole("button",{name:"Questions 51–60"})).toBeInTheDocument();
-  fireEvent.click(screen.getByRole("button",{name:"Full 60-question specimen"}));
+  expect(screen.getByRole("button",{name:"Start 2019 specimen Paper 1"})).toBeInTheDocument();
+  expect(screen.queryByRole("button",{name:"Questions 51–60"})).not.toBeInTheDocument();
+  fireEvent.click(screen.getByRole("button",{name:"Start 2019 specimen Paper 1"}));
   expect(screen.getByText(/Academic review notice/)).toBeInTheDocument();
   fireEvent.click(screen.getByRole("button",{name:"Start examination"}));
   expect(screen.getByRole("timer")).toBeInTheDocument();
