@@ -21,6 +21,11 @@ export function gradePobCalculationResultPart(partKey,response){
  if(!rule)return null;
  const text=norm(response);
  if(!text)return {partKey,assessedCriterionMarks:0,criterionIndex:rule.criterionIndex,reason:"blank",source:"strict-calculation-result-v1"};
+ // Contradictions and explicit denials make auto-awarding unsafe even if
+ // a matching equation or expected result also appears in the same response.
+ if(/\b(?:not|never)\b.{0,60}\b(?:30|120|380000|120000)\b/i.test(text)||
+    /\b(?:incorrect|wrong|false)\b/i.test(text))
+   return {partKey,assessedCriterionMarks:null,criterionIndex:rule.criterionIndex,reason:"explicit-denial-or-contradiction",source:"strict-calculation-result-v1"};
  const evidence=inspectPobCalculationEvidence(partKey,response);
  if(!evidence?.expectedOperationShown||!evidence.finalResultRecognised)
    return {partKey,assessedCriterionMarks:null,criterionIndex:rule.criterionIndex,reason:"method-and-result-not-both-confirmed",source:"strict-calculation-result-v1"};
