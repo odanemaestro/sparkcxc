@@ -6,6 +6,7 @@ import {gradeEnglishAPaper2} from "../englishA/practice/englishAPaper2Grader";
 import {gradeIntegratedSciencePaper2} from "../integratedScience/practice/integratedSciencePaper2Grader";
 import {POB_PAPER2_ORIGINAL_01} from "../principlesOfBusiness/data/pobPaper2Original";
 import {gradePobListingPart} from "../principlesOfBusiness/data/pobDeterministicMarks";
+import {gradePobCalculationResultPart} from "../principlesOfBusiness/data/pobDeterministicCalculationMarks";
 export {requestSemanticPass,reconcileSemanticPasses,SEMANTIC_MARKING_REVISION} from "./semanticMarking";
 
 export function buildTrustedAssessment(attempt){
@@ -66,10 +67,19 @@ export function buildTrustedAssessment(attempt){
           determined+=listing.marks;
           continue;
         }
-        items.push({id,maxMarks:part.marks,responseKeys:[id],
+        const numeric=gradePobCalculationResultPart(id,value);
+        const hasVerifiedResult=numeric?.assessedCriterionMarks===1;
+        if(hasVerifiedResult)determined+=1;
+        // Remove the precise result criterion from semantic grading once
+        // awarded deterministically. Otherwise dual-pass could double credit.
+        const remaining=part.criteria.filter((_,index)=>!hasVerifiedResult||
+          index!==numeric.criterionIndex);
+        const semanticMax=remaining.reduce((sum,c)=>sum+c.marks,0);
+        if(semanticMax>0)items.push({id,maxMarks:semanticMax,responseKeys:[id],
           prompt:part.prompt,context:question.context,
-          rubric:part.criteria.map(c=>({marks:c.marks,rule:c.rule,alternatives:c.alternatives||[]})),
-          constraints:{subject:"principles-of-business",profile:part.profile}});
+          rubric:remaining.map(c=>({marks:c.marks,rule:c.rule,alternatives:c.alternatives||[]})),
+          constraints:{subject:"principles-of-business",profile:part.profile,
+            deterministicResultMark:hasVerifiedResult?1:0}});
       }
     }
     baseline={score:determined,maxScore:100,unassessedMarks:0};
