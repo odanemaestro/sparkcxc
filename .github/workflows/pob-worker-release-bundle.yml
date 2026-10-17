@@ -1,0 +1,53 @@
+name: Stage verified Paper 2 worker bundle
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/pob-worker-release-bundle.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  stage-bundle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Compile trusted marking engine from source
+        run: npm run build:marker
+      - name: Stage bundle as private source-controlled parts
+        shell: bash
+        env:
+          TARGET_BRANCH: internal/pob-marker-release-parts
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/spark-worker-parts
+          python3 - <<'PY'
+          import hashlib,json,pathlib
+          root=pathlib.Path("supabase/functions/_shared")
+          source=(root/"server-marker.mjs").read_text(encoding="utf-8")
+          digest=hashlib.sha256(source.encode("utf-8")).hexdigest()
+          expected=(root/"server-marker.sha256").read_text().strip()
+          if digest != expected: raise RuntimeError("Source build checksum mismatch")
+          path=pathlib.Path("/tmp/spark-worker-parts")
+          chunks=[source[i:i+220000] for i in range(0,len(source),220000)]
+          for i,part in enumerate(chunks):
+              (path/f"part-{i:03d}.txt").write_text(part,encoding="utf-8")
+          (path/"manifest.json").write_text(json.dumps({"sha256":digest,"parts":len(chunks),"source_sha":"${{ github.sha }}","utf8_bytes":len(source.encode("utf-8"))},indent=2))
+          print("Prepared",len(chunks),"source-only chunks",digest)
+          PY
+          git fetch --no-tags origin "${TARGET_BRANCH}"
+          git worktree add --detach /tmp/spark-worker-export FETCH_HEAD
+          mkdir -p /tmp/spark-worker-export/worker-chunks
+          rm -f /tmp/spark-worker-export/worker-chunks/part-*.txt
+          cp /tmp/spark-worker-parts/* /tmp/spark-worker-export/worker-chunks/
+          git -C /tmp/spark-worker-export add worker-chunks
+          git -C /tmp/spark-worker-export -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "Stage audited Paper 2 worker source bundle from ${{ github.sha }}"
+          git -C /tmp/spark-worker-export push origin HEAD:"${TARGET_BRANCH}"
