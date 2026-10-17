@@ -1,5 +1,5 @@
 import React from "react";
-import {render,screen,fireEvent} from "@testing-library/react";
+import {render,screen,fireEvent,waitFor} from "@testing-library/react";
 import {POB_HISTORICAL_REVIEW_BANKS,getPobHistoricalReviewBank} from "../data/pobHistoricalArchiveRegistry";
 import PobHistoricalArchive from "./PobHistoricalArchive";
 
@@ -55,4 +55,45 @@ test("January 2026 archive route goes to the already implemented live pilot exam
  fireEvent.click(screen.getByRole("button",{name:/2026 January.*Paper 2.*Written answers and mark schemes/}));
  fireEvent.click(screen.getByRole("button",{name:"Open timed January 2026 Paper 2"}));
  expect(open).toHaveBeenCalledTimes(1);
+});
+
+test("older Paper 2 accepts valid option selections and requests server-only provisional examiner scoring",async()=>{
+ const old1=process.env.REACT_APP_SERVER_MARKING;
+ const old2=process.env.REACT_APP_POB_HISTORICAL_ARCHIVE_MARKING;
+ process.env.REACT_APP_SERVER_MARKING="true";
+ process.env.REACT_APP_POB_HISTORICAL_ARCHIVE_MARKING="true";
+ try{
+  const rpc=jest.fn(async(name)=>{
+   if(name==="spark_start_exam_attempt")return {data:[{attempt_id:"historical-written-attempt"}],error:null};
+   if(name==="spark_submit_exam_attempt")return {data:[{attempt_id:"historical-written-attempt"}],error:null};
+   if(name==="spark_enqueue_marking")return {data:{id:"historical-job",status:"queued"},error:null};
+   throw Error("Unexpected RPC "+name);
+  });
+  render(<PobHistoricalArchive onBack={jest.fn()} onOpenJanuary2026={jest.fn()}
+    userId="historical-writer" supabase={{rpc}}/>);
+  fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2005"}});
+  fireEvent.click(screen.getByRole("button",{name:/2005 May\/June.*Paper 2.*Written answers and mark schemes/}));
+  expect(screen.getByText(/Question 4 or 5/)).toBeInTheDocument();
+  fireEvent.change(screen.getByLabelText("Question 4 or 5"),{target:{value:"5"}});
+  fireEvent.change(screen.getAllByRole("textbox")[0],{target:{value:"A lawful organisation must be registered."}});
+  fireEvent.click(screen.getByRole("button",{name:"Submit responses and view marking scheme"}));
+  fireEvent.click(screen.getByRole("button",{name:"Request detailed AI practice marking"}));
+  await waitFor(()=>expect(rpc).toHaveBeenCalledWith("spark_start_exam_attempt",
+    expect.objectContaining({p_bank_version:"pob-archive-v1-pob-p2-2005-mj",
+       p_metadata:expect.objectContaining({
+        paper_id:"POB-P2-2005-MJ",selected_questions:[1,2,3,5,6,8]
+       })})));
+  await waitFor(()=>expect(rpc).toHaveBeenCalledWith("spark_submit_exam_attempt",
+    expect.objectContaining({p_score:null,p_max_score:100,
+      p_response_snapshot:expect.objectContaining({
+       "POB-P2-2005-MJ:Q1:a":"A lawful organisation must be registered."
+      })})));
+  await waitFor(()=>expect(rpc).toHaveBeenCalledWith("spark_enqueue_marking",
+    {p_attempt_id:"historical-written-attempt"}));
+ }finally{
+  if(old1===undefined)delete process.env.REACT_APP_SERVER_MARKING;
+  else process.env.REACT_APP_SERVER_MARKING=old1;
+  if(old2===undefined)delete process.env.REACT_APP_POB_HISTORICAL_ARCHIVE_MARKING;
+  else process.env.REACT_APP_POB_HISTORICAL_ARCHIVE_MARKING=old2;
+ }
 });
