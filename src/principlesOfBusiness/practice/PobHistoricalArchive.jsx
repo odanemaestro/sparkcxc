@@ -9,10 +9,10 @@ const answerChoice=row=>{
  return /^[ABCD]$/.test(String(option||""))?option:null;
 };
 const getMcqs=bank=>{
- const rows=Array.isArray(bank.questions)?bank.questions:Array.isArray(bank.entries)?bank.entries:[];
+ const rows=Array.isArray(bank.questions)?bank.questions:Array.isArray(bank.entries)?bank.entries:Array.isArray(bank.proposedEntries)?bank.proposedEntries:[];
  return rows.filter(q=>Number.isInteger(q.number)).sort((a,b)=>a.number-b.number);
 };
-const sourceMissing=row=>row?.sourceQuestionPresent===false||row?.status==="source-question-missing";
+const sourceMissing=row=>row?.sourceQuestionPresent===false||row?.status==="source-question-missing"||row?.status==="disputed"||Boolean(row?.dispute);
 const key=(id)=>"spark:pob:archive:answers:"+id;
 const read=id=>{try{return JSON.parse(window.localStorage.getItem(key(id))||"{}")}catch{return {}}};
 const save=(id,value)=>{try{window.localStorage.setItem(key(id),JSON.stringify(value))}catch{}};
