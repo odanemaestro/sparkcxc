@@ -29,3 +29,17 @@ Using `supabase/ops/pob_draft_catalog_registration.sql`, inserted the exact POB 
 Run `supabase/ops/pob_live_marking_readiness_check.sql`. It reports only course draft state, queue status/version, whether deployed functions mention POB and preserve token limits, and aggregate POB attempt counts. It returns no student answers or credentials.
 
 **Security note:** Supabase security advisors independently reported public-definer RPC access and a definer view. These findings should be reviewed before introducing new privileged grading interfaces. Do not change existing RLS/policies without an explicit, tested authorization review.
+
+
+## Subsequent verified production change: original POB Paper 2 NULL-score submission
+
+Applied the exact source-controlled `20261016072500_pob_unscored_paper2_submission.sql` to the live SPARK Supabase project using a named migration (`pob_original_paper2_unscored_submission_only`). This change permits unscored/NULL-mark submissions **only** for `subject_id='principles-of-business'`, `paper='02'`, `bank_version='pob-original-paper2-01'`, and `max_score=100`. Other subjects still require their conventional valid score; students cannot submit fabricated numeric POB Paper 2 scores.
+
+Read-only SQL rechecked the LIVE deployed function after the change and confirmed:
+- The submitted bank version is pinned: **true**.
+- Provisional numeric POB Paper 2 client scores rejected: **true**.
+- Original POB Paper 2 maximum constrained to 100: **true**.
+- Existing shared queue's global budget check preserved: **true**.
+- POB automatic marking enqueue remains disabled in live function: **true (not enabled)**.
+
+The safe unscored attempt feature is one necessary prerequisite, NOT full POB Paper 2 grading readiness. No live historic source can be enqueued or scored.
