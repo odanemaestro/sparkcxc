@@ -82,7 +82,21 @@ export const POB_HISTORICAL_FIRST_FIFTEEN=POB_HISTORICAL_SCORING_BATCHES[0];
 // Old Paper 2: Q1-3 and exactly one from Q4/5 and Q6/7.
 // New Paper 2: five compulsory questions. Jan-2024 typed notes are withheld.
 export function validatePobHistoricalP2Selection(id,selectedNumbers){
- const paper=POB_HISTORICAL_FIRST_FIFTEEN.find(row=>row.id===id&&row.paper===2);
+ // Strictly whitelisted third-batch source booklets were read visually.
+ // They have five compulsory questions but were not part of batch one.
+ // This verifies the printed *selection rule*, NOT academic scores or live
+ // grading. Never accept a mere client-supplied paper or boolean.
+ const batch3Compulsory=new Set([
+  "POB-P2-2019-JAN","POB-P2-2019-MJ","POB-P2-2021-MJ",
+  "POB-P2-2023-MJ","POB-P2-2024-MJ","POB-P2-2025-JAN"
+ ]);
+ const verifiedThird=POB_HISTORICAL_SCORING_BATCHES[2].find(
+  row=>row.id===id&&row.paper===2&&batch3Compulsory.has(id)
+ );
+ const original=POB_HISTORICAL_FIRST_FIFTEEN.find(row=>row.id===id&&row.paper===2);
+ const paper=original||(verifiedThird&&{
+  ...verifiedThird,rule:"all-five",sourceForm:"exam-booklet"
+ });
  if(!paper)return {valid:false,maximumMarks:0,issue:"Unreviewed or unknown Paper 2 source."};
  if(paper.rule==="unverified-instructions"||paper.sourceForm!=="exam-booklet")
   return {valid:false,maximumMarks:0,issue:"Original examination instructions require verification."};
