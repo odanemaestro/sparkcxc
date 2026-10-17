@@ -70,10 +70,10 @@ export function buildPob2026JanHistoricalPaper(){
   paper:"02",origin:"historical-cxc-source",year:2026,sitting:"JAN",
   sourceFilename:source.sourceFilename,sourceSha256:source.sourceSha256,
   testCode:null,date:"2026-01-08",timeLimitMinutes:120,
-  questionCount:5,compulsory:true,maxMarks:100,liveScoringApproved:false,
+  questionCount:5,compulsory:true,marks:100,maxMarks:100,liveScoringApproved:false,
   gradingStatus:"internal-benchmark-only", 
   questions:Object.freeze(source.questions.map(q=>Object.freeze({
-   id:source.id+":Q"+q.number,number:q.number,marks:q.marks,
+   id:source.id+":Q"+q.number,number:q.number,marks:q.marks,title:"Source question "+q.number,
    context:SOURCE_CONTEXT[q.number],
    sourcePdfPage:q.number+1,
    items:Object.freeze(q.parts.map(part=>{
