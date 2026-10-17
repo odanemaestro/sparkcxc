@@ -42,3 +42,14 @@
 .pob-archive-return{margin:1rem 0}
 @media(max-width:800px){.pob-archive-mcq-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:620px){.pob-archive-toolbar,.pob-archive-list,.pob-archive-mcq-grid{grid-template-columns:minmax(0,1fr)}.pob-archive-source,.pob-archive-exam{padding:.9rem}.pob-archive-tile{padding:.85rem}}
+
+.pob-archive-optional{display:flex;flex-wrap:wrap;align-items:flex-end;gap:.7rem 1rem;margin:1rem 0;padding:1rem;border-radius:12px;border:1px solid color-mix(in srgb,currentColor 16%,transparent);background:color-mix(in srgb,currentColor 3%,transparent)}
+.pob-archive-optional>strong,.pob-archive-optional>p{flex-basis:100%;margin:0}
+.pob-archive-optional>p{font-size:.84rem}
+.pob-archive-optional label{display:flex;flex-direction:column;gap:.4rem;font-size:.82rem;font-weight:700}
+.pob-archive-optional select{background:color-mix(in srgb,currentColor 4%,transparent);color:inherit;padding:.65rem .85rem;border:1px solid color-mix(in srgb,currentColor 25%,transparent);border-radius:10px;font:inherit}
+.pob-archive-scoring{margin:1rem 0;padding:1rem 1.1rem;border-radius:14px;border:1px solid color-mix(in srgb,currentColor 15%,transparent);background:color-mix(in srgb,currentColor 3%,transparent)}
+.pob-archive-scoring>strong{font-size:1rem}
+.pob-archive-scoring .spark-marking-review{margin:1rem 0}
+.pob-archive-scoring>p{font-size:.86rem}
+@media(max-width:530px){.pob-archive-optional{flex-direction:column;align-items:stretch}.pob-archive-optional label{width:100%}.pob-archive-optional select{width:100%}}
