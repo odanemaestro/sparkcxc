@@ -28,7 +28,7 @@ describe("third historical POB scoring intake, 15 original source PDFs",()=>{
   const earlySix=POB_HISTORICAL_BATCH03_SOURCE_QA.filter(x=>x.paper===2&&x.year<=2007);
   expect(earlySix).toHaveLength(3);
   for(const row of earlySix){
-   expect(row.sittingRule).toBe("paper-2-2005-07-Q1-Q2-10-each-Q3-20-and-Q4-9-choose-3");
+   expect(row.sittingRule).toBe("paper-2-section-I-2005-07-Q1-Q2-10-each-Q3-20-and-Q4-9-choose-3");
    expect(validatePob2005to2007P2Selection(row.id,[1,2,3,4,6,8]))
     .toEqual({valid:true,maximumMarks:100,offeredMarks:160,issue:null});
    expect(validatePob2005to2007P2Selection(row.id,[1,2,3,5,7,9]).valid).toBe(true);
