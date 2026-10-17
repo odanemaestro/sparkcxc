@@ -51,6 +51,19 @@ describe("46 owner-authorized POB sources in 15-paper scoring QA batches",()=>{
    expect(validatePobHistoricalP2Selection(id,[1,2,3,4,6]).valid).toBe(false);
   }
  });
+ test("reviewed 2019–25 scanned Paper 2 booklets support exactly five compulsory selections",()=>{
+  const ids=["POB-P2-2019-JAN","POB-P2-2019-MJ","POB-P2-2021-MJ",
+   "POB-P2-2023-MJ","POB-P2-2024-MJ","POB-P2-2025-JAN"];
+  for(const id of ids){
+   expect(validatePobHistoricalP2Selection(id,[1,2,3,4,5]))
+    .toEqual({valid:true,maximumMarks:100,issue:null});
+   expect(validatePobHistoricalP2Selection(id,[1,2,3,4,6]).valid).toBe(false);
+   expect(validatePobHistoricalP2Selection(id,[1,2,3,4,4]).valid).toBe(false);
+  }
+  // 2019 alternative duplicate is kept separately on its bespoke audited
+  // rubric, and isn't accidentally whitelisted by a similar filename.
+  expect(validatePobHistoricalP2Selection("POB-P2-2019-MJ-ALT",[1,2,3,4,5]).valid).toBe(false);
+ });
  test("historical marking intake rejects invalid old choices and typed-only source",()=>{
   const old=POB_SUPPLIED_ARCHIVE.find(row=>row.id==="POB-P2-2014-MJ");
   const wrong=assessPobHistoricalAutoScoring({
