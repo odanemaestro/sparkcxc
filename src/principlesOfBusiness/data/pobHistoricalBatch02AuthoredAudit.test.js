@@ -6,6 +6,7 @@ import {POB_2004_MJ_P1_AUTHORED_KEY,verifyPob2004MjP1AuthoredKey} from "./pobHis
 import {POB_2005_MJ_P1_AUTHORED_KEY,verifyPob2005MjP1AuthoredKey} from "./pobHistorical2005MjP1AuthoredKey";
 import {POB_2008_MJ_P1_AUTHORED_KEY,verifyPob2008MjP1AuthoredKey} from "./pobHistorical2008MjP1AuthoredKey";
 import {POB_2006_MJ_P1_AUTHORED_KEY,verifyPob2006MjP1AuthoredKey} from "./pobHistorical2006MjP1AuthoredKey";
+import {POB_2007_MJ_P1_AUTHORED_KEY,verifyPob2007MjP1AuthoredKey} from "./pobHistorical2007MjP1AuthoredKey";
 import {POB_2011_MJ_P1_AUTHORED_KEY,verifyPob2011MjP1AuthoredKey} from "./pobHistorical2011MjP1AuthoredKey";
 import {POB_2012_MJ_P1_AUTHORED_KEY,auditPob2012MjP1AuthorKey} from "./pobHistorical2012MjP1AuthoredKey";
 import {POB_2014_MJ_P1_AUTHORED_KEY,validatePob2014MjP1AuthoredKey} from "./pobHistorical2014MjP1AuthoredKey";
@@ -34,9 +35,9 @@ describe("Historical POB answer authorship, 15-file second batch",()=>{
   expect(audit.valid).toBe(true);
   expect(audit.issues).toEqual([]);
   expect(audit.totalBatchSources).toBe(15);
-  expect(audit.authoredPaper1SourceCount).toBe(10);
-  expect(audit.authoredQuestions).toBe(600);
-  expect(audit.remainingBatchSources).toBe(5);
+  expect(audit.authoredPaper1SourceCount).toBe(12);
+  expect(audit.authoredQuestions).toBe(720);
+  expect(audit.remainingBatchSources).toBe(3);
   expect(audit.historicalLiveScoringEnabled).toBe(0);
   for(const summary of audit.status){
    expect(summary.internallyAuthoredCount).toBe(60);
@@ -112,6 +113,18 @@ describe("Historical POB answer authorship, 15-file second batch",()=>{
   expect(POB_2008_MJ_P1_AUTHORED_KEY.entries[55]).toMatchObject({
    number:56,proposedOption:null,dispute:"no-valid-long-run-unemployment-policy"
   });
+ });
+ test("2007: 60 original MCQs with source table and disputed document-of-title item",()=>{
+   const report=verifyPob2007MjP1AuthoredKey();
+   expect(report).toEqual({valid:true,issues:[],disputes:[9,29,32,38,47,58]});
+   expect(POB_2007_MJ_P1_AUTHORED_KEY.entries).toHaveLength(60);
+   expect(POB_2007_MJ_P1_AUTHORED_KEY.entries[54]).toMatchObject({
+      number:55,proposedOption:"C"
+   });
+   expect(POB_2007_MJ_P1_AUTHORED_KEY.entries[57]).toMatchObject({
+      number:58,proposedOption:null,dispute:"no-valid-employment-remedy"
+   });
+   expect(POB_2007_MJ_P1_AUTHORED_KEY.liveScoringApproved).toBe(false);
  });
  test("source manipulation, removed disputes or fake live switches cannot pass",()=>{
   let clone=JSON.parse(JSON.stringify(POB_2002_MJ_P1_AUTHORED_KEY));
