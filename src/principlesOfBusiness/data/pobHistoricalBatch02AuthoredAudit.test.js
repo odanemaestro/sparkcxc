@@ -3,6 +3,7 @@ import {POB_HISTORICAL_BATCH02_AUTHORED,auditPobHistoricalBatch02AnswerAuthorshi
 import {POB_2002_MJ_P1_AUTHORED_KEY,verifyPob2002MjP1AuthoredKey} from "./pobHistorical2002MjP1AuthoredKey";
 import {POB_2003_MJ_P1_AUTHORED_KEY,verifyPob2003MjP1AuthoredKey} from "./pobHistorical2003MjP1AuthoredKey";
 import {POB_2004_MJ_P1_AUTHORED_KEY,verifyPob2004MjP1AuthoredKey} from "./pobHistorical2004MjP1AuthoredKey";
+import {POB_2005_MJ_P1_AUTHORED_KEY,verifyPob2005MjP1AuthoredKey} from "./pobHistorical2005MjP1AuthoredKey";
 import {POB_2011_MJ_P1_AUTHORED_KEY,verifyPob2011MjP1AuthoredKey} from "./pobHistorical2011MjP1AuthoredKey";
 import {POB_2012_MJ_P1_AUTHORED_KEY,auditPob2012MjP1AuthorKey} from "./pobHistorical2012MjP1AuthoredKey";
 import {POB_2014_MJ_P1_AUTHORED_KEY,validatePob2014MjP1AuthoredKey} from "./pobHistorical2014MjP1AuthoredKey";
@@ -31,9 +32,9 @@ describe("Historical POB answer authorship, 15-file second batch",()=>{
   expect(audit.valid).toBe(true);
   expect(audit.issues).toEqual([]);
   expect(audit.totalBatchSources).toBe(15);
-  expect(audit.authoredPaper1SourceCount).toBe(8);
-  expect(audit.authoredQuestions).toBe(480);
-  expect(audit.remainingBatchSources).toBe(7);
+  expect(audit.authoredPaper1SourceCount).toBe(9);
+  expect(audit.authoredQuestions).toBe(540);
+  expect(audit.remainingBatchSources).toBe(6);
   expect(audit.historicalLiveScoringEnabled).toBe(0);
   for(const summary of audit.status){
    expect(summary.internallyAuthoredCount).toBe(60);
@@ -75,11 +76,18 @@ describe("Historical POB answer authorship, 15-file second batch",()=>{
   expect(visuallyChecked.map(x=>x.number)).toEqual([1,2,3,4,5,6,7,8,9,39]);
   expect(POB_2004_MJ_P1_AUTHORED_KEY.entries[32].proposedOption).toBe("B");
   expect(POB_2004_MJ_P1_AUTHORED_KEY.entries[32].explanation).toMatch(/\$84/);
+  expect(POB_2005_MJ_P1_AUTHORED_KEY.questions[17]).toMatchObject({
+   number:18,proposedOption:"D",sourceGraphicReviewed:true
+  });
+  expect(POB_2005_MJ_P1_AUTHORED_KEY.questions[57]).toMatchObject({
+   number:58,proposedOption:null,status:"academic-dispute"
+  });
  });
  test("ambiguous original items stay visible, not silently approved",()=>{
   expect(verifyPob2002MjP1AuthoredKey().disputedNumbers).toEqual([9,14,18,51,56]);
   expect(verifyPob2003MjP1AuthoredKey().disputedNumbers).toEqual([1,19,36,44,52,60]);
   expect(verifyPob2004MjP1AuthoredKey().disputedNumbers).toEqual([3,9,16,43,57,58]);
+  expect(verifyPob2005MjP1AuthoredKey().disputed).toEqual([2,7,8,20,37,58,60]);
   expect(verifyPob2011MjP1AuthoredKey().disputed).toEqual([6,22,40,43,55,56]);
   expect(auditPob2012MjP1AuthorKey().disputes).toEqual([16,27,41,45,55]);
   expect(validatePob2014MjP1AuthoredKey().disputedNumbers).toEqual([51,53,56,57,60]);
