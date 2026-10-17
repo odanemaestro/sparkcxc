@@ -87,8 +87,10 @@ begin
       score=p_score,
       max_score=p_max_score,
       metadata=coalesce(metadata,'{}'::jsonb)
-        || (coalesce(p_metadata,'{}'::jsonb) - 'paper_id' - 'source_sha256'
-            - 'bank_version' - 'rubric_version' - 'grader_version')
+        || (case when v_historical then
+             coalesce(p_metadata,'{}'::jsonb) - 'paper_id' - 'source_sha256'
+                - 'bank_version' - 'rubric_version' - 'grader_version'
+           else coalesce(p_metadata,'{}'::jsonb) end)
         || jsonb_build_object('score_authority',case when v_row.subject_id='principles-of-business' and v_row.paper='02' then 'pending-server-marking' else 'client-practice-estimate' end,'received_after_deadline',v_now >= v_row.deadline_at)
   where id=p_attempt_id;
 
