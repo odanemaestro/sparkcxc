@@ -2,6 +2,7 @@ import {
  POB_HISTORICAL_BATCH02_SOURCES,auditPobHistoricalBatch02Sources
 } from "./pobHistoricalBatch02SourceAudit";
 import {POB_SUPPLIED_ARCHIVE,pobReleasedHistoricalPapers} from "./pobHistoricalInventory";
+import {POB_2012_MJ_P1_AUTHORED_KEY,auditPob2012MjP1AuthorKey} from "./pobHistorical2012MjP1AuthoredKey";
 import {
  POB_2014_MJ_P1_AUTHORED_KEY,validatePob2014MjP1AuthoredKey,canScorePob2014MjP1Item
 } from "./pobHistorical2014MjP1AuthoredKey";
@@ -39,6 +40,21 @@ describe("POB historical batch two: source, academic dispute, answer QA",()=>{
   const altered=POB_HISTORICAL_BATCH02_SOURCES.map(x=>({...x}));
   altered[0].sourceSha256="0".repeat(64);
   expect(auditPobHistoricalBatch02Sources(altered).valid).toBe(false);
+ });
+ test("May/June 2012 P1 has 60 explained source-bound answer proposals",()=>{
+  const audit=auditPob2012MjP1AuthorKey();
+  expect(audit).toEqual({valid:true,issues:[],disputes:[16,27,41,45,55]});
+  expect(POB_2012_MJ_P1_AUTHORED_KEY.entries).toHaveLength(60);
+  expect(POB_2012_MJ_P1_AUTHORED_KEY.sourceSha256).toBe(
+   POB_SUPPLIED_ARCHIVE.find(s=>s.id==="POB-P1-2012-MJ").sourceSha256
+  );
+  expect(POB_2012_MJ_P1_AUTHORED_KEY.entries[54]).toMatchObject({
+   number:55,proposedOption:null,dispute:"no-valid-option",alternatives:[]
+  });
+  const altered=JSON.parse(JSON.stringify(POB_2012_MJ_P1_AUTHORED_KEY));
+  altered.entries[54].status="spark-internal-provisional";
+  expect(auditPob2012MjP1AuthorKey(altered).valid).toBe(false);
+  expect(POB_2012_MJ_P1_AUTHORED_KEY.liveScoringApproved).toBe(false);
  });
  test("May/June 2014 P1 has 60 proposed reasoned items and five disputed questions",()=>{
   const result=validatePob2014MjP1AuthoredKey();
