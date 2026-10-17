@@ -21,7 +21,7 @@ export function auditPobRelease({
  objectives=POB_OBJECTIVES,topics=POB_TOPICS,flashcards=POB_FLASHCARDS,
  sections=POB_SECTIONS,deepDives=POB_OBJECTIVE_DEEP_DIVES,
  paper1Items=POB_PAPER1_ORIGINAL_ITEMS,paper2=POB_PAPER2_ORIGINAL_01,
- historical=POB_SUPPLIED_ARCHIVE,subject={enabled:false,status:"draft"}
+ historical=POB_SUPPLIED_ARCHIVE,subject={enabled:true,status:"live"}
 }={}){
  const issues=[];
  const requireCheck=(ok,message)=>{if(!ok)issues.push(message)};
@@ -105,8 +105,8 @@ export function auditPobRelease({
    "Historical owner scoring approval must cover all 46 immutable PDF fingerprints.");
  requireCheck(historical.every(p=>!p.simulatorReady&&p.answerKeyStatus==="not-verified"),
    "Unverified historical papers must not be released as simulator-ready.");
- requireCheck(subject.enabled===false&&subject.status==="draft",
-   "POB must remain disabled and draft pending formal release approval.");
+ requireCheck(subject.enabled===true&&subject.status==="live",
+   "POB student study/practice catalog must be published; historical scoring is approved independently.");
  return {
    passedStructuralChecks:issues.length===0,
    issues,
