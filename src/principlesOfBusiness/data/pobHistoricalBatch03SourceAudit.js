@@ -31,7 +31,7 @@ export const POB_HISTORICAL_BATCH03_SOURCE_QA=Object.freeze(EVIDENCE.map(([stem,
  let sittingRule="not-verified";
  if(source.paper===1)sittingRule="paper-1-60-objective-items-pending-options-qa";
  if(source.paper===2&&Number(year)>=2019)sittingRule="paper-2-five-compulsory-cover";
- if(source.paper===2&&Number(year)<=2007)sittingRule="paper-2-section-I-and-three-section-II-cover";
+ if(source.paper===2&&Number(year)<=2007)sittingRule="paper-2-2005-07-Q1-Q2-10-each-Q3-20-and-Q4-9-choose-3";
  if(source.paper===2&&Number(year)===2008)sittingRule="paper-2-three-section-I-and-two-section-II-cover";
  return Object.freeze({
   id,paper:source.paper,year:Number(year),sitting,
@@ -68,4 +68,23 @@ export function auditPobHistoricalBatch03Sources(){
   paper2Count:items.filter(r=>r.paper===2).length,
   liveScoringApproved:items.filter(r=>r.liveScoringApproved).length
  };
+}
+
+ // These original 2005–2007 papers offer Q1/Q2 (10 marks each),
+ // Q3 (20), and 6 more twenty-mark options. Students must choose
+ // EXACTLY one from each pair Q4/5, Q6/7 and Q8/9, for 100 marks.
+export function validatePob2005to2007P2Selection(id,selectedQuestionNumbers){
+ const source=POB_HISTORICAL_BATCH03_SOURCE_QA.find(x=>x.id===id&&x.paper===2);
+ if(!source||source.year<2005||source.year>2007)
+  return {valid:false,maximumMarks:0,issue:"Unsupported historic Paper 2 sitting."};
+ if(!Array.isArray(selectedQuestionNumbers)||selectedQuestionNumbers.length!==6||
+    selectedQuestionNumbers.some(n=>!Number.isInteger(n))||
+    new Set(selectedQuestionNumbers).size!==6)
+  return {valid:false,maximumMarks:0,issue:"Must select six distinct questions."};
+ const chosen=new Set(selectedQuestionNumbers);
+ const valid=[1,2,3].every(n=>chosen.has(n))&&
+   [[4,5],[6,7],[8,9]].every(pair=>pair.filter(n=>chosen.has(n)).length===1);
+ return valid
+   ?{valid:true,maximumMarks:100,offeredMarks:160,issue:null}
+   :{valid:false,maximumMarks:0,issue:"Three compulsory and three correctly paired optional answers required."};
 }
