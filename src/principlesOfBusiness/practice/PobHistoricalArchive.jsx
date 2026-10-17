@@ -1,6 +1,10 @@
 import React,{useEffect,useMemo,useState} from "react";
 import {POB_HISTORICAL_REVIEW_BANKS,getPobHistoricalReviewBank} from "../data/pobHistoricalArchiveRegistry";
 import "./pobHistoricalArchive.css";
+import {startServerExamAttempt,submitServerExamAttempt} from "../../grading/serverExamAttempt";
+import ServerMarkingReview from "../../grading/ServerMarkingReview";
+import {defaultPobArchiveSelection,validatePobArchiveSelection,
+  pobArchiveBankVersion,POB_ARCHIVE_RUBRIC_VERSION} from "../../grading/pobArchiveExaminer";
 
 const sortPapers=(a,b)=>b.source.year-a.source.year||a.paper-b.paper||
  (a.source.sitting==="JAN"?-1:1)-(b.source.sitting==="JAN"?-1:1);
@@ -60,12 +64,49 @@ function HistoricalPaper1({record}){
  </section>;
 }
 
-function HistoricalPaper2({record,onOpenJanuary2026}){
+function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
  const paper=record.bank,questions=Array.isArray(paper.questions)?paper.questions:[];
  const [answers,setAnswers]=useState(()=>read(record.id));
  const [submitted,setSubmitted]=useState(false);
- useEffect(()=>{setAnswers(read(record.id));setSubmitted(false)},[record.id]);
+ const [selected,setSelected]=useState(()=>defaultPobArchiveSelection(paper));
+ const [serverAttemptId,setServerAttemptId]=useState(null);
+ const [gradingBusy,setGradingBusy]=useState(false);
+ const [gradingError,setGradingError]=useState("");
+ useEffect(()=>{setAnswers(read(record.id));setSubmitted(false);
+   setSelected(defaultPobArchiveSelection(paper));setServerAttemptId(null);setGradingError("");
+ },[record.id,paper]);
  useEffect(()=>save(record.id,answers),[record.id,answers]);
+ const selectionValid=validatePobArchiveSelection(paper,selected);
+ const openQuestionCount=questions.length;
+ const scoreEnabled=process.env.REACT_APP_SERVER_MARKING==="true" &&
+   process.env.REACT_APP_POB_HISTORICAL_ARCHIVE_MARKING==="true";
+ const gradeWithServer=async()=>{
+  if(!selectionValid||gradingBusy||serverAttemptId)return;
+  setGradingBusy(true);setGradingError("");
+  try{
+   const started=await startServerExamAttempt({supabase,subjectId:"principles-of-business",
+     paper:"02",mode:"timed",durationSeconds:7200,
+     bankVersion:pobArchiveBankVersion(record.id),
+     rubricVersion:POB_ARCHIVE_RUBRIC_VERSION,graderVersion:"online-v1",
+     metadata:{paper_id:record.id,source_sha256:record.source.sourceSha256,
+       selected_questions:selected,source:"historical-cxc-archive"}});
+   if(!started.available||!started.attempt_id)throw new Error("Historical attempt could not start");
+   const snapshot={};
+   for(const q of questions.filter(q=>selected.includes(q.number)))
+     for(const part of (q.parts||q.items||[])){
+       const id="Q"+q.number+":"+part.id;
+       snapshot[record.id+":"+id]=String(answers[id]||"");
+     }
+   const result=await submitServerExamAttempt({
+     supabase,attemptId:started.attempt_id,responses:snapshot,
+     score:null,maxScore:100,metadata:{source:"historical-archive-practice",
+       grading_status:"server-pending"}});
+   if(!result.available)throw new Error("Historical answers could not be submitted");
+   setServerAttemptId(started.attempt_id);
+  }catch{
+   setGradingError("Online marking could not be requested. Your answers are saved; please try again.");
+  }finally{setGradingBusy(false);}
+ };
  if(record.id==="POB-P2-2026-JAN")return <div className="pob-archive-exam">
   <h3>January 2026 Paper 2 · Full timed examination</h3>
   <p>This sitting has its original question text, written-response fields, a 100-mark SPARK examiner and a live AI-assisted practice-marking pilot.</p>
@@ -76,12 +117,25 @@ function HistoricalPaper2({record,onOpenJanuary2026}){
  return <section className="pob-archive-exam" aria-label="Historical Paper 2 answer-bank review">
   <h3>Paper 2 · Written-answer practice and marking guide</h3>
   <p>This paper's SPARK-authored model answers and mark allocations are available. Where an exact printed question is not transcribed, use the corresponding original paper alongside this answer space. The guidance describes what earns marks but does not pretend to reproduce unseen original wording.</p>
-  <div className="pob-archive-summary"><span>{questions.length} offered questions</span><span>{parts} answer parts</span><span>{total} offered marks</span><span>100 candidate marks, where applicable</span></div>
+  <div className="pob-archive-summary"><span>{questions.length} offered questions</span><span>{parts} answer parts</span><span>{total} offered marks</span><span>100 candidate marks</span></div>
+  {openQuestionCount>5&&<div className="pob-archive-optional" aria-label="Original Paper 2 optional question selection">
+    <strong>Choose the questions required by this sitting</strong>
+    <p>The original rules require Questions 1, 2, 3 and one from each optional pair.</p>
+    {[ [4,5],[6,7],...(openQuestionCount===9?[[8,9]]:[])].map(pair=><label key={pair[0]}>
+      Question {pair[0]} or {pair[1]}
+      <select value={selected.find(n=>pair.includes(n))||pair[0]}
+        disabled={submitted}
+        onChange={event=>setSelected(previous=>previous.filter(n=>!pair.includes(n))
+           .concat(Number(event.target.value)).sort((a,b)=>a-b))}>
+        {pair.map(n=><option key={n} value={n}>Question {n}</option>)}
+      </select>
+    </label>)}
+  </div>}
   {questions.length?<>
-   {questions.map(q=><details className="pob-archive-question" key={q.number} open={q.number===1?true:undefined}>
+   {questions.filter(q=>selected.includes(q.number)).map(q=><details className="pob-archive-question" key={q.number} open={q.number===1?true:undefined}>
      <summary>Question {q.number} · {q.marks||"?"} marks</summary>
      {(q.parts||q.items||[]).map(part=>{
-       const id="Q"+q.number+":"+part.id,prompt=part.prompt||part.sourceQuestion||null;
+       const id="Q"+q.number+":"+part.id,prompt=part.prompt||part.sourceQuestion||part.sourcePromptSummary||null;
        return <div className="pob-archive-written" key={id}>
          <label htmlFor={record.id+id}><strong>({part.id})</strong> {prompt||"Answer this part using the printed question paper."} <span>{part.marks} marks</span></label>
          {!prompt&&<p className="pob-archive-small">Original question wording has not been digitised for this part.</p>}
@@ -99,16 +153,26 @@ function HistoricalPaper2({record,onOpenJanuary2026}){
      })}
    </details>)}
    <div className="pob-archive-actions">
-     {!submitted?<button type="button" className="pob-primary" onClick={()=>setSubmitted(true)}>Submit responses and view marking scheme</button>
+     {!submitted?<button type="button" className="pob-primary" disabled={!selectionValid} onClick={()=>setSubmitted(true)}>Submit responses and view marking scheme</button>
        :<><p role="status">Your answers have been saved. SPARK's answer guidance is shown under each question.</p>
          <button type="button" className="secondary" onClick={()=>setSubmitted(false)}>Edit responses</button></>}
    </div>
-   <small>Automatic numerical marking for this historical sitting is not yet connected to the trusted server. It will not fabricate marks from keywords or unverified questions.</small>
+   {submitted&&scoreEnabled&&<div className="pob-archive-scoring">
+      <strong>Experimental AI-assisted Paper 2 examiner</strong>
+      <p>Scores are provisional SPARK practice estimates. The original booklet and some question wording still require independent verification. Two automated assessments check each criterion; disagreement is shown as an uncertain score range.</p>
+      {!serverAttemptId&&<button type="button" className="pob-primary"
+       disabled={gradingBusy||!supabase?.rpc||!userId} onClick={gradeWithServer}>
+       {gradingBusy?"Sending responses…":"Request detailed AI practice marking"}
+      </button>}
+      {gradingError&&<p role="status">{gradingError}</p>}
+      {serverAttemptId&&<ServerMarkingReview supabase={supabase} attemptId={serverAttemptId} autoStart/>}
+    </div>}
+   <small>{scoreEnabled?"This sitting is a pilot assessment using internally authored criteria, not an official CXC grade.":"This sitting currently offers SPARK model answers and rubrics. Online numerical marking is unavailable until the archive pilot is deployed."}</small>
   </>:<p>No question-level marking guidance is available in this archive entry.</p>}
  </section>;
 }
 
-export default function PobHistoricalArchive({onBack,onOpenJanuary2026}){
+export default function PobHistoricalArchive({onBack,onOpenJanuary2026,supabase,userId}){
  const [kind,setKind]=useState("all"),[query,setQuery]=useState("");
  const records=useMemo(()=>POB_HISTORICAL_REVIEW_BANKS.slice().sort(sortPapers),[]);
  const filtered=records.filter(record=>(kind==="all"||record.paper===Number(kind))&&
@@ -127,7 +191,7 @@ export default function PobHistoricalArchive({onBack,onOpenJanuary2026}){
    {record.id==="POB-P1-2018-MJ"&&<p>The supplied scan omits original questions 53–57. SPARK does not invent these questions.</p>}
    {record.id==="POB-P2-2024-JAN"&&<p>Only a two-page typed transcription was supplied for this sitting; it is not the full original printed booklet.</p>}
   </div>
-  {record.paper===1?<HistoricalPaper1 key={record.id} record={record}/>:<HistoricalPaper2 key={record.id} record={record} onOpenJanuary2026={onOpenJanuary2026}/>}
+  {record.paper===1?<HistoricalPaper1 key={record.id} record={record}/>:<HistoricalPaper2 key={record.id} record={record} onOpenJanuary2026={onOpenJanuary2026} supabase={supabase} userId={userId}/>}
   <button type="button" className="secondary pob-archive-return" onClick={()=>setSelected(null)}>Back to all 46 historical papers</button>
   </>:<>
     <div className="pob-archive-toolbar"><label htmlFor="pob-archive-search">Find a historical sitting
