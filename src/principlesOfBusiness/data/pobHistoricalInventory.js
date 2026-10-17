@@ -54,7 +54,7 @@ export const POB_SOURCE_INVENTORY=Object.freeze({
   origin:"POB.zip"
 });
 // A simulatorReady toggle alone is NEVER a scored-paper publication decision.
-export const pobReleasedHistoricalPapers=()=>POB_SUPPLIED_ARCHIVE.filter(p=>
+export const isPobHistoricalPaperFullyVerified=p=>Boolean(p&&
  p.simulatorReady===true&&
  p.ownerAutoScoringAuthorized===true&&
  p.sourceSha256===pobSourceSha256(p.filename)&&
@@ -64,3 +64,4 @@ export const pobReleasedHistoricalPapers=()=>POB_SUPPLIED_ARCHIVE.filter(p=>
  p.markingSchemeStatus==="verified"&&p.assessmentQAComplete===true&&
  p.secureAssessmentCalibrated===true
 );
+export const pobReleasedHistoricalPapers=()=>POB_SUPPLIED_ARCHIVE.filter(isPobHistoricalPaperFullyVerified);
