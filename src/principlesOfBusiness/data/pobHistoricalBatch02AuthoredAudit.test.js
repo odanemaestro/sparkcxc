@@ -4,6 +4,7 @@ import {POB_2002_MJ_P1_AUTHORED_KEY,verifyPob2002MjP1AuthoredKey} from "./pobHis
 import {POB_2003_MJ_P1_AUTHORED_KEY,verifyPob2003MjP1AuthoredKey} from "./pobHistorical2003MjP1AuthoredKey";
 import {POB_2004_MJ_P1_AUTHORED_KEY,verifyPob2004MjP1AuthoredKey} from "./pobHistorical2004MjP1AuthoredKey";
 import {POB_2005_MJ_P1_AUTHORED_KEY,verifyPob2005MjP1AuthoredKey} from "./pobHistorical2005MjP1AuthoredKey";
+import {POB_2008_MJ_P1_AUTHORED_KEY,verifyPob2008MjP1AuthoredKey} from "./pobHistorical2008MjP1AuthoredKey";
 import {POB_2011_MJ_P1_AUTHORED_KEY,verifyPob2011MjP1AuthoredKey} from "./pobHistorical2011MjP1AuthoredKey";
 import {POB_2012_MJ_P1_AUTHORED_KEY,auditPob2012MjP1AuthorKey} from "./pobHistorical2012MjP1AuthoredKey";
 import {POB_2014_MJ_P1_AUTHORED_KEY,validatePob2014MjP1AuthoredKey} from "./pobHistorical2014MjP1AuthoredKey";
@@ -32,9 +33,9 @@ describe("Historical POB answer authorship, 15-file second batch",()=>{
   expect(audit.valid).toBe(true);
   expect(audit.issues).toEqual([]);
   expect(audit.totalBatchSources).toBe(15);
-  expect(audit.authoredPaper1SourceCount).toBe(9);
-  expect(audit.authoredQuestions).toBe(540);
-  expect(audit.remainingBatchSources).toBe(6);
+  expect(audit.authoredPaper1SourceCount).toBe(10);
+  expect(audit.authoredQuestions).toBe(600);
+  expect(audit.remainingBatchSources).toBe(5);
   expect(audit.historicalLiveScoringEnabled).toBe(0);
   for(const summary of audit.status){
    expect(summary.internallyAuthoredCount).toBe(60);
@@ -93,6 +94,16 @@ describe("Historical POB answer authorship, 15-file second batch",()=>{
   expect(validatePob2014MjP1AuthoredKey().disputedNumbers).toEqual([51,53,56,57,60]);
   expect(verifyPob2015MjP1AuthoredKey().disputes).toEqual([52,56,59]);
   expect(verifyPob2017MjP1AuthoredKey().disputes).toEqual([47,56]);
+ });
+ test("2008 source has 60 explained responses and 13 preserved academic disputes",()=>{
+  const result=verifyPob2008MjP1AuthoredKey();
+  expect(result.valid).toBe(true);
+  expect(result.issues).toEqual([]);
+  expect(result.disputes).toEqual([2,10,12,16,17,29,39,43,50,53,54,56,57]);
+  expect(POB_2008_MJ_P1_AUTHORED_KEY.entries).toHaveLength(60);
+  expect(POB_2008_MJ_P1_AUTHORED_KEY.entries[55]).toMatchObject({
+   number:56,proposedOption:null,dispute:"no-valid-long-run-unemployment-policy"
+  });
  });
  test("source manipulation, removed disputes or fake live switches cannot pass",()=>{
   let clone=JSON.parse(JSON.stringify(POB_2002_MJ_P1_AUTHORED_KEY));
