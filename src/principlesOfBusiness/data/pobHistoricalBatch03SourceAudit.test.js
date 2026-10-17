@@ -1,5 +1,5 @@
 import {
- POB_HISTORICAL_BATCH03_SOURCE_QA,auditPobHistoricalBatch03Sources
+ POB_HISTORICAL_BATCH03_SOURCE_QA,auditPobHistoricalBatch03Sources,validatePob2005to2007P2Selection
 } from "./pobHistoricalBatch03SourceAudit";
 import {
  POB_2020_JAN_P1_AUTHORED_KEY,verifyPob2020JanP1AuthoredKey
@@ -24,6 +24,17 @@ describe("third historical POB scoring intake, 15 original source PDFs",()=>{
   for(const x of early){
    expect(x.sittingRule).toMatch(/section-I/);
    expect(x.sittingRule).not.toMatch(/five-compulsory/);
+  }
+  const earlySix=POB_HISTORICAL_BATCH03_SOURCE_QA.filter(x=>x.paper===2&&x.year<=2007);
+  expect(earlySix).toHaveLength(3);
+  for(const row of earlySix){
+   expect(row.sittingRule).toBe("paper-2-2005-07-Q1-Q2-10-each-Q3-20-and-Q4-9-choose-3");
+   expect(validatePob2005to2007P2Selection(row.id,[1,2,3,4,6,8]))
+    .toEqual({valid:true,maximumMarks:100,offeredMarks:160,issue:null});
+   expect(validatePob2005to2007P2Selection(row.id,[1,2,3,5,7,9]).valid).toBe(true);
+   for(const incorrect of [
+    [1,2,3,4,6],[1,2,3,4,5,8],[1,2,3,4,6,7],[1,2,3,4,4,8]
+   ])expect(validatePob2005to2007P2Selection(row.id,incorrect).valid).toBe(false);
   }
   expect(POB_HISTORICAL_BATCH03_SOURCE_QA.find(x=>x.id==="POB-P2-2008-MJ").sittingRule)
    .toBe("paper-2-three-section-I-and-two-section-II-cover");
