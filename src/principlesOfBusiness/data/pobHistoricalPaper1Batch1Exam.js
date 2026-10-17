@@ -62,3 +62,29 @@ export function auditPobHistoricalP1Batch1(registry){
  });
  return {papers:counts.length,questions:counts.reduce((s,p)=>s+p.questions,0),counts};
 }
+
+/**
+ * Source-QA inventory for all archived historical Paper 1 sittings.
+ * A proposed key is not an authenticated CXC answer key. No item is
+ * source-verified merely because it has 4 options and a proposed answer.
+ */
+export function auditPobHistoricalP1SourceReadiness(registry){
+ const records=registry.filter(record=>record.paper===1);
+ return {
+  totalSittings:records.length,
+  completeTranscriptions:records.filter(record=>Boolean(getPobHistoricalP1Source(record.id))).length,
+  pendingTranscriptions:records.filter(record=>!getPobHistoricalP1Source(record.id))
+    .map(record=>({id:record.id,label:record.label,reason:"Original numbered stems, all four options and referenced figures require source transcription."})),
+  sourceQuestionsToReview:records.flatMap(record=>{
+   if(!getPobHistoricalP1Source(record.id))return [];
+   const exam=buildPobHistoricalP1Exam(record);
+   return exam.questions.filter(q=>!q.scoringEligible).map(q=>({
+    paperId:record.id,number:q.number,reason:q.reviewReason||"Source verification required.",
+    sourceGraphicPending:Boolean(q.sourceGraphicPending),
+    sourceReviewPending:Boolean(q.sourceReviewPending),
+    answerConflict:Boolean(q.answerConflict)
+   }));
+  }),
+  sourceVerifiedForOfficialScoring:0
+ };
+}
