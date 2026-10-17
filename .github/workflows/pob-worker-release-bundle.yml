@@ -5,6 +5,10 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/pob-worker-release-bundle.yml"
+      - "src/grading/**"
+      - "src/principlesOfBusiness/data/**"
+      - "src/principlesOfBusiness/practice/**"
+      - "supabase/functions/mark-paper2/**"
 
 permissions:
   contents: write
