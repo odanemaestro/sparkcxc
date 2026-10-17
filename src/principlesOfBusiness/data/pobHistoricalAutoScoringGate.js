@@ -1,6 +1,7 @@
 import {POB_SUPPLIED_ARCHIVE} from "./pobHistoricalInventory";
 import {validatePobHistoricalPaper1} from "./pobHistoricalMcqReleaseGate";
 import {validatePobHistoricalCandidate} from "./pobHistoricalReleaseGate";
+import {POB_HISTORICAL_FIRST_FIFTEEN,validatePobHistoricalP2Selection} from "./pobHistoricalScoringBatches";
 
 // Development/readiness gate only. The live grading server must independently
 // resolve the trusted paper ID, source digest, rubric and user authorization.
@@ -29,6 +30,16 @@ export function assessPobHistoricalAutoScoring(candidate,{
    validatePobHistoricalCandidate(candidate);
  issues.push(...base.issues);
  if(candidate?.paper===2){
+  // A client-provided boolean is not evidence of a valid sitting selection.
+  // Apply original source-based rules for sources audited in batch 1.
+  const sourceRule=POB_HISTORICAL_FIRST_FIFTEEN.find(p=>p.id===candidate?.id&&p.paper===2);
+  if(sourceRule){
+   const selection=validatePobHistoricalP2Selection(candidate.id,candidate.selectedQuestionNumbers);
+   if(!selection.valid)
+    issues.push("Source-based question selection is not verified: "+selection.issue);
+   if(sourceRule.sourceForm!=="exam-booklet")
+    issues.push("Supplied source is a derivative transcript, not a verified original exam booklet.");
+  }
   if(candidate?.semanticAssessmentCalibrated!==true)
    issues.push("Written-answer assessment has not been calibrated.");
   if(candidate?.gradingBenchmarkPassed!==true)
