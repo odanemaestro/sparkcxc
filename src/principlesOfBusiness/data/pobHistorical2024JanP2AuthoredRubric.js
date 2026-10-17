@@ -32,7 +32,7 @@ const RULES=Object.freeze(Object.fromEntries([
  ["5:b",["Names first government environmental measure","Explains how it changes people's conduct","Names second DIFFERENT environmental measure","Explains its effect","Names third DIFFERENT measure","Explains its effect"],"Supply recycling bins to encourage waste sorting. Teach environmental conservation in schools. Offer solar-energy incentives to reduce fossil-fuel use.",["recycling facilities","anti-litter fines","education","tree planting","plastic bans","renewable rebates","water conservation"]],
  ["5:c",["Names first government obligation","Names second DISTINCT government obligation","Names third DISTINCT obligation","Names fourth DISTINCT obligation"],"Provide public education, healthcare, law enforcement and roads.",["justice","security","public infrastructure","health","education","social security","defence","sanitation"]],
  ["5:d",["Identifies first concrete healthcare challenge","Recommends a solution matched to the first challenge","Explains resulting care improvement","Identifies second DIFFERENT healthcare challenge","Recommends a separate appropriate response","Explains its result"],"Train and retain more nurses to ease staff shortages and reduce queues. Open mobile rural clinics to reduce travel barriers and improve access.",["health worker shortage","rural access","underfunding","medicine shortages","obsolete equipment","long waiting times"]],
-]));
+].map(([id,criteria,modelAnswer,acceptedIllustrations])=>[id,[criteria,modelAnswer,acceptedIllustrations]])));
 export const POB_2024_JAN_P2_SPARK_MARKING=Object.freeze({
  id:"POB-P2-2024-JAN",subject:"principles-of-business",paper:2,
  sourceFilename:"CSEC_Principles_of_Business_P2_2024_JAN.pdf",
