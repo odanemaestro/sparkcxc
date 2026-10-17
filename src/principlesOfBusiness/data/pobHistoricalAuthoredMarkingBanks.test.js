@@ -5,6 +5,8 @@ import {
  POB_2024_JAN_P2_SPARK_MARKING,verifyPob2024JanP2AuthoredRubric
 } from "./pobHistorical2024JanP2AuthoredRubric";
 import {POB_SUPPLIED_ARCHIVE,pobReleasedHistoricalPapers} from "./pobHistoricalInventory";
+import {POB_2009_MJ_P2_AUTHORED_SCHEME,verifyPob2009MjP2AuthoredScheme} from "./pobHistorical2009MjP2AuthoredScheme";
+import {validatePobHistoricalP2Selection} from "./pobHistoricalScoringBatches";
 import {POB_HISTORICAL_2023_JAN_P1_Q01_10} from "./pobHistorical2023JanP1Q01to10Draft";
 import {POB_HISTORICAL_P2_2024_JAN_DRAFT} from "./pobHistoricalP22024JanDraft";
 
@@ -74,6 +76,28 @@ describe("SPARK internally authored historical POB answer and rubric banks",()=>
   expect(verifyPob2024JanP2AuthoredRubric(wrong2).valid).toBe(false);
   const fake=clone();fake.officialCxcMarkingSchemeSupplied=true;
   expect(verifyPob2024JanP2AuthoredRubric(fake).valid).toBe(false);
+ });
+ test("May/June 2009 P2 covers seven historical questions, 140 offered, 100 answerable",()=>{
+  const paper=POB_2009_MJ_P2_AUTHORED_SCHEME;
+  const check=verifyPob2009MjP2AuthoredScheme();
+  expect(check).toEqual({valid:true,issues:[],questions:7,parts:36,offeredMarks:140});
+  expect(paper.questions.every(q=>q.maximumMarks===20)).toBe(true);
+  expect(paper.sourceSha256).toBe(POB_SUPPLIED_ARCHIVE.find(s=>s.id===paper.id).sourceSha256);
+  expect(validatePobHistoricalP2Selection(paper.id,[1,2,3,4,6])).toEqual({
+   valid:true,maximumMarks:100,issue:null
+  });
+  expect(validatePobHistoricalP2Selection(paper.id,[1,2,3,5,7]).valid).toBe(true);
+  expect(validatePobHistoricalP2Selection(paper.id,[1,2,3,4,5]).valid).toBe(false);
+  expect(paper.officialCxcMarkSchemeAvailable).toBe(false);
+  expect(paper.liveScoringApproved).toBe(false);
+ });
+ test("May/June 2009 P2 scoring proof rejects altered criterion or 140 candidate max",()=>{
+  const paper=JSON.parse(JSON.stringify(POB_2009_MJ_P2_AUTHORED_SCHEME));
+  paper.maximumCandidateMarks=140;
+  expect(verifyPob2009MjP2AuthoredScheme(paper).valid).toBe(false);
+  const again=JSON.parse(JSON.stringify(POB_2009_MJ_P2_AUTHORED_SCHEME));
+  again.questions[3].parts[0].criteria[0].marks=5;
+  expect(verifyPob2009MjP2AuthoredScheme(again).valid).toBe(false);
  });
  test("source ambiguity cannot falsely award intellectual property marks",()=>{
   const paper=POB_2024_JAN_P2_SPARK_MARKING;
