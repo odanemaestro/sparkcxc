@@ -5,6 +5,7 @@ import {
  POB_2020_JAN_P1_AUTHORED_KEY,verifyPob2020JanP1AuthoredKey
 } from "./pobHistorical2020JanP1AuthoredKey";
 import {POB_SUPPLIED_ARCHIVE,pobReleasedHistoricalPapers} from "./pobHistoricalInventory";
+import {assessPobHistoricalAutoScoring} from "./pobHistoricalAutoScoringGate";
 import {POB_2008_MJ_P2_AUTHORED_SCHEME,verifyPob2008MjP2AuthoredScheme,validatePob2008MjP2Choices} from "./pobHistorical2008MjP2AuthoredScheme";
 
 describe("third historical POB scoring intake, 15 original source PDFs",()=>{
@@ -41,6 +42,40 @@ describe("third historical POB scoring intake, 15 original source PDFs",()=>{
   const modern=POB_HISTORICAL_BATCH03_SOURCE_QA.filter(x=>x.paper===2&&x.year>=2019);
   expect(modern).toHaveLength(6);
   expect(modern.every(x=>x.sittingRule==="paper-2-five-compulsory-cover")).toBe(true);
+ });
+ test("historical scoring gate uses the real 2005–07 six-answer format and 10-mark first questions",()=>{
+  const original=POB_SUPPLIED_ARCHIVE.find(p=>p.id==="POB-P2-2005-MJ");
+  const candidate={
+   ...original,sourceFilename:original.filename,
+   selectedQuestionNumbers:[1,2,3,4,6,8],
+   questions:Array.from({length:9},(_,i)=>({
+    number:i+1,marks:i<2?10:20,questionWordingVerified:true,parts:[]
+   }))
+  };
+  const correct=assessPobHistoricalAutoScoring(candidate);
+  expect(correct.ready).toBe(false);
+  expect(correct.issues.some(x=>x.includes("Original 2005–07 section choices invalid"))).toBe(false);
+  expect(correct.issues.some(x=>x.includes("question 1 is not a verified 10-mark question"))).toBe(false);
+  expect(correct.issues.some(x=>x.includes("question 2 is not a verified 10-mark question"))).toBe(false);
+  const badChoices=assessPobHistoricalAutoScoring({...candidate,selectedQuestionNumbers:[1,2,3,4,5,6]});
+  expect(badChoices.issues.some(x=>x.includes("Original 2005–07 section choices invalid"))).toBe(true);
+  const badMarks=assessPobHistoricalAutoScoring({
+   ...candidate,questions:candidate.questions.map((q,i)=>i===0?{...q,marks:20}:q)
+  });
+  expect(badMarks.issues.some(x=>x.includes("not a verified 10-mark question"))).toBe(true);
+  const missing=assessPobHistoricalAutoScoring({...candidate,questions:candidate.questions.slice(0,7)});
+  expect(missing.issues.some(x=>x.includes("Full Paper 2 question set"))).toBe(true);
+ });
+ test("2008 Paper 2 gate respects five-answered rule and cannot borrow six-answer selections",()=>{
+  const original=POB_SUPPLIED_ARCHIVE.find(p=>p.id==="POB-P2-2008-MJ");
+  const candidate={...original,sourceFilename:original.filename,
+   selectedQuestionNumbers:[1,2,3,4,6],
+   questions:Array.from({length:7},(_,i)=>({number:i+1,marks:20,questionWordingVerified:true,parts:[]}))
+  };
+  const correct=assessPobHistoricalAutoScoring(candidate);
+  expect(correct.issues.some(x=>x.includes("Original 2008 compulsory/optional"))).toBe(false);
+  const wrong=assessPobHistoricalAutoScoring({...candidate,selectedQuestionNumbers:[1,2,3,4,6,8]});
+  expect(wrong.issues.some(x=>x.includes("Original 2008 compulsory/optional"))).toBe(true);
  });
  test("2020 January source has sixty authored explanations but four tracked academic disputes",()=>{
   const paper=POB_2020_JAN_P1_AUTHORED_KEY;
