@@ -28,6 +28,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Validate historical POB calibration fixtures without API calls
+        run: |
+          node --check tools/pob-jan2026-calibrate.mjs
+          node tools/pob-jan2026-calibrate.mjs --validate
+
       - name: Run regression tests
         run: npm test -- --watchAll=false --runInBand
         env:
