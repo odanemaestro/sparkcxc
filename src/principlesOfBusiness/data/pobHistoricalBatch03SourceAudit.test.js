@@ -5,6 +5,7 @@ import {
  POB_2020_JAN_P1_AUTHORED_KEY,verifyPob2020JanP1AuthoredKey
 } from "./pobHistorical2020JanP1AuthoredKey";
 import {POB_SUPPLIED_ARCHIVE,pobReleasedHistoricalPapers} from "./pobHistoricalInventory";
+import {POB_2008_MJ_P2_AUTHORED_SCHEME,verifyPob2008MjP2AuthoredScheme,validatePob2008MjP2Choices} from "./pobHistorical2008MjP2AuthoredScheme";
 
 describe("third historical POB scoring intake, 15 original source PDFs",()=>{
  test("all 15 PDF page counts and SHA-256 fingerprints match the approved inventory",()=>{
@@ -44,6 +45,33 @@ describe("third historical POB scoring intake, 15 original source PDFs",()=>{
   expect(paper.entries.find(x=>x.number===49).proposedOption).toBe("B");
   expect(paper.entries.find(x=>x.number===55).proposedOption).toBeNull();
   expect(paper.liveScoringApproved).toBe(false);
+ });
+ test("May/June 2008 Paper 2 has seven 20-mark questions, five to attempt",()=>{
+  const source=POB_2008_MJ_P2_AUTHORED_SCHEME;
+  expect(verifyPob2008MjP2AuthoredScheme()).toEqual({
+   valid:true,issues:[],offeredMarks:140,partCount:31
+  });
+  expect(source.questions.map(q=>q.parts.reduce((n,p)=>n+p.marks,0)))
+   .toEqual([20,20,20,20,20,20,20]);
+  expect(source.sourceSha256).toBe(POB_SUPPLIED_ARCHIVE.find(x=>x.id===source.id).sourceSha256);
+  expect(source.sourcePagesReviewed).toEqual([1,2,3,4]);
+  expect(source.liveScoringApproved).toBe(false);
+  expect(validatePob2008MjP2Choices([1,2,3,4,6])).toBe(true);
+  expect(validatePob2008MjP2Choices([1,2,3,5,7])).toBe(true);
+  for(const wrong of [[1,2,3,4,5],[1,2,3,6,7],[1,2,3,4,4],[1,2,3,4,8]]){
+   expect(validatePob2008MjP2Choices(wrong)).toBe(false);
+  }
+ });
+ test("May/June 2008 Paper 2 does not tolerate altered marks or fabricated authorization",()=>{
+  const clone=()=>JSON.parse(JSON.stringify(POB_2008_MJ_P2_AUTHORED_SCHEME));
+  const a=clone();a.questions[0].parts[0].criteria[0].marks=100;
+  expect(verifyPob2008MjP2AuthoredScheme(a).valid).toBe(false);
+  const b=clone();b.maximumCandidateMarks=140;
+  expect(verifyPob2008MjP2AuthoredScheme(b).valid).toBe(false);
+  const c=clone();c.liveScoringApproved=true;
+  expect(verifyPob2008MjP2AuthoredScheme(c).valid).toBe(false);
+  const d=clone();d.questions[5].parts.pop();
+  expect(verifyPob2008MjP2AuthoredScheme(d).valid).toBe(false);
  });
  test("unverified historical P1 cannot be published by changing a single key or flag",()=>{
   const copy=()=>JSON.parse(JSON.stringify(POB_2020_JAN_P1_AUTHORED_KEY));
