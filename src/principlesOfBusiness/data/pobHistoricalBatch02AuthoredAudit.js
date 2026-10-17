@@ -4,6 +4,7 @@ import {POB_HISTORICAL_SCORING_BATCHES} from "./pobHistoricalScoringBatches";
 import {POB_2002_MJ_P1_AUTHORED_KEY,verifyPob2002MjP1AuthoredKey} from "./pobHistorical2002MjP1AuthoredKey";
 import {POB_2003_MJ_P1_AUTHORED_KEY,verifyPob2003MjP1AuthoredKey} from "./pobHistorical2003MjP1AuthoredKey";
 import {POB_2004_MJ_P1_AUTHORED_KEY,verifyPob2004MjP1AuthoredKey} from "./pobHistorical2004MjP1AuthoredKey";
+import {POB_2005_MJ_P1_AUTHORED_KEY,verifyPob2005MjP1AuthoredKey} from "./pobHistorical2005MjP1AuthoredKey";
 import {POB_2011_MJ_P1_AUTHORED_KEY,verifyPob2011MjP1AuthoredKey} from "./pobHistorical2011MjP1AuthoredKey";
 import {POB_2012_MJ_P1_AUTHORED_KEY,auditPob2012MjP1AuthorKey} from "./pobHistorical2012MjP1AuthoredKey";
 import {POB_2011_MJ_P1_AUTHORED_KEY,verifyPob2011MjP1AuthoredKey} from "./pobHistorical2011MjP1AuthoredKey";
@@ -16,6 +17,7 @@ const AUTHORED=Object.freeze([
  [POB_2002_MJ_P1_AUTHORED_KEY,verifyPob2002MjP1AuthoredKey],
  [POB_2003_MJ_P1_AUTHORED_KEY,verifyPob2003MjP1AuthoredKey],
  [POB_2004_MJ_P1_AUTHORED_KEY,verifyPob2004MjP1AuthoredKey],
+ [POB_2005_MJ_P1_AUTHORED_KEY,verifyPob2005MjP1AuthoredKey],
  [POB_2011_MJ_P1_AUTHORED_KEY,verifyPob2011MjP1AuthoredKey],
  [POB_2012_MJ_P1_AUTHORED_KEY,auditPob2012MjP1AuthorKey],
  [POB_2011_MJ_P1_AUTHORED_KEY,verifyPob2011MjP1AuthoredKey],
@@ -45,6 +47,7 @@ export function auditPobHistoricalBatch02AnswerAuthorship(){
    internallyAuthoredCount:candidates.length,
    disputedQuestions:Array.isArray(report.disputedNumbers)?report.disputedNumbers:
     Array.isArray(report.disputes)?report.disputes:
+    Array.isArray(report.disputed)?report.disputed:
     Array.isArray(report.disputed)?report.disputed:[],
    structurallyComplete:report.valid===true,
    sourceTranscriptionAndAcademicCalibrationComplete:false,
