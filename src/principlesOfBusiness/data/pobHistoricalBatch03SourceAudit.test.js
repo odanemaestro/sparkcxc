@@ -55,6 +55,12 @@ describe("third historical POB scoring intake, 15 original source PDFs",()=>{
    .toEqual([20,20,20,20,20,20,20]);
   expect(source.sourceSha256).toBe(POB_SUPPLIED_ARCHIVE.find(x=>x.id===source.id).sourceSha256);
   expect(source.sourcePagesReviewed).toEqual([1,2,3,4]);
+  // Official CXC syllabus defines production levels as subsistence,
+  // domestic consumption, surplus and export, not generic 'commercial'.
+  const levels=source.questions[1].parts.find(p=>p.id==="a");
+  expect(levels.modelAnswer).toMatch(/subsistence/i);
+  expect(levels.modelAnswer).toMatch(/surplus/i);
+  expect(levels.criteria.some(c=>c.rule.includes("syllabus-listed level"))).toBe(true);
   expect(source.liveScoringApproved).toBe(false);
   expect(validatePob2008MjP2Choices([1,2,3,4,6])).toBe(true);
   expect(validatePob2008MjP2Choices([1,2,3,5,7])).toBe(true);
