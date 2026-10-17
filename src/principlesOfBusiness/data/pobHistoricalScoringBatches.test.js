@@ -9,7 +9,8 @@ describe("46 owner-authorized POB sources in 15-paper scoring QA batches",()=>{
   expect(POB_HISTORICAL_SCORING_BATCHES.map(rows=>rows.length)).toEqual([15,15,15,1]);
   expect(auditPobHistoricalScoringBatches()).toEqual({
    valid:true,issues:[],total:46,batchCounts:[15,15,15,1],
-   liveScoringReleased:0,firstBatchPages:159,firstBatchPagesNeedingImageReview:4
+   liveScoringReleased:0,firstBatchPages:159,firstBatchPagesNeedingImageReview:4,
+   firstBatchLowTextPagesVisuallyResolved:4,firstBatchRemainingLowTextPagesToReview:0
   });
   const all=POB_HISTORICAL_SCORING_BATCHES.flat();
   expect(new Set(all.map(row=>row.sourceSha256)).size).toBe(46);
@@ -27,6 +28,8 @@ describe("46 owner-authorized POB sources in 15-paper scoring QA batches",()=>{
   const jan2023=POB_HISTORICAL_FIRST_FIFTEEN.find(r=>r.id==="POB-P1-2023-JAN");
   expect(jan2023).toMatchObject({paper:1,pages:9,rule:"mcq-60"});
   expect(POB_HISTORICAL_FIRST_FIFTEEN.reduce((n,row)=>n+row.pagesNeedingImageReview,0)).toBe(4);
+  expect(POB_HISTORICAL_FIRST_FIFTEEN.find(r=>r.id==="POB-P2-2022-JAN").lowTextPagesReviewed).toEqual([2,19]);
+  expect(POB_HISTORICAL_FIRST_FIFTEEN.find(r=>r.id==="POB-P2-2023-JAN").lowTextPagesReviewed).toEqual([2,23]);
  });
  test("pre-2017 P2 uses three compulsory plus one of each optional pair",()=>{
   for(const id of ["POB-P2-2009-MJ","POB-P2-2014-MJ","POB-P2-2016-MJ"]){
