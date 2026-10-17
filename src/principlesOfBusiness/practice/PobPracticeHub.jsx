@@ -253,7 +253,7 @@ export function PobPaper2Exam({onBack,userId,supabase,paperOverride=null}){
    <header className="pob-exam-card pob-exam-status"><div><strong>{review?"Paper 2 submitted":"Paper 2 in progress"}</strong><span>{answered} of {paper.questions.reduce((n,q)=>n+q.items.length,0)} parts answered</span></div><span className="pob-timer" role="timer">{review?"Review":clock(remaining)}</span></header>
 
    <nav className="pob-exam-card pob-paper2-nav" aria-label="Paper 2 question navigator">{paper.questions.map((q,i)=>{const completed=q.items.filter(part=>String(attempt.answers[q.id+":"+part.id]||"").trim()).length;return <button key={q.id} className={q.id===question.id?"active":""} type="button" aria-current={q.id===question.id?"step":undefined} aria-label={"Question "+(i+1)+": "+completed+" of "+q.items.length+" parts answered"} onClick={()=>update({index:i})}>Question {i+1} <span className="pob-p2-count">{completed}/{q.items.length}</span></button>})}</nav>
-   <section className="pob-exam-card pob-p2-question"><div className="pob-question-head"><span>Question {question.number}</span><span>20 marks</span></div><h1>{question.title}</h1><p>{question.context}</p>
+   <section className="pob-exam-card pob-p2-question"><div className="pob-question-head"><span>Question {question.number}</span><span>20 marks</span></div>{question.title!=="Question "+question.number&&<h1>{question.title}</h1>}<p>{question.context}</p>
    {question.items.map(item=>{
      const id=question.id+":"+item.id;
      return <div className="pob-p2-part" key={id}>
