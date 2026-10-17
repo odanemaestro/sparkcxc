@@ -24,7 +24,7 @@ Original owner-supplied `POB.zip` was inspected directly, and all 15 PDFs were h
 | May/June 2024 | P2 | 16 | 16 |
 | Jan 2025 | P2 | 20 | 20 |
 
-Source covers were rendered individually before deciding format. Critically, **2005–2007 Paper 2 covers instruct students to answer all of Section I and three questions from Section II as indicated; 2008's cover specifies three in Section I and two in Section II**. Neither should inherit the newer five-compulsory format or the 2012–2016 grouped choice pattern without complete question allocation checks. Later 2019–2025 covers describe compulsory five-question examination formats. No source-only cover observation produces student grades.
+Source covers were rendered individually before deciding format. Critically, **2005–2007 Paper 2 covers instruct students to answer all of Section I (**Q1=10 marks, Q2=10, Q3=20**) and three questions from Section II (**one each from Q4/5, Q6/7 and Q8/9**). This is SIX questions attempted from NINE offered, **100 candidate marks out of 160 offered**; 2008's cover specifies three compulsory 20-mark questions in Section I and two selected 20-mark questions in Section II**. Neither should inherit the newer five-compulsory format or the 2012–2016 grouped choice pattern without complete question allocation checks. Later 2019–2025 covers describe compulsory five-question examination formats. No source-only cover observation produces student grades.
 
 ## Jan 2020 Paper 1: first authored answer bank
 
@@ -54,3 +54,7 @@ These are source-based **draft key claims**, not proven official CXC correct-ans
 5. Preserve exam security, routing, mobile/tablet/desktop and theme QA. Keep the POB subject in draft and **0 historical papers released to live scoring** until all checks are complete.
 
 The user has authorised us to provide the answers and to perform the checking internally; no independent teacher or student self-marking is required.
+
+## Critical 2005–2007 examination-format QA
+
+Examined each original rendered page from the 2005, 2006 and 2007 Paper 02 source PDFs, not just the cover. These sittings have **NINE offered numbered questions**: Q1 (10 marks), Q2 (10 marks), Q3 (20 marks), and Q4–Q9 (20 each). Candidates must answer the three Section I questions and choose exactly one each from Q4/Q5, Q6/Q7 and Q8/Q9. Thus they complete **SIX questions, 100 marks maximum**, with 160 offered across the whole booklet. The `validatePob2005to2007P2Selection` helper and regression suite reject incorrect grouped choices, duplicate IDs, missing answers and mistaken five-question submissions. No candidate may be graded by the 2008 or current sitting's rule for these years.
