@@ -31,7 +31,9 @@ describe("POB Paper 2 100-mark rubric assessment safety",()=>{
   const part=result.questions[2].parts[0];
   expect(part.diagnostics.calculationEvidence.expectedOperationShown).toBe(true);
   expect(part.assessedMarks).toBeNull();
-  expect(part.criteria.every(criterion=>criterion.assessedMarks===null)).toBe(true);
+  expect(part.criteria.map(criterion=>criterion.assessedMarks)).toEqual([null,null,1]);
+  expect(part.confirmedCriterionMarks).toBe(1);
+  expect(result.confirmedMarks).toBe(1);
  });
  test("all original parts have human readable criteria and alternatives array",()=>{
   const result=reviewPobPaper2({});
