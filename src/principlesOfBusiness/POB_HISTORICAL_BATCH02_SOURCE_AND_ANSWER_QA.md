@@ -1,47 +1,51 @@
-# Principles of Business, historical scoring source audit and answer writing: batch 2
+# SPARK Principles of Business: historical source and authored-answer QA, batch 2
 
-Date: 17 October 2026.
-Source: owner-supplied `POB.zip`, 15 source PDFs, 136 physical pages.
-Branch: `feat/pob-historical-batch02-answer-qc-v1`.
+Date: 17 October 2026. Branch: `feat/pob-historical-batch02-answer-qc-v1`.
 
-## Input provenance and correct paper identities
+## The supplied 15-file batch
 
-The second batch has **14 actual historical Paper 1 PDFs** and **one Paper 2** whose ZIP filename incorrectly calls it P1. The 2019 May/June file `CSEC_Principles_of_Business_P1_2019_MJ.pdf` has a photograph of a CXC Paper **02** cover with printed test code **01240020**, **five compulsory questions**, and a **2-hour** limit. It is `POB-P2-2019-MJ-ALT`, not an additional Paper 1. The source SHA-256 and physical page counts of all 15 files are linked to the approved existing manifest.
+- 15 original PDF files from owner-supplied `POB.zip`, 136 physical PDF pages, all bound to original SHA-256 fingerprints in the approved source manifest.
+- **14 genuinely Paper 1** source files plus one May/June 2019 PDF named as P1 which is actually **Paper 02** (cover test code `01240020`, five compulsory questions). Keep this classified as `POB-P2-2019-MJ-ALT`, not P1.
+- **32 pages have no selectable text at all**: 8 pages of the 2016 P1, 9 pages of the 2018 P1, and 15 pages of 2019 P2 ALT. These are images, not missing questions. Their content must be read visually before any answer bank or live scoring is cleared.
+- The remaining text-bearing PDFs may have OCR corruption, diagrams, missing labels, altered fonts or watermarks. PDF text extraction is only a first draft, not final source verification.
 
-May/June 2016 P1 (8 pages), May/June 2018 P1 (9 pages) and the 2019 P2 ALT (15 pages) have **zero extractable PDF characters on every page** (32 image-only pages). These require inspection of the actual pictures; lack of extracted text is NOT evidence of missing examination questions. Other years' OCR may still contain mangled options or diagrams. **All source PDFs require visual checking before a historical paper is published.**
+## Source-specific answers written so far
 
-## Answer authoring completed in this iteration
+All answer entries below are **internally authored SPARK solutions**. They are not published CXC answer sheets and are not yet signed off for live grades.
 
-| Historical Paper 01 source | Proposed answers | Explanation entries | Disputed academic items | Source details checked |
-| --- | ---: | ---: | --- | --- |
-| May/June 2011 | 60 | 60 | Q6, Q22, Q40, Q43, Q55, Q56 | Original organizational chart, regulation and regressive-tax graph checked visually |\n| May/June 2012 | 60 | 60 | Q16, Q27, Q41, Q45, Q55 | Original PDF text and options, including Q55 with no plausible corrective employment measure |\n| May/June 2014 | 60 | 60 | Q51, Q53, Q56, Q57, Q60 | Original text plus rendered diagrams Q7/8 and source questions Q51/60 |
-| May/June 2015 | 60 | 60 | Q52, Q56, Q59 | Source text plus rendered organisation chart Q10 and ending questions |
-| May/June 2017 | 60 | 60 | Q47, Q56 | Source text plus visually checked organisation chart Q6/7 |
-| **Total in batch 2** | **300** | **300** | **21 awaiting review** | **5/15 files with authored answers** |
+| Source | Internally authored answer entries | Source-specific evidence |
+| --- | ---: | --- |
+| May/June 2002 Paper 1 | 60 | Original stock/share-capital and cost-accounting calculations; bill of exchange (Q39–40), supply-demand and downward-demand graph rendered |
+| May/June 2003 Paper 1 | 60 | Visualised reporting hierarchy Q9–11; line, delegation and general-management roles checked against original chart |
+| May/June 2004 Paper 1 | 60 | First source page of Q1–9 had unusable text extraction and was read from original image; hire-purchase finance cost Q33 and cheque mismatch Q39 checked |
+| May/June 2005 Paper 1 | 60 | Variable-returns graph Q18 visually confirmed at optimum point; Q58 has no defensible positive unemployment policy among the original choices |
+| May/June 2006 Paper 1 | 60 | Supply-demand price graph Q14 read from source; whaling Q25, economic dualism Q57 and defective unemployment Q59 recovered from original page images |
+| May/June 2011 Paper 1 | 60 | Original reporting and regressive-tax chart checked visually in earlier batch-2 work |
+| May/June 2012 Paper 1 | 60 | Full source questions extracted; unemployment Q55 and economic-policy ambiguities flagged |
+| May/June 2014 Paper 1 | 60 | Rendered figures and original items Q51 (no valid listed answer) and Q60 (two valid non-OECS pairs) checked |
+| May/June 2015 Paper 1 | 60 | Reporting hierarchy and final economic-policy question pages checked visually |
+| May/June 2017 Paper 1 | 60 | Original reporting hierarchy and disputed redistributive tax/CARICOM items checked |
+| **Authored in batch 2** | **600 answers and explanations** | **10 of 15 source files** |
 
-These are genuine SPARK-authored teaching explanations keyed to the actual printed option letters. They are **not CXC-published keys**, and none is a graded historical Paper 1 yet. Ten more sources in the batch need answer writing, including the 2019 Paper 2.
+**Still unwritten**: P1 May/June 2007, 2008, 2016, 2018 and the mislabelled May/June 2019 P2 alternative source. The last three require extensive source-image review.
 
-## Critical original source problems uncovered
+## Important accuracy decisions
 
-- **2011 Question 40 / 55:** Several non-bank institutions are not ordinarily supervised as banks by a central bank; the listed answers are not clearly exclusive. Question 55 has the same ineffective unemployment-policy options found in the 2012 paper.\n- **2012 Question 55:** The printed alternatives are raising income tax, deflation, imposing an employment levy and increasing borrowing interest. None directly and reliably reduces unemployment; the item cannot fairly be marked with a guessed letter.\n- **2014 Question 51:** The printed prompt asks about dealing in securities, but none of its four printed answers actually defines buying/selling shares, bonds or related financial instruments. No defensible single correct letter was found. Status: `no-correct-option`.
-- **2014 Question 60:** Both **B (Guyana/Bahamas)** and **C (Barbados/Jamaica)** list a pair of non-OECS members. The original page image confirms both options. Status: `multiple-correct-option-pairs`.
-- **2014 Question 56:** Raising exports is the direct balance-of-payments remedy, but credit tightening may also reduce import demand. Do not reject a defensible interpretation without adjudicating original question context.
-- **2014 Question 53 / 2015 Question 52:** Source wording uses a simplified or inverted trade/current-account concept. Verify how the intended CSEC-era language maps to complete balance-of-payments accounts before grading.
-- **2014 Question 57 / 2015 Question 59 / 2017 Question 56:** Generic collaboration and specific trade/common-service cooperation are both valid CARICOM purposes in the printed choices. The term `interregional` is imprecise.
-- **2012 Question 16 / 27 / 41 / 45:** Collateral requirements, likelihood of increased communication after firm growth, protective roles of taxes, and whether NI is a redistributive instrument require the historical teaching context.\n- **2015 Question 56:** Rural-to-urban migration can be a symptom of economic dualism but should not be confused with its definition.
-- **2017 Question 47:** Source's income redistribution framing groups PAYE with National Insurance; check national arrangements and actual welfare funding before making a definitive conceptual claim.
+1. May/June 2005 P1 Question 58 and May/June 2006 P1 Question 59: **no confidently correct option**. Tax increases, employer levies, credit tightening and deflation are not reliable unemployment reduction policies. Proposed answer remains null; do not automatically mark candidates incorrect or assign an invented correct option.
+2. May/June 2014 P1 Question 51: none of the four printed options correctly describes securities trading. May/June 2014 Q60: both B and C are defensible non-OECS pairs. Both remain disputed rather than assigned a fabricated unique answer.
+3. May/June 2002 P1 Q5: 10,000 × $2 = **$20,000 nominal share capital**; the 12.5% premium is separate from nominal capital. Q16: $1,500 overstated opening stock raises cost of sales and decreases reported profit by $1,500. These are internally checked calculations.
+4. May/June 2004 P1 Q33: hire purchase price $784 less cash price $700 = **$84 finance cost**. Source-rendered cheque Q39 contains different words and figures.
+5. May/June 2005 P1 Q37: bill discounting of $10,000 at 8% gives $9,200 under the question's simplified calculation; bill tenor is omitted and should be confirmed before claiming a universally precise interest calculation.
+6. May/June 2006 P1 Q14: original graph equilibrium is **50 cents**. Q21 partnership distribution of $12,000 in a 3:2:1 ratio gives partner B **$4,000**.
+7. Several questions reuse nearly identical stems across years while changing the positions and ordering of the A–D choices. Do **not** transfer answer letters from a different sitting. Exact options must always be compared against that paper's source.
+8. All answers presently marked provisional must still pass independent internal academic adjudication, including option fidelity. An automated test proving a source digest or 60-letter count **does not** prove the answers correct.
 
-## Scoring rules
+## Verification and release gates
 
-SPARK should adjudicate questionable original items internally, documenting evidence and accepted alternatives. For a truly defective MCQ the fair remedy must be uniform for students (e.g. omit the item from the denominator or explicitly credit multiple defensible correct answers). **Do not silently guess a single answer, invent CXC authority, or activate unreviewed historical grades.**
+- `pobHistoricalBatch02SourceAudit.js` checks the 15 PDF source identities, cover/paper classification, page counts, and original SHA-256 fingerprints.
+- `pobHistoricalBatch02AuthoredAudit.js` checks every authored key and unresolved dispute status, with tests for numerical questions, visually inspected graphics, source substitution, missing letters and premature scored release.
+- No teacher, independent examiner or student self-marking is required. SPARK will maintain its own adjudication and grade server.
+- Before any original historic paper is scored: complete faithful question/option/diagram transcription; internal concept and answer validation; acceptance policy for defective MCQs; secure trusted-version bank resolution; scoring benchmarks for correct, incorrect and borderline responses; submission, saved-score and review UI testing on desktop, mobile and tablet. Preserve the navy dark theme.
+- Principles of Business stays `enabled:false`, `status:"draft"`. All 46 historical paper scored release gates remain closed.
 
-All new answer banks use `liveScoringApproved:false`. The 2014 specific scoring helper refuses disputed items and refuses all grades until full transcription verification, calibration and controlled backend release. No student self-marking or external teachers. Tests confirm 60 items, 60 explanations, original source fingerprints, cross-year repeated-stem consistency, the anomalous 2019 paper cover, and no premature activation.
-
-## Next work in the same batch
-
-1. Develop answer/explanation banks for the **remaining 9 Paper 1 sources** (2002–2008, 2016 and 2018), including diagrams and image-only pages.
-2. For the **2019 Paper 2 alternate**, read every photographic page, transcribe questions, allocate printed marks accurately, author 100-mark criterion-level solutions, and calibrate the secure written-answer scorer.
-3. Verify any ambiguous items against the historical syllabus and original source; test adversarial MCQ and free-response attempts, student report parity, light/navy-dark themes and mobile/tablet/desktop.
-4. After source and grade calibration QA, enable only independently verified historical examinations. The general POB course remains in draft until its entire release checklist is satisfied.
-
-**Current honest status:** batch 1 source answers 15/15 authored, but none academically released. Batch 2 source inventory 15/15 authenticated by digest and page counts; 5/15 academic answer banks drafted; 0/15 historical papers scored live. Full archive 0/46 live.
+**Current claim: 10/15 batch-2 authored answer models, 0/15 batch-2 historical PDFs cleared for live automatic scoring.** This PR should remain draft until the remaining five source files are authored and tested. Do not merge into `main` as a declaration of completed historical marking.
