@@ -12,6 +12,7 @@ import {gradePobCalculationResultPart} from "../principlesOfBusiness/data/pobDet
 import {SEMANTIC_MARKING_REVISION} from "./semanticMarking";
 export {requestSemanticPass,reconcileSemanticPasses,SEMANTIC_MARKING_REVISION} from "./semanticMarking";
 export {summarizePobJan2026Marks} from "../principlesOfBusiness/data/pobJan2026ExaminerMarking";
+export {gradePobJan2026ExaminerPaper} from "./historicalPobExaminerPipeline";
 
 // The runtime worker owns this authority. Never derive it from a candidate
 // snapshot, submitted metadata, query parameters or browser feature flags.
