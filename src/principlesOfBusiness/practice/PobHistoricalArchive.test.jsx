@@ -35,7 +35,7 @@ test("2018 scan gap is visible and never marked wrong",()=>{
  render(<PobHistoricalArchive onBack={jest.fn()} onOpenJanuary2026={jest.fn()}/>);
  fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2018"}});
  fireEvent.click(screen.getByRole("button",{name:/2018 May\/June.*Paper 1.*Answer-sheet and explanations/}));
- expect(screen.getAllByText(/omits original questions 53–57|Not present in the supplied source scan/).length).toBeGreaterThan(0);
+ expect(screen.getAllByText(/omits original questions 53–57|Missing or academically disputed source answer/).length).toBeGreaterThan(0);
 });
 test("historical Paper 2 allows written answers and shows actual authored rubrics without a fake score",()=>{
  render(<PobHistoricalArchive onBack={jest.fn()} onOpenJanuary2026={jest.fn()}/>);
