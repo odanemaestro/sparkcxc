@@ -44,7 +44,8 @@ try{
    const adjudicated=reconcile(first,second,pack.items,pack.responses);
    const row=adjudicated.criteria.find(r=>r.id===targetId);
    const within=!adjudicated.uncertain&&row.marks>=c.min&&row.marks<=c.max;
-   const result=adjudicated.uncertain?"disputed":within?"pass":"failure";\n   observedParts.add(c.part);
+   const result=adjudicated.uncertain?"disputed":within?"pass":"failure";
+   observedParts.add(c.part);
    if(result==="disputed")disputed++;
    if(result==="failure")failures++;
    results.push({id:c.id,part:c.part,result,expected:[c.min,c.max],awarded:row.marks,range:[row.minMarks,row.maxPossibleMarks],reason:c.reason,feedback:row.feedback});
