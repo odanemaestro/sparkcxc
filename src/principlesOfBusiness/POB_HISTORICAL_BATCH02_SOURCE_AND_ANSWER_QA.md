@@ -27,9 +27,12 @@ All answer entries below are **internally authored SPARK solutions**. They are n
 | May/June 2014 Paper 1 | 60 | Rendered figures and original items Q51 (no valid listed answer) and Q60 (two valid non-OECS pairs) checked |
 | May/June 2015 Paper 1 | 60 | Reporting hierarchy and final economic-policy question pages checked visually |
 | May/June 2017 Paper 1 | 60 | Original reporting hierarchy and disputed redistributive tax/CARICOM items checked |
-| **Authored in batch 2** | **720 answers and explanations** | **12 of 15 source files** |
+| May/June 2016 Paper 1 | 60 | All eight scanned pages visually reviewed; Q47 gives real visible merchandise-trade balance of +$40m, but none of four options offers +$40m |
+| May/June 2018 Paper 1 | 55 source-present questions | All nine pages viewed; printed source skips Q53–57. Five slots are missing and intentionally have no proposed answer |
+| May/June 2019 Paper 2 ALT | 32 rubric parts, 100 marks | All 15 scanned pages viewed; genuine Paper 02 cover test 01240020; five compulsory 20-mark questions with SPARK-authored model answers |
+| **Academic material in batch 2** | **13 complete Paper 1 banks (780 explained answers), 2018 partial 55 answers, plus 2019 Paper 2 32-part/100-mark rubric** | **15/15 source files addressed; 2018 source is incomplete** |
 
-**Still unwritten**: P1 May/June 2016, 2018, and the mislabelled May/June 2019 P2 alternative source. All three require extensive source-image review (32 scanned pages).
+**All 15 sources have been read and have academic answer or rubric material**, but the original May/June 2018 P1 PDF physically omits **Questions 53–57**, leaving only 55 of its stated 60 questions. The 2019 ALT is fully rubric-authored, but the written-answer assessor has not been calibrated. No historical paper is ready for student scoring.
 
 ## Important accuracy decisions
 
@@ -58,3 +61,14 @@ All answer entries below are **internally authored SPARK solutions**. They are n
 Rendered source PDF page 8 ends immediately after **Question 52**, but source PDF page 9 begins at **Question 58**. The original source supplied is incomplete: **Questions 53, 54, 55, 56 and 57 are absent**, not merely missing text extraction. We produced 55 provisional answer explanations for the 55 visible questions and modelled the other five slots with `answer:null`, `status:"source-missing"`. Never create replacement historical CXC wording, invent answers, or present a score out of 60 from this defective source. The `verifyPob2018MjP1SourceGap` validator and regression test fail closed if any missing slot is fabricated.
 
 The photographed **May/June 2016 Paper 1**, in contrast, contains all sixty items and all source pages have been examined visually. In its Q47, the table gives a **$40m surplus for merchandise (goods only)**, but the provided options omit $40m; including services gives **$200m** (the printed option). The question uses the label 'balance of trade', so this stays an academic ambiguity rather than being silently treated as a unique validated key.
+
+
+## Final scanned-source findings (original images, not OCR guesses)
+
+- **2016 P1:** all eight pages inspected visually, 60 answer proposals. Q47: original merchandise exports **$160m** less goods imports **$120m** = **+$40m**. None of the four choices lists +$40m. The +$200m option improperly mixes services. Hold Q47; do not force a letter.
+- **2018 P1:** nine image-only PDF pages, first cover; PDF page 8 ends at **Question 52**, next PDF page begins at **Question 58**. Five complete original question statements and their four choices, Q53–57, are absent. 55 source-present questions were independently explained and proposed. Five missing slots have `proposedOption:null` and `sourceQuestionPresent:false`. The original cannot be graded as a 60-item paper until the source is repaired.
+- **2019 MJ ALT:** misleading filename P1 is not an objective paper. The scanned source cover visibly says **Paper 02**, test code `01240020`, **2 hours**, all five questions compulsory. Every page inspected (scanned PDF has 15 pages, printed booklet pages 3–17). SPARK authored a 32-part **100-mark** criterion rubric across five 20-mark questions on stakeholder responsibilities, HR/management, production and capital, consumer protection and trademarks, banking technology and ICT ethics. Correct answers and alternatives must be checked through calibrated secure semantic grading before live release. No official CXC marking scheme is claimed.
+
+## Recommended fix for absent 2018 paper content
+
+Acquire a complete, source-identical May/June 2018 Paper 01 (same sitting, same test code), and compare Q53–57 against its original cover, sequence and surrounding text. If no complete original can be validated, leave this historical sitting unavailable for scored exam simulation. Do **not** invent five questions, reweight 55 into 60, award everyone marks for absent questions, or silently drop them while claiming a complete 60-question paper.
