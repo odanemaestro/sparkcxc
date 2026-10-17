@@ -1,0 +1,52 @@
+name: POB January 2026 Marking Calibration
+
+# This workflow ONLY produces internal calibration evidence; it never
+# publishes a historical bank or enqueues a student marking job.
+on:
+  workflow_dispatch:
+    inputs:
+      confirm_provider_cost:
+        description: "Type RUN_84_CASE_CALIBRATION to approve provider usage"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: spark-pob-jan2026-calibration
+  cancel-in-progress: false
+
+jobs:
+  semantic-calibration:
+    if: ${{ inputs.confirm_provider_cost == 'RUN_84_CASE_CALIBRATION' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Validate source-backed cases without provider calls
+        run: node tools/pob-jan2026-calibrate.mjs --validate
+      - name: Run real two-pass semantic calibration
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          SPARK_MARKING_MODEL: ${{ secrets.SPARK_MARKING_MODEL }}
+          SPARK_CALIBRATION_REPORT: pob-jan2026-calibration-results.json
+        run: |
+          if [ -z "$OPENAI_API_KEY" ] || [ -z "$SPARK_MARKING_MODEL" ]; then
+            echo "Calibration provider secrets are not configured."
+            exit 2
+          fi
+          node tools/pob-jan2026-calibrate.mjs
+      - name: Upload evidence even when the grading comparison fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pob-jan2026-historical-calibration
+          path: pob-jan2026-calibration-results.json
+          if-no-files-found: ignore
+          retention-days: 7
