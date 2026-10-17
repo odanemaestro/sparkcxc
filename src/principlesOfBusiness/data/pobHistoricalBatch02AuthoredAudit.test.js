@@ -24,14 +24,14 @@ describe("Historical POB answer authorship, 15-file second batch",()=>{
   });
   expect(pobReleasedHistoricalPapers()).toEqual([]);
  });
- test("2002, 2003, 2004 and previous 2014/2015/2017 provide 360 explained MCQ proposals",()=>{
+ test("eight historical Paper 1 sittings provide 480 explained MCQ proposals",()=>{
   const audit=auditPobHistoricalBatch02AnswerAuthorship();
   expect(audit.valid).toBe(true);
   expect(audit.issues).toEqual([]);
   expect(audit.totalBatchSources).toBe(15);
-  expect(audit.authoredPaper1SourceCount).toBe(6);
-  expect(audit.authoredQuestions).toBe(360);
-  expect(audit.remainingBatchSources).toBe(9);
+  expect(audit.authoredPaper1SourceCount).toBe(8);
+  expect(audit.authoredQuestions).toBe(480);
+  expect(audit.remainingBatchSources).toBe(7);
   expect(audit.historicalLiveScoringEnabled).toBe(0);
   for(const summary of audit.status){
    expect(summary.internallyAuthoredCount).toBe(60);
