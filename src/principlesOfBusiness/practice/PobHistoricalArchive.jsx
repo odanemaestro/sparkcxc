@@ -2,6 +2,7 @@ import React,{useEffect,useMemo,useState} from "react";
 import {POB_HISTORICAL_REVIEW_BANKS,getPobHistoricalReviewBank} from "../data/pobHistoricalArchiveRegistry";
 import "./pobHistoricalArchive.css";
 import PobHistoricalPaper1Preview from "./PobHistoricalPaper1Preview";
+import {getPobHistoricalP1Source} from "../data/pobHistoricalPaper1Batch1Exam";
 import {POB_2009_MJ_P2_SOURCE,verifyPob2009SourcePrompts} from "../data/pobHistorical2009MjP2SourceQuestions";
 import {startServerExamAttempt,submitServerExamAttempt} from "../../grading/serverExamAttempt";
 import ServerMarkingReview from "../../grading/ServerMarkingReview";
@@ -27,7 +28,7 @@ const read=id=>{try{return JSON.parse(window.localStorage.getItem(key(id))||"{}"
 const save=(id,value)=>{try{window.localStorage.setItem(key(id),JSON.stringify(value))}catch{}};
 
 function HistoricalPaper1({record}){
- if(record.id==="POB-P1-2023-JAN")return <PobHistoricalPaper1Preview record={record}/>;
+ if(getPobHistoricalP1Source(record.id))return <PobHistoricalPaper1Preview record={record}/>;
  const mcqs=useMemo(()=>getMcqs(record.bank),[record]);
  const [answers,setAnswers]=useState(()=>read(record.id));
  const [submitted,setSubmitted]=useState(false);
@@ -194,7 +195,7 @@ export default function PobHistoricalArchive({onBack,onOpenJanuary2026,supabase,
   <div className="pob-exam-nav"><button type="button" onClick={record?()=>setSelected(null):onBack}>← {record?"All historical papers":"Practice home"}</button><span>PRINCIPLES OF BUSINESS · HISTORICAL ARCHIVE</span></div>
   <header className="pob-exam-card pob-exam-intro"><span className="pob-exam-kicker">CSEC PRINCIPLES OF BUSINESS</span>
    <h1>{record?record.label:"Historical past papers"}</h1>
-   <p>{record?"Original source identity preserved. SPARK-produced answer guidance is provided for practice.":"Browse all 46 supplied historical source papers. Completed source-backed examinations are marked clearly; incomplete papers show reference material rather than misleading empty simulations."}</p>
+   <p>{record?"Original source identity preserved. SPARK-produced answer guidance is provided for practice.":"Browse all 46 supplied historical source papers. Eleven Paper 1 sittings now contain 60 written stems and A–D options, with diagrams or disputed keys clearly flagged. Others remain reference material rather than misleading empty simulations."}</p>
   </header>
   {record?<><div className="pob-archive-source"><strong>{record.source.filename}</strong><span>{record.source.pages} source pages · {record.source.year}</span>
    {record.source.reclassifiedFromPaper1&&<p>This original is Paper 2 although the supplied filename says Paper 1.</p>}
@@ -213,7 +214,7 @@ export default function PobHistoricalArchive({onBack,onOpenJanuary2026,supabase,
     </label></div>
     <p className="pob-archive-small">{filtered.length} source papers shown. Select any sitting to view its practice answers and marking guidance.</p>
     <div className="pob-archive-list">{filtered.map(record=><button key={record.id} className="pob-archive-tile" type="button" onClick={()=>setSelected(record.id)}>
-      <span><strong>{record.label}</strong><small>{record.source.pages} pages · {record.id==="POB-P1-2023-JAN"?"Full 60-question source paper":record.id==="POB-P2-2009-MJ"?"Complete source-written Paper 2":record.paper===1?"Answer-key reference · source text incomplete":"Written answers and mark schemes"}</small></span>
+      <span><strong>{record.label}</strong><small>{record.source.pages} pages · {getPobHistoricalP1Source(record.id)?(record.id==="POB-P1-2023-JAN"?"Full 60-question source paper":"60-question text practice · review pending"):record.id==="POB-P2-2009-MJ"?"Complete source-written Paper 2":record.paper===1?"Answer-key reference · source text incomplete":"Written answers and mark schemes"}</small></span>
       <span className="pob-archive-arrow" aria-hidden="true">→</span>
     </button>)}</div>
   </>}
