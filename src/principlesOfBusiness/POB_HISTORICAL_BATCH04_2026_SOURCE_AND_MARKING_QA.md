@@ -5,7 +5,7 @@ Original user-supplied `POB.zip`, paper `POB-P2-2026-JAN`, six image-only PDF pa
 
 ## Verified source content
 
-All 6 pages were rendered and visually inspected, including the exam cover and 5 printed question pages. The original CXC cover reads 08 January 2026 (p.m.), Paper 02 General Proficiency, two hours, **answer ALL five questions**. Each question totals 20 marks: **100 offered and 100 candidate marks**. No page has a selectable text layer, so item-level prompt text was checked from rendered source pages rather than assumed from OCR.
+All 6 pages were rendered and visually inspected, including the exam cover and 5 printed question pages. The original CXC cover reads 08 January 2026 (p.m.), Paper 02 General Proficiency, two hours, **answer ALL five questions**. Each question totals 20 marks: **100 offered and 100 candidate marks**. No page has a selectable text layer, so item-level prompt text was checked from rendered source pages rather than assumed from OCR. The provided cover does **not visibly print a numeric test code**, so the repository does not invent 01240020 for this particular source; its exact SHA-256 and printed paper/date remain the evidence.
 
 - Question 1, p. 2: business careers (3), stakeholders (3), production function (2), research and development (2), code of ethics (2), two legal/ethical practices (2) and a separate negative effect for *each* practice (6). Total 20.
 - Question 2, p. 3: collateral definition (2), three examples (3), three business plan elements (3), two feasibility reasons (4), a first-hand primary and an existing secondary information source (2), two fast-food business location factors (6). Total 20.
