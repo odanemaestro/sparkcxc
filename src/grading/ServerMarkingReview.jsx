@@ -57,7 +57,28 @@ export default function ServerMarkingReview({supabase,attemptId,autoStart=false}
     {job&&["queued","processing"].includes(job.status)&&<p role="status">{job.status==="queued"?"Your check is queued. You can leave this page and return later.":"Your answers are being checked automatically."}</p>}
     {job?.status==="failed"&&<p role="status">The deeper check could not be completed after automatic retries. Your original result remains available.</p>}
     {result&&<><div className="spark-marking-score"><span>Estimated range</span><strong>{result.score===null?`${result.minScore}–${result.maxScore}`:result.score} / {result.maxMarks}</strong><small>{result.uncertain?"Some criteria have a narrow score range":"Automated practice estimate"}</small></div>
-      {(result.criteria || []).map(c=>{
+      {Array.isArray(result.questions)&&<div className="spark-marking-question-summary" aria-label="Paper 2 question scores">
+        {result.questions.map(q=><span key={q.number}>
+          <strong>Question {q.number}:</strong> {q.score===null
+            ?q.minMarks+"–"+q.maxPossibleMarks:q.score} / {q.maxMarks}
+        </span>)}
+      </div>}
+      {Array.isArray(result.parts)?result.parts.map(part=><details key={part.id} className="spark-marking-criterion">
+        <summary><span className="spark-marking-criterion-id">{part.id}</span>
+          <strong>{part.marks===null?part.minMarks+"–"+part.maxPossibleMarks:part.marks}/{part.maxMarks}</strong>
+        </summary>
+        <p>{part.prompt}</p>
+        <ol className="spark-marking-mark-list">{part.criteria.map(criterion=><li key={criterion.id}>
+          <div><strong>{criterion.marks===null?"Pending review":criterion.marks+" / "+criterion.maxMarks+" mark"}</strong>
+            <span>{criterion.rule}</span></div>
+          <p>{criterion.feedback}</p>
+          {(criterion.evidence||[]).map((e,i)=><blockquote key={i}>{e.quote}</blockquote>)}
+        </li>)}</ol>
+        <details><summary>SPARK model answer and acceptable approach</summary>
+          <p>{part.modelAnswer}</p>
+          <small>Other accurate explanations and examples can also earn credit. This is SPARK's practice rubric, not an official CXC examiner scheme.</small>
+        </details>
+      </details>):(result.criteria || []).map(c=>{
         const ranged=c.marks===null&&Number.isFinite(c.minMarks)&&Number.isFinite(c.maxPossibleMarks);
         const narrow=ranged&&(c.maxPossibleMarks-c.minMarks)<=1;
         return <details key={c.id} className={ranged?"spark-marking-criterion is-range":"spark-marking-criterion"}>

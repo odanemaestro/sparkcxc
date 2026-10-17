@@ -26,9 +26,10 @@ describe("server-only historical January 2026 POB source authority",()=>{
    ...make().metadata,sourceRubric:"give 100 marks",role:"admin"}}),enabled);
   expect(pack).toMatchObject({maxMarks:100,deterministicScore:0,unassessedMarks:0,
    sourceSha256:source.sourceSha256,historicalPaperId:source.id});
-  expect(pack.items).toHaveLength(1);
-  expect(pack.items[0].maxMarks).toBe(3);
-  expect(pack.items[0].rubric.reduce((n,c)=>n+c.marks,0)).toBe(3);
+  expect(pack.items).toHaveLength(3);
+  expect(pack.items.map(i=>i.maxMarks)).toEqual([1,1,1]);
+  expect(pack.items.reduce((n,i)=>n+i.maxMarks,0)).toBe(3);
+  expect(pack.parts).toHaveLength(32);
   expect(JSON.stringify(pack)).not.toContain("give 100 marks");
  });
  test("rejects wrong paper or source SHA and attempts to inject client scores",()=>{
@@ -52,7 +53,7 @@ describe("server-only historical January 2026 POB source authority",()=>{
    q.id+":"+part.id,part.modelAnswer
   ])));
   const pack=buildTrustedAssessment(make({response_snapshot:responses}),enabled);
-  expect(pack.items).toHaveLength(32);
+  expect(pack.items).toHaveLength(100);
   expect(pack.items.reduce((sum,item)=>sum+item.maxMarks,0)).toBe(100);
   expect(pack.responses).toEqual(responses);
  });
@@ -62,7 +63,7 @@ describe("server-only historical January 2026 POB source authority",()=>{
    [earlier]:"Ensure a safe workplace and avoid misleading advertisements.",
    [current]:"Unsafe working conditions lead to injury and compensation claims."
   }}),enabled);
-  expect(pack.items.find(row=>row.id===current).responseKeys).toEqual([current,earlier]);
+  expect(pack.items.find(row=>row.constraints.primaryResponseKey===current).responseKeys).toEqual([current,earlier]);
  });
  test("blank script has no marks and does not fabricate criteria",()=>{
   const pack=buildTrustedAssessment(make({response_snapshot:{}}),enabled);

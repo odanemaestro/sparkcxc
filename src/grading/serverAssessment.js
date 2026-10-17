@@ -5,12 +5,14 @@ import {englishAPaper2Sets,buildEnglishAPaper2} from "../englishA/data/englishAP
 import {gradeEnglishAPaper2} from "../englishA/practice/englishAPaper2Grader";
 import {gradeIntegratedSciencePaper2} from "../integratedScience/practice/integratedSciencePaper2Grader";
 import {POB_PAPER2_ORIGINAL_01} from "../principlesOfBusiness/data/pobPaper2Original";
-import {buildPob2026JanHistoricalCalibrationPack} from "../principlesOfBusiness/data/pobHistorical2026JanP2CalibrationPack";
+import {buildPobJan2026ExaminerPack,summarizePobJan2026Marks} from "../principlesOfBusiness/data/pobJan2026ExaminerMarking";
 import {POB_2026_JAN_HISTORICAL_BANK_VERSION,buildPob2026JanHistoricalPaper} from "../principlesOfBusiness/data/pobHistorical2026JanP2RealPaper";
 import {gradePobListingPart} from "../principlesOfBusiness/data/pobDeterministicMarks";
 import {gradePobCalculationResultPart} from "../principlesOfBusiness/data/pobDeterministicCalculationMarks";
 import {SEMANTIC_MARKING_REVISION} from "./semanticMarking";
 export {requestSemanticPass,reconcileSemanticPasses,SEMANTIC_MARKING_REVISION} from "./semanticMarking";
+export {summarizePobJan2026Marks} from "../principlesOfBusiness/data/pobJan2026ExaminerMarking";
+export {gradePobJan2026ExaminerPaper} from "./historicalPobExaminerPipeline";
 
 // The runtime worker owns this authority. Never derive it from a candidate
 // snapshot, submitted metadata, query parameters or browser feature flags.
@@ -34,13 +36,13 @@ export function buildTrustedAssessment(attempt,authority={}){
     const allowed=new Set(paper.questions.flatMap(q=>q.items.map(p=>q.id+":"+p.id)));
     if(Object.keys(responses).some(id=>!allowed.has(id)))
       throw new Error("unknown_historical_part");
-    const pack=buildPob2026JanHistoricalCalibrationPack({responses});
+    const pack=buildPobJan2026ExaminerPack({responses});
     if(pack.paperId!==paper.id||pack.sourceSha256!==paper.sourceSha256||
-       pack.maxMarks!==100||pack.items.some(i=>!allowed.has(i.id)))
+       pack.maxMarks!==100||pack.items.some(i=>!allowed.has(i.constraints.primaryResponseKey)))
       throw new Error("historical_source_not_verified");
     return {items:pack.items,responses:pack.responses,
       deterministicScore:0,maxMarks:100,unassessedMarks:0,baselineScore:0,
-      historicalPaperId:paper.id,sourceSha256:paper.sourceSha256};
+      historicalPaperId:paper.id,sourceSha256:paper.sourceSha256,parts:pack.parts,criterionLevel:true};
   }
   const items=[];
   let baseline,replaceScore=0;
