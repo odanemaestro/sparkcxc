@@ -4,6 +4,7 @@
 // This makes it possible to explain each awarded and withheld mark.
 import {buildPob2026JanHistoricalCalibrationPack} from "./pobHistorical2026JanP2CalibrationPack";
 import {buildPob2026JanHistoricalPaper} from "./pobHistorical2026JanP2RealPaper";
+import {POB_JAN2026_EXAMINER_GUIDANCE} from "./pobJan2026ExaminerGuidance";
 
 const distinctListParts=new Set([
  "1:a","1:b","1:e.i","2:a.ii","2:b","2:c.ii",
@@ -30,6 +31,8 @@ export function buildPobJan2026ExaminerPack({responses={}}={}){
     responseKeys:[...original.responseKeys],prompt:original.prompt,
     context:original.context,
     exemplar:part.modelAnswer,
+    acceptedAlternatives:POB_JAN2026_EXAMINER_GUIDANCE[part.question+":"+part.part]?.alternatives||"",
+    commonConfusions:POB_JAN2026_EXAMINER_GUIDANCE[part.question+":"+part.part]?.pitfall||"",
     rubric:[{marks:criterion.marks,rule:criterion.rule,alternatives:[]}],
     constraints:{
      ...original.constraints,historicalExaminerMarking:true,
