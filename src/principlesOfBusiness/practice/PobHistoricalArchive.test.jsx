@@ -25,7 +25,7 @@ test("January 2023 P1 is a real timed 60-item original source exam, not an answe
  fireEvent.change(screen.getByLabelText("Paper type"),{target:{value:"1"}});
  expect(screen.getByText(/20 source papers shown/)).toBeInTheDocument();
  fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2023"}});
- fireEvent.click(screen.getByRole("button",{name:/2023 January.*Answer-sheet and explanations/}));
+ fireEvent.click(screen.getByRole("button",{name:/2023 January.*Full 60-question source paper/}));
  expect(screen.getByText(/January 2023 · Paper 1 examination/)).toBeInTheDocument();
  expect(screen.getByText(/complete 60-question Paper 1 is available/)).toBeInTheDocument();
  fireEvent.click(screen.getByRole("button",{name:"Start 60-question Paper 1"}));
@@ -40,7 +40,7 @@ test("January 2023 P1 is a real timed 60-item original source exam, not an answe
 test("undigitised historical Paper 1 never presents anonymous A-D slots as a finished simulation",()=>{
  render(<PobHistoricalArchive onBack={jest.fn()} onOpenJanuary2026={jest.fn()}/>);
  fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2005"}});
- fireEvent.click(screen.getByRole("button",{name:/2005 May\/June.*Paper 1.*Answer-sheet and explanations/}));
+ fireEvent.click(screen.getByRole("button",{name:/2005 May\/June.*Paper 1.*Answer-key reference/}));
  expect(screen.getByText(/Paper 1 · Source-text incomplete/)).toBeInTheDocument();
  expect(screen.getByText(/An answer key alone is not a simulated examination/)).toBeInTheDocument();
  expect(screen.getByText(/Use optional answer sheet with your own original paper/)).toBeInTheDocument();
@@ -48,7 +48,7 @@ test("undigitised historical Paper 1 never presents anonymous A-D slots as a fin
 test("2018 scan gap is visible and never marked wrong",()=>{
  render(<PobHistoricalArchive onBack={jest.fn()} onOpenJanuary2026={jest.fn()}/>);
  fireEvent.change(screen.getByLabelText("Find a historical sitting"),{target:{value:"2018"}});
- fireEvent.click(screen.getByRole("button",{name:/2018 May\/June.*Paper 1.*Answer-sheet and explanations/}));
+ fireEvent.click(screen.getByRole("button",{name:/2018 May\/June.*Paper 1.*Answer-key reference/}));
  expect(screen.getByText(/omits original questions 53–57/)).toBeInTheDocument();
 });
 test("historical Paper 2 allows written answers and shows actual authored rubrics without a fake score",()=>{
