@@ -176,6 +176,11 @@ export function PobPaper1Exam({userId,supabase,onBack,paperOverride=null}){
 export function PobPaper2Exam({onBack,userId,supabase,paperOverride=null}){
  const paper=useMemo(()=>paperOverride||POB_PAPER2_ORIGINAL_01,[paperOverride]);
  const historical=Boolean(paperOverride);
+ // Browser flag exposes an internal request path, never permission to grade.
+ // The protected database RPC and worker must independently authorize it.
+ const historicalCanary=historical&&process.env.REACT_APP_POB_HISTORICAL_JAN2026_MARKING==="true"
+   &&process.env.REACT_APP_SERVER_MARKING==="true";
+ const serverBacked=!historical||historicalCanary;
  const key=storage(userId,paper.id);
  const [attempt,setAttempt]=useState(()=>{const saved=safeRead(key);return restorePobAttempt(saved,paper.id,paper.questions.length)||startState(paper.id)});
  const [remaining,setRemaining]=useState(()=>pobRemainingSeconds(attempt,(paper.timeLimitMinutes||120)*60));
@@ -200,15 +205,17 @@ export function PobPaper2Exam({onBack,userId,supabase,paperOverride=null}){
  useEffect(toTop,[attempt.phase,attempt.index]);
  useEffect(()=>{
    const id=attempt.serverAttemptId;
-   if(historical||!review||!id||!supabase?.rpc||submittedToServer.current.has(id))return;
+   if(!serverBacked||!review||!id||!supabase?.rpc||submittedToServer.current.has(id))return;
    submittedToServer.current.add(id);
    let active=true;
    submitServerExamAttempt({supabase,attemptId:id,responses:attempt.answers,
-     score:null,maxScore:100,metadata:{paper_id:paper.id,source:"spark-original",grading_status:"server-pending"}})
+     score:null,maxScore:100,metadata:historicalCanary
+       ?{paper_id:paper.id,source_sha256:paper.sourceSha256,source:"historical-cxc",grading_status:"server-pending"}
+       :{paper_id:paper.id,source:"spark-original",grading_status:"server-pending"}})
      .then(result=>{if(active&&result.available)setSavedServerId(id);if(!result.available)submittedToServer.current.delete(id);})
      .catch(()=>{submittedToServer.current.delete(id);});
    return()=>{active=false;};
- },[historical,review,attempt.serverAttemptId,attempt.answers,supabase,paper.id]);
+ },[serverBacked,historicalCanary,review,attempt.serverAttemptId,attempt.answers,supabase,paper.id,paper.sourceSha256]);
  useEffect(()=>{
    if(historical||!review||!userId||!supabase?.rpc||recorded.current.has(attempt.attemptId))return;
    recorded.current.add(attempt.attemptId);
@@ -225,10 +232,13 @@ export function PobPaper2Exam({onBack,userId,supabase,paperOverride=null}){
    setRemaining(120*60);
    const active={...startState(paper.id),phase:"exam",deadline:Date.now()+(paper.timeLimitMinutes||120)*60*1000};
    setAttempt(active);
-   if(historical)return; // Historical PDF: offline exam preview only, NO numeric scores or server marking jobs.
+   if(!serverBacked)return; // Unapproved historical sitting stays offline and unscored.
    const saved=await startServerExamAttempt({supabase,subjectId:SUBJECT,paper:"02",
-     durationSeconds:7200,bankVersion:paper.id,rubricVersion:"pob-original-p2-rubric-v1",
-     graderVersion:"online-v1",metadata:{paper_id:paper.id,source:"spark-original"}});
+     durationSeconds:7200,bankVersion:historicalCanary?paper.bankVersion:paper.id,
+     rubricVersion:historicalCanary?"pob-historical-2026-jan-p2-rubric-v1":"pob-original-p2-rubric-v1",
+     graderVersion:"online-v1",metadata:historicalCanary
+       ?{paper_id:paper.id,source_sha256:paper.sourceSha256,source:"historical-cxc"}
+       :{paper_id:paper.id,source:"spark-original"}});
    if(saved.available)setAttempt(old=>old.attemptId===active.attemptId?{...old,serverAttemptId:saved.attempt_id}:old);
  };
  const finish=()=>{update({phase:"review",submittedAt:Date.now()});setConfirm(false)};
@@ -237,7 +247,7 @@ export function PobPaper2Exam({onBack,userId,supabase,paperOverride=null}){
   {attempt.phase==="instructions"?<section className="pob-exam-card pob-exam-intro">
    <span className="pob-exam-kicker">{historical?"HISTORICAL CXC SOURCE · UNSCORED PREVIEW":"SPARK ORIGINAL STRUCTURED PRACTICE"}</span><h1>{historical?paper.title:"Paper 2: Business decisions"}</h1>
    <p>Five compulsory 20-mark questions, 100 marks, 2 hours. Read each business scenario carefully and use complete sentences, calculations and relevant Caribbean examples.</p>
-   <p>{historical?"This is a transcription-based preview of an original historical paper. SPARK saves your responses locally and displays its internally proposed answer guidance. No numerical score, official CXC mark or live grading job is created until this sitting passes calibration.":"SPARK saves your responses on this device and shows the marking scheme after submission. Where online marking is enabled, SPARK also checks written answers against the rubric using two independent automated passes. Uncertain results are shown as ranges rather than guessed grades."}</p>
+   <p>{historical?(historicalCanary?"This historical sitting is eligible for a limited server-side practice marking check. SPARK saves your responses locally and requests two automated rubric assessments only when the trusted server authorizes the attempt. Any result is a practice estimate, not an official CXC grade.":"This is a transcription-based preview of an original historical paper. SPARK saves your responses locally and displays its internally proposed answer guidance. No numerical score, official CXC mark or live grading job is created until this sitting passes calibration."):"SPARK saves your responses on this device and shows the marking scheme after submission. Where online marking is enabled, SPARK also checks written answers against the rubric using two independent automated passes. Uncertain results are shown as ranges rather than guessed grades."}</p>
    <button type="button" className="pob-primary" onClick={start}>Start Paper 2</button></section>:<>
    <header className="pob-exam-card pob-exam-status"><div><strong>{review?"Paper 2 submitted":"Paper 2 in progress"}</strong><span>{answered} of {paper.questions.reduce((n,q)=>n+q.items.length,0)} parts answered</span></div><span className="pob-timer" role="timer">{review?"Review":clock(remaining)}</span></header>
    {!review&&nextIncomplete!==null&&<button type="button" className="secondary" onClick={()=>update({index:nextIncomplete})}>Go to next incomplete question</button>}
