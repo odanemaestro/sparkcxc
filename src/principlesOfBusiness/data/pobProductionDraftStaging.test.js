@@ -19,7 +19,7 @@ describe("SPARK POB safe production staging and database marking drift",()=>{
   expect(sql).toContain("on conflict (id) do nothing");
   expect(sql).toContain("enabled=false and status='draft'");
   expect(sql).toContain("raise exception 'POB must remain a disabled draft");
-  expect(sql).toContain("'/study/principles-of-business'");
+  expect(sql).toContain('\"/study/principles-of-business\"');
   // No student-facing release or historical score switch is permitted here.
   expect(sql).not.toMatch(/update\s+(public\.)?spark_marking_config/i);
   expect(sql).not.toMatch(/update\s+(public\.)?spark_subjects\s+set/i);
