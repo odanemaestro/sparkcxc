@@ -24,7 +24,7 @@ describe("POB secure online marking wiring",()=>{
  });
  test("worker retains two independent semantic passes and server-owned rubric",()=>{
   const worker=source("supabase","functions","mark-paper2","index.ts");
-  expect(worker).toContain("buildTrustedAssessment(attempt,{historicalJan2026Enabled})");
+  expect(worker).toContain("buildTrustedAssessment(attempt,{historicalJan2026Enabled,historicalPobArchiveEnabled})");
   expect(worker).toContain("pob_historical_jan26_owner_pilot_enabled");
   expect(worker).toContain('db.from("spark_marking_config")');
   expect(worker).not.toContain("buildTrustedAssessment(attempt,attempt.metadata)");
