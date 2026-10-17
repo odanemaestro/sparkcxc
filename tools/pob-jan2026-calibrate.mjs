@@ -45,6 +45,7 @@ try{
  if(cases.length!==84||coverage.size!==32)throw Error("Expected 84 cases covering all 32 printed parts.");
  if(validationOnly){
   console.log(JSON.stringify({status:"fixtures_valid_only",cases:cases.length,parts:coverage.size,printedMarks:100,providerExecuted:false,releaseApproved:false}));
+  await rm(dir,{recursive:true,force:true});
   process.exit(0);
  }
  const results=[];let failures=0,disputed=0;const observedParts=new Set();
