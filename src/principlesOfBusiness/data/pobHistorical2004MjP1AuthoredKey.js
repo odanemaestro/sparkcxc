@@ -1,0 +1,108 @@
+// Historical CSEC POB June 2004 Paper 01: SPARK-developed 60-answer
+// teaching key with PDF page provenance and exceptional marking disputes.
+// The first page's question text is IMAGE-ONLY (under-extracted in PDF).
+// It was read from the rendered original, not silently omitted.
+// These are not published CXC answers or approved grades.
+import {POB_SUPPLIED_ARCHIVE} from "./pobHistoricalInventory";
+export const POB_2004_MJ_P1_AUTHORED_KEY=Object.freeze({
+ id:"POB-P1-2004-MJ",paper:1,year:2004,sitting:"MJ",
+ sourceFilename:"CSEC_Principles_of_Business_P1_2004_MJ.pdf",
+ sourceSha256:"01ebac983e9c49a3525db4cb5bfab7e84af10ea20d4f38caa0c6ef7dafe13e54",
+ sourcePageCount:8,questionCount:60,
+ origin:"SPARK-independent-subject-explanations",
+ publishedCxcAnswerKeyAvailable:false,
+ fullQuestionOptionVisualComparisonPassed:false,benchmarkCalibrationPassed:false,
+ liveScoringApproved:false,
+ entries:Object.freeze([
+ Object.freeze({"number":1,"pdfPage":1,"proposedOption":"B","explanation":"Early people could satisfy their needs by applying their own initiative to available natural resources.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":true}),
+ Object.freeze({"number":2,"pdfPage":1,"proposedOption":"C","explanation":"Money is useful as a medium of exchange, measure of value and store of value; indivisibility is not a desired function.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":true}),
+ Object.freeze({"number":3,"pdfPage":1,"proposedOption":"B","explanation":"Producing goods, providing employment and workforce education are business functions; maximum sales is an objective rather than a universal function.","status":"needs-syllabus-adjudication","disputeCategory":"business-functions-versus-sales","disputeRationale":"The text confuses universally necessary functions with possible objectives; B follows the training/social-function reading.","visualQuestionReviewed":true}),
+ Object.freeze({"number":4,"pdfPage":1,"proposedOption":"B","explanation":"A mixed economy includes private and government economic activity and is typical of the Commonwealth Caribbean.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":true}),
+ Object.freeze({"number":5,"pdfPage":1,"proposedOption":"B","explanation":"Barter requires matching wants between traders because goods are exchanged directly without money.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":true}),
+ Object.freeze({"number":6,"pdfPage":1,"proposedOption":"A","explanation":"A private enterprise primarily seeks profit for its owners, even where it also provides jobs.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":true}),
+ Object.freeze({"number":7,"pdfPage":1,"proposedOption":"A","explanation":"A bakery owned and controlled by one person who receives its profits is a sole-trader business.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":true}),
+ Object.freeze({"number":8,"pdfPage":1,"proposedOption":"C","explanation":"Suggestion boxes collect workers' practical suggestions for improving their workplace.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":true}),
+ Object.freeze({"number":9,"pdfPage":1,"proposedOption":"B","explanation":"Receiving, evaluating quality, costing and maintaining records of purchased items are associated with procurement, though inventory control is shared with storekeepers.","status":"needs-syllabus-adjudication","disputeCategory":"purchasing-vs-stock-control","disputeRationale":"The duties combine receiving, quality checking and inventory; both purchasing and stock control may overlap.","visualQuestionReviewed":true}),
+ Object.freeze({"number":10,"pdfPage":2,"proposedOption":"B","explanation":"MIS is the standard abbreviation for Management Information Systems.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":11,"pdfPage":2,"proposedOption":"B","explanation":"Selling goods at reasonable prices is an obligation to customers, not principally to employees.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":12,"pdfPage":2,"proposedOption":"D","explanation":"Sponsoring a school sports team supports community welfare, an example of social responsibility.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":13,"pdfPage":2,"proposedOption":"B","explanation":"A laissez-faire leader allows subordinates wide autonomy to plan and decide their own work.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":14,"pdfPage":2,"proposedOption":"A","explanation":"Employee participation in decision-making can improve motivation and workplace morale.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":15,"pdfPage":2,"proposedOption":"C","explanation":"Trade unions seek to protect workers' rights and interests, including fair treatment.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":16,"pdfPage":2,"proposedOption":"D","explanation":"Communication of an offer and acceptance are central to contract formation; the offered option describes acceptance, although option A also states a generally necessary fact.","status":"needs-syllabus-adjudication","disputeCategory":"communicated-offer-and-acceptance","disputeRationale":"Both communication of an offer and acceptance are elements of a valid contract; wording asks a single essential feature.","visualQuestionReviewed":false}),
+ Object.freeze({"number":17,"pdfPage":3,"proposedOption":"D","explanation":"Asking what price someone would accept and being told a price is normally an enquiry for information, not necessarily a binding offer.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":18,"pdfPage":3,"proposedOption":"C","explanation":"The prospective buyer's proposal of $12,000 instead of the seller's $15,000 asking price is a counteroffer.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":19,"pdfPage":3,"proposedOption":"D","explanation":"Working capital finances regular day-to-day business operations.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":20,"pdfPage":3,"proposedOption":"D","explanation":"Loss of qualified workers through emigration may reduce production in the origin economy.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":21,"pdfPage":3,"proposedOption":"D","explanation":"A delivery lorry is a business fixed asset used over time, not stock held for resale or private household property.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":22,"pdfPage":3,"proposedOption":"B","explanation":"Banking and tourism are service industries, unlike agriculture, mining and manufacturing.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":23,"pdfPage":3,"proposedOption":"C","explanation":"Primary production obtains natural raw materials for use in later processes.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":24,"pdfPage":3,"proposedOption":"B","explanation":"Farming and mining are primary production; manufacturing and services belong to other sectors.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":25,"pdfPage":3,"proposedOption":"A","explanation":"Agriculture obtains crops from land and is categorised as primary or extractive production.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":26,"pdfPage":4,"proposedOption":"C","explanation":"Whaling was not a normal large-scale productive activity in the contemporary Caribbean compared with packaging, mining and construction.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":27,"pdfPage":4,"proposedOption":"B","explanation":"Hand production of leather sandals can take place in a small workshop as cottage manufacturing.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":28,"pdfPage":4,"proposedOption":"A","explanation":"An industrial linkage exists when one industry's outputs are used as another industry's inputs.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":29,"pdfPage":4,"proposedOption":"D","explanation":"Mass production creates standardised goods in large quantities.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":30,"pdfPage":4,"proposedOption":"A","explanation":"A shareholder in an incorporated company ordinarily has limited liability, unlike a sole trader or general partner.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":31,"pdfPage":4,"proposedOption":"D","explanation":"Capital-intensive production makes extensive use of machinery relative to labour.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":32,"pdfPage":4,"proposedOption":"B","explanation":"A bill of lading identifies goods, shipment particulars and the carrier or ship involved.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":33,"pdfPage":4,"proposedOption":"B","explanation":"Hire purchase credit costs $784 minus the $700 cash price, or $84.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":34,"pdfPage":4,"proposedOption":"D","explanation":"Hire purchase is mainly a means for customers to buy durable goods on retail credit.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":35,"pdfPage":4,"proposedOption":"B","explanation":"Wholesalers stand between producers and retailers, buying and breaking up bulk orders.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":36,"pdfPage":5,"proposedOption":"A","explanation":"Transporting goods to storage facilities is more properly a distribution or wholesale logistical role than an ordinary retail selling function.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":37,"pdfPage":5,"proposedOption":"C","explanation":"A charter party is the contract for hire of a ship or specified cargo-carrying space.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":38,"pdfPage":5,"proposedOption":"D","explanation":"A post-dated cheque specifies a future date rather than being immediately due on its writing date.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":39,"pdfPage":5,"proposedOption":"C","explanation":"The cheque is drawn for $170 in figures but describes only seventy dollars in words, creating an amount discrepancy.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":true}),
+ Object.freeze({"number":40,"pdfPage":6,"proposedOption":"D","explanation":"A telegraphic money order or electronic funds transmission was designed for relatively fast distant payments in this examination era.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":41,"pdfPage":6,"proposedOption":"A","explanation":"A current bank account ordinarily permits cheque payments.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":42,"pdfPage":6,"proposedOption":"A","explanation":"Currency issuance, including banknotes, is a major central-bank responsibility.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":43,"pdfPage":6,"proposedOption":"D","explanation":"A spouse's exclusively owned property cannot be pledged by the borrower without ownership consent and acceptable security arrangements.","status":"needs-syllabus-adjudication","disputeCategory":"spouse-property-collateral","disputeRationale":"A previously mortgaged home may also be unusable without consent, while spouse-owned property requires legal permission; cannot infer absolute ineligibility from absence of insurance.","visualQuestionReviewed":false}),
+ Object.freeze({"number":44,"pdfPage":6,"proposedOption":"B","explanation":"National insurance contributions are compulsory for qualifying employees under applicable social insurance law.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":45,"pdfPage":6,"proposedOption":"A","explanation":"Wage and salary deductions for taxation are income tax.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":46,"pdfPage":6,"proposedOption":"B","explanation":"Income tax is directly charged on individuals or businesses rather than charged through consumer purchases.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":47,"pdfPage":6,"proposedOption":"A","explanation":"Money purchasing power helps individuals meet their basic material needs, although public services are also important.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":48,"pdfPage":6,"proposedOption":"B","explanation":"Lower demand alongside increased supply generally leads to a lower market-clearing price.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":49,"pdfPage":6,"proposedOption":"D","explanation":"When potatoes are scarce but demand is high, purchasers compete for limited supply and the market price rises.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":50,"pdfPage":7,"proposedOption":"B","explanation":"The sole owner can ordinarily make decisions directly without navigating a board or co-owner approval chain.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":51,"pdfPage":7,"proposedOption":"D","explanation":"Tariffs, quotas and currency devaluation can potentially restrain imports or improve export competitiveness; revaluation normally makes imports cheaper.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":52,"pdfPage":7,"proposedOption":"A","explanation":"Competition affects an article's price through the interaction of market demand and supply.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":53,"pdfPage":7,"proposedOption":"B","explanation":"Increased imports of consumer goods do not automatically build domestic productive capacity.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":54,"pdfPage":7,"proposedOption":"C","explanation":"Import restrictions are barriers to international trade, not a benefit arising from it.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":55,"pdfPage":7,"proposedOption":"A","explanation":"A favourable balance of merchandise trade occurs when exports exceed imports.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":56,"pdfPage":7,"proposedOption":"B","explanation":"An import licence authorises the introduction of specified goods according to the issuing authority's rules.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":57,"pdfPage":7,"proposedOption":"D","explanation":"Greater exports earn foreign exchange and can help external payments; restrictions on domestic credit can also reduce import demand.","status":"needs-syllabus-adjudication","disputeCategory":"external-balance-remedies","disputeRationale":"Both raising exports and restricting domestic credit can help correct an adverse balance of payments; original item may not be unique.","visualQuestionReviewed":false}),
+ Object.freeze({"number":58,"pdfPage":7,"proposedOption":"C","explanation":"The printed options show Bahamas, Haiti and Suriname, whose CARICOM participation and full-membership status varied by the examined historical date; do not grade without verifying the era.","status":"needs-syllabus-adjudication","disputeCategory":"historical-caricom-full-membership","disputeRationale":"Membership and suspension dates for Haiti and the status of Bahamas/Suriname require checking the original 2004 sitting. The suggested grouping may be unsound.","visualQuestionReviewed":false}),
+ Object.freeze({"number":59,"pdfPage":8,"proposedOption":"B","explanation":"A mixed economy is typical in the Commonwealth Caribbean, combining private firms and public services.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ Object.freeze({"number":60,"pdfPage":8,"proposedOption":"B","explanation":"A nationalised industry is owned or controlled by government.","status":"spark-authored-provisional","disputeCategory":null,"disputeRationale":null,"visualQuestionReviewed":false}),
+ ])
+});
+export function verifyPob2004MjP1AuthoredKey(key=POB_2004_MJ_P1_AUTHORED_KEY){
+ const issues=[],numbers=new Set(),disputed=[];
+ const src=POB_SUPPLIED_ARCHIVE.find(p=>p.id===key?.id);
+ if(!src||src.id!=="POB-P1-2004-MJ"||key.sourceSha256!==src.sourceSha256||
+   key.sourceFilename!==src.filename)
+  issues.push("Original source PDF or trusted SHA-256 not matched.");
+ if(!Array.isArray(key?.entries)||key.entries.length!==60)
+  return {valid:false,issues:[...issues,"Exactly 60 source questions required."],disputes:0};
+ for(const item of key.entries){
+  if(!Number.isInteger(item.number)||item.number<1||item.number>60||numbers.has(item.number))
+   issues.push("Repeated or invalid number "+item.number);
+  numbers.add(item.number);
+  if(!["A","B","C","D"].includes(item.proposedOption)||item.explanation?.length<35)
+   issues.push("Missing option or rationale for Q"+item.number);
+  if(!Number.isInteger(item.pdfPage)||item.pdfPage<1||item.pdfPage>8)
+   issues.push("Source PDF page outside range Q"+item.number);
+  if(item.status==="needs-syllabus-adjudication"){
+   disputed.push(item.number);
+   if(!item.disputeCategory||!item.disputeRationale)
+    issues.push("Missing evidence of dispute at Q"+item.number);
+  }else if(item.status!=="spark-authored-provisional")
+   issues.push("Answer improperly certified Q"+item.number);
+ }
+ if(numbers.size!==60)issues.push("Required original questions missing.");
+ if(disputed.join(",")!=="3,9,16,43,57,58")
+  issues.push("Mandatory ambiguity holds removed.");
+ if(key.liveScoringApproved!==false||key.publishedCxcAnswerKeyAvailable!==false)
+  issues.push("Authored answers must never impersonate CXC official key or live release.");
+ return {valid:issues.length===0,issues,disputes:disputed.length,disputedNumbers:disputed};
+}
