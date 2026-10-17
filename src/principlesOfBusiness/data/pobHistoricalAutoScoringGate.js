@@ -2,6 +2,8 @@ import {POB_SUPPLIED_ARCHIVE} from "./pobHistoricalInventory";
 import {validatePobHistoricalPaper1} from "./pobHistoricalMcqReleaseGate";
 import {validatePobHistoricalCandidate} from "./pobHistoricalReleaseGate";
 import {POB_HISTORICAL_FIRST_FIFTEEN,validatePobHistoricalP2Selection} from "./pobHistoricalScoringBatches";
+import {validatePob2005to2007P2Selection} from "./pobHistoricalBatch03SourceAudit";
+import {validatePob2008MjP2Choices} from "./pobHistorical2008MjP2AuthoredScheme";
 
 // Development/readiness gate only. The live grading server must independently
 // resolve the trusted paper ID, source digest, rubric and user authorization.
@@ -30,6 +32,14 @@ export function assessPobHistoricalAutoScoring(candidate,{
    validatePobHistoricalCandidate(candidate);
  issues.push(...base.issues);
  if(candidate?.paper===2){
+  const earlySix=source?.paper===2&&source.year>=2005&&source.year<=2007;
+  const year2008=source?.paper===2&&source.year===2008;
+  if(earlySix){
+   const choice=validatePob2005to2007P2Selection(candidate.id,candidate.selectedQuestionNumbers);
+   if(!choice.valid)issues.push("Original 2005–07 section choices invalid: "+choice.issue);
+  }
+  if(year2008&&!validatePob2008MjP2Choices(candidate.selectedQuestionNumbers))
+   issues.push("Original 2008 compulsory/optional question choices invalid.");
   // A client-provided boolean is not evidence of a valid sitting selection.
   // Apply original source-based rules for sources audited in batch 1.
   const sourceRule=POB_HISTORICAL_FIRST_FIFTEEN.find(p=>p.id===candidate?.id&&p.paper===2);
@@ -47,8 +57,10 @@ export function assessPobHistoricalAutoScoring(candidate,{
   if(candidate?.questionSelectionRulesVerified!==true)
    issues.push("Paper 2 compulsory and optional question rules have not been verified.");
   const questions=candidate?.questions;
-  if(!Array.isArray(questions)||questions.length<5)
-   issues.push("Full Paper 2 question set is missing.");
+  const expectedOfferedCount=earlySix?9:year2008?7:null;
+  if(!Array.isArray(questions)||
+    (expectedOfferedCount!==null?questions.length!==expectedOfferedCount:questions.length<5))
+   issues.push("Full Paper 2 question set is missing or wrong for the printed sitting.");
   else{
    if(candidate?.candidateMaximumMarks!==100)
     issues.push("The sitting's candidate maximum must be verified as 100 marks.");
@@ -57,8 +69,9 @@ export function assessPobHistoricalAutoScoring(candidate,{
     if(!Number.isInteger(q?.number)||q.number<1||ids.has(q.number))
      issues.push(`Paper 2 question ${i+1} has an invalid or duplicate number.`);
     ids.add(q?.number);
-    if(q?.marks!==20||q?.questionWordingVerified!==true)
-     issues.push(`Paper 2 question ${i+1} is not a verified 20-mark question.`);
+    const expectedMarks=earlySix&&(q?.number===1||q?.number===2)?10:20;
+    if(q?.marks!==expectedMarks||q?.questionWordingVerified!==true)
+     issues.push(`Paper 2 question ${i+1} is not a verified ${expectedMarks}-mark question.`);
     if(!Array.isArray(q?.parts)||!q.parts.length){
      issues.push(`Paper 2 question ${i+1} lacks a complete rubric.`);
      return;
@@ -82,8 +95,8 @@ export function assessPobHistoricalAutoScoring(candidate,{
       issues.push(`Question ${i+1}, part ${j+1} lacks a complete source-verified criterion rubric.`);
      if(Number.isInteger(part?.marks))questionTotal+=part.marks;
     });
-    if(questionTotal!==20)
-     issues.push(`Question ${i+1} part marks do not total 20.`);
+    if(questionTotal!==expectedMarks)
+     issues.push(`Question ${i+1} part marks do not total ${expectedMarks}.`);
    });
   }
  }
