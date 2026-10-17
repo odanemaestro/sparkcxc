@@ -19,7 +19,11 @@ try{
  const source=buildPaper();
  const generated=source.questions.flatMap(q=>q.items.flatMap(part=>[
   {id:"all-parts-model-"+q.number+"-"+part.id,part:q.number+":"+part.id,
-   responses:{[q.number+":"+part.id]:part.modelAnswer},
+   responses:{
+    [q.number+":"+part.id]:part.modelAnswer,
+    ...(q.number===1&&part.id==="e.ii"?{"1:e.i":q.items.find(p=>p.id==="e.i").modelAnswer}:{}),
+    ...(q.number===3&&part.id==="a.iii"?{"3:a.ii":q.items.find(p=>p.id==="a.ii").modelAnswer}:{})
+   },
    min:part.marks,max:part.marks,reason:"SPARK proposed worked model answer. Full marks is a calibration hypothesis, not an adjudicated result."},
   {id:"all-parts-blank-"+q.number+"-"+part.id,part:q.number+":"+part.id,
    responses:{[q.number+":"+part.id]:""},min:0,max:0,reason:"Blank script receives zero."}
