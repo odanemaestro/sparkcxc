@@ -1,6 +1,6 @@
 import {POB_HISTORICAL_REVIEW_BANKS} from "./pobHistoricalArchiveRegistry";
 import {POB_BATCH1_P1_PAPERS,POB_BATCH1_P1_BY_ID} from "./pobHistoricalPaper1Batch1Source";
-import {auditPobHistoricalP1Batch1,buildPobHistoricalP1Exam,getPobHistoricalP1Source} from "./pobHistoricalPaper1Batch1Exam";
+import {auditPobHistoricalP1Batch1,auditPobHistoricalP1SourceReadiness,buildPobHistoricalP1Exam,getPobHistoricalP1Source} from "./pobHistoricalPaper1Batch1Exam";
 test("ten historically distinct supplied Paper 1 sittings carry all 600 original-numbered MCQs",()=>{
  expect(POB_BATCH1_P1_PAPERS).toHaveLength(10);
  expect(POB_BATCH1_P1_PAPERS.map(p=>p.year)).toEqual([2002,2003,2004,2005,2006,2007,2008,2011,2012,2014]);
@@ -36,4 +36,18 @@ test("source PDF hashes remain paired to the existing trusted POB inventory",()=
   expect(record).toBeTruthy();
   expect(record.bank.sourceSha256).toBe(record.source.sourceSha256);
  }
+});
+
+test("all twenty historical Paper 1 sittings have an explicit source-QA status",()=>{
+ const report=auditPobHistoricalP1SourceReadiness(POB_HISTORICAL_REVIEW_BANKS);
+ expect(report.totalSittings).toBe(20);
+ expect(report.completeTranscriptions).toBe(11);
+ expect(report.pendingTranscriptions.map(p=>p.id)).toEqual([
+  "POB-P1-2015-MJ","POB-P1-2016-MJ","POB-P1-2017-MJ",
+  "POB-P1-2018-MJ","POB-P1-2020-JAN","POB-P1-2020-MJ",
+  "POB-P1-2021-MJ","POB-P1-2022-JAN","POB-P1-2024-MJ"
+ ]);
+ expect(report.sourceQuestionsToReview.length).toBeGreaterThanOrEqual(30);
+ expect(report.sourceQuestionsToReview.every(q=>q.paperId&&Number.isInteger(q.number)&&q.reason)).toBe(true);
+ expect(report.sourceVerifiedForOfficialScoring).toBe(0);
 });
