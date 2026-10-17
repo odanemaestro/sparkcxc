@@ -16,7 +16,10 @@ const getMcqs=bank=>{
  const rows=Array.isArray(bank.questions)?bank.questions:Array.isArray(bank.entries)?bank.entries:Array.isArray(bank.proposedEntries)?bank.proposedEntries:[];
  return rows.filter(q=>Number.isInteger(q.number)).sort((a,b)=>a.number-b.number);
 };
-const sourceMissing=row=>row?.sourceQuestionPresent===false||row?.status==="source-question-missing"||row?.status==="disputed"||Boolean(row?.dispute);
+const sourceMissing=(row,bank)=>row?.sourceQuestionPresent===false||
+ /missing|disputed|academic-dispute|uncertain/i.test(String(row?.status||row?.academicStatus||""))||
+ Boolean(row?.dispute||row?.disputeType||row?.uncertainty||row?.issue||
+         bank?.answerReviewNotes?.[row?.number]);
 const key=(id)=>"spark:pob:archive:answers:"+id;
 const read=id=>{try{return JSON.parse(window.localStorage.getItem(key(id))||"{}")}catch{return {}}};
 const save=(id,value)=>{try{window.localStorage.setItem(key(id),JSON.stringify(value))}catch{}};
@@ -27,7 +30,7 @@ function HistoricalPaper1({record}){
  const [submitted,setSubmitted]=useState(false);
  useEffect(()=>{setAnswers(read(record.id));setSubmitted(false)},[record.id]);
  useEffect(()=>save(record.id,answers),[record.id,answers]);
- const gradable=mcqs.filter(q=>!sourceMissing(q)&&answerChoice(q));
+ const gradable=mcqs.filter(q=>!sourceMissing(q,record.bank)&&answerChoice(q));
  const correct=gradable.filter(q=>answers[q.number]===answerChoice(q)).length;
  const answered=mcqs.filter(q=>answers[q.number]).length;
  return <section className="pob-archive-exam" aria-label="Historical Paper 1 practice">
@@ -36,10 +39,10 @@ function HistoricalPaper1({record}){
    <div className="pob-archive-summary"><span>{mcqs.length} numbered slots</span><span>{answered} answered</span><span>{gradable.length} provisional key entries</span></div>
    {!mcqs.length?<p>The answer-key source for this paper needs further review.</p>:<>
      <div className="pob-archive-mcq-grid">{mcqs.map(row=>{
-       const missing=sourceMissing(row),choice=answers[row.number]||"",right=answerChoice(row);
+       const missing=sourceMissing(row,record.bank),choice=answers[row.number]||"",right=answerChoice(row);
        return <fieldset key={row.number} className={"pob-archive-mcq"+(missing?" is-missing":"")}>
          <legend>Question {row.number}</legend>
-         {missing?<p>Not present in the supplied source scan. No penalty.</p>:
+         {missing?<p>Missing or academically disputed source answer. Excluded from your provisional score.</p>:
          <div className="pob-archive-choices">{["A","B","C","D"].map(option=><label key={option}>
            <input type="radio" name={record.id+"-"+row.number} value={option}
              checked={choice===option} disabled={submitted}
