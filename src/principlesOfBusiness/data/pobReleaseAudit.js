@@ -6,6 +6,7 @@ import {POB_OBJECTIVE_DEEP_DIVES} from "./pobObjectiveDeepDives";
 import {POB_PAPER1_ORIGINAL_ITEMS,validatePobPaper1Items,buildPobPaper1} from "./pobPaper1Original";
 import {POB_PAPER2_ORIGINAL_01,validatePobPaper2} from "./pobPaper2Original";
 import {POB_SUPPLIED_ARCHIVE} from "./pobHistoricalInventory";
+import {POB_HISTORICAL_SCORING_OWNER_APPROVAL,pobSourceSha256} from "./pobHistoricalScoringApproval";
 import {POB_HISTORICAL_P2_BATCH01,POB_HISTORICAL_P2_BATCH01_SUMMARY} from "./pobHistoricalP2Batch01";
 import {verifyPobSpecimenCheckpoint,POB_CXC_2019_SPECIMEN_P1_CHECKPOINT} from "./pobCxcSpecimenP1Checkpoint";
 import {verifyPobSpecimenCheckpoint11to20,POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_11_20} from "./pobCxcSpecimenP1Checkpoint11to20";
@@ -95,6 +96,13 @@ export function auditPobRelease({
  requireCheck(historical.some(p=>p.id==="POB-P2-2019-MJ-ALT"&&p.paper===2&&p.reclassifiedFromPaper1)&&
    !historical.some(p=>p.id==="POB-P1-2019-MJ"),
    "The mislabeled May/June 2019 source must be classified under Paper 02.");
+ requireCheck(POB_HISTORICAL_SCORING_OWNER_APPROVAL.sourcePdfCount===46&&
+   historical.length===46&&historical.every(p=>
+      p.ownerAutoScoringAuthorized===true&&
+      p.ownerScoringApprovalDate===POB_HISTORICAL_SCORING_OWNER_APPROVAL.authorizedOn&&
+      typeof p.sourceSha256==="string"&&
+      p.sourceSha256===pobSourceSha256(p.filename)),
+   "Historical owner scoring approval must cover all 46 immutable PDF fingerprints.");
  requireCheck(historical.every(p=>!p.simulatorReady&&p.answerKeyStatus==="not-verified"),
    "Unverified historical papers must not be released as simulator-ready.");
  requireCheck(subject.enabled===false&&subject.status==="draft",
@@ -107,6 +115,7 @@ export function auditPobRelease({
      flashcards:flashcards.length,paper1Items:paper1Items.length,
      paper2Parts:paper2.questions.flatMap(q=>q.items).length,
      unverifiedHistorical:historical.length,
+     ownerAuthorizedHistorical:historical.filter(p=>p.ownerAutoScoringAuthorized===true).length,
      fullCxcSpecimenQuestions:POB_CXC_2019_SPECIMEN_P1_FULL.questions.length,
      scoredSpecimenCheckpointItems:POB_CXC_2019_SPECIMEN_P1_CHECKPOINT.questions.length+
        POB_CXC_2019_SPECIMEN_P1_CHECKPOINT_11_20.questions.length+
@@ -118,6 +127,7 @@ export function auditPobRelease({
    releaseApproved:false,
    blockers:[
      "Verify authoritative syllabus wording and all lesson answers.",
+     "Owner approval to develop scoring was granted for 46 PDFs on 2026-10-17, but each sitting still needs verified answers, a complete rubric and secure calibrated scoring.",
      "Transcribe and independently validate historical papers and answer keys before enabling them.",
      "Implement calibrated, fair subject-aware grading of Paper 2 narratives and partial credit.",
      "Complete SBA, integrations, accessibility, responsive browsers and device QA.",
