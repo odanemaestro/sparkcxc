@@ -1,4 +1,4 @@
-import {POB_SUPPLIED_ARCHIVE,POB_SOURCE_INVENTORY} from "./pobHistoricalInventory";
+import {POB_SUPPLIED_ARCHIVE,POB_SOURCE_INVENTORY,isPobHistoricalPaperFullyVerified,pobReleasedHistoricalPapers} from "./pobHistoricalInventory";
 import {POB_HISTORICAL_SOURCE_SHA256,POB_HISTORICAL_SCORING_OWNER_APPROVAL,pobSourceSha256}
  from "./pobHistoricalScoringApproval";
 import {assessPobHistoricalAutoScoring} from "./pobHistoricalAutoScoringGate";
@@ -14,6 +14,7 @@ describe("owner-approved POB historical auto-scoring intake",()=>{
   expect(POB_HISTORICAL_SCORING_OWNER_APPROVAL.sourcePdfCount).toBe(46);
   expect(POB_HISTORICAL_SCORING_OWNER_APPROVAL.enablesUnverifiedScoring).toBe(false);
   expect(POB_SOURCE_INVENTORY.ownerApprovedForFutureAutoScoring).toBe(46);
+  expect(pobReleasedHistoricalPapers()).toHaveLength(0);
   for(const row of rows){
    expect(row.sourceSha256).toMatch(/^[0-9a-f]{64}$/);
    expect(row.sourceSha256).toBe(pobSourceSha256(row.filename));
@@ -23,6 +24,17 @@ describe("owner-approved POB historical auto-scoring intake",()=>{
    expect(row.simulatorReady).toBe(false);
    expect(assessPobHistoricalAutoScoring(row).ready).toBe(false);
   }
+ });
+ test("a simulator-ready switch cannot bypass the outstanding academic release checks",()=>{
+  const sample=POB_SUPPLIED_ARCHIVE[0];
+  expect(isPobHistoricalPaperFullyVerified(sample)).toBe(false);
+  expect(isPobHistoricalPaperFullyVerified({...sample,simulatorReady:true})).toBe(false);
+  expect(isPobHistoricalPaperFullyVerified({
+   ...sample,simulatorReady:true,sourceAuthenticityVerified:true,
+   transcriptionStatus:"verified",answerKeyStatus:"verified",
+   markingSchemeStatus:"verified",assessmentQAComplete:true,
+   secureAssessmentCalibrated:true,sourceSha256:"0".repeat(64)
+  })).toBe(false);
  });
  test("2019 May/June mislabeled Paper 1 is authorized under its actual Paper 2 identity",()=>{
   const mistaken=POB_SUPPLIED_ARCHIVE.find(r=>r.reclassifiedFromPaper1);
