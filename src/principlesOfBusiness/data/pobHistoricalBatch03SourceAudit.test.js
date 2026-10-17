@@ -10,6 +10,8 @@ import {POB_2008_MJ_P2_AUTHORED_SCHEME,verifyPob2008MjP2AuthoredScheme,validateP
 import {POB_2005_MJ_P2_AUTHORED_SCHEME,verifyPob2005MjP2AuthoredScheme} from "./pobHistorical2005MjP2AuthoredScheme";
 import {POB_2006_MJ_P2_AUTHORED_SCHEME,verifyPob2006MjP2AuthoredScheme} from "./pobHistorical2006MjP2AuthoredScheme";
 import {POB_2007_MJ_P2_AUTHORED_SCHEME,verifyPob2007MjP2AuthoredScheme} from "./pobHistorical2007MjP2AuthoredScheme";
+import {POB_2019_MJ_P2_AUTHORED_SCHEME,verifyPob2019MjP2AuthoredScheme} from "./pobHistorical2019MjP2AuthoredScheme";
+import {POB_2019_MJ_ALT_P2_AUTHORED_SCHEME} from "./pobHistorical2019MjAltP2AuthoredScheme";
 
 describe("third historical POB scoring intake, 15 original source PDFs",()=>{
  test("all 15 PDF page counts and SHA-256 fingerprints match the approved inventory",()=>{
@@ -121,6 +123,19 @@ describe("third historical POB scoring intake, 15 original source PDFs",()=>{
   expect(q4.parts.find(p=>p.id==="c.ii").modelAnswer).toMatch(/two/i);
   const q1=POB_2007_MJ_P2_AUTHORED_SCHEME.questions[0];
   expect(q1.parts.find(p=>p.id==="d").modelAnswer).toMatch(/^No,/);
+ });
+ test("2019 May/June independently scanned source reuses identical paper answers, not a false source SHA",()=>{
+  const result=verifyPob2019MjP2AuthoredScheme();
+  expect(result).toEqual({valid:true,issues:[],parts:32,marks:100});
+  const regular=POB_2019_MJ_P2_AUTHORED_SCHEME;
+  const alt=POB_2019_MJ_ALT_P2_AUTHORED_SCHEME;
+  expect(regular.id).toBe("POB-P2-2019-MJ");
+  expect(regular.sourceSha256).not.toBe(alt.sourceSha256);
+  expect(regular.sourceSha256).toBe(POB_SUPPLIED_ARCHIVE.find(p=>p.id===regular.id).sourceSha256);
+  expect(regular.questions).toBe(alt.questions);
+  expect(regular.liveScoringApproved).toBe(false);
+  const tampered={...regular,sourceSha256:alt.sourceSha256};
+  expect(verifyPob2019MjP2AuthoredScheme(tampered).valid).toBe(false);
  });
  test("May/June 2008 Paper 2 has seven 20-mark questions, five to attempt",()=>{
   const source=POB_2008_MJ_P2_AUTHORED_SCHEME;
