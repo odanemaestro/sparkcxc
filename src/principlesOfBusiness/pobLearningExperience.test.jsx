@@ -71,7 +71,8 @@ test("POB practice hub offers historical source preview but no fabricated histor
   expect(screen.getByRole("button",{name:"Open Paper 1"})).toBeInTheDocument();
   expect(screen.getByRole("button",{name:"Open Paper 2"})).toBeInTheDocument();
   expect(screen.getByRole("button",{name:"Open research workspace"})).toBeInTheDocument();
-  expect(screen.getByText(/Historical previews remain unscored until source and grading calibration are verified/)).toBeInTheDocument();
+  expect(screen.getByText(/The January 2026 historical Paper 2 supports experimental AI-assisted marking/)).toBeInTheDocument();
+  expect(screen.getByRole("button",{name:"Browse all 46 historical papers"})).toBeInTheDocument();
   expect(screen.getByRole("button",{name:"Preview historical Paper 2"})).toBeInTheDocument();
 });
 
