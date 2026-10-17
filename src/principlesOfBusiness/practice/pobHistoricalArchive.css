@@ -64,3 +64,8 @@
 .pob-source-paper .pob-exam-question h1{font-size:clamp(1.03rem,1.3vw + .8rem,1.4rem);line-height:1.55;white-space:pre-line}
 .pob-source-paper .pob-exam-layout{margin:1rem 0}
 .pob-archive .pob-archive-source{overflow-wrap:anywhere}
+
+/* Historical Paper 1 diagrams and source placeholders remain visible, but are not graded. */
+.pob-source-paper .pob-source-caveat{border:1px solid color-mix(in srgb,currentColor 20%,transparent);border-radius:12px;background:color-mix(in srgb,currentColor 4%,transparent);padding:.75rem .95rem;margin:0 0 1rem}
+.pob-source-caveat strong{font-size:.87rem}
+.pob-source-caveat p{font-size:.84rem;margin:.35rem 0 0;line-height:1.55}
