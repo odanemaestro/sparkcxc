@@ -48,6 +48,16 @@ jobs:
       - name: Verify marking database and build worker
         run: npm run test:marking-db && npm run build:marker
 
+      - name: Upload verified server marking bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: spark-server-marker-${{ github.sha }}
+          path: |
+            supabase/functions/_shared/server-marker.mjs
+            supabase/functions/_shared/server-marker.sha256
+          if-no-files-found: error
+          retention-days: 7
+
       - name: Build SPARK
         run: npm run build
         env:
