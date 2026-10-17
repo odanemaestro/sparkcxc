@@ -9,10 +9,12 @@ import {buildPobJan2026ExaminerPack,summarizePobJan2026Marks} from "../principle
 import {POB_2026_JAN_HISTORICAL_BANK_VERSION,buildPob2026JanHistoricalPaper} from "../principlesOfBusiness/data/pobHistorical2026JanP2RealPaper";
 import {gradePobListingPart} from "../principlesOfBusiness/data/pobDeterministicMarks";
 import {gradePobCalculationResultPart} from "../principlesOfBusiness/data/pobDeterministicCalculationMarks";
+import {buildPobArchiveExaminerPack,pobArchiveBankVersion,POB_ARCHIVE_RUBRIC_VERSION,eligiblePobArchiveScoringSources} from "./pobArchiveExaminer";
 import {SEMANTIC_MARKING_REVISION} from "./semanticMarking";
 export {requestSemanticPass,reconcileSemanticPasses,SEMANTIC_MARKING_REVISION} from "./semanticMarking";
 export {summarizePobJan2026Marks} from "../principlesOfBusiness/data/pobJan2026ExaminerMarking";
 export {gradePobJan2026ExaminerPaper} from "./historicalPobExaminerPipeline";
+export {gradePobArchiveExaminerPaper} from "./pobArchiveExaminer";
 
 // The runtime worker owns this authority. Never derive it from a candidate
 // snapshot, submitted metadata, query parameters or browser feature flags.
@@ -43,6 +45,24 @@ export function buildTrustedAssessment(attempt,authority={}){
     return {items:pack.items,responses:pack.responses,
       deterministicScore:0,maxMarks:100,unassessedMarks:0,baselineScore:0,
       historicalPaperId:paper.id,sourceSha256:paper.sourceSha256,parts:pack.parts,criterionLevel:true};
+  }
+  if(attempt.subject_id==="principles-of-business" &&
+      String(attempt.bank_version||"").startsWith("pob-archive-v1-")){
+    if(authority.historicalPobArchiveEnabled!==true)
+      throw new Error("unsupported_bank_version");
+    const paperId=attempt.metadata?.paper_id;
+    const record=eligiblePobArchiveScoringSources().find(p=>p.id===paperId);
+    if(!record||attempt.bank_version!==pobArchiveBankVersion(paperId)||
+       attempt.metadata?.source_sha256!==record.source.sourceSha256||
+       attempt.rubric_version!==POB_ARCHIVE_RUBRIC_VERSION||
+       attempt.grader_version!==SEMANTIC_MARKING_REVISION||
+       attempt.score!=null||Number(attempt.max_score)!==100)
+      throw new Error("historical_attempt_identity_mismatch");
+    const pack=buildPobArchiveExaminerPack({
+      paperId,selectedQuestions:attempt.metadata?.selected_questions,
+      responses
+    });
+    return {...pack,deterministicScore:0,baselineScore:0,unassessedMarks:0};
   }
   const items=[];
   let baseline,replaceScore=0;
