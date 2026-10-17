@@ -1,6 +1,7 @@
 import React,{useEffect,useMemo,useState} from "react";
 import {POB_HISTORICAL_REVIEW_BANKS,getPobHistoricalReviewBank} from "../data/pobHistoricalArchiveRegistry";
 import "./pobHistoricalArchive.css";
+import PobHistoricalPaper1Preview from "./PobHistoricalPaper1Preview";
 import {startServerExamAttempt,submitServerExamAttempt} from "../../grading/serverExamAttempt";
 import ServerMarkingReview from "../../grading/ServerMarkingReview";
 import {defaultPobArchiveSelection,validatePobArchiveSelection,
@@ -25,6 +26,7 @@ const read=id=>{try{return JSON.parse(window.localStorage.getItem(key(id))||"{}"
 const save=(id,value)=>{try{window.localStorage.setItem(key(id),JSON.stringify(value))}catch{}};
 
 function HistoricalPaper1({record}){
+ if(record.id==="POB-P1-2023-JAN")return <PobHistoricalPaper1Preview record={record}/>;
  const mcqs=useMemo(()=>getMcqs(record.bank),[record]);
  const [answers,setAnswers]=useState(()=>read(record.id));
  const [submitted,setSubmitted]=useState(false);
@@ -34,10 +36,10 @@ function HistoricalPaper1({record}){
  const correct=gradable.filter(q=>answers[q.number]===answerChoice(q)).length;
  const answered=mcqs.filter(q=>answers[q.number]).length;
  return <section className="pob-archive-exam" aria-label="Historical Paper 1 practice">
-   <h3>Paper 1 · Answer-sheet practice</h3>
-   <p>Enter your answers while using the original question booklet. SPARK has internally authored answer keys and explanations, but the original question wording and options have not all been published in this simulator.</p>
-   <div className="pob-archive-summary"><span>{mcqs.length} numbered slots</span><span>{answered} answered</span><span>{gradable.length} provisional key entries</span></div>
-   {!mcqs.length?<p>The answer-key source for this paper needs further review.</p>:<>
+   <h3>Paper 1 · Source-text incomplete</h3>
+   <p>This historical paper does not yet contain the original question text and four answer choices in SPARK. An answer key alone is not a simulated examination. The answer sheet below is an optional reference tool for students who already have the printed question booklet.</p>
+   <div className="pob-archive-summary"><span>{mcqs.length} entries in reference answer sheet</span><span>{answered} answered</span><span>{gradable.length} provisional key entries</span></div>
+   {!mcqs.length?<p>The answer-key source for this paper needs further review.</p>:<details className="pob-archive-reference"><summary>Use optional answer sheet with your own original paper</summary>
      <div className="pob-archive-mcq-grid">{mcqs.map(row=>{
        const missing=sourceMissing(row,record.bank),choice=answers[row.number]||"",right=answerChoice(row);
        return <fieldset key={row.number} className={"pob-archive-mcq"+(missing?" is-missing":"")}>
@@ -63,7 +65,7 @@ function HistoricalPaper1({record}){
          <button type="button" className="secondary" onClick={()=>setSubmitted(false)}>Edit my answers</button></>}
      </div>
      <small>This score compares your selections with SPARK's provisional key, not an independently authenticated CXC marking key. Original stem/option verification and disputed items remain under review.</small>
-   </>}
+   </details>}
  </section>;
 }
 
@@ -119,7 +121,7 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
  const total=questions.reduce((n,q)=>n+Number(q.marks||0),0);
  return <section className="pob-archive-exam" aria-label="Historical Paper 2 answer-bank review">
   <h3>Paper 2 · Written-answer practice and marking guide</h3>
-  <p>This paper's SPARK-authored model answers and mark allocations are available. Where an exact printed question is not transcribed, use the corresponding original paper alongside this answer space. The guidance describes what earns marks but does not pretend to reproduce unseen original wording.</p>
+  <p>This paper's SPARK-authored model answers and mark allocations are available. Where an exact printed question is not transcribed, use the corresponding original paper alongside this answer space. Some questions use SPARK-authored summaries rather than the original wording. This paper is not a complete source-faithful simulation until those prompts, figures and tables have been transcribed.</p>
   <div className="pob-archive-summary"><span>{questions.length} offered questions</span><span>{parts} answer parts</span><span>{total} offered marks</span><span>100 candidate marks</span></div>
   {openQuestionCount>5&&<div className="pob-archive-optional" aria-label="Original Paper 2 optional question selection">
     <strong>Choose the questions required by this sitting</strong>
@@ -138,10 +140,12 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
    {questions.filter(q=>selected.includes(q.number)).map(q=><details className="pob-archive-question" key={q.number} open={q.number===1?true:undefined}>
      <summary>Question {q.number} · {q.marks||"?"} marks</summary>
      {(q.parts||q.items||[]).map(part=>{
-       const id="Q"+q.number+":"+part.id,prompt=part.prompt||part.sourceQuestion||part.sourcePromptSummary||null;
+       const id="Q"+q.number+":"+part.id;
+       const exact=part.prompt||part.sourceQuestion||null;
+       const prompt=exact||part.sourcePromptSummary||null;
        return <div className="pob-archive-written" key={id}>
          <label htmlFor={record.id+id}><strong>({part.id})</strong> {prompt||"Answer this part using the printed question paper."} <span>{part.marks} marks</span></label>
-         {!prompt&&<p className="pob-archive-small">Original question wording has not been digitised for this part.</p>}
+         {!exact&&<p className="pob-archive-small" role="note">SPARK question summary only. Original printed wording and any accompanying figures have not been verified here.</p>}
          <textarea id={record.id+id} rows={3} value={answers[id]||""} disabled={submitted}
            placeholder="Write your answer in complete sentences."
            onChange={e=>setAnswers(prev=>({...prev,[id]:e.target.value}))}/>
@@ -187,7 +191,7 @@ export default function PobHistoricalArchive({onBack,onOpenJanuary2026,supabase,
   <div className="pob-exam-nav"><button type="button" onClick={record?()=>setSelected(null):onBack}>← {record?"All historical papers":"Practice home"}</button><span>PRINCIPLES OF BUSINESS · HISTORICAL ARCHIVE</span></div>
   <header className="pob-exam-card pob-exam-intro"><span className="pob-exam-kicker">CSEC PRINCIPLES OF BUSINESS</span>
    <h1>{record?record.label:"Historical past papers"}</h1>
-   <p>{record?"Original source identity preserved. SPARK-produced answer guidance is provided for practice.":"Browse all 46 supplied historical source papers. Paper 1 answer sheets and Paper 2 authored marking guides are available, with each sitting clearly labelled according to its digital readiness."}</p>
+   <p>{record?"Original source identity preserved. SPARK-produced answer guidance is provided for practice.":"Browse all 46 supplied historical source papers. Source-backed question previews, optional Paper 1 answer sheets and Paper 2 marking guides are available, with each sitting clearly labelled according to its digital readiness."}</p>
   </header>
   {record?<><div className="pob-archive-source"><strong>{record.source.filename}</strong><span>{record.source.pages} source pages · {record.source.year}</span>
    {record.source.reclassifiedFromPaper1&&<p>This original is Paper 2 although the supplied filename says Paper 1.</p>}
