@@ -2,6 +2,7 @@ import {
  POB_HISTORICAL_BATCH02_SOURCES,auditPobHistoricalBatch02Sources
 } from "./pobHistoricalBatch02SourceAudit";
 import {POB_SUPPLIED_ARCHIVE,pobReleasedHistoricalPapers} from "./pobHistoricalInventory";
+import {POB_2018_MJ_P1_PARTIAL_ANSWER_DRAFT,verifyPob2018MjP1SourceGap} from "./pobHistorical2018MjP1PartialAnswerDraft";
 import {POB_2011_MJ_P1_AUTHORED_KEY,verifyPob2011MjP1AuthoredKey} from "./pobHistorical2011MjP1AuthoredKey";
 import {POB_2012_MJ_P1_AUTHORED_KEY,auditPob2012MjP1AuthorKey} from "./pobHistorical2012MjP1AuthoredKey";
 import {
@@ -31,6 +32,22 @@ describe("POB historical batch two: source, academic dispute, answer QA",()=>{
    lowTextPages:15
   });
   expect(pobReleasedHistoricalPapers()).toEqual([]);
+ });
+ test("2018 photographed PDF skips questions 53 through 57, which cannot be scored",()=>{
+  const report=verifyPob2018MjP1SourceGap();
+  expect(report).toEqual({
+   valid:true,issues:[],questionSlots:60,sourceBackedProposedAnswers:55,
+   missingSourceItems:[53,54,55,56,57],liveScoringReady:false
+  });
+  expect(POB_2018_MJ_P1_PARTIAL_ANSWER_DRAFT.sourceSha256).toBe(
+   POB_SUPPLIED_ARCHIVE.find(x=>x.id==="POB-P1-2018-MJ").sourceSha256
+  );
+  expect(POB_2018_MJ_P1_PARTIAL_ANSWER_DRAFT.questions[51].number).toBe(52);
+  expect(POB_2018_MJ_P1_PARTIAL_ANSWER_DRAFT.questions[57].number).toBe(58);
+  const altered=JSON.parse(JSON.stringify(POB_2018_MJ_P1_PARTIAL_ANSWER_DRAFT));
+  altered.questions[55].status="spark-derived-draft";
+  altered.questions[55].answer="A";
+  expect(verifyPob2018MjP1SourceGap(altered).valid).toBe(false);
  });
  test("all source fingerprints match approved original PDF bytes",()=>{
   for(const row of POB_HISTORICAL_BATCH02_SOURCES){
