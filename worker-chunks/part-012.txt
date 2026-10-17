@@ -18,7 +18,7 @@ tle: "CSEC Principles of Business \xB7 January 2026 \xB7 Paper 02",
       id: source.id + ":Q" + q.number,
       number: q.number,
       marks: q.marks,
-      title: "Source question " + q.number,
+      title: "Question " + q.number,
       context: SOURCE_CONTEXT[q.number],
       sourcePdfPage: q.number + 1,
       items: Object.freeze(q.parts.map((part2) => {
@@ -1471,4 +1471,4 @@ var POB_2012_MJ_P1_AUTHORED_KEY = Object.freeze({
     Object.freeze({ "number": 47, "pdfPage": 7, "proposedOption": "D", "explanation": "Proportional taxation charges the same rate on different incomes.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 48, "pdfPage": 8, "proposedOption": "A", "explanation": "A favourable goods-trade balance means the country sells abroad more than it buys.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
     Object.freeze({ "number": 49, "pdfPage": 8, "proposedOption": "B", "explanation": "International trade involves exchanges of goods and services between countries.", "status": "spark-internal-provisional", "dispute": null, "alternatives": [], "note": null }),
-    Object.freeze({ "number": 50, "pdfPage": 8, "proposedOption": "C", "explanation": "Simply increasing consumer imports d
+    Object.freeze({ "number": 50, "pdfPage": 8, "proposedOption": "C", "explanation": "Simply increasing consumer imports does not
