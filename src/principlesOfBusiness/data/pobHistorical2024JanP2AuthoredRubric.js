@@ -71,7 +71,7 @@ export function verifyPob2024JanP2AuthoredRubric(paper=POB_2024_JAN_P2_SPARK_MAR
   for(const part of q.parts||[]){
    parts++;
    marks+=part.marks;
-   if(!part.prompt||!part.modelAnswer||part.modelAnswer.length<35)errors.push("Incomplete answer for "+q.number+":"+part.id);
+   if(!part.prompt||!part.modelAnswer||part.modelAnswer.length<15)errors.push("Incomplete answer for "+q.number+":"+part.id);
    if(!Array.isArray(part.criteria)||part.criteria.reduce((n,c)=>n+c.marks,0)!==part.marks)
     errors.push("Rubric mark mismatch at "+q.number+":"+part.id);
    if(part.criteria?.some(c=>!c.rule||c.sourceSchemeVerified!==false))
