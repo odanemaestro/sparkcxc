@@ -33,7 +33,7 @@ describe("Historical POB answer authorship, 15-file second batch",()=>{
   });
   expect(pobReleasedHistoricalPapers()).toEqual([]);
  });
- test("eight historical Paper 1 sittings provide 480 explained MCQ proposals",()=>{
+ test("all 15 source records have correct complete or incomplete authored coverage",()=>{
   const audit=auditPobHistoricalBatch02AnswerAuthorship();
   expect(audit.valid).toBe(true);
   expect(audit.issues).toEqual([]);
@@ -50,8 +50,20 @@ describe("Historical POB answer authorship, 15-file second batch",()=>{
   expect(audit.authored2019AltPaper2RubricMarks).toBe(100);
   expect(audit.historicalLiveScoringEnabled).toBe(0);
   for(const summary of audit.status){
-   expect(summary.internallyAuthoredCount).toBe(60);
-   expect(summary.structurallyComplete).toBe(true);
+   if(summary.sourceId==="POB-P1-2018-MJ"){
+    // The original supplied scan skips five questions entirely.
+    expect(summary.internallyAuthoredCount).toBe(55);
+    expect(summary.structurallyComplete).toBe(false);
+    expect(summary.missingOriginalQuestions).toEqual([53,54,55,56,57]);
+   }else if(summary.sourceId==="POB-P2-2019-MJ-ALT"){
+    expect(summary.internallyAuthoredCount).toBe(32);
+    expect(summary.sourceQuestionCount).toBe(5);
+    expect(summary.offeredMarks).toBe(100);
+    expect(summary.structurallyComplete).toBe(true);
+   }else{
+    expect(summary.internallyAuthoredCount).toBe(60);
+    expect(summary.structurallyComplete).toBe(true);
+   }
    expect(summary.liveScoringApproved).toBe(false);
    expect(summary.sourceTranscriptionAndAcademicCalibrationComplete).toBe(false);
   }
