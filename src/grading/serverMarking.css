@@ -76,3 +76,14 @@
   .spark-marking-score small{align-self:auto}
   .spark-marking-criterion summary{align-items:flex-start}
 }
+
+.spark-marking-question-summary{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.55rem;margin:.9rem 0 1.1rem}
+.spark-marking-question-summary span{display:flex;flex-direction:column;gap:.3rem;padding:.7rem .75rem;border:1px solid color-mix(in srgb,currentColor 14%,transparent);border-radius:12px;background:color-mix(in srgb,currentColor 3%,transparent);font-variant-numeric:tabular-nums}
+.spark-marking-question-summary strong{font-weight:700;font-size:.82rem}
+.spark-marking-mark-list{list-style:none;margin:.4rem 0;padding:0;display:grid;gap:.6rem}
+.spark-marking-mark-list>li{padding:.75rem .85rem;border:1px solid color-mix(in srgb,currentColor 11%,transparent);border-radius:10px}
+.spark-marking-mark-list>li>div{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem}
+.spark-marking-mark-list>li>div strong{white-space:nowrap;font-variant-numeric:tabular-nums}
+.spark-marking-mark-list>li>div span{flex:1;opacity:.88}
+.spark-marking-mark-list>li p{margin:.4rem 0 .1rem}
+@media(max-width:700px){.spark-marking-question-summary{grid-template-columns:repeat(2,minmax(0,1fr))}.spark-marking-mark-list>li>div{flex-direction:column;gap:.3rem}}
