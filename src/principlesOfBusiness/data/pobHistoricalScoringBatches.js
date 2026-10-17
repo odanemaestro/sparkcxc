@@ -44,9 +44,14 @@ export const POB_HISTORICAL_SCORING_BATCHES=Object.freeze([
  Object.freeze(FIRST_FIFTEEN.map(([id,pages,pagesNeedingImageReview,rule,sourceForm])=>{
   const source=POB_SUPPLIED_ARCHIVE.find(row=>row.id===id);
   if(!source)throw new Error("Unknown POB batch source: "+id);
+  const lowTextPagesReviewed=id==="POB-P2-2022-JAN"?[2,19]:
+   id==="POB-P2-2023-JAN"?[2,23]:[];
   return Object.freeze({
    id,batch:1,paper:source.paper,filename:source.filename,
    sourceSha256:source.sourceSha256,pages,pagesNeedingImageReview,
+   // Both 2022/2023 low-text pairs are non-question DO NOT WRITE pages.
+   lowTextPagesReviewed:Object.freeze(lowTextPagesReviewed),
+   remainingLowTextPagesToReview:pagesNeedingImageReview-lowTextPagesReviewed.length,
    rule,sourceForm,ownerAuthorized:true,
    // Even a verified cover is not a verified exam or scoring rubric.
    fullPageVisualQA:false,completeVerifiedAnswers:false,
@@ -119,6 +124,10 @@ export function auditPobHistoricalScoringBatches(){
   liveScoringReleased:rows.filter(r=>r.liveScoringApproved).length,
   firstBatchPages:POB_HISTORICAL_FIRST_FIFTEEN.reduce((n,r)=>n+r.pages,0),
   firstBatchPagesNeedingImageReview:POB_HISTORICAL_FIRST_FIFTEEN.reduce(
-   (n,r)=>n+r.pagesNeedingImageReview,0)
+   (n,r)=>n+r.pagesNeedingImageReview,0),
+  firstBatchLowTextPagesVisuallyResolved:POB_HISTORICAL_FIRST_FIFTEEN.reduce(
+   (n,r)=>n+r.lowTextPagesReviewed.length,0),
+  firstBatchRemainingLowTextPagesToReview:POB_HISTORICAL_FIRST_FIFTEEN.reduce(
+   (n,r)=>n+r.remainingLowTextPagesToReview,0)
  };
 }
