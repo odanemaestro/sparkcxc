@@ -6,6 +6,7 @@ import {
 } from "./pobHistorical2024JanP2AuthoredRubric";
 import {POB_SUPPLIED_ARCHIVE,pobReleasedHistoricalPapers} from "./pobHistoricalInventory";
 import {POB_2009_MJ_P2_AUTHORED_SCHEME,verifyPob2009MjP2AuthoredScheme} from "./pobHistorical2009MjP2AuthoredScheme";
+import {POB_2010_MJ_P2_AUTHORED_SCHEME,verifyPob2010MjP2AuthoredScheme} from "./pobHistorical2010MjP2AuthoredScheme";
 import {validatePobHistoricalP2Selection} from "./pobHistoricalScoringBatches";
 import {POB_HISTORICAL_2023_JAN_P1_Q01_10} from "./pobHistorical2023JanP1Q01to10Draft";
 import {POB_HISTORICAL_P2_2024_JAN_DRAFT} from "./pobHistoricalP22024JanDraft";
@@ -98,6 +99,19 @@ describe("SPARK internally authored historical POB answer and rubric banks",()=>
   const again=JSON.parse(JSON.stringify(POB_2009_MJ_P2_AUTHORED_SCHEME));
   again.questions[3].parts[0].criteria[0].marks=5;
   expect(verifyPob2009MjP2AuthoredScheme(again).valid).toBe(false);
+ });
+ test("May/June 2010 P2 has source-linked seven 20-mark questions and 100 candidate marks",()=>{
+  const paper=POB_2010_MJ_P2_AUTHORED_SCHEME;
+  expect(verifyPob2010MjP2AuthoredScheme()).toEqual({
+   valid:true,issues:[],offeredMarks:140,parts:33
+  });
+  expect(paper.sourceSha256).toBe(POB_SUPPLIED_ARCHIVE.find(s=>s.id===paper.id).sourceSha256);
+  expect(paper.questions).toHaveLength(7);
+  expect(validatePobHistoricalP2Selection(paper.id,[1,2,3,5,7]).valid).toBe(true);
+  expect(validatePobHistoricalP2Selection(paper.id,[1,2,3,4,5]).valid).toBe(false);
+  const bob=JSON.parse(JSON.stringify(paper));bob.questions[6].parts[1].criteria.pop();
+  expect(verifyPob2010MjP2AuthoredScheme(bob).valid).toBe(false);
+  expect(paper.liveScoringApproved).toBe(false);
  });
  test("source ambiguity cannot falsely award intellectual property marks",()=>{
   const paper=POB_2024_JAN_P2_SPARK_MARKING;
