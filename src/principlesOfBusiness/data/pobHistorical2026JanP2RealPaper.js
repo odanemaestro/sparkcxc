@@ -73,7 +73,7 @@ export function buildPob2026JanHistoricalPaper(){
   questionCount:5,compulsory:true,marks:100,maxMarks:100,liveScoringApproved:false,
   gradingStatus:"internal-benchmark-only", 
   questions:Object.freeze(source.questions.map(q=>Object.freeze({
-   id:source.id+":Q"+q.number,number:q.number,marks:q.marks,title:"Source question "+q.number,
+   id:source.id+":Q"+q.number,number:q.number,marks:q.marks,title:"Question "+q.number,
    context:SOURCE_CONTEXT[q.number],
    sourcePdfPage:q.number+1,
    items:Object.freeze(q.parts.map(part=>{
