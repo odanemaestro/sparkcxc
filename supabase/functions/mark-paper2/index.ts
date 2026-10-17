@@ -22,8 +22,19 @@ const handler = {
         if(error||!attempt)throw new Error("attempt_unavailable");
         // Server-owned switch. Browser requests and attempt metadata cannot
         // authorize a historical examination. DB enqueue gates must also pass.
-        const historicalJan2026Enabled=
-          Deno.env.get("SPARK_POB_HISTORICAL_JAN2026_WORKER_ENABLED")==="true";
+        let historicalJan2026Enabled=false;
+        if(attempt.subject_id==="principles-of-business" &&
+           attempt.bank_version==="pob-historical-2026-jan-p2-v1"){
+          const {data:settings,error:settingsError}=await db.from("spark_marking_config")
+            .select("pob_historical_jan26_owner_pilot_enabled,pob_historical_jan26_public_enabled,pob_historical_jan26_calibrated,pob_historical_jan26_canary_enabled,pob_historical_jan26_tester_id")
+            .eq("singleton",true).single();
+          if(settingsError||!settings)throw new Error("historical_marking_disabled");
+          historicalJan2026Enabled=Boolean(
+            settings.pob_historical_jan26_owner_pilot_enabled ||
+            (settings.pob_historical_jan26_public_enabled&&settings.pob_historical_jan26_calibrated) ||
+            (settings.pob_historical_jan26_canary_enabled&&settings.pob_historical_jan26_tester_id===job.user_id)
+          );
+        }
         const pack=buildTrustedAssessment(attempt,{historicalJan2026Enabled});
         const semantic=pack.historicalPaperId
           ?await gradePobJan2026ExaminerPaper({pack,model,apiKey})
@@ -43,7 +54,7 @@ const handler = {
         return "completed";
       }catch(error){
         // Never store raw provider messages or student response text in logs.
-        const known=new Set(["provider_rate_limit","provider_unavailable","provider_incomplete","provider_refusal","unsupported_revision","unsupported_bank_version","marking_input_too_large","historical_attempt_identity_mismatch","unknown_historical_part","historical_source_not_verified"]);
+        const known=new Set(["provider_rate_limit","provider_unavailable","provider_incomplete","provider_refusal","unsupported_revision","unsupported_bank_version","marking_input_too_large","historical_attempt_identity_mismatch","unknown_historical_part","historical_source_not_verified","historical_marking_disabled"]);
         const code=error instanceof Error&&known.has(error.message)?error.message:"marking_validation_failed";
         await db.rpc("spark_finish_marking",{p_job_id:job.id,p_claim_token:job.claim_token,p_error_code:code});
         return "retry_scheduled";
