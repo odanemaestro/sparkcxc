@@ -46,7 +46,7 @@ test("historical Paper 2 allows written answers and shows actual authored rubric
  fireEvent.change(entry,{target:{value:"A registered company follows national company law."}});
  fireEvent.click(screen.getByRole("button",{name:"Submit responses and view marking scheme"}));
  expect(screen.getAllByText(/SPARK model answer/).length).toBeGreaterThan(0);
- expect(screen.getByText(/Automatic numerical marking for this historical sitting is not yet connected/)).toBeTruthy();
+ expect(screen.getByText(/This sitting currently offers SPARK model answers and rubrics/)).toBeTruthy();
 });
 test("January 2026 archive route goes to the already implemented live pilot exam",()=>{
  const open=jest.fn();
