@@ -100,7 +100,7 @@ export const POB_HISTORICAL_REVIEW_BANKS=Object.freeze(declarations.map(([id,mod
  const source=POB_SUPPLIED_ARCHIVE.find(row=>row.id===id);
  if(!source)throw new Error("Unknown archived POB source "+id);
  const bank=Object.values(module).find(value=>value&&typeof value==="object"&&value.id===id&&
-   (Array.isArray(value.questions)||Array.isArray(value.entries)));
+   (Array.isArray(value.questions)||Array.isArray(value.entries)||Array.isArray(value.proposedEntries)));
  if(!bank)throw new Error("Authored POB material not found for "+id);
  if(bank.sourceSha256!==source.sourceSha256)throw new Error("Historical source checksum mismatch "+id);
  return Object.freeze({id,source,bank,paper:source.paper,
