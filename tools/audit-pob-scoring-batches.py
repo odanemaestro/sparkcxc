@@ -56,13 +56,14 @@ def audit(archive_path: Path, approval_path: Path):
             allowed = set(KNOWN_NON_QUESTION_PAGES.get(stem, []))
             resolved = sorted(allowed.intersection(low_pages))
             unresolved = sorted(set(low_pages) - allowed)
+            page_count = len(pdf)
             pdf.close()
             row = {
                 "sourceStem": stem,
                 "filename": path.rsplit("/", 1)[-1],
                 "sourceSha256": digest,
                 "fingerprintMatchesApproval": digest == expected.get(stem),
-                "pages": len(low_pages) + (0 if not content else -1),
+                "pages": page_count,
                 "lowTextPages": low_pages,
                 "lowTextPagesVisuallyResolved": resolved,
                 "lowTextPagesStillToReview": unresolved,
@@ -72,9 +73,6 @@ def audit(archive_path: Path, approval_path: Path):
                 "completeVerifiedRubric": False,
                 "liveAutoScoringReady": False
             }
-            # The page count above is replaced from PyMuPDF before close.
-            with fitz.open(stream=content, filetype="pdf") as verified_doc:
-                row["pages"] = len(verified_doc)
             rows.append(row)
     if len(rows) != EXPECTED_SOURCE_COUNT or any(not r["fingerprintMatchesApproval"] for r in rows):
         raise RuntimeError("ZIP contains missing, extra, or fingerprint-mismatched historical source PDFs.")
