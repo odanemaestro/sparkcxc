@@ -44,7 +44,7 @@ describe("POB official syllabus coverage and platform integration",()=>{
       expect(lesson.summary.length).toBeGreaterThan(60);
     }
   });
-  test("local course loader works without a database publishing a draft",async()=>{
+  test("local course loader supports the published database catalog",async()=>{
     const result=await loadGenericSubjectStructure({subjectId:"principles-of-business"});
     expect(result.error).toBeNull();
     expect(result.source).toBe("local-pob");
@@ -53,8 +53,8 @@ describe("POB official syllabus coverage and platform integration",()=>{
     const registry=getSparkSubjectRegistry();
     const subject=registry.find(s=>s.id==="principles-of-business");
     expect(subject).toBeDefined();
-    expect(subject.status).toBe("draft");
-    expect(subject.enabled).toBe(false);
+    expect(subject.status).toBe("live");
+    expect(subject.enabled).toBe(true);
     expect(subject.routes.study).toBe("/study/principles-of-business");
     expect(subject.capabilities.sba).toBe(true);
   });
