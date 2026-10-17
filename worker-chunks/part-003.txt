@@ -1,4 +1,8 @@
-       "a concave (diverging) lens is placed in front of the eye (1)",
+              },
+              markScheme: {
+                points: [
+                  "Light from distant objects is focused in front of the retina (1)",
+                  "a concave (diverging) lens is placed in front of the eye (1)",
                   "which spreads out the light rays so that they focus on the retina (1)"
                 ],
                 guidance: "3 marks for a full explanation; 2 marks for a partial explanation; 1 mark for a limited explanation",
@@ -5387,4 +5391,4 @@ var is_module2_default = {
     "M2-S-CONV": {
       id: "M2-S-CONV",
       lead: "to the following diagram.",
-      svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 340" width="400" height="340" role="img" aria-label="Heating water containing a crystal of potassium manganate(VII)" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Heating water containing a crystal of potassium manganate(VII)</title><rect x="0" y="0" width="400" height="340" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polyline points="100,40 100,210 300,210 300,40" fill="none"/><line x1="100" y1="40" x2="95" y2="36"/><line x1="100" y1="50" x2="300" y2="50" stroke-width="0.9"/><line x1="200" y1="
+      svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 340" width="400" height="340" role="img" aria-label="Heating water containing a crystal of potassium manganate(VII)" font-family="'Times New Roman', Times, 'Liberation Serif', serif" font-size="13"><title>Heating water containing a crystal of potassium manganate(VII)</title><rect x="0" y="0" width="400" height="340" fill="#fff"/><g fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><polyline poi

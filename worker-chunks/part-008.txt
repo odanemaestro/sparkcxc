@@ -1,4 +1,9 @@
-ion of the universe"
+ module: 3,
+      objective: {
+        code: "3.1.5",
+        topic: 1,
+        topicTitle: "The Universe and Our Solar System",
+        text: "discuss human's exploration of the universe"
       },
       profile: "UK",
       difficulty: 2,
@@ -7671,9 +7676,4 @@ ion of the universe"
       optionsAreSvg: false,
       options: {
         A: "pulley",
-        B: "first-class lever",
-        C: "inclined plane",
-        D: "wheel only"
-      },
-      answer: "C",
-      explanation: "A screw is an inclined plane wrapped around a cyli
+        B: "fir

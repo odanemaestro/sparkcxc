@@ -1,4 +1,10 @@
-M1-S-EAR",
+ "KC",
+      difficulty: 2,
+      stem: "The structures labelled E are responsible for",
+      statements: null,
+      after: null,
+      stimulus: null,
+      group: "M1-S-EAR",
       optionColumns: null,
       optionsAreSvg: false,
       options: {
@@ -6631,8 +6637,3 @@ M1-S-EAR",
               response: {
                 type: "lines",
                 lines: 6
-              },
-              markScheme: {
-                points: [
-                  "Light from distant objects is focused in front of the retina (1)",
-           

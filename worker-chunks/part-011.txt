@@ -1,4 +1,8 @@
- mark each",
+               "Harmful radiation",
+                  "Vacuum/no pressure",
+                  "Lack of gravity"
+                ],
+                guidance: "Any two, 1 mark each",
                 alternatives: null
               }
             },
@@ -4112,6 +4116,13 @@ var POB_PAPER2_ORIGINAL_01 = Object.freeze({
   ]
 });
 
+// src/principlesOfBusiness/data/pobHistorical2026JanP2AuthoredScheme.js
+var pobHistorical2026JanP2AuthoredScheme_exports = {};
+__export(pobHistorical2026JanP2AuthoredScheme_exports, {
+  POB_2026_JAN_P2_AUTHORED_SCHEME: () => POB_2026_JAN_P2_AUTHORED_SCHEME,
+  verifyPob2026JanP2AuthoredScheme: () => verifyPob2026JanP2AuthoredScheme
+});
+
 // src/principlesOfBusiness/data/pobHistoricalScoringApproval.js
 var SOURCE_SHA256 = Object.freeze({
   "P1_2002_MJ": "de82270a6909eec1b0a0319f4e36862f851784633ef727ca55a9fd71bbfb0038",
@@ -4601,20 +4612,4 @@ function buildPob2026JanHistoricalPaper() {
   return Object.freeze({
     id: source.id,
     bankVersion: POB_2026_JAN_HISTORICAL_BANK_VERSION,
-    title: "CSEC Principles of Business \xB7 January 2026 \xB7 Paper 02",
-    paper: "02",
-    origin: "historical-cxc-source",
-    year: 2026,
-    sitting: "JAN",
-    sourceFilename: source.sourceFilename,
-    sourceSha256: source.sourceSha256,
-    testCode: null,
-    date: "2026-01-08",
-    timeLimitMinutes: 120,
-    questionCount: 5,
-    compulsory: true,
-    marks: 100,
-    maxMarks: 100,
-    liveScoringApproved: false,
-    gradingStatus: "internal-benchmark-only",
-    questions: Object.freeze(source.que
+    ti

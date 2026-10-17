@@ -1,3 +1,10 @@
+           UK: 3
+              },
+              svg: null,
+              table: null,
+              response: {
+                type: "lines",
+                lines: 6
               },
               markScheme: {
                 points: [
@@ -5583,8 +5590,4 @@
                 points: [
                   "Lack of oxygen",
                   "Extreme temperatures",
-                  "Harmful radiation",
-                  "Vacuum/no pressure",
-                  "Lack of gravity"
-                ],
-                guidance: "Any two, 1
+   

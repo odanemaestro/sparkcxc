@@ -1,4 +1,12 @@
-tion: "C-shaped cartilage rings keep the trachea open.",
+onsAreSvg: false,
+      options: {
+        A: "trachea",
+        B: "bronchus",
+        C: "oesophagus",
+        D: "alveolus"
+      },
+      answer: "A",
+      explanation: "C-shaped cartilage rings keep the trachea open.",
       topic: 2
     },
     {
@@ -6866,9 +6874,4 @@ tion: "C-shaped cartilage rings keep the trachea open.",
       stimulus: null,
       group: null,
       optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "-10 \xB0C to 110 \xB0C",
-        B: "35 \xB0C to 42 \xB0C",
-        C: "0 \xB0C to 50 \xB0C only",
-        D: "-100 \xB0C to 0 
+      optionsAre

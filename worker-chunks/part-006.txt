@@ -1,4 +1,9 @@
-\xB0C"
+Svg: false,
+      options: {
+        A: "-10 \xB0C to 110 \xB0C",
+        B: "35 \xB0C to 42 \xB0C",
+        C: "0 \xB0C to 50 \xB0C only",
+        D: "-100 \xB0C to 0 \xB0C"
       },
       answer: "A",
       explanation: "It can measure the freezing and boiling points of water.",
@@ -5883,11 +5888,4 @@
             {
               label: "(iii)",
               prompt: "Explain the effect of moving the lamp further away on the rate of photosynthesis.",
-              marks: 3,
-              objective: "2.1.3",
-              profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              
+              marks:

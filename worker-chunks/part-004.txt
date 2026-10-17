@@ -1,4 +1,4 @@
-190" x2="200" y2="80" stroke-dasharray="4 3"/><polygon points="200,80 203,86.3 197,86.3" fill="#000" stroke-width="1"/><path d="M192,72 Q130,62 126,120 Q126,180 180,196" fill="none" stroke-width="1" stroke-dasharray="4 3"/><polygon points="182,197 175.1,198.2 176.6,192.5" fill="#000" stroke-width="1"/><path d="M208,72 Q270,62 274,120 Q274,180 220,196" fill="none" stroke-width="1" stroke-dasharray="4 3"/><polygon points="218,197 223.4,192.5 224.9,198.2" fill="#000" stroke-width="1"/><polygon points="193,208 200,199 207,208" fill="#000" stroke-width="0.5"/><line x1="204" y1="205" x2="330" y2="190" stroke-width="0.9"/><text x="334" y="194" text-anchor="start" fill="#000" stroke="none">crystal</text><line x1="140" y1="212" x2="260" y2="212" stroke-width="2"/><line x1="148" y1="212" x2="140" y2="260"/><line x1="252" y1="212" x2="260" y2="260"/><rect x="175" y="324" width="50" height="6" fill="none"/><rect x="195" y="280" width="10" height="44" fill="none"/><path d="M196,278 q4,-26 4,-30 q2,12 4,30 z" fill="none" stroke-width="1"/><line x1="203" y1="262" x2="300" y2="280" stroke-width="0.9"/><text x="304" y="284" text-anchor="start" fill="#000" stroke="none">heat</text></g></svg>`,
+nts="100,40 100,210 300,210 300,40" fill="none"/><line x1="100" y1="40" x2="95" y2="36"/><line x1="100" y1="50" x2="300" y2="50" stroke-width="0.9"/><line x1="200" y1="190" x2="200" y2="80" stroke-dasharray="4 3"/><polygon points="200,80 203,86.3 197,86.3" fill="#000" stroke-width="1"/><path d="M192,72 Q130,62 126,120 Q126,180 180,196" fill="none" stroke-width="1" stroke-dasharray="4 3"/><polygon points="182,197 175.1,198.2 176.6,192.5" fill="#000" stroke-width="1"/><path d="M208,72 Q270,62 274,120 Q274,180 220,196" fill="none" stroke-width="1" stroke-dasharray="4 3"/><polygon points="218,197 223.4,192.5 224.9,198.2" fill="#000" stroke-width="1"/><polygon points="193,208 200,199 207,208" fill="#000" stroke-width="0.5"/><line x1="204" y1="205" x2="330" y2="190" stroke-width="0.9"/><text x="334" y="194" text-anchor="start" fill="#000" stroke="none">crystal</text><line x1="140" y1="212" x2="260" y2="212" stroke-width="2"/><line x1="148" y1="212" x2="140" y2="260"/><line x1="252" y1="212" x2="260" y2="260"/><rect x="175" y="324" width="50" height="6" fill="none"/><rect x="195" y="280" width="10" height="44" fill="none"/><path d="M196,278 q4,-26 4,-30 q2,12 4,30 z" fill="none" stroke-width="1"/><line x1="203" y1="262" x2="300" y2="280" stroke-width="0.9"/><text x="304" y="284" text-anchor="start" fill="#000" stroke="none">heat</text></g></svg>`,
       table: null,
       text: null
     },
@@ -5502,12 +5502,4 @@
       stimulus: null,
       group: "M2-S-LUNG",
       optionColumns: null,
-      optionsAreSvg: false,
-      options: {
-        A: "trachea",
-        B: "bronchus",
-        C: "oesophagus",
-        D: "alveolus"
-      },
-      answer: "A",
-      explana
+      opti

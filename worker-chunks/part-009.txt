@@ -1,4 +1,9 @@
-nder.",
+st-class lever",
+        C: "inclined plane",
+        D: "wheel only"
+      },
+      answer: "C",
+      explanation: "A screw is an inclined plane wrapped around a cylinder.",
       topic: 4
     },
     {
@@ -7442,10 +7447,4 @@ nder.",
               marks: 3,
               objective: "3.1.4",
               profile: {
-                UK: 3
-              },
-              svg: null,
-              table: null,
-              response: {
-                type: "lines",
-                lines: 6
+     
