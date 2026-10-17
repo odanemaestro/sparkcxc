@@ -1,5 +1,5 @@
 import {createClient} from "@supabase/supabase-js";
-import {buildTrustedAssessment,requestSemanticPass,reconcileSemanticPasses,gradePobJan2026ExaminerPaper,SEMANTIC_MARKING_REVISION} from "../_shared/server-marker.mjs";
+import {buildTrustedAssessment,requestSemanticPass,reconcileSemanticPasses,gradePobJan2026ExaminerPaper,gradePobArchiveExaminerPaper,SEMANTIC_MARKING_REVISION} from "../_shared/server-marker.mjs";
 
 // Invoke on a schedule using x-spark-marker-secret. This endpoint accepts no
 // candidate payload, rubric or job ID from the caller; it only leases DB jobs.
@@ -35,8 +35,19 @@ const handler = {
             (settings.pob_historical_jan26_canary_enabled&&settings.pob_historical_jan26_tester_id===job.user_id)
           );
         }
-        const pack=buildTrustedAssessment(attempt,{historicalJan2026Enabled});
-        const semantic=pack.historicalPaperId
+        let historicalPobArchiveEnabled=false;
+        if(attempt.subject_id==="principles-of-business" &&
+           String(attempt.bank_version||"").startsWith("pob-archive-v1-")){
+          const {data:config,error:configError}=await db.from("spark_marking_config")
+            .select("pob_historical_archive_pilot_enabled").eq("singleton",true).single();
+          if(configError||!config?.pob_historical_archive_pilot_enabled)
+            throw new Error("historical_marking_disabled");
+          historicalPobArchiveEnabled=true;
+        }
+        const pack=buildTrustedAssessment(attempt,{historicalJan2026Enabled,historicalPobArchiveEnabled});
+        const semantic=pack.historicalArchiveId
+          ?await gradePobArchiveExaminerPaper({pack,model,apiKey})
+          :pack.historicalPaperId
           ?await gradePobJan2026ExaminerPaper({pack,model,apiKey})
           :await (async()=>{
             const [first,second]=await Promise.all([1,2].map(pass=>requestSemanticPass({model,apiKey,items:pack.items,responses:pack.responses,pass})));
@@ -48,7 +59,8 @@ const handler = {
           baselineScore:pack.baselineScore,unassessedMarks:pack.unassessedMarks,uncertain:semantic.uncertain||pack.unassessedMarks>0,
           criteria:semantic.criteria,
           ...(pack.historicalPaperId?{parts:semantic.parts,questions:semantic.questions,
-            historicalPaperId:pack.historicalPaperId,sourceSha256:pack.sourceSha256}: {})};
+            historicalPaperId:pack.historicalPaperId,sourceSha256:pack.sourceSha256,
+            sourceQuestionsDigitised:pack.sourceQuestionsDigitised!==false}: {})};
         const {data:accepted,error:finishError}=await db.rpc("spark_finish_marking",{p_job_id:job.id,p_claim_token:job.claim_token,p_result:result});
         if(finishError||!accepted)return "lease_lost";
         return "completed";

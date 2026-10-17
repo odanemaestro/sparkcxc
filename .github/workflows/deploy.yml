@@ -49,6 +49,7 @@ jobs:
           REACT_APP_ENABLE_PHYSICS: "true"
           REACT_APP_SERVER_MARKING: "true"
           REACT_APP_POB_HISTORICAL_JAN2026_MARKING: "true"
+          REACT_APP_POB_HISTORICAL_ARCHIVE_MARKING: "true"
 
 
       - name: Configure GitHub Pages
