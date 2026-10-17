@@ -223,7 +223,7 @@ const BASE_SUBJECTS = Object.freeze({
     id:"principles-of-business",name:"CSEC Principles of Business",shortName:"Principles of Business",
     qualification:"CSEC",mark:"PB",
     description:"Learn the CSEC Principles of Business syllabus through Caribbean business examples, cases, revision and examination practice.",
-    enabled:false,status:"draft",sortOrder:48,implementation:"generic",studyView:"study",
+    enabled:true,status:"live",sortOrder:48,implementation:"generic",studyView:"study",
     routes:Object.freeze({
       study:"/study/principles-of-business",practice:"/practice/principles-of-business",
       flashcards:"/dashboard/flashcards/principles-of-business",progress:"/dashboard/progress"

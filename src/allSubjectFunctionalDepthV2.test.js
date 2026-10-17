@@ -31,7 +31,7 @@ describe("SPARK all-subject functional depth audit V2",()=>{
   test("every production subject still exposes the complete learning surface",()=>{
     const subjects=getSparkSubjectRegistry({physicsEnabled:true}).filter(subject=>subject.status==="live");
     expect(subjects.map(subject=>subject.id)).toEqual([
-      "mathematics","physics","information-technology","integrated-science","social-studies","chemistry","english-a"
+      "mathematics","physics","information-technology","integrated-science","social-studies","chemistry","principles-of-business","english-a"
     ]);
     subjects.forEach(subject=>{
       expect(subject.capabilities.study).toBe(true);
