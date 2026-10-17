@@ -2,6 +2,7 @@ import React,{useEffect,useMemo,useState} from "react";
 import {POB_HISTORICAL_REVIEW_BANKS,getPobHistoricalReviewBank} from "../data/pobHistoricalArchiveRegistry";
 import "./pobHistoricalArchive.css";
 import PobHistoricalPaper1Preview from "./PobHistoricalPaper1Preview";
+import {POB_2009_MJ_P2_SOURCE,verifyPob2009SourcePrompts} from "../data/pobHistorical2009MjP2SourceQuestions";
 import {startServerExamAttempt,submitServerExamAttempt} from "../../grading/serverExamAttempt";
 import ServerMarkingReview from "../../grading/ServerMarkingReview";
 import {defaultPobArchiveSelection,validatePobArchiveSelection,
@@ -118,10 +119,11 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
   <button type="button" className="pob-primary" onClick={onOpenJanuary2026}>Open timed January 2026 Paper 2</button>
  </div>;
  const parts=questions.reduce((n,q)=>n+(q.parts||q.items||[]).length,0);
- const total=questions.reduce((n,q)=>n+Number(q.marks||0),0);
+ const total=questions.reduce((n,q)=>n+Number(q.marks||q.maxMarks||q.maximumMarks||0),0);
+ const sourceComplete=record.id==="POB-P2-2009-MJ"&&verifyPob2009SourcePrompts(paper).valid;
  return <section className="pob-archive-exam" aria-label="Historical Paper 2 answer-bank review">
   <h3>Paper 2 · Written-answer practice and marking guide</h3>
-  <p>This paper's SPARK-authored model answers and mark allocations are available. Where an exact printed question is not transcribed, use the corresponding original paper alongside this answer space. Some questions use SPARK-authored summaries rather than the original wording. This paper is not a complete source-faithful simulation until those prompts, figures and tables have been transcribed.</p>
+  <p>{sourceComplete?"All seven original source questions, case studies, question choices and 36 written parts are transcribed for this sitting. Submit five questions according to the original examination rules.":"SPARK-authored answers and mark allocations are available. Many printed questions, diagrams and tables have not been faithfully digitised; source summaries are identified and cannot be treated as the original examination."}</p>
   <div className="pob-archive-summary"><span>{questions.length} offered questions</span><span>{parts} answer parts</span><span>{total} offered marks</span><span>100 candidate marks</span></div>
   {openQuestionCount>5&&<div className="pob-archive-optional" aria-label="Original Paper 2 optional question selection">
     <strong>Choose the questions required by this sitting</strong>
@@ -138,10 +140,11 @@ function HistoricalPaper2({record,onOpenJanuary2026,supabase,userId}){
   </div>}
   {questions.length?<>
    {questions.filter(q=>selected.includes(q.number)).map(q=><details className="pob-archive-question" key={q.number} open={q.number===1?true:undefined}>
-     <summary>Question {q.number} · {q.marks||"?"} marks</summary>
+     <summary>Question {q.number} · {q.marks||q.maxMarks||q.maximumMarks||"?"} marks</summary>
+     {sourceComplete&&POB_2009_MJ_P2_SOURCE.contexts[q.number]&&<p className="pob-archive-context">{POB_2009_MJ_P2_SOURCE.contexts[q.number]}</p>}
      {(q.parts||q.items||[]).map(part=>{
        const id="Q"+q.number+":"+part.id;
-       const exact=part.prompt||part.sourceQuestion||null;
+       const exact=(sourceComplete&&POB_2009_MJ_P2_SOURCE.prompts[q.number+":"+part.id])||part.prompt||part.sourceQuestion||null;
        const prompt=exact||part.sourcePromptSummary||null;
        return <div className="pob-archive-written" key={id}>
          <label htmlFor={record.id+id}><strong>({part.id})</strong> {prompt||"Answer this part using the printed question paper."} <span>{part.marks} marks</span></label>
@@ -210,7 +213,7 @@ export default function PobHistoricalArchive({onBack,onOpenJanuary2026,supabase,
     </label></div>
     <p className="pob-archive-small">{filtered.length} source papers shown. Select any sitting to view its practice answers and marking guidance.</p>
     <div className="pob-archive-list">{filtered.map(record=><button key={record.id} className="pob-archive-tile" type="button" onClick={()=>setSelected(record.id)}>
-      <span><strong>{record.label}</strong><small>{record.source.pages} pages · {record.id==="POB-P1-2023-JAN"?"Full 60-question source paper":record.paper===1?"Answer-key reference · source text incomplete":"Written answers and mark schemes"}</small></span>
+      <span><strong>{record.label}</strong><small>{record.source.pages} pages · {record.id==="POB-P1-2023-JAN"?"Full 60-question source paper":record.id==="POB-P2-2009-MJ"?"Complete source-written Paper 2":record.paper===1?"Answer-key reference · source text incomplete":"Written answers and mark schemes"}</small></span>
       <span className="pob-archive-arrow" aria-hidden="true">→</span>
     </button>)}</div>
   </>}
