@@ -53,4 +53,14 @@ export const POB_SOURCE_INVENTORY=Object.freeze({
   syllabusFilename:"CSEC-Principles-of-Business-Syllabus-.pdf",
   origin:"POB.zip"
 });
-export const pobReleasedHistoricalPapers=()=>POB_SUPPLIED_ARCHIVE.filter(p=>p.simulatorReady&&!p.sourcePaperMismatch);
+// A simulatorReady toggle alone is NEVER a scored-paper publication decision.
+export const pobReleasedHistoricalPapers=()=>POB_SUPPLIED_ARCHIVE.filter(p=>
+ p.simulatorReady===true&&
+ p.ownerAutoScoringAuthorized===true&&
+ p.sourceSha256===pobSourceSha256(p.filename)&&
+ p.sourcePaperMismatch===false&&
+ p.sourceAuthenticityVerified===true&&
+ p.transcriptionStatus==="verified"&&p.answerKeyStatus==="verified"&&
+ p.markingSchemeStatus==="verified"&&p.assessmentQAComplete===true&&
+ p.secureAssessmentCalibrated===true
+);
