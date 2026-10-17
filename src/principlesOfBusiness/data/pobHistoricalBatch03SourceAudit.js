@@ -31,7 +31,7 @@ export const POB_HISTORICAL_BATCH03_SOURCE_QA=Object.freeze(EVIDENCE.map(([stem,
  let sittingRule="not-verified";
  if(source.paper===1)sittingRule="paper-1-60-objective-items-pending-options-qa";
  if(source.paper===2&&Number(year)>=2019)sittingRule="paper-2-five-compulsory-cover";
- if(source.paper===2&&Number(year)<=2007)sittingRule="paper-2-2005-07-Q1-Q2-10-each-Q3-20-and-Q4-9-choose-3";
+ if(source.paper===2&&Number(year)<=2007)sittingRule="paper-2-section-I-2005-07-Q1-Q2-10-each-Q3-20-and-Q4-9-choose-3";
  if(source.paper===2&&Number(year)===2008)sittingRule="paper-2-three-section-I-and-two-section-II-cover";
  return Object.freeze({
   id,paper:source.paper,year:Number(year),sitting,
