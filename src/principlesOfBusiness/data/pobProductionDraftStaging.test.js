@@ -7,10 +7,10 @@ const ops=name=>fs.readFileSync(path.join(__dirname,"../../../supabase/ops",name
 const migrations=name=>fs.readFileSync(path.join(__dirname,"../../../supabase/migrations",name),"utf8");
 
 describe("SPARK POB safe production staging and database marking drift",()=>{
- test("draft SQL mirrors the app registry and never publishes/enables historical grading",()=>{
+ test("historical draft SQL remains inert although the live subject catalog is published",()=>{
   const manifest=getSparkSubjectRegistry().find(s=>s.id==="principles-of-business");
   expect(manifest).toMatchObject({
-   enabled:false,status:"draft",implementation:"generic",studyView:"study",
+   enabled:true,status:"live",implementation:"generic",studyView:"study",
    stats:{sections:10,topics:42,objectives:119,flashcards:119}
   });
   const sql=ops("pob_draft_catalog_registration.sql");
