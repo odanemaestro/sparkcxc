@@ -29,7 +29,7 @@ describe("POB January 2026 historical exam end-to-end preview",()=>{
   expect(screen.getByText(/0 of 32 parts have responses/)).toBeTruthy();
   fireEvent.click(screen.getByRole("button",{name:"Submit responses"}));
   await waitFor(()=>expect(screen.getByText(/32 responses submitted/)).toBeTruthy());
-  expect(screen.getByText(/no final Paper 2 grade has been assigned/i)).toBeTruthy();
+  expect(screen.getByText(/No score has been invented for free-text responses/)).toBeTruthy();
   expect(rpc).not.toHaveBeenCalled();
  });
  test("historical preview stores answers without requesting an authenticated marking attempt",()=>{
