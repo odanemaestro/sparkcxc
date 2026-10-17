@@ -3,6 +3,7 @@ import {
  auditPobHistoricalScoringBatches,validatePobHistoricalP2Selection
 } from "./pobHistoricalScoringBatches";
 import {POB_SUPPLIED_ARCHIVE,pobReleasedHistoricalPapers} from "./pobHistoricalInventory";
+import {assessPobHistoricalAutoScoring} from "./pobHistoricalAutoScoringGate";
 
 describe("46 owner-authorized POB sources in 15-paper scoring QA batches",()=>{
  test("all original source fingerprints and page counts stay mapped, 15/15/15/1",()=>{
@@ -49,6 +50,25 @@ describe("46 owner-authorized POB sources in 15-paper scoring QA batches",()=>{
    expect(validatePobHistoricalP2Selection(id,[1,2,3,4,5]).valid).toBe(true);
    expect(validatePobHistoricalP2Selection(id,[1,2,3,4,6]).valid).toBe(false);
   }
+ });
+ test("historical marking intake rejects invalid old choices and typed-only source",()=>{
+  const old=POB_SUPPLIED_ARCHIVE.find(row=>row.id==="POB-P2-2014-MJ");
+  const wrong=assessPobHistoricalAutoScoring({
+   ...old,selectedQuestionNumbers:[1,2,3,4,5],
+   questionSelectionRulesVerified:true
+  },{secureServerMarkerEnabled:true,calibratedServerBenchmarkPassed:true});
+  expect(wrong.issues).toEqual(expect.arrayContaining([
+   expect.stringContaining("Source-based question selection is not verified")
+  ]));
+  const derivative=POB_SUPPLIED_ARCHIVE.find(row=>row.id==="POB-P2-2024-JAN");
+  const result=assessPobHistoricalAutoScoring({
+   ...derivative,selectedQuestionNumbers:[1,2,3,4,5],
+   questionSelectionRulesVerified:true
+  },{secureServerMarkerEnabled:true,calibratedServerBenchmarkPassed:true});
+  expect(result.ready).toBe(false);
+  expect(result.issues).toEqual(expect.arrayContaining([
+   expect.stringContaining("derivative transcript")
+  ]));
  });
  test("unknown, non-paper-2 and typed-transcript sources never pass source rules",()=>{
   for(const id of ["POB-P2-2024-JAN","POB-P1-2023-JAN","POB-P2-2099-MJ"]){
