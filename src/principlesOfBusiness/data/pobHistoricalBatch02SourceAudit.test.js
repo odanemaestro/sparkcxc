@@ -128,7 +128,7 @@ describe("POB historical batch two: source, academic dispute, answer QA",()=>{
  });
  test("tampered scores, dropped entries and fake fingerprints fail",()=>{
   const a=JSON.parse(JSON.stringify(POB_2014_MJ_P1_AUTHORED_KEY));
-  a.proposedEntries[51].status="spark-authored-provisional";
+  a.proposedEntries[50].status="spark-authored-provisional";
   expect(validatePob2014MjP1AuthoredKey(a).valid).toBe(false);
   const b=JSON.parse(JSON.stringify(POB_2015_MJ_P1_AUTHORED_KEY));
   b.questions.pop();
