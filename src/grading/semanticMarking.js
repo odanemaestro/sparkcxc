@@ -15,6 +15,7 @@ export function validateSemanticPass(pass,items,responses){
         ||!String(responses[e.responseKey] || "").includes(e.quote))throw new Error("unsupported_evidence");
     }
     if(row.marks>0 && !item.responseKeys.some(key=>String(responses[key] || "").trim()))throw new Error("blank_credit");
+    if(row.marks>0 && item.constraints?.requiresLinkedAnswer && !row.evidence.some(e=>e.responseKey===item.id))throw new Error("missing_primary_evidence");
     return {...row};
   });
 }
