@@ -18,7 +18,7 @@ const handler = {
     const outcomes=await Promise.all((jobs || []).map(async(job:any)=>{
       try{
         if(job.revision!==SEMANTIC_MARKING_REVISION)throw new Error("unsupported_revision");
-        const {data:attempt,error}=await db.from("spark_exam_attempts").select("subject_id,paper,status,bank_version,metadata,response_snapshot").eq("id",job.attempt_id).single();
+        const {data:attempt,error}=await db.from("spark_exam_attempts").select("subject_id,paper,status,bank_version,rubric_version,grader_version,score,max_score,metadata,response_snapshot").eq("id",job.attempt_id).single();
         if(error||!attempt)throw new Error("attempt_unavailable");
         // Server-owned switch. Browser requests and attempt metadata cannot
         // authorize a historical examination. DB enqueue gates must also pass.
