@@ -1,33 +1,57 @@
-# SPARK POB historical internal answer authoring: Batch 1, first 3 paper files
+# SPARK Principles of Business: Historical answer authoring, batch 1 of 4
 
-Date: 2026-10-17. These are authored answers, not empty release checklists.
+Date: 17 October 2026. Branch: `feat/pob-historical-authored-answers-batch01-v1`.
 
-## Actual authoring completed
+## Complete first-batch answer authoring
 
-| Source sitting | Questions | Marking material | Coverage | Historical live state |
-| --- | ---: | --- | --- | --- |
-| Jan 2023 Paper 01, test 01240010 | 60 MCQ | 60 SPARK-reasoned answer letters plus 60 individual teaching explanations and source PDF page links | 60/60 answer drafts | Blocked: entire scored source transcript not yet certified; no published CXC historical P1 answer key supplied |
-| May/June 2009 Paper 02, test 01240020 | 7 offered questions | 36 structured assessed parts, 140 offered marks, SPARK model answers and per-criterion mark rules | 7/7 questions; candidate answers 5 for 100 marks | Blocked: visual transcription, candidate response calibration and full source-only bank QA |
-| Jan 2024 Paper 02 (typed, two-page source) | 5 questions | 28 structured parts, 100 model-answer marks and 100 individually described scoring criteria | 5/5; 100/100 | Blocked: supplied PDF is a derivative transcription, not authenticated exam booklet; model performance/calibration missing |
+All **15 owner-supplied source files** in the first batch have corresponding SPARK-authored historical answer or marking banks. These are independent academic answers, **NOT a claim that CXC's own historical keys or published mark schemes were supplied**. Formal scoring is still guarded pending calibration and fully verified digital question transcripts.
 
-**Total: 3 of the first 15 source files now have authored key/rubric banks.** All materials are owner-requested SPARK academic work, *not* CXC-published marking guides.
+| Historical source file | SPARK-authored answer coverage | Candidate max |
+| --- | --- | ---: |
+| P1 January 2023 | 60 multiple-choice correct-option drafts and 60 reasoned explanations | 60 |
+| P2 May/June 2009 | 7 offered questions, 36 assessed parts, 140 rubric marks offered | 100 |
+| P2 May/June 2010 | 7 offered, 33 assessed parts, 140 marks offered | 100 |
+| P2 May/June 2011 | 7 offered, 37 assessed parts, 140 marks offered | 100 |
+| P2 May/June 2012 | 7 offered, 42 assessed parts, 140 marks offered | 100 |
+| P2 May/June 2013 | 7 offered, 40 assessed parts, 140 marks offered | 100 |
+| P2 May/June 2014 | 7 offered, 42 assessed parts, 140 marks offered | 100 |
+| P2 May/June 2015 | 7 offered, 42 assessed parts, 140 marks offered | 100 |
+| P2 May/June 2016 | 7 offered, 45 assessed parts, 140 marks offered | 100 |
+| P2 May/June 2017 | 5 compulsory, 28 assessed parts, 100 marks | 100 |
+| P2 May/June 2018 | 5 compulsory, 32 assessed parts, 100 marks | 100 |
+| P2 January 2022 | 5 compulsory, 27 assessed parts, 100 marks | 100 |
+| P2 May/June 2022 | 5 compulsory, 32 assessed parts, 100 marks | 100 |
+| P2 January 2023 | 5 compulsory, 31 assessed parts, 100 marks | 100 |
+| P2 January 2024 | 5 compulsory, 28 assessed parts, 100 marks. Source is a typed transcription, not the original printed exam | 100 |
 
-### Academic safeguards
+The seven-question examinations offer 140 marks **across all seven questions** but students answer five questions, worth **100 marks**. `pobHistoricalScoringBatches.js` validates original sitting rules, and `pobHistoricalSevenQuestionRubric.js` and `pobHistoricalFiveQuestionRubric.js` enforce the structural limits. `pobHistoricalAuthoredBatch01Audit.js` audits all 15 authored banks and links each to the approved source SHA-256.
 
-- No invented CXC official marks, no teacher marking and no student self-marking.
-- In the Jan 2023 P1 authored key, Q4, Q16, Q46 and Q47 carry extra academic review flags because wording or domain conventions warrant careful checking. The key is based on reasoning about the supplied choices, and the original PDF remains the source for exact option mapping.
-- The Jan 2024 P2 copyright response correctly explains that original literary expression commonly attracts copyright automatically. A purported compulsory copyright-registration requirement is not accepted as a universal rule.
-- The 2009 Paper 2 preserves the original **Q1–Q3 compulsory; choose Q4 or Q5; choose Q6 or Q7** pattern. The bank contains 140 offered marks but **a candidate's maximum is 100**.
-- The semantic marker must distinguish meaning, legitimate alternate answers, negation and contradictory examples. A list of example words is not a complete and safe automatic marking algorithm.
-- Client-submitted marking criteria are untrusted. Only validated, trusted server-side bank criteria should be assessed.
-- Existing public POB release controls stay closed: `enabled:false,status:"draft"`. These academic banks are not automatically wired to a live grading worker.
+## Visually recovered examination details
 
-### Still required for first-batch live scoring
+The paper text layer is not uniformly sufficient, so selected pages were rendered and checked:
 
-1. Complete source-faithful, visually verified question/choice transcriptions for each sitting, without incorrect diagrams, marks or options.
-2. Perform additional internal cross-checking of every authored answer. Resolve discrepancies using the CXC syllabus and source evidence. Keep disputed items scored conservatively.
-3. Build sitting-specific response calibration datasets with positive, negative, incomplete, contradictory and alternate-valid responses for every Paper 2 rubric; set acceptable false-award thresholds and verify actual results.
-4. Enable secure server assessment with verified bank ID, SHA-256 fingerprint, signed candidate attempt, fixed paper selection and encrypted persistence. Do not allow a browser flag to release scores.
-5. Repeat full CI, database worker, browser/mobile/tablet/desktop, accessible review screens and grade persistence QA.
+- 2016 May/June P2 Q7(b)(iii), access to affordable quality healthcare, 2 marks, recovered from original PDF page 17.
+- 2017 May/June Q4(b)(ii), methods vendors use to promote sales, 4 marks, and Q5(b)(ii), indicators of standard of living, 3 marks, recovered from rendered pages.
+- 2022 May/June Q4(a)(i), the actual distribution diagram is **producer/manufacturer → wholesaler → retailer → consumer**, with missing labels A = producer/manufacturer, B = retailer.
+- 2022 May/June Q5(a)(iii), reducing unemployment through government action, 2 marks, recovered from rendered page.
+- 2023 January Q1(b) names two stakeholders other than customers/employees; Q3(b)(ii) is townhouse development (secondary production), both recovered from original source images.
+- January 2022 and January 2023 scanned low-text pages were visually confirmed as non-question sheets.
 
-**Status: authored answer material is materially progressing, but 0 of 46 historical PDFs are cleared for live grades until those checks pass.** This is not a request for the owner to produce keys or supply examiners.
+## Academic ambiguities needing internal resolution before scored publication
+
+- January 2023 Paper 1: inspect and adjudicate original items 4, 16, 46 and 47, and independently cross-check the remaining answer letters and options. The internally drafted answers are not a substitute for complete authoritative CXC historical P1 answers; if conceptual alternatives conflict, do not silently award or deny a grade.
+- 2022 May/June and January 2023 P2: historical questions use *specialty contract* in relation to hire purchase. Different jurisdictions and textbooks use differing formal-contract terminology. SPARK must accept defensible alternatives without conflating all hire-purchase arrangements with contracts executed as deeds.
+- 2022 May/June P2 mutual-mistake car transaction: avoid falsely alleging intentional fraud or treating every disagreement as the same contractual remedy.
+- January 2024 P2 source is a two-page *derivative typed transcription*, so its original CXC booklet formatting and authenticity must be independently established before presenting the examination as source-certified.
+- Original 2009–2018 historical exam era differs from the current syllabus. Preserve paper-specific wording and optional question rules.
+- Some exact question wording, chart positions, image accessibility and accepted alternatives still require complete rendered page review. Passing structural tests or source SHA-256 checks does **not** establish full academic key accuracy.
+
+## Live scoring still requires technical and academic tests
+
+1. Finish complete faithful digital question transcription with every option and source graphic, page by page.
+2. Correct remaining academic ambiguities internally and document source-based judgments, accepted alternatives and counterexamples.
+3. Calibrate the trusted P2 server assessor against benchmark responses for each criterion: full credit, partial credit, valid alternative, invalid claim, contradiction, copied rubric, unsupported numerical answer and blank response. Confirm false-award/missed-award rates before enabling a paper.
+4. Require fixed trusted bank versions and PDF fingerprints, verified signed attempt/question selection, server-only grading rules, secure persistence, grading idempotency and score-review parity. Students never submit rubrics or grade their own attempts.
+5. Run regression tests and actual browser/device QA (desktop, mobile, tablet, light/navy-dark), enable production worker and SPARK's subject only after each paper independently passes.
+
+**Accurate statement:** All 15 first-batch source files have substantive authored answer models. **0/15 first-batch historical papers have been certified for live scoring.** Owner permission from PR#70 authorizes preparation, not invented academic accuracy. No human teacher, independent examiner or student self-assessment is required; SPARK's own assessment verification remains mandatory.
