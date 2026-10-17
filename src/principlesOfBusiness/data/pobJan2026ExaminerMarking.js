@@ -49,7 +49,7 @@ export function buildPobJan2026ExaminerPack({responses={}}={}){
   throw new Error("unbalanced_criterion");
  if(items.reduce((n,i)=>n+i.maxMarks,0)>100)throw new Error("historical_criterion_overflow");
  return {
-  ...base,items,parts:sourceParts,
+  ...base,items,parts:sourceParts,historicalPaperId:paper.id,
   criterionLevel:true,productionEligible:false
  };
 }
